@@ -78,6 +78,42 @@ def dubletten_weg(xml):
     return xml, weg
 
 
+def zuviel(drin):
+    """URLs in der Sitemap, deren Seite selbst noindex sagt.
+
+    ⚠️ DIE PRUEFUNG LIEF BISHER NUR IN EINE RICHTUNG. seiten() ueberspringt
+    noindex-Seiten beim Suchen nach FEHLENDEN Eintraegen — was aber schon drin
+    steht, sah niemand mehr nach. Genau so ueberlebte agb.html in der Sitemap,
+    waehrend impressum.html und datenschutz.html mit derselben noindex-Regel
+    korrekt draussen sind: die Seite sagt "nicht indexieren", die Sitemap sagt
+    "bitte indexieren". Gefunden am 29.08.2026, ein Treffer unter 2654 URLs."""
+    raus = []
+    for u in sorted(drin):
+        pfad = u[len(BASIS):] if u.startswith(BASIS) else u
+        if pfad.endswith("/") or pfad == "":
+            pfad += "index.html"
+        datei = os.path.join(ROOT, pfad)
+        if not os.path.isfile(datei):
+            continue
+        try:
+            html = open(datei, encoding="utf-8", errors="ignore").read(4000)
+        except Exception:
+            continue
+        if re.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', html, re.I):
+            raus.append(u)
+    return raus
+
+
+def zuviel_weg(xml, urls):
+    """Entfernt die <url>-Bloecke der genannten URLs."""
+    weg = 0
+    for u in urls:
+        muster = re.compile(r"\s*<url>(?:(?!</url>).)*?<loc>" + re.escape(u) + r"</loc>.*?</url>", re.S)
+        xml, n = muster.subn("", xml)
+        weg += n
+    return xml, weg
+
+
 def main():
     xml = open(SITEMAP, encoding="utf-8").read()
     alle = re.findall(r"<loc>(.*?)</loc>", xml)
@@ -94,19 +130,27 @@ def main():
         return False
 
     fehlt = [(p, d) for p, d in seiten() if not bekannt(p)]
-    if not fehlt and not doppelt:
-        print(f"✔ sitemap.xml vollständig und dublettenfrei ({len(drin)} URLs)")
+    ueber = zuviel(drin)
+    if not fehlt and not doppelt and not ueber:
+        print(f"✔ sitemap.xml vollständig, dublettenfrei und ohne noindex-Seiten ({len(drin)} URLs)")
         return 0
     if doppelt:
         print(f"⚠ {doppelt} doppelte Einträge in der sitemap.xml")
-    if not fehlt and doppelt and "--fix" not in sys.argv:
+    if ueber:
+        print(f"⚠ {len(ueber)} noindex-Seite(n) stehen in der sitemap.xml:")
+        for u in ueber:
+            print(f"     {u}")
+    if not fehlt and "--fix" not in sys.argv:
         print("   → mit --fix bereinigen")
         return 1
     proO = {}
     if not fehlt and "--fix" in sys.argv:
+        weg2 = 0
+        if ueber:
+            xml, weg2 = zuviel_weg(xml, ueber)
         xml, weg = dubletten_weg(xml)
         open(SITEMAP, "w", encoding="utf-8").write(xml)
-        print(f"✔ {weg} Dubletten entfernt → sitemap.xml")
+        print(f"✔ {weg} Dubletten und {weg2} noindex-Einträge entfernt → sitemap.xml")
         return 0
     for _, d in fehlt:
         proO[d or "ROOT"] = proO.get(d or "ROOT", 0) + 1
