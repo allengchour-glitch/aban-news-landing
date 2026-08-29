@@ -5314,3 +5314,6 @@ gid://shopify/Product/15449042551169	CHF 22.44	5 Varianten	Vintage Patchwork Hoo
 gid://shopify/Product/15449042583937	CHF 16.84	6 Varianten	Unisex Hoodie mit 3D-Effekt und Kängurutasche
 gid://shopify/Product/15449042715009	CHF 14.77	18 Varianten	Kapuzen-Sweatshirt für Damen · Modell 2
 gid://shopify/Product/15449042813313	CHF 39.09	20 Varianten	Damen Fleece Cardigan mit Kapuze
+gid://shopify/Product/15449043173761	CHF 12.34	8 Varianten	Bedrucktes Damen Sweatshirt mit Rundhals
+gid://shopify/Product/15449043435905	CHF 13.99	10 Varianten	Chinesischer Baumwollpullover für Mädchen
+gid://shopify/Product/15449044779393	CHF 15.04	10 Varianten	Trendiger Loose-Fit Dual-Zip Cardigan Hoodie
