@@ -4945,3 +4945,52 @@ dokumentierte Haken heisst `window.__th.zeit(min)`. Dass das Bild trotzdem 22:01
 lag daran, dass die Spielzeit von selbst dorthin gelaufen war. Der Befund stimmte am Ende,
 aber er stimmte **zufällig** — und wäre die Uhr nicht zufällig dort gewesen, hätte ich ein
 Tagbild als Nachtbild gemeldet. Vor dem Messen nachsehen, ob der Haken existiert.
+
+## 2026-08-29 · 🏁 Die Hetze — die Runde, die man sofort noch einmal spielt
+
+**Der Befund.** Serie und letzter Meter machen das Spielen dichter, aber beide laufen
+**unbegrenzt** weiter. Es gab keinen Moment, an dem etwas *zu Ende* ist und man
+entscheidet, ob man noch eine spielt — und genau an diesem Moment hängt „noch eine".
+Der bestehende `MODUS==="sprint"` ist das Gegenteil davon: 20 Spieltage, beim Spielstart
+gewählt, nicht wiederholbar.
+
+**Was gebaut wurde.** 90 Sekunden, ein Punktestand, ein persönlicher Rekord — und der
+Knopf **🔁 Nochmal** direkt im Ergebnis, damit zwischen Ende und nächstem Start kein
+Umweg liegt (Start auch über den 🏆-Knopf, kein neues Element in der Kopfzeile).
+
+| Teil | Was er tut |
+|---|---|
+| `HETZE` | `{an, t, dauer:90, punkte, best, kette}`, Rekord im Spielstand (`hz`) |
+| `hetzeStart()` | volle Zeit, Punkte auf 0 — **und die Serie auf 0** |
+| `hetzeTakt(dt)` | zählt herunter, schreibt die längste Serie mit, tickt die letzten 5 s hörbar |
+| `hetzeEnde()` | Ergebnis mit Punktestand, längster Serie, Rekordvergleich; Feuerwerk beim Rekord |
+| `hetzeHudUpd()` | Uhr **unter** dem Serien-Balken — Unterkante gemessen, nicht geraten |
+
+**Drei bewusste Entscheidungen — jede verhindert einen konkreten Schaden.**
+
+1. **Die Hetze zahlt NICHTS aus.** Sie zählt nur, was `verdiene()` ohnehin auszahlt
+   (`if(zaehlt!==false&&HETZE.an)HETZE.punkte+=b;`). Wäre es anders, wäre endloses
+   Wiederholen die beste Strategie und das Spiel darum herum egal. **Der Reiz ist der
+   Rekord, nicht die Kasse.**
+2. **`zaehlt===false` bleibt draussen** — Miete, Geschenke, Rückerstattungen, Glücksspiel.
+   Sonst stünde in der Bestenliste, wer im richtigen Moment eine Rückerstattung auslöst.
+3. **Der Start löscht die Serie.** Ohne das startet man mit vorgewärmter Kette, und der
+   Rekord hängt daran, was **vor** dem Startknopf passiert ist — nicht an der Runde.
+
+**Zwei Balken übereinander.** `hetzeHudUpd` misst die Unterkante des **Serien**-Balkens,
+wenn der sichtbar ist, sonst die der Kopfzeile — und weicht waagerecht demselben Radar
+aus wie `komboHudUpd`. Verschwindet die Serie mitten in der Runde, rutscht die Uhr in
+derselben Bildfolge hoch. Das ist dieselbe Regel wie bei `layoutLinkeSpalte`, nur eine
+Stufe tiefer verkettet.
+
+**Geprüft:** `spiele-dev/tools/th-hetze.mjs` — 27/27, davon 4 Gegenproben.
+Zwei Sabotagen dagegengehalten, beide von **genau einer** Prüfung gefangen:
+`zaehlt`-Schutz entfernt → „nicht gezählter Zufluss bleibt draussen" rot;
+gemessene Position durch feste `top:58px` ersetzt → „Uhr liegt unter dem Serien-Balken" rot
+(Serie endet bei 112 px, Uhr sass auf 58). Bestandsprüfer grün: `th-serie`, `th-meter`,
+`th-hud` (0 Überlappungen, 0 Tippziele < 44 px), `th-speichern`, `th-erfolge`, `th-lint`.
+
+**Und im eigenen Prüfer:** zwei Zeilen `page.evaluate(() => { KOMBO.n = 0 })` mit einem
+`.catch(() => {})` dahinter — Closure-Variable, wirft immer, wurde immer verschluckt, tat
+nie etwas. Ein leeres `catch` um einen Testschritt ist kein Schutz, sondern eine
+abgeschaltete Behauptung. Ersatzlos entfernt.
