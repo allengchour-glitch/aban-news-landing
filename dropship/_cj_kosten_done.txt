@@ -5262,3 +5262,4 @@ gid://shopify/Product/15448964465025	CHF 68.11	1 Varianten	Mehrstufiges Abtropf-
 gid://shopify/Product/15448964563329	CHF 36.17	1 Varianten	Teigbrett aus Edelstahl
 gid://shopify/Product/15448964596097	CHF 160.26	1 Varianten	Multifunktionales Abtropfgestell aus Edelstahl
 gid://shopify/Product/15448964694401	CHF 20.52	1 Varianten	Schneidebrett Akazienholz
+gid://shopify/Product/15448964759937	CHF 65.61	1 Varianten	Antiker Küchenarmatur für Warm- und Kaltwasser
