@@ -4142,3 +4142,39 @@ Danach: 844×390, 740×360, 932×430, 390×844, 1024×768 — **überall 0 Ziele
    Fehlalarme von selbst weg — und in Hochkant zeigt sich sauber, dass `#rotHint`
    („dreh dein Handy") **alle** Ziele abfängt. Fängt ein und dasselbe Element alle ab,
    ist es die gewollte Sperrschicht und kein Befund; das meldet das Werkzeug jetzt so.
+
+---
+
+## 2026-08-29 · Die Mission, bei der man nicht wusste WANN
+
+Statt wieder zu prüfen, habe ich die Missionen einmal wie ein Spieler durchgesehen.
+
+**Erst zwei Entwarnungen, beide gemessen:** Alle 13 Missions-Zähler werden irgendwo
+erhöht — keine Mission ist unerfüllbar. Und von den 13 haben 11 einen Kartenmarker; die
+zwei ohne (Emotes, Strassenmusik) sind es zu Recht, der Kommentar im Code sagt das seit
+Langem.
+
+### Der Befund liegt genau dazwischen
+
+Die Strassenmusik ist **die einzige Mission mit einem Zeitfenster** (`buskAvailable()`:
+17–21 Uhr) — **und die einzige ohne Ort**. Wer sie morgens zieht, sieht die Aufgabe,
+keinen Marker, und findet den Knopf nirgends. Es gab keine Stelle im Spiel, an der
+„ab 17 Uhr" stand.
+
+Die Aufgabe sagt *was*, der Marker sagt *wo* — und *wann* sagte niemand.
+
+Jetzt steht das Fenster im Missionstext selbst: „Spiele 1 perfekte Strassenmusik-Show
+**(17–21 Uhr)**". Dort schaut der Spieler ohnehin hin. (Der Text wird beim Anlegen in den
+Spielstand kopiert; laufende Tage behalten den alten, ab dem nächsten Tageswechsel steht
+das Fenster drin.)
+
+### Stehende Prüfung statt Einmal-Blick
+
+`th-missmap.mjs` prüft jetzt bei jedem Lauf, dass **jede** Mission einen Ort hat — oder
+in einer Ausnahmeliste mit **Grund** steht. Und die Gegenrichtung: eine Ausnahme, die es
+nicht mehr braucht (die Mission hat inzwischen einen Ort), wird gemeldet, damit die Liste
+nicht verrottet.
+
+Gegenprobe: einen Ort testweise aus `MISS_ORTE` entfernt →
+**❌ „4 🛹 Lande {n} Airtime-Sprünge", 9 ok / 1 Fehler.** Die Prüfung kann rot werden und
+benennt die Mission.

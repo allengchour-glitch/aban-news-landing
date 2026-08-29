@@ -9695,7 +9695,14 @@ var MISS_POOL=[
  ["🛹","Lande {n} Airtime-Sprünge",3,function(){return stats.stunts||0;}],
  ["🥕","Fahre {n} Ernten ein",2,function(){return stats.ernten||0;}],
  ["🪑","Stelle {n} Möbel auf",3,function(){return stats.moebelGekauft||0;}],
- ["🎸","Spiele 1 perfekte Strassenmusik-Show",1,function(){return stats.buskPerfekt||0;}],
+ /* ⚠️ ZEITFENSTER IN DEN TEXT. Diese Mission ist die einzige der dreizehn, die nur in
+    einem Zeitfenster geht (buskAvailable: 17-21 Uhr) — UND die einzige ohne Ort auf der
+    Karte, weil man ueberall spielen darf. Wer sie morgens zieht, sieht also die Aufgabe,
+    keinen Marker und nirgends den Knopf, und hat keine Moeglichkeit herauszufinden, dass
+    er bis 17 Uhr warten muss. Das "wann" gehoert damit dorthin, wo er hinschaut.
+    (Der Text wird beim Anlegen in den Spielstand kopiert — laufende Tage behalten den
+    alten, ab dem naechsten Tageswechsel steht das Fenster drin.) */
+ ["🎸","Spiele 1 perfekte Strassenmusik-Show (17–21 Uhr)",1,function(){return stats.buskPerfekt||0;}],
  ["😮","Mache {n} Emotes",4,function(){return window._emoteCount||0;}],
  ["🏅","Bestehe 1 Bauabnahme",1,function(){return stats.abnahmen||0;}],
  /* ⚠️ NUR ANS ENDE anfuegen: missHeute speichert den Pool-INDEX im Spielstand —
