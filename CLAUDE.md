@@ -421,6 +421,35 @@ verschwinden lässt.
 bevor ich ihn geprüft hatte. **Ein Verlustbefund gehört erst gemeldet, wenn er gegen die Quelle
 gehalten wurde** — sonst erzeugt er Aufregung, die niemand braucht.
 
+## 🔍 Es gibt KEINE technische SEO-Bremse — 47'045 Produkte, 4 rankende Seiten (2026-08-29)
+Die Frage hinter allem: Suchverkehr ist der einzige Kanal mit Kassengängen, aber bei über
+47'000 Produkten ranken **genau vier Seiten**. Naheliegende Vermutung war eine technische Sperre.
+**Sie ist ausgeschlossen** — geprüft von aussen (WebFetch + Googlebot-User-Agent), nicht geraten:
+| geprüft | Ergebnis |
+|---|---|
+| `robots.txt` | Shopify-Standard, kein Disallow auf `/products/` |
+| Sitemap | 50 Produkt-Sitemaps + Seiten, Kollektionen, Blog — der ganze Katalog wird angeboten |
+| `rel="canonical"` | vorhanden (an zwei Produktseiten geprüft) |
+| `meta robots` | keins → indexierbar |
+| JSON-LD `Product` | vorhanden, mit Preis und `availability: InStock` |
+**Damit bleibt nur die unbequeme Erklärung: Wettbewerb.** 47'000 Dropship-Seiten mit
+Lieferantentexten stehen gegen alle anderen, die dieselbe CJ-Ware verkaufen. Kein technischer
+Eingriff ändert das.
+**Was TATSÄCHLICH rankt, sagen die eigenen Zahlen:** einzigartiger Inhalt zu einem konkreten
+Bedürfnis (der Faszienrollen-Ratgeber, 77 Sitzungen in 90 Tagen — die zweitgrösste Suchseite des
+Shops) und Produkte mit einem spezifischen Suchbegriff (Packsack 82, Rizinusöl 38).
+**Folgerung für den Dauerauftrag: MEHR PRODUKTE BRINGEN KEINEN SUCHVERKEHR.** Der Grind hat den
+Katalog von 45'000 auf 47'000 gebracht; die Suchsitzungen sind dabei nicht gestiegen. Was zieht,
+ist Text, den es sonst nirgends gibt. Das steht nicht im Widerspruch zum Auftrag «mehr Produkte» —
+dort steht ausdrücklich: Mittel, nicht Selbstzweck.
+- ⚠️ **Zwei eigene Fehlalarme auf dem Weg dorthin, beide dieselbe Klasse.** (1) WebFetch meldete
+  «kein canonical, kein JSON-LD» — es wandelt die Seite in Markdown um und wirft den `<head>`
+  weg. (2) Mein erstes `grep '<link[^>]*rel="canonical"'` fand nichts, weil das Tag anders
+  formatiert ist; ein lockeres `grep -i canonical` fand es sofort.
+  **Ein Nullergebnis aus einem verlustbehafteten Werkzeug oder einem strengen Muster ist kein
+  Befund.** Dritte Wiederholung nach dem stillen Shopify-Suchfilter und dem veralteten
+  Remote-Zeiger — es ist dieselbe Falle in drei Gewändern.
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
