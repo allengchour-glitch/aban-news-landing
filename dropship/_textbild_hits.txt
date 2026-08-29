@@ -13370,3 +13370,7 @@ gid://shopify/Product/15520171393409	16->0	Personalisierte Hip-Hop-Uhr mit Diama
 gid://shopify/Product/15520208781697	17->0	Wasserdichte Sporttasche mit Trocken/Nass‑Trennung, 36‑55 L
 gid://shopify/Product/15520241123713	8->0	Hawaiihemd mit Blumenmuster für Herren
 gid://shopify/Product/15520245940609	30->0	T-Shirt mit Farbkontrast und Stehkragen
+gid://shopify/Product/15520301711745	12->0	Doppellagiges Kreuzarmband aus 925er Silber
+gid://shopify/Product/15520304333185	24->3	Boken Kork-Slipper aus Veloursleder
+gid://shopify/Product/15520305054081	15->0	Slippers Sandalen für Damen
+gid://shopify/Product/15520305742209	19->0	Sandalen mit Elastikband und Blumen-Applikation
