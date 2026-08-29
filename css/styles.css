@@ -370,6 +370,15 @@ li:last-child { margin-bottom: 0; }
   font-family: inherit;
 }
 
+/* ⚠️ Auf schmalen Geraeten darf die Beschriftung umbrechen. Mit nowrap sprengten
+   lange Knopftexte die Seite: "Become a founding member —" wurde 339px breit in
+   einem 320px-Fenster (en/founding.html +35px, en/produkte.html +46px). Die
+   englischen Fassungen trifft es zuerst, weil ihre Texte laenger sind.
+   Ab 480px bleibt nowrap — dort passt alles in eine Zeile. */
+@media (max-width: 480px) {
+  .btn { white-space: normal; max-width: 100%; }
+}
+
 .btn:hover,
 .subscribe button:hover {
   background:#92400e;
@@ -584,14 +593,20 @@ li:last-child { margin-bottom: 0; }
   border-color: var(--c-border);
 }
 
+/* ⚠️ minmax(0, 1fr) statt 1fr. Ein Grid-Element hat von Haus aus min-width:auto und
+   schrumpft darum nicht unter seine Mindestbreite — die Karte auf produkte.html wurde
+   324,4px breit in einer 288px-Spalte und die Seite lief bei 320px um 20px waagerecht
+   ueber. Gegengeprobt im Browser: mit minmax(0,1fr) ist die Karte 288px und der
+   Ueberlauf weg; min-width:0 auf der Karte wirkt genauso.
+   NICHT overflow-x:hidden auf .wrap — das versteckt nur, die Karte bleibt zu breit. */
 .grid {
   display: grid;
   gap: var(--space-4);
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 @media (min-width: 720px) {
-  .grid--2 { grid-template-columns: 1fr 1fr; }
+  .grid--2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 
 /* === Founder block === */
