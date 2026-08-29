@@ -847,6 +847,33 @@ verschwinden lässt.
 bevor ich ihn geprüft hatte. **Ein Verlustbefund gehört erst gemeldet, wenn er gegen die Quelle
 gehalten wurde** — sonst erzeugt er Aufregung, die niemand braucht.
 
+## 📱 TikTok «Profil pushen»: das Tor ist EIN Klick — und drei Korrekturen am Gedächtnis (2026-08-29)
+Auf «tiktok profil push» hin den Stand gemessen statt aus dem Gedächtnis geantwortet. Drei
+Einträge waren überholt:
+1. **`/tmp/tt_creds.env` trägt NICHT mehr den Sandbox-Key.** Der Eintrag vom 18.08. nennt
+   `sbawgg40…` als Sackgasse; drin steht längst der **Produktions-Key `awhvghmn5q2oh91i`**
+   der App «luxe». Die Sackgasse ist also keine mehr.
+2. **Im Tresor liegt KEIN Refresh-Token** — nur Client-Key, Secret und ein PKCE-Verifier vom
+   28.08. Es ist also nie eine Nutzer-Freigabe zustande gekommen; genau daran hängt alles.
+   `automation/tiktok_anmeldung.mjs start` erzeugt den Link und legt den frischen Verifier
+   selbst im Tresor ab. **Der vollständige Nutzer-Fluss ist der EINZIGE gültige Test** auf die
+   Freigabe (Lehre 28.08.: ein App-Token beweist nichts, eine 302 auf die Anmeldeseite auch nicht).
+3. **Der Ads-Konnektor SIEHT das Profil** — was das Gedächtnis so nicht sagte. `identity_get`
+   liefert `luxestyle.ch` als **BC-autorisierte Identität** (`BC_AUTH_TT`,
+   `identity_id 58a7b00c-…`, BC `7640770639476817938`) mit `can_push_video: true`.
+- ⚠️ **`tt_video_list_get` taugt aber NICHT als Profil-Leser.** Er gibt für die
+  luxestyle.ch-Identität eine leere Liste zurück — und für die zweite Identität ebenfalls.
+  Die Gegenprobe entscheidet: Der Endpunkt listet nur Videos, die für Spark-Ads freigegeben
+  sind, nicht die Profilbeiträge. **Ein Nullergebnis aus dem falschen Endpunkt ist kein
+  Befund** — «das Profil hat 0 Videos» wäre die Fehlmeldung gewesen, und das Ledger kennt
+  ein live gepostetes TikTok-Video.
+- ⚠️ **Nebenbefund, nur notiert:** Auf dem LuxeStyle-Werbekonto ist die Identität
+  **`192aban` («aban»)** autorisiert, mit `can_push_video: true`. Das ist die FREMDE Marke,
+  die schon als Klaviyo-Absendername auftauchte. Ob das gewollt ist, weiss nur der Betreiber.
+- Der Browser dieser Session kann das Profil weiterhin nicht lesen: TikTok rendert
+  clientseitig, WebFetch bekommt nur die Hülle («TikTok - Make Your Day»). Schritt 1 des
+  Cowork-Auftrags — vor jedem Upload das Profil ANSEHEN — bleibt deshalb Handarbeit.
+
 ## 🔇 Der Wächter hat seine eigene Alarmanlage abgestellt (2026-08-29)
 Der Google-Kanal-Wächter meldete abends **«Keine Lücke: alle neuen Produkte ohne Sperrgrund
 stehen im Google-Kanal»** — und löschte seinen Bericht. Meine Direktabfrage am Produkt sagte
