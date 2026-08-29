@@ -10,6 +10,11 @@
 #  setzt. Selbstverweise (canonical, hreflang, die eigene URL) zählen nicht — sonst
 #  gilt jede Seite als verlinkt und die Auswertung ist wertlos.
 #
+#  Nicht gemeldet werden Seiten, die selbst sagen, dass sie nicht gefunden werden
+#  wollen: noindex-Seiten (Danke-, Zugangs-, Admin-, 404-Seiten) und erklärte
+#  Dubletten (canonical auf eine andere URL). Ohne diese beiden Regeln bestand die
+#  Auswertung zu 100 % aus Fehlalarm.
+#
 #  Aufruf:  python3 tools/verwaiste_seiten.py [--alle]
 # =============================================================================
 
@@ -65,18 +70,34 @@ def main():
                 continue
             if ziel in alle:
                 eingehend[ziel] += 1
+    def kopf(pfad):
+        try:
+            return open(os.path.join(ROOT, pfad.lstrip("/")), encoding="utf-8", errors="ignore").read(4000)
+        except Exception:
+            return ""
+
     # Eine Seite, die auf eine ANDERE URL kanonisiert, ist eine erklaerte Dublette —
     # sie BRAUCHT keine eingehenden Links (gefunden an presse.html -> press.html).
     def dublette(pfad):
-        try:
-            h = open(os.path.join(ROOT, pfad.lstrip("/")), encoding="utf-8", errors="ignore").read(4000)
-        except Exception:
-            return False
-        m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', h, re.I)
+        m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', kopf(pfad), re.I)
         return bool(m and m.group(1).rstrip("/").split("/")[-1] != pfad.split("/")[-1])
 
+    # ⚠️ EINE noindex-SEITE IST KEINE VERWAISTE SEITE. Sie sagt selbst, dass sie nicht
+    # gefunden werden will: Danke-Seiten nach der Anmeldung, Zugangsseiten nach dem Kauf,
+    # Admin-Werkzeuge, der interne Ops-Tracker, die 404-Seite. Ein eingehender Link waere
+    # dort ein FEHLER, kein Ziel.
+    # GEMESSEN am 29.08.2026: von 14 Befunden waren 14 solche Seiten — die Auswertung
+    # bestand zu 100 % aus Fehlalarm, ein echter Verwaister waere darin untergegangen.
+    # Das ist keine willkuerliche Ausnahmeliste, sondern die Regel, die die Seiten selbst
+    # aufstellen; darum wird sie aus dem Dokument gelesen und nicht hier gepflegt.
+    NOINDEX = re.compile(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\'][^"\']*noindex', re.I)
+
+    def unsichtbar(pfad):
+        return bool(NOINDEX.search(kopf(pfad)))
+
     verwaist = sorted(s for s in alle
-                      if not eingehend[s] and s not in GEWOLLT_OHNE_LINK and not dublette(s))
+                      if not eingehend[s] and s not in GEWOLLT_OHNE_LINK
+                      and not dublette(s) and not unsichtbar(s))
     print(f"{len(alle)} Seiten · {len(verwaist)} ohne eingehenden Link")
     if not verwaist:
         return 0

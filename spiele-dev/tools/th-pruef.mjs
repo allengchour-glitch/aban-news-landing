@@ -78,24 +78,70 @@ const SONDE = `function(){
      nur darunter. Ein Baum, eine Hecke, ein Dach oder ein Geruest ist kein
      GEHAEUSE. Nur Objekte, die wirklich umschliessen, zaehlen als "gross". */
   var KEIN_GEHAEUSE=/baum|tree|eiche|birke|ahorn|pappel|fichte|tanne|weide|kastanie|linde|hecke|hedge|busch|bush|strauch|dach|geruest|kran|pylon|seil|bruecke|leitung|mast|antenne|zaun|gitter|tankstelle/i;
+  /* Die Entscheidung steckt in EINER Funktion, damit der Selbsttest unten genau
+     diesen Code prueft und nicht eine Abschrift davon. */
+  function stecktDrin(K,GR,nameGross){
+    var fk=(K.max.x-K.min.x)*(K.max.z-K.min.z),fg=(GR.max.x-GR.min.x)*(GR.max.z-GR.min.z);
+    if(fk<=0||fg<fk*6)return 0;                       /* nur "klein in gross" */
+    if(KEIN_GEHAEUSE.test(nameGross))return 0;        /* Baum/Dach/Geruest ist kein Gehaeuse */
+    var mx=(K.min.x+K.max.x)/2,mz=(K.min.z+K.max.z)/2;
+    if(mx<GR.min.x||mx>GR.max.x||mz<GR.min.z||mz>GR.max.z)return 0;
+    var dy=Math.min(K.max.y,GR.max.y)-Math.max(K.min.y,GR.min.y);
+    if(dy<=0.5)return 0;                              /* die Bank STEHT auf dem Bahnsteig */
+    /* ⚠️ WAS OBEN HERAUSRAGT, STECKT NICHT DRIN. Der einzige Dauerbefund dieses
+       Tests war ein 0,8 x 0,8 m grosses, 2,3 m hohes Ding bei (41|133) auf y 7…9,3,
+       das zu 100 % im Grundriss eines Bauteils auf y 6…7,7 liegt — ein Aufbau auf
+       einem Dach (dessen erstes Mesh "Giebel" heisst), 0,73 m tief im Dach und
+       1,6 m darueber. Richtig gebaut, trotzdem jedes Mal rot.
+       Die Absicht stand laengst im Kommentar oben ("ein DACH ist kein GEHAEUSE"),
+       nur greift KEIN_GEHAEUSE nicht: die Gruppe hat weder Namen noch Datei, der
+       Name steckt eine Ebene tiefer im Mesh.
+       ⚠️ NICHT ueber die Mesh-Namen loesen. Fast jedes Haus hat ein Mesh namens
+       "Dach" — dann waere kein Gebaeude mehr ein Gehaeuse und der Test still.
+       Geometrisch statt namentlich: ragt MEHR ALS DIE HAELFTE der Hoehe des
+       kleinen Objekts ueber die Oberkante des grossen hinaus, sitzt es OBEN AUF. */
+    var raus=K.max.y-GR.max.y,hoch=K.max.y-K.min.y;
+    if(hoch>0&&raus>hoch*0.5)return 0;
+    var dx=Math.min(K.max.x,GR.max.x)-Math.max(K.min.x,GR.min.x);
+    var dz=Math.min(K.max.z,GR.max.z)-Math.max(K.min.z,GR.min.z);
+    var anteil=(dx*dz)/fk;
+    return anteil>0.6?anteil:0;}
+
+  /* ── SELBSTTEST ───────────────────────────────────────────────────────────
+     Eine Ausnahme, die zu weit greift, macht den Test still statt richtig — und
+     das faellt nie auf, weil "0 Befunde" wie Erfolg aussieht. Darum prueft jeder
+     Lauf an vier gebauten Faellen, dass die Regel noch unterscheidet. */
+  function kasten(x0,y0,z0,x1,y1,z1){
+    return {min:{x:x0,y:y0,z:z0},max:{x:x1,y:y1,z:z1}};}
+  var SELBST=[
+    ["Aufbau auf dem Dach wird NICHT gemeldet",
+     kasten(40.2,7,132.7,41,9.3,133.5), kasten(38,6,131.8,42,7.7,136.2), "?", false],
+    ["Bauzaunfeld in der Schulhauswand WIRD gemeldet",
+     kasten(10,0,10,10.4,2,14), kasten(4,0,4,24,10,24), "schule.glb", true],
+    ["Laterne unter der Eiche wird NICHT gemeldet",
+     kasten(10,0,10,10.4,4,10.4), kasten(4,0,4,18,12,18), "baum_eiche.glb", false],
+    ["Bank auf dem Bahnsteig wird NICHT gemeldet",
+     kasten(10,1,10,11.6,1.9,10.6), kasten(4,0,4,30,1.03,14), "bahnsteig.glb", false],
+    /* ⚠️ DIESER FALL MUSSTE NACHGEREICHT WERDEN. Mit den ersten vier Faellen blieb
+       der Selbsttest gruen, als die Regel testweise auf "ragt ueberhaupt heraus"
+       aufgeweicht wurde — keiner davon ragt ein WENIG heraus, und genau diese
+       Grenze bewacht der Faktor 0,5. Ein 3,2 m hoher Pfosten, der 0,2 m aus einem
+       3 m hohen Bau schaut, steckt zu 94 % darin und muss gemeldet bleiben. */
+    ["Pfosten, der nur knapp herausschaut, WIRD gemeldet",
+     kasten(10,0,10,10.4,3.2,10.4), kasten(4,0,4,20,3.0,20), "halle.glb", true]];
+  var selbst=[];
+  for(var t=0;t<SELBST.length;t++){
+    var e=SELBST[t],ist=stecktDrin(e[1],e[2],e[3])>0;
+    selbst.push({fall:e[0],erwartet:e[4],ist:ist,ok:ist===e[4]});}
+
   var drin=[];
   for(var s1=0;s1<bb.length;s1++)for(var s2=0;s2<bb.length;s2++){
     if(s1===s2)continue;
-    var K=bb[s1].b,GR=bb[s2].b;
-    var fk=(K.max.x-K.min.x)*(K.max.z-K.min.z),fg=(GR.max.x-GR.min.x)*(GR.max.z-GR.min.z);
-    if(fk<=0||fg<fk*6)continue;
-    if(KEIN_GEHAEUSE.test(bb[s2].d))continue;
-    var mx=(K.min.x+K.max.x)/2,mz=(K.min.z+K.max.z)/2;
-    if(mx<GR.min.x||mx>GR.max.x||mz<GR.min.z||mz>GR.max.z)continue;
-    var dx=Math.min(K.max.x,GR.max.x)-Math.max(K.min.x,GR.min.x);
-    var dz=Math.min(K.max.z,GR.max.z)-Math.max(K.min.z,GR.min.z);
-    var dy=Math.min(K.max.y,GR.max.y)-Math.max(K.min.y,GR.min.y);
-    if(dy<=0.5)continue;
-    var anteil=(dx*dz)/fk;
-    if(anteil>0.6)drin.push([bb[s1].d,bb[s1].x,bb[s1].z,bb[s2].d,Math.round(anteil*100)]);}
+    var anteil=stecktDrin(bb[s1].b,bb[s2].b,bb[s2].d);
+    if(anteil>0)drin.push([bb[s1].d,bb[s1].x,bb[s1].z,bb[s2].d,Math.round(anteil*100)]);}
   drin.sort(function(p,q){return q[4]-p[4];});
   var r=renderer.info.render;
-  return {modelle:bb.length,korridor:auf,paare:paare,drin:drin,
+  return {modelle:bb.length,korridor:auf,paare:paare,drin:drin,selbst:selbst,
           zeichenaufrufe:r.calls,dreiecke:r.triangles,
           freigeraeumt:window._freigeraeumt,entwirrt:window._entwirrt,entzerrt:window._entzerrt};}`
 
@@ -111,7 +157,10 @@ console.log(`\n── Traumhaus-Pruefung: ${datei} (${Math.round(warten / 1000)}
 console.log(`  Modelle geladen        ${r.modelle}`)
 console.log(`  ${ampel(r.korridor.length === 0)} Im Strassenkorridor    ${r.korridor.length}`)
 console.log(`  ${ampel(groesste <= 6.4)} Ueberschneidungen      ${r.paare.length}, groesste ${groesste} m`)
+const selbstFehler = (r.selbst || []).filter((t) => !t.ok)
 console.log(`  ${r.drin.length ? '\x1b[33m•\x1b[0m' : '\x1b[32m✔\x1b[0m'} Steckt in einem Bau    ${r.drin.length}  (Sollwert 0 — Befunde mit th-3d.mjs bestaetigen)`)
+console.log(`  ${selbstFehler.length ? '\x1b[31m✖\x1b[0m' : '\x1b[32m✔\x1b[0m'} Selbsttest der Regel   ${(r.selbst || []).length - selbstFehler.length}/${(r.selbst || []).length} Faelle richtig unterschieden`)
+selbstFehler.forEach((t) => console.log(`      \x1b[31m✖\x1b[0m ${t.fall} — erwartet ${t.erwartet}, war ${t.ist}`))
 console.log(`  ${ampel(fehlend.length === 0)} Fehlende Modelle       ${fehlend.length}${fehlend.length ? ' → ' + fehlend.slice(0, 6).join(', ') : ''}`)
 console.log(`  ${ampel(jsFehler.length === 0)} JS-Fehler              ${jsFehler.length}${jsFehler.length ? '\n      ' + jsFehler.slice(0, 3).join('\n      ') : ''}`)
 console.log(`  Zeichenaufrufe         ${r.zeichenaufrufe} · Dreiecke ${r.dreiecke}`)

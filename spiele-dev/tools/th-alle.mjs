@@ -72,6 +72,12 @@ const PRUEFUNGEN = [
   { name: 'Mauern (durchlaufbare Gebaeude)', datei: 'th-mauern.mjs', kern: false,
     wert: (s) => (s.match(/(\d+) ohne Kollider/) || [, '0'])[1] + ' offen',
     gut: (s) => { const n = +(s.match(/(\d+) ohne Kollider/) || [, 0])[1]; return n <= 13 } },
+  { name: 'Echte Durchdringungen (Mesh statt Kasten)', datei: 'th-echt.mjs', kern: false,
+    wert: (s) => (s.match(/Davon (\d+) mit echter Mesh-Durchdringung/) || [, '?'])[1] + ' echt',
+    /* Stand 29.08.2026: 16 Kasten-Treffer, davon 9 echt — und die 9 sind
+       ineinandergreifende Baumkronen, ein Reihenhaus-Paar mit gemeinsamer Wand
+       und Bauteile desselben Hauses. Steigt die Zahl, ist etwas Neues dazugekommen. */
+    gut: (s) => { const m = s.match(/Davon (\d+) mit echter Mesh-Durchdringung/); return !!m && +m[1] <= 9 } },
   { name: 'Katalog (erscheint jeder Eintrag)', datei: 'th-katalog.mjs', kern: false,
     wert: (s) => (s.match(/(\d+) Katalog-Eintraege hingestellt/) || [, '?'])[1] + ' Eintraege',
     gut: (s) => /✅ Jeder Eintrag in der Moebelliste erscheint/.test(s) },

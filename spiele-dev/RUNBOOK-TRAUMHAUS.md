@@ -3639,6 +3639,8 @@ Kontrolle hätte ich einen Fehler gemeldet, den es nicht gibt.
 
 **Regel: Ein Bildvergleich ohne Gleichstand-Kontrolle ist keine Messung.**
 
+---
+
 ## 2026-08-29 · 🏆 41 Erfolge an einer ungeschützten Kette — und eine Vermutung, die sich selbst widerlegt hat
 
 Ein Erfolg ist die einzige Belohnung im Spiel, deren **Ausbleiben niemand bemerkt**. Wer
@@ -3697,6 +3699,172 @@ der Schaden heisst nicht „Standbild", sondern „ein toter Erfolg reisst alle 
 Ein Backtick in einem Kommentar **innerhalb** der Sonde — `` `checkAch()` `` als Zitat
 gemeint — brach den Lauf mit „Unexpected identifier 'checkAch'". **Elftes Mal.** In Sonden
 gehören Anführungszeichen, auch in Kommentare.
+
+---
+
+## 2026-08-29 · Punktlichter: zweimal Entwarnung, beide gemessen
+
+Nachnahme zu #2401. Beim Lesen des Lampen-Codes fiel ein Verdacht auf, der genau den
+dort nachgewiesenen Ruckel-Mechanismus getroffen hätte: **three.js baut sein
+Shader-Programm nach der ANZAHL der Lichter je Art.** Schwankt sie, wird jedes Material
+neu übersetzt. Der Deckel in `loop()` setzt
+
+```js
+_kand[i].visible = (i < LAMP_MAX)
+```
+
+auf eine Kandidatenliste, aus der Lichter mit Helligkeit 0 vorher herausfallen — die Zahl
+ist also `min(LAMP_MAX, |kandidaten|)` und *könnte* beim Auf- und Abblenden durchwandern.
+
+### 1. Die Anzahl schwankt nicht
+
+Ganzer Spieltag, stündlich gemessen (`th-lichtzahl.mjs`, neu):
+
+**0 Wechsel der Lichterzahl, konstant 6 sichtbare Punktlichter von 0:00 bis 23:00.**
+Über den ganzen Tag 2 neu übersetzte Programme — nicht an den Dämmerungsgrenzen.
+
+**Die Kommentare im Code stimmen.** Der Verdacht war unbegründet.
+
+### 2. Die sechs Mittagslichter sind Absicht — und kosten nichts messbar
+
+Dabei fiel auf: um 12:00 brennen 6 Punktlichter mit zusammen 8,64 Helligkeit. Erst wie ein
+Fehler ausgesehen; 14 s lang zugesehen, ob es ein Fade-Artefakt der abrupt gestellten Uhr
+ist — **völlig stabil**, also echter Dauerzustand.
+
+Der Ursprung steht in Zeile 13438: `_ti = nacht9 ? _max*7 : _max*1.6`, Kommentar
+*„Innenlichter brennen auch tagsüber schwach (Räume ohne Fenster)"*. Es sind die fünf
+begehbaren Gebäude plus das Pavillon-Licht. Nachgerechnet: 1,76 + 1,44 + 1,44 + 1,28 +
+1,92 + 0,85 = **8,69** gegen 8,64 gemessen. Passt.
+
+Also **Absicht, kein Fehler** — ohne sie wären die fensterlosen Innenräume tagsüber schwarz.
+
+Und die Kosten, abwechselnd A B A B gemessen:
+
+| Blickwinkel | Unterschied | Rauschen | Urteil |
+|---|---|---|---|
+| Innenstadt, direkt bei den Lichtern | −1,8 ms | ±5,0 ms | im Rauschen |
+| Baugrundstück, weit weg | +3,0 ms | ±41,2 ms | im Rauschen (Messung schwach) |
+
+Der zweite Wert taugt wenig — ±41 ms Rauschen misst nichts. Der erste ist belastbar.
+
+⚠️ Damit ist auch die Warnung im `LAMP_MAX`-Kommentar („die teuerste Rechnung des ganzen
+Bildes") für den **heutigen** Stand nicht mehr belegt. Sie stammt aus einer Zeit mit
+15 gleichzeitig brennenden Lichtern; mit dem Deckel bei 6 ist davon nichts mehr messbar.
+Den Deckel trotzdem stehen lassen — er hält genau diesen Zustand.
+
+### Zwei Fallen beim Bauen des Werkzeugs
+
+* **Die Spieluhr heisst `uhrzeit` und zählt MINUTEN**, nicht Stunden. Der erste Anlauf
+  schrieb auf ein `uhr`, das es nicht gibt. Immerhin laut: *„uhr.toFixed is not a
+  function"* — hätte die Sonde nur zugewiesen, wäre sie stumm wirkungslos geblieben und
+  der Test hätte 24-mal dieselbe Stunde gemessen und grün gemeldet.
+* **Keine Backticks in Sonden-Quelltext.** Ein `uhrzeit` in Rückwärtsstrichen im
+  Kommentar beendete das Template-Literal. Die alte Falle, wieder hineingetappt.
+
+---
+
+## 2026-08-29 · Der Dauerbefund war ein Kamin — und der erste Selbsttest zu schwach
+
+`th-pruef` meldete bei jedem Lauf denselben einen Treffer:
+
+```
+• Steckt in einem Bau  1     ? (41, 133)  100 % in  ?
+```
+
+Beide Namen `?`, also nie jemand nachgegangen. Nachgesehen, was dort steht:
+
+| | Box | Grösse |
+|---|---|---|
+| **klein** | 40,2 / 7,0 / 132,7 → 41,0 / 9,3 / 133,5 | 0,8 × 0,8 m, 2,3 m hoch |
+| **gross** | 38,0 / 6,0 / 131,8 → 42,0 / 7,7 / 136,2 | 4,0 × 4,4 m, erstes Mesh **„Giebel"** |
+
+Ein Aufbau auf einem Dach: 0,73 m tief im Dach, 1,6 m darüber. **Richtig gebaut,
+trotzdem jedes Mal rot.**
+
+Die Absicht stand längst im Kommentar des Tests — *„ein Baum, eine Hecke, ein **Dach**
+oder ein Gerüst ist kein GEHÄUSE"*. Nur greift `KEIN_GEHAEUSE` hier nicht: die Gruppe hat
+weder Namen noch `userData.datei`, der Name steckt eine Ebene tiefer im Mesh.
+
+### ⚠️ Nicht über die Mesh-Namen lösen
+
+Der naheliegende Fix — bei namenloser Gruppe auf die Mesh-Namen ausweichen — wäre falsch:
+**fast jedes Haus hat ein Mesh namens „Dach"**. Dann wäre kein Gebäude mehr ein Gehäuse
+und der Test still. Eine Prüfung, die nichts mehr findet, sieht aus wie Erfolg.
+
+Geometrisch statt namentlich: ragt **mehr als die Hälfte der Höhe** des kleinen Objekts
+über die Oberkante des grossen hinaus, sitzt es oben auf. Ein 2 m hohes Bauzaunfeld in
+einer 10 m hohen Wand ragt zu 0 % heraus und bleibt gemeldet.
+
+### ⚠️ Der erste Selbsttest hat die Sabotage überlebt
+
+Fünf Fälle prüfen jetzt bei **jedem Lauf**, dass die Regel noch unterscheidet — und die
+Entscheidung steckt in *einer* Funktion, die Test und Auswertung gemeinsam benutzen, damit
+der Test nicht eine Abschrift prüft.
+
+Gegenprobe: Regel testweise auf „ragt überhaupt heraus" aufgeweicht → **Selbsttest blieb
+grün.** Keiner der ersten vier Fälle ragte ein *wenig* heraus, und genau diese Grenze
+bewacht der Faktor 0,5. Fünfter Fall nachgereicht (3,2 m hoher Pfosten, der 0,2 m aus
+einem 3 m hohen Bau schaut, steckt zu 94 % drin → muss gemeldet bleiben). Damit:
+
+```
+richtige Regel     ✔ 5/5
+sabotierte Regel   ✖ 4/5  ← „Pfosten, der nur knapp herausschaut" erwartet true, war false
+```
+
+**Regel: Eine Ausnahme, die den Test stillstellt statt ihn zu schärfen, fällt nie auf —
+„0 Befunde" sieht aus wie Erfolg. Jede Ausnahme braucht einen Fall, der ohne sie kippt,
+und der Selbsttest muss beweisen, dass er rot werden kann.**
+
+---
+
+## 2026-08-29 · 16 Überschneidungen, 7 davon gibt es gar nicht
+
+`th-pruef` meldet dauerhaft „Überschneidungen 16, grösste 2,5 m" — und `entwirren`
+meldet `ohnePlatz: 5…10`. Beide Zahlen standen ungeprüft da. (`ohnePlatz` zählt
+übrigens **Paar-Versuche pro Runde**, nicht Objekte: dasselbe Paar in zwei Runden
+zählt zweimal. Die Zahl, die zählt, ist `nachher`.)
+
+### ⚠️ Der Gruppen-Kasten lügt bei T- und L-Formen
+
+Die tiefste Überschneidung — **2,5 m zwischen Oberleitungsmast und Löschfahrzeug** —
+sieht auf dem Screenshot aus, als stünde ein Mast im Feuerwehrauto. Ich hatte das beim
+ersten Hinsehen auch so gelesen. Der Kommentar im Spiel sagt seit Langem etwas anderes:
+
+> ⚠️ BEKANNTER REST, bewusst so: der Ausleger ist auf 7,5 m Höhe 11,2 m breit […] der
+> MASTFUSS steht bei beiden frei (>= 0,75 m), das Metall hängt 6 m darüber. Wer das
+> „aufräumt", indem er den Mast verschiebt, macht es kaputt.
+
+`th-echt.mjs` (neu) prüft dieselben Paare eine Ebene tiefer — **Mesh gegen Mesh**. Bei
+einem Mast haben Fuss und Ausleger je einen eigenen Kasten, die T-Form löst sich damit
+auf. Ergebnis: **null** Mesh-Kontakt zwischen Mast und Löschfahrzeug. Der Kommentar hatte
+recht, der Pfosten auf meinem Screenshot war ein anderer.
+
+### Die Triage
+
+| | Kasten | Mesh | Urteil |
+|---|---|---|---|
+| Oberleitungsmast ↔ Löschfahrzeug | 2,5 m | **—** | Kasten-Artefakt |
+| Kaimauer ↔ Hafenkran | 2,4 m | **—** | Kasten-Artefakt |
+| Radlader ↔ Betonmischer | 1,8 m | **—** | Kasten-Artefakt |
+| Pausenhofdach ↔ Fahrradständer (2×) | 1,2 m | **—** | Räder stehen unter dem Dach |
+| Ahorn ↔ Müllcontainer, Ahorn ↔ Stadthaus | 1,1–1,2 m | **—** | Krone hängt darüber |
+| Ahorn ↔ Birke, Birke ↔ Pappel | 1,1–1,2 m | 1,14–1,17 m | Kronen greifen ineinander — so soll es sein |
+| bd_inn ↔ th8_laden_offen | 1,1 m | 1,08 m | Reihenhaus-Paar, gemeinsame Wand |
+| Giebel ↔ Cube004 (2×) | 1,0 m | 1,00 m | Teile desselben Hauses |
+| Eiche ↔ Blütenbusch, Seilbahnstation ↔ Fels, Materialstapel ↔ Rohbau, Birke ↔ Karussell | 1,1–1,7 m | 0,15–0,79 m | gewollt bzw. unter der Sichtbarkeitsschwelle |
+
+**7 von 16 sind reine Kasten-Artefakte — darunter alle drei grössten.**
+
+### Nichts verschoben, und warum
+
+`bd_inn ↔ th8_laden_offen` ist mit 1,08 m über 13 Mesh-Paare die einzige echte
+Durchdringung zwischen zwei *Gebäuden*, und beide sind nicht `fest` — der Entwirrer
+hätte sie also bewegen dürfen. Auf dem Bild ist trotzdem kein Fehler zu sehen: die Stadt
+baut dort ausdrücklich eine „geschlossene Stadtzeile mit gemeinsamer Bauflucht", und eine
+gemeinsame Wand von 1 m ist dort richtig. **Ein Gebäude auf eine Zahl hin zu verschieben,
+die man im Bild nicht wiederfindet, ist genau der Fehler, vor dem der Mast-Kommentar
+warnt.** In `th-alle.mjs` steht die Zahl jetzt als Schwelle (≤ 9) — steigt sie, ist etwas
+Neues dazugekommen.
 
 ## 2026-08-29 · 🎰 Zwölf Modelle hatten nie einen Raum — das erste betretbare Haus
 
