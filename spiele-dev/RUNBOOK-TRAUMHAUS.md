@@ -2981,3 +2981,43 @@ keine Durchdringung.
 
 Die verbleibenden th21-Funde in th-3d: Materialstapel an der Rohbauwand (0,15 m) und
 Mischer am Zaun (0,04 m). Kein th21-Teil auf einer Strasse.
+
+## Zwei Wächter auf demselben Feld — und beide erzeugten den Ruckler, den sie verhindern sollten
+
+`updLampPool` (4×/s) und der `LAMP_MAX`-Deckel in `loop()` (2×/s) schrieben **beide**
+`light.visible`:
+
+* Der Pool wählte die 8 nächsten Strassenlaternen und setzte sie sichtbar, den Rest unsichtbar.
+* Der Deckel sortierte **alle** 15 Punktlichter der Szene nach Entfernung und liess die 6 nächsten sichtbar.
+
+Beide Kommentare warnen ausdrücklich davor, die *Anzahl* schwanken zu lassen — three.js
+übersetzt seine Shader neu, sobald sich die Zahl der Lichter je Art ändert. Genau das
+haben sie einander angetan.
+
+### Gemessen, Nacht erzwungen, 25 s (`spiele-dev/tools/th-licht.mjs`, neu)
+
+| | vorher | nachher |
+|---|---|---|
+| sichtbare Lichter | wandert zwischen **0, 6, 8, 9** | konstant **6** |
+| Proben mit 9 (50 % über dem Deckel) | 16 von 32 | — |
+| Proben mit 0 (Stadt komplett dunkel) | 5 von 32 | — |
+| **Zahlwechsel = Shader-Neuübersetzungen** | **5** | **0** |
+| Bilder in 25 s | 32 | 50 |
+
+Der Deckel hat sein Versprechen also nie gehalten: nachts brannten meist **9** statt 6,
+und fünfmal in 25 Sekunden baute three.js seine Shader neu.
+
+### Die Regel: ein Besitzer je Feld
+
+* Der **Pool** sagt nur noch, **wo** seine Lampen stehen und **wie hell** sie wollen.
+  `intensity = 0` heisst „will nicht leuchten".
+* Der **Deckel** entscheidet allein, **welche** brennen — und nimmt als Kandidaten nur
+  Lichter mit `intensity > 0`. Ein Licht ohne Helligkeit trägt nichts bei und darf
+  keinen der sechs Plätze belegen.
+
+Damit ist die Zahl von selbst stabil: `min(LAMP_MAX, Anzahl leuchtwilliger Lichter)`, und
+tagsüber wie nachts sind das sechs. Die zehn Einzelwechsel, die übrig bleiben, sind
+Lampen, die beim Kameraschwenk die Plätze tauschen — für den Shader kostenlos.
+
+Dieselbe Klasse wie die Uferlinie und der Hausberg: **zwei Stellen schreiben dasselbe,
+ohne voneinander zu wissen.**
