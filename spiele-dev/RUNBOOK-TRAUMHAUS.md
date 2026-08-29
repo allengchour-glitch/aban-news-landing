@@ -4709,3 +4709,44 @@ dieses Hauses; 2,3 m daneben ist Wiese):
 Wieder ein Backtick im Sonden-Kommentar. `th-lint` **hätte ihn gefunden**, aber ich hatte
 `node --check` davor gehängt — das bricht die Kette ab, bevor der Lint läuft.
 **Reihenfolge: erst `th-lint`, dann `node --check`, dann der Lauf.**
+
+## 2026-08-29 · 🔔 Ein Kollider stand 200 m neben seinem Turm — zwei Fehler, eine Zeile
+
+Mit dem korrigierten Messband (#2435) war die Liste zum ersten Mal brauchbar. Vier
+Kandidaten gemessen — *was steht eigentlich in diesem Kasten?* — und drei davon erwiesen
+sich als harmlos (Berghütte, Piratenschiff, Parkeingang stehen jeweils darin, der Kasten
+ist nur etwas grosszügig). Der vierte war eindeutig:
+
+```
+(-68,5|-84)   Kasten 5,2 x 5,2   →   0 Meshes darin, nächstes Gebäude 13 m weg
+```
+
+Die Quelle: `addSolid(-68.5,-84,5.2,5.2,null)` — und **eine Zeile darüber** wird der
+Campanile auf `DOM_X-12.5 | DOM_Z-6.5` gesetzt, also **(133,5|−28,5)**. Der Kollider
+gehört zum Glockenturm und stand 200 m daneben. **Zwei Fehler aus einer Zeile:**
+
+| | gemessen |
+|---|---|
+| bei (−68,5\|−84) | Kasten mit **0 Meshes**; 16 von 20 Punkten blockieren ins Leere — eine unsichtbare Wand auf freiem Feld |
+| am Turm (133,5\|−28,5) | **12 Meshes bis 36,7 m Höhe**, nächster Kollider **12,4 m** entfernt, `inSolid` in der Turmmitte **falsch** — man läuft durch einen 36-m-Glockenturm hindurch |
+
+⚠️ Der alte Kommentar an der Zeile — *„war −70.5 → ragte in die West-Längsstrasse"* —
+zeigt, dass hier schon einmal jemand nachgebessert hat: **verschoben wurde ein Kasten,
+der ohnehin am falschen Ort lag.** Ein Symptom an der falschen Stelle behandelt.
+
+Behoben mit **demselben Ausdruck** wie die Turmplatzierung, nicht mit einer zweiten
+Zahlenreihe — sonst laufen sie beim nächsten Verschieben des Doms wieder auseinander
+(Regel 9). 5,8 statt 5,2, weil der Sockelkranz das breiteste Teil des Schafts ist.
+
+### Verifiziert
+
+* Turm: nächster Kollider jetzt **2 m** statt 12,4 m (von `kolliderNachziehen` auf
+  7,2 × 9,6 nachgezogen) — der Turm ist nicht mehr durchlaufbar.
+* (−68,5\|−84) ist **aus der Fundliste verschwunden**; betroffene Kästen 51 → **50**.
+* `th-alle --schnell` **9 von 9**, 0 JS-Fehler.
+
+> **Was diese Runde über die Liste sagt:** von vier gemessenen Kandidaten war **einer**
+> ein echter Fehler. Die Restzahl (1200 Punkte, 50 Kästen) ist damit weiter keine
+> Fehlerliste — aber sie ist jetzt eine **brauchbare Kandidatenliste**, und jeder
+> Kandidat kostet eine Messung von zwei Minuten. Das ist der Unterschied zu den vier
+> Runden davor, in denen dieselbe Liste noch aus Messfehlern bestand.
