@@ -4632,3 +4632,12 @@ gid://shopify/Product/15448917311873	CHF 22.16	1 Varianten	Leder-Beintasche für
 gid://shopify/Product/15448917442945	CHF 21.18	1 Varianten	Herren Umhängetasche aus Rindsleder
 gid://shopify/Product/15448917541249	CHF 34.35	1 Varianten	Retro-Brusttasche aus Crazy Horse Leder
 gid://shopify/Product/15448917606785	CHF 30.98	1 Varianten	Vintage Umhängetasche für Herren
+gid://shopify/Product/15448917705089	CHF 17.12	1 Varianten	Sportliche Umhängetasche für Herren
+gid://shopify/Product/15448918000001	CHF 31.12	1 Varianten	Brusttasche aus Vollnarbenleder
+gid://shopify/Product/15448918098305	CHF 22.61	1 Varianten	Crossbody Mini-Rucksack aus Leder
+gid://shopify/Product/15448918163841	CHF 17.61	1 Varianten	Taktische Crossbody Bag
+gid://shopify/Product/15448918229377	CHF 21.25	1 Varianten	Vintage Umhängetasche aus Vollnarbenleder
+gid://shopify/Product/15448918360449	CHF 32.30	1 Varianten	Vintage Crazy Horse Leder Umhängetasche
+gid://shopify/Product/15448918458753	CHF 34.15	1 Varianten	Vintage Leder Crossbody Bag für Herren
+gid://shopify/Product/15448918524289	CHF 64.91	1 Varianten	Herren Umhängetasche aus echtem Crazy Horse Leder
+gid://shopify/Product/15448918622593	CHF 45.83	1 Varianten	Ma Pi Brusttasche aus Echtleder
