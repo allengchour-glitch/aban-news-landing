@@ -20,6 +20,55 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🖼️ Der Hero zeigte seit unbekannter Zeit NUR einen Knopf — Überschrift unsichtbar (2026-08-29)
+
+Auftrag «die Webseite premium machen». Statt Geschmack zu behaupten, die Startseite gemessen —
+und der Befund sitzt an der wichtigsten Stelle überhaupt: **Im ausgelieferten HTML fehlten die
+Hero-Überschrift «Premium-Style. Schweizer Shop.» und der Faktenblock komplett.** Der
+`hero__content-wrapper` enthielt genau ein Element: den Knopf.
+
+**Die Ursache:** `hero_jVaWmY` definiert drei Blöcke (`text_YLPk4p`, `text_fakten`,
+`button_H9gpTf`), aber **`block_order` enthielt nur `button_H9gpTf`**. Shopify rendert
+ausschliesslich, was in `block_order` steht — ein Block kann vollständig mit Inhalt dastehen und
+wird trotzdem nie ausgeliefert. Die drei anderen Banner der Seite führen beide Blöcke in der
+Reihenfolge und rendern korrekt; nur der Hero nicht.
+**Dass es ein Versehen war und keine Absicht, belegt das Theme selbst:** Der Hero trägt einen
+dunklen Verlaufs-Overlay (`overlay_color: #0d0d0dbf`, `overlay_style: gradient`). **Einen
+Verlauf legt niemand über ein Bild, auf dem kein Text steht.** Wiederhergestellt in der
+Reihenfolge Überschrift → Fakten → Knopf, live gegengeprüft.
+
+**Die Lehre: Ein Block, der im Theme steht, ist nicht dasselbe wie ein Block, der ankommt.**
+Wer Startseiten-Texte prüft, liest `templates/index.json` — und sieht dort Inhalte, die es beim
+Besucher nie gibt. Sichtbar wurde es nur, weil ich im AUSGELIEFERTEN HTML nach den Wörtern
+gesucht habe, die ich in der Quelle gelesen hatte. **Dieselbe Familie wie «ein Ledger sagt, was
+einmal geschrieben wurde» und «ein Log ist ein Zeugnis über den Code, der LIEF».**
+
+**Und was auf derselben Seite an Falschem stand, alles live gegengeprüft und korrigiert:**
+
+| Stelle | vorher | Wahrheit / jetzt |
+|---|---|---|
+| Hero-Knopf | «Zur **Sommer**-Kollektion» → `/collections/sommer` | Ende August; das Menü ist seit 26.08. auf Herbst → `jacken-outdoor` |
+| Hero-Fakten | «**2'600** Artikel ab Schweizer Lager» | live gezählt **2'409** → 2'400 |
+| Kategorien-Banner | «Über **25'000** Produkte» | in Preisbändern gezählt **≥ 42'072** → «über 40'000» |
+| Vertrauensblock | «über **10'000 handverlesene** Produkte» | **zwei verschiedene Zahlen auf EINEM Bildschirm**; «handverlesen» stimmt bei Massenimport nicht |
+| Vertrauensblock | «30 Tage **Geld-zurück-Garantie**, **12 Monate Service**» | die Überzusage vom 28.08. + eine durch nichts gedeckte Servicezusage |
+| Vertrauensblock | «**geprüfte Qualität**» | geprüft werden **Angaben**, nicht die Ware — das tun die Wächter wirklich |
+| Vertrauensblock | «**unschlagbare** Preise», «**Günstig** kaufen» | unbelegbarer Superlativ, und «günstig» widerspricht «Premium-Style» im Hero derselben Seite |
+| Vertrauensblock | «ab CH-Lager **oft schon am nächsten Tag**» | Hausformel ist **1–2 Werktage** |
+| Vertrauensblock | «Ventilatoren für **hei**ß**e Sommertage**» | Ende August — und das **einzige ß der ganzen Seite**; die Schweiz schreibt ss |
+| POD-Banner | «Personalisiere dein **Trikot**» | das Trikot ist DRAFT (heute weitergeleitet) → T-Shirts, Hoodies, Tassen |
+
+- ⚠️ **Der Trockenlauf der Produktreihen war der ruhigste Teil:** 116 Karten über 12 Reihen,
+  **0 ohne Bild**, 1 zu kleines Bild, 1 Code im Titel. Die Produktdaten sind gut — kaputt war
+  die *Verpackung*, nicht die Ware. Ohne die Messung hätte ich am Falschen gearbeitet.
+- ⚠️ **Sechs HTTP-500 hintereinander nach dem Schreiben** liessen mich glauben, ich hätte die
+  Seite zerlegt. Andere Seiten antworteten durchgehend mit 200, danach die Startseite auch —
+  es war der kalte Edge-Cache (Lehre 26.08., diesmal sechs statt zwei Versuche). **Vor dem
+  Zurückrollen erst eine ANDERE Seite desselben Shops abfragen.**
+- ⚠️ Drei meiner Gegenproben schlugen fehl, weil ich nach `Übergangszeit` und `Premium-Style`
+  suchte, im HTML aber `&Uuml;bergangszeit` steht bzw. der Text über Tags verteilt ist.
+  **Ein Suchwort muss in der Schreibweise des Ziels stehen, nicht in meiner.**
+
 ## 🧭 69 tote Landeseiten aufgefangen — 511 Sitzungen liefen ins Nichts (2026-08-29)
 
 `TOTE-LANDESEITEN.md` führte **69 Seiten mit Besuchern, die nicht mehr kaufbar sind und keine
