@@ -4398,13 +4398,16 @@ setTimeout(function baueTiere(){
   for(var la=0;la<4;la++){var dog=la%2===0;var m=mkVierbeiner(dog,la);m.userData.nieAusblenden=true;scene.add(m);
     window._tiere.land.push({mesh:m,x:(la%2?1:-1)*(28+la*9),z:(la<2?1:-1)*(20+la*7),head:Math.random()*6.283,sp:dog?1.5:1.05,turnT:1+la,walkT:la});}
   // Echte Kenney-Cube-Pets (CC0, an_*.glb) ersetzen die Würfeltiere + Hasen/Rehe am Stadtrand
-  function ladeTier(file,zielH,cb){if(!GL){cb(null);return;}
-    GL.load("/models/"+file,function(g){var root=g.scene;
+  function ladeTier(file,zielH,cb){if(!GL||!window._glbHol){cb(null);return;}
+    /* Dasselbe Modell steht bis zu einem Dutzend Mal in der Welt (Hasen, Rehe, das
+       ganze Zoo-Gehege) — ueber den Parse-Cache statt je einmal frisch. */
+    window._glbHol(file,function(root){
+      if(!root){cb(null);return;}
       var bb=new THREE.Box3().setFromObject(root),sz=new THREE.Vector3();bb.getSize(sz);
       root.scale.setScalar(zielH/(sz.y||1));
       var b2=new THREE.Box3().setFromObject(root);root.position.y=-b2.min.y;
       root.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
-      var w=new THREE.Group();w.userData.nieAusblenden=true;w._bewegt=true;w.add(root);cb(w);},undefined,function(){cb(null);});} /* 🩹 Schwarm-4: Tiere wandern — nie LOD/einfrieren */
+      var w=new THREE.Group();w.userData.nieAusblenden=true;w._bewegt=true;w.add(root);cb(w);});} /* 🩹 Schwarm-4: Tiere wandern — nie LOD/einfrieren */
   window._ladeTier=ladeTier;   /* auch spaetere Laeufe brauchen ihn (Zoo-Gehege) */
   window._tiere.land.forEach(function(rec,i){var dog=i%2===0;
     ladeTier(dog?"an_dog.glb":"an_cat.glb",dog?0.72:0.5,function(w){if(!w)return;
@@ -4460,10 +4463,12 @@ setTimeout(function baueGebaeude(){
       if(window._spaetEinfrieren)setTimeout(window._spaetEinfrieren,4000);
     },2500);
   }
+
   function bau(file,zielH,x,y,z,rotY,center,cb,ohneSchutz){
     if(!ohneSchutz){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];}
     window._ladeOffen=(window._ladeOffen||0)+1;
-    GL.load("/models/"+file,function(g){var root=g.scene;
+    window._glbHol(file,function(root){
+    if(!root){_ladeFertigEins();return;}
     var bb=new THREE.Box3().setFromObject(root),sz=new THREE.Vector3();bb.getSize(sz);
     root.scale.setScalar(zielH/(sz.y||1));
     var b2=new THREE.Box3().setFromObject(root);
@@ -4472,7 +4477,7 @@ setTimeout(function baueGebaeude(){
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
     w.userData.datei=file;   /* fuer Zaehlungen/Debug: welches Modell steckt in dieser Gruppe */
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);
-    _ladeFertigEins();},undefined,function(){_ladeFertigEins();});}
+    _ladeFertigEins();});}
 
   /* 🧱 VIELE GLEICHE KOPIEN: EINMAL LADEN, ALS INSTANZEN SETZEN.
      Gemessen ueber alle `_gebaeude`: die teuersten Posten sind nicht die grossen
@@ -6046,13 +6051,16 @@ setTimeout(function baueGebaeude(){
          * Balkon/Erker haben Unterkante < 0 (Absicht, Kragsteine) — Anker oben. */
     (function baukastenZeile(){
       function modul(file,x,y,z,rot){
-        GL.load("/models/"+file,function(g){var r=g.scene;
+        /* Ueber den Parse-Cache: der Baukasten setzt DIESELBEN paar Moduldateien
+           dutzendfach — th7_reihenhaus_modul allein 840 Meshes in der Szene. */
+        window._glbHol(file,function(r){
+          if(!r)return;
           r.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;
             if(n.material)n.material.envMapIntensity=0.3;}});
           var w=new THREE.Group();w.add(r);
           w.position.set(x,y,z);w.rotation.y=rot||0;scene.add(w);
           w.userData.fest=1;                       /* Raster-Teile nie vom Entwirrer verschieben */
-          (window._gebaeude=window._gebaeude||[]).push(w);},undefined,function(){});}
+          (window._gebaeude=window._gebaeude||[]).push(w);});}
       /* ⚠️ Die Platzsuche prüft Gebäude-Kästen und Strassen, aber KEIN Wasser — der
          erste Wurf stellte das Beispielhaus mitten in den Seepark-See (Seemitte
          10,139, Screenshot). Die Zeile weicht deshalb nach Westen aus; Radius 40 m
@@ -8937,6 +8945,35 @@ function tor(seite){
 }
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
+/* 🧠 EIN GLB WIRD EINMAL GEPARST — vorher bei JEDEM Aufruf neu.
+   GLTFLoader hat keinen Cache. `GL.load("/models/th33_parklaterne.glb", …)` liest
+   die Datei zwar aus dem Browser-Cache, PARST sie aber jedes Mal komplett neu und
+   legt dabei neue Geometrien, neue Materialien und neue Texturen an. Bei 27
+   Parklaternen sind das 27 Saetze statt einem.
+   GEMESSEN (th-tempo/th-masse): 9300 verschiedene Materialien in der Szene, davon
+   108 allein fuer th33_parklaterne, 84 fuer th7_reihenhaus_modul, 72 fuer
+   th33_blumenrabatte — bei 236 bau()-Aufrufen auf rund 90 verschiedene Dateien.
+   Jedes Material kostet pro Bild eigene Uniform-Uebertragungen und beim ersten
+   Auftauchen die Suche nach einem Shader-Programm; genau daraus entstehen die
+   Ruckler beim Umsehen.
+   `clone(true)` kopiert den Objektbaum, TEILT aber Geometrie und Material — das ist
+   hier richtig, denn niemand faerbt ein geladenes Modell nachtraeglich ein (die
+   einzige Stelle, die es tut — die Alleebaeume — klont ihr Material vorher selbst,
+   und die Bau-Vorschau `ghost` ist immer eine frische Box).
+   ⚠️ NICHT fuer die Bewohner (Zeile ~10200): die haben `g.animations`, und
+   `clone(true)` bricht die Bindung an einen SkinnedMesh. */
+window._glbHol=function(datei,cb){
+  var C=window._glbCache=window._glbCache||{}, e=C[datei];
+  if(e&&e.szene){cb(e.szene.clone(true));return;}
+  if(e){e.warte.push(cb);return;}          /* laedt schon — anstellen */
+  C[datei]=e={szene:null,warte:[cb]};
+  GL.load("/models/"+datei,function(g){
+    e.szene=g.scene; var w=e.warte; e.warte=[];
+    for(var i=0;i<w.length;i++)w[i](e.szene.clone(true));
+  },undefined,function(){
+    var w=e.warte; delete C[datei];
+    for(var i=0;i<w.length;i++)w[i](null);});
+};
 var MODELS={};
 function loadTH(id,cb){if(MODELS[id]){cb(MODELS[id]);return;}
   if(!GL){cb(null);return;}

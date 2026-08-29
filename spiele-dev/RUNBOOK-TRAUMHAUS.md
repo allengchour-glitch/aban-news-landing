@@ -2526,3 +2526,59 @@ Doppelmarkierung **längs derselben** Strasse fällt durch beide Netze.
 
 Nachher: vier Zeilen (±57,70 und ±58,30) mit je 3 Segmenten — beide Strassen gleich.
 `th-belag` 0 Treffer, `th-netz` 39 ok.
+
+## GLTFLoader hat keinen Cache — 236 Aufrufe, 236 Parses
+
+`bau()` rief für **jedes** Gebäude `GL.load("/models/…" , …)` auf. Der Browser
+liefert die Datei aus seinem HTTP-Cache, aber **GLTFLoader parst sie jedes Mal neu**
+und legt dabei neue Geometrien, neue Materialien und neue Texturen an. 27
+Parklaternen sind 27 komplette Sätze statt einem.
+
+Gemessen mit `spiele-dev/tools/th-masse.mjs` (neu) — Meshes und *verschiedene*
+Materialien je Datei:
+
+| Modell | Meshes | Materialien vorher | nachher |
+|---|---|---|---|
+| th33_parklaterne | 612 | **108** | **9** |
+| th7_reihenhaus_modul | 840 | **84** | **7** |
+| th33_blumenrabatte | 792 | **72** | **9** |
+| th26_seilbahn_stuetze | 552 | **44** | **11** |
+| th35_pflanzschale | 756 | **30** | **5** |
+| th7_hochhaus_modul | 736 | **16** | **4** |
+| th19_kletterhalle (steht einmal) | 840 | 21 | 21 |
+
+Der Quotient ist der Test: ein Modell, das zehnmal in der Welt steht, darf nicht
+zehnmal so viele Materialien haben wie eines, das einmal dasteht.
+
+### Die Lösung
+
+`window._glbHol(datei, cb)` — parst einmal, gibt jedem Aufrufer ein `clone(true)`.
+`clone(true)` kopiert den Objektbaum, **teilt** aber Geometrie und Material. Das ist
+hier richtig: niemand färbt ein geladenes Modell nachträglich ein. Die einzige
+Stelle, die es tut (die Alleebäume), klont ihr Material vorher selbst, und die
+Bau-Vorschau `ghost` ist immer eine frische Box.
+
+Gleichzeitige Anfragen für dieselbe Datei stellen sich in `e.warte` an, statt einen
+zweiten Parse zu starten.
+
+**⚠️ Nicht für die Bewohner** (`GL.load` bei ~10200): die haben `g.animations`, und
+`clone(true)` bricht die Bindung an einen `SkinnedMesh`.
+
+### Gemessen
+
+| | vorher | nachher |
+|---|---|---|
+| verschiedene Materialien | **9 300** | **7 258** |
+| Geometrien (Rechner) | **16 498** | **12 768** |
+| Geometrien (Handy) | 4 698 | 4 507 |
+| Objekte / Meshes / Dreiecke | unverändert | unverändert |
+| th-3d | 56 echt / 67 nur 2D | 56 echt / 67 nur 2D |
+| th-netz | 39 ok | 39 ok |
+
+**Die Bildrate hier ändert sich nicht** (Rechner 621 → 617 ms, Handy 417 → 417) —
+und das ist zu erwarten: in diesem Container rendert SwiftShader in Software, 85 %
+der Bildzeit sind der Rasterizer. Was der Cache spart, ist **Speicher und
+Ruckler**: 3 730 Geometrien und 2 042 Materialien weniger heisst entsprechend
+weniger Puffer-Uploads und Shader-Programmsuchen — genau das, was auf einem echten
+Telefon beim ersten Blick in einen neuen Stadtteil hakt. Ein Bildratengewinn wird
+hier **nicht** behauptet; er wäre mit diesem Messgerät gar nicht nachweisbar.
