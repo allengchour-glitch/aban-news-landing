@@ -4511,8 +4511,18 @@ setTimeout(function baueGebaeude(){
      ⚠️ Instanzen stehen NICHT in `_gebaeude`, sind fuer th-pruef also unsichtbar.
      Nur fuer Dinge benutzen, deren Lage aus der Geometrie folgt (Zaunlinien,
      Alleen) — nicht fuer frei platzierte Einzelstuecke. */
+  /* ⚠️ JEDER AUFRUF IST EIN EIGENER SATZ, auch bei gleicher Datei. Der Parkzaun
+     steht als mehrere getrennte Linien in der Welt, der Weidezaun ebenso — jede
+     Linie hat ihre eigene Stellenliste und damit ihre eigenen InstancedMeshes.
+     Ohne diese Nummer kann ein Werkzeug die Teilmeshes eines Modells nicht wieder
+     zu einem Objekt zusammensetzen: Index 3 der einen Linie und Index 3 der
+     anderen sind voellig verschiedene Orte. Genau daran ist der erste Versuch
+     gescheitert, th-3d die Instanzen beizubringen — es meldete Zaunmodule mit
+     213 m Grundriss, weil es zwei Zaunlinien zu einem Objekt verschmolz. */
+  var _vieleSatz=0;
   function bauViele(file,zielH,stellen){
     if(!stellen||!stellen.length)return;
+    var _satz=++_vieleSatz;
     bau(file,zielH,stellen[0][0],0,stellen[0][1],stellen[0][2]||0,false,function(w){
       w.updateMatrixWorld(true);
       var inv=new THREE.Matrix4().copy(w.matrixWorld).invert(),teile=[];
@@ -4533,7 +4543,7 @@ setTimeout(function baueGebaeude(){
           M.multiplyMatrices(T,R);M.multiply(t.l);im.setMatrixAt(i,M);}
         im.instanceMatrix.needsUpdate=true;
         im.castShadow=true;im.receiveShadow=true;
-        im.userData.nieAusblenden=true;im.userData.datei=file;
+        im.userData.nieAusblenden=true;im.userData.datei=file;im.userData.satz=_satz;
         scene.add(im);
         /* ⚠️ IMMER GEZEICHNET WAERE EIN RUECKSCHRITT. Gemessen: die Einzelmodule
            wurden vorher ab 78 m ausgeblendet; als InstancedMesh mit
