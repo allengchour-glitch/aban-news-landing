@@ -12954,3 +12954,42 @@ gid://shopify/Product/15511985881473	40->1	Digitaler Messbecher mit LCD-Anzeige
 gid://shopify/Product/15511987061121	29->0	Sushi DIY Set für zuhause
 gid://shopify/Product/15512277451137	60->0	Mini-Entsafter für frische Drinks
 gid://shopify/Product/15512277811585	25->1	Schwerkraft-Fussmanschetten für Hangübungen
+gid://shopify/Product/15512303075713	31->2	Hai Plüschkissen
+gid://shopify/Product/15512304845185	54->0	Baumwoll-Kissenbezug im koreanischen Stil
+gid://shopify/Product/15512308646273	8->0	Oxford Stoff Umhängetasche
+gid://shopify/Product/15512309203329	17->0	Outdoor Rucksack mit Regenhülle, 20L
+gid://shopify/Product/15512309268865	12->0	Fahrrad-Hundeleine mit Haltegriff
+gid://shopify/Product/15512310514049	25->0	Reflektierende Multifunktionsleine für Haustiere
+gid://shopify/Product/15512310776193	13->3	Hundegeschirr mit Leine, braun
+gid://shopify/Product/15512311726465	9->0	Trägerloses Chiffon-Kleid mit Raffungen
+gid://shopify/Product/15512311988609	35->1	Wickelkleid mit Schnürgürtel
+gid://shopify/Product/15512312316289	100->0	Paillettenkleid mit V-Ausschnitt
+gid://shopify/Product/15512313266561	19->0	Langes Freizeitkleid mit Schnürung und Blumenmuster
+gid://shopify/Product/15512313725313	49->0	Elegantes Satin-Abendkleid mit Mesh-Einsätzen
+gid://shopify/Product/15512314446209	72->1	Doppelseitiges Kunstleder für diverse Projekte
+gid://shopify/Product/15512314806657	8->0	Weiches PVC-Leder für vielseitige Anwendungen
+gid://shopify/Product/15512314937729	10->0	Samtkleid mit Spitze und hoher Taille
+gid://shopify/Product/15512316248449	15->0	Gestepptes Sofa-Kissen aus Baumwolle
+gid://shopify/Product/15512317231489	8->2	Retro Deko-Kunstset für Eingang und Schlafzimmer
+gid://shopify/Product/15512317952385	26->0	Polo-Shirt aus Baumwolle für den Sommer
+gid://shopify/Product/15512318017921	57->0	Ärmelloses V-Neck T-Shirt mit Knopf-Tasche
+gid://shopify/Product/15512318509441	32->0	Elegantes Satinhemd im Western-Stil
+gid://shopify/Product/15512320082305	74->0	Grosser, erweiterbarer Kompressionsrucksack für Herren
+gid://shopify/Product/15512320311681	27->0	Retro Canvas Rucksack für Herren (Klein)
+gid://shopify/Product/15512341971329	17->0	Smartwatch mit Atemtraining & Musikwiedergabe
+gid://shopify/Product/15512342692225	14->0	Smart Space Dial Herzfrequenz- & Blutdruck-Armband
+gid://shopify/Product/15512345313665	24->1	Bestickter Rucksack mit Leine für Haustiere
+gid://shopify/Product/15512347410817	37->2	Wasserdichte Smartwatch mit 24 Sportmodi
+gid://shopify/Product/15512351572353	8->0	Gestreiftes Hunde-Geschirr mit Schleife
+gid://shopify/Product/15512354423169	52->0	Ärmelloses Tanktop-Kleid
+gid://shopify/Product/15512365302145	11->0	Zweiteiliges Tennis-Fitnesskleid für Damen
+gid://shopify/Product/15512368710017	24->0	Plissiertes A-Linien Kleid mit Puffärmeln
+gid://shopify/Product/15512409014657	30->2	Reflektierende Hunde-Leine mit Puffer
+gid://shopify/Product/15512409604481	37->0	Hundeleine aus Edelstahl, 32mm
+gid://shopify/Product/15512410784129	36->0	Hundegeschirr-Set mit Leine
+gid://shopify/Product/15512412684673	11->0	Hundegeschirr mit Leine, bedruckt
+gid://shopify/Product/15512413176193	158->0	Hunde-Brustgeschirr mit Trainingsleine
+gid://shopify/Product/15512414355841	30->1	Smart-Armband mit Touchscreen und Herzfrequenzmessung
+gid://shopify/Product/15512415109505	8->0	Elegantes ärmelloses A-Linien-Kleid für Damen
+gid://shopify/Product/15512491000193	82->2	Bedrucktes Langarm-Kleid in grossen Grössen
+gid://shopify/Product/15512491196801	13->2	Casual Damen-Midi-Kleid mit Rundhals
