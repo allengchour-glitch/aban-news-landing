@@ -4881,3 +4881,62 @@ gid://shopify/Product/15448937890177	CHF 54.93	1 Varianten	Katzenbaum mit Kratzs
 gid://shopify/Product/15448937955713	CHF 194.61	1 Varianten	Massivholz-Katzenbaum mit Rattan-Bett
 gid://shopify/Product/15448938021249	CHF 116.25	1 Varianten	Kompakter Kratzbaum mit Kuschelnest
 gid://shopify/Product/15448938054017	CHF 336.34	1 Varianten	Holz-Katzenbaum «Weltraumkapsel»
+gid://shopify/Product/15448938086785	CHF 231.62	1 Varianten	Massivholz Katzenbaum für kleine Wohnungen
+gid://shopify/Product/15448938185089	CHF 132.96	1 Varianten	Kratzbaum & Katzenbett «Versteckspiel»
+gid://shopify/Product/15448938250625	CHF 43.03	1 Varianten	Doppelstöckige Katzenvilla mit Kratzbaum
+gid://shopify/Product/15448938283393	CHF 234.23	1 Varianten	Grosser Katzenbaum mit Klettergerüst und Katzenhau
+gid://shopify/Product/15448938348929	CHF 56.72	1 Varianten	Katzen-Klettergerüst mit Liegemulde
+gid://shopify/Product/15448938447233	CHF 240.85	1 Varianten	Katzenhaus Baumhaus für kleine und ältere Katzen
+gid://shopify/Product/15448938480001	CHF 129.94	1 Varianten	Sisal-Katzenbaum mit mehreren Ebenen
+gid://shopify/Product/15448938545537	CHF 403.13	1 Varianten	Ganzjahres-Katzenbaum mit integriertem Bett
+gid://shopify/Product/15448938578305	CHF 164.37	3 Varianten	Katzenbaum mit integriertem Bett
+gid://shopify/Product/15448938676609	CHF 229.63	1 Varianten	Kratzbaum mit robusten Liegeflächen
+gid://shopify/Product/15448938709377	CHF 24.13	1 Varianten	Katzenbaum mit Liegeflächen und Höhle
+gid://shopify/Product/15448938774913	CHF 161.19	1 Varianten	Katzenbaum mit Haus und Sprungplattform
+gid://shopify/Product/15448938840449	CHF 360.16	1 Varianten	Holz-Katzenbaum mit integriertem Katzenbett
+gid://shopify/Product/15448938873217	CHF 115.52	1 Varianten	Katzenbett "Camp Cot" – Herausnehmbar & Waschbar
+gid://shopify/Product/15448938971521	CHF 101.17	1 Varianten	Wandmontierter Katzenbaum aus Massivholz
+gid://shopify/Product/15448939004289	CHF 227.55	1 Varianten	Kompakter Katzenbaum mit Kratzpilz
+gid://shopify/Product/15448939168129	CHF 36.41	1 Varianten	Kratzbrett und Katzenhöhle – TV-Design
+gid://shopify/Product/15448939200897	CHF 241.81	1 Varianten	Stilvoller All-in-One Kratzbaum für Katzen
+gid://shopify/Product/15448939266433	CHF 250.41	1 Varianten	Mehrstufiger minimalistischer Katzenbaum
+gid://shopify/Product/15448939299201	CHF 280.32	1 Varianten	Katzenbaum mit Kratzbaum und Hängematte
+gid://shopify/Product/15448939331969	CHF 34.12	1 Varianten	Faltbares Katzenbett für den Schreibtisch
+gid://shopify/Product/15448939364737	CHF 167.93	1 Varianten	Deckenhoher Katzenbaum mit Wolken-Liegeflächen
+gid://shopify/Product/15448939626881	CHF 186.45	1 Varianten	Katzentreppe mit Sisal-Kratzbaum
+gid://shopify/Product/15448939659649	CHF 174.42	1 Varianten	Kratzbaum-Treppe für Katzen, 4 Stufen, Grau
+gid://shopify/Product/15448939692417	CHF 23.63	1 Varianten	Warme Katzen-Tragetasche für unterwegs
+gid://shopify/Product/15448939757953	CHF 284.94	1 Varianten	Vertikaler Katzenbaum mit integriertem Bett
+gid://shopify/Product/15448939823489	CHF 347.59	1 Varianten	Doppelstöckiger Katzenbaum aus Massivholz
+gid://shopify/Product/15448940085633	CHF 71.78	1 Varianten	Kokosnussbaum Kratz- und Kletterturm
+gid://shopify/Product/15448940118401	CHF 82.34	1 Varianten	Edelstahl-Katzentoilette, Geruchs- & Spritzschutz
+gid://shopify/Product/15448940249473	CHF 32.59	1 Varianten	Snackbox Katzenbett – Ganzjährig & Multifunktional
+gid://shopify/Product/15448940380545	CHF 57.67	1 Varianten	Wand-Katzenbaum – platzsparendes Kletterparadies
+gid://shopify/Product/15448940478849	CHF 40.78	1 Varianten	Haustierbett zur Selbstabholung
+gid://shopify/Product/15448940577153	CHF 73.23	1 Varianten	Doppelstöckiges Katzenhaus mit Kratzbrett
+gid://shopify/Product/15448940642689	CHF 61.02	1 Varianten	Doppelstöckiges Katzenhaus mit Kratzbaum
+gid://shopify/Product/15448940708225	CHF 77.63	1 Varianten	3-Stöckiger Wäscheständer mit 24 Clips und 32 Stan
+gid://shopify/Product/15448940773761	CHF 108.02	1 Varianten	360° drehbares Katzenbett für den Schreibtisch
+gid://shopify/Product/15448940839297	CHF 40.80	1 Varianten	Ganzjahres-Hundebett für mittlere bis grosse Rasse
+gid://shopify/Product/15448940872065	CHF 39.69	1 Varianten	Gestreiftes Katzensofa – Plüsch & Rutschfest
+gid://shopify/Product/15448940904833	CHF 35.34	1 Varianten	Hundebett «Cool-air» – Regenbogen oder Baumwolle
+gid://shopify/Product/15448940970369	CHF 18.65	1 Varianten	Glückskatzenbett – Atmungsaktiv und Warm
+gid://shopify/Product/15448941035905	CHF 58.28	1 Varianten	L-förmiges Sisal-Katzenkratzbrett
+gid://shopify/Product/15448941134209	CHF 33.16	12 Varianten	Boho Hängematte für Katzen
+gid://shopify/Product/15448941199745	CHF 32.37	2 Varianten	Ganzjahres-Haustierbett aus Holz, abnehmbar & wasc
+gid://shopify/Product/15448941232513	CHF 134.98	2 Varianten	Sisal Kratzbaum und Bett Kombi
+gid://shopify/Product/15448941298049	CHF 27.80	1 Varianten	Kitty Curls Kratzbrett mit Ball
+gid://shopify/Product/15448941330817	CHF 39.84	1 Varianten	Erhöhtes, atmungsaktives Haustierbett
+gid://shopify/Product/15448941396353	CHF 28.59	1 Varianten	Katzen-Heizungsliege mit Kunstfell
+gid://shopify/Product/15448941461889	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448941494657	CHF 109.28	1 Varianten	XL Erhöhtes Hundebett, Rot
+gid://shopify/Product/15448941560193	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448941592961	CHF 75.64	1 Varianten	Hundebett «Cooling Cot» mit Netzgewebe – Blau
+gid://shopify/Product/15448941658497	CHF 135.34	1 Varianten	Erhöhtes Hundebett für grosse Hunde, Grau
+gid://shopify/Product/15448941691265	CHF 93.99	1 Varianten	Erhöhtes Hundebett mit Blachen-Dach
+gid://shopify/Product/15448941789569	CHF 38.87	1 Varianten	Hunde- und Katzenbett, abnehmbar & waschbar
+gid://shopify/Product/15448941855105	CHF 100.03	1 Varianten	Hundebett mit Blachen-Sonnendach
+gid://shopify/Product/15448941920641	CHF 40.06	1 Varianten	Haustierbett «All Seasons»
+gid://shopify/Product/15448941986177	CHF 88.92	1 Varianten	Haustier-Sofabett mit Wärmefunktion
+gid://shopify/Product/15448942117249	CHF 100.06	1 Varianten	Erhöhtes Hundebett mit Sonnendach
+gid://shopify/Product/15448942248321	CHF 115.20	1 Varianten	Hundebett mit Sonnendach, erhöht, 122x91cm, Rot
