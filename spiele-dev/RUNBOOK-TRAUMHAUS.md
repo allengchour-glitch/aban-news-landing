@@ -2487,3 +2487,42 @@ und endet auf 112,55, weiterhin über der Gleismitte).
 Die verbleibenden 2 sind zwei Dachträger von `th17_bahnsteigdach`, die 0,14 m über
 die Kante ragen — ein Vordach über der Bahnsteigkante ist bei echten Bahnhöfen so
 gewollt; sie stehen 0,55 m hoch und berühren nichts.
+
+## Sperrlinie UND Leitlinie auf derselben Strasse
+
+Auf einer echten Strasse gibt es entweder eine **Sperrlinie** (doppelt, durchgezogen)
+oder eine **Leitlinie** (gestrichelt) — nie beides an derselben Stelle. Die
+Nordstrasse hatte beides:
+
+| z | | |
+|---|---|---|
+| 57,70 | 3 durchgezogene Segmente | Sperrlinie |
+| **58,00** | **16 Striche à 3 m** | Leitlinie |
+| 58,30 | 3 durchgezogene Segmente | Sperrlinie |
+
+Die Striche lagen also genau zwischen den beiden durchgezogenen Linien.
+
+Derselbe Fehler war für die Südstrasse **schon einmal behoben** worden — der
+Kommentar dort nennt sie aber irrtümlich „Nordstrasse":
+
+```js
+/* ⚠️ Hier lag eine gestrichelte Mittellinie auf z=-58 — genau unter der
+   doppelten Sperrlinie der Nordstrasse (SZd=58). … Der Strich entfaellt. */
+```
+
+Ein falsch benanntes Ziel im Kommentar ist genug, damit die zweite Hälfte
+stehenbleibt. Gemessen: Süd 2 durchgezogene / **0** Striche, Nord 2 durchgezogene /
+**16** Striche.
+
+Nebenbei baute die Schleife je Strich ein **eigenes Material** — 16 Stück für 16
+identische Quadrate, alle in `_markMats`.
+
+### Warum kein Werkzeug es sah
+
+`th-strassen` filtert flache Markierungen über `MINH` weg (sonst meldete es jede
+Haltelinie als Hindernis), `th-belag` nur lange Bänder **quer** zur Strasse. Eine
+Doppelmarkierung **längs derselben** Strasse fällt durch beide Netze.
+`spiele-dev/tools/th-linien.mjs` (neu) schliesst die Lücke.
+
+Nachher: vier Zeilen (±57,70 und ±58,30) mit je 3 Segmenten — beide Strassen gleich.
+`th-belag` 0 Treffer, `th-netz` 39 ok.
