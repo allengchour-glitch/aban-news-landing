@@ -7222,22 +7222,30 @@ setTimeout(function baueGebaeude(){
       var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,6),pfM.clone());
       wg.rotation.x=-Math.PI/2;wg.position.set(-26,-0.011,63.5);wg.receiveShadow=true;scene.add(wg);
       /* Baeume + Baenke saeumen den Platz */
-      /* ⚠️ OFFENER BEFUND, BEWUSST NICHT HIER GEFLICKT (th-baeume.mjs, 2026-08-29):
-         Der Ahorn dieser Reihe landet nicht reproduzierbar. Ueber drei Laeufe auf der
-         eingeschwungenen Welt stand er mal auf (-12|102), mal auf (-10,4|107,6) —
-         auf (-12|102) ragt seine Krone in den Bahnhofs-Kollider und schneidet das
-         Bahnsteigdach (th-echt: 0,6 x 0,4 m). Der Entwirrer entscheidet fuer ihn je
-         nach Ladezeitpunkt anders; auf einem schnellen Geraet faellt es anders aus als
-         hier. ZWEI WEGE PROBIERT UND BEIDE VERWORFEN:
-           * `userData.fest` friert ihn auf dem Wunschort ein — dann steht der
-             Nachbar auf (-50|102) reproduzierbar 4,45 m TIEF in einem Kollider.
-             Reproduzierbar falsch ist nicht besser als zufaellig falsch.
-           * die Ecke auf (-41|102) ruecken — immer noch 3,45 m tief, also war meine
-             Annahme darueber, WELCHER Kollider dort liegt, schlicht falsch.
-         Der naechste Anlauf muss zuerst den Kollider an dieser Stelle messen, statt
-         ihn aus einer Fundliste zu erraten. Bis dahin bleibt es, wie es war. */
-      [[-16,70],[-16,102],[-50,70],[-50,102]].forEach(function(P8,i8){
-        bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false);});
+      /* ⚠️ VIER AHORNE, ZWEIMAL NACHGEMESSEN — der erste Anlauf hatte GERATEN.
+         Befund: der Ahorn auf (-16|102) landete nicht reproduzierbar. Ueber drei
+         Laeufe auf der eingeschwungenen Welt stand er mal dort, mal auf (-12|102),
+         mal auf (-10,4|107,6); auf (-12|102) ragt seine Krone 1 m in den
+         Bahnhofs-Kollider und schneidet das Bahnsteigdach (th-echt 0,6 x 0,4 m).
+         Der Entwirrer entscheidet je nach Ladezeitpunkt anders — auf einem schnellen
+         Geraet faellt es anders aus als im Test.
+
+         GEMESSEN (alle Kollider im Umkreis von 18 m, eingeschwungene Welt):
+           (-16|102)  FREI — 1,5 m zur Schule (-26|95, 17x25), 3 m zum Bahnhof
+                      (0|102, 26x11). Der Wunschort ist also richtig; nur der
+                      Entwirrer schiebt ihn hinein. -> `fest` schuetzt ihn.
+           (-50|102)  5 m TIEF in der Schule (-56|100, 22x14) und 2,1 m in einem
+                      zweiten Kasten. Der Wunschort selbst ist falsch; `fest` allein
+                      haette den Fehler nur eingefroren.
+                      Entlang z = 102 gibt es zwischen x -67 und -17,5 KEINE Luecke:
+                      Schule -67…-45, Baustelle -47,5…-34,5, Altstadt-Block
+                      -34,5…-17,5. Die Nordwest-Ecke des Platzes existiert nicht.
+           (-52|88)   FREI, 2,6 m zum naechsten Kasten, liegt noch auf dem Platz
+                      (Belag x -55…3, z 65…107). Dorthin wandert die vierte Ecke.
+         ⚠️ Zuvor auf (-41|102) probiert: 4 m TIEF im Baustellen-Kollider
+         (-41|101, 13x10) — die Annahme, dort sei frei, war schlicht falsch. */
+      [[-16,70],[-16,102],[-50,70],[-52,88]].forEach(function(P8,i8){
+        bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false,function(w8){w8.userData.fest=1;});});
       bau("th5_parkbank.glb",0.9,-33,0,72,0,false);
     /* ⚠️ -31,5 statt -33: seit die Baustelle ihr Fassadengeruest an der
        OSTwand des Rohbaus hat (x -34,8), reicht es bis -33,1 in die
