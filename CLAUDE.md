@@ -919,6 +919,15 @@ alte Regel **einen älteren Aufseher, den es nicht gibt**; mit der neuen ist es 
   («übernimmt») statt eines Ergebnisses. Wer sie liest, sucht nach einem Ausfall, den es nicht
   gibt — und übersieht beim 56. Mal den echten. **Eine Meldung, die sich täglich dutzendfach
   wiederholt, ist entweder ein Befund oder ein Fehler in der Meldung.**
+- ⚠️ **Und beim Nachprüfen bin ich zweimal in Lehre 1 gelaufen, an einem Abend.** Erst hing
+  eine Warteschleife ewig, weil `pgrep -f op_versprechen` die EIGENE Kommandozeile fand. Dann
+  meldete meine Aufseher-Zählung «alle 15 Sekunden ein neuer» — der vermeintliche Zweit-Aufseher
+  war mein eigener `ps`-Befehl, dessen `eval` das Suchwort enthielt.
+  **Neu daran: die Sitzungs-Regel (`pid == sid`) schützt hier NICHT** — eine `bash -c`-Hülle ist
+  selbst Sitzungsführer. Das zusätzliche Merkmal ist **`ppid == 1`**: Der echte Aufseher wird per
+  `setsid` gestartet und von init adoptiert, eine Mess-Shell nie. Sauber zählt also
+  `$1==$3 && $2==1`, oder man baut das Suchwort so zusammen, dass es in der eigenen Zeile gar
+  nicht vorkommt.
 
 ## 🖥️ Der Browser dieser Session kann TikTok LESEN, aber nicht BEDIENEN (2026-08-29)
 Auf «mach das du posten kannst» den QR-Weg durchgespielt — er ist der einzige, der ohne
