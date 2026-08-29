@@ -4420,3 +4420,44 @@ Vier Ahorne auf `[[-16,70],[-16,102],[-50,70],[-52,88]]`, alle mit `userData.fes
 > Behandlungen — der eine musste festgenagelt, der andere versetzt werden. Wer aus der
 > Fundliste auf die Ursache schliesst, rät. Der Umweg über „alle Kollider im Umkreis"
 > kostet eine Messung und beendet das Raten.
+
+## 2026-08-29 · 🧱 Ein Kollider ist nicht das Haus — aus 18 roten Funden werden 0
+
+`th-baeume` meldete 18 Pflanzen „im Gebäude". Die Frage der letzten Runde („ein Fund
+nennt das Symptom, nicht die Ursache") an die ganze Liste gestellt: **stehen die
+wirklich im Haus — oder nur im Kollider?**
+
+`kolliderNachziehen` **vergrössert** vorhandene Kästen, damit man nicht durch Traufen
+läuft. Dabei greift ein Kasten regelmässig über den Baukörper hinaus in den Vorgarten.
+Eine Pflanze dort steht **nicht im Haus**; sie steht neben einem unsichtbaren Stück Wand.
+Beides ist ein Befund — aber ein völlig verschiedener.
+
+Also zusätzlich gegen die **Hüllbox des nächsten Bauwerks** geprüft (Mesh statt Kasten,
+dieselbe Trennung wie `th-echt`):
+
+| | |
+|---|---|
+| Pflanzen im **Baukörper** | **0** |
+| Pflanzen nur im **Kollider-Überhang** | **18** |
+
+**Kein einziger Baum steht in einem Haus.** Die 18 sind das Symptom eines anderen
+Fehlers: dort stösst man gegen eine unsichtbare Wand, wo nur ein Vorgarten ist. Die
+Verteilung nennt die Verdächtigen — ein Kasten 21,5 × 12,5 um (40|84) schluckt sieben
+Pflanzen, einer 25,1 × 20,7 um (143|−21) sechs. **Das ist der nächste Kandidat:
+Kollider-Überhang stadtweit messen**, nicht nur dort, wo zufällig eine Pflanze steht.
+
+`th-baeume` ist damit eine echte Ja/Nein-Prüfung und **jetzt in `th-alle` eingetragen**
+(Prüfung 21, nur im vollen Lauf — sie wartet auf Ruhe und braucht 3 statt 2 Minuten).
+
+### ⚠️ Zwei eigene Fehler auf dem Weg, beide vom Werkzeug gefangen
+
+1. **Regel 1, zum zwölften Mal.** Ein Backtick im Sonden-Kommentar — diesmal
+   `` `kolliderNachziehen` `` als Zitat gemeint — brach den Lauf mit „Unexpected
+   identifier". Zwölfmal in einer Sitzung. **In Sonden gehören Anführungszeichen,
+   auch in Kommentare.**
+2. **Die Pflanze ist kein Haus.** Der erste Lauf meldete brav sechs Treffer „im
+   Baukörper" — und in der Spalte daneben stand `th4_ahorn.glb in th4_ahorn.glb`. Ein
+   Baum ist breiter als 3 m und höher als 2,2 m und ging damit durch meinen eigenen
+   Bauwerk-Filter; die nächste „Hüllbox" war seine eigene. **Alle sechs Treffer waren
+   Unsinn** — und sie sahen aus wie ein echter Fund, bis ich die Spalte daneben gelesen
+   habe. Wer nur die Zahl liest, hätte sechs Bäume „repariert", die nirgends standen.

@@ -75,7 +75,34 @@ const sonde = `function(){
       if(w.hw>15||w.hd>15)continue;     /* grosse Flaechen sind Gehege/Parks, keine Haeuser */
       var dx=p.x-w.x, dz=p.z-w.z;
       if(dx<=-w.hw+INNEN||dx>=w.hw-INNEN||dz<=-w.hd+INNEN||dz>=w.hd-INNEN)continue;
-      drin.push({datei:p.datei, art:p.art,
+      /* ⚠️ EIN KOLLIDER IST NICHT DAS HAUS. "kolliderNachziehen" VERGROESSERT
+         vorhandene Kaesten, damit man nicht durch Traufen laeuft — dabei greift ein
+         Kasten regelmaessig ueber den Baukoerper hinaus in den Vorgarten. Eine Pflanze
+         dort steht NICHT im Haus; sie steht neben einem unsichtbaren Stueck Wand.
+         Beides ist ein Befund, aber ein VERSCHIEDENER: das eine ist ein Baum im
+         Wohnzimmer, das andere eine Mauer, gegen die man stoesst, wo nichts steht.
+         Darum wird zusaetzlich gegen die Huellbox des naechstliegenden Bauwerks
+         geprueft — Mesh statt Kasten, dieselbe Trennung wie in th-echt. */
+      /* ⚠️ UND DIE PFLANZE IST KEIN HAUS. Der erste Lauf meldete brav sechs Treffer
+         "im Baukoerper" — und in der Spalte daneben stand "th4_ahorn.glb in
+         th4_ahorn.glb". Ein Baum ist breiter als 3 m und hoeher als 2,2 m und ging
+         damit als Bauwerk durch; die naechste "Huellbox" war seine eigene. Alle
+         sechs Treffer waren Unsinn. Pflanzen sind hier darum ausgeschlossen. */
+      var haus=null, hd=1e9;
+      (window._gebaeude||[]).forEach(function(g){
+        var u=g.userData||{};
+        if(u._bewegt||g._bewegt)return;
+        if(istPflanze(u.datei||""))return;
+        var d=Math.hypot(g.position.x-w.x, g.position.z-w.z);
+        if(d>=hd)return;
+        var bx=new THREE.Box3().setFromObject(g);
+        if(!isFinite(bx.min.x))return;
+        if(bx.max.x-bx.min.x<3||bx.max.z-bx.min.z<3)return;   /* Kleinteile sind kein Haus */
+        if(bx.max.y-Math.max(0,bx.min.y)<2.2)return;
+        hd=d; haus={x0:bx.min.x,x1:bx.max.x,z0:bx.min.z,z1:bx.max.z,
+                    datei:(g.userData.datei||"?")};});
+      var imBau = !!(haus && p.x>haus.x0 && p.x<haus.x1 && p.z>haus.z0 && p.z<haus.z1);
+      drin.push({imBau:imBau, bau:(haus?haus.datei:"?"), datei:p.datei, art:p.art,
                  x:+p.x.toFixed(1), z:+p.z.toFixed(1),
                  haus:(+w.x.toFixed(0))+"|"+(+w.z.toFixed(0)),
                  mass:(+(w.hw*2).toFixed(1))+"x"+(+(w.hd*2).toFixed(1)),
@@ -116,15 +143,30 @@ else console.log(`Welt steht still (Seitenzeit ${ruhe.seite}s, ${ruhe.objekte} f
 console.log(`${R.gefunden} Pflanzen geprueft (${R.quellen.einzeln} einzeln, ${R.quellen.instanzen} instanziert) gegen ${R.kollider} Kollider\n`)
 if (!R.gefunden) { console.log('❌ 0 Pflanzen gefunden — die Sonde hat nichts gemessen, nicht die Welt ist kahl'); process.exit(1) }
 
-if (!R.drin.length) console.log('✅ Keine Pflanze steht im Inneren eines Gebaeudes')
+const imBau = R.drin.filter((e) => e.imBau)
+const nurKasten = R.drin.filter((e) => !e.imBau)
+
+/* ⚠️ DIE EIGENTLICHE FRAGE IST DIE ERSTE. Ein Kollider ragt regelmaessig ueber sein
+   Bauwerk hinaus (kolliderNachziehen VERGROESSERT sie, damit man nicht durch Traufen
+   laeuft) — eine Pflanze in diesem Ueberhang steht im Vorgarten, nicht im Haus. Der
+   erste Stand dieses Werkzeugs warf beides in einen Topf und meldete 18 rote Funde,
+   von denen KEINER ein Baum im Wohnzimmer war. */
+if (!imBau.length) console.log(`✅ Keine Pflanze steht im Baukoerper selbst (${R.drin.length} liegen im Kollider-Ueberhang, siehe unten)`)
 else {
-  console.log(`⚠️  ${R.drin.length} Pflanzen stehen IM Gebaeude (mehr als ${0.55} m hinter der Wandflucht):`)
+  console.log(`❌ ${imBau.length} Pflanzen stehen IM BAUWERK:`)
+  for (const e of imBau) console.log(`   ${e.datei.padEnd(24)} ${String(e.x).padStart(7)}|${String(e.z).padStart(7)}  in ${e.bau}`)
+}
+
+if (nurKasten.length) {
+  console.log(`\nℹ️  ${nurKasten.length} Pflanzen im Kollider-UEBERHANG — kein Baum im Haus, aber dort stoesst`)
+  console.log('   man gegen eine unsichtbare Wand, wo nur ein Vorgarten ist. Eigener Befund,')
+  console.log('   eigene Ursache (zu grosser Kasten), nicht hier zu beheben:')
   const proHaus = {}
-  for (const e of R.drin) (proHaus[e.haus] = proHaus[e.haus] || []).push(e)
+  for (const e of nurKasten) (proHaus[e.haus] = proHaus[e.haus] || []).push(e)
   for (const haus of Object.keys(proHaus)) {
     const l = proHaus[haus]
-    console.log(`   Haus ${haus.padStart(10)} (${l[0].mass})  ${l.length} Pflanze${l.length > 1 ? 'n' : ''}`)
-    for (const e of l.slice(0, 4)) console.log(`      ${e.datei.padEnd(26)} ${String(e.x).padStart(7)}|${String(e.z).padStart(7)}  ${e.tief} m tief  (${e.art})`)
+    console.log(`   Kasten ${haus.padStart(10)} (${l[0].mass})  ${l.length} Pflanze${l.length > 1 ? 'n' : ''}: ${l.slice(0, 3).map((e) => e.datei.replace('.glb', '') + ' ' + e.tief + 'm').join(', ')}`)
   }
 }
+
 console.log('\nJS-Fehler:', jsFehler.length)
