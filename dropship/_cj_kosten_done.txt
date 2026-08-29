@@ -4641,3 +4641,5 @@ gid://shopify/Product/15448918360449	CHF 32.30	1 Varianten	Vintage Crazy Horse L
 gid://shopify/Product/15448918458753	CHF 34.15	1 Varianten	Vintage Leder Crossbody Bag für Herren
 gid://shopify/Product/15448918524289	CHF 64.91	1 Varianten	Herren Umhängetasche aus echtem Crazy Horse Leder
 gid://shopify/Product/15448918622593	CHF 45.83	1 Varianten	Ma Pi Brusttasche aus Echtleder
+gid://shopify/Product/15448918688129	CHF 27.67	1 Varianten	Handliche Umhängetasche aus Rindsleder
+gid://shopify/Product/15448918786433	CHF 31.24	1 Varianten	Crazy Horse Leder Brusttasche für Herren
