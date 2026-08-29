@@ -43,12 +43,11 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 | 7 | Strand-Maxirock · Damen, A-Linie mit Rüschen, gefüttert (Som | `strand-maxirock-damen-a-linie-mit-ruschen-gefuttert-sommer-2026` |
 | 7 | Herren-Sportschuhe Nike Air Max Motion Braun | `braune-herren-sportschuhe-vielseitig-bequem-440833` |
 | 7 | Damen Sweater mit Kapuze Puma Squad Hoodie Fl | `damen-kapuzenpullover-bequem-sportlich-durch-den-t-1122344` |
-| 7 | Mini Robo-Diffuser fürs Auto · 7 LED-Farben, USB-betrieben,  | `mini-robo-diffuser-auto-ai-lichter-usb` |
 | 7 | Herren Kurzarm-Poloshirt Pique Adidas FM9952 Schwarz XS | `herren-pique-poloshirts-schwarz-sportlicher-komfor-362355` |
+| 7 | Mini Robo-Diffuser fürs Auto · 7 LED-Farben, USB-betrieben,  | `mini-robo-diffuser-auto-ai-lichter-usb` |
 | 7 | Damenuhr Calvin Klein RISE (Ø 38 mm) | `damenuhr-calvin-klein-rise-38-mm-bb755109` |
-| 6 | Damen Sneaker: Klassischer Look, bequem für jeden Tag! | `damen-sneaker-klassischer-look-bequem-fur-jeden-ta-646768` |
-| 6 | Sportliche Herren Sneaker – Komfort & Style für jeden Tag. | `sportliche-herren-sneaker-komfort-style-fur-jeden-436642` |
 | 6 | Laufschuhe für Damen Reebok Royal Glide Damen Schwarz | `damen-laufschuhe-schwarz-eleganz-beim-sport-482055` |
+| 6 | Schwarze Damen Laufschuhe – Eleganz trifft Performance | `schwarze-damen-laufschuhe-eleganz-trifft-performan-555884` |
 | 6 | Laufschuhe für Erwachsene Nike Renew Run 3 Schwarz Herren | `schwarze-herren-laufschuhe-ausdauer-fur-jeden-run-480208` |
 | 6 | Laufschuhe für Damen Reebok GLIDE GV6992 Weiss | `damen-laufschuhe-leichtfu-ig-zum-ziel-voller-komfo-537362` |
 | 6 | Fussballtrikot T-Shirt Adidas IU2082 Deutschland (M) | `fu-balltrikot-zeig-deine-starke-fur-dein-team-1299535` |
@@ -57,12 +56,12 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 | 6 | Damen Sweater mit Kapuze Puma ESS+ Embroidery Hoodie | `bestickter-damen-hoodie-dein-statement-fur-komfort-1278270` |
 | 6 | Laufschuhe für Damen Adidas DURAMO LITE 2.0 Weiss | `leichte-damen-laufschuhe-fur-mehr-speed-126670` |
 | 6 | Discovery-Set | `discovery-set` |
+| 6 | Damen Sneaker: Klassischer Look, bequem für jeden Tag! | `damen-sneaker-klassischer-look-bequem-fur-jeden-ta-646768` |
 | 6 | Herrenparfüm Eros Flame Versace EDP | `herrenparfum-eros-flame-versace-edp-bb176246` |
 | 6 | Damen Sweater mit Kapuze Puma Power Hoodie Fl W Weiss | `wei-er-damen-hoodie-frische-fur-jeden-tag-1278373` |
 | 6 | Herren Sweater mit Kapuze Puma Essentials Big Logo Hoodie Fl | `herren-hoodie-dein-bequemer-style-fur-jeden-tag-1071415` |
 | 6 | Kinder-Sneaker «Vans» Atwood | `kinder-sneaker-vans-atwood-s64224020` |
-| 6 | Schwarze Damen Laufschuhe – Eleganz trifft Performance | `schwarze-damen-laufschuhe-eleganz-trifft-performan-555884` |
-| 5 | Chronograph Aviator · Lederband Herren | `chronograph-aviator-lederband-herren` |
+| 6 | Sportliche Herren Sneaker – Komfort & Style für jeden Tag. | `sportliche-herren-sneaker-komfort-style-fur-jeden-436642` |
 | 5 | Damenparfüm Givenchy L'Interdit Eau de Parfum Intense EDP 80 | `damenparfum-givenchy-l-interdit-eau-de-parfum-in-bb660542` |
 | 5 | Damenparfüm Burberry MY BURBERRY EDP 90 ml | `damenparfum-burberry-my-burberry-edp-90-ml-bb124856` |
 | 5 | Damen Bikini-Set | `damen-bikini-set-459073` |
@@ -78,4 +77,6 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 | 5 | Damenparfüm Because It´s You Armani EDP | `damenparfum-because-it-s-you-armani-edp-bb247617` |
 | 5 | Wandkunst Metall-Sonne · Boho Statement | `wandkunst-metall-sonne-boho-statement` |
 | 5 | Wagen Stanley SXWT-FT501-SP Kunststoff 70 Kg | `wagen-stanley-sxwt-ft501-sp-kunststoff-70-kg-1023833` |
+| 5 | Folli Follie Damen-Tasche · Beige | `folli-follie-damen-tasche-wa14p017-beige` |
 | 5 | Ärmelloses Herren-T-Shirt Reebok Id Train Slvls Tech Braun | `braunes-herren-tanktop-optimal-fur-dein-training-1130572` |
+| 5 | Chronograph Aviator · Lederband Herren | `chronograph-aviator-lederband-herren` |
