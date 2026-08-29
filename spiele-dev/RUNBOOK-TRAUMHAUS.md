@@ -3217,3 +3217,60 @@ Lieferziel, `bd_market` womöglich offenseitig.
 Werkzeug misst, was 0,3 … 2,0 m über der eigenen Sohle liegt. Beim Hafenkran sind das
 3 × 7,7 m statt 9,9 × 8 — Mast statt Ausleger. Ein Kollider in Dachgrösse wäre eine
 unsichtbare Mauer unter der Traufe.
+
+## Wo hat ein Haus seine Tür? — und wie man das falsch misst
+
+Offener Punkt aus der Kollider-Runde: `th8_kirche_offen` und `th8_laden_offen` sollten
+einen Kollider **mit Tür** bekommen (`addSolid` kann das). Dafür muss man wissen, wo
+die Öffnung liegt — geraten ist sie schnell an der falschen Wand.
+
+### Der erste Versuch mass den Innenraum
+
+Die Sonde tastete je Seite in 0,25-m-Schritten ab, **0,45 m hinter der Fassade**.
+Ergebnis: die Kathedrale meldete **alle vier Seiten zu 90 % offen**. Offensichtlich
+falsch — und der Grund ist banal: eine Wand ist 0,2 … 0,3 m dick, die Probe lag also
+stets im leeren Innenraum.
+
+Richtig: nur Teile betrachten, die die Fassade **berühren** (0,6 m Toleranz), und ihre
+Ausdehnung längs der Wand als gedeckt markieren. Was ungedeckt bleibt, ist die Öffnung.
+Damit meldet die Kathedrale genau **eine** Lücke: 1,5 m breit auf der +z-Seite, mittig
+bei x = 146 — das Portal, und zwar dort, wo der alte Kommentar es beschreibt.
+
+`spiele-dev/tools/th-tueren.mjs` (neu) hält das fest. Gemessen wird auf Wandhöhe,
+0,3 … 2,0 m über der **eigenen** Sohle (die Berghütte steht auf 43 m).
+
+### Die Türen wurden am Ende gar nicht gebraucht
+
+Der erneute Lauf von `th-mauern` zeigte: Kathedrale, Wirtshaus, Windmühle und Laden
+sind **schon gedeckt** — die 44 in #2391 wiederbelebten Kollider haben sie erfasst. Der
+offene Punkt war durch den vorigen Fix bereits erledigt; ohne Nachmessen hätte ich der
+Kathedrale einen zweiten Kollider verpasst.
+
+### Was übrig blieb
+
+Von 15 offenen bleiben 13 mit Absicht offen. Zwei bekamen einen Kollider, beide auf
+Türen geprüft und allseitig geschlossen:
+
+* **`bd_market`** 15,3 × 15,2 bei (20,2|293,5) — steht auf r 294, `autoKollider()`
+  greift nur bis r 130.
+* **`th48_marktwaage`** 3,1 × 3,1 bei (158|27) — die Hüllbox ist mit 4,5 × 4,5 das
+  vorstehende Dach.
+
+Nicht angefasst, mit Begründung:
+
+* **`th45_hafenkran`** — die „Wand" ist der Gittermast, 3 × 7,7 mit 4,7 m Lücke:
+  zwischen den Beinen eines Krans darf man gehen.
+* **`th26_berghuette`** — 7,7 m offene Westseite. Das ist keine Tür, das ist eine offene
+  Front; ein Vollkollider würde sie zumauern.
+* Seilbahnstützen (Hüllbox = Ausleger), Spielgeräte (dort klettert man),
+  Weihnachtsbuden (im Sommer versteckt — ein Kollider wäre eine unsichtbare Wand),
+  Flugzeug (Kulisse).
+
+### Gemessen
+
+| | vorher | nachher |
+|---|---|---|
+| gebäudeartige Modelle gedeckt | 96 von 111 | **98** |
+| ohne Kollider | 15 | **13** (alle mit Begründung) |
+| th-netz | 38 ok | 38 ok, 0 Fehler |
+| th-koop | 9 von 9 kommen an | 9 von 9 |
