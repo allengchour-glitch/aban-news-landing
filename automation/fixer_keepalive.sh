@@ -429,6 +429,25 @@ while true; do
       echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
     fi
   fi
+  # KOSTENWAHRHEIT, einmal täglich: `cj_kosten_backfill.mjs` trug bis zum 28.08. eine eigene
+  # Frachtrechnung mit `max(15, …)` — ein Boden, der seit dem 23.08. widerlegt ist (CJ live:
+  # 20 g → CHF 4.34). Unterhalb von 712 g bläht er jede Kostenzahl um bis zu CHF 10 auf.
+  # Folge: 4'042 aktive Produkte galten als «unter Einstand», obwohl sie Gewinn bringen —
+  # und diese Zahl ist die Grundlage JEDER Margenentscheidung.
+  # Der Lauf rechnet die alte Fracht heraus und die richtige ein; er braucht dafür KEINE
+  # CJ-Punkte, die Zahlen stehen alle in Shopify. Preise werden NICHT angefasst.
+  # ⚠️ Zuerst der Export, sonst läuft die Korrektur ins Leere. Beide sind selbst-drosselnd:
+  # der Export baut nur, wenn seiner älter als ein Tag ist.
+  KOS=/tmp/kosten_boden15.log
+  if [ -f "$REPO/automation/kosten_boden15_korrigieren.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KOS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c '
+          python3 automation/kosten_export_bauen.py
+          LIMIT=400 python3 automation/kosten_boden15_korrigieren.py' >> "$KOS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) kostenwahrheit nachgezogen"
+    fi
+  fi
   TTK=/tmp/tiktok_karussell.log
   if [ -f "$REPO/automation/tiktok_karussell.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TTK" 2>/dev/null || echo 0) ))
