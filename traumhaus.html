@@ -6982,7 +6982,12 @@ setTimeout(function baueGebaeude(){
     addSolid(-46,80,12.8,10.8,{a:"z",at:85.4,c:-46,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
     addSolid(-24,74,8.6,9.6,{a:"x",at:-19.7,c:74,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
     addSolid(-6,88,14.8,12.8,{a:"z",at:94.4,c:-6,w:4.5});   /* Werkstatt: Tor +z (rot=PI) */
-    addSolid(DOM_X,DOM_Z+0.95,17.6,20.7,{a:"z",at:DOM_SW-0.5,c:DOM_X,w:4.5}); /* Kathedrale: gemessene Box, Portal nach Sueden */
+    /* ⚠️ HIER STAND DER KOLLIDER DER KATHEDRALE — mit DOM_X, DOM_Z und DOM_SW,
+       die erst gut hundert Zeilen SPAETER zugewiesen werden (var DOM_X=146,
+       DOM_Z=-22, …). `var` hebt die Deklaration hoch, nicht den Wert: hier waren
+       alle drei undefined, und aus DOM_Z+0.95 wurde NaN. Der Kollider der groessten
+       Kirche der Stadt hat nie etwas blockiert. Er steht jetzt dort, wo die Werte
+       existieren — direkt nach ihrer Zuweisung. */
     /* 🧱 Runde 2: restliche feste Gebaeude solide machen (User "polish alles") */
     addSolid(64,-79,7.4,11.4,{a:"z",at:-73.3,c:64,w:2.2});   /* Dorf-Kirche (RX-14,-SZ-33), Tuer Sued */
     [[-8,0],[-1,0],[6,0]].forEach(function(_s){addSolid(_s[0],78,6.8,5.4,{a:"z",at:75.3,c:_s[0]+2.35,w:2.0});}); /* Ladenzeile (SZ+32): Eingang rechts vorn */
@@ -7098,6 +7103,9 @@ setTimeout(function baueGebaeude(){
        dort ein Ensemble mit freier Sicht ueber die Felder. */
     var DOM_X=146, DOM_Z=-22, DOM_SW=DOM_Z+11.2, DOM_NW=DOM_Z-9.3, DOM_WX=8.7;
     window._DOM=[DOM_X,DOM_Z];   /* die Trau-Zone haengt daran (weiter unten) */
+    /* 🧱 Kathedrale: gemessene Box, Portal nach Sueden. Stand frueher 114 Zeilen
+       weiter oben, wo DOM_X noch undefined war (siehe Kommentar dort). */
+    addSolid(DOM_X,DOM_Z+0.95,17.6,20.7,{a:"z",at:DOM_SW-0.5,c:DOM_X,w:4.5});
     bau("th8_kirche_offen.glb",13,DOM_X,0,DOM_Z,Math.PI,false,
         function(w){w.userData.fest=true;},true);
     (function domVorplatz(){
@@ -13496,7 +13504,14 @@ function kolliderNachziehen(){
   scene.traverse(function(o){
     if(!o.isMesh||!o.geometry)return;
     bb.setFromObject(o);
-    if(!isFinite(bb.min.x))return;
+    /* ⚠️ ALLE VIER ECKWERTE PRUEFEN, nicht nur min.x. Ein Teil mit endlichem x und
+       NaN in z kam hier durch, und PASS 2 unten schreibt aus b.z0/b.z1 direkt
+       s6.z und s6.hd — beide wurden NaN. Ein Kollider mit NaN blockiert NIE etwas:
+       jeder Vergleich in inSolid() ist mit NaN falsch. GEMESSEN waren so 44 von 184
+       Kollidern tot, ein knappes Viertel der Waende der ganzen Stadt.
+       Erkennbar am Muster: x und hw in Ordnung, z und hd NaN — genau die beiden
+       Felder, die PASS 2 aus der z-Messung neu setzt. */
+    if(!isFinite(bb.min.x)||!isFinite(bb.max.x)||!isFinite(bb.min.z)||!isFinite(bb.max.z))return;
     var bx=bb.max.x-bb.min.x,bz=bb.max.z-bb.min.z,hy=bb.max.y-Math.max(0,bb.min.y);
     if(hy<2.2||bx>45||bz>45)return;          /* Bodenplatten, Wiesen, Wege raus */
     /* 🔦 Ohne diese zwei Zeilen verschluckte der Bahnhof einen Laternenmast 30 m
@@ -13590,6 +13605,9 @@ function kolliderNachziehen(){
     var s6=WORLD_SOLIDS[i],v6=vor[i];
     if(!v6)continue;
     var nhw=(v6.x1-v6.x0)/2, nhd=(v6.z1-v6.z0)/2;
+    /* Guertel und Hosentraeger: was nicht endlich ist, wird nicht angewendet. Ein
+       einziger schlechter Messwert darf keine Wand stilllegen. */
+    if(!isFinite(nhw)||!isFinite(nhd)||!isFinite(v6.x0)||!isFinite(v6.z0))continue;
     if(nhw<=s6.hw+0.4&&nhd<=s6.hd+0.4)continue;      /* passt schon */
     var alt=[+(2*s6.hw).toFixed(1),+(2*s6.hd).toFixed(1),+s6.x.toFixed(1),+s6.z.toFixed(1)];
     if(s6.door)s6.door._alt=s6.door.at;
