@@ -121,6 +121,43 @@ der Kasse **vorab angehakt** oder wenigstens sichtbar anbieten, und das Footer-F
 nach Klaviyo schreiben lassen. Beides ist eine Entscheidung über Einwilligung und Rechtstext —
 darum frage ich, statt es zu tun.
 
+## 3d. Jede Mail ging doppelt raus — behoben, aber du solltest es wissen  ⭐⭐ (NEU 29.08.)
+
+**Erledigt, nichts zu tun** — nur damit du die Entwürfe in Klaviyo nicht wieder aktivierst:
+Am 01.06. wurde der komplette Flow-Satz als «· EN/US» geklont. Die Klone sind **auf Deutsch**,
+und beide Hälften hingen am **selben Auslöser**. Das hiess live:
+
+| | vorher | jetzt |
+|---|---|---|
+| Bestellbestätigung je Kauf | **2×** | 1× |
+| Bewertungs-Anfrage je Kauf | **2×** | 1× |
+| Mails je abgebrochenem Warenkorb | **5×** | 2× |
+| Live-Flows insgesamt | 10 | **5** |
+
+Eine dieser fünf Warenkorb-Mails trug den Betreff **«Email #3 Subject»** — ein unfertiger
+Platzhalter, der an echte Kundinnen ging. Die Screenshot-Mail von heute Morgen kam also nicht nur
+mit totem Link, sondern auch doppelt.
+
+**Auf `draft` gesetzt (jederzeit umkehrbar):** «Abandoned Cart · EN/US», «Post-Purchase Review ·
+EN/US», «Win-Back · EN/US», «Welcome Series · EN/US», «E-Mail Welcome-Serie».
+**Live bleiben:** Abandoned Checkout · Post-Purchase · Order + Review · At-Risk Win-Back ·
+Welcome Series · VIP Tier-Upgrade Welcome.
+
+**Nebenbei in der Warenkorb-Serie repariert:** Der Absendername war **«Aban»** — eine fremde
+Marke —, und als Antwortadresse stand deine **private Gmail-Adresse** auf Kundenmails. Beides
+jetzt LuxeStyle CH / info@luxestyle.ch. Ausserdem siezte der Betreff, während der Text duzte.
+
+**Und die Win-Back-Mail versprach drei verschiedene Rabatte gleichzeitig:** Betreff «CHF 15
+sparen», Text «10 %», im Kasten stand der Code **WELCOME10** statt BACK15. Live ist BACK15 =
+**15 % ab CHF 50**. Wer der alten Mail glaubte, hätte bei CHF 50 Warenwert CHF 15 erwartet und
+CHF 7.50 bekommen — und von der CHF-50-Hürde stand nichts drin. Ist korrigiert.
+
+> **Eine Frage bleibt bei dir:** Shopify verschickt bereits eine eigene Bestellbestätigung. Der
+> Klaviyo-Flow schickt eine zweite, hübschere hinterher. Willst du beide? Wenn nein, sag mir
+> Bescheid — dann nehme ich die Klaviyo-Bestätigung raus und lasse nur die Bewertungs-Anfrage
+> nach 7 Tagen stehen. Ich habe es NICHT selbst entschieden: welche Bestätigung deine Kundin
+> sehen soll, ist Markenauftritt, keine Technik.
+
 ## 4. Google Merchant Center: Zielland auf Schweiz
 > Öffne das Google Merchant Center für luxestyle.ch und stelle Ziel- bzw. Versandland des Feeds
 > auf **nur Schweiz**. Melde mir danach, wie viele Artikel «Missing shipping info» verlieren.
