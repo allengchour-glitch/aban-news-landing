@@ -76,10 +76,30 @@ LEDGER = [("dropship/_google_kanal_gesaeubert.txt", None),
           ("dropship/_google_feed_cull.txt", None),
           ("dropship/_google_kanal_luecke_geschlossen.txt", "bleibt-draussen")]
 
+# ⚠️ 29.08.2026 — DER WÄCHTER HAT SEINE EIGENE ALARMANLAGE ABGESTELLT.
+# Der Schliesser (`google_kanal_luecke_schliessen.py`) schreibt bei jedem Nein eine
+# Quittung «bleibt-draussen:<Grund>». Die meisten Gründe sind ausserhalb seiner selbst
+# begründet und vom Wächter unabhängig nachprüfbar (ein Sperr-Tag am Produkt, die
+# Klingen-Hausregel, eine Heilaussage im Titel). EINER ist es nicht: «heikle Ware» ist
+# das Urteil seiner EIGENEN, bewusst groben Wortliste.
+# Folge: Fünf Küchen-Zubehörteile, die seit dem 22.08. ausdrücklich als offene
+# BETREIBER-Entscheidung in `dropship/COWORK-AUFTRAEGE.md` stehen, verschwanden aus dem
+# Bericht — der Wächter meldete «keine Lücke», während sie live weiter bei Google fehlten.
+# **Ein Werkzeug darf seine eigene Vermutung nicht als Erklärung akzeptieren.** Dieselbe
+# Familie wie das Zombie-Ledger (25.08.) und «ein Kommentar ist ein Datum, kein Beweis».
+# Sie werden deshalb NICHT verschwiegen und NICHT als Fehler gemeldet, sondern in einem
+# eigenen Abschnitt des Berichts geführt, bis ein Mensch entscheidet.
+SCHWACHER_GRUND = "bleibt-draussen:heikle Ware"
+
 
 def gesaeubert():
-    """Produkt-ID -> Grund, aus allen Saeuberungs-Ledgern."""
-    raus, unlesbar = {}, []
+    """(raus, schwach) — Produkt-ID -> Grund, aus allen Saeuberungs-Ledgern.
+
+    `raus`    = belegte Ausschluesse; sie erklaeren die Luecke.
+    `schwach` = das Wortlisten-Urteil des Schliessers; es erklaert sie NICHT
+                (siehe SCHWACHER_GRUND oben), taucht aber getrennt im Bericht auf.
+    """
+    raus, schwach, unlesbar = {}, {}, []
     for pfad, nur in LEDGER:
         if not os.path.exists(pfad):
             continue
@@ -111,12 +131,15 @@ def gesaeubert():
             grund = grund or "gesaeubert"
             if nur and not grund.startswith(nur):
                 continue
+            if grund == SCHWACHER_GRUND:
+                schwach.setdefault(m.group(1), grund)
+                continue
             raus.setdefault(m.group(1), grund)
     if unlesbar:
         print(f"  ⚠️ {len(unlesbar)} Ledger-Zeilen ohne erkennbare Produkt-ID:", flush=True)
         for pf, z in unlesbar[:5]:
             print(f"     {pf}: {z}", flush=True)
-    return raus
+    return raus, schwach
 
 
 def gql(q, v=None):
@@ -143,7 +166,7 @@ def gql(q, v=None):
 
 
 def main():
-    raus = gesaeubert()
+    raus, schwach = gesaeubert()
     # ⚠️ 28.08.2026 — DAS MERCHANT-LEDGER FEHLTE HIER GANZ. 16 Produkte, die GOOGLE SELBST
     # als Richtlinienverstoss gemeldet hat (google-gesperrt-adult/-cbd/-notlage), galten
     # diesem Wächter als unerklärte Lücke; der Schliesser, der tatsächlich publiziert,
@@ -155,7 +178,7 @@ def main():
         raus.setdefault(pid, "google-gesperrt (Merchant-Ledger)")
     print(f"Saeuberungs-Ledger + Merchant-Sperrliste: {len(raus)} bewusst entfernte "
           f"Produkte bekannt", flush=True)
-    cur, ges, treffer = None, 0, []
+    cur, ges, treffer, wortliste = None, 0, [], []
     while True:
         d = gql('query($c:String,$f:String){ products(first:30, after:$c, '
                 'query:$f){ '
@@ -178,14 +201,20 @@ def main():
                 continue
             if not im_onlineshop(pubs):
                 continue                       # gar nicht im Shop -> anderes Thema
-            if p["id"].split("/")[-1] in raus:
+            pid = p["id"].split("/")[-1]
+            if pid in raus:
                 continue                       # bewusst gesaeubert (Grund im Ledger)
+            if pid in schwach:
+                # Nur das Wortlisten-Urteil des Schliessers — kein Beleg, aber auch
+                # kein Fehler. Eigener Abschnitt statt Schweigen.
+                wortliste.append((pid, p["title"] or ""))
+                continue
             if ausschluss_tag(p["tags"]):
                 continue                       # Ausschluss ist erklaert (Sperrliste)
             t = p["title"] or ""
             if ist_klinge(t):
                 continue                       # Hausregel Klingen
-            treffer.append((p["id"].split("/")[-1], t))
+            treffer.append((pid, t))
         if not pg["pageInfo"]["hasNextPage"]:
             break
         cur = pg["pageInfo"]["endCursor"]
@@ -196,7 +225,19 @@ def main():
     if not VOLL:
         print("  ⚠️ Dieser Lauf sieht NUR das Zeitfenster. Aeltere Luecken bleiben "
               "unsichtbar — fuer den Rueckstand einmalig mit VOLL=1 starten.", flush=True)
-    if treffer:
+    def wortlisten_abschnitt(f):
+        if not wortliste:
+            return
+        f.write("\n## Vom Schliesser als «heikle Ware» eingestuft — Wortlisten-Urteil, "
+                "keine Entscheidung\n\n")
+        f.write("Diese Produkte hat `google_kanal_luecke_schliessen.py` mit seiner eigenen, "
+                "bewusst groben Wortliste abgelehnt. Das ist eine Vermutung, kein Beleg — "
+                "deshalb stehen sie hier statt zu verschwinden. Ein Mensch entscheidet "
+                "einmal; danach gehoert das Ergebnis als richtiger Grund ins Ledger.\n\n")
+        for pid, t2 in wortliste:
+            f.write(f"- `{pid}` — {t2}\n")
+
+    if treffer or wortliste:
         with open(BERICHT, "w", encoding="utf-8") as f:
             f.write("# Ware, die NUR im Google-Kanal fehlt\n\n")
             f.write(f"Stand {datetime.date.today().isoformat()} · "
@@ -205,17 +246,24 @@ def main():
             if not VOLL:
                 f.write("⚠️ Nur das Zeitfenster geprüft — ältere Lücken stehen hier NICHT. "
                         "Für den Rückstand `VOLL=1 python3 automation/google_kanal_luecke.py`.\n\n")
-            f.write("Google & YouTube ist der einzige Kanal mit belegten Verkäufen. Diese "
-                    "Produkte stehen im Online Store, tragen **kein** Sperr-Tag, sind in "
-                    "keinem Säuberungs-Ledger vermerkt und fallen nicht unter die "
-                    "Klingen-Hausregel — trotzdem fehlen sie bei Google.\n\n")
+            f.write("Google & YouTube ist der einzige Kanal mit belegten Verkäufen.\n\n")
             f.write("⚠️ Vor dem Nachpublizieren einzeln ansehen: Ein Fehlgriff im "
                     "Google-Kanal riskiert die Merchant-Sperre.\n\n")
-            for pid, t in treffer:
-                f.write(f"- `{pid}` — {t}\n")
-        print(f"⚠️ {len(treffer)} Produkte fehlen nur bei Google -> {BERICHT}")
-        for pid, t in treffer[:10]:
-            print(f"   {pid}  {t[:56]}")
+            if treffer:
+                f.write("## Ohne jeden erkennbaren Grund draussen\n\n")
+                f.write("Diese Produkte stehen im Online Store, tragen **kein** Sperr-Tag, "
+                        "sind in keinem Säuberungs-Ledger vermerkt und fallen nicht unter "
+                        "die Klingen-Hausregel — trotzdem fehlen sie bei Google.\n\n")
+                for pid, t in treffer:
+                    f.write(f"- `{pid}` — {t}\n")
+            wortlisten_abschnitt(f)
+        if treffer:
+            print(f"⚠️ {len(treffer)} Produkte fehlen nur bei Google -> {BERICHT}")
+            for pid, t in treffer[:10]:
+                print(f"   {pid}  {t[:56]}")
+        if wortliste:
+            print(f"  {len(wortliste)} als «heikle Ware» eingestuft (Wortlisten-Urteil, "
+                  f"wartet auf eine Entscheidung) -> {BERICHT}")
     else:
         if os.path.exists(BERICHT):
             os.remove(BERICHT)
