@@ -135,6 +135,40 @@ RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung
 NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz|'
                               r'Nagelpilz|Warzen|Hemorrhoid', re.I)
 
+# ⚠️ 29.08.2026 — WIRKVERSPRECHEN IM TITEL. In der Reihe standen «Wimpernwachstumsserum» und
+# «Tranexamsäure Serum GEGEN PIGMENTFLECKEN». Beide Produkte dürfen im Shop stehen; sie auf der
+# Startseite zu BEWERBEN ist etwas anderes — genau diese Unterscheidung steht seit dem 28.08.
+# im Gedächtnis, nur hat sie nie jemand in dieses Skript übertragen.
+# Getroffen wird ausschliesslich die Verbindung aus WIRKUNG und BEFUND, nicht das Wort allein:
+# «gegen» ist zu häufig, «Serum» ist harmlos. Eine Anti-Aging-CREME bleibt zulässig — das ist
+# eine kosmetische Aussage; ein WACHSTUMSVERSPRECHEN ist es nicht.
+WIRKVERSPRECHEN = re.compile(
+    r'(wimpern|haar|bart|n[äa]gel|nagel|brust|penis)wachstum'
+    r'|wachstums(serum|elixier|fluid|booster)'
+    r'|gegen\s+(pigmentflecken|falten|akne|cellulite|haarausfall|schuppen|narben|'
+    r'dehnungsstreifen|kr[äa]mpfadern|besenreiser|schmerzen|migr[äa]ne)'
+    r'|anti[-\s]?falten|faltenfrei|hautaufhellend|aufhellungs|whitening|bleaching'
+    r'|abnehm|fettverbrenn|schlankheits|entgiftung|detox[-\s]?kur',
+    re.I)
+
+# ⚠️ 29.08.2026 — DREIMAL DASSELBE IST KEINE AUSWAHL. Die Reihe zeigte gleichzeitig
+# «Silikon-Gesichtsreinigungsbürste», «Multifunktionale Gesichtsreinigungsbürste» und
+# «Gesichtsreinigungsbürste mit Vibration» — dazu zwei «Figurformende» Kleider. Für die Kundin
+# sieht eine Startseite mit drei Varianten derselben Ware nicht kuratiert aus, sondern wie ein
+# Katalogauszug. Ein Wort mit zehn oder mehr Zeichen ist im Deutschen fast immer das Grundwort
+# der Zusammensetzung («Gesichtsreinigungsbürste», «Figurformendes») — teilen sich zwei Titel
+# eines, ist es dieselbe Warenart.
+def _grundwoerter(titel):
+    return {w for w in re.findall(r'[A-Za-zÄÖÜäöüß]{10,}', titel or '')}
+
+def gleiche_warenart(titel, schon_gewaehlt):
+    """True, wenn der Titel ein langes Grundwort mit einem bereits gewählten teilt."""
+    w = {x.lower() for x in _grundwoerter(titel)}
+    for anderer in schon_gewaehlt:
+        if w & {x.lower() for x in _grundwoerter(anderer)}:
+            return True
+    return False
+
 # ⚠️ DIE BILDPRÜFUNG KANN KEIN MUSTER ERSETZEN — sie braucht einen Blick.
 # Der erste Lauf wählte zwölf Produkte, die nach Zahlen tadellos waren: genug Bilder, richtiger
 # Preis, im Google-Kanal, kein Tag auffällig. Der Kontaktbogen zeigte dann bei VIER, was keine
@@ -314,6 +348,8 @@ def main():
             continue
         if (p.get("productType") or "") in RAUS_TYP or NICHT_STARTSEITE.search(p["title"]):
             continue
+        if WIRKVERSPRECHEN.search(p["title"]):
+            continue                       # Wirkversprechen gehoert nicht auf die Startseite
         if (p.get("mediaCount") or {}).get("count", 0) < 2:
             continue
         preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
@@ -331,10 +367,20 @@ def main():
                 break
 
     gewaehlt = []
+    titel_bisher = []
     for thema, liste in kandidaten.items():
         # Meiste Bilder zuerst — die Karte lebt vom Karussell.
         liste.sort(key=lambda x: -x[3])
-        gewaehlt += [(thema,) + k for k in liste[:PRO_THEMA]]
+        genommen = 0
+        for k in liste:
+            if genommen >= PRO_THEMA:
+                break
+            if gleiche_warenart(k[1], titel_bisher):
+                print(f"   ueberspringe (gleiche Warenart): {k[1][:52]}", flush=True)
+                continue
+            gewaehlt.append((thema,) + k)
+            titel_bisher.append(k[1])
+            genommen += 1
 
     print(f"\nNeu in die Reihe: {len(gewaehlt)}", flush=True)
     for thema, _, t, preis, mc in gewaehlt:

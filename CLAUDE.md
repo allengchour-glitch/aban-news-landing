@@ -20,6 +20,72 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🔁 «Immer das gleiche» war messbar: 9 von 12 Reihen waren eingefroren (2026-08-29)
+
+Betreiber: «auch andere produkte rein, nicht immer das gleiche». Erst gemessen, ob sich die
+Startseite überhaupt wiederholt — **innerhalb einer Seite fast nicht**: 112 sichtbare Karten,
+**111 verschiedene Produkte**, genau eine Dublette. Die Wiederholung liegt also nicht im
+Nebeneinander, sondern in der ZEIT. Und der Beweis stand in einer Spalte, die ich vorher nie
+angesehen hatte:
+
+| Sortierung | Reihen | Wirkung |
+|---|---:|---|
+| `BEST_SELLING` | **9** | bei **7 Bestellungen** in der ganzen Shop-Geschichte praktisch eingefroren |
+| `MANUAL` | 1 | handkuratiert, seit Monaten unverändert |
+| `CREATED_DESC` | 2 | frischt sich selbst auf |
+
+**Neun Reihen zeigten also jeden Tag dieselben Produkte** — bei 47'000 aktiven im Katalog.
+Acht davon auf `CREATED_DESC` gestellt: **11 von 12 Reihen frischen sich jetzt von selbst auf**,
+ohne dass jemand etwas pflegen muss. Der CJ-Grind liefert täglich Nachschub; ab jetzt kommt er
+auch vorne an. Nachher sichtbar völlig andere Ware (Overknee-Stiefel, Malachit-Armband,
+Badregal Rattan statt der immergleichen sechs).
+- ⚠️ Die Umstellung ändert auch die **Kategorieseite**, nicht nur die Startseiten-Reihe. Das ist
+  hier eine Verbesserung: `BEST_SELLING` bei sieben Bestellungen ist keine Rangfolge, sondern
+  eine Zufallsordnung, die nur zufällig stabil bleibt.
+- **NICHT umgestellt:** `bestseller` (MANUAL, handkuratierte Hero-Favoriten) und die drei, die
+  schon `CREATED_DESC` waren.
+
+**Und was der Premium-Schaukasten wirklich zeigte.** Die Hype-Reihe steht auf Position 1 direkt
+unter dem Hero, mit sechs grossen Karten — dort standen:
+- **«Wimpernwachstumsserum»** und **«Tranexamsäure Serum gegen Pigmentflecken»**. Der Eintrag vom
+  28.08. sagt wörtlich: *Wirkversprechen im TITEL schliessen ein Produkt aus; sie zu BEWERBEN ist
+  etwas anderes als sie zu führen.* **Die Lehre stand da, nur hat sie nie jemand in
+  `hype_kuratieren.py` übertragen** — der Ausschluss kannte Intimes und Nagelpilz, aber keine
+  Wirkversprechen.
+- **Drei** Gesichtsreinigungsbürsten, **zwei** figurformende Kleider, **vier** Aroma-Diffusoren,
+  **zwei** Katzenbrunnen. Für die Kundin sieht das nicht kuratiert aus, sondern wie ein
+  Katalogauszug — genau das, was der Betreiber beanstandet hat.
+- Ein Produkt mit dem Tag **`bild-zu-klein`** in der Flaggschiff-Reihe.
+
+**Quelle repariert, nicht nur die Reihe:** `WIRKVERSPRECHEN` fängt jetzt die Verbindung aus
+Wirkung und Befund (`(wimpern|haar|…)wachstum`, `gegen (pigmentflecken|falten|akne|…)`,
+`abnehm|detox|whitening`). **Bewusst NICHT getroffen:** «Anti-Aging-Creme» und «Hyaluronsäure
+Serum» — das sind zulässige kosmetische Aussagen; ein WACHSTUMSVERSPRECHEN ist es nicht.
+Dazu `gleiche_warenart()`: Teilen zwei Titel ein Wort mit **zehn oder mehr Zeichen**, ist es
+dieselbe Ware — im Deutschen ist das lange Wort fast immer das Grundwort der Zusammensetzung
+(«Gesichtsreinigungsbürste», «Figurformendes»). 17 Testfälle, 0 Fehler.
+- ⚠️ **Die Zehn-Zeichen-Regel ist ehrlich begrenzt:** «Diffuser» hat acht, «Trinkbrunnen» und
+  «Katzenbrunnen» sind verschiedene Wörter. Vier Diffusoren und zwei Katzenbrunnen bleiben
+  deshalb stehen. Eine Heuristik, die zwei Drittel fängt, ist besser als keine — aber sie ist
+  keine Lösung, und das gehört gesagt statt beschönigt.
+- 11 Produkte aus der Reihe genommen — mit `tagsRemove`, **nie** `productUpdate(tags:)`.
+
+**Die Hero-Favoriten waren zu 8/15 Entwürfe** — genau die handkuratierte Ur-Ware ohne
+Lieferanten, die ich heute weitergeleitet habe. Die Reihe zeigte 6 statt 10 Karten.
+Aufgefüllt mit **echten Bewertungssiegern**: über 6'000 aktive Produkte auf die Metafelder
+`reviews.rating` / `reviews.rating_count` geprüft → **15 Produkte mit ≥3 Stimmen und ≥4,5★**.
+Drei davon fehlten (Smartwatch Pro 5,0★, Mini-Kleid 4,7★ bei **26** Stimmen, Plateau-Sandalen
+4,7★ bei 21). **Jetzt 10 aktive Karten, jede mit belegter Bewertung** — kein geratener «Bestseller».
+- ⚠️ **Die Bewertung steht in `reviews.rating`, NICHT in den `judgeme`-Feldern.** Wer
+  `metafields(first:12)` ohne Filter abfragt, bekommt das komplette Judge.me-Widget als HTML —
+  eine einzige solche Abfrage hat hier mehr Kontext gekostet als der ganze Rest des Laufs.
+  **Metafelder immer mit `namespace`/`key` einzeln abfragen.**
+- Nebenbei: **sechs Titel endeten auf «(Sommer 2026)»** — zwei davon standen ab sofort in der
+  Hero-Reihe. Klammer entfernt, Handle unverändert (kein 404), Tags unverändert je Produkt
+  gegengeprüft. Geschrieben wurde nur, wo der LIVE-Titel noch exakt der erwartete war.
+- ⚠️ Offen und nur notiert: «Jade Roller & Gua Sha Premium Set · **Anti-Aging Facelift**» steht
+  in der Hero-Reihe. «Facelift» verspricht ein chirurgisches Ergebnis von einer Jaderolle.
+
 ## 🖼️ Der Hero zeigte seit unbekannter Zeit NUR einen Knopf — Überschrift unsichtbar (2026-08-29)
 
 Auftrag «die Webseite premium machen». Statt Geschmack zu behaupten, die Startseite gemessen —
