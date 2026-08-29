@@ -4750,3 +4750,48 @@ Zahlenreihe — sonst laufen sie beim nächsten Verschieben des Doms wieder ause
 > Fehlerliste — aber sie ist jetzt eine **brauchbare Kandidatenliste**, und jeder
 > Kandidat kostet eine Messung von zwei Minuten. Das ist der Unterschied zu den vier
 > Runden davor, in denen dieselbe Liste noch aus Messfehlern bestand.
+
+## 2026-08-29 · 🎡 Fünf Kandidaten, kein Fehler — und daraus wird die Prüfung
+
+Nächste fünf Einträge der Liste gemessen, jeder mit der Frage *was steht in diesem
+Kasten?*:
+
+| Kasten | Meshes darin | was es ist |
+|---|---|---|
+| (−74\|384,5) | **499** | Riesenrad |
+| (46,4\|40) | **312** | Wohnhaus mit Tür |
+| (56\|100) | **133** | Gebäude mit Tür |
+| (49\|335,9) | **100** | Geisterbahn |
+| (12\|225,2) | **48** | Basketballplatz |
+
+**Kein einziger leerer Kasten.** Alle fünf sind **offene Bauwerke** — Riesenrad,
+Geisterbahn, Basketballplatz haben auf Brusthöhe an der Kastenkante nichts, weil dort
+Luft zwischen den Stützen ist. Zusammen mit Runde 40 also: **neun Kandidaten gemessen,
+ein echter Fehler** (der Campanile).
+
+### Damit ist die Grenze der Messung erreicht — und das ist das Ergebnis
+
+Die Schalen-Zahl allein trennt nicht: 499 Meshes im Riesenrad-Kasten und 0 im
+Campanile-Kasten führen zur selben Meldung. **Die Null ist der Befund**, der Rest ist
+Entwurfsfrage. `th-kasten` hat darum jetzt genau **eine Ja/Nein-Frage**:
+
+> **Gibt es einen Kollider, der blockiert, obwohl kein einziges Mesh darin steht?**
+
+Heute: **keinen** (nach dem Campanile-Fix). Damit ist die Prüfung **im Tor** (Prüfung 23),
+und der Rest — 1200 Punkte, 50 Kästen — bleibt als Kandidatenliste darunter stehen,
+ausdrücklich nicht als Fehlerliste.
+
+### ⚠️ Und die neue Frage war beim ersten Lauf sofort falsch
+
+Sie meldete **zwei** leere Kästen: die Seilbahn-Bergstation (340,7\|95,1) und ihren
+Nachbarn. Beide stehen auf dem **Berg**, auf rund 43 m Höhe — ihre Teile liegen komplett
+über dem Brusthöhen-Fenster, aus dem `inhalt()` seinen Index geerbt hatte.
+
+**Aufgefallen ist es nur, weil eine früher gemessene Zahl danebenlag:** dieselbe Stelle
+hatte in Runde 40 noch *297 Meshes* gemeldet. **Eine Null neben einer bekannten Zahl ist
+kein Fund, sondern ein Widerspruch** — und der Widerspruch hatte recht. Sechster
+Messfehler in diesem Strang; behoben mit einem Index ohne Höhenfenster.
+
+Und weil das kein Zufall bleiben darf, hat auch die neue Frage jetzt ihre **eigene
+Selbstprobe**: der Test-Kollider im leeren Feld muss als *inhaltslos* erkannt werden.
+Zwei Selbstproben, zwei Richtungen — beide bestehen.

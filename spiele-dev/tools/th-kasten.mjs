@@ -78,6 +78,7 @@ const sonde = `function(){
   var GITTER=16;
   var netz={};     /* Geometrie auf Brusthoehe 0,3…2,0 m */
   var oben={};     /* alles darueber, bis 12 m — siehe unten */
+  var alles={};    /* ohne Hoehenfenster — siehe inhalt() */
   var bb=new THREE.Box3();
   var zahl=0, zahlOben=0;
   scene.traverse(function(o){
@@ -99,6 +100,17 @@ const sonde = `function(){
       var oz0=Math.floor(bb.min.z/GITTER), oz1=Math.floor(bb.max.z/GITTER);
       for(var ox=ox0;ox<=ox1;ox++)for(var oz=oz0;oz<=oz1;oz++){
         var ok=ox+"_"+oz;(oben[ok]||(oben[ok]=[])).push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);}}
+    /* ⚠️ EIN INDEX OHNE HOEHENFENSTER — sonst zaehlt inhalt() falsch. Der erste Stand
+       benutzte den Brusthoehen-Index und meldete die Bergstation (340,7|95,1) und den
+       Nachbarkasten als "0 Meshes darin", also als Fehler. Beide stehen aber auf dem
+       BERG, auf rund 43 m Hoehe — ihre Teile liegen komplett ueber dem Fenster
+       0,3…2,0 m. Aufgefallen ist es nur, weil eine frueher gemessene Zahl daneben lag
+       (297 Meshes an derselben Stelle). Eine Null neben einer bekannten Zahl ist kein
+       Fund, sondern ein Widerspruch — und der Widerspruch hatte recht. */
+    var ax0=Math.floor(bb.min.x/GITTER), ax1=Math.floor(bb.max.x/GITTER);
+    var az0=Math.floor(bb.min.z/GITTER), az1=Math.floor(bb.max.z/GITTER);
+    for(var qx=ax0;qx<=ax1;qx++)for(var qz=az0;qz<=az1;qz++){
+      var qk=qx+"_"+qz;(alles[qk]||(alles[qk]=[])).push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);}
     if(bb.max.y<0.3||bb.min.y>2.0)return;          /* nur was auf Brusthoehe im Weg ist */
     /* ⚠️ GROSSFLAECHIGES RAUS — genau daran ist die Selbstprobe zuerst gescheitert.
        Ein Test-Kollider ins leere Feld bei (0|-420) meldete 0 von 32 leeren Punkten:
@@ -133,8 +145,28 @@ const sonde = `function(){
   function etwasDa(x,z){return trifft(netz,x,z);}
   function etwasDrueber(x,z){return trifft(oben,x,z);}
 
+  /* ⚠️ WIE VIELE MESHES STECKEN UEBERHAUPT IN DIESEM KASTEN? Nach zwei Runden
+     Kandidaten-Messen ist klar, dass die Schalen-Zahl allein nicht trennt:
+       * Riesenrad (499 Meshes), Geisterbahn (100), Basketballplatz (48) — der Kasten
+         umschliesst ein OFFENES Bauwerk, dessen Ring durch Luecken laeuft. Kein Fehler.
+       * Campanile-Kasten (-68,5|-84): NULL Meshes. Ein Kasten ohne Inhalt ist
+         eindeutig — dort steht nichts, was blockieren duerfte.
+     Genau diese Null ist der Befund, der sich automatisch pruefen laesst. Der Rest ist
+     eine Entwurfsfrage und gehoert in keine Ja/Nein-Pruefung. */
+  function inhalt(w){
+    var n=0;
+    var gx0=Math.floor((w.x-w.hw)/GITTER), gx1=Math.floor((w.x+w.hw)/GITTER);
+    var gz0=Math.floor((w.z-w.hd)/GITTER), gz1=Math.floor((w.z+w.hd)/GITTER);
+    var gesehen={};
+    for(var a=gx0;a<=gx1;a++)for(var c=gz0;c<=gz1;c++){
+      var arr=alles[a+"_"+c]; if(!arr)continue;
+      for(var i=0;i<arr.length;i++){var e=arr[i];
+        if(e[1]<w.x-w.hw||e[0]>w.x+w.hw||e[3]<w.z-w.hd||e[2]>w.z+w.hd)continue;
+        var k=a+"_"+c+"_"+i; if(gesehen[k])continue; gesehen[k]=1; n++;}}
+    return n;}
+
   /* Abgetastet wird die Schale jedes Kastens — nur dort ist inSolid ueberhaupt wahr. */
-  var proben=0, blockiert=0, leer=0, unterbaut=0, orte=[];
+  var proben=0, blockiert=0, leer=0, unterbaut=0, orte=[], leerKasten=[];
   for(var i=0;i<WORLD_SOLIDS.length;i++){
     var w=WORLD_SOLIDS[i];
     var x0=w.x-w.hw, x1=w.x+w.hw, z0=w.z-w.hd, z1=w.z+w.hd;
@@ -148,7 +180,10 @@ const sonde = `function(){
         if(etwasDa(x,z))continue;
         if(etwasDrueber(x,z)){nUnter++; unterbaut++; continue;}   /* steht unter einem Bauwerk */
         nLeer++; leer++; if(!bsp)bsp=(+x.toFixed(1))+"|"+(+z.toFixed(1));}}
-    if(nLeer>0)orte.push({mitte:(+w.x.toFixed(1))+"|"+(+w.z.toFixed(1)),
+    var inh=inhalt(w);
+    if(inh===0&&nGes>0)leerKasten.push({mitte:(+w.x.toFixed(1))+"|"+(+w.z.toFixed(1)),
+      mass:(+(w.hw*2).toFixed(1))+"x"+(+(w.hd*2).toFixed(1)), punkte:nGes, tuer:!!w.door});
+    if(nLeer>0)orte.push({inhalt:inh, mitte:(+w.x.toFixed(1))+"|"+(+w.z.toFixed(1)),
       mass:(+(w.hw*2).toFixed(1))+"x"+(+(w.hd*2).toFixed(1)),
       flaeche:Math.round(w.hw*2*w.hd*2),
       tuer:!!w.door,
@@ -170,10 +205,11 @@ const sonde = `function(){
       if(px>pw.x-pw.hw+0.6&&px<pw.x+pw.hw-0.6&&pz>pw.z-pw.hd+0.6&&pz<pw.z+pw.hd-0.6)continue;
       if(!inSolid(px,pz))continue;
       pGes++; if(!etwasDa(px,pz)&&!etwasDrueber(px,pz))pLeer++;}
+  var pInhalt=inhalt(pw);
   WORLD_SOLIDS.pop();
 
-  return {kollider:WORLD_SOLIDS.length, meshes:zahl, meshesOben:zahlOben, proben:proben,
-          blockiert:blockiert, leer:leer, unterbaut:unterbaut, orte:orte,
+  return {kollider:WORLD_SOLIDS.length, probeInhalt:pInhalt, meshes:zahl, meshesOben:zahlOben, proben:proben,
+          blockiert:blockiert, leer:leer, unterbaut:unterbaut, orte:orte, leerKasten:leerKasten,
           probe:{ort:pruefX+"|"+pruefZ, blockiert:pGes, leer:pLeer}};}`
 
 mitSonden('traumhaus.html', { k: sonde, ruhe: ruheSonde }, '_kasten.html')
@@ -194,6 +230,26 @@ console.log(`${R.blockiert} davon blockieren (inSolid). Davon:`)
 console.log(`   ${R.blockiert - R.leer - R.unterbaut} mit Geometrie auf Brusthoehe — richtig`)
 console.log(`   ${R.unterbaut} UNTERBAUT (nichts auf Brusthoehe, aber etwas darueber: Stuetzen, Vordach, Sockel) — vertretbar`)
 console.log(`   ${R.leer} WIRKLICH FREI (auch darueber nichts) — unsichtbare Wand (${Math.round(R.leer / R.blockiert * 100)} %)\n`)
+
+/* ═══ DIE EINE JA/NEIN-FRAGE ════════════════════════════════════════════════════
+   Ein Kasten OHNE jedes Mesh darin blockiert nachweislich ins Leere — das ist kein
+   Ermessen, sondern ein Fehler. Genau daran haengt das Ergebnis dieser Pruefung.
+   Alles andere unten ist Kandidatenliste und Zahlenwerk. */
+const K = R.leerKasten || []
+/* ⚠️ Auch die Ja/Nein-Frage braucht ihre eigene Selbstprobe. Der Test-Kollider im
+   leeren Feld muss als INHALTSLOS erkannt werden — sonst kann die Pruefung nicht
+   "nein" sagen, und ihr gruenes Haekchen bedeutet nichts. Genau diese Falle hatte der
+   erste Stand: inhalt() erbte das Brusthoehen-Fenster und meldete die Bergstation als
+   leer, waehrend dort 297 Meshes auf 43 m Hoehe stehen. */
+if (R.probeInhalt !== 0) {
+  console.log(`❌ SELBSTPROBE INHALT FEHLGESCHLAGEN: der Test-Kollider im leeren Feld meldet ${R.probeInhalt} Meshes.`)
+  console.log('   Die Inhalts-Pruefung kann nicht "nein" sagen — das Haekchen unten ist wertlos.')
+} else if (!K.length) console.log('✅ Kein Kollider ohne Inhalt — jeder blockierende Kasten hat etwas darin (Selbstprobe: Testkasten wird als leer erkannt)')
+else {
+  console.log(`❌ ${K.length} Kollider blockieren, obwohl KEIN EINZIGES Mesh darin steht:`)
+  for (const e of K) console.log(`   ${e.mitte.padStart(14)}  ${e.mass.padStart(11)}${e.tuer ? ' Tuer' : ''}  ${e.punkte} blockierende Punkte`)
+}
+console.log()
 
 const P = R.probe || {}
 if (P.blockiert > 0 && P.leer === P.blockiert) console.log(`✅ Selbstprobe: ein Kollider ins Nichts bei ${P.ort} wird erkannt (${P.leer}/${P.blockiert} Punkte leer)`)
@@ -224,7 +280,7 @@ else {
      grossen Flaechen sind eine Entwurfsfrage. */
   const sortiert = [...orteEcht].sort((a, b) => (a.flaeche <= HAUS ? 0 : 1) - (b.flaeche <= HAUS ? 0 : 1) || b.leer - a.leer)
   for (const e of sortiert.slice(0, 24)) {
-    console.log(`   ${String(e.leer).padStart(4)} von ${String(e.ges).padStart(4)} (${String(e.anteil).padStart(3)} %, ${String(e.unter).padStart(3)} unterbaut)  ${String(e.flaeche).padStart(5)} m2${e.tuer ? ' Tuer' : '    '}  Kasten ${e.mitte.padStart(13)} ${e.mass.padStart(11)}  z. B. ${e.bsp}`)
+    console.log(`   ${String(e.leer).padStart(4)} von ${String(e.ges).padStart(4)} (${String(e.anteil).padStart(3)} %, ${String(e.unter).padStart(3)} unterbaut, ${String(e.inhalt).padStart(4)} Meshes drin)  ${String(e.flaeche).padStart(5)} m2${e.tuer ? ' Tuer' : '    '}  Kasten ${e.mitte.padStart(13)} ${e.mass.padStart(11)}  z. B. ${e.bsp}`)
   }
   if (orteEcht.length > 20) console.log(`   … und ${orteEcht.length - 20} weitere`)
 }
