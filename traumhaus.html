@@ -1812,9 +1812,21 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     streu(_n(95),GW*CS/2+6,GW*CS/2+130,busch,0);
     streu(_n(45),GW*CS/2+10,GW*CS/2+135,findling,0);
     streu(_n(24),GW*CS/2+14,GW*CS/2+120,heuballen,1);
-    for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283,sr9=19+Math.random()*4;
-      var sx9=0+Math.cos(sa9)*sr9,sz9=146+Math.sin(sa9)*sr9;   /* mit dem See mitgezogen */
-      if(freiPlatz(sx9,sz9,0))schilf(sx9,sz9);}
+    /* ⚠️ DIESE SCHLEIFE HAT NIE EIN BUESCHEL GESETZT — nachgerechnet, nicht vermutet.
+       Sie streute auf einen Ring mit `sr9 = 19 + Math.random()*4`, also Radius 19…23 um die
+       Seemitte (0|146). Der Torwaechter war `freiPlatz(sx9,sz9,0)`, und dort steht:
+       `if(Math.hypot(x,z-146) < 24+pad) return false;  // Seepark + Promenade`.
+       Der Abstand der Kandidaten zur Seemitte IST per Konstruktion sr9, also hoechstens
+       22,999 — und 23 < 24 gilt IMMER. Die Bedingung war in allen 26 Durchlaeufen und bei
+       jedem Zufallswert falsch; `schilf()` wurde nie aufgerufen und war damit toter Code.
+       Der Ring war ausserdem am falschen Ort: die Uferlinie ist `seeR(a)` = 13 ± 3,9, also
+       9,1…16,9 m. Radius 19…23 liegt hinter dem Ufer im Gelaende der Promenade.
+       Schilf steht im flachen Wasser: `seeR(a) - 0.8`. Und es fragt `freiPlatz` NICHT mehr —
+       die Sperrzone r < 24 haelt FREMDES Streuwerk vom See fern; das Schilf ist die
+       Ausstattung des Sees selbst, so wie die Promenade und die Ufersteine. */
+    for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283;
+      var sr9=seeR(sa9)-0.8;
+      schilf(0+Math.cos(sa9)*sr9, 146+Math.sin(sa9)*sr9);}
   }
   /* 📱 PERFORMANCE: Die Szene hat ueber 2000 Objekte. three.js rechnet fuer jedes in jedem
      Frame die Weltmatrix neu — auf dem Handy ist das die groesste CPU-Last, obwohl sich
