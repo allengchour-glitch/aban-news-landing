@@ -1,0 +1,27 @@
+{
+  "_zweck": "EINE Quelle für die Klingen-Hausregel (Google-Kanal). Vorher stand dieselbe Regex in fünf Dateien: cj_category_fill.mjs, cj_sku_import.mjs, cj_trending_import.mjs, google_kanal_luecke.py, google_kanal_luecke_schliessen.py. Neue Klingenwörter NUR hier.",
+
+  "_lehre_28_08": "\\b(messer|…) trifft KEINE deutsche Zusammensetzung: \\b verlangt eine Wortgrenze VOR «messer», dort steht aber ein Buchstabe. «Küchenmesser», «Taschenmesser», «Jagdmesser» fielen komplett durch. Bei deutschen Zusammensetzungen gehört die Wortgrenze ans ENDE.",
+
+  "_lehre_29_08": "Die Endverankerung allein reicht NICHT. Sie lässt «Retro Schwertabdeckung» durch — eine Scheide für ein Schwert, also Waffenzubehör. Der Nachpublizier-Lauf hätte sie in den Google-Kanal gestellt. Position im Wort entscheidet also nicht über die Zulässigkeit; entscheidend ist, ob das Wort im Deutschen ÜBERHAUPT etwas anderes als eine Waffe bezeichnen kann. «messer» kann es (Messerblock, Herzfrequenzmesser), «schwert» und «katana» praktisch nicht — ausser in Namen aus der Biologie.",
+
+  "klinge_am_ende": "(?<![\\wäöüß])[\\wäöüß]*(messer|klinge\\w*|dolch|machete|schwert|katana|axt|beil|säbel|bajonett)(?![\\wäöüß])",
+
+  "_klinge_am_ende_zweck": "Trifft die Ware SELBST: Küchenmesser, Klappmesser, Butterfly-Messer, Wurfdolch. Lässt Zubehör korrekt draussen: Messerblock, Messerschärfer, Messerhalter, Axtstiel — Küchenbesteck und Zubehör sind bei Google zulässig (Hausregel 12.08.).",
+
+  "waffenwort_vorne": "(?<![\\wäöüß])(schwert|katana|säbel|bajonett|dolch|machete|nunchaku|schlagring)[\\wäöüß]*",
+
+  "_waffenwort_vorne_zweck": "Fängt Waffenzubehör, bei dem das Waffenwort VORNE steht: Schwertabdeckung, Schwertscheide, Katanaständer, Dolchhalter. «messer» steht bewusst NICHT in dieser Liste — sonst fielen Messerblock und Messerschärfer wieder heraus, und die sind zulässig.",
+
+  "waffenwort_vorne_ausnahme": "schwertlilie|schwertblatt|schwertfisch|schwertwal|schwertträger|schwertfarn|dolchschrift",
+
+  "_ausnahme_zweck": "Biologie und Typografie. «Schwertblatt» ist der Bogenhanf (Sansevieria) — ein Kissen mit Schwertblatt-Muster ist Deko, keine Waffe. «Schwertwal» ist der Orca, «Schwertträger» ein Zierfisch, «Schwertlilie» die Iris. Ohne diese Liste hätte die Regel harmlose Wohn- und Tierartikel aus dem einzigen verkaufenden Kanal geworfen.",
+
+  "messgeraet_ausnahme": "(herzfrequenz|winkel|reifendruck|durch|entfernungs|puls|blutdruck|feuchtigkeits|schicht|dicken|zoll|zeit|strom|leistungs|laser|ultraschall|höhen|neigungs|schall|thermo|band|kalorien|schritt|druck|temperatur)messer",
+
+  "_messgeraet_zweck": "«…messer» ist im Deutschen auch die Endung für MESSGERÄTE. Ohne diese Ausnahme fiele ein Pulsmesser unter die Waffenregel.",
+
+  "kontext_ausnahme": "jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm|tattoo|aufkleber|sticker|poster",
+
+  "_kontext_zweck": "«Washed Machete Jeans» ist eine Waschung, «Samurai mit Katana, 30 cm» eine Dekofigur, «Stethoskop-Herz-Anhänger» Schmuck. Fehltreffer aus dem Lauf vom 12.08."
+}

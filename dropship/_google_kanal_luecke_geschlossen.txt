@@ -104,3 +104,10 @@ gid://shopify/Product/15501061980545	publiziert	Stabmixer-Aufsatz für Küchenma
 gid://shopify/Product/15501062013313	publiziert	Halskette für Hunde, Edelstahl, 14mm
 gid://shopify/Product/15517968597377	publiziert	Reflektierende Hunde-Leine für kleine bis grosse Hunde
 gid://shopify/Product/15518560551297	publiziert	Bohemian Exotik-Rock im Resort-Stil
+gid://shopify/Product/15509382857089	bleibt-draussen:heikle Ware	Xinzuo Magnetischer Messerblock aus Akazienholz
+gid://shopify/Product/15510925705601	bleibt-draussen:heikle Ware	Abtropfgestell mit Geschirr- und Messerhalter
+gid://shopify/Product/15516235170177	bleibt-draussen:heikle Ware	Bambus-Käsebrett-Set mit Messern
+gid://shopify/Product/15517578396033	bleibt-draussen:heikle Ware	Multifunktionaler Messerhalter mit Wellenmuster
+gid://shopify/Product/15518558945665	bleibt-draussen:Klingen-Hausregel	Retro Schwertabdeckung
+gid://shopify/Product/15518601511297	bleibt-draussen:heikle Ware	Diamant-Messerschärfer mit festem Winkel
+gid://shopify/Product/15509392621953	publiziert	Kissen mit Schwertblatt-Nagelblumen-Muster

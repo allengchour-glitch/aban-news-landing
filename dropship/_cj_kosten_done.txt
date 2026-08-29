@@ -5322,3 +5322,5 @@ gid://shopify/Product/15449055265153	CHF 16.95	8 Varianten	Hoodie mit Patchwork-
 gid://shopify/Product/15449055854977	CHF 23.66	98 Varianten	Kapuzen-Sweatshirt-Set, Fleece-gefüttert · Modell 
 gid://shopify/Product/15449056215425	CHF 14.97	5 Varianten	Off-Shoulder Pullover Sweatshirt mit 3D-Effekt
 gid://shopify/Product/15449056346497	CHF 22.17	21 Varianten	Vintage Colorblock T-Shirt für Damen
+gid://shopify/Product/15449056412033	CHF 10.98	5 Varianten	Lässiges Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15449056510337	CHF 14.77	30 Varianten	Sportlicher Oversize Pullover mit Knopfleiste

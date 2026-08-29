@@ -5,6 +5,7 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+import { istKlinge } from './klingenregel.mjs';
 import {googleKategorie} from './google_kategorie.mjs';
 import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
@@ -437,10 +438,12 @@ async function sgql(t,q,v){
 }
 // Hausregel 12.08.: Klingen (auch Küchenmesser) NIE in den Google-Kanal — kein Richtlinien-
 // verstoss, aber Sperr-Risiko. Fashion-/Deko-Fehltreffer (Machete-Jeans, Katana-Figur) bleiben drin.
-const KLINGE=/(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|axt|beil)(?![\wäöüß])/i;
-const KLINGE_AUSN=/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i;
+// ⚠️ 29.08.2026: Die Regel lag in FÜNF Dateien und musste zweimal in allen fünf repariert
+// werden. Sie liegt jetzt EINMAL in klingenregel.json — neue Klingenwörter NUR dort.
+// Dieser Importer hatte ausserdem die MESSGERÄTE-Ausnahme gar nicht: ein «Herzfrequenzmesser»
+// fiel hier unter die Waffenregel und wurde aus dem einzigen verkaufenden Kanal gehalten.
 function pubsFuer(title){
- if(KLINGE.test(title||'')&&!KLINGE_AUSN.test(title||''))
+ if(istKlinge(title))
   return PUBS.filter(p=>!p.publicationId.endsWith(GOOGLE_PUB));
  return PUBS;
 }

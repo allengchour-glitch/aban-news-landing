@@ -57,23 +57,11 @@ FILTER = "status:active" if VOLL else f"status:active created_at:>={SEIT}"
 # hat 142 bewusste Ausschlüsse als unerklärte Lücke gemeldet, darunter zwölf versteckte
 # Kameras. NEUE AUSSCHLUSS-TAGS NUR DORT EINTRAGEN.
 # Dieselbe Hausregel wie in den Importern: Klingen gehören nicht in den Google-Kanal.
-# ⚠️ 28.08.2026 — `\b(messer|…)` traf KEINE deutsche Zusammensetzung. Empirisch geprüft:
-# «Küchenmesser», «Taschenmesser», «Klappmesser», «Jagdmesser», «Obstmesser», «Brotmesser»
-# alle FALSE — nur das freistehende «Messer» griff. Die Hausregel lief damit an fast jeder
-# Klinge vorbei, und die drei CJ-Importer publizierten sie in den Google-Kanal.
-# Sechste Fassung der Substring-Familie, diesmal in der Gegenrichtung: nicht ein zu kurzes
-# Wort trifft zu viel, sondern eine zu strenge Wortgrenze trifft zu wenig.
-# Das Klingenwort muss am ENDE der Zusammensetzung stehen — dadurch bleiben «Messerblock»,
-# «Messerschärfer» und «Axtstiel» (Zubehör, bei Google zulässig) korrekt draussen aus der Regel.
-KLINGE = re.compile(r"(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|"
-                    r"axt|beil)(?![\wäöüß])", re.I)
-# ⚠️ «…messer» ist im Deutschen auch die Endung für MESSGERÄTE. Ohne diese Ausnahme fielen
-# Herzfrequenzmesser, Winkelmesser und Reifendruckmesser unter die Waffenregel.
-MESSGERAET = re.compile(r"(herzfrequenz|winkel|reifendruck|durch|entfernungs|puls|blutdruck|"
-                        r"feuchtigkeits|schicht|dicken|zoll|zeit|strom|leistungs|laser|"
-                        r"ultraschall|höhen|neigungs|schall|thermo|band)messer", re.I)
-KLINGE_AUSN = re.compile(r"jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|"
-                         r"halskette|ohrring|spielzeug|plüsch|kostüm", re.I)
+# ⚠️ 29.08.2026 — die Regel lag in FÜNF Dateien und musste zweimal in allen fünf repariert
+# werden (28.08. deutsche Zusammensetzungen, 29.08. Waffenzubehör mit dem Waffenwort vorne).
+# Sie liegt jetzt EINMAL in `automation/klingenregel.json`; die Begründung jeder Stufe steht
+# in `automation/klingenregel.py`. **Neue Klingenwörter NUR dort.**
+from klingenregel import ist_klinge
 
 # Ledger der Wächter, die bewusst aus dem Google-Kanal ENTFERNEN. Ein so entfernter
 # Artikel traegt keinen Tag — sein Grund steht nur hier. Ohne diese Pruefung meldet der
@@ -194,7 +182,7 @@ def main():
             if ausschluss_tag(p["tags"]):
                 continue                       # Ausschluss ist erklaert (Sperrliste)
             t = p["title"] or ""
-            if KLINGE.search(t) and not MESSGERAET.search(t) and not KLINGE_AUSN.search(t):
+            if ist_klinge(t):
                 continue                       # Hausregel Klingen
             treffer.append((p["id"].split("/")[-1], t))
         if not pg["pageInfo"]["hasNextPage"]:

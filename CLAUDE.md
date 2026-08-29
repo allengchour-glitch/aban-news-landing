@@ -20,6 +20,51 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🗡️ Die reparierte Klingenregel hätte eine Schwertscheide bei Google publiziert (2026-08-29)
+
+Der Google-Lücken-Wächter meldete 7 Produkte. Sechs davon sind Klingen-ZUBEHÖR (Messerblock,
+Messerhalter, Messerschärfer, Käsebrett-Set, Abtropfgestell) — die am 28.08. reparierte Regel
+lässt sie zu Recht durch, denn sie verankert das Klingenwort am ENDE der Zusammensetzung.
+**Beim siebten kippt genau diese Verankerung ins Gegenteil:**
+
+| Titel | alte Regel (28.08.) | Wahrheit |
+|---|---|---|
+| «Retro Schwertabdeckung» | **frei** | PU-Scheide, «schützt **Ihr Schwert**», für Cosplay |
+| «Kissen mit Schwertblatt-Muster» | frei | 45×45 cm Deko — **Schwertblatt ist der Bogenhanf** |
+
+`google_kanal_luecke_schliessen.py` hätte die **Schwertscheide in den einzigen Kanal gestellt,
+der verkauft.** Gefunden nur, weil ich die sieben Titel EINZELN gelesen habe statt der Zeile
+«fällt nicht unter die Klingen-Hausregel» zu glauben.
+
+**Die Lehre: Die POSITION im Wort entscheidet nicht über die Zulässigkeit.** Entscheidend ist,
+ob das Wort im Deutschen überhaupt etwas anderes als eine Waffe bezeichnen kann. «messer» kann es
+(Messerblock, Herzfrequenzmesser), «schwert» und «katana» praktisch nicht — **ausser in der
+Biologie**: Schwertblatt (Bogenhanf), Schwertwal (Orca), Schwertlilie (Iris), Schwertträger
+(Zierfisch). Die Regel hat deshalb jetzt drei Stufen, und die dritte ist die Gegenprobe zur
+zweiten. Ohne sie hätte die Verschärfung ein Deko-Kissen aus dem Kanal geworfen — **jede
+Verschärfung braucht ihre eigene Gegenrichtung, sonst tauscht man einen Fehler gegen einen.**
+
+**Und die Ursache, warum es zweimal repariert werden musste:** Dieselbe Regex stand **wörtlich in
+fünf Dateien** — `cj_category_fill.mjs`, `cj_sku_import.mjs`, `cj_trending_import.mjs`,
+`google_kanal_luecke.py`, `google_kanal_luecke_schliessen.py`. Sie liegt jetzt EINMAL in
+**`automation/klingenregel.json`**, gelesen von `klingenregel.py` und `klingenregel.mjs`
+(siebte Geschwister-Zusammenlegung nach Farbtabelle, Grössenmenge, `publishVerified()`,
+Preisformel, `technik_plausibel` und `cj_snippet`).
+- ⚠️ **Beim Zusammenlegen fiel eine Divergenz auf, die niemand gemeldet hatte:** Die drei
+  Importer trugen die **MESSGERÄTE-Ausnahme gar nicht**. Ein «Herzfrequenzmesser» oder
+  «Pulsmesser» fiel dort unter die Waffenregel und wurde beim Import aus dem Google-Kanal
+  gehalten — bei Fitness-Trackern, also genau der Ware, die dort verkauft. **Fünf Kopien
+  bedeuten nicht fünf gleiche Regeln, sondern fünf Stände.**
+- Belegt statt behauptet: 33 Testfälle in beide Richtungen (Python) und 10 (JS), 0 Fehler.
+  Der DRY-Lauf urteilt jetzt «Retro Schwertabdeckung — Klingen-Hausregel» und gibt das Kissen
+  frei; live gegengeprüft steht es in allen sechs Kanälen.
+- ⚠️ Die fünf Küchen-Zubehörteile bleiben draussen — **nicht wegen der Klingenregel, sondern
+  wegen der älteren HEIKEL-Liste**, die noch das blosse `messer` führt. Das ist eine
+  Betreiber-Entscheidung: Küchenbesteck ist bei Google zulässig (Hausregel 12.08.), aber ein
+  Fehlgriff dort kostet das Merchant-Konto. Steht in COWORK-AUFTRAEGE.
+- ⚠️ **`google_kanal_luecke.py` läuft nicht in 4 Minuten durch** — es paginiert den ganzen
+  Katalog. Für eine Prüfung den `schliessen`-Lauf mit `DRY=1` nehmen: der liest den Bericht.
+
 ## 👯 Der ganze Klaviyo-Flow-Satz existierte ZWEIMAL — jeder Käufer bekam alles doppelt (2026-08-29)
 
 Nach dem Willkommens-Fund die naheliegende Gegenfrage: Hören noch mehr Flows auf denselben

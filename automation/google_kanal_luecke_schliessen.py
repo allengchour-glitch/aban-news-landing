@@ -53,23 +53,11 @@ CODE = re.compile(r'\b[A-Z]{2,}\d{3,}\b|\b[A-Z0-9]{8,}\b|\bUS Size\b|\bYards\b|G
 # hindurch, obwohl `google_sperrliste.py` seit dem 14.08. genau dafür existiert. Dieses
 # Skript publiziert; ohne den Riegel hätte es zwölf versteckte Kameras und die 16
 # Merchant-Fälle in den einzigen Kanal gestellt, der verkauft. Liste jetzt an EINER Stelle.
-# ⚠️ 28.08.2026 — `\b(messer|…)` traf KEINE deutsche Zusammensetzung. Empirisch geprüft:
-# «Küchenmesser», «Taschenmesser», «Klappmesser», «Jagdmesser», «Obstmesser», «Brotmesser»
-# alle FALSE — nur das freistehende «Messer» griff. Die Hausregel lief damit an fast jeder
-# Klinge vorbei, und die drei CJ-Importer publizierten sie in den Google-Kanal.
-# Sechste Fassung der Substring-Familie, diesmal in der Gegenrichtung: nicht ein zu kurzes
-# Wort trifft zu viel, sondern eine zu strenge Wortgrenze trifft zu wenig.
-# Das Klingenwort muss am ENDE der Zusammensetzung stehen — dadurch bleiben «Messerblock»,
-# «Messerschärfer» und «Axtstiel» (Zubehör, bei Google zulässig) korrekt draussen aus der Regel.
-KLINGE = re.compile(r"(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|"
-                    r"axt|beil)(?![\wäöüß])", re.I)
-# ⚠️ «…messer» ist im Deutschen auch die Endung für MESSGERÄTE. Ohne diese Ausnahme fielen
-# Herzfrequenzmesser, Winkelmesser und Reifendruckmesser unter die Waffenregel.
-MESSGERAET = re.compile(r"(herzfrequenz|winkel|reifendruck|durch|entfernungs|puls|blutdruck|"
-                        r"feuchtigkeits|schicht|dicken|zoll|zeit|strom|leistungs|laser|"
-                        r"ultraschall|höhen|neigungs|schall|thermo|band)messer", re.I)
-KLINGE_AUSN = re.compile(r"jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|"
-                         r"halskette|ohrring|spielzeug|plüsch|kostüm", re.I)
+# ⚠️ 29.08.2026 — die Klingenregel lag in FÜNF Dateien und musste zweimal in allen fünf
+# repariert werden (28.08. deutsche Zusammensetzungen, 29.08. Waffenzubehör mit dem
+# Waffenwort vorne — «Retro Schwertabdeckung» wäre von genau diesem Skript in den
+# Google-Kanal publiziert worden). Sie liegt jetzt EINMAL in `klingenregel.json`.
+from klingenregel import ist_klinge
 # ⚠️ Heilversprechen und Messaussagen sind bei Google ein eigener Sperrgrund und tauchen in
 # HEIKEL nicht auf — die Liste dort zielt auf Warengruppen, nicht auf Aussagen.
 AUSSAGE = re.compile(r"blutzucker|blutdruck|\bEKG\b|harnsäure|blutfett|heilt\b|therapie", re.I)
@@ -130,7 +118,7 @@ def urteil(p):
         return "Sperr-Tag: " + grund
     if HEIKEL.search(titel) or HEIKEL.search(typ):
         return "heikle Ware"
-    if KLINGE.search(titel) and not MESSGERAET.search(titel) and not KLINGE_AUSN.search(titel):
+    if ist_klinge(titel):
         return "Klingen-Hausregel"
     if AUSSAGE.search(titel):
         return "Mess-/Heilaussage im Titel"
