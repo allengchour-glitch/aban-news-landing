@@ -276,3 +276,4 @@ gid://shopify/Product/15470036091265	Tag fanartikel	Flagge Schweiz 90x90 cm
 gid://shopify/Product/15470077608321	Tag fanartikel	Schweizer Lampion-Set
 gid://shopify/Product/15470077936001	Dublette in derselben Reihe	Badeset Romantic Dreams
 gid://shopify/Product/15470078919041	Tag bild-zu-klein	Badeset Dino Duft Apfel
+gid://shopify/Product/15470010696065	blitz-front entfernt	Halloween-Kostuemartikel (kostuem-accessoire, Kostuemfoto mit blutigem Totenkopf-Stab) in der Startseiten-Reihe 'Ab Schweizer Lager' — Hausregel 11.08.: kein Kostuem in der Startreihe. Produkt bleibt im Shop und in blitzversand-schweiz.
