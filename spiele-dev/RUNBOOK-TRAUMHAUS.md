@@ -4650,3 +4650,62 @@ Hüllbox verkleinert hat.
 > Reichweite dort (`hw*2,2+2`) einen grossen Kasten Nachbarteile einsammeln lässt und ihn
 > wieder aufbläst. **Verdacht, nicht Befund** — die letzten drei Runden haben gezeigt,
 > was passiert, wenn man das verwechselt.
+
+## 2026-08-29 · 🏦 Ein Kasten, über die Zeit verfolgt — und die Hälfte meiner Zahl war das Messband
+
+Die letzte Runde endete mit einem **Verdacht**: `kolliderNachziehen` bläst grosse Kästen
+wieder auf. Diesmal keine Vermutung, sondern eine Einzelmessung — der Bank-Kasten,
+protokolliert **ab dem Laden** (die Sonde ist dafür ein sofort ausgeführter Ausdruck, der
+den Rekorder schon beim Parsen startet; die übliche Fassung sah den Kasten erst ab 86 s):
+
+```
+1,1 s   96 Kollider   -58.2|-141.5  26x21     ← entsteht
+…       186           -58.2|-141.5  26x21     ← und ändert sich nie, bis 250 s
+```
+
+**Der Verdacht ist widerlegt.** Nichts bläst ihn auf; er wird bei 1,1 s so angelegt.
+
+### ⚠️ Und eine falsche Behauptung von mir, korrigiert
+
+In #2434 stand, der Bank-Kasten sei trotz #2433 gross geblieben — mit dem Unterton, die
+Verkleinerung habe versagt. **Falsch.** Der Kasten ist **handgeschrieben**
+(`addSolid(BX,BZ,26.0,21.0,…)` im Behördenviertel), nicht aus `viertel()`. #2433 konnte
+ihn nie berühren. Ich hatte aus der Fundliste auf die Herkunft geschlossen statt
+nachzusehen — derselbe Fehler wie beim Ahorn, eine Ebene höher.
+
+### Der echte Befund, gemessen
+
+| | |
+|---|---|
+| Kasten | 26,00 × 21,00 (x −71,2…−45,2 · z −152,0…−131,0) |
+| Bank-Modell | **21,47 × 16,85** (x −68,9…−47,5 · z −149,6…−132,8) |
+| alles im Kasten | 20,60 × 16,40 aus 409 Meshes |
+
+Zwischen Wand und Kastenkante lagen **2,3 m in x und 2,2 m in z** — und `inSolid`
+blockiert nur die äussere 0,55-m-Schale. Die Schale lag also vollständig im Gras. Jetzt
+**22,5 × 17,9** (Modellmass + 0,5 m je Seite), Tür auf die neue Nordflucht.
+
+### ⚠️ Der grösste Fund der Runde war wieder das Messgerät
+
+Nach dem Verkleinern meldete die Prüfung **weiter 57 von 57 Punkten frei**. Grund: ihr
+Toleranzband war **0,25 m**, die absichtliche Luft ums Gebäude **0,5 m** — die Schale
+liegt damit vollständig im Luftspalt, und *jeder sauber sitzende Kasten* wird zu 100 %
+als „frei" gemeldet. Mit **1,0 m** Toleranz (eine Wand einen Meter neben mir ist die Wand
+dieses Hauses; 2,3 m daneben ist Wiese):
+
+| | vorher | nachher |
+|---|---|---|
+| „wirklich frei" | 2767 (44 %) | **1217 (19 %)** |
+| betroffene Kästen | 93 | **51** |
+| Bank | 91 von 91 | **23 von 57** |
+
+> **Mehr als die Hälfte der Zahl, die ich in #2434 als „unsichtbare Wand" gemeldet habe,
+> war mein eigenes Messband.** Die 45 % dort sind damit überholt; es sind 19 %. Fünfter
+> Messfehler in diesem Strang — und der einzige, der es bis in eine gemergte PR geschafft
+> hat. Selbstprobe (32/32) bleibt bestanden, sie prüft nur die andere Richtung.
+
+### ⚠️ Regel 1 zum vierzehnten Mal — mit einer Verschärfung
+
+Wieder ein Backtick im Sonden-Kommentar. `th-lint` **hätte ihn gefunden**, aber ich hatte
+`node --check` davor gehängt — das bricht die Kette ab, bevor der Lint läuft.
+**Reihenfolge: erst `th-lint`, dann `node --check`, dann der Lauf.**
