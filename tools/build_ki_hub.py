@@ -26,7 +26,14 @@ def label(h):
 
 def main():
     items = []
-    for p in sorted(glob.glob(os.path.join(ROOT, "ki-*.html"))):
+    # ⚠️ Die Sammelregel ist der DATEINAME (`ki-*.html`). Zwei echte KI-Themenseiten
+    # heissen anders und fehlten dadurch im Hub — sie hatten null eingehende Links
+    # (gefunden mit tools/verwaiste_seiten.py). Wer eine KI-Seite ohne `ki-`-Praefix
+    # anlegt, traegt sie hier ein.
+    ZUSAETZLICH = ["kostenlose-ki-tools.html", "seedance-ki-video.html"]
+    dateien = sorted(glob.glob(os.path.join(ROOT, "ki-*.html")))
+    dateien += [os.path.join(ROOT, z) for z in ZUSAETZLICH if os.path.exists(os.path.join(ROOT, z))]
+    for p in dateien:
         name = os.path.basename(p)
         if name == SELF:
             continue
