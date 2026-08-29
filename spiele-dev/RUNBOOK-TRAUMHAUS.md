@@ -4,7 +4,7 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
-## ⏱️ Bevor du anfängst — elf Regeln, jede mit ihrem Preis
+## ⏱️ Bevor du anfängst — zwölf Regeln, jede mit ihrem Preis
 
 Diese Liste stammt aus **einer** Sitzung (2026-08-29, PRs #2369–#2396). Jeder Punkt hat
 dort echte Zeit gekostet; die Zahl dahinter ist, wie oft oder was genau.
@@ -46,10 +46,15 @@ dort echte Zeit gekostet; die Zahl dahinter ist, wie oft oder was genau.
    Uferlinie (#2374), Viertelmass (#2373), Bahnsteigkante (#2375), `light.visible`
    (#2387), LOD-Schwelle gegen Gruppenprüfung (#2388). Wenn du eine Zahl nachbaust, die
    es schon gibt: **frag stattdessen die Quelle.**
-10. **`node spiele-dev/tools/th-alle.mjs` vor und nach jeder Änderung** (16 Prüfungen,
-    ~20 min; `--schnell` für die Kernreihe). Zweimal ist hier etwas kaputtgegangen, das
+10. **`node spiele-dev/tools/th-alle.mjs` vor und nach jeder Änderung** (inzwischen 20
+    Prüfungen, ~45 min; `--schnell` für die Kernreihe, ~11 min). Zweimal ist hier etwas kaputtgegangen, das
     ein *vorhandenes* Werkzeug sofort gemeldet hätte.
-11. **Der Worktree fällt bei einem Container-Neustart auf einen alten Commit zurück**
+11. **Erst messen, dann ANSEHEN.** Eine Messung prüft, was man ihr aufträgt — nicht, ob
+    das Haus aussieht wie ein Haus. Der Spielclub bestand sechs grüne Prüfungen und hatte
+    trotzdem einen 0,25-m-Spalt unterm Dach, ein Dach aus zwölf Tabletts, Rasen als
+    Fußboden und eine Discokugel im Dach. Gefunden hat das ein Bild (`th-augen`,
+    `th-blick`, je zwei Minuten). → **vier Fehler an sechs grünen Häkchen vorbei.**
+12. **Der Worktree fällt bei einem Container-Neustart auf einen alten Commit zurück**
     (detached HEAD, `node_modules/playwright`-Symlink weg). → **zweimal** fertige,
     gemessene Arbeit verloren. Darum: **früh committen**, und nach jedem Neustart
     `git checkout -B <branch> origin/main` plus Symlink neu setzen.
@@ -3919,3 +3924,48 @@ Discokugel die Tanzfläche unter sich als Konflikt.
 **Erster Lauf, ein echter Befund:** der Kronleuchter hing bis **1,80 m** herunter — über
 dem Pokertisch fällt das nicht auf, beim Vorbeigehen schon. Auf 0,90 m gekürzt,
 Unterkante jetzt 2,10 m. Danach alle fünf Prüfungen grün, 0 JS-Fehler.
+
+## 2026-08-29 · 👁️ Sechs grüne Messungen — und dann habe ich das Haus angesehen
+
+Der Spielclub bestand alle sechs Prüfungen von `th-club.mjs`: alle zwölf Teile da, jedes
+innerhalb der Wände, keine Überschneidung, Hängendes im Rahmen, Türlücke frei, Wände
+dicht. Dann ein Bild mit `th-blick` und `th-augen` — und **drei echte Fehler**, die keine
+dieser Messungen sehen konnte.
+
+| Was das Bild zeigte | Ursache | Behoben |
+|---|---|---|
+| Ein 0,25-m-Spalt rings um das Haus zwischen Wandkrone und Dach | Wandmodule sind **2,75 m** hoch, nicht 3,00 — das Geschossraster 3,00 geht erst mit der 0,25 m dicken `th34_decke` auf | eine Lage `decke` auf y 2,75 |
+| Das Dach sah aus wie **zwölf nebeneinandergestellte Tabletts** | `th34_dach_flach` ist 4,10 × **0,92** × 4,10: ein Feld mit umlaufender Attika. In einer Reihe (Stadthaus, 3 Stück) richtig; als 4×3-Block bringt jedes Modul seine eigene Brüstung mit | `dach_flach` raus, dieselbe `decke` ist Decke **und** Flachdach |
+| Der Clubraum hatte **Rasen** als Fußboden | schlicht keiner gebaut | zweite Lage `decke` auf y −0,20, Oberkante 0,05 |
+
+Und daran hing ein vierter, den erst die Deckenhöhe aufdeckte: **die Discokugel steckte
+mit ihren obersten 25 cm im Dach.** Ich hatte mit Deckenhöhe 3,00 gerechnet — dem
+*Raster*. Die Decke hängt aber an der *Wand*, und die ist 2,75 hoch. `th-club` benutzte
+dieselbe falsche Zahl wie der Bau und meldete darum grün. Beide korrigiert.
+
+### Was das Werkzeug daraus gelernt hat
+
+Zwei neue Fragen, beide als **Strahl von oben**, weil eine Hüllbox das nicht beantwortet:
+
+* *Liegt über jedem Messpunkt eine Decke?* → 2,99 · 3,00 · 3,00 · 3,00 · 3,00 m
+* *Liegt unter jedem Messpunkt ein Fußboden?* → 0,04 · 0,05 · 0,12 · 0,05 · 0,05 m
+  (Gras wäre 0,00; die Platte liegt auf −0,20, Oberkante 0,05, Gelände hier flach 0,00 —
+  die Schwelle 0,03 liegt zwischen beiden Werten und auf keinem von ihnen, Regel 5)
+
+⚠️ **Zwei Fallen in diesen zwei Fragen, beide selbst hineingetreten:**
+
+1. Ein Strahl gegen `scene.children` **stirbt** mit „Cannot read properties of null
+   (reading matrixWorld)" — irgendwo hängt ein Objekt, das three beim Raycast nicht
+   anfassen kann. Erst eine eigene Zielliste (echte Meshes mit Geometrie *und* Material,
+   Hüllbox über dem Club) macht es lauffähig — und nebenbei viel schneller.
+2. Der **erste** Treffer des Bodenstrahls ist nicht der Boden. Der erste Lauf meldete an
+   zwei von fünf Punkten **1,879 m und 1,10 m** — das sind die Bar und ein Tisch. Die
+   Prüfung war grün und hätte einen Rasenboden unter einem Tisch nie bemerkt. Jetzt zählt
+   nur der oberste Treffer **unter 0,30 m**.
+
+> **Die Regel, die dieser Tag hinzufügt:** eine Messung prüft, was man ihr aufträgt —
+> nicht, ob das Haus aussieht wie ein Haus. Für alles Gebaute gilt: **erst messen, dann
+> ansehen.** `th-augen` und `th-blick` kosten je zwei Minuten und haben hier vier Fehler
+> gefunden, an denen sechs grüne Häkchen vorbeigelaufen sind.
+
+Belegbilder im Repo: `spiele-dev/screenshots/club-aussen.png` und `club-innen.png`.

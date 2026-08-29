@@ -7,11 +7,11 @@
  * Kopfhoehe; ein Kollider ohne Tuerluecke, der das Haus zwar dicht macht, aber auch
  * unbetretbar. Nichts davon wirft einen Fehler — man merkt es erst beim Hineingehen.
  *
- * Fuenf Fragen:
+ * Sieben Fragen:
  *   1. Sind alle zwoelf th14-Teile wirklich in der Szene? (ein 404 ist stumm)
  *   2. Liegt jedes Teil INNERHALB der Waende?
  *   3. Ueberlappen sich zwei Einrichtungsteile im Grundriss?
- *   4. Haengen Discokugel und Kronleuchter zwischen Kopf (2,0 m) und Decke (3,0 m)?
+ *   4. Haengen Discokugel und Kronleuchter zwischen Kopf (2,0 m) und Decke (2,75 m)?
  *   5. Kommt man hinein? inSolid muss in der Tuerluecke FALSCH und auf den drei
  *      anderen Wandfluchten WAHR sein.
  *
@@ -28,7 +28,7 @@ const sonde = `function(){
   var TEILE=["casinobar","pokertisch","roulettetisch","kartentisch","tanzflaeche",
              "dj_pult","automatenreihe","spielautomat","discokugel","kronleuchter",
              "neonschild_gross","samtkordel"];
-  var bb=new THREE.Box3(), gefunden={}, kisten=[];
+  var bb=new THREE.Box3(), gefunden={}, kisten=[], raus_ziele=0;
   (window._gebaeude||[]).forEach(function(g){
     var d=g.userData.datei||"";
     if(d.indexOf("th14_")!==0)return;
@@ -57,9 +57,57 @@ const sonde = `function(){
        Hoehen schneiden. Sonst meldet die Discokugel die Tanzflaeche als Konflikt. */
     var uy=Math.min(a.y1,b.y1)-Math.max(a.y0,b.y0);
     if(ux>0.05&&uz>0.05&&uy>0.05)ueber.push({a:a.name,b:b.name,ux:+ux.toFixed(2),uz:+uz.toFixed(2)});}
+  /* ⚠️ DECKE 2,75 — NICHT 3,00. Das Geschossraster des Baukastens ist 3,00, die
+     Wandmodule sind aber 2,75 hoch; die 0,25 m Rest fuellt die Decke. Der erste Stand
+     dieses Werkzeugs rechnete mit 3,00 und war damit genau so falsch wie der Bau, den
+     es pruefen sollte: die Discokugel steckte mit 25 cm im Dach und die Pruefung sagte
+     "gruen". Gefunden hat es erst ein BILD (th-blick), nicht diese Messung. */
+  var DECKE=2.75;
   ["discokugel","kronleuchter"].forEach(function(n){
     kisten.filter(function(k){return k.name===n;}).forEach(function(k){
-      if(k.y0<2.0||k.y1>3.02)haengt.push({name:n,unten:k.y0,oben:k.y1});});});
+      if(k.y0<2.0||k.y1>DECKE+0.02)haengt.push({name:n,unten:k.y0,oben:k.y1});});});
+
+  /* ⚠️ IST UEBERHAUPT EIN DACH DRUEBER? Der erste Bau hatte zwischen Wandkrone
+     (2,75) und Dach (3,00) einen 0,25-m-Spalt rings um das Haus — von aussen ein
+     weisser Rand, von innen Tageslicht durch die Decke. Keine der vier anderen
+     Fragen konnte das sehen; gefunden hat es ein Bild. Ein Strahl von oben nach
+     unten misst es dagegen direkt: er muss im Innenraum auf die Decke treffen,
+     nicht auf den Boden. */
+  /* ⚠️ NICHT GEGEN DIE GANZE SZENE STRAHLEN. Der erste Versuch tat das und starb mit
+     "Cannot read properties of null (reading matrixWorld)" — irgendwo in der Szene
+     haengt ein Objekt, das three beim Raycast nicht anfassen kann. Darum vorher eine
+     eigene Liste bauen: nur echte Meshes mit Geometrie UND Material, und nur solche,
+     deren Huellbox ueberhaupt ueber dem Club liegt. Das ist nebenbei viel schneller. */
+  var ziele=[], hb=new THREE.Box3();
+  scene.traverse(function(o){
+    if(!o.isMesh||!o.geometry||!o.material||o.isInstancedMesh)return;
+    hb.setFromObject(o);
+    if(!isFinite(hb.min.x))return;
+    if(hb.max.x<CX-9||hb.min.x>CX+9||hb.max.z<CZ-7||hb.min.z>CZ+7)return;
+    ziele.push(o);});
+  var dach=[], boden=[];
+  var rc=new THREE.Raycaster(); rc.far=30;
+  [[0,0],[-6,-4],[6,-4],[-6,4],[6,4]].forEach(function(o){
+    rc.set(new THREE.Vector3(CX+o[0],9,CZ+o[1]), new THREE.Vector3(0,-1,0));
+    var tr=rc.intersectObjects(ziele,false).filter(function(h){return h.point.y>0.5;});
+    dach.push({wo:o[0]+"|"+o[1], hoehe:tr.length?+tr[0].point.y.toFixed(2):null});
+    /* ⚠️ UND WORAUF STEHT MAN? Der erste Innenblick zeigte einen Clubraum mit RASEN:
+       Discokugel, Pokertisch und Tanzflaeche auf der Wiese. Keine der uebrigen
+       Messungen konnte das sehen — sie fragen nach Lage, Groesse und Decke.
+       Die Bodenplatte liegt auf -0,20, ihre Oberkante also auf 0,05; das Gelaende ist
+       hier gemessen flach 0,00. Der Strahl von 2,0 m nach unten trifft damit
+       entweder 0,05 (Boden da) oder 0,00 (Gras). Die Schwelle 0,03 liegt zwischen
+       beiden Werten und auf keinem von ihnen. */
+    /* ⚠️ NICHT DEN ERSTEN TREFFER NEHMEN. Der erste Lauf tat das und meldete an zwei
+       von fuenf Punkten 1,879 m und 1,10 m — das sind die Bar und ein Tisch, nicht der
+       Boden. Die Pruefung war gruen, aber aus dem falschen Grund: sie haette einen
+       Rasenboden unter einem Tisch nicht bemerkt. Darum nur Treffer UNTER 0,30 m
+       betrachten und davon den obersten. Nach unten ist die Reihenfolge: Plattenober-
+       kante 0,05, Gelaende 0,00, Plattenunterkante -0,20 — der oberste ist der richtige. */
+    rc.set(new THREE.Vector3(CX+o[0],2.0,CZ+o[1]), new THREE.Vector3(0,-1,0));
+    var tb=rc.intersectObjects(ziele,false).filter(function(h){return h.point.y<0.30;});
+    boden.push({wo:o[0]+"|"+o[1], hoehe:tb.length?+tb[0].point.y.toFixed(3):null});});
+  raus_ziele=ziele.length;
 
   /* Begehbarkeit: auf jeder Wandflucht tasten. */
   function fest(x,z){return typeof inSolid==="function"?!!inSolid(x,z):null;}
@@ -69,7 +117,7 @@ const sonde = `function(){
   var west=[fest(CX-8.2,CZ-3),fest(CX-8.2,CZ+3)];
   var ost =[fest(CX+8.2,CZ-3),fest(CX+8.2,CZ+3)];
   var innen=[fest(CX,CZ),fest(CX+2,CZ-3),fest(CX-3,CZ+2)];
-  return {gefunden:gefunden,fehlend:fehlend,kisten:kisten,raus:raus,ueber:ueber,haengt:haengt,
+  return {gefunden:gefunden,fehlend:fehlend,kisten:kisten,raus:raus,ueber:ueber,haengt:haengt,dach:dach,boden:boden,strahlZiele:raus_ziele,
           tuer:tuer,sued:sued,nord:nord,west:west,ost:ost,innen:innen};}`
 
 mitSonden('traumhaus.html', { club: sonde }, '_club.html')
@@ -93,8 +141,16 @@ else console.log('✅ Jedes Innenteil liegt innerhalb der Waende')
 if (R.ueber.length) { fund += R.ueber.length; console.log(`\n❌ ${R.ueber.length} Ueberschneidungen im Grundriss:`); for (const u of R.ueber) console.log(`   ${u.a} × ${u.b}  ${u.ux} m in x, ${u.uz} m in z`) }
 else console.log('✅ Keine zwei Einrichtungsteile auf demselben Fleck')
 
-if (R.haengt.length) { fund += R.haengt.length; console.log(`\n❌ Haengendes ausserhalb 2,0…3,0 m:`); for (const h of R.haengt) console.log(`   ${h.name}  unten ${h.unten}  oben ${h.oben}`) }
-else console.log('✅ Discokugel und Kronleuchter haengen zwischen Kopf und Decke')
+if (R.haengt.length) { fund += R.haengt.length; console.log(`\n❌ Haengendes ausserhalb 2,0…2,75 m:`); for (const h of R.haengt) console.log(`   ${h.name}  unten ${h.unten}  oben ${h.oben}`) }
+else console.log('✅ Discokugel und Kronleuchter haengen zwischen Kopf und Decke (2,75)')
+
+const ohneDach = (R.dach || []).filter((d) => d.hoehe === null || d.hoehe < 2.7)
+if (!ohneDach.length && (R.dach || []).length) console.log(`✅ Ueber jedem Messpunkt liegt eine Decke (${R.dach.map((d) => d.hoehe).join(', ')} m · ${R.strahlZiele} Meshes im Strahl)`)
+else { fund++; console.log(`\n❌ ${ohneDach.length} Messpunkte ohne Decke darueber: ${ohneDach.map((d) => d.wo + ' -> ' + d.hoehe).join(', ')}`) }
+
+const ohneBoden = (R.boden || []).filter((b) => b.hoehe === null || b.hoehe < 0.03)
+if (!ohneBoden.length && (R.boden || []).length) console.log(`✅ Unter jedem Messpunkt liegt ein Fussboden (${R.boden.map((b) => b.hoehe).join(', ')} m — Gras waere 0)`)
+else { fund++; console.log(`\n❌ ${ohneBoden.length} Messpunkte ohne Fussboden (man steht auf dem Gelaende): ${ohneBoden.map((b) => b.wo + ' -> ' + b.hoehe).join(', ')}`) }
 
 const dicht = (a) => a.every((v) => v === true)
 const wandOk = dicht(R.nord) && dicht(R.west) && dicht(R.ost) && R.sued.every((v) => v === true)
