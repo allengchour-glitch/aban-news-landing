@@ -13379,3 +13379,7 @@ gid://shopify/Product/15520345850241	58->0	Outdoor Reise-Rucksack, gross
 gid://shopify/Product/15520346079617	16->0	Leichter Wanderrucksack mit Signalpfeife
 gid://shopify/Product/15520346341761	12->0	Grosser Freizeit-Rucksack, wasserdicht
 gid://shopify/Product/15520347324801	49->2	Retro Umhängetasche aus Crazy Horse Leder
+gid://shopify/Product/15520374096257	50->0	Stylischer schwarzer Business-Rucksack für Herren
+gid://shopify/Product/15520376848769	13->0	Einfarbiger Kurzarm-Overall mit Reverskragen
+gid://shopify/Product/15520377012609	22->0	Polo-Shirt Kurzarm Atmungsaktiv
+gid://shopify/Product/15520377373057	11->0	Arbeitshemd mit Brusttasche
