@@ -220,7 +220,10 @@ else {
   console.log(`   ${flaeche.length} Flaechen-Kaesten (darueber) mit ${flaecheLeer} leeren Punkten`)
   console.log(`   davon mit Tuer (= gemeintes Gebaeude): ${orteEcht.filter((e) => e.tuer).length}\n`)
   console.log(`⚠️  ${orteEcht.length} Kaesten blockieren an Stellen, an denen weder auf Brusthoehe noch darueber etwas steht:`)
-  for (const e of orteEcht.slice(0, 20)) {
+  /* Hausgrosse zuerst: die sind einzeln zu beheben (Kasten aufs Modellmass), die
+     grossen Flaechen sind eine Entwurfsfrage. */
+  const sortiert = [...orteEcht].sort((a, b) => (a.flaeche <= HAUS ? 0 : 1) - (b.flaeche <= HAUS ? 0 : 1) || b.leer - a.leer)
+  for (const e of sortiert.slice(0, 24)) {
     console.log(`   ${String(e.leer).padStart(4)} von ${String(e.ges).padStart(4)} (${String(e.anteil).padStart(3)} %, ${String(e.unter).padStart(3)} unterbaut)  ${String(e.flaeche).padStart(5)} m2${e.tuer ? ' Tuer' : '    '}  Kasten ${e.mitte.padStart(13)} ${e.mass.padStart(11)}  z. B. ${e.bsp}`)
   }
   if (orteEcht.length > 20) console.log(`   … und ${orteEcht.length - 20} weitere`)
