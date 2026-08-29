@@ -20,6 +20,34 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🔒 Ein verwaister `sleep` hielt zwei Motoren stundenlang still (2026-08-29)
+Aufgefallen an einer Kleinigkeit: `engine_keepalive` meldete bei JEDEM stündlichen Lauf
+«social_autopilot neu gestartet» und «website_hygiene_runner neu gestartet». Nachgesehen statt
+überlesen — und beides war falsch. Die Logs sagten «läuft bereits — dieser Start endet»,
+`ps` zeigte **keinen einzigen Prozess**. Der Motor war tot, meldete aber gesund.
+`fuser` nennt den Halter:
+| Sperre | gehalten von |
+|---|---|
+| `/tmp/social_autopilot.lock` | **`sleep 900`** (PID 2193) |
+| `/tmp/website_hygiene.lock` | **`sleep 7200`** (PID 3069) |
+**`exec 9>lock` wird an JEDES Kind vererbt — auch an `sleep`.** Stirbt die Schleife, hält der
+verwaiste `sleep` die flock-Sperre weiter: beim Website-Hygiene-Runner bis zu **zwei Stunden**.
+In dieser Zeit beendet sich jeder Neustart mit «läuft bereits», und niemand merkt etwas.
+- **Ursache behoben:** `sleep N 9>&-` in `social_autopilot.sh`, `website_hygiene_runner.sh`
+  und `reel_engine_runner.sh` — das Kind gibt den Deskriptor ab.
+- **Und zusätzlich von aussen:** `engine_keepalive` löst eine Sperre, wenn KEIN Prozess des
+  Runners läuft (`fuser -k`, nur bei `n -eq 0`, sonst würde ein gesunder Motor abgeschossen).
+  **Ein Skript, das sich selbst blockiert hat, kann sich nicht selbst befreien** — dieselbe
+  Begründung wie bei Lehre 0f zum Aufseher, nur wurde sie damals nicht auf die Runner übertragen.
+  Sofort bewiesen: beide Sperren gelöst, beide Motoren laufen wieder und arbeiten.
+- ⚠️ **Dieselbe Reparatur gab es heute schon einmal** — am Vormittag für
+  `/tmp/fixer_keepalive.lock`, mit exakt derselben Diagnose. Sie wurde nicht verallgemeinert.
+  **Wer eine Sperr-Falle an einer Stelle behebt, muss jede andere Stelle mit `exec 9>` suchen.**
+  Vierte Wiederholung der Geschwister-Lehre nach Farbtabelle, Preisformel und `publishVerified()`.
+- ⚠️ **Die Statusmeldung selbst war der eigentliche Verräter.** «neu gestartet» bei jedem Lauf
+  ist kein Rauschen, sondern ein Befund: Ein Dauerläufer, der stündlich neu gestartet werden
+  muss, läuft nicht. **Eine Zeile, die sich in jedem Durchgang wiederholt, ist eine Meldung.**
+
 ## 🔪 Die Klingen-Hausregel lief an fast jeder Klinge vorbei (2026-08-28)
 Aus dem 40-Agenten-Audit, und der einzige Befund daraus, den ich sofort selbst nachgeprüft habe.
 `\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)` steht in **fünf** Dateien —

@@ -12,6 +12,11 @@ set -u
 cd "$(dirname "$0")/.." || exit 1
 
 exec 9>/tmp/reel_engine_runner.lock
+# ⚠️ `9>&-` ist KEIN Beiwerk (29.08.2026). `exec 9>lock` wird an JEDES Kind vererbt —
+# auch an `sleep`. Stirbt die Schleife, haelt der verwaiste sleep die flock-Sperre bis
+# zu zwei Stunden weiter, und jeder Neustart beendet sich mit «laeuft bereits», waehrend
+# der Motor in Wahrheit still steht. Live nachgewiesen: /tmp/social_autopilot.lock wurde
+# von `sleep 900` (PID 2193) gehalten, /tmp/website_hygiene.lock von `sleep 7200`.
 flock -n 9 || { echo "$(date -u +%H:%M) Reel-Motor läuft bereits — dieser Start endet."; exit 0; }
 
 source /tmp/secrets_env.sh 2>/dev/null
@@ -24,5 +29,5 @@ fi
 
 while true; do
   BATCH=${BATCH:-3} /opt/node22/bin/node automation/cj_video_reel_engine.mjs
-  sleep "${TAKT:-1800}"
+  sleep "${TAKT:-1800}" 9>&-
 done

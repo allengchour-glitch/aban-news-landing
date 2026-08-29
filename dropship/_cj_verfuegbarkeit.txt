@@ -20719,3 +20719,5 @@ gid://shopify/Product/15447959568769	ok
 gid://shopify/Product/15447959404929	ok
 gid://shopify/Product/15447959241089	ok
 gid://shopify/Product/15447958880641	ok
+gid://shopify/Product/15447967793537	ok
+gid://shopify/Product/15447967433089	ok

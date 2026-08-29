@@ -269,6 +269,25 @@ for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
   [ -f "$QUELL" ] || continue
   n=$(zaehle "$S.sh")
   if [ "$n" -eq 0 ]; then
+    # ⚠️ VERWAISTE SPERRE LOESEN (29.08.2026). Diese Runner sichern sich mit `exec 9>lock` +
+    # flock. Der Deskriptor wird an JEDES Kind vererbt, auch an `sleep`. Stirbt die Schleife,
+    # haelt der verwaiste sleep die Sperre weiter — gemessen: /tmp/social_autopilot.lock von
+    # `sleep 900` (PID 2193), /tmp/website_hygiene.lock von `sleep 7200` (PID 3069). Folge:
+    # Der Prozess ist TOT, jeder Neustart beendet sich aber mit «laeuft bereits», und der
+    # Motor steht bis zu zwei Stunden still, waehrend jede Statuszeile Vollzug meldet.
+    # Die Skripte selbst geben den Deskriptor jetzt mit `9>&-` ab — aber ein Skript, das sich
+    # selbst blockiert hat, kann sich nicht selbst befreien. Deshalb ZUSAETZLICH von aussen,
+    # genau wie beim Aufseher: Selbstpruefung ist die erste Verteidigung, nie die einzige.
+    # Geloest wird NUR, wenn kein Prozess des Runners laeuft ($n -eq 0) — sonst wuerde hier
+    # ein gesunder Motor abgeschossen.
+    for LOCKDATEI in "/tmp/$S.lock" "/tmp/${S%_runner}.lock"; do
+      if [ -e "$LOCKDATEI" ] && command -v fuser >/dev/null 2>&1 \
+         && fuser "$LOCKDATEI" >/dev/null 2>&1; then
+        fuser -k "$LOCKDATEI" >/dev/null 2>&1
+        echo "$S: verwaiste Sperre $LOCKDATEI geloest"
+        sleep 1
+      fi
+    done
     echo "$S neu gestartet"
     starte "$S" bash "$QUELL"
   elif [ "$n" -gt 1 ]; then

@@ -9,6 +9,11 @@ cd /home/user/aban-news-landing || exit 1
 # Shopify-Last für dieselbe Arbeit. Die Sperre hängt am Zweck, nicht am Pfad: Wer sie nicht
 # bekommt, endet sofort — egal von wo er gestartet wurde.
 exec 9>/tmp/website_hygiene.lock
+# ⚠️ `9>&-` ist KEIN Beiwerk (29.08.2026). `exec 9>lock` wird an JEDES Kind vererbt —
+# auch an `sleep`. Stirbt die Schleife, haelt der verwaiste sleep die flock-Sperre bis
+# zu zwei Stunden weiter, und jeder Neustart beendet sich mit «laeuft bereits», waehrend
+# der Motor in Wahrheit still steht. Live nachgewiesen: /tmp/social_autopilot.lock wurde
+# von `sleep 900` (PID 2193) gehalten, /tmp/website_hygiene.lock von `sleep 7200`.
 flock -n 9 || { echo "$(date -u +%H:%M) Website-Hygiene läuft bereits — dieser Start endet."; exit 0; }
 
 source /tmp/secrets_env.sh 2>/dev/null
@@ -34,5 +39,5 @@ while true; do
   echo "$(date -u +%H:%M) bewertungsfotos_saeubern"
   python3 automation/bewertungsfotos_saeubern.py --scharf 2>&1 | tail -8 || true
 
-  sleep 7200
+  sleep 7200 9>&-
 done
