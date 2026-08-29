@@ -5383,3 +5383,10 @@ gid://shopify/Product/15449061753217	CHF 14.32	5 Varianten	Damen Strick-Cardigan
 gid://shopify/Product/15449061785985	CHF 16.86	20 Varianten	V-Neck Strickpullover aus Faux-Mink Samt
 gid://shopify/Product/15449061982593	CHF 23.95	1 Varianten	Strickpullover mit Rundhals und Knöpfen
 gid://shopify/Product/15449062146433	CHF 11.82	10 Varianten	Kuscheliger Cardigan im Japan-Stil
+gid://shopify/Product/15449062408577	CHF 12.12	12 Varianten	Spitzenkragen Strickpullover
+gid://shopify/Product/15449062605185	CHF 22.36	6 Varianten	V-Neck Strick-Cardigan mit Kontrastband
+gid://shopify/Product/15449062801793	CHF 15.95	8 Varianten	Off-Shoulder Pullover aus Kaschmir-Baumwolle
+gid://shopify/Product/15449062965633	CHF 14.48	9 Varianten	Vielseitiger Cardigan mit Goldknöpfen
+gid://shopify/Product/15449064046977	CHF 17.11	28 Varianten	Legere Herrenjacke für Alltag
+gid://shopify/Product/15449064112513	CHF 19.86	70 Varianten	Freizeit Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15449064178049	CHF 16.73	36 Varianten	Retro Jacquard Cardigan für Herren
