@@ -5303,3 +5303,9 @@ gid://shopify/Product/15449010569601	CHF 37.92	1 Varianten	Mini Karaoke Maschine
 gid://shopify/Product/15449011585409	CHF 16.77	30 Varianten	Herren Fleece Hoodie Langarm
 gid://shopify/Product/15449026396545	CHF 35.14	1 Varianten	Lüfter mit LED, Befeuchter & USB-Strom
 gid://shopify/Product/15449027641729	CHF 11.90	1 Varianten	Magnetischer Türvorhang – Mücken- & Insektenschutz
+gid://shopify/Product/15449028002177	CHF 10.25	1 Varianten	Halskette mit Zirkonia-Tropfenanhänger
+gid://shopify/Product/15449028297089	CHF 12.11	1 Varianten	Kühlbeutel für Rotwein
+gid://shopify/Product/15449028395393	CHF 288.45	1 Varianten	Handgepäck-Trolley mit Hartschale
+gid://shopify/Product/15449029116289	CHF 22.67	1 Varianten	Digitaler Diktierrekorder, 64 GB
+gid://shopify/Product/15449030984065	CHF 20.66	1 Varianten	Taktisches Outdoor-Stativ, faltbar & ausziehbar
+gid://shopify/Product/15449031049601	cj-abgekuendigt-pruefen
