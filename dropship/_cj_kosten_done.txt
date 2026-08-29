@@ -4710,3 +4710,67 @@ gid://shopify/Product/15448924684673	CHF 28.70	1 Varianten	Luxuriöser Plüsch K
 gid://shopify/Product/15448924815745	CHF 8.66	1 Varianten	Retro Kissenhülle im französischen Stil
 gid://shopify/Product/15448924946817	CHF 36.46	1 Varianten	Samt-Sofakissenbezug für Herbst und Winter
 gid://shopify/Product/15448925110657	CHF 9.89	1 Varianten	Osterhasen-Kissenbezug mit Frottee-Stickerei
+gid://shopify/Product/15448925307265	CHF 10.80	30 Varianten	Kissenhülle bestickt, klassische Ölmalerei
+gid://shopify/Product/15448925372801	CHF 24.07	1 Varianten	Corduroy Sofa-Kissen, rutschfest
+gid://shopify/Product/15448925471105	CHF 10.14	4 Varianten	Kissenbezug mit Wassertropfen-Stickerei
+gid://shopify/Product/15448925503873	CHF 14.21	1 Varianten	Lendenkissen Bezug
+gid://shopify/Product/15448925569409	CHF 10.43	1 Varianten	Boho-Kissenbezug mit Stickerei und Quasten
+gid://shopify/Product/15448925634945	CHF 28.27	1 Varianten	Rutschfeste Fussmatte für den Eingangsbereich
+gid://shopify/Product/15448925700481	CHF 25.23	1 Varianten	Schmutzfangmatte für Aussenbereiche
+gid://shopify/Product/15448925766017	CHF 31.34	1 Varianten	Nordischer Plüsch-Sofabezug, rutschfest
+gid://shopify/Product/15448925798785	CHF 15.78	1 Varianten	Elastischer Sofabezug ohne Armlehnen
+gid://shopify/Product/15448925929857	CHF 55.54	1 Varianten	Sofaüberzug Vintage – Katzenfreundlich & Elastisch
+gid://shopify/Product/15448925962625	CHF 21.65	1 Varianten	Chenille Kissenhülle oder Kissen mit Füllung
+gid://shopify/Product/15448926060929	CHF 17.63	1 Varianten	Weinroter Kissenbezug aus Rex Kaninchenfell
+gid://shopify/Product/15448926126465	CHF 56.03	1 Varianten	Plüsch-Stützkissen für Seitenschläfer
+gid://shopify/Product/15448926159233	CHF 10.54	1 Varianten	Atmungsaktives Cartoon-Eisseidenkissen für den Som
+gid://shopify/Product/15448926224769	CHF 24.55	1 Varianten	Langes Kissen aus Eisseide, kühlend
+gid://shopify/Product/15448926257537	CHF 35.01	1 Varianten	Langes Eisseiden-Kissen mit Sommer-Motiv
+gid://shopify/Product/15448926290305	CHF 38.14	1 Varianten	Langes Eisseiden-Kissen für den Sommer
+gid://shopify/Product/15448926355841	CHF 27.20	1 Varianten	Sommerliches Eisseiden-Seitenschläferkissen
+gid://shopify/Product/15448926421377	CHF 38.51	1 Varianten	Brocade Raute Beifuss-Kissen mit Buchweizenschalen
+gid://shopify/Product/15448926486913	CHF 11.39	1 Varianten	Kühler Sommer Seidenkissenbezug
+gid://shopify/Product/15448926552449	CHF 25.72	1 Varianten	Ergonomisches Kissen für Kinder und Jugendliche
+gid://shopify/Product/15448926617985	CHF 9.35	1 Varianten	Ölregulierender Kissenbezug
+gid://shopify/Product/15448926716289	CHF 61.26	1 Varianten	Schwangerschaftskissen mit Taillenstütze
+gid://shopify/Product/15448926781825	CHF 61.71	1 Varianten	U-förmiges Samt-Schwangerschaftskissen
+gid://shopify/Product/15448926847361	CHF 32.23	1 Varianten	Rebound Space Memory Foam Kissen
+gid://shopify/Product/15448926912897	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448926945665	CHF 49.91	1 Varianten	Ergonomisches Nackenkissen aus Schaumstoff
+gid://shopify/Product/15448926978433	CHF 59.63	1 Varianten	Wolkenförmiges Memory Foam Kissen
+gid://shopify/Product/15448927011201	CHF 8.02	1 Varianten	Babykissen im nordischen Stil für die Taille
+gid://shopify/Product/15448927076737	CHF 24.35	1 Varianten	Memory Foam Sitz- und Rückenkissen
+gid://shopify/Product/15448927142273	CHF 27.26	1 Varianten	Ananas Brot Kissen – hoch-elastisch
+gid://shopify/Product/15448927175041	CHF 18.95	1 Varianten	Nackenstützkissen mit Massageperlen
+gid://shopify/Product/15448927240577	CHF 33.35	1 Varianten	Multifunktionales Ganzkörper-Knetkissen
+gid://shopify/Product/15448927273345	CHF 16.15	1 Varianten	Nackenkissen für Wimpern- und Brauenbehandlungen
+gid://shopify/Product/15448927338881	CHF 49.08	1 Varianten	Baby Schräglagerungskissen
+gid://shopify/Product/15448927404417	CHF 35.33	1 Varianten	Keilförmiges Rückenkissen mit Kopfstütze
+gid://shopify/Product/15448927502721	CHF 34.63	1 Varianten	Multifunktionales Memory Foam Kissen
+gid://shopify/Product/15448927535489	CHF 32.23	1 Varianten	Ergonomische Baby-Hüftsitztrage
+gid://shopify/Product/15448927568257	CHF 76.00	1 Varianten	Langes, waschbares Seitenschläferkissen
+gid://shopify/Product/15448927666561	CHF 21.22	1 Varianten	Wolkenkissen im französischen Stil
+gid://shopify/Product/15448927699329	CHF 40.71	1 Varianten	Zierkissen mit Blumenmuster im französischen Stil
+gid://shopify/Product/15448927797633	CHF 33.17	4 Varianten	Kühlendes Memory-Schaum Kissen, Schmetterlingsform
+gid://shopify/Product/15448927863169	CHF 47.94	1 Varianten	Lesekissen für Einzelbett
+gid://shopify/Product/15448927928705	CHF 11.93	1 Varianten	Vintage Kissenhülle mit Stickerei
+gid://shopify/Product/15448927961473	CHF 20.15	6 Varianten	Babykissen mit Kontur aus Buchweizenschalen
+gid://shopify/Product/15448928027009	CHF 21.85	1 Varianten	Tencel Kissenbezug, einfarbig
+gid://shopify/Product/15448928059777	CHF 14.06	1 Varianten	Dopamin Fragezeichen Nackenkissen
+gid://shopify/Product/15448928125313	CHF 20.63	1 Varianten	Seidenkissenbezug 22 Momme, beidseitig
+gid://shopify/Product/15448928190849	CHF 40.98	1 Varianten	Sofa Kissen Abstrakt Geometrisch
+gid://shopify/Product/15448928256385	CHF 34.72	1 Varianten	Nackenkissen und Rückenlehne mit Memory-Schaum
+gid://shopify/Product/15448928289153	CHF 11.82	1 Varianten	Halbrundes Memory Foam Kissen
+gid://shopify/Product/15448928321921	CHF 25.10	1 Varianten	Mondförmiges Baumwollkissen für Kinder (3–6 Jahre)
+gid://shopify/Product/15448928354689	CHF 21.12	1 Varianten	Auto Nackenkissen aus Nappaleder
+gid://shopify/Product/15448928452993	CHF 16.23	1 Varianten	Büro-Nickerchen Kissen für den Schreibtisch
+gid://shopify/Product/15448928485761	CHF 20.45	1 Varianten	Nordischer Kissenbezug mit Quasten
+gid://shopify/Product/15448928518529	CHF 9.62	1 Varianten	Kissenhülle Modernes Design
+gid://shopify/Product/15448928584065	CHF 14.72	1 Varianten	Memory Foam Rückenkissen für Bürostühle
+gid://shopify/Product/15448928616833	CHF 32.85	1 Varianten	Konturiertes Memory-Schaum Kissen
+gid://shopify/Product/15448928682369	CHF 18.14	1 Varianten	Sitzkissen für langen Bürostuhl-Komfort
+gid://shopify/Product/15448928747905	CHF 38.72	1 Varianten	Beheizbares Nacken- & Lendenkissen mit Massage
+gid://shopify/Product/15448928780673	CHF 149.79	1 Varianten	Hotel Daunenkissen Gänse- und Entenfedern
+gid://shopify/Product/15448928813441	CHF 36.64	1 Varianten	Bambusfaser Memory Foam Kissen
+gid://shopify/Product/15448928878977	CHF 32.80	1 Varianten	Memory Foam Nackenkissen
+gid://shopify/Product/15448928911745	CHF 52.31	1 Varianten	Nackenkissen mit Buchweizenfüllung und Baumwollbez
