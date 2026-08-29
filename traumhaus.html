@@ -872,10 +872,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        AM FUSS — genau das Profil eines Berges. Das `max` erzeugt dort, wo sich
        zwei Gipfelglocken schneiden, automatisch einen GRAT.
 
-       ⚠️ Berg Nr. 5 (der Hausberg der Seilbahn) bleibt ein reiner Kegel: die
-       Seilbahn rechnet ihre Stuetzen- und Stationshoehen mit
-       y(d) = -6 + 75*(1 - d/51.75). Jede andere Form liesse die Stuetzen in der
-       Luft haengen oder im Hang stecken. */
+       ⚠️ `einzel` macht aus dem Massiv einen reinen Kegel (ein Gipfel, EXP 1, keine
+       Kerben). Es benutzt derzeit KEIN Berg: der frueher so gebaute "Hausberg" der
+       Seilbahn ist entfallen, weil sein Fuss ueber dem Sportplatz lag. Die Seilbahn
+       fragt ihre Hoehen seither bei `window._bergHoehe` und braucht keine Sonderform
+       mehr. Der Schalter bleibt fuer den Fall, dass wieder einer gebraucht wird —
+       ⚠️ dann aber daran denken: `streck` staucht den Grundriss AUCH bei `einzel`,
+       ein "reiner Kegel" ist es also nur in der Hoehe, nicht im Grundriss. */
     function bergGeo(rad,hoch,seed,fussY,einzel){
       var NR=12, NA=24;
       /* ⚠️ WARUM ES TROTZ MEHRERER GIPFEL NACH KEGEL AUSSAH: die Nebengipfel lagen
@@ -1017,32 +1020,37 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
          nicht die Hoehe allein, sondern das VERHAELTNIS von Hoehe zu Grundflaeche.
          ⚠️ Der Fuss darf die Landstrasse (r 200) nicht erreichen: groesster Fuss
          ist 190*0,535*1,38 = 140, kleinster Abstand 350 - 140 = 210. Passt. */
-      var r=(i===5)?213:350+((i*47)%120);
-      var hoch=(i===5)?75:85+((i*29)%106);          // Hausberg fest, sonst 85..190
-      var rad=(i===5)?51.75:hoch*(0.40+((i%4)*0.045));
+      /* ⚠️ HIER STAND EIN SONDERBERG. Berg 5 hatte feste Werte (r 213, Hoehe 75,
+         Fussradius 51,75, eigenes Flag an bergGeo) und war zusaetzlich von der
+         Sperrliste ausgenommen — nur damit die Seilbahn irgendeinen Berg hat.
+         GEMESSEN (th-boden.mjs): sein Fuss ist eine Ellipse von 154 x 113 m um
+         (121,5|175) und lag damit ueber dem Ostteil des Sportfelds. 18 Bauwerke
+         standen auf y = 0 unter bis zu 38,9 m Fels: Flutlichtmast, vier
+         Ballfangzaeune, das Tor und die Tribuene des Sportplatzes, fuenf Neonschilder
+         und Samtkordeln des Vergnuegungsviertels, ein Bus auf seiner Route.
+         Die Sperrzone [0,216,110,60] hatte genau diesen Zweck; die Ausnahme hat sie
+         ausgehebelt. Ein reiner Kegel haette nicht geholfen — (101,8|161,8) liegt nur
+         23,7 m von der Bergmitte, dort stuenden immer noch 34,6 m Fels. Der Berg stand
+         nicht zu breit, sondern am falschen Ort.
+         Der Sonderberg entfaellt ersatzlos: die Seilbahn faehrt jetzt auf einen der
+         Berge, die ohnehin da sind (siehe seilbahn()). Berg 5 wird damit ein ganz
+         normaler Kettenberg — und von der Sperrliste wie jeder andere abgefangen. */
+      var r=350+((i*47)%120);
+      var hoch=85+((i*29)%106);                     // 85..190
+      var rad=hoch*(0.40+((i%4)*0.045));
       var bx=Math.cos(a)*r,bz=Math.sin(a)*r;
       if(bx<-150&&Math.abs(bz)<170)continue;      // Westen ist offenes Meer
-      /* ⚠️ DER HAUSBERG IST NICHT VERHANDELBAR — er wurde von der Sperrliste geloescht.
-         Berg 5 ist ueberall im Code eigens behandelt: fester Radius r = 213, feste Hoehe 75,
-         fester Fussradius 51,75 und ein eigenes Flag an bergGeo(). Auf ihm steht die
-         BERGSTATION DER SEILBAHN. Die Sportpark-Sperrzone [0,216,110,60] erwischt ihn
-         trotzdem: |121,4 - 0| = 121,4 < 110 + 51,75*0,9 = 156,6 und |175 - 216| = 41 <
-         60 + 46,6 = 106,6 -> `continue`, der Berg entsteht nie.
-         GEMESSEN: kein Gelaende bei (121|175), kein Gelaende unter der Station, und die
-         Bergstation steht auf y 40,3 … 49,8 — sie schwebt in 40 m Hoehe ueber dem Nichts.
-         Naechstes Gelaende: 76 m entfernt und 5 m hoch.
-         Die Sperrliste soll verhindern, dass ZUFAELLIGE Berge in Viertel wachsen; der
-         Hausberg ist keiner davon. Umgekehrt weichen die Viertel dem Gelaende inzwischen
-         selbst aus (`imBerg` rastert es, seit die Huellbox-Falle behoben ist) — und die
-         Berge entstehen frueher als die Viertel, also kann der Sportpark ausweichen. */
+      /* Die Sperrliste haelt Berge aus den Vierteln. Sie gilt fuer JEDEN Berg —
+         die frueher hier stehende Ausnahme fuer Nr. 5 hat 18 Bauwerke unter Fels
+         begraben (siehe oben). */
       var sperr=false;
-      if(i!==5)for(var qs=0;qs<QSPERR.length;qs++){var Q=QSPERR[qs];
+      for(var qs=0;qs<QSPERR.length;qs++){var Q=QSPERR[qs];
         if(Math.abs(bx-Q[0])<Q[2]+rad*0.9&&Math.abs(bz-Q[1])<Q[3]+rad*0.9){sperr=true;break;}}
       if(sperr)continue;
       /* Das Hoehenfeld liefert y = 0 am Fuss (der Kegel lieferte -hoch/2), der
          Sockel liegt darum direkt auf -6 statt auf hoch/2-6. */
       var fussY=-6;
-      var berg=new THREE.Mesh(bergGeo(rad,hoch,i*3+1,fussY,i===5),felsVM);
+      var berg=new THREE.Mesh(bergGeo(rad,hoch,i*3+1,fussY,false),felsVM);
       berg.position.set(bx,fussY,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
       berg.receiveShadow=true;scene.add(berg);
       /* Fuss melden. Ein Berg der Hoehe 97 hat 80 m Basisradius — seine Sohle
@@ -6354,16 +6362,21 @@ setTimeout(function baueGebaeude(){
          Platz dieser Groesse — die Station ist mit 17 x 27.5 m groesser als jedes
          Wohnhaus. Ergebnis: 165 m Fahrstrecke von Osten ueber „Gewerbe Ost" hinweg
          zur Bergstation auf 40 m Hoehe. */
-      /* ⚠️ BERG WAR (129|156) — 20 m neben dem Gipfel, wo der Hang mit rund 50 Grad
-         steht. Die Terrasse ist 24 x 34 m und liegt mit ihrer LANGEN Seite im
-         Gefaelle: zwischen Berg- und Talkante lagen dort 65,5 - 22,2 = 43 Hoehenmeter.
-         Egal wie man den Bahnsteig legt, eine der beiden Kanten ist falsch — bei
-         y 40 steckte die Bergkante 25 m im Fels, bei y 66 waeren die Stuetzen auf
-         bis zu 49 m gewachsen. Loesung ist keine neue Hoehe, sondern ein neuer Ort:
-         25 m weiter talwaerts auf derselben Seilachse liegt die Terrasse auf
-         -1,1 … 41,3 m, die Bergkante also GENAU auf Bahnsteighoehe. Die Talseite
-         traegt der Felssockel — wofuer er da ist. */
-      var TAL={x:228,z:24},BERG={x:144,z:136};
+      /* ⚠️ DIE BAHN FAEHRT JETZT AUF EINEN BERG, DEN ES OHNEHIN GIBT.
+         Sie fuhr bisher auf einen SONDERBERG, der nur fuer sie existierte (Nr. 5,
+         feste Werte, von der Sperrliste ausgenommen). Der lag mit seinem Fuss ueber
+         dem Sportplatz und begrub 18 Bauwerke unter bis zu 38,9 m Fels
+         (th-boden.mjs). Er ist entfallen.
+         Ersatz gesucht IM SPIEL ueber `window._berge`, mit den echten Hoehenfeldern
+         der verbliebenen neun Kettenberge: fuer jeden Punkt entlang der Linie
+         Talstation -> Bergmitte wurde geprueft, welches Gelaende unter der 24 x 34 m
+         grossen Terrasse liegt und ob dort ein Bauwerk steht.
+         Ergebnis: Berg (378,7|119,1), Gipfel 108 m. Auf 139 m Fahrstrecke von der
+         Talstation liegt die Terrasse auf Gelaende -5,2 … 45,0 — Bahnsteig also auf
+         45,6 m, mit 60 m Berg darueber statt wie bisher 27 m. Alle Kandidaten entlang
+         der Linie waren frei; die TALSTATION KANN EXAKT STEHEN BLEIBEN, ihre eigene
+         Platzsuche (unten) bleibt damit gueltig. */
+      var TAL={x:228,z:24},BERG={x:340.7,z:95.1};
       /* Die Kartenmarke "Seilbahn" stand fest auf (155|86) — das ist ungefaehr die
          Mitte des Seils zwischen Tal- und Bergstation, also der Punkt, an dem man
          gerade NICHT einsteigen kann (95 m von der Talstation, 34,8 m bis zum
@@ -6379,10 +6392,15 @@ setTimeout(function baueGebaeude(){
       var SPUR=2.6;                              // Abstand der beiden Seile
       var winkel=Math.atan2(BERG.x-TAL.x,BERG.z-TAL.z);
       /* Bahnsteighoehe = hoechster Punkt UNTER der eigenen Terrasse. Tiefer waere
-         Fels auf dem Bahnsteig, hoeher waere unnoetige Stuetzenlaenge. Gemessen
-         ueber ein 7 x 9 Raster der 24 x 34 m Platte, in ihrer eigenen Drehung. */
+         Fels auf dem Bahnsteig, hoeher waere unnoetige Stuetzenlaenge.
+         ⚠️ RASTER GROESSER ALS DIE PLATTE. Erst wurde nur die 24 x 34 m grosse Platte
+         abgetastet (±12/±17). Das Stationshaus steht aber SCHRAEG zur Weltachse, und
+         seine achsenparallele Huellbox greift damit deutlich weiter den Hang hinauf
+         als die Platte selbst — th-boden.mjs meldete die Station daraufhin mit 5,13 m
+         im Fels, obwohl die Platte frei lag. Das Raster deckt jetzt die Huellbox ab
+         (±17/±22), damit der Bahnsteig ueber allem liegt, was das Haus beruehrt. */
       var BGELmax=0,BGELmin=1e9;
-      for(var tu=-12;tu<=12;tu+=4)for(var tv=-17;tv<=17.01;tv+=4.25){
+      for(var tu=-17;tu<=17.01;tu+=4.25)for(var tv=-22;tv<=22.01;tv+=4.4){
         var tgh=bergH(BERG.x+tu*Math.cos(winkel)+tv*Math.sin(winkel),
                       BERG.z-tu*Math.sin(winkel)+tv*Math.cos(winkel));
         if(tgh>BGELmax)BGELmax=tgh; if(tgh<BGELmin)BGELmin=tgh;}
