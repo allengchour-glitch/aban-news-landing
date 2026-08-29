@@ -2370,3 +2370,40 @@ ihre eigenen fünf Laternen).
 
 `spiele-dev/tools/th-laternen.mjs` (neu) prüft alle 174 Laternen gegen die Geometrie,
 aus der See und Parkplatz wirklich entstehen. **2 → 0.**
+
+## Zwei verschiedene Masse im selben Vergleich
+
+`viertelPasst` prüfte den Kandidaten gegen die schon gesetzten Viertel so:
+
+```js
+var m=viertelMass(cfg);                       // NETTO — nur die Bauzeilen
+…
+if(Math.abs(x-v.x)<m.hw+v.w/2+8 && Math.abs(z-v.z)<m.hd+v.d/2+8)return false;
+//                 ^^^^ netto      ^^^^^ brutto
+```
+
+Links das **Netto**-Rechteck des Kandidaten, rechts das **Brutto**-Rechteck des
+Nachbarn. Überall sonst im Spiel gilt brutto — Streuwerk, Waldsaum und Wege halten
+sich per `v.w/2` von einem Viertel fern (Zeilen 5655, 5745). Die Ungleichheit ging
+in die **unsichere** Richtung: ein neues Viertel durfte mit seinem Aussenrand in die
+angemeldete Fläche eines bestehenden hineinragen.
+
+Live nachgemessen: Freizeitpark (60|340, brutto 330 × 110 → z 285…395) und
+Sportpark Süd (−14|250, brutto 180 × 84 → z 208…292) teilten sich einen
+**180 × 7 m grossen Streifen**. `th-viertel` meldete das als
+»Sportpark Süd, Stufe 2: nein: Viertel Freizeitpark« — der Fund war echt, die
+Ursache lag aber nicht beim Sportpark, sondern in dieser einen Zeile.
+
+Jetzt brutto gegen brutto, auf beiden Seiten dasselbe Mass. Der Freizeitpark rückt
+dadurch 20 m nach Süden (z 340 → 360), das Vergnügungsviertel von (250|220) nach
+(234|251).
+
+### Gemessen
+
+| | vorher | nachher |
+|---|---|---|
+| Viertel unter Stufe 2 | 1 (Sportpark Süd) | **0 von 7** |
+| th-strassen · Stellen auf dem Belag | 184 | **175** |
+| th-3d · echte Durchdringungen | 58 | **56** |
+| th-3d · nur 2D | 74 | **67** |
+| th-netz | 39 ok, 0 Fehler | 39 ok, 0 Fehler |
