@@ -76,13 +76,29 @@ const sonde = `function(){
      wird geprueft, ob dort auf Brusthoehe (0,3…2,0 m) ueberhaupt Geometrie liegt.
      Kein Heuristik-Schritt, keine Referenzwahl — nur die zwei Dinge, um die es geht. */
   var GITTER=16;
-  var netz={};
+  var netz={};     /* Geometrie auf Brusthoehe 0,3…2,0 m */
+  var oben={};     /* alles darueber, bis 12 m — siehe unten */
   var bb=new THREE.Box3();
-  var zahl=0;
+  var zahl=0, zahlOben=0;
   scene.traverse(function(o){
     if(!o.isMesh||!o.geometry||o.isInstancedMesh)return;
     bb.setFromObject(o);
     if(!isFinite(bb.min.x)||!isFinite(bb.max.x)||!isFinite(bb.min.z)||!isFinite(bb.max.z))return;
+    /* ⚠️ ZWEI EBENEN, NICHT EINE. Die erste Fassung fragte nur nach Brusthoehe — und
+       liess damit eine ganze Klasse offen: ein Fahrgeschaeft auf Stuetzen, eine Halle
+       mit hohem Sockel, ein Vordach oder ein Obergeschoss haben am Kastenrand auf
+       0,3…2,0 m NICHTS, und der Kasten ist trotzdem richtig. Wer dort steht, steht
+       UNTER einem Bauwerk. Darum wird jeder leere Punkt zweitgeprueft: liegt ueber
+       ihm etwas (2,0…12 m), heisst der Befund "unterbaut" und nicht "unsichtbare
+       Wand". Ohne diese Trennung ist die Gesamtzahl keine Fehlerliste — genau das
+       stand als naechster Schritt im Runbook. */
+    if(bb.max.x-bb.min.x>40||bb.max.z-bb.min.z>40)return;
+    if(bb.max.y>=2.0&&bb.min.y<=12){
+      zahlOben++;
+      var ox0=Math.floor(bb.min.x/GITTER), ox1=Math.floor(bb.max.x/GITTER);
+      var oz0=Math.floor(bb.min.z/GITTER), oz1=Math.floor(bb.max.z/GITTER);
+      for(var ox=ox0;ox<=ox1;ox++)for(var oz=oz0;oz<=oz1;oz++){
+        var ok=ox+"_"+oz;(oben[ok]||(oben[ok]=[])).push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);}}
     if(bb.max.y<0.3||bb.min.y>2.0)return;          /* nur was auf Brusthoehe im Weg ist */
     /* ⚠️ GROSSFLAECHIGES RAUS — genau daran ist die Selbstprobe zuerst gescheitert.
        Ein Test-Kollider ins leere Feld bei (0|-420) meldete 0 von 32 leeren Punkten:
@@ -90,38 +106,41 @@ const sonde = `function(){
        Meter und reicht dabei ueber 0,3 m — damit ist "da steht etwas" ueberall wahr
        und die Pruefung kann gar nicht mehr "nein" sagen. Dieselbe Grenze wie in
        kolliderNachziehen (bx/bz > 45 raus), nur etwas strenger. */
-    if(bb.max.x-bb.min.x>40||bb.max.z-bb.min.z>40)return;
     zahl++;
     var gx0=Math.floor(bb.min.x/GITTER), gx1=Math.floor(bb.max.x/GITTER);
     var gz0=Math.floor(bb.min.z/GITTER), gz1=Math.floor(bb.max.z/GITTER);
     for(var gx=gx0;gx<=gx1;gx++)for(var gz=gz0;gz<=gz1;gz++){
       var k=gx+"_"+gz;(netz[k]||(netz[k]=[])).push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);}});
 
-  function etwasDa(x,z){
-    var b=netz[Math.floor(x/GITTER)+"_"+Math.floor(z/GITTER)];
+  function trifft(idx,x,z){
+    var b=idx[Math.floor(x/GITTER)+"_"+Math.floor(z/GITTER)];
     if(!b)return false;
     for(var i=0;i<b.length;i++){var e=b[i];
       if(x>=e[0]-0.25&&x<=e[1]+0.25&&z>=e[2]-0.25&&z<=e[3]+0.25)return true;}
     return false;}
+  function etwasDa(x,z){return trifft(netz,x,z);}
+  function etwasDrueber(x,z){return trifft(oben,x,z);}
 
   /* Abgetastet wird die Schale jedes Kastens — nur dort ist inSolid ueberhaupt wahr. */
-  var proben=0, blockiert=0, leer=0, orte=[];
+  var proben=0, blockiert=0, leer=0, unterbaut=0, orte=[];
   for(var i=0;i<WORLD_SOLIDS.length;i++){
     var w=WORLD_SOLIDS[i];
     var x0=w.x-w.hw, x1=w.x+w.hw, z0=w.z-w.hd, z1=w.z+w.hd;
-    var nLeer=0, nGes=0, bsp=null;
+    var nLeer=0, nGes=0, nUnter=0, bsp=null;
     for(var x=x0;x<=x1+0.001;x+=1){
       for(var z=z0;z<=z1+0.001;z+=1){
         if(x>x0+0.6&&x<x1-0.6&&z>z0+0.6&&z<z1-0.6)continue;   /* nur die Schale */
         proben++;
         if(!inSolid(x,z))continue;
         nGes++; blockiert++;
-        if(!etwasDa(x,z)){nLeer++; leer++; if(!bsp)bsp=(+x.toFixed(1))+"|"+(+z.toFixed(1));}}}
+        if(etwasDa(x,z))continue;
+        if(etwasDrueber(x,z)){nUnter++; unterbaut++; continue;}   /* steht unter einem Bauwerk */
+        nLeer++; leer++; if(!bsp)bsp=(+x.toFixed(1))+"|"+(+z.toFixed(1));}}
     if(nLeer>0)orte.push({mitte:(+w.x.toFixed(1))+"|"+(+w.z.toFixed(1)),
       mass:(+(w.hw*2).toFixed(1))+"x"+(+(w.hd*2).toFixed(1)),
       flaeche:Math.round(w.hw*2*w.hd*2),
       tuer:!!w.door,
-      leer:nLeer, ges:nGes, anteil:Math.round(nLeer/Math.max(1,nGes)*100), bsp:bsp});}
+      leer:nLeer, unter:nUnter, ges:nGes, anteil:Math.round(nLeer/Math.max(1,nGes)*100), bsp:bsp});}
   orte.sort(function(a,b){return b.leer-a.leer;});
 
   /* ⚠️ SELBSTPROBE — 0 ist ein Verdacht, kein Ergebnis (Regel 3). 35 000 Meshes auf
@@ -138,11 +157,11 @@ const sonde = `function(){
     for(var pz=pw.z-pw.hd;pz<=pw.z+pw.hd+0.001;pz+=1){
       if(px>pw.x-pw.hw+0.6&&px<pw.x+pw.hw-0.6&&pz>pw.z-pw.hd+0.6&&pz<pw.z+pw.hd-0.6)continue;
       if(!inSolid(px,pz))continue;
-      pGes++; if(!etwasDa(px,pz))pLeer++;}
+      pGes++; if(!etwasDa(px,pz)&&!etwasDrueber(px,pz))pLeer++;}
   WORLD_SOLIDS.pop();
 
-  return {kollider:WORLD_SOLIDS.length, meshes:zahl, proben:proben,
-          blockiert:blockiert, leer:leer, orte:orte,
+  return {kollider:WORLD_SOLIDS.length, meshes:zahl, meshesOben:zahlOben, proben:proben,
+          blockiert:blockiert, leer:leer, unterbaut:unterbaut, orte:orte,
           probe:{ort:pruefX+"|"+pruefZ, blockiert:pGes, leer:pLeer}};}`
 
 mitSonden('traumhaus.html', { k: sonde, ruhe: ruheSonde }, '_kasten.html')
@@ -158,9 +177,11 @@ else console.log(`Welt steht still (Seitenzeit ${ruhe.seite}s, ${ruhe.kollider} 
 /* ⚠️ Regel 3: Bezugszahlen zuerst. "0 leere Stellen" saehe sonst genauso aus wie eine
    Sonde, die nichts abgetastet hat. */
 if (!R.blockiert) { console.log(`❌ 0 blockierende Punkte bei ${R.proben} Proben — die Sonde greift nicht`); process.exit(1) }
-console.log(`${R.kollider} Kollider · ${R.meshes} Meshes auf Brusthoehe · ${R.proben} Rasterpunkte abgetastet`)
-console.log(`${R.blockiert} davon blockieren (inSolid), ${R.leer} davon OHNE Geometrie an der Stelle` +
-            ` (${Math.round(R.leer / R.blockiert * 100)} %)\n`)
+console.log(`${R.kollider} Kollider · ${R.meshes} Meshes auf Brusthoehe, ${R.meshesOben} darueber · ${R.proben} Rasterpunkte abgetastet`)
+console.log(`${R.blockiert} davon blockieren (inSolid). Davon:`)
+console.log(`   ${R.blockiert - R.leer - R.unterbaut} mit Geometrie auf Brusthoehe — richtig`)
+console.log(`   ${R.unterbaut} UNTERBAUT (nichts auf Brusthoehe, aber etwas darueber: Stuetzen, Vordach, Sockel) — vertretbar`)
+console.log(`   ${R.leer} WIRKLICH FREI (auch darueber nichts) — unsichtbare Wand (${Math.round(R.leer / R.blockiert * 100)} %)\n`)
 
 const P = R.probe || {}
 if (P.blockiert > 0 && P.leer === P.blockiert) console.log(`✅ Selbstprobe: ein Kollider ins Nichts bei ${P.ort} wird erkannt (${P.leer}/${P.blockiert} Punkte leer)`)
@@ -178,18 +199,19 @@ else {
      Eine Tuer im Kasten ist das zweite Zeichen: sie wird nur fuer BEGEHBARE Gebaeude
      gesetzt. Ein Kasten mit Tuer meint ein Haus, keine Absperrung. */
   const HAUS = 400
-  const haus = R.orte.filter((e) => e.flaeche <= HAUS)
-  const flaeche = R.orte.filter((e) => e.flaeche > HAUS)
+  const orteEcht = R.orte.filter((e) => e.leer > 0)
+  const haus = orteEcht.filter((e) => e.flaeche <= HAUS)
+  const flaeche = orteEcht.filter((e) => e.flaeche > HAUS)
   const hausLeer = haus.reduce((a, e) => a + e.leer, 0)
   const flaecheLeer = flaeche.reduce((a, e) => a + e.leer, 0)
   console.log(`   ${haus.length} hausgrosse Kaesten (bis ${HAUS} m2) mit ${hausLeer} leeren Punkten`)
   console.log(`   ${flaeche.length} Flaechen-Kaesten (darueber) mit ${flaecheLeer} leeren Punkten`)
-  console.log(`   davon mit Tuer (= gemeintes Gebaeude): ${R.orte.filter((e) => e.tuer).length}\n`)
-  console.log(`⚠️  ${R.orte.length} Kaesten blockieren an Stellen, an denen nichts steht:`)
-  for (const e of R.orte.slice(0, 20)) {
-    console.log(`   ${String(e.leer).padStart(4)} von ${String(e.ges).padStart(4)} (${String(e.anteil).padStart(3)} %)  ${String(e.flaeche).padStart(5)} m2${e.tuer ? ' Tuer' : '    '}  Kasten ${e.mitte.padStart(13)} ${e.mass.padStart(11)}  z. B. ${e.bsp}`)
+  console.log(`   davon mit Tuer (= gemeintes Gebaeude): ${orteEcht.filter((e) => e.tuer).length}\n`)
+  console.log(`⚠️  ${orteEcht.length} Kaesten blockieren an Stellen, an denen weder auf Brusthoehe noch darueber etwas steht:`)
+  for (const e of orteEcht.slice(0, 20)) {
+    console.log(`   ${String(e.leer).padStart(4)} von ${String(e.ges).padStart(4)} (${String(e.anteil).padStart(3)} %, ${String(e.unter).padStart(3)} unterbaut)  ${String(e.flaeche).padStart(5)} m2${e.tuer ? ' Tuer' : '    '}  Kasten ${e.mitte.padStart(13)} ${e.mass.padStart(11)}  z. B. ${e.bsp}`)
   }
-  if (R.orte.length > 20) console.log(`   … und ${R.orte.length - 20} weitere`)
+  if (orteEcht.length > 20) console.log(`   … und ${orteEcht.length - 20} weitere`)
 }
 
 console.log('\nJS-Fehler:', jsFehler.length)

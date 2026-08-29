@@ -4612,3 +4612,41 @@ sichtbar: die Prüfung sucht Geometrie auf **Brusthöhe (0,3…2,0 m)**. Ein Fah
 Stützen oder eine Halle mit hohem Sockel hat dort am Kastenrand nichts — der Kasten kann
 trotzdem richtig sein. Wer diese Zahl weiter senken will, muss zuerst diese Klasse
 trennen, nicht weiter an Kollidern drehen.
+
+## 2026-08-29 · 🏗️ „Unterbaut" ist nicht „unsichtbare Wand" — 3378 werden zu 2808
+
+Die letzte Runde endete mit einer Zahl, die ausdrücklich **keine Fehlerliste** war: 3378
+blockierende Punkte ohne Geometrie auf Brusthöhe. Der genannte nächste Schritt war, die
+Klasse abzutrennen, die dort **legitim** leer ist — ein Fahrgeschäft auf Stützen, eine
+Halle mit hohem Sockel, ein Vordach, ein Obergeschoss. Wer darunter steht, steht **unter
+einem Bauwerk**, und der Kasten ist richtig.
+
+`th-kasten` prüft darum jeden leeren Punkt jetzt zweistufig: erst Brusthöhe
+(0,3…2,0 m), dann **darüber** (2,0…12 m).
+
+| Klasse | Punkte | Bewertung |
+|---|---|---|
+| Geometrie auf Brusthöhe | 2904 | richtig |
+| **unterbaut** (nichts auf Brusthöhe, aber etwas darüber) | **575** | vertretbar |
+| **wirklich frei** (auch darüber nichts) | **2808 (45 %)** | unsichtbare Wand |
+
+Betroffen sind **93 Kästen** statt 116 — und die Zahl heisst jetzt, was sie sagt.
+
+⚠️ **Die Vermutung war grösser als der Befund.** Ich hatte „Fahrgeschäft auf Stützen" als
+den Grund für die verbleibenden Punkte benannt; gemessen sind es **9 %**. Der Grossteil
+ist tatsächlich leer. Gut, dass die Klasse getrennt ist — aber sie erklärt den Berg
+nicht, sie schneidet nur die Spitze ab.
+
+### Was die Liste jetzt zeigt
+
+Die grössten Posten sind unverändert **Flächen**-Kästen (Bergstation 42 × 50 zu 92 % frei)
+— und **57 Kästen mit Tür**, also gemeinte Gebäude. Darunter der Bank-Kasten (26 × 21,
+**91 von 91 Punkten frei**), obwohl die Runde davor genau solche Kästen auf die gemessene
+Hüllbox verkleinert hat.
+
+> **Nächster Schritt, und diesmal eine einzelne Messung statt einer Vermutung:** einen
+> einzigen Kasten über die Zeit verfolgen — Grösse direkt nach `addSolid`, nach dem
+> Verkleinern beim Laden, und nach `kolliderNachziehen`. Der Verdacht ist, dass die
+> Reichweite dort (`hw*2,2+2`) einen grossen Kasten Nachbarteile einsammeln lässt und ihn
+> wieder aufbläst. **Verdacht, nicht Befund** — die letzten drei Runden haben gezeigt,
+> was passiert, wenn man das verwechselt.
