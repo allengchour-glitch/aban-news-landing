@@ -5324,3 +5324,5 @@ gid://shopify/Product/15449056215425	CHF 14.97	5 Varianten	Off-Shoulder Pullover
 gid://shopify/Product/15449056346497	CHF 22.17	21 Varianten	Vintage Colorblock T-Shirt für Damen
 gid://shopify/Product/15449056412033	CHF 10.98	5 Varianten	Lässiges Rundhals-Sweatshirt für Damen
 gid://shopify/Product/15449056510337	CHF 14.77	30 Varianten	Sportlicher Oversize Pullover mit Knopfleiste
+gid://shopify/Product/15449056674177	CHF 10.92	2 Varianten	Gestreifter Cozy Pullover für Damen
+gid://shopify/Product/15449056739713	CHF 9.18	84 Varianten	Damen Kapuzenjacke Fleece Loose-fit
