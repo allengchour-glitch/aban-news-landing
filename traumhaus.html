@@ -3676,11 +3676,17 @@ function stichPkt(s){
    die Charge-37-Modelle heissen anders. */
 function ladeWagen(datei,cb){
   if(MODELS[datei]){cb(MODELS[datei]);return;}
-  if(!GL){cb(null);return;}
-  GL.load("/models/"+datei,function(g){
-    g.scene.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;
-      if(n.material)n.material.envMapIntensity=0.4;}});
-    MODELS[datei]=g.scene;cb(g.scene);},undefined,function(){cb(null);});}
+  if(!GL||!window._glbVorlage){cb(null);return;}
+  /* ⚠️ `MODELS[datei]` ist erst beim ERSTEN Rueckruf gesetzt — zwoelf Autos im
+     selben Takt starteten also zwoelf Parses. Der Vorlagen-Cache hat eine
+     Warteschlange und liefert allen dieselbe Vorlage; geklont wird beim Aufrufer.
+     `envMapIntensity` setzt jetzt `_matVereinheitlichen` einheitlich auf 0,3 —
+     hier nachtraeglich 0,4 zu schreiben wuerde Materialien umfaerben, die
+     inzwischen auch Gebaeude benutzen. */
+  window._glbVorlage(datei,function(sz){
+    if(!sz){cb(null);return;}
+    sz.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;}});
+    MODELS[datei]=sz;cb(sz);});}
 var _lichtTexW=null,_lichtTexR=null;
 function _glowTex(core,edge){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   var g=c.createRadialGradient(32,32,1,32,32,31);g.addColorStop(0,core);g.addColorStop(0.35,core);g.addColorStop(1,edge);
@@ -3752,12 +3758,18 @@ setTimeout(function baueVerkehr(){
   _IDS.forEach(function(id,i){
     ladeWagen(id,function(tpl){if(!tpl)return;
       var m=tpl.clone(true);
-      m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
-        /* Nur die LACKteile umfaerben. Vorher traf der Farbstich jedes Material —
-           bei einem Modell ohne Chrom und Speichen fiel das nicht auf, bei den
-           neuen schon (sonst: rosa Reifen, gruene Scheiben). */
-        if(i>=WAGEN.length&&/lack/i.test(n.material.name||""))
-          n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.42);}});
+      /* ⚠️ HIER WURDE JEDES MATERIAL JEDES WAGENS GEKLONT — und danach nur ein
+         einziges davon ueberhaupt umgefaerbt (die LACKteile, und auch das nur ab
+         dem fuenften Wagen). GEMESSEN: 1664 eigene Materialien fuer 128 Fahrzeuge
+         a 13 Meshes, davon 1664 exakte Zwillinge — Verglasung, Chrom, Reifen und
+         Leuchten wurden 128-mal einzeln angelegt, obwohl sie nie jemand anfasst.
+         `clone(true)` teilt Materialien; geklont wird nur, was auch bemalt wird.
+         (Nur die LACKteile umfaerben — sonst rosa Reifen und gruene Scheiben.) */
+      var _tint=(i>=WAGEN.length);
+      if(_tint)m.traverse(function(n){
+        if(!n.isMesh||!n.material||!/lack/i.test(n.material.name||""))return;
+        n.material=n.material.clone();
+        n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.42);});
       var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
       /* 4,4 statt 3,9: die th37-Wagen sind massstaeblich zu den Haeusern gebaut
          (4,3…5,25 m lang) und wirkten auf 3,9 normiert zu klein neben den
@@ -3837,9 +3849,11 @@ setTimeout(function baueVerkehr(){
       // 2 geparkte Autos in die Taschen
       ["th37_limousine.glb","th37_lieferwagen.glb"].forEach(function(id,k){
         ladeWagen(id,function(tpl){if(!tpl)return;var m=tpl.clone(true);
-          m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
-            if(/lack/i.test(n.material.name||""))
-              n.material.color.lerp(new THREE.Color(k?0x4a7ad0:0xd06a4a),0.45);}});
+          /* Dasselbe wie beim fahrenden Verkehr: nur das Lackmaterial klonen. */
+          m.traverse(function(n){
+            if(!n.isMesh||!n.material||!/lack/i.test(n.material.name||""))return;
+            n.material=n.material.clone();
+            n.material.color.lerp(new THREE.Color(k?0x4a7ad0:0xd06a4a),0.45);});
           var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
           m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
           var b2=new THREE.Box3().setFromObject(m);
@@ -8962,17 +8976,61 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
    und die Bau-Vorschau `ghost` ist immer eine frische Box).
    ⚠️ NICHT fuer die Bewohner (Zeile ~10200): die haben `g.animations`, und
    `clone(true)` bricht die Bindung an einen SkinnedMesh. */
-window._glbHol=function(datei,cb){
+/* 🎨 UND DIE MATERIALIEN UEBER DATEIGRENZEN HINWEG ZUSAMMENLEGEN.
+   Der Parse-Cache spart die Kopien EINER Datei. Aber die Modelle stammen aus
+   denselben Bibliotheken und benutzen dieselbe Palette: GEMESSEN lagen 1664
+   Materialien mit exakt `ccd1db / rauh 0,25 / metallisch 0,8 / keine Textur` in
+   der Szene, 802 mit `dbe0ea / 0,15 / 0,85`, 258 mit `19191e / 0,6 / 0` — von 7258
+   Materialien insgesamt waren 5184 exakte Duplikate.
+   Jedes eigene Material verhindert das Zusammenfassen von Zeichenaufrufen und
+   kostet eigene Uniform-Uebertragungen. Gleiche Einstellung = ein Objekt.
+   ⚠️ `envMapIntensity` wird HIER gesetzt (0,3) und nicht mehr beim Aufrufer —
+   sonst schriebe der zweite Aufrufer einen anderen Wert in ein Material, das der
+   erste schon benutzt. Wer ein geladenes Material nachtraeglich aendern will,
+   muss es vorher selbst klonen (so macht es die Alleebaum-Stelle). */
+var _matReg={};
+function _matVereinheitlichen(wurzel){
+  wurzel.traverse(function(n){
+    if(!n.isMesh||!n.material)return;
+    var liste=Array.isArray(n.material)?n.material:[n.material];
+    var neu=liste.map(function(m){
+      if(!m)return m;
+      m.envMapIntensity=0.3;
+      /* ⚠️ DER NAME GEHOERT IN DEN SCHLUESSEL. Der Verkehr sucht sein Lackmaterial
+         ueber `/lack/i.test(m.name)`; wuerde ein gleich eingestelltes Material aus
+         einer anderen Datei das Lackmaterial ersetzen, verloeren die Autos ihre
+         Farben, ohne dass sich sonst etwas aendert. */
+      var k=[m.name||"-",m.type,m.color?m.color.getHexString():"-",m.roughness,m.metalness,
+             m.emissive?m.emissive.getHexString():"-",m.emissiveIntensity,
+             m.transparent,m.opacity,m.side,m.flatShading,m.alphaTest,m.vertexColors,
+             m.map?m.map.uuid:"-",m.normalMap?m.normalMap.uuid:"-",
+             m.roughnessMap?m.roughnessMap.uuid:"-",m.emissiveMap?m.emissiveMap.uuid:"-"].join("|");
+      if(!_matReg[k])_matReg[k]=m;
+      return _matReg[k];});
+    n.material=Array.isArray(n.material)?neu:neu[0];});
+}
+/* Die VORLAGE (nicht geklont) — fuer Aufrufer, die selbst klonen (Fahrzeuge, Moebel).
+   ⚠️ DIE WARTESCHLANGE IST DER EIGENTLICHE PUNKT. `ladeWagen` und `loadTH` hatten
+   zwar einen Cache (`MODELS[...]`), aber KEINE Warteschlange: wer im selben Takt
+   zwoelf Limousinen anfordert, startet zwoelf `GL.load`, weil `MODELS` erst beim
+   ERSTEN Rueckruf gefuellt ist. GEMESSEN: 1664 Materialien mit derselben Fahrzeug-
+   Verglasung (ccd1db), 802 mit dbe0ea, 258 mit 19191e — lauter Zwillinge aus
+   parallelen Parses derselben Datei. */
+window._glbVorlage=function(datei,cb){
   var C=window._glbCache=window._glbCache||{}, e=C[datei];
-  if(e&&e.szene){cb(e.szene.clone(true));return;}
+  if(e&&e.szene){cb(e.szene);return;}
   if(e){e.warte.push(cb);return;}          /* laedt schon — anstellen */
   C[datei]=e={szene:null,warte:[cb]};
   GL.load("/models/"+datei,function(g){
+    _matVereinheitlichen(g.scene);
     e.szene=g.scene; var w=e.warte; e.warte=[];
-    for(var i=0;i<w.length;i++)w[i](e.szene.clone(true));
+    for(var i=0;i<w.length;i++)w[i](e.szene);
   },undefined,function(){
     var w=e.warte; delete C[datei];
     for(var i=0;i<w.length;i++)w[i](null);});
+};
+window._glbHol=function(datei,cb){
+  window._glbVorlage(datei,function(v){cb(v?v.clone(true):null);});
 };
 var MODELS={};
 function loadTH(id,cb){if(MODELS[id]){cb(MODELS[id]);return;}
@@ -8982,9 +9040,13 @@ function loadTH(id,cb){if(MODELS[id]){cb(MODELS[id]);return;}
      Spieler hat sie je gesehen. Ein optionales `datei:` am Katalogeintrag oeffnet sie,
      ohne einen der 78 bestehenden Namen anzufassen. */
   var _d9=null;try{var _e9=defOf(id);if(_e9&&_e9.datei)_d9=_e9.datei;}catch(e){}
-  GL.load("/models/"+(_d9||("th_"+id+".glb")),function(g){
-    g.scene.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;if(n.material)n.material.envMapIntensity=0.4;}});
-    MODELS[id]=g.scene;cb(g.scene);},undefined,function(){cb(null);});}
+  /* Ueber den Vorlagen-Cache: dieselbe Warteschlangen-Falle wie bei ladeWagen —
+     zwoelf gleiche Moebel im selben Takt waren zwoelf Parses. */
+  if(!window._glbVorlage){cb(null);return;}
+  window._glbVorlage(_d9||("th_"+id+".glb"),function(sz){
+    if(!sz){cb(null);return;}
+    sz.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;}});
+    MODELS[id]=sz;cb(sz);});}
 // use: Bedürfnis-Typ + Pose + Sitz/Liege-Offset (nach Rotation gedreht)
 /* 🏅 `stufe:` an einem Katalog-Eintrag = erst ab dieser Wohnstufe kaufbar. Nur
    Luxus-Stuecke — nichts, was eine Quest braucht (der Pool bleibt frei, Auftrag 1
