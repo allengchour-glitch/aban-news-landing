@@ -2746,3 +2746,56 @@ dort gar nicht melden können.
 
 `th-3d` gesamt: 59 echt / 75 nur 2D (über Läufe 55…59 — das Streuwerk ist zufällig).
 `th-netz` 39 ok, 0 Fehler.
+
+## th-boden: jedes Bauwerk gegen das Gelände — und ein selbstverschuldeter Fund
+
+`th-3d` vergleicht Modell gegen Modell. Das **Gelände** ist keines: ein namenloses
+Grossmesh ohne `userData.datei`, das aus jeder Paarprüfung fällt. Genau dort steckte
+die Seilbahn (#2370). `spiele-dev/tools/th-boden.mjs` (neu) prüft alle 769 Bauwerke
+gegen `window._bergHoehe` und `window._seeUfer` — die beiden Einzelquellen, die in
+#2370 und #2374 entstanden sind.
+
+### Das Werkzeug musste erst ehrlich werden
+
+Erster Lauf: 18 im Fels, **49 schweben**, 1 im Wasser. Drei der drei Kategorien waren
+teilweise Unsinn:
+
+* Das eine „im Wasser" war ein **Schwan**. Der gehört dorthin.
+* Von 49 „schwebend" sassen 44 auf etwas **Gebautem** — Gipfelkreuz auf der
+  Bergstationsterrasse, vier Gondeln am Seil, die Obergeschosse eines gestapelten
+  Hochhauses.
+
+Also drei Ausnahmen: Wasservögel und Boote dürfen ins Wasser, was an einem Seil
+hängt oder über einem anderen `_gebaeude`-Kasten sitzt, steht nicht in der Luft.
+Danach: **18 im Fels, 5 schwebend, 0 im Wasser** — und 46 sauber als erklärt gezählt,
+nicht stillschweigend weggefiltert.
+
+### Der Fund: der Hausberg steht auf dem Sportplatz
+
+Alle 18 stehen auf `y = 0`, während `_bergHoehe` an ihrer Stelle 3 … 39 m meldet:
+
+| | Gelände darüber | |
+|---|---|---|
+| th39_vorfahrt (101,8\|161,8) | **38,9 m** | |
+| th39_vorfahrt (89,2\|169) | 31,0 m | |
+| th44_flutlichtmast (78,9\|172,9) | **23,0 m** | Sportplatz |
+| th44_ballfangzaun ×4 (79\|151…163) | 8,6 … 17,2 m | Sportplatz |
+| th44_tor (76,4\|155) | 11,1 m | Sportplatz |
+| th44_tribuene (60\|173,2) | 8,9 m | Sportplatz |
+| th14_neonschild / samtkordel ×5 | 7,9 … 12,2 m | Vergnügungsviertel |
+| th40_bus (86,1\|143,8) | 15,6 m | auf seiner Route |
+
+**Das ist eine Folge von #2370.** Dort habe ich Berg Nr. 5 von der Sperrliste
+ausgenommen (`if(i!==5)for(var qs=0;…)`), damit die Bergstation der Seilbahn wieder
+Boden unter sich bekommt — und geprüft, dass die Seilbahn stimmt. Was der
+wiederhergestellte Berg nun *überdeckt*, habe ich nicht geprüft; kein Werkzeug konnte
+es. Die Sperrzone `[0,216,110,60]` hatte genau diesen Zweck.
+
+Der Berg steht bei (121,5\|175) mit Fussradius 51,75, längs des Grats auf
+`streck` = 1,4835 gedehnt — sein Fuss ist also eine Ellipse von rund 154 × 113 m und
+reicht damit über den Ostteil des Sportfelds (`SPORTFELD = {x:53, z:155, w:70, d:56}`,
+also x 18 … 88).
+
+Ein reiner Kegel würde es nicht retten: (101,8\|161,8) liegt nur 23,7 m von der
+Bergmitte, dort stünden immer noch 34,6 m Fels. Der Berg steht nicht zu breit,
+sondern **am falschen Ort**.
