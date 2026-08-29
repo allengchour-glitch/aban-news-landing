@@ -4461,3 +4461,48 @@ Kollider-Überhang stadtweit messen**, nicht nur dort, wo zufällig eine Pflanze
    Bauwerk-Filter; die nächste „Hüllbox" war seine eigene. **Alle sechs Treffer waren
    Unsinn** — und sie sahen aus wie ein echter Fund, bis ich die Spalte daneben gelesen
    habe. Wer nur die Zahl liest, hätte sechs Bäume „repariert", die nirgends standen.
+
+## 2026-08-29 · 🔒 Eine Regel, gegen die ich dreizehnmal verstossen habe, ist ein Wunsch
+
+Regel 1 steht ganz oben im Runbook: **kein Backtick in einer Sonde.** Sonden sind
+Template-Literale; ein Backtick darin — meist als Zitat um einen Bezeichner gemeint —
+beendet das Literal und der Lauf stirbt mit „Unexpected identifier". Ich bin in dieser
+Sitzung **dreizehnmal** hineingelaufen, jedes Mal einen Lauf lang.
+
+Eine Regel, gegen die man dreizehnmal verstösst, ist keine Regel, sondern ein Wunsch.
+Darum steht sie jetzt als **Prüfung** da: `spiele-dev/tools/th-lint.mjs` liest die
+anderen Werkzeuge und meldet jedes Sonden-Literal, das mitten im Text endet — in
+Millisekunden, ohne Browser, **bevor** man drei Minuten auf einen Lauf wartet.
+
+* **Selbsttest:** ein absichtlich eingebauter Backtick in `th-see.mjs` wird gemeldet,
+  danach ist der Lauf wieder sauber. Ein Werkzeug, das nur „alles gut" sagen kann, ist
+  keins.
+* **Falschmeldung sofort gefunden:** der erste Lauf meldete `th-mauern` — dort endet ein
+  Literal mitten in einem regulären Ausdruck und wird mit `+` angehängt. Völlig richtig
+  geschrieben. Eine Prüfung, die auf einem gebräuchlichen Muster anschlägt, ist Lärm und
+  wird abgeschaltet statt gelesen — dann fehlt sie beim vierzehnten Mal.
+* Stand: **50 Werkzeuge, 39 Sonden-Literale, 0 Funde.**
+
+## 2026-08-29 · 📦 Kollider-Überhang: zwei Anläufe, zwei Messfehler, kein Ergebnis
+
+Der angekündigte nächste Kandidat — *„wie weit ragt ein Kollider über sein Bauwerk
+hinaus?"* — hat **kein belastbares Ergebnis** geliefert. Das steht hier so deutlich, weil
+`th-kasten.mjs` im Repo liegt und aussieht, als würde es etwas messen.
+
+| Anlauf | Referenz | Was schiefging |
+|---|---|---|
+| 1 | `_gebaeude` | Grösster „Überhang" 12,4 m war der **Spielclub**: seine Wände sind th34-Module (4 × 2,75 × **0,42**) und fielen durch den Mindestmass-Filter; als „Bauwerk" blieb die Bar im Inneren übrig. Und **„75 Kästen ohne jedes Bauwerk"** lagen in sauberen Reihen bei z = ±77 und x = ±89 — dort *stehen* Reihenhäuser, nur nicht als Gruppe in `_gebaeude`. |
+| 2 | Szenen-Meshes | Aus 75 Waisen wurden **15** — besser. Aber die Zuordnung *„Mesh-Mitte im Kasten"* versagt bei **langen, schmalen** Kästen: Kasten 31,4 × 4,7 bei (25\|102) mit einem „Bauwerk" von 0,1 × 0,1 und **31,17 m Überhang**. |
+
+Die 51 Zeilen über 1,5 m sind darum **keine Fundliste, sondern Verdachtsfälle**, in denen
+echte und falsche stecken. Das Werkzeug ist entsprechend beschriftet und **nicht im Tor**.
+
+> **Was der nächste Anlauf braucht** (und was ich hätte nachschlagen sollen, statt es neu
+> zu erfinden): `kolliderNachziehen` löst genau dieses Problem im Spiel bereits — mit
+> einer **Nächste-Mitte-Regel**, damit die Ladenzeile nicht die Nachbarhäuser
+> aufsaugt. Der Kommentar dort beschreibt die Falle wörtlich. Die Regel ist zu
+> übernehmen, nicht zu ersetzen.
+
+Verwertbar aus dieser Runde ist trotzdem eine Zahl: **`_gebaeude` ist nicht die Welt.**
+186 Kollider stehen 4289 Wand-Meshes gegenüber, aber nur 198 `_gebaeude`-Gruppen. Wer
+gegen die Gruppenliste misst, misst einen Ausschnitt.
