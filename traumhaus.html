@@ -14011,6 +14011,33 @@ function loop(now){
           if(nacht9){ge.m.emissive.setHex(0xffcf80);ge.m.emissiveIntensity=1.4;}
           else{ge.m.emissive.setHex(ge.e);ge.m.emissiveIntensity=ge.i;}}
       }
+      /* 🔆 NEON BLEIBT BUNT. Die Glas-Schleife darueber faerbt alles warmweiss — richtig
+         fuer Fenster, falsch fuer ein Neonschild. GEMESSEN am Spielclub: das Schild war
+         auf dem Nachtbild ein schwarzes Rechteck, obwohl das Modell seine Leuchtfarben
+         mitbringt (NsPanel #ff2893, NsNeon1 #4cf2ff, NsNeon2 #ffe03f, NsNeon3 #ff5142,
+         NsBirne #ffefb2). Der Grund: emissiveIntensity ist 1, und bei der
+         Nachtbelichtung von 0,62 verschwindet das. Hier wird darum NUR die Intensitaet
+         gedreht, die Farben bleiben — ein Neonschild in Warmweiss waere kein Neonschild.
+         ⚠️ Die Materialien sind geteilt: es stehen drei dieser Schilder in der Welt,
+         eine Liste erfasst alle. */
+      if(!window._neonMats&&performance.now()>20000){
+        var nseen=new Set(),nl=[];
+        scene.traverse(function(n2){
+          if(!n2.material)return;
+          var nm2=Array.isArray(n2.material)?n2.material:[n2.material];
+          for(var q2=0;q2<nm2.length;q2++){var m2=nm2[q2];
+            if(!m2||nseen.has(m2)||!m2.emissive)continue;
+            nseen.add(m2);
+            if(!/^Ns(Neon|Panel|Birne)/.test(m2.name||""))continue;
+            nl.push({m:m2,i:(m2.emissiveIntensity===undefined?1:m2.emissiveIntensity)});}});
+        window._neonMats=nl;window._neonNacht=-1;
+      }
+      if(window._neonMats&&window._neonNacht!==nacht9){
+        window._neonNacht=nacht9;
+        for(var nk=0;nk<window._neonMats.length;nk++){
+          var ne=window._neonMats[nk];
+          ne.m.emissiveIntensity=nacht9?2.8:ne.i;}
+      }
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
       nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
       if(window._lampKopf)window._lampKopf.emissiveIntensity=nacht9?2.6:0;
