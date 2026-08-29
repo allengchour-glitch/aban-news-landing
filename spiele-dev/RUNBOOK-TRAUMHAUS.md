@@ -4554,3 +4554,61 @@ Bei einem Berggipfel *kann* das Absicht sein; bei einem Bankvorplatz ist es kein
 Prüfung liegt darum vor, ist selbstgetestet — und steht **noch nicht im Tor**, bis die
 grossen Flächen einzeln beurteilt sind. Das ist der nächste Schritt, und er ist jetzt
 zum ersten Mal auf einer belastbaren Zahl gegründet.
+
+## 2026-08-29 · 📐 Der Kollider stand auf einer Schätzung — und der Code sagte es selbst
+
+Aus den 117 Kästen, die blockieren wo nichts steht, liess sich eine Gruppe herausrechnen:
+**61 von ihnen haben eine Tür.** Eine Tür wird nur für ein *gemeintes Gebäude* gesetzt —
+das ist keine Absperrung um ein Areal, das ist ein Haus mit zu grossem Kasten.
+
+Ihr gemeinsamer Ursprung steht in `viertel()`:
+
+```js
+var bw=b.w||10, bd=b.d||8;
+…
+addSolid(bx,bz,bw+1,bd+1,tuer);
+```
+
+Und zwei Zeilen darüber steht der Kommentar, der es schon wusste:
+
+> 🐛 *Die im cfg angegebenen Masse sind **Schätzwerte** — die geladenen Modelle sind oft
+> breiter. Der Generator merkt sich darum jedes Gebäude und rückt sie nach dem Laden
+> anhand der **echten** Bounding-Box auseinander (siehe `entzerren()`).*
+
+`entzerren()` zieht also die **Gebäude** auf das echte Mass nach — der **Kollider** blieb
+auf der Schätzung sitzen. Genau die Lücke schliesst diese Runde: nach dem Laden wird der
+Kasten auf die gemessene Hüllbox verkleinert, die Tür wandert auf die neue Wandflucht.
+
+⚠️ **Nur verkleinern, und nur innerhalb des alten Rechtecks.** Zwei Gründe, beide aus dem
+Bestand:
+* Vergrössern ist Sache von `kolliderNachziehen`; das läuft ohnehin danach und fängt
+  Traufen und Rampen.
+* Das neue Rechteck bleibt eine **Teilmenge** des alten — damit stimmen die Rasterzellen,
+  in die `addSolid` den Kasten schon einsortiert hat. Ein verschobener Kasten ausserhalb
+  seiner Zellen blockiert **gar nichts** mehr.
+
+### Ergebnis — ehrlich klein
+
+| | vorher | nachher |
+|---|---|---|
+| blockierende Punkte ohne Geometrie | 3798 | **3378** (−11 %) |
+| betroffene Kästen | 117 | **116** |
+| `th-mauern` durchlaufbare Gebäude | 13 | **13 bzw. 12** — siehe unten |
+
+⚠️ **Zur Zeile `th-mauern`: nicht als Verbesserung lesen.** Ein Einzellauf direkt nach
+der Änderung meldete 13, der volle Prüflauf danach 12. Das ist dieselbe Streuung, die
+schon der flackernde Ahorn gezeigt hat (19/19/20) — zwei Läufe, zwei Zahlen. Aus 13 → 12
+einen Gewinn zu machen, wäre genau der Fehler, den diese Sitzung dreimal korrigiert hat.
+Belastbar ist nur: **die Zahl ist nicht gestiegen, es wurde nichts aufgerissen.**
+
+**−11 % ist weniger, als der Fund versprochen hat, und das hat einen Grund:**
+`kolliderNachziehen` läuft danach und **wächst** wieder — es weist jedem Kasten alle
+Bauteile in Reichweite zu, auch Nachbarn. Mein Verkleinern wird dort teilweise
+zurückgenommen. Das ist kein Fehler der beiden Funktionen, sondern ihr Zusammenspiel:
+die eine schätzt zu gross, die andere darf nur wachsen.
+
+⚠️ **Und die restlichen 3378 sind weiter keine Fehlerliste.** Ein Grund ist jetzt
+sichtbar: die Prüfung sucht Geometrie auf **Brusthöhe (0,3…2,0 m)**. Ein Fahrgeschäft auf
+Stützen oder eine Halle mit hohem Sockel hat dort am Kastenrand nichts — der Kasten kann
+trotzdem richtig sein. Wer diese Zahl weiter senken will, muss zuerst diese Klasse
+trennen, nicht weiter an Kollidern drehen.
