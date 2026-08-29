@@ -936,3 +936,4 @@ gid://shopify/Product/15519830540673	ok	Outdoor Tactics Rucksack
 gid://shopify/Product/15519830933889	ok	Computer-Rucksack aus Rindsleder
 gid://shopify/Product/15520142655873	ok	Universal Multimedia-Halterung, drehbar
 gid://shopify/Product/15520168739201	nicht-versendbar	Rollregal im Retro-Stil
+gid://shopify/Product/15520384549249	nicht-versendbar	Lager-Abzieher-Set für Innenlager (9-teilig)
