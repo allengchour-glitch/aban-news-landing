@@ -84,7 +84,22 @@ const sonde = `function(){
   drin.sort(function(a,b){return b.tief-a.tief;});
   return {gefunden:stellen.length, quellen:quellen, kollider:WORLD_SOLIDS.length, drin:drin};}`
 
-mitSonden('traumhaus.html', { b: sonde }, '_baeume.html')
+
+/* Fingerabdruck FUER warteAufRuhe — mit der Kollider-Zahl, die von aussen unsichtbar
+   ist. Ohne sie meldet die Ruhepruefung "still", waehrend WORLD_SOLIDS noch waechst. */
+const ruheSonde = `function(){
+  var g=window._gebaeude||[], s=0, n=0;
+  for(var i=0;i<g.length;i++){
+    var u=g[i].userData||{};
+    if(u._bewegt||g[i]._bewegt||u.nieAusblenden)continue;
+    n++;
+    s=(s*31+Math.round(g[i].position.x*100))|0;
+    s=(s*31+Math.round(g[i].position.z*100))|0;}
+  return {n:n, h:s, kollider:WORLD_SOLIDS.length,
+          offen:(window._ladeOffen===undefined?-1:window._ladeOffen),
+          seite:performance.now()/1000};}`
+
+mitSonden('traumhaus.html', { b: sonde, ruhe: ruheSonde }, '_baeume.html')
 /* ⚠️ HIER IST DIE POSITION DER MESSWERT SELBST — darum wird nicht auf eine Frist
    gewartet, sondern auf Ruhe. Gemessen: ein Lauf bei 28 s sah denselben Ahorn auf
    (-10,4|107,6), nach dem letzten Umbau (116 s) stand er auf (-12|102). Wer hier zu
@@ -97,7 +112,7 @@ await browser.close()
 aufraeumen('_baeume.html')
 
 if (!ruhe.ruhig) console.log(`⚠️  Die Welt kam in ${ruhe.sekunden} s nicht zur Ruhe — die Zahlen unten sind ein Zwischenstand.`)
-else console.log(`Welt steht still (Seitenzeit ${ruhe.seite}s, ${ruhe.objekte} feste Bauwerke, _ladeOffen ${ruhe.ladeOffen})`)
+else console.log(`Welt steht still (Seitenzeit ${ruhe.seite}s, ${ruhe.objekte} feste Bauwerke, ${ruhe.kollider} Kollider, _ladeOffen ${ruhe.ladeOffen})`)
 console.log(`${R.gefunden} Pflanzen geprueft (${R.quellen.einzeln} einzeln, ${R.quellen.instanzen} instanziert) gegen ${R.kollider} Kollider\n`)
 if (!R.gefunden) { console.log('❌ 0 Pflanzen gefunden — die Sonde hat nichts gemessen, nicht die Welt ist kahl'); process.exit(1) }
 

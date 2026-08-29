@@ -4249,8 +4249,40 @@ Fingerabdruck aller **festen** `_gebaeude` alle 4 s über 300 s.
 
 Derselbe Ahorn stand bei 28 s auf (−10,4|107,6) und danach auf (−12|102); das
 Bahnsteigdach daneben war ebenfalls gewandert. **Jede Messung bei 26…55 s kann einen
-Zustand protokollieren, den die Welt gleich wieder verlässt.** Der Beweis am Ende:
-dieselbe Prüfung meldet vor dem Einschwingen **20**, danach **19** Pflanzen im Gebäude.
+Zustand protokollieren, den die Welt gleich wieder verlässt.**
+
+### ⚠️ Korrektur: es lag NICHT nur am Einschwingen
+
+Ich wollte das mit „vor dem Einschwingen 20, danach 19" belegen. **Das war falsch, und
+das Nachmessen hat es widerlegt** — bevor die Behauptung in einer gemergten PR stand.
+Drei Läufe auf der *eingeschwungenen* Welt, mit identisch 818 Pflanzen, 847 Bauwerken
+und 186 Kollidern, ergaben **19, 19, 20**. Der Unterschied ist genau **ein** Eintrag:
+
+```
+th5_baum_ahorn.glb   -12|102   0.45 m tief      ← nur in einem von drei Läufen
+```
+
+**Der Endstand dieses einen Baums ist nicht reproduzierbar.** Der Entwirrer entscheidet
+für ihn je nach Ladezeitpunkt anders — auf einem schnellen Gerät fällt es anders aus als
+hier. Auf (−12|102) ragt seine Krone in den Bahnhofs-Kollider und schneidet das
+Bahnsteigdach (`th-echt`: 0,6 × 0,4 m). Das ist ein Weltfehler, kein Messfehler.
+
+Beim ersten Anlauf fiel zusätzlich auf, dass die **Kollider-Zahl selbst schwankte**
+(186 gegen 192) — `warteAufRuhe` sah nur `_gebaeude`, nicht `WORLD_SOLIDS`. Behoben:
+Werkzeuge melden über eine eigene `ruhe`-Sonde die Kollider-Zahl mit; ohne sie steht
+`kollider:null` im Ergebnis, damit niemand annimmt, dieser Teil sei geprüft.
+
+**Zwei Reparaturen probiert, beide verworfen und zurückgenommen:**
+
+* `userData.fest` auf die vier Ahorne → das Flackern ist weg (19, 19, 19), aber der
+  Nachbar auf (−50|102) steht dann reproduzierbar **4,45 m tief** in einem Kollider.
+  *Reproduzierbar falsch ist nicht besser als zufällig falsch.*
+* Die Ecke auf (−41|102) rücken → immer noch **3,45 m tief**. Also war meine Annahme
+  darüber, welcher Kollider dort liegt, schlicht falsch — ich hatte ihn aus einer
+  Fundliste erraten statt gemessen.
+
+Der Befund steht damit als **Kommentar im Code** und hier, nicht als halber Flick.
+Der nächste Anlauf misst zuerst den Kollider an dieser Stelle.
 
 Neu in `th-lib.mjs`: **`warteAufRuhe(page)`** — wartet auf Ruhe statt auf eine Frist.
 

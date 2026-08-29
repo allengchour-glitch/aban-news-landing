@@ -107,7 +107,9 @@ export async function spielOeffnen(datei, opt = {}) {
  * Die uebrigen Werkzeuge messen weiter bei 26…55 s; wo sie Positionen melden, koennen
  * das Zwischenstaende sein. Das ist eine bekannte Grenze, keine behobene Sache.
  *
- * Rueckgabe: {sekunden, seite, proben, objekte, ruhig, ladeOffen}. `ruhig:false` heisst, die
+ * Rueckgabe: {sekunden, seite, proben, objekte, kollider, ruhig, ladeOffen}.
+ * `kollider:null` heisst: das Werkzeug hat keine `ruhe`-Sonde angemeldet, die
+ * Kollider-Zahl ist also NICHT ueberwacht — siehe die Warnung im Rumpf. `ruhig:false` heisst, die
  * Welt kam bis `max` nicht zur Ruhe — das ist ein Befund, kein Grund weiterzumessen.
  */
 export async function warteAufRuhe(page, opt = {}) {
@@ -115,7 +117,17 @@ export async function warteAufRuhe(page, opt = {}) {
   const t0 = Date.now()
   let gleich = 0, vorher = null, proben = 0, letzte = { n: 0, offen: -1 }
   for (;;) {
+    /* ⚠️ WORLD_SOLIDS LIEGT IN DER IIFE und ist von aussen nicht sichtbar. Genau die
+       Zahl aber schwankt: zwei Laeufe auf DERSELBEN, eingeschwungenen Welt meldeten
+       186 und 192 Kollider — und damit 19 bzw. 20 Funde. Wer nur Positionen abtastet,
+       nennt eine Welt ruhig, in der `autoKollider`/`kolliderNachziehen` noch arbeiten.
+       Werkzeuge, die eine Sonde `ruhe` anmelden, liefern die Zahl darum selbst mit;
+       ohne sie bleibt es beim Positions-Fingerabdruck (und der Aufrufer weiss aus
+       `kollider:null`, dass dieser Teil ungeprueft ist). */
     const f = await page.evaluate(() => {
+      if (window.__th && typeof window.__th.ruhe === 'function') return window.__th.ruhe()
+      return null
+    }) || await page.evaluate(() => {
       /* ⚠️ WAS SICH BEWEGEN SOLL, GEHOERT NICHT IN DEN FINGERABDRUCK — sonst wird
          nie Ruhe gemeldet. Dieselbe Markierung wie in th-echt. */
       const g = window._gebaeude || []
@@ -127,7 +139,8 @@ export async function warteAufRuhe(page, opt = {}) {
         s = (s * 31 + Math.round(g[i].position.x * 100)) | 0
         s = (s * 31 + Math.round(g[i].position.z * 100)) | 0
       }
-      return { n, h: s, offen: window._ladeOffen === undefined ? -1 : window._ladeOffen,
+      return { n, h: s, kollider: null,
+               offen: window._ladeOffen === undefined ? -1 : window._ladeOffen,
                seite: performance.now() / 1000 }
     })
     proben++
@@ -142,11 +155,11 @@ export async function warteAufRuhe(page, opt = {}) {
        aber eine gemessene, und sie steht neben der Ruhepruefung, nicht an ihrer
        Stelle. Wer sie senkt, misst wieder die Pause statt das Ende. */
     if (f.offen > 0 || f.seite < minSekunden) gleich = 0
-    else if (vorher && vorher.n === f.n && vorher.h === f.h) gleich++
+    else if (vorher && vorher.n === f.n && vorher.h === f.h && vorher.kollider === f.kollider) gleich++
     else gleich = 0
     vorher = f
-    if (gleich >= stabil) return { sekunden: Math.round((Date.now() - t0) / 1000), seite: Math.round(f.seite), proben, objekte: f.n, ladeOffen: f.offen, ruhig: true }
-    if (Date.now() - t0 > max) return { sekunden: Math.round((Date.now() - t0) / 1000), seite: Math.round(letzte.seite), proben, objekte: letzte.n, ladeOffen: letzte.offen, ruhig: false }
+    if (gleich >= stabil) return { sekunden: Math.round((Date.now() - t0) / 1000), seite: Math.round(f.seite), proben, objekte: f.n, kollider: f.kollider, ladeOffen: f.offen, ruhig: true }
+    if (Date.now() - t0 > max) return { sekunden: Math.round((Date.now() - t0) / 1000), seite: Math.round(letzte.seite), proben, objekte: letzte.n, kollider: letzte.kollider, ladeOffen: letzte.offen, ruhig: false }
     await page.waitForTimeout(takt)
   }
 }
