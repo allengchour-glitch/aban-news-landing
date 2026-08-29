@@ -5411,3 +5411,8 @@ gid://shopify/Product/15449065423233	CHF 17.99	15 Varianten	Freizeitjacke für H
 gid://shopify/Product/15449065488769	CHF 22.14	25 Varianten	Strick-Cardigan für Herren
 gid://shopify/Product/15449065554305	CHF 16.15	15 Varianten	Tweed-Gilet im Retro-Look für Herren
 gid://shopify/Product/15449065652609	CHF 24.34	24 Varianten	Freizeitjacke mit Reverskragen
+gid://shopify/Product/15449065718145	CHF 18.45	33 Varianten	Corduroy Weste im Preppy-Stil für Herren
+gid://shopify/Product/15449065750913	CHF 29.22	8 Varianten	Vintage Distressed Jeansjacke für Herren
+gid://shopify/Product/15449065816449	CHF 33.66	18 Varianten	Legere Baumwoll-Übergangsjacke mit Reissverschluss
+gid://shopify/Product/15449065881985	CHF 20.22	10 Varianten	Lässige Oversized-Jacke mit Revers für Herren
+gid://shopify/Product/15449065947521	CHF 26.04	10 Varianten	Herren Kunstlederjacke mit Fleece-Futter

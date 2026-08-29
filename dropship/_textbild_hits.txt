@@ -13374,3 +13374,8 @@ gid://shopify/Product/15520301711745	12->0	Doppellagiges Kreuzarmband aus 925er 
 gid://shopify/Product/15520304333185	24->3	Boken Kork-Slipper aus Veloursleder
 gid://shopify/Product/15520305054081	15->0	Slippers Sandalen für Damen
 gid://shopify/Product/15520305742209	19->0	Sandalen mit Elastikband und Blumen-Applikation
+gid://shopify/Product/15520345751937	11->2	Reise-Rucksack, 50L, wasserabweisend
+gid://shopify/Product/15520345850241	58->0	Outdoor Reise-Rucksack, gross
+gid://shopify/Product/15520346079617	16->0	Leichter Wanderrucksack mit Signalpfeife
+gid://shopify/Product/15520346341761	12->0	Grosser Freizeit-Rucksack, wasserdicht
+gid://shopify/Product/15520347324801	49->2	Retro Umhängetasche aus Crazy Horse Leder
