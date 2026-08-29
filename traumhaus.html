@@ -13687,18 +13687,28 @@ function gruppenSicht(){
 }
 function lodTakt(px,pz){
   if(!_lodBereit)return;
-  var NAH=78*78, SEHRNAH=34*34;
+  /* ⚠️ HYSTERESE, sonst blinkt die Grenze. Mit EINER Schwelle schaltet alles, was
+     genau auf 78 m steht, bei jeder Ueberschreitung um — und wer an einer Hauswand
+     entlanggeht, ueberschreitet sie staendig.
+     GEMESSEN (spiele-dev/tools/th-lod.mjs): geht die Figur zwanzigmal einen Meter hin
+     und her, schalten NEUN Objekte je 39-40 mal um. Sie stehen alle 77,8…78,8 m weit
+     weg — direkt auf der Kante.
+     Die Gruppenpruefung nebenan (gruppenSicht) hat dafuer laengst eine Reserve von
+     2 m am Kugelradius, ausdruecklich „gegen Flackern"; hier fehlte sie ganz.
+     Jetzt: einblenden ab 78 m, ausblenden erst ab 82 m (nah: 34 / 37). Vier Meter
+     Reserve kosten ein paar Zeichenaufrufe mehr und nehmen dem Rand das Zucken. */
+  var AN_F=78*78, AUS_F=82*82, AN_N=34*34, AUS_N=37*37;
   for(var i=0;i<_lodKlein.length;i++){
-    var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz;
-    var sicht=(dx*dx+dz*dz)<(e.nah?SEHRNAH:NAH);
+    var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz,d2=dx*dx+dz*dz;
+    var sicht=e.m.visible ? d2<(e.nah?AUS_N:AUS_F) : d2<(e.nah?AN_N:AN_F);
     if(e.m.visible!==sicht)e.m.visible=sicht;
   }
   /* Instanzgruppen (Zaunlinien, Hecke): als GANZES ausblenden, gemessen an ihrer
      eigenen Mitte plus Ausdehnung — sonst haengt die Entscheidung am Ursprung. */
   var G=window._instGruppen;
   if(G)for(var g=0;g<G.length;g++){
-    var q=G[g],qx=q.x-px,qz=q.z-pz,gr=78+q.r;
-    var s2=(qx*qx+qz*qz)<gr*gr;
+    var q=G[g],qx=q.x-px,qz=q.z-pz,gr=78+q.r,qd2=qx*qx+qz*qz;
+    var s2=q.m.visible ? qd2<(gr+4)*(gr+4) : qd2<gr*gr;   /* dieselbe Reserve */
     if(q.m.visible!==s2)q.m.visible=s2;
   }
 }

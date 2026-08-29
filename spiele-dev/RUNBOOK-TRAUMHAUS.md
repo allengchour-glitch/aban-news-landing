@@ -3021,3 +3021,52 @@ Lampen, die beim Kameraschwenk die Plätze tauschen — für den Shader kostenlo
 
 Dieselbe Klasse wie die Uferlinie und der Hausberg: **zwei Stellen schreiben dasselbe,
 ohne voneinander zu wissen.**
+
+## Die Sichtbarkeitsgrenze blinkte — es fehlte die Hysterese
+
+Nach dem Licht-Fund die gleiche Frage an das andere Sichtbarkeitssystem. `lodTakt()`
+blendet Kleinteile ab 78 m aus (nahe Stufe 34 m), mit **einer** Schwelle:
+
+```js
+var sicht = (dx*dx + dz*dz) < (e.nah ? SEHRNAH : NAH);
+```
+
+Alles, was genau auf der Kante steht, schaltet damit bei **jeder** Überschreitung um —
+und wer an einer Hauswand entlanggeht, überschreitet sie ständig.
+
+Gemessen mit `spiele-dev/tools/th-lod.mjs` (neu), Figur zwanzigmal einen Meter hin und
+her:
+
+| | vorher | nachher |
+|---|---|---|
+| Objekte, die mehr als zweimal umschalten | **9** | **0** |
+| ihre Wechsel | je **39–40** | — |
+| Sichtbarkeitswechsel gesamt | 944 | 595 |
+
+Die neun standen alle 77,8 … 78,8 m weit weg, also direkt auf der Kante.
+
+Die Gruppenprüfung nebenan (`gruppenSicht`) hat für genau dieses Problem längst eine
+Reserve von 2 m am Kugelradius, ausdrücklich „kleine Reserve gegen Flackern" — bei
+`lodTakt` fehlte sie ganz. Jetzt: **einblenden ab 78 m, ausblenden erst ab 82 m**
+(nah 34 / 37), dieselbe Reserve auch für die Instanzgruppen.
+
+### Zwei Werkzeuge, nicht eines
+
+* `th-flimmern.mjs` prüft bei **stillstehender** Kamera, ob überhaupt etwas umschaltet —
+  dort hat kein entfernungsabhängiger Regler einen Grund dazu, jeder Wechsel ist ein
+  Zwei-Schreiber-Konflikt. Ergebnis: sauber, und die Punktlichter bleiben konstant bei 6
+  (der Fix von #2387 hält).
+* `th-lod.mjs` ruft `lodTakt()` direkt mit synthetischen Positionen auf und prüft die
+  **Kante**. Beides zusammen deckt die zwei Fehlerarten ab: „jemand schreibt dagegen"
+  und „die Schwelle hat keine Reserve".
+
+⚠️ Die Grösse des LOD-Index schwankt zwischen Läufen (5400 … 5700), weil das Streuwerk
+zufällig gesetzt wird. Verglichen wird die Zahl der **flackernden**, nicht die des Index.
+
+### Und ein Nicht-Fund, der Zeit wert war
+
+`gruppenSicht` (#2379, Nachbar-Sitzung) schreibt ebenfalls `visible`, auf den
+Gebäudegruppen. Das Repo hat mit vorberechneten Hüllkugeln an **bewegten** Objekten
+schon zweimal Schiffbruch erlitten (unsichtbarer Landbus, verschwindende Tiere). Der
+Code macht es richtig: Objekte mit `nieAusblenden` bekommen gar keine Kugel, und er
+stellt nur wieder her, was er selbst versteckt hat (`_gsAus`). Kein Defekt.
