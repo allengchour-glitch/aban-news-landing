@@ -3550,3 +3550,62 @@ if (Math.abs(x)-m.hw < _bgX && Math.abs(z)-m.hd < _bgZ) return false;
 
 **Gemessen:** (0|0) fällt für 80 × 60 und 55 × 55 weg (nächste jetzt 251 m bzw. 160 m),
 alle **7 Viertel weiterhin auf Stufe 2**, `th-netz` 38 ok.
+
+## 2026-08-29 · 🏆 41 Erfolge an einer ungeschützten Kette — und eine Vermutung, die sich selbst widerlegt hat
+
+Ein Erfolg ist die einzige Belohnung im Spiel, deren **Ausbleiben niemand bemerkt**. Wer
+20 Fische angelt und nichts bekommt, hält das für eine hohe Hürde, nicht für einen Fehler.
+Genau diese Klasse hatte das Spiel schon einmal: `stats.coups` und `stats.sperrgut` wurden
+hochgezählt und nirgends gelesen — tote Zahlen, behoben mit „Tresorknacker"/„Schwerlast".
+
+Neues Werkzeug **`spiele-dev/tools/th-erfolge.mjs`** (jetzt Prüfung 18 in `th-alle.mjs`)
+stellt vier Fragen an die 41 Erfolge und die 13 Tages-Missionen:
+
+| Frage | Ergebnis |
+|---|---|
+| Wirft eine Bedingung? | 0 von 41 |
+| Ist eine schon beim Start wahr (belohnt nichts)? | 0 von 41 |
+| Wird jeder gelesene `stats.*`-Zähler auch geschrieben? | ja, 31 von 31 |
+| Was passiert, **wenn** eine wirft? | **das war der Fund** |
+
+### Der Fund: eine Kette ohne Schutz, zweimal
+
+`checkAch()` und `missCheck()` riefen die Bedingungsfunktionen ungeschützt in einer
+Schleife auf. Ein einziger Wurf beendet die Schleife — **jeder Erfolg dahinter kann nie
+mehr eintreten**, ohne eine Zeile in der Konsole. Gemessen mit einer *Belastungsprobe*:
+ein kaputter Eintrag an Stelle 0 liess die immer-wahre Marke an Stelle 1 ausfallen.
+
+Dass heute alle 41 Bedingungen sauber sind, ist ein **Zustand, keine Eigenschaft** — zwei
+von ihnen tragen bereits einen eigenen `typeof`-Schutz (`immohai`), weil hier schon einmal
+jemand hineingelaufen ist. Jetzt kostet ein Fehler genau einen Erfolg statt aller dahinter.
+
+| Belastungsprobe | vorher | nachher |
+|---|---|---|
+| Erfolge (`checkAch`) | Marke hinter dem Gift **fällt aus** | Marke wird gesetzt |
+| Missionen (`missCheck`) | fertige Mission bleibt **unerledigt** | wird erledigt |
+| unbehandelte JS-Fehler | 1–3 | **0** |
+
+### ⚠️ Die Vermutung, die sich selbst widerlegt hat
+
+Erste Fassung der *Rahmenprobe* sollte den grossen Schaden zeigen: `checkAch()` steht in
+`loop` in **einer Zeile** mit `checkQuest`, `checkTeamQ`, `missCheck` — und weit dahinter
+stehen `saveGame` (alle 6 s), der Host-Abgleich und **`renderer.render(scene,camera)`**
+(Zeile 13436 gegen 13413). Die Vermutung lag nahe: ein Wurf friert das Bild ein.
+
+**Gemessen: 9 Bilder je 4 s ohne Gift, 9 mit — 0 % Verlust.** Grund: `simTick=0` wird
+*vor* den Aufrufen gesetzt, der Wurf trifft also nur jedes rund siebte Bild (0,35 s
+Spielzeit bei gedeckeltem `dt` von 0,05; auf einem 60-Hz-Gerät jedes 21.).
+
+Damit war „das Bild friert ein" beinahe eine weitere falsche Behauptung in einer gemergten
+PR — wie schon einmal bei „keine einzige Baustelle" (#2386). Die Probe misst jetzt gegen
+eine **Referenzmessung ohne Gift** und schreibt den ehrlichen, kleineren Befund hin:
+der Schaden heisst nicht „Standbild", sondern „ein toter Erfolg reisst alle dahinter mit".
+
+> Wieder Regel 3 und die Regel über den Regeln: die erste Fassung des Messgeräts hatte
+> unrecht, nicht die Welt. Neuntes von achtzehn Werkzeugen, das sich zuerst selbst widerlegt hat.
+
+### ⚠️ Und wieder Regel 1
+
+Ein Backtick in einem Kommentar **innerhalb** der Sonde — `` `checkAch()` `` als Zitat
+gemeint — brach den Lauf mit „Unexpected identifier 'checkAch'". **Elftes Mal.** In Sonden
+gehören Anführungszeichen, auch in Kommentare.
