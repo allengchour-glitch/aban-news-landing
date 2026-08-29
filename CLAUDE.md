@@ -253,6 +253,37 @@ Reels und Fotos nein — dafür braucht es die Content-Posting-API, und die antw
 des Betreibers mit `error=unauthorized_client&error_type=client_key`. **Zwei getrennte Baustellen;
 ein verbundener Ads-Konnektor ist kein Fortschritt beim Posten.**
 
+## 🛒 Der Gratis-Versand-Balken lügt — 221 Produkte in der toten Zone (2026-08-29)
+Verfolgung des zweiten gemessenen Verkaufslecks: `/products/abendkleid-sirene…` hatte über
+60 Tage **141 Sitzungen, 9 Warenkörbe, 0 Kassengänge**. Das Produkt ist einwandfrei kaufbar
+(alle 8 Varianten `availableForSale`, ungetrackt) — das Leck liegt NACH dem Warenkorb. Die Liste
+der abgebrochenen Checkouts zeigt: von den 9 Warenkörben erreichten nur **2** je die Kasse.
+Der Abbruch passiert **zwischen Warenkorb und Kasse**.
+**Und dort steht eine falsche Zahl.** Der Balken in `layout/theme.liquid` rechnet gegen
+`SCHWELLE=5000` (CHF 50), begründet mit einem Kommentar vom 09.08., das entspreche der
+«tatsächlich greifenden Versandregel». Live abgefragt am 29.08.:
+| Automatik-Rabatt | Status | ab |
+|---|---|---:|
+| Gratis-Versand ab CHF 65 | EXPIRED | 65 |
+| **Gratis-Versand ab CHF 49** | **ACTIVE** | **49** |
+| Bundle: 2+ Artikel −10% | ACTIVE | 2 Artikel |
+| Mengenrabatt 10% ab 3 | ACTIVE | 3 Artikel |
+Wirksam sind also **49**, nicht 50. Ein Korb mit CHF 49.90 hat den Gratis-Versand — und der
+Balken sagt ihm **«noch CHF 0.10»**. Die Anzeige irrt in die teuerste Richtung: sie redet dem
+Kunden aus, was er längst hat.
+- **221 aktive Produkte kosten zwischen CHF 49.00 und 49.99** — genau diese Zone. Darunter das
+  Abendkleid mit den 9 verlorenen Warenkörben und die Slim Wallet (5,0★, bestbewertet).
+- **Die Reparatur ist eine Zahl:** `SCHWELLE=5000` → `4900`. Die Zusage «ab CHF 50» in allen
+  Texten bleibt wahr (49 < 50) und muss NICHT angefasst werden.
+- ⚠️ **NICHT von dieser Session geändert** — Theme und Checkout-Ökonomie sind Betreibersache,
+  und die Kette 45/49/50/65 ist bewusst gebaut (45 = 50 × 0,9, damit ein rabattierter 50er-Korb
+  den Gratis-Versand behält, Eintrag 20.08.). Geändert würde hier NUR der Balken.
+- ⚠️ **Ehrliche Grenze:** Belegt ist, dass der Rabatt ACTIVE ist und ab 49 gilt. Ein echter
+  Kassentest mit CHF 49.90 im Korb wäre der endgültige Beweis; den habe ich nicht gemacht.
+- **Lehre: Ein Kommentar im Code ist ein Datum, kein Beweis.** Der Kommentar vom 09.08. war an
+  seinem Tag richtig; der 49er-Rabatt kam später. **Wer eine Zahl mit «entspricht der
+  tatsächlichen Regel» begründet, muss die Regel neu fragen — nicht den Kommentar lesen.**
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»

@@ -100,3 +100,13 @@ Bis dahin läuft der Browser-Weg unverändert: tiktok.com/tiktokstudio/upload, V
   korrigiert (28.08., von der Cloud-Session über den Klaviyo-Konnektor).
 - ✅ 16 Weiterleitungen von rankenden 404-Seiten auf kaufbare Ware (28.08.).
 - ✅ POD-Produkte: Rückgabe-Ausnahme, falsche Flagge, Doppelblock, USA-Lieferzusage (28.08.).
+
+## 🛒 Gratis-Versand-Balken zeigt die falsche Schwelle (29.08.2026)
+**Eine Zahl im Theme, 221 Produkte betroffen.**
+`layout/theme.liquid` → `var SCHWELLE=5000;` → auf **4900** ändern.
+Grund: Der Automatik-Rabatt «Gratis-Versand ab CHF 49» ist live ACTIVE (geprüft 29.08.).
+Der Balken rechnet aber gegen CHF 50 und sagt einem Korb mit CHF 49.90 «noch CHF 0.10 bis
+Gratis-Versand» — obwohl der Kunde ihn schon hat. 221 aktive Produkte kosten CHF 49.00–49.99,
+darunter das Abendkleid «Sirène» (9 Warenkörbe, 0 Kassengänge in 60 Tagen) und die Slim Wallet (5,0★).
+Die Zusage «ab CHF 50» in allen Texten bleibt wahr und muss NICHT geändert werden.
+⚠️ Nicht von der Session geändert: Theme + Checkout-Ökonomie sind Betreiber-Entscheidung.
