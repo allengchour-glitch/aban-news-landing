@@ -3464,6 +3464,8 @@ erscheinen" zu melden.
 
 `spiele-dev/tools/th-katalog.mjs` (neu), aufgenommen in `th-alle.mjs`.
 
+---
+
 ## Stecken die Bewohner fest? — und warum die Spielzeit hier siebenmal langsamer läuft
 
 `th-koop.mjs` prüft zwei Spielerwege im Mehrspielermodus. Die Bewohner (`sims`) und die
@@ -3550,3 +3552,87 @@ if (Math.abs(x)-m.hw < _bgX && Math.abs(z)-m.hd < _bgZ) return false;
 
 **Gemessen:** (0|0) fällt für 80 × 60 und 55 × 55 weg (nächste jetzt 251 m bzw. 160 m),
 alle **7 Viertel weiterhin auf Stufe 2**, `th-netz` 38 ok.
+
+---
+
+## 2026-08-29 · Das Ruckeln kam nicht von zu viel Arbeit, sondern von Nachladen
+
+„Ruckelt am Handy" heisst **Aussetzer**, nicht durchgehend langsam. Das ist die ganze
+Diagnose in einem Satz — und der Grund, warum drei Runden Suche nach *teurer Arbeit pro
+Bild* nichts fanden. Was gleichmässig kostet, kann gar nicht stocken.
+
+### Der dritte Freispruch — und diesmal war es meine eigene Lieblingsthese
+
+Fünf kartengrosse durchsichtige Schichten liegen übereinander (nahe Wiese, Mähstreifen,
+Umland-Ring, Fern-Ebene, Wolkenschatten). Ich hatte sie mehrere Runden lang als „grösster
+verbleibender Füllraten-Posten" im Handoff stehen.
+
+**Erste Messung war Müll, und zwar auf lehrreiche Art.** Blockweise gemessen — erst alle
+an, dann alle aus — kam heraus: „aus" ist **langsamer** als „an" (-11 %). Die
+Software-Rasterung driftet über die Zeit stärker, als die Schichten kosten.
+
+**Zweiter Anlauf abwechselnd A B A B im selben Zeitfenster**, damit die Drift beide Seiten
+gleich trifft und aus der Differenz fällt:
+
+| Schicht | Unterschied | Rauschen | Urteil |
+|---|---|---|---|
+| ALLE zusammen | −0,7 ms | ±6,5 ms | im Rauschen |
+| 760×760 | −4,0 ms | ±4,0 ms | im Rauschen |
+| 600×600 | −0,9 ms | ±2,7 ms | im Rauschen |
+| 460×460 | +0,6 ms | ±2,7 ms | im Rauschen |
+| 204×152 | +1,7 ms | ±5,9 ms | im Rauschen |
+
+Software-Rasterung ist der **füllratenempfindlichste Renderer, den es gibt**. Was dort
+nicht messbar ist, ist auf einer GPU erst recht nicht der Engpass.
+
+`alphaTest`, das ich dafür vorgesehen hatte, wäre zusätzlich falsch gewesen: die Texturen
+sind weiche Radialverläufe (Alpha-Minimum 0, 100 % der Pixel unter voll deckend) — es
+gäbe harte Kreiskanten statt weicher Flecken. **Vor dem Optimieren die Textur ansehen.**
+
+`spiele-dev/tools/th-fuellrate.mjs`, `th-schichten.mjs` (beide neu).
+
+### Was es wirklich ist
+
+three.js übersetzt Shader und lädt Texturen **erst, wenn ein Material zum ersten Mal im
+Bild auftaucht**. Nach dem Laden kannte der Renderer 45 Programme und 29 Texturen — im
+Spiel existieren **224**. Eine Kamerafahrt über die Karte:
+
+```
+Start        493 ms · +4 Programme · +69 Texturen
+Berg         335 ms · +3 Programme · +98 Texturen
+alle anderen  31–93 ms · +0 · +0
+```
+
+Die zwei teuren Bilder sind **genau** die mit den Neuzugängen.
+
+### Der Fix und seine zwei Fallen
+
+`_aufwaermen()` lädt vor, während der Startbildschirm steht: `renderer.compile()` für die
+Shader, `renderer.initTexture()` je Textur, dazu Vorzeichnen aus neun echten Blickwinkeln
+(`compile()` merkt sich je **Material**, three.js baut aber je Material **und
+Objekt-Zustand**).
+
+⚠️ **Ein Lauf reicht nicht.** Einmalig bei 9 s halbierte die Nachzügler nur (174 → 93):
+die GLB-Modelle kommen über Minuten herein, es gibt kein „jetzt ist alles da"-Ereignis.
+Jetzt mehrere Läufe (16/26/40/60 s), die sich merken, was sie kennen.
+
+⚠️ **Es darf nicht selbst ruckeln.** `compile()` blockiert über eine halbe Sekunde — auf
+dem Startbildschirm unsichtbar, im Spiel wäre es genau der Hänger, den es verhindern soll.
+Solange nicht gespielt wird: alles sofort. Sobald gespielt wird: nur Texturen, vier je Bild.
+
+**Ergebnis: Texturen 174 → 2 Nachzügler. Shader 7 → 5.**
+
+Die 5 Restlichen über ihre `cacheKeys` angesehen: Flanken, die man nicht ansteuern kann,
+eines ist eine Schattenkarten-Variante. r128 gibt keine Liste der fehlenden Varianten
+heraus. Ein Versuch, zusätzlich bei neuen **Meshes** vorzuzeichnen, brachte gemessen
+**null** Unterschied und ist wieder draussen.
+
+### ⚠️ Der Pixelvergleich lügt hier — immer eine Kontrolle mitlaufen lassen
+
+Bildvergleich vorher/nachher: **96,06 % veränderte Pixel.** Das sah nach einem schweren
+Grafikfehler aus. Kontrolle mit **zweimal demselben Stand**: **96,05 %.**
+
+Die Szene ist zwischen Läufen nicht deterministisch (Uhr, Verkehr, Tiere). Ohne die
+Kontrolle hätte ich einen Fehler gemeldet, den es nicht gibt.
+
+**Regel: Ein Bildvergleich ohne Gleichstand-Kontrolle ist keine Messung.**
