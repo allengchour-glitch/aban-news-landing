@@ -5298,3 +5298,8 @@ gid://shopify/Product/15449005490561	CHF 91.13	1 Varianten	12-Zoll 13-Ton Lotus 
 gid://shopify/Product/15449005556097	CHF 40.05	1 Varianten	Lotus Ethereal Steel Tongue Drum, 11 Noten
 gid://shopify/Product/15449006440833	CHF 13.46	25 Varianten	Lässiger Kapuzenpullover für Herren
 gid://shopify/Product/15449006473601	CHF 11.65	15 Varianten	Herren Hoodie mit Schriftzug-Print – Grau
+gid://shopify/Product/15449007096193	CHF 24.38	1 Varianten	Superhelle Laser-Taschenlampe
+gid://shopify/Product/15449010569601	CHF 37.92	1 Varianten	Mini Karaoke Maschine mit kabellosen Mikros
+gid://shopify/Product/15449011585409	CHF 16.77	30 Varianten	Herren Fleece Hoodie Langarm
+gid://shopify/Product/15449026396545	CHF 35.14	1 Varianten	Lüfter mit LED, Befeuchter & USB-Strom
+gid://shopify/Product/15449027641729	CHF 11.90	1 Varianten	Magnetischer Türvorhang – Mücken- & Insektenschutz
