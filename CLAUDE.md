@@ -20,6 +20,36 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🧭 69 tote Landeseiten aufgefangen — 511 Sitzungen liefen ins Nichts (2026-08-29)
+
+`TOTE-LANDESEITEN.md` führte **69 Seiten mit Besuchern, die nicht mehr kaufbar sind und keine
+Weiterleitung haben — zusammen 511 Sitzungen.** Zur Einordnung: Der Shop misst rund 1'200
+Sitzungen im Monat. Ein erheblicher Teil des gemessenen Landeseiten-Verkehrs endete auf 404.
+Fast alles ist **BigBuy-Markenware** (Adidas, Puma, Nike, Reebok, Calvin Klein, Polaroid,
+L'Oréal, Olimpia Splendid), stillgelegt seit dem 10.07.
+
+**Alle 69 haben jetzt eine 301 auf die passende KATEGORIE** — nie auf eine fremde Marke
+(Hausregel 28.08.: das wäre ein Köderwechsel). Jede Zielkollektion vorher live geprüft auf
+drei Dinge: im Onlineshop veröffentlicht, **kaufbare Ware vorhanden**
+(`collection_id:<id> AND status:active`), und **nicht selbst eine Weiterleitung** — Shopify
+lehnt eine Weiterleitung auf eine Weiterleitung ab (Lehre 21.08.).
+- ⚠️ Genau daran wäre das POD-Trikot gescheitert: `selbst-gestalten-1` ist **selbst** eine
+  Weiterleitung. Erst das Endziel `selbst-gestalten` funktioniert.
+- ⚠️ **`sonnenbrillen-eyewear` (279 Produkte) ist NICHT im Onlineshop** — dorthin umzuleiten
+  hätte einen 404 durch einen 404 ersetzt. Die veröffentlichten Schwestern
+  `sonnenbrillen-damen` / `-herren` tun es. **Ein Ziel, das man nicht geprüft hat, ist kein Ziel.**
+- **Drei Fälle konnte keine Titel-Regel treffen** und wurden einzeln nachgesehen statt geraten:
+  das POD-Trikot (Endziel), «**Discovery-Set**» (der Titel sagt nichts — `productType` sagt
+  «Parfüm», der Text nennt drei Düfte à 30 ml) und eine **gelöschte** Seite, deren Warenart nur
+  noch im HANDLE steht (`…aroma-diffuser-stabchen…`). **Wenn der Titel schweigt, reden
+  productType, Beschreibung und Handle** — man muss sie nur fragen.
+- Vier Stichproben live gegengeprüft: 301 auf das jeweilige Ziel.
+
+⚠️ **Ein eigener Fehler im Skript, den erst der Diff sichtbar machte:** In `ziel(titel, handle)`
+hiess die Schleifenvariable ebenfalls `handle` und überschrieb den Parameter. Hier folgenlos,
+weil der Parameter vorher gelesen wird — aber eine gestellte Falle für die nächste Änderung.
+**Eine Schleifenvariable darf nie so heissen wie ein Parameter derselben Funktion.**
+
 ## 🏷️ Eine Startseiten-Kachel führte auf eine Kollektion mit NULL kaufbaren Produkten (2026-08-29)
 
 Nach der Härtung der Kanal-Prüfung lief `kollektion_leer.py` sauber durch — 508 Kollektionen,
