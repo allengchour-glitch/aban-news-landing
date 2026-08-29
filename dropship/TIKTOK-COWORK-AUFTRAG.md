@@ -118,6 +118,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-0829-clean
 **Slides in dieser Reihenfolge:**
 
 1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_e5ad595b-fb29-4985-b848-6cbcd66bccdf.jpg?v=1787991414
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_68e50ad7-8901-4dbd-9a36-c8b82c897c17.jpg?v=1787995383
 3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_91259e24-1e1b-410d-bcef-50022ecd48e5.jpg?v=1787991420
 4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_06c8f1cf-3f90-40f8-883e-04b21858cd07.jpg?v=1787991426
 5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_60c95423-157b-450a-bed0-e71195e69369.jpg?v=1787991432

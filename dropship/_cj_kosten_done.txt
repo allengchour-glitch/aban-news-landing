@@ -5263,3 +5263,16 @@ gid://shopify/Product/15448964563329	CHF 36.17	1 Varianten	Teigbrett aus Edelsta
 gid://shopify/Product/15448964596097	CHF 160.26	1 Varianten	Multifunktionales Abtropfgestell aus Edelstahl
 gid://shopify/Product/15448964694401	CHF 20.52	1 Varianten	Schneidebrett Akazienholz
 gid://shopify/Product/15448964759937	CHF 65.61	1 Varianten	Antiker Küchenarmatur für Warm- und Kaltwasser
+gid://shopify/Product/15448964792705	CHF 29.28	1 Varianten	Ausziehbares Ablagegestell für die Küche
+gid://shopify/Product/15448964891009	CHF 60.13	1 Varianten	Rotes Frischhalte-Tablett aus Kunststoff
+gid://shopify/Product/15448965054849	CHF 34.84	1 Varianten	Aluminium Sandwichmaker für Zuhause, doppelseitig
+gid://shopify/Product/15448965087617	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448965120385	CHF 39.54	1 Varianten	4er-Set Sushi-Platten im Boots-Design
+gid://shopify/Product/15448965218689	CHF 78.36	1 Varianten	Wok aus Karbonstahl mit flachem Boden
+gid://shopify/Product/15448965284225	CHF 36.68	1 Varianten	2er-Set Küchenregale aus Massivholz
+gid://shopify/Product/15448965349761	CHF 26.72	1 Varianten	Verstellbarer Nadel-Kaffeeverteiler
+gid://shopify/Product/15448965382529	CHF 56.98	1 Varianten	Ausziehbares Gewürzregal für Schränke
+gid://shopify/Product/15448965448065	CHF 40.62	1 Varianten	Käseplatte mit Acrylhaube
+gid://shopify/Product/15448965513601	CHF 30.90	1 Varianten	Smarter Abfalleimer 16L mit Sensor
+gid://shopify/Product/15448965546369	CHF 14.40	1 Varianten	Zitruspresse aus Edelstahl
+gid://shopify/Product/15448965611905	CHF 33.96	1 Varianten	Ausziehbares Mikrowellen-Regal, 3 Etagen
