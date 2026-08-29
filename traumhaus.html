@@ -6872,6 +6872,12 @@ setTimeout(function baueGebaeude(){
       var duenn=Math.min(sz9.x,sz9.y,sz9.z)<0.012,gross=Math.max(sz9.x,sz9.y,sz9.z)>0.55;
       var wenig=n9.geometry.attributes.position&&n9.geometry.attributes.position.count<=6;
       if(duenn&&gross&&wenig)n9.visible=false;});});
+  /* 🧱 Die Markthalle war durchlaufbar — 15,3 x 15,2 m Wand, 4,5 m hoch, kein
+     Kollider: autoKollider() greift nur bis r 130, sie steht auf r 294.
+     Mass und Ort aus dem WANDGRUNDRISS (th-mauern.mjs, 0,3…2,0 m ueber der Sohle),
+     nicht aus der Huellbox. Auf Tueren geprueft: allseitig geschlossen, kein Spalt
+     breiter als 0,5 m — sie bekommt darum einen vollen Kollider ohne Durchlass. */
+  addSolid(20.2,293.5,15.3,15.2);
   bau("bd_inn.glb",8.5,-28,0,68,Math.PI,false);           // Wirtshaus (Suedzeile)
   bau("bd_house_a.glb",5.5,68,0,-67,0,false);             // Nordzeile Ost-Ende (neben der Stadtzeile)
   bau("bd_house_b.glb",5.5,-72,0,-67,0,false);            // Nordzeile West-Ende (neben der Stadtzeile)
@@ -7593,6 +7599,10 @@ setTimeout(function baueGebaeude(){
     addSolid(MX-11,MZ-4,23.0,15.0);
     fest("th48_brunnen.glb",3.14,MX+13,MZ-6,0);
     fest("th48_marktwaage.glb",4.74,MX+16,MZ+7,Math.PI);
+    /* 🧱 Auch die Marktwaage war durchlaufbar. Wandmass 3,1 x 3,1 auf Brusthoehe
+       (th-mauern.mjs); die Huellbox ist mit 4,5 x 4,5 das vorstehende Dach. Auf
+       Tueren geprueft: geschlossen. */
+    addSolid(158,27,3.1,3.1);
     fest("th48_litfass.glb",3.67,MX-17,MZ+9,0);
     /* ⚠️ MZ+10 lag mitten in der noerdlichen Standreihe (MZ+9,5): der Karren
        steckte im Marktstand bei MX+2, 84 Mesh-Paare ab y 0,02. MZ+11,5 ist
