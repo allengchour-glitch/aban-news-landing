@@ -365,3 +365,13 @@ gid://shopify/Product/15448901845377	23.09->13.09
 gid://shopify/Product/15448902009217	23.09->13.09
 gid://shopify/Product/15448902992257	23.09->13.09
 gid://shopify/Product/15448903156097	21.29->11.29
+gid://shopify/Product/15448903188865	21.29->11.29
+gid://shopify/Product/15448903287169	20.39->10.39
+gid://shopify/Product/15448903483777	23.36->13.36
+gid://shopify/Product/15448903582081	23.43->13.43
+gid://shopify/Product/15448903844225	24.55->14.55
+gid://shopify/Product/15448904139137	24.70->14.70
+gid://shopify/Product/15448904171905	24.41->14.41
+gid://shopify/Product/15448904335745	23.66->13.66
+gid://shopify/Product/15448904401281	23.95->13.95
+gid://shopify/Product/15448904630657	24.55->14.55
