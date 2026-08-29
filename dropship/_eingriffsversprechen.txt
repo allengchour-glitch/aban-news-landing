@@ -1,0 +1,10 @@
+# Titel, die einen medizinischen EINGRIFF versprachen (29.08.2026)
+# Scan ueber 49'270 aktive Produkte, 27 Regex-Treffer, 3 echte Faelle.
+# Die uebrigen 24 sind ZULAESSIGE Kosmetik und wurden NICHT angefasst:
+#   Po-Lifting-Effekt (Shapewear, optischer Formeffekt) · Wimpernlifting
+#   (eingefuehrter Name einer Kosmetikbehandlung) · Zahnaufhellungs-Streifen
+#   (erlaubte Kosmetikkategorie) · Beauty-Geraete mit Lifting-Effekt
+#   (Hausregel 12.08.: Mikrostrom/Falten = Kosmetik, keine Heilaussage).
+gid://shopify/Product/15397247385985	Titel+Handle+301	"Anti-Aging Facelift" -> "echter Jade, Doppelkopf-Roller" (Facelift ist eine Operation; der eigene Text sagt "rollt Schwellungen weg", "betont Wangenknochen")
+gid://shopify/Product/15448985731457	Titel+Handle+301+SEO	"Dauerhafte Haarentfernung" -> "IPL-Haarentfernungsgeraet mit Kuehlfunktion" (IPL zuhause entfernt nicht dauerhaft; steht im GOOGLE-Kanal; KEINE Ersatzzusage gesetzt, auch nicht "Reduktion" - belegt ist keine)
+gid://shopify/Product/15503165555073	Titel+SEO	"Mask REVERSE Broken Lines Anti-Falten Lifting V-Face" -> "Anti-Falten-Gesichtsmaske · 7er-Set, straffender V-Face-Effekt" (kein falsches Versprechen, unuebersetzter Lieferantentitel; Handle bleibt)
