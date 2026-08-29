@@ -128,7 +128,12 @@ footer a{color:var(--muted)}
   function calc(){
     var b=num("brutto"),mult=parseInt(document.getElementById("x13").value,10)||13,bvg=num("bvg"),uvg=num("uvg"),fak=num("fak");
     var rows=document.getElementById("rows"),tot=document.getElementById("o-total");
-    if(!isFinite(b)||b<0){tot.textContent="—";rows.innerHTML="";return;}
+    /* ⚠️ Die Wache raeumte die Gesamtsumme und die Tabelle, aber NICHT die Zeile
+       darunter: bei leerem oder negativem Brutto stand oben "—" und direkt darunter
+       weiter "16,2 % über Brutto · 10'071 CHF/Mt." aus der letzten gueltigen Rechnung.
+       Zwei Angaben, die sich widersprechen — gefunden beim Pruefen des NaN daneben. */
+    if(!isFinite(b)||b<0){tot.textContent="—";rows.innerHTML="";
+      document.getElementById("o-total-u").textContent="Gesamtkosten / Jahr";return;}
     var jahr = period==="month" ? b*mult : b;
     var ahv=jahr*(AHV+ADMIN)/100;
     var alv=Math.min(jahr,ALV_CAP)*ALV/100;
@@ -138,7 +143,11 @@ footer a{color:var(--muted)}
     var ag=ahv+alv+bvgB+uvgB+fakB;
     var gesamt=jahr+ag;
     tot.textContent=chf(gesamt);
-    document.getElementById("o-total-u").textContent="Gesamtkosten / Jahr ("+(ag/jahr*100).toLocaleString("de-CH",{maximumFractionDigits:1})+" % über Brutto · "+chf(gesamt/12)+"/Mt.)";
+    /* ⚠️ Bei Bruttolohn 0 ist der Aufschlag in Prozent nicht 0, sondern undefiniert:
+       ag/jahr wird 0/0 = NaN, und auf dem Bildschirm stand "NaN % über Brutto".
+       Die Wache eine Zeile weiter oben faengt nur b<0 und nicht-endliche Werte ab. */
+    var aufschlag = jahr>0 ? (ag/jahr*100).toLocaleString("de-CH",{maximumFractionDigits:1})+" % über Brutto" : "—";
+    document.getElementById("o-total-u").textContent="Gesamtkosten / Jahr ("+aufschlag+" · "+chf(gesamt/12)+"/Mt.)";
     var html="";
     html+=row("Bruttolohn / Jahr",chf(jahr));
     html+=row("+ AHV/IV/EO + Verw. ("+(AHV+ADMIN)+" %)",chf(ahv));
