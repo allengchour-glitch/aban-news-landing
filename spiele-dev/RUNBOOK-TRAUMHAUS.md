@@ -2799,3 +2799,56 @@ also x 18 … 88).
 Ein reiner Kegel würde es nicht retten: (101,8\|161,8) liegt nur 23,7 m von der
 Bergmitte, dort stünden immer noch 34,6 m Fels. Der Berg steht nicht zu breit,
 sondern **am falschen Ort**.
+
+## Der Sonderberg ist weg — die Bahn fährt auf einen, den es ohnehin gibt
+
+Behebung des Funds aus der vorigen Runde. Berg Nr. 5 war ein **Sonderberg**: feste
+Werte (`r = 213`, Höhe 75, Fussradius 51,75, eigenes Flag an `bergGeo`) und eine
+Ausnahme von der Sperrliste — alles nur, damit die Seilbahn irgendeinen Berg hat.
+
+Zwei Wege wurden gemessen, nicht geraten:
+
+**1. Berg verschieben?** Ein Raster über r 200 … 330 und alle 5° ergab 95 freie
+Stellen — aber **keine in der Nähe**. Die nächste liegt bei r = 230, also 17 m weiter
+draussen und um 45° gedreht; dort steht dann die Talstation im Berg. Der Sonderberg
+hätte die halbe Seilbahn mitgenommen.
+
+**2. Einen vorhandenen Berg nehmen?** Von den 34 Kandidaten der Bergkette entstehen
+tatsächlich nur **neun** (Sperrliste + Meer). Für jeden Punkt entlang der Linie
+Talstation → Bergmitte wurde mit dem **echten** Höhenfeld (`window._berge[i].hoehe`)
+geprüft, welches Gelände unter der Terrasse liegt und ob dort ein Bauwerk steht.
+
+Ergebnis: Berg **(378,7|119,1)**, Gipfel **108 m**. Auf 133 m Fahrstrecke von der
+Talstation liegt eine freie Terrasse; **die Talstation kann exakt stehen bleiben**,
+ihre eigene Platzsuche bleibt damit gültig. Der Sonderberg entfällt ersatzlos, Berg 5
+wird ein ganz normaler Kettenberg und läuft wie jeder andere in die Sperrliste.
+
+### Zwei Messfehler unterwegs, beide vom Werkzeug gefunden
+
+* Erste Wahl war 139 m Fahrstrecke → Bahnsteig auf 58,2 m und ein **67 m hoher**
+  Felssockel. Sechs Meter talwärts: 43,3 m Bahnsteig, 52 m Sockel, 65 m Berg über der
+  Station. Gleiche Fahrt, halber Klotz.
+* `BERGY` wurde über ein Raster der 24 × 34 m grossen **Platte** gemessen. Das
+  Stationshaus steht aber **schräg** zur Weltachse; seine achsenparallele Hüllbox
+  greift weiter den Hang hinauf. `th-boden` meldete die Station daraufhin mit 5,13 m
+  im Fels, obwohl die Platte frei lag. Das Raster deckt jetzt die Hüllbox ab
+  (±17/±22).
+
+### Gemessen
+
+| | vorher | nachher |
+|---|---|---|
+| th-boden · im Fels | **18** | **0** |
+| th-boden · im Wasser | 0 | 0 |
+| th-strassen · Stellen auf dem Belag | 175 | **147** |
+| th-3d | 59 echt / 75 nur 2D | **56 echt / 66 nur 2D** |
+| th-viertel | 7 Viertel, alle Stufe 2 | 7 Viertel, alle Stufe 2 |
+| th-netz | 39 ok | **38 ok**, 0 Fehler |
+| Bahnsteig | 41,9 m auf 69-m-Berg | 43,3 m auf **108**-m-Berg |
+| Stützen | 15,5 … 39,8 m | 15,8 … 40,9 m, alle auf ebenem Grund |
+
+**Die 38 statt 39 Netz-Prüfungen sind kein Verlust.** Ohne den Berg im Weg findet der
+Sportpark seinen Wunschplatz (0|246 statt −14|250, 10 m statt 20 m Ausweichweg) und
+braucht dort nur **einen** Anschluss statt zwei. Es gibt eine Sache weniger zu prüfen,
+nicht eine Prüfung weniger, die besteht. Dasselbe erklärt die 28 Stellen weniger auf
+dem Belag.
