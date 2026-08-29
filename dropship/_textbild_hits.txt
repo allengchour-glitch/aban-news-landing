@@ -12948,3 +12948,9 @@ gid://shopify/Product/15500410978689	142->0	Digitaler Gemälde-Druck
 gid://shopify/Product/15508412825985	18->0	Nackenhörnchen mit Memory-Schaum
 gid://shopify/Product/15510924558721	10->1	Smartwatch mit Musik, Bluetooth & Herzfrequenz
 gid://shopify/Product/15510928785793	10->3	Doppelwandiger Abfalleimer aus Edelstahl
+gid://shopify/Product/15511793631617	22->0	Dunkelgrüne, matte Nagelsticker im Schachbrettmuster
+gid://shopify/Product/15511795204481	89->0	Wasserdichte Kameratasche, personalisierbar
+gid://shopify/Product/15511985881473	40->1	Digitaler Messbecher mit LCD-Anzeige
+gid://shopify/Product/15511987061121	29->0	Sushi DIY Set für zuhause
+gid://shopify/Product/15512277451137	60->0	Mini-Entsafter für frische Drinks
+gid://shopify/Product/15512277811585	25->1	Schwerkraft-Fussmanschetten für Hangübungen
