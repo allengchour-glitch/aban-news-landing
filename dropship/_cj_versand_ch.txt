@@ -935,3 +935,4 @@ gid://shopify/Product/15519838765441	nicht-versendbar	Kugelbahn-Bausatz für Kin
 gid://shopify/Product/15519830540673	ok	Outdoor Tactics Rucksack
 gid://shopify/Product/15519830933889	ok	Computer-Rucksack aus Rindsleder
 gid://shopify/Product/15520142655873	ok	Universal Multimedia-Halterung, drehbar
+gid://shopify/Product/15520168739201	nicht-versendbar	Rollregal im Retro-Stil
