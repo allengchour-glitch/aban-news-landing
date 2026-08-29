@@ -284,6 +284,27 @@ Kunden aus, was er längst hat.
   seinem Tag richtig; der 49er-Rabatt kam später. **Wer eine Zahl mit «entspricht der
   tatsächlichen Regel» begründet, muss die Regel neu fragen — nicht den Kommentar lesen.**
 
+## 💥 `sort -u` auf einer Prosadatei — ich habe das Gedächtnis zerstört (2026-08-29)
+Beim Auflösen eines Merge-Konflikts habe ich zum vierten Mal dieselbe Schleife von Hand getippt:
+`{ git show :2:$f; git show :3:$f; } | sort -u > $f`. Bei den ersten drei Malen waren es Ledger.
+Beim vierten Mal stand **CLAUDE.md** in der Konfliktliste — und die Schleife hat das
+Projekt-Gedächtnis **alphabetisch sortiert**. Gepusht war es, bevor es mir auffiel; erst der
+Blick auf `head -5` zeigte Textfragmente in Alphabetreihenfolge.
+**Rettbar war es nur durch Glück in der Beweislage:** beide Merge-Eltern standen in der
+Historie, und `git diff` belegte, dass meine Fassung gegenüber origin **28 Zeilen hinzufügt und
+0 löscht**. Erst damit war es sicher, die eigene Fassung zurückzuschreiben, ohne die Arbeit der
+parallelen Session zu verlieren. Ohne diesen Nachweis hätte ich raten müssen.
+- **Regel: `sort -u` ist nur für Dateien zulässig, deren Zeilen unabhängig sind** — Ledger,
+  Quittungen, Cursor. Wo die REIHENFOLGE Bedeutung trägt (Prosa, Code, JSON, CSV mit Kopfzeile),
+  ist eine Vereinigung Datenverlust, kein Merge.
+- **Aus dem getippten Befehl ist ein Werkzeug geworden:** `automation/merge_ledger_union.sh`
+  entscheidet über eine **weisse Liste** (`dropship/_*.txt`, `dropship/cj_*.txt`,
+  `*_done.txt`, `*_cursor.txt`). Alles andere wird gemeldet und NICHT angefasst, und es gibt
+  dann auch keinen automatischen Commit.
+- **Die eigentliche Lehre:** Ein Befehl, den man zum vierten Mal von Hand tippt, gehört längst
+  in eine Datei — nicht aus Bequemlichkeit, sondern weil eine Datei eine Sicherung tragen kann
+  und eine Kommandozeile nicht. (Vgl. Farbtabelle, Preisformel, Klingenregel: dieselbe Familie.)
+
 ## 🤖 «Bots oder echte Leute?» — die Juli-Welle war eine Bot-Welle (2026-08-29)
 Betreiberfrage zu 25 Sitzungen ohne Umsatz. Gemessen statt vermutet:
 | Zeitraum | Sitzungen |
