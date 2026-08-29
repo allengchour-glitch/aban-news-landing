@@ -556,7 +556,12 @@ var WORLD_POIS=[
      man nicht findet, ist so gut wie nicht gebaut.
      Die Koordinaten hier sind nur der Startwert: `marke()` in `viertel()` schreibt die
      ECHTE Lage hinein, sobald das Viertel steht (Namensgleichheit genuegt). */
-  [160,220,"🎰","Vergnuegungsviertel"],[-200,-250,"🦓","Zoo"],[300,-260,"✈️","Flughafen"]];
+  [160,220,"🎰","Vergnuegungsviertel"],[-200,-250,"🦓","Zoo"],[300,-260,"✈️","Flughafen"],
+  /* ⚠️ „Ein Viertel, das man nicht findet, ist so gut wie nicht gebaut" — der Satz
+     zwei Zeilen weiter oben gilt fuer den Spielclub genauso. Er steht 130 m ausserhalb
+     bei (126|102); ohne Marke auf der Karte laeuft niemand zufaellig dorthin. Feste
+     Koordinaten, weil er kein viertel() ist und `marke()` ihn also nicht nachzieht. */
+  [126,102,"💃","Spielclub"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -6363,6 +6368,12 @@ setTimeout(function baueGebaeude(){
         drin("th14_roulettetisch.glb", 1.12, CX-1.2, CZ-3.2, 0);
         drin("th14_kartentisch.glb",   0.94, CX-5.0, CZ-0.7, 0);
         drin("th14_tanzflaeche.glb",   0.125,CX+2.5, CZ+2.5, 0);
+        /* ⚠️ EINE QUELLE. Die Tanzflaeche ist ab jetzt auch ein BEDIENELEMENT (Tippen
+           startet das Tanz-Minispiel). Wer ihre Lage ein zweites Mal hinschreibt,
+           laesst sie auseinanderlaufen, sobald der Club einmal umzieht — genau das
+           war der ergiebigste Befund dieser Sitzung (Bergform, Uferlinie, Viertelmass,
+           Bahnsteigkante). Darum steht sie hier EINMAL und wird von dort gelesen. */
+        window._club={x:CX, z:CZ, tanzX:CX+2.5, tanzZ:CZ+2.5, tanzR:2.6};
         drin("th14_dj_pult.glb",       1.36, CX-2.4, CZ+4.4, Math.PI);
         [-4.4,-2.5].forEach(function(dz){drin("th14_automatenreihe.glb",2.17,CX+6.4,CZ+dz,-Math.PI/2);});
         [0.5,2.4,4.3].forEach(function(dz){drin("th14_spielautomat.glb",1.88,CX+6.7,CZ+dz,-Math.PI/2);});
@@ -9068,6 +9079,18 @@ function eisJingle(){
   setTimeout(function(){beep(988,.10,"square",.03);},130);
   setTimeout(function(){beep(1175,.16,"square",.03);},260);
 }
+/* 💃 Ein Hinweis, EINMAL je Betreten. Ohne ihn findet niemand die Tanzflaeche: sie
+   sieht aus wie Boden, und im ganzen Spiel gibt es sonst keinen Ort, an dem Tippen
+   etwas ausloest, was nicht ein Moebel oder eine Figur ist. */
+var _clubHint={drin:false};
+function updClub(dt){
+  var C=window._club; if(!C||!sims||!sims.length)return;
+  var s9=sims[meinSi?meinSi():0]; if(!s9)return;
+  var drin=Math.hypot(s9.x-C.tanzX,s9.z-C.tanzZ)<C.tanzR;
+  if(drin&&!_clubHint.drin&&!TANZ.on&&!MG.on&&!KOCH.on&&!ANGEL.on)
+    hint("💃 Tanzfläche — tippen und tanzen!");
+  _clubHint.drin=drin;
+}
 function updEis(dt,now){
   EIS.cd-=dt;
   if((!MPs||mpHost)&&EIS.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
@@ -11162,7 +11185,7 @@ var liefer=null;
    sich also selbst. Die Koordinaten sind Startwerte; `marke()` zieht sie auf die echte
    Lage nach, sobald das Viertel steht. */
 var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Ost",172,0],
-  ["Vergnuegungsviertel",160,220],["Zoo",-200,-250],["Flughafen",300,-260]];
+  ["Vergnuegungsviertel",160,220],["Zoo",-200,-250],["Flughafen",300,-260],["Spielclub",126,102]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
   /* 💰 Die Lieferung war die einzige UNGEDECKELTE Geldquelle: ~120-260 $ pro Minute,
@@ -12700,6 +12723,14 @@ function tapAt(px,py){
       if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}
       if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}
       if(f2.id==="stereo"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){tanzStart();return;}}
+      /* 💃 Die Tanzflaeche im Spielclub startet dasselbe Minispiel wie die Stereoanlage
+         zu Hause. Der Club war bis hierher reine Kulisse: man konnte hinein, aber nichts
+         tun. Dieselbe Bedienung wie ueberall sonst (tippen, nicht drueberlaufen) — ein
+         Minispiel, das von selbst anspringt, wenn man einen Raum durchquert, waere ein
+         Uebergriff. Radius aus window._club, nicht neu hingeschrieben. */
+      if(window._club&&!MG.on&&!KOCH.on&&!ANGEL.on&&!TANZ.on&&
+         Math.hypot(c0.pt.x-window._club.tanzX,c0.pt.z-window._club.tanzZ)<window._club.tanzR){
+        tanzStart();return;}
       if(window.autoRec&&window.autoRec.state==="parkt"&&Math.hypot(window.autoRec.mesh.position.x-c0.pt.x,window.autoRec.mesh.position.z-c0.pt.z)<3){einsteigen();return;}}
     if(c0&&!fahren){for(var vi9=0;vi9<verkehr.length;vi9++){var v9=verkehr[vi9];
       if(v9.mesh&&Math.hypot(v9.mesh.position.x-c0.pt.x,v9.mesh.position.z-c0.pt.z)<3.5){einsteigen(v9,true);return;}}}
@@ -13611,7 +13642,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updClub(dt);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
