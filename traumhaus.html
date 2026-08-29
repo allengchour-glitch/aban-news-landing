@@ -7984,8 +7984,17 @@ setTimeout(function baueGebaeude(){
       if(window._boote)window._boote.push({w:w,y0:-0.9,x0:-153,per:1.7,ph:4.2,
                                            kurs:null,pos:92,dir:1});},true);
   })();
-  /* 🏗️ BAUSTELLE. Elf th21-Modelle lagen unbenutzt im Repo, und nichts Vergleichbares
-     gibt es in der Welt — eine Stadt, die staendig waechst, hat keine einzige Baustelle.
+  /* 🏗️ ZWEITE BAUSTELLE, im Osten. Elf th21-Modelle lagen unbenutzt im Repo.
+     ⚠️ KORREKTUR ZUR ERSTEN FASSUNG DIESES KOMMENTARS. Dort stand, es gebe „nichts
+     Vergleichbares in der Welt — keine einzige Baustelle". Das war falsch:
+     `baustelleAusbau()` baut seit Langem eine bei (-36|102), mit th46_rohbau,
+     th46_baukran und Fassadengeruest. Der Denkfehler: aus „DIESE MODELLE sind
+     unbenutzt" wurde „DIE SACHE fehlt" — die th46-Modelle sind sehr wohl benutzt,
+     ich hatte nur nach th21 gesucht. Gefunden hat es th-bewegt.mjs, das den Baukran
+     in seiner Liste der Bewegten fuehrt.
+     Die zweite Baustelle bleibt: 221 m von der ersten entfernt, im anderen Stadtteil,
+     mit anderen Modellen — eine wachsende Stadt baut an mehreren Stellen. Aber sie
+     ist eine ERGAENZUNG, keine Erstausstattung.
      ⚠️ ZWEIMAL AM MASS GESCHEITERT, bevor der Ort stimmte. th21_rohbau ist kein
      Haeuschen: bau() skaliert ueber die HOEHE, und auf 9 m misst der Rohbau 33,8 x
      33,8 m im Grundriss. Der erste Versuch stellte ihn auf einen 24 x 18 m grossen
