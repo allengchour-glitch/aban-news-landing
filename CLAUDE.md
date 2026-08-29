@@ -20,6 +20,72 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 📭 Popup schrieb in Liste A, die Willkommens-Flows lauschten auf Liste B (2026-08-29)
+
+Nach dem toten Link in der Klaviyo-Mail die Gegenfrage gestellt: Senden die Flows überhaupt?
+Über 365 Tage haben **ALLE Flows zusammen 17 Empfänger** erreicht — und daraus **2 Käufe /
+CHF 67.80** gemacht, also **30 % des gesamten Shop-Umsatzes** (CHF 227.22 aus 7 Bestellungen)
+aus 17 Mails. **CHF 14.97 Umsatz je Empfänger** — kein anderer Kanal kommt in die Nähe
+(TikTok-Ads: CHF 499.99 Ausgaben, 1'187 Klicks, **1** Kauf). Der Engpass ist nicht die
+Mail-Qualität, sondern dass niemand auf der Liste steht.
+
+**Und dann der Grund, aus beiden Richtungen belegt:**
+
+| Liste | Profile | Flows, die darauf hören |
+|---|---:|---|
+| `SfdmHY` «Email List» — **hier schreibt das Popup hin** | 2 | **0** |
+| `T2VHfu` «Newsletter Subscribers» | **0** | 3 Willkommens-Flows, alle live |
+
+`get_flows_triggered_by_list(SfdmHY)` gibt eine leere Liste zurück, `…(T2VHfu)` gibt die drei
+Flows — die Kette ist also nicht schwach, sie ist **durchtrennt**. Jede Anmeldung landete in
+einem Fach, das kein Flow liest; die im Popup versprochene WELCOME10-Mail kam nie an.
+⚠️ **Der Kommentar im Popup behauptete das Gegenteil** («triggert den Welcome-Flow») — zweite
+Fassung der Lehre vom 28.08.: *ein Kommentar ist ein Datum, kein Beweis.*
+
+**Was zusätzlich in den Flows stand, alles erst beim Hinsehen gefunden:**
+- **`UKjAsV` und `X4kYd7` sind byte-gleiche Zwillinge** — gleiche Betreffzeilen, gleiche
+  Nachrichtennamen, gleiche 3-Tage-Pause; nur die Snapshot-Templates unterscheiden sich.
+  «Welcome Series · EN/US» ist dabei **komplett auf Deutsch** in einem Shop, der nur in die
+  Schweiz liefert.
+- Beide senden ihre erste Mail unter dem Absendernamen **«Aban»** — einer FREMDEN Marke.
+- Beide heissen intern «Willkommens-E-Mail (**ohne Gutschein**)» — das Popup verspricht in
+  derselben Sekunde WELCOME10. Der Widerspruch stand seit dem 01.06. bereit.
+- **`VbLQj6` «Welcome Series»** ist die einzige, die die Zusage einlöst («Willkommen 💛 Hier
+  sind deine 10%»).
+
+**Repariert, alles einzeln gegengeprüft:**
+1. Neues Template (`UeXEhB`), weil das alte am 29.08. die **Sommer-Kollektion** bewarb und
+   «Lieferung ca. 7–14 Tage» nannte — eine ACHTE Lieferzeit neben den vier wahren. Jetzt
+   saisonneutral auf `/collections/neu-eingetroffen` (CREATED_DESC, veraltet nie) plus der
+   Hausformel «Die Lieferzeit steht auf jeder Produktseite». Ziel-Kollektionen und WELCOME10
+   vorher live geprüft (ACTIVE bis 31.12.2027, Mindestwert 0.01 = keiner).
+2. `update_flow_action` auf `VbLQj6` → Klaviyo legt Snapshot `VZnxDz` an, Rückfeld gelesen.
+3. **`UKjAsV` und `X4kYd7` auf `draft`** — damit hört genau EIN Flow auf `T2VHfu`. Ohne diesen
+   Schritt hätte die Umstellung des Popups **drei** Willkommens-Serien gleichzeitig ausgelöst,
+   zwei davon mit identischem Betreff. **Wer einen Trichter wieder anschliesst, zählt vorher,
+   wie viele Empfänger am anderen Ende hängen.**
+4. Theme: `sections/footer-group.json` → Sektion `custom_liquid_lxpopup`, `LIST_ID` auf
+   `T2VHfu`. Am Ursprung gegengeprüft (Admin-API), Footer-Sektionen unverändert 3.
+   ⚠️ `T2VHfu` ist **Single-Opt-in** — es kommt keine Bestätigungsmail mehr. Der Satz «Bitte
+   bestätige noch kurz die E-Mail in deinem Postfach» wäre damit eine Falschaussage geworden
+   und heisst jetzt «Der Code ist auch gleich per E-Mail bei dir».
+   ⚠️ Die Datei trägt einen **JS-Kommentarkopf vor dem JSON** — `json.load` scheitert daran;
+   erst ab der ersten `{` parsen und den Kopf beim Zurückschreiben mitgeben.
+
+⚠️ **Der Flow-Trigger selbst ist über die API NICHT änderbar** — `update_flow` kann nur den
+Status. Deshalb musste das Popup zur Liste wandern und nicht umgekehrt.
+⚠️ **Was NICHT repariert ist:** `UKjAsV` trug als zweite Stufe eine T+3-Tage-Mail («schon was
+Schönes entdeckt?»), korrekt gebrandet. Die lebende Serie hat nur EINE Mail. Zusammenlegen
+geht nur von Hand in der Klaviyo-Oberfläche → steht in COWORK-AUFTRAEGE.
+⚠️ **Und der grössere Befund daneben:** Von **1'324 Shopify-Kundinnen hat GENAU EINE** eine
+Marketing-Einwilligung (`email_marketing_state:subscribed`, seit 02.07.). Das Footer-Formular
+schreibt nach Shopify, das Popup nach Klaviyo, die Flows lauschten auf eine dritte Stelle —
+**drei Anmeldewege, drei Ziele, keines davon verbunden.** Klaviyo hat ausserdem **0 eigene
+Formulare** (`get_forms` → leer).
+⚠️ Zählfalle am Rand: `customersCount(query:…)` **ignoriert den Filter** (gibt dreimal 1'324) —
+die Zahl stimmt nur über `customers(first:250, query:…)`. Vierte Fassung des stillen
+Shopify-Filters nach `title:`, `variant_price:<5` und `variants.compare_at_price:>0`.
+
 ## 🔒 Ein verwaister `sleep` hielt zwei Motoren stundenlang still (2026-08-29)
 Aufgefallen an einer Kleinigkeit: `engine_keepalive` meldete bei JEDEM stündlichen Lauf
 «social_autopilot neu gestartet» und «website_hygiene_runner neu gestartet». Nachgesehen statt
