@@ -4656,8 +4656,20 @@ setTimeout(function baueGebaeude(){
        obwohl das der viel schlimmere Fehler ist. */
     if(strassen>=2&&aufFahrbahn(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
     if(strassen>=1&&imBerg(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
+    /* ⚠️ HIER WURDEN ZWEI VERSCHIEDENE MASSE VERGLICHEN. Der Kandidat kam mit seinem
+       NETTO-Rechteck (`viertelMass` — nur die Bauzeilen), der Nachbar mit seinem
+       BRUTTO-Rechteck (`v.w/2`, die angemeldete Flaeche). Ueberall sonst gilt brutto:
+       Streuwerk, Waldsaum und Wege halten sich per `v.w/2` von einem Viertel fern.
+       Die Ungleichheit ging in die unsichere Richtung — ein neues Viertel durfte mit
+       seinem Aussenrand in die angemeldete Flaeche eines bestehenden hineinragen.
+       GEMESSEN: Freizeitpark (60|340, brutto 330x110 -> z 285…395) und Sportpark Sued
+       (-14|250, brutto 180x84 -> z 208…292) teilten sich einen 180 x 7 m grossen
+       Streifen. th-viertel meldete das als »Sportpark Sued, Stufe 2: nein: Viertel
+       Freizeitpark« — der Fund war echt, nur die Ursache lag in DIESER Zeile.
+       Jetzt brutto gegen brutto, auf beiden Seiten dasselbe Mass. */
+    var ghw=cfg.w/2, ghd=cfg.d/2;
     for(var i=0;i<VIERTEL.length;i++){var v=VIERTEL[i];
-      if(Math.abs(x-v.x)<m.hw+v.w/2+8&&Math.abs(z-v.z)<m.hd+v.d/2+8)return false;}
+      if(Math.abs(x-v.x)<ghw+v.w/2+8&&Math.abs(z-v.z)<ghd+v.d/2+8)return false;}
     for(var q=0;q<WORLD_SOLIDS.length;q++){var s2=WORLD_SOLIDS[q];
       if(Math.abs(x-s2.x)<m.hw+s2.hw+6&&Math.abs(z-s2.z)<m.hd+s2.hd+6)return false;}
     /* Gilt in BEIDEN Durchgaengen — ein Viertel in einem Gebaeude ist nie das
