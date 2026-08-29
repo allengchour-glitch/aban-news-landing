@@ -3274,3 +3274,42 @@ Nicht angefasst, mit Begründung:
 | ohne Kollider | 15 | **13** (alle mit Begründung) |
 | th-netz | 38 ok | 38 ok, 0 Fehler |
 | th-koop | 9 von 9 kommen an | 9 von 9 |
+
+## Speichern und Laden — der teuerste ungeprüfte Weg im Spiel
+
+`snapshot()` und `loadSnapshot()` tragen alles, was der Spieler gebaut und erreicht hat:
+34 Felder, von den Wänden bis zu den Tageslimits. **Kein Werkzeug hat sie je geprüft.**
+Geht dabei etwas verloren, merkt es beim Programmieren niemand — es fällt erst auf, wenn
+jemand sein Haus wiederfindet und ein Stück fehlt. Die Kommentare im Snapshot zählen
+mehrere solcher Fälle auf, die einzeln und nachträglich gefunden wurden: Gratis-Flags,
+Emote-Zähler, Auftragsfortschritt, Tageslimits.
+
+`spiele-dev/tools/th-speichern.mjs` (neu) prüft eine harte Invariante:
+
+```
+speichern(laden(speichern(x)))  ==  speichern(x)
+```
+
+### Zweimal am eigenen Aufbau gescheitert, bevor der Test etwas prüfte
+
+* **Erster Lauf: 0 Böden, 0 Wände, 0 Möbel.** Ein frisches Spiel ist leer, der Umweg
+  war trivial bestanden. Ein Test, der nichts anfasst, beweist nichts.
+* **Zweiter Lauf: Absturz.** `applyFloor(x, y, idx)` nimmt einen **Index** in `FLOORS`
+  (0 … 2), keine Zeichenkette — mit einer Katalog-ID kam
+  `Cannot read properties of undefined (reading 'texture')`. Möbel dagegen laufen über
+  `applyFurn(id, …)` und brauchen echte Katalog-Bezeichner; ein erfundener würde still
+  verworfen, und der Test bestünde wieder aus Nichts.
+
+Jetzt baut der Test erst ein Haus — 30 Böden (alle drei Belagsarten), 22 Wände mit Tür
+und Fenster, 6 Möbel aus dem echten Katalog — und alle 58 Teile kommen im Spielstand an.
+
+### Ergebnis
+
+**Verlustfrei.** Kein einziges der 34 Felder verändert sich auf dem Umweg.
+
+Eine harmlose Asymmetrie bleibt und ist dokumentiert: bei einem *frischen* Spiel liefert
+`snapshot()` `gb: null`, nach dem ersten Laden `gb: {}`. Beide werden überall als
+`sn.gb || {}` gelesen — ohne Wirkung, und nach dem ersten Laden ist der Unterschied weg.
+
+Der Test schreibt nichts in den `localStorage`; die Änderung lebt nur im Browser des
+Laufs.
