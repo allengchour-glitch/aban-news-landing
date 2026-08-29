@@ -4376,3 +4376,47 @@ Die übrigen Werkzeuge messen weiter bei 26…55 s; wo sie Positionen melden, k�
 Zwischenstände sein. **Das ist eine bekannte Grenze, keine behobene Sache** — alle auf
 `warteAufRuhe` umzustellen verdreifacht die Laufzeit des Tors und wäre eine Entscheidung,
 die Rechenzeit kostet.
+
+## 2026-08-29 · 📐 Erst den Kollider messen, dann den Baum rücken
+
+Die letzte Runde hinterliess einen bewusst offenen Befund: **ein Ahorn landete nicht
+reproduzierbar** (19/19/20 über drei Läufe), und zwei Reparaturversuche waren
+zurückgenommen worden, weil beide auf einer **geratenen** Annahme darüber beruhten,
+welcher Kollider an der Stelle liegt. Diese Runde löst das ein — mit einer Messung.
+
+### Was tatsächlich dort liegt (alle Kollider im Umkreis von 18 m, eingeschwungene Welt)
+
+| Ort | Befund |
+|---|---|
+| **(−16\|102)** | **FREI** — 1,5 m zur Schule (−26\|95, 17 × 25), 3 m zum Bahnhof (0\|102, 26 × 11) |
+| (−12\|102) | 1 m **DRIN** im Bahnhofs-Kollider — dorthin schiebt der Entwirrer |
+| **(−50\|102)** | **5 m tief** in der Schule (−56\|100, 22 × 14), zusätzlich 2,1 m in einem zweiten Kasten |
+| (−41\|102) | **4 m tief** im Baustellen-Kollider (−41\|101, 13 × 10) — genau der Fleck, den ich zuvor für frei gehalten hatte |
+| **(−52\|88)** | **FREI**, 2,6 m Luft, liegt noch auf dem Platzbelag (x −55…3, z 65…107) |
+
+Damit lösen sich beide Rätsel der Vorrunde auf, und sie haben **verschiedene Ursachen**:
+
+* Der Wunschort **(−16\|102) ist richtig** — nur der Entwirrer schiebt den Baum je nach
+  Ladezeitpunkt in den Bahnhof. → `userData.fest` ist hier die passende Antwort.
+* Der Wunschort **(−50\|102) ist selbst falsch.** `fest` allein hätte den Fehler nur
+  eingefroren (4,45 m tief, reproduzierbar) — deshalb war die Rücknahme richtig.
+
+Und die dritte Erkenntnis erklärt, warum jedes Herumschieben scheitern musste:
+**entlang z = 102 gibt es zwischen x −67 und −17,5 überhaupt keine Lücke** (Schule
+−67…−45, Baustelle −47,5…−34,5, Altstadt-Block −34,5…−17,5). **Die Nordwest-Ecke des
+Platzes existiert nicht** — der Entwirrer hat das bisher jeden Lauf neu überklebt.
+
+### Ergebnis
+
+Vier Ahorne auf `[[-16,70],[-16,102],[-50,70],[-52,88]]`, alle mit `userData.fest=1`.
+
+| | vorher | nachher |
+|---|---|---|
+| Pflanzen im Gebäude (3 Läufe) | 19 · 19 · **20** | **18 · 18 · 18** |
+| `th5_baum_ahorn` in der Fundliste | ja, flackernd | **nein** |
+
+> **Die Regel dahinter:** ein Fund nennt das Symptom (*„Pflanze steht im Gebäude"*), nicht
+> die Ursache. Zwei Bäume mit demselben Symptom brauchten hier **gegensätzliche**
+> Behandlungen — der eine musste festgenagelt, der andere versetzt werden. Wer aus der
+> Fundliste auf die Ursache schliesst, rät. Der Umweg über „alle Kollider im Umkreis"
+> kostet eine Messung und beendet das Raten.
