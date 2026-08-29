@@ -1269,7 +1269,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var m=new THREE.Mesh(g,wasserMat());m.rotation.x=-Math.PI/2;m.position.set(x,-0.022,z);scene.add(m);
     window._wasser.push({mesh:m,geo:g,base:g.attributes.position.array.slice()});return m;}
   // See (animiert) — ORGANISCHE Uferlinie statt Rechteck-Kante
+  /* Die Uferlinie des Seeparks. ⚠️ Sie wurde an drei Stellen nachgebaut oder
+     GESCHAETZT: `seePromenade` hatte eine Zeichen fuer Zeichen identische Kopie
+     namens `rad()`, und die Enten schwammen nach der Notiz »See-Rand liegt bei
+     ~11…16« — echt sind 9,1…16,9. Zwei Ableitungen derselben Form laufen
+     auseinander; hier gibt es ab jetzt nur diese eine. */
   function seeR(a){return 13+Math.sin(a*3)*1.8+Math.cos(a*5+1.3)*1.2+Math.sin(a*2+0.7)*0.9;}
+  window._seeUfer=seeR; window._seeMitte={x:0,z:146};
   (function machSee(x,z){
     var SEG=40,RINGS=5,pos=[0,0,0],idx=[];
     for(var r9=1;r9<=RINGS;r9++){for(var s9=0;s9<SEG;s9++){var a9=s9/SEG*Math.PI*2,rad=seeR(a9)*(r9/RINGS);
@@ -1461,7 +1467,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       /* 🚶 User: „um see einen gehweg oder so" — Rundweg ums Wasser, Baenke, Laternen,
          dazu eine Stichstrasse von der Ringstrasse, damit der See angebunden ist. */
       var SX=0,SZ2=146,SEG=44;
-      function rad(a){return 13+Math.sin(a*3)*1.8+Math.cos(a*5+1.3)*1.2+Math.sin(a*2+0.7)*0.9;}
+      var rad=window._seeUfer;    /* war eine Zeichen fuer Zeichen identische Kopie von seeR */
       /* Kies-Ton ohne Textur: die Ring-Geometrie hat keine UVs, eine Textur waere
          auf einen einzigen Texel gefallen (erster Versuch war tiefschwarz). */
       var pM=betMat(0xc9c2b2,0.95);
@@ -8408,20 +8414,30 @@ var ENTEN=(function(){
   return {SEE:SEE,teile:teile,enten:enten,ziel:null,zielT:0,cd:6};
 })();
 function updEnten(dt,now){
+  /* Faellt auf den Kreis zurueck, solange die Welt noch baut (updEnten laeuft in der
+     Schleife, `_seeUfer` entsteht beim Weltaufbau). */
+  var _ufer=window._seeUfer||function(){return 11;};
   var E=ENTEN,q9=new THREE.Quaternion(),eu=new THREE.Euler(),M=new THREE.Matrix4(),
       P=new THREE.Vector3(),SC=new THREE.Vector3();
   if(E.zielT>0)E.zielT-=dt;
   for(var i=0;i<E.enten.length;i++){var en=E.enten[i];
     if(E.ziel&&E.zielT>0){
-      /* zum Ufer schwimmen — aber IM Wasser bleiben (See-Rand liegt bei ~11…16) */
+      /* ⚠️ »See-Rand liegt bei ~11…16« war GESCHAETZT. Die echte Uferlinie ist
+         `seeR(a)` = 9,1…16,9 — an den engsten Stellen also fast 2 m enger als
+         angenommen. Der feste Deckel 10,5 liess die Enten dort ans Land waten,
+         und der aeusserste Ring (r = 9,7) tat es auch ohne Ziel: gemessen 1,1 %
+         aller Proben, bis 0,33 m im Gras. Jetzt fragt beides die Uferlinie. */
       var zx=E.ziel.x-E.SEE.x,zz=E.ziel.z-E.SEE.z,zl=Math.hypot(zx,zz)||1;
-      var tx=E.SEE.x+zx/zl*Math.min(10.5,zl),tz=E.SEE.z+zz/zl*Math.min(10.5,zl);
+      var zGrenze=Math.max(3,_ufer(Math.atan2(zz,zx))-1.4);
+      var tx=E.SEE.x+zx/zl*Math.min(zGrenze,zl),tz=E.SEE.z+zz/zl*Math.min(zGrenze,zl);
       var dx=tx-en.x+Math.sin(i*2.1)*0.9,dz=tz-en.z+Math.cos(i*1.7)*0.9,dl=Math.hypot(dx,dz);
       if(dl>0.4){en.x+=dx/dl*1.5*dt;en.z+=dz/dl*1.5*dt;en.rot=Math.atan2(dx,dz);}
       en.a=Math.atan2(en.z-E.SEE.z,en.x-E.SEE.x);en.r=Math.hypot(en.x-E.SEE.x,en.z-E.SEE.z);
     }else{
       en.a+=en.sp*dt;
-      en.x=E.SEE.x+Math.cos(en.a)*en.r;en.z=E.SEE.z+Math.sin(en.a)*en.r;
+      /* Der Kreis wird zur Uferform gestaucht, wo der See enger ist als der Ring. */
+      var rr9=Math.min(en.r,Math.max(2,_ufer(en.a)-1.0));
+      en.x=E.SEE.x+Math.cos(en.a)*rr9;en.z=E.SEE.z+Math.sin(en.a)*rr9;
       en.rot=Math.atan2(Math.cos(en.a)*(en.sp>0?1:-1),-Math.sin(en.a)*(en.sp>0?1:-1));
     }
     var bob=Math.sin(now*0.003+i*1.9)*0.03,sr=Math.sin(en.rot),cr=Math.cos(en.rot);
