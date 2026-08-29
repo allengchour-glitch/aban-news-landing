@@ -13323,3 +13323,8 @@ gid://shopify/Product/15519831032193	31->0	Beheizbares Tassenpad
 gid://shopify/Product/15519831064961	8->0	Tragbarer Campingkocher mit Grillfunktion
 gid://shopify/Product/15519831097729	17->0	Kabellose Ladetasse mit Henkel
 gid://shopify/Product/15519831163265	12->0	USB Heizuntersetzer
+gid://shopify/Product/15519833162113	10->0	Halsband- und Leinen-Set mit Blumenmuster
+gid://shopify/Product/15519833489793	11->0	UFO 2 AIR Hundeleine, einziehbar
+gid://shopify/Product/15519833522561	50->0	Sportliche wasserdichte Uhr
+gid://shopify/Product/15519833620865	44->0	Intelligenz-Knotenseil für Hunde
+gid://shopify/Product/15519833751937	9->0	Herzfrequenz-Tracker für iPhone
