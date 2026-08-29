@@ -284,6 +284,28 @@ Kunden aus, was er längst hat.
   seinem Tag richtig; der 49er-Rabatt kam später. **Wer eine Zahl mit «entspricht der
   tatsächlichen Regel» begründet, muss die Regel neu fragen — nicht den Kommentar lesen.**
 
+## 🎒 82 Google-Besucher landeten auf einer DRAFT-Seite (2026-08-29)
+Die zweitgrösste Suchseite des Shops, `/products/wasserdichter-packsack-dry-bag-20l`, hatte über
+90 Tage **82 Suchsitzungen und 0 Warenkörbe**. Der Grund war nicht die Seite, sondern ihr Status:
+**DRAFT**, Tag `keine-lieferanten-ref`, Varianten mit `sku: None`. Der Viability-Guard hat sie zu
+Recht gedraftet — dahinter steht kein Lieferant. Für 82 Suchende war sie damit ein 404.
+- **Es gibt eine echte Entsprechung:** «Wasserdichter Dry Bag mit Blumenprint, 10L», CHF 15.90,
+  ACTIVE, online, 6 Bilder, 6 kaufbare Varianten mit echten CJ-SKUs. **301 gesetzt und
+  gegengeprüft.** Andere Grösse, aber dieselbe Warenart — das ist kein Köderwechsel.
+- ⚠️ **Nicht veröffentlichen war richtig.** Ein 404 ist ärgerlich, eine unlieferbare Bestellung
+  teuer (#1008-Klasse). Die Weiterleitung löst beides, ohne die Regel zu brechen.
+- **Am Zielprodukt gleich der nächste Mangel:** Die Varianten hiessen **«3 style», «4 style»,
+  «12 style»** — CJs Musternummerierung. Im Auswahlfeld stand «Farbe: 3 style». 8 von 8 Werten
+  umbenannt zu «Muster 3» … (Variantenzahl vorher/nachher 8 = 8 gegengeprüft).
+- **Quelle mitrepariert:** `variant_value_clean.py` kannte das Muster NICHT — «3 style» löste
+  keine seiner Regeln aus, er fasste solche Optionen also nie an. Regel `STYLENR` ergänzt, die
+  **Nummer bleibt erhalten** (sie unterscheidet die Ausführungen und ist die einzige Information
+  dazu — geraten wird nichts). Cursor zurückgesetzt: nach einer Regel-Änderung ist das alte
+  Erledigt-Zeichen wertlos.
+- ⚠️ **Substring-Falle vermieden, diesmal vorher:** «Free**style** Blau» darf nicht getroffen
+  werden. Das Muster ist deshalb verankert (`^\d{1,3}\s*style$`) und im Test belegt — nach IPL,
+  led, ski, auto, monitor und der Klingenregel war das die siebte Gelegenheit dazu.
+
 ## 💥 `sort -u` auf einer Prosadatei — ich habe das Gedächtnis zerstört (2026-08-29)
 Beim Auflösen eines Merge-Konflikts habe ich zum vierten Mal dieselbe Schleife von Hand getippt:
 `{ git show :2:$f; git show :3:$f; } | sort -u > $f`. Bei den ersten drei Malen waren es Ledger.
