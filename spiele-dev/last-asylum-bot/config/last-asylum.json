@@ -3469,7 +3469,7 @@
       "every": 1800,
       "at_start": true,
       "priority": 118,
-      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab. Ganz zu Beginn legt er ausserdem den Zahlenstreifen am oberen Rand in voller Aufloesung nach austausch/hud-oben.png - aber NUR, wenn der Welt-Knopf unten rechts sichtbar ist, also die Stadtansicht wirklich offen steht. Ohne diese Bedingung erwischte der erste Lauf 'Taegliche Aufgaben' statt der Stadt. Aus dem halbierten Sammelbild lassen sich keine Ziffern schneiden, und ohne Ziffern gibt es keine Energie-Schranke.",
+      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab. Ganz zu Beginn legt er ausserdem den Zahlenstreifen am oberen Rand in voller Aufloesung nach austausch/hud-oben.png - aber NUR, wenn der Welt-Knopf unten rechts sichtbar ist, also die Stadtansicht wirklich offen steht. Ohne diese Bedingung erwischte der erste Lauf 'Taegliche Aufgaben' statt der Stadt. Aus dem halbierten Sammelbild lassen sich keine Ziffern schneiden, und ohne Ziffern gibt es keine Energie-Schranke. Der Streifen ist am 29.08. auf x bis 0.56 und y bis 0.105 verengt worden: dort stehen Rohstoffe, Macht und die Ausdauer, und genau die Ziffern werden gebraucht. Vorher ging er ueber die volle Breite und 13 Prozent Hoehe - 800 KB, alle 30 Minuten neu, also rund 39 MB Git-Historie pro Tag fuer Bildrand und Diamanten-Werbung.",
       "do": [
         {
           "log": "Rundgang durch die Basis - Kamera schwenken und alles abernten"
@@ -3526,8 +3526,8 @@
                   "region": [
                     0.0,
                     0.0,
-                    1.0,
-                    0.13
+                    0.56,
+                    0.105
                   ],
                   "mindestabstand": 1800
                 }

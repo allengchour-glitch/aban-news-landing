@@ -4035,12 +4035,30 @@ class TestStartskriptWirdBewacht(unittest.TestCase):
         der Pruefung gehoert in den Vermerk.
         """
         text = "\n".join(self.skript())
-        stelle = text.index("bot.py check")
-        rund = text[stelle - 200:stelle + 600]
-        self.assertIn("$pruefung", rund,
+        self.assertIn("$pruefung = & $python bot.py check", text,
                       "die Ausgabe von 'bot.py check' muss mitgeschnitten werden")
-        self.assertIn("Abbruch \"Konfiguration ist fehlerhaft\" $letzte", rund,
+        self.assertIn('Abbruch "Konfiguration ist fehlerhaft" $letzte', text,
                       "und im Abbruch-Vermerk landen")
+        # Der Rueckgabewert muss SOFORT gesichert werden - danach gehoert
+        # $LASTEXITCODE schon dem naechsten Programm.
+        nach = text.split("$pruefung = & $python bot.py check", 1)[1]
+        # Die erste Zeile ist der Rest des Aufrufs selbst (2>&1) - danach zaehlt es.
+        zeilen = [z.strip() for z in nach.splitlines() if z.strip()]
+        erste = zeilen[1] if zeilen and zeilen[0].startswith("2>&1") else zeilen[0]
+        self.assertTrue(erste.startswith("$pruefcode = $LASTEXITCODE"),
+                        f"direkt nach dem Aufruf muss der Code gesichert werden, "
+                        f"da steht aber: {erste!r}")
+
+    def test_unbehandelte_fehler_werden_gemeldet(self):
+        """Ohne Netz stirbt das Skript still und die Schleife startet ewig neu.
+
+        Von aussen sieht das aus wie ein Bot, der einfach nichts mehr meldet -
+        genau dieses Bild gab es am 29.08. nach 00:17.
+        """
+        text = "\n".join(self.skript())
+        self.assertIn("\ntrap {", text, "es fehlt das Auffangnetz fuer Fehler")
+        netz = text.split("\ntrap {", 1)[1][:400]
+        self.assertIn("Abbruch", netz, "der Fehler muss im Vermerk landen")
 
     def test_ende_des_laufs_wird_vermerkt(self):
         """Ein angehaltener Bot sah von aussen aus wie ein laufender.

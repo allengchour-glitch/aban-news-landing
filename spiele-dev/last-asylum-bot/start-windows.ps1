@@ -128,6 +128,17 @@ function Abbruch {
     exit $Code
 }
 
+# Alles, was hier unerwartet schiefgeht, muss sichtbar werden. Ohne dieses Netz
+# stirbt das Skript bei einem unbehandelten Fehler still, die Neustart-Schleife
+# im Autostart hebt es 60 Sekunden spaeter wieder hoch, es stirbt wieder - und
+# von aussen sieht das aus wie ein Bot, der einfach nichts mehr meldet. Genau
+# dieses Bild gab es am 29.08. nach 00:17.
+trap {
+    $grund = "$($_.Exception.Message)"
+    try { Abbruch "Startskript abgebrochen" @($grund, "$($_.InvocationInfo.PositionMessage)") }
+    catch { Write-Host "Startskript abgebrochen: $grund" -ForegroundColor Red; exit 1 }
+}
+
 # Laeuft der Start durch, muss die alte Fehlermeldung weg - sonst sucht man
 # spaeter nach einem Problem, das laengst behoben ist.
 function Abbruch-Vermerk-Loeschen {
@@ -262,10 +273,22 @@ Schritt "Konfiguration und Templates"
 # Vermerk stand als einziger Hinweis "bot.py check meldet einen Fehler" - also
 # genau das, was man ohnehin schon wusste. Zwei Minuten spaeter lief es wieder,
 # und der Grund war nicht mehr zu ermitteln.
-$pruefung = & $python bot.py check 2>&1 | ForEach-Object { "$_" }
-$pruefung | ForEach-Object { Write-Host $_ }
-if ($LASTEXITCODE -ne 0) {
-    $letzte = @($pruefung | Where-Object { $_ -and $_.Trim() } | Select-Object -Last 12)
+# Erst laufen lassen, dann SOFORT den Rueckgabewert sichern - vor jedem
+# weiteren Befehl. $LASTEXITCODE gehoert immer dem zuletzt gelaufenen nativen
+# Programm; wer erst noch etwas dazwischenschiebt, liest womoeglich einen
+# fremden Wert. Und keine Pipeline mehr um den Aufruf herum: in Windows
+# PowerShell 5.1 ist "nativer Befehl mit 2>&1 in einer Pipeline" die Ecke, in
+# der die Fehlerbehandlung sich anders verhaelt als man denkt.
+$pruefung = & $python bot.py check 2>&1
+$pruefcode = $LASTEXITCODE
+foreach ($zeile in $pruefung) { Write-Host "$zeile" }
+if ($pruefcode -ne 0) {
+    $letzte = @()
+    foreach ($zeile in $pruefung) {
+        $text = "$zeile"
+        if ($text.Trim()) { $letzte += $text }
+    }
+    if ($letzte.Count -gt 12) { $letzte = $letzte[-12..-1] }
     Abbruch "Konfiguration ist fehlerhaft" $letzte
 }
 if ($NurPruefen) { Write-Host "`nFertig (nur geprueft)." -ForegroundColor Cyan; exit 0 }
