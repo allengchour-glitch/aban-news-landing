@@ -4723,6 +4723,16 @@ setTimeout(function baueGebaeude(){
     var m=viertelMass(cfg);
     /* Das Meer: der Solver kennt nur Kollider, und Wasser hat keine. */
     if(x-m.hw<-118&&Math.abs(z)<170)return false;
+    /* ⚠️ UND DAS BAUGRUNDSTUECK. Es ist absichtlich leer — dort baut der Spieler.
+       Genau deshalb steht dort auch kein Kollider (autoKollider() spart die Flaeche
+       ausdruecklich aus), und der Solver hielt sie fuer freies Land.
+       GEMESSEN beim Versuch, ein Kulturviertel unterzubringen: fuer ein Viertel von
+       80 x 60 m meldete `viertelPasst(cfg, 0, 0, 2)` GRUEN — mitten auf dem Grundstueck
+       des Spielers. Aufgefallen ist es nur, weil noch nie ein Viertel einen Wunschort
+       nahe dem Ursprung hatte; die Suche radiert von der Wunschstelle nach aussen.
+       Dieselben Grenzen wie in autoKollider(): GW*CS/2+10 und GH*CS/2+10. */
+    var _bgX=GW*CS/2+10, _bgZ=GH*CS/2+10;
+    if(Math.abs(x)-m.hw<_bgX&&Math.abs(z)-m.hd<_bgZ)return false;
     /* DREI Stufen statt zwei: 2 = Strassen und Berge meiden, 1 = nur Berge, 0 = nur
        das Noetigste. Vorher schaltete die Rueckfallstufe BEIDES ab — ein Viertel, das
        keinen strassenfreien Platz fand, durfte damit auch wieder im Gebirge landen,

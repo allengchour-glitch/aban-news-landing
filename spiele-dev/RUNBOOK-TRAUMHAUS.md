@@ -3500,3 +3500,53 @@ laufen ihren Zyklus, Mias Stillstand ist durch `work` erklärt, die Spielfigur a
 
 > **Merke für jeden zeitgesteuerten Test hier:** Spielzeit ≠ Echtzeit. Wer auf einen
 > Spiel-Timer wartet, wartet etwa siebenmal so lange wie gedacht — oder stösst ihn an.
+
+## Die Stadt ist voll — und der Solver hätte auf das Baugrundstück gebaut
+
+Der Versuch, ein **Kulturviertel** einzurichten, ist gescheitert. Er hat dabei zwei Dinge
+gemessen, die beide wertvoller sind als das Viertel.
+
+Zuerst nach der **Sache** gesucht, nicht nach Modellen (Regel 8): `kino`, `bibliothek`,
+`einkaufszentrum`, `restaurant`, `sporthalle` — **alles 0**. Die drei Treffer für
+„Bibliothek" waren „Repo-Bibliothek" und „Modell-Bibliothek" in Kommentaren. Die fünf
+`th10_*`-Modelle lagen unbenutzt im Repo und füllen genau diese Lücke.
+
+### Erstens: es ist kein Platz mehr da
+
+Ein 170 × 80-Viertel mit fünf Bauten landete auf **Stufe 0** — auf der Landstrasse und im
+Bergfuss, und `th-viertel` fand im Umkreis von 260 m keinen besseren Ort. Also gemessen,
+welche Grösse überhaupt noch passt (Raster ±320 m, alle 20 m, gegen `viertelPasst(…, 2)`):
+
+| Viertelgrösse | Bauten | Stellen auf Stufe 2 | nächste an der Stadtmitte |
+|---|---|---|---|
+| 170 × 80 | 5 | **1** | 453 m |
+| 130 × 80 | 4 | 5 | 272 m |
+| 110 × 70 | 3 | 7 | 260 m |
+| 80 × 60 | 2 | 17 | 251 m |
+| 55 × 55 | 1 | 36 | 160 m |
+
+Sieben Viertel, die Ringstrassen, die Berge und das Meer haben den Gürtel um die Stadt
+aufgebraucht. Ein Kulturviertel in der Kartenecke wäre keine Verbesserung — **die
+Erklärung ist ehrlicher als das Bauwerk.** Die Deklaration wurde wieder entfernt.
+
+⚠️ Die Gesamtzahlen schwanken zwischen Läufen (das Streuwerk ist zufällig und ändert
+`WORLD_SOLIDS`). Belastbar ist die Reihenfolge der Grössen, nicht die Summe.
+
+### Zweitens, und wichtiger: `viertelPasst` kannte das Baugrundstück nicht
+
+In derselben Tabelle stand für 80 × 60 als nächste Stelle **(0|0)** — mitten auf dem
+Grundstück des Spielers. Der Grund ist logisch: die Fläche ist **absichtlich leer**, dort
+baut der Spieler, und genau deshalb steht dort auch kein Kollider — `autoKollider()` spart
+sie ausdrücklich aus. Der Solver sah freies Land.
+
+Aufgefallen ist es nur, weil noch nie ein Viertel einen Wunschort nahe dem Ursprung
+hatte; `viertelOrt()` sucht von der Wunschstelle nach aussen. Ein künftiges Viertel mit
+einem stadtnahen Wunsch hätte das Haus des Spielers überbaut.
+
+```js
+var _bgX = GW*CS/2+10, _bgZ = GH*CS/2+10;      // dieselben Grenzen wie in autoKollider()
+if (Math.abs(x)-m.hw < _bgX && Math.abs(z)-m.hd < _bgZ) return false;
+```
+
+**Gemessen:** (0|0) fällt für 80 × 60 und 55 × 55 weg (nächste jetzt 251 m bzw. 160 m),
+alle **7 Viertel weiterhin auf Stufe 2**, `th-netz` 38 ok.
