@@ -689,16 +689,24 @@ function updLampPool(dt){
      Nebenwirkung, bewusst in Kauf genommen: aendert sich die Zahl sichtbarer Lichter, baut
      three.js die Shader neu. Das passiert genau zweimal pro Spieltag (Abend/Morgen) statt
      dauerhaft in jedem Bild. */
-  if(!an){for(var z=0;z<window._lampPool.length;z++){
-    window._lampPool[z].intensity=0;window._lampPool[z].visible=false;}return;}
+  /* ⚠️ HIER STAND `visible=false` — UND DAS WAR EIN ZWEITER SCHREIBER.
+     Der Deckel in loop() (LAMP_MAX) setzt `visible` alle 0,5 s nach Entfernung, dieser
+     Pool alle 0,25 s nach seiner eigenen Auswahl. Beide auf demselben Feld.
+     GEMESSEN bei Nacht ueber 25 s: 9 statt der versprochenen 6 Lichter sichtbar,
+     9 davon flackernd, 15 Sichtbarkeitswechsel — und JEDER Wechsel der Lichterzahl
+     laesst three.js seine Shader neu uebersetzen. Genau der Ruckler, vor dem beide
+     Kommentare warnen, von den beiden Waechtern dagegen selbst erzeugt.
+     Jetzt gibt es einen Besitzer: der Pool sagt nur noch WO und WIE HELL, der Deckel
+     entscheidet allein, WELCHE brennen. Helligkeit 0 heisst „will nicht leuchten". */
+  if(!an){for(var z=0;z<window._lampPool.length;z++)window._lampPool[z].intensity=0;return;}
   var cx=camTx,cz=camTz,P=window._lampPos,best=[];
   for(var i=0;i<P.length;i++){var d=(P[i][0]-cx)*(P[i][0]-cx)+(P[i][1]-cz)*(P[i][1]-cz);
     if(best.length<8){best.push([d,i]);best.sort(function(a,b){return a[0]-b[0];});}
     else if(d<best[7][0]){best[7]=[d,i];best.sort(function(a,b){return a[0]-b[0];});}}
   for(var k=0;k<window._lampPool.length;k++){
     var L=window._lampPool[k];
-    if(k<best.length){var p2=P[best[k][1]];L.position.set(p2[0],6.6,p2[1]);L.intensity=3.4;L.visible=true;}
-    else {L.intensity=0;L.visible=false;}}}
+    if(k<best.length){var p2=P[best[k][1]];L.position.set(p2[0],6.6,p2[1]);L.intensity=3.4;}
+    else L.intensity=0;}}
 function addSolidRot(x,z,w,d,rotY,door){
   /* 🩹 Schwarm-7: JS-Rest behaelt das Vorzeichen — (-PI/2 % PI) = -PI/2, der
      Betragsvergleich sah PI statt 0 und vertauschte Breite/Tiefe NICHT. */
@@ -13146,13 +13154,24 @@ function loop(now){
       var _pl=window._punktLichter;
       if(!_pl){_pl=[];scene.traverse(function(o){if(o.isPointLight)_pl.push(o);});
         window._punktLichter=_pl;}
-      if(_pl.length>LAMP_MAX){
-        var _cx=camera.position.x,_cz=camera.position.z,_wp=new THREE.Vector3();
-        for(var _lj=0;_lj<_pl.length;_lj++){var _M=_pl[_lj];
-          _M.getWorldPosition(_wp);          /* manche haengen an bewegten Objekten */
-          _M._d=(_wp.x-_cx)*(_wp.x-_cx)+(_wp.z-_cz)*(_wp.z-_cz);}
-        var _nah=_pl.slice().sort(function(a,b){return a._d-b._d;});
-        for(var _lk=0;_lk<_nah.length;_lk++)_nah[_lk].visible=(_lk<LAMP_MAX);}}
+      /* ⚠️ EIN BESITZER FUER `visible`. Vorher schrieb der Laternen-Pool dasselbe Feld
+         alle 0,25 s nach eigener Auswahl, dieser Deckel alle 0,5 s nach Entfernung.
+         GEMESSEN bei Nacht: 9 sichtbare Lichter statt der versprochenen 6, 15
+         Sichtbarkeitswechsel in 25 s. Jeder Wechsel der Lichterzahl kostet eine
+         Shader-Uebersetzung — die Bremse, die beide verhindern sollten.
+         Jetzt sagt der Pool nur noch, WO seine Lampen stehen und WIE HELL sie wollen;
+         hier faellt die Entscheidung, WELCHE brennen. Kandidat ist nur, wer Helligkeit
+         hat: ein Licht mit intensity 0 traegt nichts bei und darf den Platz nicht
+         belegen. */
+      var _cx=camera.position.x,_cz=camera.position.z,_wp=new THREE.Vector3();
+      var _kand=[];
+      for(var _lj=0;_lj<_pl.length;_lj++){var _M=_pl[_lj];
+        if(!(_M.intensity>0)){_M.visible=false;continue;}
+        _M.getWorldPosition(_wp);            /* manche haengen an bewegten Objekten */
+        _M._d=(_wp.x-_cx)*(_wp.x-_cx)+(_wp.z-_cz)*(_wp.z-_cz);
+        _kand.push(_M);}
+      _kand.sort(function(a,b){return a._d-b._d;});
+      for(var _lk=0;_lk<_kand.length;_lk++)_kand[_lk].visible=(_lk<LAMP_MAX);}
     if(window._seeZug){var _z=window._seeZug;_z.x+=_z.dir*_z.speed*dt; /* 🚂 Brücken-Zug pendelt (eigener Global — _zug gehört dem Stadt-Zug) */
       if(_z.x<_z.min){_z.x=_z.min;_z.dir=1;}else if(_z.x>_z.max){_z.x=_z.max;_z.dir=-1;}
       _z.g.position.x=_z.x;_z.g.rotation.y=_z.dir<0?0:Math.PI;}
