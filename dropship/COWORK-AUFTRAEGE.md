@@ -76,6 +76,45 @@ Vorlagen wieder ein.
 lassen und in Shopify als Weiterleitungs-Domain eintragen. Das rettet zusätzlich alle BEREITS
 VERSCHICKTEN Mails und alten Social-Posts.
 
+## 3b. Die Anmeldung war ins Leere verdrahtet — jetzt repariert, ein Rest bleibt  ⭐⭐ (NEU 29.08.)
+
+**Erledigt, du musst nichts tun** — hier steht, was sich geändert hat, damit du es nicht rückgängig machst:
+Das Popup meldete Leute auf die Klaviyo-Liste «Email List» an. Auf diese Liste hörte **kein
+einziger Flow**; die drei Willkommens-Flows hingen an «Newsletter Subscribers», und die war leer.
+Die im Popup versprochene WELCOME10-Mail kam deshalb nie an — seit Juni nicht. Jetzt zeigt das
+Popup auf «Newsletter Subscribers», dort hört genau ein Flow, und die Mail ist saisonneutral neu
+gebaut (die alte bewarb Ende August die Sommer-Kollektion).
+Dafür stehen **«E-Mail Welcome-Serie» und «Welcome Series · EN/US» jetzt auf Entwurf** — es waren
+byte-gleiche Zwillinge mit dem Absendernamen **«Aban»**, und ihre erste Mail heisst intern
+ausdrücklich «ohne Gutschein». Drei Serien gleichzeitig wären Spam gewesen.
+
+> **Wenn du magst, 2 Minuten in Klaviyo:** Die stillgelegte «E-Mail Welcome-Serie» hat eine gute
+> zweite Stufe — eine Mail nach 3 Tagen, «Hey {{ first_name }} — schon was Schönes entdeckt?»,
+> korrekt gebrandet. Die lebende Serie «Welcome Series» hat nur EINE Mail. Öffne
+> `Welcome Series` → **Add Delay 3 Tage** → **Add Email** → Template `Welcome T+3d Discovery`
+> auswählen. Der Flow-Trigger lässt sich über die API nicht ändern, dieser Zusammenbau auch nicht
+> — deshalb liegt es bei dir.
+
+## 3c. Drei Anmeldewege, drei Ziele — von 1'324 Kundinnen hat EINE eingewilligt  ⭐⭐ (NEU 29.08.)
+> Entscheide, welcher Weg der richtige ist, und sag mir Bescheid — den Rest baue ich.
+
+Gemessen, nicht geschätzt:
+- **Footer-Formular** (Shopify-eigenes «contact[email]») → schreibt nach **Shopify**
+- **Popup WELCOME10** → schreibt nach **Klaviyo**
+- **Kasse** → eigene Einwilligung
+
+**`email_marketing_state:subscribed` trifft in Shopify auf genau 1 von 1'324 Kundinnen zu**
+(seit 02.07.). Klaviyo hat **0 eigene Formulare**. Es gibt also keinen Ort, an dem die Adressen
+zusammenlaufen — und E-Mail ist der mit Abstand wirksamste Kanal des Shops: über 365 Tage haben
+alle Flows zusammen **17 Empfänger** erreicht und daraus **2 Käufe / CHF 67.80** gemacht, also
+rund **30 % des gesamten Umsatzes**. Das sind **CHF 14.97 je Empfänger**; TikTok-Ads haben für
+CHF 499.99 genau **einen** Kauf gebracht.
+
+**Meine Empfehlung:** In Shopify unter *Einstellungen → Checkout* die Marketing-Einwilligung an
+der Kasse **vorab angehakt** oder wenigstens sichtbar anbieten, und das Footer-Formular ebenfalls
+nach Klaviyo schreiben lassen. Beides ist eine Entscheidung über Einwilligung und Rechtstext —
+darum frage ich, statt es zu tun.
+
 ## 4. Google Merchant Center: Zielland auf Schweiz
 > Öffne das Google Merchant Center für luxestyle.ch und stelle Ziel- bzw. Versandland des Feeds
 > auf **nur Schweiz**. Melde mir danach, wie viele Artikel «Missing shipping info» verlieren.
