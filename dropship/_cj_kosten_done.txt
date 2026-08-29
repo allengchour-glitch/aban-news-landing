@@ -5254,3 +5254,11 @@ gid://shopify/Product/15448963056001	CHF 41.47	1 Varianten	Kochmesser & Küchens
 gid://shopify/Product/15448963252609	cj-abgekuendigt-pruefen
 gid://shopify/Product/15448963416449	cj-abgekuendigt-pruefen
 gid://shopify/Product/15448963645825	CHF 10.34	1 Varianten	Manueller Eisraspler für Zuhause
+gid://shopify/Product/15448963842433	CHF 22.34	6 Varianten	3-Schicht-Stahl Bratpfanne Unbeschichtet
+gid://shopify/Product/15448963973505	CHF 16.12	1 Varianten	Keramik-Teller «Kleiner Bär»
+gid://shopify/Product/15448964137345	CHF 32.24	1 Varianten	Ausziehregal für Küche ohne Bohren
+gid://shopify/Product/15448964301185	CHF 6.97	1 Varianten	Japanische Reiskugelform, hitzebeständig
+gid://shopify/Product/15448964465025	CHF 68.11	1 Varianten	Mehrstufiges Abtropf- und Aufbewahrungsregal
+gid://shopify/Product/15448964563329	CHF 36.17	1 Varianten	Teigbrett aus Edelstahl
+gid://shopify/Product/15448964596097	CHF 160.26	1 Varianten	Multifunktionales Abtropfgestell aus Edelstahl
+gid://shopify/Product/15448964694401	CHF 20.52	1 Varianten	Schneidebrett Akazienholz
