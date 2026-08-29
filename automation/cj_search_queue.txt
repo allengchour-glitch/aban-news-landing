@@ -626,5 +626,5 @@
 #done search:foam roller muscle massage
 #done search:acupressure mat set with pillow
 #done search:yoga mat non slip tpe
-search:himalayan salt lamp
-search:essential oil set aromatherapy
+#done search:himalayan salt lamp
+#done search:essential oil set aromatherapy
