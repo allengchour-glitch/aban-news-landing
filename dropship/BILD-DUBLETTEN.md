@@ -6,6 +6,15 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 5 insgesamt, 100%)
   - 15412433256833 · 2026-05-31 · CHF 44.90 · CJYD291255301AZ · Handliches Massagegerät – Vibrations-Massage mit mehreren St
   - 15497431482753 · 2026-08-14 · CHF 31.90 · CJ-2605280133421637100 · Körperformungsgerät zur Fettverbrennung
+- **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 5 insgesamt, 100%)
+  - 15413739684225 · 2026-06-01 · CHF 32.90 · CJLY291739901AZ · Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
+  - 15517571252609 · 2026-08-27 · CHF 24.90 · CJ-CJLY291739901AZ · Elegantes schwarzes Strick-Maxikleid mit Fischschwanz
+- **DUBLETTE** · 9 gemeinsame Bilder (10 bzw. 9 insgesamt, 100%)
+  - 15416342675841 · 2026-06-03 · CHF 39.90 · CJLY291996601AZ · Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliesse
+  - 15516234318209 · 2026-08-26 · CHF 26.90 · CJ-CJLY291996601AZ · Mesh Off Shoulder Plisseekleid
+- **DUBLETTE** · 6 gemeinsame Bilder (7 bzw. 6 insgesamt, 100%)
+  - 15416343757185 · 2026-06-03 · CHF 39.90 · CJLY291901501AZ · Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3X
+  - 15516304441729 · 2026-08-26 · CHF 24.90 · CJ-CJLY291901501AZ · Elegantes Business-Midikleid mit Rüschenärmeln
 - **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 14 insgesamt, 100%)
   - 15428421452161 · 2026-06-12 · CHF 18.90 · CJ-CJSL293135501AZ · Tennis-Armband Bunt · Zirkonia funkelnd
   - 15495190544769 · 2026-08-12 · CHF 17.90 · CJ-2606120755051601100 · Vintage Eulen-Fusskettchen aus Legierung
@@ -60,6 +69,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
   - 15500897616257 · 2026-08-16 · CHF 15.90 · CJ-1428887835427082240 · Marine-Halsband
   - 15500900532609 · 2026-08-16 · CHF 15.90 · CJ-1407156871940411392 · Marine Hundehalsband
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
+  - 15500905349505 · 2026-08-16 · CHF 19.90 · CJ-CJWJXDNY00391-Pink-26 · Gefütterte Prinzessinnen-Winterschuhe für Kinder
+  - 15512291213697 · 2026-08-25 · CHF 22.90 · CJ-CJWJXDNY00750-Black-29 · Mädchen Plüsch-Winterstiefel
 - **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 9 insgesamt, 100%)
   - 15500959318401 · 2026-08-16 · CHF 18.90 · CJ-CJDS276571901AZ · Langes Poloshirt
   - 15502485586305 · 2026-08-17 · CHF 18.90 · CJ-CJDS273885001AZ · Seidenweiches, knitterarmes Hemd mit Kühl-Effekt
@@ -69,9 +81,18 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
   - 15506163204481 · 2026-08-20 · CHF 14.90 · CJ-2603040448091638300 · Personalisiertes Armband mit zwei Initialen
   - 15506163433857 · 2026-08-20 · CHF 14.90 · CJ-2603040439561638600 · Buchstaben-Armband personalisierbar
-- **DUBLETTE** · 8 gemeinsame Bilder (9 bzw. 14 insgesamt, 89%)
+- **DUBLETTE** · 13 gemeinsame Bilder (15 bzw. 14 insgesamt, 93%)
+  - 15416026235265 · 2026-06-03 · CHF 34.90 · CJLY291898301AZ · Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbeton
+  - 15516664529281 · 2026-08-26 · CHF 23.90 · CJ-CJLY291898301AZ · Sommerliches Blumenkleid im französischen Stil
+- **DUBLETTE** · 9 gemeinsame Bilder (10 bzw. 14 insgesamt, 90%)
   - 15509346910593 · 2026-08-22 · CHF 21.90 · CJ-1502491686205927424 · Retro-Lederarmband mit Schnellverschluss
   - 15509347139969 · 2026-08-22 · CHF 20.90 · CJ-1389456377319133184 · Dünnes Armband aus italienischem Echtleder
+- **DUBLETTE** · 8 gemeinsame Bilder (10 bzw. 9 insgesamt, 89%)
+  - 15416343986561 · 2026-06-03 · CHF 34.90 · CJLY291990701AZ · Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (
+  - 15516234416513 · 2026-08-26 · CHF 22.90 · CJ-CJLY291990701AZ · Geblümtes Mini-Kleid mit Puffärmeln
+- **DUBLETTE** · 7 gemeinsame Bilder (8 bzw. 10 insgesamt, 88%)
+  - 15421617537409 · 2026-06-08 · CHF 39.90 · CJLY292433401AZ · Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & Volant
+  - 15512492278145 · 2026-08-25 · CHF 25.90 · CJ-CJLY292433401AZ · Sommerliches ärmelloses U-Neck Minikleid
 - **DUBLETTE** · 7 gemeinsame Bilder (8 bzw. 8 insgesamt, 88%)
   - 15493908431233 · 2026-08-11 · CHF 16.90 · CJ-1423587446100201472 · Digitales Malen nach Zahlen: Eigenes Motiv
   - 15501383500161 · 2026-08-16 · CHF 16.90 · CJ-1423586854946607104 · Digital Bild malen
@@ -141,6 +162,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
   - 15500926157185 · 2026-08-16 · CHF 17.90 · CJ-93C478CD-2465-487E-8E97-C20AEA932C2C · Katzen Ölgemälde nach Zahlen
   - 15500926255489 · 2026-08-16 · CHF 17.90 · CJ-6023CE65-E64F-4B48-8749-342EF5328D63 · Malen nach Zahlen Landschaft mit Rahmen
+- **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
+  - 15496511586689 · 2026-08-13 · CHF 15.90 · CJ-B41CCFF4-1625-4526-B4CF-2D3A0A24F3E4 · Diamond Painting «Elefant Multicolor» 40x50cm
+  - 15500201394561 · 2026-08-15 · CHF 15.90 · CJ-FE7F182B-70F0-469C-AC09-CB81B8F332CB · Magischer Baum
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15497431712129 · 2026-08-14 · CHF 16.90 · CJ-1400298610482089984 · DIY Malset "Baby Kuh"
   - 15497431777665 · 2026-08-14 · CHF 16.90 · CJ-1400268290449870848 · Herbstfenster – Malen nach Zahlen
@@ -327,6 +351,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 9 insgesamt, 80%)
   - 15504173400449 · 2026-08-19 · CHF 42.90 · CJ-1398488623166394368 · Nylon Rucksack für Business & Freizeit
   - 15507779912065 · 2026-08-20 · CHF 47.90 · CJ-59B535D2-6359-480A-BB34-CD071C428664 · Grosse 18-Zoll-Laptoptasche aus Nylon
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15506883576193 · 2026-08-20 · CHF 19.90 · CJ-1392362790899027968 · Verstellbares gestreiftes Hundehalsband
+  - 15517549592961 · 2026-08-27 · CHF 21.90 · CJ-1572480796450107392 · Verstellbares geflochtenes Hundehalsband
 - **Bildfamilie — von Hand ansehen** · 6 gemeinsame Bilder (8 bzw. 8 insgesamt, 75%)
   - 15448827199873 · 2026-07-04 · CHF 36.90 · CJ-2037766339821154306 · DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
   - 15448827593089 · 2026-07-04 · CHF 15.90 · CJ-2033471318793572354 · Lakritz-Wurzel Anti-Aging Serum LSF 50
@@ -342,36 +369,132 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15450113769857 · 2026-07-06 · CHF 15.90 · CJ-1600338643208646656 · Leinwandbild "Künstlerische Individualität"
   - 15450114032001 · 2026-07-06 · CHF 15.90 · CJ-1600337364898033664 · Marseille Panorama Leinwandbild
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
   - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 8 insgesamt, 75%)
   - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
   - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
   - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
   - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 8 insgesamt, 75%)
   - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
   - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
   - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
   - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 4 insgesamt, 75%)
   - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
   - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 4 insgesamt, 75%)
   - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
   - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
   - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 5 insgesamt, 75%)
+  - 15497432957313 · 2026-08-14 · CHF 16.90 · CJ-1424766257592406016 · Digitales Malen nach Zahlen: Eigenes Ölgemälde
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15493861572993 · 2026-08-11 · CHF 16.90 · CJ-1424770879514087424 · Digitales Malen nach Zahlen
   - 15493861704065 · 2026-08-11 · CHF 16.90 · CJ-1424769335880192000 · Digitales Leinwandbild zum Ausmalen
@@ -663,9 +786,120 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
   - 15454058250625 · 2026-07-12 · CHF 15.90 · CJ-1397505371513425920 · Water Lambo DIY-Zahlen-Mal-Set
   - 15454115660161 · 2026-07-12 · CHF 15.90 · CJ-CJHB115784901AZ · DIY Ölmalerei Wandkunst
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 8 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15490725118337 · 2026-08-07 · CHF 16.90 · CJ-1424768272842231808 · Digitales Malen nach Zahlen – Eigenes Motiv
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 5 insgesamt, 60%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 5 insgesamt, 60%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 5 insgesamt, 60%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 5 insgesamt, 60%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 5 insgesamt, 60%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 5 insgesamt, 60%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 5 insgesamt, 60%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493861179777 · 2026-08-11 · CHF 16.90 · CJ-1425031728581447680 · Digitales Malset: Ölmalerei nach Zahlen
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15493908103553 · 2026-08-11 · CHF 16.90 · CJ-1423931487614537728 · Digitales Malset: Leinwand zum Ausmalen
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15497432433025 · 2026-08-14 · CHF 16.90 · CJ-1425032551621332992 · Digitales Malen nach Zahlen: Eigenes Ölbild
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15500405244289 · 2026-08-15 · CHF 16.90 · CJ-1425031126132592640 · Digital Gemälde
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15500409241985 · 2026-08-15 · CHF 16.90 · CJ-1424765003399041024 · Digitaler Gemälde-Rahmen
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15500410978689 · 2026-08-15 · CHF 16.90 · CJ-1423586124835721216 · Digitaler Gemälde-Druck
+  - 15501383369089 · 2026-08-16 · CHF 16.90 · CJ-1423930851955183616 · Gemälde auf Leinwand
 - **Bildfamilie — von Hand ansehen** · 9 gemeinsame Bilder (15 bzw. 15 insgesamt, 60%)
   - 15492034691457 · 2026-08-09 · CHF 15.90 · CJ-2608060329101620200 · Buchstaben-Halskette
   - 15492034756993 · 2026-08-09 · CHF 15.90 · CJ-2608060322181632800 · Kugelkettchen Halskette
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (7 bzw. 5 insgesamt, 60%)
+  - 15494579552641 · 2026-08-11 · CHF 21.90 · CJ-CJLY299487401AZ · Midi-Kleid mit Blumenmuster und Schlitz
+  - 15516664988033 · 2026-08-26 · CHF 26.90 · CJ-CJLY291895401AZ · Midi-Kleid mit Blumenprint & Seitenschlitz
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
   - 15494984434049 · 2026-08-11 · CHF 16.90 · CJ-1397414771954946048 · Tribal Dance - Malen nach Zahlen
   - 15497441608065 · 2026-08-14 · CHF 16.90 · CJ-1399187902361112576 · DIY Malen nach Zahlen Set – Herbstmotiv
@@ -708,6 +942,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 12 insgesamt, 50%)
   - 15495112688001 · 2026-08-12 · CHF 36.90 · CJ-2501190620211628100 · Man Pair Kalender Quarz-Uhr mit Diamanten
   - 15497494167937 · 2026-08-14 · CHF 36.90 · CJ-1751826853603581952 · Outside The Watch Business Quarzuhr
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
+  - 15500201034113 · 2026-08-15 · CHF 15.90 · CJ-4A590302-16E9-437F-BBCC-2399B02DE68C · Farbenprächtige Bildervielfalt
+  - 15503121777025 · 2026-08-18 · CHF 15.90 · CJ-3D5A6F53-00CA-44CE-8296-9C1BD5E6711A · Hirsch-Diamantgemälde
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 6 insgesamt, 50%)
   - 15503287484801 · 2026-08-18 · CHF 20.90 · CJ-9E242742-C1D5-470E-82C2-12FFF4B10F27 · Hundehalsband- und Leinen-Set «Red Cowboy»
   - 15510332735873 · 2026-08-23 · CHF 20.90 · CJ-4CDBB5E6-C216-47EA-844B-4DF586114897 · Denim-Hundeleine, verschiedene Grössen
