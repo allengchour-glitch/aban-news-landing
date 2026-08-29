@@ -4057,3 +4057,47 @@ Zwei neue Fragen, beide als **Strahl von oben**, weil eine Hüllbox das nicht be
 > gefunden, an denen sechs grüne Häkchen vorbeigelaufen sind.
 
 Belegbilder im Repo: `spiele-dev/screenshots/club-aussen.png` und `club-innen.png`.
+
+## 2026-08-29 · 💃 Der Club war Kulisse — jetzt kann man darin tanzen (und ihn finden)
+
+Nach Regel 11 zuerst **angesehen**, was bisher nur gemessen wurde: Flughafen (300|−260)
+und Fähr-/Frachtkai (−150|95) per `th-blick`. Beide in Ordnung, kein Befund — Terminal,
+Tower, Rollbahn mit Markierung; Frachter, Steg, Kaimauer, Leuchtturm. Ehrlich notiert:
+**diese Runde hat der Blick nichts gefunden.** Das macht Regel 11 nicht schwächer; sie
+kostet zwei Minuten und hat beim Club vier Fehler gefunden.
+
+Der eigentliche Befund lag woanders: **der Spielclub war Kulisse.** Man kam hinein und
+konnte nichts tun — und man fand ihn ohnehin nicht, weil er 130 m ausserhalb steht und
+auf keiner Karte stand.
+
+### Zwei kleine Änderungen, beide aus dem, was es schon gibt
+
+1. **Die Tanzfläche startet das Tanz-Minispiel.** Dasselbe `tanzStart()`, das zu Hause
+   die Stereoanlage auslöst — kein neues Spiel, keine neue Bedienung. **Tippen, nicht
+   Drüberlaufen:** ein Minispiel, das anspringt, wenn man einen Raum durchquert, wäre
+   ein Übergriff. Dazu ein Hinweis beim ersten Betreten der Fläche, weil sie sonst
+   aussieht wie Boden.
+2. **Marke + Lieferziel „💃 Spielclub".** Der Satz aus der Marken-Liste — *„Ein Viertel,
+   das man nicht findet, ist so gut wie nicht gebaut"* — galt hier genauso. Jetzt steht
+   er auf der Karte und der Blitz-Lieferauftrag schickt einen hin. Feste Koordinaten,
+   weil er kein `viertel()` ist und `marke()` ihn also nicht nachzieht.
+
+### ⚠️ Und wieder Regel 9: EINE Quelle
+
+Die Tanzfläche ist ab jetzt **Möbel und Bedienelement zugleich**. Ihre Lage ein zweites
+Mal hinzuschreiben hätte sie beim ersten Umzug des Clubs auseinanderlaufen lassen —
+genau der Fehler, der in dieser Sitzung sechsmal auftrat (Bergform, Uferlinie,
+Viertelmass, Bahnsteigkante, `light.visible`, LOD-Schwelle). Darum:
+
+```js
+window._club={x:CX, z:CZ, tanzX:CX+2.5, tanzZ:CZ+2.5, tanzR:2.6};
+```
+
+`th-club.mjs` prüft das jetzt als **achte** Frage — und zwar gegen die *wirkliche*
+Fläche, nicht gegen die Zahl: Versatz zwischen `_club.tanzX|tanzZ` und der Hüllbox-Mitte
+des gesetzten `th14_tanzflaeche` **0,00 m**, Radius 2,6 bei Halbmass 2,5 (der Auslöser
+darf nicht über die Fläche hinausragen), und `tanzStart()` setzt `TANZ.on`. Die Probe
+räumt hinter sich auf (`TANZ.on=false`, `cancelAnimationFrame`, Overlay zu).
+
+**Gemessen:** th-club 8/8 · th-netz 38 ok · th-marken: Marke *und* Lieferziel „Spielclub"
+liegen **3,1 m** an einem echten Modell (0 verdächtige Marken) · 0 JS-Fehler.
