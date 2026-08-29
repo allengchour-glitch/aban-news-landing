@@ -4627,3 +4627,8 @@ gid://shopify/Product/15448916853121	CHF 9.68	1 Varianten	Outdoor Crossbody Bag 
 gid://shopify/Product/15448916918657	CHF 22.75	1 Varianten	Leder-Bauchtasche für Herren, robust
 gid://shopify/Product/15448917082497	CHF 13.46	1 Varianten	Brusttasche für Herren, vielseitig
 gid://shopify/Product/15448917213569	CHF 23.27	1 Varianten	Crossbody Rucksack aus Vollnarbenleder
+gid://shopify/Product/15448917279105	CHF 35.48	1 Varianten	Sportliche Umhängetasche aus Leder
+gid://shopify/Product/15448917311873	CHF 22.16	1 Varianten	Leder-Beintasche für Herren
+gid://shopify/Product/15448917442945	CHF 21.18	1 Varianten	Herren Umhängetasche aus Rindsleder
+gid://shopify/Product/15448917541249	CHF 34.35	1 Varianten	Retro-Brusttasche aus Crazy Horse Leder
+gid://shopify/Product/15448917606785	CHF 30.98	1 Varianten	Vintage Umhängetasche für Herren

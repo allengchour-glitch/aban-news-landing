@@ -615,7 +615,7 @@
 #done search:portable folding seat stool wearable
 #done search:electric car windshield deicer defroster
 #done search:microwave splatter cover collapsible
-
+#done 
 # 2026-08-28 — NACHFRAGE-GESTEUERT statt Katalog-getrieben.
 # Gemessen: /blogs/ratgeber/faszienrolle-uebungen-anleitung hat 77 Suchsitzungen in 90 Tagen
 # (zweitgrösste Suchseite des Shops) und 0 Warenkörbe — weil der Shop KEINE Faszienrolle führt.
@@ -623,8 +623,8 @@
 # und ein Öl-Set mit exakten Preisen; für alle vier gibt es ebenfalls NULL aktive Produkte.
 # Suchverkehr ist der einzige Kanal mit Kassengängen (480 Sitzungen → 4, Social 6'060 → 0),
 # also ist genau das die Ware, die fehlt.
-search:foam roller muscle massage
-search:acupressure mat set with pillow
-search:yoga mat non slip tpe
+#done search:foam roller muscle massage
+#done search:acupressure mat set with pillow
+#done search:yoga mat non slip tpe
 search:himalayan salt lamp
 search:essential oil set aromatherapy
