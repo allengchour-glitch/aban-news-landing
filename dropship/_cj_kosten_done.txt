@@ -5355,3 +5355,31 @@ gid://shopify/Product/15449059033473	CHF 22.77	5 Varianten	Lässiger Kapuzenpull
 gid://shopify/Product/15449059099009	CHF 17.94	10 Varianten	Bestickter Hoodie im China-Stil
 gid://shopify/Product/15449059131777	CHF 20.97	15 Varianten	Minimalistischer Kapuzenpullover mit Reissverschlu
 gid://shopify/Product/15449059164545	CHF 13.17	99 Varianten	Damen Kapuzenpullover mit Blumenprint
+gid://shopify/Product/15449059230081	CHF 11.10	28 Varianten	Kapuzenpullover mit Schmetterlings-Print
+gid://shopify/Product/15449059328385	CHF 14.07	4 Varianten	Luftiger Strick-Cardigan mit Glockenärmeln
+gid://shopify/Product/15449059426689	CHF 15.47	16 Varianten	Unifarbener Strickpullover mit Rundhalsausschnitt
+gid://shopify/Product/15449059492225	CHF 18.88	15 Varianten	Lockerer Baumwoll-Strickpullover für Damen
+gid://shopify/Product/15449059524993	CHF 15.14	4 Varianten	Gerippter Damen Hoodie in Khaki
+gid://shopify/Product/15449059688833	CHF 20.34	10 Varianten	Kabelstrick-Pullover mit Rundhals
+gid://shopify/Product/15449059754369	CHF 18.18	12 Varianten	Damen Langarm Strickpullover mit bunten Streifen
+gid://shopify/Product/15449059819905	CHF 15.47	16 Varianten	Vintage Jacquard Weihnachtspullover
+gid://shopify/Product/15449059950977	CHF 18.48	15 Varianten	Pullover mit Reissverschluss und Reverskragen
+gid://shopify/Product/15449060213121	CHF 13.17	24 Varianten	Leichter Strick-Cardigan mit Puffärmeln
+gid://shopify/Product/15449060770177	CHF 17.42	4 Varianten	Mock-Neck Pullover aus Grobstrick
+gid://shopify/Product/15449060868481	CHF 15.92	5 Varianten	Jugendlicher Strick-Cardigan im Designer-Stil
+gid://shopify/Product/15449060966785	CHF 20.05	3 Varianten	Damen Strickpullover mit Rautenmuster
+gid://shopify/Product/15449061065089	CHF 16.91	30 Varianten	Dicker Strickpullover mit Rundhalsausschnitt
+gid://shopify/Product/15449061163393	CHF 17.31	20 Varianten	Colorblock Strick-Cardigan im Old Money Stil
+gid://shopify/Product/15449061196161	CHF 19.94	5 Varianten	Preppy Baumwollpullover mit Rundhalsausschnitt
+gid://shopify/Product/15449061261697	CHF 18.78	20 Varianten	Unifarbener Strickpullover für Damen
+gid://shopify/Product/15449061327233	CHF 15.16	12 Varianten	Kurzer Strick-Cardigan mit Knopfleiste
+gid://shopify/Product/15449061392769	CHF 17.78	7 Varianten	Cardigan mit Reissverschluss und Reverskragen
+gid://shopify/Product/15449061491073	CHF 17.55	12 Varianten	Kuscheliger Cable-Knit Pullover
+gid://shopify/Product/15449061523841	CHF 14.39	5 Varianten	V-Neck Baselayer Pullover für Damen
+gid://shopify/Product/15449061589377	CHF 11.12	5 Varianten	Strick-Cardigan Slim-Fit Kurzarm Damen
+gid://shopify/Product/15449061654913	CHF 17.18	3 Varianten	V-Ausschnitt Strickpullover mit Farbkontrast
+gid://shopify/Product/15449061687681	CHF 24.74	4 Varianten	Abstrakter Langarm-Pullover für Damen
+gid://shopify/Product/15449061753217	CHF 14.32	5 Varianten	Damen Strick-Cardigan mit Kapuze – Loose Fit
+gid://shopify/Product/15449061785985	CHF 16.86	20 Varianten	V-Neck Strickpullover aus Faux-Mink Samt
+gid://shopify/Product/15449061982593	CHF 23.95	1 Varianten	Strickpullover mit Rundhals und Knöpfen
+gid://shopify/Product/15449062146433	CHF 11.82	10 Varianten	Kuscheliger Cardigan im Japan-Stil
