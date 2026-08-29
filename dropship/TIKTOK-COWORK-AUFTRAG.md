@@ -1,44 +1,21 @@
 # TikTok posten — Auftrag für Cowork
 
-> # ⛔ AUFGABE 0 — ZUERST, sonst nicht posten
+> ### ℹ️ Posten ist frei — ein Rest bleibt offen
 >
-> **Im TikTok-Profil steht kein Link.** Der letzte Slide jedes Beitrags sagt aber
-> «Link in Bio». Wer jetzt postet, schickt jede Zuschauerin ins Leere.
-> Gemessen: 560 Follower · 66 Videos · kein Bio-Link · kein Business-Konto.
+> Im Bio steht die Adresse als **Text** (`luxestyle.ch`), aber **kein klickbarer
+> Link**. Der Abschluss-Slide sagt «Link in Bio»: ungenau, aber niemand läuft
+> mehr ins Leere — die Zuschauerin findet den Shop im Bio.
+> Gemessen: 560 Follower · 66 Videos · 266 Likes.
 >
-> ## Weg A — klickbarer Link (das Ziel)
-> In der TikTok-App, angemeldet als **@luxestyle.ch** (NICHT @192aban):
-> 1. Profil → **☰** oben rechts → *Einstellungen und Datenschutz*
-> 2. **Ganz nach oben scrollen.** Der allererste Eintrag der Liste heisst
->    **«Konto»** (Personen-Symbol). Nicht der Kontowechsler unten, nicht
->    «Support», nicht «Verifizierung».
-> 3. Darin: **«Zu Business-Konto wechseln»** — je nach App-Version liegt es
->    eine Ebene tiefer unter *Konto verwalten*. Kategorie: *Shopping & Einzelhandel*.
-> 4. Zurück aufs Profil → **Profil bearbeiten** → Feld **Website** →
->    `https://luxestyle.ch` → speichern.
->
-> **Geht auch am Computer:** tiktok.com öffnen, als @luxestyle.ch anmelden,
-> oben rechts aufs Profilbild → *Einstellungen* → *Konto*. Dort steht derselbe
-> Punkt, und am grossen Bildschirm ist er leichter zu finden.
->
-> ℹ️ Der übliche Grund gegen ein Business-Konto trifft hier NICHT zu: Es darf nur
-> die Commercial Music Library nutzen — genau das schreibt Schritt 5 unten ohnehin
-> vor. Der Wechsel ist gratis und jederzeit umkehrbar.
->
-> ## Weg B — falls «Zu Business-Konto wechseln» partout nicht auffindbar ist
-> Dann wenigstens die Adresse in den Bio-TEXT, denn dort steht sie bisher gar
-> nicht. Profil → **Profil bearbeiten** → **Bio** → exakt das hier einsetzen
-> (zwei Zeilen, passt in die 80 Zeichen):
->
-> ```
-> Wasserfester Schmuck & Mode aus der Schweiz
-> luxestyle.ch · -10% mit WELCOME10
-> ```
-> Nicht klickbar, aber sichtbar und abtippbar. **Weg B ersetzt Weg A nicht** —
-> er macht den Schaden nur kleiner, bis der echte Link steht.
->
-> Danach diesen Auftrag einmal neu erzeugen lassen: Steht ein Link im Profil,
-> verschwindet dieser Block von selbst und die Beiträge sind freigegeben.
+> **Was den klickbaren Link bringt** (lohnt sich, ist aber kein Blocker):
+> Das Website-Feld gibt es im Privatkonto nicht — live geprüft, «Profil
+> bearbeiten» kennt nur Name, Anmeldename, Biografie, Pronomen. Es kommt über
+> **Einstellungen → Konto → Unternehmensverifizierung**: dort den Firmennachweis
+> hochladen (UID-Registerauszug von uid.admin.ch oder Zefix-Auszug).
+> ⚠️ Nur **JPEG/JPG/PNG**, kein PDF — den Auszug als Screenshot speichern,
+> farbig, unter 10 MB, mit dem vollständigen rechtsgültigen Firmennamen.
+> ⚠️ Nicht zu verwechseln mit «Verifizierung» (blauer Haken) — die verlangt
+> Presseartikel und ist für uns aussichtslos.
 
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.

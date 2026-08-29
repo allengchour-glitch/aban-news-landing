@@ -890,6 +890,45 @@ gebracht hat.
   des Betreibers nicht. Der Upload bleibt Handarbeit — was diese Session tun kann, ist das
   Material so vorzubereiten, dass es beim Einfügen stimmt.
 
+## 🔓 Das Website-Feld gibt es im Privatkonto GAR NICHT — und was dann half (2026-08-29)
+Nachtrag zum Bio-Link. Meine Wegbeschreibung «Einstellungen → Konto → Zu Business-Konto
+wechseln» stammte aus einer älteren App-Fassung: Der Betreiber hat den Bildschirm gezeigt, und
+unter **Konto** stehen dort nur Kontoinformationen, Passwort, Passkey, Verifizierung,
+**Unternehmensverifizierung**, Kontonachlass, Daten herunterladen, Konto löschen. **Keinen
+Business-Wechsel.** Und «Profil bearbeiten» kennt nur Name, Anmeldename, Biografie, Pronomen,
+Spendenaktion — **kein Website-Feld.**
+- **Die richtige Reihenfolge war, das ZIEL zu testen statt den Weg zu suchen.** Statt weiter
+  Menüpunkte zu raten: einmal «Profil bearbeiten» öffnen und nachsehen, ob das Feld existiert.
+  Zehn Sekunden, und die Frage war entschieden. **Ein Mittel, das man nicht findet, prüft man
+  am Zweck** — sonst sucht man Wege zu einem Feld, das es nicht gibt.
+- ⚠️ Auf dem Weg dorthin ist der Betreiber zweimal in den FALSCHEN Antrag geraten: einmal in
+  den **blauen Haken** («Externe Verifizierung», verlangt vier Links von Nachrichtenmedien, in
+  denen die Firma das Hauptthema ist — für diesen Shop aussichtslos, und Blogs/Social sind
+  ausdrücklich ausgeschlossen), einmal auf ein anderes KONTO (@192aban). Beides sah dem Ziel
+  ähnlich genug. **Wer jemanden durch eine fremde Oberfläche lotst, muss ein
+  Erkennungsmerkmal mitgeben, nicht nur einen Pfad.**
+- **Der echte Weg zum klickbaren Link ist die «Unternehmensverifizierung»** — Firmennachweis
+  hochladen, ausdrücklich für «Marketing-Tools und exklusive Funktionen». Sie verlangt KEINE
+  Presse, nur ein gültiges Dokument mit dem rechtsgültigen Firmennamen. ⚠️ **Nur JPEG/JPG/PNG,
+  kein PDF** — der UID-/Zefix-Auszug muss als Screenshot hoch. Die Einzelfirma existiert seit
+  dem 08.07., das Dokument ist also beschaffbar.
+
+**Und die Lehre, die über TikTok hinausgeht: eine Wache braucht den ZWISCHENZUSTAND.**
+Meine Sperre kannte zwei Fälle — Link da oder kein Link da — und hätte weiter blockiert,
+nachdem der Betreiber die Adresse als TEXT ins Bio gesetzt hatte. Das ist aber ein dritter,
+qualitativ anderer Zustand: nicht klickbar, aber **auffindbar**; niemand läuft mehr ins Leere.
+`domain_im_bio()` unterscheidet jetzt drei Stufen, und nur die unterste sperrt. **Wer nur
+zwei Zustände kennt, behandelt jeden Zwischenfall wie den schlimmsten — und blockiert Arbeit,
+die in Ordnung ist.**
+- Nebenbei am Bio gemessen statt geraten: Der alte Text führte mit **Schmuck** — der
+  KLEINSTEN Kategorie (79 aktive Produkte), während Damen-Mode ≥10'000, Wohnen 7'079,
+  Elektronik 4'928 und Beauty 3'826 zählen. Und «Mode **aus der Schweiz**» war eine
+  Herkunftsaussage über importierte Ware; die Flagge 🇨🇭 als Markenzeichen bleibt, die
+  Herkunftsbehauptung nicht. Neu: «Mode · Beauty · Wohnen · Technik 🇨🇭 / luxestyle.ch ·
+  -10% mit WELCOME10» — 69 von 80 Zeichen, live gegengeprüft.
+- ⚠️ Bewusst NICHT im Bio: «Versand aus der Schweiz» oder «1–2 Tage». Das gilt für rund 2'400
+  der 47'000 Artikel; im Bio stünde es wie eine Zusage für alles.
+
 ## 📱 TikTok «Profil pushen»: das Tor ist EIN Klick — und drei Korrekturen am Gedächtnis (2026-08-29)
 Auf «tiktok profil push» hin den Stand gemessen statt aus dem Gedächtnis geantwortet. Drei
 Einträge waren überholt:

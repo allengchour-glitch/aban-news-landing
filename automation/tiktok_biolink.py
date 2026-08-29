@@ -79,6 +79,24 @@ def bio_link():
         else ((u.get("user") or {}).get("bioLink") or "")
 
 
+def domain_im_bio():
+    """Steht die Adresse wenigstens als TEXT im Bio?
+
+    ⚠️ Drei Zustände, nicht zwei — das ist der Punkt (29.08.2026):
+      1. echter Bio-Link  -> «Link in Bio» stimmt woertlich
+      2. nur Text im Bio  -> nicht klickbar, aber die Zuschauerin FINDET den Shop.
+                             Der Slide sagt «Link», das ist ungenau; ins Leere
+                             laeuft aber niemand mehr.
+      3. weder noch       -> der Verweis geht ins Nichts. Nur DAS ist ein Grund,
+                             das Posten zu sperren.
+    Ein Zwischenzustand, den man nicht kennt, wird sonst wie der schlimmste Fall
+    behandelt — und dann sperrt eine Wache Arbeit, die in Ordnung ist.
+    """
+    u = profil() or {}
+    bio = ((u.get("user") or {}).get("signature") or "").lower()
+    return "luxestyle.ch" in bio
+
+
 def cta_zeile(vorspann="Jetzt im Shop 🇨🇭 "):
     """Die CTA-Zeile, die zum tatsächlichen Profil passt."""
     return f"{vorspann}luxestyle.ch" + (" — Link in Bio" if bio_link() else "")
@@ -102,3 +120,8 @@ if __name__ == "__main__":
     print(f"Business   : {(usr.get('commerceUserInfo') or {}).get('commerceUser')}")
     print(f"CTA-Zeile  : {cta_zeile()}")
     print(f"CTA-Slide  : {cta_slide() or '(leer)'}")
+    print(f"Domain im Bio-Text: {domain_im_bio()}")
+    zustand = ("klickbarer Link" if bio_link() else
+               "Adresse als Text (nicht klickbar)" if domain_im_bio() else
+               "WEDER Link NOCH Adresse — Verweise gehen ins Leere")
+    print(f"Zustand    : {zustand}")

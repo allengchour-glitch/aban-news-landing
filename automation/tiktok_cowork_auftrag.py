@@ -27,7 +27,7 @@ import os
 import re
 import subprocess
 import sys
-from tiktok_biolink import bio_link, profil
+from tiktok_biolink import bio_link, domain_im_bio, profil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASIS = os.path.join(ROOT, "social", "tiktok")
@@ -138,45 +138,35 @@ def main():
     _st = _u.get("stats") or {}
     _link = bio_link()
     kopf = []
-    if not _link:
+    _text = domain_im_bio()
+    if not _link and not _text:
+        # Schlimmster Fall: der Slide sagt «Link in Bio», und im Bio steht NICHTS.
         kopf = ["> # ⛔ AUFGABE 0 — ZUERST, sonst nicht posten", ">",
-                "> **Im TikTok-Profil steht kein Link.** Der letzte Slide jedes Beitrags sagt aber",
-                "> «Link in Bio». Wer jetzt postet, schickt jede Zuschauerin ins Leere.",
-                f"> Gemessen: {_st.get('followerCount','?')} Follower · "
-                f"{_st.get('videoCount','?')} Videos · kein Bio-Link · kein Business-Konto.",
-                ">",
-                "> ## Weg A — klickbarer Link (das Ziel)",
-                "> In der TikTok-App, angemeldet als **@luxestyle.ch** (NICHT @192aban):",
-                "> 1. Profil → **☰** oben rechts → *Einstellungen und Datenschutz*",
-                "> 2. **Ganz nach oben scrollen.** Der allererste Eintrag der Liste heisst",
-                ">    **«Konto»** (Personen-Symbol). Nicht der Kontowechsler unten, nicht",
-                ">    «Support», nicht «Verifizierung».",
-                "> 3. Darin: **«Zu Business-Konto wechseln»** — je nach App-Version liegt es",
-                ">    eine Ebene tiefer unter *Konto verwalten*. Kategorie: *Shopping & Einzelhandel*.",
-                "> 4. Zurück aufs Profil → **Profil bearbeiten** → Feld **Website** →",
-                ">    `https://luxestyle.ch` → speichern.",
-                ">",
-                "> **Geht auch am Computer:** tiktok.com öffnen, als @luxestyle.ch anmelden,",
-                "> oben rechts aufs Profilbild → *Einstellungen* → *Konto*. Dort steht derselbe",
-                "> Punkt, und am grossen Bildschirm ist er leichter zu finden.",
-                ">",
-                "> ℹ️ Der übliche Grund gegen ein Business-Konto trifft hier NICHT zu: Es darf nur",
-                "> die Commercial Music Library nutzen — genau das schreibt Schritt 5 unten ohnehin",
-                "> vor. Der Wechsel ist gratis und jederzeit umkehrbar.",
-                ">",
-                "> ## Weg B — falls «Zu Business-Konto wechseln» partout nicht auffindbar ist",
-                "> Dann wenigstens die Adresse in den Bio-TEXT, denn dort steht sie bisher gar",
-                "> nicht. Profil → **Profil bearbeiten** → **Bio** → exakt das hier einsetzen",
-                "> (zwei Zeilen, passt in die 80 Zeichen):",
-                ">", "> ```",
-                "> Wasserfester Schmuck & Mode aus der Schweiz",
+                "> **Im Profil steht weder ein Link noch die Adresse.** Der letzte Slide jedes",
+                "> Beitrags sagt aber «Link in Bio» — wer jetzt postet, schickt jede Zuschauerin",
+                "> ins Leere. Setz wenigstens diesen Text ins Bio (Profil → Profil bearbeiten →",
+                "> Biografie), dann sind die Beiträge frei:", ">", "> ```",
+                "> Mode · Beauty · Wohnen · Technik 🇨🇭",
                 "> luxestyle.ch · -10% mit WELCOME10",
-                "> ```",
-                "> Nicht klickbar, aber sichtbar und abtippbar. **Weg B ersetzt Weg A nicht** —",
-                "> er macht den Schaden nur kleiner, bis der echte Link steht.",
+                "> ```", ""]
+    elif not _link:
+        # Zwischenzustand: nicht klickbar, aber auffindbar. Posten ist frei.
+        kopf = ["> ### ℹ️ Posten ist frei — ein Rest bleibt offen", ">",
+                "> Im Bio steht die Adresse als **Text** (`luxestyle.ch`), aber **kein klickbarer",
+                "> Link**. Der Abschluss-Slide sagt «Link in Bio»: ungenau, aber niemand läuft",
+                "> mehr ins Leere — die Zuschauerin findet den Shop im Bio.",
+                f"> Gemessen: {_st.get('followerCount','?')} Follower · "
+                f"{_st.get('videoCount','?')} Videos · {_st.get('heartCount','?')} Likes.",
                 ">",
-                "> Danach diesen Auftrag einmal neu erzeugen lassen: Steht ein Link im Profil,",
-                "> verschwindet dieser Block von selbst und die Beiträge sind freigegeben.", ""]
+                "> **Was den klickbaren Link bringt** (lohnt sich, ist aber kein Blocker):",
+                "> Das Website-Feld gibt es im Privatkonto nicht — live geprüft, «Profil",
+                "> bearbeiten» kennt nur Name, Anmeldename, Biografie, Pronomen. Es kommt über",
+                "> **Einstellungen → Konto → Unternehmensverifizierung**: dort den Firmennachweis",
+                "> hochladen (UID-Registerauszug von uid.admin.ch oder Zefix-Auszug).",
+                "> ⚠️ Nur **JPEG/JPG/PNG**, kein PDF — den Auszug als Screenshot speichern,",
+                "> farbig, unter 10 MB, mit dem vollständigen rechtsgültigen Firmennamen.",
+                "> ⚠️ Nicht zu verwechseln mit «Verifizierung» (blauer Haken) — die verlangt",
+                "> Presseartikel und ist für uns aussichtslos.", ""]
 
     aus = ["# TikTok posten — Auftrag für Cowork", ""] + kopf + [
            "**Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;",
