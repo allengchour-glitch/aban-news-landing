@@ -2003,7 +2003,103 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         if(m.map||m.alphaMap)return;
         if(m.opacity>=0.82){m.transparent=false;m.opacity=1;m.needsUpdate=true;n++;}});});
     window._opakGemacht=n;}
-  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();}
+  /* 🖼️ AUFWAERMEN — gegen das Ruckeln auf dem Handy.
+     ⚠️ Das Stocken kam NICHT von zu viel Arbeit pro Bild. Drei Verdaechtige sind
+     gemessen und freigesprochen: saveGame (1 KB, 0,1 ms), die Update-Funktionen
+     (0,25 ms zusammen) und die kartengrossen Boden-Overlays (alle vier zusammen
+     im Rauschen, th-fuellrate.mjs). Alle drei kosten gleichmaessig und koennen
+     darum gar kein Stocken erzeugen.
+     Der Verursacher ist einmalige Arbeit MITTEN im Spiel: three.js uebersetzt
+     Shader und laedt Texturen erst dann auf die Grafikkarte, wenn ein Material
+     zum ersten Mal im Bild auftaucht. Gemessen (th-ruckler.mjs): nach dem Laden
+     kannte der Renderer 45 Programme und 29 Texturen — im Spiel existieren aber
+     224. Bei einer Kamerafahrt ueber die Karte kamen 7 Programme und 145 Texturen
+     dazu, und genau die zwei Blickrichtungen mit den meisten Neuzugaengen
+     brauchten 494 und 335 ms statt der ueblichen 30 bis 90. Auf dem Handy ist das
+     ein sichtbarer Haenger beim ersten Hinsehen.
+
+     ⚠️ EIN LAUF REICHT NICHT. Der erste Versuch waermte einmalig bei 9 s auf und
+     halbierte die Nachzuegler nur (174 -> 93): die GLB-Modelle kommen ueber
+     Minuten herein, es gibt kein "jetzt ist alles da"-Ereignis. Darum laeuft das
+     Aufwaermen mehrfach und merkt sich, was es schon kennt — Wiederholungen sind
+     billig, weil sie nur Neues anfassen.
+
+     ⚠️ UND ES DARF NICHT SELBST RUCKELN. renderer.compile() blockiert ueber eine
+     halbe Sekunde. Auf dem Startbildschirm ist das unsichtbar, mitten im Spiel
+     waere es genau der Haenger, den das hier verhindern soll. Also: solange nicht
+     gespielt wird, alles sofort; sobald gespielt wird, nur noch Texturen, und die
+     haeppchenweise ueber die Bilder verteilt. */
+  var _WARM_SLOTS=["map","normalMap","roughnessMap","metalnessMap","alphaMap","emissiveMap",
+                   "aoMap","bumpMap","lightMap","envMap","specularMap","displacementMap","gradientMap"];
+  var _warmMat={},_warmTex={},_warmSchlange=[],_warmTaktLaeuft=false;
+  function _warmSammeln(){
+    var neueMats=0,neueTex=[];
+    scene.traverse(function(o){
+      var ms=o.material;if(!ms)return;
+      if(!Array.isArray(ms))ms=[ms];
+      for(var i=0;i<ms.length;i++){var m=ms[i];if(!m)continue;
+        if(!_warmMat[m.uuid]){_warmMat[m.uuid]=1;neueMats++;}
+        for(var k=0;k<_WARM_SLOTS.length;k++){
+          var t=m[_WARM_SLOTS[k]];
+          if(t&&t.isTexture&&!_warmTex[t.uuid]){_warmTex[t.uuid]=1;neueTex.push(t);}}}});
+    return {mats:neueMats,tex:neueTex};}
+  function _warmTakt(){
+    if(_warmTaktLaeuft||!_warmSchlange.length)return;
+    _warmTaktLaeuft=true;
+    requestAnimationFrame(function schritt(){
+      /* Vier je Bild: genug, um 90 Nachzuegler in gut einer Sekunde
+         unterzubringen, wenig genug, um kein Bild zu sprengen. */
+      for(var i=0;i<4&&_warmSchlange.length;i++){
+        try{renderer.initTexture(_warmSchlange.shift());}catch(e){}}
+      if(_warmSchlange.length)requestAnimationFrame(schritt);
+      else _warmTaktLaeuft=false;});}
+  /* ⚠️ compile() ALLEIN REICHT NICHT. Es merkt sich je MATERIAL, dass es fertig ist —
+     three.js baut sein Programm aber je Material UND Objekt-Zustand (instanziert,
+     Schattenempfaenger, zweite UV-Ebene …). Dasselbe Material an einem anderen Objekt
+     ist ein zweites Programm, und das entsteht erst beim Zeichnen. Gemessen: nach
+     compile() uebersetzte eine Kamerafahrt weiterhin 7 Programme, ein zweites
+     compile() danach nochmals 18. Darum zusaetzlich einmal aus echten Blickwinkeln
+     zeichnen — das erwischt genau die Varianten, die beim Spielen entstehen.
+     Unsichtbar: der Startbildschirm liegt als eigene Ebene ueber dem Bild.
+
+     ⚠️ WAS DAMIT NICHT ERLEDIGT IST — gemessen, nicht vermutet. Texturen sind
+     danach vollstaendig vorgeladen (174 Nachzuegler -> 2). Shader nicht ganz:
+     5 Programme bleiben uebrig, drei beim Startblick, zwei am Berg. Ihre
+     cacheKeys unterscheiden sich von den vorgewaermten in Flanken, die man nicht
+     ansteuern kann — eines ist eine Schattenkarten-Variante (1024). r128 gibt
+     keine Liste der Programm-Varianten heraus, die es noch braucht; man kann sie
+     nur durch Zeichnen finden, und dafuer muesste man jede Objekt/Zustand-
+     Kombination treffen. Ein Versuch, zusaetzlich bei neuen MESHES vorzuzeichnen
+     (statt nur bei neuen Materialien), brachte gemessen null Unterschied und ist
+     wieder draussen. Wer hier weitermacht: erst messen, ob die 5 auf einem echten
+     Geraet ueberhaupt spuerbar sind. */
+  var _WARM_BLICKE=[[26,6,80,26,1,20],[-20,8,-40,-60,2,-80],[-150,10,20,-230,2,0],
+                    [120,30,-120,60,10,-60],[60,8,280,60,2,330],[-40,8,-180,-40,2,-246],
+                    [0,8,100,0,2,146],[-190,10,160,-190,3,207],[0,140,0,0,0,1]];
+  function _warmZeichnen(){
+    var p=camera.position.clone(),q=camera.quaternion.clone();
+    try{
+      for(var i=0;i<_WARM_BLICKE.length;i++){var b=_WARM_BLICKE[i];
+        camera.position.set(b[0],b[1],b[2]);camera.lookAt(b[3],b[4],b[5]);
+        camera.updateMatrixWorld(true);
+        renderer.render(scene,camera);}
+    }catch(e){}
+    camera.position.copy(p);camera.quaternion.copy(q);camera.updateMatrixWorld(true);}
+  function _aufwaermen(){
+    if(typeof renderer.initTexture!=="function")return;  /* initTexture gibt es seit r117 */
+    var neu=_warmSammeln(),imSpiel=!!window._running;
+    if(neu.mats>0&&!imSpiel){
+      try{renderer.compile(scene,camera);}catch(e){}
+      _warmZeichnen();}
+    if(imSpiel){_warmSchlange=_warmSchlange.concat(neu.tex);_warmTakt();}
+    else for(var i=0;i<neu.tex.length;i++){try{renderer.initTexture(neu.tex[i]);}catch(e){}}
+    window._warmTexturen=(window._warmTexturen||0)+neu.tex.length;
+    window._warmMaterialien=(window._warmMaterialien||0)+neu.mats;
+    window._warmProgramme=renderer.info.programs?renderer.info.programs.length:0;}
+  window._aufwaermen=_aufwaermen;
+  /* Mehrere Laeufe, weil die Modelle ueber Minuten hereintroepfeln. */
+  [16000,26000,40000,60000].forEach(function(ms){setTimeout(_aufwaermen,ms);});
+  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_aufwaermen();}
   /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
      VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position
      aendert, verschiebt nur eine Zahl: die Weltmatrix wird nie neu gerechnet, das
@@ -12891,6 +12987,11 @@ var SAVE="th_save1";
    eingefroren (window._saveSlot in startGame). */
 function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(window._saveSlot||(MPs?"th_save_coop":SAVE),JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
 function startGame(){
+  /* ⚠️ Wer schneller ist als die 9-Sekunden-Marke, startet in eine unaufgewaermte
+     Welt — genau in das Ruckeln, das _aufwaermen() verhindern soll. Darum hier
+     noch einmal: der Aufruf merkt sich, dass er gelaufen ist, und tut beim
+     zweiten Mal nichts. */
+  try{if(window._aufwaermen)window._aufwaermen();}catch(e){}
   running=true;window._running=true;window._tagesGeldStart=geld;window._saveSlot=MPs?"th_save_coop":SAVE;
   if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
