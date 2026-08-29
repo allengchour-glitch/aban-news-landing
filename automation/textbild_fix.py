@@ -40,7 +40,20 @@ Q=f'''query($c:String){{products(first:50,after:$c,query:"{QUERY}"){{pageInfo{{h
 # beginnt die Bildanalyse wieder bei null — das kostet Stunden und Bandbreite umsonst.
 state=os.environ.get("CURSOR","dropship/_textbild_cursor.txt")
 cur=(open(state).read().strip() or None) if os.path.exists(state) else None
-sc=hit=fix=0
+# Geprüft-Ledger: Produkt-ID -> Media-ID des Hauptbilds, das beim letzten Lauf beurteilt
+# wurde. Ohne dieses Ledger lud jeder Lauf für DIESELBEN ~500 unheilbaren Produkte erneut
+# bis zu fünf Bilder herunter und kam nie über die ersten Seiten hinaus (beobachtet 26.08.:
+# zehn Läufe in Folge «umsortiert 0» auf identischem Fenster). Der Schlüssel ist die
+# Media-ID, nicht nur die Produkt-ID: Tauscht ein Backfill oder Reorder das Hauptbild,
+# passt die Quittung nicht mehr und das Produkt wird neu beurteilt.
+GEPRUEFT="dropship/_textbild_geprueft.txt"
+quitt={}
+if os.path.exists(GEPRUEFT):
+    for z in open(GEPRUEFT,errors="ignore"):
+        t=z.rstrip("\n").split("\t")
+        if len(t)>=2: quitt[t[0]]=t[1]
+qlog=open(GEPRUEFT,"a")
+sc=hit=fix=skip=0
 log=open("dropship/_textbild_hits.txt","a")
 while True:
     d=gql(Q,{"c":cur}); pg=(d.get("data") or {}).get("products")
@@ -49,25 +62,28 @@ while True:
         sc+=1
         ms=[m for m in p["media"]["nodes"] if m.get("image")]
         if len(ms)<2: continue
+        if quitt.get(p["id"])==ms[0]["id"]: skip+=1; continue
         s0=textscore(fetch(ms[0]["image"]["url"]))
-        if s0<8: continue
-        hit+=1
-        best=None;bs=s0
-        for m in ms[1:5]:
-            s=textscore(fetch(m["image"]["url"]))
-            if s<bs: bs=s; best=m
-            if s<=1: break
-        if best and bs<=3:
-            r=gql('mutation($id:ID!,$m:[MoveInput!]!){productReorderMedia(id:$id,moves:$m){userErrors{message}}}',
-                  {"id":p["id"],"m":[{"id":best["id"],"newPosition":"0"}]})
-            if not (r.get("data") or {}).get("productReorderMedia",{}).get("userErrors"):
-                fix+=1
-                log.write(f'{p["id"]}\t{s0}->{bs}\t{p["title"][:60]}\n'); log.flush()
-            time.sleep(0.2)
+        haupt=ms[0]["id"]
+        if s0>=8:
+            hit+=1
+            best=None;bs=s0
+            for m in ms[1:5]:
+                s=textscore(fetch(m["image"]["url"]))
+                if s<bs: bs=s; best=m
+                if s<=1: break
+            if best and bs<=3:
+                r=gql('mutation($id:ID!,$m:[MoveInput!]!){productReorderMedia(id:$id,moves:$m){userErrors{message}}}',
+                      {"id":p["id"],"m":[{"id":best["id"],"newPosition":"0"}]})
+                if not (r.get("data") or {}).get("productReorderMedia",{}).get("userErrors"):
+                    fix+=1; haupt=best["id"]
+                    log.write(f'{p["id"]}\t{s0}->{bs}\t{p["title"][:60]}\n'); log.flush()
+                time.sleep(0.2)
+        qlog.write(f'{p["id"]}\t{haupt}\n'); qlog.flush()
     if not pg["pageInfo"]["hasNextPage"]: break
     cur=pg["pageInfo"]["endCursor"]; open(state,"w").write(cur)
     if sc%200<50: print(f"gescannt {sc} | Text-Hauptbilder {hit} | umsortiert {fix}",flush=True)
 # Cursor am Ende löschen: der Katalog wächst täglich um Hunderte CJ-Importe. Bliebe der Cursor
 # stehen, startete jeder Folgelauf am Ende und prüfte nie wieder etwas ("FERTIG: 37 gescannt").
 if os.path.exists(state): os.remove(state)
-print(f"FERTIG: {sc} gescannt, {hit} mit Text-Hauptbild, {fix} auf sauberes Bild umgestellt")
+print(f"FERTIG: {sc} gescannt ({skip} per Quittung uebersprungen), {hit} mit Text-Hauptbild, {fix} auf sauberes Bild umgestellt")

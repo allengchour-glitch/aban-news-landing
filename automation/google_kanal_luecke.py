@@ -28,19 +28,50 @@ geprüft, mit Quittung, und mit `DRY=1` erst zum Lesen.
 
 ENV: SEIT=JJJJ-MM-TT (Default: die letzten 7 Tage)
 """
-import json, os, subprocess, time, datetime, re
+import json, os, subprocess, sys, time, datetime, re
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from google_sperrliste import gesperrte_ids, id_zahl, ausschluss_tag
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 BERICHT = "dropship/GOOGLE-KANAL-LUECKE.md"
 SEIT = os.environ.get("SEIT") or (
     datetime.date.today() - datetime.timedelta(days=7)).isoformat()
+# ⚠️ 28.08.2026 — DAS FENSTER IST DER GRÖSSTE BLINDE FLECK DIESES WÄCHTERS.
+# Er prüft per Vorgabe nur die letzten sieben Tage. Am 28.08. lagen 572 von 574 Lücken
+# ausserhalb davon — der tägliche Lauf meldet also dauerhaft «fast nichts», während der
+# Rückstand vollständig erhalten bleibt und mit jedem Tag wächst. Das ist dieselbe Klasse
+# wie «FERTIG heisst: nichts mehr zu TUN, nicht: nichts mehr zu SEHEN» (21.08.).
+# VOLL=1 prüft den GANZEN aktiven Katalog. Das dauert bei ~49'000 Produkten lange und
+# gehört deshalb NICHT in den Aufseher (ein Lauf, der eine Stunde braucht, ist in diesem
+# Container kein Lauf, Lehre 28.08.) — von Hand starten, etwa einmal im Monat.
+VOLL = os.environ.get("VOLL") == "1"
+FILTER = "status:active" if VOLL else f"status:active created_at:>={SEIT}"
 
-# Tags, die einen Ausschluss ERKLÄREN — solche Produkte sind kein Befund.
-SPERR = {"nicht-bewerben", "nur-onlineshop", "waffengesetz-verboten", "medizinprodukt-pruefen",
-         "18plus", "raucher", "erotik", "kostuem", "kostüm", "refurbished"}
+# Tags, die einen Ausschluss ERKLÄREN, liegen seit dem 28.08.2026 in
+# automation/google_sperrliste.py (`AUSSCHLUSS_TAGS` / `ausschluss_tag`). Die Menge stand
+# hier UND im Schliesser wortgleich; sie ist am 28.08. auseinandergelaufen, weil elf am
+# Produkt begründete Ausschluss-Tags (verdeckte-ueberwachung, google-policy-flag,
+# nicht-google-bewerben, gmc-adult-pull …) in keiner der beiden standen — dieser Wächter
+# hat 142 bewusste Ausschlüsse als unerklärte Lücke gemeldet, darunter zwölf versteckte
+# Kameras. NEUE AUSSCHLUSS-TAGS NUR DORT EINTRAGEN.
 # Dieselbe Hausregel wie in den Importern: Klingen gehören nicht in den Google-Kanal.
-KLINGE = re.compile(r"\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)", re.I)
+# ⚠️ 28.08.2026 — `\b(messer|…)` traf KEINE deutsche Zusammensetzung. Empirisch geprüft:
+# «Küchenmesser», «Taschenmesser», «Klappmesser», «Jagdmesser», «Obstmesser», «Brotmesser»
+# alle FALSE — nur das freistehende «Messer» griff. Die Hausregel lief damit an fast jeder
+# Klinge vorbei, und die drei CJ-Importer publizierten sie in den Google-Kanal.
+# Sechste Fassung der Substring-Familie, diesmal in der Gegenrichtung: nicht ein zu kurzes
+# Wort trifft zu viel, sondern eine zu strenge Wortgrenze trifft zu wenig.
+# Das Klingenwort muss am ENDE der Zusammensetzung stehen — dadurch bleiben «Messerblock»,
+# «Messerschärfer» und «Axtstiel» (Zubehör, bei Google zulässig) korrekt draussen aus der Regel.
+KLINGE = re.compile(r"(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|"
+                    r"axt|beil)(?![\wäöüß])", re.I)
+# ⚠️ «…messer» ist im Deutschen auch die Endung für MESSGERÄTE. Ohne diese Ausnahme fielen
+# Herzfrequenzmesser, Winkelmesser und Reifendruckmesser unter die Waffenregel.
+MESSGERAET = re.compile(r"(herzfrequenz|winkel|reifendruck|durch|entfernungs|puls|blutdruck|"
+                        r"feuchtigkeits|schicht|dicken|zoll|zeit|strom|leistungs|laser|"
+                        r"ultraschall|höhen|neigungs|schall|thermo|band)messer", re.I)
 KLINGE_AUSN = re.compile(r"jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|"
                          r"halskette|ohrring|spielzeug|plüsch|kostüm", re.I)
 
@@ -59,20 +90,43 @@ LEDGER = [("dropship/_google_kanal_gesaeubert.txt", None),
 
 def gesaeubert():
     """Produkt-ID -> Grund, aus allen Saeuberungs-Ledgern."""
-    raus = {}
+    raus, unlesbar = {}, []
     for pfad, nur in LEDGER:
         if not os.path.exists(pfad):
             continue
         for zeile in open(pfad, encoding="utf-8", errors="replace"):
-            teile = zeile.rstrip("\n").split("\t")
-            if not teile or not teile[0].strip():
+            z = zeile.rstrip("\n")
+            if not z.strip():
                 continue
-            grund = teile[1] if len(teile) > 1 else "gesaeubert"
+            # ⚠️ 28.08.2026 — DIE ID WIRD MIT EINEM MUSTER GEZOGEN, NICHT ÜBER SPALTEN.
+            # `_google_kanal_gesaeubert.txt` ist zur Hälfte gewachsen: 88 Zeilen sind mit
+            # Tabulator getrennt, 45 mit « | ». Das alte split("\t") ergab bei den 45 als
+            # erstes Feld die GANZE Zeile, split("/")[-1] war dann
+            # «15413739684225 | Sommerkleid … | Sperr-Tag …», isdigit() war falsch — die
+            # Zeile fiel LAUTLOS weg. Der Wächter kannte 88 statt 133 IDs, und 44 der 45
+            # fehlten tatsächlich im Google-Kanal: ihr dokumentierter Grund war für das
+            # Werkzeug nicht vorhanden. Ein Ledger, das einen Formatwechsel still
+            # schluckt, ist schlimmer als keins — es sieht vollständig aus.
+            if z.lstrip().startswith("#"):
+                continue                        # Kommentarzeile, keine Quittung
+            m = re.search(r"/Product/(\d+)", z) or re.match(r"\s*(\d{10,})\b", z)
+            if not m:
+                unlesbar.append((pfad, z[:90]))
+                continue
+            # Der Grund steht je nach Format an anderer Stelle: bei Tabulator-Zeilen im
+            # ersten Feld (ID \t Grund \t Titel), bei den «|»-Zeilen erst hinter dem Titel
+            # (ID | Titel | Grund). Gefiltert wird nur auf dem Tabulator-Format
+            # («bleibt-draussen:…»), sonst wird der ganze Rest als Begruendung uebernommen.
+            rest = z[m.end():].strip(" \t|")
+            grund = rest.split("\t")[0].strip() if "\t" in rest else rest.strip()
+            grund = grund or "gesaeubert"
             if nur and not grund.startswith(nur):
                 continue
-            pid = teile[0].strip().split("/")[-1]
-            if pid.isdigit():
-                raus.setdefault(pid, grund)
+            raus.setdefault(m.group(1), grund)
+    if unlesbar:
+        print(f"  ⚠️ {len(unlesbar)} Ledger-Zeilen ohne erkennbare Produkt-ID:", flush=True)
+        for pf, z in unlesbar[:5]:
+            print(f"     {pf}: {z}", flush=True)
     return raus
 
 
@@ -101,14 +155,24 @@ def gql(q, v=None):
 
 def main():
     raus = gesaeubert()
-    print(f"Saeuberungs-Ledger: {len(raus)} bewusst entfernte Produkte bekannt", flush=True)
+    # ⚠️ 28.08.2026 — DAS MERCHANT-LEDGER FEHLTE HIER GANZ. 16 Produkte, die GOOGLE SELBST
+    # als Richtlinienverstoss gemeldet hat (google-gesperrt-adult/-cbd/-notlage), galten
+    # diesem Wächter als unerklärte Lücke; der Schliesser, der tatsächlich publiziert,
+    # hatte denselben blinden Fleck. Genau dafür wurde google_sperrliste.py am 14.08.
+    # gebaut — nachdem gfeed_restore.py und google_kanal_nachziehen.py alle 16 schon
+    # einmal zurückgeholt hatten. Gerettet hat uns bisher nur ein FEHLER: das 7-Tage-
+    # Fenster verdeckte sie. Eine Sicherung aus einem Fehler ist keine Sicherung.
+    for pid in gesperrte_ids():
+        raus.setdefault(pid, "google-gesperrt (Merchant-Ledger)")
+    print(f"Saeuberungs-Ledger + Merchant-Sperrliste: {len(raus)} bewusst entfernte "
+          f"Produkte bekannt", flush=True)
     cur, ges, treffer = None, 0, []
     while True:
-        d = gql('query($c:String){ products(first:30, after:$c, '
-                'query:"status:active created_at:>=' + SEIT + '"){ '
+        d = gql('query($c:String,$f:String){ products(first:30, after:$c, '
+                'query:$f){ '
                 'pageInfo{hasNextPage endCursor} nodes{ id title tags '
                 'resourcePublications(first:8){ nodes{ isPublished publication{ name } } } } } }',
-                {"c": cur})
+                {"c": cur, "f": FILTER})
         # ⚠️ Eine gescheiterte Abfrage ist KEIN Befund. Sie darf weder einen Bericht
         # erzeugen noch FERTIG melden — sonst meldet der Waechter erfundene Luecken
         # (beim Bau dieses Skripts genau so passiert: eine leere Antwort haette ALLE
@@ -127,11 +191,10 @@ def main():
                 continue                       # gar nicht im Shop -> anderes Thema
             if p["id"].split("/")[-1] in raus:
                 continue                       # bewusst gesaeubert (Grund im Ledger)
-            tg = {t.lower() for t in p["tags"]}
-            if tg & SPERR or any(t.startswith("google-kanal-") for t in tg):
-                continue                       # Ausschluss ist erklaert
+            if ausschluss_tag(p["tags"]):
+                continue                       # Ausschluss ist erklaert (Sperrliste)
             t = p["title"] or ""
-            if KLINGE.search(t) and not KLINGE_AUSN.search(t):
+            if KLINGE.search(t) and not MESSGERAET.search(t) and not KLINGE_AUSN.search(t):
                 continue                       # Hausregel Klingen
             treffer.append((p["id"].split("/")[-1], t))
         if not pg["pageInfo"]["hasNextPage"]:
@@ -139,12 +202,20 @@ def main():
         cur = pg["pageInfo"]["endCursor"]
         time.sleep(0.8)
 
-    print(f"Geprueft: {ges} aktive Produkte seit {SEIT}", flush=True)
+    bereich = "der GANZE aktive Katalog" if VOLL else f"aktive Produkte seit {SEIT}"
+    print(f"Geprueft: {ges} — {bereich}", flush=True)
+    if not VOLL:
+        print("  ⚠️ Dieser Lauf sieht NUR das Zeitfenster. Aeltere Luecken bleiben "
+              "unsichtbar — fuer den Rueckstand einmalig mit VOLL=1 starten.", flush=True)
     if treffer:
         with open(BERICHT, "w", encoding="utf-8") as f:
             f.write("# Ware, die NUR im Google-Kanal fehlt\n\n")
-            f.write(f"Stand {datetime.date.today().isoformat()} · geprüft seit {SEIT} · "
+            f.write(f"Stand {datetime.date.today().isoformat()} · "
+                    f"{'ganzer aktiver Katalog' if VOLL else 'geprüft seit ' + SEIT} · "
                     f"{ges} aktive Produkte\n\n")
+            if not VOLL:
+                f.write("⚠️ Nur das Zeitfenster geprüft — ältere Lücken stehen hier NICHT. "
+                        "Für den Rückstand `VOLL=1 python3 automation/google_kanal_luecke.py`.\n\n")
             f.write("Google & YouTube ist der einzige Kanal mit belegten Verkäufen. Diese "
                     "Produkte stehen im Online Store, tragen **kein** Sperr-Tag, sind in "
                     "keinem Säuberungs-Ledger vermerkt und fallen nicht unter die "

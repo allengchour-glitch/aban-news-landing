@@ -17,20 +17,48 @@
  * der Ledger bleibt gültig und der nächste Lauf macht weiter.
  */
 import fs from 'node:fs';
+import { kosten, gewicht } from './cj_preis.mjs';
 
 const SHOP = 'au3j0y-hq.myshopify.com';
 const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
 const CJT = (() => { try { return JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken; } catch { return ''; } })();
 const LEDGER = 'dropship/_cj_kosten_done.txt';
-const LIMIT = parseInt(process.env.LIMIT || '400', 10);
+// ⚠️ Der Aufseher startet diesen Lauf mit `CAP=900` — dieselbe Schraube, die die
+// Bild-Laeufe kennen. Dieses Skript las aber nur LIMIT und blieb deshalb still bei 400:
+// eine Stellschraube, die nirgends ankommt, sieht im Startbefehl aus wie eine Wirkung.
+// Beide Namen gelten jetzt, LIMIT hat Vorrang.
+const LIMIT = parseInt(process.env.LIMIT || process.env.CAP || '400', 10);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-const kosten = (usd, grams) => {
-  const u = parseFloat(('' + usd).split('--')[0]) || 0;
-  const kg = (parseFloat(grams) || 0) / 1000;
-  const freight = Math.max(15, 3.4 + 16.3 * kg);
-  return (u * 0.9 + freight).toFixed(2);
-};
+// ⚠️ 28.08.2026 — DIESE DATEI HATTE IHRE EIGENE KOSTENRECHNUNG, UND SIE WAR DIE ALTE.
+// Sie stand hier woertlich so:
+//     const freight = Math.max(15, 3.4 + 16.3 * kg);
+//     const u = parseFloat(('' + usd).split('--')[0]) || 0;
+// Beides ist seit dem 23.08. bzw. 27.08. in `cj_preis.mjs` widerlegt — die Korrektur ist
+// dort eingebaut worden und hier NIE angekommen. Sechste Wiederholung der Geschwister-Lehre
+// nach Farbtabelle, Groessenmenge, publishVerified(), Preisformel und technik_plausibel.
+//
+// ZWEI FEHLER IN ENTGEGENGESETZTE RICHTUNGEN:
+// 1. BODEN 15 statt 5. Der Boden greift nur unterhalb von (15−3.4)/16.3 = 712 g — genau
+//    dort, wo der halbe Modekatalog liegt. Jede Kostenzahl leichter Ware war um
+//    15 − max(5, 3.4+16.3·kg) zu hoch, bei sehr leichter Ware um volle CHF 10.
+//    Nachgemessen am Bestand: von 3'325 Produkten, die dadurch als «unter Einstand»
+//    galten, sind 2'746 in Wahrheit KOSTENDECKEND (Median-Aufblaehung CHF 7.85).
+//    Beispiel «Vielseitiger Haekel-Cardigan» (235 g): geschrieben CHF 20.00, wahr
+//    CHF 12.23 — bei VK 14.90 also +2.67 Gewinn statt −5.10 Verlust.
+//    ⚠️ Der Boden 15 war selbst ein Zirkelschluss (Eintrag 23.08.): er wurde aus
+//    Kostenzahlen «belegt», die mit ihm gerechnet worden waren. CJ live gefragt:
+//    20 g → CHF 4.34 · 270 g → CHF 8.17. Es gibt keine Untergrenze von 15.
+// 2. `.split('--')` sucht ZWEI Bindestriche und trennt deshalb NIE. Bei CJs Spannen
+//    ("4.41-12.22" / "1600.00-5000.00") bricht parseFloat am ersten Bindestrich ab und
+//    nimmt die BILLIGSTE und LEICHTESTE Variante — die Kosten werden also zu NIEDRIG
+//    angesetzt, echte Verluste bleiben unsichtbar. `obereGrenze()` in cj_preis.mjs ist
+//    genau dagegen gebaut und nimmt die obere Grenze, weil sie nie beschoenigt.
+//
+// Die Signatur ist identisch (usd, grams) → String mit zwei Nachkommastellen, der
+// Aufruf unten bleibt deshalb unveraendert. `gewicht()` kommt gleich mit: es liest
+// Spannen richtig und liefert ein leeres Objekt statt eines ungueltigen `weight: 0`.
+// NEUE PREIS- ODER KOSTENREGELN GEHOEREN AUSSCHLIESSLICH IN cj_preis.mjs.
 
 async function sgql(q, v) {
   // ⚠️ 21.08.2026: DROSSELUNG IST KEIN FEHLER, SONDERN EINE WARTEANWEISUNG.
@@ -40,6 +68,11 @@ async function sgql(q, v) {
   // teilen. Ergebnis: Der Backfill kam an einem ganzen Tag über 17 Produkte nicht hinaus,
   // und das eigens reservierte Vorrang-Fenster (16:00–17:30) verpuffte.
   // Shopify füllt mit 100 Punkten/Sekunde auf; wer wartet, kommt durch.
+  // ⚠️ Drosselung verbraucht KEINEN Versuch (27.08.2026). Vorher zaehlte sie mit: acht
+  // Drosselungen hintereinander — bei einem Eimer, den vier Grind-Runner staendig
+  // leeren, der Normalfall — und der Lauf gab auf. Warten ist die Antwort auf eine
+  // Warteanweisung; nur ECHTE Ausfaelle (Netz, Fehlermeldung) zaehlen gegen die acht.
+  let gedrosseltFolge = 0;
   for (let i = 0; i < 8; i++) {
     try {
       const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, {
@@ -57,6 +90,7 @@ async function sgql(q, v) {
         const fehlt = st ? Math.max(0, (j.extensions.cost.requestedQueryCost || 100) - st.currentlyAvailable) : 100;
         const wartenMs = Math.min(20000, 1000 + (fehlt / (st?.restoreRate || 100)) * 1000);
         await sleep(wartenMs);
+        if (++gedrosseltFolge < 30) i--;   // Warteanweisung, kein Fehlversuch
         continue;
       }
     } catch {}
@@ -95,21 +129,50 @@ async function cj(pfad) {
   return { result: false, gedrosselt: true, message: 'CJ nach 8 Versuchen ohne verwertbare Antwort' };
 }
 
+// Vollstaendige Variantenliste EINES Produkts — nur fuer Produkte geholt, die noch keine
+// Kosten tragen. Ein Einzelprodukt mit 250 Varianten kostet ~7 Punkte; ueber die Seite
+// gerechnet waeren es 149. Faellt die Abfrage aus, wird das Produkt spaeter erneut geprueft
+// (kein Ledger-Eintrag) — ein Ausfall ist keine Erledigung.
+async function variantenVon(id) {
+  const r = await sgql(`query($id:ID!){product(id:$id){variants(first:250){nodes{id sku inventoryItem{id unitCost{amount}}}}}}`, { id });
+  return r.data?.product?.variants?.nodes || [];
+}
+
 async function main() {
   if (!TOK || !CJT) { console.log('PAUSE (Token fehlt)'); return; }
   const erledigt = new Set(fs.existsSync(LEDGER)
     ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
-  let cursor = null, geprueft = 0, gesetzt = 0, ohne = 0;
+  // ⚠️ CURSOR PERSISTENT (26.08.2026). Vorher startete JEDER Lauf bei Produkt 1
+  // (`cursor = null`). Mit 46'000 aktiven Produkten und einer Abfrage, die je Seite 50
+  // Produkte MIT bis zu 100 Varianten holt, ist Shopifys Punktebudget nach wenigen
+  // hundert Produkten leer — der Lauf endete mit «PAUSE (Shopify antwortet nicht)» und
+  // begann beim naechsten Mal WIEDER vorne. Im Log stand deshalb tagelang
+  // «0 Produkte mit Einkaufspreis, 950 geprüft»: Er lief, arbeitete aber nur die laengst
+  // erledigten ersten Seiten erneut ab und erreichte die 44'000 unbearbeiteten nie.
+  // Der Zeiger liegt im REPO, nicht in /tmp — ein Container-Wipe wuerfe ihn sonst weg
+  // (dieselbe Lehre wie beim Textbild-Reiniger).
+  const ZEIGER = 'dropship/_cj_kosten_cursor.txt';
+  let cursor = fs.existsSync(ZEIGER) ? (fs.readFileSync(ZEIGER, 'utf8').trim() || null) : null;
+  let geprueft = 0, gesetzt = 0, ohne = 0, shopifyStumm = false;
   while (gesetzt + ohne < LIMIT) {
+    // ⚠️ DIE SEITENABFRAGE WAR ZU TEUER (27.08.2026). Sie holte je Produkt bis zu 100
+    // Varianten und kostete damit 149 Punkte ANGEFRAGT (tatsaechlich verbraucht: 23).
+    // Shopify prueft gegen die ANGEFRAGTE Zahl, und der Eimer stand durch die uebrigen
+    // Engines bei ~129 — die Abfrage passte also fast nie hinein, der Lauf endete nach
+    // wenigen Seiten mit «Shopify antwortet nicht». Jetzt wird auf der Seite nur die
+    // ERSTE Variante gelesen (sie genuegt fuer «hat schon Kosten?» und fuer die SKU):
+    // 44 Punkte statt 149. Die vollstaendige Variantenliste holt `variantenVon()` nur
+    // fuer die Produkte, die wirklich Arbeit brauchen.
     const q = await sgql(`query($c:String){products(first:50,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor}
-      nodes{id title variants(first:100){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { c: cursor });
+      nodes{id title variantsCount{count} variants(first:1){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { c: cursor });
     const pr = q.data?.products;
-    if (!pr) { console.log('PAUSE (Shopify antwortet nicht)'); break; }
+    if (!pr) { console.log('PAUSE (Shopify antwortet nicht)'); shopifyStumm = true; break; }
     for (const p of pr.nodes) {
       geprueft++;
       if (erledigt.has(p.id)) continue;
-      const vs = p.variants.nodes;
-      if (vs.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
+      if (p.variants.nodes.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
+      const vs = (p.variantsCount?.count || 1) > 1 ? await variantenVon(p.id) : p.variants.nodes;
+      if (!vs.length) continue;
       // ⚠️ DIE SKU HAT VIER FORMEN (live gezählt 20.08.2026), ein Muster reicht nicht:
       //   CJ-2501090747091600500          → Zahlen-pid       → product/query?pid=
       //   CJ-EC52E079-9BEF-4475-...       → UUID-pid         → product/query?pid=
@@ -165,10 +228,21 @@ async function main() {
       // Abbruchgrund — sie sagt nur, wie lange zu warten ist.
       // Das ECHTE Tagesende meldet CJ mit Fehlercode 16900500 und dem Klartext
       // «Insufficient API points ... Remaining: 0» — das wird unten abgefangen.
+      // ⚠️ 45 SEKUNDEN WAREN GERATEN — jetzt gemessen (27.08.2026).
+      // Sechs Abfragen im Abstand von 15 s, waehrend keine eigene Engine lief:
+      //   usedToday stieg je Abfrage um genau 10  → EINE product/query kostet 10 Punkte.
+      //   remaining pendelte 531 · 565 · 555 · 545 · 535 · 569 bei laufendem Verbrauch
+      //   → Nachfluss rund 2,75 Punkte/Sekunde (~165/min).
+      // Eine feste Pause von 45 s holt ~124 Punkte = 12 Produkte, wartet aber auch dann
+      // 45 s, wenn schon 15 Punkte da sind. Gewartet wird jetzt genau so lange, bis ein
+      // Puffer von 60 Punkten (sechs Abfragen) beisammen ist.
+      const NACHFLUSS = 2.75;                 // Punkte je Sekunde, gemessen
+      const PUFFER = 60;
       const rest = j?.pointsInfo?.remaining;
       if (typeof rest === 'number' && rest < 20) {
-        console.log(`  Eimer leer (${rest}) — 45 s warten`);
-        await sleep(45000);
+        const warten = Math.min(45000, Math.max(3000, Math.ceil((PUFFER - rest) / NACHFLUSS) * 1000));
+        console.log(`  Eimer knapp (${rest}) — ${Math.round(warten / 1000)} s warten`);
+        await sleep(warten);
       }
       if (!j.result) {
         // ⚠️ Nur DAS ist das echte Tagesende: Code 16900500 mit «Insufficient API points».
@@ -178,7 +252,16 @@ async function main() {
         // ⚠️ NICHT quittieren, wenn CJ nur gedrosselt hat — sonst ist das Produkt fuer
         // immer abgehakt, ohne je gefragt worden zu sein.
         if (j.gedrosselt) { ohne++; await sleep(2000); continue; }
-        ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-antwort\n`); await sleep(1200); continue;
+        // ⚠️ 25.08.2026 — Hinter «ohne Antwort» steckte die teuerste Fehlerklasse: Von 54
+        // so quittierten Produkten waren 36 bei CJ ABGEKÜNDIGT («Product has been removed
+        // from shelves», Code 1602002) — aktive Shop-Ware ohne bestellbaren Lieferanten
+        // (#1008-Klasse). Abkündigung wird jetzt EIGENS quittiert, damit der tägliche
+        // Blick ins Ledger sie findet; alles andere bleibt UNQUITTIERT und wird beim
+        // nächsten Lauf erneut gefragt (ein transienter Ausfall ist keine Endstation).
+        if (j.code === 1602002 || /removed from shelves/i.test(String(j.message||''))) {
+          ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-abgekuendigt-pruefen\n`); await sleep(1200); continue;
+        }
+        ohne++; await sleep(1200); continue;
       }
       // Die Variantenabfrage liefert eine LISTE, die Produktabfrage ein Objekt.
       const d = Array.isArray(j.data) ? (j.data[0] || {}) : (j.data || {});
@@ -190,8 +273,11 @@ async function main() {
       // weggeworfen — dasselbe Muster wie im Importer. Es wird jetzt mitgeschrieben:
       // damit beantwortet dieser Lauf nebenbei die Frage «welche Ware ist schwer?»
       // fuer den ALTBESTAND, ohne eine einzige zusaetzliche CJ-Abfrage.
-      const gGramm = Number(gew) || 0;
-      const messung = gGramm > 0 ? { measurement: { weight: { value: gGramm, unit: 'GRAMS' } } } : {};
+      // ⚠️ `Number(gew)` liefert bei einer Spanne ("1600.00-5000.00") NaN → 0, also KEIN
+      // Gewicht und eine Fracht, die mit 0 g rechnet. `gewicht()` liest die Spanne und
+      // nimmt die obere Grenze — dieselbe Quelle, die auch `kosten()` benutzt.
+      const messung = gewicht(gew);
+      const gGramm = messung.measurement?.weight?.value || 0;
       // Die Abfrage liefert ALLE Varianten des Produkts mit je eigenem Preis und Gewicht.
       // Wo sich die Shopify-Variante ueber ihre SKU wiederfinden laesst, bekommt sie IHRE
       // Zahl statt der des ersten Eintrags — bei Groessen-/Farbstaffeln ist das der
@@ -205,9 +291,10 @@ async function main() {
         const kern = (v.sku || '').replace(/^cj-/i, '').split('-')[0].toUpperCase();
         const e = proSku.get(kern);
         const vp = e ? (e.variantSellPrice ?? e.variantSugSellPrice) : null;
-        const vg = e ? Number(e.variantWeight) || 0 : 0;
+        const vmess = e ? gewicht(e.variantWeight) : {};
+        const vg = vmess.measurement?.weight?.value || 0;
         const vc = vp != null ? kosten(vp, vg || gGramm) : c;
-        const vm = vg > 0 ? { measurement: { weight: { value: vg, unit: 'GRAMS' } } } : messung;
+        const vm = vg > 0 ? vmess : messung;
         return { id: v.id, inventoryItem: { cost: vc, ...vm } };
       });
       let n = 0;
@@ -226,9 +313,21 @@ async function main() {
       await sleep(1200);
       if (gesetzt + ohne >= LIMIT) break;
     }
-    if (!pr.pageInfo.hasNextPage) { console.log(`FERTIG: ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz.`); return; }
+    if (!pr.pageInfo.hasNextPage) {
+      // Runde durch: Zeiger loeschen, damit der naechste Lauf die taeglich neu
+      // hinzugekommenen Produkte wieder von vorne mitnimmt.
+      if (fs.existsSync(ZEIGER)) fs.unlinkSync(ZEIGER);
+      console.log(`FERTIG: ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz.`);
+      return;
+    }
     cursor = pr.pageInfo.endCursor;
+    fs.writeFileSync(ZEIGER, cursor);
   }
-  console.log(`PAUSE (Tagesmenge erreicht): ${gesetzt} Produkte mit Einkaufspreis, ${ohne} ohne CJ-Referenz, ${geprueft} geprüft.`);
+  // ⚠️ Eine Abbruchmeldung darf nicht den falschen Grund nennen. Bis zum 27.08. stand
+  // im Log IMMER «Tagesmenge erreicht» — auch wenn der Lauf in Wahrheit an Shopifys
+  // Drosselung gescheitert war (beide Zeilen direkt untereinander). Wer das Log liest,
+  // haelt einen gescheiterten Lauf fuer einen erledigten.
+  const grund = shopifyStumm ? 'Shopify blieb stumm' : 'Tagesmenge erreicht';
+  console.log(`PAUSE (${grund}): ${gesetzt} Produkte mit Einkaufspreis, ${ohne} ohne CJ-Referenz, ${geprueft} geprüft.`);
 }
 main();

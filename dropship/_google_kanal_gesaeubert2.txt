@@ -9,3 +9,4 @@ gid://shopify/Product/15485009953153	fremde-marke-im-titel	Mercedes-Benz Echtled
 gid://shopify/Product/15490774696321	fremde-marke-im-titel	Flache Damen-Stiefeletten im Dr. Martens Stil
 gid://shopify/Product/15493778899329	waffe	Einziehbare Selbstverteidigungswaffe für Frauen
 gid://shopify/Product/15495149781377	rauchzubehoer	Auberginen Zigarrenanzünder mit Doppelflamme
+gid://shopify/Product/15512280629633	rauchzubehoer-hausregel	Shenyan Keramik-Aschenbecher (Marke entfernt)

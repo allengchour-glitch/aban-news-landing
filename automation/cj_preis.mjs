@@ -36,8 +36,24 @@
 // ⚠️ Am schweren Ende UNTERschätzt die Formel (23.77 gegen gemessene 25.22) — dort ist die
 // konservative Rundung an anderer Stelle das Gegengewicht, und dort sitzt auch das echte
 // Margenproblem, nicht bei der leichten Ware.
+// ⚠️ CJ LIEFERT BEI MEHR-VARIANTEN-PRODUKTEN SPANNEN, KEINE ZAHLEN (27.08.2026).
+// Beim «Mehrzweck-Organizer fürs Pult» (pid 2511301329441606400) antwortet CJ:
+//     sellPrice "4.41-12.22"   ·   productWeight "1600.00-5000.00"
+// Der bisherige Ausdruck `('' + usd).split('--')[0]` sucht ZWEI Bindestriche und trennt
+// deshalb NIE; `parseFloat` bricht dann am ersten Bindestrich ab und liefert **4.41** und
+// **1600** — also durchgehend die billigste und leichteste Variante.
+// Gerechnet für dieses eine Produkt (Verkaufspreis CHF 39.90):
+//     angenommen 1,6 kg / $4.41 → Kosten CHF 34.10  → +5.80
+//     tatsächlich 5,0 kg / $12.22 → Kosten CHF 96.90 → **−57.00**
+// Genommen wird deshalb die OBERE Grenze: sie beschönigt nie. Ein zu hoher Preis kostet
+// einen Verkauf, ein zu tiefer kostet Geld bei jedem Verkauf.
+const obereGrenze = w => {
+  const teile = ('' + w).split(/[-–—]/).map(x => parseFloat(x)).filter(x => !isNaN(x));
+  return teile.length ? Math.max(...teile) : 0;
+};
+
 export const fracht = grams => {
-  const kg = (parseFloat(grams) || 0) / 1000;
+  const kg = obereGrenze(grams) / 1000;
   return Math.max(5, 3.4 + 16.3 * kg);
 };
 
@@ -45,7 +61,7 @@ export const fracht = grams => {
 // sind ERLÖS und stehen in der Bestellung — sie gehören nicht in die Stückkosten, sonst
 // rechnet sich die Marge schön.
 export const kosten = (usd, grams) => {
-  const u = parseFloat(('' + usd).split('--')[0]) || 0;
+  const u = obereGrenze(usd);
   return (u * 0.9 + fracht(grams)).toFixed(2);
 };
 
@@ -54,7 +70,7 @@ export const kosten = (usd, grams) => {
 // Der Boden von 16.90 ist die Untergrenze, unter der auch die leichteste Ware nicht mehr
 // trägt — «relativer Boden ist kein Boden» (Lehre 12.08.2026).
 export const chf = (usd, grams) => {
-  const u = parseFloat(('' + usd).split('--')[0]) || 0;
+  const u = obereGrenze(usd);
   const gap = Math.max(0, fracht(grams) - 7);   // vom Preis zu deckende Fracht-LÜCKE
   const landed = u * 0.9 + gap;
   const p = Math.max(landed * 1.4, landed * 1.167 + 8.2, 16.90);
@@ -68,6 +84,6 @@ export const chf = (usd, grams) => {
 // gar kein Gewicht. Ohne Gewicht ist keine gewichtsbasierte Versandregel moeglich — und
 // die Frage, welche Ware im Mehrfachkorb Geld kostet, ist nicht beantwortbar.
 export const gewicht = grams => {
-  const g = parseFloat(grams) || 0;
+  const g = obereGrenze(grams);
   return g > 0 ? { measurement: { weight: { value: g, unit: 'GRAMS' } } } : {};
 };

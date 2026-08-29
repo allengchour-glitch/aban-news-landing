@@ -22,9 +22,23 @@ MAXALTER="${MAXALTER:-43200}"
 source /tmp/secrets_env.sh 2>/dev/null
 [ -z "$SHOPIFY_CLIENT_ID" ] || [ -z "$SHOPIFY_CLIENT_SECRET" ] && { echo "$(date -u +%H:%M) keine Shopify-Zugangsdaten — No-op"; exit 0; }
 
+# ⚠️ DAS ALTER DER DATEI IST KEIN BEWEIS FUER EIN GUELTIGES TOKEN (27.08.2026).
+# Der Container stellt beim Restart einen alten Disk-Snapshot her — dabei kommt ein
+# LAENGST ABGELAUFENES Token zurueck, dessen Datei aber frisch aussieht. Die Altersregel
+# sprang dann nicht an, und saemtliche Reiniger (159 Python-Skripte lesen diese eine Datei)
+# meldeten stundenlang «Shopify antwortet nicht» — es sah aus wie ein Netzproblem, war aber
+# ein alter Zettel. Deshalb wird jetzt GEPRUEFT statt gerechnet: eine Abfrage `{shop{id}}`
+# kostet 1 Punkt und ein paar hundert Millisekunden. Dieselbe Lehre wie ueberall hier:
+# ein Zeitstempel ist eine Quittung, kein Nachweis.
 if [ -s "$DATEI" ]; then
   ALTER=$(( $(date +%s) - $(stat -c %Y "$DATEI" 2>/dev/null || echo 0) ))
-  [ "$ALTER" -lt "$MAXALTER" ] && exit 0
+  if [ "$ALTER" -lt "$MAXALTER" ]; then
+    ANTWORT=$(curl -s --max-time 20 "https://$SHOP/admin/api/2024-10/graphql.json" \
+              -H "X-Shopify-Access-Token: $(cat "$DATEI")" -H "Content-Type: application/json" \
+              -d '{"query":"query{shop{id}}"}')
+    case "$ANTWORT" in *'"shop"'*) exit 0 ;; esac
+    echo "$(date -u +%H:%M) Token wirkt frisch, antwortet aber nicht — wird erneuert"
+  fi
 fi
 
 NEU=$(curl -s --max-time 30 -X POST "https://$SHOP/admin/oauth/access_token" \

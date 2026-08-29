@@ -28,8 +28,8 @@
   },
   {
    "n": "kleidung-deko-spielzeug",
-   "re": "Stiefel|Schuhe|Sneaker|Sandale|Pumps|Weste|Jeans|Hose|Jacke|Handschuh|M[üu]tze|Kost[üu]m|Verkleidung|Modellauto|Sticker|Kissen|Halskette|Armband|Box-?Target|Basketball|Ring-?Set",
-   "warum": "Neun Fehltreffer dieser Art im Probelauf: Militär- und Wanderstiefel und eine taktische Weste, deren Text «Kampfsport, Selbstverteidigung» als Einsatzzweck aufzählt, ein Box-Target, fünf Polizei-Spielfiguren mit «Schlagstock» in der Zubehörliste, ein Modellauto-Set mit «Selbstverteidigungsstreitkräfte Typ 16 Gepanzerter Tank» und die «Washed Machete Jeans» — eine Waschung, keine Machete."
+   "re": "Stiefel|Schuhe|Sneaker|Sandale|Pumps|Weste|Jeans|Hose|Jacke|Handschuh|M[üu]tze|Kost[üu]m|Verkleidung|Modellauto|Sticker|Kissen|Halskette|Armband(?!uhr)|Box-?Target|Basketball|Ring-?Set",
+   "warum": "Neun Fehltreffer dieser Art im Probelauf: Militär- und Wanderstiefel und eine taktische Weste, deren Text «Kampfsport, Selbstverteidigung» als Einsatzzweck aufzählt, ein Box-Target, fünf Polizei-Spielfiguren mit «Schlagstock» in der Zubehörliste, ein Modellauto-Set mit «Selbstverteidigungsstreitkräfte Typ 16 Gepanzerter Tank» und die «Washed Machete Jeans» — eine Waschung, keine Machete. ⚠️ ERGÄNZT 28.08.2026: «Armband» steckt in «ArmbandUHR» und hat damit den «Digitalen Recorder im Armbanduhr-Design» (15517526032769, 34×26×13 mm, 2000 Minuten Aufnahmezeit, ACTIVE im Google-Kanal) FREIGESPROCHEN, bevor irgendeine treffer-Regel ihn überhaupt sehen konnte. Eine Sperre ist gefährlicher als eine Lücke: sie schweigt. Jetzt «Armband(?!uhr)» — Schmuck bleibt ausgenommen, die Uhr nicht. Sechste Substring-Falle der Familie «IPL» in «L-IPL-iner», «led» in «Leder», «ski» in «Skincare»."
   },
   {
    "n": "werkzeug-pistole-keine-schusswaffe",
@@ -50,9 +50,9 @@
    "n": "kamera-zum-diskreten-platzieren",
    "alle": [
     "Kamera|\\bCam\\b|Camcorder|Recorder|Aufnahmeger[äa]t|\\bDV\\b",
-    "(?:diskret|unauff[äa]llig)\\w*\\s+(?:platzier|plazier|einsetz|verstau|anbring|[üu]berall|Platzierung|Nutzung|Einsatz)"
+    "(?:diskret|unauff[äa]llig)\\w*\\s+(?:platzier|plazier|einsetz|verstau|anbring|[üu]berall|Platzierung|Nutzung|Einsatz|festhalt|aufnehm|aufzeichn|mitschneid|Audioaufnahme|Tonaufnahme|Videoaufnahme|Aufzeichnung)"
    ],
-   "warum": "Nicht die Grösse ist das Problem, sondern der beworbene Zweck: eine Kamera, die man unbemerkt IRGENDWO hinstellt. Fünf Live-Treffer, alle in derselben Würfel- bzw. 43×35×25-mm-Bauform: A9 Mini-WLAN-Kamera, «Kabellose HD-Kamera mit Fernbedienung», «HD Video Recorder» (30×30×30 mm), «2 Millionen Infrarot-Nachtsichtkamera» («Perfekt für den diskreten Einsatz»), «Mini HD-Überwachungskamera» (34,6 g). ⚠️ Das Verb «montieren» steht bewusst NICHT in der Liste: «lässt sich unauffällig montieren» sagt jede fest installierte Solar-Aussenkamera. Ebenso wenig «integrieren» («diskret in jede Umgebung integrieren» = Innenraumkamera) — sonst fiele die halbe Elektronikabteilung."
+   "warum": "Nicht die Grösse ist das Problem, sondern der beworbene Zweck: eine Kamera, die man unbemerkt IRGENDWO hinstellt. Fünf Live-Treffer, alle in derselben Würfel- bzw. 43×35×25-mm-Bauform: A9 Mini-WLAN-Kamera, «Kabellose HD-Kamera mit Fernbedienung», «HD Video Recorder» (30×30×30 mm), «2 Millionen Infrarot-Nachtsichtkamera» («Perfekt für den diskreten Einsatz»), «Mini HD-Überwachungskamera» (34,6 g). ⚠️ Das Verb «montieren» steht bewusst NICHT in der Liste: «lässt sich unauffällig montieren» sagt jede fest installierte Solar-Aussenkamera. Ebenso wenig «integrieren» («diskret in jede Umgebung integrieren» = Innenraumkamera) — sonst fiele die halbe Elektronikabteilung. ⚠️ ERGÄNZT 28.08.2026: Die Verbliste kannte nur das HINSTELLEN, nicht das AUFNEHMEN — zwei Fälle scheiterten an genau einem Wort. «Dieses unauffällige Aufnahmegerät … die wichtige Momente diskret FESTHALTEN möchten» (15517526032769) und «Das eingebaute Mikrofon ermöglicht zudem eine diskrete AUDIOAUFNAHME» (15510317859201), beide ACTIVE im Google-Kanal. Die Adjazenz bleibt Pflicht (diskret/unauffällig UNMITTELBAR vor dem Verb) und das erste Kettenglied ebenso — sonst trifft die Regel jede Überwachungskamera mit einem Werbeadjektiv. Gegenprobe an den bekannten Fehltreffern: Ringschatulle, Katzenfutterautomat, Sneaker mit «unsichtbarer Fersenerhöhung», Hemd mit «verdeckter Knopfleiste» und Nachthemd mit «Diskretion» tragen kein Kamera-/Recorder-Wort und bleiben draussen."
   },
   {
    "n": "spycam-modellreihe",
@@ -89,7 +89,7 @@
   {
    "n": "ch-verbotene-waffe",
    "alle": [
-    "Nunchak|Tonfa|Schlagring|Wurfstern|Schmetterlings-?(?:messer|schwert)|Butterfly-?Messer|Balisong|Springmesser|Teleskopschlagstock|Totschl[äa]ger|Wurfmesser"
+    "Nunchak|Tonfa|Schlagring|Wurfstern|Schmetterlings-?(?:messer|schwert)|Butterfly-?Messer|Balisong|Springmesser|Teleskopschlagstock|Totschl[äa]ger|Wurfmesser|Doppel-?Baton|Nunchucks?"
    ],
    "warum": "Art. 4 Abs. 1 Bst. c und d WG nennen diese Gegenstände ausdrücklich, nach Art. 5 ist bereits das ANBIETEN verboten, und die Aufzählung im Gesetz ist nicht abschliessend. ⚠️ Ein Schmetterlingsmesser-Trainer ist nur dann zulässig, wenn die Klinge stumpf, ungeschliffen UND gelocht ist — das Live-Listing bot ausdrücklich auch «spitze Klinge ohne Öffnung» an."
   },
@@ -123,6 +123,14 @@
     "Bauklotz|Bausteine?\\b|Baukasten|Klemmbaustein|Building\\s?Block|Nachbildung|Replika|Softair|Airsoft|Blaster|Schaumstoff-?Dart"
    ],
    "warum": "Faengt die naechste Nachbildung ab, die eine noch unbekannte Modellbezeichnung traegt: ein Schusswaffen-Nomen PLUS Bausatz-/Nachbildungs-Kontext. Der Kontext ist Pflicht, weil «Gewehr»/«Pistole» allein im Fliesstext von Werkzeug, Deko und Kostuemen vorkommt. Bewusst NICHT im Kontext: das Wort «Modell» — es steht in unzaehligen Beschreibungen als «Modell: XY» und haette die Regel wertlos gemacht. Panzer-, Kampfjet- und Militaerfahrzeug-Modelle sind KEIN Treffer und sollen es nicht sein: das ist Modellbau, keine tragbare Schusswaffe (14 solche Bausaetze standen am 20.08. im Katalog und wurden bewusst gelassen). Ebenso kein Treffer: «Samurai-Baustein-Set» (Figur) und «Washed Machete Jeans» (eine Waschung)."
+  },
+  {
+   "n": "ch-verbotene-waffe-getarnt",
+   "_": "25.08.2026: Zwei Nunchaku standen ACTIVE als «Haushalt/Organizer» — «Dark Night Warrior Doppelstock» und «Doppel-Baton Performance Stick». Der Lieferant nennt die Waffe nie beim Namen; gefunden nur per Kontaktbogen (Bild). Tarnnamen brauchen einen zweiten Anker, sonst träfe «Doppelstock» die Langlauf-Doppelstock-Technik bei Skistöcken. «Doppelstöckig» (Katzenhäuser) matcht wegen des Umlauts ohnehin nicht.",
+   "alle": [
+    "Doppelstock\\b|Kampf(?:sport)?-?st(?:ock|äbe|öcke)\\b|Two-?Section-?(?:Stick|Staff)|Performance-?Stick",
+    "Kampfsport|Martial|Nunchak|Warrior|Selbstverteidigung|Kette verbunden|Seil verbunden|Schwungtechnik"
+   ]
   }
  ]
 }

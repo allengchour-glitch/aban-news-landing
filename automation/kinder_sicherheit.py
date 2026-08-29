@@ -43,6 +43,15 @@ LEDGER = "dropship/_kinder_sicherheit.txt"
 KIND_TAG = {"kinder", "baby-kids", "kinderschuhe", "kinderkostuem", "baby"}
 KIND_TYP = {"Kinderschuhe", "Spielzeug & Spiele", "Kinder"}
 KIND_TITEL = re.compile(r'\b(?:Kinder|Baby|Kleinkind|Kids)\b', re.I)
+# ⚠️ 28.08.2026: «Baby» im Titel ist oft KEINE Altersangabe. Das Muster `\bBaby` (ohne Grenze am
+# ENDE) hat «Babydoll-Kleid» — Damen-Dessous, Gr. S–2XL — und «Babyrosa» (eine FARBE) als
+# Neugeborenen-Ware gemeldet; mit Grenze am Ende bleiben «Bush Baby» (Tierart Galago),
+# «Hello Baby» (Ballon-Aufdruck) und «Baby Schriftzug-Print» (Aufdruck auf Damenware) übrig.
+# Dieselbe Substring-Falle wie «IPL» in «L-IPL-iner». Solche Titel werden GAR NICHT bewertet.
+BABY_FALSCHFREUND = re.compile(
+    r'Babydoll|Babyrosa|Baby\s*-?\s*(?:Pink|Blau|Blue|Rosa)|Bush\s+Baby|Hello\s+Baby|'
+    r'Baby\s+Schriftzug|Baby\s+Print', re.I)
+BABY_ECHT = re.compile(r'\b(?:Baby\w*|Neugeboren\w*|S[äa]ugling\w*)\b', re.I)
 # Tierbedarf trägt dieselben Tags und ist kein Kinderprodukt.
 TIER = re.compile(r'\b(?:Hunde?|Katzen?|Haustier|Pet|Kauspielzeug|Tierspielzeug|Vogel|Nager)\b',
                   re.I)
@@ -143,8 +152,15 @@ def main():
                      & {x.lower() for x in (p.get("tags") or [])})
         if not eindeutig:
             continue
+        if BABY_FALSCHFREUND.search(t):
+            continue                       # «Baby» ist hier Farbe, Tierart oder Aufdruck
         ag = mf.get("age_group")
-        neu_ag = "newborn" if re.search(r'\bBaby|Neugeboren|S[äa]ugling', t, re.I) else "kids"
+        # ⚠️ KEIN `newborn` mehr aus einem blossen Titelwort. Google definiert newborn als
+        # «bis 3 Monate»; Lauflernschuhe («geeignet für die ersten Schritte») und ein Kostüm
+        # in Gr. 104 sind das nie. Ohne Grössenbeleg ist `toddler` (1–5 J.) die belegbare
+        # Untergrenze — die feine Zuordnung aus der Grössenleiter macht
+        # automation/newborn_altersgruppe.py.
+        neu_ag = "toddler" if BABY_ECHT.search(t) else "kids"
         if ag != neu_ag and ag not in ("toddler", "infant", "newborn"):
             alter.append((p["id"], t, ag, neu_ag))
 
