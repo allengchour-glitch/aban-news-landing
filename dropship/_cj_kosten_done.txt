@@ -1750,3 +1750,10 @@ gid://shopify/Product/15447935222145	CHF 26.69	6 Varianten	3er-Pack Sheer Tights
 gid://shopify/Product/15447935385985	CHF 26.69	8 Varianten	3 Paar 20D Ultra-Sheer Strumpfhosen mit Shaping-To
 gid://shopify/Product/15447935517057	CHF 31.19	8 Varianten	6 Paar 20D Ultra Sheer Tights mit Shaping-Höschent
 gid://shopify/Product/15447935648129	CHF 30.29	10 Varianten	6 Paar Plus Size Strumpfhosen für Damen
+gid://shopify/Product/15447935779201	CHF 26.69	9 Varianten	3 Paar Shiny Strumpfhosen für Damen (Plus Size)
+gid://shopify/Product/15447935910273	CHF 26.69	6 Varianten	2 Paar 20D Ultra Toeless Sheer Tights
+gid://shopify/Product/15447936041345	CHF 17.61	21 Varianten	Grobe Strickstrümpfe für Herbst/Winter
+gid://shopify/Product/15447936205185	CHF 18.61	5 Varianten	Beinwärmer mit Stern- und Knochen-Elementen
+gid://shopify/Product/15447936336257	CHF 18.77	1 Varianten	Grüne Britisch-Karierte Strumpfhose
+gid://shopify/Product/15447936467329	CHF 17.49	1 Varianten	Samt-Strumpfhose mit Pflanzenmuster
+gid://shopify/Product/15447936598401	CHF 17.72	2 Varianten	Overknee-Socken mit doppelseitigem Print
