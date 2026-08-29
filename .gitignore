@@ -64,17 +64,14 @@ _th*.html
 _x_*
 _*_tmp.html
 _th_dbg.html
-# ⚠️ Nicht jedes Werkzeug haengt "_tmp" an. th-belag, th-see, th-boden und andere legen
-#    ihre Arbeitskopie als _<werkzeug>.html im Wurzelverzeichnis ab und raeumen sie am
-#    Ende selbst weg — bricht ein Lauf ab oder schaut man waehrenddessen nach, stehen
-#    sie als unversionierte Dateien da und landen versehentlich in einem Commit.
-#    Es sind Kopien von traumhaus.html, je ueber ein halbes Megabyte.
-_belag.html
-_see.html
-_boden.html
-_gleis.html
-_licht.html
-_linien.html
-_mauern.html
-_viertel.html
-_tempo.html
+# ⚠️ Nicht jedes Werkzeug haengt "_tmp" an: th-belag, th-see, th-boden und zwanzig
+#    weitere legen ihre Arbeitskopie als _<werkzeug>.html im Wurzelverzeichnis ab und
+#    raeumen sie am Ende selbst weg. Bricht ein Lauf ab oder schaut man waehrenddessen
+#    nach, stehen sie da — Kopien von traumhaus.html, je ueber ein halbes Megabyte.
+#    Erster Versuch war eine Liste der Namen, die ich gesehen hatte (neun Stueck). Aus
+#    den Quelltexten gezaehlt sind es aber 24, und der naechste kaeme wieder einzeln
+#    dazu: waehrend der Messung tauchte _l2.html auf und verfaelschte sie prompt.
+#    Darum ein Muster statt einer Liste. Nachgesehen, dass es sicher ist: es gibt KEINE
+#    versionierte _*.html im ganzen Repo, und die drei versionierten _-Dateien im
+#    Wurzelverzeichnis (_headers, _redirects, _in2.mjs) sind keine HTML-Dateien.
+/_*.html
