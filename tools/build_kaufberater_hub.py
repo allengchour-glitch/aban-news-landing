@@ -90,6 +90,7 @@ def main():
 <meta property="og:description" content="Von Elektronik bis Garten: alle Schweizer Kaufberater gebündelt — ehrlich, ohne Hype, mit Vergleichs-Suche.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://abannews.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
 :root{{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#fffdf9;--card:#fff}}

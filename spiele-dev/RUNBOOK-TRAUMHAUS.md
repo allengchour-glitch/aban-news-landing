@@ -4212,6 +4212,61 @@ Funktion überschrieb meinen Wert wieder. Zweiter Versuch an der richtigen Stell
 **Regel: Wenn die Sabotage nicht anschlägt, ist zuerst die Sabotage verdächtig — nicht
 das Werkzeug.** Sonst wirft man einen funktionierenden Test weg.
 
+---
+
+## 2026-08-29 · Läuft im Spiel etwas voll? Nein — und zweimal falsch gemessen dabei
+
+Das Ruckeln hatte eine Ursache im Nachladen (#2401). Eine zweite, die sich für den
+Spieler gleich anfühlt, wäre ein **Leck**: Objekte, Geometrien oder Texturen, die
+entstehen und nie verschwinden. Nach zwanzig Minuten wird das zäh, und beim
+Programmieren merkt es niemand. `th-leistung` nimmt nur eine Momentaufnahme; über die
+Zeit hat nie jemand gemessen.
+
+`th-wachstum.mjs` (neu) misst alle 15 Sekunden und beurteilt den **Trend**.
+
+**Ergebnis über 5 Minuten: kein Leck.** Objekte, Meshes, Materialien, Texturen und
+Programme netto ±0, Geometrien +5.
+
+### ⚠️ Fehler 1: „monoton gestiegen" ist kein Leck
+
+Der erste Lauf meldete **sechs** Lecks. Tatsächlich waren es +1 Objekt und +18 Meshes
+über drei Minuten — die Welt, die fertig lädt, und ein Tier, das auftaucht. Mein
+Kriterium („nie kleiner geworden und am Ende grösser") flaggt alles, was einmal wächst.
+
+Ein Leck wächst **stetig**; Nachladen flacht ab. Also die Rate der ersten gegen die der
+zweiten Hälfte stellen — nur wenn es am Ende noch zulegt, ist es eines.
+
+### ⚠️ Fehler 2: zwei Sorten Zahlen in einen Topf geworfen
+
+Danach blieb ein Befund: Zeichenaufrufe 384 → 429. Aber **Zeichenaufrufe sind kein
+Bestand** — sie messen das letzte Bild und steigen und fallen mit dem, was gerade zu
+sehen ist. Die letzten drei Messungen fielen bereits wieder (435 → 432 → 429): Verkehr,
+der durchs Bild fuhr.
+
+Jetzt getrennt: **Bestände** (Objekte, Meshes, Geometrien, Texturen, Programme,
+Materialien) können lecken und werden beurteilt; **Pro-Bild-Werte** (Zeichenaufrufe,
+Dreiecke) werden nur zur Einordnung ausgewiesen.
+
+### Die Gegenprobe
+
+20 Objekte je Sekunde ins Spiel injiziert:
+
+```
+❌ kinder       4961 → 7021  Rate 1. Hälfte 295,00 · 2. Hälfte 293,33  → LECKVERDACHT
+❌ meshes      62634 → 64694  dito
+❌ materialien  4882 → 6942  dito
+```
+
+**Die gleichbleibende Rate über beide Hälften ist genau das Kennzeichen, das ein Leck
+vom Nachladen unterscheidet** — und das Kriterium erkennt es.
+
+Nebenbei belegt: Geometrien blieben flach, weil die Objekte weit ausserhalb standen und
+nie gezeichnet wurden. `renderer.info.memory` zählt, was auf der Grafikkarte liegt,
+nicht was in der Szene hängt — zwei verschiedene Fragen.
+
+⚠️ **Nicht in `th-alle.mjs` aufgenommen:** ein Lauf dauert über fünf Minuten. Das
+Werkzeug ist zum gezielten Nachsehen da, nicht für jeden Durchgang.
+
 ## 2026-08-29 · 🌲 Der Wald war für jedes Werkzeug unsichtbar — und 30 s sind zu früh
 
 Ausgangspunkt war wieder ein Bild (Regel 11): der Blick auf die Baustelle (180|150)
