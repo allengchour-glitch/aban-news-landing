@@ -42,7 +42,54 @@ const { browser, page } = await spielOeffnen(ZIEL, { warten: 90000 })
 
 const zeilen = await page.evaluate(([aArg, bArg]) => {
   const L = []
-  const welt = window._gebaeude || []
+  /* ⚠️ INSTANZEN WAREN UNSICHTBAR. `bauViele()` setzt gleiche Modelle als
+     InstancedMesh und traegt sie ausdruecklich NICHT in `_gebaeude` ein — dieses
+     Werkzeug lief daran vorbei, und `Box3.setFromObject` haette ohnehin die Huelle
+     der ganzen Gruppe geliefert statt der einzelnen Instanz.
+     `bauViele` legt je TEILMESH des Modells eine eigene InstancedMesh an, alle mit
+     derselben Stellenliste. Instanz i eines Modells ist also die i-te Matrix in
+     JEDER dieser Gruppen — daraus laesst sich das Objekt wieder zusammensetzen.
+     Instanzen OHNE `userData.datei` (Gras, Baeume, Streuwerk) bleiben draussen: die
+     durchdringen sich planmaessig und wuerden die Liste fluten.
+     ⚠️ `scene` ist NICHT global — das Spiel steckt in einer IIFE, und dieses
+     Werkzeug injiziert keine Sonde. Der Szenenwurzel kommt man ueber ein Objekt bei,
+     das das Spiel selbst veroeffentlicht: `_gebaeude[0]` haengt in ihr. */
+  const welt = (window._gebaeude || []).slice()
+  let _wurzel = null
+  for (let n = welt[0]; n; n = n.parent) if (n.isScene) _wurzel = n
+  const _instGr = {}
+  if (_wurzel) _wurzel.traverse(o => {
+    if (!o.isInstancedMesh || !o.geometry) return
+    const d = o.userData && o.userData.datei
+    if (!d) return
+    /* Nach SATZ gruppieren, nicht nach Datei: derselbe Zaun steht als mehrere
+       Linien in der Welt, jede mit eigener Stellenliste. Index i der einen und
+       Index i der anderen sind verschiedene Orte — ohne die Satznummer entsteht
+       aus zwei Zaunlinien ein Objekt mit 213 m Grundriss (gemessen, erster Lauf). */
+    const k = d + '~' + (o.userData.satz || 0)
+    ;(_instGr[k] = _instGr[k] || []).push(o)
+  })
+  const _pseudo = []
+  const _M = new THREE.Matrix4()
+  Object.keys(_instGr).forEach(k => {
+    const gruppen = _instGr[k]
+    const datei = k.slice(0, k.lastIndexOf('~'))
+    let anz = 0
+    gruppen.forEach(g => { if (g.count > anz) anz = g.count })
+    for (let i = 0; i < anz; i++) {
+      const boxen = []
+      for (const g of gruppen) {
+        if (i >= g.count) continue
+        if (!g.geometry.boundingBox) g.geometry.computeBoundingBox()
+        g.getMatrixAt(i, _M)
+        const b = g.geometry.boundingBox.clone()
+        b.applyMatrix4(_M); b.applyMatrix4(g.matrixWorld)
+        if (isFinite(b.min.x)) boxen.push({ n: g.name || 'Instanz',
+          x0: b.min.x, x1: b.max.x, y0: b.min.y, y1: b.max.y, z0: b.min.z, z1: b.max.z })
+      }
+      if (boxen.length) _pseudo.push({ datei: datei + ' #' + i, boxen })
+    }
+  })
   const box = o => {
     const b = new THREE.Box3().setFromObject(o)
     return isFinite(b.min.x) ? b : null
@@ -62,15 +109,17 @@ const zeilen = await page.evaluate(([aArg, bArg]) => {
   const schnitt3 = (p, q) => ueb(p, q, 'x') > 0 && ueb(p, q, 'y') > 0 && ueb(p, q, 'z') > 0
 
   if (aArg) {                                     /* ── Einzelpaar, ausfuehrlich ── */
-    const A = welt.filter(w => new RegExp(aArg).test(w.userData.datei || ''))
-    const B = welt.filter(w => new RegExp(bArg || aArg).test(w.userData.datei || ''))
+    const _alle = welt.map(w => ({ d: w.userData.datei || '', m: null, w }))
+                      .concat(_pseudo.map(ps => ({ d: ps.datei, m: ps.boxen, w: null })))
+    const A = _alle.filter(o => new RegExp(aArg).test(o.d))
+    const B = _alle.filter(o => new RegExp(bArg || aArg).test(o.d))
     L.push(aArg + ': ' + A.length + ' Objekte,  ' + (bArg || aArg) + ': ' + B.length)
-    const bm = B.flatMap(meshes)
+    const bm = B.flatMap(o => o.m || meshes(o.w))
     /* Erst sammeln, dann sortieren: die ECHTEN Treffer muessen oben stehen. Ein
        Vordach ueber einem Fahrzeug erzeugt Dutzende Zeilen "frei" — schiebt man
        die nicht weg, scrollt die eine Zeile, auf die es ankommt, aus dem Bild. */
     const rows = []
-    A.flatMap(meshes).forEach(m => {
+    A.flatMap(o => o.m || meshes(o.w)).forEach(m => {
       bm.filter(q => ueb(m, q, 'x') > 0 && ueb(m, q, 'z') > 0).forEach(q => {
         rows.push({ oy: ueb(m, q, 'y'),
           t: 'y ' + m.y0.toFixed(2) + '…' + m.y1.toFixed(2) + ' gegen ' +
@@ -87,6 +136,12 @@ const zeilen = await page.evaluate(([aArg, bArg]) => {
 
   /* ── Alle 2D-Funde nachpruefen ── */
   const objs = welt.map(w => ({ w, d: w.userData.datei || '?', b: box(w) })).filter(o => o.b)
+  _pseudo.forEach(ps => {
+    const b = new THREE.Box3()
+    ps.boxen.forEach(k => { b.expandByPoint(new THREE.Vector3(k.x0, k.y0, k.z0))
+                            b.expandByPoint(new THREE.Vector3(k.x1, k.y1, k.z1)) })
+    objs.push({ w: null, d: ps.datei, b, m: ps.boxen })
+  })
   const paare = []
   for (let i = 0; i < objs.length; i++)
     for (let j = i + 1; j < objs.length; j++) {
@@ -101,7 +156,8 @@ const zeilen = await page.evaluate(([aArg, bArg]) => {
   paare.sort((x, y) => y.m2 - x.m2)
   L.push('2D-Funde: ' + paare.length)
   const cache = new Map()
-  const hol = o => { if (!cache.has(o.w)) cache.set(o.w, meshes(o.w)); return cache.get(o.w) }
+  const hol = o => { if (o.m) return o.m
+    if (!cache.has(o.w)) cache.set(o.w, meshes(o.w)); return cache.get(o.w) }
   /* ⚠️ NACH EINDRINGTIEFE SORTIEREN, NICHT NACH GRUNDRISS. Die Liste war nach der
      2D-Ueberdeckung geordnet — und die ist fuer GESTAPELTE Bauten das ganze Grundstueck.
      Ganz oben stand darum dauerhaft "th7_hochhaus_modul x th7_hochhaus_modul, 8,20 m":

@@ -2702,3 +2702,47 @@ dieses Containers — auf dem Handy ist das GPU-Arbeit, die Zahl ist **nicht** �
 Szenenkinder (Strassen, Markierungen, Plätze als Einzelmeshes) und 333 000 Dreiecke.
 Zusammenlegen würde Zeichenaufrufe sparen, aber die Markierungen haben sorgfältig gestaffelte
 Höhen gegen Z-Fighting — ein Merge riskiert genau das.
+
+## th-3d war blind für alles Instanzierte
+
+`bauViele()` setzt wiederholte Modelle als `InstancedMesh` und trägt sie
+**ausdrücklich nicht** in `window._gebaeude` ein — der Kommentar dort sagt es seit
+jeher: *„Instanzen stehen NICHT in `_gebaeude`, sind für th-pruef also unsichtbar."*
+`th-3d` liest ausschliesslich `_gebaeude`. Alles Instanzierte fiel also aus der
+Durchdringungsprüfung, und `Box3.setFromObject` hätte ohnehin die Hülle der ganzen
+Gruppe geliefert statt der einzelnen Instanz.
+
+Gemessen, `node th-3d.mjs parkzaun weidezaun`:
+
+| | vorher | nachher |
+|---|---|---|
+| th33_parkzaun_modul | **0 Objekte** | **52** |
+| th38_weidezaun | **0 Objekte** | **32** |
+| th25_landebahn_modul | 0 | 8 |
+
+### Der erste Versuch war falsch — und die Zahl hat es verraten
+
+Nach Datei gruppiert meldete das Werkzeug Zaunmodule mit **213 m Grundriss** und
+5 304 statt 120 2D-Funden. Ursache: `bauViele` wird für dieselbe Datei **mehrfach**
+aufgerufen — der Parkzaun steht als zwei getrennte Linien (34 + 18 Module), jede mit
+eigener Stellenliste. Index 3 der einen Linie und Index 3 der anderen sind völlig
+verschiedene Orte; das Zusammenfassen ihrer Teilmeshes ergibt ein Objekt, das quer
+über den halben Park reicht.
+
+Darum trägt jede `bauViele`-Ladung jetzt `im.userData.satz` — eine laufende Nummer
+je Aufruf. Erst damit lässt sich Instanz *i* aus den Teilmeshes **eines** Satzes
+wieder zusammensetzen. Danach: 120 2D-Funde, keine Phantom-Grundrisse.
+
+Zweite Falle am selben Ort: **`scene` ist nicht global.** Das Spiel steckt in einer
+IIFE, und `th-3d` injiziert keine Sonde. Der Szenenwurzel kommt man über ein Objekt
+bei, das das Spiel selbst veröffentlicht — `_gebaeude[0].parent…`.
+
+### Ergebnis
+
+**Der blinde Fleck war echt und ist leer:** keine einzige der 92 instanzierten
+Einheiten durchdringt etwas. Zäune und Landebahnmodule stehen sauber. Das ist ein
+Messergebnis, kein Ausbleiben von Arbeit — vorher hätte das Werkzeug ein Problem
+dort gar nicht melden können.
+
+`th-3d` gesamt: 59 echt / 75 nur 2D (über Läufe 55…59 — das Streuwerk ist zufällig).
+`th-netz` 39 ok, 0 Fehler.
