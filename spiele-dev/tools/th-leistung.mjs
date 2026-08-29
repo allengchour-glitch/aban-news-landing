@@ -31,6 +31,59 @@ mitSonden('traumhaus.html', {
         schattenkarte:renderer.shadowMap.enabled?sun.shadow.mapSize.width:0,
         pixelVerhaeltnis:renderer.getPixelRatio(),
         mobil:(typeof _mobil!=="undefined")?_mobil:null};}
+    if(was==="upd"){ /* CPU-Kosten je Aktualisierungsfunktion, 60 Durchlaeufe */
+      var N=60,aus=[],now=performance.now();
+      function miss(name,fn){
+        try{fn();}catch(e){return;}                 /* einmal warmlaufen */
+        var t0=performance.now();
+        for(var i=0;i<N;i++){try{fn();}catch(e){}}
+        aus.push({n:name,ms:+((performance.now()-t0)/N).toFixed(3)});}
+      miss("updVerkehr",function(){updVerkehr(0.016);});
+      miss("updSims",function(){if(typeof updSims==="function")updSims(0.016);});
+      miss("updFussg",function(){if(typeof updFussg==="function")updFussg(0.016);});
+      miss("updEnten",function(){updEnten(0.016,now);});
+      miss("updMinimap",function(){_mmT=0;updMinimap(0.016);});
+      miss("gruppenSicht",function(){gruppenSicht();});
+      miss("lodTakt",function(){var p=spielerPos();lodTakt(p.x,p.z);});
+      miss("updLampPool",function(){window._lampPoolT=0;updLampPool(0.016);});
+      miss("updFahrgeschaefte",function(){updFahrgeschaefte(0.016);});
+      miss("render",function(){renderer.render(scene,camera);});
+      aus.sort(function(a,b){return b.ms-a.ms;});
+      return aus;}
+    if(was==="speichern"){ /* Wie teuer ist der 6-Sekunden-Speicherlauf? */
+      var t0,t1,proben=[],groesse=0,teile={};
+      for(var k=0;k<5;k++){
+        t0=performance.now();var snap=snapshot();var txt=JSON.stringify(snap);
+        try{localStorage.setItem("_messung",txt);}catch(e){}
+        t1=performance.now();proben.push(+(t1-t0).toFixed(1));groesse=txt.length;}
+      try{localStorage.removeItem("_messung");}catch(e){}
+      /* Welcher Teil des Spielstands ist der groesste? */
+      var snap2=snapshot();
+      Object.keys(snap2).forEach(function(k2){
+        try{teile[k2]=JSON.stringify(snap2[k2]).length;}catch(e){teile[k2]=0;}});
+      var gross=Object.keys(teile).sort(function(a,b){return teile[b]-teile[a];}).slice(0,6);
+      proben.sort(function(a,b){return a-b;});
+      return {ms:proben, median:proben[2], zeichen:groesse,
+              groessteFelder:gross.map(function(k3){return k3+":"+teile[k3];})};}
+    if(was==="gezeichnet"){ /* WAS wird tatsaechlich gezeichnet? Renderliste mitschreiben */
+      var liste=[];
+      var alt=renderer.render;
+      /* Ein Durchlauf mit Mitschrift: onBeforeRender feuert je gezeichnetem Objekt. */
+      var haken=function(r,sc,cam,geo,mat,grp){
+        liste.push({n:this.name||(this.userData&&this.userData.datei)||this.geometry.type,
+          tri:(this.geometry.index?this.geometry.index.count/3:this.geometry.attributes.position.count/3)|0,
+          inst:this.isInstancedMesh?this.count:0,
+          elt:(this.parent&&((this.parent.userData&&this.parent.userData.datei)||this.parent.name))||""});};
+      var gesetzt=[];
+      scene.traverse(function(o){if(o.isMesh&&o.visible){gesetzt.push([o,o.onBeforeRender]);o.onBeforeRender=haken;}});
+      renderer.render(scene,camera);
+      gesetzt.forEach(function(p){p[0].onBeforeRender=p[1];});
+      /* Nach Herkunft buendeln */
+      var proQuelle={};
+      liste.forEach(function(x){var k=x.elt||x.n;proQuelle[k]=(proQuelle[k]||0)+1;});
+      var top=Object.keys(proQuelle).sort(function(a,b){return proQuelle[b]-proQuelle[a];});
+      return {gezeichnet:liste.length,
+              top:top.slice(0,12).map(function(k){return proQuelle[k]+"x "+k.slice(0,40);})};}
     if(was==="versteckt"){ /* Welche Gebaeude sind absichtlich unsichtbar — VOR meiner Pruefung? */
       var G=window._gebaeude||[],aus=[],box=new THREE.Box3(),V=new THREE.Vector3();
       /* Sichtpruefung kurz aussetzen und den Rohzustand ablesen */
@@ -178,7 +231,21 @@ const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000, vie
 const info = await page.evaluate(() => window.__th.leistung('info'))
 console.log('=== Geräteunabhängige Kennzahlen (Querformat 844×390) ===')
 for (const [k, v] of Object.entries(info)) console.log(`  ${k.padEnd(20)} ${v}`)
-console.log('=== Absichtlich unsichtbare Gebaeude ===')
+console.log('=== CPU-Kosten je Aktualisierung (Mittel aus 60 Läufen) ===')
+const up = await page.evaluate(() => window.__th.leistung('upd'))
+up.forEach(x => console.log(`  ${String(x.ms).padStart(8)} ms  ${x.n}`))
+
+console.log('\n=== Der 6-Sekunden-Speicherlauf ===')
+const sp = await page.evaluate(() => window.__th.leistung('speichern'))
+console.log(`  Dauer je Lauf: ${sp.ms.join(' / ')} ms · Median ${sp.median} ms`)
+console.log(`  Spielstand: ${(sp.zeichen/1024).toFixed(0)} KB · grösste Felder: ${sp.groessteFelder.join(', ')}`)
+
+console.log('\n=== Woraus bestehen die Zeichenaufrufe? ===')
+const gz = await page.evaluate(() => window.__th.leistung('gezeichnet'))
+console.log('  tatsächlich gezeichnete Meshes:', gz.gezeichnet)
+gz.top.forEach(t => console.log('   ', t))
+
+console.log('\n=== Absichtlich unsichtbare Gebaeude ===')
 const vs = await page.evaluate(() => window.__th.leistung('versteckt'))
 console.log('  aktuell unsichtbar:', vs.unsichtbar)
 vs.liste.forEach(x => console.log(`    ${x.d} @ ${x.x}|${x.z}${x.nie ? ' (nieAusblenden)' : ''}`))

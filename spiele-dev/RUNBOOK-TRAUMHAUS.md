@@ -2670,3 +2670,35 @@ versteckt hat, und rührt fremde Entscheidungen nicht an.
 
 **Werkzeug:** `spiele-dev/tools/th-sicht.mjs` (5 Checks, darunter „saisonale Bauten bleiben
 versteckt" und „fremde Verstecke unangetastet" — genau die Regression von oben).
+
+## 2026-08-28 · 📏 Wo die Bildzeit WIRKLICH hingeht — zwei Vermutungen widerlegt
+
+Nach den drei Fixes (tiefes Einfrieren, Lichter, Gruppen-Sichtprüfung) gemessen, statt weiter
+zu raten. `th-leistung.mjs` kann das jetzt selbst:
+
+**CPU je Bild (Mittel aus 60 Läufen):**
+
+| | ms |
+|---|---|
+| `renderer.render` | **19,4** |
+| `updMinimap` | 0,072 |
+| `updVerkehr` | 0,063 |
+| `updFussg` | 0,045 |
+| `lodTakt` | 0,040 |
+| **`gruppenSicht` (neu)** | **0,025** |
+| updEnten / updLampPool / updSims / updFahrgeschaefte | ≤ 0,007 |
+
+**Alle Aktualisierungen zusammen: ~0,25 ms.** Die Bildzeit steckt vollständig im Rendern.
+Weitere Arbeit an den `upd*`-Funktionen ist verschwendet. (Die 19,4 ms sind Software-Rendering
+dieses Containers — auf dem Handy ist das GPU-Arbeit, die Zahl ist **nicht** übertragbar.)
+
+**Zwei Vermutungen geprüft und WIDERLEGT — nicht nochmal verfolgen:**
+1. **Der 6-Sekunden-Speicherlauf** (`saveGame`, `JSON.stringify` + `localStorage`) sah nach
+   einem klassischen Aussetzer aus. Gemessen: **1 KB, 0,1 ms**. Kein Verursacher.
+   (Gemessen an einem frischen Spielstand — bei viel gebautem Inventar erneut prüfen.)
+2. **Die Aktualisierungsfunktionen** als Ruckel-Quelle: siehe Tabelle, zusammen 0,25 ms.
+
+**Was bleibt (riskanter, nicht angefasst):** 526 gezeichnete Meshes, davon 293 direkte
+Szenenkinder (Strassen, Markierungen, Plätze als Einzelmeshes) und 333 000 Dreiecke.
+Zusammenlegen würde Zeichenaufrufe sparen, aber die Markierungen haben sorgfältig gestaffelte
+Höhen gegen Z-Fighting — ein Merge riskiert genau das.
