@@ -5339,3 +5339,8 @@ gid://shopify/Product/15449057624449	CHF 16.05	48 Varianten	Vintage Heavyweight 
 gid://shopify/Product/15449057722753	CHF 13.08	4 Varianten	Kapuzen-Sweatshirt mit halbem Reissverschluss
 gid://shopify/Product/15449057853825	CHF 13.51	5 Varianten	Colorblock Hoodie mit halbem Reissverschluss
 gid://shopify/Product/15449057952129	CHF 13.16	5 Varianten	Off-Shoulder Sweatshirt mit halbem Reissverschluss
+gid://shopify/Product/15449058017665	CHF 14.37	20 Varianten	Damen Flanell Kapuzenpullover
+gid://shopify/Product/15449058083201	CHF 15.14	96 Varianten	Freizeit-Kapuzenpullover mit halbem Reissverschlus
+gid://shopify/Product/15449058181505	CHF 16.13	36 Varianten	Unisex Hoodie mit Haustier-Tasche
+gid://shopify/Product/15449058279809	CHF 15.55	8 Varianten	Kapuzen-Shirt im Punk-Stil
+gid://shopify/Product/15449058345345	CHF 13.05	5 Varianten	Damen Colorblock Pullover mit Rundhals und Tasche
