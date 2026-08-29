@@ -299,3 +299,23 @@
 
 # Privates Manuskript (bezahltes Produkt) NIE öffentlich ausliefern
 /_manuscripts/*   /404.html             404
+
+# Verzeichnis-URLs auf ihren Hub. GEMESSEN 29.08.2026: acht Inhalts-Verzeichnisse
+# mit zusammen 324 Seiten haben kein index.html — wer /vergleich/ aufruft (die
+# Adresse zurueckkuerzt, einem abgeschnittenen Link folgt), landet auf 404.
+# Die Huben gibt es laengst, nur nicht unter der Verzeichnis-Adresse; ermittelt
+# ueber die Verlinkung, nicht geraten: ki-tool-vergleich.html setzt alle 197
+# Links auf vergleich/, themen.html alle 21 auf themen/, hype-watch.html alle
+# auf hype-watch/, en/dossiers.html alle 7 auf en/dossier/.
+# Keine neuen Seiten, kein doppelter Inhalt.
+/vergleich/       /ki-tool-vergleich.html   301
+/vergleich        /ki-tool-vergleich.html   301
+/maerkte/         /maerkte.html             301
+/themen/          /dossiers.html            301
+/dossier/         /dossiers.html            301
+/hype-watch/      /hype-watch.html          301
+/en/maerkte/      /en/maerkte.html          301
+/en/dossier/      /en/dossiers.html         301
+# /downloads/ enthaelt drei Dateien, zwei davon noindex (Kauf-Downloads). Die
+# eine oeffentliche ist das Starter-Kit — dorthin, statt auf 404.
+/downloads/       /downloads/dach-ki-toolkit.html  301
