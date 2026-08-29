@@ -46,6 +46,66 @@ _HIER = os.path.dirname(os.path.abspath(__file__))
 LEDGER = os.path.join(os.path.dirname(_HIER), "dropship", "_merchant_issue_done.txt")
 
 
+# ─────────────────────────────────────────────────────────────────────────────────────
+# AUSSCHLUSS-TAGS — die EINE Liste für alle Google-Publizierer (28.08.2026)
+#
+# WARUM HIER: Die Menge stand wortgleich in `google_kanal_luecke.py` UND in
+# `google_kanal_luecke_schliessen.py`. Zwei Listen, die auseinanderlaufen, sind in diesem
+# Projekt eine eigene Fehlerklasse (Farbtabelle 4×, Preisformel 4×, Grössenmenge 3×,
+# publishVerified 3×). Neue Ausschluss-Tags gehören AUSSCHLIESSLICH hierher.
+#
+# WIE DIE LISTE ENTSTANDEN IST: Für jeden Kandidaten wurde LIVE gezählt, wie viele seiner
+# Träger im Google-Kanal fehlen. Aufgenommen ist nur, wo Name UND Messung dasselbe sagen
+# (28.08.2026, aktive Produkte, Suchindex gegengeprüft):
+#     12/12  100 %  verdeckte-ueberwachung          33/33  100 %  google-policy-flag
+#     34/34  100 %  nicht-google-bewerben           20/20  100 %  lizenz-nicht-bewerben
+#     10/10  100 %  adult-nicht-bewerben            10/10  100 %  gmc-adult-pull
+#      8/8   100 %  messer-nicht-bewerben           11/11  100 %  smoke-zubehoer
+#      2/2   100 %  waffe-pruefen
+#
+# ⚠️ ZWEI KANDIDATEN WURDEN GEMESSEN UND VERWORFEN — sie sehen wie Ausschlussgründe aus
+# und sind keine:
+#   • `nicht-verifiziert-lieferbar`  1/16 =  6 % — 15 der 16 Träger stehen bei Google.
+#   • `bild-zu-klein`              52/326 = 16 % — 274 der 326 Träger stehen bei Google.
+#     Ein zu kleines Bild ist bei Google eine Warnung für Shopping-ADS («No impact» auf die
+#     Gratis-Einträge, Befund 20.08.), kein Ausschluss. Wer es hier einträgt, sperrt 274
+#     einwandfreie Produkte aus dem einzigen Kanal, der verkauft.
+# Ein Tag-NAME, der nach Ausschluss klingt, ist also kein Beleg. Erst zählen, dann eintragen.
+AUSSCHLUSS_TAGS = {
+    # Warengruppen und Entscheidungen, die schon vor dem 28.08. galten
+    "nicht-bewerben", "nur-onlineshop", "waffengesetz-verboten", "medizinprodukt-pruefen",
+    "18plus", "raucher", "erotik", "kostuem", "kostüm", "refurbished",
+    "marken-pruefen", "lizenz-risiko", "tierschutz-pruefen",
+    # 28.08.2026 ergänzt: am Produkt begründet, aber in keiner der beiden Listen
+    "verdeckte-ueberwachung",          # versteckte Kameras/Recorder — Google-Policy
+    "google-policy-flag",              # von einem früheren Lauf als Policy-Fall markiert
+    "nicht-google-bewerben",           # ausdrücklich: nicht über Google bewerben
+    "lizenz-nicht-bewerben",           # Lizenz-/Markenrisiko
+    "adult-nicht-bewerben", "gmc-adult-pull",   # Adult-Content
+    "messer-nicht-bewerben",           # Klingen, zusätzlich zur Titel-Hausregel
+    "smoke-zubehoer",                  # Rauchzubehör (Ergänzung zu «raucher»)
+    "waffe-pruefen",                   # wie «medizinprodukt-pruefen»: offene Prüfung
+    "niedrig-bewertet-nicht-bewerben", # qualifizierte Form von «nicht-bewerben»
+}
+
+
+def ausschluss_tag(tags):
+    """Trägt das Produkt einen Tag, der seinen Google-Ausschluss ERKLÄRT?
+
+    Deckt drei Wege ab: die Liste oben, den Präfix `google-kanal-` (den die Importer für
+    ihre Hausregeln setzen) und `google-gesperrt-*` (von Google selbst gemeldete
+    Verstösse). Gibt den gefundenen Grund zurück, sonst "".
+    """
+    tg = {str(t).strip().lower() for t in (tags or [])}
+    treffer = sorted(tg & AUSSCHLUSS_TAGS)
+    if treffer:
+        return ", ".join(treffer)
+    for t in sorted(tg):
+        if t.startswith("google-kanal-") or t.startswith(TAG_PRAEFIX):
+            return t
+    return ""
+
+
 def id_zahl(pid):
     """«gid://shopify/Product/15448825659777» und «15448825659777» ergeben dasselbe."""
     m = re.search(r'(\d+)\s*$', str(pid or "").strip())

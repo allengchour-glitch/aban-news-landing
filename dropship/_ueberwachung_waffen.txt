@@ -16,3 +16,4 @@
 15493778899329	waffe	waffe-gegen-menschen	tag:waffe-pruefen	Einziehbare Selbstverteidigungswaffe für Frauen
 15495190020481	waffe	waffe-gegen-menschen	google-kanal-entfernt,tag:waffengesetz-verboten,draft	Automatischer Feder-Abwehrstock
 15496498184577	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	Mini HD-Überwachungskamera mit Nachtsicht
+15517526032769	ueberwachung	kamera-zum-diskreten-platzieren	tag:verdeckte-ueberwachung	Digitaler Recorder im Armbanduhr-Design

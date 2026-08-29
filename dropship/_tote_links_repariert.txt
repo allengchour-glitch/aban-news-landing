@@ -1,0 +1,4 @@
+page	697996771713	edelstahl-vs-silber-schmuck	/products/herren-halskette-fenrir-edelstahl-weizenkette-wasserfest -> /collections/wasserfester-schmuck
+page	698005848449	schmuck-pflege-edelstahl	/products/herren-halskette-fenrir-edelstahl-weizenkette-wasserfest -> /collections/wasserfester-schmuck
+article	1001546252673	edelstahl-schmuck-pflege-hypoallergen	/products/herren-halskette-fenrir-edelstahl-weizenkette-wasserfest -> /collections/wasserfester-schmuck
+article	1001546580353	geschenke-fuer-maenner-2026-schweiz	/products/herren-halskette-fenrir-edelstahl-weizenkette-wasserfest -> /collections/wasserfester-schmuck

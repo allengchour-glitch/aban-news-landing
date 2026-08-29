@@ -21,8 +21,13 @@ export const mediaKey = u => (u || '').split('?')[0].split('/').pop().toLowerCas
 // Entfernt wird sie erst, wenn belegt ist, WELCHER Poster doppelt gepostet hat und warum.
 const STOPP = 'dropship/_SOCIAL_STOPP';
 export function stoppAktiv() {
+  // 24.08.2026: dritter Pruefpfad ABSOLUT. Die beiden bisherigen haengen an cwd bzw. am
+  // Speicherort DIESER Datei — eine alte /tmp-Kopie eines Posters mit fremdem cwd sah die
+  // Stoppdatei nicht. Am 18.08. ging trotz Stopp ein Reel raus (posted-ig-fb 18:43); der
+  // absolute Pfad schliesst diese Luecke fuer jeden Aufrufer, egal woher er laeuft.
   return fs.existsSync(STOPP) ||
-         fs.existsSync(new URL('../dropship/_SOCIAL_STOPP', import.meta.url).pathname);
+         fs.existsSync(new URL('../dropship/_SOCIAL_STOPP', import.meta.url).pathname) ||
+         fs.existsSync('/home/user/aban-news-landing/dropship/_SOCIAL_STOPP');
 }
 
 let _released = false;

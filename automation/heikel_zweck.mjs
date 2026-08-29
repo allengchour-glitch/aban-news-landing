@@ -62,7 +62,7 @@ const TREFFER = M.treffer.map(x => ({ n: x.n, alle: x.alle.map(r => new RegExp(r
 
 // Welche Treffer sind zugleich in der Schweiz verbotene Ware? Diese kommen nicht nur aus den
 // Kanälen, sondern werden gar nicht erst aktiv geschaltet.
-const VERBOTEN = new Set(['ch-verbotene-waffe', 'elektroschock-gegen-menschen']);
+const VERBOTEN = new Set(['ch-verbotene-waffe', 'ch-verbotene-waffe-getarnt', 'elektroschock-gegen-menschen']);
 
 // Nimmt HTML oder Klartext. Gibt null zurück oder {gruppe, grund, muster, stelle, verboten}.
 // gruppe: 'ueberwachung' | 'waffe'

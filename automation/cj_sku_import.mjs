@@ -17,20 +17,13 @@ const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SEC
 let CJT = (process.env.CJ_TOKEN || '').trim();
 if (!CJT && fs.existsSync('/tmp/cj_token.json')) CJT = JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken;
 const LEDGER = 'dropship/cj_niche_done.txt';
-// Publiziert und PRUEFT die Quittung: erst wenn Shopify keine userErrors meldet, gilt es.
-async function publishVerified(t, pid, klinge) {
-  const ziel = klinge ? PUBS.filter(x => !x.publicationId.endsWith('302872297857')) : PUBS;
-  const Q = `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id,input:$p){userErrors{message}} }`;
-  for (let i = 0; i < 3; i++) {
-    const r = await sgql(t, Q, { id: pid, p: ziel });
-    const errs = r?.data?.publishablePublish?.userErrors;
-    if (Array.isArray(errs) && errs.length === 0) return true;
-    await new Promise(s => setTimeout(s, 2000 * (i + 1)));
-  }
-  console.log('  ⚠️ Publizieren fehlgeschlagen', pid);
-  return false;
-}
-const PUBS = ['301970915713', '301971014017', '302032716161', '302566834561', '302872297857', '302994456961'].map(id => ({ publicationId: `gid://shopify/Publication/${id}` }));
+// Publizieren + Quittung liegen seit 28.08.2026 in automation/cj_publish.mjs — es gab
+// drei Fassungen dieser Funktion, und alle drei lasen nur die ANTWORT der Mutation
+// statt des Zustands. Ergebnis: am 27./28.08. erneut Produkte in 5 von 6 Kanaelen.
+import { publishVerified as _publishVerified, PUBS, GOOGLE_PUB } from './cj_publish.mjs';
+const publishVerified = (tok, pid, klinge) => _publishVerified(
+  sgql, tok, pid,
+  klinge ? PUBS.filter(x => !x.publicationId.endsWith(GOOGLE_PUB)) : PUBS);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // ⚠️ 22.08.2026 — DIESER IMPORTER HATTE EINEN PREISBODEN VON CHF 4.90 und rechnete die
 // Fracht erst ab 0,4 kg ein. Er steht in vier Runner-Aufrufen, legte also täglich Ware an,
@@ -258,7 +251,7 @@ for (const item of ITEMS) {
   if (tsch) { console.log(`🐾 Tierschutz TSchV 76 (${tsch.grund}, «${tsch.muster}») → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
-  const klinge = /\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)
+  const klinge = /(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|axt|beil)(?![\wäöüß])/i.test(title)
     && !/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i.test(title);
   // ⚠️ PUBLIZIEREN MIT QUITTUNG (22.08.2026, Ursache nachgewiesen). Frueher stand hier ein
   // reines `await sgql(...)`: Die Mutation fragte userErrors ab, aber niemand LAS die
