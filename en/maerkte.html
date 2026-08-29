@@ -14,6 +14,7 @@
   <meta property="og:title" content="Markets — Crypto &amp; Stocks live + AI sentiment | aban news">
   <meta property="og:description" content="Live prices, financial news and experimental AI sentiment at a glance. Anti-hype, with sources — not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -121,7 +122,9 @@
     .chg.up{color:var(--ok)}.chg.down{color:var(--bear)}.chg.flat{color:var(--muted)}
     .mtable td.spark{width:96px}.mtable td.spark svg{opacity:.92}
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* minmax(0,…) statt 1fr — sonst schrumpfen die Spalten nicht unter die Mindestbreite
+   ihres Inhalts und die Seite laeuft waagerecht ueber. Deutsche Fassung: #2412. */
+.mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -208,7 +211,7 @@
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
     .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
     .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
@@ -244,6 +247,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid */
     }
     @media(max-width:560px){
       /* Price table becomes stacked cards on phones (no horizontal scroll) */
@@ -304,7 +308,7 @@
   </section>
 
   <!-- LIVE TICKER -->
-  <div class="ticker" aria-label="Live price ticker">
+  <div class="ticker" role="marquee" aria-label="Live price ticker">
     <div class="ticker-track" id="tickerTrack"><span class="tk" style="color:var(--muted)">Loading ticker …</span></div>
   </div>
 
@@ -547,7 +551,7 @@
     <div class="footbar">
       <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
       <span class="footbar-links"><a href="/en/search.html">Search</a>
-      <span class="footbar-links"><a href="/impressum.html">Imprint</a><a href="/datenschutz.html">Privacy</a></span>
+      <a href="/impressum.html">Imprint</a><a href="/datenschutz.html">Privacy</a></span>
     </div>
   </div>
 </footer>
