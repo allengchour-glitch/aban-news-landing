@@ -3925,6 +3925,94 @@ Discokugel die Tanzfläche unter sich als Konflikt.
 dem Pokertisch fällt das nicht auf, beim Vorbeigehen schon. Auf 0,90 m gekürzt,
 Unterkante jetzt 2,10 m. Danach alle fünf Prüfungen grün, 0 JS-Fehler.
 
+---
+
+## 2026-08-29 · Durch die Berghütte lief man hindurch — die Weihnachtsbuden müssen es bleiben
+
+`th-mauern` meldet 13 Modelle ohne Kollider. Aufgeschlüsselt statt hingenommen:
+
+| | Warum |
+|---|---|
+| 4× Seilbahn-Stütze, Kran | Gittermasten — man geht zwischen den Beinen durch, richtig so |
+| 2× Spielturm, Schaukel | Spielgeräte, sollen offen sein |
+| Flugzeug | 23,6 × 26,2 m — mehrdeutig, nicht angefasst |
+| **Berghütte** | **12,8 × 12,8 m, 4,4 m hoch — ein echtes Gebäude** |
+| 3× Weihnachtsbude | ⚠️ siehe unten |
+
+### ⚠️ Die Weihnachtsbuden dürfen KEINEN Kollider bekommen
+
+Sie hängen an `wbau()`, das `g.visible = W9()` setzt — **saisonal**. Ein fester Kollider
+wäre im Sommer eine **unsichtbare Wand** mitten auf dem Marktplatz, wo nichts zu sehen
+ist. Das ist schlimmer als das Hindurchlaufen. `WORLD_SOLIDS` kennt kein Entfernen, ein
+saisonaler Kollider geht also gar nicht.
+
+Dieselbe Falle wie bei `gruppenSicht`, das im Sommer den Skilift wieder einblendete.
+**Vor jedem Kollider prüfen, ob das Modell saisonal ist.**
+
+### Die Hütte
+
+`stationSolid()` — dasselbe Mittel, das die Bergstation zwei Zeilen weiter oben schon
+benutzt, auf derselben Terrasse. Kein neuer Präzedenzfall, obwohl Kollider 2D sind
+(x/z, ohne Höhe) und damit auch den Hang darunter sperren.
+
+**13 → 12 ohne Kollider.**
+
+### ⚠️ `inSolid()` ist ein WAND-Test, kein Volumen-Test
+
+Meine erste Gegenprobe tastete die Terrasse mit `inSolid` ab und meldete: Hüttenmitte
+frei, **Stationsmitte auch frei** — als hätte gar nichts einen Kollider. Der Kommentar im
+Spiel warnt genau davor:
+
+> `inSolid()` ist ein WAND-Test […] liegt der Punkt mehr als 0,55 m von jeder Kante
+> entfernt, gibt es `false` — damit die Figur in Räumen laufen kann. Für die Frage
+> „steht hier ein Gebäude?" ist das die falsche Frage, und sie kostete schon einen
+> Anlauf.
+
+Sie kostete jetzt einen zweiten. **Für „steht hier etwas?" ist `imBau()` zuständig.**
+
+### Die Gegenprobe, die zählt
+
+Ein Kollider auf einer 28 × 22 m grossen Terrasse kann den Weg abschneiden. Also
+Flutfüllung von der Stationsmitte aus, Raster 0,4 m:
+
+**3506 von 3853 begehbaren Feldern erreichbar (91 %)**, und alle acht Landmarken —
+Gipfelkreuz, beide Felsen, der Bereich *hinter* der Hütte, alle vier Terrassenränder.
+Die fehlenden 9 % sind das Hütteninnere, das keine Tür hat: genau richtig.
+
+`th-pruef` bestanden, `th-bewohner`: niemand steckt fest.
+
+### Nachtrag: der Spielclub stand auf der Ringstrasse
+
+Beim Zusammenführen mit `origin/main` fiel `th-pruef` durch — **nicht wegen der Hütte**.
+Gegenprobe auf reinem `origin/main` ohne meine Änderung: **10 Bauteile im
+Strassenkorridor**, alle vom neuen Spielclub.
+
+Die Platzsuche prüft **den Punkt, nicht den Grundriss**. (126|102) ist frei — das Haus
+ist aber 16 m breit, seine Westwand steht also auf x 118. „Ring O" läuft entlang z mit
+Mitte x 112 und halber Breite 7,2, belegt also **x 104,8…119,2**. Überlappung: exakt
+1,2 m, genau wie gemeldet.
+
+`CX 126 → 128` setzt die Westwand auf x 120, 0,8 m neben die Korridorkante. Der Eingang
+zeigt weiter nach Süden zur Strasse, die Verschiebung läuft quer dazu.
+
+### ⚠️ Und dabei zweimal in dieselbe Falle getreten
+
+`th-club.mjs` hatte `var CX=126, CZ=102` **fest verdrahtet** und meldete nach der
+Verschiebung prompt fünf Möbel „ausserhalb des Raums" und dichte Wände als undicht —
+während das Haus tadellos war. Genau die Falle, vor der `th-netz.mjs` seit #2339 warnt:
+**Prüfpunkte aus der Welt, nicht aus dem Test.**
+
+Beim Nachrüsten dann noch zwei eigene Fehler, beide erst durch Messen gefunden:
+
+1. `window.WORLD_SOLIDS` gibt es nicht — es ist ein `var` im Spiel-Closure. Die Suche
+   lief stumm ins Leere, der Test blieb rot.
+2. **Das Mass allein ist nicht eindeutig:** 17 × 13 gibt es **zweimal**, das zweite bei
+   (12|225,2). Die erste Fassung nahm den ersten Treffer und tastete ein ganz anderes
+   Gebäude ab. Nur der Club hat zusätzlich eine **Türlücke** — danach wird jetzt
+   gesucht, und der Test bricht laut ab, wenn nicht genau ein Kollider passt.
+
+Danach: `th-club` ✅ alle fünf Prüfungen, `th-pruef` ✅ Korridor 0.
+
 ## 2026-08-29 · 👁️ Sechs grüne Messungen — und dann habe ich das Haus angesehen
 
 Der Spielclub bestand alle sechs Prüfungen von `th-club.mjs`: alle zwölf Teile da, jedes

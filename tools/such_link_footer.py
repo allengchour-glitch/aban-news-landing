@@ -65,9 +65,20 @@ def main():
             if davor.endswith(("·", "|", "•", "–", "—", "/")):
                 einschub = f'<a href="{url}">{text}</a> {davor[-1]} '
             else:
-                # Trennerlose Fusszeile: nur ein Zeilenumbruch mit gleicher Einrueckung
+                # Trennerlose Fusszeile: nur ein Zeilenumbruch mit gleicher Einrueckung.
+                # ⚠️ NUR DIE LEERZEICHEN UEBERNEHMEN, NICHT DIE GANZE ZEILE. Hier stand
+                # der komplette Zeilenanfang, und der enthaelt auf manchen Seiten schon
+                # ein offenes Tag: aus
+                #     <span class="footbar-links"><a href="/impressum.html">…
+                # wurde
+                #     <span class="footbar-links"><a href="/suchmaschine.html">Suche</a>
+                #     <span class="footbar-links"><a href="/impressum.html">…
+                # — das aeussere <span> blieb offen. html-validate meldete auf der
+                # STARTSEITE sieben close-order-Fehler; betroffen waren index.html und
+                # maerkte.html.
                 zeile = html[:i].split("\n")[-1]
-                einschub = f'<a href="{url}">{text}</a>\n{zeile}'
+                einzug = zeile[: len(zeile) - len(zeile.lstrip())]
+                einschub = f'<a href="{url}">{text}</a>\n{einzug}'
             if fix:
                 html = html[:i] + einschub + html[i:]
                 open(pfad, "w", encoding="utf-8").write(html)

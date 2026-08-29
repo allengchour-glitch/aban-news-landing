@@ -24,7 +24,30 @@
 import { mitSonden, spielOeffnen, aufraeumen } from './th-lib.mjs'
 
 const sonde = `function(){
-  var CX=126, CZ=102;
+  /* ⚠️ DIE MITTE AUS DER WELT LESEN, NICHT AUS DEM TEST. Hier stand "var CX=126,
+     CZ=102" fest verdrahtet. Als der Club um 2 m nach Osten ruecken musste (seine
+     Westwand stand auf der Ringstrasse, th-pruef: 10 Bauteile im Korridor), meldete
+     dieser Test prompt fuenf Teile "ausserhalb des Raums" und drei dichte Waende als
+     undicht — er tastete die alte Stelle ab, waehrend das Haus vollstaendig in
+     Ordnung war. Genau die Falle, vor der th-netz.mjs warnt ("PRUEFPUNKTE AUS DER
+     WELT, NICHT AUS DEM TEST", #2339).
+     Der Kollider des Clubs traegt als einziger 17 x 13 UND eine Tuerluecke. */
+  var CX=null, CZ=null, CFEHLER="";
+  (function(){
+    /* ⚠️ WORLD_SOLIDS ist ein var im Spiel-Closure, KEIN window-Global — die Sonde
+       laeuft im selben Bereich und muss es darum ohne "window." ansprechen. Mit
+       window.WORLD_SOLIDS lief die Suche stumm ins Leere und der Test blieb rot.
+       ⚠️ UND DAS MASS ALLEIN REICHT NICHT: 17 x 13 gibt es ZWEIMAL, das zweite bei
+       (12|225,2). Die erste Fassung nahm den ersten Treffer, tastete also ein ganz
+       anderes Gebaeude ab und meldete Moebel "ausserhalb des Raums" und die Tuer als
+       zugemauert. Nur der Club hat zusaetzlich eine Tuerluecke. */
+    var S=(typeof WORLD_SOLIDS!=="undefined")?WORLD_SOLIDS:[],T=[];
+    for(var i=0;i<S.length;i++)
+      if(Math.abs(S[i].hw-8.5)<0.01&&Math.abs(S[i].hd-6.5)<0.01&&S[i].door)T.push(S[i]);
+    if(T.length===1){CX=T[0].x;CZ=T[0].z;}
+    else CFEHLER=T.length+" Kollider passen auf den Club (erwartet genau 1)";
+  })();
+  if(CX===null)return {fehler:CFEHLER||"Club-Kollider nicht gefunden"};
   var TEILE=["casinobar","pokertisch","roulettetisch","kartentisch","tanzflaeche",
              "dj_pult","automatenreihe","spielautomat","discokugel","kronleuchter",
              "neonschild_gross","samtkordel"];
