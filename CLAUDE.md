@@ -541,6 +541,27 @@ weil er `html.unescape` benutzt — die Standardbibliothek kennt alle.
 **Lehre: Ein Quellenfix gilt erst, wenn ein echtes Erzeugnis davon vorliegt.** Vier
 Testfälle liefen sauber durch; der erste echte Import hatte trotzdem einen Fehler.
 
+## 🛒 Die Warenkorb-Rückholung führte auf die Startseite (2026-08-29)
+Nach der Domain-Reparatur fiel beim Lesen der Warenkorb-Mails auf, dass der Knopf «Jetzt
+abschliessen» auf `https://luxestyle.ch` zeigt — die **Startseite**. Eine Rückhol-Mail, die den
+Korb nicht wiederherstellt, verschenkt genau den Zweck, für den sie verschickt wird: Die
+Kundin müsste ihre Auswahl von Hand neu zusammensuchen. Betroffen waren alle **vier** Live-
+Warenkorb-Mails (deutscher und EN-Flow, je zwei Stufen).
+- **Vor der Reparatur das Feld GEPRÜFT, nicht aus der Doku übernommen:** Ein echtes
+  «Checkout Started»-Ereignis vom 22.08. (`get_events`, Metrik `XhnJPv`) trägt unter
+  `$extra.checkout_url` eine gültige Adresse der Form
+  `https://luxestyle.ch/94368563585/checkouts/ac/…/recover?key=…&locale=de-CH`.
+  Damit ist `{{ event.extra.checkout_url }}` belegt und nicht geraten — bei einem Knopf, den
+  niemand testet, ist das der ganze Unterschied.
+- Mit `|default:'https://luxestyle.ch'` abgesichert: Ist das Feld einmal leer, führt der Knopf
+  wenigstens in den Shop statt ins Nichts.
+- ⚠️ **Vorlage ändern reicht NICHT.** Nach dem Bearbeiten der beiden Bibliotheks-Vorlagen
+  mussten alle vier Flow-Aktionen neu gezogen werden, damit Klaviyo frische Kopien anlegt —
+  dieselbe Zwei-Wahrheiten-Falle wie beim Domain-Fix, nur einen Tag später und mit dem Wissen,
+  worauf zu achten war. Gegengeprüft wurde wieder am neuen Snapshot.
+- Der Anlass ist real: Die Liste der abgebrochenen Käufe hatte zuletzt **CHF 570 offen**, und
+  das jüngste Ereignis ist vom 22.08. — es gibt also Körbe zum Zurückholen.
+
 ## 💸 TikTok-Werbung: CHF 500 ausgegeben, EIN Kauf — erstmals gemessen (2026-08-29)
 Der Ads-Konnektor ist endlich freigegeben (bis dahin scheiterte es an der OAuth-Freigabe, die
 eine Cloud-Session nicht durchklicken kann). Damit liess sich zum ersten Mal die Frage

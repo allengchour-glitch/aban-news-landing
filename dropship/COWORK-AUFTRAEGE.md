@@ -102,9 +102,12 @@ Live existieren im Shop nur: Bundle 2+ −10 %, Mengenrabatt ab 3, Gratis-Versan
 **2. Win-Back: Betreff und Inhalt widersprechen sich.** Betreff «CHF 15 sparen mit BACK15»,
 im Text steht «10 %» mit Code **WELCOME10**. Eine der beiden Angaben ist falsch.
 
-**3. Die Warenkorb-Mails führen auf die STARTSEITE, nicht in den Warenkorb.** Eine
-Rückhol-Mail, die den Korb nicht wiederherstellt, verschenkt ihren einzigen Zweck. Klaviyo
-kann das über `{{ event.extra.checkout_url }}`.
+**3. ✅ ERLEDIGT (29.08.): Die Warenkorb-Mails führten auf die STARTSEITE statt in den
+Warenkorb.** Eine Rückhol-Mail, die den Korb nicht wiederherstellt, verschenkt ihren einzigen
+Zweck. Alle vier Live-Warenkorb-Mails zeigen jetzt auf `{{ event.extra.checkout_url }}`.
+Das Feld habe ich vorher an einem echten «Checkout Started»-Ereignis vom 22.08. geprüft, nicht
+aus der Dokumentation übernommen — es trägt eine gültige `/checkouts/…/recover`-Adresse.
+Mit `|default:'https://luxestyle.ch'` abgesichert, falls es einmal leer ist.
 
 **4. Die «EN/US»-Flows sind Dubletten der deutschen** — mit deutschen Betreffzeilen. Eine
 Kundin kann dieselbe Bestellbestätigung ZWEIMAL bekommen (Flow «Post-Purchase · Order +
@@ -282,6 +285,9 @@ Bis dahin läuft der Browser-Weg unverändert: tiktok.com/tiktokstudio/upload, V
 - ✅ **TikTok-Ads-Konnektor freigegeben** (29.08.) — die Freigabe ist durch, beide Werbekonten
   sind aus der Session lesbar. Daraus stammt Punkt 1. ⚠️ Das schaltet KEIN Posten frei; dafür
   braucht es die Content-Posting-API (Punkt 13).
+- ✅ **Warenkorb-Rückholung repariert** (29.08.): Die vier Live-Warenkorb-Mails führen jetzt in
+  den WARENKORB statt auf die Startseite. Die Liste der abgebrochenen Käufe hatte zuletzt
+  CHF 570 offen — bis jetzt zeigte der Knopf «Jetzt abschliessen» auf die Startseite.
 - ✅ **Klaviyo-Mails**: 13 Live-Nachrichten aus 10 Flows auf die korrigierten Vorlagen umgehängt,
   jede am neu entstandenen Snapshot gegengeprüft (29.08.). Die Bibliotheks-Vorlagen waren schon
   am 28.08. sauber — **das allein reichte nicht**, siehe Punkt 3.
