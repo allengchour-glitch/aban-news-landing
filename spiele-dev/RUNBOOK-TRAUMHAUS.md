@@ -3113,3 +3113,82 @@ anderen Modellen. Eine wachsende Stadt baut an mehreren Stellen. Aber sie ist ei
 **Regel für die nächste Materialsuche:** „Modell X ist unbenutzt" beantwortet nur, ob
 *dieses Modell* fehlt. Ob die *Sache* fehlt, beantwortet allein eine Suche nach der
 Sache — hier hätte ein Blick in `window._baukran` oder ein `grep -i baustelle` genügt.
+
+## Ein Viertel aller Wände der Stadt war tot
+
+Gesucht war eigentlich etwas anderes: durch welche Gebäude läuft man hindurch?
+`spiele-dev/tools/th-mauern.mjs` (neu) vergleicht jedes gebäudeartige Modell mit
+`WORLD_SOLIDS`. Der erste Lauf meldete **0 Kollider** — und diese Null war der
+Verräter: `WORLD_SOLIDS` ist eine Modul-Variable, kein `window`-Feld, und die Sonde
+läuft ohnehin *innerhalb* der IIFE. Mit dem richtigen Zugriff: 182 Kollider,
+111 Modelle geprüft, 19 ohne Deckung.
+
+Beim Nachtragen eines Kolliders für das Wirtshaus stimmte dann etwas nicht: die Zeile
+lief nachweislich (Marke gesetzt), der zurückgegebene Eintrag existierte — aber er
+stand nicht dort, wo er sollte:
+
+```
+{x: -28, z: NaN, hw: 4.90689…, hd: NaN}
+```
+
+**`z` und `hd` waren NaN.** Und ein Kollider mit NaN blockiert *nie* etwas: jeder
+Vergleich in `inSolid()` ist mit NaN falsch. Nachgezählt: **44 von 184 Kollidern**
+waren so — ein knappes Viertel der Wände der ganzen Stadt, stumm tot.
+
+### Zwei Ursachen
+
+**1. Der Wächter prüfte nur eine von vier Ecken.** In `kolliderNachziehen()` misst eine
+Schleife alle Bauteile ein:
+
+```js
+bb.setFromObject(o);
+if(!isFinite(bb.min.x))return;          // ← nur x
+```
+
+Ein Teil mit endlichem x und NaN in z kam durch. PASS 2 schreibt daraus direkt
+`s6.z = (v6.z0+v6.z1)/2` und `s6.hd = nhd` — **genau die beiden Felder, die kaputt
+waren**. Das Muster (x und hw in Ordnung, z und hd NaN) zeigt die Ursache unmittelbar.
+Verschärfend: die Zuordnung darüber klemmt per `Math.abs(dz) > s.hd*2.2+2`, und mit NaN
+ist dieser Vergleich **falsch** — die Abstandsgrenze greift also gerade dort nicht, wo
+sie am nötigsten wäre.
+
+**2. Die Kathedrale war ein Hoisting-Fehler.**
+
+```js
+addSolid(DOM_X, DOM_Z+0.95, 17.6, 20.7, {a:"z", at:DOM_SW-0.5, c:DOM_X, w:4.5});
+…114 Zeilen später…
+var DOM_X=146, DOM_Z=-22, DOM_SW=DOM_Z+11.2;
+```
+
+`var` hebt die Deklaration hoch, nicht den Wert. Alle drei waren `undefined`, aus
+`DOM_Z+0.95` wurde NaN. **Der Kollider der grössten Kirche der Stadt hat nie etwas
+blockiert.** Er steht jetzt direkt nach der Zuweisung.
+
+Dazu Gürtel und Hosenträger: PASS 2 wendet nichts an, was nicht endlich ist.
+
+### Gemessen
+
+| | vorher | nachher |
+|---|---|---|
+| Kollider mit NaN | **44 von 184** | **0** |
+| gebäudeartige Modelle gedeckt | 92 von 111 | **96** |
+| th-netz | 38 ok | 38 ok, 0 Fehler |
+| th-koop | alle 9 kommen an | alle 9 kommen an |
+
+Die Deckung steigt um vier, **ohne dass ein einziger Kollider hinzugefügt wurde** — die
+44 kamen einfach zurück ins Leben. Dass `th-netz` und `th-koop` weiter grün sind, ist
+dabei die wichtigere Zahl: 44 plötzlich wirksame Wände hätten Wege abschneiden können.
+
+### Die 15, die offen bleiben — mit Absicht
+
+Seilbahnstützen und Hafenkran (die Hüllbox ist der Ausleger, der Mast ist dünn),
+Spielturm, Klettergerüst und Schaukel (dort klettert man), Weihnachtsbuden (im Sommer
+versteckt — ein Kollider wäre eine unsichtbare Wand), Rodelhang und Helilandeplatz
+(begehbar). Offen und **noch zu klären**: `th8_kirche_offen` und `th8_laden_offen`
+brauchen einen Kollider *mit Tür* (`addSolid` kann das), `bd_windmill_tower` ist
+Lieferziel, `bd_market` womöglich offenseitig.
+
+⚠️ Und die Masse dafür kommen aus dem **Wandgrundriss**, nicht aus der Hüllbox: das
+Werkzeug misst, was 0,3 … 2,0 m über der eigenen Sohle liegt. Beim Hafenkran sind das
+3 × 7,7 m statt 9,9 × 8 — Mast statt Ausleger. Ein Kollider in Dachgrösse wäre eine
+unsichtbare Mauer unter der Traufe.
