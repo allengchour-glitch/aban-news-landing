@@ -5279,3 +5279,9 @@ gid://shopify/Product/15448965611905	CHF 33.96	1 Varianten	Ausziehbares Mikrowel
 gid://shopify/Product/15448965677441	cj-abgekuendigt-pruefen
 gid://shopify/Product/15448965939585	CHF 23.75	8 Varianten	Bratpfanne mit Maifanit-Textur
 gid://shopify/Product/15448966005121	CHF 14.99	15 Varianten	Faltbare Einkaufstasche 23L
+gid://shopify/Product/15448981963137	CHF 7.47	49 Varianten	Dual-USB Stick für Smartphones & Computer
+gid://shopify/Product/15448982028673	CHF 7.21	10 Varianten	High-Speed USB 3.0 Metall-Flash-Laufwerk
+gid://shopify/Product/15448983175553	CHF 10.22	2 Varianten	Kabelloser Tür- und Fenster-Magnetsensor
+gid://shopify/Product/15448985010561	CHF 10.75	2 Varianten	Seifenblasenpistole für Kinder
+gid://shopify/Product/15448985108865	CHF 8.54	3 Varianten	Game Grip Zubehör für Switch2
+gid://shopify/Product/15448985731457	keine-cj-referenz
