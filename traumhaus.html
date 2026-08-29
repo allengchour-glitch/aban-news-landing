@@ -6005,6 +6005,16 @@ setTimeout(function baueGebaeude(){
       st.instanceMatrix.needsUpdate=true; kr.instanceMatrix.needsUpdate=true;
       if(kr.instanceColor)kr.instanceColor.needsUpdate=true;
       st.castShadow=kr.castShadow=true; st.userData.nieAusblenden=kr.userData.nieAusblenden=1;
+      /* ⚠️ EINEN NAMEN GEBEN, SONST IST DER WALD FUER JEDES WERKZEUG UNSICHTBAR.
+         Gemessen: 208 InstancedMeshes in der Szene, davon 38 ohne `userData.datei` mit
+         zusammen 2923 Instanzen — die grosse Gruppe darin ist dieser Wald. Ein
+         Werkzeug, das nach Pflanzen sucht, fand darum 118 einzelne Baeume und KEINEN
+         einzigen der bis zu 900 Waldbaeume, und meldete trotzdem eine Zahl. Dieselbe
+         Klasse wie #2365 (Instanzen unsichtbar fuer th-3d), nur eine Ebene tiefer.
+         Die Schreibweise ist die vorhandene: `eiswagen(prozedural)`. */
+      st.userData.datei="wald_baum_stamm(prozedural)";
+      kr.userData.datei="wald_baum_krone(prozedural)";
+      st.userData.satz=kr.userData.satz=kand.map(function(w9){return [w9[0],w9[1],0];});
       /* ⚠️ InstancedMesh-Falle: three.js cullt gegen die Bounding-Sphere der EINEN
          Geometrie am Objektursprung — nicht gegen die Instanzen. Der ganze Wald
          verschwand darum, sobald die Kamera nicht zufaellig Richtung Weltmitte
@@ -7212,6 +7222,20 @@ setTimeout(function baueGebaeude(){
       var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,6),pfM.clone());
       wg.rotation.x=-Math.PI/2;wg.position.set(-26,-0.011,63.5);wg.receiveShadow=true;scene.add(wg);
       /* Baeume + Baenke saeumen den Platz */
+      /* ⚠️ OFFENER BEFUND, BEWUSST NICHT HIER GEFLICKT (th-baeume.mjs, 2026-08-29):
+         Der Ahorn dieser Reihe landet nicht reproduzierbar. Ueber drei Laeufe auf der
+         eingeschwungenen Welt stand er mal auf (-12|102), mal auf (-10,4|107,6) —
+         auf (-12|102) ragt seine Krone in den Bahnhofs-Kollider und schneidet das
+         Bahnsteigdach (th-echt: 0,6 x 0,4 m). Der Entwirrer entscheidet fuer ihn je
+         nach Ladezeitpunkt anders; auf einem schnellen Geraet faellt es anders aus als
+         hier. ZWEI WEGE PROBIERT UND BEIDE VERWORFEN:
+           * `userData.fest` friert ihn auf dem Wunschort ein — dann steht der
+             Nachbar auf (-50|102) reproduzierbar 4,45 m TIEF in einem Kollider.
+             Reproduzierbar falsch ist nicht besser als zufaellig falsch.
+           * die Ecke auf (-41|102) ruecken — immer noch 3,45 m tief, also war meine
+             Annahme darueber, WELCHER Kollider dort liegt, schlicht falsch.
+         Der naechste Anlauf muss zuerst den Kollider an dieser Stelle messen, statt
+         ihn aus einer Fundliste zu erraten. Bis dahin bleibt es, wie es war. */
       [[-16,70],[-16,102],[-50,70],[-50,102]].forEach(function(P8,i8){
         bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false);});
       bau("th5_parkbank.glb",0.9,-33,0,72,0,false);
