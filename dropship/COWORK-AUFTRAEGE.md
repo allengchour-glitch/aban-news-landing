@@ -24,6 +24,27 @@ Weg, der heute funktioniert — und den kann Cowork mit der angemeldeten Sitzung
 **Alle acht beworbenen Artikel wurden am 29.08. live geprüft: ACTIVE, Preise stimmen mit den
 Captions überein.** Steht ein Produkt später auf DRAFT, den Beitrag NICHT posten.
 
+## D. 45 rankende Markenseiten ohne Ware — Entscheidung nötig  (NEU 29.08.)
+> Entscheide, ob die toten BigBuy-Markenseiten auf eine passende KATEGORIE umgeleitet werden
+> sollen (z. B. «Trainingsanzug Adidas» → Herren-Sportbekleidung) oder ob sie 404 bleiben.
+> Sag mir Bescheid; das Umleiten selbst mache ich dann.
+
+**Warum es eine Entscheidung ist und keine Reparatur:** `dropship/TOTE-LANDESEITEN.md` listet
+70 Seiten mit Besuchern, die nicht mehr kaufbar sind. **45 davon sind BigBuy** — der Lieferant
+ist seit dem 10.07. stillgelegt, die Ware kommt nicht zurück. Es sind Markenartikel (Adidas,
+Nike, Puma, Calvin Klein, Reebok, Polaroid), zusammen rund 150 Sitzungen.
+Eine Umleitung auf eine FREMDE Marke ist ausgeschlossen — das wäre ein Köderwechsel. Auf eine
+Kategorie ist es vertretbar (wir zeigen, was wir haben), aber es bleibt eine Enttäuschung für
+jemanden, der «Adidas» gesucht hat. Diese Abwägung gehört dem Betreiber.
+Die restlichen 25: 9 ohne Lieferanten-SKU, 5 ausverkauft, 5 nicht CH-lieferbar, 4 Dubletten,
+1 ohne erkennbaren Grund.
+⚠️ **Zwei Fälle habe ich am 29.08. selbst erledigt**, weil sie eindeutig waren: der Packsack
+(82 Sitzungen → aktiver Dry Bag) und das Spitzen-Trägertop (39 Sitzungen → der überlebende
+Zwilling, es war als Dublette gedraftet). Bei drei weiteren Dubletten lag die Ähnlichkeit unter
+der Schwelle 0.70 — dort habe ich BEWUSST nichts umgeleitet. Grenzfall zum Nachsehen:
+«Damen Bikini-Set» → «Elegantes zweiteiliges Damen-Bikini-Set» (0.55), inhaltlich vermutlich
+passend, aber unter der Schwelle.
+
 ## A. Gratis-Versand-Balken zeigt die falsche Schwelle  ⭐⭐ (NEU 29.08.)
 > Öffne im Shopify-Adminbereich das MAIN-Theme «Horizon · LuxeStyle + Email-Popup (Claude)»,
 > bearbeite `layout/theme.liquid` und ändere die eine Zeile `var SCHWELLE=5000;` auf
