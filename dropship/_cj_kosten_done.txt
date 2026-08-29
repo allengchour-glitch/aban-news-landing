@@ -5309,3 +5309,8 @@ gid://shopify/Product/15449028395393	CHF 288.45	1 Varianten	Handgepäck-Trolley 
 gid://shopify/Product/15449029116289	CHF 22.67	1 Varianten	Digitaler Diktierrekorder, 64 GB
 gid://shopify/Product/15449030984065	CHF 20.66	1 Varianten	Taktisches Outdoor-Stativ, faltbar & ausziehbar
 gid://shopify/Product/15449031049601	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449042485633	CHF 10.31	6 Varianten	Lässiger Hoodie mit überschnittenen Ärmeln · Model
+gid://shopify/Product/15449042551169	CHF 22.44	5 Varianten	Vintage Patchwork Hoodie mit Stickerei
+gid://shopify/Product/15449042583937	CHF 16.84	6 Varianten	Unisex Hoodie mit 3D-Effekt und Kängurutasche
+gid://shopify/Product/15449042715009	CHF 14.77	18 Varianten	Kapuzen-Sweatshirt für Damen · Modell 2
+gid://shopify/Product/15449042813313	CHF 39.09	20 Varianten	Damen Fleece Cardigan mit Kapuze
