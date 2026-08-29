@@ -18,7 +18,9 @@
 // Bausteine, die im Beschreibungstext stehen, aber nichts über die Ware sagen.
 // ⚠️ Bei zwei Produkten steht der Versandhinweis VOR dem Beschreibungstext — ohne diese
 // Wache landet «📦 Lieferzeit Schweiz: 10–20 Werktage» als Google-Snippet.
-const BAUSTEIN = /(Lieferzeit|Direktversand|Gratis-Versand|30 Tage Rückgabe|Sorglos shoppen|Versand nur in die|Versand:)/i;
+// ⚠️ Auch Querverweis-Blöcke («🛍️ Das könnte dir auch gefallen …») sind kein Produkttext —
+// im ersten Kataloglauf landeten fünf davon als Google-Snippet, zwei auf POD-Seiten.
+const BAUSTEIN = /(Lieferzeit|Direktversand|Gratis-Versand|30 Tage Rückgabe|Sorglos shoppen|Versand nur in die|Versand:|könnte dir auch gefallen|Passt dazu|Passend dazu|Ähnliche Produkte|Kunden kauften|Entdecke auch|🛍️|📖)/i;
 // Heilaussagen und Messversprechen gehören nicht in den Feed-Text.
 const HEIKEL = /\b(blutzucker|blutdruck|ekg|harnsäure|heilt|therapie|krebs|diabetes|lindert|behandelt|entlastet?|hallux|valgus|arthrose|schmerz|linderung)\w*/i;
 // Unübersetzte fremde Produktbezeichnung («Der Paperang Thermal Printer Mini Mobile Photo

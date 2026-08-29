@@ -449,8 +449,13 @@ while true; do
   if [ -f "$REPO/automation/snippet_rankende_seiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$SNP" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/snippet_rankende_seiten.py >> "$SNP" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) snippet-rankende gestartet"
+      # Erst die rankenden Seiten (schnell, meist ein No-op), dann eine Tagesrate aus dem
+      # Katalog. Der Shop steht auf KEINER Seite 1 — die Suchverkaeufe kommen aus dem langen
+      # Schwanz, also ist jede Produktseite ein Los und ein Baustein-Snippet verschenkt es.
+      # CAP haelt den Lauf klein, damit er sich nicht mit dem CJ-Grind um Shopifys Eimer prügelt.
+      ( cd "$REPO" && setsid sh -c 'python3 automation/snippet_rankende_seiten.py;
+          MODUS=katalog CAP=250 python3 automation/snippet_rankende_seiten.py' >> "$SNP" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) snippet-rankende + katalog gestartet"
     fi
   fi
   # KOSTENWAHRHEIT, einmal täglich: `cj_kosten_backfill.mjs` trug bis zum 28.08. eine eigene

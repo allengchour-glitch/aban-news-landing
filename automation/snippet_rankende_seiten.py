@@ -88,8 +88,15 @@ def text(roh):
 # ⚠️ Der erste Entwurf hätte für die Leinen-Hose und eine Gaming-Tastatur
 # «📦 Lieferzeit Schweiz: 10–20 Werktage …» als Google-Snippet gesetzt — bei zwei
 # Produkten steht der Versandhinweis VOR dem Beschreibungstext.
+# ⚠️ Auch der QUERVERWEIS-Baustein ist kein Produkttext. Der erste Kataloglauf setzte
+# «🛍️ Das könnte dir auch gefallen: Damenmode · Bestseller» als Google-Snippet für fünf
+# Produkte — darunter zwei POD-Seiten, die besten des Shops. Zweite Fassung derselben
+# Lehre wie beim Versandhinweis: eine Liste bekannter Bausteine ist immer unvollständig,
+# man findet den nächsten erst im Ergebnis.
 BAUSTEIN = re.compile(r'(Lieferzeit|Direktversand|Gratis-Versand|30 Tage Rückgabe|'
-                      r'Sorglos shoppen|Versand nur in die)', re.I)
+                      r'Sorglos shoppen|Versand nur in die|könnte dir auch gefallen|'
+                      r'Passt dazu|Passend dazu|Ähnliche Produkte|Kunden kauften|'
+                      r'Entdecke auch|🛍️|📖)', re.I)
 # Ein fremder Markenname im Suchergebnis ist dieselbe Klasse wie ein fremder Markenname
 # im Titel (Google-Kanal, 12.08.): «Der Paperang Thermal Printer Mini Mobile Photo Printer …»
 # ⚠️ Die Schwelle ist FÜNF grossgeschriebene Wörter am Stück, nicht drei. Deutsch schreibt
