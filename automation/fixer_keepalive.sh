@@ -100,6 +100,16 @@ fehlt() {
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
+  # ⚠️ HERZSCHLAG GLEICH ZU RUNDENBEGINN (29.08.2026). Bis heute stand er nur GANZ AM ENDE
+  # der Runde (vor dem sleep 120). Eine Runde dauert aber laenger als die 10-Minuten-Schwelle,
+  # gegen die engine_keepalive prueft — allein die 13 Reiniger werden mit je 10 s Abstand
+  # gestartet, dazu kommen Katalog-Laeufe. Folge: Der Aufseher galt bei JEDEM Lauf als
+  # «haengt (Herzschlag kalt)» und wurde getoetet und neu gestartet — mitten in der Arbeit,
+  # immer wieder. Live beobachtet: Herzschlag 398'301 s alt, waehrend der Aufseher gerade
+  # Waechter startete und ins Log schrieb.
+  # Der Herzschlag bedeutet «ich mache Fortschritt», nicht «ich bin fertig». Er gehoert
+  # deshalb an den ANFANG der Runde und wird am Ende erneut geschrieben.
+  date +%s > /tmp/_fixer_herzschlag
   # ZWEITE WACHE, unabhängig von flock. Am 13.08. liefen zweimal zwei Supervisoren, obwohl
   # beide dieselbe Sperrdatei offen hatten UND die Sperre nachweislich gehalten wurde — die
   # flock-Semantik über exec/setsid/geerbte Deskriptoren hinweg ist hier offenbar nicht
@@ -143,6 +153,28 @@ while true; do
   # ZUERST das Shopify-Token frisch halten. Es ist nur ~24 h gültig; läuft es ab, scheitern ALLE
   # Reiniger lautlos («keine Daten») und der Supervisor startet sie endlos ins Leere.
   [ -f /tmp/shop_token_refresh.sh ] && bash /tmp/shop_token_refresh.sh
+  # ── MOTOREN SELBST AM LEBEN HALTEN (29.08.2026) ─────────────────────────────────────
+  # Bis heute hing die ganze Motorenschicht an der stuendlichen Routine: Nur SIE rief
+  # engine_keepalive.sh auf. Antwortet die Session eine Weile nicht — Turn-Reaping,
+  # Kontextende, ein haengender Aufruf — stehen CJ-Runner, Reel-Motor, Hygiene und
+  # Auto-Committer, und niemand im Container merkt es. Der Aufseher lebt zwar weiter, aber
+  # er startet nur seine eigenen Waechter, nicht die Motoren.
+  # Jetzt ruft er sie alle 20 Minuten selbst nach. Damit ist die Schichtung vollstaendig:
+  #   Stundenroutine  →  haelt den AUFSEHER      (ausserhalb des Containers, rewind-fest)
+  #   Aufseher        →  haelt die MOTOREN       (hier)
+  #   Motoren         →  halten ihre eigene Arbeit
+  # ⚠️ OHNE_AUFSEHER=1 ist PFLICHT: Ohne den Schalter wuerde engine_keepalive den Aufseher
+  # pruefen — und einen mit kaltem Herzschlag toeten. Der Aufseher schreibt aber genau
+  # waehrend dieses Aufrufs keinen Herzschlag. Er wuerde sich selbst erschlagen.
+  MOT=/tmp/_motoren_nachgezogen
+  ALTER_MOT=$(( $(date +%s) - $(stat -c %Y "$MOT" 2>/dev/null || echo 0) ))
+  if [ "$ALTER_MOT" -gt 1200 ] && [ -f "$REPO/automation/engine_keepalive.sh" ]; then
+    date +%s > "$MOT"
+    ( cd "$REPO" && OHNE_AUFSEHER=1 timeout 300 bash automation/engine_keepalive.sh \
+        >> /tmp/engine_keepalive_vom_aufseher.log 2>&1 ) &
+    echo "$(date -u +%H:%M) Motoren nachgezogen (durch den Aufseher)"
+  fi
+
   for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix unpublizierte_finden lagerstand_hygiene; do
     [ -f /tmp/$p.py ] || continue
     pgrep -f "$p.py" >/dev/null && continue

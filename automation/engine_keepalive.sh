@@ -36,6 +36,18 @@ starte() {  # starte <logname> <befehl…>
 
 # ── 1. Der Aufseher zuerst. Er startet ALLE täglichen Qualitäts-Wächter; steht er still,
 #       stehen sie alle still, und keine andere Routine merkt es (Lehre 0c).
+#
+# ⚠️ OHNE_AUFSEHER=1 überspringt diesen ganzen Abschnitt (29.08.2026). Der Aufseher ruft
+# dieses Skript inzwischen SELBST auf, damit die Motoren nicht mehr von der Stundenroutine
+# abhängen. Ohne diesen Schalter könnte er sich dabei selbst töten: Der Block unten beendet
+# einen Aufseher mit kaltem Herzschlag — und ein Aufseher, der gerade in diesem Aufruf steckt,
+# schreibt in genau diesem Moment keinen Herzschlag. Er würde sich also selbst erschlagen.
+# Die SCHICHTUNG ist damit sauber: Die Stundenroutine hält den Aufseher, der Aufseher hält
+# die Motoren. Jede Schicht wird von der darüber bewacht, und die oberste liegt ausserhalb
+# des Containers — dort, wo kein Rewind sie erreicht.
+if [ "${OHNE_AUFSEHER:-}" = "1" ]; then
+  A=1
+else
 A=$(zaehle 'fixer_keepalive.sh')
 if [ "$A" -eq 0 ]; then
   echo "AUFSEHER neu gestartet"
@@ -73,6 +85,7 @@ else
   else
     echo "AUFSEHER laeuft"
   fi
+fi
 fi
 
 # ── 2. CJ-Grind — aber NICHT im Vorrang-Fenster.
