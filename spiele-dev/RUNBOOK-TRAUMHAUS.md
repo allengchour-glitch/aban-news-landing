@@ -4178,3 +4178,36 @@ nicht verrottet.
 Gegenprobe: einen Ort testweise aus `MISS_ORTE` entfernt →
 **❌ „4 🛹 Lande {n} Airtime-Sprünge", 9 ok / 1 Fehler.** Die Prüfung kann rot werden und
 benennt die Mission.
+
+---
+
+## 2026-08-29 · Zeigt das Spiel irgendwo „NaN"?
+
+Auf der Webseite hat genau diese Frage zwei echte Fehler gefunden („NaN % über Brutto"
+im Arbeitgeberkosten-Rechner, dazu eine Zeile mit veralteten Zahlen). Das Spiel rechnet
+an viel mehr Stellen — Geld, Stufe, Bedürfnisse, Uhr, Missionen — und jede Division kann
+durch null gehen. Also dieselbe Frage hier.
+
+`th-zahlen.mjs` (neu) liest den **sichtbaren** Text der Bedienoberfläche — nicht den
+Code, sondern was der Spieler liest — zu neun Zeitpunkten: nach dem Start, bei Geld 0 /
+negativ / einer Milliarde, und über einen ganzen Spieltag (0, 6, 12, 18, 23 Uhr).
+
+**Ergebnis: 102 Textstellen, 0 mit NaN/Infinity/undefined, 0 JS-Fehler.** Sauber.
+
+### ⚠️ Und die Gegenprobe hätte fast gelogen
+
+Ein Prüfer, der nichts findet, muss beweisen, dass er etwas finden *kann*. Erster
+Sabotage-Versuch: eine Division durch null an den **Anfang** von `updHUD()` gesetzt →
+**der Test blieb grün.** Ich hätte daraus fast geschlossen, das Werkzeug sei blind.
+
+Es war die Sabotage, die nicht wirkte: die echte Zuweisung weiter unten in derselben
+Funktion überschrieb meinen Wert wieder. Zweiter Versuch an der richtigen Stelle
+(Zeile 13157, wo `#geld` tatsächlich gesetzt wird) →
+
+```
+❌ Uhr 12:00: geld → "💰 NaN"
+❌ 102 Textstellen geprueft · 9 mit NaN/Infinity/undefined
+```
+
+**Regel: Wenn die Sabotage nicht anschlägt, ist zuerst die Sabotage verdächtig — nicht
+das Werkzeug.** Sonst wirft man einen funktionierenden Test weg.
