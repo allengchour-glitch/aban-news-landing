@@ -915,6 +915,18 @@ eigentliche Lehrsatz: **27 Regex-Treffer, 3 echte Fälle.**
   Überschrift weiterträgt**. Die Liste der Felder steht seit dem 21.08. im Gedächtnis und nennt
   die Beschreibung ausdrücklich; ich habe sie trotzdem übersprungen. **Eine Aussenwirkung prüft
   man an der Aussenwirkung** — drei richtige Feldprüfungen ersetzen keinen Blick auf die Seite.
+- ⚠️ **Und danach noch ein SECHSTES Feld: der Bild-Alt-Text.** Ein zweiter Seitenabruf zeigte
+  «Facelift» weiterhin — er stand in den ALT-Texten aller Bilder («… · Anti-Aging Facelift –
+  LuxeStyle Schweiz»), die ein früherer Lauf aus dem Titel erzeugt hatte. 13 Alt-Texte über drei
+  Produkte nachgezogen. **Die vollständige Liste heisst jetzt: Titel · Handle · SEO-Titel ·
+  SEO-Text · Beschreibung · Bild-Alt-Text** — und jedes abgeleitete Feld, das einmal aus dem
+  Titel gebaut wurde, ist ein weiterer Ort, an dem die alte Aussage überlebt.
+  ⚠️ Beim ersten Anlauf habe ich dabei die Bild-NUMMERIERUNG aus den Alt-Texten gelöscht und
+  sechs identische erzeugt — beim Ersetzen eines Feldes geht leicht die Information verloren,
+  die nicht der Fehler war. Wiederhergestellt.
+- **NICHT angefasst:** `judgeme.widget` und `judgeme.review_widget_data` tragen den alten Titel
+  ebenfalls. Das ist fremder App-Cache, der sich beim nächsten Sync selbst erneuert; daran zu
+  schreiben riskiert ein kaputtes Bewertungs-Widget (Regel seit 21.08.).
 - **Die 24 anderen wurden bewusst NICHT angefasst:** «Po-Lifting-Effekt» bei Shapewear ist ein
   optischer Formeffekt, «Wimpernlifting» der eingeführte Name einer Kosmetikbehandlung,
   Zahnaufhellungs-Streifen sind eine erlaubte Kosmetikkategorie, und Beauty-Geräte mit
