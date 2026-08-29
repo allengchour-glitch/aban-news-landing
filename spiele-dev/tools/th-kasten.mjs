@@ -112,11 +112,23 @@ const sonde = `function(){
     for(var gx=gx0;gx<=gx1;gx++)for(var gz=gz0;gz<=gz1;gz++){
       var k=gx+"_"+gz;(netz[k]||(netz[k]=[])).push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);}});
 
+  /* ⚠️ DIE TOLERANZ MUSS ZUR SCHALE PASSEN — sonst misst sie den Rand, nicht den Fehler.
+     "inSolid" blockiert die aeussere 0,55-m-Schale des Kastens. Wer einem Kasten die
+     ueblichen 0,5 m Luft ums Gebaeude gibt, hat damit eine Schale, die VOLLSTAENDIG im
+     Luftspalt liegt — und eine Pruefung mit 0,25 m Toleranz meldet ihn zu 100 % "frei",
+     obwohl er sauber sitzt. GEMESSEN am Bankkasten: nach dem Verkleinern auf Modellmass
+     plus 0,5 m meldete die alte Fassung weiter 57 von 57 Punkten frei.
+     1,0 m ist der Wert, der die beiden Faelle trennt: eine Wand einen Meter neben mir
+     ist die Wand DIESES Hauses; 2,3 m daneben (der alte Bankkasten) ist Wiese. */
+  var TOL=1.0;
   function trifft(idx,x,z){
-    var b=idx[Math.floor(x/GITTER)+"_"+Math.floor(z/GITTER)];
-    if(!b)return false;
-    for(var i=0;i<b.length;i++){var e=b[i];
-      if(x>=e[0]-0.25&&x<=e[1]+0.25&&z>=e[2]-0.25&&z<=e[3]+0.25)return true;}
+    var gx=Math.floor((x-TOL)/GITTER), gx1=Math.floor((x+TOL)/GITTER);
+    var gz=Math.floor((z-TOL)/GITTER), gz1=Math.floor((z+TOL)/GITTER);
+    for(var a=gx;a<=gx1;a++)for(var c=gz;c<=gz1;c++){
+      var b=idx[a+"_"+c];
+      if(!b)continue;
+      for(var i=0;i<b.length;i++){var e=b[i];
+        if(x>=e[0]-TOL&&x<=e[1]+TOL&&z>=e[2]-TOL&&z<=e[3]+TOL)return true;}}
     return false;}
   function etwasDa(x,z){return trifft(netz,x,z);}
   function etwasDrueber(x,z){return trifft(oben,x,z);}

@@ -8206,8 +8206,19 @@ setTimeout(function baueGebaeude(){
       w.userData.fest=true; window._bankObj=w;
       window._bankPos={x:BX,z:BZ}; bankPersonal();},true);
     /* Kollider mit Tuerluecke auf der Nordseite — sonst ist die Halle zugemauert
-       und das ganze Innenleben unerreichbar (Lehre aus dem Klinik-Vordach). */
-    addSolid(BX,BZ,26.0,21.0,{a:"z",at:BZ+10.5,c:BX,w:3.4});
+       und das ganze Innenleben unerreichbar (Lehre aus dem Klinik-Vordach).
+       ⚠️ 26,0 x 21,0 WAR ZU GROSS, und zwar so weit, dass die blockierende Schale
+       vollstaendig NEBEN dem Haus lag. GEMESSEN (th-kasten.mjs, eingeschwungene Welt):
+         Kasten alt   26,00 x 21,00   x -71,2…-45,2   z -152,0…-131,0
+         Bank-Modell  21,47 x 16,85   x -68,9…-47,5   z -149,6…-132,8
+         alles darin  20,60 x 16,40 aus 409 Meshes
+       Zwischen Wand und Kastenkante lagen also 2,3 m in x und 2,2 m in z — und
+       `inSolid` blockiert nur die aeussere 0,55-m-Schale. Ergebnis: an 91 von 91
+       abgetasteten Punkten wurde man aufgehalten, wo nichts steht; der Blick auf
+       Augenhoehe zeigt dort Wiese (screenshots/kasten-leer.png).
+       Jetzt Modellmass plus 0,5 m Luft je Seite. Zu klein kann es nicht werden —
+       `kolliderNachziehen` waechst notfalls nach; zu gross wird es nie wieder. */
+    addSolid(BX,BZ,22.5,17.9,{a:"z",at:BZ+8.95,c:BX,w:3.4});
   })();
 
   /* ── ⚓ Charge 45: Hafen und Strand ─────────────────────────────────────────
