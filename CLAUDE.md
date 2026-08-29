@@ -48,6 +48,23 @@ kennt»** — dieselbe wie die toten Landeseiten, die entstehen, wenn ein Wächt
   Kategorien-Verzeichnis (22.08.). **Wer wissen will, ob eine Kollektion für Kundinnen etwas
   hergibt, zählt Produkte mit `status == ACTIVE` — nie `productsCount`.**
 
+**⛔ Und die Quellenreparatur ging beim ersten Anlauf DANEBEN — in derselben Stunde.**
+Ich habe `menue_links.py` von `productsCount == 0` auf eine Stichprobe `products(first:30)`
+umgestellt und Aktive gezählt. Der erste Lauf meldete prompt zwei neue Befunde, darunter
+**«Damen-Strick & Pullover» als «KEIN aktives Produkt»**. Nachgemessen über 400 Produkte:
+**280 aktiv.** Die Stichprobe folgt der SORTIERUNG der Kollektion, und die kann Entwürfe
+voranstellen — 30 Treffer sagen über 1'043 Produkte nichts.
+**Beinahe hätte ich einen Menülink als tot gemeldet, der einwandfrei ist** — und das genau in
+dem Lauf, der Fehlalarme abstellen sollte. Die Hausregel gilt auch für die eigene Reparatur:
+*bei einem Melder liegt die Beweislast beim Alarm.*
+- Belastbar ist stattdessen der Wurzel-Filter **`products(query:"collection_id:<id> AND
+  status:active")`** — eine Abfrage je 15 Kollektionen, kein Stichprobenglück. Wegen des
+  bekannten stillen Shopify-Filters **in beide Richtungen gegengeprüft**: mit `status:draft`
+  liefert derselbe Filter andere Produkte, er wirkt also wirklich.
+- Danach: 82 Menü-Kollektionen, **0 Befunde**. `kostueme-fasnacht` (6 aktive von 257) fällt
+  bewusst nicht mehr auf — dünn ist nicht leer, und für Dünnes ist `kollektion_leer.py`
+  zuständig. **Zwei Wächter, zwei Schwellen: einer meldet das Leere, der andere das Dünne.**
+
 **Und die Härtung, die den Lauf überhaupt erst möglich machte:** Drei Wächter
 (`google_kanal_luecke`, `kollektion_leer`, `menue_links`) verglichen im Code auf den
 Kanal-Anzeigenamen **«Online Store»**. Über das Shopify-MCP-Werkzeug heisst derselbe Kanal

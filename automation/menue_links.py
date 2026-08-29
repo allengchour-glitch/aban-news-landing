@@ -86,10 +86,11 @@ def main():
     print(f"Hauptmenue: {len(links)} Eintraege, {len(handles)} Kollektionen", flush=True)
 
     befund = []
+    offen = []          # (handle, id, productsCount) — Aktiv-Pruefung folgt
     for i in range(0, len(handles), 20):
         teil = handles[i:i + 20]
         felder = " ".join(
-            f'k{j}: collectionByHandle(handle:"{h}"){{ handle productsCount{{count}} '
+            f'k{j}: collectionByHandle(handle:"{h}"){{ id handle productsCount{{count}} '
             f'resourcePublications(first:10){{ nodes{{ isPublished publication{{ name }} }} }} }}'
             for j, h in enumerate(teil))
         d = gql("{ " + felder + " }")
@@ -104,8 +105,34 @@ def main():
                     for n in c["resourcePublications"]["nodes"]}
             if not im_onlineshop(pubs):
                 befund.append((h, "nicht im Online Store veroeffentlicht -> 404"))
-            elif c["productsCount"]["count"] == 0:
-                befund.append((h, "veroeffentlicht, aber LEER"))
+            else:
+                offen.append((h, c["id"].split("/")[-1], c["productsCount"]["count"]))
+        time.sleep(0.6)
+
+    # ⚠️ 29.08.2026 — ZWEITE Runde: hat die Kollektion ueberhaupt KAUFBARE Ware?
+    # `productsCount` zaehlt ENTWUERFE MIT: «Angebote & Deals» meldete 351 und hatte
+    # ueber 300 geprueft NULL aktive Produkte. Der Waechter sah sie als gefuellt an,
+    # waehrend die Kundin ein leeres Regal fand.
+    # ⚠️ Und die Stichprobe `products(first:30)` taugt NICHT als Ersatz: sie folgt der
+    # Sortierung der Kollektion, und die kann Entwuerfe voranstellen. Genau so hat dieser
+    # Waechter «Damen-Strick & Pullover» als leer gemeldet — nachgemessen sind 280 von 400
+    # aktiv. Ein Melder, der einen Fall ERFINDET, ist schlimmer als einer, der einen uebersieht.
+    # Belastbar ist der Wurzel-Filter `collection_id:<id> AND status:active`; er wurde in
+    # beide Richtungen gegengeprueft (mit `status:draft` liefert er andere Produkte).
+    for i in range(0, len(offen), 15):
+        teil = offen[i:i + 15]
+        felder = " ".join(
+            f'a{j}: products(first:3, query:"collection_id:{cid} AND status:active"){{ nodes{{ id }} }}'
+            for j, (_h, cid, _n) in enumerate(teil))
+        d = gql("{ " + felder + " }")
+        if d is None:
+            print("PAUSE (Aktiv-Pruefung fehlgeschlagen — kein Befund daraus)")
+            break
+        for j, (h, _cid, anzahl) in enumerate(teil):
+            knoten = ((d["data"] or {}).get(f"a{j}") or {}).get("nodes") or []
+            if not knoten:
+                befund.append((h, f"veroeffentlicht, aber KEIN kaufbares Produkt "
+                                  f"(productsCount meldet {anzahl} — zaehlt Entwuerfe mit)"))
         time.sleep(0.6)
 
     if befund:
