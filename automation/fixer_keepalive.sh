@@ -436,8 +436,9 @@ while true; do
       ( cd "$REPO" && setsid bash -c '
           MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
           MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
-          python3 automation/tiktok_video.py' >> "$TTK" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) tiktok-karussell gebaut"
+          python3 automation/tiktok_video.py
+          python3 automation/tiktok_cowork_auftrag.py' >> "$TTK" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tiktok-karussell gebaut + Cowork-Auftrag fortgeschrieben"
     fi
   fi
   TLS=/tmp/tote_landeseiten.log
