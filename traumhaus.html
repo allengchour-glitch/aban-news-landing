@@ -2026,7 +2026,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Ohne Schwellen laufen nur die beiden flachen Schienen ueber den Asphalt,
        genau wie an einem echten Uebergang. */
     [-1.3,1.3].forEach(function(rx){var sch=new THREE.Mesh(new THREE.BoxGeometry(240,0.12,0.16),stdMat(0x88888e,0.4));sch.position.set(0,0.2,rx);g.add(sch);});
-    g.position.set(0,0.01,112);scene.add(g);})(); // Gleis weiter raus (schnitt sonst durch den See)
+    g.position.set(0,0.01,112);scene.add(g);
+    /* Die Bahnsteigkante ist kein freier Parameter: sie liegt 1,7 m von der
+       Gleismitte, also 0,4 m vor der naeheren Schiene (110,7 ± 0,08). Wer am
+       Bahnsteig etwas absetzt, rechnet ab HIER — vorher standen drei
+       verschiedene Vorstellungen im Code (113, 111,4 und 111,8). */
+    window._gleis={z:112,spur:1.3,kante:112-1.7};
+  })(); // Gleis weiter raus (schnitt sonst durch den See)
 })();
 // ---- Wetter & Jahreszeiten ----
 var wetter="sonne";
@@ -3466,7 +3472,18 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     (function bahnhof(){
       var g=new THREE.Group();
       // Bahnsteig zum Gleis + Perrondach + Baenke
-      var stg=new THREE.Mesh(new THREE.BoxGeometry(34,0.42,5),betMat(0xcac4b6,0.9));stg.position.set(0,0.21,-8.5);stg.receiveShadow=true;g.add(stg);
+      /* ⚠️ DIESE PLATTE LAG AUF DEM GLEIS. 34 x 5 um die lokale z = -8,5, und die
+         Gruppe steht auf z = 102 mit rotation.y = PI — Weltkoordinaten also
+         z 108…113. Das Gleis liegt auf z 112: GEMESSEN verschluckte die Platte
+         ueber ihre volle Laenge von 34 m die noerdliche Schiene (110,62…110,78)
+         und SAEMTLICHE Schwellen (111,7…112,3) — sie ist 0,42 m hoch, die
+         Schienenoberkante liegt auf 0,27.
+         Jetzt endet sie an der echten Bahnsteigkante (`_gleis.kante` = 110,3) und
+         reicht dafuer weiter nach hinten bis an das Empfangsgebaeude (104,5).
+         Lokal: Tiefe 5,8, Mitte Welt 107,4 -> z = 102 - 107,4 = -5,4. */
+      var _GK=(window._gleis&&window._gleis.kante)||110.3, _GT=_GK-104.5;
+      var stg=new THREE.Mesh(new THREE.BoxGeometry(34,0.42,_GT),betMat(0xcac4b6,0.9));
+      stg.position.set(0,0.21,-(104.5+_GT/2-102));stg.receiveShadow=true;g.add(stg);
       /* Das alte Blech-Perrondach (Box + 5 Rohrstuetzen) ist raus — an seiner Stelle
          stehen jetzt die richtigen th17_bahnsteigdach-Module (unten via bau()). */
       [-9,0,9].forEach(function(bxx){
@@ -8152,7 +8169,11 @@ setTimeout(function baueGebaeude(){
        (Schienen liegen auf 110,7/113,3, der Zugkasten belegt ~111,2…112,8).
        Der Zug schnitt bei jedem Halt sichtbar durch alle 7 Module. 109,6
        endet auf 111,3 — 0,4 m vor der naechsten Schiene. */
-    for(var k=-3;k<=3;k++) fest("th41_bahnsteigkante.glb",0.58,k*6.0,109.6,0);
+    /* 🩹 109,6 war immer noch zu weit vorn: das Modul ist 3,6 tief, endete also auf
+       111,4 und lag damit 0,62 m ueber der noerdlichen Schiene (110,62…110,78) und
+       0,2 m unter dem Zugkasten (111,2…112,8). Anker = Kante - 1,8. */
+    var _BK=(window._gleis&&window._gleis.kante)||110.3;
+    for(var k=-3;k<=3;k++) fest("th41_bahnsteigkante.glb",0.58,k*6.0,_BK-1.8,0);
     /* Fahrleitungsmasten: der Ausleger zeigt im Modell auf +x ueber das Gleis,
        also muessen sie mit rotY = -pi/2 quer dazu stehen. */
     /* ⚠️ GEMESSEN: die Mastbox ist asymmetrisch — Fuss bei Anker-z, der Ausleger
@@ -8173,11 +8194,18 @@ setTimeout(function baueGebaeude(){
        (Der Sweep meldete zuerst "kein freies x" — er zaehlte die Mastfuesse auf
        den 3-cm-Streifen der Platte als Treffer mit. Aufstandsflaechen gehoeren
        in solchen Suchen ausgenommen, sonst ist ueberall besetzt.) */
+    /* 110,9 lag INNERHALB der Spurweite (Schienen 110,7 und 113,3). Ein Mast
+       zwischen den Schienen ist keiner; er gehoert neben das Gleis, 0,35 m hinter
+       die Bahnsteigkante. Der Ausleger reicht von dort 2,6 m nach Sueden und endet
+       damit auf 112,55 — weiterhin ueber der Gleismitte, wie er soll. */
     [-24,-5.5,5.5,24].forEach(function(mx){
-      fest("th41_fahrleitungsmast.glb",7.20,mx,110.9,-Math.PI/2,
+      fest("th41_fahrleitungsmast.glb",7.20,mx,_BK-0.35,-Math.PI/2,
            Math.abs(mx)<=21 ? BSH : 0);});
-    fest("th41_signal.glb",5.49,29,113.6,Math.PI/2);
-    fest("th41_signal.glb",5.49,-29,113.6,-Math.PI/2);
+    /* 🩹 113,6 setzte den Mast auf 113,25…113,55 — also auf die SUEDLICHE SCHIENE
+       (113,22…113,38). Ein Signal steht neben dem Gleis, nicht darauf. 114,0
+       bringt ihn auf 113,65…113,95, 0,27 m hinter der Schiene. */
+    fest("th41_signal.glb",5.49,29,114.0,Math.PI/2);
+    fest("th41_signal.glb",5.49,-29,114.0,-Math.PI/2);
     /* ⚠️ Hier stand ein Prellbock bei x = 44 auf dem Gleis. Das Gleis bei
        z = 112 ist aber eine DURCHGEHENDE Strecke — es laeuft ueber einen Damm
        in ein Tunnelportal. Ein Prellbock quer darauf haette bedeutet: der Zug
@@ -8193,7 +8221,11 @@ setTimeout(function baueGebaeude(){
   })();
   (function(){var lin=new THREE.Mesh(new THREE.PlaneGeometry(32,0.28),
       new THREE.MeshStandardMaterial({color:0xe8e4da,roughness:0.8}));
-    lin.rotation.x=-Math.PI/2;lin.position.set(0,0.435,110.9);scene.add(lin); /* 🩹 Schwarm-7: lag auf Gleismitte, mitten unterm Zug */
+    lin.rotation.x=-Math.PI/2;
+    /* 🩹 Schwarm-7 hatte sie von der Gleismitte auf 110,9 gezogen — das lag immer
+       noch ueber der noerdlichen Schiene. Eine Sicherheitslinie liegt 0,6 m hinter
+       der Bahnsteigkante. */
+    lin.position.set(0,0.435,((window._gleis&&window._gleis.kante)||110.3)-0.6);scene.add(lin);
     /* Fahrplantafel mit gemalter Abfahrtstafel */
     var cv=document.createElement("canvas");cv.width=256;cv.height=160;var c=cv.getContext("2d");
     c.fillStyle="#1a2a4a";c.fillRect(0,0,256,160);

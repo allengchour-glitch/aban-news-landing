@@ -2437,3 +2437,53 @@ auf `_ufer(a) − 1.0` gestaucht, das Fütterziel auf `_ufer(a) − 1.4` gekappt
 Herde schwimmt damit nicht mehr auf einem Kreis, sondern in der Form des Sees.
 
 `spiele-dev/tools/th-see.mjs` (neu) hält den Fall fest.
+
+## Der Bahnsteig lag auf dem Gleis
+
+Drei Stellen im Code hatten drei verschiedene Vorstellungen davon, wo die
+Bahnsteigkante liegt:
+
+| Stelle | Kante bei |
+|---|---|
+| alte Betonplatte `stg` (34 × 5) | **z 113** |
+| `th41_bahnsteigkante`, 7 Module | **z 111,4** |
+| Kommentar am Ring-Sperrband | „Bahnsteig bis **111,8**" |
+
+Das Gleis liegt auf z 112, die Schienen (gemessen) auf **110,62 … 110,78** und
+**113,22 … 113,38**, die Schwellen auf 111,70 … 112,30.
+
+Die alte Platte ist 0,42 m hoch, die Schienenoberkante liegt auf 0,27. Sie
+verschluckte über ihre volle Länge von 34 m die **nördliche Schiene und sämtliche
+Schwellen**. Die Modulplatte lag mit 0,62 m ebenfalls über der Schiene — und 0,2 m
+unter dem Zugkasten (111,2 … 112,8), also genau der Fehler, den „Schwarm-7" schon
+einmal halb behoben hatte. Dazu standen beide Signale (Anker 113,6 → Box
+113,25 … 113,55) auf der südlichen Schiene und die vier Fahrleitungsmasten bei
+z 110,9 **innerhalb der Spurweite**.
+
+### Warum kein Werkzeug es sah
+
+`th-3d` vergleicht Modell gegen Modell über `userData.datei`. Schienen und Schwellen
+sind namenlose `BoxGeometry` — sie kommen in der Prüfung gar nicht vor. Dieselbe
+Lücke wie beim Gelände (Seilbahn, #2370).
+
+### Die Kante ist kein Parameter
+
+`window._gleis = {z:112, spur:1.3, kante:112-1.7}` — 1,7 m von der Gleismitte ist
+das Normmass und liegt 0,4 m vor der näheren Schiene. Alles am Bahnsteig rechnet
+jetzt von dort: Platte `104,5 … kante`, Module `kante − 1,8`, Sicherheitslinie
+`kante − 0,6`, Masten `kante − 0,35` (der Ausleger reicht von dort 2,6 m nach Süden
+und endet auf 112,55, weiterhin über der Gleismitte).
+
+### Gemessen — `spiele-dev/tools/th-gleis.mjs` (neu)
+
+| | vorher | nachher |
+|---|---|---|
+| Bauteile über dem Gleiskörper | **274** | **2** |
+| davon die 34-m-Platte | Schiene 0,16 + Schwellen 0,60 | weg |
+| Signale auf der Südschiene | 2 × 0,13 m | weg |
+| th-3d | 57 echt / 73 nur 2D | 56 echt / 76 nur 2D |
+| th-netz | 39 ok | 39 ok |
+
+Die verbleibenden 2 sind zwei Dachträger von `th17_bahnsteigdach`, die 0,14 m über
+die Kante ragen — ein Vordach über der Bahnsteigkante ist bei echten Bahnhöfen so
+gewollt; sie stehen 0,55 m hoch und berühren nichts.
