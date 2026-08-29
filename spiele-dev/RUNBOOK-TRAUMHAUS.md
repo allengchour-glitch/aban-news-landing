@@ -4,6 +4,61 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## ⏱️ Bevor du anfängst — elf Regeln, jede mit ihrem Preis
+
+Diese Liste stammt aus **einer** Sitzung (2026-08-29, PRs #2369–#2396). Jeder Punkt hat
+dort echte Zeit gekostet; die Zahl dahinter ist, wie oft oder was genau.
+
+**Beim Bauen eines Messwerkzeugs**
+
+1. **Kein Backtick in einem Kommentar, der in einer Sonde landet.** Sonden sind
+   Template-Literale; ein `` ` `` darin bricht den Lauf mit „Unexpected identifier".
+   → **zehnmal** an einem Tag hineingetreten. Nutze Anführungszeichen oder baue den Text
+   aus einem Zeilen-Array (`[...].join('\n')`).
+2. **Die Sonde läuft INNERHALB der IIFE.** `WORLD_SOLIDS`, `_lodKlein`, `KATALOG`,
+   `sims`, `snapshot()`, `lodTakt()` sind direkt sichtbar. `window.WORLD_SOLIDS` ist
+   `undefined` — und liefert kein Fehlerbild, sondern eine leere Liste.
+   → dreimal; einmal daraus **144 Phantom-Funde** erzeugt.
+3. **Eine Null in der Ausgabe ist ein Verdacht, kein Ergebnis.** „0 Kollider",
+   „0 Objekte", „0 Zeilen" heisst fast immer: das Werkzeug hat nichts gemessen.
+   Prüfe zuerst, ob überhaupt etwas gemessen wurde (`wc -l`, eine Bezugszahl mit ausgeben).
+4. **Nicht auf eine Frist warten, sondern auf Ruhe.** Feste `waitForTimeout`-Werte messen
+   Ladezeit, nicht Korrektheit. Poll, bis die Zahl sich dreimal nicht ändert.
+   → **53 Phantom-Funde** aus 12 geratenen Sekunden.
+5. **Eine Schwelle, die auf dem Messwert liegt, ist keine Schwelle.** `bb.max.y <= 0.05`
+   bei einem Wert von exakt 0,05 → mal so, mal so. → das Tor meldete abwechselnd 2 und 3.
+
+**Beim Messen der Welt**
+
+6. **Die Hüllbox ist das Dach, nicht die Wand.** Für Kollidermasse zählt, was 0,3 … 2,0 m
+   über der **eigenen Sohle** liegt (nicht absolut — die Berghütte steht auf 43 m).
+   → sonst baut man unsichtbare Mauern unter der Traufe.
+7. **Nicht hinter die Fassade tasten.** Eine Wand ist 0,2 … 0,3 m dick; eine Probe 0,45 m
+   dahinter misst den leeren Innenraum. → „die Kathedrale ist auf allen vier Seiten offen".
+8. **Aus „Modell X ist unbenutzt" folgt nicht „die Sache fehlt".** Erst nach der *Sache*
+   suchen (`grep -i baustelle`), dann nach Modellen. → eine falsche Behauptung in einer
+   bereits gemergten PR (#2386), korrigiert in #2389.
+
+**Beim Ändern des Spiels**
+
+9. **Zwei Stellen, die dasselbe schreiben, laufen auseinander.** Das war die ergiebigste
+   Frage des Tages — sechs echte Fehler aus einer einzigen Prüfung: Bergform (#2370),
+   Uferlinie (#2374), Viertelmass (#2373), Bahnsteigkante (#2375), `light.visible`
+   (#2387), LOD-Schwelle gegen Gruppenprüfung (#2388). Wenn du eine Zahl nachbaust, die
+   es schon gibt: **frag stattdessen die Quelle.**
+10. **`node spiele-dev/tools/th-alle.mjs` vor und nach jeder Änderung** (16 Prüfungen,
+    ~20 min; `--schnell` für die Kernreihe). Zweimal ist hier etwas kaputtgegangen, das
+    ein *vorhandenes* Werkzeug sofort gemeldet hätte.
+11. **Der Worktree fällt bei einem Container-Neustart auf einen alten Commit zurück**
+    (detached HEAD, `node_modules/playwright`-Symlink weg). → **zweimal** fertige,
+    gemessene Arbeit verloren. Darum: **früh committen**, und nach jedem Neustart
+    `git checkout -B <branch> origin/main` plus Symlink neu setzen.
+
+> **Die Regel über den Regeln:** von sechzehn Messwerkzeugen dieser Sitzung haben **acht
+> im ersten Lauf zuerst sich selbst widerlegt**. Bevor du einem Befund glaubst — besonders
+> einem grossen — prüfe, ob das Messgerät recht hat. Die Welt war seltener kaputt als der
+> Blick darauf.
+
 ## 📱 HUD: Bedienelemente paarweise auf Ueberschneidung pruefen (2026-08-23)
 - Messung: alle HUD-Ids bei mehreren Handy-Querformaten holen, PAARWEISE schneiden und
   melden, wenn beide `pointer-events` haben. Genau so faellt auf, was im Bild niemand
@@ -3408,6 +3463,95 @@ schweigend hinzunehmen hiesse, vier Einträge nicht geprüft zu haben und trotzd
 erscheinen" zu melden.
 
 `spiele-dev/tools/th-katalog.mjs` (neu), aufgenommen in `th-alle.mjs`.
+
+---
+
+## Stecken die Bewohner fest? — und warum die Spielzeit hier siebenmal langsamer läuft
+
+`th-koop.mjs` prüft zwei Spielerwege im Mehrspielermodus. Die Bewohner (`sims`) und die
+Besucher (`npcs`) hat nie jemand beobachtet. Ein NPC, der in einer Ecke hängenbleibt oder
+mitten in einem Haus steht, erzeugt kein Fehlerbild — er steht einfach da.
+
+`spiele-dev/tools/th-bewohner.mjs` (neu) misst über 60 s den zurückgelegten Weg und, für
+jede Probe, ob jemand in einem Kollider steht.
+
+### Vier Anläufe, vier verschiedene Gründe, warum nichts gemessen wurde
+
+1. **Der Playwright-Symlink war weg** — Regel 11 der Liste oben, ein Container-Neustart.
+2. **„2 verfolgt, 0 Besucher"** — der Besucher-Pool hängt an der Tageszeit (8 … 12 Uhr
+   Postbote, 13 … 18 Uhr Nachbarin und Händler; sonst ist der Pool **leer**). Bei ~2
+   Bildern/s wandert die Spielzeit während der Messung aus dem Fenster. Jetzt wird die Uhr
+   bei jedem Takt auf 9 Uhr gesetzt.
+3. **Immer noch 0 Besucher.** Der Grund ist allgemein wichtig: **das `dt` der Spielschleife
+   ist gedeckelt** — sonst zerrisse die Physik bei zwei Bildern je Sekunde. Gemessen: in
+   **45 s Echtzeit fällt `npcTimer` nur von 20 auf 13,5**. Spielzeit läuft hier rund
+   **siebenmal langsamer** als Echtzeit; der erste Besucher käme nach zweieinhalb Minuten.
+   Wer auf so eine Uhr wartet, misst eine leere Welt und meldet „alles in Ordnung".
+   → Zähler anstossen (`npcTimer = 0.1`), und erneut, sobald wieder Platz ist.
+4. **„Max hat sich 0 m bewegt".** `meinSi()` liefert im Einzelspieler 0, und `simDefs[0]`
+   ist Max — die **Spielfigur**. Sie steht still, weil die Sonde keine Taste drückt.
+
+Dazu ein Fehler in der Auswertung statt in der Messung: der Kopfkommentar beschrieb längst,
+dass Schlafen, Arbeiten und Warten legitime Stillstände sind — **die Auswertung wandte es
+nicht an** und meldete Mia im Zustand `work` als Befund.
+
+### Ergebnis
+
+**Niemand steckt fest, niemand steht in einer Wand.** 4 verfolgt, 2 Besucher kommen an und
+laufen ihren Zyklus, Mias Stillstand ist durch `work` erklärt, die Spielfigur ausgenommen.
+
+> **Merke für jeden zeitgesteuerten Test hier:** Spielzeit ≠ Echtzeit. Wer auf einen
+> Spiel-Timer wartet, wartet etwa siebenmal so lange wie gedacht — oder stösst ihn an.
+
+## Die Stadt ist voll — und der Solver hätte auf das Baugrundstück gebaut
+
+Der Versuch, ein **Kulturviertel** einzurichten, ist gescheitert. Er hat dabei zwei Dinge
+gemessen, die beide wertvoller sind als das Viertel.
+
+Zuerst nach der **Sache** gesucht, nicht nach Modellen (Regel 8): `kino`, `bibliothek`,
+`einkaufszentrum`, `restaurant`, `sporthalle` — **alles 0**. Die drei Treffer für
+„Bibliothek" waren „Repo-Bibliothek" und „Modell-Bibliothek" in Kommentaren. Die fünf
+`th10_*`-Modelle lagen unbenutzt im Repo und füllen genau diese Lücke.
+
+### Erstens: es ist kein Platz mehr da
+
+Ein 170 × 80-Viertel mit fünf Bauten landete auf **Stufe 0** — auf der Landstrasse und im
+Bergfuss, und `th-viertel` fand im Umkreis von 260 m keinen besseren Ort. Also gemessen,
+welche Grösse überhaupt noch passt (Raster ±320 m, alle 20 m, gegen `viertelPasst(…, 2)`):
+
+| Viertelgrösse | Bauten | Stellen auf Stufe 2 | nächste an der Stadtmitte |
+|---|---|---|---|
+| 170 × 80 | 5 | **1** | 453 m |
+| 130 × 80 | 4 | 5 | 272 m |
+| 110 × 70 | 3 | 7 | 260 m |
+| 80 × 60 | 2 | 17 | 251 m |
+| 55 × 55 | 1 | 36 | 160 m |
+
+Sieben Viertel, die Ringstrassen, die Berge und das Meer haben den Gürtel um die Stadt
+aufgebraucht. Ein Kulturviertel in der Kartenecke wäre keine Verbesserung — **die
+Erklärung ist ehrlicher als das Bauwerk.** Die Deklaration wurde wieder entfernt.
+
+⚠️ Die Gesamtzahlen schwanken zwischen Läufen (das Streuwerk ist zufällig und ändert
+`WORLD_SOLIDS`). Belastbar ist die Reihenfolge der Grössen, nicht die Summe.
+
+### Zweitens, und wichtiger: `viertelPasst` kannte das Baugrundstück nicht
+
+In derselben Tabelle stand für 80 × 60 als nächste Stelle **(0|0)** — mitten auf dem
+Grundstück des Spielers. Der Grund ist logisch: die Fläche ist **absichtlich leer**, dort
+baut der Spieler, und genau deshalb steht dort auch kein Kollider — `autoKollider()` spart
+sie ausdrücklich aus. Der Solver sah freies Land.
+
+Aufgefallen ist es nur, weil noch nie ein Viertel einen Wunschort nahe dem Ursprung
+hatte; `viertelOrt()` sucht von der Wunschstelle nach aussen. Ein künftiges Viertel mit
+einem stadtnahen Wunsch hätte das Haus des Spielers überbaut.
+
+```js
+var _bgX = GW*CS/2+10, _bgZ = GH*CS/2+10;      // dieselben Grenzen wie in autoKollider()
+if (Math.abs(x)-m.hw < _bgX && Math.abs(z)-m.hd < _bgZ) return false;
+```
+
+**Gemessen:** (0|0) fällt für 80 × 60 und 55 × 55 weg (nächste jetzt 251 m bzw. 160 m),
+alle **7 Viertel weiterhin auf Stufe 2**, `th-netz` 38 ok.
 
 ---
 
