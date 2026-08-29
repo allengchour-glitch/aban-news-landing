@@ -28,7 +28,9 @@ a{color:var(--amber-dk);text-decoration:none}
 .top .lnk{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
 .top .lnk a{color:var(--ink2);font-weight:700;border:1px solid var(--line);border-radius:18px;padding:6px 11px}
 .hero{max-width:680px;margin:0 auto;padding:6vh 18px 18px;text-align:center}
-.logo{font-size:clamp(2.2rem,8vw,3.4rem);font-weight:900;letter-spacing:-.02em;margin-bottom:4px}
+/* margin-top:0 ist noetig, seit .logo eine Hauptueberschrift ist: der Browser gibt
+   h1 rund 0,67em Aussenabstand oben mit, was den Kopf der Seite verschoben haette. */
+.logo{font-size:clamp(2.2rem,8vw,3.4rem);font-weight:900;letter-spacing:-.02em;margin:0 0 4px}
 .logo .a{color:var(--amber-dk)}.logo .n{color:var(--ink)}
 .tag{color:var(--muted);font-size:.95rem;margin-bottom:22px}
 .box{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:6px 8px 6px 18px;box-shadow:0 10px 30px rgba(31,41,55,.10);transition:box-shadow .15s,border-color .15s}
@@ -68,7 +70,14 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
 </div>
 
 <div class="hero">
-  <div class="logo"><span class="a">aban</span><span class="n">-Ricerca</span></div>
+  <!-- Die Suchseiten hatten GAR KEINE Ueberschrift: die sichtbare Zeile war ein
+       gestyltes div. Fuer Screenreader und Suchmaschinen hiess das: Seite ohne
+       Hauptueberschrift. Als Ueberschrift 1. Ordnung aendert sich optisch nichts
+       (die Klasse traegt das Aussehen), semantisch alles. Gilt ueber
+       build_suche_sprachen.py auch fuer en/search, fr/recherche und it/ricerca.
+       Kein Tag-Name in Klammern in diesem Kommentar: einfache Pruefskripte zaehlen
+       sonst die Erwaehnung als zweite Ueberschrift mit — meine eigene tat es. -->
+  <h1 class="logo"><span class="a">aban</span><span class="n">-Ricerca</span></h1>
   <p class="tag">Cerca in tutte le guide IA, gli strumenti e le spiegazioni di abannews.com.</p>
   <form class="box" id="f" role="search" onsubmit="return false">
     <span class="ic">🔎</span>

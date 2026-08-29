@@ -20,7 +20,7 @@
 #  Aufruf:  python3 tools/build_search_index.py
 # =============================================================================
 
-import json, re, os, glob
+import json, re, os, glob, html as htmlmod
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "data", "site-index.json")
@@ -82,12 +82,19 @@ def eintrag(path, url, kat):
         return None
     if re.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', html, re.I):
         return None
-    title = pick(html, r"<title>(.*?)</title>").replace("&amp;", "&").replace("\n", " ")
+    # ⚠️ NUR "&amp;" VON HAND ZU ERSETZEN REICHT NICHT. Genau das stand hier, und
+    # alles andere landete roh im Index: gemessen 75 unaufgeloeste Entities im
+    # deutschen und 6 im englischen Index — "Buchhaltungs-Software f&uuml;r
+    # Selbstst&auml;ndige", "aban API &mdash; KI-Texte". In den Suchergebnissen stand
+    # das woertlich da, und schlimmer: wer "fuer" tippt, findet "f&uuml;r" nicht.
+    # Der Index haelt KLARTEXT; die Suchseite escaped beim Anzeigen selbst (esc/hi),
+    # deshalb ist das vollstaendige Aufloesen hier sicher und richtig.
+    title = htmlmod.unescape(pick(html, r"<title>(.*?)</title>")).replace("\n", " ")
     title = re.sub(r"\s+", " ", title).strip()
     if not title:
         return None
-    desc = pick(html, DESC, 2)
-    desc = re.sub(r"\s+", " ", desc.replace("&amp;", "&")).strip()
+    desc = htmlmod.unescape(pick(html, DESC, 2))
+    desc = re.sub(r"\s+", " ", desc).strip()
     e = {"u": url, "t": title[:120], "d": desc[:180]}
     if kat:
         e["k"] = kat
