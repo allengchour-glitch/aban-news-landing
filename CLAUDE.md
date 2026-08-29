@@ -508,6 +508,65 @@ ebenso verwirrend: drei bedruckbare T-Shirts zu drei Preisen.
 - **Lehre: Bevor man eine rankende Seite optimiert, prüft man, ob sie gegen die eigenen
   Geschwister antritt.** Sonst verbessert man eine Seite, deren Problem woanders liegt.
 
+## 🔎 Die 50 Seiten, die Google zeigt, sagten im Suchergebnis nichts (2026-08-29)
+Von 65 aktiven Adressen, für die luxestyle.ch in Googles Top 100 steht, trugen **50** als
+Meta-Beschreibung nur den Baustein «<Produktname> – bei LuxeStyle Schweiz. Gratis-Versand
+ab CHF 50, 30 Tage Rückgabe.» Genau dieser Satz steht im Suchergebnis unter dem Titel — er
+wiederholt den Titel und sagt über die Ware nichts. Betroffen war auch die Seite, die dem
+Sprung auf Seite 1 am nächsten steht: der Acryl-Beistelltisch auf **Position 16**.
+`automation/snippet_rankende_seiten.py` setzt jetzt den ERSTEN SATZ aus der Beschreibung
+plus ein konkretes Merkmal — **wörtlich, nichts erfunden**. 50 Seiten gesetzt.
+- ⚠️ **Der «erste Absatz» ist nicht immer Produkttext.** Bei zwei Produkten steht der
+  Versandhinweis davor — beinahe wäre «📦 Lieferzeit Schweiz: 10–20 Werktage · Direktversand
+  ab Herstellerlager» als Google-Snippet gelandet. Dieselbe Falle eine Ebene tiefer in der
+  Merkmalsliste: beim Ring wurde «Versand: 🇨🇭 Schweiz · Lieferung 10–20 Werktage» als
+  Merkmal gewählt, weil die Ziffernprüfung es für eine Massangabe hielt. **Wer aus einem
+  gewachsenen Text einen Auszug nimmt, muss die Bausteine an JEDER Stelle ausschliessen.**
+- ⚠️ **Deutsch schreibt Substantive gross — Markenerkennung über Grossschreibung scheitert.**
+  Meine Wache gegen unübersetzte Markennamen («Der Paperang Thermal Printer Mini Mobile
+  Photo Printer») zählte drei grossgeschriebene Wörter am Stück und verwarf damit «Bieten
+  Sie Ihrer Katze», «Das Fitness Smart Armband» und «Dieser Smart Ring» — fünf einwandfreie
+  Seiten wären ohne Text geblieben. Erst bei **fünf** Wörtern am Stück trennt die Schwelle
+  sauber; deutsche Prosa erreicht das praktisch nie.
+- ⚠️ `productUpdate(input:{seo:{…}})` ERSETZT das ganze SEO-Objekt — der SEO-Titel wird
+  mitgelesen und unverändert mitgeschickt, sonst wäre er nach dem Lauf leer.
+- **Nicht angefasst:** Hallux-Valgus-Schiene (Krankheitsname plus Wirkaussage gehört nicht
+  ins Suchergebnis) und der Mini-Fotodrucker (fremder Markenname).
+- ⚠️ **Ein zu kleiner Ausschnitt der Daten kostet genau den wichtigsten Fall.** Meine
+  Ranking-Liste war nach Volumen sortiert und bei 140 abgeschnitten — der Beistelltisch auf
+  Position 16 hat nur 70 Suchen und fiel deshalb heraus. **Wer nach Volumen sortiert,
+  verliert die Seiten, die knapp vor Seite 1 stehen.**
+
+## 🔗 «Rankt» heisst nicht «ist erreichbar» — aber 23 von 28 waren längst aufgefangen (2026-08-29)
+`automation/tote_rankings.py` prüft, ob eine Adresse, für die Google uns zeigt, überhaupt
+noch kaufbar ist. Anlass war ein echter Fund: `trinkbrunnen-1l-fur-katze-hund-…` steht für
+«trinkbrunnen katze» und «trinkbrunnen für katzen» (je 1'300/Monat) im Index und ist DRAFT
+(`ausverkauft-lieferant`). Die Klasse ist real — der Viability-Guard, der Dubletten-Fix und
+die BigBuy-Stilllegung draften laufend Ware, und die RANKINGS erfahren davon nichts.
+**⛔ Meine erste Meldung war trotzdem falsch.** Ich schrieb «28 tote Adressen, ~17'000
+Suchen im Monat ins Leere» — der Wächter prüfte nur den Produktstatus, **nicht ob eine
+Weiterleitung die Adresse längst abfängt**. Nachgeprüft: **23 der 28 haben eine passende
+301**, vier davon genau auf das Ziel, das ich gerade setzen wollte. Wirklich tot sind **5**
+(zusammen ~830 Suchen), und drei davon sind Marken-/Modellseiten, die dem Betreiber gehören.
+Neu gesetzt wurde **eine** Weiterleitung (Schwimmring, Dubletten-Draft mit lebendem Zwilling).
+- **Lehre (dieselbe wie am 24.08. bei den parallel reparierten Ratgebern): vor der Reparatur
+  den LIVE-Stand lesen, nicht den eigenen Bericht.** Ein Wächter, der nur die halbe Kette
+  prüft, erzeugt Alarm statt Erkenntnis — und ich habe den Alarm ausgesprochen, bevor ich
+  ihn nachgeprüft hatte.
+- ⚠️ **Zweimal in dieselbe Grube:** Meine Kollektionsprüfung fragte `publishedOnCurrentPublication`
+  ab. Das Feld braucht den Scope `read_product_listings`; fehlt er, macht GraphQL die GANZE
+  Antwort null — **sechs lebende Kollektionen wurden als «gibt es nicht» gemeldet**. Genau
+  diese Falle steht seit dem 22.08. im Gedächtnis. Veröffentlichung jetzt über
+  `resourcePublicationsV2`.
+- **Nützliche Eigenschaft:** Eine Shopify-301 greift nur, wenn die Adresse sonst einen 404
+  gäbe. Wird das Produkt wieder veröffentlicht, gewinnt die Produktseite und die
+  Weiterleitung schaltet sich von selbst ab — sie muss nie zurückgenommen werden.
+- ⚠️ Ein Draft wird NICHT veröffentlicht, um den Link zu retten: `ausverkauft-lieferant` und
+  `keine-lieferanten-ref` heissen, die Ware ist nicht bestellbar (Lehre aus Bestellung #1008).
+- ⚠️ Die Wort-Überschneidung ist ein Anhaltspunkt, kein Urteil: Sie schlug für den
+  Auto-Becherhalter einen **magnetischen Handyhalter** vor (gemeinsame Wörter «Halter»,
+  «Phone»). Von Hand verworfen, mit Begründung im Skript.
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
