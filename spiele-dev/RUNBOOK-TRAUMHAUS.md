@@ -3812,3 +3812,54 @@ sabotierte Regel   ✖ 4/5  ← „Pfosten, der nur knapp herausschaut" erwartet
 **Regel: Eine Ausnahme, die den Test stillstellt statt ihn zu schärfen, fällt nie auf —
 „0 Befunde" sieht aus wie Erfolg. Jede Ausnahme braucht einen Fall, der ohne sie kippt,
 und der Selbsttest muss beweisen, dass er rot werden kann.**
+
+---
+
+## 2026-08-29 · 16 Überschneidungen, 7 davon gibt es gar nicht
+
+`th-pruef` meldet dauerhaft „Überschneidungen 16, grösste 2,5 m" — und `entwirren`
+meldet `ohnePlatz: 5…10`. Beide Zahlen standen ungeprüft da. (`ohnePlatz` zählt
+übrigens **Paar-Versuche pro Runde**, nicht Objekte: dasselbe Paar in zwei Runden
+zählt zweimal. Die Zahl, die zählt, ist `nachher`.)
+
+### ⚠️ Der Gruppen-Kasten lügt bei T- und L-Formen
+
+Die tiefste Überschneidung — **2,5 m zwischen Oberleitungsmast und Löschfahrzeug** —
+sieht auf dem Screenshot aus, als stünde ein Mast im Feuerwehrauto. Ich hatte das beim
+ersten Hinsehen auch so gelesen. Der Kommentar im Spiel sagt seit Langem etwas anderes:
+
+> ⚠️ BEKANNTER REST, bewusst so: der Ausleger ist auf 7,5 m Höhe 11,2 m breit […] der
+> MASTFUSS steht bei beiden frei (>= 0,75 m), das Metall hängt 6 m darüber. Wer das
+> „aufräumt", indem er den Mast verschiebt, macht es kaputt.
+
+`th-echt.mjs` (neu) prüft dieselben Paare eine Ebene tiefer — **Mesh gegen Mesh**. Bei
+einem Mast haben Fuss und Ausleger je einen eigenen Kasten, die T-Form löst sich damit
+auf. Ergebnis: **null** Mesh-Kontakt zwischen Mast und Löschfahrzeug. Der Kommentar hatte
+recht, der Pfosten auf meinem Screenshot war ein anderer.
+
+### Die Triage
+
+| | Kasten | Mesh | Urteil |
+|---|---|---|---|
+| Oberleitungsmast ↔ Löschfahrzeug | 2,5 m | **—** | Kasten-Artefakt |
+| Kaimauer ↔ Hafenkran | 2,4 m | **—** | Kasten-Artefakt |
+| Radlader ↔ Betonmischer | 1,8 m | **—** | Kasten-Artefakt |
+| Pausenhofdach ↔ Fahrradständer (2×) | 1,2 m | **—** | Räder stehen unter dem Dach |
+| Ahorn ↔ Müllcontainer, Ahorn ↔ Stadthaus | 1,1–1,2 m | **—** | Krone hängt darüber |
+| Ahorn ↔ Birke, Birke ↔ Pappel | 1,1–1,2 m | 1,14–1,17 m | Kronen greifen ineinander — so soll es sein |
+| bd_inn ↔ th8_laden_offen | 1,1 m | 1,08 m | Reihenhaus-Paar, gemeinsame Wand |
+| Giebel ↔ Cube004 (2×) | 1,0 m | 1,00 m | Teile desselben Hauses |
+| Eiche ↔ Blütenbusch, Seilbahnstation ↔ Fels, Materialstapel ↔ Rohbau, Birke ↔ Karussell | 1,1–1,7 m | 0,15–0,79 m | gewollt bzw. unter der Sichtbarkeitsschwelle |
+
+**7 von 16 sind reine Kasten-Artefakte — darunter alle drei grössten.**
+
+### Nichts verschoben, und warum
+
+`bd_inn ↔ th8_laden_offen` ist mit 1,08 m über 13 Mesh-Paare die einzige echte
+Durchdringung zwischen zwei *Gebäuden*, und beide sind nicht `fest` — der Entwirrer
+hätte sie also bewegen dürfen. Auf dem Bild ist trotzdem kein Fehler zu sehen: die Stadt
+baut dort ausdrücklich eine „geschlossene Stadtzeile mit gemeinsamer Bauflucht", und eine
+gemeinsame Wand von 1 m ist dort richtig. **Ein Gebäude auf eine Zahl hin zu verschieben,
+die man im Bild nicht wiederfindet, ist genau der Fehler, vor dem der Mast-Kommentar
+warnt.** In `th-alle.mjs` steht die Zahl jetzt als Schwelle (≤ 9) — steigt sie, ist etwas
+Neues dazugekommen.
