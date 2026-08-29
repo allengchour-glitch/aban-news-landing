@@ -95,6 +95,12 @@ ausdrücklich «ohne Gutschein». Drei Serien gleichzeitig wären Spam gewesen.
 > auswählen. Der Flow-Trigger lässt sich über die API nicht ändern, dieser Zusammenbau auch nicht
 > — deshalb liegt es bei dir.
 
+> **Zweiter kleiner Handgriff, wenn du magst:** Auf der alten Liste «Email List» sitzen **2
+> Profile** — Leute, die sich angemeldet und den Code nie bekommen haben. In Klaviyo: Liste
+> öffnen → beide auswählen → *Add to list* → «Newsletter Subscribers». Dann bekommen sie die
+> Willkommens-Mail nachträglich. Ich habe das NICHT selbst gemacht: das verschickt echte Post an
+> echte Menschen, und diese Entscheidung liegt bei dir.
+
 ## 3c. Drei Anmeldewege, drei Ziele — von 1'324 Kundinnen hat EINE eingewilligt  ⭐⭐ (NEU 29.08.)
 > Entscheide, welcher Weg der richtige ist, und sag mir Bescheid — den Rest baue ich.
 
