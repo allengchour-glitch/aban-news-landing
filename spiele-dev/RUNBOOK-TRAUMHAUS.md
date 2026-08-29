@@ -4945,3 +4945,44 @@ dokumentierte Haken heisst `window.__th.zeit(min)`. Dass das Bild trotzdem 22:01
 lag daran, dass die Spielzeit von selbst dorthin gelaufen war. Der Befund stimmte am Ende,
 aber er stimmte **zufällig** — und wäre die Uhr nicht zufällig dort gewesen, hätte ich ein
 Tagbild als Nachtbild gemeldet. Vor dem Messen nachsehen, ob der Haken existiert.
+
+## 2026-08-29 · 🔆 Ein Neonschild, das nicht leuchtet — und zweimal falsch gelesen
+
+Der Nachtblick auf den Spielclub zeigte: die Fenster leuchten (die Nachtlicht-Mechanik
+greift), das **Neonschild aber war schwarz** — genau das, wofür es da ist.
+
+### Was die Messung ergab
+
+Die 288 Materialien des Modells zeigen: das Schild **ist** emissiv und bringt seine
+Farben mit — `NsPanel` #ff2893, `NsNeon1` #4cf2ff, `NsNeon2` #ffe03f, `NsNeon3` #ff5142,
+`NsBirne` #ffefb2. Nur eben mit **`emissiveIntensity = 1`**, und bei der Nacht-Belichtung
+von 0,62 verschwindet das.
+
+Die vorhandene Mechanik half nicht: die Glas-Schleife (`_glasMats`) setzt jedes Material
+auf **warmweiss** — richtig für Fenster, falsch für ein Neonschild. Also eine eigene,
+kleine Liste daneben, die **nur die Intensität** dreht und die Farbe stehen lässt:
+
+```js
+if(!/^Ns(Neon|Panel|Birne)/.test(m2.name||""))continue;
+…
+ne.m.emissiveIntensity = nacht9 ? 2.8 : ne.i;
+```
+
+**Gemessen nach der Änderung:** `_neonMats` 5 Materialien, `_neonNacht = 1`, alle auf
+`emissiveIntensity 2.8` mit unveränderten Farben, sichtbar, `opacity 1`. Die Materialien
+sind geteilt — **drei** dieser Schilder stehen in der Welt, eine Liste erfasst alle.
+
+### ⚠️ Zweimal falsch gelesen, beides korrigiert
+
+1. **„Die Änderung greift nicht."** Das Nachbild zeigte weiter ein schwarzes Rechteck.
+   Die Messung sagte das Gegenteil — und sie hatte recht: was da schwarz ist, ist
+   `NsTafel` (#191423, **nicht emissiv**), also die **Rückseite**. Meine Kamera stand
+   nördlich des Schildes.
+2. **„Dann steht es falsch herum."** Auch das nachgemessen, statt es zu glauben:
+   Panel-z **95,66** vor Tafel-z **95,72** — die Leuchtseite zeigt nach Süden, zur
+   Strasse. **Das Schild steht richtig.**
+
+> **Ehrlich zum Beleg:** diese Änderung ist **gemessen, nicht fotografiert**. `__CAM`
+> legt nur den Blickpunkt fest, nicht den Winkel; drei Anläufe haben den Club von Norden,
+> Nordwest und Südost erwischt, nie von der Schildseite. Statt einen vierten Kamerawinkel
+> zu jagen, steht hier, was belegt ist — die Materialwerte — und was nicht: ein Bild.
