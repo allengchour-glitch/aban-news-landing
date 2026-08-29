@@ -26,3 +26,5 @@
 24-04070305.png	2026-08-28 19:39:52	Schritt 133	bekannt	{'taps': 88, 'task:ansichten-sammeln': 57, 'drags': 48}
 25-02030202.png	2026-08-28 20:15:09	Schritt 170	bekannt	{'taps': 106, 'task:ansichten-sammeln': 73, 'drags': 64}
 26-04070305.png	2026-08-28 23:39:45	Schritt 8	bekannt	{'task:ansichten-sammeln': 3, 'taps': 2, 'task:kalibrieren': 1}
+27-03020303.png	2026-08-29 00:03:53	Schritt 26	bekannt	{'taps': 23, 'task:ansichten-sammeln': 10, 'drags': 8}
+28-04030403.png	2026-08-29 16:23:50	Schritt 4	bekannt	{'task:kalibrieren': 1, 'task:lebenszeichen': 1, 'task:selbst-aktualisieren': 1}
