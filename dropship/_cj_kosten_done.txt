@@ -5347,3 +5347,11 @@ gid://shopify/Product/15449058345345	CHF 13.05	5 Varianten	Damen Colorblock Pull
 gid://shopify/Product/15449058378113	CHF 29.03	12 Varianten	Off-Shoulder Rundhals-Sweatshirt für Damen
 gid://shopify/Product/15449058509185	CHF 13.39	10 Varianten	Damen-Cardigan mit Spitze und Reissverschluss
 gid://shopify/Product/15449058640257	CHF 17.82	8 Varianten	Digitaler Fleece-Pullover mit Print
+gid://shopify/Product/15449058738561	CHF 10.63	9 Varianten	Lässiger Hoodie mit überschnittenen Ärmeln · Model
+gid://shopify/Product/15449058804097	CHF 17.24	15 Varianten	Sweatshirt im chinesischen Stil für Damen
+gid://shopify/Product/15449058869633	CHF 13.20	24 Varianten	Kapuzen-Sweatshirt mit Print
+gid://shopify/Product/15449058935169	CHF 12.10	8 Varianten	Lässiger Hoodie mit überschnittenen Ärmeln · Model
+gid://shopify/Product/15449059033473	CHF 22.77	5 Varianten	Lässiger Kapuzenpullover für Damen
+gid://shopify/Product/15449059099009	CHF 17.94	10 Varianten	Bestickter Hoodie im China-Stil
+gid://shopify/Product/15449059131777	CHF 20.97	15 Varianten	Minimalistischer Kapuzenpullover mit Reissverschlu
+gid://shopify/Product/15449059164545	CHF 13.17	99 Varianten	Damen Kapuzenpullover mit Blumenprint
