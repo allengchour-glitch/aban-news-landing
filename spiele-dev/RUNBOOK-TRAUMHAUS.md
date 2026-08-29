@@ -3637,6 +3637,8 @@ Kontrolle hätte ich einen Fehler gemeldet, den es nicht gibt.
 
 **Regel: Ein Bildvergleich ohne Gleichstand-Kontrolle ist keine Messung.**
 
+---
+
 ## 2026-08-29 · 🏆 41 Erfolge an einer ungeschützten Kette — und eine Vermutung, die sich selbst widerlegt hat
 
 Ein Erfolg ist die einzige Belohnung im Spiel, deren **Ausbleiben niemand bemerkt**. Wer
@@ -3695,3 +3697,64 @@ der Schaden heisst nicht „Standbild", sondern „ein toter Erfolg reisst alle 
 Ein Backtick in einem Kommentar **innerhalb** der Sonde — `` `checkAch()` `` als Zitat
 gemeint — brach den Lauf mit „Unexpected identifier 'checkAch'". **Elftes Mal.** In Sonden
 gehören Anführungszeichen, auch in Kommentare.
+
+---
+
+## 2026-08-29 · Punktlichter: zweimal Entwarnung, beide gemessen
+
+Nachnahme zu #2401. Beim Lesen des Lampen-Codes fiel ein Verdacht auf, der genau den
+dort nachgewiesenen Ruckel-Mechanismus getroffen hätte: **three.js baut sein
+Shader-Programm nach der ANZAHL der Lichter je Art.** Schwankt sie, wird jedes Material
+neu übersetzt. Der Deckel in `loop()` setzt
+
+```js
+_kand[i].visible = (i < LAMP_MAX)
+```
+
+auf eine Kandidatenliste, aus der Lichter mit Helligkeit 0 vorher herausfallen — die Zahl
+ist also `min(LAMP_MAX, |kandidaten|)` und *könnte* beim Auf- und Abblenden durchwandern.
+
+### 1. Die Anzahl schwankt nicht
+
+Ganzer Spieltag, stündlich gemessen (`th-lichtzahl.mjs`, neu):
+
+**0 Wechsel der Lichterzahl, konstant 6 sichtbare Punktlichter von 0:00 bis 23:00.**
+Über den ganzen Tag 2 neu übersetzte Programme — nicht an den Dämmerungsgrenzen.
+
+**Die Kommentare im Code stimmen.** Der Verdacht war unbegründet.
+
+### 2. Die sechs Mittagslichter sind Absicht — und kosten nichts messbar
+
+Dabei fiel auf: um 12:00 brennen 6 Punktlichter mit zusammen 8,64 Helligkeit. Erst wie ein
+Fehler ausgesehen; 14 s lang zugesehen, ob es ein Fade-Artefakt der abrupt gestellten Uhr
+ist — **völlig stabil**, also echter Dauerzustand.
+
+Der Ursprung steht in Zeile 13438: `_ti = nacht9 ? _max*7 : _max*1.6`, Kommentar
+*„Innenlichter brennen auch tagsüber schwach (Räume ohne Fenster)"*. Es sind die fünf
+begehbaren Gebäude plus das Pavillon-Licht. Nachgerechnet: 1,76 + 1,44 + 1,44 + 1,28 +
+1,92 + 0,85 = **8,69** gegen 8,64 gemessen. Passt.
+
+Also **Absicht, kein Fehler** — ohne sie wären die fensterlosen Innenräume tagsüber schwarz.
+
+Und die Kosten, abwechselnd A B A B gemessen:
+
+| Blickwinkel | Unterschied | Rauschen | Urteil |
+|---|---|---|---|
+| Innenstadt, direkt bei den Lichtern | −1,8 ms | ±5,0 ms | im Rauschen |
+| Baugrundstück, weit weg | +3,0 ms | ±41,2 ms | im Rauschen (Messung schwach) |
+
+Der zweite Wert taugt wenig — ±41 ms Rauschen misst nichts. Der erste ist belastbar.
+
+⚠️ Damit ist auch die Warnung im `LAMP_MAX`-Kommentar („die teuerste Rechnung des ganzen
+Bildes") für den **heutigen** Stand nicht mehr belegt. Sie stammt aus einer Zeit mit
+15 gleichzeitig brennenden Lichtern; mit dem Deckel bei 6 ist davon nichts mehr messbar.
+Den Deckel trotzdem stehen lassen — er hält genau diesen Zustand.
+
+### Zwei Fallen beim Bauen des Werkzeugs
+
+* **Die Spieluhr heisst `uhrzeit` und zählt MINUTEN**, nicht Stunden. Der erste Anlauf
+  schrieb auf ein `uhr`, das es nicht gibt. Immerhin laut: *„uhr.toFixed is not a
+  function"* — hätte die Sonde nur zugewiesen, wäre sie stumm wirkungslos geblieben und
+  der Test hätte 24-mal dieselbe Stunde gemessen und grün gemeldet.
+* **Keine Backticks in Sonden-Quelltext.** Ein `uhrzeit` in Rückwärtsstrichen im
+  Kommentar beendete das Template-Literal. Die alte Falle, wieder hineingetappt.
