@@ -3863,3 +3863,59 @@ gemeinsame Wand von 1 m ist dort richtig. **Ein Gebäude auf eine Zahl hin zu ve
 die man im Bild nicht wiederfindet, ist genau der Fehler, vor dem der Mast-Kommentar
 warnt.** In `th-alle.mjs` steht die Zahl jetzt als Schwelle (≤ 9) — steigt sie, ist etwas
 Neues dazugekommen.
+
+---
+
+## 2026-08-29 · Durch die Berghütte lief man hindurch — die Weihnachtsbuden müssen es bleiben
+
+`th-mauern` meldet 13 Modelle ohne Kollider. Aufgeschlüsselt statt hingenommen:
+
+| | Warum |
+|---|---|
+| 4× Seilbahn-Stütze, Kran | Gittermasten — man geht zwischen den Beinen durch, richtig so |
+| 2× Spielturm, Schaukel | Spielgeräte, sollen offen sein |
+| Flugzeug | 23,6 × 26,2 m — mehrdeutig, nicht angefasst |
+| **Berghütte** | **12,8 × 12,8 m, 4,4 m hoch — ein echtes Gebäude** |
+| 3× Weihnachtsbude | ⚠️ siehe unten |
+
+### ⚠️ Die Weihnachtsbuden dürfen KEINEN Kollider bekommen
+
+Sie hängen an `wbau()`, das `g.visible = W9()` setzt — **saisonal**. Ein fester Kollider
+wäre im Sommer eine **unsichtbare Wand** mitten auf dem Marktplatz, wo nichts zu sehen
+ist. Das ist schlimmer als das Hindurchlaufen. `WORLD_SOLIDS` kennt kein Entfernen, ein
+saisonaler Kollider geht also gar nicht.
+
+Dieselbe Falle wie bei `gruppenSicht`, das im Sommer den Skilift wieder einblendete.
+**Vor jedem Kollider prüfen, ob das Modell saisonal ist.**
+
+### Die Hütte
+
+`stationSolid()` — dasselbe Mittel, das die Bergstation zwei Zeilen weiter oben schon
+benutzt, auf derselben Terrasse. Kein neuer Präzedenzfall, obwohl Kollider 2D sind
+(x/z, ohne Höhe) und damit auch den Hang darunter sperren.
+
+**13 → 12 ohne Kollider.**
+
+### ⚠️ `inSolid()` ist ein WAND-Test, kein Volumen-Test
+
+Meine erste Gegenprobe tastete die Terrasse mit `inSolid` ab und meldete: Hüttenmitte
+frei, **Stationsmitte auch frei** — als hätte gar nichts einen Kollider. Der Kommentar im
+Spiel warnt genau davor:
+
+> `inSolid()` ist ein WAND-Test […] liegt der Punkt mehr als 0,55 m von jeder Kante
+> entfernt, gibt es `false` — damit die Figur in Räumen laufen kann. Für die Frage
+> „steht hier ein Gebäude?" ist das die falsche Frage, und sie kostete schon einen
+> Anlauf.
+
+Sie kostete jetzt einen zweiten. **Für „steht hier etwas?" ist `imBau()` zuständig.**
+
+### Die Gegenprobe, die zählt
+
+Ein Kollider auf einer 28 × 22 m grossen Terrasse kann den Weg abschneiden. Also
+Flutfüllung von der Stationsmitte aus, Raster 0,4 m:
+
+**3506 von 3853 begehbaren Feldern erreichbar (91 %)**, und alle acht Landmarken —
+Gipfelkreuz, beide Felsen, der Bereich *hinter* der Hütte, alle vier Terrassenränder.
+Die fehlenden 9 % sind das Hütteninnere, das keine Tür hat: genau richtig.
+
+`th-pruef` bestanden, `th-bewohner`: niemand steckt fest.
