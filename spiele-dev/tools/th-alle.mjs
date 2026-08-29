@@ -78,6 +78,9 @@ const PRUEFUNGEN = [
        ineinandergreifende Baumkronen, ein Reihenhaus-Paar mit gemeinsamer Wand
        und Bauteile desselben Hauses. Steigt die Zahl, ist etwas Neues dazugekommen. */
     gut: (s) => { const m = s.match(/Davon (\d+) mit echter Mesh-Durchdringung/); return !!m && +m[1] <= 9 } },
+  { name: 'Zahlen in der Oberflaeche (NaN/Infinity)', datei: 'th-zahlen.mjs', kern: false,
+    wert: (s) => (s.match(/(\d+) Textstellen/) || [, '?'])[1] + ' Stellen',
+    gut: (s) => / 0 mit NaN\/Infinity\/undefined/.test(s) },
   { name: 'Katalog (erscheint jeder Eintrag)', datei: 'th-katalog.mjs', kern: false,
     wert: (s) => (s.match(/(\d+) Katalog-Eintraege hingestellt/) || [, '?'])[1] + ' Eintraege',
     gut: (s) => /✅ Jeder Eintrag in der Moebelliste erscheint/.test(s) },

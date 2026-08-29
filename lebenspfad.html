@@ -21,6 +21,7 @@
 <link rel="canonical" href="https://abannews.com/lebenspfad.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lebenspfad — das große Würfel-Brettspiel">
+<meta property="og:image" content="https://abannews.com/og-arcade.jpg">
 <meta property="og:description" content="8 Lebenskapitel, 100+ Entscheidungen, deine Biografie am Ende. 1–4 Spieler, gratis im Browser.">
 <meta property="og:url" content="https://abannews.com/lebenspfad.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -3409,7 +3410,7 @@ function openMiniGame(onDone){
   var ov=document.getElementById("miniOv");
   if(!ov){ov=document.createElement("div");ov.id="miniOv";
     ov.style.cssText="position:fixed;inset:0;z-index:80;background:#bce6ff;display:none";
-    ov.innerHTML='<iframe id="miniFrame" style="width:100%;height:100%;border:0" allow="fullscreen"></iframe>';
+    ov.innerHTML='<iframe title="Minispiel" id="miniFrame" style="width:100%;height:100%;border:0" allow="fullscreen"></iframe>';
     document.body.appendChild(ov);}
   var slug=MINI_INGAME[(Math.random()*MINI_INGAME.length)|0];
   document.getElementById("miniFrame").src="/minispiele/"+slug+".html";

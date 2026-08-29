@@ -14,6 +14,8 @@
 <link rel="canonical" href="https://abannews.com/traumhaus.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Traumhaus — Bau-Simulation mit Online-Koop">
+<meta property="og:image" content="https://abannews.com/og-arcade.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:description" content="Baue dein Traumhaus: Wände, Möbel, Bewohner mit eigenem Kopf. Zusammen online bauen per Raum-Code.">
 <meta property="og:url" content="https://abannews.com/traumhaus.html">
 <script type="application/ld+json">
@@ -47,7 +49,14 @@ canvas{display:block}
   /* Linke Spalte quer: Geld, Pokal(64), Radar(120..238), Bauen, Joystick(unten).
      Zwischen Radar-Unterkante und Joystick-Oberkante bleiben nur ~50 px — Bauen sitzt
      genau dort, kleiner und kompakter. */
-  #modeBtn:not(.building){bottom:calc(126px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important;padding:7px 12px !important;font-size:.8rem !important;min-height:38px !important}
+  /* ⚠️ min-height 38 -> 44. 38px war die Antwort auf die enge Luecke zwischen Radar
+     und Joystick — die gibt es aber nicht mehr: layoutLinkeSpalte() misst die Luecke
+     und setzt den Knopf NEBEN das Radar, wenn er nicht dazwischen passt. Damit darf er
+     wieder 44px hoch sein, das uebliche Mindestmass fuer einen Finger (gemessen mit
+     th-hud.mjs: er war das einzige Bedienelement unter 44px). Passt er nicht mehr in
+     die Luecke, weicht er von selbst zur Seite aus — die Regel und die Messung
+     widersprechen sich also nicht. */
+  #modeBtn:not(.building){bottom:calc(126px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important;padding:9px 14px !important;font-size:.85rem !important;min-height:44px !important}
   #geld{max-width:40vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #minimap{width:118px !important;height:118px !important}
   /* 🩹 Schwarm-7: der piBar-Fix galt nur unter 380px — bei 381…620px Hoehe lag
@@ -175,7 +184,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <button class="tbtn" id="zoomIn" title="Näher">➕</button>
   <button class="tbtn" id="zoomOut" title="Weiter weg">➖</button>
 </div>
-<div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
+<div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" type="text" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
 <div id="tools">
   <button class="tbtn" id="rotBtn" title="Drehen (R)">🔄</button>
   <button class="tbtn" id="delBtn" title="Abreißen">🧨</button>
@@ -9698,7 +9707,14 @@ var MISS_POOL=[
  ["🛹","Lande {n} Airtime-Sprünge",3,function(){return stats.stunts||0;}],
  ["🥕","Fahre {n} Ernten ein",2,function(){return stats.ernten||0;}],
  ["🪑","Stelle {n} Möbel auf",3,function(){return stats.moebelGekauft||0;}],
- ["🎸","Spiele 1 perfekte Strassenmusik-Show",1,function(){return stats.buskPerfekt||0;}],
+ /* ⚠️ ZEITFENSTER IN DEN TEXT. Diese Mission ist die einzige der dreizehn, die nur in
+    einem Zeitfenster geht (buskAvailable: 17-21 Uhr) — UND die einzige ohne Ort auf der
+    Karte, weil man ueberall spielen darf. Wer sie morgens zieht, sieht also die Aufgabe,
+    keinen Marker und nirgends den Knopf, und hat keine Moeglichkeit herauszufinden, dass
+    er bis 17 Uhr warten muss. Das "wann" gehoert damit dorthin, wo er hinschaut.
+    (Der Text wird beim Anlegen in den Spielstand kopiert — laufende Tage behalten den
+    alten, ab dem naechsten Tageswechsel steht das Fenster drin.) */
+ ["🎸","Spiele 1 perfekte Strassenmusik-Show (17–21 Uhr)",1,function(){return stats.buskPerfekt||0;}],
  ["😮","Mache {n} Emotes",4,function(){return window._emoteCount||0;}],
  ["🏅","Bestehe 1 Bauabnahme",1,function(){return stats.abnahmen||0;}],
  /* ⚠️ NUR ANS ENDE anfuegen: missHeute speichert den Pool-INDEX im Spielstand —

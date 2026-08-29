@@ -4102,6 +4102,116 @@ räumt hinter sich auf (`TANZ.on=false`, `cancelAnimationFrame`, Overlay zu).
 **Gemessen:** th-club 8/8 · th-netz 38 ok · th-marken: Marke *und* Lieferziel „Spielclub"
 liegen **3,1 m** an einem echten Modell (0 verdächtige Marken) · 0 JS-Fehler.
 
+---
+
+## 2026-08-29 · Die Bedienung im Querformat vermessen statt angeschaut
+
+Der User spielt auf dem Handy im **Querformat (844 × 390)**. Dort ist es eng, und schon
+einmal lag eine Ecken-Plakette genau auf dem Joystick — gefunden nur, weil jemand
+hingeschaut hat. `th-hud.mjs` (neu) misst das jetzt: Rechtecke aller sichtbaren
+Bedienelemente, Elemente ausserhalb des Bildes, Tippziele unter 44 px.
+
+### Befund: ein einziger
+
+**Der Bauen-Knopf war 38 px hoch** — das einzige Bedienelement unter dem üblichen
+Fingermass. Die Landscape-Regel setzte `min-height:38px` bewusst, weil zwischen Radar
+und Joystick nur eine schmale Lücke bleibt.
+
+Diese Begründung gilt aber nicht mehr: `layoutLinkeSpalte()` **misst** die Lücke und
+setzt den Knopf **neben das Radar**, wenn er nicht dazwischen passt (deshalb stand er
+gemessen bei x = 138 statt bei den 12 px aus dem CSS). Also darf er wieder 44 px hoch
+sein — passt er nicht mehr in die Lücke, weicht er von selbst zur Seite aus. Regel und
+Messung widersprechen sich nicht.
+
+Danach: 844×390, 740×360, 932×430, 390×844, 1024×768 — **überall 0 Ziele unter 44 px,
+0 Elemente ausserhalb des Bildes.**
+
+### ⚠️ Drei Fehler im Werkzeug, alle beim Messen aufgeflogen
+
+1. **Der Viewport war nie gesetzt.** Ich gab `breite`/`hoehe` mit — die Option heisst
+   `viewport`. Das Werkzeug mass stillschweigend im 1100 × 620-Standard weiter und
+   meldete Elemente bei x = 1100 in einem angeblich 844 breiten Bild. Dazu gehört
+   `screen`: das Spiel entscheidet über `_mobil` daran, nicht am Fenster.
+
+2. **Container sind keine Überdeckung.** Der erste Lauf meldete zwölfmal
+   „#wrap über X" — `#wrap` ist eine bildschirmfüllende Ebene und liegt unter allem.
+
+3. **⚠️ „Überdeckung" ist überhaupt die falsche Frage.** Zwei Kästen dürfen sich
+   überlappen; was zählt, ist **wer den Tipp bekommt**. Jetzt misst das Werkzeug
+   `elementFromPoint` in der Mitte jedes Bedienelements. Damit fielen alle
+   Fehlalarme von selbst weg — und in Hochkant zeigt sich sauber, dass `#rotHint`
+   („dreh dein Handy") **alle** Ziele abfängt. Fängt ein und dasselbe Element alle ab,
+   ist es die gewollte Sperrschicht und kein Befund; das meldet das Werkzeug jetzt so.
+
+---
+
+## 2026-08-29 · Die Mission, bei der man nicht wusste WANN
+
+Statt wieder zu prüfen, habe ich die Missionen einmal wie ein Spieler durchgesehen.
+
+**Erst zwei Entwarnungen, beide gemessen:** Alle 13 Missions-Zähler werden irgendwo
+erhöht — keine Mission ist unerfüllbar. Und von den 13 haben 11 einen Kartenmarker; die
+zwei ohne (Emotes, Strassenmusik) sind es zu Recht, der Kommentar im Code sagt das seit
+Langem.
+
+### Der Befund liegt genau dazwischen
+
+Die Strassenmusik ist **die einzige Mission mit einem Zeitfenster** (`buskAvailable()`:
+17–21 Uhr) — **und die einzige ohne Ort**. Wer sie morgens zieht, sieht die Aufgabe,
+keinen Marker, und findet den Knopf nirgends. Es gab keine Stelle im Spiel, an der
+„ab 17 Uhr" stand.
+
+Die Aufgabe sagt *was*, der Marker sagt *wo* — und *wann* sagte niemand.
+
+Jetzt steht das Fenster im Missionstext selbst: „Spiele 1 perfekte Strassenmusik-Show
+**(17–21 Uhr)**". Dort schaut der Spieler ohnehin hin. (Der Text wird beim Anlegen in den
+Spielstand kopiert; laufende Tage behalten den alten, ab dem nächsten Tageswechsel steht
+das Fenster drin.)
+
+### Stehende Prüfung statt Einmal-Blick
+
+`th-missmap.mjs` prüft jetzt bei jedem Lauf, dass **jede** Mission einen Ort hat — oder
+in einer Ausnahmeliste mit **Grund** steht. Und die Gegenrichtung: eine Ausnahme, die es
+nicht mehr braucht (die Mission hat inzwischen einen Ort), wird gemeldet, damit die Liste
+nicht verrottet.
+
+Gegenprobe: einen Ort testweise aus `MISS_ORTE` entfernt →
+**❌ „4 🛹 Lande {n} Airtime-Sprünge", 9 ok / 1 Fehler.** Die Prüfung kann rot werden und
+benennt die Mission.
+
+---
+
+## 2026-08-29 · Zeigt das Spiel irgendwo „NaN"?
+
+Auf der Webseite hat genau diese Frage zwei echte Fehler gefunden („NaN % über Brutto"
+im Arbeitgeberkosten-Rechner, dazu eine Zeile mit veralteten Zahlen). Das Spiel rechnet
+an viel mehr Stellen — Geld, Stufe, Bedürfnisse, Uhr, Missionen — und jede Division kann
+durch null gehen. Also dieselbe Frage hier.
+
+`th-zahlen.mjs` (neu) liest den **sichtbaren** Text der Bedienoberfläche — nicht den
+Code, sondern was der Spieler liest — zu neun Zeitpunkten: nach dem Start, bei Geld 0 /
+negativ / einer Milliarde, und über einen ganzen Spieltag (0, 6, 12, 18, 23 Uhr).
+
+**Ergebnis: 102 Textstellen, 0 mit NaN/Infinity/undefined, 0 JS-Fehler.** Sauber.
+
+### ⚠️ Und die Gegenprobe hätte fast gelogen
+
+Ein Prüfer, der nichts findet, muss beweisen, dass er etwas finden *kann*. Erster
+Sabotage-Versuch: eine Division durch null an den **Anfang** von `updHUD()` gesetzt →
+**der Test blieb grün.** Ich hätte daraus fast geschlossen, das Werkzeug sei blind.
+
+Es war die Sabotage, die nicht wirkte: die echte Zuweisung weiter unten in derselben
+Funktion überschrieb meinen Wert wieder. Zweiter Versuch an der richtigen Stelle
+(Zeile 13157, wo `#geld` tatsächlich gesetzt wird) →
+
+```
+❌ Uhr 12:00: geld → "💰 NaN"
+❌ 102 Textstellen geprueft · 9 mit NaN/Infinity/undefined
+```
+
+**Regel: Wenn die Sabotage nicht anschlägt, ist zuerst die Sabotage verdächtig — nicht
+das Werkzeug.** Sonst wirft man einen funktionierenden Test weg.
+
 ## 2026-08-29 · 🌲 Der Wald war für jedes Werkzeug unsichtbar — und 30 s sind zu früh
 
 Ausgangspunkt war wieder ein Bild (Regel 11): der Blick auf die Baustelle (180|150)
