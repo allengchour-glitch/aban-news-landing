@@ -618,7 +618,20 @@ function wegVonStrasse(x,z){
   for(var z=-84;z<=84;z+=26){pts.push([RXl,z],[-RXl,z]);}          // Querstrassen
   for(var xr=-104;xr<=104;xr+=34){pts.push([xr,-93],[xr,125]);}    // Ringstrasse Nord/Sued
   for(var zr=-80;zr<=100;zr+=34){pts.push([119,zr],[-119,zr]);}    // Ringstrasse West/Ost
-  pts.push([68,87],[-4,78],[-33,86],[25,97],[0,146],[-24,74]);    // Plaetze, Parkplatz, Seepark
+  /* ⚠️ ZWEI DIESER SECHS STANDEN AUF DEM FALSCHEN UNTERGRUND — gemessen im Spiel,
+     nicht geschaetzt (th-laternen.mjs).
+     [25,97] war die MITTE des Parkplatzes: `var PX=25,PZ=97,PW=36,PD=16` — und
+     zwar mitten in der 5,6 m breiten Fahrgasse zwischen den beiden Stellreihen.
+     Ein 6,5 m hoher Mast mit 0,36 m Fuss dort, wo rangiert wird. Jetzt am Ostende
+     der Suedreihe: die Stellplaetze reichen von x 9,6 bis 40,4 (`R0 + N*RB`), der
+     Belag bis 43 — dazwischen liegt der Reststreifen, auf dem eine Laterne in
+     jedem echten Parkhaus steht.
+     [0,146] war die MITTE DES SEES. `wegVonStrasse()` haelt Laternen aus der
+     Fahrbahn, aber nicht aus dem Wasser; die Uferlinie ist `seeR(a)` = 9,1…16,9 m,
+     die Laterne stand 13,9 m vom Ufer entfernt im Wasser. Der Seepark hat auf der
+     Promenade ohnehin fuenf eigene Laternen — diese hier gehoert an die Zufahrt
+     von der Sued-Ringstrasse, die sonst unbeleuchtet blieb. */
+  pts.push([68,87],[-4,78],[-33,86],[41.7,91.6],[7.5,128],[-24,74]);   // Plaetze, Parkplatz, Seepark-Zufahrt
   var _lampPoolTexC=null;
   function _lampPoolTex(){
     if(_lampPoolTexC)return _lampPoolTexC;

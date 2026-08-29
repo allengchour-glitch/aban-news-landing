@@ -2346,3 +2346,27 @@ Erster Lauf: **24 Treffer.**
 
 Nach der Korrektur: **0 Treffer.** `th-netz` 39 ok, `th-strassen` unverändert
 (es sieht flaches Zubehör ohnehin nicht — `MINH`).
+
+## Zwei Strassenlaternen standen im See und in der Fahrgasse
+
+```js
+pts.push([68,87],[-4,78],[-33,86],[25,97],[0,146],[-24,74]);  // Plaetze, Parkplatz, Seepark
+```
+
+* `[0,146]` ist die **Mitte des Sees** — `machSee(0,146)`, Uferlinie `seeR(a)` = 9,1 … 16,9 m.
+  Gemessen: der Mast stand **13,9 m vom Ufer entfernt im Wasser**.
+* `[25,97]` ist die **Mitte des Parkplatzes** — `var PX=25,PZ=97,PW=36,PD=16` — und
+  zwar in der 5,6 m breiten **Fahrgasse** zwischen den beiden Stellreihen.
+
+Beide Punkte laufen durch `wegVonStrasse(x,z)`. Das hält Laternen aus der **Fahrbahn** —
+und dabei ist es geblieben. Wasser, Stellplätze und Fahrgassen kennt diese Prüfung nicht,
+und sonst prüft sie niemand: `th-strassen` kennt nur Bänder, `th-3d` nur Modell gegen
+Modell. Ein See ist beides nicht.
+
+Jetzt `[41.7,91.6]` (Ostende der Südreihe: Stellplätze reichen von x 9,6 bis 40,4 =
+`R0 + N*RB`, der Belag bis 43 — dazwischen der Reststreifen) und `[7.5,128]` (Zufahrt
+zum Seepark von der Süd-Ringstrasse, die sonst unbeleuchtet blieb; die Promenade hat
+ihre eigenen fünf Laternen).
+
+`spiele-dev/tools/th-laternen.mjs` (neu) prüft alle 174 Laternen gegen die Geometrie,
+aus der See und Parkplatz wirklich entstehen. **2 → 0.**
