@@ -82,6 +82,28 @@ Marketing-Einwilligung (`email_marketing_state:subscribed`, seit 02.07.). Das Fo
 schreibt nach Shopify, das Popup nach Klaviyo, die Flows lauschten auf eine dritte Stelle —
 **drei Anmeldewege, drei Ziele, keines davon verbunden.** Klaviyo hat ausserdem **0 eigene
 Formulare** (`get_forms` → leer).
+**NACHTRAG am selben Tag: der ZWEITE Anmeldeweg hatte dieselbe Lücke.**
+Das Shopify-Footer-Formular (`form_type=customer`) legt eine Kundin mit Einwilligung an, und die
+Klaviyo-Shopify-Anbindung überträgt sie — **am einzigen Bestandsfall belegt**: das Profil zu
+`hexletanja@…` trägt in Klaviyo `method: SHOPIFY`, `consent: SUBSCRIBED`,
+`can_receive_email_marketing: true`. **Es liegt aber auf KEINER Liste** — und ein
+Willkommens-Flow hängt an einer LISTE, nicht an einer Einwilligung. Also lief auch dieser Weg
+ins Leere, und zwar unabhängig vom Popup.
+- Behoben im selben Custom-Liquid-Block: ein Zuhörer am Footer-Formular meldet dieselbe Adresse
+  zusätzlich an `T2VHfu`. **Kein `preventDefault`** — das Shopify-Formular läuft unverändert
+  weiter, wir verlieren also nichts, wenn Klaviyo einmal nicht antwortet; `keepalive:true` lässt
+  die Anfrage den Seitenwechsel überleben.
+- ⚠️ **Das allgemeine Kontaktformular ist ausgenommen** (Merkmal: es hat ein Feld
+  `contact[body]`). Beide benutzen `contact[email]` und `form_type=customer` — wer nur darauf
+  filtert, meldet jede Support-Anfrage als Newsletter-Anmeldung an. **Eine Einwilligung darf man
+  nie aus der Feldstruktur ableiten, sondern nur aus dem, wozu das Formular einlädt.**
+- Live in der ausgelieferten Seite gegengeprüft, nicht nur am Ursprung.
+
+**Die Lehre über beide Fälle: eine Einwilligung ist keine Zustellung.** Klaviyo unterscheidet
+zwischen «darf E-Mails bekommen» (Consent) und «steht auf Liste X» (Trigger). Beide Anmeldewege
+erzeugten sauberen Consent — und keiner erzeugte eine Mail. Wer einen Trichter prüft, prüft nicht,
+ob die Einwilligung ankommt, sondern **ob genau das Merkmal ankommt, auf das der Empfänger hört.**
+
 ⚠️ Zählfalle am Rand: `customersCount(query:…)` **ignoriert den Filter** (gibt dreimal 1'324) —
 die Zahl stimmt nur über `customers(first:250, query:…)`. Vierte Fassung des stillen
 Shopify-Filters nach `title:`, `variant_price:<5` und `variants.compare_at_price:>0`.
