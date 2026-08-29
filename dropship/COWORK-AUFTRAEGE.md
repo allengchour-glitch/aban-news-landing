@@ -24,6 +24,35 @@ Weg, der heute funktioniert — und den kann Cowork mit der angemeldeten Sitzung
 **Alle acht beworbenen Artikel wurden am 29.08. live geprüft: ACTIVE, Preise stimmen mit den
 Captions überein.** Steht ein Produkt später auf DRAFT, den Beitrag NICHT posten.
 
+## E. Fünf Ratgeber bewerben eine Box für CHF 299.90, die es nicht zu kaufen gibt  (NEU 29.08.)
+> Entscheide: Soll die **«🎁 Gentleman's Premium Gift Box»** (CHF 299.90) veröffentlicht werden,
+> oder sollen die fünf Ratgeber-Sätze verschwinden? Sag es mir, ich setze es um.
+
+**Der Befund:** Ein Vollscan über alle **307 veröffentlichten Ratgeber** fand 6 Stellen, an denen
+Ware mit NAMEN und PREIS beworben wird, die nicht kaufbar ist — **fünf davon sind dieselbe Box**:
+`geschenke-fuer-maenner-2026-schweiz` · `herrenuhr-kaufen-ratgeber-schweiz` ·
+`vatertag-geschenke-schweiz-2026` · `geschenkboxen-sets-verschenken-ideen` ·
+`echtleder-accessoires-pflegen-anleitung`. Wortlaut z. B.:
+> «…lohnt ein Blick auf die Gentleman's Premium Gift Box (CHF 299.90), die Uhr, Slim Wallet,
+> Lederarmband und Manschettenknöpfe in einer eleganten Box vereint…»
+
+**Warum ich es nicht selbst entschieden habe — beide Wege haben einen Haken:**
+- *Veröffentlichen* wäre riskant: Die Box ist ein SELBST zusammengestelltes Bündel
+  (`LXSCH-GIFT-GENTLEMAN`), und ihr Inhalt nennt die «Slim Wallet» — eines der acht
+  handkuratierten Altprodukte, hinter denen kein Lieferant steht. Eine bezahlte, nie lieferbare
+  Bestellung ist die teure Klasse (#1008).
+- *Ein anderes Produkt einsetzen* geht nicht: Die Sätze zählen den Inhalt auf. Die aktive
+  «Tech Hero Geschenkbox» (CHF 199.90) enthält Smartwatch und Kopfhörer — der Satz wäre danach
+  auf neue Weise falsch.
+- Bleibt: die Sätze entfernen. Das ist redaktionelle Arbeit an fünf veröffentlichten Texten.
+
+**Der sechste Fall:** «Leiser Baby Nagelschneider» CHF 29.90 in `baby-schlaft-nicht-7-tipps`.
+Ebenfalls kein aktives Produkt.
+ℹ️ Nebenbefund ohne Handlungsbedarf: **249 der 307 Ratgeber verlinken kein kaufbares Produkt**,
+sondern nur Kategorien. Das ist kein Fehler — und die Messung zeigt, dass die meisten Ratgeber
+ohnehin kaum Besucher haben. Gelohnt hat sich die Reparatur nur dort, wo wirklich Verkehr ankam
+(Faszienrolle, 77 Sitzungen).
+
 ## D. 45 rankende Markenseiten ohne Ware — Entscheidung nötig  (NEU 29.08.)
 > Entscheide, ob die toten BigBuy-Markenseiten auf eine passende KATEGORIE umgeleitet werden
 > sollen (z. B. «Trainingsanzug Adidas» → Herren-Sportbekleidung) oder ob sie 404 bleiben.
