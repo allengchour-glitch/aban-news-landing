@@ -5390,3 +5390,6 @@ gid://shopify/Product/15449062965633	CHF 14.48	9 Varianten	Vielseitiger Cardigan
 gid://shopify/Product/15449064046977	CHF 17.11	28 Varianten	Legere Herrenjacke für Alltag
 gid://shopify/Product/15449064112513	CHF 19.86	70 Varianten	Freizeit Kapuzenjacke mit Reissverschluss
 gid://shopify/Product/15449064178049	CHF 16.73	36 Varianten	Retro Jacquard Cardigan für Herren
+gid://shopify/Product/15449064243585	CHF 18.59	88 Varianten	Doppelseitige Fleece-Jacke mit Kapuze
+gid://shopify/Product/15449064276353	CHF 11.78	42 Varianten	Ice-Silk Sonnenschutzjacke für Herren
+gid://shopify/Product/15449064440193	CHF 16.24	25 Varianten	Atmungsaktive Fischer- und Reiseweste
