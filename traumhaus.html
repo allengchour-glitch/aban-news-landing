@@ -2212,11 +2212,16 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
    Luft. Die gewonnenen 3 m je Seite tragen jetzt Parkstreifen und Bushaltebucht. */
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,16),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
-function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>9.2;} // nicht in Kreuzung/Zebra (Zebras bei RX±6.2)
-var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_dashFrei(_dx))continue;
-  var _sMat=stdMat(0xd8d8cc,0.75);_sMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_sMat);
-  var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),_sMat);
-  strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
+/* ⚠️ HIER LAGEN 16 STRICHE EINER LEITLINIE AUF z = 58 — mitten zwischen den beiden
+   durchgezogenen Linien der doppelten Sperrlinie (57,70 und 58,30, `strassenDetails`).
+   Auf einer echten Strasse gibt es entweder eine Sperrlinie ODER eine Leitlinie,
+   nie beides an derselben Stelle.
+   Genau das war schon einmal aufgefallen und BEHOBEN — aber nur fuer die Suedstrasse;
+   der Kommentar dort (»gestrichelte Mittellinie auf z=-58 … Der Strich entfaellt«)
+   nennt sie sogar irrtuemlich »Nordstrasse«. Gemessen: Sued 2 durchgezogene / 0
+   Striche, Nord 2 durchgezogene / 16 Striche. Jetzt beide gleich.
+   Nebenbei: die Schleife baute je Strich ein EIGENES Material (16 Stueck fuer 16
+   identische Quadrate) und haengte alle in `_markMats`. */
 // Trottoirs (erhoehte Gehwege) beidseitig aller Strassen — Strasse 10 breit, Kante bei ±5
 (function baueTrottoirs(){
   // Saubere helle Gehweg-Platten (statt unruhigem dunklem Kopfstein)
