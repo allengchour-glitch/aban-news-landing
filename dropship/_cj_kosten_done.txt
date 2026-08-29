@@ -5188,3 +5188,4 @@ gid://shopify/Product/15448962072961	CHF 9.13	1 Varianten	Reise-Etui für Sonnen
 gid://shopify/Product/15448962105729	CHF 87.40	1 Varianten	Drehbarer Garderobenständer aus Holz
 gid://shopify/Product/15448962171265	CHF 20.57	1 Varianten	Küchen Organizer mit 4 Fächern
 gid://shopify/Product/15448962236801	CHF 21.06	1 Varianten	Küchenregal Modern, einfach zu reinigen
+gid://shopify/Product/15448960663937	CHF 37.26	1 Varianten	Doppellagige Schmuck- und Organizer-Box
