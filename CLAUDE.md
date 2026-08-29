@@ -847,6 +847,23 @@ verschwinden lässt.
 bevor ich ihn geprüft hatte. **Ein Verlustbefund gehört erst gemeldet, wenn er gegen die Quelle
 gehalten wurde** — sonst erzeugt er Aufregung, die niemand braucht.
 
+## 🔡 Shopify schreibt Prozentzeichen klein — meine Prüfung meldete eine Lücke, die es nicht gab (2026-08-29)
+Beim Nachzählen der 69 Weiterleitungen auf tote Landeseiten meldete meine eigene Kontrolle
+**«68 mit 301, 1 ohne»**. Der angeblich offene Fall war der Aroma-Diffuser, dessen Handle mit
+einem Emoji beginnt. Die Weiterleitung existiert — Shopify speichert den Pfad aber als
+`/products/%f0%9f%8c%bf-…`, **kleingeschrieben**, während in `TOTE-LANDESEITEN.md`
+`%F0%9F%8C%BF` steht. Mein Vergleich war gross-/kleinschreibungsempfindlich, also fand er nichts.
+Es sind **69 von 69**.
+- **Vierte Fassung derselben Lehre in vier Tagen** (stiller `title:`-Filter · veralteter
+  Remote-Zeiger · WebFetch ohne `<head>`): **Ein Nullergebnis aus dem eigenen Prüfwerkzeug ist
+  kein Befund.** Neu daran ist nur, dass diesmal die NORMALISIERUNG der Gegenseite den
+  Unterschied machte — nicht ein zu strenges Muster, sondern eine stillschweigende Umschreibung.
+- **Regel: Wo eine fremde Seite eine Kennung speichert, kann sie sie umschreiben.** Vergleiche
+  auf Pfade, Handles und URLs gehören normalisiert (`.lower()`), bevor man sie gleichsetzt.
+- ⚠️ Und die teurere Hälfte: Ich war einen Satz davon entfernt, dem Betreiber «eine Seite ist
+  noch offen» zu melden. Ein Fehlalarm in einer Aufgabenliste kostet mehr als er scheint — nach
+  dem zweiten liest sie niemand mehr.
+
 ## 🔍 Es gibt KEINE technische SEO-Bremse — 47'045 Produkte, 4 rankende Seiten (2026-08-29)
 Die Frage hinter allem: Suchverkehr ist der einzige Kanal mit Kassengängen, aber bei über
 47'000 Produkten ranken **genau vier Seiten**. Naheliegende Vermutung war eine technische Sperre.
