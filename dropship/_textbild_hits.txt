@@ -13124,3 +13124,6 @@ gid://shopify/Product/15516219769217	50->0	Kabelloses Gaming Mauspad mit Schnell
 gid://shopify/Product/15516232974721	12->0	Smart-Armband mit integriertem Bluetooth-Headset
 gid://shopify/Product/15516233171329	50->0	Hundeleine – reissfest & stylisch
 gid://shopify/Product/15516233236865	20->1	Armband für Smartwatch – geflochten, schmal
+gid://shopify/Product/15516233302401	41->0	Kreativer Wecker aus Aluminium, leuchtend
+gid://shopify/Product/15516233597313	52->3	Metall-Armband für Apple Watch
+gid://shopify/Product/15516233761153	123->1	Doppelführleine für Hunde
