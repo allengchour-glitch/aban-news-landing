@@ -12945,3 +12945,4 @@ gid://shopify/Product/15500201034113	80->0	Farbenprächtige Bildervielfalt
 gid://shopify/Product/15500405244289	97->0	Digital Gemälde
 gid://shopify/Product/15500409241985	37->0	Digitaler Gemälde-Rahmen
 gid://shopify/Product/15500410978689	142->0	Digitaler Gemälde-Druck
+gid://shopify/Product/15508412825985	18->0	Nackenhörnchen mit Memory-Schaum
