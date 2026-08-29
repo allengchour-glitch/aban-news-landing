@@ -21,7 +21,10 @@ def label(h):
     if not t:
         m = re.search(r"<title>(.*?)</title>", h, re.I | re.S)
         t = re.split(r"\s[—–|]\s", m.group(1))[0].strip() if m else ""
-    return t
+    # Der H1-Quelltext ist bereits escaped ("Anfragen &amp; Bewertungen"). Ohne
+    # unescape hier macht html.escape() beim Ausgeben daraus "&amp;amp;" — im
+    # Browser steht dann woertlich "&amp;" in der Linkbeschriftung.
+    return html.unescape(t)
 
 
 def main():

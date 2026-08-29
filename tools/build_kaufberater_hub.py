@@ -20,7 +20,8 @@ def label(h):
     t = re.sub(r"<[^>]+>", "", t)
     t = t.replace(" in der Schweiz", "").strip()
     t = re.sub(r"\s+(kaufen|mieten|finden)$", "", t, flags=re.I).strip()
-    return t
+    # siehe build_ki_hub.py: escaped rein, escaped raus = doppelt escaped.
+    return html.unescape(t)
 
 
 def main():
