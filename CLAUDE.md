@@ -355,6 +355,42 @@ Reichweite nicht der Engpass ist — Reichweite gab es im Juli reichlich, sie wa
   `landing_page_path`, `referrer_source`, `referrer_name`, `utm_source`.
   **NICHT vorhanden:** `country`, `region`, `city`, `device_type`, `browser` (Column Not Found).
 
+## 🫀 Der Aufseher wurde bei JEDEM Lauf erschlagen — sein Herzschlag kam zu spät (2026-08-29)
+Auftrag «auto machen alles». Beim Schliessen der letzten Handabhängigkeit fiel ein Fehler auf,
+der die ganze Kette untergrub: `engine_keepalive` tötet einen Aufseher, dessen Herzschlag älter
+als 10 Minuten ist (Wache vom 23.08.). Geschrieben wurde der Herzschlag aber erst **ganz am Ende**
+der Schleifenrunde — und eine Runde dauert länger als 10 Minuten, allein die 13 Reiniger starten
+mit je 10 s Abstand. **Live gemessen: Herzschlag 398'301 s alt, während der Aufseher gerade
+Wächter startete und ins Log schrieb.** Er wurde also bei jedem Lauf mitten in der Arbeit
+getötet, und die Wache gegen hängende Aufseher war in Wahrheit ihr Henker.
+**Ein Herzschlag bedeutet «ich mache Fortschritt», nicht «ich bin fertig».** Er gehört an den
+ANFANG der Runde. Nach der Korrektur: 21 s statt 4,6 Tage, stabil bei 37–106 s.
+
+## ⛓️ Die Motorenschicht hing an der Stundenroutine — also an der Session (2026-08-29)
+Bis heute rief NUR die stündliche Routine `engine_keepalive.sh` auf. Antwortet die Session eine
+Weile nicht — Turn-Reaping, Kontextende, ein hängender Aufruf —, stehen CJ-Runner, Reel-Motor,
+Website-Hygiene und Auto-Committer, und **im Container merkt es niemand**: Der Aufseher lebt
+weiter, startet aber nur seine eigenen Wächter, nie die Motoren.
+Jetzt zieht der Aufseher sie alle 20 Minuten selbst nach. Die Schichtung ist damit vollständig:
+| Schicht | hält | liegt |
+|---|---|---|
+| Stundenroutine | den **Aufseher** | ausserhalb des Containers, rewind-fest |
+| Aufseher | die **Motoren** | im Repo |
+| Motoren | ihre eigene Arbeit | — |
+- ⚠️ **`OHNE_AUFSEHER=1` ist dabei Pflicht.** Ohne den Schalter prüft `engine_keepalive` auch den
+  Aufseher — und tötet einen mit kaltem Herzschlag. Der Aufseher schreibt aber genau während
+  dieses Aufrufs keinen. **Er hätte sich selbst erschlagen.** Eine Wache, die ihren eigenen
+  Wächter aufruft, braucht immer einen Weg, sich selbst auszunehmen.
+- **Regel: Jede Schicht wird von der darüber bewacht, und die oberste muss ausserhalb liegen.**
+  Ein Reparaturmechanismus auf der Platte, die zurückgedreht wird, repariert das Zurückdrehen
+  nicht (Lehre 27.08.) — dieselbe Logik eine Ebene höher.
+- ⚠️ **Beim Zusammenführen fast eine fremde Reparatur überschrieben.** Origin trug parallel
+  `zaehle_aufseher()`, eine Sperren-Prüfung vor dem Aufseher-Neustart und Repo-Vorrang beim
+  Token-Refresh — alles neuer und richtig. Der Konflikt lag in genau denselben zwei Dateien.
+  **Bei einem Konflikt in einer Datei, die zwei Sessions bearbeitet haben, ist «meine Seite
+  nehmen» fast immer falsch.** Beide Seiten wurden behalten und einzeln gegengeprüft
+  (`OHNE_AUFSEHER` 2×, `zaehle_aufseher` 8×, Motoren-Block 1×, Token-Vorrang 1×).
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
