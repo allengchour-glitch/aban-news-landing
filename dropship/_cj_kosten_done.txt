@@ -5769,3 +5769,13 @@ gid://shopify/Product/15449175425409	CHF 73.22	6 Varianten	Gesteppte Matratzenau
 gid://shopify/Product/15449175490945	CHF 43.57	6 Varianten	Gesteppter Matratzenbezug aus Bambusfaser
 gid://shopify/Product/15449175523713	CHF 91.00	16 Varianten	Blumen-Bettwäsche-Set aus Baumwolle, 4-teilig
 gid://shopify/Product/15449175622017	CHF 39.40	1 Varianten	Kühles Eisseide-Sommerquilt für heisse Tage
+gid://shopify/Product/15449175654785	CHF 9.21	4 Varianten	Kuscheldecke mit Tiermuster
+gid://shopify/Product/15449175687553	CHF 16.28	2 Varianten	3-in-1 Gradient Föhn
+gid://shopify/Product/15449175753089	CHF 38.05	2 Varianten	6-in-1 Warmluftkamm für Styling & Volumen
+gid://shopify/Product/15449175916929	CHF 74.64	1 Varianten	Faltbares IPL-Gerät für strahlende Haut
+gid://shopify/Product/15449175949697	CHF 58.51	1 Varianten	Platinum 3-in-1 Haarglätter
+gid://shopify/Product/15449175982465	CHF 8.01	1 Varianten	Elektrischer Nasenhaartrimmer mit LED-Anzeige
+gid://shopify/Product/15449176015233	CHF 37.58	1 Varianten	Elektrische Gesichtsreinigungsbürste aus Silikon
+gid://shopify/Product/15449176048001	CHF 14.63	1 Varianten	2-in-1 Stichheiler & Anti-Juckreiz-Instrument
+gid://shopify/Product/15449176146305	CHF 21.06	1 Varianten	Ultraschall-Gesichtsreiniger aus Silikon
+gid://shopify/Product/15449176277377	CHF 20.01	1 Varianten	Silikon-Gesichtsreinigungsbürste mit Vibration & W

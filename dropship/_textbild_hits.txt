@@ -13383,3 +13383,4 @@ gid://shopify/Product/15520374096257	50->0	Stylischer schwarzer Business-Rucksac
 gid://shopify/Product/15520376848769	13->0	Einfarbiger Kurzarm-Overall mit Reverskragen
 gid://shopify/Product/15520377012609	22->0	Polo-Shirt Kurzarm Atmungsaktiv
 gid://shopify/Product/15520377373057	11->0	Arbeitshemd mit Brusttasche
+gid://shopify/Product/15412899676545	18->0	Edelstahl-Trinkflasche «Hydro» 570 ml
