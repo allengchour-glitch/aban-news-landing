@@ -659,6 +659,24 @@ function wegVonStrasse(x,z){
      Promenade ohnehin fuenf eigene Laternen — diese hier gehoert an die Zufahrt
      von der Sued-Ringstrasse, die sonst unbeleuchtet blieb. */
   pts.push([68,87],[-4,78],[-33,86],[41.7,91.6],[7.5,128],[-24,74]);   // Plaetze, Parkplatz, Seepark-Zufahrt
+  /* 💡 SPIELCLUB — EIN EINZIGES LICHT IN 13,6 m. Die Laternenkette folgt dem
+     Stadtraster und endet bei |x| = 119; der Club steht auf (126|102), knapp
+     ausserhalb. GEMESSEN um 22 Uhr, Kamera am Club: EIN Punktlicht im Umkreis von
+     25 m, 13,6 m entfernt — der Eingang selbst lag allein im Hemisphaerenlicht
+     (nachts 0,26). Jetzt drei, davon zwei in 11,7 m, die den Eingang flankieren.
+     ⚠️ MEINE ERSTE ZAHL WAR FALSCH: der erste Lauf meldete NULL Lichter und stand
+     damit in einer frueheren Fassung dieses Kommentars. Der Pool vergibt seine
+     Lichter aber nach KAMERAPOSITION, und die Kamera stand beim Spielerhaus — am
+     Club brannte darum folgerichtig nichts. Vorher und Nachher muessen von
+     derselben Stelle aus gemessen werden, sonst vergleicht man zwei Orte.
+     Zwei Masten flankieren den Eingang (Tuer auf 128|96, Suedseite): z = 92 liegt
+     4 m vor der Wand, ausserhalb des Kollibers (z 95,5…108,5) und 8 m noerdlich der
+     naechsten Fahrbahn. ⚠️ KEIN neues Lichtobjekt — nur zwei Eintraege in der
+     Positionsliste. Der Pool vergibt weiter genau LAMP_MAX Lichter an die naechsten
+     Masten; die Zahl gleichzeitig brennender Punktlichter bleibt unveraendert und der
+     Shader wird nicht neu gebaut (die Lehre aus #2368/#2387). Gemessen: Laternen
+     174 -> 176, alle auf tragfaehigem Grund, zahlWechsel weiterhin 0. */
+  pts.push([122,92],[134,92]);
   var _lampPoolTexC=null;
   function _lampPoolTex(){
     if(_lampPoolTexC)return _lampPoolTexC;
