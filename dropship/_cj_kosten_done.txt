@@ -5779,3 +5779,17 @@ gid://shopify/Product/15449176015233	CHF 37.58	1 Varianten	Elektrische Gesichtsr
 gid://shopify/Product/15449176048001	CHF 14.63	1 Varianten	2-in-1 Stichheiler & Anti-Juckreiz-Instrument
 gid://shopify/Product/15449176146305	CHF 21.06	1 Varianten	Ultraschall-Gesichtsreiniger aus Silikon
 gid://shopify/Product/15449176277377	CHF 20.01	1 Varianten	Silikon-Gesichtsreinigungsbürste mit Vibration & W
+gid://shopify/Product/15449176310145	CHF 38.12	1 Varianten	Warm Sensation Gesichtsreinigungsbürste
+gid://shopify/Product/15449176342913	CHF 12.18	1 Varianten	Elektrische Silikon-Gesichtsreinigungsbürste
+gid://shopify/Product/15449176408449	CHF 24.94	1 Varianten	Handliches Haar-Reinigungsgerät
+gid://shopify/Product/15449176473985	CHF 35.56	1 Varianten	LED-Farblichtmaske 7 Farben
+gid://shopify/Product/15449176506753	CHF 14.90	1 Varianten	Visual Pimple Pin Elektrischer Porenreiniger
+gid://shopify/Product/15449176572289	CHF 14.00	1 Varianten	Retro Haarschneider – Präzision für Ölfrisuren & G
+gid://shopify/Product/15449176703361	CHF 61.31	1 Varianten	Gesichtsreinigungsbürste aus Silikon
+gid://shopify/Product/15449176768897	CHF 40.36	1 Varianten	Photon IPL LED Maske für Hautverjüngung
+gid://shopify/Product/15449176867201	CHF 10.73	1 Varianten	Porenreiniger mit Wasserkreislauf
+gid://shopify/Product/15449176899969	CHF 20.50	1 Varianten	Elektrischer Ganzkörperrasierer für Frauen
+gid://shopify/Product/15449176932737	CHF 18.51	1 Varianten	Intelligente Kinder-Zahnbürste mit Musik & Sprachf
+gid://shopify/Product/15449176998273	CHF 31.52	1 Varianten	Hochfrequenz Elektrotherapie Beauty-Gerät
+gid://shopify/Product/15449177129345	CHF 33.18	1 Varianten	Mobiles Sauerstoff-Injektionsgerät
+gid://shopify/Product/15449177293185	CHF 48.51	1 Varianten	Elektrische Zahnbürste mit 4 Bürstenköpfen
