@@ -8674,7 +8674,19 @@ setTimeout(function baueGebaeude(){
      linie an der Kante, Fahrplantafel, wartende Fahrgaeste (th30 — lagen ungenutzt
      im Repo) und Oberleitungsdraehte zwischen den vorhandenen Masten. */
   /* z=109.6 statt 110.3: mit 4.6 m Tiefe ragte das Dach sonst bis ueber die
-     Schiene und ueberdeckte den haltenden Zug (Screenshot). */
+     Schiene und ueberdeckte den haltenden Zug (Screenshot).
+     ⚠️ 109,6 REICHTE NOCH IMMER NICHT — jetzt 109,35. GEMESSEN mit der Sonde von
+     th-gleis.mjs: die Fussplatten der Dachstuetzen (y 0,55…0,65, also 10 cm ueber
+     dem Bahnsteig) reichten bis z 110,76 und damit 0,14 m ueber die Nordschiene
+     (110,62…110,78). Das Tor meldete darum mal 2, mal 4 Teile ueber dem Gleis —
+     je nachdem, wo die drei Module nach dem Entwirren zu liegen kamen: ein Lauf
+     zeigte durchgehend 2, der naechste durchgehend 4. Dieselbe Klasse wie der
+     flackernde Ahorn (Runde 33): nicht die Zeit schwankt, sondern der Endort.
+     0,25 m nach Sueden bringt die Platten auf 110,51 — 11 cm vor der Schiene.
+     ⚠️ Die Richtung ist dieselbe wie beim ersten Fix (weg vom Gleis), nicht
+     dagegen. Und die 22-s-Wartezeit von th-gleis bleibt noetig: ab rund 173 s
+     Seitenzeit wandern die Teile des einfahrenden Zuges ins Gleisband, die Zahl
+     steigt dann auf ueber 100. Wer dort laenger wartet, misst den Zug. */
   /* ⚠️ BAHNSTEIGHOEHE, gemessen an `th41_bahnsteigkante`: die begehbare Platte
      (Cube, 21,6 m2) endet auf y 0,55. Die 0,58 der Bounding-Box gehoeren zum
      2 cm hohen Taststreifen an der Gleiskante (Cube002) — wer die Boxhoehe
@@ -8682,7 +8694,7 @@ setTimeout(function baueGebaeude(){
      dem Bahnsteig steht, rechnet mit BSH. */
   var BSH=0.55;
   [-11,0,11].forEach(function(dx){
-    bau("th17_bahnsteigdach.glb",3.6,dx,BSH,109.6,Math.PI,false,null,true);});
+    bau("th17_bahnsteigdach.glb",3.6,dx,BSH,109.35,Math.PI,false,null,true);});
   /* ── 🚉 Charge 41: das Empfangsgebaeude und die Bahnsteig-Ausstattung ────────
      Das prozedurale Kastengebaeude oben ist raus. `th41_bahnhof` hat seine
      Schauseite auf Blender +y, in three.js also -z — bei rotY = 0 schaut es
