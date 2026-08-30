@@ -5437,3 +5437,196 @@ eine Fallunterscheidung in `inSolid`, und die läuft pro Bewegungsschritt jedes 
 > die Fortsetzung derselben Regel wie bei den offenen Bauwerken: erst fragen, ob der Fund
 > überhaupt ein Fehler ist — und dann, ob die naheliegende Behebung nicht schlimmer ist
 > als der Fund.
+
+## 2026-08-30 · 🧭 Das größte Viertel war mit dem GPS nicht anwählbar
+
+Angefangen hatte die Runde bei etwas anderem: `th-strassen` meldet seit Langem
+**8× `th19_eishalle` im Anschluss des Freizeitparks**, und der Runbook-Eintrag dazu schlug
+vor, die Bauzeile des Sportparks eine Lücke lassen zu lassen. Beim Nachmessen kam erst der
+wahre Grund heraus — und dann ein größerer Fund daneben.
+
+### Die Eishalle ist 43,6 m breit, im `cfg` stehen 24
+
+| Modell | Mitte x | echte x-Hülle | Breite | `cfg.w` |
+|---|---|---|---|---|
+| `th19_tennishalle` | −61 | −74,3 … −47,7 | 26,7 | 22 |
+| **`th19_eishalle`** | **−19,9** | **−41,7 … +1,9** | **43,6** | **24** |
+| `th19_kletterhalle` | +20 | 8,3 … 31,7 | 23,5 | 20 |
+
+Der Anschluss läuft bei x = 0 mit 9 m Breite (Band −4,5 … +4,5). Die Halle ragt bis
+**+1,9** hinein — nicht weil `entzerren()` sie verschoben hätte (**0,1 m** in x, gemessen
+über 170 s), sondern weil sie **19,6 m breiter ist als der Schätzwert**, mit dem der
+Laufcursor rechnet. *Die Zeile ist nicht verrutscht, sie war nie richtig geplant.*
+
+> **Bleibt offen, bewusst.** Die Breite im `cfg` zu korrigieren (24 → 44) verschiebt die
+> ganze Nordzeile: nachgerechnet fiele die Kletterhalle dann aus dem Viertel („passt nicht
+> mehr"). Das ist ein eigener Eingriff mit eigener Messung — entweder eine Aussparung für
+> den Anschluss im Laufcursor von `viertel()`, oder ein Anschlusspunkt östlich der Zeile.
+> Bis dahin bleiben die 8 Mesh-Positionen in `th-strassen` stehen. **Nachgemessen, ob der
+> Weg trotzdem befahrbar ist** — Querschnitt alle 2 m über die volle Fahrbahnbreite,
+> 58 Schnitte von z 246 bis 360: der Eishallen-Kollider reicht **nicht** auf den Belag,
+> 49 Schnitte sind auf allen 9 m frei. Blockiert ist nur z 328…344 auf x 2…4 (Kollider im
+> Freizeitpark, nahe den Teetassen) — dort bleiben 6 der 9 m. Der Weg ist also durchgängig
+> befahrbar, aber an der Stelle verengt.
+>
+> ⚠️ Der erste Anlauf fragte mit `inSolid` und meldete dort nur **1** blockierten Meter
+> statt 3. `inSolid` ist ein **Wandtest** (0,55-m-Schale) und gibt das Innere eines Kastens
+> als frei zurück. Für „steht hier ein Bauwerk?" ist `imBau` die richtige Frage — die
+> Warnung steht seit Langem im Code direkt unter `inSolid`, und ich bin trotzdem
+> hineingelaufen.
+
+### Der eigentliche Fund: `gpsRoute` gab für den Freizeitpark auf
+
+Beim Messen des Weganteils lieferte `gpsSetz(60, 360)` schlicht **false** — „Kein Weg
+dorthin gefunden". Nicht nur das Viertel: auch **(40|246)**, ein Punkt auf der eigenen
+Sportpark-Straße, war unerreichbar. Zoo, Flughafen, Bauernhof, Gewerbe Ost gingen.
+
+Ursache ist die Notbremse in der A*-Schleife: `runden++ < 60000`. Gemessen, wie viele
+Runden die Suche **bis zum Ziel** wirklich braucht:
+
+| Ziel | Runden | alter Deckel 60 000 |
+|---|---|---|
+| Gewerbe Ost | 5 690 | ✅ |
+| Vergnügungsviertel | 12 885 | ✅ |
+| Zoo / Flughafen | 15 707 / 15 365 | ✅ |
+| Bauernhof | 24 698 | ✅ |
+| Sportpark-Straße Ost (40\|246) | **68 006** | ❌ |
+| **Freizeitpark (60\|360)** | **183 068** | ❌ |
+
+Der Schätzer rechnet mit **1 pro Zelle**, eine Wiesenzelle kostet aber **3**. Er ist damit
+zulässig — die Suche findet den besten Weg — aber schwach: sie verhält sich fast wie
+Dijkstra und breitet sich weit aus. Bei einer Stadtroute fällt das nicht auf (12 000
+Runden), 360 m weiter südlich schon.
+
+### ⚠️ Der naheliegende Fix wäre der schlechtere gewesen
+
+Ein stärkerer Schätzer (gewichtetes A*) senkt die Rundenzahl dramatisch — und zerstört
+dabei genau das, wofür das GPS da ist. Gemessen, alle acht Ziele:
+
+| | Freizeitpark | Sportpark | Zoo | Flughafen | Gewerbe Ost | Runden Freizeitpark |
+|---|---|---|---|---|---|---|
+| Faktor ×1 (heute) | **90 %** | **86 %** | **72 %** | **81 %** | **70 %** | 182 815 |
+| Faktor ×2 | 90 % | 86 % | 56 % | 65 % | 55 % | 3 647 |
+| Faktor ×3 | 25 % | 36 % | 38 % | 38 % | 47 % | 923 |
+
+Prozente = Anteil der Route, der auf Asphalt liegt. Mit ×3 führt das GPS quer über die
+Wiese. **Fünfzigmal schneller und falsch ist kein Fortschritt** — die Suche bleibt exakt.
+
+### Stattdessen: dieselbe Suche, ohne die Wiederholung
+
+`gpsStrasse()` läuft über sechs Zubringer-Winkel und die ganze Verbinder-Tabelle und wurde
+für **jeden der acht Nachbarn jeder Runde** neu gerufen — beim weitesten Ziel über
+1,4 Millionen Mal für 22 494 verschiedene Zellen. Jetzt wird das Ergebnis je Zelle gemerkt
+(`_gpsStr`), genau wie `_gpsFrei` es für „begehbar" schon tat.
+
+| dieselben 8 Ziele | Weganteil | Länge | Punkte | Runden | Zeit (weitestes Ziel) |
+|---|---|---|---|---|---|
+| ohne Zwischenspeicher | — | — | — | — | 179 ms |
+| mit Zwischenspeicher | **identisch** | **identisch** | **identisch** | **identisch** | **56 ms** |
+
+Damit kostet der schlimmste Fall weniger als vorher — und der Deckel kann auf **380 000**
+(gut das Doppelte des gemessenen Bedarfs). Er bleibt stehen: ein unerreichbares Ziel darf
+die Seite nicht einfrieren.
+
+**Ergebnis: alle 7 Viertel anwählbar, schwächster Weganteil 70 %, teuerste Route 93 ms.**
+
+### ⚠️ Ein Ziel ist keine Abdeckung — und ein Werkzeug im Schrank prüft nichts
+
+`th-gps.mjs` gab es längst. Es fuhr **genau eine** Route quer durch die Stadt (12 000
+Runden, nie in den Deckel) und meldete „GPS BESTANDEN". Und es **stand nicht im Tor** —
+`th-alle.mjs` rief es nie auf. Zwei Lücken, beide geschlossen:
+
+* `th-gps` fährt jetzt **jedes** Viertel aus `_viertelSolver.VIERTEL` einzeln an und prüft
+  Erreichbarkeit **und** Weganteil. Die Liste kommt aus dem Spiel — ein neues Viertel ist
+  automatisch mitgeprüft, statt in einer Tabelle zu veralten (das war schon dreimal der
+  Fehler, siehe `_GPS_VERB`).
+* `th-gps` steht im Tor: **24 statt 23 Prüfungen**.
+
+**Selbstprobe gemacht:** mit dem alten Deckel 60 000 meldet die neue Prüfung
+`❌ Jedes Viertel ist anwaehlbar — ohne Weg: Freizeitpark`. Sie kann scheitern, also prüft
+sie etwas. Und sie deckte dabei gleich einen eigenen Fehler auf: die Zeile darunter rechnete
+den schwächsten Weganteil über *alle* Viertel und meldete `schwaechste NaN%` — ein Ausfall,
+hübsch gerechnet. Jetzt zählt nur, wer einen Weg hat.
+
+### Was das mit der HUD-Uhr zu tun hat (Fehlalarm, sauber ausgeräumt)
+
+Diese Runde begann mit einem Screenshot des Vergnügungsviertels bei Nacht, auf dem die
+HUD-Uhr **„🕗 Tag 1 · 08:12"** zeigte, während `uhrzeit` bei 1321 stand. Nachgemessen:
+
+| | Bilder/s | Spielminuten in 10 s | HUD |
+|---|---|---|---|
+| Tag, Startkamera | 1,6 | 3,2 | läuft |
+| Nacht, Vergnügungsviertel | 3,0 | 6,0 | läuft |
+
+Spielminuten = **exakt 2 × Bilder/s**: `dt` ist auf 0,05 gedeckelt, `uhrzeit += dt*4`. Die
+HUD wird bei `simTick > 0,35` neu geschrieben, also **alle 7 Bilder**. Im Screenshot-Lauf
+lief der Software-Rasterizer bei ~0,5 Bildern/s — 14 Sekunden zwischen zwei HUD-Zeilen.
+**Kein Uhrenfehler, sondern eine langsame Uhr in einem langsamen Bild.** Regel 11 („erst
+messen, dann ansehen") bekommt einen Zusatz: *eine eingefrorene Anzeige kann eine langsame
+Schleife sein — vor dem Suchen die Bildrate messen.*
+
+## 2026-08-30 · 📱 „sachen passen nicht dort rein" — ein Screenshot schlägt 23 Prüfungen
+
+Der User schickte ein Bild vom Handy: in der Fertigkeiten-Kachel stand
+`💼 Lv2 · 💘 Lv1 · 🕶️` und darunter, allein, `Lv1`. Nachgemessen:
+
+| Fenster | greift `@media (max-height:380px)` | Kasten | Inhalt | Zeile braucht | Zeilen |
+|---|---|---|---|---|---|
+| 844 × 390 | **nein** (390 > 380) | 177 px | 149 px | 149 px | 1 (auf den Pixel) |
+| 667 × 375 | **ja** | 150 px | **122 px** | 149 px | **2** |
+
+Der Deckel `max-width:150px` steht im Block für sehr niedrige Bildschirme und sollte dort
+**Höhe sparen**. Er tat das Gegenteil: der Umbruch machte die Kachel von **51 auf 79 px**
+hoch. Jetzt `max-width:min(34vw,190px)` — bei 667 px Fensterbreite waren 44 px Luft in der
+HUD-Reihe frei, gebraucht werden 27.
+
+Dazu feste Leerzeichen **innerhalb** jedes Eintrags (`💼 Lv2`): wird es doch einmal
+zu eng, fällt der Umbruch **zwischen** zwei Einträge statt mitten hinein.
+
+| 667 × 375 | vorher | nachher |
+|---|---|---|
+| Fertigkeiten-Zeile | **2 Zeilen** | **1 Zeile** |
+| Kachel | 150 × **79** | 177 × **65** |
+| HUD-Reihe (Zeilen) | 1 | 1 |
+| `th-hud` Überdeckungen / Tippziele | 0 / 0 | 0 / 0 |
+
+Bei 568 × 320 brach die HUD-Reihe schon vorher auf zwei Zeilen um (Luft −55, jetzt −99) —
+das ist kein Rückschritt durch diese Änderung, aber ein offener Punkt für ein sehr kleines
+Querformat.
+
+### ⚠️ Warum kein Werkzeug das gefunden hat — drei Gründe, alle behoben
+
+1. **`th-hud` stand nicht im Tor.** Wie `th-gps` heute früh. Jetzt drin: **25 Prüfungen**.
+2. **Es maß eine einzige Größe** (844 × 390) — genau die, bei der die Zeile auf den Pixel
+   passt. Jetzt ohne Argumente **drei Formate**: 844×390, 667×375, 568×320.
+3. **Es maß ein leeres HUD.** Ein frisches Spiel hat `Lv0 · Lv0`, keinen Krimi-Rang. Der
+   Fehler braucht einen *gespielten* Stand. Das Werkzeug füllt das HUD jetzt selbst.
+
+Neue Prüfung: **„Textzeilen, die umbrechen"**. Sie meldet für jede Blatt-Zeile im HUD, wie
+breit sie ist und wie breit sie sein müsste. **Selbstprobe gemacht** — mit dem alten
+Deckel meldet sie exakt den Screenshot des Users:
+`❌ needsBox 2 Zeilen · hat 122 px, braucht 149 px „💼 Lv2 · 💘 Lv1 · 🕶️ Lv1"`.
+
+### ⚠️ Drei eigene Messfehler auf dem Weg dorthin
+
+* **Höhe ÷ Zeilenhöhe zählt Polster mit.** Der erste Anlauf meldete drei Umbrüche, die
+  keine waren — „hat 157 px, braucht 153". Eine einzeilige Kachel mit 8 px Polster oben
+  und unten sieht so aus wie zwei Zeilen. Gezählt werden jetzt die echten Zeilenkästen
+  über einen `Range` (ein Rechteck je Zeile).
+* **Gefälschte Kinder brechen das Spiel.** Um die Familien-Zeile zu füllen, schob der
+  erste Anlauf zwei Objekte in `kinder` — ohne `mesh`. Die Bildschleife warf danach in
+  jedem Bild einen Fehler (**17–18 pro Lauf**). *Ein Werkzeug, das den Messgegenstand
+  kaputt macht, misst seinen eigenen Schaden.*
+* **23:05 löst den Turtel-Vorhang aus.** Die längste Uhrzeit-Zeile schien die richtige
+  Wahl — dann gingen die Sims ins Bett, `romScene` legte `#romKiss` über den Bildschirm,
+  und die Überdeckungs-Prüfung meldete brav „Sperrschicht aktiv" für **alle drei**
+  Formate. Sie war damit abgeschaltet, und der Lauf sah trotzdem grün aus. Jetzt 13:05
+  (gleich breit) plus ein Sicherheitsnetz, das auf das Ende einer Zwischenszene wartet.
+* Und die Sperrschicht-Erkennung selbst war zu eng: sie fragte „fängt **ein** Element
+  alles ab?", der Vorhang besteht aber aus `#romKiss` **und** `#romTxt`. Zwei Namen, eine
+  Schicht — der Täter wird jetzt auf seine oberste benannte Hülle zurückgeführt.
+
+> **Die Lehre der ganzen Runde, zweimal am selben Tag:** ein Werkzeug, das niemand
+> aufruft, prüft nichts — und eines, das den gutmütigsten Fall misst (eine Stadtroute,
+> ein leeres HUD, ein Bildschirmformat), meldet Grün über einem Fehler, den der User auf
+> dem ersten Blick sieht.
