@@ -9845,7 +9845,7 @@ function komboHudUpd(){
    ⚠️ Die Hetze zahlt NICHTS aus. Sie zaehlt nur, was man ohnehin verdient (siehe
    verdiene). Waere es anders, waere die beste Strategie, sie endlos zu wiederholen —
    und das Spiel darum herum waere egal. Der Reiz ist der Rekord, nicht die Kasse. */
-var HETZE={an:false,t:0,dauer:90,punkte:0,best:0,kette:0,_piep:0};
+var HETZE={an:false,t:0,dauer:90,punkte:0,best:0,kette:0,letzte:[],_piep:0};
 /* Die Einladung. Sie erscheint GENAU EINMAL und nur, wenn gerade eine starke Serie
    geendet hat: dann ist die Spielerin warm, es passiert nichts anderes, und die Frage
    "noch neunzig Sekunden?" trifft den Moment. Ausserhalb dieses Fensters waere ein
@@ -9890,6 +9890,10 @@ function hetzeEnde(){
   if(rek)HETZE.best=HETZE.punkte;
   /* Zaehler fuer die Ziele — erst dadurch taucht die Hetze ueberhaupt in der
      Erfolgsliste auf, und damit auch in "Am naechsten dran". */
+  /* Die letzten fuenf Laeufe: erst im Vergleich sieht man, ob man besser wird.
+     Ein einzelner Punktestand sagt nichts, fuenf nebeneinander sagen alles. */
+  HETZE.letzte.push(HETZE.punkte);
+  while(HETZE.letzte.length>5)HETZE.letzte.shift();
   stats.hetzen=(stats.hetzen||0)+1;
   if(HETZE.punkte>(stats.hetzeBest||0))stats.hetzeBest=HETZE.punkte;
   if(HETZE.kette>(stats.hetzeKette||0))stats.hetzeKette=HETZE.kette;
@@ -9898,10 +9902,27 @@ function hetzeEnde(){
   if(e)e.innerHTML='<div style="font-size:1.5rem;font-weight:900">'+(rek?"🏆 NEUER REKORD!":"🏁 Hetze vorbei")+'</div>'+
     '<div style="font-size:2.1rem;font-weight:900;color:#d4802a;margin:8px 0">'+HETZE.punkte+' $</div>'+
     '<div style="font-size:.9rem">l\u00e4ngste Serie dabei: <b>'+HETZE.kette+'</b>'+
-    (rek?"":' · Rekord: <b>'+HETZE.best+' $</b>')+'</div>';
+    (rek?"":' · Rekord: <b>'+HETZE.best+' $</b>'+
+      (HETZE.best>HETZE.punkte?' · <span style="color:#d4802a">'+(HETZE.best-HETZE.punkte)+' $ gefehlt</span>':''))+'</div>'+
+    hetzeVerlauf();
   var p3=document.getElementById("hetzePanel");if(p3)p3.style.display="flex";
   if(typeof beep==="function")beep(rek?1040:440,.18,"triangle",.06);
   if(rek&&typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);}
+/* Fuenf Balken, der hoechste ist der Rekord. Kein Diagramm, keine Achse — nur die
+   Frage "werde ich besser?", auf einen Blick beantwortet. */
+function hetzeVerlauf(){
+  var L=HETZE.letzte;
+  if(L.length<2)return "";
+  var max=Math.max.apply(null,L)||1,h="";
+  for(var i=0;i<L.length;i++){
+    var hoch=Math.max(4,Math.round(L[i]/max*34)),letzt=(i===L.length-1);
+    h+='<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px">'+
+       '<div style="width:100%;height:'+hoch+'px;border-radius:4px 4px 0 0;background:'+
+       (letzt?"#d4802a":(L[i]>=max?"#e8b04a":"#cfc4ae"))+'"></div>'+
+       '<small style="font-size:.62rem;color:#8a7a5a">'+L[i]+'</small></div>';}
+  return '<div style="margin-top:12px"><small style="color:#8a7a5a;font-weight:800">Deine letzten '+
+    L.length+' Runden</small><div style="display:flex;align-items:flex-end;gap:5px;height:52px;margin-top:5px">'+
+    h+'</div></div>';}
 function hetzeHudUpd(){
   var el=document.getElementById("hetzeHud");if(!el)return;
   if(!HETZE.an){el.style.display="none";return;}
@@ -9924,6 +9945,14 @@ function hetzeHudUpd(){
   el.innerHTML='<div style="display:flex;align-items:center;gap:9px;justify-content:center">'+
     '<span style="font-size:1.05rem;font-weight:900">🏁 '+Math.ceil(s1)+'s</span>'+
     '<span style="font-weight:900;color:#ffd166">'+HETZE.punkte+' $</span>'+
+    /* 🏆 DER MOMENT KURZ DAVOR. Ohne diese Zeile laeuft man neunzig Sekunden
+       blind und erfaehrt erst am Ende, ob es gereicht hat. Mit ihr weiss man in
+       Sekunde 70, dass 40 $ fehlen — und daraus entsteht der letzte Sprint.
+       Erst ab der Haelfte des Rekords, sonst stuende dort die ganze Runde lang eine
+       entmutigend grosse Zahl. */
+    (HETZE.best>0&&HETZE.punkte<HETZE.best&&HETZE.punkte>=HETZE.best*0.5
+      ?'<span style="font-weight:900;color:#ff9f45">· noch '+(HETZE.best-HETZE.punkte)+' $</span>'
+      :(HETZE.best>0&&HETZE.punkte>=HETZE.best?'<span style="font-weight:900;color:#8fe08f">· REKORD!</span>':''))+
     '</div><div style="margin-top:4px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden">'+
     '<div style="height:100%;width:'+(anteil*100).toFixed(0)+'%;background:'+(eng?"#ff6b5a":"#e8a33d")+
     ';transition:width .12s linear"></div></div>';
@@ -10685,7 +10714,8 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   anC:window._angelCd,
   kb:KOMBO.best||0,   /* 🔥 der eigene Serien-Rekord — das, was man schlagen will */
   an:_achNah,       /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
-  hz:HETZE.best||0};}  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
+  hz:HETZE.best||0,
+  hzl:HETZE.letzte||[]};}  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -10739,6 +10769,7 @@ function loadSnapshot(sn){
   if(sn.kb!==undefined)KOMBO.best=sn.kb|0;
   if(sn.an)_achNah=sn.an;
   if(sn.hz!==undefined)HETZE.best=sn.hz|0;
+  if(Array.isArray(sn.hzl))HETZE.letzte=sn.hzl.slice(-5);
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}

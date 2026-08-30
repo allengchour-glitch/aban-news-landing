@@ -5824,3 +5824,39 @@ genau so passiert. `th-fahrt` läuft darum `F.rotor` mit ab (518 statt 115 Teile
 > `scooter`. Sie haben keinen benannten Drehpunkt; ihre Bewegung wäre keine Drehung, sondern
 > eine Fahrt (Gondel hoch/runter, Kabinen am Seil, Boote im Kanal). Das braucht je Modell
 > eine eigene Vermessung der Bauteile — und die gehört in eine eigene Runde.
+
+## 2026-08-30 · 🏆 Der Moment kurz davor — die Hetze wusste nie, wie nah man dran ist
+
+**Der Befund.** Die Hetze hatte einen Rekord, aber während der neunzig Sekunden lief man
+**blind**: ob es reicht, erfuhr man erst am Ende. Der stärkste Moment einer Kurzrunde ist
+aber genau der, in dem man *weiss*, dass 40 $ fehlen und zwanzig Sekunden bleiben.
+Und ein einzelner Punktestand sagt nichts — erst fünf nebeneinander beantworten die
+Frage „werde ich besser?".
+
+**Zwei Zusätze, beide in vorhandenen Elementen, kein neues HUD:**
+
+| Teil | Wirkung |
+|---|---|
+| Rückstand in der Uhr | „🏁 45s · 700 $ · **noch 300 $**", ab Rekordhöhe „**REKORD!**" |
+| `HETZE.letzte` (5 Läufe) | Balkenreihe im Ergebnis, der letzte dunkel, der beste hell |
+| Ergebnis | „Rekord: 500 $ · **250 $ gefehlt**" |
+
+**Die Schwelle ist Absicht:** der Rückstand erscheint erst ab **der Hälfte** des Rekords.
+Davor stünde die ganze Runde lang eine entmutigend grosse Zahl — aus einem Ansporn würde
+eine Ansage, dass es sowieso nicht reicht.
+
+**Geprüft:** `spiele-dev/tools/th-jagd.mjs` — 17/17, davon 5 Gegenproben, darunter die
+beiden Ränder des Fensters (bei 10 % des Rekords **keine** Anzeige, bei 99,9 % „noch 1 $")
+und ein zu langer Verlauf im Spielstand, der beim Laden gekappt wird. Zwei Sabotagen:
+Schwelle auf 0 gesetzt → „weit unter dem Rekord bleibt sie aus" rot; die Kappung auf fünf
+entfernt → **vier** Prüfungen rot (Liste, Reihenfolge, Balkenzahl, Spielstand).
+Bestand grün: `th-hetze` 27/27, `th-hud`, `th-speichern`, `th-lint`.
+
+### Eine Falle beim Bearbeiten, nicht beim Denken
+
+Ein Ersetzen scheiterte an `' · Rekord: '` — ich hatte `·` gesucht, in der Datei
+steht aber das **echte UTF-8-Zeichen** `·`. Dieselbe Datei mischt beide Schreibweisen
+(`längste` daneben als Escape). → Vor einem Muster-Ersetz **immer** die Zielzeile
+mit `cat -A` ansehen, statt die Schreibweise aus dem Gedächtnis zu rekonstruieren.
+Der `assert` davor hat den Schaden verhindert: er lief vor dem Schreiben, die Datei blieb
+unangetastet. **Prüfen vor dem Schreiben, nicht danach.**
