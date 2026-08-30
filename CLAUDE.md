@@ -929,6 +929,33 @@ alte Regel **einen älteren Aufseher, den es nicht gibt**; mit der neuen ist es 
   `$1==$3 && $2==1`, oder man baut das Suchwort so zusammen, dass es in der eigenen Zeile gar
   nicht vorkommt.
 
+## 🔐 /tmp WURDE GELEERT — und der Tresor liess sich nicht öffnen, weil sein Schlüssel darin lag (2026-08-30)
+Nach einer längeren Sitzungslücke meldete `engine_keepalive.sh` viermal **«cj_runner2 FEHLT
+(/tmp gewiped?)»** und **STAND: 0 CJ-Runner**. Nachgesehen: **/tmp ist vollständig leer.** Weg
+sind `cj_shop_token.txt`, `cj_creds.env`, `cj_token.json`, `tt_creds.env`, `judgeme.env` und
+**`secrets_env.sh`** — die Datei vom 02.08., die bisher jeden Snapshot-Rewind überlebt hatte.
+In der Umgebung ist ebenfalls nichts gesetzt (`SHOPIFY_CLIENT_ID` … alle leer). **Damit ist
+der Shop von dieser Session aus derzeit NICHT erreichbar.**
+- ⚠️ **Der Konstruktionsfehler, und er ist der eigentliche Fund:** Der Tresor
+  (`automation/tresor.py`) wurde am 28.08. gebaut, damit Zugangsdaten den Rewind überleben —
+  er liegt als Shop-Metafeld bei Shopify, nicht auf dieser Platte. Um ihn zu LESEN, braucht er
+  aber den **Shopify-Admin-Token**, und der lag in `/tmp`. **Ein Tresor, dessen Schlüssel in
+  dem liegt, wogegen er schützen soll, ist kein Tresor.** Gegen den Rewind half er (dort blieb
+  `secrets_env.sh` erhalten); gegen das vollständige Leeren hilft er nicht.
+- **Der einzige Weg zurück führt über den Betreiber:** `SHOPIFY_CLIENT_ID` und
+  `SHOPIFY_CLIENT_SECRET` (Custom-App im Dev-Dashboard). Daraus holt
+  `automation/shop_token_refresh.sh` per Client-Credentials-Grant einen frischen Admin-Token,
+  und mit dem öffnet sich der Tresor wieder — dort liegen CJ, Judge.me, TikTok und Meta.
+  **Ein einziges Paar Zugangsdaten schaltet also alles andere frei.**
+- **Was NICHT verloren ist:** Die Runner-Skripte liegen im Repo
+  (`automation/cj_runner2..5.sh`, `cj_runner_template.sh`); `engine_keepalive.sh` legt sie
+  selbst wieder nach `/tmp`, sobald es laufen darf. Verloren sind nur die Geheimnisse.
+- **Konsequenz für die Ablage:** Die Umgebungs-Variablen der Claude-Umgebung sind der einzige
+  Ort, der weder vom Rewind noch vom Leeren erfasst wird. `SHOPIFY_CLIENT_ID`/`_SECRET` gehören
+  dorthin — nicht nach `/tmp`, und erst recht nicht ins Repo (es ist öffentlich). Das stand
+  für die Judge.me-Token schon als Punkt 14 in `dropship/COWORK-AUFTRAEGE.md`; heute ist der
+  Beleg da, dass es für die Shopify-Zugangsdaten **zuerst** gilt: ohne sie ist auch der Tresor zu.
+
 ## 🖥️ Der Browser dieser Session kann TikTok LESEN, aber nicht BEDIENEN (2026-08-29)
 Auf «mach das du posten kannst» den QR-Weg durchgespielt — er ist der einzige, der ohne
 Passwort und ohne 2FA auskommt: Der Betreiber scannt, die Sitzung landet im Tresor. Die Seite
