@@ -13463,3 +13463,5 @@ gid://shopify/Product/15450068189569	24->0	Wasserdichte Wanderschuhe
 gid://shopify/Product/15450258997633	36->0	Ultraleichter Lenkradbezug rutschfest atmungsaktiv abriebfes
 gid://shopify/Product/15450644840833	77->1	Elegante Leder-Mules mit Schnalle
 gid://shopify/Product/15450693796225	18->3	Sportliche Mesh-Schuhe für Damen
+gid://shopify/Product/15450742849921	71->0	Winter High-Top Baumwollschuhe für Herren
+gid://shopify/Product/15450829390209	46->0	Galaxy Kristallkugel LED Nachtlicht
