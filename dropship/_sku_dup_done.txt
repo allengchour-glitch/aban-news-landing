@@ -700,3 +700,4 @@ gid://shopify/Product/15512266047873	CJ-CJLY292664201AZ	Elegantes Off-Shoulder E
 gid://shopify/Product/15512313790849	CJ-CJYD292633701AZ	Elegantes Satin-Abendkleid mit Mesh-Details
 gid://shopify/Product/15519837913473	CJ-29F500EB-1562-45AA-9084-28A263A8EB21	Outdoor Smartwatch für iOS & Android
 gid://shopify/Product/15519837979009	CJ-B4E01F46-09AD-4B90-A430-38A0590747B9	Smartwatch mit Farbdisplay und Sportfunktionen
+gid://shopify/Product/15520403554689	CJ-1393447891875532800	Sommerliches Geschirr-Set für Hunde mit Blumenmuster

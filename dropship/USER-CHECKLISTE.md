@@ -22,7 +22,7 @@
 6. **Judge.me:** 12 Bild-Reviews ausblenden + veraltete Produkt-Titel aktualisieren (nur Browser-UI).
 7. **Fortura-FTP-Zugangsdaten** neu liefern (Bild-2–5-Backfill-Quelle versiegt sonst).
 8. **E-Mail-Popup** verdeckt mobil den Kaufknopf (Shopify Forms → Trigger/Position anpassen; Marketing-Entscheid).
-9. **GitHub-Token «gitlab»** läuft ~22.08. ab — erneuern, sonst reissen Pushes ab.
+9. **GitHub-Token «gitlab» erneuert (30.08.)** — neuer Fine-grained-PAT ist push-verifiziert und im Tresor (`tresor.py holen github`). **1 Klick offen:** GitLab-Projekt → Settings → CI/CD → Variables → `GH_PUSH_TOKEN` auf den neuen `github_pat_…`-Wert setzen (Masked). Danach BEIDE PATs gelten als chat-exponiert → nach Einrichtung rotieren. (Rest-Müll: Branch `_pat-test` auf GitHub — Proxy blockt Löschung aus der Session; 1 Klick im GitHub-UI: Branches → 🗑.)
 10. **Meta-Token** nur falls Social wieder aktiviert werden soll (⛔ Social-Stopp bleibt bis dahin).
 
 ### 📌 Vereinbarte Regel (User 16.08.2026):
