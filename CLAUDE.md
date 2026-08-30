@@ -929,14 +929,26 @@ alte Regel **einen älteren Aufseher, den es nicht gibt**; mit der neuen ist es 
   `$1==$3 && $2==1`, oder man baut das Suchwort so zusammen, dass es in der eigenen Zeile gar
   nicht vorkommt.
 
-## 🎛️ Null Filter auf allen Kollektionsseiten — die App fehlte, nicht das Theme (2026-08-30)
-Auf «filter verbessern überall wo man reinklickt» erst gemessen: Das gerenderte HTML von
-`/collections/damen-mode` enthielt **null `filter.*`-Inputs** — kein Preis, keine
-Verfügbarkeit, nur «Sortieren». Dabei hat das Theme `enable_filtering: true`. **Die Facetten
-rendern nichts, weil `collection.filters` leer ist — und das ist es, solange die
-Search-&-Discovery-App nicht installiert ist** (alle 25 installierten Apps geprüft: fehlt).
-App-Installation geht nur im Admin → Cowork-Punkt 3f.
-- **Was ohne App geht: Shopifys native Tag-Filterung** (`/collections/<handle>/<tag>`).
+## 🎛️ «Keine Filter» — zwei eigene Messfehler in einem Befund (2026-08-30, korrigiert am selben Abend)
+⚠️ **Die erste Fassung dieses Eintrags war falsch, in zwei Punkten:**
+1. **«Die Search-&-Discovery-App ist nicht installiert (25 Apps geprüft)»** — sie ist
+   installiert, als App Nr. 27 von 35. Meine Abfrage `appInstallations(first:25)` bekam
+   **exakt 25** zurück und ich habe eine VOLLE erste Seite als vollständige Liste gelesen,
+   ohne `hasNextPage` zu prüfen. Aufgefallen nur, weil der Betreiber einen Screenshot der
+   laufenden App schickte. **Eine volle Seite ist ein Weiterblättern-Befehl, kein Ergebnis.**
+2. **«Null Filter auf allen Kollektionsseiten»** — gemessen an EINER Seite (`damen-mode`),
+   verallgemeinert auf alle. Tatsächlich rendern `gadgets`, `uhren`, `komfort-im-alter` usw.
+   volle Facetten (Preis-Slider, Verfügbarkeit, Produkttyp, Varianten-Optionen). **Filter
+   fehlen nur auf Kollektionen mit >5'000 Produkten** — Shopifys Plattform-Limit; der
+   Fingerzeig stand sogar in der Storefront-API-Antwort: «Auf Lager (5000)», exakt am Deckel.
+   Ausgerechnet die Stichprobe (damen-mode, ≥10'000) lag jenseits davon.
+   **Eine Stichprobe von eins hat keinen Plural.**
+
+**Was der Abend TROTZDEM gebracht hat (und stehen bleibt):**
+- **Die Tag-Filter-Chips sind genau fuer die Riesen-Kollektionen der richtige Hebel:**
+  native Tag-Filterung kennt kein 5'000er-Limit und greift auf damen-mode, wohnen-dekoration
+  und schuhe-sneaker — den Seiten, auf denen Shopifys Facetten hart abgeschaltet sind.
+- **Shopifys native Tag-Filterung** (`/collections/<handle>/<tag>`).
   `lux_subchips` in `templates/collection.json` rendert jetzt eine Filterzeile aus
   kundentauglichen Tags — nur solche, die im jeweiligen Sortiment vorkommen
   (`collection.all_tags contains`), mit Aktiv-Zustand (`current_tags`) und Abwahl-Kreuz.

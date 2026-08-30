@@ -85,21 +85,22 @@ Das Konto-Feld bleibt trotzdem die Quelle: Klaviyo baut die Domain in NEUE Vorla
 lassen und in Shopify als Weiterleitungs-Domain eintragen. Das rettet zusätzlich alle BEREITS
 VERSCHICKTEN Mails und alten Social-Posts.
 
-## 3f. Echte Filter: die Search-&-Discovery-App fehlt  ⭐⭐ (NEU 30.08.)
+## 3f. Filter: aufgeklärt — kein Handgriff nötig  (KORRIGIERT 30.08., 22:40)
 
-> **2 Minuten:** Shopify-Admin → Apps → im App Store nach **«Shopify Search & Discovery»**
-> suchen (kostenlos, von Shopify selbst) → installieren → in der App unter *Filter* die
-> Vorschläge übernehmen (Verfügbarkeit, Preis, weitere nach Wunsch). Fertig — mehr nicht.
+**Nichts zu tun — und mein erster Befund war falsch.** Ich hatte gemeldet, die
+Search-&-Discovery-App fehle. Tatsächlich ist sie installiert (sie war App Nr. 27, meine
+Abfrage las nur die ersten 25) und die Filter sind eingerichtet — dein Screenshot hat mich
+draufgestossen, danke.
 
-**Der Befund (30.08., gemessen):** Die Kollektionsseiten hatten **null Filter** — kein Preis,
-keine Verfügbarkeit —, obwohl das Theme Filtern eingeschaltet hat (`enable_filtering: true`).
-Ursache: Die App ist nicht installiert (alle 25 installierten Apps geprüft), und ohne sie ist
-`collection.filters` leer. Installieren kann sie nur ein Mensch im Admin.
+**Was wirklich los war:** Shopify schaltet Filter auf Kollektionen mit **mehr als 5'000
+Produkten** ab (Plattform-Limit, nicht änderbar). Gemessen: `gadgets`, `uhren`,
+`komfort-im-alter` usw. haben volle Filter (Preis, Verfügbarkeit, Produkttyp, Optionen);
+`damen-mode` (≥10'000), `wohnen-dekoration` (7'139) und `schuhe-sneaker` (5'195) haben keine —
+und ich hatte ausgerechnet an damen-mode gemessen und daraus «überall keine» gemacht.
 
-**Was bis dahin schon läuft:** Ich habe native Tag-Filter-Chips auf alle Kollektionsseiten
-gebaut («Filtern: Damen · Herren · Schuhe · ⚡ Ab CH-Lager …», nur Tags, die im jeweiligen
-Sortiment vorkommen, mit Abwahl-Kreuz). Live verifiziert. Die App ergänzt dann Preisregler
-und Verfügbarkeit — die Chips bleiben als Schnellfilter sinnvoll.
+**Genau für diese Riesen-Kollektionen greifen jetzt die neuen Filter-Chips** («Filtern:
+Damen · Herren · Schuhe · ⚡ Ab CH-Lager …», native Tag-Filterung) — sie funktionieren
+unabhängig vom 5'000er-Limit auf jeder Kollektionsseite. Die beiden Systeme ergänzen sich.
 
 ## 4. Google Merchant Center: Zielland auf Schweiz
 
