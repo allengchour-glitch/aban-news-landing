@@ -5762,3 +5762,10 @@ gid://shopify/Product/15449174966657	CHF 75.28	1 Varianten	Makramee-Vorhang aus 
 gid://shopify/Product/15449175032193	CHF 57.20	1 Varianten	Verdunkelungsvorhänge mit Ösen, 2 Stück
 gid://shopify/Product/15449175064961	CHF 63.18	1 Varianten	Verdunkelungsrollo mit Kettenzug
 gid://shopify/Product/15449175097729	CHF 35.89	1 Varianten	Bettwäsche-Set mit Fixleintuch und Kissenbezügen
+gid://shopify/Product/15449175130497	CHF 307.67	1 Varianten	Memory Foam Kühlgel Matratzenauflage
+gid://shopify/Product/15449175163265	CHF 126.58	1 Varianten	Kühlende Memory Foam Matratzenauflage
+gid://shopify/Product/15449175261569	CHF 21.78	1 Varianten	Geometrisches Tufted Kissen
+gid://shopify/Product/15449175425409	CHF 73.22	6 Varianten	Gesteppte Matratzenauflage für erholsamen Schlaf
+gid://shopify/Product/15449175490945	CHF 43.57	6 Varianten	Gesteppter Matratzenbezug aus Bambusfaser
+gid://shopify/Product/15449175523713	CHF 91.00	16 Varianten	Blumen-Bettwäsche-Set aus Baumwolle, 4-teilig
+gid://shopify/Product/15449175622017	CHF 39.40	1 Varianten	Kühles Eisseide-Sommerquilt für heisse Tage
