@@ -5808,3 +5808,25 @@ gid://shopify/Product/15449178145153	CHF 9.84	1 Varianten	Weicher Hunde-Halskrag
 gid://shopify/Product/15449178177921	CHF 6.80	1 Varianten	Halsband für GPS-Tracker mit Diebstahlschutz
 gid://shopify/Product/15449178210689	CHF 9.89	1 Varianten	Verstellbares Space-Cotton Halsband für Haustiere
 gid://shopify/Product/15449178308993	CHF 6.86	1 Varianten	Retro Lederhalsband für Katzen
+gid://shopify/Product/15449178341761	CHF 9.77	1 Varianten	GPS-Halsband für Katzen · Find-My-kompatibel
+gid://shopify/Product/15449178374529	CHF 9.22	1 Varianten	Reflektierendes Nylon-Hundehalsband
+gid://shopify/Product/15449178472833	CHF 8.72	1 Varianten	Weicher Halskragen für Katzen & Welpen
+gid://shopify/Product/15449178603905	CHF 11.40	1 Varianten	GPS-Halsband für Hunde – Anti-Verlust-Gerät
+gid://shopify/Product/15449178636673	CHF 14.80	1 Varianten	Katzenhaar-Gedenkanhänger-Set, 6-teilig
+gid://shopify/Product/15449178669441	CHF 27.46	1 Varianten	Wasserdichtes Trainingsgerät für Katzen
+gid://shopify/Product/15449178734977	CHF 14.80	1 Varianten	2-in-1 Pflegehandschuh für Haustiere
+gid://shopify/Product/15449178767745	CHF 8.72	1 Varianten	Reflektierendes Nylon-Halsband für Hunde
+gid://shopify/Product/15449178931585	CHF 35.76	1 Varianten	Ultraschall-Schädlingsvertreiber (6er-Pack)
+gid://shopify/Product/15449178997121	CHF 11.75	22 Varianten	Reflektierendes Outdoor-Geschirr für Haustiere
+gid://shopify/Product/15449365610881	CHF 15.11	24 Varianten	Elegantes ärmelloses Midikleid
+gid://shopify/Product/15449365676417	CHF 11.00	8 Varianten	Tailliertes Etuikleid mit Rundhals und Print
+gid://shopify/Product/15449365741953	CHF 36.57	11 Varianten	Elegantes Spitzenkleid in Unifarben
+gid://shopify/Product/15449365873025	CHF 30.40	4 Varianten	Ärmelloses V-Neck Kleid mit Rüschen
+gid://shopify/Product/15449366004097	CHF 15.54	24 Varianten	Trägerloses Pailletten-Minikleid
+gid://shopify/Product/15449366659457	CHF 14.19	12 Varianten	Unifarbener Kapuzenpullover im Designer-Stil
+gid://shopify/Product/15449366823297	CHF 11.26	35 Varianten	Unifarbener Kapuzenpullover für Damen · Modell 2
+gid://shopify/Product/15449366987137	CHF 15.20	6 Varianten	Kapuzen-Sweatshirt mit Krakenmuster und Fleecefutt
+gid://shopify/Product/15449367150977	CHF 12.75	36 Varianten	Buntes Damen Sweatshirt mit Print
+gid://shopify/Product/15449372131713	CHF 15.25	16 Varianten	Damen Half Zip Hoodie Top mit Geometrischem Muster
+gid://shopify/Product/15449372197249	CHF 13.04	40 Varianten	3D Digital-Print Rollkragenpullover für Damen
+gid://shopify/Product/15449372295553	CHF 14.77	45 Varianten	Locker sitzender Kapuzenpullover mit Kordelzug
