@@ -48,8 +48,8 @@ THEMEN = {
         r'\bIPL\b|Mikrostrom|LED-Maske|Gesichtsreinigungsb[üu]rste|Dermaroller|Gua Sha|'
         r'Jade Roller|Haarentfernungs|Ice[- ]?Roller|Eisroller|'
         r'Kopfhaut[- ]?Massage|Scalp[- ]?Massag|EMS[- ]?(?:Gesicht|Face)|Face[- ]?(?:EMS|Toner)', re.I),
-    "Hautpflege-Serum": re.compile(
-        r'Schneckencreme|Snail|Serum|Ampullen|Retinol|Hyalurons[äa]ure', re.I),
+    # «Hautpflege-Serum» ENTFERNT am 30.08.: topische Kosmetik (Creme/Serum aus China) wird
+    # nicht mehr prominent beworben — Betreiber-Entscheid. Fuehren im Katalog bleibt.
     "Mini-Beamer": re.compile(r'Mini-?\s?(?:Beamer|Projektor)|Smart Mini Beamer', re.I),
     "Ordnung & Aesthetic": re.compile(
         r'Organizer|Aufbewahrungskorb|Aufbewahrungsbox|Ordnungssystem', re.I),
@@ -147,7 +147,7 @@ RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung
 # Die Startseite ist die Fläche, die jede Besucherin ungefragt sieht — auch die, die mit einem
 # Kind daneben sitzt. Der erste Lauf hätte ein «Intim-Pflegeserum für Frauen» dorthin gestellt.
 # Das Produkt ist völlig in Ordnung, der Platz ist es nicht.
-NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz|'
+NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz||Creme\b|Serum\b|Hautpflege|Lotion\b|Ampulle|Peeling|Balsam\b'
                               r'Nagelpilz|Warzen|Hemorrhoid', re.I)
 
 # ⚠️ 29.08.2026 — WIRKVERSPRECHEN IM TITEL. In der Reihe standen «Wimpernwachstumsserum» und
@@ -422,6 +422,8 @@ def main():
             continue                       # steht schon in der Reihe
         if AUSGEMUSTERT in tags:
             continue                       # Bild schon einmal als untauglich befunden
+        if any(t.startswith("preis-pruefen") for t in tags):
+            continue                       # ungeklaerter Einkaufspreis gehoert nicht nach vorn
         for thema, muster in THEMEN.items():
             if muster.search(p["title"]):
                 kandidaten[thema].append(
