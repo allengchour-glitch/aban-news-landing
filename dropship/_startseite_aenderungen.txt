@@ -14,3 +14,8 @@ product_list_topseller  bestseller           10 -> 15 (nach Auffuellen 10 -> 18 
 lux_spotlight_favs      Herrenuhr "(5 Bewertungen)" -> "(15 Bewertungen)" (live nachgezaehlt)
 Hero-Favoriten +8 Produkte, alle >=4.5 Sterne und >=5 Bewertungen, nach Warenart gestreut
 SUMME Produktkarten 116 -> 177 · 25 Sektionen unveraendert (Shopify-Deckel)
+# 2026-08-30 (2) Drei neue Reihen im Tausch gegen Navigations-Doppel (Deckel 25)
+cl_tech      -> pl_senioren      «Komfort im Alter» (NEUE Kollektion komfort-im-alter, 15 handverlesene Produkte, 6 Kanaele publiziert; Notfallknopf mit google-gesperrt-notlage bewusst draussen)
+cl_trends    -> pl_tech_gadgets  «Coole Gadgets» (gadgets, 4135 aktiv; war NICHT publiziert -> publishablePublish; Sortierung BEST_SELLING -> PRICE_DESC, sonst 12/15 identisch mit Elektronik-Reihe)
+lux_carousel -> pl_spass_gadgets «Spass-Elektronik & RC» (spass-elektronik, 1062 aktiv, Ueberschneidung 1/15)
+Verbleibende Kategorie-Navigation: collection_list_hREdj9 + banner_kategorien
