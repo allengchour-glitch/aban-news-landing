@@ -12709,7 +12709,28 @@ function updMinimap(dt){
   // Verkehr
   c.fillStyle="#dcdce0";for(var i=0;i<verkehr.length;i++){var p=verkehr[i].mesh.position,s2=S(p.x,p.z);c.fillRect(s2[0]-1.5,s2[1]-1.5,3,3);}
   if(busRec){var bs=S(busRec.pos,busRec.z);c.fillStyle="#f0c030";c.fillRect(bs[0]-2,bs[1]-2,4,4);}
-  if(window.pickups){c.fillStyle="#ffe14a";for(var pk9=0;pk9<pickups.length;pk9++){if(!pickups[pk9].active)continue;var sp9=S(pickups[pk9].x,pickups[pk9].z);c.beginPath();c.arc(sp9[0],sp9[1],2,0,6.283);c.fill();}}
+  /* 💰 MUENZEN AUF DEM RADAR.
+     ⚠️ Hier stand `if(window.pickups)`. `pickups` ist aber ein `var` INNERHALB der
+     grossen Huelle — `window.pickups` ist `undefined`, immer. Der Waechter war also
+     dauerhaft falsch und die Muenz-Punkte wurden NIE gezeichnet: Zeichen-Code, der
+     dasteht und nicht laeuft. Am Bild gemessen: 12 aktive Muenzen, 0 gezeichnete Pixel.
+     Dieselbe Falle wie `window.WORLD_SOLIDS` (Regel 2 im Runbook) — und sie kostet hier
+     mehr als Kosmetik: th-reichweite hat gemessen, dass Kettenglied 4 einen 66-m-Weg in
+     24,4 s verlangt. Das geht nur, wenn man weiss, wohin. Wer sucht, verliert die Serie. */
+  if(typeof pickups!=="undefined"&&pickups.length){
+    /* Waehrend einer Serie sticht die NAECHSTE Muenze hervor — sie ist das naechste
+       Kettenglied, und die Uhr laeuft. Ausserhalb einer Serie bleibt das Radar ruhig. */
+    var jagd=(typeof KOMBO!=="undefined"&&KOMBO.n>0),nahI=-1,nahD=1e9;
+    if(jagd)for(var pn=0;pn<pickups.length;pn++){if(!pickups[pn].active)continue;
+      var dd=Math.hypot(pickups[pn].x-pcx,pickups[pn].z-pcz);
+      if(dd<nahD){nahD=dd;nahI=pn;}}
+    for(var pk9=0;pk9<pickups.length;pk9++){if(!pickups[pk9].active)continue;
+      var sp9=S(pickups[pk9].x,pickups[pk9].z);
+      if(pk9===nahI){
+        c.fillStyle="#ff6b5a";c.beginPath();c.arc(sp9[0],sp9[1],3.5,0,6.283);c.fill();
+        c.strokeStyle="#ff6b5a";c.lineWidth=1.5;c.beginPath();c.arc(sp9[0],sp9[1],6,0,6.283);c.stroke();
+      }else{
+        c.fillStyle="#ffe14a";c.beginPath();c.arc(sp9[0],sp9[1],2,0,6.283);c.fill();}}}
   /* 🗺️ Orte-Symbole (User findet die neuen Gebaeude sonst nie) */
   var POIS=WORLD_POIS;
   c.font="11px system-ui";c.textAlign="center";c.textBaseline="middle";
