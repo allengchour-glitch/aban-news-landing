@@ -1268,7 +1268,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     kr1.position.set(G.x,gy+3.6,G.z); kr1.castShadow=true; scene.add(kr1);
     var kr2=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.35,0.35),stdMat(0x6a4a2e,0.8));
     kr2.position.set(G.x,gy+5.2,G.z); scene.add(kr2);
-    if(window.WORLD_POIS)window.WORLD_POIS.push([G.x,G.z,"🏔️","Grosser Berg"]);
+    /* ⚠️ Hier stand `if(window.WORLD_POIS)window.WORLD_POIS.push(...)`. WORLD_POIS ist
+       ein `var` INNERHALB der Huelle — `window.WORLD_POIS` ist `undefined`, immer. Der
+       Waechter war dauerhaft falsch, und der Gipfel des Grossen Bergs stand nie auf der
+       Karte: 28 Orte eingetragen, dieser fehlte. Zweiter Fund derselben Klasse nach
+       `window.pickups` (#2445) — gefunden von `th-fenster.mjs`, das genau danach sucht. */
+    WORLD_POIS.push([G.x,G.z,"🏔️","Grosser Berg"]);
   })();
   /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
