@@ -29,8 +29,16 @@ REPO_AUTO=/home/user/aban-news-landing/automation
 # Das vollstaendige ffmpeg 7.0.2 liegt als Beigabe von imageio_ffmpeg im Python-Baum. EIN
 # Symlink repariert alle zwoelf, statt zwoelf Dateien anzufassen. Der Snapshot-Rewind loescht
 # /usr/local/bin — deshalb steht das HIER und nicht in einem einmaligen Befehl.
-FFMPEG_BEIGABE=$(ls -1 /usr/local/lib/python3*/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-* 2>/dev/null | head -1)
-if [ -n "$FFMPEG_BEIGABE" ] && [ ! -x /usr/local/bin/ffmpeg ]; then
+# ⚠️ 30.08.: Ein /tmp-Wipe nahm auch die PIP-PAKETE mit — imageio_ffmpeg UND Pillow waren weg,
+# der Symlink zeigte ins Leere und die TikTok-Werkzeuge standen still. Beide werden deshalb
+# bei Bedarf NEU INSTALLIERT, nicht nur verlinkt.
+python3 -c "import PIL" 2>/dev/null || pip install -q pillow >/dev/null 2>&1
+FFMPEG_BEIGABE=$(python3 -c "import imageio_ffmpeg,sys;print(imageio_ffmpeg.get_ffmpeg_exe())" 2>/dev/null)
+if [ -z "$FFMPEG_BEIGABE" ]; then
+  pip install -q imageio-ffmpeg >/dev/null 2>&1
+  FFMPEG_BEIGABE=$(python3 -c "import imageio_ffmpeg,sys;print(imageio_ffmpeg.get_ffmpeg_exe())" 2>/dev/null)
+fi
+if [ -n "$FFMPEG_BEIGABE" ] && ! /usr/local/bin/ffmpeg -version >/dev/null 2>&1; then
   ln -sf "$FFMPEG_BEIGABE" /usr/local/bin/ffmpeg
   echo "$(date -u +%H:%M) ffmpeg bereitgestellt"
 fi

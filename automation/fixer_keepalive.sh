@@ -517,6 +517,18 @@ while true; do
       echo "$(date -u +%H:%M) tiktok-karussell gebaut + Cowork-Auftrag fortgeschrieben"
     fi
   fi
+  # Woechentliches Kompilations-Reel («Meisterwerk», Betreiber-Auftrag 30.08.): reiht die
+  # gepruueften Hook-Slides der Woche zu EINEM Reel. Sonntags, einmal pro Woche.
+  MWL=/tmp/tiktok_meisterwerk.log
+  if [ -f "$REPO/automation/tiktok_meisterwerk.py" ] && [ "$(date -u +%u)" = "7" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$MWL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 518400 ]; then
+      ( cd "$REPO" && setsid bash -c '
+          python3 automation/tiktok_meisterwerk.py
+          python3 automation/tiktok_cowork_auftrag.py' >> "$MWL" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tiktok-meisterwerk gebaut"
+    fi
+  fi
   TLS=/tmp/tote_landeseiten.log
   if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))

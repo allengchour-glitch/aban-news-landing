@@ -122,9 +122,15 @@ def main():
         return
     print(f"   ✔ {os.path.relpath(clean, ROOT)}  ({dauer:.1f}s, {len(teile)} Schnitte, ohne Ton)")
 
+    # Nur die eigenen luxe-Stuecke: die generischen Loops (electrodoodle, digital-lemonade)
+    # passen nicht zur Marke — Betreiber-Feedback 30.08. («musik passt mir gar nicht»).
+    # ENV MUSIK=<datei> erzwingt ein bestimmtes Stueck.
+    wunsch = os.environ.get("MUSIK", "")
     stuecke = ([f for f in os.listdir(MUSIKORDNER)
-                if f.lower().endswith((".wav", ".m4a", ".mp3"))]
+                if f.lower().endswith((".wav", ".m4a", ".mp3")) and f.startswith("luxe-")]
                if os.path.isdir(MUSIKORDNER) else [])
+    if wunsch and os.path.exists(os.path.join(MUSIKORDNER, wunsch)):
+        stuecke = [wunsch]
     if not stuecke:
         print("   (keine eigene Musik gefunden — nur die Clean-Fassung)")
         return
