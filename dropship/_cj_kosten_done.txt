@@ -5793,3 +5793,18 @@ gid://shopify/Product/15449176932737	CHF 18.51	1 Varianten	Intelligente Kinder-Z
 gid://shopify/Product/15449176998273	CHF 31.52	1 Varianten	Hochfrequenz Elektrotherapie Beauty-Gerät
 gid://shopify/Product/15449177129345	CHF 33.18	1 Varianten	Mobiles Sauerstoff-Injektionsgerät
 gid://shopify/Product/15449177293185	CHF 48.51	1 Varianten	Elektrische Zahnbürste mit 4 Bürstenköpfen
+gid://shopify/Product/15449177522561	CHF 13.31	1 Varianten	2-in-1 Gesichtsreiniger & Zahnschutz
+gid://shopify/Product/15449177555329	CHF 15.64	1 Varianten	Flexibler Spiegel-Sticker (wasserdicht)
+gid://shopify/Product/15449177620865	CHF 8.15	1 Varianten	LED-Schminkspiegel, wiederaufladbar & tragbar
+gid://shopify/Product/15449177653633	CHF 17.50	1 Varianten	LED Faltbarer Schminkspiegel mit Lederetui
+gid://shopify/Product/15449177719169	CHF 161.43	1 Varianten	Bogenförmiger Wandspiegel mit Metallrahmen
+gid://shopify/Product/15449177751937	CHF 132.77	1 Varianten	Wandspiegel mit rechteckigem Metallrahmen
+gid://shopify/Product/15449177784705	CHF 195.20	1 Varianten	Bogenförmiger Ganzkörperspiegel, Silber
+gid://shopify/Product/15449177850241	CHF 196.83	1 Varianten	Ganzkörperspiegel mit Aluminiumrahmen
+gid://shopify/Product/15449178046849	CHF 72.30	1 Varianten	Gianna Ganzkörperspiegel mit Aluminiumrahmen
+gid://shopify/Product/15449178079617	CHF 58.69	1 Varianten	LED-Anhänger für Haustiere
+gid://shopify/Product/15449178112385	CHF 8.38	1 Varianten	Halsband Schwarz mit Nieten für kleine Hunde
+gid://shopify/Product/15449178145153	CHF 9.84	1 Varianten	Weicher Hunde-Halskragen nach Operation
+gid://shopify/Product/15449178177921	CHF 6.80	1 Varianten	Halsband für GPS-Tracker mit Diebstahlschutz
+gid://shopify/Product/15449178210689	CHF 9.89	1 Varianten	Verstellbares Space-Cotton Halsband für Haustiere
+gid://shopify/Product/15449178308993	CHF 6.86	1 Varianten	Retro Lederhalsband für Katzen
