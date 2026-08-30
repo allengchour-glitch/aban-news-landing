@@ -5347,3 +5347,49 @@ Das ist keine Aufforderung, alle umzustellen — diese Runde hat gerade gezeigt,
 kosten kann. Es ist die Landkarte für den nächsten, der eine flackernde Zahl untersucht:
 **bei jeder positionsabhängigen Prüfung zuerst die Wartezeit ansehen — und dann prüfen,
 wogegen sie steht.**
+
+## 2026-08-30 · 🚉 Dieselbe Frage, mit der Sonde des Werkzeugs — 4 → 0
+
+Die Runde davor endete mit einem offenen Flackerbefund und zwei eigenen Fehlschlüssen.
+Diesmal **die Sonde von `th-gleis.mjs` wörtlich übernommen** — kein Nachbau — und nur
+mehrfach über die Zeit ausgeführt. Damit beantworten sich beide offenen Fragen auf einmal.
+
+### 1. Wogegen die 22 s schützen
+
+| Seitenzeit | Treffer |
+|---|---|
+| 103 … 165 s | **2 bzw. 4** (nur `th17_bahnsteigdach`) |
+| 173 s | 21 |
+| 181 s | 62 |
+| 189 s | 77 |
+| 197 s | **103** |
+
+Ab rund **173 s** wandern namenlose `Cube*`/`Cylinder*`-Teile ins Gleisband und die Zahl
+wächst stetig — der **einfahrende Zug**. Die kurze Wartezeit misst absichtlich *davor*.
+Meine Umstellung auf `warteAufRuhe` in der Vorrunde hat also nicht „zu spät" gemessen,
+sondern **den Zug gezählt**. Der Rücknahme-Entscheid war richtig, und jetzt steht auch
+der Grund dafür in der Datei.
+
+### 2. Das Flackern war kein Zeitproblem
+
+Innerhalb eines Laufs ist die Zahl **konstant**: ein Lauf zeigt durchgehend 2, der
+nächste durchgehend 4. Es schwankt nicht die Zeit, sondern der **Endort** der drei
+Dachmodule — dieselbe Klasse wie der flackernde Ahorn.
+
+### Der eigentliche Fehler, gemessen
+
+Die **Fussplatten der Dachstützen** (y 0,55…0,65, also 10 cm über dem Bahnsteig) reichten
+bis **z 110,76** und damit **0,14 m über die Nordschiene** (110,62…110,78).
+
+An derselben Stelle stand schon ein Kommentar: *„z=109.6 statt 110.3: mit 4,6 m Tiefe
+ragte das Dach sonst bis über die Schiene."* Der erste Fix ging in die richtige Richtung —
+nur nicht weit genug. Jetzt **109,35**: Platten auf 110,51, elf Zentimeter vor der Schiene.
+
+| | vorher | nachher |
+|---|---|---|
+| Bauteile über dem Gleiskörper (3 Läufe) | 2 bzw. 4, je nach Lauf | **0 · 0 · 0** |
+
+> **Was diese zwei Runden zusammen lehren:** die Vorrunde hat mit einer selbstgebauten
+> Sonde 76 Bootshaus-Teile gezählt und nichts bewiesen. Diese hat mit der **Sonde des
+> Werkzeugs** in zwei Läufen beide Fragen beantwortet. *Wer eine fremde Messung
+> untersucht, benutzt ihre Sonde — nicht eine ähnliche.*
