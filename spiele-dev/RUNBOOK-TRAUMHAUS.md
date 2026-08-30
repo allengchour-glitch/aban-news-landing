@@ -5215,3 +5215,48 @@ Eine Zahl, die sich durch die Änderung nicht bewegt, ist entweder ein Beweis, d
 
 > **Die Regel:** Vorher und Nachher müssen **von derselben Stelle aus** gemessen werden,
 > sonst vergleicht man zwei Orte. Nach der Korrektur: 1 → 3.
+
+## 2026-08-30 · 🪟 Aus einem Zufallsfund eine Suche machen — der Berg stand nie auf der Karte
+
+**Warum überhaupt.** `window.pickups` (#2445) war ein **Zufallsfund**. Die Fehlerklasse —
+*Code in der Hülle prüft auf `window.X`, obwohl X eine Hüllen-Variable ist* — gehört
+gesucht, nicht abgewartet. Sie hat kein Fehlerbild: der Wächter ist still falsch, der
+Code darunter läuft nie.
+
+**Das Werkzeug** (`th-fenster.mjs`): alle `window.X` einsammeln → die abziehen, die
+irgendwo zugewiesen werden → den Rest **zur Laufzeit** befragen. Die Laufzeit ist der
+Schiedsrichter, **keine geratene Ausnahmeliste**: Browser-Felder (`innerWidth`, `THREE`,
+`confirm`) fallen von selbst raus, weil sie definiert sind.
+
+**Der Fund:** `if(window.WORLD_POIS)window.WORLD_POIS.push([…,"🏔️","Grosser Berg"])`.
+`WORLD_POIS` ist ein `var` in der Hülle → Wächter immer falsch. **Der Gipfel des Grossen
+Bergs stand nie auf der Karte: 28 Orte eingetragen, dieser fehlte.** Nach dem Fix 29.
+Zweiter Fund derselben Klasse — der erste war Glück, dieser war Suche.
+
+### Drei Fehlalarme, die das Werkzeug erst brauchbar gemacht haben
+
+1. **Die eigene Prosa als Code gelesen.** Erster Lauf meldete `window.pickups` und
+   `window.WORLD_SOLIDS` — beide standen im **Kommentar**, der ihre Behebung beschreibt.
+   Ein Werkzeug, das seine eigene Fehlerbeschreibung als Fehler meldet, erzeugt genau die
+   Phantom-Funde, gegen die es gebaut ist. → Kommentare vor der Suche entfernen; `//` nur,
+   wenn kein `:` davorsteht, sonst frisst die Regel jede URL.
+2. **Eine Behauptung, die zu breit war.** „Kein `window`-Feld darf fehlen" meldete
+   `window.webkitAudioContext` — das ist der Safari-Rückfall in
+   `new (window.AudioContext||window.webkitAudioContext)()` und völlig richtig so. Ein
+   Feld absichtlich abzufragen, das in *einem* Browser fehlt, ist kein Fehler. Die
+   Behauptung wurde durch die präzise ersetzt: **`window` fragen, wo die Hülle gemeint
+   war** — mehr behauptet das Werkzeug nicht.
+3. **Ein Etikett, das nach dem Fix nicht mehr stimmte.** Die Selbstprobe hiess „…
+   `WORLD_POIS` im Code", aber nach der Behebung steht der Name nur noch im Kommentar.
+   Sie prüft jetzt beides richtig herum: beide Kommentar-Erwähnungen müssen verschwinden,
+   echter Code (`window.autoRec`) muss bleiben.
+
+**Geprüft:** 8/8, davon **5 Selbstproben**. Zwei Sabotagen: ein neuer Wächter derselben
+Klasse an anderer Stelle (`if(window.furn)`) → gefunden; die Kommentar-Entfernung so
+kaputt gemacht, dass sie *alles* frisst → **an den Selbstproben aufgeflogen** („0 % der
+Datei bleiben Code"). Genau das ist der Punkt: ein Sucher, der blind wird, meldet sonst
+stolz „keine Funde". Bestand grün: `th-radar` 7/7, `th-serie` 14/14, `th-hud`,
+`th-pruef`, `th-speichern`, `th-lint`.
+
+> **Regel für neue Werkzeuge, die eine Datei durchsuchen:** die eigenen Kommentare sind
+> Teil der Datei. Wer über einen Fehler schreibt, schreibt sein Muster hin.
