@@ -5754,3 +5754,11 @@ gid://shopify/Product/15449174507905	CHF 54.54	1 Varianten	Duo-Rollos
 gid://shopify/Product/15449174540673	CHF 58.52	1 Varianten	Verdunkelungsvorhänge mit Haken, Leinen-Optik, 2 S
 gid://shopify/Product/15449174606209	CHF 29.04	1 Varianten	Fensterfolie matt mit Blumenmuster
 gid://shopify/Product/15449174671745	CHF 71.54	1 Varianten	Insektenschutzvorhang aus Chenille, hellbraun
+gid://shopify/Product/15449174704513	CHF 29.99	1 Varianten	Selbstklebende Türfolie, 2 Stk., Weiss
+gid://shopify/Product/15449174770049	CHF 59.46	1 Varianten	Verdunkelungsrollo, Stoffbreite 45.7 cm
+gid://shopify/Product/15449174835585	CHF 46.13	1 Varianten	Fensterstore mit Vorhängen, Silber
+gid://shopify/Product/15449174901121	CHF 302.39	1 Varianten	Fensterfolie Matt 0.9x5 m PVC
+gid://shopify/Product/15449174966657	CHF 75.28	1 Varianten	Makramee-Vorhang aus Baumwolle
+gid://shopify/Product/15449175032193	CHF 57.20	1 Varianten	Verdunkelungsvorhänge mit Ösen, 2 Stück
+gid://shopify/Product/15449175064961	CHF 63.18	1 Varianten	Verdunkelungsrollo mit Kettenzug
+gid://shopify/Product/15449175097729	CHF 35.89	1 Varianten	Bettwäsche-Set mit Fixleintuch und Kissenbezügen
