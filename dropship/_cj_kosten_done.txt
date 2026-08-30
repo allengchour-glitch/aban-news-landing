@@ -5492,3 +5492,10 @@ gid://shopify/Product/15449132990849	CHF 16.69	1 Varianten	3D Premium Faux Mink 
 gid://shopify/Product/15449133023617	CHF 13.99	1 Varianten	Premium Faux Mink MK-15 Wimpern
 gid://shopify/Product/15449133089153	CHF 13.99	1 Varianten	3D Premium Faux Mink Kunstwimpern MK-16
 gid://shopify/Product/15449133121921	CHF 13.99	1 Varianten	3D Premium Faux Mink Kunstwimpern MK-37
+gid://shopify/Product/15449133154689	CHF 13.99	1 Varianten	Falsche Nerzwimpern 3D MK-13 (5 Paar)
+gid://shopify/Product/15449133187457	CHF 13.99	1 Varianten	Falsche Nerzwimpern 3D MK-06 (5 Paar)
+gid://shopify/Product/15449133220225	CHF 11.80	1 Varianten	Quantum-Style Soft Magnetic False Eyelashes
+gid://shopify/Product/15449133285761	CHF 13.23	1 Varianten	Magnetische falsche Wimpern
+gid://shopify/Product/15449133318529	CHF 7.37	1 Varianten	Fairy-Style Segment-Wimpern
+gid://shopify/Product/15449133351297	CHF 19.53	1 Varianten	DIY Wimpern-Set mit 640 Einzel-Büscheln
+gid://shopify/Product/15449133384065	CHF 17.09	1 Varianten	15 Paar 3D Cat Eye Kunstwimpern
