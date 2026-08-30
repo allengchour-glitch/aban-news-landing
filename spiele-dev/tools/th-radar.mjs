@@ -32,6 +32,7 @@ mitSonden('traumhaus.html', {
         if(Math.abs(d3[j]-255)<14&&Math.abs(d3[j+1]-107)<16&&Math.abs(d3[j+2]-90)<20&&d3[j+3]>200)n3++;}
       return n3;}
     if(was==="serie"){KOMBO.n=a;KOMBO.t=a>0?99:0;komboHudUpd();return KOMBO.n;}
+    if(was==="hetze"){HETZE.an=!!a;HETZE.t=a?60:0;HETZE.punkte=0;hetzeHudUpd();return HETZE.an;}
     if(was==="muenzen"){var akt=0;for(var k=0;k<pickups.length;k++)if(pickups[k].active)akt++;
       return {gesamt:pickups.length,aktiv:akt};}
     if(was==="ausschalten"){for(var q=0;q<pickups.length;q++){pickups[q].active=false;}return true;}
@@ -87,6 +88,18 @@ console.log('  Markierungs-Pixel ohne Serie: ' + ruhe + ' · mit Serie: ' + jagd
 check('Waehrend einer Serie wird die naechste Muenze markiert', jagd > ruhe, jagd + ' gegen ' + ruhe)
 check('GEGENPROBE: ohne Serie gibt es keine Markierung', ruhe === 0, ruhe + ' Pixel')
 await D('serie', 0)
+
+/* --- Die Hetze braucht dieselbe Fuehrung. Sie startet IMMER mit Serie 0 — ohne diese
+   Kopplung ist man in den ersten Sekunden der Runde blind, genau dann, wenn die Uhr
+   schon laeuft. --- */
+await D('hetze', true)
+await page.waitForTimeout(1200)
+const inHetze = await D('nah')
+console.log('  Markierungs-Pixel in der Hetze (Serie 0): ' + inHetze)
+check('Auch in der Hetze wird die naechste Muenze markiert', inHetze > 0, inHetze + ' Pixel')
+await D('hetze', false)
+await page.waitForTimeout(1200)
+check('GEGENPROBE: nach der Hetze erlischt die Markierung wieder', (await D('nah')) === 0)
 
 check('0 JS-Fehler', jsFehler.length === 0, jsFehler.join(' | ') || '')
 console.log(`\n${fehl === 0 ? '🎉 RADAR BESTANDEN' : '💥 RADAR FEHLGESCHLAGEN'} — ${ok} ok, ${fehl} Fehler`)

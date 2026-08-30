@@ -12845,7 +12845,13 @@ function updMinimap(dt){
   if(typeof pickups!=="undefined"&&pickups.length){
     /* Waehrend einer Serie sticht die NAECHSTE Muenze hervor — sie ist das naechste
        Kettenglied, und die Uhr laeuft. Ausserhalb einer Serie bleibt das Radar ruhig. */
-    var jagd=(typeof KOMBO!=="undefined"&&KOMBO.n>0),nahI=-1,nahD=1e9;
+    /* ⚠️ Stand hier nur `KOMBO.n>0`. Eine Hetze startet aber IMMER mit Serie 0 (das ist
+       Absicht, siehe hetzeStart) — in den ersten Sekunden der Runde war man damit blind,
+       genau dann, wenn die Uhr schon laeuft und man das erste Ziel braucht. Am Bild
+       gemessen: 0 Markierungs-Pixel bei laufender Hetze. Die beiden Schleifen gehoeren
+       hier zusammen. */
+    var jagd=(typeof KOMBO!=="undefined"&&KOMBO.n>0)||(typeof HETZE!=="undefined"&&HETZE.an),
+        nahI=-1,nahD=1e9;
     if(jagd)for(var pn=0;pn<pickups.length;pn++){if(!pickups[pn].active)continue;
       var dd=Math.hypot(pickups[pn].x-pcx,pickups[pn].z-pcz);
       if(dd<nahD){nahD=dd;nahI=pn;}}
