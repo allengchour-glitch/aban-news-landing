@@ -929,6 +929,30 @@ alte Regel **einen älteren Aufseher, den es nicht gibt**; mit der neuen ist es 
   `$1==$3 && $2==1`, oder man baut das Suchwort so zusammen, dass es in der eigenen Zeile gar
   nicht vorkommt.
 
+## 🎛️ Null Filter auf allen Kollektionsseiten — die App fehlte, nicht das Theme (2026-08-30)
+Auf «filter verbessern überall wo man reinklickt» erst gemessen: Das gerenderte HTML von
+`/collections/damen-mode` enthielt **null `filter.*`-Inputs** — kein Preis, keine
+Verfügbarkeit, nur «Sortieren». Dabei hat das Theme `enable_filtering: true`. **Die Facetten
+rendern nichts, weil `collection.filters` leer ist — und das ist es, solange die
+Search-&-Discovery-App nicht installiert ist** (alle 25 installierten Apps geprüft: fehlt).
+App-Installation geht nur im Admin → Cowork-Punkt 3f.
+- **Was ohne App geht: Shopifys native Tag-Filterung** (`/collections/<handle>/<tag>`).
+  `lux_subchips` in `templates/collection.json` rendert jetzt eine Filterzeile aus
+  kundentauglichen Tags — nur solche, die im jeweiligen Sortiment vorkommen
+  (`collection.all_tags contains`), mit Aktiv-Zustand (`current_tags`) und Abwahl-Kreuz.
+  Live verifiziert: `/collections/gadgets/herren` filtert die Liste real (9 statt 78
+  Produktlinks) und zeigt den aktiven Chip.
+- **Die Tag-Liste ist gemessen, nicht geraten** (`productsCount` je Tag): damen 10'000,
+  schuhe 5'195, elektronik 4'936, herren 4'535, gadget 4'136, beauty 3'867, geschenk 3'831,
+  haustier 3'097, ch-lager 2'409, schmuck 2'346, kueche 2'132, kinder 2'028, sport 1'672,
+  uhren 1'597, taschen 513, gaming 458. Rausgeflogen: **winter 0, blitzversand 0, sale 16,
+  deko 24, beleuchtung 37** — ein Filter-Chip auf einen leeren Tag ist eine Sackgasse mit
+  Beschriftung. Neue Chips nur mit Zahl dahinter.
+- ⚠️ Die Chips tragen `rel="nofollow"` — Tag-Seiten sollen die Kundin fuehren, nicht den
+  Crawler in Tausende Facetten-URLs schicken.
+- ⚠️ Bewusst KEINE Sortier-Chips daneben: «Sortieren» existiert im Theme bereits; die
+  Filterzeile verdoppelt nichts Vorhandenes.
+
 ## 📐 Ein Shopify-Template fasst genau 25 Sektionen — die Startseite stand exakt darauf (2026-08-30)
 Auf «fülle mehr sachen in startseite» wollte ich fünf Produktreihen ergänzen. `themeFilesUpsert`
 lehnte ab: **«sections: must have a maximum of 25»** — und `templates/index.json` hatte bereits

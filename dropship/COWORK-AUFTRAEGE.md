@@ -85,6 +85,22 @@ Das Konto-Feld bleibt trotzdem die Quelle: Klaviyo baut die Domain in NEUE Vorla
 lassen und in Shopify als Weiterleitungs-Domain eintragen. Das rettet zusätzlich alle BEREITS
 VERSCHICKTEN Mails und alten Social-Posts.
 
+## 3f. Echte Filter: die Search-&-Discovery-App fehlt  ⭐⭐ (NEU 30.08.)
+
+> **2 Minuten:** Shopify-Admin → Apps → im App Store nach **«Shopify Search & Discovery»**
+> suchen (kostenlos, von Shopify selbst) → installieren → in der App unter *Filter* die
+> Vorschläge übernehmen (Verfügbarkeit, Preis, weitere nach Wunsch). Fertig — mehr nicht.
+
+**Der Befund (30.08., gemessen):** Die Kollektionsseiten hatten **null Filter** — kein Preis,
+keine Verfügbarkeit —, obwohl das Theme Filtern eingeschaltet hat (`enable_filtering: true`).
+Ursache: Die App ist nicht installiert (alle 25 installierten Apps geprüft), und ohne sie ist
+`collection.filters` leer. Installieren kann sie nur ein Mensch im Admin.
+
+**Was bis dahin schon läuft:** Ich habe native Tag-Filter-Chips auf alle Kollektionsseiten
+gebaut («Filtern: Damen · Herren · Schuhe · ⚡ Ab CH-Lager …», nur Tags, die im jeweiligen
+Sortiment vorkommen, mit Abwahl-Kreuz). Live verifiziert. Die App ergänzt dann Preisregler
+und Verfügbarkeit — die Chips bleiben als Schnellfilter sinnvoll.
+
 ## 4. Google Merchant Center: Zielland auf Schweiz
 
 > Merchant Center für luxestyle.ch öffnen, Ziel- bzw. Versandland des Feeds auf **nur Schweiz**

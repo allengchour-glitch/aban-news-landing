@@ -937,3 +937,10 @@ gid://shopify/Product/15519830933889	ok	Computer-Rucksack aus Rindsleder
 gid://shopify/Product/15520142655873	ok	Universal Multimedia-Halterung, drehbar
 gid://shopify/Product/15520168739201	nicht-versendbar	Rollregal im Retro-Stil
 gid://shopify/Product/15520384549249	nicht-versendbar	Lager-Abzieher-Set für Innenlager (9-teilig)
+gid://shopify/Product/15520407814529	ok	Antihaft Pfannenset mit Titanbeschichtung
+gid://shopify/Product/15520407060865	ok	4er-Set Suppentfannen aus Edelstahl
+gid://shopify/Product/15520399032705	nicht-versendbar	Entsafter mit langsamer Drehzahl
+gid://shopify/Product/15520396312961	nicht-versendbar	Tragbarer, faltbarer Grill «Hamburger»
+gid://shopify/Product/15520406143361	ok	Outdoor Rucksack mit abnehmbarer Tasche
+gid://shopify/Product/15520411058561	ok	T10 Highlight Full HD LED Heimprojektor
+gid://shopify/Product/15520407159169	nicht-versendbar	Bambus-Schneidebrett mit Halterung
