@@ -255,8 +255,21 @@ if [ "$VORRANG" = "1" ]; then
 else
 
 # Prüfmuster ist der argv2-Name OHNE .sh (siehe Kopf).
+# ⚠️ 30.08.2026 — /tmp WURDE VOLLSTAENDIG GELEERT, und dieser Wächter sah nur zu.
+# Er meldete viermal «FEHLT (/tmp gewiped?)» und STAND: 0 CJ-Runner — stundenlang, bei
+# jedem Lauf. Die Wrapper liegen aber im REPO (automation/cj_runner2..5.sh und
+# cj_runner_template.sh); nur die /tmp-Kopien fehlten. Ein Selbstheiler, der eine
+# behebbare Lücke bloss BENENNT, ist ein Melder — dieselbe Familie wie der Reparatur-
+# mechanismus, der auf der Platte liegt, die zurückgedreht wird (27.08.).
+# Die Geheimnisse kann er nicht ersetzen, die Skripte schon. Also tut er es jetzt.
+for Q in cj_runner_template cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
+  if [ ! -f "/tmp/$Q.sh" ] && [ -f "$REPO_AUTO/$Q.sh" ]; then
+    cp "$REPO_AUTO/$Q.sh" "/tmp/$Q.sh" && echo "$Q.sh aus dem Repo nach /tmp geholt"
+  fi
+done
+
 for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
-  [ -f "/tmp/$R.sh" ] || { echo "$R FEHLT (/tmp gewiped?)"; continue; }
+  [ -f "/tmp/$R.sh" ] || { echo "$R FEHLT (auch im Repo nicht)"; continue; }
   n=$(zaehle "$R")
   if [ "$n" -eq 0 ]; then
     echo "$R neu gestartet"
