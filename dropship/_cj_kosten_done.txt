@@ -5599,3 +5599,9 @@ gid://shopify/Product/15449158222209	CHF 16.56	40 Varianten	Casual Half-zip Hood
 gid://shopify/Product/15449158254977	CHF 17.52	31 Varianten	Gefütterter Kapuzenpullover für Damen
 gid://shopify/Product/15449158287745	CHF 16.07	20 Varianten	Retro Kapuzen-Sweatshirt mit Doppelreissverschluss
 gid://shopify/Product/15449158320513	CHF 13.66	24 Varianten	Personalisierter Hoodie mit Leder-Patch
+gid://shopify/Product/15449158418817	CHF 14.74	3 Varianten	Loose-Fit Langarm-Top mit Schriftzug-Print
+gid://shopify/Product/15449158451585	CHF 15.49	29 Varianten	Beanie-Jacke mit geometrischem Patchwork-Muster
+gid://shopify/Product/15449158484353	CHF 34.11	6 Varianten	Vielseitiger Strick-Cardigan mit Reissverschluss
+gid://shopify/Product/15449158517121	CHF 25.49	4 Varianten	Vielseitiger Hoodie mit langen Ärmeln
+gid://shopify/Product/15449158615425	CHF 34.43	3 Varianten	Kapuzen-Sweatshirt im American Streetwear-Stil
+gid://shopify/Product/15449158648193	CHF 23.51	17 Varianten	Corduroy Fleece Hoodie mit Kordelzug

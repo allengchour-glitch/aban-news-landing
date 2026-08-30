@@ -701,3 +701,6 @@ gid://shopify/Product/15512313790849	CJ-CJYD292633701AZ	Elegantes Satin-Abendkle
 gid://shopify/Product/15519837913473	CJ-29F500EB-1562-45AA-9084-28A263A8EB21	Outdoor Smartwatch für iOS & Android
 gid://shopify/Product/15519837979009	CJ-B4E01F46-09AD-4B90-A430-38A0590747B9	Smartwatch mit Farbdisplay und Sportfunktionen
 gid://shopify/Product/15520403554689	CJ-1393447891875532800	Sommerliches Geschirr-Set für Hunde mit Blumenmuster
+gid://shopify/Product/15520403784065	CJ-1393445454578061312	Hundegeschirr mit doppelter Schnalle
+gid://shopify/Product/15520404144513	CJ-1393437515561701376	Atmungsaktives Geschirr für Mops
+gid://shopify/Product/15520404275585	CJ-1393136052151128064	Taktische Hundeweste – 5 Farben
