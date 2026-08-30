@@ -30,6 +30,13 @@ const SCHNELL = process.argv.includes('--schnell')
 /* wert: aus der Ausgabe die eine Zahl ziehen, die zaehlt.
    gut:  wann die Pruefung haelt. kern: laeuft auch bei --schnell. */
 const PRUEFUNGEN = [
+  /* ⚠️ GANZ NACH VORN, UND ZWAR AUS EINEM GRUND: diese Pruefung braucht keinen Browser
+     und laeuft in Millisekunden. Ein Backtick in einer Sonde bringt das betroffene
+     Werkzeug zum Absturz — das erst nach zwanzig Browserlaeufen zu erfahren, kostet
+     eine Stunde fuer eine Auskunft, die sofort zu haben ist. */
+  { name: 'Backtick in Sonden (ohne Browser)', datei: 'th-lint.mjs', kern: true,
+    wert: (s) => (s.match(/(\d+) Sonden-Literale/) || [, '?'])[1] + ' Literale',
+    gut: (s) => /✅ Kein Backtick bricht ein Sonden-Literal/.test(s) },
   { name: 'Netz (Wege, Marken, Anschluesse)', datei: 'th-netz.mjs', kern: true,
     wert: (s) => (s.match(/(\d+) ok, (\d+) Fehler/) || []).slice(1).join('/'),
     gut: (s) => /BESTANDEN/.test(s) && /0 Fehler/.test(s) },
@@ -107,9 +114,6 @@ const PRUEFUNGEN = [
      ⚠️ NICHT im Tor bleibt th-leistung: es faellt kein Urteil, sondern druckt vierzig
      Kennzahlen (Zeichenaufrufe, Dreiecke, Materialien). Ein Messgeraet ist keine Pruefung;
      im Tor wuerde es entweder immer gruen sein oder bei jeder Schwankung rot. */
-  { name: 'Backtick in Sonden (ohne Browser)', datei: 'th-lint.mjs', kern: true,
-    wert: (s) => (s.match(/(\d+) Sonden-Literale/) || [, '?'])[1] + ' Literale',
-    gut: (s) => /✅ Kein Backtick bricht ein Sonden-Literal/.test(s) },
   { name: 'Modelle (Durchdringung, Schweben)', datei: 'th-pruef.mjs', kern: false,
     wert: (s) => (s.match(/Modelle geladen\s+(\d+)/) || [, '?'])[1] + ' Modelle',
     gut: (s) => /BESTANDEN/.test(s) && !/FEHLGESCHLAGEN/.test(s) },
@@ -160,6 +164,9 @@ const PRUEFUNGEN = [
   { name: 'GPS (jedes Viertel anwaehlbar)', datei: 'th-gps.mjs', kern: false,
     wert: (s) => (s.match(/anwaehlbar — (\d+) Viertel/) || [, '?'])[1] + ' Viertel',
     gut: (s) => /🎉 GPS BESTANDEN/.test(s) },
+  { name: 'Fahrgeschaefte (drehen sie sich)', datei: 'th-fahrt.mjs', kern: false,
+    wert: (s) => (s.match(/— (\d+) geprueft/) || [, '?'])[1] + ' Fahrten',
+    gut: (s) => /🎉 FAHRGESCHAEFTE BESTANDEN/.test(s) },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },

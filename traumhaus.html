@@ -12414,7 +12414,19 @@ function fahrtAussteigen(){
    dort sichtbar falsch. Ohne trennbaren Rotor im Modell bleibt es stehen.
    ⚠️ `_bewegt` auf der Gruppe, sonst friert _einfrieren() ihre Matrix ein und
    die Drehung endet nach 9 Sekunden still. */
-var _drehRaten={karussell:1.047,kettenkarussell:1.005,teetassen:0.558};
+/* ⚠️ GEMESSEN 2026-08-30: von elf Fahrgeschaeften bewegten SIEBEN ueber 20 s kein
+   einziges Teil (groesste Winkel- und Ortsaenderung aller Nachfahren: 0,0000). Diese
+   Tabelle kannte drei Eintraege, das Riesenrad hat seinen eigenen Weg.
+   Dazugekommen ist nur, was sich WIRKLICH um die eigene Hochachse dreht:
+   panorama ist in FAHRTEN NUR die Gondel (8,4 x 3,6 x 8,4 m auf y 24…27,6), und sie
+   steht mittig auf ihrer Achse — nachgemessen: 1 rad Drehung laesst die Weltmitte auf
+   (-90|25,8|-112) stehen und weitet die Huelle auf 8,4 x Wurzel 2 = 11,6. Genau richtig.
+   ⚠️ UND NICHT MEHR. Der Autoscooter dreht sich bei demselben Test sauber um seine
+   Mitte — aber das ist die HALLE. Eine kreisende Autoscooter-Halle waere schlimmer als
+   eine stehende, ebenso eine rotierende Geisterbahn. Wer hier etwas eintraegt, muss
+   vorher gemessen haben, dass sich das Modell um die eigene Achse dreht UND dass das
+   in der Wirklichkeit auch so aussieht. */
+var _drehRaten={karussell:1.047,kettenkarussell:1.005,teetassen:0.558,panorama:0.20};
 /* ── 🎡 RIESENRAD: der Rotor wird aus dem Modell HERAUSGEMESSEN ──────────────
    Das Modell ist eine flache Mesh-Suppe, aber die Vermessung liefert eine
    saubere Trennung: die Radebene liegt (in WELT-Koordinaten dieser Instanz)
@@ -12451,6 +12463,26 @@ function updFahrgeschaefte(dt){
     if(f.typ==="riesenrad"&&f.w){
       if(!f.rotor)riesenradRotor(f);
       f.rotor.rotation.z+=0.2417*dt;continue;}
+    /* 🏴‍☠️ PIRATENSCHIFF: das einzige der sieben erstarrten Modelle mit einem
+       benannten Drehpunkt. Der Knoten heisst "Pendel" (28 Teile, 10 x 10 x 5,4 m),
+       sein Ursprung liegt bei y = 12,6 — also am Aufhaengepunkt, nicht in der Mitte
+       des Schiffs. GEMESSEN mit 0,5 rad Probedrehung: die Weltmitte wandert von
+       (-37,0|8,0) auf (-37,4|9,1), das Schiff schwingt zur Seite UND hebt sich. Genau
+       ein Pendel. Um x gedreht schwenkt es dagegen quer in z — falsche Ebene, das
+       Schiff ist in x lang. Also z.
+       Ausschlag 0,5 rad (29 Grad): der Arm ist 9,6 m lang, das Schiff kommt damit auf
+       plusminus 4,6 m in x und bleibt innerhalb der eigenen Grundflaeche von 19,7 m —
+       das Gestell ist dafuer gebaut. Periode 7 s.
+       ⚠️ NUR DAS PENDEL AUFTAUEN, nicht die Gruppe. _auftauen setzt matrixAutoUpdate
+       auf EINEM Objekt; die Vorfahren duerfen eingefroren bleiben, weil three.js beim
+       Durchlaufen ohnehin in jedes Kind absteigt. _bewegt schuetzt den Knoten davor,
+       beim naechsten _einfrieren wieder festgesetzt zu werden. */
+    if(f.typ==="piratenschiff"&&f.w){
+      if(f.pendel===undefined){f.pendel=null;
+        f.w.traverse(function(o){if(!f.pendel&&o.name==="Pendel")f.pendel=o;});
+        if(f.pendel&&window._auftauen)window._auftauen(f.pendel);}
+      if(f.pendel){f.pt=(f.pt||0)+dt;f.pendel.rotation.z=Math.sin(f.pt*0.9)*0.5;}
+      continue;}
     var r=_drehRaten[f.typ];
     if(!r||!f.w)continue;
     /* ⚠️ `_bewegt=true` allein reicht nach dem Einfrieren nicht — siehe _auftauen(). */

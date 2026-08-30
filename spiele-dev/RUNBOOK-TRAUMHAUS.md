@@ -5728,3 +5728,99 @@ an der Weltachse** ist, kein Kind der Fahrgeschäft-Gruppe. Es dreht sich also; 
 −246, Freizeitpark 330 statt 360, Gewerbe Ost 172\|0 statt 250\|−78) — das sieht aus wie
 die `_GPS_VERB`-Falle. Ist es nicht: `viertel()` zieht die Liste zur Laufzeit nach
 (Block `marke()`). **Gemessen stimmen alle 13 Ziele auf 0 m.**
+
+## 2026-08-30 · 🏴‍☠️ Das Schiff schwingt — zwei von sieben Standbildern belebt
+
+Runde 50 hatte gemessen: sieben Fahrgeschäfte bewegen über 20 s **kein einziges Teil**.
+Diese Runde geht der Frage nach, welche davon sich überhaupt bewegen *dürfen*.
+
+### Erst den Bau ansehen
+
+Die Knotenbäume der sieben, jeweils die benannten Kinder der ersten Ebenen:
+
+| Modell | Aufbau |
+|---|---|
+| **`piratenschiff`** | ein `Scene`-Kind, darin ein benannter Knoten **`Pendel`** (28 Teile, 10 × 10 × 5,4 m, y 3…13) |
+| `freefall`, `seilbahn`, `wildwasser`, `geisterbahn`, `scooter` | eine flache Mesh-Suppe, ein einziges `Scene`-Kind |
+| **`panorama`** | 43 Teile, **8,4 × 3,6 × 8,4 m auf y 24…27,6** — in `FAHRTEN` steht nur die **Gondel**, nicht der Turm |
+
+### Den Drehpunkt messen, nicht raten
+
+Probedrehung um 0,5 bzw. 1,0 rad, Welt-Hülle vorher/nachher:
+
+| | Ursprung | Mitte vorher → nachher | Größe vorher → nachher |
+|---|---|---|---|
+| `piratenschiff` **z**/`Pendel` | (0 \| **12,6** \| 0) | −37,0\|8,0 → **−37,4\|9,1** | 10×10×5,4 → 9,8×10,6×5,4 |
+| `piratenschiff` x/`Pendel` | dito | −37,0\|8,0 → −37,0\|8,9 (wandert in **z**) | → 10×10,6×**8,4** |
+| `panorama` **y** | (−90 \| 24 \| −112) | **unverändert** | 8,4 → **11,6** (= 8,4·√2) |
+| `scooter` y | (57 \| 0 \| 383,8) | unverändert | 13,8×9,7 → 15,4×16,4 |
+
+Der Ursprung des `Pendel` liegt bei **y 12,6** — am Aufhängepunkt, nicht in der Schiffsmitte.
+Um **z** gedreht schwingt es zur Seite *und hebt sich*: genau ein Pendel. Um x schwenkt es
+quer in z — falsche Ebene, das Schiff ist in x lang. Die Panorama-Gondel steht **mittig auf
+ihrer Achse**: die Weltmitte bleibt stehen, nur die Hülle weitet sich um √2.
+
+> **Der Autoscooter dreht bei demselben Test genauso sauber um seine Mitte — und bleibt
+> trotzdem stehen.** Das ist die *Halle*. Eine kreisende Autoscooter-Halle wäre schlimmer
+> als eine stehende, ebenso eine rotierende Geisterbahn. Die Messung sagt, ob es *geht*,
+> nicht ob es *richtig aussieht*.
+
+### ⚠️ Die erste Messung maß nichts
+
+Alle vier Probedrehungen meldeten **null Änderung**. Grund: die Modelle sind eingefroren
+(`matrixAutoUpdate = false`), und dann baut three.js die Matrix **nicht** aus `rotation`
+neu. Ein richtiger Drehpunkt hätte so als falsch gegolten. Erst `updateMatrix()` (bzw. im
+Spiel `_auftauen`) macht die Drehung sichtbar. Dieselbe Falle, vor der der Kommentar in
+`updFahrgeschaefte` seit Langem warnt — ich bin trotzdem hineingelaufen.
+
+### Umgesetzt
+
+* **`piratenschiff`**: `Pendel` schwingt um z, `sin(t·0,9)·0,5` — Ausschlag 29°, Periode 7 s.
+  Der Arm ist 9,6 m lang, das Schiff kommt auf ±4,6 m und bleibt in seiner eigenen 19,7-m-
+  Grundfläche. **Nur das Pendel wird aufgetaut**, nicht die Gruppe: `_auftauen` wirkt auf
+  *einem* Objekt, und three.js steigt beim Durchlaufen ohnehin in jedes Kind ab.
+* **`panorama`**: `_drehRaten` bekommt `0.20` (eine Umdrehung in 31 s).
+
+| über 20 s | Winkel | Ort |
+|---|---|---|
+| `panorama` | 0,000 → **0,340** | 0,00 → **1,77 m** |
+| `piratenschiff` | 0,000 → **0,401** | 0,00 → **3,33 m** |
+
+Belege: `screenshots/piratenschiff-ruhe.png` (−0,14 rad) und `-ausschlag.png` (−0,49 rad).
+
+### Neues Werkzeug `th-fahrt.mjs` — im Tor (40 Prüfungen)
+
+Es fragt: **bewegt sich jedes Fahrgeschäft, für das der Code eine Bewegung vorsieht?**
+Die Erwartung kommt aus dem Spiel, nicht aus einer Liste im Werkzeug: `_drehRaten` kennt
+den Typ, oder `updFahrgeschaefte` hat ihm einen `rotor` bzw. ein `pendel` angelegt. Wer ein
+weiteres Fahrgeschäft belebt, ist damit automatisch mitgeprüft — eine abgeschriebene
+Namensliste wäre die vierte Herleitung derselben Sache und würde veralten wie `_GPS_VERB`.
+
+Stand: **6 von 11 bewegt** (karussell, kettenkarussell, teetassen, riesenrad, panorama,
+piratenschiff), 5 absichtlich still und namentlich genannt.
+
+⚠️ **Der Riesenrad-Rotor hängt nicht unter der Gruppe**, sondern als Szenen-Gruppe an der
+Weltachse. Wer nur `F.w` durchläuft, meldet es fälschlich als stillstehend — mir in Runde 50
+genau so passiert. `th-fahrt` läuft darum `F.rotor` mit ab (518 statt 115 Teile).
+
+### ⚠️ Drei eigene Fehler in dieser Runde
+
+* **Die Selbstprobe prüfte nichts.** Erst trug ich `geisterbahn:0.30` ein und übersprang das
+  Auftauen — sie bewegte sich trotzdem. Dann setzte ich `panorama:0` — und das Werkzeug
+  meldete sie als „absichtlich still", weil `soll` auf den **Wahrheitswert** sah. Eine Rate
+  von 0 ist aber kein fehlender Eintrag, sondern eine vorgesehene Bewegung, die ausbleibt:
+  genau der Fund. Jetzt `!== undefined`; die Selbstprobe meldet
+  `❌ Vorgesehene Bewegungen, die ausbleiben: 1` und gibt 1 zurück.
+* **`git checkout -- traumhaus.html` hat die halbe Runde gelöscht.** Zum Zurücknehmen einer
+  *Selbstprobe* nimmt man eine Sicherungskopie der Datei, nicht den Stand aus git — im
+  Arbeitsbaum liegt die ungesicherte Arbeit. Wiederhergestellt, aber vermeidbar.
+* **`camR` ist der ABSTAND, kein Winkel** (Standard 44). `__CAM(x,z,0.15,0.30)` stellte die
+  Kamera 15 cm vor das Ziel: graues Bild. Und die Sichtweite hängt an der **Spieler**-
+  position (`lodTakt(spielerPos())`), nicht an der Kamera — ohne versetzte Figur ist am
+  Rummelplatz alles ausgeblendet. Beide Male sah das Bild „kaputt" aus, und beide Male war
+  die Aufnahme falsch, nicht die Welt.
+
+> **Bleiben still, weiter mit Absicht:** `freefall`, `seilbahn`, `wildwasser`, `geisterbahn`,
+> `scooter`. Sie haben keinen benannten Drehpunkt; ihre Bewegung wäre keine Drehung, sondern
+> eine Fahrt (Gondel hoch/runter, Kabinen am Seil, Boote im Kanal). Das braucht je Modell
+> eine eigene Vermessung der Bauteile — und die gehört in eine eigene Runde.
