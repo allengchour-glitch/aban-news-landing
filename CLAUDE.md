@@ -929,6 +929,29 @@ alte Regel **einen älteren Aufseher, den es nicht gibt**; mit der neuen ist es 
   `$1==$3 && $2==1`, oder man baut das Suchwort so zusammen, dass es in der eigenen Zeile gar
   nicht vorkommt.
 
+## 🤖 «Alles automatisch»: TikTok-Autoposter gebaut + alle Wege neu vermessen (2026-08-30)
+Betreiberwunsch: «ein Tool das alles automatisch läuft». Die eine Lücke, die nicht automatisch
+lief, war das TikTok-Posten. Gebaut:
+- **`automation/local/tiktok-upload-auto.mjs`** (PC, CDP 9222, Muster youtube-shorts-upload):
+  liest `dropship/tiktok_queue.json` (schreibt der Cloud-Generator mit, geprüfte Preise/ACTIVE),
+  legt **`luxe-premium.wav` unters stumme Video** (ffmpeg, `-c:v copy` — Hausregel
+  VIDEO-PRAEFERENZEN, nie stumm posten), lädt über den angemeldeten Browser hoch, ersetzt die
+  von TikTok vorbefüllte **Dateinamen-Caption** (Ctrl+A→Delete, dann zeilenweise tippen,
+  Escape gegen Hashtag-Popups), postet, Beweis-Screenshots, Ledger
+  `dropship/_tiktok_upload_done.txt`. Bremsen fest: **1/Kalendertag**, `_TIKTOK_STOPP`,
+  `frei:false` nie, ohne ffmpeg kein Post, `DRY=1` stoppt vor dem Klick.
+  Setup: `dropship/TIKTOK-AUTO-SETUP.md` (schtasks täglich 17:30 mit `git pull` davor).
+  ⚠️ Karussells bewusst NICHT automatisiert (Slide-Reihenfolge+Sound zu fragil), Trend-Sound
+  nicht automatisierbar → Marken-Musik ist der ehrliche Ersatz.
+- **GitHub Actions: am 30.08. GEMESSEN weiter gesperrt.** `workflow_dispatch` auf den
+  harmlosesten Workflow (cf-preflight) → «Actions has been disabled for this user». Die
+  API *listet* dabei brav 168 Workflows als «active» und beantwortet Run-Abfragen — **eine
+  antwortende Verwaltungs-API beweist nichts über die Ausführungs-Sperre**; nur der
+  Dispatch-Versuch tut es. Entsperren kann weiter nur der Betreiber (GitHub-Support).
+- Übrige Wege unverändert: GitLab-CI-Ersatz liegt bereit (braucht Secrets in GitLab, Betreiber),
+  n8n braucht `PUBLISH_WEBHOOK_URL`, TikTok-API in Review, `SHOPIFY_CLIENT_ID/_SECRET` gehören
+  in die Claude-Umgebungsvariablen (übersteht /tmp-Wipes).
+
 ## 🎛️ «Keine Filter» — zwei eigene Messfehler in einem Befund (2026-08-30, korrigiert am selben Abend)
 ⚠️ **Die erste Fassung dieses Eintrags war falsch, in zwei Punkten:**
 1. **«Die Search-&-Discovery-App ist nicht installiert (25 Apps geprüft)»** — sie ist
