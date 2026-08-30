@@ -5500,3 +5500,8 @@ gid://shopify/Product/15449133318529	CHF 7.37	1 Varianten	Fairy-Style Segment-Wi
 gid://shopify/Product/15449133351297	CHF 19.53	1 Varianten	DIY Wimpern-Set mit 640 Einzel-Büscheln
 gid://shopify/Product/15449133384065	CHF 17.09	1 Varianten	15 Paar 3D Cat Eye Kunstwimpern
 gid://shopify/Product/15449133416833	CHF 14.03	1 Varianten	5 Paar Falsche Wimpern Faux Mink
+gid://shopify/Product/15449133449601	CHF 14.57	1 Varianten	Falsche Wimpern Faux Mink – 10 Paar
+gid://shopify/Product/15449133515137	CHF 14.57	1 Varianten	5 Paar Foxy 3D-Wimpern mit transparentem Band
+gid://shopify/Product/15449133547905	CHF 6.95	1 Varianten	Ono Rabbit Transparente Falsche Wimpern
+gid://shopify/Product/15449133580673	CHF 7.53	1 Varianten	Magnetisches Wimpern-Set
+gid://shopify/Product/15449133613441	CHF 8.83	1 Varianten	Magnetische Kunstwimpern
