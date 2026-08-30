@@ -1,0 +1,16 @@
+# 2026-08-30 Startseite aufgefuellt (Betreiberwunsch)
+pl_trends               hype-jetzt            6 -> 12 Karten, 3 -> 4 Spalten
+product_list_schweiz    hoodies-sweatshirts  10 -> 15
+mode_row                damen-mode           10 -> 15
+product_list_blitz      blitzversand-highl.  10 -> 15
+product_list_wm2026     neu-eingetroffen     10 -> 15
+schmuck_row             premium-schmuck      10 -> 15
+pl_beauty               schuhe-sneaker       10 -> 15
+budget_unter25          eu-lager-schnell     10 -> 15
+elektronik_row          elektronik-technik   10 -> 15
+pl_wohnen               wohnen-dekoration    10 -> 15
+product_list_L3EDnA     premium-geschenke    10 -> 15
+product_list_topseller  bestseller           10 -> 15 (nach Auffuellen 10 -> 18 aktiv)
+lux_spotlight_favs      Herrenuhr "(5 Bewertungen)" -> "(15 Bewertungen)" (live nachgezaehlt)
+Hero-Favoriten +8 Produkte, alle >=4.5 Sterne und >=5 Bewertungen, nach Warenart gestreut
+SUMME Produktkarten 116 -> 177 · 25 Sektionen unveraendert (Shopify-Deckel)

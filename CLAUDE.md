@@ -929,6 +929,31 @@ alte Regel **einen älteren Aufseher, den es nicht gibt**; mit der neuen ist es 
   `$1==$3 && $2==1`, oder man baut das Suchwort so zusammen, dass es in der eigenen Zeile gar
   nicht vorkommt.
 
+## 📐 Ein Shopify-Template fasst genau 25 Sektionen — die Startseite stand exakt darauf (2026-08-30)
+Auf «fülle mehr sachen in startseite» wollte ich fünf Produktreihen ergänzen. `themeFilesUpsert`
+lehnte ab: **«sections: must have a maximum of 25»** — und `templates/index.json` hatte bereits
+25. Neue Reihen gehen also nur im TAUSCH, nie additiv.
+- **Der Ausweg war die bessere Antwort auf die Frage:** Mehr WARE braucht keine neue Sektion,
+  sondern mehr `max_products` je Reihe. **116 → 177 Produktkarten** ohne eine einzige neue
+  Sektion, live gegengeprüft (208 verschiedene Produkte im gerenderten HTML).
+- ⚠️ **Erhöht wurde nur, wo die Kollektion die Karten DECKT.** Gemessen über
+  `collection_id:<id> AND status:active`, weil `productsCount` Entwürfe mitzählt. «Hero-Favoriten»
+  hatte nur 10 aktive und blieb deshalb zunächst stehen — **eine Reihe, die auf 15 steht und 10
+  zeigt, ist eine Lücke, kein Angebot.** Erst nach dem Auffüllen (auf 18) ging sie auf 15.
+- **Der Deckel legte nebenbei eine Doppelung offen:** Von den 25 Sektionen machen **fünf**
+  dasselbe — Kategorie-Navigation (`collection_list_hREdj9`, `lux_carousel`, `cl_tech`,
+  `cl_trends`, `banner_kategorien`). Wer künftig eine Reihe braucht, nimmt den Platz dort.
+- ⚠️ **`lux_spotlight_favs` tippt Preise und Bewertungszahlen fest ins HTML** — und war schon
+  abgedriftet: «(5 Bewertungen)» bei der Herrenuhr, live sind es **15**. Korrigiert, aber die
+  Bauart bleibt eine Zeitbombe. **Was fest im HTML steht, altert; was aus der Kollektion kommt,
+  nicht.**
+- ⚠️ **Preis der Übung, ehrlich gemessen: die Startseite liefert jetzt 6,8 MB HTML.** Das ist
+  für ein Handy viel. Mehr Karten heisst mehr Gewicht — wenn die Ladezeit zum Thema wird, ist
+  das die erste Stellschraube zurück.
+- ✅ Und die Cache-Lehre vom 28.08. hat sich bestätigt: Nach dem Schreiben kam die Startseite
+  **dreimal mit HTTP 500**, während `/collections/damen-mode` durchgehend 200 lieferte. Im
+  vierten Versuch 200. **Erst die Nachbarseite prüfen, dann erschrecken.**
+
 ## 🔐 /tmp WURDE GELEERT — und der Tresor liess sich nicht öffnen, weil sein Schlüssel darin lag (2026-08-30)
 Nach einer längeren Sitzungslücke meldete `engine_keepalive.sh` viermal **«cj_runner2 FEHLT
 (/tmp gewiped?)»** und **STAND: 0 CJ-Runner**. Nachgesehen: **/tmp ist vollständig leer.** Weg
