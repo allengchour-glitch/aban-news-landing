@@ -5081,3 +5081,37 @@ sind geteilt — **drei** dieser Schilder stehen in der Welt, eine Liste erfasst
 > legt nur den Blickpunkt fest, nicht den Winkel; drei Anläufe haben den Club von Norden,
 > Nordwest und Südost erwischt, nie von der Schildseite. Statt einen vierten Kamerawinkel
 > zu jagen, steht hier, was belegt ist — die Materialwerte — und was nicht: ein Bild.
+
+## 2026-08-30 · 💡 Zwei Laternen für den Club — und eine Zahl, die von der Kamera abhing
+
+Der Nacht-Strang weiter: der Spielclub steht auf (126|102), die Laternenkette folgt dem
+Stadtraster und endet bei |x| = 119. Der Eingang lag damit im blossen Hemisphärenlicht
+(nachts 0,26).
+
+**Behoben mit zwei Einträgen in der Positionsliste** — Masten bei (122|92) und (134|92),
+4 m vor der Südwand, ausserhalb des Kollibers, 8 m nördlich der nächsten Fahrbahn.
+
+⚠️ **Bewusst kein neues Lichtobjekt.** Der Pool vergibt genau `LAMP_MAX` Punktlichter an
+die kameranächsten Masten; zwei weitere *Positionen* ändern die Zahl gleichzeitig
+brennender Lichter nicht — und damit baut three.js seine Shader nicht neu. Genau das war
+die teuer erlernte Lehre aus #2368/#2387.
+
+| | vorher | nachher |
+|---|---|---|
+| Punktlichter im Umkreis 25 m (Kamera am Club) | **1** (13,6 m) | **3** (2 × 11,7 m) |
+| Laternen gesamt | 174 | **176**, alle auf tragfähigem Grund |
+| `zahlWechsel` (Shader-Neubauten) | 0 | **0** |
+
+### ⚠️ Meine erste Zahl war falsch — und stand schon im Code
+
+Der erste Lauf meldete **null** Lichter im Umkreis von 25 m, und genau das stand bereits
+als Begründung im Kommentar. **Der Pool vergibt seine Lichter aber nach der
+KAMERAPOSITION**, und meine Kamera stand beim Spielerhaus — am Club brannte darum
+folgerichtig nichts, ganz gleich wie viele Masten dort stehen.
+
+Aufgefallen ist es, weil die Messung **nach** dem Einbau der Masten dieselbe Null meldete.
+Eine Zahl, die sich durch die Änderung nicht bewegt, ist entweder ein Beweis, dass die
+Änderung nichts tut — oder ein Beweis, dass man das Falsche misst. Hier war es das zweite.
+
+> **Die Regel:** Vorher und Nachher müssen **von derselben Stelle aus** gemessen werden,
+> sonst vergleicht man zwei Orte. Nach der Korrektur: 1 → 3.
