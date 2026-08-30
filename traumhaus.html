@@ -34,7 +34,8 @@ canvas{display:block}
 .btn.ghost{background:rgba(255,255,255,.7);color:#4a5a7a;border:2px solid #b8cee0;box-shadow:none;font-size:1rem;padding:12px 24px}
 .small{font-size:.85rem;color:#6a8aa8;margin-top:14px}.small a{color:#4a7ab0}
 #hud{position:fixed;top:calc(10px + env(safe-area-inset-top));left:calc(10px + env(safe-area-inset-left));right:calc(10px + env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:10;gap:8px;flex-wrap:wrap}
-.panel{background:rgba(255,253,248,.92);border:2px solid rgba(120,110,80,.2);border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 4px 14px rgba(60,40,10,.15);pointer-events:auto}
+/* 🎨 RAHMENLOS (User: "keine rahmen"). Die dauerhaft sichtbaren Bedienelemente tragen keine Linie mehr — Trennung macht der Schatten. Ein 2-px-Strich um jede Kachel zerschneidet das Bild in Kaesten; ein weicher Schatten hebt sie ab, ohne die Szene zu zerteilen. Dialoge behalten ihre Kante: dort trennt sie sinnvoll. */
+.panel{background:rgba(255,253,248,.94);border:0;border-radius:16px;padding:8px 12px;font-weight:800;box-shadow:0 6px 20px rgba(40,30,10,.22);pointer-events:auto}
 #geld{font-size:1.25rem;font-weight:900;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border-color:#e8b04a}
 #uhr{font-size:1rem;max-width:min(60vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #geld{color:#b8860b}
@@ -84,7 +85,11 @@ canvas{display:block}
      Der Deckel sollte HOEHE sparen — ein Umbruch kostet aber genau die: der Kasten
      wuchs von 51 auf 79 px. Jetzt darf er so breit werden, wie die Reihe hergibt
      (bei 667 px Fensterbreite waren 44 px Luft frei, gebraucht werden 27). */
-  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:min(34vw,190px)}
+  /* ⚠️ 190 px minus 24 px Polsterung = 166 px Inhalt. Die volle Zeile (drei
+     Fertigkeiten + Status) braucht 175 — sie brach genau dann um, wenn alle drei
+     zusammenkamen, also mal so und mal so. Gemessen mit th-hud; 206 gibt 182 und
+     damit Luft, ohne die Uhr daneben zu beruehren (Ueberlappung mitgeprueft). */
+  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:min(38vw,206px)}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
   #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -112,7 +117,7 @@ canvas{display:block}
 .pitem.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.25)}
 .pitem .pe{font-size:1.4rem}.pitem .pn{font-size:.66rem;font-weight:700;color:#5a4a30}.pitem .pp{font-size:.66rem;color:#b8860b;font-weight:800}
 #tools{position:fixed;right:calc(10px + env(safe-area-inset-right));bottom:calc(252px + env(safe-area-inset-bottom));display:none;flex-direction:column;gap:8px;z-index:13}
-.tbtn{width:48px;height:48px;border-radius:14px;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)}
+.tbtn{width:48px;height:48px;border-radius:16px;border:0;background:rgba(255,253,248,.95);font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)}
 .tbtn.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.3)}
 #modeBtn.building{top:calc(58px + env(safe-area-inset-top));bottom:auto;left:50%;transform:translateX(-50%)}
 #modeBtn{position:fixed;left:calc(10px + env(safe-area-inset-left));bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#fff;background:linear-gradient(90deg,#5a9af0,#7a6af0);box-shadow:0 8px 24px rgba(90,120,240,.4)}
@@ -256,8 +261,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
  </div>
 </div>
 <div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
-<button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)">🏆</button>
-<canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:3px solid rgba(255,255,255,.75);box-shadow:0 4px 14px rgba(0,0,0,.35);background:#3a5a34;cursor:pointer"></canvas>
+<button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:0;background:rgba(255,253,248,.95);border-radius:16px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)">🏆</button>
+<canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:0;box-shadow:0 6px 20px rgba(20,30,15,.42);background:#3a5a34;cursor:pointer"></canvas>
 <!-- 🗺️ Grosse Karte (User: „map ist noch zu klein") — Tipp auf das Radar oeffnet die ganze Welt -->
 <div id="bigmapWrap" style="position:fixed;inset:0;z-index:60;display:none;background:rgba(12,16,12,.86);backdrop-filter:blur(3px);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:10px">
   <div style="color:#fff;font-weight:900;font-size:1.05rem;text-shadow:0 2px 6px #000">🗺️ Weltkarte <span style="font-weight:700;font-size:.8rem;opacity:.85">· Tipp auf die Karte = 📍 GPS-Wegpunkt</span></div>
@@ -13726,7 +13731,14 @@ function updHUD(){
   var skr=document.createElement("div");skr.style.cssText="font-size:.72rem;color:#5a4a30;font-weight:800";
   /* Feste Leerzeichen innerhalb eines Eintrags: wird es doch einmal zu eng, faellt
      der Umbruch ZWISCHEN zwei Eintraege statt mitten hinein ("Lv1" allein). */
-  skr.textContent="💼\u00A0Lv"+skills.arbeit.lv+" · 💘\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️\u00A0Lv"+skills.krimi.lv:"")+(arbeiten?" · Arbeit\u00A0…":(crime.on?" · unterwegs\u00A0🌙":""));
+  /* ⚠️ Auf schmalen Geraeten war genau der Status-Nachsatz das, was die Zeile brechen
+     liess: bei 568 px braucht sie 217 px und hat 162 (gemessen mit th-hud). Statt den
+     Umbruch hinzunehmen wird die FORM gekuerzt, nicht die Information — aus
+     "· Arbeit …" wird "· 🔨". Der Wortlaut bleibt, wo Platz ist. */
+  var _eng9=innerWidth<700;
+  var _st9=arbeiten?(_eng9?" · 🔨":" · Arbeit\u00A0…")
+          :(crime.on?(_eng9?" · 🌙":" · unterwegs\u00A0🌙"):"");
+  skr.textContent="💼\u00A0Lv"+skills.arbeit.lv+" · 💘\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️\u00A0Lv"+skills.krimi.lv:"")+_st9;
   nb.appendChild(skr);
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
