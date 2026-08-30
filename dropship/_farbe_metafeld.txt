@@ -312,3 +312,8 @@ gid://shopify/Product/15500927304065	Roségold
 gid://shopify/Product/15520301711745	Silber
 gid://shopify/Product/15520302006657	Silber
 gid://shopify/Product/15520374096257	Schwarz
+gid://shopify/Product/15520389235073	Mehrfarbig
+gid://shopify/Product/15520389333377	Silber
+gid://shopify/Product/15520389464449	Silber
+gid://shopify/Product/15520389497217	Mehrfarbig
+gid://shopify/Product/15520398508417	Grün

@@ -5505,3 +5505,49 @@ gid://shopify/Product/15449133515137	CHF 14.57	1 Varianten	5 Paar Foxy 3D-Wimper
 gid://shopify/Product/15449133547905	CHF 6.95	1 Varianten	Ono Rabbit Transparente Falsche Wimpern
 gid://shopify/Product/15449133580673	CHF 7.53	1 Varianten	Magnetisches Wimpern-Set
 gid://shopify/Product/15449133613441	CHF 8.83	1 Varianten	Magnetische Kunstwimpern
+gid://shopify/Product/15449133646209	CHF 7.62	1 Varianten	Handgemachte Kirschgold Diamant Nägel
+gid://shopify/Product/15449133678977	CHF 16.72	1 Varianten	24er Set Schwarze Schmetterling Press-On Nägel
+gid://shopify/Product/15449133744513	CHF 16.72	1 Varianten	24er Set rote Herz Press-On Nägel
+gid://shopify/Product/15449133842817	CHF 16.72	1 Varianten	24er-Set rote und weisse Herz-Press-On Nägel
+gid://shopify/Product/15449133973889	CHF 7.13	1 Varianten	Handgemachte Nagel-Tips «Sweet Cool»
+gid://shopify/Product/15449134006657	CHF 15.90	1 Varianten	24er Set Diamond Snake Press-On Nägel
+gid://shopify/Product/15449134104961	CHF 15.90	1 Varianten	24er Set «Planet Diamond Star» Press-On Nägel
+gid://shopify/Product/15449134170497	CHF 15.90	1 Varianten	Bärli-Schleife Press-On Nägel
+gid://shopify/Product/15449134203265	CHF 15.90	1 Varianten	24er Set Diamond Deer Snowflake Press-On Nägel
+gid://shopify/Product/15449134236033	CHF 16.72	1 Varianten	Erdbeer-Schleifen-Press-On Nägel
+gid://shopify/Product/15449134268801	CHF 15.90	1 Varianten	24er Set Planet Perlen-Blumen Press-On Nägel
+gid://shopify/Product/15449134301569	CHF 16.72	1 Varianten	24er Set Kirschbogen-Press-On Nägel
+gid://shopify/Product/15449147212161	CHF 26.25	6 Varianten	Denim-Rock mit Ombre-Ärmeln
+gid://shopify/Product/15449147244929	CHF 17.42	6 Varianten	Plissiertes Langarmkleid
+gid://shopify/Product/15449147310465	CHF 36.91	3 Varianten	Elegantes Polka-Dot Minikleid
+gid://shopify/Product/15449147343233	CHF 32.35	4 Varianten	Luftiges Leinenkleid mit V-Ausschnitt
+gid://shopify/Product/15449147376001	CHF 22.94	15 Varianten	Besticktes Langarm-Freizeitkleid mit Print
+gid://shopify/Product/15449147408769	CHF 14.31	4 Varianten	Ärmelloses Ballonkleid für Damen
+gid://shopify/Product/15449147474305	CHF 16.89	20 Varianten	Damen Kleid mit Rüschen und Rundhals
+gid://shopify/Product/15449147507073	CHF 17.03	5 Varianten	Ärmelloses Midikleid aus Viskose
+gid://shopify/Product/15449147670913	CHF 22.39	24 Varianten	Kapuzenpullover mit Reissverschluss
+gid://shopify/Product/15449148064129	CHF 34.09	12 Varianten	Oversized Kapuzenpullover im American Style
+gid://shopify/Product/15449148096897	CHF 13.34	36 Varianten	Hoodie im American Streetwear-Stil
+gid://shopify/Product/15449148129665	CHF 13.25	5 Varianten	Mid-Länge Hoodie im American Style
+gid://shopify/Product/15449148293505	CHF 32.88	6 Varianten	Vintage-Stil Kapuzen-Cardigan für Frühling & Herbs
+gid://shopify/Product/15449148490113	CHF 15.38	49 Varianten	Streetwear Hoodie mit Herz-Print
+gid://shopify/Product/15449148719489	CHF 11.94	20 Varianten	Gerippter Kapuzenpullover mit V-Ausschnitt
+gid://shopify/Product/15449148916097	CHF 53.37	7 Varianten	Half-zip Sweatshirt mit Stehkragen
+gid://shopify/Product/15449149079937	CHF 14.48	6 Varianten	Langarm-Freizeitshirt mit Half-Zip und Print
+gid://shopify/Product/15449149276545	CHF 15.85	48 Varianten	Lässiges Langarm-Sweatshirt mit Rundhals
+gid://shopify/Product/15449149407617	CHF 16.15	25 Varianten	Herren Strick-Kapuzenjacke mit Stickerei und Print
+gid://shopify/Product/15449149440385	CHF 14.48	8 Varianten	Pullover-Top mit Pflanzen- und Blumenmuster
+gid://shopify/Product/15449149473153	CHF 12.29	5 Varianten	Kariertes Jacquard Hoodie für Paare
+gid://shopify/Product/15449149505921	CHF 15.24	4 Varianten	Lässiges Colorblock Sweatshirt mit Leopardenprint
+gid://shopify/Product/15449149538689	CHF 15.10	48 Varianten	Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhab
+gid://shopify/Product/15449149571457	CHF 15.14	17 Varianten	Casual Oversized Top mit 3D-Effekt
+gid://shopify/Product/15449149604225	CHF 14.28	8 Varianten	Lässiger Hoodie mit Cartoon-Print
+gid://shopify/Product/15449149669761	CHF 16.62	99 Varianten	Kapuzenpullover mit 3D-Druck für Damen
+gid://shopify/Product/15449149702529	CHF 22.40	3 Varianten	Gestreiftes Kapuzen-Sweatshirt
+gid://shopify/Product/15449149800833	CHF 16.66	84 Varianten	Damen Pullover mit Blumenprint und Rundhals
+gid://shopify/Product/15449149866369	CHF 18.41	5 Varianten	Eleganter Mid-Length Strickpullover mit Knöpfen
+gid://shopify/Product/15449149899137	CHF 17.63	6 Varianten	Sportliches Langarm-Top mit Farbblöcken
+gid://shopify/Product/15449149964673	CHF 15.98	20 Varianten	Blumenprint Langarmshirt für Damen
+gid://shopify/Product/15449149997441	CHF 14.06	4 Varianten	Lockerer Hoodie mit Leopardenmuster
+gid://shopify/Product/15449150030209	CHF 23.92	3 Varianten	Kapuzen-Sweatshirt mit Nieten-Design
+gid://shopify/Product/15449150062977	CHF 23.10	3 Varianten	Kapuzen-Sweatshirt mit Lochmuster
