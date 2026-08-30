@@ -5605,3 +5605,12 @@ gid://shopify/Product/15449158484353	CHF 34.11	6 Varianten	Vielseitiger Strick-C
 gid://shopify/Product/15449158517121	CHF 25.49	4 Varianten	Vielseitiger Hoodie mit langen Ärmeln
 gid://shopify/Product/15449158615425	CHF 34.43	3 Varianten	Kapuzen-Sweatshirt im American Streetwear-Stil
 gid://shopify/Product/15449158648193	CHF 23.51	17 Varianten	Corduroy Fleece Hoodie mit Kordelzug
+gid://shopify/Product/15449158680961	CHF 12.72	58 Varianten	3D Farbverlauf Digital-Print Hoodie für Damen
+gid://shopify/Product/15449158746497	CHF 13.02	48 Varianten	3D Digitaldruck V-Ausschnitt Pullover für Damen
+gid://shopify/Product/15449158779265	CHF 12.04	48 Varianten	Unifarbenes Kapuzen-Sweatshirt
+gid://shopify/Product/15449158812033	CHF 14.34	17 Varianten	Trendiges Halbarm-T-Shirt aus Baumwoll-Mix
+gid://shopify/Product/15449158844801	CHF 13.39	42 Varianten	Damen Hoodie mit 3D-Effekt und Kunstfell
+gid://shopify/Product/15449158877569	CHF 16.69	20 Varianten	Color-Blocked Minimalistisches Top für Damen
+gid://shopify/Product/15449158910337	CHF 15.42	8 Varianten	Retro 3D Digital-Print Crew-Neck Sweatshirt
+gid://shopify/Product/15449158943105	CHF 15.78	25 Varianten	Damen Sweatshirt mit 3D-Effekt Print
+gid://shopify/Product/15449159041409	CHF 15.80	8 Varianten	Street-Style Hoodie mit Kreativem Schriftzug-Print
