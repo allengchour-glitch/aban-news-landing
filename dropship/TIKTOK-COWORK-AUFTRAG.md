@@ -135,7 +135,35 @@ Code WELCOME10 für −10%
 
 ---
 
-## 5. `schmuck-organizer-mit-faltwand-958528`
+## 5. `meisterwerk-0830`
+
+**Caption:**
+
+```
+Die Highlights der Woche 🇨🇭
+Jetzt im Shop 🇨🇭 luxestyle.ch
+Code WELCOME10 für −10%
+
+#fyp #schweiz #luxestyle #haul #musthaves
+```
+
+**Video (stumm, für Trend-Sound):**
+https://cdn.shopify.com/s/files/1/0943/6856/3585/files/meisterwerk-0830-clean.mp4?v=1788127365
+
+**Slides in dieser Reihenfolge:**
+
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_6e3e2461-ab71-480c-b43c-a97fa6217e64.jpg?v=1788127314
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_fefdb7c0-f1c1-4ca0-8fba-711ab29c8365.jpg?v=1788127319
+3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_1f9194be-cec7-4383-9975-61a817d090e9.jpg?v=1788127326
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_2c3ca620-ad50-4632-9d41-f67ed76c2c86.jpg?v=1788127332
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_2eebd2f5-dd52-43ec-ba74-fe31d2af0c99.jpg?v=1788127339
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_4b846a8e-cebd-4169-9bd5-bbfd554e62e2.jpg?v=1788127345
+7. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07_80baf681-92ba-48a7-87f1-fdb30ce4c370.jpg?v=1788127352
+8. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08.jpg?v=1788127357
+
+---
+
+## 6. `schmuck-organizer-mit-faltwand-958528`
 
 **Caption:**
 
@@ -161,7 +189,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/schmuck-organizer-mit-fal
 
 ---
 
-## 6. `top-5-unter-40-0829`
+## 7. `top-5-unter-40-0829`
 
 **Caption:**
 
@@ -195,7 +223,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-0829-clean
 
 ---
 
-## 7. `top-5-unter-50-0828`
+## 8. `top-5-unter-50-0828`
 
 **Caption:**
 
@@ -229,7 +257,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-0828-clean
 
 ---
 
-## 8. `vakuumierer-kabellos-lebensmittel`
+## 9. `vakuumierer-kabellos-lebensmittel`
 
 **Caption:**
 

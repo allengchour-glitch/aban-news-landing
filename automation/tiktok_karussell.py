@@ -270,7 +270,7 @@ def preis_pille(d, x, y, text):
     d.text((x + 32, y + 20), text, font=f(SANSB, 44), fill=(30, 24, 12))
 
 
-def slide_hook(bildpfad, kicker, gross, titel, nummer, gesamt):
+def slide_hook(bildpfad, kicker, gross, titel, nummer, gesamt, wisch=True):
     """Erster Slide. Der PREIS ist der Anker, nicht der Titel.
 
     Grund steht in der eigenen Auswertung: eine Caption mit Preis-Anker schlug die generische
@@ -298,7 +298,8 @@ def slide_hook(bildpfad, kicker, gross, titel, nummer, gesamt):
 
     d.text((64, yg - 62), kicker.upper(), font=f(SANSB, 34), fill=GOLD)
     d.line([(64, unterkante + 34), (254, unterkante + 34)], fill=GOLD, width=6)
-    d.text((64, unterkante + 62), "→ weiterwischen", font=f(SANSB, 36), fill=CREME)
+    if wisch:
+        d.text((64, unterkante + 62), "→ weiterwischen", font=f(SANSB, 36), fill=CREME)
     return img
 
 

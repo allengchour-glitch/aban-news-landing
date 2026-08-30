@@ -202,7 +202,7 @@ def main():
         cp = os.path.join(BASIS, slug, "caption.txt")
         cap = open(cp).read().strip() if os.path.exists(cp) else ""
         # Produkt-Handle nur bei Einzelprodukt-Karussells pruefbar (Slug == Handle).
-        einzel = not slug.startswith("top-")
+        einzel = not slug.startswith(("top-", "meisterwerk"))
         frei = aktiv(slug) if einzel else True
         if einzel and not frei:
             gesperrt += 1
