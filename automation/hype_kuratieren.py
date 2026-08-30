@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 27.08.2026 (CJ «20 Viral TikTok Products 2026» + sellthetrend September-Liste: tragbare Smoothie-Mixer, Karaoke-/Ansteckmikrofone, Ringlichter, Tierhaar-Fusselrollen und Futterautomaten neu aufgenommen; Sunset-Lampe, Mini-Beamer, 3-in-1-Ladestation, Heatless Curls, Snail/Serum, LED-Maske und Haustier-Fellpflege von beiden Quellen bestaetigt. Hals-Ventilator laeuft aus (Herbstanfang CH). Seifenblasenpistole bewusst NICHT: faellt unter Spielzeug (RAUS_TYP). Supplements/Lebensmittel weiterhin NICHT: Heilversprechen-Klasse)"
+QUELLE = "Web-Recherche 30.08.2026 (bebolddigital/printify/accio-Herbstlisten: Faszienrollen, LED-Strips fuer Zimmer-Makeover und 2-in-1-Spray-Haarbuersten neu; Mini-Beamer, Sunset-Lampe und Ordnung/aesthetic living erneut bestaetigt. Dazu Herbstanfang CH: Heiz-/Waermedecken und Fusswaermer. Hals-Ventilator ausgelaufen. Supplements/Lebensmittel weiterhin NICHT: Heilversprechen-Klasse)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -106,6 +106,21 @@ THEMEN = {
     "Smoothie-Mixer": re.compile(
         r'Smoothie[- ]?(?:Mixer|Maker|Becher|Blender)|Mixbecher|'
         r'Tragbarer?[- ]?(?:Mini-?)?(?:Mixer|Blender)|Standmixer[- ]?to[- ]?go', re.I),
+    # Neu 30.08.: Herbstlisten nennen Faszienrollen (Fitness-Reset im September), LED-Strips
+    # (aesthetic room makeover) und die 2-in-1-Spruehbuerste; fuer die Schweiz dazu der
+    # Herbstanfang: Heiz-/Waermedecken und Fusswaermer. ⚠️ «Roller» allein traefe Ice-Roller
+    # und Kopfhaut-Roller (eigene Themen) → Faszien/Foam als Anker. «Strip» allein traefe
+    # Wachs-Strips → LED als Pflicht-Anker. «beheizbar» allein traefe Auto-Sitzheizungen →
+    # Decke/Weste/Socken/Hausschuhe als Anker.
+    "Faszienrolle": re.compile(
+        r'Faszienroll|Foam[- ]?Roller|Massageroll(?:e|er)\b', re.I),
+    "LED-Strip": re.compile(
+        r'LED[- ]?(?:Strip|Streifen|Lichtband|Lichtleiste)', re.I),
+    "Spray-Haarbürste": re.compile(
+        r'(?:Spray|Spr[üu]h|Wasserspr[üu]h)[- ]?(?:Haar)?b[üu]rste|Spray[- ]?Brush', re.I),
+    "Wärme & Kuschel": re.compile(
+        r'Heizdecke|W[äa]rmedecke|Heizkissen|Fu[sß]w[äa]rmer|Fussw[äa]rmer|'
+        r'beheizbare?[- ]?(?:Decke|Weste|Socken|Hausschuhe)', re.I),
     # ⚠️ «Mikrofon» allein traefe Studio-, PC- und Konferenzmikrofone → Karaoke/Anstecker
     # als Anker. «Mini» allein sowieso nicht.
     "Karaoke-Mikrofon": re.compile(
