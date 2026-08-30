@@ -5630,3 +5630,101 @@ Deckel meldet sie exakt den Screenshot des Users:
 > aufruft, prüft nichts — und eines, das den gutmütigsten Fall misst (eine Stadtroute,
 > ein leeres HUD, ein Bildschirmformat), meldet Grün über einem Fehler, den der User auf
 > dem ersten Blick sieht.
+
+## 2026-08-30 · 🗄️ Der Schrank — 33 Werkzeuge, die niemand aufrief
+
+Zweimal an einem Tag lautete die Diagnose „das Werkzeug gab es, es stand nur nicht im
+Tor" (`th-gps`, `th-hud`). Also einmal nachgezählt statt weiter zu raten:
+
+| | |
+|---|---|
+| Werkzeuge in `spiele-dev/tools` | **58** |
+| davon im Tor (`th-alle.mjs`) | **25** |
+| von den übrigen: fällen ein **Urteil** | **14** |
+
+Vierzehn Prüfungen, die nur liefen, wenn jemand daran dachte. **Alle vierzehn einmal
+gestartet** (35 min): dreizehn halten — `th-einladung` 20 ok, `th-hetze` 27 ok,
+`th-meter` 25 ok, `th-serie` 14 ok, `th-enten` 11, `th-missmap` 10, `th-reichweite` 10,
+`th-stich` 9, `th-fenster` 8, `th-radar` 7, `th-sicht` 5, `th-pruef` und `th-wachstum`
+sauber. **Tor: 25 → 39 Prüfungen.**
+
+`th-leistung` bleibt bewusst draußen: es fällt kein Urteil, sondern druckt vierzig
+Kennzahlen. **Ein Messgerät ist keine Prüfung** — im Tor wäre es entweder immer grün
+oder bei jeder Schwankung rot.
+
+### ⚠️ Der Wächter gegen den häufigsten Fehler hatte ein Loch
+
+Beim Reparieren von `th-leistung` schrieb ich einen Kommentar mit `` `visible` `` — in
+ein Sonden-Literal. `node --check` starb mit „Unexpected identifier". `th-lint`, das
+**genau dafür** existiert (Runbook-Regel 1, dreizehnmal an einem Tag verletzt), meldete
+daneben `✅ Kein Backtick bricht ein Sonden-Literal`.
+
+Grund: es suchte nur nach `= \``. Sonden stehen aber meistens als **Objekt-Eigenschaft**
+da — `leistung: \`function…`. Die wurden nie gelesen: **39 statt 63** Literale.
+
+Der erste Fix war zu breit (`=`, `:`, `(`, `,` → 423 Literale, 34 „Funde", fast alle
+geschachtelte Ausgabe-Vorlagen `${x ? … : …}`) — genau der Lärm, vor dem der Kommentar im
+Werkzeug selbst warnt. Jetzt zählt, **womit das Literal anfängt**: eine Sonde beginnt
+immer mit `function`. **63 Literale, 0 Lärm.**
+
+**Selbstprobe:** mit dem Backtick wieder eingesetzt meldet `th-lint` jetzt
+`❌ th-leistung.mjs:165 — Sonden-Literal endet mitten im Text` und gibt 1 zurück.
+`th-lint` steht ab sofort als **erste** Prüfung im Tor (Millisekunden, kein Browser).
+
+> Es bleibt eine Schreibweisen-Erkennung, kein Sprachaufbau. Darum läuft `node --check`
+> auf jedem geänderten Werkzeug weiter mit: **`th-lint` sagt WO, `node` sagt OB.**
+
+### Die veraltete Erwartung in `th-leistung` — nicht das Spiel
+
+`❌ Schaltverhalten falsch`, dazu `Nacht — sichtbar: 0 · Tag — sichtbar: 5`. Sieht nach
+invertierten Straßenlaternen aus. Ist es nicht: seit #2447 sagt der Pool nur noch **wo**
+und **wie hell**, über `visible` entscheidet der `LAMP_MAX`-Deckel in der Bildschleife.
+Die Sonde ruft `updLampPool` direkt auf, ohne dass ein Bild läuft — `visible` ist danach
+ein Wert von vorhin. **Zwei Herleitungen derselben Sache, wieder auseinandergelaufen.**
+
+Über die Uhr gemessen, mit laufender Bildschleife:
+
+| | Pool hell | Pool sichtbar | alle Punktlichter sichtbar |
+|---|---|---|---|
+| 22:00, nach 2 s | **8 / 8** | 0 | 6 / 15 |
+| 22:00, nach 5 s | 8 / 8 | **5** | 6 / 15 |
+| 12:00, nach 2 s | **0 / 8** | 0 | 6 / 15 |
+| 01:00, nach 5 s | 8 / 8 | 5 | 6 / 15 |
+
+Das Schalten ist einwandfrei, und die konstante Lichterzahl (6/15) bestätigt #2447 gleich
+mit. Die Prüfung fragt jetzt nach der **Helligkeit** — der Ausgabe des Pools. Wie viele
+brennen dürfen, gehört `th-licht`.
+
+### ⚠️ Und zweimal am selben Nachmittag die falsche Größe gestellt
+
+* `window._dorfNacht = true` bewirkt **nichts**: `loop()` schreibt es in jedem Bild aus
+  `nacht9` zurück. Drei Messreihen lang zeigte darum alles denselben Wert. Nacht macht
+  man über `uhrzeit`, nicht über die Anzeige davon.
+* Die erste Fahrgeschäft-Messung las den **Standwinkel** eines Kindes statt einer
+  Änderung — und meldete „bewegt sich" für erstarrte Modelle.
+
+### 🎡 Was dabei wirklich herauskam: 7 Fahrgeschäfte stehen still
+
+Über 20 s die größte Winkel- **und** Ortsänderung aller Nachfahren gemessen:
+
+| dreht sich | steht vollständig still |
+|---|---|
+| `karussell` (Δ 1,83 / 8,9 m), `kettenkarussell` (1,76 / 13,3), `teetassen` (0,98 / 7,1) | `panorama`, `scooter`, `freefall`, `seilbahn`, `piratenschiff`, `geisterbahn`, `wildwasser` |
+
+Grund im Code: `_drehRaten` kennt **drei** Einträge. Das Riesenrad hat einen eigenen Weg
+(`riesenradRotor`) — und meine Messung verfehlte es, weil der Rotor eine **Szenen-Gruppe
+an der Weltachse** ist, kein Kind der Fahrgeschäft-Gruppe. Es dreht sich also; die 8 aus
+`th-leistung` sind in Wahrheit **7**.
+
+> **Bleibt offen, mit Absicht.** Die Gruppe pauschal zu drehen wäre falsch — ein
+> rotierendes Geisterbahn-Gebäude ist schlimmer als ein stillstehendes. Jedes dieser
+> sieben braucht seine eigene Bewegung (Pendel schwingt, Freefall-Gondel fährt, Seilbahn-
+> Kabinen laufen), und die gehört gemessen, nicht geraten. Ein Knoten heißt bereits
+> `Pendel` — dort fängt die nächste Runde an.
+
+### Widerlegte Hypothese (damit sie niemand erneut verfolgt)
+
+`LIEFERZIELE` steht im Quelltext auf **veralteten Wunschorten** (Bauernhof −196 statt
+−246, Freizeitpark 330 statt 360, Gewerbe Ost 172\|0 statt 250\|−78) — das sieht aus wie
+die `_GPS_VERB`-Falle. Ist es nicht: `viertel()` zieht die Liste zur Laufzeit nach
+(Block `marke()`). **Gemessen stimmen alle 13 Ziele auf 0 m.**
