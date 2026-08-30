@@ -5721,3 +5721,27 @@ gid://shopify/Product/15449169494401	CHF 7.66	1 Varianten	DIY Armband mit Pfoten
 gid://shopify/Product/15449169592705	CHF 7.72	1 Varianten	Reise-Charm-Anhänger (Flugzeug, Koffer, Kamera)
 gid://shopify/Product/15449169658241	CHF 6.86	1 Varianten	Kupferversilberter Stethoskop-Herz-Anhänger
 gid://shopify/Product/15449169723777	CHF 7.59	1 Varianten	DIY Armband-Perle, versilbert
+gid://shopify/Product/15449169756545	CHF 7.67	1 Varianten	Kupferversilberte DIY-Armbandperlen
+gid://shopify/Product/15449170084225	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449171100033	CHF 61.47	1 Varianten	S925 Sterling Silber Moissanit Ring mit Stern-Halo
+gid://shopify/Product/15449171198337	CHF 49.77	1 Varianten	Moissanit-Ring aus S925 Sterling Silber, Platinbes
+gid://shopify/Product/15449171394945	CHF 46.17	1 Varianten	Moissanit-Verlobungsring 2 Karat, 3 Steine, Silber
+gid://shopify/Product/15449171427713	CHF 59.67	1 Varianten	S925 Silber Moissanit Ring – 3 Reihen Pavé
+gid://shopify/Product/15449171460481	CHF 63.27	1 Varianten	Eleganter 2ct Moissanit Ring mit doppeltem Halo
+gid://shopify/Product/15449171493249	CHF 57.87	1 Varianten	Prinzessschliff Moissanit Verlobungsring-Set
+gid://shopify/Product/15449171526017	CHF 65.97	1 Varianten	Moissanit-Ring mit doppeltem Halo, Platinbeschicht
+gid://shopify/Product/15449171591553	CHF 43.47	1 Varianten	S925 Silber Moissanit Ring mit Halo & Twist Band
+gid://shopify/Product/15449171624321	CHF 66.87	1 Varianten	Moissanit-Ring aus 925er Sterlingsilber mit Sterne
+gid://shopify/Product/15449171689857	CHF 62.37	1 Varianten	Moissanit-Ring S925 Silber, Sonnenblumen-Halo, Pla
+gid://shopify/Product/15449171755393	CHF 38.07	1 Varianten	Herz Schleife Moissanit Ring, 1 Karat, Silber
+gid://shopify/Product/15449171788161	CHF 47.97	1 Varianten	Herz Moissanit Ring mit Split Shank Pave Halo
+gid://shopify/Product/15449171853697	CHF 46.17	1 Varianten	S925 Sterling Silber Moissanit Ring mit Goldherz-K
+gid://shopify/Product/15449171952001	CHF 46.17	1 Varianten	S925 Sterling Silber Moissanit Ring V-Halo
+gid://shopify/Product/15449172083073	CHF 66.87	1 Varianten	Moissanit Ring Prinzessschliff, 2ct, Platin Platti
+gid://shopify/Product/15449172148609	CHF 68.67	1 Varianten	S925 Sterling Silber Moissanit Ring, Asscher Cut
+gid://shopify/Product/15449173492097	CHF 28.93	1 Varianten	Verdunkelungsvorhänge mit Ösen (2er-Set)
+gid://shopify/Product/15449173688705	CHF 32.28	1 Varianten	Thermo-Verdunklungsvorhänge mit Ösen, 2er-Set
+gid://shopify/Product/15449173950849	CHF 38.23	1 Varianten	Toile Outdoor Thermovorhang – 50 x 120 In.
+gid://shopify/Product/15449174147457	CHF 28.45	1 Varianten	Vorhangschiene für Streifenvorhänge, 1 m, Silber
+gid://shopify/Product/15449174212993	CHF 49.16	1 Varianten	Vorhang-Set Samt Silber (2 Stück)
+gid://shopify/Product/15449174245761	CHF 65.66	1 Varianten	Verdunkelungsvorhang Samt mit Haken

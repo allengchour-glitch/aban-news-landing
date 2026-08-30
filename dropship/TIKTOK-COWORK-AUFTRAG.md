@@ -37,7 +37,58 @@ Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
 ---
 
-## 1. `hyaluronsaure-hautpflege-5er-set-623900`
+## 1. `8-teiliges-make-up-pinselset-mit-aufbewahrungs`  ⛔ GESPERRT
+
+⛔ **Nicht posten.** Das Produkt ist nicht mehr ACTIVE oder nicht im Onlineshop — der Beitrag würde auf eine tote Seite führen.
+
+**Caption:**
+
+```
+8-teiliges Make-up Pinselset mit Aufbewahrungsbox · CHF 28.90
+Jetzt im Shop 🇨🇭 luxestyle.ch
+Code WELCOME10 für −10%
+
+#fyp #schweiz #luxestyle #beauty
+```
+
+**Video (stumm, für Trend-Sound):**
+https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8-teiliges-make-up-pinselset-mit-aufbewahrungs-clean.mp4?v=1788125773
+
+**Slides in dieser Reihenfolge:**
+
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_98102844-d43b-4be0-87e9-bc7ee909262c.jpg?v=1788125735
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_1744a2b5-cc63-4728-8107-484ebd650e91.jpg?v=1788125740
+3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_f8d6ef78-174f-4c24-b547-f3c89e951801.jpg?v=1788125747
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_1973f857-ca87-4cde-8add-7237fb6b6242.jpg?v=1788125752
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_faae7357-abbf-4045-8342-b2320d300bc8.jpg?v=1788125759
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_3ac46cb6-0797-4e97-8e82-30c4f4e20a5b.jpg?v=1788125765
+
+---
+
+## 2. `elektrischer-kopfhautmassage-roller-620600`
+
+**Caption:**
+
+```
+Elektrischer Kopfhautmassage-Roller · CHF 20.90
+Jetzt im Shop 🇨🇭 luxestyle.ch
+Code WELCOME10 für −10%
+
+#fyp #schweiz #luxestyle #beauty #selfcare #skincare
+```
+
+**Slides in dieser Reihenfolge:**
+
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_2a828309-0bd5-45f1-830b-55432c072f08.jpg?v=1788125778
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_1323eb0e-af52-43e9-ac30-8dc7de91c214.jpg?v=1788125784
+3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_a3823981-1b8a-4cda-83df-219a01ee4a6d.jpg?v=1788125791
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_94b8cdab-5252-46df-a9f1-ed9cc9143005.jpg?v=1788125798
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_ad3ef7ed-f6c3-4439-9ce0-317ce15076e9.jpg?v=1788125803
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_471cc76b-10f7-4e74-a7be-33cf4cd53246.jpg?v=1788125809
+
+---
+
+## 3. `hyaluronsaure-hautpflege-5er-set-623900`
 
 **Caption:**
 
@@ -63,7 +114,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hyaluronsaure-hautpflege-
 
 ---
 
-## 2. `lockenstab-fur-einfache-stylings-631872`
+## 4. `lockenstab-fur-einfache-stylings-631872`
 
 **Caption:**
 
@@ -86,7 +137,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 3. `schmuck-organizer-mit-faltwand-958528`
+## 5. `schmuck-organizer-mit-faltwand-958528`
 
 **Caption:**
 
@@ -112,7 +163,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/schmuck-organizer-mit-fal
 
 ---
 
-## 4. `top-5-unter-40-0829`
+## 6. `top-5-unter-40-0829`
 
 **Caption:**
 
@@ -146,7 +197,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-0829-clean
 
 ---
 
-## 5. `top-5-unter-50-0828`
+## 7. `top-5-unter-50-0828`
 
 **Caption:**
 
@@ -180,7 +231,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-0828-clean
 
 ---
 
-## 6. `vakuumierer-kabellos-lebensmittel`
+## 8. `vakuumierer-kabellos-lebensmittel`
 
 **Caption:**
 
