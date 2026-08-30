@@ -5614,3 +5614,52 @@ gid://shopify/Product/15449158877569	CHF 16.69	20 Varianten	Color-Blocked Minima
 gid://shopify/Product/15449158910337	CHF 15.42	8 Varianten	Retro 3D Digital-Print Crew-Neck Sweatshirt
 gid://shopify/Product/15449158943105	CHF 15.78	25 Varianten	Damen Sweatshirt mit 3D-Effekt Print
 gid://shopify/Product/15449159041409	CHF 15.80	8 Varianten	Street-Style Hoodie mit Kreativem Schriftzug-Print
+gid://shopify/Product/15449159074177	CHF 15.01	63 Varianten	3D-Print Kapuzenpullover für Damen
+gid://shopify/Product/15449159532929	CHF 14.80	4 Varianten	Damen Colorblock Pullover aus Wollmischung
+gid://shopify/Product/15449159598465	CHF 22.03	6 Varianten	Vielseitiger Oversize Pullover für Damen
+gid://shopify/Product/15449161892225	CHF 29.10	6 Varianten	Denim-Jacke für Herren (Frühling/Herbst)
+gid://shopify/Product/15449162580353	CHF 34.11	8 Varianten	Basic Jacke mit Revers für Herren
+gid://shopify/Product/15449162613121	CHF 25.31	18 Varianten	Business Freizeit Jacke für Herren
+gid://shopify/Product/15449162678657	CHF 22.33	18 Varianten	Business-Freizeitjacke für Herren
+gid://shopify/Product/15449162711425	CHF 26.31	21 Varianten	Legere Pilotenjacke für Herren
+gid://shopify/Product/15449162744193	CHF 18.59	30 Varianten	Herren Hoodie – Leicht und unifarben
+gid://shopify/Product/15449162809729	CHF 47.09	10 Varianten	Gestreiftes Sakko im Slim Fit für Herren
+gid://shopify/Product/15449162842497	CHF 25.56	20 Varianten	Jeansjacke mit Umlegekragen
+gid://shopify/Product/15449162875265	CHF 20.25	12 Varianten	Cardigan aus Wollmischung mit Stehkragen
+gid://shopify/Product/15449162908033	CHF 16.86	20 Varianten	Herren Wollmantel Loose Fit
+gid://shopify/Product/15449162940801	CHF 16.66	10 Varianten	Herren Übergangsjacke im Casual Look
+gid://shopify/Product/15449162973569	CHF 73.33	4 Varianten	Retro-Anzugjacke Khaki, europäischer Stil
+gid://shopify/Product/15449163039105	CHF 57.55	4 Varianten	Kurzarm-Top mit Knopfleiste
+gid://shopify/Product/15449163137409	CHF 16.83	30 Varianten	Eleganter Trenchcoat für Herren
+gid://shopify/Product/15449163170177	CHF 24.26	5 Varianten	Vintage Bikerjacke aus PU-Leder
+gid://shopify/Product/15449163202945	CHF 30.81	14 Varianten	Herren Jeansjacke im Used-Look
+gid://shopify/Product/15449163301249	CHF 46.58	8 Varianten	Lässige Jacke mit Reverskragen
+gid://shopify/Product/15449163334017	CHF 16.40	63 Varianten	Herren Slim-Fit Anzug für Business und Freizeit
+gid://shopify/Product/15449163366785	CHF 16.40	15 Varianten	Retro Windjacke für Herren
+gid://shopify/Product/15449163432321	CHF 37.65	7 Varianten	Raw-Edge Jeansjacke im Old-Money-Stil
+gid://shopify/Product/15449163530625	CHF 19.02	10 Varianten	Distressed Fransen-Weste für Herren
+gid://shopify/Product/15449163563393	CHF 42.52	10 Varianten	Lederjacke im Patchwork-Stil für Herren
+gid://shopify/Product/15449163596161	CHF 12.16	49 Varianten	V-Ausschnitt Weste für Herren
+gid://shopify/Product/15449163628929	CHF 15.95	10 Varianten	Kapuzen-Strickpullover für Herren
+gid://shopify/Product/15449163661697	CHF 30.06	10 Varianten	Retro Langarm-Jacke im British Style
+gid://shopify/Product/15449163694465	CHF 25.16	4 Varianten	Lässige Kapuzenjacke für Herren
+gid://shopify/Product/15449163760001	CHF 44.01	5 Varianten	Herren Anzugjacke Slim Fit (Winter)
+gid://shopify/Product/15449163923841	CHF 35.09	15 Varianten	Trendige Wildleder-Jacke mit Reverskragen
+gid://shopify/Product/15449163956609	CHF 25.65	30 Varianten	Herren Mantel im Retro-Stil mit Reverskragen
+gid://shopify/Product/15449163989377	CHF 9.65	61 Varianten	Baggy Freizeitjacke für Herren
+gid://shopify/Product/15449164054913	CHF 40.98	12 Varianten	Grauer Wende-Hoodie mit Reissverschluss
+gid://shopify/Product/15449164087681	CHF 21.41	25 Varianten	Herren Übergangsjacke mit Rundsaum
+gid://shopify/Product/15449164120449	CHF 13.02	35 Varianten	Legere Stehkragenjacke für Herren
+gid://shopify/Product/15449164153217	CHF 38.41	4 Varianten	Matte PU Lederjacke für Herren
+gid://shopify/Product/15449164185985	CHF 17.93	49 Varianten	Leichte Herren Übergangsjacke mit Reissverschluss
+gid://shopify/Product/15449164218753	CHF 15.49	24 Varianten	Leichte UV-Schutz Kapuzenjacke für Herren
+gid://shopify/Product/15449164284289	CHF 21.28	10 Varianten	Retro Distressed Denim-Jacke mit Schulterpolstern
+gid://shopify/Product/15449164349825	CHF 39.62	6 Varianten	Freizeit-Slim-Fit-Jacke für Herren
+gid://shopify/Product/15449164382593	CHF 13.08	48 Varianten	Flight Zip-Up Baseball Jacke
+gid://shopify/Product/15449164415361	CHF 23.09	6 Varianten	Herrenjacke mit Eiskrack-Muster und Fleecefutter
+gid://shopify/Product/15449164480897	CHF 53.47	14 Varianten	Herren Wollblazer Casual Kurz
+gid://shopify/Product/15449164546433	CHF 24.61	20 Varianten	Zweiseitige Lyocell-Weste mit Reissverschluss
+gid://shopify/Product/15449164611969	CHF 27.41	10 Varianten	Ärmellose Jeansjacke mit Stehkragen für Herren
+gid://shopify/Product/15449164644737	CHF 41.71	81 Varianten	Herren Sakko Fischgrat-Muster
+gid://shopify/Product/15449164677505	CHF 16.50	35 Varianten	Herren Freizeit-Mantel
+gid://shopify/Product/15449164775809	CHF 32.57	24 Varianten	Herren Shearling-Fleece Jacke aus Kunstfell
