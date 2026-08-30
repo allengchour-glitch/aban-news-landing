@@ -5860,3 +5860,58 @@ steht aber das **echte UTF-8-Zeichen** `·`. Dieselbe Datei mischt beide Schreib
 mit `cat -A` ansehen, statt die Schreibweise aus dem Gedächtnis zu rekonstruieren.
 Der `assert` davor hat den Schaden verhindert: er lief vor dem Schreiben, die Datei blieb
 unangetastet. **Prüfen vor dem Schreiben, nicht danach.**
+
+## 2026-08-30 · 👀 Der erste Blick zeigte leeren Rasen — und drei Layout-Befunde
+
+**Auftrag des Users:** „coole layout noch besser, keine rahmen, keine überschneidung,
+mitte grüne rasen passen nicht gegenstände und objekten".
+
+### 1. Die Figur stand beim Start 80 m ausserhalb des Bildes
+
+`camTx/camTz` starten auf **(0,0)**, die Figur spawnt bei **(−67, 43)**, und `followSim`
+wird erst gesetzt, **wenn man das erste Mal steuert** (in `updSim`, Zweig `state==="steer"`).
+Das allererste Bild zeigte darum leeren Rasen: keine Figur, kein Haus, keine Stadt.
+
+Gemessen in **Bildkoordinaten (NDC)** statt per Augenmass — unabhängig von Fenstergrösse,
+Zoom und Blickwinkel: vorher **79,6 m Abstand, NDC x = −1,97**; nachher **0 m, NDC 0/−0,02**.
+Fix: in `startGame` die Kamera einmal auf die Figur **setzen** (nicht gleiten lassen); das
+Folgeverhalten bleibt unverändert und ist mitgeprüft. Werkzeug: `th-kadrierung.mjs` (6/6).
+
+> **Falle im eigenen Prüfer:** die Gegenprobe „Kamera weit wegziehen" stand **vor** der
+> Folge-Prüfung — diese mass danach den Rückweg aus 136 m und fiel durch, obwohl das
+> Folgen einwandfrei arbeitet. **Eine Gegenprobe, die den Zustand verändert, gehört ans Ende.**
+
+### 2. Rahmenlos
+
+Die **dauerhaft sichtbaren** Bedienelemente tragen keine Linie mehr: `.panel`, `.tbtn`,
+`#achBtn` und der harte weisse 3-px-Ring um `#minimap`. Trennung macht der Schatten.
+Ein 2-px-Strich um jede Kachel zerschneidet das Bild in Kästen. **Dialoge behalten ihre
+Kante** — dort trennt sie sinnvoll.
+
+### 3. Die Fertigkeitszeile brach um — und war nicht reproduzierbar
+
+`needsBox` bei 568 px: 217 px gebraucht, 162 verfügbar. Zwei Änderungen:
+- Die **Form** gekürzt, nicht die Information: unter 700 px wird aus „· Arbeit …" ein „· 🔨".
+- Deckel von `max-width:190px` auf `206px` (190 − 24 px Polsterung = 166 Inhalt, gebraucht 175).
+
+⚠️ **Der Umbruch trat nur manchmal auf** — nämlich wenn alle drei Fertigkeiten *und* der
+Arbeits-Status zusammenkamen, was sich während des Aufwärmens unterschiedlich ergibt.
+**Ein sporadischer Befund braucht zwei unabhängige Läufe**, sonst hält man Zufall für einen
+Fix: `th-hud` läuft jetzt zweimal hintereinander über alle 3 Formate mit 0 Befunden.
+Dabei ein eigener Fehler: meine neue Polsterung (12 → 13 px) nahm der Zeile zwei der Pixel,
+die ihr fehlten — zurückgedreht.
+
+### 4. Die Rampe schwebte
+
+`window._rampe` war eine schräg gestellte **Platte** (BoxGeometry, 15°) mit **einer**
+Stütze am hohen Ende, Gruppe 15 cm unter Grund → eine graue Bohle über dem Rasen.
+Jetzt ein geschlossener Keil mit echtem Dreiecksprofil (`ExtrudeGeometry`, in r128
+vorhanden), der aufsitzt, plus flache Anlaufkante. Leitlinien-Winkel aus dem Profil
+gerechnet (`atan(1.70/6.5)`), nicht geraten. **Spielmechanik unberührt** — `_rampe` und
+die Airtime-Physik bleiben; nur das Aussehen ändert sich.
+
+### Werkzeug-Notiz
+
+`tools/game_shot.cjs` liefert für `traumhaus` ein Bild **mit offenem Begrüssungs-Dialog** —
+darauf sieht man nichts vom Spiel. Für Bildkontrollen `spielOeffnen` aus `th-lib.mjs`
+nehmen (klickt Solo → Klassisch → introOk) und danach `page.screenshot`.
