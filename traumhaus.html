@@ -13752,6 +13752,15 @@ function startGame(){
      zweiten Mal nichts. */
   try{if(window._aufwaermen)window._aufwaermen();}catch(e){}
   running=true;window._running=true;window._tagesGeldStart=geld;window._saveSlot=MPs?"th_save_coop":SAVE;
+  /* 🎥 DER ERSTE BLICK. camTx/camTz starten auf dem Weltursprung, die Figur spawnt aber
+     rund 80 m entfernt — und `followSim` wird erst gesetzt, wenn man das erste Mal
+     STEUERT (siehe updSim). Das erste Bild zeigte damit leeren Rasen ohne Figur: kein
+     Anhaltspunkt, man bewegt sich blind, bis die Kamera herangeglitten ist. Gemessen
+     mit th-kadrierung: 79,6 m Abstand, NDC x = −1,97, also weit ausserhalb.
+     Hier wird die Kamera einmal auf die Figur GESETZT (nicht geglitten) — das Folgen
+     danach bleibt unveraendert. */
+  try{var _me0=sims[meinSi()]||sims[0];
+    if(_me0){camTx=_me0.x;camTz=_me0.z;updCam();}}catch(e){}
   if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
