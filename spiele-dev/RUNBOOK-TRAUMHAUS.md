@@ -5299,3 +5299,51 @@ dunkles Holz, das Licht kommt aus der Einrichtung.
 > **Die Regel dahinter:** ein Muster über Namen ist eine Vermutung über fremde Modelle.
 > Ein Muster über die **Herkunft** ist eine Tatsache über die eigene Szene. Wo beides
 > geht, ist das zweite billiger zu verantworten.
+
+## 2026-08-30 · 🚧 Ein Tor-Fehler, ein zurückgenommener Fix — und was ich NICHT weiss
+
+Der volle Prüflauf (23 Prüfungen, 49 min) meldete **22 von 23**: `th-gleis` fiel mit
+**4 Bauteilen über dem Gleiskörper** durch (Grenze 2). Ein Einzellauf unmittelbar danach
+meldete **2** — dieselben zwei `th17_bahnsteigdach`-Teile. **Die Prüfung flackert.**
+
+### Was ich versucht habe — und zurückgenommen
+
+Naheliegend: `th-gleis` wartet **22 s**, der letzte Umbau der Welt kommt bei rund 116 s
+(gemessen in der Runde davor). Also `warteAufRuhe` eingebaut, wie bei `th-baeume`.
+
+**Ergebnis: 117 statt 2.** Drei Läufe: 117 · 107 · 117. Die kurze Wartezeit ist also
+*tragend* — aus einem Grund, den ich nicht ermittelt habe. **Beide Umstellungen
+(`th-gleis`, `th-mauern`) sind zurückgenommen; dieser Abschnitt ist der einzige Rest.**
+
+⚠️ **Und meine Erklärung für die 117 war ebenfalls falsch.** Ich vermutete den fahrenden
+Zug und schrieb eine Sonde, um es zu belegen — die zählte aber **jedes Objekt der ganzen
+Welt**, dessen z zufällig ins Gleisband 110,6…113,4 fällt: 76 × `th15_bootshaus`,
+16 × `th41_fahrleitungsmast`, 6 × `th46_baukran`, 6 × `th26_felsformation`. Der Sonde
+fehlten die x-Einschränkung und die Filter des Werkzeugs. **Sie beweist über die 117
+nichts.**
+
+> **Zwei falsche Behauptungen in einer Runde, beide von mir selbst widerlegt.** Die Lehre
+> ist nicht neu, aber sie hat hier Geld gekostet: **eine Wartezeit ist eine Entscheidung,
+> keine Nachlässigkeit.** Wer sie ändert, muss zuerst herausfinden, wogegen sie schützt —
+> `th-gleis` sagt es in seinem Kopf nicht, und das war der Moment, innezuhalten statt
+> weiterzudrehen.
+
+### Was gesichert ist
+
+**Der Flackerbefund steht** und ist präzise beschrieben: `th-gleis` meldet mal 2, mal 4
+`th17_bahnsteigdach`-Teile über dem Gleis, bei unverändertem Spielstand. Er gehört
+demjenigen, der das Werkzeug kennt; der Weg „länger warten" ist nachweislich **kein** Fix.
+
+Und eine Zahl, die dabei abgefallen ist — eine Bestandsaufnahme der Wartezeiten aller
+Werkzeuge:
+
+| | |
+|---|---|
+| Werkzeuge insgesamt | 55 |
+| davon mit `warteAufRuhe` | **2** (`th-baeume`, `th-kasten`) |
+| Rest: feste Frist | 20 … 90 s — **alle unter dem beobachteten Umbau bei 116 s** |
+
+Das ist keine Aufforderung, alle umzustellen — diese Runde hat gerade gezeigt, was das
+kosten kann. Es ist die Landkarte für den nächsten, der eine flackernde Zahl untersucht:
+**bei jeder positionsabhängigen Prüfung zuerst die Wartezeit ansehen — und dann prüfen,
+wogegen sie steht.**
