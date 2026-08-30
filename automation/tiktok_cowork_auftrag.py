@@ -85,7 +85,16 @@ def aktiv(handle):
     d = gql('query($q:String!){products(first:1,query:$q){nodes{status onlineStoreUrl}}}',
             {"q": f"handle:{handle}"})
     n = ((d.get("data") or {}).get("products") or {}).get("nodes") or []
-    return bool(n) and n[0]["status"] == "ACTIVE" and n[0].get("onlineStoreUrl")
+    if n:
+        return n[0]["status"] == "ACTIVE" and bool(n[0].get("onlineStoreUrl"))
+    # Alt-Material mit abgeschnittenem Slug (fruehere [:46]-Kuerzung im Karussell):
+    # genau EIN Prefix-Treffer ist eindeutig demselben Produkt zuzuordnen, mehrere nicht.
+    d = gql('query($q:String!){products(first:3,query:$q){nodes{handle status onlineStoreUrl}}}',
+            {"q": f"handle:{handle}*"})
+    n = ((d.get("data") or {}).get("products") or {}).get("nodes") or []
+    if len(n) == 1:
+        return n[0]["status"] == "ACTIVE" and bool(n[0].get("onlineStoreUrl"))
+    return False
 
 
 def main():

@@ -401,7 +401,7 @@ def bau_produkt(p, benutzt):
     for i, z in enumerate(tmp[1:], 2):
         slides.append(slide_produkt(z, titel, preis, i, gesamt))
     slides.append(slide_cta(titel))
-    slug = re.sub(r"[^a-z0-9]+", "-", p["handle"].lower())[:46].strip("-")
+    slug = re.sub(r"[^a-z0-9]+", "-", p["handle"].lower()).strip("-")  # NIE kuerzen: Slug==Handle ist die Vertragsbasis der Live-Pruefung
     cap = (f"{titel} · {preis}\n"
            f"{cta_zeile()}\n"
            f"Code WELCOME10 für −10%\n\n{hashtags(p.get('tags') or [])}")

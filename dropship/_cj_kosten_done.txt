@@ -5745,3 +5745,12 @@ gid://shopify/Product/15449173950849	CHF 38.23	1 Varianten	Toile Outdoor Thermov
 gid://shopify/Product/15449174147457	CHF 28.45	1 Varianten	Vorhangschiene für Streifenvorhänge, 1 m, Silber
 gid://shopify/Product/15449174212993	CHF 49.16	1 Varianten	Vorhang-Set Samt Silber (2 Stück)
 gid://shopify/Product/15449174245761	CHF 65.66	1 Varianten	Verdunkelungsvorhang Samt mit Haken
+gid://shopify/Product/15449174278529	CHF 81.41	1 Varianten	Bambus Rollo, hellbraun
+gid://shopify/Product/15449174311297	CHF 58.18	1 Varianten	Samt Blackout Vorhänge mit Drapierung, 2 Stk.
+gid://shopify/Product/15449174344065	CHF 49.95	1 Varianten	Verdunkelungsvorhänge aus Polyester
+gid://shopify/Product/15449174376833	CHF 121.42	1 Varianten	Verstellbares Fenstergitter mit 2 Querstreben
+gid://shopify/Product/15449174442369	CHF 20.64	1 Varianten	Magnetischer Fliegenvorhang, 2 Stk.
+gid://shopify/Product/15449174507905	CHF 54.54	1 Varianten	Duo-Rollos
+gid://shopify/Product/15449174540673	CHF 58.52	1 Varianten	Verdunkelungsvorhänge mit Haken, Leinen-Optik, 2 S
+gid://shopify/Product/15449174606209	CHF 29.04	1 Varianten	Fensterfolie matt mit Blumenmuster
+gid://shopify/Product/15449174671745	CHF 71.54	1 Varianten	Insektenschutzvorhang aus Chenille, hellbraun

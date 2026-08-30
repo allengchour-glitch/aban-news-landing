@@ -37,9 +37,7 @@ Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
 ---
 
-## 1. `8-teiliges-make-up-pinselset-mit-aufbewahrungs`  ⛔ GESPERRT
-
-⛔ **Nicht posten.** Das Produkt ist nicht mehr ACTIVE oder nicht im Onlineshop — der Beitrag würde auf eine tote Seite führen.
+## 1. `8-teiliges-make-up-pinselset-mit-aufbewahrungs`
 
 **Caption:**
 
