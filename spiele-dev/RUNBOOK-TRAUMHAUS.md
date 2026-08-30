@@ -5136,3 +5136,48 @@ Takte werden **aus der Quelle gelesen** (`RP.cd`, Respawn-Timeout), nicht abgesc
 sonst prüft das Werkzeug gegen sein eigenes Gedächtnis weiter. Zwei Sabotagen: `sp9`
 4,0 → 0,5 (Tempo-Messung folgt der Konstante, 3 Prüfungen rot) und `RP.cd` 2 → 20
 („keine Quelle trägt die Kette", 2 Prüfungen rot).
+
+## 2026-08-30 · 💰 Zeichen-Code, der dasteht und nie läuft — 12 Münzen, 0 Pixel
+
+**Woher die Frage kam.** `th-reichweite` hatte gemessen: Kettenglied 4 verlangt 66 m in
+24,4 s. Machbar — **aber nur, wenn man weiss, wohin**. Wer sucht, verliert die Serie.
+Damit hängt die ganze Serien-Mechanik daran, dass das Radar die nächste Münze zeigt.
+Es gab dafür sogar eine Zeichen-Anweisung im Radar-Code.
+
+**Der Befund.** Sie lief nie:
+
+```js
+if(window.pickups){ … zeichne Münz-Punkte … }
+```
+
+`pickups` ist ein `var` **innerhalb** der grossen Hülle → `window.pickups` ist
+`undefined`, immer, und es gibt nirgends eine Zuweisung. Der Wächter war dauerhaft
+falsch. **Dieselbe Falle wie `window.WORLD_SOLIDS` (Regel 2 oben)** — nur diesmal in der
+anderen Richtung: nicht ein Werkzeug las ins Leere, sondern das *Spiel* prüfte gegen ein
+Fenster-Feld, das es nie gefüllt hat.
+
+**Am Bild gemessen, nicht am Code:** 12 aktive Münzen, **0 gezeichnete Pixel**. Ein Blick
+in die Quelle hätte nur gezeigt, dass die Anweisung *dasteht*. Der Prüfer zählt darum
+Pixel in Münzfarbe (#ffe14a) im Canvas des Radars.
+
+**Behoben + darauf aufgebaut:** Wächter auf die Hüllen-Variable, und **während einer
+Serie sticht die nächste Münze hervor** (grösser, in #ff6b5a, mit Ring — dieselbe Farbe
+wie der knappe Serien-Balken). Ausserhalb einer Serie bleibt das Radar ruhig.
+
+**Geprüft:** `spiele-dev/tools/th-radar.mjs` — 7/7, davon 3 Gegenproben. Der Pixelzähler
+hat sich dabei selbst bewiesen: **0 → 49** durch den Fix, **49 → 0** beim Abschalten der
+Münzen, **0 → 52** in Markierungsfarbe mit Serie. Zwei Sabotagen: Wächter zurück auf
+`window.pickups` (3 rot), Markierung dauerhaft an (Gegenprobe „ohne Serie" rot).
+Bestand grün: `th-reichweite` 10/10, `th-hetze` 27/27, `th-meter` 25/25, `th-serie` 14/14,
+`th-hud`, `th-speichern`, `th-lint`.
+
+### „Richtiges Ergebnis, falscher Grund" ist auch ein Fehler
+
+Die Sabotage *Markierung dauerhaft an* liess zusätzlich die Prüfung „ohne aktive Münzen
+bleibt kein Punkt" mit **einem** Pixel kippen — obwohl diese Sabotage das Münz-Zeichnen
+gar nicht anfasst. Ursache: Kantenglättung am roten Ring. Eine Prüfung, die aus dem
+falschen Grund rot wird, ist beim nächsten Mal aus dem falschen Grund grün. Schwelle
+darum von `=== 0` auf `<= 2` — im gesunden Lauf sind es exakt 0, und 2 Pixel Luft trennen
+Rauschen von 48 echten Punkten. **Danach gegengeprüft, dass sie den echten Fehler
+weiterhin fängt** (Wächter zurückgedreht → wieder rot). Eine Schwelle zu lockern ist nur
+dann erlaubt, wenn man danach beweist, dass sie noch beisst.
