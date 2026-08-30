@@ -12,11 +12,22 @@
  * Werkzeuge und meldet jeden Backtick INNERHALB eines Sonden-Literals, bevor ein
  * Browser startet — statt danach.
  *
- * ⚠️ NICHT PERFEKT, UND DAS STEHT HIER: erkannt wird die Form, in der alle Sonden in
- * diesem Verzeichnis geschrieben sind — `const <name> = \x60function(...)` bis zum
- * naechsten unmaskierten Backtick am Zeilenanfang oder vor dem Semikolon. Wer eine
- * Sonde anders schreibt, faellt durch. Eine Null hier ist also "nichts gefunden",
- * nicht "es gibt nichts" (Regel 3).
+ * ⚠️ UND GENAU DAS IST PASSIERT — 2026-08-30, SELBST GEMESSEN. Gesucht wurde nur nach
+ * "= \x60". Sonden stehen aber meistens als OBJEKT-EIGENSCHAFT da, also "name: \x60function".
+ * Die wurden nie gelesen. Konkret: ein Backtick im Kommentar der Sonde in th-leistung
+ * liess "node --check" mit "Unexpected identifier" sterben, waehrend dieses Werkzeug
+ * daneben "✅ Kein Backtick bricht ein Sonden-Literal" meldete. Der Waechter gegen den
+ * haeufigsten Fehler dieses Repos hatte ein Loch an der haeufigsten Schreibweise.
+ * Jetzt zaehlt, WOMIT das Literal ANFAENGT: eine Sonde beginnt immer mit "function".
+ * Der erste Anlauf nahm stattdessen jedes Literal nach "=", ":", "(" oder "," — das waren
+ * 423 statt 39, davon 34 angebliche Funde, fast alle geschachtelte Ausgabe-Vorlagen
+ * (${x ? ... : ...}). Genau der Laerm, vor dem der Kommentar weiter unten warnt: eine
+ * Pruefung, die auf gebraeuchlichen Mustern anschlaegt, wird abgeschaltet statt gelesen.
+ *
+ * ⚠️ WEITER NICHT PERFEKT, UND DAS BLEIBT HIER STEHEN: erkannt wird eine Schreibweise,
+ * kein Sprachaufbau. Wer eine Sonde anders schreibt, faellt durch. Eine Null hier ist
+ * "nichts gefunden", nicht "es gibt nichts" (Regel 3). Darum laeuft "node --check" auf
+ * jedem geaenderten Werkzeug weiter mit — dieses Werkzeug sagt WO, node sagt OB.
  *
  * Aufruf:  node spiele-dev/tools/th-lint.mjs
  * Dauer:   Millisekunden. Kein Browser.
@@ -33,14 +44,24 @@ let sonden = 0, funde = 0
 
 for (const d of dateien) {
   const txt = readFileSync(join(HIER, d), 'utf8')
-  /* Sonden-Literale finden: von "= `" bis zum schliessenden Backtick. */
+  /* Sonden-Literale finden: von einem Vorzeichen ("=", ":", "(", ",") bis zum
+     schliessenden Backtick. */
   let i = 0
   for (;;) {
-    const start = txt.indexOf('= ' + BT, i)
+    const treffer = /[=:(,]\s*/g
+    treffer.lastIndex = i
+    let start = -1, von = -1
+    for (let m; (m = treffer.exec(txt)) !== null;) {
+      if (txt[m.index + m[0].length] === BT) { start = m.index; von = m.index + m[0].length + 1; break }
+      treffer.lastIndex = m.index + 1
+    }
     if (start < 0) break
-    const von = start + 3
     const bis = txt.indexOf(BT, von)
     if (bis < 0) break
+    i = bis + 1
+    /* Nur Sonden: ihr Rumpf faengt mit "function" an. Alles andere ist eine
+       Ausgabe-Vorlage dieses Verzeichnisses und geht die Regel nichts an. */
+    if (!/^\s*function\b/.test(txt.slice(von, von + 40))) continue
     sonden++
     const koerper = txt.slice(von, bis)
     /* Ein Backtick IM Koerper kann es nicht geben — das Literal waere dort zu Ende.
@@ -59,7 +80,6 @@ for (const d of dateien) {
       console.log(`❌ ${d}:${zeile} — Sonden-Literal endet mitten im Text:`)
       console.log(`   …${txt.slice(Math.max(0, bis - 60), bis)}[BACKTICK]${danach.split('\n')[0]}`)
     }
-    i = bis + 1
   }
 }
 

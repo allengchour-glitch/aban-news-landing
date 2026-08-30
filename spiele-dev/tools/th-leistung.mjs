@@ -162,6 +162,16 @@ mitSonden('traumhaus.html', {
               unsichtbareTeilbaeume:unsichtbareTeilbaeume, dahinterVerborgen:darunter,
               maxTiefe:maxTiefe,
               meshMitCulling:culled, meshOhneCulling:nichtCulled};}
+    /* ⚠️ NICHT MEHR NACH "visible" FRAGEN — DER BESITZER IST UMGEZOGEN (#2447).
+       Frueher entschied der Pool selbst, welche Laterne sichtbar ist. Heute sagt er nur
+       noch WO und WIE HELL; ueber "visible" entscheidet der LAMP_MAX-Deckel in der
+       Bildschleife. Diese Sonde ruft updLampPool direkt auf, ohne dass ein Bild
+       laeuft — "visible" ist danach ein Wert von vorhin, und die Pruefung meldete
+       "Schaltverhalten falsch" bei einwandfreiem Schalten.
+       GEMESSEN ueber die Uhr statt ueber die Sonde (22:00 / 12:00 / 01:00, je 5 s
+       laufende Bildschleife): nachts 8 von 8 hell und 5 sichtbar, tags 0 hell und
+       0 sichtbar — genau richtig. Gefragt wird jetzt nach der HELLIGKEIT, das ist die
+       Ausgabe des Pools. Wie viele davon brennen duerfen, ist Sache von th-licht. */
     if(was==="nacht"){ /* Nacht erzwingen und pruefen, ob die Laternen wirklich leuchten */
       window._dorfNacht=true;window._lampPoolT=0;
       camTx=0;camTz=58;                    /* Kamera an eine Laternenkette */
@@ -174,7 +184,8 @@ mitSonden('traumhaus.html', {
     if(was==="tag"){ /* zurueck auf Tag */
       window._dorfNacht=false;window._lampPoolT=0;updLampPool(0.5);
       var P2=(window._lampPool||[]);
-      return {an:P2.filter(function(L){return L.visible;}).length};}
+      return {an:P2.filter(function(L){return L.visible;}).length,
+              hell:P2.filter(function(L){return L.intensity>0;}).length};}
     if(was==="detail"){
       var lichter=[],matTyp={},matGleich={},schattenAn=renderer.shadowMap.enabled;
       scene.traverse(function(o){
@@ -309,8 +320,8 @@ console.log('\n=== Laternen: Tag/Nacht-Gegenprobe ===')
 const nacht = await page.evaluate(() => window.__th.leistung('nacht'))
 console.log('  Nacht  — sichtbar:', nacht.an, '· mit Intensität:', nacht.hell, '· Orte:', JSON.stringify(nacht.orte))
 const tag = await page.evaluate(() => window.__th.leistung('tag'))
-console.log('  Tag    — sichtbar:', tag.an)
-console.log((nacht.an === 8 && nacht.hell === 8 && tag.an === 0) ? '  ✅ Laternen schalten korrekt' : '  ❌ Schaltverhalten falsch')
+console.log('  Tag    — sichtbar:', tag.an, '· mit Intensität:', tag.hell)
+console.log((nacht.hell === 8 && tag.hell === 0) ? '  ✅ Laternen schalten korrekt (Helligkeit)' : '  ❌ Schaltverhalten falsch')
 
 console.log('\n=== Lichter, Schatten, Materialien ===')
 const d = await page.evaluate(() => window.__th.leistung('detail'))
