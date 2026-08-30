@@ -5663,3 +5663,23 @@ gid://shopify/Product/15449164611969	CHF 27.41	10 Varianten	Ärmellose Jeansjack
 gid://shopify/Product/15449164644737	CHF 41.71	81 Varianten	Herren Sakko Fischgrat-Muster
 gid://shopify/Product/15449164677505	CHF 16.50	35 Varianten	Herren Freizeit-Mantel
 gid://shopify/Product/15449164775809	CHF 32.57	24 Varianten	Herren Shearling-Fleece Jacke aus Kunstfell
+gid://shopify/Product/15449164808577	CHF 29.27	16 Varianten	Herren Wolljacke Slim Fit für Herbst/Winter
+gid://shopify/Product/15449164841345	CHF 43.50	12 Varianten	Herren Sakko mit Metallschnallen
+gid://shopify/Product/15449164874113	CHF 20.83	78 Varianten	Freizeit-Jacke für Herren mit Print
+gid://shopify/Product/15449164906881	CHF 16.07	30 Varianten	Wasserdichte Workwear Jacke mit vielen Taschen
+gid://shopify/Product/15449164939649	CHF 23.80	6 Varianten	Retro Tweed Herrenjacke
+gid://shopify/Product/15449164972417	CHF 33.28	16 Varianten	Herren Kunstlederjacke für Herbst & Winter
+gid://shopify/Product/15449165005185	CHF 23.07	5 Varianten	Herren Anzug mit Reverskragen
+gid://shopify/Product/15449165037953	CHF 34.68	18 Varianten	Retro Jeansjacke für Herren
+gid://shopify/Product/15449165070721	CHF 33.53	10 Varianten	Herren Heavyweight Doppel-Zip Jacke
+gid://shopify/Product/15449165136257	CHF 18.74	30 Varianten	Sportliche Slim-Fit Jacke mit Brusttaschen
+gid://shopify/Product/15449165496705	CHF 32.05	12 Varianten	Sweatshirt mit Rundhals und langen Quasten
+gid://shopify/Product/15449165529473	CHF 14.06	48 Varianten	Herren Langarm-Sweatshirt mit Jacquard-Muster
+gid://shopify/Product/15449165595009	CHF 15.66	36 Varianten	Herren Kapuzenpullover mit Jacquard-Karo
+gid://shopify/Product/15449165660545	CHF 14.38	24 Varianten	Herren Kapuzenpullover Slim Fit
+gid://shopify/Product/15449165693313	CHF 13.17	6 Varianten	Herren Langarm-Strickpullover Slim Fit
+gid://shopify/Product/15449165758849	CHF 9.70	54 Varianten	Herren Langarmshirt mit Rundhals und Plaid-Muster
+gid://shopify/Product/15449165791617	CHF 30.87	16 Varianten	Herren Hoodie mit Fleecefutter
+gid://shopify/Product/15449165824385	CHF 29.18	75 Varianten	Streetwear Hoodie mit Herz-Augenmaske
+gid://shopify/Product/15449165922689	CHF 25.75	18 Varianten	Partner Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15449165955457	CHF 18.23	8 Varianten	Herren Kapuzenpullover Sweatshirt
