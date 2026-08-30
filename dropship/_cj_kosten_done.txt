@@ -5830,3 +5830,39 @@ gid://shopify/Product/15449367150977	CHF 12.75	36 Varianten	Buntes Damen Sweatsh
 gid://shopify/Product/15449372131713	CHF 15.25	16 Varianten	Damen Half Zip Hoodie Top mit Geometrischem Muster
 gid://shopify/Product/15449372197249	CHF 13.04	40 Varianten	3D Digital-Print Rollkragenpullover für Damen
 gid://shopify/Product/15449372295553	CHF 14.77	45 Varianten	Locker sitzender Kapuzenpullover mit Kordelzug
+gid://shopify/Product/15449372361089	CHF 12.89	8 Varianten	Damen Strickpullover mit Rundhals und 3D-Effekt
+gid://shopify/Product/15449372426625	CHF 12.98	32 Varianten	3D Digital-Print Flannel Sweatshirt
+gid://shopify/Product/15449372459393	CHF 16.27	18 Varianten	Damen Sweatshirt mit Kürbis-Laternen-Print
+gid://shopify/Product/15449373475201	CHF 12.41	56 Varianten	Gestreifter Langarm-Pullover für Damen
+gid://shopify/Product/15449384288641	CHF 11.52	4 Varianten	Schwarzes Weisses Streifenhemd
+gid://shopify/Product/15449384485249	CHF 10.24	45 Varianten	Tanktop ohne Ärmel
+gid://shopify/Product/15449384616321	CHF 9.61	25 Varianten	Off-Shoulder-Top · Damen
+gid://shopify/Product/15449384747393	CHF 11.03	25 Varianten	Rundhals-Oberteil
+gid://shopify/Product/15449384812929	CHF 14.57	8 Varianten	Leichtes Sonnenschutzshirt
+gid://shopify/Product/15449384911233	CHF 12.37	24 Varianten	Damen-Hemd
+gid://shopify/Product/15449385140609	CHF 25.41	90 Varianten	Kurzarm-Shirt-Set
+gid://shopify/Product/15449385238913	CHF 12.82	30 Varianten	Langarm-Shirt · Damen
+gid://shopify/Product/15449385927041	CHF 16.84	6 Varianten	Gestreiftes Langarm-T-Shirt
+gid://shopify/Product/15449386385793	CHF 12.71	21 Varianten	Obertop mit unregelmaessigem Saum
+gid://shopify/Product/15449386484097	CHF 16.82	12 Varianten	Lockere Damen-Denimbluse
+gid://shopify/Product/15449386549633	CHF 12.95	10 Varianten	Weites Damenhemd
+gid://shopify/Product/15449386647937	CHF 18.45	18 Varianten	Damen T-Shirt
+gid://shopify/Product/15449386811777	CHF 13.44	6 Varianten	Langarm-Hemd mit Knopftaschen
+gid://shopify/Product/15449387008385	CHF 18.12	10 Varianten	Denim-Shirt mit Kurzarm
+gid://shopify/Product/15449387073921	CHF 12.00	30 Varianten	Romantische Blume
+gid://shopify/Product/15449387499905	CHF 15.47	18 Varianten	Einfarbiges Turtleneck-Oberteil
+gid://shopify/Product/15449388155265	CHF 12.91	40 Varianten	V-Ausschnitt Cardigan
+gid://shopify/Product/15449389105537	CHF 17.48	18 Varianten	Faux-Jeans-Oberteil
+gid://shopify/Product/15449389203841	CHF 12.36	42 Varianten	V-Ausschnitt-Oberteil
+gid://shopify/Product/15449389302145	CHF 10.24	5 Varianten	Satin Bluse · Damen
+gid://shopify/Product/15449389367681	CHF 16.67	12 Varianten	Cardigan in Kaschmir-Optik
+gid://shopify/Product/15449389498753	CHF 13.24	8 Varianten	Schlanke Damenbluse
+gid://shopify/Product/15449389629825	CHF 11.68	20 Varianten	Elegantes Langarmhemd
+gid://shopify/Product/15449389859201	CHF 8.75	4 Varianten	Sommer-Top · Damen
+gid://shopify/Product/15449389957505	CHF 12.74	10 Varianten	Satin-Bluse mit weiten Armen
+gid://shopify/Product/15449390154113	CHF 13.13	8 Varianten	Polka-Dot Bluse · Damen
+gid://shopify/Product/15449390776705	CHF 12.84	32 Varianten	Lockere Damenbluse
+gid://shopify/Product/15449390973313	CHF 14.81	15 Varianten	Lockere Faux-Denim-Bluse
+gid://shopify/Product/15449391366529	CHF 13.17	6 Varianten	Off-the-Shoulder Bluse
+gid://shopify/Product/15449391432065	CHF 14.15	16 Varianten	Druck-V-Ausschnitt-Oberteil
+gid://shopify/Product/15449392152961	CHF 11.71	9 Varianten	Kurzarmige Bluse · Damen
