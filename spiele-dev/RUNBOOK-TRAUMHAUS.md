@@ -5082,6 +5082,106 @@ sind geteilt — **drei** dieser Schilder stehen in der Welt, eine Liste erfasst
 > Nordwest und Südost erwischt, nie von der Schildseite. Statt einen vierten Kamerawinkel
 > zu jagen, steht hier, was belegt ist — die Materialwerte — und was nicht: ein Bild.
 
+## 2026-08-29 · 📏 Ist eine Serie von 12 überhaupt erreichbar? — und 2 Bilder pro Sekunde
+
+**Die Frage an die eigene Arbeit.** `komboMult` deckelt den Aufschlag bei einer Kette von
+**12**. Diese Zahl ist eine Behauptung über das *Spiel*, nicht über den Code: sie stimmt
+nur, wenn genug Verdienst-Gelegenheiten schnell genug aufeinander folgen. Das
+Serienfenster schrumpft von 28,6 s auf 14 s. Wer zwischen zwei Gelegenheiten 20 s läuft,
+kommt nie über die Hälfte — und die obere Hälfte der Kurve wäre Fiktion.
+
+### ⚠️ Die Falle: Geschwindigkeit NIE mit der Wanduhr messen
+
+Erster Anlauf: Figur steuern, `waitForTimeout(2500)`, Weg durch Zeit. Ergebnis
+**0,24 m/s — in allen vier Richtungen auf zwei Stellen gleich.** Vier Prüfungen wurden
+rot, darunter „der Deckel ist Fiktion".
+
+Alles davon war falsch. Der Hinweis war die Gleichheit: vier verschiedene Richtungen
+liefern nie denselben Wert auf zwei Stellen. Gemessen: **der Headless-Browser rendert
+mit ~2 Bildern/s.** Die Figur bewegt sich pro *Bild*, nicht pro Sekunde — die Wanduhr
+misst hier die Bildrate des Prüfstands, nicht das Spiel. Zusatzschaden: die Gegenprobe
+„steht still" hatte eine Schwelle von 0,4 m über 0,9 s und liess 0,24 m/s als „still"
+durchgehen. **Eine zu grosse Schwelle in der Gegenprobe deckt genau den Fehler zu, den
+sie finden soll.**
+
+**Die Lösung:** `steerMove` umhüllen und dessen `dt` aufsummieren → Weg pro **Spielzeit**.
+Unabhängig von der Bildrate. Ergebnis **3,20–3,33 m/s** (Code-Konstante `sp9=4.0`, minus
+Gelände und Kollision) — konsistent über alle vier Richtungen. Die Prüfung hat jetzt
+Plausibilitätsschranken (`>2 && <8`), damit ein Artefakt nicht wieder als Befund durchgeht.
+
+### Das Ergebnis
+
+| Quelle | Takt | trägt die Kette? |
+|---|---|---|
+| Münzen (Nachwuchs nach Aufnahme) | 90 s | **nein** — und das ist Absicht („nicht farmbar, Jobs lohnen sich") |
+| Stunt-Rampe (Abklingzeit) | 2 s | **ja** — schneller als das kleinste Fenster (14 s) |
+
+Route über alle **12** Münzen der Welt bei 3,33 m/s: Kette **6** (Luftlinie), **3** mit
+35 % Umweg. **Der Deckel von 12 ist also erreichbar — aber praktisch nur über die
+Stunt-Schleife, nicht im allgemeinen Spiel.** Das ist eine brauchbare Auslegung
+(Kopfraum für gutes Spiel), keine Fehlfunktion. **Deshalb wurde am Spiel nichts geändert:
+`traumhaus.html` ist in dieser Runde unberührt.**
+
+### Und eine Überdehnung im eigenen Werkzeug
+
+Die erste Fassung behauptete aus der Münz-Route *„der Deckel ist Fiktion"*. Münzen sind
+aber **1 von 16** `verdiene`-Stellen — was die Route liefert, ist eine **Untergrenze**,
+keine Aussage über den Deckel. Die Behauptung wurde nicht abgeschwächt, sondern durch
+die *richtige* ersetzt: gibt es eine wiederholbare Quelle, die schneller kommt als das
+kleinste Fenster? **Eine Prüfung, die mehr behauptet als sie misst, ist schlimmer als
+keine** — sie klingt nach Befund.
+
+**Geprüft:** `spiele-dev/tools/th-reichweite.mjs` — 10/10, davon 2 Gegenproben. Beide
+Takte werden **aus der Quelle gelesen** (`RP.cd`, Respawn-Timeout), nicht abgeschrieben,
+sonst prüft das Werkzeug gegen sein eigenes Gedächtnis weiter. Zwei Sabotagen: `sp9`
+4,0 → 0,5 (Tempo-Messung folgt der Konstante, 3 Prüfungen rot) und `RP.cd` 2 → 20
+(„keine Quelle trägt die Kette", 2 Prüfungen rot).
+
+## 2026-08-30 · 💰 Zeichen-Code, der dasteht und nie läuft — 12 Münzen, 0 Pixel
+
+**Woher die Frage kam.** `th-reichweite` hatte gemessen: Kettenglied 4 verlangt 66 m in
+24,4 s. Machbar — **aber nur, wenn man weiss, wohin**. Wer sucht, verliert die Serie.
+Damit hängt die ganze Serien-Mechanik daran, dass das Radar die nächste Münze zeigt.
+Es gab dafür sogar eine Zeichen-Anweisung im Radar-Code.
+
+**Der Befund.** Sie lief nie:
+
+```js
+if(window.pickups){ … zeichne Münz-Punkte … }
+```
+
+`pickups` ist ein `var` **innerhalb** der grossen Hülle → `window.pickups` ist
+`undefined`, immer, und es gibt nirgends eine Zuweisung. Der Wächter war dauerhaft
+falsch. **Dieselbe Falle wie `window.WORLD_SOLIDS` (Regel 2 oben)** — nur diesmal in der
+anderen Richtung: nicht ein Werkzeug las ins Leere, sondern das *Spiel* prüfte gegen ein
+Fenster-Feld, das es nie gefüllt hat.
+
+**Am Bild gemessen, nicht am Code:** 12 aktive Münzen, **0 gezeichnete Pixel**. Ein Blick
+in die Quelle hätte nur gezeigt, dass die Anweisung *dasteht*. Der Prüfer zählt darum
+Pixel in Münzfarbe (#ffe14a) im Canvas des Radars.
+
+**Behoben + darauf aufgebaut:** Wächter auf die Hüllen-Variable, und **während einer
+Serie sticht die nächste Münze hervor** (grösser, in #ff6b5a, mit Ring — dieselbe Farbe
+wie der knappe Serien-Balken). Ausserhalb einer Serie bleibt das Radar ruhig.
+
+**Geprüft:** `spiele-dev/tools/th-radar.mjs` — 7/7, davon 3 Gegenproben. Der Pixelzähler
+hat sich dabei selbst bewiesen: **0 → 49** durch den Fix, **49 → 0** beim Abschalten der
+Münzen, **0 → 52** in Markierungsfarbe mit Serie. Zwei Sabotagen: Wächter zurück auf
+`window.pickups` (3 rot), Markierung dauerhaft an (Gegenprobe „ohne Serie" rot).
+Bestand grün: `th-reichweite` 10/10, `th-hetze` 27/27, `th-meter` 25/25, `th-serie` 14/14,
+`th-hud`, `th-speichern`, `th-lint`.
+
+### „Richtiges Ergebnis, falscher Grund" ist auch ein Fehler
+
+Die Sabotage *Markierung dauerhaft an* liess zusätzlich die Prüfung „ohne aktive Münzen
+bleibt kein Punkt" mit **einem** Pixel kippen — obwohl diese Sabotage das Münz-Zeichnen
+gar nicht anfasst. Ursache: Kantenglättung am roten Ring. Eine Prüfung, die aus dem
+falschen Grund rot wird, ist beim nächsten Mal aus dem falschen Grund grün. Schwelle
+darum von `=== 0` auf `<= 2` — im gesunden Lauf sind es exakt 0, und 2 Pixel Luft trennen
+Rauschen von 48 echten Punkten. **Danach gegengeprüft, dass sie den echten Fehler
+weiterhin fängt** (Wächter zurückgedreht → wieder rot). Eine Schwelle zu lockern ist nur
+dann erlaubt, wenn man danach beweist, dass sie noch beisst.
+
 ## 2026-08-30 · 💡 Zwei Laternen für den Club — und eine Zahl, die von der Kamera abhing
 
 Der Nacht-Strang weiter: der Spielclub steht auf (126|102), die Laternenkette folgt dem
