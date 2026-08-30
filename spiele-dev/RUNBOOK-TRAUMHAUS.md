@@ -5393,3 +5393,47 @@ nur nicht weit genug. Jetzt **109,35**: Platten auf 110,51, elf Zentimeter vor d
 > Sonde 76 Bootshaus-Teile gezählt und nichts bewiesen. Diese hat mit der **Sonde des
 > Werkzeugs** in zwei Läufen beide Fragen beantwortet. *Wer eine fremde Messung
 > untersucht, benutzt ihre Sonde — nicht eine ähnliche.*
+
+## 2026-08-30 · ✈️ Die Liste „12 durchlaufbar" sortiert — 7 sind richtig so, 1 behoben, 3 bleiben offen
+
+Der volle Prüflauf hält wieder **23 von 23** (52 min) — die Vorhersage aus der letzten
+Runde stimmt, `Gleis` steht auf **0**. Damit war Zeit für eine Liste, die seit Langem
+unbearbeitet danebenlag: `th-mauern` meldet **12 Gebäude ohne Kollider**.
+
+### Sortiert, nicht abgearbeitet
+
+| | |
+|---|---|
+| **absichtlich offen (7)** | 4 × `th26_seilbahn_stuetze` (Gittermasten, 15…41 m hoch — zwischen den Beinen *soll* man durch), `th45_hafenkran`, 2 × `th16_spielturm` (Kletterturm, ist zum Betreten da), `th16_schaukel` |
+| **echter Fehler (1)** | `th25_flugzeug` — 23,6 × 26,2 m, kein Kollider |
+| **offen, mit Grund (3)** | 3 × `th29_weihnachtsbude` |
+
+> Eine Fundliste ist keine Aufgabenliste. Sieben dieser zwölf sind **richtig so** — ein
+> Kletterturm mit Kollider wäre der Fehler, nicht seine Behebung.
+
+### Das Flugzeug, gemessen statt umschlossen
+
+Der **Rumpf** liegt auf x 278,6…281,4 und z −188,9…−163,1: **2,8 breit, 25,8 lang**,
+Unterkante 1,5 m. Die 23,6 m Spannweite gehören den **Tragflächen** — dünn und hoch;
+unter ihnen soll man durchgehen können wie auf jedem Vorfeld. Der Kasten deckt darum nur
+den Rumpf: **3,4 × 26,4**, Mittelpunkt als *derselbe Ausdruck* wie die Platzierung
+(`FX-20, BAHN+22`), damit Modell und Kasten nicht auseinanderlaufen.
+
+| | vorher | nachher |
+|---|---|---|
+| `th-mauern` ohne Kollider | 12 | **11** |
+| gedeckte Modelle | 99 | **100** |
+| `th-kasten` „Kollider ohne Inhalt" | 0 | **0** (der neue enthält den Rumpf) |
+
+### ⚠️ Warum die drei Buden KEINEN Kollider bekommen
+
+`th-mauern` hat recht — sie sind durchlaufbar (4,7 × 5,2, Wände auf y 0,2…2,5). Aber sie
+sind **saisonal**: `wbau` setzt `g.visible = W9()`, sie stehen nur im Winter da. Ein
+festes `addSolid` wäre drei Jahreszeiten lang genau das, was am Campanile beseitigt
+wurde — **eine unsichtbare Wand auf freiem Platz**. Ein mitschaltender Kollider bräuchte
+eine Fallunterscheidung in `inSolid`, und die läuft pro Bewegungsschritt jedes Bewohners.
+
+> **Der Befund bleibt offen und steht im Code**, statt falsch behoben zu werden. Das ist
+> die Fortsetzung derselben Regel wie bei den offenen Bauwerken: erst fragen, ob der Fund
+> überhaupt ein Fehler ist — und dann, ob die naheliegende Behebung nicht schlimmer ist
+> als der Fund.

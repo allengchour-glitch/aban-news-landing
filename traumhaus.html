@@ -5497,6 +5497,16 @@ setTimeout(function baueGebaeude(){
          Fluggastbruecke steckte prompt 0,25 m im Hangar (`th-3d.mjs`, 25 Meshpaare).
          Aussen ist Platz. */
       bau("th25_flugzeug.glb",       8,  FX-20,0,BAHN+22, 0,   false,null,true);
+      /* 🛬 DURCH DAS FLUGZEUG KONNTE MAN HINDURCHLAUFEN (th-mauern: 23,6 x 26,2 m
+         Modell, kein Kollider). GEMESSEN an den Bauteilen: der RUMPF liegt auf
+         x 278,6…281,4 und z -188,9…-163,1, also 2,8 breit und 25,8 lang, Unterkante
+         1,5 m. Die Spannweite von 23,6 m gehoert den Tragflaechen — die sind duenn
+         und haengen hoch; unter ihnen soll man durchgehen koennen, wie auf jedem
+         Vorfeld. Der Kasten deckt darum NUR den Rumpf: 3,4 x 26,4 mit 0,3 m Luft.
+         ⚠️ Mittelpunkt als derselbe AUSDRUCK wie die Platzierung, keine zweite
+         Zahlenreihe — sonst laufen Modell und Kasten beim naechsten Verschieben des
+         Flughafens auseinander (Regel 9). */
+      addSolid(FX-20,BAHN+22,3.4,26.4,null);
       bau("th25_fluggastbruecke.glb",6,  FX-20,0,BAHN+34, 0,   false,null,true);
       bau("th25_tankwagen.glb",      3,  FX+4, 0,BAHN+20, 1.57,false,null,true);
       bau("th25_gepaeckwagen.glb",   2.2,FX+12,0,BAHN+26, 1.57,false,null,true);
@@ -5528,6 +5538,14 @@ setTimeout(function baueGebaeude(){
       wbau("th29_weihnachtsbude.glb", 3.6, MX-8.5,  MZ+3.5,  Math.PI/2);
       wbau("th29_weihnachtsbude.glb", 3.6, MX+8.5,  MZ+3.5, -Math.PI/2);
       wbau("th29_weihnachtsbude.glb", 3.6, MX,      MZ-8.5,  0);
+      /* ⚠️ DIE DREI BUDEN BEKOMMEN BEWUSST KEINEN KOLLIDER. th-mauern meldet sie als
+         durchlaufbar (je 4,7 x 5,2, Waende auf y 0,2…2,5), und das stimmt auch — aber
+         sie sind SAISONAL: `wbau` setzt `g.visible = W9()`, sie stehen nur im Winter
+         da. Ein festes addSolid waere drei Jahreszeiten lang genau das, was am
+         Campanile beseitigt wurde: eine unsichtbare Wand auf freiem Platz. Ein
+         mitschaltender Kollider braeuchte eine Fallunterscheidung in `inSolid`, und
+         die laeuft pro Bewegungsschritt jedes Bewohners — zu teuer fuer drei Buden.
+         Der Befund bleibt darum offen und steht hier, statt falsch behoben zu werden. */
       wbau("th29_eisbahn_freiluft.glb",1.2,MX,      MZ+11,   0);
       wbau("th29_schneemaenner.glb",  2,   MX-7,    MZ-6,    0.6);
       var HX=180, HZ=-160;                     /* einziger freier Platz mit R 22 m */
