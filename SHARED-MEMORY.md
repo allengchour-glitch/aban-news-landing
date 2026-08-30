@@ -1,5 +1,19 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+> ## 🚨 2026-08-30 · GitHub-Konto ist als SPAM markiert — für ALLE Sessions
+> GitHubs eigene Meldung: `Validation Failed: **User flagged as spammy**`. Das erklärt in einem
+> Zug die Actions-Sperre, die harten API-Limits **und** dass Repo + Benutzerprofil für jeden
+> ausser dem Besitzer **404** liefern. **Das Repo ist nicht weg** — es ist nur öffentlich
+> unsichtbar geschaltet.
+> - **Ein 404 auf dieses Repo ist kein Beweis, dass es fehlt.** Erst anmelden (`gh auth login`),
+>   dann urteilen. Authentifizierter REST-Zugriff funktioniert vollständig.
+> - **Nur GraphQL ist gedrosselt** (u. a. Draft-PR → „ready for review"). Wenn das klemmt:
+>   weiterarbeiten, Commits sammeln sich im selben PR, später EIN Merge. Nicht hämmern.
+> - **Anonymer Gegentest aus der Cloud-Session ist wertlos** — der Agent-Proxy liefert selbst 403/404.
+> - **🟡 Nur der User kann das lösen:** support.github.com/contact → Konto-Wiederherstellung beantragen.
+> Details + Nachweise: `CLAUDE.md`, Block 2026-08-30.
+
+
 
 ## 🧱 SPIELE-STAND — ASSET-SESSION (Chargen 38–49, Stand 2026-08-16)
 > Diese Session baut **STL/GLB-Chargen + deren Einbau** in `traumhaus.html`. Sie fasst

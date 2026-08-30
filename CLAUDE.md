@@ -70,6 +70,30 @@ Kosten 44.85 USD) → **Preis jetzt 59.90 ✅**. **Klaviyo-Sync kaputt** (zeigt 
 verbinden, nur User). Katalog: **10'000+ aktiv** (Füll-Session). Details: Top-Block `SHARED-MEMORY.md` §LIVE-STAND.
 Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts (GitLab prüfen).
 
+**📌 2026-08-30 (🚨 URSACHE GEFUNDEN — das GitHub-Konto ist als SPAM markiert):**
+- **GitHubs eigene Fehlermeldung** (Search-API): `Validation Failed: **User flagged as spammy**`.
+  Damit ist belegt, was seit Juni als drei getrennte Rätsel im Gedächtnis stand — es ist **EIN** Problem:
+  (1) „Actions has been disabled for this user", (2) die harten API-Rate-Limits, (3) dass Repo **und**
+  Benutzerprofil für alle ausser dem Besitzer **404** liefern.
+- **Was die Markierung bewirkt:** markierte Konten werden **öffentlich unsichtbar** geschaltet. Das Repo ist
+  weiterhin als *public* angelegt und existiert — aber anonyme Besucher (und jeder nicht angemeldete Client,
+  z. B. ein frisch installierter PC-Claude) sehen nur 404, auf **beiden** Ebenen. Das ist KEIN Tippfehler im
+  Namen und KEIN gelöschtes Repo.
+- **Nachgewiesen (2026-08-30):** authentifizierter REST-Zugriff funktioniert vollständig — `list_branches`,
+  `pull_request_read`, `push`, `merge_pull_request` laufen; nur **GraphQL** ist gedrosselt (z. B.
+  `markPullRequestReadyForReview` → „rate limit already exceeded"). Benutzer existiert, ID **284760098**.
+  ⚠️ **Anonymer Gegentest von der Cloud-Session aus ist WERTLOS**: der Agent-Proxy liefert selbst 403/404.
+- **🔑 KONSEQUENZEN FÜR JEDE SESSION:**
+  1. **Ein 404 auf dieses Repo bedeutet NICHT, dass es weg ist.** Erst anmelden, dann urteilen.
+  2. **PC-/Terminal-Claude braucht `gh auth login`** — danach klont und pusht er normal. Die Markierung
+     stört authentifizierten Zugriff nicht.
+  3. **Draft-PR auf „ready" setzen kann klemmen** (GraphQL-only, kein REST-Weg). Dann: weiterarbeiten,
+     Commits sammeln sich im selben PR, später EIN Merge. Nicht gegen das Limit hämmern.
+  4. Ein zweiter PR für dasselbe head→base geht NICHT (GitHub lehnt ab) — also kein Ausweichen darüber.
+- **🟡 NUR DER USER KANN DAS LÖSEN:** Einspruch bei **support.github.com/contact**, Konto-Wiederherstellung
+  beantragen („account flagged as spam, request reinstatement"). Solange die Markierung steht, bleiben
+  Actions gesperrt, die Limits eng und das Repo öffentlich unsichtbar. Es löst sich nicht von selbst.
+
 **📌 2026-06-13 (vorheriger Stand — ⚠️ GitHub-Actions-Sperre + Autonom-Spielregeln + ehrliche Daten):**
 - **⚠️⚠️ GITHUB ACTIONS IST ACCOUNT-WEIT GESPERRT** („Actions has been disabled for this user", Grund: zu hohe
   Nutzung — 158 Workflows, ~60 Crons = Fair-Use-Flag). **Nichts läuft mehr automatisch.** Repo ist public →
