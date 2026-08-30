@@ -99,6 +99,17 @@ const PRUEFUNGEN = [
   { name: 'Kasten (Kollider ohne Inhalt)', datei: 'th-kasten.mjs', kern: false,
     wert: (s) => (s.match(/(\d+) Kollider ·/) || [, '?'])[1] + ' Kollider',
     gut: (s) => /✅ Kein Kollider ohne Inhalt/.test(s) && /✅ Selbstprobe/.test(s) },
+  /* ⚠️ Dasselbe wie bei th-gps: th-hud lag im Schrank, waehrend der User einen
+     Screenshot schickte, auf dem die Fertigkeiten-Zeile umbrach. */
+  { name: 'Oberflaeche (Umbruch, Ueberdeckung)', datei: 'th-hud.mjs', kern: false,
+    wert: (s) => (s.match(/— (\d+) Formate/) || [, '?'])[1] + ' Formate',
+    gut: (s) => /🎉 OBERFLAECHE BESTANDEN/.test(s) },
+  /* ⚠️ th-gps GAB ES SEIT LANGEM, STAND ABER NIE IM TOR — und genau deshalb blieb
+     unbemerkt, dass der Freizeitpark mit dem GPS nicht anwaehlbar war. Ein Werkzeug,
+     das niemand aufruft, prueft nichts. */
+  { name: 'GPS (jedes Viertel anwaehlbar)', datei: 'th-gps.mjs', kern: false,
+    wert: (s) => (s.match(/anwaehlbar — (\d+) Viertel/) || [, '?'])[1] + ' Viertel',
+    gut: (s) => /🎉 GPS BESTANDEN/.test(s) },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },

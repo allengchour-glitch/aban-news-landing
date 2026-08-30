@@ -75,7 +75,16 @@ canvas{display:block}
      also ab y 196 — zwischen Pokal-Unterkante (112) und Bauen bleiben 84 px.
      Darum 76 statt 86 px und top 116: 4 px Luft nach oben, 4 nach unten. */
   #minimap{width:76px !important;height:76px !important;top:116px !important}
-  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
+  /* ⚠️ 150px WAR ZU KNAPP — UM EINEN PIXEL. GEMESSEN bei 667x375: der Kasten ist
+     border-box, 150 minus 24 Polster minus 4 Rand lassen 122 px Inhalt. Die
+     Fertigkeiten-Zeile "Arbeit Lv2 · Liebe Lv1 · Krimi Lv1" braucht 149 px — sie
+     brach um, und "Lv1" stand allein in der zweiten Zeile (Screenshot des Users).
+     Bei 844x390 fiel es nie auf: dort greift dieser Block gar nicht (390 > 380), der
+     Kasten ist 177 breit und die Zeile passt auf den Pixel genau.
+     Der Deckel sollte HOEHE sparen — ein Umbruch kostet aber genau die: der Kasten
+     wuchs von 51 auf 79 px. Jetzt darf er so breit werden, wie die Reihe hergibt
+     (bei 667 px Fensterbreite waren 44 px Luft frei, gebraucht werden 27). */
+  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:min(34vw,190px)}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
   #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -12962,9 +12971,21 @@ function _gpsFreiAt(ix,iz){
   var k=ix+iz*_gpsNX,v=_gpsFrei[k];
   if(!v){v=gpsGesperrt(_gpsX0+(ix+0.5)*_gpsCell,_gpsZ0+(iz+0.5)*_gpsCell)?2:1;_gpsFrei[k]=v;}
   return v===1;}
+/* 🧭 STRASSE JE ZELLE MERKEN — wie `_gpsFrei`, aus demselben Grund.
+   `gpsStrasse()` laeuft ueber sechs Zubringer-Winkel und die ganze Verbinder-Tabelle.
+   Die Suche ruft es fuer JEDEN der acht Nachbarn JEDER Runde; beim weitesten Ziel
+   (Freizeitpark) sind das ueber 1,4 Millionen Aufrufe fuer 22 494 verschiedene Zellen.
+   GEMESSEN, dieselben acht Ziele vor und nach dem Zwischenspeicher: Weganteil,
+   Laenge und Punktzahl auf die Stelle GLEICH, Runden identisch — nur die Zeit faellt
+   von 179 auf 56 ms beim weitesten Ziel (3,2x). Das ist keine andere Suche, nur
+   dieselbe Suche ohne die Wiederholung. */
+var _gpsStr=null;
+function _gpsStrAt(ix,iz){var k=ix+iz*_gpsNX,v=_gpsStr[k];
+  if(!v){v=gpsStrasse(_gpsX0+(ix+0.5)*_gpsCell,_gpsZ0+(iz+0.5)*_gpsCell)?1:2;_gpsStr[k]=v;}
+  return v===1;}
 function gpsRoute(sx,sz,tx,tz){
   /* Cache pro Lauf frisch — der Spieler kann zwischendurch gebaut/abgerissen haben */
-  _gpsFrei=new Int8Array(_gpsNX*_gpsNZ);
+  _gpsFrei=new Int8Array(_gpsNX*_gpsNZ);_gpsStr=new Int8Array(_gpsNX*_gpsNZ);
   function C(x,z){return [Math.max(0,Math.min(_gpsNX-1,Math.floor((x-_gpsX0)/_gpsCell))),
                           Math.max(0,Math.min(_gpsNZ-1,Math.floor((z-_gpsZ0)/_gpsCell)))];}
   function naheFrei(c){                          // Spirale bis 10 Zellen (Ziel mitten im Gebaeude)
@@ -12991,14 +13012,30 @@ function gpsRoute(sx,sz,tx,tz){
   function H(k){var dx=(k%_gpsNX)-cZ[0],dz=Math.floor(k/_gpsNX)-cZ[1];return Math.sqrt(dx*dx+dz*dz);}
   best[startK]=0;push(H(startK),startK);
   var NB=[[1,0,1],[-1,0,1],[0,1,1],[0,-1,1],[1,1,1.414],[1,-1,1.414],[-1,1,1.414],[-1,-1,1.414]];
+  /* ⚠️ DER DECKEL HAT DEN SUEDEN ABGESCHNITTEN. Bei 60 000 Runden brach die Suche ab,
+     bevor sie ankam — und `gpsSetz` meldete dann "Kein Weg dorthin gefunden". Betroffen
+     war nicht irgendein Winkel, sondern das GROESSTE Viertel: der Freizeitpark (60|360)
+     und die halbe Sportpark-Strasse ab x = 40 waren mit dem GPS ueberhaupt nicht
+     anwaehlbar, waehrend Zoo, Flughafen, Bauernhof und Gewerbe Ost gingen.
+     Der Grund ist der Schaetzer: eine Strassenzelle kostet 1, eine Wiesenzelle 3, der
+     Schaetzer rechnet aber mit 1 je Zelle. Er ist damit zulaessig (findet den besten
+     Weg), aber schwach — die Suche verhaelt sich fast wie Dijkstra und breitet sich
+     weit aus. GEMESSEN bis zum Ziel: Freizeitpark 183 068 Runden, Sportpark-Ost
+     68 006, alles Uebrige unter 25 000.
+     ⚠️ EINEN STAERKEREN SCHAETZER HABE ICH GEMESSEN UND VERWORFEN. Faktor 2 kostet nur
+     ein Fuenfzigstel der Runden — aber der Weganteil auf Strasse faellt von 86 auf 70 %
+     (Zoo 72 -> 56, Flughafen 81 -> 65), Faktor 3 auf 25…53 %. Die Route liefe dann quer
+     ueber die Wiese statt ueber den Asphalt. Weniger Runden waeren hier das schlechtere
+     Spiel; der Deckel steigt stattdessen auf das Doppelte des gemessenen Bedarfs.
+     Er bleibt als Notbremse stehen (ein unerreichbares Ziel darf die Seite nicht
+     einfrieren) — mit dem Zwischenspeicher oben kostet der schlimmste Fall 56 ms. */
   var runden=0;
-  while(hF.length&&runden++<60000){
+  while(hF.length&&runden++<380000){
     var k=pop();if(k===zielK)break;
     var ix=k%_gpsNX,iz=(k-ix)/_gpsNX;
     for(var nb=0;nb<8;nb++){var nx=ix+NB[nb][0],nz=iz+NB[nb][1];
       if(!_gpsFreiAt(nx,nz))continue;
-      var wx=_gpsX0+(nx+0.5)*_gpsCell,wz=_gpsZ0+(nz+0.5)*_gpsCell;
-      var g=best[k]+NB[nb][2]*(gpsStrasse(wx,wz)?1:3);
+      var g=best[k]+NB[nb][2]*(_gpsStrAt(nx,nz)?1:3);
       var nk=nx+nz*_gpsNX;
       if(g<best[nk]-1e-6){best[nk]=g;von[nk]=k;push(g+H(nk),nk);}}}
   if(von[zielK]<0&&zielK!==startK)return null;
@@ -13618,7 +13655,9 @@ function updHUD(){
   if(kinder.length){var kr=document.createElement("div");kr.style.cssText="font-size:.72rem;color:#c05a8a;font-weight:800";
     kr.textContent="👨‍👩‍👧 Familie: "+kinder.map(function(k){return (k.baby?"👶":"🧒")+k.name;}).join(" · ");nb.appendChild(kr);}
   var skr=document.createElement("div");skr.style.cssText="font-size:.72rem;color:#5a4a30;font-weight:800";
-  skr.textContent="💼 Lv"+skills.arbeit.lv+" · 💘 Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️ Lv"+skills.krimi.lv:"")+(arbeiten?" · Arbeit …":(crime.on?" · unterwegs 🌙":""));
+  /* Feste Leerzeichen innerhalb eines Eintrags: wird es doch einmal zu eng, faellt
+     der Umbruch ZWISCHEN zwei Eintraege statt mitten hinein ("Lv1" allein). */
+  skr.textContent="💼\u00A0Lv"+skills.arbeit.lv+" · 💘\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️\u00A0Lv"+skills.krimi.lv:"")+(arbeiten?" · Arbeit\u00A0…":(crime.on?" · unterwegs\u00A0🌙":""));
   nb.appendChild(skr);
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
