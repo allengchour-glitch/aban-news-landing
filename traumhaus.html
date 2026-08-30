@@ -14065,22 +14065,36 @@ function loop(now){
          ⚠️ Die Materialien sind geteilt: es stehen drei dieser Schilder in der Welt,
          eine Liste erfasst alle. */
       if(!window._neonMats&&performance.now()>20000){
+        /* ⚠️ NICHT NACH NAMEN RATEN. Der erste Stand suchte /^Ns(Neon|Panel|Birne)/ —
+           das traf genau das Neonschild und liess den Rest des Clubs dunkel. GEMESSEN
+           an vier th14-Modellen: die ganze Familie folgt derselben Konvention und
+           bringt ihre Leuchtfarben mit, nur eben mit emissiveIntensity 1 —
+           Tanzflaeche (TfFeld1…4, TfFuge), Spielautomat (AutTaste, AutScreen,
+           AutTopper, AutSym1…3, AutWalze), Discokugel (DkGlanz), Bar (BarLed,
+           BarRueck). Die Praefixe der uebrigen acht Modelle kenne ich nicht — also
+           wird nicht geraten, sondern ueber die HERKUNFT gesammelt: jedes Material
+           eines th14-Modells, dessen Leuchtfarbe nicht schwarz ist. Das erfasst alle
+           zwoelf ohne eine einzige Namensannahme. */
         var nseen=new Set(),nl=[];
-        scene.traverse(function(n2){
-          if(!n2.material)return;
-          var nm2=Array.isArray(n2.material)?n2.material:[n2.material];
-          for(var q2=0;q2<nm2.length;q2++){var m2=nm2[q2];
-            if(!m2||nseen.has(m2)||!m2.emissive)continue;
-            nseen.add(m2);
-            if(!/^Ns(Neon|Panel|Birne)/.test(m2.name||""))continue;
-            nl.push({m:m2,i:(m2.emissiveIntensity===undefined?1:m2.emissiveIntensity)});}});
+        (window._gebaeude||[]).forEach(function(g9){
+          if((g9.userData.datei||"").indexOf("th14_")!==0)return;
+          g9.traverse(function(n2){
+            if(!n2.material)return;
+            var nm2=Array.isArray(n2.material)?n2.material:[n2.material];
+            for(var q2=0;q2<nm2.length;q2++){var m2=nm2[q2];
+              if(!m2||nseen.has(m2)||!m2.emissive)continue;
+              nseen.add(m2);
+              if(m2.emissive.getHex()===0)continue;      /* nur was leuchten SOLL */
+              nl.push({m:m2,i:(m2.emissiveIntensity===undefined?1:m2.emissiveIntensity)});}});});
         window._neonMats=nl;window._neonNacht=-1;
       }
       if(window._neonMats&&window._neonNacht!==nacht9){
         window._neonNacht=nacht9;
         for(var nk=0;nk<window._neonMats.length;nk++){
           var ne=window._neonMats[nk];
-          ne.m.emissiveIntensity=nacht9?2.8:ne.i;}
+          /* 2,6: hell genug, dass Tanzflaeche und Automaten den dunklen Raum tragen,
+             ohne dass das Neonschild ueberstrahlt (dorfFenster nimmt 2,2). */
+          ne.m.emissiveIntensity=nacht9?2.6:ne.i;}
       }
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
       nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */

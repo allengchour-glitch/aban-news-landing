@@ -5260,3 +5260,42 @@ stolz „keine Funde". Bestand grün: `th-radar` 7/7, `th-serie` 14/14, `th-hud`
 
 > **Regel für neue Werkzeuge, die eine Datei durchsuchen:** die eigenen Kommentare sind
 > Teil der Datei. Wer über einen Fehler schreibt, schreibt sein Muster hin.
+
+## 2026-08-30 · 🕺 Der Club leuchtet — 5 Materialien werden 38, ohne einen Namen zu raten
+
+Die Neon-Runde davor drehte genau **fünf** Materialien auf: `/^Ns(Neon|Panel|Birne)/`.
+Das Schild leuchtete, der Rest des Clubs blieb dunkel — bei einem Innenraum, dessen
+ganzer Sinn Licht ist.
+
+**Gemessen an vier th14-Modellen:** die ganze Familie folgt derselben Konvention und
+bringt ihre Leuchtfarben mit, nur eben mit `emissiveIntensity 1`:
+
+| Modell | leuchtende Materialien |
+|---|---|
+| Tanzfläche | `TfFeld1…4` (#ff2d93, #33e0ff, #ffd638, #7a51ff), `TfFuge` (#a429ff) |
+| Spielautomat | `AutTaste`, `AutTaste2`, `AutScreen`, `AutTopper`, `AutSym1…3`, `AutWalze`, `AutSeite` |
+| Discokugel | `DkGlanz` (#f2f7ff) |
+| Bar | `BarLed` (#ff389e), `BarRueck` (#4cd8ff) |
+
+⚠️ **Die Präfixe der übrigen acht Modelle kenne ich nicht** — also wird nicht geraten.
+Gesammelt wird über die **Herkunft**: jedes Material eines Modells, dessen Datei mit
+`th14_` beginnt und dessen Leuchtfarbe nicht schwarz ist. Das erfasst alle zwölf ohne
+eine einzige Namensannahme.
+
+| | vorher | nachher |
+|---|---|---|
+| Materialien in `_neonMats` | 5 | **38** |
+| Intensität nachts | 2,8 | 2,6 (`dorfFenster` nimmt 2,2) |
+| neue Lichtobjekte | — | **keine** |
+
+**Kein einziges Lichtobjekt kommt dazu** — nur Emission. Der `LAMP_MAX`-Deckel und die
+Zahl der Shader-Neubauten bleiben unberührt; das ist der Grund, diesen Weg dem
+naheliegenden „stell eine Lampe rein" vorzuziehen.
+
+Belegbild: `spiele-dev/screenshots/club-innen-nacht.png` — Roulette-Rand rosa,
+Kartentisch cyan, Tanzfläche in Pastell, LED-Streifen an der Bar; der Raum bleibt
+dunkles Holz, das Licht kommt aus der Einrichtung.
+
+> **Die Regel dahinter:** ein Muster über Namen ist eine Vermutung über fremde Modelle.
+> Ein Muster über die **Herkunft** ist eine Tatsache über die eigene Szene. Wo beides
+> geht, ist das zweite billiger zu verantworten.
