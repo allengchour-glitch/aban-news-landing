@@ -161,12 +161,23 @@ def bilder(p):
     return [u for _, _, u in bewertet]
 
 
+# Topische Kosmetik (Creme/Serum/Maske zum Auftragen) wird NICHT beworben — Betreiber-
+# Entscheid 30.08. («gesichts creme passt nicht wen aus china kommt»). Im Shop FUEHREN ist
+# etwas anderes als BEWERBEN (dieselbe Trennung wie bei Wirkversprechen, 28.08.).
+# Geraete (Roller, Buersten, Lockenstab) bleiben bewerbbar — die Regel trifft nur, was auf
+# die Haut aufgetragen wird.
+TOPISCH = re.compile(r'Creme|Serum|Hautpflege|Lotion|Gesichtsmaske|Augenmaske|Ampulle|'
+                     r'Peeling|Balsam|Salbe|[ÖO]l\b.*(?:Gesicht|Haut)|Essence', re.I)
+
+
 def geeignet(p, mindest_bilder):
     if p.get("status") != "ACTIVE":
         return False
     if SPERR_TAGS & set(t.lower() for t in (p.get("tags") or [])):
         return False
     if CLAIM.search(p.get("title") or ""):
+        return False
+    if TOPISCH.search(p.get("title") or ""):
         return False
     try:
         if float(p["priceRangeV2"]["minVariantPrice"]["amount"]) < MIN_PREIS:

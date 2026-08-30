@@ -17,7 +17,7 @@ MAXALTER = int(os.environ.get("MAXALTER", "86400"))
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 BULK = ('{ products(query:"status:active") { edges { node { id title status tags productType '
-        'g:publishedOnPublication(publicationId:\\"gid://shopify/Publication/302872297857\\") '
+        'g:publishedOnPublication(publicationId:"gid://shopify/Publication/302872297857") '
         'mediaCount { count } '
         'priceRangeV2 { minVariantPrice { amount } } } } } }')
 

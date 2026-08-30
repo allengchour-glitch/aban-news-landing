@@ -76,6 +76,8 @@ def produkt_slide(slug, tmpnr):
     tmp = f"/tmp/_mw_{tmpnr}.img"
     if not K.lade(urls[0], tmp):
         return None
+    if K.TOPISCH.search(p["title"]):
+        return None  # topische Kosmetik wird nicht beworben (Betreiber 30.08.)
     preis = K.chf(p["priceRangeV2"]["minVariantPrice"]["amount"])
     return K.slide_hook(tmp, "Neu im Shop", preis, p["title"], None, None, wisch=False)
 

@@ -117,3 +117,32 @@
 2026-08-27	Ringlicht	gid://shopify/Product/15451638661505	Full-HD Webcam mit Ringlicht und Mikrofon
 2026-08-27	Futterautomat	gid://shopify/Product/15448949195137	Smarter Futterautomat mit Timer
 2026-08-27	Futterautomat	gid://shopify/Product/15448949260673	Automatischer Futterspender
+2026-08-30	Beauty-Gerät	gid://shopify/Product/15520388841857	3D Silikon Gesichtsreinigungsbürste
+2026-08-30	Beauty-Gerät	gid://shopify/Product/15500908724609	Sanftes Haarentfernungsgerät für den ganzen Körper
+2026-08-30	Hautpflege-Serum	gid://shopify/Product/15505406001537	Hyaluronsäure Hautpflege-Set
+2026-08-30	Hautpflege-Serum	gid://shopify/Product/15509370405249	VE Retinol Nachtcreme zur Hautregeneration
+2026-08-30	Mini-Beamer	gid://shopify/Product/15519829361025	Mini-Projektor mit Multi-Screen Funktion
+2026-08-30	Mini-Beamer	gid://shopify/Product/15520410632577	T20 Mini Beamer – HD Heimkino für unterwegs
+2026-08-30	Ordnung & Aesthetic	gid://shopify/Product/15509968781697	Mehrzweck-Organizer fürs Pult
+2026-08-30	Ordnung & Aesthetic	gid://shopify/Product/15496229585281	Rattan-Look Aufbewahrungskorb mit Deckel
+2026-08-30	Shapewear	gid://shopify/Product/15448109318529	Taillenformer Korsett-Top mit Stahlstäben
+2026-08-30	Shapewear	gid://shopify/Product/15509385281921	Figurformendes Slim-Fit Kleid mit Cape
+2026-08-30	Ladestation 3-in-1	gid://shopify/Product/15483935162753	4-in-1 Ladestation
+2026-08-30	Ladestation 3-in-1	gid://shopify/Product/15422939988353	Hardcase iPhone®-Hülle mit MagSafe® – Selbst gestalten
+2026-08-30	Haarglätter & Styler	gid://shopify/Product/15495239958913	Automatischer Lockenstab für grosse Wellen (25mm)
+2026-08-30	Haarglätter & Styler	gid://shopify/Product/15502559084929	Glättbürste mit Dampf-Sprühfunktion
+2026-08-30	Kerzenwärmer & Duft	gid://shopify/Product/15496534786433	Hollow Aroma Diffuser Ultraschall-Luftbefeuchter
+2026-08-30	Kerzenwärmer & Duft	gid://shopify/Product/15421502554497	Kerzenwärmer-Lampe «Lueur» · mit Timer & Dimmer
+2026-08-30	Smoothie-Mixer	gid://shopify/Product/15493810389377	Tragbarer Multifunktions-Smoothie-Maker
+2026-08-30	Faszienrolle	gid://shopify/Product/15506296275329	Schaumstoff-Faszienrolle mit Massagestab
+2026-08-30	LED-Strip	gid://shopify/Product/15487527256449	Wasserdichte LED-Lichtleiste für Aussenbereiche
+2026-08-30	LED-Strip	gid://shopify/Product/15508419346817	Wasserdichter RGB LED-Streifen, 12V
+2026-08-30	Wärme & Kuschel	gid://shopify/Product/15516219638145	USB-Heizkissen mit Graphen-Technologie
+2026-08-30	Wärme & Kuschel	gid://shopify/Product/15453999759745	USB-Heizdecke aus Lambschafwolle 150x80 cm
+2026-08-30	Karaoke-Mikrofon	gid://shopify/Product/15479418585473	M8 Mini Funk-Ansteckmikrofon (2er-Set)
+2026-08-30	Karaoke-Mikrofon	gid://shopify/Product/15479420944769	Karaoke Mikrofon mit Bluetooth Lautsprecher
+2026-08-30	Ringlicht	gid://shopify/Product/15506273862017	Bodenstativ mit LED-Ringlicht für Livestreams
+2026-08-30	Ringlicht	gid://shopify/Product/15496540782977	Faltbares Fotostudio mit LED-Ringlicht
+2026-08-30	Futterautomat	gid://shopify/Product/15504188637569	Automatischer Futterspender für Katzen & Hunde
+2026-08-30	Futterautomat	gid://shopify/Product/15504188473729	Futterautomat mit Kamera für Hunde und Katzen
+2026-08-30	Hoodie-Decke	gid://shopify/Product/15448104698241	Britischer Oversize Hoodie mit Polo-Kragen

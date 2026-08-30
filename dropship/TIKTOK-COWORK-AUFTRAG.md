@@ -86,33 +86,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 3. `hyaluronsaure-hautpflege-5er-set-623900`
-
-**Caption:**
-
-```
-Hyaluronsäure Hautpflege 5er-Set · CHF 21.90
-Jetzt im Shop 🇨🇭 luxestyle.ch
-Code WELCOME10 für −10%
-
-#fyp #schweiz #luxestyle #beauty #selfcare #skincare
-```
-
-**Video (stumm, für Trend-Sound):**
-https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hyaluronsaure-hautpflege-5er-set-623900-clean.mp4?v=1787981174
-
-**Slides in dieser Reihenfolge:**
-
-1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01.jpg?v=1787981279
-2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_b838b1be-ce0d-4937-aef4-f608743bd9ea.jpg?v=1787981427
-3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03.jpg?v=1787981287
-4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04.jpg?v=1787981293
-5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05.jpg?v=1787981299
-6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06.jpg?v=1787981305
-
----
-
-## 4. `lockenstab-fur-einfache-stylings-631872`
+## 3. `lockenstab-fur-einfache-stylings-631872`
 
 **Caption:**
 
@@ -135,7 +109,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 5. `meisterwerk-0830`
+## 4. `meisterwerk-0830`
 
 **Caption:**
 
@@ -148,22 +122,21 @@ Code WELCOME10 für −10%
 ```
 
 **Video (stumm, für Trend-Sound):**
-https://cdn.shopify.com/s/files/1/0943/6856/3585/files/meisterwerk-0830-clean.mp4?v=1788127365
+https://cdn.shopify.com/s/files/1/0943/6856/3585/files/meisterwerk-0830-clean_ab0943bb-c4a7-4d2f-b9a1-d680600322c3.mp4?v=1788128183
 
 **Slides in dieser Reihenfolge:**
 
-1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_6e3e2461-ab71-480c-b43c-a97fa6217e64.jpg?v=1788127314
-2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_fefdb7c0-f1c1-4ca0-8fba-711ab29c8365.jpg?v=1788127319
-3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_1f9194be-cec7-4383-9975-61a817d090e9.jpg?v=1788127326
-4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_2c3ca620-ad50-4632-9d41-f67ed76c2c86.jpg?v=1788127332
-5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_2eebd2f5-dd52-43ec-ba74-fe31d2af0c99.jpg?v=1788127339
-6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_4b846a8e-cebd-4169-9bd5-bbfd554e62e2.jpg?v=1788127345
-7. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07_80baf681-92ba-48a7-87f1-fdb30ce4c370.jpg?v=1788127352
-8. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08.jpg?v=1788127357
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_384a4a96-a8e7-488d-a0f4-607097ee8d76.jpg?v=1788128137
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_0a01f157-ee4b-45e6-9795-94c9592ac66e.jpg?v=1788128144
+3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_4df34815-6d27-437e-87a1-ed554e384c59.jpg?v=1788128150
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_c04cb3c0-2c58-4fd1-9bb5-d01491930e56.jpg?v=1788128156
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_9fe6b11f-da13-4474-89e6-12ab546951c8.jpg?v=1788128163
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_07f1097d-7e2a-40e7-8c8b-ee2baf9601c5.jpg?v=1788128170
+7. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07_acc0682c-f151-476a-b358-d24b928f683d.jpg?v=1788128175
 
 ---
 
-## 6. `schmuck-organizer-mit-faltwand-958528`
+## 5. `schmuck-organizer-mit-faltwand-958528`
 
 **Caption:**
 
@@ -189,7 +162,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/schmuck-organizer-mit-fal
 
 ---
 
-## 7. `top-5-unter-40-0829`
+## 6. `top-5-unter-40-0829`
 
 **Caption:**
 
@@ -223,7 +196,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-0829-clean
 
 ---
 
-## 8. `top-5-unter-50-0828`
+## 7. `top-5-unter-50-0828`
 
 **Caption:**
 
@@ -257,7 +230,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-0828-clean
 
 ---
 
-## 9. `vakuumierer-kabellos-lebensmittel`
+## 8. `vakuumierer-kabellos-lebensmittel`
 
 **Caption:**
 
