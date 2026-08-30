@@ -188,6 +188,7 @@ def main():
            "⚠️ Nichts löschen, nichts anderes am Konto ändern.", ""]
 
     gesperrt = 0
+    queue = []            # maschinenlesbar fuer automation/local/tiktok-upload-auto.mjs
     for i, slug in enumerate(sorted(proSlug), 1):
         cp = os.path.join(BASIS, slug, "caption.txt")
         cap = open(cp).read().strip() if os.path.exists(cp) else ""
@@ -208,11 +209,24 @@ def main():
         for n in sorted(proSlug[slug]):
             aus.append(f"{int(n)}. {proSlug[slug][n]}")
         aus.append("")
+        queue.append({
+            "slug": slug,
+            "frei": frei,
+            "caption": cap,
+            "video": videos.get((slug,)),
+            "slides": [proSlug[slug][n] for n in sorted(proSlug[slug])],
+        })
 
     with open(AUFTRAG, "w") as f:
         f.write("\n".join(aus) + "\n")
+    # Dieselben Daten maschinenlesbar — Quelle fuer den PC-Autoposter.
+    # ⚠️ Der Autoposter liest NUR diese Datei; wer die Regeln aendert, aendert sie HIER.
+    with open(os.path.join(ROOT, "dropship", "tiktok_queue.json"), "w") as f:
+        json.dump({"stand": __import__('datetime').date.today().isoformat(),
+                   "profil_hat_link": bool(_link),
+                   "beitraege": queue}, f, ensure_ascii=False, indent=1)
     print(f"FERTIG: {len(proSlug)} Beiträge im Auftrag, {gesperrt} gesperrt "
-          f"→ {os.path.relpath(AUFTRAG, ROOT)}")
+          f"→ {os.path.relpath(AUFTRAG, ROOT)} + dropship/tiktok_queue.json")
 
 
 if __name__ == "__main__":

@@ -5450,3 +5450,45 @@ gid://shopify/Product/15449074565505	cj-abgekuendigt-pruefen
 gid://shopify/Product/15449074762113	cj-abgekuendigt-pruefen
 gid://shopify/Product/15449075024257	cj-abgekuendigt-pruefen
 gid://shopify/Product/15449075220865	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449075384705	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449075614081	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449075876225	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449076072833	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449076105601	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449076203905	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449076269441	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449076400513	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115492737	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115525505	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115558273	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115623809	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115656577	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115722113	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115754881	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115787649	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115853185	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115885953	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449115918721	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449125355905	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449126273409	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449126928769	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449126994305	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449128239489	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449128272257	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449128305025	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449131680129	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449132335489	CHF 8.68	1 Varianten	Haarserum mit Applikatorbürste 100ml
+gid://shopify/Product/15449132401025	CHF 8.99	1 Varianten	Microneedling Anti-Falten Serum
+gid://shopify/Product/15449132466561	CHF 6.85	1 Varianten	12er Lidschatten- & Eyeliner-Stift-Set
+gid://shopify/Product/15449132532097	CHF 10.37	1 Varianten	Lidschatten- & Lipgloss-Palette für den Alltag
+gid://shopify/Product/15449132564865	CHF 15.62	1 Varianten	Sweetheart Bear Lidschatten-Palette
+gid://shopify/Product/15449132695937	CHF 8.62	1 Varianten	Falsche Wimpern mit Schwalbenschwanz-Enden
+gid://shopify/Product/15449132794241	CHF 15.66	1 Varianten	Wimpern-Büschel-Set für individuellen Look
+gid://shopify/Product/15449132859777	CHF 8.03	1 Varianten	DIY Wimpern-Büschel-Set für voluminöse Wimpern
+gid://shopify/Product/15449132892545	CHF 7.72	1 Varianten	3 Paar unsichtbare künstliche Wimpern
+gid://shopify/Product/15449132925313	CHF 16.69	1 Varianten	3D Premium Faux Mink Kunstwimpern MK-36
+gid://shopify/Product/15449132958081	CHF 16.69	1 Varianten	3D Premium Faux Mink Wimpern MK-01
+gid://shopify/Product/15449132990849	CHF 16.69	1 Varianten	3D Premium Faux Mink Wimpern MK-62
+gid://shopify/Product/15449133023617	CHF 13.99	1 Varianten	Premium Faux Mink MK-15 Wimpern
+gid://shopify/Product/15449133089153	CHF 13.99	1 Varianten	3D Premium Faux Mink Kunstwimpern MK-16
+gid://shopify/Product/15449133121921	CHF 13.99	1 Varianten	3D Premium Faux Mink Kunstwimpern MK-37
