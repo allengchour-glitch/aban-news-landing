@@ -42,6 +42,24 @@ mitSonden('traumhaus.html', { s:`function(){
   if(typeof busRec!=="undefined"&&busRec&&busRec.mesh)wurzeln.add(busRec.mesh);
   (sims||[]).forEach(function(s2){if(s2.mesh)wurzeln.add(s2.mesh);});
   (typeof npcs!=="undefined"?npcs:[]).forEach(function(n){if(n.mesh)wurzeln.add(n.mesh);});
+  /* ⚠️ 5. MESSFEHLER, gefunden beim Nachpruefen der letzten drei Treffer: die
+     Fussgaenger heissen "fussg", nicht "npcs". Ohne sie meldete der Scanner Beinpaare
+     (0,16 x 0,44 in Hosenfarben, daneben ein Schuh) als Hindernis — Leute, die am
+     Bordstein auf Gruen warten und dabei 0,7 m ueber der Kante stehen. Menschen und
+     Fahrraeder BEWEGEN sich; sie sind kein Platzierungsfehler. */
+  (typeof fussg!=="undefined"?fussg:[]).forEach(function(f){if(f.mesh)wurzeln.add(f.mesh);});
+  /* window._tiere ist KEIN Feld (der erste Versuch warf "forEach is not a function").
+     Also erst nachsehen, was es ist, statt es anzunehmen. */
+  var _ti=window._tiere;
+  /* window._tiere ist {enten:[…], land:[…]} — zwei Felder IN einem Objekt. Der erste
+     Versuch sammelte die Felder selbst statt ihrer Eintraege, und das Reh blieb im
+     Bericht. Eine Ebene tiefer. */
+  var tierListe=[];
+  if(Array.isArray(_ti))tierListe=_ti;
+  else if(_ti&&typeof _ti==="object")Object.keys(_ti).forEach(function(k){
+    if(Array.isArray(_ti[k]))tierListe=tierListe.concat(_ti[k]);});
+  tierListe.forEach(function(t){if(t&&t.mesh)wurzeln.add(t.mesh);
+    if(t&&t.isObject3D)wurzeln.add(t);});
   if(window.autoRec&&window.autoRec.mesh)wurzeln.add(window.autoRec.mesh);
   function istFahrzeug(o){for(var a=o;a;a=a.parent)if(wurzeln.has(a))return true;return false;}
   /* ⚠️ UND DIE RICHTIGE EBENE. Auch nach dem Fahrzeug-Ausschluss blieben 1626 Treffer —
@@ -80,6 +98,13 @@ mitSonden('traumhaus.html', { s:`function(){
     if(Math.abs(Math.abs(p.z)-SZ9)<8&&Math.abs(p.x)<RL/2){auf=true;achse="Hauptstrasse (16 m) z="+(p.z>0?"+":"-")+SZ9;}
     if(Math.abs(Math.abs(p.x)-RX)<5&&Math.abs(p.z)<124){auf=true;achse="Querstrasse (10 m) x="+(p.x>0?"+":"-")+RX;}
     if(!auf)return;
+    /* Und ein Objekt, das nur mit dem Rand ueber die Kante ragt, ist kein Befund:
+       ein am Bordstein abgestelltes Fahrrad steht 0,2 m im Asphalt. Erst ab einem
+       halben Meter ist etwas wirklich IN der Fahrbahn. */
+    var tiefe=0;
+    if(/Hauptstrasse/.test(achse))tiefe=8-Math.abs(Math.abs(p.z)-SZ9);
+    else tiefe=5-Math.abs(Math.abs(p.x)-RX);
+    if(tiefe<0.5)return;
     var w=wegVonStrasse(p.x,p.z);
     var vs=Math.hypot(w[0]-p.x,w[1]-p.z);
     if(true)vs=vs;

@@ -3649,7 +3649,11 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       var len=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.06,0.42),stdMat(0x3a3a42,0.5));len.position.set(0.4,0.72,0);rad.add(len);
       var sat=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.07,0.12),stdMat(0x2a2a30,0.6));sat.position.set(-0.35,0.68,0);rad.add(sat);
       rad.position.set(bx,0,0.1);rad.rotation.y=0.12*(bi-1);bg.add(rad);});
-    bg.position.set(30,0,67.5);bg.rotation.y=Math.PI/2;scene.add(bg); // Marktplatz-Westkante, frei von der Lauflinie
+    /* ⚠️ 67.5 WAR ZU NAH. Der Staender ist gedreht und reicht 2,6 m nach vorn — seine
+       vorderste Kante lag bei z=64.9, die Hauptstrasse endet aber erst bei z=66.
+       Damit standen gut 1,1 m Staender samt Vorderrad auf dem Asphalt (gemessen mit
+       th-fahrbahn). 69.2 schiebt die Kante auf 66.6, also 0,6 m hinter den Rand. */
+    bg.position.set(30,0,69.2);bg.rotation.y=Math.PI/2;scene.add(bg); // Marktplatz-Westkante, frei von der Lauflinie
   })();
   // Marktplatz-Pflaster unter den Staenden (statt rohem Erdfleck)
   (function(){var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,13),betMat(0xc6c0b2,0.9));
