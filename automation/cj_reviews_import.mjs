@@ -111,8 +111,17 @@ function pidMerken(sku, pid) {
 
 async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
-  const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
-  const j = await r.json().catch(() => ({}));
+  let j = {};
+  // ⚠️ CJs QPS-Drosselung (1600200) ist GÜLTIGES JSON und kein Fehlschlag — mit vier
+  // laufenden Grind-Runnern verliert dieser Import das 1-Anfrage/Sekunde-Rennen fast immer.
+  // Ohne Warten galt jede gedrosselte Antwort als «keine pid» (Geschwister der
+  // Fulfill-Engine-Lehre vom 22.08.). Aussitzen, nicht aufgeben.
+  for (let v = 0; v < 8; v++) {
+    const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
+    j = await r.json().catch(() => ({}));
+    if (j?.code !== 1600200 && !/Too Many Requests/i.test(j?.message || '')) break;
+    await new Promise(res => setTimeout(res, 1500 + v * 500));
+  }
   // ⚠️ FRÜHER: process.exit(0) bei 16900500 — der ganze Lauf endete. Das war zu grob
   // (28.08.2026): Gemessen meldet `product/query` «Insufficient API points, Remaining: 0»,
   // während `productComments` im SELBEN Moment Code 200 mit Kommentaren liefert. Der
@@ -191,10 +200,17 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     // Ohne Punkte ist ein Nachschlag zwecklos — dann lieber sauber überspringen, statt das
     // Produkt fälschlich als «keine pid» ins Ledger zu schreiben und nie wieder anzusehen.
     if (punkteLeer) return null;
-    const strategies = [
+    const strategies = [];
+    // Vier-Formen-Lehre (20.08.): Eine rohe Ziffernfolge oder UUID IST die pid — sie gehoert
+    // an `pid=`, nicht an `productSku=` (dort antwortet CJ «not found», und der Lauf hielt
+    // genau die Produkte fuer unaufloesbar, deren pid er laengst in der Hand hatte).
+    if (/^\d{15,}$/.test(sku) || /^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-/.test(sku))
+      strategies.push(['query/pid', '/product/query', { pid: sku }]);
+    strategies.push(
       ['query/productSku', '/product/query', { productSku: sku }],   // die gespeicherten SKUs sind meist Produkt-SKUs
       ['query/variantSku', '/product/query', { variantSku: sku }],
-      ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
+      ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }]);
+    void 0; const _kommentarHinweis = [
       // ⛔ KEINE Stichwortsuche mehr (28.08.2026). `/product/list?keyWords=<SKU>` durchsucht
       // den KATALOGTEXT — findet es die SKU dort nicht, liefert es trotzdem den bestplatzierten
       // Treffer. Gemessen: für drei völlig verschiedene Produkte (Holzpuzzle, Magnet-Bausteine,
