@@ -33,7 +33,9 @@ FIX = os.environ.get('FIX') == '1'
 # ⚠️ Nur Formulierungen, die eine WAHL ankuendigen. «Erhaeltlich in Blau» allein ist eine
 # Beschreibung, keine Auswahl — «erhaeltlich in verschiedenen Farben» ist eine.
 WAHL = re.compile(
-    r'in (?:verschiedenen|mehreren|unterschiedlichen) (?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)'
+    # 31.08.: auch Zahlwoerter («In zwei Farben erhältlich: Weiss und Grau») — der
+    # Kopfhaut-Roller mit EINER Variante trug genau diese Form, und sie entging dem Muster.
+    r'in (?:verschiedenen|mehreren|unterschiedlichen|zwei|drei|vier|f[üu]nf) (?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)'
     r'|(?:verschiedene|mehrere) (?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Modelle|Varianten) (?:erh[äa]ltlich|verf[üu]gbar|zur Auswahl)'
     r'|w[äa]hlen Sie (?:zwischen|aus)'
     r'|zur Auswahl stehen'
