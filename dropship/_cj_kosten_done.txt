@@ -6144,3 +6144,6 @@ gid://shopify/Product/15449436356993	CHF 11.94	6 Varianten	Oversized-Hoodie mit 
 gid://shopify/Product/15449436389761	CHF 12.37	16 Varianten	Relaxed Fit Halbzipfel-Hoodie aus Imitat Lammwolle
 gid://shopify/Product/15449436422529	CHF 14.96	15 Varianten	Buchstabenbestickte Joggingjacke Damen
 gid://shopify/Product/15449436455297	CHF 19.63	81 Varianten	Damen-Kardigan mit Kunstfell-Kapuze
+gid://shopify/Product/15449436488065	CHF 23.67	4 Varianten	Retro Leopard-Print Cardigan mit Kapuze
+gid://shopify/Product/15449436553601	CHF 16.52	40 Varianten	Weiten Stilvoller Damen-Hoodie
+gid://shopify/Product/15449436586369	CHF 14.37	8 Varianten	Damen V-Ausschnitt Sweatshirt 3D-Druck
