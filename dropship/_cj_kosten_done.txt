@@ -6328,3 +6328,5 @@ gid://shopify/Product/15449462047105	CHF 10.07	1 Varianten	Kurz Nagel-Tips mit G
 gid://shopify/Product/15449462112641	CHF 9.78	1 Varianten	Französische Katzenaugen-Nagelsticker
 gid://shopify/Product/15449462145409	CHF 10.48	1 Varianten	Nagel-Blush mit Strass & Cartoon-Muster
 gid://shopify/Product/15449462210945	CHF 10.89	1 Varianten	3D-Blumen Nagelaufkleber
+gid://shopify/Product/15449462243713	CHF 10.94	1 Varianten	Nagelsticker Weiss
+gid://shopify/Product/15449462276481	CHF 10.48	1 Varianten	Handgemalte Cherry-Nägel
