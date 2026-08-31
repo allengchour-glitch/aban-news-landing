@@ -4520,6 +4520,17 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🧭 Vier Startseiten-Kategorien fehlten im Menü (2026-08-31)
+Die neuen Reihen (Handy-Zubehör, Gaming, Auto & KFZ, Taschen) waren NUR über die Startseite
+erreichbar — im 100-Punkte-Hauptmenü fehlten alle vier. Ergänzt: Taschen & Rucksäcke unter
+«Damen» (nach Schuhe), die drei anderen unter «Mehr & Sale» (nach «Technik & Auto»).
+- `menuUpdate` ersetzt den GANZEN Baum (Lehre 22.08.): erst alle 3 Ebenen MIT ids gelesen,
+  neue Punkte als `type:HTTP` eingefügt, danach nachgezählt **100 → 104** und alle vier
+  Ziele in den Live-URLs verifiziert.
+- Judge.me-Sterne auf Produktkarten (alter Wunsch 02.06.) geprüft: Horizon hat KEIN
+  Rating-Setting im settings_schema — ginge nur per Karten-Snippet-Chirurgie, bewusst
+  gelassen (Badge auf der Produktseite zeigt die Sterne).
+
 ## ❄️ 225 weitere Kollektionen aufgetaut + Gadgets zeigten die teuerste Leiche zuerst (2026-08-31)
 Fortsetzung der 29.08.-Messung (BEST_SELLING bei 7 Bestellungen = zufaellig stabile Ordnung):
 Von 355 veroeffentlichten Kollektionen standen noch **225 auf BEST_SELLING** — alle jetzt per
