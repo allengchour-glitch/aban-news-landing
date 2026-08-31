@@ -81,6 +81,40 @@ def hochladen(datei, beschreibung):
     return letzte if letzte.startswith("https://") else None
 
 
+# Die Queue liegt zusaetzlich als CDN-Datei fuer den STANDALONE-PC-Poster (31.08.2026):
+# Der PC hat kein Repo (privat, raw-URLs = 404) und holt sie von dieser festen Adresse.
+# fileUpdate auf die BESTEHENDE GenericFile-ID haelt die URL stabil — ein fileCreate
+# wuerde `tiktok_queue_1.json` anlegen und die im Poster verdrahtete Adresse brechen.
+QUEUE_FILE_GID = "gid://shopify/GenericFile/70740852375937"
+
+
+def queue_aufs_cdn(pfad):
+    st = gql('mutation($i:[StagedUploadInput!]!){stagedUploadsCreate(input:$i){'
+             'stagedTargets{url resourceUrl parameters{name value}} userErrors{message}}}',
+             {"i": [{"resource": "FILE", "filename": "tiktok_queue.json",
+                     "mimeType": "application/json", "httpMethod": "POST",
+                     "fileSize": str(os.path.getsize(pfad))}]})
+    # ⚠️ gql() gibt die VOLLE Antwort zurueck (mit "data"-Huelle), nicht data selbst.
+    t = ((st.get("data") or {}).get("stagedUploadsCreate") or {}).get("stagedTargets") or []
+    if not t:
+        print("⚠️ Queue-CDN: stagedUploadsCreate leer — CDN-Kopie bleibt alt."); return
+    cmd = ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", t[0]["url"]]
+    for p in t[0]["parameters"]:
+        cmd += ["-F", f"{p['name']}={p['value']}"]
+    cmd += ["-F", f"file=@{pfad};type=application/json"]
+    rc = subprocess.run(cmd, capture_output=True, text=True).stdout.strip()
+    if rc not in ("200", "201", "204"):
+        print(f"⚠️ Queue-CDN: Staging-Upload HTTP {rc} — CDN-Kopie bleibt alt."); return
+    r = gql('mutation($f:[FileUpdateInput!]!){fileUpdate(files:$f){'
+            'files{... on GenericFile{url}} userErrors{message}}}',
+            {"f": [{"id": QUEUE_FILE_GID, "originalSource": t[0]["resourceUrl"]}]})
+    fu = (r.get("data") or {}).get("fileUpdate") or {}
+    if fu.get("userErrors"):
+        print("⚠️ Queue-CDN: fileUpdate:", fu["userErrors"])
+    else:
+        print("Queue-CDN aktualisiert:", (fu.get("files") or [{}])[0].get("url", "?"))
+
+
 def aktiv(handle):
     d = gql('query($q:String!){products(first:1,query:$q){nodes{status onlineStoreUrl}}}',
             {"q": f"handle:{handle}"})
@@ -230,10 +264,12 @@ def main():
         f.write("\n".join(aus) + "\n")
     # Dieselben Daten maschinenlesbar — Quelle fuer den PC-Autoposter.
     # ⚠️ Der Autoposter liest NUR diese Datei; wer die Regeln aendert, aendert sie HIER.
-    with open(os.path.join(ROOT, "dropship", "tiktok_queue.json"), "w") as f:
+    qpfad = os.path.join(ROOT, "dropship", "tiktok_queue.json")
+    with open(qpfad, "w") as f:
         json.dump({"stand": __import__('datetime').date.today().isoformat(),
                    "profil_hat_link": bool(_link),
                    "beitraege": queue}, f, ensure_ascii=False, indent=1)
+    queue_aufs_cdn(qpfad)
     print(f"FERTIG: {len(proSlug)} Beiträge im Auftrag, {gesperrt} gesperrt "
           f"→ {os.path.relpath(AUFTRAG, ROOT)} + dropship/tiktok_queue.json")
 

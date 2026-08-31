@@ -4520,6 +4520,32 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 📵 TikToks Absage ist GRUNDSÄTZLICH — und der PC-Poster braucht jetzt kein Git mehr (2026-08-31)
+Der Betreiber zeigte das Entwicklerportal: Die App «luxe» ist nach 13 Tagen Review **abgelehnt** —
+wörtlich *«App will not be approved for personal or company internal use … Not acceptable: Display
+posts from the TikTok account(s) you or your team manage»*. Das ist keine Formalie, die eine
+Nachbesserung heilt: **TikTok genehmigt die Content-Posting-API kategorisch nicht fürs Posten auf
+die EIGENEN Konten.** Die neue Draft-App «LuxeStyle Publisher» mit demselben Zweck einzureichen
+würde an derselben Wand enden — davon ist abzuraten, und den App-Zweck anders darzustellen als er
+ist, kommt nicht in Frage. Der API-Weg ist damit ZU, nicht «in Review».
+**Der einzige automatische Weg ist der PC-Browser-Poster — und der scheiterte am privaten Repo:**
+Der Einrichtungsbefehl des Betreibers bekam 404, weil raw.githubusercontent bei privaten Repos
+(und Branch-Namen mit `/`) nichts liefert. Deshalb STANDALONE-Paket ohne Git, alles vom
+Shopify-CDN (`automation/local/luxestyle-tt-post.mjs` + `luxestyle-tt-setup.ps1`, Kopien auf dem
+CDN, EIN Einfüge-Befehl → `dropship/TIKTOK-AUTO-SETUP.md`): eigener Ordner `%USERPROFILE%\LuxeStyleTT`,
+Queue+Musik+Skript vom CDN, winget-Installationen, Bot-Browser-Profil, schtasks 17:28/17:31.
+- **Die Queue bleibt frisch ohne Git:** `tiktok_cowork_auftrag.py` lädt sie nach jedem Lauf per
+  **`fileUpdate` auf die BESTEHENDE GenericFile-ID** aufs CDN — nur so bleibt die im Poster
+  verdrahtete URL stabil. ⚠️ Ein `fileCreate` mit gleichem Namen legt still `…_1.json` an und
+  bricht jede verdrahtete Adresse. End-zu-End belegt: Lauf → CDN-Abruf zeigt den Tagesstand.
+- ⚠️ **Zum zweiten Mal am selben Tag in dieselbe Falle:** `gql()` in `tiktok_cowork_auftrag.py`
+  gibt die VOLLE Antwort zurück (mit `data`-Hülle), mein neuer Code las `st["stagedUploadsCreate"]`
+  → leer, «CDN-Kopie bleibt alt». **Vor dem ersten Zugriff auf einen fremden Helfer seine
+  Rückgabeform LESEN** — jede Datei hat hier ihre eigene.
+- ⚠️ **ROTIEREN (Betreiber):** Beide TikTok-App-Secrets standen in Screenshots im Chat («luxe»
+  UND «LuxeStyle Publisher») — im Portal neu erzeugen, sobald entschieden ist, was mit den Apps
+  geschieht. Die abgelehnte App kann weg.
+
 ## 📉 Merchant-Export «Over capacity for Shopping ads» abgearbeitet (2026-08-31)
 Betreiber lud den «Needs attention»-Export hoch: 762 Varianten = 105 Produkte, **alle mit
 0 Klicks** (Spalte `all clicks`). Die Meldung betrifft NUR das Ziel Shopping ads (bezahlt) —
