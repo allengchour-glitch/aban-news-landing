@@ -4542,6 +4542,13 @@ Queue+Musik+Skript vom CDN, winget-Installationen, Bot-Browser-Profil, schtasks 
   gibt die VOLLE Antwort zurück (mit `data`-Hülle), mein neuer Code las `st["stagedUploadsCreate"]`
   → leer, «CDN-Kopie bleibt alt». **Vor dem ersten Zugriff auf einen fremden Helfer seine
   Rückgabeform LESEN** — jede Datei hat hier ihre eigene.
+- **Die Kette läuft jetzt OHNE den Betreiber, dreischichtig:** (1) Cloud baut täglich Material
+  und lädt die geprüfte Queue aufs CDN (Aufseher), (2) PC postet täglich 17:31 selbst
+  (schtasks, lokales Ledger = 1/Tag + nie derselbe Slug), (3) Cloud-Wächter
+  `tiktok_post_kontrolle.py` (täglich, MELDET NUR) liest den öffentlichen `videoCount` des
+  Profils: 3 erfasste Tage unverändert BEI freier Queue → Bericht TIKTOK-POST-KONTROLLE.md
+  mit den vier üblichen Ursachen (PC aus, Browser abgemeldet, STOPP.txt, log.txt). Netzfehler
+  ist kein Befund; ins Upload-Ledger schreibt er NIE (welcher Slug raus ist, weiss nur der PC).
 - ⚠️ **ROTIEREN (Betreiber):** Beide TikTok-App-Secrets standen in Screenshots im Chat («luxe»
   UND «LuxeStyle Publisher») — im Portal neu erzeugen, sobald entschieden ist, was mit den Apps
   geschieht. Die abgelehnte App kann weg.
