@@ -367,6 +367,17 @@ while true; do
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
+  # BESTSELLER-ROTATION, einmal täglich (Betreiber 31.08.: «bestseller immernoch die gleichen
+  # produkten»): mischt die MANUAL-Kollektion `bestseller` mit Datums-Seed — die Startseiten-
+  # Reihe zeigt so jeden Tag eine andere Auswahl der 18 Bewertungssieger. Idempotent je Tag.
+  BR=/tmp/bestseller_rotation.log
+  if [ -f "$REPO/automation/bestseller_rotation.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/bestseller_rotation.py >> "$BR" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bestseller_rotation gestartet"
+    fi
+  fi
   # IG-DUPLIKAT-WACHE, einmal täglich (User 18.08.: «poste nie mehr das gleiche»): ein
   # externer Planer re-postet die alte Queue ~alle 12 Tage; bis die Quelle gefunden ist,
   # löscht die Wache jeden neuen Doppelpost (ältester bleibt, nie >10 Likes).

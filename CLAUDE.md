@@ -4520,6 +4520,26 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🎠 Drei Handy-Befunde des Betreibers an einem Abend (2026-08-31, «ohne chatfenster / karusell wie vorher / bestseller gleich»)
+1. **Hero-«Chatfenster»:** Die zwei Textblöcke trugen `background:True` (#00000073) — auf dem
+   Handy sahen sie aus wie Chat-Blasen. Boxen aus, dafür `toggle_overlay:True` (der dunkle
+   Verlauf lag fertig konfiguriert da und war AUS — Text ohne Box braucht den Overlay, das
+   Hero-Bild ist hell).
+2. **«Shop nach Kategorie» wieder als Bild-Kacheln:** Mein Text-Raster vom Vormittag (Zähler,
+   aber keine Bilder) hat dem Betreiber nicht gefallen — `collection_list_hREdj9` ist zurück
+   auf native `collection-list`-Bauart (Struktur aus `theme_backup/index.json.ch-lager-26-08`
+   kopiert, cl_trends-Vorlage): 16 Kollektionen MIT Kollektionsbild, `carousel_on_mobile:true`.
+   ⚠️ `blitzversand-schweiz` hatte als einzige KEIN Bild (Kachel = Ladefehler-Optik, Lehre
+   27.08.) → Samt-Handtasche aus den kuratierten CH-Highlights zugeschnitten (montierten
+   Detail-Kreis erst weggeschnitten/weiss gefüllt — Bild ANSEHEN vor dem Setzen) und per
+   `collectionUpdate(image:)` gesetzt.
+3. **Bestseller-Rotation:** Die Reihe hängt an der MANUAL-Kollektion `bestseller` (18 aktive
+   Bewertungssieger) und zeigte ewig dieselben ersten 12. Neu `automation/bestseller_rotation.py`
+   (täglich im Aufseher): mischt die AKTIVEN mit Datums-Seed (`zlib.crc32`, nie `hash()`),
+   Entwürfe ans Ende, `collectionReorderProducts`. Idempotent je Tag; entfernt/draftet nichts.
+   Live belegt: Reihe zeigt die neue Ordnung.
+- Backup: `theme_backup/index.json.karussell-hero-31-08`.
+
 ## 📱 Der Mobile-Hero trug noch die Textreste-Fassung — und zwei Trust-Zeilen übertrieben (2026-08-31)
 Betreiber-Screenshot vom Handy: Hinter dem Hero-Overlay standen eingebrannte Reste («eStyle»,
 «die du…nnst») — der Desktop war seit dem Morgen auf dem sauberen `clean-v10`, **Mobile hing
