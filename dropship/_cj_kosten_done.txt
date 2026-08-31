@@ -6296,3 +6296,22 @@ gid://shopify/Product/15449460113793	CHF 9.70	1 Varianten	12-farbige Augen-Schat
 gid://shopify/Product/15449460179329	CHF 22.52	1 Varianten	Vierfarbige Lace-Augen-Schatten-Palette
 gid://shopify/Product/15449460277633	CHF 7.66	1 Varianten	Glitter Augen-Schatten
 gid://shopify/Product/15449460310401	CHF 16.82	1 Varianten	Sechsfarben Augen-Schatten-Palette
+gid://shopify/Product/15449460343169	CHF 24.72	1 Varianten	177-Farben Make-up Set
+gid://shopify/Product/15449460375937	CHF 8.78	1 Varianten	8-farbige Flüssig-Augen-Schatten
+gid://shopify/Product/15449460408705	CHF 7.45	1 Varianten	6-farbiger Eyeliner-Stift
+gid://shopify/Product/15449460474241	CHF 19.78	1 Varianten	Lippenstift Set Flower Goddess
+gid://shopify/Product/15449461096833	CHF 9.32	1 Varianten	Falsche Wimpern, selbstklebend, natürlich gewellt
+gid://shopify/Product/15449461129601	CHF 7.64	1 Varianten	Magnetische Wimpern
+gid://shopify/Product/15449461195137	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449461227905	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449461260673	CHF 90.79	1 Varianten	Nagelfeile mit Akku – Lautlos
+gid://shopify/Product/15449461293441	CHF 9.68	1 Varianten	Transparente Nagel-Tips
+gid://shopify/Product/15449461358977	CHF 15.38	1 Varianten	Künstliche Zehennägel zum Aufkleben
+gid://shopify/Product/15449461391745	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449461424513	CHF 10.80	1 Varianten	Falsche Nägel, abnehmbar
+gid://shopify/Product/15449461457281	CHF 8.90	1 Varianten	Falsche Nägel mit Blumenmotiv
+gid://shopify/Product/15449461490049	CHF 17.65	1 Varianten	Französische Nagel-Tips, extra lang, C-Curve
+gid://shopify/Product/15449461522817	CHF 7.21	4 Varianten	Katzenaugen-Maniküre
+gid://shopify/Product/15449461588353	CHF 6.90	1 Varianten	Blumen-Muster Nagel-Design
+gid://shopify/Product/15449461621121	CHF 7.85	1 Varianten	3D-Nageldesign Rot
+gid://shopify/Product/15449461653889	CHF 18.44	1 Varianten	Falsche Nägel zum Aufkleben
