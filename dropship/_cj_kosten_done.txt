@@ -5976,3 +5976,88 @@ gid://shopify/Product/15449427640705	CHF 25.32	76 Varianten	2-in-1 Katzen- & Hun
 gid://shopify/Product/15449427706241	CHF 14.11	3 Varianten	Selbstabpressender Mini-Bodenreiniger Multifunktio
 gid://shopify/Product/15449427739009	CHF 6.73	24 Varianten	Tierhaar-Entferner Bürste
 gid://shopify/Product/15449427771777	CHF 16.57	10 Varianten	EMS Thermal Halsheber mit Mikrostrom
+gid://shopify/Product/15449427837313	CHF 13.75	57 Varianten	Vakuum-Cupping-Massage mit Fettverbrennung & Anti-
+gid://shopify/Product/15449427902849	CHF 14.86	18 Varianten	Faltbare LED-Nachtlichtlampe, Berührungsempfindlic
+gid://shopify/Product/15449427935617	CHF 33.52	4 Varianten	Bauchrad für Fitness
+gid://shopify/Product/15449427968385	CHF 21.32	1 Varianten	3-in-1 Gemüsehobel mit Scharfen Messern
+gid://shopify/Product/15449428033921	CHF 5.95	39 Varianten	Lippenglanzstift
+gid://shopify/Product/15449428066689	CHF 7.72	4 Varianten	Blaues Licht für reine Haut
+gid://shopify/Product/15449428164993	CHF 5.81	3 Varianten	Zweischichtige Liebeskette mit Glitzersteinen – Va
+gid://shopify/Product/15449428197761	CHF 31.49	2 Varianten	Riesen Augen- und Wangen-Makeup-Palette
+gid://shopify/Product/15449428230529	CHF 14.96	2 Varianten	USB LED-Tischlampe mit Berührungskontrolle
+gid://shopify/Product/15449428263297	CHF 6.02	18 Varianten	2in1 Bildschirmreiniger-Set für Handy/PC
+gid://shopify/Product/15449428296065	CHF 12.54	1 Varianten	Wasserfeste Matte Lippenstifte 10er-Pack Hält läng
+gid://shopify/Product/15449428328833	CHF 14.70	24 Varianten	2-in-1-Haarepilator für den ganzen Körper
+gid://shopify/Product/15449428394369	CHF 5.95	13 Varianten	Reinigungsset für Kopfhörer und Tastaturen
+gid://shopify/Product/15449428427137	CHF 6.10	10 Varianten	Silikon-Kabelrollenhalter für USB & Headset
+gid://shopify/Product/15449428492673	CHF 20.79	2 Varianten	Gaming-Headset mit LED-Licht & Tiefbass für PS4/PC
+gid://shopify/Product/15449428525441	CHF 6.84	40 Varianten	Bluetooth-Verlustobjektfinder
+gid://shopify/Product/15449428558209	CHF 8.95	12 Varianten	Salat- und Gemüsehacker mit Sicherheitsverschluss
+gid://shopify/Product/15449428623745	CHF 11.12	6 Varianten	Multifunktionaler Küchenhahn mit 3-in-1-Auslauf
+gid://shopify/Product/15449428656513	CHF 9.74	35 Varianten	Drehbare Schale
+gid://shopify/Product/15449428689281	CHF 12.01	10 Varianten	Tiertasche für unterwegs
+gid://shopify/Product/15449428722049	CHF 7.41	3 Varianten	Makeup-Schwamm-Set mit 7 Formen
+gid://shopify/Product/15449428754817	CHF 13.27	7 Varianten	Kaffeetasse Warmhalteplatte
+gid://shopify/Product/15449428787585	CHF 29.59	14 Varianten	6-Blätter-Portabler-Shaker-Mixer
+gid://shopify/Product/15449428885889	CHF 11.54	99 Varianten	Personalisierbarer Zugfreier Reflektierender Hunde
+gid://shopify/Product/15449428951425	CHF 9.55	6 Varianten	Drahtlose Gaming-Maus, stumm und ergonomisch
+gid://shopify/Product/15449428984193	CHF 14.17	6 Varianten	Mini-Blenderrührer mit USB-Ladung
+gid://shopify/Product/15449429016961	CHF 15.99	7 Varianten	Lederhandtasche mit mehreren Fächern
+gid://shopify/Product/15449429049729	CHF 15.54	64 Varianten	Rückenmassagegerät 10 Magnetpunkte 96 Nadeln
+gid://shopify/Product/15449429115265	CHF 22.38	7 Varianten	Elektrische Fussfeile mit Massagefunktion
+gid://shopify/Product/15449429148033	CHF 26.43	63 Varianten	Heizjacke Herren mit 9 Heizzonen – ideal für Skifa
+gid://shopify/Product/15449429180801	CHF 11.17	26 Varianten	Mini Magnetisches Powerbank für schnelles Laden
+gid://shopify/Product/15449429246337	CHF 8.47	37 Varianten	Elektrisches Haarentfernungsgerät
+gid://shopify/Product/15449429279105	CHF 14.50	14 Varianten	Nano-Kohlenstoff-Rückenstabilisator
+gid://shopify/Product/15449429311873	CHF 12.91	4 Varianten	Herren-Mechanik Uhr
+gid://shopify/Product/15449429377409	CHF 9.38	13 Varianten	Automatischer Türschliesser ohne Bohren für Schieb
+gid://shopify/Product/15449429410177	CHF 41.44	3 Varianten	3-in-1 Wireless Charger & Bluetooth Speaker mit To
+gid://shopify/Product/15449429442945	CHF 7.44	3 Varianten	Reinigungspen für Ohrstöpsel & Tastaturen
+gid://shopify/Product/15449429508481	CHF 12.65	1 Varianten	24-teiliges Profi-Bürsten-Set für Grundierung, Rou
+gid://shopify/Product/15449429541249	CHF 15.48	3 Varianten	2in1 Olivenöl-Sprühflasche mit Automatikverschluss
+gid://shopify/Product/15449429574017	CHF 19.44	12 Varianten	Tragbares Katzennest
+gid://shopify/Product/15449429639553	CHF 32.61	9 Varianten	Hundesitzschutz mit Sichtfenstern
+gid://shopify/Product/15449429705089	CHF 22.97	8 Varianten	Faltbares Baby-Bett-Netz mit Kissen 2er Set
+gid://shopify/Product/15449429737857	CHF 11.55	16 Varianten	Sommerkleid ohne Ärmel und Rückenteil – für Party 
+gid://shopify/Product/15449429836161	CHF 6.24	9 Varianten	Mini-Elektrikrasierer portabel & aufladbar
+gid://shopify/Product/15449429868929	CHF 14.25	15 Varianten	Verstellbarer Rückenmassage-Unterstützer für Schme
+gid://shopify/Product/15449429934465	CHF 5.58	25 Varianten	LED-Nachtlicht-Pilz mit Sensor (EU/US Stecker)
+gid://shopify/Product/15449429967233	CHF 20.32	25 Varianten	Multifunktions-Hängesäckli für Auto
+gid://shopify/Product/15449430000001	CHF 12.91	28 Varianten	Rückenstrecker Kissen
+gid://shopify/Product/15449430065537	CHF 7.85	3 Varianten	2-in-1 Badebürste für Haustier
+gid://shopify/Product/15449430098305	CHF 8.41	5 Varianten	Virtuelle Laser-Tastatur mit Mausfunktion
+gid://shopify/Product/15449430131073	CHF 11.34	70 Varianten	Paarweise Hausschuhe
+gid://shopify/Product/15449430196609	CHF 12.91	13 Varianten	Rutschfester Wasser-Spielmatte für Kinder & Hunde
+gid://shopify/Product/15449430229377	CHF 20.70	2 Varianten	Portabler USB-Becher-Mixer
+gid://shopify/Product/15449430262145	CHF 13.05	20 Varianten	Hai-Pantinen mit Abfluss
+gid://shopify/Product/15449430360449	CHF 11.27	49 Varianten	Magnetische Ladesteckdose für iPhone & Android Typ
+gid://shopify/Product/15449430393217	CHF 26.26	3 Varianten	Leise Anti-Gravitations-Nebelbefeuchter mit Aroma
+gid://shopify/Product/15449430425985	CHF 20.90	8 Varianten	Holz-Pilz Nachtlicht mit Touch-Schalter
+gid://shopify/Product/15449430524289	CHF 23.45	5 Varianten	Magnetische Bausteine für Kids
+gid://shopify/Product/15449430557057	CHF 7.51	6 Varianten	Farbwechselnde Lippenpflege mit Aloe Vera
+gid://shopify/Product/15449430589825	CHF 20.03	2 Varianten	30000 mAh Powerbank mit LCD-Display
+gid://shopify/Product/15449430655361	CHF 32.24	2 Varianten	Antigravitations-Nebel-Feuchter 580ml
+gid://shopify/Product/15449430688129	CHF 9.64	12 Varianten	Baby-Overall mit Rüschen
+gid://shopify/Product/15449430720897	CHF 43.59	9 Varianten	Babysitz Toilettenstuhl
+gid://shopify/Product/15449430753665	CHF 46.89	43 Varianten	Rückenmassage-Stretcher
+gid://shopify/Product/15449430819201	CHF 30.22	53 Varianten	Kristallkugel-Nachtlicht mit Dino-Motiv
+gid://shopify/Product/15449430851969	CHF 21.37	1 Varianten	3-in-1 Magnetische Falt-Ladestation
+gid://shopify/Product/15449430917505	CHF 11.58	11 Varianten	Clear Lip Plumper Oil mit Volumen & Pflege
+gid://shopify/Product/15449430950273	CHF 8.06	10 Varianten	Katzen- & Hunde-Bett – Atmungsaktiv & Reisebereit
+gid://shopify/Product/15449431015809	CHF 17.26	3 Varianten	Steckdosen-Organizer mit Kabelbox & Telefonfach
+gid://shopify/Product/15449431048577	CHF 14.78	34 Varianten	Mini-Dampfbügel für unterwegs
+gid://shopify/Product/15449431081345	CHF 11.78	9 Varianten	Satin-Partykleid, rückenfrei, V-Ausschnitt, Mini
+gid://shopify/Product/15449431114113	CHF 7.47	4 Varianten	Knotenlöser für Haare
+gid://shopify/Product/15449431146881	CHF 10.32	26 Varianten	Drehbare Rosen-Schmuckbox
+gid://shopify/Product/15449431212417	CHF 14.12	38 Varianten	Motivierende Wasserflasche mit Zeitmarken, 1L, lec
+gid://shopify/Product/15449431277953	CHF 10.73	7 Varianten	Interaktives Katzenspielzeug mit Fernbedienung
+gid://shopify/Product/15449431343489	CHF 17.21	3 Varianten	Portabler USB-Blender mit automatischem Saftbecher
+gid://shopify/Product/15449431376257	CHF 19.91	18 Varianten	Atmungsaktive Sportschuhe für Herren
+gid://shopify/Product/15449431441793	CHF 7.39	16 Varianten	Fitness-Yoga-Shorts mit Lift-Effekt
+gid://shopify/Product/15449431474561	CHF 11.28	3 Varianten	2-in-1 Badebürste mit Massage für Hunde & Katzen
+gid://shopify/Product/15449431507329	CHF 9.13	52 Varianten	Plaid-Fitnesshose mit hoher Taille und atmungsakti
+gid://shopify/Product/15449431540097	CHF 11.29	25 Varianten	Kühlendes Pet-Bett für Sommer
+gid://shopify/Product/15449431572865	CHF 17.22	23 Varianten	Trinkbrunnen für Haustiere
+gid://shopify/Product/15449431605633	CHF 14.73	1 Varianten	Tablethalterung für iPad & Co. – Anpassbarer Halte
+gid://shopify/Product/15449431638401	CHF 20.41	3 Varianten	Nasenreiniger mit Saugfunktion
+gid://shopify/Product/15449431703937	CHF 6.85	1 Varianten	Wasserfester Eyeliner Stift
