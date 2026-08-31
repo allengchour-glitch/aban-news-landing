@@ -6315,3 +6315,9 @@ gid://shopify/Product/15449461522817	CHF 7.21	4 Varianten	Katzenaugen-Maniküre
 gid://shopify/Product/15449461588353	CHF 6.90	1 Varianten	Blumen-Muster Nagel-Design
 gid://shopify/Product/15449461621121	CHF 7.85	1 Varianten	3D-Nageldesign Rot
 gid://shopify/Product/15449461653889	CHF 18.44	1 Varianten	Falsche Nägel zum Aufkleben
+gid://shopify/Product/15449461686657	CHF 7.21	1 Varianten	Nagel-Design Set Sternenhimmel
+gid://shopify/Product/15449461752193	CHF 10.96	1 Varianten	3D-Nagel-Tipps mit Blumenmotiv
+gid://shopify/Product/15449461784961	CHF 7.37	1 Varianten	Französische Nagelsticker
+gid://shopify/Product/15449461817729	CHF 6.99	1 Varianten	Aurora Nagel-Tipps mit Blumenmotiv
+gid://shopify/Product/15449461850497	CHF 14.01	1 Varianten	Iridiszierendes Transluzentes Diamantkleber Set
+gid://shopify/Product/15449461883265	CHF 6.88	1 Varianten	Französisches Nageldesign mit Leopardenmuster
