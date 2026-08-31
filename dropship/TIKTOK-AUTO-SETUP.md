@@ -8,7 +8,7 @@ jetzt **kein Git mehr**: alles kommt vom Shopify-CDN.
 ## Einrichtung: EIN Einfüge-Befehl (PowerShell)
 
 ```powershell
-iwr https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-tt-setup.ps1 -OutFile "$env:TEMP\lx-tt.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\lx-tt.ps1"
+iwr "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-tt-setup.ps1?v=$(Get-Random)" -OutFile "$env:TEMP\lx-tt.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\lx-tt.ps1"
 ```
 
 Das Setup legt `%USERPROFILE%\LuxeStyleTT` an, lädt Poster-Skript, Marken-Musik und Queue
@@ -28,6 +28,22 @@ Anmeldung als @luxestyle.ch**. Das ist der einzige Handgriff.
 4. Lädt über tiktok.com/tiktokstudio/upload hoch, ersetzt die Dateinamen-Caption durch
    die geprüfte Caption, klickt Posten, macht 3 Beweis-Screenshots nach `beweise\`.
 5. Ledger `tiktok_done.txt`: **höchstens 1 Post pro Kalendertag**, nie derselbe Slug zweimal.
+
+## «Jetzt posten» auf Zuruf (Cloud → PC, 31.08.)
+
+Sagt der Betreiber der Cloud-Session «poste jetzt», ruft sie
+`python3 automation/tiktok_jetzt.py [slug]` auf. Das schreibt einen Befehl nach
+`tiktok_befehl.json` auf dem CDN (fileUpdate, stabile URL); der PC prüft alle
+10 Minuten (`befehl.cmd` → `luxestyle-tt-check.mjs`), startet bei Bedarf den
+Bot-Browser selbst und postet sofort. Bremsen: `SOFORT=1` hebt NUR die
+1/Tag-Regel, nie die Slug-Dedup; je Befehl max. 3 Anläufe; ein Befehl älter als
+6 h verfällt (PC war aus). `befehl.cmd` lädt Check- und Poster-Skript vor jedem
+Lauf frisch vom CDN — Verbesserungen kommen ohne Zutun des Betreibers an.
+
+⚠️ **CDN-Cache-Regel (gemessen 31.08.):** Shopifys CDN cached die Basis-URL mit
+max-age ~1 Jahr und IGNORIERT unbekannte Parameter wie `?t=` beim Cache-Key —
+nur ein neues **`?v=`** erzwingt frischen Inhalt. Jeder Poller/Downloader hier
+nutzt deshalb `?v=<zufall>`.
 
 ## Bremsen & Bedienung
 
