@@ -6324,3 +6324,7 @@ gid://shopify/Product/15449461883265	CHF 6.88	1 Varianten	Französisches Nagelde
 gid://shopify/Product/15449461948801	CHF 7.69	1 Varianten	Weinroter Schmetterlings-Nagelaufkleber
 gid://shopify/Product/15449461981569	CHF 6.88	1 Varianten	3D-Aufkleber «Miniaturwelten» · 6 Motive für Journ
 gid://shopify/Product/15449462014337	CHF 7.53	1 Varianten	Nagelverstärkungspaste
+gid://shopify/Product/15449462047105	CHF 10.07	1 Varianten	Kurz Nagel-Tips mit Glas-Perlen
+gid://shopify/Product/15449462112641	CHF 9.78	1 Varianten	Französische Katzenaugen-Nagelsticker
+gid://shopify/Product/15449462145409	CHF 10.48	1 Varianten	Nagel-Blush mit Strass & Cartoon-Muster
+gid://shopify/Product/15449462210945	CHF 10.89	1 Varianten	3D-Blumen Nagelaufkleber
