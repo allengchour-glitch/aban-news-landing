@@ -6061,3 +6061,42 @@ gid://shopify/Product/15449431572865	CHF 17.22	23 Varianten	Trinkbrunnen für Ha
 gid://shopify/Product/15449431605633	CHF 14.73	1 Varianten	Tablethalterung für iPad & Co. – Anpassbarer Halte
 gid://shopify/Product/15449431638401	CHF 20.41	3 Varianten	Nasenreiniger mit Saugfunktion
 gid://shopify/Product/15449431703937	CHF 6.85	1 Varianten	Wasserfester Eyeliner Stift
+gid://shopify/Product/15449431769473	CHF 18.25	2 Varianten	Automatischer Wasserspender
+gid://shopify/Product/15449431835009	CHF 15.10	5 Varianten	Domino-Zug-Bauspielzeug für Babys
+gid://shopify/Product/15449431867777	CHF 29.55	2 Varianten	3in1 Nachttischlampe
+gid://shopify/Product/15449431900545	CHF 15.39	3 Varianten	USB-Neck-Fan ohne Schlitze, tragbar
+gid://shopify/Product/15449431933313	CHF 19.13	3 Varianten	Baby-Tragetasche mit Sitz
+gid://shopify/Product/15449431966081	CHF 78.47	11 Varianten	Air Fryer mit Touch-Bedienung
+gid://shopify/Product/15449431998849	CHF 6.29	11 Varianten	Herzförmige Kleeblatt-Halskette
+gid://shopify/Product/15449432064385	CHF 10.70	19 Varianten	Sonnenuntergang-Projektionslampe mit 4 Lichtmodi u
+gid://shopify/Product/15449432097153	CHF 9.31	9 Varianten	Reise-Cosmetic-Tasche multifunktional gross
+gid://shopify/Product/15449432162689	CHF 12.07	7 Varianten	Mini Fotodrucker
+gid://shopify/Product/15449432195457	CHF 13.14	13 Varianten	Intelligente Katzenkugel
+gid://shopify/Product/15449432228225	CHF 10.50	40 Varianten	Mini-Transparente Bluetooth-Ohrhörer mit Ladebox –
+gid://shopify/Product/15449432260993	CHF 10.53	7 Varianten	Multifunktionaler Babysitz
+gid://shopify/Product/15449432326529	CHF 11.89	3 Varianten	Portabler Luftreiniger mit Negativionen-Generator 
+gid://shopify/Product/15449432359297	CHF 7.97	1 Varianten	Porenreiniger 120ml
+gid://shopify/Product/15449432424833	CHF 9.67	4 Varianten	Faltbare Doppeltasse für Haustiere
+gid://shopify/Product/15449432457601	CHF 11.64	4 Varianten	Smartwatch mit Gesundheitsüberwachung
+gid://shopify/Product/15449432490369	CHF 19.62	30 Varianten	Neugeborenensäuglingsanzug Reisvelvet Winter/Herbs
+gid://shopify/Product/15449432555905	CHF 14.39	31 Varianten	EMS-Bauch- und Muskel-Trainer
+gid://shopify/Product/15449432588673	CHF 8.06	17 Varianten	Miniatur-Shaver für präzises Rasieren
+gid://shopify/Product/15449432621441	CHF 26.94	3 Varianten	Sternenprojektor für Kinderzimmer
+gid://shopify/Product/15449432686977	CHF 10.53	4 Varianten	Haarpflege-Essenz
+gid://shopify/Product/15449432719745	CHF 10.19	2 Varianten	Luxus-Quarzarmbanduhr für Damen
+gid://shopify/Product/15449432752513	CHF 12.65	2 Varianten	USB-Kühl- und Nebelventilator mit 3 Stufen
+gid://shopify/Product/15449432818049	CHF 10.09	13 Varianten	Ohrenreiniger mit Kamera und LED-Licht
+gid://shopify/Product/15449432850817	CHF 42.91	39 Varianten	Faltbarer Wärmekuschel-Platz für Hunde & Katzen
+gid://shopify/Product/15449432883585	CHF 27.54	6 Varianten	Küchenreibe mit Kupferbeschichtung Set
+gid://shopify/Product/15449432916353	CHF 14.66	1 Varianten	Kürbis-Strichbürste für Hunde & Katzen – Selbstrei
+gid://shopify/Product/15449432981889	CHF 15.60	1 Varianten	Wimpernlift-Kit
+gid://shopify/Product/15449433014657	CHF 75.12	7 Varianten	HD-Lace Haarperücke aus echtem Haar
+gid://shopify/Product/15449433080193	CHF 15.78	2 Varianten	Luftreiniger mit Feuchtigkeitsspender
+gid://shopify/Product/15449433112961	CHF 13.00	6 Varianten	Kerzenlicht-Aromadiffuser
+gid://shopify/Product/15449433145729	CHF 7.91	31 Varianten	Augenbrauen-Stempel-Kit wasserfest & natürlich
+gid://shopify/Product/15449433178497	CHF 15.24	7 Varianten	Dinosaurier-Hundespielzeug für grosse Hunde
+gid://shopify/Product/15449433211265	CHF 7.53	93 Varianten	Magnetischer Anti-Schiel-Schutz-Case mit Privatsph
+gid://shopify/Product/15449433244033	CHF 19.42	6 Varianten	Fitness-Band für Körperstraffung
+gid://shopify/Product/15449433309569	CHF 7.96	16 Varianten	3D-Lichtmalpad mit 8 Effekten
+gid://shopify/Product/15449433342337	CHF 6.50	8 Varianten	Ergonomischer Mausarmlehnen-Schutz aus Silikongel
+gid://shopify/Product/15449433375105	CHF 8.93	45 Varianten	Yoga-Hosen mit Taschen
