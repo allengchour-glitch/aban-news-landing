@@ -4520,6 +4520,28 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🔌 Kleinteile-Kategorie + Paar-Produkte mit «leeren» Karten repariert (2026-08-31)
+Drei Betreiber-Wünsche in einem Zug:
+1. **«kleinteile elektronik und so»** → neue Smart-Kollektion `elektronik-kleinteile`
+   «Elektronik-Zubehör & Kleinteile» (878 aktive): ODER-Regeln TITLE CONTAINS auf 11 geprüfte
+   Wörter (Adapter, Ladegerät, Ladestation, Ladekabel, USB-Kabel, Powerbank, Netzteil,
+   Batterie, Steckdose, Kabelbinder, Speicherkarte). **`Akku` bewusst NICHT als Regel** —
+   träfe Akku-Staubsauger/-Schrauber (Substring-Familie). Mitgliederliste nach dem Anlegen
+   GELESEN (20 Titel, 0 Fremdtreffer). Menü «Mehr & Sale» → 106 Punkte.
+   ⚠️ Freetext-Zählungen (`status:active AND Ladekabel` = 540) treffen auch BESCHREIBUNGEN
+   (Projektor mit beigelegtem Kabel) — für TITLE-Regeln nur Titel-Stichproben als Beleg.
+2. **Screenshot «wo sind leere nur?»** → die 4 Partner-Shirts + 4 Tassen-Sets hatten je EIN
+   Breitbild 1884×1080 (beide Artikel nebeneinander). Die Hochformat-Karte schnitt das Design
+   ab, und die zweite Kartenansicht zeigte die leere Bildhälfte. Fix: Breitbild in zwei
+   Hochformat-Hälften geschnitten, als Medien 1+2 vorangestellt (productCreateMedia +
+   productReorderMedia), Original bleibt als drittes. Alle 8 am Objekt gegengeprüft.
+   **Regel: Ein Breitbild mit zwei Produkten ist auf einer Hochformat-Karte IMMER kaputt.**
+3. **«Jetzt dein Unikat gestalten → grösser oder unten schon der shop direkt»** → BEIDES:
+   grosser Gold-Knopf (statt Textlink; Ziel /collections/selbst-gestalten statt sg-alle) UND
+   neues Seiten-Template `page.selbst-gestalten.json` (main + product-list der
+   Gestalten-Kollektion, 12 Karten) — der Shop steht jetzt direkt auf der Editor-Seite.
+   templateSuffix per pageUpdate gesetzt. Live: Knopf + 19 Produktlinks auf der Seite.
+
 ## 🎭 Neue Kategorie «Kostüme ab Schweizer Lager» — 2'030 Artikel, Saison-Timing (2026-08-31)
 Betreiber: «mache noch 1 kategorie irgendwas schweizer lager und so». Die grösste ungenutzte
 CH-Warengruppe sind die Fortura-Kostüme (2'030 aktive, productType «Kostüme & Verkleidung» +
