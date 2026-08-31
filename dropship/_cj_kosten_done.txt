@@ -6429,3 +6429,21 @@ gid://shopify/Product/15449466896769	CHF 14.38	1 Varianten	Widerstandsbänder f�
 gid://shopify/Product/15449466929537	CHF 11.98	1 Varianten	Wärme-Taille-Gürtel für Sport
 gid://shopify/Product/15449467060609	CHF 15.93	1 Varianten	Atmungstrainer für die Lunge
 gid://shopify/Product/15449467158913	CHF 29.77	1 Varianten	Armmuskulatur-Trainingsband mit Edelstahlkette und
+gid://shopify/Product/15449465356673	CHF 16.00	1 Varianten	Rost- und Fleckenentferner
+gid://shopify/Product/15449466241409	CHF 24.83	1 Varianten	5-teiliges Dreieckregal
+gid://shopify/Product/15449467289985	CHF 34.00	1 Varianten	Silikon-Kugel 1.5kg für Fitness
+gid://shopify/Product/15449467322753	CHF 35.89	1 Varianten	Fitness-Push-up-Gerät
+gid://shopify/Product/15449467355521	CHF 20.55	1 Varianten	Multifunktionales Pedal-Widerstandsband
+gid://shopify/Product/15449467388289	CHF 35.44	1 Varianten	Balance-Board für Core-Training
+gid://shopify/Product/15449467421057	CHF 23.70	1 Varianten	Fitness-Widerstandsbänder
+gid://shopify/Product/15449467453825	CHF 37.07	1 Varianten	Widerstandsbänder für Fitness
+gid://shopify/Product/15449467519361	CHF 29.57	1 Varianten	Kabelose Trainingsseile
+gid://shopify/Product/15449467552129	CHF 32.78	1 Varianten	Spring-Coil-Trainingsseil
+gid://shopify/Product/15449467617665	CHF 59.09	1 Varianten	Armkraft-Trainer
+gid://shopify/Product/15449467650433	CHF 11.81	1 Varianten	Gewichtheben-Handschuhe mit Leder
+gid://shopify/Product/15449467683201	CHF 67.14	1 Varianten	Fitness-Turm mit Dip-Station und Pull-Up-Bar
+gid://shopify/Product/15449467715969	CHF 105.49	1 Varianten	Hanteln mit Chrom-Griff
+gid://shopify/Product/15449467814273	CHF 31.53	1 Varianten	Widerstandsbänder Set für Fitness
+gid://shopify/Product/15449467879809	CHF 24.13	1 Varianten	Fitness-Armband mit Gewichten
+gid://shopify/Product/15449467912577	CHF 12.56	1 Varianten	Yoga-Block-Set für Erwachsene und Kinder
+gid://shopify/Product/15449467945345	cj-abgekuendigt-pruefen
