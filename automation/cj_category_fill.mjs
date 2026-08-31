@@ -307,7 +307,10 @@ const GROUPS={
    type:'Basteln & DIY', tags:['basteln','diy','handarbeit','kreativ','hobby','cj-real','dropship'], kat:'Basteln, Handarbeit & DIY (Diamond Painting, Sticken, Nähen)',
    ban:/wholesale|\bsample\b|disney|marvel|frozen|spider|barbie|pokemon/i, minImg:3, minP:2, maxP:50},
  cjspielelektronik:{cats:[['6614840A-DB50-4FBB-80FD-705F4FD59BFA','Electronic Pets'],['AEABDF3C-35E9-4BDA-8F5B-DA602BC5B9C8','RC Helicopters'],['835F7743-8432-4D0F-90F0-E76C89F7C5B7','Blocks'],['2F6CCFAA-853F-41EF-8B91-24028A333948','Handheld Game Players']],
-   type:'Spass-Elektronik', tags:['spielzeug','elektronik','gadgets','rc','kinder','cj-real','dropship'], kat:'Günstige Spass-Elektronik & RC-Spielzeug',
+   // 31.08.2026: 'elektronik' entfernt — 390 Klemmbaustein-Spielzeuge fluteten die Kategorie
+   // «Elektronik & Technik» (TAG=elektronik) und deren Startseiten-Reihe. Spielzeug gehoert
+   // in spielzeug/spass-elektronik, nie in die Technik-Kategorie.
+   type:'Spass-Elektronik', tags:['spielzeug','gadgets','rc','kinder','cj-real','dropship'], kat:'Günstige Spass-Elektronik & RC-Spielzeug',
    ban:/wholesale|\bsample\b|disney|marvel|frozen|spider|barbie|pokemon|nintendo|gun|weapon/i, minImg:3, minP:2, maxP:45},
  cj3d:{cats:[['C7365895-913A-4078-9946-681EFD45D2B8','3D Printers'],['D8BBE038-9ECD-4698-8CB1-DE63E27F33C7','3D Pens'],['874B7C94-D225-43FE-AB79-FFAF1B800651','Printer Supplies']],
    type:'3D-Druck', tags:['3d-druck','3d-drucker','filament','tech','cj-real','dropship'], kat:'3D-Druck, 3D-Stifte & Filament',

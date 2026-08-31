@@ -4520,6 +4520,29 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🧸 918 Spielzeuge fluteten «Elektronik & Technik» — der Blanko-Tag der Spielzeug-Gruppe (2026-08-31)
+Beim Suchen eines Kachel-Bilds fiel auf: Die BESTSELLER der Kollektion `elektronik-technik`
+(Regel `TAG=elektronik`) waren **Klemmbausteine, Spielküchen und Modell-Bausätze** — und weil
+die Kollektion CREATED_DESC steht, standen sie auch vorn in der Startseiten-Reihe. Ursache:
+Die CJ-Gruppe **cjspielelektronik** hängte `elektronik` BLANKO an jedes Produkt (Blocks,
+Electronic Pets, RC, Game Players). **918 aktive Spielzeuge** trugen den Tag.
+- **Quelle:** `elektronik` aus der Gruppen-Tagliste gestrichen (cj_category_fill.mjs) —
+  Spielzeug behält spielzeug/gadgets/rc/kinder und bleibt über `spielzeug`- und
+  `spass-elektronik`-Regeln (tag rc, TITLE) voll erreichbar; `drohnen-kameras` hängt an
+  TITLE-Regeln — nichts verwaist.
+- **Bestand:** `automation/elektronik_tag_spielzeug.py` in drei Fassungen — (1) Titel-Muster
+  «baustein» fing 337, (2) +«bausatz/modell» weitere 200, (3) die harte Schranke war am Ende
+  **productType='Spass-Elektronik'** (plus Dreifach-Tags in der Suche): +381. Ein
+  Titel-Muster ist bei einer GRUPPEN-Fehlklasse das falsche Sieb — das Gruppenmerkmal selbst
+  (productType) ist die Trennlinie. Ledger `_elektronik_tag_spielzeug.txt` (918).
+- Gegenprobe: Dreifach-Kombi-Zähler 0; die Kollektion zeigt wieder Projektoren statt
+  Spielküchen. ⚠️ Kinder-Drohnen/Tablets («Spass-Elektronik») sind BEWUSST mit raus — für
+  Technik-Käufer sind sie Spielzeug, und sie bleiben in Spielzeug/Spass-Elektronik/Drohnen.
+- Nebenbei: Kachel-Bilder ersetzt — Elektronik (leeres Regal→3-in-1-Ladestation), Parfum
+  (Totenkopf-Flakon→«Dreamy» auf Marmor); `lux_spotlight_video` trug noch «ohne Wenn und
+  Aber» → «auf fast alles» (drittes Vorkommen an einem Tag); Spotlight-Favoriten-Preise/
+  Bewertungen gegen live geprüft: alle korrekt.
+
 ## 🖼️ Kontaktbogen über Trend- + Bestseller-Reihe: 5 Erstbilder getauscht, 1 Produkt raus (2026-08-31)
 Auf «weiter» die 38 sichtbarsten Karten der Startseite angesehen (Kontaktbogen, dann je
 Bildsatz einzeln — nie blind, Lehre 21.08.):
