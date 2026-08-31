@@ -4520,6 +4520,22 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🛋️ Wohnen nach oben, drei frische Karusselle — durch TAUSCH, nicht Anbau (2026-08-31)
+Betreiber: «wohnen oder auch andere tolle produkte auch auf startseite mit karusell». Beide
+Deckel (25 Sektionen, 180 Karten) waren voll — also getauscht statt angebaut:
+- **`pl_wohnen` von Position 19 auf 9** (direkt hinter Damen-Mode) — die Reihe existierte
+  längst, nur sah sie fast niemand.
+- Drei schwache 8er-Reihen auf grosse Kategorien umgehängt, die noch KEINE Reihe hatten:
+  hoodies-sweatshirts→**sub-taschen** (3'317 aktiv) · spass-elektronik→**uhren** (1'597) ·
+  eu-lager-schnell→**beauty-pflege** (3'918). Alle drei Ziel-Kollektionen CREATED_DESC —
+  die Reihen frischen sich selbst auf. Überschriften ziehen automatisch mit
+  (`{{ closest.collection.title }}`).
+- ⚠️ Meine erste Gegenprobe meldete drei Reihen als «fehlt»: Ich suchte `<h3>Taschen &amp;
+  Rucksäcke</h3>`, das Theme liefert das `&` aber ROH aus. **Ein Suchwort muss in der
+  Schreibweise des Ziels stehen** — dritte Fassung; erst die echten h3-Formen listen, dann
+  vergleichen. Danach alle Reihen belegt, 12/12 Abrufe 200.
+- Backup: `theme_backup/index.json.reihen-tausch-31-08`.
+
 ## 🎠 «Mehr Produkte im Karussell» — Budget verschoben statt Deckel gesprengt (2026-08-31)
 Betreiber: «kann man karusell mehr produkten machen». Die Startseite stand mit 15 Reihen × 12
 = **exakt 180 Karten auf der gemessenen Stabilitätsgrenze** (240 → Renderer kippt, Lehre vom
