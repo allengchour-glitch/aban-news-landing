@@ -4520,6 +4520,19 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 📱 Handy-Feinschliff: USP-Wischstreifen + letzte Grid-Reihe (2026-08-31)
+Betreiber: «verbessere handy version». Systematisch die Mobil-Einstellungen vermessen statt
+geraten: Alle 15 Produktreihen einheitlich (2 Spalten, 60cqw, Karussell) — bis auf zwei Funde:
+- **`product_list_L3EDnA` (Auto & KFZ) hatte als einzige `carousel_on_mobile:False`** → auf dem
+  Handy ein hoher Karten-Stapel statt Wischreihe. Auf True.
+- **Der Vertrauensblock `lux_usp` stapelte mobil ~3 Zeilen** (5 Badges à flex 160px) direkt
+  unter dem Hero. Jetzt Klasse `lx-usp-strip` + Media-Query ≤749px: nowrap, overflow-x,
+  je Badge min-width 138px → EIN wischbarer Streifen. Desktop unverändert.
+- Geprüft und für gut befunden: Filter-Chips + Menü-Chips auf Kollektionsseiten sind bereits
+  horizontal wischbar (overflow-x + width:max-content); Sticky-Add-to-Cart existiert im Theme
+  (`.sticky-add-to-cart__bar`); Hype-Reihe bleibt bewusst 1-spaltig gross (12.08.).
+- Backup: `theme_backup/index.json.mobil-31-08`.
+
 ## 🤖 «Einkaufen mit KI»-Chatblase entfernt — Microsofts Brand Agent steckte im Clarity-Embed (2026-08-31)
 Betreiber: «chatfenster weg bei pc version?». Die schwebende Pille «Einkaufen mit KI» stand in
 KEINEM Server-HTML — sie wird clientseitig injiziert. Quelle: App-Embed
