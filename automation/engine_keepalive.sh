@@ -301,6 +301,12 @@ for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
   QUELL="/tmp/$S.sh"
   [ -f "$REPO_AUTO/$S.sh" ] && QUELL="$REPO_AUTO/$S.sh"
   [ -f "$QUELL" ] || continue
+  # Solange der Betreiber-Stopp steht, wird der Social-Autopilot gar nicht erst gestartet:
+  # post_guard blockte ohnehin jeden Post, und der stuendliche «neu gestartet»-Eintrag
+  # uebertoente als Dauerrauschen echte Befunde (31.08.).
+  if [ "$S" = "social_autopilot" ] && [ -f "$REPO/dropship/_SOCIAL_STOPP" ]; then
+    continue
+  fi
   n=$(zaehle "$S.sh")
   if [ "$n" -eq 0 ]; then
     # ⚠️ VERWAISTE SPERRE LOESEN (29.08.2026). Diese Runner sichern sich mit `exec 9>lock` +
