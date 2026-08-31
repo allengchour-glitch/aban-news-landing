@@ -4520,6 +4520,20 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🎠 «Mehr Produkte im Karussell» — Budget verschoben statt Deckel gesprengt (2026-08-31)
+Betreiber: «kann man karusell mehr produkten machen». Die Startseite stand mit 15 Reihen × 12
+= **exakt 180 Karten auf der gemessenen Stabilitätsgrenze** (240 → Renderer kippt, Lehre vom
+selben Tag). Mehr geht nur durch UMVERTEILEN: fünf Hauptkarusselle auf das Schema-Maximum 16
+(topseller · neu-eingetroffen · damen-mode · elektronik · wohnen), fünf schwache Reihen auf 8
+(hoodies · spass-elektronik · eu-lager · komfort-im-alter · premium-geschenke) — Summe bleibt 180.
+- Gegenprobe doppelt: 12 Cache-Buster-Abrufe → 12× 200; und im ROHEN ausgelieferten HTML je
+  Sektion die `/products/`-Links gezählt: 5× 16, 2× 8. (Die WebFetch-Zählung davor meldete «8»
+  — bei einer 6,9-MB-Seite kürzt die Markdown-Umwandlung; **auf grossen Seiten zählt man am
+  Roh-HTML, nicht am WebFetch-Auszug**.)
+- ⚠️ Unsere IP lieferte an diesem Abend zeitweise eine 9-KB-Challenge-Seite und später wieder
+  echtes HTML — vor jedem Roh-HTML-Schluss erst die Bytezahl prüfen.
+- Backup: `theme_backup/index.json.karussell16-31-08`.
+
 ## 🎠 Drei Handy-Befunde des Betreibers an einem Abend (2026-08-31, «ohne chatfenster / karusell wie vorher / bestseller gleich»)
 1. **Hero-«Chatfenster»:** Die zwei Textblöcke trugen `background:True` (#00000073) — auf dem
    Handy sahen sie aus wie Chat-Blasen. Boxen aus, dafür `toggle_overlay:True` (der dunkle
