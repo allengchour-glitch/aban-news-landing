@@ -13800,3 +13800,4 @@ gid://shopify/Product/15521256014209	39->2	Tiefe Servierplatte aus Steinzeug mit
 gid://shopify/Product/15521256276353	22->0	M24 Micro Mini LED Projektor
 gid://shopify/Product/15521256604033	53->0	Sternenlicht-Projektor für Schlafzimmer
 gid://shopify/Product/15521256669569	62->0	Eafengrow Outdoor-Campingmesser, Haushalt
+gid://shopify/Product/15521257718145	15->0	IPL-Haarentfernungsgerät für Körper & Gesicht
