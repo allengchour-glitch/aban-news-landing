@@ -4549,6 +4549,17 @@ Queue+Musik+Skript vom CDN, winget-Installationen, Bot-Browser-Profil, schtasks 
   Profils: 3 erfasste Tage unverändert BEI freier Queue → Bericht TIKTOK-POST-KONTROLLE.md
   mit den vier üblichen Ursachen (PC aus, Browser abgemeldet, STOPP.txt, log.txt). Netzfehler
   ist kein Befund; ins Upload-Ledger schreibt er NIE (welcher Slug raus ist, weiss nur der PC).
+- **«Jetzt posten» auf Zuruf (Betreiber 31.08.):** `automation/tiktok_jetzt.py [slug]` schreibt
+  einen Befehl per fileUpdate nach `tiktok_befehl.json` (CDN, stabile URL); der PC pollt alle
+  10 Min (`befehl.cmd` → `luxestyle-tt-check.mjs`, laedt sich vorher selbst frisch vom CDN),
+  startet den Bot-Browser bei Bedarf selbst und postet sofort. `SOFORT=1` hebt NUR die
+  1/Tag-Bremse, nie die Slug-Dedup; max. 3 Anlaeufe je Befehl, Verfall nach 6 h. Das Werkzeug
+  laeuft NUR auf Zuruf, nie im Aufseher.
+- ⚠️ **Shopifys CDN ignoriert `?t=` beim Cache-Key — nur `?v=` bustet** (gemessen: Basis-URL
+  und `?t=…` liefern denselben `age`-Zaehler bei max-age ~1 Jahr; ein neues `?v=` holt frisch).
+  Mein `?t=Date.now()`-Cache-Buster war wirkungslos und haette den PC irgendwann ewig eine
+  alte Queue lesen lassen — alle Poller/Downloader nutzen jetzt `?v=<zufall>`. **Ein
+  Cache-Buster ist erst einer, wenn man gemessen hat, dass er bustet.**
 - ⚠️ **ROTIEREN (Betreiber):** Beide TikTok-App-Secrets standen in Screenshots im Chat («luxe»
   UND «LuxeStyle Publisher») — im Portal neu erzeugen, sobald entschieden ist, was mit den Apps
   geschieht. Die abgelehnte App kann weg.

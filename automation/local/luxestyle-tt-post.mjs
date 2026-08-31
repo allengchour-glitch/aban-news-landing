@@ -23,18 +23,22 @@ const BEWEIS = path.join(DIR, 'beweise');
 const QUEUE_URL = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tiktok_queue.json';
 const DRY = process.env.DRY === '1';
 const ONLY = process.env.ONLY || '';
+// SOFORT=1: ausdruecklicher «jetzt posten»-Befehl des Betreibers (kommt ueber
+// tiktok_befehl.json + luxestyle-tt-check.mjs) — nur DANN darf die 1/Tag-Bremse
+// fallen. Die Slug-Dedup-Bremse (nie derselbe Beitrag zweimal) faellt NIE.
+const SOFORT = process.env.SOFORT === '1';
 
 const heute = new Date().toISOString().slice(0, 10);
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
 if (fs.existsSync(STOPP)) { log('STOPP.txt gesetzt — nichts wird gepostet.'); process.exit(0); }
 const ledger = fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8') : '';
-if (ledger.includes(heute)) { log(`Heute (${heute}) wurde schon gepostet — 1/Tag ist die Regel.`); process.exit(0); }
+if (ledger.includes(heute) && !SOFORT) { log(`Heute (${heute}) wurde schon gepostet — 1/Tag ist die Regel.`); process.exit(0); }
 
 // Queue frisch vom CDN — die Cloud haelt sie aktuell (Preise/ACTIVE gegengeprueft).
 // Faellt der Download aus, gilt die lokale Kopie: lieber gestern geprueft als gar nicht.
 try {
-  const r = await fetch(QUEUE_URL + '?t=' + Date.now());
+  const r = await fetch(QUEUE_URL + '?v=' + Date.now() /* ?t= wird vom Shopify-CDN fuer den Cache-Key IGNORIERT (gemessen 31.08.) — nur ?v= bustet */);
   if (r.ok) { fs.writeFileSync(QUEUE, Buffer.from(await r.arrayBuffer())); log('Queue frisch vom CDN geladen.'); }
   else log('Queue-Download HTTP', r.status, '— nutze lokale Kopie.');
 } catch (e) { log('Queue-Download scheitert — nutze lokale Kopie.'); }
