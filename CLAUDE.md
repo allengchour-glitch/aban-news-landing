@@ -4520,6 +4520,23 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 📋 «Spezifikationen»-Tabelle auf jeder Produktseite — nur belegte Daten (2026-08-31)
+Betreiberwunsch (Screenshot Digitec-Stil): «mir fehlt die spezifikationen, wen das überall
+drinn wäre fände ich super». Neuer custom-liquid-Block `lux_spezifikationen` in
+`templates/product.json` (nach der Beschreibung, im `block_order` — ohne den Eintrag dort
+rendert Shopify den Block NIE, Hero-Lehre 29.08.). Rendert eine Tabelle ausschliesslich aus
+Feldern, die das Produkt WIRKLICH trägt; jede leere Zeile verschwindet per `{% if %}`:
+Kategorie (productType) · Marke (vendor, NUR wenn nicht luxestyle/cj/fortura/bigbuy/aban —
+Lieferanten-Leak-Regel) · jede echte Option mit Werten (Title ausgenommen, ab 15 Werten
+gekürzt «… (+N weitere)») · Material (`mm-google-shopping.material`, Bracket-Syntax wegen
+Bindestrich im Namespace) · Gewicht (`weight_with_unit`, nur > 0) · Zustand (condition=new).
+- Live an vier Formen gegengeprüft (WebFetch, nicht eigene IP): Kleid (Farbe+Grösse+900 g),
+  Einzelvarianten-Set (Kategorie/Gewicht/Zustand), Apple-Watch-Band (7 Farben × 4 Grössen),
+  Bellevue-Uhr (Marke: Bellevue erscheint, CJ-Vendors nie). Kein Lieferantencode sichtbar.
+- Bewusst NICHT drin: SKU (CJ-Präfix = Leak), Bewertung (Judge.me-Badge zeigt sie schon),
+  Versandzeile (eigener Block), google_product_category (englischer Pfad).
+- Backup: `theme_backup/product.json.vor-spezi-31-08`.
+
 ## 💥 26 Tages-Wächter stürzten am Token vorbei — und galten als «gelaufen» (2026-08-31)
 Nach dem /tmp-Wipe starteten die Tages-Wächter, BEVOR der Tresor das Shop-Token zurücklegte —
 26 von ihnen endeten mit «cj_shop_token.txt fehlt». **Der Aufseher prüft aber nur das ALTER des
