@@ -11039,3 +11039,16 @@ gid://shopify/Product/15505841226113	waage	Smarte Küchenwaage mit App-Anbindung
 gid://shopify/Product/15505875403137	schere	Rettungsschere mit feiner Zahnung
 gid://shopify/Product/15505973936513	rucksack	Kühlrucksack für Wein und Bier, 16L
 gid://shopify/Product/15505975607681	helm	Motorradhelm-Rucksack mit Carbon-Muster
+gid://shopify/Product/15506039767425	armband	Bohemian Kristallarmband für Damen
+gid://shopify/Product/15506040062337	armband	Glücksarmband mit Evil Eye Stickerei und Quaste
+gid://shopify/Product/15506040979841	rucksack	Fotorucksack Nylon für Outdoor & Freizeit
+gid://shopify/Product/15506065457537	armband	Verstellbares Sportarmband mit Botschaft
+gid://shopify/Product/15506066964865	rucksack	Oxford Outdoor Freizeitrucksack
+gid://shopify/Product/15506107793793	rucksack	Multifunktionaler Schulrucksack
+gid://shopify/Product/15506108580225	armband	Unisex Lederarmband mit Edelstahlschnalle
+gid://shopify/Product/15506109202817	matte	Anti-Schling Schnüffelmatte für Hunde & Katzen
+gid://shopify/Product/15506109464961	armband	Kupfer Magnetarmband mit Schmetterling
+gid://shopify/Product/15506109890945	armband	Kupfer-Magnetarmband mit Retro-Adler
+gid://shopify/Product/15506110185857	armband	Magnetisches Kupferarmband mit Zirkonia
+gid://shopify/Product/15506111037825	ring	Geometrischer Edelstahlring mit Textur
+gid://shopify/Product/15506138890625	ring	Zirkon-Tropfenring für Damen
