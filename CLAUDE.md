@@ -4520,6 +4520,21 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 💥 26 Tages-Wächter stürzten am Token vorbei — und galten als «gelaufen» (2026-08-31)
+Nach dem /tmp-Wipe starteten die Tages-Wächter, BEVOR der Tresor das Shop-Token zurücklegte —
+26 von ihnen endeten mit «cj_shop_token.txt fehlt». **Der Aufseher prüft aber nur das ALTER des
+Logs**: ein Crash-Log von heute sieht aus wie ein erledigter Lauf, alle 26 hätten erst morgen
+wieder versucht. Ein ganzer Tag Qualitätsprüfung wäre still ausgefallen — gefunden nur, weil die
+Berichte, die ich lesen wollte, mit demselben Traceback endeten.
+- **Regel: Ein Log-Zeitstempel ist eine Quittung, kein Nachweis** (dieselbe Familie wie die
+  Token-Datei vom 27.08.). Wer «heute schon gelaufen?» am Log misst, zählt auch den Absturz.
+- Behoben durch Umbenennen der 26 Crash-Logs (`*.log.crash-3008`) — fehlendes Log = fällig,
+  der Aufseher startet sie in seiner nächsten Runde mit gültigem Token selbst neu.
+- Nebenbei aus dem frischen Lücken-Bericht: das «Laniska Beinpflege-Pflaster» versprach,
+  «Beschwerden zu lindern» — Linderungsversprechen entfernt, Produkt bleibt (dieselbe Linie
+  wie bei den Blutzucker-Armbändern). Die 4 Küchen-Klingen-Zubehörteile im Bericht sind die
+  bekannte Betreiber-Entscheidung (COWORK-AUFTRAEGE 5), kein neuer Befund.
+
 ## Stand
 **📌 2026-07-10 (BigBuy-Bereinigung + Google-Feed + Katalog-Gesundheit — Branch `claude/luxestyle-status-tztnn1`):**
 - **BigBuy „vorsichtig" (User-Entscheidung):** Import DEAKTIVIERT (Flag `_bigbuy_import_disabled`, negative
