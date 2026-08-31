@@ -248,3 +248,4 @@ gid://shopify/Product/15516304441729	elegantes-business-midikleid-mit-ruschenarm
 gid://shopify/Product/15517968597377	reflektierende-hunde-leine-fur-kleine-bis-gros-227968	Reflektierende Hunde-Leine für kleine bis grosse Hunde
 gid://shopify/Product/15518560551297	bohemian-exotik-rock-im-resort-stil-632700	Bohemian Exotik-Rock im Resort-Stil
 gid://shopify/Product/15520411255169	laniska-beinpflege-pflaster-4-stk-600600	Laniska Beinpflege-Pflaster (4 Stk.)
+gid://shopify/Product/15521700020609	franzosische-sandalen-mit-blockabsatz-595584	Französische Sandalen mit Blockabsatz
