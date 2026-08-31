@@ -14402,7 +14402,26 @@ function loop(now){
         if(wa9.length)netSend({t:"wachs",a:wa9});}}}
     saveTick+=dt;if(saveTick>6){saveTick=0;saveGame();}
   }
-  if(!_lodBereit&&performance.now()>4000){lodAufbau();autoKollider();kolliderNachziehen();}
+  /* ⚠️ DER LOD-INDEX WURDE MITTEN IM NACHLADEN GEBAUT. lodAufbau() lief GENAU EINMAL,
+     bei 4 s — die beiden Bewohner-Modelle brauchen allein 12,8 s, dahinter kommen rund
+     95 kleine GLBs. Alles, was danach eintraf, stand nie im Index und blieb damit
+     FUER IMMER sichtbar, egal wie weit weg.
+     GEMESSEN (Handy-Format 844x390): 49'807 Meshes sind klein genug fuers LOD
+     (Radius <= 2,2 m), im Index standen 6'855. Rund 43'000 Kleinteile also ungedeckt —
+     und genau die kosten je einen Zeichenaufruf und einen Schritt in der Szenen-
+     Durchquerung, die three.js in JEDEM Bild macht. th-tempo sagt dazu: das reine
+     Rendern ist 4 % der Bildzeit, 96 % liegen davor.
+     Darum wird der Index nachgezogen, solange die Welt noch waechst. Als billiger
+     Wachstums-Anzeiger dient die Geometrie-Zahl des Renderers (monoton beim Laden) —
+     eine eigene Zaehl-Durchquerung waere so teuer wie der Neuaufbau selbst. */
+  if(!_lodBereit&&performance.now()>4000){lodAufbau();autoKollider();kolliderNachziehen();
+    window._lodGeo=renderer.info.memory.geometries;window._lodNeu=0;window._lodDann=performance.now()+5000;}
+  else if(_lodBereit&&window._lodNeu<8&&performance.now()>window._lodDann){
+    var _g9=renderer.info.memory.geometries;
+    /* Erst neu aufbauen, wenn wirklich etwas dazugekommen ist (2 % oder 20 Stueck). */
+    if(_g9>window._lodGeo*1.02+20){lodAufbau();window._lodGeo=_g9;window._lodNeu++;}
+    else window._lodNeu=8;                       /* stabil -> nicht mehr nachsehen */
+    window._lodDann=performance.now()+5000;}
   else if(_lodBereit&&(++_lodTick%8===0)){var _p=spielerPos();lodTakt(_p.x,_p.z);}
   /* 🔋 IM MENUE NICHT DIE GANZE WELT NEU ZEICHNEN. `.overlay` liegt mit
      rgba(...,.94)…(.97) ueber dem ganzen Bild — vom 3D-Hintergrund sind hoechstens
