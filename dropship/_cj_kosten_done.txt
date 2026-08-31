@@ -6686,3 +6686,10 @@ gid://shopify/Product/15449482690945	CHF 16.83	1 Varianten	Reise-Makeup-Spiegel 
 gid://shopify/Product/15449482822017	CHF 11.69	1 Varianten	Kompaktes LED-Makeup-Spiegelset
 gid://shopify/Product/15449482887553	CHF 333.22	1 Varianten	Ganzkörper-Spiegel
 gid://shopify/Product/15449482920321	CHF 10.50	1 Varianten	Einzelführleine für Hunde
+gid://shopify/Product/15449482953089	CHF 17.53	1 Varianten	Verstellbare Hundeleine
+gid://shopify/Product/15449482985857	CHF 12.86	1 Varianten	Gelbes Hundehalfter aus Polyesterfaser
+gid://shopify/Product/15449483018625	CHF 11.13	1 Varianten	Reflektierende Nacht Sicht Schutzweste
+gid://shopify/Product/15449483051393	CHF 25.19	1 Varianten	Verlängerte Leine
+gid://shopify/Product/15449483116929	CHF 19.62	1 Varianten	Langleine für grosse Hunde
+gid://shopify/Product/15449483149697	CHF 8.47	1 Varianten	Doppelring-Halsband für kleine Hunde
+gid://shopify/Product/15449483215233	CHF 17.77	1 Varianten	Hundeleine für Hände frei

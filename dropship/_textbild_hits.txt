@@ -13604,3 +13604,14 @@ gid://shopify/Product/15479636951425	13->2	Multifunktionale 12V USB Power Batter
 gid://shopify/Product/15479812489601	10->0	Herren Zehensteg-Sandalen
 gid://shopify/Product/15480276124033	26->0	HD Nachtsicht Smart Überwachungskamera
 gid://shopify/Product/15480410505601	20->0	Magnetischer 2-in-1 Bluetooth Lautsprecher
+gid://shopify/Product/15480411914625	84->2	Auto-Sitzkissen Winter
+gid://shopify/Product/15480460149121	67->0	4G Kinder Smartwatch mit GPS & Videoanruf
+gid://shopify/Product/15480460837249	88->0	Anti-Rutsch-Sitzkissen aus Seide
+gid://shopify/Product/15480485020033	10->0	SD zu PCMCIA Adapterkarte 32GB HC High Speed Class
+gid://shopify/Product/15480571724161	47->0	MP3-Player mit Diktiergerät und USB-Speicher
+gid://shopify/Product/15480835277185	32->0	Smart Stereo Bluetooth Sonnenbrille
+gid://shopify/Product/15481254936961	24->3	DT88 Smart-Armband
+gid://shopify/Product/15481256116609	21->1	Mi Band 5 Fitness-Tracker
+gid://shopify/Product/15481384599937	16->0	Grossmembran-Kondensatormikrofon für K-Song & Aufnahme
+gid://shopify/Product/15481681838465	15->3	Kabelloses Ansteckmikrofon für Mobilgeräte
+gid://shopify/Product/15481701040513	99->0	Bluetooth 5.3 Kopfhörer mit Stereo-Sound
