@@ -6330,3 +6330,13 @@ gid://shopify/Product/15449462145409	CHF 10.48	1 Varianten	Nagel-Blush mit Stras
 gid://shopify/Product/15449462210945	CHF 10.89	1 Varianten	3D-Blumen Nagelaufkleber
 gid://shopify/Product/15449462243713	CHF 10.94	1 Varianten	Nagelsticker Weiss
 gid://shopify/Product/15449462276481	CHF 10.48	1 Varianten	Handgemalte Cherry-Nägel
+gid://shopify/Product/15449462309249	CHF 22.68	1 Varianten	Hochwertige Nagelverstärkung
+gid://shopify/Product/15449462342017	CHF 10.48	1 Varianten	Kurz Nagel-Tips Weiss
+gid://shopify/Product/15449462374785	CHF 11.03	1 Varianten	Kurz, Katzenaugen-Form
+gid://shopify/Product/15449462407553	CHF 7.66	1 Varianten	Nagelsticker mit Katzenaugen-Effekt
+gid://shopify/Product/15449462473089	CHF 22.68	1 Varianten	Strawberry Rabbit Nagel-Set
+gid://shopify/Product/15449462505857	CHF 7.29	1 Varianten	Nagelsticker mit Gradient-Effekt
+gid://shopify/Product/15449462538625	CHF 10.48	1 Varianten	Kurze Sommer-Nagel-Tips
+gid://shopify/Product/15449462571393	CHF 10.48	1 Varianten	Wassermelonen-Nagelaufkleber
+gid://shopify/Product/15449462604161	CHF 11.70	1 Varianten	Romantische Nagel-Patches
+gid://shopify/Product/15449462669697	CHF 13.80	1 Varianten	Nagel-Schmuck-Set · 13-teilig
