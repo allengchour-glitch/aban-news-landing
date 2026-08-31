@@ -4520,6 +4520,24 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 📱 Der Mobile-Hero trug noch die Textreste-Fassung — und zwei Trust-Zeilen übertrieben (2026-08-31)
+Betreiber-Screenshot vom Handy: Hinter dem Hero-Overlay standen eingebrannte Reste («eStyle»,
+«die du…nnst») — der Desktop war seit dem Morgen auf dem sauberen `clean-v10`, **Mobile hing
+noch auf `editorial-mobil-v8`** (`image_1_mobile` ist ein EIGENES Feld; wer den Hero tauscht,
+tauscht beide). Jetzt `luxestyle-hero-clean-mobil-v11.jpg` (v10 minus 16-px-Randstreifen,
+fileCreate contentType:IMAGE → READY).
+- ⚠️ **WebFetch kann ein Mobile-Bild NICHT beweisen:** Es steckt im `srcset` eines
+  `<picture>`-Elements, und die Markdown-Umwandlung wirft Attribute weg — «kommt nicht vor»
+  war KEIN Befund (dieselbe Klasse wie der verworfene `<head>`). Beleg stattdessen dreiteilig:
+  Ursprung trägt v11, die Live-Seite liefert nachweislich die neue Fassung (Textmarker «auf
+  fast alles» sichtbar), und `sections/hero.liquid` rendert `image_1_mobile` deterministisch,
+  wenn `custom_mobile_media=True` und `media_type_1_mobile=image` — beide gesetzt.
+- Vertrauensblock (`lux_usp`): «30 Tage Rückgabe **ohne Wenn & Aber**» → «auf fast alles»
+  (die Richtlinie kennt Ausnahmen — dieselbe Überzusage-Klasse wie «bedingungslos», 28.08.);
+  «Kauf auf Rechnung / Klarna · TWINT · Karten» → «**mit Klarna** · TWINT · Karten»
+  (Rechnungskauf gibt es nur über Klarna, TWINT/Karten sind keine Rechnung).
+- Backup: `theme_backup/index.json.mobilhero-usp-31-08`.
+
 ## 📋 «Spezifikationen»-Tabelle auf jeder Produktseite — nur belegte Daten (2026-08-31)
 Betreiberwunsch (Screenshot Digitec-Stil): «mir fehlt die spezifikationen, wen das überall
 drinn wäre fände ich super». Neuer custom-liquid-Block `lux_spezifikationen` in
