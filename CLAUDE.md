@@ -4520,6 +4520,23 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🗂️ Sieben Kategorie-Texte beschrieben totes Sortiment — und siezten (2026-08-31)
+Auf «verbessere mehr alles» die Kategorie-Beschreibungen der Startseiten-Kategorien gegen den
+LIVE-Bestand gehalten. Befund: **Vier Texte bewarben Ware, die es nicht (mehr) gibt** —
+sub-kueche «Spülmaschinen 60cm/45cm, Kaffeemaschinen, Bügeleisen» (alles 0 aktiv, BigBuy-Klasse),
+gaming «Gaming Stuhl, Schreibtisch mit RGB, Festplatten» (0 — Sperrmöbel-Klasse),
+handy-zubehoer «GoPro Ladegeräte» (0), sub-haustier «über 1'200 geprüfte Produkte» (es sind
+3'134, und «geprüft» ist die 29.08.-Überzusage). Dazu: wohnen-dekoration zeigte **rohe
+Markdown-Sternchen** im Text, und sechs Kategorien SIEZTEN, während der ganze Shop duzt.
+- **Messfalle dabei:** `productsCount(query:"collection_id:X AND status:active AND <wort>")`
+  liefert für ALLES 0 — auch für «Ladekabel» bei 663 aktiven Handy-Artikeln. Der kombinierte
+  Filter schweigt (fünfte Fassung des stillen Shopify-Filters). Belastbar: erste 120 Produkte
+  der Kollektion holen und die TITEL lokal greppen — so kamen die echten Zahlen (49 Controller,
+  13 Tastaturen, 69 Ladegeräte, 38 Powerbanks, 2 Entsafter, 0 Spülmaschinen).
+- Alle 7 Texte neu: Du-Form, nur belegte Warengruppen, echte Zahlen («über 400/600/2'000/3'000/
+  7'000»), Haustier-Unterlinks vorher einzeln geprüft (487/354/304/180/124/42 aktive).
+  Live gegengeprüft am Roh-HTML (WebFetch war 429-gedrosselt).
+
 ## 💰 Printful-Margen erstmals GEMESSEN — und zwei Artikel brauchen 4–5 Wochen (2026-08-31)
 Betreiber: «printful preise anschauen + auf webseite schreiben wie lange es ca dauert». Alle
 27 synchronisierten POD-Produkte gegen Printful-Katalogpreis + echte CH-Versandquote gerechnet
