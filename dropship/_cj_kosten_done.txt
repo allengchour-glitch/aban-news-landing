@@ -6927,3 +6927,27 @@ gid://shopify/Product/15449499435393	CHF 13.51	81 Varianten	Lässige Damen-Hoodi
 gid://shopify/Product/15449499533697	CHF 14.45	28 Varianten	Frauengrünes Halloween Sweatshirt
 gid://shopify/Product/15449499566465	CHF 15.62	14 Varianten	Farbblock-Hoodie mit Patchwork-Design
 gid://shopify/Product/15449499697537	CHF 15.75	4 Varianten	Rosa Pullover mit Streifen
+gid://shopify/Product/15449499828609	CHF 11.05	8 Varianten	Polyester-Rock mit digitalem Print
+gid://shopify/Product/15449500516737	CHF 23.77	3 Varianten	Ripped Jeans Damen
+gid://shopify/Product/15449500615041	CHF 18.04	6 Varianten	Strechhose für mehr Figur und Länge
+gid://shopify/Product/15449500647809	CHF 33.04	6 Varianten	Retro Jeans mit Elaschanbund
+gid://shopify/Product/15449500680577	CHF 13.72	6 Varianten	Hohe schwarze Jeans
+gid://shopify/Product/15449500811649	CHF 21.81	4 Varianten	Lässige Damenjeans
+gid://shopify/Product/15449500909953	CHF 17.25	8 Varianten	Blau Jeans mit Spitze und Patchwork
+gid://shopify/Product/15449500975489	CHF 21.16	8 Varianten	Bügelhose mit Burger Stickerei
+gid://shopify/Product/15449501041025	CHF 20.67	6 Varianten	Leichte, dehnbare Jeans
+gid://shopify/Product/15449501204865	CHF 25.42	18 Varianten	Einfarbige Denim Jeans
+gid://shopify/Product/15449501303169	CHF 18.26	4 Varianten	Dunkelblaue Stretch-Hosen
+gid://shopify/Product/15449501368705	CHF 22.25	4 Varianten	Sterndruck-Weitenbein-Jeans, hochtailliert
+gid://shopify/Product/15449501467009	CHF 13.39	12 Varianten	Hohe, elastische Faux-Denim-Hosen
+gid://shopify/Product/15449501598081	CHF 18.31	5 Varianten	Gekräuselte Damenjeans mit Patch-Tasche
+gid://shopify/Product/15449501663617	CHF 14.38	7 Varianten	Damen Flared Wide-Leg Jeans
+gid://shopify/Product/15449501729153	CHF 20.64	5 Varianten	Lichtblaue Slim-Fit Jeans
+gid://shopify/Product/15449501794689	CHF 21.28	8 Varianten	Braune Denim-Overalls
+gid://shopify/Product/15449501860225	CHF 16.14	24 Varianten	Weisse Gerade Beine Jeans für Grössen
+gid://shopify/Product/15449501892993	CHF 15.56	10 Varianten	Weite, lässige Hosen
+gid://shopify/Product/15449501991297	CHF 38.95	4 Varianten	Gerade Jeans mit Blumenstickerei
+gid://shopify/Product/15449502056833	CHF 24.24	6 Varianten	Loose-Fit Damenhosen mit Kurzschnitt
+gid://shopify/Product/15449502220673	CHF 15.96	15 Varianten	Weite Damenjeans in Uni-Farben
+gid://shopify/Product/15449502318977	CHF 26.81	5 Varianten	Dunkelblaue Damenhose mit Knöpfen
+gid://shopify/Product/15449502351745	CHF 15.78	32 Varianten	Sleek Oberteil · Damen
