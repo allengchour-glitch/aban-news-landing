@@ -6923,3 +6923,7 @@ gid://shopify/Product/15449499074945	CHF 13.54	40 Varianten	Weihnachts-Pullover 
 gid://shopify/Product/15449499107713	CHF 11.76	70 Varianten	Weihnachtskatze Pullover
 gid://shopify/Product/15449499206017	CHF 16.53	4 Varianten	Weiblicher Unifarben Hoodie fuer Herbst/Winter
 gid://shopify/Product/15449499304321	CHF 16.84	10 Varianten	Lockere Damen-Hoodie mit Fleece-Futter
+gid://shopify/Product/15449499435393	CHF 13.51	81 Varianten	Lässige Damen-Hoodie
+gid://shopify/Product/15449499533697	CHF 14.45	28 Varianten	Frauengrünes Halloween Sweatshirt
+gid://shopify/Product/15449499566465	CHF 15.62	14 Varianten	Farbblock-Hoodie mit Patchwork-Design
+gid://shopify/Product/15449499697537	CHF 15.75	4 Varianten	Rosa Pullover mit Streifen
