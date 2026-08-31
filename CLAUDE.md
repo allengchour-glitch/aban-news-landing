@@ -4520,6 +4520,18 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🖼️ «bilder kleiner am pc» — ein Customizer-Override erstickte die eigene 5-Spalten-Regel (2026-08-31)
+Betreiber-Screenshot: riesige 4er-Karten auf Kollektionsseiten am Desktop. Befund in Schichten:
+`templates/collection.json` → `sections.main.custom_css` trug ein per Customizer gesetztes
+`grid-template-columns: repeat(4 …) !important` — und ÜBERSTIMMTE damit die längst vorhandene
+theme.liquid-Regel «luxGrid5» (5 Spalten, 14.08.). Dazu stand `product_card_size:'large'`.
+- Fix: custom_css-Override ENTFERNT (statt zu verdoppeln — eine Quelle, luxGrid5 gilt wieder)
+  + `product_card_size:'medium'`. Live: kein repeat(4) mehr, luxGrid5 aktiv → 5 kleinere
+  Karten am Desktop, Mobile unverändert (`mobile_product_card_size:'small'`).
+- **Lehre: `custom_css` einer Sektion wird von Shopify sektions-scoped gerendert und schlägt
+  Theme-CSS — wer Rastergrössen sucht, muss AUCH die custom_css-Felder der Templates lesen,
+  nicht nur Liquid/Settings.** Backup: `theme_backup/collection.json.cardsize-31-08`.
+
 ## 🔌 Kleinteile-Kategorie + Paar-Produkte mit «leeren» Karten repariert (2026-08-31)
 Drei Betreiber-Wünsche in einem Zug:
 1. **«kleinteile elektronik und so»** → neue Smart-Kollektion `elektronik-kleinteile`
