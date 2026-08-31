@@ -4520,6 +4520,20 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🚗 Auto-Zubehör-Reihe + Startseite 11 % leichter — der Lag war real (2026-08-31)
+Betreiber: «auto zubehör auch? die seite lagt oder nur bei mir». Der Lag ist NICHT nur bei ihm:
+6,72 MB HTML, und die Messung je Sektion zeigte, WO es sitzt — **die Produktreihen kosten je
+16er-Reihe ~570 KB, je Karte ~35 KB** (Karten-Galerie: 3 Bilder je Karte mit vollem srcset;
+lazy-loading ist aktiv, die Masse ist das HTML selbst).
+- **Abgespeckt:** die fünf 16er-Reihen zurück auf 12 → Kartensumme 160, Seite **6,72 → 6,01 MB**.
+- **Auto & KFZ-Zubehör (454 aktive)** per TAUSCH gegen die Geschenkideen-Reihe rein (kein
+  Zusatzgewicht); Kollektion vorher von BEST_SELLING (eingefroren bei 7 Bestellungen) auf
+  CREATED_DESC gestellt; die feste Überschrift «Geschenkideen» dabei auf
+  `{{ closest.collection.title }}` umgestellt — künftige Tausche brauchen keinen Textedit mehr.
+- ⚠️ Der nächste grosse Gewichts-Hebel wäre das Karten-Bild-Karussell (3 Bilder→1 je Karte,
+  ~40 % leichter) — das ist aber ein gewolltes Feature (User 24.07.). Betreiber-Entscheid.
+- Backup: `theme_backup/index.json.auto-abspecken-31-08`.
+
 ## 🗂️ Sieben Kategorie-Texte beschrieben totes Sortiment — und siezten (2026-08-31)
 Auf «verbessere mehr alles» die Kategorie-Beschreibungen der Startseiten-Kategorien gegen den
 LIVE-Bestand gehalten. Befund: **Vier Texte bewarben Ware, die es nicht (mehr) gibt** —
