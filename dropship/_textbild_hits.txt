@@ -13670,3 +13670,25 @@ gid://shopify/Product/15493861933441	94->1	DIY Digital Painting Set
 gid://shopify/Product/15493870616961	77->0	Lederarmband mit Schleifenschnalle für Apple Watch
 gid://shopify/Product/15493908103553	179->0	Digitales Malset: Leinwand zum Ausmalen
 gid://shopify/Product/15493908431233	17->0	Digitales Malen nach Zahlen: Eigenes Motiv
+gid://shopify/Product/15508415316353	34->0	Trinkbrunnen für Katzen und kleine Hunde
+gid://shopify/Product/15520381305217	60->0	Sandalen mit Kettendetail und Blockabsatz
+gid://shopify/Product/15520381337985	25->0	Sandalen mit Schleife und transparentem Riemen
+gid://shopify/Product/15520381763969	106->2	Stiletto-Sandalen mit spitzer Zehe
+gid://shopify/Product/15520382058881	16->1	Herren Freizeit-Sneaker mit dezenter Erhöhung
+gid://shopify/Product/15520382255489	18->0	Leder-Sneaker für Herbst und Winter
+gid://shopify/Product/15520382452097	92->3	Herren Outdoor Travel Winterschuhe
+gid://shopify/Product/15520382583169	13->0	Atmungsaktive High-Top Sneaker für Teens und Herren
+gid://shopify/Product/15520384057729	35->0	Faltbarer Gasbrenner aus Edelstahl für Outdoor
+gid://shopify/Product/15520384647553	40->0	Untergrund-Golddetektor
+gid://shopify/Product/15520388710785	16->0	3-in-1 Elektrisches Gesichtsreinigungsgerät
+gid://shopify/Product/15520389169537	11->0	Herren Tennis-Armband mit Zirkonia-Sternen
+gid://shopify/Product/15520389431681	133->0	Armband mit Zirkonia und Hufeisen-Schnalle
+gid://shopify/Product/15520389464449	26->0	Armband mit London Blautopas & 925er Silber
+gid://shopify/Product/15520389726593	88->1	Funkelndes Quasten-Armband mit Zirkon-Stern
+gid://shopify/Product/15520395886977	18->0	Leichter Rucksack mit USB-Ladeanschluss
+gid://shopify/Product/15520396181889	54->3	Casual Messenger Bag für Herren
+gid://shopify/Product/15520396280193	116->1	Geschmiedetes Ausbeinmesser mit Lederhülle
+gid://shopify/Product/15520396575105	21->1	Holz Mörser & Stössel für Knoblauch & Kräuter
+gid://shopify/Product/15520397164929	27->0	Nordischer Kissenbezug Leinen-Optik
+gid://shopify/Product/15520397427073	72->2	Boho Kissenbezug mit Quasten, handgetuftet
+gid://shopify/Product/15520398279041	34->0	Bibimbap Topfuntersetzer aus Holz
