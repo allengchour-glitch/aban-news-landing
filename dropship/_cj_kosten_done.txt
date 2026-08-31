@@ -6321,3 +6321,6 @@ gid://shopify/Product/15449461784961	CHF 7.37	1 Varianten	Französische Nagelsti
 gid://shopify/Product/15449461817729	CHF 6.99	1 Varianten	Aurora Nagel-Tipps mit Blumenmotiv
 gid://shopify/Product/15449461850497	CHF 14.01	1 Varianten	Iridiszierendes Transluzentes Diamantkleber Set
 gid://shopify/Product/15449461883265	CHF 6.88	1 Varianten	Französisches Nageldesign mit Leopardenmuster
+gid://shopify/Product/15449461948801	CHF 7.69	1 Varianten	Weinroter Schmetterlings-Nagelaufkleber
+gid://shopify/Product/15449461981569	CHF 6.88	1 Varianten	3D-Aufkleber «Miniaturwelten» · 6 Motive für Journ
+gid://shopify/Product/15449462014337	CHF 7.53	1 Varianten	Nagelverstärkungspaste
