@@ -6397,3 +6397,35 @@ gid://shopify/Product/15449465192833	CHF 13.63	1 Varianten	Kaffeemühle mit Kera
 gid://shopify/Product/15449465225601	CHF 19.88	1 Varianten	Edles Abtrockengitter aus Edelstahl
 gid://shopify/Product/15449465291137	CHF 32.79	1 Varianten	Holz Schneidbrett Akazie
 gid://shopify/Product/15449465323905	CHF 43.98	1 Varianten	Diatomeenerde Bodenmatte
+gid://shopify/Product/15449465389441	CHF 6.84	1 Varianten	Verstellbarer Beutelclip mit Magnet
+gid://shopify/Product/15449465520513	CHF 14.49	1 Varianten	Zahnaufhellungsstreifen für tägliche Pflege
+gid://shopify/Product/15449465684353	CHF 12.55	1 Varianten	Eleganter Stahl-Tuchhalter
+gid://shopify/Product/15449465717121	CHF 9.69	1 Varianten	Klebstoff-Entferner
+gid://shopify/Product/15449465749889	CHF 8.97	1 Varianten	Kleidungsreiniger
+gid://shopify/Product/15449465848193	CHF 9.36	1 Varianten	Reinigungs-Gel für Haushalt und Metall
+gid://shopify/Product/15449465913729	CHF 10.03	1 Varianten	Kristall-Lusterreiniger
+gid://shopify/Product/15449465979265	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449466012033	CHF 8.28	1 Varianten	WC-Reinigungstabletten
+gid://shopify/Product/15449466044801	CHF 27.13	1 Varianten	Petal-Shower-Gel mit Wolken-Fefoam
+gid://shopify/Product/15449466077569	CHF 28.04	1 Varianten	Intensive Shampoo für trockenes Haar
+gid://shopify/Product/15449466143105	CHF 34.96	1 Varianten	Kleiner Haartrockner für unterwegs
+gid://shopify/Product/15449466175873	CHF 20.86	1 Varianten	Badezimmer-Aufbewahrung mit Haken
+gid://shopify/Product/15449466208641	CHF 36.65	1 Varianten	Bad Sitzbank Alu
+gid://shopify/Product/15449466306945	CHF 14.52	1 Varianten	Badregal für Kosmetik
+gid://shopify/Product/15449466372481	CHF 19.34	1 Varianten	Badezimmer Bodenmatte rutschfest
+gid://shopify/Product/15449466405249	CHF 11.83	1 Varianten	Zahnbürsten-Desinfektor
+gid://shopify/Product/15449466438017	CHF 11.62	1 Varianten	Aluminium Fahrradlicht mit USB-Aufladung
+gid://shopify/Product/15449466470785	CHF 12.01	1 Varianten	Fahrradlicht mit Bremsassistent
+gid://shopify/Product/15449466503553	CHF 22.91	6 Varianten	Balance-Board für Yoga und Fitness
+gid://shopify/Product/15449466569089	CHF 13.24	1 Varianten	Widerstandsbänder für Bein- und Po-Training
+gid://shopify/Product/15449466634625	CHF 15.64	1 Varianten	Handmassagegerät fürs Handgelenk
+gid://shopify/Product/15449466667393	CHF 35.31	1 Varianten	Handgelenk-Stärker mit einstellbarem Widerstand
+gid://shopify/Product/15449466700161	CHF 14.88	1 Varianten	Box-Target für Kampfsport
+gid://shopify/Product/15449466732929	CHF 78.68	1 Varianten	Taille-Twist-Board
+gid://shopify/Product/15449466765697	CHF 10.05	1 Varianten	Bauchwärmer mit Massage
+gid://shopify/Product/15449466798465	CHF 11.14	1 Varianten	Widerstandsband-Set für Fitness
+gid://shopify/Product/15449466831233	CHF 11.09	1 Varianten	Taille-Trimmer-Gürtel für Fettverlust
+gid://shopify/Product/15449466896769	CHF 14.38	1 Varianten	Widerstandsbänder für Fitness und Yoga
+gid://shopify/Product/15449466929537	CHF 11.98	1 Varianten	Wärme-Taille-Gürtel für Sport
+gid://shopify/Product/15449467060609	CHF 15.93	1 Varianten	Atmungstrainer für die Lunge
+gid://shopify/Product/15449467158913	CHF 29.77	1 Varianten	Armmuskulatur-Trainingsband mit Edelstahlkette und
