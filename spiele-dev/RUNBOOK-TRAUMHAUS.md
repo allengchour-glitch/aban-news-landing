@@ -5965,3 +5965,42 @@ Jetzt beisst sie: gesund `[1.9, −0.1, −0.1, −0.1]`, sabotiert `[1.9, 1.8, 
 **Geprüft:** `th-rampen.mjs` 11/11, zwei Sabotagen (Rampe auf die Fahrbahn gesetzt → zwei
 Prüfungen rot; geteilte Abklingzeit → die Physik-Prüfung rot). Bestand grün: Smoke 0
 JS-Fehler, `th-reichweite` 10/10, `th-pruef`, `th-kadrierung` 6/6, `th-hud` alle 3 Formate.
+
+## 2026-08-31 · 🔁 Ich habe ein Werkzeug nachgebaut, das es schon gab — und es war schlechter
+
+**Was passiert ist.** Für die Frage „steht etwas auf der Fahrbahn?" habe ich
+`th-fahrbahn.mjs` gebaut, über vier Runden von 1827 auf 0 Treffer verfeinert und jede
+Lehre sorgfältig in den Kopf geschrieben. **`th-strassen.mjs` gab es bereits** — und es
+konnte alles davon besser:
+
+| | mein Nachbau | `th-strassen.mjs` (bestand schon) |
+|---|---|---|
+| Strassentypen | 2 (Haupt, Quer) | **8** (+ Ring, Zubringer, Landstrasse, Anschlüsse, Viertelstr.) |
+| Halbbreiten | 8 / 5 geraten aus `strasseMesh` | **8,05 / 5,05 / 4,5** aus der Bordstein-Geometrie |
+| Bandlängen | unbegrenzt | **endlich** (x ±102, z ±69, r 123…193) |
+| Bewegliches | nachträglich gelernt: `verkehr`, `fussg`, `_tiere` | von Anfang an: + `busRec`, `_landbus`, `npcs`, `sims`, `polizei` |
+| Sonderfall | — | Landstrasse ist **nur abschnittsweise gepflastert** (per Farbstrahl gemessen) |
+
+Jede meiner fünf „teuer gelernten" Lehren stand dort schon, gründlicher formuliert.
+
+**Die Folgekosten waren nicht nur Zeit.** Meine Filter (Höhe < 0,5 m raus, `bb.min.y` >
+2,5 m raus, Radius > 14 m raus) waren zu grob. Ich meldete **„0 Objekte auf der
+Fahrbahn"** — das etablierte Werkzeug findet auf den Hauptstrassen allein **23** und über
+alle Bänder **145**. Meine Null war keine Aussage über die Welt, sondern über meine Filter.
+
+**Was bleibt.** Die zwei Befunde, die ich behoben habe, waren echt und tief im Asphalt
+(Bushaltestelle 2,1 m, Fahrradständer 1,1 m) — beide tauchen in `th-strassen.mjs` nicht
+mehr auf. Der Nachbau ist gelöscht.
+
+> **Regel, bevor ein neues Werkzeug entsteht:**
+> `for f in spiele-dev/tools/th-*.mjs; do head -1 $f; done`
+> Sechzig Werkzeuge sind zu viele, um sie im Kopf zu haben — die Kopfzeile sagt in einem
+> Satz, was jedes kann. Ein Nachbau kostet nicht nur die Arbeit, er **widerspricht** dem
+> Original: zwei Werkzeuge zur selben Frage geben zwei Antworten, und die schwächere
+> klingt beruhigender.
+
+**Offen und bewusst nicht angefasst:** die 145 Treffer von `th-strassen.mjs`. Sein
+eigener Kopf warnt, dass nicht jeder ein Fehler ist (Tiere laufen über die Strasse, die
+Landstrasse ist streckenweise gar nicht gepflastert) und rät, „im Zweifel mit einem
+Querschnitt nachzusehen, bevor man etwas verschiebt". Das ist eine eigene Runde wert,
+keine Massenverschiebung.
