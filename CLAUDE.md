@@ -4520,6 +4520,31 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 💰 Printful-Margen erstmals GEMESSEN — und zwei Artikel brauchen 4–5 Wochen (2026-08-31)
+Betreiber: «printful preise anschauen + auf webseite schreiben wie lange es ca dauert». Alle
+27 synchronisierten POD-Produkte gegen Printful-Katalogpreis + echte CH-Versandquote gerechnet
+(`/products/variant/` + `/shipping/rates`, USD→CHF konservativ ×0.9):
+- **Kein aktives POD-Produkt verkauft unter Kosten.** Einziger Verlustfall wäre das
+  **WM-Trikot (VK 33.00 vs. Kosten ~37.40)** — es ist DRAFT und bleibt es; wer es je
+  wiederbelebt, muss ZUERST den Preis anheben. Dünn, aber positiv: Kiss-Cut-Aufkleber
+  (+3.44) und Keramik-Tasse (+4.73) — beide tragen sich über den Versanderlös. Rest
+  +5.87 bis +46.70.
+- **⚠️ Zwei Artikel werden AUSSERHALB Europas gedruckt:** «Kleid mit Schlitz» und
+  «Boardshorts» melden **20–25 Tage** reine Versandzeit — die 7-14-Werktage-Zusage wäre
+  dort falsch. Beide Beschreibungen tragen jetzt einen Lieferhinweis «ca. 4–5 Wochen»;
+  ⚠️ der Theme-Lieferzeit-Block zeigt daneben weiter die POD-Standardzeile — zwei Aussagen
+  auf einer Seite, die Beschreibung warnt wenigstens. Sauber wäre eine Tag-Ausnahme im
+  ls-lieferzeit-Snippet (offen).
+- **Dauer steht jetzt dreifach ehrlich auf der Webseite:** Editor-Seite («Druck 2–5 +
+  Versand 3–9 = ca. 7–14 Werktage, Allover-Ausnahmen 4–5 Wochen»), Video-Banner («in der
+  Regel in 7–14 Werktagen bei dir»), Übersee-Produkte einzeln.
+- ⚠️ **Printful-API-Fallen:** `/store/products` gilt nur für Manual/API-Stores → für
+  Shopify-Stores `/sync/products` (+`X-PF-Store-Id`); Printful spiegelt den GANZEN
+  Shopify-Katalog (73'489 «Produkte», nur 27 mit synced>0); **urllib bekommt 403, curl
+  nicht** (User-Agent-Filter). Die 6 Ur-Editor-Produkte (shirt-/tasse-/kissen-zum-
+  selbstgestalten …) sind NICHT gesynct = Bestellungen laufen dort manuell — bekannt seit
+  #1005, unverändert.
+
 ## 🎬 Video-Banner «Selbst gestalten» + Handy- & Gaming-Reihen (2026-08-31)
 Betreiber: «mach den ein meisterwerk … alle produkten die man bearbeiten kann … video banner? /
 handy sachen für karusell? und gaming?»
