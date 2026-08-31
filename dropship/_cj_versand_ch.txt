@@ -944,3 +944,5 @@ gid://shopify/Product/15520396312961	nicht-versendbar	Tragbarer, faltbarer Grill
 gid://shopify/Product/15520406143361	ok	Outdoor Rucksack mit abnehmbarer Tasche
 gid://shopify/Product/15520411058561	ok	T10 Highlight Full HD LED Heimprojektor
 gid://shopify/Product/15520407159169	nicht-versendbar	Bambus-Schneidebrett mit Halterung
+gid://shopify/Product/15521325613441	nicht-versendbar	Farm-Mähdrescher Bausteine mit Fernsteuerung
+gid://shopify/Product/15521256735105	ok	Android 4K Smart Full HD 3D Projektor
