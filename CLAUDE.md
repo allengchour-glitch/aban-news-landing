@@ -4520,6 +4520,23 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🖼️ Kontaktbogen über Trend- + Bestseller-Reihe: 5 Erstbilder getauscht, 1 Produkt raus (2026-08-31)
+Auf «weiter» die 38 sichtbarsten Karten der Startseite angesehen (Kontaktbogen, dann je
+Bildsatz einzeln — nie blind, Lehre 21.08.):
+- **«Retinol Anti-Faltencreme» stand in der Hype-Reihe** — topische Kosmetik, die der
+  Betreiber am 30.08. ausdrücklich von der Bewerbung ausgeschlossen hat («gesichts creme
+  passt nicht wen aus china»). `tagsRemove hype-jetzt` + `hype-seit-…`; die Quelle
+  (NICHT_STARTSEITE mit Creme/Serum-Muster) verhindert die Wiederaufnahme. Sie stand drin,
+  weil sie VOR der Regel-Erweiterung aufgenommen wurde — der NUR_RAEUMEN-Lauf entfernt nur
+  Abgelaufenes, kein rückwirkendes Regel-Urteil (bewusst; jetzt von Hand geräumt).
+- **5 Erstbilder ersetzt** (productReorderMedia, Ledger `_hauptbild_umsortiert.txt`):
+  LED-Streifen (Verpackungscollage→Produktfoto), Trinkbrunnen (Massgrafik→Katze am Brunnen),
+  Schmuck-Organizer (Lippenstift-Kunstshot→aufgeklappte Faltwand), EMS-Gerät
+  (Schnittmuster-Diagramm→getragen), Nachrichtentafel (Szenenbild mit chinesischen
+  Kalenderblöcken 火木→«I ♥ you»-Funktionsfoto). Alle 5 am Objekt gegengeprüft.
+- ⚠️ Der Schmuck-Organizer trägt Bilder MEHRERER Artikel («Portable double layer»-Boxen mit
+  2pcs-Badges neben der Faltwand) — die 27.08.-Klasse; nur notiert, Varianten nicht geprüft.
+
 ## 🚗 Auto-Zubehör-Reihe + Startseite 11 % leichter — der Lag war real (2026-08-31)
 Betreiber: «auto zubehör auch? die seite lagt oder nur bei mir». Der Lag ist NICHT nur bei ihm:
 6,72 MB HTML, und die Messung je Sektion zeigte, WO es sitzt — **die Produktreihen kosten je
