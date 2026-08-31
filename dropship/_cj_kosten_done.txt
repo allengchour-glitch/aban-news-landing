@@ -5911,3 +5911,68 @@ gid://shopify/Product/15449407717761	CHF 6.72	16 Varianten	Dampfbürste für Tie
 gid://shopify/Product/15449407783297	CHF 8.71	52 Varianten	Selbstreinigende Haarbürste
 gid://shopify/Product/15449424691585	CHF 21.38	7 Varianten	Hochdruck-Tassenreiniger für Kaffeepitcher
 gid://shopify/Product/15449424757121	CHF 25.66	10 Varianten	350ml USB-Blender mit 3D-Messer
+gid://shopify/Product/15449424789889	CHF 27.51	96 Varianten	Heizjacke mit USB-Anschluss
+gid://shopify/Product/15449424953729	CHF 8.41	10 Varianten	USB-Luftbefeuchter mit Nachtlicht-Projektion
+gid://shopify/Product/15449424986497	CHF 9.68	12 Varianten	Haarentferner mit Kristalltechnik
+gid://shopify/Product/15449425052033	CHF 23.17	4 Varianten	Anti-Gravitations-Duftbefeuchter mit schwebenden T
+gid://shopify/Product/15449425117569	CHF 21.18	3 Varianten	Elektrischer Wasserdispenser mit USB-Akku
+gid://shopify/Product/15449425150337	CHF 25.73	7 Varianten	8-in-1 Gemüseschneider
+gid://shopify/Product/15449425183105	CHF 5.70	20 Varianten	Multifunktionaler Bildschirmreiniger mit Mikrofase
+gid://shopify/Product/15449425215873	CHF 7.74	52 Varianten	Wasserdichte Winterhandschuhe mit Fleece und Anti-
+gid://shopify/Product/15449425248641	CHF 6.58	14 Varianten	Baum des Lebens Anhänger Stein-Kristall-Säule Kett
+gid://shopify/Product/15449425314177	CHF 10.20	25 Varianten	Portabler Luftreiniger Aschenbecher
+gid://shopify/Product/15449425346945	CHF 17.16	4 Varianten	Automatisches Futtergerät für Haustiere
+gid://shopify/Product/15449425379713	CHF 21.09	26 Varianten	Ultraschall-Luftbefeuchter mit Aromatherapie
+gid://shopify/Product/15449425412481	CHF 24.69	4 Varianten	Digitaler Präzisions-Messschieber
+gid://shopify/Product/15449425445249	CHF 13.95	10 Varianten	3-in-1 Pet-Flasche mit Wasser, Futter & Müllbeutel
+gid://shopify/Product/15449425478017	CHF 12.40	6 Varianten	Automatischer Kaffeebecher
+gid://shopify/Product/15449425543553	CHF 19.53	2 Varianten	Kabellose Ladetischlampe mit Magnetfliegentechnik
+gid://shopify/Product/15449425609089	CHF 15.51	62 Varianten	2-in-1 Haarglätter & Lockenstab mit Ionen
+gid://shopify/Product/15449425641857	CHF 32.84	6 Varianten	Smartwecker mit Sunrise-Display & Farblicht
+gid://shopify/Product/15449425674625	CHF 13.64	25 Varianten	Elektrische Reinigungsbürste automatisch kabellos 
+gid://shopify/Product/15449425740161	CHF 28.87	5 Varianten	Mini-Finger-Gyro LED-UFO Fliegendes Hubschraubersp
+gid://shopify/Product/15449425805697	CHF 9.93	87 Varianten	Cellulite-Reduzierende Leggings
+gid://shopify/Product/15449425838465	CHF 5.63	4 Varianten	Silikon-Finger-Übungsstrecker für Fingertraining &
+gid://shopify/Product/15449425871233	CHF 16.35	3 Varianten	RGB-Gaming-Tastatur mit schwebenden Tasten
+gid://shopify/Product/15449425904001	CHF 21.80	24 Varianten	3-teiliges Cozy Pajama Set
+gid://shopify/Product/15449425936769	CHF 9.37	1 Varianten	Gaming-Maus mit Lichfunktion
+gid://shopify/Product/15449425969537	CHF 19.35	4 Varianten	Kabelloser Automatik-Haarglätter mit LCD-Bildschir
+gid://shopify/Product/15449426035073	CHF 6.83	16 Varianten	Reflektierender Wasserdichter Halter für AirTag Ha
+gid://shopify/Product/15449426067841	CHF 5.80	26 Varianten	Massagehandschuhe für Hunde- und Katzenpflege
+gid://shopify/Product/15449426100609	CHF 15.33	55 Varianten	3-in-1 Hunde Trinkflasche mit Futterbox & Müllbeut
+gid://shopify/Product/15449426133377	CHF 12.94	76 Varianten	Portabler USB-Ladefruchtsaftzerstäuber mit Mehrfun
+gid://shopify/Product/15449426166145	CHF 8.91	4 Varianten	Kabelfreies Bluetooth-Headset TWS mit grosser Disp
+gid://shopify/Product/15449426198913	CHF 5.63	10 Varianten	Grüner Tee-Klebepflege mit Akne- und Fettkontrolle
+gid://shopify/Product/15449426231681	CHF 8.91	10 Varianten	Mini-Mopp mit Quetschfunktion
+gid://shopify/Product/15449426297217	CHF 23.12	16 Varianten	Überwachungskamera mit 1080p und Zoom
+gid://shopify/Product/15449426329985	CHF 13.47	14 Varianten	USB-Portabler Mini-Blender mit 6 Messern
+gid://shopify/Product/15449426362753	CHF 26.65	1 Varianten	3-in-1 Magnethalterung für iPhone, Apple Watch & A
+gid://shopify/Product/15449426395521	CHF 13.05	17 Varianten	Elektr. Make-up-Bürstenreiniger mit USB
+gid://shopify/Product/15449426428289	CHF 21.07	2 Varianten	4-in-1 Magnethalter mit RGB-Licht für iPhone & Air
+gid://shopify/Product/15449426461057	CHF 9.82	6 Varianten	Superabsorbentes Badehandtuch für Haustiere
+gid://shopify/Product/15449426493825	CHF 54.51	8 Varianten	3D LED Mond Nachtlicht
+gid://shopify/Product/15449426559361	CHF 12.90	12 Varianten	Retractierbare Leine mit Automatikbremse für klein
+gid://shopify/Product/15449426592129	CHF 18.29	5 Varianten	Herren Business Uhr
+gid://shopify/Product/15449426657665	CHF 16.14	8 Varianten	Mini Raumluft-Heizer mit Keramik-Heizung
+gid://shopify/Product/15449426690433	CHF 13.31	14 Varianten	Wandmontierter Zahnpasta-Dispenser
+gid://shopify/Product/15449426723201	CHF 7.25	55 Varianten	Lederarmband mit USB-C-Ladekabel
+gid://shopify/Product/15449426755969	CHF 20.75	5 Varianten	360° AI Gesichtsverfolgung Gimbal für Vlogs und Ti
+gid://shopify/Product/15449426788737	CHF 11.06	2 Varianten	Auto-Handyhalter mit langer Stange
+gid://shopify/Product/15449426821505	CHF 27.39	4 Varianten	Make-up-Spiegel mit Musik und Licht
+gid://shopify/Product/15449426887041	CHF 17.11	42 Varianten	3er-Set Damen-Pyjama mit Langarm-Crop-Top und Bind
+gid://shopify/Product/15449426919809	CHF 21.16	2 Varianten	LED-Wasser-Speaker mit 3D-Ton
+gid://shopify/Product/15449426952577	CHF 10.38	1 Varianten	Kabelloser Ladepad für iPhone & Samsung mit Schnel
+gid://shopify/Product/15449427018113	CHF 34.59	2 Varianten	Armgrip-Trainingsgerät flexibel einstellbar
+gid://shopify/Product/15449427050881	CHF 42.61	15 Varianten	Smart Mülltonne mit Sensor
+gid://shopify/Product/15449427116417	CHF 17.29	6 Varianten	Ewige Rose mit LED-Licht
+gid://shopify/Product/15449427149185	CHF 5.67	5 Varianten	Dehnungsband-Set mit 4 Widerständen für Fitness & 
+gid://shopify/Product/15449427181953	CHF 28.47	6 Varianten	LED-Campinglampe mit Touchsteuerung und Kugeldesig
+gid://shopify/Product/15449427247489	CHF 11.80	96 Varianten	Shark-Cartoon-Slipper, weich & rutschsicher
+gid://shopify/Product/15449427280257	CHF 13.87	12 Varianten	Magnetische LED-Wandlampe mit Bewegungssensor
+gid://shopify/Product/15449427444097	CHF 13.74	4 Varianten	Elektrischer Shaker für Protein-Shakes
+gid://shopify/Product/15449427542401	CHF 7.79	2 Varianten	Digitale Küchenwaage mit LCD-Bildschirm
+gid://shopify/Product/15449427575169	CHF 23.32	2 Varianten	WLAN-Videotürklingel mit Nachtvision
+gid://shopify/Product/15449427640705	CHF 25.32	76 Varianten	2-in-1 Katzen- & Hunde-Bett
+gid://shopify/Product/15449427706241	CHF 14.11	3 Varianten	Selbstabpressender Mini-Bodenreiniger Multifunktio
+gid://shopify/Product/15449427739009	CHF 6.73	24 Varianten	Tierhaar-Entferner Bürste
+gid://shopify/Product/15449427771777	CHF 16.57	10 Varianten	EMS Thermal Halsheber mit Mikrostrom
