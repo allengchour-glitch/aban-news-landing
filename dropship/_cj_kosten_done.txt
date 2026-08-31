@@ -6954,3 +6954,6 @@ gid://shopify/Product/15449502351745	CHF 15.78	32 Varianten	Sleek Oberteil · Da
 gid://shopify/Product/15449502417281	CHF 18.38	5 Varianten	Retro-Denim Jeans, dunkelblau
 gid://shopify/Product/15449502482817	CHF 20.01	5 Varianten	Stilvoll & Bequem Damenjeans Navy Blue
 gid://shopify/Product/15449502548353	CHF 31.10	4 Varianten	Leopard-Muster Jeans · Modell 2
+gid://shopify/Product/15449502679425	CHF 20.03	22 Varianten	Stylische Casual Jeans
+gid://shopify/Product/15449502810497	CHF 21.67	24 Varianten	Retro-Flare-Hosen mit Fleece-Fütterung
+gid://shopify/Product/15449502876033	CHF 18.65	4 Varianten	Dunkelblaue Slim-Fit-Hose
