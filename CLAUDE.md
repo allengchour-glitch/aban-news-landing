@@ -4520,6 +4520,18 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🤖 «Einkaufen mit KI»-Chatblase entfernt — Microsofts Brand Agent steckte im Clarity-Embed (2026-08-31)
+Betreiber: «chatfenster weg bei pc version?». Die schwebende Pille «Einkaufen mit KI» stand in
+KEINEM Server-HTML — sie wird clientseitig injiziert. Quelle: App-Embed
+**`microsoft-clarity/blocks/brandAgents_js`** in `config/settings_data.json`, das
+`frontendInjection.js` von `adsagentclientafd-….azurefd.net` lädt (Microsofts
+Ads-Agent/Copilot-Shopping-Widget — kam mit der Clarity-App mit). Embed auf `disabled:true`;
+die eigentliche Clarity-Analytik (`clarity_js`) bleibt an. Live: Agent-Skript 0×, Clarity 1×.
+- **Lehre: Eine Analytics-App kann einen ZWEITEN, sichtbaren Embed mitbringen.** Wer ein
+  clientseitig injiziertes Widget sucht, liest die App-Embeds in settings_data.json
+  (`current.blocks`), nicht nur Theme-Sektionen. Backup:
+  `theme_backup/settings_data.json.brandagents-31-08`.
+
 ## 🖼️ «bilder kleiner am pc» — ein Customizer-Override erstickte die eigene 5-Spalten-Regel (2026-08-31)
 Betreiber-Screenshot: riesige 4er-Karten auf Kollektionsseiten am Desktop. Befund in Schichten:
 `templates/collection.json` → `sections.main.custom_css` trug ein per Customizer gesetztes
