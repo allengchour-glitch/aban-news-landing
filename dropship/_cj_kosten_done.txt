@@ -6912,3 +6912,4 @@ gid://shopify/Product/15449497895297	CHF 14.77	8 Varianten	Farbblock-Hoodie für
 gid://shopify/Product/15449497993601	CHF 14.44	16 Varianten	Retro Polo-Pullover
 gid://shopify/Product/15449498059137	CHF 54.86	14 Varianten	Damen-Western-Shirt - schlankes Fit, schwarz, lila
 gid://shopify/Product/15449498091905	CHF 17.45	5 Varianten	Langer Sweatshirt Pullover
+gid://shopify/Product/15449498255745	CHF 15.01	63 Varianten	Weihnachtsmuster-Fleece-Hoodie
