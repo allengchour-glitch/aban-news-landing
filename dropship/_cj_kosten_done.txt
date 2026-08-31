@@ -6129,3 +6129,18 @@ gid://shopify/Product/15449435505025	CHF 18.50	11 Varianten	Gedruckter Rundhals-
 gid://shopify/Product/15449435537793	CHF 17.70	16 Varianten	Weihnachts-Hoodie mit 3D-Print
 gid://shopify/Product/15449435570561	CHF 14.81	48 Varianten	Weihnachts-Katze Crew-Neck Pullover Damen
 gid://shopify/Product/15449435603329	CHF 15.50	28 Varianten	Damen-Weihnachtsdruck-Flanell-Hoodie
+gid://shopify/Product/15449435701633	CHF 14.74	8 Varianten	Halloween-Digitaldruck Sweatshirt Damen
+gid://shopify/Product/15449435767169	CHF 14.84	40 Varianten	Damen Digitaldruck Pullover
+gid://shopify/Product/15449435799937	CHF 16.40	56 Varianten	Damen-Weihnachts-Flanell-Hoodie
+gid://shopify/Product/15449435832705	CHF 12.35	99 Varianten	Damen-Loose-Sweatshirt mit 3D-Digitaldruck
+gid://shopify/Product/15449435865473	CHF 15.10	32 Varianten	Weihnachts-Flanell-Hoodie · Modell 2
+gid://shopify/Product/15449435898241	CHF 15.20	20 Varianten	Lässiges Sweatshirt mit Kapuze
+gid://shopify/Product/15449435931009	CHF 11.22	95 Varianten	Weihnachts-Pullover Rot
+gid://shopify/Product/15449436062081	CHF 14.13	48 Varianten	Weihnachts-Sweatshirt mit Print und Reissverschlus
+gid://shopify/Product/15449436225921	CHF 16.96	6 Varianten	Damen-Hochkragen-Halbzipfel-Basisschicht-Langarmsh
+gid://shopify/Product/15449436258689	CHF 15.14	96 Varianten	Retro-Lässiges Sweatshirt
+gid://shopify/Product/15449436291457	CHF 15.81	64 Varianten	Weihnachtliches Plaid-Hoodie mit Druckknöpfen
+gid://shopify/Product/15449436356993	CHF 11.94	6 Varianten	Oversized-Hoodie mit überschnittenen Schultern
+gid://shopify/Product/15449436389761	CHF 12.37	16 Varianten	Relaxed Fit Halbzipfel-Hoodie aus Imitat Lammwolle
+gid://shopify/Product/15449436422529	CHF 14.96	15 Varianten	Buchstabenbestickte Joggingjacke Damen
+gid://shopify/Product/15449436455297	CHF 19.63	81 Varianten	Damen-Kardigan mit Kunstfell-Kapuze
