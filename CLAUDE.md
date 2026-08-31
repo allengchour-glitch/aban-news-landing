@@ -4520,6 +4520,27 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🎬 Video-Banner «Selbst gestalten» + Handy- & Gaming-Reihen (2026-08-31)
+Betreiber: «mach den ein meisterwerk … alle produkten die man bearbeiten kann … video banner? /
+handy sachen für karusell? und gaming?»
+- **`banner_selbst_gestalten` ist jetzt ein custom-liquid VIDEO-Banner:** 9-s-Schleife aus fünf
+  echten Produkt-Mockups (Model-Shirt → Apéro-Shirt → Blanko-Tasse → Alphorn-Tasse → Stofftasche),
+  ffmpeg xfade, **Blur-Fill statt Center-Crop** (der erste Schnitt zoomte Hochformat-Bilder
+  unkenntlich — Tasse bildfüllend, Kopf ab; `scale=-2:660` aufs Ganze + geblurter Hintergrund).
+  Nur **162 KB** (weisse Studiobilder komprimieren extrem). `<video autoplay muted loop
+  playsinline>` + Poster + `prefers-reduced-motion`-Fallback. CTA führt auf
+  **/collections/selbst-gestalten (31 aktive)** — «Klick → alle bearbeitbaren Produkte»;
+  Zweitlink zum Editor.
+- **Reihen-Tausch:** gadgets→**handy-zubehoer** (663 aktiv; Gadgets überlappte Elektronik) ·
+  komfort-im-alter→**gaming** (458), Gaming neben die Technik-Gruppe gezogen. Kartensumme
+  bleibt 180. Komfort-Ware bleibt in Kollektion + Verzeichnis erreichbar.
+- **Die Editor-Seite bewarb ein DRAFT-Produkt:** `/pages/selbst-gestalten` verlinkte dreimal das
+  WM-Trikot (seit 29.08. DRAFT = toter Link auf der eigenen Landingpage). Trikot-Erwähnungen →
+  Cap/Hoodie, Link auf den aktiven Hoodie. `sg-alle` (480 aktive) geprüft und behalten.
+- Live belegt (Roh-HTML): mp4 referenziert, «Dein Motiv. Dein Produkt.», Handy-Zubehör- und
+  Gaming-h3 vorhanden, alte Reihen weg. 429er bei schnellen Testabrufen = Eigen-Drosselung.
+- Backup: `theme_backup/index.json.podvideo-handy-gaming-31-08`.
+
 ## 🛋️ Wohnen nach oben, drei frische Karusselle — durch TAUSCH, nicht Anbau (2026-08-31)
 Betreiber: «wohnen oder auch andere tolle produkte auch auf startseite mit karusell». Beide
 Deckel (25 Sektionen, 180 Karten) waren voll — also getauscht statt angebaut:
