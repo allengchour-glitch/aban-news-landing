@@ -6875,3 +6875,29 @@ gid://shopify/Product/15449493504385	CHF 20.54	6 Varianten	Duschkopf mit 9 Einst
 gid://shopify/Product/15449493537153	CHF 13.81	1 Varianten	Wasserdichte Wanduhr
 gid://shopify/Product/15449493569921	CHF 39.27	1 Varianten	U-förmige Duschstange, teleskopierbar
 gid://shopify/Product/15449493668225	CHF 28.69	8 Varianten	Fitness-Matte für Damen
+gid://shopify/Product/15449493700993	CHF 22.33	6 Varianten	Yoga-Matte für Sport und Fitness
+gid://shopify/Product/15449493733761	CHF 14.52	1 Varianten	Windsicheres Feuerzeug für Outdoor
+gid://shopify/Product/15449493766529	CHF 27.64	4 Varianten	Portabler Sonnenhut mit Kühlventilator
+gid://shopify/Product/15449493832065	CHF 40.57	9 Varianten	Picknickmatte mit Wetterschutz
+gid://shopify/Product/15449493864833	CHF 25.10	1 Varianten	Portabler Infrarot-Gaskocher
+gid://shopify/Product/15449493897601	CHF 95.90	2 Varianten	Leichter Zeltstuhl mit Sonnenschirm, Getränkehalte
+gid://shopify/Product/15449494389121	CHF 174.35	1 Varianten	Portabler Waschplatz mit Seifen Spender
+gid://shopify/Product/15449494487425	CHF 64.11	1 Varianten	Regen- und Sonnenschirm für Outdoor
+gid://shopify/Product/15449494552961	CHF 101.30	1 Varianten	7,5-Fuss-Rund-Patio-Sonnenschirm mit Kippvorrichtu
+gid://shopify/Product/15449494618497	CHF 38.53	1 Varianten	Zeltstangen für harten Untergrund
+gid://shopify/Product/15449494749569	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449494913409	CHF 27.51	1 Varianten	Zeltstangen Teleskopstangen
+gid://shopify/Product/15449495011713	CHF 22.13	1 Varianten	Aufblasbare Outdoor-Matte
+gid://shopify/Product/15449495110017	CHF 121.91	1 Varianten	Portabler Holzkohlegrill für Outdoor
+gid://shopify/Product/15449495732609	CHF 154.72	1 Varianten	Stabiler Sonnenschirmständer mit Sandfüllung, 176 
+gid://shopify/Product/15449495765377	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449495961985	CHF 158.20	1 Varianten	Sonnenschirmständer mit Rollen
+gid://shopify/Product/15449496060289	CHF 15.85	4 Varianten	Gestreiftes Off-Shoulder-Sweater
+gid://shopify/Product/15449496224129	CHF 13.24	1 Varianten	Silikon Pilzhügel Langsamfutterbowl
+gid://shopify/Product/15449496289665	CHF 8.72	1 Varianten	Trinkbecher für Haustiere
+gid://shopify/Product/15449496355201	CHF 10.04	1 Varianten	Vierfüssige Futternapf für Katze
+gid://shopify/Product/15449496453505	CHF 98.85	1 Varianten	Erhöhter Hundenapf · 2 Edelstahl-Näpfe im Eisenrah
+gid://shopify/Product/15449496519041	cj-abgekuendigt-pruefen
+gid://shopify/Product/15449496650113	CHF 10.46	1 Varianten	Doppel-Schüssel für Haustiere
+gid://shopify/Product/15449496748417	CHF 59.18	1 Varianten	Silikon-Schüssel für Hunde und Katzen
+gid://shopify/Product/15449496781185	CHF 30.13	1 Varianten	Keramik-Futterschale für Katzen mit Sturzschutz
