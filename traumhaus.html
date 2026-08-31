@@ -4012,7 +4012,18 @@ setTimeout(function baueVerkehr(){
   var sch2=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.7,0.05),stdMat(0x2a7ae0,0.4));sch2.position.y=2.5;hs.add(sch2);
   var bank2=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.1,0.5),stdMat(0x8a6a48,0.7));bank2.position.set(1.4,0.5,0);hs.add(bank2);
   [[0.7,0],[2.1,0]].forEach(function(bp){var fu=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.5,0.4),stdMat(0x4a4a52,0.6));fu.position.set(bp[0],0.25,0);hs.add(fu);});
-  hs.position.set(-8,0.06,SZ+6.1);scene.add(hs);
+  /* ⚠️ SZ+6.1 LAG AUF DER FAHRBAHN. Die Hauptstrasse liegt bei z=SZ+12 und ist 16 m
+     breit (strasseMesh(RL,16,…)) — der Asphalt reicht also bis SZ+4. Die Haltestelle
+     stand bei SZ+6.1, mithin 2,1 m INNERHALB der Fahrbahn: Mast, blaues Schild und
+     Bank mitten auf der Strasse, die Autos fuhren hindurch. Im Bild deutlich zu sehen.
+     Anders als Laternen (die `wegVonStrasse` benutzen) lief diese Gruppe an dem
+     Strassenschutz vorbei, der genau dafuer existiert.
+     Der neue Wert ist RELATIV zur Strasse gerechnet, nicht geraten: Rand SZ+4 minus
+     1,4 m → SZ+2.6, damit Bank (0,5 m tief) und Mast auf dem Gehweg stehen.
+     `wegVonStrasse` waere hier zu grob: es schoebe auf SZ-1.5 (13,5 m Sicherheits-
+     abstand ab Strassenmitte) und damit hinter den Gehweg ins Gras — eine Haltestelle
+     gehoert an den Bordstein. */
+  hs.position.set(-8,0.06,SZ+2.6);scene.add(hs);
   // ---- Parkplätze am Straßenrand (Parktaschen mit Markierung + geparkten Autos) ----
   (function baueParkplaetze(){
     var padMat=new THREE.MeshStandardMaterial({color:0x44444c,roughness:0.95});
