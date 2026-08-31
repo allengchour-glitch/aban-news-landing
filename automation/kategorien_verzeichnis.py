@@ -154,7 +154,32 @@ def gebiet(titel):
     return UEBRIG
 
 
+def quelle_bauen():
+    """Baut /tmp/kollektionen.json live neu — die Datei ist ein Wipe-Opfer (31.08.):
+    ohne diesen Rueckfall stirbt der Lauf an FileNotFoundError und das Verzeichnis
+    veraltet still. Format: [handle, titel, productsCount, None]."""
+    aus, cur = [], None
+    while True:
+        d = gql('query($c:String){collections(first:100,after:$c){pageInfo{hasNextPage endCursor}'
+                ' nodes{handle title productsCount{count}'
+                ' p:publishedOnPublication(publicationId:"gid://shopify/Publication/301970915713")}}}',
+                {"c": cur})
+        pg = (d.get("data") or {}).get("collections")
+        if not pg:
+            raise SystemExit("Quelle nicht baubar — Shopify blieb stumm (KEIN leeres Verzeichnis schreiben)")
+        for n in pg["nodes"]:
+            if n["p"]:
+                aus.append([n["handle"], n["title"], n["productsCount"]["count"], None])
+        if not pg["pageInfo"]["hasNextPage"]:
+            break
+        cur = pg["pageInfo"]["endCursor"]
+    json.dump(aus, open(QUELLE, "w"))
+    return aus
+
+
 def main():
+    if not os.path.exists(QUELLE):
+        quelle_bauen()
     koll = [k for k in json.load(open(QUELLE))
             if k[0] not in RAUS and not RAUS_MUSTER.search(k[1])]
     koll, weg = entdoppeln(koll)
