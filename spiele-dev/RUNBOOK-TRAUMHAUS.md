@@ -5915,3 +5915,53 @@ die Airtime-Physik bleiben; nur das Aussehen ändert sich.
 `tools/game_shot.cjs` liefert für `traumhaus` ein Bild **mit offenem Begrüssungs-Dialog** —
 darauf sieht man nichts vom Spiel. Für Bildkontrollen `spielOeffnen` aus `th-lib.mjs`
 nehmen (klickt Solo → Klassisch → introOk) und danach `page.screenshot`.
+
+## 2026-08-30 · 🛹 Drei Rampen mehr — und ein Prüfer, der nur so tat als ob
+
+**Woher die Frage kam.** `th-reichweite` hatte gemessen: Münzen kommen erst nach 90 s
+nach und tragen eine Serie nur bis 3–6. Die **einzige** wiederholbare Quelle, die schnell
+genug kommt (2 s Abklingzeit), war die Stunt-Rampe — und davon gab es in der ganzen Stadt
+genau **eine**. Der Serien-Deckel von 12 hing damit an einem einzigen Punkt der Karte.
+
+### Plätze gesucht, nicht geraten
+
+Das Spiel selbst hat das Raster geprüft — frei von Gebäuden (`inSolid`/`imBau`), **nicht
+auf der Fahrbahn**, aber in 26 m Reichweite einer Strasse, flach auf 4 m, 7 × 4 m Platz
+ringsum. **272 Treffer**, davon die drei mit dem grössten Abstand zueinander:
+(110, −110), (100, 100), (−110, −110). Kleinster Abstand jetzt 145 m.
+
+> **Falle bei der Auswahl:** „nimm den nächsten passenden" legte alle vier an den
+> Westrand (x = −140), weil die Suchschleife x aussen laufen lässt. Wer aus einer
+> sortierten Liste auswählt, erbt deren Sortierung. → erst den Kartenrand ausschliessen,
+> dann **gierig den Platz wählen, der am weitesten von allen bisherigen weg ist**.
+
+**Ausrichtung ebenfalls gemessen:** `wegVonStrasse` verschiebt einen Punkt genau dann,
+wenn er auf der Fahrbahn liegt — die **Richtung dieser Verschiebung ist die Richtung zur
+Strasse**. Jede Rampe dreht sich danach; ohne das fährt man quer an ihr vorbei statt hinauf.
+
+Jede Rampe hat ihre **eigene** Abklingzeit. Eine gemeinsame hiesse: ein Sprung im Osten
+sperrt die Rampe im Westen für zwei Sekunden. `window._rampe` zeigt weiter auf die erste,
+damit alte Verweise gültig bleiben.
+
+### ⚠️ Der Prüfer prüfte die Datenstruktur und behauptete die Physik
+
+Die Prüfung „eine gesperrte Rampe sperrt die anderen nicht" las nur `window._rampen[i].cd`.
+Die Abklingzeiten werden aber in **`autoFahr`** heruntergezählt. Die Sabotage
+`RP.cd = RPS[0].cd - dt` — also *alle* Rampen teilen sich eine — ging **glatt durch**:
+11/11 grün, obwohl das Feature kaputt war.
+
+Behoben, indem der Prüfer echtes `autoFahr` taktet. Dabei die nächste Hürde: am
+Spielstart existiert **kein Auto** (man kauft eines), `autoFahr` steigt sofort aus. Lösung:
+ein Platzhalter-Wagen (`{mesh: new THREE.Object3D()}`) weit weg von jeder Rampe, damit kein
+Sprung ausgelöst wird und wirklich nur das Herunterzählen läuft.
+
+Jetzt beisst sie: gesund `[1.9, −0.1, −0.1, −0.1]`, sabotiert `[1.9, 1.8, 1.8, 1.8]`.
+
+> **Regel:** Wenn eine Prüfung einen Zustand liest, den *anderer Code* pflegt, prüft sie
+> den anderen Code **nicht**. Entweder den echten Pfad takten — oder das Etikett auf das
+> beschränken, was wirklich gemessen wird. Gefunden hat das nur die Sabotage; grün allein
+> beweist nichts.
+
+**Geprüft:** `th-rampen.mjs` 11/11, zwei Sabotagen (Rampe auf die Fahrbahn gesetzt → zwei
+Prüfungen rot; geteilte Abklingzeit → die Physik-Prüfung rot). Bestand grün: Smoke 0
+JS-Fehler, `th-reichweite` 10/10, `th-pruef`, `th-kadrierung` 6/6, `th-hud` alle 3 Formate.
