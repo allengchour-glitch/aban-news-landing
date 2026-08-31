@@ -6821,3 +6821,10 @@ gid://shopify/Product/15449491145089	CHF 13.03	1 Varianten	Edelstahl-Trinkflasch
 gid://shopify/Product/15449491177857	CHF 36.78	1 Varianten	Mini Milchflasche Thermos
 gid://shopify/Product/15449491210625	CHF 17.45	1 Varianten	Tassengarnitur mit Wasser-Trennung
 gid://shopify/Product/15449491243393	CHF 27.54	1 Varianten	Heisswasserflasche 1100ml
+gid://shopify/Product/15449491308929	CHF 11.75	1 Varianten	Trinkflasche mit Sprühfunktion
+gid://shopify/Product/15449491341697	CHF 13.07	1 Varianten	Grosses, hitzefestes Wasserflasche
+gid://shopify/Product/15449491407233	CHF 15.90	1 Varianten	Trinkbecher mit Strohhalm
+gid://shopify/Product/15449491440001	CHF 13.86	1 Varianten	Edelstahl Trinkflasche
+gid://shopify/Product/15449491472769	CHF 13.60	1 Varianten	Tragbare Sportflasche
+gid://shopify/Product/15449491538305	CHF 30.10	1 Varianten	3D Dachshund Tasse
+gid://shopify/Product/15449491571073	CHF 27.68	1 Varianten	Reise-Isolierbecher aus Edelstahl

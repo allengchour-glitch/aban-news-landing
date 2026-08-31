@@ -13711,3 +13711,4 @@ gid://shopify/Product/15520404472193	31->0	Leine für mittelgrosse und grosse Hu
 gid://shopify/Product/15520404603265	10->0	Elegante Damenbluse im Western-Stil
 gid://shopify/Product/15520404701569	25->0	Elegante Langarmbluse mit Knopfleiste
 gid://shopify/Product/15520404734337	20->0	Lässiges Karohemd für Damen
+gid://shopify/Product/15520405225857	10->0	Semi-cured Gel-Nagelsticker mit 3D-Effekt
