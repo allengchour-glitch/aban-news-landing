@@ -2550,3 +2550,15 @@ gid://shopify/Product/15503843623297	taschen	Yoga-Matten-Tragtasche
 gid://shopify/Product/15503843721601	taschen	Business Aktentasche mit grosser Kapazität
 gid://shopify/Product/15503845425537	taschen	Blumen-Tragetasche für Kinderwagen
 gid://shopify/Product/15503871639937	taschen	Kosmetiktasche mit Spiegel – Gross & Tragbar
+gid://shopify/Product/15503873868161	taschen	Velo-Rahmentasche für Mountain- & Rennvelos
+gid://shopify/Product/15503892808065	taschen	Multifunktionale Kultur- & Aufbewahrungstasche
+gid://shopify/Product/15503902212481	taschen	Leder Retro Tablet Umhängetasche
+gid://shopify/Product/15503902736769	taschen	Wickeltasche – wasserdicht und strapazierfähig
+gid://shopify/Product/15503902769537	taschen	Retro Mini-Umhängetasche
+gid://shopify/Product/15503902802305	taschen	Kleine Umhängetasche im Western-Stil
+gid://shopify/Product/15503908012417	taschen	Multifunktionale Hüft-, Schulter- und Umhängetasche
+gid://shopify/Product/15503931310465	taschen	Elegante Umhängetasche aus Rindsleder
+gid://shopify/Product/15503931736449	taschen	Leichte Canvas Umhängetasche für Herren
+gid://shopify/Product/15503933178241	taschen	Silikon-Hängetasche für Lockenstab
+gid://shopify/Product/15503933342081	taschen	Multifunktionale wasserdichte Umhängetasche für Herren
+gid://shopify/Product/15503933505921	taschen	Taktische Multifunktions-Umhängetasche

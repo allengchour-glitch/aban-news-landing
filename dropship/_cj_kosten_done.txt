@@ -5908,3 +5908,6 @@ gid://shopify/Product/15449407521153	CHF 29.78	26 Varianten	Intelligente LED-Lam
 gid://shopify/Product/15449407586689	CHF 8.73	29 Varianten	Halsmassager
 gid://shopify/Product/15449407619457	CHF 18.13	43 Varianten	Isolier-Tumbler 40 Oz
 gid://shopify/Product/15449407717761	CHF 6.72	16 Varianten	Dampfbürste für Tiere
+gid://shopify/Product/15449407783297	CHF 8.71	52 Varianten	Selbstreinigende Haarbürste
+gid://shopify/Product/15449424691585	CHF 21.38	7 Varianten	Hochdruck-Tassenreiniger für Kaffeepitcher
+gid://shopify/Product/15449424757121	CHF 25.66	10 Varianten	350ml USB-Blender mit 3D-Messer
