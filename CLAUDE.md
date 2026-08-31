@@ -4520,6 +4520,20 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 📉 Merchant-Export «Over capacity for Shopping ads» abgearbeitet (2026-08-31)
+Betreiber lud den «Needs attention»-Export hoch: 762 Varianten = 105 Produkte, **alle mit
+0 Klicks** (Spalte `all clicks`). Die Meldung betrifft NUR das Ziel Shopping ads (bezahlt) —
+wir schalten keine; die verkaufenden Gratis-Einträge sind nicht betroffen. Trotzdem
+aufgeräumt: fehlende `mm-google-shopping.excluded_destination=["Shopping_ads"]` gesetzt
+(der Mechanismus der bestehenden `google_ads_kuration`), damit die Liste im Merchant leer
+wird und künftige Ads-Kapazität den Gewinnern gehört.
+- ⚠️ **Der Export war überholt:** 124 Produkte galten dort als «ohne Ausschluss», am OBJEKT
+  hatten 92 das Metafeld längst (tägliche Kuration) oder waren nicht ACTIVE — gesetzt wurden
+  **32**. Erst LIVE lesen, dann schreiben (dieselbe 24.08.-Lehre).
+- ⚠️ Merchant-Export-IDs haben DREI Formen: `shopify_ZZ_<pid>_<vid>`, nackte Zahlen-IDs
+  (Content-API) und Kurzformen — robust ist die Spalte `item group id` bzw. Ziffernsuffix.
+- Ledger: `dropship/_ads_kuration.txt` (Grund `over-capacity-0-klicks`).
+
 ## 📱 Handy-Feinschliff: USP-Wischstreifen + letzte Grid-Reihe (2026-08-31)
 Betreiber: «verbessere handy version». Systematisch die Mobil-Einstellungen vermessen statt
 geraten: Alle 15 Produktreihen einheitlich (2 Spalten, 60cqw, Karussell) — bis auf zwei Funde:
