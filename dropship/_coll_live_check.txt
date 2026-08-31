@@ -507,3 +507,7 @@ hype-jetzt	ok	12	🔥 Gerade im Trend
 hoodies-sweatshirts	unveroeffentlicht	0	🔥 Hoodies & Sweatshirts
 tshirts-polos	unveroeffentlicht	0	👕 T-Shirts, Polos & Longsleeves
 komfort-im-alter	ok	20	Komfort im Alter
+spielzeug-ch-lager	ok	29	Spielzeug ab Schweizer Lager 🇨🇭
+spielzeug-neuheiten	ok	29	Spielzeug-Neuheiten
+kostueme-ch-lager	ok	29	Kostüme ab Schweizer Lager 🇨🇭
+elektronik-kleinteile	ok	29	Elektronik-Zubehör & Kleinteile
