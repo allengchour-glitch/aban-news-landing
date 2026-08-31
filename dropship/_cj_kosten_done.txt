@@ -5881,3 +5881,5 @@ gid://shopify/Product/15449395036545	CHF 15.77	3 Varianten	Off Shoulder Bluse
 gid://shopify/Product/15449395954049	CHF 20.91	6 Varianten	Off-Shoulder-Kleid
 gid://shopify/Product/15449396052353	CHF 11.01	4 Varianten	Casual Damenbluse
 gid://shopify/Product/15449396117889	CHF 12.91	12 Varianten	Langarm-Shirt · Modell 2
+gid://shopify/Product/15449397297537	CHF 16.57	99 Varianten	3D-Print-Hoodie · Damen
+gid://shopify/Product/15449397952897	CHF 18.36	78 Varianten	Herbst-Winter Hoodie
