@@ -11052,3 +11052,20 @@ gid://shopify/Product/15506109890945	armband	Kupfer-Magnetarmband mit Retro-Adle
 gid://shopify/Product/15506110185857	armband	Magnetisches Kupferarmband mit Zirkonia
 gid://shopify/Product/15506111037825	ring	Geometrischer Edelstahlring mit Textur
 gid://shopify/Product/15506138890625	ring	Zirkon-Tropfenring für Damen
+gid://shopify/Product/15506138956161	rucksack	Leichter, wasserdichter Tennisrucksack für Kinder
+gid://shopify/Product/15506139152769	ring	Vintage Türkisring aus 925er Sterlingsilber
+gid://shopify/Product/15506140332417	kette,ring	Mehrlagiges Disc-Set: Halskette & Ohrringe
+gid://shopify/Product/15506140758401	kette	Geometrische Halskette im Sweet-Cool-Stil
+gid://shopify/Product/15506141184385	kette	Minimalistische Taillenkette
+gid://shopify/Product/15506141512065	ring	Damen Ohrringe mit Zirkonia, zweifarbig
+gid://shopify/Product/15506141905281	ring	Zirkon-Ohrringe mit Blumen-Design
+gid://shopify/Product/15506142265729	ring	Retro-Ohrringe im Used-Look mit Kettendetail
+gid://shopify/Product/15506143019393	ring	Wasser-Tropfen Ohrclips – Hochwertige Ohrringe
+gid://shopify/Product/15506144002433	kleid	Ärmelloses V-Neck Blumenkleid mit Rüschen
+gid://shopify/Product/15506144362881	kleid	Trägerkleid mit Schleifendetail
+gid://shopify/Product/15506144690561	kleid	Elegantes Slim-Fit Trägerkleid
+gid://shopify/Product/15506145247617	leuchte	USB-Halsbandleuchte Banane für Hunde
+gid://shopify/Product/15506145444225	kleid	Elegantes ärmelloses Maxikleid mit Rundhals und Taschen
+gid://shopify/Product/15506145771905	kleid	Minimalistisches A-Linien Hemdkleid mit 3/4-Ärmeln
+gid://shopify/Product/15506146165121	kleid	Damen V-Ausschnitt Blumenkleid mit ausgestellten Ärmeln
+gid://shopify/Product/15506146787713	kleid	Elegantes, langes Sommerkleid im französischen Stil
