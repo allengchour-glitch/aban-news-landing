@@ -6986,3 +6986,5 @@ gid://shopify/Product/15449508348289	CHF 24.21	5 Varianten	Schwarze Patchwork-Me
 gid://shopify/Product/15449508381057	CHF 11.68	6 Varianten	Pink-Lace-Röckchen
 gid://shopify/Product/15449508413825	CHF 16.78	4 Varianten	Blauer Linienrock mit Stickerei
 gid://shopify/Product/15449508446593	CHF 21.35	4 Varianten	Blauer Rock mit asymmetrischem Kleid
+gid://shopify/Product/15449508479361	CHF 13.12	6 Varianten	Polkadot-Mesh-Oberteil-Ohne-Ärmel-Kleid
+gid://shopify/Product/15449508512129	CHF 47.65	20 Varianten	Sommerkleid · Damen
