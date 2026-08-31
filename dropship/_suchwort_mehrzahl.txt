@@ -2329,3 +2329,9 @@ gid://shopify/Product/15500984910209	kleider	Geblümtes Baumwoll-Trägerkleid mi
 gid://shopify/Product/15500988481921	kleider	Sommerkleid mit gefälteter Rockschürze
 gid://shopify/Product/15500988678529	kleider	Kurzarm-Sommerkleid für Damen
 gid://shopify/Product/15500988907905	kleider	Strickkleid mit langen Ärmeln für Damen
+gid://shopify/Product/15500989596033	kleider	Elegantes, hochtailliertes Langarmkleid mit V-Ausschnitt
+gid://shopify/Product/15500989759873	kleider	Tailliertes ärmelloses Midikleid mit Taschen
+gid://shopify/Product/15500989989249	kleider	Lässiges Polka-Dot Langarmkleid
+gid://shopify/Product/15500990022017	kleider	Pink Sommerkleid
+gid://shopify/Product/15500990251393	kleider	Elegantes Abendkleid für Damen
+gid://shopify/Product/15500998672769	taschen	Reisetasche für Männer

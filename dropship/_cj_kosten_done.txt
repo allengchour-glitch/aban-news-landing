@@ -5866,3 +5866,5 @@ gid://shopify/Product/15449390973313	CHF 14.81	15 Varianten	Lockere Faux-Denim-B
 gid://shopify/Product/15449391366529	CHF 13.17	6 Varianten	Off-the-Shoulder Bluse
 gid://shopify/Product/15449391432065	CHF 14.15	16 Varianten	Druck-V-Ausschnitt-Oberteil
 gid://shopify/Product/15449392152961	CHF 11.71	9 Varianten	Kurzarmige Bluse · Damen
+gid://shopify/Product/15449392251265	CHF 12.95	16 Varianten	Baumwoll-Camisole
+gid://shopify/Product/15449392480641	CHF 11.44	35 Varianten	V-Ausschnitt-Weste

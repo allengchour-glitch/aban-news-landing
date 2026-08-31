@@ -8506,3 +8506,7 @@ gid://shopify/Product/15496433467777	uhr	Wasserdichte Herren Quarzuhr
 gid://shopify/Product/15496433533313	hemd	Herren Leinenhemd mit Revers, locker geschnitten
 gid://shopify/Product/15496433598849	uhr	Quarz-Armbanduhr mit Stahlband
 gid://shopify/Product/15496433762689	uhr,armband	Herren- Quarzuhr mit Stahlarmband
+gid://shopify/Product/15496434614657	hemd	Herren Cordhemd mit Brusttasche
+gid://shopify/Product/15496434975105	uhr	Multifunktionale Herrenuhr mit Leuchtzifferblatt
+gid://shopify/Product/15496435564929	hemd	Gestreiftes Langarm-Polohemd für Herren
+gid://shopify/Product/15496435663233	uhr	Kreative Magnet-Schwebeuhr
