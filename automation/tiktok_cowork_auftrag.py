@@ -231,19 +231,34 @@ def main():
            "⚠️ Nichts löschen, nichts anderes am Konto ändern.", ""]
 
     gesperrt = 0
+    # Cloud-Ledger der schon geposteten Beitraege (31.08.): Postet eine ANDERE Stelle
+    # (PC-Cowork-Session, Handarbeit), wird der Slug hier eingetragen — die Queue setzt
+    # ihn dann frei:false, und der PC-Autoposter (holt die Queue frisch vom CDN) kann
+    # ihn nie doppelt posten. Sein lokales tiktok_done.txt kennt fremde Posts nicht.
+    up_ledger = os.path.join(ROOT, "dropship", "_tiktok_upload_done.txt")
+    schon_gepostet = set()
+    if os.path.exists(up_ledger):
+        for z in open(up_ledger):
+            t = z.split("\t")
+            if len(t) > 1:
+                schon_gepostet.add(t[1].strip())
     queue = []            # maschinenlesbar fuer automation/local/tiktok-upload-auto.mjs
     for i, slug in enumerate(sorted(proSlug), 1):
         cp = os.path.join(BASIS, slug, "caption.txt")
         cap = open(cp).read().strip() if os.path.exists(cp) else ""
         # Produkt-Handle nur bei Einzelprodukt-Karussells pruefbar (Slug == Handle).
         einzel = not slug.startswith(("top-", "meisterwerk"))
-        frei = aktiv(slug) if einzel else True
+        frei = slug not in schon_gepostet and (aktiv(slug) if einzel else True)
         if einzel and not frei:
             gesperrt += 1
         aus.append(f"---\n\n## {i}. `{slug}`" + ("" if frei else "  ⛔ GESPERRT") + "\n")
         if not frei:
-            aus.append("⛔ **Nicht posten.** Das Produkt ist nicht mehr ACTIVE oder nicht im "
-                       "Onlineshop — der Beitrag würde auf eine tote Seite führen.\n")
+            if slug in schon_gepostet:
+                aus.append("⛔ **Nicht posten.** Dieser Beitrag wurde bereits gepostet "
+                           "(Ledger `_tiktok_upload_done.txt`) — Doppelpost-Verbot.\n")
+            else:
+                aus.append("⛔ **Nicht posten.** Das Produkt ist nicht mehr ACTIVE oder nicht im "
+                           "Onlineshop — der Beitrag würde auf eine tote Seite führen.\n")
         if cap:
             aus.append("**Caption:**\n"); aus.append("```\n" + cap + "\n```\n")
         if (slug,) in videos:
