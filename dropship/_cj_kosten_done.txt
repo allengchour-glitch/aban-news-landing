@@ -6909,3 +6909,5 @@ gid://shopify/Product/15449497239937	CHF 30.05	1 Varianten	Keramik Langsam-Fress
 gid://shopify/Product/15449497665921	CHF 16.14	56 Varianten	Weihnachts-Flanell-Hoodie
 gid://shopify/Product/15449497764225	CHF 18.73	21 Varianten	Herbst-Winter-Cardigan
 gid://shopify/Product/15449497895297	CHF 14.77	8 Varianten	Farbblock-Hoodie für Damen
+gid://shopify/Product/15449497993601	CHF 14.44	16 Varianten	Retro Polo-Pullover
+gid://shopify/Product/15449498059137	CHF 54.86	14 Varianten	Damen-Western-Shirt - schlankes Fit, schwarz, lila
