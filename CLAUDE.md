@@ -4520,6 +4520,24 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🎃 Halloween-Karussell + Spielzeug nach Versandweg getrennt (2026-08-31)
+Betreiber: «mache halloween rein mit karusell und so, auch spielsachen aus CH versand und cj
+seperat». Drei Reihen per TAUSCH (Deckel 25 Sektionen / 160 Karten):
+- **Halloween** (176 aktive, CREATED_DESC) ersetzt die Schmuck-Reihe, prominent direkt hinter
+  Blitzversand — Saison läuft an. Schmuck bleibt über Kachel + Menü erreichbar.
+- **Zwei NEUE Smart-Kollektionen** (publishablePublish nicht vergessen — Publish-Falle):
+  `spielzeug-neuheiten` «Spielzeug-Neuheiten» = TAG spielzeug AND cj-real (1'117 aktive) und
+  `spielzeug-ch-lager` «Spielzeug ab Schweizer Lager 🇨🇭».
+- ⚠️ **Die CH-Reihe zeigte sofort «Plüsch Pikachu» und «Plüsch Super Mario»** — exakt die
+  Lizenzware, die am 11.08. aus der Startreihe flog. Eine Smart-Regel kann nicht ausschliessen
+  (kein NOT) → Kurations-Tag **`spielzeug-ch-front`**: 242 saubere CH-Spielwaren getaggt
+  (Lizenz-Regex pikachu|pokemon|disney|marvel|mario|barbie|frozen|… übersprang 2), Kollektion
+  hängt jetzt an DIESEM Tag. Gegengeprüft: Pikachu/Mario nicht mehr drin, 242 aktive.
+  **Regel: Wer eine "alles was X ist"-Reihe baut, prüft die ersten Karten auf Lizenzware.**
+- Die Fortura-CH-Spielwaren erkennt man an productType «Spielzeug & Spiele» + tag ch-lager —
+  den Tag `spielzeug` tragen sie NICHT (nur 20 Treffer über die Tag-Kombi; Messfalle).
+- Backup: `theme_backup/index.json.halloween-spielzeug-31-08`.
+
 ## 🧭 Vier Startseiten-Kategorien fehlten im Menü (2026-08-31)
 Die neuen Reihen (Handy-Zubehör, Gaming, Auto & KFZ, Taschen) waren NUR über die Startseite
 erreichbar — im 100-Punkte-Hauptmenü fehlten alle vier. Ergänzt: Taschen & Rucksäcke unter
