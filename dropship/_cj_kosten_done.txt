@@ -5899,3 +5899,12 @@ gid://shopify/Product/15449401950593	CHF 12.49	8 Varianten	Rundhalsausschnitt-Pu
 gid://shopify/Product/15449402114433	CHF 15.76	96 Varianten	Damen Pullover
 gid://shopify/Product/15449403031937	CHF 14.97	11 Varianten	Druck-Sweatshirt · Damen
 gid://shopify/Product/15449403326849	CHF 16.80	48 Varianten	Weihnachtssweatshirt mit Katzen-Motiv
+gid://shopify/Product/15449403588993	CHF 15.29	96 Varianten	Weihnachts-Sweatshirt
+gid://shopify/Product/15449403687297	CHF 18.61	31 Varianten	Leopard-Print Hoodie
+gid://shopify/Product/15449405325697	CHF 26.05	4 Varianten	Khaki-Hoodiejacke
+gid://shopify/Product/15449407095169	CHF 12.88	8 Varianten	Kapuzenpullover · Modell 3
+gid://shopify/Product/15449407488385	CHF 13.74	88 Varianten	Modische Kapuzenjacke
+gid://shopify/Product/15449407521153	CHF 29.78	26 Varianten	Intelligente LED-Lampe
+gid://shopify/Product/15449407586689	CHF 8.73	29 Varianten	Halsmassager
+gid://shopify/Product/15449407619457	CHF 18.13	43 Varianten	Isolier-Tumbler 40 Oz
+gid://shopify/Product/15449407717761	CHF 6.72	16 Varianten	Dampfbürste für Tiere
