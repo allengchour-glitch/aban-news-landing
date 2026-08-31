@@ -4520,6 +4520,19 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## ❄️ 225 weitere Kollektionen aufgetaut + Gadgets zeigten die teuerste Leiche zuerst (2026-08-31)
+Fortsetzung der 29.08.-Messung (BEST_SELLING bei 7 Bestellungen = zufaellig stabile Ordnung):
+Von 355 veroeffentlichten Kollektionen standen noch **225 auf BEST_SELLING** — alle jetzt per
+`automation/kollektion_auftauen.py` auf CREATED_DESC (Ledger `_kollektion_auftauen.txt`).
+MANUAL bleibt grundsaetzlich unangetastet; **PRICE_ASC/PRICE_DESC (93) bewusst stehen
+gelassen** — bei Preisband-Kollektionen («unter CHF 25», «Geschenke bis 30») kann die
+Preissortierung Absicht sein.
+- Vorher einzeln: `gadgets` (4'159 aktive) und `elektronik-gadgets` (4'115) standen auf
+  **PRICE_DESC** — Besucher sahen die teuerste Ware zuerst, und die Spitze waren
+  BigBuy-DRAFT-Leichen (E-Roller, 100-Zoll-TVs; unsichtbar fuer Kunden, aber die Falle
+  `products(first:n)` ohne Statusfilter zeigt sie). Beide auf CREATED_DESC → fuehren jetzt
+  mit frischen aktiven Projektoren.
+
 ## 🧸 918 Spielzeuge fluteten «Elektronik & Technik» — der Blanko-Tag der Spielzeug-Gruppe (2026-08-31)
 Beim Suchen eines Kachel-Bilds fiel auf: Die BESTSELLER der Kollektion `elektronik-technik`
 (Regel `TAG=elektronik`) waren **Klemmbausteine, Spielküchen und Modell-Bausätze** — und weil
