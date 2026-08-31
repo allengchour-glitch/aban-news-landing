@@ -1522,3 +1522,11 @@ gid://shopify/Product/15448592777601	zugeordnet	30	Strickpullover mit Rundhalsau
 gid://shopify/Product/15448592843137	zugeordnet	55	Eleganter Rollkragenpullover aus Wolle
 gid://shopify/Product/15448592908673	zugeordnet	45	Kurzer Strick-Cardigan mit V-Ausschnitt
 gid://shopify/Product/15448593006977	zugeordnet	12	Pailletten-Pullover mit Rundhals
+gid://shopify/Product/15448593039745	bild-urls-tot
+gid://shopify/Product/15448593105281	bild-urls-tot
+gid://shopify/Product/15448593138049	bild-urls-tot
+gid://shopify/Product/15448593203585	bild-urls-tot
+gid://shopify/Product/15448593236353	bild-urls-tot
+gid://shopify/Product/15448593269121	bild-urls-tot
+gid://shopify/Product/15448593432961	bild-urls-tot
+gid://shopify/Product/15448593564033	bild-urls-tot
