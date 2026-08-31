@@ -8942,6 +8942,7 @@ setTimeout(function baueFest(){
 },0);
 // ---- Stunt-Rampe: mit Schwung drueber = Airtime-Punkte ----
 setTimeout(function baueRampe(){
+function baueRampeAn(rx,rz,rdreh){
   var g=new THREE.Group();
   /* 🛹 Die Rampe war eine schraeg gestellte PLATTE mit einer einzigen Stuetze am
      hohen Ende — im Bild eine graue Bohle, die frei ueber der Wiese schwebt (User:
@@ -8963,8 +8964,30 @@ setTimeout(function baueRampe(){
   var _w=Math.atan2(1.70,6.5);
   [[-1,0],[1,0]].forEach(function(sd){var rail=new THREE.Mesh(new THREE.BoxGeometry(6.72,0.07,0.16),new THREE.MeshStandardMaterial({color:0xf0c030,roughness:0.6}));
     rail.rotation.z=_w;rail.position.set(0,0.88,sd[0]*1.55);g.add(rail);});
-  g.position.set(-64,0.01,28);scene.add(g); // sitzt auf dem Rasen auf, Kante ebenerdig
-  window._rampe={x:-64,z:28,cd:0}; // auf der Wiese — stand nach der Map-Verbreiterung auf der Querstrasse
+  g.position.set(rx,0.01,rz);g.rotation.y=rdreh;scene.add(g); // sitzt auf dem Rasen auf
+  return {x:rx,z:rz,cd:0};}
+
+/* ⚠️ EINE Rampe in der ganzen Stadt war zu wenig. Gemessen (th-reichweite): Muenzen
+   kommen erst nach 90 s nach und tragen eine Serie nur bis 3–6; die EINZIGE wiederholbare
+   Quelle, die schnell genug kommt (2 s Abklingzeit), war diese eine Rampe. Der
+   Serien-Deckel von 12 hing damit an einem einzigen Ort der Karte.
+   Die drei neuen Plaetze sind nicht geraten, sondern GESUCHT: das Spiel selbst hat alle
+   Punkte gepruefen (frei von Gebaeuden, nicht auf der Strasse, aber in 26 m Reichweite
+   einer, flach auf 4 m, 7x4 m Platz ringsum) — 272 Treffer, davon die drei mit dem
+   groessten Abstand zueinander. */
+var _RAMPEN_ORTE=[[-64,28],[110,-110],[100,100],[-110,-110]];
+window._rampen=_RAMPEN_ORTE.map(function(o){
+  /* Ausrichtung nicht raten: die Rampe zeigt zur naechsten Strasse, sonst faehrt man
+     quer an ihr vorbei statt hinauf. wegVonStrasse verschiebt einen Punkt genau dann,
+     wenn er auf der Fahrbahn liegt — die Richtung dieser Verschiebung ist die
+     Richtung zur Strasse. */
+  var bx=0,bz=0,bd=1e9;
+  for(var a=-30;a<=30;a+=3)for(var b=-30;b<=30;b+=3){
+    var w=wegVonStrasse(o[0]+a,o[1]+b);
+    if(Math.abs(w[0]-(o[0]+a))>0.01||Math.abs(w[1]-(o[1]+b))>0.01){
+      var d=Math.hypot(a,b);if(d<bd){bd=d;bx=a;bz=b;}}}
+  return baueRampeAn(o[0],o[1],bd<1e9?Math.atan2(bx,bz):0);});
+window._rampe=window._rampen[0]; /* Altbestand: einzelne Verweise bleiben gueltig */
 },0);
 function updFest(dt,now){var FE=window._fest;if(!FE)return;
   var h=uhrzeit/60,aktiv=h>=19.5&&h<=22.5;
@@ -11631,10 +11654,13 @@ function autoFahr(dt){
      unsichtbaren Koerper von sich aus loslaufen zu lassen. */
   if(sims[0]){sims[0].x=m.position.x;sims[0].z=m.position.z;sims[0].state="faehrt";}
   // Rampe + Sprungphysik laufen IMMER (auch ohne Lenk-Input — sonst friert der Flug ein)
-  var RP=window._rampe;
-  if(RP){RP.cd-=dt;
+  /* Jede Rampe hat ihre EIGENE Abklingzeit — eine gemeinsame haette bedeutet, dass
+     ein Sprung im Osten die Rampe im Westen fuer zwei Sekunden sperrt. */
+  var RPS=window._rampen;
+  if(RPS)for(var _ri=0;_ri<RPS.length;_ri++){var RP=RPS[_ri];
+    RP.cd-=dt;
     if(carAirY<=0&&RP.cd<=0&&(window._carKmh||0)>20&&Math.hypot(m.position.x-RP.x,m.position.z-RP.z)<3.6){
-      carVY=(window._carKmh||0)/4*0.62;carAirT=0;RP.cd=2;beep(300,.12,"square",.05);}}
+      carVY=(window._carKmh||0)/4*0.62;carAirT=0;RP.cd=2;beep(300,.12,"square",.05);break;}}
   if(carVY>0||carAirY>0){carVY-=24*dt;carAirY=Math.max(0,carAirY+carVY*dt);carAirT+=dt;
     m.position.y=(a.homeY||0.01)+carAirY;
     if(carAirY<=0&&carVY<0){carVY=0;
