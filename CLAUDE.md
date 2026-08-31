@@ -4520,6 +4520,15 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🎭 Neue Kategorie «Kostüme ab Schweizer Lager» — 2'030 Artikel, Saison-Timing (2026-08-31)
+Betreiber: «mache noch 1 kategorie irgendwas schweizer lager und so». Die grösste ungenutzte
+CH-Warengruppe sind die Fortura-Kostüme (2'030 aktive, productType «Kostüme & Verkleidung» +
+tag ch-lager) — und vor Halloween ist «in 1–2 Tagen da» DAS Argument gegen 10–20 Tage
+Direktversand. Angelegt als Smart-Kollektion `kostueme-ch-lager` (CREATED_DESC, publiziert —
+Publish-Falle beachtet), Menüpunkt «Kostüme ab CH-Lager 🎃» unter Highlights (Menü 104→105,
+nachgezählt), plus Querverweis in der Halloween-Kollektion («Last-Minute? …in 1–2 Werktagen»).
+Live geprüft: Seite rendert mit Beschreibung und 28 Produktkarten.
+
 ## 🎃 Halloween-Karussell + Spielzeug nach Versandweg getrennt (2026-08-31)
 Betreiber: «mache halloween rein mit karusell und so, auch spielsachen aus CH versand und cj
 seperat». Drei Reihen per TAUSCH (Deckel 25 Sektionen / 160 Karten):

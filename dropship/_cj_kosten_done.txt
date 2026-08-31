@@ -6978,3 +6978,10 @@ gid://shopify/Product/15449507987841	CHF 11.39	20 Varianten	Versatiler Kleid · 
 gid://shopify/Product/15449508053377	CHF 9.70	3 Varianten	Blumenapfel · Damen
 gid://shopify/Product/15449508118913	CHF 16.68	10 Varianten	Schwarzes oder Blaues Kleid mit Sequinen
 gid://shopify/Product/15449508151681	CHF 16.46	1 Varianten	Blauer Halsausschnitt-Rock
+gid://shopify/Product/15449508217217	CHF 14.56	15 Varianten	Langärmliger Maxi-Rock
+gid://shopify/Product/15449508249985	CHF 17.86	15 Varianten	Langarm-Dress · Damen
+gid://shopify/Product/15449508282753	CHF 26.37	5 Varianten	Orangefarbene Sommerkleid
+gid://shopify/Product/15449508315521	CHF 15.74	6 Varianten	Langarm-Dress mit Fliege
+gid://shopify/Product/15449508348289	CHF 24.21	5 Varianten	Schwarze Patchwork-Mermaid-Rock
+gid://shopify/Product/15449508381057	CHF 11.68	6 Varianten	Pink-Lace-Röckchen
+gid://shopify/Product/15449508413825	CHF 16.78	4 Varianten	Blauer Linienrock mit Stickerei
