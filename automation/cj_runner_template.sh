@@ -18,6 +18,10 @@
 # Aufrufparameter über Env: RUNNER (Name), GRPLIST (Gruppen), START_DELAY (Sekunden)
 cd /home/user/aban-news-landing || exit 1
 source /tmp/secrets_env.sh 2>/dev/null
+# 31.08.: Nach dem /tmp-Wipe liegen die Uebersetzer-Schluessel (Groq/Gemini/DeepSeek)
+# in /tmp/dienste.env (Tresor-Wiederherstellung) — ohne sie skippt der Importer JEDES
+# Produkt am Gemini-Schritt und der Grind steht still, waehrend alles gesund aussieht.
+source /tmp/dienste.env 2>/dev/null
 source /tmp/cj_creds.env 2>/dev/null
 
 # Name auch als ARGUMENT annehmen: nach `exec` steht die Env nicht in der Kommandozeile,
