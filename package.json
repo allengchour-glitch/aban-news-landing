@@ -15,9 +15,9 @@
   },
   "devDependencies": {
     "html-validate": "^9.7.1",
-    "prettier": "^3.6.2",
-    "playwright": "^1.56.0",
-    "lighthouse": "^12.8.2"
+    "lighthouse": "^12.8.2",
+    "playwright": "^1.62.1",
+    "prettier": "^3.6.2"
   },
   "comment": "WICHTIG: NIE 'prettier --write' ueber ki-fuer-*.html laufen lassen — aendert Whitespace in JSON-LD/FAQ und bricht die zeichengenaue FAQ-Paritaet. Formatierung nur check-only auf Nicht-Hub-Seiten."
 }

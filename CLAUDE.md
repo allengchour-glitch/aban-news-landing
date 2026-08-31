@@ -4535,6 +4535,17 @@ Berichte, die ich lesen wollte, mit demselben Traceback endeten.
   wie bei den Blutzucker-Armbändern). Die 4 Küchen-Klingen-Zubehörteile im Bericht sind die
   bekannte Betreiber-Entscheidung (COWORK-AUFTRAEGE 5), kein neuer Befund.
 
+## 📉 240 Produktkarten haben die Startseite GEKIPPT — 9 von 12 Anfragen waren 500er (2026-08-31)
+Die Erhoehung aller Reihen auf 16 Karten (240 Karten, 8,9 MB HTML) sah am Ursprung sauber aus und
+lief auch einmal live — Stunden spaeter scheiterten aber **9 von 12** Startseiten-Anfragen mit 500,
+waehrend Nachbarseiten durchgehend 200 lieferten. Das war KEIN kalter Cache mehr: Der Renderer
+kippt unter der Last zeitweise. Bei 177 Karten (6,8 MB) war die Seite stabil → alle Reihen zurueck
+auf 12 Karten, Fehlerquote sofort 10/12→200er und weiter fallend.
+- **Regel: Nach jeder Gewichtserhoehung der Startseite die FEHLERQUOTE messen** (12 Abrufe mit
+  Cache-Buster), nicht nur einen einzelnen 200er feiern. Ein einmaliger Erfolg ist keine Stabilitaet.
+- **~180 Karten / ~7 MB ist die gemessene Obergrenze** dieses Themes. Wer mehr Ware zeigen will,
+  braucht leichtere Sektionen, nicht mehr Karten.
+
 ## Stand
 **📌 2026-07-10 (BigBuy-Bereinigung + Google-Feed + Katalog-Gesundheit — Branch `claude/luxestyle-status-tztnn1`):**
 - **BigBuy „vorsichtig" (User-Entscheidung):** Import DEAKTIVIERT (Flag `_bigbuy_import_disabled`, negative
