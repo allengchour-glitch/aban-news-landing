@@ -31,7 +31,7 @@ DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 HEUTE = os.environ.get("HEUTE") or time.strftime("%Y-%m-%d")
 HYPE_TAGE = int(os.environ.get("HYPE_TAGE", "21"))
-PRO_THEMA = int(os.environ.get("PRO_THEMA", "2"))
+PRO_THEMA = int(os.environ.get("PRO_THEMA", "1"))  # 31.08.: 2 je Thema landete als PAAR nebeneinander in der Reihe (zwei Beamer, zwei Kleider) — sieht aus wie Katalogauszug
 TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
