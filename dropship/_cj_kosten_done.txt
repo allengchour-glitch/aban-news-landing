@@ -6957,3 +6957,11 @@ gid://shopify/Product/15449502548353	CHF 31.10	4 Varianten	Leopard-Muster Jeans 
 gid://shopify/Product/15449502679425	CHF 20.03	22 Varianten	Stylische Casual Jeans
 gid://shopify/Product/15449502810497	CHF 21.67	24 Varianten	Retro-Flare-Hosen mit Fleece-Fütterung
 gid://shopify/Product/15449502876033	CHF 18.65	4 Varianten	Dunkelblaue Slim-Fit-Hose
+gid://shopify/Product/15449503039873	CHF 16.50	4 Varianten	Dunkelblaue Jeans, hoch geschnitten
+gid://shopify/Product/15449503203713	CHF 16.99	5 Varianten	Gerissene Damenjeans High-Street-Stil
+gid://shopify/Product/15449503236481	CHF 18.59	18 Varianten	Stretch-Denim Jeans mit Rissen und Stickerei
+gid://shopify/Product/15449503400321	CHF 24.86	4 Varianten	Blauer Denim-Hosen für Damen
+gid://shopify/Product/15449503728001	CHF 16.82	5 Varianten	Grüne Straight-Leg Jeans
+gid://shopify/Product/15449503859073	CHF 13.63	8 Varianten	Retro Pfirsichform Nostalgische Weitbein-Jeans Dam
+gid://shopify/Product/15449503891841	CHF 11.49	20 Varianten	Trendy Ripped Denim Shorts
+gid://shopify/Product/15449504022913	CHF 24.06	4 Varianten	Elegante Straight-Leg Jeans
