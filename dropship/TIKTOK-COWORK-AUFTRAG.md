@@ -5,7 +5,7 @@
 > Im Bio steht die Adresse als **Text** (`luxestyle.ch`), aber **kein klickbarer
 > Link**. Der Abschluss-Slide sagt «Link in Bio»: ungenau, aber niemand läuft
 > mehr ins Leere — die Zuschauerin findet den Shop im Bio.
-> Gemessen: 560 Follower · 66 Videos · 266 Likes.
+> Gemessen: 561 Follower · 66 Videos · 266 Likes.
 >
 > **Was den klickbaren Link bringt** (lohnt sich, ist aber kein Blocker):
 > Das Website-Feld gibt es im Privatkonto nicht — live geprüft, «Profil
@@ -20,7 +20,7 @@
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
-**Profil am 2026-08-30 gemessen:** 560 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
+**Profil am 2026-08-31 gemessen:** 561 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
 
 ## So vorgehen (gilt für jeden Beitrag)
 1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,
@@ -162,7 +162,33 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/schmuck-organizer-mit-fal
 
 ---
 
-## 6. `top-5-unter-40-0829`
+## 6. `t20-mini-beamer-hd-heimkino-fur-unterwegs-682880`
+
+**Caption:**
+
+```
+T20 Mini Beamer – HD Heimkino für unterwegs · CHF 43.90
+Jetzt im Shop 🇨🇭 luxestyle.ch
+Code WELCOME10 für −10%
+
+#fyp #schweiz #luxestyle #gadgets #tech
+```
+
+**Video (stumm, für Trend-Sound):**
+https://cdn.shopify.com/s/files/1/0943/6856/3585/files/t20-mini-beamer-hd-heimkino-fur-unterwegs-682880-clean.mp4?v=1788144227
+
+**Slides in dieser Reihenfolge:**
+
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_dcb869b9-d60a-416f-a0e7-618f6a23dfa1.jpg?v=1788144187
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_ae4e298f-c212-41a3-86f6-432a54e5e10f.jpg?v=1788144194
+3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_5af59a36-35fb-494a-ad80-4b0695d32d50.jpg?v=1788144200
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_eca47c6b-1516-4268-a125-372c9ebfbcf2.jpg?v=1788144207
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_ef3c2d87-b854-4d98-a4e5-cc11f8142328.jpg?v=1788144213
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_66893a73-9b6d-4f96-9b69-2b686631895d.jpg?v=1788144219
+
+---
+
+## 7. `top-5-unter-40-0829`
 
 **Caption:**
 
@@ -196,7 +222,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-0829-clean
 
 ---
 
-## 7. `top-5-unter-50-0828`
+## 8. `top-5-unter-50-0828`
 
 **Caption:**
 
@@ -230,7 +256,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-0828-clean
 
 ---
 
-## 8. `vakuumierer-kabellos-lebensmittel`
+## 9. `vakuumierer-kabellos-lebensmittel`
 
 **Caption:**
 
