@@ -4546,6 +4546,17 @@ auf 12 Karten, Fehlerquote sofort 10/12→200er und weiter fallend.
 - **~180 Karten / ~7 MB ist die gemessene Obergrenze** dieses Themes. Wer mehr Ware zeigen will,
   braucht leichtere Sektionen, nicht mehr Karten.
 
+## 🚢 995 aktive Produkte versprachen USA/EU-Lieferung — Wiederbelebung durch alte Quittungen (2026-08-31)
+Beim LESEN einer reparierten Stichprobe fiel der Lieferzeit-Block «🇺🇸 USA: 12–20 Tage» auf.
+Gemessen: 452+483+60 aktive Produkte trugen die 14.08.-Klasse wieder — der Shop liefert nur CH.
+`versandaussagen_wahrheit.py` fand aber «noch zu schreiben: 0»: **alle waren quittiert** (die
+15.08.-Falle: ein spaeterer Massen-Schreiber belebte die Bloecke wieder, das Erledigt-Zeichen
+blockierte die Zweitreparatur). Mit `IGNORIERE_LEDGER=1 QUELLE=live` in Chargen: **alle drei
+Klassen auf 0**. Die zwei «offen gebliebenen» Seiten waren live laengst korrekt — der Bericht
+des Werkzeugs war aelter als die Wirklichkeit (erst LIVE lesen, dann reparieren).
+- ⚠️ Ein von `nohup` gestarteter Lauf ueberlebte das Turn-Reaping NICHT; erst
+  `( setsid bash -c '…' & )` liess die Charge durchlaufen.
+
 ## Stand
 **📌 2026-07-10 (BigBuy-Bereinigung + Google-Feed + Katalog-Gesundheit — Branch `claude/luxestyle-status-tztnn1`):**
 - **BigBuy „vorsichtig" (User-Entscheidung):** Import DEAKTIVIERT (Flag `_bigbuy_import_disabled`, negative
