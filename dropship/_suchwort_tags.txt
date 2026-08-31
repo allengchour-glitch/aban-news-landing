@@ -12349,3 +12349,6 @@ gid://shopify/Product/15510835036545	kissen	Kuschelkissen Katze, 32 cm
 gid://shopify/Product/15510835134849	kissen	Schwangerschafts-Stützkissen für Seitenlage
 gid://shopify/Product/15510836674945	buerste	Selbstreinigende Haustierbürste
 gid://shopify/Product/15510858301825	schuh	Kinder Casual Einzelschuhe mit weicher Sohle und Klett
+gid://shopify/Product/15510858498433	uhr	Concept Skeleton Herrenuhr
+gid://shopify/Product/15510858563969	uhr	Luminous Chronograph – wasserdichte Quarzuhr für Herren
+gid://shopify/Product/15510858596737	uhr	Business Casual Quarzuhr mit Kalender
