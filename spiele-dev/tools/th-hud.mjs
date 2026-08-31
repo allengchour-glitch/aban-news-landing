@@ -68,6 +68,12 @@ for (let i = 0; i < 24; i++) {
   await page.waitForTimeout(500)
 }
 
+/* ⚠️ DER BAUMODUS WAR NIE GEMESSEN. Dieses Werkzeug prueft seit jeher nur den
+   Spielmodus — dabei ist "Bauen" der Kern des Spiels und hat eine voellig andere
+   Oberflaeche (Katalog-Leiste unten, Kategorie-Reiter, Vorlagen-Knopf). Ein Screenshot
+   zeigte dort zwei Befunde, die hier nie auffallen konnten. Also: dieselbe Messung,
+   zweimal — einmal im Spiel, einmal im Bau. */
+const messen = async (modus) => {
 const r = await page.evaluate(([B, H]) => {
   const sichtbar = (el) => {
     const s = getComputedStyle(el)
@@ -100,7 +106,27 @@ const r = await page.evaluate(([B, H]) => {
   const K = echte.map(kasten)
   /* Was der Spieler gerade nicht sieht (eingeklappte Meldungen ueber dem Bildrand),
      ist kein Fehler — gemeldet wird, was IM Bild sein sollte und hinausragt. */
-  const raus = K.filter((k) => (k.x < -1 || k.r > B + 1 || k.u > H + 1) && k.y > -5)
+  /* ⚠️ WAS SCROLLT, RAGT NICHT HERAUS. Die erste Messung des Baumodus meldete sechs
+     Katalog-Kacheln als "ausserhalb des Bildes" — sie liegen aber in #palItems mit
+     `overflow-x:auto`, also in einer SCROLL-Leiste. Dort ist Inhalt jenseits des Randes
+     gewollt, nicht kaputt. Wer das nicht unterscheidet, meldet jede Liste als Fehler.
+     Geprueft wird der tatsaechlich berechnete overflow der Vorfahren, nicht eine Liste
+     von Element-Namen. */
+  const inScroller = (el, achse) => {
+    for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+      const s2 = getComputedStyle(a)
+      const ov = achse === 'x' ? s2.overflowX : s2.overflowY
+      if (ov === 'auto' || ov === 'scroll') return true
+    }
+    return false
+  }
+  const raus = K.filter((k, i) => {
+    if (k.y <= -5) return false
+    const el = echte[i]
+    const wagX = (k.x < -1 || k.r > B + 1) && !inScroller(el, 'x')
+    const wagY = (k.u > H + 1) && !inScroller(el, 'y')
+    return wagX || wagY
+  })
   const klein = K.filter((k) => (k.w < 44 || k.h < 44) && k.tag === 'button')
   /* ⚠️ ÜBERDECKUNG IST DIE FALSCHE FRAGE. Der erste Lauf meldete zwoelfmal
      "#wrap ueber X" — #wrap ist eine bildschirmfuellende Ebene (Rechtsklinks), und in
@@ -130,7 +156,7 @@ const r = await page.evaluate(([B, H]) => {
       k9 = k9.parentElement
       if (k9.id) w = k9
     }
-    ueber.push({ a: (t.id || t.tagName.toLowerCase()), wurzel: (w.id || w.tagName.toLowerCase()),
+    ueber.push({ a: (t.id || (t.className && typeof t.className==="string" ? "."+t.className.trim().split(/\s+/)[0] : t.tagName.toLowerCase())), wurzel: (w.id || w.tagName.toLowerCase()),
                  b: kasten(el).id,
                  ox: Math.round(b.width), oy: Math.round(b.height), flaeche: b.width * b.height })
   }
@@ -169,7 +195,7 @@ const r = await page.evaluate(([B, H]) => {
   return { n: K.length, raus, klein, ueber: ueber.slice(0, 12), umbruch, alle: K }
 }, [B, H])
 
-console.log(`Bedienoberflaeche bei ${B}x${H} — ${r.n} sichtbare Elemente\n`)
+console.log(`\nBedienoberflaeche bei ${B}x${H} · ${modus} — ${r.n} sichtbare Elemente\n`)
 console.log(`${r.raus.length ? '❌' : '✅'} Ausserhalb des Bildes: ${r.raus.length}`)
 r.raus.forEach((k) => console.log(`     ${k.id.padEnd(18)} ${k.x},${k.y} ${k.w}x${k.h} → rechts ${k.r}, unten ${k.u}`))
 console.log(`${r.klein.length ? '⚠️ ' : '✅'} Tippziele unter 44px: ${r.klein.length}`)
@@ -190,8 +216,21 @@ if (sperre) {
 console.log(`${r.umbruch.length ? '❌' : '✅'} Textzeilen, die umbrechen: ${r.umbruch.length}`)
 r.umbruch.forEach((u) => console.log(`     ${u.ort.padEnd(12)} ${u.zeilen} Zeilen · hat ${u.ist} px, braucht ${u.noetig} px  „${u.txt}"`))
 console.log(`JS-Fehler: ${jsFehler.length}`)
-if (r.raus.length || (!sperre && r.ueber.length) || r.umbruch.length || jsFehler.length) fehlerGesamt++
-await page.screenshot({ path: REPO + '/spiele-dev/screenshots/hud-' + B + 'x' + H + '.png' })
+await page.screenshot({ path: REPO + '/spiele-dev/screenshots/hud-' + B + 'x' + H +
+  (modus === 'Baumodus' ? '-bau' : '') + '.png' })
+return !!(r.raus.length || (!sperre && r.ueber.length) || r.umbruch.length || jsFehler.length)
+}
+
+let befund = await messen('Spielmodus')
+/* In den Baumodus wechseln und dasselbe noch einmal. */
+await page.evaluate(() => { const b = document.getElementById('modeBtn'); if (b) b.click() })
+await page.waitForTimeout(1200)
+const imBau = await page.evaluate(() => (typeof window.__th !== 'undefined') &&
+  document.getElementById('palette') !== null &&
+  getComputedStyle(document.getElementById('palette')).display !== 'none')
+if (!imBau) console.log('\n⚠️  Baumodus liess sich nicht oeffnen — Messung uebersprungen (kein Befund, aber auch kein Beleg)')
+else befund = (await messen('Baumodus')) || befund
+if (befund) fehlerGesamt++
 await browser.close()
 
 }

@@ -93,7 +93,19 @@ canvas{display:block}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
   #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  #tools{left:calc(10px + env(safe-area-inset-left));right:auto;top:120px;bottom:auto} /* 🩹 Schwarm-4: 70px lag unter dem Pokal-Knopf (y 64..112, z-index 14) — „Drehen" oeffnete die Erfolge */
+  /* ⚠️ !important IST HIER PFLICHT, NICHT GESCHMACK. Dieser @media-Block steht VOR den
+     Grundregeln; bei gleicher Spezifitaet gewinnt die spaetere. Die Grundregel fuer
+     #tools (weiter unten) setzt right und bottom — ohne Prioritaet blieben die hier
+     stehenden Werte wirkungslos, und zwar STILL: gemessen bei 568x320 war #tools
+     548 x 0 px (left:10 UND right:10 gleichzeitig, top:120 UND bottom:252 → rechnerisch
+     -52 px Hoehe), die Werkzeugknoepfe auf 26 px gequetscht und der Abreissen-Knopf lag
+     auf dem ersten Kategorie-Reiter. Die Nachbarregeln (#minimap, #villaBtn, #piBar)
+     tragen aus genau diesem Grund schon !important. */
+  /* Und die POSITION: links ist bei 320 px Hoehe kein Platz. Ausgemessen (568x320,
+     Baumodus) sind belegt: Pokal x10-58/y64-112, Villa-Vorlage x66-254/y86-130,
+     „Leben" x226-342/y58-103, Palette ab y135. Frei bleibt der Streifen rechts oben:
+     x344-568, y58-135 — 224 x 77 px. Dort liegen die zwei Werkzeuge als REIHE. */
+  #tools{left:auto !important;right:calc(10px + env(safe-area-inset-right)) !important;top:62px !important;bottom:auto !important;flex-direction:row !important} /* 🩹 Schwarm-4: 70px lag unter dem Pokal-Knopf (y 64..112, z-index 14) — „Drehen" oeffnete die Erfolge */
   #villaBtn{left:calc(66px + env(safe-area-inset-left)) !important} /* 🩹 Schwarm-6: lag bei left:10 unter der Werkzeugspalte — Tap auf 🔄/🧨 kaufte die Villa */
   /* 🩹 Schwarm-4: piBar lag quer ueber dem Joystick (z-index 14 vs 13) — Steuern loeste Winken/Geschenk aus */
   #piBar{left:auto !important;right:calc(80px + env(safe-area-inset-right)) !important;bottom:calc(12px + env(safe-area-inset-bottom)) !important}
@@ -173,7 +185,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="coupHud" style="display:none;position:fixed;left:50%;transform:translateX(-50%);top:calc(112px + env(safe-area-inset-top));z-index:17;background:rgba(30,10,20,.88);color:#ffd9e0;border:2px solid #b02a5a;border-radius:14px;padding:8px 18px;font-weight:900;font-size:.95rem"></div>
 <button id="coupBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#2a2a3a,#7a1a3a)">🏦 Bank-Coup zu zweit</button>
 <button id="coasterBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e8543a,#b02a5a)">🎢 Achterbahn fahren</button>
-<button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:10px 16px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
+<button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 18px;min-height:44px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:linear-gradient(90deg,#1a4a2a,#3a6a3a);box-shadow:0 8px 24px rgba(30,80,40,.5)">🌿 Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
@@ -260,7 +272,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <button id="kochQuit" style="margin-top:10px;border:0;background:#e8e0d0;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
  </div>
 </div>
-<div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
+<div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;pointer-events:none;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
 <button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:0;background:rgba(255,253,248,.95);border-radius:16px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)">🏆</button>
 <canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:0;box-shadow:0 6px 20px rgba(20,30,15,.42);background:#3a5a34;cursor:pointer"></canvas>
 <!-- 🗺️ Grosse Karte (User: „map ist noch zu klein") — Tipp auf das Radar oeffnet die ganze Welt -->
@@ -13756,7 +13768,17 @@ document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=de
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
 document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
   document.getElementById("modeBtn").textContent=buildMode?"👀 Leben":"🔨 Bauen";
-  document.getElementById("modeBtn").classList.toggle("building",buildMode);
+  /* ⚠️ INLINE MIT !important UEBERLEBT DEN MODUSWECHSEL. layoutLinkeSpalte setzt im
+     Spielmodus `left` inline und mit Prioritaet (weil die CSS-Regel selbst !important
+     traegt). Im Baumodus soll `#modeBtn.building{left:50%;transform:translateX(-50%)}`
+     den Knopf oben MITTIG stellen — das Inline-left gewinnt aber, und das transform
+     schiebt ihn danach um die halbe Breite nach links: 12 − 58 = −46 px, also halb aus
+     dem Bild. Gemessen mit th-hud (Baumodus-Durchlauf, 1280x800). Darum die Inline-
+     Werte beim Wechsel loeschen und beim Zurueckwechseln neu setzen lassen. */
+  var _mb9=document.getElementById("modeBtn");
+  _mb9.classList.toggle("building",buildMode);
+  if(buildMode){["left","top","bottom"].forEach(function(k){_mb9.style.removeProperty(k);});}
+  else if(typeof layoutLinkeSpalte==="function")setTimeout(layoutLinkeSpalte,30);
   document.getElementById("palette").style.display=buildMode?"block":"none";
   document.getElementById("tools").style.display=buildMode?"flex":"none";
   gridHelper.visible=buildMode;refreshGhost();};
