@@ -33,6 +33,8 @@ async function token(){ if(ADMIN_TOKEN&&await works(ADMIN_TOKEN))return ADMIN_TO
 // Herkunfts-Tier → Lieferzeit-Regionen (Tage-Range als String)
 function tier(tags){ const t=tags.map(x=>String(x).toLowerCase());
   if(t.includes('ch-lager')||t.includes('fortura')||t.includes('schweiz-versand')) return {key:'ch-lager', ch:'1–2', weg:'ab Schweizer Lager'};
+  // 31.08.2026: Zwei Allover-Artikel werden AUSSERHALB Europas gedruckt (Printful-Quote: 20–25 Tage nur Versand).
+  if(t.includes('pod-uebersee')) return {key:'pod-uebersee', ch:'20–30', weg:'Druck ausserhalb Europas'};
   if(t.includes('printful_personalized_product')||t.includes('prodigi_personalized_product')||t.includes('selbst-gestalten')||t.some(x=>x.startsWith('pod-')||x.startsWith('fertig-'))) return {key:'pod', ch:'7–14', weg:'Druck auf Bestellung'};
   if(t.includes('eu-lager')) return {key:'eu-lager', ch:'2–7', weg:'ab EU-Lager'};
   return {key:'direkt', ch:'10–20', weg:'Direktversand ab Herstellerlager'};

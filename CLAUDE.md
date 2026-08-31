@@ -4532,9 +4532,12 @@ Betreiber: «printful preise anschauen + auf webseite schreiben wie lange es ca 
 - **⚠️ Zwei Artikel werden AUSSERHALB Europas gedruckt:** «Kleid mit Schlitz» und
   «Boardshorts» melden **20–25 Tage** reine Versandzeit — die 7-14-Werktage-Zusage wäre
   dort falsch. Beide Beschreibungen tragen jetzt einen Lieferhinweis «ca. 4–5 Wochen»;
-  ⚠️ der Theme-Lieferzeit-Block zeigt daneben weiter die POD-Standardzeile — zwei Aussagen
-  auf einer Seite, die Beschreibung warnt wenigstens. Sauber wäre eine Tag-Ausnahme im
-  ls-lieferzeit-Snippet (offen).
+  ✅ NACHTRAG am selben Abend: Der 7-14-Kasten steckte IN der Beschreibung (delivery_block
+  schreibt ihn dorthin) UND im Metafeld `custom.lieferzeit`. Beide auf «20–30 Werktage ·
+  Druck ausserhalb Europas» gesetzt, Texte auf «ca. 4–6 Wochen» angeglichen — und die QUELLE
+  kennt jetzt den Tag **`pod-uebersee`** (delivery_block.mjs, Zweig VOR dem pod-Prefix-Match,
+  sonst hätte der nächste Lauf alles zurückgedreht). Beide Produkte per tagsAdd getaggt,
+  am Objekt gegengeprüft. Live: Kasten zeigt 20–30, kein 7–14 mehr auf der Seite.
 - **Dauer steht jetzt dreifach ehrlich auf der Webseite:** Editor-Seite («Druck 2–5 +
   Versand 3–9 = ca. 7–14 Werktage, Allover-Ausnahmen 4–5 Wochen»), Video-Banner («in der
   Regel in 7–14 Werktagen bei dir»), Übersee-Produkte einzeln.

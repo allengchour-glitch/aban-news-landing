@@ -6913,3 +6913,13 @@ gid://shopify/Product/15449497993601	CHF 14.44	16 Varianten	Retro Polo-Pullover
 gid://shopify/Product/15449498059137	CHF 54.86	14 Varianten	Damen-Western-Shirt - schlankes Fit, schwarz, lila
 gid://shopify/Product/15449498091905	CHF 17.45	5 Varianten	Langer Sweatshirt Pullover
 gid://shopify/Product/15449498255745	CHF 15.01	63 Varianten	Weihnachtsmuster-Fleece-Hoodie
+gid://shopify/Product/15449498354049	CHF 19.79	12 Varianten	Lässige Jacke im koreanischen Stil
+gid://shopify/Product/15449498386817	CHF 10.64	66 Varianten	Dicker Langarm-Rundhalspullover aus reiner Baumwol
+gid://shopify/Product/15449498452353	CHF 16.66	6 Varianten	Roter Pullover mit Bogen-Detail
+gid://shopify/Product/15449498616193	CHF 13.21	86 Varianten	Damen-Sweatshirt mit Blumenmuster
+gid://shopify/Product/15449498911105	CHF 15.98	8 Varianten	Grauer Hoodie Cardigan
+gid://shopify/Product/15449498943873	CHF 19.85	8 Varianten	Damen lässiger Druck-Sweatshirt Langarm
+gid://shopify/Product/15449499074945	CHF 13.54	40 Varianten	Weihnachts-Pullover Damen 3D-Druck
+gid://shopify/Product/15449499107713	CHF 11.76	70 Varianten	Weihnachtskatze Pullover
+gid://shopify/Product/15449499206017	CHF 16.53	4 Varianten	Weiblicher Unifarben Hoodie fuer Herbst/Winter
+gid://shopify/Product/15449499304321	CHF 16.84	10 Varianten	Lockere Damen-Hoodie mit Fleece-Futter
