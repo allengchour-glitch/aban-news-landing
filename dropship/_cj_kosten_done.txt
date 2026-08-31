@@ -6127,3 +6127,5 @@ gid://shopify/Product/15449435439489	CHF 16.11	48 Varianten	Weihnachts-Muster Sw
 gid://shopify/Product/15449435472257	CHF 13.14	28 Varianten	Weihnachts-Halloween-Digitaldruck-Langarmshirt
 gid://shopify/Product/15449435505025	CHF 18.50	11 Varianten	Gedruckter Rundhals-Casual Hoodie
 gid://shopify/Product/15449435537793	CHF 17.70	16 Varianten	Weihnachts-Hoodie mit 3D-Print
+gid://shopify/Product/15449435570561	CHF 14.81	48 Varianten	Weihnachts-Katze Crew-Neck Pullover Damen
+gid://shopify/Product/15449435603329	CHF 15.50	28 Varianten	Damen-Weihnachtsdruck-Flanell-Hoodie
