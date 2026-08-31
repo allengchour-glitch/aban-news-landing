@@ -75,3 +75,11 @@ _th_dbg.html
 #    versionierte _*.html im ganzen Repo, und die drei versionierten _-Dateien im
 #    Wurzelverzeichnis (_headers, _redirects, _in2.mjs) sind keine HTML-Dateien.
 /_*.html
+# ⚠️ UND NICHT NUR IM WURZELVERZEICHNIS. Das Muster oben ist mit "/" an die Wurzel
+#    gebunden; die Werkzeuge in spiele-dev/tools legen ihre Kopien aber NEBEN sich ab
+#    (_leistung_probe.html, _serie_probe.html, _hud_tmp.html …). Sie raeumen selbst auf,
+#    aber ein abgebrochener Lauf laesst sie liegen — genau so tauchte
+#    _leistung_probe.html im Status auf, weil eine Ausgabe durch "head" die Pipe
+#    frueh schloss. Nachgesehen wie beim ersten Mal: `git ls-files | grep "_[^/]*\.html$"`
+#    ist leer, es gibt repoweit keine versionierte _*.html. Darum unangebunden.
+_*.html
