@@ -528,6 +528,17 @@ while true; do
       echo "$(date -u +%H:%M) tiktok-karussell gebaut + Cowork-Auftrag fortgeschrieben"
     fi
   fi
+  # Post-Kontrolle (31.08.): merkt, wenn der PC-Autoposter (schtasks 17:31) steht —
+  # 3 Tage unveraenderter videoCount bei freier Queue = Bericht. MELDET NUR.
+  TPK=/tmp/tiktok_post_kontrolle.log
+  if [ -f "$REPO/automation/tiktok_post_kontrolle.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TPK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c '
+          python3 automation/tiktok_post_kontrolle.py' >> "$TPK" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tiktok-post-kontrolle gestartet"
+    fi
+  fi
   # Woechentliches Kompilations-Reel («Meisterwerk», Betreiber-Auftrag 30.08.): reiht die
   # gepruueften Hook-Slides der Woche zu EINEM Reel. Sonntags, einmal pro Woche.
   MWL=/tmp/tiktok_meisterwerk.log
