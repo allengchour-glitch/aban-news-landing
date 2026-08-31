@@ -6985,3 +6985,4 @@ gid://shopify/Product/15449508315521	CHF 15.74	6 Varianten	Langarm-Dress mit Fli
 gid://shopify/Product/15449508348289	CHF 24.21	5 Varianten	Schwarze Patchwork-Mermaid-Rock
 gid://shopify/Product/15449508381057	CHF 11.68	6 Varianten	Pink-Lace-Röckchen
 gid://shopify/Product/15449508413825	CHF 16.78	4 Varianten	Blauer Linienrock mit Stickerei
+gid://shopify/Product/15449508446593	CHF 21.35	4 Varianten	Blauer Rock mit asymmetrischem Kleid
