@@ -6998,3 +6998,7 @@ gid://shopify/Product/15449508970881	CHF 24.93	7 Varianten	Grüner Oktopus-Pulli
 gid://shopify/Product/15449510150529	CHF 14.02	15 Varianten	Entspannter Pullover
 gid://shopify/Product/15449510183297	CHF 55.43	8 Varianten	Cashmere-Pullover mit Feder-Design
 gid://shopify/Product/15449510216065	CHF 11.73	1 Varianten	Regenbogen-Mohair-Pullover
+gid://shopify/Product/15449510281601	CHF 17.91	32 Varianten	Wollpullover · Modell 2
+gid://shopify/Product/15449510314369	CHF 13.73	4 Varianten	Patchwork-Top aus Polyester
+gid://shopify/Product/15449510347137	CHF 11.65	4 Varianten	Apricot-Polsterpulli
+gid://shopify/Product/15449510379905	CHF 17.70	5 Varianten	Farbenfrohes Pullover
