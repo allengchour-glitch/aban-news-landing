@@ -7035,3 +7035,37 @@ gid://shopify/Product/15449512771969	CHF 13.51	50 Varianten	Waffel-Pullover · D
 gid://shopify/Product/15449512804737	CHF 14.93	36 Varianten	Einfarbige Waffelgewebe-Button-up-Hemd mit Kragen 
 gid://shopify/Product/15449512870273	CHF 13.78	36 Varianten	Damen Colorblock Langarm-Shirt mit Slim Fit – 2-To
 gid://shopify/Product/15449512903041	CHF 11.91	15 Varianten	Französisches Taschenhemd
+gid://shopify/Product/15449568280961	CHF 19.18	24 Varianten	Elegantes Midi-Kleid
+gid://shopify/Product/15449568313729	CHF 10.82	32 Varianten	Losgelegtes Maxi-Kleid
+gid://shopify/Product/15449568346497	CHF 19.04	5 Varianten	Schwarzes Spitzenkleid
+gid://shopify/Product/15449568412033	CHF 14.14	15 Varianten	Elegantes Sommerkleid
+gid://shopify/Product/15449568444801	CHF 16.59	35 Varianten	Elegantes Kleid · Damen
+gid://shopify/Product/15449568477569	CHF 20.67	5 Varianten	Weisses Babydoll-Kleid
+gid://shopify/Product/15449568510337	CHF 16.31	20 Varianten	Weiter Midi-Rock · Damen
+gid://shopify/Product/15449568575873	CHF 13.75	9 Varianten	Rückenfreies Satin-Kleid
+gid://shopify/Product/15449568641409	CHF 18.62	20 Varianten	Kleid in Wildleder-Optik mit Fransen
+gid://shopify/Product/15449568674177	CHF 18.68	80 Varianten	Plaid-Hemd mit weitem Schnitt
+gid://shopify/Product/15449568739713	CHF 10.12	25 Varianten	Karierte Bluse · Damen
+gid://shopify/Product/15449568805249	CHF 11.13	30 Varianten	Sommerbluse mit Knopfleiste
+gid://shopify/Product/15449568969089	CHF 12.56	20 Varianten	Lockere Strickjacke · Modell 2
+gid://shopify/Product/15449569001857	CHF 14.70	3 Varianten	Bikini mit Maxi-Rock
+gid://shopify/Product/15449569067393	CHF 13.05	9 Varianten	Sommer-Sweater · Damen
+gid://shopify/Product/15449569100161	CHF 15.06	16 Varianten	Einfarbiger Vielseitiger Pullover mit schlankmache
+gid://shopify/Product/15449569132929	CHF 12.97	15 Varianten	Rundhals Französisch Retro Gestreifter Strickpulli
+gid://shopify/Product/15449569165697	CHF 11.93	15 Varianten	Taille-schmeichelndes Stricktop, Militärgrün, Slim
+gid://shopify/Product/15449569198465	CHF 18.39	10 Varianten	Boho Plus-Grösse Langarm Strickcardigan mit Latern
+gid://shopify/Product/15449569264001	CHF 29.95	6 Varianten	Leichter, bügelfreier Hoodie-Cardigan mit seitlich
+gid://shopify/Product/15449569427841	CHF 22.68	18 Varianten	Damen-Cardigan mit Kapuze und Lantern-Arm
+gid://shopify/Product/15449569460609	CHF 17.61	18 Varianten	Blumen-Kardigan für Damen
+gid://shopify/Product/15449569624449	CHF 17.01	96 Varianten	Hoodie mit Kordelzug – Weit geschnittener Jackenpu
+gid://shopify/Product/15449569657217	CHF 15.23	5 Varianten	Lockerer A-Linie Rock mit Spitzendekor
+gid://shopify/Product/15449569722753	CHF 13.38	12 Varianten	Eleganter A-Linien Maxi Rock
+gid://shopify/Product/15449569788289	CHF 24.74	8 Varianten	Elegante fliessende Hosenrock, Design, hochtaillie
+gid://shopify/Product/15449569821057	CHF 15.80	42 Varianten	Chiffonrock mit asymmetrischen Falten
+gid://shopify/Product/15449569919361	CHF 27.47	15 Varianten	Jeans mit abgenutztem Look
+gid://shopify/Product/15449569952129	CHF 20.23	21 Varianten	Formende Apfelpfanne-Jeans in Hellblau
+gid://shopify/Product/15449570836865	CHF 21.94	3 Varianten	Gerade Beine Gewaschene abgenutzte Casual Jeans
+gid://shopify/Product/15449570902401	CHF 21.43	5 Varianten	Stud-Details Hochtaillierte Flare-Jeans Grau-Wasch
+gid://shopify/Product/15449570935169	CHF 20.77	5 Varianten	Hochtaillierte Stretch-Flare-Jeans, Hellwasch Slim
+gid://shopify/Product/15449570967937	CHF 20.37	5 Varianten	Hüftbund Stretchfreie Weitbein-Hellwasch Jean
+gid://shopify/Product/15449571000705	CHF 22.04	5 Varianten	Straight-Leg Jeans in Washed Blue
