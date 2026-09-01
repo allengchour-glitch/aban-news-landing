@@ -4520,6 +4520,22 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🚢 «Alle Klassen auf 0» galt nur für die GEMESSENEN Klassen — 167 USA-Blöcke überlebten (2026-09-01)
+Beim SEO-Ausbau der Fast-Seite-1-Seiten fiel auf: Der 4L-Luftbefeuchter (Position 20 für
+«luftbefeuchter grosse räume») trug noch «🇺🇸 USA: 12–22 Tage» — und die Inhalts-Suche fand
+**167 aktive Produkte** mit genau dieser Variante. Der 31.08.-Lauf hatte «alle drei Klassen
+auf 0» gebracht — gemessen an DREI Suchphrasen; die vierte Variante stand in keiner davon.
+**Ein Erfolg, der an den eigenen bekannten Mustern gemessen wird, übersieht die unbekannten.**
+Die REGELN des Werkzeugs kannten den Block längst (umschreiben() traf ihn im Test sofort) —
+nur die Chargen-Auswahl hat diese Produkte nie erreicht. Nachzug: Kandidaten per
+Inhalts-Suche (`status:active AND "USA: 12–22 Tage"`, Filter gegen Unsinnswort validiert),
+umschreiben() aus dem Werkzeug importiert (EINE Regelquelle), 167/167 geschrieben,
+Ledger quittiert, Restzähler nach Index-Nachlauf **0**.
+- **SEO-Titel gesetzt** (fehlten komplett) auf den drei Seiten, die am nächsten an Seite 1
+  stehen: Acryl-Beistelltisch (Pos. 16), Holzspiegel (Pos. 17), kleiner Luftbefeuchter
+  (Pos. 23, 260 Suchen/Mt.) — jede Formulierung durch Titel/Text gedeckt, seo-Objekt mit
+  beiden Feldern zurückgesendet (Ersetz-Falle).
+
 ## 📵 TikToks Absage ist GRUNDSÄTZLICH — und der PC-Poster braucht jetzt kein Git mehr (2026-08-31)
 Der Betreiber zeigte das Entwicklerportal: Die App «luxe» ist nach 13 Tagen Review **abgelehnt** —
 wörtlich *«App will not be approved for personal or company internal use … Not acceptable: Display
