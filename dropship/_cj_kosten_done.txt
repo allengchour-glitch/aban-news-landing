@@ -7778,3 +7778,58 @@ gid://shopify/Product/15450214072705	CHF 10.28	1 Varianten	GPS-Lokator
 gid://shopify/Product/15450214269313	CHF 35.75	1 Varianten	GPS-Locator mit 90-Tage-Batterie, Mini-Design und 
 gid://shopify/Product/15450214498689	CHF 21.33	1 Varianten	Mini-GPS-Tracker für Outdoor & Auto
 gid://shopify/Product/15450214629761	CHF 12.37	1 Varianten	Intelligenter Auto-Duftverteiler
+gid://shopify/Product/15450214662529	CHF 15.40	1 Varianten	Natur-Agarholz-Anhänger
+gid://shopify/Product/15450214695297	CHF 33.00	1 Varianten	Premium-Sojawachskerze mit Rotwein-, Leder- & Espr
+gid://shopify/Product/15450214793601	CHF 35.22	1 Varianten	Sojawachs-Kerze mit Orchideen-Duft
+gid://shopify/Product/15450214826369	CHF 30.05	1 Varianten	Zitrus-Kräuter Kerze
+gid://shopify/Product/15450214859137	CHF 24.70	1 Varianten	Sojawachskerze mit Zitrus- und Holznoten – ideal f
+gid://shopify/Product/15450214891905	CHF 12.47	1 Varianten	Luftfrischer für Auto-Ventile
+gid://shopify/Product/15450214924673	CHF 17.61	1 Varianten	Sportlenkradbezug
+gid://shopify/Product/15450214957441	CHF 16.03	1 Varianten	Lenkradbezug Carbon-Faser
+gid://shopify/Product/15450215022977	CHF 17.53	1 Varianten	Lenkrad-Abdeckung
+gid://shopify/Product/15450215055745	CHF 14.57	1 Varianten	Lenkradbezug Suede
+gid://shopify/Product/15450215088513	CHF 20.21	1 Varianten	Lenkradbezug
+gid://shopify/Product/15450215154049	CHF 16.20	1 Varianten	Winter-Steuerrad-Abdeckung
+gid://shopify/Product/15450215186817	CHF 16.47	1 Varianten	Lenkradbezug Holzprägung
+gid://shopify/Product/15450215252353	CHF 14.42	1 Varianten	Carbon-Lenkradbezug
+gid://shopify/Product/15450215285121	CHF 15.90	1 Varianten	Lenkradgriff-Abdeckung
+gid://shopify/Product/15450215383425	CHF 17.01	1 Varianten	Lenkradbezug aus Kunstleder
+gid://shopify/Product/15450215514497	CHF 17.71	1 Varianten	Suede Lenkradbezug
+gid://shopify/Product/15450215547265	CHF 19.07	1 Varianten	Carbon-Faser Lenkradbezug
+gid://shopify/Product/15450215645569	CHF 16.95	1 Varianten	Lenkradbezug Universal
+gid://shopify/Product/15450251854209	CHF 30.27	1 Varianten	Notstarter Akku
+gid://shopify/Product/15450251886977	CHF 64.13	1 Varianten	Auto-Innenraum Dekoration
+gid://shopify/Product/15450251919745	CHF 38.57	1 Varianten	Tragbarer Reifenpump
+gid://shopify/Product/15450251952513	CHF 65.28	1 Varianten	Auto-Notstarter
+gid://shopify/Product/15450251985281	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450252018049	CHF 100.97	1 Varianten	Bagger-Scooter
+gid://shopify/Product/15450252050817	CHF 32.07	1 Varianten	Auto-Notstarter 12V
+gid://shopify/Product/15450252083585	CHF 8.76	1 Varianten	Carbon-Zündschalter
+gid://shopify/Product/15450252116353	CHF 60.11	1 Varianten	Auto-Booster 800A
+gid://shopify/Product/15450252149121	CHF 12.94	1 Varianten	Auto-Heizer
+gid://shopify/Product/15450252181889	CHF 30.09	1 Varianten	Notstart-Powerbank 12V
+gid://shopify/Product/15450252214657	CHF 10.00	1 Varianten	Fernbedienungsschlüssel
+gid://shopify/Product/15450252247425	CHF 21.28	1 Varianten	Notstart-Hilfe
+gid://shopify/Product/15450252312961	CHF 42.88	1 Varianten	Notstarter 12V
+gid://shopify/Product/15450252476801	CHF 20.05	1 Varianten	Auto Diebstahlschutz
+gid://shopify/Product/15450252607873	CHF 16.05	1 Varianten	Doppel-Ladegerät
+gid://shopify/Product/15450252640641	CHF 8.80	1 Varianten	Überspannungsschutz
+gid://shopify/Product/15450252673409	CHF 12.94	1 Varianten	Auto-Diebstahlalarm
+gid://shopify/Product/15450252706177	CHF 50.76	1 Varianten	Notstarter Powerbank
+gid://shopify/Product/15450252738945	CHF 48.82	1 Varianten	Notstarter mit LED
+gid://shopify/Product/15450252771713	CHF 14.05	1 Varianten	Batterie-Schalter
+gid://shopify/Product/15450252804481	CHF 14.78	1 Varianten	Faltbare Fernbedienungsschlüssel
+gid://shopify/Product/15450252837249	CHF 9.34	1 Varianten	2-Tasten Auto-Schlüssel
+gid://shopify/Product/15450252870017	CHF 22.39	1 Varianten	Bluetooth-Transmitter
+gid://shopify/Product/15450252902785	CHF 8.41	1 Varianten	Peugeot Auto-Schlüssel
+gid://shopify/Product/15450253001089	CHF 68.95	1 Varianten	Auto-Notstartgerät
+gid://shopify/Product/15450253033857	CHF 50.55	1 Varianten	Notstartgerät 12V
+gid://shopify/Product/15450253066625	CHF 20.87	1 Varianten	Autositzschutz
+gid://shopify/Product/15450253099393	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450253132161	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450253164929	CHF 23.77	1 Varianten	Sitzkissen-Zubehör
+gid://shopify/Product/15450253197697	CHF 12.27	1 Varianten	Sitzkissen mit Höhenverstellung
+gid://shopify/Product/15450253230465	CHF 9.83	1 Varianten	Kombi-Abfalleimer & Papiertuchbox für Auto
+gid://shopify/Product/15450253263233	CHF 10.37	1 Varianten	Kühl-Seidenkissen Sitzauflage
+gid://shopify/Product/15450253296001	CHF 41.72	1 Varianten	Atmungsaktive Kühl-Sitzauflage
+gid://shopify/Product/15450253328769	CHF 9.70	4 Varianten	Leder-Sitzauflage atmungsaktiv · 45 × 38 cm
