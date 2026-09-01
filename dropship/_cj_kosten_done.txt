@@ -7106,3 +7106,33 @@ gid://shopify/Product/15449576604033	CHF 13.47	35 Varianten	Herren-Halb-Hals-Pul
 gid://shopify/Product/15449576636801	CHF 16.31	15 Varianten	Herren Streifen Strickpullover mit Kontrastkragen
 gid://shopify/Product/15449576669569	CHF 19.17	4 Varianten	Herren Weit Schnitt Streifen-Lapel Pullover
 gid://shopify/Product/15449576767873	CHF 19.72	15 Varianten	Herren 2-in-1 Strickpullover mit Hemdkragen
+gid://shopify/Product/15449576833409	CHF 17.14	10 Varianten	Herren Cardigan mit Polohalsausschnitt
+gid://shopify/Product/15449576866177	CHF 29.80	88 Varianten	Herren Strickpulli Plusgrössen
+gid://shopify/Product/15449576931713	CHF 15.97	20 Varianten	Weisser Pullover mit Fleece-Futter
+gid://shopify/Product/15449576964481	CHF 17.62	16 Varianten	Herren Knit Sweater mit niedlichem Katzenprint
+gid://shopify/Product/15449577030017	CHF 36.05	30 Varianten	Wollpullover für Herren, einfarbig
+gid://shopify/Product/15449577062785	CHF 19.17	66 Varianten	Herren-Thermal-Halsbund-Pullover
+gid://shopify/Product/15449577095553	CHF 14.48	6 Varianten	Herren-Warm-Strickpullover
+gid://shopify/Product/15449577128321	CHF 17.76	35 Varianten	Dick gestrickter Pullover
+gid://shopify/Product/15449577226625	CHF 16.80	56 Varianten	Twist-Knit Cardigan
+gid://shopify/Product/15449577357697	CHF 19.57	95 Varianten	Fleecegefütterter Rundhals-High-Neck Pullover
+gid://shopify/Product/15449577488769	CHF 16.63	61 Varianten	Winterpullover Slim Fit Wollmischung
+gid://shopify/Product/15449577849217	CHF 21.07	35 Varianten	Herren-Weste, gestrickt, sleeveless
+gid://shopify/Product/15449578537345	CHF 13.34	10 Varianten	Herren-Striped-Weste
+gid://shopify/Product/15449579028865	CHF 14.87	6 Varianten	Minimalistischer Pullover für Herren
+gid://shopify/Product/15449579815297	CHF 22.31	8 Varianten	Herren Cape mit Digital-Druck
+gid://shopify/Product/15449579913601	CHF 14.48	42 Varianten	Cäsualer Slim-Fit Pullover
+gid://shopify/Product/15449580011905	CHF 27.13	8 Varianten	Herren-Pullover, locker, V-Hals
+gid://shopify/Product/15449580044673	CHF 11.60	36 Varianten	Herren-Pullover Slim Fit
+gid://shopify/Product/15449580110209	CHF 19.05	18 Varianten	Farbblock-Pullover für Herren
+gid://shopify/Product/15449580142977	CHF 62.73	6 Varianten	Gegensätzlicher Cardigan
+gid://shopify/Product/15449580208513	CHF 45.93	12 Varianten	Pullover mit Fuchs-Faux-Fur-Kontrast
+gid://shopify/Product/15449580306817	CHF 22.33	6 Varianten	Cartoon-Pullover für Herren
+gid://shopify/Product/15449580405121	CHF 11.94	84 Varianten	Herren Rollkragenpullover
+gid://shopify/Product/15449580536193	CHF 19.96	80 Varianten	Herren-Kardigan, lässig, langärmlig
+gid://shopify/Product/15449580634497	CHF 20.69	1 Varianten	Herbst-Pullover für Herren
+gid://shopify/Product/15449580798337	CHF 14.44	60 Varianten	Velour-Kardigan für Herren
+gid://shopify/Product/15449580896641	CHF 22.16	15 Varianten	Herren-Kardigan mit Jacquard-Muster
+gid://shopify/Product/15449580994945	CHF 16.80	40 Varianten	Fashion-Pullover mit Lapel-Kragen
+gid://shopify/Product/15449581060481	CHF 23.89	42 Varianten	V-Ausschnitt Pullover aus Kaschmir
+gid://shopify/Product/15449581257089	CHF 14.57	18 Varianten	Retro-Pullover für Herren
