@@ -252,3 +252,5 @@ gid://shopify/Product/15521700020609	franzosische-sandalen-mit-blockabsatz-59558
 gid://shopify/Product/15522129674625	isolierte-lunchtasche-gross-638800	Isolierte Lunchtasche, gross
 gid://shopify/Product/15522129707393	orthopadisches-latex-kopfkissen-b79d89	Orthopädisches Latex-Kopfkissen
 gid://shopify/Product/15522142847361	elastische-hunde-leine-mit-puffer-d1cd8c	Elastische Hunde-Leine mit Puffer
+gid://shopify/Product/15522152415617	taschenmesser-fur-survival-und-selbstverteidig-622100	Taschenmesser für Survival und Selbstverteidigung
+gid://shopify/Product/15522154250625	hunde-outdoor-weste-mit-brustgeschirr-870530	Hunde-Outdoor-Weste mit Brustgeschirr
