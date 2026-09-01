@@ -7447,3 +7447,17 @@ gid://shopify/Product/15449920995713	CHF 40.55	24 Varianten	Damenstiefel aus Vol
 gid://shopify/Product/15449921520001	CHF 18.94	12 Varianten	Damen-Booties mit massiver Sohle, winterfest
 gid://shopify/Product/15449921814913	CHF 25.83	20 Varianten	Spitzschuh-Blockabsatz Knöchelstiefel mit Schleife
 gid://shopify/Product/15449922044289	CHF 21.28	12 Varianten	Retro-Höhenverstärkende Mid-Calf Martin-Boots
+gid://shopify/Product/15449922208129	CHF 49.83	40 Varianten	Sequen-Schuhe mit Stilettoabsatz, Überknie
+gid://shopify/Product/15449922535809	CHF 49.98	72 Varianten	Farbige Stiletto-Over-the-Knee-Stiefel
+gid://shopify/Product/15450009567617	CHF 27.62	20 Varianten	Hochzeitsschuhe · Damen
+gid://shopify/Product/15450009698689	CHF 21.79	44 Varianten	Stilettos mit Nieten
+gid://shopify/Product/15450009895297	CHF 24.03	14 Varianten	Schleife Quadratische Spitze Niedriger Absatz Slip
+gid://shopify/Product/15450010157441	CHF 49.06	14 Varianten	Cowhide-Minimalist-Vielseitige Schuhe
+gid://shopify/Product/15450010288513	CHF 17.85	7 Varianten	Leopard-Print Spitzschuh Stiletto-Pumps für Abend 
+gid://shopify/Product/15450010419585	CHF 29.45	6 Varianten	Rückenriemen-Spitzschuh mit Bügel
+gid://shopify/Product/15450010550657	CHF 25.32	24 Varianten	Chic Sandalen mit massiver Hacke
+gid://shopify/Product/15450010714497	CHF 19.47	8 Varianten	Damen Sandalen mit Fischmund-Absatz
+gid://shopify/Product/15450010976641	CHF 41.43	14 Varianten	Spitzschuh mit Holzkorn-Optik Hochhackige Ankle Bo
+gid://shopify/Product/15450011173249	CHF 22.94	11 Varianten	Massive Absätze Spitzschuhe mit Rückenriemen
+gid://shopify/Product/15450011402625	CHF 18.13	24 Varianten	Neu: Elegante Damenhohe Absätze – Vielseitig
+gid://shopify/Product/15450011599233	CHF 20.98	16 Varianten	Schlangenmuster-Strap-Sandalen mit hohem Absatz
