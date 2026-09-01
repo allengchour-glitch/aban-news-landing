@@ -7915,3 +7915,12 @@ gid://shopify/Product/15450429751681	CHF 17.40	14 Varianten	Boho Slingback Stile
 gid://shopify/Product/15450429882753	CHF 17.85	7 Varianten	Sexy Roman Mesh Stiletto Sandalen
 gid://shopify/Product/15450429981057	CHF 17.72	16 Varianten	Damen Wildleder-Stiefeletten mit spitzer Kappe
 gid://shopify/Product/15450430079361	CHF 18.30	7 Varianten	Jazz Dance Mesh Sandaletten
+gid://shopify/Product/15450430210433	CHF 18.49	12 Varianten	Britische Mid-Calf Boots für Damen
+gid://shopify/Product/15450430341505	CHF 27.25	18 Varianten	Lange Damenstiefel mit Schnallen und Nieten
+gid://shopify/Product/15450430439809	CHF 29.39	12 Varianten	Retro Roman Sandalen mit Quasten
+gid://shopify/Product/15450430538113	CHF 42.88	60 Varianten	Hohe Chunky Boots mit Nieten und Schnallen
+gid://shopify/Product/15450430636417	CHF 28.05	14 Varianten	Chunky Boots aus Wildleder mit Blockabsatz
+gid://shopify/Product/15450430800257	CHF 50.27	14 Varianten	Damen Plateau Oxford aus Lammleder
+gid://shopify/Product/15450430833025	CHF 35.20	8 Varianten	Mid-Calf Chunky Boots mit Schnalle
+gid://shopify/Product/15450430996865	CHF 54.28	14 Varianten	Denim-Stiefel mit hohem Absatz
+gid://shopify/Product/15450431062401	CHF 23.51	28 Varianten	Western Ankle Boots mit Fransen
