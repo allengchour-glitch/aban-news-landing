@@ -4520,6 +4520,23 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## ⭐ Sterne auf allen Produktkarten — aus echten Metafeldern, ab 4.0★ und 3 Stimmen (2026-09-01)
+Betreiber: «webseite mehr bewertete produkten». Judge.me war binnen 4 Tagen von 1'193 auf
+**1'706 Bewertungen** gewachsen (der tägliche CJ-Import liefert) → statt 15 gibt es **244
+belegte Bewertungssieger** (per Judge.me-API aggregiert, 18 Seiten à 100). Umgesetzt:
+- **6 neue Sieger (≥6 Stimmen) in die MANUAL-`bestseller`-Kollektion** (jetzt 32; die tägliche
+  Rotation zeigt 12–16 davon). Ausschluss-Regex für die Startreihe (Kostüm/Intim/Wachstum/
+  Überwachung/Lauflernhilfe) auf Handle UND Titel.
+- **`snippets/product-card.liquid`: Sterne-Badge auf JEDER Produktkarte** (Startseite,
+  Kollektionen, Empfehlungen) — rein Liquid aus `reviews.rating`/`reviews.rating_count`
+  (Metafeld-Typ `rating` → `.value.rating`), von Judge.me synchron gehalten, altert nie.
+  Karten-Inhalt ist `{{ children }}` (Horizon baut Karten aus Blöcken); der Badge steht danach.
+- ⚠️ **Erste Fassung zeigte «★ 3.3» auf der Startseite** — ein Negativ-Badge wirbt GEGEN das
+  Produkt. Schwelle jetzt: nur ab **4.0★ UND ≥3 Stimmen** (kein Badge ist keine Falschaussage;
+  die Produktseite zeigt im Judge.me-Widget weiterhin die volle Wahrheit, auch 3.3).
+- Bestseller-Reihe 12→16 Karten (Summe 164 von max. ~180); Startseite 11/12 Abrufe 200.
+- Backups: theme_backup/product-card.liquid.vor-sterne-0109 + .sterne-0109 + index.json.sterne-bestseller16-0109.
+
 ## 🕳️ Zwei blinde Flecken in EINEM Wächter — und der Bestell-Runner stand seit dem Wipe (2026-09-01)
 Der Schicht-Gesundheitscheck der Tages-Wächter fand drei Dinge, die alle «FERTIG» meldeten und
 es nicht waren:
