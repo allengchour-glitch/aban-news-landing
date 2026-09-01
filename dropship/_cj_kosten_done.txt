@@ -7893,3 +7893,14 @@ gid://shopify/Product/15450301792641	CHF 12.14	8 Varianten	Auto-Nackenstuetze
 gid://shopify/Product/15450301858177	CHF 61.16	1 Varianten	Sonnenschutz für Fahrerseite
 gid://shopify/Product/15450301890945	CHF 35.72	1 Varianten	Universeller Lenkradbezug aus Faserleder 14,5–15 Z
 gid://shopify/Product/15450302185857	CHF 43.46	1 Varianten	Heizbare Auto-Sitzauflage 12V mit 2-Stufen-Regelun
+gid://shopify/Product/15450302448001	CHF 31.63	1 Varianten	Armlehnen-Schutzbezug
+gid://shopify/Product/15450302513537	CHF 42.52	1 Varianten	4er-Set PVC-Fussmatten für Auto, SUV & Truck – sch
+gid://shopify/Product/15450302579073	CHF 47.12	1 Varianten	3-in-1-Auto-Becherhalter
+gid://shopify/Product/15450302644609	CHF 65.88	2 Varianten	Wärmende Sitzauflage für Model 3/Y Vorderreihen – 
+gid://shopify/Product/15450302677377	CHF 12.77	16 Varianten	Universelle Auto-Sitzauflage für Kinder
+gid://shopify/Product/15450302742913	CHF 98.71	6 Varianten	Auto-Sitzbezüge aus PU-Leder
+gid://shopify/Product/15450302775681	CHF 24.22	1 Varianten	Armaturenbrettmatte für Dodge RAM 1500/2500/3500 1
+gid://shopify/Product/15450302841217	CHF 21.96	9 Varianten	3D Luftkissen Airbag
+gid://shopify/Product/15450303136129	CHF 25.07	1 Varianten	Kinder-Autositz Portabel 3-12 J.
+gid://shopify/Product/15450303168897	CHF 23.90	1 Varianten	Heizkissen für Autositz
+gid://shopify/Product/15450303201665	CHF 52.04	2 Varianten	Hüft- & Taille-Sitzpolster
