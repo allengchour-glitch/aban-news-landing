@@ -6992,3 +6992,9 @@ gid://shopify/Product/15449508577665	CHF 36.30	23 Varianten	Elegante Taille-Verj
 gid://shopify/Product/15449508610433	CHF 9.94	20 Varianten	Langes Sonnenschutz-Tuch
 gid://shopify/Product/15449508643201	CHF 41.29	6 Varianten	Navy-Blazer-Dress
 gid://shopify/Product/15449508774273	CHF 15.77	60 Varianten	Casual Pullover · Damen
+gid://shopify/Product/15449508839809	CHF 16.82	7 Varianten	Beige Blockpullover
+gid://shopify/Product/15449508938113	CHF 18.96	70 Varianten	Warm Pullover für Herren
+gid://shopify/Product/15449508970881	CHF 24.93	7 Varianten	Grüner Oktopus-Pulli
+gid://shopify/Product/15449510150529	CHF 14.02	15 Varianten	Entspannter Pullover
+gid://shopify/Product/15449510183297	CHF 55.43	8 Varianten	Cashmere-Pullover mit Feder-Design
+gid://shopify/Product/15449510216065	CHF 11.73	1 Varianten	Regenbogen-Mohair-Pullover
