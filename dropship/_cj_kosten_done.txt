@@ -7342,3 +7342,21 @@ gid://shopify/Product/15449839829377	CHF 72.68	12 Varianten	Stiletto-Sandalen ·
 gid://shopify/Product/15449839862145	CHF 17.40	7 Varianten	Hohe Stiletto-Sandalen
 gid://shopify/Product/15449839894913	CHF 18.75	10 Varianten	Retro-Sandalen · Damen
 gid://shopify/Product/15449839927681	CHF 13.56	32 Varianten	Sommer-Sandalen · Modell 2
+gid://shopify/Product/15449839993217	CHF 15.59	32 Varianten	Kristall-Sandalen
+gid://shopify/Product/15449840025985	CHF 21.99	30 Varianten	Pumps mit Chunky-Absatz
+gid://shopify/Product/15449840058753	CHF 16.50	14 Varianten	Satin-Sandalen · Damen
+gid://shopify/Product/15449840091521	CHF 20.51	11 Varianten	Offene Sandalen · Damen
+gid://shopify/Product/15449840157057	CHF 16.24	18 Varianten	Weiche Keil-Sandalen
+gid://shopify/Product/15449840222593	CHF 14.70	99 Varianten	Damen-Toeffelsandaletten
+gid://shopify/Product/15449840255361	CHF 17.88	7 Varianten	Romische Sandalen
+gid://shopify/Product/15449840288129	CHF 17.40	10 Varianten	Rote Pumps · Damen
+gid://shopify/Product/15449840386433	CHF 15.99	56 Varianten	Hohe Absatzschuhe
+gid://shopify/Product/15449840419201	CHF 17.12	20 Varianten	Flache Sandalen · Modell 2
+gid://shopify/Product/15449840451969	CHF 18.01	16 Varianten	Schwarze Sandalen
+gid://shopify/Product/15449840517505	CHF 17.40	30 Varianten	Suede-Sandalen · Damen
+gid://shopify/Product/15449840550273	CHF 11.93	40 Varianten	Sommer-Sandalen · Damen
+gid://shopify/Product/15449840583041	CHF 14.10	32 Varianten	Hohe Sandalen · Modell 2
+gid://shopify/Product/15449840615809	CHF 12.25	16 Varianten	Runde Sandalen mit hohem Absatz
+gid://shopify/Product/15449840648577	CHF 14.77	16 Varianten	Hohe Riemchensandalen
+gid://shopify/Product/15449840714113	CHF 14.34	24 Varianten	Bequeme Sandalen · Damen
+gid://shopify/Product/15449840779649	CHF 21.75	18 Varianten	Suede Stiletto Sandalen
