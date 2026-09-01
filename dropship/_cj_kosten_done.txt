@@ -7904,3 +7904,10 @@ gid://shopify/Product/15450302841217	CHF 21.96	9 Varianten	3D Luftkissen Airbag
 gid://shopify/Product/15450303136129	CHF 25.07	1 Varianten	Kinder-Autositz Portabel 3-12 J.
 gid://shopify/Product/15450303168897	CHF 23.90	1 Varianten	Heizkissen für Autositz
 gid://shopify/Product/15450303201665	CHF 52.04	2 Varianten	Hüft- & Taille-Sitzpolster
+gid://shopify/Product/15450303234433	CHF 19.78	26 Varianten	Winter-Autoreisekissen 3er-Set schmutzabweisend
+gid://shopify/Product/15450303299969	CHF 43.57	1 Varianten	Multifunktionaler Massage-Teppich für Auto
+gid://shopify/Product/15450303332737	CHF 12.90	10 Varianten	Nackenstütze für Auto
+gid://shopify/Product/15450429391233	CHF 17.40	7 Varianten	Elegante Sandalen mit geschlossener Spitze
+gid://shopify/Product/15450429424001	CHF 17.85	15 Varianten	Französische Sommer-Sandalen mit Keilabsatz
+gid://shopify/Product/15450429555073	CHF 16.95	14 Varianten	High Heel Slides mit Polka Dots und Schleife
+gid://shopify/Product/15450429653377	CHF 17.85	10 Varianten	Elegante Plateau-Sandalen mit gerafftem Design
