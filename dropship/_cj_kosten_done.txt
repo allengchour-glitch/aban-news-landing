@@ -7911,3 +7911,7 @@ gid://shopify/Product/15450429391233	CHF 17.40	7 Varianten	Elegante Sandalen mit
 gid://shopify/Product/15450429424001	CHF 17.85	15 Varianten	Französische Sommer-Sandalen mit Keilabsatz
 gid://shopify/Product/15450429555073	CHF 16.95	14 Varianten	High Heel Slides mit Polka Dots und Schleife
 gid://shopify/Product/15450429653377	CHF 17.85	10 Varianten	Elegante Plateau-Sandalen mit gerafftem Design
+gid://shopify/Product/15450429751681	CHF 17.40	14 Varianten	Boho Slingback Stiletto Sandalen mit Ethno-Muster
+gid://shopify/Product/15450429882753	CHF 17.85	7 Varianten	Sexy Roman Mesh Stiletto Sandalen
+gid://shopify/Product/15450429981057	CHF 17.72	16 Varianten	Damen Wildleder-Stiefeletten mit spitzer Kappe
+gid://shopify/Product/15450430079361	CHF 18.30	7 Varianten	Jazz Dance Mesh Sandaletten
