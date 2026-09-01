@@ -7293,3 +7293,10 @@ gid://shopify/Product/15449600229761	CHF 33.76	1 Varianten	Stillkissen mit Taill
 gid://shopify/Product/15449600328065	CHF 20.84	1 Varianten	Nordisch-minimalistisches Kissenbezug-Set
 gid://shopify/Product/15449600360833	CHF 41.46	1 Varianten	Emerald Grüner Samt-Kissen
 gid://shopify/Product/15449600426369	CHF 41.03	1 Varianten	Halskissen mit Stützfunktion
+gid://shopify/Product/15449600491905	CHF 15.68	1 Varianten	Sicherheitskissen
+gid://shopify/Product/15449600524673	CHF 44.95	1 Varianten	Druckentlastendes Kissen mit Tencel-Bezug
+gid://shopify/Product/15449600557441	CHF 20.43	1 Varianten	Blumenkissenhülle mit Stickerei
+gid://shopify/Product/15449600655745	CHF 12.21	1 Varianten	Kopfstütze mit Plaid-Muster
+gid://shopify/Product/15449600983425	CHF 21.97	1 Varianten	Lendenstütze für Auto-Sitz
+gid://shopify/Product/15449601081729	CHF 28.28	1 Varianten	Memory Foam Kissen mit Heizfunktion
+gid://shopify/Product/15449601180033	CHF 79.44	1 Varianten	Doppelseitiges Meditationskissen mit Extra-Polster
