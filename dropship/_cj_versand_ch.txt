@@ -954,3 +954,4 @@ gid://shopify/Product/15522166473089	nicht-versendbar	Hydroponische Glasvase mit
 gid://shopify/Product/15522210644353	ok	YG530 Mini Beamer mit Smartphone-Synchronisation
 gid://shopify/Product/15522214674817	ok	3D Puzzle Sagrada Familia Kathedrale mit LED
 gid://shopify/Product/15522243117441	nicht-versendbar	Push-up Barren aus Buchenholz
+gid://shopify/Product/15523017425281	ok	Grosse doppelwandige Thermo-Liefertasche, 69L
