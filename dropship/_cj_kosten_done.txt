@@ -6988,3 +6988,7 @@ gid://shopify/Product/15449508413825	CHF 16.78	4 Varianten	Blauer Linienrock mit
 gid://shopify/Product/15449508446593	CHF 21.35	4 Varianten	Blauer Rock mit asymmetrischem Kleid
 gid://shopify/Product/15449508479361	CHF 13.12	6 Varianten	Polkadot-Mesh-Oberteil-Ohne-Ärmel-Kleid
 gid://shopify/Product/15449508512129	CHF 47.65	20 Varianten	Sommerkleid · Damen
+gid://shopify/Product/15449508577665	CHF 36.30	23 Varianten	Elegante Taille-Verjüngung-Rock für Frauen
+gid://shopify/Product/15449508610433	CHF 9.94	20 Varianten	Langes Sonnenschutz-Tuch
+gid://shopify/Product/15449508643201	CHF 41.29	6 Varianten	Navy-Blazer-Dress
+gid://shopify/Product/15449508774273	CHF 15.77	60 Varianten	Casual Pullover · Damen
