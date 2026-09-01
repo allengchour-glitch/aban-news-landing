@@ -7735,3 +7735,46 @@ gid://shopify/Product/15450147651969	CHF 9.37	1 Varianten	Holz-Haken für Garder
 gid://shopify/Product/15450147848577	CHF 21.24	1 Varianten	Öl-Gemälde zum Selbermachen
 gid://shopify/Product/15450148176257	CHF 29.91	1 Varianten	Tierfiguren aus Resin
 gid://shopify/Product/15450148307329	CHF 31.07	1 Varianten	Moderne Diamant-Malerei für Zuhause
+gid://shopify/Product/15450163904897	CHF 32.97	1 Varianten	5-Kamera-Fahrzeugrecorder
+gid://shopify/Product/15450164101505	CHF 27.08	1 Varianten	1080P Autorekorder mit 4 Linsen und Nachtsicht
+gid://shopify/Product/15450164330881	CHF 29.82	1 Varianten	1080P Dashcam mit 4 Kameras und Nachtsicht
+gid://shopify/Product/15450164560257	CHF 27.71	1 Varianten	1080P HD-Fahrzeugrekorder mit 4 Kameras, HD-Nachts
+gid://shopify/Product/15450164822401	CHF 32.97	1 Varianten	5-Kamera-Fahrzeugaufzeichner 1080P HD Nachtsicht m
+gid://shopify/Product/15450165019009	CHF 32.97	1 Varianten	5-Kamera Fahrt recorder
+gid://shopify/Product/15450165182849	CHF 28.80	1 Varianten	Allround-Dashcam mit 4 Linsen
+gid://shopify/Product/15450165772673	CHF 39.80	1 Varianten	3-Kanal-Dashcam mit 1080p und Nachtsicht
+gid://shopify/Product/15450166034817	CHF 32.88	1 Varianten	3-Kanal-Dashcam mit Bewegungsmelder
+gid://shopify/Product/15450166231425	CHF 28.83	1 Varianten	2K-Dashcam mit Nachtsicht
+gid://shopify/Product/15450166460801	CHF 34.73	1 Varianten	3-Kanal-Dashcam mit Nachtsicht
+gid://shopify/Product/15450166886785	CHF 56.89	1 Varianten	Rückfahrkamera-System mit 7'' Bildschirm
+gid://shopify/Product/15450167083393	CHF 8.76	1 Varianten	Bluetooth-Player fürs Auto
+gid://shopify/Product/15450167312769	CHF 39.62	1 Varianten	HUD-Display für Tesla Model 3/Y
+gid://shopify/Product/15450167509377	CHF 35.42	1 Varianten	Kleine Dashcam mit Full HD
+gid://shopify/Product/15450167705985	CHF 15.41	1 Varianten	HD-Nachtfahrkamera
+gid://shopify/Product/15450167935361	CHF 56.89	1 Varianten	Rückspiegel-Dashcam mit 2K-Auflösung
+gid://shopify/Product/15450168131969	CHF 24.88	1 Varianten	Klein, aber leistungsstark: 140° Dashcam
+gid://shopify/Product/15450168361345	CHF 32.97	1 Varianten	Auto-MP5-Player mit 7-Zoll-Bildschirm
+gid://shopify/Product/15450168525185	CHF 26.04	1 Varianten	7-Zoll-Rückfahrdisplay
+gid://shopify/Product/15450168787329	CHF 19.01	1 Varianten	Fahrzeug-Tracker mit GPS
+gid://shopify/Product/15450168918401	CHF 15.80	1 Varianten	Karten-Tracker
+gid://shopify/Product/15450169147777	CHF 14.50	1 Varianten	Echtzeit-GPS-Tracker
+gid://shopify/Product/15450169344385	CHF 74.12	1 Varianten	Universal-Navi fürs Auto
+gid://shopify/Product/15450169540993	CHF 20.80	1 Varianten	Fahrzeug-Tracker mit langer Akku-Lebensdauer
+gid://shopify/Product/15450169868673	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450170065281	CHF 12.57	1 Varianten	GPS-Ortungsgerät für Fahrzeuge
+gid://shopify/Product/15450170392961	CHF 8.66	1 Varianten	Bluetooth-Ortungstracker
+gid://shopify/Product/15450170786177	CHF 21.17	1 Varianten	GPS-Auto-Ortungstracker
+gid://shopify/Product/15450170982785	CHF 19.33	1 Varianten	2-in-1 Wireless Auto-Adapter
+gid://shopify/Product/15450171179393	CHF 16.52	1 Varianten	Laser-Geschwindigkeitsmessgerät
+gid://shopify/Product/15450171376001	CHF 11.66	1 Varianten	Elektronischer Geschwindigkeitsmesser
+gid://shopify/Product/15450171572609	CHF 12.62	1 Varianten	Kleiner GPS-Tracker
+gid://shopify/Product/15450171769217	CHF 13.70	1 Varianten	OBD-GPS-Locator
+gid://shopify/Product/15450171998593	CHF 22.10	1 Varianten	HUD-Display fürs Auto
+gid://shopify/Product/15450172195201	CHF 17.15	1 Varianten	GPS-Ortungsgerät
+gid://shopify/Product/15450172326273	CHF 16.70	1 Varianten	Kopf-Display GPS Geschwindigkeitsmesser
+gid://shopify/Product/15450172719489	CHF 24.58	1 Varianten	GPS-Auto-Ortungsgerät
+gid://shopify/Product/15450213908865	CHF 29.60	1 Varianten	4-Kamera-Dashcam
+gid://shopify/Product/15450214072705	CHF 10.28	1 Varianten	GPS-Lokator
+gid://shopify/Product/15450214269313	CHF 35.75	1 Varianten	GPS-Locator mit 90-Tage-Batterie, Mini-Design und 
+gid://shopify/Product/15450214498689	CHF 21.33	1 Varianten	Mini-GPS-Tracker für Outdoor & Auto
+gid://shopify/Product/15450214629761	CHF 12.37	1 Varianten	Intelligenter Auto-Duftverteiler

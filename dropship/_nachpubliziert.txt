@@ -258,3 +258,4 @@ gid://shopify/Product/15522167816577	kariertes-oversize-hemd-im-retro-look-60830
 gid://shopify/Product/15522209694081	kini-car-forged-herren-quarzuhr-603800	Kini Car Forged Herren Quarzuhr
 gid://shopify/Product/15522216870273	japanische-tempura-fritteuse-032704	Japanische Tempura Fritteuse
 gid://shopify/Product/15522243936641	faltbares-volleyball-und-badmintonnetz-470272	Faltbares Volleyball- und Badmintonnetz
+gid://shopify/Product/15522302165377	atmungsaktive-sommer-sneaker-fur-herren-604700	Atmungsaktive Sommer-Sneaker für Herren
