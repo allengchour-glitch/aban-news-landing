@@ -259,3 +259,4 @@ gid://shopify/Product/15522209694081	kini-car-forged-herren-quarzuhr-603800	Kini
 gid://shopify/Product/15522216870273	japanische-tempura-fritteuse-032704	Japanische Tempura Fritteuse
 gid://shopify/Product/15522243936641	faltbares-volleyball-und-badmintonnetz-470272	Faltbares Volleyball- und Badmintonnetz
 gid://shopify/Product/15522302165377	atmungsaktive-sommer-sneaker-fur-herren-604700	Atmungsaktive Sommer-Sneaker für Herren
+gid://shopify/Product/15522459287937	kinder-canvas-schuhe-mit-gummisohle-570182	Kinder-Canvas-Schuhe mit Gummisohle
