@@ -7011,3 +7011,6 @@ gid://shopify/Product/15449510609281	CHF 19.19	6 Varianten	Blumenmuster-Sweater
 gid://shopify/Product/15449510642049	CHF 14.52	6 Varianten	Strickpullover mit Streifen · Modell 2
 gid://shopify/Product/15449510674817	CHF 15.17	7 Varianten	Beige Fleece-Hemd
 gid://shopify/Product/15449510707585	CHF 23.99	4 Varianten	Bunte Blumen-Strickpullover
+gid://shopify/Product/15449510740353	CHF 13.39	92 Varianten	Slim-Fit-Pullover
+gid://shopify/Product/15449510773121	CHF 11.90	15 Varianten	Strickrock-Shorts
+gid://shopify/Product/15449510838657	CHF 21.41	3 Varianten	Purpurnes Mesh-Röckchen
