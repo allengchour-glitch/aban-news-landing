@@ -7620,3 +7620,6 @@ gid://shopify/Product/15450059768193	CHF 29.87	8 Varianten	Sicherheits-Schuhe f�
 gid://shopify/Product/15450059964801	CHF 21.57	91 Varianten	Männliche Sportsschuhe mit Mesh
 gid://shopify/Product/15450060030337	CHF 25.73	72 Varianten	Rutschfeste Hiking-Schuhe mit Fleecefutter
 gid://shopify/Product/15450060325249	CHF 20.98	72 Varianten	Wasserdichte Fünf-Finger-Snowboots
+gid://shopify/Product/15450061767041	CHF 20.04	55 Varianten	Atmungsaktive Kletterschuhe
+gid://shopify/Product/15450061996417	CHF 28.20	12 Varianten	Leichte, atmungsaktive Sicherheitsschuhe
+gid://shopify/Product/15450062225793	CHF 27.19	12 Varianten	Leichte Arbeitsschuhe mit Stahlkappe
