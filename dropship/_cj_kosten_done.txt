@@ -7069,3 +7069,5 @@ gid://shopify/Product/15449570902401	CHF 21.43	5 Varianten	Stud-Details Hochtail
 gid://shopify/Product/15449570935169	CHF 20.77	5 Varianten	Hochtaillierte Stretch-Flare-Jeans, Hellwasch Slim
 gid://shopify/Product/15449570967937	CHF 20.37	5 Varianten	Hüftbund Stretchfreie Weitbein-Hellwasch Jean
 gid://shopify/Product/15449571000705	CHF 22.04	5 Varianten	Straight-Leg Jeans in Washed Blue
+gid://shopify/Product/15449571033473	CHF 16.44	20 Varianten	Weite Damenjeans, gerades Bein
+gid://shopify/Product/15449571066241	CHF 67.33	12 Varianten	Baumwollhosen, loose, high-waist
