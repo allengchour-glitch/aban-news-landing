@@ -704,3 +704,11 @@ gid://shopify/Product/15520403554689	CJ-1393447891875532800	Sommerliches Geschir
 gid://shopify/Product/15520403784065	CJ-1393445454578061312	Hundegeschirr mit doppelter Schnalle
 gid://shopify/Product/15520404144513	CJ-1393437515561701376	Atmungsaktives Geschirr für Mops
 gid://shopify/Product/15520404275585	CJ-1393136052151128064	Taktische Hundeweste – 5 Farben
+gid://shopify/Product/15522140520833	CJ-FE16C4AC-77F0-4297-8836-3E82DBD6500F	Kuscheldecke und Kissen 2-in-1
+gid://shopify/Product/15522141307265	CJ-6DC7B1A9-DBF4-4D8A-8A18-8E86A0F55581	Natur Latex Nackenstützkissen
+gid://shopify/Product/15522141929857	CJ-F25DF9B2-5E6B-42C9-85FD-B34D55E39822	Satin-Kissenbezug
+gid://shopify/Product/15522141995393	CJ-FD02C8A2-FC4A-42AA-83DB-2C9A7C7B21CF	Kissenbezug „Sofa Hug“
+gid://shopify/Product/15522211201409	CJ-CJYD280092101AZ	Damen Plissiertes Hemd mit Knopfleiste
+gid://shopify/Product/15522211594625	CJ-CJYD280080801AZ	Patchwork Floral Baumwoll-Leinen Hemd
+gid://shopify/Product/15522211987841	CJ-CJYD280079701AZ	Plissiertes Baumwoll-Shirt mit Umlegekragen
+gid://shopify/Product/15522212151681	CJ-CJCS280077401AZ	Distressed Baumwoll-Shirt für Damen
