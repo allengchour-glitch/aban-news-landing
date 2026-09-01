@@ -7303,3 +7303,7 @@ gid://shopify/Product/15449601180033	CHF 79.44	1 Varianten	Doppelseitiges Medita
 gid://shopify/Product/15449601540481	CHF 25.55	1 Varianten	Zylindrisches Seitenschlafkissen
 gid://shopify/Product/15449601606017	CHF 22.05	1 Varianten	Sofakissenbezug 45x45 cm
 gid://shopify/Product/15449601900929	CHF 34.16	1 Varianten	Sommer-Decke aus Ice Silk
+gid://shopify/Product/15449603572097	CHF 20.99	1 Varianten	Erde-Ton Kissenbezug ohne Kissen für Sofa
+gid://shopify/Product/15449603637633	CHF 25.75	1 Varianten	Tierisches Bettwäsche-Set
+gid://shopify/Product/15449604129153	CHF 22.45	1 Varianten	Farbenfrohes Bettwäsche-Set · 3-teilig
+gid://shopify/Product/15449605734785	CHF 47.35	1 Varianten	Katzenbettwäsche 4-tlg.
