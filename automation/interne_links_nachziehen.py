@@ -73,9 +73,27 @@ def ziel(handle):
     return None
 
 
+def alle(pfad, schluessel):
+    """REST-Paginierung ueber since_id (01.09.): limit=250 OHNE Schleife hat 67 von 317
+    Artikeln nie gescannt — der Lauf meldete trotzdem FERTIG. Eine volle Seite ist ein
+    Weiterblattern-Befehl, kein Ergebnis (dieselbe Falle wie appInstallations am 30.08.)."""
+    aus, since = [], 0
+    while True:
+        teil = rest("GET", f"{pfad}?limit=250&since_id={since}&fields=id,handle,body_html,published_at").get(schluessel, [])
+        aus += teil
+        if len(teil) < 250:
+            return aus
+        since = max(x["id"] for x in teil)
+
+
 def main():
-    seiten = rest("GET", "pages.json?limit=250&fields=id,handle,body_html,published_at").get("pages", [])
-    artikel = rest("GET", f"blogs/{BLOG}/articles.json?limit=250&fields=id,handle,body_html,published_at").get("articles", [])
+    seiten = alle("pages.json", "pages")
+    # 01.09.: ALLE Blogs, nicht nur der Ratgeber — 6 Magazin-Artikel trugen den alten
+    # Jade-Roller-Link weiter, waehrend der Lauf «FERTIG» meldete.
+    blogs = [b["id"] for b in rest("GET", "blogs.json?fields=id").get("blogs", [])] or [BLOG]
+    artikel = []
+    for bid in blogs:
+        artikel += alle(f"blogs/{bid}/articles.json", "articles")
     doks = [("page", s) for s in seiten if s.get("published_at")] + \
            [("article", a) for a in artikel if a.get("published_at")]
     print(f"{len(doks)} veroeffentlichte Seiten/Artikel", flush=True)

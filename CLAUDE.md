@@ -4520,6 +4520,24 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🕳️ Zwei blinde Flecken in EINEM Wächter — und der Bestell-Runner stand seit dem Wipe (2026-09-01)
+Der Schicht-Gesundheitscheck der Tages-Wächter fand drei Dinge, die alle «FERTIG» meldeten und
+es nicht waren:
+1. **`/tmp/cj_fulfill_runner.sh` existierte nicht mehr** — `fixer_keepalive.sh:236` startete den
+   Bestell-Runner von /tmp statt aus dem Repo (die 25.08.-Regel «Repo-Fassung bevorzugen» hatte
+   genau diese Zeile nie erreicht). Seit dem /tmp-Wipe lief er NICHT; das Log zeigte nur
+   «No such file or directory». Auf Repo-Pfad umgestellt; nach dem Neustart meldete er sofort:
+   #1012–#1015 alle versendet + FULFILLED (kein Kundenschaden — Glück, keine Leistung).
+   Dazu `cj_verfuegbarkeit.py`: crashte beim Import auf fehlendem /tmp/_cjtok — holt den
+   CJ-Token jetzt crash-frei selbst (No-op statt Traceback; ein Crash-Log sieht für den
+   Aufseher wie ein erledigter Lauf aus, Lehre 31.08.). Die Einzelwert-Dateien
+   /tmp/cj_email|cj_apikey leitete nach dem Wipe NIEMAND aus cj_creds.env ab — nachgeholt.
+2. **`interne_links_nachziehen.py` las nur die ersten 250 Artikel** (limit=250 ohne Schleife;
+   der Blog hat 317) und **nur den Ratgeber-Blog** — 9 Artikel trugen den alten
+   Jade-Roller-Facelift-Link weiter, 6 davon im MAGAZIN-Blog. Jetzt: since_id-Paginierung +
+   alle Blogs; 9/9 umgeschrieben. **Eine volle Seite ist ein Weiterblättern-Befehl** (dritte
+   Fassung nach appInstallations und Merchant-Export).
+
 ## 🏁 Zwei Runner importierten dieselbe pid in derselben Minute — 4 Dubletten-Paare an einem Vormittag (2026-09-01)
 Kontaktbogen über die neuesten Importe: 3 Bildpaare identisch, Handles mit gleicher Hex-Endung,
 eines sogar mit `-1`-Kollision. Beweis im Ledger: **dieselbe pid ZWEIMAL in Folge quittiert**
