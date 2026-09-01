@@ -7445,3 +7445,5 @@ gid://shopify/Product/15449919979905	CHF 51.15	48 Varianten	Europäisch-amerikan
 gid://shopify/Product/15449920504193	CHF 27.96	7 Varianten	Retro Stiefel mit Chunky Absatz
 gid://shopify/Product/15449920995713	CHF 40.55	24 Varianten	Damenstiefel aus Vollnarbenleder mit weicher Sohle
 gid://shopify/Product/15449921520001	CHF 18.94	12 Varianten	Damen-Booties mit massiver Sohle, winterfest
+gid://shopify/Product/15449921814913	CHF 25.83	20 Varianten	Spitzschuh-Blockabsatz Knöchelstiefel mit Schleife
+gid://shopify/Product/15449922044289	CHF 21.28	12 Varianten	Retro-Höhenverstärkende Mid-Calf Martin-Boots
