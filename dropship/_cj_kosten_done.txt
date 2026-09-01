@@ -7360,3 +7360,36 @@ gid://shopify/Product/15449840615809	CHF 12.25	16 Varianten	Runde Sandalen mit h
 gid://shopify/Product/15449840648577	CHF 14.77	16 Varianten	Hohe Riemchensandalen
 gid://shopify/Product/15449840714113	CHF 14.34	24 Varianten	Bequeme Sandalen · Damen
 gid://shopify/Product/15449840779649	CHF 21.75	18 Varianten	Suede Stiletto Sandalen
+gid://shopify/Product/15449840812417	CHF 18.11	12 Varianten	Platform-Wedgesandalen
+gid://shopify/Product/15449840877953	CHF 20.43	12 Varianten	Römische Sandalen
+gid://shopify/Product/15449840910721	CHF 20.95	12 Varianten	Platform Wedge Sandalen
+gid://shopify/Product/15449840943489	CHF 19.00	15 Varianten	Romer-Sandalen · Damen
+gid://shopify/Product/15449840976257	CHF 15.43	80 Varianten	Jute-Riemen-Sandalen
+gid://shopify/Product/15449841009025	CHF 20.01	80 Varianten	Flache Sandalen · Damen
+gid://shopify/Product/15449841107329	CHF 13.53	24 Varianten	Runde Sandalen · Damen
+gid://shopify/Product/15449841140097	CHF 16.50	21 Varianten	Neue Plus-Grösse Wedgesandalen im Boho-Stil
+gid://shopify/Product/15449841172865	CHF 22.91	45 Varianten	Spitzschuhe mit gewebtem Design in mehreren Farben
+gid://shopify/Product/15449841205633	CHF 17.85	21 Varianten	Mesh-Verzierter Peep-Toe-Slide-Sandalen
+gid://shopify/Product/15449841238401	CHF 26.47	30 Varianten	Platform Espadrille Sandalen mit Knöchelriemen
+gid://shopify/Product/15449841303937	CHF 24.63	30 Varianten	Patentleder Keilsandaletten mit Bügelverschluss
+gid://shopify/Product/15449841402241	CHF 15.73	45 Varianten	Hohl geschnittene Sandalen mit Kopfbändern
+gid://shopify/Product/15449841467777	CHF 31.47	20 Varianten	Flache Sandale mit Farbkästen – Casual
+gid://shopify/Product/15449841533313	CHF 41.49	21 Varianten	Blumen-Sandalen mit Blockabsatz
+gid://shopify/Product/15449841598849	CHF 40.39	21 Varianten	Echte Leder Sandalen mit Kreuzriemen
+gid://shopify/Product/15449841631617	CHF 45.94	21 Varianten	Geflochtene Cowhide-Flachsandale
+gid://shopify/Product/15449841697153	CHF 24.78	36 Varianten	Designer-Roman Sandalen mit Ziersteppnähten
+gid://shopify/Product/15449841860993	CHF 33.89	12 Varianten	Sommerneuheit: Plattform-Sneaker mit atm
+gid://shopify/Product/15449842254209	CHF 17.37	18 Varianten	Bequeme Römische Sandalen für Grössen
+gid://shopify/Product/15449842614657	CHF 23.29	36 Varianten	Damen-Sandalen mit Wedge-Absatz, offener Zeh, Höhe
+gid://shopify/Product/15449842909569	CHF 14.68	27 Varianten	Damen Plus-Grössen Straps Flachschuhe
+gid://shopify/Product/15449843335553	CHF 19.24	21 Varianten	Rhinestenblume Wedge Sandalen
+gid://shopify/Product/15449843663233	CHF 20.44	6 Varianten	Sommer Sandalen mit Riemen und Schmuckverschluss
+gid://shopify/Product/15449844220289	CHF 12.33	16 Varianten	Keilabsätze Sandalen
+gid://shopify/Product/15449844580737	CHF 40.49	12 Varianten	Spitzschuh-Sandalen aus Leder
+gid://shopify/Product/15449844941185	CHF 43.59	12 Varianten	Hohlkehlsandalen mit Blockabsatz
+gid://shopify/Product/15449845236097	CHF 15.03	7 Varianten	Dicksohlige Hochhackige Sandalen
+gid://shopify/Product/15449845694849	CHF 34.49	7 Varianten	Rivetten-Boots mit Blockabsatz
+gid://shopify/Product/15449846153601	CHF 57.91	11 Varianten	Spitzschuh-Boots mit Stiletto-Absatz, überknie, Pl
+gid://shopify/Product/15449846415745	CHF 32.57	6 Varianten	Fringen- Stiefel, Kamel
+gid://shopify/Product/15449846743425	CHF 31.62	8 Varianten	Bequeme Kniehoch-Boots mit Nietenriemen, massiven 
+gid://shopify/Product/15449847005569	CHF 33.85	16 Varianten	Retro Western Boots
