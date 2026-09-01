@@ -3,29 +3,33 @@
 Alle unten haben **eine** Variante ohne Option. Der Text stammt aus dem
 CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
 
-- `15433460384129` · Aluminium Mauspad, doppelseitig, rund & eckig
-  - «…in verschiedenen Farben…»
-- `15433460711809` · Rutschfeste Filz-Schreibtischunterlage für Gaming & Büro
-  - «…in verschiedenen Grössen…»
-- `15448835228033` · Lange Kleeblatt-Press-on-Nägel (24 Stück)
-  - «…in verschiedenen Grössen…»
-- `15448904499585` · Skelett-Taschenuhr mit Mechanik
-  - «…Erhältlich in vier Farben…»
-- `15448919441793` · Leder-Brusttasche für Herren
-  - «…Erhältlich in Schwarz und Kaffeebraun Grosse…»
-- `15448920916353` · Runder Teppich im Ethno-Stil
-  - «…Wählen Sie aus…»
-- `15448921407873` · Sofa-Sitzkissenbezug aus Chenille
-  - «…Wählen Sie aus…»
-- `15448922784129` · Minimalistischer Fleece-Sofabezug für alle Jahreszeiten
-  - «…Wählen Sie aus…»
-- `15448924356993` · Stretch-Sofabezug für Schlafsofas mit Rocksaum
-  - «…Erhältlich in drei Grössen…»
-- `15448930353537` · Kabelloser Haarglätter mit USB-Ladefunktion
-  - «…Erhältlich in Weiss, Grau und Rot Jede Farbe…»
-- `15448938021249` · Kompakter Kratzbaum mit Kuschelnest
-  - «…in verschiedenen Ausführungen…»
-- `15448940872065` · Gestreiftes Katzensofa – Plüsch & Rutschfest
-  - «…Erhältlich in Rosarot oder Gelb-Grün Verfügbar in den Grössen…»
-- `15448951390593` · Futter- und Wasserspender-Kombination
-  - «…Wählen Sie zwischen…»
+- `15408458170753` · Bambus Aufbewahrungssystem Modular
+  - «…in zwei Grössen…»
+- `15448912789889` · Vakuum-Kompressionsrucksack
+  - «…in vier Farben…»
+- `15448920588673` · Kissenhülle "Summer Ocean Surf" bestickt
+  - «…in zwei Grössen…»
+- `15448920883585` · Sofaüberzug «Chenille» kratzfest & rutschfest
+  - «…in zwei Grössen…»
+- `15448921964929` · Chenille Sofaüberwurf für alle Jahreszeiten
+  - «…in drei Grössen…»
+- `15448925110657` · Osterhasen-Kissenbezug mit Frottee-Stickerei
+  - «…in zwei Grössen…»
+- `15448927928705` · Vintage Kissenhülle mit Stickerei
+  - «…in zwei Grössen…»
+- `15448936317313` · Kabellose LED Silikonmaske für zuhause
+  - «…In drei Farben…»
+- `15448936415617` · Sauerstoff-Infusionsgerät für Zuhause
+  - «…In drei Farben…»
+- `15448936513921` · Gesichtsdampfer für umfassende Pflege
+  - «…in zwei Varianten…»
+- `15448938709377` · Katzenbaum mit Liegeflächen und Höhle
+  - «…in zwei Grössen…»
+- `15448940642689` · Doppelstöckiges Katzenhaus mit Kratzbaum
+  - «…in zwei Grössen…»
+- `15448950407553` · Futterbehälter luftdicht mit Messbecher
+  - «…In drei Grössen…»
+- `15448950571393` · Smarter Snack-Futterautomat für Katzen & Hunde
+  - «…in zwei Ausführungen…»
+- `15448951030145` · Keramik-Futternapf für Hunde und Katzen
+  - «…In vier Farben…»

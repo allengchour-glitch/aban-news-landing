@@ -7603,3 +7603,6 @@ gid://shopify/Product/15450054230401	CHF 21.14	11 Varianten	Schwarze Sneaker fü
 gid://shopify/Product/15450054394241	CHF 39.17	36 Varianten	Retro Business Schuhe
 gid://shopify/Product/15450054623617	CHF 31.97	24 Varianten	Sommerschuhe mit unsichtbarer Höhenverstärkung
 gid://shopify/Product/15450056196481	CHF 19.42	24 Varianten	Retro-Sneakers Herren 45–46
+gid://shopify/Product/15450056425857	CHF 19.44	30 Varianten	Weisse Platform-Schuhe für Herren
+gid://shopify/Product/15450056655233	CHF 41.53	20 Varianten	Sneaker mit unsichtbarer Absatz Erhöhung
+gid://shopify/Product/15450057081217	CHF 31.14	24 Varianten	Atmungsaktive Wanderschuhe für Herren
