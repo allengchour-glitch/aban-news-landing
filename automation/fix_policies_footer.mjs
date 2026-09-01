@@ -18,7 +18,7 @@ if(!tok){ console.error('Auth fehlgeschlagen'); process.exit(0); }
 function fixText(t){ let s=t;
   s=s.replace(/aban-192\.myshopify\.com/g,'luxestyle.ch');
   s=s.replace(/Telefon: info@luxestyle\.com/g,'Telefon: 0795382814');
-  s=s.replace(/Schweiz, info@luxestyle\.com/g,'Schweiz, allengchour@gmail.com');
+  s=s.replace(/Schweiz, info@luxestyle\.com/g,'Schweiz, info@luxestyle.ch'); // 01.09.: nie die private Gmail in Rechtstexte
   s=s.replace(/luxestyle\.com/g,'luxestyle.ch');
   return s; }
 const pol=await gql(tok,'{ shop { shopPolicies { id type body } } }');

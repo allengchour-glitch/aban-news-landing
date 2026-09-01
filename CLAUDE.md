@@ -4520,6 +4520,22 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 📧 Die private Gmail des Betreibers stand in 3 Produkttexten — und ein schlafender Fixer hätte sie in die AGB geschrieben (2026-09-01)
+Beim Lesen der Luftbefeuchter-Texte (Ratgeber-Vorbereitung) fiel «✉️ Support: allengchour@gmail.com»
+auf — Inhalts-Suche: **3 aktive Produkte** (Rugged Smartwatch, Übersetzer-Kopfhörer, 4L-Luftbefeuchter),
+alle auf info@luxestyle.ch gesetzt. Dieselbe Klasse wie die Klaviyo-reply_to vom 29.08.
+- ⚠️ **`fix_policies_footer.mjs` (0 Aufrufer, schlafend) TRUG die Gmail als ERSATZTEXT** — beim
+  nächsten Lauf hätte er sie in die Rechtstexte geschrieben. Zeile auf info@luxestyle.ch. Live-Policies
+  gegengeprüft: 0 Vorkommen. **Ein schlafendes Skript ist keine harmlose Leiche** (dritte Bestätigung
+  nach cj_gaps_import und engines_up).
+- Nebenbei: «🌿 Lindert trockene Luft, **Reizhusten** & trockene Haut» am 4L-Luftbefeuchter —
+  Linderungsversprechen (Symptom+Wirkwort) → «Spürbar angenehmere Raumluft bei trockener Heizungsluft»
+  (31.08.-Präzedenz Beinpflege-Pflaster).
+- **Ratgeber `/blogs/ratgeber/luftbefeuchter-groesse-raum-ratgeber`** veröffentlicht (Rizinusöl-Methode:
+  dort schreiben, wo der Shop MESSBAR Suchverkehr hat — beide Luftbefeuchter stehen Pos. 20/23, Saison
+  beginnt): Grössen-Faustregel, nur belegte Produktfakten, keine Gesundheitsversprechen, beide Produkte
+  + Kollektion verlinkt; ratgeber_rueckverweis.py hat die Rückverweise auf beiden Produktseiten gesetzt.
+
 ## 🚢 «Alle Klassen auf 0» galt nur für die GEMESSENEN Klassen — 167 USA-Blöcke überlebten (2026-09-01)
 Beim SEO-Ausbau der Fast-Seite-1-Seiten fiel auf: Der 4L-Luftbefeuchter (Position 20 für
 «luftbefeuchter grosse räume») trug noch «🇺🇸 USA: 12–22 Tage» — und die Inhalts-Suche fand
