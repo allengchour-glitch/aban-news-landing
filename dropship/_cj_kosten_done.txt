@@ -7926,3 +7926,9 @@ gid://shopify/Product/15450430996865	CHF 54.28	14 Varianten	Denim-Stiefel mit ho
 gid://shopify/Product/15450431062401	CHF 23.51	28 Varianten	Western Ankle Boots mit Fransen
 gid://shopify/Product/15450431160705	CHF 22.47	12 Varianten	Mesh-Sandalen-Stiefeletten mit Chunky-Heel
 gid://shopify/Product/15450431226241	CHF 37.07	9 Varianten	Martin Boots mit Nieten und klobigem Absatz
+gid://shopify/Product/15450431422849	CHF 30.43	60 Varianten	Denim-Stiefeletten mit eckiger Spitze
+gid://shopify/Product/15450431521153	CHF 56.10	20 Varianten	Martin Boots aus Leder mit Schnürung
+gid://shopify/Product/15450431586689	CHF 23.25	6 Varianten	Overknee Peep Toe Stiletto-Stiefel aus Denim
+gid://shopify/Product/15450431684993	CHF 47.04	6 Varianten	Chunky Mid-Calf Boots mit Plateau
+gid://shopify/Product/15450431750529	CHF 21.27	24 Varianten	Warme Mid-Calf Winterstiefel für Damen
+gid://shopify/Product/15450431816065	CHF 17.23	6 Varianten	Plateau All-Match Stiefeletten
