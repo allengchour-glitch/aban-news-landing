@@ -7307,3 +7307,6 @@ gid://shopify/Product/15449603572097	CHF 20.99	1 Varianten	Erde-Ton Kissenbezug 
 gid://shopify/Product/15449603637633	CHF 25.75	1 Varianten	Tierisches Bettwäsche-Set
 gid://shopify/Product/15449604129153	CHF 22.45	1 Varianten	Farbenfrohes Bettwäsche-Set · 3-teilig
 gid://shopify/Product/15449605734785	CHF 47.35	1 Varianten	Katzenbettwäsche 4-tlg.
+gid://shopify/Product/15449617400193	CHF 15.49	10 Varianten	Midi-Kleid mit Hochkragen und Taillebetonung
+gid://shopify/Product/15449617531265	CHF 12.83	6 Varianten	Blumen-Dress Damen XXL lang
+gid://shopify/Product/15449617662337	CHF 17.36	12 Varianten	Damen Denim Rock Midi Sexy & Cool
