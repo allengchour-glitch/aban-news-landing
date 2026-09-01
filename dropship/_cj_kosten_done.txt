@@ -7932,3 +7932,5 @@ gid://shopify/Product/15450431586689	CHF 23.25	6 Varianten	Overknee Peep Toe Sti
 gid://shopify/Product/15450431684993	CHF 47.04	6 Varianten	Chunky Mid-Calf Boots mit Plateau
 gid://shopify/Product/15450431750529	CHF 21.27	24 Varianten	Warme Mid-Calf Winterstiefel für Damen
 gid://shopify/Product/15450431816065	CHF 17.23	6 Varianten	Plateau All-Match Stiefeletten
+gid://shopify/Product/15450431848833	CHF 31.47	12 Varianten	Vintage Chunky-Heel Platform Stiefeletten
+gid://shopify/Product/15450518258049	CHF 19.18	9 Varianten	Weinrote Sandalen mit Kreuzriemen
