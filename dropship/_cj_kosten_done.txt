@@ -7423,3 +7423,5 @@ gid://shopify/Product/15449906938241	CHF 22.67	40 Varianten	Suede-Stiefel für H
 gid://shopify/Product/15449907790209	CHF 21.16	12 Varianten	Stylische Stretch-Stiefel
 gid://shopify/Product/15449908347265	CHF 45.65	10 Varianten	Hohe Stiefel · Damen
 gid://shopify/Product/15449909166465	CHF 30.06	30 Varianten	Gold-Silber Stiefeletten mit Spitze
+gid://shopify/Product/15449909625217	CHF 23.83	24 Varianten	Dünne Martin-Boots mit Suede
+gid://shopify/Product/15449910116737	CHF 34.34	60 Varianten	Hohe Stiefel aus Wildleder
