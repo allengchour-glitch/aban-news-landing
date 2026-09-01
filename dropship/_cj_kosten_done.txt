@@ -7833,3 +7833,14 @@ gid://shopify/Product/15450253230465	CHF 9.83	1 Varianten	Kombi-Abfalleimer & Pa
 gid://shopify/Product/15450253263233	CHF 10.37	1 Varianten	Kühl-Seidenkissen Sitzauflage
 gid://shopify/Product/15450253296001	CHF 41.72	1 Varianten	Atmungsaktive Kühl-Sitzauflage
 gid://shopify/Product/15450253328769	CHF 9.70	4 Varianten	Leder-Sitzauflage atmungsaktiv · 45 × 38 cm
+gid://shopify/Product/15450253361537	CHF 15.97	3 Varianten	Dickschale Memory-Foam Sitze
+gid://shopify/Product/15450253394305	CHF 113.83	1 Varianten	Lederatmungs-Fahrersitzauflage Universell für alle
+gid://shopify/Product/15450258047361	CHF 18.13	1 Varianten	Carbon-Faser Lenkradschutz Sportlich
+gid://shopify/Product/15450258080129	CHF 16.20	1 Varianten	Lederlenkradbezug Sportstil
+gid://shopify/Product/15450258112897	CHF 16.05	1 Varianten	Nicht rutschige, abriebfeste Lenkergriffe für alle
+gid://shopify/Product/15450258145665	CHF 16.95	1 Varianten	Handgenähtes Lenkradbezug Modifiziert
+gid://shopify/Product/15450258178433	CHF 16.05	1 Varianten	Kunstleder Lenkradbezug
+gid://shopify/Product/15450258211201	CHF 15.24	1 Varianten	Universeller 15-Zoll-Lenkradbezug
+gid://shopify/Product/15450258243969	CHF 18.55	1 Varianten	Leder-Lenkradbezug
+gid://shopify/Product/15450258276737	CHF 16.02	1 Varianten	Sport-Lederlenkradbezug
+gid://shopify/Product/15450258309505	CHF 17.10	1 Varianten	Carbon-Faser Lenkradgriffe mit Leder
