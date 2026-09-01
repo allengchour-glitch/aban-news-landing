@@ -7672,3 +7672,16 @@ gid://shopify/Product/15450111639937	CHF 18.25	1 Varianten	3D Notizblock Klavier
 gid://shopify/Product/15450111902081	CHF 23.15	1 Varianten	Universal Bettwäsche Schutz
 gid://shopify/Product/15450111934849	CHF 61.62	1 Varianten	Handgemaltes abstraktes Ölgemälde
 gid://shopify/Product/15450112131457	CHF 7.73	1 Varianten	Stickereikit Pflanzen & Blumen
+gid://shopify/Product/15450112164225	CHF 20.72	1 Varianten	DMC Kreuzstich-Set Pullover-Tier Hase
+gid://shopify/Product/15450112360833	CHF 52.63	1 Varianten	Boho-Muster-Decke
+gid://shopify/Product/15450112459137	CHF 7.84	1 Varianten	DIY-Set: Handgestrickter Schal aus Wolle
+gid://shopify/Product/15450112655745	CHF 18.09	1 Varianten	Aufbügler Buchstaben und Zahlen
+gid://shopify/Product/15450112754049	CHF 9.07	1 Varianten	Stickset «Blumenwiese» für Einsteiger
+gid://shopify/Product/15450112885121	CHF 23.67	1 Varianten	Boho-Geometrie-Decke
+gid://shopify/Product/15450112983425	CHF 9.33	1 Varianten	Europäische 3D Stickerei für Anfänger
+gid://shopify/Product/15450113048961	CHF 7.69	1 Varianten	Romantisches Kissenbezüge mit Rüschen
+gid://shopify/Product/15450113212801	CHF 14.44	1 Varianten	Leinwandbild «Weg der Wahrheit und des Lebens»
+gid://shopify/Product/15450113311105	CHF 10.16	1 Varianten	Kinder-Knitting-Set
+gid://shopify/Product/15450113507713	CHF 7.11	1 Varianten	Stickpunch-Set mit austauschbaren Spitzen
+gid://shopify/Product/15450113704321	CHF 12.40	1 Varianten	Regenbogen grüne Stickerei Stoff
+gid://shopify/Product/15450113769857	CHF 8.31	1 Varianten	Leinwandbild "Künstlerische Individualität"
