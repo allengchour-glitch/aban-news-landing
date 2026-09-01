@@ -4520,6 +4520,25 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🏁 Zwei Runner importierten dieselbe pid in derselben Minute — 4 Dubletten-Paare an einem Vormittag (2026-09-01)
+Kontaktbogen über die neuesten Importe: 3 Bildpaare identisch, Handles mit gleicher Hex-Endung,
+eines sogar mit `-1`-Kollision. Beweis im Ledger: **dieselbe pid ZWEIMAL in Folge quittiert**
+(cj_niche_done 48548/48549). Ursache: Jeder Runner liest das `done`-Set EINMAL beim Start —
+was ein anderer Runner WÄHREND des Laufs importiert, ist unsichtbar; die Titel-Wache griff
+nicht, weil Groq zweimal verschieden übersetzte («Spielseil für Hunde» vs «Teddy Samoyed
+Seil-Spielzeug»). Auch die dup-sku-LIVE-Prüfung in cj_category_fill rettet nicht: der
+Shopify-SUCHINDEX hinkt Sekunden bis Minuten — gleichzeitige Importe sieht sie nie.
+- **`automation/cj_claim.mjs`** (alle DREI Importer): frischer Ledger-Blick direkt vor dem
+  Import + Claim-Protokoll über /tmp/cj_pid_claims.txt — O_APPEND hält kleine Schreibvorgänge
+  atomar, die ERSTE Claim-Zeile je pid gewinnt, der Verlierer überspringt OHNE Quittung
+  (der Gewinner quittiert; scheitert er, bleibt die pid holbar). Alle Verzahnungen enden
+  richtig, kein Lock nötig. In beide Richtungen getestet (eigener Prozess erneut = frei,
+  fremder Prozess = gesperrt).
+- Die 4 schwächeren Zwillinge gedraftet (`duplikat-auto-draft`, mehr Bilder/besserer Titel
+  gewinnt; «Zuggeschirr» beschrieb eine LEINE — der falsche Begriff flog raus).
+- **Messweg für die Zukunft:** `created_at:>=` paginieren und erste Varianten-SKU lokal
+  gruppieren — 1'219 Produkte, 4 Doppel, in einer Minute gefunden.
+
 ## 📧 Die private Gmail des Betreibers stand in 3 Produkttexten — und ein schlafender Fixer hätte sie in die AGB geschrieben (2026-09-01)
 Beim Lesen der Luftbefeuchter-Texte (Ratgeber-Vorbereitung) fiel «✉️ Support: allengchour@gmail.com»
 auf — Inhalts-Suche: **3 aktive Produkte** (Rugged Smartwatch, Übersetzer-Kopfhörer, 4L-Luftbefeuchter),

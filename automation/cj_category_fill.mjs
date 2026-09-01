@@ -6,6 +6,7 @@
  */
 import fs from 'node:fs';
 import { istKlinge } from './klingenregel.mjs';
+import { schonBeansprucht } from './cj_claim.mjs';
 import {googleKategorie} from './google_kategorie.mjs';
 import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
@@ -1042,6 +1043,9 @@ for(const [cat,label] of grp.cats){
      if(sq.data?.products?.edges?.length){console.log('  skip(dup-sku)',ersteSku.slice(0,30));
        fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;}
    }
+   // Rennschutz (01.09.): siehe cj_claim.mjs — der Shopify-Suchindex hinkt, die
+   // dup-sku-Pruefung oben faengt gleichzeitige Importe deshalb NICHT.
+   if(schonBeansprucht(p.pid)){console.log('  = Rennschutz: pid parallel in Arbeit —',title.slice(0,40));continue;}
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    laufSlugs.add(slugStamm(title));

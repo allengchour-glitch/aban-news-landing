@@ -7,6 +7,7 @@
  */
 import fs from 'node:fs';
 import { istKlinge } from './klingenregel.mjs';
+import { schonBeansprucht } from './cj_claim.mjs';
 import { catTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
@@ -233,6 +234,9 @@ for (const item of ITEMS) {
       { namespace: 'mm-google-shopping', key: 'age_group', value: 'adult', type: 'single_line_text_field' },
     ],
     files: [{ originalSource: imgs[0], contentType: 'IMAGE', alt: (title + ' | LuxeStyle').slice(0, 120) }] };
+  // Rennschutz (01.09.): 4 Runner teilen sich das Ledger — frischer Blick + Claim,
+  // sonst importieren zwei Runner dieselbe pid in derselben Minute (4 Paare belegt).
+  if (schonBeansprucht(pid)) { console.log('= Rennschutz: pid parallel in Arbeit —', title.slice(0, 40)); continue; }
   const r = await sgql(t, SET, { i: input });
   const spid = r.data?.productSet?.product?.id;
   if (!spid) { console.log('✗', title, JSON.stringify(r.data?.productSet?.userErrors || r).slice(0, 120)); continue; }

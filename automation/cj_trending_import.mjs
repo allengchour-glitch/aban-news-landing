@@ -6,6 +6,7 @@
  */
 import fs from 'node:fs';
 import { istKlinge } from './klingenregel.mjs';
+import { schonBeansprucht } from './cj_claim.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
@@ -345,6 +346,8 @@ for(const p of cand){
  const dublette=await dubletteFinden(sgql,st,title);
  if(dublette){console.log('  skip(dup-handle)',title.slice(0,40),'≈',String(dublette).slice(0,40));continue;}
  slugMerken(title);
+ // Rennschutz (01.09.): siehe cj_claim.mjs.
+ if(schonBeansprucht(p.pid)){console.log('  = Rennschutz: pid parallel in Arbeit —',title.slice(0,40));continue;}
  const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
  if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
  const media=imgs.slice(1).map((u,i)=>({originalSource:u,mediaContentType:'IMAGE',alt:(title+' – Bild '+(i+2)+' | LuxeStyle').slice(0,120)}));

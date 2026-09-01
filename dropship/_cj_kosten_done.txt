@@ -7844,3 +7844,4 @@ gid://shopify/Product/15450258211201	CHF 15.24	1 Varianten	Universeller 15-Zoll-
 gid://shopify/Product/15450258243969	CHF 18.55	1 Varianten	Leder-Lenkradbezug
 gid://shopify/Product/15450258276737	CHF 16.02	1 Varianten	Sport-Lederlenkradbezug
 gid://shopify/Product/15450258309505	CHF 17.10	1 Varianten	Carbon-Faser Lenkradgriffe mit Leder
+gid://shopify/Product/15450258440577	CHF 17.77	1 Varianten	Leder-Lenkradbezug rutschfest
