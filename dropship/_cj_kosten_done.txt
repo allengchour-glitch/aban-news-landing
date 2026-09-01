@@ -7180,3 +7180,8 @@ gid://shopify/Product/15449583485313	CHF 27.04	6 Varianten	Gerade geschnittene H
 gid://shopify/Product/15449583550849	CHF 27.75	6 Varianten	Gerade geschnittene Herren-Hosen · Modell 4
 gid://shopify/Product/15449583681921	CHF 10.62	1 Varianten	Kartenhalter aus Ölfarben-Leder
 gid://shopify/Product/15449583714689	CHF 10.58	4 Varianten	Taktisches Portemonnaie aus Carbonfaser
+gid://shopify/Product/15449583780225	CHF 10.30	1 Varianten	Kartenhalter & ID-Tasche
+gid://shopify/Product/15449583812993	CHF 28.16	1 Varianten	Grosses Clutch-Set aus Rindsleder
+gid://shopify/Product/15449583845761	CHF 14.47	2 Varianten	Kartenetui mit Ortungschip
+gid://shopify/Product/15449583878529	CHF 14.05	1 Varianten	Magnetischer Kartenhalter mit Sicherheitsschutz
+gid://shopify/Product/15449583911297	CHF 13.87	1 Varianten	Leder-Kartenhalter für Herren
