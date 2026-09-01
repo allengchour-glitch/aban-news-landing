@@ -7847,3 +7847,6 @@ gid://shopify/Product/15450258309505	CHF 17.10	1 Varianten	Carbon-Faser Lenkradg
 gid://shopify/Product/15450258440577	CHF 17.77	1 Varianten	Leder-Lenkradbezug rutschfest
 gid://shopify/Product/15450258637185	CHF 12.95	1 Varianten	Carbon-Faser Lenkradbezug Clip-on Griffe
 gid://shopify/Product/15450258669953	CHF 14.03	1 Varianten	Perforierter Gripp-Steuerungshülle
+gid://shopify/Product/15450258702721	CHF 15.81	1 Varianten	Universal Lenkradbezug
+gid://shopify/Product/15450258735489	CHF 15.78	1 Varianten	Universal Echtleder Lenkradbezug
+gid://shopify/Product/15450258768257	CHF 17.85	1 Varianten	Universal Antibakterieller Lenkradbezug
