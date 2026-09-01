@@ -233,7 +233,9 @@ while true; do
     sleep 10
   done
   # Bestell-/Fulfill-Runner (Shell) mitlaufen lassen
-  pgrep -f "/tmp/cj_fulfill_runner.sh" >/dev/null || { setsid bash /tmp/cj_fulfill_runner.sh >> /tmp/cj_fulfill_runner.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart cj_fulfill_runner"; }
+  # 01.09.: REPO-Fassung starten, nicht /tmp — ein /tmp-Wipe hat den Bestell-Runner sonst
+  # dauerhaft still gelegt («No such file or directory» im Log), und niemand merkte es.
+  pgrep -f "cj_fulfill_runner.sh" >/dev/null || { setsid bash "$REPO/automation/cj_fulfill_runner.sh" >> /tmp/cj_fulfill_runner.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart cj_fulfill_runner (Repo-Fassung)"; }
   # Website-Hygiene (Lieferanten-Leaks aus Kundentexten) mitlaufen lassen
   [ -f /tmp/website_hygiene_runner.sh ] && { pgrep -f "/tmp/website_hygiene_runner.sh" >/dev/null || { setsid bash /tmp/website_hygiene_runner.sh >> /tmp/website_hygiene_runner.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart website_hygiene"; }; }
   # Social-Autopilot + Reel-Motor: liegen jetzt IM REPO (nicht mehr nur /tmp), überleben also

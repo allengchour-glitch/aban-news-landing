@@ -17,7 +17,35 @@ DRY=1 meldet nur.
 """
 import json, subprocess, time, os, re
 
-CJTOK = open("/tmp/_cjtok").read().strip()
+def _cj_token():
+    """Crash-frei an den CJ-Token kommen (01.09.): /tmp/_cjtok schreibt der Fulfill-Runner —
+    fehlt die Datei (frischer /tmp-Wipe, Runner noch nicht gelaufen), holen wir selbst einen
+    (CJ limitiert getAccessToken auf 1x/300s; ein Fehlschlag ist dann ein sauberes No-op,
+    kein Traceback — ein Crash-Log sieht fuer den Aufseher wie ein erledigter Lauf aus)."""
+    try:
+        t = open("/tmp/_cjtok").read().strip()
+        if t:
+            return t
+    except FileNotFoundError:
+        pass
+    try:
+        body = json.dumps({"email": open("/tmp/cj_email").read().strip(),
+                           "password": open("/tmp/cj_apikey").read().strip()})
+        r = subprocess.run(["curl", "-s", "--max-time", "30", "-X", "POST",
+                            "https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken",
+                            "-H", "Content-Type: application/json", "-d", body],
+                           capture_output=True, text=True)
+        t = ((json.loads(r.stdout).get("data") or {}).get("accessToken") or "").strip()
+        if t:
+            open("/tmp/_cjtok", "w").write(t)
+            return t
+    except Exception:
+        pass
+    print("Kein CJ-Token erreichbar (/tmp/_cjtok fehlt, Eigenbezug scheiterte) — No-op.")
+    raise SystemExit(0)
+
+
+CJTOK = _cj_token()
 STOK = open("/tmp/cj_shop_token.txt").read().strip()
 SHOP = "au3j0y-hq.myshopify.com"
 DRY = os.environ.get("DRY") == "1"
