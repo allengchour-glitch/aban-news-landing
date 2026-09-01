@@ -7189,3 +7189,7 @@ gid://shopify/Product/15449583976833	CHF 9.95	1 Varianten	Leder-Kartenetui mit K
 gid://shopify/Product/15449584075137	CHF 16.88	3 Varianten	Kartenhalter Geldbörse
 gid://shopify/Product/15449584271745	CHF 13.57	1 Varianten	Kartenhalter Braun
 gid://shopify/Product/15449584501121	CHF 12.91	4 Varianten	Mehrfach-Geldbörse aus Leder
+gid://shopify/Product/15449584566657	CHF 13.60	1 Varianten	Männer-Kartentasche
+gid://shopify/Product/15449584861569	CHF 14.93	2 Varianten	Männliche Leder-Geldbörse mit Kartenslots
+gid://shopify/Product/15449585123713	CHF 8.62	2 Varianten	Männer-Geldbörse aus Echtleder
+gid://shopify/Product/15449585418625	CHF 20.30	2 Varianten	Stylische Leder-Tasche für Herren
