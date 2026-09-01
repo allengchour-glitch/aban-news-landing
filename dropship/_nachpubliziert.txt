@@ -255,3 +255,4 @@ gid://shopify/Product/15522142847361	elastische-hunde-leine-mit-puffer-d1cd8c	El
 gid://shopify/Product/15522152415617	taschenmesser-fur-survival-und-selbstverteidig-622100	Taschenmesser für Survival und Selbstverteidigung
 gid://shopify/Product/15522154250625	hunde-outdoor-weste-mit-brustgeschirr-870530	Hunde-Outdoor-Weste mit Brustgeschirr
 gid://shopify/Product/15522167816577	kariertes-oversize-hemd-im-retro-look-608300	Kariertes Oversize-Hemd im Retro-Look
+gid://shopify/Product/15522209694081	kini-car-forged-herren-quarzuhr-603800	Kini Car Forged Herren Quarzuhr
