@@ -7300,3 +7300,6 @@ gid://shopify/Product/15449600655745	CHF 12.21	1 Varianten	Kopfstütze mit Plaid
 gid://shopify/Product/15449600983425	CHF 21.97	1 Varianten	Lendenstütze für Auto-Sitz
 gid://shopify/Product/15449601081729	CHF 28.28	1 Varianten	Memory Foam Kissen mit Heizfunktion
 gid://shopify/Product/15449601180033	CHF 79.44	1 Varianten	Doppelseitiges Meditationskissen mit Extra-Polster
+gid://shopify/Product/15449601540481	CHF 25.55	1 Varianten	Zylindrisches Seitenschlafkissen
+gid://shopify/Product/15449601606017	CHF 22.05	1 Varianten	Sofakissenbezug 45x45 cm
+gid://shopify/Product/15449601900929	CHF 34.16	1 Varianten	Sommer-Decke aus Ice Silk
