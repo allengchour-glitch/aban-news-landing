@@ -7002,3 +7002,12 @@ gid://shopify/Product/15449510281601	CHF 17.91	32 Varianten	Wollpullover · Mode
 gid://shopify/Product/15449510314369	CHF 13.73	4 Varianten	Patchwork-Top aus Polyester
 gid://shopify/Product/15449510347137	CHF 11.65	4 Varianten	Apricot-Polsterpulli
 gid://shopify/Product/15449510379905	CHF 17.70	5 Varianten	Farbenfrohes Pullover
+gid://shopify/Product/15449510412673	CHF 14.91	28 Varianten	Strickpullover mit Streifen
+gid://shopify/Product/15449510445441	CHF 12.52	4 Varianten	Kardigan-Sweater · Damen
+gid://shopify/Product/15449510478209	CHF 14.32	4 Varianten	Farbblock-Pullover
+gid://shopify/Product/15449510543745	CHF 17.54	4 Varianten	Casual-Langarm-Pullover
+gid://shopify/Product/15449510576513	CHF 18.10	5 Varianten	Frauenpullover aus Polyester
+gid://shopify/Product/15449510609281	CHF 19.19	6 Varianten	Blumenmuster-Sweater
+gid://shopify/Product/15449510642049	CHF 14.52	6 Varianten	Strickpullover mit Streifen · Modell 2
+gid://shopify/Product/15449510674817	CHF 15.17	7 Varianten	Beige Fleece-Hemd
+gid://shopify/Product/15449510707585	CHF 23.99	4 Varianten	Bunte Blumen-Strickpullover
