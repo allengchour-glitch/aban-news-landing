@@ -249,3 +249,5 @@ gid://shopify/Product/15517968597377	reflektierende-hunde-leine-fur-kleine-bis-g
 gid://shopify/Product/15518560551297	bohemian-exotik-rock-im-resort-stil-632700	Bohemian Exotik-Rock im Resort-Stil
 gid://shopify/Product/15520411255169	laniska-beinpflege-pflaster-4-stk-600600	Laniska Beinpflege-Pflaster (4 Stk.)
 gid://shopify/Product/15521700020609	franzosische-sandalen-mit-blockabsatz-595584	Französische Sandalen mit Blockabsatz
+gid://shopify/Product/15522129674625	isolierte-lunchtasche-gross-638800	Isolierte Lunchtasche, gross
+gid://shopify/Product/15522129707393	orthopadisches-latex-kopfkissen-b79d89	Orthopädisches Latex-Kopfkissen

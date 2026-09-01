@@ -7185,3 +7185,7 @@ gid://shopify/Product/15449583812993	CHF 28.16	1 Varianten	Grosses Clutch-Set au
 gid://shopify/Product/15449583845761	CHF 14.47	2 Varianten	Kartenetui mit Ortungschip
 gid://shopify/Product/15449583878529	CHF 14.05	1 Varianten	Magnetischer Kartenhalter mit Sicherheitsschutz
 gid://shopify/Product/15449583911297	CHF 13.87	1 Varianten	Leder-Kartenhalter für Herren
+gid://shopify/Product/15449583976833	CHF 9.95	1 Varianten	Leder-Kartenetui mit Knopf und elastischem Band
+gid://shopify/Product/15449584075137	CHF 16.88	3 Varianten	Kartenhalter Geldbörse
+gid://shopify/Product/15449584271745	CHF 13.57	1 Varianten	Kartenhalter Braun
+gid://shopify/Product/15449584501121	CHF 12.91	4 Varianten	Mehrfach-Geldbörse aus Leder
