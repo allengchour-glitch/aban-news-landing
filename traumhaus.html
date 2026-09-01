@@ -14697,13 +14697,22 @@ function lodAufbau(){
     kugel=n.geometry.boundingSphere;if(!kugel)return;
     var sk=Math.max(Math.abs(n.scale.x),Math.abs(n.scale.y),Math.abs(n.scale.z));
     var r=kugel.radius*sk;
-    if(r>2.2)return;                       /* gross genug -> immer sichtbar */
+    /* ⚠️ DIE GRENZE LAG BEI 2,2 m — alles darueber blieb auf JEDE Entfernung stehen.
+       Gemessen sind das 3'051 Meshes zwischen 2,2 und 4 m (Kioske, kleine Baeume,
+       Sitzgruppen, Fahrzeuge): aus 130 m Entfernung ein paar Pixel gross, aber je ein
+       voller Zeichenaufruf. th-tempo sagt nach der Korrektur, dass RENDERN 78 % der
+       Arbeit je Bild ist — also zaehlt genau das.
+       Dritte Stufe darum: mittelgross verschwindet erst weit draussen (130/138 m), wo
+       ein 3-m-Objekt unter zwei Bildpunkte faellt. Die Reserve von 8 m ist groesser als
+       bei den anderen Stufen, weil man diese Entfernung schneller durchfaehrt als
+       durchlaeuft. */
+    if(r>4.5)return;                       /* gross genug -> immer sichtbar */
     n.getWorldPosition(mitte);
     /* Zwei Stufen: Winziges (Sprossen, Griffe, Torlatten, Fensterbaenke) ist nur
        aus der Naehe ueberhaupt lesbar, kostet aber je einen vollen Zeichenaufruf.
        Nach dem Einbau der Fenster- und Tuerdetails stiegen die Aufrufe von 270
        auf 1148 — deshalb verschwindet dieses Kleinzeug schon ab 34 m. */
-    _lodKlein.push({m:n,x:mitte.x,z:mitte.z,nah:(r<0.55)});
+    _lodKlein.push({m:n,x:mitte.x,z:mitte.z,nah:(r<0.55),mittel:(r>2.2)});
   });
   _lodBereit=true;
   return _lodKlein.length;
@@ -14766,10 +14775,11 @@ function lodTakt(px,pz){
      2 m am Kugelradius, ausdruecklich „gegen Flackern"; hier fehlte sie ganz.
      Jetzt: einblenden ab 78 m, ausblenden erst ab 82 m (nah: 34 / 37). Vier Meter
      Reserve kosten ein paar Zeichenaufrufe mehr und nehmen dem Rand das Zucken. */
-  var AN_F=78*78, AUS_F=82*82, AN_N=34*34, AUS_N=37*37;
+  var AN_F=78*78, AUS_F=82*82, AN_N=34*34, AUS_N=37*37, AN_M=130*130, AUS_M=138*138;
   for(var i=0;i<_lodKlein.length;i++){
     var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz,d2=dx*dx+dz*dz;
-    var sicht=e.m.visible ? d2<(e.nah?AUS_N:AUS_F) : d2<(e.nah?AN_N:AN_F);
+    var an=e.mittel?AN_M:(e.nah?AN_N:AN_F), aus=e.mittel?AUS_M:(e.nah?AUS_N:AUS_F);
+    var sicht=e.m.visible ? d2<aus : d2<an;
     if(e.m.visible!==sicht)e.m.visible=sicht;
   }
   /* Instanzgruppen (Zaunlinien, Hecke): als GANZES ausblenden, gemessen an ihrer
