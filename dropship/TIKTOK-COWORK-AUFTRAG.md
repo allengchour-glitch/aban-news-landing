@@ -20,7 +20,7 @@
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
-**Profil am 2026-08-31 gemessen:** 561 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
+**Profil am 2026-09-01 gemessen:** 561 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
 
 ## So vorgehen (gilt für jeden Beitrag)
 1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,

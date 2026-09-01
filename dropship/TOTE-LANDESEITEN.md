@@ -8,4 +8,4 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 
 | Sitzungen | Titel | Handle |
 |---:|---|---|
-| 5 | Herren Kurzarm-Poloshirt Bobroff Rosa | `dein-rosa-poloshirt-eleganz-fur-warme-tage-302911` |
+| 5 | Ärmelloses Herren-T-Shirt Reebok Id Train Slvls Tech Braun | `braunes-herren-tanktop-optimal-fur-dein-training-1130572` |

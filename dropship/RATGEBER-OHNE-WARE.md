@@ -2,18 +2,6 @@
 
 Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, der rankt und die Leserin ins Leere schickt, verschenkt genau die Kaufabsicht, die am teuersten zu bekommen ist.
 
-## ⚠️ Benannte Ware zu benanntem Preis — die es nicht gibt
-
-Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen und Preis, den niemand kaufen kann.
-
-| Ratgeber | verspricht | Preis | kein Produkt zu |
-|---|---|---|---|
-| [Leder pflegen: Anleitung für langlebige Echtl](/blogs/ratgeber/echtleder-accessoires-pflegen-anleitung) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
-| [Geschenkboxen verschenken: Warum kuratierte S](/blogs/ratgeber/geschenkboxen-sets-verschenken-ideen) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
-| [Geschenke für Männer 2026: Ideen mit Stil aus](/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
-| [Herrenuhr kaufen – worauf achten? Der ehrlich](/blogs/ratgeber/herrenuhr-kaufen-ratgeber-schweiz) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
-| [Vatertag Geschenke Schweiz 2026: Ideen mit St](/blogs/ratgeber/vatertag-geschenke-schweiz-2026) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
-
 ## Ratgeber ohne einen einzigen kaufbaren Produktlink
 
 | Ratgeber | Produktlinks (alle tot/keine) |
@@ -35,7 +23,6 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Die besten Aroma-Diffuser 2026 — Kaufratgeber für die Schwei](/blogs/ratgeber/beste-aroma-diffuser-2026-kaufratgeber-schweiz) | 0 |
 | [Bluetooth Kopfhörer mit ANC: Der ehrliche Kaufratgeber](/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber) | 1 |
 | [Sojawachs Duftkerzen Ratgeber: Soja vs. Paraffin, Brenndauer](/blogs/ratgeber/duftkerzen-sojawachs-vs-paraffin-ratgeber) | 0 |
-| [Geschenkboxen verschenken: Warum kuratierte Sets das schönst](/blogs/ratgeber/geschenkboxen-sets-verschenken-ideen) | 0 |
 | [Himalaya Salzlampe Wirkung: Was sie wirklich kann und was My](/blogs/ratgeber/himalaya-salzlampe-wirkung-mythen) | 0 |
 | [Nackenverspannung lösen zuhause: Sanfte Wege zu mehr Entspan](/blogs/ratgeber/nackenverspannung-loesen-zuhause) | 0 |
 | [Yoga für Anfänger zuhause: So startest du entspannt und rich](/blogs/ratgeber/yoga-anfaenger-zuhause-starten) | 0 |
