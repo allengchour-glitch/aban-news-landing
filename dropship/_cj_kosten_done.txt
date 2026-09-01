@@ -7623,3 +7623,7 @@ gid://shopify/Product/15450060325249	CHF 20.98	72 Varianten	Wasserdichte Fünf-F
 gid://shopify/Product/15450061767041	CHF 20.04	55 Varianten	Atmungsaktive Kletterschuhe
 gid://shopify/Product/15450061996417	CHF 28.20	12 Varianten	Leichte, atmungsaktive Sicherheitsschuhe
 gid://shopify/Product/15450062225793	CHF 27.19	12 Varianten	Leichte Arbeitsschuhe mit Stahlkappe
+gid://shopify/Product/15450062487937	CHF 32.01	24 Varianten	Sicherer Arbeitsschuh mit Stahlkappe
+gid://shopify/Product/15450062782849	CHF 30.64	36 Varianten	Sicherheitschuhe mit Stahlkappe
+gid://shopify/Product/15450063012225	CHF 34.14	24 Varianten	Stahlkappe Arbeitsschuhe
+gid://shopify/Product/15450063208833	CHF 30.14	12 Varianten	Stahlkappe Kampfstiefel
