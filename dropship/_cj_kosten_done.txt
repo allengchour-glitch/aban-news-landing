@@ -7669,3 +7669,6 @@ gid://shopify/Product/15450111017345	CHF 15.57	1 Varianten	30-teiliges universel
 gid://shopify/Product/15450111345025	CHF 31.43	1 Varianten	Tragbare Mini-Nähmaschine · multifunktional
 gid://shopify/Product/15450111607169	CHF 58.60	1 Varianten	Kleine Nähmaschine für unterwegs
 gid://shopify/Product/15450111639937	CHF 18.25	1 Varianten	3D Notizblock Klavier Gold
+gid://shopify/Product/15450111902081	CHF 23.15	1 Varianten	Universal Bettwäsche Schutz
+gid://shopify/Product/15450111934849	CHF 61.62	1 Varianten	Handgemaltes abstraktes Ölgemälde
+gid://shopify/Product/15450112131457	CHF 7.73	1 Varianten	Stickereikit Pflanzen & Blumen
