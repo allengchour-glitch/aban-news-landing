@@ -7461,3 +7461,63 @@ gid://shopify/Product/15450010976641	CHF 41.43	14 Varianten	Spitzschuh mit Holzk
 gid://shopify/Product/15450011173249	CHF 22.94	11 Varianten	Massive Absätze Spitzschuhe mit Rückenriemen
 gid://shopify/Product/15450011402625	CHF 18.13	24 Varianten	Neu: Elegante Damenhohe Absätze – Vielseitig
 gid://shopify/Product/15450011599233	CHF 20.98	16 Varianten	Schlangenmuster-Strap-Sandalen mit hohem Absatz
+gid://shopify/Product/15450011795841	CHF 26.65	72 Varianten	Spitzschuhe mit Stiletto-Absatz aus Leder für Dame
+gid://shopify/Product/15450012057985	CHF 17.40	10 Varianten	Mary Jane Slip-On Schuhe mit Kettenverzierung
+gid://shopify/Product/15450012320129	CHF 17.40	10 Varianten	Rundes Pumps mit Blockabsatz
+gid://shopify/Product/15450012516737	CHF 18.30	5 Varianten	Mary Jane Sandalen mit Mesh-Schlaufe, Sommer 2026
+gid://shopify/Product/15450012647809	CHF 26.49	39 Varianten	Stiletto-Sandalen mit Plattform
+gid://shopify/Product/15450012909953	CHF 20.07	24 Varianten	Damen Low-Cut Pumps mit Zufallsdrucken und Blockab
+gid://shopify/Product/15450013073793	CHF 21.15	27 Varianten	Mary Jane mit weicher Sohle und Blockabsatz
+gid://shopify/Product/15450013237633	CHF 21.15	27 Varianten	Mid-Heel Pumps mit Grip
+gid://shopify/Product/15450013467009	CHF 21.47	27 Varianten	Vintage Sandalen mit Blockabsatz
+gid://shopify/Product/15450013761921	CHF 60.38	49 Varianten	Damen-Schuhe & Taschen-Set mit Rhinestone-Buckle
+gid://shopify/Product/15450013991297	CHF 26.94	18 Varianten	Mittelhoch-Rückenriemen-Pumps für den Alltag
+gid://shopify/Product/15450014187905	CHF 16.86	6 Varianten	Damen-Open-Toe-Stilettos mit Schleifen-Detail
+gid://shopify/Product/15450014384513	CHF 24.48	14 Varianten	Stiletto Pumps mit Mesh & Glitzer
+gid://shopify/Product/15450014515585	CHF 21.28	54 Varianten	Retro High Heels mit Chunky Absatz
+gid://shopify/Product/15450014712193	CHF 29.89	20 Varianten	Elegante T-Strap Sandalen
+gid://shopify/Product/15450015269249	CHF 24.99	15 Varianten	Französische Stiletto-Sandalen
+gid://shopify/Product/15450015498625	CHF 23.91	21 Varianten	Ein-Strap High-Heeled Sandalen
+gid://shopify/Product/15450015662465	CHF 25.72	24 Varianten	Schmale Spitzschuhsandalen mit Stiletto-Absatz
+gid://shopify/Product/15450015859073	CHF 26.47	28 Varianten	Atmungsaktive Damen-Sandalen mit Mesh-Obermaterial
+gid://shopify/Product/15450016055681	CHF 22.40	10 Varianten	Neue Sommersandalen im französischen Stil mit spit
+gid://shopify/Product/15450016350593	CHF 38.95	99 Varianten	20 cm Fusseliger Laufsteg-Slipper
+gid://shopify/Product/15450016514433	CHF 16.09	36 Varianten	Stiletto-Sandaletten mit Schmuckriemen und Spitzze
+gid://shopify/Product/15450016711041	CHF 28.43	8 Varianten	Punk-Style Boots mit Kreppabsätzen und Lederriemen
+gid://shopify/Product/15450016907649	CHF 22.93	60 Varianten	Spitzschuh Slingback Pumps Gr. 40-43 Frühjahr/Somm
+gid://shopify/Product/15450017235329	CHF 27.24	7 Varianten	Stiletto-Pumps mit spitzen Zehen – hochhackig
+gid://shopify/Product/15450017431937	CHF 24.82	18 Varianten	Strohgeflecht Jute Strand Sandalen
+gid://shopify/Product/15450017726849	CHF 21.83	16 Varianten	Halb-Schuh Sandalen
+gid://shopify/Product/15450017923457	CHF 21.60	14 Varianten	Einriemen-Sandalen mit weicher Sohle für Damen Som
+gid://shopify/Product/15450018087297	CHF 26.13	18 Varianten	Schwarze Leder-Pumps mit Blockabsatz
+gid://shopify/Product/15450018283905	CHF 22.73	30 Varianten	Rote Hochzeitsschuhe mit Blockabsatz
+gid://shopify/Product/15450018480513	CHF 14.20	56 Varianten	Sommer-Sandalen mit Keilabsatz
+gid://shopify/Product/15450018775425	CHF 18.17	16 Varianten	Frühling-Herbst-Pumps mit Spitzspitze und Blockabs
+gid://shopify/Product/15450019070337	CHF 27.29	18 Varianten	Damenleder Pumps – Berufsbekleidung
+gid://shopify/Product/15450019299713	CHF 20.51	36 Varianten	Dicker Hacke Pumps im britischen Stil
+gid://shopify/Product/15450019725697	CHF 38.00	65 Varianten	Schwarze Plus-Grösse Schlankes Absatz
+gid://shopify/Product/15450020184449	CHF 22.52	18 Varianten	Koreanische Sommersandalen mit Dicksohle
+gid://shopify/Product/15450020708737	CHF 14.38	27 Varianten	Damen Blockabsatzschuhe Suede Peep-Toe
+gid://shopify/Product/15450021200257	CHF 40.63	21 Varianten	Weiche Sandalen im französischen Stil mit Haarband
+gid://shopify/Product/15450021855617	CHF 33.39	84 Varianten	Elegante High Heels mit Plattform
+gid://shopify/Product/15450022478209	CHF 27.94	50 Varianten	Extra-hohe Absätze mit dicken Sohlen
+gid://shopify/Product/15450023002497	CHF 30.70	15 Varianten	Elegante Stiletto-Heels mit Rhinsternen
+gid://shopify/Product/15450023526785	CHF 53.91	14 Varianten	Pfauenfeder-Plattformhakenschuhe
+gid://shopify/Product/15450023985537	CHF 18.95	63 Varianten	Patentleder Rundzehen Slip-on Stiletto Pumps
+gid://shopify/Product/15450025066881	CHF 20.91	15 Varianten	Fischmund-Sandaletten mit Dickkeil und Klettversch
+gid://shopify/Product/15450025623937	CHF 18.68	18 Varianten	Damen-Sandalen mit klarem Riemen und Keilabsatz
+gid://shopify/Product/15450026213761	CHF 24.94	16 Varianten	Damen Herbstschuhe Grössen 35-42
+gid://shopify/Product/15450026836353	CHF 25.02	24 Varianten	Retro-Balletflats mit Hohlprägung
+gid://shopify/Product/15450027327873	CHF 22.88	6 Varianten	Bequeme Flats mit Schnalle
+gid://shopify/Product/15450027819393	CHF 17.85	10 Varianten	Retro Flache Low-Cut mit Grosser Metallriemen
+gid://shopify/Product/15450028540289	CHF 17.85	5 Varianten	Französische Flachschuhe mit Chunky Absatz
+gid://shopify/Product/15450029162881	CHF 16.50	10 Varianten	Fransösische Schleife Flats
+gid://shopify/Product/15450029687169	CHF 17.85	15 Varianten	Silberne Mary Jane mit verstecktem Absatz
+gid://shopify/Product/15450030211457	CHF 18.75	5 Varianten	Neue Blumen Mary Jane Modische Flachschuhe 2026
+gid://shopify/Product/15450030801281	CHF 17.85	10 Varianten	2026 Elegant Soft-Sole Ballerinas mit Polka-Dot-Bo
+gid://shopify/Product/15450031325569	CHF 20.46	81 Varianten	Leopard-Print Mesh Ballerinas
+gid://shopify/Product/15450031653249	CHF 19.01	45 Varianten	Flachschuhe Spitzengaze bestickt hohler Zehenspies
+gid://shopify/Product/15450031849857	CHF 20.30	21 Varianten	Rundzehen Blumenstickerei Mesh Flachschuhe
+gid://shopify/Product/15450032079233	CHF 19.98	27 Varianten	Rundzehen Mesh-Schuhe Damen
+gid://shopify/Product/15450032275841	CHF 21.30	24 Varianten	Vintage Schnürschuhe mit Absatz
+gid://shopify/Product/15450032505217	CHF 15.51	12 Varianten	Weiche Ballet-Schuhe
