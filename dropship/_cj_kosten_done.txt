@@ -7193,3 +7193,35 @@ gid://shopify/Product/15449584566657	CHF 13.60	1 Varianten	Männer-Kartentasche
 gid://shopify/Product/15449584861569	CHF 14.93	2 Varianten	Männliche Leder-Geldbörse mit Kartenslots
 gid://shopify/Product/15449585123713	CHF 8.62	2 Varianten	Männer-Geldbörse aus Echtleder
 gid://shopify/Product/15449585418625	CHF 20.30	2 Varianten	Stylische Leder-Tasche für Herren
+gid://shopify/Product/15449585975681	CHF 21.12	1 Varianten	Männer Leder Clutch
+gid://shopify/Product/15449586205057	CHF 15.06	6 Varianten	Retro-Geldbörse aus Öko-Leder
+gid://shopify/Product/15449586434433	CHF 37.40	1 Varianten	Smart Clutch für Herren
+gid://shopify/Product/15449586729345	CHF 8.70	6 Varianten	Einfaches Portemonnaie mit RFID-Schutz
+gid://shopify/Product/15449587024257	CHF 23.17	1 Varianten	Herren Leder Geldbeutel
+gid://shopify/Product/15449587286401	CHF 18.67	1 Varianten	Minimalistisches AirTag-Geldbörse für Herren
+gid://shopify/Product/15449587581313	CHF 19.40	1 Varianten	Minimales Kartenhalter Wallet mit RFID-Schutz
+gid://shopify/Product/15449587908993	CHF 17.60	1 Varianten	Minimalistisches Portemonnaie mit Kartenfach
+gid://shopify/Product/15449588171137	CHF 23.17	1 Varianten	Smart Wallet mit Airtag-Halter
+gid://shopify/Product/15449588400513	CHF 23.93	3 Varianten	Retro Leder-Geldbörse
+gid://shopify/Product/15449588629889	CHF 19.16	3 Varianten	Grosses Leder-Geldbörse mit Kartenfächern
+gid://shopify/Product/15449588892033	CHF 13.69	1 Varianten	Adjustable Silberringe
+gid://shopify/Product/15449589154177	CHF 12.32	4 Varianten	Opalring mit Iris-Effekt
+gid://shopify/Product/15449589416321	CHF 11.29	2 Varianten	Verstellbarer Ring mit Doppelschicht-Edelstein
+gid://shopify/Product/15449589711233	CHF 9.02	52 Varianten	Edelstahlring mit 26 Buchstaben
+gid://shopify/Product/15449589973377	CHF 20.12	1 Varianten	Paraiba-Tourmalin-Ring mit Diamanten
+gid://shopify/Product/15449590563201	CHF 13.82	1 Varianten	Katzenring anpassbar
+gid://shopify/Product/15449590825345	CHF 20.12	1 Varianten	Damenring mit gelbem Diamant
+gid://shopify/Product/15449591120257	CHF 9.50	1 Varianten	18k Gold Damenring Edelstahl
+gid://shopify/Product/15449591382401	CHF 19.31	1 Varianten	Edler Padparadscha-Ring mit Marquise-Schliff
+gid://shopify/Product/15449591644545	CHF 13.91	1 Varianten	Retro Paraiba Ring mit Aquamarin CZ
+gid://shopify/Product/15449591906689	CHF 12.56	1 Varianten	Personalisierter Ring mit Stein
+gid://shopify/Product/15449592365441	CHF 19.63	1 Varianten	Glaskunst Ring mit Früchtemuster
+gid://shopify/Product/15449592725889	CHF 9.08	1 Varianten	Silberner Relief-Ring mit Stern
+gid://shopify/Product/15449593086337	CHF 8.51	1 Varianten	Sternenring aus Titanstahl
+gid://shopify/Product/15449593479553	CHF 10.22	1 Varianten	Zircon Ring mit Edelstein
+gid://shopify/Product/15449593774465	CHF 7.64	1 Varianten	Grosskugel Ring Edelstahl
+gid://shopify/Product/15449594069377	CHF 9.54	1 Varianten	Schmetterling-Schale Pferd Ring
+gid://shopify/Product/15449594331521	CHF 6.86	1 Varianten	Piraten-Schädelring Edelstahl
+gid://shopify/Product/15449594593665	CHF 7.59	1 Varianten	Eleganter Edelstahlring für Herren
+gid://shopify/Product/15449594659201	CHF 12.92	1 Varianten	Eleganter Rock-Anhänger-Ring
+gid://shopify/Product/15449594691969	CHF 13.82	1 Varianten	Doppelter Schmetterlingsring
