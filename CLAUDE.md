@@ -4520,6 +4520,29 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🧾 14 Wahlversprechen von Hand bereinigt — und ein Set-Inhalt ist keine Auswahl (2026-09-01)
+Der Wahlversprechen-Bericht führte 15 Ein-Varianten-Produkte, deren Text «in zwei/drei/vier
+Grössen/Farben» versprach — genau die Klasse, die `FIX=1` bewusst nur MELDET (Auszeichnung im
+Satz oder zweite Aussage). Alle 15 einzeln gelesen, 14 mit punktgenauen Je-Produkt-Mustern
+repariert (DRY: jedes Muster exakt 1×; Nachbarinformation wie «wird ohne Füllung geliefert»
+umformuliert statt mitgelöscht; «mit vier oder zwei Eiswürfelbehältern» → «Integrierte
+Eiswürfelbehälter halten die Snacks frisch» — das Merkmal bleibt, die falsche Wahl fällt).
+Gegenprobe am Ursprung: 0 Restklauseln. Quittiert als `handfix-0109`.
+- **Der 15. war ein FEHLALARM, und daraus wurde eine Regel:** «**4 Bambus-Boxen** in zwei
+  Grössen: **2×** gross, **2×** klein» beschreibt den SET-INHALT — beide Grössen sind dabei,
+  die Kundin wählt nichts. Erkennungszeichen: Stückzahl `N×` vor einem BUCHSTABEN direkt nach
+  dem Treffer (× vor Ziffer ist eine Massangabe wie 30×20 und zählt nicht). In
+  `wahlversprechen.py` eingebaut und in beide Richtungen getestet (Set geschluckt, die drei
+  echten Formen weiter gemeldet) — sonst wäre der Fehlalarm täglich neu im Bericht gestanden.
+- ⚠️ Zwei Fälle («in den Farben Schwarz, Pink, Blau … erhältlich») fand mein eigenes
+  Lese-Muster NICHT, der Wächter schon — die Wortstellung war anders. Wer die Fälle eines
+  Wächters nachprüft, nimmt dessen Trefferliste als Quelle, nicht das eigene Muster.
+- Nebenbefund desselben Ticks: Das zweite Reebok-Tanktop im Tote-Landeseiten-Bericht hatte
+  live LÄNGST eine 301 auf `/collections/herren-shirts` — der Bericht (03:14) war älter als
+  die Reparatur. ⚠️ `urlRedirects(query:"path:teilstring")` findet dabei NICHTS; erst der
+  VOLLE Pfad traf. Ein leeres Suchergebnis dort ist kein Beleg, dass die 301 fehlt — die
+  Mutation antwortete «Path has already been taken» und hatte recht.
+
 ## ⭐ Sterne auf allen Produktkarten — aus echten Metafeldern, ab 4.0★ und 3 Stimmen (2026-09-01)
 Betreiber: «webseite mehr bewertete produkten». Judge.me war binnen 4 Tagen von 1'193 auf
 **1'706 Bewertungen** gewachsen (der tägliche CJ-Import liefert) → statt 15 gibt es **244

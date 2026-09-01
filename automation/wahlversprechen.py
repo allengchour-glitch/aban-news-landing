@@ -93,6 +93,14 @@ while gesehen < CAP:
         txt = re.sub(r'\s+', ' ', txt)
         m = WAHL.search(txt)
         if m:
+            # 01.09.: SET-Inhalt ist keine Auswahl. «4 Bambus-Boxen in zwei Grössen:
+            # 2× gross (30×20×12 cm), 2× klein» — BEIDE Grössen sind im Set, die Kundin
+            # waehlt nichts. Erkennungszeichen: eine Stueckzahl «N×» vor einem BUCHSTABEN
+            # direkt nach dem Treffer (× vor Ziffer ist eine Massangabe wie 30×20 und
+            # zaehlt nicht). Solche Treffer sind Fehlalarme, nicht Befunde.
+            danach = txt[m.start():m.start() + 120]
+            if re.search(r'\d+\s*[×x]\s*[A-Za-zÄÖÜäöü]', danach):
+                continue
             treffer.append((a['id'].split('/')[-1], a['title'], m.group(0)[:70]))
     if not p['pageInfo']['hasNextPage']:
         break
