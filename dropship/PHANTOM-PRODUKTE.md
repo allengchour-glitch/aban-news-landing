@@ -35,6 +35,11 @@ Umfeld von 120 Zeichen danach.
 - `wireless-charger-3in1-ratgeber` (1: In-Ear-ANC→echt 52.90; LED-Lampe-Link war korrekt)
 - `anti-aging-serum-hyaluron-vitamin-c-routine` (3: Augencreme→echt Golden Caviar 15.90,
   Masken-7-Tage-Set→generisch, Beauty-Komplett-Set→Kollektionsverweis)
+- `geschenkboxen-sets-verschenken-ideen` (7 — der Boxen-Artikel war fast KOMPLETT aus
+  Phantomen gebaut: Beauty-Bundle→3 echte Einzelprodukte, Komplett-Set→Kollektions-Rat,
+  Aromatherapie-Starter→Bundle (deckt Diffuser+Öle wirklich), Selfcare+Sleep-Box→Seiden-
+  Kissenbezug echt 21.90 + generisch, Muttertag-Box→Kategorieverweis, CTA→Bundle+Geschenkideen;
+  Tech-Hero-Box war ECHT und gedeckt — blieb)
 
 ## Verifizierte Zuordnungen (alle 02.09. live geprüft: ACTIVE + Onlineshop)
 | Phantom | echtes Produkt | Preis | Handle |
