@@ -973,3 +973,6 @@ gid://shopify/Product/15523176612225	ok	Programmierbare Bausteine – Kursrobote
 gid://shopify/Product/15523178283393	ok	Faltbarer Wäschetrockner für Zuhause
 gid://shopify/Product/15523185099137	nicht-versendbar	Wandbild Hydroponische Pflanzen
 gid://shopify/Product/15523185590657	ok	Barbell Push-up Halterung
+gid://shopify/Product/15523237298561	nicht-versendbar	Baukasten-Set für kreative Köpfe
+gid://shopify/Product/15523184181633	ok	Korallen-Ornament mit Kristallbasis
+gid://shopify/Product/15523439214977	ok	Bearings Spinnrolle Long Cast – SH10000/SH12000

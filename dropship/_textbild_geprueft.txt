@@ -48285,3 +48285,5 @@ gid://shopify/Product/15429997822337	gid://shopify/MediaImage/70740350599553
 gid://shopify/Product/15429997855105	gid://shopify/MediaImage/70740350697857
 gid://shopify/Product/15429997920641	gid://shopify/MediaImage/70740350763393
 gid://shopify/Product/15479403020673	gid://shopify/MediaImage/70341460328833
+gid://shopify/Product/15480569168257	gid://shopify/MediaImage/70350613479809
+gid://shopify/Product/15481773818241	gid://shopify/MediaImage/70361844580737
