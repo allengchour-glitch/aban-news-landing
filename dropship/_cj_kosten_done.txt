@@ -8058,3 +8058,23 @@ gid://shopify/Product/15450560299393	CHF 43.76	21 Varianten	Wasserdichte, rutsch
 gid://shopify/Product/15450560594305	CHF 11.54	3 Varianten	Outdoor Schnee- und Bergwanderschuhe
 gid://shopify/Product/15450560987521	CHF 35.34	32 Varianten	Mesh Atmungsaktiver und Stossdämpfender Schuh
 gid://shopify/Product/15450561413505	CHF 40.71	16 Varianten	Outdoor-Wanderschuhe für Herren
+gid://shopify/Product/15450561773953	CHF 29.93	24 Varianten	Winterstiefel Herren – Hochwertiges Leder, warm ge
+gid://shopify/Product/15450561970561	CHF 21.64	48 Varianten	Sneaker mit Luftpolster-Sohle
+gid://shopify/Product/15450562134401	CHF 15.49	70 Varianten	Leichte, tragbare Watschuhe
+gid://shopify/Product/15450608992641	CHF 20.30	7 Varianten	Niedrige Stiefeletten mit Seitenreissverschluss
+gid://shopify/Product/15450609058177	CHF 17.42	24 Varianten	Vintage Wildleder Ankle Boots mit Blockabsatz
+gid://shopify/Product/15450609156481	CHF 21.45	10 Varianten	Martin Boots mit Schnürung & Plateau-Sohle
+gid://shopify/Product/15450609287553	CHF 23.04	14 Varianten	Niedrige Wildleder-Stiefeletten mit Nieten und Qua
+gid://shopify/Product/15450609385857	CHF 24.98	12 Varianten	Atmungsaktiver Chunky Heel Boot
+gid://shopify/Product/15450609418625	CHF 25.59	24 Varianten	Elegante Stretch-Stiefeletten mit Stiletto-Absatz
+gid://shopify/Product/15450609615233	CHF 22.90	21 Varianten	Retro Slouch Stiefel mit spitzer Zehenpartie
+gid://shopify/Product/15450609779073	CHF 31.20	33 Varianten	Herren High-top Ankle Boots
+gid://shopify/Product/15450610106753	CHF 22.12	7 Varianten	Chunky Ankle Boots im British Style
+gid://shopify/Product/15450610172289	CHF 27.16	40 Varianten	Ankle Boots mit spitzer Zehe und Blockabsatz
+gid://shopify/Product/15450610303361	CHF 35.59	40 Varianten	Retro Overknee-Stiefel für Damen
+gid://shopify/Product/15450610401665	CHF 18.75	16 Varianten	Peep-Toe High-Heel Sandaletten mit Kreuzriemen
+gid://shopify/Product/15450610565505	CHF 20.65	16 Varianten	Modische Casual Boots für Damen
+gid://shopify/Product/15450610663809	CHF 28.28	12 Varianten	Damen-Boots mit klobigem Absatz
+gid://shopify/Product/15450610762113	CHF 20.62	16 Varianten	Spitze Stiefeletten mit mittlerem Absatz
+gid://shopify/Product/15450610958721	CHF 35.82	30 Varianten	Wedge Ankle Boots mit Schnürung
+gid://shopify/Product/15450610991489	CHF 21.80	35 Varianten	Overknee-Stiefel mit Chunky-Heel aus Wildleder
