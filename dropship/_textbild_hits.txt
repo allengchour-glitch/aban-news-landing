@@ -14496,3 +14496,19 @@ gid://shopify/Product/15522514928001	9->0	Trainingsseil für Haustiere, 2 m
 gid://shopify/Product/15522515255681	22->0	Chihuahua Leine
 gid://shopify/Product/15522631418241	23->1	Damenbluse mit seitlicher Bindung im Korea-Stil
 gid://shopify/Product/15522644623745	38->3	Elegantes Langarm-Top mit Patchwork
+gid://shopify/Product/15522646294913	66->0	Locker sitzendes Langarmshirt mit UV-Schutz
+gid://shopify/Product/15522668806529	124->0	Gestreiftes Langarmhemd mit verstellbaren Ärmeln
+gid://shopify/Product/15522669265281	18->0	Besticktes Schmetterlings-Shirt für Damen
+gid://shopify/Product/15522690531713	95->1	Blusen-Shirt mit Blumenprint
+gid://shopify/Product/15522692628865	139->0	Chic geraffte Doppel-Layer Bluse im Vintage-Stil
+gid://shopify/Product/15522790343041	18->0	Grosses Reise-Storage‑Bag mit Trocken‑ und Nass‑Fach
+gid://shopify/Product/15522790769025	75->0	Modischer Rucksack für Herren
+gid://shopify/Product/15522953986433	48->3	Grosser, erweiterbarer Outdoor-Rucksack
+gid://shopify/Product/15522968568193	12->0	Funktionale Umhängetasche für Herren
+gid://shopify/Product/15522968633729	50->3	Fashio Freizeit Rucksack aus Canvas
+gid://shopify/Product/15523017163137	49->0	Lederrucksack für Herren (Schwarz)
+gid://shopify/Product/15523017490817	8->0	Business Casual Laptop-Umhängetasche
+gid://shopify/Product/15523038626177	80->0	USB-Aufladbare Crossbody Bag für Sport & Freizeit
+gid://shopify/Product/15523039150465	52->0	Grosser Herren-Rucksack
+gid://shopify/Product/15523039904129	46->0	Damen Rucksack aus echtem Leder
+gid://shopify/Product/15523040297345	12->0	Reise-Rucksack für Herren mit grossem Fassungsvermögen
