@@ -2285,3 +2285,13 @@
 15448583438721	ersetzt-1	Eleganter ärmelloser Jumpsuit mit V-Ausschnitt – Beige
 15448583471489	ersetzt-1	Vielseitiger Jumpsuit mit weitem Bein
 15448583537025	ersetzt-1	Gestreifter ärmelloser Leinen-Playsuit
+15448583635329	ersetzt-1	Einteiliger Bikini mit Rüschenträgern
+15448583700865	ersetzt-1	Nahtloser Body Shaping Thong
+15448584782209	ersetzt-1	Elegantes, locker geschnittenes Kleid
+15448584847745	ersetzt-1	Seidenkleid mit V-Ausschnitt und Taillengürtel
+15448584880513	ersetzt-1	Tailliertes Minikleid mit 3/4-Ärmeln
+15448585011585	ersetzt-1	Französisches Spitzenkleid mit 3D-Blumen
+15448585077121	ersetzt-1	Ärmelloses V-Neck Tank Dress aus Baumwoll-Leinen
+15448585175425	ersetzt-1	Retro Polka-Dot Kleid
+15448585208193	ersetzt-1	Kurzes Polka-Dot Kleid im Hepburn-Stil
+15448585470337	ersetzt-1	Sportliches Tennis-Kleid mit Reissverschluss

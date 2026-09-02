@@ -8684,3 +8684,6 @@ gid://shopify/Product/15450832503169	CHF 36.75	5 Varianten	Hundebett Warmer Schl
 gid://shopify/Product/15450832535937	CHF 10.73	4 Varianten	Fressnapf mit Ständer für Haustiere
 gid://shopify/Product/15450832568705	CHF 40.68	4 Varianten	U-förmiges Schwangerschaftskissen aus Eisseide
 gid://shopify/Product/15450832601473	CHF 13.51	10 Varianten	Baumwoll-Set für Jungen (Frühling/Herbst)
+gid://shopify/Product/15450832634241	CHF 18.86	20 Varianten	Spitze Herrenschuhe zum Schnüren
+gid://shopify/Product/15450832667009	CHF 32.23	41 Varianten	Riesiger Teddybär – Plüschtier mit Leder-Optik
+gid://shopify/Product/15450832765313	CHF 20.34	3 Varianten	4-in-1 Küchenrollenhalter mit Folienabroller
