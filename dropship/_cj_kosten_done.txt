@@ -8661,3 +8661,9 @@ gid://shopify/Product/15450831618433	CHF 12.96	3 Varianten	Multi-Universal-Reise
 gid://shopify/Product/15450831651201	CHF 15.91	2 Varianten	LED Wecker mit kabelloser Ladefunktion
 gid://shopify/Product/15450831683969	CHF 7.94	12 Varianten	LED Laser Rolling Pet Toy Ball
 gid://shopify/Product/15450831716737	CHF 9.79	3 Varianten	Halterung für Rückspiegel-Handy
+gid://shopify/Product/15450831749505	CHF 8.85	18 Varianten	Diamant-Messerschärfer aus Wolframstahl
+gid://shopify/Product/15450831815041	CHF 5.39	15 Varianten	Aromatherapie-Duftöl für Luftbefeuchter
+gid://shopify/Product/15450831847809	CHF 14.59	12 Varianten	3-in-1 Trinkflasche für Haustiere mit Futter & Kot
+gid://shopify/Product/15450831880577	CHF 10.84	1 Varianten	Makeup Set All-in-One – für einen kompletten Look
+gid://shopify/Product/15450831913345	CHF 30.84	54 Varianten	Business Casual Slipper für Herren
+gid://shopify/Product/15450831978881	CHF 9.06	4 Varianten	2-in-1 Trink- und Futterflasche für Haustiere

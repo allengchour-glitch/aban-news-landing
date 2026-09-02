@@ -40,6 +40,12 @@ Umfeld von 120 Zeichen danach.
   Aromatherapie-Starter→Bundle (deckt Diffuser+Öle wirklich), Selfcare+Sleep-Box→Seiden-
   Kissenbezug echt 21.90 + generisch, Muttertag-Box→Kategorieverweis, CTA→Bundle+Geschenkideen;
   Tech-Hero-Box war ECHT und gedeckt — blieb)
+- `adventskalender-erwachsene-vergleich-2026` — UNVERÖFFENTLICHT + 301 auf
+  /collections/premium-geschenke: Der Artikel verglich DREI Phantom-Adventskalender
+  (DELUXE 99.90 / LuxeStyle Premium 149.90 / Beauty 79.90); es existiert kein einziger
+  echter — ein Vergleich ohne Gegenstand ist nicht flickbar (Launch-Seiten-Präzedenz).
+- `weihnachtsgeschenke-2026-schweiz-ideen` (Beifang: bewarb den Phantom-DELUXE 2× und
+  verlinkte den Vergleich — beide Stellen bereinigt, Listenpunkt→echtes Bundle)
 
 ## Verifizierte Zuordnungen (alle 02.09. live geprüft: ACTIVE + Onlineshop)
 | Phantom | echtes Produkt | Preis | Handle |
