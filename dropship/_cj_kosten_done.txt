@@ -8667,3 +8667,7 @@ gid://shopify/Product/15450831847809	CHF 14.59	12 Varianten	3-in-1 Trinkflasche 
 gid://shopify/Product/15450831880577	CHF 10.84	1 Varianten	Makeup Set All-in-One – für einen kompletten Look
 gid://shopify/Product/15450831913345	CHF 30.84	54 Varianten	Business Casual Slipper für Herren
 gid://shopify/Product/15450831978881	CHF 9.06	4 Varianten	2-in-1 Trink- und Futterflasche für Haustiere
+gid://shopify/Product/15450832011649	CHF 12.54	9 Varianten	Frucht-Infuser Wasserflasche 1000ml
+gid://shopify/Product/15450832044417	CHF 13.21	3 Varianten	Knochenschall-Kopfhörer mit Ohrclip
+gid://shopify/Product/15450832077185	CHF 22.91	1 Varianten	Elektrisches Make-up Pinsel Reinigungs-Set
+gid://shopify/Product/15450832109953	CHF 16.45	6 Varianten	Superhelle LED-Taschenlampe mit Fokus

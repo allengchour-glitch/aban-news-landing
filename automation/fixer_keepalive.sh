@@ -677,6 +677,19 @@ while true; do
       echo "$(date -u +%H:%M) interne-links nachgezogen + tote-links geprüft"
     fi
   fi
+  # 🛡️ GOOGLE-/WERBEKANAL-SÄUBERER, einmal täglich, LIVE über die letzten 7 Tage (02.09.2026).
+  # Stand bis heute in KEINER Startliste und las /tmp/export.jsonl vom 30.08. — 18 Feuerzeuge
+  # und 10 Rauchartikel aus späteren Importen standen unbemerkt bei Google, 37 in TikTok/
+  # Facebook/Pinterest. Die Importer publizieren in alle sechs Kanäle; dieser Lauf holt
+  # Rauch/Waffe/Erotik aus allen VIER Werbekanälen, Refurb/Marke nur aus Google.
+  GS=/tmp/google_kanal_saeubern.log
+  if [ -f "$REPO/automation/google_kanal_saeubern.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && SEIT=7 setsid python3 automation/google_kanal_saeubern.py >> "$GS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) google-kanal-saeuberer (live, 7 Tage) gestartet"
+    fi
+  fi
   # BILD-ZU-KLEIN-NACHLAUF, einmal täglich: 642 aktive Produkte hatten am 25.08.2026 KEIN
   # Bild >=500x500 (Merchant-Vorwarnung «Image too small»). Der Lauf holt CJs Originale nach
   # (Masse aus dem Dateikopf, nur READY wird uebernommen, FAILED wird geloescht) und quittiert

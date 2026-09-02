@@ -49,6 +49,20 @@ DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_google_kanal_gesaeubert.txt"
 GOOGLE = "gid://shopify/Publication/302872297857"
+# 02.09.2026: SEIT=<tage> liest LIVE die seit N Tagen angelegten aktiven Produkte statt des
+# Export-Schnappschusses. Grund: Der Lauf stand in KEINER Aufseher-Liste und las
+# /tmp/export.jsonl vom 30.08. — 18 Feuerzeuge und 10 Rauchartikel aus Importen danach standen
+# unbemerkt bei Google. Ein Wächter, der einen Schnappschuss liest, bewacht die Vergangenheit.
+SEIT = int(os.environ.get("SEIT") or 0)
+# Hausregel 29.08.: Eine Warengruppe, die aus dem Google-Kanal fliegt, gehört auch aus den
+# übrigen WERBEkanälen — die Verbote sind dieselben. Online Store/Shop/POS bleiben unberührt.
+WERBUNG = {
+    "TikTok": "gid://shopify/Publication/302032716161",
+    "Facebook & Instagram": "gid://shopify/Publication/302566834561",
+    "Google & YouTube": GOOGLE,
+    "Pinterest": "gid://shopify/Publication/302994456961",
+}
+ALLE_WERBEKANAELE = {"rauchzubehoer", "waffe", "waffe-verboten", "erotik", "cuttermesser-hausregel"}
 
 # ── Rauchzubehör ──────────────────────────────────────────────────────────────
 RAUCH_TITEL = re.compile(
@@ -63,6 +77,11 @@ RAUCH_TITEL = re.compile(
     r'Drehpapier|Papes\b|Rolling[- ]?(?:Paper|Tray)|Drehunterlage|Filter[- ]?Tips|'
     r'Kräutermühle|Stash[- ]?(?:Bag|Box|Jar)|Pre[- ]?Rolled|Blunt\b|Joint(?:hülle|halter|s)\b', re.I)
 # «Anzünder» allein ist ein Grillanzünder; erst mit Kohle wird es Shisha.
+# 02.09.2026 Live-Trockenlauf: «Multifunktionaler Mixer, Entsafter & Grinder» und «Zigarre,
+# Maserung & Ölgemälde Leinwand-Set» (Malvorlage) fielen unter RAUCH_TITEL — Küchengerät und
+# Bastelbedarf. Ein Gegenmuster statt einer Ausnahmeliste je Wort (Substring-Familie).
+KEIN_RAUCH = re.compile(r'Mixer|Entsafter|Seifen|Kaffeem[üu]hle|Gewürzm[üu]hle|Leinwand|'
+                        r'Ölgemälde|Malen nach Zahlen|Diamond Painting|Kostüm|Fasnacht|Spielzeug', re.I)
 # ⚠️ 28.08.2026 — WARUM DIE STÄMME statt der Wortliste: Am 21.–26.08. legte der Grind NEUN
 # Rauchzubehör-Artikel an, alle ACTIVE im Google-Kanal, sieben davon mit productType
 # «Werkzeug & Heimwerken» (Tags heimwerken/neu/werkzeug) — die Warengruppen-Prüfung oben
@@ -159,7 +178,7 @@ def pruefen(p):
         if VERBOTEN.search(t):
             return "waffe-verboten", "draft"
         return ("cuttermesser-hausregel", "") if CUTTER.search(t) else ("waffe", "")
-    if typ.lower().startswith("raucher") or RAUCH_TITEL.search(t) or {"raucher"} & tags:
+    if typ.lower().startswith("raucher") or {"raucher"} & tags or (RAUCH_TITEL.search(t) and not KEIN_RAUCH.search(t)):
         return "rauchzubehoer", ""
     if EROTIK_TAG & tags or EROTIK_TITEL.search(t):
         return "erotik", "kinder-typ" if typ.strip().lower() in ("kinder", "baby") else ""
@@ -178,10 +197,43 @@ def titel_ohne_marke(t):
     return neu
 
 
+def produkte_live(tage):
+    """Aktive Produkte der letzten N Tage, LIVE, in der Form des Exports (title, productType,
+    tags, descriptionHtml, mf, priceRangeV2) plus `kanaele` = Werbekanäle, in denen sie stehen.
+    `g` ist wahr, wenn das Produkt in IRGENDEINEM Werbekanal steht — geprüft wird dann gegen
+    alle vier, nicht nur gegen Google. resourcePublicationsV2 statt publishedOnPublication:
+    Letzteres braucht read_product_listings und macht sonst die GANZE Antwort null (22.08.)."""
+    seit = time.strftime("%Y-%m-%d", time.gmtime(time.time() - tage * 86400))
+    Q = """query($after:String,$q:String!){ products(first:100, after:$after, query:$q){
+             pageInfo{ hasNextPage endCursor }
+             nodes{ id title status productType tags descriptionHtml
+                    priceRangeV2{ minVariantPrice{ amount } }
+                    mf: metafields(first:3, keys:["mm-google-shopping.condition"]){ nodes{ key value } }
+                    resourcePublicationsV2(first:8){ nodes{ publication{ name } } } } } }"""
+    out, after = [], None
+    while True:
+        d = gql(Q, {"after": after, "q": f"status:active AND created_at:>={seit}"})
+        if not d:
+            print("⚠️ Live-Abfrage ohne Antwort — Abbruch statt stiller Lücke", flush=True)
+            break
+        conn = d["data"]["products"]
+        for p in conn["nodes"]:
+            kan = {r["publication"]["name"] for r in p["resourcePublicationsV2"]["nodes"]} & set(WERBUNG)
+            p["kanaele"] = kan
+            p["g"] = bool(kan)
+            out.append(p)
+        if not conn["pageInfo"]["hasNextPage"]:
+            break
+        after = conn["pageInfo"]["endCursor"]
+        time.sleep(0.4)
+    print(f"LIVE seit {seit}: {len(out)} aktive Produkte geprüft", flush=True)
+    return out
+
+
 def main():
     treffer = []
-    for zeile in open(EXPORT):
-        p = json.loads(zeile)
+    quelle = produkte_live(SEIT) if SEIT else (json.loads(z) for z in open(EXPORT))
+    for p in quelle:
         if p["status"] != "ACTIVE" or not p.get("g"):
             continue
         r = pruefen(p)
@@ -210,9 +262,15 @@ def main():
         gid = p["id"]
         if gid in done:
             continue
-        # 1. Aus dem Google-Kanal nehmen — das gilt für jeden Grund.
+        # 1. Aus dem Google-Kanal nehmen — das gilt für jeden Grund. Rauch/Waffe/Erotik
+        #    zusätzlich aus TikTok, Facebook/Instagram und Pinterest (Hausregel 29.08.);
+        #    Refurb/Marke sind Google-spezifisch und bleiben dort.
+        if grund in ALLE_WERBEKANAELE:
+            ziele = [WERBUNG[k] for k in (p.get("kanaele") or set(WERBUNG))]
+        else:
+            ziele = [GOOGLE]
         r = gql('mutation($id:ID!,$i:[PublicationInput!]!){publishableUnpublish(id:$id,'
-                'input:$i){userErrors{message}}}', {"id": gid, "i": [{"publicationId": GOOGLE}]})
+                'input:$i){userErrors{message}}}', {"id": gid, "i": [{"publicationId": z} for z in ziele]})
         e = ((r.get("data") or {}).get("publishableUnpublish") or {}).get("userErrors")
         if e:
             print(f"  ⚠️ {p['title'][:36]}: {e[0]['message'][:60]}", flush=True)

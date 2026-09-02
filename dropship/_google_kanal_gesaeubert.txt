@@ -132,3 +132,20 @@ gid://shopify/Product/15453922886017 | Wilder Leopard-Druck Jumpsuit | Sperr-Tag
 gid://shopify/Product/15454235361665 | Braune Leggings mit hoher Elastizität | Sperr-Tag nicht-bewerben durchgesetzt 17.08.
 gid://shopify/Product/15468699844993 | Abendkleid mit Schlitz und Hot-Stone-Details | Sperr-Tag nicht-bewerben durchgesetzt 17.08.
 gid://shopify/Product/15503084650881 | Hundetrainingshalsband 800M | DRAFT: Schock-Modus = TSchV Art.76 verboten, 19.08.
+gid://shopify/Product/15516217082241	waffe	Keramikmesser-Set mit schwarzer Klinge, 5-teilig
+gid://shopify/Product/15519838699905	erotik	Spitzen-Dessous-Set mit Push-up und Strass
+gid://shopify/Product/15521220329857	waffe	Taktisches Outdoor-Messer mit G10-Griff
+gid://shopify/Product/15521225933185	rauchzubehoer	USB-Zigarettenanzünder
+gid://shopify/Product/15521256407425	waffe	Hochwertiges EDC Titan-Klappmesser
+gid://shopify/Product/15522152382849	waffe	Outdoor Survivalmesser mit Hanfgriff
+gid://shopify/Product/15522153169281	waffe	Kompaktes Klappmesser mit D2-Stahlklinge
+gid://shopify/Product/15522242953601	rauchzubehoer	Smarter Aschenbecher mit Luftreiniger für Auto & Zuhause
+gid://shopify/Product/15522243281281	waffe	Kompaktes Edelstahl-Klappmesser
+gid://shopify/Product/15522243543425	waffe	Klappmesser mit Carbonfaser-Griff
+gid://shopify/Product/15522243838337	waffe	Outdoormesser aus Damaststahl
+gid://shopify/Product/15522276082049	waffe	Multifunktionales Outdoor-Messer DL30 Gelb
+gid://shopify/Product/15522277065089	waffe	Leichtes, multifunktionales Klappmesser
+gid://shopify/Product/15522294235521	waffe	Multifunktionales Outdoor-Messer
+gid://shopify/Product/15523199091073	waffe	Damast Klappmesser für Outdoor und Küche
+gid://shopify/Product/15523199123841	waffe	Sanhe Stahl SKD-11 Klappmesser
+gid://shopify/Product/15523210166657	waffe	Outdoor-Klappmesser mit Stahlgriff

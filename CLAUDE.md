@@ -4546,6 +4546,37 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## 🧭 Mega-Menü: eine Spalte, neun umgebrochene Links, daneben Leere (2026-09-02, Betreiber-Screenshot)
+Betreiber: «nur die schrift, schneide die leer balken das füllt alles und man sieht nichts».
+Ursache in `snippets/mega-menu-list.liquid`: Links OHNE dritte Ebene werden in EINE
+`mega-menu__column--span-1` gestapelt (column_span = links.size/… → 1), im 6er-Raster also
+~130 px breit — jedes «Jacken & Mäntel» bricht um — und `menu_style: featured_products`
+reservierte daneben Produktkacheln, die leer blieben. Fix an zwei Stellen:
+`sections/header-group.json` Block `header-menu` `menu_style` → `text` (keine Kachelfläche) und
+`layout/theme.liquid` Block **luxMegaKompakt**: `.mega-menu__column--span-1:not(:has(ul))`
+spannt drei Rasterspalten und fliesst in drei Textspalten, `white-space:nowrap`; Spalten MIT
+Kindern (Mehr & Sale) bleiben unberührt. Backups `theme_backup/*.megamenu*-0209`.
+- ⚠️ Nur am Ursprung und im ausgelieferten HTML belegt (CSS-Block 1×, Kachel-Markup 0×) —
+  ein Hover-Screenshot ist von hier nicht möglich; sieht es am PC noch falsch aus, ist der
+  nächste Hebel `grid-column: span 4`.
+
+## 🌿 «Kiffer-Zubehör rein · Feuerzeug, Papes, Rips» (2026-09-02)
+Kollektion `smoke-zubehoer` hiess «Smoke & Chill Zubehör» und hatte 24 Produkte — der Shop
+führt aber **74 aktive mit Tag `raucher`** (Grinder, Aschenbecher, Shishas, Kohleanzünder) und
+18 Feuerzeuge. Jetzt «Kiffer- & Smoke-Zubehör (18+)», Regeln `TAG raucher` + Titelwörter
+(Kräuter-/Tabak-Grinder, Drehpapier, Papes, Rolling Paper/Tray, Filter-Tips, Kräutermühle,
+Feuerzeug) → **92 aktive**; Menülabel «Kiffer-Zubehör (18+)» unter Mehr & Sale (106 → 106).
+- ⚠️ `TITLE CONTAINS "Grinder"` holte einen **Mixer & Entsafter** und einen **Seifengrinder**
+  herein (Substring-Familie, wieder) → nur die gebundenen Formen.
+- **Papes/Rolls/Tips/Trays: 0 im Katalog** → 8 Suchbegriffe in `cj_search_queue.txt`.
+- ⚠️ **37 dieser Produkte standen in TikTok/Facebook/Pinterest, 10 bei Google** — Hausregel
+  29.08. (Werbekanäle = Google-Regeln). Alle aus den vier Werbekanälen genommen
+  (`dropship/_werbekanal_entfernt.txt`), Gegenprobe: nur Online Store/Shop/POS.
+- ⚠️ **Der Google-Säuberer lief NICHT täglich:** `google_kanal_saeubern.py` steht in keiner
+  Aufseher-Liste und liest `/tmp/export.jsonl` vom 30.08. — jeder Import danach war unsichtbar.
+  RAUCH_TITEL kennt jetzt Drehpapier/Papes/Rolling/Tips/Stash/Pre-Rolled/Blunt; der
+  Nachschub aus der Queue braucht den Wächter LIVE und täglich (siehe nächster Eintrag).
+
 ## ⛔ Ich habe heute selbst drei 404-Links auf die Nr.-2-Suchseite geschrieben (2026-09-02, spät)
 Nach «mache alles besser» erst gemessen: alle 307 Artikel, 159 Preisangaben an /products/-Links
 gegen den Live-Preis. Ergebnis: **45 Abweichungen in 14 Artikeln** (31 davon Scanner-Artefakt —
