@@ -5983,3 +5983,17 @@ jetzt ebenfalls von dort (achte Geschwister-Zusammenlegung).
 - Kein Backfill über den Bestand: je Produkt eine CJ-Abfrage (10 Punkte), bei 49'000 Produkten
   fünf Tage Budget — nur sinnvoll für Seiten mit Verkehr. Die 6'271 Bestandsprodukte mit
   vorhandener Liste zeigt die Tabelle bereits.
+
+## 📦 Jede CJ-Produktseite begann mit der Lieferzeit statt mit der Ware (2026-09-02)
+Beim Lesen der Such-Landeseiten der Woche (Speaker, Kühlmatte, Fahrradrucksack, Uhr — alle
+0 Warenkörbe) fiel auf: Der Beschreibungstext beginnt mit dem Kasten
+`<p class="ls-liefer">📦 Lieferzeit Schweiz: 10–20 Werktage · Direktversand ab Herstellerlager ·
+Versand nur in die Schweiz</p>` — direkt UNTER dem Theme-Block `lux_delivery`, der dieselbe
+Information mit Datum («Lieferung voraussichtlich 16.–30. Sept.») längst zeigt. Die Kundin las
+die Lieferzeit zweimal, bevor sie ein Wort über die Ware las. Zur LAUFZEIT in `lux_beschreibung`
+entfernt (dieselbe Mechanik wie die Faktenlisten vom Mittag) — kein Massen-Schreiber, die
+Produktdaten bleiben. Live gegengeprüft (WebFetch): Kasten weg, Beschreibung beginnt mit dem
+Produkt, Lieferblock und Spezifikationen stehen. Backup `theme_backup/product.json.liefer-strip-0209`.
+- **Regel: Was das Theme aus den Produktdaten berechnet, gehört nicht zusätzlich in den Text.**
+  Jeder Importer-Baustein, der eine Theme-Information wiederholt, ist ein Kandidat für die
+  Laufzeit-Entfernung — die Quelle darf ihn weiter schreiben (Feeds, Kanäle ohne Theme).
