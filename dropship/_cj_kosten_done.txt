@@ -7950,3 +7950,4 @@ gid://shopify/Product/15450524909953	CHF 18.30	15 Varianten	Lackleder Flats mit 
 gid://shopify/Product/15450525335937	CHF 17.40	15 Varianten	Elegante Mary Jane Sandalen mit eckiger Zehenparti
 gid://shopify/Product/15450525794689	CHF 18.30	10 Varianten	Mary Jane Flats mit Strass-Schleifen
 gid://shopify/Product/15450526220673	CHF 17.85	15 Varianten	Retro Star Damen Sneaker
+gid://shopify/Product/15450526613889	CHF 19.09	24 Varianten	Plateau-Sneaker für Damen
