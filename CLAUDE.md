@@ -4583,7 +4583,9 @@ als Marke ausgeben, in 4 Werbekanälen. Hausregel 12.08. angewandt: Marke aus Ti
   «Material: hochwertiges Material»**, obwohl der 23.08.-Lauf «Quelle versiegt» meldete.
   **433 davon sind im Ledger quittiert** (Zombie-Klasse 15.08.: ein späterer Schreiber hat die
   Floskel wiederbelebt, die Quittung schützte sie). `produktdetails_wahrheit.py` kennt jetzt
-  `IGNORIERE_LEDGER=1`; Lauf über alle 773 aus frischem Mini-Export, Ergebnis unten.
+  `IGNORIERE_LEDGER=1`; Lauf über alle 773 aus frischem Mini-Export: **709 geändert, 64 ohne
+  Befund** (dort stand die Floskel im Fliesstext, nicht als Faktenzeile), Gegenprobe am Objekt
+  über alle 773: **0** Faktenzeilen «hochwertiges Material» übrig.
 
 ## 📋 «Grösse? und Spezifikationen und Details in 1» — zwei Faktenblöcke zu einer Tabelle (2026-09-02)
 Auf der Produktseite standen zwei Faktenblöcke untereinander: Fortura schreibt
