@@ -8299,3 +8299,44 @@ gid://shopify/Product/15450729447809	CHF 13.24	24 Varianten	Koreanische Slip-on 
 gid://shopify/Product/15450729480577	CHF 29.76	72 Varianten	Vintage Leder Flats
 gid://shopify/Product/15450729513345	CHF 21.39	28 Varianten	Damen Flyknit Mesh Sneaker mit Luftpolster
 gid://shopify/Product/15450729546113	CHF 25.22	22 Varianten	Peep Toe Pumps mit T-Riemen
+gid://shopify/Product/15450729578881	CHF 26.71	27 Varianten	Damen Wildleder Ballerinas mit runder Kappe
+gid://shopify/Product/15450729611649	CHF 74.99	23 Varianten	Retro-Mokassins aus Wildleder
+gid://shopify/Product/15450729644417	CHF 48.36	21 Varianten	Keilsandalen aus Wildleder mit Strohgeflecht
+gid://shopify/Product/15450729677185	CHF 71.97	8 Varianten	Atmungsaktive Sommer Stiefeletten
+gid://shopify/Product/15450729709953	CHF 22.76	6 Varianten	Britische Leder-Loafer für Damen
+gid://shopify/Product/15450729742721	CHF 20.98	40 Varianten	Mesh Sneakers mit Luftpolsterung
+gid://shopify/Product/15450729775489	CHF 15.99	12 Varianten	Elegante Pumps mit eckiger Zehenpartie
+gid://shopify/Product/15450729808257	CHF 30.40	12 Varianten	Mary Jane Slingback mit spitzem Zeh
+gid://shopify/Product/15450729873793	CHF 18.12	18 Varianten	Retro-Ballerinas – bequem und vielseitig
+gid://shopify/Product/15450729906561	CHF 62.49	24 Varianten	Echtleder-Pumps mit klobigem Absatz
+gid://shopify/Product/15450729939329	CHF 33.32	10 Varianten	Leder-Slipper mit Metallschnalle
+gid://shopify/Product/15450729972097	CHF 24.96	24 Varianten	Pumps mit Mesh, Strass & Keilabsatz
+gid://shopify/Product/15450730004865	CHF 16.22	14 Varianten	Atmungsaktive Mesh-Sneaker mit flacher Sohle
+gid://shopify/Product/15450730037633	CHF 19.92	16 Varianten	Bequeme Freizeitschuhe für Damen
+gid://shopify/Product/15450730070401	CHF 27.06	12 Varianten	Minimalistische Slides mit Retro-Schnalle
+gid://shopify/Product/15450730103169	CHF 20.23	16 Varianten	Atmungsaktive Mesh-Sneaker mit dicker Sohle
+gid://shopify/Product/15450730168705	CHF 16.00	12 Varianten	Japan-inspirierte Leder-Halbschuhe mit Absatz
+gid://shopify/Product/15450730201473	CHF 17.51	90 Varianten	Fashion Pumps mit spitzer Zehenpartie
+gid://shopify/Product/15450730267009	CHF 20.36	7 Varianten	Sommerliche Sandalen mit floralem Design
+gid://shopify/Product/15450730299777	CHF 16.50	15 Varianten	Plateau Zehensteg-Sandalen mit Strass
+gid://shopify/Product/15450730332545	CHF 16.95	5 Varianten	Französische gewobene Mules für den Sommer
+gid://shopify/Product/15450730365313	CHF 22.58	8 Varianten	Damen Pantoletten mit Chunky-Absatz
+gid://shopify/Product/15450730398081	CHF 16.50	10 Varianten	Vielseitige flache Sandalen für Damen
+gid://shopify/Product/15450730430849	CHF 16.05	15 Varianten	Keile-Slide-Sandalen mit Kreuzriemen
+gid://shopify/Product/15450730463617	CHF 12.43	32 Varianten	Slip-on Sandalen mit Blockabsatz
+gid://shopify/Product/15450730496385	CHF 17.40	15 Varianten	Keile Sandalen mit eckiger Zehenpartie
+gid://shopify/Product/15450730529153	CHF 15.15	10 Varianten	Virgent Hollow Out Breathable Slide Sandalen
+gid://shopify/Product/15450730561921	CHF 31.26	12 Varianten	Rhinestone Riemchen Sandalette mit Stiletto
+gid://shopify/Product/15450730660225	CHF 22.61	36 Varianten	Mesh-Sandalen mit runder Zehenkappe
+gid://shopify/Product/15450730692993	CHF 15.80	27 Varianten	Outdoor Sandalen mit Chunky-Absatz
+gid://shopify/Product/15450730758529	CHF 22.60	21 Varianten	Bequeme, rutschfeste Zehensteg-Sandalen
+gid://shopify/Product/15450730791297	CHF 15.60	9 Varianten	Plateau-Slipper für Damen
+gid://shopify/Product/15450730824065	CHF 12.82	45 Varianten	Outdoor-Sandalen im Roma-Stil
+gid://shopify/Product/15450730856833	CHF 63.37	12 Varianten	Lässige Flache Sandalen aus Rindsleder
+gid://shopify/Product/15450730889601	CHF 11.56	14 Varianten	Leichte Anti-Rutsch Hausschuhe für Paare
+gid://shopify/Product/15450730922369	CHF 16.50	20 Varianten	Outdoor Slides mit Leopardenmuster
+gid://shopify/Product/15450730955137	CHF 16.05	15 Varianten	Plateau-Sandalen mit Zehensteg im Leo-Look
+gid://shopify/Product/15450730987905	CHF 15.15	15 Varianten	Französische Keil-Sandalen
+gid://shopify/Product/15450733117825	CHF 20.90	10 Varianten	Keile mit Plateau im Influencer-Stil
+gid://shopify/Product/15450733183361	CHF 28.37	7 Varianten	Zhensheng Happy Dongguofeng Tiger Head Sandalen
+gid://shopify/Product/15450733281665	CHF 30.26	9 Varianten	Chinesische Tigerkopf-Slipper für Damen

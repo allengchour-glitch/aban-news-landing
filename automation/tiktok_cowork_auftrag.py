@@ -27,6 +27,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from tiktok_biolink import bio_link, domain_im_bio, profil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -110,9 +111,25 @@ def queue_aufs_cdn(pfad):
             {"f": [{"id": QUEUE_FILE_GID, "originalSource": t[0]["resourceUrl"]}]})
     fu = (r.get("data") or {}).get("fileUpdate") or {}
     if fu.get("userErrors"):
-        print("⚠️ Queue-CDN: fileUpdate:", fu["userErrors"])
+        print("⚠️ Queue-CDN: fileUpdate:", fu["userErrors"]); return
+    # 02.09.: fileUpdate ist ASYNCHRON — die Mutation wird angenommen, die Verarbeitung
+    # kann danach scheitern (belegt: FILE_STORAGE_LIMIT_EXCEEDED am 01.09., das CDN blieb
+    # einen Tag auf dem alten Stand, das Log meldete trotzdem «aktualisiert»). Erfolg ist
+    # erst, was die DATEI selbst sagt — Aussenwirkung prüfen, nicht die Mutationsantwort.
+    time.sleep(15)
+    chk = gql('query($i:ID!){node(id:$i){... on GenericFile{fileErrors{code message}}}}',
+              {"i": QUEUE_FILE_GID})
+    fehler = (((chk.get("data") or {}).get("node") or {}).get("fileErrors")) or []
+    if fehler:
+        print(f"⛔ Queue-CDN NICHT aktualisiert — {fehler[0].get('code')}: "
+              f"{fehler[0].get('message','')[:80]}")
+        if any(f.get("code") == "FILE_STORAGE_LIMIT_EXCEEDED" for f in fehler):
+            print("   → Datei-Speicher des Shopify-Plans ist VOLL (Betreiber: Admin → "
+                  "Einstellungen → Dateien bzw. Plan). Der PC arbeitet derweil mit der "
+                  "letzten erfolgreichen Queue weiter.")
     else:
-        print("Queue-CDN aktualisiert:", (fu.get("files") or [{}])[0].get("url", "?"))
+        print("✅ Queue-CDN aktualisiert (Verarbeitung fehlerfrei):",
+              (fu.get("files") or [{}])[0].get("url", "?"))
 
 
 def aktiv(handle):

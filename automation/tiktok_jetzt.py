@@ -117,6 +117,16 @@ def main():
             {"f": [{"id": BEFEHL_GID, "originalSource": t[0]["resourceUrl"]}]})
     if r["fileUpdate"]["userErrors"]:
         sys.exit("fileUpdate: " + json.dumps(r["fileUpdate"]["userErrors"]))
+    # 02.09.: fileUpdate ist ASYNCHRON — die Verarbeitung kann NACH der Mutation scheitern
+    # (belegt: FILE_STORAGE_LIMIT_EXCEEDED liess das CDN still auf dem alten Stand).
+    # Ein «jetzt posten», das nie ankommt, ist schlimmer als eine klare Fehlermeldung.
+    time.sleep(15)
+    chk = gql('query($i:ID!){node(id:$i){... on GenericFile{fileErrors{code message}}}}',
+              {"i": BEFEHL_GID})
+    fehler = ((chk.get("node") or {}).get("fileErrors")) or []
+    if fehler:
+        sys.exit(f"⛔ Befehl NICHT auf dem CDN gelandet — {fehler[0].get('code')}: "
+                 f"{fehler[0].get('message','')[:80]} (Datei-Speicher des Shopify-Plans voll?)")
     print(f"✅ Befehl {befehl['id']} liegt auf dem CDN: «{kandidat['slug']}» wird vom PC "
           f"innert ~10 Minuten gepostet (Browser startet er bei Bedarf selbst).")
 

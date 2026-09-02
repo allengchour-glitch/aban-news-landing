@@ -4520,6 +4520,28 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 💽 Der Shopify-Datei-Speicher ist VOLL — und «aktualisiert» war einen Tag lang eine Lüge (2026-09-02)
+Die CDN-Queue für den TikTok-PC stand auf «2026-08-31», obwohl das Log vom 01.09. wörtlich
+«Queue-CDN aktualisiert» meldete. **`fileUpdate` ist ASYNCHRON:** Die Mutation wird ohne
+userErrors angenommen, die Verarbeitung scheitert DANACH — sichtbar nur am Datei-Knoten:
+`fileErrors: FILE_STORAGE_LIMIT_EXCEEDED` («exceed the file storage limit for your plan»).
+Seit dem 01.09. wird also **jeder Upload in die Dateien-Bibliothek still verworfen** — Queue,
+«Jetzt posten»-Befehlskanal, Marketing-Material. Der PC arbeitet gefahrlos mit dem letzten
+erfolgreichen Stand weiter (Slug-Dedup + frei-Flags), bekommt aber nichts Neues.
+- **Produktbild-Uploads des Importers laufen NORMAL weiter** (Importe von vor Minuten haben
+  READY-Medien) — die Sperre trifft nur die Files-Bibliothek (stagedUploads/fileCreate/
+  fileUpdate). Ein Limit heisst nicht, dass ALLE Wege zu sind; jeder Weg ist einzeln zu messen.
+- **Werkzeuge gehärtet** (`tiktok_cowork_auftrag.queue_aufs_cdn`, `tiktok_jetzt.py`): nach dem
+  fileUpdate 15 s warten, `fileErrors` am Knoten abfragen — erst DANN Erfolg melden. Am echten
+  Fehlerfall bewiesen (⛔-Meldung statt ✅). **Erfolg ist, was die Datei sagt, nicht was die
+  Mutation antwortet** — dieselbe Familie wie «publishVerified» und der Klaviyo-Snapshot.
+- ⚠️ Aufräumen der eigenen TikTok-CDN-Kopien (~40 MB) wäre gegen einen Deckel, den der Grind
+  mit ~5'000 Produktbildern/Tag füllt, Symbolpolitik — **der Deckel ist eine Wachstumsgrenze
+  des Plans**, kein Aufräumproblem. Betreiber-Klick in COWORK-AUFTRAEGE (Einstellungen →
+  Dateien: Platz schaffen oder Plan erhöhen).
+- Diagnose-Rezept: `node(id:<GenericFile-GID>){... on GenericFile{fileStatus fileErrors{code
+  message}}}` — `fileStatus` bleibt READY (alte Fassung!), nur `fileErrors` verrät den Fehler.
+
 ## 🎹 «Unklar» versteckte acht unverkäufliche Tastaturen — zwei Fallen in EINEM Wächter (2026-09-02)
 Der CH-Versand-Guard meldete 9 von 10 Prüflingen «unklar (1602001 Product not found)» — eine
 Quote, die kein Zufall sein kann. Nachgestellt an einer SKU: **`CJPB2903732` ist eine

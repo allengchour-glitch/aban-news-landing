@@ -13,6 +13,21 @@ nicht mehr gelesen.
 
 ---
 
+## 🆕 02.09.: Shopify-DATEI-SPEICHER IST VOLL — TikTok-Nachschub zum PC steht
+Seit dem 01.09. lehnt Shopify jeden Upload in die Dateien-Bibliothek ab
+(`FILE_STORAGE_LIMIT_EXCEEDED`, live belegt). Folgen: Die **TikTok-Queue und der
+«Jetzt posten»-Befehlskanal zum PC werden nicht mehr aktualisiert** — der PC arbeitet
+mit dem Stand vom 31.08. weiter (7 geprüfte Beiträge, sicher, aber einfrierend).
+**Produktbilder des Imports laufen normal weiter** — betroffen ist nur die Bibliothek.
+- **Dein Klick:** Shopify-Admin → **Einstellungen → Dateien** — dort steht der
+  Speicherstand. Entweder Platz schaffen (alte, ungenutzte Dateien löschen) oder den
+  Plan-Speicher erhöhen. Danach läuft der Nachschub von selbst wieder an (die Werkzeuge
+  melden Erfolg jetzt erst, wenn die Datei WIRKLICH auf dem CDN liegt).
+- Einordnung: Der Katalog wächst um ~1'000 Produkte/Tag mit je ~5 Bildern — der
+  Speicherdeckel ist damit keine Einmal-Sache, sondern eine Wachstumsgrenze des Plans.
+
+---
+
 ## ⏱️ Wenn du heute nur drei Dinge machst
 
 | | Aufgabe | Aufwand | warum |
