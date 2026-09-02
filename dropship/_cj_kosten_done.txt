@@ -7945,3 +7945,8 @@ gid://shopify/Product/15450523009409	CHF 17.85	20 Varianten	Mary Jane Flats mit 
 gid://shopify/Product/15450523337089	CHF 16.50	7 Varianten	Retro-Sneaker aus Wildleder
 gid://shopify/Product/15450523632001	CHF 18.75	10 Varianten	Vintage Mary Jane Sandalen
 gid://shopify/Product/15450523992449	CHF 18.30	20 Varianten	Vintage Ballet Mary Janes
+gid://shopify/Product/15450524418433	CHF 18.30	10 Varianten	Elegante Satin-Ballerinas mit Keilabsatz
+gid://shopify/Product/15450524909953	CHF 18.30	15 Varianten	Lackleder Flats mit eckiger Zehenpartie
+gid://shopify/Product/15450525335937	CHF 17.40	15 Varianten	Elegante Mary Jane Sandalen mit eckiger Zehenparti
+gid://shopify/Product/15450525794689	CHF 18.30	10 Varianten	Mary Jane Flats mit Strass-Schleifen
+gid://shopify/Product/15450526220673	CHF 17.85	15 Varianten	Retro Star Damen Sneaker
