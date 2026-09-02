@@ -13849,7 +13849,15 @@ function startGame(){
      Hier wird die Kamera einmal auf die Figur GESETZT (nicht geglitten) — das Folgen
      danach bleibt unveraendert. */
   try{var _me0=sims[meinSi()]||sims[0];
-    if(_me0){camTx=_me0.x;camTz=_me0.z;updCam();}}catch(e){}
+    if(_me0){camTx=_me0.x;camTz=_me0.z;
+      /* 🔎 UND NAH GENUG, UM SICH ZU SEHEN. Gemessen im Handy-Querformat (844x390):
+         beim Standardabstand 44 ist die eigene Figur 12,8 px hoch — 3,3 % der Bildhoehe.
+         Man steuert damit eine Person, die man kaum erkennt. Bei 30 sind es 18,1 px
+         (+41 %), und die Nachbarschaft bleibt im Blick.
+         Nur der STARTWERT: wer wegzoomt, bleibt weggezoomt — camRT wird hier gesetzt,
+         nicht laufend erzwungen. */
+      if(camR>30){camR=30;camRT=30;}
+      updCam();}}catch(e){}
   if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
