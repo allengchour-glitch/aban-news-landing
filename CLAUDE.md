@@ -6055,3 +6055,24 @@ Objekt geprüft (ACTIVE, kaufbar, Preis), Karte im Rückfeld und im ausgeliefert
 - ⚠️ Beide Ratgeber **siezen** (je 35× «Sie», 2× «du»), der ganze Shop duzt → Task #18.
 - ⚠️ WebFetch antwortete zweimal 429 — luxestyle.ch drosselt auch fremde Ausgänge bei schnellen
   Folgeabrufen; Beleg dann am Roh-HTML vom eigenen Ausgang (Karte 1×, Bild 1×).
+
+## 🗣️ Sie→du per Modell: die dritte Person und der Imperativ kippen — gelesen wird trotzdem (2026-09-02)
+Die zwei grössten Such-Ratgeber (Salzlampe, Faszienrolle) siezten in einem Shop, der überall duzt;
+gemessen über alle 307: **41 siezen, 84 MISCHEN Sie und du im selben Text, 147 duzen.**
+`automation/ratgeber_du_form.py` stellt elementweise (p/li/h2) per Groq gpt-oss-20b um, mit harten
+Prüfungen (gleiche Tags, Links, Ziffern, Längenverhältnis, kein Sie-Rest). **Die Prüfungen fangen
+die semantischen Fehler NICHT:** «Sie strahlt im warmen Farbspektrum» (die Lampe) wurde «du strahlst»,
+«„Sie heilt Allergien“» wurde «„du heilst“», «Kaufen Sie eine Salzlampe» wurde «Kaufst du», «Legen Sie
+sich mit der Rolle quer» wurde «Legst du dich» — grammatisch, aber falsch. Ein Element kam auf 49 %
+Länge zurück (abgeschnitten, von der Prüfung gefangen). **Deshalb: Ergebnis in eine Datei, jede
+Abweichung im Diff lesen, Fehler per exakter Ersetzung korrigieren, den ganzen Text einmal als
+Leserin lesen, DANN schreiben.** Beide Artikel so umgestellt (Sie-Anrede 0, Links/Zahlen identisch).
+- ⚠️ Groq antwortet Python-`urllib` mit **HTTP 403 «error code: 1010»** (Cloudflare, User-Agent) —
+  ein `User-Agent`-Header genügt. Die JS-Importer trifft das nicht (undici setzt einen).
+- **Und die gelesene Stichprobe fand, was kein Scanner fand:** Der Faszienrollen-Ratgeber (Nr.-2-
+  Suchseite) trug NOCH drei Phantome — «Triggerpunkt-Ball aus dem 3er-Set», «Akupressur-Matte Premium
+  Set für CHF 49.90 mit Kuznetsov-Spikes», «Recovery-Set Premium für CHF 129.90 … spart CHF 25» —
+  obwohl er am 28.08. und 02.09. als bereinigt galt. Ersetzt durch den echten Peanut-Massageball
+  (ACTIVE, 31.90, geprüft) bzw. die Kollektion ohne Preis; der Bundle-Absatz ist weg. Klassen-Scan
+  «Kollektionslink + für/ab CHF» danach über alle 307: **0**. Ein Fix gilt erst, wenn man den Text
+  gelesen hat, nicht wenn der Scanner schweigt (dritte Fassung dieser Lehre am selben Tag).
