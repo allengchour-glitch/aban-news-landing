@@ -12,6 +12,7 @@ import { catTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
+import { produktdetails } from './cj_specs.mjs';
 import { copyPrompt } from './cj_copy_prompt.mjs';
 import { groqText } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
@@ -202,7 +203,7 @@ for (const item of ITEMS) {
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',
     status: (med || tsch) ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,
-    descriptionHtml: (g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
+    descriptionHtml: (g.html + '\n' + produktdetails(d) + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: snippet(g.html, title).slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, d.variants?.[0]?.variantWeight), ...gewicht(d.variants?.[0]?.variantWeight) }, inventoryPolicy: 'CONTINUE' }],

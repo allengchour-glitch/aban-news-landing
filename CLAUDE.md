@@ -4546,6 +4546,27 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## ⛔ Der Grind übersprang 3'940 Produkte an EINEM Tag — Groq hatte die Modelle abgeschaltet (2026-09-02, spät)
+Gefunden auf dem Umweg über die Copy-Qualität: 300 Neuimporte gemessen — «ideal für» 39 %,
+«vielseitig» 28 %, «perfekt» 27 %, «hochwertig» 22 %, Sie-Form in einem Shop, der duzt. Beim
+Prompt-Test antwortete Groq: **«The model `llama-3.1-8b-instant` does not exist»**. Die drei
+Importer trugen drei verschiedene Modelllisten (120b/llama-4-scout/8b-instant) — alle drei tot
+oder kaputt: 120b scheitert mit `response_format=json_object` («Failed to validate JSON») und
+liefert ohne davon leeren `content` (Reasoning frisst `max_tokens`). In den vier Runner-Logs von
+heute: **3'940× «skip(gemini)», 0 Groq-Erfolge, 550 angelegte Produkte** (gestern 734). Die
+Textstufe war seit Tagen der Engpass, und niemand hat es gesehen, weil «skip» wie ein normaler
+Ausschluss aussieht. **Ein Skip-Zähler, der die Kandidaten überholt, ist ein Ausfall, kein Filter.**
+- **EINE Quelle statt drei:** `automation/groq_text.mjs` — `openai/gpt-oss-20b` mit
+  `reasoning_effort:'low'`, OHNE `response_format`, `max_tokens 1500` (gemessen 3/3, ~700 ms,
+  faktentreu); `groq/compound-mini` nur als Netz (3/3, aber ~5 s und **erfindet Details**:
+  «Triple-Filter aus Aktivkohle, Keramik und Schaumstoff» stand in keiner Feature-Zeile).
+  Parser nimmt das JSON zwischen erster `{` und letzter `}` — Fences egal.
+- **EIN Prompt statt drei:** `automation/cj_copy_prompt.mjs` — du-Form, Satz 1 = Nutzen im
+  Alltag, dann nur Fakten mit Zahlen, 3–5 Stichpunkte, Floskel-Verbotsliste (`VERBOTEN`),
+  `floskelZaehler()` für die Nachkontrolle. Testtexte: 0–1 Floskeln, 68–87 Wörter, ß wird vom
+  Importer weiter zu ss. ⚠️ Modelle ändern sich ohne Vorwarnung — wer «skip»-Zeilen im Log
+  zählt, zählt auch tote Modelle mit; die Gegenprobe ist ein direkter Modell-Aufruf.
+
 ## 🛒 Verkaufs-Mandat («bis zum Verkauf weitermachen»): Warenkorb als Kundin gelesen (2026-09-02, spät)
 Betreiber: «verbessere alles, professionell, selbst entscheiden, bis zum Verkauf». Gemessen statt
 geraten: Von 4 Kassengängen der Woche wurde keiner abgeschlossen; die abgebrochenen Checkouts
@@ -5934,3 +5955,31 @@ da hilft nur besseres Quellmaterial, und CJ hat keines (618 Quittungen in `_bild
   Tag entfernen. Die Kopie wurde gelöscht, das Ledger entdoppelt.
   **Regel: Wer ein abgeleitetes Bild anlegt, muss prüfen, ob er sein eigenes Ergebnis
   vor sich hat.** Sonst wächst mit jedem Lauf eine Generation Kopien nach.
+
+## 📋 Der Importer warf Material, Gewicht und Masse weg — jetzt schreibt er den Faktenblock (2026-09-02)
+Betreiber: «spezifikation besser beschreiben vertiefen». Die Tabelle «Spezifikationen & Details»
+(seit 02.09. auf jeder Produktseite) liest zur Laufzeit die Liste `ls-produktdetails` aus dem
+Text — **die drei CJ-Importer schrieben sie nie.** CJ liefert `materialNameEn`, `productWeight`
+und «Size: 20*30cm»-Zeilen; gelesen wurde davon nur das Gewicht (für die Fracht), in den Text
+kam nichts. Dieselbe Klasse wie Einkaufspreis (20.08.) und Gewicht (22.08.): bekannt, benutzt,
+verworfen. Neu **`automation/cj_specs.mjs`** (`produktdetails(d)` → `<div class="ls-produktdetails">
+<h4>Produktdetails</h4><ul><li><strong>K:</strong> V</li>`), eingehängt in `cj_category_fill`,
+`cj_trending_import`, `cj_sku_import`; `cj_variant_backfill.mjs` liest seine Material-/Mass-Muster
+jetzt ebenfalls von dort (achte Geschwister-Zusammenlegung).
+- **Nur Belegtes:** Material nur, wenn die Tabelle das Wort kennt (unbekannt → Zeile fällt weg,
+  kein englisches Wort in einer deutschen Tabelle); Masse nur mit Ziffer, max 4 Zeilen, keine
+  CJK-Zeichen; Gewicht nur > 0 g. Gibt es nichts, gibt es KEINEN Block. Testfall: Polyester +
+  Zinklegierung + 320 g + 20 × 30cm + 500ml + 5V → 6 Zeilen; `{}` → leer.
+- ⚠️ **Nicht am echten Import belegt** — CJ-Tagesbudget seit 18:21 UTC erschöpft, alle vier
+  Runner stehen («Pause 30 Min», Prozesse vom Turn-Reaping abgeräumt; der Aufseher startet sie).
+  Der Groq-Fix von 19:30 ist damit ebenfalls nur am Modul geprüft (3/3), nicht am Erzeugnis
+  (Lehre 29.08.: «ein Quellenfix gilt erst, wenn ein echtes Erzeugnis vorliegt»). **Morgen nach
+  dem Reset: Runner-Log auf `skip(gemini)` ≈ 0 und ein neues Produkt auf den Faktenblock prüfen.**
+- Nebenbei in derselben Zeile: der Trust-Baustein aller Importer (und `premium_import.mjs`)
+  versprach «✅ Geprüfte **Qualität**» — die 29.08.-Lehre am Vertrauensblock (geprüft werden
+  ANGABEN, nicht die Ware) war nie in die Importer gewandert. Jetzt «Geprüfte Angaben».
+  Der Altbestand (Tausende Texte) bleibt vorerst; ein Massen-Schreiber dafür ist eine eigene
+  Entscheidung (Lehre 15.08.).
+- Kein Backfill über den Bestand: je Produkt eine CJ-Abfrage (10 Punkte), bei 49'000 Produkten
+  fünf Tage Budget — nur sinnvoll für Seiten mit Verkehr. Die 6'271 Bestandsprodukte mit
+  vorhandener Liste zeigt die Tabelle bereits.

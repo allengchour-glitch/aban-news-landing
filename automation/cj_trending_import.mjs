@@ -10,6 +10,7 @@ import { schonBeansprucht } from './cj_claim.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
+import { produktdetails } from './cj_specs.mjs';
 import { copyPrompt } from './cj_copy_prompt.mjs';
 import { groqText } from './groq_text.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
@@ -192,7 +193,7 @@ async function attachVideo(st,productId,vurl,cjpid){
  }catch{}
 }
 
-const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung 10–20 Werktage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · \u{1F69A} Lieferung 10–20 Werktage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
 
 async function gemini(nameEn,feats,kat){
  const prompt=copyPrompt({nameEn,feats,kat});   // EINE Quelle: automation/cj_copy_prompt.mjs (02.09.2026)
@@ -304,7 +305,7 @@ for(const p of cand){
    title=tw.title; }
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, p.productWeight||p.variantWeight)} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
- const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
+ const html=`${g.html}\n${produktdetails(d)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS'); // Faktenblock: cj_specs.mjs (02.09.2026)
  const looksFashion=(d.variants||[]).some(v=>{const pv=parseVar(v);return pv.size||pv.color;});
  const fash=looksFashion?buildFashion(d):null;
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
