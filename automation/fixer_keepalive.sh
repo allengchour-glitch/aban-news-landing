@@ -789,6 +789,20 @@ while true; do
       fi
     fi
   fi
+  # FAKTENBLOCK-NACHTRAG FUER LANDESEITEN (02.09.2026): cj_specs_backfill.mjs traegt den
+  # Produktdetails-Block aus CJ-Daten dort nach, wo Menschen ankommen (dropship/_cj_specs_prio.txt,
+  # ShopifyQL-Landeseiten). Kostet CJ-Punkte (~20 je Produkt) → einmal taeglich, LIMIT 30, bis
+  # die Schlusszeile «FERTIG:» im Log steht. Log-Alter statt Prozess (Lauf dauert Minuten).
+  SB=/tmp/cj_specs_backfill.log
+  if [ -f "$REPO/automation/cj_specs_backfill.mjs" ] && [ -f "$REPO/dropship/_cj_specs_prio.txt" ]; then
+    SB_ALTER=$(( $(date +%s) - $(stat -c %Y "$SB" 2>/dev/null || echo 0) ))
+    if ! grep -q "^FERTIG:" "$SB" 2>/dev/null && [ "$SB_ALTER" -gt 43200 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_cj_specs_backfill.lock; flock -n 9 || exit 0; LIMIT=30 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" \
+          > "$SB" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) cj_specs_backfill gestartet"
+    fi
+  fi
   # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die
   # wegen von Google selbst gemeldeter Richtlinienverstösse aus dem Kanal genommen worden
   # waren, wieder drin — zurückgeholt von `gfeed_restore.py` (14) und

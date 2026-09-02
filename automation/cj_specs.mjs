@@ -129,7 +129,7 @@ export function specZeilen(d){
   if(gw && !specs.some(([k])=>k==='Gewicht')) rows.push(['Gewicht', gw]);
   for(const r of specs) rows.push(r);
   for(const r of textMerkmale(d?.description)) if(!rows.some(([k])=>k===r[0])) rows.push(r);
-  if(liste(d?.productProEn).includes('BATTERY')) rows.push(['Stromversorgung','Batterie/Akku']);
+  if(liste(d?.productProEn).includes('BATTERY') && !rows.some(([k])=>k==='Stromversorgung')) rows.push(['Stromversorgung','Batterie/Akku']);
   return rows;
 }
 
