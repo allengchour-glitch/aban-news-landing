@@ -3857,7 +3857,49 @@ function ladeWagen(datei,cb){
   window._glbVorlage(datei,function(sz){
     if(!sz){cb(null);return;}
     sz.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;}});
+    if(/^th37_/.test(datei))_raederAnlegen(sz);
     MODELS[datei]=sz;cb(sz);});}
+/* 🛞 RAEDER ROLLEN LASSEN. Die th37-Wagen fuhren mit stehenden Raedern — nur der
+   prozedurale Bus drehte seine (busRec.raeder). Die Modelle haben keine benannten
+   Raeder (107 Knoten, alle "Cube.NNN"/"Cylinder.NNN"), aber GEMESSEN (trimesh, th37_kombi):
+   genau 16 Zylinder mit zwei fast gleichen Ausdehnungen (Durchmesser 0,42…0,68) und
+   einer duennen dritten entlang z (0,03…0,20), alle mit Mitte y = 0,34, an vier Stellen
+   x = +-1,49 / z = +-0,84 — vier Raeder aus je Reifen, Felge und zwei Scheiben.
+   Die Regel unten findet genau diese: Zylinder-Huelle, duenn in z, tief unten. Je Rad
+   ein Drehpunkt in der Radmitte; die Teile wandern hinein (Position relativ zur Mitte).
+   Das passiert EINMAL an der Vorlage, clone(true) nimmt die Gruppen mit.
+   ⚠️ Nicht nach Namen suchen ("Cylinder" ist auch der Auspuff) und nicht nach Material
+   (der Reifen und die Felge haben verschiedene) — die Form ist das einzige, was alle
+   vier Modelle gemeinsam haben. Ob es klappt, sagt th-raeder.mjs: 4 Raeder je Wagen. */
+function _raederAnlegen(sz){
+  /* ⚠️ GEMESSEN (th-raeder.mjs, erster Lauf): 4, 8, 12 … 24 Drehpunkte je Wagen. Der
+     Vorlagen-Rueckruf laeuft fuer JEDEN Wartenden der Warteschlange auf DERSELBEN
+     Vorlage — und jeder Lauf fand die Zylinder erneut (jetzt unter Drehpunkten) und
+     wickelte sie noch einmal ein. Einmal reicht; die Vorlage merkt es sich. */
+  if(sz.userData.raeder)return;
+  sz.updateMatrixWorld(true);
+  var bbA=new THREE.Box3().setFromObject(sz),hoch=bbA.max.y-bbA.min.y,kand=[];
+  sz.traverse(function(n){if(!n.isMesh)return;
+    var b=new THREE.Box3().setFromObject(n),e=new THREE.Vector3();b.getSize(e);
+    var d=[e.x,e.y,e.z].sort(function(p,q){return p-q;});
+    if(!(d[2]>0.25&&Math.abs(d[2]-d[1])/d[2]<0.08&&d[0]<0.6*d[2]))return;   /* Zylinder-Silhouette */
+    if(e.z>=Math.min(e.x,e.y))return;                                          /* duenn entlang z */
+    var c=new THREE.Vector3();b.getCenter(c);
+    if(c.y-bbA.min.y>0.35*hoch)return;                                          /* tief unten */
+    kand.push({n:n,c:c,r:d[2]/2});});
+  var gruppen=[];
+  kand.forEach(function(k){var g=null;
+    for(var i=0;i<gruppen.length;i++)if(Math.hypot(gruppen[i].c.x-k.c.x,gruppen[i].c.z-k.c.z)<0.3&&Math.abs(gruppen[i].c.y-k.c.y)<0.2){g=gruppen[i];break;}
+    if(!g){g={c:k.c.clone(),teile:[],r:0};gruppen.push(g);}
+    g.teile.push(k.n);if(k.r>g.r)g.r=k.r;});
+  if(gruppen.length!==4){console.warn("Raeder: "+gruppen.length+" statt 4 Drehpunkte in "+(sz.name||"Wagen"));return;}
+  gruppen.forEach(function(g){var piv=new THREE.Group();piv.position.copy(g.c);piv.userData.rad=g.r;
+    sz.add(piv);
+    g.teile.forEach(function(n){var w=new THREE.Vector3();n.getWorldPosition(w);
+      var q=new THREE.Quaternion();n.getWorldQuaternion(q);var sk=new THREE.Vector3();n.getWorldScale(sk);
+      piv.add(n);n.position.copy(w).sub(g.c);n.quaternion.copy(q);n.scale.copy(sk);});});
+  sz.userData.raeder=4;}
+function _raederVon(m){var r=[];m.traverse(function(n){if(n.userData&&n.userData.rad)r.push(n);});return r;}
 var _lichtTexW=null,_lichtTexR=null;
 function _glowTex(core,edge){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   var g=c.createRadialGradient(32,32,1,32,32,31);g.addColorStop(0,core);g.addColorStop(0.35,core);g.addColorStop(1,edge);
@@ -3957,7 +3999,8 @@ setTimeout(function baueVerkehr(){
         ? ((_pr+0.5)/_np)*STICH.len                           // ueber den L-Weg verteilen
         : -150+((_pr+0.5)/_np)*300+((i*37)%17)-8;
       m.userData.nieAusblenden=true; /* 🩹 Schwarm-7: LOD registrierte Kleinteile der FAHRENDEN Wagen an ihrer Ladeposition — unterwegs verschwanden Raeder/Anbauteile */
-      var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045)};
+      var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045),
+               raeder:_raederVon(m),radMass:m.scale.x};   /* Radius der Raeder steht in Modell-Metern */
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
       scene.add(m);verkehr.push(rec);});});
   // Bus prozedural (OeV): gelb, Fensterband, faehrt Suedstrasse, haelt an der Haltestelle
@@ -4390,6 +4433,16 @@ function updVerkehr(dt){
     if((v.route.axis==="radial"||v.route.axis==="stich")&&v.rdir===undefined)v.rdir=v.route.dir;
     var rd=(v.route.axis==="radial"||v.route.axis==="stich")?v.rdir:v.route.dir;
     v.pos+=rd*(v.speed||v.route.speed)*dt;
+    /* 🛞 Rollen: gefahrener Weg durch Radradius — HIER, direkt nach dem Vorruecken.
+       GEMESSEN (th-raeder.mjs, erster Lauf): der Block stand vor dieser Zeile und
+       rechnete v.pos - _pv, also immer 0; 27 m Fahrt, Raeder still. `pos` ist Bogen-
+       laenge in Metern, der Radius steht in Modell-Metern mal Wagen-Massstab. Die
+       Achse liegt auf z; vorwaerts (lokal +x) heisst rotation.z positiv. Der Sprung am
+       Ringende (pos -= Umfang) kommt erst danach und trifft die Raeder nicht. */
+    if(v.raeder&&v.raeder.length){var _wegR=v.pos-_pv;
+      for(var _ri=0;_ri<v.raeder.length;_ri++){var _R=v.raeder[_ri];
+        if(!_R._bewegt&&window._auftauen)window._auftauen(_R);
+        _R.rotation.z+=_wegR/(_R.userData.rad*(v.radMass||1));}}
     if(v.route.axis==="ring"){                 // Ring: Bogenlaenge umlaufend
       var U=6.283185*v.route.r;
       if(v.pos>U)v.pos-=U; if(v.pos<0)v.pos+=U;
@@ -12477,6 +12530,69 @@ function updFahrgeschaefte(dt){
        auf EINEM Objekt; die Vorfahren duerfen eingefroren bleiben, weil three.js beim
        Durchlaufen ohnehin in jedes Kind absteigt. _bewegt schuetzt den Knoten davor,
        beim naechsten _einfrieren wieder festgesetzt zu werden. */
+    /* 🗼 FREIFALLTURM: die Gondel ist im Modell oben geparkt. GEMESSEN (trimesh,
+       th13_freefall_turm, 364 Knoten, keiner benannt): alles mit Unterkante ueber 27,5 m
+       (Turm 30,4 m) sind Ring 4,6 m + Platte 3,4 m + vier Sitze 1,67 m + sechzehn
+       Lichtkugeln auf r 2,65 — und dazu Mast (0,27 m) und Kugel (0,8 m) auf der Achse,
+       die zum TURM gehoeren. Regel: oben UND (nicht mittig ODER breiter als 10 % des
+       Turms). Die Gondel faehrt die Bahn der Mitfahrt selbst (FAHRT_ART.freefall.bahn:
+       langsam hoch, kurz halten, fallen) — dieselbe Kurve, kein zweiter Fahrplan. Sitzt
+       jemand drin, gilt dessen t; sonst laeuft ein eigener Takt mit Pause unten. */
+    if(f.typ==="freefall"&&f.w){
+      if(f.gondel===undefined){f.gondel=null;
+        f.w.updateWorldMatrix(true,true);
+        var bbT=new THREE.Box3().setFromObject(f.w),H9=bbT.max.y-bbT.min.y,W9=bbT.max.x-bbT.min.x;
+        var cM=new THREE.Vector3();bbT.getCenter(cM);var teile9=[],unten9=Infinity;
+        f.w.traverse(function(n){if(!n.isMesh)return;var b=new THREE.Box3().setFromObject(n);
+          if(b.min.y<bbT.min.y+0.89*H9)return;
+          var e=new THREE.Vector3();b.getSize(e);var c=new THREE.Vector3();b.getCenter(c);
+          var mittig=Math.hypot(c.x-cM.x,c.z-cM.z)<0.05*W9,schmal=Math.max(e.x,e.z)<0.1*W9;
+          if(mittig&&schmal)return;
+          teile9.push(n);if(b.min.y<unten9)unten9=b.min.y;});
+        if(teile9.length>=6){var piv=new THREE.Group();f.w.add(piv);piv.updateWorldMatrix(true,false);
+          teile9.forEach(function(n){piv.attach(n);});
+          if(window._auftauen)window._auftauen(piv);
+          f.gondel=piv;f.gondelRuhe=unten9;f.gt=0;}}
+      if(f.gondel){var art9=FAHRT_ART.freefall,mit9=(typeof _fahrt!=="undefined"&&_fahrt&&_fahrt.f===f);
+        var t9;if(mit9)t9=_fahrt.t;else{f.gt+=dt;var per9=art9.dauer+6;if(f.gt>per9)f.gt-=per9;t9=Math.min(1,f.gt/art9.dauer);}
+        var zielY=art9.bahn(t9,{x:0,z:0}).y+f.w.position.y;       /* Weltmeter wie die Mitfahrt */
+        f.gondel.position.y=(zielY-f.gondelRuhe)/(f.w.scale.y||1);}
+      continue;}
+    /* 🚗 AUTOSCOOTER: die Wagen stehen im Modell auf der Flaeche herum. GEMESSEN (trimesh,
+       th13_autoscooter, 291 Knoten, keiner benannt): 42 niedrige Kleinteile, die sich bei
+       0,9 m Nachbarschaft in GENAU sechs Gruppen zu je sieben Teilen ordnen (Huelle
+       2,3…2,7 m, Mitte y 1,06) — die Wagen. Die zwanzig Randpuffer (1,5 x 0,36 m) sind
+       1,5 m auseinander und bleiben Einzelne; die Regel "mindestens fuenf Teile" trennt
+       sie ohne jede Namens- oder Massregel. Danach faehrt jeder Wagen auf einer Ellipse
+       in der Flaeche (Boden 15 x 9 m), versetzt um ein Sechstel. Der Mitfahrer hat seine
+       eigene Bahn (FAHRT_ART.scooter) — die Wagen hier sind die Kulisse dazu. */
+    if(f.typ==="scooter"&&f.w){
+      if(f.wagen===undefined){f.wagen=null;
+        f.w.updateWorldMatrix(true,true);
+        var bbS=new THREE.Box3().setFromObject(f.w),HS=bbS.max.y-bbS.min.y,WS=bbS.max.x-bbS.min.x,DS=bbS.max.z-bbS.min.z;
+        var sk9=f.w.scale.x||1,kl=[];
+        f.w.traverse(function(n){if(!n.isMesh)return;var b=new THREE.Box3().setFromObject(n);
+          var e=new THREE.Vector3();b.getSize(e);var c=new THREE.Vector3();b.getCenter(c);
+          if(c.y-bbS.min.y<0.19*HS&&Math.max(e.x,e.z)<0.16*Math.max(WS,DS)&&e.y<0.19*HS)kl.push({n:n,c:c});});
+        var gr=[];kl.forEach(function(k){for(var i=0;i<gr.length;i++){var g=gr[i];
+            for(var j=0;j<g.length;j++)if(Math.hypot(g[j].c.x-k.c.x,g[j].c.z-k.c.z)<0.9*sk9){g.push(k);return;}}
+          gr.push([k]);});
+        /* Nachbarschaft ist nicht transitiv in einer Runde — zweimal zusammenfuehren */
+        for(var r9=0;r9<2;r9++)for(var i9=0;i9<gr.length;i9++)for(var j9=gr.length-1;j9>i9;j9--){
+          var nah=false;for(var a9=0;a9<gr[i9].length&&!nah;a9++)for(var b9=0;b9<gr[j9].length;b9++)
+            if(Math.hypot(gr[i9][a9].c.x-gr[j9][b9].c.x,gr[i9][a9].c.z-gr[j9][b9].c.z)<0.9*sk9){nah=true;break;}
+          if(nah){gr[i9]=gr[i9].concat(gr[j9]);gr.splice(j9,1);}}
+        var wagen=[];gr.forEach(function(g,gi){if(g.length<5)return;
+          var cx=0,cz=0,cy=0;g.forEach(function(k){cx+=k.c.x;cz+=k.c.z;cy+=k.c.y;});cx/=g.length;cz/=g.length;cy/=g.length;
+          var piv=new THREE.Group();f.w.add(piv);piv.position.copy(f.w.worldToLocal(new THREE.Vector3(cx,cy,cz)));
+          piv.updateWorldMatrix(true,false);g.forEach(function(k){piv.attach(k.n);});
+          if(window._auftauen)window._auftauen(piv);
+          piv.userData.y0=piv.position.y;wagen.push(piv);});
+        if(wagen.length){f.wagen=wagen;f.wt=0;}}
+      if(f.wagen){f.wt+=dt;
+        for(var wi=0;wi<f.wagen.length;wi++){var pv=f.wagen[wi],a=f.wt*0.35+wi*Math.PI*2/f.wagen.length;
+          pv.position.set(5.0*Math.cos(a),pv.userData.y0,2.9*Math.sin(a));pv.rotation.y=-a;}}
+      continue;}
     if(f.typ==="piratenschiff"&&f.w){
       if(f.pendel===undefined){f.pendel=null;
         f.w.traverse(function(o){if(!f.pendel&&o.name==="Pendel")f.pendel=o;});

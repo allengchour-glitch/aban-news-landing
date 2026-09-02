@@ -5824,3 +5824,80 @@ genau so passiert. `th-fahrt` läuft darum `F.rotor` mit ab (518 statt 115 Teile
 > `scooter`. Sie haben keinen benannten Drehpunkt; ihre Bewegung wäre keine Drehung, sondern
 > eine Fahrt (Gondel hoch/runter, Kabinen am Seil, Boote im Kanal). Das braucht je Modell
 > eine eigene Vermessung der Bauteile — und die gehört in eine eigene Runde.
+
+## 2026-08-30 · 🛞 Räder rollen, die Gondel fällt, 132 STL — und ein Worktree weniger
+
+**Auftrag des Users:** „erstelle fehlende Animation und STL und verschönere Autos und so."
+Davor: ein Container-Neustart hat den Worktree `/home/user/th-wt` **samt der ungesicherten
+Runde 52** gelöscht (Lehre 12, zum dritten Mal — `warteWeltzeit` und die th-fahrt-Änderungen
+mussten neu geschrieben werden). Diesmal: **STL sofort committet und gepusht**, bevor
+irgendetwas anderes lief.
+
+### 132 fehlende STL
+
+| | |
+|---|---|
+| th-Modelle | 530 |
+| STL vorher | 398 (die frühen Serien `th_`, `th2`, `th3`, `th4` fehlten: 81 + 21 + 16 + 14) |
+| Erzeuger | **war nie im Repo** |
+
+`spiele-dev/tools/glb2stl.py` schreibt sie mit der **gemessenen** Konvention: binär, gleiche
+Dreieckszahl wie das GLB (14 060 = 14 060), Meter bleiben Meter, Y-hoch → Z-hoch (GLB
+y 0…24,04 = STL z 0…24,04). Gegen vier vorhandene Paare geprüft: **0,0000 m Abweichung**.
+Waffenbegriffe im Namen werden übersprungen und gemeldet — STL ist ein Druckformat.
+Jetzt **530 von 530**.
+
+### Räder der Verkehrswagen — sie standen still
+
+Nur der prozedurale Bus drehte seine Räder; die vier th37-Wagen (26 Fahrzeuge) fuhren mit
+starren. Die Modelle haben **keine benannten Räder** (107 Knoten, alles `Cube.NNN` /
+`Cylinder.NNN`). Gemessen mit trimesh am Kombi: **genau 16 Zylinder** mit zwei fast gleichen
+Ausdehnungen (Ø 0,42…0,68) und einer dünnen dritten entlang z (0,03…0,20), alle Mitte
+y 0,34, an vier Stellen x ±1,49 / z ±0,84 — vier Räder aus Reifen, Felge, zwei Scheiben.
+`_raederAnlegen()` findet sie **nach Form** (kein Name, kein Material), hängt jedes Rad unter
+einen Drehpunkt; `updVerkehr` dreht mit Weg / (Radius · Maßstab).
+
+**`th-raeder.mjs`** (neu, im Tor: **41 Prüfungen**) fand im ersten Lauf **zwei Fehler**:
+
+| Befund | Ursache | Behebung |
+|---|---|---|
+| 4, 8, 12 … 24 Drehpunkte je Wagen | der Vorlagen-Rückruf läuft **je Wartendem** auf derselben Vorlage, jeder Lauf wickelte die Räder erneut ein | `if(sz.userData.raeder)return` |
+| 27 m gefahren, Δφ = 0,000 | der Rollblock stand **vor** `v.pos += …` und rechnete `v.pos − _pv` = 0 | hinter das Vorrücken |
+
+Danach: **26 von 26 Wagen rollen**, Δφ = Weg/Radius auf drei Stellen genau (56,859 = 56,859).
+
+### Fahrgeschäfte: 7 von 11 → 9 von 11
+
+Von den fünf stillen ohne benannte Teile ließen sich zwei **geometrisch** zerlegen:
+
+* **Freifallturm** (364 Knoten, keiner benannt): alles mit Unterkante über 27,5 m (Turm 30,4)
+  ist Ring 4,6 m + Platte 3,4 m + vier Sitze + sechzehn Lichtkugeln auf r 2,65 — plus Mast
+  (0,27 m) und Kugel (0,8 m) auf der Achse, die zum **Turm** gehören. Regel: oben **und**
+  (nicht mittig **oder** breiter als 10 % des Turms). Die Gondel fährt die Bahn der Mitfahrt
+  selbst (`FAHRT_ART.freefall.bahn`) — dieselbe Kurve, kein zweiter Fahrplan. Sitzt jemand
+  drin, gilt dessen `t`. **Hub gemessen: 10,42 m** in 5 s Welt.
+* **Autoscooter** (291 Knoten, keiner benannt): 42 niedrige Kleinteile ordnen sich bei
+  0,9 m Nachbarschaft in **genau sechs Gruppen zu je sieben** (Hülle 2,3…2,7 m). Die zwanzig
+  Randpuffer sind 1,5 m auseinander und bleiben Einzelne — „mindestens fünf Teile" trennt sie
+  ohne jede Namens- oder Maßregel. Sechs Wagen auf einer Ellipse, um ein Sechstel versetzt.
+  **8,75 m** in 5 s Welt.
+
+**Bleiben still, mit Grund:** Wildwasserbahn (nur `Felskoerper` benannt; das größte
+Kleinteil-Bündel ist 5,6 × 4,1 m an *einer* Stelle — Boot plus Gischt, nicht trennbar) und
+Geisterbahn (nur `Giebel`; zwei 12-teilige Bündel 2,9 × 4,0 m sind die beiden Portale). Und
+die **Seilbahn** ist kein Stillstand: ihr `FAHRTEN`-Eintrag ist die *Station*, die vier
+Gondeln fahren **21,8 m** je 5 s Welt — `th-fahrt` misst sie jetzt getrennt.
+
+### ⚠️ Zwei Uhren — `warteWeltzeit` (neu in th-lib)
+
+Drei Fehlbefunde kamen aus Fenstern in **Wanduhr**-Sekunden. Gemessen (20,6 s und 60 s,
+identisch): **1,70 Bilder/s, `dt` gedeckelt auf 0,05 → 8,5 % der Wanduhr sind Weltzeit.**
+60 s Wanduhr = 5,1 s Simulation. Und `uhrzeit` ist die *Spielwelt*-Uhr in Minuten
+(`+= dt·4`): 20,4 Weltminuten **und** 5,1 s Simulationszeit sind beide richtig und meinen
+Verschiedenes. `th-fahrt` und `th-raeder` warten jetzt auf **Weltsekunden** (Sonde `uhr`).
+
+### Werkzeuge: `attach` statt Rechnen
+
+Für die Gondel und die Wagen habe ich `Object3D.attach()` benutzt — es hält die Welttransform
+beim Umhängen. Der Räder-Code rechnet dasselbe von Hand (Weltposition, -rotation, -skalierung).
+Beides misst sich richtig; `attach` ist die kürzere Wahrheit.
