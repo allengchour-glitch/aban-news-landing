@@ -14612,3 +14612,8 @@ gid://shopify/Product/15523199123841	68->0	Sanhe Stahl SKD-11 Klappmesser
 gid://shopify/Product/15523199254913	12->0	Multifunktionales G10 Outdoor-Faltmesser
 gid://shopify/Product/15523199287681	22->1	Smartwatch mit Anruffunktion
 gid://shopify/Product/15523199582593	24->0	G02 Samurai Outdoor-Survivalmesser
+gid://shopify/Product/15523221635457	13->0	Spitze Workwear Martin Boots
+gid://shopify/Product/15523221963137	38->0	Warme Outdoor-Boots für Herren
+gid://shopify/Product/15523222061441	12->0	Keramik-Futternapf für Katzen mit Nackenschutz
+gid://shopify/Product/15523222192513	70->0	Smartwatch mit Bluetooth-Telefonie und Touchscreen
+gid://shopify/Product/15523222258049	24->0	Kratzbaum-Nest für Katzen
