@@ -14512,3 +14512,23 @@ gid://shopify/Product/15523038626177	80->0	USB-Aufladbare Crossbody Bag für Spo
 gid://shopify/Product/15523039150465	52->0	Grosser Herren-Rucksack
 gid://shopify/Product/15523039904129	46->0	Damen Rucksack aus echtem Leder
 gid://shopify/Product/15523040297345	12->0	Reise-Rucksack für Herren mit grossem Fassungsvermögen
+gid://shopify/Product/15523076833665	119->2	Taktische Outdoor-Weste
+gid://shopify/Product/15523083092353	10->2	Kleine Kunstleder Martin-Stiefel – Koreanischer Stil
+gid://shopify/Product/15523083190657	14->1	Grosse multifunktionale Handtaschen-Aufbewahrung
+gid://shopify/Product/15523083485569	11->0	Automatisches Teleskop-Hundeleine
+gid://shopify/Product/15523083714945	178->0	Hunde-Leine mit reflektierenden Fäden
+gid://shopify/Product/15523084730753	14->0	Kinder-Sportsandalen mit weicher Sohle
+gid://shopify/Product/15523084927361	18->0	Schlüsseletui aus Rindsleder mit Reissverschluss
+gid://shopify/Product/15523085418881	9->0	Velo-Hundeleine für sicheres Spazierengehen
+gid://shopify/Product/15523085648257	24->0	Sanda Smartwatch: Kalorien, wasserdicht, stossfest
+gid://shopify/Product/15523085975937	38->2	Bramille Lauflernschuhe aus dünnem Samt
+gid://shopify/Product/15523086205313	72->0	Taktisches Brustgeschirr für grosse Hunde
+gid://shopify/Product/15523086270849	40->3	Smartwatch mit HD-Display & Gesundheitsmonitoring
+gid://shopify/Product/15523114942849	31->1	Laptop-Tasche für Damen
+gid://shopify/Product/15523115368833	15->0	Autom. einziehbare Leine für Hunde & Katzen
+gid://shopify/Product/15523115532673	66->0	Vintage Herren-Umhängetasche aus Leder
+gid://shopify/Product/15523115794817	10->0	USB Multifunktionsrucksack
+gid://shopify/Product/15523116188033	8->0	Erweiterbarer Anti-Spritzschutz Hartschalen-Rucksack
+gid://shopify/Product/15523116319105	36->0	Verstellbare Hands-Free Hundeleine
+gid://shopify/Product/15523116679553	27->1	Baby Lauflernschuhe Baumwolle rutschfest atmungsaktiv
+gid://shopify/Product/15523116876161	54->3	Vintage Cowhide Rucksack – Unisex

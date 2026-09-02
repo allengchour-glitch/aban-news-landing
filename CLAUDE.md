@@ -4546,6 +4546,31 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## 📋 «Grösse? und Spezifikationen und Details in 1» — zwei Faktenblöcke zu einer Tabelle (2026-09-02)
+Auf der Produktseite standen zwei Faktenblöcke untereinander: Fortura schreibt
+`<h4>Details</h4><ul>` (Marke/Farbe/Grösse/Masse/Anlass/Lieferumfang) und CJ
+`<div class="ls-produktdetails|ls-feed-details"><h4>Produktdetails</h4>` (6'271 Produkte) in den
+**Beschreibungstext**; meine Tabelle `lux_spezifikationen` (31.08.) kannte nur Metafelder und
+Optionen — und zeigte deshalb bei einem Plüschtier «Kategorie/Zustand», die Grösse aber nicht.
+**Gelöst zur LAUFZEIT, ohne Massen-Schreiber:** neuer custom-liquid-Block `lux_beschreibung`
+ersetzt den Theme-Textblock `text_aEtTtq` und nimmt die Listen (plus die doppelte «Warum bei
+LuxeStyle kaufen»-Liste, die `lux_trust` darüber ohnehin zeigt) per `split`/`remove_first` aus
+dem Text; `lux_spezifikationen` liest dieselben `<li><strong>Schlüssel:</strong> Wert</li>`-
+Paare ein und zeigt sie als Zeilen — Versand-Zeilen ausgenommen (eigener Block), Schlüssel, die
+schon als Variantenoption existieren, ausgenommen. Steht die Grösse nur im Titel («Plüsch Husky
+22 cm»), wird «Masse: 22 cm» aus dem Titel gezogen. Live belegt an Fortura-Kostüm (Marke
+Widmann/Farbe/Grösse M/Anlass), CJ-Wallet und Plüschtier. Backup
+`theme_backup/product.json.spezi-merge-0209`.
+- ⚠️ **Shopify verlangt jeden Block in `block_order`** («block with id 'text_aEtTtq' must be
+  present») — ein Block wird nicht versteckt, sondern gelöscht. Das ist die Gegenrichtung zum
+  Hero-Fall (29.08.), wo ein Block ausserhalb der Reihenfolge stumm blieb: Templates werden beim
+  Upsert validiert, per Customizer geschriebene nicht.
+- ⚠️ **Die Tabelle macht Datenfehler sichtbar:** Das Slim Wallet «aus echtem Vollnarbenleder»
+  trug in seiner Produktdetails-Liste **«Material: Polyester»** (der Material-Extraktor vom
+  12.08.). Vorher stand das kleingedruckt in einer Liste, jetzt prominent in der Tabelle —
+  korrigiert. **Wer Fakten prominenter zeigt, muss mit den Fakten rechnen, die falsch sind**;
+  eine Stichprobe über die Material-Zeilen der CJ-Ware gehört auf die Liste.
+
 ## 🧱 «Das in Webseite» (Klemmbausteine) und «Esswaren separat» (2026-09-02, Betreiber-Screenshots)
 - **Klemmbausteine:** 453 aktive Baustein-/Bausatz-Produkte im Katalog (445 als «Spass-
   Elektronik» typisiert), aber KEINE Kollektion. Neu `klemmbausteine-bausaetze` (TITLE
