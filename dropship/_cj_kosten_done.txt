@@ -8593,3 +8593,8 @@ gid://shopify/Product/15450828603777	CHF 17.22	1 Varianten	Vulkan Flammen Aroma 
 gid://shopify/Product/15450828636545	CHF 24.94	61 Varianten	3-in-1 Wireless Ladestation für mehrere Geräte
 gid://shopify/Product/15450828669313	CHF 32.18	49 Varianten	Faltbare Reise-Duffelbag mit grossem Volumen
 gid://shopify/Product/15450828702081	CHF 32.26	1 Varianten	3-in-1 LED Lampe mit Wecker & Wireless Charger
+gid://shopify/Product/15450828734849	CHF 25.84	41 Varianten	Warme Herren Winterjacke mit Fleece & Fellkragen
+gid://shopify/Product/15450828767617	CHF 6.36	20 Varianten	Katzen- und Hundebürste mit Massagefunktion
+gid://shopify/Product/15450828800385	CHF 29.42	93 Varianten	E-Ink Smartphone Hülle mit personalisierbarem Scre
+gid://shopify/Product/15450828865921	CHF 9.84	31 Varianten	Spray-Trinkflasche für Sport & Freizeit
+gid://shopify/Product/15450828898689	CHF 6.66	79 Varianten	Thermo-Strumpfhose mit Fleece-Futter
