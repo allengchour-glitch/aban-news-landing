@@ -332,3 +332,11 @@ gid://shopify/Product/15522109194625	Transparent
 gid://shopify/Product/15522164638081	Grau
 gid://shopify/Product/15522282209665	Silber
 gid://shopify/Product/15522284208513	Silber
+gid://shopify/Product/15522291351937	Transparent
+gid://shopify/Product/15522930917761	Schwarz
+gid://shopify/Product/15523017163137	Schwarz
+gid://shopify/Product/15523069755777	Schwarz
+gid://shopify/Product/15523117531521	Braun
+gid://shopify/Product/15523177136513	Schwarz
+gid://shopify/Product/15523180446081	Blau
+gid://shopify/Product/15523180642689	Silber
