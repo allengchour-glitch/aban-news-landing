@@ -4520,6 +4520,32 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🧂 Die Nr.-1-Suchseite der Woche bewarb fünf Produkte, die es nicht gibt (2026-09-02)
+Frische 7-Tage-Messung (MCP wieder da): 399 Sitzungen, 4 an der Kasse, **0 Abschlüsse** — und
+**16 von 34 Suchsitzungen** landen auf einem NEUEN Ratgeber: `himalaya-salzlampe-wirkung-mythen`,
+0 Warenkörbe. Beim Lesen der Fund: Er bewarb **fünf Produkte mit NAMEN und PREIS**
+(«Himalaya Salzkristall-Lampe handgeschnitzt CHF 24.90», «HEPA Luftreiniger Smart CHF 129.90»,
+«Soja-Duftkerzen 4er-Set», «Sleep-Ritual Box CHF 99.90 mit Cashmere-Decke», «Aroma Diffuser
+Bambus 500ml») — **alle fünf Links zeigten auf KOLLEKTIONEN, keines der Produkte existiert so.**
+Die Ratgeber-ohne-Ware-Klasse an der wertvollsten Stelle der Woche.
+- Repariert mit den ECHTEN kaufbaren Entsprechungen (jede live geprüft): UFO Kristall-Salzlampe
+  CHF 24.90 (2×), Duftkerze im Aluminiumgehäuse CHF 15.90, Premium Home Wellness Bundle CHF 99
+  (echter Inhalt: Diffuser + 6 Öle + Salzlampe + Kristall-Trio statt erfundener Cashmere-Decke),
+  Premium Bambus Diffuser 300 ml CHF 39.90. **HEPA-Raumgerät gibt es nicht → Aussage generisch
+  ohne Link/Preis** — wo keine Ware ist, wird keine behauptet. 6 Regeln je exakt 1×; live
+  ausgeliefert gegengeprüft (4 neue Produktlinks, 0 alte Namen).
+- ⚠️ «handgeschnitzt» blieb als KATEGORIE-Aussage über klassische Himalaya-Lampen stehen —
+  entfernt wurde sie nur dort, wo sie an UNSEREM Produkt hing (das UFO-Design ist nicht
+  handgeschnitzt).
+- ⚠️ **Der Suchindex log zweimal am selben Morgen:** `productsCount("USA: 12–22 Tage")`
+  meldete 452, «12–20» 61 — Bodenwahrheit an 13 Treffern: **0 tragen die Phrase im Live-Text.**
+  Die 04:08-Wächter hatten updatedAt angefasst, der Index trug noch den alten Text. Nach einem
+  Massen-Schreiblauf ist eine Inhalts-Suche erst nach Index-Nachlauf ein Messwert — Bodenwahrheit
+  ist immer descriptionHtml am Objekt (dieselbe Familie wie der Tag-Index vom 27.08.).
+- **Der Weg dorthin ist die Methode:** Wochen-Trichter nach Quelle → Such-Landeseiten → die
+  grösste neue Seite LESEN. Der nächste rankende Ratgeber kommt, und ratgeber_ohne_ware.py
+  prüft Links, aber nicht NAMEN+PREIS gegen den Katalog.
+
 ## 💽 Der Shopify-Datei-Speicher ist VOLL — und «aktualisiert» war einen Tag lang eine Lüge (2026-09-02)
 Die CDN-Queue für den TikTok-PC stand auf «2026-08-31», obwohl das Log vom 01.09. wörtlich
 «Queue-CDN aktualisiert» meldete. **`fileUpdate` ist ASYNCHRON:** Die Mutation wird ohne
