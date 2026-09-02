@@ -6090,3 +6090,25 @@ Wickel · Öl · Pflege · Gewicht · Zustand.
   Liste einen «Gewicht»-Schlüssel trägt (`hat_gewicht`, dieselbe Mechanik wie `hat_material`).
   Backup `theme_backup/product.json.gewicht-doppelt-0209`. **Wer eine Quelle zu einer Tabelle
   hinzufügt, prüft die Tabelle an einem Produkt, das alle Quellen trägt.**
+
+## 📋 Faktenblock für die Landeseiten nachgetragen — und was CJ dabei wirklich liefert (2026-09-02)
+`automation/cj_specs_backfill.mjs` (Prioritätsliste = 90 Produkt-Landeseiten der letzten 30 Tage aus
+ShopifyQL, nie der ganze Katalog — je Produkt ~20 CJ-Punkte): erster Lauf **24 Listen gesetzt**, live
+belegt (Kapuzenpullover: Gewicht 350–512 g je nach Variante · Stoffdicke normal · Ärmellänge Langarm).
+Täglich im Aufseher mit LIMIT 30, bis die Liste durch ist. Was CJ liefert und was daraus wurde:
+- **`materialNameEn`/`productProEn` kommen als String `'["Cloth"]'`, nicht als Array** — das `.map`
+  aus `cj_variant_backfill` warf beim ERSTEN echten Aufruf und hätte jeden Import gestoppt
+  (`liste()` normalisiert jetzt; nachgeprüft am Modul, dann am Lauf).
+- **`productWeight` ist bei Varianten eine SPANNE («350.00-512.00»)** — `Number()` gab NaN, die Zeile
+  fiel still weg. Jetzt «ca. 350 g – 512 g (je nach Variante)» (27.08.-Lehre: die Spanne zeigen).
+- **Die «Product information»-Zeilen tragen keine Ziffern** (Sleeve Length: Long Sleeve, Closure:
+  Zipper, Season: Spring/Autumn) — der Ziffernfilter warf alles weg, «Cloth» ist kein Material.
+  `textMerkmale()` übersetzt nur Schlüssel UND Werte aus einer Tabelle (Ärmellänge, Kragen,
+  Verschluss, Muster, Passform, Saison, Absatzhöhe, Stromversorgung, Wasserdicht, Pflege …); ein
+  unbekannter Teilwert → ganze Zeile weg. **Kein englisches Wort in einer deutschen Tabelle.**
+- ⚠️ **«Stromversorgung» stand doppelt** (Textzeile «Power Source» + CJ-Flag BATTERY) — an einer
+  Schallzahnbürste gesehen, Quelle dedupliziert, die geschriebenen Listen nachrepariert.
+  Vierte Tabellen-Dublette an einem Abend (Gewicht Theme/Liste, jetzt Quelle/Quelle): **jede neue
+  Quelle einer Tabelle braucht die Frage, welcher vorhandene Schlüssel schon dasselbe sagt.**
+- Nicht erreichbar: zwei Produkte «Product not found» (CJ kennt die pid nicht mehr — Kandidaten
+  für `cj_verfuegbarkeit`), eines ohne CJ-SKU (`PROJ-PANDA-001`, handkuratierte Ur-Ware).
