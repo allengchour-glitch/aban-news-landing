@@ -774,6 +774,21 @@ while true; do
       fi
     fi
   fi
+  # TRUST-BAUSTEIN-WAHRHEIT (02.09.2026): «✅ Geprüfte Qualität» → «✅ Geprüfte Angaben» in den
+  # Produkttexten (über 10'000; JSON-LD und Google-Feed lesen product.description roh, die
+  # Laufzeit-Ausblendung im Theme hilft dort nicht). Läuft in Chargen von 2500 bis die
+  # Schlusszeile «FERTIG:» im Log steht (Index erschöpft); danach Ruhe. Lock gegen Doppelstart.
+  TB=/tmp/trust_baustein.log
+  if [ -f "$REPO/automation/trust_baustein_wahrheit.py" ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/trust_baustein_wahrheit.py"{n++} END{exit(n?0:1)}'; then
+      if ! grep -q "^FERTIG:" "$TB" 2>/dev/null; then
+        ( cd "$REPO" && setsid bash -c \
+            "exec 9>/tmp/lock_trust_baustein.lock; flock -n 9 || exit 0; CAP=2500 exec python3 automation/trust_baustein_wahrheit.py" \
+            >> "$TB" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) trust_baustein_wahrheit gestartet"
+      fi
+    fi
+  fi
   # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die
   # wegen von Google selbst gemeldeter Richtlinienverstösse aus dem Kanal genommen worden
   # waren, wieder drin — zurückgeholt von `gfeed_restore.py` (14) und
