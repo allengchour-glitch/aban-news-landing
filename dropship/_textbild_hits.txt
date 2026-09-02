@@ -14471,3 +14471,4 @@ gid://shopify/Product/15522296398209	44->0	Tupfen Baumwoll-Twill (10m)
 gid://shopify/Product/15522298397057	17->3	Boho Wandsticker mit afrikanischen Tieren
 gid://shopify/Product/15522298659201	21->1	Schräge Keramik Futterschale für Haustiere
 gid://shopify/Product/15522299249025	36->3	Herren Freizeit-Mokassins aus Leder
+gid://shopify/Product/15522300526977	50->2	Herren Mid-Top Leder Casual-Schuh mit Reissverschluss
