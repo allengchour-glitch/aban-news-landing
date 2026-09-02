@@ -8671,3 +8671,12 @@ gid://shopify/Product/15450832011649	CHF 12.54	9 Varianten	Frucht-Infuser Wasser
 gid://shopify/Product/15450832044417	CHF 13.21	3 Varianten	Knochenschall-Kopfhörer mit Ohrclip
 gid://shopify/Product/15450832077185	CHF 22.91	1 Varianten	Elektrisches Make-up Pinsel Reinigungs-Set
 gid://shopify/Product/15450832109953	CHF 16.45	6 Varianten	Superhelle LED-Taschenlampe mit Fokus
+gid://shopify/Product/15450832142721	CHF 11.50	6 Varianten	Damen-Armbanduhr mit Lederarmband
+gid://shopify/Product/15450832241025	CHF 23.85	1 Varianten	Visual Blackhead Entferner mit Kamera
+gid://shopify/Product/15450832273793	CHF 33.44	4 Varianten	Fitness Yoga Pilates Bar – Tragbares Widerstandsba
+gid://shopify/Product/15450832306561	CHF 14.41	5 Varianten	Elektrischer Fusselentferner mit LED-Display
+gid://shopify/Product/15450832339329	CHF 9.53	8 Varianten	12-teiliges Make-up Pinselset
+gid://shopify/Product/15450832372097	CHF 28.61	6 Varianten	Intelligentes Nacken- und Schultermassagegerät
+gid://shopify/Product/15450832404865	CHF 5.22	13 Varianten	Klebendes Aufbewahrungsregal für Smartphone & Fern
+gid://shopify/Product/15450832437633	CHF 28.01	9 Varianten	Y90 Smartwatch mit GPS & Gesundheitsmonitoring
+gid://shopify/Product/15450832470401	CHF 8.64	2 Varianten	Golden Caviar Augencreme
