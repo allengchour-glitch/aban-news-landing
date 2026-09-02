@@ -14260,3 +14260,7 @@ gid://shopify/Product/15521462157697	137->1	Buntes Buchstaben-Armband
 gid://shopify/Product/15521490239873	21->2	Armband-Set aus Naturstein
 gid://shopify/Product/15521534083457	109->1	DIY-Armband mit Herzanhänger aus Edelstahl
 gid://shopify/Product/15521534280065	95->1	Vintage Hip-Hop Armband für Herren
+gid://shopify/Product/15521534837121	88->0	Professionelles Springseil mit Gewichten
+gid://shopify/Product/15521534968193	31->3	Retro-Armband mit chinesischem Lotus
+gid://shopify/Product/15521535000961	26->0	Hängetrainer-Set für Ganzkörpertraining
+gid://shopify/Product/15521590739329	21->0	Bausatz für 8-Raster-Fahrzeug
