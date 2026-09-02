@@ -8605,3 +8605,7 @@ gid://shopify/Product/15450829128065	CHF 6.39	20 Varianten	Elektrischer Augenbra
 gid://shopify/Product/15450829160833	CHF 7.12	27 Varianten	Kreatives Sturmfeuerzeug mit Doppelflamme
 gid://shopify/Product/15450829226369	CHF 7.47	18 Varianten	Magnetisches Leder Kartenetui mit Ständer
 gid://shopify/Product/15450829259137	CHF 8.84	39 Varianten	Selbstreinigende Katzenbürste aus Stahl
+gid://shopify/Product/15450829291905	CHF 21.66	12 Varianten	Baby Plüsch-Overall mit Kapuze
+gid://shopify/Product/15450829357441	CHF 23.38	2 Varianten	5-in-1 Magnetisches Wireless Ladegerät mit Nachtli
+gid://shopify/Product/15450829390209	CHF 10.97	53 Varianten	Galaxy Kristallkugel LED Nachtlicht
+gid://shopify/Product/15450829422977	CHF 7.37	5 Varianten	Mini-Falt-Drohne mit HD-Kamera
