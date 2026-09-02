@@ -8344,3 +8344,7 @@ gid://shopify/Product/15450733412737	CHF 30.26	14 Varianten	Handbestickte Löwen
 gid://shopify/Product/15450733445505	CHF 35.15	14 Varianten	Traditionelle Schmetterlings-Flip-Flops
 gid://shopify/Product/15450733511041	CHF 24.72	16 Varianten	Retro Plateau-Sandalen mit Überkreuzriemen
 gid://shopify/Product/15450733576577	CHF 18.64	12 Varianten	Retro-Sandalen mit eckiger Spitze
+gid://shopify/Product/15450733805953	CHF 16.05	12 Varianten	Rhinestone Riemchensandalen im French-Stil
+gid://shopify/Product/15450734035329	CHF 16.05	9 Varianten	Koreanische Sandalen mit Strass
+gid://shopify/Product/15450734297473	CHF 16.41	27 Varianten	Trend-Keilsandalen mit Nieten
+gid://shopify/Product/15450734559617	CHF 13.79	36 Varianten	Damen-Plateau-Sandalen mit Riemen
