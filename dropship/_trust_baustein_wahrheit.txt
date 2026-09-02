@@ -2276,3 +2276,12 @@
 15448582914433	ersetzt-1	Gepunkteter Neckholder Off-Shoulder Bodysuit mit Shorts
 15448582979969	ersetzt-1	Jumpsuit «Casual Washed» mit weitem Bein
 15448583045505	ersetzt-1	Gestreifter ärmelloser Jumpsuit mit V-Ausschnitt
+15448583078273	ersetzt-1	V-Ausschnitt Jumpsuit mit weitem Bein – S-Gray
+15448583143809	ersetzt-1	Kurzer Jumpsuit mit Printmuster
+15448583209345	ersetzt-1	Jumpsuit mit V-Ausschnitt und Taschen
+15448583242113	ersetzt-1	Overall-Playsuit mit Spaghettiträgern
+15448583340417	ersetzt-1	Eleganter Jumpsuit mit Puffärmeln
+15448583373185	ersetzt-1	Off-Shoulder Casual Chic Jumpsuit
+15448583438721	ersetzt-1	Eleganter ärmelloser Jumpsuit mit V-Ausschnitt – Beige
+15448583471489	ersetzt-1	Vielseitiger Jumpsuit mit weitem Bein
+15448583537025	ersetzt-1	Gestreifter ärmelloser Leinen-Playsuit

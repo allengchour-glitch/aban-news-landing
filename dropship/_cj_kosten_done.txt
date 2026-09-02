@@ -8680,3 +8680,7 @@ gid://shopify/Product/15450832372097	CHF 28.61	6 Varianten	Intelligentes Nacken-
 gid://shopify/Product/15450832404865	CHF 5.22	13 Varianten	Klebendes Aufbewahrungsregal für Smartphone & Fern
 gid://shopify/Product/15450832437633	CHF 28.01	9 Varianten	Y90 Smartwatch mit GPS & Gesundheitsmonitoring
 gid://shopify/Product/15450832470401	CHF 8.64	2 Varianten	Golden Caviar Augencreme
+gid://shopify/Product/15450832503169	CHF 36.75	5 Varianten	Hundebett Warmer Schlafsack
+gid://shopify/Product/15450832535937	CHF 10.73	4 Varianten	Fressnapf mit Ständer für Haustiere
+gid://shopify/Product/15450832568705	CHF 40.68	4 Varianten	U-förmiges Schwangerschaftskissen aus Eisseide
+gid://shopify/Product/15450832601473	CHF 13.51	10 Varianten	Baumwoll-Set für Jungen (Frühling/Herbst)
