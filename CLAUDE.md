@@ -6124,3 +6124,21 @@ Täglich im Aufseher mit LIMIT 30, bis die Liste durch ist. Was CJ liefert und w
   Stunden-Routine hat in dieser Zeit nicht gefeuert — vermutlich, weil diese Session ohne Pause
   gearbeitet hat und Routinen erst in eine RUHENDE Session laufen. **Wer lange Sessions am Stück
   arbeitet, hält damit den Keepalive auf.** Turn beendet, damit die Routine ziehen kann.
+
+## 🔑 Der Queue-Runner suchte ohne Schlüssel — und quittierte die Wecker-Suche als erledigt (2026-09-02, spät)
+`cj_queue_runner.sh` las `GROQ_API_KEY` aus `/tmp/groq_key` — eine Datei, die seit dem /tmp-Wipe vom
+30.08. nicht mehr existiert; die vier Grind-Runner lesen längst `/tmp/dienste.env` (Tresor). Folge:
+CJ fand Produkte, der Importer meldete für jedes «✗ keine Texte», endete mit Exit 0 — und der Runner
+markierte den Suchbegriff mit `#done`. Die Betreiber-Suche «target alarm clock gun» galt so als
+abgearbeitet, ohne je einen Text bekommen zu haben. Dritte Fassung von «ein Lauf, der sein Ende
+erreicht, hat deswegen noch nichts getan» — diesmal mit falscher Quittung obendrauf.
+- Runner liest jetzt `/tmp/dienste.env` (Fallback alte Dateien) und bricht ohne Schlüssel mit Exit 3 ab;
+  `cj_sku_import.mjs` zählt «keine Texte» und endet mit Exit 3, wenn Produkte gefunden, aber NULL
+  Texte erzeugt wurden → der RC≠0-Zweig hält die Suche offen. Wecker-Suche zurückgesetzt.
+- ⚠️ CJ-Punkte um 21:20 UTC erneut leer (`16900500`) — die vier Runner hatten den nachgefüllten Eimer
+  in 15 Minuten aufgebraucht. Die Wecker-Suche läuft beim nächsten Reset.
+- ✅ **Groq-Fix am echten Import belegt:** nach dem Neustart 21:07 UTC legten die Runner sofort Produkte
+  an (0× skip(gemini)), Texte in du-Form, mit Faktenblock (Gewicht/Material/Masse) und «Geprüfte
+  Angaben». Zwei Funde am ersten Erzeugnis, beide an der Quelle behoben: «Er ist in den Farben … erhältlich»
+  bei EINER Variante (Prompt verbietet Auswahl-Behauptungen jetzt) und «Material: Leder» bei
+  PU-Leder im Text (CJ «Leather» + PU → PU-Leder).

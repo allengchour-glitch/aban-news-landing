@@ -5,7 +5,7 @@
 # aber KEINEN Zielscheiben-/Pistolen-Wecker (Suche 0). Zuerst abarbeiten, sobald CJ-Punkte da sind
 # (Tagesbudget war um 18:21 UTC erschöpft). Treffer gegen Bild plausibilisieren: es soll ein
 # WECKER sein, kein Spielzeug-Blaster.
-#done search:target alarm clock gun
+search:target alarm clock gun
 #done search:shooting alarm clock laser target
 #done search:gun alarm clock
 #done search:tempered glass screen protector iphone
@@ -640,10 +640,10 @@
 # gehört NUR in Online Store + Shop; google_kanal_saeubern.py zieht sie aus den Werbekanälen
 # (RAUCH_TITEL kennt Drehpapier/Papes/Rolling/Tips/Stash seit 02.09.). Kein Tabak, kein CBD.
 #done search:rolling papers king size slim
-search:rolling paper rolls
-search:pre rolled cones
-search:filter tips rolling
-search:rolling tray metal
+#done search:rolling paper rolls
+#done search:pre rolled cones
+#done search:filter tips rolling
+#done search:rolling tray metal
 search:herb grinder 4 piece
 search:smell proof stash bag
 search:torch lighter jet flame

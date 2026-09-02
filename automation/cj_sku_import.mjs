@@ -94,6 +94,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
 const t = await shTok();
 const SET = `mutation($i:ProductSetInput!){ productSet(synchronous:true,input:$i){ product{id} userErrors{field message} } }`;
 
+let ohneText = 0, angelegt = 0;
 for (const item of ITEMS) {
   const [kind, ...rest] = item.split(':'); const val = rest.join(':');
   let pid = null;
@@ -135,7 +136,7 @@ for (const item of ITEMS) {
   if (imgs.length < 2) { console.log('✗ zu wenig Bilder:', item); continue; }
   const feats = (d.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const g = await groq(d.productNameEn || val, feats);
-  if (!g) { console.log('✗ keine Texte:', item); continue; }
+  if (!g) { console.log('✗ keine Texte:', item); ohneText++; continue; }
   // Marken-Filter (14.08.2026), siehe automation/marken_filter.mjs
   const ms = produktSaeubern(g.title, g.html);
   if (ms.verdacht) { console.log('✗ Markenbezug, übersprungen:', item); continue; }

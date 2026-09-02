@@ -14,9 +14,14 @@ source /tmp/secrets_env.sh 2>/dev/null
 : "${SHOPIFY_CLIENT_SECRET:?fehlt}"
 export SHOPIFY_CLIENT_ID SHOPIFY_CLIENT_SECRET
 export CJ_TOKEN=$(python3 -c "import json;print(json.load(open('/tmp/cj_token.json'))['accessToken'])")
-export GROQ_API_KEY=$(cat /tmp/groq_key 2>/dev/null)
-export GROQ_API_KEY2=$(cat /tmp/groq_key2 2>/dev/null)
-export GEMINI_API_KEY=$(cat /tmp/gemini_key 2>/dev/null)
+# ⚠️ 02.09.2026: /tmp/groq_key existiert seit dem /tmp-Wipe (30.08.) nicht mehr — die Grind-Runner lesen
+# /tmp/dienste.env (Tresor). Dieser Runner las die alte Datei, hatte KEINEN Schluessel, meldete fuer
+# jede Suche «keine Texte» und quittierte sie trotzdem als erledigt (Wecker-Suche des Betreibers).
+set -a; source /tmp/dienste.env 2>/dev/null; set +a
+[ -z "$GROQ_API_KEY" ] && export GROQ_API_KEY=$(cat /tmp/groq_key 2>/dev/null)
+[ -z "$GROQ_API_KEY2" ] && export GROQ_API_KEY2=$(cat /tmp/groq_key2 2>/dev/null)
+[ -z "$GEMINI_API_KEY" ] && export GEMINI_API_KEY=$(cat /tmp/gemini_key 2>/dev/null)
+if [ -z "$GROQ_API_KEY" ]; then echo "GROQ_API_KEY fehlt (/tmp/dienste.env?) — Queue bleibt offen"; exit 3; fi
 Q=automation/cj_search_queue.txt
 while true; do
   mapfile -t BATCH < <(grep -v '^#' "$Q" | head -4)
