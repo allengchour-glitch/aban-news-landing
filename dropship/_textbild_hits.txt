@@ -13966,3 +13966,8 @@ gid://shopify/Product/15500509512065	101->0	Herren Hemd Leinen-Optik Langarm Cas
 gid://shopify/Product/15500515410305	24->0	Twill-Hemd aus Baumwolle
 gid://shopify/Product/15500515475841	19->0	Elektrisches Katzenspielzeug mit rotierendem Teller
 gid://shopify/Product/15500526092673	20->3	Puzzel-Kugel für Hunde
+gid://shopify/Product/15500896436609	20->0	Vintage Kontinental Strickkissenbezug in Beige
+gid://shopify/Product/15500897419649	18->1	Mini-Staubsauger-Roboter
+gid://shopify/Product/15500908855681	8->0	Moxibustion-Heizgurt für die Taille
+gid://shopify/Product/15500909314433	26->0	Automatischer Lockenstab für vielseitiges Styling
+gid://shopify/Product/15500911444353	36->0	Mini-Elektrokessel
