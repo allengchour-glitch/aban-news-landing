@@ -8348,3 +8348,6 @@ gid://shopify/Product/15450733805953	CHF 16.05	12 Varianten	Rhinestone Riemchens
 gid://shopify/Product/15450734035329	CHF 16.05	9 Varianten	Koreanische Sandalen mit Strass
 gid://shopify/Product/15450734297473	CHF 16.41	27 Varianten	Trend-Keilsandalen mit Nieten
 gid://shopify/Product/15450734559617	CHF 13.79	36 Varianten	Damen-Plateau-Sandalen mit Riemen
+gid://shopify/Product/15450734854529	CHF 37.31	21 Varianten	Flache Zehensteg-Sandalen aus Schafsleder
+gid://shopify/Product/15450734952833	CHF 16.50	9 Varianten	Espadrille Sandalen mit Plateau
+gid://shopify/Product/15450735018369	CHF 25.24	9 Varianten	Keilsandalen mit Hanfseil-Plateau
