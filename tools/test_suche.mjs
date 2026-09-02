@@ -134,6 +134,26 @@ for (const sprache of ['fr', 'it', 'en']) {
   check(`${sprache}: keine abgeschnittenen Beschreibungen`, kurz === 0, `${kurz} zu kurz von ${idx.length}`)
 }
 
+/* 🔤 VERTIPPER. Vorher lieferte jeder einzelne Buchstabendreher NICHTS (gemessen:
+   rechnug, hypotek, lohnrecner, dsgov → leer). Jetzt wird ein unbekannter Begriff
+   gegen den Wortschatz des Index korrigiert — und die Trefferzeile sagt es. */
+for (const [tipp, soll] of [['rechnug','rechnung'],['hypotek','hypothek'],['lohnrecner','lohnrechner'],['dsgov','dsgvo']]) {
+  await page.goto(`http://127.0.0.1:${PORT}/suchmaschine.html?q=${encodeURIComponent(tipp)}`, { waitUntil: 'networkidle' })
+  await page.waitForTimeout(600)
+  const r = await page.evaluate(() => ({ n: document.querySelectorAll('a.res').length, cnt: (document.querySelector('#cnt') || {}).textContent || '' }))
+  check(`Vertipper „${tipp}" findet Treffer`, r.n > 0, r.n + ' Treffer')
+  check(`… und sagt, als was er verstanden wurde`, r.cnt.indexOf('verstanden als „' + soll) >= 0, r.cnt.slice(0, 80))
+}
+/* GEGENPROBE: ein korrekter Begriff darf NICHT umgedeutet werden. */
+await page.goto(`http://127.0.0.1:${PORT}/suchmaschine.html?q=rechnung`, { waitUntil: 'networkidle' })
+await page.waitForTimeout(600)
+check('GEGENPROBE: „rechnung" wird nicht umgedeutet', (await page.evaluate(() => (document.querySelector('#cnt') || {}).textContent || '')).indexOf('verstanden') < 0)
+/* Und der Vertipper im Mehrwort-Fall zieht die richtige Seite nach vorn. */
+await page.goto(`http://127.0.0.1:${PORT}/suchmaschine.html?q=${encodeURIComponent('arbeitsvertag vorlage')}`, { waitUntil: 'networkidle' })
+await page.waitForTimeout(600)
+const av = await page.evaluate(() => (document.querySelector('a.res .t') || {}).textContent || '')
+check('„arbeitsvertag vorlage" fuehrt zum Arbeitsvertrag', /arbeitsvertrag/i.test(av), '1. Treffer: ' + av.slice(0, 50))
+
 check('0 JS-Fehler', fehler.length === 0, fehler.join(' | '))
 console.log(`\n${fehl === 0 ? '🎉 SUCHE BESTANDEN' : '💥 SUCHE FEHLGESCHLAGEN'} — ${ok} ok, ${fehl} Fehler`)
 await browser.close()

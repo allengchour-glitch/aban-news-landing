@@ -128,8 +128,44 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
   var SYN={"künstliche":["ki"],"kuenstliche":["ki"],"intelligenz":["ki"],"artificial":["ai"],
            "intelligence":["ai"]};
   /* Einmal beim Laden vorrechnen statt bei jedem Tastendruck ueber 1396 Eintraege. */
+  /* 🔤 WORTSCHATZ fuer Vertipper. GEMESSEN: „rechnug", „hypotek", „lohnrecner", „dsgov"
+     lieferten alle NICHTS — ein unbekannter Begriff wurde bisher verworfen (richtig
+     gegen Buchstabendreher in Mehrwort-Suchen), aber bei einem einzigen Suchwort bleibt
+     dann nichts uebrig. Und „arbeitsvertag vorlage" fiel auf „vorlage" allein zurueck:
+     40 generische Treffer statt der Arbeitsvertrag-Seite.
+     Darum: aus Titeln, Beschreibungen und Slugs alle Woerter ab 4 Zeichen mit Haeufigkeit
+     merken (1397 Seiten → ~7200 Woerter). Ein Begriff, der nirgends vorkommt, wird gegen
+     diesen Schatz mit Editierdistanz verglichen — NUR dann; ein Begriff mit Treffern wird
+     nie umgedeutet, damit richtige Suchen unveraendert bleiben. */
+  var VOC={};
   function vorbereiten(idx){idx.forEach(function(it){
-    it._t=beide(it.t);it._d=beide(it.d);it._s=beide(slug(it.u))});return idx}
+    it._t=beide(it.t);it._d=beide(it.d);it._s=beide(slug(it.u));
+    (fold(it.t+" "+it.d+" "+slug(it.u)).match(/[a-z0-9]{4,}/g)||[]).forEach(function(w){VOC[w]=(VOC[w]||0)+1})});
+    return idx}
+  /* Damerau-Levenshtein mit Abbruch: Distanz > max wird nicht ausgerechnet. */
+  function dist(a,b,max){
+    if(Math.abs(a.length-b.length)>max)return max+1;
+    var prev=[],cur=[],pp=null,i,j;
+    for(j=0;j<=b.length;j++)prev[j]=j;
+    for(i=1;i<=a.length;i++){cur=[i];var zeile=i;
+      for(j=1;j<=b.length;j++){
+        var c=a.charAt(i-1)===b.charAt(j-1)?0:1;
+        var v=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+c);
+        if(i>1&&j>1&&a.charAt(i-1)===b.charAt(j-2)&&a.charAt(i-2)===b.charAt(j-1))v=Math.min(v,pp[j-2]+1);
+        cur[j]=v;if(v<zeile)zeile=v}
+      if(zeile>max)return max+1;
+      pp=prev;prev=cur}
+    return prev[b.length]}
+  /* Naechstes bekanntes Wort: kurze Begriffe duerfen 1 Fehler haben, laengere 2.
+     Bei gleicher Distanz gewinnt das haeufigere Wort, damit „rechnug" zu „rechnung"
+     wird und nicht zu „rechnen". */
+  function korrigiere(w){
+    if(w.length<4)return null;
+    var max=w.length<=6?1:2, best=null, bd=max+1, bh=0;
+    for(var k in VOC){if(Math.abs(k.length-w.length)>max)continue;
+      var d=dist(w,k,max);
+      if(d<bd||(d===bd&&VOC[k]>bh)){bd=d;best=k;bh=VOC[k]}}
+    return bd<=max?best:null}
   function drin(h,w){for(var i=0;i<w.length;i++)if(h.indexOf(w[i])>=0)return true;return false}
   /* Wie viele der Begriffe kommen in diesem Eintrag ueberhaupt vor? */
   function passt(it,terms){var n=0;
@@ -171,10 +207,19 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
        meistens ein Vertipper. Zaehlte er mit, machte ein einziger Buchstabendreher
        jede Suche leer ("mwst rechnr" haette 0 statt der MWST-Seiten gebracht).
        Solche Begriffe fallen raus, der Rest wird UND-verknuepft. */
-    var nutzbar=terms.filter(function(w){
-      return IDX.some(function(it){return drin(it._t,w)||drin(it._d,w)||drin(it._s,w)})});
+    var korr=[];  /* [tipp, verstanden] fuers Anzeigen */
+    var nutzbar=[];
+    terms.forEach(function(w,i){
+      var da=IDX.some(function(it){return drin(it._t,w)||drin(it._d,w)||drin(it._s,w)});
+      if(da){nutzbar.push(w);return}
+      /* nicht verwerfen, sondern erst nach einem nahen Wort suchen */
+      var k=korrigiere(fold(roh[i]||w[0]));
+      if(k){var v=[fold(k)];if(plain(k)!==fold(k))v.push(plain(k));nutzbar.push(v);korr.push([roh[i]||w[0],k]);}
+    });
     if(!nutzbar.length)nutzbar=terms;
-    var bewertet=IDX.map(function(it){return {it:it,s:score(it,terms),n:passt(it,nutzbar)}})
+    /* Hervorhebung soll auch das verstandene Wort treffen */
+    korr.forEach(function(c){if(roh.indexOf(c[1])<0)roh.push(c[1])});
+    var bewertet=IDX.map(function(it){return {it:it,s:score(it,nutzbar),n:passt(it,nutzbar)}})
       .filter(function(x){return x.s>0}).sort(function(a,b){return b.s-a.s});
     var alle=bewertet.filter(function(x){return x.n===nutzbar.length});
     /* ⚠️ SACKGASSE VERMEIDEN. Striktes UND allein liess zwei ganz vernuenftige Suchen
@@ -193,7 +238,8 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
        „40+ Treffer" neben einem Chip, der 279 meldet. */
     var ges=filter?alle.filter(function(x){return x.it.k===filter}).length:alle.length;
     cnt.textContent=ges?(ges+" Treffer für „"+q+"“"+(filter?" in "+KAT[filter]:"")
-      +(ges>hits.length?" · die besten "+hits.length:"")):"";
+      +(ges>hits.length?" · die besten "+hits.length:"")
+      +(korr.length?" · verstanden als „"+korr.map(function(c){return c[1]}).join(" ")+"“":"")):"";
     if(!hits.length){list.innerHTML='<div class="empty">Nichts gefunden für „'+esc(q)+'“.<br>Vielleicht im <a href="/suche.html?q='+encodeURIComponent(q)+'">Marktplatz</a> suchen?</div>';return}
     list.innerHTML=hits.map(function(x){var it=x.it;
       return '<a class="res" href="'+esc(it.u)+'"><div class="u">abannews.com'+esc(it.u)+'</div><div class="t">'+hi(it.t,roh)+(it.k&&KAT[it.k]?'<span class="badge">'+KAT[it.k]+'</span>':'')+'</div>'+(it.d?'<div class="d">'+hi(it.d,roh)+'</div>':'')+'</a>'}).join("")
