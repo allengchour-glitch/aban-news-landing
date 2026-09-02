@@ -4546,6 +4546,28 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## ⛔ KORREKTUR: «der Index lügt» war MEIN Fehler — 513 Produkte trugen den USA-Block wirklich (2026-09-02, abends)
+Der Eintrag unter «Salzlampe» sagt: `productsCount("USA: 12–22 Tage")` = 452, «Bodenwahrheit an
+13 Treffern: 0 tragen die Phrase». **Falsch.** Der Live-Text lautet
+`🇺🇸 USA: <strong>12–22 Tage</strong>` — ein `<strong>` steht zwischen «USA:» und der Zahl,
+und meine Prüfung suchte die Phrase ROH im HTML. Der Index hatte recht, die Prüfung nicht.
+Mit tag-tolerantem Muster (`USA:?\s*(?:<[^>]+>\s*)*1\d\s*[–-]\s*2\d\s*Tage`) am Objekt gezählt:
+**513 aktive Produkte** (452× «12–22», 61× «12–20»; 452 davon cj-real) — darunter ausgerechnet
+die handkuratierte Ur-Ware mit Suchverkehr (Slim Wallet, Retro-Sonnenbrille, LED-Lampe,
+Galaxy-Projektor, Bambus-Diffuser). Gefunden nur, weil ich beim Phantom-Lauf Produkttexte
+GELESEN habe statt zu zählen.
+- **Fünfte Fassung der Lehre «ein Nullergebnis aus dem eigenen Prüfwerkzeug ist kein Befund»**
+  — und die schärfste: Wer ein Werkzeug (Index) der Lüge bezichtigt, muss seine Gegenprobe
+  an einem BEKANNT-POSITIVEN Fall belegen. Ich hatte keinen. **Vor einem «X lügt» gehört der
+  eigene Prüfer an einen Fall, den man mit Augen gesehen hat.**
+- Repariert mit den REGELN des Werkzeugs (`versandaussagen_wahrheit.umschreiben`, keine
+  zweite Regelquelle; `scratchpad/usa_block_fix.py` liefert nur die am Objekt gemessene
+  Kandidatenliste): DRY an 6 Stück sauber («Lieferzeit Schweiz: 10–20 Werktage»), Lauf über
+  alle 513 per `setsid` (Turn-Reaping), Ledger-Quittung `usa-block-0209`.
+- ⚠️ Der 01.09.-Nachzug («167/167, Restzähler 0») galt der Variante mit Nachsatz — er hat
+  diese Form NICHT erfasst, weil die Kandidaten aus einer Phrasensuche kamen. **Eine
+  Klassenzahl gilt nur für die Form, mit der man gesucht hat.**
+
 ## 👻 Der 29.05.-Generator hat einen ERFUNDENEN Katalog in 28 Ratgeber geschrieben (2026-09-02)
 Nach dem Salzlampen-Fund die Klassenfrage gestellt: Ein Scan aller veröffentlichten Artikel
 (Kollektionslink + Preisangabe im 120-Zeichen-Umfeld) fand **28 Artikel mit ~65 Fundstellen** —
@@ -4567,6 +4589,17 @@ eine Falschaussage** — Kollektionen haben keinen Preis, und die benannte Ware 
   nicht konnte.
 - Kurios am Rande: «ist ein Schlaf-Mist mit beruhigendem Lavendel-Aroma» — der Generator hat
   «sleep mist» wörtlich übersetzt und niemand hat es je gelesen.
+- **Abends alle 28 + Beifang erledigt** (Charge 7/8: 3 Ratgeber + 7 MAGAZIN-Listicles vom
+  17./23.05., 105 Regeln je exakt 1×, 28 Zielprodukte live geprüft). Was die alten Listicles
+  zusätzlich trugen und was keine Phantom-Suche findet: eine **erfundene Dermatologin «Dr.
+  med. Anna Reiter, Zürich» mit Zitat und 14-Tage-Testtabelle**, «67 % der Arbeitnehmer»,
+  «Konzentration +28 %», ein «Herren Gürtel Echtleder», der laut Produkttext **Nylon** ist,
+  eine «Doppelwand»-French-Press, die einwandig ist, «Soja-Kerzen handgegossen in der
+  Schweiz» (Herkunftslüge) und eine Geschenkkarten-Zusage, die kein Dropship-Lieferant
+  einlöst. **Regel: An jedem /products/-Link gehört nicht nur der Preis, sondern jedes
+  Adjektiv gegen den Produkttext** — «Echtleder», «Doppelwand», «Titan», «GOTS» waren alle
+  erfunden. Titel «Dermatologen-Test 2026» umbenannt (Handle bleibt), Rückverweis-Text in
+  2 Produkten nachgezogen. Details: `dropship/PHANTOM-PRODUKTE.md`.
 
 ## 🧂 Die Nr.-1-Suchseite der Woche bewarb fünf Produkte, die es nicht gibt (2026-09-02)
 Frische 7-Tage-Messung (MCP wieder da): 399 Sitzungen, 4 an der Kasse, **0 Abschlüsse** — und

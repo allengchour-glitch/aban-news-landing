@@ -46,6 +46,34 @@ Umfeld von 120 Zeichen danach.
   echter — ein Vergleich ohne Gegenstand ist nicht flickbar (Launch-Seiten-Präzedenz).
 - `weihnachtsgeschenke-2026-schweiz-ideen` (Beifang: bewarb den Phantom-DELUXE 2× und
   verlinkte den Vergleich — beide Stellen bereinigt, Listenpunkt→echtes Bundle)
+- `bluetooth-speaker-wasserdicht-outdoor-guide` (Speaker 360°/IPX7/24h 2×→echter wasserdichter
+  Lautsprecher 22.90 ohne Schutzklassen-Behauptung, Kühlbox 89.90→78.90 ohne «72 h/USB»,
+  Picknick→generisch, Footer «Sommer-Kollektion»→Audio)
+- `echtleder-accessoires-pflegen-anleitung` (**der «Herren Gürtel Echtleder» ist laut
+  Produkttext NYLON**, das «Echtleder Laptop-Sleeve» eine Neopren-Hülle → beide raus; Preise
+  Schlüsselanhänger 19.90→15.90; Lederarmband→generisch)
+- `french-press-perfekter-kaffee-anleitung` (die Kanne ist EINWANDIG, 350/**600**/1000 ml, ab
+  15.90 statt «Doppelwand 34.90» — 9 Regeln inkl. Mengentabelle und FAQ; Tablett+Picknick→generisch)
+- **MAGAZIN-Blog (119677616513), 7 Listicles vom 17./23.05.:** fitness (Yogamatte 6 mm→10 mm
+  14.90, Summe 89.70→68.70, ACE-Studienzitat raus) · **silk-pillowcase** (ERFUNDENE Dermatologin
+  «Dr. med. Anna Reiter, Zürich» + erfundener 14-Tage-Test samt Tabelle entfernt; 22 Momme/
+  OEKO-TEX-Kriterien «erfüllt alle drei» → Produkt hat 19 Momme; **Titel umbenannt** «Dermatologen-
+  Test 2026»→«Seide vs. Baumwolle 2026», Handle bleibt, Rückverweis-Text in 2 Produkten
+  nachgezogen) · home-office-lifehacks («67 % der Arbeitnehmer», «Konzentration +28 %», Ärzte-
+  Zuschreibung raus; Brille 34.90→15.90 echt; Lampe 39.90→44.90) · reise-gadgets (Powerbank
+  20'000→echte 10'000 mAh 23.90, Rucksack ohne Laptopfach/USB/25 L, Brille PC statt «22 g»,
+  «Bio T-Shirt GOTS»→POD-Shirt ab 32.90, Summe 124→103) · männer-geschenke (Uhr 89.90 «Saphir/
+  50 m/japanisch»→18.90 Quarz, Messerblock Bambus→Messerhalter Kunstharz 23.90, Titan→PC,
+  drei Set-Summen neu) · frauen-geschenke («Soja-Kerzen handgegossen in der Schweiz»=Herkunfts-
+  Lüge→Duftkerze 15.90, Portemonnaie 59.90 «Nappa/12 Fächer/RFID»→14.90 echt, Baby-Nagelschneider
+  →echtes Pflegeset 15.90, LED-Halsband+Slow-Feeder echt 32.80, **Geschenkkarten-Zusage entfernt**)
+  · wellness-unter-50 (10 Einträge: Robo/Planet/Wood-Grain/Flame-Phantome→5 echte Diffuser-Modelle,
+  Galaxy 19.90→43.90, «Lymphdrainage/Anti-Falten» raus, drei Bundle-Summen neu).
+  BUNDLE20 (20 % ab 80) und FIRST15 (15 % ab 40) live geprüft: beide ACTIVE, bleiben.
+
+**Stand 02.09. abends: alle 28 Artikel des Scans + Beifang bereinigt.** Der Scanner
+(Kollektionslink + Preis) ist als `scratchpad/phantom_scan.py` dokumentiert; ein Wächter dafür
+fehlt noch (→ `ratgeber_ohne_ware.py` prüft Links, nicht NAMEN+PREIS gegen den Katalog).
 
 ## Verifizierte Zuordnungen (alle 02.09. live geprüft: ACTIVE + Onlineshop)
 | Phantom | echtes Produkt | Preis | Handle |
