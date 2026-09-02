@@ -4546,6 +4546,23 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## 🗂️ «Kategorien schöner sortieren» — Hauptmenü in Welten statt Sammeltopf (2026-09-02, spät)
+Vorher: 8 Welten plus **«Mehr & Sale» mit 26 Unterpunkten** (Kinder neben Werkzeug neben Kiffer-
+Zubehör neben Ratgeber). Jetzt 13 Top-Level: Highlights · Damen · Herren · Schuhe · Schmuck &
+Uhren · Beauty & Parfüm · Herbst & Übergang · **Wohnen & Garten** (11) · **Technik & Gaming** (10)
+· **Kinder & Haustier** (6 + Haustier-Unterbaum) · **Sport & Party** (10, inkl. Kostüme, Halloween,
+Süsses) · **Sale & Mehr** (9, inkl. 🔎 Alle Kategorien) · ♥ Merkliste. 108 → 128 Punkte, weil die
+Welten jetzt auch Unterkategorien führen, die vorher nur im Verzeichnis standen (Smartwatches,
+Kopfhörer, Beamer, Drohnen, PC & Homeoffice, Beleuchtung, Vasen, Garten, Camping, Yoga).
+- **Jede Zielkollektion vorher live geprüft** (published Online Store, productsCount > 0) und
+  danach alle 47 neuen Menü-Ziele per HEAD auf 200 — `schule-buero` existiert nicht mehr und
+  fiel deshalb raus. Baum-Backup `theme_backup/menu-main-vor-umbau-0209.json`.
+- ⚠️ `menuUpdate` lehnt eine id ab, die zweimal im Baum steht — beim Umhängen bestehender
+  Punkte in neue Welten die id nur EINMAL mitgeben (Dedup vor dem Schreiben).
+- Startseiten-Kacheln in derselben Logik sortiert (Damen · Herren · Schuhe · Schmuck · Beauty ·
+  Wohnen · Technik · Spielzeug · Klemmbausteine · Haustier · Küche · Uhren · Taschen · Fitness ·
+  Parfum · CH-Lager). Backup `theme_backup/index.json.kacheln-sortiert-0209`.
+
 ## 🏷️ Marken in Titeln: 7 CJ-Nachbauten umbenannt, 64 gemessen, 57 sind legitim (2026-09-02, spät)
 Die neue Klemmbausteine-Kollektion führte «Benz 190E», «Porsche 911GT3 RS», «Audi R8 GT3 / RS6»,
 «Tesla», «Lamborghini Mura», «Star Wars», «World of Tanks» im Titel — CJ-Nachbauten, die sich
