@@ -3740,3 +3740,205 @@
 15508306493825	live-schon-sauber	Slim Fit Langarmshirt mit farbigem Reverskragen
 15508421280129	live-schon-sauber	Holiday Geschenkset Lippenstift & Lidschatten
 15509505737089	live-schon-sauber	Picknicktasche für 4 Personen
+15412919533953	material-floskel-entfernt	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+15413725102465	material-floskel-entfernt	Cropped Blazer · Damen, mit Pailletten-Detail
+15422811439489	farbe-floskel-entfernt,material-floskel-entfernt	Unisex T-Shirt – Selbst gestalten
+15422815699329	farbe-floskel-entfernt,material-floskel-entfernt	Unisex Hoodie – Selbst gestalten
+15422857642369	farbe-floskel-entfernt,material-floskel-entfernt	Klassisches Unisex T-Shirt – Selbst gestalten
+15422939267457	farbe-floskel-entfernt,material-floskel-entfernt	Boardshorts mit Allover-Druck – Selbst gestalten
+15422943822209	farbe-floskel-entfernt,material-floskel-entfernt	Einteiliger Allover-Badeanzug – Selbst gestalten
+15422945034625	farbe-floskel-entfernt,material-floskel-entfernt	Allover-Yoga-Leggings – Selbst gestalten
+15422949130625	farbe-floskel-entfernt,material-floskel-entfernt	Recycelter Unisex Allover-Pullover – Selbst gestalten
+15422953062785	farbe-floskel-entfernt,material-floskel-entfernt	Hoodie bedrucken · recycelter Unisex Allover-Hoodie selbst g
+15422956798337	farbe-floskel-entfernt,material-floskel-entfernt	Unisex Allover-Bomberjacke – Selbst gestalten
+15422958338433	farbe-floskel-entfernt,material-floskel-entfernt	Kleid mit Schlitz und Allover-Druck – Selbst gestalten
+15422959518081	farbe-floskel-entfernt,material-floskel-entfernt	Recycelte Allover-Jogginghosen – Selbst gestalten
+15427278963073	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Alphorn»
+15427279028609	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «1 August»
+15427279094145	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Alpaufzug»
+15427279159681	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Apero Time»
+15427279225217	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Baehnli»
+15427279290753	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Baern»
+15427279356289	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Basel»
+15427279421825	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Bernese Dog»
+15427279487361	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Bernhardiner»
+15427279552897	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Braunvieh»
+15427279618433	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Buenzli»
+15427279683969	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Cervelat»
+15427279782273	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chalet»
+15427279880577	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chuchichaeschtli»
+15427279978881	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Edelweiss»
+15427280077185	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Eidgenoss»
+15427280142721	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Enzian»
+15427280208257	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Es Git Nu Eis Zueri»
+15427280306561	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fasnacht Mask»
+15427280339329	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Feierabig»
+15427280404865	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue»
+15427280470401	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gaell»
+15427280568705	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gopfertami»
+15427280634241	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gruezi»
+15427280732545	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Haeee»
+15427280765313	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Haerzlech»
+15427280830849	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Heidi»
+15427280929153	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Hoi»
+15427280961921	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Matterhorn»
+15427281027457	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Merci»
+15427281092993	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Murmeli»
+15427281191297	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Postauto Horn»
+15427281256833	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Prosit»
+15427281355137	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Raclette»
+15427281420673	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Sali»
+15427281453441	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Schoggi Bar»
+15427281518977	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Steinbock»
+15427281617281	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Army Knife»
+15427281682817	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Cross Badge»
+15427281715585	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Znueni»
+15427281781121	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue» · Modell 2
+15427281879425	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Matterhorn» · Modell 2
+15427281912193	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Chocolate»
+15427282010497	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Cowbell»
+15427282141569	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Grüezi»
+15427282207105	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Hoi» · Modell 2
+15427282305409	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Merci» · Modell 2
+15427283157377	material-floskel-entfernt	T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv
+15429997724033	farbe-floskel-entfernt,material-floskel-entfernt	King & Queen Partner-Shirts · Couple T-Shirts 👑
+15429997822337	farbe-floskel-entfernt,material-floskel-entfernt	Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍
+15429997855105	farbe-floskel-entfernt,material-floskel-entfernt	Her King & His Queen Partner-Shirts · Couple T-Shirts 👑
+15429997920641	farbe-floskel-entfernt,material-floskel-entfernt	Hubby & Wifey Partner-Shirts · Couple T-Shirts mit Herz ❤️
+15446017933697	live-schon-sauber	Kartoffel-Spiralschneider aus Edelstahl
+15447904911745	live-schon-sauber	Gothic-Korsett mit Stickereien
+15447935910273	live-schon-sauber	2 Paar 20D Ultra Toeless Sheer Tights
+15448092279169	material-floskel-entfernt	Elegante V-Neck Bluse mit Rüschen & Laternenärmeln
+15448092311937	farbe-floskel-entfernt,material-floskel-entfernt	Bedrucktes Langarmshirt mit Reverskragen
+15448092377473	material-floskel-entfernt	Retro V-Neck Besticktes Langarm-Top
+15448092443009	material-floskel-entfernt	Patchwork Hoodie Pullover für Damen
+15448092508545	material-floskel-entfernt	Mesh-Cardigan mit Laternenärmeln
+15448092606849	material-floskel-entfernt	Gestreiftes Langarmshirt im Color-Blocking-Stil
+15448092737921	material-floskel-entfernt	Langarm-Baselayer Top für Damen Slim-Fit
+15448092836225	material-floskel-entfernt	Loose Langarmshirt im Retro-Look
+15448093000065	material-floskel-entfernt	Gestreiftes Langarmshirt für vielseitige Looks
+15448093032833	material-floskel-entfernt	Retro Sweatshirt mit geometrischem Muster
+15448093196673	farbe-floskel-entfernt,material-floskel-entfernt	Lässiges Langarmshirt mit Print für Damen
+15448102011265	farbe-floskel-entfernt,material-floskel-entfernt	Strukturierte Bluse mit Rüschenmanschetten
+15448102044033	material-floskel-entfernt	Vintage Bluse aus Doppel-Baumwollgarn
+15448102207873	farbe-floskel-entfernt,material-floskel-entfernt	Gestreifte Langarmbluse mit Schnürung
+15448102306177	material-floskel-entfernt	Casual Halter Top für Damen
+15448102404481	material-floskel-entfernt	Uni-Damenbluse mit genähtem Kragen
+15448102666625	material-floskel-entfernt	Schwarz-weiss gemusterte Bluse mit Leopardenprint
+15448102764929	material-floskel-entfernt	Damen Bluse mit Rüschen und Puffärmeln
+15448102797697	material-floskel-entfernt	Damen Puffärmel-Top mit Rüschensaum
+15448102896001	material-floskel-entfernt	Damen Bluse mit Blumenmuster und kurzen Ärmeln
+15448102961537	farbe-floskel-entfernt,material-floskel-entfernt	Bohemian Cardigan mit Langarm und Geometermuster
+15448103027073	material-floskel-entfernt	Gestreifte Kurzarmbluse mit Schleife
+15448103092609	farbe-floskel-entfernt,material-floskel-entfernt	Elegante Bluse mit figurschmeichelnder Passform
+15448103125377	material-floskel-entfernt	V-Ausschnitt Bluse mit Knöpfen
+15448103223681	material-floskel-entfernt	Bluse mit Blumenmuster, locker geschnitten
+15448103289217	material-floskel-entfernt	Gestreifte Langarmbluse im französischen Stil
+15448103420289	material-floskel-entfernt	Loose Shirt mit 3/4-Ärmeln
+15448103453057	farbe-floskel-entfernt,material-floskel-entfernt	Loose-Fit T-Shirt mit Print
+15448103780737	material-floskel-entfernt	Langarm-Shirt für Frühling und Sommer
+15448103846273	material-floskel-entfernt	Kapuzenpullover · Modell 2
+15448103879041	farbe-floskel-entfernt,material-floskel-entfernt	Weihnachtsbaum-Pullover für Damen
+15448103944577	material-floskel-entfernt	Glitzer-Hoodie mit Lebkuchenmann-Motiv
+15448103977345	material-floskel-entfernt	Damen Hoodie – Einfarbig, locker & lässig
+15448104010113	material-floskel-entfernt	Gefüttertes Kapuzen-Sweatshirt für Damen
+15448104042881	material-floskel-entfernt	Kapuzenpullover für Damen
+15448104075649	material-floskel-entfernt	Lockeres Kapuzenpullover für Damen
+15448104141185	material-floskel-entfernt	Kapuzenpullover mit Kordelzug · Modell 2
+15448104173953	material-floskel-entfernt	Damen Hoodie im Dark-Style
+15448104239489	material-floskel-entfernt	Winter Hoodie für Damen
+15448104305025	material-floskel-entfernt	Unisex Kapuzenpullover mit Kordelzug
+15448104337793	farbe-floskel-entfernt,material-floskel-entfernt	Sweatshirt mit 3D-Digitaldruck im China-Stil
+15448104370561	material-floskel-entfernt	Elegantes Langarm-Sweatshirt für Damen
+15448104403329	farbe-floskel-entfernt,material-floskel-entfernt	Kuhfell-Plüschjacke mit Knöpfen
+15448104468865	material-floskel-entfernt	Lässiger Damen Cardigan mit Reissverschluss
+15448104501633	farbe-floskel-entfernt,material-floskel-entfernt	Gelber Leopard-Hoodie mit Teufelshörnern
+15448104534401	material-floskel-entfernt	Trendiger Hoodie mit Kapuze und Kordelzug
+15448104567169	material-floskel-entfernt	Damen Pullover Sweatshirt mit Print
+15448104632705	material-floskel-entfernt	Bedruckter Zip-Up Hoodie – Locker geschnitten
+15448104665473	farbe-floskel-entfernt,material-floskel-entfernt	Oversized Sweatshirt mit 3D-Effekt
+15448104698241	farbe-floskel-entfernt,material-floskel-entfernt	Britischer Oversize Hoodie mit Polo-Kragen
+15448104763777	material-floskel-entfernt	V-Neck Pullover im Retro-Stil
+15448104960385	material-floskel-entfernt	Kapuzenjacke mit Reissverschluss
+15448105156993	material-floskel-entfernt	Plüsch-Kapuzenjacke mit Reissverschluss
+15448105288065	material-floskel-entfernt	Off-Shoulder Sweatshirt mit Tunnelzug
+15448105353601	material-floskel-entfernt	Bedruckter Hoodie für Damen
+15448105386369	material-floskel-entfernt	Off-Shoulder Sweatshirt mit Blumenmuster
+15448105419137	material-floskel-entfernt	Oversized Jacquard Hoodie für Damen
+15448105451905	material-floskel-entfernt	Lässiger Hoodie mit Knopfleiste
+15448105484673	material-floskel-entfernt	Unifarbenes Crewneck Sweatshirt im Relaxed Fit
+15448105517441	material-floskel-entfernt	Trendiges Rundhals-Sweatshirt für Damen
+15448105615745	material-floskel-entfernt	Unifarbenes Kapuzen-Sweatshirt mit Kordelzug
+15448105681281	material-floskel-entfernt	Loose-Fit Kapuzenjacke mit Reissverschluss
+15448105714049	farbe-floskel-entfernt,material-floskel-entfernt	3D Digitaldruck Langarm-Pullover für Damen
+15448105746817	farbe-floskel-entfernt,material-floskel-entfernt	Bequemer Kapuzenpullover für Damen
+15448105779585	material-floskel-entfernt	Retro Harajuku Hoodie für Damen und Herren
+15448105976193	material-floskel-entfernt	Western-Stil Hoodie mit Schriftzug-Print
+15448106041729	material-floskel-entfernt	Lässiger Hoodie mit überschnittenen Ärmeln
+15448106107265	material-floskel-entfernt	Pullover mit Kettendetail und Rundhalsausschnitt
+15448106172801	material-floskel-entfernt	Lässiger Pullover mit Geometrischem Muster
+15448106205569	material-floskel-entfernt	Gepolsterte Half-Zip Jacke für Damen
+15448106238337	farbe-floskel-entfernt,material-floskel-entfernt	Halloween Kapuzenpullover mit Totenkopf-Print
+15448106271105	material-floskel-entfernt	Colorblock Rundhals-Sweatshirt für Damen
+15448106336641	farbe-floskel-entfernt,material-floskel-entfernt	3D Digital Print Freizeit-Sweatshirt für Damen
+15448106369409	material-floskel-entfernt	Herren Hoodie mit Schriftzug-Print
+15448106402177	farbe-floskel-entfernt,material-floskel-entfernt	Unifarbenes Rundhals-Sweatshirt
+15448106434945	material-floskel-entfernt	Sweatshirt mit Leoparden-Kirschen-Print
+15448106467713	material-floskel-entfernt	Japanischer & Koreanischer Freizeit-Pullover
+15448106533249	material-floskel-entfernt	Unisex Hoodie mit Kapuze
+15448106598785	material-floskel-entfernt	Hoodie «Colorful Cherry Blossom»
+15448106664321	material-floskel-entfernt	Sweatshirt Kirschblüten-Muster
+15448106697089	material-floskel-entfernt	Sweatshirt mit Rundhals und Schleifendetail
+15448106729857	material-floskel-entfernt	Lässiger V-Neck Pullover mit langen Ärmeln
+15448106762625	material-floskel-entfernt	Retro Henley Langarm-Sweatshirt
+15448106795393	farbe-floskel-entfernt,material-floskel-entfernt	Hoodie für Damen und Herren
+15448106860929	material-floskel-entfernt	Warmer Hoodie mit geometrischem Muster
+15448106926465	material-floskel-entfernt	Sportlicher Hoodie mit langen Ärmeln
+15448106992001	material-floskel-entfernt	Freizeit-Sweatshirt mit Stehkragen und Reissverschluss
+15448107090305	material-floskel-entfernt	Gestreifter Hoodie mit Polokragen & Kontrastfarben
+15448107188609	material-floskel-entfernt	Rundhals-Sweatshirt in Apricot
+15448107254145	material-floskel-entfernt	Puffärmel Sweatshirt für Damen
+15448107319681	material-floskel-entfernt	Lässiges Cropped Sweatshirt mit Laternenärmeln
+15448107385217	farbe-floskel-entfernt,material-floskel-entfernt	Letter Sweatshirt für Damen
+15448107450753	material-floskel-entfernt	Unifarbener Oversize Pullover für Damen
+15448107549057	farbe-floskel-entfernt,material-floskel-entfernt	3D Tier-Print Hoodie für Damen
+15448107581825	material-floskel-entfernt	Kapuzenpullover für Damen mit Geometrischem Muster
+15448107614593	farbe-floskel-entfernt,material-floskel-entfernt	Retro Unisex Hoodie mit Digitaldruck
+15448107680129	material-floskel-entfernt	Fisoew Crewneck Sweatshirt mit halbem Raglanarm
+15448107778433	farbe-floskel-entfernt,material-floskel-entfernt	Eleganter V-Ausschnitt Pullover mit langen Ärmeln
+15448107811201	material-floskel-entfernt	Unisex Hoodie Pullover mit kurzen Ärmeln
+15448107909505	material-floskel-entfernt	Fisoew Bomberjacke mit Reissverschluss
+15448108007809	farbe-floskel-entfernt,material-floskel-entfernt	Hoodie mit Herz- und Häschen-Stickerei
+15448108040577	material-floskel-entfernt	Hoodie mit Leopardenmuster für Teenager
+15448108138881	material-floskel-entfernt	Unifarbener Pullover mit Rundhalsausschnitt
+15448108237185	farbe-floskel-entfernt,material-floskel-entfernt	Rückenfreier Jumpsuit mit dünnen Trägern
+15448108269953	farbe-floskel-entfernt,material-floskel-entfernt	Jumpsuit mit Leopardenmuster und V-Ausschnitt
+15448108368257	farbe-floskel-entfernt,material-floskel-entfernt	High Waist Body Shaper Shorts
+15448108466561	farbe-floskel-entfernt,material-floskel-entfernt	High-Waist Shapewear Shorts
+15448108630401	material-floskel-entfernt	Jumpsuit mit V-Ausschnitt und kurzen Ärmeln
+15448108859777	material-floskel-entfernt	Eleganter Jumpsuit mit langen Ärmeln
+15448109056385	material-floskel-entfernt	Figurbetonter, rückenfreier Badeanzug mit Rüschen
+15448109154689	material-floskel-entfernt	Jumpsuit mit V-Ausschnitt und Tiermuster
+15448109318529	material-floskel-entfernt	Taillenformer Korsett-Top mit Stahlstäben
+15448109613441	material-floskel-entfernt	Figurformender Jumpsuit mit Bauchkontrolle
+15448109646209	material-floskel-entfernt	Jumpsuit mit Polo-Kragen und kurzen Hosen
+15448110203265	material-floskel-entfernt	Nahtloser Jumpsuit mit bedeckter Brust
+15448110236033	material-floskel-entfernt	Khakifarbener weiter Jumpsuit für den Sommer
+15448110268801	farbe-floskel-entfernt,material-floskel-entfernt	Leoparden Print Badeanzug mit Rüschen
+15448110367105	material-floskel-entfernt	Colorblock Sport-Bikini Einteiler
+15448110399873	material-floskel-entfernt	Eleganter Plissée Jumpsuit mit weitem Bein
+15448110498177	material-floskel-entfernt	Eleganter Jumpsuit mit Cut-Out und 3/4-Ärmeln
+15448110629249	material-floskel-entfernt	Damen Jumpsuit mit Raffung und langen Ärmeln
+15448110694785	material-floskel-entfernt	Damen Jumpsuit mit V-Ausschnitt und Neckholder
+15448110760321	material-floskel-entfernt	Gestreifter Jumpsuit mit bunter Stickerei
+15448110793089	material-floskel-entfernt	Eleganter Casual Jumpsuit für Damen
+15448110825857	farbe-floskel-entfernt,material-floskel-entfernt	Gestreifter High-Waist Badeanzug für Damen
+15448110858625	material-floskel-entfernt	Eleganter Jumpsuit mit Metallschnalle
+15448110924161	material-floskel-entfernt	Kurzer rückenfreier Cami Jumpsuit
+15448110956929	material-floskel-entfernt	Sexy Off-Shoulder Jumpsuit mit Printmuster
+15448111022465	farbe-floskel-entfernt,material-floskel-entfernt	V-Ausschnitt Kirschen-Print Pyjama-Jumpsuit
+15448111120769	farbe-floskel-entfernt,material-floskel-entfernt	Rüschen-Jumpsuit mit Saumstickerei
+15448111251841	farbe-floskel-entfernt,material-floskel-entfernt	Jumpsuit mit Hüftlifting-Design
+15448111350145	material-floskel-entfernt	Eleganter Bodycon Jumpsuit mit V-Ausschnitt
+15448111415681	material-floskel-entfernt	Eleganter Skinny Jumpsuit mit Reissverschluss
+15448111481217	material-floskel-entfernt	Eleganter Jumpsuit mit Spaghettiträgern und Rückenmasche

@@ -4546,6 +4546,28 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## 🏷️ Marken in Titeln: 7 CJ-Nachbauten umbenannt, 64 gemessen, 57 sind legitim (2026-09-02, spät)
+Die neue Klemmbausteine-Kollektion führte «Benz 190E», «Porsche 911GT3 RS», «Audi R8 GT3 / RS6»,
+«Tesla», «Lamborghini Mura», «Star Wars», «World of Tanks» im Titel — CJ-Nachbauten, die sich
+als Marke ausgeben, in 4 Werbekanälen. Hausregel 12.08. angewandt: Marke aus Titel UND Text
+(14 Regeln je exakt 1×, Handle/Tags unverändert), Produkt bleibt («GT3 RS Rennwagen Bausteine»,
+«Klassische 80er-Limousine Klemmbausteine»). Der Marken-Säuberer kennt nur «im X-Stil».
+- **Dann die Klasse über den ganzen Katalog gemessen** (31 Marken, Freitext + Titel-Regex,
+  `title:`-Filter meidet): **64 Treffer — und 57 davon sind in Ordnung.** Kompatibilitäts-
+  angaben («Hülle für BMW», «Controller für Nintendo», «Fernbedienung für Samsung») sind
+  nominative Nennung; Fortura-Kostüme (Pokemon, Super Mario, Harry Potter, Hello Kitty) und
+  BigBuy-Ware (Adidas, Nike, Puma Ferrari) sind lizenzierter/echter Markenhandel. **Die
+  Nachbau-Klasse war auf CJ-Klemmbausteine begrenzt.** Ein Rest: «Mercedes Benz Kettentrieb
+  Werkzeugset» → «Kettentrieb-Werkzeugset für Mercedes-Benz-Motoren» (Kompatibilität statt
+  Markenanspruch). ⚠️ Bismarck, Tiger, F-22, KV-44 sind Typbezeichnungen, keine Marken — nicht
+  angefasst.
+- **Nebenfund aus der Tabellen-Stichprobe:** 1'267 CJ-Material-Zeilen geprüft, nur 7 Titel↔
+  Material-Widersprüche (alle Mischgewebe, plausibel) — aber **773 aktive Produkte tragen noch
+  «Material: hochwertiges Material»**, obwohl der 23.08.-Lauf «Quelle versiegt» meldete.
+  **433 davon sind im Ledger quittiert** (Zombie-Klasse 15.08.: ein späterer Schreiber hat die
+  Floskel wiederbelebt, die Quittung schützte sie). `produktdetails_wahrheit.py` kennt jetzt
+  `IGNORIERE_LEDGER=1`; Lauf über alle 773 aus frischem Mini-Export, Ergebnis unten.
+
 ## 📋 «Grösse? und Spezifikationen und Details in 1» — zwei Faktenblöcke zu einer Tabelle (2026-09-02)
 Auf der Produktseite standen zwei Faktenblöcke untereinander: Fortura schreibt
 `<h4>Details</h4><ul>` (Marke/Farbe/Grösse/Masse/Anlass/Lieferumfang) und CJ
