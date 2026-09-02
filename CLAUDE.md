@@ -6076,3 +6076,17 @@ Leserin lesen, DANN schreiben.** Beide Artikel so umgestellt (Sie-Anrede 0, Link
   (ACTIVE, 31.90, geprüft) bzw. die Kollektion ohne Preis; der Bundle-Absatz ist weg. Klassen-Scan
   «Kollektionslink + für/ab CHF» danach über alle 307: **0**. Ein Fix gilt erst, wenn man den Text
   gelesen hat, nicht wenn der Scanner schweigt (dritte Fassung dieser Lehre am selben Tag).
+
+## 🧴 Das Nr.-1-Suchprodukt siezte und hatte keinen Faktenblock (2026-09-02)
+Rizinusöl-Wickel-Set (grösste Such-Landeseite unter den Produkten, 0 Warenkörbe/Woche): Text sagte
+«damit Sie sich … wohlfühlen», Faktenblock fehlte, obwohl der eigene Text alle Fakten trug (Wickel
+Westen-Design + Halswickel + 60 ml Öl, Bio-Baumwolle innen / PUL aussen, kaltgepresst, unraffiniert,
+Glasflasche). Jetzt du-Form, `ls-produktdetails`-Liste mit fünf Zeilen aus dem eigenen Text (nichts
+erfunden), Gewicht ca. 450 g aus der Variante. Tabelle live: Kategorie · Lieferumfang · Material
+Wickel · Öl · Pflege · Gewicht · Zustand.
+- ⚠️ **«Gewicht» stand zweimal** — einmal aus der Liste, einmal aus dem Varianten-Gewicht des Themes.
+  Und weil `cj_specs.mjs` seit heute BEIDES schreibt (Liste + inventoryItem-Gewicht), hätte jeder
+  Neuimport die Dublette getragen. `lux_spezifikationen` überspringt die Theme-Zeile jetzt, wenn die
+  Liste einen «Gewicht»-Schlüssel trägt (`hat_gewicht`, dieselbe Mechanik wie `hat_material`).
+  Backup `theme_backup/product.json.gewicht-doppelt-0209`. **Wer eine Quelle zu einer Tabelle
+  hinzufügt, prüft die Tabelle an einem Produkt, das alle Quellen trägt.**
