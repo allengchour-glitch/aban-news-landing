@@ -57,9 +57,57 @@ export function extractSpecs(desc){
   return rows;
 }
 
+function fmtG(w){ return w>=1000 ? `${(w/1000).toFixed(1).replace('.0','')} kg` : `${Math.round(w)} g`; }
+// CJ liefert bei Mehr-Varianten-Produkten SPANNEN («350.00-512.00», Lehre 27.08.) — beide Enden zeigen.
 export function gewichtText(g){
-  const w=Number(g)||0; if(w<=0||w>50000) return null;
-  return w>=1000 ? `ca. ${(w/1000).toFixed(1).replace('.0','')} kg` : `ca. ${Math.round(w)} g`;
+  const s=String(g??'').trim(); if(!s) return null;
+  const m=s.match(/^(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)$/);
+  if(m){ const a=Number(m[1]), b=Number(m[2]); if(a<=0||b>50000||b<=a) return null; return `ca. ${fmtG(a)} – ${fmtG(b)} (je nach Variante)`; }
+  const w=Number(s)||0; if(w<=0||w>50000) return null;
+  return `ca. ${fmtG(w)}`;
+}
+// Textmerkmale aus «Product information»-Zeilen: nur Schluessel UND Werte, die die Tabelle kennt —
+// nichts Englisches, nichts Geratenes. Unbekannter Wert → Zeile faellt weg.
+const TEXTKEYS={ 'sleeve length':['Ärmellänge',{'long sleeve':'Langarm','short sleeve':'Kurzarm','sleeveless':'Ärmellos','three quarter sleeve':'¾-Arm','3/4 sleeve':'¾-Arm','half sleeve':'Halbarm'}],
+  'sleeve':['Ärmellänge',{'long sleeve':'Langarm','short sleeve':'Kurzarm','sleeveless':'Ärmellos'}],
+  'thickness':['Stoffdicke',{'regular':'normal','thin':'dünn','thick':'dick','medium':'mittel','standard':'normal'}],
+  'collar':['Kragen',{'o-neck':'Rundhals','round neck':'Rundhals','crew neck':'Rundhals','v-neck':'V-Ausschnitt','hooded':'Kapuze','turtleneck':'Rollkragen','polo collar':'Polokragen','stand collar':'Stehkragen','lapel':'Revers','square neck':'Karree-Ausschnitt','halter':'Neckholder','off shoulder':'Schulterfrei'}],
+  'neckline':['Ausschnitt',{'o-neck':'Rundhals','round neck':'Rundhals','v-neck':'V-Ausschnitt','square neck':'Karree','halter':'Neckholder','off shoulder':'Schulterfrei','boat neck':'U-Boot-Ausschnitt'}],
+  'closure':['Verschluss',{'zipper':'Reissverschluss','zip':'Reissverschluss','button':'Knöpfe','buttons':'Knöpfe','pullover':'zum Überziehen','elastic waist':'Gummibund','lace-up':'Schnürung','lace up':'Schnürung','hook':'Haken','velcro':'Klettverschluss','snap':'Druckknöpfe','drawstring':'Kordelzug','none':'ohne'}],
+  'closure type':['Verschluss',{'zipper':'Reissverschluss','button':'Knöpfe','lace-up':'Schnürung','lace up':'Schnürung','velcro':'Klettverschluss','slip-on':'zum Hineinschlüpfen','buckle':'Schnalle','hook and loop':'Klettverschluss'}],
+  'pattern':['Muster',{'solid':'Uni','solid color':'Uni','print':'Print','printed':'Print','floral':'Blumen','striped':'Gestreift','stripe':'Gestreift','plaid':'Karo','dot':'Punkte','polka dot':'Punkte','geometric':'Geometrisch','letter':'Schriftzug','animal':'Tiermotiv','camouflage':'Camouflage','tie dye':'Batik','leopard':'Leopard'}],
+  'fit':['Passform',{'loose':'locker','slim':'schmal','regular':'normal','oversized':'Oversize','straight':'gerade','skinny':'eng'}],
+  'fit type':['Passform',{'loose':'locker','slim':'schmal','regular':'normal','oversized':'Oversize','straight':'gerade'}],
+  'waist':['Bund',{'high waist':'hohe Taille','mid waist':'mittlere Taille','low waist':'niedrige Taille','elastic waist':'Gummibund'}],
+  'waistline':['Bund',{'high waist':'hohe Taille','mid waist':'mittlere Taille','low waist':'niedrige Taille','natural':'natürliche Taille'}],
+  'elasticity':['Dehnbarkeit',{'high elasticity':'hoch','micro elastic':'leicht','micro-elastic':'leicht','medium elasticity':'mittel','no elasticity':'keine','non-elastic':'keine','none':'keine'}],
+  'season':['Saison',{'spring':'Frühling','summer':'Sommer','autumn':'Herbst','fall':'Herbst','winter':'Winter','spring/autumn':'Frühling/Herbst','spring and autumn':'Frühling/Herbst','four seasons':'ganzjährig','all season':'ganzjährig','all seasons':'ganzjährig'}],
+  'style':['Stil',{'casual':'Casual','sport':'Sport','sports':'Sport','elegant':'Elegant','vintage':'Vintage','retro':'Retro','boho':'Boho','bohemian':'Boho','street':'Streetwear','business':'Business','minimalist':'Minimalistisch','sexy':'Figurbetont','sweet':'Verspielt','classic':'Klassisch','modern':'Modern','nordic':'Nordisch','european':'Europäisch','japanese':'Japanisch','korean':'Koreanisch','simple':'Schlicht'}],
+  'heel height':['Absatzhöhe',{'flat':'flach','low':'niedrig','medium':'mittel','high':'hoch','flat heel':'flach'}],
+  'toe':['Zehenform',{'round toe':'rund','pointed toe':'spitz','square toe':'eckig','open toe':'offen'}],
+  'toe shape':['Zehenform',{'round':'rund','pointed':'spitz','square':'eckig','open':'offen','round toe':'rund','pointed toe':'spitz'}],
+  'gender':['Für',{'women':'Damen','men':'Herren','unisex':'Unisex','female':'Damen','male':'Herren','kids':'Kinder','children':'Kinder','girls':'Mädchen','boys':'Jungen','baby':'Baby'}],
+  'power source':['Stromversorgung',{'battery':'Batterie','usb':'USB','rechargeable':'Akku (aufladbar)','rechargeable battery':'Akku (aufladbar)','solar':'Solar','electric':'Netzstrom','plug in':'Netzstrom','plug-in':'Netzstrom','lithium battery':'Lithium-Akku'}],
+  'power supply':['Stromversorgung',{'battery':'Batterie','usb':'USB','rechargeable':'Akku (aufladbar)','solar':'Solar'}],
+  'waterproof':['Wasserdicht',{'yes':'ja','no':'nein','waterproof':'ja','ipx7':'IPX7','ipx6':'IPX6','ipx5':'IPX5','ipx4':'IPX4','ip67':'IP67','ip68':'IP68','ip65':'IP65'}],
+  'washing':['Pflege',{'machine wash':'Maschinenwäsche','hand wash':'Handwäsche','hand wash only':'nur Handwäsche','dry clean':'Reinigung','machine washable':'Maschinenwäsche'}],
+  'care':['Pflege',{'machine wash':'Maschinenwäsche','hand wash':'Handwäsche','hand wash only':'nur Handwäsche','machine washable':'Maschinenwäsche'}],
+  'shape':['Form',{'round':'rund','square':'eckig','oval':'oval','rectangular':'rechteckig','rectangle':'rechteckig','heart':'Herz','star':'Stern'}],
+};
+export function textMerkmale(desc){
+  const t=String(desc||'').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/(p|li|div|tr)>/gi,'\n').replace(/<[^>]+>/g,' ');
+  const rows=[]; const seen=new Set();
+  for(const line of t.split('\n')){
+    const m=line.match(/^\s*([A-Za-z][A-Za-z \/-]{2,20})\s*[:：]\s*([^:：]{2,40}?)\s*$/); if(!m) continue;
+    const key=m[1].trim().toLowerCase(); const def=TEXTKEYS[key]; if(!def) continue;
+    const [de,dict]=def; if(seen.has(de)) continue;
+    const val=m[2].trim().toLowerCase().replace(/\s+/g,' ');
+    const parts=val.split(/\s*[,\/]\s*/).map(v=>dict[v]).filter(Boolean);
+    if(!parts.length||parts.length<val.split(/\s*[,\/]\s*/).length) continue;   // ein unbekannter Teil → ganze Zeile weg
+    seen.add(de); rows.push([de,[...new Set(parts)].join(', ')]);
+    if(rows.length>=6) break;
+  }
+  return rows;
 }
 
 // Zeilen [Schluessel, Wert] aus dem CJ-Produktobjekt (product/query → data).
@@ -80,6 +128,7 @@ export function specZeilen(d){
   const gw=gewichtText(d?.productWeight);
   if(gw && !specs.some(([k])=>k==='Gewicht')) rows.push(['Gewicht', gw]);
   for(const r of specs) rows.push(r);
+  for(const r of textMerkmale(d?.description)) if(!rows.some(([k])=>k===r[0])) rows.push(r);
   if(liste(d?.productProEn).includes('BATTERY')) rows.push(['Stromversorgung','Batterie/Akku']);
   return rows;
 }
