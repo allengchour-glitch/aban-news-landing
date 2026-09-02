@@ -8583,3 +8583,8 @@ gid://shopify/Product/15450783515009	CHF 36.33	1 Varianten	2er-Set Mini-Fussball
 gid://shopify/Product/15450783613313	CHF 173.61	1 Varianten	Fussballtor mit Netz 180x120 cm
 gid://shopify/Product/15450783646081	CHF 46.89	1 Varianten	Tarnnetz US Woodland 4x4 m mit Packsack
 gid://shopify/Product/15450783678849	CHF 79.37	1 Varianten	Basketballkorb 90x Polyethylen
+gid://shopify/Product/15450783711617	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450783744385	CHF 45.85	1 Varianten	Mausefallen-Set, 4 Stück
+gid://shopify/Product/15450783777153	CHF 44.77	1 Varianten	Basketballkorb mit Netz 45 cm
+gid://shopify/Product/15450783809921	CHF 30.54	1 Varianten	Superhelle LED-Taschenlampe mit Zoom und Warnlicht
+gid://shopify/Product/15450783842689	CHF 173.90	1 Varianten	Trockenfutter Adult Essence Rind
