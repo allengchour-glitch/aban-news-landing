@@ -70,6 +70,16 @@ Kosten 44.85 USD) → **Preis jetzt 59.90 ✅**. **Klaviyo-Sync kaputt** (zeigt 
 verbinden, nur User). Katalog: **10'000+ aktiv** (Füll-Session). Details: Top-Block `SHARED-MEMORY.md` §LIVE-STAND.
 Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts (GitLab prüfen).
 
+**📌 2026-09-02 (Webseite: „Frag aban"-Assistent entfernt — User: „ohne die Chatfenster, alles eleganter"):**
+- `/js/assistant.js` ist **von allen 152 Seiten** raus (52 im Wurzelverzeichnis, 100 in `maerkte/`, `dossier/`, `en/…`).
+  Gemessen war der Grund: mobil lagen nach dem Scrollen **vier fixierte Schichten** übereinander (Sprach-Banner 98 px,
+  `#mcta` 79 px, `#stickySub` 52 px, Assistenten-Blase) — rund 270 px eines 844-px-Schirms. Jetzt nur noch `#mcta`.
+- ⚠️ **Drei Einbau-Orte, nicht einer:** die HTML-Seiten, `automation/inject_assistant.py` (jetzt stillgelegt, erklärt sich
+  selbst) und **sieben Generator-Vorlagen** (`build_markets_detail`, `generate_sichtbarkeit_branchen` ×2, `_compliance_pakete`,
+  `_schnellstart`, `_ki_audit`, `_angebote`, `_dossiers`). Wer nur die Seiten bereinigt, hat ihn nach dem nächsten Generatorlauf
+  wieder. `assistant/build_index.py` und `KI-WERKZEUG-HANDOFF.md` erwähnen ihn noch als Doku — bewusst gelassen.
+- Startseite: `#stickySub` (zweite Abo-Bodenleiste) entfernt, `#mcta` bleibt. `html-validate index.html` ohne Befund.
+
 **📌 2026-08-30 (🚨 URSACHE GEFUNDEN — das GitHub-Konto ist als SPAM markiert):**
 - **GitHubs eigene Fehlermeldung** (Search-API): `Validation Failed: **User flagged as spammy**`.
   Damit ist belegt, was seit Juni als drei getrennte Rätsel im Gedächtnis stand — es ist **EIN** Problem:
