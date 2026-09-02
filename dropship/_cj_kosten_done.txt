@@ -8351,3 +8351,19 @@ gid://shopify/Product/15450734559617	CHF 13.79	36 Varianten	Damen-Plateau-Sandal
 gid://shopify/Product/15450734854529	CHF 37.31	21 Varianten	Flache Zehensteg-Sandalen aus Schafsleder
 gid://shopify/Product/15450734952833	CHF 16.50	9 Varianten	Espadrille Sandalen mit Plateau
 gid://shopify/Product/15450735018369	CHF 25.24	9 Varianten	Keilsandalen mit Hanfseil-Plateau
+gid://shopify/Product/15450735116673	CHF 17.65	24 Varianten	Keile-Zehensteg-Sandalen aus Wildleder
+gid://shopify/Product/15450735247745	CHF 24.68	18 Varianten	Mules mit geschlossener Zehenpartie
+gid://shopify/Product/15450735411585	CHF 12.42	6 Varianten	Stoff-Hausschuhe mit Schleife und weicher Sohle
+gid://shopify/Product/15450735444353	CHF 17.71	12 Varianten	Elegante Sandalette im französischen Stil
+gid://shopify/Product/15450735477121	CHF 27.92	18 Varianten	Schafsfell-Sandalen mit Metallschnalle
+gid://shopify/Product/15450735509889	CHF 23.36	24 Varianten	Geflochtene Pantoletten mit Chunky-Absatz
+gid://shopify/Product/15450735575425	CHF 18.59	21 Varianten	Herren Flip-Flops aus Rindsleder
+gid://shopify/Product/15450735608193	CHF 20.85	30 Varianten	Keilsandalen mit Leopardenmuster und eckiger Spitz
+gid://shopify/Product/15450735640961	CHF 16.16	12 Varianten	Sommerliche Pantoletten mit weicher Sohle
+gid://shopify/Product/15450735706497	CHF 17.29	12 Varianten	Retro Plateau-Schuhe im Ethno-Stil
+gid://shopify/Product/15450735739265	CHF 14.79	58 Varianten	Damen Pantoletten mit farbigen Strass-Steinen
+gid://shopify/Product/15450735772033	CHF 47.46	36 Varianten	Handgefertigte Leder Mary Jane Mules
+gid://shopify/Product/15450735804801	CHF 29.45	5 Varianten	Zehentrenner-Sandalen mit mittlerem Absatz
+gid://shopify/Product/15450735837569	CHF 22.66	15 Varianten	Retro Mori-Style Zehenfreie Outdoor-Slipper
+gid://shopify/Product/15450735870337	CHF 13.97	14 Varianten	Plateau-Slipper mit Leopardenmuster und Quaste
+gid://shopify/Product/15450735903105	CHF 14.54	45 Varianten	Keile Sandalen mit dicker Sohle
