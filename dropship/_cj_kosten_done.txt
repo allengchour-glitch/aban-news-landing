@@ -8560,3 +8560,11 @@ gid://shopify/Product/15450782171521	CHF 36.96	1 Varianten	Duschbrause mit Schla
 gid://shopify/Product/15450782204289	CHF 51.13	1 Varianten	5-stufige Handtuchleiter aus Eisen, Schwarz
 gid://shopify/Product/15450782237057	CHF 25.49	1 Varianten	Pool-Bodensauger 1.2 m
 gid://shopify/Product/15450782269825	CHF 54.24	1 Varianten	2er-Set Badematten aus Akazienholz
+gid://shopify/Product/15450782302593	CHF 130.85	1 Varianten	Badezimmerschrank, Betongrau, 30x30x95 cm
+gid://shopify/Product/15450782335361	CHF 12.52	1 Varianten	Poolschlauch-Verbinder Set (2 Stk.)
+gid://shopify/Product/15450782368129	CHF 52.95	1 Varianten	Poolsauger für Aufstellbecken
+gid://shopify/Product/15450782400897	CHF 23.36	1 Varianten	Elektrisches Schlankheitsgerät mit Lichttherapie
+gid://shopify/Product/15450782433665	CHF 143.37	1 Varianten	Hantelbank Schwarz 131 x 41 x 110 cm Stahl
+gid://shopify/Product/15450782761345	CHF 50.81	1 Varianten	Faltbares Kinderfussballtor, Schwarz
+gid://shopify/Product/15450782859649	CHF 38.93	1 Varianten	Kubb Spielset aus Holz
+gid://shopify/Product/15450782892417	CHF 82.63	1 Varianten	Fahrradständer für 2 Velos, freistehend, Stahl
