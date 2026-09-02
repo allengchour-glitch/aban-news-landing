@@ -6041,3 +6041,17 @@ die Zahl seit heute Mittag. Backup `theme_backup/product.json.versand7-0209`.
 - ⚠️ Ehrliche Grenze: Ob die vier an der Kasse wegen des Versands gingen, ist nicht messbar —
   Shopify liefert keinen Abbruchgrund. Die Zahl VOR der Kasse zu nennen kostet nichts und
   nimmt die einzige Überraschung, die dort noch wartet.
+
+## 🧾 Der Nr.-1-Suchratgeber hatte 18 Sitzungen und den ersten Produktlink erst im vierten Absatz (2026-09-02)
+`himalaya-salzlampe-wirkung-mythen` (18 von 40 Suchsitzungen der Woche, 0 Warenkörbe — auch nach
+der Phantom-Reparatur) nennt die UFO-Salzlampe nur als Textlink mitten im Absatz. Wer den
+Artikel wegen der Lampe liest, sieht keine Lampe. Jetzt eine **Produktkarte** (Bild, Titel, Preis,
+«Versand CHF 7, gratis ab CHF 50 · 30 Tage», Knopf) vor dem zweiten Zwischentitel; dasselbe im
+Faszienrollen-Ratgeber (Nr.-2-Suchseite) mit der Teleskop-Faszienrolle. Beide Produkte vorher am
+Objekt geprüft (ACTIVE, kaufbar, Preis), Karte im Rückfeld und im ausgelieferten HTML belegt.
+- Bauart: reines inline-HTML im Artikel (`class="lux-ratgeber-karte"`), Bild als CDN-URL mit
+  `?width=480`. ⚠️ Preis steht fest im HTML — altert wie `lux_spotlight_favs` (30.08.). Wer den
+  Preis ändert, muss die Karte nachziehen; `ratgeber_ohne_ware.py` prüft Preise an Produktlinks.
+- ⚠️ Beide Ratgeber **siezen** (je 35× «Sie», 2× «du»), der ganze Shop duzt → Task #18.
+- ⚠️ WebFetch antwortete zweimal 429 — luxestyle.ch drosselt auch fremde Ausgänge bei schnellen
+  Folgeabrufen; Beleg dann am Roh-HTML vom eigenen Ausgang (Karte 1×, Bild 1×).
