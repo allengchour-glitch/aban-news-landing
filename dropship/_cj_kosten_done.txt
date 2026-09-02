@@ -7976,3 +7976,6 @@ gid://shopify/Product/15450537394561	CHF 66.20	8 Varianten	Militär-Sicherheitss
 gid://shopify/Product/15450537787777	CHF 49.65	44 Varianten	Herren Retro Thermostiefel mit Reissverschluss
 gid://shopify/Product/15450538115457	CHF 38.23	28 Varianten	Gefütterte British Style Plattform-Boots
 gid://shopify/Product/15450538443137	CHF 42.52	14 Varianten	Gefütterte Outdoor-Winterstiefel aus Schaffell
+gid://shopify/Product/15450538803585	CHF 32.26	33 Varianten	Herren Stiefel mit Stickerei und Patchwork
+gid://shopify/Product/15450539196801	CHF 30.45	33 Varianten	Bestickte Knight Leder Boots mit hohem Absatz
+gid://shopify/Product/15450539557249	CHF 21.96	6 Varianten	Herren Mid-High Top Korean Style Boots
