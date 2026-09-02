@@ -8553,3 +8553,5 @@ gid://shopify/Product/15450781876609	CHF 148.87	1 Varianten	Badezimmerschrank Be
 gid://shopify/Product/15450781909377	CHF 21.79	1 Varianten	Poolschlauch-Adapter, 2 Stk.
 gid://shopify/Product/15450781942145	CHF 28.95	1 Varianten	Teleskop Eckregal, 4 Etagen, Silber
 gid://shopify/Product/15450782007681	CHF 39.55	1 Varianten	Duscharmatur-Set mit Handbrause, Chrom
+gid://shopify/Product/15450782040449	CHF 49.90	1 Varianten	Handtuchhalter 6-Stab, Edelstahl
+gid://shopify/Product/15450782073217	cj-abgekuendigt-pruefen
