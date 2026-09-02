@@ -1,6 +1,13 @@
 # CJ-Suchqueue — abarbeiten sobald Tagespunkte wieder da sind (Reset ~Mitternacht China-Zeit).
 # Format: search:<begriff> (cj_sku_import.mjs ITEMS=…) · Ziel: Handy-Welt-Unterkategorien füllen.
 # ⚠️ CJ-Textsuche streut («glass» → Glasbohrer!) — Treffer IMMER gegen Bild/Kategorie plausibilisieren.
+# 02.09.2026 Betreiber «coole wecker suchen wo man abschiessen kann»: Katalog hat 80 Wecker,
+# aber KEINEN Zielscheiben-/Pistolen-Wecker (Suche 0). Zuerst abarbeiten, sobald CJ-Punkte da sind
+# (Tagesbudget war um 18:21 UTC erschöpft). Treffer gegen Bild plausibilisieren: es soll ein
+# WECKER sein, kein Spielzeug-Blaster.
+search:target alarm clock gun
+search:shooting alarm clock laser target
+search:gun alarm clock
 #done search:tempered glass screen protector iphone
 #done search:magsafe phone case
 #done search:magsafe car mount

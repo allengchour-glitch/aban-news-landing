@@ -14376,3 +14376,8 @@ gid://shopify/Product/15522165490049	71->0	Xiaopei Katzenfutternapf, schräg, do
 gid://shopify/Product/15522165719425	47->0	Ginkgoblätter-Ornament
 gid://shopify/Product/15522165850497	78->0	Wanddeko Elefant aus Plüsch
 gid://shopify/Product/15522165916033	77->0	Dekorative Vase mit Tusche-Elementen
+gid://shopify/Product/15522166407553	64->1	Brustgeschirr für Hunde
+gid://shopify/Product/15522166440321	38->0	Heuraufe und Futterbox aus Holz
+gid://shopify/Product/15522166538625	143->0	Figurbetontes Polka-Dot Kleid mit Taillengürtel
+gid://shopify/Product/15522167554433	12->0	Hunde- und Katzen-Geschirr mit Leine
+gid://shopify/Product/15522167652737	15->0	4-in-1 Teleskop-Hundeleine mit Nachtreflexion

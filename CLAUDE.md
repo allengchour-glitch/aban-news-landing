@@ -4572,10 +4572,21 @@ Feuerzeug) → **92 aktive**; Menülabel «Kiffer-Zubehör (18+)» unter Mehr & 
 - ⚠️ **37 dieser Produkte standen in TikTok/Facebook/Pinterest, 10 bei Google** — Hausregel
   29.08. (Werbekanäle = Google-Regeln). Alle aus den vier Werbekanälen genommen
   (`dropship/_werbekanal_entfernt.txt`), Gegenprobe: nur Online Store/Shop/POS.
-- ⚠️ **Der Google-Säuberer lief NICHT täglich:** `google_kanal_saeubern.py` steht in keiner
-  Aufseher-Liste und liest `/tmp/export.jsonl` vom 30.08. — jeder Import danach war unsichtbar.
-  RAUCH_TITEL kennt jetzt Drehpapier/Papes/Rolling/Tips/Stash/Pre-Rolled/Blunt; der
-  Nachschub aus der Queue braucht den Wächter LIVE und täglich (siehe nächster Eintrag).
+- ⚠️ **Der Google-Säuberer lief NICHT täglich:** `google_kanal_saeubern.py` stand in keiner
+  Aufseher-Liste und las `/tmp/export.jsonl` vom 30.08. — jeder Import danach war unsichtbar.
+  **Jetzt `SEIT=7` LIVE-Modus** (resourcePublicationsV2 statt publishedOnPublication), nimmt
+  Rauch/Waffe/Erotik aus allen VIER Werbekanälen (Refurb/Marke nur Google), täglich im
+  Aufseher. Erster Live-Lauf über 3'527 Produkte der letzten 7 Tage: **17 entfernt** (14
+  Klingen als «Küche & Bar», 2 Rauch, 1 Dessous in «Spass-Elektronik»).
+  ⚠️ Zwei Fehltreffer im Trockenlauf: «Mixer, Entsafter & **Grinder**» und «**Zigarre**,
+  Maserung & Ölgemälde Leinwand-Set» (Malvorlage) → Gegenmuster `KEIN_RAUCH` statt
+  Wortliste. ⚠️ `metafields(namespace:, keys:)` zusammen ist ungültig — nur `keys:` mit
+  vollem `namespace.key`; der Fehler steckte in der NULL-Antwort, die der Lauf als «0
+  Produkte» gelesen hätte (Nullergebnis-Familie, sechste Fassung).
+- **Betreiber «coole wecker suchen wo man abschiessen kann»:** 80 Wecker im Katalog, aber
+  kein Zielscheiben-/Pistolen-Wecker (5 Suchen, 0). Drei CJ-Suchbegriffe **zuoberst** in
+  `cj_search_queue.txt`; CJ-Tagesbudget war um 18:21 UTC erschöpft, der Queue-Runner holt
+  sie beim nächsten Punkte-Reset. Treffer sind gegen das Bild zu prüfen (Wecker, kein Blaster).
 
 ## ⛔ Ich habe heute selbst drei 404-Links auf die Nr.-2-Suchseite geschrieben (2026-09-02, spät)
 Nach «mache alles besser» erst gemessen: alle 307 Artikel, 159 Preisangaben an /products/-Links
