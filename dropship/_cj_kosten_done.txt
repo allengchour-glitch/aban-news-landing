@@ -7973,3 +7973,6 @@ gid://shopify/Product/15450536083841	CHF 50.67	20 Varianten	Wasserdichte High-To
 gid://shopify/Product/15450536477057	CHF 25.93	7 Varianten	Warme Herren-Boots mit Lammfell-Futter
 gid://shopify/Product/15450537001345	CHF 18.91	32 Varianten	Herren-Winterstiefel mit rutschfester Sohle
 gid://shopify/Product/15450537394561	CHF 66.20	8 Varianten	Militär-Sicherheitsstiefel mit Stahlkappe
+gid://shopify/Product/15450537787777	CHF 49.65	44 Varianten	Herren Retro Thermostiefel mit Reissverschluss
+gid://shopify/Product/15450538115457	CHF 38.23	28 Varianten	Gefütterte British Style Plattform-Boots
+gid://shopify/Product/15450538443137	CHF 42.52	14 Varianten	Gefütterte Outdoor-Winterstiefel aus Schaffell
