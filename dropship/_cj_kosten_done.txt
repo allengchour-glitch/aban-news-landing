@@ -8340,3 +8340,7 @@ gid://shopify/Product/15450730987905	CHF 15.15	15 Varianten	Französische Keil-S
 gid://shopify/Product/15450733117825	CHF 20.90	10 Varianten	Keile mit Plateau im Influencer-Stil
 gid://shopify/Product/15450733183361	CHF 28.37	7 Varianten	Zhensheng Happy Dongguofeng Tiger Head Sandalen
 gid://shopify/Product/15450733281665	CHF 30.26	9 Varianten	Chinesische Tigerkopf-Slipper für Damen
+gid://shopify/Product/15450733412737	CHF 30.26	14 Varianten	Handbestickte Löwenkopf-Sandalen für Damen
+gid://shopify/Product/15450733445505	CHF 35.15	14 Varianten	Traditionelle Schmetterlings-Flip-Flops
+gid://shopify/Product/15450733511041	CHF 24.72	16 Varianten	Retro Plateau-Sandalen mit Überkreuzriemen
+gid://shopify/Product/15450733576577	CHF 18.64	12 Varianten	Retro-Sandalen mit eckiger Spitze
