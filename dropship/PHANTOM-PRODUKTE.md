@@ -19,6 +19,17 @@ Umfeld von 120 Zeichen danach.
 - `geschenke-fuer-maenner-2026-schweiz` (4: Lederarmband+Halskette→generisch, ANC over/in-ear→echt ohne ungedeckte Specs)
 - `vatertag-geschenke-schweiz-2026` (1: Lederarmband→generisch)
 - `herrenuhr-kaufen-ratgeber-schweiz` (1: Lederarmband→generisch)
+- `einschlaf-ritual-aromatherapie-pillow-spray` (7: Pillow-Spray-SHOP-Links→Lavendelöl-Praxis,
+  Sleep-Ritual-Box→Bundle 2×, Diffuser→echt, Salzlampe→echt, Öle-Set→generisch; Pillow Spray
+  als KATEGORIE-Diskussion bleibt — nur Shop-Behauptungen entfernt)
+- `duftkerzen-sojawachs-vs-paraffin-ratgeber` (5: Soja-4er-Set 2×→gestrichen/Etikett-Rat,
+  DRITTE Phantom-Box entdeckt «Ritual-Box mit Palo Santo + Galaxy-Aurora-Projektor» → alle
+  drei Boxen durch das echte Bundle ersetzt, Salzlampe→echt, Cashmere-Decke→generisch)
+- `bluetooth-kopfhoerer-anc-kaufratgeber` (4: ANC over/in-ear→echt ohne Specs, Brille→echt,
+  Speaker-360°→Kategorielabel; «40 Stunden/IPX5» als Markt-Wissen ohne Shop-Bezug bleibt)
+- `akupressurmatte-anwendung-wirkung` (8: Matte-Set 3×→generisch inkl. FAQ-Lieferumfang,
+  Recovery-Set→Kategorieverweis, Faszienrolle+Yogamatte+Salzlampe→echt, Öle→generisch —
+  KEIN aktives Akupressur-Produkt im Shop, Artikel jetzt ohne jede Shop-Behauptung dazu)
 
 ## Verifizierte Zuordnungen (alle 02.09. live geprüft: ACTIVE + Onlineshop)
 | Phantom | echtes Produkt | Preis | Handle |

@@ -8568,3 +8568,12 @@ gid://shopify/Product/15450782433665	CHF 143.37	1 Varianten	Hantelbank Schwarz 1
 gid://shopify/Product/15450782761345	CHF 50.81	1 Varianten	Faltbares Kinderfussballtor, Schwarz
 gid://shopify/Product/15450782859649	CHF 38.93	1 Varianten	Kubb Spielset aus Holz
 gid://shopify/Product/15450782892417	CHF 82.63	1 Varianten	Fahrradständer für 2 Velos, freistehend, Stahl
+gid://shopify/Product/15450782957953	CHF 85.92	1 Varianten	Fussballtor 240x90x150 cm Stahl
+gid://shopify/Product/15450783023489	CHF 55.02	1 Varianten	Fussballtor für Kinder mit Zielmatte und Ball
+gid://shopify/Product/15450783056257	CHF 52.15	1 Varianten	Faltbarer Fussball Rebounder, 100x100 cm
+gid://shopify/Product/15450783089025	CHF 45.78	1 Varianten	Rutenständer für 16 Angelruten, Schwarz
+gid://shopify/Product/15450783121793	CHF 59.30	1 Varianten	Fussballtor 122 x 81 cm Stahl Weiss
+gid://shopify/Product/15450783154561	CHF 64.25	1 Varianten	Leitergolf aus Holz
+gid://shopify/Product/15450783318401	CHF 62.99	1 Varianten	Softball Rebounder, 88x79x137 cm, Stahl
+gid://shopify/Product/15450783351169	CHF 21.40	1 Varianten	Tischfussball Bälle 10 Stk. 32 mm ABS
+gid://shopify/Product/15450783416705	CHF 34.80	1 Varianten	Tischfussball-Spieler-Set (22 Stk.)
