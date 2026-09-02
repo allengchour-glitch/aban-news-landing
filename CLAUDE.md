@@ -4546,6 +4546,32 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## ⛔ Ich habe heute selbst drei 404-Links auf die Nr.-2-Suchseite geschrieben (2026-09-02, spät)
+Nach «mache alles besser» erst gemessen: alle 307 Artikel, 159 Preisangaben an /products/-Links
+gegen den Live-Preis. Ergebnis: **45 Abweichungen in 14 Artikeln** (31 davon Scanner-Artefakt —
+in Listicles steht der Preis des NÄCHSTEN Eintrags 60 Zeichen hinter dem Link), **echte Fehler in
+10 Artikeln** (Serum 29.90→15.90 «vegan/EU», Seidenkissen 39.90→21.90 ×3, Nylon-Gürtel als
+«Echtleder» ×3, Manschettenknöpfe ×2, Smartwatch 79.90→69.90 «100 Sportmodi/7 Tage» ×3,
+Slim Wallet als «Alu-Kartenetui» ×2, Portemonnaie «XL/12 Fächer/RFID» 54.90→14.90, Kühlbox,
+French Press «Doppelwand» ×2, «14-tägige Rückgabe») — alle mit Charge 9 repariert.
+**Und 8 «tote» Produktlinks — davon 5 von MIR, heute Vormittag gesetzt.** Die Handles
+`…-schaums-8` und `…-6046` standen so in meiner Zuordnungstabelle, weil ich sie aus einer auf
+50 Zeichen GEKÜRZTEN Ausgabe abgeschrieben hatte (echt: `…-schaums-877824`, `…-604600`). Die
+Ziel-Prüfung `products(query:"handle:<h>")` hat den Fehler NICHT gefangen: Shopifys Suche
+matcht den Handle als Präfix/Token und lieferte das echte Produkt als ACTIVE zurück — geprüft
+habe ich den Status, nie ob der ZURÜCKGEGEBENE Handle dem GETIPPTEN gleicht. Drei Artikel,
+darunter die #2-Suchseite (Faszienrolle), trugen dadurch seit dem Vormittag 404-Links.
+- **Regel: Eine Zielprüfung vergleicht den zurückgegebenen Handle exakt mit dem verlinkten**
+  (`n[0]["handle"] == h`), oder nimmt gleich `productByIdentifier(identifier:{handle:})`,
+  das nur exakt trifft. Ein Status aus einer Suche belegt ein PRODUKT, nicht einen LINK.
+- **Regel: Nie einen Handle aus einer gekürzten Ausgabe abschreiben** — `[:50]` in der
+  eigenen Druckzeile ist eine Fälschung der Datenlage (dieselbe Klasse wie `tail -30`,
+  29.08.).
+- Die restlichen 3: die Tech-Hero-Box hat seit dem Emoji-Handle-Wechsel eine 301; die
+  Artikel zeigten noch auf den alten Pfad → direkt auf den neuen Handle umgeschrieben.
+  `interne_links_nachziehen.py` hätte es morgen erledigt — für die #2-Suchseite ist ein
+  Tag zu lang.
+
 ## ⛔ KORREKTUR: «der Index lügt» war MEIN Fehler — 513 Produkte trugen den USA-Block wirklich (2026-09-02, abends)
 Der Eintrag unter «Salzlampe» sagt: `productsCount("USA: 12–22 Tage")` = 452, «Bodenwahrheit an
 13 Treffern: 0 tragen die Phrase». **Falsch.** Der Live-Text lautet
