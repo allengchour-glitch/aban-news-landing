@@ -64,7 +64,9 @@ def cj(pfad, body=None):
             f.write(json.dumps(body))
         cmd += ["-X", "POST", "-H", "Content-Type: application/json",
                 "--data-binary", "@/tmp/_cjb.json"]
-    for _ in range(3):
+    # 01.09.: 3 Versuche verlieren gegen 4 Grind-Runner (geteiltes 1-req/s-Limit) zu oft
+    # das Rennen — 8 Versuche wie in der Fulfill-Engine (Lehre 22.08.).
+    for _ in range(8):
         r = subprocess.run(cmd, capture_output=True, text=True)
         try:
             d = json.loads(r.stdout)
@@ -91,12 +93,32 @@ def versandfaehig(sku):
             r'[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}', v, re.I):
         pid = v
     else:
-        code, data, msg = cj(f"/product/query?variantSku={v}")
-        if code == 1602002:
-            return False, "vom Lieferanten ausgelistet"
-        if code != 200 or not data:
+        # 01.09.: «CJPB2903732» ist eine PRODUKT-SKU — als `variantSku=` gefragt antwortet
+        # CJ «Product not found», und eine ECHTE Auslistung (1602002 auf `productSku=`,
+        # live belegt an drei Gaming-Tastaturen) versteckte sich hinter «unklar».
+        # Varianten-SKUs erkennt man am Anhang zwei Ziffern + zwei GROSSbuchstaben
+        # (Lehre 22.08.); deren Produkt-SKU ist der Stamm ohne Anhang.
+        if re.search(r'\d{2}[A-Z]{2}$', v):
+            versuche = [("variantSku", v), ("productSku", re.sub(r'\d{2}[A-Z]{2}$', '', v))]
+        else:
+            versuche = [("productSku", v), ("variantSku", v)]
+        pid = None
+        for param, wert in versuche:
+            code, data, msg = cj(f"/product/query?{param}={wert}")
+            if code == 1602002:
+                return False, "vom Lieferanten ausgelistet"
+            if code == 200 and data:
+                pid = data.get("pid")
+                break
+            if code != 1602001:
+                # Transienter Ausfall (Drossel ausgereizt, Netz): NICHT zum nächsten
+                # Parameter durchfallen — dessen «not found» würde ein echtes 1602002
+                # überdecken (genau so blieb die ausgelistete Alu-Tastatur «unklar»).
+                # Dieser Lauf: unklar; der nächste prüft neu.
+                return None, f"Produkt nicht abrufbar ({code} {msg[:40]})"
+            time.sleep(1.2)
+        if not pid:
             return None, f"Produkt nicht abrufbar ({code} {msg[:40]})"
-        pid = data.get("pid")
     time.sleep(1.2)
     code, vs, msg = cj(f"/product/variant/query?pid={pid}")
     if code == 1602002:

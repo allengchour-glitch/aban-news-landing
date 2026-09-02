@@ -4520,6 +4520,28 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🎹 «Unklar» versteckte acht unverkäufliche Tastaturen — zwei Fallen in EINEM Wächter (2026-09-02)
+Der CH-Versand-Guard meldete 9 von 10 Prüflingen «unklar (1602001 Product not found)» — eine
+Quote, die kein Zufall sein kann. Nachgestellt an einer SKU: **`CJPB2903732` ist eine
+PRODUKT-SKU, der Guard fragte sie aber als `variantSku=` ab** — das antwortet zwangsläufig
+«not found». Mit `productSku=` gefragt sagt CJ **1602002 «removed from shelves»**: beim
+Lieferanten AUSGELISTET, die #1008-Klasse — versteckt hinter «unklar». Fünfte Fundstelle der
+SKU-Formen-Falle (nach Kosten-Backfill, Fulfill-Engine, Review-Import, Abgekündigt-Sweep):
+**jeder neue CJ-Leser tappt hinein, bis er die Formen kennt.**
+- Fix: productSku zuerst (variantSku nur bei Anhang `\d{2}[A-Z]{2}$`, dann auch der gekürzte
+  Stamm). Beweis am echten Lauf: **8 der 9 «unklaren» sofort entschieden — 7 ohne
+  Versandoption, 1 ausgelistet — alle gedraftet** (`cj-nicht-versendbar-ch`, am Objekt
+  gegengeprüft). Aktive Ware ab CHF 114, die nie lieferbar gewesen wäre.
+- ⚠️ **Die zweite Falle sass im Durchfallen:** Der letzte Fall blieb «unklar 1602001», obwohl
+  der Handtest 1602002 gab. Ursache: cj() verlor mit 3 QPS-Versuchen das Rennen gegen die 4
+  Grind-Runner (geteiltes 1-req/s-Limit), und die Parameter-Schleife fiel bei dem transienten
+  Ausfall zum NÄCHSTEN Parameter durch — dessen «not found» überdeckte das echte Urteil.
+  Jetzt: 8 Versuche (Fulfill-Muster), und nur ein definitives 1602001 erlaubt den
+  Parameterwechsel; Transientes gibt «unklar» für DIESEN Lauf. **Ein Fallback-Parameter darf
+  nur nach einer definitiven Absage ziehen, nie nach einem Ausfall.**
+- Gut gebaut war: «unklar» wird NICHT quittiert — nach dem Fix prüfte der nächste Lauf alle
+  von selbst neu. Ein Wächter, der Unentscheidbares quittierte, hätte die 8 für immer begraben.
+
 ## 🧾 14 Wahlversprechen von Hand bereinigt — und ein Set-Inhalt ist keine Auswahl (2026-09-01)
 Der Wahlversprechen-Bericht führte 15 Ein-Varianten-Produkte, deren Text «in zwei/drei/vier
 Grössen/Farben» versprach — genau die Klasse, die `FIX=1` bewusst nur MELDET (Auszeichnung im

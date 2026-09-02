@@ -964,3 +964,4 @@ gid://shopify/Product/15433463136641	nicht-versendbar	Kabellose mechanische Gami
 gid://shopify/Product/15433462874497	nicht-versendbar	Kabelloses mechanisches Gaming-Tastatur- & Maus-Set (87 Tasten)
 gid://shopify/Product/15433460777345	ok	Mechanische Gaming-Tastatur mit 3 Modi & Magnetachsen
 gid://shopify/Product/15433462972801	nicht-versendbar	Mechanische 60% Gaming Tastatur mit RGB, DE-Layout
+gid://shopify/Product/15433460482433	nicht-versendbar	Aluminium 65-Tasten Tri-Mode Mechanische Tastatur
