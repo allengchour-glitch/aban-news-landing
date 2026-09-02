@@ -14605,3 +14605,10 @@ gid://shopify/Product/15523186311553	9->1	Verdunklungsvorhang Modern Minimalisti
 gid://shopify/Product/15523186606465	45->0	Elegante Sandaletten mit eckigem Absatz
 gid://shopify/Product/15523187130753	63->0	Spitze High-Heel-Sandalen aus Veloursleder
 gid://shopify/Product/15523187229057	152->0	Smartwatch mit Bluetooth-Telefonie und grossem Display
+gid://shopify/Product/15523187360129	21->0	High Heel Mesh Damenschuhe
+gid://shopify/Product/15523198927233	29->0	Bequeme T-Riemen Sandalen mit flacher Sohle
+gid://shopify/Product/15523198992769	30->0	Lotus Fischfiletiermesser – scharf & leicht schärfbar
+gid://shopify/Product/15523199123841	68->0	Sanhe Stahl SKD-11 Klappmesser
+gid://shopify/Product/15523199254913	12->0	Multifunktionales G10 Outdoor-Faltmesser
+gid://shopify/Product/15523199287681	22->1	Smartwatch mit Anruffunktion
+gid://shopify/Product/15523199582593	24->0	G02 Samurai Outdoor-Survivalmesser
