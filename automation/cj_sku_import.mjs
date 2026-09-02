@@ -259,6 +259,10 @@ for (const item of ITEMS) {
   await publishVerified(t, spid, klinge);
   if (d.productVideo && /^https/.test(d.productVideo)) await attachVideo(t, spid, d.productVideo, String(pid).slice(-6));
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');
+  angelegt++;
   console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice, d.variants?.[0]?.variantWeight)})`);
 }
+// ⚠️ 02.09.2026: Fehlen die Texte fuer ALLE gefundenen Produkte (Groq-Schluessel/Modell), darf der
+// Queue-Runner den Suchbegriff NICHT quittieren — Exit 3 haelt ihn offen (RC≠0-Zweig).
+if (ohneText > 0 && angelegt === 0) { console.error(`ABBRUCH: ${ohneText} Produkte gefunden, aber keine Texte (Groq?) — Exit 3`); process.exit(3); }
 console.log('FERTIG.');
