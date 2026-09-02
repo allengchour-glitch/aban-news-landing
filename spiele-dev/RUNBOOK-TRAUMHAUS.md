@@ -6004,3 +6004,70 @@ eigener Kopf warnt, dass nicht jeder ein Fehler ist (Tiere laufen über die Stra
 Landstrasse ist streckenweise gar nicht gepflastert) und rät, „im Zweifel mit einem
 Querschnitt nachzusehen, bevor man etwas verschiebt". Das ist eine eigene Runde wert,
 keine Massenverschiebung.
+
+## 2026-08-31 · ⚡ Warum das Spiel laggt — drei Messungen, drei Eingriffe, eine Korrektur
+
+**Der Reihe nach, weil die erste Antwort falsch war.**
+
+### 1. `th-tempo` mass Leerlauf und nannte ihn Spiellogik
+
+Das Werkzeug rechnete *Bildabstand (1000/fps) − Renderzeit = Spiellogik*. Im Headless-
+Browser ist `requestAnimationFrame` aber auf ~1 Bild/s **gedrosselt**. Gemessen, indem
+der rAF-Rücklauf selbst gestoppt wurde:
+
+| | |
+|---|---|
+| Arbeit je Bild (im Rücklauf) | **33,9 ms** |
+| Abstand Bild zu Bild | 965,8 ms |
+| davon **Leerlauf** | **931,9 ms = 96 %** |
+
+Die alte Rechnung machte daraus „Rendern 4 %, Rest 96 %". **Richtig ist das Gegenteil:
+Rendern 78 %, Spiellogik 22 %.** Ich hatte die falsche Zahl bereits berichtet.
+
+> **Regel:** Bildabstand ist nicht Arbeit. Wo rAF gedrosselt sein kann (headless, Tab im
+> Hintergrund, Energiesparmodus), misst nur die Zeit **innerhalb** des Rücklaufs etwas.
+
+### 2. Der LOD-Index wurde mitten im Nachladen gebaut
+
+`lodAufbau()` lief **genau einmal, bei 4 s**. Die Bewohner-Modelle brauchen allein 12,8 s,
+dahinter ~95 kleine GLBs. Alles Spätere stand nie im Index: **49 807 Meshes sind klein
+genug fürs LOD, drin waren 6 855.** Jetzt wird nachgezogen, solange die Welt wächst
+(Wachstums-Anzeiger: `renderer.info.memory.geometries`, weil eine eigene Zähl-Durchquerung
+so teuer wäre wie der Neuaufbau). → sichtbare Meshes **57 137 → 39 994**.
+
+### 3. Die Last liegt im Herauszoomen, nicht in der Nahsicht
+
+Zwei Eingriffe, beide **A-B in EINEM Lauf** gemessen (gleiche Kamera, gleiches Bild):
+
+| | Zoom 44 | Zoom 90 | Zoom 135 |
+|---|---|---|---|
+| dritte LOD-Stufe (2,2–4,5 m, ab 130 m aus) | ±0 | −1 234 | −2 204 |
+| Schwellen folgen dem Zoom (nur kleine Stufen) | −1 | −1 731 | −2 398 |
+
+> ⚠️ **Die Prüfkamera stand nah — der erste Lauf zeigte deshalb NULL Gewinn** (1592 → 1626).
+> Wer eine Optimierung an einer einzigen Kameraposition misst, misst die Position, nicht
+> die Optimierung. Ein A-B im selben Bild trennt das sauber.
+
+**Und eine Fassung wurde verworfen, obwohl sie mehr sparte:** die Zoom-Skalierung auch auf
+die *mittlere* Stufe anzuwenden brachte bei Zoom 135 3 881 statt 2 398 Aufrufe — hätte aber
+Objekte ab 42 m ausgeblendet, die auf dem Schirm noch ~10 Bildpunkte gross sind.
+Nachgerechnet: ein Objekt fällt erst ab **Radius × 230 m** Kameraabstand unter zwei
+Bildpunkte (fov 46°, 390 px). Für 0,55 m sind das 126 m, für 4,5 m über 1000 m.
+**Der kleinere Gewinn war der richtige.**
+
+### Zwei Dinge bewusst NICHT gemacht
+
+- **Die letzten zwei Shader-Übersetzungen** während des Spiels (`th-ruckler`: Start 1,
+  Berg 1). Beide passieren an Blicken, die `_WARM_BLICKE` **bereits enthält** — sie hängen
+  also an Zustands-Varianten, nicht an Kamerapositionen. Genau das steht im Code schon,
+  samt Rat, es erst auf einem echten Gerät zu bewerten. Nicht neu aufgerollt.
+- **Die Figuren vereinfachen.** Sie tragen 92k und 79k Dreiecke — klingt viel, sind aber
+  2 % der 7,75 Mio in der Szene. Die restlichen 7 Mio liegen in ~55 000 Kleinteilen zu je
+  ~127 Dreiecken. Der Hebel ist die OBJEKTZAHL, nicht die Dreieckszahl einzelner Modelle.
+
+### Geprüft: hat das LOD die Prüfer blind gemacht?
+
+Naheliegende Sorge: eine Optimierung, die Objekte auf `visible=false` setzt, könnte
+Prüfer entwerten, die unsichtbare überspringen. **Nachgesehen:** weder `th-3d` noch
+`th-pruef` noch `th-strassen` fragen `visible` ab — sie laufen über den Szenenbaum. Kein
+Prüfer wurde blind. (Bei künftigen Sichtbarkeits-Optimierungen wieder prüfen.)
