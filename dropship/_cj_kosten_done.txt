@@ -8640,3 +8640,4 @@ gid://shopify/Product/15450830700929	CHF 17.41	2 Varianten	Oxford Umhängetasche
 gid://shopify/Product/15450830733697	CHF 12.25	45 Varianten	Warme Lammkaschmir Leggings für den Winter
 gid://shopify/Product/15450830766465	CHF 12.85	12 Varianten	Leoparden-Volantkleid für den Sommer
 gid://shopify/Product/15450830799233	CHF 12.91	13 Varianten	Elektrische Reinigungsbürste 4-in-1
+gid://shopify/Product/15450830864769	CHF 18.47	6 Varianten	Schultertasche im Killer Bag-Stil
