@@ -8609,3 +8609,9 @@ gid://shopify/Product/15450829291905	CHF 21.66	12 Varianten	Baby Plüsch-Overall
 gid://shopify/Product/15450829357441	CHF 23.38	2 Varianten	5-in-1 Magnetisches Wireless Ladegerät mit Nachtli
 gid://shopify/Product/15450829390209	CHF 10.97	53 Varianten	Galaxy Kristallkugel LED Nachtlicht
 gid://shopify/Product/15450829422977	CHF 7.37	5 Varianten	Mini-Falt-Drohne mit HD-Kamera
+gid://shopify/Product/15450829488513	CHF 12.18	5 Varianten	Tassen- und Gläserreiniger für die Küche
+gid://shopify/Product/15450829521281	CHF 50.35	2 Varianten	Kabelloser Mini-Entsafter für Früchte & Gemüse
+gid://shopify/Product/15450829586817	CHF 9.53	31 Varianten	Mattierendes Concealer Make-up, ölregulierend
+gid://shopify/Product/15450829619585	CHF 28.97	12 Varianten	Brasilianisches Echthaar glatt
+gid://shopify/Product/15450829685121	CHF 9.95	10 Varianten	Haltungs-Korrektor für Rücken und Schlüsselbein
+gid://shopify/Product/15450829750657	CHF 6.35	8 Varianten	Schmetterling Ohrclip & Ohrhaken
