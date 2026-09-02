@@ -511,3 +511,5 @@ spielzeug-ch-lager	ok	29	Spielzeug ab Schweizer Lager 🇨🇭
 spielzeug-neuheiten	ok	29	Spielzeug-Neuheiten
 kostueme-ch-lager	ok	29	Kostüme ab Schweizer Lager 🇨🇭
 elektronik-kleinteile	ok	29	Elektronik-Zubehör & Kleinteile
+klemmbausteine-bausaetze	ok	29	Klemmbausteine & Bausätze
+suesses-esswaren	ok	22	Süsses & Esswaren
