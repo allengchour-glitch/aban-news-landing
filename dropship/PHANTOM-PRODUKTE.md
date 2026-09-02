@@ -30,6 +30,11 @@ Umfeld von 120 Zeichen danach.
 - `akupressurmatte-anwendung-wirkung` (8: Matte-Set 3×→generisch inkl. FAQ-Lieferumfang,
   Recovery-Set→Kategorieverweis, Faszienrolle+Yogamatte+Salzlampe→echt, Öle→generisch —
   KEIN aktives Akupressur-Produkt im Shop, Artikel jetzt ohne jede Shop-Behauptung dazu)
+- `cashmere-decke-pflege-einrichtungstipps` (6: Cashmere-Decke 2×→generisch/Kollektion,
+  Salzlampe+Duftkerze→echt, Pillow-Spray→Lavendelöl-Praxis, Sleep-Box→Bundle)
+- `wireless-charger-3in1-ratgeber` (1: In-Ear-ANC→echt 52.90; LED-Lampe-Link war korrekt)
+- `anti-aging-serum-hyaluron-vitamin-c-routine` (3: Augencreme→echt Golden Caviar 15.90,
+  Masken-7-Tage-Set→generisch, Beauty-Komplett-Set→Kollektionsverweis)
 
 ## Verifizierte Zuordnungen (alle 02.09. live geprüft: ACTIVE + Onlineshop)
 | Phantom | echtes Produkt | Preis | Handle |
