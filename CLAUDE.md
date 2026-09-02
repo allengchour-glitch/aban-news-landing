@@ -4600,6 +4600,14 @@ eine Falschaussage** — Kollektionen haben keinen Preis, und die benannte Ware 
   Adjektiv gegen den Produkttext** — «Echtleder», «Doppelwand», «Titan», «GOTS» waren alle
   erfunden. Titel «Dermatologen-Test 2026» umbenannt (Handle bleibt), Rückverweis-Text in
   2 Produkten nachgezogen. Details: `dropship/PHANTOM-PRODUKTE.md`.
+- ⚠️ **Und nach dem Umbenennen trug die LIVE-Seite «Dermatologen» noch 7×:** in `<title>`,
+  `og:title`, `og:description`, `meta description` und dem Artikel-Excerpt («Wir haben
+  Dermatologen gefragt und 14 Tage selbst getestet»). Ein Artikel hat NEBEN body_html noch
+  **`summary_html` und die Metafelder `global.title_tag` / `global.description_tag`** — die
+  Feldliste vom 29.08. (Titel · Handle · SEO-Titel · SEO-Text · Beschreibung · Alt-Text) gilt
+  für Artikel in der Form Titel · Handle · body · **Excerpt** · **title_tag** ·
+  **description_tag** · Rückverweise in Produkten. Gefunden nur durch Zählen auf der
+  ausgelieferten Seite, nicht am bearbeiteten Feld (dieselbe Lehre, siebtes Feld).
 
 ## 🧂 Die Nr.-1-Suchseite der Woche bewarb fünf Produkte, die es nicht gibt (2026-09-02)
 Frische 7-Tage-Messung (MCP wieder da): 399 Sitzungen, 4 an der Kasse, **0 Abschlüsse** — und
