@@ -1585,3 +1585,19 @@
 15448032280961	ersetzt-1	Strick-Cardigan mit Lochmuster und Kordelzug
 15448032510337	ersetzt-1	Damen Langarm-Top mit Puppenkragen und Knöpfen
 15448032772481	ersetzt-1	Lässiges Langarmshirt mit Falten und Karomuster
+15448033001857	ersetzt-1	Samt-Shirt mit Wasserfallausschnitt
+15448033296769	ersetzt-1	Langarmshirt aus Baumwolle mit Schriftzug-Print
+15448033460609	ersetzt-1	Vintage Langarmshirt mit Spitze aus Baumwoll-Leinen
+15448033689985	ersetzt-1	Elegantes Langarmshirt mit Lochstickerei
+15448033886593	ersetzt-1	Gerüschtes V-Neck Cropped Top für Frühling/Sommer
+15448034181505	ersetzt-1	Elegantes Langarmshirt mit Schnürung
+15448034443649	ersetzt-1	Gestreiftes Strandhemd mit Kapuze
+15448034673025	ersetzt-1	Langarmshirt mit Rucksack-Schnalle
+15448034935169	ersetzt-1	Langarm-Shirt mit geradem Schnitt
+15448035230081	ersetzt-1	Elegante Langarm-Strickjacke für Damen
+15448035459457	ersetzt-1	Crop-Bluse mit Spitzkragen und Herz-Cutout
+15448035688833	ersetzt-1	Retro Besticktes Shirt mit Puffärmeln
+15448035950977	ersetzt-1	Damen Leinenhemd Langarm – Luftig & Lässig
+15448036213121	ersetzt-1	Corduroy Hemd mit V-Ausschnitt
+15448036442497	ersetzt-1	Langarmshirt mit Herz-Stickerei und Streifenmuster
+15448036704641	ersetzt-1	Lässige bedruckte Patchwork-Bluse für Damen
