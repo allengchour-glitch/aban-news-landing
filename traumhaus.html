@@ -603,6 +603,16 @@ var WORLD_POIS=[
      bei (126|102); ohne Marke auf der Karte laeuft niemand zufaellig dorthin. Feste
      Koordinaten, weil er kein viertel() ist und `marke()` ihn also nicht nachzieht. */
   [126,102,"💃","Spielclub"]];
+/* 🏗️ DAS EIGENE GRUNDSTUECK STAND AUF KEINER KARTE. Neunundzwanzig Marken gab es —
+   Kathedrale, Zoo, Flughafen, Spielclub — aber ausgerechnet der Ort, um den sich das
+   ganze Spiel dreht, war nicht darunter. GEMESSEN: die Figur startet bei (-67|43), die
+   Grundstuecksmitte liegt bei (1|1), also 79,9 m entfernt. Wer neu anfaengt, sieht eine
+   Stadt und weiss nicht, wo er bauen soll.
+   (Historie, damit es niemand "zurueckoptimiert": frueher stand die Kamera beim Start
+   auf (0|0) und zeigte damit das Grundstueck — nur war die eigene Figur 80 m weit weg
+   und ausserhalb des Bildes. Die Kamera folgt jetzt der Figur; DIESE Marke ersetzt,
+   was dabei verloren ging. Beides zusammen, nicht eins statt des anderen.) */
+WORLD_POIS.push([cx(GW/2),cz(GH/2),"🏗️","Dein Grundstück"]);
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
