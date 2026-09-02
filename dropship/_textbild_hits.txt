@@ -14374,3 +14374,5 @@ gid://shopify/Product/15522165227905	73->3	Jacquard-Stoff mit Weizenähren-Muste
 gid://shopify/Product/15522165326209	10->0	Urbaner Minimalistischer Rucksack
 gid://shopify/Product/15522165490049	71->0	Xiaopei Katzenfutternapf, schräg, doppelter Napf
 gid://shopify/Product/15522165719425	47->0	Ginkgoblätter-Ornament
+gid://shopify/Product/15522165850497	78->0	Wanddeko Elefant aus Plüsch
+gid://shopify/Product/15522165916033	77->0	Dekorative Vase mit Tusche-Elementen
