@@ -12,6 +12,8 @@ import { catTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
+import { copyPrompt } from './cj_copy_prompt.mjs';
+import { groqText } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
@@ -64,24 +66,9 @@ async function sgql(t, q, v) { const r = await fetch(`https://${SHOP}/admin/api/
 
 const GROQ_KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || '')].filter(Boolean);
 // 'llama-3.3-70b-versatile' wird am 16.08.2026 abgeschaltet — aus der Reihe genommen.
-const GROQ_MODELS = ['openai/gpt-oss-120b', 'llama-3.1-8b-instant'];
+// Modellwahl + Parser liegen seit 02.09.2026 in automation/groq_text.mjs (EINE Quelle).
 async function groq(nameEn, feats) {
-  const prompt = `Du textest für einen Schweizer Online-Shop. Aus dem englischen Produktnamen (und Features) mache:
-1) einen KURZEN deutschen Produkttitel (max 60 Zeichen, keine Marke erfinden, KORREKTE Umlaute ä/ö/ü PFLICHT — nie ae/oe/ue, keine englischen Wörter)
-2) eine deutsche Beschreibung (90-140 Wörter, Galaxus-Stil, NUR Fakten).
-Name (EN): ${nameEn}\nFeatures: ${(feats || '').slice(0, 600)}
-NUR JSON: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß).`;
-  for (const key of GROQ_KEYS) for (const model of GROQ_MODELS) {
-    try {
-      const r = await fetch('https://api.groq.com/openai/v1/chat/completions', { method: 'POST',
-        headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model, messages: [{ role: 'user', content: prompt }], max_tokens: 900, response_format: { type: 'json_object' } }) });
-      const j = await r.json();
-      const o = JSON.parse(j.choices?.[0]?.message?.content || '{}');
-      if (o.title && o.html) return o;
-    } catch {}
-  }
-  return null;
+  return await groqText(copyPrompt({ nameEn, feats, kat: '' }));
 }
 async function attachVideo(t, pid, url, tag) {
   try {

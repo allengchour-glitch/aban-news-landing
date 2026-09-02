@@ -10,6 +10,8 @@ import { schonBeansprucht } from './cj_claim.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
+import { copyPrompt } from './cj_copy_prompt.mjs';
+import { groqText } from './groq_text.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -193,13 +195,7 @@ async function attachVideo(st,productId,vurl,cjpid){
 const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung 10–20 Werktage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
 
 async function gemini(nameEn,feats,kat){
- const prompt=`Du textest für einen Schweizer Beauty-Shop. Aus dem englischen Produktnamen (und Feature-Text) mache:
-1) einen KURZEN, natürlichen DEUTSCHEN Produkttitel (max 60 Zeichen, kein Preis, keine Marke erfinden)
-2) eine deutsche Beschreibung (90-150 Wörter, Galaxus-Stil, NUR aus den Fakten – nichts erfinden).
-Kategorie: ${kat}
-Name (EN): ${nameEn}
-Features (EN): ${(feats||'').slice(0,700)}
-Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß, keine Markdown-Fences).`;
+ const prompt=copyPrompt({nameEn,feats,kat});   // EINE Quelle: automation/cj_copy_prompt.mjs (02.09.2026)
  // KOSTEN-REGEL (User 2026-07-06): Groq (gratis) ist PRIMÄR — Gemini (bezahlt) nur noch Fallback,
  // Massen-Importe haben sonst CHF 46/Woche Gemini-Guthaben verbrannt.
  const g0=await groq(prompt); if(g0&&g0.title&&g0.html)return g0;
@@ -213,19 +209,9 @@ Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichne
 // Fallback: Groq (OpenAI-kompatibel), falls Gemini-Quota erschöpft (2026-07-05).
 const GROQ_KEYS=[(process.env.GROQ_API_KEY||''),(process.env.GROQ_API_KEY2||'')].map(s=>s.trim()).filter(Boolean);
 // Siehe cj_category_fill.mjs: 3.3-70b wird am 16.08.2026 abgeschaltet, qwen3-32b ist schon weg.
-const GROQ_MODELS=['openai/gpt-oss-120b','meta-llama/llama-4-scout-17b-16e-instruct','llama-3.1-8b-instant'];
+// Modellwahl + Parser liegen seit 02.09.2026 in automation/groq_text.mjs (EINE Quelle).
 async function groq(prompt){
- for(const model of GROQ_MODELS)for(const key of GROQ_KEYS){
-  try{
-   const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`},
-    body:JSON.stringify({model,temperature:0.5,max_tokens:1200,
-     response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
-   if(r.status===429)continue;
-   const j=await r.json(); if(j.error)continue;
-   const o=JSON.parse(j.choices?.[0]?.message?.content||''); if(o.title&&o.html)return o;
-  }catch{}
- }
+ const o=await groqText(prompt); if(o) return o;
  return await deepseek(prompt);
 }
 
