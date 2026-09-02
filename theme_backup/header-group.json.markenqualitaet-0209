@@ -1,0 +1,195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header_announcements_9jGBFp": {
+      "type": "header-announcements",
+      "blocks": {
+        "ls_announce_1": {
+          "type": "_announcement",
+          "settings": {
+            "text": "🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "ls_announce_2": {
+          "type": "_announcement",
+          "settings": {
+            "text": "–10% auf deine erste Bestellung mit Code WELCOME10",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "ls_announce_3": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Geprüfte Markenqualität · 🔒 Sichere & verschlüsselte Bezahlung",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "ls_announce_4": {
+          "type": "_announcement",
+          "settings": {
+            "text": "🎃 Neu: Der Halloween-Shop ist da – Kostüme, Masken & Deko entdecken",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "ls_announce_5": {
+          "type": "_announcement",
+          "settings": {
+            "text": "🛒 Mengenrabatt: –10% ab 2 Artikeln — automatisch im Warenkorb",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ls_announce_1",
+        "ls_announce_2",
+        "ls_announce_3",
+        "ls_announce_4",
+        "ls_announce_5"
+      ],
+      "name": "t:names.announcement_bar",
+      "settings": {
+        "speed": 6,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "divider_width": 1,
+        "padding-block-start": 15,
+        "padding-block-end": 15
+      }
+    },
+    "header_section": {
+      "type": "header",
+      "blocks": {
+        "header-logo": {
+          "type": "_header-logo",
+          "static": true,
+          "settings": {
+            "hide_logo_on_home_page": false,
+            "padding-block-start": 0,
+            "padding-block-end": 0
+          },
+          "blocks": {}
+        },
+        "header-menu": {
+          "type": "_header-menu",
+          "static": true,
+          "settings": {
+            "menu": "main-menu",
+            "color_scheme": "",
+            "type_font_primary_size": "0.875rem",
+            "menu_font_style": "inverse",
+            "type_font_primary_link": "body",
+            "type_case_primary_link": "none",
+            "menu_style": "text",
+            "featured_products_aspect_ratio": "4 / 5",
+            "featured_collections_aspect_ratio": "16 / 9",
+            "image_border_radius": 0,
+            "navigation_bar": false,
+            "color_scheme_navigation_bar": "",
+            "drawer_accordion": true,
+            "drawer_accordion_expand_first": false,
+            "drawer_dividers": true
+          },
+          "blocks": {}
+        }
+      },
+      "settings": {
+        "logo_position": "left",
+        "menu_position": "left",
+        "menu_row": "top",
+        "customer_account_menu": "customer-account-main-menu",
+        "show_search": true,
+        "search_position": "right",
+        "search_row": "top",
+        "show_country": true,
+        "country_selector_style": false,
+        "show_language": true,
+        "localization_font": "heading",
+        "localization_font_size": "0.875rem",
+        "localization_position": "right",
+        "localization_row": "top",
+        "section_width": "page-width",
+        "section_height": "standard",
+        "enable_sticky_header": "always",
+        "divider_width": 0,
+        "divider_size": "page-width",
+        "border_width": 0,
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
+        "color_scheme_top": "scheme-1",
+        "color_scheme_bottom": "",
+        "color_scheme_transparent": "scheme-6",
+        "enable_transparent_header_home": false,
+        "home_color_scheme": "inverse",
+        "enable_transparent_header_product": false,
+        "product_color_scheme": "default",
+        "enable_transparent_header_collection": false,
+        "collection_color_scheme": "default"
+      }
+    },
+    "lux_searchbar": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>@media(min-width:750px){#luxsb-wrap{display:none!important}}html:has(dialog[open]) #luxsb-wrap,html:has(.menu-drawer[open]) #luxsb-wrap,body.overflow-hidden #luxsb-wrap{display:none!important}</style>\n<div id=\"luxsb-wrap\" style=\"position:sticky;top:var(--header-height,56px);z-index:4;background:#faf7f1;border-bottom:1px solid #ece4d6;padding:.5rem 1rem;\">\n  <div style=\"position:relative;max-width:760px;margin:0 auto;\">\n    <form action=\"{{ routes.search_url }}\" method=\"get\" role=\"search\" autocomplete=\"off\" style=\"display:flex;align-items:center;gap:.5rem;background:#fff;border:1.5px solid #d8cdb8;border-radius:999px;padding:.5rem .9rem;box-shadow:0 1px 3px rgba(0,0,0,.04);\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#8a6d3b\" stroke-width=\"2\" stroke-linecap=\"round\" style=\"flex-shrink:0;\"><circle cx=\"11\" cy=\"11\" r=\"7\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg>\n      <input id=\"luxq\" type=\"search\" name=\"q\" value=\"{{ search.terms | escape }}\" placeholder=\"Wonach suchst du?\" aria-label=\"Suche\" style=\"flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:.95rem;color:#3a3a3a;\">\n      <button type=\"submit\" aria-label=\"Suchen\" style=\"flex-shrink:0;background:#8a6d3b;color:#fff;border:0;border-radius:999px;padding:.45rem 1.1rem;font-size:.88rem;font-weight:600;cursor:pointer;\">Suchen</button>\n    </form>\n    <div id=\"luxsug\" style=\"display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid #e6ddcc;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.12);z-index:50;max-height:72vh;overflow:auto;-webkit-overflow-scrolling:touch;\"></div>\n  </div>\n</div>\n<script>\n(function(){\n  var inp=document.getElementById('luxq'),box=document.getElementById('luxsug'),tmr,last='';\n  if(!inp||!box)return;\n  function esc(s){return (s||'').replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c];});}\n  function render(d){\n    var r=(d.resources&&d.resources.results)||{},h='';\n    var qs=(r.queries||[]).slice(0,4),ps=(r.products||[]).slice(0,6),cs=(r.collections||[]).slice(0,3);\n    qs.forEach(function(x){h+='<a href=\"/search?q='+encodeURIComponent(x.text)+'\" style=\"display:flex;align-items:center;gap:.6rem;padding:.6rem .9rem;text-decoration:none;color:#444;font-size:.9rem;border-bottom:1px solid #f3eee2;\"><span style=\"color:#8a6d3b;\">&#128269;</span>'+esc(x.text)+'</a>';});\n    if(cs.length){h+='<div style=\"padding:.4rem .9rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:#aa9;\">Kategorien</div>';cs.forEach(function(c){h+='<a href=\"'+c.url+'\" style=\"display:block;padding:.45rem .9rem;text-decoration:none;color:#5a4a2f;font-size:.9rem;\">&#128193; '+esc(c.title)+'</a>';});}\n    if(ps.length){h+='<div style=\"padding:.4rem .9rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:#aa9;border-top:1px solid #f3eee2;\">Produkte</div>';ps.forEach(function(p){var img=p.image?'<img src=\"'+p.image+'\" alt=\"\" style=\"width:42px;height:42px;object-fit:cover;border-radius:8px;flex-shrink:0;\">':'';h+='<a href=\"'+p.url+'\" style=\"display:flex;align-items:center;gap:.7rem;padding:.5rem .9rem;text-decoration:none;color:#333;border-top:1px solid #f8f4ea;\">'+img+'<span style=\"flex:1;font-size:.88rem;line-height:1.25;\">'+esc(p.title)+'</span>'+(p.price?'<span style=\"font-size:.82rem;color:#8a6d3b;font-weight:600;white-space:nowrap;\">'+esc(p.price)+'</span>':'')+'</a>';});}\n    h+='<a href=\"/search?q='+encodeURIComponent(inp.value.trim())+'\" style=\"display:block;text-align:center;padding:.7rem;font-size:.85rem;font-weight:600;color:#8a6d3b;text-decoration:none;border-top:1px solid #f3eee2;\">Alle Ergebnisse anzeigen &rarr;</a>';\n    box.innerHTML=h;box.style.display='block';\n  }\n  inp.addEventListener('input',function(){\n    clearTimeout(tmr);var q=inp.value.trim();\n    if(q.length<2){box.style.display='none';return;}\n    tmr=setTimeout(function(){\n      if(q===last)return;last=q;\n      fetch('/search/suggest.json?q='+encodeURIComponent(q)+'&resources[type]=product,collection,query&resources[limit]=6&resources[options][fields]=title,product_type,variants.title')\n        .then(function(r){return r.json();}).then(render).catch(function(){box.style.display='none';});\n    },170);\n  });\n  inp.addEventListener('focus',function(){if(inp.value.trim().length>=2&&box.innerHTML){box.style.display='block';}});\n  document.addEventListener('click',function(e){if(!box.contains(e.target)&&e.target!==inp){box.style.display='none';}});\n})();\n</script>",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "lux_menufix": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n/* Mega-Menü Hover-Brücke: Untermenü bleibt offen, wenn die Maus von der Leiste nach unten fährt */\n.header-menu__item, .header-menu__inner > * { position: relative; }\n.mega-menu { position: relative; }\n.mega-menu::before {\n  content: \"\";\n  position: absolute;\n  top: -34px; left: -10px; right: -10px; height: 36px;\n  background: transparent; pointer-events: auto; z-index: 1;\n}\n/* etwas Hover-Toleranz / sanfter Übergang */\n.mega-menu { transition: opacity .12s ease, visibility .12s ease; }\n@media (max-width: 749px){ .mega-menu::before{ display:none; } }\n\n/* === ls-mobile-polish: grössere Tap-Flächen auf Handy === */\n@media (max-width: 749px){\n  nav[aria-label=\"Breadcrumb\"]{ font-size:.8rem; padding-top:.55rem; }\n  nav[aria-label=\"Breadcrumb\"] a{ display:inline-block; padding:.28rem .15rem; line-height:1.5; }\n  .rte a[style*=\"border-radius:999px\"]{\n    padding:.52rem 1.05rem !important;\n    font-size:.92rem !important;\n    margin:.3rem .32rem .3rem 0 !important;\n    line-height:1.2 !important;\n  }\n}\n</style>",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "header_announcements_9jGBFp",
+    "header_section",
+    "lux_searchbar",
+    "lux_menufix"
+  ]
+}

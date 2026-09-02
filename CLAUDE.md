@@ -6014,3 +6014,17 @@ Ratgeber-Rückverweis und lux_trust stehen. Backup `theme_backup/product.json.tr
   «Geprüfte Angaben»; der Bestand braucht einen Schreiber (siehe nächster Eintrag).
 - ⚠️ Der Ankündigungsbalken trug daneben «Geprüfte **Marken**qualität» — bei CJ-Ware ohne Marke
   eine noch grössere Überzusage. Dieselbe Klasse, dritte Stelle an einem Abend.
+
+## ✍️ Bestand: «Geprüfte Qualität» → «Geprüfte Angaben» in den Produkttexten (2026-09-02)
+Weil JSON-LD und Google-Feed `product.description` roh lesen, hilft die Laufzeit-Ausblendung dort
+nicht. `automation/trust_baustein_wahrheit.py`: Kandidaten aus dem Index («Geprüfte Qualität»),
+Wahrheit am Objekt, EXAKTE Zeichenkette ersetzt, sofort geschrieben (kein Stundenabstand zwischen
+Lesen und Schreiben — die 15.08.-Falle), Quittung nur nach gelesener Antwort, DRY zuerst (5/5).
+Ledger `dropship/_trust_baustein_wahrheit.txt`. Erster Lauf per `setsid` mit CAP 2500, ~0,7/s.
+- ⚠️ Der DRY-Lauf hatte «ohne-befund» ins Ledger geschrieben — ein Anzeigemodus darf keinen
+  Fortschritt merken (Lehre 28.08., wieder). Vor dem Scharfschalten korrigiert, Ledger geleert.
+- Ankündigungsbalken (`header-group.json`, `ls_announce_3`): «Geprüfte Markenqualität» →
+  «✅ Geprüfte Produktangaben · 🔒 Sichere & verschlüsselte Bezahlung», live belegt.
+  Backup `theme_backup/header-group.json.markenqualitaet-0209`.
+- Seiten, Startseite, Footer, Kollektions-/Warenkorb-Template, Locales: 0 weitere Treffer
+  («Zusammen sind sie unschlagbar» im Hyaluron-Ratgeber ist eine Metapher, kein Preis-Superlativ).
