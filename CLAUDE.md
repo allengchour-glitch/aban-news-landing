@@ -4520,6 +4520,28 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 👻 Der 29.05.-Generator hat einen ERFUNDENEN Katalog in 28 Ratgeber geschrieben (2026-09-02)
+Nach dem Salzlampen-Fund die Klassenfrage gestellt: Ein Scan aller veröffentlichten Artikel
+(Kollektionslink + Preisangabe im 120-Zeichen-Umfeld) fand **28 Artikel mit ~65 Fundstellen** —
+alle vom 29.05., alle mit demselben erfundenen Sortiment («Selfcare-Box Wellness CHF 74.90»,
+«Pillow Spray Premium Lavendel», «HEPA Luftreiniger Smart», «Faszienrolle Premium 3er-Set»,
+«Yoga-Matte Premium TPE 6 mm» …). **Ein Preis an einem Kollektionslink ist praktisch immer
+eine Falschaussage** — Kollektionen haben keinen Preis, und die benannte Ware existiert nicht.
+- **3 Artikel vollständig bereinigt** (salzlampe = Nr.-1-Suchseite der Woche, wellness-geschenke,
+  **faszienrolle = Nr.-2-Suchseite des Shops** — die trug trotz 28.08.-Reparatur noch drei
+  Phantome). Methode und verifizierte Zuordnungstabelle (12 echte Gegenstücke, 11 zu
+  generalisieren): **`dropship/PHANTOM-PRODUKTE.md`**; Rest als Task für die Schicht-Ticks.
+- ⚠️ **Der Folgetext beschreibt den Phantom-INHALT weiter** — «vereint Jade Roller,
+  Seiden-Kissenbezug…», «Peanut-Roller aus dem Set», eine FAQ versprach Geschenkverpackung.
+  Nur den Link zu tauschen genügt nie; nach jedem Fix das Rückfeld auf 0 Alt-Namen zählen
+  (drei Nachschläge allein in zwei Artikeln).
+- ⚠️ `ratgeber_ohne_ware.py` KENNT die Klasse (Zweig A) und hatte die Salzlampen-Seite im
+  34-KB-Bericht — **ein Bericht, den niemand abarbeitet, ist nur ein ruhigeres Verschweigen.**
+  Der Trichter-Blick (wo landen Such-Besucher DIESE Woche?) hat priorisiert, was der Bericht
+  nicht konnte.
+- Kurios am Rande: «ist ein Schlaf-Mist mit beruhigendem Lavendel-Aroma» — der Generator hat
+  «sleep mist» wörtlich übersetzt und niemand hat es je gelesen.
+
 ## 🧂 Die Nr.-1-Suchseite der Woche bewarb fünf Produkte, die es nicht gibt (2026-09-02)
 Frische 7-Tage-Messung (MCP wieder da): 399 Sitzungen, 4 an der Kasse, **0 Abschlüsse** — und
 **16 von 34 Suchsitzungen** landen auf einem NEUEN Ratgeber: `himalaya-salzlampe-wirkung-mythen`,
