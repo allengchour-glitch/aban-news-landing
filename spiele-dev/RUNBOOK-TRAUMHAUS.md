@@ -6089,3 +6089,68 @@ Median 31,4 ms, p95 37,7, max 38,9 — **0 Aussetzer über 2× Median**. Vorbeha
 hier gedrosselt, GC und Textur-Uploads können zwischen zwei Bildern liegen; und der
 Rundgang bleibt im Startviertel, Shader-Übersetzungen beim ersten Blick in ein neues
 Viertel deckt `th-ruckler` ab (dort noch 2, siehe oben).
+
+## 2026-09-02 · 🚗 „Auto fahren komisch" — selbst gefahren, gemessen, umgebaut
+
+Der User: *„mach doch dass du spielen kannst, dann urteile und bearbeite selbstständig."*
+Also eine Wegwerf-Sonde, die wirklich einsteigt, den Stick hält und misst — statt den
+Code zu lesen und zu raten. Drei Befunde, alle mit Zahlen:
+
+| Gemessen (alt) | Zahl |
+|---|---|
+| Stick „links" halten, zweite Sekunde | **1° Drehung** — das Auto zeigte längst nach Westen und fuhr geradeaus |
+| Gas geben | **0 → 52 km/h im ersten Bild** |
+| Loslassen | **0,0 m Rollweg**, Stand nach 0,5 s |
+| Im Stand lenken | 89° Drehung + 5,5 m Weg (der Stick war Gas *und* Richtung) |
+| Kamera | jedes Bild hart auf das Auto gesetzt (`camTx=m.position.x`) |
+
+Der Stick war eine **Welt-Richtung wie zu Fuss**: `atan2(mx,mz)` als Zielwinkel, das Auto
+dreht sich hin und fährt. Auf einem Handy heisst das: links halten = einmal abbiegen,
+dann nie wieder. Und es gab weder Anfahren noch Bremsen noch Rückwärts.
+
+### Das Fahrmodell jetzt (`autoFahr`)
+- **Stick hoch = Gas, runter = Bremse**, im Stand nach 0,35 s Halten **rückwärts** (max 5 m/s).
+  Die Schonfrist verhindert, dass eine Vollbremsung ins Zurückschiessen kippt.
+- **Links/rechts = Lenken relativ zur Fahrtrichtung**, 1,9 rad/s × min(1, v/5) — im Stand
+  dreht nichts, rückwärts spiegelt sich das Heck (wie im echten Auto).
+- Anfahren 8 m/s² (Nitro 15), Ausrollen 5 m/s², Bremsen 16 m/s²; Vollgas 13 m/s = 52 km/h
+  wie vorher, damit Tacho, Rampen (`>20 km/h`) und Polizei-Balance unverändert bleiben.
+- **Kamera legt sich weich hinter das Auto** (`camA → carRot+π`, 1,6/s), damit „links" auf
+  dem Bildschirm auch links ist. **Nicht** im Ego-Cockpit und **nicht 2,5 s nach einer
+  Handdrehung** (`window._camHandT` in beiden Drag-Pfaden, Maus + Touch). Einmal hart aufs
+  Auto beim Einsteigen, danach weiches Folgen mit Vorausblick (`min(6, v·0,4)` m).
+
+### Der Prüfer: `th-fahrgefuehl.mjs` (18 Messungen)
+Die Hauptschleife rechnet headless mit ~2 fps Echtzeit — für ein Fahrmodell unbrauchbar.
+Darum legt die Sonde beim Einsteigen `autoFahr` still (`window.__af=autoFahr;
+autoFahr=function(){}`) und **taktet die Physik selbst synchron mit 1/60 s**. Deterministisch,
+sekundengenau, und die Kamera läuft mit (updCam sitzt in autoFahr).
+**Gegenkontrolle gemacht:** gegen `git show HEAD:traumhaus.html` (altes Modell) fallen 8 von
+18 rot (Anfahren, Dauerlenken, Ausrollen, Stand-Lenken, Bremsen, Rückwärts). Das neue Modell:
+18/18. Ein Prüfer, der beim alten Stand nicht rot wird, prüft nichts.
+
+### Fahrmodus-HUD (th-hud misst jetzt drei Modi: Spiel, Bau, Fahrt)
+- Neue Messungen: **„teilverdeckt"** (Feld-Fläche unter einem Knopf ≥ 10 %) und **„autoNah"**
+  (Fahrmodus: Knopf näher als 60 px am projizierten Auto). Beides zählt zum Befund.
+- Querformat ≤ 620 px Höhe: Nitro/Hupe/Lieferung 48 px, lückenlos über der Zoom-Spalte,
+  „Aussteigen" an den unteren Rand (bottom 14) statt in die Bildmitte (dort steht das Auto).
+- **Kopfzeile bleibt eine Zeile** (`#hud{flex-wrap:nowrap}`, Stufe schrumpft zuerst, Geld
+  nie): bei 667/568 px rutschte das Stufen-Feld unter den Pokal-Knopf (28–31 % verdeckt —
+  war schon auf `main` so, gegengemessen).
+- **≤ 340 px Höhe** (568×320): sechs Knöpfe passen nicht übereinander → die drei Fahrknöpfe
+  als Reihe unten rechts (44 px), „Aussteigen" links neben den Joystick.
+
+### Fallen dieser Runde (drei alte, eine neue)
+1. **Falscher Media-Block:** der erste Fix stand in `(max-height:380px)` — greift bei 390 px
+   nicht. Gemessen: identische Zahlen vor/nach. *Ein Fix in einem Block, der für das gemessene
+   Format nicht zutrifft, ist kein Fix.* Der Querformat-Block ist `(orientation:landscape)
+   and (max-height:620px)`.
+2. **Closure-Falle, dreimal:** `geld`, `applyFurn`, `einsteigen`, `fahren`, `camera` sind
+   IIFE-lokal — nur über `mitSonden()`-Sonden erreichbar, nie aus `page.evaluate`.
+3. **`pkill -f <muster>` trifft die eigene Shell** (Exit 143/144), wenn das Muster in der
+   eigenen Befehlszeile steht (`pkill -f chromium` in einem Befehl, der „chromium" enthält).
+   `pgrep`/`pkill -x` oder ein Anker, der nur den Zielprozess trifft.
+4. **Neu: lange Prüfläufe sterben mit dem Worker (Exit 137).** `th-hud` braucht ~6 min
+   (9 Spielstarts); mitten drin startete der Session-Worker neu und riss den Lauf mit.
+   Lösung: `nohup setsid bash -c "node … > log 2>&1" &` — entkoppelt, Log lesen, weiter.
+   Nie zwei Chromium-Harnische parallel (unverändert).

@@ -41,6 +41,17 @@ const tmp = mitSonden('traumhaus.html', {
   voll: `function(){
     skills.arbeit.lv=2;skills.liebe.lv=1;skills.krimi.lv=1;liebe=62;geld=1234567;tag=13;uhrzeit=785;
     updHUD();return true;}`,
+  /* ⚠️ applyFurn/einsteigen/fahren leben in der Huelle — page.evaluate sieht sie nicht
+     (erster Anlauf: "applyFurn is not defined"). Also hier als Sonden, Regel 2. */
+  auto: `function(){geld=99999;applyFurn("auto_kombi",Math.round(GW/2),Math.round(GH/2)+3,0);return true;}`,
+  autoDa: `function(){return !!window.autoRec;}`,
+  einsteigen: `function(){einsteigen(window.autoRec);return !!fahren;}`,
+  /* ⚠️ Dritte Wiederholung derselben Falle in einer Sitzung: `fahren`, `camera` und
+     THREE liegen in der Huelle — im evaluate war `typeof fahren` immer "undefined",
+     die Auto-Naehe-Pruefung blieb still gruen. Der Punkt kommt jetzt aus der Sonde. */
+  autoPunkt: `function(){if(!fahren||!window.autoRec)return null;
+    var v=new THREE.Vector3();window.autoRec.mesh.getWorldPosition(v);v.y+=0.8;v.project(camera);
+    return [(v.x+1)/2*innerWidth,(1-v.y)/2*innerHeight];}`,
 }, '_hud_tmp.html')
 
 const EINZEL = process.argv[2] ? [[+process.argv[2], +(process.argv[3] || 390)]] : null
@@ -74,7 +85,8 @@ for (let i = 0; i < 24; i++) {
    zeigte dort zwei Befunde, die hier nie auffallen konnten. Also: dieselbe Messung,
    zweimal — einmal im Spiel, einmal im Bau. */
 const messen = async (modus) => {
-const r = await page.evaluate(([B, H]) => {
+const autoP = (modus === 'Fahrmodus') ? await page.evaluate(() => window.__th.autoPunkt()) : null
+const r = await page.evaluate(([B, H, autoP]) => {
   const sichtbar = (el) => {
     const s = getComputedStyle(el)
     if (s.display === 'none' || s.visibility === 'hidden' || +s.opacity === 0) return false
@@ -192,8 +204,37 @@ const r = await page.evaluate(([B, H]) => {
                    ist: Math.round(b.width), noetig, txt: (el.textContent || '').trim().slice(0, 34) })
   }
   ueber.sort((p, q) => q.flaeche - p.flaeche)
-  return { n: K.length, raus, klein, ueber: ueber.slice(0, 12), umbruch, alle: K }
-}, [B, H])
+  /* ⚠️ ZWEI BLINDFLECKE, gefunden beim SELBSTFAHREN (2026-09-02). Die Mitte-Pruefung oben
+     sah im Fahrmodus NICHTS, obwohl im Bild (a) der Lieferknopf ein Drittel des
+     Ziel-Felds abdeckte und (b) "Aussteigen" ueber dem eigenen Auto lag.
+     (a) Ein Textfeld ist auch dann kaputt, wenn nur sein ENDE verdeckt ist — die Mitte
+         war frei, die Zahl dahinter nicht. Also: Ueberlappungsflaeche zwischen jedem
+         HUD-Feld und jedem fixierten Knopf, ab 10 % gemeldet. Gemessen waren es 32 %.
+     (b) Das Auto ist kein DOM-Element und kam darum in keiner Pruefung vor. Beim Fahren
+         steht es in der Bildmitte; kein Bedienelement darf naeher als 60 px an seinem
+         projizierten Punkt liegen (gemessen: Aussteigen 53 px). */
+  const flaecheVon = (a, b) => Math.max(0, Math.min(a.r, b.r) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.u, b.u) - Math.max(a.y, b.y))
+  const felder = K.filter((k) => /^(geld|uhr|needsBox|stufeBox)$/.test(k.id))
+  const knoepfe = K.filter((k) => k.tag === 'button' || /Btn$/.test(k.id) || k.id === 'exitCar')
+  const teilverdeckt = []
+  for (const f of felder) for (const b of knoepfe) {
+    const a = flaecheVon(f, b); if (a <= 0) continue
+    const pct = Math.round(100 * a / (f.w * f.h))
+    if (pct >= 10) teilverdeckt.push({ feld: f.id, knopf: b.id, pct, px: Math.round(Math.max(0, f.r - b.x)) })
+  }
+  let autoNah = []
+  try {
+    if (autoP) {
+      const ax = autoP[0], ay = autoP[1]
+      for (const b of knoepfe) {
+        const nx = Math.max(b.x, Math.min(ax, b.r)), ny = Math.max(b.y, Math.min(ay, b.u))
+        const d = Math.hypot(ax - nx, ay - ny)
+        if (d < 60) autoNah.push({ knopf: b.id, d: Math.round(d), auto: [Math.round(ax), Math.round(ay)] })
+      }
+    }
+  } catch (e) { autoNah = [{ knopf: 'Messfehler: ' + e, d: 0 }] }
+  return { n: K.length, raus, klein, ueber: ueber.slice(0, 12), umbruch, teilverdeckt, autoNah, alle: K }
+}, [B, H, autoP])
 
 console.log(`\nBedienoberflaeche bei ${B}x${H} · ${modus} — ${r.n} sichtbare Elemente\n`)
 console.log(`${r.raus.length ? '❌' : '✅'} Ausserhalb des Bildes: ${r.raus.length}`)
@@ -213,12 +254,18 @@ if (sperre) {
   console.log(`${r.ueber.length ? '❌' : '✅'} Bedienelemente, deren Mitte ein FREMDES Element bekommt: ${r.ueber.length}`)
   r.ueber.forEach((u) => console.log(`     ${u.b.padEnd(18)} (${u.ox}x${u.oy}) → Tipp landet auf ${u.a}`))
 }
+console.log(`${r.teilverdeckt.length ? '❌' : '✅'} HUD-Felder, die ein Knopf teilweise verdeckt (ab 10 %): ${r.teilverdeckt.length}`)
+r.teilverdeckt.forEach((t) => console.log(`     ${t.feld.padEnd(12)} ${t.pct} % unter ${t.knopf} (${t.px} px der Breite)`))
+if (modus === 'Fahrmodus') {
+  console.log(`${r.autoNah.length ? '❌' : '✅'} Bedienelemente auf dem eigenen Auto (naeher als 60 px): ${r.autoNah.length}`)
+  r.autoNah.forEach((t) => console.log(`     ${String(t.knopf).padEnd(12)} ${t.d} px vom Auto (Auto bei ${t.auto ? t.auto.join(',') : '?'})`))
+}
 console.log(`${r.umbruch.length ? '❌' : '✅'} Textzeilen, die umbrechen: ${r.umbruch.length}`)
 r.umbruch.forEach((u) => console.log(`     ${u.ort.padEnd(12)} ${u.zeilen} Zeilen · hat ${u.ist} px, braucht ${u.noetig} px  „${u.txt}"`))
 console.log(`JS-Fehler: ${jsFehler.length}`)
 await page.screenshot({ path: REPO + '/spiele-dev/screenshots/hud-' + B + 'x' + H +
-  (modus === 'Baumodus' ? '-bau' : '') + '.png' })
-return !!(r.raus.length || (!sperre && r.ueber.length) || r.umbruch.length || jsFehler.length)
+  (modus === 'Baumodus' ? '-bau' : modus === 'Fahrmodus' ? '-fahrt' : '') + '.png' })
+return !!(r.raus.length || (!sperre && r.ueber.length) || r.umbruch.length || r.teilverdeckt.length || r.autoNah.length || jsFehler.length)
 }
 
 let befund = await messen('Spielmodus')
@@ -230,6 +277,21 @@ const imBau = await page.evaluate(() => (typeof window.__th !== 'undefined') &&
   getComputedStyle(document.getElementById('palette')).display !== 'none')
 if (!imBau) console.log('\n⚠️  Baumodus liess sich nicht oeffnen — Messung uebersprungen (kein Befund, aber auch kein Beleg)')
 else befund = (await messen('Baumodus')) || befund
+/* ⚠️ DER FAHRMODUS IST EIN DRITTES HUD — und war nie gemessen. Beim Selbstfahren
+   (2026-09-02) lag der Lieferknopf (#lieferBtn) ueber dem Ziel-Feld, und "Aussteigen"
+   sass genau ueber dem eigenen Auto. Dafuer: Baumodus wieder zu, Auto platzieren,
+   einsteigen, dieselbe Messung ein drittes Mal. */
+await page.evaluate(() => { const b = document.getElementById('modeBtn'); if (b) b.click() })
+await page.waitForTimeout(600)
+let fahrt = 'kein Auto'
+try {
+  await page.evaluate(() => window.__th.auto())
+  for (let i = 0; i < 60 && !(await page.evaluate(() => window.__th.autoDa())); i++) await page.waitForTimeout(250)
+  if (await page.evaluate(() => window.__th.autoDa()))
+    fahrt = (await page.evaluate(() => window.__th.einsteigen())) ? 'ok' : 'nicht eingestiegen'
+} catch (e) { fahrt = 'Fehler: ' + String(e).slice(0, 80) }
+if (fahrt !== 'ok') console.log('\n⚠️  Fahrmodus liess sich nicht starten (' + fahrt + ') — Messung uebersprungen (kein Befund, aber auch kein Beleg)')
+else { await page.waitForTimeout(1200); befund = (await messen('Fahrmodus')) || befund }
 if (befund) fehlerGesamt++
 await browser.close()
 
