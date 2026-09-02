@@ -76,7 +76,9 @@ def gql(q, v=None):
     raise RuntimeError('gql erschoepft')
 
 def erledigt():
-    if not os.path.exists(LEDGER): return set()
+    # IGNORIERE_LEDGER=1 (02.09.2026): 433 quittierte Produkte trugen die Material-Floskel wieder
+    # (Zombie-Klasse 15.08.) — eine alte Quittung darf einen Inhalts-Treffer nicht schuetzen.
+    if os.environ.get('IGNORIERE_LEDGER') or not os.path.exists(LEDGER): return set()
     return {z.split('\t')[0] for z in open(LEDGER).read().splitlines() if z.strip()}
 
 # ---------------------------------------------------------------- Textchirurgie
