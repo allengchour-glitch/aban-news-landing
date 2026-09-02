@@ -8598,3 +8598,8 @@ gid://shopify/Product/15450828767617	CHF 6.36	20 Varianten	Katzen- und Hundebür
 gid://shopify/Product/15450828800385	CHF 29.42	93 Varianten	E-Ink Smartphone Hülle mit personalisierbarem Scre
 gid://shopify/Product/15450828865921	CHF 9.84	31 Varianten	Spray-Trinkflasche für Sport & Freizeit
 gid://shopify/Product/15450828898689	CHF 6.66	79 Varianten	Thermo-Strumpfhose mit Fleece-Futter
+gid://shopify/Product/15450828996993	CHF 22.53	29 Varianten	Herren Canvas-Schuhe mit weicher Sohle
+gid://shopify/Product/15450829062529	CHF 16.41	24 Varianten	Gestreiftes Langarm-Top & Trägerrock-Set
+gid://shopify/Product/15450829095297	CHF 7.25	15 Varianten	Fidget Spinner Schlüsselanhänger – der Stresskille
+gid://shopify/Product/15450829128065	CHF 6.39	20 Varianten	Elektrischer Augenbrauenentferner
+gid://shopify/Product/15450829160833	CHF 7.12	27 Varianten	Kreatives Sturmfeuerzeug mit Doppelflamme
