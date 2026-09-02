@@ -1758,3 +1758,23 @@
 15448080712065	ersetzt-1	Gestreifter Fluffy Woll-Cardigan (Slim-Fit)
 15448080744833	ersetzt-1	Off-Shoulder Langarmshirt mit Spitze
 15448080777601	ersetzt-1	Elegantes Langarmshirt mit Spitze V-Ausschnitt
+15448080810369	ersetzt-1	Langarm-Shirt mit Rundhalsausschnitt
+15448080843137	ersetzt-1	Locker geschnittenes Langarmshirt für Damen
+15448080908673	ersetzt-1	Gemustertes Langarmshirt mit Rundhalsausschnitt
+15448080941441	ersetzt-1	Glitzer-Mesh Langarmshirt
+15448080974209	ersetzt-1	Elegantes Strickkleid mit A-Linie
+15448081006977	ersetzt-1	Elegantes V-Neck Pullover-Shirt mit Rüschenärmeln
+15448081039745	ersetzt-1	Herz-Strass Langarmshirt mit Mesh-Ärmeln
+15448081072513	ersetzt-1	Rundhals Langarm-Pullover für Damen
+15448081105281	ersetzt-1	Strick-Cardigan für Herbst und Winter
+15448081138049	ersetzt-1	Damen-Top mit Rundhals und Polka-Dots
+15448081170817	ersetzt-1	Elegantes Langarm-Top mit Tweed-Ärmeln
+15448081203585	ersetzt-1	Strick-Cardigan mit Lochmuster · Modell 2
+15448081269121	ersetzt-1	Chiffonbluse mit Schriftzug-Print
+15448081301889	ersetzt-1	Vielseitiges Langarmhemd mit Reverskragen
+15448081334657	ersetzt-1	Retro-Print Langarmbluse
+15448088281473	ersetzt-1	V-Neck Sport-Shirt Kurzarm – Peach
+15448088314241	ersetzt-1	U-Ausschnitt Slimming Sport-BH
+15448088347009	ersetzt-1	Sport-Top mit starkem Halt und Polsterung
+15448088379777	ersetzt-1	Dopamine Fitness-BH mit herausnehmbaren Pads
+15448088412545	ersetzt-1	Sportliches Camisole für Sommer-Workouts
