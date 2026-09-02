@@ -14390,3 +14390,5 @@ gid://shopify/Product/15522194456961	38->0	Smartwatch mit Bluetooth-Anrufen & Bl
 gid://shopify/Product/15522194522497	16->2	Smartwatch mit Video-Ortung für alle Netze
 gid://shopify/Product/15522194555265	11->0	Tuffhound Brustgeschirr mit Halsband
 gid://shopify/Product/15522194653569	22->0	Elegantes Satin-Top mit V-Ausschnitt
+gid://shopify/Product/15522194948481	50->0	Smartwatch mit Bluetooth Headset 2-in-1
+gid://shopify/Product/15522210283905	58->0	Kurzarm-Sweatshirt mit Stickerei
