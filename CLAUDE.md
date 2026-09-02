@@ -4546,6 +4546,32 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## 🛒 Verkaufs-Mandat («bis zum Verkauf weitermachen»): Warenkorb als Kundin gelesen (2026-09-02, spät)
+Betreiber: «verbessere alles, professionell, selbst entscheiden, bis zum Verkauf». Gemessen statt
+geraten: Von 4 Kassengängen der Woche wurde keiner abgeschlossen; die abgebrochenen Checkouts
+(nur 9 je gespeichert, jüngster 22.08.: Gemüseschneider 15.90 + Versand 7.00 = 22.90 → **Versand
+ist 44 % des Warenwerts**) zeigen kleine Körbe mit Versandschock. Dann den Warenkorb per Cookie-Jar
+als Handy-Kundin durchlaufen (add.js → /cart) und GELESEN, was dort steht:
+- **«Inkl. Zollgebühren und Steuern. Versand wird beim Checkout berechnet.»** — Shopify-Standard-
+  Locale für Märkte mit Zollabwicklung; für einen CH-Shop falsch und beunruhigend. 15 Strings in
+  `locales/de.json` auf «Inkl. MwSt.» gesetzt (Backup `theme_backup/locales-de.json.vor-zoll-0209`).
+  ⚠️ Auch `locales/de.json` trägt den JS-Kommentarkopf — erst ab der ersten `{` parsen.
+- **«Das könnte dir auch gefallen» im Warenkorb zeigte `collection: all`** — alphabetisch:
+  «052D Raketenzerstörer», «1-Zoll-Zapfpistole für Diesel», «1.6-Zoll-CPU-Display» neben einem
+  Leder-Wallet. Jetzt Kollektion `bestseller` (Bewertungssieger). **Eine Empfehlung aus «all» ist
+  ein Katalogauszug ab Ziffer 0.**
+- Kein Wort zu Versandkosten/Zahlarten vor dem Klick auf «Auschecken» → custom-liquid-Sektion
+  `lux_cart_trust` (Versand CHF 7 · gratis ab 50 · Lieferzeit auf Produktseite · TWINT/Klarna/
+  Karten/PayPal/Apple Pay · 30 Tage · CH-Support). Backup `theme_backup/cart.json.vor-trust-0209`.
+- **Filter «Marke» hat auf JEDER Kollektionsseite genau einen Wert («LuxeStyle»)** — alle Produkte
+  tragen denselben Vendor. Facette per CSS in `layout/theme.liquid` (`luxVendorFacet`) ausgeblendet;
+  die Filter-Konfiguration liegt in der Search-&-Discovery-App, nicht im Theme.
+- Versandprofil live: Domestic CH Standard 7.00 + Gratis-Stufe aktiv; **Zone «International» (CHF 15)
+  weiterhin aktiv** (27.08.-Befund, Betreibersache).
+- ⚠️ Startseite 6,36 MB: die 12 Produktreihen wiegen je 280–570 KB, die Kartengalerie ist schon auf
+  4 Medien gekappt (09.08.). Weiter runter ginge nur über weniger Karten/Bilder — Betreiber will
+  das Karussell (24.07.). Nicht angefasst.
+
 ## 🗂️ «Kategorien schöner sortieren» — Hauptmenü in Welten statt Sammeltopf (2026-09-02, spät)
 Vorher: 8 Welten plus **«Mehr & Sale» mit 26 Unterpunkten** (Kinder neben Werkzeug neben Kiffer-
 Zubehör neben Ratgeber). Jetzt 13 Top-Level: Highlights · Damen · Herren · Schuhe · Schmuck &
