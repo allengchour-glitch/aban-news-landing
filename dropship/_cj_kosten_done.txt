@@ -8114,3 +8114,28 @@ gid://shopify/Product/15450614301057	CHF 21.75	24 Varianten	Kurze Stiefel mit Re
 gid://shopify/Product/15450615316865	CHF 70.91	12 Varianten	Gothic Chunky High-Heel Boots
 gid://shopify/Product/15450615382401	CHF 74.05	24 Varianten	Overknee-Stiefel mit Chunky-Absatz und Nieten
 gid://shopify/Product/15450615513473	CHF 18.60	6 Varianten	Chunky-heeled Non-slip Soft Leather Pumps Slip-on 
+gid://shopify/Product/15450615579009	CHF 15.94	6 Varianten	Sneaker mit Sternmuster
+gid://shopify/Product/15450615611777	CHF 16.95	5 Varianten	Damen Sneaker American Retro Skateboarding
+gid://shopify/Product/15450615677313	CHF 16.77	12 Varianten	Retro Forrest Trainingsschuhe für Damen
+gid://shopify/Product/15450615742849	CHF 18.75	12 Varianten	Retro Plateau Sneaker für Damen
+gid://shopify/Product/15450615808385	CHF 17.49	12 Varianten	Koreanische Sportschuhe für Damen
+gid://shopify/Product/15450615841153	CHF 20.82	12 Varianten	Retro Star Virtue Trainingsschuhe für Damen
+gid://shopify/Product/15450615873921	CHF 17.49	7 Varianten	Leopard-Print Color Blocked Trainingsschuh
+gid://shopify/Product/15450615906689	CHF 16.77	7 Varianten	Vielseitige Lightning Board Schuhe für Damen
+gid://shopify/Product/15450615939457	CHF 21.47	18 Varianten	Sneakers mit Höhen-Effekt für Damen
+gid://shopify/Product/15450615972225	CHF 21.74	6 Varianten	Atmungsaktive Allround-Schuhe mit weicher Sohle
+gid://shopify/Product/15450643366273	CHF 29.39	42 Varianten	Wasserdichte Plateau-Sandalen mit Fischmaul
+gid://shopify/Product/15450643530113	CHF 15.39	24 Varianten	Peep-Toe Sandalen mit Chunky-Absatz
+gid://shopify/Product/15450643595649	CHF 16.16	12 Varianten	Arrival Damen-Sandalen mit klobigem Absatz
+gid://shopify/Product/15450643693953	CHF 16.81	12 Varianten	Bequeme Sandalen mit dicker Sohle
+gid://shopify/Product/15450643792257	CHF 19.00	14 Varianten	Atmungsaktive Mid-Heel Sandalen
+gid://shopify/Product/15450643825025	CHF 19.01	10 Varianten	Rhinestone Stiletto Sandalen
+gid://shopify/Product/15450643857793	CHF 21.30	18 Varianten	Atmungsaktive Roman Sandalen für Damen
+gid://shopify/Product/15450643890561	CHF 21.89	32 Varianten	Plateau Peep-Toe Sandalen mit hohem Absatz
+gid://shopify/Product/15450643956097	CHF 41.17	18 Varianten	Echtleder Sandalen mit Chunky-Absatz
+gid://shopify/Product/15450644021633	CHF 16.51	21 Varianten	Slip-on Sandalen mit eckiger Zehenpartie
+gid://shopify/Product/15450644054401	CHF 28.48	22 Varianten	Sandalen mit Fischmaul-Design und Blockabsatz
+gid://shopify/Product/15450644152705	CHF 14.85	99 Varianten	Sandalen mit eckiger Kappe und Absatz
+gid://shopify/Product/15450644218241	CHF 72.14	6 Varianten	Sandalen mit Schleife und bezogenem Absatz
+gid://shopify/Product/15450644283777	CHF 19.91	7 Varianten	Bequeme Plateau-Sandalen
+gid://shopify/Product/15450644349313	CHF 19.75	7 Varianten	Keilabsatz-Sandalen im koreanischen Stil
