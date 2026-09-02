@@ -38,6 +38,13 @@ const MAP={ size:'Masse', dimensions:'Masse', 'product size':'Masse', 'item size
   'net weight':'Gewicht', weight:'Gewicht', 'screen size':'Bildschirmgrösse', 'input':'Eingang', 'output':'Ausgang',
   'wattage':'Leistung', 'charging time':'Ladezeit', 'working time':'Laufzeit', 'usage time':'Laufzeit' };
 
+// Englische Einheitenwoerter → deutsche Kurzform («5 watts» → «5 W», «2 hours» → «2 h»); Zahl bleibt.
+export function einheiten(v){
+  return String(v).replace(/\bwatts?\b/gi,'W').replace(/\bvolts?\b/gi,'V').replace(/\bamps?\b/gi,'A')
+    .replace(/\binch(?:es)?\b/gi,'Zoll').replace(/\bhours?\b/gi,'h').replace(/\bminutes?\b/gi,'Min.').replace(/\bseconds?\b/gi,'s')
+    .replace(/\b(pcs|pieces?)\b/gi,'Stk.').replace(/\bliters?\b/gi,'l').replace(/\bgrams?\b/gi,'g').replace(/\bkilograms?\b/gi,'kg')
+    .replace(/\bmeters?\b/gi,'m').replace(/\bcentimeters?\b/gi,'cm').replace(/\bmillimeters?\b/gi,'mm').replace(/\bapprox\.?\b/gi,'ca.').replace(/\babout\b/gi,'ca.');
+}
 // Liest «Size: 20*30cm»-Zeilen aus der CJ-Beschreibung. Nur Werte mit Ziffer, max 4 Zeilen.
 export function extractSpecs(desc){
   const t=String(desc||'').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/(p|li|div|tr)>/gi,'\n').replace(/<[^>]+>/g,' ');
@@ -48,6 +55,7 @@ export function extractSpecs(desc){
     const key=m[1].trim().toLowerCase();
     if(!(key in MAP)||seen.has(MAP[key])) continue;
     let val=m[2].trim().replace(/\s+/g,' ').replace(/\*/g,' × ').replace(/\s*x\s*/gi,' × ');
+    val=einheiten(val);
     if(!/\d/.test(val)) continue;
     if(/color|colour/i.test(key)) continue;
     if(/[一-鿿]/.test(val)) continue;      // chinesische Zeichen: nicht in die Tabelle

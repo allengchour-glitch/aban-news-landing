@@ -58,7 +58,9 @@ async function cjProdukt(sku) {
   if (!mVar) return { result: false, unbekannteForm: true };
   let j = await cj(`product/variant/query?productSku=${mVar[1]}`);
   if (budgetLeer(j)) return j;
-  if (!j.result) { const stamm = mVar[1].match(/^(.*[0-9])\d{2}[A-Z]{2}$/i); if (stamm) j = await cj(`product/variant/query?productSku=${stamm[1]}`); }
+  // Varianten-Anhaenge: «…01AZ» (zwei Ziffern + zwei Buchstaben, 22.08.) und «…0001» (vier Ziffern hinter
+  // dem 7-stelligen Produktstamm, 25.08./02.09.) — beide auf den Produktstamm kuerzen.
+  if (!j.result) { const stamm = mVar[1].match(/^(.*[0-9])\d{2}[A-Z]{2}$/i) || mVar[1].match(/^(CJ[A-Z]{2}\d{7})\d{4}$/i); if (stamm) { await sleep(1100); j = await cj(`product/variant/query?productSku=${stamm[1]}`); } }
   if (budgetLeer(j) || !j.result) return j;
   const pid = (Array.isArray(j.data) ? j.data[0] : j.data)?.pid;
   if (!pid) return { result: false };
@@ -85,7 +87,12 @@ async function main() {
     const p = q.data?.productByIdentifier;
     if (!p) { console.log('  ? nicht gefunden', h); continue; }
     if (p.status !== 'ACTIVE') { if (!DRY) fs.appendFileSync(LEDGER, `${h}\tnicht-aktiv\n`); continue; }
-    if (/class="(ls-produktdetails|ls-feed-details|gmc-details)"|<h4>Details<\/h4>/.test(p.descriptionHtml || '')) { if (!DRY) fs.appendFileSync(LEDGER, `${h}\that-liste\n`); continue; }
+    // Eine Liste, die NUR Versand-/Lieferzeilen traegt (alte ls-feed-details), ist fuer die Tabelle leer —
+    // das Theme blendet Versandzeilen aus. Sie wird ersetzt; echte Listen bleiben unangetastet.
+    const alt = (p.descriptionHtml || '').match(/<div class="(?:ls-produktdetails|ls-feed-details|gmc-details)">[\s\S]*?<\/div>/);
+    const altKeys = alt ? [...alt[0].matchAll(/<strong>([^<]*?):?<\/strong>/g)].map(m => m[1].trim().replace(/:$/, '')) : [];
+    const nurVersand = alt && altKeys.length > 0 && altKeys.every(k => /^(Versand|Lieferzeit|Lieferung)$/i.test(k));
+    if ((alt && !nurVersand) || /<h4>Details<\/h4>/.test(p.descriptionHtml || '')) { if (!DRY) fs.appendFileSync(LEDGER, `${h}\that-liste\n`); continue; }
     const sku = p.variants.nodes[0]?.sku; n++;
     const j = await cjProdukt(sku); await sleep(1100);
     if (budgetLeer(j)) { console.log('CJ-Tagesbudget erschöpft — Pause'); break; }
@@ -97,7 +104,9 @@ async function main() {
     if (DRY) { console.log(`  [DRY] ${h} → ${zeilen} Zeilen: ${block.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 160)}`); gesetzt++; continue; }
     // LIVE erneut lesen (paralleler Schreiber), dann sofort schreiben
     const q2 = await sgql(`query($id:ID!){ product(id:$id){ descriptionHtml } }`, { id: p.id });
-    const live = q2.data?.product?.descriptionHtml; if (!live || /class="ls-produktdetails"/.test(live)) continue;
+    let live = q2.data?.product?.descriptionHtml; if (!live) continue;
+    const altLive = live.match(/<div class="(?:ls-produktdetails|ls-feed-details|gmc-details)">[\s\S]*?<\/div>/);
+    if (altLive) { const ks = [...altLive[0].matchAll(/<strong>([^<]*?):?<\/strong>/g)].map(m => m[1].trim().replace(/:$/, '')); if (ks.length && ks.every(k => /^(Versand|Lieferzeit|Lieferung)$/i.test(k))) live = live.replace(altLive[0], ''); else continue; }
     const neu = einfuegen(live, block);
     const m = await sgql(`mutation($i:ProductInput!){ productUpdate(input:$i){ product{ descriptionHtml } userErrors{ message } } }`, { i: { id: p.id, descriptionHtml: neu } });
     const pu = m.data?.productUpdate;

@@ -6112,3 +6112,15 @@ Täglich im Aufseher mit LIMIT 30, bis die Liste durch ist. Was CJ liefert und w
   Quelle einer Tabelle braucht die Frage, welcher vorhandene Schlüssel schon dasselbe sagt.**
 - Nicht erreichbar: zwei Produkte «Product not found» (CJ kennt die pid nicht mehr — Kandidaten
   für `cj_verfuegbarkeit`), eines ohne CJ-SKU (`PROJ-PANDA-001`, handkuratierte Ur-Ware).
+- **Nachtrag (gleicher Abend):** «Leistung: 5 **watts**» kam durch, weil der Ziffernfilter nur die Zahl
+  prüft — `einheiten()` übersetzt Einheitenwörter (watts→W, hours→h, inch→Zoll, pcs→Stk.). Und eine
+  **fünfte SKU-Form** («CJJD29047400001» = 7-stelliger Produktstamm + vier Ziffern) fiel als «Product
+  not found» durch; der Stamm-Fallback kennt sie jetzt — damit bekam auch der 4-l-Luftbefeuchter
+  (Position 20 bei Google) seinen Block. Alte Listen mit NUR einer Versand-Zeile (14 der Landeseiten)
+  gelten als leer und werden ersetzt. Stand: **39 Listen gesetzt**, 46 hatten echte Listen, 1 bei CJ
+  nicht mehr auffindbar (`aroma-diffuser-holzoptik-400ml…`, `CJ-CJJJTJT22925` — Fall für
+  `cj_verfuegbarkeit`).
+- ⚠️ **Der Aufseher ist seit 19:17 UTC tot** (Herzschlag), die Runner seit 19:14, und die
+  Stunden-Routine hat in dieser Zeit nicht gefeuert — vermutlich, weil diese Session ohne Pause
+  gearbeitet hat und Routinen erst in eine RUHENDE Session laufen. **Wer lange Sessions am Stück
+  arbeitet, hält damit den Keepalive auf.** Turn beendet, damit die Routine ziehen kann.
