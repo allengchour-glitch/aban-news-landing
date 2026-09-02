@@ -8581,3 +8581,5 @@ gid://shopify/Product/15450783449473	CHF 47.06	1 Varianten	Wand-Fahrradhalter, 2
 gid://shopify/Product/15450783482241	CHF 47.96	1 Varianten	Elektronisches Dartboard mit Darts
 gid://shopify/Product/15450783515009	CHF 36.33	1 Varianten	2er-Set Mini-Fussballtore für Kinder
 gid://shopify/Product/15450783613313	CHF 173.61	1 Varianten	Fussballtor mit Netz 180x120 cm
+gid://shopify/Product/15450783646081	CHF 46.89	1 Varianten	Tarnnetz US Woodland 4x4 m mit Packsack
+gid://shopify/Product/15450783678849	CHF 79.37	1 Varianten	Basketballkorb 90x Polyethylen
