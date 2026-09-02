@@ -7,7 +7,13 @@
 import { chromium } from 'playwright'
 import { spawn, execSync } from 'node:child_process'
 const PORT = 8123
-spawn('python3', ['-m', 'http.server', String(PORT)], { cwd: process.cwd(), detached: true, stdio: 'ignore' }).unref()
+/* ⚠️ DER SERVER LIEF NACH DEM TEST WEITER. Abgekoppelt (detached) und mit unref() gestartet,
+   wurde er nie beendet — nach drei Testlaeufen standen drei python-Server auf Port 8123,
+   und jedes andere Werkzeug, das den Port wollte, brach mit EADDRINUSE ab. Jetzt bleibt er
+   angebunden und wird beim Beenden mit seiner Prozessgruppe abgeraeumt. */
+const _srv = spawn('python3', ['-m', 'http.server', String(PORT)], { cwd: process.cwd(), detached: true, stdio: 'ignore' })
+const _srvWeg = () => { try { process.kill(-_srv.pid, 'SIGTERM') } catch (e) {} }
+process.on('exit', _srvWeg); process.on('SIGINT', () => { _srvWeg(); process.exit(130) })
 execSync('sleep 1.5')
 
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })
