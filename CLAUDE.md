@@ -4564,6 +4564,8 @@ GELESEN habe statt zu zählen.
   zweite Regelquelle; `scratchpad/usa_block_fix.py` liefert nur die am Objekt gemessene
   Kandidatenliste): DRY an 6 Stück sauber («Lieferzeit Schweiz: 10–20 Werktage»), Lauf über
   alle 513 per `setsid` (Turn-Reaping), Ledger-Quittung `usa-block-0209`.
+  **Ergebnis: 513 geschrieben, 0 unverändert, 0 REST, 0 Fehler** — Gegenprobe am Objekt mit
+  demselben tag-toleranten Muster über alle 513: **0**.
 - ⚠️ Der 01.09.-Nachzug («167/167, Restzähler 0») galt der Variante mit Nachsatz — er hat
   diese Form NICHT erfasst, weil die Kandidaten aus einer Phrasensuche kamen. **Eine
   Klassenzahl gilt nur für die Form, mit der man gesucht hat.**
