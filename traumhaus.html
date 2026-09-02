@@ -14775,7 +14775,27 @@ function lodTakt(px,pz){
      2 m am Kugelradius, ausdruecklich „gegen Flackern"; hier fehlte sie ganz.
      Jetzt: einblenden ab 78 m, ausblenden erst ab 82 m (nah: 34 / 37). Vier Meter
      Reserve kosten ein paar Zeichenaufrufe mehr und nehmen dem Rand das Zucken. */
-  var AN_F=78*78, AUS_F=82*82, AN_N=34*34, AUS_N=37*37, AN_M=130*130, AUS_M=138*138;
+  /* ⚠️ FESTE METER IGNORIEREN DEN ZOOM. Ob ein Objekt sichtbar sein MUSS, entscheidet
+     seine Groesse auf dem Schirm, nicht sein Abstand in Metern. Beim Herauszoomen
+     (camR bis 135) steht die Kamera dreimal so weit weg wie im Normalfall (44) — ein
+     0,5-m-Ding faellt dort unter einen Bildpunkt, wurde aber weiter gezeichnet.
+     Genau dort liegt die Last: gemessen 5'868 Zeichenaufrufe und 1,06 Mio Dreiecke bei
+     Zoom 135, gegenueber 1'675 und 611k in der Nahansicht.
+     Darum schrumpfen die Schwellen mit dem Zoom — aber NUR nach draussen: bis zum
+     Normalzoom (44) bleibt alles wie bisher, damit das normale Spielen unveraendert
+     aussieht. Das Verhaeltnis ist linear zur Kameraentfernung, weil die Bildgroesse
+     eines Objekts genau so faellt. */
+  var _zf=Math.min(1,44/Math.max(24,camR)), _z2=_zf*_zf;
+  /* ⚠️ NUR DIE KLEINEN. Nachgerechnet mit der Bildgroesse (fov 46 Grad, 390 px Hoehe):
+     ein Objekt faellt unter zwei Bildpunkte ab etwa Radius x 230 Metern Kameraabstand.
+     Fuer 0,55 m sind das 126 m — herausgezoomt also laengst unsichtbar, Wegblenden
+     kostet nichts. Fuer die MITTLEREN (bis 4,5 m) waeren es ueber 1000 m; ihre 130-m-
+     Grenze ist ohnehin schon ein bewusster Handel, nicht Physik. Wuerde man sie
+     mitskalieren, verschwaenden bei Zoom 135 Objekte ab 42 m, die auf dem Schirm noch
+     rund zehn Bildpunkte gross sind — ein sichtbarer Verlust statt eines Gewinns.
+     Also: kleine und winzige mit dem Zoom, mittlere fest. */
+  var AN_F=78*78*_z2, AUS_F=82*82*_z2, AN_N=34*34*_z2, AUS_N=37*37*_z2,
+      AN_M=130*130, AUS_M=138*138;
   for(var i=0;i<_lodKlein.length;i++){
     var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz,d2=dx*dx+dz*dz;
     var an=e.mittel?AN_M:(e.nah?AN_N:AN_F), aus=e.mittel?AUS_M:(e.nah?AUS_N:AUS_F);
