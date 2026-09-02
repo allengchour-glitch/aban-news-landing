@@ -34,7 +34,8 @@ canvas{display:block}
 .btn.ghost{background:rgba(255,255,255,.7);color:#4a5a7a;border:2px solid #b8cee0;box-shadow:none;font-size:1rem;padding:12px 24px}
 .small{font-size:.85rem;color:#6a8aa8;margin-top:14px}.small a{color:#4a7ab0}
 #hud{position:fixed;top:calc(10px + env(safe-area-inset-top));left:calc(10px + env(safe-area-inset-left));right:calc(10px + env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:10;gap:8px;flex-wrap:wrap}
-.panel{background:rgba(255,253,248,.92);border:2px solid rgba(120,110,80,.2);border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 4px 14px rgba(60,40,10,.15);pointer-events:auto}
+/* 🎨 RAHMENLOS (User: "keine rahmen"). Die dauerhaft sichtbaren Bedienelemente tragen keine Linie mehr — Trennung macht der Schatten. Ein 2-px-Strich um jede Kachel zerschneidet das Bild in Kaesten; ein weicher Schatten hebt sie ab, ohne die Szene zu zerteilen. Dialoge behalten ihre Kante: dort trennt sie sinnvoll. */
+.panel{background:rgba(255,253,248,.94);border:0;border-radius:16px;padding:8px 12px;font-weight:800;box-shadow:0 6px 20px rgba(40,30,10,.22);pointer-events:auto}
 #geld{font-size:1.25rem;font-weight:900;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border-color:#e8b04a}
 #uhr{font-size:1rem;max-width:min(60vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #geld{color:#b8860b}
@@ -84,11 +85,27 @@ canvas{display:block}
      Der Deckel sollte HOEHE sparen — ein Umbruch kostet aber genau die: der Kasten
      wuchs von 51 auf 79 px. Jetzt darf er so breit werden, wie die Reihe hergibt
      (bei 667 px Fensterbreite waren 44 px Luft frei, gebraucht werden 27). */
-  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:min(34vw,190px)}
+  /* ⚠️ 190 px minus 24 px Polsterung = 166 px Inhalt. Die volle Zeile (drei
+     Fertigkeiten + Status) braucht 175 — sie brach genau dann um, wenn alle drei
+     zusammenkamen, also mal so und mal so. Gemessen mit th-hud; 206 gibt 182 und
+     damit Luft, ohne die Uhr daneben zu beruehren (Ueberlappung mitgeprueft). */
+  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:min(38vw,206px)}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
   #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  #tools{left:calc(10px + env(safe-area-inset-left));right:auto;top:120px;bottom:auto} /* 🩹 Schwarm-4: 70px lag unter dem Pokal-Knopf (y 64..112, z-index 14) — „Drehen" oeffnete die Erfolge */
+  /* ⚠️ !important IST HIER PFLICHT, NICHT GESCHMACK. Dieser @media-Block steht VOR den
+     Grundregeln; bei gleicher Spezifitaet gewinnt die spaetere. Die Grundregel fuer
+     #tools (weiter unten) setzt right und bottom — ohne Prioritaet blieben die hier
+     stehenden Werte wirkungslos, und zwar STILL: gemessen bei 568x320 war #tools
+     548 x 0 px (left:10 UND right:10 gleichzeitig, top:120 UND bottom:252 → rechnerisch
+     -52 px Hoehe), die Werkzeugknoepfe auf 26 px gequetscht und der Abreissen-Knopf lag
+     auf dem ersten Kategorie-Reiter. Die Nachbarregeln (#minimap, #villaBtn, #piBar)
+     tragen aus genau diesem Grund schon !important. */
+  /* Und die POSITION: links ist bei 320 px Hoehe kein Platz. Ausgemessen (568x320,
+     Baumodus) sind belegt: Pokal x10-58/y64-112, Villa-Vorlage x66-254/y86-130,
+     „Leben" x226-342/y58-103, Palette ab y135. Frei bleibt der Streifen rechts oben:
+     x344-568, y58-135 — 224 x 77 px. Dort liegen die zwei Werkzeuge als REIHE. */
+  #tools{left:auto !important;right:calc(10px + env(safe-area-inset-right)) !important;top:62px !important;bottom:auto !important;flex-direction:row !important} /* 🩹 Schwarm-4: 70px lag unter dem Pokal-Knopf (y 64..112, z-index 14) — „Drehen" oeffnete die Erfolge */
   #villaBtn{left:calc(66px + env(safe-area-inset-left)) !important} /* 🩹 Schwarm-6: lag bei left:10 unter der Werkzeugspalte — Tap auf 🔄/🧨 kaufte die Villa */
   /* 🩹 Schwarm-4: piBar lag quer ueber dem Joystick (z-index 14 vs 13) — Steuern loeste Winken/Geschenk aus */
   #piBar{left:auto !important;right:calc(80px + env(safe-area-inset-right)) !important;bottom:calc(12px + env(safe-area-inset-bottom)) !important}
@@ -112,7 +129,7 @@ canvas{display:block}
 .pitem.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.25)}
 .pitem .pe{font-size:1.4rem}.pitem .pn{font-size:.66rem;font-weight:700;color:#5a4a30}.pitem .pp{font-size:.66rem;color:#b8860b;font-weight:800}
 #tools{position:fixed;right:calc(10px + env(safe-area-inset-right));bottom:calc(252px + env(safe-area-inset-bottom));display:none;flex-direction:column;gap:8px;z-index:13}
-.tbtn{width:48px;height:48px;border-radius:14px;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)}
+.tbtn{width:48px;height:48px;border-radius:16px;border:0;background:rgba(255,253,248,.95);font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)}
 .tbtn.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.3)}
 #modeBtn.building{top:calc(58px + env(safe-area-inset-top));bottom:auto;left:50%;transform:translateX(-50%)}
 #modeBtn{position:fixed;left:calc(10px + env(safe-area-inset-left));bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#fff;background:linear-gradient(90deg,#5a9af0,#7a6af0);box-shadow:0 8px 24px rgba(90,120,240,.4)}
@@ -168,7 +185,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="coupHud" style="display:none;position:fixed;left:50%;transform:translateX(-50%);top:calc(112px + env(safe-area-inset-top));z-index:17;background:rgba(30,10,20,.88);color:#ffd9e0;border:2px solid #b02a5a;border-radius:14px;padding:8px 18px;font-weight:900;font-size:.95rem"></div>
 <button id="coupBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#2a2a3a,#7a1a3a)">🏦 Bank-Coup zu zweit</button>
 <button id="coasterBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e8543a,#b02a5a)">🎢 Achterbahn fahren</button>
-<button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:10px 16px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
+<button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 18px;min-height:44px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:linear-gradient(90deg,#1a4a2a,#3a6a3a);box-shadow:0 8px 24px rgba(30,80,40,.5)">🌿 Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
@@ -255,9 +272,9 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <button id="kochQuit" style="margin-top:10px;border:0;background:#e8e0d0;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
  </div>
 </div>
-<div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
-<button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)">🏆</button>
-<canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:3px solid rgba(255,255,255,.75);box-shadow:0 4px 14px rgba(0,0,0,.35);background:#3a5a34;cursor:pointer"></canvas>
+<div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;pointer-events:none;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
+<button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:0;background:rgba(255,253,248,.95);border-radius:16px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)">🏆</button>
+<canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:0;box-shadow:0 6px 20px rgba(20,30,15,.42);background:#3a5a34;cursor:pointer"></canvas>
 <!-- 🗺️ Grosse Karte (User: „map ist noch zu klein") — Tipp auf das Radar oeffnet die ganze Welt -->
 <div id="bigmapWrap" style="position:fixed;inset:0;z-index:60;display:none;background:rgba(12,16,12,.86);backdrop-filter:blur(3px);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:10px">
   <div style="color:#fff;font-weight:900;font-size:1.05rem;text-shadow:0 2px 6px #000">🗺️ Weltkarte <span style="font-weight:700;font-size:.8rem;opacity:.85">· Tipp auf die Karte = 📍 GPS-Wegpunkt</span></div>
@@ -586,6 +603,16 @@ var WORLD_POIS=[
      bei (126|102); ohne Marke auf der Karte laeuft niemand zufaellig dorthin. Feste
      Koordinaten, weil er kein viertel() ist und `marke()` ihn also nicht nachzieht. */
   [126,102,"💃","Spielclub"]];
+/* 🏗️ DAS EIGENE GRUNDSTUECK STAND AUF KEINER KARTE. Neunundzwanzig Marken gab es —
+   Kathedrale, Zoo, Flughafen, Spielclub — aber ausgerechnet der Ort, um den sich das
+   ganze Spiel dreht, war nicht darunter. GEMESSEN: die Figur startet bei (-67|43), die
+   Grundstuecksmitte liegt bei (1|1), also 79,9 m entfernt. Wer neu anfaengt, sieht eine
+   Stadt und weiss nicht, wo er bauen soll.
+   (Historie, damit es niemand "zurueckoptimiert": frueher stand die Kamera beim Start
+   auf (0|0) und zeigte damit das Grundstueck — nur war die eigene Figur 80 m weit weg
+   und ausserhalb des Bildes. Die Kamera folgt jetzt der Figur; DIESE Marke ersetzt,
+   was dabei verloren ging. Beides zusammen, nicht eins statt des anderen.) */
+WORLD_POIS.push([cx(GW/2),cz(GH/2),"🏗️","Dein Grundstück"]);
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -3632,7 +3659,11 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       var len=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.06,0.42),stdMat(0x3a3a42,0.5));len.position.set(0.4,0.72,0);rad.add(len);
       var sat=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.07,0.12),stdMat(0x2a2a30,0.6));sat.position.set(-0.35,0.68,0);rad.add(sat);
       rad.position.set(bx,0,0.1);rad.rotation.y=0.12*(bi-1);bg.add(rad);});
-    bg.position.set(30,0,67.5);bg.rotation.y=Math.PI/2;scene.add(bg); // Marktplatz-Westkante, frei von der Lauflinie
+    /* ⚠️ 67.5 WAR ZU NAH. Der Staender ist gedreht und reicht 2,6 m nach vorn — seine
+       vorderste Kante lag bei z=64.9, die Hauptstrasse endet aber erst bei z=66.
+       Damit standen gut 1,1 m Staender samt Vorderrad auf dem Asphalt (gemessen mit
+       th-fahrbahn). 69.2 schiebt die Kante auf 66.6, also 0,6 m hinter den Rand. */
+    bg.position.set(30,0,69.2);bg.rotation.y=Math.PI/2;scene.add(bg); // Marktplatz-Westkante, frei von der Lauflinie
   })();
   // Marktplatz-Pflaster unter den Staenden (statt rohem Erdfleck)
   (function(){var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,13),betMat(0xc6c0b2,0.9));
@@ -3995,7 +4026,18 @@ setTimeout(function baueVerkehr(){
   var sch2=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.7,0.05),stdMat(0x2a7ae0,0.4));sch2.position.y=2.5;hs.add(sch2);
   var bank2=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.1,0.5),stdMat(0x8a6a48,0.7));bank2.position.set(1.4,0.5,0);hs.add(bank2);
   [[0.7,0],[2.1,0]].forEach(function(bp){var fu=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.5,0.4),stdMat(0x4a4a52,0.6));fu.position.set(bp[0],0.25,0);hs.add(fu);});
-  hs.position.set(-8,0.06,SZ+6.1);scene.add(hs);
+  /* ⚠️ SZ+6.1 LAG AUF DER FAHRBAHN. Die Hauptstrasse liegt bei z=SZ+12 und ist 16 m
+     breit (strasseMesh(RL,16,…)) — der Asphalt reicht also bis SZ+4. Die Haltestelle
+     stand bei SZ+6.1, mithin 2,1 m INNERHALB der Fahrbahn: Mast, blaues Schild und
+     Bank mitten auf der Strasse, die Autos fuhren hindurch. Im Bild deutlich zu sehen.
+     Anders als Laternen (die `wegVonStrasse` benutzen) lief diese Gruppe an dem
+     Strassenschutz vorbei, der genau dafuer existiert.
+     Der neue Wert ist RELATIV zur Strasse gerechnet, nicht geraten: Rand SZ+4 minus
+     1,4 m → SZ+2.6, damit Bank (0,5 m tief) und Mast auf dem Gehweg stehen.
+     `wegVonStrasse` waere hier zu grob: es schoebe auf SZ-1.5 (13,5 m Sicherheits-
+     abstand ab Strassenmitte) und damit hinter den Gehweg ins Gras — eine Haltestelle
+     gehoert an den Bordstein. */
+  hs.position.set(-8,0.06,SZ+2.6);scene.add(hs);
   // ---- Parkplätze am Straßenrand (Parktaschen mit Markierung + geparkten Autos) ----
   (function baueParkplaetze(){
     var padMat=new THREE.MeshStandardMaterial({color:0x44444c,roughness:0.95});
@@ -8937,15 +8979,52 @@ setTimeout(function baueFest(){
 },0);
 // ---- Stunt-Rampe: mit Schwung drueber = Airtime-Punkte ----
 setTimeout(function baueRampe(){
+function baueRampeAn(rx,rz,rdreh){
   var g=new THREE.Group();
-  var keil=new THREE.Mesh(new THREE.BoxGeometry(6.5,0.25,3.4),new THREE.MeshStandardMaterial({color:0x4a4a52,roughness:0.85}));
-  keil.rotation.z=0.26;keil.position.y=0.85;g.add(keil);
-  [[-1,0],[1,0]].forEach(function(sd){var rail=new THREE.Mesh(new THREE.BoxGeometry(6.5,0.1,0.16),new THREE.MeshStandardMaterial({color:0xf0c030,roughness:0.6}));
-    rail.rotation.z=0.26;rail.position.set(0,1.03,sd[0]*1.7);g.add(rail);});
-  var stuetz=new THREE.Mesh(new THREE.BoxGeometry(0.3,1.7,3.4),new THREE.MeshStandardMaterial({color:0x3a3a42,roughness:0.8}));
-  stuetz.position.set(2.9,0.85,0);g.add(stuetz);
-  g.position.set(-64,-0.15,28);scene.add(g); // Kante ebenerdig
-  window._rampe={x:-64,z:28,cd:0}; // auf der Wiese — stand nach der Map-Verbreiterung auf der Querstrasse
+  /* 🛹 Die Rampe war eine schraeg gestellte PLATTE mit einer einzigen Stuetze am
+     hohen Ende — im Bild eine graue Bohle, die frei ueber der Wiese schwebt (User:
+     "mitte grüne rasen passen nicht gegenstände und objekten"). Jetzt ein
+     geschlossener Keil: ein echtes Dreiecksprofil, das auf dem Boden AUFSITZT.
+     ExtrudeGeometry gibt es in r128; das Profil liegt in der xy-Ebene und wird
+     entlang z ausgezogen, darum die halbe Tiefe als Versatz. */
+  var prof=new THREE.Shape();
+  prof.moveTo(-3.25,0); prof.lineTo(3.25,0); prof.lineTo(3.25,1.70); prof.closePath();
+  var keil=new THREE.Mesh(new THREE.ExtrudeGeometry(prof,{depth:3.4,bevelEnabled:false}),
+    new THREE.MeshStandardMaterial({color:0x54545e,roughness:0.9,flatShading:true}));
+  keil.position.z=-1.7;g.add(keil);
+  /* Anlaufkante: ohne sie steht der Keil wie abgeschnitten auf dem Rasen. */
+  var lippe=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.06,3.4),
+    new THREE.MeshStandardMaterial({color:0x6a6a74,roughness:0.9}));
+  lippe.position.set(-3.6,0.03,0);g.add(lippe);
+  /* Die gelben Leitlinien liegen auf der Schraege — Winkel aus dem Profil, nicht
+     geraten: atan(1.70/6.5). */
+  var _w=Math.atan2(1.70,6.5);
+  [[-1,0],[1,0]].forEach(function(sd){var rail=new THREE.Mesh(new THREE.BoxGeometry(6.72,0.07,0.16),new THREE.MeshStandardMaterial({color:0xf0c030,roughness:0.6}));
+    rail.rotation.z=_w;rail.position.set(0,0.88,sd[0]*1.55);g.add(rail);});
+  g.position.set(rx,0.01,rz);g.rotation.y=rdreh;scene.add(g); // sitzt auf dem Rasen auf
+  return {x:rx,z:rz,cd:0};}
+
+/* ⚠️ EINE Rampe in der ganzen Stadt war zu wenig. Gemessen (th-reichweite): Muenzen
+   kommen erst nach 90 s nach und tragen eine Serie nur bis 3–6; die EINZIGE wiederholbare
+   Quelle, die schnell genug kommt (2 s Abklingzeit), war diese eine Rampe. Der
+   Serien-Deckel von 12 hing damit an einem einzigen Ort der Karte.
+   Die drei neuen Plaetze sind nicht geraten, sondern GESUCHT: das Spiel selbst hat alle
+   Punkte gepruefen (frei von Gebaeuden, nicht auf der Strasse, aber in 26 m Reichweite
+   einer, flach auf 4 m, 7x4 m Platz ringsum) — 272 Treffer, davon die drei mit dem
+   groessten Abstand zueinander. */
+var _RAMPEN_ORTE=[[-64,28],[110,-110],[100,100],[-110,-110]];
+window._rampen=_RAMPEN_ORTE.map(function(o){
+  /* Ausrichtung nicht raten: die Rampe zeigt zur naechsten Strasse, sonst faehrt man
+     quer an ihr vorbei statt hinauf. wegVonStrasse verschiebt einen Punkt genau dann,
+     wenn er auf der Fahrbahn liegt — die Richtung dieser Verschiebung ist die
+     Richtung zur Strasse. */
+  var bx=0,bz=0,bd=1e9;
+  for(var a=-30;a<=30;a+=3)for(var b=-30;b<=30;b+=3){
+    var w=wegVonStrasse(o[0]+a,o[1]+b);
+    if(Math.abs(w[0]-(o[0]+a))>0.01||Math.abs(w[1]-(o[1]+b))>0.01){
+      var d=Math.hypot(a,b);if(d<bd){bd=d;bx=a;bz=b;}}}
+  return baueRampeAn(o[0],o[1],bd<1e9?Math.atan2(bx,bz):0);});
+window._rampe=window._rampen[0]; /* Altbestand: einzelne Verweise bleiben gueltig */
 },0);
 function updFest(dt,now){var FE=window._fest;if(!FE)return;
   var h=uhrzeit/60,aktiv=h>=19.5&&h<=22.5;
@@ -9845,7 +9924,7 @@ function komboHudUpd(){
    ⚠️ Die Hetze zahlt NICHTS aus. Sie zaehlt nur, was man ohnehin verdient (siehe
    verdiene). Waere es anders, waere die beste Strategie, sie endlos zu wiederholen —
    und das Spiel darum herum waere egal. Der Reiz ist der Rekord, nicht die Kasse. */
-var HETZE={an:false,t:0,dauer:90,punkte:0,best:0,kette:0,_piep:0};
+var HETZE={an:false,t:0,dauer:90,punkte:0,best:0,kette:0,letzte:[],_piep:0};
 /* Die Einladung. Sie erscheint GENAU EINMAL und nur, wenn gerade eine starke Serie
    geendet hat: dann ist die Spielerin warm, es passiert nichts anderes, und die Frage
    "noch neunzig Sekunden?" trifft den Moment. Ausserhalb dieses Fensters waere ein
@@ -9890,6 +9969,10 @@ function hetzeEnde(){
   if(rek)HETZE.best=HETZE.punkte;
   /* Zaehler fuer die Ziele — erst dadurch taucht die Hetze ueberhaupt in der
      Erfolgsliste auf, und damit auch in "Am naechsten dran". */
+  /* Die letzten fuenf Laeufe: erst im Vergleich sieht man, ob man besser wird.
+     Ein einzelner Punktestand sagt nichts, fuenf nebeneinander sagen alles. */
+  HETZE.letzte.push(HETZE.punkte);
+  while(HETZE.letzte.length>5)HETZE.letzte.shift();
   stats.hetzen=(stats.hetzen||0)+1;
   if(HETZE.punkte>(stats.hetzeBest||0))stats.hetzeBest=HETZE.punkte;
   if(HETZE.kette>(stats.hetzeKette||0))stats.hetzeKette=HETZE.kette;
@@ -9898,10 +9981,27 @@ function hetzeEnde(){
   if(e)e.innerHTML='<div style="font-size:1.5rem;font-weight:900">'+(rek?"🏆 NEUER REKORD!":"🏁 Hetze vorbei")+'</div>'+
     '<div style="font-size:2.1rem;font-weight:900;color:#d4802a;margin:8px 0">'+HETZE.punkte+' $</div>'+
     '<div style="font-size:.9rem">l\u00e4ngste Serie dabei: <b>'+HETZE.kette+'</b>'+
-    (rek?"":' · Rekord: <b>'+HETZE.best+' $</b>')+'</div>';
+    (rek?"":' · Rekord: <b>'+HETZE.best+' $</b>'+
+      (HETZE.best>HETZE.punkte?' · <span style="color:#d4802a">'+(HETZE.best-HETZE.punkte)+' $ gefehlt</span>':''))+'</div>'+
+    hetzeVerlauf();
   var p3=document.getElementById("hetzePanel");if(p3)p3.style.display="flex";
   if(typeof beep==="function")beep(rek?1040:440,.18,"triangle",.06);
   if(rek&&typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);}
+/* Fuenf Balken, der hoechste ist der Rekord. Kein Diagramm, keine Achse — nur die
+   Frage "werde ich besser?", auf einen Blick beantwortet. */
+function hetzeVerlauf(){
+  var L=HETZE.letzte;
+  if(L.length<2)return "";
+  var max=Math.max.apply(null,L)||1,h="";
+  for(var i=0;i<L.length;i++){
+    var hoch=Math.max(4,Math.round(L[i]/max*34)),letzt=(i===L.length-1);
+    h+='<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px">'+
+       '<div style="width:100%;height:'+hoch+'px;border-radius:4px 4px 0 0;background:'+
+       (letzt?"#d4802a":(L[i]>=max?"#e8b04a":"#cfc4ae"))+'"></div>'+
+       '<small style="font-size:.62rem;color:#8a7a5a">'+L[i]+'</small></div>';}
+  return '<div style="margin-top:12px"><small style="color:#8a7a5a;font-weight:800">Deine letzten '+
+    L.length+' Runden</small><div style="display:flex;align-items:flex-end;gap:5px;height:52px;margin-top:5px">'+
+    h+'</div></div>';}
 function hetzeHudUpd(){
   var el=document.getElementById("hetzeHud");if(!el)return;
   if(!HETZE.an){el.style.display="none";return;}
@@ -9924,6 +10024,14 @@ function hetzeHudUpd(){
   el.innerHTML='<div style="display:flex;align-items:center;gap:9px;justify-content:center">'+
     '<span style="font-size:1.05rem;font-weight:900">🏁 '+Math.ceil(s1)+'s</span>'+
     '<span style="font-weight:900;color:#ffd166">'+HETZE.punkte+' $</span>'+
+    /* 🏆 DER MOMENT KURZ DAVOR. Ohne diese Zeile laeuft man neunzig Sekunden
+       blind und erfaehrt erst am Ende, ob es gereicht hat. Mit ihr weiss man in
+       Sekunde 70, dass 40 $ fehlen — und daraus entsteht der letzte Sprint.
+       Erst ab der Haelfte des Rekords, sonst stuende dort die ganze Runde lang eine
+       entmutigend grosse Zahl. */
+    (HETZE.best>0&&HETZE.punkte<HETZE.best&&HETZE.punkte>=HETZE.best*0.5
+      ?'<span style="font-weight:900;color:#ff9f45">· noch '+(HETZE.best-HETZE.punkte)+' $</span>'
+      :(HETZE.best>0&&HETZE.punkte>=HETZE.best?'<span style="font-weight:900;color:#8fe08f">· REKORD!</span>':''))+
     '</div><div style="margin-top:4px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden">'+
     '<div style="height:100%;width:'+(anteil*100).toFixed(0)+'%;background:'+(eng?"#ff6b5a":"#e8a33d")+
     ';transition:width .12s linear"></div></div>';
@@ -10685,7 +10793,8 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   anC:window._angelCd,
   kb:KOMBO.best||0,   /* 🔥 der eigene Serien-Rekord — das, was man schlagen will */
   an:_achNah,       /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
-  hz:HETZE.best||0};}  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
+  hz:HETZE.best||0,
+  hzl:HETZE.letzte||[]};}  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -10739,6 +10848,7 @@ function loadSnapshot(sn){
   if(sn.kb!==undefined)KOMBO.best=sn.kb|0;
   if(sn.an)_achNah=sn.an;
   if(sn.hz!==undefined)HETZE.best=sn.hz|0;
+  if(Array.isArray(sn.hzl))HETZE.letzte=sn.hzl.slice(-5);
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
@@ -11581,10 +11691,13 @@ function autoFahr(dt){
      unsichtbaren Koerper von sich aus loslaufen zu lassen. */
   if(sims[0]){sims[0].x=m.position.x;sims[0].z=m.position.z;sims[0].state="faehrt";}
   // Rampe + Sprungphysik laufen IMMER (auch ohne Lenk-Input — sonst friert der Flug ein)
-  var RP=window._rampe;
-  if(RP){RP.cd-=dt;
+  /* Jede Rampe hat ihre EIGENE Abklingzeit — eine gemeinsame haette bedeutet, dass
+     ein Sprung im Osten die Rampe im Westen fuer zwei Sekunden sperrt. */
+  var RPS=window._rampen;
+  if(RPS)for(var _ri=0;_ri<RPS.length;_ri++){var RP=RPS[_ri];
+    RP.cd-=dt;
     if(carAirY<=0&&RP.cd<=0&&(window._carKmh||0)>20&&Math.hypot(m.position.x-RP.x,m.position.z-RP.z)<3.6){
-      carVY=(window._carKmh||0)/4*0.62;carAirT=0;RP.cd=2;beep(300,.12,"square",.05);}}
+      carVY=(window._carKmh||0)/4*0.62;carAirT=0;RP.cd=2;beep(300,.12,"square",.05);break;}}
   if(carVY>0||carAirY>0){carVY-=24*dt;carAirY=Math.max(0,carAirY+carVY*dt);carAirT+=dt;
     m.position.y=(a.homeY||0.01)+carAirY;
     if(carAirY<=0&&carVY<0){carVY=0;
@@ -12814,7 +12927,13 @@ function updMinimap(dt){
   if(typeof pickups!=="undefined"&&pickups.length){
     /* Waehrend einer Serie sticht die NAECHSTE Muenze hervor — sie ist das naechste
        Kettenglied, und die Uhr laeuft. Ausserhalb einer Serie bleibt das Radar ruhig. */
-    var jagd=(typeof KOMBO!=="undefined"&&KOMBO.n>0),nahI=-1,nahD=1e9;
+    /* ⚠️ Stand hier nur `KOMBO.n>0`. Eine Hetze startet aber IMMER mit Serie 0 (das ist
+       Absicht, siehe hetzeStart) — in den ersten Sekunden der Runde war man damit blind,
+       genau dann, wenn die Uhr schon laeuft und man das erste Ziel braucht. Am Bild
+       gemessen: 0 Markierungs-Pixel bei laufender Hetze. Die beiden Schleifen gehoeren
+       hier zusammen. */
+    var jagd=(typeof KOMBO!=="undefined"&&KOMBO.n>0)||(typeof HETZE!=="undefined"&&HETZE.an),
+        nahI=-1,nahD=1e9;
     if(jagd)for(var pn=0;pn<pickups.length;pn++){if(!pickups[pn].active)continue;
       var dd=Math.hypot(pickups[pn].x-pcx,pickups[pn].z-pcz);
       if(dd<nahD){nahD=dd;nahI=pn;}}
@@ -13674,7 +13793,17 @@ document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=de
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
 document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
   document.getElementById("modeBtn").textContent=buildMode?"👀 Leben":"🔨 Bauen";
-  document.getElementById("modeBtn").classList.toggle("building",buildMode);
+  /* ⚠️ INLINE MIT !important UEBERLEBT DEN MODUSWECHSEL. layoutLinkeSpalte setzt im
+     Spielmodus `left` inline und mit Prioritaet (weil die CSS-Regel selbst !important
+     traegt). Im Baumodus soll `#modeBtn.building{left:50%;transform:translateX(-50%)}`
+     den Knopf oben MITTIG stellen — das Inline-left gewinnt aber, und das transform
+     schiebt ihn danach um die halbe Breite nach links: 12 − 58 = −46 px, also halb aus
+     dem Bild. Gemessen mit th-hud (Baumodus-Durchlauf, 1280x800). Darum die Inline-
+     Werte beim Wechsel loeschen und beim Zurueckwechseln neu setzen lassen. */
+  var _mb9=document.getElementById("modeBtn");
+  _mb9.classList.toggle("building",buildMode);
+  if(buildMode){["left","top","bottom"].forEach(function(k){_mb9.style.removeProperty(k);});}
+  else if(typeof layoutLinkeSpalte==="function")setTimeout(layoutLinkeSpalte,30);
   document.getElementById("palette").style.display=buildMode?"block":"none";
   document.getElementById("tools").style.display=buildMode?"flex":"none";
   gridHelper.visible=buildMode;refreshGhost();};
@@ -13689,7 +13818,14 @@ function updHUD(){
   var skr=document.createElement("div");skr.style.cssText="font-size:.72rem;color:#5a4a30;font-weight:800";
   /* Feste Leerzeichen innerhalb eines Eintrags: wird es doch einmal zu eng, faellt
      der Umbruch ZWISCHEN zwei Eintraege statt mitten hinein ("Lv1" allein). */
-  skr.textContent="💼\u00A0Lv"+skills.arbeit.lv+" · 💘\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️\u00A0Lv"+skills.krimi.lv:"")+(arbeiten?" · Arbeit\u00A0…":(crime.on?" · unterwegs\u00A0🌙":""));
+  /* ⚠️ Auf schmalen Geraeten war genau der Status-Nachsatz das, was die Zeile brechen
+     liess: bei 568 px braucht sie 217 px und hat 162 (gemessen mit th-hud). Statt den
+     Umbruch hinzunehmen wird die FORM gekuerzt, nicht die Information — aus
+     "· Arbeit …" wird "· 🔨". Der Wortlaut bleibt, wo Platz ist. */
+  var _eng9=innerWidth<700;
+  var _st9=arbeiten?(_eng9?" · 🔨":" · Arbeit\u00A0…")
+          :(crime.on?(_eng9?" · 🌙":" · unterwegs\u00A0🌙"):"");
+  skr.textContent="💼\u00A0Lv"+skills.arbeit.lv+" · 💘\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️\u00A0Lv"+skills.krimi.lv:"")+_st9;
   nb.appendChild(skr);
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
@@ -13715,6 +13851,23 @@ function startGame(){
      zweiten Mal nichts. */
   try{if(window._aufwaermen)window._aufwaermen();}catch(e){}
   running=true;window._running=true;window._tagesGeldStart=geld;window._saveSlot=MPs?"th_save_coop":SAVE;
+  /* 🎥 DER ERSTE BLICK. camTx/camTz starten auf dem Weltursprung, die Figur spawnt aber
+     rund 80 m entfernt — und `followSim` wird erst gesetzt, wenn man das erste Mal
+     STEUERT (siehe updSim). Das erste Bild zeigte damit leeren Rasen ohne Figur: kein
+     Anhaltspunkt, man bewegt sich blind, bis die Kamera herangeglitten ist. Gemessen
+     mit th-kadrierung: 79,6 m Abstand, NDC x = −1,97, also weit ausserhalb.
+     Hier wird die Kamera einmal auf die Figur GESETZT (nicht geglitten) — das Folgen
+     danach bleibt unveraendert. */
+  try{var _me0=sims[meinSi()]||sims[0];
+    if(_me0){camTx=_me0.x;camTz=_me0.z;
+      /* 🔎 UND NAH GENUG, UM SICH ZU SEHEN. Gemessen im Handy-Querformat (844x390):
+         beim Standardabstand 44 ist die eigene Figur 12,8 px hoch — 3,3 % der Bildhoehe.
+         Man steuert damit eine Person, die man kaum erkennt. Bei 30 sind es 18,1 px
+         (+41 %), und die Nachbarschaft bleibt im Blick.
+         Nur der STARTWERT: wer wegzoomt, bleibt weggezoomt — camRT wird hier gesetzt,
+         nicht laufend erzwungen. */
+      if(camR>30){camR=30;camRT=30;}
+      updCam();}}catch(e){}
   if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
@@ -14267,7 +14420,33 @@ function loop(now){
         if(wa9.length)netSend({t:"wachs",a:wa9});}}}
     saveTick+=dt;if(saveTick>6){saveTick=0;saveGame();}
   }
-  if(!_lodBereit&&performance.now()>4000){lodAufbau();autoKollider();kolliderNachziehen();}
+  /* ⚠️ DER LOD-INDEX WURDE MITTEN IM NACHLADEN GEBAUT. lodAufbau() lief GENAU EINMAL,
+     bei 4 s — die beiden Bewohner-Modelle brauchen allein 12,8 s, dahinter kommen rund
+     95 kleine GLBs. Alles, was danach eintraf, stand nie im Index und blieb damit
+     FUER IMMER sichtbar, egal wie weit weg.
+     GEMESSEN (Handy-Format 844x390): 49'807 Meshes sind klein genug fuers LOD
+     (Radius <= 2,2 m), im Index standen 6'855. Rund 43'000 Kleinteile also ungedeckt —
+     und genau die kosten je einen Zeichenaufruf und einen Schritt in der Szenen-
+     Durchquerung, die three.js in JEDEM Bild macht. th-tempo sagt dazu: das reine
+     Rendern ist 4 % der Bildzeit, 96 % liegen davor.
+     Darum wird der Index nachgezogen, solange die Welt noch waechst. Als billiger
+     Wachstums-Anzeiger dient die Geometrie-Zahl des Renderers (monoton beim Laden) —
+     eine eigene Zaehl-Durchquerung waere so teuer wie der Neuaufbau selbst. */
+  if(!_lodBereit&&performance.now()>4000){lodAufbau();autoKollider();kolliderNachziehen();
+    window._lodGeo=window._lodStart=renderer.info.memory.geometries;window._lodNeu=0;window._lodRuhe=0;window._lodDann=performance.now()+5000;}
+  else if(_lodBereit&&window._lodNeu<8&&performance.now()>window._lodDann){
+    var _g9=renderer.info.memory.geometries;
+    /* ⚠️ GEMESSEN: ein lodAufbau() kostet 42–48 ms (65'000 Objekte durchqueren) — auf
+       dem Handy entsprechend mehr. Die erste Fassung baute bei JEDEM Wachstumsschritt
+       neu, bis zu achtmal: acht Aussetzer in der ersten Minute, selbst eingebaut.
+       Jetzt wird nur GEMERKT, dass gewachsen wurde, und erst wenn zwei Nachschauen
+       hintereinander nichts Neues zeigen, EINMAL neu aufgebaut. Das Laden ruckelt
+       ohnehin; der eine Nachlauf faellt dann in die Ruhe danach. */
+    if(_g9>window._lodGeo*1.02+20){window._lodGeo=_g9;window._lodRuhe=0;}
+    else if(_g9>window._lodStart*1.02+20&&(window._lodRuhe=(window._lodRuhe||0)+1)>=2){
+      lodAufbau();window._lodStart=_g9;window._lodNeu=8;}   /* einmal, dann Ruhe */
+    else if(_g9<=window._lodStart*1.02+20)window._lodNeu=8; /* nie gewachsen -> fertig */
+    window._lodDann=performance.now()+4000;}
   else if(_lodBereit&&(++_lodTick%8===0)){var _p=spielerPos();lodTakt(_p.x,_p.z);}
   /* 🔋 IM MENUE NICHT DIE GANZE WELT NEU ZEICHNEN. `.overlay` liegt mit
      rgba(...,.94)…(.97) ueber dem ganzen Bild — vom 3D-Hintergrund sind hoechstens
@@ -14543,13 +14722,25 @@ function lodAufbau(){
     kugel=n.geometry.boundingSphere;if(!kugel)return;
     var sk=Math.max(Math.abs(n.scale.x),Math.abs(n.scale.y),Math.abs(n.scale.z));
     var r=kugel.radius*sk;
-    if(r>2.2)return;                       /* gross genug -> immer sichtbar */
-    n.getWorldPosition(mitte);
+    /* ⚠️ DIE GRENZE LAG BEI 2,2 m — alles darueber blieb auf JEDE Entfernung stehen.
+       Gemessen sind das 3'051 Meshes zwischen 2,2 und 4 m (Kioske, kleine Baeume,
+       Sitzgruppen, Fahrzeuge): aus 130 m Entfernung ein paar Pixel gross, aber je ein
+       voller Zeichenaufruf. th-tempo sagt nach der Korrektur, dass RENDERN 78 % der
+       Arbeit je Bild ist — also zaehlt genau das.
+       Dritte Stufe darum: mittelgross verschwindet erst weit draussen (130/138 m), wo
+       ein 3-m-Objekt unter zwei Bildpunkte faellt. Die Reserve von 8 m ist groesser als
+       bei den anderen Stufen, weil man diese Entfernung schneller durchfaehrt als
+       durchlaeuft. */
+    if(r>4.5)return;                       /* gross genug -> immer sichtbar */
+    /* Weltposition direkt aus der Matrix (Spalte 4) statt getWorldPosition — das
+       dekomponiert die ganze Matrix samt Quaternion, fuer 55'000 Meshes messbar teurer.
+       Die Matrizen sind zu diesem Zeitpunkt aktuell (render laeuft jedes Bild). */
+    var _e=n.matrixWorld.elements;mitte.set(_e[12],_e[13],_e[14]);
     /* Zwei Stufen: Winziges (Sprossen, Griffe, Torlatten, Fensterbaenke) ist nur
        aus der Naehe ueberhaupt lesbar, kostet aber je einen vollen Zeichenaufruf.
        Nach dem Einbau der Fenster- und Tuerdetails stiegen die Aufrufe von 270
        auf 1148 — deshalb verschwindet dieses Kleinzeug schon ab 34 m. */
-    _lodKlein.push({m:n,x:mitte.x,z:mitte.z,nah:(r<0.55)});
+    _lodKlein.push({m:n,x:mitte.x,z:mitte.z,nah:(r<0.55),mittel:(r>2.2)});
   });
   _lodBereit=true;
   return _lodKlein.length;
@@ -14612,10 +14803,31 @@ function lodTakt(px,pz){
      2 m am Kugelradius, ausdruecklich „gegen Flackern"; hier fehlte sie ganz.
      Jetzt: einblenden ab 78 m, ausblenden erst ab 82 m (nah: 34 / 37). Vier Meter
      Reserve kosten ein paar Zeichenaufrufe mehr und nehmen dem Rand das Zucken. */
-  var AN_F=78*78, AUS_F=82*82, AN_N=34*34, AUS_N=37*37;
+  /* ⚠️ FESTE METER IGNORIEREN DEN ZOOM. Ob ein Objekt sichtbar sein MUSS, entscheidet
+     seine Groesse auf dem Schirm, nicht sein Abstand in Metern. Beim Herauszoomen
+     (camR bis 135) steht die Kamera dreimal so weit weg wie im Normalfall (44) — ein
+     0,5-m-Ding faellt dort unter einen Bildpunkt, wurde aber weiter gezeichnet.
+     Genau dort liegt die Last: gemessen 5'868 Zeichenaufrufe und 1,06 Mio Dreiecke bei
+     Zoom 135, gegenueber 1'675 und 611k in der Nahansicht.
+     Darum schrumpfen die Schwellen mit dem Zoom — aber NUR nach draussen: bis zum
+     Normalzoom (44) bleibt alles wie bisher, damit das normale Spielen unveraendert
+     aussieht. Das Verhaeltnis ist linear zur Kameraentfernung, weil die Bildgroesse
+     eines Objekts genau so faellt. */
+  var _zf=Math.min(1,44/Math.max(24,camR)), _z2=_zf*_zf;
+  /* ⚠️ NUR DIE KLEINEN. Nachgerechnet mit der Bildgroesse (fov 46 Grad, 390 px Hoehe):
+     ein Objekt faellt unter zwei Bildpunkte ab etwa Radius x 230 Metern Kameraabstand.
+     Fuer 0,55 m sind das 126 m — herausgezoomt also laengst unsichtbar, Wegblenden
+     kostet nichts. Fuer die MITTLEREN (bis 4,5 m) waeren es ueber 1000 m; ihre 130-m-
+     Grenze ist ohnehin schon ein bewusster Handel, nicht Physik. Wuerde man sie
+     mitskalieren, verschwaenden bei Zoom 135 Objekte ab 42 m, die auf dem Schirm noch
+     rund zehn Bildpunkte gross sind — ein sichtbarer Verlust statt eines Gewinns.
+     Also: kleine und winzige mit dem Zoom, mittlere fest. */
+  var AN_F=78*78*_z2, AUS_F=82*82*_z2, AN_N=34*34*_z2, AUS_N=37*37*_z2,
+      AN_M=130*130, AUS_M=138*138;
   for(var i=0;i<_lodKlein.length;i++){
     var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz,d2=dx*dx+dz*dz;
-    var sicht=e.m.visible ? d2<(e.nah?AUS_N:AUS_F) : d2<(e.nah?AN_N:AN_F);
+    var an=e.mittel?AN_M:(e.nah?AN_N:AN_F), aus=e.mittel?AUS_M:(e.nah?AUS_N:AUS_F);
+    var sicht=e.m.visible ? d2<aus : d2<an;
     if(e.m.visible!==sicht)e.m.visible=sicht;
   }
   /* Instanzgruppen (Zaunlinien, Hecke): als GANZES ausblenden, gemessen an ihrer

@@ -60,7 +60,14 @@ alle.forEach((e) => console.log(zeile(e)))
 /* Eine begruendete Ausnahme, kein pauschales Stummschalten: die Marke "Meer" zeigt
    auf offenes Wasser. Dort steht planmaessig nichts — das naechste Modell ist ein
    Segelboot in 83 m. Wer hier weitere Namen eintraegt, schreibt den Grund dazu. */
-const ERLAUBT = { Meer: 'offenes Wasser, dort steht planmaessig nichts' }
+const ERLAUBT = {
+  Meer: 'offenes Wasser, dort steht planmaessig nichts',
+  /* Der Gipfel ist GELAENDE, kein Modell — er hat weder Mesh in Marker-Naehe noch
+     Kollider, und trotzdem ist die Marke richtig. NACHGEMESSEN, nicht angenommen:
+     gelaendeH(60,-420) = 170 m, und es faellt nach allen Seiten ab
+     (x: 96,7 → 170 → 106,8 · z: 91,3 → 170 → 101,7). Ein Gipfel, wie er im Buche steht. */
+  'Grosser Berg': 'Gelaendegipfel auf 170 m — Gelaende hat kein Modell und keinen Kollider',
+}
 const schlecht = alle.filter((e) => e.m > GRENZE && e.k > GRENZE && !ERLAUBT[e.name])
 const geduldet = alle.filter((e) => e.m > GRENZE && e.k > GRENZE && ERLAUBT[e.name])
 console.log(`\nVerdaechtig (Modell UND Kollider weiter als ${GRENZE} m): ${schlecht.length}`)

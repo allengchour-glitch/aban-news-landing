@@ -31,6 +31,30 @@ const datei = (process.argv[2] && !process.argv[2].startsWith('--')) ? process.a
 const tmp = '_tempo_tmp.html'
 
 const sonden = {
+  /* ⚠️ ARBEIT IST NICHT BILDABSTAND. Dieses Werkzeug hat den Abstand zwischen zwei
+     Bildern gemessen und davon die Renderzeit abgezogen — der Rest hiess "Spiellogik".
+     Im Headless-Browser ist rAF aber auf rund ein Bild je Sekunde GEDROSSELT: gemessen
+     965,8 ms Abstand bei 33,9 ms Arbeit. Die alte Rechnung machte daraus "Rendern 4 %,
+     Rest 96 %" — 932 ms davon waren reiner LEERLAUF. Die Aussage war damit genau
+     verkehrt herum: das Rendern ist fast die ganze Arbeit, nicht ein Zwanzigstel.
+     Darum wird jetzt der rAF-Rueckruf selbst gestoppt, von Anfang bis Ende. */
+  takt: `function(was){
+    if(was==="an"){
+      if(window.__takt)return true;
+      window.__takt={n:0,summe:0,max:0,abst:0,letzt:0};
+      var raf=window.requestAnimationFrame.bind(window);
+      window.requestAnimationFrame=function(fn){
+        return raf(function(ts){
+          var a=performance.now(),T=window.__takt;
+          if(T.letzt)T.abst+=a-T.letzt;
+          T.letzt=a;
+          try{ fn(ts); } finally {
+            var d=performance.now()-a;T.summe+=d;T.n++;if(d>T.max)T.max=d; }});};
+      return true;}
+    if(was==="lies"){var T=window.__takt||{n:0,summe:0,max:0,abst:0};
+      return {n:T.n, arbeit:+(T.summe/Math.max(1,T.n)).toFixed(1),
+        max:+T.max.toFixed(1), abstand:+(T.abst/Math.max(1,T.n-1)).toFixed(1)};}
+    return null;}`,
   tempo: `function(){
     var r=renderer.info.render, m=renderer.info.memory;
     var objekte=0, meshes=0, sichtbar=0, dreieckeSichtbar=0, autoMat=0, schattenWerfer=0;
@@ -84,14 +108,23 @@ const fps = await page.evaluate(() => new Promise((res) => {
 }))
 const t = await page.evaluate(() => window.__th.tempo())
 const r = await page.evaluate(() => window.__th.takte(5))
+/* Arbeit je Bild ueber ein paar Sekunden echter Bilder mitschreiben. */
+await page.evaluate(() => window.__th.takt('an'))
+await page.waitForTimeout(12000)
+const w = await page.evaluate(() => window.__th.takt('lies'))
 await browser.close(); aufraeumen(tmp)
 
 const ms = (1000 / fps)
 console.log(`\n=== Tempo (${datei}) ===\n`)
 console.log(`Modus                    ${t.mobil ? '📱 HANDY' : '🖥️  RECHNER'}   (screen ${t.schirm[0]}x${t.schirm[1]}, _mobil=${t.mobil})`)
-console.log(`Bildrate im Spiel        ${fps}/s  =  ${ms.toFixed(0)} ms je Bild   ⚠️ Software-Rasterizer, kein Geraetewert`)
-console.log(`Davon reines Rendern     ${r.median} ms  (min ${r.min} · max ${r.max})  = ${(100 * r.median / ms).toFixed(0)} % der Bildzeit`)
-console.log(`Rest (Spiellogik + Rest) ${(ms - r.median).toFixed(0)} ms  = ${(100 * (ms - r.median) / ms).toFixed(0)} %`)
+const arbeit = w.arbeit || r.median
+const anteil = arbeit > 0 ? (100 * r.median / arbeit) : 0
+console.log(`ARBEIT je Bild           ${arbeit} ms  (laengste ${w.max} ms, ${w.n} Bilder)  ← das zaehlt`)
+console.log(`  davon reines Rendern   ${r.median} ms  (min ${r.min} · max ${r.max})  = ${anteil.toFixed(0)} % der ARBEIT`)
+console.log(`  Rest (Spiellogik)      ${(arbeit - r.median).toFixed(1)} ms  = ${(100 - anteil).toFixed(0)} %`)
+console.log(`Bildabstand              ${w.abstand} ms  (${fps}/s)  ⚠️ enthaelt LEERLAUF: rAF ist hier auf ~1 Bild/s`)
+console.log(`                         gedrosselt. Weder Abstand noch Bildrate sind Geraetewerte —`)
+console.log(`                         und "Bildabstand minus Rendern" ist KEINE Spiellogik-Zeit.`)
 console.log(`\nZeichenaufrufe           ${t.calls}      Dreiecke ${t.tri.toLocaleString('de-CH')}`)
 console.log(`Leinwand                 ${t.pixel[0]}x${t.pixel[1]} px`)
 console.log(`Objekte in der Szene     ${t.objekte}   davon Meshes ${t.meshes}  (sichtbar ${t.sichtbar})`)

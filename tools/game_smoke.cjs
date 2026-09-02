@@ -22,10 +22,23 @@ const { chromium } = require("playwright");
 const ROOT = process.cwd();
 const PORT = 8099;
 const OUT = process.env.SMOKE_OUT || path.join(os.tmpdir(), "aban-smoke");
-const GAMES = process.argv.slice(2).length
-  ? process.argv.slice(2)
-  : ["traumhaus.html", "lebenspfad.html", "neon-wildnis.html", "neon-survivor.html",
-     "neon-realm.html", "neon-flug.html", "wort-des-tages.html", "wortbruecke.html", "spiele.html"];
+/* ⚠️ EINE FESTE LISTE VERALTET STILL. Hier standen neun Spiele — im Repo liegen
+   fuenfzehn. Acht davon (neon-abyss, -colossus, -dungeon, -duo, -jump, -park, -racer,
+   -zusammen) wurden nie geprueft, und nichts hat darauf hingewiesen: der Lauf meldete
+   brav "alle 9 ohne JS-Fehler". Auch die Spiele-Uebersicht taugt nicht als Quelle, sie
+   verlinkt nur neun (Stations-Spiele wie neon-jump werden aus einem anderen Spiel
+   heraus gestartet und stehen dort nicht).
+   Darum: im Dateisystem nachsehen. Ein neues Spiel ist ab dem ersten Tag mitgeprueft. */
+const SPIELMUSTER = /^(neon-[a-z]+|lebenspfad|wort[a-z-]*|traumhaus|spiele)\.html$/;
+const ENTDECKT = fs.readdirSync(ROOT).filter((f) => SPIELMUSTER.test(f)).sort();
+/* ⚠️ Eine Null ist ein Verdacht, kein Ergebnis. Findet die Suche fast nichts, ist das
+   Muster kaputt oder das Arbeitsverzeichnis falsch — dann lieber laut abbrechen, als
+   "alle 0 ohne JS-Fehler" zu melden. */
+if (!process.argv.slice(2).length && ENTDECKT.length < 8) {
+  console.error(`Nur ${ENTDECKT.length} Spiele gefunden (erwartet >= 8) — Muster oder Verzeichnis pruefen.`);
+  process.exit(2);
+}
+const GAMES = process.argv.slice(2).length ? process.argv.slice(2) : ENTDECKT;
 
 const MIME = {
   ".html": "text/html", ".js": "text/javascript", ".css": "text/css",

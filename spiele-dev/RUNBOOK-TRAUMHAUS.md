@@ -5824,3 +5824,268 @@ genau so passiert. `th-fahrt` läuft darum `F.rotor` mit ab (518 statt 115 Teile
 > `scooter`. Sie haben keinen benannten Drehpunkt; ihre Bewegung wäre keine Drehung, sondern
 > eine Fahrt (Gondel hoch/runter, Kabinen am Seil, Boote im Kanal). Das braucht je Modell
 > eine eigene Vermessung der Bauteile — und die gehört in eine eigene Runde.
+
+## 2026-08-30 · 🏆 Der Moment kurz davor — die Hetze wusste nie, wie nah man dran ist
+
+**Der Befund.** Die Hetze hatte einen Rekord, aber während der neunzig Sekunden lief man
+**blind**: ob es reicht, erfuhr man erst am Ende. Der stärkste Moment einer Kurzrunde ist
+aber genau der, in dem man *weiss*, dass 40 $ fehlen und zwanzig Sekunden bleiben.
+Und ein einzelner Punktestand sagt nichts — erst fünf nebeneinander beantworten die
+Frage „werde ich besser?".
+
+**Zwei Zusätze, beide in vorhandenen Elementen, kein neues HUD:**
+
+| Teil | Wirkung |
+|---|---|
+| Rückstand in der Uhr | „🏁 45s · 700 $ · **noch 300 $**", ab Rekordhöhe „**REKORD!**" |
+| `HETZE.letzte` (5 Läufe) | Balkenreihe im Ergebnis, der letzte dunkel, der beste hell |
+| Ergebnis | „Rekord: 500 $ · **250 $ gefehlt**" |
+
+**Die Schwelle ist Absicht:** der Rückstand erscheint erst ab **der Hälfte** des Rekords.
+Davor stünde die ganze Runde lang eine entmutigend grosse Zahl — aus einem Ansporn würde
+eine Ansage, dass es sowieso nicht reicht.
+
+**Geprüft:** `spiele-dev/tools/th-jagd.mjs` — 17/17, davon 5 Gegenproben, darunter die
+beiden Ränder des Fensters (bei 10 % des Rekords **keine** Anzeige, bei 99,9 % „noch 1 $")
+und ein zu langer Verlauf im Spielstand, der beim Laden gekappt wird. Zwei Sabotagen:
+Schwelle auf 0 gesetzt → „weit unter dem Rekord bleibt sie aus" rot; die Kappung auf fünf
+entfernt → **vier** Prüfungen rot (Liste, Reihenfolge, Balkenzahl, Spielstand).
+Bestand grün: `th-hetze` 27/27, `th-hud`, `th-speichern`, `th-lint`.
+
+### Eine Falle beim Bearbeiten, nicht beim Denken
+
+Ein Ersetzen scheiterte an `' · Rekord: '` — ich hatte `·` gesucht, in der Datei
+steht aber das **echte UTF-8-Zeichen** `·`. Dieselbe Datei mischt beide Schreibweisen
+(`längste` daneben als Escape). → Vor einem Muster-Ersetz **immer** die Zielzeile
+mit `cat -A` ansehen, statt die Schreibweise aus dem Gedächtnis zu rekonstruieren.
+Der `assert` davor hat den Schaden verhindert: er lief vor dem Schreiben, die Datei blieb
+unangetastet. **Prüfen vor dem Schreiben, nicht danach.**
+
+## 2026-08-30 · 👀 Der erste Blick zeigte leeren Rasen — und drei Layout-Befunde
+
+**Auftrag des Users:** „coole layout noch besser, keine rahmen, keine überschneidung,
+mitte grüne rasen passen nicht gegenstände und objekten".
+
+### 1. Die Figur stand beim Start 80 m ausserhalb des Bildes
+
+`camTx/camTz` starten auf **(0,0)**, die Figur spawnt bei **(−67, 43)**, und `followSim`
+wird erst gesetzt, **wenn man das erste Mal steuert** (in `updSim`, Zweig `state==="steer"`).
+Das allererste Bild zeigte darum leeren Rasen: keine Figur, kein Haus, keine Stadt.
+
+Gemessen in **Bildkoordinaten (NDC)** statt per Augenmass — unabhängig von Fenstergrösse,
+Zoom und Blickwinkel: vorher **79,6 m Abstand, NDC x = −1,97**; nachher **0 m, NDC 0/−0,02**.
+Fix: in `startGame` die Kamera einmal auf die Figur **setzen** (nicht gleiten lassen); das
+Folgeverhalten bleibt unverändert und ist mitgeprüft. Werkzeug: `th-kadrierung.mjs` (6/6).
+
+> **Falle im eigenen Prüfer:** die Gegenprobe „Kamera weit wegziehen" stand **vor** der
+> Folge-Prüfung — diese mass danach den Rückweg aus 136 m und fiel durch, obwohl das
+> Folgen einwandfrei arbeitet. **Eine Gegenprobe, die den Zustand verändert, gehört ans Ende.**
+
+### 2. Rahmenlos
+
+Die **dauerhaft sichtbaren** Bedienelemente tragen keine Linie mehr: `.panel`, `.tbtn`,
+`#achBtn` und der harte weisse 3-px-Ring um `#minimap`. Trennung macht der Schatten.
+Ein 2-px-Strich um jede Kachel zerschneidet das Bild in Kästen. **Dialoge behalten ihre
+Kante** — dort trennt sie sinnvoll.
+
+### 3. Die Fertigkeitszeile brach um — und war nicht reproduzierbar
+
+`needsBox` bei 568 px: 217 px gebraucht, 162 verfügbar. Zwei Änderungen:
+- Die **Form** gekürzt, nicht die Information: unter 700 px wird aus „· Arbeit …" ein „· 🔨".
+- Deckel von `max-width:190px` auf `206px` (190 − 24 px Polsterung = 166 Inhalt, gebraucht 175).
+
+⚠️ **Der Umbruch trat nur manchmal auf** — nämlich wenn alle drei Fertigkeiten *und* der
+Arbeits-Status zusammenkamen, was sich während des Aufwärmens unterschiedlich ergibt.
+**Ein sporadischer Befund braucht zwei unabhängige Läufe**, sonst hält man Zufall für einen
+Fix: `th-hud` läuft jetzt zweimal hintereinander über alle 3 Formate mit 0 Befunden.
+Dabei ein eigener Fehler: meine neue Polsterung (12 → 13 px) nahm der Zeile zwei der Pixel,
+die ihr fehlten — zurückgedreht.
+
+### 4. Die Rampe schwebte
+
+`window._rampe` war eine schräg gestellte **Platte** (BoxGeometry, 15°) mit **einer**
+Stütze am hohen Ende, Gruppe 15 cm unter Grund → eine graue Bohle über dem Rasen.
+Jetzt ein geschlossener Keil mit echtem Dreiecksprofil (`ExtrudeGeometry`, in r128
+vorhanden), der aufsitzt, plus flache Anlaufkante. Leitlinien-Winkel aus dem Profil
+gerechnet (`atan(1.70/6.5)`), nicht geraten. **Spielmechanik unberührt** — `_rampe` und
+die Airtime-Physik bleiben; nur das Aussehen ändert sich.
+
+### Werkzeug-Notiz
+
+`tools/game_shot.cjs` liefert für `traumhaus` ein Bild **mit offenem Begrüssungs-Dialog** —
+darauf sieht man nichts vom Spiel. Für Bildkontrollen `spielOeffnen` aus `th-lib.mjs`
+nehmen (klickt Solo → Klassisch → introOk) und danach `page.screenshot`.
+
+## 2026-08-30 · 🛹 Drei Rampen mehr — und ein Prüfer, der nur so tat als ob
+
+**Woher die Frage kam.** `th-reichweite` hatte gemessen: Münzen kommen erst nach 90 s
+nach und tragen eine Serie nur bis 3–6. Die **einzige** wiederholbare Quelle, die schnell
+genug kommt (2 s Abklingzeit), war die Stunt-Rampe — und davon gab es in der ganzen Stadt
+genau **eine**. Der Serien-Deckel von 12 hing damit an einem einzigen Punkt der Karte.
+
+### Plätze gesucht, nicht geraten
+
+Das Spiel selbst hat das Raster geprüft — frei von Gebäuden (`inSolid`/`imBau`), **nicht
+auf der Fahrbahn**, aber in 26 m Reichweite einer Strasse, flach auf 4 m, 7 × 4 m Platz
+ringsum. **272 Treffer**, davon die drei mit dem grössten Abstand zueinander:
+(110, −110), (100, 100), (−110, −110). Kleinster Abstand jetzt 145 m.
+
+> **Falle bei der Auswahl:** „nimm den nächsten passenden" legte alle vier an den
+> Westrand (x = −140), weil die Suchschleife x aussen laufen lässt. Wer aus einer
+> sortierten Liste auswählt, erbt deren Sortierung. → erst den Kartenrand ausschliessen,
+> dann **gierig den Platz wählen, der am weitesten von allen bisherigen weg ist**.
+
+**Ausrichtung ebenfalls gemessen:** `wegVonStrasse` verschiebt einen Punkt genau dann,
+wenn er auf der Fahrbahn liegt — die **Richtung dieser Verschiebung ist die Richtung zur
+Strasse**. Jede Rampe dreht sich danach; ohne das fährt man quer an ihr vorbei statt hinauf.
+
+Jede Rampe hat ihre **eigene** Abklingzeit. Eine gemeinsame hiesse: ein Sprung im Osten
+sperrt die Rampe im Westen für zwei Sekunden. `window._rampe` zeigt weiter auf die erste,
+damit alte Verweise gültig bleiben.
+
+### ⚠️ Der Prüfer prüfte die Datenstruktur und behauptete die Physik
+
+Die Prüfung „eine gesperrte Rampe sperrt die anderen nicht" las nur `window._rampen[i].cd`.
+Die Abklingzeiten werden aber in **`autoFahr`** heruntergezählt. Die Sabotage
+`RP.cd = RPS[0].cd - dt` — also *alle* Rampen teilen sich eine — ging **glatt durch**:
+11/11 grün, obwohl das Feature kaputt war.
+
+Behoben, indem der Prüfer echtes `autoFahr` taktet. Dabei die nächste Hürde: am
+Spielstart existiert **kein Auto** (man kauft eines), `autoFahr` steigt sofort aus. Lösung:
+ein Platzhalter-Wagen (`{mesh: new THREE.Object3D()}`) weit weg von jeder Rampe, damit kein
+Sprung ausgelöst wird und wirklich nur das Herunterzählen läuft.
+
+Jetzt beisst sie: gesund `[1.9, −0.1, −0.1, −0.1]`, sabotiert `[1.9, 1.8, 1.8, 1.8]`.
+
+> **Regel:** Wenn eine Prüfung einen Zustand liest, den *anderer Code* pflegt, prüft sie
+> den anderen Code **nicht**. Entweder den echten Pfad takten — oder das Etikett auf das
+> beschränken, was wirklich gemessen wird. Gefunden hat das nur die Sabotage; grün allein
+> beweist nichts.
+
+**Geprüft:** `th-rampen.mjs` 11/11, zwei Sabotagen (Rampe auf die Fahrbahn gesetzt → zwei
+Prüfungen rot; geteilte Abklingzeit → die Physik-Prüfung rot). Bestand grün: Smoke 0
+JS-Fehler, `th-reichweite` 10/10, `th-pruef`, `th-kadrierung` 6/6, `th-hud` alle 3 Formate.
+
+## 2026-08-31 · 🔁 Ich habe ein Werkzeug nachgebaut, das es schon gab — und es war schlechter
+
+**Was passiert ist.** Für die Frage „steht etwas auf der Fahrbahn?" habe ich
+`th-fahrbahn.mjs` gebaut, über vier Runden von 1827 auf 0 Treffer verfeinert und jede
+Lehre sorgfältig in den Kopf geschrieben. **`th-strassen.mjs` gab es bereits** — und es
+konnte alles davon besser:
+
+| | mein Nachbau | `th-strassen.mjs` (bestand schon) |
+|---|---|---|
+| Strassentypen | 2 (Haupt, Quer) | **8** (+ Ring, Zubringer, Landstrasse, Anschlüsse, Viertelstr.) |
+| Halbbreiten | 8 / 5 geraten aus `strasseMesh` | **8,05 / 5,05 / 4,5** aus der Bordstein-Geometrie |
+| Bandlängen | unbegrenzt | **endlich** (x ±102, z ±69, r 123…193) |
+| Bewegliches | nachträglich gelernt: `verkehr`, `fussg`, `_tiere` | von Anfang an: + `busRec`, `_landbus`, `npcs`, `sims`, `polizei` |
+| Sonderfall | — | Landstrasse ist **nur abschnittsweise gepflastert** (per Farbstrahl gemessen) |
+
+Jede meiner fünf „teuer gelernten" Lehren stand dort schon, gründlicher formuliert.
+
+**Die Folgekosten waren nicht nur Zeit.** Meine Filter (Höhe < 0,5 m raus, `bb.min.y` >
+2,5 m raus, Radius > 14 m raus) waren zu grob. Ich meldete **„0 Objekte auf der
+Fahrbahn"** — das etablierte Werkzeug findet auf den Hauptstrassen allein **23** und über
+alle Bänder **145**. Meine Null war keine Aussage über die Welt, sondern über meine Filter.
+
+**Was bleibt.** Die zwei Befunde, die ich behoben habe, waren echt und tief im Asphalt
+(Bushaltestelle 2,1 m, Fahrradständer 1,1 m) — beide tauchen in `th-strassen.mjs` nicht
+mehr auf. Der Nachbau ist gelöscht.
+
+> **Regel, bevor ein neues Werkzeug entsteht:**
+> `for f in spiele-dev/tools/th-*.mjs; do head -1 $f; done`
+> Sechzig Werkzeuge sind zu viele, um sie im Kopf zu haben — die Kopfzeile sagt in einem
+> Satz, was jedes kann. Ein Nachbau kostet nicht nur die Arbeit, er **widerspricht** dem
+> Original: zwei Werkzeuge zur selben Frage geben zwei Antworten, und die schwächere
+> klingt beruhigender.
+
+**Offen und bewusst nicht angefasst:** die 145 Treffer von `th-strassen.mjs`. Sein
+eigener Kopf warnt, dass nicht jeder ein Fehler ist (Tiere laufen über die Strasse, die
+Landstrasse ist streckenweise gar nicht gepflastert) und rät, „im Zweifel mit einem
+Querschnitt nachzusehen, bevor man etwas verschiebt". Das ist eine eigene Runde wert,
+keine Massenverschiebung.
+
+## 2026-08-31 · ⚡ Warum das Spiel laggt — drei Messungen, drei Eingriffe, eine Korrektur
+
+**Der Reihe nach, weil die erste Antwort falsch war.**
+
+### 1. `th-tempo` mass Leerlauf und nannte ihn Spiellogik
+
+Das Werkzeug rechnete *Bildabstand (1000/fps) − Renderzeit = Spiellogik*. Im Headless-
+Browser ist `requestAnimationFrame` aber auf ~1 Bild/s **gedrosselt**. Gemessen, indem
+der rAF-Rücklauf selbst gestoppt wurde:
+
+| | |
+|---|---|
+| Arbeit je Bild (im Rücklauf) | **33,9 ms** |
+| Abstand Bild zu Bild | 965,8 ms |
+| davon **Leerlauf** | **931,9 ms = 96 %** |
+
+Die alte Rechnung machte daraus „Rendern 4 %, Rest 96 %". **Richtig ist das Gegenteil:
+Rendern 78 %, Spiellogik 22 %.** Ich hatte die falsche Zahl bereits berichtet.
+
+> **Regel:** Bildabstand ist nicht Arbeit. Wo rAF gedrosselt sein kann (headless, Tab im
+> Hintergrund, Energiesparmodus), misst nur die Zeit **innerhalb** des Rücklaufs etwas.
+
+### 2. Der LOD-Index wurde mitten im Nachladen gebaut
+
+`lodAufbau()` lief **genau einmal, bei 4 s**. Die Bewohner-Modelle brauchen allein 12,8 s,
+dahinter ~95 kleine GLBs. Alles Spätere stand nie im Index: **49 807 Meshes sind klein
+genug fürs LOD, drin waren 6 855.** Jetzt wird nachgezogen, solange die Welt wächst
+(Wachstums-Anzeiger: `renderer.info.memory.geometries`, weil eine eigene Zähl-Durchquerung
+so teuer wäre wie der Neuaufbau). → sichtbare Meshes **57 137 → 39 994**.
+
+### 3. Die Last liegt im Herauszoomen, nicht in der Nahsicht
+
+Zwei Eingriffe, beide **A-B in EINEM Lauf** gemessen (gleiche Kamera, gleiches Bild):
+
+| | Zoom 44 | Zoom 90 | Zoom 135 |
+|---|---|---|---|
+| dritte LOD-Stufe (2,2–4,5 m, ab 130 m aus) | ±0 | −1 234 | −2 204 |
+| Schwellen folgen dem Zoom (nur kleine Stufen) | −1 | −1 731 | −2 398 |
+
+> ⚠️ **Die Prüfkamera stand nah — der erste Lauf zeigte deshalb NULL Gewinn** (1592 → 1626).
+> Wer eine Optimierung an einer einzigen Kameraposition misst, misst die Position, nicht
+> die Optimierung. Ein A-B im selben Bild trennt das sauber.
+
+**Und eine Fassung wurde verworfen, obwohl sie mehr sparte:** die Zoom-Skalierung auch auf
+die *mittlere* Stufe anzuwenden brachte bei Zoom 135 3 881 statt 2 398 Aufrufe — hätte aber
+Objekte ab 42 m ausgeblendet, die auf dem Schirm noch ~10 Bildpunkte gross sind.
+Nachgerechnet: ein Objekt fällt erst ab **Radius × 230 m** Kameraabstand unter zwei
+Bildpunkte (fov 46°, 390 px). Für 0,55 m sind das 126 m, für 4,5 m über 1000 m.
+**Der kleinere Gewinn war der richtige.**
+
+### Zwei Dinge bewusst NICHT gemacht
+
+- **Die letzten zwei Shader-Übersetzungen** während des Spiels (`th-ruckler`: Start 1,
+  Berg 1). Beide passieren an Blicken, die `_WARM_BLICKE` **bereits enthält** — sie hängen
+  also an Zustands-Varianten, nicht an Kamerapositionen. Genau das steht im Code schon,
+  samt Rat, es erst auf einem echten Gerät zu bewerten. Nicht neu aufgerollt.
+- **Die Figuren vereinfachen.** Sie tragen 92k und 79k Dreiecke — klingt viel, sind aber
+  2 % der 7,75 Mio in der Szene. Die restlichen 7 Mio liegen in ~55 000 Kleinteilen zu je
+  ~127 Dreiecken. Der Hebel ist die OBJEKTZAHL, nicht die Dreieckszahl einzelner Modelle.
+
+### Geprüft: hat das LOD die Prüfer blind gemacht?
+
+Naheliegende Sorge: eine Optimierung, die Objekte auf `visible=false` setzt, könnte
+Prüfer entwerten, die unsichtbare überspringen. **Nachgesehen:** weder `th-3d` noch
+`th-pruef` noch `th-strassen` fragen `visible` ab — sie laufen über den Szenenbaum. Kein
+Prüfer wurde blind. (Bei künftigen Sichtbarkeits-Optimierungen wieder prüfen.)
+
+### Nachtrag 2026-08-31 · der LOD-Nachlauf war selbst ein Ruckler
+
+Die Fassung oben („nachziehen, solange die Welt wächst") baute bis zu **achtmal** neu —
+und ein `lodAufbau()` kostet **42–48 ms** (65 000 Objekte). Acht Aussetzer in der ersten
+Minute, selbst eingebaut, während ich „Ruckler" suchte. Jetzt: Wachstum nur *merken*, und
+nach zwei ruhigen Nachschauen **einmal** aufbauen (gemessen: genau ein Nachlauf, Index
+danach 51 298, über 40 s stabil). Die Durchquerung liest die Weltposition direkt aus
+Spalte 4 der Matrix statt per `getWorldPosition` → 23–32 ms.
+
+> **Regel:** Wer einen Aussetzer sucht, prüft zuerst, was er selbst zuletzt in die
+> Bildschleife gelegt hat.
+
+**Rundgang gemessen** (4 Richtungen × 8 s, Arbeit je Bild im rAF-Rücklauf): 47 Bilder,
+Median 31,4 ms, p95 37,7, max 38,9 — **0 Aussetzer über 2× Median**. Vorbehalt: rAF ist
+hier gedrosselt, GC und Textur-Uploads können zwischen zwei Bildern liegen; und der
+Rundgang bleibt im Startviertel, Shader-Übersetzungen beim ersten Blick in ein neues
+Viertel deckt `th-ruckler` ab (dort noch 2, siehe oben).
