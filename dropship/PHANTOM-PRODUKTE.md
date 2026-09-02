@@ -83,9 +83,9 @@ fehlt noch (→ `ratgeber_ohne_ware.py` prüft Links, nicht NAMEN+PREIS gegen de
 | Aroma Diffuser Bambus 500ml (44.90) | Premium Bambus Aroma Diffuser 300 ml | 39.90 | premium-bambus-aroma-diffuser-300ml |
 | Selfcare-Box (74.90) / Sleep-Ritual Box (99.90) | Premium Home Wellness Bundle (Diffuser + 6 Öle + Salzlampe + Kristall-Trio) | 99.00 | bundle-premium-home-wellness |
 | Beauty-Bundle Premium (49.90) | Jade Roller & Gua Sha Premium Set | 24.90 | jade-roller-gua-sha-premium-set-doppelkopf |
-| Faszienrolle Premium 3er-Set (44.90) | Verstellbare Teleskop-Faszienrolle | 31.90 | verstellbare-teleskop-faszienrolle-aus-schaums-8 |
+| Faszienrolle Premium 3er-Set (44.90) | Verstellbare Teleskop-Faszienrolle | 31.90 | verstellbare-teleskop-faszienrolle-aus-schaums-877824 |
 | Yoga-Matte Premium TPE (39.90, «6 mm») | Fitness-Yogamatte (10 mm) | 14.90 | fitness-yogamatte-10mm-93a2aa |
-| Wearable Nacken-Massage Device (39.90) | Nackenmassagekissen mit Airbag-Knetfunktion | 16.90 | nackenmassagekissen-mit-airbag-knetfunktion-6046 |
+| Wearable Nacken-Massage Device (39.90) | Nackenmassagekissen mit Airbag-Knetfunktion | 16.90 | nackenmassagekissen-mit-airbag-knetfunktion-604600 |
 | Edelstahl Thermosflasche 750ml (29.90) | Edle Thermosflasche aus Edelstahl | 28.90 | edle-thermosflasche-aus-edelstahl-616400 |
 | Blue Light Brille (34.90) | AR Blaulichtfilter-Brille | 15.90 | ar-blaulichtfilter-brille-610800 |
 | ANC Over-Ear (69.90) | Over-Ear Bluetooth Kopfhörer mit ANC | 18.90 | over-ear-bluetooth-kopfhorer-mit-anc-639600 |
