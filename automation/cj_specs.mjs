@@ -63,15 +63,24 @@ export function gewichtText(g){
 }
 
 // Zeilen [Schluessel, Wert] aus dem CJ-Produktobjekt (product/query → data).
+// CJ liefert materialNameEn/productProEn mal als Array, mal als String («Polyester» oder '["Polyester"]') —
+// ein .map auf einem String warf beim ersten echten Aufruf (02.09.2026) und haette JEDEN Import gestoppt.
+export function liste(x){
+  if(Array.isArray(x)) return x.map(String);
+  if(x==null) return [];
+  const s=String(x).trim(); if(!s) return [];
+  if(s.startsWith('[')){ try{ const j=JSON.parse(s); if(Array.isArray(j)) return j.map(String); }catch{} }
+  return s.split(/[,;\/]/).map(t=>t.trim()).filter(Boolean);
+}
 export function specZeilen(d){
   const rows=[];
-  const mats=[...new Set((d?.materialNameEn||[]).map(deMat).filter(Boolean))];
+  const mats=[...new Set(liste(d?.materialNameEn).map(deMat).filter(Boolean))];
   if(mats.length) rows.push(['Material', mats.join(', ')]);
   const specs=extractSpecs(d?.description);
   const gw=gewichtText(d?.productWeight);
   if(gw && !specs.some(([k])=>k==='Gewicht')) rows.push(['Gewicht', gw]);
   for(const r of specs) rows.push(r);
-  if((d?.productProEn||[]).includes('BATTERY')) rows.push(['Stromversorgung','Batterie/Akku']);
+  if(liste(d?.productProEn).includes('BATTERY')) rows.push(['Stromversorgung','Batterie/Akku']);
   return rows;
 }
 
