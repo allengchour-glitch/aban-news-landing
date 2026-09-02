@@ -13971,3 +13971,11 @@ gid://shopify/Product/15500897419649	18->1	Mini-Staubsauger-Roboter
 gid://shopify/Product/15500908855681	8->0	Moxibustion-Heizgurt für die Taille
 gid://shopify/Product/15500909314433	26->0	Automatischer Lockenstab für vielseitiges Styling
 gid://shopify/Product/15500911444353	36->0	Mini-Elektrokessel
+gid://shopify/Product/15500911903105	158->0	Tarnfarbener 50L Outdoor Rucksack
+gid://shopify/Product/15500912460161	23->0	Digitaler Luftqualitätsmonitor PM2.5
+gid://shopify/Product/15500912525697	36->0	Automatischer Lockenstab mit dünnem Rohr
+gid://shopify/Product/15500915376513	40->0	Minimalistische Kapsel- und Tee-Aufbewahrungsbox
+gid://shopify/Product/15500928450945	19->0	Doppelfunktiger USB-Ladegerät
+gid://shopify/Product/15500934840705	8->0	Kissen mit englischem Buchstaben-Design
+gid://shopify/Product/15500936020353	17->1	USB-Kamm-Aromatherapie-Ofen
+gid://shopify/Product/15500939198849	93->0	UV Gel Nagelfolien zum Aushärten
