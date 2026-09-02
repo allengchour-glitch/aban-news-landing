@@ -6071,3 +6071,21 @@ Naheliegende Sorge: eine Optimierung, die Objekte auf `visible=false` setzt, kö
 Prüfer entwerten, die unsichtbare überspringen. **Nachgesehen:** weder `th-3d` noch
 `th-pruef` noch `th-strassen` fragen `visible` ab — sie laufen über den Szenenbaum. Kein
 Prüfer wurde blind. (Bei künftigen Sichtbarkeits-Optimierungen wieder prüfen.)
+
+### Nachtrag 2026-08-31 · der LOD-Nachlauf war selbst ein Ruckler
+
+Die Fassung oben („nachziehen, solange die Welt wächst") baute bis zu **achtmal** neu —
+und ein `lodAufbau()` kostet **42–48 ms** (65 000 Objekte). Acht Aussetzer in der ersten
+Minute, selbst eingebaut, während ich „Ruckler" suchte. Jetzt: Wachstum nur *merken*, und
+nach zwei ruhigen Nachschauen **einmal** aufbauen (gemessen: genau ein Nachlauf, Index
+danach 51 298, über 40 s stabil). Die Durchquerung liest die Weltposition direkt aus
+Spalte 4 der Matrix statt per `getWorldPosition` → 23–32 ms.
+
+> **Regel:** Wer einen Aussetzer sucht, prüft zuerst, was er selbst zuletzt in die
+> Bildschleife gelegt hat.
+
+**Rundgang gemessen** (4 Richtungen × 8 s, Arbeit je Bild im rAF-Rücklauf): 47 Bilder,
+Median 31,4 ms, p95 37,7, max 38,9 — **0 Aussetzer über 2× Median**. Vorbehalt: rAF ist
+hier gedrosselt, GC und Textur-Uploads können zwischen zwei Bildern liegen; und der
+Rundgang bleibt im Startviertel, Shader-Übersetzungen beim ersten Blick in ein neues
+Viertel deckt `th-ruckler` ab (dort noch 2, siehe oben).
