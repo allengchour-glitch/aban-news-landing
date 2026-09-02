@@ -8617,3 +8617,26 @@ gid://shopify/Product/15450829685121	CHF 9.95	10 Varianten	Haltungs-Korrektor f�
 gid://shopify/Product/15450829750657	CHF 6.35	8 Varianten	Schmetterling Ohrclip & Ohrhaken
 gid://shopify/Product/15450829881729	CHF 6.92	51 Varianten	Kühlende Liegematte für Haustiere
 gid://shopify/Product/15450829914497	CHF 14.62	32 Varianten	Kabellose 2-in-1 Glättbürste für schnelles Styling
+gid://shopify/Product/15450830012801	CHF 11.04	13 Varianten	AirTag Leder-Portemonnaie mit RFID-Schutz
+gid://shopify/Product/15450830045569	CHF 13.20	20 Varianten	Elektrischer Krallenschleifer für Haustiere
+gid://shopify/Product/15450830111105	CHF 5.82	19 Varianten	Abflussreiniger mit Feder und Greifklaue
+gid://shopify/Product/15450830143873	CHF 10.26	20 Varianten	Tragbare Trinkflasche für Hunde
+gid://shopify/Product/15450830176641	CHF 18.24	44 Varianten	Kuschel-Hoodie mit grosser Tasche
+gid://shopify/Product/15450830209409	CHF 7.54	6 Varianten	Silikon-Sieb für Topf und Pfanne
+gid://shopify/Product/15450830242177	CHF 6.08	8 Varianten	Knoblauchpresse aus Edelstahl, ergonomisch
+gid://shopify/Product/15450830274945	CHF 13.98	5 Varianten	Multifunktionale Crossbody-Tasche für Herren
+gid://shopify/Product/15450830340481	CHF 15.55	9 Varianten	Baby Strampler aus Baumwolle
+gid://shopify/Product/15450830373249	CHF 31.10	36 Varianten	Outdoor-Velo-Schuhe für Sie & Ihn
+gid://shopify/Product/15450830406017	CHF 15.87	12 Varianten	Kopfhörer mit Mikrofon
+gid://shopify/Product/15450830438785	CHF 13.42	2 Varianten	Kabellose Leuchtmaus mit leisem Klick
+gid://shopify/Product/15450830471553	CHF 13.18	6 Varianten	Gaming Mauspad mit RGB-Beleuchtung
+gid://shopify/Product/15450830504321	CHF 8.13	12 Varianten	Verstellbarer Handtrainer 10-40 kg
+gid://shopify/Product/15450830537089	CHF 13.49	4 Varianten	Bluetooth-Säulenlautsprecher mit LED-Licht
+gid://shopify/Product/15450830569857	CHF 10.44	10 Varianten	Selfie Stick Stativ mit Bluetooth Fernbedienung
+gid://shopify/Product/15450830602625	CHF 11.15	9 Varianten	Mini Zerkleinerer elektrisch – USB-Ladefunktion
+gid://shopify/Product/15450830635393	CHF 7.80	10 Varianten	Brief-Halskette mit Umschlag-Anhänger
+gid://shopify/Product/15450830668161	CHF 28.92	12 Varianten	NEX 2-in-1 Fellpfleger: Föhn & Bürste für Haustier
+gid://shopify/Product/15450830700929	CHF 17.41	2 Varianten	Oxford Umhängetasche für Herren
+gid://shopify/Product/15450830733697	CHF 12.25	45 Varianten	Warme Lammkaschmir Leggings für den Winter
+gid://shopify/Product/15450830766465	CHF 12.85	12 Varianten	Leoparden-Volantkleid für den Sommer
+gid://shopify/Product/15450830799233	CHF 12.91	13 Varianten	Elektrische Reinigungsbürste 4-in-1
