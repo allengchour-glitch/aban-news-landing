@@ -14433,13 +14433,20 @@ function loop(now){
      Wachstums-Anzeiger dient die Geometrie-Zahl des Renderers (monoton beim Laden) —
      eine eigene Zaehl-Durchquerung waere so teuer wie der Neuaufbau selbst. */
   if(!_lodBereit&&performance.now()>4000){lodAufbau();autoKollider();kolliderNachziehen();
-    window._lodGeo=renderer.info.memory.geometries;window._lodNeu=0;window._lodDann=performance.now()+5000;}
+    window._lodGeo=window._lodStart=renderer.info.memory.geometries;window._lodNeu=0;window._lodRuhe=0;window._lodDann=performance.now()+5000;}
   else if(_lodBereit&&window._lodNeu<8&&performance.now()>window._lodDann){
     var _g9=renderer.info.memory.geometries;
-    /* Erst neu aufbauen, wenn wirklich etwas dazugekommen ist (2 % oder 20 Stueck). */
-    if(_g9>window._lodGeo*1.02+20){lodAufbau();window._lodGeo=_g9;window._lodNeu++;}
-    else window._lodNeu=8;                       /* stabil -> nicht mehr nachsehen */
-    window._lodDann=performance.now()+5000;}
+    /* ⚠️ GEMESSEN: ein lodAufbau() kostet 42–48 ms (65'000 Objekte durchqueren) — auf
+       dem Handy entsprechend mehr. Die erste Fassung baute bei JEDEM Wachstumsschritt
+       neu, bis zu achtmal: acht Aussetzer in der ersten Minute, selbst eingebaut.
+       Jetzt wird nur GEMERKT, dass gewachsen wurde, und erst wenn zwei Nachschauen
+       hintereinander nichts Neues zeigen, EINMAL neu aufgebaut. Das Laden ruckelt
+       ohnehin; der eine Nachlauf faellt dann in die Ruhe danach. */
+    if(_g9>window._lodGeo*1.02+20){window._lodGeo=_g9;window._lodRuhe=0;}
+    else if(_g9>window._lodStart*1.02+20&&(window._lodRuhe=(window._lodRuhe||0)+1)>=2){
+      lodAufbau();window._lodStart=_g9;window._lodNeu=8;}   /* einmal, dann Ruhe */
+    else if(_g9<=window._lodStart*1.02+20)window._lodNeu=8; /* nie gewachsen -> fertig */
+    window._lodDann=performance.now()+4000;}
   else if(_lodBereit&&(++_lodTick%8===0)){var _p=spielerPos();lodTakt(_p.x,_p.z);}
   /* 🔋 IM MENUE NICHT DIE GANZE WELT NEU ZEICHNEN. `.overlay` liegt mit
      rgba(...,.94)…(.97) ueber dem ganzen Bild — vom 3D-Hintergrund sind hoechstens
@@ -14725,7 +14732,10 @@ function lodAufbau(){
        bei den anderen Stufen, weil man diese Entfernung schneller durchfaehrt als
        durchlaeuft. */
     if(r>4.5)return;                       /* gross genug -> immer sichtbar */
-    n.getWorldPosition(mitte);
+    /* Weltposition direkt aus der Matrix (Spalte 4) statt getWorldPosition — das
+       dekomponiert die ganze Matrix samt Quaternion, fuer 55'000 Meshes messbar teurer.
+       Die Matrizen sind zu diesem Zeitpunkt aktuell (render laeuft jedes Bild). */
+    var _e=n.matrixWorld.elements;mitte.set(_e[12],_e[13],_e[14]);
     /* Zwei Stufen: Winziges (Sprossen, Griffe, Torlatten, Fensterbaenke) ist nur
        aus der Naehe ueberhaupt lesbar, kostet aber je einen vollen Zeichenaufruf.
        Nach dem Einbau der Fenster- und Tuerdetails stiegen die Aufrufe von 270
