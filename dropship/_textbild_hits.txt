@@ -14117,3 +14117,12 @@ gid://shopify/Product/15506410635649	26->0	Herz-Flip-Flops mit Strass & Perlen
 gid://shopify/Product/15506417615233	12->0	Santa's Magic Touch – DIY Digital Painting Kit
 gid://shopify/Product/15506447171969	62->2	Buntes Häkelnadel-Set für Weiche Keramik
 gid://shopify/Product/15506699288961	18->0	Personalisiertes Armband mit Buchstaben
+gid://shopify/Product/15506704892289	100->0	Sommerliches Maxi-Kleid mit V-Ausschnitt und Blumenprint
+gid://shopify/Product/15506706661761	9->1	Wandmontierter Küchenmischer (warm/kalt)
+gid://shopify/Product/15506814173569	8->0	Smarte Keramik-Waagschale für Haustiere
+gid://shopify/Product/15506876400001	107->0	Acryl-Leinwandbild "Landschaft" zum Selbermalen
+gid://shopify/Product/15507783516545	12->0	50 Stk. Blindnieten für BMW Radlauf & Schweller
+gid://shopify/Product/15507784204673	11->1	Niedliches Katzenpopo-Kissen zum Händewärmen
+gid://shopify/Product/15507784335745	10->1	Sago Bubble Tier-Stoffpuppe
+gid://shopify/Product/15508297712001	69->0	Joker Water Drop Umhängetasche
+gid://shopify/Product/15508303806849	22->0	Business Rucksack für Studenten (wasserdicht)
