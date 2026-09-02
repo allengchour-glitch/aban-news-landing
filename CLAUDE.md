@@ -6028,3 +6028,16 @@ Ledger `dropship/_trust_baustein_wahrheit.txt`. Erster Lauf per `setsid` mit CAP
   Backup `theme_backup/header-group.json.markenqualitaet-0209`.
 - Seiten, Startseite, Footer, Kollektions-/Warenkorb-Template, Locales: 0 weitere Treffer
   («Zusammen sind sie unschlagbar» im Hyaluron-Ratgeber ist eine Metapher, kein Preis-Superlativ).
+
+## 🚚 Die Produktseite verschwieg die CHF 7 — die Kasse nannte sie zuerst (2026-09-02)
+7-Tage-Trichter: 424 Sitzungen, 5 Warenkörbe, **4 an der Kasse, 0 Abschlüsse** — und keiner der
+vier hinterliess einen abgebrochenen Checkout (Liste unverändert seit 22.08.), sie gingen also
+VOR der Adresseingabe, dort, wo zum ersten Mal der Versand steht. Die Produktseite sagte nur
+«🚚 Gratis-Versand ab CHF 50»; bei einer 15.90-Ware ist die CHF-7-Überraschung an der Kasse +44 %.
+`lux_trust` sagt jetzt «🚚 Versand CHF 7 · gratis ab CHF 50» (live belegt); der Warenkorb trug
+die Zahl seit heute Mittag. Backup `theme_backup/product.json.versand7-0209`.
+- Der Gratis-Versand-Balken im Warenkorb steht bereits auf 4900 (31.08. gemessen, ACTIVE-Rabatt
+  ab CHF 49) — der 29.08.-Eintrag «SCHWELLE=5000, nicht geändert» ist damit überholt.
+- ⚠️ Ehrliche Grenze: Ob die vier an der Kasse wegen des Versands gingen, ist nicht messbar —
+  Shopify liefert keinen Abbruchgrund. Die Zahl VOR der Kasse zu nennen kostet nichts und
+  nimmt die einzige Überraschung, die dort noch wartet.
