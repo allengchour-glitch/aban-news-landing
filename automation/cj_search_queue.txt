@@ -628,3 +628,15 @@
 #done search:yoga mat non slip tpe
 #done search:himalayan salt lamp
 #done search:essential oil set aromatherapy
+# 02.09.2026 Betreiber «kiffer zubehör rein · feuerzeug, papes, rips»: Kollektion smoke-zubehoer
+# (Kiffer- & Smoke-Zubehör 18+). Papes/Rolls/Tips/Trays sind im Katalog 0 — Nachschub. ⚠️ Ware
+# gehört NUR in Online Store + Shop; google_kanal_saeubern.py zieht sie aus den Werbekanälen
+# (RAUCH_TITEL kennt Drehpapier/Papes/Rolling/Tips/Stash seit 02.09.). Kein Tabak, kein CBD.
+search:rolling papers king size slim
+search:rolling paper rolls
+search:pre rolled cones
+search:filter tips rolling
+search:rolling tray metal
+search:herb grinder 4 piece
+search:smell proof stash bag
+search:torch lighter jet flame

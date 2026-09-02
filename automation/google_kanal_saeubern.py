@@ -55,7 +55,13 @@ RAUCH_TITEL = re.compile(
     r'Aschenbecher|Zigarett\w*|Zigarr\w*|Zigarill\w*|Schnupftabak\w*|'
     r'Kohleanz[üu]nder|Shisha|Wasserpfeife|\bBong\b|\bGrinder\b|Feuerzeug|'
     r'Pfeifenreiniger|Humidor\w*|Tabakpfeif\w*|'
-    r'Vape\b|E-Zigarette|Tabak(?:beutel|dose)?', re.I)
+    r'Vape\b|E-Zigarette|Tabak(?:beutel|dose)?|'
+    # 02.09.2026 Betreiber «kiffer zubehör rein · feuerzeug, papes, rips»: Nachschub über
+    # cj_search_queue (rolling papers/tips/trays/grinder/stash). Die Importer publizieren in
+    # alle sechs Kanäle — diese Stämme holen die Ware wieder aus den Werbekanälen. «Cone» und
+    # «Tray» absichtlich NICHT allein (Eiswaffel, Serviertablett); nur in der Rauch-Bindung.
+    r'Drehpapier|Papes\b|Rolling[- ]?(?:Paper|Tray)|Drehunterlage|Filter[- ]?Tips|'
+    r'Kräutermühle|Stash[- ]?(?:Bag|Box|Jar)|Pre[- ]?Rolled|Blunt\b|Joint(?:hülle|halter|s)\b', re.I)
 # «Anzünder» allein ist ein Grillanzünder; erst mit Kohle wird es Shisha.
 # ⚠️ 28.08.2026 — WARUM DIE STÄMME statt der Wortliste: Am 21.–26.08. legte der Grind NEUN
 # Rauchzubehör-Artikel an, alle ACTIVE im Google-Kanal, sieben davon mit productType
