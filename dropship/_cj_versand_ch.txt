@@ -971,3 +971,4 @@ gid://shopify/Product/15523179102593	ok	Mini A4 Thermodrucker – kabellos & por
 gid://shopify/Product/15523129622913	ok	HD Office Mini Android WiFi Beamer
 gid://shopify/Product/15523176612225	ok	Programmierbare Bausteine – Kursroboter
 gid://shopify/Product/15523178283393	ok	Faltbarer Wäschetrockner für Zuhause
+gid://shopify/Product/15523185099137	nicht-versendbar	Wandbild Hydroponische Pflanzen
