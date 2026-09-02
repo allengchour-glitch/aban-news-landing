@@ -5,7 +5,7 @@
 > Im Bio steht die Adresse als **Text** (`luxestyle.ch`), aber **kein klickbarer
 > Link**. Der Abschluss-Slide sagt «Link in Bio»: ungenau, aber niemand läuft
 > mehr ins Leere — die Zuschauerin findet den Shop im Bio.
-> Gemessen: 561 Follower · 66 Videos · 266 Likes.
+> Gemessen: 559 Follower · 66 Videos · 266 Likes.
 >
 > **Was den klickbaren Link bringt** (lohnt sich, ist aber kein Blocker):
 > Das Website-Feld gibt es im Privatkonto nicht — live geprüft, «Profil
@@ -20,7 +20,7 @@
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
-**Profil am 2026-09-01 gemessen:** 561 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
+**Profil am 2026-09-02 gemessen:** 559 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
 
 ## So vorgehen (gilt für jeden Beitrag)
 1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,

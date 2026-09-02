@@ -670,3 +670,12 @@
 15522140488065	kein-grosses-bild-bei-cj
 15522140520833	kein-grosses-bild-bei-cj
 15522142257537	kein-grosses-bild-bei-cj
+15522165358977	kein-grosses-bild-bei-cj
+15522166145409	kein-grosses-bild-bei-cj
+15522243150209	OK-1575x1575
+15522243543425	OK-1000x1000
+15522274836865	kein-grosses-bild-bei-cj
+15522280210817	kein-grosses-bild-bei-cj
+15522282340737	OK-800x800
+15522296889729	kein-grosses-bild-bei-cj
+15522435563905	kein-grosses-bild-bei-cj

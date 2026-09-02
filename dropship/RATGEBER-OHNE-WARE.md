@@ -7,7 +7,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | Ratgeber | Produktlinks (alle tot/keine) |
 |---|---:|
 | [Ätherische Öle für besseren Schlaf: Die Top 5 (2026)](/blogs/ratgeber/atherische-ole-fur-besseren-schlaf-die-top-5-2026) | 0 |
-| [✨ Die 5-Minuten-Morgen-Routine: Jade Roller + Gua Sha Anleit](/blogs/ratgeber/5-minuten-morgen-routine-jade-roller-gua-sha) | 1 |
 | [Welcher Aroma-Diffuser passt zu dir? Der ultimative Guide 20](/blogs/ratgeber/welcher-aroma-diffuser-passt-zu-dir-guide-2026) | 0 |
 | [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
 | [Ätherische Öle — Welches Öl wofür? Der ultimative Schweizer ](/blogs/ratgeber/atherische-ole-guide-schweiz) | 0 |

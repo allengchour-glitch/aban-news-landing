@@ -8139,3 +8139,38 @@ gid://shopify/Product/15450644152705	CHF 14.85	99 Varianten	Sandalen mit eckiger
 gid://shopify/Product/15450644218241	CHF 72.14	6 Varianten	Sandalen mit Schleife und bezogenem Absatz
 gid://shopify/Product/15450644283777	CHF 19.91	7 Varianten	Bequeme Plateau-Sandalen
 gid://shopify/Product/15450644349313	CHF 19.75	7 Varianten	Keilabsatz-Sandalen im koreanischen Stil
+gid://shopify/Product/15450644447617	CHF 19.70	18 Varianten	High-Heel Latin Sandalen mit Glitzer
+gid://shopify/Product/15450644513153	CHF 17.38	18 Varianten	Minimalistische Wildleder-Flip-Flops
+gid://shopify/Product/15450644611457	CHF 13.71	24 Varianten	Plateau-Sandalen mit Elastikriemen
+gid://shopify/Product/15450644644225	CHF 16.49	36 Varianten	Casual Peep-Toe Plateau-Sandalen
+gid://shopify/Product/15450644676993	CHF 21.33	6 Varianten	Polka-Dot Keilsandalen mit Schleife
+gid://shopify/Product/15450644709761	CHF 24.41	28 Varianten	Sommerliche Kreuzriemen-Schuhe mit Rundspitze
+gid://shopify/Product/15450644742529	CHF 31.51	42 Varianten	Glitzer-Sandalen mit Plateau und hohem Absatz
+gid://shopify/Product/15450644775297	CHF 13.44	16 Varianten	Peep-Toe Sandalen mit Blockabsatz
+gid://shopify/Product/15450644808065	CHF 15.42	14 Varianten	Vintage Chic Riemchensandalen mit hohem Absatz
+gid://shopify/Product/15450644840833	CHF 38.42	11 Varianten	Elegante Leder-Mules mit Schnalle
+gid://shopify/Product/15450644873601	CHF 16.41	24 Varianten	Französische Sandalen mit Kitten-Heel
+gid://shopify/Product/15450644906369	CHF 32.62	16 Varianten	Retro-Sandalen aus echtem Leder mit Plateau
+gid://shopify/Product/15450644939137	CHF 16.86	32 Varianten	Chunky-Heel Sandalen für Damen
+gid://shopify/Product/15450644971905	CHF 18.94	21 Varianten	Bequeme runde Flats für Strandferien
+gid://shopify/Product/15450645037441	CHF 13.55	32 Varianten	Florale Casual High-Heel Flip-Flops
+gid://shopify/Product/15450645102977	CHF 16.66	36 Varianten	Fairy Sandalen im koreanischen Stil
+gid://shopify/Product/15450645135745	CHF 47.54	24 Varianten	Handgefertigte Mary Jane Flats aus Leder
+gid://shopify/Product/15450645234049	CHF 43.50	14 Varianten	Rhinestone Mule Sandalen mit Kitten-Heel
+gid://shopify/Product/15450645266817	CHF 15.66	24 Varianten	Sandalen im Retro-Stil mit überkreuzten Riemen
+gid://shopify/Product/15450645332353	CHF 19.32	70 Varianten	Riemchensandalen mit Chunky-Absatz
+gid://shopify/Product/15450645365121	CHF 26.17	10 Varianten	Riemchensandalen mit eckiger Spitze & Absatz
+gid://shopify/Product/15450645430657	CHF 25.18	24 Varianten	Atmungsaktive Open-Toe Sandalen mit Blockabsatz
+gid://shopify/Product/15450645496193	CHF 16.15	33 Varianten	Sandalen mit Schnallenverschluss
+gid://shopify/Product/15450645528961	CHF 18.02	21 Varianten	Modische Freizeit-Sandalen mit weicher Sohle
+gid://shopify/Product/15450645561729	CHF 15.17	8 Varianten	Sommer-Sandalen mit Schnürung
+gid://shopify/Product/15450645692801	CHF 17.95	18 Varianten	Vielseitige Dad Shoes mit runder Zehenpartie
+gid://shopify/Product/15450645791105	CHF 21.22	18 Varianten	Atmungsaktive Chunky-Sneaker für Damen
+gid://shopify/Product/15450645823873	CHF 22.09	48 Varianten	Atmungsaktive Freizeit-Sneaker für Damen
+gid://shopify/Product/15450645856641	CHF 16.09	64 Varianten	Atmungsaktive, leichte Sneaker für Damen
+gid://shopify/Product/15450645922177	CHF 23.70	10 Varianten	Retro Schwarz-Weisse Colorblock Sneaker
+gid://shopify/Product/15450645987713	CHF 20.89	12 Varianten	Atmungsaktive Mesh-Sandalen mit 5 cm Plateau
+gid://shopify/Product/15450646053249	CHF 17.85	15 Varianten	Mary Jane Ballerinas mit doppelter Schnalle
+gid://shopify/Product/15450646086017	CHF 20.55	10 Varianten	Französischer Samt-Sneaker mit Schnürung
+gid://shopify/Product/15450646151553	CHF 15.60	5 Varianten	Weisse Plateau-Sneakers für Damen
+gid://shopify/Product/15450646184321	CHF 15.60	12 Varianten	Sneaker mit Katzen-Design und dicker Sohle
