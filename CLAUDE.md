@@ -5997,3 +5997,20 @@ Produkt, Lieferblock und Spezifikationen stehen. Backup `theme_backup/product.js
 - **Regel: Was das Theme aus den Produktdaten berechnet, gehört nicht zusätzlich in den Text.**
   Jeder Importer-Baustein, der eine Theme-Information wiederholt, ist ein Kandidat für die
   Laufzeit-Entfernung — die Quelle darf ihn weiter schreiben (Feeds, Kanäle ohne Theme).
+
+## 🛡️ «Geprüfte Qualität» stand auf über 10'000 Produktseiten — jetzt zur Laufzeit weg (2026-09-02)
+Der Importer-Baustein «🛡️ Sorglos shoppen: ✅ Geprüfte Qualität · 🚚 Lieferung 10–20 Werktage · …»
+plus «Gratis-Versand ab CHF 50 · –10 % mit Code WELCOME10» hängt an JEDEM CJ-Text
+(`productsCount` deckelt bei 10'000 — es sind mehr). Die 29.08.-Lehre am Vertrauensblock der
+Startseite (geprüft werden ANGABEN, nicht die Ware) hatte den Produkttext nie erreicht. Und der
+Block `lux_trust` zeigt Gratis-Versand, 30 Tage, Klarna/TWINT und CH-Support ohnehin direkt über
+der Beschreibung, der Ankündigungsbalken den Code. Beides in `lux_beschreibung` zur Laufzeit
+entfernt (Marker `<div style="background:#f7faf7` bzw. `<p>Gratis-Versand ab CHF 50 ·`), live
+gegengeprüft an Rizinusöl (Nr.-1-Suchprodukt) und Kühlmatte: 0 Kasten im Sichtbaren,
+Ratgeber-Rückverweis und lux_trust stehen. Backup `theme_backup/product.json.trust-strip-0209`.
+- ⚠️ **Im JSON-LD `description` steht der Satz weiter** — das Theme baut die strukturierten Daten
+  aus `product.description | strip_html`, nicht aus dem bereinigten Text; ebenso im Google-Feed.
+  Sichtbar für Kundinnen: nein. Für Google: ja. Die Quelle (Importer) schreibt seit heute
+  «Geprüfte Angaben»; der Bestand braucht einen Schreiber (siehe nächster Eintrag).
+- ⚠️ Der Ankündigungsbalken trug daneben «Geprüfte **Marken**qualität» — bei CJ-Ware ohne Marke
+  eine noch grössere Überzusage. Dieselbe Klasse, dritte Stelle an einem Abend.
