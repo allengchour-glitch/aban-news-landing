@@ -4520,6 +4520,32 @@ Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smar
 
 - **🔒 Session-Proxy blockt JEDE Remote-Branch-Löschung (gemessen 30.08):** git-Protokoll (`push --delete`, `:refs/heads/…` → HTTP 403 + irreführendes «Everything up-to-date»), REST-DELETE («Write access … not permitted through this proxy») und GraphQL (`deleteRef` — nur gepinnte PR-Review-Queries erlaubt) — mit User-PATs genauso. → Test-Branches auf dem Remote GAR NICHT erst anlegen (Push-Test besser mit `--dry-run`); Aufräumen kann nur der User im GitHub-UI.
 
+## 🏠 «verbessere webseite»: Überzusage im Spotlight, Sommer im September-Menü, Saison im Titel (2026-09-02)
+Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
+- **`lux_spotlight_video`** versprach «handverlesen, frisch kuratiert und **garantiert begehrt**» —
+  «handverlesen» ist bei Massenimport falsch (29.08.-Lehre am Vertrauensblock), «garantiert
+  begehrt» unbelegbar. Jetzt «laufend aktualisiert, damit du die Trends siehst, bevor sie alle
+  haben». Dazu «Kauf auf Rechnung mit Klarna **& TWINT**» → «mit Klarna · TWINT & Karten»
+  (Rechnungskauf gibt es nur über Klarna — dieselbe Korrektur wie am 31.08. im USP-Block; der
+  Spotlight-Block trug sie noch). Backup `theme_backup/index.json.spotlight-ehrlich-0209`.
+- **Hauptmenü «Herbst & Übergang» führte an ERSTER Stelle «Ventilatoren», dann
+  «Sommer-Kollektion»**, die Herbstware kam danach; dazu «Reisen & Sommer». Umbenannt zu
+  «Sommer-Auslauf» / «Reisen & Outdoor», Herbstware nach vorn, Sommerreste ans Ende.
+  `menuUpdate` mit vollem Baum (3 Ebenen, ids), 106 → 106 nachgezählt.
+  ⚠️ Die dritte Menü-Ebene hat in der Antwort KEIN `items`-Feld — wer rekursiv zählt, nimmt
+  `.get("items", [])`, sonst stürzt die Zählung ab, bevor sie etwas beweist.
+- **«Sommer-Kollektion» stand danach noch 10× im HTML** — alles EIN Produkt in der
+  Topseller-Reihe: «Boho Resort-Set · 2-teilig, **Sommer-Kollektion 2026** (Top & Hose)».
+  Dieselbe Klasse wie die sechs «(Sommer 2026)»-Titel vom 29.08., nur in anderer Schreibweise;
+  Titel bereinigt, Handle und Tags unverändert (gegengeprüft). ⚠️ `title:Sommer-Kollektion`
+  lieferte wieder **0** (stiller Titel-Filter, 28.08.) — gefunden nur über die Freitext-Suche.
+- ⚠️ Vier Grind-Runner halten den Shopify-Eimer knapp: `themeFilesUpsert` (Kosten 10) wurde
+  beim ersten Versuch gedrosselt. Scratch-Helfer `shop_gql.py` wartet die Differenz aus
+  `throttleStatus` ab, statt aufzugeben (Lehre 21.08., wieder nötig).
+- **Nicht angefasst, nur notiert:** derselbe Block sagt «ohne Zoll, ohne versteckte Gebühren».
+  Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
+  belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
+
 ## 👻 Der 29.05.-Generator hat einen ERFUNDENEN Katalog in 28 Ratgeber geschrieben (2026-09-02)
 Nach dem Salzlampen-Fund die Klassenfrage gestellt: Ein Scan aller veröffentlichten Artikel
 (Kollektionslink + Preisangabe im 120-Zeichen-Umfeld) fand **28 Artikel mit ~65 Fundstellen** —
