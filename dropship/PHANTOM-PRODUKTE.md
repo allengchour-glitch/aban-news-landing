@@ -12,6 +12,13 @@ Umfeld von 120 Zeichen danach.
 - `home-office-gesuender-einrichten` (5: Brille, Diffuser, HEPA→generisch, 3er-Set, Nacken)
 - `thermosflasche-edelstahl-vorteile-vergleich` (4: Thermosflasche 2×, Picknick→generisch, Strandtuch-«Bio»+Preis)
 - `smartwatch-einsteiger-ratgeber-2026` (1: Yogamatte)
+- `geschenke-fuer-frauen-2026-schweiz` (3 Phantome + 2 Prosa-Nachschläge + 3 FALSCHE PREISE an
+  ECHTEN Produktlinks: Portemonnaie 54.90→14.90 samt erfundenem «XL/12 Fächer/RFID», Serum
+  29.90→15.90 samt erfundenem «vegan, EU-hergestellt», Kissenbezug 39.90→21.90; Preisspannen-
+  Abschnitt entsprechend umgebaut)
+- `geschenke-fuer-maenner-2026-schweiz` (4: Lederarmband+Halskette→generisch, ANC over/in-ear→echt ohne ungedeckte Specs)
+- `vatertag-geschenke-schweiz-2026` (1: Lederarmband→generisch)
+- `herrenuhr-kaufen-ratgeber-schweiz` (1: Lederarmband→generisch)
 
 ## Verifizierte Zuordnungen (alle 02.09. live geprüft: ACTIVE + Onlineshop)
 | Phantom | echtes Produkt | Preis | Handle |
@@ -45,3 +52,7 @@ solo (nur im Bundle) · Gesichtsmasken-7-Tage-Set · Muttertag-Box.
    Geschenkverpackungs-Zusagen). Nach jedem Fix Rückfeld auf 0 Alt-Namen zählen.
 3. Jede Regel exakt 1× (subn==1, sonst nichts schreiben); Ziel vor dem Schreiben live prüfen.
 4. «Hier ansehen»-Anker (12 Fälle) einzeln ansehen — Preis kann sich auf legitimen Text beziehen.
+5. **AUCH die /products/-Links im selben Artikel prüfen:** Der Generator hat an ECHTEN
+   Produktlinks Preise und Eigenschaften erfunden (54.90 statt 14.90, «vegan, in der EU
+   hergestellt» an CJ-Ware = Herkunfts-Falschaussage). Je Artikel: alle Produktlinks sammeln,
+   Preise gegen live halten, Eigenschafts-Claims gegen den Produkttext.
