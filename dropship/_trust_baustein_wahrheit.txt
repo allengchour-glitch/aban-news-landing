@@ -1742,3 +1742,19 @@
 15448078483841	ersetzt-1	Off-Shoulder Kurzarmshirt
 15448078516609	ersetzt-1	Slim Fit Rundhals-Shirt mit kurzen Ärmeln
 15448078549377	ersetzt-1	Geripptes Slim Fit T-Shirt mit eckigem Ausschnitt
+15448078582145	ersetzt-1	Lässiges Kurzarm-Top im Loose-Fit
+15448078647681	ersetzt-1	Gestreiftes Langarmshirt im Loose Fit
+15448078680449	ersetzt-1	Kapuzen-Sweatshirt mit Polka-Dot-Print
+15448078713217	ersetzt-1	Figurbetontes Langarmshirt mit Spitze
+15448078745985	ersetzt-1	Lässiger Kapuzenpullover im Zweiteiler-Look
+15448078778753	ersetzt-1	Rundhals-Top mit ausgestellten Ärmeln
+15448078811521	ersetzt-1	Loose-fit Sweatshirt mit Reissverschluss
+15448078844289	ersetzt-1	Gestreifter Mock-Zweiteiler Hoodie
+15448078909825	ersetzt-1	Kapuzen-Sweatshirt für Damen, lockere Passform
+15448079368577	ersetzt-1	Strand-Kimono mit V-Ausschnitt & Seitenschlitz
+15448080613761	ersetzt-1	Chiffon-Top mit Puffärmeln und Rundhals
+15448080646529	ersetzt-1	Chiffon-Bluse mit Polka Dots und Mesh
+15448080679297	ersetzt-1	Elegantes Spitzen-Langarmshirt mit Puffärmeln
+15448080712065	ersetzt-1	Gestreifter Fluffy Woll-Cardigan (Slim-Fit)
+15448080744833	ersetzt-1	Off-Shoulder Langarmshirt mit Spitze
+15448080777601	ersetzt-1	Elegantes Langarmshirt mit Spitze V-Ausschnitt
