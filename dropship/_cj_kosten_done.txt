@@ -8615,3 +8615,5 @@ gid://shopify/Product/15450829586817	CHF 9.53	31 Varianten	Mattierendes Conceale
 gid://shopify/Product/15450829619585	CHF 28.97	12 Varianten	Brasilianisches Echthaar glatt
 gid://shopify/Product/15450829685121	CHF 9.95	10 Varianten	Haltungs-Korrektor für Rücken und Schlüsselbein
 gid://shopify/Product/15450829750657	CHF 6.35	8 Varianten	Schmetterling Ohrclip & Ohrhaken
+gid://shopify/Product/15450829881729	CHF 6.92	51 Varianten	Kühlende Liegematte für Haustiere
+gid://shopify/Product/15450829914497	CHF 14.62	32 Varianten	Kabellose 2-in-1 Glättbürste für schnelles Styling
