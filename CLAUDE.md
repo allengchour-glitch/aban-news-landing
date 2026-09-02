@@ -4546,6 +4546,26 @@ Drei Stellen, alle im ausgelieferten HTML gemessen, nicht im Theme geraten:
   Ob CJ-Sendungen über der CH-Einfuhrfreigrenze wirklich verzollt ankommen, ist von hier nicht
   belegbar — eine Aussage, die man weder bestätigen noch widerlegen kann, gehört dem Betreiber.
 
+## 🧱 «Das in Webseite» (Klemmbausteine) und «Esswaren separat» (2026-09-02, Betreiber-Screenshots)
+- **Klemmbausteine:** 453 aktive Baustein-/Bausatz-Produkte im Katalog (445 als «Spass-
+  Elektronik» typisiert), aber KEINE Kollektion. Neu `klemmbausteine-bausaetze` (TITLE
+  Klemmbaustein/Bausteine/Bausatz/Baukasten, CREATED_DESC, 6 Kanäle publiziert — Publish-Falle
+  beachtet, live 200), Bild = Sportwagen-Produktfoto, Menü unter Kinder & Baby (106→107),
+  Startseiten-Kachel statt «Schweizer Editionen» (Ende August; bleibt über Menü erreichbar).
+  ⚠️ Nur notiert: Titel wie «Benz 190E Klemmbausteine» und «Reobrix … World Of Tanks» tragen
+  fremde Marken; der Säuberer kennt nur die «im X-Stil»-Form.
+- **Esswaren:** 17 echte Süsswaren ab CH-Lager (Fasnachts-Bonbons, Kaugummi ×9, Lollipops,
+  saure Zungen, Zuckerwatte, Chupa Chups, Trolli) standen als **«Kostüme & Verkleidung»** im
+  Katalog — und damit in der Kostüm-Kollektion und in allen Preis-Geschenkreihen. Tag `esswaren`
+  + productType «Süsswaren & Esswaren», Kollektion `suesses-esswaren` (TAG-Regel, 17, 6 Kanäle,
+  live 200), Menü «Süsses & Esswaren 🍬» hinter Kostüme & Party (107→108).
+  ⚠️ Die Wortsuche traf 45, echt waren 17: «Popcorn-Sohle»-Sneaker, «Schoggi Bar»-Shirt,
+  «Lakritz-Wurzel Serum», Lebkuchenmann-Teppich — Esswaren-Wörter sind im Modekatalog
+  Muster und Aromen. Eine Wortliste findet Kandidaten, die Entscheidung trifft der Titel.
+- Der Betreiber-Screenshot zeigte daneben **«Jetons Wertmarken Pfand/Essen» (8, Gastro-
+  Marken für Feste)** in den Geschenk-Reihen — nicht angefasst; Vereinsfest-Bedarf ist in
+  der Schweiz plausible Konsumware, und die Preisreihen sind Smart-Regeln ohne Ausschluss.
+
 ## 🧭 Mega-Menü: eine Spalte, neun umgebrochene Links, daneben Leere (2026-09-02, Betreiber-Screenshot)
 Betreiber: «nur die schrift, schneide die leer balken das füllt alles und man sieht nichts».
 Ursache in `snippets/mega-menu-list.liquid`: Links OHNE dritte Ebene werden in EINE
