@@ -8174,3 +8174,62 @@ gid://shopify/Product/15450646053249	CHF 17.85	15 Varianten	Mary Jane Ballerinas
 gid://shopify/Product/15450646086017	CHF 20.55	10 Varianten	Französischer Samt-Sneaker mit Schnürung
 gid://shopify/Product/15450646151553	CHF 15.60	5 Varianten	Weisse Plateau-Sneakers für Damen
 gid://shopify/Product/15450646184321	CHF 15.60	12 Varianten	Sneaker mit Katzen-Design und dicker Sohle
+gid://shopify/Product/15450658537857	CHF 18.53	42 Varianten	Vielseitige Chunky-Heel Sandalen
+gid://shopify/Product/15450658603393	CHF 20.71	18 Varianten	Glänzende Mesh-Mules mit spitzer Zehenpartie
+gid://shopify/Product/15450658636161	CHF 18.29	16 Varianten	Bequeme Stiletto-Sandalen mit eckiger Spitze
+gid://shopify/Product/15450658800001	CHF 11.94	16 Varianten	Schicke Sandalen für den Alltag
+gid://shopify/Product/15450658898305	CHF 25.35	99 Varianten	Minimalistische Espadrille-Sandalen
+gid://shopify/Product/15450658996609	CHF 18.96	48 Varianten	High Heels mit Polka Dots im französischen Stil
+gid://shopify/Product/15450659062145	CHF 16.96	64 Varianten	Elegante Leder-Pumps für Frühling und Herbst
+gid://shopify/Product/15450659127681	CHF 19.15	24 Varianten	Lackleder Plateau-Sandalen für Damen
+gid://shopify/Product/15450659225985	CHF 30.86	56 Varianten	Elegante Riemchen-Stilettos aus Leder
+gid://shopify/Product/15450659324289	CHF 22.78	36 Varianten	High-Heel Sandalen im europäisch-amerikanischen St
+gid://shopify/Product/15450659389825	CHF 27.84	35 Varianten	Elegante Stiletto-Pumps mit spitzer Zehe
+gid://shopify/Product/15450659488129	CHF 18.76	18 Varianten	Damen Loafer mit eckiger Zehenpartie
+gid://shopify/Product/15450659586433	CHF 24.62	6 Varianten	Pumps mit Riemen und eckiger Spitze
+gid://shopify/Product/15450659783041	CHF 25.98	70 Varianten	Elegante spitze Pumps mit Stilettoabsatz
+gid://shopify/Product/15450659848577	CHF 26.92	28 Varianten	High Heels mit Schleife und Cut-Out
+gid://shopify/Product/15450659914113	CHF 21.61	18 Varianten	Chunky-Heel Peep-Toe Pumps im neuen China-Stil
+gid://shopify/Product/15450659979649	CHF 29.73	84 Varianten	Elegante Stiletto-High Heels mit spitzer Zehe
+gid://shopify/Product/15450660110721	CHF 15.44	12 Varianten	Satin High Heels mit Schleife
+gid://shopify/Product/15450660209025	CHF 38.28	75 Varianten	Damen-Stiefeletten mit Plateau und klobigem Absatz
+gid://shopify/Product/15450660307329	CHF 48.30	21 Varianten	Vintage Weinrote Offene High Heels
+gid://shopify/Product/15450660372865	CHF 44.84	21 Varianten	Mules mit Rosshaar und skulpturalem Absatz
+gid://shopify/Product/15450660503937	CHF 27.31	16 Varianten	Elegante Mesh-Stiletto-Sandalen mit spitzer Zehe
+gid://shopify/Product/15450660536705	CHF 21.00	45 Varianten	Chunky-Heel Sandalen mit Cut-Outs
+gid://shopify/Product/15450693337473	CHF 18.59	12 Varianten	Schwarze Schnürschuhe aus Leder
+gid://shopify/Product/15450693501313	CHF 22.42	84 Varianten	Handgenähte Damen-Freizeitschuhe mit weicher Sohle
+gid://shopify/Product/15450693665153	CHF 60.31	7 Varianten	Dunkelbraune Mary Jane Halbschuhe aus Leder
+gid://shopify/Product/15450693697921	CHF 16.50	12 Varianten	Chunky-Sneaker für Damen mit Schnürung
+gid://shopify/Product/15450693796225	CHF 15.84	54 Varianten	Sportliche Mesh-Schuhe für Damen
+gid://shopify/Product/15450693894529	CHF 24.15	18 Varianten	Damen-Sneaker mit Keilabsatz
+gid://shopify/Product/15450693927297	CHF 18.96	7 Varianten	Sportliche Mesh-Sneaker mit Blumenmuster
+gid://shopify/Product/15450693960065	CHF 19.28	18 Varianten	Atmungsaktive High-Top Sneaker mit Chunky-Sohle
+gid://shopify/Product/15450694058369	CHF 12.90	32 Varianten	Schnürschuhe mit klobigem Absatz
+gid://shopify/Product/15450694320513	CHF 34.04	12 Varianten	Silberne Chunky Dad-Sneaker im Colorblock-Design
+gid://shopify/Product/15450694713729	CHF 17.98	24 Varianten	Atmungsaktive Chunky-Sneakers mit Seitenreissversc
+gid://shopify/Product/15450695074177	CHF 40.42	15 Varianten	Damen Casual Hollow-Weave Schuhe mit dicker Sohle
+gid://shopify/Product/15450695369089	CHF 29.63	24 Varianten	Damen Sneaker mit dicker Sohle
+gid://shopify/Product/15450695795073	CHF 29.25	18 Varianten	High-Top Schuhe mit Riemenschnalle
+gid://shopify/Product/15450696122753	CHF 14.82	24 Varianten	Vintage Wildleder Loafers für Damen
+gid://shopify/Product/15450696384897	CHF 22.60	18 Varianten	Französische Mid-Heel Mary Jane Schuhe
+gid://shopify/Product/15450696679809	CHF 30.34	14 Varianten	Retro Pumps mit Schnürung und Blockabsatz
+gid://shopify/Product/15450696810881	CHF 16.81	16 Varianten	Chunky-Pumps mit Schnürung aus Wildleder
+gid://shopify/Product/15450696843649	CHF 18.03	40 Varianten	Vintage Loafer mit Leoparden-Print und Schnalle
+gid://shopify/Product/15450697040257	CHF 24.14	18 Varianten	Mary Jane Schuhe mit weicher Sohle
+gid://shopify/Product/15450697204097	CHF 19.68	18 Varianten	Atmungsaktive Mesh-Sneakers für Damen
+gid://shopify/Product/15450697400705	CHF 28.59	21 Varianten	Gefütterte High-Top Baumwollschuhe für Damen
+gid://shopify/Product/15450697597313	CHF 21.08	12 Varianten	Winter High-Top Sneaker mit Keilabsatz
+gid://shopify/Product/15450697761153	CHF 15.16	24 Varianten	Chunky-Heel Pumps mit Metallkette
+gid://shopify/Product/15450697924993	CHF 29.62	23 Varianten	Britische Schnürschuhe aus Leder für Damen
+gid://shopify/Product/15450698219905	CHF 16.21	50 Varianten	Sneaker mit Leoparden-Print und Schnürung
+gid://shopify/Product/15450698383745	CHF 30.95	12 Varianten	Damen High-Top Sneaker mit verstecktem Keilabsatz
+gid://shopify/Product/15450698613121	CHF 17.27	21 Varianten	Unisex-Schneestiefel mit Warmfutter
+gid://shopify/Product/15450698776961	CHF 14.05	24 Varianten	Damen Schneestiefel mit weicher Sohle
+gid://shopify/Product/15450698908033	CHF 17.65	27 Varianten	Chunky-Sohle Slip-on Sneaker für Damen
+gid://shopify/Product/15450699170177	CHF 16.32	36 Varianten	Jazz-Tanzschuhe aus Echtleder für Kinder
+gid://shopify/Product/15450699366785	CHF 17.10	24 Varianten	Bequeme Slip-on Running-Schuhe für Damen
+gid://shopify/Product/15450699530625	CHF 26.94	38 Varianten	Damen Arbeitsschuhe mit Stahlkappe
+gid://shopify/Product/15450699661697	CHF 16.27	16 Varianten	Damen Sneaker mit Mesh und verstecktem Absatz
+gid://shopify/Product/15450699891073	CHF 16.00	9 Varianten	Platform Loafers im Brit-Stil
+gid://shopify/Product/15450709098881	CHF 17.71	17 Varianten	Plateau-Wedge-Heels aus Lackleder

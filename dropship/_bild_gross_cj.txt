@@ -679,3 +679,5 @@
 15522282340737	OK-800x800
 15522296889729	kein-grosses-bild-bei-cj
 15522435563905	kein-grosses-bild-bei-cj
+15522439856513	kein-grosses-bild-bei-cj
+15523086041473	kein-grosses-bild-bei-cj
