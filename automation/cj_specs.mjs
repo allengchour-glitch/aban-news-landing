@@ -130,7 +130,10 @@ export function liste(x){
 }
 export function specZeilen(d){
   const rows=[];
-  const mats=[...new Set(liste(d?.materialNameEn).map(deMat).filter(Boolean))];
+  let mats=[...new Set(liste(d?.materialNameEn).map(deMat).filter(Boolean))];
+  // «Leather» bei CJ ist fast immer PU: steht «PU» im Namen oder Text, heisst die Zeile PU-Leder (keine Echtleder-Behauptung).
+  const txt=String(d?.productNameEn||'')+' '+String(d?.description||'');
+  if(mats.includes('Leder') && /\bPU\b|\bfaux\b|synthetic leather|vegan leather/i.test(txt)) mats=[...new Set(mats.map(m=>m==='Leder'?'PU-Leder':m))];
   if(mats.length) rows.push(['Material', mats.join(', ')]);
   const specs=extractSpecs(d?.description);
   const gw=gewichtText(d?.productWeight);

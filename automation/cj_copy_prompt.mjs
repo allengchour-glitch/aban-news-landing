@@ -23,6 +23,7 @@ Aus dem englischen Produktnamen und den Features machst du:
    - Satz 2–4: nur belegbare Fakten aus den Features — Masse, Material, Kapazität, Funktion, Lieferumfang. Mit Zahlen, wo die Features Zahlen nennen.
    - Dann <h3>Das zeichnet es aus</h3> mit 3–5 kurzen Stichpunkten (je max 8 Wörter, jeder mit einem Fakt).
 Regeln: Kurze Sätze. Keine Superlative. NICHTS erfinden — was nicht in den Features steht, steht nicht im Text.
+Keine Auswahl behaupten: schreibe NICHT «erhältlich in den Farben/Grössen …» — welche Varianten es gibt, zeigt der Shop selbst.
 VERBOTEN sind diese Wörter und Wendungen: ${VERBOTEN.join(', ')}.
 Kategorie: ${kat || '-'}
 Name (EN): ${nameEn}
