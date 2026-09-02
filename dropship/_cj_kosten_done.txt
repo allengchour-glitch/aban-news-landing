@@ -8650,3 +8650,14 @@ gid://shopify/Product/15450831126913	CHF 19.08	4 Varianten	Babytrage mit Hüftsi
 gid://shopify/Product/15450831192449	CHF 15.03	2 Varianten	Magnetische biegbare Auto-Halterung mit 15W Wirele
 gid://shopify/Product/15450831225217	CHF 10.52	14 Varianten	Baby Badeliege für Neugeborene
 gid://shopify/Product/15450831290753	CHF 22.14	84 Varianten	Nahtloses Yoga-Set für Damen
+gid://shopify/Product/15450831323521	CHF 12.98	14 Varianten	Doppelwandige Teeflasche mit Sieb
+gid://shopify/Product/15450831389057	CHF 19.92	4 Varianten	Automatischer Schaumseifen-Spender mit Sensor
+gid://shopify/Product/15450831454593	CHF 6.45	3 Varianten	LED-Getränkehalter für Ihr Auto
+gid://shopify/Product/15450831487361	CHF 8.06	90 Varianten	Duschkopf mit Turbo-Düse & Wassersparfunktion
+gid://shopify/Product/15450831520129	CHF 28.50	1 Varianten	USB Gewitterwolken-Licht mit App & Musik-Sync
+gid://shopify/Product/15450831552897	CHF 13.93	4 Varianten	Automatischer Rührbecher, 350 ml, Mondweiss
+gid://shopify/Product/15450831585665	CHF 7.69	1 Varianten	Perlen Armreif vergoldet, Vintage-Stil
+gid://shopify/Product/15450831618433	CHF 12.96	3 Varianten	Multi-Universal-Reiseadapter
+gid://shopify/Product/15450831651201	CHF 15.91	2 Varianten	LED Wecker mit kabelloser Ladefunktion
+gid://shopify/Product/15450831683969	CHF 7.94	12 Varianten	LED Laser Rolling Pet Toy Ball
+gid://shopify/Product/15450831716737	CHF 9.79	3 Varianten	Halterung für Rückspiegel-Handy
