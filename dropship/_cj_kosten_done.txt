@@ -7970,3 +7970,6 @@ gid://shopify/Product/15450534642049	CHF 95.58	24 Varianten	Herren Casual Boots 
 gid://shopify/Product/15450535199105	CHF 26.74	30 Varianten	Chelsea Boots für Herren
 gid://shopify/Product/15450535625089	CHF 35.38	60 Varianten	Chelsea Boots Wildleder High-Top
 gid://shopify/Product/15450536083841	CHF 50.67	20 Varianten	Wasserdichte High-Top Wanderstiefel für Herren
+gid://shopify/Product/15450536477057	CHF 25.93	7 Varianten	Warme Herren-Boots mit Lammfell-Futter
+gid://shopify/Product/15450537001345	CHF 18.91	32 Varianten	Herren-Winterstiefel mit rutschfester Sohle
+gid://shopify/Product/15450537394561	CHF 66.20	8 Varianten	Militär-Sicherheitsstiefel mit Stahlkappe
