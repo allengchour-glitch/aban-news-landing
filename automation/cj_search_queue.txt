@@ -6,8 +6,8 @@
 # (Tagesbudget war um 18:21 UTC erschöpft). Treffer gegen Bild plausibilisieren: es soll ein
 # WECKER sein, kein Spielzeug-Blaster.
 search:target alarm clock gun
-#done search:shooting alarm clock laser target
-#done search:gun alarm clock
+search:shooting alarm clock laser target
+search:gun alarm clock
 #done search:tempered glass screen protector iphone
 #done search:magsafe phone case
 #done search:magsafe car mount
