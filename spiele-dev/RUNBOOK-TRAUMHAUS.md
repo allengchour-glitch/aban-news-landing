@@ -5901,3 +5901,22 @@ Verschiedenes. `th-fahrt` und `th-raeder` warten jetzt auf **Weltsekunden** (Son
 Für die Gondel und die Wagen habe ich `Object3D.attach()` benutzt — es hält die Welttransform
 beim Umhängen. Der Räder-Code rechnet dasselbe von Hand (Weltposition, -rotation, -skalierung).
 Beides misst sich richtig; `attach` ist die kürzere Wahrheit.
+
+### 📌 Nächster Kandidat für „Autos und so": fünf ungenutzte Fahrzeug-Modelle
+
+`th40_postauto`, `th40_kleinbus`, `th40_muellwagen`, `th17_tram`, `th40_busbahnhof` liegen
+ungenutzt im Repo (der Bus `th40_bus` steht statisch am Busbahnhof; der *fahrende* Bus ist
+noch der prozedurale Kasten). Vorab gemessen, damit die Runde nicht rät:
+
+| Modell | Größe (x·y·z) | vorn | Räder (Form) | ⚠️ |
+|---|---|---|---|---|
+| `th40_postauto` | 8,67 · 3,11 · 2,95 | **+x** (Scheinwerfer bei x 4,3) | 4 auf z, r 0,50 | 2 Scheinwerfer-Zylinder auf **x** |
+| `th40_kleinbus` | 5,85 · 2,63 · 2,58 | +x | 4 auf z, r 0,38 | dito |
+| `th40_muellwagen` | 8,46 · 3,16 · 3,00 | +x | 6 (Zwillinge hinten, z 0,89/1,21) | dito |
+| `th40_bus` | 11,07 · 3,69 · 3,05 | +x | 6 (Zwillinge) | dito |
+| `th17_tram` | 2,55 · 4,95 · **28,0** | längs **z** | 12 auf x | Schiene, kein Verkehr |
+
+Zwei Folgen für `_raederAnlegen()`: **die dünne Achse muss z sein** (sonst werden
+Scheinwerfer zu Rädern), und **„genau 4" ist die th37-Wahrheit** — Bus und Müllwagen
+brauchen 6. Und die Verkehrs-Normierung `4,4 / max(x, z)` würde ein Postauto auf 4,4 m
+stauchen: je Modell eine Ziellänge, nicht eine für alle.
