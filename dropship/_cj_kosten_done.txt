@@ -8705,3 +8705,5 @@ gid://shopify/Product/15450833289601	CHF 10.86	79 Varianten	Herren T-Shirt aus E
 gid://shopify/Product/15450833322369	CHF 14.76	5 Varianten	LED-Schminkbox mit Lichtspiegel
 gid://shopify/Product/15450833355137	CHF 15.26	2 Varianten	RGB Flammen Aroma Diffusor 130ml
 gid://shopify/Product/15450833387905	CHF 16.70	26 Varianten	Kurzarm-Strickpullover mit Reverskragen
+gid://shopify/Product/15450833420673	CHF 26.38	55 Varianten	Individuelle Patched Jeans für Herren
+gid://shopify/Product/15450833453441	CHF 6.02	12 Varianten	Hallux Valgus Korrektor Schiene
