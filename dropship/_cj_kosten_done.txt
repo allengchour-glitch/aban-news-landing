@@ -8055,3 +8055,6 @@ gid://shopify/Product/15450559218049	CHF 38.37	9 Varianten	Cosplay Stiefel aus K
 gid://shopify/Product/15450559447425	CHF 68.63	3 Varianten	Leichte Wander- & Sportschuhe für Herren
 gid://shopify/Product/15450559938945	CHF 28.79	84 Varianten	Atmungsaktive Fussballschuhe für Herren
 gid://shopify/Product/15450560299393	CHF 43.76	21 Varianten	Wasserdichte, rutschfeste Outdoor-Wanderschuhe
+gid://shopify/Product/15450560594305	CHF 11.54	3 Varianten	Outdoor Schnee- und Bergwanderschuhe
+gid://shopify/Product/15450560987521	CHF 35.34	32 Varianten	Mesh Atmungsaktiver und Stossdämpfender Schuh
+gid://shopify/Product/15450561413505	CHF 40.71	16 Varianten	Outdoor-Wanderschuhe für Herren
