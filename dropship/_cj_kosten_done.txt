@@ -8588,3 +8588,8 @@ gid://shopify/Product/15450783744385	CHF 45.85	1 Varianten	Mausefallen-Set, 4 St
 gid://shopify/Product/15450783777153	CHF 44.77	1 Varianten	Basketballkorb mit Netz 45 cm
 gid://shopify/Product/15450783809921	CHF 30.54	1 Varianten	Superhelle LED-Taschenlampe mit Zoom und Warnlicht
 gid://shopify/Product/15450783842689	CHF 173.90	1 Varianten	Trockenfutter Adult Essence Rind
+gid://shopify/Product/15450828571009	CHF 6.15	12 Varianten	Mini Notfall Powerbank mit Karabiner (USB-C)
+gid://shopify/Product/15450828603777	CHF 17.22	1 Varianten	Vulkan Flammen Aroma Diffusor & Luftbefeuchter
+gid://shopify/Product/15450828636545	CHF 24.94	61 Varianten	3-in-1 Wireless Ladestation für mehrere Geräte
+gid://shopify/Product/15450828669313	CHF 32.18	49 Varianten	Faltbare Reise-Duffelbag mit grossem Volumen
+gid://shopify/Product/15450828702081	CHF 32.26	1 Varianten	3-in-1 LED Lampe mit Wecker & Wireless Charger
