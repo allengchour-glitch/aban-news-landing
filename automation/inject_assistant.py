@@ -1,54 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""automation/inject_assistant.py — „Frag aban"-Widget in Schlüssel-Seiten einhängen.
+"""automation/inject_assistant.py — STILLGELEGT (2026-09-02).
 
-Fügt vor </body> ein <script defer src="/js/assistant.js"> ein — idempotent
-(läuft beliebig oft). Nur kuratierte, hochwertige Seiten (Funnel + Hilfe), nicht
-die 1200 Archiv-/Branchen-Guide-Seiten.
+Der „Frag aban"-Assistent (/js/assistant.js) wurde auf Wunsch des Users von allen
+Seiten entfernt: „mach die Webseite besser, ohne die Chatfenster und so, alles
+eleganter". Gemessen auf der Startseite (mobil, nach dem Scrollen): vier fixierte
+Schichten uebereinander — Sprach-Banner 98 px, Mobile-CTA 79 px, Abo-Leiste 52 px und
+die Assistenten-Blase — zusammen rund 270 px eines 844-px-Schirms.
 
-    python3 automation/inject_assistant.py
+Dieses Skript hatte die Einbindung in 53 Seiten eingehaengt; ausserdem stand die
+Zeile in sechs Generator-Vorlagen (build_markets_detail, generate_sichtbarkeit_
+branchen, generate_compliance_pakete, generate_schnellstart, generate_ki_audit).
+Alle drei Orte sind bereinigt. Damit ein Aufruf aus alter Gewohnheit den Assistenten
+nicht zurueckbringt, tut dieses Skript jetzt NICHTS mehr — es sagt nur, warum.
+
+    python3 automation/inject_assistant.py   -> Hinweis, kein Eingriff
 """
-import glob
-import os
-
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TAG = '<script defer src="/js/assistant.js"></script>'
-
-FILES = [
-    "index.html", "tools.html", "online-tools.html", "faq.html", "ki-ratgeber.html",
-    "shop.html", "links.html", "gratis-ki-tools.html", "hype-watch.html",
-    "ai-sichtbarkeit.html", "ki-erwaehnungs-check.html", "ki-tools-datensatz.html",
-    "vorlagen-set.html", "prompt-pack.html", "preview.html",
-]
-GLOBS = ["ki-sichtbarkeit*.html", "ki-compliance*.html"]
-
-
-def targets():
-    seen, out = set(), []
-    for f in FILES:
-        p = os.path.join(ROOT, f)
-        if os.path.exists(p) and p not in seen:
-            seen.add(p); out.append(p)
-    for g in GLOBS:
-        for p in glob.glob(os.path.join(ROOT, g)):
-            if p not in seen:
-                seen.add(p); out.append(p)
-    return out
-
-
-def main():
-    added = skipped = 0
-    for p in targets():
-        html = open(p, encoding="utf-8").read()
-        if "js/assistant.js" in html:
-            skipped += 1; continue
-        if "</body>" not in html:
-            continue
-        html = html.replace("</body>", f"{TAG}\n</body>", 1)
-        open(p, "w", encoding="utf-8").write(html)
-        added += 1
-    print(f"✓ Frag-aban-Widget: {added} Seiten ergänzt, {skipped} schon vorhanden")
-
-
-if __name__ == "__main__":
-    main()
+import sys
+print("inject_assistant.py ist stillgelegt: der Assistent wurde 2026-09-02 auf Wunsch "
+      "entfernt (siehe Dateikopf). Nichts geaendert.")
+sys.exit(0)

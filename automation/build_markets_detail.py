@@ -377,7 +377,6 @@ def page(asset, css, updated, lang, all_assets):
 }})();
 </script>
 <script defer src="/js/analytics.js"></script>
-<script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
 </body>
 </html>

@@ -985,34 +985,9 @@
   })();
 </script>
 <script defer src="/js/analytics.js"></script>
-<script defer src="/js/assistant.js"></script>
-<div id="stickySub" class="sticky-sub" hidden>
-  <form class="ss-form" action="https://abannews.beehiiv.com/subscribe" method="get">
-    <span class="ss-txt">📬 Gratis testen:</span>
-    <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
-    <button type="submit">Abo →</button>
-  </form>
-  <button class="ss-x" id="stickyClose" type="button" aria-label="Schliessen">×</button>
-</div>
-<style>
-.sticky-sub{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;align-items:center;gap:.45rem;background:#1c2530;color:#fff;padding:.55rem .7rem;box-shadow:0 -6px 20px rgba(0,0,0,.18)}
-.sticky-sub.show{display:flex}
-@media(min-width:821px){.sticky-sub.show{display:none}}
-.ss-form{display:flex;flex:1;gap:.4rem;align-items:center;margin:0}
-.ss-txt{font-size:.82rem;font-weight:800;white-space:nowrap}
-.sticky-sub input{flex:1;min-width:0;border:0;border-radius:8px;padding:.55rem .6rem;font-size:.95rem;color:#15202b}
-.sticky-sub button[type=submit]{background:#d97706;color:#fff;border:0;border-radius:8px;padding:.55rem .8rem;font-weight:800;white-space:nowrap;cursor:pointer}
-.ss-x{background:transparent;border:0;color:#cbd5e1;font-size:1.35rem;line-height:1;padding:0 .15rem;cursor:pointer}
-</style>
-<script>
-(function(){var b=document.getElementById('stickySub'),x=document.getElementById('stickyClose');if(!b)return;
-b.hidden=false;
-if(sessionStorage.getItem('ss_dismiss'))return;
-function on(){if(window.scrollY>600){b.classList.add('show');}else{b.classList.remove('show');}}
-window.addEventListener('scroll',on,{passive:true});on();
-if(x)x.addEventListener('click',function(){b.classList.remove('show');try{sessionStorage.setItem('ss_dismiss','1');}catch(e){}});
-})();
-</script>
+<!-- Abo-Bodenleiste (#stickySub) entfernt 2026-09-02: sie lag als ZWEITE Bodenleiste unter #mcta,
+     beide mit demselben Zweck (Newsletter-Abo). Eine reicht. -->
+
 <script defer src="/js/announce.js"></script>
 <script defer src="/js/aff-track.js"></script>
 <script defer src="/js/lang-suggest.js"></script>

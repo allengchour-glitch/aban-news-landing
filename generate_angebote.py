@@ -128,7 +128,6 @@ def main():
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
 <a href="/start">Alles auf einen Blick</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
-<script defer src="/js/assistant.js"></script>
 </body>
 </html>
 """

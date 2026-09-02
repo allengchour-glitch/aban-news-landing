@@ -134,7 +134,6 @@ def shell(title, desc, url, body):
   <a href="/start">Alles auf einen Blick</a> ·
   <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
-<script defer src="/js/assistant.js"></script>
 </body>
 </html>
 """

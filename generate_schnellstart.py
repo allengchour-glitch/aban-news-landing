@@ -109,7 +109,6 @@ var URL_=(window.ABAN_CHECKOUT&&window.ABAN_CHECKOUT.SCHNELLSTART_BUY_URL)||"";
 (function(){var b=document.getElementById("buybtn");
 if(URL_){b.href=URL_;b.target="_blank";b.rel="noopener";}else{b.href="mailto:hallo@abannews.com?subject=KI-Schnellstart%20Workbook&body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20das%20KI-Schnellstart-Workbook.";b.textContent="Per Mail bestellen";}})();
 </script>
-<script defer src="/js/assistant.js"></script>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
 <a href="/start">Alles auf einen Blick</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>

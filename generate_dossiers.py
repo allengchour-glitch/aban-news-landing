@@ -651,7 +651,6 @@ __BODY__
 </div></main>
 <footer><div class="wrap">__FOOTER__</div></footer>
 <script defer src="/js/dossier.js"></script>
-<script defer src="/js/assistant.js"></script>
 </body>
 </html>
 """
