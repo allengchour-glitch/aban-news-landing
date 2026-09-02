@@ -8547,3 +8547,5 @@ gid://shopify/Product/15450781221249	CHF 19.62	1 Varianten	Duschschlauch 1.5m mi
 gid://shopify/Product/15450781680001	cj-abgekuendigt-pruefen
 gid://shopify/Product/15450781712769	CHF 28.54	1 Varianten	Befestigungsriemen für Pool-Abdeckungsroller, 8 St
 gid://shopify/Product/15450781778305	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450781811073	CHF 33.82	1 Varianten	Duschwand Stabilisierungsstange, Edelstahl 70-120 
+gid://shopify/Product/15450781843841	CHF 37.47	1 Varianten	Handtuchständer Aluminium 47x280 cm

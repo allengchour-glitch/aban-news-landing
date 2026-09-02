@@ -9,6 +9,9 @@ Umfeld von 120 Zeichen danach.
 - `himalaya-salzlampe-wirkung-mythen` (Nr.-1-Suchseite der Woche, 6 Regeln)
 - `wellness-geschenke-selfcare-ideen` (5 Phantome + falsche Geschenkverpackungs-FAQ)
 - `faszienrolle-uebungen-anleitung` (Nr.-2-Suchseite, 3 Phantome + 2 Folgesätze)
+- `home-office-gesuender-einrichten` (5: Brille, Diffuser, HEPA→generisch, 3er-Set, Nacken)
+- `thermosflasche-edelstahl-vorteile-vergleich` (4: Thermosflasche 2×, Picknick→generisch, Strandtuch-«Bio»+Preis)
+- `smartwatch-einsteiger-ratgeber-2026` (1: Yogamatte)
 
 ## Verifizierte Zuordnungen (alle 02.09. live geprüft: ACTIVE + Onlineshop)
 | Phantom | echtes Produkt | Preis | Handle |
