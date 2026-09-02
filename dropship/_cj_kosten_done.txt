@@ -8555,3 +8555,8 @@ gid://shopify/Product/15450781942145	CHF 28.95	1 Varianten	Teleskop Eckregal, 4 
 gid://shopify/Product/15450782007681	CHF 39.55	1 Varianten	Duscharmatur-Set mit Handbrause, Chrom
 gid://shopify/Product/15450782040449	CHF 49.90	1 Varianten	Handtuchhalter 6-Stab, Edelstahl
 gid://shopify/Product/15450782073217	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450782138753	CHF 54.35	1 Varianten	Wandmontierter Handtuchhalter aus Teakholz
+gid://shopify/Product/15450782171521	CHF 36.96	1 Varianten	Duschbrause mit Schlauch, verchromt
+gid://shopify/Product/15450782204289	CHF 51.13	1 Varianten	5-stufige Handtuchleiter aus Eisen, Schwarz
+gid://shopify/Product/15450782237057	CHF 25.49	1 Varianten	Pool-Bodensauger 1.2 m
+gid://shopify/Product/15450782269825	CHF 54.24	1 Varianten	2er-Set Badematten aus Akazienholz
