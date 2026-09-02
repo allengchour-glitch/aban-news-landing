@@ -1565,3 +1565,23 @@
 15448028053889	ersetzt-1	Damen Slim Fit Outdoor Fitnessjacke
 15448028217729	ersetzt-1	Kariertes Langarmhemd im American Style
 15448028381569	ersetzt-1	Elegantes Langarmshirt mit V-Ausschnitt
+15448028545409	ersetzt-1	Elegante Samtbluse mit V-Ausschnitt
+15448028643713	ersetzt-1	Langarmshirt mit Spitzenbesatz
+15448029331841	ersetzt-1	Unifarbener Kapuzen-Cardigan für Damen
+15448029495681	ersetzt-1	Spitzenbesetztes Langarmshirt mit Rundhals
+15448029626753	ersetzt-1	Gestreifter Pullover mit asymmetrischem Design
+15448029757825	ersetzt-1	Langarmshirt mit V-Ausschnitt und lockerer Passform
+15448030183809	ersetzt-1	Off-Shoulder Strandbluse mit Seitenschlitz
+15448030347649	ersetzt-1	Cropped Hoodie mit integrierten Brustpolstern
+15448030511489	ersetzt-1	Locker geschnittenes Langarmshirt
+15448030642561	ersetzt-1	Locker fallendes Strandkleid mit Lochmuster
+15448030708097	ersetzt-1	Gestreiftes Jacquard-Shirt mit Taillenbetonung
+15448030839169	ersetzt-1	Corduroy V-Neck Langarmshirt mit Knöpfen
+15448030970241	ersetzt-1	Tailliertes Langarmshirt mit Puffärmeln
+15448031101313	ersetzt-1	Elegante V-Neck Bluse mit Rüschenärmeln
+15448031297921	ersetzt-1	Elegante Jacquard-Bluse mit Schnürung
+15448031527297	ersetzt-1	Slim Cardigan Langarmshirt für Damen
+15448032018817	ersetzt-1	Hoodie Langarmshirt für Damen
+15448032280961	ersetzt-1	Strick-Cardigan mit Lochmuster und Kordelzug
+15448032510337	ersetzt-1	Damen Langarm-Top mit Puppenkragen und Knöpfen
+15448032772481	ersetzt-1	Lässiges Langarmshirt mit Falten und Karomuster
