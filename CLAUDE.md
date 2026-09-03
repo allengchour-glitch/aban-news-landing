@@ -6857,3 +6857,36 @@ Dinge und glaubt, es sei eines.**
 - **Stattdessen die Ware geprüft, die im Schaufenster steht:** 219 Startseiten-Produkte in die
   CH-Versandprüfung aufgenommen. **Ein nicht lieferbares Produkt auf der Startseite ist die
   nächste #1016** — und die Prüfliste kannte bisher nur Klingen und Suchseiten.
+
+## 🎠 Karussell statt Einzelpost — und vier von acht Erstbildern waren unbrauchbar (2026-09-03)
+Betreiber: «mache nicht nur 1 produkt sondern mehrere in karusell oder kategorien in karusell».
+`automation/social_karussell.mjs` postet EINEN Beitrag mit bis zu 10 Bildern (IG-Karussell +
+FB-Album) aus `dropship/_karussell.json`; Quelle ist die Kuration `querbeet` (je Welt ein Stück).
+Live: **8 Elemente, instagram.com/p/Dc1zAj-GoFP/** und FB-Album, je Ware EINZELN im
+Produkt-Ledger gemerkt (sonst käme sie später als Einzelpost wieder).
+- ⚠️ **Der Kontaktbogen hat die Hälfte der Auswahl gekippt.** Von den acht kuratierten
+  Erstbildern waren vier unbrauchbar: Uhr mit **leerem weissem Zifferblatt**, Bausatz als
+  **Massgrafik** (245mm/156mm/127mm), Hundeleine mit **englischem Overlay** («2nd generation
+  AIR»), Rucksack-Titel gegen **Reisetaschen-Bild**. Der Türvorhang trug in JEDEM seiner acht
+  Bilder eine eingebrannte **Variantennummer** («15», «02», «03») — dieses Produkt ist für
+  einen kuratierten Beitrag gar nicht geeignet, egal welches Bild man nimmt.
+  **Eine Kuration nach Zahlen (≥3 Bilder, Preis, Kanal) sagt nichts über das BILD.** Vor jedem
+  Beitrag den Bogen ansehen — und zwar den ganzen Bildsatz, nicht nur das erste.
+- ⚠️ **Die Bildunterschrift wird jetzt AUS der endgültigen Auswahl gebaut** (`kopf` + Zeilen +
+  `fuss`), nicht daneben getippt. Der erste Lauf zeigte warum: Die Produkt-Wache warf die
+  «Milano»-Tasche raus (schon gepostet), die handgeschriebene Caption nannte sie weiter als
+  Nummer 3. **Ein Text, der Ware nennt, die im Beitrag fehlt, ist eine Falschaussage** —
+  dieselbe Klasse wie ein Ratgeber, der ein Produkt bewirbt, das es nicht gibt.
+- ⚠️ **Instagram zwingt alle Karussell-Elemente in das Format des ERSTEN** → jedes Bild wird
+  über die Shopify-CDN-Transformation `?width=1080&height=1080&crop=center` quadratisch
+  zugeschnitten (gemessen: liefert 1080er JPEG, skaliert nichts hoch).
+- **Nebenbefund beim Prüfen, gefunden nur durch Hinsehen:** Das Kleeblatt hiess
+  «Edelstein-Kleeblatt **«Rubin & Saphir»**», bot aber VIER Steinfarben an (Rubin, Saphir,
+  Smaragd, Peridot) — und sein Hauptbild zeigte den **grünen** Smaragd. Der Titel nannte also
+  zwei von vier und widersprach dem eigenen Bild. Titel, Beschreibung und die vier englischen
+  Optionswerte («Cultured rubies» → «Rubin (Labor)») korrigiert, Handle unverändert.
+  **Ein Titel, der eine Auswahl VERSCHWEIGT, ist die Gegenrichtung zum Wahlversprechen** —
+  beide Male stimmt der Text nicht mit dem überein, was die Kundin kaufen kann.
+- ⚠️ Offen und nur notiert: Dieses Produkt trug im Text weiterhin den Block
+  «🇨🇭 CH / 🇪🇺 EU: 10–18 Tage · 🇺🇸 USA: 12–22 Tage» — die Klasse, die am 01./02.09. auf 0
+  gemessen wurde. Die Klasse gehört mit tag-tolerantem Muster AM OBJEKT neu gezählt.
