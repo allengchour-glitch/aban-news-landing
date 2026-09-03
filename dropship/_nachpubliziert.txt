@@ -265,3 +265,4 @@ gid://shopify/Product/15523187458433	smartwatch-armband-gen-9-max-fur-damen-0288
 gid://shopify/Product/15523211018625	smart-armband-mit-bluetooth-telefonie-amoled-d-446528	Smart-Armband mit Bluetooth-Telefonie & AMOLED-Display
 gid://shopify/Product/15523211051393	hunde-brustgeschirr-aus-nylon-0e5d2b	Hunde-Brustgeschirr aus Nylon
 gid://shopify/Product/15523223601537	hundegeschirr-mit-zugband-und-weste-7a93dc	Hundegeschirr mit Zugband und Weste
+gid://shopify/Product/15523850289537	3d-print-herren-kurzarmling-aus-mesh-614600	3D-Print Herren Kurzärmling aus Mesh

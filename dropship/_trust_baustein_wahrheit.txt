@@ -2816,3 +2816,28 @@
 15448645435777	ersetzt-1	Fashionable Damen Shorts mit Ripped Edges
 15448645534081	ersetzt-1	Capri-Jeans mit Shaping-Effekt
 15448645566849	ersetzt-1	Elegante Cargo Denim Shorts für Damen
+15448645632385	ersetzt-1	Freizeit-Shorts für Damen mit Kordelzug
+15448645665153	ersetzt-1	Luftige Caprihose mit Taschen für den Sommer
+15448645697921	ersetzt-1	Stylishe Slim-Fit Denim Shorts für Damen
+15448645763457	ersetzt-1	Curvy Denim Shorts mit hoher Taille
+15448645796225	ersetzt-1	Boho-Chic Latz-Shorts für Damen
+15448645861761	ersetzt-1	Denim-Shorts mit hoher Taille und Knopfleiste
+15448645927297	ersetzt-1	Loose Straight Casual Shorts
+15448645960065	ersetzt-1	Lässige Denim Shorts für Mädchen
+15448645992833	ersetzt-1	High-Waist Yoga Shorts mit Po-Lifting-Effekt
+15448646025601	ersetzt-1	Bade-Shorts mit Kordelzug und Lochmuster
+15448646058369	ersetzt-1	Denim Skort im Retro-Stil
+15448646091137	ersetzt-1	Weisse Low-Rise Denim Shorts für Damen
+15448646156673	ersetzt-1	Leichte Sport-Shorts mit Multi-Pockets
+15448646189441	ersetzt-1	High-Waist Slim-Fit Yoga Leggings
+15448646222209	ersetzt-1	Leder-Patchwork Shorts mit Nieten und Strass
+15448646254977	ersetzt-1	Sportliche Shorts mit Schnürung
+15448646320513	ersetzt-1	High-quality Slanted-button Placket Design Straight-leg No-s
+15448646386049	ersetzt-1	Sport-Shorts mit schnelltrocknendem Nylon-Spandex-Gewebe
+15448646451585	ersetzt-1	Vintage Low-Rise Denim Shorts für Damen
+15448646484353	ersetzt-1	High-Waist Shorts mit Taschen
+15448646582657	ersetzt-1	Unisex Street-Style Shorts
+15448646615425	ersetzt-1	Polyester Damen-Shorts – Blau
+15448646680961	ersetzt-1	Freizeit-Shorts im Retro-Stil mit Fransen
+15448646713729	ersetzt-1	High-Waist Boxer-Style Umstandsunterhose
+15448646812033	ersetzt-1	Mesh-Panel Sport Leggings für Damen
