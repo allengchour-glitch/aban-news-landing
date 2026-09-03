@@ -214,3 +214,7 @@ aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unkla
 diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
 3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
 wlan-video-turklingel-8db6b1	-	-	-	unklar keine CJ-SKU	klinge
+kuchenmesser-aufbewahrung-8b4831	-	-	-	unklar keine CJ-SKU	klinge
+ersatzklinge-fur-elektrische-schaufel-628900	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+yoland-schwertpflegeol-rostschutz-fur-klingen-623400	2607230945541625700	2	7.10	ok	klinge
+multifunktionales-karabiner-messer-mit-led-600400	2607030646441601000	6	7.49	ok	klinge
