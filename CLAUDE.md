@@ -6311,3 +6311,15 @@ Erst die ausgelieferten Seiten gescannt (Startseite, zwei Kategorien, Produkt, W
   artikel wurden zu «Partydeko» umtypisiert und mussten zurück. Achte Fassung der Substring-Familie, diesmal
   in der FREITEXTSUCHE statt im Regex: **Shopifys Freitextsuche ist ein Kandidatensieb, kein Urteil** — vor
   dem Schreiben gehört jeder Titel gelesen (DRY), auch bei 38 Stück.
+- **Die Kostüm-Kollektion hängt jetzt an KOSTÜM-TAGS statt am Sammeltopf-Typ:** Regel = OR über
+  `kostuem-ch-front` (Titel-Kernwörter aus `automation/kostuem_core.regex`, 1'594 Bestandsartikel per
+  Hintergrundjob getaggt, Ledger `dropship/_kostuem_ch_front.txt`) + Forturas Feed-Gruppen-Tags
+  (damen-/herren-/unisex-/kinderkostuem, peruecke, kostuem-hut, kostuem-accessoire, trachten).
+  ⚠️ `maske` NICHT in die Regel: 154 Nicht-CH-Treffer sind CJ-Gesichts-/Schlafmasken. Quelle: beide
+  Fortura-Importer typisieren BRUDER/Lotto → Spielzeug, HARIBO → Esswaren, Skelett/Jetons → Partydeko
+  und setzen `kostuem-ch-front` über `kostuemFrontTag()` (eine Regex-Datei, zwei Leser).
+- ⚠️ **Offene Klasse, gemessen und NICHT angefasst:** 626 aktive CJ-Texte beginnen mit «Entdecken Sie»,
+  bis zu 10'000 tragen «Ihre» — der alte Groq-Prompt siezte. Der Shop duzt. Ein Modell-Massenlauf über
+  10'000 Texte ist die 15.08.-Klasse (Massen-Schreiber) plus die Imperativ-Falle von heute; gemacht wurden
+  nur die zwei Such-Landeseiten mit Sie-Anrede (Aromadiffusor, Nackenkissen), per exakter Ersetzung.
+  Wer das angeht: chargenweise, elementweise, mit `frage-statt-imperativ`-Validierung und Stichprobe lesen.
