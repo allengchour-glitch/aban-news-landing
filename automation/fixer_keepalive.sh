@@ -665,7 +665,8 @@ while true; do
       # Listenpunkte an, nie einen Absatz mit Auszeichnung, und schreibt jede Streichung ins
       # Ledger. Erste Charge am 27.08.: 500 geprueft, 89 gemeldet, 28 bereinigt — die uebrigen
       # 61 tragen eine zweite Aussage und bleiben fuer eine Hand liegen.
-      ( cd "$REPO" && CAP=6000 FIX=1 setsid python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid flock -n /tmp/lock_produkttext.lock \
+          env CAP=6000 FIX=1 python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) wahlversprechen geprüft"
     fi
   fi
@@ -677,7 +678,8 @@ while true; do
   if [ -f "$REPO/automation/wearable_messversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WM" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && QUELLE=live CAP=200 setsid python3 automation/wearable_messversprechen.py >> "$WM" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid flock -n /tmp/lock_produkttext.lock \
+          env QUELLE=live CAP=200 python3 automation/wearable_messversprechen.py >> "$WM" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) wearable_messversprechen geprüft"
     fi
   fi
@@ -793,7 +795,14 @@ while true; do
       elif [ "$ALTER" -gt 259200 ]; then mv "$VL" "$VL.alt" 2>/dev/null; START=1; fi
       if [ "$START" = 1 ]; then
         ( cd "$REPO" && setsid bash -c \
-            "exec 9>/tmp/lock_versand_live.lock; flock -n 9 || exit 0; QUELLE=live IGNORIERE_LEDGER=1 exec python3 automation/versandaussagen_wahrheit.py" \
+            # ⚠️ EIN Schloss fuer ALLE Schreiber auf descriptionHtml (03.09.2026).
+            # Jeder Schreiber hatte seinen EIGENEN Lockfile — das verhindert nur seinen
+            # eigenen Doppelstart, nicht zwei VERSCHIEDENE Werkzeuge auf demselben Feld.
+            # Gemessen: versandaussagen und trust_baustein liefen gleichzeitig; trust haelt
+            # seinen Seitentext bis zu 15 s, in dieser Luecke schreibt es die eben gemachte
+            # Reparatur zurueck (Zombie-Klasse 15.08.). Dieselbe Lehre wie post_guard:
+            # EIN Lock, EIN Ledger — nie ein eigener Lockfile je Werkzeug.
+            "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; QUELLE=live IGNORIERE_LEDGER=1 exec python3 automation/versandaussagen_wahrheit.py" \
             >> "$VL" 2>&1 9>&- & )
         echo "$(date -u +%H:%M) versandaussagen Live-Kontrolle gestartet"
       fi
@@ -808,7 +817,7 @@ while true; do
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/trust_baustein_wahrheit.py"{n++} END{exit(n?0:1)}'; then
       if ! grep -q "^FERTIG:" "$TB" 2>/dev/null; then
         ( cd "$REPO" && setsid bash -c \
-            "exec 9>/tmp/lock_trust_baustein.lock; flock -n 9 || exit 0; CAP=2500 exec python3 automation/trust_baustein_wahrheit.py" \
+            "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; CAP=2500 exec python3 automation/trust_baustein_wahrheit.py" \
             >> "$TB" 2>&1 9>&- & )
         echo "$(date -u +%H:%M) trust_baustein_wahrheit gestartet"
       fi

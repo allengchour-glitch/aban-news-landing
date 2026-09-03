@@ -39816,3 +39816,4 @@ gid://shopify/Product/15443497681281	direkt	1	Sternenhimmel-Projektor «Nova» �
 gid://shopify/Product/15443497714049	direkt	1	Sternenhimmel-Projektor «Cosmos» · LED-Nachtlicht
 gid://shopify/Product/15443498336641	direkt	1	Wireless-Charger «PowerPad» · kabellos laden
 gid://shopify/Product/15443498893697	direkt	1	Kabellose Kopfhörer «AeroPods» · Bluetooth TWS
+gid://shopify/Product/15443497976193	direkt	1	LED-Projektor «Aurora» · Stimmungslicht

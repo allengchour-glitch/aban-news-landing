@@ -992,3 +992,8 @@ strand-sandalen-doree-metallic-riemchen-flach	2606080531211619400	-	-	unklar 160
 reise-hangematte-aus-fallschirm-nylon-86eb20	-	-	-	unklar keine CJ-SKU	landeseite
 klares-badezimmerspiegel-mit-metallrahmen-304385	2048642711850160130	0	-	KEINE CH-Option → DRAFT	landeseite
 deformierbare-led-garagenleuchte-60w-7122ff	-	-	-	unklar keine CJ-SKU	landeseite
+bambusfaser-matratzen-topper-kuhlend-verdickt-619600	2607011302461610300	11	34.92	ok	landeseite
+9-teiliges-set-reise-organizer-887361	1990604422898688002	0	-	KEINE CH-Option → DRAFT	landeseite
+hanteln-mit-chrom-griff-192386	2046137494772215810	0	-	KEINE CH-Option → DRAFT	landeseite
+wasserdichte-reisetasche-625600	2605230945361626100	0	-	KEINE CH-Option → DRAFT	landeseite
+silikon-schussel-fur-hunde-und-katzen-610500	2507130912041610800	11	25.49	ok	landeseite
