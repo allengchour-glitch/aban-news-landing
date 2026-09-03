@@ -152,6 +152,86 @@ check("nur eine reine Frage = nicht answer-first",
   analyze("Was kostet eine Steuererklärung?").metrics.answerFirst === false);
 
 // ---------------------------------------------------------------------------
+// 8) Inhalt statt Rahmen — der Fehler, der 234 von 270 eigenen Seiten falsch bewertete
+//    (gemessen 2026-09-03). Titel, Menü und Brotkrume enden ohne Punkt und klebten
+//    deshalb am ersten Inhaltssatz; gemessen wurde der Rahmen, nicht der Text.
+// ---------------------------------------------------------------------------
+console.log("\nTest 8 — Inhalt statt Seitenrahmen:");
+
+const SEITE = `<html><head><title>Dreirad kaufen Schweiz 2026 — Kinderdreirad, EN 71 & Mitwachs | aban</title>
+<meta name="description" content="Kinderdreirad nach Alter, Mitwachs und EN 71 auswaehlen."></head><body>
+<nav class="topnav"><a href="/">aban</a><ul><li><a href="/m">Marktplatz</a></li><li><a href="/j">Jobs</a></li></ul></nav>
+<nav class="bc"><a href="/">Start</a> › <a href="/k">Kaufberater</a> › Dreirad kaufen Schweiz</nav>
+<header><h1>Dreirad kaufen Schweiz 2026 — Kinderdreirad, EN 71 und Mitwachs im Vergleich</h1></header>
+<main><p>Dreiraeder mit Schiebestange passen ab 12 Monaten. Eigenstaendiges
+Treten gelingt den meisten Kindern ab 2 Jahren.</p>
+<h2>Ab wann ist ein Dreirad sinnvoll?</h2><p>Ab 12 Monaten mit Schiebestange.</p>
+<h2>Was kostet ein gutes Modell?</h2><p>Zwischen 80 und 200 Franken.</p></main>
+<footer><p>Impressum Datenschutz Kontakt</p></footer></body></html>`;
+
+const seite = analyze(SEITE);
+check("Erster Satz ist der Inhalt, nicht Titel/Menue/Brotkrume", seite.metrics.answerFirst === true);
+check("Menue-Woerter zaehlen nicht als Text", !/Marktplatz|Brotkrume|Impressum/.test(JSON.stringify(seite.metrics)));
+check("Zeilenumbruch im Quelltext ist keine Satzgrenze", seite.metrics.sentenceCount === 6);
+check("Ein Absatz mit fuenf Quelltext-Umbruechen bleibt EIN Satz", (() => {
+  /* Entscheidender Fall: mit dem alten Verhalten waeren das 6 „Saetze" à 3 Woertern —
+     Satzzahl und Ø-Satzlaenge, und damit die Lesbarkeits-Note, waren dann falsch. */
+  const r = analyze(`<html><body><main><p>Der Beitrag betraegt
+    zwoelf Franken pro
+    Monat und ist
+    jederzeit auf das
+    Monatsende hin kuendbar
+    ohne weitere Fristen.</p></main></body></html>`);
+  return r.metrics.sentenceCount === 1 && r.metrics.wordCount === 18;
+})());
+check("Menue-Liste ist keine Inhaltsliste", seite.metrics.listCount === 0);
+check("Ueberschrift ohne Satzzeichen klebt nicht am naechsten Absatz", (() => {
+  /* Der Kern des Fehlers: Block-Elemente enden meist OHNE Punkt. Ohne Block-Grenze
+     verschmelzen Ueberschrift und Absatz zu einem 31-Woerter-Satz — und die Engine
+     meldet faelschlich „Erster Satz ist sehr lang". */
+  const html = `<html><body><main><h2>Alles zum Kinderdreirad im Ueberblick</h2>
+    <p>Ein gutes Modell kostet zwischen achtzig und zweihundert Franken und begleitet ein Kind
+    ungefaehr drei bis vier Jahre lang zuverlaessig durch den ganzen Alltag.</p></main></body></html>`;
+  const r = analyze(html);
+  /* Ueberschrift zaehlt nicht als Fliesstext (kein Satzzeichen) -> 1 Prosa-Satz.
+     Ohne Block-Grenze waeren Ueberschrift + Absatz EIN Satz mit 27 Woertern -> „sehr lang". */
+  return r.metrics.answerFirst === true && r.metrics.sentenceCount === 1
+    && !r.categories.find((c) => c.key === "antwort-zuerst").detail.includes("sehr lang");
+})());
+check("Lesbarkeit misst Fliesstext, nicht Tabellenzellen", (() => {
+  /* Zwoelf kurze Zellen + ein langer Satz: die Zellen duerfen die Ø-Satzlaenge nicht
+     auf ein Drittel druecken (gemessen an dreirad-kaufen-schweiz.html: 5,1 statt 10,1). */
+  const zellen = Array.from({ length: 12 }, (_, i) => `<td>Wert ${i}</td>`).join("");
+  const r = analyze(`<html><body><main><table><tr>${zellen}</tr></table>
+    <p>Die Anmeldung dauert zwei Minuten und danach steht das Konto bereit, sodass du sofort
+    mit der Einrichtung deiner ersten Kampagne beginnen kannst.</p></main></body></html>`);
+  return r.metrics.sentenceCount === 1 && r.metrics.avgSentenceLen >= 20;
+})());
+check("Antwort-zuerst wird voll bepunktet",
+  seite.categories.find((c) => c.key === "antwort-zuerst").points >= 12);
+check("kein falscher Rat mehr zu 'erster Satz'",
+  !seite.recommendations.some((r) => r.category === "antwort-zuerst" && r.severity === "hoch"));
+
+check("Leeres <main> (App-Geruest) faellt auf das Dokument zurueck", (() => {
+  const r = analyze(`<html><body><nav>Menue</nav><main><div id="app"></div></main>
+    <div><p>Die Anmeldung dauert zwei Minuten. Danach steht das Konto bereit und du kannst starten.</p></div></body></html>`);
+  return r.metrics.wordCount > 10 && r.metrics.answerFirst === true;
+})());
+
+check("<article> wird genutzt, wenn kein <main> da ist", (() => {
+  const r = analyze(`<html><body><nav><a>Start</a><a>Blog</a></nav><article><p>Die Frist endet am 31. Maerz.
+    Wer spaeter einreicht, zahlt eine Gebuehr von 50 Franken pro angefangenem Monat und riskiert eine Mahnung.</p></article></body></html>`);
+  return r.metrics.answerFirst === true && !/Blog/.test(JSON.stringify(r.metrics));
+})());
+
+check("Inhalt ohne <main>/<article>: nav und footer fliegen raus", (() => {
+  const r = analyze(`<html><body><nav><a>aban</a><a>Jobs</a></nav>
+    <p>Der Beitrag betraegt 12 Franken pro Monat. Kuendbar ist er jederzeit auf Monatsende.</p>
+    <footer><p>Impressum</p></footer></body></html>`);
+  return r.metrics.answerFirst === true;
+})());
+
+// ---------------------------------------------------------------------------
 console.log("\n" + "=".repeat(48));
 console.log(pass + " bestanden, " + fail + " fehlgeschlagen.");
 if (fail > 0) process.exit(1);
