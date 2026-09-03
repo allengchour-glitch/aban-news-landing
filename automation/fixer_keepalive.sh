@@ -978,7 +978,11 @@ while true; do
   PRIO_OFFEN=0
   grep -q "^FERTIG" /tmp/schulstart_import.log 2>/dev/null || PRIO_OFFEN=1
   grep -q "^FERTIG" /tmp/cj_variantenbild.log 2>/dev/null || PRIO_OFFEN=1
-  if [ "$(date -u +%H)" = "16" ] && [ "$PRIO_OFFEN" = "1" ]; then
+  # 03.09.2026: Pause auch auf Zuruf (dropship/_GRIND_PAUSE_BIS = UTC-Epoche), dieselbe Regel wie in
+  # engine_keepalive.sh — sonst startet DIESER Block die Runner 20 Minuten nach dem Stopp wieder.
+  PAUSE_ZURUF=0; PBF="$REPO/dropship/_GRIND_PAUSE_BIS"
+  if [ -f "$PBF" ] && [ "$(tr -dc 0-9 < "$PBF")" -gt "$(date -u +%s)" ] 2>/dev/null; then PAUSE_ZURUF=1; fi
+  if { [ "$(date -u +%H)" = "16" ] && [ "$PRIO_OFFEN" = "1" ]; } || [ "$PAUSE_ZURUF" = "1" ]; then
     touch /tmp/cj_prio_fenster
     pkill -f "cj_runner_template.sh" 2>/dev/null
     echo "$(date -u +%H:%M) Prio-Fenster: Grind-Runner pausiert (Punkte den Prio-Jobs)"

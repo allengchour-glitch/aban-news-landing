@@ -49,7 +49,7 @@ def cj(pfad, body=None):
         return code, d.get("data"), d.get("message") or "", (d.get("pointsInfo") or {}).get("remaining")
     return 0, None, "keine Antwort", None
 
-def warte_auf_punkte(mind=40):
+def warte_auf_punkte(mind=80):
     """16900500 kommt AUCH bei leerem Eimer (03.09. gemessen: 60 s später wieder 200) — erst nach 5 Wartezyklen gilt das Tagesbudget als erschöpft."""
     leer = 0
     while True:
@@ -121,7 +121,7 @@ def main():
             time.sleep(60)
             if not warte_auf_punkte(): print("⛔ CJ-Tagesbudget erschöpft — Abbruch ohne Quittung", flush=True); break
             code, opts, msg, rest = cj("/logistic/freightCalculate", {"startCountryCode": "CN", "endCountryCode": "CH", "products": [{"quantity": 1, "vid": vid}]})
-        if code != 200 or (rest is not None and rest < 20 and not opts):
+        if code != 200 or (rest is not None and rest < 60 and not opts):
             unklar += 1; L.write(f"{p['handle']}\t{vid}\t-\t-\tunklar {code} {msg[:30]} rest={rest}\t{grund}\n"); L.flush(); time.sleep(10); continue
         opts = [o for o in (opts or []) if o.get("logisticPrice") is not None]
         if opts:
