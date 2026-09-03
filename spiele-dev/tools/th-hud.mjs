@@ -214,13 +214,22 @@ const r = await page.evaluate(([B, H, autoP]) => {
          steht es in der Bildmitte; kein Bedienelement darf naeher als 60 px an seinem
          projizierten Punkt liegen (gemessen: Aussteigen 53 px). */
   const flaecheVon = (a, b) => Math.max(0, Math.min(a.r, b.r) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.u, b.u) - Math.max(a.y, b.y))
-  const felder = K.filter((k) => /^(geld|uhr|needsBox|stufeBox)$/.test(k.id))
   const knoepfe = K.filter((k) => k.tag === 'button' || /Btn$/.test(k.id) || k.id === 'exitCar')
+  /* ⚠️ Erst nur "HUD-Feld unter Knopf". Die Fusszeile (Suche · Impressum · Datenschutz,
+     z 99999) lag derweil ueber den Katalog-Preisen und dem Rand von "Aussteigen" — und blieb
+     unentdeckt, weil die Mitten-Probe (elementFromPoint) nur die Mitte kennt und die Fusszeile
+     weder Feld noch Knopf war. Jetzt: JEDES Paar, gemeldet wird das kleinere Element, ab 10 %
+     seiner Flaeche. */
   const teilverdeckt = []
-  for (const f of felder) for (const b of knoepfe) {
+  for (let i = 0; i < K.length; i++) for (let j = 0; j < K.length; j++) {
+    if (i === j) continue
+    const f = K[i], b = K[j]
+    if (f.w * f.h > b.w * b.h) continue
+    /* Seitenhuelle (#wrap) und andere Vollbild-Kaesten liegen unter allem — kein Rivale. */
+    if (b.w * b.h > 0.5 * B * H) continue
     const a = flaecheVon(f, b); if (a <= 0) continue
-    const pct = Math.round(100 * a / (f.w * f.h))
-    if (pct >= 10) teilverdeckt.push({ feld: f.id, knopf: b.id, pct, px: Math.round(Math.max(0, f.r - b.x)) })
+    const pct = Math.round(100 * a / Math.max(1, f.w * f.h))
+    if (pct >= 10) teilverdeckt.push({ feld: f.id + (f.txt ? ' „' + f.txt + '"' : ''), knopf: b.id, pct, px: Math.round(Math.max(0, f.r - b.x)) })
   }
   let autoNah = []
   try {
@@ -254,7 +263,7 @@ if (sperre) {
   console.log(`${r.ueber.length ? '❌' : '✅'} Bedienelemente, deren Mitte ein FREMDES Element bekommt: ${r.ueber.length}`)
   r.ueber.forEach((u) => console.log(`     ${u.b.padEnd(18)} (${u.ox}x${u.oy}) → Tipp landet auf ${u.a}`))
 }
-console.log(`${r.teilverdeckt.length ? '❌' : '✅'} HUD-Felder, die ein Knopf teilweise verdeckt (ab 10 %): ${r.teilverdeckt.length}`)
+console.log(`${r.teilverdeckt.length ? '❌' : '✅'} Elemente, die sich ueberlagern (ab 10 % des kleineren): ${r.teilverdeckt.length}`)
 r.teilverdeckt.forEach((t) => console.log(`     ${t.feld.padEnd(12)} ${t.pct} % unter ${t.knopf} (${t.px} px der Breite)`))
 if (modus === 'Fahrmodus') {
   console.log(`${r.autoNah.length ? '❌' : '✅'} Bedienelemente auf dem eigenen Auto (naeher als 60 px): ${r.autoNah.length}`)

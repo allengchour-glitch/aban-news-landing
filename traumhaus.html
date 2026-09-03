@@ -75,6 +75,18 @@ canvas{display:block}
   #uhr,#needsBox{min-width:0;flex-shrink:1;overflow:hidden}
   #stufeBox{min-width:0;flex-shrink:3}
   #needsBox>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  /* Fusszeile (Suche · Impressum · Datenschutz, z 99999) lag beim Spielen ueber den
+     Katalog-Preisen, dem unteren Rand von "Aussteigen" und dem Joystick-Ring
+     (th-spielerblick, Bilder 3/5/6). Waehrend des Spiels quer ausgeblendet — sie steht
+     auf dem Startbild und auf jeder anderen Seite. th-hud prueft jetzt ALLE Paare. */
+  body.spielt #aban-recht{display:none !important}
+  /* Bau-Werkzeuge (Drehen/Abreissen): die Spalte endete oben bei 42 und lag damit 10 px
+     in der Kopfzeile — 23 % des Dreh-Knopfs unter dem Stufen-Feld (th-hud, 844x390). */
+  #tools{bottom:calc(232px + env(safe-area-inset-bottom)) !important}
+  /* Tacho: stand bottom 74 in der Mitte — exakt unter dem Hinweistext (#hint, bottom 76,
+     z 21). Jeder Hinweis waehrend der Fahrt (Einsteigen, Airtime, Muenze) deckte ihn zu
+     (Bild 5: kein Tacho zu sehen). Jetzt rechts neben "Aussteigen" am unteren Rand. */
+  #speedo{left:calc(50% + 96px) !important;transform:none !important;bottom:calc(16px + env(safe-area-inset-bottom)) !important;padding:4px 10px 6px !important;min-width:84px !important}
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
   /* Linke Spalte quer: Geld, Pokal(64), Radar(120..238), Bauen, Joystick(unten).
      Zwischen Radar-Unterkante und Joystick-Oberkante bleiben nur ~50 px — Bauen sitzt
@@ -104,6 +116,15 @@ canvas{display:block}
   #hornBtn{right:calc(136px + env(safe-area-inset-right)) !important}
   #lieferBtn{right:calc(188px + env(safe-area-inset-right)) !important}
   #exitCar{left:calc(142px + env(safe-area-inset-left)) !important;transform:none !important;padding:11px 16px !important;min-height:44px !important;font-size:.95rem !important}
+  #speedo{display:none !important} /* kein Platz mehr in der unteren Reihe — bewusst */
+}
+@media (orientation:landscape) and (min-height:341px) and (max-height:380px){
+  /* 667x375: die gestapelten Fahrknoepfe (48 px, Lieferung bis 338) ragten 8 px in die
+     Kopfzeile — 17 % des Lieferung-Knopfs unter dem Stufen-Feld (th-hud). Drei mal 44 px:
+     Nitro 178–222, Hupe 228–272, Lieferung 278–322 → Oberkante 53, Kopfzeile endet ~45. */
+  #nitroBtn,#hornBtn,#lieferBtn{width:44px !important;height:44px !important;font-size:1.05rem !important}
+  #hornBtn{bottom:calc(228px + env(safe-area-inset-bottom)) !important}
+  #lieferBtn{bottom:calc(278px + env(safe-area-inset-bottom)) !important}
 }
 @media (max-height:380px){
   /* 🩹 Schwarm-6: bei Viewports unter ~365px Hoehe schnitt das Radar (top 120,
@@ -323,7 +344,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <canvas id="bigmap" width="920" height="554" style="max-width:97vw;max-height:78vh;border-radius:16px;border:3px solid rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(0,0,0,.6);background:#3a5a34"></canvas>
   <button id="bigmapClose" style="border:0;background:#ffdf7a;color:#3a2b06;font-weight:900;border-radius:14px;padding:12px 30px;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)">Schliessen</button>
 </div>
-<div id="speedo" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:12px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
+<div id="speedo" style="position:fixed;left:calc(50% + 170px);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:12px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
   <div style="font-size:1.15rem;font-weight:900;line-height:1">🏎️ <span id="spNum">0</span> <span style="font-size:.7rem;opacity:.7">km/h</span></div>
   <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:4px;overflow:hidden"><div id="spBar" style="height:100%;width:0;background:#3ad0ff;border-radius:3px"></div></div>
 </div>
@@ -9856,9 +9877,9 @@ var KATALOG={
    use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
   {id:"ladenregal",n:"⭐ Aktenregal",e:"🗃️",cost:460,size:[1,1],datei:"th11_ladenregal.glb",norm:1,zielH:1.8}],
  garten:[
-  {id:"auto_kombi",n:"Kombi",e:"🚙",cost:2400,size:[1,2],car:1},
-  {id:"auto_flitzer",n:"Flitzer",e:"🏎️",cost:4800,size:[1,2],car:1},
-  {id:"auto_van",n:"Van",e:"🚐",cost:3200,size:[1,2],car:1},
+  {id:"auto_kombi",n:"Limousine",e:"🚗",cost:2400,size:[1,2],car:1,datei:"th37_limousine.glb",lack:0xf2b21c}, /* id bleibt (Spielstaende); Modell: die viertuerige Limousine zeigt von allen vier Charge-37-Wagen das breiteste Fensterband — Vergleichsrender 2026-09-03 */
+  {id:"auto_flitzer",n:"Flitzer",e:"🏎️",cost:4800,size:[1,2],car:1,datei:"th37_sportwagen.glb",lack:0xf0731a},
+  {id:"auto_van",n:"Van",e:"🚐",cost:3200,size:[1,2],car:1,datei:"th37_lieferwagen.glb",lack:0x2aa39c},
   {id:"beet",n:"Gemüsebeet",e:"🥕",cost:120,size:[1,1],beet:1},
   {id:"growbox",n:"Growbox (zwielichtig)",e:"🌿",cost:600,size:[1,1],grow:1},
   {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
@@ -10552,6 +10573,25 @@ function applyFurn(id,gx,gy,rot,fid){
     var tok9=window._autoTok={}; /* 🩹 Schwarm-4: laeuft noch ein aelterer Ladevorgang, wuerde er ein Geister-Auto einhaengen */
     loadTH(id,function(tpl){if(!tpl||window._autoTok!==tok9)return;
       var m=tpl.clone(true);
+      /* 🚗 SCHOENERES AUTO (User 2026-09-03: "auto schöner machen, autofenster sichtbar und tür auch").
+         Die drei Kaufautos luden noch die alten th_auto_*-Modelle: EIN Netz, EINE Textur, keine
+         Scheiben, keine Tuerfugen — aus der Spielkamera ein farbiger Klotz (th-spielerblick, Bild 4/5).
+         Die Charge-37-Wagen des Verkehrs haben Scheiben (SdScheibe), Tuerfugen (SdFuge), Chrom,
+         Felgen, Lichter — und sind ein Viertel so gross wie der alte Kombi (0,5 statt 1,9 MB).
+         Sie zeigen mit der Front auf +x, das Fahrmodell erwartet +z: darum ein Traeger, der um
+         -90 Grad dreht. Der Lack bekommt je Kaufwagen eine eigene Farbe (Katalog `lack`), damit
+         das eigene Auto im Verkehr (gruen/blau/rot/weiss) nicht untergeht. */
+      if(def.datei&&/^th37_/.test(def.datei)){
+        var tr9=new THREE.Group();m.rotation.y=-Math.PI/2;tr9.add(m);
+        /* Scheiben dunkel und spiegelnd: das Modell-Glas (0.36/0.48/0.55) lag farblich neben
+           dem blauen Lack — aus der Spielkamera (steil, Auto ~55 px lang) war kein Fenster zu
+           unterscheiden (th-spielerblick, Bild 4, erster Anlauf). Darum Lack in Kontrastfarbe
+           (Limousine Sonnengelb, Flitzer Orange, Van Petrol) und Glas fast schwarz. */
+        var lack9=new THREE.MeshStandardMaterial({color:def.lack||0xf2b21c,metalness:0.45,roughness:0.28});
+        var glas9=new THREE.MeshStandardMaterial({color:0x151c26,metalness:0.6,roughness:0.06});
+        m.traverse(function(n){if(!n.isMesh||!n.material)return;var nm=n.material.name||"";
+          if(/^SdLack/.test(nm))n.material=lack9;else if(/^SdScheibe/.test(nm))n.material=glas9;});
+        m=tr9;}
       var bb=new THREE.Box3().setFromObject(m),szv=new THREE.Vector3();bb.getSize(szv);
       var laenge=Math.max(szv.x,szv.z)||1;m.scale.setScalar(4.2/laenge);
       var bb2=new THREE.Box3().setFromObject(m);
@@ -12932,6 +12972,21 @@ function steerMove(s9,sv,dt,sprint){
   if(inSolid(s9.x,nz))nz=s9.z;
   s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9*(sprint?1.5:1);}
 // Folge-Kamera: beim aktiven Steuern schneller + leicht vorausschauend (fühlt sich flott an)
+var _eigenRing=null,_eigenRingT=0;
+function updEigenRing(dt){
+  /* 👤 WER BIN ICH? Auf dem Startbild (844x390) stehen vier aehnliche Figuren am
+     Zebrastreifen, die eigene ohne Kennzeichen (th-spielerblick, Bild 1). Ein weicher,
+     pulsierender Ring am Boden unter der eigenen Figur — nur zu Fuss, nicht im Auto,
+     nicht im Ego-Blick, nicht im Baumodus. Ein Netz, kein Licht: kostet nichts. */
+  var me=sims[meinSi()]||sims[0];
+  if(!_eigenRing){if(!me||!me.mesh)return;
+    _eigenRing=new THREE.Mesh(new THREE.RingGeometry(0.62,0.92,36),new THREE.MeshBasicMaterial({color:0xfff2b0,transparent:true,opacity:0.5,depthWrite:false}));
+    _eigenRing.rotation.x=-Math.PI/2;_eigenRing.renderOrder=2;scene.add(_eigenRing);}
+  var an=running&&me&&me.mesh&&me.mesh.visible&&!fahren&&!egoMode&&!buildMode;
+  _eigenRing.visible=!!an;if(!an)return;
+  _eigenRingT+=dt;var p9=0.5+0.5*Math.sin(_eigenRingT*3.2);
+  _eigenRing.position.set(me.x,(me.mesh.position.y||0)+0.04,me.z);
+  var sc9=1+p9*0.12;_eigenRing.scale.set(sc9,sc9,1);_eigenRing.material.opacity=0.32+p9*0.25;}
 function updFollow(dt){
   if(!followSim)return;
   if(followSim.state==="work"){followSim=null;if(egoMode)egoToggle();return;}
@@ -13922,7 +13977,7 @@ function startGame(){
      noch einmal: der Aufruf merkt sich, dass er gelaufen ist, und tut beim
      zweiten Mal nichts. */
   try{if(window._aufwaermen)window._aufwaermen();}catch(e){}
-  running=true;window._running=true;window._tagesGeldStart=geld;window._saveSlot=MPs?"th_save_coop":SAVE;
+  running=true;window._running=true;document.body.classList.add("spielt");window._tagesGeldStart=geld;window._saveSlot=MPs?"th_save_coop":SAVE;
   /* 🎥 DER ERSTE BLICK. camTx/camTz starten auf dem Weltursprung, die Figur spawnt aber
      rund 80 m entfernt — und `followSim` wird erst gesetzt, wenn man das erste Mal
      STEUERT (siehe updSim). Das erste Bild zeigte damit leeren Rasen ohne Figur: kein
@@ -14437,7 +14492,7 @@ function loop(now){
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
-    updFollow(dt);updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
+    updEigenRing(dt);updFollow(dt);updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
     updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();tragBtnUpd();
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
