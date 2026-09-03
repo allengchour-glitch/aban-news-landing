@@ -388,3 +388,10 @@ gid://shopify/Product/15469955154305	Kostüm Polizistin · Kindergrösse
 gid://shopify/Product/15469955187073	Weste Fluffy mit Kapuze
 gid://shopify/Product/15469955285377	Kostüm Hexe Kleid und Hut
 gid://shopify/Product/15469955318145	Umhang Fade schwarz-grau
+gid://shopify/Product/15469955383681	Kostüm Häftling Overall rot
+gid://shopify/Product/15469955416449	Skelettkostüm Nachtleuchtend
+gid://shopify/Product/15469955449217	Kostüm Jester Fatale
+gid://shopify/Product/15469955481985	Kostüm Kampfjet Overall
+gid://shopify/Product/15469955514753	Paradefrack
+gid://shopify/Product/15469955547521	Kostüm Jester Fatale
+gid://shopify/Product/15469955580289	Kostüm Malefizia
