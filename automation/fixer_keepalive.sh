@@ -369,6 +369,19 @@ while true; do
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
+  # QUERBEET, einmal täglich: aus jeder der 20 Welten ein Stück in EINE Reihe
+  # (Betreiber 03.09.: «von bissel allen kategorien etwas»). Anders als die Hype-Reihe
+  # darf das unbeaufsichtigt laufen — die Auswahl hängt nicht am Bild-Augenschein,
+  # sondern an harten Bedingungen (≥3 Bilder, ab CHF 19, Google-Kanal, kein Risiko-Tag),
+  # und ein Fehlgriff steht höchstens 10 Tage, dann räumt der nächste Lauf ihn weg.
+  QB=/tmp/querbeet.log
+  if [ -f "$REPO/automation/querbeet_kuratieren.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$QB" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/querbeet_kuratieren.py >> "$QB" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) querbeet_kuratieren gestartet"
+    fi
+  fi
   # BESTSELLER-ROTATION, einmal täglich (Betreiber 31.08.: «bestseller immernoch die gleichen
   # produkten»): mischt die MANUAL-Kollektion `bestseller` mit Datums-Seed — die Startseiten-
   # Reihe zeigt so jeden Tag eine andere Auswahl der 18 Bewertungssieger. Idempotent je Tag.
