@@ -39,3 +39,7 @@ outdoor-survival-klappmesser-633000	2601010841101633200	-	-	unklar 200 Success r
 extrem-scharfes-gerades-messer-623900	2512310627131624100	-	-	unklar 200 Success rest=59	klinge
 smarte-wlan-video-turklingel-mit-gegensprechan-668865	2041720035173052417	-	-	unklar 200 Success rest=39	klinge
 kochmesser-kuchenschere-set-2-teilig-379009	2069658695799705601	0	-	KEINE CH-Option → DRAFT	klinge
+350ml-usb-blender-mit-3d-messer-918592	1392009096881901568	6	21.19	ok	klinge
+3-in-1-gemusehobel-mit-scharfen-messern-940928	1648204465482244096	11	16.47	ok	klinge
+rasierer-mit-lcd-display-und-2-in-1-klinge-436672	1402082551182528512	6	16.20	ok	klinge
+wasserdichte-kabellose-turklingel-190786	2036641959612825602	-	-	unklar 200 Success rest=27	klinge
