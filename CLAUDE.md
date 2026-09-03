@@ -6408,3 +6408,8 @@ sind Zweit-Kandidaten ohne öffentlichen Feed; Gelato nur, wenn im Konto CH-Druc
   App-Store-Länderliste führt CH nicht — Widerspruch, im Konto zu klären, nicht zu glauben.
 - ⚠️ gelato.com antwortet unserem Ausgang mit 403 (auch WebFetch); Shopcom-Unterseiten teils 404
   bei WebFetch, per curl 200 — zwei Wege probieren, bevor «nicht erreichbar» gilt.
+- **13:25 UTC, App-Chat des Betreibers:** CJ-Agentin Connie Jin bestätigt für CJYD272994802BY «Due to the
+  unique product attributes, there are restrictions on logistics channels». ⚠️ Ihr Screenshot mit
+  «CJPacket Eub Special Line $7.16» galt für **Ship to: SE (Schweden)**, nicht CH — per API gegengeprüft:
+  CH 0 Linien, SE 2, DE 3. **SE ist nicht CH**; ein Ländercode im Rechner ist zu lesen, bevor er als
+  Beleg gilt. Damit ist der Fall entschieden: keine CJ-Lieferung, Rückerstattung oder DE-Umweg.
