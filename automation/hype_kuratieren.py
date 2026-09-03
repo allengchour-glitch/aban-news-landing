@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 30.08.2026 (bebolddigital/printify/accio-Herbstlisten: Faszienrollen, LED-Strips fuer Zimmer-Makeover und 2-in-1-Spray-Haarbuersten neu; Mini-Beamer, Sunset-Lampe und Ordnung/aesthetic living erneut bestaetigt. Dazu Herbstanfang CH: Heiz-/Waermedecken und Fusswaermer. Hals-Ventilator ausgelaufen. Supplements/Lebensmittel weiterhin NICHT: Heilversprechen-Klasse)"
+QUELLE = "Web-Recherche 03.09.2026 (bebolddigital/eprolo/sellthetrend September: smarte Haustier-Spielzeuge und Handy-Umhaengetaschen neu; Blush-Balms, Lifting-Tape, Ordnung/aesthetic living und Kerzenwaermer erneut bestaetigt; Halloween-Kostueme bewusst NICHT in der Hype-Reihe (eigene Reihe seit 31.08.); Snail-Essence/Seren weiterhin NICHT: topische Kosmetik, Betreiber-Entscheid 30.08.)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -141,6 +141,20 @@ THEMEN = {
     "Hoodie-Decke": re.compile(
         r'Oversized?[- ]?Hoodie|Hoodie[- ]?Decke|Decken[- ]?Hoodie|Wearable Blanket|'
         r'Sherpa[- ]?Hoodie|Doppelseitig(?:er)?[- ]?Hoodie', re.I),
+    # Neu 03.09.: Die September-Listen (bebolddigital/eprolo/sellthetrend) nennen smarte
+    # Haustier-Spielzeuge (Reaktionsvideos, Impulskauf) und Handy-Umhaengetaschen/-Holster.
+    # Halloween-Kostueme stehen ebenfalls dort — bleiben aber draussen (Hausregel 11.08.:
+    # kein Kostuem in der Startreihe; Halloween hat seit 31.08. eine eigene Reihe).
+    # ⚠️ «Spielzeug» allein ist Kinderware (RAUS-Liste) → Tier-Anker Pflicht; «Snackball»
+    # und «Intelligenzspielzeug» sind im Katalog rein tierisch belegt. «Tasche» allein
+    # traefe halbe Damenmode → Handy/Phone als Anker.
+    "Haustier-Spielzeug smart": re.compile(
+        r'(?:Interaktiv\w*|Smart\w*|Elektrisch\w*|Automatisch\w*)[- ]?(?:Katzen|Hunde|Haustier)[- ]?spielzeug|'
+        r'(?:Katzen|Hunde|Haustier)[- ]?spielzeug[- ]?(?:interaktiv|elektrisch|smart|automatisch)|'
+        r'Snackball|Intelligenzspielzeug|Futterball|Leckerli[- ]?(?:Ball|Spender)', re.I),
+    "Handy-Umhängetasche": re.compile(
+        r'Handy[- ]?(?:Umh[äa]nge|Cross-?body|Schulter)[- ]?tasche|Phone[- ]?(?:Holster|Bag|Pouch|Sling)|'
+        r'Crossbody[- ]?(?:Phone|Handy)|Smartphone[- ]?(?:Tasche|Holster)', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
