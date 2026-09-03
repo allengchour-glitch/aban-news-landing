@@ -850,3 +850,61 @@ gid://shopify/Product/15469974192513	Clown Latzhose gestreift
 gid://shopify/Product/15469974258049	Kostüm Pharao
 gid://shopify/Product/15469974290817	Weste schwarz weiss gestreift
 gid://shopify/Product/15469974323585	Dirndl hellblau
+gid://shopify/Product/15469974356353	Kostüm Zauberer
+gid://shopify/Product/15469974421889	Kostüm Erdmännchen
+gid://shopify/Product/15469974454657	Dirndl retro ohne Bluse
+gid://shopify/Product/15469974487425	Kostüm Clown Halloween
+gid://shopify/Product/15469974520193	Clown Latzhose grün
+gid://shopify/Product/15469974618497	Kostüm Eisbär Overall
+gid://shopify/Product/15469974651265	Strickjacke Damen naturfarben
+gid://shopify/Product/15469974684033	Kostüm Killerclown
+gid://shopify/Product/15469974716801	Set 20er Jahre 4-teilig
+gid://shopify/Product/15469974749569	Kostüm Hexe Schülerin pink
+gid://shopify/Product/15469974815105	Kostüm Wednesday Addams · Damen
+gid://shopify/Product/15469974847873	Lederhose
+gid://shopify/Product/15469974880641	Matrosen Ringelpulli schwarz/weiss
+gid://shopify/Product/15469974913409	Kostüm Harley Quinn
+gid://shopify/Product/15469974946177	Bayrische Lederhosen kurz dunkelbraun
+gid://shopify/Product/15469974978945	Hosen 20er Jahre mit Hosen-Träger
+gid://shopify/Product/15469975011713	Mütze Einhorn mit beweglichen Ohren rosa mit Luftp
+gid://shopify/Product/15469975044481	Bayrische Lederhosen kurz sandbraun
+gid://shopify/Product/15469975077249	Unterbrustkorsage
+gid://shopify/Product/15469975110017	Zauberhut Sprechender Hut
+gid://shopify/Product/15469975142785	Oma Schürze one Size
+gid://shopify/Product/15469975175553	Lederhose kurz vintage braun
+gid://shopify/Product/15469975208321	Steampunk Reifrock schwarz
+gid://shopify/Product/15469975241089	Maske böses Grinsen
+gid://shopify/Product/15469975273857	Lederhose kurz vintage braun
+gid://shopify/Product/15469975306625	Schwarze Hotpants
+gid://shopify/Product/15469975339393	Übergrosser Zylinder
+gid://shopify/Product/15469975372161	Lederhose kurz
+gid://shopify/Product/15469975404929	Perücke Kolonialherr
+gid://shopify/Product/15469975437697	Steampunk Korsage · braun, Leder-Optik
+gid://shopify/Product/15469975470465	Lederhose kurz mit Gürtel · Oktoberfest
+gid://shopify/Product/15469975503233	Kostüm Löwen
+gid://shopify/Product/15469975536001	Perücke Glitzy Vegas Gold
+gid://shopify/Product/15469975568769	Kostüm Schnecke
+gid://shopify/Product/15469975601537	Kostüm mit Pailletten
+gid://shopify/Product/15469975634305	Perücke Vogue lange braune
+gid://shopify/Product/15469975667073	Trainingsanzug blau
+gid://shopify/Product/15469975699841	Kostüm Hai · Damen-Kleid mit Kapuze
+gid://shopify/Product/15469975732609	Perücke Vogue lange weisse
+gid://shopify/Product/15469975765377	Schlaghose gold
+gid://shopify/Product/15469975798145	Giraffenkostüm Kinder
+gid://shopify/Product/15469975830913	Tutu Pink Kindergrösse 116/140
+gid://shopify/Product/15469975863681	Perücke Vogue lange blaue
+gid://shopify/Product/15469975896449	Kostüme Katze
+gid://shopify/Product/15469975929217	Langarmbody Käfer
+gid://shopify/Product/15469975961985	Perücke Pulp Fiction
+gid://shopify/Product/15469975994753	Kleiderteile-Set Entdecker,Hut
+gid://shopify/Product/15469976027521	Body Clown
+gid://shopify/Product/15469976158593	Petticoat schwarz
+gid://shopify/Product/15469976191361	Kostüm Astronat Jumpsuit
+gid://shopify/Product/15469976256897	Perücke Horror Clown
+gid://shopify/Product/15469976289665	Neonpinker Petticoat
+gid://shopify/Product/15469976322433	Umhang Hexe
+gid://shopify/Product/15469976387969	Rock Meerjungfrau
+gid://shopify/Product/15469976420737	Kostüm Priesterin
+gid://shopify/Product/15469976453505	Perücke schwarz für Herren
+gid://shopify/Product/15469976519041	Kostüm Teufel mit Maske
+gid://shopify/Product/15469976551809	Kostüm Kuschelbär Grösse 104
