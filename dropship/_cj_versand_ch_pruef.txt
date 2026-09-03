@@ -290,3 +290,39 @@ mini-survivalmesser-mit-fester-klinge-908672	1696808329089126400	0	-	KEINE CH-Op
 stahlmesser-591616	1491962130549837824	0	-	KEINE CH-Option → DRAFT	klinge
 outdoor-faltmesser-409280	1695323001320906752	0	-	KEINE CH-Option → DRAFT	klinge
 damastmesser-fur-japanische-kuche-438400	1469210402612187136	0	-	KEINE CH-Option → DRAFT	klinge
+stahlmesser-fur-fleisch-263808	1468157175498149888	0	-	KEINE CH-Option → DRAFT	klinge
+portugiesisches-steakmesser-set-aus-edelstahl-256064	1666037419923222528	11	14.75	ok	klinge
+kochmesser-aus-edelstahl-035840	1665948762591727616	0	-	KEINE CH-Option → DRAFT	klinge
+longshui-pine-yi-geschmiedetes-kochmesser-745536	1633353140298854400	0	-	KEINE CH-Option → DRAFT	klinge
+faltmesser-aus-damaststahl-und-ebenholz-080896	1630785307035578368	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-survivalmesser-aus-chromstahl-637760	1628669317912997888	0	-	KEINE CH-Option → DRAFT	klinge
+survival-messer-fur-outdoor-camping-679488	1628311778851565568	0	-	KEINE CH-Option → DRAFT	klinge
+6-teiliges-kuchenmesser-set-mit-hammerschlagmu-027520	1628310256969330688	0	-	KEINE CH-Option → DRAFT	klinge
+robustes-klappmesser-fur-camping-survival-259520	1628307000612368384	0	-	KEINE CH-Option → DRAFT	klinge
+mcd135-mehrzweck-metzgermesser-038720	1445217456846147584	0	-	KEINE CH-Option → DRAFT	klinge
+6-teiliges-kuchenmesser-set-antihaftbeschichte-038080	1433264135952535552	0	-	KEINE CH-Option → DRAFT	klinge
+messer-mit-damaskus-laser-maserung-und-grunem-147200	1432918071919644672	0	-	KEINE CH-Option → DRAFT	klinge
+damast-survivalmesser-mit-kamelknochengriff-881536	1624682791474573312	0	-	KEINE CH-Option → DRAFT	klinge
+edelstahl-kochmesser-692992	1623502279699607552	0	-	KEINE CH-Option → DRAFT	klinge
+damaststahl-sashimi-messer-341632	1623150546041450496	0	-	KEINE CH-Option → DRAFT	klinge
+faltmesser-aus-stahl-981760	1619955763085062144	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-damast-teemesser-341056	1619630569359421440	0	-	KEINE CH-Option → DRAFT	klinge
+sashimi-messer-mit-weidenklingen-852288	1612707041510961152	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kuchenmesser-olivenholz-409920	1418833142852227072	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-damascus-fleischhackmesser-000896	1418826861286395904	0	-	KEINE CH-Option → DRAFT	klinge
+damasker-schneidmesser-736512	1418814531060240384	0	-	KEINE CH-Option → DRAFT	klinge
+damast-messer-set-mit-holzgriff-011968	1610911516285480960	0	-	KEINE CH-Option → DRAFT	klinge
+mini-faltmesser-fur-outdoor-620864	1610906916388089856	0	-	KEINE CH-Option → DRAFT	klinge
+mini-damascus-messer-111872	1610905760236580864	0	-	KEINE CH-Option → DRAFT	klinge
+damastmesser-mit-sandelholz-griff-733056	1610904442579202048	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kuchenmesser-850816	1414112383642767360	0	-	KEINE CH-Option → DRAFT	klinge
+ruixin-upgrade-messer-scharfsystem-aus-metall-280640	1410869348985344000	11	12.48	ok	klinge
+carbon-klappmesser-mit-hoher-harte-483520	1610202338734649345	0	-	KEINE CH-Option → DRAFT	klinge
+haushalts-hackmesser-longquan-kuche-075584	1610816555888160768	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-faltmesser-mit-g10-griff-013696	1610109797729316864	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-outdoor-messer-mit-walnussgr-442432	1610106185431134208	0	-	KEINE CH-Option → DRAFT	klinge
+multi-zweckmesser-227456	1610105180605919232	0	-	KEINE CH-Option → DRAFT	klinge
+knochen-und-allzweckmesser-set-028224	1610101331228897280	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-knochenhackmesser-handgeschmiedet-749056	1407157747107106816	0	-	KEINE CH-Option → DRAFT	klinge
+dragon-s-descendant-knochenbeil-381184	1407145486716112896	0	-	KEINE CH-Option → DRAFT	klinge
+shui-shui-furong-knochenhackmesser-774080	1407144802973257728	-	-	unklar 0  rest=None	klinge
