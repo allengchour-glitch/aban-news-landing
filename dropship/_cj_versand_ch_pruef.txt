@@ -75,3 +75,4 @@ damast-outdoor-faltmesser-624300	2601020159491624500	0	-	KEINE CH-Option → DRA
 messer-mit-holzmaserung-455362	2006999955958312962	0	-	KEINE CH-Option → DRAFT	klinge
 outdoor-survival-klappmesser-633000	2601010841101633200	0	-	KEINE CH-Option → DRAFT	klinge
 extrem-scharfes-gerades-messer-623900	2512310627131624100	0	-	KEINE CH-Option → DRAFT	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=73	klinge

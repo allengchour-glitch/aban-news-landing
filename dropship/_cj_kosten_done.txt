@@ -9462,3 +9462,5 @@ gid://shopify/Product/15451913159041	CHF 34.22	1 Varianten	Kabelloser Mini-Haarg
 gid://shopify/Product/15451913552257	CHF 31.70	1 Varianten	6-in-1 Lockenstab & Glätteisen mit LED-Anzeige
 gid://shopify/Product/15451913847169	CHF 19.13	1 Varianten	Kabelloser 2-in-1 Glätt- & Lockenstab
 gid://shopify/Product/15451914076545	CHF 18.71	1 Varianten	Kabelloser Mini-Glättkamm mit LCD-Anzeige
+gid://shopify/Product/15451914273153	CHF 17.01	1 Varianten	Kabelloser Glättkamm mit Anionen-Technologie
+gid://shopify/Product/15451914502529	CHF 14.77	1 Varianten	Kabelloser 2-in-1 Glättkamm mit Ionen-Pflege
