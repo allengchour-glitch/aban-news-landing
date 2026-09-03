@@ -1178,3 +1178,22 @@ gid://shopify/Product/15469986775425	Maske Pestarzt, schwarz
 gid://shopify/Product/15469986808193	Fliegermütze braun gefüttert
 gid://shopify/Product/15469986840961	Perücke Valentina neon gelb
 gid://shopify/Product/15469986873729	Maske aus Latex Psycho
+gid://shopify/Product/15469986906497	Baseballcap 80er Jahre
+gid://shopify/Product/15469986939265	Perücke Patsy neon orange
+gid://shopify/Product/15469986972033	Maske Gran Gala
+gid://shopify/Product/15469987004801	Schaumstoff Maske Skelett
+gid://shopify/Product/15469987037569	Mini Zylinder Hut mit Skelett
+gid://shopify/Product/15469987070337	Zylinder mit bunten Knöpfen
+gid://shopify/Product/15469987135873	Polizeimütze
+gid://shopify/Product/15469987168641	Perücke Itachi
+gid://shopify/Product/15469987234177	Bayernhut mit Feder
+gid://shopify/Product/15469987266945	Perücke Hinata Naruto
+gid://shopify/Product/15469987299713	Sombrero
+gid://shopify/Product/15469987332481	Perücke Adam Dream Hair grau
+gid://shopify/Product/15469987365249	Perücke One Piece Zoro
+gid://shopify/Product/15469987398017	Zylinder hoch
+gid://shopify/Product/15469987430785	Sombrero Hut schwarz
+gid://shopify/Product/15469987463553	Cowboyhut mit Strass
+gid://shopify/Product/15469987529089	Latex Kopfmaske Alter Frau
+gid://shopify/Product/15469987561857	Piratenhut mit Feder
+gid://shopify/Product/15469987594625	Maske Teufel Beelzebub
