@@ -13810,3 +13810,20 @@
 15454499799425	ersetzt-1	Fitness-Bodyanzug
 15454499864961	ersetzt-1	Leder-Halsband für Hunde, Kaffee-Blumenmuster
 15454499897729	ersetzt-1	Smart-Armbanduhr mit Gesundheitsüberwachung
+15454499963265	ersetzt-1	Automatische Infrarot-LED-Streifenbeleuchtung
+15454500127105	ersetzt-1	Unisex Poloshirt kurzärmlig
+15454500225409	ersetzt-1	Leuchthalterung für Pferde
+15454500290945	ersetzt-1	Männer Stahlband Uhr
+15454500323713	ersetzt-1	Retro-Schädel-Tuch
+15454500520321	ersetzt-1	Sommer-Polo mit Halbzipp
+15454500618625	ersetzt-1	Retro-Hundehalterung
+15454500651393	ersetzt-1	Wiederverwendbare Eiswürfel
+15454500913537	ersetzt-1	Extravagantes Pullover für Herren
+15454500979073	ersetzt-1	Sommerhut für kleine Hunde
+15454501044609	ersetzt-1	Fisch-Schlüsselanhänger
+15454501273985	ersetzt-1	Vintage T-Shirt kurzärmlig
+15454501339521	ersetzt-1	Infrarot-Therapieband für Tiere
+15454501437825	ersetzt-1	Reflektierendes Band
+15454501699969	ersetzt-1	Dünnes Mesh-T-Shirt für Herren
+15454501798273	ersetzt-1	Atmungsaktives Hundehalsband
+15454501994881	ersetzt-1	Reflektierendes Brustgeschirr für grosse Hunde
