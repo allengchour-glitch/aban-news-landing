@@ -221,3 +221,23 @@ multifunktionales-karabiner-messer-mit-led-600400	2607030646441601000	6	7.49	ok	
 outdoor-messer-mit-ahorn-harz-griff-610200	2607081107091610800	0	-	KEINE CH-Option → DRAFT	klinge
 full-moon-leucht-schwert-cyberpunk-stil-637300	2605110239351638200	6	13.85	ok	klinge
 vintage-kochmesser-set-605300	2608040802471606000	1	12.74	ok	klinge
+taschenmesser-617100	2608071013261617800	0	-	KEINE CH-Option → DRAFT	klinge
+video-turklingel-600100	2608070924461600600	11	10.09	ok	klinge
+schutzhulle-fur-beil-axt-edelstahl-610600	2608090532551611200	0	-	KEINE CH-Option → DRAFT	klinge
+camping-axt-632700	2608090602181633400	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-klappmesser-fur-outdoor-627600	2608090553501628100	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kuchenmesser-verschiedene-ausfuhrungen-619200	2508260450151619400	0	-	KEINE CH-Option → DRAFT	klinge
+damast-chefmesser-kombinierter-allrounder-600100	2508250826071600300	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-messer-mit-feststehender-klinge-626800	2502060136321627000	0	-	KEINE CH-Option → DRAFT	klinge
+edc-outdoor-messer-mit-d2-klinge-606000	2502050747401606200	0	-	KEINE CH-Option → DRAFT	klinge
+damastmesser-rohling-hohe-harte-605000	2502050633381605200	1	13.62	ok	klinge
+faltmesser-mit-holzgriff-und-lasermuster-620900	2502010902191621100	1	10.29	ok	klinge
+multifunktionsaxt-fur-outdoor-und-reise-604000	2412130115431604200	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-7-teiliges-kuchenmesser-set-612800	2411300329001613300	0	-	KEINE CH-Option → DRAFT	klinge
+damast-messer-mit-adlerklinge-627900	2411271209551628100	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-survival-seil-messer-628900	2411270926351629100	0	-	KEINE CH-Option → DRAFT	klinge
+aluminium-klappmesser-fur-camping-outdoor-618100	2411270837311619000	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-klappmesser-fur-outdoor-haus-619600	2411260839431619800	1	11.69	ok	klinge
+7-teiliges-kuchenmesser-set-aus-edelstahl-606400	2411130809121606600	1	26.98	ok	klinge
+caba-survival-messer-bk18-bk19-607900	2411120816041608100	1	15.87	ok	klinge
+fleischermesser-mit-hoher-harte-fur-camping-623000	2410190820391623200	1	12.74	ok	klinge
