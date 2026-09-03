@@ -9561,3 +9561,5 @@ gid://shopify/Product/15451930100097	CHF 12.63	36 Varianten	Slim-Fit Herrenweste
 gid://shopify/Product/15451930263937	CHF 13.84	12 Varianten	Kapuzenjacke für Herren
 gid://shopify/Product/15451930427777	CHF 29.31	32 Varianten	Herren-Cordjacke im Workwear-Stil
 gid://shopify/Product/15451930657153	CHF 22.46	16 Varianten	Gothic Military Herrenjacke
+gid://shopify/Product/15451931115905	CHF 24.76	1 Varianten	Exfoliating Snow Grass Skincare Cotton
+gid://shopify/Product/15451931345281	CHF 7.72	1 Varianten	Pflanzenbasierter Hautpflege Roll-On Stift 15ml

@@ -80,6 +80,30 @@ MESS_RE = _muster('wearable_messversprechen.py', 'KRITISCH',
 TRAEGER_RE = _muster('wearable_messversprechen.py', 'TRAEGER',
                      re.compile(r'smartwatch|armband|[\wäöüß]*(?:uhr|watch)(?![\wäöüß])', re.I))
 
+# ⚠️ GEGENPROBE zur Messwort-Regel (gemessen 03.09.): Von drei Treffern waren ZWEI
+# Fehlalarme, beide seit dem 21.08. bekannt — ein Smart Ring mit MANUELLER Eingabe
+# («können Sie manuell Blutdruck erfassen» ist eine Tagebuchfunktion, keine Messung) und
+# eine Schutzhuelle, deren Text erklaert, wie man die EKG-Funktion der EIGENEN Uhr nutzt.
+# Der dritte war echt. Entscheidend ist nicht das WORT, sondern der SATZ darum: nennt er
+# eine manuelle Eingabe oder ein Zubehoerteil, ist es keine Messzusage.
+# Ein Bericht mit Dauerbefund wird nach dem zweiten Mal nicht mehr gelesen — deshalb hier
+# und nicht im Kopf des Lesers.
+ENTLASTUNG = re.compile(r'manuell|selbst\s+erfass|Tagebuch|H[üu]lle|Case\b|Schutzfolie|'
+                        r'Krone|Armband\s+f[üu]r|passend\s+f[üu]r|kompatibel\s+mit', re.I)
+
+
+def mess_echt(titel, html):
+    """True nur, wenn das Messwort NICHT in einem entlastenden Satz steht."""
+    text = re.sub(r'<[^>]+>', ' ', titel + '. ' + html)
+    for m in MESS_RE.finditer(text):
+        a = text.rfind('.', 0, m.start()) + 1
+        b = text.find('.', m.end())
+        satz = text[a:b if b > 0 else len(text)]
+        if not ENTLASTUNG.search(satz):
+            return True
+    return False
+
+
 KLASSEN = [
     ('USA-Lieferzusage im Text', 'text',
      'Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).',
@@ -116,7 +140,7 @@ KLASSEN = [
     ('Mess-Versprechen an Wearables', 'beides',
      'Kein optisches Armband misst Blutdruck, EKG oder Blutzucker (Lehre 11.08.).',
      'automation/wearable_messversprechen.py  (QUELLE=live)',
-     lambda t, h, tg, vc: bool(TRAEGER_RE.search(t)) and bool(MESS_RE.search(t + ' ' + h))),
+     lambda t, h, tg, vc: bool(TRAEGER_RE.search(t)) and mess_echt(t, h)),
     ('Auswahl-Versprechen bei EINER Variante', 'text',
      'Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).',
      'automation/wahlversprechen.py  (meldet; FIX=1 nur fuer eindeutige Faelle)',
@@ -220,10 +244,10 @@ def main():
         if not v:
             continue
         zeilen += [f'## {name} — {len(v)}', '', warum, '', f'Reparatur: `{fix}`', '']
-        for pid, tit in v[:8]:
+        for pid, tit in v[:25]:
             zeilen.append(f'- `{pid}` {tit}')
-        if len(v) > 8:
-            zeilen.append(f'- … und {len(v) - 8} weitere')
+        if len(v) > 25:
+            zeilen.append(f'- … und {len(v) - 25} weitere')
         zeilen.append('')
     with open(BERICHT, 'w', encoding='utf-8') as f:
         f.write('\n'.join(zeilen) + '\n')

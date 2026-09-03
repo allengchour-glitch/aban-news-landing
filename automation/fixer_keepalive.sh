@@ -683,6 +683,23 @@ while true; do
       echo "$(date -u +%H:%M) wearable_messversprechen geprüft"
     fi
   fi
+  # SELBSTKONTROLLE: zaehlt die bekannten Falschaussage-Klassen AM OBJEKT (voller
+  # Katalog live, tag-tolerante Muster) statt ueber die Shopify-Suche. Grund: an EINEM
+  # Tag stand hier dreimal «Klasse auf 0», dreimal falsch, jedes Mal weil mit demselben
+  # Werkzeug gemessen wurde, mit dem repariert wurde. MELDET NUR — Bericht
+  # dropship/KLASSEN-KONTROLLE.md, ohne Befund wird er geloescht.
+  # ⚠️ Laeuft ZULETZT und pausiert 0,5 s je Seite: der Scan zieht den Shopify-Eimer sonst
+  # leer und die uebrigen Waechter melden Drosselung als «nicht ladbar» — eine Kontrolle,
+  # die die Kontrollierten aushungert, misst am Ende sich selbst.
+  KK=/tmp/klassen_kontrolle.log
+  if [ -f "$REPO/automation/klassen_kontrolle.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid flock -n /tmp/lock_klassen_kontrolle.lock \
+          python3 automation/klassen_kontrolle.py > "$KK" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) klassen_kontrolle gestartet"
+    fi
+  fi
   BD=/tmp/bilddubletten.log
   if [ -f "$REPO/automation/bilddubletten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))
