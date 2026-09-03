@@ -9556,3 +9556,5 @@ gid://shopify/Product/15451929248129	CHF 16.20	20 Varianten	Baumwoll Langarm Hem
 gid://shopify/Product/15451929543041	CHF 15.37	10 Varianten	Herren Strick-Cardigan mit Lochmuster
 gid://shopify/Product/15451929575809	CHF 12.05	99 Varianten	Herren Hemd mit Animal-Print und kurzen Ärmeln
 gid://shopify/Product/15451929641345	CHF 10.91	99 Varianten	Herren Hawaiihemd mit 3D-Print
+gid://shopify/Product/15451929903489	CHF 32.78	10 Varianten	Herren Weste mit Stehkragen
+gid://shopify/Product/15451930100097	CHF 12.63	36 Varianten	Slim-Fit Herrenweste · koreanischer Stil
