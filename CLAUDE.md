@@ -6348,3 +6348,8 @@ wieder gelöscht. **Ein `createOrderV2` mit code 200 beweist keine Lieferbarkeit
   remaining 7 ebenfalls `[]` und muss neu gemessen werden.
 - Wege, die dem Betreiber bleiben: Rückerstattung · Lieferung via DE-Adresse/Weiterleitung (CJ-DE-Linie USD 7.91)
   · Fremdbezug bei EU/CH-Händler · CJ-Agent. Entscheidung liegt beim Betreiber.
+- **Betreiber-Entscheid 03.09., 10:05 UTC: «mach 3. cj schreiben».** Mail an support@cjdropshipping.com aus dem
+  Gmail des Betreibers (= CJ-Kontoadresse) gesendet, Gmail-Thread `1a066a03bf2c8dd2`: Bitte um eine Linie oder
+  manuelle Offerte CN→CH für vid 2601150313151634500, sonst Bestätigung, dass Klingen für CH generell
+  ausgeschlossen sind. Antwort per Gmail-Suche prüfen (Absender cjdropshipping.com); Erinnerung via send_later
+  gesetzt. Bis dahin: Messer DRAFT, Schatten «#1016» im CJ-Warenkorb NICHT bezahlen, Kunde noch nicht informiert.
