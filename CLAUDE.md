@@ -6413,3 +6413,15 @@ sind Zweit-Kandidaten ohne öffentlichen Feed; Gelato nur, wenn im Konto CH-Druc
   «CJPacket Eub Special Line $7.16» galt für **Ship to: SE (Schweden)**, nicht CH — per API gegengeprüft:
   CH 0 Linien, SE 2, DE 3. **SE ist nicht CH**; ein Ländercode im Rechner ist zu lesen, bevor er als
   Beleg gilt. Damit ist der Fall entschieden: keine CJ-Lieferung, Rückerstattung oder DE-Umweg.
+- **03.09. 15:13 UTC ERSTATTET (Betreiber: «rückerstatte und regle alles selber»).** `refundCreate`
+  mit `suggestedRefund` vorher gegengeprüft (47.90 = 40.90 Ware + 7.00 Versand), `notify:true`,
+  `restockType:NO_RESTOCK`, Refund `1225992470913`. Kunde im selben Thread bestätigt, Bestellnotiz
+  gesetzt, Erinnerung 04.09. prüft das Settlement.
+  ⚠️ **Die Antwort der Mutation meldet `totalRefundedSet: 0.0` — das ist KEIN Fehlschlag.** Shopify
+  Payments legt die REFUND-Transaktion zunächst **PENDING** an; erst nach dem Settlement steht
+  `displayFinancialStatus: REFUNDED`. Wer nur das Rückfeld liest, hält eine ausgelöste Rückerstattung
+  für gescheitert — und wer nur `userErrors: []` liest, hält eine gescheiterte für erledigt.
+  **Belegt ist eine Rückerstattung erst, wenn die Transaktion auf SUCCESS steht.**
+  ⚠️ Und die Ampel schrie danach weiter ⚠️, weil Shopify die Bestellung bis zum Settlement als
+  `financial_status:paid` führt. `bestell_ampel.py` liest jetzt `refunds` mit und meldet «erstattet».
+  **Eine Warnung, die nach der Lösung stehen bleibt, wird beim nächsten Mal nicht mehr gelesen.**

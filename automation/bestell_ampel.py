@@ -20,7 +20,11 @@ def main():
         tok = open("/tmp/cj_shop_token.txt").read().strip()
     except Exception as e:
         print(f"BESTELLUNGEN: unklar (kein Shop-Token: {e})"); return
-    q = '{orders(first:20,query:"financial_status:paid AND fulfillment_status:unfulfilled",sortKey:CREATED_AT,reverse:true){nodes{name createdAt totalPriceSet{shopMoney{amount}} lineItems(first:3){nodes{title sku}}}}}'
+    q = ('{orders(first:20,query:"financial_status:paid AND fulfillment_status:unfulfilled",'
+         'sortKey:CREATED_AT,reverse:true){nodes{name createdAt '
+         'totalPriceSet{shopMoney{amount}} '
+         'refunds(first:3){id totalRefundedSet{shopMoney{amount}}} '
+         'lineItems(first:3){nodes{title sku}}}}}')
     req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
         data=json.dumps({"query": q}).encode(),
         headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
@@ -42,9 +46,15 @@ def main():
         alter = now - dt.datetime.fromisoformat(o["createdAt"].replace("Z", "+00:00"))
         h = alter.total_seconds() / 3600
         alt = f"{h:.0f}h" if h < 48 else f"{h/24:.0f}d"
+        # Eine erstattete Bestellung ist erledigt, auch wenn Shopify sie bis zum Settlement
+        # noch als "paid" fuehrt — sonst steht das ⚠️ weiter, nachdem der Fall geloest ist.
+        erstattet = bool(o.get("refunds"))
         lx = [k for k in watch if k.startswith(f"LX{nr}")]
-        st = ", ".join(f"{k}:{watch[k].get('status','?')}" for k in lx) if lx else "KEIN CJ-Auftrag"
-        warn = " ⚠️" if (not lx and h > 2) or any(watch[k].get("status") in ("TRASH", "CANCELLED") for k in lx) else ""
+        if erstattet:
+            st, warn = "erstattet", ""
+        else:
+            st = ", ".join(f"{k}:{watch[k].get('status','?')}" for k in lx) if lx else "KEIN CJ-Auftrag"
+            warn = " ⚠️" if (not lx and h > 2) or any(watch[k].get("status") in ("TRASH", "CANCELLED") for k in lx) else ""
         teile.append(f"#{nr} {alt} CHF {float(o['totalPriceSet']['shopMoney']['amount']):.2f} → {st}{warn}")
     print(f"BESTELLUNGEN: {len(nodes)} offen · " + " | ".join(teile))
 
