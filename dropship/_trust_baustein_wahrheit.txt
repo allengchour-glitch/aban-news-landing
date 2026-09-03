@@ -13799,3 +13799,14 @@
 15454498161025	ersetzt-1	Kinder-Elektronuhr leuchtend
 15454498193793	ersetzt-1	Sommer-Neuheit Herren-Jacquard-Polo-Shirt
 15454498488705	ersetzt-1	Smart-Armband mit Vollbildschirm
+15454498718081	ersetzt-1	Leichter Sommerschneider
+15454498849153	ersetzt-1	Fashion-Trend-Armbanduhr
+15454499045761	ersetzt-1	Kühlkissen für Kinder
+15454499078529	ersetzt-1	Crayon-Graffiti Hemd
+15454499242369	ersetzt-1	Herren-Uhr mit Lederarmband
+15454499438977	ersetzt-1	Revers-Shirt mit Digitaldruck abstrakt
+15454499570049	ersetzt-1	Silicone Armband für Apple Watch
+15454499701121	ersetzt-1	Solar-Boost-Controller
+15454499799425	ersetzt-1	Fitness-Bodyanzug
+15454499864961	ersetzt-1	Leder-Halsband für Hunde, Kaffee-Blumenmuster
+15454499897729	ersetzt-1	Smart-Armbanduhr mit Gesundheitsüberwachung
