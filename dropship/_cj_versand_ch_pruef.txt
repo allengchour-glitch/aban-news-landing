@@ -924,3 +924,6 @@ milky-tea-vorhange-fur-gehobenes-schlafzimmera-614700	2601070359051615000	5	101.
 mini-wasserfilter-fur-den-notfall-614000	2606300628341614800	11	7.30	ok	landeseite
 portabler-holzkohle-grill-623800	2607010915571624500	6	62.66	ok	landeseite
 auto-sitzbezuge-aus-pu-leder-618400	2507170820061619900	0	-	KEINE CH-Option → DRAFT	landeseite
+runder-edelstahl-regenduschkopf-20-cm-509825	1990429729386442753	0	-	KEINE CH-Option → DRAFT	landeseite
+deformierbare-led-garagenleuchte-60w-7122ff	-	-	-	unklar keine CJ-SKU	landeseite
+olbindetucher-25-stk-070338	1990495408290979842	0	-	KEINE CH-Option → DRAFT	landeseite
