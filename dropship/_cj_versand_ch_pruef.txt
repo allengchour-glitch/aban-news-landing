@@ -344,3 +344,9 @@ alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 
 aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=261	klinge
 diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
 3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+fire-dragon-knochenbeil-148096	1406885908078268416	0	-	KEINE CH-Option → DRAFT	klinge
+beaulieu-knochenhackmesser-284288	1406882686139764736	0	-	KEINE CH-Option → DRAFT	klinge
+schneeleopard-knochenbeil-958336	1406880929812713472	0	-	KEINE CH-Option → DRAFT	klinge
+fisch-hackmesser-aus-clip-stahl-020480	1406880224368529408	0	-	KEINE CH-Option → DRAFT	klinge
+national-hero-kochmesser-641728	1406879471654539264	0	-	KEINE CH-Option → DRAFT	klinge
+knochenhackmesser-aus-manganstahl-903296	1406876840764772352	0	-	KEINE CH-Option → DRAFT	klinge
