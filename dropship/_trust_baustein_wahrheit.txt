@@ -10070,3 +10070,122 @@
 15452296610177	ersetzt-1	Elektronisches Anime-Badge mit Display
 15452296872321	ersetzt-1	Smartes Spielzeug mit Weissrausch-Funktion
 15452297068929	ersetzt-1	Solar Ultraschall Tier- & Vogelabwehr
+15452297363841	ersetzt-1	Digitales Handmikroskop für Kinder
+15452297625985	ersetzt-1	RC Sprüh-Insekt für Kinder
+15452297888129	ersetzt-1	Intelligenter Roboter mit Gestensteuerung & Programmierung
+15452298150273	ersetzt-1	Elektronischer Vogel mit Sound für Katzen
+15452299526529	ersetzt-1	Flache Sandalen mit Riemchen und eckiger Zehenpartie
+15452299755905	ersetzt-1	Elegante Pumps mit spitzer Kappe
+15452299985281	ersetzt-1	Chunky-Sohlen Roman Sandalen für zierliche Frauen
+15452300280193	ersetzt-1	Sandalen mit dicker Sohle und geschlossener Spitze
+15452300509569	ersetzt-1	Elegante Nubuk-Sandalen mit Blockabsatz
+15452300771713	ersetzt-1	Römer Sandalen mit Strass & Perlen
+15452301001089	ersetzt-1	Elegante Square Toe Thong Sandalen
+15452301230465	ersetzt-1	Römer-Sandalen mit dünnen Riemen und Keilabsatz
+15452301525377	ersetzt-1	Elegante Stiletto-Sandalen mit Riemchen
+15452301951361	ersetzt-1	Elegante Metallic-Mules mit Strassriemen
+15452302377345	ersetzt-1	Mules mit Bernstein-Schnalle · Sommer
+15452302606721	ersetzt-1	Keilabsatz-Sandalen mit Blumenmuster
+15452302901633	ersetzt-1	Elegante Slingback-Heels mit spitzer Zehe
+15452303163777	ersetzt-1	Sandalen mit Riemchen und Nieten, 5cm Keilabsatz
+15452303720833	ersetzt-1	Elegante High Heel Pantoletten mit spitzer Zehe
+15452305490305	ersetzt-1	Elegante Leder-Sneaker für Herren
+15452305785217	ersetzt-1	Atmungsaktive Flyknit Mesh Sneaker für Herren
+15452306112897	ersetzt-1	Herren Loafer aus Rindsleder mit weicher Sohle
+15452306375041	ersetzt-1	One-Pedal Driving Flat Shoes aus Veloursleder
+15452306604417	ersetzt-1	Slip-on Fisherman Schuhe mit Blumenmuster
+15452307456385	ersetzt-1	Weitgeschnittene Frühlings-/Herbst-Sneaker
+15452307784065	ersetzt-1	Outdoor-Freizeitschuh
+15452308308353	ersetzt-1	Herren Mesh Wide-Toe Casual Laufschuhe
+15452308832641	ersetzt-1	Herren Loafer weiter Zehenbereich
+15452309389697	ersetzt-1	Sommerliche Canvas-Schuhe für Herren
+15452309619073	ersetzt-1	Herren Canvas Loafers im Beijing-Stil
+15452309881217	ersetzt-1	Atmungsaktive Trainingsschuhe für Herren
+15452310110593	ersetzt-1	Unifarbene Freizeit-Sneaker
+15452310372737	ersetzt-1	Herren Loafer aus Rindsleder
+15452310667649	ersetzt-1	Herren Canvas Slipper mit Einzelriemen
+15452311257473	ersetzt-1	Retro Sportschuhe aus Leder für Damen
+15452311486849	ersetzt-1	Carbon-Platten Laufschuh mit Dämpfung
+15452311748993	ersetzt-1	Magnetische Schnürsenkel – elastisch, kein Binden
+15452312076673	ersetzt-1	25er-Set zufällige PVC-Schuh-Charms
+15452312273281	ersetzt-1	25er-Set Hunde-Schuh-Charms
+15452312535425	ersetzt-1	Elastische Schnürsenkel mit Schnallen (1 Set)
+15452312764801	ersetzt-1	Wasserdichte Leder-Sneaker mit Dämpfung
+15452312994177	ersetzt-1	Atmungsaktive Mesh Laufschuhe für Damen
+15452313289089	ersetzt-1	Rutschfeste Aqua-Schuhe für Wanderungen
+15452313715073	ersetzt-1	Outdoor Sports Watschuhe mit Rutsch- und Schnittschutz
+15452314009985	ersetzt-1	Kinder Laufschuhe "Flying Electric 5c"
+15452314239361	ersetzt-1	Freizeit-Sneaker mit Blumenmuster
+15452314501505	ersetzt-1	Atmungsaktive Mesh-Sneaker für Herren
+15452314796417	ersetzt-1	Atmungsaktiver Mesh-Sneaker mit Luftkissen
+15452315058561	ersetzt-1	Unisex Outdoor-Schuhe schnelltrocknend
+15452315713921	ersetzt-1	Freizeitschuhe für Kinder, weiche Sohle
+15452315910529	ersetzt-1	Kinder Retro-Sneakers mit Klettverschluss
+15452316172673	ersetzt-1	Kinder Retro-Sneaker mit Klettverschluss
+15452316533121	ersetzt-1	Habibear Kinder-Schuhe für breite Füsse
+15452316795265	ersetzt-1	Silberne Baby- und Kinderschuhe mit Schleife
+15452317090177	ersetzt-1	Kinder Sportschuhe mit breiter Zehenbox und Klettverschluss
+15452317417857	ersetzt-1	Sommer-Fashion-Sandalen für Kinder
+15452317811073	ersetzt-1	Mädchen Prinzessinnen-Schuhe mit Schleife
+15452318040449	ersetzt-1	Kinder-Sportsandalen mit Klettverschluss
+15452318335361	ersetzt-1	Mädchen Flip Flops mit Polka Dots
+15452600172929	ersetzt-1	Nagel-Phototherapie-Gerät
+15452600402305	ersetzt-1	Schnelltrockner für Nagelgel
+15452600467841	ersetzt-1	Nageltrockner 120W
+15452600533377	ersetzt-1	Gelentferner-Gerät für Nägel
+15452600598913	ersetzt-1	Nagelpoliermaschine
+15452600631681	ersetzt-1	UV-Desinfektionstasche UVC
+15452600697217	ersetzt-1	Schnelltrocknende LED-Lampe
+15452600828289	ersetzt-1	Nagellack-Trockner
+15452600959361	ersetzt-1	Nagelpoliergerät
+15452601057665	ersetzt-1	Nagelfräser · Portables Poliergerät mit Schleifaufsätzen
+15452675047809	ersetzt-1	Nagelkleber-Stick
+15452675113345	ersetzt-1	Nagelpflege Set
+15452675146113	ersetzt-1	Gel-Nagelsticker
+15452675211649	ersetzt-1	Nagelsticker UV-Gel
+15452675244417	ersetzt-1	Wasserfeste Maniküre
+15452675277185	ersetzt-1	Nageldesign Kleber
+15452675309953	ersetzt-1	Nagelöl Gel Set
+15452675441025	ersetzt-1	Intelligente Nagellampe
+15452675506561	ersetzt-1	Formende Nagelhose
+15452675572097	ersetzt-1	Nageldesign-Set
+15452675604865	ersetzt-1	UV Nagellampe
+15452675637633	ersetzt-1	UV-LED-Lampe
+15452675899777	ersetzt-1	Keramik Obstschaale
+15452675932545	ersetzt-1	Minimalistische Keramik-Geschirr
+15452675965313	ersetzt-1	Keramik Teekanne
+15452675998081	ersetzt-1	Yakitori-Teller
+15452676096385	ersetzt-1	Rote Obstschale
+15452676129153	ersetzt-1	Keramik-Halter
+15452676161921	ersetzt-1	Tiefes Salatschalen-Set
+15452676194689	ersetzt-1	Keramiktopf
+15452676227457	ersetzt-1	Elegante Tiefplatte
+15452676292993	ersetzt-1	Elektrischer Wasserkocher
+15452676358529	ersetzt-1	Chinesischer Teller
+15452676391297	ersetzt-1	Keramik-Teller
+15452676424065	ersetzt-1	Keramik-Schmortopf
+15452676456833	ersetzt-1	Kimchi-Dip-Schale
+15452676489601	ersetzt-1	Keramik-Schale
+15452676555137	ersetzt-1	Kleine Porzellan-Schale
+15452676587905	ersetzt-1	Keramik-Essstäbchen-Halter
+15452676620673	ersetzt-1	Frühstücks-Teller
+15452676653441	ersetzt-1	Schneeflocken-Teller
+15452676686209	ersetzt-1	3-stufiger Obstteller
+15452677210497	ersetzt-1	Faltbarer Aufbewahrungs-Schrank
+15452677276033	ersetzt-1	Holz-Desktop-Organizer
+15452677308801	ersetzt-1	Toiletten-Reinigungssatz
+15452677341569	ersetzt-1	Edelstahl-Schiebeblatt
+15452677374337	ersetzt-1	Haushaltsreinigungstücher
+15452677439873	ersetzt-1	Duschkopf mit Filter
+15452677472641	ersetzt-1	Badezimmerhahn
+15452677538177	ersetzt-1	Badezimmerreinigungspads
+15452677570945	ersetzt-1	Antirutsch-Badematte
+15452677636481	ersetzt-1	2-in-1 Tierpflegeshampoo
+15452677669249	ersetzt-1	Haarfang für Dusche
+15452677767553	ersetzt-1	Keramikpumpflasche
+15452677800321	ersetzt-1	Duschkopf mit 3 Strahlmodi
+15452677833089	ersetzt-1	Regendusche mit 6 Sprüheinstellungen
+15452677898625	ersetzt-1	Edelstahl-Aufbewahrungsregal
+15452677931393	ersetzt-1	Badebürsten-Set
+15452677964161	ersetzt-1	Duschkopf-Set
+15452677996929	ersetzt-1	Kopfmassagkamm

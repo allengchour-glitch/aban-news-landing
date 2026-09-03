@@ -49,7 +49,7 @@ def cj(pfad, body=None):
         return code, d.get("data"), d.get("message") or "", (d.get("pointsInfo") or {}).get("remaining")
     return 0, None, "keine Antwort", None
 
-def warte_auf_punkte(mind=40):
+def warte_auf_punkte(mind=90):
     """Eimer-Sonde über den GRATIS-Endpunkt productComments (Lehre 28.08.: kostet 0 Punkte) — eine 10-Punkte-Sonde
     alle 20 s hätte den Eimer selbst leer gehalten. 16900500 kommt auch bei leerem Eimer (remaining > 0 oder
     Meldung ohne «Remaining: 0»); nur remaining == 0 / «Remaining: 0» über 5 Zyklen gilt als Tagesende."""
@@ -125,7 +125,7 @@ def main():
             time.sleep(30)
             if not warte_auf_punkte(): print("⛔ CJ-Tagesbudget erschöpft — Abbruch ohne Quittung", flush=True); break
             code, opts, msg, rest = cj("/logistic/freightCalculate", {"startCountryCode": "CN", "endCountryCode": "CH", "products": [{"quantity": 1, "vid": vid}]})
-        if code != 200 or (rest is not None and rest < 60 and not opts):
+        if code != 200 or (rest is not None and rest < 40 and not opts):
             unklar += 1; L.write(f"{p['handle']}\t{vid}\t-\t-\tunklar {code} {msg[:30]} rest={rest}\t{grund}\n"); L.flush(); time.sleep(10); continue
         opts = [o for o in (opts or []) if o.get("logisticPrice") is not None]
         if opts:

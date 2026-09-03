@@ -43,3 +43,5 @@ kochmesser-kuchenschere-set-2-teilig-379009	2069658695799705601	0	-	KEINE CH-Opt
 3-in-1-gemusehobel-mit-scharfen-messern-940928	1648204465482244096	11	16.47	ok	klinge
 rasierer-mit-lcd-display-und-2-in-1-klinge-436672	1402082551182528512	6	16.20	ok	klinge
 wasserdichte-kabellose-turklingel-190786	2036641959612825602	-	-	unklar 200 Success rest=27	klinge
+elektronischer-geschwindigkeitsmesser-776320	1611982527500136448	11	9.59	ok	klinge
+kopf-display-gps-geschwindigkeitsmesser-961152	1367730856487161856	11	7.74	ok	klinge
