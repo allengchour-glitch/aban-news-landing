@@ -6169,3 +6169,14 @@ Groq-Schlüssel den Fehler zu (kein Text → nie bis zum Anlegen).
   **Fünf Begriffe, null Wecker — CJ führt keinen Zielscheiben-Wecker.** An den Betreiber gemeldet
   statt ein Ersatzprodukt unterzuschieben; Alternativen wären ein anderer Lieferant oder einer der
   80 vorhandenen Wecker ohne Schiessfunktion.
+
+## 🧭 18 tote Landeseiten mit Besuchern → Kategorie-301 (2026-09-03, früh)
+`TOTE-LANDESEITEN.md` (04:13) führte 18 Seiten mit 3–5 Sitzungen, alle DRAFT oder gelöscht, ohne
+Weiterleitung — die Klasse vom 29.08. wächst nach, weil Wächter draften und Phantome gelöscht wurden.
+Alle 18 auf die passende KATEGORIE (nie fremde Marke: Clinique → Hautpflege, Intex → Pool, Fischer →
+Bohren & Sägen); jedes Ziel vorher geprüft (im Onlineshop, aktive Produkte, selbst keine Weiterleitung —
+`bar-wein` und `vasen` sind Weiterleitungen, `duftkerzen`/`bademode` gibt es nicht → `sub-kueche`,
+`sub-deko`, `sub-aroma-diffuser`, `strand`). Emoji-Handles kleingeschrieben angelegt (Lehre 29.08.).
+Drei Stichproben live 301. Ledger `dropship/_tote_landeseiten_301.txt`.
+- Nebenbei: Der Einschlaf-Ritual-Ratgeber (5 Suchsitzungen/Monat) empfahl «ein Set ätherischer Öle»
+  ohne Link — jetzt auf das echte 6er-Set (CHF 14.90, ACTIVE geprüft).
