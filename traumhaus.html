@@ -9842,6 +9842,53 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
    sonst schriebe der zweite Aufrufer einen anderen Wert in ein Material, das der
    erste schon benutzt. Wer ein geladenes Material nachtraeglich aendern will,
    muss es vorher selbst klonen (so macht es die Alleebaum-Stelle). */
+/* 🧱 TIEFE IN GROSSE WAENDE. GEMESSEN 2026-09-03: von 169 593 m2 Wandflaeche aller
+   Gebaeude sind 162 344 m2 — 96 % — eine einzige flache Farbe ohne Textur. Deshalb
+   sehen Vergnuegungsviertel, Sporthallen und Gewerbe aus wie lackierte Kloetze; das
+   Drehen der Schauseite half nur dort, wo es ueberhaupt eine gibt.
+   ⚠️ EINE TEXTUR GEHT NICHT. Die UV-Koordinaten der Modelle sind Platzhalter: JEDES
+   Wandstueck hat u 0,12…0,88 / v 0…1 — die 2 684 m2 grosse Casino-Fassade genauso wie
+   ein 29 m2 grosses Putzstueck. Eine Kachel wuerde in jedem Bauteil anders skalieren.
+   Also im Shader, aus der WELTPOSITION: ein leichter Helligkeitsverlauf ueber die Hoehe
+   (unten 0,88, oben 1,02) und eine sehr grobe Schwebung, damit eine 40-m-Wand nicht in
+   einem einzigen Ton dasteht. Kein zusaetzlicher Zeichenaufruf, kein neues Material —
+   nur ein Einschub in den bestehenden Shader.
+   ⚠️ `customProgramCacheKey` ist Pflicht: ohne ihn haelt three.js zwei sonst gleiche
+   Materialien fuer programmgleich und nimmt das falsche Programm.
+   ⚠️ Die Instanz-Matrix muss mit, sonst haengen Instanzgruppen (Hecken, Zaeune) alle
+   an der Weltposition der ERSTEN Instanz. */
+function _wandTiefe(m){
+  if(!m||m.userData._wandTiefe)return m; m.userData._wandTiefe=1;
+  m.onBeforeCompile=function(sh){
+    sh.vertexShader=sh.vertexShader
+      .replace("#include <common>","#include <common>\nvarying vec3 vWeltPos;")
+      .replace("#include <begin_vertex>",
+        "#include <begin_vertex>\n\tvec4 wPos4 = vec4( transformed, 1.0 );\n"+
+        "\t#ifdef USE_INSTANCING\n\t\twPos4 = instanceMatrix * wPos4;\n\t#endif\n"+
+        "\tvWeltPos = ( modelMatrix * wPos4 ).xyz;");
+    sh.fragmentShader=sh.fragmentShader
+      .replace("#include <common>","#include <common>\nvarying vec3 vWeltPos;")
+      .replace("#include <color_fragment>",
+        "#include <color_fragment>\n\t{\n"+
+        "\t\tfloat hh = clamp( vWeltPos.y / 11.0, 0.0, 1.0);\n"+
+        "\t\tfloat sw = sin( vWeltPos.x * 0.21 ) * sin( vWeltPos.z * 0.19 ) * 0.5\n"+
+        "\t\t\t+ sin( vWeltPos.y * 0.9 + vWeltPos.x * 0.05 ) * 0.5;\n"+
+        /* Staerke: erster Anlauf 0,88 + 0,14 war im Bild kaum zu sehen (Vergleich
+           derselben Kameraposition vorher/nachher). 0,82 + 0,22 gibt einer 11-m-Wand
+           einen erkennbaren Verlauf vom Sockel zur Traufe, ohne dass die Farbe kippt. */
+        "\t\tdiffuseColor.rgb *= 0.82 + 0.22 * hh + 0.030 * sw;\n\t}");
+  };
+  m.customProgramCacheKey=function(){return "wandtiefe";};
+  m.needsUpdate=true;return m;}
+/* Welche Materialien sind Wand? Nach dem NAMEN aus den Modellen — sie heissen
+   ausnahmslos so (gemessen: Fassade, Hallenwand, TheaterWand, CasinoWand, EisWand,
+   KletWand, BankFassade, ZeileWand, BadWand, KlPutz, Stationsbeton, SdPutz).
+   Glas, Stahl, Dach und alles mit Textur bleiben unberuehrt. */
+function _istWand(m){
+  if(!m||m.map)return false;
+  var n=m.name||"";
+  if(/glas|glass|fenster|stahl|metall|dach|roof|licht|lamp|neon|schild|plakat/i.test(n))return false;
+  return /wand|fassade|facade|putz|mauer|beton|wall/i.test(n);}
 var _matReg={};
 /* 🪧 PLAKATE AUF DIE LITFASSSAEULEN. Sichtrunde 2026-09-02: die Saeulen am Markt
    sahen aus wie Betonsilos — das Material "Plakat" ist eine einfarbige beige Flaeche.
@@ -9874,6 +9921,7 @@ function _matVereinheitlichen(wurzel){
       if(!m)return m;
       m.envMapIntensity=0.3;
       if(!m.map&&/plakat/i.test(m.name||"")){m.map=_plakatTex();m.color.set(0xffffff);m.needsUpdate=true;}
+      if(_istWand(m))_wandTiefe(m);
       /* ⚠️ DER NAME GEHOERT IN DEN SCHLUESSEL. Der Verkehr sucht sein Lackmaterial
          ueber `/lack/i.test(m.name)`; wuerde ein gleich eingestelltes Material aus
          einer anderen Datei das Lackmaterial ersetzen, verloeren die Autos ihre
