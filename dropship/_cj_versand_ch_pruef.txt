@@ -687,3 +687,18 @@ kochmesser-aus-rostfreiem-stahl-311b9c	-	-	-	unklar keine CJ-SKU	klinge
 stahlmesser-mit-ebenholzgriff-e10f58	-	-	-	unklar keine CJ-SKU	klinge
 fischfiletiermesser-fur-kuche-haushalt-8a9c4a	-	-	-	unklar keine CJ-SKU	klinge
 kuchenmesser-aus-edelstahl-7b40fa	-	-	-	unklar keine CJ-SKU	klinge
+faltbares-rustmesser-871abf	-	-	-	unklar keine CJ-SKU	klinge
+kochmesser-mit-wengeholzgriff-31025f	-	-	-	unklar keine CJ-SKU	klinge
+handgeschmiedetes-hackmesser-hohe-harte-557559	-	-	-	unklar keine CJ-SKU	klinge
+keramik-sparschaler-mit-zirkonia-klinge-6829c8	-	-	-	unklar keine CJ-SKU	klinge
+diamant-messerscharfer-mit-festem-winkel-c8b87b	-	-	-	unklar keine CJ-SKU	klinge
+damastmesser-set-6ac1ea	-	-	-	unklar keine CJ-SKU	klinge
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+plateau-sandalen-damen-retro-style-mit-komfort-sohle-sommer-2026	2605300833091628700	11	11.40	ok	landeseite
+herren-laufschuhe-flyknit-atmungsaktiv-leicht-sport-alltag	2605290851031633900	11	13.87	ok	landeseite
+oversized-sonnenbrille-street-getont-square-style-3-farben	2606010202251605900	4	5.18	ok	landeseite
+herren-sommerhemd-lido-stehkragen-kurzarm-leinen-look	2606070353141601300	11	7.22	ok	landeseite
+abendkleid-aurora-satin-spaghettitrager-schlitz	2606080925471613100	11	11.94	ok	landeseite
+japanisches-rollkragen-oberteil-mit-kontrastfa-639700	2602070230041630200	11	9.89	ok	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+aufblasbarer-palmen-wassersprinkler-xxl-garten	2060553527368404993	0	-	KEINE CH-Option → DRAFT	landeseite
