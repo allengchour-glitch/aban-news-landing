@@ -9549,3 +9549,9 @@ gid://shopify/Product/15451927773569	CHF 17.05	17 Varianten	Leinenmisch-Hemd fü
 gid://shopify/Product/15451927839105	CHF 13.07	30 Varianten	Herren Corduroy Hemd-Jacke mit Brusttasche
 gid://shopify/Product/15451927871873	CHF 13.02	48 Varianten	Herren Sommer Hemd Kurzarm Gestreift Floral
 gid://shopify/Product/15451927904641	CHF 12.58	99 Varianten	Herren Langarmshirt mit Print
+gid://shopify/Product/15451928002945	CHF 12.19	18 Varianten	Herren Retro Loose-Fit Rundhals-Shirt
+gid://shopify/Product/15451928134017	CHF 12.43	6 Varianten	Freizeit-Hemd für Herren
+gid://shopify/Product/15451928592769	CHF 16.98	24 Varianten	V-Ausschnitt Pullover aus Baumwoll-Leinen
+gid://shopify/Product/15451928723841	CHF 22.13	18 Varianten	Leinenhemd für Herren – Langarm, Unifarben
+gid://shopify/Product/15451928920449	CHF 28.38	12 Varianten	Atmungsaktives Sportshirt für Herren
+gid://shopify/Product/15451929117057	CHF 19.79	24 Varianten	Casual Retro Hemd für Herren
