@@ -38,3 +38,4 @@ messer-mit-holzmaserung-455362	2006999955958312962	-	-	unklar 200 Success rest=5
 outdoor-survival-klappmesser-633000	2601010841101633200	-	-	unklar 200 Success rest=35	klinge
 extrem-scharfes-gerades-messer-623900	2512310627131624100	-	-	unklar 200 Success rest=59	klinge
 smarte-wlan-video-turklingel-mit-gegensprechan-668865	2041720035173052417	-	-	unklar 200 Success rest=39	klinge
+kochmesser-kuchenschere-set-2-teilig-379009	2069658695799705601	0	-	KEINE CH-Option → DRAFT	klinge

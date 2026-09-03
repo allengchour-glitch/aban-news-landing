@@ -1546,3 +1546,10 @@ gid://shopify/Product/15469996441985	Schminkset Aqua Make- Up Fantasie
 gid://shopify/Product/15469996638593	Schminkset Nightmare
 gid://shopify/Product/15470018396545	Schild Wonder Woman
 gid://shopify/Product/15470019281281	Baseballcaps Portugal
+gid://shopify/Product/15469964722561	Shorts metallic, silber
+gid://shopify/Product/15469964820865	Shorts metallic, violet
+gid://shopify/Product/15469966262657	Shorts metallic, pink
+gid://shopify/Product/15469968261505	Shorts metallic, gold
+gid://shopify/Product/15469988282753	Aqua Make Up Set Pantomime
+gid://shopify/Product/15469988577665	Aqua Make up
+gid://shopify/Product/15469995721089	Aqua Make Up Ultra
