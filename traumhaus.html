@@ -905,10 +905,14 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
   (function maehstreifen(){
     var cv=document.createElement("canvas");cv.width=64;cv.height=8;
     var c=cv.getContext("2d");
-    c.fillStyle="rgba(255,255,255,0.065)";c.fillRect(0,0,32,8);
-    c.fillStyle="rgba(24,62,24,0.05)";c.fillRect(32,0,32,8);
+    /* Erst 0,065/0,05 mit 16 Bahnen: aus der Uebersicht (Zoom 120, th-spielerblick Bild 7)
+       las sich das Grundstueck damit als Fussballplatz — helle Bahnen, harte Kante, Hecke
+       drumherum. Halb so kraeftig und breitere Bahnen: aus der Naehe noch Struktur, von
+       oben ein Rasen. */
+    c.fillStyle="rgba(255,255,255,0.034)";c.fillRect(0,0,32,8);
+    c.fillStyle="rgba(24,62,24,0.028)";c.fillRect(32,0,32,8);
     var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
-    t.repeat.set(16,1);
+    t.repeat.set(10,1);
     var m=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+6,GH*CS+6),
       new THREE.MeshStandardMaterial({map:t,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=-0.02;m.receiveShadow=true;scene.add(m);
@@ -11693,10 +11697,11 @@ function einsteigen(rec,geklaut){
   if(!MPs||mpHost)document.getElementById("lieferBtn").style.display="block";
   document.getElementById("hornBtn").style.display="block";
   document.getElementById("speedo").style.display="block";
+  var kn9=document.getElementById("joyKnob");if(kn9){kn9.dataset.alt=kn9.textContent;kn9.textContent="🚗";} /* der Stick lenkt jetzt ein Auto */
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei kommt! 🚨");
     setTimeout(function(){if(fahren)wantedPlus(2);},1500);}
-  else hint("🚗 Eingestiegen! Stick hoch = Gas · runter = Bremse/Rückwärts · links/rechts = lenken — 🚪 Aussteigen");
+  else hint("🚗 Stick: hoch Gas · runter Bremse · seitlich lenken");
   // Beifahrer: steht der Partner nahe am Auto, faehrt er wirklich mit (Koop: "alles zu 2")
   var bf=sims[1];
   if(bf&&Math.hypot(bf.x-a.mesh.position.x,bf.z-a.mesh.position.z)<4.5){
@@ -11729,6 +11734,7 @@ function aussteigen(){
   document.getElementById("lieferBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
   document.getElementById("speedo").style.display="none";
+  var kn8=document.getElementById("joyKnob");if(kn8&&kn8.dataset.alt){kn8.textContent=kn8.dataset.alt;}
   var bf2=sims[1];
   if(bf2&&bf2._bf){bf2._bf=false;bf2.mesh.visible=true;bf2.pose="stand";bf2.state="idle";
     bf2.x=a.mesh.position.x-Math.cos(carRot)*1.6;bf2.z=a.mesh.position.z+Math.sin(carRot)*1.6;
