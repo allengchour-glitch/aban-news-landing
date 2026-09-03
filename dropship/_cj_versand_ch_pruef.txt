@@ -326,3 +326,12 @@ knochen-und-allzweckmesser-set-028224	1610101331228897280	0	-	KEINE CH-Option �
 longquan-knochenhackmesser-handgeschmiedet-749056	1407157747107106816	0	-	KEINE CH-Option → DRAFT	klinge
 dragon-s-descendant-knochenbeil-381184	1407145486716112896	0	-	KEINE CH-Option → DRAFT	klinge
 shui-shui-furong-knochenhackmesser-774080	1407144802973257728	-	-	unklar 0  rest=None	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=85	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=109	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+shui-shui-furong-knochenhackmesser-774080	1407144802973257728	0	-	KEINE CH-Option → DRAFT	klinge
+tiger-head-knochenbeil-595776	1407144085042630656	0	-	KEINE CH-Option → DRAFT	klinge
+flying-dragon-knochenhauer-messer-584256	1407142666734538752	0	-	KEINE CH-Option → DRAFT	klinge
+drachenkopf-hackbeil-aus-t10-stahl-059520	1407140949892665344	0	-	KEINE CH-Option → DRAFT	klinge
+knochenbeil-aus-manganstahl-und-palisander-446208	1407139206710562816	0	-	KEINE CH-Option → DRAFT	klinge

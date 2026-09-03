@@ -998,3 +998,4 @@ gid://shopify/Product/15524002234753	nicht-versendbar	Einkaufswagen für Camping
 gid://shopify/Product/15524022944129	ok	Kamera Schultertasche aus Leder
 gid://shopify/Product/15448845353345	fuda-taschenmesser-aus-damaststahl-634100	KEINE Versandoption CH (Bestellung #1016, 03.09.)
 gid://shopify/Product/15524257694081	ok	Mechanische Automatikuhr mit grossen Zifferblatt
+gid://shopify/Product/15524361011585	ok	Multisport‑Smartwatch mit Schlaf‑ und Gesundheitsfunktionen
