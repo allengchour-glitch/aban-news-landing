@@ -44,7 +44,16 @@ WAHL = re.compile(
     # «Verfügbar in zwei Grössen: S und M» — an einem Produkt mit EINER Variante ist die
     # Zahl die Ankuendigung einer Wahl, nicht eine Eigenschaft (gefunden am Keramik-Napf).
     r'|(?:verf[üu]gbar|erh[äa]ltlich) in (?:zwei|drei|vier|f[üu]nf|sechs|\d+) '
-    r'(?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)', re.I)
+    r'(?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)'
+    # 03.09.: Die HÄUFIGSTE Form fehlte — «Erhältlich in den Farben Weiss und Apricot»,
+    # «Erhältlich in Grössen von L bis 5XL», «Erhältlich in diversen Grössen». Das Muster
+    # darüber verlangt das Substantiv NACH dem «und»; im echten Text steht es DAVOR. Der
+    # Wächter meldete deshalb 0, während der Voll-Audit 6'172 Produkte fand — ein Melder,
+    # der nichts meldet, sieht aus wie ein sauberer Katalog. Der Plural trägt die Aussage:
+    # «in einer Grösse» und «in der Farbe Schwarz» treffen bewusst nicht.
+    r'|(?:verf[üu]gbar|erh[äa]ltlich|lieferbar) in '
+    r'(?:den |diversen |unterschiedlichen |verschiedenen |mehreren )?'
+    r'(?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)(?![\wäöüß])', re.I)
 
 def gql(q, v=None):
     gedrosselt, i = 0, 0
@@ -72,7 +81,18 @@ if os.path.exists(LEDGER):
     erledigt = {z.split('\t')[0] for z in open(LEDGER, errors='ignore')}
 
 abfrage = 'status:active' + (f' created_at:>={SEIT}' if SEIT else '')
-cur, gesehen, treffer = None, 0, []
+
+# ⚠️ 03.09.2026: OHNE persistenten Cursor sah dieser Lauf IMMER dieselben ersten CAP Produkte.
+# Bei 52'313 aktiven Produkten und CAP=6000 heisst das: 46'000 wurden NIE geprueft, und der
+# Lauf meldete taeglich zufrieden «0 versprechen eine Auswahl», weil die ersten 6'000 laengst
+# im Ledger stehen. Der Voll-Audit fand zur selben Zeit 6'172 Faelle. Dieselbe Falle wie der
+# DEPTH-Reset der CJ-Runner (29.07.) und der Seiten-Zeiger des Bewertungs-Imports (28.08.):
+# ein Lauf ohne Gedaechtnis ueber seinen Fortschritt arbeitet ewig am Anfang.
+CURSOR = '/tmp/wahlversprechen_cursor.txt'
+cur = None
+if not SEIT and os.path.exists(CURSOR):
+    cur = (open(CURSOR).read().strip() or None)
+gesehen, treffer = 0, []
 while gesehen < CAP:
     d = gql('''query($c:String,$q:String!){products(first:100,after:$c,query:$q){
                  pageInfo{hasNextPage endCursor}
@@ -103,8 +123,16 @@ while gesehen < CAP:
                 continue
             treffer.append((a['id'].split('/')[-1], a['title'], m.group(0)[:70]))
     if not p['pageInfo']['hasNextPage']:
+        cur = None                     # Katalogende erreicht — naechster Lauf faengt vorn an
         break
     cur = p['pageInfo']['endCursor']
+
+# Fortschritt merken, damit der naechste Lauf DORT weitermacht statt wieder am Anfang.
+# Nur im Voll-Modus: ein SEIT-Lauf hat einen eigenen, kleineren Ausschnitt und darf den
+# Zeiger des Voll-Laufs nicht verstellen.
+if not SEIT:
+    with open(CURSOR, 'w') as f:
+        f.write(cur or '')
 
 print(f'{gesehen} aktive Produkte geprueft · {len(treffer)} versprechen eine Auswahl ohne Varianten')
 if treffer:
@@ -139,6 +167,13 @@ GRENZE_LI = 0.30
 # ⚠️ Zwischen Treffer und Aufzaehlung stehen oft ein bis zwei Woerter: die Regex trifft
 # «in verschiedenen Grössen», im Satz folgt aber « erhältlich, darunter …». Bis zu zwei
 # kurze Woerter sind deshalb erlaubt — mehr nicht, sonst frisst die Regel halbe Saetze.
+# Ein Anschluss-Satzteil hinter der Aufzaehlung: dort steht eine ZWEITE Aussage, dann darf
+# der Listenpunkt nicht fallen. Die Liste ist bewusst kurz und wird an echten Texten geprueft —
+# eine Verbotsliste ist immer unvollstaendig, deshalb zusaetzlich die Laengengrenze oben.
+ANSCHLUSS = re.compile(r'[.;]|\b(dazu|zudem|ausserdem|au[sß]erdem|damit|sodass|so dass|wodurch|'
+                       r'ideal|perfekt|passt|bietet|sorgt|eignet|verf[üu]gt|besteht|wird geliefert|'
+                       r'inklusive|inkl\.|lieferumfang)\b', re.I)
+
 AUFZAEHLUNG = re.compile(r'^\s*(?:\w+\s*){0,2}[,:]\s*(?:darunter|z\.?\s?B\.?|etwa|wie|n[äa]mlich)\b', re.I)
 
 def treffer_anteil(satz, f):
@@ -148,9 +183,26 @@ def treffer_anteil(satz, f):
     return (ende - f.start()) / max(len(satz), 1)
 
 def saetze(t):
-    """Text in Saetze zerlegen, Trennzeichen behalten."""
-    teile, start = [], 0
-    for m in re.finditer(r'[.!?](?:\s|$)', t):
+    """Text in Saetze zerlegen, Trennzeichen behalten.
+
+    ⚠️ 03.09.2026: Der Punkt in «(14.5 cm)» ist KEIN Satzende. Der alte Trenner schnitt dort,
+    die Haelfte davor fiel als «Satz» weg, und im Text blieb «…Portionsgrössen.5 cm) oder
+    1800 ml (21 cm).» stehen — ein Bruchstueck mit unpaariger Klammer. Drei Produkte hat es
+    erwischt. Zwei Regeln verhindern es: nicht zwischen Ziffern trennen, und nicht innerhalb
+    einer offenen Klammer. Eine Abkuerzung wie «ca.» oder «ml.» bleibt ein Satzende — dort
+    steht danach ein Leerzeichen und meist ein Grossbuchstabe, das ist unschaedlich.
+    """
+    teile, start, tiefe = [], 0, 0
+    for m in re.finditer(r'[()]|[.!?](?:\s|$)', t):
+        z = m.group(0)[0]
+        if z == '(':
+            tiefe += 1; continue
+        if z == ')':
+            tiefe = max(0, tiefe - 1); continue
+        if tiefe > 0:
+            continue                                  # Punkt innerhalb einer Klammer
+        if m.start() > 0 and t[m.start()-1].isdigit() and m.end() < len(t) and t[m.end():m.end()+1].isdigit():
+            continue                                  # Dezimalpunkt zwischen Ziffern
         teile.append(t[start:m.end()]); start = m.end()
     if start < len(t):
         teile.append(t[start:])
@@ -164,7 +216,23 @@ def bereinige(html):
         inhalt = re.sub(r'<[^>]+>', ' ', m.group(1))
         inhalt = re.sub(r'\s+', ' ', inhalt).strip()
         f = WAHL.search(inhalt)
+        # ⚠️ 03.09.2026: Die Anteils-Regel allein ist seit der Muster-Erweiterung UNSICHER.
+        # «Erhältlich in den Farben Blau und Grün, ideal für unterwegs» — der Kopf ist 24 von
+        # 58 Zeichen, also 41 % und ueber der Grenze; der Punkt waere gefallen und haette
+        # «ideal für unterwegs» mitgerissen. Ein Anschluss-Satzteil schuetzt jetzt IMMER,
+        # unabhaengig vom Anteil. Wer ein Suchmuster verbreitert, muss die Schwellen
+        # nachrechnen, die auf seiner alten Laenge beruhten.
+        if f and ANSCHLUSS.search(inhalt[f.end():]):
+            return m.group(0)
         if f and len(f.group(0)) / max(len(inhalt), 1) >= GRENZE_LI:
+            weg.append('• ' + inhalt[:60]); return ''
+        # 03.09.2026: Beginnt der Punkt MIT der Ankuendigung («Erhältlich in den Farben …»),
+        # dann ist die Aufzaehlung dahinter das Versprechen selbst — der Anteil bleibt aber
+        # klein, weil die Regex nur den Kopf trifft. Ein Listenpunkt, der so anfaengt, sagt
+        # nichts anderes. ⚠️ ABER nur, wenn dahinter wirklich nur die Aufzaehlung steht:
+        # Ein Anschlusssatz («…, dazu ein herausnehmbares Innenfutter») traegt eine zweite
+        # Aussage, und ein halber Punkt ist schlimmer als ein falscher (Lehre 27.08.).
+        if f and f.start() == 0 and len(inhalt) <= 170:
             weg.append('• ' + inhalt[:60]); return ''
         return m.group(0)
     neu = re.sub(r'<li[^>]*>(.*?)</li>', li, html, flags=re.S)

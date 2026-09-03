@@ -6479,3 +6479,43 @@ im Variantenwert · `A1` 41 ohne prüfbare Lieferanten-SKU (die bekannte handkur
   Druckprodukten nicht ausweicht, meldet den ganzen Selbstgestalten-Bereich.
 - ⚠️ **`C2` «Code im Titel»: S925 ist der SILBERSTANDARD**, keine Artikelnummer — ebenso 750,
   585, 316L, 18K. Vor dem Streichen gehört gefragt, ob die Zeichenfolge etwas BEDEUTET.
+
+## 🔍 Der Melder meldete 0, der Audit fand 6'172 — und drei Fehler im Melder selbst (2026-09-03)
+Beim Abarbeiten des Voll-Audits stand Aussage gegen Aussage: `wahlversprechen.py` meldete
+täglich «0 versprechen eine Auswahl», mein Audit fand **6'172 Produkte mit einer Variante,
+deren Text eine Auswahl verspricht**. Gelesen statt geglaubt — der Melder irrte, dreifach:
+1. **Blind für die häufigste Form.** Sein Muster verlangte das Substantiv NACH dem «und»
+   (`erhältlich in … und … Farben`); im echten Text steht es DAVOR: «Erhältlich **in den
+   Farben** Weiss, Hellblau und Apricot», «Erhältlich **in Grössen** von L bis 5XL». Ergänzt,
+   9 Trefferfälle + 8 Gegenfälle («in einer Grösse», «in der Farbe Schwarz», «in der Schweiz»,
+   «Grössenberatung») geprüft.
+2. **Kein Gedächtnis über den Fortschritt.** Der Lauf paginierte bei JEDEM Start von vorn und
+   hörte nach `CAP` auf — bei 52'313 Produkten und CAP 6'000 hat er **46'000 nie gesehen** und
+   meldete zufrieden 0, weil die ersten 6'000 längst im Ledger standen. Cursor in `/tmp`
+   persistiert, am Katalogende auf Anfang. Bewiesen: Lauf 1 prüft 1–600 (0 Treffer), Lauf 2
+   prüft 601–1200 (2 Treffer). Dieselbe Falle wie der DEPTH-Reset der CJ-Runner (29.07.) und
+   der Seiten-Zeiger des Bewertungs-Imports (28.08.).
+3. **Die Schwellen waren auf die ALTE Musterlänge geeicht.** Mein breiteres Muster trifft nur
+   den Kopf («Erhältlich in den Farben» = 24 Zeichen); bei «… Blau und Grün, ideal für
+   unterwegs» sind das 41 % und damit über der Listenpunkt-Grenze — der Punkt wäre gefallen
+   und hätte «ideal für unterwegs» mitgerissen. **Wer ein Suchmuster verbreitert, muss die
+   Schwellen nachrechnen, die auf seiner alten Länge beruhten.** Ein Anschluss-Satzteil
+   (`ANSCHLUSS`) schützt jetzt IMMER, unabhängig vom Anteil; dafür fällt ein Listenpunkt, der
+   MIT der Ankündigung beginnt und nichts anderes sagt. 7 Entfernfälle + 7 Schutzfälle, 0 Abweichungen.
+
+⚠️ **Und die Messung, die eine bequeme Reparatur ausgeschlossen hat:** Von 6'285 Fällen tragen
+**7** einen echten Optionswert — bei **6'278** steht «Default Title», wir wissen also gar nicht,
+welche Farbe die Kundin bekommt. «Sag einfach, welche es ist» war damit keine Option; jede
+Antwort wäre geraten. Sauber entfernbar (ganzer `<li>`/`<p>`, der nur das Versprechen trägt)
+sind **2'412**; der Rest trägt eine zweite Aussage und bleibt für eine Hand.
+
+**🧩 Der Satztrenner schnitt mitten in Dezimalzahlen.** `[.!?]\s` hielt den Punkt in
+«(14.5 cm)» für ein Satzende: die Hälfte davor fiel als «Satz» weg, im Text blieb
+«…Portionsgrössen**.5 cm) oder 1800 ml (21 cm)**.» — ein Bruchstück mit unpaariger Klammer.
+`saetze()` trennt jetzt weder zwischen Ziffern noch innerhalb einer offenen Klammer.
+- ⚠️ **Meine erste Schadensmessung war selbst ein Fehlalarm:** Das Muster
+  `[.!?]\s*\d+\s*(cm|ml|g)\)` meldete **658** Produkte — fast alle sind normale Dezimalzahlen
+  («1.5 cm») oder Abkürzungen («ca. 80 g)»). Das belastbare Merkmal ist die **unpaarige
+  Klammer**: damit sind es **3**. Zehnte Fassung von «ein breites Muster ist ein Netz, kein
+  Urteil» — an einem Tag, an dem ich schon zwei fremde Netze entlarvt hatte.
+- Alle drei von Hand repariert (Bruchstück raus, Sätze ganz), Gegenprobe: Klammern paarig.

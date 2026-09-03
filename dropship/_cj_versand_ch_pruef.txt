@@ -335,3 +335,5 @@ tiger-head-knochenbeil-595776	1407144085042630656	0	-	KEINE CH-Option → DRAFT	
 flying-dragon-knochenhauer-messer-584256	1407142666734538752	0	-	KEINE CH-Option → DRAFT	klinge
 drachenkopf-hackbeil-aus-t10-stahl-059520	1407140949892665344	0	-	KEINE CH-Option → DRAFT	klinge
 knochenbeil-aus-manganstahl-und-palisander-446208	1407139206710562816	0	-	KEINE CH-Option → DRAFT	klinge
+knochenbeil-adlerkopf-aus-manganstahl-180992	1407138601451524096	0	-	KEINE CH-Option → DRAFT	klinge
+antihaft-hackmesser-fur-die-kuche-225024	1407137927443648512	0	-	KEINE CH-Option → DRAFT	klinge
