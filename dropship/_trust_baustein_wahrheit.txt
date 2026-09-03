@@ -10216,3 +10216,104 @@
 15452679242113	ersetzt-1	Probiotika-Tabletten
 15452679307649	ersetzt-1	Fischöl-Tabletten für Katzen
 15452679340417	ersetzt-1	Hundegelenkschutz
+15452679602561	ersetzt-1	Fischerschirm
+15452679635329	ersetzt-1	Faltbare Outdoor-Stühle
+15452679700865	ersetzt-1	Falttisch
+15452679799169	ersetzt-1	Falttisch für Outdoor
+15452679897473	ersetzt-1	Faltbarer Grill
+15452679963009	ersetzt-1	Wetterfestes Zelt
+15452680028545	ersetzt-1	Holzverbrennungs-Ofen-Zelt
+15452680061313	ersetzt-1	Faltzelt für 3-4 Personen
+15452680094081	ersetzt-1	Faltbarer Campingstuhl
+15452680126849	ersetzt-1	Einpersonen-Schlafpad
+15452680159617	ersetzt-1	Pollinator-Wasserstake
+15452680257921	ersetzt-1	Gartenrandsteine
+15452680290689	ersetzt-1	Campingliege mit Fussstütze
+15452680323457	ersetzt-1	Faltbarer Strandstuhl
+15452680782209	ersetzt-1	Type-C Wireless Mirroring Adapter für PCs
+15452680814977	ersetzt-1	Weihnachts-Projektionslicht
+15452680847745	ersetzt-1	3D-Hologramm-Fan
+15452680913281	ersetzt-1	4K-Wireless-Controller mit Android 11 & Bluetooth 5.0
+15452681011585	ersetzt-1	Nacktes Auge 3D-Holografischer Projektor
+15452681208193	ersetzt-1	Schlaf- und Konzentrationshilfe für Babys
+15452681273729	ersetzt-1	Retro-CD-Player mit Vinyl-Look
+15452681404801	ersetzt-1	Klangsystem
+15452681503105	ersetzt-1	Vintage Auto-Bluetooth-Modell mit LED-Licht
+15452681535873	ersetzt-1	Digitaler Hörer im Ohr mit 32 Kanälen und Bluetooth
+15452681601409	ersetzt-1	AI-Übersetzungshörer für 165 Sprachen, kabellos
+15452681798017	ersetzt-1	Kabelloser Bluetooth-Headset mit Störschutz
+15452681863553	ersetzt-1	VR-Brille für Smartphone 3D
+15452681896321	ersetzt-1	Dual-Bildschirm-Halterung F100A, Teleskop-Dreh-Heber
+15452681929089	ersetzt-1	Selfie-Stativ mit Farblicht & Bluetooth
+15452681994625	ersetzt-1	Acacia-Snackplatte Handpoliert
+15452682092929	ersetzt-1	Mini LED-Fotolicht mit Lithium-Akku
+15452682125697	ersetzt-1	Gigabit-Faserkabel Kategorie 6
+15452682224001	ersetzt-1	Virtueller Helm mit Smartphone-Display
+15452682387841	ersetzt-1	Faltbare Silikon-Handroll-Trommel
+15452682486145	ersetzt-1	3D-VR-Brille für Smartphone 4.7-6 Zoll
+15452682518913	ersetzt-1	Romantischer Sternenhimmel-Projektor
+15452682584449	ersetzt-1	RG106PRO Drohne mit Hindernisvermeidung und 3-Achsen-PTZ-Kop
+15452682617217	ersetzt-1	Mini-Drohne mit 4K & Fernbedienung
+15452682649985	ersetzt-1	M7 Brushless Drohne mit Bildschirmsteuerung und Dual-Kamera
+15452682682753	ersetzt-1	HD-Quadrocopter mit Fernbedienung
+15452682715521	ersetzt-1	Ferngesteuertes Fluggerät mit HD-Bildschirm
+15452682781057	ersetzt-1	10-Zoll-FPV-Rahmen-Kit aus Carbon · ohne Elektronik
+15452682813825	ersetzt-1	SG901PRO Quadcopter für Luftaufnahmen
+15452682846593	ersetzt-1	Drohne mit 3 Kameras für HD-Aufnahmen
+15452682879361	ersetzt-1	Kabelfreier Quadrocopter P25 mit Gefahrenvermeidung
+15452682944897	ersetzt-1	M22-Fernbedienung mit 45-Zoll-Bildschirm und bürstenlosem UA
+15452683010433	ersetzt-1	Mini-Drone mit Gestensensorik
+15452683043201	ersetzt-1	Mini-Drone für Luftaufnahmen
+15452683075969	ersetzt-1	GT3 Mini-Drone mit Doppelfunktion und Hindernisvermeidung
+15452683174273	ersetzt-1	Reise-Airbett mit DC-Pumpe für Auto & Camping
+15452683239809	ersetzt-1	Sicherheitsgurt Schulterpolster Schutz
+15452683272577	ersetzt-1	Kinder-Auto-Zeichenbrett Reise
+15452683370881	ersetzt-1	Universeller Halb-Autorestsitz 5-Sitzer
+15452683403649	ersetzt-1	Winter-Sitzauflage mit weicher Polsterung
+15452683469185	ersetzt-1	Wasserdichter Rücksitzbeutel für Motorrad S1000RR 09-18
+15452683534721	ersetzt-1	PU-Sitzauflage SUV-Viereckstühle
+15452683567489	ersetzt-1	3-teiliges Auto-Kissen Set Winter-Plüsch
+15452683600257	ersetzt-1	Armlehnen-Schutzauflage mit Tasche
+15452683665793	ersetzt-1	Auto-Hundematte mit erweiterter Stütze für Rücksitz
+15452683698561	ersetzt-1	Sommer-Minimales EisSilk Autositze-Polster
+15452683862401	ersetzt-1	Versteckter Sitzhaken für Rückbank – Kleine Gegenstände
+15452683927937	ersetzt-1	Autositzkissen mit Lendenwirbelstütze
+15452683993473	ersetzt-1	Universelles Auto Nackenkissen mit Memory Foam für 4 Jahresz
+15452684059009	ersetzt-1	Leinen-Auto-Sitzkissen Universal
+15452684124545	ersetzt-1	Auto-Lendenstütze mit Memory-Foam
+15452684157313	ersetzt-1	Höhenverstellbares dickes Po-Kissen
+15452684222849	ersetzt-1	Schaumgummi-Auto-Kissen mit Fixiergurt für Auto und Büro, hi
+15452684255617	ersetzt-1	Schmuck-Gurt-Schulterpolster aus Kunstleder
+15452684288385	ersetzt-1	3D Memory Foam Lendenwirbelstütze atmungsaktiv ölresistent
+15452684353921	ersetzt-1	Lenden-Gesässkissen, Memory-Schaum, Auto-Universell
+15452684386689	ersetzt-1	Auto-Kühlmatte mit Lüftung
+15452684419457	ersetzt-1	48V Hochdruck-Wasserkanone 6-in-1 Düse für Auto, Boden & Gar
+15452684550529	ersetzt-1	Hochdruck-Waschdüse für Auto & Haushalt
+15452684583297	ersetzt-1	2er Set Multifunktions-Schaumreiniger 100ml Zitrusdüfte Auto
+15452684812673	ersetzt-1	Badezimmer-Eingangsteppich mit Farbverlauf
+15452684878209	ersetzt-1	Schwarz Seidenmuster Stickerei Rockoptik Dehnbarer Sofabezug
+15452684943745	ersetzt-1	3D-Jacquard-Sofahülle geometrisches Muster minimalistisch
+15452684976513	ersetzt-1	Instagram-ähnliche Couchabdeckung Gelb-Rosa-Grün, katzenklau
+15452685009281	ersetzt-1	Faltbare Sitzauflage für Stadien
+15452685107585	ersetzt-1	Kuschel-Couchhülle aus Baumwollflanell
+15452685173121	ersetzt-1	Einfarbiges Kristallvelours Sofakissen
+15452685205889	ersetzt-1	Katzenfestes Einheitssofaüberwurf
+15452685238657	ersetzt-1	Nordisch-Stil Anti-Rutsch Staubdichter Sofa-Bezug
+15452685271425	ersetzt-1	3D-Bubble-Chiffon-Esstuhl-Bezug
+15452685304193	ersetzt-1	Kuschelsofahülle mit niedlichen Tieren
+15452685369729	ersetzt-1	Gedruckter Multifunktioneller Strick Dehnbarer Sofa-Bett-Bez
+15452685402497	ersetzt-1	Individuell verpacktes Outdoor-Bänkchenkissen, wasserdicht
+15452685435265	ersetzt-1	Wasserdichter Lederstuhlbezug mit Riemen
+15452685468033	ersetzt-1	Winter-Plüscho-Sofakissen Nordisch
+15452685566337	ersetzt-1	Chenille-Bolsterkissen extra lang, verschiedene Grössen
+15452685599105	ersetzt-1	Elastischer Korn-Grid-Universalschutzbezug für Einzelsessel
+15452685697409	ersetzt-1	Druckfreier Memoryschaum-Kissen
+15452685730177	ersetzt-1	2er Set Weiches Nackenkissen für Schlaf
+15452685795713	ersetzt-1	Extra gefüllte gequiltete Doppelkissen mit festem Support
+15452685828481	ersetzt-1	Sommerdecke mit Kühlung
+15452685894017	ersetzt-1	Halskissen für bequemen Halt
+15452685926785	ersetzt-1	Sommer-Duvet mit Tencel und Stickerei
+15452685992321	ersetzt-1	Bettbezug-Paar aus Tencel der Klasse A
+15452686745985	ersetzt-1	Hochliegendes Mesh-Hundebett
+15452686909825	ersetzt-1	Hochliegendes Hunde-Bett mit abnehmbarem Schirm, 36 Zoll
+15452686975361	ersetzt-1	Drehbarer Katerliegeplatz mit verstellbarer Höhe
