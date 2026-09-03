@@ -4228,3 +4228,57 @@
 15448896635265	ersetzt-1	Rundes Zirkonia Slider Armband
 15448896700801	ersetzt-1	Ovales Zirkonia Armband im Pariser Stil
 15448896733569	ersetzt-1	Zirkon Armreif im Diamant-Design
+15448896831873	ersetzt-1	Pariser Oval Zirkon Armreif
+15448896864641	ersetzt-1	Französisches ovales Zirkon-Armband
+15448896962945	ersetzt-1	Vergoldetes Zirkon-Armband, doppellagig
+15448896995713	ersetzt-1	Geometrischer Zirkon-Armreif
+15448897094017	ersetzt-1	Rhombus Zirkon Armband
+15448897159553	ersetzt-1	Vergoldetes Armband mit bunten Zirkonia-Ovalen
+15448897192321	ersetzt-1	Rhomben Zirkonia Armreif – Minimalistisch & Elegant
+15448897225089	ersetzt-1	Glacier Blue Zirkonia Armreif
+15448897356161	ersetzt-1	Liebesherz-Armreif mit Zirkonia
+15448897421697	ersetzt-1	Regenbogen Zirkon Armreif, 18K vergoldet
+15448897487233	ersetzt-1	Armreif mit mattblauen Zirkonia
+15448897683841	ersetzt-1	Vergoldetes Oval-Zirkon Armband
+15448897814913	ersetzt-1	Zirkonia Love Heart Armband
+15448898109825	ersetzt-1	Vergoldetes Armband mit bunten Zirkonia
+15448898208129	ersetzt-1	Blumen-Armreif mit Zirkonia-Schnalle
+15448898273665	ersetzt-1	Armreif mit Zirkonia-Blütenverschluss
+15448898306433	ersetzt-1	Geometrisches Zirkon-Armband, 18K vergoldet
+15448898371969	ersetzt-1	Eleganter Zirkonia-Armreif im Pariser Stil
+15448898437505	ersetzt-1	Vergoldetes Armband mit Zirkonia, zweilagig
+15448898535809	ersetzt-1	Vergoldetes Zirkonia Armband, geometrisch
+15448898699649	ersetzt-1	Zirkonia-Armreif im Diamant-Design mit Geschenkbox
+15448898896257	ersetzt-1	Western Style Zirkonia Herz Armreif
+15448898929025	ersetzt-1	Zirkon-Herz-Armreif
+15448898961793	ersetzt-1	18K Vergoldetes Zirkon-Perlenarmband
+15448899092865	ersetzt-1	Gradient Schwan Multicolor Zirkon Armreif
+15448899125633	ersetzt-1	Lila Zirkon Armreif – Sweet Cool Style
+15448899158401	ersetzt-1	Herz-Armreif mit Zirkonia im Western-Stil
+15448899223937	ersetzt-1	Verstellbares Ring-Set mit geometrischem Design
+15448899256705	ersetzt-1	Herz-Ring-Set, verstellbar
+15448899322241	ersetzt-1	Kupfer-Flechtkette im Vintage-Stil
+15448899387777	ersetzt-1	Goldfarbene Muschel-Halskette für Frauen
+15448899420545	ersetzt-1	Geometrisches Schmuck-Set aus Titanstahl
+15448899486081	ersetzt-1	Ocean Breeze Halskette und Ohrringe
+15448899551617	ersetzt-1	Halskette mit Zirkonia-Kreuzanhänger
+15448899584385	ersetzt-1	Perlenkette mit Schleifendesign
+15448899682689	ersetzt-1	Schlange-Kette mit Perlen-Schleifen-Anhänger
+15448899780993	ersetzt-1	Schlangenknochenkette mit Perlen
+15448899813761	ersetzt-1	Personalisierte Herz-Halskette mit Gravur
+15448899846529	ersetzt-1	Halskette mit natürlichem, violettem Kristallanhänger
+15448899879297	ersetzt-1	Naturstein-Halskette im Retro-Stil
+15448899944833	ersetzt-1	Retro Blumen Schmuckset
+15448900010369	ersetzt-1	Herzanhänger aus rhodiniertem Edelstahl
+15448900174209	ersetzt-1	Lesehilfe-Halskette mit Holzperlen
+15448900239745	ersetzt-1	Rechteckige AB Glas-Kristall-Rhinestones zum Annähen
+15448900272513	ersetzt-1	Stern- & Herz-Halskette aus 18K vergoldetem Stahl
+15448900370817	ersetzt-1	Herz-Halskette mit OT-Verschluss
+15448900436353	ersetzt-1	Lange Pulloverkette mit «Xi»-Anhänger
+15448900567425	ersetzt-1	Halskette mit gewebtem vierblättrigem Kleeblatt
+15448900731265	ersetzt-1	Ohrringe mit Katzenaugenstein und Türkis-Optik
+15448900796801	ersetzt-1	Vintage Ohrstecker Elegant (Silbernadel)
+15448900895105	ersetzt-1	Koreanische Kristall-Ohrringe mit lila Blume
+15448900960641	ersetzt-1	Süsse Lila Kristallblüten-Ohrringe
+15448900993409	ersetzt-1	Französische Vintage Premium Ohrstecker
+15448901058945	ersetzt-1	Exquisite Zirkon Ohrhänger Korean Style

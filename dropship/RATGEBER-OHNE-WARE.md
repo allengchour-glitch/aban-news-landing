@@ -17,12 +17,7 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [5-Minuten-Selfcare. Für die, die keine Stunde haben.](/blogs/ratgeber/5-minuten-selfcare-rituale) | 0 |
 | [Aromatherapie für Anfänger — Der ehrliche 7-Tage-Plan](/blogs/ratgeber/aromatherapie-fur-anfanger) | 0 |
 | [Geschenke, die Eindruck machen — ohne dass du ein Vermögen a](/blogs/ratgeber/geschenke-die-eindruck-machen) | 0 |
-| [Adventskalender für Erwachsene 2026: Der ehrliche Vergleich](/blogs/ratgeber/adventskalender-erwachsene-vergleich-2026) | 0 |
-| [Akupressurmatte Anwendung: So nutzt du die Matte richtig für](/blogs/ratgeber/akupressurmatte-anwendung-wirkung) | 0 |
 | [Die besten Aroma-Diffuser 2026 — Kaufratgeber für die Schwei](/blogs/ratgeber/beste-aroma-diffuser-2026-kaufratgeber-schweiz) | 0 |
-| [Bluetooth Kopfhörer mit ANC: Der ehrliche Kaufratgeber](/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber) | 1 |
-| [Sojawachs Duftkerzen Ratgeber: Soja vs. Paraffin, Brenndauer](/blogs/ratgeber/duftkerzen-sojawachs-vs-paraffin-ratgeber) | 0 |
-| [Himalaya Salzlampe Wirkung: Was sie wirklich kann und was My](/blogs/ratgeber/himalaya-salzlampe-wirkung-mythen) | 0 |
 | [Nackenverspannung lösen zuhause: Sanfte Wege zu mehr Entspan](/blogs/ratgeber/nackenverspannung-loesen-zuhause) | 0 |
 | [Yoga für Anfänger zuhause: So startest du entspannt und rich](/blogs/ratgeber/yoga-anfaenger-zuhause-starten) | 0 |
 | [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
