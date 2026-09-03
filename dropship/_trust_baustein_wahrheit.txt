@@ -8626,3 +8626,45 @@
 15450645791105	ersetzt-1	Atmungsaktive Chunky-Sneaker für Damen
 15450645823873	ersetzt-1	Atmungsaktive Freizeit-Sneaker für Damen
 15450645856641	ersetzt-1	Atmungsaktive, leichte Sneaker für Damen
+15450645922177	ersetzt-1	Retro Schwarz-Weisse Colorblock Sneaker
+15450645987713	ersetzt-1	Atmungsaktive Mesh-Sandalen mit 5 cm Plateau
+15450646053249	ersetzt-1	Mary Jane Ballerinas mit doppelter Schnalle
+15450646086017	ersetzt-1	Französischer Samt-Sneaker mit Schnürung
+15450646151553	ersetzt-1	Weisse Plateau-Sneakers für Damen
+15450646184321	ersetzt-1	Sneaker mit Katzen-Design und dicker Sohle
+15450658537857	ersetzt-1	Vielseitige Chunky-Heel Sandalen
+15450658603393	ersetzt-1	Glänzende Mesh-Mules mit spitzer Zehenpartie
+15450658636161	ersetzt-1	Bequeme Stiletto-Sandalen mit eckiger Spitze
+15450658800001	ersetzt-1	Schicke Sandalen für den Alltag
+15450658898305	ersetzt-1	Minimalistische Espadrille-Sandalen
+15450658996609	ersetzt-1	High Heels mit Polka Dots im französischen Stil
+15450659062145	ersetzt-1	Elegante Leder-Pumps für Frühling und Herbst
+15450659127681	ersetzt-1	Lackleder Plateau-Sandalen für Damen
+15450659225985	ersetzt-1	Elegante Riemchen-Stilettos aus Leder
+15450659324289	ersetzt-1	High-Heel Sandalen im europäisch-amerikanischen Stil
+15450659389825	ersetzt-1	Elegante Stiletto-Pumps mit spitzer Zehe
+15450659488129	ersetzt-1	Damen Loafer mit eckiger Zehenpartie
+15450659586433	ersetzt-1	Pumps mit Riemen und eckiger Spitze
+15450659783041	ersetzt-1	Elegante spitze Pumps mit Stilettoabsatz
+15450659848577	ersetzt-1	High Heels mit Schleife und Cut-Out
+15450659914113	ersetzt-1	Chunky-Heel Peep-Toe Pumps im neuen China-Stil
+15450659979649	ersetzt-1	Elegante Stiletto-High Heels mit spitzer Zehe
+15450660110721	ersetzt-1	Satin High Heels mit Schleife
+15450660209025	ersetzt-1	Damen-Stiefeletten mit Plateau und klobigem Absatz
+15450660307329	ersetzt-1	Vintage Weinrote Offene High Heels
+15450660372865	ersetzt-1	Mules mit Rosshaar und skulpturalem Absatz
+15450660503937	ersetzt-1	Elegante Mesh-Stiletto-Sandalen mit spitzer Zehe
+15450660536705	ersetzt-1	Chunky-Heel Sandalen mit Cut-Outs
+15450693337473	ersetzt-1	Schwarze Schnürschuhe aus Leder
+15450693501313	ersetzt-1	Handgenähte Damen-Freizeitschuhe mit weicher Sohle
+15450693665153	ersetzt-1	Dunkelbraune Mary Jane Halbschuhe aus Leder
+15450693697921	ersetzt-1	Chunky-Sneaker für Damen mit Schnürung
+15450693796225	ersetzt-1	Sportliche Mesh-Schuhe für Damen
+15450693894529	ersetzt-1	Damen-Sneaker mit Keilabsatz
+15450693927297	ersetzt-1	Sportliche Mesh-Sneaker mit Blumenmuster
+15450693960065	ersetzt-1	Atmungsaktive High-Top Sneaker mit Chunky-Sohle
+15450694058369	ersetzt-1	Schnürschuhe mit klobigem Absatz
+15450694320513	ersetzt-1	Silberne Chunky Dad-Sneaker im Colorblock-Design
+15450694713729	ersetzt-1	Atmungsaktive Chunky-Sneakers mit Seitenreissverschluss
+15450695074177	ersetzt-1	Damen Casual Hollow-Weave Schuhe mit dicker Sohle
+15450695369089	ersetzt-1	Damen Sneaker mit dicker Sohle

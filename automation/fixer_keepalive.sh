@@ -789,6 +789,21 @@ while true; do
       fi
     fi
   fi
+  # CH-VERSENDBARKEIT SICHTBARER CJ-WARE (03.09.2026, Klasse Bestellung #1016): Klingen/Schärfer, Such-
+  # Landeseiten, Hype, Bestseller per freightCalculate CN→CH; ohne Option → DRAFT + cj-nicht-versendbar-ch.
+  # Läuft gegen den geteilten CJ-Eimer langsam (~1–2/min) und stirbt mit jedem Container-Neustart —
+  # der Aufseher startet ihn neu, bis ein Lauf «FERTIG: geprüft 0» meldet (keine Kandidaten mehr).
+  VS=/tmp/cj_versand_ch_sichtbar.log
+  if [ -f "$REPO/automation/cj_versand_ch_sichtbar.py" ] && [ -f /tmp/cj_token_shared.txt ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/cj_versand_ch_sichtbar.py"{n++} END{exit(n?0:1)}'; then
+      if ! grep -q "^FERTIG: geprüft 0 " "$VS" 2>/dev/null; then
+        ( cd "$REPO" && setsid bash -c \
+            "exec 9>/tmp/lock_cj_versand_sichtbar.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/cj_versand_ch_sichtbar.py" \
+            >> "$VS" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) cj_versand_ch_sichtbar gestartet"
+      fi
+    fi
+  fi
   # FAKTENBLOCK-NACHTRAG FUER LANDESEITEN (02.09.2026): cj_specs_backfill.mjs traegt den
   # Produktdetails-Block aus CJ-Daten dort nach, wo Menschen ankommen (dropship/_cj_specs_prio.txt,
   # ShopifyQL-Landeseiten). Kostet CJ-Punkte (~20 je Produkt) → einmal taeglich, LIMIT 30, bis
