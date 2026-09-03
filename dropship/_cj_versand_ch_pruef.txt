@@ -31,3 +31,10 @@ multifunktionales-survival-klappmesser-608400	2601130133571608700	0	-	KEINE CH-O
 japanisches-damast-messer-mit-ebenholzgriff-628700	2601070337051628900	-	-	unklar 200 Success rest=43	klinge
 6-teiliges-kuchenmesser-set-aus-geschmiedetem-082433	2008104250771271681	-	-	unklar 200 Success rest=23	klinge
 swedwood-taschenmesser-aus-stahl-619900	2601031201591610100	-	-	unklar 200 Success rest=47	klinge
+g10-allzweckmesser-mit-rutschfestem-griff-623300	2601021048401623500	-	-	unklar 200 Success rest=27	klinge
+shadow-dancer-kupfer-damast-klappmesser-609900	2601020939581600400	-	-	unklar 200 Success rest=51	klinge
+damast-outdoor-faltmesser-624300	2601020159491624500	-	-	unklar 200 Success rest=31	klinge
+messer-mit-holzmaserung-455362	2006999955958312962	-	-	unklar 200 Success rest=55	klinge
+outdoor-survival-klappmesser-633000	2601010841101633200	-	-	unklar 200 Success rest=35	klinge
+extrem-scharfes-gerades-messer-623900	2512310627131624100	-	-	unklar 200 Success rest=59	klinge
+smarte-wlan-video-turklingel-mit-gegensprechan-668865	2041720035173052417	-	-	unklar 200 Success rest=39	klinge

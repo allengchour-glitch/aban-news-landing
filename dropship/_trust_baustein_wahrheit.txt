@@ -9823,3 +9823,158 @@
 15451639153025	ersetzt-1	All-in-One VR-Headset (Standalone)
 15451639185793	ersetzt-1	4K All-in-One 3D Gaming Headset mit Smart VR Brille
 15451639218561	ersetzt-1	4-Band Equalizer Tonabnehmer für E-Piano
+15451639251329	ersetzt-1	FPV-Monitor 4,3 Zoll mit DVR
+15451639284097	ersetzt-1	TRUERC X-AIR MKII Antennenbrille
+15451639316865	ersetzt-1	VR-Brille für 3D-Filme & Games
+15451639349633	ersetzt-1	Smartplayer Air Electronic Drum Kit
+15451639382401	ersetzt-1	Baby-Video-Monitor mit 4,3-Zoll-Display
+15451639447937	ersetzt-1	Schutzrahmen mit Griff für Osmo Pocket 3
+15451639513473	ersetzt-1	VR-Brille für Smartphones
+15451639546241	ersetzt-1	GPD WIN4 Handheld Game Console Basis-Expander
+15451639579009	ersetzt-1	VR-Headset mit Power-Bank
+15451639644545	ersetzt-1	Silikon Bluetooth Selfie Stick Stativ
+15451639677313	ersetzt-1	Game Gunstock für Nintendo Switch
+15451639710081	ersetzt-1	Schutzhülle für XBOX ONE Controller
+15451639742849	ersetzt-1	VR-Ständer für Headset & 2 Controller
+15451639841153	ersetzt-1	VR Brille: Eintauchen in virtuelle Welten
+15451639873921	ersetzt-1	VR Headset Elite Version, verstellbar
+15451639906689	ersetzt-1	Bluetooth Verstärker für Zuhause & Auto mit Aufnahme
+15451639939457	ersetzt-1	JAKEHOE Lüfter-Reinigungsspray
+15451639972225	ersetzt-1	PXN V10 Force Feedback Lenkrad
+15451640070529	ersetzt-1	3-in-1 Messerschärfer für Küche & Restaurant
+15451640103297	ersetzt-1	Wärmeplatte für den Heimgebrauch
+15451640136065	ersetzt-1	Takoyaki-Pfanne aus Gusseisen mit 14 Mulden
+15451640168833	ersetzt-1	3-Stöckiger Induktions-Dampfgarer aus Edelstahl
+15451640201601	ersetzt-1	Küchenarmatur mit Ausziehbrause
+15451640332673	ersetzt-1	Keramikbecher im 4er-Set
+15451640365441	ersetzt-1	Keramik Schmortopf für Slow Cooking
+15451640398209	ersetzt-1	Dynamische Reflexion Keramik-Kaffeetasse
+15451640430977	ersetzt-1	Keramik Gewürzbehälter mit Bambusständer, 4 Stk.
+15451640463745	ersetzt-1	4er-Set stapelbare Frischhalteschalen
+15451640529281	ersetzt-1	Sturmfeuerzeug Kupfer mit Gravur
+15451640562049	ersetzt-1	Gusseisen-Backform, rechteckig, emailliert
+15451640594817	ersetzt-1	2er-Set Cord-Kissenbezüge, gestreift, Crèmeweiss
+15451640627585	ersetzt-1	Vielseitiger Plüsch-Sofabezug in Unifarben
+15451640660353	ersetzt-1	Sofa-Kissenbezug aus Lammfell-Imitat, rutschfest
+15451640693121	ersetzt-1	Memory Foam Lendenkissen für Büro und Auto
+15451640725889	ersetzt-1	Gestreifter Kissenbezug aus Baumwoll-Leinen-Mix
+15451640758657	ersetzt-1	Nordischer Bettläufer mit Quasten
+15451640791425	ersetzt-1	Kühlende Gewichtsdecke mit Glasperlen
+15451640824193	ersetzt-1	Kühles Sommer-Seidenduvet, Klasse A zertifiziert
+15451640889729	ersetzt-1	Leichter Bettüberwurf, knitterarm
+15451641020801	ersetzt-1	Leichte Sommer-Kuscheldecke, atmungsaktiv
+15451641086337	ersetzt-1	Wolldecke mit Digitaldruck
+15451641151873	ersetzt-1	Kühlendes Eis-Seide Anti-Rutsch Sitzkissen
+15451641184641	ersetzt-1	Kuscheliger Fleece-Überwurf mit Rosen-Design
+15451641217409	ersetzt-1	Seidenbettwäsche-Set mit geometrischem Muster
+15451641250177	ersetzt-1	VW Funkschlüssel-Gehäuse (3 Tasten)
+15451641282945	ersetzt-1	4er-Set Auto-Rücksitzhaken mit Handyhalterung
+15451641315713	ersetzt-1	Auto-Schlüsselanhänger "Sweet Couple"
+15451641348481	ersetzt-1	Smart Key Fernbedienungsgehäuse für Chevrolet
+15451641381249	ersetzt-1	Rücksitz-Organizer mit Klapptisch
+15451641414017	ersetzt-1	Metall-Schutzhülle für Golf Auto Schlüssel
+15451641446785	ersetzt-1	Scheinwerfer-Zierring für Golf, Jetta, Tiguan
+15451641479553	ersetzt-1	Wand-Schlüsselbox mit Zahlencode
+15451641512321	ersetzt-1	Velo-Rahmentasche fürs Smartphone
+15451886649729	ersetzt-1	Anti-Knabber Spray für Haustiere
+15451887272321	ersetzt-1	Hundespielzeug Reife – Kauspielzeug für grosse Hunde
+15451887993217	ersetzt-1	Beissfester Haustier-Traktionsball mit USB-Ladung
+15451888484737	ersetzt-1	Robustes Kauspielzeug für Hunde
+15451889336705	ersetzt-1	Smart Beissfester Hundeball mit Zahnreinigung
+15451890286977	ersetzt-1	Giraffe & Waschbär Baumwollseil-Spielzeug
+15451891368321	ersetzt-1	Quietschendes Gummi-Monster für Hunde
+15451891827073	ersetzt-1	Hufeisen-Kauspielzeug aus Naturkautschuk
+15451892515201	ersetzt-1	Robustes Naturkautschuk-Kauspielzeug für Hunde
+15451893039489	ersetzt-1	Interaktives Plüsch-Hundespielzeug, Orange
+15451893432705	ersetzt-1	4er-Set Latex-Kauspielzeug mit Sound für Hunde
+15451893858689	ersetzt-1	Smart Ball: Interaktives Kauball-Spielzeug für Haustiere
+15451894382977	ersetzt-1	Robuster Kauartikel für Hunde
+15451894940033	ersetzt-1	Farbiger Zahnreinigungs- und Kauspielball
+15451895562625	ersetzt-1	Hundespielzeug mit Gummireifen & Tau
+15451896217985	ersetzt-1	Smartes Katzenspielzeug «Magisches Rad»
+15451897921921	ersetzt-1	Interaktiver Katzen-Teaser mit Fernbedienung
+15451898380673	ersetzt-1	Vogel-Trainingsständer aus Massivholz
+15451898904961	ersetzt-1	Hundespielball für Kauen und Apportieren
+15451900051841	ersetzt-1	Kinder-Dreirad zum Sitzen oder Fahren
+15451905851777	ersetzt-1	Faltbares Feldbett mit Polster
+15451907129729	ersetzt-1	12er-Set Poolabdeckungs-Gewichtssäcke
+15451907588481	ersetzt-1	2er-Set Schrank-Organizer für Kleider & Accessoires
+15451907850625	ersetzt-1	7-Tage Pillendose mit 3 Fächern pro Tag
+15451908145537	ersetzt-1	2er-Set Sortierboxen mit je 28 Fächern
+15451908735361	ersetzt-1	Multifunktionales Ballnetz mit Schulterriemen
+15451909292417	ersetzt-1	Brotkasten aus Bambus
+15451909816705	ersetzt-1	Pilzsammel-Taschen-Set
+15451910209921	ersetzt-1	Schuh-Organizer für die Tür, 10 Fächer
+15451910570369	ersetzt-1	Minimalistisches 2-Lagen Metallregal
+15451910832513	ersetzt-1	Kochgeschirr-Set mit doppelbeschichteten Köpfen
+15451911061889	ersetzt-1	Drehbarer Gewürzständer für die Küche
+15451911225729	ersetzt-1	Faltbarer Pour Over Kaffeefilterhalter
+15451911455105	ersetzt-1	Extra tiefe Quiche- und Tarteform mit Antihaft
+15451911750017	ersetzt-1	Jaysuing Steinreinigungspulver
+15451912044929	ersetzt-1	Küchenmatten 2er-Set, rutschfest & wasserdicht
+15451912798593	ersetzt-1	Kabelloser Anionen-Glättkamm mit USB-Ladefunktion
+15451913159041	ersetzt-1	Kabelloser Mini-Haarglätter der 3. Generation
+15451913552257	ersetzt-1	6-in-1 Lockenstab & Glätteisen mit LED-Anzeige
+15451913847169	ersetzt-1	Kabelloser 2-in-1 Glätt- & Lockenstab
+15451914076545	ersetzt-1	Kabelloser Mini-Glättkamm mit LCD-Anzeige
+15451914273153	ersetzt-1	Kabelloser Glättkamm mit Anionen-Technologie
+15451914502529	ersetzt-1	Kabelloser 2-in-1 Glättkamm mit Ionen-Pflege
+15451914797441	ersetzt-1	Haarschneider Retro-Look für Herren
+15451915026817	ersetzt-1	Kaltluft-Haarglätter
+15451915288961	ersetzt-1	Mini Wireless Glättbürste mit Anionenfunktion
+15451915518337	ersetzt-1	Kabelloser Diamant Haarglätter
+15451915747713	ersetzt-1	2-in-1 Haarglätter & Lockenstab mit Ionen-Technologie
+15451915977089	ersetzt-1	2-in-1 Glätteisen & Lockenstab mit 3D-Muster
+15451916206465	ersetzt-1	Rotlicht Vibrations-Massagekamm für vitales Haar
+15451916599681	ersetzt-1	Elektrischer Kopfhaut-Massagekamm
+15451916861825	ersetzt-1	Katzentoilette mit Doppeleingang
+15451916894593	ersetzt-1	Klimatisiertes Haustierbett "Snowman"
+15451916927361	ersetzt-1	Beruhigendes Hundebett für Sofa, wasserdicht
+15451917025665	ersetzt-1	Beruhigendes Haustierbett im Sofa-Stil
+15451917418881	ersetzt-1	Katzenbaum mit 4 Ebenen, Mond & Sterne – Lila
+15451917975937	ersetzt-1	Furzendes Kothaufen-Spielzeug mit Sound
+15451918598529	ersetzt-1	Smartes Beruhigungskissen mit Schlafliedern
+15451919221121	ersetzt-1	Flohhalsband für Hunde und Katzen
+15451919712641	ersetzt-1	Reflektierendes Nylon-Halsband, verstellbar
+15451919745409	ersetzt-1	Zughundeseil für kleine und mittlere Hunde
+15451919843713	ersetzt-1	Verstellbare, kratzfeste Outdoor-Hundeleine
+15451919974785	ersetzt-1	Kinder Keyboard mit Mikrofon, 37 Tasten
+15451920040321	ersetzt-1	Akustische 1/8 Violine mit Koffer und Zubehör
+15451920204161	ersetzt-1	Akustische 1/4 Violine mit Zubehör
+15451920269697	ersetzt-1	Akustische 3/4 Geige im Komplett-Set
+15451920368001	ersetzt-1	Pink 41-Zoll Dreadnought Akustikgitarre Cutaway
+15451920466305	ersetzt-1	Dreadnought Akustikgitarre Blau mit Zubehör
+15451920826753	ersetzt-1	Blau 38-Zoll Akustikgitarre Set
+15451920925057	ersetzt-1	Akustisches 1/4 Geigen-Set
+15451921252737	ersetzt-1	Nordisches Armband mit geometrischem Design
+15451921613185	ersetzt-1	Armband mit geometrischem Vierblatt-Klee und Zirkonia
+15451921908097	ersetzt-1	Tennis-Armband mit Zirkonia-Steinen
+15451922334081	ersetzt-1	Armreif mit Zirkonia und Gewinde-Design
+15451922661761	ersetzt-1	Florales Magnetarmband aus Rotkupfer
+15451923120513	ersetzt-1	Kupferarmband, mehrlagig, handgeknüpft
+15451923382657	ersetzt-1	Mattes Gold Sand Dreifach-Armband
+15451923710337	ersetzt-1	Armband mit Glückskatze aus Jadeit
+15451923743105	ersetzt-1	Verstellbares geflochtenes Armband
+15451923808641	ersetzt-1	Kupfer Armreif mit Zirkonia-Einlagen
+15451923841409	ersetzt-1	Pfoten-Armband 925 Silber
+15451923939713	ersetzt-1	Zirkon Armband mit Ring
+15451923972481	ersetzt-1	Minimalistisches Armreif-Set im japanisch-koreanischen Stil
+15451924005249	ersetzt-1	Titan-Stahl Armband mit Schleife
+15451924038017	ersetzt-1	Doppellagiges Kreuzstich-Armband mit Diamanten
+15451924169089	ersetzt-1	Business-Quarzuhr im Retro-Look für Herren
+15451924234625	ersetzt-1	Engine Movement Herren Quarzuhr
+15451924267393	ersetzt-1	Klassische Minimalistische Quarzuhr mit Mesh-Armband
+15451924365697	ersetzt-1	Herren Quarzuhr im Gürtel-Stil
+15451924431233	ersetzt-1	Herren Quarzuhr mit Leuchtzeigern und Stahlband
+15451924496769	ersetzt-1	Solar Taucheruhr aus Edelstahl
+15451924562305	ersetzt-1	Wasserdichte Leuchtquarz-Herrenuhr
+15451925184897	ersetzt-1	Multifunktionaler Business-Reiserucksack
+15451925381505	ersetzt-1	Casual Reise-Rucksack (Unisex)
+15451925479809	ersetzt-1	Reise- und Freizeit-Rucksack, gross
+15451925512577	ersetzt-1	Atmungsaktiver Mesh-Rucksack mit Kordelzug
+15451925578113	ersetzt-1	Militär-Stil Wanderrucksack, gross
+15451925840257	ersetzt-1	RFID-Kartenetui mit Münzfach aus PU-Leder
+15451925938561	ersetzt-1	Retro Canvas Portemonnaie und Necessaire
+15451926036865	ersetzt-1	Minimalistisches Portemonnaie mit Airtag-Chip
+15451926135169	ersetzt-1	Multifunktionales Anti-Diebstahl Kartenetui für Herren
+15451926167937	ersetzt-1	Herren Portemonnaie mit RFID-Schutz

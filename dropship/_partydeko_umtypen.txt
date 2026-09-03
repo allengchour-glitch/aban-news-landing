@@ -311,3 +311,11 @@ gid://shopify/Product/15470077051265	Butler mit Tablett mit Leucht	Kostüme→Pa
 gid://shopify/Product/15470077084033	Skittles Fruits · 14 Stück	Kostüme→Süsswaren & Esswaren
 gid://shopify/Product/15470077346177	Rabe mit Federn	Kostüme→Partydeko & Ballone
 gid://shopify/Product/15470078755201	Haarige Tarantel	Kostüme→Partydeko & Ballone
+gid://shopify/Product/15470021083521	BRUDER Bauset JCB 4CX Baggerlader mit Spielhelm	Kostüme→Spielzeug & Spiele
+gid://shopify/Product/15470028718465	BRUDER bworld Kuh	Kostüme→Spielzeug & Spiele
+gid://shopify/Product/15470032683393	bworld PKW Service Center	Kostüme→Spielzeug & Spiele
+gid://shopify/Product/15470036124033	Vidal Dino Jelly 6 sort. 11 g · 66 Stück	Kostüme→Süsswaren & Esswaren
+gid://shopify/Product/15470036517249	Einwegbecher Coffee to Go 3dl	Kostüme→Partydeko & Ballone
+gid://shopify/Product/15470037107073	Styroporflieger · 40 Stück	Kostüme→Partydeko & Ballone
+gid://shopify/Product/15470037139841	Besteckset aus Holz, 4-teilig · 50 Sets	Kostüme→Partydeko & Ballone
+gid://shopify/Product/15470072725889	Kaffee Fertig Glas · 25 Stück	Kostüme→Partydeko & Ballone
