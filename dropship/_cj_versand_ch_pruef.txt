@@ -644,3 +644,5 @@ handgeschmiedetes-kochmesser-aus-edelstahl-b41d62	-	-	-	unklar keine CJ-SKU	klin
 kuchenmesser-aus-edelstahl-schleiffrei-d991e4	-	-	-	unklar keine CJ-SKU	klinge
 handgeschmiedetes-edelstahl-spezialmesser-a0f523	-	-	-	unklar keine CJ-SKU	klinge
 alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=73	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=97	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge

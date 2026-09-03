@@ -10,7 +10,7 @@ CJ-Auftrags (LX<nr>) aus dropship/_cj_order_watch_state.json.
 Meldet nur. Liest Shopify (1 Abfrage) und die lokale Watch-Datei. Bei Fehler: eine Zeile
 «BESTELLUNGEN: unklar (…)» — ein Ausfall darf nie wie «alles erledigt» aussehen.
 """
-import json, os, sys, urllib.request, datetime as dt
+import json, os, sys, time, urllib.request, datetime as dt
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOP = "au3j0y-hq.myshopify.com"
@@ -28,11 +28,29 @@ def main():
     req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
         data=json.dumps({"query": q}).encode(),
         headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
-    try:
-        d = json.load(urllib.request.urlopen(req, timeout=30))
-        nodes = d["data"]["orders"]["nodes"]
-    except Exception as e:
-        print(f"BESTELLUNGEN: unklar (Shopify: {str(e)[:80]})"); return
+    # ⚠️ Shopifys Drosselung ist KEIN Ausfall. Am 03.09. meldete die Ampel «unklar
+    # (Shopify: 'data')», weil vier CJ-Runner und vier Hintergrundlaeufe den Punkte-Eimer
+    # leer hielten — einzeln aufgerufen antwortete dieselbe Abfrage sofort. Eine Warnzeile,
+    # die bei jedem knappen Eimer «unklar» sagt, wird nach dem dritten Mal nicht mehr
+    # gelesen; genau dann steht der echte Ausfall darin. Also warten statt aufgeben.
+    nodes, fehler = None, ""
+    for versuch in range(6):
+        try:
+            d = json.load(urllib.request.urlopen(req, timeout=30))
+        except Exception as e:
+            fehler = str(e)[:80]; time.sleep(2 + 2 * versuch); continue
+        if d.get("data"):
+            nodes = d["data"]["orders"]["nodes"]; break
+        errs = d.get("errors") or []
+        fehler = (errs[0].get("message") if errs else "keine Daten")
+        ts = (d.get("extensions") or {}).get("cost", {}).get("throttleStatus") or {}
+        if ts:
+            fehlt = 20 - ts.get("currentlyAvailable", 0)
+            time.sleep(max(2, fehlt / max(ts.get("restoreRate", 50), 1) + 1))
+        else:
+            time.sleep(2 + 2 * versuch)
+    if nodes is None:
+        print(f"BESTELLUNGEN: unklar (Shopify: {fehler})"); return
     try:
         watch = json.load(open(os.path.join(REPO, "dropship/_cj_order_watch_state.json")))
     except Exception:
