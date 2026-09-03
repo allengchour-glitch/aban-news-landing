@@ -6662,3 +6662,33 @@ Dinge und glaubt, es sei eines.**
   Farbwert («YN9223», «LDP260325331», «BN5901015A»). Dahinter gibt es bei CJ keine Ebene mehr
   (Befund 23.08.) — eine Umbenennung in «Muster 1..N» wäre eine erfundene Ordnung. Sie bleiben
   roh; der richtige Weg ist ein Variantenbild, nicht ein erfundener Name.
+
+## 🧾 «Weiter alles verbessern»: zwei Klassen gemessen, beide anders als gedacht (2026-09-03)
+- **C7 «Produktdetails doppelt» war ein FEHLALARM meines eigenen Audits.** Das Muster zählte
+  `Produktdetails` case-insensitiv — und traf damit auch den KLASSENNAMEN `class="ls-produktdetails"`,
+  21 Zeichen vor der Überschrift. Statt 4'559 sind es **1'743** (nur `<h4>Produktdetails</h4>`
+  doppelt), und davon widersprechen sich 1'594 im Inhalt («Muster: Bedruckt, Geblümt» gegen
+  «Muster: Blumen»). Elfte Fassung von «ein breites Muster ist ein Netz, kein Urteil».
+- **Und dann waren auch die 1'743 schon erledigt.** 40 von 40 Stichproben sind LIVE einfach —
+  ein anderer täglicher Wächter hat sie zwischen meinem Export (15:30) und dem Lauf (18:45)
+  bereinigt. **Eine Audit-Zahl altert dort am schnellsten, wo ein Wächter arbeitet**; wer sie
+  Stunden später als Arbeitsliste nimmt, arbeitet gegen einen Katalog, den es nicht mehr gibt.
+- ⚠️ **Der Auslöser dieser Prüfung war aber richtig:** `produktdetails_vereinen.py` liest
+  `/tmp/export.jsonl` — den TEILexport vom 30.08. Deshalb meldete es täglich «0 doppelte
+  Blöcke». Ein Werkzeug, dessen Quelle veraltet, meldet Vollzug über eine Vergangenheit.
+- **Gehärtet, bevor es lief:** Das Werkzeug schrieb `descriptionHtml` aus dem EXPORT. Zwischen
+  Export und Schreiben arbeiten andere Textläufe an denselben Texten (heute der
+  Trust-Baustein-Schreiber) — genau so hat ein Massenlauf am 15.08. bei 149 Produkten den
+  doppelten Block WIEDERBELEBT. Es liest jetzt unmittelbar vor dem Schreiben den LIVE-Text und
+  rechnet die Vereinigung auf diesem; ist er schon sauber, wird nichts geschrieben.
+- **D2 «202 gleiche Titel» ist KEIN Draft-Fall.** Die Paare tragen verschiedene SKUs und
+  Preise (CHF 15.90 gegen 35.90, 37.90 gegen 16.90) — es sind echte verschiedene Artikel, die
+  zufällig gleich heissen (Regel 20.08.). Die Reparatur wäre ein UNTERSCHEIDBARER Titel, und
+  den kann kein Automat aus den Daten ableiten, ohne etwas zu erfinden.
+- **A5: von 377 Produkten mit ausschliesslich zu kleinen Bildern haben 360 auch die LANGE
+  Kante unter 500 px** — Auffüllen hilft dort nicht, nur besseres Quellmaterial von CJ.
+  Auffüllbar sind 17. (Google flaggt das ohnehin nur für Shopping-Ads, nicht für die
+  Gratis-Einträge, aus denen die Verkäufe kommen — Befund 20.08.)
+- **Stattdessen die Ware geprüft, die im Schaufenster steht:** 219 Startseiten-Produkte in die
+  CH-Versandprüfung aufgenommen. **Ein nicht lieferbares Produkt auf der Startseite ist die
+  nächste #1016** — und die Prüfliste kannte bisher nur Klingen und Suchseiten.
