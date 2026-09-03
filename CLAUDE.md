@@ -6292,3 +6292,17 @@ Erst die ausgelieferten Seiten gescannt (Startseite, zwei Kategorien, Produkt, W
 - Gemessen und in Ordnung: Neuimporte von heute (8/8 du-Form, Faktenblock, 0 Floskeln), Shop-Suche
   («salzlampe» → Salzlampen zuerst, «rizinusöl» → 14 Treffer, Set an dritter Stelle), Startseite (die
   doppelten Hype-h3 sind Desktop-Raster + Mobil-Karussell, kein Fehler).
+- **«Kostüme ab Schweizer Lager» zeigte Tarantel, Bier-Kanüle, Jetons, HARIBO und 226 BRUDER-Traktoren.**
+  Fortura liefert die Warengruppe «Kostüme & Verkleidung» als Sammeltopf für den ganzen Fasnachts-/Party-
+  Katalog; die 31.08.-Kollektion hängt an genau diesem Typ. Regex nach Kostümwörtern war der falsche Weg
+  (450 ohne Kostümwort, davon die Hälfte echte Kostüme: Onesie, Dirndl, Bolero, Gehstock, Schminke) —
+  richtig ist, die FREMDE Ware umzutypisieren: **226 Spielzeugfahrzeuge → «Spielzeug & Spiele»** (+ Tags
+  spielzeug/spielzeug-ch-front/kinder), **49 Partydeko → «Partydeko & Ballone»**, 9 Spielzeug, 7 Esswaren
+  (HARIBO/Trolli/Bonbons). Ledger `dropship/_partydeko_umtypen.txt`. Kostüm-Zubehör (Kunstblut, Heugabel,
+  Schild, Zylinder) bleibt bewusst im Kostüm-Typ. **Eine Warengruppe des Lieferanten ist eine Behauptung,
+  keine Sortierung** — dieselbe Familie wie «ein Tag-Name ist eine Behauptung» (29.08.).
+- **`blitzversand-schweiz` (Menüpunkt «Ab Schweizer Lager · 1–2 Tage») begann mit Badeset Dino, Tarantel
+  und Plüsch Pikachu** — CREATED_DESC zeigt schlicht Forturas Neuware. Jetzt MANUAL, die 25 kuratierten
+  `blitz-front`-Artikel per `collectionReorderProducts` vorn (Halsketten, Taschen, Beauty), der Rest folgt
+  in Anlegereihenfolge. ⚠️ Eine MANUAL-Smart-Kollektion hängt neue Ware hinten an — die Reihenfolge altert
+  nicht, aber Neues rückt nie nach vorn; für diese Seite ist das gewollt.
