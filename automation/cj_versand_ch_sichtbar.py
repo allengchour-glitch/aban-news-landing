@@ -109,7 +109,8 @@ def kandidaten():
     return out
 
 def main():
-    done = set(l.split("\t")[0] for l in open(LEDGER, encoding="utf-8")) if os.path.exists(LEDGER) else set()
+    # «unklar» ist keine Quittung — beim nächsten Lauf erneut prüfen (leerer Eimer, transienter Fehler).
+    done = set(l.split("\t")[0] for l in open(LEDGER, encoding="utf-8") if "\tunklar" not in l) if os.path.exists(LEDGER) else set()
     kand = [(p, g) for p, g in kandidaten() if p["handle"] not in done]
     print(f"Kandidaten {len(kand)} (schon geprüft {len(done)}) FIX={FIX}", flush=True)
     L = open(LEDGER, "a", encoding="utf-8"); n = ok = zu = unklar = 0
