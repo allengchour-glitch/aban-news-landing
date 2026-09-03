@@ -8707,3 +8707,10 @@ gid://shopify/Product/15450833355137	CHF 15.26	2 Varianten	RGB Flammen Aroma Dif
 gid://shopify/Product/15450833387905	CHF 16.70	26 Varianten	Kurzarm-Strickpullover mit Reverskragen
 gid://shopify/Product/15450833420673	CHF 26.38	55 Varianten	Individuelle Patched Jeans für Herren
 gid://shopify/Product/15450833453441	CHF 6.02	12 Varianten	Hallux Valgus Korrektor Schiene
+gid://shopify/Product/15450833486209	CHF 11.55	72 Varianten	High-Waist Leggings für Fitness & Yoga
+gid://shopify/Product/15450833518977	CHF 5.98	6 Varianten	Cupid Herz Engel Flügel Halskette mit Zirkonia
+gid://shopify/Product/15450833551745	CHF 36.88	2 Varianten	Elektronisches Hunde-Spielzeug
+gid://shopify/Product/15450833584513	CHF 12.47	4 Varianten	Kabelgebundenes Gaming-Headset mit Heavy Bass
+gid://shopify/Product/15450833617281	CHF 25.23	7 Varianten	2-in-1 Auto Becherwärmer & Kühler
+gid://shopify/Product/15450833650049	CHF 14.18	24 Varianten	Warmer Wintermantel für Hunde
+gid://shopify/Product/15450833682817	CHF 13.59	8 Varianten	Faltbare Reise- und Sporttasche, wasserdicht
