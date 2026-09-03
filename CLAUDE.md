@@ -60,6 +60,46 @@ eine Dublette (Mützen & Schals, steht in Herbst & Übergang) und Sommerware im 
   Anfrage). Genau **eine** fiel heraus — «Angebote & Deals», meldet 351, hat **1** aktives
   Produkt. Eine stumme Antwort wirft nichts weg. 347 → 352 verlinkte Kategorien, 0 tote Links.
 
+## 🏠 «Von bissel allen Kategorien etwas» — und «Durchmesser» stand in der Küche (2026-09-03, spät)
+Betreiber: «webseite mehr tolle produkten von bissel allen kategorien etwas?». Gemessen, was
+die Startseite überhaupt zeigt: 15 Produktreihen, aber **Herren-Mode (4'702 aktiv), Kinder & Baby
+(3'681) und Haustierwelt (3'424) hatten keine einzige Karte** — drei der grössten Welten des Shops.
+- **Zwei harte Deckel, beide gemessen:** 25 Sektionen (Shopify) und `max_collections: 16` im
+  Theme-Schema der Kachelreihe. Mehr Kategorien gehen also NUR im TAUSCH, nie additiv.
+- Getauscht wurde `lux_spotlight_favs` — der Block mit **fest ins HTML getippten Preisen und
+  Bewertungszahlen** (Zeitbombe seit 30.08., altert bei jeder Preisänderung) — gegen eine echte
+  Produktreihe. Dazu zwei Reihen umgehängt (Taschen → Herren, Uhren → Haustier); beide bleiben
+  über Kachel und Menü erreichbar. **16 Reihen / 176 Karten**, 6 von 6 Abrufen 200 (die
+  Stabilitätsgrenze liegt gemessen bei ~180 Karten / ~7 MB, 31.08.).
+- Kacheln auf die Welten OHNE Reihe umgestellt: neu Smartwatches, Kopfhörer & Audio,
+  Premium Geschenke, Halloween. Jede Kachel vorher auf ein Kollektionsbild geprüft (ohne Bild
+  sieht eine Kachel aus wie ein Ladefehler, 27.08.) — `kostueme-ch-lager` fiel deshalb raus.
+
+**⚠️ Und was beim Prüfen der Ziel-Kollektionen auffiel, wiegt schwerer als die Reihen:**
+| Kategorie | Befund |
+|---|---|
+| **«Küche & Kochen»** (Menüpunkt, 2'167 aktiv) | Regel `TITLE CONTAINS "Messer"` → **78 Fremdtreffer**: Pulsmesser, Herzfrequenzmesser, Höhenmesser, Reifendruckmesser, Luftqualitätsmesser, Golf-Entfernungsmesser — und ein **«Lenkrad … 27 cm Durchmesser»**. Erstes Produkt der Kategorie war eine Smartwatch. |
+| **«Kopfhörer & Audio»** (Menüpunkt) | stand auf `PRICE_ASC`; das erste KAUFBARE Produkt war ein **Sticker «Gamer Headset»**, 13 der ersten 14 Entwürfe. |
+- **Zwölfte Fassung der Substring-Familie** (nach IPL, led-in-Leder, ski-in-Skincare,
+  auto-in-Automatik, monitor-in-Monitoring, creme-als-Farbe, gie-in-Technologie, messer-in-HEIKEL,
+  klinge-in-Klingel, abnehm-in-abnehmbar, Produktdetails-im-Klassennamen) — diesmal in einer
+  **Shopify-Smart-Regel**, wo es kein `\b` und keinen Lookbehind gibt. **Kurze Wörter, die als
+  Endung eines Fremdworts vorkommen, taugen nie als alleinige CONTAINS-Regel.**
+- Repariert in der richtigen Reihenfolge: **erst die 7 echten Küchenteile** (Messerblock,
+  Messerschärfer, Tranchiermesser, Messer-und-Scheren-Set …) **mit `kueche` getaggt**, DANN die
+  Regel verengt (Küchenmesser/Kochmesser/Santoku/Messerblock/Messerschärfer/Tranchiermesser).
+  Sonst hätte die Verengung echte Ware aus der Kategorie geworfen. 2'167 → 2'089, erste Karten
+  jetzt Pfannen und Fritteuse. Audio auf CREATED_DESC → führt mit echten Kopfhörern.
+
+**🏷️ Zwei INTERNE Namen standen als Kundentext auf der Seite.** Die grösste Reihe der Startseite
+trug die Überschrift **«Hero-Favoriten»** — der interne Kurationsname der `bestseller`-Kollektion;
+`collection.title` wird als Überschrift gerendert, also liest die Kundin unser Werkstattvokabular.
+Ebenso «Geschenke unter CHF 30 **(getaggt)**». Beide umbenannt («⭐ Unsere Bestseller»,
+«Geschenkideen unter CHF 30»), Handle unverändert (kein 404), SEO mitgezogen. Gegenprobe über
+alle 363 veröffentlichten Kollektionen: **genau diese zwei**, sonst keiner.
+**Regel: Ein Kollektionstitel ist Kundentext, kein Ablagename** — dieselbe Klasse wie
+«✨ CJ Neuheiten 2026» (11.06.), wo der Lieferantenname in einer Überschrift stand.
+
 ## 🎵 TikTok-Stand + Browser-Bedienung (2026-08-18)
 **API-Weg (in Arbeit):** App **«luxe»** (developers.tiktok.com/app/7648584035840903189) ist die richtige
 von 3 Apps — «LuxeStyle Poster» ist das KURZDRAMA-Portal (/portal/drama/, Unternehmensverifizierung),
