@@ -8815,3 +8815,9 @@ gid://shopify/Product/15450837647745	CHF 18.74	5 Varianten	Handfeger-Kehrmaschin
 gid://shopify/Product/15450837680513	CHF 12.78	18 Varianten	Baby Zweiteiler "Kleiner Duft"
 gid://shopify/Product/15450837713281	CHF 5.87	3 Varianten	Halskette «Crystal Water Drop»
 gid://shopify/Product/15450837746049	CHF 5.81	34 Varianten	USB-Ladegerät mit 4 Ports und Quick Charge 3.0
+gid://shopify/Product/15450837778817	CHF 9.76	54 Varianten	Polo-Shirt gestreift mit Reverskragen
+gid://shopify/Product/15450837811585	CHF 21.09	1 Varianten	LED Quallen-Aquarium-Lampe
+gid://shopify/Product/15450837844353	CHF 25.18	2 Varianten	Elegante Quarzuhr für Herren
+gid://shopify/Product/15450837909889	CHF 13.80	27 Varianten	Beleuchtetes LED-Bild mit Sonnenschein-Effekt
+gid://shopify/Product/15450837975425	CHF 23.63	18 Varianten	Hängematte mit Moskitonetz, Pop-up
+gid://shopify/Product/15450838008193	CHF 12.46	1 Varianten	Zirkon-Perlenarmband mit Blumen-Design
