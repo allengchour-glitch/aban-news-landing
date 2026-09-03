@@ -9555,3 +9555,5 @@ gid://shopify/Product/15451928592769	CHF 16.98	24 Varianten	V-Ausschnitt Pullove
 gid://shopify/Product/15451928723841	CHF 22.13	18 Varianten	Leinenhemd für Herren – Langarm, Unifarben
 gid://shopify/Product/15451928920449	CHF 28.38	12 Varianten	Atmungsaktives Sportshirt für Herren
 gid://shopify/Product/15451929117057	CHF 19.79	24 Varianten	Casual Retro Hemd für Herren
+gid://shopify/Product/15451929248129	CHF 16.20	20 Varianten	Baumwoll Langarm Hemdjacke
+gid://shopify/Product/15451929543041	CHF 15.37	10 Varianten	Herren Strick-Cardigan mit Lochmuster
