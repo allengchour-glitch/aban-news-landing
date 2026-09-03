@@ -17,3 +17,7 @@ alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 
 aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=25	klinge
 messer-mit-schnellwechselklingen-610100	2602250201101610500	-	-	unklar 200 Success rest=49	klinge
 outdoor-taschenmesser-mit-holzgriff-632400	2601230136221632800	-	-	unklar 200 Success rest=29	klinge
+damast-kochmesser-set-602200	2601180754001602500	1	9.00	ok	klinge
+damast-kochmesser-fur-fleisch-gemuse-638100	2601170323291638400	-	-	unklar 200 Success rest=33	klinge
+damast-kuchenmesser-set-619600	2601161014021610100	1	15.54	ok	klinge
+damast-kuchenmesser-set-mit-g10-griffen-630100	2601160847581630300	-	-	unklar 200 Success rest=37	klinge
