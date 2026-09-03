@@ -161,7 +161,7 @@ def quelle_bauen():
     aus, cur = [], None
     while True:
         d = gql('query($c:String){collections(first:100,after:$c){pageInfo{hasNextPage endCursor}'
-                ' nodes{handle title productsCount{count}'
+                ' nodes{id handle title productsCount{count}'
                 ' p:publishedOnPublication(publicationId:"gid://shopify/Publication/301970915713")}}}',
                 {"c": cur})
         pg = (d.get("data") or {}).get("collections")
@@ -169,7 +169,8 @@ def quelle_bauen():
             raise SystemExit("Quelle nicht baubar — Shopify blieb stumm (KEIN leeres Verzeichnis schreiben)")
         for n in pg["nodes"]:
             if n["p"]:
-                aus.append([n["handle"], n["title"], n["productsCount"]["count"], None])
+                aus.append([n["handle"], n["title"], n["productsCount"]["count"],
+                            n["id"].split("/")[-1]])
         if not pg["pageInfo"]["hasNextPage"]:
             break
         cur = pg["pageInfo"]["endCursor"]
@@ -177,13 +178,64 @@ def quelle_bauen():
     return aus
 
 
+MINDEST_AKTIV = int(os.environ.get("MINDEST_AKTIV", "3"))
+
+
+def aktive_filtern(koll):
+    """Verlinkt nur, was fuer Kundinnen wirklich etwas hergibt.
+
+    ⚠️ `productsCount` zaehlt ENTWUERFE MIT — «Angebote & Deals» meldet 351 und hat
+    GENAU EIN aktives Produkt (die konstruierten Streichpreise wurden am 24.08.
+    entfernt, die Smart-Regel IS_PRICE_REDUCED findet seither fast nichts). Eine
+    Kachel oder ein Verzeichniseintrag auf so eine Kollektion ist eine Sackgasse
+    mit Beschriftung. Gezaehlt wird deshalb mit `status:active` je Kollektion,
+    gebuendelt ueber Aliase (20 je Anfrage, ~1 Punkt pro Zaehler).
+    Die Kollektion bleibt veroeffentlicht — sie heilt sich selbst, sobald es
+    wieder Ware gibt; falsch waere nur, sie zu BEWERBEN.
+    """
+    mit_id = [k for k in koll if len(k) > 3 and k[3]]
+    if not mit_id:
+        return koll, []
+    aktiv = {}
+    for i in range(0, len(mit_id), 20):
+        teil = mit_id[i:i + 20]
+        felder = " ".join(
+            f'a{j}: productsCount(query: "collection_id:{k[3]} AND status:active"){{count}}'
+            for j, k in enumerate(teil))
+        d = gql("query{" + felder + "}")
+        dat = d.get("data") or {}
+        if not dat:
+            return koll, []          # stumme Antwort ist kein Befund → nichts wegwerfen
+        for j, k in enumerate(teil):
+            v = dat.get(f"a{j}")
+            if v is not None:
+                aktiv[k[0]] = v["count"]
+    behalten = [k for k in koll if aktiv.get(k[0], MINDEST_AKTIV) >= MINDEST_AKTIV]
+    duenn = [(k[0], k[1], aktiv[k[0]]) for k in koll
+             if k[0] in aktiv and aktiv[k[0]] < MINDEST_AKTIV]
+    return behalten, duenn
+
+
 def main():
-    if not os.path.exists(QUELLE):
+    # ⚠️ Die Quelle wird bei JEDEM Lauf live neu gebaut. Bis 03.09. galt
+    # «nur bauen, wenn die Datei fehlt» — /tmp ueberlebt aber Container-Neustarts,
+    # und der Cache stand drei Tage still: der Lauf meldete taeglich «aktualisiert»
+    # und schrieb dabei den Stand vom 31.08. zurueck (16 neue Kategorien fehlten).
+    # Ein Cache ohne Verfallsdatum ist ein Zeugnis ueber die Vergangenheit.
+    # Nur ein ausdruecklich per Env gesetzter QUELLE-Pfad wird noch gelesen.
+    if os.environ.get("QUELLE"):
+        if not os.path.exists(QUELLE):
+            quelle_bauen()
+    else:
         quelle_bauen()
     koll = [k for k in json.load(open(QUELLE))
             if k[0] not in RAUS and not RAUS_MUSTER.search(k[1])]
     koll, weg = entdoppeln(koll)
     print(f"{len(koll)} Kategorien · {len(weg)} Doppelgänger zusammengelegt")
+    koll, duenn = aktive_filtern(koll)
+    if duenn:
+        print(f"⚠️ {len(duenn)} ohne kaufbare Ware — NICHT verlinkt: "
+              + ", ".join(f"{t} ({n})" for _, t, n in duenn[:12]))
 
     gruppen = {}
     for h, t, n, _ in koll:
