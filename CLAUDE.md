@@ -6323,3 +6323,12 @@ Erst die ausgelieferten Seiten gescannt (Startseite, zwei Kategorien, Produkt, W
   10'000 Texte ist die 15.08.-Klasse (Massen-Schreiber) plus die Imperativ-Falle von heute; gemacht wurden
   nur die zwei Such-Landeseiten mit Sie-Anrede (Aromadiffusor, Nackenkissen), per exakter Ersetzung.
   Wer das angeht: chargenweise, elementweise, mit `frage-statt-imperativ`-Validierung und Stichprobe lesen.
+- **75 siezende Kollektionstexte auf du — am Ende DETERMINISTISCH, nicht per Modell.** gpt-oss lieferte für 70
+  von 75 Absätzen leeren `content` (Reasoning frisst die Antwort) und machte aus den 5 übrigen Fragen
+  («Entdeckst du unsere Kollektion»). Die Texte sind formelhaft («Entdecken Sie … hier finden Sie … Profitieren
+  Sie …»), also Regeln: Indikativ ZUERST (hier finden Sie → findest du), Imperative nur am Satzanfang oder
+  nach «und/oder/,» (Entdecken Sie → Entdecke), Possessive nach Kasus (Ihre→deine, Ihrem→deinem), Modalketten
+  («damit Sie … können» → «damit du … kannst»). **Die Lektüre aller 75 fand 20 Grammatikfehler**, die keine
+  Prüfung sieht («investierst können», «Stell dich dein Outfit», «und wirst du zum Designer», «haltst») —
+  jeder als Regel nachgezogen, dann erst geschrieben. Werkzeug `automation/kollektionstexte_du_form.py`
+  (Ergebnis in Datei, WRITE=1 schreibt nur, wenn live == gelesen). «Für Sie» als Kollektionsname bleibt.
