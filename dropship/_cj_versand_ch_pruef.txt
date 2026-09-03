@@ -592,3 +592,14 @@ doppeltes-kuchenmesser-dragon-phoenix-mandarin-623700	2407140148031623900	0	-	KE
 knochenentfernungsschwert-29-cm-793216	1402841934380273664	0	-	KEINE CH-Option → DRAFT	klinge
 knochenmesser-825280	1402830316946722816	0	-	KEINE CH-Option → DRAFT	klinge
 knochenmesser-fur-die-kuche-458432	1402829653462355968	0	-	KEINE CH-Option → DRAFT	klinge
+tiger-bone-kuchenmesser-28-5-cm-schnittwerkzeu-528000	1402820818131619840	0	-	KEINE CH-Option → DRAFT	klinge
+kuchenmesser-mit-klinge-und-griff-aus-rosenhol-247744	1402820165313368064	0	-	KEINE CH-Option → DRAFT	klinge
+kuchenmesser-mit-wasserhahn-988608	1402819425605914624	0	-	KEINE CH-Option → DRAFT	klinge
+boning-messer-aus-rosenholz-35-cm-315776	1402818022170824704	0	-	KEINE CH-Option → DRAFT	klinge
+frucht-und-entbeinmesser-27-5-cm-rosenholzgrif-094976	1402816857433575424	0	-	KEINE CH-Option → DRAFT	klinge
+kuchenmesser-aus-rostfreiem-stahl-605600	2406200355321605800	0	-	KEINE CH-Option → DRAFT	klinge
+drachen-tiger-knochenmesser-mit-eisriss-klinge-231808	1402823343027130368	0	-	KEINE CH-Option → DRAFT	klinge
+knochenmesser-mit-palisandergriff-663104	1402814218394275840	0	-	KEINE CH-Option → DRAFT	klinge
+metzgermesser-zum-entbeinen-991168	1402817077567426560	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-kuchenmesser-618400	2406180628091618600	1	18.85	ok	klinge
+kuchenmesser-chiron-knochen-klein-046080	1402811952018886656	0	-	KEINE CH-Option → DRAFT	klinge
