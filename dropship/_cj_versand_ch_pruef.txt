@@ -589,3 +589,4 @@ gt0042-faltmesser-fur-outdoor-camping-607700	2507170619501608800	0	-	KEINE CH-Op
 outdoor-klappmesser-mit-stahlgriff-603200	2507160941261603600	0	-	KEINE CH-Option → DRAFT	klinge
 santoku-messer-mit-achteckigem-griff-7-zoll-629100	2407150640581629300	0	-	KEINE CH-Option → DRAFT	klinge
 doppeltes-kuchenmesser-dragon-phoenix-mandarin-623700	2407140148031623900	0	-	KEINE CH-Option → DRAFT	klinge
+knochenentfernungsschwert-29-cm-793216	1402841934380273664	0	-	KEINE CH-Option → DRAFT	klinge
