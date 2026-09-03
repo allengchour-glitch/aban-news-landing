@@ -6199,3 +6199,9 @@ Dazu fehlte am Zeilenende das `|` vor `Nagelpilz`. Beides behoben; der Lauf nahm
   das EMS-Gerät ein flaches Schnittmuster → je das saubere Foto nach vorn (Bildsatz vorher ganz
   angesehen, Lehre 21.08.); die neu aufgenommene Leder-Handytasche war eine Zwei-Bild-Collage mit
   «45°Side»-Beschriftung → `hype-bild-schwach`, aus der Reihe. 11 der 12 Neuen bleiben.
+- **Und die Reihe zeigte die Kuratierung gar nicht:** `hype-jetzt` stand auf CREATED_DESC — sortiert nach
+  dem ANLEGEDATUM des Produkts, nicht nach dem Tag der Aufnahme. Ein heute kuratiertes Produkt vom Mai
+  landete auf Position 60; die Startseite zeigt sechs. Jetzt MANUAL, nach `hype-seit` absteigend
+  (`reihe_ordnen()`, in beiden Laufarten). Live: die sechs Neuen stehen vorn.
+- Die Warenart-Wache verglich nur Kandidaten untereinander — ein zweites «Figurformendes Kleid»
+  kam neben das erste. Jetzt zählt die Live-Reihe mit; das Cape-Kleid wieder raus.
