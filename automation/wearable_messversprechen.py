@@ -68,11 +68,15 @@ def titel_saeubern(t):
     n = re.sub(r'\s*[,&]\s*(?=[,&])', '', n)              # doppelte Trenner
     # ⚠️ OHNE das \s* vor dem Trenner bleibt «mit& Herzfrequenz» stehen: das Leerzeichen
     # zwischen «mit» und «&» ist beim Herausschneiden schon verschwunden.
-    n = re.sub(r'\bmit\s*(?:und|&|,)+\s*', 'mit ', n, flags=re.I)
+    # ⚠️ 03.09.: «für» wurde vergessen — «Smartwatch für Blutdruck- & Sauerstoffmessung»
+    # ergab «Smartwatch für & Sauerstoffmessung». Ein halber Titel ist schlimmer als ein
+    # langer. Deshalb ALLE Verbindungswörter, die vor der gestrichenen Stelle stehen können.
+    n = re.sub(r'\b(mit|für|fuer|zur|zum|inkl\.?|inklusive)\s*(?:und|&|,|-)+\s*',
+               lambda m: m.group(1) + ' ', n, flags=re.I)
     n = re.sub(r'\s*(?:und|&)\s*(?=[,.]|$)', '', n, flags=re.I)
     n = re.sub(r'^\s*[,&·–-]+\s*|\s*[,&·–-]+\s*$', '', n)
     n = re.sub(r'\s{2,}', ' ', n).strip()
-    n = re.sub(r'\bmit\s*$', '', n).strip()               # «… mit» ohne Objekt
+    n = re.sub(r'\b(?:mit|für|fuer|zur|zum|und|inkl\.?)\s*$', '', n, flags=re.I).strip()
     # Auffangnetz: bleibt zu wenig übrig, lieber den alten Titel behalten als einen leeren
     return n if len(n) >= 8 else t
 

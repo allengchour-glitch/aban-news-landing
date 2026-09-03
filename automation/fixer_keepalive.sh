@@ -656,6 +656,18 @@ while true; do
       echo "$(date -u +%H:%M) wahlversprechen geprüft"
     fi
   fi
+  # Messversprechen an Wearables (Blutdruck/EKG/Blutzucker). Der Waechter existierte seit dem
+  # 21.08., stand aber in KEINER Startliste und ist nie gelaufen — waehrenddessen hat der Grind
+  # 104 neue Produkte mit genau diesen Aussagen angelegt, drei davon mit BLUTZUCKER. Das ist die
+  # Klasse, bei der ein Irrtum gesundheitlich zaehlt (Lehre 11.08.). «Wer startet DICH neu?»
+  WM=/tmp/wearable_mess.log
+  if [ -f "$REPO/automation/wearable_messversprechen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$WM" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && QUELLE=/tmp/katalog_full.jsonl CAP=200 setsid python3 automation/wearable_messversprechen.py >> "$WM" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) wearable_messversprechen geprüft"
+    fi
+  fi
   BD=/tmp/bilddubletten.log
   if [ -f "$REPO/automation/bilddubletten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))
