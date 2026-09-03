@@ -9523,3 +9523,29 @@ gid://shopify/Product/15451925938561	CHF 10.43	1 Varianten	Retro Canvas Portemon
 gid://shopify/Product/15451926036865	CHF 15.83	1 Varianten	Minimalistisches Portemonnaie mit Airtag-Chip
 gid://shopify/Product/15451926135169	CHF 10.53	1 Varianten	Multifunktionales Anti-Diebstahl Kartenetui für He
 gid://shopify/Product/15451926167937	CHF 16.66	1 Varianten	Herren Portemonnaie mit RFID-Schutz
+gid://shopify/Product/15451926233473	CHF 17.82	1 Varianten	Slim Wallet mit RFID-Schutz und Kartenautomatik
+gid://shopify/Product/15451926331777	CHF 11.51	15 Varianten	Drapiertes V-Neck Kleid mit Textur
+gid://shopify/Product/15451926397313	CHF 17.20	20 Varianten	Ärmelloses A-Linien Kleid mit Schleifendetails
+gid://shopify/Product/15451926462849	CHF 24.41	7 Varianten	Elegantes Jeanskleid mit Knopfleiste
+gid://shopify/Product/15451926561153	CHF 19.18	3 Varianten	Gestreiftes StrickMaxikleid für Damen
+gid://shopify/Product/15451926593921	CHF 21.73	10 Varianten	Elegantes Abendkleid mit Stickereien
+gid://shopify/Product/15451926626689	CHF 13.28	31 Varianten	Off-Shoulder Bodycon Minikleid mit Fledermausärmel
+gid://shopify/Product/15451926692225	CHF 11.57	15 Varianten	Elegantes Satin-Patchwork Slip-Kleid
+gid://shopify/Product/15451926724993	CHF 18.54	40 Varianten	Chiffonkleid mit Volants und Taillengürtel
+gid://shopify/Product/15451926757761	CHF 12.66	10 Varianten	Leoparden-Kleid mit V-Ausschnitt
+gid://shopify/Product/15451926823297	CHF 16.44	20 Varianten	Französisches V-Neck Kleid mit Taillengürtel
+gid://shopify/Product/15451926856065	CHF 46.90	3 Varianten	Lagenkleid mit Spitze in Misty Blue
+gid://shopify/Product/15451926921601	CHF 14.67	6 Varianten	Eleganter ärmelloser Minirock für Damen
+gid://shopify/Product/15451926954369	CHF 21.51	12 Varianten	Neckholder-Plisseekleid mit V-Ausschnitt
+gid://shopify/Product/15451927085441	CHF 15.33	4 Varianten	Luftiges Chiffon-Kleid mit Plisseerock
+gid://shopify/Product/15451927183745	CHF 16.96	3 Varianten	Französisches Chic Bienen-Stickerei Volant-Kleid
+gid://shopify/Product/15451927249281	CHF 14.29	4 Varianten	Halter V-Ausschnitt Rüschenkleid
+gid://shopify/Product/15451927314817	CHF 15.33	35 Varianten	Damen A-Linien Freizeitkleid aus Baumwoll-Leinen
+gid://shopify/Product/15451927380353	CHF 24.79	4 Varianten	Schwarz-weisses Colorblock Trägerkleid
+gid://shopify/Product/15451927413121	CHF 42.60	18 Varianten	Eleganter Jupe-Anzug im Business-Stil
+gid://shopify/Product/15451927445889	CHF 16.59	15 Varianten	Elegantes Mesh-Panel Maxikleid mit Rückenausschnit
+gid://shopify/Product/15451927609729	CHF 12.68	5 Varianten	Strickhemd mit Kubakragen und Lochmuster
+gid://shopify/Product/15451927773569	CHF 17.05	17 Varianten	Leinenmisch-Hemd für Herren
+gid://shopify/Product/15451927839105	CHF 13.07	30 Varianten	Herren Corduroy Hemd-Jacke mit Brusttasche
+gid://shopify/Product/15451927871873	CHF 13.02	48 Varianten	Herren Sommer Hemd Kurzarm Gestreift Floral
+gid://shopify/Product/15451927904641	CHF 12.58	99 Varianten	Herren Langarmshirt mit Print

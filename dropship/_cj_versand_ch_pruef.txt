@@ -241,3 +241,15 @@ multifunktionales-klappmesser-fur-outdoor-haus-619600	2411260839431619800	1	11.6
 7-teiliges-kuchenmesser-set-aus-edelstahl-606400	2411130809121606600	1	26.98	ok	klinge
 caba-survival-messer-bk18-bk19-607900	2411120816041608100	1	15.87	ok	klinge
 fleischermesser-mit-hoher-harte-fur-camping-623000	2410190820391623200	1	12.74	ok	klinge
+damast-stahl-kochmesser-mit-edelholzgriff-610700	2410111130331610900	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-kochmesser-verschiedene-ausfuhrung-616900	2410110746421617500	0	-	KEINE CH-Option → DRAFT	klinge
+scharfes-mehrzweckmesser-fur-kuche-outdoor-606600	2501100219071606800	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktions-campingmesser-mit-geschenkbox-954560	1796099976997646336	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-kochmesser-tang-dao-476736	1790302124803362816	1	19.19	ok	klinge
+drachen-messer-gezackte-klinge-fur-holz-knoche-323392	1790300765014204416	1	20.64	ok	klinge
+garten-veredelungsmesser-aus-geschmiedetem-sta-321856	1790300424654819328	1	10.42	ok	klinge
+geschmiedetes-kuchenmesser-edelstahl-mangan-ko-342912	1790298920858423296	1	21.46	ok	klinge
+handgeschmiedetes-ausbeinmesser-mit-hammerschl-250176	1790295769044496384	1	14.07	ok	klinge
+handgeschmiedetes-ausbeinmesser-382400	1790289265973268480	1	13.18	ok	klinge
+handgeschmiedetes-kuchenmesser-mit-holzgriff-965696	1790279588455657472	1	19.75	ok	klinge
+geschmiedetes-haushalts-kuchenmesser-683200	1790272794425569280	0	-	KEINE CH-Option → DRAFT	klinge
