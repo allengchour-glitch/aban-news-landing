@@ -664,7 +664,7 @@ while true; do
   if [ -f "$REPO/automation/wearable_messversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WM" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && QUELLE=/tmp/katalog_full.jsonl CAP=200 setsid python3 automation/wearable_messversprechen.py >> "$WM" 2>&1 9>&- & )
+      ( cd "$REPO" && QUELLE=live CAP=200 setsid python3 automation/wearable_messversprechen.py >> "$WM" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) wearable_messversprechen geprüft"
     fi
   fi

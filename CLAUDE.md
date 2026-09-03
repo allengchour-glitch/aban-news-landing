@@ -1,5 +1,65 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🩺 «104 bereinigt, 0 übrig» galt nur für Wörter, die das Muster kannte (2026-09-03, abends)
+Beim Ansehen der neu ins Menü gehobenen Geschenk-Kategorie fiel eine Produkt-URL auf:
+`smartwatch-mit-herzfrequenz-**blutdruck**-schlaftr-102528`. Nachgemessen über alle 52'043
+aktiven Produkte: **35 Treffer** — und drei getrennte Fehler dahinter, jeder aus dem Gedächtnis
+bekannt, jeder in neuer Verkleidung:
+1. **`uhr\b` traf «Sportuhr» NICHT.** `TRAEGER` in `wearable_messversprechen.py` verankerte am
+   ANFANG des Wortes; im Deutschen steht dort aber ein Buchstabe. Acht «Sportuhren» trugen
+   deshalb weiter Blutdruck-Aussagen im Text — der Lauf vom Vortag hat sie nie gesehen.
+   **Zweite Fassung der Klingen-Lehre (28.08.): Bei deutschen Zusammensetzungen gehört die
+   Wortgrenze ans ENDE.** Jetzt `[\wäöüß]*(uhr|watch)(?![\wäöüß])`, in beide Richtungen
+   getestet (10 Treffer, 6 Gegenfälle). ⚠️ Die Lockerung trifft nun auch Wand-/Kuckucks-/Sanduhr —
+   folgenlos, weil der Lauf ZUSÄTZLICH ein Messwort verlangt; das ist die Gegenrichtung.
+2. **Die Quelle war ein Export.** `QUELLE=/tmp/katalog_full.jsonl` — drei Tage alt, und alles
+   danach Importierte unsichtbar. Das Werkzeug baut die Kandidatenliste jetzt LIVE
+   (`QUELLE=live`, Suche nach den Messwörtern statt ganzer Katalog); der Aufseher ruft es so auf.
+   **Dritte Fassung derselben Woche** nach `produktdetails_vereinen.py` und dem Verzeichnis-Cache.
+3. **⛔ Und der eigene Schaden: 19 Produktseiten zeigten live ein Fragment.** Die Textregel
+   strich «Blutdruckmessung» aus «Herzfrequenz- **und** Blutdruckmessung» und liess
+   **«Unterstützt Herzfrequenz- und»** stehen — das Grundwort ging mit dem gestrichenen Teil.
+   Genau der Fehler, gegen den der Docstring des Werkzeugs seit dem 21.08. warnt («ein halber
+   Satz ist schlimmer als ein fehlender»), nur eine Ebene tiefer: nicht der SATZ war das
+   Problem, sondern die **deutsche Bindestrich-Koppelung**. Die Regel löst sie jetzt in EINEM
+   Schritt auf (`X- und Y<Kopf>` → `X<Kopf>`, beide Richtungen), dazu ein Auffangnetz am
+   Segment-Ende. 7 Testfälle inkl. Kontrollfall, 19 Bestandsseiten repariert, Gegenprobe 0.
+- **Eine falsche Quittung war mit im Spiel:** «Smart Business Armband mit Herz- und
+  Blutdruckmesser» stand als `bereinigt` im Ledger und trug den Blutdruck weiter im TITEL.
+  Das Werkzeug schreibt jetzt `titel-offen` statt `bereinigt`, wenn die Aussage im neuen Titel
+  noch steht — eine falsche Quittung überspringt den Fall für immer.
+- **34 Handles nachgezogen** (je mit 301, live geprüft): `e600-smartwatch-zur-blutzuckermessung`,
+  `e530-…-ekg-und-blutzucker-messung`, `laser-ekg-blutdruck-…`. Übrig bleibt **einer**, zu Recht:
+  `mountain-ekg-kurzarm-shirt` — ein Herzschlag-Muster auf Stoff.
+- **Die Lehre über alle drei: eine Klassenzahl gilt nur für die Form, mit der man gesucht hat.**
+  «0 übrig» hiess: 0 übrig unter den Wörtern, die mein Muster kannte, im Katalog von vorgestern.
+
+## 🗂️ «Sale» war ein Preisband — und das Verzeichnis schrieb seit drei Tagen den 31.08. zurück (2026-09-03)
+Betreiber: «kategorien und dann bei mehr verbessern». Der Sammeltopf **«Sale & Mehr»** trug ein
+falsches Etikett: Ziel ist `unter-chf-25` («Unter CHF 25 — Impulse-Käufe»), ein PREISBAND ohne
+jeden Rabatt — seit dem 24.08. gibt es im ganzen Shop **einen** Streichpreis. Daneben lagen darin
+eine Dublette (Mützen & Schals, steht in Herbst & Übergang) und Sommerware im September.
+- Neu **«🎁 Geschenke & Mehr»**: die vier Preisbänder (bis 30 / unter 50 / unter 100 / Mitbringsel
+  unter 20), Premium ab 80, Geschenke für Sie/Kinder, Sets & Bundles — **alle vier Bänder waren
+  bisher über KEINEN Menülink erreichbar**, obwohl sie die brauchbarste Navigation des Shops sind.
+  «Sale» heisst jetzt «Preis-Hits unter CHF 25». Menü 128 → 142 Punkte (nachgezählt).
+- **Ein Menülink zeigte auf die dünne Schwester:** «Nails & Nagelstudio» → `nagelstudio`
+  **120 aktiv**, während `naegel-manikuere` **1'038** hat. Dieselbe Klasse wie die
+  Startseiten-Kachel auf «Angebote & Deals» (29.08.). Umgehängt; dazu Make-up (728) und
+  Hautpflege & Skincare (705), Aufbewahrung (2'700), Kissen & Wohntextilien (1'958),
+  Küchenhelfer (1'967), Ladegeräte & Powerbanks (749), Rucksäcke (1'627).
+- ⚠️ Jedes Ziel vorher **auf aktive Ware gemessen** (`collection_id:<id> AND status:active`, nie
+  `productsCount` — der zählt Entwürfe) und live auf 200 geprüft.
+- **`kategorien_verzeichnis.py` las `/tmp/kollektionen.json` und baute die Quelle NUR, wenn die
+  Datei FEHLT.** /tmp überlebt die stündlichen Container-Neustarts — der Cache stand seit dem
+  31.08. still, und der tägliche Lauf meldete «Seite aktualisiert», während er den alten Stand
+  zurückschrieb. 16 neue Kategorien fehlten. Die Quelle wird jetzt bei JEDEM Lauf live gebaut.
+  **Ein Cache ohne Verfallsdatum ist ein Zeugnis über die Vergangenheit** — dieselbe Familie wie
+  «ein Log ist ein Zeugnis über den Code, der LIEF».
+- Neu `aktive_filtern()`: verlinkt nur Kategorien mit kaufbarer Ware (Aliase, 20 Zähler je
+  Anfrage). Genau **eine** fiel heraus — «Angebote & Deals», meldet 351, hat **1** aktives
+  Produkt. Eine stumme Antwort wirft nichts weg. 347 → 352 verlinkte Kategorien, 0 tote Links.
+
 ## 🎵 TikTok-Stand + Browser-Bedienung (2026-08-18)
 **API-Weg (in Arbeit):** App **«luxe»** (developers.tiktok.com/app/7648584035840903189) ist die richtige
 von 3 Apps — «LuxeStyle Poster» ist das KURZDRAMA-Portal (/portal/drama/, Unternehmensverifizierung),

@@ -35,8 +35,12 @@ CAP   = int(os.environ.get('CAP', '200'))
 QUELLE = os.environ.get('QUELLE', '/tmp/wearable_export.jsonl')
 LEDGER = 'dropship/_wearable_mess.txt'
 
-TRAEGER  = re.compile(r'\b(smartwatch|smart\s*watch|armband|fitness[- ]?tracker|fitnessuhr|'
-                      r'smart[- ]?ring|uhr\b|watch\b|wearable)', re.I)
+# ⚠️ Die Wortgrenze gehoert ans ENDE, nie an den Anfang: `uhr\b` traf «Sportuhr»,
+# «Herrenuhr», «Damenuhr» und «Taucheruhr» NICHT — im Deutschen steht vor dem Grundwort
+# ein Buchstabe. Genau diese Falle hat am 28.08. die Klingenregel an fast jeder Klinge
+# vorbeilaufen lassen; hier kostete sie am 03.09. einen uebersehenen Blutdruck-Titel.
+TRAEGER  = re.compile(r'(?<![\wäöüß])(smartwatch|smart\s*watch|armband|fitness[- ]?tracker|'
+                      r'smart[- ]?ring|wearable)|[\wäöüß]*(uhr|watch)(?![\wäöüß])', re.I)
 ZUBEHOER = re.compile(r'\b(hülle|huelle|schutzfolie|displayschutz|armband[- ]?ersatz|ersatzarmband|'
                       r'ladekabel|ladegerät|ladestation|halterung|schutzglas|panzerglas)\b', re.I)
 KRITISCH = re.compile(r'blutdruck|blutzucker|glukose|\bEKG\b|elektrokardiogramm|ecg\b', re.I)
@@ -104,11 +108,24 @@ def saeubere(text):
         s = re.sub(r',\s*(?:Blutdruck|EKG|Blutzucker|Elektrokardiogramm)(?=\s*[,.;）)]|\s+(?:und|sowie)\b)', '', s, flags=re.I)
         s = re.sub(r'\b(?:Blutdruck|EKG|Blutzucker|Elektrokardiogramm)\s*,\s*', '', s, flags=re.I)
         s = re.sub(r'\s+(?:und|sowie)\s+(?:Blutdruck|EKG|Blutzucker)(?=\s*[.,;）)]|$)', '', s, flags=re.I)
+        # ⚠️ ZUERST die deutsche Bindestrich-Koppelung, sonst bleibt der Kopf haengen.
+        # «Herzfrequenz- und Blutdruckmessung» ergab am 02.09. auf 19 Produktseiten
+        # das Fragment «Unterstuetzt Herzfrequenz- und» — der zweite Teil wurde
+        # gestrichen, das Grundwort ging mit. In EINEM Schritt wird die Koppelung
+        # aufgeloest und das Grundwort an den ersten Teil geschrieben.
+        KOPF = r'(?:messung|überwachung|ueberwachung|funktion|analyse|sensor|tracking|monitor(?:ing)?)'
+        s = re.sub(r'([A-Za-zÄÖÜäöüß]+)-\s*(?:und|oder|&amp;|&)\s*(?:Blutdruck|Blutzucker|EKG|Elektrokardiogramm)[- ]?'
+                   + KOPF + r'\b', r'\1messung', s, flags=re.I)
+        s = re.sub(r'(?:Blutdruck|Blutzucker|EKG|Elektrokardiogramm)-\s*(?:und|oder|&amp;|&)\s*([A-Za-zÄÖÜäöüß]+[- ]?'
+                   + KOPF + r')\b', r'\1', s, flags=re.I)
         s = re.sub(r'\b(?:Blutdruck|Blutzucker|EKG)[- ]?(?:messung|überwachung|funktion|analyse|sensor)\b\s*,?\s*', '', s, flags=re.I)
         s = re.sub(r'\bEKG\+PPG\b', 'PPG', s)
         s = re.sub(r',\s*,', ',', s)
         s = re.sub(r'\s{2,}', ' ', s)
         s = re.sub(r'\s+([,.;])', r'\1', s)
+        # Auffangnetz: bleibt trotzdem eine Koppelung ohne zweiten Teil stehen,
+        # wird das Grundwort angehaengt statt ein Fragment auszuliefern.
+        s = re.sub(r'([A-Za-zÄÖÜäöüß]+)-\s*(?:und|oder|&amp;|&)\s*$', r'\1messung', s)
         return s
 
     # HTML-Blöcke einzeln behandeln, damit Tags heil bleiben
@@ -134,11 +151,53 @@ def saeubere(text):
     t = re.sub(r'\s{2,}', ' ', t)
     return t
 
+ROH = '/tmp/wearable_live.jsonl'
+
+Q_LIVE = ('query($q:String!,$c:String){products(first:100,after:$c,query:$q){'
+          ' pageInfo{hasNextPage endCursor} nodes{id title descriptionHtml}}}')
+
+
+def quelle_live():
+    """Baut die Quelle LIVE aus dem Shop statt aus einem Export.
+
+    Der Standardpfad /tmp/wearable_export.jsonl ist ein Wipe-/Snapshot-Opfer und war
+    am 03.09. drei Tage alt: der Lauf vom Vortag hat 104 Titel bereinigt und trotzdem
+    drei uebersehen, weil sie NACH dem Export importiert wurden. Ein Werkzeug, dessen
+    Quelle veraltet, meldet Vollzug ueber eine Vergangenheit. Gesucht wird direkt nach
+    den Messwoertern (Shopify durchsucht Titel UND Text) — enger als der ganze Katalog
+    und genau die Klasse.
+    """
+    global QUELLE
+    QUELLE = ROH
+    gesehen = set()
+    with open(ROH, 'w', encoding='utf-8') as raus:
+        for begriff in ('blutdruck', 'blutzucker', 'glukose', 'EKG', 'elektrokardiogramm'):
+            cur = None
+            while True:
+                r = gql(Q_LIVE, {'q': 'status:active AND ' + begriff, 'c': cur})
+                pg = (r.get('data') or {}).get('products')
+                if not pg:
+                    break                      # stumme Antwort ist kein Befund
+                for n in pg['nodes']:
+                    if n['id'] in gesehen:
+                        continue
+                    gesehen.add(n['id'])
+                    raus.write(json.dumps(n, ensure_ascii=False) + '\n')
+                if not pg['pageInfo']['hasNextPage']:
+                    break
+                cur = pg['pageInfo']['endCursor']
+                time.sleep(0.3)
+            time.sleep(0.3)
+    print('Quelle live gebaut: %d Kandidaten' % len(gesehen))
+
+
 def main():
     fertig = set()
     if os.path.exists(LEDGER):
         fertig = {l.split('\t')[0] for l in open(LEDGER, encoding='utf-8') if l.strip()}
 
+    if QUELLE == 'live' or not os.path.exists(QUELLE):
+        quelle_live()                       # kein/kein frischer Export -> LIVE lesen
     kand = []
     for line in open(QUELLE, encoding='utf-8'):
         try: o = json.loads(line)
@@ -184,7 +243,17 @@ def main():
                      {'in': {'id': pid, 'title': neuT, 'descriptionHtml': neuB}})
             e = (rr.get('data') or {}).get('productUpdate', {}).get('userErrors') or []
             if e: print(f"  X {altT[:40]}: {e[0]['message']}"); continue
-            open(LEDGER, 'a', encoding='utf-8').write(f"{pid}\tbereinigt\n")
+            # ⚠️ Nur quittieren, wenn die Aussage WIRKLICH weg ist. Am 03.09. stand
+            # «Smart Business Armband mit Herz- und Blutdruckmesser» als «bereinigt» im
+            # Ledger und trug den Blutdruck weiter im Titel — die Regel kommt an der
+            # Bindestrich-Koppelung («Herz- und …messer») nicht sauber vorbei. Eine
+            # falsche Quittung ueberspringt den Fall fuer immer; «titel-offen» laesst
+            # ihn im naechsten Lauf wieder auftauchen und im Bericht sichtbar.
+            offen = bool(KRITISCH.search(neuT))
+            open(LEDGER, 'a', encoding='utf-8').write(
+                f"{pid}\t{'titel-offen' if offen else 'bereinigt'}\n")
+            if offen:
+                print(f"  ⚠️ Titel traegt die Aussage weiter: «{neuT[:60]}» — von Hand")
             time.sleep(0.8)
         geaendert += 1
     print(f"{'DRY ' if DRY else ''}bereinigt: {geaendert} · ohne Aenderung: {unveraendert}")
