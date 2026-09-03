@@ -395,3 +395,34 @@ gid://shopify/Product/15469955481985	Kostüm Kampfjet Overall
 gid://shopify/Product/15469955514753	Paradefrack
 gid://shopify/Product/15469955547521	Kostüm Jester Fatale
 gid://shopify/Product/15469955580289	Kostüm Malefizia
+gid://shopify/Product/15469955613057	Piraten Paradefrack für Herren
+gid://shopify/Product/15469955645825	Kürbis Kostüm
+gid://shopify/Product/15469955678593	Frack Dia de los muertos Dame
+gid://shopify/Product/15469955711361	Schottenrock
+gid://shopify/Product/15469955744129	Kostüm Schneeprinzessin
+gid://shopify/Product/15469955776897	Paradefrack für Herren
+gid://shopify/Product/15469955875201	Verführerisches Vampirinkostüm
+gid://shopify/Product/15469955907969	Kostüm Meerjungfrau · Mädchen, rosa-türkis
+gid://shopify/Product/15469955940737	Kostüm Anzug gold
+gid://shopify/Product/15469955973505	Kostüm Schmutzli
+gid://shopify/Product/15469956006273	Kostüm Blumen Willow Mann
+gid://shopify/Product/15469956039041	Kostüm Sensemann
+gid://shopify/Product/15469956071809	Kostüm Pilot
+gid://shopify/Product/15469956104577	Kostüm SWAT Offizier Gr. 54/56
+gid://shopify/Product/15469956137345	Arztkittel
+gid://shopify/Product/15469956170113	Hippie Poncho mit Stirnband
+gid://shopify/Product/15469956202881	Kostüm mit Kapuze Mittelalter
+gid://shopify/Product/15469956235649	Kostüm Bankräuber Overall · Kindergrösse
+gid://shopify/Product/15469956268417	Kostüm Gastwirtin
+gid://shopify/Product/15469956301185	Overall Kampfjetpilot grün
+gid://shopify/Product/15469956366721	Kostüm Tiger · Kindergrösse
+gid://shopify/Product/15469956399489	Kostüm Priester Zombie
+gid://shopify/Product/15469956432257	Kostüm Pharao Tutanchamun
+gid://shopify/Product/15469956465025	Kostüm Bankräuber Overall · Erwachsenengrösse
+gid://shopify/Product/15469956497793	Tutu neongrün
+gid://shopify/Product/15469956530561	Kostüm Safari für Mann
+gid://shopify/Product/15469956596097	Kostüm Kampfjet Pilot Overall
+gid://shopify/Product/15469956628865	Poncho mit Sombrero
+gid://shopify/Product/15469956661633	Kostüm Rotkäppchen
+gid://shopify/Product/15469956694401	Kostüm Aegypter
+gid://shopify/Product/15469956727169	Kostüm Clown
