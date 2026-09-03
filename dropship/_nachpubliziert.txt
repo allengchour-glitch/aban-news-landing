@@ -269,3 +269,4 @@ gid://shopify/Product/15523850289537	3d-print-herren-kurzarmling-aus-mesh-614600
 gid://shopify/Product/15523854844289	schwarze-canvas-sneaker-mit-hohe-boost-622600	Schwarze Canvas Sneaker mit Höhe-Boost
 gid://shopify/Product/15523866018177	digitales-tier-olgemalde-zebra-diy-kit-741632	Digitales Tier-Ölgemälde Zebra DIY Kit
 gid://shopify/Product/15523908682113	damen-quarzuhr-keramik-weiss-260dcc	Damen Quarzuhr Keramik Weiss
+gid://shopify/Product/15523924476289	hundenapf-katzennapf-gesunde-wasserschale-c8f272	Hundenapf Katzennapf gesunde Wasserschale
