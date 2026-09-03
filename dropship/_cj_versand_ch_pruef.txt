@@ -860,3 +860,25 @@ katzenbaum-mit-integriertem-bett-608200	2605041007581608800	5	148.58	ok	landesei
 deckenhoher-katzenbaum-mit-wolken-liegeflachen-798337	2034277248690188289	0	-	KEINE CH-Option → DRAFT	landeseite
 katzenbaum-weltraum-kapsel-villa-621400	2601060837131621600	5	136.48	ok	landeseite
 dreiteiliger-erweiterbarer-koffer-mit-seitenof-632700	2510170617291632900	0	-	KEINE CH-Option → DRAFT	landeseite
+multifunktionaler-trolley-mit-frontoffnung-622700	2509220555131622900	0	-	KEINE CH-Option → DRAFT	landeseite
+verstellbares-fenstergitter-mit-2-querstreben-582786	1990428635831132161	0	-	KEINE CH-Option → DRAFT	landeseite
+kuhlende-memory-foam-matratzenauflage-119681	2071416419463573505	0	-	KEINE CH-Option → DRAFT	landeseite
+wandspiegel-mit-rechteckigem-metallrahmen-357762	2049004202087731201	0	-	KEINE CH-Option → DRAFT	landeseite
+holzkohle-ofen-fur-zuhause-622800	2607010906441625600	5	102.07	ok	landeseite
+stabiler-sonnenschirmstander-mit-sandfullung-1-592194	2034266682312282114	0	-	KEINE CH-Option → DRAFT	landeseite
+fussballtor-mit-netz-180x120-cm-987714	1990543442630057985	0	-	KEINE CH-Option → DRAFT	landeseite
+trockenfutter-adult-essence-rind-441409	1990440410311602177	0	-	KEINE CH-Option → DRAFT	landeseite
+badezimmerschrank-aus-holzwerkstoff-221442	1990515724660154370	0	-	KEINE CH-Option → DRAFT	landeseite
+faltbares-feldbett-mit-polster-803266	2074341387459518465	0	-	KEINE CH-Option → DRAFT	landeseite
+kratzbaum-lion-dance-fur-kleine-wohnungen-635300	2605050349501635800	0	-	KEINE CH-Option → DRAFT	landeseite
+mid-century-modern-luxe-winter-plusch-sofadeck-605400	2603030847321605800	11	23.58	ok	landeseite
+chenille-sofakissenbezug-im-landhausstil-615100	2602070447131615500	11	12.65	ok	landeseite
+haustier-sofabett-mit-warmefunktion-605100	2601230715561605500	11	17.34	ok	landeseite
+faltbare-aufbewahrungsbank-mit-fusshocker-683777	2067162221600342018	0	-	KEINE CH-Option → DRAFT	landeseite
+airtight-food-storage-container-629600	2606130830491620400	0	-	KEINE CH-Option → DRAFT	landeseite
+multifunktionales-abtropfgestell-fur-geschirr-638300	2605240643541639000	0	-	KEINE CH-Option → DRAFT	landeseite
+drehbarer-garderobenstander-aus-holz-607500	2605200210521608000	6	80.79	ok	landeseite
+oxford-rollkoffer-mit-4-universalradern-605600	2606090643501606300	0	-	KEINE CH-Option → DRAFT	landeseite
+reisetrolley-mit-viel-stauraum-und-universalra-651000	2510020533381651300	0	-	KEINE CH-Option → DRAFT	landeseite
+reisekoffer-aus-metall-fur-sie-ihn-622200	2509270816461622500	0	-	KEINE CH-Option → DRAFT	landeseite
+klares-badezimmerspiegel-mit-metallrahmen-304385	2048642711850160130	-	-	unklar 200 Success rest=39	landeseite
