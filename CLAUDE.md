@@ -6252,3 +6252,14 @@ Betreiber «alles topmachen und merchant auch». Erst gemessen, dann geschrieben
   «Apparel → genauerer Apparel-Pfad», also kein Fehler, nur gröber. Google nimmt beides.
 - **Betreibersache (Merchant-Konto, kein API-Weg):** Ziel-Land nur Schweiz, Versand/Steuer im
   Merchant, «Needs attention»-Export, Datei-Speicher-Deckel (02.09.).
+- **Nachtrag Nr.-1-Suchprodukt:** Der SEO-Text des Rizinusöl-Sets (CJ-Direktversand, 10–20 Werktage)
+  sagte im Google-Snippet «**Versand aus der Schweiz**» — eine Herkunfts-/Lieferzusage, die der
+  Trust-Baustein auf derselben Seite widerlegt. Auf «Schweizer Shop, Lieferung 10–20 Werktage»
+  gesetzt (seo-Objekt mit beiden Feldern). Klasse gemessen: **0** weitere cj-real mit der Phrase in
+  SEO oder Text — ein handgeschriebener Einzelfall. ⚠️ WebFetch bekam an diesem Morgen zweimal
+  **429** von luxestyle.ch; die Wahrheit kam über die Admin-API (descriptionHtml/seo/body), nicht
+  über die ausgelieferte Seite. Die drei «Sie» im Salzlampen-Ratgeber sind die LAMPE (3. Person),
+  keine Anrede — richtig so, nicht anfassen.
+- Trichter 7 Tage: 397 Sitzungen, 4 Warenkörbe, 3 an der Kasse, **0 Abschlüsse**, kein neuer
+  abgebrochener Checkout seit 22.08. — die drei gingen VOR der Adresseingabe. Such-Landeseiten
+  30 Tage: Rizinusöl 20 · Salzlampe 18 · Startseite 15, alle 0 Warenkörbe.
