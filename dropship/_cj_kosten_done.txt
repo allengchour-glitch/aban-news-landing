@@ -9424,3 +9424,9 @@ gid://shopify/Product/15451641512321	CHF 10.73	1 Varianten	Velo-Rahmentasche fü
 gid://shopify/Product/15451886649729	CHF 8.87	1 Varianten	Anti-Knabber Spray für Haustiere
 gid://shopify/Product/15451887272321	cj-abgekuendigt-pruefen
 gid://shopify/Product/15451887993217	CHF 15.65	1 Varianten	Beissfester Haustier-Traktionsball mit USB-Ladung
+gid://shopify/Product/15451888484737	CHF 9.18	1 Varianten	Robustes Kauspielzeug für Hunde
+gid://shopify/Product/15451889336705	CHF 9.01	1 Varianten	Smart Beissfester Hundeball mit Zahnreinigung
+gid://shopify/Product/15451890286977	CHF 8.70	1 Varianten	Giraffe & Waschbär Baumwollseil-Spielzeug
+gid://shopify/Product/15451891368321	CHF 17.38	1 Varianten	Quietschendes Gummi-Monster für Hunde
+gid://shopify/Product/15451891827073	CHF 18.19	1 Varianten	Hufeisen-Kauspielzeug aus Naturkautschuk
+gid://shopify/Product/15451892515201	CHF 16.29	1 Varianten	Robustes Naturkautschuk-Kauspielzeug für Hunde
