@@ -63,6 +63,62 @@ function stripTags(s) {
   return decodeEntities(s.replace(/<[^>]{0,2000}>/g, " ")).replace(/\s+/g, " ").trim();
 }
 
+/* ⚠️ GEMESSEN 2026-09-03 an den eigenen 270 Kaufberater-Seiten: 234 davon bekamen
+   „Erster Satz ist sehr lang" — und zwar ausnahmslos zu Unrecht. `stripTags` machte aus
+   JEDEM Tag ein Leerzeichen, also klebte alles ohne Satzzeichen zu EINEM Satz zusammen:
+   <title> + Navigation + Brotkrume + H1 + erster Absatz. Der gemessene „erste Satz" von
+   dreirad-kaufen-schweiz.html lautete: „Dreirad kaufen Schweiz 2026 — Kinderdreirad, EN 71
+   & Mitwachs | aban aban Marktplatz Jobs Angebote Start › Kaufberater › Dreirad kaufen
+   Schweiz Dreirad kaufen …" (43 Wörter). Der echte erste Inhaltssatz war
+   „Auf einen Blick: Dreiräder mit Schiebestange passen ab 12 Monaten." (11 Wörter).
+   Die Folge traf nicht nur die eigenen Seiten: JEDER bezahlte Kunden-Audit bekam beim
+   wichtigsten AEO-Signal denselben falschen Rat („Beantworte die Kernfrage gleich im
+   ersten Satz"), obwohl die Seite genau das tut. Fast jede Website der Welt ist betroffen,
+   denn Titel, Menüpunkte und Überschriften enden nun einmal ohne Punkt.
+   Zwei Korrekturen, beide inhaltlich richtig und nicht bloss punktebringend:
+   1) Block-Elemente (</p>, </h1>, </li>, </div> …) werden zu Zeilenumbrüchen — genau die
+      Grenzen, die `splitSentences` ohnehin schon als Satzende akzeptiert (\n+).
+   2) Der <head> (und <noscript>/<template>/<svg>) gehört nicht zum sichtbaren Text; der
+      Title wird in der Kategorie „meta" ohnehin getrennt bewertet, sonst zählte er doppelt.
+   `stripTags` selbst bleibt unverändert — Titel und Überschriften sollen einzeilig bleiben. */
+const BLOCK_TAGS = /<\/?(?:address|article|aside|blockquote|br|dd|details|div|dl|dt|fieldset|figcaption|figure|footer|form|h[1-6]|header|hr|li|main|nav|ol|p|pre|section|summary|table|tbody|td|tfoot|th|thead|tr|ul)\b[^>]{0,2000}>/gi;
+/* Der INHALT einer Seite, nicht ihr Rahmen.
+   ⚠️ Erster Anlauf (nur Block-Umbrüche) machte es schlimmer statt besser: der „erste Satz"
+   war danach „aban" — der Markenlink der Navigation. Gemessen fiel „antwort-zuerst" bei den
+   Kaufberatern von 40 % auf 31 %, bei den Rechnern von 35 % auf 5 %. Die Klebe-Ursache war
+   behoben, die eigentliche aber nicht: bewertet wurde weiterhin der Seitenrahmen.
+   Antwort-Maschinen ziehen ihre Zitate aus dem Inhalt, nicht aus dem Menü — also misst die
+   Engine jetzt dort: <main>, ersatzweise <article>, sonst das Dokument ohne nav/footer/aside.
+   Die 200-Zeichen-Schwelle verhindert, dass ein leeres <main> (App-Gerüst) den ganzen Text
+   verschluckt; dann gilt wieder das ganze Dokument. */
+function inhaltsBereich(htmlOhneSkripte) {
+  for (const tag of ["main", "article"]) {
+    const m = new RegExp("<" + tag + "\\b[^>]*>([\\s\\S]*?)<\\/" + tag + "\\s*>", "i").exec(htmlOhneSkripte);
+    if (m && m[1].replace(/<[^>]{0,2000}>/g, " ").replace(/\s+/g, " ").trim().length >= 200) return m[1];
+  }
+  return htmlOhneSkripte
+    .replace(/<nav\b[^>]*>[\s\S]*?<\/nav\s*>/gi, " ")
+    .replace(/<footer\b[^>]*>[\s\S]*?<\/footer\s*>/gi, " ")
+    .replace(/<aside\b[^>]*>[\s\S]*?<\/aside\s*>/gi, " ");
+}
+function visibleText(htmlOhneSkripte) {
+  const ohneKopf = htmlOhneSkripte
+    .replace(/<head\b[^>]*>[\s\S]*?<\/head\s*>/gi, " ")
+    .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript\s*>/gi, " ")
+    .replace(/<template\b[^>]*>[\s\S]*?<\/template\s*>/gi, " ")
+    .replace(/<svg\b[^>]*>[\s\S]*?<\/svg\s*>/gi, " ");
+  /* ⚠️ Reihenfolge zählt. Erst ein Platzhalter für Block-Grenzen, dann Leerraum
+     zusammenfassen, dann Zeilenumbrüche setzen. Andersherum wird jeder Zeilenumbruch im
+     QUELLTEXT zu einer Satzgrenze: aus „… ab 12 Monaten. Eigenständiges\nTreten gelingt …"
+     wurden die „Sätze" „Eigenständiges" (1 Wort) und „Treten gelingt …" — das verfälscht
+     Satzzahl und Ø-Satzlänge und damit die Lesbarkeits-Note. */
+  const mitMarke = ohneKopf.replace(BLOCK_TAGS, "\u0000").replace(/<[^>]{0,2000}>/g, " ");
+  return decodeEntities(mitMarke)
+    .replace(/[\s\u200b]+/g, " ")
+    .replace(/ *\u0000[ \u0000]*/g, "\n")
+    .trim();
+}
+
 // Attribut aus einem Tag lesen (z. B. content="…" eines <meta>).
 function attr(tagSource, name) {
   const re = new RegExp(name + "\\s*=\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\s>]+))", "i");
@@ -110,11 +166,13 @@ function parseHtml(html) {
   }
 
   // Listen & Tabellen (Zählung der Container)
-  const listCount = (noScript.match(/<(?:ul|ol)\b/gi) || []).length;
-  const tableCount = (noScript.match(/<table\b/gi) || []).length;
+  /* Listen/Tabellen zählen nur im Inhalt: ein <ul> im Menü ist keine Inhaltsliste. */
+  const inhalt = inhaltsBereich(noScript);
+  const listCount = (inhalt.match(/<(?:ul|ol)\b/gi) || []).length;
+  const tableCount = (inhalt.match(/<table\b/gi) || []).length;
 
   // Sichtbarer Text
-  const text = stripTags(noScript);
+  const text = visibleText(inhalt);
 
   // FAQPage-Hinweis im JSON-LD
   const hasFaqSchema = jsonLd.some((b) => /"@type"\s*:\s*"(?:FAQPage|QAPage|Question)"/i.test(b));
@@ -215,12 +273,23 @@ export function analyze(input) {
   const ws = words(text);
   const wordCount = ws.length;
   const sentences = splitSentences(text);
-  const sentenceCount = sentences.length || 1;
 
-  const readingGrade = wienerSachtextformel(ws, wordCount, sentenceCount);
+  /* ⚠️ LESBARKEIT NUR AUF FLIESSTEXT. Seit Block-Elemente Satzgrenzen setzen, ist jede
+     Tabellenzelle, jeder Listenpunkt und jede Überschrift eine eigene Einheit — richtig für
+     „Antwort zuerst", falsch für die Lesbarkeit: dreirad-kaufen-schweiz.html (12 Tabellen)
+     kam damit auf eine Ø-Satzlänge von 5,1 Wörtern und wurde als leicht lesbar ausgewiesen,
+     obwohl der Fliesstext unverändert lange Sätze hat. Als Fliesstext zählt, was mit einem
+     Satzzeichen endet — Zellen, Labels und Überschriften tun das nicht. Fällt dabei nichts
+     übrig (reine Tabellenseite), gilt wieder alles, sonst gäbe es gar keine Note. */
+  const prosaSaetze = sentences.filter((x) => /[.!?…]["'»”)\]]?\s*$/.test(x));
+  const basis = prosaSaetze.length ? prosaSaetze : sentences;
+  const basisWorte = words(basis.join(" "));
+  const sentenceCount = basis.length || 1;
+
+  const readingGrade = wienerSachtextformel(basisWorte, basisWorte.length, sentenceCount);
   const readingLabel = readingLabelFor(readingGrade);
-  const avgSentenceLen = Math.round((wordCount / sentenceCount) * 10) / 10;
-  const longSentenceCount = sentences.filter((s) => words(s).length > 25).length;
+  const avgSentenceLen = Math.round((basisWorte.length / sentenceCount) * 10) / 10;
+  const longSentenceCount = basis.filter((x) => words(x).length > 25).length;
 
   const af = answerFirstScore(text);
   const questionHeadings = [...doc.h1, ...doc.h2, ...doc.h3].filter(isQuestionHeading);
