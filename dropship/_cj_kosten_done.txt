@@ -9411,3 +9411,5 @@ gid://shopify/Product/15451641020801	CHF 51.38	1 Varianten	Leichte Sommer-Kusche
 gid://shopify/Product/15451641086337	CHF 24.23	1 Varianten	Wolldecke mit Digitaldruck
 gid://shopify/Product/15451641151873	CHF 36.52	1 Varianten	Kühlendes Eis-Seide Anti-Rutsch Sitzkissen
 gid://shopify/Product/15451641184641	CHF 56.69	1 Varianten	Kuscheliger Fleece-Überwurf mit Rosen-Design
+gid://shopify/Product/15451641217409	CHF 62.81	1 Varianten	Seidenbettwäsche-Set mit geometrischem Muster
+gid://shopify/Product/15451641250177	CHF 10.37	1 Varianten	VW Funkschlüssel-Gehäuse (3 Tasten)
