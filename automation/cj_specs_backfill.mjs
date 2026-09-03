@@ -98,7 +98,7 @@ async function main() {
     if (budgetLeer(j)) { console.log('CJ-Tagesbudget erschöpft — Pause'); break; }
     if (j?.unbekannteForm) { console.log('  keine CJ-SKU', h, sku); if (!DRY) fs.appendFileSync(LEDGER, `${h}\tkeine-cj-sku\n`); continue; }
     if (!j || !j.result || !j.data) { console.log('  unklar', h, String(j?.message || '').slice(0, 60)); continue; }   // keine Quittung
-    const block = produktdetails(j.data);
+    const block = produktdetails(j.data, p.title);
     if (!block) { leer++; console.log('  keine belegten Fakten', h); if (!DRY) fs.appendFileSync(LEDGER, `${h}\tkeine-fakten\n`); continue; }
     const zeilen = (block.match(/<li>/g) || []).length;
     if (DRY) { console.log(`  [DRY] ${h} → ${zeilen} Zeilen: ${block.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 160)}`); gesetzt++; continue; }

@@ -128,13 +128,25 @@ export function liste(x){
   if(s.startsWith('[')){ try{ const j=JSON.parse(s); if(Array.isArray(j)) return j.map(String); }catch{} }
   return s.split(/[,;\/]/).map(t=>t.trim()).filter(Boolean);
 }
-export function specZeilen(d){
+// Materialwoerter, die ein deutscher Titel nennen kann — steht eines im Titel und NICHT in CJs
+// Materialliste, widerspricht die Tabelle dem Titel («Futterbar aus Bambus und Keramik» mit
+// «Material: Kunststoff», 03.09.2026). Dann faellt die Material-Zeile weg — die Tabelle darf dem
+// Titel nicht widersprechen, und welcher von beiden recht hat, weiss von hier niemand.
+const TITEL_MATERIAL=/\b(Bambus|Keramik|Edelstahl|Glas|Holz|Leder|Baumwolle|Leinen|Silikon|Kunststoff|Metall|Aluminium|Kupfer|Messing|Titan|Marmor|Rattan|Jute|Kork|Wolle|Seide|Samt|Leinen|Porzellan|Stein|Gummi|Filz|Acryl|Harz|Papier|Karton|Nylon|Polyester|Kaschmir|Denim|Canvas|Latex)\b/gi;
+const MAT_ALIAS={'edelstahl':['edelstahl','titanstahl'],'kunststoff':['kunststoff','abs-kunststoff','pvc','pet','polypropylen','tpu','pu','pu-leder','eva-schaum','acryl','silikon'],'metall':['metall','metall-legierung','zinklegierung','eisen','aluminium','aluminium-legierung','edelstahl','kupfer','messing','titan','titanstahl'],'holz':['holz','bambus','kork'],'leder':['leder','pu-leder'],'stein':['stein','marmor','kristall'],'polyester':['polyester','oxford-gewebe','mesh-gewebe','fleece','mikrofaser']};
+export function materialWiderspruch(titel, mats){
+  const im=[...String(titel||'').matchAll(TITEL_MATERIAL)].map(m=>m[1].toLowerCase());
+  if(!im.length||!mats.length) return false;
+  const have=new Set(mats.map(m=>m.toLowerCase()));
+  return im.some(w=>{ const ok=[w,...(MAT_ALIAS[w]||[])]; return !ok.some(x=>have.has(x)); });
+}
+export function specZeilen(d, titel){
   const rows=[];
   let mats=[...new Set(liste(d?.materialNameEn).map(deMat).filter(Boolean))];
   // «Leather» bei CJ ist fast immer PU: steht «PU» im Namen oder Text, heisst die Zeile PU-Leder (keine Echtleder-Behauptung).
   const txt=String(d?.productNameEn||'')+' '+String(d?.description||'');
   if(mats.includes('Leder') && /\bPU\b|\bfaux\b|synthetic leather|vegan leather/i.test(txt)) mats=[...new Set(mats.map(m=>m==='Leder'?'PU-Leder':m))];
-  if(mats.length) rows.push(['Material', mats.join(', ')]);
+  if(mats.length && !materialWiderspruch(titel, mats)) rows.push(['Material', mats.join(', ')]);
   const specs=extractSpecs(d?.description);
   const gw=gewichtText(d?.productWeight);
   if(gw && !specs.some(([k])=>k==='Gewicht')) rows.push(['Gewicht', gw]);
@@ -145,8 +157,8 @@ export function specZeilen(d){
 }
 
 // HTML-Block fuer den Beschreibungstext — leer, wenn es nichts Belegtes gibt.
-export function produktdetails(d){
-  const rows=specZeilen(d);
+export function produktdetails(d, titel){
+  const rows=specZeilen(d, titel);
   if(!rows.length) return '';
   const li=rows.map(([k,v])=>`<li><strong>${k}:</strong> ${String(v).replace(/</g,'&lt;')}</li>`).join('');
   return `<div class="ls-produktdetails"><h4>Produktdetails</h4><ul>${li}</ul></div>`;

@@ -305,7 +305,7 @@ for(const p of cand){
    title=tw.title; }
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, p.productWeight||p.variantWeight)} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
- const html=`${g.html}\n${produktdetails(d)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS'); // Faktenblock: cj_specs.mjs (02.09.2026)
+ const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS'); // Faktenblock: cj_specs.mjs (02.09.2026)
  const looksFashion=(d.variants||[]).some(v=>{const pv=parseVar(v);return pv.size||pv.color;});
  const fash=looksFashion?buildFashion(d):null;
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];

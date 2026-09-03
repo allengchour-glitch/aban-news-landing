@@ -11,6 +11,7 @@
 // erfindet aber Details («Aktivkohle, Keramik»). Deshalb 20b zuerst, compound-mini nur Auffangnetz.
 // Der Parser nimmt das JSON zwischen erster «{» und letzter «}» — Fences oder Vorspann sind egal.
 
+import { floskelZaehler, VERBOTEN } from './cj_copy_prompt.mjs';
 const KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || '')].map(s => s.trim()).filter(Boolean);
 
 export const GROQ_MODELLE = [
@@ -26,7 +27,7 @@ export function jsonAusText(c) {
 }
 
 // Gibt das geparste JSON-Objekt zurueck (title/html), oder null wenn kein Modell antwortet.
-export async function groqText(prompt, { temperature = 0.5 } = {}) {
+export async function groqText(prompt, { temperature = 0.5, nachbesserung = false } = {}) {
   for (const { model, body } of GROQ_MODELLE) for (const key of KEYS) {
     try {
       const r = await fetch('https://api.groq.com/openai/v1/chat/completions', { method: 'POST',
@@ -35,7 +36,15 @@ export async function groqText(prompt, { temperature = 0.5 } = {}) {
       if (r.status === 429) continue;
       const j = await r.json(); if (j.error) continue;
       const o = jsonAusText(j.choices?.[0]?.message?.content);
-      if (o && o.title && o.html) return o;
+      if (o && o.title && o.html) {
+        // 03.09.: Stichprobe 8 Neuimporte → 2 mit «sorgt für»/«hochwertig». Einmal nachbessern
+        // (~700 ms), dann nehmen, was kommt — ein Floskelsatz ist kein Grund, das Produkt zu verwerfen.
+        if (!nachbesserung && floskelZaehler(o.html) >= 1) {
+          const o2 = await groqText(prompt + `\n\nACHTUNG: Der vorige Entwurf enthielt verbotene Wendungen. Schreibe den Text neu OHNE: ${VERBOTEN.join(', ')}. Gleiche Fakten, gleiche Form.`, { temperature, nachbesserung: true });
+          if (o2 && floskelZaehler(o2.html) < floskelZaehler(o.html)) return o2;
+        }
+        return o;
+      }
     } catch {}
   }
   return null;
