@@ -1,0 +1,61 @@
+{
+ "caption": "Von allem etwas – 8 Lieblinge aus 8 Welten 🌍 Wisch dich durch 👉\n\n1. Uhren: Herren Quarzuhr Sandelholz Schwarz – CHF 43.90\n2. Schmuck: Edelstein-Kleeblatt «Rubin & Saphir» · 925 Silber – CHF 99.90\n3. Taschen: Camel Bag Knight Messenger Helmrucksack – CHF 34.90\n4. Herren-Mode: Stretch Langarmhemd für Herren – CHF 22.90\n5. Wohnen: Japanischer Türvorhang mit Ukiyo-e-Motiv – CHF 27.90\n6. Spielzeug: Sonnensystem Bausatz für kreative Köpfe – CHF 50.90\n7. Haustier: Automatisches Hunde-Rollseil – CHF 29.90\n8. Parfum: Dreamy Eau de Parfum Floral 30ml – CHF 22.90\n\nWelche Welt ist deine? Schreib die Zahl in die Kommentare 👇\n🔗 luxestyle.ch · Link in Bio\n#luxestyle #schweiz #onlineshopping #shoppingschweiz #geschenkidee #herbst2026",
+ "produkte": [
+  {
+   "gid": "gid://shopify/Product/15523921527169",
+   "titel": "Herren Quarzuhr Sandelholz Schwarz",
+   "preis": 43.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/259170961995.jpg?v=1788405164",
+   "welt": "Uhren"
+  },
+  {
+   "gid": "gid://shopify/Product/15443241206145",
+   "titel": "Edelstein-Kleeblatt «Rubin & Saphir» · 925 Silber",
+   "preis": 99.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29422917-746b-430e-b0d1-7d0f1bdce14b.jpg?v=1782851158",
+   "welt": "Schmuck"
+  },
+  {
+   "gid": "gid://shopify/Product/15524021666177",
+   "titel": "Camel Bag Knight Messenger Helmrucksack",
+   "preis": 34.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1bee1020-5438-415e-94ef-c1ba7424826f.jpg?v=1788419559",
+   "welt": "Taschen"
+  },
+  {
+   "gid": "gid://shopify/Product/15523940204929",
+   "titel": "Stretch Langarmhemd für Herren",
+   "preis": 22.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/330ec8a5-9af3-441a-b202-73bc723ef00f.jpg?v=1788409013",
+   "welt": "Herren-Mode"
+  },
+  {
+   "gid": "gid://shopify/Product/15523942138241",
+   "titel": "Japanischer Türvorhang mit Ukiyo-e-Motiv",
+   "preis": 27.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ad6cf66-9774-4c20-9e08-230c65e32da6.jpg?v=1788409187",
+   "welt": "Wohnen"
+  },
+  {
+   "gid": "gid://shopify/Product/15523138961793",
+   "titel": "Sonnensystem Bausatz für kreative Köpfe",
+   "preis": 50.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/72622720-532e-497b-bd46-05fbe1f53844.jpg?v=1788318903",
+   "welt": "Spielzeug"
+  },
+  {
+   "gid": "gid://shopify/Product/15523989717377",
+   "titel": "Automatisches Hunde-Rollseil",
+   "preis": 29.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/66e0bc2c-04ec-40c2-94ee-cf12b781c9e4.jpg?v=1788417046",
+   "welt": "Haustier"
+  },
+  {
+   "gid": "gid://shopify/Product/15448826806657",
+   "titel": "Dreamy Eau de Parfum Floral 30ml",
+   "preis": 22.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/90999f93-72f2-497a-9bc8-11a178ef1a0f.jpg?v=1783187530",
+   "welt": "Parfum"
+  }
+ ]
+}

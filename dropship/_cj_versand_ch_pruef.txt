@@ -884,3 +884,14 @@ reisekoffer-aus-metall-fur-sie-ihn-622200	2509270816461622500	0	-	KEINE CH-Optio
 klares-badezimmerspiegel-mit-metallrahmen-304385	2048642711850160130	-	-	unklar 200 Success rest=39	landeseite
 vollstandige-sofa-abdeckung-605800	2601040846251606000	11	23.05	ok	landeseite
 kirschkerne-fur-warmekissen-908161	1990492023491846145	0	-	KEINE CH-Option → DRAFT	landeseite
+quadratische-tischplatte-aus-unbehandelter-eic-818113	1990470271277248513	0	-	KEINE CH-Option → DRAFT	landeseite
+eichenholz-tischplatte-mit-naturkante-844802	1990478106165682177	0	-	KEINE CH-Option → DRAFT	landeseite
+wandregal-akazie-massivholz-mit-naturkante-664769	1990484025385590785	0	-	KEINE CH-Option → DRAFT	landeseite
+buro-rollwagen-aus-holzwerkstoff-weiss-216322	1990522046919258114	0	-	KEINE CH-Option → DRAFT	landeseite
+aufblasbare-poolkissen-2-stuck-765378	1990543291136532482	0	-	KEINE CH-Option → DRAFT	landeseite
+waschtischunterschrank-im-holz-look-578049	1990535728420544513	0	-	KEINE CH-Option → DRAFT	landeseite
+verstellbarer-mini-stepper-fur-hande-und-fusse-626000	2606200329041626700	2	94.39	ok	landeseite
+filz-katzenbaum-mit-kratz-schlaf-spielturm-923585	2058755269570781185	0	-	KEINE CH-Option → DRAFT	landeseite
+winter-plusch-chenille-sofauberwurf-mit-blumen-622800	2603030856341623200	11	20.63	ok	landeseite
+katzenbett-camp-cot-herausnehmbar-waschbar-609600	2604300322031600100	5	91.20	ok	landeseite
+wandmontierter-katzenbaum-aus-massivholz-618700	2604270159021619200	5	87.09	ok	landeseite
