@@ -335,3 +335,4 @@ gid://shopify/Product/15470031995265	BRUDER bworld Polizist	Kostüme→Spielzeug
 gid://shopify/Product/15470032093569	bworld Frau mit hellem Hauttyp und dunkelblauer Ho	Kostüme→Spielzeug & Spiele
 gid://shopify/Product/15470032224641	bworld Frau mit hellem Hauttyp und blauer Hose	Kostüme→Spielzeug & Spiele
 gid://shopify/Product/15470034911617	Lachender Clown in der Kiste	Kostüme→Spielzeug & Spiele
+gid://shopify/Product/15470020952449	Engel Dekoration	Kostüme→Partydeko & Ballone
