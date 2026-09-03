@@ -716,3 +716,144 @@ automatischer-schwenkventilator-fur-kinderwage-638500	Dieser tragbare Ventilator
 15443500302721	Mini-Drohne «SkyCam» · faltbar — Luftaufnahmen leicht gemacht – faltbar & startklar. Design: faltbar & kompakt.
 15443500368257	Mini-Drohne «AeroX» · faltbar — Luftaufnahmen leicht gemacht – faltbar & startklar. Design: faltbar & kompakt.
 15443500466561	Mini-Drohne «Nimbus» · mit HD-Kamera — Luftaufnahmen leicht gemacht – faltbar & startklar. Design: faltbar & kompakt.
+15443502006657	Smartwatch «FitPro» · Fitness & Anrufe — Fitness, Nachrichten & Style am Handgelenk. Betrieb: Akku (magnetisches USB-Laden).
+15443502072193	Fitness-Tracker «StepGo» · Herzfrequenz & Schritte — Behalte Gesundheit & Aktivität im Blick. Betrieb: Akku mit langer Laufzeit.
+15443502104961	Smartwatch «SmartOne» · Fitness & Anrufe — Fitness, Nachrichten & Style am Handgelenk. Betrieb: Akku (magnetisches USB-Laden).
+15443502137729	Smartwatch «Vital» · Fitness & Anrufe — Fitness, Nachrichten & Style am Handgelenk. Betrieb: Akku (magnetisches USB-Laden).
+15443531760001	Wireless-Charger «QiFast» · kabellos laden — Einfach ablegen und kabellos laden. Laden: kabellos (Qi-Standard).
+15443531792769	Wireless-Charger «ChargeSpot» · kabellos laden — Einfach ablegen und kabellos laden. Laden: kabellos (Qi-Standard).
+15443532218753	Powerbank «Volt» · Schnellladen — Nie wieder leerer Akku – Power für unterwegs.
+15443532251521	Powerbank «MaxPower» · Schnellladen — Nie wieder leerer Akku – Power für unterwegs.
+15445266923905	Dieser abziehbare Nagellack mit leichtem Aprikosenduft ist die perfekte Wahl für eine schnelle und unkomplizierte Maniküre zu Hause.
+15445267808641	Diese professionelle UV/LED Nageltrocknerlampe mit 168W Leistung halbiert die Aushärtezeit von Gelnägeln im Vergleich zu Standardlampen.
+15445268726145	Verleihen Sie Ihren Nägeln einen eleganten und gepflegten Look mit diesen handgemachten French Nails.
+15445269348737	Dieses Nagelpflege-Fluid mit Ingwer-Extrakt wurde speziell entwickelt, um Ihre Nägel zu pflegen und zu schützen.
+15445270233473	Dieses vielseitige Aufbau-Gel in der 25g Dose ist ideal für die Verstärkung und Modellierung Ihrer Nägel. Vielseitiges Aufbau-Gel in 25g Dose.
+15445270921601	Dieses praktische 5er-Set Nagellackstifte vereinfacht Ihre Maniküre. 3-in-1-Formel: Unterlack, Farbe und Überlack in einem Stift.
+15445271609729	Dieses hochwertige, transparente UV Soft Epoxy Gel ist ideal für diverse Nageldesign-Anwendungen.
+15445272428929	Dieses umfassende Starter-Set ermöglicht Ihnen professionelle Nagelverlängerungen und Nageldesigns bequem von zu Hause aus.
+15445273379201	Mit diesem UV Nagellack Set kreieren Sie beeindruckende Nageldesigns. Erhältlich in 20 verschiedenen Farb-Sets.
+15445274263937	Der AS Nail Art Eternal Classic Farbgel-Nagellack bietet eine Auswahl an zeitlosen Farbtönen für langanhaltende Maniküren.
+15445275771265	Dieses Nageldesign-Set ist ideal für alle, die ihre Maniküre zu Hause aufwerten möchten. Jeder Nagellack hat eine Nettofüllmenge von 10g.
+15445277933953	Diese professionelle Nagellampe mit 280W Leistung und 66 UV/LED-Lichtern sorgt für ein schnelles und gleichmässiges Aushärten von Gel- und Acrylnägeln.
+15445279474049	Dieses kompakte UV/LED-Lichthärtungsgerät ist ideal für professionelle Gelnägel zu Hause oder im Salon. Inklusive 1 Nagellampe.
+15445281046913	Dieses innovative Gerät für Nageldesign und Maniküre nutzt eine Dual-Light-Technologie, um das Erscheinungsbild von Nägeln zu verbessern.
+15445281833345	Diese professionelle LED-Halbmondleuchte ist ideal für detailreiche Arbeiten wie Nageldesign, Wimpernverlängerung oder Tattoos.
+15445282750849	Der 120W UV/LED Nageltrockner ist das ideale Gerät für professionelle Nagelstudios und den Heimgebrauch. Leistungsstarke 120W für schnelles Aushärten.
+15445283602817	Diese professionelle UV/LED Nagellampe ermöglicht schnelles und gleichmässiges Aushärten aller Gel-Nagellacke.
+15445285863809	Diese professionelle UV/LED Nagellampe trocknet Ihre Gel-Nägel schnell und effizient. 57 UV/LED-Lichtperlen für schnelle Aushärtung.
+15445298774401	Das Nagelpflege-Stift-Set bietet eine praktische Lösung für die Pflege Ihrer Nägel. Inklusive 5 Raspelstreifen für die Nagelvorbereitung.
+15445299364225	Entdecken Sie unser praktisches 6er-Set Gel Nagellack Stifte für ein einfaches und präzises Nageldesign. Set mit 6 Gel Nagellack Stiften.
+15445299954049	Dieses umfassende 19-teilige Maniküre-Set aus hochwertigem Edelstahl ist Ihre Komplettlösung für die Nagel-, Gesichts- und Fusspflege.
+15445300674945	Verleihen Sie Ihren Nägeln einen Hauch von Eleganz mit diesen handgemachten Press-on Nägeln. 3D-Blumen, Perlen und Schleifen.
+15445301428609	Dieses vom Ozean inspirierte Nageldesign verleiht Ihren Nägeln eine frische Farbpalette mit einem sanften Farbverlauf.
+15445798814081	Dieses 5-teilige Make-up Pinselset ist ein unverzichtbarer Begleiter für jede Beauty-Routine. 5-teiliges Set.
+15445798879617	Dieser vielseitige Lidschatten-Pinsel ist ein unverzichtbares Tool für jedes Augen-Make-up.
+15445799076225	Diese multifunktionale Bürste ist Ihr Geheimnis für perfekt gestylte Wimpern und Augenbrauen.
+15445799108993	Dieser vielseitige Pinsel ist ein unverzichtbares Tool für Ihre Make-up-Routine.
+15445799174529	Dieser vielseitige Pinsel ist ein Must-have für jede Make-up-Routine.
+15445799240065	Dieses umfassende 24-teilige Make-up Pinselset ist ein Must-have für alle Beauty-Liebhaberinnen. 24-teiliges Set für vielseitige Make-up-Anwendungen.
+15445799338369	Verleihen Sie Ihrem Look mit dem Dazzling Star Glitter Spray einen Hauch von Glamour. Erzeugt einen funkelnden Sternenhimmel-Glitzer-Effekt.
+15445799436673	Dieses 20-teilige Make-up Pinselset in edlem Champagner-Ton ist sowohl für den täglichen Gebrauch als auch für professionelle Anwendungen konzipiert.
+15445799469441	Dieses 13-teilige Make-up Pinselset ist für die allgemeine Bevölkerung konzipiert und bietet eine umfassende Auswahl an Pinseln für verschiedene …
+15445799534977	Das 7-teilige Make-up Pinselset ist ein vielseitiges Set für Ihre tägliche Make-up-Routine. Umfassendes 7-teiliges Set für diverse Make-up-Anwendungen.
+15445799666049	Dieses 10-teilige Make-up Pinselset ist für alle Make-up Liebhaber geeignet. 10-teiliges Set für loses Puder und Rouge.
+15445799698817	Dieses 8-teilige Make-up Pinselset ist ein Must-have für jede Beauty-Routine. 8-teiliges Set für vielseitige Anwendungen.
+15445799862657	Verleihen Sie Ihren Augen mit diesem farbigen Tricolor Lidschatten-Stick einen Hauch von Farbe. Enthält Mineralöl, Glimmer und Siliciumdioxid.
+15445799960961	Dieser vielseitige Foundation-Stick kombiniert Contouring, Abdeckung und Farbkorrektur in einem Produkt. Nettofüllmenge: 13 g.
+15445799993729	Dieses 12-teilige Make-up Pinselset ist ein unverzichtbarer Begleiter für alle Beauty-Begeisterten. Umfassendes 12-teiliges Pinselset.
+15445800059265	Dieses 10-teilige Make-up-Pinselset ist ein echtes Highlight für jede Beauty-Routine. 10-teiliges Set für vielseitige Anwendungen.
+15445800157569	Dieses kompakte 4-in-1 Make-up Pinselset ist Ihr idealer Begleiter für unterwegs. 4-in-1 Design für vielseitige Looks.
+15445800255873	Dieses 10-teilige Make-up Pinselset bringt Glamour in Ihre Beauty-Routine. 10-teiliges Set für Gesicht und Augen.
+15445800288641	Dieses 20-teilige Make-up Pinselset ist ein unverzichtbares Beauty-Tool für jede Kosmetikliebhaberin.
+15445800354177	Dieser innovative 4-in-1 Magnet-Pinsel ist ein vielseitiges Tool für Ihre Make-up-Routine. Vielseitiger 4-in-1 Magnet-Pinsel.
+15445800386945	Dieses magnetische Lidschattenpinsel-Set ist ideal für unterwegs und für den täglichen Gebrauch.
+15445800452481	Diese praktische Mischschale ist ideal für die Zubereitung Ihrer eigenen Gesichtsmasken.
+15445800518017	Dieser innovative 2-in-1 Foundation Stick kombiniert feuchtigkeitsspendende Foundation mit einem praktischen Pinsel.
+15445804941697	Der Make-up Pinsel 0622 ist ein vielseitiges Werkzeug für Ihre tägliche Beauty-Routine.
+15445816476033	Tauchen Sie ein in die Welt der Düfte mit diesem erfrischenden Apfelparfum.
+15445827223937	Dieses hochwertige Parfum für Herren besticht durch seinen leichten und doch markanten Duft. Leichter Sandelholzduft.
+15445831057793	Verleihen Sie Ihrem Look mit dem Star Glitter Make-up Stick einen Hauch von Glamour. Inhalt: 15g.
+15445833449857	Diese flüssige Foundation spendet Ihrer Haut Feuchtigkeit und sorgt für ein makelloses Finish.
+15445833646465	Das Xipu Floral Damenparfum ist ein blumiger Duft, der Sie Tag und Nacht begleitet. Inhalt: 100ml.
+15445833744769	Dieser innovative Peel-Off Lipliner definiert Ihre Lippen präzise und langanhaltend.
+15445833875841	Dieses vielseitige Set kombiniert einen wasserfesten Lippenstift mit einem passenden Lipliner und sorgt für perfekt definierte und langanhaltende Lippen.
+15445834006913	Dieses Eau de Parfum ist für Frauen und Männer gleichermassen geeignet und besticht durch eine harmonische Komposition aus blumigen und fruchtigen Noten.
+15445834039681	Dieses Eau de Toilette für Damen besticht durch seinen luxuriösen Duft mit langanhaltender romantischer Note. Praktische 100ml Grösse.
+15445834269057	Dieser Lipliner ist ein vielseitiges 3-in-1-Produkt, das speziell für die natürliche Definition und Formung der Lippen entwickelt wurde.
+15445834367361	Dieser innovative Peel-off Lipgloss in Nude Brown verleiht Ihren Lippen eine langanhaltende Farbe, die nicht verschmiert.
+15445834465665	Dieser handliche Make-up Stick verleiht Ihrem Look im Nu einen glamourösen Glitzer-Effekt.
+15445834498433	Dieses hochwertige Eau de Parfum fängt die Essenz von Sandelholz ein und kombiniert sie mit einer leichten, doch markanten Duftnote.
+15445834531201	Dieses Eau de Parfum mit 100ml Inhalt verführt mit einem anhaltenden, blumigen Duft. 100ml Inhalt.
+15445834629505	Entdecken Sie den Peel-off Lip Gloss Kakao, der Ihre Lippen mit einem Hauch von Farbe und Glanz verwöhnt. 3ml Inhalt.
+15445834727809	Dieses Make-up-Set kombiniert einen langanhaltenden Concealer mit einer feuchtigkeitsspendenden Flüssig-Foundation für einen natürlichen Teint.
+15446014886273	Dieser hochwertige Milchtopf aus dreischichtigem Edelstahl (316) ist ein Muss für jede Küche. Aus robustem 316er dreischichtigem Edelstahl gefertigt.
+15446015148417	Dieser Slow Cooker ist die ideale Küchenhilfe für alle, die köstliche, hausgemachte Mahlzeiten mit minimalem Aufwand zubereiten möchten.
+15446015738241	Dieses robuste Schneidebrett aus massivem Teakholz ist ein unverzichtbarer Helfer in jeder Küche. Aus verdicktem Massivholz gefertigt.
+15446016065921	Dieses vierteilige Kochtopf-Set ist eine vielseitige Ergänzung für jede Küche. Hergestellt aus robustem 201-Edelstahl.
+15446016557441	Diese hochwertige Edelstahl-Bratpfanne ist die ideale Ergänzung für jede Küche. Hochwertige Edelstahl-Konstruktion.
+15446016852353	Dieses professionelle Diamant-Messerschärfer-Set ist eine ideale Ergänzung für jede Küche oder Werkstatt.
+15446017933697	Der manuelle Kartoffel-Spiralschneider ist ein praktisches Küchengerät für die Zubereitung von Kartoffeltürmen.
+15446018326913	Diese Wokpfanne aus reinem Titan ist ideal für die Zubereitung asiatischer Gerichte und mehr. Gehämmerte Antihaft-Oberfläche.
+15446018654593	Entdecken Sie die Kunst des Rühbratens mit diesem handgeschmiedeten Wok. Tiefe von 11 cm für vielseitiges Kochen.
+15446019015041	Dieses Bratpfannen-Set ist eine Bereicherung für jede Küche. 20 cm Bratpfanne.
+15446019408257	Dieser multifunktionale Mini-Elektrokocher mit 1,7 Liter Fassungsvermögen ist ideal für 1-2 Personen und perfekt für den Einsatz im Studentenwohnheim oder …
+15446019801473	Diese Abtropfmatte aus Silikon ist eine praktische Ergänzung für jede Küche. Material: Hochwertiges Silikon.
+15446020424065	Dieser elektrische Fleischwolf ist ein vielseitiger Küchenhelfer, der mit seinem leistungsstarken 500-Watt-Motor und dem «S»-Messer Fleisch, Obst, Gemüse …
+15446020686209	Dieses dreiteilige Schneidebrett-Set aus Bambus ist eine praktische Ergänzung für jede Küche.
+15446021144961	Dieser elektrische Mini-Hot Pot mit 1.8 Liter Fassungsvermögen ist ein praktischer Helfer für die schnelle Küche.
+15446021570945	Diese manuelle Zitruspresse liefert 100 % reinen Saft, ganz ohne Strom. Manuelle Saftgewinnung für 100 % reinen Saft.
+15446022193537	Das Checkered Lovewood Schneidebrett vereint modernes, minimalistisches Design mit praktischer Funktionalität für den täglichen Gebrauch in Ihrer Küche.
+15446022619521	Mit dieser handlichen Kartoffelpresse aus hochwertigem Edelstahl zauberst du mühelos feinstes Kartoffelpüree und vieles mehr.
+15446022947201	Der Pancake Dispenser ist ein praktisches Küchenutensil aus BPA-freiem PP-Material, das das Backen von Pancakes, Waffeln und Muffins vereinfacht.
+15446023635329	Diese robuste Handpresse aus Metall ist ein unverzichtbarer Helfer in jeder Küche.
+15446023668097	Dieses vielseitige Kochmesser überzeugt durch die Kombination aus Damaststahl und einem robusten Bambusgriff. Elegantes schwarzes Hammerschlag-Finish.
+15446023897473	Dieser Fleischzartmacher aus hochwertigem, lebensmittelechtem Edelstahl ist ein unverzichtbares Küchenwerkzeug für alle Fleischliebhaber.
+15446023963009	Diese robuste Handpresse aus Metall ist perfekt, um Zitronen und Limetten mühelos auszupressen.
+15446023995777	Diese geruchsneutrale Fliegenfalle ist eine hochwirksame Lösung, um lästige Fliegen und andere kleine fliegende Insekten in Ihrem Zuhause oder im Freien …
+15446024094081	Dieser vielseitige Gemüseschneider vereint 16 Funktionen in einem Gerät und ist der ideale Helfer für Ihre Küche.
+15446024290689	Mit dieser manuellen Zitruspresse können Sie mühelos frischen Saft aus Zitronen und Limetten gewinnen.
+15446024323457	Nie mehr verbogene Löffel oder mühsames Antauen! Wiederaufladbarer USB-Akku für dutzende Portionen pro Ladung.
+15446024356225	Dieses multifunktionale Küchenwerkzeug vereinfacht die Zubereitung von Gemüse und Früchten erheblich. 15-in-1-Funktionalität für vielseitiges Schneiden.
+15446024388993	Mit dem schwimmenden Silikon-Eierpochierer in Gondelform gelingen Ihnen perfekt pochierte Eier im Handumdrehen.
+15446024487297	Dieser vielseitige 15-in-1 Gemüseschneider ist ein unverzichtbarer Helfer in jeder Küche. 15-in-1 Funktionalität für vielseitiges Schneiden.
+15446024683905	Dieses 2-teilige Salz- und Pfefferstreuer-Set ist ideal für Küche, Esszimmer oder unterwegs. Fassungsvermögen von ca. 120 ml pro Streuer.
+15446059319681	Die DR Reismilch Gesichtscreme ist eine feuchtigkeitsspendende Pflege, die speziell für normale bis trockene Haut entwickelt wurde.
+15446059680129	Der DR Reismilch Gesichtsreiniger ist eine sanfte Reinigung für alle Hauttypen.
+15446060007809	Die DR Snail Collagen Cream ist eine feuchtigkeitsspendende Gesichtspflege, die speziell für die Bedürfnisse anspruchsvoller Haut entwickelt wurde.
+15446060269953	Dieses Gesichtswasser mit Reismilch pflegt Ihre Haut sanft und bereitet sie optimal auf die nachfolgende Pflege vor.
+15446060597633	Die Repair Cream ist eine intensiv feuchtigkeitsspendende Gesichtspflege, die speziell für ihre beruhigenden Eigenschaften entwickelt wurde.
+15446060859777	Das Azelaic Acid & Niacinamide Serum ist ein vielseitiges Hautpflegeprodukt, das speziell zur Milderung von Aknespuren und Pickeln entwickelt wurde.
+15446061220225	Diese innovative Foundation passt sich beim Auftragen deinem Hautton an und sorgt für ein makelloses Finish.
+15446061547905	Die OUHOE Schneckencreme ist eine feuchtigkeitsspendende und straffende Gesichtspflege-Essenz.
+15446061941121	Die feuchtigkeitsspendende Nachtcreme mit Retinol pflegt Ihre Haut, während Sie schlafen. Inhalt: 50g.
+15446062301569	Diese innovative Augencreme kombiniert hochwertige Inhaltsstoffe mit einer elektrischen Massagefunktion, um die empfindliche Haut um die Augen zu pflegen …
+15446062596481	Dieser vielseitige 2-in-1 Eyelinerstift in Bronze ist ein unverzichtbares Beauty-Tool für Ihre Augen. Vielseitiger 2-in-1 Eyeliner und Kajal.
+15446062924161	Dieser vielseitige 2-in-1 Eyelinerstift in der Farbe Champagner ist ein Must-have für Ihre Make-up-Routine. Vielseitiger 2-in-1 Eyeliner und Lidschatten.
+15446063284609	Die Deep Collagen Peptid Intensiv-Ampulle ist ein fortschrittliches Serum, das Ihre Hautpflegeroutine optimal ergänzt. Inhalt: 40ml.
+15446063612289	Diese Haftcreme für Zahnprothesen sorgt für einen starken und sicheren Halt den ganzen Tag.
+15446064202113	Verwandle dein Haar und deinen Körper in ein funkelndes Meisterwerk mit diesem vielseitigen Glitzer Spray.
+15446064464257	Dieses vielseitige Highlight Puder verleiht Gesicht und Körper einen brillanten, langanhaltenden Schimmer.
+15446065021313	Das Photon Gesichts- und Augenmassagegerät wurde für die Anwendung zu Hause entwickelt und bietet eine innovative Lösung für Ihre Hautpflege.
+15446065611137	Diese Schlafmaske bietet dir eine erholsame Auszeit für deine Augen.
+15446065873281	Die Sonnenschutz-Gesichtsmaske mit Krempe bietet umfassenden Schutz für das Gesicht. Funktion: Geruchshemmend.
+15446066299265	Diese Gesichtsmaske aus Maulbeerseide bietet nicht nur Sonnenschutz, sondern auch einen Hauch von Luxus für Ihre Haut. Hergestellt aus 100% Maulbeerseide.
+15446066626945	Entdecke die Silikon-Vollgesichtsmaske, die in verschiedenen Grössen und Farben erhältlich ist. Hergestellt aus hochwertigem Silikon.
+15446066954625	Diese vielseitige Gesichtsmaske aus Nylon ist für alle Geschlechter geeignet und bietet dank Einheitsgrösse optimalen Komfort.
+15446067249537	Diese Sport Gesichtsmaske ist ideal für diverse Outdoor-Aktivitäten.
+15446067937665	Diese Gesichtsmaske aus Samt schützt deine Haut vor Kälte und Staub.
+15446069510529	Diese All-in-one Ersatzmaske aus schwarzem PU-Material bietet eine komfortable und atmungsaktive Lösung für Ihre Hautpflegebedürfnisse.
+15446069936513	Diese Schlafmaske ist die ideale Lösung, um müde Augen zu beruhigen und für eine erholsame Nachtruhe zu sorgen.
+15446070329729	Die vierte Generation dieser Trainingsmaske wurde entwickelt, um dein Workout effektiver zu gestalten.
+15446070526337	Gönn dir eine Auszeit mit diesem wohltuenden Augenmassagegerät. Hautfreundliche Materialien: PU-Leder und Proteinskin.
+15446070886785	Diese vielseitige Gesichtsmaske ist der ideale Begleiter für diverse Outdoor-Aktivitäten wie Angeln, Velofahren oder Wandern.
+15446071640449	Dieses speziell für Frauen entwickelte Pflegeöl für den Intimbereich enthält Ginkgo-Blattextrakt und Vitamin E.
+15446072295809	Der XIMONTH Kräuter-Pflegestift ist ein vielseitiger Stick, der speziell für die Anwendung im Bereich der Haut- und Gesichtspflege entwickelt wurde.
+15446072754561	Das DR Snail Collagen ist eine hochwertige Gesichtspflege, die speziell zur Verbesserung der Hautelastizität und zur Reduktion von Fältchen entwickelt …
+15446073082241	Die Tunmate Shea Butter ist eine reichhaltige Pflege für Gesicht und Körper.
+15446073377153	Dieses feuchtigkeitsspendende Spray wurde speziell für trockene und raue Haut an Händen und Füssen entwickelt. Inhalt: 30ml.
+15446073737601	Die Ximonth Nagelpflege-Pflaster wurden entwickelt, um geschädigte Nagelhaut sanft zu erweichen und die Nägel intensiv mit Feuchtigkeit zu versorgen und …
+15446266446209	Diese futuristische mechanische Hand Skulptur ist mehr als nur ein Blickfang – sie ist die ultimative Organisationslösung für Ihr Gaming-Setup.
+15446266675585	Dieser vielseitige Gamecontroller wurde speziell für Android-Smartphones entwickelt und bietet ein optimiertes Spielerlebnis für unterwegs.
+15446266773889	Dieser vielseitige Bluetooth Wireless Gaming Controller ist für ein breites Spektrum an Geräten konzipiert, darunter Switch, PC und Smartphones.
+15446266806657	Der Lay'sda P5 Wireless Game Controller wurde speziell für Gaming-Enthusiasten entwickelt und bietet ein immersives Spielerlebnis.

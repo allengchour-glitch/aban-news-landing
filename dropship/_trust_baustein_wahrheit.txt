@@ -4079,3 +4079,152 @@
 15448878219649	ersetzt-1	Smartes Sport-Armband mit Schrittzähler
 15448878285185	ersetzt-1	Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk
 15448878317953	ersetzt-1	Pedometer Sport-Armbanduhr
+15448878383489	ersetzt-1	Smartes Fitness Armband mit Pulsmesser
+15448878416257	ersetzt-1	Smartwatch mit Fitness-Tracking & Bluetooth-Anrufen
+15448878449025	ersetzt-1	Smartwatch mit Anruf- & Musiksteuerung
+15448878514561	ersetzt-1	Multifunktionale Outdoor Smartwatch mit Taschenlampe
+15448878580097	ersetzt-1	Multifunktionale Drei-Zeitzonen-Kalenderuhr
+15448878645633	ersetzt-1	Smartwatch mit Bluetooth-Telefonie & Fitness-Tracker
+15448878711169	ersetzt-1	Smartwatch & Bluetooth Earbuds Set mit Dual-Armband
+15448878743937	ersetzt-1	Smartwatch mit Bluetooth-Anrufen und Fitness-Tracker
+15448878907777	ersetzt-1	Smartwatch mit Schrittzähler und Nachrichten
+15448879202689	ersetzt-1	Smartwatch Multi-Armband-Kit
+15448879464833	ersetzt-1	4G Smartwatch für Kinder (Android)
+15448879595905	ersetzt-1	SKMEI Multifunktions-Studentenuhr für Herren
+15448879825281	ersetzt-1	Smarte Sportuhr mit Bluetooth-Anrufen & Gesundheits-Tracking
+15448880054657	ersetzt-1	4G Smartwatch für Kinder mit Bluetooth
+15448880251265	ersetzt-1	Coole leuchtende, wasserdichte Digitaluhr
+15448880480641	ersetzt-1	Smart Armband mit Herzfrequenzmessung
+15448880644481	ersetzt-1	Fitness-Smartwatch mit Herzfrequenz-Tracking · Business, 4 F
+15448880742785	ersetzt-1	Smart Armband für Herzfrequenz & Schlaf
+15448880841089	ersetzt-1	Leder-Uhrenarmband im Vintage-Stil
+15448880939393	ersetzt-1	Intelligentes Wecker-Armband mit Vibrationsalarm
+15448881004929	ersetzt-1	Fitzap3 Anti-Ermüdungs-Smartwatch
+15448881037697	ersetzt-1	Magnetisches Uhrenarmband aus Titan
+15448881201537	ersetzt-1	Infrarot-Universalfernbedienung mit 12 Tasten (2.4G)
+15448881267073	ersetzt-1	Strobe Licht-Set mit Fernbedienung
+15448881299841	ersetzt-1	Universal Smart Home Fernbedienung
+15448881365377	ersetzt-1	Anti-Verlust Locator für iPhone
+15448881398145	ersetzt-1	M98 Y10 4K HD Android 13 TV Box
+15448881496449	ersetzt-1	Bluetooth Sprach-Fernbedienung Infrarot
+15448881561985	ersetzt-1	Google Smart Voice Universal Fernbedienung
+15448881627521	ersetzt-1	KM7 SE Android 11 TV Box
+15448881693057	ersetzt-1	6-in-1 Kabel-Controller mit Makro-Programmierung
+15448881791361	ersetzt-1	Strobe Light Set mit Fernbedienung
+15448881889665	ersetzt-1	LED Dimmer Wireless RF Controller
+15448881955201	ersetzt-1	Klimaanlagen-Fernbedienung
+15448881987969	ersetzt-1	LED Nachttischlampe Musiknote
+15448882151809	ersetzt-1	Bluetooth Lenkrad-Controller
+15448882184577	ersetzt-1	Ersatz-Fernbedienung für SKY Q Set-Top-Box
+15448882250113	ersetzt-1	Infrarot-Fernbedienung für Smartphones
+15448882315649	ersetzt-1	iTag Bluetooth-Itemfinder
+15448882413953	ersetzt-1	16-in-1 Universal Garagentor-Fernbedienung
+15448882643329	ersetzt-1	Universal-Funkfernbedienung · RF433
+15448882839937	ersetzt-1	Bluetooth Ring Fernbedienung
+15448882872705	ersetzt-1	Air Mouse Bluetooth Trackpad
+15448882938241	ersetzt-1	WLAN Garagentor-Steuerung mit App
+15448883003777	ersetzt-1	Wi-Fi Graffiti 5-in-1 Tuya Controller
+15448883036545	ersetzt-1	Wassermelder Zigbee Smart Home
+15448883102081	ersetzt-1	Ersatz-Fernbedienung für Panasonic Projektoren
+15448883200385	ersetzt-1	WLAN-Funksteckdose mit Timer, 10A/2200W
+15448883298689	ersetzt-1	LCD-Fernbedienung für Samsung TVs
+15448883462529	ersetzt-1	Full Color Dual Output Controller
+15448883528065	ersetzt-1	Induktives Auto-Diebstahlschutzsystem
+15448883560833	ersetzt-1	GPS-Halsband für Nutztiere
+15448883659137	ersetzt-1	GPS-Tracker für Haustiere
+15448883691905	ersetzt-1	Elektronischer Türspion mit 4.3 Zoll Bildschirm
+15448883757441	ersetzt-1	Küchen-Thermometer für Food, BBQ & Ofen
+15448883790209	ersetzt-1	Wireless Flying Squirrel Bluetooth Tastatur
+15448883822977	ersetzt-1	Nackenventilator mit Digitalanzeige
+15448883888513	ersetzt-1	Universal-Kopierfernbedienung 433 MHz
+15448884052353	ersetzt-1	Zero Fire Universal WLAN Touch-Wandschalter
+15448884085121	ersetzt-1	Kabelloses Ladepad mit Kühlfunktion
+15448884117889	ersetzt-1	Wanduhr im schlichten, nordischen Design
+15448884216193	ersetzt-1	Ersatz-Fernbedienung für Roku TV
+15448884248961	ersetzt-1	Solar-Strassenleuchte für Hof und Garten
+15448884347265	ersetzt-1	Tragbarer Luftentfeuchter – Leise & Kompakt
+15448884380033	ersetzt-1	Ouliyuan Lugx Nagelpoliermaschine
+15448884478337	ersetzt-1	Ultraschall-Schädlingsvertreiber (6er-Set)
+15448884543873	ersetzt-1	Solar-Jalousien mit 15-Kanal-Fernbedienung
+15448884609409	ersetzt-1	Elektrisches Verdunkelungsrollo mit Solarpanel
+15448884674945	ersetzt-1	Smarte Solar-Jalousie mit Fernbedienung
+15448884707713	ersetzt-1	Digitale Waage 180 kg mit LCD-Anzeige
+15448884740481	ersetzt-1	3-in-1 Kabellose Espresso Maschine
+15448884806017	ersetzt-1	Oszillierender Clip-Ventilator, 2 Stufen
+15448884838785	ersetzt-1	Smarte Körperanalysewaage mit App-Sync
+15448884904321	ersetzt-1	Smarte WLAN Video-Türklingel mit Gegensprechanlage
+15448884969857	ersetzt-1	Gitarrenständer für 3 Instrumente
+15448885133697	ersetzt-1	Faltbarer Noten- und Buchständer aus Metall
+15448885199233	ersetzt-1	Gepolsterte Keyboardbank, höhenverstellbar
+15448885264769	ersetzt-1	5 Core Dynamisches Gesangsmikrofon
+15448885297537	ersetzt-1	Dynamisches Gesangsmikrofon mit XLR-Kabel
+15448885363073	ersetzt-1	Dynamisches Gesangsmikrofon für Karaoke
+15448885461377	ersetzt-1	Mikrofonständer mit Teleskoparm (2er-Set)
+15448885592449	ersetzt-1	5Core Kapodaster Set für Gitarre & Saiteninstrumente
+15448885657985	ersetzt-1	5Core Capo für Gitarre, Banjo, Ukulele & Mandoline
+15448885756289	ersetzt-1	Verstellbarer Noten- und Buchständer (Rot)
+15448885789057	ersetzt-1	Keyboard Ständer Erweiterung 2. Ebene
+15448885821825	ersetzt-1	Doppel-Gitarrenständer, faltbar
+15448885887361	ersetzt-1	Gitarrenständer Boden verstellbar mit Nackenhalter
+15448886051201	ersetzt-1	Dynamisches XLR-Mikrofon für Karaoke & Studio
+15448886116737	ersetzt-1	5Core Kapodaster Set für Saiteninstrumente
+15448886444417	ersetzt-1	Mikrofonständer, höhenverstellbar mit Rundfuss
+15448886706561	ersetzt-1	5 Core Gitarrenständer A-Rahmen, 2er-Set
+15448887001473	ersetzt-1	5 Core Megaphon 50W Bluetooth, Akku, 1000m Reichweite
+15448887329153	ersetzt-1	Gitarren-Fusshocker, 3-fach verstellbar
+15448887656833	ersetzt-1	5 Core XLR Dynamisches Metallmikrofon
+15448887918977	ersetzt-1	5 Core Akustikgitarrensaiten (6er-Set)
+15448888246657	ersetzt-1	5Core Notenhalter-Clip aus robustem Kunststoff
+15448888541569	ersetzt-1	5 Core Noten- und Buchständer, verstellbar
+15448888803713	ersetzt-1	5 Core Akustikgitarrensaiten, Medium
+15448889557377	ersetzt-1	Universal Lautsprecherständer, höhenverstellbar (2er-Set)
+15448889655681	ersetzt-1	5CORE Kapodaster für Saiteninstrumente (Rot)
+15448889721217	ersetzt-1	5Core Kapodaster Set für Gitarre & Co.
+15448889819521	ersetzt-1	Verstellbarer Notenständer für Tisch & Boden
+15448890245505	ersetzt-1	Digitaler Kalenderwecker mit Medikamenten-Erinnerung
+15448890311041	ersetzt-1	Wireless-Controller-Adapter für Xbox 360 (PC)
+15448890540417	ersetzt-1	Schutzhülle für AirPods Max (Schleife & Herz)
+15448890769793	ersetzt-1	Walkie-Talkie mit Frequenz-Scanning
+15448891064705	ersetzt-1	Ergonomische Vertikalmaus kabellos
+15448891097473	ersetzt-1	Wärmelampe für Nutz- und Haustiere
+15448891163009	ersetzt-1	Candy Soft Case für AirPods
+15448891195777	ersetzt-1	Meow Meow Hymn Keycaps Protein Purple
+15448891261313	ersetzt-1	Retro Music Tastenkappen, Pink-Lila
+15448891392385	ersetzt-1	Vogelbad-Heizer mit Thermostat
+15448891457921	ersetzt-1	Karaoke Bluetooth-Lautsprecher-Set K12 · tragbar
+15448891720065	ersetzt-1	3D-Druckstift für farbige Kreationen
+15448891752833	ersetzt-1	3D-Druckstift mit OLED-Display
+15448891916673	ersetzt-1	Kabelloser 3D-Stift für Kinder
+15448891982209	ersetzt-1	3D-Druckstift für Kinder
+15448892047745	ersetzt-1	TPU 3D-Druck Filament
+15448892080513	ersetzt-1	3D-Druckstift der sechsten Generation
+15448892113281	ersetzt-1	3D-Druckstift
+15448892178817	ersetzt-1	3D Mal- und Graffiti-Stift
+15448892408193	ersetzt-1	Armband mit Zirkonia-Blütenverschluss im French Style
+15448892539265	ersetzt-1	Ovales Armreif mit Zirkonia, 18K vergoldet
+15448892735873	ersetzt-1	Ovales Zirkon-Armband, 18K vergoldet
+15448892834177	ersetzt-1	Exquisites Zirkonia Herz Armreif im Western-Stil
+15448893063553	ersetzt-1	Verstellbares Zirkonia-Armband
+15448893227393	ersetzt-1	Western Style Zirkonia Herz Armband
+15448893391233	ersetzt-1	Armband mit bunten Zirkonia-Steinen, 18K vergoldet
+15448893587841	ersetzt-1	Rhombus Zirkonia Armband
+15448893718913	ersetzt-1	Zirkon Armreif mit Blumen-Schnalle im French Style
+15448894046593	ersetzt-1	Vergoldetes ovales Zirkonia Armreif
+15448894275969	ersetzt-1	Verstellbares Armband mit bunten Zirkonia
+15448894570881	ersetzt-1	Rundes Zirkon-Armband im Vintage-Stil
+15448894734721	ersetzt-1	Ovales Zirkon-Armband im französischen Stil
+15448895095169	ersetzt-1	Crushed Ice Blau Cubic Zirkonia Armreif
+15448895259009	ersetzt-1	Regenbogen-Armband mit Zirkonia, 18K vergoldet
+15448895390081	ersetzt-1	Eisblau Zirkonia Armreif – Korean Ins Style
+15448895553921	ersetzt-1	Geometrisches Zirkonia Armband
+15448895684993	ersetzt-1	Geometrisches Zirkon-Armband
+15448895881601	ersetzt-1	Armreif mit eisblauen Zirkonia
+15448896045441	ersetzt-1	Armreif Korean Style mit mattblauen Zirkonia
+15448896176513	ersetzt-1	Armreif mit gefrosteten blauen Zirkonia
+15448896340353	ersetzt-1	Rhombus Zirkon Armband für Damen
+15448896438657	ersetzt-1	Zirkon-Herzarmband – Exquisites Premium-Armreif
+15448896504193	ersetzt-1	Armband Korean Chic mit mattiertem blauem Zirkon
+15448896569729	ersetzt-1	Ovales Zirkonia-Armband, vergoldet
+15448896635265	ersetzt-1	Rundes Zirkonia Slider Armband
+15448896700801	ersetzt-1	Ovales Zirkonia Armband im Pariser Stil
+15448896733569	ersetzt-1	Zirkon Armreif im Diamant-Design
