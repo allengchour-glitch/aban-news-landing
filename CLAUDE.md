@@ -100,6 +100,42 @@ alle 363 veröffentlichten Kollektionen: **genau diese zwei**, sonst keiner.
 **Regel: Ein Kollektionstitel ist Kundentext, kein Ablagename** — dieselbe Klasse wie
 «✨ CJ Neuheiten 2026» (11.06.), wo der Lieferantenname in einer Überschrift stand.
 
+## 🌍 EINE Reihe aus allen 20 Welten — und ein Porzellanteller in der Haustierwelt (2026-09-03, nachts)
+Betreiber wiederholt: «webseite mehr tolle produkten von bissel allen kategorien etwas?».
+Die Deckel bleiben (25 Sektionen, ~180 Karten), also nicht noch eine Welt eintauschen, sondern
+**aus jeder Welt EIN Stück in EINE Reihe**: `automation/querbeet_kuratieren.py`, Kollektion
+`querbeet` «🌍 Aus allen Welten» (20 Welten, täglich im Aufseher, selbstabräumend nach 10 Tagen).
+- **Warum nicht «bestbewertet je Welt»:** Bewertungen gibt es nur auf ~5 % der Ware — für die
+  meisten Welten gäbe es gar keinen Kandidaten. Gewählt wird nach dem, was der Katalog überall
+  hergibt: ≥3 Bilder, ab CHF 19, im Google-Kanal, kein Risiko-/Wirkversprechen-Tag. Eine
+  Bewertung ist ein PLUS, keine Bedingung.
+- ⚠️ **Die erste Fassung sortierte nur nach Alter — und wählte damit, was der Grind gerade
+  importiert:** ein **Apple-Watch-Armband als Gesicht der Elektronik**, eine Smartwatch bei den
+  Kopfhörern. «Neu» ist kein Qualitätsmerkmal. Jetzt entscheidet nach der Bewertung die
+  **Bilderzahl und der Preis** — beides trennt ein Aushängeschild von Zubehör; das Alter ist nur
+  noch der letzte Schiedsrichter. Gelesen statt gezählt: 20 von 20 Welten mit brauchbarem Stück.
+- Getauscht wurde `banner_kategorien` (Hero auf Position 24). Sein Knopf «Alle Kategorien»
+  führte auf **`/pages/marken-kategorien`** — eine ZWEITE Verzeichnisseite, seit dem 14.08. nicht
+  gepflegt: von 240 Links zeigten **89 auf unveröffentlichte Kollektionen** (BigBuy-Marken).
+  Die toten Chips sind entfernt (153 Links, 0 tot); der gepflegte Einstieg steht im Menü.
+  **Zwei Verzeichnisse sind eines zu viel** — dasselbe Muster wie die Doppelgänger-Kollektionen.
+- Startseite **184 Karten, 8 von 8 Abrufen 200**, 7,2 MB.
+
+**🐾 Und der Fund, den erst die Kuration sichtbar machte:** Als Vertreter der Haustierwelt kam
+eine **«Frucht- und Dessertschale aus Porzellan»** — `productType: Haustierbedarf`, Tags
+haustier/hund/katze/pet, im Text kein Wort über Tiere. Die CJ-Kategorie vergibt ihre Tags blanko
+(dritte Fassung nach 918 Spielzeugen als «elektronik» und 226 BRUDER-Traktoren als «Kostüm»).
+- Gemessen: 3'424 aktive in der Haustierwelt, 150 ohne Tierwort im Titel — **aber gelesen sind
+  davon nur 8 echte Fremdkörper** (Wäscheständer, Deko-Kissen, Puppen-Set, Camping-Schaukelstuhl,
+  Ohrhänger, Kleid, Reithose, Porzellanschale). Die übrigen 142 sind echte Tierware, deren Titel
+  nur kein Tierwort trägt (Kauspielzeug, Schleckschale, Näpfchen). **Ein breites Muster ist ein
+  Netz, kein Urteil** — zum wiederholten Mal an einem Tag.
+- ⚠️ **Drei Grenzfälle blieben bewusst drin, weil ihr eigener TEXT den Tierbezug nennt:**
+  1-ml-Spritzen «vielseitig einsetzbar für den Haustierbedarf», Schlüsselanhänger «für alle
+  Haustierbesitzer» — und die **«Klassische 2-Füsse Jacke»**, laut Text «ein klassisches
+  Kleidungsstück für Hunde und Katzen». Sie bekam nur einen ehrlichen Titel. **Der Titel schweigt
+  öfter, als man denkt; die Antwort steht im Text** (dieselbe Lehre wie beim «Discovery-Set»).
+
 ## 🎵 TikTok-Stand + Browser-Bedienung (2026-08-18)
 **API-Weg (in Arbeit):** App **«luxe»** (developers.tiktok.com/app/7648584035840903189) ist die richtige
 von 3 Apps — «LuxeStyle Poster» ist das KURZDRAMA-Portal (/portal/drama/, Unternehmensverifizierung),
