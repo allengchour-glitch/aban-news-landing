@@ -146,3 +146,15 @@
 2026-08-30	Futterautomat	gid://shopify/Product/15504188637569	Automatischer Futterspender für Katzen & Hunde
 2026-08-30	Futterautomat	gid://shopify/Product/15504188473729	Futterautomat mit Kamera für Hunde und Katzen
 2026-08-30	Hoodie-Decke	gid://shopify/Product/15448104698241	Britischer Oversize Hoodie mit Polo-Kragen
+2026-09-03	Mini-Beamer	gid://shopify/Product/15519829361025	Mini-Projektor mit Multi-Screen Funktion
+2026-09-03	Ordnung & Aesthetic	gid://shopify/Product/15503112962433	8-teiliges Reise-Organizer-Set
+2026-09-03	Shapewear	gid://shopify/Product/15509385281921	Figurformendes Slim-Fit Kleid mit Cape
+2026-09-03	Ladestation 3-in-1	gid://shopify/Product/15497472475521	3-in-1 Wireless Ladestation für Apple Geräte
+2026-09-03	Haarglätter & Styler	gid://shopify/Product/15495399604609	5-in-1 Warmluftbürste mit automatischem Lockenwickler
+2026-09-03	Kerzenwärmer & Duft	gid://shopify/Product/15508364296577	3D Glas Aroma Diffusor mit Farblicht
+2026-09-03	Faszienrolle	gid://shopify/Product/15502558790017	Verstellbare Teleskop-Faszienrolle aus Schaumstoff
+2026-09-03	Wärme & Kuschel	gid://shopify/Product/15454161994113	Büro-Heizdecke mit Bauchstütze
+2026-09-03	Karaoke-Mikrofon	gid://shopify/Product/15480632344961	Kabelloses Mini-Mikrofon mit Magnetclip
+2026-09-03	Ringlicht	gid://shopify/Product/15485479715201	Magnetisches Selfie-Licht für Smartphones
+2026-09-03	Haustier-Spielzeug smart	gid://shopify/Product/15495135363457	Futterball-Spender für Hunde – 3-stufig verstellbar
+2026-09-03	Handy-Umhängetasche	gid://shopify/Product/15493870944641	Leder-Handytasche für Herren, Crossbody

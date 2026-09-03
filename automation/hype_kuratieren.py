@@ -114,8 +114,9 @@ THEMEN = {
     # Decke/Weste/Socken/Hausschuhe als Anker.
     "Faszienrolle": re.compile(
         r'Faszienroll|Foam[- ]?Roller|Massageroll(?:e|er)\b', re.I),
+    # ⚠️ 03.09.: «WLAN-Controller für LED-Lichtleisten» ist Zubehör, kein Strip → Zubehörwörter aus.
     "LED-Strip": re.compile(
-        r'LED[- ]?(?:Strip|Streifen|Lichtband|Lichtleiste)', re.I),
+        r'^(?!.*(?:Controller|Netzteil|Verl[äa]ngerung|Verbinder|Adapter)).*LED[- ]?(?:Strip|Streifen|Lichtband|Lichtleiste)', re.I),
     "Spray-Haarbürste": re.compile(
         r'(?:Spray|Spr[üu]h|Wasserspr[üu]h)[- ]?(?:Haar)?b[üu]rste|Spray[- ]?Brush', re.I),
     "Wärme & Kuschel": re.compile(
@@ -154,14 +155,21 @@ THEMEN = {
         r'Snackball|Intelligenzspielzeug|Futterball|Leckerli[- ]?(?:Ball|Spender)', re.I),
     "Handy-Umhängetasche": re.compile(
         r'Handy[- ]?(?:Umh[äa]nge|Cross-?body|Schulter)[- ]?tasche|Phone[- ]?(?:Holster|Bag|Pouch|Sling)|'
-        r'Crossbody[- ]?(?:Phone|Handy)|Smartphone[- ]?(?:Tasche|Holster)', re.I),
+        r'Crossbody[- ]?(?:Phone|Handy)|Smartphone[- ]?(?:Tasche|Holster)|'
+        r'Handy-?tasche.*Cross-?body|Cross-?body.*Handy-?tasche|Handy-?tasche.*(?:Umh[äa]nge|Schulter)', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
 # Die Startseite ist die Fläche, die jede Besucherin ungefragt sieht — auch die, die mit einem
 # Kind daneben sitzt. Der erste Lauf hätte ein «Intim-Pflegeserum für Frauen» dorthin gestellt.
 # Das Produkt ist völlig in Ordnung, der Platz ist es nicht.
-NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz||Creme\b|Serum\b|Hautpflege|Lotion\b|Ampulle|Peeling|Balsam\b'
+# ⚠️ 03.09.2026: Hier stand seit dem 30.08. «Anti-?Pilz||Creme» — ein LEERES Alternativglied.
+# Ein leeres Glied matcht die leere Zeichenkette, also JEDEN Titel: vier Tage lang war jedes
+# Produkt «nicht startseitentauglich», der Lauf meldete «Neu in die Reihe: 0» und sah dabei
+# völlig normal aus. Gefunden nur, weil ein neues Thema mit 49 Treffern im Export 0 Kandidaten
+# ergab und jeder Treffer denselben Ausschlussgrund trug. Dazu fehlte am Zeilenende das «|» vor
+# «Nagelpilz» — «Balsam\bNagelpilz» konnte nie treffen. Beides behoben.
+NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz|Creme\b|Serum\b|Hautpflege|Lotion\b|Ampulle|Peeling|Balsam\b|'
                               r'Nagelpilz|Warzen|Hemorrhoid', re.I)
 
 # ⚠️ 29.08.2026 — WIRKVERSPRECHEN IM TITEL. In der Reihe standen «Wimpernwachstumsserum» und
@@ -287,6 +295,11 @@ def tage_her(datum):
         return 999
 
 
+# ⚠️ 03.09.2026: Der Export ist ein Schnappschuss (30.08.) — was seither in die Reihe kam, traegt
+# dort den Tag noch nicht und waere ein zweites Mal «neu» aufgenommen worden. Die LIVE-Liste aus
+# abgelaufene_raeumen() ist die Wahrheit.
+IN_REIHE = set()
+
 def abgelaufene_raeumen():
     """Nimmt den Tag von allem, was länger als HYPE_TAGE in der Reihe steht."""
     cur, alle = None, []
@@ -309,6 +322,7 @@ def abgelaufene_raeumen():
         # Ohne Datum ist der Eintrag von Hand gesetzt worden — dann bleibt er.
         if seit and tage_her(seit) > HYPE_TAGE:
             raus.append((p, seit))
+    IN_REIHE.update(p["id"] for p in alle)
     print(f"In der Reihe: {len(alle)} | abgelaufen (>{HYPE_TAGE} Tage): {len(raus)}", flush=True)
     for p, seit in raus[:8]:
         print(f"   seit {seit}: {p['title'][:52]}", flush=True)
@@ -432,8 +446,8 @@ def main():
         if preis < 19:
             continue
         tags = p.get("tags") or []
-        if TAG in tags:
-            continue                       # steht schon in der Reihe
+        if TAG in tags or p["id"] in IN_REIHE:
+            continue                       # steht schon in der Reihe (Export ODER live)
         if AUSGEMUSTERT in tags:
             continue                       # Bild schon einmal als untauglich befunden
         if any(t.startswith("preis-pruefen") for t in tags):

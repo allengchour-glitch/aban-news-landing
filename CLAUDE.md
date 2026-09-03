@@ -6180,3 +6180,18 @@ Bohren & Sägen); jedes Ziel vorher geprüft (im Onlineshop, aktive Produkte, se
 Drei Stichproben live 301. Ledger `dropship/_tote_landeseiten_301.txt`.
 - Nebenbei: Der Einschlaf-Ritual-Ratgeber (5 Suchsitzungen/Monat) empfahl «ein Set ätherischer Öle»
   ohne Link — jetzt auf das echte 6er-Set (CHF 14.90, ACTIVE geprüft).
+
+## 🔥 Ein leeres Regex-Glied («||») hatte die Hype-Reihe vier Tage lang zugeschnürt (2026-09-03)
+Die September-Recherche brachte zwei neue Themen (smartes Haustier-Spielzeug, Handy-Umhängetasche);
+der Trockenlauf fand trotz 49 Treffern im Export **0 Kandidaten**. Jeder Treffer trug denselben
+Ausschluss: `NICHT_STARTSEITE`. Dort stand seit dem 30.08. `Anti-?Pilz||Creme\b` — ein LEERES
+Alternativglied matcht die leere Zeichenkette, also JEDEN Titel. Seit vier Tagen war damit kein
+Produkt mehr «startseitentauglich», und der tägliche Lauf meldete unauffällig «Neu in die Reihe: 0».
+Dazu fehlte am Zeilenende das `|` vor `Nagelpilz`. Beides behoben; der Lauf nahm sofort 12 auf.
+- **Regel: Wer eine Alternativliste erweitert, testet sie in beide Richtungen** — ein Titel, der
+  treffen soll, UND einer, der nicht treffen darf. `re.compile` meldet ein leeres Glied nicht.
+- ⚠️ Zweite Falle daneben: Der Kandidaten-Export ist vom 30.08.; was seither in die Reihe kam,
+  trägt dort den Tag nicht und wäre ein zweites Mal «neu» aufgenommen worden. Die LIVE-Liste
+  der Reihe (`IN_REIHE`) ist jetzt die Wahrheit.
+- ⚠️ «WLAN-Controller für LED-Lichtleisten» traf das LED-Strip-Thema — Zubehör, kein Trend.
+  Zubehörwörter (Controller, Netzteil, Verlängerung, Adapter) ausgeschlossen.
