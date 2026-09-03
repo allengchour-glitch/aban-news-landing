@@ -13227,3 +13227,233 @@
 15454192632193	ersetzt-1	Haarglätter für nasses und trockenes Haar
 15454192664961	ersetzt-1	Intelligenter Futtermanger für Haustiere
 15454192697729	ersetzt-1	Haarformer mit Tourmalin-Keramik
+15454192730497	ersetzt-1	Hochtaillierte Damen Jeans-Shorts
+15454192763265	ersetzt-1	Automatischer Futternapf
+15454192796033	ersetzt-1	Gezackte Denim-Shorts
+15454192828801	ersetzt-1	Mini Haarstyling-Gerät
+15454192861569	ersetzt-1	Intelligenter Futternapf mit Zeitsteuerung
+15454192894337	ersetzt-1	Leichte, hochgeschnittene Jeans
+15454192927105	ersetzt-1	Tierhaar-Entferner
+15454192959873	ersetzt-1	Wi-Fi LED-Steuerung für RGB-LEDs
+15454192992641	ersetzt-1	Heizschüssel für Haustiere
+15454193025409	ersetzt-1	Blaues Straight-Jeans
+15454193058177	ersetzt-1	Haarständer
+15454193123713	ersetzt-1	Prinzessinnen-Schuhe mit Bows, weiches Sohlen
+15454193156481	ersetzt-1	Langsam-Futter-Matte
+15454193189249	ersetzt-1	Patchwork-Denim-Hosen
+15454193222017	ersetzt-1	Automatischer Lockenstab
+15454193254785	ersetzt-1	Signaldetektor gegen Wanzen und Kameras
+15454193287553	ersetzt-1	Automatischer Futterplatz
+15454193320321	ersetzt-1	Weisse, stonewashed Jeans
+15454193353089	ersetzt-1	Keratine Kamm mit Massagefunktion
+15454193385857	ersetzt-1	Weisse Perlen-Prinzessin Schuhe
+15454193418625	ersetzt-1	Owl Puzzle Futterspielzeug für Katzen
+15454193451393	ersetzt-1	Dunkelblaue Slim-Fit Jeans mit Stretch
+15454193484161	ersetzt-1	Kabelloser Lockenstab mit Schnellladung
+15454193549697	ersetzt-1	Avocado-Futter Schüssel
+15454193582465	ersetzt-1	Mini Haarstecker mit USB
+15454193615233	ersetzt-1	Stretch-Denim Jeans
+15454193648001	ersetzt-1	Laufschuhe für Kids
+15454193680769	ersetzt-1	Intelligenter Futternapf
+15454193713537	ersetzt-1	Retro-Shorts für Damen
+15454193746305	ersetzt-1	Haartrockner mit mehreren Funktionen
+15454193779073	ersetzt-1	Kinder-Sandalen mit Cartoon-Muster
+15454193811841	ersetzt-1	Intelligenter Futtermatcher für Hunde und Katzen
+15454193844609	ersetzt-1	Kapri-Hosen mit Stern-Applikation
+15454193877377	ersetzt-1	3-in-1 Heissluftkamm
+15454193910145	ersetzt-1	Wasserschuhe für Kinder, schnell trocknend
+15454193942913	ersetzt-1	Langsam-Futtermatte für Haustiere
+15454196859265	ersetzt-1	Bluetooth-Lautsprecher mit 2 Mikrofonen für Outdoor-Karaoke
+15454197383553	ersetzt-1	Ultrasonischer Aromadiffusor für Heimgebrauch
+15454197481857	ersetzt-1	Portabler USB-Lüfter
+15454197612929	ersetzt-1	Wasserreiniger & Heisswasserspender
+15454197645697	ersetzt-1	Schlankes Streifen-Kleid
+15454197711233	ersetzt-1	Keramik-Bügeleisen mit 3-Stufen-Regelung 2600W
+15454197744001	ersetzt-1	Smart-Armbanduhr mit Gesundheits-Features
+15454197776769	ersetzt-1	Mini-Handheld-Scanner mit Bildschirm und WLAN
+15454197809537	ersetzt-1	Taktische Uhr mit Dual-Display
+15454197842305	ersetzt-1	Langes Streifen-Kleid
+15454197875073	ersetzt-1	Elektrischer Jade-Kamm mit Kopfhautmassage
+15454197907841	ersetzt-1	Kreatives Nylon-Armband
+15454197940609	ersetzt-1	Ozon-Maschine zur Luftreinigung
+15454197973377	ersetzt-1	Wasserleckage-Alarm mit App
+15454198006145	ersetzt-1	Woll-Top mit Crew-Ausschnitt
+15454198071681	ersetzt-1	Nachtsicht-Turkamera
+15454198104449	ersetzt-1	Relaxter Pullover mit Ausschnitt
+15454198137217	ersetzt-1	Bluetooth-Subwoofer für Desktop
+15454198202753	ersetzt-1	Elegante Polka-Dot-Bluse mit Kapuze
+15454198235521	ersetzt-1	Mini Bluetooth-Lautsprecher
+15454198268289	ersetzt-1	Intelligentes Massagegerät für zu Hause
+15454198301057	ersetzt-1	Bestickte Badehose aus reiner Baumwolle
+15454198366593	ersetzt-1	Vintage Jeans, schlank, Low-rise
+15454198399361	ersetzt-1	Intelligenter Lesestift
+15454198432129	ersetzt-1	Extra-dickes Xinjiang-Badehandtuch
+15454198464897	ersetzt-1	High-Waist Skinny Jeans
+15454198497665	ersetzt-1	Turbo-Handventilator
+15454198530433	ersetzt-1	Herrenarmbanduhr Multifunktional
+15454198563201	ersetzt-1	Retro Jeans mit Stretch und Stickerei
+15454198628737	ersetzt-1	Drei-Pack reine Baumwollhandtücher
+15454198661505	ersetzt-1	Retro-Leopard-Hose cropped
+15454198727041	ersetzt-1	Dickes, hochabsorbierendes Badetuch aus Baumwolle
+15454198759809	ersetzt-1	Vintage Ripped Jeans
+15454198792577	ersetzt-1	Lithium-Akkupack für Sprayer-Trolley
+15454198825345	ersetzt-1	6-teiliges Badtuch-Set aus Baumwolle
+15454198858113	ersetzt-1	Retro-Cow-Workshorts
+15454198890881	ersetzt-1	Roboter-Staubsauger mit Mop-Funktion
+15454198923649	ersetzt-1	Bequeme, weiter Jeans
+15454198956417	ersetzt-1	Heissluft-Massagegerät mit Musik
+15454198989185	ersetzt-1	Wandmontiertes Handtuch für Küche und Bad
+15454199021953	ersetzt-1	Bluetooth-Lautsprecher für Computer
+15454199054721	ersetzt-1	Vierlagiges Baumwoll-Handtuch mit Blumenmuster
+15454199087489	ersetzt-1	Multifunktionaler Aschenbecher mit Luftreiniger
+15454199120257	ersetzt-1	Sequined Jumpsuit Sommer
+15454199153025	ersetzt-1	Baumwoll-Gesichtstuch
+15454199185793	ersetzt-1	Kleiner Bluetooth-Lautsprecher
+15454199218561	ersetzt-1	Hollow-Back Jumpsuit für Yoga und Sport
+15454199251329	ersetzt-1	Kotton Handtuch Set
+15454199284097	ersetzt-1	Elektronische Körperwaage mit Körperfett- und Feuchtigkeitsm
+15454199316865	ersetzt-1	Outdoor-Sneaker für Berg & Natur
+15454199349633	ersetzt-1	Einfacher Jumpsuit mit Tasche
+15454199382401	ersetzt-1	10-teiliges Badset aus Baumwolle
+15454199415169	ersetzt-1	Einfache LED-Alarm Uhr
+15454199447937	ersetzt-1	Herren Sneaker Atmungsaktiv Outdoor Wandern
+15454199480705	ersetzt-1	Weihnachts-Sofabezüge mit Troddeln
+15454200660353	ersetzt-1	Wasserdichter Business-Männer-Armband
+15454200725889	ersetzt-1	Eleganter Herrenquarzarmbanduhr
+15454200758657	ersetzt-1	Multifunktionaler wasserdichter Quarzarmband Herren
+15454200791425	ersetzt-1	Eleganter Halter-Neck Kleid in Laufsteg-Stil
+15454200824193	ersetzt-1	Herrenquarzarmbanduhr mit Barrel-Design, wasserdicht
+15454200856961	ersetzt-1	Business-Armbanduhr mit Kalender
+15454200889729	ersetzt-1	Elegante Herrenquarzuhren mit Stahlband
+15454200922497	ersetzt-1	Mode Damen Einfarbiger Crew-Neck Casual Pullover
+15454200955265	ersetzt-1	Männer-Multifunktionsuhr Edelstahl
+15454200988033	ersetzt-1	Hoodie-Cardigan mit Reissverschluss
+15454201020801	ersetzt-1	Stylische Herren-Armbanduhr mit Leuchtzifferblatt
+15454201053569	ersetzt-1	Luminöse Herrenquarzuhren mit Alloy-Armband
+15454201086337	ersetzt-1	Herren Quartz Armbanduhr Sport
+15454201119105	ersetzt-1	Wärme-Kälte-Augenmaske für Entspannung und Schlaf
+15454201151873	ersetzt-1	Premium-Diamant Herrenquarzuhren mit Kalendarfunktion
+15454201184641	ersetzt-1	Dreilagige gedruckte Baumwollmaske mit verstellbarer Ohrensc
+15454201217409	ersetzt-1	Farbiges Diamant-Mask
+15454201381249	ersetzt-1	Leichter Sommer-Top mit Streifen
+15454201545089	ersetzt-1	Luxus-Uhr als Manschettenknöpfe
+15454201577857	ersetzt-1	Einfaches, atmungsaktives T-Shirt
+15454201643393	ersetzt-1	Holz-Feeder für Kleintiere
+15454201708929	ersetzt-1	Silikon-Armband für Apple Watch Ultra
+15454201741697	ersetzt-1	Herren-Pullover aus Seide
+15454201774465	ersetzt-1	Interaktives Futterball-Spielzeug
+15454201807233	ersetzt-1	Stainless Steel Armband mit 5 Perlen
+15454201840001	ersetzt-1	Street-Punk-Hemd mit Kontrastnähten
+15454201872769	ersetzt-1	Intelligente Tierfernfütterung mit HD-Kamera
+15454201905537	ersetzt-1	Leder-Uhrbox
+15454201938305	ersetzt-1	Slim-Fit Kurzarm-Shirt
+15454201971073	ersetzt-1	Interaktives Futter-Spielzeug
+15454202003841	ersetzt-1	Doppelreihen-Armband Schutzhülle
+15454202036609	ersetzt-1	Herren-Tanktop aus Ice Silk
+15454202069377	ersetzt-1	Automatischer Futternapf für Katzen
+15454202102145	ersetzt-1	Lederarmband mit Lochmuster
+15454202134913	ersetzt-1	Sommer-Hemd für Herren
+15454202167681	ersetzt-1	3-in-1 Futternapf aus Bambusfaser
+15454203609473	ersetzt-1	Diamantuhren
+15454203675009	ersetzt-1	Oktopoden-Pendant mit Türkisen Perlenkette
+15454203707777	ersetzt-1	Retro-Armbanduhr Edelstahl
+15454203740545	ersetzt-1	Lasergravur-Kette und Armband mit DIY-Namen-Gravur
+15454203773313	ersetzt-1	Business-Quarzarmbanduhr mit Mesh-Armband
+15454203806081	ersetzt-1	Herrenuhr Stahlkette Business Casual
+15454203838849	ersetzt-1	Automatische Herrenuhr wasserdicht mit Leuchteffekt
+15454203871617	ersetzt-1	Herrenuhr in Schwarz und Gold mit Kalenderfunktion
+15454203904385	ersetzt-1	Erweiterbarer Multifunktions-Rollkoffer 20 Zoll
+15454203937153	ersetzt-1	Klassik-Retro wasserdichte Multifunktion Sport-Digitaluhr
+15454203969921	ersetzt-1	Reise-Tasche 20-35L
+15454204002689	ersetzt-1	Reise-Tasche für Herren
+15454204068225	ersetzt-1	Männliche Zylinderuhren mit Leuchtzifferblatt und Quarzwerk
+15454204100993	ersetzt-1	Herren-Multifunktions-Armbanduhr wasserdicht mit Wecker
+15454204133761	ersetzt-1	Business-Stil Multi-Funktion Stahlarmbanduhr für Herren
+15454204199297	ersetzt-1	Stahlarmband Uhr mit Runden Zifferblatt
+15454204232065	ersetzt-1	Portabler Automatik-Welle mit Multifunktions-Lade
+15454204264833	ersetzt-1	Neu und elegante Herren-Automatic Uhren mit Vintage-Design
+15454204297601	ersetzt-1	Einfache Digitaluhr mit grossem Zifferblatt
+15454204330369	ersetzt-1	Fransen- und Dünnschneider Set
+15454204363137	ersetzt-1	Transparente Elektronik-Uhr
+15454204395905	ersetzt-1	Elektrisches Glätteisen mit Temperaturregelung
+15454204428673	ersetzt-1	Handventilator mit USB
+15454204461441	ersetzt-1	Locken- und Glätte-Styler
+15454204494209	ersetzt-1	Goldene Herren-Armbanduhr
+15454204526977	ersetzt-1	Retro-Overall für Herren
+15454204559745	ersetzt-1	Nano-Titanium-Haarglätter
+15454204592513	ersetzt-1	Fahrrad-Frontscheinwerfer
+15454204625281	ersetzt-1	Ei-förmige Armbanduhr für Damen
+15454204658049	ersetzt-1	Infrarot-Haarglätter mit LCD-Display
+15454204723585	ersetzt-1	Lockenstab mit Temperaturstufen
+15454204756353	ersetzt-1	Fernbedienung Turmventilator
+15454204821889	ersetzt-1	Smart Sportuhr im Instagram-Stil
+15454204854657	ersetzt-1	Cartoons Regenstiefel
+15454204887425	ersetzt-1	Sportliche Multifunktionsuhr
+15454204920193	ersetzt-1	Multifunktions-Armbanduhr mit Mondphasen-Anzeige
+15454204952961	ersetzt-1	Prinzessinnen-Schuhe mit Absatz
+15454218224001	ersetzt-1	Herren Arbeitsschuhe mit atm. Mesh & Stahlkappe
+15454218289537	ersetzt-1	Elegantes Abendkleid in Grün
+15454218387841	ersetzt-1	Schwarze Leder-Schuhe mit Kurzabsatz
+15454218420609	ersetzt-1	Chic Damenkleid
+15454218453377	ersetzt-1	Outdoor-Trekking-Schuhe
+15454218486145	ersetzt-1	Herz-Stickerei Schuhe & Sandalen mit Farbenfroher Kombinatio
+15454218617217	ersetzt-1	Sicherheits-Schuhe mit Drehverschluss
+15454218649985	ersetzt-1	Männliche Casual-Sneaker
+15454218682753	ersetzt-1	Frontscheinwerfer fürs Fahrrad
+15454218715521	ersetzt-1	Infrarot-Dampfstyler für Locken und Glätte
+15454218748289	ersetzt-1	600-Lumen Fahrrad-Frontlicht schwarz/gra
+15454218781057	ersetzt-1	Haarglätter Bürste
+15454218813825	ersetzt-1	Crossover-Sneaker
+15454218846593	ersetzt-1	Fernbediente Blinkleuchte mit Warnhorn und wasserdicht
+15454218879361	ersetzt-1	Haarwelle mit Volumen & Seiden-Glanz
+15454218912129	ersetzt-1	Fashionable Plattform-Schuhe
+15454218944897	ersetzt-1	Fahrrad-Scheinwerfer mit Display
+15454218977665	ersetzt-1	Kleines Locken- und Glätteisen
+15454219010433	ersetzt-1	Leichte Sicherheitsschuhe mit Anti-Stoss & Anti-Stechschutz
+15454219075969	ersetzt-1	Automatischer Doppelwirkungs-Haarglätter für grosse Wellen
+15454219108737	ersetzt-1	Kabelloser Lockenstab
+15454219141505	ersetzt-1	Einheits-Loafer für Mädchen
+15454219174273	ersetzt-1	Herren-Haarglätter mit Langzeit-Styling
+15454219207041	ersetzt-1	Perlensandalen für Mädchen
+15454219239809	ersetzt-1	Kleiner Haarkrauser mit Drehfunktion
+15454219272577	ersetzt-1	Autom. Futtermittelspender mit Zeitsteuerung
+15454219305345	ersetzt-1	Eierroll-Styler für Locken
+15454219338113	ersetzt-1	Laufschuhe Modell 12
+15454233919873	ersetzt-1	Quarzuhr mit Kalender
+15454233985409	ersetzt-1	Intelligenter Offline-Fotografie-Übersetzer
+15454234018177	ersetzt-1	Herren Armband Edelstahl vielseitig
+15454234116481	ersetzt-1	Visueller Timer Wecker
+15454234149249	ersetzt-1	Herren-Sportuhr wasserdicht & leuchtend
+15454234182017	ersetzt-1	Smarter Vorhangschalter
+15454234214785	ersetzt-1	Multifunktions-Elektronische Herrenuhr
+15454234247553	ersetzt-1	Musik-Rhythmus-Lampe mit Sprachsteuerung
+15454234280321	ersetzt-1	Herren-Armbanduhr, wasserdicht, automatisch
+15454234313089	ersetzt-1	Automatischer Giessautomat
+15454234345857	ersetzt-1	Digitale Lupe mit Mikroskop
+15454234411393	ersetzt-1	Elegantes Freizeitkleid
+15454234444161	ersetzt-1	Leise Luxus-Uhr
+15454234476929	ersetzt-1	Kalender-Quarzuhr mit Nylonarmband
+15454234509697	ersetzt-1	Herren Sportuhr mit Leuchtzifferblatt
+15454234542465	ersetzt-1	Zeitgesteuertes Regensystem Regensimulation
+15454234575233	ersetzt-1	Radio mit Bluetooth und HD-Display
+15454234608001	ersetzt-1	SMAEL Elegante Herrenquarzuhren mit Sportivem Design
+15454234640769	ersetzt-1	Elegantes Midi-Kleid mit Patchwork
+15454234673537	ersetzt-1	Studentenleselampe Faltbar Aufladbare Schreibtischlampe mit 
+15454234739073	ersetzt-1	Herren-Uhr Geschenkset
+15454234771841	ersetzt-1	Mini-Heizlüfter mit Fernbedienung
+15454234804609	ersetzt-1	Herren Uhren-Set mit Geldbörse, Gürtel & Schlüsselanhänger
+15454234837377	ersetzt-1	Bluetooth-Mikrofon-Set für Familie
+15454234870145	ersetzt-1	Kaninchen-Sandalen für Mädchen
+15454234902913	ersetzt-1	Digitale Uhr für Unisex
+15454234935681	ersetzt-1	Bluetooth-Lautsprecher mit Mikrofon Wireless-Set
+15454234968449	ersetzt-1	Herren-Armbanduhr aus Leder
+15454235001217	ersetzt-1	Turbofan für Reinigung
+15454235033985	ersetzt-1	Fitness-Hosen für Damen
+15454235066753	ersetzt-1	Wetterstation mit Multifunktion
+15454235099521	ersetzt-1	Einfache Quadratische Uhr
+15454235132289	ersetzt-1	High-Waist Leggings, schlank machend
+15454235263361	ersetzt-1	Herren-Armbanduhr
+15454235296129	ersetzt-1	Digitaler Bilderrahmen mit E-Tinte
+15454235328897	ersetzt-1	Herren Sportuhr für Schwimmen
+15454235361665	ersetzt-1	Braune Leggings mit hoher Elastizität
+15454235394433	ersetzt-1	Selbstauslöser mit Licht

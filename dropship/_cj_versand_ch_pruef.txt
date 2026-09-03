@@ -603,3 +603,14 @@ knochenmesser-mit-palisandergriff-663104	1402814218394275840	0	-	KEINE CH-Option
 metzgermesser-zum-entbeinen-991168	1402817077567426560	0	-	KEINE CH-Option → DRAFT	klinge
 handgeschmiedetes-kuchenmesser-618400	2406180628091618600	1	18.85	ok	klinge
 kuchenmesser-chiron-knochen-klein-046080	1402811952018886656	0	-	KEINE CH-Option → DRAFT	klinge
+metzger-ausbeinmesser-fur-kuche-und-verkauf-558976	1402813424961982464	0	-	KEINE CH-Option → DRAFT	klinge
+obst-und-schalmesser-fur-die-kuche-676608	1398095814064214016	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kuchenmesser-set-mit-harzgriff-974656	1394541494173569024	0	-	KEINE CH-Option → DRAFT	klinge
+schneidebrett-mit-scharfer-doppelseitig-614000	2506020520421614400	11	17.85	ok	klinge
+taschen-klappmesser-fur-outdoor-abenteuer-602800	2505210310171603100	0	-	KEINE CH-Option → DRAFT	klinge
+klappmesser-aus-zinklegierung-und-d2-stahl-608000	2505200621041608400	0	-	KEINE CH-Option → DRAFT	klinge
+klappmesser-fur-camping-und-jagd-611400	2505140342051611700	11	6.70	ok	klinge
+klappmesser-mit-karbonfasergriff-601600	2505110148351601900	0	-	KEINE CH-Option → DRAFT	klinge
+titan-taschenmesser-fur-outdoor-und-alltag-613400	2505100638541613800	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-kochmesser-fur-gemuse-und-fruchte-623500	2406100755181623700	0	-	KEINE CH-Option → DRAFT	klinge
+taktisches-messer-mit-hoher-harte-tragbar-600300	2504250335531600500	0	-	KEINE CH-Option → DRAFT	klinge
