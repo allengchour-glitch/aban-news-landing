@@ -6142,3 +6142,19 @@ erreicht, hat deswegen noch nichts getan» — diesmal mit falscher Quittung obe
   Angaben». Zwei Funde am ersten Erzeugnis, beide an der Quelle behoben: «Er ist in den Farben … erhältlich»
   bei EINER Variante (Prompt verbietet Auswahl-Behauptungen jetzt) und «Material: Leder» bei
   PU-Leder im Text (CJ «Leather» + PU → PU-Leder).
+
+## 💥 Der Such-Importer stürzte seit dem 15.08. bei JEDEM Anlegen ab — als «Punkte weg?» getarnt (2026-09-03)
+Die Wecker-Suche des Betreibers fand um 22:11 UTC endlich ein Produkt, Groq lieferte den Text — und
+`cj_sku_import.mjs` starb mit `ReferenceError: googleKategorie is not defined`. Der Aufruf steht seit
+dem **15.08.** (Commit 5785a5350: «google_product_category auch in sku-/trending-Importer»), der
+Import wurde damals nur im Trending-Importer ergänzt. **Im Queue-Log stehen 0 «✅»-Zeilen** — seit
+achtzehn Tagen hat die Suchwarteschlange kein einziges Produkt angelegt. Sichtbar war das nie, weil
+`cj_queue_runner.sh` jeden RC≠0 als «Punkte weg? Pause 30min» ausgibt und die Batches offen liess —
+formal richtig (keine falsche Quittung), inhaltlich ein Dauerschleifen-Absturz. Davor deckte der tote
+Groq-Schlüssel den Fehler zu (kein Text → nie bis zum Anlegen).
+- Import ergänzt (`googleKategorie` aus google_kategorie.mjs), Syntax geprüft, gepusht.
+- **Lehre: Ein Fehlerzweig, der jeden Exit-Code mit EINEM Grund beschriftet («Punkte weg?»), macht
+  jeden anderen Fehler unsichtbar.** Ein RC≠0 gehört mit den letzten Log-Zeilen gemeldet, nicht mit
+  einer Vermutung. Und: Wer eine Funktion in zwei Importer einbaut, prüft beide mit `node --check` —
+  das hätte den fehlenden Import 2026-08-15 in einer Sekunde gezeigt (ein ReferenceError zur Laufzeit
+  ist für `--check` allerdings unsichtbar; nur ein Probelauf mit DRY=0 bis zum Anlegen hätte ihn gefunden).
