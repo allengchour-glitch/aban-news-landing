@@ -27,6 +27,24 @@ bash /opt/abannews/server/harden-ssh.sh "ssh-ed25519 AAAA... dein@key"
   + `bash build-pages.sh` + `wrangler pages deploy _site --project-name=abannews`.
 - Secrets liegen in `/etc/abannews/deploy.env` (chmod 600), **nie im Git**.
 
+## ⚠️ Seit 29.08.2026 nichts mehr live? — Spam-Markierung des GitHub-Kontos
+
+GitHub hat das Konto als „spammy" markiert (belegt 30.08., siehe CLAUDE.md). Folge:
+das Repo liefert für **anonyme** Zugriffe 404 — und der Server klont/fetcht anonym.
+Der Timer lief also weiter, jeder `git fetch` scheiterte, die Seite blieb auf dem
+Stand vom 29.08. ~03:00 UTC stehen. Sichtbar in
+`journalctl -u abannews-deploy.service -n 30` als „repository not found".
+
+**Fix (einmalig, 2 Minuten):**
+1. Fine-grained PAT anlegen: github.com → Settings → Developer settings → Fine-grained
+   tokens → nur dieses Repo, Permission **Contents: Read-only**.
+2. Auf dem Server in `/etc/abannews/deploy.env` eine Zeile `GITHUB_TOKEN=github_pat_…`
+   ergänzen (Datei bleibt chmod 600).
+3. `bash /opt/abannews/server/auto-deploy.sh` — holt authentifiziert und deployt sofort.
+   (`auto-deploy.sh` nutzt den Token als HTTP-Header; Remote-URL bleibt unverändert.)
+
+Kontrolle: `curl -sL https://abannews.com/traumhaus.html | grep -c carStandT` → > 0.
+
 ## Befehle
 
 | Zweck | Befehl |

@@ -81,6 +81,13 @@ Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts (GitLab prüfen).
 - Startseite: `#stickySub` (zweite Abo-Bodenleiste) entfernt, `#mcta` bleibt. `html-validate index.html` ohne Befund.
 
 **📌 2026-08-30 (🚨 URSACHE GEFUNDEN — das GitHub-Konto ist als SPAM markiert):**
+- **🌐 LIVE-DEPLOY STEHT SEIT 29.08. ~03:00 UTC (belegt 03.09.):** abannews.com zeigt den Stand von Commit
+  `9394a0e`, alles danach (~90 Merges, Chat-Entfernung, Suche, Fahrmodell) ist NICHT live. Ursache = dieselbe
+  Spam-Markierung: der Hetzner-Poller (`server/auto-deploy.sh`, Timer alle 3 min) fetcht **anonym** per HTTPS →
+  404. **Fix nur durch den User:** Fine-grained PAT (Contents: read) als `GITHUB_TOKEN` in
+  `/etc/abannews/deploy.env`, dann `bash /opt/abannews/server/auto-deploy.sh` (Anleitung `server/README.md`).
+  Cloud-Sessions haben keine Cloudflare-/Server-Zugänge — nicht erneut Stunden mit Live-Checks verbrennen;
+  Kontrolle: `curl -sL https://abannews.com/traumhaus.html | grep -c carStandT` (> 0 = live).
 - **GitHubs eigene Fehlermeldung** (Search-API): `Validation Failed: **User flagged as spammy**`.
   Damit ist belegt, was seit Juni als drei getrennte Rätsel im Gedächtnis stand — es ist **EIN** Problem:
   (1) „Actions has been disabled for this user", (2) die harten API-Rate-Limits, (3) dass Repo **und**
