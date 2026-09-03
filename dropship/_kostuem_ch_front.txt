@@ -465,3 +465,32 @@ gid://shopify/Product/15469958168961	Bolero Fischernetz schwarz
 gid://shopify/Product/15469958234497	Umhang Fade schwarz-rot
 gid://shopify/Product/15469958267265	Bolero Rave neongrün
 gid://shopify/Product/15469958332801	Trainingsanzug Disco
+gid://shopify/Product/15469958365569	Kostüm Piratin Mary
+gid://shopify/Product/15469958398337	Netz Shirt neon grün
+gid://shopify/Product/15469958431105	Kostüm American Footballer
+gid://shopify/Product/15469958463873	Umhang Dusk braun 180 cm
+gid://shopify/Product/15469958496641	Netz Shirt Regenbogen
+gid://shopify/Product/15469958529409	Kostüm Ken Rollerblades
+gid://shopify/Product/15469958562177	Kostüm Blumen Frau
+gid://shopify/Product/15469958594945	Leggins neonrosa stretch
+gid://shopify/Product/15469958627713	Kostüm Bugs Bunny
+gid://shopify/Product/15469958660481	Kostüm Mrs Steampunk
+gid://shopify/Product/15469958693249	Set Matrose Hut und Shirt
+gid://shopify/Product/15469958726017	Onsie Einhorn
+gid://shopify/Product/15469958758785	Kostüm Pirat
+gid://shopify/Product/15469958791553	Weste Willow Grösse M-L
+gid://shopify/Product/15469958824321	Waschbär Onesie
+gid://shopify/Product/15469958857089	Kostüm Gladiator Grösse M/L
+gid://shopify/Product/15469958889857	Poncho/Oberteil Batikmuster
+gid://shopify/Product/15469958922625	Jumpsuit Skelett · CHAKS
+gid://shopify/Product/15469958955393	Cape Steampunk 85 cm
+gid://shopify/Product/15469958988161	Kostüm Gefangener Jackson
+gid://shopify/Product/15469959020929	Kostüm Steampunk Victoria
+gid://shopify/Product/15469959053697	Kostüm Prinzessin Mirabel
+gid://shopify/Product/15469959086465	Kostüm Pirat Henry ohne Hut
+gid://shopify/Product/15469959119233	Kinderkostüm Rotkäppchen
+gid://shopify/Product/15469959152001	Kostüm Nekromant
+gid://shopify/Product/15469959184769	Kostüm Saloon Girl Jolene
+gid://shopify/Product/15469959250305	Umhang Jedi Ritter
+gid://shopify/Product/15469959283073	Umhang Vampir Carlyle
+gid://shopify/Product/15469959315841	Kostüm Pharaoh Anubis

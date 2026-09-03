@@ -7163,3 +7163,26 @@
 15449484001665	ersetzt-1	Katzengeschirr mit Leine, sicher & bequem
 15449484034433	ersetzt-1	Tiere-Weste für Outdoor
 15449484165505	ersetzt-1	Automatische Rückzugsleine und Geschirr
+15449484198273	ersetzt-1	Kühljacke für Hunde
+15449484231041	ersetzt-1	Kühlweste für Hunde
+15449484296577	ersetzt-1	Westen-Halsband mit Leine
+15449484329345	ersetzt-1	Katzen-Gurt mit Reflektion und GPS-Tasche
+15449484427649	ersetzt-1	Katzengeschirr mit Leine
+15449484460417	ersetzt-1	Portable Hundeharness
+15449484493185	ersetzt-1	Sichere Hundeleine mit Reflektor
+15449484525953	ersetzt-1	Gepolsterte Hunde-Halsung
+15449484591489	ersetzt-1	Hunde-Geschirr
+15449484624257	ersetzt-1	Atmungsaktive Hunde-Halsung mit Reflektion
+15449485246849	ersetzt-1	Aussenüberwachungskamera mit HD-Auflösung
+15449485312385	ersetzt-1	Intelligenter 3-Achsen-Stabilisator
+15449485345153	ersetzt-1	Klein, robust, 4K-Auflösung
+15449485377921	ersetzt-1	Wasserdichte HD-Kamera für Sport und Outdoor
+15449485410689	ersetzt-1	WIFI-Sportkamera
+15449485443457	ersetzt-1	HD Jagdkamera mit Infrarot-Technologie für Sicherheit
+15449485476225	ersetzt-1	Sportkamera für Outdoorsport
+15449485508993	ersetzt-1	Überwachungskamera mit Lampenkopf
+15449485541761	ersetzt-1	Kamera mit Anti-Shake-Funktion
+15449485574529	ersetzt-1	Dual-Bildschirm-Recorder
+15449485607297	ersetzt-1	Motorrad-Kamera mit GPS
+15449485672833	ersetzt-1	Intelligente PTZ-Kamera
+15449485771137	ersetzt-1	Überwachungskamera mit Nachtsicht
