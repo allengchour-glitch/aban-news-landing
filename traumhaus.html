@@ -488,6 +488,16 @@ if(localStorage.getItem("th_filmlook")!=="0"){
     "background:radial-gradient(ellipse 118% 96% at 50% 44%,transparent 62%,rgba(10,14,26,.16) 86%,rgba(6,9,18,.34) 100%)";
   document.getElementById("wrap").appendChild(_vig);
 }
+var _halmTexObj=null;
+function _halmTex(){
+  if(_halmTexObj)return _halmTexObj;
+  var cv=document.createElement("canvas");cv.width=4;cv.height=64;var c=cv.getContext("2d");
+  var g=c.createLinearGradient(0,64,0,0);          /* v 0 unten -> 1 oben */
+  g.addColorStop(0.00,"#3f6428");g.addColorStop(0.55,"#7ea24a");g.addColorStop(0.86,"#a8c25a");
+  g.addColorStop(0.88,"#6b4a2a");g.addColorStop(1.00,"#5a3d22");   /* Kolben */
+  c.fillStyle=g;c.fillRect(0,0,4,64);
+  var t=new THREE.CanvasTexture(cv);if(THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
+  _halmTexObj=t;return t;}
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd0ea);scene.fog=new THREE.Fog(0x9fd0ea,130,340);
 var camera=new THREE.PerspectiveCamera(46,W/H,0.1,600);
 // Echtes Himmelslicht
@@ -1474,6 +1484,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        machen daraus ein Ufer — als EIN InstancedMesh, also ein Zeichenaufruf.
        Die Bueschel folgen derselben Uferkurve seeR(), damit keins im Wasser
        oder im Weg steht; die Promenade (Nordseite) bleibt frei. */
+    /* 🌾 Sichtrunde 2026-09-02: die Halme waren 0,16 m dicke, einfarbige Kloetze und
+       sahen aus wie blasse Streichhoelzer. Jetzt verjuengte Halme (Fuss 0,06, Spitze 0,012)
+       mit Farbverlauf ueber die Hoehe — dunkles Gruen unten, helles Gruen oben und ein
+       brauner Kolben ganz oben — ueber EINE kleine Textur, die auch die Schilfinseln
+       auf der Wiese benutzen. Weiter ein InstancedMesh, weiter ein Zeichenaufruf. */
     (function schilf(){
       var halme=[],dmy=new THREE.Object3D(),sd=13;
       function rnd(){sd=(sd*16807)%2147483647;return sd/2147483647;}
@@ -1487,8 +1502,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
                       1.5+rnd()*1.3, (rnd()-0.5)*0.3, rnd()*3.14]);}
       }
       if(!halme.length)return;
-      var hG=new THREE.BoxGeometry(0.16,1,0.16);hG.translate(0,0.5,0);  /* 0.07 war aus Spielsicht unsichtbar */
-      var hM=new THREE.MeshStandardMaterial({color:0x6f8a3e,roughness:0.95});
+      var hG=new THREE.CylinderGeometry(0.012,0.06,1,5);hG.translate(0,0.5,0);
+      var hM=new THREE.MeshStandardMaterial({map:_halmTex(),roughness:0.95});
       var hI=new THREE.InstancedMesh(hG,hM,halme.length);
       halme.forEach(function(q,i){
         dmy.position.set(q[0],0,q[1]);
@@ -1522,8 +1537,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
               new THREE.MeshStandardMaterial({color:0x5e584c,roughness:1,envMapIntensity:0.22})],
       _heuG=new THREE.CylinderGeometry(1.05,1.05,1.5,12),
       _heuM=new THREE.MeshStandardMaterial({color:0xd8c274,roughness:0.98,envMapIntensity:0.15}),
-      _halmG=new THREE.CylinderGeometry(0.03,0.05,1,4),
-      _halmM=new THREE.MeshStandardMaterial({color:0x8aa04a,roughness:0.95});
+      _halmG=new THREE.CylinderGeometry(0.012,0.06,1,5),
+      _halmM=new THREE.MeshStandardMaterial({map:_halmTex(),roughness:0.95});
   function baum2(x,z,k){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];var b=new THREE.Group();
     var st=new THREE.Mesh(_stammG,_stammM);st.position.y=0.9;b.add(st);
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(_kronG[c],_kronM[c%2]);
@@ -4104,6 +4119,8 @@ setTimeout(function baueVerkehr(){
         ? ((_pr+0.5)/_np)*STICH.len                           // ueber den L-Weg verteilen
         : -150+((_pr+0.5)/_np)*300+((i*37)%17)-8;
       m.userData.nieAusblenden=true; /* 🩹 Schwarm-7: LOD registrierte Kleinteile der FAHRENDEN Wagen an ihrer Ladeposition — unterwegs verschwanden Raeder/Anbauteile */
+      (function(){var s9=m.scale.x||1,sz9=new THREE.Vector3();b2.getSize(sz9);      /* Kontaktschatten, Modell-Einheiten */
+        _blob(m,(sz9.x*0.52)/s9,(sz9.z*0.56)/s9,(b2.min.y+0.012)/s9);})();
       var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045),
                raeder:_raederVon(m),radMass:m.scale.x};   /* Radius der Raeder steht in Modell-Metern */
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
@@ -5186,6 +5203,40 @@ setTimeout(function baueGebaeude(){
   window._viertelSolver={VIERTEL:VIERTEL,mass:viertelMass,passt:viertelPasst,ort:viertelOrt,
                          fahrbahn:aufFahrbahn,berg:imBerg,sperre:aufSperre,
                          boxen:bergBoxen,gitter:bergGitter};
+  /* 🏛️ SCHAUSEITE AUS DEM MODELL LESEN. Sichtrunde 2026-09-02: Vergnuegungsviertel
+     und Sportpark zeigten der Strasse riesige glatte Waende. Die Sonde sagte: alle 214
+     bzw. 295 Meshes sichtbar, 10 m entfernt — kein LOD. GEMESSEN (trimesh, Kleinteile
+     mit r < 0,55 nahe einer Aussenwand): th19_eishalle +z 192 / -z 0, th19_kletterhalle
+     +z 196 / -z 0, th19_tennishalle +z 108 / -z 0, th12_bowlingbahn +z 72 / -z 0,
+     th12_nachtclub +z 32 / -z 8, th12_theater +-x 39/39 — waehrend th37_altbau -z 34
+     hat. Der Generator unten dreht jede Tuer "nach -z zur Strasse": fuer die th37-Reihe
+     richtig, fuer die th12/th19-Reihe genau falsch herum.
+     Statt einer Tabelle (die beim naechsten Modell veraltet) zaehlt diese Funktion beim
+     Laden, an welcher Aussenwand die Kleinteile sitzen — Fenster, Leuchten, Schilder —
+     und liefert den Winkel, der diese Wand nach -z bringt. Unter 12 Kleinteilen an der
+     besten Wand gilt: keine erkennbare Schauseite, nichts drehen (Spielhalle, Casino). */
+  function schauseiteWinkel(w){
+    w.updateWorldMatrix(true,true);
+    var bb=new THREE.Box3().setFromObject(w);if(!isFinite(bb.min.x))return {drehung:0,seite:"?",n:0};
+    var inv=new THREE.Matrix4().copy(w.matrixWorld).invert();
+    var lo=bb.min.clone().applyMatrix4(inv),hi=bb.max.clone().applyMatrix4(inv);
+    var mn=new THREE.Vector3(Math.min(lo.x,hi.x),0,Math.min(lo.z,hi.z)),mx=new THREE.Vector3(Math.max(lo.x,hi.x),0,Math.max(lo.z,hi.z));
+    var cx=(mn.x+mx.x)/2,cz=(mn.z+mx.z)/2,ex=(mx.x-mn.x)/2||1,ez=(mx.z-mn.z)/2||1;
+    var z={"-z":0,"+z":0,"-x":0,"+x":0},b=new THREE.Box3(),c=new THREE.Vector3(),e=new THREE.Vector3();
+    w.traverse(function(n){if(!n.isMesh||!n.geometry)return;
+      if(!n.geometry.boundingSphere)n.geometry.computeBoundingSphere();
+      var sk=Math.max(Math.abs(n.scale.x),Math.abs(n.scale.y),Math.abs(n.scale.z));
+      /* Kleinteil in WELT-Metern (das Modell ist skaliert): unter 0,55 m Radius */
+      var rW=n.geometry.boundingSphere.radius*sk*(w.scale.x||1);if(rW>=0.55)return;
+      b.setFromObject(n);b.getCenter(c);c.applyMatrix4(inv);
+      var dz=(c.z-cz)/ez,dx=(c.x-cx)/ex;
+      if(Math.abs(dz)>0.8&&Math.abs(dz)>=Math.abs(dx))z[dz>0?"+z":"-z"]++;
+      else if(Math.abs(dx)>0.8)z[dx>0?"+x":"-x"]++;});
+    var best="-z";["+z","-x","+x"].forEach(function(k){if(z[k]>z[best])best=k;});
+    if(z[best]<12||z[best]<=z["-z"]*1.5)return {drehung:0,seite:"-z",n:z["-z"],z:z};
+    /* R_y(theta): (x,z) -> (x cos + z sin, -x sin + z cos). +z -> -z: pi. -x -> -z: -pi/2. +x -> -z: +pi/2 */
+    var d={"+z":Math.PI,"-x":-Math.PI/2,"+x":Math.PI/2}[best];
+    return {drehung:d,seite:best,n:z[best],z:z};}
   function viertel(cfg){
     var VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
     var ort=viertelOrt(cfg);
@@ -5294,6 +5345,10 @@ setTimeout(function baueGebaeude(){
              verschobener Kasten ausserhalb seiner Zellen blockiert NICHTS mehr. */
       var _s9=null;
       bau(b.file,b.h,bx,0,bz,rot,false,function(w9){
+        /* Schauseite zur Strasse — VOR der Kollider-Anpassung, die die Huelle misst */
+        var sw9=schauseiteWinkel(w9);
+        if(sw9.drehung){w9.rotation.y+=sw9.drehung;w9.updateWorldMatrix(true,true);}
+        w9.userData.schauseite=sw9.seite;w9.userData.schauseiteN=sw9.n;
         g.bauten.push({w:w9,soll:{x:bx,z:bz}});
         if(_s9){
           var bb9=new THREE.Box3().setFromObject(w9);
@@ -9788,6 +9843,29 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
    erste schon benutzt. Wer ein geladenes Material nachtraeglich aendern will,
    muss es vorher selbst klonen (so macht es die Alleebaum-Stelle). */
 var _matReg={};
+/* 🪧 PLAKATE AUF DIE LITFASSSAEULEN. Sichtrunde 2026-09-02: die Saeulen am Markt
+   sahen aus wie Betonsilos — das Material "Plakat" ist eine einfarbige beige Flaeche.
+   GEMESSEN (trimesh): der Plakatzylinder von th6_litfasssaeule hat UV u 0..1 einmal
+   um die Saeule, v 0..1 von unten nach oben; die drei Plakat-Tafeln von th3_litfass
+   u 0,12..0,88. Eine gezeichnete Textur (vier Plakate nebeneinander, kraeftige Farben,
+   grosse Woerter) wickelt sich damit sauber. Sie wird EINMAL gezeichnet und ueber den
+   Materialnamen an jedes Plakatmaterial gehaengt — vor der Vereinheitlichung, damit
+   der Schluessel die Karte mitzaehlt und kein plakatloses Material dafuer einspringt. */
+var _plakatTexObj=null;
+function _plakatTex(){
+  if(_plakatTexObj)return _plakatTexObj;
+  var cv=document.createElement("canvas");cv.width=1024;cv.height=512;var c=cv.getContext("2d");
+  var P=[["#e8453c","#fff3d6","ZIRKUS","Sa 20 Uhr"],["#2f6fd6","#ffffff","KONZERT","Seepark"],
+         ["#f2b632","#2a1a10","MARKT","jeden Samstag"],["#3aa66a","#f4fff7","ZOO","neu: Otter"]];
+  for(var i=0;i<4;i++){var x=i*256;
+    c.fillStyle=P[i][0];c.fillRect(x,0,256,512);
+    c.fillStyle="rgba(255,255,255,.12)";c.fillRect(x+12,12,232,488);
+    c.fillStyle=P[i][1];c.font="bold 64px sans-serif";c.textAlign="center";
+    c.fillText(P[i][2],x+128,230);c.font="bold 30px sans-serif";c.fillText(P[i][3],x+128,300);
+    c.fillStyle="rgba(0,0,0,.18)";c.fillRect(x+40,360,176,6);c.fillRect(x+70,380,116,6);}
+  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
+  if(THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
+  _plakatTexObj=t;return t;}
 function _matVereinheitlichen(wurzel){
   wurzel.traverse(function(n){
     if(!n.isMesh||!n.material)return;
@@ -9795,6 +9873,7 @@ function _matVereinheitlichen(wurzel){
     var neu=liste.map(function(m){
       if(!m)return m;
       m.envMapIntensity=0.3;
+      if(!m.map&&/plakat/i.test(m.name||"")){m.map=_plakatTex();m.color.set(0xffffff);m.needsUpdate=true;}
       /* ⚠️ DER NAME GEHOERT IN DEN SCHLUESSEL. Der Verkehr sucht sein Lackmaterial
          ueber `/lack/i.test(m.name)`; wuerde ein gleich eingestelltes Material aus
          einer anderen Datei das Lackmaterial ersetzen, verloeren die Autos ihre
@@ -11398,8 +11477,32 @@ function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});})();
 
 // ===================== Bewohner: Max & Mia (detailliert, Posen) =====================
+/* 🌑 KONTAKTSCHATTEN. Auf dem Handy sind Schatten aus (_schattenAn) — und damit
+   schwebte alles Bewegliche: Sichtrunde 2026-09-02, Figuren und Wagen ohne jeden
+   Bodenkontakt. Eine weiche dunkle Scheibe unter jeder Figur und jedem Fahrzeug ist
+   der aelteste Trick dafuer: ein Mesh, eine geteilte Textur, kein Licht, kein
+   Schattenpass. Sie haengt als KIND an der Figur/dem Wagen und faehrt ohne eigene
+   Bildarbeit mit. Mit Schattenkarte (Rechner) bleibt sie weg — dort waere sie doppelt. */
+var _blobTexObj=null;
+function _blobTex(){
+  if(_blobTexObj)return _blobTexObj;
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  var gr=c.createRadialGradient(32,32,2,32,32,31);
+  gr.addColorStop(0,"rgba(0,0,0,0.42)");gr.addColorStop(0.55,"rgba(0,0,0,0.22)");gr.addColorStop(1,"rgba(0,0,0,0)");
+  c.fillStyle=gr;c.fillRect(0,0,64,64);
+  _blobTexObj=new THREE.CanvasTexture(cv);return _blobTexObj;}
+function _blobMat(){return new THREE.MeshBasicMaterial({map:_blobTex(),transparent:true,depthWrite:false,
+  polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2});}
+/* rx/rz = Halbachsen in den LOKALEN Einheiten des Elternobjekts, y = lokale Bodenhoehe */
+function _blob(eltern,rx,rz,y){
+  if(typeof _schattenAn!=="undefined"&&_schattenAn)return null;
+  var m=new THREE.Mesh(new THREE.PlaneGeometry(2,2),_blobMat());
+  m.rotation.x=-Math.PI/2;m.scale.set(rx,rz,1);m.position.y=y;m.renderOrder=2;
+  m.castShadow=false;m.receiveShadow=false;m.userData.blob=true;m._bewegt=true;
+  eltern.add(m);return m;}
 function mkBewohner(opts){
   var g=new THREE.Group();
+  _blob(g,0.34,0.26,0.012);
   var skin=stdMat(opts.skin,0.55),hair=stdMat(opts.hair,0.6),top=stdMat(opts.top,0.75),bottom=stdMat(opts.bottom,0.8);
   function pivotLimb(w,h,px,py,m2,d){var p=new THREE.Group();p.position.set(px,py,0);
     var mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d||w),m2);mesh.position.y=-h/2;mesh.castShadow=true;p.add(mesh);g.add(p);return p;}

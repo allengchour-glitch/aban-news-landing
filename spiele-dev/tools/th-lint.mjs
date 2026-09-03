@@ -73,7 +73,12 @@ for (const d of dateien) {
        naechsten Teil gehaengt. Voellig richtig geschrieben. Eine Pruefung, die auf
        einem gebraeuchlichen Muster anschlaegt, ist Laerm und wird abgeschaltet, statt
        gelesen — dann fehlt sie beim vierzehnten Mal. */
-    const sauberesEnde = /^\s*(\)|,|;|\+|\s*$)/.test(danach) || /^\s*\n/.test(danach)
+    /* ⚠️ "}" GEHOERT DAZU (2026-09-03). Eine Sonde, die die LETZTE Eigenschaft ihres
+       Objekts ist, endet als `…}` gefolgt von "}, TMP)" — voellig richtig geschrieben.
+       th-plaetze.mjs wurde so gemeldet, obwohl `node --check` sie sauber findet. Ein
+       Fehlalarm ist hier besonders teuer: die Pruefung steht als erste im Tor, und wer
+       ihr nicht traut, schaltet sie ab — dann fehlt sie beim naechsten echten Fall. */
+    const sauberesEnde = /^\s*(\)|,|;|\+|\}|\s*$)/.test(danach) || /^\s*\n/.test(danach)
     if (!sauberesEnde) {
       funde++
       const zeile = txt.slice(0, bis).split('\n').length
