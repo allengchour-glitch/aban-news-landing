@@ -6306,3 +6306,8 @@ Erst die ausgelieferten Seiten gescannt (Startseite, zwei Kategorien, Produkt, W
   `blitz-front`-Artikel per `collectionReorderProducts` vorn (Halsketten, Taschen, Beauty), der Rest folgt
   in Anlegereihenfolge. ⚠️ Eine MANUAL-Smart-Kollektion hängt neue Ware hinten an — die Reihenfolge altert
   nicht, aber Neues rückt nie nach vorn; für diese Seite ist das gewollt.
+- ⚠️ **Eigener Fehler in derselben Stunde, vor dem Lesen geschrieben:** Die Rest-Suche nach «eule OR fuchs OR
+  papagei» traf «**Eule**nspiegel Aqua-Schminke» und «Kunstpelzmantel **Fuchs**ia» — zehn Schminke-/Kostüm-
+  artikel wurden zu «Partydeko» umtypisiert und mussten zurück. Achte Fassung der Substring-Familie, diesmal
+  in der FREITEXTSUCHE statt im Regex: **Shopifys Freitextsuche ist ein Kandidatensieb, kein Urteil** — vor
+  dem Schreiben gehört jeder Titel gelesen (DRY), auch bei 38 Stück.
