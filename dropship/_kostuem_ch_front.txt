@@ -1113,3 +1113,68 @@ gid://shopify/Product/15469983859073	Schwarze Vokuhila Perücke
 gid://shopify/Product/15469983891841	Hut Pirat Dirty Jack mit Band
 gid://shopify/Product/15469983957377	Perücke orange extravolume
 gid://shopify/Product/15469983990145	Perücke Jester mit Schlaufen
+gid://shopify/Product/15469984088449	Perücke Sugar neon blau
+gid://shopify/Product/15469984121217	Piratenbart
+gid://shopify/Product/15469984153985	Piratenhut Totenkopf
+gid://shopify/Product/15469984186753	Perücke Davey
+gid://shopify/Product/15469984219521	Perücke Beautiful blond
+gid://shopify/Product/15469984252289	Zorrohut uni schwarz
+gid://shopify/Product/15469984285057	Gelber Truckerhut mit Haaren
+gid://shopify/Product/15469984317825	Perücke Djamilla Bob blond
+gid://shopify/Product/15469984350593	Cowboyhut mit Metallverzierung
+gid://shopify/Product/15469984416129	Perücke Amara, grau-schwarz
+gid://shopify/Product/15469984448897	Zylinder rot Deluxe
+gid://shopify/Product/15469984481665	Perücke Glamour blond
+gid://shopify/Product/15469984514433	Perücke Meerjungfrau
+gid://shopify/Product/15469984547201	Piratenhut Lady Tricorn
+gid://shopify/Product/15469984579969	Pinkige Glamourperücke
+gid://shopify/Product/15469984612737	Perücke John, kurz
+gid://shopify/Product/15469984711041	Brauner Cowboyhut
+gid://shopify/Product/15469984743809	Perücke Stalker orange, lange
+gid://shopify/Product/15469984809345	Perücke Killerclown rot
+gid://shopify/Product/15469984842113	Perücke Gothic Vampir
+gid://shopify/Product/15469984874881	Perücke Ryan blond
+gid://shopify/Product/15469984907649	Brautschleier
+gid://shopify/Product/15469984940417	Perücke Rock Star
+gid://shopify/Product/15469984973185	Perücke Rock'Roll deluxe
+gid://shopify/Product/15469985005953	Perücke Dark Girl schwarze
+gid://shopify/Product/15469985038721	Perücke King of Pop schwarz
+gid://shopify/Product/15469985071489	Hut Hexe Duvessa
+gid://shopify/Product/15469985104257	Perücke und Schnurrbart
+gid://shopify/Product/15469985169793	Maske Hexe mit Kopftuch
+gid://shopify/Product/15469985235329	Clown Mütze
+gid://shopify/Product/15469985268097	Perücke 70er Jahre schwarz
+gid://shopify/Product/15469985366401	Perücke 70er Jahre grau
+gid://shopify/Product/15469985399169	Hexenhut schwarz modellierbar
+gid://shopify/Product/15469985464705	Bart und Schnauz Urmensch
+gid://shopify/Product/15469985530241	Perücke Clown weiss
+gid://shopify/Product/15469985563009	Gesichtsmaske gold
+gid://shopify/Product/15469985595777	Gesichtsmaske Totenkopf Clown
+gid://shopify/Product/15469985628545	Perücke Oma Agatha
+gid://shopify/Product/15469985661313	Maske Horror Clown Latex
+gid://shopify/Product/15469985694081	Schamanen Maske mit Hörner
+gid://shopify/Product/15469985726849	Perücke Seherin Crudelia schwarz
+gid://shopify/Product/15469985857921	Haarreif mit Hörner teuflisch
+gid://shopify/Product/15469985923457	Steampunk Zylinder mit Brille
+gid://shopify/Product/15469985988993	Perücke schwarz extralang
+gid://shopify/Product/15469986021761	Elvis Perücke
+gid://shopify/Product/15469986087297	Gesichtsmaske Steampunk
+gid://shopify/Product/15469986120065	Perücke Jimmy schwarz
+gid://shopify/Product/15469986185601	Perücke Lou Lou schwarz
+gid://shopify/Product/15469986218369	Perücke Hexe Kindergrösse
+gid://shopify/Product/15469986251137	Gesichtsmaske die Pest
+gid://shopify/Product/15469986283905	Perücke Lou Lou braun
+gid://shopify/Product/15469986316673	Perücke Zöpfe freches Mädchen
+gid://shopify/Product/15469986349441	Krone Gothic zum Umbinden
+gid://shopify/Product/15469986382209	Perücke Lou Lou rot
+gid://shopify/Product/15469986414977	Perücke & Bart Dschungel
+gid://shopify/Product/15469986447745	Teufels Maske mit Strass rot
+gid://shopify/Product/15469986480513	Perücke Lou Lou blau
+gid://shopify/Product/15469986611585	Perücke Roxy blond
+gid://shopify/Product/15469986644353	Rastamann Set Mütze mit Haaren
+gid://shopify/Product/15469986677121	Cowboyhut mit Strassketten
+gid://shopify/Product/15469986742657	Schwarze Prinzessin-Perücke
+gid://shopify/Product/15469986775425	Maske Pestarzt, schwarz
+gid://shopify/Product/15469986808193	Fliegermütze braun gefüttert
+gid://shopify/Product/15469986840961	Perücke Valentina neon gelb
+gid://shopify/Product/15469986873729	Maske aus Latex Psycho
