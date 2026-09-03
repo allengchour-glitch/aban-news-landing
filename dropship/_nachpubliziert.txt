@@ -266,3 +266,4 @@ gid://shopify/Product/15523211018625	smart-armband-mit-bluetooth-telefonie-amole
 gid://shopify/Product/15523211051393	hunde-brustgeschirr-aus-nylon-0e5d2b	Hunde-Brustgeschirr aus Nylon
 gid://shopify/Product/15523223601537	hundegeschirr-mit-zugband-und-weste-7a93dc	Hundegeschirr mit Zugband und Weste
 gid://shopify/Product/15523850289537	3d-print-herren-kurzarmling-aus-mesh-614600	3D-Print Herren Kurzärmling aus Mesh
+gid://shopify/Product/15523854844289	schwarze-canvas-sneaker-mit-hohe-boost-622600	Schwarze Canvas Sneaker mit Höhe-Boost
