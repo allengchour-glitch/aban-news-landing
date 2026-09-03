@@ -7637,3 +7637,25 @@
 15449583845761	ersetzt-1	Kartenetui mit Ortungschip
 15449583878529	ersetzt-1	Magnetischer Kartenhalter mit Sicherheitsschutz
 15449583911297	ersetzt-1	Leder-Kartenhalter für Herren
+15449583976833	ersetzt-1	Leder-Kartenetui mit Knopf und elastischem Band
+15449584075137	ersetzt-1	Kartenhalter Geldbörse
+15449584271745	ersetzt-1	Kartenhalter Braun
+15449584501121	ersetzt-1	Mehrfach-Geldbörse aus Leder
+15449584566657	ersetzt-1	Männer-Kartentasche
+15449584861569	ersetzt-1	Männliche Leder-Geldbörse mit Kartenslots
+15449585123713	ersetzt-1	Männer-Geldbörse aus Echtleder
+15449585418625	ersetzt-1	Stylische Leder-Tasche für Herren
+15449585975681	ersetzt-1	Männer Leder Clutch
+15449586205057	ersetzt-1	Retro-Geldbörse aus Öko-Leder
+15449586434433	ersetzt-1	Smart Clutch für Herren
+15449586729345	ersetzt-1	Einfaches Portemonnaie mit RFID-Schutz
+15449587024257	ersetzt-1	Herren Leder Geldbeutel
+15449587286401	ersetzt-1	Minimalistisches AirTag-Geldbörse für Herren
+15449587581313	ersetzt-1	Minimales Kartenhalter Wallet mit RFID-Schutz
+15449587908993	ersetzt-1	Minimalistisches Portemonnaie mit Kartenfach
+15449588171137	ersetzt-1	Smart Wallet mit Airtag-Halter
+15449588400513	ersetzt-1	Retro Leder-Geldbörse
+15449588629889	ersetzt-1	Grosses Leder-Geldbörse mit Kartenfächern
+15449588892033	ersetzt-1	Adjustable Silberringe
+15449589154177	ersetzt-1	Opalring mit Iris-Effekt
+15449589416321	ersetzt-1	Verstellbarer Ring mit Doppelschicht-Edelstein

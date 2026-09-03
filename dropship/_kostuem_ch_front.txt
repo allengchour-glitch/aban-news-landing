@@ -1083,3 +1083,33 @@ gid://shopify/Product/15469982679425	80er-Jahre Perücke blond
 gid://shopify/Product/15469982712193	Perücke Lou Lou gelb
 gid://shopify/Product/15469982744961	Hut Zylinder USA
 gid://shopify/Product/15469982777729	Perücke Vampir graue lange
+gid://shopify/Product/15469982810497	Perücke Lou Lou hellblau
+gid://shopify/Product/15469982843265	Hut USA
+gid://shopify/Product/15469982908801	Gala Zylinder weiss onesize
+gid://shopify/Product/15469982941569	Tiara Rentier Geweih
+gid://shopify/Product/15469982974337	Perücke Mr. President
+gid://shopify/Product/15469983007105	Zylinder braun Vintage
+gid://shopify/Product/15469983039873	Hut Hawaii Ibiza
+gid://shopify/Product/15469983072641	Helm spartanischer Krieger
+gid://shopify/Product/15469983105409	Perücke Roxy
+gid://shopify/Product/15469983138177	Cowboyhut Wyatt deluxe
+gid://shopify/Product/15469983203713	Perücke blond für Herren
+gid://shopify/Product/15469983236481	Cowboyhut Jamie weiss
+gid://shopify/Product/15469983302017	Perücke Bella Blau lange Haare
+gid://shopify/Product/15469983334785	Hut Desert Party gold
+gid://shopify/Product/15469983367553	Perücke Spacegirl
+gid://shopify/Product/15469983400321	Maske Evil Joker
+gid://shopify/Product/15469983465857	Perücke Showgirl neon orange
+gid://shopify/Product/15469983498625	Gelber Bauarbeiterhelm
+gid://shopify/Product/15469983596929	Hut rot/schwarz Chinese
+gid://shopify/Product/15469983629697	Strumpfmaske gestrickt
+gid://shopify/Product/15469983662465	Haarreif Tiara Malefizia
+gid://shopify/Product/15469983695233	Polizeimütze für Kinder
+gid://shopify/Product/15469983728001	Zylinder mit Rose & Tüll
+gid://shopify/Product/15469983760769	Hut Stempunk Vodoo Hut
+gid://shopify/Product/15469983793537	Römischer Helm
+gid://shopify/Product/15469983826305	Cape mit Visier und Haare
+gid://shopify/Product/15469983859073	Schwarze Vokuhila Perücke
+gid://shopify/Product/15469983891841	Hut Pirat Dirty Jack mit Band
+gid://shopify/Product/15469983957377	Perücke orange extravolume
+gid://shopify/Product/15469983990145	Perücke Jester mit Schlaufen
