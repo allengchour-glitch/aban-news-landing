@@ -3955,7 +3955,7 @@ function ladeWagen(datei,cb){
   window._glbVorlage(datei,function(sz){
     if(!sz){cb(null);return;}
     sz.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;}});
-    if(/^th37_/.test(datei))_raederAnlegen(sz);
+    if(/^th(37|40)_/.test(datei))_raederAnlegen(sz);
     MODELS[datei]=sz;cb(sz);});}
 /* 🛞 RAEDER ROLLEN LASSEN. Die th37-Wagen fuhren mit stehenden Raedern — nur der
    prozedurale Bus drehte seine (busRec.raeder). Die Modelle haben keine benannten
@@ -3990,13 +3990,15 @@ function _raederAnlegen(sz){
     for(var i=0;i<gruppen.length;i++)if(Math.hypot(gruppen[i].c.x-k.c.x,gruppen[i].c.z-k.c.z)<0.3&&Math.abs(gruppen[i].c.y-k.c.y)<0.2){g=gruppen[i];break;}
     if(!g){g={c:k.c.clone(),teile:[],r:0};gruppen.push(g);}
     g.teile.push(k.n);if(k.r>g.r)g.r=k.r;});
-  if(gruppen.length!==4){console.warn("Raeder: "+gruppen.length+" statt 4 Drehpunkte in "+(sz.name||"Wagen"));return;}
+  /* th37: genau 4. th40 (Nachbar-Runde vorab vermessen): Muellwagen und Bus haben 6 —
+     Zwillingsraeder hinten bei z 0,89/1,21, also zwei Gruppen je Seite. */
+  if(gruppen.length!==4&&gruppen.length!==6){console.warn("Raeder: "+gruppen.length+" statt 4/6 Drehpunkte in "+(sz.name||"Wagen"));return;}
   gruppen.forEach(function(g){var piv=new THREE.Group();piv.position.copy(g.c);piv.userData.rad=g.r;
     sz.add(piv);
     g.teile.forEach(function(n){var w=new THREE.Vector3();n.getWorldPosition(w);
       var q=new THREE.Quaternion();n.getWorldQuaternion(q);var sk=new THREE.Vector3();n.getWorldScale(sk);
       piv.add(n);n.position.copy(w).sub(g.c);n.quaternion.copy(q);n.scale.copy(sk);});});
-  sz.userData.raeder=4;}
+  sz.userData.raeder=gruppen.length;}
 function _raederVon(m){var r=[];m.traverse(function(n){if(n.userData&&n.userData.rad)r.push(n);});return r;}
 var _lichtTexW=null,_lichtTexR=null;
 function _glowTex(core,edge){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
@@ -4060,13 +4062,18 @@ setTimeout(function baueVerkehr(){
      Charge 37 haben je ein eigenes Seitenprofil, Speichenfelgen, Radlaeufe,
      Zierleiste und Grill — und sind mit ~0,5 MB obendrein ein Viertel so gross
      wie der alte Kombi (1,9 MB), bis dahin die schwerste Datei der Seite. */
-  var WAGEN=["th37_limousine.glb","th37_kombi.glb","th37_sportwagen.glb","th37_lieferwagen.glb"];
+  /* 🚚 DREI WAGENARTEN MEHR (Nachbar-Runde th-runde52 hatte sie vorab vermessen, Runbook):
+     Postauto, Kleinbus und Muellwagen aus Charge 40 lagen ungenutzt im Repo. Sie sind
+     laenger als die Pkw (8,7 / 5,9 / 8,5 m) — die alte Normierung „4,4 m fuer alle"
+     haette ein Postauto auf Pkw-Laenge gestaucht. Darum je Modell eine Ziellaenge. */
+  var WAGEN=[{d:"th37_limousine.glb",l:4.4},{d:"th37_kombi.glb",l:4.4},{d:"th37_sportwagen.glb",l:4.4},{d:"th37_lieferwagen.glb",l:4.4},
+             {d:"th40_postauto.glb",l:7.4},{d:"th40_kleinbus.glb",l:5.4},{d:"th40_muellwagen.glb",l:7.2}];
   var _IDS=[];for(var _q=0;_q<_AN;_q++)_IDS.push(WAGEN[_q%WAGEN.length]);
   /* ⚡ Der Verkehr zog frueher alle drei Auto-Modelle (~7 MB) in den kritischen Ladepfad —
      zusammen mit den Bewohner-Modellen die groessten Dateien der Seite. Jetzt nur noch der
      Kombi (1,9 MB); die 6 Farbtoene sorgen weiter fuer Abwechslung, Van und Flitzer bleiben
      kaufbar und werden dann bei Bedarf geladen. */
-  _IDS.forEach(function(id,i){
+  _IDS.forEach(function(idw,i){var id=idw.d;
     ladeWagen(id,function(tpl){if(!tpl)return;
       var m=tpl.clone(true);
       /* ⚠️ HIER WURDE JEDES MATERIAL JEDES WAGENS GEKLONT — und danach nur ein
@@ -4085,7 +4092,7 @@ setTimeout(function baueVerkehr(){
       /* 4,4 statt 3,9: die th37-Wagen sind massstaeblich zu den Haeusern gebaut
          (4,3…5,25 m lang) und wirkten auf 3,9 normiert zu klein neben den
          Gehwegen. Die Fahrbahn ist 16 m breit — 4,4 m passt bequem. */
-      m.scale.setScalar(4.4/(Math.max(sz.x,sz.z)||1));
+      m.scale.setScalar(idw.l/(Math.max(sz.x,sz.z)||1));
       var b2=new THREE.Box3().setFromObject(m);
       var r=ROUTEN[i%ROUTEN.length];
       var _pr=Math.floor(i/ROUTEN.length),_np=Math.ceil(_AN/ROUTEN.length);
@@ -4130,6 +4137,26 @@ setTimeout(function baueVerkehr(){
   schild.position.set(2.3,2.6,1.24);bg.add(schild);
   scene.add(bg);
   busRec={mesh:bg,pos:-70,speed:4,wartet:0,z:SZ+14.5,raeder:busRaeder,lichter:busLichter};
+  /* 🚌 Der fahrende Bus war ein prozeduraler Kasten, waehrend `th40_bus.glb` (176 Netze,
+     Front +x wie der Kasten) ungenutzt im Repo lag. Sobald das Modell da ist, wird der
+     Kasten samt seinen Raedern und Lichtern ausgeblendet und das Modell in dieselbe Gruppe
+     gehaengt — Fahrplan, Haltestelle und Wartezeit bleiben unveraendert. Scheinwerfer und
+     Ruecklichter des Modells (NfLicht/NfRueck) uebernehmen das Nachtleuchten; die
+     Materialien werden dafuer geklont, die Vorlage bleibt sauber. */
+  ladeWagen("th40_bus.glb",function(tpl){if(!tpl||!busRec)return;
+    var bm=tpl.clone(true);
+    var bb9=new THREE.Box3().setFromObject(bm),s9=new THREE.Vector3();bb9.getSize(s9);
+    bm.scale.setScalar(9.6/(Math.max(s9.x,s9.z)||1));
+    var b29=new THREE.Box3().setFromObject(bm);bm.position.y=-b29.min.y;
+    bm.userData.nieAusblenden=true;
+    var lichter9=[];
+    bm.traverse(function(n){if(!n.isMesh||!n.material)return;var nm=n.material.name||"";
+      if(nm==="NfLicht"||nm==="NfRueck"){n.material=n.material.clone();n.material.emissive=n.material.color.clone();
+        lichter9.push({m:n.material,typ:nm==="NfLicht"?"k":"h"});}});
+    bg.children.slice().forEach(function(ch){ch.visible=false;});
+    bg.add(bm);
+    busRec.raeder=null;busRec.raederZ=_raederVon(bm);busRec.radMass=bm.scale.x;
+    if(lichter9.length)busRec.lichter=lichter9;});
   // Haltestelle vor dem Grundstueck
   var hs=new THREE.Group();
   var mast2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,7),stdMat(0x3a3a42,0.5));mast2.position.y=1.3;hs.add(mast2);
@@ -4631,7 +4658,9 @@ function updVerkehr(dt){
       var rand9=GW*CS/2+80;
       if(busRec.pos>rand9)busRec.pos=-rand9; // Rueckkehr weit ausserhalb der Sicht
       if(prev9<-8&&busRec.pos>=-8)busRec.wartet=4;
-      if(busRec.raeder){var rs=busRec.speed*dt/0.5;busRec.raeder.forEach(function(rd){rd.rotation.y+=rs;});}}
+      if(busRec.raeder){var rs=busRec.speed*dt/0.5;busRec.raeder.forEach(function(rd){rd.rotation.y+=rs;});}
+      if(busRec.raederZ){var wB=busRec.speed*dt/(busRec.radMass||1);
+        busRec.raederZ.forEach(function(g){if(!g._bewegt&&window._auftauen)window._auftauen(g);g.rotation.z+=wB/(g.userData.rad||0.5);});}}
     busRec.mesh.position.set(busRec.pos,0,busRec.z);
     busRec.mesh.rotation.y=0; // Koerper laengs zur Fahrtrichtung (+x)
     if(busRec.lichter){var kb=nn?1.5:0.18,hb=nn?1.2:0.22;busRec.lichter.forEach(function(l){l.m.emissiveIntensity=l.typ==="k"?kb:hb;});}}}

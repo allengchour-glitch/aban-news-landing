@@ -6290,3 +6290,19 @@ nicht überschrieben wird; Reihenfolge der Blöcke zählt).
 ### Falle: Patch-Skript mit `assert` und Schreiben am Ende
 Bricht ein `assert` mitten im Skript, ist NICHTS geschrieben — die Prüfkette lief trotzdem los,
 auf dem alten Stand. Vor dem Start der Kette `git status`/`grep` auf einen Marker der Änderung.
+
+## 2026-09-03 · 🚚 Charge-40-Fahrzeuge im Verkehr — der Kandidat der Nachbar-Runde, umgesetzt
+
+Die Nachbar-Session hatte die fünf ungenutzten Modelle **vorab vermessen** (Abschnitt „Nächster
+Kandidat", oben). Das hat die Runde kurz gemacht: keine Rätselei über Frontachse, Radachse oder
+Radzahl. Umgesetzt:
+
+| Was | Wie |
+|---|---|
+| Postauto, Kleinbus, Müllwagen im Verkehr | `WAGEN` ist jetzt eine Liste `{d, l}` mit **Ziellänge je Modell** (Pkw 4,4 · Kleinbus 5,4 · Müllwagen 7,2 · Postauto 7,4). Die alte Normierung „4,4 / max(x,z) für alle" hätte ein Postauto auf Pkw-Länge gestaucht. |
+| Sechs Räder | `_raederAnlegen` akzeptiert 4 **oder** 6 Gruppen; die Zwillinge hinten (z 0,89/1,21) liegen 0,32 m auseinander und bleiben bei der 0,3-m-Gruppierung getrennt — knapp, aber gemessen. `th-raeder` prüft 4/6. |
+| Linienbus | `th40_bus.glb` (176 Netze) ersetzt den prozeduralen Kasten **in derselben Gruppe**: Kasten, Räder, Lichter ausgeblendet, Modell eingehängt, Fahrplan/Haltestelle unverändert. Nachtleuchten über die Modell-Materialien `NfLicht`/`NfRueck` (geklont, `emissive = color`). Räder: `busRec.raederZ` (Achse z) statt `busRec.raeder` (Achse y des Kastens). |
+
+**Lehre:** Ein Vorab-Messblatt der Vorgänger-Runde ist mehr wert als jede Vermutung — wer ein
+Modell ins Spiel holt, misst zuerst Front, dünne Achse und Radzahl (trimesh oder `th-mass`) und
+schreibt es ins Runbook, auch wenn er es nicht selbst einbaut.
