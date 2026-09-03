@@ -28091,3 +28091,5 @@ gid://shopify/Product/15523863069057	bereinigt
 gid://shopify/Product/15523863101825	bereinigt
 gid://shopify/Product/15523863134593	bereinigt
 gid://shopify/Product/15523863167361	bereinigt
+gid://shopify/Product/15523863232897	bereinigt
+gid://shopify/Product/15523863265665	bereinigt
