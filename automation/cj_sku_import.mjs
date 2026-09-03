@@ -13,6 +13,7 @@ import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
+import { googleKategorie } from './google_kategorie.mjs';
 import { copyPrompt } from './cj_copy_prompt.mjs';
 import { groqText } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
