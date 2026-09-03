@@ -84,3 +84,9 @@ _th_dbg.html
 #    frueh schloss. Nachgesehen wie beim ersten Mal: `git ls-files | grep "_[^/]*\.html$"`
 #    ist leer, es gibt repoweit keine versionierte _*.html. Darum unangebunden.
 _*.html
+
+# 🗂️ Büro: Offerten, Rechnungen, Journal und Zahlungsdaten.
+#    Dieses Repo ist ÖFFENTLICH — Kundenadressen, Beträge und die IBAN gehören
+#    nicht hinein. Nur die Vorlage der Konfiguration wird mitgeführt.
+buero/*
+!buero/konfig.example.json
