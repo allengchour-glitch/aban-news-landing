@@ -6263,3 +6263,32 @@ Betreiber «alles topmachen und merchant auch». Erst gemessen, dann geschrieben
 - Trichter 7 Tage: 397 Sitzungen, 4 Warenkörbe, 3 an der Kasse, **0 Abschlüsse**, kein neuer
   abgebrochener Checkout seit 22.08. — die drei gingen VOR der Adresseingabe. Such-Landeseiten
   30 Tage: Rizinusöl 20 · Salzlampe 18 · Startseite 15, alle 0 Warenkörbe.
+
+## 🏠 «verbessere webseite» (03.09.): Klingen zwischen Sofakissen, 123 Kollektionstexte mit Überzusage, 7 Wachstums-Titel
+Erst die ausgelieferten Seiten gescannt (Startseite, zwei Kategorien, Produkt, Warenkorb, Hype, Verzeichnis):
+- **«Wohnen & Dekoration» zeigte unter den ersten 24 Karten fünf Outdoor-/Taktik-Messer** (Klappmesser D2,
+  Faltmesser Damast, «Taktisches Messer») zwischen Sofakissen. Ursache: CJs Kategorie «Kitchen Knives» liefert
+  auch Outdoor-Klingen, die Gruppe `kueche` taggt sie mit kueche/kochen/haushalt — und `wohnen-dekoration`
+  hängt an `TAG kueche`. **90 Outdoor-Klingen** (Titelwort taschen-/klapp-/faltmesser/taktisch/outdoor/survival,
+  KEIN Küchenwort) per `tagsRemove` aus kueche/kochen/haushalt/wohnen, Tag `outdoor-messer`; Quelle in
+  `cj_category_fill.mjs` repariert (typeFinal «Outdoor-Messer»). Ledger `dropship/_klingen_kueche_tag.txt`.
+  Live: nur noch das japanische Kochmesser in Wohnen — das gehört dorthin.
+- **112 veröffentlichte Kollektionstexte trugen «✔ Geprüfte Qualität · 🚚 Schnelle Lieferung»** — dieselbe
+  Überzusage wie im Produkt-Trust-Baustein (02.09.), nur nie gemessen. 123 Texte per exakter Ersetzung
+  («Geprüfte Angaben», «Lieferzeit auf jeder Produktseite», «handverlesen»→«ausgewählt», «unschlagbar»→
+  «fair»), Backup `theme_backup/kollektionstexte-vor-trust-0309.json`. ⚠️ `ft-*`-Kollektionen (Fortura,
+  CH-Lager) sagen «schnelle Lieferung aus der Schweiz» — das ist WAHR und bleibt.
+- **7 aktive Produkte versprachen im TITEL Wachstum** («Wimpernwachstumsserum», «Haaröl – Kräftigendes
+  Haarwachstum», «Biotin Haarwachstums-Serum»), alle im Google-Kanal — die Klasse, die am 29.08. aus der
+  Hype-Reihe genommen, aber nie im Katalog gesucht wurde. Titel · Handle+301 · SEO · Text · Alt-Text (43)
+  auf Pflegeaussagen gesetzt (Ledger `dropship/_wirkversprechen_titel.txt`), je Regel exakt 1× geprüft,
+  Rest-«wachstum» am Objekt 0. Quelle: `cj_copy_prompt.mjs` verbietet Wirkversprechen im Titel und Text,
+  und Grössenspannen («reicht von … bis») bei Ein-Varianten-Ware (zwei Sofabezüge von heute früh
+  versprachen «verschiedene Grössen» bei EINER Variante).
+- ⚠️ **Sie→du per Modell an Kollektionstexten:** gpt-oss macht aus dem Imperativ eine Frage («Entdeckst du
+  unsere Kollektion», «Profitierst du dabei») — die Validierung fängt das jetzt (`frage-statt-imperativ`,
+  `du-hinter-imperativ`, `sie-rest`, ß). 75 siezende Kollektionstexte laufen durch, gelesen wird jeder Diff
+  vor dem Schreiben (`scratchpad/koll_du.py`, WRITE=1 nur auf die gelesene Datei).
+- Gemessen und in Ordnung: Neuimporte von heute (8/8 du-Form, Faktenblock, 0 Floskeln), Shop-Suche
+  («salzlampe» → Salzlampen zuerst, «rizinusöl» → 14 Treffer, Set an dritter Stelle), Startseite (die
+  doppelten Hype-h3 sind Desktop-Raster + Mobil-Karussell, kein Fehler).

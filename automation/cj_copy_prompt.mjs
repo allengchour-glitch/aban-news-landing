@@ -29,6 +29,7 @@ VERBOTEN sind diese Wörter und Wendungen: ${VERBOTEN.join(', ')}.
 Kategorie: ${kat || '-'}
 Name (EN): ${nameEn}
 Features (EN): ${(feats || '').slice(0, 700)}
+Titel: max. 60 Zeichen, deutsch, benennt die Ware (kein Werbeton) und trägt KEIN Wirkversprechen — nicht «Wachstumsserum», «gegen Falten», «Anti-Aging Facelift», «dauerhafte Haarentfernung»; stattdessen «Wimpernserum», «Haaröl», «IPL-Haarentfernungsgerät».
 Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß, keine Markdown-Fences).`;
 }
 
