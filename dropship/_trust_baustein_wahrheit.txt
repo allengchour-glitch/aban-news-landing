@@ -2860,3 +2860,58 @@
 15448647631233	ersetzt-1	Feuchtigkeitsableitende Yoga-Pants
 15448647664001	ersetzt-1	Elegante, figurbetonte Fingerless-Hose
 15448647696769	ersetzt-1	Bootcut Yoga-Hose für Damen
+15448647795073	ersetzt-1	Gepunktete Yoga-Tights für Damen
+15448647827841	ersetzt-1	Nahtlose High Waist Yoga-Hose
+15448647860609	ersetzt-1	High-Waist Hose mit weitem Bein und Kordelzug
+15448647893377	ersetzt-1	Damen Bootcut Jeanshose mit engem Schnitt
+15448647958913	ersetzt-1	Vier Jahreszeiten Yoga-Hose mit Print
+15448648024449	ersetzt-1	Gelbe 7/8-Sportleggings mit Print
+15448648089985	ersetzt-1	Vier Jahreszeiten Yoga-Pants mit Print
+15448648122753	ersetzt-1	Vier Jahreszeiten Yoga-Pants mit Print · Modell 2
+15448648155521	ersetzt-1	Vier Jahreszeiten Yoga-Pants mit Print · Modell 3
+15448648188289	ersetzt-1	Vier Jahreszeiten Yoga-Pants mit Print · Modell 4
+15448648352129	ersetzt-1	Vier Jahreszeiten Yoga-Pants mit Print · Modell 5
+15448648384897	ersetzt-1	Vier Jahreszeiten Yoga-Hose mit Print · Modell 2
+15448648450433	ersetzt-1	Vier Jahreszeiten Yoga-Hose mit Print · Modell 3
+15448648515969	ersetzt-1	Vier Jahreszeiten Yoga-Hose mit Print · Modell 4
+15448648614273	ersetzt-1	Vier-Jahreszeiten-Sport-Leggings mit Print
+15448648712577	ersetzt-1	Vier Jahreszeiten Yoga-Hose mit Print · Modell 5
+15448648810881	ersetzt-1	Sport- und Yogahose
+15448648876417	ersetzt-1	Thermo-Leggings mit Kaschmir-Effekt
+15448649040257	ersetzt-1	High-Waist Yoga-Pants im europäischen Stil
+15448649335169	ersetzt-1	Figurbetonte Capri-Hose mit Patchwork
+15448649400705	ersetzt-1	Freizeit-Hose mit Schriftzug-Print
+15448649433473	ersetzt-1	High Waist Flared Yoga Pants mit Scrunch
+15448649531777	ersetzt-1	High-Elastic Schnelltrocknend Sportshose
+15448649564545	ersetzt-1	PU-Lederhose High-Waist, gefüttert, Cropped
+15448649728385	ersetzt-1	High-Waist Capri Leggings für Damen
+15448649859457	ersetzt-1	High-Waist Yoga-Pants mit Polka-Dots
+15448649990529	ersetzt-1	Damen Slim-Fit Stretch Jeans
+15448650088833	ersetzt-1	High-Waist Hose für Damen
+15448650154369	ersetzt-1	High-Waist Fitness Leggings mit Po-Push-up
+15448650252673	ersetzt-1	Damen Fitness-Hose mit Taschen
+15448650318209	ersetzt-1	High-Waist Cropped Pants für Damen
+15448650416513	ersetzt-1	Vielseitige Caprihose mit Bündchen
+15448650482049	ersetzt-1	Gestreifte Rippenhose mit hohem Bund
+15448650514817	ersetzt-1	High-Waist Thermo-Leggings mit Push-Up Effekt
+15448650580353	ersetzt-1	Nahtlose Sportleggings für Damen
+15448650613121	ersetzt-1	High-Waist Leggings mit Po-Lifting-Effekt
+15448650645889	ersetzt-1	Elegante High-Waist Hose mit geradem Bein
+15448650711425	ersetzt-1	Figurbetonte Floralprint Flared Pants für Damen
+15448650809729	ersetzt-1	Gefütterte Schlaghose im europäischen Stil
+15448650842497	ersetzt-1	High Waist Button-Fly Jogger Pants mit Taschen
+15448650875265	ersetzt-1	Bootcut Fitnesshose mit Hüft-Push-up
+15448650940801	ersetzt-1	Stylische Capri Leggings für Damen
+15448650973569	ersetzt-1	Outdoor Running Yoga Pants mit geradem Bein
+15448651006337	ersetzt-1	High-Waist Yoga-Hose mit Taschen
+15448651071873	ersetzt-1	Damen Veloshorts mit Trägern
+15448651104641	ersetzt-1	Figurbetonte Yoga-Hose für Damen
+15448651170177	ersetzt-1	Damen Caprihose mit tiefem Bund und Patchwork
+15448651202945	ersetzt-1	Legging Tights · Damen
+15448651235713	ersetzt-1	Bauchkontroll-Shapewear für Yoga & Radsport
+15448651268481	ersetzt-1	High-Waist Leggings mit Leopardenmuster
+15448651366785	ersetzt-1	High-Waist Slimming Yoga Pants
+15448651432321	ersetzt-1	Karierte Colorblock Leggings für Damen
+15448651465089	ersetzt-1	Atmungsaktive Kompressions-Yogahose mit Shaping-Effekt
+15448651497857	ersetzt-1	Sport-Leggings für Damen
+15448651530625	ersetzt-1	Schwarze Slim-Fit Leggings für Damen
