@@ -895,3 +895,14 @@ filz-katzenbaum-mit-kratz-schlaf-spielturm-923585	2058755269570781185	0	-	KEINE 
 winter-plusch-chenille-sofauberwurf-mit-blumen-622800	2603030856341623200	11	20.63	ok	landeseite
 katzenbett-camp-cot-herausnehmbar-waschbar-609600	2604300322031600100	5	91.20	ok	landeseite
 wandmontierter-katzenbaum-aus-massivholz-618700	2604270159021619200	5	87.09	ok	landeseite
+kokosnussbaum-kratz-und-kletterturm-623800	2602140251411624200	6	64.23	ok	landeseite
+erhohtes-hundebett-fur-grosse-hunde-grau-761345	2034276529862791169	0	-	KEINE CH-Option → DRAFT	landeseite
+moso-bambus-waschekorb-607700	2606180136391608300	0	-	KEINE CH-Option → DRAFT	landeseite
+reisekoffer-aus-carbonfaser-618500	2605280842511619600	0	-	KEINE CH-Option → DRAFT	landeseite
+verdickter-matratzenbezug-fur-zuhause-635400	2607030640181636300	6	46.42	ok	landeseite
+abs-business-gepack-mit-frontoffnung-630300	2510150225001630700	0	-	KEINE CH-Option → DRAFT	landeseite
+leichter-rollkoffer-mit-zahlenschloss-601300	2510110705591601500	0	-	KEINE CH-Option → DRAFT	landeseite
+gartengerate-halter-637600	2605250226481638200	6	73.70	ok	landeseite
+sonnenschirmstander-mit-rollen-379073	2034266888734142465	0	-	KEINE CH-Option → DRAFT	landeseite
+modernes-sofabezugs-set-612200	2601040942531612500	11	20.80	ok	landeseite
+badezimmerschrank-betongrau-30x30x100-cm-106754	1990720952027959297	0	-	KEINE CH-Option → DRAFT	landeseite
