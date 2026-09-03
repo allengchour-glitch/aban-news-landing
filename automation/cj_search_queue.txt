@@ -5,9 +5,9 @@
 # aber KEINEN Zielscheiben-/Pistolen-Wecker (Suche 0). Zuerst abarbeiten, sobald CJ-Punkte da sind
 # (Tagesbudget war um 18:21 UTC erschöpft). Treffer gegen Bild plausibilisieren: es soll ein
 # WECKER sein, kein Spielzeug-Blaster.
-search:target alarm clock gun
-search:shooting alarm clock laser target
-search:gun alarm clock
+#done search:target alarm clock gun
+#done search:shooting alarm clock laser target
+#done search:gun alarm clock
 #done search:tempered glass screen protector iphone
 #done search:magsafe phone case
 #done search:magsafe car mount
@@ -644,6 +644,6 @@ search:gun alarm clock
 #done search:pre rolled cones
 #done search:filter tips rolling
 #done search:rolling tray metal
-search:herb grinder 4 piece
+#done search:herb grinder 4 piece
 search:smell proof stash bag
 search:torch lighter jet flame
