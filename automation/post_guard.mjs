@@ -33,8 +33,17 @@ export function stoppAktiv() {
 let _released = false;
 export function lock(maxMin = 20) {
   if (stoppAktiv()) {
-    console.log('[post_guard] ⛔ dropship/_SOCIAL_STOPP gesetzt — es wird NICHTS gepostet.');
-    process.exit(0);
+    // EINZELFREIGABE: der Betreiber verlangt ausdruecklich EINEN Post (03.09.2026:
+    // «jetzt etwas cooles upload»). Die Stoppdatei bleibt liegen — sie haelt weiterhin
+    // jeden unbeaufsichtigten Lauf an; nur ein Aufruf, der den Produktschluessel NENNT,
+    // kommt durch. Ein blanker Schalter waere ein Generalschluessel und damit genau die
+    // Luecke, gegen die die Datei am 13.08. gesetzt wurde.
+    const frei = process.env.EINZELFREIGABE;
+    if (!frei || frei.length < 4) {
+      console.log('[post_guard] ⛔ dropship/_SOCIAL_STOPP gesetzt — es wird NICHTS gepostet.');
+      process.exit(0);
+    }
+    console.log(`[post_guard] ⚠️ EINZELFREIGABE «${frei}» — Stoppdatei bleibt, es geht GENAU EIN Post raus.`);
   }
   try {
     const fd = fs.openSync(LOCK, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd);

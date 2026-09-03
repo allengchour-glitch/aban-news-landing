@@ -513,3 +513,4 @@ kostueme-ch-lager	ok	29	Kostüme ab Schweizer Lager 🇨🇭
 elektronik-kleinteile	ok	29	Elektronik-Zubehör & Kleinteile
 klemmbausteine-bausaetze	ok	29	Klemmbausteine & Bausätze
 suesses-esswaren	ok	22	Süsses & Esswaren
+querbeet	ok	25	🌍 Aus allen Welten

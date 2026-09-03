@@ -882,3 +882,5 @@ oxford-rollkoffer-mit-4-universalradern-605600	2606090643501606300	0	-	KEINE CH-
 reisetrolley-mit-viel-stauraum-und-universalra-651000	2510020533381651300	0	-	KEINE CH-Option → DRAFT	landeseite
 reisekoffer-aus-metall-fur-sie-ihn-622200	2509270816461622500	0	-	KEINE CH-Option → DRAFT	landeseite
 klares-badezimmerspiegel-mit-metallrahmen-304385	2048642711850160130	-	-	unklar 200 Success rest=39	landeseite
+vollstandige-sofa-abdeckung-605800	2601040846251606000	11	23.05	ok	landeseite
+kirschkerne-fur-warmekissen-908161	1990492023491846145	0	-	KEINE CH-Option → DRAFT	landeseite

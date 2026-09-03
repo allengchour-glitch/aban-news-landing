@@ -311,9 +311,15 @@ for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
   # Solange der Betreiber-Stopp steht, wird der Social-Autopilot gar nicht erst gestartet:
   # post_guard blockte ohnehin jeden Post, und der stuendliche «neu gestartet»-Eintrag
   # uebertoente als Dauerrauschen echte Befunde (31.08.).
-  if [ "$S" = "social_autopilot" ] && [ -f "${REPO_AUTO%/automation}/dropship/_SOCIAL_STOPP" ]; then
-    continue
-  fi
+  # 03.09.2026 ergaenzt: auch der REEL-Motor ruht waehrend des Stopps. Er postet zwar
+  # nicht selbst, aber er baut Material fuer einen Kanal, der stillsteht — und seine
+  # stuendliche «neu gestartet»-Zeile war genau das Dauerrauschen, das echte Befunde
+  # uebertoent (Lehre 29.08.: eine Zeile, die sich in jedem Durchgang wiederholt, ist
+  # eine Meldung).
+  case "$S" in
+    social_autopilot|reel_engine_runner)
+      [ -f "${REPO_AUTO%/automation}/dropship/_SOCIAL_STOPP" ] && continue ;;
+  esac
   n=$(zaehle "$S.sh")
   if [ "$n" -eq 0 ]; then
     # ⚠️ VERWAISTE SPERRE LOESEN (29.08.2026). Diese Runner sichern sich mit `exec 9>lock` +
