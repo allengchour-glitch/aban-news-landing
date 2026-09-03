@@ -1008,3 +1008,13 @@ keramik-schmortopf-fur-slow-cooking-605500	2605120703401606200	6	60.64	ok	landes
 keramik-gewurzbehalter-mit-bambusstander-4-stk-982402	2051151024504811522	6	53.99	ok	landeseite
 scooter-baby-can-sit-608800	2510260948121609000	0	-	KEINE CH-Option → DRAFT	landeseite
 wolken-kratzbaum-mit-u-formiger-liegeflache-628700	2605101017451629200	6	57.41	ok	landeseite
+erhohtes-hundebett-mit-uv-schutz-dach-168002	2071883192179134465	0	-	KEINE CH-Option → DRAFT	landeseite
+wolkenformiges-memory-foam-kissen-637100	2606121003421637700	11	26.53	ok	landeseite
+gesichtsdampfer-fur-umfassende-pflege-624200	2511140758021624400	0	-	KEINE CH-Option → DRAFT	landeseite
+kratzbaum-kaktus-mit-katzenhohle-636500	2605050253391637000	6	61.38	ok	landeseite
+katzenbaum-mit-kratzstamm-kaktus-613300	2605050210461613800	6	63.90	ok	landeseite
+katzen-klettergerust-mit-liegemulde-608300	2605050136371608800	6	181.03	ok	landeseite
+hunde-agility-set-4-teilig-591618	2034276672276189186	0	-	KEINE CH-Option → DRAFT	landeseite
+automatischer-futterspender-562433	2062057003320582145	0	-	KEINE CH-Option → DRAFT	landeseite
+25l-auto-kuhlbox-fur-unterwegs-631200	2606180518141631900	6	158.44	ok	landeseite
+kristall-aschenbecher-mit-deckel-625500	2603190722281625900	11	16.64	ok	landeseite
