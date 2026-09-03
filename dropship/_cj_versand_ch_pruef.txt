@@ -72,3 +72,6 @@ swedwood-taschenmesser-aus-stahl-619900	2601031201591610100	0	-	KEINE CH-Option 
 g10-allzweckmesser-mit-rutschfestem-griff-623300	2601021048401623500	0	-	KEINE CH-Option → DRAFT	klinge
 shadow-dancer-kupfer-damast-klappmesser-609900	2601020939581600400	0	-	KEINE CH-Option → DRAFT	klinge
 damast-outdoor-faltmesser-624300	2601020159491624500	0	-	KEINE CH-Option → DRAFT	klinge
+messer-mit-holzmaserung-455362	2006999955958312962	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-survival-klappmesser-633000	2601010841101633200	0	-	KEINE CH-Option → DRAFT	klinge
+extrem-scharfes-gerades-messer-623900	2512310627131624100	0	-	KEINE CH-Option → DRAFT	klinge
