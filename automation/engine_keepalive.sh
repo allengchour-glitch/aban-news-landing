@@ -243,6 +243,13 @@ fi
 VORRANG=0
 STD=$(date -u +%H); MIN=$(date -u +%M)
 if [ "$STD" = "16" ] || { [ "$STD" = "17" ] && [ "$MIN" -lt 30 ]; }; then VORRANG=1; fi
+# 03.09.2026: Vorrang auch auf Zuruf — dropship/_GRIND_PAUSE_BIS trägt eine UTC-Epoche; bis dahin ruht der
+# Grind, damit ein Prüflauf (z. B. CH-Versendbarkeit, Klasse #1016) den geteilten CJ-Eimer bekommt.
+# Vier Runner halten den Eimer sonst dauerhaft bei ~0 (gemessen: remaining 11 → 1 → 16900500 in 20 s).
+PB="${REPO_AUTO%/automation}/dropship/_GRIND_PAUSE_BIS"
+if [ -f "$PB" ] && [ "$(cat "$PB" 2>/dev/null | tr -dc 0-9)" -gt "$(date -u +%s)" ] 2>/dev/null; then
+  VORRANG=1; echo "GRIND-PAUSE auf Zuruf bis $(date -u -d @"$(cat "$PB" | tr -dc 0-9)" +%H:%M) UTC ($PB)"
+fi
 
 if [ "$VORRANG" = "1" ]; then
   echo "VORRANG-FENSTER (16:00-17:30 UTC): CJ-Punkte gehoeren Kosten-Backfill + Bewertungen"
