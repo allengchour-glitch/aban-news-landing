@@ -8987,3 +8987,117 @@
 15450772865409	ersetzt-1	Katzenbaum mit Holzelementen aus Seegras
 15450773684609	ersetzt-1	Katzenklo-Schrank aus Holz (60 cm)
 15450773979521	ersetzt-1	Sisal Kratzbaum für Katzen, 40 cm
+15450774307201	ersetzt-1	Katzenklo-Möbel aus Holzwerkstoff 42x
+15450774569345	ersetzt-1	Katzenkratzbaum mit Sisalsäulen, 65 cm
+15450775355777	ersetzt-1	Aquarium Unterschrank 60.5x36x72.5 cm
+15450776076673	ersetzt-1	Aquarium Unterschrank 60x Holz
+15450776371585	ersetzt-1	Aquafilter Wasserpumpe mit Aktivkohle
+15450776994177	ersetzt-1	Strömungspumpe 12000L/H für Aquarien
+15450777485697	ersetzt-1	V1, Tragbarer Wasser-Flosser
+15450777551233	ersetzt-1	Elektrische Zahnbürste
+15450777846145	ersetzt-1	Water Flosser für saubere Zähne
+15450778304897	ersetzt-1	WUWUVISTA Waxing Kit für Gesicht und Körper
+15450778632577	ersetzt-1	WUWUVISTA Waxing Kit 23-teilig
+15450778894721	ersetzt-1	WUWUVISTA Waxing Kit 19-teilig
+15450779156865	ersetzt-1	WUWUVISTA Waxing Kit 69 Teile
+15450779550081	ersetzt-1	Wimpernlifting-Set für 10 Anwendungen
+15450779812225	ersetzt-1	Wimpernlifting Kit – Schnelle Dauerwelle für Wimpern
+15450780041601	ersetzt-1	Wimpern- & Brauenfärbe- und Lifting-Kit
+15450780172673	ersetzt-1	Wimpernlifting Kit – ICONSIGN Lifting Perm
+15450780762497	ersetzt-1	391-teiliges Erste-Hilfe-Set für Notfälle
+15450781221249	ersetzt-1	Duschschlauch 1.5m mit Brause & 6 Strahlarten
+15450781680001	ersetzt-1	Elektrische Zahnbürste für Kinder
+15450781712769	ersetzt-1	Befestigungsriemen für Pool-Abdeckungsroller, 8 Stk.
+15450781778305	ersetzt-1	Doppel-Handtuchhalter aus Edelstahl
+15450781811073	ersetzt-1	Duschwand Stabilisierungsstange, Edelstahl 70-120 cm
+15450781843841	ersetzt-1	Handtuchständer Aluminium 47x280 cm
+15450781876609	ersetzt-1	Badezimmerschrank Betongrau 30x30x100 cm
+15450781909377	ersetzt-1	Poolschlauch-Adapter, 2 Stk.
+15450781942145	ersetzt-1	Teleskop Eckregal, 4 Etagen, Silber
+15450782007681	ersetzt-1	Duscharmatur-Set mit Handbrause, Chrom
+15450782040449	ersetzt-1	Handtuchhalter 6-Stab, Edelstahl
+15450782073217	ersetzt-1	Bypass-Set für Pool-Solarheizung
+15450782138753	ersetzt-1	Wandmontierter Handtuchhalter aus Teakholz
+15450782171521	ersetzt-1	Duschbrause mit Schlauch, verchromt
+15450782204289	ersetzt-1	5-stufige Handtuchleiter aus Eisen, Schwarz
+15450782237057	ersetzt-1	Pool-Bodensauger 1.2 m
+15450782269825	ersetzt-1	2er-Set Badematten aus Akazienholz
+15450782302593	ersetzt-1	Badezimmerschrank, Betongrau, 30x30x95 cm
+15450782335361	ersetzt-1	Poolschlauch-Verbinder Set (2 Stk.)
+15450782368129	ersetzt-1	Poolsauger für Aufstellbecken
+15450782400897	ersetzt-1	Elektrisches Schlankheitsgerät mit Lichttherapie
+15450782433665	ersetzt-1	Hantelbank Schwarz 131 x 41 x 110 cm Stahl
+15450782761345	ersetzt-1	Faltbares Kinderfussballtor, Schwarz
+15450782859649	ersetzt-1	Kubb Spielset aus Holz
+15450782892417	ersetzt-1	Fahrradständer für 2 Velos, freistehend, Stahl
+15450782957953	ersetzt-1	Fussballtor 240x90x150 cm Stahl
+15450783023489	ersetzt-1	Fussballtor für Kinder mit Zielmatte und Ball
+15450783056257	ersetzt-1	Faltbarer Fussball Rebounder, 100x100 cm
+15450783089025	ersetzt-1	Rutenständer für 16 Angelruten, Schwarz
+15450783121793	ersetzt-1	Fussballtor 122 x 81 cm Stahl Weiss
+15450783154561	ersetzt-1	Leitergolf aus Holz
+15450783318401	ersetzt-1	Softball Rebounder, 88x79x137 cm, Stahl
+15450783351169	ersetzt-1	Tischfussball Bälle 10 Stk. 32 mm ABS
+15450783416705	ersetzt-1	Tischfussball-Spieler-Set (22 Stk.)
+15450783449473	ersetzt-1	Wand-Fahrradhalter, 2er-Set, verzinkter Stahl
+15450783482241	ersetzt-1	Elektronisches Dartboard mit Darts
+15450783515009	ersetzt-1	2er-Set Mini-Fussballtore für Kinder
+15450783613313	ersetzt-1	Fussballtor mit Netz 180x120 cm
+15450783646081	ersetzt-1	Tarnnetz US Woodland 4x4 m mit Packsack
+15450783678849	ersetzt-1	Basketballkorb 90x Polyethylen
+15450783711617	ersetzt-1	Tarnnetz mit Aufbewahrungstasche, Sandfarben
+15450783744385	ersetzt-1	Mausefallen-Set, 4 Stück
+15450783777153	ersetzt-1	Basketballkorb mit Netz 45 cm
+15450783809921	ersetzt-1	Superhelle LED-Taschenlampe mit Zoom und Warnlicht
+15450783842689	ersetzt-1	Trockenfutter Adult Essence Rind
+15450828571009	ersetzt-1	Mini Notfall Powerbank mit Karabiner (USB-C)
+15450828603777	ersetzt-1	Vulkan Flammen Aroma Diffusor & Luftbefeuchter
+15450828636545	ersetzt-1	3-in-1 Wireless Ladestation für mehrere Geräte
+15450828669313	ersetzt-1	Faltbare Reise-Duffelbag mit grossem Volumen
+15450828702081	ersetzt-1	3-in-1 LED Lampe mit Wecker & Wireless Charger
+15450828734849	ersetzt-1	Warme Herren Winterjacke mit Fleece & Fellkragen
+15450828767617	ersetzt-1	Katzen- und Hundebürste mit Massagefunktion
+15450828800385	ersetzt-1	E-Ink Smartphone Hülle mit personalisierbarem Screen
+15450828865921	ersetzt-1	Spray-Trinkflasche für Sport & Freizeit
+15450828898689	ersetzt-1	Thermo-Strumpfhose mit Fleece-Futter
+15450828964225	ersetzt-1	Schwebende LED-Weltkarte mit Magnetlevitation
+15450828996993	ersetzt-1	Herren Canvas-Schuhe mit weicher Sohle
+15450829062529	ersetzt-1	Gestreiftes Langarm-Top & Trägerrock-Set
+15450829095297	ersetzt-1	Fidget Spinner Schlüsselanhänger – der Stresskiller
+15450829128065	ersetzt-1	Elektrischer Augenbrauenentferner
+15450829160833	ersetzt-1	Kreatives Sturmfeuerzeug mit Doppelflamme
+15450829226369	ersetzt-1	Magnetisches Leder Kartenetui mit Ständer
+15450829259137	ersetzt-1	Selbstreinigende Katzenbürste aus Stahl
+15450829291905	ersetzt-1	Baby Plüsch-Overall mit Kapuze
+15450829357441	ersetzt-1	5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht
+15450829390209	ersetzt-1	Galaxy Kristallkugel LED Nachtlicht
+15450829422977	ersetzt-1	Mini-Falt-Drohne mit HD-Kamera
+15450829488513	ersetzt-1	Tassen- und Gläserreiniger für die Küche
+15450829521281	ersetzt-1	Kabelloser Mini-Entsafter für Früchte & Gemüse
+15450829586817	ersetzt-1	Mattierendes Concealer Make-up, ölregulierend
+15450829619585	ersetzt-1	Brasilianisches Echthaar glatt
+15450829685121	ersetzt-1	Haltungs-Korrektor für Rücken und Schlüsselbein
+15450829750657	ersetzt-1	Schmetterling Ohrclip & Ohrhaken
+15450829881729	ersetzt-1	Kühlende Liegematte für Haustiere
+15450829914497	ersetzt-1	Kabellose 2-in-1 Glättbürste für schnelles Styling
+15450830012801	ersetzt-1	AirTag Leder-Portemonnaie mit RFID-Schutz
+15450830045569	ersetzt-1	Elektrischer Krallenschleifer für Haustiere
+15450830111105	ersetzt-1	Abflussreiniger mit Feder und Greifklaue
+15450830143873	ersetzt-1	Tragbare Trinkflasche für Hunde
+15450830176641	ersetzt-1	Kuschel-Hoodie mit grosser Tasche
+15450830209409	ersetzt-1	Silikon-Sieb für Topf und Pfanne
+15450830242177	ersetzt-1	Knoblauchpresse aus Edelstahl, ergonomisch
+15450830274945	ersetzt-1	Multifunktionale Crossbody-Tasche für Herren
+15450830340481	ersetzt-1	Baby Strampler aus Baumwolle
+15450830373249	ersetzt-1	Outdoor-Velo-Schuhe für Sie & Ihn
+15450830406017	ersetzt-1	Kopfhörer mit Mikrofon
+15450830438785	ersetzt-1	Kabellose Leuchtmaus mit leisem Klick
+15450830471553	ersetzt-1	Gaming Mauspad mit RGB-Beleuchtung
+15450830504321	ersetzt-1	Verstellbarer Handtrainer 10-40 kg
+15450830537089	ersetzt-1	Bluetooth-Säulenlautsprecher mit LED-Licht
+15450830569857	ersetzt-1	Selfie Stick Stativ mit Bluetooth Fernbedienung
+15450830602625	ersetzt-1	Mini Zerkleinerer elektrisch – USB-Ladefunktion
+15450830635393	ersetzt-1	Brief-Halskette mit Umschlag-Anhänger
+15450830668161	ersetzt-1	NEX 2-in-1 Fellpfleger: Föhn & Bürste für Haustiere
+15450830700929	ersetzt-1	Oxford Umhängetasche für Herren
+15450830733697	ersetzt-1	Warme Lammkaschmir Leggings für den Winter
