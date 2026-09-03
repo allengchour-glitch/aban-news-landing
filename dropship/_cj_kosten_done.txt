@@ -9453,3 +9453,9 @@ gid://shopify/Product/15451910209921	cj-abgekuendigt-pruefen
 gid://shopify/Product/15451910570369	CHF 19.05	1 Varianten	Minimalistisches 2-Lagen Metallregal
 gid://shopify/Product/15451910832513	CHF 27.35	1 Varianten	Kochgeschirr-Set mit doppelbeschichteten Köpfen
 gid://shopify/Product/15451911061889	CHF 65.35	1 Varianten	Drehbarer Gewürzständer für die Küche
+gid://shopify/Product/15451911225729	cj-abgekuendigt-pruefen
+gid://shopify/Product/15451911455105	cj-abgekuendigt-pruefen
+gid://shopify/Product/15451911750017	CHF 11.16	1 Varianten	Jaysuing Steinreinigungspulver
+gid://shopify/Product/15451912044929	CHF 48.77	1 Varianten	Küchenmatten 2er-Set, rutschfest & wasserdicht
+gid://shopify/Product/15451912798593	CHF 14.32	1 Varianten	Kabelloser Anionen-Glättkamm mit USB-Ladefunktion
+gid://shopify/Product/15451913159041	CHF 34.22	1 Varianten	Kabelloser Mini-Haarglätter der 3. Generation
