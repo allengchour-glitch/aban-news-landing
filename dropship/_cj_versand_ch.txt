@@ -980,3 +980,11 @@ gid://shopify/Product/15523759751553	ok	Lederrucksack für Business und Freizeit
 gid://shopify/Product/15523851796865	nicht-versendbar	Gewichtsverstellbare Kettlebell aus Gusseisen
 gid://shopify/Product/15523829318017	ok	Kaffeebecher aus Bone China – Geschenkset
 gid://shopify/Product/15523853009281	ok	Hängende Beinheber-Trainingseinheit für Zuhause
+gid://shopify/Product/15523984802177	nicht-versendbar	Deckenventilator mit Licht und Fernbedienung
+gid://shopify/Product/15523985817985	ok	Multifunktionales Widerstandsband-Set mit Stange
+gid://shopify/Product/15523938730369	ok	WLAN Mini Beamer für Zuhause
+gid://shopify/Product/15523863953793	nicht-versendbar	15L Mini-Kühlschrank mit digitalem Display
+gid://shopify/Product/15523905044865	nicht-versendbar	Haushalts-Kochmesser aus Edelstahl, 15-teilig · 15 Stück
+gid://shopify/Product/15523941777793	ok	Zusammenbaubares Spielzeugschloss für Kinder
+gid://shopify/Product/15523907731841	ok	Multifunktions-Smartwatch mit Dual-System
+gid://shopify/Product/15523862806913	ok	Business-Rucksack für Männer

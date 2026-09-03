@@ -4718,3 +4718,254 @@
 15448933237121	ersetzt-1	Kabelloser Haarglätter für Volumen & Glanz
 15448933269889	ersetzt-1	Kabelloser, automatischer Lockenstab
 15448933335425	ersetzt-1	2-in-1 LCD Lockenstab mit negativen Ionen
+15448933368193	ersetzt-1	Katzen-Glätteisen & Lockenstab 3-in-1 Set
+15448933400961	ersetzt-1	Wellen-Curler mit Ionen-Pflege
+15448933466497	ersetzt-1	Profi Bart- und Haarschneider für Herren
+15448933499265	ersetzt-1	Profi Haar- und Bartschneider für Herren
+15448933630337	ersetzt-1	Profi Titanium Glätteisen für Bob-Frisuren
+15448933663105	ersetzt-1	Heissluftbürste 1.5 Zoll mit Volumenfunktion
+15448933695873	ersetzt-1	Curling Iron Egg Roll Large Wave Clip
+15448933761409	ersetzt-1	Automatischer Lockenstab für grosse Wellen
+15448933826945	ersetzt-1	Automatischer Lockenstab, kabellos
+15448933925249	ersetzt-1	Kabelloser Mini Glätteisen & Lockenstab
+15448933958017	ersetzt-1	Curling Iron mit negativen Ionen für Wasserwellen
+15448934023553	ersetzt-1	Warmluftbürste für Locken und Glätten
+15448934056321	ersetzt-1	Wasserdichte Gesichtsreinigungsbürste mit 5 Aufsätzen
+15448934220161	ersetzt-1	Kabellose Ionen-Glättbürste mit 12 Heizstufen
+15448934252929	ersetzt-1	Mitesser-Entferner-Set aus Edelstahl, 7-teilig
+15448934318465	ersetzt-1	Elektrischer Folienrasierer für Männer
+15448934351233	ersetzt-1	Satin Lockenwickler ohne Hitze
+15448934416769	ersetzt-1	Seiden-Satin-Haube für Locken & Wellen
+15448934515073	ersetzt-1	Seiden-Satin-Haarhaube für die Nacht
+15448934547841	ersetzt-1	Schwarze Satin-Schlafhaube für Locken & Glanz
+15448934613377	ersetzt-1	Satin Lockenwickler für Hitzefreie Wellen
+15448934941057	ersetzt-1	Seiden-Satin Schlafhaube für alle Haartypen
+15448934973825	ersetzt-1	Mikrofaser Haarhandtuch Turban 3er-Set
+15448935006593	ersetzt-1	Microneedling Derma Roller 0.25 mm
+15448935104897	ersetzt-1	Photon Gesichtsmaske
+15448935170433	ersetzt-1	Rotlicht-Gesichtsmaske für weichere Haut
+15448935235969	ersetzt-1	Nano-Ionen Gesichtsbedampfer
+15448935367041	ersetzt-1	Photonen-Gesichtsmaske für Hautverjüngung
+15448935563649	ersetzt-1	LED Gesichtsmaske für Phototherapie zu Hause
+15448935793025	ersetzt-1	Hautpflege-Gerät mit Photonentechnologie
+15448935858561	ersetzt-1	Nano-Ionen Gesichts- und Augenspray
+15448936022401	ersetzt-1	Automatisches Sprudelbad-Gerät
+15448936317313	ersetzt-1	Kabellose LED Silikonmaske für zuhause
+15448936415617	ersetzt-1	Sauerstoff-Infusionsgerät für Zuhause
+15448936513921	ersetzt-1	Gesichtsdampfer für umfassende Pflege
+15448936612225	ersetzt-1	Multifunktionaler Hals- und Dekolleté-Massager
+15448936644993	ersetzt-1	Gesichtsdampfer mit Warm- und Kaltfunktion
+15448936710529	ersetzt-1	Aroma Diffuser mit farbigem Flammen-Effekt
+15448936743297	ersetzt-1	7-Farben LED Lichttherapie Maske
+15448936808833	ersetzt-1	Multifunktionaler Haarschneider für Herren
+15448936841601	ersetzt-1	5-in-1 Haarschneider-Set für Herren
+15448936939905	ersetzt-1	Pilz Luftbefeuchter mit Umgebungslicht
+15448936972673	ersetzt-1	Bluetooth Schlafmaske für lange Wimpern
+15448937005441	ersetzt-1	LED-Photonenmaske mit Hals- und Hautpflege
+15448937070977	ersetzt-1	Ganzjahres Katzenhöhle
+15448937136513	ersetzt-1	Katzenbett "Moonlight" – Transparente Raumkapsel
+15448937267585	ersetzt-1	Kompakter U-förmiger Kratzbaum mit Sisal
+15448937398657	ersetzt-1	Kratzbaum Kaktus mit Katzenhöhle
+15448937431425	ersetzt-1	Kuscheliges All-Season Haustierzelt
+15448937496961	ersetzt-1	Kokosnussbaum Katzenbett mit Klettergerüst
+15448937562497	ersetzt-1	Katzenbett aus Holz für kleine Hunde
+15448937595265	ersetzt-1	Kuscheliges Winterbett für Katzen
+15448937660801	ersetzt-1	Massivholz-Kratzbaum für Katzen
+15448937726337	ersetzt-1	Geflochtenes Katzenbett mit Kratzbaum
+15448937824641	ersetzt-1	Sisal-Kratzbaum mit Liegefläche für Katzen
+15448937890177	ersetzt-1	Katzenbaum mit Kratzstamm Kaktus
+15448937955713	ersetzt-1	Massivholz-Katzenbaum mit Rattan-Bett
+15448938021249	ersetzt-1	Kompakter Kratzbaum mit Kuschelnest
+15448938054017	ersetzt-1	Holz-Katzenbaum «Weltraumkapsel»
+15448938086785	ersetzt-1	Massivholz Katzenbaum für kleine Wohnungen
+15448938185089	ersetzt-1	Kratzbaum & Katzenbett «Versteckspiel»
+15448938250625	ersetzt-1	Doppelstöckige Katzenvilla mit Kratzbaum
+15448938283393	ersetzt-1	Grosser Katzenbaum mit Klettergerüst und Katzenhaus
+15448938348929	ersetzt-1	Katzen-Klettergerüst mit Liegemulde
+15448938447233	ersetzt-1	Katzenhaus Baumhaus für kleine und ältere Katzen
+15448938480001	ersetzt-1	Sisal-Katzenbaum mit mehreren Ebenen
+15448938545537	ersetzt-1	Ganzjahres-Katzenbaum mit integriertem Bett
+15448938578305	ersetzt-1	Katzenbaum mit integriertem Bett
+15448938676609	ersetzt-1	Kratzbaum mit robusten Liegeflächen
+15448938709377	ersetzt-1	Katzenbaum mit Liegeflächen und Höhle
+15448938774913	ersetzt-1	Katzenbaum mit Haus und Sprungplattform
+15448938840449	ersetzt-1	Holz-Katzenbaum mit integriertem Katzenbett
+15448938873217	ersetzt-1	Katzenbett "Camp Cot" – Herausnehmbar & Waschbar
+15448938971521	ersetzt-1	Wandmontierter Katzenbaum aus Massivholz
+15448939004289	ersetzt-1	Kompakter Katzenbaum mit Kratzpilz
+15448939168129	ersetzt-1	Kratzbrett und Katzenhöhle – TV-Design
+15448939200897	ersetzt-1	Stilvoller All-in-One Kratzbaum für Katzen
+15448939266433	ersetzt-1	Mehrstufiger minimalistischer Katzenbaum
+15448939299201	ersetzt-1	Katzenbaum mit Kratzbaum und Hängematte
+15448939331969	ersetzt-1	Faltbares Katzenbett für den Schreibtisch
+15448939364737	ersetzt-1	Deckenhoher Katzenbaum mit Wolken-Liegeflächen
+15448939626881	ersetzt-1	Katzentreppe mit Sisal-Kratzbaum
+15448939659649	ersetzt-1	Kratzbaum-Treppe für Katzen, 4 Stufen, Grau
+15448939692417	ersetzt-1	Warme Katzen-Tragetasche für unterwegs
+15448939757953	ersetzt-1	Vertikaler Katzenbaum mit integriertem Bett
+15448939823489	ersetzt-1	Doppelstöckiger Katzenbaum aus Massivholz
+15448940085633	ersetzt-1	Kokosnussbaum Kratz- und Kletterturm
+15448940118401	ersetzt-1	Edelstahl-Katzentoilette, Geruchs- & Spritzschutz
+15448940249473	ersetzt-1	Snackbox Katzenbett – Ganzjährig & Multifunktional
+15448940380545	ersetzt-1	Wand-Katzenbaum – platzsparendes Kletterparadies
+15448940478849	ersetzt-1	Haustierbett zur Selbstabholung
+15448940577153	ersetzt-1	Doppelstöckiges Katzenhaus mit Kratzbrett
+15448940642689	ersetzt-1	Doppelstöckiges Katzenhaus mit Kratzbaum
+15448940708225	ersetzt-1	3-Stöckiger Wäscheständer mit 24 Clips und 32 Stangen
+15448940773761	ersetzt-1	360° drehbares Katzenbett für den Schreibtisch
+15448940839297	ersetzt-1	Ganzjahres-Hundebett für mittlere bis grosse Rassen
+15448940872065	ersetzt-1	Gestreiftes Katzensofa – Plüsch & Rutschfest
+15448940904833	ersetzt-1	Hundebett «Cool-air» – Regenbogen oder Baumwolle
+15448940970369	ersetzt-1	Glückskatzenbett – Atmungsaktiv und Warm
+15448941035905	ersetzt-1	L-förmiges Sisal-Katzenkratzbrett
+15448941134209	ersetzt-1	Boho Hängematte für Katzen
+15448941199745	ersetzt-1	Ganzjahres-Haustierbett aus Holz, abnehmbar & waschbar
+15448941232513	ersetzt-1	Sisal Kratzbaum und Bett Kombi
+15448941298049	ersetzt-1	Kitty Curls Kratzbrett mit Ball
+15448941330817	ersetzt-1	Erhöhtes, atmungsaktives Haustierbett
+15448941396353	ersetzt-1	Katzen-Heizungsliege mit Kunstfell
+15448941461889	ersetzt-1	Faltbares Haustierbett für drinnen & draussen
+15448941494657	ersetzt-1	XL Erhöhtes Hundebett, Rot
+15448941560193	ersetzt-1	Erhöhtes Hundebett für grosse Hunde, Beige
+15448941592961	ersetzt-1	Hundebett «Cooling Cot» mit Netzgewebe – Blau
+15448941658497	ersetzt-1	Erhöhtes Hundebett für grosse Hunde, Grau
+15448941691265	ersetzt-1	Erhöhtes Hundebett mit Blachen-Dach
+15448941789569	ersetzt-1	Hunde- und Katzenbett, abnehmbar & waschbar
+15448941855105	ersetzt-1	Hundebett mit Blachen-Sonnendach
+15448941920641	ersetzt-1	Haustierbett «All Seasons»
+15448941986177	ersetzt-1	Haustier-Sofabett mit Wärmefunktion
+15448942117249	ersetzt-1	Erhöhtes Hundebett mit Sonnendach
+15448942248321	ersetzt-1	Hundebett mit Sonnendach, erhöht, 122x91cm, Rot
+15448942346625	ersetzt-1	Hundeliegebett mit Sonnendach, Dunkelblau
+15448942543233	ersetzt-1	Katzen-Wrestling-Handschuh mit Katzenminze
+15448942641537	ersetzt-1	Katzenminze Fisch-Kicker Spielzeug, 3er-Pack
+15448942707073	ersetzt-1	Quietsche-Ente für aggressive Kauer – Plüschtier
+15448942772609	ersetzt-1	Kauspielzeug-Set für Katzen, 2er-Pack mit Katzenminze
+15448942838145	ersetzt-1	Quietschendes Plüschtier für Hunde, Löwe
+15448942903681	ersetzt-1	5er-Pack Quietsch-Plüschtiere für Hunde
+15448942969217	ersetzt-1	Pilz Kratzbaum für Katzen
+15448943034753	ersetzt-1	Unzerstörbares Hunde-Kauspielzeug Bär, 25 cm
+15448943100289	ersetzt-1	Deko-Kissen Mond und Sterne
+15448943165825	ersetzt-1	Fliegende Tier-Magnet-Stoffpuppe
+15448943198593	ersetzt-1	Tier-Plüschtier «Warm Companionship»
+15448943264129	ersetzt-1	Prinzessinnen-Puppen-Set im Geschenk-Box
+15448943362433	ersetzt-1	Quietschendes Zahnreinigungs-Hundespielzeug
+15448943427969	ersetzt-1	Luchs Plüschtier naturgetreu
+15448943460737	ersetzt-1	Katzenklo E24 Grau, Robust und Geräumig
+15448943526273	ersetzt-1	Pinkes Katzenkistchen E24 aus dickem Material
+15448943657345	ersetzt-1	BlueMagic Cube Intelligente Katzentoilette
+15448943690113	ersetzt-1	Katzenklo aus Edelstahl, geschlossen
+15448943755649	ersetzt-1	Erhöhtes, auslaufsicheres Katzenklo
+15448943821185	ersetzt-1	Katzentoilette mit Doppeltür
+15448943919489	ersetzt-1	Tragbare Katzentoilette für Zuhause & Reise
+15448943952257	ersetzt-1	Galaxy Katzentoilette mit Klappdeckel, Pink
+15448943985025	ersetzt-1	E Classic Grey Katzentoilette
+15448944050561	ersetzt-1	GreyMagic Cube Intelligente Katzentoilette
+15448944116097	ersetzt-1	Stabile Katzentoilette mit offenem Design
+15448944247169	ersetzt-1	Klassische Katzentoilette – Offen & Geräumig
+15448944312705	ersetzt-1	Galaxy Edelstahl-Katzentoilette Grau
+15448944345473	ersetzt-1	Galaxy Katzentoilette Orange, Geruchsdicht
+15448944411009	ersetzt-1	PinkMagic Cube Katzenklo – intelligent & selbstreinigend
+15448944542081	ersetzt-1	Galaxy Katzentoilette, geschlossen, Grau
+15448944607617	ersetzt-1	Elektrischer Katzenspielball mit Jagdbezug
+15448944673153	ersetzt-1	Weiches TPR-Schaumstoff-Spielzeug für Hunde
+15448944705921	ersetzt-1	Ferngesteuerter Hüpfball für Hunde
+15448944738689	ersetzt-1	Beissfester Spielball für Hunde
+15448944804225	ersetzt-1	Plüschtier mit Quietscher für Hunde
+15448944836993	ersetzt-1	Wiederaufladbarer Frisbee-Werfer für Katzen und Hunde
+15448944968065	ersetzt-1	Reissfester Beissball für grosse Hunde
+15448945000833	ersetzt-1	Futterspender-Spielzeug gegen Stress für Katzen
+15448945066369	ersetzt-1	Interaktiver Hundeball mit Vogelgezwitscher
+15448945099137	ersetzt-1	Interaktives Katzen-Teaser-Spielzeug mit Fernbedienung
+15448945164673	ersetzt-1	Aufblasbarer Wurfball für Hunde und Katzen
+15448945230209	ersetzt-1	Smartes Roll- und Zahnspielzeug für Haustiere
+15448945361281	ersetzt-1	Golden Retriever Spielball-Set, kaubeständig
+15448945394049	ersetzt-1	Spielzeug für Hunde und Katzen gegen Langeweile
+15448945492353	ersetzt-1	Hunde Agility Set, 4-teilig
+15448945557889	ersetzt-1	Faltbarer Pee Pad Halter für Hunde
+15448945623425	ersetzt-1	Agility-Trainingsset für Hunde, verstellbar
+15448945688961	ersetzt-1	Hunde Agility-Set mit verstellbaren Hürden
+15448945787265	ersetzt-1	Maus Teaser Ball – elektrisches Katzenspielzeug
+15448945852801	ersetzt-1	Interaktiver Katzen-Spielball
+15448945885569	ersetzt-1	11-teiliges Feder-Katzenspielzeug-Set
+15448945918337	ersetzt-1	Elektrisches Katzenspielzeug mit Ein-Knopf-Start
+15448945983873	ersetzt-1	Interaktiver Plüschball für Hunde
+15448946016641	ersetzt-1	3-in-1 Käsehaus Smart Katzenspielzeug
+15448946049409	ersetzt-1	Intelligenter Spielball für Katzen
+15448946147713	ersetzt-1	Smart Pet Teasing Ball für Katze & Hund
+15448946180481	ersetzt-1	Elektrischer Katzenspielstab mit Sound
+15448946246017	ersetzt-1	Interaktiver Spielball für Hunde, wiederaufladbar
+15448946278785	ersetzt-1	Katzenbaum Weltraum-Kapsel Villa
+15448946311553	ersetzt-1	Interaktives Rugby-Spielzeug für Hunde
+15448946377089	ersetzt-1	Automatischer Tennisballwerfer für Hunde
+15448946442625	ersetzt-1	Holz-Drehteller mit Teaser-Stab für Katzen
+15448946508161	ersetzt-1	All-in-one Kratzbaum aus Massivholz
+15448946573697	ersetzt-1	Kratzbaum aus Wellpappe für Hunde & Katzen
+15448946672001	ersetzt-1	Agility-Trainingsset für Hunde
+15448946704769	ersetzt-1	Jagd- und Spielversteck für Katzen
+15448946901377	ersetzt-1	Sprechender Hunde-Trainingsknopf
+15448946966913	ersetzt-1	Plüschtier mit Sound zum Kauen & Zähneputzen
+15448946999681	ersetzt-1	Quietschender Plüschhund für verspielte Vierbeiner
+15448947032449	ersetzt-1	Quietschender Gummihuhn für Hunde
+15448947097985	ersetzt-1	Quietschende Schnüffelspielzeuge für kleine Hunde
+15448947130753	ersetzt-1	Quietschende Plüschtier-Spielzeuge für Hunde
+15448947163521	ersetzt-1	Interaktiver Vogel mit Sound für Katzen
+15448947229057	ersetzt-1	Hundespielzeug Slipper mit Sound & Zahnreinigung
+15448947294593	ersetzt-1	Plüsch Ball mit Sound für Hunde
+15448947360129	ersetzt-1	Glacestängeli – Spielzeug für Hunde & Katzen
+15448947425665	ersetzt-1	Mini Ultraschall-Tierabwehr & Trainingsgerät
+15448947458433	ersetzt-1	Elektrisches Plüschtier mit Sound für Katzen
+15448947491201	ersetzt-1	Ultraschall Anti-Bell-Gerät, tragbar
+15448947556737	ersetzt-1	Langlebiges Latex-Kauspielzeug für Hunde
+15448947589505	ersetzt-1	Plüschtier Schnabeltier mit Sound für Hunde
+15448947622273	ersetzt-1	Hundespielball Plüsch mit Sound
+15448947720577	ersetzt-1	Interaktives Haustierspielzeug mit Sound
+15448947786113	ersetzt-1	Vogel Sound-Spielzeug für Haustiere
+15448947851649	ersetzt-1	Beissfestes Oxford-Stoff Hunde-Sound-Spielzeug
+15448947917185	ersetzt-1	Sprechende Plüschmaus für Hunde
+15448947949953	ersetzt-1	Haustier Zelt- und Höhlenbett
+15448948015489	ersetzt-1	Quietschendes Eichhörnchen-Hundespielzeug
+15448948081025	ersetzt-1	Quietsche-Hundespielzeug Maiskolben-Design
+15448948146561	ersetzt-1	Interaktive Katzenbürste mit Kratzfunktion
+15448948179329	ersetzt-1	Quietschendes Plüschtier für Hunde
+15448948212097	ersetzt-1	Quietsche-Ente aus Latex für gesunde Hundezähne
+15448948277633	ersetzt-1	Muschel-Hundespielzeug mit Soundeffekt
+15448948310401	ersetzt-1	Spielzeug mit Hanfseil und Federn für Katzen
+15448948375937	ersetzt-1	Weihnachts-Plüschtier mit Sound für Hunde & Katzen
+15448948474241	ersetzt-1	Schwimmendes Zahnreinigungs-Kauspielzeug
+15448948539777	ersetzt-1	Interaktive elektrische Induktionsschlange
+15448948605313	ersetzt-1	Interaktives Latex-Spielzeug für Haustiere
+15448948736385	ersetzt-1	Beissfester Katzenminze-Geburtstagskuchen für Haustiere
+15448948834689	ersetzt-1	Katzenspielzeug Klang-Rollbahn
+15448948900225	ersetzt-1	Interaktiver Futterspender für Katzen
+15448949031297	ersetzt-1	Futtermatte für Haustiere
+15448949096833	ersetzt-1	Futter- und Wasserspender-Set für Haustiere
+15448949129601	ersetzt-1	Automatischer Dual-Futterspender mit Timer
+15448949195137	ersetzt-1	Smarter Futterautomat mit Timer
+15448949260673	ersetzt-1	Automatischer Futterspender
+15448949293441	ersetzt-1	Faltbarer Futtercontainer mit Rollen
+15448949358977	ersetzt-1	Reise-Trinkflasche für Haustiere mit Futterfach
+15448949457281	ersetzt-1	Futter- & Wasserspender Katze, 4 Farben
+15448949522817	ersetzt-1	Futter- und Wasserspender für Haustiere
+15448949621121	ersetzt-1	Keramik-Doppelnapf für Katzen
+15448949752193	ersetzt-1	Schleckschale für langsames Fressen
+15448950047105	ersetzt-1	Smarte Futterbox mit automatischem Deckel
+15448950112641	ersetzt-1	Probiotische Verdauungschüechli für Hunde
+15448950178177	ersetzt-1	Gelenk-Supplement für Hunde & Katzen
+15448950210945	ersetzt-1	Anti-Schling Napf Kugelform Silikon XL
+15448950243713	ersetzt-1	Solar-Vogelfutterhaus mit Kronen-Design
+15448950276481	ersetzt-1	Futterport für Geflügel – 6er-Set
+15448950309249	ersetzt-1	Smarter 5L Futterautomat mit App-Steuerung
+15448950342017	ersetzt-1	Leckschale mit Ball für Hunde
+15448950407553	ersetzt-1	Futterbehälter luftdicht mit Messbecher
+15448950440321	ersetzt-1	Futterspender für Katzen & Hunde
+15448950505857	ersetzt-1	Churu Löffel für Katzenleckerlis
+15448950571393	ersetzt-1	Smarter Snack-Futterautomat für Katzen & Hunde
+15448950604161	ersetzt-1	Vogelhaus mit Infrarotkamera & Solarpanel
+15448950768001	ersetzt-1	Automatischer Wi-Fi Futterspender für Katzen & kleine Hunde
+15448950931841	ersetzt-1	1ml Spritzen mit Kappen, 25er-Pack
+15448951030145	ersetzt-1	Keramik-Futternapf für Hunde und Katzen
+15448951128449	ersetzt-1	Anti-Rutsch Schleckschale für Hunde und Katzen
+15448951161217	ersetzt-1	Futtertrog aus Metall für diverse Kleintiere
+15448951193985	ersetzt-1	Erhöhter Keramiknapf für Katzen & Hunde
+15448951226753	ersetzt-1	Interaktives Futterspielzeug Wal
