@@ -36,7 +36,8 @@ let ohne = 0, steht = 0, falsch = 0, ok = 0
 console.log(`${a.length} Verkehrswagen, Fenster ${z.welt} s Weltzeit (${z.wanduhr} s Wanduhr)\n`)
 for (let i = 0; i < a.length; i++) {
   const A = a[i], B = b[i]
-  if (A.n !== 4) { ohne++; if (ohne <= 5) console.log(`  ❌ Wagen ${i} (${A.datei}): ${A.n} Drehpunkte statt 4`); continue }
+  /* th37: 4 Raeder. th40 Muellwagen: 6 (Zwillinge hinten). Alles andere ist ein Fund. */
+  if (A.n !== 4 && A.n !== 6) { ohne++; if (ohne <= 5) console.log(`  ❌ Wagen ${i} (${A.datei}): ${A.n} Drehpunkte statt 4 oder 6`); continue }
   const weg = B.pos - A.pos
   const dphi = B.rad.map((r, k) => r.phi - A.rad[k].phi)
   const soll = weg / (A.rad[0].r * A.mass)
@@ -50,7 +51,7 @@ for (let i = 0; i < a.length; i++) {
   ok++
   if (ok <= 3) console.log(`  ✅ Wagen ${i}: ${weg.toFixed(2)} m -> Δphi ${dphi[0].toFixed(3)} rad (soll ${soll.toFixed(3)})`)
 }
-console.log(`\n${ohne ? '❌' : '✅'} Wagen ohne vier Drehpunkte: ${ohne}`)
+console.log(`\n${ohne ? '❌' : '✅'} Wagen ohne 4/6 Drehpunkte: ${ohne}`)
 console.log(`${steht ? '❌' : '✅'} Wagen mit stehenden Raedern bei Fahrt: ${steht}`)
 console.log(`${falsch ? '❌' : '✅'} Wagen mit falscher Drehung (Betrag/Richtung): ${falsch}`)
 console.log(`ℹ️  Wagen mit passender Drehung: ${ok}`)
