@@ -81,3 +81,26 @@ smarte-wlan-video-turklingel-mit-gegensprechan-668865	2041720035173052417	0	-	KE
 wasserdichte-kabellose-turklingel-190786	2036641959612825602	0	-	KEINE CH-Option → DRAFT	klinge
 alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=1097	klinge
 aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=977	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+silikonentferner-set-mit-5-klingen-805250	2074709467194966017	0	-	KEINE CH-Option → DRAFT	klinge
+3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+elektrischer-messerscharfer-673536	1676560345936171008	6	11.36	ok	klinge
+wlan-video-turklingel-8db6b1	-	-	-	unklar keine CJ-SKU	klinge
+kuchenmesser-aufbewahrung-8b4831	-	-	-	unklar keine CJ-SKU	klinge
+bambus-aufbewahrungsbox-mit-clipmesser-600700	2412190324191600900	6	39.01	ok	klinge
+mehrzweck-messer-aus-edelstahl-634300	2602261017401634600	0	-	KEINE CH-Option → DRAFT	klinge
+intelligente-turklingel-mit-kamera-605400	2508190223121605600	6	8.56	ok	klinge
+klingen-set-mit-metallgriff-604200	2607100724581604700	11	6.62	ok	klinge
+luftqualitatsmesser-mit-temperatur-feuchtigkei-609200	2410230757101609500	6	6.42	ok	klinge
+allzweck-messer-fur-fisch-und-fleisch-623800	2512280556481624000	0	-	KEINE CH-Option → DRAFT	klinge
+luxus-messer-set-edelstahl-628600	2512270235481628800	11	10.78	ok	klinge
+taktisches-klappmesser-fur-outdoor-einsatze-606800	2512260523411607300	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-obstmesser-631100	2512180124051631400	0	-	KEINE CH-Option → DRAFT	klinge
+mehrzweck-taschenmesser-629000	2512170910531629200	0	-	KEINE CH-Option → DRAFT	klinge
+faltmesser-aus-damaskus-stahl-630500	2512170116211630800	0	-	KEINE CH-Option → DRAFT	klinge
+kompakter-fruchte-messer-fur-outdoor-602400	2512160119421602700	0	-	KEINE CH-Option → DRAFT	klinge
+leichtes-multifunktions-campingmesser-604900	2512140948161605100	0	-	KEINE CH-Option → DRAFT	klinge
+klappmesser-aus-metall-635300	2512140903221635600	0	-	KEINE CH-Option → DRAFT	klinge
+neu-gestaltet-ausklappmesser-edelstahl-625900	2512140858421626100	0	-	KEINE CH-Option → DRAFT	klinge
+tungsten-schneidmesser-619300	2512100738411619600	0	-	KEINE CH-Option → DRAFT	klinge
+klappmesser-aus-damaskus-stahl-618900	2607140909441619500	0	-	KEINE CH-Option → DRAFT	klinge
