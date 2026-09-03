@@ -8885,3 +8885,44 @@ gid://shopify/Product/15450841284993	cj-abgekuendigt-pruefen
 gid://shopify/Product/15450841317761	CHF 103.87	1 Varianten	Wandregal Akazie Massivholz mit Naturkante
 gid://shopify/Product/15450841350529	CHF 118.04	1 Varianten	Tischplatte Buche Massivholz 80x40x1.5 cm
 gid://shopify/Product/15450841383297	CHF 83.29	1 Varianten	Ovale Tischplatte aus Kiefernholz (60x30 cm)
+gid://shopify/Product/15450841481601	CHF 240.48	1 Varianten	Tischplatten aus Massivholz, 2 Stk.
+gid://shopify/Product/15450841514369	CHF 212.31	1 Varianten	Tischplatte aus massiver Eiche (unbehandelt)
+gid://shopify/Product/15450841612673	CHF 47.07	1 Varianten	Stretch-Sofabezug für 2-Sitzer Polyester-Jersey
+gid://shopify/Product/15450841678209	CHF 36.79	1 Varianten	6er-Set Stretch-Stuhlbezüge
+gid://shopify/Product/15450841710977	CHF 40.17	1 Varianten	Stehtischhusse Stretch 2er-Set 80 cm Anthrazit
+gid://shopify/Product/15450841743745	CHF 74.27	1 Varianten	2er-Set Stretch-Tischdecken mit Bordüre
+gid://shopify/Product/15450841776513	CHF 44.24	1 Varianten	2er-Set Stretch-Tischhussen, Gold, Ø 80 cm
+gid://shopify/Product/15450841809281	cj-abgekuendigt-pruefen
+gid://shopify/Product/15450841842049	CHF 37.43	1 Varianten	2er-Set Stretch-Tischhussen, Anthrazit
+gid://shopify/Product/15450841874817	CHF 12.47	1 Varianten	Frühlingshafte Fensterbilder, selbstklebend
+gid://shopify/Product/15450841907585	CHF 20.71	1 Varianten	3D Holzpuzzle Schatztruhe Bausatz
+gid://shopify/Product/15450841940353	CHF 30.55	1 Varianten	110-teiliges Magnet-Bausteine-Set für Kinder
+gid://shopify/Product/15450841973121	CHF 34.57	1 Varianten	3D Holzpuzzle: Antike Schmuckbox
+gid://shopify/Product/15450842005889	CHF 38.00	1 Varianten	3D Holzpuzzle Baumhaus
+gid://shopify/Product/15450842038657	CHF 25.35	1 Varianten	3D Holzpuzzle "Geheimfach" mit Zahlenschloss
+gid://shopify/Product/15450842071425	CHF 22.20	1 Varianten	3D Holzpuzzle Weintransporter
+gid://shopify/Product/15450842104193	CHF 22.51	1 Varianten	3D Holzpuzzle: Mechanischer Zug
+gid://shopify/Product/15450842136961	CHF 28.58	1 Varianten	3D Holzpuzzle-Uhr Bausatz
+gid://shopify/Product/15450842202497	CHF 22.52	1 Varianten	3D Holzpuzzle Motorrad Modellbausatz
+gid://shopify/Product/15450842235265	CHF 19.63	1 Varianten	3D-Holzpuzzle Luftschiff-Modellbausatz
+gid://shopify/Product/15450842268033	CHF 30.73	1 Varianten	Retro Telefon 3D Holzpuzzle für Erwachsene
+gid://shopify/Product/15450842300801	CHF 46.69	1 Varianten	3D Holzpuzzle "Baker Street" mit Beleuchtung
+gid://shopify/Product/15450842333569	CHF 18.14	1 Varianten	3D Holzpuzzle Doppeldecker Modellbausatz
+gid://shopify/Product/15450842366337	CHF 46.36	1 Varianten	3D Holzpuzzle Atlantis Bücherregal mit Beleuchtung
+gid://shopify/Product/15450842399105	CHF 24.43	1 Varianten	3D Holzpuzzle Globus Bausatz
+gid://shopify/Product/15450842431873	CHF 38.06	1 Varianten	3D Holzpuzzle Eulen-Uhr Bausatz
+gid://shopify/Product/15450842694017	CHF 29.16	1 Varianten	Besteck-Organizer aus Edelstahl
+gid://shopify/Product/15450842726785	CHF 50.40	1 Varianten	Schneidebretter 2 Stk. aus gehärtetem Glas
+gid://shopify/Product/15450842759553	CHF 38.92	1 Varianten	3er-Set Glasbehälter mit Löffel
+gid://shopify/Product/15450842792321	CHF 28.18	1 Varianten	Aromadichtes Vorratsglas aus Borosilikat
+gid://shopify/Product/15450842825089	CHF 51.45	1 Varianten	Mikrowellen-Regal, einlagig, verstellbar
+gid://shopify/Product/15450842890625	CHF 18.94	1 Varianten	Textil- & Teppichreiniger 250 ml
+gid://shopify/Product/15450842923393	CHF 61.79	1 Varianten	XXL Wasserspender mit Zapfhahn, 8 L Glas
+gid://shopify/Product/15450842956161	CHF 13.46	1 Varianten	Geruchsentferner & Lufterfrischer 250 ml
+gid://shopify/Product/15450842988929	CHF 82.71	1 Varianten	3er-Set Gusseisenpfannen für Steaks & mehr
+gid://shopify/Product/15450843087233	CHF 62.48	1 Varianten	Wendbare Gusseisen Grillplatte 50x23 cm
+gid://shopify/Product/15450843152769	CHF 45.51	1 Varianten	Grillpfanne Gusseisen mit Holzgriff 20x20 cm
+gid://shopify/Product/15450843185537	CHF 18.08	1 Varianten	Leder- und Textilreiniger 250 ml
+gid://shopify/Product/15450843251073	CHF 20.82	1 Varianten	Holzreiniger & Auffrischer 250 ml
+gid://shopify/Product/15450843283841	CHF 7.88	1 Varianten	Gartenmöbel-Reiniger für Rattan & Textilene, 250 m
+gid://shopify/Product/15450843316609	CHF 46.08	1 Varianten	Gusseisen-Grillpfanne 24 x 23 cm

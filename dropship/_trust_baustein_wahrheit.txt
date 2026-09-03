@@ -3950,3 +3950,132 @@
 15448847417729	ersetzt-1	HD Mini-Handheld-Konsole für zwei Spieler
 15448847483265	ersetzt-1	Super Tic-Tac-Toe 4-in-1 Gedächtnisspiel
 15448847548801	ersetzt-1	Retro Arcade Handheld-Konsole X9
+15448847712641	ersetzt-1	28 Zoll Lotto-Maschine
+15448847745409	ersetzt-1	Retro Handheld-Konsole 4-Zoll HD-Bildschirm
+15448847778177	ersetzt-1	Magnetische Wireless Power Bank für Gaming
+15448847876481	ersetzt-1	Ersatz-Schutzhülle für PS5 Portal
+15448847909249	ersetzt-1	Magnetisches 15W Wireless Ladegerät für Smartphones
+15448848007553	ersetzt-1	Retro Arcade Gaming Konsole für Zuhause
+15448848040321	ersetzt-1	G11 PRO Dual System TV & Retro-Konsole
+15448848105857	ersetzt-1	Drahtloses Gamepad in lebendigen Farben
+15448848302465	ersetzt-1	Retro Arcade HD Spielkonsole
+15448848400769	ersetzt-1	Schutzhülle für Game Handheld
+15448848499073	ersetzt-1	Interaktive Murmel-Schiessmaschine für Kinder
+15448848564609	ersetzt-1	G5 Game BOX Jingchen 905L TV-Spielekonsole
+15448848597377	ersetzt-1	X2 Ultra HD Wireless Konsole für 2 Spieler
+15448848630145	ersetzt-1	Hall Trigger Wireless GamePad
+15448848695681	ersetzt-1	4K HD Wireless Open Source Gaming Konsole
+15448848761217	ersetzt-1	Retro 8-Bit Mini-Konsole mit 620 Spielen
+15448848793985	ersetzt-1	D11 Bluetooth Stretch Controller für Mobile Gaming
+15448848826753	ersetzt-1	Retro Handheld Arcade Konsole
+15448848925057	ersetzt-1	Kühlstation für Xbox Series S mit Ladegerät & Headset-Halter
+15448848957825	ersetzt-1	Lenkrad-Simulator für Xbox One Controller
+15448849023361	ersetzt-1	3-in-1 Retro Gaming & Media Box
+15448849088897	ersetzt-1	Schutzhülle für Nintendo Switch OLED (Anti-Rutsch)
+15448849121665	ersetzt-1	BlueRetro Wireless Controller Adapter für PS1/PS2
+15448849252737	ersetzt-1	Transparente Silikonhülle für Game Controller
+15448849449345	ersetzt-1	Game Card Aufbewahrungsbox
+15448849580417	ersetzt-1	Kabelloser Bluetooth-Controller für PS4/PC/Mobil
+15448849711489	ersetzt-1	Retro Super Console X Cube
+15448849940865	ersetzt-1	Clutch-Tragetasche für Nintendo Switch/OLED
+15448850104705	ersetzt-1	Classic Controller für Wii – 2. Generation
+15448850366849	ersetzt-1	S1 Mini Wireless Bygoad mit Maus-Tastatur
+15448850628993	ersetzt-1	Bluetooth-Controller mit Six-Axis-Bewegung
+15448850760065	ersetzt-1	Bluetooth-Tastatur für Controller
+15448850923905	ersetzt-1	Mini Wireless Tastatur mit Touchpad und RGB-Beleuchtung
+15448851087745	ersetzt-1	Kabelloser Multiplattform-Gamepad
+15448851218817	ersetzt-1	Red Samurai Bluetooth-Controller ausziehbar
+15448851382657	ersetzt-1	Münzeinwurf-Tor für Spielautomaten
+15448851546497	ersetzt-1	Multifunktions-Ladestation mit Kühlung für PS5
+15448851677569	ersetzt-1	Kabelgebundener Controller für Xbox One
+15448851743105	ersetzt-1	Arcade Xgame Joystick TV-Spielkonsole
+15448851874177	ersetzt-1	PS4 kabelgebundener Controller
+15448852038017	ersetzt-1	Mini Gaming-Konsole mit Handventilator
+15448852201857	ersetzt-1	Smarte Brille mit 8MP Kamera & Bluetooth 5.4
+15448852300161	ersetzt-1	Lampen-Effekt-Ventilator Grün
+15448852332929	ersetzt-1	Elektrische Fliegenklatsche mit 2 Ventilatoren
+15448852431233	ersetzt-1	Schüttelkopf-Ventilator, Pink, Akkubetrieben
+15448852464001	ersetzt-1	Schüttelkopf-Ventilator, kabellos
+15448852529537	ersetzt-1	Lampen-Effekt Ventilator Puder Rosa
+15448852627841	ersetzt-1	Football Fliegenfänger mit 4 Ventilatoren
+15448852758913	ersetzt-1	Mini Ventilator Lila – USB-aufladbar
+15448853545345	ersetzt-1	Violent Fan Turbojet Li-Ion Akku-Lüfter
+15448858067329	ersetzt-1	6-in-1 Multifunktions-Ventilator
+15448859771265	ersetzt-1	3-in-1 Handventilator mit Turbo-Funktion
+15448861344129	ersetzt-1	Over-Ear Bluetooth Kopfhörer mit HD Mikrofon
+15448864326017	ersetzt-1	Wanzen- und Kamera-Detektor mit Funk- und Magnetfelderkennun
+15448866128257	ersetzt-1	5 Core Mikrofonhalter (2 Stück)
+15448867701121	ersetzt-1	AI Übersetzungs-Earbuds (144 Sprachen)
+15448870748545	ersetzt-1	Smarter Gesundheits-Tracker Ring mit Ladecase
+15448871797121	ersetzt-1	Smart Ring Gesundheits-Tracker mit Ladecase
+15448872452481	ersetzt-1	USB Heizwickel für Schulter und Nacken
+15448872714625	ersetzt-1	Smart Ring mit Gesundheits- und Fitness-Tracking
+15448872747393	ersetzt-1	Rondo Bluetooth Knochenschall-Kopfhörer
+15448872845697	ersetzt-1	Smarte Audio-Brille mit Wechsellinsen
+15448872878465	ersetzt-1	Drahtloses Mini-Lavalier-Mikrofon für Live-Streams
+15448872976769	ersetzt-1	Smart Pager Armbanduhr für Servicepersonal
+15448873009537	ersetzt-1	Magnetischer Digitaler Diktierer mit AI-Rauschunterdrückung
+15448873075073	ersetzt-1	Magnetischer Sprachrekorder mit 60h Akku
+15448873107841	ersetzt-1	Digitaler Diktierer mit 64GB und Sprachaktivierung
+15448873173377	ersetzt-1	VR-Brille mit verstellbarem Kopfband
+15448873271681	ersetzt-1	Digitales Nachtsichtgerät mit HD-Teleskop
+15448873402753	ersetzt-1	Helmhalterung für Action-Kameras
+15448873468289	ersetzt-1	Leuchtbrille für sicheres Fahren bei Nacht
+15448873533825	ersetzt-1	Smarter Retro Ring für Herzfrequenz
+15448873566593	ersetzt-1	E-Sports In-Ear Bluetooth Headset (Kabellos)
+15448873632129	ersetzt-1	Armband-Gehäuse 44/45mm für Smartwatches
+15448873730433	ersetzt-1	Mini-Halter-Ventilator mit langer Akkulaufzeit
+15448873763201	ersetzt-1	Töpfchentrainer mit Funk-Alarm
+15448874320257	ersetzt-1	LED Nackenleuchte für Joggen und Lesen
+15448874615169	ersetzt-1	Ohr-Accessoires aus Edelstahl (18mm)
+15448874779009	ersetzt-1	Gebogene Uhrenarmband-Federstege aus Edelstahl
+15448875172225	ersetzt-1	Fitness-Smartwatch mit Herzfrequenz-Tracking · Bernstein-Edi
+15448875499905	ersetzt-1	S5 Fitness-Armband mit Temperaturmessung
+15448875532673	ersetzt-1	Smart-Armband M16 zur Schlafunterstützung
+15448875630977	ersetzt-1	Smartes Sportarmband mit Herzfrequenzmessung · schlankes Dam
+15448875663745	ersetzt-1	Love Bracelet Uhrenarmband mit Perlenkette
+15448875696513	ersetzt-1	Smartes Gesundheits-Armband mit Fernpflege
+15448875762049	ersetzt-1	Smartwatch mit Herzfrequenz- und Schlaf-Tracking
+15448875827585	ersetzt-1	Titan-Armband für Apple Watch
+15448875860353	ersetzt-1	Smartes Sportarmband mit Herzfrequenzmessung · 1,44-Zoll-IPS
+15448875925889	ersetzt-1	Lederarmband für Apple Watch
+15448875991425	ersetzt-1	Smartes Sportarmband mit Herzmessung
+15448876056961	ersetzt-1	Vintage Metall-Leder Armband für Apple Watch
+15448876122497	ersetzt-1	Smart Reminder Armband mit Bluetooth
+15448876220801	ersetzt-1	Pinkycolor Silikonarmband für Apple Watch
+15448876253569	ersetzt-1	Y68 Smartwatch mit Bluetooth
+15448876286337	ersetzt-1	Smart Bluetooth Armband mit Herzfrequenzmessung
+15448876351873	ersetzt-1	Antistatik-Armband für Herren und Damen
+15448876417409	ersetzt-1	Pulsmesser Dual-Modus Armband für Sport
+15448876548481	ersetzt-1	Smartwatch mit Farb-Touchscreen & Blutsauerstoffmessung
+15448876581249	ersetzt-1	Smartes Sportarmband mit Schrittzähler & Erinnerung
+15448876679553	ersetzt-1	Smartes Gesundheits-Armband mit Farbdisplay
+15448876745089	ersetzt-1	T1 Smart Bluetooth Sportarmband mit Farbdisplay
+15448876777857	ersetzt-1	C33 Smart-Armband mit Körperfett-Messung
+15448876810625	ersetzt-1	Smart-Armband mit HD-Farbdisplay
+15448876876161	ersetzt-1	Uhrenarmband aus Edelstahl, dreireihig
+15448876941697	ersetzt-1	Pulsmessgerät für diverse Sportarten
+15448877007233	ersetzt-1	Sport Armband mit Pulsmesser für Gruppentraining
+15448877105537	ersetzt-1	Dual-Screen Smart Armband
+15448877171073	ersetzt-1	Zweifarbiges Silikonarmband für Apple Watch
+15448877203841	ersetzt-1	Smartwatch mit Herzfrequenzmessung · Damen, Armband-Design
+15448877269377	ersetzt-1	Smartwatch-Armband aus Leder-Nylon
+15448877334913	ersetzt-1	Smart-Armband mit Pulsmesser
+15448877400449	ersetzt-1	T-förmiges Lederarmband für Smartwatch
+15448877433217	ersetzt-1	C114 Smartwatch mit Herzfrequenzmessung
+15448877465985	ersetzt-1	Smart Slim Resin Armband für Apple Watch
+15448877531521	ersetzt-1	Harz-Metall-Denim-Ketten-Armband für Smartwatches
+15448877597057	ersetzt-1	Smart-Armband mit Schritt- & Schlafüberwachung
+15448877629825	ersetzt-1	P10 Smart Health Armband
+15448877662593	ersetzt-1	Kinder Smartwatch mit GPS und Videoanruf
+15448877760897	ersetzt-1	Smartwatch ZX18 – Fitness-Tracker für Damen und Herren
+15448877826433	ersetzt-1	GPS SOS Armband mit Herzfrequenz- und Sturzalarm
+15448877859201	ersetzt-1	Smart-Armband E58 mit Herzfrequenz-Messung
+15448877924737	ersetzt-1	Smartes Sport-Armband mit Farbdisplay
+15448877990273	ersetzt-1	Smartwatch mit Bluetooth-Anruf- und Musikfunktion
+15448878023041	ersetzt-1	Smartwatch mit Herzfrequenzmessung · schlicht, 4 Farben
+15448878121345	ersetzt-1	Sportuhr mit Silikonarmband
+15448878154113	ersetzt-1	Smart Bracelet mit atmungsaktivem Metallarmband
+15448878219649	ersetzt-1	Smartes Sport-Armband mit Schrittzähler
+15448878285185	ersetzt-1	Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk
+15448878317953	ersetzt-1	Pedometer Sport-Armbanduhr
