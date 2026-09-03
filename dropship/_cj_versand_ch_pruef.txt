@@ -6,3 +6,6 @@ schleifstein-gelb-3000er-kornung-828161	2052600036494315521	0	-	KEINE CH-Option 
 schleifstein-10000er-kornung-mit-winkelhilfe-042241	2051576008368558081	0	-	KEINE CH-Option → DRAFT	klinge
 schleifstein-400-1000er-kornung-898113	2051579433017774082	0	-	KEINE CH-Option → DRAFT	klinge
 elektrische-kaffeemuhle-mit-6-klingen-354561	2046561437818183681	0	-	KEINE CH-Option → DRAFT	klinge
+kasemesser-set-mit-holzbox-4-teilig-325697	2042225015930126337	-	-	unklar 200 Success rest=53	klinge
+kochmesser-damaststahl-olivenholz-609400	2604220107431609900	1	14.74	ok	klinge
+4-in-1-messerscharfer-fur-kuche-schere-141697	2046149631261732866	-	-	unklar 200 Success rest=57	klinge
