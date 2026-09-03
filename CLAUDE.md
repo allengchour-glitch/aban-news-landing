@@ -6165,3 +6165,7 @@ Groq-Schlüssel den Fehler zu (kein Text → nie bis zum Anlegen).
   keinen Zielscheiben-Wecker.** Zwei letzte Varianten («shooting target clock», «laser target alarm») stehen
   in der Queue; bleiben sie leer, ist der Betreiberwunsch bei CJ nicht erfüllbar — das gehört gemeldet,
   nicht durch eine Granaten-Uhr ersetzt (Köderwechsel-Regel).
+- **Ergebnis 03.09. 01:15 UTC:** Auch «shooting target clock» und «laser target alarm» liefern nichts.
+  **Fünf Begriffe, null Wecker — CJ führt keinen Zielscheiben-Wecker.** An den Betreiber gemeldet
+  statt ein Ersatzprodukt unterzuschieben; Alternativen wären ein anderer Lieferant oder einer der
+  80 vorhandenen Wecker ohne Schiessfunktion.
