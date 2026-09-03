@@ -22,11 +22,21 @@
  * misst, sieht null Aenderung und haelt einen richtigen Drehpunkt fuer falsch. Hier wird
  * darum nichts gesetzt, sondern nur beobachtet, was das Spiel selbst tut.
  *
- * Aufruf:  node spiele-dev/tools/th-fahrt.mjs [sekunden]
+ * ⚠️ DAS FENSTER ZAEHLT IN WELTZEIT, NICHT IN WANDUHR. Auf dem Software-Renderer
+ * dieses Containers sind 60 Wanduhr-Sekunden nur 5,1 s Simulationszeit (1,7 Bilder/s,
+ * dt gedeckelt auf 0,05). Der erste Entwurf wartete 20 s Wanduhr — das sind 1,7 s Welt,
+ * und er fand die Bewegung nur, weil sich die drei Karusselle mit rund 1 rad/s drehen.
+ * Siehe warteWeltzeit in th-lib.
+ *
+ * ⚠️ DER EINTRAG "seilbahn" IN FAHRTEN IST DIE STATION, NICHT DIE BAHN (Zeile ~6798,
+ * th26_seilbahn_station.glb). Die Gondeln haengen an window._seilbahn.gond und fahren:
+ * GEMESSEN 10,68 m je Gondel in 30 s Wanduhr. Sie werden getrennt gemessen und gemeldet.
+ *
+ * Aufruf:  node spiele-dev/tools/th-fahrt.mjs [weltsekunden]
  */
-import { mitSonden, spielOeffnen, aufraeumen } from './th-lib.mjs'
+import { mitSonden, spielOeffnen, aufraeumen, warteWeltzeit } from './th-lib.mjs'
 
-const SEK = Number(process.argv[2] || 20)
+const SEK = Number(process.argv[2] || 5)
 
 const TMP = mitSonden('traumhaus.html', {
   fahrt: `function(){
@@ -45,17 +55,22 @@ const TMP = mitSonden('traumhaus.html', {
          als Ausfall. Ein Eintrag mit 0 ist aber kein fehlender Eintrag, sondern eine
          vorgesehene Bewegung, die nicht stattfindet: genau der Fund, um den es geht. */
       return {typ:F.typ,teile:a.length/6,
-              soll:(R[F.typ]!==undefined)||!!F.rotor||!!F.pendel,
-              grund:(R[F.typ]!==undefined)?"_drehRaten":(F.rotor?"rotor":(F.pendel?"pendel":"")),w:a};});}`,
+              soll:(R[F.typ]!==undefined)||!!F.rotor||!!F.pendel||!!F.gondel||!!F.wagen,
+              grund:(R[F.typ]!==undefined)?"_drehRaten":(F.rotor?"rotor":(F.pendel?"pendel":(F.gondel?"gondel":(F.wagen?"wagen":"")))),w:a};});}`,
+  uhr: `function(){return uhrzeit;}`,
+  gondeln: `function(){var S=window._seilbahn;if(!S||!S.gond)return null;
+    return S.gond.map(function(g){return g.w?[g.w.position.x,g.w.position.y,g.w.position.z]:null;});}`,
 }, '_fahrt_probe.html')
 
 const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000 })
 const a = await page.evaluate(() => window.__th.fahrt())
-await page.waitForTimeout(SEK * 1000)
+const gA = await page.evaluate(() => window.__th.gondeln())
+const z = await warteWeltzeit(page, SEK)
 const b = await page.evaluate(() => window.__th.fahrt())
+const gB = await page.evaluate(() => window.__th.gondeln())
 
 let fehlt = 0, ruhig = []
-console.log(`Fahrgeschaefte ueber ${SEK} s — groesste Aenderung ueber ALLE Teile\n`)
+console.log(`Fahrgeschaefte ueber ${z.welt} s WELTZEIT (${z.wanduhr} s Wanduhr, ${z.anteil} %) — groesste Aenderung ueber ALLE Teile\n`)
 console.log('  ' + 'Typ'.padEnd(17) + 'Teile'.padStart(6) + 'Winkel'.padStart(10) + 'Ort (m)'.padStart(10) + '   soll sich bewegen')
 for (let i = 0; i < a.length; i++) {
   let dw = 0, dp = 0
@@ -71,10 +86,18 @@ for (let i = 0; i < a.length; i++) {
     dw.toFixed(4).padStart(10) + dp.toFixed(2).padStart(10) + '   ' +
     (soll ? 'ja (' + a[i].grund + ')' : 'nein') + (bewegt ? '  · bewegt sich' : ''))
 }
+let gondFehlt = 0
+if (gA && gB && gA.length) {
+  const wege = gA.map((p, i) => (p && gB[i]) ? Math.hypot(gB[i][0] - p[0], gB[i][1] - p[1], gB[i][2] - p[2]) : NaN)
+  gondFehlt = wege.filter((w) => !(w > 0.5)).length
+  console.log(`\n  ${gondFehlt ? '❌' : '  '}Seilbahn-Gondeln (window._seilbahn.gond, NICHT der FAHRTEN-Eintrag): ${gA.length} Stueck, ${wege.map((w) => w.toFixed(1)).join(' / ')} m`)
+} else console.log('\n  ⚠️  window._seilbahn.gond nicht gefunden — Seilbahn ungeprueft.')
 console.log(`\n${fehlt ? '❌' : '✅'} Vorgesehene Bewegungen, die ausbleiben: ${fehlt}`)
+console.log(`${gondFehlt ? '❌' : '✅'} Seilbahn-Gondeln, die stehen: ${gondFehlt}`)
 console.log(`ℹ️  Absichtlich still (keine Bewegung im Code vorgesehen): ${ruhig.length} — ${ruhig.join(', ')}`)
+console.log('    Darunter "seilbahn": das ist die STATION. Ihre Gondeln fahren (Zeile darueber).')
 console.log(`${jsFehler.length ? '❌' : '✅'} JS-Fehler: ${jsFehler.length}`)
-console.log(`\n${fehlt === 0 && jsFehler.length === 0 ? '🎉 FAHRGESCHAEFTE BESTANDEN' : '💥 FAHRGESCHAEFTE FEHLGESCHLAGEN'} — ${a.length} geprueft, ${fehlt} ohne Bewegung`)
+console.log(`\n${fehlt === 0 && gondFehlt === 0 && jsFehler.length === 0 ? '🎉 FAHRGESCHAEFTE BESTANDEN' : '💥 FAHRGESCHAEFTE FEHLGESCHLAGEN'} — ${a.length} geprueft, ${fehlt} ohne Bewegung`)
 await browser.close()
 aufraeumen(TMP)
-process.exit(fehlt === 0 && jsFehler.length === 0 ? 0 : 1)
+process.exit(fehlt === 0 && gondFehlt === 0 && jsFehler.length === 0 ? 0 : 1)
