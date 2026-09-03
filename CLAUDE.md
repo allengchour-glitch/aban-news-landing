@@ -6555,3 +6555,43 @@ CHF 19.90, häufigste Stufe CHF 16 — leichte Ware trägt jeden Korb, schwere k
 - ⚠️ Fünfte Fundstelle der SKU-FORMEN-Falle: Diese Ware trägt `CJ-<numerische pid>`, nicht
   `CJ-CJXX…`. Wer sie an `product/variant/query?productSku=` schickt, bekommt «Product not
   found» und hält ein lieferbares Produkt für verschwunden. Numerische SKU → `product/query?pid=`.
+
+## 💰 «Gewinn ist mir wichtig» — wo er liegt, gemessen über 19'343 Produkte (2026-09-03)
+Gewinn je EINZELbestellung (Kunde zahlt CHF 7 Versand, abzüglich der belegten Zahlungsgebühr
+2,95 % + CHF 0.30): **Median CHF 10.00**, bestes Zehntel ab CHF 21.42, schlechtestes Zehntel
+unter CHF 3.35. **3'682 Produkte tragen sogar den Rabattkorb** (Gratis-Versand UND «2+ −10 %»)
+und wiegen unter 712 g — das ist die verkäufliche Substanz des Shops.
+
+**Und dann die Messung, die das Schaufenster beurteilt.** Ø Gewinn der Produkte, die eine
+Startseiten-Reihe tatsächlich zeigt:
+
+| Reihe | Position | Ø einzeln | Ø im Rabattkorb |
+|---|---:|---:|---:|
+| Premium Schmuck | 12 | **40.71** | **27.38** |
+| Hero-Favoriten | 5 | 31.19 | 20.05 |
+| 🔥 Gerade im Trend | 3 | 17.50 | 5.63 |
+| Elektronik & Technik | 17 | 12.58 | 1.85 |
+| **Damen-Mode** | **9** | 9.63 | **0.49** |
+
+**Die profitabelste Reihe steht auf Platz 12, die unrentabelste auf Platz 9.** Und die
+Rabattkette frisst bei billiger Ware praktisch die ganze Marge: Damen-Mode verdient im
+Zwei-Artikel-Korb mit Gratis-Versand **49 Rappen**. Das ist keine Preisfrage mehr, das ist
+die Sortimentsfrage — leichte, hochpreisige Ware (Schmuck 200 g / CHF 119–199 → CHF 70–121
+Gewinn) trägt den Shop, CHF-16-Mode trägt ihn nicht.
+
+**🆕 Und ein Schaufenster, das 24 Tage stillstand:** Die Reihe «✨ Neuheiten 2026» hängt an der
+Smart-Regel `TAG = neuheit` — und **KEIN Importer setzte diesen Tag**. Der jüngste Artikel darin
+war vom **10.08.**, während täglich hunderte Produkte dazukamen. Alle drei CJ-Importer setzen
+ihn jetzt (`cj_category_fill` zentral in `tagsFinal`, `cj_trending_import` in 21 Gruppenlisten,
+`cj_sku_import` in der Sammelliste); `automation/neuheit_tag_nachziehen.py` holt die Lücke nach.
+⚠️ Der Nachzug darf den Cursor NICHT weitersetzen — der Filter `-tag:neuheit` schliesst die eben
+getaggten schon aus, mit Cursor würde jede zweite Seite übersprungen.
+- ⚠️ **Fehlalarm auf dem Weg dorthin, und er war meiner:** Ich las in der Kollektion sechs
+  Produkte ohne Kostenzahl und wollte eine Importer-Regression melden. Nachgemessen tragen
+  **12 von 12 heutigen Importen** Kosten — die sechs waren vom 10.08., also von VOR dem
+  Kosten-Fix (20.08.). **Eine Stichprobe aus einer eingefrorenen Reihe ist keine Stichprobe
+  der Gegenwart** (dieselbe Familie wie «eine Stichprobe der jüngsten Importe ist keine
+  Stichprobe des Katalogs», 27.08.).
+- ⚠️ `productsCount` einer Kollektion hinkt nach: Der Zähler stand nach dem Tagging von 400
+  Produkten unverändert bei 1'992, die PRODUKTLISTE zeigte längst neue Ware. Wer die Wirkung
+  eines Tag-Laufs prüft, liest die Liste, nicht den Zähler.

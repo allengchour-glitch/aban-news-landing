@@ -199,7 +199,7 @@ for (const item of ITEMS) {
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const tagsFinal = [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : []),
       ...(tsch ? ['tierschutz-tschv76', 'tierschutz-' + tsch.grund] : []),
-      ...((med || tsch) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu',
+      ...((med || tsch) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])];
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',

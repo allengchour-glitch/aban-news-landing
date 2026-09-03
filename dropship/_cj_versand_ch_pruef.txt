@@ -350,3 +350,17 @@ schneeleopard-knochenbeil-958336	1406880929812713472	0	-	KEINE CH-Option → DRA
 fisch-hackmesser-aus-clip-stahl-020480	1406880224368529408	0	-	KEINE CH-Option → DRAFT	klinge
 national-hero-kochmesser-641728	1406879471654539264	0	-	KEINE CH-Option → DRAFT	klinge
 knochenhackmesser-aus-manganstahl-903296	1406876840764772352	0	-	KEINE CH-Option → DRAFT	klinge
+knochenbeil-aus-7cr17mov-stahl-668160	1406874566483120128	0	-	KEINE CH-Option → DRAFT	klinge
+kochmesser-aus-5cr15mov-stahl-mit-palisandergr-670656	1406871629715345408	0	-	KEINE CH-Option → DRAFT	klinge
+raptors-knochenbeil-796160	1406870991333888000	0	-	KEINE CH-Option → DRAFT	klinge
+drachenknochen-hackmesser-gold-edition-374400	1406867041054494720	0	-	KEINE CH-Option → DRAFT	klinge
+jiaolong-knochenhackmesser-retro-edition-959616	1406861295600406528	0	-	KEINE CH-Option → DRAFT	klinge
+china-longquan-knochenbeil-812992	1406860513387876352	0	-	KEINE CH-Option → DRAFT	klinge
+tiger-head-knochenhackmesser-mit-rundgriff-835008	1406859029422149632	0	-	KEINE CH-Option → DRAFT	klinge
+drachengriff-knochenhackmesser-352064	1406855214635552768	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-japanisches-sashimi-messer-870272	1405867715205402624	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-kochmesser-aus-v-gold-stahl-175808	1405867056439627776	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-mit-holzgriff-026240	1405866370691895296	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-aus-longquan-musterstahl-367040	1405864908742070272	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-handgeschmiedetes-kleines-kuchenmesse-217088	1405864175762280448	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-handgeschmiedetes-kuchenmesser-gehamm-485184	1405862807253159936	0	-	KEINE CH-Option → DRAFT	klinge

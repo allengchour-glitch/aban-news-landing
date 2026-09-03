@@ -798,7 +798,11 @@ for(const [cat,label] of grp.cats){
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
    const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];
-   let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
+   // 03.09.2026: Der Tag «neuheit» speist die Startseiten-Reihe «Neuheiten 2026»
+   // (Smart-Regel TAG=neuheit, CREATED_DESC). KEIN Importer setzte ihn — der juengste
+   // Artikel darin war vom 10.08., die Reihe zeigte 24 Tage lang dieselbe Ware, waehrend
+   // taeglich hunderte Produkte dazukamen. Ein Schaufenster, das sich nicht bewegt.
+   let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[]),'neuheit'];
    if(fash?.preisFix) tagsFinal=[...tagsFinal,'preis-ausreisser-korrigiert'];
    let typeFinal=grp.type;
    // 🔪 03.09.2026: CJs «Kitchen Knives» liefert auch Outdoor-/Taktik-/Survival-Klingen. Mit den Gruppen-Tags
