@@ -9560,3 +9560,4 @@ gid://shopify/Product/15451929903489	CHF 32.78	10 Varianten	Herren Weste mit Ste
 gid://shopify/Product/15451930100097	CHF 12.63	36 Varianten	Slim-Fit Herrenweste · koreanischer Stil
 gid://shopify/Product/15451930263937	CHF 13.84	12 Varianten	Kapuzenjacke für Herren
 gid://shopify/Product/15451930427777	CHF 29.31	32 Varianten	Herren-Cordjacke im Workwear-Stil
+gid://shopify/Product/15451930657153	CHF 22.46	16 Varianten	Gothic Military Herrenjacke
