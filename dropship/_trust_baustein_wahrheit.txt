@@ -3149,3 +3149,73 @@
 15448669749633	ersetzt-1	Eleganter Herringbone Wollmantel für Damen
 15448669880705	ersetzt-1	Eleganter ärmelloser Mantel für Damen
 15448669946241	ersetzt-1	Wollmantel mit Daunenfutter für Damen
+15448670011777	ersetzt-1	Pullover mit Schleifenmuster und Kontrastdetails
+15448670273921	ersetzt-1	Damen Wollmantel für Winter Business
+15448670404993	ersetzt-1	Damen-Mantel mit 3D Digitaldruck und Rundhals
+15448670470529	ersetzt-1	Mid-length Wollmantel Casual Chic
+15448670536065	ersetzt-1	Retro Rollkragen Wollmantel mit Knöpfen
+15448670601601	ersetzt-1	Eleganter Doubleface-Wollmantel im Western-Stil
+15448670667137	ersetzt-1	Farbiger Patchwork Lammfell-Mantel
+15448670765441	ersetzt-1	Langer Kapuzenmantel mit 3D-Digitalprint
+15448670798209	ersetzt-1	Digitalprint V-Neck Pullover für Damen
+15448670863745	ersetzt-1	Mid-Length Kunstpelzmantel mit Blazer-Kragen
+15448670929281	ersetzt-1	Eleganter marineblauer Wollmantel mit Schulter-Design
+15448670962049	ersetzt-1	Langer Damenmantel im Kaschmir-Look
+15448671027585	ersetzt-1	Eleganter Damenmantel mit Fellkragen
+15448671125889	ersetzt-1	Gefütterter Mid-Length Mantel für Damen
+15448671158657	ersetzt-1	Gefütterter Patchwork-Wintermantel mit Kapuze
+15448671224193	ersetzt-1	Gefütterte Winddichte Polar Fleece Jacke
+15448671289729	ersetzt-1	Gesteppter Baumwollmantel mit Print
+15448671322497	ersetzt-1	Kurze Daunenjacke mit Patchwork-Ärmeln für Damen
+15448671355265	ersetzt-1	Karierte Fleece-gefütterte Kapuzenjacke für Damen
+15448671388033	ersetzt-1	Gesteppter Patchwork-Baumwollmantel
+15448671453569	ersetzt-1	Gefütterter Baumwollmantel mit Blumenprint
+15448671486337	ersetzt-1	Daunenmantel Slim-Fit
+15448671584641	ersetzt-1	Gefütterte Ski-Pufferjacke mit Kapuze
+15448671715713	ersetzt-1	Gepolsterter Stehkragen-Mantel mit Blumenmuster
+15448671814017	ersetzt-1	Damen Freizeit-Baumwolljacke mit Knöpfen
+15448671945089	ersetzt-1	Leichter Daunenmantel mit Kapuze
+15448672043393	ersetzt-1	Gefütterte Damen-Pufferjacke mit Kapuze
+15448672076161	ersetzt-1	Damen Steppjacke mit grossem Fellkragen
+15448672108929	ersetzt-1	Leichte Steppjacke mit Stehkragen für Damen
+15448672141697	ersetzt-1	Gerippte Baumwoll-Steppjacke im Street-Style
+15448672174465	ersetzt-1	Gefütterter Baumwollmantel mit Prinzessinnenärmeln
+15448672207233	ersetzt-1	Strickjacke mit Kapuze
+15448672240001	ersetzt-1	Kurze, locker geschnittene Daunenbaumwolljacke
+15448672305537	ersetzt-1	Gefütterter Kapuzen-Cardigan, mittellang
+15448672371073	ersetzt-1	Gepolsterte Baumwolljacke mit Rundhals
+15448672403841	ersetzt-1	Kurze, locker geschnittene Damen-Steppjacke
+15448672469377	ersetzt-1	Gefütterter Damen-Mantel im Slim-Fit
+15448672534913	ersetzt-1	Gefütterter Wintermantel für Damen
+15448672633217	ersetzt-1	Gepolsterte Weste für Damen
+15448672665985	ersetzt-1	Gefütterter Damen-Mantel mit grossem Kunstfellkragen
+15448672731521	ersetzt-1	Warme Damen-Steppjacke im japanischen Stil
+15448672764289	ersetzt-1	Warme Haori Jacke im japanischen Stil
+15448672797057	ersetzt-1	Gefütterte Damenjacke mit Blumenmuster
+15448672829825	ersetzt-1	Gepolsterte Langarm-Baumwolljacke mit Rundhals
+15448672862593	ersetzt-1	Gefütterte Herrenjacke mit Stehkragen
+15448672895361	ersetzt-1	Kurze Kapuzenjacke mit Polyester-Füllung
+15448672928129	ersetzt-1	Vielseitige, schlankmachende Wattierte Jacke
+15448672993665	ersetzt-1	Leichte Daunenjacke für Herbst und Winter
+15448673026433	ersetzt-1	Gefütterte Jeansjacke mit Fleece-Futter
+15448673059201	ersetzt-1	Gefütterte Damen-Freizeitjacke mit langen Ärmeln
+15448673157505	ersetzt-1	Kurze Daunenjacke für Damen
+15448673288577	ersetzt-1	Gefütterter Coral Fleece Loungewear-Hoodie
+15448673419649	ersetzt-1	Kurze, locker geschnittene Pufferjacke
+15448673550721	ersetzt-1	Damen-Steppjacke mit Rautenmuster
+15448673616257	ersetzt-1	Gepolsterte Baumwolljacke für den Winter
+15448673649025	ersetzt-1	Gefütterter Kapuzenmantel – schlicht & vielseitig
+15448673681793	ersetzt-1	Gefütterte Baumwolljacke für Damen
+15448673747329	ersetzt-1	Gepolsterte Baumwolljacke mit Blumenmuster
+15448673812865	ersetzt-1	Gefütterter Daunenmantel mit Kapuze
+15448673845633	ersetzt-1	Kurze Daunenjacke für Damen – Kaffeebraun
+15448673878401	ersetzt-1	Kurze Thermo-Steppjacke für Damen
+15448673943937	ersetzt-1	Damen Daunen-Baumwollweste
+15448673976705	ersetzt-1	Kurze Daunenjacke mit Kapuze
+15448674009473	ersetzt-1	Kurzer Daunenmantel mit Reissverschluss
+15448674042241	ersetzt-1	Wende-Steppjacke mit Patchwork-Karo
+15448674075009	ersetzt-1	Dunkelbrauner Vintage Baumwollmantel
+15448674107777	ersetzt-1	Doppelseitige Stehkragenjacke für Damen
+15448674173313	ersetzt-1	Gefütterte Daunenjacke mit V-Ausschnitt
+15448674206081	ersetzt-1	Kurze Winterjacke mit Kapuze
+15448674238849	ersetzt-1	Gefütterte Kapuzenjacke für Damen
