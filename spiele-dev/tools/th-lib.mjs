@@ -167,3 +167,57 @@ export async function warteAufRuhe(page, opt = {}) {
 export function aufraeumen(...dateien) {
   for (const d of dateien) { try { if (existsSync(join(REPO, d))) unlinkSync(join(REPO, d)) } catch (e) {} }
 }
+
+/* Warten, bis die WELT so viel Zeit erlebt hat — nicht die Wanduhr.
+ *
+ * ⚠️ WOZU. Drei Fehlbefunde an zwei Tagen kamen aus derselben Quelle: ein
+ * Beobachtungsfenster in Wanduhr-Sekunden. GEMESSEN auf dem Software-Renderer dieses
+ * Containers, zwei Fenster (20,6 s und 60,0 s), beide identisch:
+ *
+ *     1,70 Bilder/s · dt ist auf 0,05 gedeckelt
+ *     -> hoechstens 0,085 s Simulationszeit je Wanduhr-Sekunde  (8,5 %)
+ *     -> 60 s Wanduhr = 5,1 s Welt
+ *
+ * Was daraus wurde:
+ *   * "Die HUD-Uhr steht" — sie wird alle 0,35 s Simulationszeit geschrieben, das sind
+ *     bei 0,5 Bildern/s vierzehn Wanduhr-Sekunden zwischen zwei Zeilen.
+ *   * "Die Bewohner bewegen sich nie" — 25 s Wanduhr sind 2 s Welt.
+ *   * "Sieben Fahrgeschaefte stehen still" — hier stimmte es, aber nur, weil sie sich
+ *     mit rund 1 rad/s drehen; ein langsameres waere durchgerutscht.
+ *
+ * ⚠️ ZWEI UHREN, NICHT VERWECHSELN. `uhrzeit` ist die SPIELWELT-Uhr in Minuten und
+ * laeuft absichtlich schnell: `uhrzeit += dt*4`, also 4 Weltminuten je Sekunde
+ * Simulationszeit. Die Simulationszeit selbst — das, was Physik, Wege und Drehungen
+ * sehen — ist damit `delta uhrzeit / 4` in Sekunden. In 60 s Wanduhr: 20,4 Weltminuten
+ * UND 5,1 s Simulationszeit. Beide Zahlen sind richtig und meinen Verschiedenes.
+ *
+ * Das Werkzeug muss eine Sonde `uhr` anmelden: {uhr:'function(){return uhrzeit;}'}.
+ * Ohne sie wird nach Wanduhr gewartet und eine Warnung gedruckt — eine stille
+ * Ersatzloesung waere genau die Sorte Messfehler, gegen die das hier steht.
+ *
+ * Rueckgabe: {welt, wanduhr, anteil} in Sekunden. `welt < sekunden` heisst: die
+ * Obergrenze `maxWanduhr` hat zugeschlagen, das Fenster ist kuerzer als bestellt.
+ */
+export async function warteWeltzeit(page, sekunden, opt = {}) {
+  const { maxWanduhr = 240, takt = 2000 } = opt
+  const lies = () => page.evaluate(() => (window.__th && typeof window.__th.uhr === 'function') ? window.__th.uhr() : null)
+  const t0 = Date.now()
+  const a = await lies()
+  if (a === null) {
+    console.log(`⚠️  Keine Sonde "uhr" angemeldet — es wird ${sekunden} s WANDUHR gewartet.`)
+    console.log('    Das ist auf diesem Renderer rund ein Zwoelftel davon an Weltzeit.')
+    await page.waitForTimeout(sekunden * 1000)
+    return { welt: null, wanduhr: (Date.now() - t0) / 1000, anteil: null }
+  }
+  let welt = 0
+  for (;;) {
+    await page.waitForTimeout(takt)
+    const b = await lies()
+    welt = (b - a) / 4                       /* Weltminuten -> Sekunden Simulationszeit */
+    if (welt >= sekunden) break
+    if ((Date.now() - t0) / 1000 >= maxWanduhr) break
+  }
+  const wanduhr = (Date.now() - t0) / 1000
+  return { welt: Math.round(welt * 100) / 100, wanduhr: Math.round(wanduhr * 10) / 10,
+           anteil: Math.round(welt / wanduhr * 1000) / 10 }
+}
