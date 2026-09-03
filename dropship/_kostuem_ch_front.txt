@@ -494,3 +494,18 @@ gid://shopify/Product/15469959184769	Kostüm Saloon Girl Jolene
 gid://shopify/Product/15469959250305	Umhang Jedi Ritter
 gid://shopify/Product/15469959283073	Umhang Vampir Carlyle
 gid://shopify/Product/15469959315841	Kostüm Pharaoh Anubis
+gid://shopify/Product/15469959348609	Kostüm Kreuzritter
+gid://shopify/Product/15469959381377	Schottenrock Mr Tartan grün
+gid://shopify/Product/15469959414145	Kostüm Isis Göttin
+gid://shopify/Product/15469959446913	Kostüm Piratin Tracy
+gid://shopify/Product/15469959479681	Ritter Umhang
+gid://shopify/Product/15469959512449	Kostüm Indianerin
+gid://shopify/Product/15469959577985	Kinderkostüm Eiskönigin
+gid://shopify/Product/15469959610753	Kostüm Römer Julius 5-6 Jahre
+gid://shopify/Product/15469959709057	Kostüm Pirat Henry
+gid://shopify/Product/15469959741825	Kostüm Priesterin Isabella
+gid://shopify/Product/15469959807361	Kostüm Cowboy Austin
+gid://shopify/Product/15469959872897	Kostüm Obelix
+gid://shopify/Product/15469959905665	Kostüm Happy Diva
+gid://shopify/Product/15469959971201	Kostüm Kürbis Hexe mit Hut
+gid://shopify/Product/15469960003969	Kostüm Polizist

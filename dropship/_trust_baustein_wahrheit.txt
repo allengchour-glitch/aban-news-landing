@@ -7186,3 +7186,16 @@
 15449485607297	ersetzt-1	Motorrad-Kamera mit GPS
 15449485672833	ersetzt-1	Intelligente PTZ-Kamera
 15449485771137	ersetzt-1	Überwachungskamera mit Nachtsicht
+15449485869441	ersetzt-1	Astronomisches Teleskop mit Telefonadapter
+15449485934977	ersetzt-1	Wasserdichte Action-Kamera mit 4K-Auflösung
+15449485967745	ersetzt-1	Kamera für Sport und Konferenz
+15449486000513	ersetzt-1	Elektronisches Okular für Teleskope
+15449486033281	ersetzt-1	Intelligente Sportkamera
+15449486131585	ersetzt-1	Klein, smart, vielseitig: HD-WLAN-Kamera
+15449486229889	ersetzt-1	Kleinere Sportkamera mit Nachtsicht
+15449486262657	ersetzt-1	4K Sportkamera
+15449486295425	ersetzt-1	WLAN-Überwachungskamera mit Nachtsicht
+15449486328193	ersetzt-1	Infrarot-Nachtsichtgerät 1080p
+15449486360961	ersetzt-1	Portables Monokular 1000x20
+15449486426497	ersetzt-1	Einzelrohr-Monokular mit HD-Auflösung
+15449486524801	ersetzt-1	Gitarren-Kapo für 6 Saiten
