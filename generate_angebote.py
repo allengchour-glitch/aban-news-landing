@@ -9,15 +9,20 @@ Preise nur aus den echten Produktseiten — keine erfundenen Zahlen.
 Run:  python3 generate_angebote.py
 """
 import html
+import json
 import os
+import re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+
+SITE = "https://abannews.com"
 
 GROUPS = [
     ("Kostenlos starten", [
         ("Newsletter", "gratis", "Mo–Fr, 5 Min KI auf Deutsch — ehrlich, ohne Hype.", "https://abannews.beehiiv.com/subscribe"),
         ("KI-Reels", "gratis", "Kurze, ehrliche Tool-Checks als Video — täglich neu.", "/reels"),
         ("KI-Tool-Datenbank", "gratis", "140+ Tools, bewertet, filterbar — ohne Login.", "/tools.html"),
+        ("KI-Werkzeug", "gratis", "Texte & KI-Fahrplan in Minuten — ohne Login.", "/ki-werkzeug.html"),
         ("Online-Tools", "gratis", "Rechner, Generatoren & Helfer — ohne Login.", "/online-tools.html"),
         ("Hype-Watch", "gratis", "KI-Behauptungen mit Quellen gegengeprüft.", "/hype-watch"),
         ("KI-Sichtbarkeits-Check", "gratis", "Nennt dich ChatGPT & Co.? Sofort prüfen.", "/ki-erwaehnungs-check.html"),
@@ -30,7 +35,9 @@ GROUPS = [
         ("Für deine Branche", "ab gratis", "Handwerk, Praxen, Kanzleien, Steuer, Gastro & mehr.", "/ki-sichtbarkeit.html"),
     ]),
     ("Wissen & Umsetzung", [
+        ("Texte-Service (Done-for-you)", "ab 39 €", "Wir schreiben deine Texte fertig — abgestimmt auf deinen Betrieb.", "/texte-service.html"),
         ("KI-Schnellstart (30-Tage-Plan)", "29 €", "KI im Betrieb einführen — ohne Chaos.", "/ki-schnellstart.html"),
+        ("Der Notfall-Ordner", "19 €", "Vorsorge-Dossier zum Ausfüllen — für jeden Haushalt.", "/notfall-ordner.html"),
         ("KI-Compliance-Pakete", "39 €", "Richtlinie + Checkliste + sichere Prompts (regulierte Berufe).", "/ki-compliance.html"),
         ("Klartext-Vorlagen-Set", "19 €", "Fertige Textbausteine für den Alltag.", "/vorlagen-set.html"),
         ("Branchen-Starter-Kits", "ab 12 €", "Spickzettel + Prompts + Datenschutz-Checkliste je Branche.", "/shop.html"),
@@ -39,6 +46,7 @@ GROUPS = [
         ("KI-Tools-Datensatz (DACH)", "19 € · Abo mögl.", "326 Tools als CSV + JSON, für Agenturen & Entwickler.", "/ki-tools-datensatz.html"),
         ("Premium-Briefing", "19 €/Monat", "Tiefere Analysen für Profis.", "/premium-briefing.html"),
         ("Anti-Hype-Buch", "zahl, was du willst", "KI ohne Bullshit einsetzen — das Original.", "/buch.html"),
+        ("Für Verbände (White-Label)", "Anfrage", "Das KI-Werkzeug gebrandet für Ihre Mitglieder.", "/fuer-verbaende.html"),
     ]),
 ]
 
@@ -60,17 +68,25 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .hero h1{font-size:clamp(26px,4.6vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
 .hero h1 .a{color:var(--amber)}
 .hero p.lead{font-size:clamp(16px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
-.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-dk);margin:26px 0 6px;display:flex;align-items:center;gap:8px}
+h2.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-dk);margin:26px 0 6px;display:flex;align-items:center;gap:8px}
 .eyebrow::before{content:"";width:18px;height:3px;background:var(--amber);border-radius:3px}
-.grid{display:grid;grid-template-columns:1fr;gap:12px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px;list-style:none;padding:0;margin:0}
 @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
 .item{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px}
 .item:hover{border-color:var(--amber)}
-.item .t{font-weight:700;font-size:1rem}.item .d{color:var(--muted);font-size:.86rem;margin-top:2px}
+.item .t{display:block;font-weight:700;font-size:1rem}.item .d{display:block;color:var(--muted);font-size:.86rem;margin-top:2px}
 .item .r{flex:none;text-align:right}
 .item .p{font-weight:800;color:var(--amber-dk);font-size:.92rem;white-space:nowrap}
 .item .go{font-size:.8rem;font-weight:700}
 .note{font-size:.85rem;color:var(--muted);margin:20px 0}
+.preise{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:.92rem}
+.preise caption{text-align:left;color:var(--muted);font-size:.82rem;padding-bottom:6px}
+.preise th,.preise td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.preise th{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.preise td.p{font-weight:800;color:var(--amber-dk);white-space:nowrap}
+.tabwrap{overflow-x:auto}
+.faq h2{font-size:1.05rem;margin:18px 0 4px}
+.faq p{color:var(--ink2);margin-bottom:6px}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted);text-align:center}
 footer a{color:var(--muted)}"""
 
@@ -86,10 +102,64 @@ def main():
         for name, price, desc, url in items:
             ext = url.startswith("http")
             tgt = ' target="_blank" rel="noopener"' if ext else ""
-            cards += (f'<a class="item" href="{url}"{tgt}><span><span class="t">{e(name)}</span>'
+            cards += (f'<li><a class="item" href="{url}"{tgt}><span><span class="t">{e(name)}</span>'
                       f'<span class="d">{e(desc)}</span></span>'
-                      f'<span class="r"><span class="p">{e(price)}</span><br><span class="go">Ansehen →</span></span></a>')
-        sections += f'<div class="eyebrow">{e(title)}</div><div class="grid">{cards}</div>'
+                      f'<span class="r"><span class="p">{e(price)}</span><br><span class="go">Ansehen →</span></span></a></li>')
+        sections += f'<h2 class="eyebrow">{e(title)}</h2><ul class="grid">{cards}</ul>'
+
+    # ── Preistabelle: nur die BEZAHL-Produkte, aus derselben GROUPS-Quelle ──────────
+    #    Eine „Preise"-Seite ohne Preistabelle ist eine Linkliste. Die Tabelle ist für
+    #    Leser die schnellste Antwort auf „was kostet was" — und für Antwort-Maschinen
+    #    die am besten verwertbare Form (gemessen: Kategorie „listen" 0/10 ohne sie).
+    zeilen = ""
+    bezahlt = [(t, n, pr, d, u) for t, items in GROUPS for (n, pr, d, u) in items
+               if pr not in ("gratis", "ab gratis")]
+    for gruppe, name, preis, desc, url in bezahlt:
+        zeilen += (f'<tr><td><a href="{url}">{e(name)}</a><br><span class="d" style="color:var(--muted);font-size:.84rem">{e(desc)}</span></td>'
+                   f'<td>{e(gruppe)}</td><td class="p">{e(preis)}</td></tr>')
+
+    # ── FAQ: echte Kaufhürden, jede Antwort aus AGB oder GROUPS belegt ─────────────
+    abos = [n for _, items in GROUPS for (n, pr, _, _) in items if "/Monat" in pr]
+    FAQ = [
+        ("Was kostet der Einstieg?",
+         "Nichts. Newsletter, KI-Tool-Datenbank, die Online-Tools und der KI-Sichtbarkeits-Check "
+         "sind kostenlos und brauchen kein Konto. Bezahlt wird nur, wer mehr will."),
+        ("Brauche ich ein Abo?",
+         "Nein. Bis auf " + " und ".join(abos) + " ist alles ein einmaliger Kauf. "
+         "Ein einmaliger Kauf bleibt dir, ein Abo kannst du jederzeit beenden."),
+        ("Wie bezahle ich?",
+         "Über Stripe mit Karte, dazu die weiteren im Checkout angebotenen Zahlarten. "
+         "Vollständige Zahlungsdaten werden bei aban news nicht gespeichert."),
+        ("Wie bekomme ich das Produkt?",
+         "Rein digital: nach der Zahlung wird der Download über eine persönliche Bestätigungsseite "
+         "freigeschaltet. Versandkosten fallen keine an. Klemmt etwas, hilft eine Mail an hallo@abannews.com."),
+        ("Kann ich zurücktreten?",
+         "Bei digitalen Inhalten besteht grundsätzlich ein Widerrufsrecht. Es erlischt, sobald der "
+         "Download mit deiner ausdrücklichen Zustimmung begonnen hat. Die Einzelheiten stehen in den AGB."),
+        ("Was ist der Unterschied zwischen Audit, Monitor und Komplett-Paket?",
+         "Das Audit ist eine einmalige Bestandsaufnahme mit 90-Tage-Plan zum Selbermachen. Der Monitor "
+         "schickt dir monatlich einen Report samt Massnahmen. Das Komplett-Paket bündelt Buch, drei "
+         "Monate Monitor und die Massnahmen-Vorlage."),
+        ("Für wen ist das gemacht?",
+         "Für Selbstständige und kleine Betriebe im deutschsprachigen Raum, die KI im Alltag nutzen "
+         "wollen — ohne Hype und ohne Vorwissen."),
+    ]
+    faq_html = "".join(f"<h2>{e(q)}</h2><p>{e(a)}</p>" for q, a in FAQ)
+
+    # ── JSON-LD: FAQ + Angebotsliste + Brotkrume ──────────────────────────────────
+    def ld(obj):
+        return json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
+    faq_ld = ld({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]})
+    liste_ld = ld({"@context": "https://schema.org", "@type": "ItemList",
+                   "name": "Angebote und Preise von aban news",
+                   "itemListElement": [
+                       {"@type": "ListItem", "position": i + 1, "name": n,
+                        "url": (u if u.startswith("http") else SITE + u), "description": d}
+                       for i, (_, n, _, d, u) in enumerate(bezahlt)]})
+    brot_ld = ld({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Start", "item": SITE + "/"},
+        {"@type": "ListItem", "position": 2, "name": "Angebote & Preise", "item": SITE + "/angebote.html"}]})
 
     page = f"""<!DOCTYPE html>
 <html lang="de">
@@ -108,6 +178,9 @@ def main():
 <meta property="og:site_name" content="aban news"><meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>{CSS}</style>
+<script type="application/ld+json">{faq_ld}</script>
+<script type="application/ld+json">{liste_ld}</script>
+<script type="application/ld+json">{brot_ld}</script>
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt</a>
@@ -122,6 +195,20 @@ def main():
   </section>
   <section>
     {sections}
+  </section>
+  <section>
+    <h2 class="eyebrow">Preise auf einen Blick</h2>
+    <div class="tabwrap"><table class="preise">
+      <caption>Alle Bezahl-Produkte mit Preis. Preise inkl. zutreffender MwSt.</caption>
+      <thead><tr><th scope="col">Produkt</th><th scope="col">Bereich</th><th scope="col">Preis</th></tr></thead>
+      <tbody>{zeilen}</tbody>
+    </table></div>
+  </section>
+  <section class="faq">
+    <h2 class="eyebrow">Häufige Fragen</h2>
+    {faq_html}
+  </section>
+  <section>
     <p class="note">Preise inkl. zutreffender MwSt. Digitale Produkte: sofort als Download. Fragen? <a href="mailto:hallo@abannews.com">hallo@abannews.com</a> — oder frag den Assistenten unten rechts.</p>
     <p style="text-align:center;margin:8px 0 0"><a class="btn" href="/start">Link-in-Bio-Übersicht →</a></p>
   </section>
@@ -131,7 +218,23 @@ def main():
 </body>
 </html>
 """
-    open(os.path.join(ROOT, "angebote.html"), "w", encoding="utf-8").write(page)
+    # ⚠️ ZWEI QUELLEN DER WAHRHEIT — teuer gelernt am 2026-09-03. Die veroeffentlichte
+    #    angebote.html enthielt VIER Angebote, die in GROUPS fehlten (KI-Werkzeug,
+    #    Texte-Service ab 39 EUR, Notfall-Ordner 19 EUR, Verbaende-White-Label). Wer den
+    #    Generator laufen liess, loeschte sie stillschweigend von der Seite, die verkauft.
+    #    Darum vor dem Schreiben vergleichen und laut werden, statt Umsatz zu entsorgen.
+    ziel = os.path.join(ROOT, "angebote.html")
+    if os.path.exists(ziel):
+        alt = re.findall(r'class="t">(.*?)</span>', open(ziel, encoding="utf-8").read())
+        neu = [n for _, items in GROUPS for (n, _, _, _) in items]
+        fehlt = [html.unescape(x) for x in alt if html.unescape(x) not in neu]
+        if fehlt:
+            print("⚠️  ABBRUCH: diese Angebote stehen auf der Seite, aber nicht in GROUPS:")
+            for f in fehlt:
+                print("   ·", f)
+            print("   → erst in GROUPS ergaenzen, sonst verschwinden sie von der Verkaufsseite.")
+            raise SystemExit(1)
+    open(ziel, "w", encoding="utf-8").write(page)
     n = sum(len(i) for _, i in GROUPS)
     print(f"✓ angebote.html erzeugt ({n} Angebote in {len(GROUPS)} Gruppen)")
 
