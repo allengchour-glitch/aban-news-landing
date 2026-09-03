@@ -2915,3 +2915,52 @@
 15448651465089	ersetzt-1	Atmungsaktive Kompressions-Yogahose mit Shaping-Effekt
 15448651497857	ersetzt-1	Sport-Leggings für Damen
 15448651530625	ersetzt-1	Schwarze Slim-Fit Leggings für Damen
+15448651596161	ersetzt-1	Drapey Slimming Cropped Hose
+15448651628929	ersetzt-1	Fitness- und Yogahose für Damen
+15448651661697	ersetzt-1	Freizeit-Hose mit weitem Bein – Schwarz
+15448651727233	ersetzt-1	High-Waist Straight Leg Hose für Damen
+15448651792769	ersetzt-1	Sportliche Wide-Leg Hose für Damen
+15448651825537	ersetzt-1	Corduroy Loose-Fit Hose mit elastischem Bund
+15448651891073	ersetzt-1	Gepunktete Cropped Hose mit Schnürung
+15448651923841	ersetzt-1	High-Waist Hose im eleganten, minimalistischen Stil
+15448651956609	ersetzt-1	Weite Cordhose für Herren
+15448651989377	ersetzt-1	Weite Hose mit hohem Bund
+15448652087681	ersetzt-1	Weite Utility Hose mit hohem Bund
+15448652120449	ersetzt-1	Vintage Weite Hose mit Elastischem Bund und Karomuster
+15448652153217	ersetzt-1	High-Waist Wide-Leg Anzughose
+15448652251521	ersetzt-1	High-Waist Wide Leg Stoffhose
+15448652284289	ersetzt-1	Weite Freizeithose aus Baumwoll-Mix
+15448652349825	ersetzt-1	Weite Sommerhose mit Elastikbund
+15448652513665	ersetzt-1	Weite Gothic-Hose mit Elastikbund
+15448652579201	ersetzt-1	Corduroy Straight-Leg Hose für Damen
+15448652644737	ersetzt-1	Retro Cordhose für Damen
+15448652677505	ersetzt-1	Retro Cropped Wide Leg Jeans
+15448652743041	ersetzt-1	Schwarze High-Waist Wide-Leg Hose mit weitem Bein
+15448652775809	ersetzt-1	Gestreifte Hose mit weitem Bein und Schleifengürtel
+15448652841345	ersetzt-1	Hellegraue Slimming Wide Leg Hose
+15448652874113	ersetzt-1	Gestreifte Wide-Leg Hose für Damen
+15448652939649	ersetzt-1	Weite Freizeithose mit Polka Dots
+15448653005185	ersetzt-1	Gestreifte Wide-Leg Hose im Yamamoto-Stil
+15448653103489	ersetzt-1	High-Waist Loose Fit Stoffhose
+15448653169025	ersetzt-1	Patchwork Wide-Leg Hose mit Reissverschlüssen
+15448653267329	ersetzt-1	High-Waist Wide Leg Hose
+15448653300097	ersetzt-1	Satin Cargo Hose für Damen im Western-Stil
+15448653365633	ersetzt-1	Patchwork Casual Hose für Damen
+15448653398401	ersetzt-1	Atmungsaktive Yoga-Hose mit weitem Bein
+15448653463937	ersetzt-1	Retro-Freizeithose mit weitem Bein und Kordelzug
+15448653496705	ersetzt-1	Retro Cargo Hose für Damen im Street Style
+15448653562241	ersetzt-1	Cordhose im Loose Fit mit weitem Bein
+15448653627777	ersetzt-1	Weite Freizeithose mit Digitaldruck
+15448653693313	ersetzt-1	Elegante High Waist Hose mit weitem Bein
+15448653758849	ersetzt-1	Freizeit-Hose mit weitem Bein – Reddish Brown
+15448653922689	ersetzt-1	Bestickte weiter geschnittene Spitzenhose
+15448653988225	ersetzt-1	Bestickte Retro Samthosen mit weitem Bein
+15448654020993	ersetzt-1	Weite Freizeithose mit hohem Bund
+15448654053761	ersetzt-1	Elegante Palazzo Hose mit weitem Bein
+15448654086529	ersetzt-1	High-Waist Wide Leg Hose mit Spitze
+15448654152065	ersetzt-1	High-Waist Wide-Leg Hose für Damen
+15448654184833	ersetzt-1	High-Waist Hose mit asymmetrischem Saum
+15448654217601	ersetzt-1	Gestreifte High-Waist Wide Leg Hose für Damen
+15448654283137	ersetzt-1	Loose-Fit Wide Leg Hose mit Kordelzug
+15448654348673	ersetzt-1	High-Waist Wide Leg Stoffhose – Grau
+15448654381441	ersetzt-1	Semi-transparente Mesh-Haremshose
