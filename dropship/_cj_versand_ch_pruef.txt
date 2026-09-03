@@ -48,3 +48,5 @@ kopf-display-gps-geschwindigkeitsmesser-961152	1367730856487161856	11	7.74	ok	kl
 kasemesser-set-mit-holzbox-4-teilig-325697	2042225015930126337	0	-	KEINE CH-Option → DRAFT	klinge
 4-in-1-messerscharfer-fur-kuche-schere-141697	2046149631261732866	0	-	KEINE CH-Option → DRAFT	klinge
 schmiedemesser-zum-tranchieren-28-cm-218497	2045333053078814722	0	-	KEINE CH-Option → DRAFT	klinge
+messerscharfstein-set-mit-doppelseitigem-wetzs-971138	2034880276896317442	0	-	KEINE CH-Option → DRAFT	klinge
+aluminium-klappmesser-mit-5-ersatzklingen-022850	2032737354000543745	0	-	KEINE CH-Option → DRAFT	klinge
