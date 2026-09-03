@@ -6595,3 +6595,35 @@ getaggten schon aus, mit Cursor würde jede zweite Seite übersprungen.
 - ⚠️ `productsCount` einer Kollektion hinkt nach: Der Zähler stand nach dem Tagging von 400
   Produkten unverändert bei 1'992, die PRODUKTLISTE zeigte längst neue Ware. Wer die Wirkung
   eines Tag-Laufs prüft, liest die Liste, nicht den Zähler.
+
+## 👯 Derselbe Armreif zweimal im IG-Raster — sechs Wachen, keine fragte nach der WARE (2026-09-03)
+Betreiber-Screenshot: «Silber-Armreif «Serpent»» steht ZWEIMAL nebeneinander im Instagram-Profil,
+beide mit 0 Aufrufen. Der Social-Stopp ist seit dem 30.08. gesetzt und kein Poster läuft — die
+Doppelung ist also älter. Die Ursache steht in `social/posts_image.csv`: **derselbe Armreif steht
+DREIMAL**, mit drei IDs, drei Bild-URLs und drei Texten («Neu entdeckt: …», «Dein Sommer-Liebling?
+…», «Der Armreif «Serpent» umschmeichelt …»).
+
+**Warum alle sechs Doppelpost-Wachen blind waren:** Sie prüfen das MEDIUM (Basename der Bild-URL),
+den TEXTANFANG (`capSig`, erste 45 Zeichen) und die LIVE-Caption auf Instagram. Andere URL,
+anderer Textanfang — **jede der drei sagt zu Recht «kenne ich nicht».** Keine fragt, ob es
+dieselbe WARE ist. Dieselbe Denkfigur wie «ein Tag-Name ist eine Behauptung» (29.08.) und «eine
+PID ist ein Name, kein Zeitstempel» (20.08.): **wer ein Merkmal prüft, das die Sache nur
+vertritt, prüft die Sache nicht.**
+- **Siebte Schicht in `post_guard.mjs`** (also für ALLE Poster, nicht nur den einen):
+  `produktKey()` nimmt den Produktnamen aus « » — genau den tragen alle drei Fassungen —, sonst
+  die Shopify-ID am Zeilenende, sonst den Zeilen-Slug ohne Erzeuger-Präfix (`ki-`, `kimi-`,
+  `img-`, `clip-`, `auto-`) und ohne angehängtes Datum. Ohne Schlüssel hält sich die Sperre
+  heraus; sie ersetzt die anderen Wachen nicht, sie ergänzt sie.
+- **Gemessen, wie gross der Schaden war:** 73 als gepostet markierte Zeilen ergeben nur
+  **64 verschiedene Produkte** — neun Doppelposts sind bereits rausgegangen.
+- ⚠️ Zwei Produkte können denselben « »-Namen tragen («Roma» Blazer / «Roma» Tasche). Dann fällt
+  der zweite aus. Das ist die richtige Richtung: der Auftrag lautet «nie dasselbe zweimal»,
+  nicht «möglichst viel posten».
+- ⚠️ **Mein erster Backfill des Produkt-Ledgers war Müll** — ich habe die CSV an Kommas zerlegt,
+  und Captions enthalten Kommas. Herausgekommen sind Schlüssel wie `name:instagramfacebook` und
+  Hashtag-Ketten als «Produkt». Mit `csv.DictReader` neu gebaut. **Eine CSV mit Freitext zerlegt
+  man nie mit `split(',')`** — dieselbe Klasse wie der `sort -u` auf einer Prosadatei (29.08.).
+- ⚠️ Und mein eigener Testfall war falsch, nicht die Sperre: «Zirkonia-Kette «Stella»» galt als
+  blockiert — sie WURDE bereits gepostet (im Screenshot mit 7 Aufrufen). Gegenprobe mit
+  wirklich neuer Ware: frei. **Bevor man einen Melder für kaputt erklärt, prüft man, ob seine
+  Aussage stimmt.**
