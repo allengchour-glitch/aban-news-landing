@@ -782,3 +782,81 @@ quallen-diffuser-medusa-mit-musik-led	2046870997783986177	0	-	KEINE CH-Option �
 bausteine-set-widebody-racer-321-teile	2059566222276325378	0	-	KEINE CH-Option → DRAFT	landeseite
 wide-leg-hose-damen-fliessend-locker-elegant-2026	2606010859221606600	11	10.09	ok	landeseite
 jumpsuit-mit-blazer-kragen-damen-chic-uni-sommer-2026	2606010254501617800	11	11.04	ok	landeseite
+sommerkleid-armellos-damen-tailliert-elegant-schwarz	2606010914311627100	11	9.69	ok	landeseite
+statement-ohrringe-retro-geometrisch-oversized	2060995124687663105	11	4.90	ok	landeseite
+geburtsstein-armband-pois-zarte-kette-mit-steinen	2606070406141607000	11	4.90	ok	landeseite
+fransen-minirock-santa-fe-wildleder-optik-2-lagig	2606070215591617700	11	9.69	ok	landeseite
+strand-sandalen-doree-metallic-riemchen-flach	2606080531211619400	-	-	unklar 1602002 Product has been removed from  rest=913	landeseite
+maxi-kleid-aria-langarm-tailliert-mit-gurtel	2606080548241622700	11	12.80	ok	landeseite
+reise-hangematte-aus-fallschirm-nylon-86eb20	-	-	-	unklar keine CJ-SKU	landeseite
+pinguin-aromadiffusor-mit-duftolen-828288	1621014887138865152	11	14.43	ok	landeseite
+massivholz-kratzbaum-fur-katzen-629100	2605050223151629600	0	-	KEINE CH-Option → DRAFT	landeseite
+holz-katzenbaum-weltraumkapsel-639200	2605050157261639800	0	-	KEINE CH-Option → DRAFT	landeseite
+katzenhaus-baumhaus-fur-kleine-und-altere-katz-603700	2605041100501604200	0	-	KEINE CH-Option → DRAFT	landeseite
+kratzbaum-mit-robusten-liegeflachen-616100	2605041004311616500	1	410.51	ok	landeseite
+kompakter-katzenbaum-mit-kratzpilz-604200	2604250238581604700	0	-	KEINE CH-Option → DRAFT	landeseite
+stilvoller-all-in-one-kratzbaum-fur-katzen-638200	2604150259551638700	1	308.27	ok	landeseite
+mehrstufiger-minimalistischer-katzenbaum-628300	2604150256091628900	1	317.57	ok	landeseite
+katzenbaum-mit-kratzbaum-und-hangematte-616200	2604150121531616700	0	-	KEINE CH-Option → DRAFT	landeseite
+vertikaler-katzenbaum-mit-integriertem-bett-622100	2603090149531622500	0	-	KEINE CH-Option → DRAFT	landeseite
+handgepack-trolley-mit-hartschale-430978	2069707032170524674	0	-	KEINE CH-Option → DRAFT	landeseite
+memory-foam-kuhlgel-matratzenauflage-630657	2071417833549377538	0	-	KEINE CH-Option → DRAFT	landeseite
+ganzkorper-spiegel-427329	2011707235025256449	0	-	KEINE CH-Option → DRAFT	landeseite
+holzfiguren-lotus-buddha-622800	2411270238151623100	11	17.85	ok	landeseite
+aquarium-unterschrank-60x-holz-287874	1990528578889637890	0	-	KEINE CH-Option → DRAFT	landeseite
+runde-tischplatte-aus-gehartetem-glas-300-mm-724417	1990445318658514945	0	-	KEINE CH-Option → DRAFT	landeseite
+tischplatte-akazie-massivholz-mit-naturkante-870146	1990484046499717121	0	-	KEINE CH-Option → DRAFT	landeseite
+akazienholz-tischplatte-58x-50-60-x2-5-cm-366274	1990450034750304257	0	-	KEINE CH-Option → DRAFT	landeseite
+tischplatten-aus-massivholz-2-stk-894082	1990533134222143490	0	-	KEINE CH-Option → DRAFT	landeseite
+waschtischplatte-akazienholz-58x52-cm-677058	1990450022171586562	0	-	KEINE CH-Option → DRAFT	landeseite
+transparenter-turvorhang-aus-pvc-10-m-275073	1990438988128378882	0	-	KEINE CH-Option → DRAFT	landeseite
+sisal-kratzbaum-mit-liegeflache-fur-katzen-609000	2605050214461609600	1	373.34	ok	landeseite
+massivholz-katzenbaum-mit-rattan-bett-632400	2605050202531632900	0	-	KEINE CH-Option → DRAFT	landeseite
+massivholz-katzenbaum-fur-kleine-wohnungen-608000	2605050152321608500	0	-	KEINE CH-Option → DRAFT	landeseite
+grosser-katzenbaum-mit-klettergerust-und-katze-607600	2605050142351608100	0	-	KEINE CH-Option → DRAFT	landeseite
+automatischer-futterspender-fur-katzen-604900	2602180208411605300	6	4.71	ok	landeseite
+gesichtsdampfer-mit-vertikal-spruharm-604100	2408120944151604300	1	261.81	ok	landeseite
+aluminium-magnesium-legierung-reisekoffer-630400	2512180601521630600	0	-	KEINE CH-Option → DRAFT	landeseite
+reisekoffer-mit-aluminiumrahmen-und-becherhalt-617300	2509200608141617500	0	-	KEINE CH-Option → DRAFT	landeseite
+bogenformiger-wandspiegel-mit-metallrahmen-853058	2049671822191665153	0	-	KEINE CH-Option → DRAFT	landeseite
+hochauflosender-spiegel-mit-metallrahmen-441345	2047240907054297090	0	-	KEINE CH-Option → DRAFT	landeseite
+gewichtete-decke-fur-besseren-schlaf-096066	1990456418963337217	0	-	KEINE CH-Option → DRAFT	landeseite
+waschmaschinen-badschrank-70-5x25-373953	1990518023558311938	0	-	KEINE CH-Option → DRAFT	landeseite
+heizkorperverkleidung-aus-massivem-kiefernholz-174594	1990524773925695489	0	-	KEINE CH-Option → DRAFT	landeseite
+katzenklo-schrank-aus-holz-60-cm-203778	1990535789816766465	0	-	KEINE CH-Option → DRAFT	landeseite
+aquarium-unterschrank-60-5x36x72-5-cm-813697	1990528628894130177	0	-	KEINE CH-Option → DRAFT	landeseite
+tischplatte-30x2-5-cm-aus-massivem-kiefernholz-038017	1990520018818084865	0	-	KEINE CH-Option → DRAFT	landeseite
+tischplatte-aus-massiver-eiche-unbehandelt-102978	1990456609523015681	0	-	KEINE CH-Option → DRAFT	landeseite
+waschtischunterschrank-63x-holz-verbundwerksto-179650	1990516117318311937	0	-	KEINE CH-Option → DRAFT	landeseite
+filtersand-fur-pool-sandfilteranlagen-448385	1990543401286803458	0	-	KEINE CH-Option → DRAFT	landeseite
+kuhlende-gewichtsdecke-mit-glasperlen-605000	2607070831191605700	6	42.82	ok	landeseite
+hund-agility-wippe-aus-holz-gelb-094529	2062822445851643906	5	117.05	ok	landeseite
+toocat-klettergerust-butter-bar-629600	2605110155521620200	0	-	KEINE CH-Option → DRAFT	landeseite
+weihnachtsbaum-katzen-kratzbaum-mit-sisal-610800	2605110055581611500	5	114.37	ok	landeseite
+zeze-4-jahreszeiten-katzenvilla-mit-kletterger-625600	2605050343281626100	0	-	KEINE CH-Option → DRAFT	landeseite
+miao-xianer-katzen-kletterbaum-springende-pfla-637300	2605050329261637800	0	-	KEINE CH-Option → DRAFT	landeseite
+hotel-daunenkissen-ganse-und-entenfedern-623400	2605050455361624400	11	21.33	ok	landeseite
+kompakter-kratzbaum-mit-kuschelnest-633900	2605050201011634500	0	-	KEINE CH-Option → DRAFT	landeseite
+katzenbaum-mit-haus-und-sprungplattform-600000	2605040954511600600	5	132.82	ok	landeseite
+katzentreppe-mit-sisal-kratzbaum-483714	2034277114066014210	0	-	KEINE CH-Option → DRAFT	landeseite
+kratzbaum-treppe-fur-katzen-4-stufen-grau-856898	2034277082470322177	0	-	KEINE CH-Option → DRAFT	landeseite
+sisal-kratzbaum-und-bett-kombi-616000	2604240654181616500	0	-	KEINE CH-Option → DRAFT	landeseite
+faltbare-aufbewahrungsbank-mit-fusshocker-schw-153922	2067164402544205825	0	-	KEINE CH-Option → DRAFT	landeseite
+multifunktionales-abtropfgestell-aus-edelstahl-638200	2606180135441638900	0	-	KEINE CH-Option → DRAFT	landeseite
+trolley-koffer-mit-universellen-rollen-621200	2510100541101621500	6	95.47	ok	landeseite
+bogenformiger-ganzkorperspiegel-silber-976385	2048640047540178945	0	-	KEINE CH-Option → DRAFT	landeseite
+ganzkorperspiegel-mit-aluminiumrahmen-605953	2048638746106368002	0	-	KEINE CH-Option → DRAFT	landeseite
+portabler-waschplatz-mit-seifen-spender-930625	2062468029735428097	5	140.70	ok	landeseite
+katzenklo-mobel-aus-holzwerkstoff-42x-030657	1990535808674357250	0	-	KEINE CH-Option → DRAFT	landeseite
+bambus-tischplatte-112450	1990473962243661825	0	-	KEINE CH-Option → DRAFT	landeseite
+badezimmerschrank-60x-aus-holzwerkstoff-539713	1990515749108752386	0	-	KEINE CH-Option → DRAFT	landeseite
+garderobenstander-baum-metall-minimalistisch-636500	2607020936461639300	0	-	KEINE CH-Option → DRAFT	landeseite
+doppellagiges-katzenbett-aus-rattan-637500	2605110038191638300	5	311.15	ok	landeseite
+platzsparender-kratzbaum-mit-liegeflache-613300	2605101011431613900	0	-	KEINE CH-Option → DRAFT	landeseite
+miao-xianer-katzenbaum-aus-holz-624300	2605050338391624900	5	117.62	ok	landeseite
+runder-teppich-im-ethno-stil-608600	2605020913591609000	11	15.65	ok	landeseite
+kratzbaum-katzenbett-versteckspiel-602000	2605050147571602500	0	-	KEINE CH-Option → DRAFT	landeseite
+katzenbaum-mit-integriertem-bett-608200	2605041007581608800	5	148.58	ok	landeseite
+deckenhoher-katzenbaum-mit-wolken-liegeflachen-798337	2034277248690188289	0	-	KEINE CH-Option → DRAFT	landeseite
+katzenbaum-weltraum-kapsel-villa-621400	2601060837131621600	5	136.48	ok	landeseite
+dreiteiliger-erweiterbarer-koffer-mit-seitenof-632700	2510170617291632900	0	-	KEINE CH-Option → DRAFT	landeseite
