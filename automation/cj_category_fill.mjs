@@ -800,8 +800,15 @@ for(const [cat,label] of grp.cats){
    const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];
    let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
    if(fash?.preisFix) tagsFinal=[...tagsFinal,'preis-ausreisser-korrigiert'];
-   // Titel-Wache: Haustier-/Plüsch-Artikel aus CJ-Elektronik/Gadget-Kategorien nicht als Elektronik taggen (Hundehalsband-Falle 2026-08-04)
    let typeFinal=grp.type;
+   // 🔪 03.09.2026: CJs «Kitchen Knives» liefert auch Outdoor-/Taktik-/Survival-Klingen. Mit den Gruppen-Tags
+   // kueche/kochen/haushalt landeten 90 davon in «Wohnen & Dekoration» und «Küche & Bar» — zwischen Sofakissen.
+   // Ein Klappmesser ohne Küchenwort ist kein Küchenartikel: Gruppen-Tags weg, Tag outdoor-messer statt dessen.
+   if(istKlinge(title)&&/taschenmesser|klappmesser|faltmesser|ausklappmesser|taktisch|outdoor|jagd|survival|camping|karambit|dolch|machete|\baxt\b|\bbeil\b/i.test(title)&&!/k[üu]chen|koch|gem[üu]se|brot|steak|obst|fr[üu]chte|k[äa]se|sch[äa]l/i.test(title)){
+     tagsFinal=tagsFinal.filter(t=>!['kueche','kochen','haushalt','wohnen','dekoration'].includes(t)).concat(['outdoor-messer','messer-outdoor']);
+     typeFinal='Outdoor-Messer';
+   }
+   // Titel-Wache: Haustier-/Plüsch-Artikel aus CJ-Elektronik/Gadget-Kategorien nicht als Elektronik taggen (Hundehalsband-Falle 2026-08-04)
    if(/hundehalsband|\bhalsband\b|hundeleine|hundegeschirr|katzenspielzeug|kratzbaum|katzenklo|futternapf|hundebett|katzenbett/i.test(title)&&!/smart|gps|led|leucht/i.test(title)){
      tagsFinal=tagsFinal.filter(t=>!['elektronik','tech','gadget','gadgets','trend'].includes(t)).concat(['haustier','pet']);
      typeFinal='Haustierbedarf';

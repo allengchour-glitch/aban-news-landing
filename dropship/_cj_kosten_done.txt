@@ -9400,3 +9400,11 @@ gid://shopify/Product/15451640529281	CHF 9.15	1 Varianten	Sturmfeuerzeug Kupfer 
 gid://shopify/Product/15451640562049	CHF 86.04	1 Varianten	Gusseisen-Backform, rechteckig, emailliert
 gid://shopify/Product/15451640594817	CHF 47.88	1 Varianten	2er-Set Cord-Kissenbezüge, gestreift, Crèmeweiss
 gid://shopify/Product/15451640627585	CHF 67.06	1 Varianten	Vielseitiger Plüsch-Sofabezug in Unifarben
+gid://shopify/Product/15451640660353	CHF 45.14	1 Varianten	Sofa-Kissenbezug aus Lammfell-Imitat, rutschfest
+gid://shopify/Product/15451640693121	CHF 25.73	1 Varianten	Memory Foam Lendenkissen für Büro und Auto
+gid://shopify/Product/15451640725889	CHF 9.64	1 Varianten	Gestreifter Kissenbezug aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15451640758657	CHF 19.52	1 Varianten	Nordischer Bettläufer mit Quasten
+gid://shopify/Product/15451640791425	CHF 181.27	1 Varianten	Kühlende Gewichtsdecke mit Glasperlen
+gid://shopify/Product/15451640824193	CHF 34.12	1 Varianten	Kühles Sommer-Seidenduvet, Klasse A zertifiziert
+gid://shopify/Product/15451640889729	CHF 33.07	1 Varianten	Leichter Bettüberwurf, knitterarm
+gid://shopify/Product/15451641020801	CHF 51.38	1 Varianten	Leichte Sommer-Kuscheldecke, atmungsaktiv
