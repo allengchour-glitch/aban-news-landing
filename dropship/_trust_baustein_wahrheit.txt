@@ -7746,3 +7746,231 @@
 15449600360833	ersetzt-1	Emerald Grüner Samt-Kissen
 15449600426369	ersetzt-1	Halskissen mit Stützfunktion
 15449600491905	ersetzt-1	Sicherheitskissen
+15449600524673	ersetzt-1	Druckentlastendes Kissen mit Tencel-Bezug
+15449600557441	ersetzt-1	Blumenkissenhülle mit Stickerei
+15449600655745	ersetzt-1	Kopfstütze mit Plaid-Muster
+15449600983425	ersetzt-1	Lendenstütze für Auto-Sitz
+15449601081729	ersetzt-1	Memory Foam Kissen mit Heizfunktion
+15449601180033	ersetzt-1	Doppelseitiges Meditationskissen mit Extra-Polsterung
+15449601540481	ersetzt-1	Zylindrisches Seitenschlafkissen
+15449601606017	ersetzt-1	Sofakissenbezug 45x45 cm
+15449601900929	ersetzt-1	Sommer-Decke aus Ice Silk
+15449603572097	ersetzt-1	Erde-Ton Kissenbezug ohne Kissen für Sofa
+15449603637633	ersetzt-1	Tierisches Bettwäsche-Set
+15449604129153	ersetzt-1	Farbenfrohes Bettwäsche-Set · 3-teilig
+15449605734785	ersetzt-1	Katzenbettwäsche 4-tlg.
+15449617400193	ersetzt-1	Midi-Kleid mit Hochkragen und Taillebetonung
+15449617531265	ersetzt-1	Blumen-Dress Damen XXL lang
+15449617662337	ersetzt-1	Damen Denim Rock Midi Sexy & Cool
+15449617695105	ersetzt-1	V-Ausschnitt Langrock mit Halter-Druck
+15449617793409	ersetzt-1	Vintage Polka-Dot Oberteil ohne Ärmel Slim Fit A-Linie Mini-
+15449617858945	ersetzt-1	Damen-Sommerkleid ohne Ärmel, Blumenprint
+15449617924481	ersetzt-1	Elegantes Off-Shoulder-Kleid
+15449617957249	ersetzt-1	Elegantes Sommerkleid mit Spaghetti-Trägern
+15449618022785	ersetzt-1	Vintage Blumenkleid
+15449618055553	ersetzt-1	Elegantes Wickelkleid mit V-Ausschnitt
+15449618121089	ersetzt-1	Lange, lässige Sundress
+15449618153857	ersetzt-1	Satin-Maxi-Kleid mit offenem Rücken
+15449618416001	ersetzt-1	Damen-Top mit Stehbund und 3/4-Armeln
+15449618481537	ersetzt-1	Elegantes Blusen-Top mit asymmetrischem Design
+15449618514305	ersetzt-1	Sommer-Top mit Lochmuster
+15449618579841	ersetzt-1	Faith Sweatshirt · Damen
+15449618645377	ersetzt-1	Cropped Sweatshirt mit Knöpfen
+15449665175937	ersetzt-1	Sleeveless Bluse · Damen
+15449790316929	ersetzt-1	Langarm-Pullover · Modell 3
+15449825673601	ersetzt-1	Magnetischer Wireless-Ladegeraet
+15449825739137	ersetzt-1	3-in-1 Wireless-Ladegerät
+15449825771905	ersetzt-1	Schnellladegerät
+15449825902977	ersetzt-1	Schnellladegerät 30W
+15449826066817	ersetzt-1	USB-C MagSafe Lader
+15449826165121	ersetzt-1	Magnetischer 4-in-1-Ladegeraet
+15449839665537	ersetzt-1	Schuhe mit Chunky-Absatz
+15449839698305	ersetzt-1	Retro Pumps · Damen
+15449839731073	ersetzt-1	Leichte Sneaker · Damen
+15449839763841	ersetzt-1	Hohe Sandalen · Damen
+15449839829377	ersetzt-1	Stiletto-Sandalen · Schafsleder
+15449839862145	ersetzt-1	Hohe Stiletto-Sandalen
+15449839894913	ersetzt-1	Retro-Sandalen · Damen
+15449839927681	ersetzt-1	Sommer-Sandalen · Modell 2
+15449839993217	ersetzt-1	Kristall-Sandalen
+15449840025985	ersetzt-1	Pumps mit Chunky-Absatz
+15449840058753	ersetzt-1	Satin-Sandalen · Damen
+15449840091521	ersetzt-1	Offene Sandalen · Damen
+15449840157057	ersetzt-1	Weiche Keil-Sandalen
+15449840222593	ersetzt-1	Damen-Toeffelsandaletten
+15449840255361	ersetzt-1	Romische Sandalen
+15449840288129	ersetzt-1	Rote Pumps · Damen
+15449840386433	ersetzt-1	Hohe Absatzschuhe
+15449840419201	ersetzt-1	Flache Sandalen · Modell 2
+15449840451969	ersetzt-1	Schwarze Sandalen
+15449840517505	ersetzt-1	Suede-Sandalen · Damen
+15449840550273	ersetzt-1	Sommer-Sandalen · Damen
+15449840583041	ersetzt-1	Hohe Sandalen · Modell 2
+15449840615809	ersetzt-1	Runde Sandalen mit hohem Absatz
+15449840648577	ersetzt-1	Hohe Riemchensandalen
+15449840714113	ersetzt-1	Bequeme Sandalen · Damen
+15449840779649	ersetzt-1	Suede Stiletto Sandalen
+15449840812417	ersetzt-1	Platform-Wedgesandalen
+15449840877953	ersetzt-1	Römische Sandalen
+15449840910721	ersetzt-1	Platform Wedge Sandalen
+15449840943489	ersetzt-1	Romer-Sandalen · Damen
+15449840976257	ersetzt-1	Jute-Riemen-Sandalen
+15449841009025	ersetzt-1	Flache Sandalen · Damen
+15449841107329	ersetzt-1	Runde Sandalen · Damen
+15449841140097	ersetzt-1	Neue Plus-Grösse Wedgesandalen im Boho-Stil
+15449841172865	ersetzt-1	Spitzschuhe mit gewebtem Design in mehreren Farben
+15449841205633	ersetzt-1	Mesh-Verzierter Peep-Toe-Slide-Sandalen
+15449841238401	ersetzt-1	Platform Espadrille Sandalen mit Knöchelriemen
+15449841303937	ersetzt-1	Patentleder Keilsandaletten mit Bügelverschluss
+15449841402241	ersetzt-1	Hohl geschnittene Sandalen mit Kopfbändern
+15449841467777	ersetzt-1	Flache Sandale mit Farbkästen – Casual
+15449841533313	ersetzt-1	Blumen-Sandalen mit Blockabsatz
+15449841598849	ersetzt-1	Echte Leder Sandalen mit Kreuzriemen
+15449841631617	ersetzt-1	Geflochtene Cowhide-Flachsandale
+15449841697153	ersetzt-1	Designer-Roman Sandalen mit Ziersteppnähten
+15449841860993	ersetzt-1	Sommerneuheit: Plattform-Sneaker mit atm
+15449842254209	ersetzt-1	Bequeme Römische Sandalen für Grössen
+15449842614657	ersetzt-1	Damen-Sandalen mit Wedge-Absatz, offener Zeh, Höhe erhöhend,
+15449842909569	ersetzt-1	Damen Plus-Grössen Straps Flachschuhe
+15449843335553	ersetzt-1	Rhinestenblume Wedge Sandalen
+15449843663233	ersetzt-1	Sommer Sandalen mit Riemen und Schmuckverschluss
+15449844220289	ersetzt-1	Keilabsätze Sandalen
+15449844580737	ersetzt-1	Spitzschuh-Sandalen aus Leder
+15449844941185	ersetzt-1	Hohlkehlsandalen mit Blockabsatz
+15449845236097	ersetzt-1	Dicksohlige Hochhackige Sandalen
+15449845694849	ersetzt-1	Rivetten-Boots mit Blockabsatz
+15449846153601	ersetzt-1	Spitzschuh-Boots mit Stiletto-Absatz, überknie, Plus-Grössen
+15449846415745	ersetzt-1	Fringen- Stiefel, Kamel
+15449846743425	ersetzt-1	Bequeme Kniehoch-Boots mit Nietenriemen, massiven Absätzen u
+15449847005569	ersetzt-1	Retro Western Boots
+15449847366017	ersetzt-1	Hochhackige Chunky-Sohlen Leder Kniehochschuhe
+15449847660929	ersetzt-1	Patent-Leder Reitstiefel mit Absatz
+15449848119681	ersetzt-1	Stretch-Stilettos Oberschenkelhoch mit spitzen Zehen
+15449848414593	ersetzt-1	Rundspitzige Knöchelboots mit Stitch-Detail
+15449848906113	ersetzt-1	Sportliche Knöchelboots
+15449849364865	ersetzt-1	Stiefeletten mit Stickereimuster
+15449849725313	ersetzt-1	Plus-Grössen Damenstiefel mit Blockabsatz
+15449849921921	ersetzt-1	Perlenbogen-Hochhackerschuhe
+15449850249601	ersetzt-1	Warme Velours-Stiefel mit Absatz
+15449850675585	ersetzt-1	Damenstiefel mit Klotzhacke aus Nappaleder
+15449850937729	ersetzt-1	Hohe Stiefel mit dicken Sohlen
+15449851199873	ersetzt-1	Gestickte Rundzehen Hochstiefel Damen
+15449851363713	ersetzt-1	Vintage Knöchelstiefel im Brit-Chic
+15449851625857	ersetzt-1	Frauenkreppsohlen-Schnürstiefel in Grössen bis 43
+15449851822465	ersetzt-1	Winterstiefel mit dicken Absätzen
+15449851920769	ersetzt-1	Spitzschuh Totemverzierte Kurzstiefel
+15449852084609	ersetzt-1	Warme Winterstiefel für Damen
+15449852313985	ersetzt-1	Pointed Mid-Heel Denim Boots mit Blumenstickerei
+15449852445057	ersetzt-1	Retro-Booties mit Lederriemen und Falten
+15449900679553	ersetzt-1	Hohe Damenstiefel
+15449901138305	ersetzt-1	Modische wasserdichte High-Top Stiefel Outdoor
+15449901826433	ersetzt-1	Königlich zarte Lolita-Mary Jane Schuhe
+15449902580097	ersetzt-1	Vielseitig rutschfeste Weichleder-Mittelhoch-Boot in Patentl
+15449904185729	ersetzt-1	Neu-Style Hochstiefel im britischen Casual-Look
+15449904939393	ersetzt-1	Trendige dicksohlige rutschfeste Damenstiefel
+15449905627521	ersetzt-1	Kniehohe Damenstiefel mit stabilem Blockabsatz, punk-inspiri
+15449906348417	ersetzt-1	Damen Stiefel mit Schnürung und Plateau
+15449906938241	ersetzt-1	Suede-Stiefel für Herbst und Winter
+15449907790209	ersetzt-1	Stylische Stretch-Stiefel
+15449908347265	ersetzt-1	Hohe Stiefel · Damen
+15449909166465	ersetzt-1	Gold-Silber Stiefeletten mit Spitze
+15449909625217	ersetzt-1	Dünne Martin-Boots mit Suede
+15449910116737	ersetzt-1	Hohe Stiefel aus Wildleder
+15449910968705	ersetzt-1	Stilvolle Alltags-Booties
+15449911689601	ersetzt-1	Verzierte Blockabsatz Damenstiefel Oberschenkelhoch Plus-Grö
+15449912115585	ersetzt-1	Ballett-Sandalen-Boots mit Gürtelverschluss und innere Höhe
+15449912803713	ersetzt-1	Wärmende Schneestiefel für Damen
+15449913426305	ersetzt-1	Western-Stiefel mit Stickerei
+15449913983361	ersetzt-1	Schmale Buckle Halbschuhe mit Gepolsterte Sohle für mehr Län
+15449914671489	ersetzt-1	Schwarze Ballerina-Boots Retro mit Schleife
+15449915490689	ersetzt-1	Casual Sandalen mit Blockabsatz, quadratischer Zeh und Niete
+15449916014977	ersetzt-1	Damen Retro-Weitgeschnitten Westerncowboystiefel
+15449916670337	ersetzt-1	Retro-Kurzstiefel
+15449917161857	ersetzt-1	Khaki Nubukleder Spitzstiefel Damen
+15449917686145	ersetzt-1	Retro Biker Stiefel
+15449917882753	ersetzt-1	Knielange Denimstiefel mit Metall Gürtelverschluss und Block
+15449918243201	ersetzt-1	Grosse Chunky-High-Absatz Stiefel
+15449918603649	ersetzt-1	Winter Mid-Calf Stiefel aus Faux Fell
+15449919193473	ersetzt-1	Patentleder High-top Reitstiefel mit Kreppabsatz und Seitenr
+15449919521153	ersetzt-1	Frauen Martin Stiefel mit niedrigem Absatz
+15449919979905	ersetzt-1	Europäisch-amerikanische Hochhackstiefel
+15449920504193	ersetzt-1	Retro Stiefel mit Chunky Absatz
+15449920995713	ersetzt-1	Damenstiefel aus Vollnarbenleder mit weicher Sohle
+15449921520001	ersetzt-1	Damen-Booties mit massiver Sohle, winterfest
+15449921814913	ersetzt-1	Spitzschuh-Blockabsatz Knöchelstiefel mit Schleifen, Grössen
+15449922044289	ersetzt-1	Retro-Höhenverstärkende Mid-Calf Martin-Boots
+15449922208129	ersetzt-1	Sequen-Schuhe mit Stilettoabsatz, Überknie
+15449922535809	ersetzt-1	Farbige Stiletto-Over-the-Knee-Stiefel
+15450009567617	ersetzt-1	Hochzeitsschuhe · Damen
+15450009698689	ersetzt-1	Stilettos mit Nieten
+15450009895297	ersetzt-1	Schleife Quadratische Spitze Niedriger Absatz Slip-On Pumps 
+15450010157441	ersetzt-1	Cowhide-Minimalist-Vielseitige Schuhe
+15450010288513	ersetzt-1	Leopard-Print Spitzschuh Stiletto-Pumps für Abend & Bankett
+15450010419585	ersetzt-1	Rückenriemen-Spitzschuh mit Bügel
+15450010550657	ersetzt-1	Chic Sandalen mit massiver Hacke
+15450010714497	ersetzt-1	Damen Sandalen mit Fischmund-Absatz
+15450010976641	ersetzt-1	Spitzschuh mit Holzkorn-Optik Hochhackige Ankle Boots Schafl
+15450011173249	ersetzt-1	Massive Absätze Spitzschuhe mit Rückenriemen
+15450011402625	ersetzt-1	Neu: Elegante Damenhohe Absätze – Vielseitig
+15450011599233	ersetzt-1	Schlangenmuster-Strap-Sandalen mit hohem Absatz
+15450011795841	ersetzt-1	Spitzschuhe mit Stiletto-Absatz aus Leder für Damen
+15450012057985	ersetzt-1	Mary Jane Slip-On Schuhe mit Kettenverzierung
+15450012320129	ersetzt-1	Rundes Pumps mit Blockabsatz
+15450012516737	ersetzt-1	Mary Jane Sandalen mit Mesh-Schlaufe, Sommer 2026
+15450012647809	ersetzt-1	Stiletto-Sandalen mit Plattform
+15450012909953	ersetzt-1	Damen Low-Cut Pumps mit Zufallsdrucken und Blockabsätzen
+15450013073793	ersetzt-1	Mary Jane mit weicher Sohle und Blockabsatz
+15450013237633	ersetzt-1	Mid-Heel Pumps mit Grip
+15450013467009	ersetzt-1	Vintage Sandalen mit Blockabsatz
+15450013761921	ersetzt-1	Damen-Schuhe & Taschen-Set mit Rhinestone-Buckle
+15450013991297	ersetzt-1	Mittelhoch-Rückenriemen-Pumps für den Alltag
+15450014187905	ersetzt-1	Damen-Open-Toe-Stilettos mit Schleifen-Detail
+15450014384513	ersetzt-1	Stiletto Pumps mit Mesh & Glitzer
+15450014515585	ersetzt-1	Retro High Heels mit Chunky Absatz
+15450014712193	ersetzt-1	Elegante T-Strap Sandalen
+15450015269249	ersetzt-1	Französische Stiletto-Sandalen
+15450015498625	ersetzt-1	Ein-Strap High-Heeled Sandalen
+15450015662465	ersetzt-1	Schmale Spitzschuhsandalen mit Stiletto-Absatz
+15450015859073	ersetzt-1	Atmungsaktive Damen-Sandalen mit Mesh-Obermaterial
+15450016055681	ersetzt-1	Neue Sommersandalen im französischen Stil mit spitzem Absatz
+15450016350593	ersetzt-1	20 cm Fusseliger Laufsteg-Slipper
+15450016514433	ersetzt-1	Stiletto-Sandaletten mit Schmuckriemen und Spitzzehen
+15450016711041	ersetzt-1	Punk-Style Boots mit Kreppabsätzen und Lederriemen
+15450016907649	ersetzt-1	Spitzschuh Slingback Pumps Gr. 40-43 Frühjahr/Sommer
+15450017235329	ersetzt-1	Stiletto-Pumps mit spitzen Zehen – hochhackig
+15450017431937	ersetzt-1	Strohgeflecht Jute Strand Sandalen
+15450017726849	ersetzt-1	Halb-Schuh Sandalen
+15450017923457	ersetzt-1	Einriemen-Sandalen mit weicher Sohle für Damen Sommer
+15450018087297	ersetzt-1	Schwarze Leder-Pumps mit Blockabsatz
+15450018283905	ersetzt-1	Rote Hochzeitsschuhe mit Blockabsatz
+15450018480513	ersetzt-1	Sommer-Sandalen mit Keilabsatz
+15450018775425	ersetzt-1	Frühling-Herbst-Pumps mit Spitzspitze und Blockabsatz
+15450019070337	ersetzt-1	Damenleder Pumps – Berufsbekleidung
+15450019299713	ersetzt-1	Dicker Hacke Pumps im britischen Stil
+15450019725697	ersetzt-1	Schwarze Plus-Grösse Schlankes Absatz
+15450020184449	ersetzt-1	Koreanische Sommersandalen mit Dicksohle
+15450020708737	ersetzt-1	Damen Blockabsatzschuhe Suede Peep-Toe
+15450021200257	ersetzt-1	Weiche Sandalen im französischen Stil mit Haarband-Optik
+15450021855617	ersetzt-1	Elegante High Heels mit Plattform
+15450022478209	ersetzt-1	Extra-hohe Absätze mit dicken Sohlen
+15450023002497	ersetzt-1	Elegante Stiletto-Heels mit Rhinsternen
+15450023526785	ersetzt-1	Pfauenfeder-Plattformhakenschuhe
+15450023985537	ersetzt-1	Patentleder Rundzehen Slip-on Stiletto Pumps
+15450025066881	ersetzt-1	Fischmund-Sandaletten mit Dickkeil und Klettverschluss
+15450025623937	ersetzt-1	Damen-Sandalen mit klarem Riemen und Keilabsatz
+15450026213761	ersetzt-1	Damen Herbstschuhe Grössen 35-42
+15450026836353	ersetzt-1	Retro-Balletflats mit Hohlprägung
+15450027327873	ersetzt-1	Bequeme Flats mit Schnalle
+15450027819393	ersetzt-1	Retro Flache Low-Cut mit Grosser Metallriemen
+15450028540289	ersetzt-1	Französische Flachschuhe mit Chunky Absatz
+15450029162881	ersetzt-1	Fransösische Schleife Flats
+15450029687169	ersetzt-1	Silberne Mary Jane mit verstecktem Absatz
+15450030211457	ersetzt-1	Neue Blumen Mary Jane Modische Flachschuhe 2026
+15450030801281	ersetzt-1	2026 Elegant Soft-Sole Ballerinas mit Polka-Dot-Bow
+15450031325569	ersetzt-1	Leopard-Print Mesh Ballerinas
+15450031653249	ersetzt-1	Flachschuhe Spitzengaze bestickt hohler Zehenspiess
+15450031849857	ersetzt-1	Rundzehen Blumenstickerei Mesh Flachschuhe
+15450032079233	ersetzt-1	Rundzehen Mesh-Schuhe Damen
+15450032275841	ersetzt-1	Vintage Schnürschuhe mit Absatz
+15450032505217	ersetzt-1	Weiche Ballet-Schuhe
+15450032701825	ersetzt-1	Retro Flugzeugkopf-Schuhe mit Arganöl
