@@ -621,3 +621,6 @@ outdoor-klappmesser-d2-605900	2504190208591606100	0	-	KEINE CH-Option → DRAFT	
 aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
 regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet	2605200358321629800	11	5.71	ok	landeseite
 monitor-lichtleiste-mit-bewegungssensor-blendfreies-schreibtischlicht-usb	2605310250451635700	6	20.13	ok	landeseite
+kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar	2605250512071609200	11	14.74	ok	landeseite
+smart-anzuchtset-mit-led-pflanzenlampe-12-zellen-fur-setzlinge-krauter	2605270904471636500	11	15.25	ok	landeseite
+spitzen-tragertop-lacey-feminines-sommer-basic	2605300855591638500	11	7.92	ok	landeseite
