@@ -253,3 +253,8 @@ handgeschmiedetes-ausbeinmesser-mit-hammerschl-250176	1790295769044496384	1	14.0
 handgeschmiedetes-ausbeinmesser-382400	1790289265973268480	1	13.18	ok	klinge
 handgeschmiedetes-kuchenmesser-mit-holzgriff-965696	1790279588455657472	1	19.75	ok	klinge
 geschmiedetes-haushalts-kuchenmesser-683200	1790272794425569280	0	-	KEINE CH-Option → DRAFT	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=1133	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=1113	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+rollender-messerscharfer-mit-diamantbeschichtu-627600	2409020341011627900	6	13.37	ok	klinge

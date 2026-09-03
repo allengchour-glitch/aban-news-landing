@@ -6425,3 +6425,57 @@ sind Zweit-Kandidaten ohne öffentlichen Feed; Gelato nur, wenn im Konto CH-Druc
   ⚠️ Und die Ampel schrie danach weiter ⚠️, weil Shopify die Bestellung bis zum Settlement als
   `financial_status:paid` führt. `bestell_ampel.py` liest jetzt `refunds` mit und meldet «erstattet».
   **Eine Warnung, die nach der Lösung stehen bleibt, wird beim nächsten Mal nicht mehr gelesen.**
+
+## 🔬 Voll-Audit über 52'313 aktive Produkte — und drei Fehler in den eigenen Regeln (2026-09-03)
+Betreiber nach #1016: «prüf alle produkten, fehler zu viel passiert». Frischer Bulk-Export
+(1'198'235 Zeilen, 422 MB, Produkte + Medien + Varianten + Kosten + Kanäle) und EIN Durchgang
+über alle maschinell prüfbaren Klassen: `automation/voll_audit.py`, Bericht
+`dropship/VOLL-AUDIT.md`. **Das Werkzeug ändert nichts** — repariert wird klassenweise, nachdem
+die Trefferliste GELESEN wurde.
+
+**Und genau das Lesen hat drei Regelfehler aufgedeckt, zwei davon in geteilten Quellen:**
+
+| Muster | Fehltreffer | Wahrheit |
+|---|---:|---|
+| `klinge\w*` in **klingenregel.json** | Türklingel, Videotürklingel, Fahrradklingel | **KLINGEL ist keine Klinge** |
+| `messgeraet_ausnahme` (Aufzählung) | Geschwindigkeits-, Luftqualitätsmesser | Aufzählen ist endlos |
+| `abnehm\w*` in meinem Audit-Muster | 73× **abnehmbar** (Kapuze, Futter, Halsband) | «abnehmbar» ≠ «abnehmen» |
+
+- **Die Klingel-Falle ist die neunte Fassung der Substring-Familie** — und die erste IN der
+  Regel, die genau dagegen gebaut wurde. Eine Endverankerung schützt nur, wenn das Muster
+  davor nicht selbst beliebig weiterläuft: `klinge\w*` frisst das `l` von «Klingel».
+  Richtig ist `klinge(?:n)?`. Fünf Dateien lesen diese Regel; jede Türklingel galt für sie
+  als Waffe und wurde aus dem einzigen Kanal gehalten, der verkauft.
+- **Statt weiterer Aufzählung eine SPRACHREGEL:** Was auf `-keits-`, `-itäts-` oder
+  `-ungsmesser` endet, misst eine Grösse (Geschwindigkeit, Luftqualität, Beschleunigung) —
+  so heisst keine Waffe. Dazu Kontext-Ausnahmen für Küchengeräte mit Schneidwerk, Rasierer,
+  RC-Spielzeug, Schuhe und Schmuck mit Schwert-Motiv.
+- ⚠️ **Beim Lockern gleich der Gegenfehler:** «ständer» als Ausnahme liess «Katana Ständer»
+  frei — das ist Waffenzubehör (Lehre 29.08., Schwertabdeckung). Wieder entfernt.
+  **Jede Verschärfung braucht ihre Gegenrichtung — jede Lockerung auch.**
+  Belegt: 19 Sperrfälle + 22 Gegenfälle, 0 Abweichungen, Python und JS gegen dieselbe Datei.
+
+**⚕️ Der teuerste Fund: 104 Wearables versprachen Blutdruck, EKG oder BLUTZUCKER — drei davon
+im Titel «zur Blutzuckermessung».** Kein optisches Armband misst Blutzucker durch die Haut;
+wer sich als Diabetikerin darauf verlässt, riskiert eine Unterzuckerung (Lehre 11.08.).
+Der Wächter dagegen existiert seit dem 21.08. — **und stand in KEINER Startliste, war also
+nie gelaufen.** Vierte Fassung von «wer startet DICH neu?» (0c). In der Zwischenzeit hat der
+Grind 104 neue angelegt. Alle bereinigt (Titel + Text), Gegenprobe AM OBJEKT: 0 von 104.
+- ⚠️ **Der Titel-Reiniger hätte dabei einen Titel zerstört:** «Smartwatch **für** Blutdruck- &
+  Sauerstoffmessung» → «Smartwatch **für &** Sauerstoffmessung». Die Regel kannte «mit», aber
+  nicht «für/zur/zum/inkl.». Erst repariert, an 12 Titeln gelesen, dann geschrieben.
+  **Ein halber Titel ist schlimmer als ein langer.**
+- Quelle geschlossen: `cj_copy_prompt.mjs` verbietet Blutdruck/EKG/Blutzucker/Glukose bei
+  Uhren, Armbändern und Ringen ausdrücklich (erlaubt bleiben Herzfrequenz, SpO2, Schritte,
+  Schlaf, Hauttemperatur); der Wächter läuft jetzt täglich im Aufseher.
+
+**Was der Bericht sonst an ECHTEN Klassen zeigt** (Fehlalarme bereits abgezogen):
+`A3` 4'161 Produkte mit der widerlegten Frachtboden-Kostenzahl (28.08.-Klasse, Korrektur läuft,
+kostet keine CJ-Punkte) · `C1` 6'172 Auswahl-Versprechen bei einer Variante · `A5` 377 Produkte
+mit ausschliesslich zu kleinen Bildern · `D2` 202 Titel-Dubletten · `C9` 151 Lieferantencodes
+im Variantenwert · `A1` 41 ohne prüfbare Lieferanten-SKU (die bekannte handkuratierte Ur-Ware).
+- ⚠️ **`D4` «gleiche SKU» ist KEIN Befund:** 264 Sticker teilen `9000001_10163` — bei POD ist
+  der Rohling derselbe, nur das Motiv unterscheidet sich. Eine Dublettenregel, die den
+  Druckprodukten nicht ausweicht, meldet den ganzen Selbstgestalten-Bereich.
+- ⚠️ **`C2` «Code im Titel»: S925 ist der SILBERSTANDARD**, keine Artikelnummer — ebenso 750,
+  585, 316L, 18K. Vor dem Streichen gehört gefragt, ob die Zeichenfolge etwas BEDEUTET.
