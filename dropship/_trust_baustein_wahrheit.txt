@@ -3677,3 +3677,14 @@
 15448823955841	ersetzt-1	Gelenk-Pflegespray für Kniegelenke
 15448824185217	ersetzt-1	SOUTH MOON Fuss-Pflegelösung
 15448824250753	ersetzt-1	Brustpump-Spray für Stillzeit
+15448824316289	ersetzt-1	Männer Gesichtscreme – Hydratisierend & Nährend
+15448824381825	ersetzt-1	Tunmate Batana Haarcreme 118ml
+15448824447361	ersetzt-1	Schwangerschaftsstreifen Creme 30g
+15448824480129	ersetzt-1	Bruststraffende & Feuchtigkeitsspendende Creme
+15448824545665	ersetzt-1	Tunmate Rindertalg Gesichtscreme 56.7g
+15448824578433	ersetzt-1	Ingwer Papaya Brust-Pads
+15448824643969	ersetzt-1	Bruststraffende & aufpolsternde Masken-Pads (6 Stk.)
+15448824709505	ersetzt-1	TMT Butter Honey Paste
+15448824742273	ersetzt-1	Tunmate Haarwuchsserum 30ml
+15448824775041	ersetzt-1	OUHOE Einweg-Handwärmer
+15448824807809	ersetzt-1	Intim-Pflegeserum für Frauen

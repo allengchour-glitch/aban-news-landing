@@ -8812,3 +8812,6 @@ gid://shopify/Product/15450837549441	CHF 47.36	1 Varianten	Mini Bluetooth Thermo
 gid://shopify/Product/15450837582209	CHF 6.53	85 Varianten	Handy Schutzhülle mit Kartenfach
 gid://shopify/Product/15450837614977	CHF 14.98	16 Varianten	Lendenwirbel-Massagegerät · Entspannung für den Rü
 gid://shopify/Product/15450837647745	CHF 18.74	5 Varianten	Handfeger-Kehrmaschine 3-in-1
+gid://shopify/Product/15450837680513	CHF 12.78	18 Varianten	Baby Zweiteiler "Kleiner Duft"
+gid://shopify/Product/15450837713281	CHF 5.87	3 Varianten	Halskette «Crystal Water Drop»
+gid://shopify/Product/15450837746049	CHF 5.81	34 Varianten	USB-Ladegerät mit 4 Ports und Quick Charge 3.0
