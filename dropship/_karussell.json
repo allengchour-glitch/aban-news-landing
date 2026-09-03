@@ -1,26 +1,27 @@
 {
- "caption": "Von allem etwas – 8 Lieblinge aus 8 Welten 🌍 Wisch dich durch 👉\n\n1. Uhren: Herren Quarzuhr Sandelholz Schwarz – CHF 43.90\n2. Schmuck: Edelstein-Kleeblatt «Rubin & Saphir» · 925 Silber – CHF 99.90\n3. Taschen: Camel Bag Knight Messenger Helmrucksack – CHF 34.90\n4. Herren-Mode: Stretch Langarmhemd für Herren – CHF 22.90\n5. Wohnen: Japanischer Türvorhang mit Ukiyo-e-Motiv – CHF 27.90\n6. Spielzeug: Sonnensystem Bausatz für kreative Köpfe – CHF 50.90\n7. Haustier: Automatisches Hunde-Rollseil – CHF 29.90\n8. Parfum: Dreamy Eau de Parfum Floral 30ml – CHF 22.90\n\nWelche Welt ist deine? Schreib die Zahl in die Kommentare 👇\n🔗 luxestyle.ch · Link in Bio\n#luxestyle #schweiz #onlineshopping #shoppingschweiz #geschenkidee #herbst2026",
  "produkte": [
   {
    "gid": "gid://shopify/Product/15523921527169",
    "titel": "Herren Quarzuhr Sandelholz Schwarz",
    "preis": 43.9,
-   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/259170961995.jpg?v=1788405164",
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1646223071643.jpg?v=1788405165",
    "welt": "Uhren"
   },
   {
    "gid": "gid://shopify/Product/15443241206145",
-   "titel": "Edelstein-Kleeblatt «Rubin & Saphir» · 925 Silber",
+   "titel": "Edelstein-Kleeblatt · 925 Silber · Rubin, Saphir, Smaragd oder Peridot",
    "preis": 99.9,
-   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29422917-746b-430e-b0d1-7d0f1bdce14b.jpg?v=1782851158",
-   "welt": "Schmuck"
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5696a1de-6692-4a88-9ff8-bb01a5dc236d.jpg?v=1782851220",
+   "welt": "Schmuck",
+   "kurz": "Edelstein-Kleeblatt · 925 Silber"
   },
   {
-   "gid": "gid://shopify/Product/15524021666177",
-   "titel": "Camel Bag Knight Messenger Helmrucksack",
-   "preis": 34.9,
-   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1bee1020-5438-415e-94ef-c1ba7424826f.jpg?v=1788419559",
-   "welt": "Taschen"
+   "gid": "gid://shopify/Product/15449070797185",
+   "titel": "Schultertasche aus Vollnarbenleder",
+   "preis": 84.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cf554e8a-e4d7-4766-a6d5-7868015857f8.jpg?v=1783211762",
+   "welt": "Taschen",
+   "kurz": "Schultertasche aus Vollnarbenleder"
   },
   {
    "gid": "gid://shopify/Product/15523940204929",
@@ -30,24 +31,24 @@
    "welt": "Herren-Mode"
   },
   {
-   "gid": "gid://shopify/Product/15523942138241",
-   "titel": "Japanischer Türvorhang mit Ukiyo-e-Motiv",
-   "preis": 27.9,
-   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ad6cf66-9774-4c20-9e08-230c65e32da6.jpg?v=1788409187",
+   "gid": "gid://shopify/Product/15443496763777",
+   "titel": "Aroma-Diffuser «Zen» · Luftbefeuchter mit LED",
+   "preis": 44.9,
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b4b96c6e-b55d-4453-8b78-322cb1b01eac.jpg?v=1782880712",
    "welt": "Wohnen"
   },
   {
    "gid": "gid://shopify/Product/15523138961793",
    "titel": "Sonnensystem Bausatz für kreative Köpfe",
    "preis": 50.9,
-   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/72622720-532e-497b-bd46-05fbe1f53844.jpg?v=1788318903",
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31da8137-422f-4d47-9490-d85a0e5a368c.jpg?v=1788318904",
    "welt": "Spielzeug"
   },
   {
    "gid": "gid://shopify/Product/15523989717377",
    "titel": "Automatisches Hunde-Rollseil",
    "preis": 29.9,
-   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/66e0bc2c-04ec-40c2-94ee-cf12b781c9e4.jpg?v=1788417046",
+   "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a18d53d-65f4-4348-a162-3ec6574f94c5.jpg?v=1788417045",
    "welt": "Haustier"
   },
   {
@@ -57,5 +58,7 @@
    "img": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/90999f93-72f2-497a-9bc8-11a178ef1a0f.jpg?v=1783187530",
    "welt": "Parfum"
   }
- ]
+ ],
+ "kopf": "Von allem etwas – 8 Lieblinge aus 8 Welten 🌍 Wisch dich durch 👉",
+ "fuss": "Welche Welt ist deine? Schreib die Zahl in die Kommentare 👇\n🔗 luxestyle.ch · Link in Bio\n\n#luxestyle #schweiz #onlineshopping #shoppingschweiz #geschenkidee #herbst2026"
 }

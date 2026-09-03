@@ -906,3 +906,14 @@ gartengerate-halter-637600	2605250226481638200	6	73.70	ok	landeseite
 sonnenschirmstander-mit-rollen-379073	2034266888734142465	0	-	KEINE CH-Option → DRAFT	landeseite
 modernes-sofabezugs-set-612200	2601040942531612500	11	20.80	ok	landeseite
 badezimmerschrank-betongrau-30x30x100-cm-106754	1990720952027959297	0	-	KEINE CH-Option → DRAFT	landeseite
+badezimmerschrank-betongrau-30x30x95-cm-911682	1990720615001673730	0	-	KEINE CH-Option → DRAFT	landeseite
+hantelbank-schwarz-131-x-41-x-110-cm-stahl-083650	1990704462887964674	0	-	KEINE CH-Option → DRAFT	landeseite
+tischplatte-60-cm-buche-massivholz-032769	1990474409297747969	0	-	KEINE CH-Option → DRAFT	landeseite
+2-teiliges-badmobel-set-artisan-eiche-118722	1990516569276080130	0	-	KEINE CH-Option → DRAFT	landeseite
+transportbox-petgo-fur-hund-katze-beluftet-flugtauglich-🐾	2064643596004409349	6	77.63	ok	landeseite
+manueller-slow-cooker-fur-schmorgerichte-209153	2071774536144416769	0	-	KEINE CH-Option → DRAFT	landeseite
+sternenhimmel-katzenbett-geborgenheit-fur-jede-637700	2605050423311638200	6	123.35	ok	landeseite
+gusseisenpfannen-set-3-teilig-124226	2045334785970507777	0	-	KEINE CH-Option → DRAFT	landeseite
+cremefarbener-plusch-sofabezug-fur-herbst-wint-624000	2603030903451624400	11	17.50	ok	landeseite
+u-formiges-samt-schwangerschaftskissen-621000	2606150259451621600	11	26.53	ok	landeseite
+kompakter-u-formiger-kratzbaum-mit-sisal-606900	2605050254501607400	6	113.02	ok	landeseite
