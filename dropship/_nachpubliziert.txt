@@ -270,3 +270,7 @@ gid://shopify/Product/15523854844289	schwarze-canvas-sneaker-mit-hohe-boost-6226
 gid://shopify/Product/15523866018177	digitales-tier-olgemalde-zebra-diy-kit-741632	Digitales Tier-Ölgemälde Zebra DIY Kit
 gid://shopify/Product/15523908682113	damen-quarzuhr-keramik-weiss-260dcc	Damen Quarzuhr Keramik Weiss
 gid://shopify/Product/15523924476289	hundenapf-katzennapf-gesunde-wasserschale-c8f272	Hundenapf Katzennapf gesunde Wasserschale
+gid://shopify/Product/15523939385729	freizeit-hemd-shorts-kombination-607100	Freizeit-Hemd-Shorts-Kombination
+gid://shopify/Product/15523939484033	transparenter-hakelvorhang-landhausstil-003840	Transparenter Häkelvorhang Landhausstil
+gid://shopify/Product/15523942203777	verstellbarer-doppelnapf-fur-haustiere-de9b9c	Verstellbarer Doppelnapf für Haustiere
+gid://shopify/Product/15523942236545	freizeit-hemdjacke-mit-revers-615200	Freizeit-Hemdjacke mit Revers
