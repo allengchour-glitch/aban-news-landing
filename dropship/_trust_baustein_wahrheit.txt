@@ -18937,3 +18937,122 @@
 15479397777793	ersetzt-1	USB Sternenhimmel Projektionslampe fürs Auto
 15479397843329	ersetzt-1	Lazy Chair Stand mit Auto-Sensing Ladegerät
 15479397876097	ersetzt-1	Herren Boots mit Schnürung
+15479397908865	ersetzt-1	Aufhellende handgemachte Wearable Nails
+15479397941633	ersetzt-1	USB 3.0 zu SATA Kabel für Festplatten
+15479397974401	ersetzt-1	Britische Winter-Boots mit dicker Sohle
+15479398105473	ersetzt-1	Kompaktes 4-Schacht-Ladegerät mit USB-C
+15479398138241	ersetzt-1	Ultraleichte Combat Outdoor Stiefel
+15479398203777	ersetzt-1	M52 Bluetooth-Kopfhörer für Schlaf
+15479398302081	ersetzt-1	Panda Ladestation und Schreibtisch-Organizer
+15479398334849	ersetzt-1	Herren Winter-Snowboots mit Fleecefutter
+15479398400385	ersetzt-1	Kabellose In-Ear Bluetooth Kopfhörer
+15479398433153	ersetzt-1	Elite Wireless Controller Akku mit Schnellladefunktion
+15479398531457	ersetzt-1	Mini In-Ear Bluetooth-Kopfhörer
+15479398629761	ersetzt-1	Ladeadapter für Inst360 X4
+15479398662529	ersetzt-1	Bluetooth In-Ear Kopfhörer mit Digitalanzeige
+15479398695297	ersetzt-1	Rutschfeste Outdoor-Sandalen aus Mikrofaserleder
+15479398728065	ersetzt-1	3-in-1 Faltbare 15W Kabellose Ladestation
+15479398793601	ersetzt-1	Kabellose Bluetooth Sport-Kopfhörer mit Ohrhaken
+15479398826369	ersetzt-1	Bequeme, sportliche Herren-Sandalen
+15479398859137	ersetzt-1	Bluetooth Audio Empfänger für Game Controller
+15479398891905	ersetzt-1	Bluetooth Stereo Lautsprecher
+15479398957441	ersetzt-1	Modische Sandalen für Herren
+15479398990209	ersetzt-1	268W GaN Multiport-Ladegerät
+15479399055745	ersetzt-1	Smarte Bluetooth-Kopfhörer mit Kamera
+15479399121281	ersetzt-1	Bequeme Strand- und Freizeitsandalen für Herren
+15479399154049	ersetzt-1	3-in-1 Laptop Sleeve mit Wireless Charger
+15479399219585	ersetzt-1	Helm-Intercom-Mikrofon, 3er-Set
+15479399285121	ersetzt-1	Extra-grosse Herren-Sandalen für den Sommer
+15479399317889	ersetzt-1	G1 Business Mono Bluetooth Headset mit Ohrhaken
+15479399416193	ersetzt-1	Legere Slip-on Sandalen für Herren
+15479399514497	ersetzt-1	Helm-Mikrofon für Bluetooth-Headsets
+15479399580033	ersetzt-1	Leichte offene Outdoor-Sandalen für Herren
+15479399678337	ersetzt-1	Gaming Headset mit USB-Anschluss
+15479399711105	ersetzt-1	EVA Outdoor-Sandalen mit weicher Sohle
+15479399809409	ersetzt-1	Ladecase mit Verstaerkung
+15479400530305	ersetzt-1	Atmungsaktive Sicherheitsschuhe mit Stahlkappe
+15479400595841	ersetzt-1	Schlüsseletui für Frauen
+15479400661377	ersetzt-1	Trendige weiche Slip-on Freizeit-Sneaker
+15479400694145	ersetzt-1	Bluetooth Headset für Motorradhelme
+15479400759681	ersetzt-1	Herren Outdoor Winterstiefel mit Fleecefutter
+15479400792449	ersetzt-1	Stereo Noise-Cancelling Bluetooth Kopfhörer
+15479400857985	ersetzt-1	Herren Mesh Sportschuhe mit integrierter Erhöhung
+15479400956289	ersetzt-1	Q36 Clip-on Bluetooth Kopfhörer mit Geräuschunterdrückung
+15479400989057	ersetzt-1	Herrenschuhe mit versteckter Absatzerhöhung
+15479401087361	ersetzt-1	Herren Vintage Patchwork Sneaker
+15479401218433	ersetzt-1	Herren Sneaker mit unsichtbarer Fersenerhöhung
+15479401283969	ersetzt-1	KI Sprachübersetzer Kopfhörer
+15479401447809	ersetzt-1	Over-Ear Bluetooth Kopfhörer mit ANC
+15479401480577	ersetzt-1	Sportlich-elegante Sneaker mit diskreter Erhöhung
+15479401578881	ersetzt-1	Butterfly Bluetooth Earphones
+15479401742721	ersetzt-1	Bluetooth Earphones Sport (Non-In-Ear)
+15479401841025	ersetzt-1	Sommer Mesh Freizeitschuhe mit Höhenerhöhung
+15479401873793	ersetzt-1	Kabelloses Over-Ear Gaming Headset
+15479401939329	ersetzt-1	Laufschuhe mit unsichtbarer Fersenerhöhung
+15479401972097	ersetzt-1	RGB Desktop Mikrofon mit Rauschunterdrückung
+15479402004865	ersetzt-1	Herren Sneaker mit verdecktem Keilabsatz
+15479402037633	ersetzt-1	Kabelloses Bluetooth-Headset mit Ohrhaken
+15479402070401	ersetzt-1	Kabelloses Bluetooth All-in-one Mikrofon
+15479402135937	ersetzt-1	Gaming Over-Ear Kopfhörer mit Kabel
+15479402168705	ersetzt-1	Herren Sportschuhe mit dezenter Absatzerhöhung
+15479402234241	ersetzt-1	LED-Bildschirmleuchte mit Kameraschutz
+15479402299777	ersetzt-1	A6 Pro Bluetooth In-Ear Kopfhörer mit Geräuschunterdrückung
+15479402332545	ersetzt-1	Herren Sandalen aus geflochtenem Leder
+15479402365313	ersetzt-1	Drahtloses Lavalier-Mikrofon für Live-Streaming
+15479402398081	ersetzt-1	Kabelgebundene In-Ear Kopfhörer im Korean-Stil
+15479402430849	ersetzt-1	Atmungsaktive Canvas Loafers für Herren
+15479402463617	ersetzt-1	Karaoke Bluetooth Lautsprecher mit Mikrofon
+15479402529153	ersetzt-1	Kabellose Bluetooth-Kopfhörer mit Akkuanzeige
+15479402561921	ersetzt-1	Performance Drum- und Perkussionsmikrofon
+15479402594689	ersetzt-1	Herren Sportlicher Freizeitschuh
+15479402627457	ersetzt-1	Kabellose Open-Ear Clip-Kopfhörer
+15479402692993	ersetzt-1	HD Wireless Ansteckmikrofon für Live-Aufnahmen
+15479402725761	ersetzt-1	Glänzende Wildleder-Sommerschuhe für Herren
+15479402856833	ersetzt-1	Drahtloses Ansteckmikrofon für Mobilgeräte
+15479402889601	ersetzt-1	Atmungsaktive Freizeitschuhe für Herren
+15479403020673	ersetzt-1	Kabelloses Omnidirektionales Konferenzmikrofon
+15479403053441	ersetzt-1	Unisex Flyknit Sneakers mit weicher Sohle
+15479403086209	ersetzt-1	Gaming Headset mit Geräuschunterdrückung
+15479403118977	ersetzt-1	Kabelgebundenes Mikrofon für Live-Streaming
+15479403184513	ersetzt-1	Sicherheitsschuhe Static – Stich- & Aufprallschutz
+15479403217281	ersetzt-1	Creative Gaming-Headset mit Beleuchtung
+15479403282817	ersetzt-1	USB Kondensator-Mikrofon für Computer
+15479403315585	ersetzt-1	2D Anime Elf Ohrhaken Bluetooth Kopfhörer
+15479403348353	ersetzt-1	Drahtloses Konversionsmikrofon
+15479415013761	ersetzt-1	Hoehenverstaerkte Sneaker
+15479415177601	ersetzt-1	Kabelloses Nagel-Lichttherapiegerät
+15479415210369	ersetzt-1	Hochdruck-Autowaschpistole mit Schaumlanze
+15479415374209	ersetzt-1	Smartwatch GT mit Gesundheitsfunktionen
+15479415406977	ersetzt-1	80W UV/LED Nagellampe für Gel-Nägel
+15479415472513	ersetzt-1	Kabellose Lithium-Ionen Auto-Waschpistole
+15479415505281	ersetzt-1	Unisex Canvas Sneaker im Preppy Style
+15479415538049	ersetzt-1	Dawn White Smartwatch mit Puls- und Blutsauerstoffmessung
+15479415570817	ersetzt-1	Geregelte Stromversorgung 30V5A
+15479415701889	ersetzt-1	Kabelloser Lithium-Hochdruckreiniger faltbar
+15479415734657	ersetzt-1	Herren Mid-Top Sneaker mit integrierter Fersenerhöhung
+15479415767425	ersetzt-1	Smartwatch rund mit Bluetooth-Telefonie und Herzfrequenz
+15479415865729	ersetzt-1	Hochdruck-Waschpistole für Haushalt & Auto
+15479415898497	ersetzt-1	Britische Business-Sneaker für Herren
+15479415931265	ersetzt-1	48W QC3.0 Auto-Ladegerät mit Voltanzeige
+15479415996801	ersetzt-1	Smartwatch mit Bluetooth-Telefonie und Herzfrequenz
+15479416062337	ersetzt-1	Kabelloser Auto-Staubsauger mit Reifendruckmesser
+15479416193409	ersetzt-1	Magnetisches Lade- und Datenkabel
+15479416226177	ersetzt-1	Atmungsaktive Herrenschuhe aus Eisseide
+15479416258945	ersetzt-1	Smartwatch für Sport & Fitness
+15479416324481	ersetzt-1	9-teiliges Reinigungsset für Auto
+15479416357249	ersetzt-1	Coole Hasen-Ladestation für Smartwatch
+15479416390017	ersetzt-1	Marathon Carbon-Sneaker mit Leuchteffekt
+15479416422785	ersetzt-1	Smartwatch mit Bluetooth-Anruf und NFC-Zahlung
+15479416553857	ersetzt-1	Streaming Line 18W Ladekabel für schnelles Laden
+15479416619393	ersetzt-1	Leder-Slipper im Old Money Stil
+15479416652161	ersetzt-1	Hochdruck-Wasserpistole mit Teleskopschlauch
+15479416717697	ersetzt-1	Smart Bluetooth Sport-Armband
+15479416783233	ersetzt-1	Super Fast Charging Set mit 100W Dual-Port
+15479416848769	ersetzt-1	High-top Sneaker mit Schlangenmuster
+15479416881537	ersetzt-1	Akku-Hochdruckreiniger für Auto & Haus
+15479416914305	ersetzt-1	Smartwatch mit Kamera und Telefonfunktion
+15479416947073	ersetzt-1	Kabelloses 3-in-1-Ladegerät mit Bluetooth
+15479416979841	ersetzt-1	Herren Canvas Loafer Washed Denim
+15479417012609	ersetzt-1	Rutschfester Parkstopper für Autoreifen (4er-Set)
+15479417045377	ersetzt-1	Smartwatch T98 mit Bluetooth-Anruf und Gesundheitsfunktionen
+15479417176449	ersetzt-1	Tragbares kabelloses Google Watch Ladegerät

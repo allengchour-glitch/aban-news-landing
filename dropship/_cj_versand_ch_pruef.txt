@@ -1027,3 +1027,8 @@ portabler-holzkohlegrill-fur-outdoor-240194	2038466791828533250	0	-	KEINE CH-Opt
 schnellladegerat-100w-862272	1681189962735165440	6	8.37	ok	landeseite
 kuscheliger-fleece-uberwurf-mit-rosen-design-622200	2606090300451623700	11	9.08	ok	landeseite
 outdoor-gusseisenpfanne-saftiges-fleisch-mit-grillstreifen	2605130104081639600	6	49.26	ok	landeseite
+gitarrenstander-fur-5-instrumente-625300	2506020532291625500	0	-	KEINE CH-Option → DRAFT	landeseite
+erhohtes-hundebett-xl-fur-grosse-hunde-grau-833409	2071870574538297345	0	-	KEINE CH-Option → DRAFT	landeseite
+erhohtes-hundebett-fur-grosse-hunde-xl-grau-042241	2071850259903311873	0	-	KEINE CH-Option → DRAFT	landeseite
+nackenkissen-mit-buchweizenfullung-und-baumwol-624500	2605050338481625000	0	-	KEINE CH-Option → DRAFT	landeseite
+xl-erhohtes-hundebett-rot-940034	2034276442445107201	0	-	KEINE CH-Option → DRAFT	landeseite
