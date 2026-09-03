@@ -988,3 +988,11 @@ gid://shopify/Product/15523905044865	nicht-versendbar	Haushalts-Kochmesser aus E
 gid://shopify/Product/15523941777793	ok	Zusammenbaubares Spielzeugschloss für Kinder
 gid://shopify/Product/15523907731841	ok	Multifunktions-Smartwatch mit Dual-System
 gid://shopify/Product/15523862806913	ok	Business-Rucksack für Männer
+gid://shopify/Product/15524002693505	nicht-versendbar	Doppellagiger Einkaufswagen für Outdoor und Camping
+gid://shopify/Product/15523997319553	nicht-versendbar	Hantel-Set für dein Training zu Hause
+gid://shopify/Product/15524002365825	nicht-versendbar	Faltbarer Outdoor-Bollerwagen mit vier Rädern
+gid://shopify/Product/15524002103681	nicht-versendbar	Faltbarer Outdoor-Campingwagen
+gid://shopify/Product/15524003250561	nicht-versendbar	Faltbarer Outdoor Bollerwagen mit Doppelbremse
+gid://shopify/Product/15523995386241	ok	Intelligente elektrische Fritteuse
+gid://shopify/Product/15524002234753	nicht-versendbar	Einkaufswagen für Camping und Outdoor
+gid://shopify/Product/15524022944129	ok	Kamera Schultertasche aus Leder

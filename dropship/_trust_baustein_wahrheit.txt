@@ -5803,3 +5803,249 @@
 15449124209025	ersetzt-1	LED Silikonmaske zur Hautverjüngung
 15449124372865	ersetzt-1	Nano-Gesichtsdampfer mit Farblicht
 15449124405633	ersetzt-1	Tragbares Augenpflegegerät mit Heisskompresse
+15449124471169	ersetzt-1	Rotierende, wiederaufladbare Zahnbürste
+15449124536705	ersetzt-1	5-Stufen Vakuumgerät mit Hot/Cold & Lichttherapie
+15449124602241	ersetzt-1	Heiss-Kalt Gesichtsreiniger für Zuhause & Reise
+15449124667777	ersetzt-1	Elektrische Kinder-Zahnbürste mit 6 Bürstenköpfen
+15449124733313	ersetzt-1	Elektrischer Epilierer für den ganzen Körper
+15449124798849	ersetzt-1	Ultraschall-Gesichtsreinigungsbürste aus Silikon
+15449124864385	ersetzt-1	Multifunktionales Silikon-Gesichtsreinigungsgerät
+15449124929921	ersetzt-1	H2ofloss Munddusche mit 5 Modi
+15449124995457	ersetzt-1	Ultraschall-Hautreiniger gegen Mitesser
+15449125224833	ersetzt-1	Minimalistischer, wiederaufladbarer Munddusche
+15449125290369	ersetzt-1	Gesichtsreinigungsbürste mit 7 Geschwindigkeiten
+15449125355905	ersetzt-1	Elektrischer Trimmer für Ohr-, Nasen- & Augenbrauenhaar
+15449125421441	ersetzt-1	Elektrischer Folienrasierer für Herren
+15449125486977	ersetzt-1	Gesichtsreiniger mit Rot- und Blaulicht, Warm- & Kaltfunktio
+15449125552513	ersetzt-1	Mini Elektrorasierer – Super Clean & Tragbar
+15449125618049	ersetzt-1	Elektrischer Rasierer für Damen
+15449125912961	ersetzt-1	Reha-Sofa-Kissen für gelähmte Hunde
+15449126273409	ersetzt-1	Klassische Katzentoilette, Lila
+15449126371713	ersetzt-1	Kauspielzeug mit Knisterpapier & Plüschblasen
+15449126437249	ersetzt-1	Hunde-WC mit Kunstrasen für Welpentraining
+15449126470017	ersetzt-1	Little Monster Plüsch-Beissspielzeug mit Sound
+15449126633857	ersetzt-1	Elf Katzenklo, oben/vorne Einstieg, Geruchsarm
+15449126699393	ersetzt-1	Geräumige, geruchsdichte Katzentoilette aus Edelstahl
+15449126732161	ersetzt-1	Edles Katzenklo aus Edelstahl, komplett geschlossen
+15449126830465	ersetzt-1	Geräumige Katzentoilette mit Geruchsverschluss
+15449126896001	ersetzt-1	Würfel-Katzentoilette mit zwei Eingängen
+15449126928769	ersetzt-1	Geruchsneutrale Katzentoilette mit Schaufel & Matte
+15449126994305	ersetzt-1	Moderne, geschlossene Katzentoilette
+15449127027073	ersetzt-1	Katzentoilette mit Deckel
+15449127125377	ersetzt-1	Dinosaurier Plüsch-Anhänger
+15449127158145	ersetzt-1	Niedliche Plüschfigur mit grossem Kopf
+15449127223681	ersetzt-1	2er-Set Sisal-Kratzmatten für Katzen
+15449127387521	ersetzt-1	Plüschtier-Schlüsselanhänger für Taschen
+15449127420289	ersetzt-1	Kuscheltier Schottisches Hochlandrind
+15449127518593	ersetzt-1	Kompakter Katzenbaum mit 2 Höhlen & Sisal-Kratzstämmen
+15449127649665	ersetzt-1	Multifunktionaler Katzenkratzbaum mit Tunnel
+15449127747969	ersetzt-1	Mond & Sterne Katzenbaum mit 4 Ebenen – Blau
+15449127846273	ersetzt-1	Abnehmbares Lederhalsband für Hunde
+15449127879041	ersetzt-1	Leichter Hunderollstuhl für Hinterbeine
+15449127944577	ersetzt-1	Leichtes Dual-Hundegeschirr für Auto & Traktion
+15449128010113	ersetzt-1	Hundegeschirr, explosionssicher
+15449128042881	ersetzt-1	GPS-Halsband für Hunde (Grösse M-L)
+15449128075649	ersetzt-1	GPS-Tracker für Hunde mit Echtzeitortung
+15449128108417	ersetzt-1	Hundeleine für Spaziergänge
+15449128173953	ersetzt-1	Herz-Schlüsselanhänger aus Edelstahl
+15449128239489	ersetzt-1	Golden Cup Li-Ion Ventilator
+15449128272257	ersetzt-1	Mini Ventilator, Akkubetrieben
+15449128305025	ersetzt-1	Tragbarer Li-Ion Ventilator 'P Ink'
+15449128403329	ersetzt-1	Smart-Armband mit GPS, Herzfrequenzmessung
+15449128436097	ersetzt-1	HD8ultra Smartwatch mit Bluetooth-Telefonie
+15449128468865	ersetzt-1	Solar-Überwachungskamera mit HD-Nachtsicht
+15449128501633	ersetzt-1	4K Dual-Objektiv Sportkamera mit Nachtsicht
+15449128567169	ersetzt-1	4K Panorama Sportkamera mit Dual-Objektiv
+15449128599937	ersetzt-1	GPS-WLAN-Signal-Detektor für Abhörschutz
+15449128665473	ersetzt-1	Solar 4G Wildtierkamera mit Nachtsicht
+15449128763777	ersetzt-1	Smarte HD-Schwenk-Neige-Kamera für Zuhause
+15449128862081	ersetzt-1	4K HD Action-Kamera mit Brustgurt
+15449128894849	ersetzt-1	36MP HD Infrarot-Wildkamera
+15449128927617	ersetzt-1	A8 HD Pet-Kamera
+15449128960385	ersetzt-1	WLAN-Wildkamera für die Outdoor-Forschung
+15449129025921	ersetzt-1	HD Digital Camcorder mit Flip-Screen
+15449129058689	ersetzt-1	M3H HD Motorrad-DVR Anti-Shake Kamera
+15449129156993	ersetzt-1	Tragbare Outdoor-Sportkamera mit Pocket-Format
+15449129255297	ersetzt-1	Smart Pet HD Videokamera für Zuhause
+15449129320833	ersetzt-1	Handheld Kamera für Sport & Outdoor
+15449129386369	ersetzt-1	HD Nachtsicht Überwachungskamera
+15449129451905	ersetzt-1	Handheld 4K Ultra-Clear Outdoor-Kamera
+15449129550209	ersetzt-1	WIFI Solar Outdoor Kamera 8K
+15449129615745	ersetzt-1	S80 HD Outdoor-Sportkamera mit Bildstabilisator
+15449129681281	ersetzt-1	HD Mini Sportkamera
+15449129746817	ersetzt-1	Anti-Shake Sportkamera Wasserdicht
+15449129812353	ersetzt-1	W02 Outdoor-Sportkamera 1080p
+15449129910657	ersetzt-1	WLAN HD Überwachungskamera für Innenbereiche
+15449129976193	ersetzt-1	Riding S70: Drehbare 2K-Kamera für unterwegs
+15449130041729	ersetzt-1	Handy-Gimbal mit KI-Tracking für stabile Videos
+15449130172801	ersetzt-1	Wiilala 3D Hologramm-LED-Display mit WiFi
+15449130205569	ersetzt-1	Wiilala 3D Hologramm-LED-Display
+15449130238337	ersetzt-1	3D Hologramm-LED-Display 60cm
+15449130402177	ersetzt-1	Cartoon Katze Griff Silikon Schutzhülle
+15449130434945	ersetzt-1	Schnellheizender Wasserspender für Zuhause
+15449130467713	ersetzt-1	Huajian Zhi Yue Tastenkappen
+15449130533249	ersetzt-1	Water-colored Diary Tastenkappen
+15449130566017	ersetzt-1	Sleeke blaue Tastenkappen, transparentes Design
+15449130664321	ersetzt-1	PBT Tastenkappen mit Cuaicai Hasen Design
+15449130729857	ersetzt-1	Personalisierbare Tastenkappen in Pink-Braun
+15449130762625	ersetzt-1	Magnetische PBT-Tastenkappen, hellgrün
+15449130795393	ersetzt-1	Tastenkappen-Set URE-Dream Butterfly Off-white
+15449130893697	ersetzt-1	Externer USB 3.0 DVD Brenner (Type-C)
+15449130926465	ersetzt-1	Induktionsheizspulen-Zubehör für Handgeräte
+15449131024769	ersetzt-1	Kabelloses Bluetooth Headset für Gaming & Anrufe
+15449131123073	ersetzt-1	G100 Wireless Screen Mirroring Device
+15449131188609	ersetzt-1	Micro-Carving Elektro-Schleifer Kit, 56-teilig
+15449131221377	ersetzt-1	LF05 Kabellose Bluetooth AI Sprachmaus
+15449131254145	ersetzt-1	PS5 Slim Lüfter für optimale Kühlung
+15449131319681	ersetzt-1	3-Stufen USB-Lese-Lupe mit 20 LEDs
+15449131385217	ersetzt-1	Graffiti Matter Smart Plug
+15449131417985	ersetzt-1	Magnetischer Polarisationsfilter für Osmo Pocket 3
+15449131483521	ersetzt-1	Elektrischer Heisswasserspender 8L
+15449131549057	ersetzt-1	Retro Plattenspieler Aroma Diffuser & Bluetooth Speaker
+15449131581825	ersetzt-1	Quick Brush Start für iPhone (Type-C)
+15449131614593	ersetzt-1	4-in-1 Cartoon Game USB Hub
+15449131647361	ersetzt-1	Externe Festplattenbox für 2.5/3.5 Zoll SATA
+15449131680129	ersetzt-1	Multiport USB-C Hub für MacBook Pro/Air
+15449131745665	ersetzt-1	USB Stick Custom Car Mini Metall
+15449131811201	ersetzt-1	Festplatten-Dockingstation mit Klonfunktion
+15449131909505	ersetzt-1	Externe 4-Disk Harddisk-Station
+15449132171649	ersetzt-1	HDMI Switch 4x1 mit Audio-Extraktion
+15449132237185	ersetzt-1	Multi-Kartenleser USB 3.0 & Type-C
+15449132335489	ersetzt-1	Haarserum mit Applikatorbürste 100ml
+15449132401025	ersetzt-1	Microneedling Anti-Falten Serum
+15449132466561	ersetzt-1	12er Lidschatten- & Eyeliner-Stift-Set
+15449132532097	ersetzt-1	Lidschatten- & Lipgloss-Palette für den Alltag
+15449132564865	ersetzt-1	Sweetheart Bear Lidschatten-Palette
+15449132695937	ersetzt-1	Falsche Wimpern mit Schwalbenschwanz-Enden
+15449132794241	ersetzt-1	Wimpern-Büschel-Set für individuellen Look
+15449132859777	ersetzt-1	DIY Wimpern-Büschel-Set für voluminöse Wimpern
+15449132892545	ersetzt-1	3 Paar unsichtbare künstliche Wimpern
+15449132925313	ersetzt-1	3D Premium Faux Mink Kunstwimpern MK-36
+15449132958081	ersetzt-1	3D Premium Faux Mink Wimpern MK-01
+15449132990849	ersetzt-1	3D Premium Faux Mink Wimpern MK-62
+15449133023617	ersetzt-1	Premium Faux Mink MK-15 Wimpern
+15449133089153	ersetzt-1	3D Premium Faux Mink Kunstwimpern MK-16
+15449133121921	ersetzt-1	3D Premium Faux Mink Kunstwimpern MK-37
+15449133154689	ersetzt-1	Falsche Nerzwimpern 3D MK-13 (5 Paar)
+15449133187457	ersetzt-1	Falsche Nerzwimpern 3D MK-06 (5 Paar)
+15449133220225	ersetzt-1	Quantum-Style Soft Magnetic False Eyelashes
+15449133285761	ersetzt-1	Magnetische falsche Wimpern
+15449133318529	ersetzt-1	Fairy-Style Segment-Wimpern
+15449133351297	ersetzt-1	DIY Wimpern-Set mit 640 Einzel-Büscheln
+15449133384065	ersetzt-1	15 Paar 3D Cat Eye Kunstwimpern
+15449133416833	ersetzt-1	5 Paar Falsche Wimpern Faux Mink
+15449133449601	ersetzt-1	Falsche Wimpern Faux Mink – 10 Paar
+15449133515137	ersetzt-1	5 Paar Foxy 3D-Wimpern mit transparentem Band
+15449133547905	ersetzt-1	Ono Rabbit Transparente Falsche Wimpern
+15449133580673	ersetzt-1	Magnetisches Wimpern-Set
+15449133613441	ersetzt-1	Magnetische Kunstwimpern
+15449133646209	ersetzt-1	Handgemachte Kirschgold Diamant Nägel
+15449133678977	ersetzt-1	24er Set Schwarze Schmetterling Press-On Nägel
+15449133744513	ersetzt-1	24er Set rote Herz Press-On Nägel
+15449133842817	ersetzt-1	24er-Set rote und weisse Herz-Press-On Nägel
+15449133973889	ersetzt-1	Handgemachte Nagel-Tips «Sweet Cool»
+15449134006657	ersetzt-1	24er Set Diamond Snake Press-On Nägel
+15449134104961	ersetzt-1	24er Set «Planet Diamond Star» Press-On Nägel
+15449134170497	ersetzt-1	Bärli-Schleife Press-On Nägel
+15449134203265	ersetzt-1	24er Set Diamond Deer Snowflake Press-On Nägel
+15449134236033	ersetzt-1	Erdbeer-Schleifen-Press-On Nägel
+15449134268801	ersetzt-1	24er Set Planet Perlen-Blumen Press-On Nägel
+15449134301569	ersetzt-1	24er Set Kirschbogen-Press-On Nägel
+15449147212161	ersetzt-1	Denim-Rock mit Ombre-Ärmeln
+15449147244929	ersetzt-1	Plissiertes Langarmkleid
+15449147310465	ersetzt-1	Elegantes Polka-Dot Minikleid
+15449147343233	ersetzt-1	Luftiges Leinenkleid mit V-Ausschnitt
+15449147376001	ersetzt-1	Besticktes Langarm-Freizeitkleid mit Print
+15449147408769	ersetzt-1	Ärmelloses Ballonkleid für Damen
+15449147474305	ersetzt-1	Damen Kleid mit Rüschen und Rundhals
+15449147507073	ersetzt-1	Ärmelloses Midikleid aus Viskose
+15449147670913	ersetzt-1	Kapuzenpullover mit Reissverschluss
+15449148064129	ersetzt-1	Oversized Kapuzenpullover im American Style
+15449148096897	ersetzt-1	Hoodie im American Streetwear-Stil
+15449148129665	ersetzt-1	Mid-Länge Hoodie im American Style
+15449148293505	ersetzt-1	Vintage-Stil Kapuzen-Cardigan für Frühling & Herbst
+15449148490113	ersetzt-1	Streetwear Hoodie mit Herz-Print
+15449148719489	ersetzt-1	Gerippter Kapuzenpullover mit V-Ausschnitt
+15449148916097	ersetzt-1	Half-zip Sweatshirt mit Stehkragen
+15449149079937	ersetzt-1	Langarm-Freizeitshirt mit Half-Zip und Print
+15449149276545	ersetzt-1	Lässiges Langarm-Sweatshirt mit Rundhals
+15449149407617	ersetzt-1	Herren Strick-Kapuzenjacke mit Stickerei und Print
+15449149440385	ersetzt-1	Pullover-Top mit Pflanzen- und Blumenmuster
+15449149473153	ersetzt-1	Kariertes Jacquard Hoodie für Paare
+15449149505921	ersetzt-1	Lässiges Colorblock Sweatshirt mit Leopardenprint
+15449149538689	ersetzt-1	Warmer 3D-Hoodie mit Doppelkappe für Katzenliebhaberinnen
+15449149571457	ersetzt-1	Casual Oversized Top mit 3D-Effekt
+15449149604225	ersetzt-1	Lässiger Hoodie mit Cartoon-Print
+15449149669761	ersetzt-1	Kapuzenpullover mit 3D-Druck für Damen
+15449149702529	ersetzt-1	Gestreiftes Kapuzen-Sweatshirt
+15449149800833	ersetzt-1	Damen Pullover mit Blumenprint und Rundhals
+15449149866369	ersetzt-1	Eleganter Mid-Length Strickpullover mit Knöpfen
+15449149899137	ersetzt-1	Sportliches Langarm-Top mit Farbblöcken
+15449149964673	ersetzt-1	Blumenprint Langarmshirt für Damen
+15449149997441	ersetzt-1	Lockerer Hoodie mit Leopardenmuster
+15449150030209	ersetzt-1	Kapuzen-Sweatshirt mit Nieten-Design
+15449150062977	ersetzt-1	Kapuzen-Sweatshirt mit Lochmuster
+15449150095745	ersetzt-1	Hoodie mit Tiermotiven und Rundhalsausschnitt
+15449150128513	ersetzt-1	Loose-Fit Hoodie mit Sternenhimmel-Muster
+15449150194049	ersetzt-1	Damen Sweatshirt mit 3D-Druck
+15449150226817	ersetzt-1	Weihnachts-Fleece-Pullover für Damen
+15449150292353	ersetzt-1	Y2K Harajuku Hoodie mit Nieten
+15449150357889	ersetzt-1	Warmes Fleece Kapuzen-Sweatshirt mit Taschen
+15449150423425	ersetzt-1	Eleganter Blumen-Hoodie für Damen
+15449150456193	ersetzt-1	Kapuzenpullover für Damen mit Print und Taschen
+15449150521729	ersetzt-1	Lässiger Hoodie mit Kordelzug und Taschen
+15449150554497	ersetzt-1	Croissant-Horn Hoodie für Damen
+15449150620033	ersetzt-1	Kapuzenpullover mit Reissverschluss & Print
+15449150652801	ersetzt-1	Gemütlicher Kapuzenpullover für Paare
+15449150685569	ersetzt-1	Kapuzenpullover im Casual Fit
+15449150718337	ersetzt-1	Lässiger Hoodie im koreanischen Stil
+15449150751105	ersetzt-1	3D-Print V-Ausschnitt Sweatshirt für Damen
+15449150816641	ersetzt-1	Retro-Sweatshirt mit Print
+15449150849409	ersetzt-1	Western-Strickhoodie für Damen
+15449150882177	ersetzt-1	Kapuzenpullover mit 3D-Muster
+15449150947713	ersetzt-1	Langarm-Sweatshirt mit Sternenmuster
+15449151013249	ersetzt-1	Damen Weihnachts-Sweatshirt mit 3D-Print
+15449151078785	ersetzt-1	Lockerer Batwing Hoodie für Damen
+15449151144321	ersetzt-1	3D Digitaldruck Pullover für Damen
+15449151177089	ersetzt-1	Damen Pullover mit 3D-Print
+15449151209857	ersetzt-1	Designer Crewneck Sweatshirt für Damen
+15449151242625	ersetzt-1	Gefütterter Hoodie mit Reissverschluss
+15449151275393	ersetzt-1	Harajuku Illustration-Print Damen Sweatshirt
+15449151308161	ersetzt-1	Langarmshirt mit Schneemann-Design
+15449151340929	ersetzt-1	Retro Patchwork Floral Sweatshirt
+15449151406465	ersetzt-1	Damen Pullover mit Print
+15449151504769	ersetzt-1	Damen Hoodie mit Print aus weichem Wollmix
+15449151537537	ersetzt-1	Hoodie-Zweiteiler für Damen
+15449151570305	ersetzt-1	Kapuzenpullover mit Augenmaske und Fleecefutter
+15449151603073	ersetzt-1	Damen Hoodie mit 3D Digital-Print
+15449151635841	ersetzt-1	Damen bedrucktes Freizeit-Sweatshirt
+15449151668609	ersetzt-1	Warmer Kapuzenpullover mit 3D-Druck
+15449151734145	ersetzt-1	Warme Kapuzen-Strickjacke mit Reissverschluss
+15449152553345	ersetzt-1	Freizeitjacke für Business und Pendeln
+15449152717185	ersetzt-1	Retro Work Shirt mit Brusttasche
+15449157108097	ersetzt-1	Kapuzen-Sweatshirt mit Blumenmuster
+15449157271937	ersetzt-1	Blumen-Denim-Patchwork Hoodie für Damen
+15449157468545	ersetzt-1	Lässiger Hoodie mit überschnittenen Ärmeln · Modell 5
+15449157632385	ersetzt-1	Lässiger Hoodie mit überschnittenen Ärmeln · Modell 8
+15449157796225	ersetzt-1	Gemütlicher Fleece-Hoodie mit Rippstruktur
+15449158025601	ersetzt-1	Bedrucktes Langarm-Sweatshirt mit Rundhals
+15449158222209	ersetzt-1	Casual Half-zip Hoodie mit 3D-Effekt
+15449158254977	ersetzt-1	Gefütterter Kapuzenpullover für Damen
+15449158287745	ersetzt-1	Retro Kapuzen-Sweatshirt mit Doppelreissverschluss
+15449158320513	ersetzt-1	Personalisierter Hoodie mit Leder-Patch
+15449158418817	ersetzt-1	Loose-Fit Langarm-Top mit Schriftzug-Print
+15449158451585	ersetzt-1	Beanie-Jacke mit geometrischem Patchwork-Muster
+15449158484353	ersetzt-1	Vielseitiger Strick-Cardigan mit Reissverschluss
+15449158517121	ersetzt-1	Vielseitiger Hoodie mit langen Ärmeln
+15449158615425	ersetzt-1	Kapuzen-Sweatshirt im American Streetwear-Stil
+15449158648193	ersetzt-1	Corduroy Fleece Hoodie mit Kordelzug
+15449158680961	ersetzt-1	3D Farbverlauf Digital-Print Hoodie für Damen
+15449158746497	ersetzt-1	3D Digitaldruck V-Ausschnitt Pullover für Damen
+15449158779265	ersetzt-1	Unifarbenes Kapuzen-Sweatshirt
+15449158812033	ersetzt-1	Trendiges Halbarm-T-Shirt aus Baumwoll-Mix
+15449158844801	ersetzt-1	Damen Hoodie mit 3D-Effekt und Kunstfell
+15449158877569	ersetzt-1	Color-Blocked Minimalistisches Top für Damen
+15449158910337	ersetzt-1	Retro 3D Digital-Print Crew-Neck Sweatshirt
+15449158943105	ersetzt-1	Damen Sweatshirt mit 3D-Effekt Print
+15449159041409	ersetzt-1	Street-Style Hoodie mit Kreativem Schriftzug-Print
+15449159074177	ersetzt-1	3D-Print Kapuzenpullover für Damen
