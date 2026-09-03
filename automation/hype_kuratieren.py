@@ -299,6 +299,7 @@ def tage_her(datum):
 # dort den Tag noch nicht und waere ein zweites Mal «neu» aufgenommen worden. Die LIVE-Liste aus
 # abgelaufene_raeumen() ist die Wahrheit.
 IN_REIHE = set()
+IN_REIHE_TITEL = []
 
 def abgelaufene_raeumen():
     """Nimmt den Tag von allem, was länger als HYPE_TAGE in der Reihe steht."""
@@ -323,6 +324,7 @@ def abgelaufene_raeumen():
         if seit and tage_her(seit) > HYPE_TAGE:
             raus.append((p, seit))
     IN_REIHE.update(p["id"] for p in alle)
+    IN_REIHE_TITEL[:] = [p["title"] for p in alle]
     print(f"In der Reihe: {len(alle)} | abgelaufen (>{HYPE_TAGE} Tage): {len(raus)}", flush=True)
     for p, seit in raus[:8]:
         print(f"   seit {seit}: {p['title'][:52]}", flush=True)
@@ -415,6 +417,50 @@ def kontaktbogen():
           flush=True)
 
 
+def reihe_ordnen():
+    """Neu Aufgenommenes nach vorn (03.09.2026).
+
+    Die Kollektion stand auf CREATED_DESC — also nach dem ANLEGEDATUM des Produkts, nicht nach
+    dem Tag der Aufnahme. Die Startseite zeigt die ersten sechs; ein heute kuratiertes Produkt
+    vom Mai stand deshalb auf Position 60 und war nie zu sehen. Jetzt: MANUAL, sortiert nach
+    hype-seit (juengste Aufnahme zuerst), innerhalb eines Tages mit Tages-Seed gemischt
+    (zlib.crc32 — hash() ist je Prozess zufaellig, Lehre 28.08.).
+    """
+    import zlib, random
+    d = gql('query($q:String!){collections(first:1,query:$q){nodes{id sortOrder}}}', {"q": f"handle:{HANDLE}"})
+    knoten = ((d.get("data") or {}).get("collections") or {}).get("nodes") or []
+    if not knoten:
+        return
+    cid, sort = knoten[0]["id"], knoten[0]["sortOrder"]
+    if sort != "MANUAL":
+        r = gql('mutation($i:CollectionInput!){collectionUpdate(input:$i){userErrors{message}}}',
+                {"i": {"id": cid, "sortOrder": "MANUAL"}})
+        e = (((r.get("data") or {}).get("collectionUpdate") or {}).get("userErrors")) or []
+        if e:
+            print(f"  ⚠️ Sortierung: {e[0]['message']}", flush=True)
+            return
+    cur, alle = None, []
+    while True:
+        d = gql('query($c:String){products(first:250,after:$c,query:"tag:%s AND status:active")'
+                '{pageInfo{hasNextPage endCursor} nodes{id tags}}}' % TAG, {"c": cur})
+        pg = (d.get("data") or {}).get("products")
+        if not pg:
+            return
+        alle += pg["nodes"]
+        if not pg["pageInfo"]["hasNextPage"]:
+            break
+        cur = pg["pageInfo"]["endCursor"]
+    rnd = random.Random(zlib.crc32(HEUTE.encode()))
+    def seit(p):
+        return next((t.split("hype-seit-")[1] for t in p["tags"] if t.startswith("hype-seit-")), "0000-00-00")
+    alle.sort(key=lambda p: (seit(p), rnd.random()), reverse=True)
+    moves = [{"id": p["id"], "newPosition": str(i)} for i, p in enumerate(alle)]
+    r = gql('mutation($id:ID!,$m:[MoveInput!]!){collectionReorderProducts(id:$id,moves:$m){job{id} userErrors{message}}}',
+            {"id": cid, "m": moves})
+    e = (((r.get("data") or {}).get("collectionReorderProducts") or {}).get("userErrors")) or []
+    print(f"  Reihe geordnet: {len(alle)} Produkte, juengste Aufnahme zuerst" if not e else f"  ⚠️ Reihenfolge: {e[0]['message']}", flush=True)
+
+
 def main():
     if os.environ.get("KONTAKT") == "1":
         kontaktbogen()
@@ -429,6 +475,8 @@ def main():
     # Ausschuss -> hype-bild-schwach, dann Lauf ohne NUR_RAEUMEN).
     if os.environ.get("NUR_RAEUMEN") == "1":
         print("NUR_RAEUMEN aktiv — keine Neuaufnahme in diesem Lauf.", flush=True)
+        if not DRY:
+            reihe_ordnen()
         return
 
     kandidaten = {k: [] for k in THEMEN}
@@ -459,7 +507,9 @@ def main():
                 break
 
     gewaehlt = []
-    titel_bisher = []
+    # ⚠️ 03.09.: Die Warenart-Wache verglich nur die Kandidaten untereinander — ein zweites
+    # «Figurformendes Kleid» kam neben das erste. Jetzt zaehlt die LIVE-Reihe mit.
+    titel_bisher = list(IN_REIHE_TITEL)
     for thema, liste in kandidaten.items():
         # Meiste Bilder zuerst — die Karte lebt vom Karussell.
         liste.sort(key=lambda x: -x[3])
@@ -524,6 +574,7 @@ def main():
         time.sleep(0.3)
     f.flush()
     print(f"FERTIG: {n} Produkte in die Hype-Reihe aufgenommen (Ablauf in {HYPE_TAGE} Tagen)")
+    reihe_ordnen()
 
 
 if __name__ == "__main__":
