@@ -6375,3 +6375,19 @@ den geteilten CJ-Eimer dauerhaft bei ~0 (gemessen remaining 11 → 1 → 1690050
   auch als JS-RegExp (der Fortura-Importer liest dieselbe Datei). Die dritte Fassung war zu eng (102 echte
   Kostüme verloren den Tag: Trainingsanzug, Hawaiirock, Paradefrack), also ZWEI Testlisten, nicht eine.
   **Eine Wortliste, die nur gegen Treffer geprüft wurde, ist halb geprüft.**
+
+## 🇨🇭 «Hauptsache Schweizer Lager» — Lieferanten gesichtet, Shopcom ist der Kandidat (2026-09-03)
+Betreiber: «nur CJ am Anfang, sonst Schweizer Lieferant, Hauptsache Schweizer Lager» (nach der
+Spocket-Frage: US/EU-Marktplatz, Abo, kein CH-Lager → verworfen). Ergebnis in
+`dropship/SCHWEIZER-LIEFERANTEN.md`. Kurz: **Shopcom AG (Büron LU)** — >10'000 Produkte
+(Baby, Beauty, Haushalt, IT, Outdoor, Spielwaren), **täglicher CSV-Feed + Preis/Bestand mehrmals
+täglich, neutraler Versand, Bestellung bis 15:00 = Folgetag** — genau das Fortura-Muster für die
+Kategorien, die Fortura nicht hat. Antrag ist ein Betreiber-Formular (forms.shopcom.ch), Gebühren
+nicht öffentlich. Dameco (Deko/Saison, Kleindöttingen) und Telion (Markenelektronik, Schlieren)
+sind Zweit-Kandidaten ohne öffentlichen Feed; Gelato nur, wenn im Konto CH-Druck belegt ist.
+- ⚠️ **Marketing-Listen («10 beste Schweizer Lieferanten») nennen BigBuy, Eprolo, BrandsGateway
+  mit «Schweizer Lager» — belegt ist keines davon.** Ein Lager gilt erst, wenn die Firmenseite
+  eine CH-Adresse UND eine CH-Lieferzeit nennt. Gelatos CH-Seite sagt «lokal produziert», die
+  App-Store-Länderliste führt CH nicht — Widerspruch, im Konto zu klären, nicht zu glauben.
+- ⚠️ gelato.com antwortet unserem Ausgang mit 403 (auch WebFetch); Shopcom-Unterseiten teils 404
+  bei WebFetch, per curl 200 — zwei Wege probieren, bevor «nicht erreichbar» gilt.
