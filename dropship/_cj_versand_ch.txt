@@ -977,3 +977,6 @@ gid://shopify/Product/15523237298561	nicht-versendbar	Baukasten-Set für kreativ
 gid://shopify/Product/15523184181633	ok	Korallen-Ornament mit Kristallbasis
 gid://shopify/Product/15523439214977	ok	Bearings Spinnrolle Long Cast – SH10000/SH12000
 gid://shopify/Product/15523759751553	ok	Lederrucksack für Business und Freizeit
+gid://shopify/Product/15523851796865	nicht-versendbar	Gewichtsverstellbare Kettlebell aus Gusseisen
+gid://shopify/Product/15523829318017	ok	Kaffeebecher aus Bone China – Geschenkset
+gid://shopify/Product/15523853009281	ok	Hängende Beinheber-Trainingseinheit für Zuhause
