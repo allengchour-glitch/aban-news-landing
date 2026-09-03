@@ -136,6 +136,35 @@ haustier/hund/katze/pet, im Text kein Wort über Tiere. Die CJ-Kategorie vergibt
   Kleidungsstück für Hunde und Katzen». Sie bekam nur einen ehrlichen Titel. **Der Titel schweigt
   öfter, als man denkt; die Antwort steht im Text** (dieselbe Lehre wie beim «Discovery-Set»).
 
+## 🕳️ Vier weitere Menülinks zeigten auf die dünne Schwester (2026-09-03, nachts)
+Nach der CH-Versand-Draftwelle (**844 Produkte ohne Schweizer Versandlinie**, davon 342 Klingen
+in diesem Lauf) die naheliegende Gegenfrage gestellt: Ist dadurch ein Menüpunkt leer geworden?
+Alle **118 Menü-Kollektionen auf AKTIVE Ware gemessen** (nie `productsCount`) — fünf unter 20,
+und vier davon sind derselbe Fehler wie bei «Nails & Nagelstudio» heute Morgen:
+
+| Menüpunkt | zeigte auf | statt auf |
+|---|---:|---:|
+| **Kostüme & Fasnacht** | `kostueme` **6 aktiv** | Regel neu gebaut → **1'548** |
+| Reisen & Outdoor (2×) | `reisen-sommer` 19 | `sub-reise` **806** |
+| Garten & Balkon | `garten-balkon` 18 | `outdoor-garten` **1'101** |
+| Grooming & Bartpflege | `herren-grooming` 19 | `sub-bart-rasur` 70 |
+
+- **Die Kostüm-Kollektion war die teuerste:** ihre Regel hing an `TAG = kostueme`, einem Tag, den
+  fast nichts trägt — drei Wochen vor Halloween führte der Menüpunkt auf sechs Produkte. Jetzt
+  ODER über `kostueme` · `kostuem-ch-front` (1'531, die am 03.09. getaggte Kernwort-Menge mit
+  Negativ-Wache) · `peruecke` · `kostuem-hut` · `trachten`. ⚠️ **`kostuem-accessoire` bewusst
+  NICHT** — Fortura vergibt ihn blanko, dahinter stehen Crossbody-Taschen und Halsketten
+  (Lehre 29.08.). Erste Karten gelesen: Perücken, Skeletthandschuhe, Waggishose, Zimmermädchenset.
+- **«Garten & Balkon» wurde umbenannt statt nur umgehängt:** `outdoor-garten` ist campinglastig.
+  **Die Beschriftung folgt der Ware, nicht umgekehrt** — sonst tauscht man einen dünnen Link
+  gegen einen falsch beschrifteten.
+- ⚠️ Eigener Messfehler am Rand: Mein Handle-Muster `[a-z0-9\-%_.~]+` zog aus den emoji-kodierten
+  Geschenk-Handles ein nacktes `%` und meldete es als «GIBT ES NICHT». Beide Links antworten live
+  mit 200. **Ein Prüfmuster, das die Kennung zerschneidet, erfindet einen Befund.**
+- **Regel, dritte Fassung an einem Tag: Ein Menülink ist erst geprüft, wenn seine Zielkollektion
+  auf AKTIVE Ware gemessen wurde** — `productsCount` zählt Entwürfe, und ein Handle, der plausibel
+  klingt, kann die kleinere von zwei Schwestern sein.
+
 ## 🎵 TikTok-Stand + Browser-Bedienung (2026-08-18)
 **API-Weg (in Arbeit):** App **«luxe»** (developers.tiktok.com/app/7648584035840903189) ist die richtige
 von 3 Apps — «LuxeStyle Poster» ist das KURZDRAMA-Portal (/portal/drama/, Unternehmensverifizierung),
