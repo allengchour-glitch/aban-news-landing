@@ -50,3 +50,6 @@ kasemesser-set-mit-holzbox-4-teilig-325697	2042225015930126337	0	-	KEINE CH-Opti
 schmiedemesser-zum-tranchieren-28-cm-218497	2045333053078814722	0	-	KEINE CH-Option → DRAFT	klinge
 messerscharfstein-set-mit-doppelseitigem-wetzs-971138	2034880276896317442	0	-	KEINE CH-Option → DRAFT	klinge
 aluminium-klappmesser-mit-5-ersatzklingen-022850	2032737354000543745	0	-	KEINE CH-Option → DRAFT	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=71	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=95	klinge
+messer-mit-schnellwechselklingen-610100	2602250201101610500	0	-	KEINE CH-Option → DRAFT	klinge
