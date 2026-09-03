@@ -104,3 +104,9 @@ klappmesser-aus-metall-635300	2512140903221635600	0	-	KEINE CH-Option → DRAFT	
 neu-gestaltet-ausklappmesser-edelstahl-625900	2512140858421626100	0	-	KEINE CH-Option → DRAFT	klinge
 tungsten-schneidmesser-619300	2512100738411619600	0	-	KEINE CH-Option → DRAFT	klinge
 klappmesser-aus-damaskus-stahl-618900	2607140909441619500	0	-	KEINE CH-Option → DRAFT	klinge
+24-teiliges-edelstahl-gedeck-mit-western-messe-637200	2601160921451637500	11	23.05	ok	klinge
+outdoor-messer-mit-g10-griff-622200	2512080720061622400	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-camping-messer-mit-carbon-griff-625300	2512080144211625600	0	-	KEINE CH-Option → DRAFT	klinge
+damaststahl-outdoor-taschenmesser-637100	2512070955321637300	0	-	KEINE CH-Option → DRAFT	klinge
+ultraharter-outdoor-messer-mit-scharfer-klinge-621200	2512070149121621500	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-camping-angelmesser-multifunktional-po-612900	2512070143181613400	0	-	KEINE CH-Option → DRAFT	klinge
