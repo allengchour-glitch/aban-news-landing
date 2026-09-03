@@ -4612,3 +4612,109 @@
 15448926552449	ersetzt-1	Ergonomisches Kissen für Kinder und Jugendliche
 15448926617985	ersetzt-1	Ölregulierender Kissenbezug
 15448926716289	ersetzt-1	Schwangerschaftskissen mit Taillenstütze
+15448926847361	ersetzt-1	Rebound Space Memory Foam Kissen
+15448926912897	ersetzt-1	Lordosenstützkissen aus Memory Foam
+15448926945665	ersetzt-1	Ergonomisches Nackenkissen aus Schaumstoff
+15448926978433	ersetzt-1	Wolkenförmiges Memory Foam Kissen
+15448927011201	ersetzt-1	Babykissen im nordischen Stil für die Taille
+15448927076737	ersetzt-1	Memory Foam Sitz- und Rückenkissen
+15448927142273	ersetzt-1	Ananas Brot Kissen – hoch-elastisch
+15448927175041	ersetzt-1	Nackenstützkissen mit Massageperlen
+15448927240577	ersetzt-1	Multifunktionales Ganzkörper-Knetkissen
+15448927273345	ersetzt-1	Nackenkissen für Wimpern- und Brauenbehandlungen
+15448927338881	ersetzt-1	Baby Schräglagerungskissen
+15448927404417	ersetzt-1	Keilförmiges Rückenkissen mit Kopfstütze
+15448927502721	ersetzt-1	Multifunktionales Memory Foam Kissen
+15448927535489	ersetzt-1	Ergonomische Baby-Hüftsitztrage
+15448927568257	ersetzt-1	Langes, waschbares Seitenschläferkissen
+15448927666561	ersetzt-1	Wolkenkissen im französischen Stil
+15448927699329	ersetzt-1	Zierkissen mit Blumenmuster im französischen Stil
+15448927797633	ersetzt-1	Kühlendes Memory-Schaum Kissen, Schmetterlingsform
+15448927863169	ersetzt-1	Lesekissen für Einzelbett
+15448927928705	ersetzt-1	Vintage Kissenhülle mit Stickerei
+15448927961473	ersetzt-1	Babykissen mit Kontur aus Buchweizenschalen
+15448928027009	ersetzt-1	Tencel Kissenbezug, einfarbig
+15448928059777	ersetzt-1	Dopamin Fragezeichen Nackenkissen
+15448928125313	ersetzt-1	Seidenkissenbezug 22 Momme, beidseitig
+15448928190849	ersetzt-1	Sofa Kissen Abstrakt Geometrisch
+15448928256385	ersetzt-1	Nackenkissen und Rückenlehne mit Memory-Schaum
+15448928289153	ersetzt-1	Halbrundes Memory Foam Kissen
+15448928321921	ersetzt-1	Mondförmiges Baumwollkissen für Kinder (3–6 Jahre)
+15448928354689	ersetzt-1	Auto Nackenkissen aus Nappaleder
+15448928452993	ersetzt-1	Büro-Nickerchen Kissen für den Schreibtisch
+15448928485761	ersetzt-1	Nordischer Kissenbezug mit Quasten
+15448928518529	ersetzt-1	Kissenhülle Modernes Design
+15448928584065	ersetzt-1	Memory Foam Rückenkissen für Bürostühle
+15448928616833	ersetzt-1	Konturiertes Memory-Schaum Kissen
+15448928682369	ersetzt-1	Sitzkissen für langen Bürostuhl-Komfort
+15448928747905	ersetzt-1	Beheizbares Nacken- & Lendenkissen mit Massage
+15448928780673	ersetzt-1	Hotel Daunenkissen Gänse- und Entenfedern
+15448928813441	ersetzt-1	Bambusfaser Memory Foam Kissen
+15448928878977	ersetzt-1	Memory Foam Nackenkissen
+15448928911745	ersetzt-1	Nackenkissen mit Buchweizenfüllung und Baumwollbezug
+15448928977281	ersetzt-1	Nackenstützkissen aus Bambusfaser & Memory Foam
+15448929042817	ersetzt-1	Samt Kissenbezug mit Kranich-Stickerei
+15448929075585	ersetzt-1	Boka Variations Vintage Zierkissen
+15448929141121	ersetzt-1	Nackenkissen zylindrisch, ergonomisch
+15448929206657	ersetzt-1	Reisekissen Flugzeug faltbar Memory Foam
+15448929239425	ersetzt-1	Jacquard Baumwoll-Kissenbezüge (2er-Set)
+15448929403265	ersetzt-1	Mini Haarglättungsbürste kabellos
+15448929436033	ersetzt-1	Kabelloser USB-Glätt- und Lockenkamm
+15448929468801	ersetzt-1	Glätteisen mit Kaltluftfunktion
+15448929567105	ersetzt-1	Kabellose Ionen-Glättbürste mit LCD-Anzeige
+15448929698177	ersetzt-1	Bounce Curl Styling-Kamm für Locken
+15448929796481	ersetzt-1	2-in-1 Warmluftbürste & Lockenstab
+15448929829249	ersetzt-1	Kabelloser Glätt- und Lockenstab mit Anionen
+15448929862017	ersetzt-1	Ionen-Glättbürste mit LCD-Anzeige
+15448929960321	ersetzt-1	Haarglätter mit LCD-Anzeige & Temperaturkontrolle
+15448929993089	ersetzt-1	Multifunktionaler Warmluft-Styler 2-in-1
+15448930058625	ersetzt-1	Kabelloser Mini-Haarglätter für Pony & Kurzhaar
+15448930091393	ersetzt-1	Mini Dampf-Haarglätter für Locken & Glätten
+15448930124161	ersetzt-1	Kabelloser Ionen-Glättbürste
+15448930189697	ersetzt-1	Kabelloser Anionen-Haarglätter
+15448930255233	ersetzt-1	Kabelloser Anionen-Glättkamm mit Akku
+15448930353537	ersetzt-1	Kabelloser Haarglätter mit USB-Ladefunktion
+15448930386305	ersetzt-1	Kabelloser Anionen-Glättkamm
+15448930451841	ersetzt-1	Anion-Haarstyler für Glätte und Locken
+15448930517377	ersetzt-1	Hair Stick für perfekt gestylte Haare
+15448930550145	ersetzt-1	Temporäres Haarfarbspray 30ml
+15448930615681	ersetzt-1	Kabelloser Glättungs-Kamm mit Kaltluft-Funktion
+15448930681217	ersetzt-1	Kabelloses 2-in-1 Glätteisen & Lockenstab mit LCD
+15448930746753	ersetzt-1	Mobiles 2-in-1 Glätteisen & Lockenstab
+15448930812289	ersetzt-1	Kabelloser Lockenstab mit USB-Ladefunktion
+15448930877825	ersetzt-1	Kabelloser 2-in-1 Glätt- und Stylingkamm
+15448930976129	ersetzt-1	2-in-1 Haartrockner & Glätteisen
+15448931041665	ersetzt-1	Profi-Haarglätter mit Touchscreen
+15448931074433	ersetzt-1	Kabelloser Glättkamm mit Anionen-Haarpflege
+15448931139969	ersetzt-1	Golden Rice Dampfglättbürste für hydratisiertes Haar
+15448931271041	ersetzt-1	Kabellose 2-in-1 Glättbürste mit USB-Ladefunktion
+15448931303809	ersetzt-1	2-in-1 Haarglätter mit Ionen-Technologie
+15448931369345	ersetzt-1	Kabelloses 2-in-1 Glätteisen & Lockenstab
+15448931434881	ersetzt-1	Anion-Roller Comb für glattes oder lockiges Haar
+15448931467649	ersetzt-1	Elektrische rotierende Warmluftbürste
+15448931533185	ersetzt-1	2-in-1 Warmluft-Haarglätter für nasses & trockenes Haar
+15448931598721	ersetzt-1	3-in-1 Warmluftbürste für vielseitiges Styling
+15448931697025	ersetzt-1	Kabelloser 2-in-1 Ionen-Haarstyler
+15448931729793	ersetzt-1	Glätteisen mit Lockenfunktion und Kaltluft
+15448931795329	ersetzt-1	Kabelloses, portables Glätteisen
+15448931828097	ersetzt-1	Kabelloser Glättkamm mit Schnellheizfunktion
+15448931893633	ersetzt-1	Glättbürste & Lockenstab 2-in-1
+15448931926401	ersetzt-1	Kabelloser 2-in-1 Glätt- und Lockenstab
+15448932057473	ersetzt-1	Satin-Schlafhaube für alle Haartypen
+15448932188545	ersetzt-1	Profi Haarschneider & Barttrimmer für Herren
+15448932221313	ersetzt-1	Lockenstab 38mm mit Ionen-Technologie
+15448932286849	ersetzt-1	Elektrische Haarglättungsbürste für Haar & Bart
+15448932319617	ersetzt-1	Profi Dampf-Glätteisen mit Keramik & Turmalin
+15448932385153	ersetzt-1	Automatischer Lockenstab mit Verbrühschutz
+15448932516225	ersetzt-1	High-Crown Fluffy Dual-Use Heating Red-Light Hair Curling Wa
+15448932548993	ersetzt-1	Kabelloser 2-in-1 Haarglätter und Lockenstab mit Ionen
+15448932614529	ersetzt-1	Kabelloser Negative-Ionen Haarglätter mit Sprühfunktion
+15448932647297	ersetzt-1	Handlicher 10mm Lockenstab für kleine Wellen
+15448932745601	ersetzt-1	High-Speed Haartrockner mit Ionen-Technologie
+15448932778369	ersetzt-1	Volumen- und Pony-Clip mit Kaltluft-Lockenstab
+15448932843905	ersetzt-1	Glätteisen & Lockenstab für Long Bob
+15448932942209	ersetzt-1	Thermo-Rundbürste 1.5 Zoll mit LCD-Display
+15448933007745	ersetzt-1	Kabelloser Automatischer Lockenstab mit USB
+15448933237121	ersetzt-1	Kabelloser Haarglätter für Volumen & Glanz
+15448933269889	ersetzt-1	Kabelloser, automatischer Lockenstab
+15448933335425	ersetzt-1	2-in-1 LCD Lockenstab mit negativen Ionen

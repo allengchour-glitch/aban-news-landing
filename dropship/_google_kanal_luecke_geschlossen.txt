@@ -111,3 +111,8 @@ gid://shopify/Product/15509392621953	publiziert	Kissen mit Schwertblatt-Nagelblu
 # Klingenregel keine Klinge; 268 Masken-Treffer, fast alle Beauty). Nach einer
 # Regel-Aenderung ist das alte Erledigt-Zeichen wertlos. Die sechs stehen jetzt
 # wieder im Bericht und warten auf eine Betreiber-Entscheidung.
+gid://shopify/Product/15510925705601	publiziert	Abtropfgestell mit Geschirr- und Messerhalter
+gid://shopify/Product/15516235170177	publiziert	Bambus-Käsebrett-Set mit Messern
+gid://shopify/Product/15517578396033	publiziert	Multifunktionaler Messerhalter mit Wellenmuster
+gid://shopify/Product/15518601511297	publiziert	Diamant-Messerschärfer mit festem Winkel
+gid://shopify/Product/15520411255169	publiziert	Laniska Beinpflege-Pflaster (4 Stk.)
