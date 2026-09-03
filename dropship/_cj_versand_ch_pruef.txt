@@ -209,3 +209,8 @@ damast-messer-set-mit-holzgriff-011968	-	-	-	unklar pid 0 	klinge
 mini-faltmesser-fur-outdoor-620864	-	-	-	unklar pid 0 	klinge
 mini-damascus-messer-111872	-	-	-	unklar pid 0 	klinge
 damastmesser-mit-sandelholz-griff-733056	-	-	-	unklar pid 0 	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=2875	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=2775	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+wlan-video-turklingel-8db6b1	-	-	-	unklar keine CJ-SKU	klinge
