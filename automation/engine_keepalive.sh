@@ -353,6 +353,7 @@ for P in "$REPO_AUTO"/*.py; do
   cmp -s "$P" "$Z" 2>/dev/null || cp "$P" "$Z" 2>/dev/null
 done
 
+python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim

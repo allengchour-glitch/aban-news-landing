@@ -6333,6 +6333,23 @@ Erst die ausgelieferten Seiten gescannt (Startseite, zwei Kategorien, Produkt, W
   jeder als Regel nachgezogen, dann erst geschrieben. Werkzeug `automation/kollektionstexte_du_form.py`
   (Ergebnis in Datei, WRITE=1 schreibt nur, wenn live == gelesen). «Für Sie» als Kollektionsname bleibt.
 
+## 🚨 «Bestellungen sofort und reibungslos» — Bestell-Ampel in jeder Keepalive-Meldung (2026-09-03)
+Betreiber 03.09.: «die bestellungen von kunden müssen sofort erledigt werden und alles reibungslos».
+Bei #1016 stand der Fehlschlag des Bestell-Automaten («keine Versandoption in die CH») nur in dessen
+Log; gesehen wurde er erst Stunden später von Hand. **Ein Automat, der still scheitert, ist für die
+Kundin dasselbe wie keiner.** Jetzt: `automation/bestell_ampel.py` druckt in JEDER stündlichen
+`engine_keepalive`-Ausgabe eine Zeile «BESTELLUNGEN: N offen · #nr Alter CHF → LX-Stand» — bezahlte,
+unerfüllte Bestellungen mit Alter und CJ-Auftragsstand aus `_cj_order_watch_state.json`; ⚠️ wenn
+nach 2 h kein CJ-Auftrag existiert. Bei Fehler «unklar», nie «0 offen». Die Zeile gehört in den
+Tick-Bericht an den Betreiber, sobald sie ein ⚠️ trägt.
+- **#1016 heute erledigt, was von hier geht:** CJ per Mail angefragt (10:05 UTC), Kunde um 12:50 UTC
+  per Gmail informiert (Option 1 Rückerstattung / Option 2 Umweg; automatische Rückerstattung bis
+  08.09. ohne Antwort), Shopify-Notiz gesetzt, Erinnerung 04.09. 09:37 UTC prüft CJ- UND Kundenantwort.
+  Die Rückerstattung selbst ist ein Betreiber-Klick in Shopify.
+- ⚠️ **Der Gmail-Konnektor sendet vom privaten Gmail des Betreibers**, nicht von info@luxestyle.ch —
+  ein «Senden als»-Alias in Gmail wäre die Dauerlösung (Betreiber-Klick, COWORK-AUFTRAEGE).
+  Eingehende Mails an info@luxestyle.ch landen bereits in diesem Postfach (Judge.me, Kooperationen).
+
 ## 🔪 Bestellung #1016: CJ liefert Klingen NICHT in die Schweiz (2026-09-03)
 Erste Bestellung seit dem 22.08. (Fuda Taschenmesser Damast, CHF 47.90, Pratteln). Der Bestell-Automat meldete
 «keine Versandoption in die CH». Gemessen: `freightCalculate` CN→CH für das Messer **leer**, CN→DE/AT/FR je 1–3

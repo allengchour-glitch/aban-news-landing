@@ -428,3 +428,7 @@ Produktseite und die Weiterleitung schaltet sich von selbst ab.
   Content-Posting-API (Punkt 16).
 - ✅ 16 Weiterleitungen von rankenden 404-Seiten auf kaufbare Ware (28.08.).
 - ✅ POD-Produkte: Rückgabe-Ausnahme, falsche Flagge, Doppelblock, USA-Lieferzusage (28.08.).
+
+
+## Gmail «Senden als» info@luxestyle.ch (03.09.2026)
+Kundenmails aus dem Konnektor gehen vom privaten Gmail raus. In Gmail → Einstellungen → Konten → «Senden als» die Adresse info@luxestyle.ch hinzufügen (SMTP der Domain-Mailbox) und als Standard setzen. Danach tragen Kundenmails die Shop-Adresse.

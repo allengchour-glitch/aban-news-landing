@@ -1,4 +1,4 @@
-# Kundenmail #1016 — nur senden, wenn CJ bis 04.09. keine Versandlinie nennt (Betreiber 03.09.: «informiere den kunde morgen sonst»)
+# Kundenmail #1016 — GESENDET 03.09.2026 12:50 UTC (Gmail-Konnektor, Thread 1a0675160aae6bfe) nach Betreiber «sofort erledigen». Nicht erneut senden.
 
 Empfänger: Kunden-E-Mail aus Shopify-Bestellung #1016 (liegt in /tmp/kunde_1016.txt, NICHT im Repo).
 Absender: Gmail des Betreibers (Gmail-Konnektor); Betreff «Deine Bestellung #1016 bei LuxeStyle – Lieferung».

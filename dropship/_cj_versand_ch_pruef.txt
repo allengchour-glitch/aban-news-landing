@@ -76,3 +76,6 @@ messer-mit-holzmaserung-455362	2006999955958312962	0	-	KEINE CH-Option → DRAFT
 outdoor-survival-klappmesser-633000	2601010841101633200	0	-	KEINE CH-Option → DRAFT	klinge
 extrem-scharfes-gerades-messer-623900	2512310627131624100	0	-	KEINE CH-Option → DRAFT	klinge
 alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=73	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=111	klinge
+smarte-wlan-video-turklingel-mit-gegensprechan-668865	2041720035173052417	0	-	KEINE CH-Option → DRAFT	klinge
+wasserdichte-kabellose-turklingel-190786	2036641959612825602	0	-	KEINE CH-Option → DRAFT	klinge
