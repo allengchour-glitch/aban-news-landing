@@ -683,3 +683,7 @@ damaststahl-kuchenmesser-20c9e1	-	-	-	unklar keine CJ-SKU	klinge
 yangjiang-haushaltsmesser-d505c3	-	-	-	unklar keine CJ-SKU	klinge
 gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	-	-	-	unklar keine CJ-SKU	klinge
 damast-kochmesser-im-western-stil-66144b	-	-	-	unklar keine CJ-SKU	klinge
+kochmesser-aus-rostfreiem-stahl-311b9c	-	-	-	unklar keine CJ-SKU	klinge
+stahlmesser-mit-ebenholzgriff-e10f58	-	-	-	unklar keine CJ-SKU	klinge
+fischfiletiermesser-fur-kuche-haushalt-8a9c4a	-	-	-	unklar keine CJ-SKU	klinge
+kuchenmesser-aus-edelstahl-7b40fa	-	-	-	unklar keine CJ-SKU	klinge
