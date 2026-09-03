@@ -9430,3 +9430,7 @@ gid://shopify/Product/15451890286977	CHF 8.70	1 Varianten	Giraffe & Waschbär Ba
 gid://shopify/Product/15451891368321	CHF 17.38	1 Varianten	Quietschendes Gummi-Monster für Hunde
 gid://shopify/Product/15451891827073	CHF 18.19	1 Varianten	Hufeisen-Kauspielzeug aus Naturkautschuk
 gid://shopify/Product/15451892515201	CHF 16.29	1 Varianten	Robustes Naturkautschuk-Kauspielzeug für Hunde
+gid://shopify/Product/15451893039489	CHF 10.27	1 Varianten	Interaktives Plüsch-Hundespielzeug, Orange
+gid://shopify/Product/15451893432705	CHF 20.51	1 Varianten	4er-Set Latex-Kauspielzeug mit Sound für Hunde
+gid://shopify/Product/15451893858689	CHF 10.75	1 Varianten	Smart Ball: Interaktives Kauball-Spielzeug für Hau
+gid://shopify/Product/15451894382977	CHF 13.37	1 Varianten	Robuster Kauartikel für Hunde
