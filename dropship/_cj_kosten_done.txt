@@ -9489,3 +9489,5 @@ gid://shopify/Product/15451920204161	CHF 62.91	1 Varianten	Akustische 1/4 Violin
 gid://shopify/Product/15451920269697	CHF 64.83	1 Varianten	Akustische 3/4 Geige im Komplett-Set
 gid://shopify/Product/15451920368001	CHF 67.21	1 Varianten	Pink 41-Zoll Dreadnought Akustikgitarre Cutaway
 gid://shopify/Product/15451920466305	CHF 67.71	1 Varianten	Dreadnought Akustikgitarre Blau mit Zubehör
+gid://shopify/Product/15451920826753	CHF 62.91	1 Varianten	Blau 38-Zoll Akustikgitarre Set
+gid://shopify/Product/15451920925057	CHF 62.91	1 Varianten	Akustisches 1/4 Geigen-Set

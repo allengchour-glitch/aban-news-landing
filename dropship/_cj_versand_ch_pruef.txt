@@ -218,3 +218,6 @@ kuchenmesser-aufbewahrung-8b4831	-	-	-	unklar keine CJ-SKU	klinge
 ersatzklinge-fur-elektrische-schaufel-628900	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
 yoland-schwertpflegeol-rostschutz-fur-klingen-623400	2607230945541625700	2	7.10	ok	klinge
 multifunktionales-karabiner-messer-mit-led-600400	2607030646441601000	6	7.49	ok	klinge
+outdoor-messer-mit-ahorn-harz-griff-610200	2607081107091610800	0	-	KEINE CH-Option → DRAFT	klinge
+full-moon-leucht-schwert-cyberpunk-stil-637300	2605110239351638200	6	13.85	ok	klinge
+vintage-kochmesser-set-605300	2608040802471606000	1	12.74	ok	klinge
