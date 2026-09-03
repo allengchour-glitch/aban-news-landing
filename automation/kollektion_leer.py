@@ -35,7 +35,7 @@ bestehenden Text-/Ad-/Google-Links sind endgültig verloren.
 ⚠️ NIE DRAFTs veröffentlichen, um eine Kollektion zu füllen: `keine-lieferanten-ref` heisst,
 die Ware ist nicht bestellbar. Ein leeres Regal ist ärgerlich, eine unlieferbare Bestellung teuer.
 """
-import json, os, subprocess, sys
+import json, os, subprocess, sys, time
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from shop_kanal import im_onlineshop_liste
@@ -48,7 +48,7 @@ MINDEST = int(os.environ.get("MINDEST", "3"))   # ab wie vielen aktiven Produkte
 def gql(q, v=None):
     with open("/tmp/_kl.json", "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
-    for _ in range(4):
+    for _ in range(8):
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
@@ -58,12 +58,32 @@ def gql(q, v=None):
             d = json.loads(r.stdout)
             if d.get("data"):
                 return d["data"]
+            # ⚠️ Eine DROSSELUNG ist kein Abbruchgrund, sie sagt nur, wie lange zu warten
+            # ist (fuenfte Fassung derselben Lehre nach Shopify-Throttled, CJ-QPS 1600200,
+            # CJ-Eimer und dem Kosten-Backfill). Ohne dieses Warten meldete der Waechter
+            # taeglich «Kollektionen nicht ladbar» — ein Fehlalarm, der wie ein kaputter
+            # Shop aussieht, waehrend nur der Punkte-Eimer der vier CJ-Runner leer war.
+            errs = d.get("errors") or []
+            if any("Throttled" in str(e.get("message", "")) for e in errs):
+                ts = ((d.get("extensions") or {}).get("cost") or {}).get("throttleStatus", {})
+                fehlt = (((d.get("extensions") or {}).get("cost") or {}).get("requestedQueryCost", 200)
+                         - ts.get("currentlyAvailable", 0))
+                time.sleep(min(30, max(1.0, fehlt / max(1, ts.get("restoreRate", 100))) + 0.5))
+                continue
+            if errs:
+                print("GQL-Fehler:", str(errs[:1])[:160], file=sys.stderr)
+                return {}
         except Exception:
             pass
+        time.sleep(2)
     return {}
 
 
-Q_COLLS = """query($c:String){ collections(first:250, after:$c){
+# ⚠️ `first:` ist ein PREISSCHILD, keine Obergrenze (Lehre 27.08.): Shopify drosselt gegen
+# die ANGEFRAGTE Menge. Mit first:250 plus verschachtelten Publikationen kostet eine Seite
+# mehr, als der von vier CJ-Runnern geteilte Eimer je bereithaelt — der Waechter meldete
+# deshalb taeglich «Kollektionen nicht ladbar». 50 passt in den Eimer.
+Q_COLLS = """query($c:String){ collections(first:50, after:$c){
   pageInfo{hasNextPage endCursor}
   nodes{ id handle title productsCount{count}
     resourcePublicationsV2(first:15){nodes{publication{name} isPublished}} } } }"""

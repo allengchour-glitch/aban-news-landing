@@ -179,6 +179,13 @@ def main():
                 except Exception:
                     pass
         seiten += 1
+        # ⚠️ Ruecksicht auf die Waechter (gemessen 03.09.): Dieser Vollscan zieht den
+        # Shopify-Eimer auf unter 10 herunter — waehrenddessen scheiterte `kollektion_leer`
+        # an der Drosselung und meldete «Kollektionen nicht ladbar», also einen Fehlalarm,
+        # den ICH erzeugt habe. Eine Selbstkontrolle, die die Kontrollierten aushungert,
+        # misst am Ende sich selbst. Eine halbe Sekunde je Seite kostet den Lauf ~4 Minuten
+        # und laesst den Eimer nachfuellen.
+        time.sleep(0.5)
         if seiten % 25 == 0:
             print(f'  … {n} Produkte', flush=True)
         if CAP and n >= CAP:

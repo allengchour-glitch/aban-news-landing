@@ -6890,3 +6890,63 @@ Produkt-Ledger gemerkt (sonst käme sie später als Einzelpost wieder).
 - ⚠️ Offen und nur notiert: Dieses Produkt trug im Text weiterhin den Block
   «🇨🇭 CH / 🇪🇺 EU: 10–18 Tage · 🇺🇸 USA: 12–22 Tage» — die Klasse, die am 01./02.09. auf 0
   gemessen wurde. Die Klasse gehört mit tag-tolerantem Muster AM OBJEKT neu gezählt.
+
+## 🧭 Selbstkontrolle gebaut — und dabei drei eigene Fallen gefunden (2026-09-03, nachts)
+Betreiber: «alles selber entscheiden … bis es alles sauber läuft mit selbstkontrolle und immer check».
+Der wunde Punkt ist belegt: An EINEM Tag stand hier dreimal «Klasse auf 0», dreimal falsch, jedes
+Mal weil mit demselben Werkzeug gemessen wurde, mit dem repariert wurde.
+`automation/klassen_kontrolle.py` (MELDET NUR) liest deshalb den vollen Katalog LIVE und wendet
+**tag-tolerante** Muster auf den rohen `descriptionHtml` an — 10 Klassen, Muster wo möglich aus den
+Fachwerkzeugen. 21 Testfälle in beide Richtungen, 0 Abweichungen. Ein Teilscan meldet sich als
+TEILSCAN, nie als «0 übrig».
+- ⚠️ **Der erste Entwurf lud die Fachwerkzeuge per `importlib` — und hat `wearable_messversprechen`
+  dabei AUSGEFÜHRT** («Quelle live gebaut … FERTIG»). Diese Dateien sind Skripte, nicht Bibliotheken;
+  mehrere haben keine `__main__`-Wache. **Ein Melder, der beim Laden einen fremden SCHREIBER startet,
+  ist eine gestellte Falle.** Muster kommen jetzt per `ast` aus der Zuweisung, ohne fremden Code zu
+  starten; `wearable_messversprechen` bekam die fehlende Wache. (`wahlversprechen.py` ist ein reines
+  Top-Level-Skript — dort wäre der Umbau riskanter als der Nutzen; es wird schlicht nicht importiert.)
+- ⚠️ **Zwei Massen-Schreiber liefen gleichzeitig auf `descriptionHtml`.** Jeder hatte seinen EIGENEN
+  Lockfile — das verhindert nur den eigenen Doppelstart, nicht zwei VERSCHIEDENE Werkzeuge auf einem
+  Feld; `trust_baustein` hält seinen Seitentext bis zu 15 s und hätte die eben gemachte Reparatur
+  zurückgeschrieben (Zombie-Klasse 15.08.). Jetzt **EIN Schloss** `/tmp/lock_produkttext.lock` für
+  versandaussagen · trust_baustein · wahlversprechen · wearable_messversprechen. Dieselbe Lehre wie
+  bei `post_guard`: **EIN Lock, EIN Ledger — nie ein eigener Lockfile je Werkzeug.**
+- ⚠️ **Und die peinlichste: Mein Vollscan hat die Wächter ausgehungert.** Während er lief, stand der
+  Shopify-Eimer bei unter 10, und `kollektion_leer` meldete «Kollektionen nicht ladbar» — ein
+  Fehlalarm, den ICH erzeugt hatte. **Eine Selbstkontrolle, die die Kontrollierten aushungert, misst
+  am Ende sich selbst.** Der Scan pausiert jetzt 0,5 s je Seite.
+- `kollektion_leer` selbst hatte zwei echte Mängel, beide alte Bekannte: kein Warten bei Drosselung
+  (fünfte Fassung von «eine Warteanweisung ist kein Abbruchgrund») und `first:250` mit
+  verschachtelten Publikationen — ein Preisschild, das der geteilte Eimer nie bezahlt (Lehre 27.08.).
+  Jetzt 50 je Seite, 8 Versuche, Wartezeit aus `throttleStatus`.
+
+## 🚢 983 USA-Lieferzusagen — der Beweis, dass die Phrasensuche das falsche Instrument war (2026-09-03)
+Beim Prüfen EINES Produkts (Kleeblatt-Kette fürs Karussell) stand da «🇺🇸 USA: 12–22 Tage». Am Objekt
+mit tag-tolerantem Muster gezählt: **983 von 1'010 aktiven Treffern** — darunter Slim Wallet,
+Herrenuhr, Sonnenbrille, also die handkuratierte Ur-Ware MIT Suchverkehr. Der Shop liefert nur in
+die Schweiz; die Zusage ist unerfüllbar (Lehre 14.08.).
+**Warum 01.09. «alle Klassen auf 0» und 02.09. «513 geschrieben, 0 übrig» beide stimmten und beide
+falsch waren:** Die Kandidaten kamen aus einer PHRASENSUCHE, und im Text steht
+`USA: <strong>12–22 Tage</strong>` — das `<strong>` zerschneidet die Phrase im Shopify-Index, sie
+ist dort nie zu finden. Repariert mit den Regeln des vorhandenen Werkzeugs
+(`QUELLE=live IGNORIERE_LEDGER=1`, kein zweiter Regelsatz): **983 geschrieben, 0 offen, 0 inzwischen
+anderweitig repariert**, REST-Kontrolle des Werkzeugs 0. 482 davon sind POD-Ware.
+- Die unabhängige Zählung des Reparaturlaufs traf meine Vorab-Messung **auf das Produkt genau
+  (983 = 983)** — zwei getrennte Wege, dieselbe Zahl. Das ist die Gegenprobe, die vorher fehlte.
+
+## 📱 Der externe Instagram-Poster ist eingegrenzt — er ist nicht unserer (2026-09-03)
+Seit dem 18.08. räumt `ig_dup_wache` täglich Duplikate weg mit der Notiz «externer Poster war wieder
+aktiv», Quelle unbekannt. Jetzt eingegrenzt, ohne Zugriff auf ihn:
+| Signal | Befund |
+|---|---|
+| Meta-App aller Beiträge | «LuxeStyle Social» — dieselbe App, deren Token wir nutzen |
+| Taktung A | :28 alle 6 h — **unser** `social_autopilot`, seit dem Stopp am 30.08. verstummt ✓ |
+| Taktung B | **täglich 09:00 und 17:00 UTC**, läuft bis heute weiter |
+| Captions der B-Reihe | Schweizerdeutsch («Hesch das scho gseh?»), stehen in **keiner** unserer Queues |
+| Routinen dieses Kontos | drei, keine postet auf Instagram |
+Es ist also ein Planer AUSSERHALB dieses Containers mit EIGENEM Inhalt — sehr wahrscheinlich die
+lokale Automatisierung des Betreibers (Make.com/n8n, 02.06. erwähnt). `dropship/_SOCIAL_STOPP`
+erreicht ihn nicht; nur der Betreiber kann ihn abstellen.
+- ⚠️ **Eine Verdachtsspur war meine eigene:** Ein Beitrag 19 Minuten vor dem Karussell sah fremd aus —
+  er war mein eigener Einzelpost, die Post-ID stimmte mit dem Queue-Eintrag überein. **Vor einem
+  «das war jemand anderes» gehört die eigene Quittung geprüft.**

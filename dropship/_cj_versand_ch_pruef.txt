@@ -1007,3 +1007,4 @@ keramikbecher-im-4er-set-396289	2056920294581059585	6	53.99	ok	landeseite
 keramik-schmortopf-fur-slow-cooking-605500	2605120703401606200	6	60.64	ok	landeseite
 keramik-gewurzbehalter-mit-bambusstander-4-stk-982402	2051151024504811522	6	53.99	ok	landeseite
 scooter-baby-can-sit-608800	2510260948121609000	0	-	KEINE CH-Option → DRAFT	landeseite
+wolken-kratzbaum-mit-u-formiger-liegeflache-628700	2605101017451629200	6	57.41	ok	landeseite
