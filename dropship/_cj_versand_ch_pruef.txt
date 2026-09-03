@@ -258,3 +258,9 @@ aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unkla
 diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
 3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
 rollender-messerscharfer-mit-diamantbeschichtu-627600	2409020341011627900	6	13.37	ok	klinge
+knochenbeil-mit-integriertem-kupfergriff-511808	1752148015512563712	1	27.87	ok	klinge
+geschmiedetes-edelstahl-hackmesser-mit-hammers-335488	1748785014109638656	1	16.52	ok	klinge
+kuchenmesser-set-aus-keramik-und-edelstahl-321152	1748196853142790144	1	18.07	ok	klinge
+klappmesser-aus-d2-stahl-565568	1746827061341200384	0	-	KEINE CH-Option → DRAFT	klinge
+a5-outdoor-messer-mit-multifunktionswerkzeug-624320	1745796446143647744	11	6.57	ok	klinge
+robustes-tragbares-kochmesser-mit-scheide-395264	1742086159821447168	1	12.19	ok	klinge
