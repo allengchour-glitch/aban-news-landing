@@ -9,3 +9,11 @@ elektrische-kaffeemuhle-mit-6-klingen-354561	2046561437818183681	0	-	KEINE CH-Op
 kasemesser-set-mit-holzbox-4-teilig-325697	2042225015930126337	-	-	unklar 200 Success rest=53	klinge
 kochmesser-damaststahl-olivenholz-609400	2604220107431609900	1	14.74	ok	klinge
 4-in-1-messerscharfer-fur-kuche-schere-141697	2046149631261732866	-	-	unklar 200 Success rest=57	klinge
+schmiedemesser-zum-tranchieren-28-cm-218497	2045333053078814722	-	-	unklar 200 Success rest=37	klinge
+multifunktionales-outdoor-faltmesser-601600	2603280832501602000	0	-	KEINE CH-Option → DRAFT	klinge
+messerscharfstein-set-mit-doppelseitigem-wetzs-971138	2034880276896317442	-	-	unklar 200 Success rest=41	klinge
+aluminium-klappmesser-mit-5-ersatzklingen-022850	2032737354000543745	-	-	unklar 200 Success rest=21	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=45	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=25	klinge
+messer-mit-schnellwechselklingen-610100	2602250201101610500	-	-	unklar 200 Success rest=49	klinge
+outdoor-taschenmesser-mit-holzgriff-632400	2601230136221632800	-	-	unklar 200 Success rest=29	klinge
