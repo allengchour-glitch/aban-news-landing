@@ -927,3 +927,12 @@ auto-sitzbezuge-aus-pu-leder-618400	2507170820061619900	0	-	KEINE CH-Option → 
 runder-edelstahl-regenduschkopf-20-cm-509825	1990429729386442753	0	-	KEINE CH-Option → DRAFT	landeseite
 deformierbare-led-garagenleuchte-60w-7122ff	-	-	-	unklar keine CJ-SKU	landeseite
 olbindetucher-25-stk-070338	1990495408290979842	0	-	KEINE CH-Option → DRAFT	landeseite
+badezimmerschrank-sonoma-eiche-58x33x60-cm-340417	1990719689746599937	0	-	KEINE CH-Option → DRAFT	landeseite
+gusseisen-backform-rechteckig-emailliert-637800	2603090541521638200	6	74.48	ok	landeseite
+vielseitiger-plusch-sofabezug-in-unifarben-611200	2606020947301612200	11	16.99	ok	landeseite
+grosses-einzelbecken-fur-die-kuche-624800	2606240249261625400	0	-	KEINE CH-Option → DRAFT	landeseite
+all-in-one-katzenbaum-und-katzenbett-628000	2605101034181628600	0	-	KEINE CH-Option → DRAFT	landeseite
+sofa-kissenhulle-mit-blumenmuster-639300	2606130903201639900	11	10.29	ok	landeseite
+sofa-kissenbezug-im-schottischen-stil-601600	2602111057101601900	11	8.08	ok	landeseite
+schwangerschaftskissen-mit-taillenstutze-609300	2606150625581600300	11	26.53	ok	landeseite
+sisal-katzenbaum-mit-mehreren-ebenen-630000	2605041047351630800	5	292.45	ok	landeseite
