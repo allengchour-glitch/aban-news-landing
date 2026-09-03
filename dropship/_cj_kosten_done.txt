@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
->>>>>>> origin/claude/luxestyle-status-tztnn1
 gid://shopify/Product/15396249502081	keine-cj-referenz
 gid://shopify/Product/15396249960833	keine-cj-referenz
 gid://shopify/Product/15396250321281	keine-cj-referenz

@@ -6519,3 +6519,39 @@ sind **2'412**; der Rest trägt eine zweite Aussage und bleibt für eine Hand.
   Klammer**: damit sind es **3**. Zehnte Fassung von «ein breites Muster ist ein Netz, kein
   Urteil» — an einem Tag, an dem ich schon zwei fremde Netze entlarvt hatte.
 - Alle drei von Hand repariert (Bruchstück raus, Sätze ganz), Gegenprobe: Klammern paarig.
+
+## 💸 Preiskontrolle über alle 52'313 Produkte — das Gewicht entscheidet, nicht der Preis (2026-09-03)
+Betreiber: «kontrolliere preise». Gerechnet wurde gegen die KORRIGIERTE Frachtformel — die noch
+nicht umgeschriebenen Kostenzahlen wurden im Lauf on-the-fly zurückgerechnet, sonst hätten die
+6'619 offenen boden15-Fälle die Statistik verdorben (28.08.-Klasse). Bewertbar sind 19'343
+Produkte (die übrigen 32'970 tragen noch keine Kostenzahl).
+
+| Szenario | Verlustfälle |
+|---|---:|
+| Einzelbestellung MIT Versanderlös CHF 7 | **811** |
+| Gratis-Versand ab CHF 49 | 3'085 |
+| zusätzlich «2+ Artikel −10 %» | 3'822 |
+
+**781 der 811 sind SCHWERER als 712 g.** Damit ist die Aussage vom 22.08. über den ganzen
+Katalog belegt: nicht der Preis entscheidet über Gewinn, sondern das GEWICHT. Median-Preis
+CHF 19.90, häufigste Stufe CHF 16 — leichte Ware trägt jeden Korb, schwere keinen.
+- **Streichpreise: genau 1** im ganzen Katalog (der Thomas-Sabo-Fall vom 24.08., bewusst offen).
+  Die Aufräumaktion von damals hält.
+- ⚠️ **Und die Gegenprobe hat meine eigene Alarmzahl relativiert:** Von den sechs teuersten
+  Fällen sind DREI **Spannen-Produkte** — CJ nennt für den «Weinspender» Ware USD 10–530 und
+  Gewicht 200 g–16 kg. Die Kostenzahl nimmt seit dem 27.08. die OBERE Grenze, der Preis stammt
+  aus der Zeit davor: ein Verlust von «CHF 715» ist dort ein Rechenartefakt zweier Zeitstände,
+  kein Befund. **Eine Marge aus zwei verschieden alten Formeln ist keine Messung.**
+- ⚠️ **Der harte Teil des Befundes ist ein anderer:** VIER der sechs haben bei CJ **gar keine
+  Versandlinie in die Schweiz** (Katzenbäume 18–22 kg, Akku-Pack) — dieselbe Klasse wie #1016,
+  und sie standen AKTIV im Shop. Die 387 schweren Verlustfälle über CHF 10 stehen jetzt in
+  `_cj_specs_prio.txt` und werden vom CH-Versandprüfer abgearbeitet; wer keine Linie hat, wird
+  gedraftet. **Bei schwerer Ware ist die Lieferbarkeit die erste Frage, der Preis die zweite.**
+- ⚠️ **`_cj_kosten_done.txt` trug drei MERGE-KONFLIKT-MARKER** (`<<<<<<< HEAD`) mitten im
+  Ledger — ein Konflikt war committet worden. Der Boden15-Lauf liest dieses Ledger als
+  Erlaubnisliste; die Markerzeilen selbst sind harmlos, aber ein Ledger mit Konfliktmarkern
+  ist ein Warnzeichen, dass ein `sort -u`-Merge danebenging (Lehre 29.08.). Entfernt, 9'556
+  Zeilen intakt.
+- ⚠️ Fünfte Fundstelle der SKU-FORMEN-Falle: Diese Ware trägt `CJ-<numerische pid>`, nicht
+  `CJ-CJXX…`. Wer sie an `product/variant/query?productSku=` schickt, bekommt «Product not
+  found» und hält ein lieferbares Produkt für verschwunden. Numerische SKU → `product/query?pid=`.
