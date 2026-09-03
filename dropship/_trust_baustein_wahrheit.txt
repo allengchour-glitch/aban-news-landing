@@ -14455,3 +14455,17 @@
 15455531565441	ersetzt-1	Nano-Ion-Dampf-Gesichtsreiniger
 15455531663745	ersetzt-1	USB-Ladefan mit Befeuchtung
 15455532024193	ersetzt-1	Weihnachts-Lippenstift-Set
+15455532188033	ersetzt-1	Ultraschall-Aromadiffuser
+15455532351873	ersetzt-1	Luftbefeuchter für Schreibtisch & Büro
+15455532384641	ersetzt-1	Kompakter Luftbefeuchter für Büro und Zuhause
+15455532482945	ersetzt-1	Kleiner USB-Luftbefeuchter
+15455532548481	ersetzt-1	Aromadiffuser mit Eisenkunst
+15455532646785	ersetzt-1	Gesichts-Dampfer für Hautpflege
+15455532712321	ersetzt-1	Haarglätter für Ponyfransen
+15455532843393	ersetzt-1	Gesichtsspray mit Nano-Feuchtigkeit
+15455532941697	ersetzt-1	Ultraschall-Aromatherapie-Gerät
+15455533302145	ersetzt-1	Wasserdichtes und bissfestes Outdoor-Petbett
+15455552012673	ersetzt-1	Wasserdichter Multifunktionaler Trekking-Rucksack 36–55 L
+15455552045441	ersetzt-1	Sporttasche im Casual-Stil
+15455552078209	ersetzt-1	Mini-Reisekoffer mit Rollen für Reisen
+15455552110977	ersetzt-1	Wasserdichter Outdoor-Hüftbeutel
