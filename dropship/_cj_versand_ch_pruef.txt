@@ -53,3 +53,9 @@ aluminium-klappmesser-mit-5-ersatzklingen-022850	2032737354000543745	0	-	KEINE C
 alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=71	klinge
 aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=95	klinge
 messer-mit-schnellwechselklingen-610100	2602250201101610500	0	-	KEINE CH-Option → DRAFT	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=91	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=71	klinge
+outdoor-taschenmesser-mit-holzgriff-632400	2601230136221632800	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kochmesser-fur-fleisch-gemuse-638100	2601170323291638400	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kuchenmesser-set-mit-g10-griffen-630100	2601160847581630300	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kuchenmesser-und-schaler-set-610700	2601160832451610900	0	-	KEINE CH-Option → DRAFT	klinge
