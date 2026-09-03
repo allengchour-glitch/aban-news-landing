@@ -3138,3 +3138,14 @@
 15448668406145	ersetzt-1	Damen Kunstpelz-Patchwork-Mantel
 15448668438913	ersetzt-1	Damen Wollmantel mit Knöpfen
 15448668504449	ersetzt-1	Strick-Cardigan, locker geschnitten
+15448668602753	ersetzt-1	Kapuzen-Cape mit 3D-Effekt für Damen
+15448668668289	ersetzt-1	Eleganter Doppelgesicht-Wollmantel
+15448668701057	ersetzt-1	Eleganter Wollmantel im Casual-Stil
+15448668832129	ersetzt-1	Lässiger Oversize-Mantel aus Lammfellimitat
+15448668930433	ersetzt-1	Strick-Cardigan mit Reverskragen und Taschen
+15448669127041	ersetzt-1	Eleganter extra-langer Wollmantel für Damen
+15448669290881	ersetzt-1	Eleganter Wollmantel mit Revers für Damen
+15448669454721	ersetzt-1	Eleganter Wollmantel mit Puppenkragen
+15448669749633	ersetzt-1	Eleganter Herringbone Wollmantel für Damen
+15448669880705	ersetzt-1	Eleganter ärmelloser Mantel für Damen
+15448669946241	ersetzt-1	Wollmantel mit Daunenfutter für Damen
