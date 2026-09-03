@@ -9410,3 +9410,4 @@ gid://shopify/Product/15451640889729	CHF 33.07	1 Varianten	Leichter Bettüberwur
 gid://shopify/Product/15451641020801	CHF 51.38	1 Varianten	Leichte Sommer-Kuscheldecke, atmungsaktiv
 gid://shopify/Product/15451641086337	CHF 24.23	1 Varianten	Wolldecke mit Digitaldruck
 gid://shopify/Product/15451641151873	CHF 36.52	1 Varianten	Kühlendes Eis-Seide Anti-Rutsch Sitzkissen
+gid://shopify/Product/15451641184641	CHF 56.69	1 Varianten	Kuscheliger Fleece-Überwurf mit Rosen-Design
