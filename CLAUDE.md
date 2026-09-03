@@ -6366,3 +6366,12 @@ den geteilten CJ-Eimer dauerhaft bei ~0 (gemessen remaining 11 → 1 → 1690050
   gelten als Tagesende. Und eine leere Freight-Liste bei remaining < 60 ist «unklar», kein Urteil.
 - ⚠️ Eigener Fehler: `pkill` im selben Bash-Compound (Exit 144) hat den Neustart des Prüflaufs verschluckt, danach
   liefen zwei Instanzen ohne Sperre — Regel 7 gilt auch für mich. Der Aufseher startet ihn jetzt mit flock.
+- ⚠️ **Die erste Kostüm-Kernwortliste war selbst eine Substring-Falle:** `fee` traf «Kaf**fee** Fertig Glas» und «Cof**fee**
+  to Go», `fliege` den «Styropor**flieger**», `set\b` das «Besteckset», `dino` das «Vidal Dino Jelly», `polizist` die
+  BRUDER-Polizistenfigur — 1'594 Produkte bekamen den Tag, darunter Kaffeegläser und bworld-Figuren, und die
+  Kollektion zeigte sie prompt. Zweite Fassung: Zusammensetzungen nur für starke Nomen (`\w*(kostüm|perücke|rock|
+  frack|helm|hut …)\w*`), kurze Wörter mit `\b` beidseitig, dazu eine **Negativ-Wache** am Anfang
+  (`^(?!.*(bworld|bruder|animatronic|kiste|jetons|haribo …))`) — in beide Richtungen mit 17+45 Titeln getestet,
+  auch als JS-RegExp (der Fortura-Importer liest dieselbe Datei). Die dritte Fassung war zu eng (102 echte
+  Kostüme verloren den Tag: Trainingsanzug, Hawaiirock, Paradefrack), also ZWEI Testlisten, nicht eine.
+  **Eine Wortliste, die nur gegen Treffer geprüft wurde, ist halb geprüft.**

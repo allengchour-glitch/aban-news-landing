@@ -10189,3 +10189,30 @@
 15452677931393	ersetzt-1	Badebürsten-Set
 15452677964161	ersetzt-1	Duschkopf-Set
 15452677996929	ersetzt-1	Kopfmassagkamm
+15452678029697	ersetzt-1	Dusche Ablage Set
+15452678062465	ersetzt-1	Schwimmteich-Reiniger
+15452678128001	ersetzt-1	Keramik-Badset
+15452678160769	ersetzt-1	Edelstahl Handtuchhalter
+15452678193537	ersetzt-1	Anti-Rutsch-Cover
+15452678226305	ersetzt-1	Badezimmer-Teppich
+15452678259073	ersetzt-1	Badezimmer-Mat
+15452678390145	ersetzt-1	Automatischer Katzenspielball
+15452678422913	ersetzt-1	Doppelfutternapf
+15452678455681	ersetzt-1	Heizbare Tierfutterschale
+15452678488449	ersetzt-1	Zweck-Schalen für Hund & Katze
+15452678521217	ersetzt-1	Doppel-Schale
+15452678553985	ersetzt-1	Doppel-Schale aus Edelstahl
+15452678652289	ersetzt-1	Faltbares Edelstahl-Futtergeschirr
+15452678685057	ersetzt-1	Vogeltränke und Futterstation
+15452678717825	ersetzt-1	Erhöhtes Futtergeschirr
+15452678783361	ersetzt-1	Keramikfutternapf
+15452678816129	ersetzt-1	Hunde-Schnüffelspiel · Futter-Brett
+15452678881665	ersetzt-1	Edelstahl-Näpfchen
+15452678914433	ersetzt-1	Langsames Futterteller
+15452678979969	ersetzt-1	Katzen Verdauungsunterstützung
+15452679012737	ersetzt-1	Gelenköl für Hunde & Katzen
+15452679078273	ersetzt-1	Probiotika-Tabletten für Hunde & Katzen
+15452679111041	ersetzt-1	Hundepflegeöl mit Zitronenmelisse
+15452679242113	ersetzt-1	Probiotika-Tabletten
+15452679307649	ersetzt-1	Fischöl-Tabletten für Katzen
+15452679340417	ersetzt-1	Hundegelenkschutz
