@@ -6154,3 +6154,44 @@ sekundengenau, und die Kamera läuft mit (updCam sitzt in autoFahr).
    (9 Spielstarts); mitten drin startete der Session-Worker neu und riss den Lauf mit.
    Lösung: `nohup setsid bash -c "node … > log 2>&1" &` — entkoppelt, Log lesen, weiter.
    Nie zwei Chromium-Harnische parallel (unverändert).
+
+## 2026-09-03 · 👀 Selbst gespielt, Bilder angeschaut — und das Auto neu
+
+Nach dem Fahrmodell die Frage: *was sieht der Spieler eigentlich?* Die Mess-Werkzeuge liefern
+Zahlen; `th-spielerblick.mjs` liefert die Bilder dazu — sieben Momente der ersten Minuten
+im Handy-Querformat (844×390, Handy-Modus), mit der Kamera des Spiels, nicht `__CAM` von oben:
+Start, Gehen, Bauen, Auto gekauft (plus Nahbild), Fahrt, Kurve, Übersicht. Das Werkzeug urteilt
+nicht — die Bilder werden angeschaut. Vier Befunde aus dem ersten Durchgang, alle behoben:
+
+| Bild | Befund | Fix |
+|---|---|---|
+| 3, 5, 6 | Fusszeile „Suche · Impressum · Datenschutz" (z 99999) lag über den Katalog-Preisen, dem Rand von „Aussteigen" und dem Joystick-Ring | `body.spielt #aban-recht{display:none}` im Querformat-Block; Klasse beim Start gesetzt |
+| 5 | Kein Tacho zu sehen: `#speedo` (bottom 74, Mitte) stand exakt unter `#hint` (bottom 76, z 21) — jeder Hinweis deckte ihn zu | Tacho rechts neben „Aussteigen" am unteren Rand (Desktop: neben den Hinweis) |
+| 1 | Vier ähnliche Figuren am Zebrastreifen, die eigene ohne Kennzeichen | pulsierender Bodenring unter der eigenen Figur (`updEigenRing`, nur zu Fuss) |
+| 4, 5 | Das Kaufauto war ein Klotz: altes `th_auto_kombi.glb` (1 Netz, 1 Textur, 1,9 MB), keine Scheiben, keine Türen | Charge-37-Wagen (Scheiben, Türfugen, Chrom, Felgen, 0,5 MB) mit Träger (Front +x → +z) |
+
+### Auto: warum die Fenster beim ersten Anlauf trotzdem unsichtbar waren
+Das Modell-Glas (0,36/0,48/0,55) lag farblich neben dem blauen Lack. Aus der Spielkamera
+(steil, Auto ~55 px lang) war kein Fenster zu unterscheiden — im Nahbild schon, im Spiel nicht.
+**Lack in Kontrastfarbe** (Limousine Sonnengelb, Flitzer Orange, Van Petrol — der Verkehr fährt
+grün/blau/rot/weiss) und **Glas fast schwarz, spiegelnd**. Dazu ein Vergleichsrender aller vier
+Wagen nebeneinander (Seite, schräg, Spielkamera): die Glasflächen der Charge-37-Wagen sind klein;
+am besten lesbar ist das Fensterband der **viertürigen Limousine** — darum ist das erste Kaufauto
+jetzt die Limousine (Katalog-`id` bleibt `auto_kombi`, Spielstände laufen weiter). Lehre: *Material-Namen im GLB sind
+die Schnittstelle* (`SdLack*`, `SdScheibe`) — der Lack wird am Klon getauscht, das Modell bleibt
+für den Verkehr unverändert. Und: **erst das Nahbild, dann das Spielbild beurteilen** — was
+im Nahbild schön ist, kann aus 26 m Kameraabstand ein Klotz sein.
+
+### th-hud prüft jetzt JEDES Paar
+Die Fusszeile blieb unentdeckt, weil die Mitten-Probe (elementFromPoint) nur die Mitte kennt und
+die Fusszeile weder HUD-Feld noch Knopf war. Jetzt: alle sichtbaren, antippbaren Elemente
+paarweise, gemeldet ab 10 % des kleineren; Vollbild-Kästen (`#wrap`, > 50 % des Bildes) sind
+Rahmen, nicht Rivale — ohne diese Ausnahme meldete der erste Lauf 12–28 Treffer „unter wrap"
+je Format. Die Verallgemeinerung fand sofort zwei weitere echte Überlappungen: Dreh-Knopf unter
+dem Stufen-Feld (844, Baumodus) und Lieferung unter dem Stufen-Feld (667, Fahrmodus) — beide
+mit eigenem Media-Block behoben (`min-height:341px and max-height:380px`, damit die 320er-Reihe
+nicht überschrieben wird; Reihenfolge der Blöcke zählt).
+
+### Falle: Patch-Skript mit `assert` und Schreiben am Ende
+Bricht ein `assert` mitten im Skript, ist NICHTS geschrieben — die Prüfkette lief trotzdem los,
+auf dem alten Stand. Vor dem Start der Kette `git status`/`grep` auf einen Marker der Änderung.
