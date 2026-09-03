@@ -38,6 +38,13 @@ MEDIZIN = re.compile(r"\b(blutzucker|blutdruck\s*mess|ekg\b|harnsäure|blutfett|
 CODE_TITEL = re.compile(r"(?<![\wäöüß])(?:[A-Z]{1,4}\d{3,}[A-Z]?|\d{4,})(?![\wäöüß])")
 CODE_OK = re.compile(r"\b(UV400|TR90|RF433|SR626SW|20\d\d|18650|26650|9V|5V|12V|24V|4K|1080P|720P"
                      r"|USB|LED|IP6[78]|CR20\d\d|AA|AAA|A4|A5|A3|3D|2D|360|5G|4G|WIFI|WLAN|S925|925|750|585|316L|18K|24K|K9|PD\d*|QC\d*|H\d{3,4}|EU\d{2}|ML|CM|MM)\b", re.I)
+# ⚠️ Ein SET-Inhalt ist keine Auswahl: «5 Lätzchen im Set: Fünf Farben zur Auswahl»
+# beschreibt, was mitgeliefert wird — die Kundin waehlt nichts. Ebenso «2× gross, 2× klein».
+# Ohne diese Gegenprobe meldete C1 am 03.09. 6'172 Faelle, von denen die Stichprobe zwei
+# Drittel als Set-Beschreibung entlarvte. Das Werkzeug wahlversprechen.py kennt die
+# Unterscheidung seit dem 01.09.; der Audit kannte sie nicht.
+SET_INHALT = re.compile(r"(?:\b\d{1,2}\s*(?:×|x|St(?:k|ück)?\.?)\s|\bim\s+Set\b|\bSet\s+(?:mit|aus|à)\b"
+                        r"|\b\d{1,2}er[- ]?Set\b|\benthält\b|\bLieferumfang\b|\bbestehend\s+aus\b)", re.I)
 WAHL = re.compile(r"(?:in\s+(?:zwei|drei|vier|fünf|sechs|verschiedenen|mehreren|diversen)\s+"
                   r"(?:farben|grössen|groessen|größen|varianten|ausführungen|modellen)"
                   r"|erhältlich\s+in\s+(?:den\s+)?(?:farben|grössen|größen)"
@@ -133,7 +140,8 @@ for pid, p in prod.items():
     if ESZETT.search(t) or ESZETT.search(txt[:4000]): add("B5 ß statt ss")
 
     # --- C Text / Kundenerlebnis
-    if len(vs) == 1 and WAHL.search(txt): add("C1 Auswahl versprochen, 1 Variante")
+    if len(vs) == 1 and WAHL.search(txt) and not SET_INHALT.search(txt):
+        add("C1 Auswahl versprochen, 1 Variante")
     mc = CODE_TITEL.search(t)
     if mc and not CODE_OK.search(t): add("C2 Code im Titel", mc.group(0))
     if len(ENG_WORT.findall(t)) >= 2: add("C3 Titel wirkt englisch")
