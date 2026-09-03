@@ -9459,3 +9459,6 @@ gid://shopify/Product/15451911750017	CHF 11.16	1 Varianten	Jaysuing Steinreinigu
 gid://shopify/Product/15451912044929	CHF 48.77	1 Varianten	Küchenmatten 2er-Set, rutschfest & wasserdicht
 gid://shopify/Product/15451912798593	CHF 14.32	1 Varianten	Kabelloser Anionen-Glättkamm mit USB-Ladefunktion
 gid://shopify/Product/15451913159041	CHF 34.22	1 Varianten	Kabelloser Mini-Haarglätter der 3. Generation
+gid://shopify/Product/15451913552257	CHF 31.70	1 Varianten	6-in-1 Lockenstab & Glätteisen mit LED-Anzeige
+gid://shopify/Product/15451913847169	CHF 19.13	1 Varianten	Kabelloser 2-in-1 Glätt- & Lockenstab
+gid://shopify/Product/15451914076545	CHF 18.71	1 Varianten	Kabelloser Mini-Glättkamm mit LCD-Anzeige
