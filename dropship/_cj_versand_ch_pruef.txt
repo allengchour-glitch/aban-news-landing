@@ -46,3 +46,5 @@ wasserdichte-kabellose-turklingel-190786	2036641959612825602	-	-	unklar 200 Succ
 elektronischer-geschwindigkeitsmesser-776320	1611982527500136448	11	9.59	ok	klinge
 kopf-display-gps-geschwindigkeitsmesser-961152	1367730856487161856	11	7.74	ok	klinge
 kasemesser-set-mit-holzbox-4-teilig-325697	2042225015930126337	0	-	KEINE CH-Option → DRAFT	klinge
+4-in-1-messerscharfer-fur-kuche-schere-141697	2046149631261732866	0	-	KEINE CH-Option → DRAFT	klinge
+schmiedemesser-zum-tranchieren-28-cm-218497	2045333053078814722	0	-	KEINE CH-Option → DRAFT	klinge
