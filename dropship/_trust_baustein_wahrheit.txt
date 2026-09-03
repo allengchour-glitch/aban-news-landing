@@ -10456,3 +10456,17 @@
 15452707258753	ersetzt-1	Intelligenter Sprachroboter 24g für 4-6 J.
 15452707291521	ersetzt-1	Intelligentes Robo-Hündchen mit Stimme & Gestenkontrolle
 15452707324289	ersetzt-1	RC-Roboter mit Sprachfunktion & Licht, Gelb
+15452707357057	ersetzt-1	Metall-Upgrade-Teil für 1/12 RC-Car, Rot
+15452707389825	ersetzt-1	Interaktive Roboter-Katze für Kinder, Rosa
+15452707422593	ersetzt-1	Kinder-Smartphone mit Kamera, Pinguin-Design Rosa
+15452707455361	ersetzt-1	Ferngesteuertes Rennboot 2.4 GHz, 20 km/h, Rot
+15452707488129	ersetzt-1	Elektrischer Tanzaffe mit Licht & Musik
+15452707520897	ersetzt-1	RC-Hubschrauber 3.5-Kanal mit Gyro, Grün
+15452707553665	ersetzt-1	Faltbare RC-Drohne mit Kamera, 2 Akkus, Grau
+15452707586433	ersetzt-1	Faltbare Mini-Drohne mit Kamera & 2 Akkus, Schwarz
+15452707619201	ersetzt-1	RC-Drohne mit Display-Fernsteuerung, 2 Akkus
+15452707651969	ersetzt-1	RC-Drohne mit 4,5-Zoll-Display-Fernsteuerung, Grau
+15452707684737	ersetzt-1	RC-Drohne mit Dual-Kamera & Hindernis-Sensor
+15452707717505	ersetzt-1	3-in-1 RC-Hovercraft für Land, Wasser & Luft, Blau
+15452707750273	ersetzt-1	Fliegendes RC-Schwert mit LED, Gold
+15452707881345	ersetzt-1	RC-Drohne mit Dual-Kamera & LED, 2 Akkus
