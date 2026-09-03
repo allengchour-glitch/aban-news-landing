@@ -270,3 +270,65 @@ gid://shopify/Product/15469949485441	Kostüm Kuh Funny
 gid://shopify/Product/15469949518209	Kostüm Peace & Love
 gid://shopify/Product/15469949550977	Kostüm Pirat · Erwachsenengrösse
 gid://shopify/Product/15469949583745	Mantel Dracula
+gid://shopify/Product/15469949616513	Kostüm Weltraum Horror Clown
+gid://shopify/Product/15469949649281	Kostüm Skelett · Widmann Nr. 92848
+gid://shopify/Product/15469949682049	Kostüm Königin
+gid://shopify/Product/15469949714817	Kinderkostüm Pinguin · Anzug & Kopfteil (Widmann)
+gid://shopify/Product/15469949747585	Kostüm Schulabgänger
+gid://shopify/Product/15469949780353	Kostüm Astronautin Orange
+gid://shopify/Product/15469949845889	Kostüm Mönch
+gid://shopify/Product/15469949911425	Kostüm Biene mit Haarreif
+gid://shopify/Product/15469949976961	Weste S.W.A.T.
+gid://shopify/Product/15469950009729	Kostüm König Mittelalter
+gid://shopify/Product/15469950042497	Poncho Voodoo Priesterin
+gid://shopify/Product/15469950075265	Kostüm Steampunk
+gid://shopify/Product/15469950108033	Kostüm Robin of Sherwood
+gid://shopify/Product/15469950140801	Hawaiihemd
+gid://shopify/Product/15469950173569	Jacke neonfarbig
+gid://shopify/Product/15469950239105	Kinderkostüm Indianer Junge
+gid://shopify/Product/15469950271873	Kostüm Hosenanzug Geist
+gid://shopify/Product/15469950370177	Kostüm Priester Camillo
+gid://shopify/Product/15469950402945	Frack Dia de los muertos
+gid://shopify/Product/15469950435713	Hippie Hemd
+gid://shopify/Product/15469950468481	Kostüm Kapuziner Mönch
+gid://shopify/Product/15469950534017	Kostüm Ritter Mittelalter
+gid://shopify/Product/15469950566785	Paradefrack für Damen
+gid://shopify/Product/15469950599553	Nonnenkostüm
+gid://shopify/Product/15469950632321	Hawaiirock 78 cm gelb
+gid://shopify/Product/15469950665089	Kostüm Pirat · Kindergrösse
+gid://shopify/Product/15469950697857	Kinderkostüm S.W.A.T. Agent
+gid://shopify/Product/15469950730625	Hawaiirock 75 cm rosa
+gid://shopify/Product/15469950763393	Kostüm Astronaut Silber
+gid://shopify/Product/15469950796161	Kostüm Sträfling
+gid://shopify/Product/15469950828929	Kostüm Astronaut Orange · Erwachsenengrösse
+gid://shopify/Product/15469950861697	Hawaiirock 75cm vielfarbig
+gid://shopify/Product/15469950894465	Roter Kardinal
+gid://shopify/Product/15469950960001	Kinderweste S.W.A.T.
+gid://shopify/Product/15469950992769	Indianerkostüm
+gid://shopify/Product/15469951025537	Schwarzer Umhang mit Kapuze
+gid://shopify/Product/15469951058305	Kostüm Astronaut Blau · Erwachsenengrösse
+gid://shopify/Product/15469951123841	Jumpsuit Skelett · mit Maske (Widmann)
+gid://shopify/Product/15469951156609	Kostüm Dieb T-Shirt
+gid://shopify/Product/15469951189377	Kostüm Kampfjet Pilotin Gr S
+gid://shopify/Product/15469951222145	Kinderkostüm Pirat · Hemd, Weste, Hose & Kopftuch 
+gid://shopify/Product/15469951254913	Tutu Rock blau-türkis-grün
+gid://shopify/Product/15469951287681	Kostüm Hosenanzug «Good Vibes» · 5 Designs
+gid://shopify/Product/15469951320449	Kostüm Mafiaboss
+gid://shopify/Product/15469951353217	Sträflingskostüm
+gid://shopify/Product/15469951385985	Jacke 80er Jahre
+gid://shopify/Product/15469951418753	Kostüm Mönch
+gid://shopify/Product/15469951451521	Hemd Geister neon
+gid://shopify/Product/15469951484289	Kostüm Böser Clown · Kindergrösse
+gid://shopify/Product/15469951517057	Klassisches Krankenschwesternkostüm
+gid://shopify/Product/15469951549825	Jacke Party Fashion
+gid://shopify/Product/15469951582593	Orientalisches Haremsdamenkostüm
+gid://shopify/Product/15469951615361	Kinderkostüm Polizist
+gid://shopify/Product/15469951713665	Kostüm Charleston Kleid
+gid://shopify/Product/15469951746433	Kostüm König · Erwachsenengrösse
+gid://shopify/Product/15469951779201	Hawaiirock 75 cm grün
+gid://shopify/Product/15469951811969	Kostüm Kardinal
+gid://shopify/Product/15469951844737	Kinderkostüm Zorro
+gid://shopify/Product/15469951877505	Hawaiirock 75 cm blau
+gid://shopify/Product/15469951943041	Poncho Hippie oder Gaucho-Cowboy
+gid://shopify/Product/15469951975809	Kostüm Miss Häftling
+gid://shopify/Product/15469952008577	Authentischer Mexikanischer
