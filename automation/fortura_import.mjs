@@ -29,8 +29,15 @@ function forturaType(t){
   if(/schweiz|edelweiss|1\.\s*august|matterhorn|alphorn/.test(tl))return 'Schweizer Editionen';
   if(/sonnenbrille|schmuck|kette\b|armband|ohrring|tasche\b|rucksack|schal\b|f[äa]cher|geldb[öo]rse|krawatte|fliege\b|hosentr[äa]ger|g[üu]rtel/.test(tl))return 'Accessoires';
   if(/tasse\b|becher\b|glas\b|gl[äa]ser|kissen|decke\b|organizer|aufbewahrung|lampe|leuchte|kerze/.test(tl))return 'Haushalt & Wohnen';
+  // 03.09.2026: Forturas Gruppe «Kostüme» ist ein Sammeltopf (226 BRUDER-Traktoren, Lotto, HARIBO, Deko standen als Kostüm)
+  if(/bruder|claas|john deere|fendt|lemken|fliegl|joskin|manitou|\bjlg\b|volvo|\bcat\b|ram 2500|land rover|range rover|mb sprinter|mb arocs|mack granite|man tg|scania|massey|new holland|steyr|case ih|jcb|deutz|horsch|kipp-?lkw|anh[äa]nger|dumper|radlader|bagger|\blkw\b|traktor|bworld|rundballen|teleskoplader|feldh[äa]cksler|bulldozer|gator|roadmax|tankwagen|unimog|hoflader|lotto|bingo|tombola|gl[üu]cksrad|w[üu]rfel|spielkarte/.test(tl))return 'Spielzeug & Spiele';
+  if(/haribo|trolli|bonbon|kaugummi|lolli|schoko|gummib[äa]r|chupa|lakritz|zuckerwatte|zuckerst|fruchtgummi|skittles|candy/.test(tl))return 'Süsswaren & Esswaren';
+  if(/jeton|wertmarke|wachsfackel|skelett\b|spinne\b|spinnennetz|totenkopf|dekostoff|knicklicht|papagei|kan[üu]le|luftschlange|einwegteller|pappbecher|laternenstab|lampionstab|geschenkband|leinwand|wurfdose|animatronic|grabstein|fledermaus|k[üu]rbis\b/.test(tl))return 'Partydeko & Ballone';
   return 'Kostüme & Verkleidung';
 }
+// Kern-Kostümwörter (EINE Quelle: automation/kostuem_core.regex) → Tag kostuem-ch-front, an dem die Kollektion «Kostüme ab CH-Lager» hängt
+const KOSTUEM_CORE = new RegExp(fs.readFileSync(new URL('./kostuem_core.regex', import.meta.url), 'utf8').trim(), 'i');
+export function kostuemFrontTag(typ, title){ return (typ==='Kostüme & Verkleidung' && KOSTUEM_CORE.test(title||'')) ? ['kostuem-ch-front'] : []; }
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const SHOP = 'au3j0y-hq.myshopify.com', LOC = 'gid://shopify/Location/109350125953';
 const PUBS = ['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961']
@@ -212,7 +219,7 @@ for (const rec of recs.slice(0, LIMIT)) {
     + `<li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li>`
     + `<li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
   const slug = (normT(title).replace(/\s+/g,'-').slice(0,46)) + '-ft' + String(art).toLowerCase();
-  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...FT_TAGS,
+  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...kostuemFrontTag(forturaType(title), title), ...FT_TAGS,
     ...fortCatTags(rec['Grp-Bez'], rec['Kategorie'], title), ...catTags(title)])];
   const input = {
     title, handle: slug, productType: forturaType(title), vendor: 'LuxeStyle', status: 'ACTIVE', tags, descriptionHtml: desc,
