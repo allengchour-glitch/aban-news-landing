@@ -49,17 +49,20 @@ def cj(pfad, body=None):
         return code, d.get("data"), d.get("message") or "", (d.get("pointsInfo") or {}).get("remaining")
     return 0, None, "keine Antwort", None
 
-def warte_auf_punkte(mind=80):
-    """16900500 kommt AUCH bei leerem Eimer (03.09. gemessen: 60 s später wieder 200) — erst nach 5 Wartezyklen gilt das Tagesbudget als erschöpft."""
+def warte_auf_punkte(mind=40):
+    """Eimer-Sonde über den GRATIS-Endpunkt productComments (Lehre 28.08.: kostet 0 Punkte) — eine 10-Punkte-Sonde
+    alle 20 s hätte den Eimer selbst leer gehalten. 16900500 kommt auch bei leerem Eimer (remaining > 0 oder
+    Meldung ohne «Remaining: 0»); nur remaining == 0 / «Remaining: 0» über 5 Zyklen gilt als Tagesende."""
     leer = 0
     while True:
-        code, _, msg, rest = cj("/product/variant/query?productSku=CJJJCFCF00364")
-        if code == 16900500:
+        code, _, msg, rest = cj("/product/productComments?pid=2064920992690323457&pageNum=1&pageSize=1")
+        if code == 16900500 and (rest == 0 or "Remaining: 0" in msg):
             leer += 1
             if leer >= 5: return False
             time.sleep(60); continue
         if rest is None or rest >= mind: return True
-        time.sleep(20)
+        time.sleep(15)
+
 
 def vid_fuer(sku, var_sku):
     """SKU-Formen (Lehre 22./25./28.08.): CJ-<pid 15+ Ziffern> · CJ-CJxx… (Varianten-SKU mit 2 Ziffern+2 Buchstaben) · CJxx… Stamm."""
@@ -118,7 +121,7 @@ def main():
         time.sleep(1.2)
         code, opts, msg, rest = cj("/logistic/freightCalculate", {"startCountryCode": "CN", "endCountryCode": "CH", "products": [{"quantity": 1, "vid": vid}]})
         if code == 16900500:
-            time.sleep(60)
+            time.sleep(30)
             if not warte_auf_punkte(): print("⛔ CJ-Tagesbudget erschöpft — Abbruch ohne Quittung", flush=True); break
             code, opts, msg, rest = cj("/logistic/freightCalculate", {"startCountryCode": "CN", "endCountryCode": "CH", "products": [{"quantity": 1, "vid": vid}]})
         if code != 200 or (rest is not None and rest < 60 and not opts):
