@@ -591,3 +591,4 @@ santoku-messer-mit-achteckigem-griff-7-zoll-629100	2407150640581629300	0	-	KEINE
 doppeltes-kuchenmesser-dragon-phoenix-mandarin-623700	2407140148031623900	0	-	KEINE CH-Option → DRAFT	klinge
 knochenentfernungsschwert-29-cm-793216	1402841934380273664	0	-	KEINE CH-Option → DRAFT	klinge
 knochenmesser-825280	1402830316946722816	0	-	KEINE CH-Option → DRAFT	klinge
+knochenmesser-fur-die-kuche-458432	1402829653462355968	0	-	KEINE CH-Option → DRAFT	klinge

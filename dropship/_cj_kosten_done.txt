@@ -9555,3 +9555,4 @@ gid://shopify/Product/15451929117057	CHF 19.79	24 Varianten	Casual Retro Hemd f√
 gid://shopify/Product/15451929248129	CHF 16.20	20 Varianten	Baumwoll Langarm Hemdjacke
 gid://shopify/Product/15451929543041	CHF 15.37	10 Varianten	Herren Strick-Cardigan mit Lochmuster
 gid://shopify/Product/15451929575809	CHF 12.05	99 Varianten	Herren Hemd mit Animal-Print und kurzen √Ñrmeln
+gid://shopify/Product/15451929641345	CHF 10.91	99 Varianten	Herren Hawaiihemd mit 3D-Print
