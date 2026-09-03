@@ -5232,10 +5232,23 @@ setTimeout(function baueGebaeude(){
       var dz=(c.z-cz)/ez,dx=(c.x-cx)/ex;
       if(Math.abs(dz)>0.8&&Math.abs(dz)>=Math.abs(dx))z[dz>0?"+z":"-z"]++;
       else if(Math.abs(dx)>0.8)z[dx>0?"+x":"-x"]++;});
-    var best="-z";["+z","-x","+x"].forEach(function(k){if(z[k]>z[best])best=k;});
-    if(z[best]<12||z[best]<=z["-z"]*1.5)return {drehung:0,seite:"-z",n:z["-z"],z:z};
-    /* R_y(theta): (x,z) -> (x cos + z sin, -x sin + z cos). +z -> -z: pi. -x -> -z: -pi/2. +x -> -z: +pi/2 */
-    var d={"+z":Math.PI,"-x":-Math.PI/2,"+x":Math.PI/2}[best];
+    /* ⚠️ DIE POLARITAET WAR VERKEHRT — und die eigene Pruefung hat es gefunden.
+       Der Kommentar im Generator sagt "Schauseite (Tuer) zeigt nach -z", aber
+       nachgerechnet stimmt das Gegenteil: bei seite=+1 (bz = VZ + setback, Strasse
+       also bei kleinerem z) ist rot = pi, und R_y(pi) bildet lokal +z auf Welt -z ab —
+       genau zur Strasse. Fuer quer-Viertel dasselbe: seite=+1, rot = -pi/2 bildet
+       lokal +z auf Welt -x ab, und dort liegt die Strasse. LOKAL +z IST DIE
+       STRASSENSEITE.
+       Der erste Anlauf drehte darum die falschen Bauten: die Eishalle stand richtig
+       und wurde weggedreht (gemessen in Weltkoordinaten: 0 Kleinteile zur Strasse,
+       192 weg), waehrend die th37-Reihe, die es wirklich braucht, unberuehrt blieb
+       (0 zur Strasse, 56 weg). Zwei Bilder von der Strassenseite haben es entschieden. */
+    var best="+z";["-z","-x","+x"].forEach(function(k){if(z[k]>z[best])best=k;});
+    if(z[best]<12||z[best]<=z["+z"]*1.5)return {drehung:0,seite:"+z",n:z["+z"],z:z};
+    /* Das Detail soll dorthin, wo jetzt lokal +z zeigt. R_y(theta)*(1,0,0)=(cos,0,-sin),
+       R_y(theta)*(0,0,-1)=(-sin,0,-cos): -z -> +z braucht pi, +x -> +z braucht -pi/2,
+       -x -> +z braucht +pi/2. */
+    var d={"-z":Math.PI,"+x":-Math.PI/2,"-x":Math.PI/2}[best];
     return {drehung:d,seite:best,n:z[best],z:z};}
   function viertel(cfg){
     var VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
@@ -5348,7 +5361,7 @@ setTimeout(function baueGebaeude(){
         /* Schauseite zur Strasse — VOR der Kollider-Anpassung, die die Huelle misst */
         var sw9=schauseiteWinkel(w9);
         if(sw9.drehung){w9.rotation.y+=sw9.drehung;w9.updateWorldMatrix(true,true);}
-        w9.userData.schauseite=sw9.seite;w9.userData.schauseiteN=sw9.n;
+        w9.userData.schauseite=sw9.seite;w9.userData.schauseiteN=sw9.n;w9.userData.schauDreh=sw9.drehung;
         g.bauten.push({w:w9,soll:{x:bx,z:bz}});
         if(_s9){
           var bb9=new THREE.Box3().setFromObject(w9);
