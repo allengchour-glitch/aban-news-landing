@@ -997,3 +997,13 @@ bambusfaser-matratzen-topper-kuhlend-verdickt-619600	2607011302461610300	11	34.9
 hanteln-mit-chrom-griff-192386	2046137494772215810	0	-	KEINE CH-Option → DRAFT	landeseite
 wasserdichte-reisetasche-625600	2605230945361626100	0	-	KEINE CH-Option → DRAFT	landeseite
 silikon-schussel-fur-hunde-und-katzen-610500	2507130912041610800	11	25.49	ok	landeseite
+bmw-auto-innenraum-dekoration-633400	2511040859331633700	11	21.84	ok	landeseite
+tischplatte-buche-massivholz-80x40x1-5-cm-272129	1990459007793029121	0	-	KEINE CH-Option → DRAFT	landeseite
+ovale-tischplatte-aus-kiefernholz-60x30-cm-569537	1990525848837730305	0	-	KEINE CH-Option → DRAFT	landeseite
+kuscheliges-haustierbett-fur-herbst-und-winter-95ccbf	-	-	-	unklar keine CJ-SKU	landeseite
+fitness-hantel-fur-body-shaping-920000	2601170734181622500	6	70.55	ok	landeseite
+2er-set-bambus-badematten-428418	1990481895262167042	-	-	unklar 200 Success rest=37	landeseite
+keramikbecher-im-4er-set-396289	2056920294581059585	6	53.99	ok	landeseite
+keramik-schmortopf-fur-slow-cooking-605500	2605120703401606200	6	60.64	ok	landeseite
+keramik-gewurzbehalter-mit-bambusstander-4-stk-982402	2051151024504811522	6	53.99	ok	landeseite
+scooter-baby-can-sit-608800	2510260948121609000	0	-	KEINE CH-Option → DRAFT	landeseite
