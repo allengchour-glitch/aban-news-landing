@@ -6332,3 +6332,19 @@ Erst die ausgelieferten Seiten gescannt (Startseite, zwei Kategorien, Produkt, W
   Prüfung sieht («investierst können», «Stell dich dein Outfit», «und wirst du zum Designer», «haltst») —
   jeder als Regel nachgezogen, dann erst geschrieben. Werkzeug `automation/kollektionstexte_du_form.py`
   (Ergebnis in Datei, WRITE=1 schreibt nur, wenn live == gelesen). «Für Sie» als Kollektionsname bleibt.
+
+## 🔪 Bestellung #1016: CJ liefert Klingen NICHT in die Schweiz (2026-09-03)
+Erste Bestellung seit dem 22.08. (Fuda Taschenmesser Damast, CHF 47.90, Pratteln). Der Bestell-Automat meldete
+«keine Versandoption in die CH». Gemessen: `freightCalculate` CN→CH für das Messer **leer**, CN→DE/AT/FR je 1–3
+Linien; Kontrolle Gemüseschneider (#1015) CN→CH **3 Linien**. Also nicht der Weg ist zu, sondern die Ware: Die
+Schweizer Paketlinien von CJ (YunExpress/CJPacket) führen Messer als verbotene Ware. Versuch, den Auftrag mit
+einer bekannten CH-Linie anzulegen (`createOrderV2`, «YunExpress Sensitive»): CJ nimmt ihn an, streicht die
+Linie aber still (logisticName/postage null); `confirmOrder` antwortet **1605000 «Logistic not found»**. Auftrag
+wieder gelöscht. **Ein `createOrderV2` mit code 200 beweist keine Lieferbarkeit** — erst `confirmOrder` tut es.
+- Stichprobe 8 Klingen/Schärfer/Schleifsteine: 7 ohne CH-Option → Klasse, nicht Einzelfall. `cj_versand_ch_guard`
+  prüft nur ab CHF 100 und hat die 40-Franken-Klingen nie gesehen. Task #22: nach dem Punkte-Reset alle Klingen,
+  dann die sichtbare Ware prüfen. Das Messer ist DRAFT (`cj-nicht-versendbar-ch`).
+- ⚠️ Eine Freight-Antwort `[]` bei fast leerem Eimer (remaining < 20) ist KEIN Befund — das Rizinusöl-Set gab bei
+  remaining 7 ebenfalls `[]` und muss neu gemessen werden.
+- Wege, die dem Betreiber bleiben: Rückerstattung · Lieferung via DE-Adresse/Weiterleitung (CJ-DE-Linie USD 7.91)
+  · Fremdbezug bei EU/CH-Händler · CJ-Agent. Entscheidung liegt beim Betreiber.
