@@ -6158,3 +6158,10 @@ Groq-Schlüssel den Fehler zu (kein Text → nie bis zum Anlegen).
   einer Vermutung. Und: Wer eine Funktion in zwei Importer einbaut, prüft beide mit `node --check` —
   das hätte den fehlenden Import 2026-08-15 in einer Sekunde gezeigt (ein ReferenceError zur Laufzeit
   ist für `--check` allerdings unsichtbar; nur ein Probelauf mit DRY=0 bis zum Anlegen hätte ihn gefunden).
+- **Nachtrag 00:15 UTC:** Der Wiederholungslauf zeigte, WAS die Wecker-Suche gefunden hatte: für alle drei
+  Begriffe dasselbe **«Grenaden-förmige Uhren-Ornament aus Harz»** — ein Deko-Objekt in Handgranatenform,
+  kein Wecker. Der Absturz hat es zufällig ferngehalten; beim zweiten Lauf blockte die Bild-Wache
+  («Bild existiert», der Bildschlüssel war vor dem Absturz geschrieben). **CJ hat unter diesen Begriffen
+  keinen Zielscheiben-Wecker.** Zwei letzte Varianten («shooting target clock», «laser target alarm») stehen
+  in der Queue; bleiben sie leer, ist der Betreiberwunsch bei CJ nicht erfüllbar — das gehört gemeldet,
+  nicht durch eine Granaten-Uhr ersetzt (Köderwechsel-Regel).

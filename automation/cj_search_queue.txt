@@ -8,6 +8,10 @@
 #done search:target alarm clock gun
 #done search:shooting alarm clock laser target
 #done search:gun alarm clock
+# 03.09.: Die drei Begriffe oben liefern bei CJ nur ein GRANATEN-förmiges Uhren-Ornament aus Harz (kein Wecker,
+# Militär-Deko) — nicht importiert. Zwei letzte Varianten, danach gilt: CJ hat keinen Zielscheiben-Wecker.
+search:shooting target clock
+search:laser target alarm
 #done search:tempered glass screen protector iphone
 #done search:magsafe phone case
 #done search:magsafe car mount
