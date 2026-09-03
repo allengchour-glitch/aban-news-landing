@@ -21,3 +21,13 @@ damast-kochmesser-set-602200	2601180754001602500	1	9.00	ok	klinge
 damast-kochmesser-fur-fleisch-gemuse-638100	2601170323291638400	-	-	unklar 200 Success rest=33	klinge
 damast-kuchenmesser-set-619600	2601161014021610100	1	15.54	ok	klinge
 damast-kuchenmesser-set-mit-g10-griffen-630100	2601160847581630300	-	-	unklar 200 Success rest=37	klinge
+damast-kuchenmesser-und-schaler-set-610700	2601160832451610900	-	-	unklar 200 Success rest=51	klinge
+portables-damast-outdoormesser-aus-sandeisenho-627600	2601150524381627800	-	-	unklar 200 Success rest=31	klinge
+ahorn-holzgriff-messer-fur-outdoor-fruchte-622400	2601150152531622700	-	-	unklar 200 Success rest=55	klinge
+klappmesser-fur-outdoor-und-survival-605800	2601130159141606000	-	-	unklar 200 Success rest=35	klinge
+outdoor-faltmesser-mit-carbonfasergriff-613800	2601130147171614100	-	-	unklar 200 Success rest=59	klinge
+multifunktions-faltmesser-fur-outdoor-taktik-635000	2601130140471635200	-	-	unklar 200 Success rest=39	klinge
+multifunktionales-survival-klappmesser-608400	2601130133571608700	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-damast-messer-mit-ebenholzgriff-628700	2601070337051628900	-	-	unklar 200 Success rest=43	klinge
+6-teiliges-kuchenmesser-set-aus-geschmiedetem-082433	2008104250771271681	-	-	unklar 200 Success rest=23	klinge
+swedwood-taschenmesser-aus-stahl-619900	2601031201591610100	-	-	unklar 200 Success rest=47	klinge
