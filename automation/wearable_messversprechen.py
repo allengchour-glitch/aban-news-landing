@@ -259,4 +259,8 @@ def main():
     print(f"{'DRY ' if DRY else ''}bereinigt: {geaendert} · ohne Aenderung: {unveraendert}")
     if geaendert == 0: print("FERTIG")
 
-main()
+# ⚠️ Wache (03.09.2026): Ohne sie FUEHRT ein blosser Import dieses Werkzeug AUS.
+# Genau das ist beim Bau von klassen_kontrolle.py passiert — ein Melder, der beim
+# Laden einen fremden Schreiber startet, ist eine gestellte Falle.
+if __name__ == "__main__":
+    main()
