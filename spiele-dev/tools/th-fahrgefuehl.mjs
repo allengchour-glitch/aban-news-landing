@@ -34,6 +34,8 @@ mitSonden(QUELLE, {
     if(was==="mess")return mess();
     if(was==="hand"){window._camHandT=a?performance.now():0;return true;}
     if(was==="camDreh"){camA+=a;updCam();return camA;}
+    if(was==="rad"){var rs=window.autoRec.raeder||[];if(!rs.length)return null;
+      return {n:rs.length,rot:rs.map(function(r){return +r.rotation.z.toFixed(4);}),rad:+(rs[0].userData.rad*(window.autoRec.radMass||1)).toFixed(4)};}
     if(was==="aus"){autoFahr=window.__af;steer.x=0;steer.z=0;aussteigen();return !fahren;}
     return null;}`
 }, TMP)
@@ -78,6 +80,15 @@ let d0=await F('mess'), dA=await F('fahr',[0,0,30]), dB=await F('fahr',[0,0,150]
 pruef(dA.kmh>20&&dA.kmh<d0.kmh,`Loslassen: nach 0,5 s noch ${dA.kmh} km/h (vorher ${d0.kmh}; erwartet 20 < x < vorher)`)
 pruef(dB.kmh===0&&weg(d0,dB)>5,`Ausgerollt: nach 3 s ${dB.kmh} km/h, Rollweg ${weg(d0,dB).toFixed(1)} m (erwartet 0 km/h, > 5 m)`)
 
+// R — die Raeder rollen mit dem Weg (Nachbar-Runde th-runde52 haengt sie unter Drehpunkte; hier dreht autoFahr sie)
+{ const r0=await F('rad'); const q0=await F('mess'); const q1=await F('fahr',[0,-1,60]); const r1=await F('rad')
+  if(!r0||!r1) pruef(false,'Raeder: keine Drehpunkte am eigenen Auto gefunden (erwartet 4)')
+  else { const w=weg(q0,q1), dphi=r1.rot[0]-r0.rot[0], soll=w/r1.rad
+    pruef(r1.n===4,`Raeder: ${r1.n} Drehpunkte (erwartet 4)`)
+    pruef(Math.abs(dphi-soll)<0.1*soll+0.05&&dphi>0,`Raeder rollen mit dem Weg: Δφ ${dphi.toFixed(2)} rad bei ${w.toFixed(1)} m, Radius ${r1.rad} m → soll ${soll.toFixed(2)}`)
+    const q2=await F('fahr',[0,0,200]); await F('fahr',[0,1,90]); const r2=await F('rad'); const q3=await F('fahr',[0,1,60]); const r3=await F('rad')
+    pruef(r3.rot[0]<r2.rot[0],`Rueckwaerts drehen die Raeder rueckwaerts (Δφ ${(r3.rot[0]-r2.rot[0]).toFixed(2)})`) } }
+await F('fahr',[0,0,240])
 // F — im Stand lenken dreht nichts
 let f0=await F('mess'), f1=await F('fahr',[1,0,60])
 pruef(Math.abs(grad(f1.rot-f0.rot))<2&&weg(f0,f1)<0.1,`Im Stand lenken: ${grad(f1.rot-f0.rot).toFixed(1)}° Drehung, ${weg(f0,f1).toFixed(2)} m Weg (erwartet ~0)`)

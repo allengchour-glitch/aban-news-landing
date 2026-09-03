@@ -10654,7 +10654,11 @@ function applyFurn(id,gx,gy,rot,fid){
       var bb2=new THREE.Box3().setFromObject(m);
       m.position.set(cx(gx),-bb2.min.y+0.01,cz(gy));m.rotation.y=Math.PI/2;
       scene.add(m);
-      window.autoRec={id:id,mesh:m,gx:gx,gy:gy,homeX:cx(gx),homeZ:cz(gy),homeY:-bb2.min.y+0.01,state:"parkt",t:0};});
+      /* 🛞 Raeder des eigenen Autos: die Nachbar-Runde (th-runde52) haengt die Raeder der
+         th37-Wagen an der Vorlage unter Drehpunkte (_raederAnlegen, nach Form gefunden).
+         Der Klon nimmt sie mit; hier nur einsammeln, gedreht wird in autoFahr. */
+      window.autoRec={id:id,mesh:m,gx:gx,gy:gy,homeX:cx(gx),homeZ:cz(gy),homeY:-bb2.min.y+0.01,state:"parkt",t:0,
+        raeder:(typeof _raederVon==="function")?_raederVon(m):[],radMass:m.scale.x};});
     return;}
   if(def.grow){ // Growbox: Zelt, Lila-Licht, Spezial-Kräuter
     var gg=new THREE.Group();
@@ -11842,6 +11846,11 @@ function autoFahr(dt){
     m.position.x=Math.max(-305,Math.min(305,m.position.x));
     m.position.z=Math.max(-405,Math.min(405,m.position.z));
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03*Math.min(1,fahrt/6)+carAirY; // Wanken + Sprunghoehe
+    /* Raeder rollen mit dem Weg: Achse z, vorwaerts (Modell +x) = rotation.z positiv, rueckwaerts negativ. */
+    if(a.raeder&&a.raeder.length){var _wR=sp*dt/(a.radMass||1);
+      for(var _ri9=0;_ri9<a.raeder.length;_ri9++){var _R9=a.raeder[_ri9];
+        if(!_R9._bewegt&&window._auftauen)window._auftauen(_R9);
+        _R9.rotation.z+=_wR/(_R9.userData.rad||0.3);}}
   }else{m.position.y=(a.homeY||0.01)+carAirY;}
   /* Kamera weich hinter das Auto drehen — nicht im Ego-Cockpit (dort ist die Sicht ohnehin
      die Fahrtrichtung) und nicht, solange der Spieler selbst dreht. */
