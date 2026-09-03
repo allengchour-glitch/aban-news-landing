@@ -5340,3 +5340,12 @@
 15449067815297	ersetzt-1	Cardigan Sweatshirt mit Stehkragen und Reissverschlusstasche
 15449068011905	ersetzt-1	Sportliches Patchwork Sweatshirt Herren
 15449068077441	ersetzt-1	Sport-Hoodie mit halbem Reissverschluss und Kapuze
+15449068175745	ersetzt-1	Herren Kapuzenpullover Langarm Casual
+15449068208513	ersetzt-1	Herren Hoodie Pullover mit halbem Reissverschluss
+15449068274049	ersetzt-1	Herren Strickpullover im American-Style
+15449068306817	ersetzt-1	Herren Kapuzenpullover · Fleece
+15449068372353	ersetzt-1	Lässiger Hoodie im Zweiteiler-Look für Herren
+15449068437889	ersetzt-1	Leichtes Leinen-Sweatshirt mit Kapuze
+15449068503425	ersetzt-1	Elastisches Jacquard Kapuzen-Sweatshirt für Herren
+15449068568961	ersetzt-1	Gefütterter Kapuzen-Cardigan aus Fleece
+15449068634497	ersetzt-1	Herren Langarm Polohemd mit Reverskragen

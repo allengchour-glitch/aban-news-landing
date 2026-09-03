@@ -9315,3 +9315,5 @@ gid://shopify/Product/15451515814273	CHF 43.92	1 Varianten	Waschbecken Wasserhah
 gid://shopify/Product/15451515879809	CHF 163.27	1 Varianten	Badezimmerschrank 60x aus Holzwerkstoff
 gid://shopify/Product/15451515912577	CHF 213.52	1 Varianten	Waschtischunterschrank 63x Holz-Verbundwerkstoff
 gid://shopify/Product/15451515945345	CHF 150.41	1 Varianten	2-teiliges Badmöbel-Set, Artisan Eiche
+gid://shopify/Product/15451516109185	CHF 22.87	1 Varianten	Unterwasser LED Pool-Licht mit Fernbedienung
+gid://shopify/Product/15451516174721	CHF 45.70	1 Varianten	Badematte aus Akazienholz
