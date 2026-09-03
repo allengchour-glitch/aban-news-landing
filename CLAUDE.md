@@ -6205,3 +6205,21 @@ Dazu fehlte am Zeilenende das `|` vor `Nagelpilz`. Beides behoben; der Lauf nahm
   (`reihe_ordnen()`, in beiden Laufarten). Live: die sechs Neuen stehen vorn.
 - Die Warenart-Wache verglich nur Kandidaten untereinander — ein zweites «Figurformendes Kleid»
   kam neben das erste. Jetzt zählt die Live-Reihe mit; das Cape-Kleid wieder raus.
+
+## 🔁 Der Container startet ETWA STÜNDLICH neu — und nimmt jeden Motor mit (2026-09-03)
+Der Trust-Schreiber «starb» jede Stunde nach ~150 Produkten, die /tmp-Engines wurden bei jedem
+Keepalive «neu gestartet», der Aufseher war um 06:22 tot (Herzschlag 63 min). Erst `uptime` sagte
+es: **«up 6 min»** — der Container war um ~06:17 neu gestartet, und um ~05:20 ebenso (Todeszeit
+von Aufseher und Schreiber auf die Minute). Es gibt keinen Killer; es gibt Neustarts. /tmp
+und Repo überleben sie (kein Rewind mehr seit dem Wipe vom 30.08.), Prozesse nicht.
+- **Folge für jeden Dauerläufer: Er bekommt höchstens eine Stunde am Stück.** Ein Lauf muss
+  idempotent über ein Ledger sein und darf ohne Schlusszeile sterben — genau so ist der
+  Trust-Schreiber gebaut (4'614 von >10'000 in ~10 h, ~450/h netto).
+- **Und die Stunden-Routine ist damit wirklich die oberste Schicht** (Lehre 29.08.): Ohne sie
+  bleibt nach einem Neustart NICHTS stehen — auch der Aufseher nicht. Wer wie ich lange am
+  Stück arbeitet und die Routine damit aufhält, lässt den Shop bis zu einer Stunde ohne alle
+  Motoren. `uptime` gehört vor jede Diagnose «etwas tötet meine Prozesse».
+- Nebenbei an der Quelle: Faktenblock zeigt keine Material-Zeile mehr, die dem TITEL
+  widerspricht («Futterbar aus Bambus und Keramik» + CJ «Plastic» → Zeile weg; 39 Nachträge
+  geprüft, 0 Widersprüche); Groq-Texte mit Floskel werden einmal nachgebessert (Stichprobe
+  8 Neuimporte: 2 mit «sorgt für»/«hochwertig», du-Form 8/8, Faktenblock 8/8).
