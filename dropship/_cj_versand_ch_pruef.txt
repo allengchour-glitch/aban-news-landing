@@ -368,3 +368,4 @@ alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 
 aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=101	klinge
 diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
 3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+haushaltskuchenmesser-aus-palisander-364608	1405862184520650752	0	-	KEINE CH-Option → DRAFT	klinge

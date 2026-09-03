@@ -57,3 +57,51 @@ export function mark(url) {
   const s = loadSeen(); if (s.has(k)) return;
   fs.appendFileSync(LEDGER, k + '\n');
 }
+
+// ⛔ SIEBTE SCHICHT — DAS PRODUKT (Betreiber-Screenshot 03.09.2026: «Silber-Armreif Serpent»
+// stand ZWEIMAL nebeneinander im Instagram-Raster).
+//
+// WARUM ALLE SECHS WACHEN DAVOR BLIND WAREN: Sie prüfen das MEDIUM (Basename der URL), den
+// TEXTANFANG (capSig) und die LIVE-Caption. Derselbe Armreif steht in `social/posts_image.csv`
+// aber DREIMAL — mit drei IDs, drei Bild-URLs und drei Texten («Neu entdeckt: …», «Dein
+// Sommer-Liebling? …», «Der Armreif «Serpent» umschmeichelt …»). Andere URL, anderer
+// Textanfang: jede der drei Wachen sagt zu Recht «kenne ich nicht». Keine fragt, ob es
+// dieselbe WARE ist. Dieselbe Denkfigur wie «ein Tag-Name ist eine Behauptung» (29.08.):
+// wer ein Merkmal prüft, das die Sache nur vertritt, prüft die Sache nicht.
+//
+// Der Schlüssel ist der Produktname in « » — genau den tragen alle drei Fassungen. Fehlt er,
+// greift die Shopify-Produkt-ID aus der Zeilen-ID. Ohne beides gibt es keinen Schlüssel und
+// die Sperre hält sich heraus; sie ersetzt die anderen Wachen nicht, sie ergänzt sie.
+// ⚠️ Zwei verschiedene Produkte können denselben « »-Namen tragen («Roma» Blazer / «Roma»
+// Tasche). Dann wird der zweite übersprungen — das ist die richtige Richtung: der Auftrag
+// des Betreibers lautet «nie dasselbe zweimal», nicht «möglichst viel posten».
+const P_LEDGER = 'dropship/_posted_produkte.txt';
+
+export function produktKey(caption = '', zeilenId = '') {
+  const m = String(caption).match(/[«"„]([^»"“]{2,40})[»"“]/);
+  if (m) return 'name:' + m[1].toLowerCase().replace(/[^a-zäöüß0-9]/g, '');
+  const id = String(zeilenId).match(/(\d{12,})\s*$/);
+  if (id) return 'pid:' + id[1];
+  // Kein « »-Name und keine Produkt-ID: der Zeilen-Slug muss reichen. Erzeuger-Praefixe
+  // (ki-, kimi-, img-, clip-, post-, auto-, fresh-) und ein angehaengtes Datum gehoeren
+  // nicht zum Produkt und werden abgeschnitten — sonst gilt dieselbe Ware als zwei.
+  const slug = String(zeilenId).toLowerCase()
+    .replace(/^(?:ki|kimi|img|clip|post|auto|fresh\d*|meta-auto)-/, '')
+    .replace(/-\d{4}-\d{2}-\d{2}$/, '')
+    .replace(/-\d{6,}$/, '')
+    .replace(/[^a-z0-9-]/g, '');
+  return slug.length >= 6 ? 'slug:' + slug : '';
+}
+function ladeProdukte() {
+  try { return new Set(fs.readFileSync(P_LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean)); }
+  catch { return new Set(); }
+}
+export function produktGepostet(caption, zeilenId) {
+  const k = produktKey(caption, zeilenId);
+  return !!k && ladeProdukte().has(k);
+}
+export function produktMerken(caption, zeilenId) {
+  const k = produktKey(caption, zeilenId); if (!k) return;
+  const s = ladeProdukte(); if (s.has(k)) return;
+  fs.appendFileSync(P_LEDGER, k + '\n');
+}

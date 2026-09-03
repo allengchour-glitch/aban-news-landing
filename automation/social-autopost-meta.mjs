@@ -20,7 +20,8 @@
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark,
+         produktGepostet, produktMerken, produktKey } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -178,6 +179,14 @@ for(const next of ready.slice(0, MAX)){
     console.log(`   ⛔ Caption schon gepostet (Inhalts-Sperre) → skip: ${sig}`);
     next[idx.status] = 'posted-dup-caption'; fs.writeFileSync(CSV, serialize(rows)); continue;
   }
+  // ⛔ SIEBTE SCHICHT: dieselbe WARE, anderer Text (Betreiber-Screenshot 03.09.2026 — der
+  // «Silber-Armreif Serpent» stand zweimal nebeneinander im Raster). Er steht dreimal in
+  // dieser Queue, mit drei IDs, drei Bild-URLs und drei Texten; Bild-, Caption- und
+  // Live-Sperre sagen alle zu Recht «kenne ich nicht». Keine fragte nach dem PRODUKT.
+  if(!DRY && produktGepostet(caption, next[idx.id])){
+    console.log(`   ⛔ Produkt schon gepostet (Produkt-Sperre) → skip: ${produktKey(caption, next[idx.id])}`);
+    next[idx.status] = 'posted-dup-produkt'; fs.writeFileSync(CSV, serialize(rows)); continue;
+  }
   if(!DRY && await igLiveHas(caption)){      // ⛔ auf IG bereits live (Wahrheit schlägt Ledger)
     console.log(`   ⛔ Auf IG bereits live (Live-Abgleich) → skip: ${sig}`);
     next[idx.status] = 'posted-dup-live'; postMark(imageUrl); fs.writeFileSync(CSV, serialize(rows)); continue;
@@ -201,7 +210,8 @@ for(const next of ready.slice(0, MAX)){
   ]);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
-    if(results[0] && results[0]!==false) postMark(imageUrl);   // IG ok → sofort in gemeinsamen Ledger
+    if(results[0] && results[0]!==false){ postMark(imageUrl);   // IG ok → sofort in gemeinsamen Ledger
+      produktMerken(caption, next[idx.id]); }                  // …und die WARE merken (7. Schicht)
     if(sig) postedCaps.add(sig);                               // Inhalts-Sperre für Folge-Zeilen im selben Lauf
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();
