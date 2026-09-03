@@ -9408,3 +9408,5 @@ gid://shopify/Product/15451640791425	CHF 181.27	1 Varianten	Kühlende Gewichtsde
 gid://shopify/Product/15451640824193	CHF 34.12	1 Varianten	Kühles Sommer-Seidenduvet, Klasse A zertifiziert
 gid://shopify/Product/15451640889729	CHF 33.07	1 Varianten	Leichter Bettüberwurf, knitterarm
 gid://shopify/Product/15451641020801	CHF 51.38	1 Varianten	Leichte Sommer-Kuscheldecke, atmungsaktiv
+gid://shopify/Product/15451641086337	CHF 24.23	1 Varianten	Wolldecke mit Digitaldruck
+gid://shopify/Product/15451641151873	CHF 36.52	1 Varianten	Kühlendes Eis-Seide Anti-Rutsch Sitzkissen
