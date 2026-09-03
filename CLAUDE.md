@@ -6195,3 +6195,7 @@ Dazu fehlte am Zeilenende das `|` vor `Nagelpilz`. Beides behoben; der Lauf nahm
   der Reihe (`IN_REIHE`) ist jetzt die Wahrheit.
 - ⚠️ «WLAN-Controller für LED-Lichtleisten» traf das LED-Strip-Thema — Zubehör, kein Trend.
   Zubehörwörter (Controller, Netzteil, Verlängerung, Adapter) ausgeschlossen.
+- **Kontaktbogen nach dem Lauf (Pflicht):** Trinkbrunnen und Rattan-Korb zeigten Massgrafiken,
+  das EMS-Gerät ein flaches Schnittmuster → je das saubere Foto nach vorn (Bildsatz vorher ganz
+  angesehen, Lehre 21.08.); die neu aufgenommene Leder-Handytasche war eine Zwei-Bild-Collage mit
+  «45°Side»-Beschriftung → `hype-bild-schwach`, aus der Reihe. 11 der 12 Neuen bleiben.
