@@ -223,8 +223,23 @@ def main():
     for gid, titel, alt, neu in aufgaben:
         if gid in done:
             continue
+        # ⚠️ 03.09.2026: NICHT aus dem Export schreiben. Zwischen Export und Schreiben liegen
+        # Minuten bis Stunden, und in dieser Zeit arbeiten ANDERE Textläufe an denselben
+        # Beschreibungen (heute: der Trust-Baustein-Schreiber). Genau so hat ein Massenlauf am
+        # 15.08. bei 149 Produkten den doppelten Block WIEDERBELEBT, den ein früherer entfernt
+        # hatte. Deshalb: unmittelbar vor dem Schreiben den LIVE-Text holen und die Vereinigung
+        # auf diesem rechnen. Ist der Doppelblock live schon weg, wird nichts geschrieben.
+        lr = gql('query($i:ID!){product(id:$i){descriptionHtml}}', {"i": gid})
+        live = (((lr.get("data") or {}).get("product") or {}).get("descriptionHtml")) or ""
+        if not live:
+            print(f"  ⚠️ {titel[:36]}: live nicht lesbar — übersprungen", flush=True)
+            continue
+        neu_live, geaendert_live = vereinen(live)
+        if not geaendert_live or neu_live == live:
+            f.write(f"{gid}\tlive-schon-sauber\n")
+            continue
         r = gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
-                {"i": {"id": gid, "descriptionHtml": neu}})
+                {"i": {"id": gid, "descriptionHtml": neu_live}})
         e = ((r.get("data") or {}).get("productUpdate") or {}).get("userErrors")
         if e:
             print(f"  ⚠️ {titel[:36]}: {e[0]['message'][:60]}", flush=True)

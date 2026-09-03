@@ -614,3 +614,10 @@ klappmesser-mit-karbonfasergriff-601600	2505110148351601900	0	-	KEINE CH-Option 
 titan-taschenmesser-fur-outdoor-und-alltag-613400	2505100638541613800	0	-	KEINE CH-Option → DRAFT	klinge
 japanisches-kochmesser-fur-gemuse-und-fruchte-623500	2406100755181623700	0	-	KEINE CH-Option → DRAFT	klinge
 taktisches-messer-mit-hoher-harte-tragbar-600300	2504250335531600500	0	-	KEINE CH-Option → DRAFT	klinge
+faltmesser-damaststahl-palisander-618400	2504240236371618800	0	-	KEINE CH-Option → DRAFT	klinge
+faltmesser-mit-g10-griff-606100	2504200201351606400	0	-	KEINE CH-Option → DRAFT	klinge
+taschenmesser-aus-titanlegierung-606600	2504190213281606900	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-klappmesser-d2-605900	2504190208591606100	0	-	KEINE CH-Option → DRAFT	klinge
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet	2605200358321629800	11	5.71	ok	landeseite
+monitor-lichtleiste-mit-bewegungssensor-blendfreies-schreibtischlicht-usb	2605310250451635700	6	20.13	ok	landeseite
