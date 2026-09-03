@@ -23163,3 +23163,6 @@ gid://shopify/Product/15517322183041	ok
 gid://shopify/Product/15517322051969	ok
 gid://shopify/Product/15517321822593	ok
 gid://shopify/Product/15517321625985	ok
+gid://shopify/Product/15517368353153	ok
+gid://shopify/Product/15517355704705	ok
+gid://shopify/Product/15517354918273	ok

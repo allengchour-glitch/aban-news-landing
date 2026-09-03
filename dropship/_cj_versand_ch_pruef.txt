@@ -364,3 +364,4 @@ kleines-kuchenmesser-mit-holzgriff-026240	1405866370691895296	0	-	KEINE CH-Optio
 kleines-kuchenmesser-aus-longquan-musterstahl-367040	1405864908742070272	0	-	KEINE CH-Option → DRAFT	klinge
 longquan-handgeschmiedetes-kleines-kuchenmesse-217088	1405864175762280448	0	-	KEINE CH-Option → DRAFT	klinge
 longquan-handgeschmiedetes-kuchenmesser-gehamm-485184	1405862807253159936	0	-	KEINE CH-Option → DRAFT	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=113	klinge
