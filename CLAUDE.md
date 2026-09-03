@@ -6353,3 +6353,16 @@ wieder gelöscht. **Ein `createOrderV2` mit code 200 beweist keine Lieferbarkeit
   manuelle Offerte CN→CH für vid 2601150313151634500, sonst Bestätigung, dass Klingen für CH generell
   ausgeschlossen sind. Antwort per Gmail-Suche prüfen (Absender cjdropshipping.com); Erinnerung via send_later
   gesetzt. Bis dahin: Messer DRAFT, Schatten «#1016» im CJ-Warenkorb NICHT bezahlen, Kunde noch nicht informiert.
+
+## 🪣 Grind-Pause auf Zuruf — der Aufseher hatte einen ZWEITEN Runner-Starter (2026-09-03)
+Der CH-Versand-Prüflauf (`cj_versand_ch_sichtbar.py`, 636 Kandidaten) kam nicht voran: Vier Grind-Runner halten
+den geteilten CJ-Eimer dauerhaft bei ~0 (gemessen remaining 11 → 1 → 16900500 in 20 s). Deshalb
+**`dropship/_GRIND_PAUSE_BIS`** (UTC-Epoche): bis dahin gilt in `engine_keepalive.sh` VORRANG wie im 16-Uhr-Fenster.
+- ⚠️ **Nach dem Setzen liefen 4 Minuten später wieder vier Runner.** `fixer_keepalive.sh` hat seinen EIGENEN
+  Runner-Block (Zeile ~993, «Turn-Reaping killt sie sonst»), der die Pause nicht kannte — dieselbe
+  Geschwister-Klasse wie die zwei Startlisten vom 20.08. Jetzt prüfen beide Starter dieselbe Datei.
+- ⚠️ **16900500 kommt auch bei LEEREM EIMER**, nicht nur bei erschöpftem Tagesbudget (60 s später wieder 200,
+  remaining 131). Ein Lauf, der beim ersten 16900500 abbricht, bricht bei jedem Tief ab — erst fünf Wartezyklen
+  gelten als Tagesende. Und eine leere Freight-Liste bei remaining < 60 ist «unklar», kein Urteil.
+- ⚠️ Eigener Fehler: `pkill` im selben Bash-Compound (Exit 144) hat den Neustart des Prüflaufs verschluckt, danach
+  liefen zwei Instanzen ohne Sperre — Regel 7 gilt auch für mich. Der Aufseher startet ihn jetzt mit flock.
