@@ -6627,3 +6627,38 @@ vertritt, prüft die Sache nicht.**
   blockiert — sie WURDE bereits gepostet (im Screenshot mit 7 Aufrufen). Gegenprobe mit
   wirklich neuer Ware: frei. **Bevor man einen Melder für kaputt erklärt, prüft man, ob seine
   Aussage stimmt.**
+
+## 🧹 «Mach alles sauber» — die Warteschlange bewarb zur Hälfte Ware, die es nicht gibt (2026-09-03)
+Betreiber nach dem Doppelpost-Screenshot. Aufgeräumt wurde mit `automation/social_queue_saeubern.py`
+(ändert NICHTS ausser der Status-Spalte, jede Zeile bleibt lesbar und rücksetzbar) über alle vier
+Warteschlangen. Von 349 als `ready` markierten Zeilen sind **107 übrig**:
+
+| Grund | Zeilen |
+|---|---:|
+| **beworbenes Produkt ist nicht mehr ACTIVE** | **161** |
+| Text bewirbt einen vergangenen Anlass (Sommer, Muttertag, 1. August) | 55 |
+| dieselbe WARE steht schon in der Queue oder wurde gepostet | 21 |
+| Medium auf der toten Domain abannews.com | 5 |
+
+**Mehr als die Hälfte der Bild-Queue hätte auf gedraftete Produkte verlinkt** — acht Stichproben
+einzeln nachgeprüft, alle wirklich DRAFT (HEPA-Luftreiniger, Kühlbox, Salzkristall-Lampe …).
+Das ist die Klimaanlagen-Falle vom 07.07. in gross: Wer klickt, landet auf einem 404.
+- ⚠️ Der Status kommt aus einer LIVE-Abfrage; fällt sie aus, wird NICHT gedraftet — ein
+  Nullergebnis aus einer kaputten Abfrage ist kein Befund.
+- ⚠️ Halloween, Herbst und Advent stehen bewusst NICHT in der Saison-Liste: **ein Saisonwort ist
+  nur dann ein Fehler, wenn die Saison vorbei ist.**
+
+**🎛️ Und ein Tor, das gegen seine eigene Regel arbeitete.** `variant_value_clean.py` prüft jede
+Option zuerst gegen ein grobes Vorfilter-Muster `BAD` und wendet erst danach die Regeln an. `BAD`
+ist gross-/kleinschreibungsEMPFINDLICH, die Regel `STYLENR` dahinter nicht (`re.I`). Folge:
+«3 style» wurde am 29.08. repariert, **«3Style», «10 Style» und «1Style» kamen am Tor nie vorbei**
+— die Kundin las im Auswahlfeld «Farbe: 10Style». 23 Optionen, teils mit 99 Werten. Mit
+`(?i:…)` im Tor behoben, danach 24 + 4 Optionen bereinigt und live gegengeprüft: «Muster 1» …
+«Muster 10». **Ein Vorfilter und seine Regel müssen dieselbe Frage stellen, sonst prüft man zwei
+Dinge und glaubt, es sei eines.**
+- ⚠️ Die Mehrzahl fehlte ebenfalls: «5 Styles» stand als einziger roher Wert zwischen «Muster 1»
+  und «Muster 6». `styles?` ergänzt.
+- ⚠️ **Was NICHT repariert wurde und warum:** Rund 90 Produkte tragen reine Lieferantencodes als
+  Farbwert («YN9223», «LDP260325331», «BN5901015A»). Dahinter gibt es bei CJ keine Ebene mehr
+  (Befund 23.08.) — eine Umbenennung in «Muster 1..N» wäre eine erfundene Ordnung. Sie bleiben
+  roh; der richtige Weg ist ein Variantenbild, nicht ein erfundener Name.

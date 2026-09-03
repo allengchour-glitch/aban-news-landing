@@ -369,3 +369,223 @@ aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unkla
 diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
 3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
 haushaltskuchenmesser-aus-palisander-364608	1405862184520650752	0	-	KEINE CH-Option → DRAFT	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=2281	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=2261	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+anis-kuchenmesser-klein-896128	1405858577465348096	0	-	KEINE CH-Option → DRAFT	klinge
+anise-kleines-kuchenmesser-324288	1405858007178416128	0	-	KEINE CH-Option → DRAFT	klinge
+anis-kleines-kuchenmesser-348992	1405851807929995264	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-mit-hexagongriff-974464	1405844693924843520	0	-	KEINE CH-Option → DRAFT	klinge
+sechseckiges-kuchenmesser-aus-palisander-861248	1405842650740953088	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-aus-palisander-898496	1405841141470990336	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-7cr17mov-stahl-palisander-440256	1405840367898726400	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-aus-rosenholz-308864	1405826453370703872	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-850048	1405825641579941888	0	-	KEINE CH-Option → DRAFT	klinge
+kuchenmesser-aus-manganstahl-handgeschmiedet-927168	1406068458042560512	0	-	KEINE CH-Option → DRAFT	klinge
+crane-kuchenmesser-335552	1405821055318233088	0	-	KEINE CH-Option → DRAFT	klinge
+anis-kuchenmesser-661952	1405820343775531008	0	-	KEINE CH-Option → DRAFT	klinge
+anis-kuchenmesser-043584	1405819583260135424	0	-	KEINE CH-Option → DRAFT	klinge
+anis-kuchenmesser-20-cm-klinge-171648	1405826533892952064	0	-	KEINE CH-Option → DRAFT	klinge
+surf-kleines-kuchenmesser-679040	1405816057712742400	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-santoku-stahlmesser-set-5-teilig-851328	1404261454873497600	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-scimitar-ausbeinmesser-862976	1402864088433954816	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-knochenmesser-klein-208768	1402863175518523392	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-segmentierungs-und-knochenmesser-klein-098880	1402839325883895808	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-ausbeinmesser-segmentiert-188864	1402836902830280704	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-ausbein-filetiermesser-schlank-073728	1402834033909567488	0	-	KEINE CH-Option → DRAFT	klinge
+rustmesser-mit-palisandergriff-205504	1402832135630491648	0	-	KEINE CH-Option → DRAFT	klinge
+simon-leopard-bone-messer-050176	1402831199545724928	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-knochenmesser-mit-mahagonigriff-434816	1402823239935332352	0	-	KEINE CH-Option → DRAFT	klinge
+tiger-bone-knife-vielseitiges-kuchenmesser-718080	1402821608850198528	0	-	KEINE CH-Option → DRAFT	klinge
+salt-brother-hackbeil-ausbeinmesser-418752	1402810809339482112	0	-	KEINE CH-Option → DRAFT	klinge
+metzger-messer-set-3-teilig-palisandergriff-562112	1402828281761370112	0	-	KEINE CH-Option → DRAFT	klinge
+yulong-knochenmesser-618240	1402830198923202560	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-kochmesser-mit-holzgriff-579584	1400743779257946112	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-faltmesser-s30v-mit-nylon-griff-367168	1608710636714864640	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-edelstahl-faltmesser-804928	1608708364668776448	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-faltmesser-mermaid-508672	1608358204780589056	0	-	KEINE CH-Option → DRAFT	klinge
+haushalts-tranchiermesser-aus-edelstahl-634368	1608343204917686272	0	-	KEINE CH-Option → DRAFT	klinge
+elektrischer-messerscharfer-mit-diamant-harz-533824	1608340428007419904	11	27.39	ok	klinge
+japanisches-kuchenmesser-set-aus-edelstahl-535040	1608289557924032512	0	-	KEINE CH-Option → DRAFT	klinge
+viking-pizza-beil-handgemacht-aus-edelstahl-717504	1607999119350575104	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-hackmesser-918272	1607987627112804352	0	-	KEINE CH-Option → DRAFT	klinge
+kochmesser-damast-stahl-20-cm-457536	1399627007549116416	0	-	KEINE CH-Option → DRAFT	klinge
+elektrisches-tranchiermesser-fur-grillfleisch-119552	1465211267760394240	6	34.19	ok	klinge
+damast-kochmesser-mit-holzgriff-584768	1397870718036873216	0	-	KEINE CH-Option → DRAFT	klinge
+manueller-gemuseschneider-mit-5-klingen-000448	1396080014075760640	11	24.79	ok	klinge
+klappmesser-aus-edelstahl-fur-outdoor-camping-352320	1607287529563238400	0	-	KEINE CH-Option → DRAFT	klinge
+damast-muster-kochmesser-440448	1395628998301716480	0	-	KEINE CH-Option → DRAFT	klinge
+damast-universalmesser-5-zoll-165312	1394854890441936896	0	-	KEINE CH-Option → DRAFT	klinge
+gehammertes-kochmesser-mit-achteckigem-oder-ru-775424	1394545049055924224	0	-	KEINE CH-Option → DRAFT	klinge
+17-teiliges-kuchenmesser-set-aus-edelstahl-235776	1580452803259150336	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-kuchenmesser-fur-obst-hausha-636416	1579074163082539008	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-faltmesser-aus-edelstahl-755072	1577889395187920896	0	-	KEINE CH-Option → DRAFT	klinge
+brotmesser-mit-wellenschliff-620400	2603060824311620900	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-ausbeinmesser-mit-rosenholzg-122112	1559386811921870848	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-camping-kuchenmesser-mit-scheide-237376	1552538694731706368	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-damast-universalmesser-005184	1515245684830777344	0	-	KEINE CH-Option → DRAFT	klinge
+orangenschaler-mit-edelstahlklinge-185152	1383289875767365632	11	5.05	ok	klinge
+dmd-diamant-keramik-messerscharfer-754880	1380416202408595456	11	24.62	ok	klinge
+seido-santoku-messer-im-japanischen-stil-282176	1507183074487054336	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-damast-kuchenmesser-67-lagen-766656	1501756765476761600	0	-	KEINE CH-Option → DRAFT	klinge
+chef-messer-set-aus-edelstahl-801920	1499648521136517120	0	-	KEINE CH-Option → DRAFT	klinge
+damaststahl-gemusemesser-624384	1499645080259538944	0	-	KEINE CH-Option → DRAFT	klinge
+modernes-edelstahl-kuchenmesser-055232	1499641435124150272	0	-	KEINE CH-Option → DRAFT	klinge
+chefsmesser-mit-blauem-harzgriff-20-cm-588608	1495214934496251904	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-7-zoll-kuchenmesser-222144	1493129618138468352	0	-	KEINE CH-Option → DRAFT	klinge
+messer-scharfer-fur-die-kuche-236736	1529014731162529792	11	10.78	ok	klinge
+kuchenmesser-aus-edelstahl-vielseitig-einsetzb-865920	1473933719608889344	0	-	KEINE CH-Option → DRAFT	klinge
+traditionelles-handliches-kuchenmesser-aus-ede-856320	1472083832667770880	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-kochmesser-longquan-452160	1470227609777475584	0	-	KEINE CH-Option → DRAFT	klinge
+keramikmesser-set-mit-6-schwarzen-klingen-034176	1367326150241685504	0	-	KEINE CH-Option → DRAFT	klinge
+haushalts-kochmesser-aus-damaszenerstahl-476480	1460853843914002432	0	-	KEINE CH-Option → DRAFT	klinge
+sato-lachs-sashimi-messer-mehrzweck-718592	1456874714717884416	0	-	KEINE CH-Option → DRAFT	klinge
+profi-metzgermesser-aus-karbonstahl-731776	1452900334249840640	0	-	KEINE CH-Option → DRAFT	klinge
+handgemachtes-fisch-fleischmesser-aus-edelstah-762560	1450853731963899904	0	-	KEINE CH-Option → DRAFT	klinge
+geschmiedetes-ausbeinmesser-419072	1355086647389196288	0	-	KEINE CH-Option → DRAFT	klinge
+retro-gezacktes-hackmesser-399616	1446777439291314176	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-hackmesser-longquan-363136	1446396181797277696	0	-	KEINE CH-Option → DRAFT	klinge
+keramik-messer-set-fur-obst-und-gemuse-3-teili-796224	1434428394380070912	0	-	KEINE CH-Option → DRAFT	klinge
+sanhe-stahl-kuchenmesser-243008	1423464734165962752	0	-	KEINE CH-Option → DRAFT	klinge
+willow-blade-sashimi-und-kochmesser-set-668096	1423194729218183168	0	-	KEINE CH-Option → DRAFT	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
+elektronischer-handkraft-messer-187648	1555802065484656640	6	17.28	ok	klinge
+kochmesser-western-stil-8-zoll-a547f6	-	-	-	unklar keine CJ-SKU	klinge
+geschmiedetes-schalmesser-aus-edelstahl-637760	1418107790307758080	0	-	KEINE CH-Option → DRAFT	klinge
+japanische-damast-kuchenmesser-a0b8c1	-	-	-	unklar keine CJ-SKU	klinge
+hezhen-fischkopfmesser-180mm-d33251	-	-	-	unklar keine CJ-SKU	klinge
+geschmiedetes-durian-schalmesser-928960	1417739414985117696	0	-	KEINE CH-Option → DRAFT	klinge
+ringmesser-fur-fisch-und-fleisch-835584	1417732277663830016	0	-	KEINE CH-Option → DRAFT	klinge
+geschmiedetes-fisch-und-fleischmesser-543616	1417385169295380480	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-kochmesser-aus-damaststahl-449856	1414863759880622080	0	-	KEINE CH-Option → DRAFT	klinge
+metzgermesser-zum-zerlegen-entbeinen-583360	1414514832157315072	0	-	KEINE CH-Option → DRAFT	klinge
+damaszener-multifunktionsmesser-67-lagen-604300	2602040243131604600	0	-	KEINE CH-Option → DRAFT	klinge
+kuchenregal-fur-gewurze-messer-7e619d	-	-	-	unklar keine CJ-SKU	klinge
+handgeschmiedetes-kochmesser-aus-edelstahl-b41d62	-	-	-	unklar keine CJ-SKU	klinge
+8-zoll-kochmesser-im-westlichen-stil-254016	1406816274218094592	0	-	KEINE CH-Option → DRAFT	klinge
+tiger-head-teemesser-811584	1405829393212903424	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-teemesser-mit-kupfergriff-158848	1405828825388027904	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-tee-messer-aus-integriertem-stahl-634368	1405827990750892032	0	-	KEINE CH-Option → DRAFT	klinge
+guan-gong-teemesser-mit-pinienblatt-griff-829696	1405826412946001920	0	-	KEINE CH-Option → DRAFT	klinge
+guan-gong-teemesser-mit-pflaumenbluten-griff-118848	1405822623044210688	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-teemesser-pflaume-edelstahl-mit-kupfe-636864	1405821842710728704	0	-	KEINE CH-Option → DRAFT	klinge
+teemesser-six-pointed-star-921408	1405825806286065664	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-knochenmesser-865344	1402879551687757824	0	-	KEINE CH-Option → DRAFT	klinge
+full-moon-ausbeinmesser-087424	1402877072875065344	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kochmesser-vg10-western-stil-621952	1402870657657737216	0	-	KEINE CH-Option → DRAFT	klinge
+full-moon-ausbeinmesser-leicht-493376	1402869541427613696	0	-	KEINE CH-Option → DRAFT	klinge
+tibetischer-mastiff-ausbeinmesser-814912	1402868558739935232	0	-	KEINE CH-Option → DRAFT	klinge
+ausbeinmesser-rosewood-505408	1402867483907592192	0	-	KEINE CH-Option → DRAFT	klinge
+musterstahl-8-zoll-chef-sushi-und-sashimimesse-500800	1400985574529175552	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kochmesser-8-zoll-912768	1401003639186788352	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kochmesser-mit-g10-griff-848448	1400754105105911808	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-kochmesser-fur-haushalt-kuch-189696	1354990841453744128	0	-	KEINE CH-Option → DRAFT	klinge
+8-teiliges-kochmesser-set-im-western-stil-8-st-29bb98	-	-	-	unklar keine CJ-SKU	klinge
+kuchenmesser-aus-edelstahl-schleiffrei-d991e4	-	-	-	unklar keine CJ-SKU	klinge
+handgeschmiedetes-edelstahl-spezialmesser-a0f523	-	-	-	unklar keine CJ-SKU	klinge
+geschmiedetes-verbundstahl-haushaltsmesser-78aef8	-	-	-	unklar keine CJ-SKU	klinge
+xinzuo-8-zoll-vg10-damast-kochmesser-06cb45	-	-	-	unklar keine CJ-SKU	klinge
+metzgermesser-set-zum-zerlegen-enthauten-2d6904	-	-	-	unklar keine CJ-SKU	klinge
+pearl-life-kasemesser-gelb-75ef24	-	-	-	unklar keine CJ-SKU	klinge
+handgeschmiedetes-scimitar-ausbeinmesser-696c89	-	-	-	unklar keine CJ-SKU	klinge
+chefmesser-mit-blauem-harzgriff-8-zoll-cd1c0e	-	-	-	unklar keine CJ-SKU	klinge
+japanisches-kochmesser-mit-damastmuster-2b519f	-	-	-	unklar keine CJ-SKU	klinge
+profi-fischmesser-aus-edelstahl-66b9ea	-	-	-	unklar keine CJ-SKU	klinge
+klappbares-rustmesser-mit-g10-griff-b69382	-	-	-	unklar keine CJ-SKU	klinge
+handgeschmiedetes-hackmesser-aus-hochmangansta-96dcca	-	-	-	unklar keine CJ-SKU	klinge
+forge-longquan-kuchenmesser-handgefertigt-03e8e7	-	-	-	unklar keine CJ-SKU	klinge
+handgeschmiedetes-hackmesser-aus-karbonstahl-4eea62	-	-	-	unklar keine CJ-SKU	klinge
+knochen-fleisch-und-fischmesser-097273	-	-	-	unklar keine CJ-SKU	klinge
+leder-kochmesser-rolltasche-012a99	-	-	-	unklar keine CJ-SKU	klinge
+mangan-edelstahl-tranchiermesser-0bfbf3	-	-	-	unklar keine CJ-SKU	klinge
+keramikmesser-set-mit-schwarzer-klinge-5-teili-99021d	-	-	-	unklar keine CJ-SKU	klinge
+universal-schalmesser-8a5eea	-	-	-	unklar keine CJ-SKU	klinge
+wetzstein-800-8000er-kornung-d7fafb	-	-	-	unklar keine CJ-SKU	klinge
+japanisches-kochmesser-mit-anti-rutsch-griff-41ceb6	-	-	-	unklar keine CJ-SKU	klinge
+rahmatia-stahlmesser-holzgriff-50-stuck-61a3aa	-	-	-	unklar keine CJ-SKU	klinge
+damaststahl-kuchenmesser-mit-achteckigem-griff-3e9e25	-	-	-	unklar keine CJ-SKU	klinge
+geschmiedetes-edelstahl-kuchenmesser-b7a41e	-	-	-	unklar keine CJ-SKU	klinge
+handgeschmiedetes-fisch-und-filetiermesser-142c78	-	-	-	unklar keine CJ-SKU	klinge
+damaststahl-kuchenmesser-20c9e1	-	-	-	unklar keine CJ-SKU	klinge
+yangjiang-haushaltsmesser-d505c3	-	-	-	unklar keine CJ-SKU	klinge
+gemuseschneider-mit-4-klingen-und-auffangbehal-2f05df	-	-	-	unklar keine CJ-SKU	klinge
+damast-kochmesser-im-western-stil-66144b	-	-	-	unklar keine CJ-SKU	klinge
+kochmesser-aus-rostfreiem-stahl-311b9c	-	-	-	unklar keine CJ-SKU	klinge
+stahlmesser-mit-ebenholzgriff-e10f58	-	-	-	unklar keine CJ-SKU	klinge
+fischfiletiermesser-fur-kuche-haushalt-8a9c4a	-	-	-	unklar keine CJ-SKU	klinge
+kuchenmesser-aus-edelstahl-7b40fa	-	-	-	unklar keine CJ-SKU	klinge
+faltbares-rustmesser-871abf	-	-	-	unklar keine CJ-SKU	klinge
+kochmesser-mit-wengeholzgriff-31025f	-	-	-	unklar keine CJ-SKU	klinge
+outdoor-faltmesser-tragbar-634900	2512260812471635200	0	-	KEINE CH-Option → DRAFT	klinge
+handgeschmiedetes-hackmesser-hohe-harte-557559	-	-	-	unklar keine CJ-SKU	klinge
+keramik-sparschaler-mit-zirkonia-klinge-6829c8	-	-	-	unklar keine CJ-SKU	klinge
+diamant-messerscharfer-mit-festem-winkel-c8b87b	-	-	-	unklar keine CJ-SKU	klinge
+geschmiedetes-ausbeinmesser-mit-lederhulle-603900	2504090639511604300	1	10.55	ok	klinge
+damastmesser-set-6ac1ea	-	-	-	unklar keine CJ-SKU	klinge
+kuchenmesser-set-5-teilig-edelstahl-601600	2510120609011601800	1	31.43	ok	klinge
+kreatives-6-teiliges-kasemesser-set-231744	1544144150529060864	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-faltmesser-aus-carbon-und-edelstahl-618000	2603290332391618400	0	-	KEINE CH-Option → DRAFT	klinge
+taktisches-outdoor-messer-mit-g10-griff-605300	2512070133251605500	0	-	KEINE CH-Option → DRAFT	klinge
+hochwertiges-edc-titan-klappmesser-612900	2512050339511613100	0	-	KEINE CH-Option → DRAFT	klinge
+eafengrow-outdoor-campingmesser-haushalt-612100	2512040935081612300	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-kochmesser-aus-damaszenerstahl-005568	1515249074449166336	0	-	KEINE CH-Option → DRAFT	klinge
+taktisches-camping-und-fruchtemesser-615101	2511160618181615300	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionsmesser-fur-outdoor-aktivitaten-627900	2511160400061628100	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-survivalmesser-mit-hanfgriff-620500	2511160348411620700	0	-	KEINE CH-Option → DRAFT	klinge
+taschenmesser-fur-survival-und-selbstverteidig-622100	2511160346291622300	0	-	KEINE CH-Option → DRAFT	klinge
+mini-messer-aus-damaststahl-und-yaebai-holz-634600	2511160341491634800	0	-	KEINE CH-Option → DRAFT	klinge
+kompaktes-klappmesser-mit-d2-stahlklinge-612700	2511140548381613000	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-faltmesser-aus-damaststahl-621200	2511130518331621400	0	-	KEINE CH-Option → DRAFT	klinge
+kompaktes-edelstahl-klappmesser-635300	2511130502161635500	0	-	KEINE CH-Option → DRAFT	klinge
+klappmesser-mit-carbonfaser-griff-608900	2511130309501609300	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-taschenmesser-f203s-h-633300	2511120746261633500	0	-	KEINE CH-Option → DRAFT	klinge
+outdoormesser-aus-damaststahl-621000	2511120317511621200	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kuchenmesser-western-style-609900	2511120157401600100	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-outdoor-messer-dl30-gelb-622400	2511100556381622600	0	-	KEINE CH-Option → DRAFT	klinge
+leichtes-multifunktionales-klappmesser-607100	2511090923181607300	0	-	KEINE CH-Option → DRAFT	klinge
+taschenmesser-aus-edelstahl-klappbar-623500	2511090300341624600	0	-	KEINE CH-Option → DRAFT	klinge
+golden-snake-faltmesser-fur-outdoor-camping-607500	2511090252541607700	0	-	KEINE CH-Option → DRAFT	klinge
+leichtes-faltbares-karbonfaser-messer-617100	2511090251521617300	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-damast-brotmesser-929024	1418813786009243648	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-damast-kuchenmesser-149056	1418812824527966208	0	-	KEINE CH-Option → DRAFT	klinge
+japanisches-damast-stahl-kuchenmesser-437504	1418810815829643264	0	-	KEINE CH-Option → DRAFT	klinge
+damast-brotmesser-562432	1418809549514739712	0	-	KEINE CH-Option → DRAFT	klinge
+damast-kochmesser-fur-lachs-sashimi-908672	1418808396974526464	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-faltmesser-aus-d2-stahl-612800	2511050922331613000	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-outdoor-messer-625200	2511040507521625400	0	-	KEINE CH-Option → DRAFT	klinge
+damast-slicing-kochmesser-gebrochenes-muster-894656	1407681050708152320	0	-	KEINE CH-Option → DRAFT	klinge
+antihaft-fleischhackmesser-fur-die-kuche-138240	1407137335988064256	0	-	KEINE CH-Option → DRAFT	klinge
+knochenbeil-aus-manganstahl-mit-bambusgriff-195200	1407134714522898432	0	-	KEINE CH-Option → DRAFT	klinge
+knochenbeil-aus-longquan-stahl-387584	1407134020936011776	0	-	KEINE CH-Option → DRAFT	klinge
+antihaft-hackmesser-fur-fleisch-109824	1406964382285565952	0	-	KEINE CH-Option → DRAFT	klinge
+messer-zum-hacken-von-knochen-und-fleisch-565632	1406963002690899968	0	-	KEINE CH-Option → DRAFT	klinge
+tigerkopf-knochenbeil-662144	1406957580844142592	0	-	KEINE CH-Option → DRAFT	klinge
+kirin-knochenhackbeil-171264	1406955542097825792	0	-	KEINE CH-Option → DRAFT	klinge
+shenlong-knochenhackmesser-307584	1406954170266816512	0	-	KEINE CH-Option → DRAFT	klinge
+eagle-wings-5-hackbeil-fur-knochen-467520	1406853568576753664	0	-	KEINE CH-Option → DRAFT	klinge
+golden-tiger-knochenbeil-974272	1406852843465478144	0	-	KEINE CH-Option → DRAFT	klinge
+black-tiger-knochenbeil-577792	1406851186094641152	0	-	KEINE CH-Option → DRAFT	klinge
+longquan-handgeschmiedetes-kuchenmesser-884160	1405863493864919040	0	-	KEINE CH-Option → DRAFT	klinge
+rosenholz-sternanis-kuchenmesser-977216	1405849128822509568	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-gehammertes-kuchenmesser-mit-holzgriff-776832	1405815251731091456	0	-	KEINE CH-Option → DRAFT	klinge
+damast-vg-10-stahl-kuchenmesser-732864	1405814459154436096	0	-	KEINE CH-Option → DRAFT	klinge
+fruchtmesser-aus-4cr13mov-edelstahl-375616	1405818750392995840	0	-	KEINE CH-Option → DRAFT	klinge
+kleines-kuchenmesser-mit-drachengriff-814144	1405806312012517376	0	-	KEINE CH-Option → DRAFT	klinge
+damast-sante-kleines-kochmesser-705408	1405804951552266240	0	-	KEINE CH-Option → DRAFT	klinge
+santoku-messer-974272	1405803939655454720	0	-	KEINE CH-Option → DRAFT	klinge
+fischmesser-aus-palisanderholz-217152	1405800974169280512	0	-	KEINE CH-Option → DRAFT	klinge
+klassisches-v-klingen-kuchenmesser-673664	1405798750076669952	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-ausbeinmesser-kleines-modell-377408	1402862080423497728	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-ausbeinmesser-886592	1402860737105367040	0	-	KEINE CH-Option → DRAFT	klinge
+chilong-ausbeinmesser-7cr17mov-stahl-965440	1402859237381640192	0	-	KEINE CH-Option → DRAFT	klinge
+lotus-fischfiletiermesser-scharf-leicht-scharf-587968	1402856610702954496	0	-	KEINE CH-Option → DRAFT	klinge
+damast-klappmesser-fur-outdoor-und-kuche-614400	2508070226311614600	0	-	KEINE CH-Option → DRAFT	klinge
+sanhe-stahl-skd-11-klappmesser-604700	2508040919041605300	0	-	KEINE CH-Option → DRAFT	klinge
+multifunktionales-g10-outdoor-faltmesser-619900	2507290149361610100	0	-	KEINE CH-Option → DRAFT	klinge
+g02-samurai-outdoor-survivalmesser-627800	2507260249411628000	0	-	KEINE CH-Option → DRAFT	klinge
+mashige-outdoor-faltmesser-aus-damaststahl-629900	2507240815321620400	0	-	KEINE CH-Option → DRAFT	klinge
+gt0042-faltmesser-fur-outdoor-camping-607700	2507170619501608800	0	-	KEINE CH-Option → DRAFT	klinge
+outdoor-klappmesser-mit-stahlgriff-603200	2507160941261603600	0	-	KEINE CH-Option → DRAFT	klinge
+santoku-messer-mit-achteckigem-griff-7-zoll-629100	2407150640581629300	0	-	KEINE CH-Option → DRAFT	klinge
+doppeltes-kuchenmesser-dragon-phoenix-mandarin-623700	2407140148031623900	0	-	KEINE CH-Option → DRAFT	klinge
