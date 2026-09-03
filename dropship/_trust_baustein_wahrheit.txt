@@ -4969,3 +4969,178 @@
 15448951161217	ersetzt-1	Futtertrog aus Metall für diverse Kleintiere
 15448951193985	ersetzt-1	Erhöhter Keramiknapf für Katzen & Hunde
 15448951226753	ersetzt-1	Interaktives Futterspielzeug Wal
+15448951259521	ersetzt-1	Automatischer Futterspender für Katzen
+15448951325057	ersetzt-1	Futter- und Trinkstation für Haustiere
+15448951390593	ersetzt-1	Futter- und Wasserspender-Kombination
+15448951423361	ersetzt-1	Futter- und Wasserspender für Katzen
+15448951456129	ersetzt-1	Katzen- und Hunde-Gras-Biskuits gegen Haarballen
+15448951521665	ersetzt-1	Multifunktionaler Saugnapf-Futterspender
+15448951587201	ersetzt-1	Velohelm für Kinder und Erwachsene
+15448951619969	ersetzt-1	Velohelm mit App-gesteuertem LED-Display
+15448951685505	ersetzt-1	Velohelm mit integrierter Schutzbrille
+15448951718273	ersetzt-1	Kinder Velohelm mit Magnetbrille
+15448951783809	ersetzt-1	Velohelm für Kinder, Cartoon-Design
+15448951849345	ersetzt-1	Aero Bike Helm – Unisex
+15448951914881	ersetzt-1	Helm für Outdoor-Sport & Requisiten
+15448951980417	ersetzt-1	Skihelm-Überzug mit integriertem Visier
+15448952144257	ersetzt-1	Velohelm mit magnetischem Visier
+15448952242561	ersetzt-1	Velohelm mit Schild und 5-Modi-Licht
+15448952308097	ersetzt-1	Retro Velohelm für City & Outdoor
+15448952406401	ersetzt-1	LED-Helm für City- und Freizeitfahrten
+15448952471937	ersetzt-1	Smarter Velohelm mit Dual Control
+15448952537473	ersetzt-1	Velohelm mit integriertem Warnlicht
+15448952635777	ersetzt-1	Velohelm mit Warnlicht und Bluetooth-Audio · Grösse L 58–61 
+15448952766849	ersetzt-1	Velo- und Skateboard-Helm für Pendler · Grösse L 58–61 cm
+15448952832385	ersetzt-1	LED Velohelm für Damen und Herren
+15448952996225	ersetzt-1	Vielseitiger Helm für Sport & Freizeit
+15448953061761	ersetzt-1	Wassersport-Helm für Kajak und Rettung
+15448953127297	ersetzt-1	Short Track Helm für Eisschnelllauf
+15448953225601	ersetzt-1	Velohelm mit UV-Schutz und Sonnenblende
+15448953291137	ersetzt-1	Helm für Hip-Hop, Rollsport & Outdoor-Aktivitäten
+15448953356673	ersetzt-1	Skihelm für Indoor- & Outdoor-Pisten
+15448953422209	ersetzt-1	Sport- und Outdoor-Helm
+15448953520513	ersetzt-1	Kletter-, Höhlen- und Bergsporthelm
+15448953684353	ersetzt-1	Kinder-Velohelm für Skate & Roller
+15448953782657	ersetzt-1	Vielseitiger Outdoor-Fahrradhelm (verstellbar) · Grösse L Ad
+15448953815425	ersetzt-1	Vielseitiger Outdoor-Fahrradhelm · Grösse L Adjust 52–62 CM
+15448953880961	ersetzt-1	Plum Scooter Helm für Outdoor-Sport
+15448954110337	ersetzt-1	Retro-Halbschalenhelm für E-Motorräder
+15448954208641	ersetzt-1	Velo- und Skates-Helm für Erwachsene und Kinder
+15448954470785	ersetzt-1	Kinder Velohelm mit Cartoon-Motiven
+15448954536321	ersetzt-1	Winter-Velohelm mit Anti-Beschlag Visier
+15448954569089	ersetzt-1	Velo-Sturmhaube mit UV-Schutz
+15448954634625	ersetzt-1	Halbhelm für Kinder – UV-Schutz, 4 Jahreszeiten
+15448954667393	ersetzt-1	Ganzjahres E-Motorradhelm für Paare
+15448954732929	ersetzt-1	Elektroroller-Halbhelm für Damen und Herren
+15448954798465	ersetzt-1	Reithelm für Outdoor-Reitsport
+15448954831233	ersetzt-1	Skihelm mit Visier
+15448954896769	ersetzt-1	Reithelm-Visier für Outdoor-Aktivitäten
+15448954962305	ersetzt-1	Reithelm für Erwachsene und Kinder
+15448955126145	ersetzt-1	Velohelm für City, Freizeit und Sport
+15448955191681	ersetzt-1	Reithelm verstellbar
+15448955257217	ersetzt-1	Beheizbare Sturmhaube für Motorradfahrer
+15448955289985	ersetzt-1	Velohelm für E-Bikes – vier Jahreszeiten
+15448955355521	ersetzt-1	Velohelm mit integriertem Licht
+15448955453825	ersetzt-1	Velohelm mit Insektenschutz
+15448955552129	ersetzt-1	Velo-Frontlicht aus Aluminiumlegierung
+15448955584897	ersetzt-1	Intelligentes Velo-Frontlicht mit Ladefunktion
+15448955617665	ersetzt-1	Farbige LED-Speichenlichter für Mountainbikes
+15448955683201	ersetzt-1	Velo-Scheinwerfer mit Digitalanzeige & Powerbank
+15448955715969	ersetzt-1	LED Tagfahrlicht für Autos (2 Stück)
+15448955814273	ersetzt-1	Velo-Rücklicht für mehr Sicherheit
+15448955879809	ersetzt-1	Velo-Rücklicht mit Bremslichtfunktion
+15448955912577	ersetzt-1	Solar Velo-Licht mit Hupe
+15448955978113	ersetzt-1	Devil Eye Fahrrad-Rücklicht mit App-Steuerung
+15448956043649	ersetzt-1	Intelligentes, selbstladendes Velo-Rücklicht
+15448956109185	ersetzt-1	Velo-Frontlicht mit 3400 Lumen
+15448956240257	ersetzt-1	USB-Velo-Rücklicht mit Blinker
+15448956273025	ersetzt-1	Intelligentes USB-Rücklicht mit Bremslichtfunktion
+15448956404097	ersetzt-1	USB-Fahrradlicht mit bunten LEDs
+15448956633473	ersetzt-1	Smartes Velo-Rücklicht mit Bremslichtfunktion
+15448956666241	ersetzt-1	LED-Fahrradlicht mit USB-Ladefunktion
+15448956699009	ersetzt-1	D Series LED D2SD4S Autoscheinwerfer
+15448956764545	ersetzt-1	Intelligentes Velo-Rücklicht mit Bremslichtfunktion
+15448956797313	ersetzt-1	USB-Fahrradblinker mit Hupe
+15448956895617	ersetzt-1	LED-Stirnlampe zum Laufen & Fischen
+15448956928385	ersetzt-1	Tragbarer Reifenfüller mit Digitalanzeige
+15448956993921	ersetzt-1	Velo Hupe mit Licht, wasserdicht, USB-Ladefunktion
+15448957059457	ersetzt-1	MEROCA Intelligentes Velo-Rücklicht mit Brems-Sensor
+15448957092225	ersetzt-1	Rückstrahlendes Diebstahlschutz-Rücklicht für Velos
+15448957157761	ersetzt-1	Kabelloses Velo-Rücklicht mit Blinker
+15448957223297	ersetzt-1	Velo-Scheinwerfer mit Welleninduktion
+15448957288833	ersetzt-1	Smart Millimeter Wave Fahrrad-Rücklicht
+15448957354369	ersetzt-1	Fahrrad-Leuchtpedale aus Aluminiumlegierung
+15448957419905	ersetzt-1	Velo-Rücklicht mit Fernbedienung & Blinker
+15448957485441	ersetzt-1	L2 Velo-Frontlicht, USB-C aufladbar
+15448957518209	ersetzt-1	Velo-Frontlicht 2000LM XPT*6 LED Aluminium
+15448957583745	ersetzt-1	Velo-Scheinwerfer aus Aluminium, 500 Lumen
+15448957649281	ersetzt-1	Velo-Frontlicht mit Hupe, 6 Modi, Akku
+15448957747585	ersetzt-1	Velo-Frontlicht für Nachtfahrten, 400 Lumen
+15448957845889	ersetzt-1	Wasserdichte USB-Rückleuchte für Velos
+15448957911425	ersetzt-1	USB-Fernbedienung Velo-Rücklicht
+15448957976961	ersetzt-1	Intelligentes Bremslicht für Velos
+15448958009729	ersetzt-1	Velo-Rücklicht mit Blinker & Fernbedienung
+15448958075265	ersetzt-1	Velo-Frontlicht mit 1000 Lumen
+15448958108033	ersetzt-1	Velo-Scheinwerfer mit USB-Ladefunktion
+15448958206337	ersetzt-1	Oktagonales, intelligentes Brems-Rücklicht
+15448958239105	ersetzt-1	Velo-Motor-Zubehör
+15448958337409	ersetzt-1	Intelligentes Velo-Rücklicht mit Bremslicht
+15448958468481	ersetzt-1	Grosses, verdicktes Velo-Sattelkissen
+15448958501249	ersetzt-1	MTB Alarm-Hupe mit Licht
+15448958599553	ersetzt-1	USB-Fahrradlampe aus Aluminiumlegierung
+15448958697857	ersetzt-1	Multifunktionale Velo- und Stirnlampe
+15448958763393	ersetzt-1	Multifunktionales Smart-Rücklicht mit Alarm
+15448958796161	ersetzt-1	USB Velo Rücklicht mit Bremsfunktion
+15448958861697	ersetzt-1	Smarte Fernbedienbare Laser LED Rückleuchte
+15448958927233	ersetzt-1	Velo-Diebstahlwarnlicht mit Fernbedienung
+15448958960001	ersetzt-1	USB-Ladefähiges Rücklicht mit Blinker & Hupe
+15448958992769	ersetzt-1	USB-Rücklicht mit digitaler Anzeige
+15448959025537	ersetzt-1	Rücklicht mit Fernbedienung, Hupe & USB
+15448959091073	ersetzt-1	Rutschfeste, extra-lange Yoga- und Fitnessmatte
+15448959222145	ersetzt-1	Gepolsterte Boxhandschuhe mit Halbfingern
+15448959320449	ersetzt-1	Schwimmnudel aus SBR-Schaum
+15448959353217	ersetzt-1	NBR Bodenschutzmatte für Fitnessgeräte
+15448959385985	ersetzt-1	3D Schrittzähler mit Karabinerclip
+15448959418753	ersetzt-1	14-teiliges Pilates Ring Essentials-Kit
+15448959451521	ersetzt-1	Bass Drum Pedal mit Filzschlegel
+15448959549825	ersetzt-1	Tür-Handtuchhalter, 3-stufig, bohrfrei
+15448959615361	ersetzt-1	Zahnbürstenhalter aus rostfreiem Edelstahl
+15448959648129	ersetzt-1	Garderobe aus Massivholz, wandmontiert
+15448959680897	ersetzt-1	Dokumenten-Organizer, feuer- und wasserfest
+15448959746433	ersetzt-1	Eckregal aus Massivholz, schmal, 8 Etagen
+15448959779201	ersetzt-1	Kabelmanagement-Tray für unter den Schreibtisch
+15448959811969	ersetzt-1	4er-Set Feuchttücherboxen für unterwegs
+15448959877505	ersetzt-1	Sonnenblenden-Organizer mit Brillenclip
+15448959910273	ersetzt-1	Grillabdeckung aus Oxford-Gewebe
+15448959975809	ersetzt-1	Schmuckkästchen aus PU-Leder mit Doppelfunktion
+15448960008577	ersetzt-1	Reise Kompressionsbeutel Set
+15448960074113	ersetzt-1	25L Auto-Kühlbox für unterwegs
+15448960106881	ersetzt-1	Moso Bambus Wäschekorb
+15448960139649	ersetzt-1	Ausziehbares Staufach für Mittelkonsole
+15448960205185	ersetzt-1	Faltbare Aufbewahrungsbank mit Fusshocker, Schwarz
+15448960237953	ersetzt-1	Faltbare Aufbewahrungsbank mit Fusshocker
+15448960303489	ersetzt-1	Multifunktionale Reise-Kulturtasche
+15448960434561	ersetzt-1	15er Set Reise-Schmuckkästchen aus PU-Leder
+15448960500097	ersetzt-1	Airtight Food Storage Container
+15448960565633	ersetzt-1	Aroma-dichte Bento Box aus Edelstahl
+15448960598401	ersetzt-1	6er Set transparente Aufbewahrungsboxen mit Doppelreissversc
+15448960663937	ersetzt-1	Doppellagige Schmuck- und Organizer-Box
+15448960762241	ersetzt-1	Schlüsseltresor mit Fingerabdruck & App
+15448960827777	ersetzt-1	4er-Set Stapelbare Kleider-Organizer
+15448960893313	ersetzt-1	Stapelbare Aufbewahrungsboxen mit Deckel
+15448960926081	ersetzt-1	Vakuum-Aufbewahrungsbeutel, 12er-Set
+15448960991617	ersetzt-1	Urne für Haustier-Asche mit Fotorahmen
+15448961024385	ersetzt-1	Erweiterbarer Schubladen-Organizer
+15448961089921	ersetzt-1	Basketball-Organizer für Bälle
+15448961155457	ersetzt-1	Faltbarer Haustier-Organizer mit Rollen
+15448961188225	ersetzt-1	Kosmetiktasche aus Rindsleder
+15448961253761	ersetzt-1	Magnetische Steckdosenleisten-Halterung
+15448961319297	ersetzt-1	Reise-Kulturbeutel aus PU-Leder
+15448961352065	ersetzt-1	Reisekoffer aus Carbonfaser
+15448961450369	ersetzt-1	2er-Set Vakuumbeutel mit Pumpe (17L)
+15448961548673	ersetzt-1	Verstellbarer Kleiderständer auf Rollen
+15448961614209	ersetzt-1	3-lagige Aufbewahrungsbox, Weiss
+15448961679745	ersetzt-1	Niedlicher Organizer mit Schubladen
+15448961745281	ersetzt-1	Multifunktionales Abtropfgestell für Geschirr
+15448961810817	ersetzt-1	3er-Set wasserdichte Reise-Organizer
+15448961876353	ersetzt-1	Tragetasche für Kettensägen, wasserdicht
+15448961909121	ersetzt-1	XL Make-up Organizer mit Schubladen
+15448961941889	ersetzt-1	Faltbare Aufbewahrungsbox mit Sichtfenster
+15448962007425	ersetzt-1	3er-Set faltbare Aufbewahrungsboxen mit Sichtfenster
+15448962072961	ersetzt-1	Reise-Etui für Sonnenbrillen mit Kartenfächern
+15448962105729	ersetzt-1	Drehbarer Garderobenständer aus Holz
+15448962171265	ersetzt-1	Küchen Organizer mit 4 Fächern
+15448962236801	ersetzt-1	Küchenregal Modern, einfach zu reinigen
+15448962269569	ersetzt-1	5-stöckiges, verstellbares Metallregal
+15448962335105	ersetzt-1	Wandregal mit Ablage und Haken
+15448962400641	ersetzt-1	Doppelt faltbarer Handtuchhalter aus Walnussholz
+15448962466177	ersetzt-1	Wandmontierter Badschrank
+15448962564481	ersetzt-1	Wandmontierter Handtuchhalter aus Holz
+15448962630017	ersetzt-1	48-teiliges BPA-freies Lebensmittel-Aufbewahrungsset
+15448962695553	ersetzt-1	Bento Lunchbox aus 316 Edelstahl, 700ml, Babyrosa
+15448962761089	ersetzt-1	Wein- und Champagnerkühler, tragbar
+15448962892161	ersetzt-1	Gusseisen 5-Loch Eierpfanne
+15448963056001	ersetzt-1	Kochmesser & Küchenschere Set, 2-teilig
+15448963252609	ersetzt-1	Silikon-Dosierschale für Kaffeebohnen
+15448963416449	ersetzt-1	51mm Siebträger-Filter für De'Longhi
+15448963645825	ersetzt-1	Manueller Eisraspler für Zuhause

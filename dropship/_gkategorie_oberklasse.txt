@@ -1,0 +1,19 @@
+gid://shopify/Product/15408457744769	premium-bambus-aroma-diffuser-300ml	Apparel & Accessories > Clothing Accessories	Home & Garden > Decor > Home Fragrance Accessories
+gid://shopify/Product/15411554320769	aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	Apparel & Accessories > Clothing Accessories	Home & Garden > Decor > Home Fragrance Accessories
+gid://shopify/Product/15411554910593	aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	Apparel & Accessories > Clothing Accessories	Home & Garden > Decor > Home Fragrance Accessories
+gid://shopify/Product/15412949451137	reed-diffuser-aroma-duftstabchen-ohne-flamme	Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne	Home & Garden > Decor > Home Fragrance Accessories
+gid://shopify/Product/15412959773057	aroma-diffuser-mist-ultraschall-mit-led	Apparel & Accessories > Clothing Accessories	Home & Garden > Decor > Home Fragrance Accessories
+gid://shopify/Product/15496520434049	aroma-diffuser-mit-rattan-stabchen-244672	Health & Beauty > Personal Care > Cosmetics	Home & Garden > Decor > Home Fragrance Accessories
+gid://shopify/Product/15493706056065	aromatherapie-atherische-ole-set-828e89	Health & Beauty > Personal Care > Cosmetics	Home & Garden > Decor > Home Fragrances > Fragrance Oil
+gid://shopify/Product/15493706383745	atherische-ole-fur-diffusor-14er-set-15915b	Health & Beauty > Personal Care > Cosmetics	Home & Garden > Decor > Home Fragrances > Fragrance Oil
+gid://shopify/Product/15496520532353	atherische-ole-set-14-dufte-187136	Health & Beauty > Personal Care > Cosmetics	Home & Garden > Decor > Home Fragrances > Fragrance Oil
+gid://shopify/Product/15497431515521	aromatherapie-holz-diffusor-ad44a9	Health & Beauty > Personal Care > Cosmetics	Home & Garden > Decor > Home Fragrance Accessories
+gid://shopify/Product/15501003817345	reines-atherisches-ol-10-ml-ce2caf	Health & Beauty > Personal Care > Cosmetics	Home & Garden > Decor > Home Fragrances > Fragrance Oil
+gid://shopify/Product/15412297007489	led-solar-lichterkette-xl-8-leuchtmodi-wetterfest-fur-garten-balkon	Apparel & Accessories > Jewelry	Home & Garden > Lighting
+gid://shopify/Product/15396404789633	led-schreibtischlampe-dimmbar-augenschutz-usb-c	Apparel & Accessories > Clothing Accessories	Home & Garden > Lighting
+gid://shopify/Product/15411565035905	sunset-projektor-led-lampe-stimmungslicht-usb-16-farben-fur-foto-deko	Apparel & Accessories > Clothing Accessories	Home & Garden > Lighting
+gid://shopify/Product/15466106225025	fressnapf-katze-schrag-erhoht-keramik-616800	Home & Garden > Kitchen & Dining	Animals & Pet Supplies > Pet Supplies
+gid://shopify/Product/15497533718913	futter-und-wassernapf-fur-katzen-glas-480896	Home & Garden > Kitchen & Dining	Animals & Pet Supplies > Pet Supplies
+gid://shopify/Product/15500968132993	keramik-trinkbrunnen-fur-katzen-hunde-609600	Electronics	Animals & Pet Supplies > Pet Supplies
+gid://shopify/Product/15412302414209	reise-rucksack-mit-kettengriff-kompakt-vegan-leder-mehrere-facher	Apparel & Accessories > Jewelry	Luggage & Bags > Backpacks
+gid://shopify/Product/15464371880321	radsport-rucksack-635400	Apparel & Accessories > Clothing	Luggage & Bags > Backpacks

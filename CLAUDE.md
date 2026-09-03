@@ -6223,3 +6223,32 @@ und Repo überleben sie (kein Rewind mehr seit dem Wipe vom 30.08.), Prozesse ni
   widerspricht («Futterbar aus Bambus und Keramik» + CJ «Plastic» → Zeile weg; 39 Nachträge
   geprüft, 0 Widersprüche); Groq-Texte mit Floskel werden einmal nachgebessert (Stichprobe
   8 Neuimporte: 2 mit «sorgt für»/«hochwertig», du-Form 8/8, Faktenblock 8/8).
+
+## 🛍️ Merchant-Runde: 5 nachpubliziert, 19 Kategorien in der falschen OBERKLASSE (2026-09-03)
+Betreiber «alles topmachen und merchant auch». Erst gemessen, dann geschrieben:
+- **Feed-Abdeckung an 120 jüngsten cj-real:** google_product_category · condition · age_group ·
+  gender · custom_product **120/120**, material 58/120 (nur wo CJ es nennt — richtig so),
+  Varianten-Farbe bei 13 von 17 Produkten mit Farboption, Grösse 0 Lücken. Die Importer
+  schreiben also, was sie sollen; die 4 Farb-Lücken sind Optionswerte, die keine Farbe sind
+  (Lieferantencodes) — dafür ist «kein Wert» die richtige Antwort (Lehre 14.08.).
+- **Google-Lücke geschlossen (5):** Abtropfgestell/Käsebrett/Messerhalter/Messerschärfer
+  (Küchen-Klingen-ZUBEHÖR, Hausregel 12.08.) und das Beinpflege-Pflaster (Linderungsversprechen
+  seit 31.08. entfernt). `google_kanal_luecke_schliessen.py` liest die Antwort — Quittung je Produkt.
+- **Kategorie-Oberklasse:** `automation/google_kategorie_oberklasse.py` prüft Produkte mit einem
+  eindeutigen Nicht-Kleidungs-Nomen im Titel (Diffuser, Lampe, Napf, Rucksack, Öle …) gegen die
+  Oberklasse des gesetzten Pfads. **4'565 geprüft, 19 offensichtlich falsch**, alle korrigiert
+  (Ledger `dropship/_gkategorie_oberklasse.txt`): 6 Aroma-Diffuser standen unter «Clothing
+  Accessories», 4 Ätherische-Öl-Sets unter «Cosmetics», eine Lichterkette unter «Jewelry», zwei
+  Katzennäpfe unter «Kitchen & Dining», ein Trinkbrunnen unter «Electronics», zwei Rucksäcke unter
+  Jewelry/Clothing. Alles handkuratierte Ur-Ware aus den ersten Sessions — der Importer macht
+  diese Klasse nicht mehr.
+- ⚠️ **Drei Trockenläufe, drei Fehlerklassen, alle aus dem Gedächtnis bekannt:** (1) `title:`
+  im Suchfilter → «geprüft 1» (stiller Filter, 28.08.); (2) 690 «Treffer», davon 670 richtig:
+  Nagellampen unter Cosmetics (Google führt «Nail Dryers» dort), Herrenuhren «mit Nachtlicht»,
+  Hundeleuchten unter Pet Supplies; (3) `\b\w*(schal|hut)\w*` als Schutzwort traf «Ultra**schal**l»
+  und «Augen**schut**z» und hätte vier echte Fälle STEHEN lassen. **Ein Schutzmuster ist genauso
+  substring-anfällig wie ein Treffermuster** — die Gegenprobe gehört in beide Richtungen.
+- **Nicht angefasst:** `GOOGLE-KATEGORIE-ABWEICHUNGEN.md` (401 Zeilen vom 11.08.) — 248 davon sind
+  «Apparel → genauerer Apparel-Pfad», also kein Fehler, nur gröber. Google nimmt beides.
+- **Betreibersache (Merchant-Konto, kein API-Weg):** Ziel-Land nur Schweiz, Versand/Steuer im
+  Merchant, «Needs attention»-Export, Datei-Speicher-Deckel (02.09.).
