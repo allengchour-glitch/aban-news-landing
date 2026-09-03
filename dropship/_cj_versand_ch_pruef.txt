@@ -59,3 +59,8 @@ outdoor-taschenmesser-mit-holzgriff-632400	2601230136221632800	0	-	KEINE CH-Opti
 damast-kochmesser-fur-fleisch-gemuse-638100	2601170323291638400	0	-	KEINE CH-Option → DRAFT	klinge
 damast-kuchenmesser-set-mit-g10-griffen-630100	2601160847581630300	0	-	KEINE CH-Option → DRAFT	klinge
 damast-kuchenmesser-und-schaler-set-610700	2601160832451610900	0	-	KEINE CH-Option → DRAFT	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=433	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=417	klinge
+portables-damast-outdoormesser-aus-sandeisenho-627600	2601150524381627800	0	-	KEINE CH-Option → DRAFT	klinge
+ahorn-holzgriff-messer-fur-outdoor-fruchte-622400	2601150152531622700	0	-	KEINE CH-Option → DRAFT	klinge
+klappmesser-fur-outdoor-und-survival-605800	2601130159141606000	0	-	KEINE CH-Option → DRAFT	klinge
