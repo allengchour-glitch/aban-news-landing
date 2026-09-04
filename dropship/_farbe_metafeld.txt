@@ -371,3 +371,8 @@ gid://shopify/Product/15524879696257	Rot
 gid://shopify/Product/15524882088321	Mehrfarbig
 gid://shopify/Product/15524882710913	Rot
 gid://shopify/Product/15524883169665	Silber
+gid://shopify/Product/15523908682113	Weiss
+gid://shopify/Product/15524886184321	Schwarz
+gid://shopify/Product/15524887265665	Grün
+gid://shopify/Product/15525141840257	Schwarz
+gid://shopify/Product/15525196136833	Marineblau

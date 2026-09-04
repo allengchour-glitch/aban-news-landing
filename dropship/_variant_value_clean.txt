@@ -188,3 +188,14 @@ gid://shopify/Product/15450858619265	Farbe	1
 gid://shopify/Product/15453955916161	Farbe	1
 gid://shopify/Product/15453998875009	Farbe	1
 gid://shopify/Product/15454091739521	Ausführung	19
+gid://shopify/Product/15454132666753	Farbe	2
+gid://shopify/Product/15455322833281	Farbe	8
+gid://shopify/Product/15460665164161	Farbe	8
+gid://shopify/Product/15465843589505	Farbe	1
+gid://shopify/Product/15465843687809	Farbe	1
+gid://shopify/Product/15465843949953	Farbe	3
+gid://shopify/Product/15473076797825	Farbe	4
+gid://shopify/Product/15483933000065	Farbe	4
+gid://shopify/Product/15495730889089	Farbe	8
+gid://shopify/Product/15497590866305	Farbe	1
+gid://shopify/Product/15500600639873	Farbe	1
