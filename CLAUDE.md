@@ -63,7 +63,7 @@ Zahlung selbst — ein Betreiber-Test mit echter Karte.
   **Eine Vermutung über eine fremde Kasse kostet zwei Minuten Messung** — und diese hier hätte
   sonst als «vielleicht die Ursache» monatelang im Raum gestanden.
 
-## 💽 «Datei speicher regeln»: Basic erlaubt 100 GB — und die Grenze zählt PRODUKTBILDER mit (2026-09-04, nachts)
+## 💽 «Datei speicher regeln»: die Grenze ist KUMULATIV — Produktbilder zählen mit (2026-09-04, nachts)
 Betreiber mitten in der Arbeit: «datei speicher regeln». Die Sperre besteht seit dem 01.09.:
 **jeder** Upload in die Dateien-Bibliothek scheitert mit `FILE_STORAGE_LIMIT_EXCEEDED`, auch
 ein 10-KB-JSON — die TikTok-Queue steht deshalb seit vier Tagen. Gemessen, in drei Schritten,
@@ -76,7 +76,7 @@ und **zweimal habe ich mich dabei selbst korrigiert:**
 | **Produktmedien** (gemessen an 240 Produkten, `originalSource.fileSize`) | **aktiv 1,49 MB · Entwurf 0,61 MB je Produkt** |
 | Katalog in Preisbändern gezählt (`productsCount` deckelt bei 10'000) | **43'964 aktiv · 24'101 Entwürfe** |
 | daraus der Produktmedien-Topf | **≈ 65 GB aktiv + ≈ 15 GB Entwürfe ≈ 80 GB** |
-| **Shopify Basic** | **100 GB, Produktmedien zählen mit** |
+| **Shopify-Deckel** | **kumulativ über Dateien UND Produktmedien** — die GB-Zahl gibt keine API aus |
 
 1. **Erste Korrektur:** Ich begann mit den Medien von BigBuy-Entwürfen — und stoppte, als die
    Bibliothek sich als eigener, kleiner Topf zeigte. **Falsch gestoppt.** Die Bibliothek ist
@@ -113,11 +113,19 @@ und **zweimal habe ich mich dabei selbst korrigiert:**
   des Deckels, und mit der gedrosselten Zuflussrate (~0,25 statt ~1 GB/Tag) reicht das rund
   **vier Wochen statt einer**.
 - ⚠️ **Und es reicht trotzdem nicht als Lösung:** Nach 342 MB freigegebenem Platz scheitert die
-  Upload-Probe unverändert mit `FILE_STORAGE_LIMIT_EXCEEDED` — wir stehen also nicht bei 92 von
-  100 GB, sondern faktisch AM Deckel. **Ein Speicherstand, den die API nicht ausgibt, ist nur
-  über die Probe messbar** (Shopify liefert keine Nutzungszahl); jede GB-Angabe hier ist eine
-  Hochrechnung aus Stichproben, die Probe ist die einzige harte Aussage.
-- **Der ehrliche Rest ist eine Betreiber-Entscheidung:** Bei ~80 GB Produktbildern gegen 100 GB
+  Upload-Probe unverändert mit `FILE_STORAGE_LIMIT_EXCEEDED` — nach 1,16 GB ebenso. Wir stehen
+  also nicht knapp unter dem Deckel, sondern faktisch AN ihm (oder Shopify gibt gelöschte Medien
+  verzögert frei; beides ist von hier nicht unterscheidbar). **Ein Speicherstand, den die API
+  nicht ausgibt, ist nur über die Probe messbar** — jede GB-Angabe hier ist eine Hochrechnung
+  aus Stichproben, die Probe ist die einzige harte Aussage.
+- ⚠️ **DRITTE Korrektur, und sie betrifft die Überschrift dieses Eintrags:** «Basic erlaubt
+  100 GB» stand hier als Tatsache und ist **unbelegt** — ich hatte die Zahl aus dem Gedächtnis.
+  Shopifys eigene Doku nennt keine Zahl; sie nennt aber zweimal das Entscheidende: der Fehler
+  heisst «the **cumulative** file storage limit», und ExternalVideo «doesn't count against
+  shop's storage quota» — woraus folgt, dass hochgeladene Produktmedien es TUN. Die Richtung
+  des Vorgehens ist damit belegt, die Zahl nicht. **Eine Grössenordnung aus dem Gedächtnis ist
+  keine Messung — auch dann nicht, wenn die daraus abgeleitete Handlung richtig ist.**
+- **Der ehrliche Rest ist eine Betreiber-Entscheidung:** Bei ~80 GB Produktbildern am Deckel
   und einem Katalog, der weiter wächst, ist Aufräumen ein Aufschub, kein Ausweg. Entweder der
   Katalog wird kleiner (Entwürfe löschen statt nur entbildern — 24'101 Stück) oder der Plan
   grösser (Grow = 300 GB).
