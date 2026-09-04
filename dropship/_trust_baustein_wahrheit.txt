@@ -20544,3 +20544,255 @@
 15481775980929	ersetzt-1	Solar Outdoor Powerbank mit Handkurbel
 15481776013697	ersetzt-1	Intelligenter Roboterhund mit Touch-Funktion
 15481776046465	ersetzt-1	45W Power Bank mit Kabel, 20000 mAh
+15481776112001	ersetzt-1	Fliegender Ball Oktopus – Eltern-Kind-Spielzeug
+15481776144769	ersetzt-1	Multifunktionales 3-in-1 Wireless Ladegerät
+15481776177537	ersetzt-1	Ferngesteuertes Stunt-Fahrzeug, beidseitig fahrbar
+15481776210305	ersetzt-1	Fashion Ultra-thin Mini Powerbank 10000 mAh
+15481776275841	ersetzt-1	RC Dinosaurier – Laufendes Spielzeug mit Sound
+15481776308609	ersetzt-1	Powerbank 20000 mAh mit/ohne Kabel
+15481776341377	ersetzt-1	Elektrischer singender Weihnachtsmann
+15481776374145	ersetzt-1	Handheld Game Machine Powerbank
+15481776406913	ersetzt-1	Elektrisches Verwandlungsauto für Kinder
+15481776472449	ersetzt-1	Mirror Mini Power Bank 10000 mAh
+15481776505217	ersetzt-1	Huhn mit Schal Weihnachtsdeko
+15481776537985	ersetzt-1	Wasserdichte Solar Powerbank mit LED
+15481776570753	ersetzt-1	Elefant mit schwebendem Ball – elektrisches Spielzeug
+15481776734593	ersetzt-1	Elektrischer Roboterhund mit Fernbedienung
+15481776767361	ersetzt-1	Ferngesteuerte Infrarot-Wurst
+15481776800129	ersetzt-1	Smart Sensor Stunt-Hund mit Fernbedienung
+15481776898433	ersetzt-1	RC Stunt Truck mit Schaumstoffreifen
+15481776931201	ersetzt-1	Smart Mini Roboter mit Licht und Musik
+15481776996737	ersetzt-1	Intelligentes elektronisches Katzenspielzeug
+15481777029505	ersetzt-1	USB-Stick «Wretched Rogue Dog»
+15481777062273	ersetzt-1	Wasserdichte Leucht-Herrenuhr
+15481777127809	ersetzt-1	Tanzender Roboter mit Musik und Licht
+15481777160577	ersetzt-1	Hübsches Küken Tumbler Rassel-Spielzeug
+15481777193345	ersetzt-1	Sportliche Herrenuhr mit zwei Zeitzonen
+15481777226113	ersetzt-1	Flattervogel USB-Lade-Spielzeug
+15481777324417	ersetzt-1	Tanzende & Plappernde Ente
+15481777357185	ersetzt-1	Elektrischer Sprüh-Dinosaurier mit Licht & Sound
+15481777389953	ersetzt-1	Baby-Kopfkissen gegen Plattkopf
+15481777455489	ersetzt-1	Elektrisches Cartoon-Blubberspielzeug mit Licht & Sound
+15481777521025	ersetzt-1	Kinderkissen für alle Jahreszeiten
+15481777652097	ersetzt-1	Riesenwal Anti-Erstickungs-Kissen für Babys
+15481777684865	ersetzt-1	Vielseitige Umhängetasche für linke Schulter
+15481777750401	ersetzt-1	Multifunktionale Reisetasche
+15481787220353	ersetzt-1	Drahtloses Mikrofon
+15481787253121	ersetzt-1	Klassisches Mikrofon
+15481787285889	ersetzt-1	Lockige Cosplay-Perücke für den ganzen Kopf
+15481787384193	ersetzt-1	Geprägte Nagelsticker im Instagram-Stil
+15481787941249	ersetzt-1	Desktop Arbeitsspeicher 4GB DDR3
+15481787974017	ersetzt-1	ORICO 2.5" USB 3.0 Festplattengehäuse transparent
+15481788006785	ersetzt-1	mSATA zu SATA Adapter Gehäuse
+15481799213441	ersetzt-1	Kompaktes Powerbank
+15481799278977	ersetzt-1	Magnetischer Wireless-Ladegerät
+15481799344513	ersetzt-1	20000 mAh Powerbank mit Digitalanzeige
+15481799377281	ersetzt-1	Magnetische kabellose Powerbank
+15481799442817	ersetzt-1	Dimension PD225W Fast Charge Power Bank
+15481799606657	ersetzt-1	Mini Kapsel Powerbank
+15481799672193	ersetzt-1	Kabelloses Bluetooth Sport-Headset Mini
+15481799704961	ersetzt-1	Faltbares Solar Powerbank 20000 mAh
+15481799770497	ersetzt-1	Outdoor Notstromaggregat 220V
+15481799901569	ersetzt-1	PSE Power Bank Fast Charge 32000mAh
+15481799934337	ersetzt-1	Bluetooth-Sonnenbrille mit Stereo-Headset
+15481799999873	ersetzt-1	Ultraleichte LED-Stirnlampe mit starkem Licht
+15481800098177	ersetzt-1	Smart Bluetooth Ring für iPhone und Android
+15481800163713	ersetzt-1	Edelstahl-Armband für Apple Watch
+15481800262017	ersetzt-1	Bluetooth-Maske mit integrierten Kopfhörern
+15481800294785	ersetzt-1	Wasserdichtes Ultraschall Mückenarmband
+15481800327553	ersetzt-1	Smart Hoop – Abnehmbarer Fitnessreifen
+15481800425857	ersetzt-1	Magnetische kabellose Auto-Ladehalterung A8
+15481800491393	ersetzt-1	Jelly Mini-Ventilator zum Umhängen
+15481800556929	ersetzt-1	Smart-Glasses mit Bluetooth
+15481800589697	ersetzt-1	Drahtloser Signal- und Kamera-Detektor
+15481800720769	ersetzt-1	Selbstheizender Rücken- und Taillengurt
+15481800753537	ersetzt-1	Portabler Mini-Ventilator für Schreibtisch & unterwegs
+15481800819073	ersetzt-1	Reptilien-Heizmatte mit Thermostat
+15481800851841	ersetzt-1	GPS-Haustier-Tracker mit Echtzeit-Ortung
+15481800884609	ersetzt-1	iGS50E GPS-Fahrradcomputer
+15481801015681	ersetzt-1	Tragbarer Luftreiniger mit Negativ-Ionen
+15481801113985	ersetzt-1	Automatisches Multimeter mit intelligenter Erkennung
+15481801277825	ersetzt-1	Smartes Fingerabdruck-Vorhängeschloss
+15481801310593	ersetzt-1	Handgelenk-Ventilator mit Spiegel
+15481805603201	ersetzt-1	Herren Brieftasche aus Vollnarbenleder mit RFID-Schutz
+15481805701505	ersetzt-1	Retro Punk Gothic Ring aus Titanstahl
+15481805734273	ersetzt-1	S925 Sterling Silber Moissanit Ring
+15481805832577	ersetzt-1	Ring im Kronen-Design mit Moissanit
+15481815990657	ersetzt-1	High-Speed Speicherkarte
+15481816088961	ersetzt-1	3-in-1 Metall USB-Stick
+15481817235841	ersetzt-1	Herren Mesh-Sandalen mit Hohl-Design
+15481817334145	ersetzt-1	Trendige Herren-Sandalen aus echtem Leder
+15481817366913	ersetzt-1	Herren Sandalen – Sommer Flip-Flops
+15481817432449	ersetzt-1	Outdoor Slip-on Strandschuhe für Paare
+15481817497985	ersetzt-1	Lederpantoffeln · Herren
+15481817530753	ersetzt-1	Atmungsaktive Freizeit-Strandschuhe für Herren
+15481817661825	ersetzt-1	Thai Herren Sandalen aus recyceltem Reifengummi
+15481817727361	ersetzt-1	Handgemachte, abnehmbare Kunstnägel (Kurz)
+15481817792897	ersetzt-1	Herren Outdoor Flip-Flop Sandalen
+15481817825665	ersetzt-1	D-förmiger Lenkradbezug aus Eisseide
+15481818022273	ersetzt-1	Lenkradbezug Strass – Sommer-Edition
+15481818087809	ersetzt-1	D-Type Lenkradhülle für alle Jahreszeiten
+15481818153345	ersetzt-1	Lenkrad-Drehknopf
+15481818218881	ersetzt-1	Interieur-Modifikation für Mazda 3 Axela
+15481818284417	ersetzt-1	Lenkrad-Zierring für Mazda CX-4
+15481818317185	ersetzt-1	Lenkradbezug mit Katzenohren, Plüsch
+15481818382721	ersetzt-1	Solar Controller 12V/24V 50A/60A
+15481818415489	ersetzt-1	Auto-Aufbewahrungsbox aus Wildleder
+15481818448257	ersetzt-1	Interieur-Flicken für Auto
+15481818513793	ersetzt-1	FOS Magic Ball Pet Elektrisches Katzenspielzeug
+15481818612097	ersetzt-1	Retro Business Sandalen aus Leder
+15481818677633	ersetzt-1	RC Motorrad für Kinder, elektrisch
+15481818710401	ersetzt-1	Sommer Sandalen mit Drehverschluss
+15481818808705	ersetzt-1	Schwimmender Leucht-Marktstand (Akku)
+15481818874241	ersetzt-1	Elektrischer Zappel-Fisch für Katzen
+15481818907009	ersetzt-1	Retro Strand-Sandalen für Herren
+15481819005313	ersetzt-1	Ferngesteuerter Amphibien-Kipper
+15481819038081	ersetzt-1	Trendige Outdoor-Sandalen mit weicher Sohle
+15481839059329	ersetzt-1	Outdoor Energie-Speicher
+15481839124865	ersetzt-1	Chunky Dad Sneaker mit Farbblock-Design
+15481839157633	ersetzt-1	Power Bank PD20W Dual Port, 10000 mAh
+15481839190401	ersetzt-1	Bequeme Unisex-Sandalen mit Klettverschluss
+15481839255937	ersetzt-1	Tragbarer Clip-Ventilator mit Akku
+15481839321473	ersetzt-1	Bluetooth Audio Outdoor Ladestation
+15481839387009	ersetzt-1	Solar Powerbank Outdoor
+15481839452545	ersetzt-1	60000 MA Powerbank mit Super-Schnellladefunktion
+15481839550849	ersetzt-1	Ultradünne Magnet-Powerbank aus Aluminium
+15481839616385	ersetzt-1	Solar Powerbank 10000mAh mit LED-Licht
+15481839714689	ersetzt-1	M3 Smart Power Bank mit Bluetooth & Health-Tracking
+15481839780225	ersetzt-1	PD66W Powerbank 20000 mAh mit Kabel
+15481839911297	ersetzt-1	Kompakte 20W Powerbank mit Halterung
+15481840042369	ersetzt-1	Kompakte Powerbank mit Schnellladekabel
+15481840271745	ersetzt-1	Magnetische Powerbank mit grossem Akku
+15481840402817	ersetzt-1	Grosse Kapazität Portable Powerbank mit Solar
+15481840664961	ersetzt-1	Magsafe Power Bank 15W, ultraschlank
+15481840730497	ersetzt-1	Solar Powerbank mit Kurbel
+15481840796033	ersetzt-1	Mini Powerbank mit 4 Ladekabeln
+15481841123713	ersetzt-1	Flugzeug USB 3.0 Stick 16/32 GB
+15481841287553	ersetzt-1	USB-Stick mit Lederhülle
+15481841385857	ersetzt-1	High-Speed Speicherkarte für diverse Geräte
+15481841484161	ersetzt-1	HD-Sportkamera mit Aufnahmefunktion
+15481841582465	ersetzt-1	Wasserdichter USB 2.0 Stick aus Metall
+15481841713537	ersetzt-1	Multi-Funktions Kartenleser für PC & Handy
+15481841811841	ersetzt-1	Hochgeschwindigkeits-SSD für Laptops
+15481841975681	ersetzt-1	USB-Kartenleser für Mobiltelefone
+15481842237825	ersetzt-1	TF/Micro-SD Speicherkarte
+15481842303361	ersetzt-1	Speicherkarte für Kamera
+15481842401665	ersetzt-1	U-Disk Archiv für Nintendo Switch
+15481842729345	ersetzt-1	Tiger Power FPV Racing Drohne
+15481842762113	ersetzt-1	Bequeme Laufschuhe mit dicker Sohle
+15481843122561	ersetzt-1	Retro Kissenbezug mit Geometrischem Muster
+15481875333505	ersetzt-1	USB-C OTG Kartenleser
+15481877692801	ersetzt-1	T6 Smartwatch – leicht, stilvoll, vielseitig
+15481878970753	ersetzt-1	Mobile Festplatte 500G
+15481879003521	ersetzt-1	M.2 SSD Kühler mit aktiver Kühlung
+15481879134593	ersetzt-1	USB-Stick Leder-Optik 4 GB – 128 GB
+15481880117633	ersetzt-1	Android HD Netzwerk Player Set-Top Box
+15481880904065	ersetzt-1	USB 2.0 Festplatten-Dockingstation mit Kartenleser
+15481880969601	ersetzt-1	Externe Festplatte
+15481881002369	ersetzt-1	Mechanische Tastatur
+15481881035137	ersetzt-1	Tastenkappe im Hunde-Design für Tastaturen
+15481881133441	ersetzt-1	Japanische minimalistische Tastenkappe (Schwarz/Weiss)
+15481881985409	ersetzt-1	PBT Hot-Lift Keycaps, kabellos
+15481882870145	ersetzt-1	Ice Cream Macaroni Tastenkappe
+15481882968449	ersetzt-1	Animal Crossing Tastenkappe
+15481883066753	ersetzt-1	Externes USB 3.0 SSD/HDD-Gehäuse
+15481883165057	ersetzt-1	U03 Aufnahme-Stick mit drehbarer Karte
+15481883197825	ersetzt-1	M.2 NGFF Type C USB 3.0 SSD-Gehäuse
+15481884344705	ersetzt-1	Holz-USB-Stick 32 GB, personalisierbar
+15481884934529	ersetzt-1	USB 3.0 Festplattengehäuse mit Gittermuster
+15481885032833	ersetzt-1	High-Speed USB 3.0 Mini-Stick
+15481885098369	ersetzt-1	Xiake Hard™ Pro MVP-160G Mobile Festplatte 160GB
+15481885131137	ersetzt-1	Mirascreen Anycast Wireless HDMI Dongle
+15481885163905	ersetzt-1	USB Bluetooth FM Transmitter fürs Auto
+15481886835073	ersetzt-1	Xingyue USB-Stick
+15481886933377	ersetzt-1	USB-Visitenkarten-Stick mit Logo-Werbung
+15481887064449	ersetzt-1	USB-Stick Lippenstift-Design
+15481887162753	ersetzt-1	Geburtsstein Ring mit Gravur
+15481887883649	ersetzt-1	Kreativer Doktorhut Umarmungsring
+15481888801153	ersetzt-1	DIY Laser gravierter Geburtsstein-Ring
+15481889063297	ersetzt-1	Vielseitiges Quasten-Set: Halskette & Ohrringe
+15481889128833	ersetzt-1	Halskette mit doppeltem Halo & tropfenförmigem Diamant-Akzen
+15481889161601	ersetzt-1	Lange Quasten-Halskette mit Naturstein-Anhänger
+15481890111873	ersetzt-1	Elegante Perlenkette für Damen
+15481890931073	ersetzt-1	Satan Ziegenkopf Pentagramm Anhänger Halskette
+15481890963841	ersetzt-1	Baby- und Kinder-Kork-Sandalen mit Blumen
+15481980420481	ersetzt-1	Kabelmikrofon
+15481980486017	ersetzt-1	Handbemalte, geschnitzte Nägel im French-Stil
+15481980518785	ersetzt-1	Kehlkopfmikrofon-Headset
+15481980584321	ersetzt-1	Handgemachte schwarze Nagelsticker mit Schleifenmuster
+15481980649857	ersetzt-1	Kabelloses Bluetooth KTV-Mikrofon
+15481980682625	ersetzt-1	USB Kondensator-Mikrofon für Konferenzen & Gaming
+15481980715393	ersetzt-1	Handgemachte Press-on Nägel
+15481980780929	ersetzt-1	Drahtloses Handmikrofon-Set
+15481980846465	ersetzt-1	Handgefertigte 3D Erdbeer Nagel-Tips
+15481980879233	ersetzt-1	USB-Tischmikrofon für Konferenzen
+15481980912001	ersetzt-1	Cat-Eye Whitening Effekt Vintage Nagel-Tips
+15481980944769	ersetzt-1	KTV Mikrofon-Set für Familien-Karaoke
+15481980977537	ersetzt-1	Silver Ice Flower Cat Eye Nägel
+15481981043073	ersetzt-1	Kondensator-Mikrofon Set
+15481981075841	ersetzt-1	3D Relief Blumen Handgemachte Nagelspitzen
+15481981141377	ersetzt-1	Kabelloses Mikrofon V12 für vielseitigen Einsatz
+15481981206913	ersetzt-1	Maniküre-Set «Wizard Of Oz Cartoon Rabbit»
+15481981272449	ersetzt-1	F007plus Live-Broadcast Soundkarte mit Mikrofon
+15481981337985	ersetzt-1	Lavalier Mikrofon für kabellose Aufnahmen
+15481981403521	ersetzt-1	W108 Mini Funkmikrofon mit USB-C-Anschluss
+15481981436289	ersetzt-1	Kabelloses Karaoke-Mikrofon
+15481981501825	ersetzt-1	BJD Mini Mikrofon für Puppen
+15481981632897	ersetzt-1	Outdoor Handmikrofon für Bühne & KTV
+15481981665665	ersetzt-1	Digitales USB-Mikroskop mit HD-Auflösung
+15481981763969	ersetzt-1	Wasserdichte WLAN-Überwachungskamera mit Infrarot
+15481981796737	ersetzt-1	Metallgehäuse für GoPro 8
+15481981862273	ersetzt-1	Tisch-Stativ-Set für Live-Aufnahme-Mikrofon
+15481981927809	ersetzt-1	RGB Computer-Mikrofon für Live-Calls und Gaming
+15481983992193	ersetzt-1	Weinroter Cat-Eye-Nagellack für Herbst/Winter
+15481984549249	ersetzt-1	Maillard Farbverlauf Maniküre zum Aufkleben
+15481984811393	ersetzt-1	Handgemachte Super Long Nägel
+15481999950209	ersetzt-1	Farbgel Nagellack Schwarz Weiss Rot Glitzer Matt
+15482000114049	ersetzt-1	Hunde-Ohrhörer-Etui
+15482000146817	ersetzt-1	Show White Rose Jelly Phototherapie-Gel
+15482000212353	ersetzt-1	Kabelgebundene In-Ear Kopfhörer aus Metall
+15482000245121	ersetzt-1	Kristall-Sandalen mit Keilabsatz
+15482000277889	ersetzt-1	3-in-1 Kabelloses Ladegerät 15W
+15482000310657	ersetzt-1	Fluoreszierender UV Nagellack
+15482000343425	ersetzt-1	AI-Übersetzungs-Kopfhörer mit Geräuschunterdrückung
+15482000408961	ersetzt-1	130W Laptop-Ladegerät USB-C, 20V/6.5A
+15482000474497	ersetzt-1	Cowherd UV-Glitzer Nagellack
+15482000540033	ersetzt-1	65W USB-C PD Laptop Ladeadapter
+15482000572801	ersetzt-1	Metallic-Klebergel für French Nails (Gold & Silber)
+15482000638337	ersetzt-1	PS5 Portal Ladestation mit RGB-Beleuchtung
+15482000671105	ersetzt-1	Multifunktionales Aufbau-Gel für Nägel
+15482000736641	ersetzt-1	Over-Ear Gaming Headset mit Mikrofon
+15482000769409	ersetzt-1	Deko-Halterung für Smartwatch mit Ladegerät
+15482000802177	ersetzt-1	Svdry Fast Top Coating – schnelltrocknender Überlack
+15482000900481	ersetzt-1	In-Ear Kopfhörer mit Spiegel-Display
+15482000933249	ersetzt-1	BT56 FM Transmitter mit Bluetooth-Freisprechfunktion
+15482000966017	ersetzt-1	12 Farben Pailletten Nagelverlängerungs-Set
+15482001031553	ersetzt-1	Schutzhülle für Bluetooth-Kopfhörer
+15482001097089	ersetzt-1	ToolkitRC C4 UAV LiPo Balance-Ladegerät
+15482001129857	ersetzt-1	Farbwechselnder UV-Nagellack
+15482001162625	ersetzt-1	In-Ear Bluetooth-Kopfhörer mit ANC
+15482001228161	ersetzt-1	Auto-Ladegerät mit ausziehbaren Kabeln
+15482001260929	ersetzt-1	Nagel-Gel-Set für zuhause
+15482001326465	ersetzt-1	Over-Ear Kopfhörer mit Kabel und USB-C
+15482001359233	ersetzt-1	Ladegerät für Elektro-Schubkarre & Balance Car
+15482001392001	ersetzt-1	Nagellack Gel Set: 30 Pop-Farben im Milchtee-Stil
+15482001424769	ersetzt-1	Kabellose In-Ear Kopfhörer mit Qualcomm-Chip
+15482001457537	ersetzt-1	Kabelloses 15W Auto-Ladegerät mit Sensor
+15482001588609	ersetzt-1	Multi-Port USB-C Schnellladegerät
+15482001654145	ersetzt-1	Gamepad Ladestation mit Lichteffekt für PS5
+15482001817985	ersetzt-1	Lichtbasis mit RGB-Umgebungslicht für PS5
+15482001949057	ersetzt-1	Ladestation für PS5 Portal & Controller mit RGB
+15482002276737	ersetzt-1	Switch2 Controller-Ladestation
+15482002538881	ersetzt-1	Switch2 Handle Ladestation
+15482002735489	ersetzt-1	Ladestation für Gamepad
+15482002932097	ersetzt-1	EV Ladebox mit Fahrzeug- und Haushaltsanschluss
+15482002964865	ersetzt-1	Kabelloses Ladegerät mit LED-Schreibtischlampe
+15482003095937	ersetzt-1	GaN PD65W Reise-Ladegerät mit Typ-C
+15482003161473	ersetzt-1	Digitales Auto-Ladegerät für Zigarettenanzünder
+15482004668801	ersetzt-1	Cangzhou Mini Make-up Pinselset (12-teilig)
+15483792687489	ersetzt-1	Alphabet-Babysuit
+15483792851329	ersetzt-1	Magnetischer Handyhalter
+15483792982401	ersetzt-1	Tourbillon Uhren
+15483793047937	ersetzt-1	Saugglas-Buerste
+15483793113473	ersetzt-1	Mini-Foto-Drucker-Hülle
+15483793179009	ersetzt-1	Hohe Keil-Sandalen
