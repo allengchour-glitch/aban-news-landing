@@ -79,3 +79,6 @@
 15448937660801	keine-linie	massivholz-kratzbaum-fur-katzen-629100
 15448937955713	keine-linie	massivholz-katzenbaum-mit-rattan-bett-632400
 15448938021249	keine-linie	kompakter-kratzbaum-mit-kuschelnest-633900
+15448938054017	keine-linie	holz-katzenbaum-weltraumkapsel-639200
+15448938086785	keine-linie	massivholz-katzenbaum-fur-kleine-wohnungen-608000
+15448938185089	keine-linie	kratzbaum-katzenbett-versteckspiel-602000
