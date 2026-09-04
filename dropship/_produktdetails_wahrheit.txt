@@ -4513,3 +4513,13 @@
 15510916759937	live-schon-sauber	Anti-Rutsch Squat Resistance Band
 15521661452673	live-schon-sauber	Herren-Lederarmband mit geometrischem Muster
 15522085306753	live-schon-sauber	High-Heel-Sandalen mit Nieten für Damen
+15449105957249	material-floskel-entfernt	Herren Outdoor Kapuzenpullover
+15449107988865	farbe-floskel-entfernt	Damen Bluse mit Print
+15449108021633	farbe-floskel-entfernt	Pullover-Shirt mit Button-down-Kragen
+15449108447617	farbe-floskel-entfernt	Sexy Deep-V Halter Top mit Taillenschnürung
+15449108611457	farbe-floskel-entfernt	Besticktes Blusentop mit Laternenärmeln
+15449109528961	farbe-floskel-entfernt,material-floskel-entfernt	Gestreifter Cardigan mit Reverskragen & Bindegürtel
+15449109922177	material-floskel-entfernt	Lässiges Langarm-T-Shirt für Damen
+15449110446465	material-floskel-entfernt	Kapuzen-Sweatshirt aus Flanell mit 3D-Effekt
+15449110512001	farbe-floskel-entfernt	Langarm-Top mit 3D-Effekt
+15449110675841	farbe-floskel-entfernt	Retro Streifen-Hoodie mit Blumen-Stickerei
