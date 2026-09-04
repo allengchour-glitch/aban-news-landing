@@ -1411,3 +1411,38 @@ ausziehregal-fur-kuche-ohne-bohren-604200	2606200720121604800	16	11.82	ok	landes
 rotes-frischhalte-tablett-aus-kunststoff-447298	2066701936298053634	0	-	KEINE CH-Option → DRAFT	landeseite
 gravity-shisha-vielseitig-kompakt-609200	2511120829541609400	11	48.04	ok	landeseite
 shisha-ventil-rennversion-602100	2504080159441602400	11	40.80	ok	landeseite
+holz-schneidbrett-akazie-614400	2605240153571614900	16	11.12	ok	landeseite
+bambus-rollo-782338	1990446648936554497	0	-	KEINE CH-Option → DRAFT	landeseite
+dreistufiges-regal-fur-bad-kuche-600000	2605160830451601500	0	-	KEINE CH-Option → DRAFT	landeseite
+schuh-aufbewahrungsbox-faltbar-632700	2605110350051633400	16	22.34	ok	landeseite
+wasserabweisende-autotiermatte-627500	2604180227291628100	16	21.96	ok	landeseite
+superhelle-led-stirnlampe-wiederaufladbar-880897	2043598013701738497	0	-	KEINE CH-Option → DRAFT	landeseite
+smarte-led-schminktasche-mit-spiegel-132544	1657968953068630016	7	43.37	ok	landeseite
+kerzenwarmer-lampe-lueur-mit-timer-dimmer	2056281409302478849	0	-	KEINE CH-Option → DRAFT	landeseite
+taillenformer-korsett-top-mit-stahlstaben-333890	2036038981972385794	16	7.85	ok	landeseite
+m8-mini-funk-ansteckmikrofon-2er-set-601500	2510060141521601700	7	7.30	ok	landeseite
+karaoke-mikrofon-mit-bluetooth-lautsprecher-601800	2411140215581602000	-	-	unklar 0  rest=None	landeseite
+wasserdichte-led-lichtleiste-fur-aussenbereich-634900	2608050845301635600	0	-	KEINE CH-Option → DRAFT	landeseite
+tragbarer-multifunktions-smoothie-maker-600000	2507091228161600200	7	15.60	ok	landeseite
+sanftes-haarentfernungsgerat-fur-den-ganzen-ko-622900	2512290242051623100	7	17.13	ok	landeseite
+glattburste-mit-dampf-spruhfunktion-e765b5	-	-	-	unklar keine CJ-SKU	landeseite
+futterautomat-mit-kamera-fur-hunde-und-katzen-294976	1750463548226015232	7	31.30	ok	landeseite
+retro-top-mit-diamanten-einheitsgrosse-616100	2603280732271616500	16	10.15	ok	landeseite
+elegantes-langarmshirt-mit-blumenprint-635700	2603280044331636100	16	8.79	ok	landeseite
+elegantes-armelloses-damen-shirt-mit-schleife-625100	2603270940151625500	16	6.63	ok	landeseite
+armelloses-top-mit-schnurung-613700	2603270914061614100	16	6.63	ok	landeseite
+elegantes-satin-top-mit-langarm-614000	2603270842161614400	16	6.42	ok	landeseite
+3d-blumen-top-mit-off-shoulder-633200	2603270348041633700	16	8.79	ok	landeseite
+hundeleine-mit-faltbarem-napf-3er-set-615552	1377134996569067520	16	8.46	ok	landeseite
+halsband-mit-zugseil-fur-grosse-hunde-940672	1376802974336159744	16	7.17	ok	landeseite
+taktische-hundeleine-fur-grosse-hunde-926080	1376413007772520448	16	6.48	ok	landeseite
+halsband-geflochten-fur-hunde-726144	1373498191063945216	16	5.72	ok	landeseite
+t20-mini-beamer-hd-heimkino-fur-unterwegs-682880	1439434006717403136	16	11.00	ok	landeseite
+puzzle-bausteine-zum-zusammenbauen-159168	1673233185754324992	16	8.79	ok	landeseite
+chiffonbluse-mit-ruschen-und-ausgestellten-arm-607800	2603280818011608100	16	6.90	ok	landeseite
+modellauto-bausatz-rennwagen-446912	1671493285057138688	16	7.43	ok	landeseite
+sportwagen-modell-aus-kleinen-bausteinen-086720	1671492326872584192	16	5.81	ok	landeseite
+gestreiftes-hemd-aus-baumwoll-leinen-mix-607900	2603280759491608400	16	6.55	ok	landeseite
+einfaches-bausteine-set-fur-kinder-023296	1671475744251326464	16	8.39	ok	landeseite
+titanstahl-armreif-mit-sternen-und-mond-603000	2512290510061603200	16	4.71	ok	landeseite
+herz-quasten-armband-616400	2512281205461616600	16	4.65	ok	landeseite
