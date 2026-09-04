@@ -13399,7 +13399,7 @@ function steerMove(s9,sv,dt,sprint){
   if(inSolid(s9.x,nz))nz=s9.z;
   s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9*(sprint?1.5:1);}
 // Folge-Kamera: beim aktiven Steuern schneller + leicht vorausschauend (fühlt sich flott an)
-var _eigenRing=null,_eigenRingT=0;
+var _eigenRing=null,_eigenRingDunkel=null,_eigenRingT=0;
 function updEigenRing(dt){
   /* 👤 WER BIN ICH? Auf dem Startbild (844x390) stehen vier aehnliche Figuren am
      Zebrastreifen, die eigene ohne Kennzeichen (th-spielerblick, Bild 1). Ein weicher,
@@ -13407,13 +13407,27 @@ function updEigenRing(dt){
      nicht im Ego-Blick, nicht im Baumodus. Ein Netz, kein Licht: kostet nichts. */
   var me=sims[meinSi()]||sims[0];
   if(!_eigenRing){if(!me||!me.mesh)return;
-    _eigenRing=new THREE.Mesh(new THREE.RingGeometry(0.62,0.92,36),new THREE.MeshBasicMaterial({color:0xfff2b0,transparent:true,opacity:0.5,depthWrite:false}));
-    _eigenRing.rotation.x=-Math.PI/2;_eigenRing.renderOrder=2;scene.add(_eigenRing);}
+    /* ⚠️ ZU SCHWACH GEWESEN — GEMESSEN, nicht geschaetzt. Die Spielfigur ist im
+       Handy-Querformat (844x390) nur 9 Bildpunkte hoch (Kamera-Abstand 44 m); der
+       alte Ring hatte 0,62…0,92 m Radius und 0,32…0,57 Deckkraft in blassem Gelb —
+       auf grauem Asphalt gerade noch zu ahnen. Auf allen sechs Bildern von
+       th-spielerblick muss man die eigene Figur suchen.
+       Jetzt groesser (0,85…1,25 m), kraeftiger (Bernstein statt Blassgelb) und mit
+       einem zweiten, dunklen Ring darunter: eine helle Linie auf hellem Grund
+       verschwindet, ein Hell-Dunkel-Paar nicht. Weiter zwei Netze ohne Licht — es
+       kostet nichts. */
+    _eigenRing=new THREE.Mesh(new THREE.RingGeometry(0.85,1.25,40),new THREE.MeshBasicMaterial({color:0xffc542,transparent:true,opacity:0.5,depthWrite:false}));
+    _eigenRing.rotation.x=-Math.PI/2;_eigenRing.renderOrder=3;scene.add(_eigenRing);
+    _eigenRingDunkel=new THREE.Mesh(new THREE.RingGeometry(1.25,1.5,40),new THREE.MeshBasicMaterial({color:0x2a1c00,transparent:true,opacity:0.34,depthWrite:false}));
+    _eigenRingDunkel.rotation.x=-Math.PI/2;_eigenRingDunkel.renderOrder=2;scene.add(_eigenRingDunkel);}
   var an=running&&me&&me.mesh&&me.mesh.visible&&!fahren&&!egoMode&&!buildMode;
-  _eigenRing.visible=!!an;if(!an)return;
+  _eigenRing.visible=!!an;if(_eigenRingDunkel)_eigenRingDunkel.visible=!!an;
+  if(!an)return;
   _eigenRingT+=dt;var p9=0.5+0.5*Math.sin(_eigenRingT*3.2);
   _eigenRing.position.set(me.x,(me.mesh.position.y||0)+0.04,me.z);
-  var sc9=1+p9*0.12;_eigenRing.scale.set(sc9,sc9,1);_eigenRing.material.opacity=0.32+p9*0.25;}
+  var sc9=1+p9*0.12;_eigenRing.scale.set(sc9,sc9,1);_eigenRing.material.opacity=0.5+p9*0.3;
+  if(_eigenRingDunkel){_eigenRingDunkel.position.set(me.x,(me.mesh.position.y||0)+0.035,me.z);
+    _eigenRingDunkel.scale.set(sc9,sc9,1);}}
 function updFollow(dt){
   if(!followSim)return;
   if(followSim.state==="work"){followSim=null;if(egoMode)egoToggle();return;}
