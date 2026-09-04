@@ -53,6 +53,24 @@ def pruefen(alt, neu):
         gruende.append("frage-statt-imperativ")
     if not (0.85 <= len(neu) / max(len(alt), 1) <= 1.15):
         gruende.append("laenge")
+    # ⚠️ 04.09.2026 — DIE ZWEI FEHLER, DIE DIE PRUEFUNG DURCHGELASSEN HAT (an 60 Texten gelesen):
+    # 1) «Ob du einen Look bevorzugst oder … Akzente setzen MÖCHTEN» — im deutschen Nebensatz
+    #    steht das finite Verb am ENDE, die Regel konjugiert aber nur das ERSTE. Ein zweiter
+    #    Teilsatz nach «oder»/«und» bleibt unkonjugiert stehen. Kein Sie-Rest, also unsichtbar.
+    # 2) «Ihr spezielles Doppelform-Design» wurde zu «dein …» — dort war «Ihr» aber das
+    #    Possessiv der PRESSE (3. Person), nicht die Hoeflichkeitsform. Grossgeschriebenes
+    #    «Ihr» am SATZANFANG ist mehrdeutig; mitten im Satz ist es fast immer die Anrede.
+    # Beides wird nur GEMELDET, nicht geraten — eine liegengebliebene Zeile kostet nichts,
+    # ein falscher Satz auf einer Produktseite schon (Lehre 21.08.: ein halber Satz ist
+    # schlimmer als ein fehlender).
+    for satz in re.split(r'(?<=[.!?])\s+', klartext(neu)):
+        if re.search(r'\b(?:du|dich|dir|dein\w*)\b', satz) and \
+           re.search(r'\b(?:m[öo]chten|k[öo]nnen|wollen|m[üu]ssen|sollen|d[üu]rfen|haben|sind)\b(?=[\s,.;!?]|$)', satz):
+            gruende.append("modalverb-unkonjugiert")
+            break
+    for m in re.finditer(r'(?:^|[.!?]\s+)Ihr\b', klartext(alt)):
+        gruende.append("Ihr-am-satzanfang-mehrdeutig")
+        break
     return gruende
 
 
