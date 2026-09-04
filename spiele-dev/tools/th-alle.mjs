@@ -167,6 +167,13 @@ const PRUEFUNGEN = [
   { name: 'Raeder (rollen die Verkehrswagen)', datei: 'th-raeder.mjs', kern: false,
     wert: (s) => (s.match(/(\d+) rollen richtig/) || [, '?'])[1] + ' Wagen',
     gut: (s) => /🎉 RAEDER BESTANDEN/.test(s) },
+  /* ⚠️ Die TAFELN sah bis 2026-09-04 niemand nach. th-hud prueft die immer sichtbare
+     Leiste, th-spielerblick die Welt — was der Spieler OEFFNET (Erfolge, Karte,
+     Bau-Palette, Krimi-Auswahl, Hetze), stand nirgends. Genau dort war der letzte
+     Fund des Users. */
+  { name: 'Tafeln (was man oeffnen kann)', datei: 'th-tafeln.mjs', kern: false,
+    wert: (s) => (s.match(/(\d+) geprueft/) || [, '?'])[1] + ' Tafeln',
+    gut: (s) => /🎉 TAFELN BESTANDEN/.test(s) },
   { name: 'Fahrgeschaefte (drehen sie sich)', datei: 'th-fahrt.mjs', kern: false,
     wert: (s) => (s.match(/— (\d+) geprueft/) || [, '?'])[1] + ' Fahrten',
     gut: (s) => /🎉 FAHRGESCHAEFTE BESTANDEN/.test(s) },

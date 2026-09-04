@@ -13542,10 +13542,64 @@ function drawBigMap(){
   // Orte
   c.textAlign="center";c.textBaseline="middle";
   /* Beschriftung abwechselnd ueber/unter dem Symbol — im Suedviertel stehen die Orte dicht */
-  for(var k=0;k<WORLD_POIS.length;k++){var P=WORLD_POIS[k],sp=S(P[0],P[1]),ly=(k%2)?-24:16;
+  /* 🗺️ ORTSNAMEN, DIE SICH NICHT UEBERLAGERN. Angesehen 2026-09-04 auf der grossen
+     Karte: im dichten Zentrum lagen die Namen uebereinander — aus "Bruecke" und
+     "Spielplatz" wurde im Bild "BrSpielplatz", "Dein Grundstueck" lag auf "Altstadt".
+     Der Grund stand hier: gezeichnet wurde jeder Name, der Versatz wechselte nur
+     zwischen -24 und +16, und ob dort schon einer stand, hat niemand gefragt.
+     Jetzt wird je Name die Textbreite gemessen und unter fuenf Versaetzen der erste
+     freie genommen; passt keiner, bleibt der Name weg und nur das Sinnbild steht da.
+     Ein Sinnbild ohne Namen ist lesbar — zwei Namen uebereinander sind es nicht.
+     Die Kaesten landen in `window._kartenLabels`, damit die Pruefung nicht dieselbe
+     Rechnung ein zweites Mal anstellen muss (Runbook: EINE Herleitung). */
+  /* ⚠️ DIE KONTUR ZAEHLT MIT. Der erste Anlauf nahm 2 px Rand um den Text — die
+     Namen haben aber eine 4 px breite schwarze Kontur (lineWidth 4, je 2 px nach
+     aussen). Im Bild beruehrten sich zwei Namen im Zentrum trotz "0 Ueberlappungen".
+     5 px waagrecht und 4 px senkrecht decken Kontur und Rundung ab.
+     ⚠️ UND NICHT UEBER DEN KARTENRAND. Oben rechts lief ein Name aus dem Feld; wer
+     nicht ganz hineinpasst, wird weggelassen wie ein ueberlappender. */
+  var _lb=[],_lbAlle=[],_padX=5,_padY=4;
+  function _frei(x0,y0,x1,y1){
+    if(x0<2||y0<2||x1>c.canvas.width-2||y1>c.canvas.height-2)return false;
+    for(var q=0;q<_lb.length;q++){var b=_lb[q];
+      if(x0<b[2]&&x1>b[0]&&y0<b[3]&&y1>b[1])return false;}return true;}
+  /* ⚠️ WER ZUERST KOMMT, BEKOMMT DEN PLATZ — also muss die Reihenfolge stimmen.
+     Nach dem ersten Einbau fiel ausgerechnet "Dein Grundstueck" weg: es liegt im
+     dichtesten Fleck der Karte und stand in der Liste weit hinten. Der eigene Hof ist
+     aber der wichtigste Punkt ueberhaupt. Darum wird nach Wichtigkeit platziert:
+     erst das Grundstueck, dann die Viertel (sie tragen die Orientierung), dann der
+     Rest in Listenreihenfolge. Gezeichnet wird weiter alles an seinem Ort — die
+     Reihenfolge entscheidet nur, wer bei Enge gewinnt. */
+  var _rang=function(P){ if(/grundst/i.test(P[3]))return 0;
+    if(/viertel|park|bahnhof|flughafen|zoo|bauernhof|hafen/i.test(P[3]))return 1; return 2; };
+  var _ord=WORLD_POIS.map(function(P,i){return i;}).sort(function(a,b){
+    var d=_rang(WORLD_POIS[a])-_rang(WORLD_POIS[b]); return d!==0?d:a-b; });
+  for(var ki=0;ki<_ord.length;ki++){var k=_ord[ki],P=WORLD_POIS[k],sp=S(P[0],P[1]);
     c.font="25px system-ui";c.fillText(P[2],sp[0],sp[1]-6);
-    c.font="900 15px system-ui";c.lineWidth=4;c.strokeStyle="rgba(0,0,0,.6)";c.fillStyle="#fff";
-    c.strokeText(P[3],sp[0],sp[1]+ly);c.fillText(P[3],sp[0],sp[1]+ly);c.fillStyle="rgba(70,58,50,.8)";}
+    c.font="900 15px system-ui";
+    var tw=c.measureText(P[3]).width, th=15, dxR=tw/2+14;
+    /* ⚠️ AUCH NEBEN DAS SINNBILD, nicht nur darueber und darunter. Mit fuenf rein
+       senkrechten Plaetzen fielen im dichten Zentrum acht von dreissig Namen weg,
+       darunter "Zoo", "Altstadt" und "Marktplatz" — sauber, aber aermer. Rechts und
+       links liegt oft freie Flaeche; der Name rutscht dann um seine halbe Breite plus
+       14 px zur Seite. Die Reihenfolge bleibt: erst nah, dann weiter weg. */
+    var kand=(k%2)
+      ? [[0,-24],[0,16],[dxR,-4],[-dxR,-4],[0,-38],[0,30],[dxR,-20],[-dxR,-20],[0,-52]]
+      : [[0,16],[0,-24],[dxR,-4],[-dxR,-4],[0,30],[0,-38],[dxR,12],[-dxR,12],[0,52]];
+    var gy=null,gx=sp[0];
+    for(var q2=0;q2<kand.length;q2++){
+      var xx=sp[0]+kand[q2][0], yy=sp[1]+kand[q2][1];
+      if(_frei(xx-tw/2-_padX,yy-th-_padY,xx+tw/2+_padX,yy+5+_padY)){gy=yy;gx=xx;break;}}
+    /* ⚠️ DEN BENUTZTEN VERSATZ MERKEN, nicht den ersten Kandidaten. Der erste Anlauf
+       schrieb `sp[1]+kand[0]` hierher — die Pruefung mass damit Kaesten, die so nie
+       gezeichnet wurden, und meldete acht Ueberlappungen, die es nicht gab. */
+    _lbAlle.push({t:P[3],x:(gy===null?sp[0]:gx),y:(gy===null?sp[1]+kand[0][1]:gy),w:tw,h:th,
+                  padX:_padX,padY:_padY,gezeichnet:gy!==null});
+    if(gy===null)continue;                                   /* kein Platz — Sinnbild genuegt */
+    _lb.push([gx-tw/2-_padX,gy-th-_padY,gx+tw/2+_padX,gy+5+_padY]);
+    c.lineWidth=4;c.strokeStyle="rgba(0,0,0,.6)";c.fillStyle="#fff";
+    c.strokeText(P[3],gx,gy);c.fillText(P[3],gx,gy);c.fillStyle="rgba(70,58,50,.8)";}
+  window._kartenLabels=_lbAlle;
   // Spieler
   var me=sims[meinSi()];
   if(me){var mp=(fahren&&driveCar)?S(driveCar.mesh.position.x,driveCar.mesh.position.z):S(me.x,me.z);
