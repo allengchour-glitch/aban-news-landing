@@ -6950,3 +6950,28 @@ erreicht ihn nicht; nur der Betreiber kann ihn abstellen.
 - ⚠️ **Eine Verdachtsspur war meine eigene:** Ein Beitrag 19 Minuten vor dem Karussell sah fremd aus —
   er war mein eigener Einzelpost, die Post-ID stimmte mit dem Queue-Eintrag überein. **Vor einem
   «das war jemand anderes» gehört die eigene Quittung geprüft.**
+
+## ✂️ 25 Captions repariert — mein eigener Schnitt, und die Lehre gegen den nächsten (2026-09-03, nachts)
+Die 18 als `text-pruefen` geparkten Beiträge waren MEIN Schaden: Die Polish-Regel hat die
+Schweiz-Zusage aus der **Satzmitte** geschnitten und den Rest angeklebt — «…mit Klarna.**war
+Relaxen noch nie so einfach**», «**Bezahl. Bezahl** bequem auf Rechnung». Dieselbe Klasse wie
+die Wearable-Fragmente (21.08.), diesmal in einer CSV. Nichts davon ging raus, weil die
+Nahtprüfung sie geparkt hat — die Prüfung hat also getan, wofür sie da ist.
+- **Repariert auf dem ORIGINAL aus der Git-Historie**, nicht auf der beschädigten Fassung
+  (`git show <commit>^:social/posts_image.csv`). Ohne das hätte ich raten müssen, was die
+  Regel verschluckt hat.
+- **Mit der Schweiz-Zusage fallen die Tempo-Behauptungen mit**, die grammatisch an ihr hingen:
+  «im Nu dein», «ohne Wartezeit», «kommt es schnell zu dir». Für CJ-Ware gelten 10–20 Werktage —
+  wer nur die Herkunft streicht, lässt das Tempoversprechen als Waise stehen.
+- **7 weitere `ready`-Captions trugen die Zusage in Formen, die KEINE meiner Regeln kannte**
+  («direkt aus der Schweiz zu dir», «blitzschnell aus der Schweiz geliefert», «per Blitzversand
+  direkt zu dir»); alle 7 Produkte ohne `ch-lager`, am Objekt geprüft. **Die Antwort war NICHT
+  noch eine Ersetzungsregel** — genau die haben die 18 zerschnitten —, sondern eine breite
+  **Restprüfung**: Was nach dem Polieren noch eine Zusage trägt, wird PARKIERT statt
+  verstümmelt. *Ein breites Muster ist ein Netz, kein Urteil* — als Melder richtig, als
+  Schreiber falsch. Eine geparkte Zeile kostet einen Post, eine zerschnittene kostet Vertrauen.
+- ⚠️ **Und die dritte Fassung derselben Falle an einem Tag:** Meine Nahtprüfung
+  `[a-zäöü]\.[A-Za-zäöü]` schlug bei ALLEN 18 an — sie hielt **`luxestyle.ch`**, den eigenen
+  Domainnamen, für eine Naht. Ein Prüfmuster, das die eigene Adresse für einen Fehler hält,
+  erfindet einen Befund. Geprüft wird jetzt nur der Text VOR dem Link.
+- Stand: **76 `ready`**, davon 0 mit CH-/Tempo-Zusage, 0 mit Naht, 0 mit leerem Hashtag.

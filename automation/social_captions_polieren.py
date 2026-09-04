@@ -56,6 +56,15 @@ CH_WEG = [
 ]
 RECHNUNG = re.compile(r"Kauf auf Rechnung(?!\s+mit Klarna)", re.I)
 
+# ⚠️ BREITES NETZ als Restpruefung (03.09.2026). Die Ersetzungsregeln oben kennen nur die
+# Formen, die sie schon gesehen haben — sieben Captions trugen die Zusage in Wendungen, die
+# keine davon traf («direkt aus der Schweiz zu dir», «blitzschnell aus der Schweiz
+# geliefert», «per Blitzversand direkt zu dir»). Noch mehr Ersetzungsregeln waeren der
+# falsche Weg: genau sie haben 18 Captions mitten im Satz zerschnitten. Ein breites Muster
+# ist ein NETZ, kein Urteil — was danach noch eine Zusage traegt, wird PARKIERT, nicht
+# verstuemmelt. Eine geparkte Zeile kostet einen Post, eine zerschnittene kostet Vertrauen.
+REST_CH = re.compile(r"Blitzversand|aus der Schweiz|Schweizer Lager|1\\s*[–-]\\s*2\\s*(?:Werk)?[Tt]agen|im Nu\\b|ohne Wartezeit", re.I)
+
 def produkt_id(zeilen_id):
     m = re.search(r"(\d{12,})\s*$", zeilen_id or "")
     return m.group(1) if m else None
@@ -92,7 +101,7 @@ def main():
             print("⛔ Shopify stumm — Abbruch, es wird nichts geschrieben."); return 1
         for j, p in enumerate(teil):
             stand[p] = d.get(f"p{j}")
-    geaendert = weg = ch = 0
+    geaendert = weg = ch = parkiert = 0
     for p, zeilen in ids.items():
         o = stand.get(p)
         for r in zeilen:
@@ -109,7 +118,16 @@ def main():
                     print(f"    ALT: {alt[:150]}")
                     print(f"    NEU: {neu[:150]}")
                 r["caption"] = neu
-    print(f"\nTexte geaendert: {geaendert} · Produkt weg: {weg} · echte CH-Lager-Ware: {ch}")
+            # Restpruefung NUR auf dem Text vor dem Link — «luxestyle.ch» ist selbst ein
+            # Punkt zwischen Kleinbuchstaben und hat eine fruehere Nahtpruefung 18x falsch
+            # alarmieren lassen.
+            kopf = (r.get("caption") or "").split("🔗")[0]
+            if not hat_ch and REST_CH.search(kopf):
+                r["status"] = "text-pruefen"; parkiert += 1
+                if DRY:
+                    print(f"    ⏸ parkiert (Zusage bleibt): {kopf.strip()[-90:]}")
+    print(f"\nParkiert zur Handarbeit: {parkiert}")
+    print(f"Texte geaendert: {geaendert} · Produkt weg: {weg} · echte CH-Lager-Ware: {ch}")
     if DRY:
         print("DRY — nichts geschrieben"); return 0
     with open(CSV, "w", encoding="utf-8", newline="") as f:

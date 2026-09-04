@@ -233,6 +233,24 @@ def main():
         print('Keine Klasse offen — Bericht geloescht.')
         return
 
+    # ⚠️ Die VOLLSTAENDIGE Trefferliste je Klasse als Arbeitsliste ablegen. Ohne sie muesste
+    # jedes Reparaturwerkzeug denselben Vollscan noch einmal fahren — und mehrere davon lesen
+    # heute einen Bulk-Export vom 30.08. und melden deshalb «0», waehrend die Klasse live
+    # 1'542 Produkte gross ist (ein Werkzeug, dessen Quelle veraltet, meldet Vollzug ueber
+    # eine Vergangenheit). EIN Scan, viele Arbeitslisten.
+    lst = os.path.join(REPO, 'dropship', '_klassen')
+    os.makedirs(lst, exist_ok=True)
+    for name, v in treffer.items():
+        slug = re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')[:50]
+        datei = os.path.join(lst, slug + '.txt')
+        if not v:
+            if os.path.exists(datei):
+                os.remove(datei)          # Klasse leer -> Arbeitsliste weg, nicht veralten lassen
+            continue
+        with open(datei, 'w', encoding='utf-8') as f:
+            for pid, tit in v:
+                f.write(f'{pid}\t{tit}\n')
+
     zeilen = [f'# Klassen-Kontrolle ({art}, {n} aktive Produkte)', '',
               '> Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.',
               '> Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.',
