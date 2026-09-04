@@ -10842,3 +10842,5 @@ gid://shopify/Product/15453768089985	CHF 9.47	1 Varianten	40-farbige Augen-Schat
 gid://shopify/Product/15453768122753	CHF 19.97	1 Varianten	Ribbiertes Webband mit Blumen- und Pflanzenprint
 gid://shopify/Product/15453768155521	CHF 15.26	1 Varianten	Elegante Casual-Hoodie
 gid://shopify/Product/15453768221057	CHF 9.21	1 Varianten	Einzelne, farbige Wimpern zum selber ankleben
+gid://shopify/Product/15453768909185	CHF 20.75	1 Varianten	Atmungsaktive Sneaker mit erhöhter Passform
+gid://shopify/Product/15453768941953	CHF 14.87	1 Varianten	Fahrradhelm mit Schutzbrille und Licht

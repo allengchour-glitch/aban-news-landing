@@ -204,9 +204,36 @@ ANSCHLUSS = re.compile(r'[.;]|\b(dazu|zudem|ausserdem|au[sß]erdem|damit|sodass|
 
 AUFZAEHLUNG = re.compile(r'^\s*(?:\w+\s*){0,2}[,:]\s*(?:darunter|z\.?\s?B\.?|etwa|wie|n[äa]mlich)\b', re.I)
 
+# ⚠️ 04.09.2026: DIE AUFZAEHLUNG BRAUCHT NICHT IMMER EIN MARKERWORT. Nach dem Rueckstandslauf
+# blieben Saetze wie «Das Bändercollar ist aus Stoff gefertigt und in verschiedenen Farben
+# erhältlich: Weinrot, Schwarz, Ingwer, Dunkelgrün, Violett, Rosenrot und Blaustich.» stehen —
+# ein Doppelpunkt und eine reine Wortliste, ohne «darunter». Der Satz sagt nichts anderes.
+# Erkannt wird deshalb zusaetzlich: Doppelpunkt, danach bis zum Satzende NUR kurze Glieder
+# (hoechstens drei Woerter), getrennt durch Komma oder «und/oder», ohne Verbform.
+# ⚠️ Eng gefasst: ein Glied mit einem Verb («: Sie können frei wählen») ist ein Aussagesatz,
+# kein Farbregister — dann bleibt der Satz stehen. Eine Verbotsliste ist nie vollstaendig,
+# deshalb zusaetzlich die harte Laengengrenze von drei Woertern je Glied.
+_VERBHAFT = re.compile(r'\b(?:ist|sind|wird|werden|kann|k[öo]nnen|haben|hat|l[äa]sst|'
+                       r'bietet|sorgt|eignet|passt|w[äa]hlen|erlaubt|macht|gibt)\b', re.I)
+
+
+def reine_liste(rest):
+    """Steht nach dem Doppelpunkt bis zum Satzende nur eine Aufzaehlung?"""
+    m = re.match(r'\s*(?:\w+\s*){0,2}:\s*([^.!?]{3,200})', rest)
+    if not m:
+        return 0
+    liste = m.group(1)
+    glieder = [g.strip() for g in re.split(r',|\bund\b|\boder\b', liste) if g.strip()]
+    if len(glieder) < 2:
+        return 0
+    if any(len(g.split()) > 3 or _VERBHAFT.search(g) for g in glieder):
+        return 0
+    return m.end()
+
 def treffer_anteil(satz, f):
     ende = f.end()
-    if AUFZAEHLUNG.match(satz[ende:]):
+    rest = satz[ende:]
+    if AUFZAEHLUNG.match(rest) or reine_liste(rest):
         ende = len(satz.rstrip('.!? '))
     return (ende - f.start()) / max(len(satz), 1)
 
