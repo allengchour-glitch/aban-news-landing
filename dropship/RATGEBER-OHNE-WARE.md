@@ -2,6 +2,20 @@
 
 Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, der rankt und die Leserin ins Leere schickt, verschenkt genau die Kaufabsicht, die am teuersten zu bekommen ist.
 
+## ⚠️ Benannte Ware zu benanntem Preis — die es nicht gibt
+
+Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen und Preis, den niemand kaufen kann.
+
+| Ratgeber | verspricht | Preis | kein Produkt zu |
+|---|---|---|---|
+| [UV400 vs. Polarisiert — Wie du echte Sonnenbr](/blogs/ratgeber/uv400-polarisiert-sonnenbrillen-guide) | PC-Rahmen und Federscharnieren kostet beim Op | CHF 150 | `Federscharnieren` |
+| [UV400 vs. Polarisiert — Wie du echte Sonnenbr](/blogs/ratgeber/uv400-polarisiert-sonnenbrillen-guide) | Federscharnieren und Schutzbeutel. | CHF 39.90 | `Federscharnieren` |
+| [Home Office gesünder einrichten: 6 Bereiche, ](/blogs/ratgeber/home-office-gesuender-einrichten) | Augen am Abend weniger überreizt anfühlen. Di | CHF 15.90 | `überreizt` |
+| [Bartpflege & Rasur 2026: Der komplette Ratgeb](/blogs/ratgeber/bartpflege-rasur-2026-ratgeber) | Nassrasierers. Ein guter Rasierhobel kostet u | CHF 30 | `Nassrasierers` |
+| [Pool & Schwimmen 2026: Sommer-Spass im & am W](/blogs/ratgeber/pool-schwimmen-2026-ratgeber) | Schwimmbrillen starten in der Schweiz bei etw | CHF 20 | `Schwimmbrillen` |
+| [Camping & Outdoor 2026: Die wichtigste Ausrüs](/blogs/ratgeber/camping-outdoor-2026-ausruestung) | Nässe und teurer | CHF 300. | `teurer` |
+| [Powerbank kaufen 2026: So erkennst du den mAh](/blogs/ratgeber/powerbank-kaufen-mah-schwindel-2026) | Eine Prozentanzeige wie bei der | CHF 17.90 | `Prozentanzeige` |
+
 ## Ratgeber ohne einen einzigen kaufbaren Produktlink
 
 | Ratgeber | Produktlinks (alle tot/keine) |
