@@ -22,12 +22,17 @@ BENUTZUNG:  DRY=1 CAP=20 python3 automation/dateispeicher_aufraeumen.py
             DRY=0 CAP=800 python3 automation/dateispeicher_aufraeumen.py
             KLASSE="status:draft AND tag:duplikat-auto-draft" …
 """
-import json, os, sys, time, urllib.request
+import json, os, sys, threading, time, urllib.request
+from concurrent.futures import ThreadPoolExecutor
 
 SHOP = os.environ.get('SHOPIFY_SHOP', 'au3j0y-hq.myshopify.com')
 TOKEN = os.environ.get('SHOPIFY_ADMIN_TOKEN') or open('/tmp/cj_shop_token.txt').read().strip()
 DRY = os.environ.get('DRY', '1') == '1'
 CAP = int(os.environ.get('CAP', '50'))
+# Der Shopify-Eimer fasst 2000 Punkte und füllt mit 100/s nach; eine Löschseite kostet
+# gemessen 20. Der Engpass ist die Antwortzeit der Mutation, nicht das Budget — deshalb
+# ein kleiner Arbeitertrupp statt eines seriellen Laufs.
+PARALLEL = int(os.environ.get('PARALLEL', '4'))
 KLASSE = os.environ.get('KLASSE', 'status:draft AND tag:bigbuy')
 LEDGER = 'dropship/_dateispeicher_media_geloescht.txt'
 CURSOR = '/tmp/dateispeicher_cursor.txt'
@@ -67,8 +72,26 @@ M = '''mutation($p:ID!,$m:[ID!]!){ productDeleteMedia(productId:$p, mediaIds:$m)
   deletedMediaIds mediaUserErrors{ message } userErrors{ message } } }'''
 
 
+schloss = threading.Lock()
+led = None
+
+
+def loeschen(auftrag):
+    x, ms, groesse = auftrag
+    r = gql(M, {'p': x['id'], 'm': ms})
+    pdm = (r.get('productDeleteMedia') or {})
+    fehler = (pdm.get('mediaUserErrors') or []) + (pdm.get('userErrors') or [])
+    if fehler:
+        sys.stderr.write(f"  ⛔ {x['id']}: {json.dumps(fehler)[:120]}\n"); return
+    with schloss:
+        led.write(f"{x['id'].split('/')[-1]}\t{len(pdm.get('deletedMediaIds') or [])}\t{groesse}\t{x['title'][:60]}\n")
+        led.flush()
+
+
 def main():
+    global led
     cur = None
+    auftraege = []
     if os.path.exists(CURSOR) and os.environ.get('NEU') != '1':
         cur = open(CURSOR).read().strip() or None
         if cur:
@@ -96,16 +119,13 @@ def main():
                 if prod >= CAP:
                     break
                 continue
-            r = gql(M, {'p': x['id'], 'm': ms})
-            pdm = (r.get('productDeleteMedia') or {})
-            fehler = (pdm.get('mediaUserErrors') or []) + (pdm.get('userErrors') or [])
-            if fehler:
-                sys.stderr.write(f"  ⛔ {x['id']}: {json.dumps(fehler)[:120]}\n"); continue
-            led.write(f"{x['id'].split('/')[-1]}\t{len(pdm.get('deletedMediaIds') or [])}\t{s}\t{x['title'][:60]}\n")
-            led.flush()
-            time.sleep(0.25)
+            auftraege.append((x, ms, s))
             if prod >= CAP:
                 break
+        if auftraege:
+            with ThreadPoolExecutor(max_workers=PARALLEL) as pool:
+                list(pool.map(loeschen, auftraege))
+            auftraege = []
         if not p.get('pageInfo', {}).get('hasNextPage'):
             print('Klasse vollstaendig durchlaufen')
             cur = None; break
