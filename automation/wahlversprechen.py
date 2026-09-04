@@ -89,18 +89,49 @@ abfrage = 'status:active' + (f' created_at:>={SEIT}' if SEIT else '')
 # DEPTH-Reset der CJ-Runner (29.07.) und der Seiten-Zeiger des Bewertungs-Imports (28.08.):
 # ein Lauf ohne Gedaechtnis ueber seinen Fortschritt arbeitet ewig am Anfang.
 CURSOR = '/tmp/wahlversprechen_cursor.txt'
+# ⚠️ 04.09.2026: ARBEITSLISTE STATT KATALOG-DURCHLAUF. Der Vollscan sieht bei CAP=6000 und
+# 52'000 Produkten nur ein Achtel pro Tag — der taegliche Klassen-Vollscan misst die Klasse
+# dagegen in EINEM Lauf und legt die Treffer in `dropship/_klassen/` ab. Ein Scan, viele
+# Arbeitslisten: LISTE= arbeitet genau die ab, der Cursor-Weg bleibt als Netz fuer alles,
+# was der Klassen-Scan (noch) nicht kennt.
+LISTE = os.environ.get('LISTE', '')
+
+
+def seiten_aus_liste(pfad):
+    ids = [z.split('\t')[0].strip() for z in open(pfad) if z.strip()]
+    Q = ('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title descriptionHtml '
+         'variantsCount{count} options{name}}}}')
+    for i in range(0, len(ids), 50):
+        d = gql(Q, {'ids': [f'gid://shopify/Product/{x}' for x in ids[i:i + 50]]})
+        yield {'nodes': [n for n in ((d.get('data') or {}).get('nodes') or []) if n],
+               'pageInfo': {'hasNextPage': i + 50 < len(ids), 'endCursor': None}}
+        time.sleep(0.3)
+
+
+def seiten_aus_katalog(start):
+    c = start
+    while True:
+        d = gql('''query($c:String,$q:String!){products(first:100,after:$c,query:$q){
+                     pageInfo{hasNextPage endCursor}
+                     nodes{id title descriptionHtml variantsCount{count} options{name}}}}''',
+                {'c': c, 'q': abfrage})
+        p = (d.get('data') or {}).get('products')
+        if not p:
+            print('PAUSE (Shopify blieb stumm) — naechster Lauf macht weiter.')
+            return
+        yield p
+        if not p['pageInfo']['hasNextPage']:
+            return
+        c = p['pageInfo']['endCursor']
+
+
 cur = None
-if not SEIT and os.path.exists(CURSOR):
+if not SEIT and not LISTE and os.path.exists(CURSOR):
     cur = (open(CURSOR).read().strip() or None)
 gesehen, treffer = 0, []
-while gesehen < CAP:
-    d = gql('''query($c:String,$q:String!){products(first:100,after:$c,query:$q){
-                 pageInfo{hasNextPage endCursor}
-                 nodes{id title descriptionHtml variantsCount{count} options{name}}}}''',
-            {'c': cur, 'q': abfrage})
-    p = (d.get('data') or {}).get('products')
-    if not p:
-        print('PAUSE (Shopify blieb stumm) — naechster Lauf macht weiter.')
+quelle = (seiten_aus_liste(LISTE) if LISTE else seiten_aus_katalog(cur))
+for p in quelle:
+    if gesehen >= CAP:
         break
     for a in p['nodes']:
         gesehen += 1
@@ -122,15 +153,12 @@ while gesehen < CAP:
             if re.search(r'\d+\s*[×x]\s*[A-Za-zÄÖÜäöü]', danach):
                 continue
             treffer.append((a['id'].split('/')[-1], a['title'], m.group(0)[:70]))
-    if not p['pageInfo']['hasNextPage']:
-        cur = None                     # Katalogende erreicht — naechster Lauf faengt vorn an
-        break
-    cur = p['pageInfo']['endCursor']
+    cur = p['pageInfo']['endCursor'] if p['pageInfo']['hasNextPage'] else None
 
 # Fortschritt merken, damit der naechste Lauf DORT weitermacht statt wieder am Anfang.
-# Nur im Voll-Modus: ein SEIT-Lauf hat einen eigenen, kleineren Ausschnitt und darf den
-# Zeiger des Voll-Laufs nicht verstellen.
-if not SEIT:
+# Nur im Voll-Modus: ein SEIT- oder LISTE-Lauf hat einen eigenen, kleineren Ausschnitt und
+# darf den Zeiger des Voll-Laufs nicht verstellen.
+if not SEIT and not LISTE:
     with open(CURSOR, 'w') as f:
         f.write(cur or '')
 
