@@ -1518,3 +1518,54 @@ nordischer-sofauberzug-mit-geometrischem-muste-604000	2608232333281605000	16	14.
 sofabezug-aus-kaninchenfellimitat-632300	2608232315231633300	16	13.04	ok	landeseite
 sitzkissen-aus-plusch-fur-sofa-600500	2608231536241601600	16	9.07	ok	landeseite
 chenille-sofakissen-fur-alle-jahreszeiten-622900	2608231519181624100	16	8.11	ok	landeseite
+kompakte-magnetische-pd20w-powerbank-865408	1468388721098362880	0	-	KEINE CH-Option → DRAFT	landeseite
+bluetooth-player-mit-lampe-und-wireless-charge-69373f	-	-	-	unklar keine CJ-SKU	landeseite
+nagel-trockner-mit-display-und-powerbank-720640	1735860667585933312	7	9.34	ok	landeseite
+magnetisches-kabelloses-ladegerat-fur-handy-613400	2502200111351613600	7	7.06	ok	landeseite
+kabelloses-ladegerat-mit-uhr-und-thermometer-899264	1392727351254716416	7	9.69	ok	landeseite
+magnetisches-2-in-1-wireless-ladegerat-618500	2407240217171618800	7	5.75	ok	landeseite
+smart-wireless-charger-lampe-365952	1703968845209280512	16	11.00	ok	landeseite
+sofa-stuhl-wireless-ladegerat-894336	1703673491762974720	7	8.65	ok	landeseite
+e-scooter-lithium-akku-ladegerat-605700	2608150717551606700	16	8.79	ok	landeseite
+kinder-laufschuhe-aus-atmungsaktivem-mesh-191424	1375354827533586432	16	9.88	ok	landeseite
+regenbogen-canvas-sneakers-fur-kinder-256128	1417674309224239104	16	10.55	ok	landeseite
+leuchtende-rollschuh-sneaker-fur-kinder-174784	1417042916790112256	7	19.43	ok	landeseite
+smartwatch-gehause-mit-kabellosem-ladegerat-608200	2407240306021608400	16	11.02	ok	landeseite
+madchen-mesh-sneakers-mit-klettverschluss-485440	1406560404053823488	16	10.81	ok	landeseite
+teenager-freizeit-sneaker-960192	1406557639864881152	16	10.81	ok	landeseite
+smart-multi-port-ladegerat-634560	1367706804485754880	16	9.07	ok	landeseite
+solar-handkurbelradio-10000-mah-notfall-ladege-894272	1604666103437996032	7	13.79	ok	landeseite
+schwarze-mid-top-sneaker-612300	2410310614481612500	16	9.47	ok	landeseite
+3-in-1-magnetischer-kabelloser-ladegerat-627200	2609010532081628200	7	7.53	ok	landeseite
+smartwatch-mit-bluetooth-anruf-und-nfc-ladeger-973632	1744242180841025536	7	6.81	ok	landeseite
+kabelloses-bluetooth-gamepad-fur-ps4-e0e243	-	-	-	unklar keine CJ-SKU	landeseite
+transparenter-wake-up-gaming-controller-602000	2608220352331603100	7	8.10	ok	landeseite
+25w-all-in-one-faltbares-magnetisches-ladegera-615300	2608230303201617000	7	9.24	ok	landeseite
+kabelloses-ladegerat-kompakt-schnell-139560	-	-	-	unklar keine CJ-SKU	landeseite
+diamantbesetztes-uhren-set-0961cb	-	-	-	unklar keine CJ-SKU	landeseite
+atmospharische-damenuhr-geschenkset-7b8ed1	-	-	-	unklar keine CJ-SKU	landeseite
+stahlband-quarzuhr-fur-sport-und-business-f06ad7	-	-	-	unklar keine CJ-SKU	landeseite
+herren-mechanikuhr-mit-milanaise-armband-b2d61d	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-partneruhr-aus-edelstahl-cd1a14	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-berjani-armbanduhr-b1264f	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-berjani-quarzuhr-4b0f6a	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-berjani-3306-quarzuhr-38360c	-	-	-	unklar keine CJ-SKU	landeseite
+pagani-design-gold-armbanduhr-mit-stahlband-d62c72	-	-	-	unklar keine CJ-SKU	landeseite
+damen-quarzuhr-mit-kalender-und-24-stunden-anz-5f29a0	-	-	-	unklar keine CJ-SKU	landeseite
+nibosi-quarzuhr-mit-edelstahlband-e89d0a	-	-	-	unklar keine CJ-SKU	landeseite
+armbanduhr-manschettenknopfe-kugelschreiber-ge-393b44	-	-	-	unklar keine CJ-SKU	landeseite
+klassische-quarzuhr-mit-leuchtanzeige-cb137b	-	-	-	unklar keine CJ-SKU	landeseite
+gelbgold-business-uhr-adcad7	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-quarzuhr-mit-ultradunnem-gehause-de6886	-	-	-	unklar keine CJ-SKU	landeseite
+smart-armband-mit-temperatur-und-blutsauerstof-a18f60	-	-	-	unklar keine CJ-SKU	landeseite
+gaming-trigger-griff-fur-smartphones-c1a081	-	-	-	unklar keine CJ-SKU	landeseite
+led-dual-ladestation-fur-ps4-controller-e4ef04	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-tastatur-fur-ps4-controller-0fc67a	-	-	-	unklar keine CJ-SKU	landeseite
+drahtloser-controller-200000	1412283649939869696	7	10.33	ok	landeseite
+v-formiger-ladegriff-fur-nintendo-switch-joy-c-401216	1356051793297149952	16	11.23	ok	landeseite
+tastatur-und-maus-df13c7	-	-	-	unklar keine CJ-SKU	landeseite
+bluetooth-gamepad-fur-diverse-gerate-a8b390	-	-	-	unklar keine CJ-SKU	landeseite
+ak66-sechs-finger-gamepad-mit-vier-tasten-37ee65	-	-	-	unklar keine CJ-SKU	landeseite
+kabelloser-controller-fur-switch-ps3-bee6ad	-	-	-	unklar keine CJ-SKU	landeseite
+drahtloses-bluetooth-gamepad-4404b7	-	-	-	unklar keine CJ-SKU	landeseite
+kabelloser-gamecontroller-fur-switch-pc-659d62	-	-	-	unklar keine CJ-SKU	landeseite
