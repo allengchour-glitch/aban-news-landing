@@ -10116,3 +10116,89 @@ gid://shopify/Product/15452709978497	CHF 26.10	16 Varianten	Sommer-Laufschuhe He
 gid://shopify/Product/15452710044033	CHF 23.28	10 Varianten	Damen-Sneaker mit dicken Sohlen und Rhinestones
 gid://shopify/Product/15452710109569	CHF 28.55	30 Varianten	Mädchen Leder-Schuhe mit weicher Sohle
 gid://shopify/Product/15452710142337	CHF 28.77	21 Varianten	Low-Top Schnürschuhe
+gid://shopify/Product/15452710175105	CHF 30.88	40 Varianten	Casual Paar-Sneakers in Rot
+gid://shopify/Product/15452710207873	CHF 38.01	92 Varianten	Oxford Gefahrenschuhe mit Stoss- & Durchstichschut
+gid://shopify/Product/15452710240641	CHF 24.99	13 Varianten	Sommer-Business-Sneaker mit Stahlkappe
+gid://shopify/Product/15452710273409	CHF 25.50	40 Varianten	High-top Sneaker für Jungen & Herren – Trendig & b
+gid://shopify/Product/15452710306177	CHF 12.70	22 Varianten	Sommerhausschuhe für Mädchen – Schleife
+gid://shopify/Product/15452710338945	CHF 36.57	44 Varianten	Klettverschluss-Schulschuhe für Jungen und Mädchen
+gid://shopify/Product/15452710371713	CHF 12.39	30 Varianten	Weichgepolsterte Laufschuhe für Kleinkinder
+gid://shopify/Product/15452710404481	CHF 12.06	30 Varianten	Schicke Leder Mary Jane-Schuhe mit schwarzer Schle
+gid://shopify/Product/15452710437249	CHF 11.79	24 Varianten	Prinzessinnen-Schuhe mit Rüschen, Elegant & Casual
+gid://shopify/Product/15452710470017	CHF 12.06	20 Varianten	Lichtspiel Prinzessinnen Schuhe
+gid://shopify/Product/15452710502785	CHF 12.06	20 Varianten	Sommerliche Mädchen-Sandalen mit atmungsaktivem So
+gid://shopify/Product/15452710535553	CHF 12.06	24 Varianten	Sommer-Sandalen mit süssem Schleifchen und weicher
+gid://shopify/Product/15452710568321	CHF 12.06	14 Varianten	Sommer-Wasserschuhe für Jungen & Mädchen
+gid://shopify/Product/15452710601089	CHF 11.70	24 Varianten	Schwarze Mädchen-Schuhe, koreanischer Stil, weiche
+gid://shopify/Product/15452710633857	CHF 12.06	10 Varianten	Koreanische Prinzessin-Sandalen mit Hohlherz-Weich
+gid://shopify/Product/15452710666625	CHF 11.70	28 Varianten	Prinzessinnen-Lauflernschuhe für Kleinkinder
+gid://shopify/Product/15452710699393	CHF 12.88	36 Varianten	Sommer-High-Top-Schuhe, 2 Tragevarianten
+gid://shopify/Product/15452710732161	CHF 11.70	33 Varianten	Sommer-Slipper für Mädchen, atm. Sohle, Outdoor
+gid://shopify/Product/15452710764929	CHF 11.61	28 Varianten	Sommerhausschuhe für Mädchen, koreanischer Stil
+gid://shopify/Product/15452710797697	CHF 13.41	24 Varianten	Luftige Mary Jane Sneakers mit Klettverschluss für
+gid://shopify/Product/15452710830465	CHF 9.85	19 Varianten	LED-Leuchtschuhe für Kleinkinder
+gid://shopify/Product/15452710863233	CHF 28.24	29 Varianten	Casual Sandalen Einheitsfarbig
+gid://shopify/Product/15452710896001	CHF 15.54	22 Varianten	Weiche Lauflernschuhe für Kinder
+gid://shopify/Product/15452710928769	CHF 16.66	40 Varianten	Kinder Leichtlaufschuhe
+gid://shopify/Product/15452710961537	CHF 17.93	69 Varianten	Kinder-Lichtschuhe mit USB
+gid://shopify/Product/15452710994305	CHF 17.58	80 Varianten	Kinder-Schuhe mit weicher Sohle Frühling/Herbst
+gid://shopify/Product/15452711027073	CHF 15.06	18 Varianten	Warme Kinderstiefel mit Fleecefutter und nicht rut
+gid://shopify/Product/15452711059841	CHF 13.07	28 Varianten	Weiche Sneakers für Kinder – Schwarz, Rosa, Khaki
+gid://shopify/Product/15452711092609	CHF 9.87	24 Varianten	Säueli mit Nähtolle
+gid://shopify/Product/15452714140033	keine-cj-referenz
+gid://shopify/Product/15452714172801	keine-cj-referenz
+gid://shopify/Product/15452714402177	keine-cj-referenz
+gid://shopify/Product/15452714500481	keine-cj-referenz
+gid://shopify/Product/15452714598785	keine-cj-referenz
+gid://shopify/Product/15452714631553	keine-cj-referenz
+gid://shopify/Product/15452714729857	keine-cj-referenz
+gid://shopify/Product/15452715221377	keine-cj-referenz
+gid://shopify/Product/15452715254145	keine-cj-referenz
+gid://shopify/Product/15452715516289	keine-cj-referenz
+gid://shopify/Product/15452718039425	keine-cj-referenz
+gid://shopify/Product/15452718530945	CHF 26.27	1 Varianten	Kleiner Strandzelt für die Kleinen
+gid://shopify/Product/15452718563713	keine-cj-referenz
+gid://shopify/Product/15452718989697	keine-cj-referenz
+gid://shopify/Product/15452719088001	CHF 14.32	1 Varianten	Sternenprojektor für Kinderzimmer · Modell 2
+gid://shopify/Product/15452719153537	keine-cj-referenz
+gid://shopify/Product/15452719317377	keine-cj-referenz
+gid://shopify/Product/15452719350145	CHF 11.85	1 Varianten	Gelenkte 3-in-1-Ladestation für Smartphone, Uhren 
+gid://shopify/Product/15452719382913	keine-cj-referenz
+gid://shopify/Product/15452719415681	CHF 9.73	1 Varianten	Hautmassage für Haarwuchs und Stressabbau
+gid://shopify/Product/15452719513985	keine-cj-referenz
+gid://shopify/Product/15452719546753	keine-cj-referenz
+gid://shopify/Product/15452719612289	keine-cj-referenz
+gid://shopify/Product/15452719743361	CHF 12.23	1 Varianten	30 Steine Hautroller
+gid://shopify/Product/15452719776129	keine-cj-referenz
+gid://shopify/Product/15452719972737	keine-cj-referenz
+gid://shopify/Product/15452720005505	keine-cj-referenz
+gid://shopify/Product/15452720038273	keine-cj-referenz
+gid://shopify/Product/15452720202113	keine-cj-referenz
+gid://shopify/Product/15452720660865	keine-cj-referenz
+gid://shopify/Product/15452721119617	keine-cj-referenz
+gid://shopify/Product/15452919366017	CHF 5.58	1 Varianten	Perlencollier
+gid://shopify/Product/15452992995713	CHF 5.86	1 Varianten	Herzfotoanhänger
+gid://shopify/Product/15452993585537	CHF 6.07	1 Varianten	Herzanhänger Kette
+gid://shopify/Product/15453118398849	CHF 5.76	1 Varianten	Fledermaus-Pendelen
+gid://shopify/Product/15453118628225	CHF 9.35	1 Varianten	Perlen-Halskette
+gid://shopify/Product/15453118726529	CHF 10.67	1 Varianten	Natürliche Perlenkette
+gid://shopify/Product/15453118824833	CHF 5.76	1 Varianten	Goldüberzogene Ohrringe
+gid://shopify/Product/15453119218049	CHF 12.19	1 Varianten	Vintag-Ohrstecker
+gid://shopify/Product/15453119283585	CHF 5.36	1 Varianten	Kreuzanhänger
+gid://shopify/Product/15453119414657	CHF 13.91	1 Varianten	Herz-Schmuck-Set
+gid://shopify/Product/15453119480193	CHF 10.82	1 Varianten	Barockperlenring
+gid://shopify/Product/15453120364929	CHF 8.47	1 Varianten	Bunte Armbanduhr
+gid://shopify/Product/15453120627073	CHF 6.36	1 Varianten	Spiral-Armband
+gid://shopify/Product/15453120856449	CHF 6.94	1 Varianten	Teleskop-Handyhalter
+gid://shopify/Product/15453121380737	CHF 21.35	1 Varianten	Atemschutzmaske
+gid://shopify/Product/15453121446273	CHF 15.82	1 Varianten	Augen-Massager
+gid://shopify/Product/15453121479041	CHF 8.67	1 Varianten	Gesichtsreiniger mit Reinigungsbürste
+gid://shopify/Product/15453121675649	cj-abgekuendigt-pruefen
+gid://shopify/Product/15453401121153	CHF 17.53	1 Varianten	Kleiner Lüfter
+gid://shopify/Product/15453406560641	cj-abgekuendigt-pruefen
+gid://shopify/Product/15453407740289	CHF 35.37	1 Varianten	Strandsandalen
+gid://shopify/Product/15453409575297	CHF 5.58	1 Varianten	Schlafmaske
+gid://shopify/Product/15453410787713	CHF 7.37	1 Varianten	Männer-Armband
+gid://shopify/Product/15453410820481	CHF 7.37	1 Varianten	Goldene Streifenohrringe
+gid://shopify/Product/15453410853249	CHF 6.66	1 Varianten	Silberner Tassel-Schmuck
+gid://shopify/Product/15453412360577	CHF 5.58	1 Varianten	Teufelsaugen-Ohrhänger

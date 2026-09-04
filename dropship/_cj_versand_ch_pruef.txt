@@ -1371,3 +1371,43 @@ pilz-kratzbaum-fur-katzen-626625	2058759415099650049	0	-	KEINE CH-Option → DRA
 galaxy-edelstahl-katzentoilette-grau-065601	2052593482905866242	0	-	KEINE CH-Option → DRAFT	landeseite
 erhohter-keramiknapf-fur-katzen-hunde-639100	2603081014211639500	16	26.42	ok	landeseite
 doppelt-faltbarer-handtuchhalter-aus-walnussho-639300	2605190850481639800	0	-	KEINE CH-Option → DRAFT	landeseite
+shisha-set-bambus-aluminium-legierung-elektr-601500	2509030625241601700	11	41.03	ok	landeseite
+armgrip-trainingsgerat-flexibel-einstellbar-d3dafc	-	-	-	unklar keine CJ-SKU	landeseite
+bauchrad-fur-fitness-858240	1628271820585578496	16	25.16	ok	landeseite
+balance-board-fur-core-training-604000	2604300700221604500	16	24.32	ok	landeseite
+holz-katzenfutterstander-mit-keramikschale-639300	2605240832321639900	16	24.44	ok	landeseite
+boho-muster-decke-630700	2603240835181631600	16	17.28	ok	landeseite
+zitrus-entsafter-fur-frische-safte-429760	1422462086910447616	11	30.28	ok	landeseite
+kratzbaum-katzenbett-mit-schublade-639900	2605050322321630400	16	23.27	ok	landeseite
+3-stockiges-metallregal-fur-bad-kuche-mehr-536322	2042172412227919873	0	-	KEINE CH-Option → DRAFT	landeseite
+sitzkissen-fur-gartenbank-und-lounger-600500	2604230730281601900	16	25.83	ok	landeseite
+faltbares-katzenbett-fur-den-schreibtisch-638300	2603260617061638600	16	23.15	ok	landeseite
+erhohtes-hundebett-mit-blachen-dach-833474	2034276463357906946	0	-	KEINE CH-Option → DRAFT	landeseite
+smarter-futterautomat-mit-timer-606000	2606051259271606800	7	30.56	ok	landeseite
+blickdichter-vorhang-mit-teleskopstange-623700	2605160755161624300	11	32.15	ok	landeseite
+3d-comforter-set-rose-love-163330	2072937152453992450	0	-	KEINE CH-Option → DRAFT	landeseite
+verdunkelungsrollo-mit-kettenzug-987842	1990442866240172034	0	-	KEINE CH-Option → DRAFT	landeseite
+hundesitzschutz-mit-sichtfenstern-5888b9	-	-	-	unklar keine CJ-SKU	landeseite
+handgelenk-starker-mit-einstellbarem-widerstan-605200	2605260336231605700	7	27.44	ok	landeseite
+silikon-kugel-1-5kg-fur-fitness-629300	2605070643081629800	16	23.50	ok	landeseite
+rahmenloses-glas-vollspiegelsystem-769026	2047143028396748802	0	-	KEINE CH-Option → DRAFT	landeseite
+sommer-decke-aus-ice-silk-635400	2606020914251636100	16	8.11	ok	landeseite
+hundebett-warmer-schlafsack-7087d5	-	-	-	unklar keine CJ-SKU	landeseite
+riesiger-teddybar-pluschtier-mit-leder-optik-3e7eb6	-	-	-	unklar keine CJ-SKU	landeseite
+mikrowellen-regal-einlagig-verstellbar-018754	1998995696052264962	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-kaffeemaschine-fur-zuhause-und-buro-946432	1393877303188131840	16	28.35	ok	landeseite
+bluetooth-korperanalysewaage-175490	1998997697848004609	0	-	KEINE CH-Option → DRAFT	landeseite
+kuhles-sommer-seidenduvet-klasse-a-zertifizier-605400	2607070219101606100	16	12.21	ok	landeseite
+glas-maus-pad-631000	2603120945361631400	16	27.01	ok	landeseite
+bambus-schneidebrett-mit-schublade-622700	2604070220481623400	16	24.32	ok	landeseite
+interaktive-murmel-schiessmaschine-fur-kinder-611700	2411230944261611900	16	23.15	ok	landeseite
+munzeinwurf-tor-fur-spielautomaten-477632	1410041108280512512	16	23.50	ok	landeseite
+multifunktionaler-wasserdichter-outdoor-rucksa-613300	2604110522201613700	16	24.56	ok	landeseite
+bettkissen-mit-schrager-ablage-604000	2602240813421604400	16	27.01	ok	landeseite
+nackenstutzkissen-aus-bambusfaser-memory-foam-610400	2605050331111611000	16	20.18	ok	landeseite
+doppelstockiges-katzenhaus-mit-kratzbrett-560129	2058802242696962050	0	-	KEINE CH-Option → DRAFT	landeseite
+ganzjahres-haustierbett-aus-holz-abnehmbar-was-634000	2604260928111634500	16	21.98	ok	landeseite
+ausziehregal-fur-kuche-ohne-bohren-604200	2606200720121604800	16	11.82	ok	landeseite
+rotes-frischhalte-tablett-aus-kunststoff-447298	2066701936298053634	0	-	KEINE CH-Option → DRAFT	landeseite
+gravity-shisha-vielseitig-kompakt-609200	2511120829541609400	11	48.04	ok	landeseite
+shisha-ventil-rennversion-602100	2504080159441602400	11	40.80	ok	landeseite
