@@ -19900,3 +19900,169 @@
 15480411062657	ersetzt-1	Gummifussmatten für Tesla Model 3/X
 15480411128193	ersetzt-1	Keilabsatz-Sandalen mit dicker Sohle
 15480411390337	ersetzt-1	Taschenradio mit Uhr und Stereo-Sound
+15480411455873	ersetzt-1	3-teiliges Leder-Set für alle Jahreszeiten
+15480411586945	ersetzt-1	Bequeme & vielseitige Damen-Sandalen
+15480411783553	ersetzt-1	Bluetooth Subwoofer mit Farblicht
+15480411914625	ersetzt-1	Auto-Sitzkissen Winter
+15480412045697	ersetzt-1	Casual Open-Toe Sandalen für Damen
+15480412275073	ersetzt-1	Retro Bluetooth-Lautsprecher
+15480412406145	ersetzt-1	Auto-Sitzkissen aus Memoryschaum
+15480412504449	ersetzt-1	Bequeme rutschfeste Flip-Flops für Herren
+15480412537217	ersetzt-1	S3 Bluetooth Lautsprecher – Cyan
+15480412635521	ersetzt-1	Rücksitz-Organizer mit Tablet-Halterung
+15480412963201	ersetzt-1	Nackenkissen für Kindersitze
+15480429347201	ersetzt-1	Mini RC Helikopter – sturzfester Flugspass
+15480429674881	ersetzt-1	HD-Drohne mit Kamera und Höhenhaltung
+15480430035329	ersetzt-1	RC Feuerwehr-Helikopter – robust & flugstark
+15480430428545	ersetzt-1	RC-Passagiersegelflugzeug aus Schaumstoff
+15480430821761	ersetzt-1	RC-Schaumstoffflugzeug mit Beleuchtung
+15480431149441	ersetzt-1	RC Schaumstoff-Flugzeug für Stunts
+15480431444353	ersetzt-1	RC Flugzeug 787 Jet (EVA)
+15480431772033	ersetzt-1	RC Schaumgleiter
+15480432001409	ersetzt-1	Flugzeug Modell Kampfjet Bausatz
+15480432394625	ersetzt-1	Schaumstoff-Drohne mit Schwerkraft-Illusion
+15480432656769	ersetzt-1	RC Schaumgleiter für Kinder
+15480432918913	ersetzt-1	Mini Helikopter 3.5 Kanal Fernsteuerung
+15480432984449	ersetzt-1	GPS-Armband für Senioren mit Notruffunktion
+15480433246593	ersetzt-1	Ladestation für Xbox Controller-Akkus
+15480433377665	ersetzt-1	Ultraschall Mückenarmband für Outdoor
+15480456413569	ersetzt-1	Hoehenverstaerkende Sneaker
+15480457068929	ersetzt-1	Dual-Vibrations Gamepad mit Licht
+15480457134465	ersetzt-1	Wander-Sneaker mit breiter Zehenbox
+15480457527681	ersetzt-1	Memory Foam Autositzkissen
+15480457593217	ersetzt-1	Oculus Quest 2 Controller Schutzhülle
+15480457625985	ersetzt-1	Casual Sneaker · Herren
+15480457691521	ersetzt-1	Smart Watch mit Herzfrequenzmessung
+15480457986433	ersetzt-1	Ausziehbarer Gaming-Controller für Mobilgeräte
+15480458019201	ersetzt-1	Solar-Kurbelradio mit Taschenlampe
+15480458051969	ersetzt-1	Retro Hiking Leder-Schuhe für Herren
+15480458248577	ersetzt-1	Controller-Halterung für PS4/PS5/Xbox
+15480458281345	ersetzt-1	GT4MAX Smartwatch mit Bluetooth-Telefonie
+15480458314113	ersetzt-1	Massagekissen für Auto und Zuhause
+15480458379649	ersetzt-1	Retro-Freizeit-Sneaker für Sport und Alltag
+15480458543489	ersetzt-1	Aufblasbarer Kindersitz für das Auto
+15480458576257	ersetzt-1	T95 Smart TWS 2-in-1 Bluetooth Gesundheits-Watch
+15480458609025	ersetzt-1	Performance Sneakers für Teenager
+15480458871169	ersetzt-1	Smartwatch mit Android OS & Sportfunktionen
+15480458903937	ersetzt-1	Gurt-Clip für Schwangerschaft
+15480458936705	ersetzt-1	Bequemer Mesh-Sneaker für Herren
+15480459198849	ersetzt-1	Mittelarmlehnen-Organizer
+15480459231617	ersetzt-1	T92 Smartwatch mit Bluetooth-Anrufen & Gesundheits-Tracker
+15480459329921	ersetzt-1	Herren Sandalen im Flecht-Design
+15480459460993	ersetzt-1	Kinder Smartwatch mit SOS-Funktion & Kamera
+15480459493761	ersetzt-1	Auto-Kopfstütze mit Memory-Schaum
+15480459559297	ersetzt-1	Atmungsaktive Herrenschuhe aus Echtleder
+15480459723137	ersetzt-1	Drehbares Sitzkissen für Auto und Büro
+15480459755905	ersetzt-1	Smartwatch mit Bluetooth-Anrufen & Gesundheitsfunktionen
+15480459854209	ersetzt-1	Herren Winter Casual-Schuhe mit Fleecefutter
+15480460083585	ersetzt-1	Fahrradsattel-Kissen aus Silikon
+15480460149121	ersetzt-1	4G Kinder Smartwatch mit GPS & Videoanruf
+15480460247425	ersetzt-1	Herren Canvas Sneaker Korean-Style
+15480460411265	ersetzt-1	Autositz-Schutzunterlage für Kindersitze
+15480460509569	ersetzt-1	Smartwatch mit Bluetooth-Telefonie & Gesundheitsfunktionen
+15480460640641	ersetzt-1	Weitgeschnittene Canvas-Sneakers für Herren
+15480460837249	ersetzt-1	Anti-Rutsch-Sitzkissen aus Seide
+15480460968321	ersetzt-1	N500S Ultra Light SSD (60 GB - 960 GB)
+15480461099393	ersetzt-1	Herren Sportschuh Übergrössen
+15480461296001	ersetzt-1	Smart Armband mit Bluetooth-Anruffunktion
+15480461361537	ersetzt-1	Faltbarer Kindersitz für Auto
+15480461590913	ersetzt-1	4-in-1 USB Kartenleser für SD & TF Karten
+15480461754753	ersetzt-1	Handgefertigte Casual Low-Top Slip-on Sneakers
+15480461918593	ersetzt-1	Sport Smartwatch mit Bluetooth-Anruffunktion
+15480461951361	ersetzt-1	3D Bambuskohle-Sitzkissen für das Auto
+15480462213505	ersetzt-1	SSD Patch SATA3 Notebook Desktop
+15480462377345	ersetzt-1	Leichte Canvas Sommer Pantoletten für Herren
+15480462639489	ersetzt-1	Beheizbares Autositzkissen 12V
+15480462868865	ersetzt-1	2.5 Zoll SATA3 SSD für Desktop & Notebook
+15480463098241	ersetzt-1	3-in-1 Wecker mit Licht und Bluetooth-Speaker
+15480463163777	ersetzt-1	Herren Slip-on Sneaker Allrounder
+15480463556993	ersetzt-1	SSD für Desktop & Laptop (SATA III, 2.5 Zoll)
+15480463753601	ersetzt-1	Multifunktionale digitale Wanduhr
+15480463851905	ersetzt-1	Atmungsaktive, leichte Freizeitschuhe mit weicher Sohle
+15480464146817	ersetzt-1	Externe SSD 256/512GB USB3.0 für Notebooks & Desktops
+15480464277889	ersetzt-1	Ultraschall-Fett-weg-Armband aus Silikon
+15480464376193	ersetzt-1	Retro-Sandalen mit offener Zehenpartie
+15480464736641	ersetzt-1	Notebook & Desktop SSD (SATA3)
+15480479252865	ersetzt-1	Smartwatch mit Gesundheits- und Anruffunktion
+15480480399745	ersetzt-1	Künstliche Nägel Mandelform "Silver Stars"
+15480480956801	ersetzt-1	TF Speicherkarte für Recorder & Überwachung
+15480481448321	ersetzt-1	Z040 Desktop DDR3 4G 1600 AMD Arbeitsspeicher
+15480481907073	ersetzt-1	HD 4K Überwachungskamera mit TF Speicherkarte
+15480482103681	ersetzt-1	Silicon Labs EFR32MG21 Zigbee 3.0 USB Dongle
+15480482398593	ersetzt-1	Frequency Desktop Gaming DDR5 RAM
+15480482496897	ersetzt-1	Mini 2-in-1 CarPlay USB Interface Wireless
+15480482759041	ersetzt-1	DDR4-2666 Desktop Arbeitsspeicher
+15480482922881	ersetzt-1	USB-Stick mit Schmuckstein-Design
+15480483152257	ersetzt-1	UV Cat's Eye Seiden-Press-on-Nägel
+15480483414401	ersetzt-1	RC Stunt-Drift-Car mit Licht & Musik
+15480483545473	ersetzt-1	DIY Leuchtender Kristall USB-Stick Mini Auto
+15480483643777	ersetzt-1	USB-Stick «Wunschflasche» aus Holz
+15480483938689	ersetzt-1	Maniküre-Set «Sternenhimmel»
+15480484331905	ersetzt-1	NFC Chipkarten-Set mit Yuan Coin Chips
+15480484364673	ersetzt-1	UGREEN USB Bluetooth 5.0 Transmitter
+15480484692353	ersetzt-1	Nagel-Set Schlangenkopf-Design
+15480484921729	ersetzt-1	XGL Drache Dinosaurier Spielzeug
+15480485020033	ersetzt-1	SD zu PCMCIA Adapterkarte 32GB HC High Speed Class
+15480485052801	ersetzt-1	USB-Stick Flaschenöffner aus Metall
+15480485347713	ersetzt-1	Handbemalte Nägel im Blumen-Design
+15480485544321	ersetzt-1	Elefäntli Musik- & Licht-Spielauto
+15480485675393	ersetzt-1	KK2 Flight Controller USB Programmer
+15480485708161	ersetzt-1	Wasserdichter USB-Stick mit Schlüssel-Design
+15480486035841	ersetzt-1	Semi-cured UV Nagelfolien
+15480486232449	ersetzt-1	RC Schlange Spielzeug
+15480486330753	ersetzt-1	Motorrad USB-Stick im Cartoon-Design
+15480486625665	ersetzt-1	Nagelspray-Pistole mit Strass-Kugel
+15480486723969	ersetzt-1	USB-Stick Schultasche – Geschenk für Studierende
+15480486855041	ersetzt-1	RC-Sprüh-Tierli (Spinne, Biene oder Oktopus)
+15480486920577	ersetzt-1	Speicherkarte für Driving Recorder 32GB
+15480487215489	ersetzt-1	Semi-cured Gel-Nagelsticker «Ice Transparent Nude»
+15480487248257	ersetzt-1	Metall-U-Disk im Werkzeug-Design
+15480487412097	ersetzt-1	Elektrisches Frosch-Beissspielzeug
+15480487477633	ersetzt-1	DDR4 RAM Speicher (4GB, 8GB, 16GB, 32GB)
+15480487870849	ersetzt-1	Handgemachte Nägel "Pure Love"
+15480487903617	ersetzt-1	Pinguin USB-Stick 3.0
+15480488100225	ersetzt-1	RC Sensor Schlange mit Hinderniserkennung
+15480488296833	ersetzt-1	Diamond USB Stick – Kreatives Metall-Design
+15480488493441	ersetzt-1	Kamellien-Nageldesign mit Farbverlauf
+15480488526209	ersetzt-1	Virtuelle Tastatur für Mikrocomputer
+15480488624513	ersetzt-1	Ferngesteuerter Roboter mit Sound & Licht
+15480488919425	ersetzt-1	USB-C Dual-Flash-Laufwerk für Smartphone & Computer
+15480489279873	ersetzt-1	Handgemachte UV-Nagelpatches Schmetterling
+15480489312641	ersetzt-1	Caike USB 2.0 Stick aus Aluminium
+15480489705857	ersetzt-1	USB-C Stick für Smartphone und Computer
+15480489935233	ersetzt-1	Nagelsticker «Schwanensee»
+15480490066305	ersetzt-1	Tanzender Roboter mit Licht und Musik
+15480490262913	ersetzt-1	USB 3.0 Stick drehbar aus Metall
+15480490492289	ersetzt-1	Handgemachte "Ice Transparent" Nägel
+15480490656129	ersetzt-1	EVA Tamagotchi – Verschiedene Ausführungen
+15480490819969	ersetzt-1	Creative Touch Mini USB-Stick mit Stylus
+15480490918273	ersetzt-1	3-in-1 USB CF/SD/TF Kartenleser
+15480491114881	ersetzt-1	Handgemachte Maniküre zum Aufkleben
+15480491245953	ersetzt-1	Landzo Kunxi Malroboter für Kinder
+15480491442561	ersetzt-1	3-in-1 USB-Stick für Smartphone & Computer
+15480491540865	ersetzt-1	Herzförmiger USB-Stick mit Strass-Besatz
+15480491671937	ersetzt-1	Almond Cat Eye Love Press-on Nägel
+15480491966849	ersetzt-1	Helikopter Militärmodell Spielzeug
+15480492032385	ersetzt-1	USB-Stick «Menschliche Organe»
+15480492196225	ersetzt-1	Wizard Of Oz Nagel-Set
+15480492523905	ersetzt-1	Mobile SSD für direkte Smartphone-Verbindung
+15480492589441	ersetzt-1	Sicherheits-Hammer-Ladegerät mit USB
+15480492720513	ersetzt-1	Nagel-Set "Thigh Coarse Hair Bow"
+15480493015425	ersetzt-1	Externe mobile Festplatte
+15480493080961	ersetzt-1	USB-Stick im Schoggi-Design
+15480561271169	ersetzt-1	Kondensator-Mikrofon
+15480561992065	ersetzt-1	Lenkradhülle aus Kunstleder
+15480562221441	ersetzt-1	Lenkradbezug aus Jacquard-Stoff
+15480562254209	ersetzt-1	Kabelloses Bluetooth Mikrofon mit Halleffekt
+15480562483585	ersetzt-1	Lenkradbezug aus Lammfell
+15480562549121	ersetzt-1	USB-C Lavaliermikrofon mit TPC Chip
+15480562745729	ersetzt-1	20’000mAh Solar Powerbank mit Wireless Charging
+15480562778497	ersetzt-1	Kabelloses Moving Coil Mikrofon-Set
+15480562811265	ersetzt-1	Sportlicher Lenkradbezug aus Karbonfaser
+15480563073409	ersetzt-1	Magnetische Wireless Power Bank für Smartwatches
+15480563302785	ersetzt-1	Mini Karaoke Sound Box mit integriertem Bluetooth Mikrofon
+15480563335553	ersetzt-1	PD 140W Laptop Power Bank 25000 mAh
+15480563564929	ersetzt-1	Supernieren-Richtmikrofon
+15480563597697	ersetzt-1	Ultradünne Powerbank mit Farbdisplay & MagSafe
+15480563892609	ersetzt-1	Multifunktionales Mikrofon mit Rauschunterdrückung
+15480564089217	ersetzt-1	High-Power Powerbank mit Farbdisplay

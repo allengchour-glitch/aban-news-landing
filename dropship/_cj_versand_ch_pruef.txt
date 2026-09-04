@@ -1158,3 +1158,30 @@ elektrischer-heisswasserspender-8l-607000	2512150927181607200	0	-	KEINE CH-Optio
 armkraft-trainer-607000	2604201023231607600	7	41.34	ok	landeseite
 halskissen-mit-stutzfunktion-605800	2604281003141606500	12	13.93	ok	landeseite
 blumen-sofa-kissen-617800	2601040951091618100	12	10.98	ok	landeseite
+botanisches-sofakissen-607300	2601040710071607600	12	10.01	ok	landeseite
+atmungsaktive-kuhl-sitzauflage-626000	2605080736251626600	12	16.90	ok	landeseite
+multifunktionaler-massage-teppich-fur-auto-623000	2412170610021623600	7	27.69	ok	landeseite
+u-formiges-schwangerschaftskissen-aus-eisseide-004544	1427837596003864576	12	36.88	ok	landeseite
+guetzli-und-kuchenpresse-aus-edelstahl-07d391	-	-	-	unklar keine CJ-SKU	landeseite
+feuchtigkeitsspendendes-hautpflege-set-cca2d7	-	-	-	unklar keine CJ-SKU	landeseite
+verstellbarer-speed-arm-trainer-fur-zuhause-614100	2605200048391614700	7	37.84	ok	landeseite
+koreanischer-grill-fur-3-5-personen-631400	2607010858401632000	12	37.13	ok	landeseite
+12-teiliges-kochgeschirr-set-aus-edelstahl-247618	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+4-stockiges-metallregal-fur-diverse-anwendunge-778562	2042179591701962754	0	-	KEINE CH-Option → DRAFT	landeseite
+hunde-und-katzenbett-abnehmbar-waschbar-600200	2603150930131600600	0	-	KEINE CH-Option → DRAFT	landeseite
+all-in-one-kratzbaum-aus-massivholz-611200	2512291158321611500	12	33.53	ok	landeseite
+steel-tongue-drum-12-zoll-13-noten-apple-style-072514	2039915573475930114	7	53.10	ok	landeseite
+12-zoll-13-ton-stahlzungentrommel-shell-stil-169282	2039892388228415490	7	53.10	ok	landeseite
+12-zoll-13-ton-lotus-heart-steel-tongue-drum-964033	2039902739078627329	7	53.10	ok	landeseite
+smart-mulltonne-mit-sensor-401408	1448567448063315968	7	33.73	ok	landeseite
+taille-twist-board-143169	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+natur-bambus-rollo-143874	1990443916036579329	0	-	KEINE CH-Option → DRAFT	landeseite
+led-schonheits-mit-15-leds-084801	2027226080257302530	0	-	KEINE CH-Option → DRAFT	landeseite
+einheitsfarbenes-sofabezugs-tuch-612700	2601040756551613000	12	9.29	ok	landeseite
+6-teiliges-feuchtigkeitspflege-set-abdcce	-	-	-	unklar keine CJ-SKU	landeseite
+daunen-winterdecke-892032	1393147870466674688	7	34.41	ok	landeseite
+traditioneller-eisen-wok-handgemacht-e53438	-	-	-	unklar keine CJ-SKU	landeseite
+hd-astronomisches-teleskop-fur-kinder-123904	1459100899317256192	7	40.54	ok	landeseite
+sofa-kissenbezug-aus-lammfell-imitat-rutschfes-631500	2605280138521632100	12	9.60	ok	landeseite
+brotkasten-aus-bambus-141505	2074709116983164929	0	-	KEINE CH-Option → DRAFT	landeseite
+multifunktionale-piloten-umhangetasche-616000	2603180019351616300	12	14.97	ok	landeseite

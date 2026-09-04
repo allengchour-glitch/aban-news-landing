@@ -9773,3 +9773,50 @@ gid://shopify/Product/15452677374337	CHF 8.68	1 Varianten	Haushaltsreinigungstü
 gid://shopify/Product/15452677439873	cj-abgekuendigt-pruefen
 gid://shopify/Product/15452677472641	CHF 83.09	1 Varianten	Badezimmerhahn
 gid://shopify/Product/15452677538177	CHF 8.68	1 Varianten	Badezimmerreinigungspads
+gid://shopify/Product/15452677570945	CHF 40.79	1 Varianten	Antirutsch-Badematte
+gid://shopify/Product/15452677636481	CHF 18.87	1 Varianten	2-in-1 Tierpflegeshampoo
+gid://shopify/Product/15452677669249	CHF 6.99	1 Varianten	Haarfang für Dusche
+gid://shopify/Product/15452677767553	CHF 17.26	1 Varianten	Keramikpumpflasche
+gid://shopify/Product/15452677800321	CHF 20.93	1 Varianten	Duschkopf mit 3 Strahlmodi
+gid://shopify/Product/15452677833089	CHF 20.62	1 Varianten	Regendusche mit 6 Sprüheinstellungen
+gid://shopify/Product/15452677898625	CHF 29.70	1 Varianten	Edelstahl-Aufbewahrungsregal
+gid://shopify/Product/15452677931393	CHF 10.91	1 Varianten	Badebürsten-Set
+gid://shopify/Product/15452677964161	CHF 99.70	1 Varianten	Duschkopf-Set
+gid://shopify/Product/15452677996929	CHF 10.30	1 Varianten	Kopfmassagkamm
+gid://shopify/Product/15452678029697	CHF 83.92	1 Varianten	Dusche Ablage Set
+gid://shopify/Product/15452678062465	CHF 19.34	1 Varianten	Schwimmteich-Reiniger
+gid://shopify/Product/15452678128001	CHF 24.92	1 Varianten	Keramik-Badset
+gid://shopify/Product/15452678160769	CHF 28.57	1 Varianten	Edelstahl Handtuchhalter
+gid://shopify/Product/15452678193537	CHF 22.82	1 Varianten	Anti-Rutsch-Cover
+gid://shopify/Product/15452678226305	CHF 28.05	1 Varianten	Badezimmer-Teppich
+gid://shopify/Product/15452678259073	CHF 10.42	1 Varianten	Badezimmer-Mat
+gid://shopify/Product/15452678390145	CHF 13.43	1 Varianten	Automatischer Katzenspielball
+gid://shopify/Product/15452678422913	CHF 37.66	1 Varianten	Doppelfutternapf
+gid://shopify/Product/15452678455681	CHF 28.10	1 Varianten	Heizbare Tierfutterschale
+gid://shopify/Product/15452678488449	CHF 36.49	1 Varianten	Zweck-Schalen für Hund & Katze
+gid://shopify/Product/15452678521217	CHF 36.49	1 Varianten	Doppel-Schale
+gid://shopify/Product/15452678553985	CHF 37.47	1 Varianten	Doppel-Schale aus Edelstahl
+gid://shopify/Product/15452678652289	CHF 11.00	7 Varianten	Faltbares Edelstahl-Futtergeschirr
+gid://shopify/Product/15452678685057	CHF 13.21	1 Varianten	Vogeltränke und Futterstation
+gid://shopify/Product/15452678717825	CHF 24.14	5 Varianten	Erhöhtes Futtergeschirr
+gid://shopify/Product/15452678783361	CHF 29.06	2 Varianten	Keramikfutternapf
+gid://shopify/Product/15452678816129	CHF 19.80	2 Varianten	Hunde-Schnüffelspiel · Futter-Brett
+gid://shopify/Product/15452678881665	CHF 8.24	4 Varianten	Edelstahl-Näpfchen
+gid://shopify/Product/15452678914433	CHF 11.84	2 Varianten	Langsames Futterteller
+gid://shopify/Product/15452678979969	cj-abgekuendigt-pruefen
+gid://shopify/Product/15452679012737	CHF 17.55	1 Varianten	Gelenköl für Hunde & Katzen
+gid://shopify/Product/15452679078273	CHF 17.55	1 Varianten	Probiotika-Tabletten für Hunde & Katzen
+gid://shopify/Product/15452679111041	CHF 17.55	1 Varianten	Hundepflegeöl mit Zitronenmelisse
+gid://shopify/Product/15452679242113	CHF 17.55	1 Varianten	Probiotika-Tabletten
+gid://shopify/Product/15452679307649	CHF 17.55	1 Varianten	Fischöl-Tabletten für Katzen
+gid://shopify/Product/15452679340417	CHF 17.55	1 Varianten	Hundegelenkschutz
+gid://shopify/Product/15452679602561	CHF 54.94	26 Varianten	Fischerschirm
+gid://shopify/Product/15452679635329	CHF 45.16	7 Varianten	Faltbare Outdoor-Stühle
+gid://shopify/Product/15452679700865	CHF 97.49	7 Varianten	Falttisch
+gid://shopify/Product/15452679799169	CHF 35.76	1 Varianten	Falttisch für Outdoor
+gid://shopify/Product/15452679897473	CHF 34.73	1 Varianten	Faltbarer Grill
+gid://shopify/Product/15452679963009	CHF 73.69	3 Varianten	Wetterfestes Zelt
+gid://shopify/Product/15452680028545	CHF 101.02	3 Varianten	Holzverbrennungs-Ofen-Zelt
+gid://shopify/Product/15452680061313	CHF 70.29	18 Varianten	Faltzelt für 3-4 Personen
+gid://shopify/Product/15452680094081	CHF 40.14	3 Varianten	Faltbarer Campingstuhl
+gid://shopify/Product/15452680126849	CHF 21.76	7 Varianten	Einpersonen-Schlafpad
