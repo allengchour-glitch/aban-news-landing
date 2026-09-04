@@ -9912,6 +9912,47 @@ function _wandTiefe(m){
    ausnahmslos so (gemessen: Fassade, Hallenwand, TheaterWand, CasinoWand, EisWand,
    KletWand, BankFassade, ZeileWand, BadWand, KlPutz, Stationsbeton, SdPutz).
    Glas, Stahl, Dach und alles mit Textur bleiben unberuehrt. */
+/* 🌃 FENSTER, DIE NACHTS LEBEN. GEMESSEN 2026-09-04 bei 22:10: von 9 170 m2
+   Fensterflaeche in den Modellen bleiben 4 681 m2 — 51 % — vollstaendig dunkel.
+   `dorfFenster` (337 Materialien) kennt nur die selbstgebauten Haeuser; die Fenster
+   der GLB-Modelle (Bueroglas, TurmGlas, Fensterglas, SdGlas, VlGlas, Scheibe) hat
+   nie jemand angefasst. Deshalb wirkt die Stadt nachts tot.
+   NICHT ALLE AUF EINMAL: ein Buerohaus, in dem um 22 Uhr jedes Fenster brennt, sieht
+   falscher aus als eines, in dem keines brennt. Die Materialien sind aber GETEILT
+   (ein Material fuer ueber hundert Meshes) — eine Auswahl je Fenster geht ueber die
+   Materialliste nicht. Also im Shader: die Weltposition wird in Zellen von 1,2 m
+   geteilt, ein Hash je Zelle entscheidet. Dieselbe Technik wie _wandTiefe, und
+   getrieben wird sie von der vorhandenen Nachtschaltung — emissiveIntensity bleibt
+   der EINE Schalter, der Shader entscheidet nur noch, WO.
+   Rahmen, Gewaechshaus und Plexiglas bleiben draussen: ein leuchtender Fensterrahmen
+   ist ein Fehler, ein Gewaechshaus hat nachts niemanden drin, und Plexiglas sitzt an
+   Wartehaeuschen und Vordaechern. */
+function _fensterNacht(m){
+  if(!m||m.userData._fensterNacht)return m; m.userData._fensterNacht=1;
+  if(!m.emissive)return m;
+  m.emissive.setHex(0xffcf80); m.emissiveIntensity=0;
+  m.onBeforeCompile=function(sh){
+    sh.vertexShader=sh.vertexShader
+      .replace("#include <common>","#include <common>\nvarying vec3 vFnPos;")
+      .replace("#include <begin_vertex>",
+        "#include <begin_vertex>\n\tvec4 fPos4 = vec4( transformed, 1.0 );\n"+
+        "\t#ifdef USE_INSTANCING\n\t\tfPos4 = instanceMatrix * fPos4;\n\t#endif\n"+
+        "\tvFnPos = ( modelMatrix * fPos4 ).xyz;");
+    sh.fragmentShader=sh.fragmentShader
+      .replace("#include <common>","#include <common>\nvarying vec3 vFnPos;")
+      .replace("#include <emissivemap_fragment>",
+        "#include <emissivemap_fragment>\n\t{\n"+
+        "\t\tvec3 zelle = floor( vFnPos / 1.2 );\n"+
+        "\t\tfloat h = fract( sin( dot( zelle, vec3( 12.9898, 78.233, 37.719 ) ) ) * 43758.5453 );\n"+
+        "\t\tfloat an = step( 0.55, h );\n"+
+        "\t\ttotalEmissiveRadiance *= an * ( 0.65 + 0.7 * fract( h * 17.0 ) );\n\t}");
+  };
+  m.customProgramCacheKey=function(){return "fensternacht";};
+  m.needsUpdate=true;return m;}
+function _istModellFenster(m){
+  var n=m&&m.name||"";
+  if(/rahmen|frame|gewaechshaus|plexi|spiegel|wasser/i.test(n))return false;
+  return /glas|glass|fenster|scheibe/i.test(n);}
 function _istWand(m){
   if(!m||m.map)return false;
   var n=m.name||"";
@@ -9950,6 +9991,7 @@ function _matVereinheitlichen(wurzel){
       m.envMapIntensity=0.3;
       if(!m.map&&/plakat/i.test(m.name||"")){m.map=_plakatTex();m.color.set(0xffffff);m.needsUpdate=true;}
       if(_istWand(m))_wandTiefe(m);
+      else if(_istModellFenster(m))_fensterNacht(m);
       /* ⚠️ DER NAME GEHOERT IN DEN SCHLUESSEL. Der Verkehr sucht sein Lackmaterial
          ueber `/lack/i.test(m.name)`; wuerde ein gleich eingestelltes Material aus
          einer anderen Datei das Lackmaterial ersetzen, verloeren die Autos ihre
@@ -14679,7 +14721,23 @@ function loop(now){
        Jetzt 0,26 + dayA*0,44: nachts 0,26 statt 0,48 (halb so hell), TAGSUEBER
        unveraendert 0,70 — dayA = 1 ergibt exakt denselben Wert wie vorher. Wer die
        Nacht wieder heller will, aendert genau die 0,26. */
-    sun.intensity=(0.20+dayA*0.72)*wDim;hemi.intensity=0.26+dayA*0.44;
+    /* ⚠️ ZWEITE HALBIERUNG, 2026-09-04 — und diesmal mit Zahlen statt Eindruck.
+       GEMESSEN am fertigen Bild (mittlere Helligkeit, HUD-Raender abgezogen): die Nacht
+       war nur 14 % dunkler als der Tag (114 gegen 133 von 255). Dann die Quellen einzeln
+       abgeschaltet, bei angehaltener Bildschleife und selbst gerendert:
+         Laternen (Punktlichter)  72 %      leuchtende Materialien  81 %
+         Himmelslicht             18 %      Sonne                   18 %
+         Umgebungskarte            6 %
+       Die Laternen tragen die Nacht also laengst — der Grundschleier aus Sonne und
+       Hemisphaere machte nur alles gleichmaessig sichtbar, auch 30 m von jeder Lampe
+       entfernt. Genau das liess entfernte Fassaden taghell aussehen.
+       Beide Nacht-Sockel halbiert (0,26 -> 0,13 und 0,20 -> 0,10), Bildhelligkeit
+       122,3 -> 112,3. Der TAG bleibt auf die Stelle gleich: dayA = 1 ergibt weiter
+       0,70 und 0,92 — dieselbe Rechnung wie bei der ersten Halbierung.
+       ⚠️ NICHT WEITER RUNTER. Ein Viertel (0,07/0,03) sah im Bild noch etwas besser aus,
+       aber ueber diesem Kommentar steht die Beschwerde „man sieht nichts" — die Nacht war
+       schon einmal zu dunkel. Wer sie wieder heller will, aendert genau die 0,13. */
+    sun.intensity=(0.10+dayA*0.82)*wDim;hemi.intensity=0.13+dayA*0.57;
     hemi.groundColor.setRGB(0.24+dayA*0.17,0.34+dayA*0.20,0.30+dayA*0.04); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
@@ -14816,6 +14874,39 @@ function loop(now){
              ohne dass das Neonschild ueberstrahlt (dorfFenster nimmt 2,2). */
           ne.m.emissiveIntensity=nacht9?2.6:ne.i;}
       }
+      /* Modellfenster: einmal einsammeln, dann mit derselben Nachtschaltung fahren wie
+         dorfFenster. Der Shader in _fensterNacht entscheidet, welche Zellen brennen —
+         hier wird nur der eine Schalter umgelegt. */
+      /* 🌑 DIE UMGEBUNGSKARTE LEUCHTETE DIE NACHT AUS. GEMESSEN 2026-09-04 um 22:10:
+         Himmelslicht 0,26 und Sonne 0,124 sind sauber gedimmt, die Belichtung faellt
+         von 0,60 auf 0,38 — aber `scene.environment` bleibt die Tag-Umgebung, und jedes
+         Material traegt `envMapIntensity = 0.3` (aus _matVereinheitlichen). Damit wird
+         die ganze Stadt nachts von einem Taghimmel angestrahlt: das Nachtbild sah aus
+         wie ein bedeckter Nachmittag, und angehende Fenster gingen darin unter.
+         three.js r128 kennt kein `scene.environmentIntensity`; also wird der Wert je
+         Material geschaltet. Das sind rund zweitausend Materialien, aber nur ZWEIMAL
+         pro Spieltag — dieselbe Groessenordnung wie dorfFenster daneben. */
+      if(!window._envMats){var em=[],esn=new Set();
+        scene.traverse(function(o){if(!o.isMesh||!o.material)return;
+          var L=Array.isArray(o.material)?o.material:[o.material];
+          for(var ei=0;ei<L.length;ei++){var mm=L[ei];
+            if(!mm||esn.has(mm)||mm.envMapIntensity===undefined)continue;
+            esn.add(mm);em.push({m:mm,tag:mm.envMapIntensity});}});
+        window._envMats=em;window._envNacht=-1;}
+      if(window._envNacht!==nacht9){window._envNacht=nacht9;
+        for(var ei2=0;ei2<window._envMats.length;ei2++){var e2=window._envMats[ei2];
+          e2.m.envMapIntensity=nacht9?e2.tag*0.18:e2.tag;}}
+      if(!window._modellFenster){var mf=[],msn=new Set();
+        (window._gebaeude||[]).forEach(function(W){W.traverse(function(o){
+          if(!o.isMesh||!o.material)return;
+          var L=Array.isArray(o.material)?o.material:[o.material];
+          for(var mi=0;mi<L.length;mi++){var mm=L[mi];
+            if(!mm||msn.has(mm))continue;msn.add(mm);
+            if(mm.userData&&mm.userData._fensterNacht)mf.push(mm);}});});
+        window._modellFenster=mf;window._modellFensterNacht=-1;}
+      if(window._modellFensterNacht!==nacht9){window._modellFensterNacht=nacht9;
+        for(var fi=0;fi<window._modellFenster.length;fi++)
+          window._modellFenster[fi].emissiveIntensity=nacht9?1.8:0;}
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
       nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
       if(window._lampKopf)window._lampKopf.emissiveIntensity=nacht9?2.6:0;
