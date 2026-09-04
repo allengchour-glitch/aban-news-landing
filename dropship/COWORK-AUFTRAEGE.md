@@ -29,7 +29,8 @@ mit dem Stand vom 31.08. weiter (7 geprüfte Beiträge, sicher, aber einfrierend
 ### 04.09. gemessen — jetzt mit Zahlen, und es ist eine ENTSCHEIDUNG, kein Klick
 | | |
 |---|---:|
-| Shopify Basic erlaubt | **100 GB — Produktmedien zählen mit** |
+| Shopify-Deckel | **kumulativ über Dateien UND Produktbilder** (Doku: «cumulative file storage limit») |
+| die GB-Zahl selbst | **gibt keine API aus** — sie steht nur bei dir unter Einstellungen → Dateien |
 | Katalog (Preisbänder gezählt) | 43'964 aktiv · **24'101 Entwürfe** |
 | Medien je Produkt (gemessen) | aktiv 1,49 MB · Entwurf 0,61 MB |
 | Produktmedien-Topf | **≈ 80 GB** · Dateien-Bibliothek nur 0,6 GB |
