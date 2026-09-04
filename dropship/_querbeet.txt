@@ -18,3 +18,7 @@ gid://shopify/Product/15510926918017	2026-09-03	Sport, Fitness & Outdoor
 gid://shopify/Product/15524021666177	2026-09-03	Taschen & Rucksäcke
 gid://shopify/Product/15481700778369	2026-09-03	Auto & KFZ-Zubehör
 gid://shopify/Product/15502391804289	2026-09-03	Handy-Zubehör
+gid://shopify/Product/15524971315585	2026-09-04	Damen-Mode
+gid://shopify/Product/15524701766017	2026-09-04	Uhren
+gid://shopify/Product/15523222651265	2026-09-04	Kopfhörer & Audio
+gid://shopify/Product/15524862099841	2026-09-04	Haustierwelt

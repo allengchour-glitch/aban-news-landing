@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Dateispeicher freiräumen: Medien von DRAFT-Produkten toter Lieferanten löschen.
 
-BEFUND (02.–04.09.2026): Der Shopify-Dateispeicher ist voll. Seit dem 01.09. scheitert
+BEFUND (02.–04.09.2026): Der Shopify-Dateispeicher ist voll. **Basic erlaubt 100 GB, und
+die Grenze zählt Produktmedien mit** — gemessen 63'845 Produkte × 1,44 MB ≈ 92 GB. Die
+Dateien-Bibliothek (Reels, Werbebilder) ist mit 958 MB nur 1 % davon; die Masse sind
+Produktbilder. Deshalb ist DIESES Werkzeug der grosse Hebel, nicht das Video-Aufräumen. Seit dem 01.09. scheitert
 JEDER Upload in die Dateien-Bibliothek mit FILE_STORAGE_LIMIT_EXCEEDED — die TikTok-Queue,
 der Befehlskanal und die Kundinnenfotos kommen deshalb nicht mehr durch. Gemessen: die
 4'000 neuesten Dateien sind ausnahmslos Produktbilder aus dem September, zusammen 912 MB;
@@ -33,7 +36,27 @@ CAP = int(os.environ.get('CAP', '50'))
 # gemessen 20. Der Engpass ist die Antwortzeit der Mutation, nicht das Budget — deshalb
 # ein kleiner Arbeitertrupp statt eines seriellen Laufs.
 PARALLEL = int(os.environ.get('PARALLEL', '4'))
-KLASSE = os.environ.get('KLASSE', 'status:draft AND tag:bigbuy')
+# Klassen in der Reihenfolge ihres Nutzens und ihrer Sicherheit. Erschoepfte Klassen stehen
+# in /tmp/dateispeicher_klassen_fertig.txt; der naechste Lauf nimmt die naechste.
+# ⚠️ BEWUSST NICHT dabei: «ausverkauft-lieferant» (kann wieder lieferbar werden) und
+# «cj-nicht-versendbar-ch» (heute wurden 13 davon wiederbelebt, als CJ eine CH-Linie
+# freischaltete). Wer deren Bilder loescht, macht die Wiederbelebung bildlos.
+# ⚠️ AUCH NICHT «duplikat-auto-draft», obwohl es die groesste Klasse waere (4'908 Produkte,
+# ~4 GB): Die Begruendung dafuer lautet «der lebende Zwilling hat eigene Bilder» — und genau
+# das liess sich an fuenf Stichproben NICHT zeigen (kein aktiver Zwilling ueber den
+# Handle-Stamm auffindbar; die Dubletten wurden 28.08. ueber BILDHASHES gefunden, nicht ueber
+# Handles). Eine Loeschung, deren Sicherheitsannahme man nicht belegen kann, unterbleibt.
+KLASSEN = [k.strip() for k in os.environ.get(
+    'KLASSEN',
+    'status:draft AND tag:bigbuy|'
+    'status:draft AND tag:nicht-lieferbar-ch|status:draft AND tag:bb-versand-unrentabel'
+).split('|') if k.strip()]
+FERTIGDATEI = '/tmp/dateispeicher_klassen_fertig.txt'
+_fertig = set()
+if os.path.exists(FERTIGDATEI):
+    _fertig = {z.strip() for z in open(FERTIGDATEI) if z.strip()}
+_offen = [k for k in KLASSEN if k not in _fertig]
+KLASSE = os.environ.get('KLASSE') or (_offen[0] if _offen else '')
 LEDGER = 'dropship/_dateispeicher_media_geloescht.txt'
 CURSOR = '/tmp/dateispeicher_cursor.txt'
 
@@ -90,12 +113,23 @@ def loeschen(auftrag):
 
 def main():
     global led
+    if not KLASSE:
+        print('FERTIG: alle Klassen durchlaufen'); return
+    print(f'Klasse: {KLASSE}')
     cur = None
     auftraege = []
+    # ⚠️ Ein Cursor gehoert zu SEINER Abfrage. Der erste Entwurf las den Cursor der
+    # BigBuy-Klasse und schickte ihn an die Dubletten-Abfrage — Antwort «keine weiteren
+    # Produkte», und die Klasse haette als leer gegolten. Deshalb je Klasse ein Cursor.
+    stand = {}
     if os.path.exists(CURSOR) and os.environ.get('NEU') != '1':
-        cur = open(CURSOR).read().strip() or None
-        if cur:
-            print(f'FORTSETZUNG ab Cursor …{cur[-12:]}')
+        try:
+            stand = json.load(open(CURSOR))
+        except Exception:
+            stand = {}
+    cur = stand.get(KLASSE)
+    if cur:
+        print(f'FORTSETZUNG ab Cursor …{cur[-12:]}')
     led = None if DRY else open(LEDGER, 'a')
     prod = bilder = 0
     byt = 0
@@ -127,13 +161,18 @@ def main():
                 list(pool.map(loeschen, auftraege))
             auftraege = []
         if not p.get('pageInfo', {}).get('hasNextPage'):
-            print('Klasse vollstaendig durchlaufen')
+            print(f'Klasse vollstaendig durchlaufen: {KLASSE}')
+            if not DRY:
+                open(FERTIGDATEI, 'a').write(KLASSE + '\n')
+                stand.pop(KLASSE, None)
+                json.dump(stand, open(CURSOR, 'w'))
             cur = None; break
         cur = p['pageInfo']['endCursor']
         # ⚠️ Cursor NUR im Schreibmodus fortschreiben — ein Anzeigemodus darf keinen
         # Fortschritt merken (Lehre 28.08.).
         if not DRY:
-            open(CURSOR, 'w').write(cur)
+            stand[KLASSE] = cur
+            json.dump(stand, open(CURSOR, 'w'))
     if led:
         led.close()
     print(f'FERTIG: {prod} Produkte, {bilder} Bilder, {byt/1e6:.1f} MB {"(DRY)" if DRY else "geloescht"}')

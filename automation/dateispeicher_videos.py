@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Dateien-Bibliothek freiräumen: verwaiste Marketing-Videos löschen.
 
-⛔ KORREKTUR EINER EIGENEN ANNAHME (04.09.2026). Der erste Versuch löschte Medien von
-BigBuy-ENTWÜRFEN, weil das Gedächtnis sagt, der Grind lege ~1 GB Produktbilder pro Tag an.
-Gemessen ist der volle Speicher aber ein ANDERER Topf: Die Dateien-Bibliothek
-(GenericFile) umfasst 948 Dateien / 958 MB — davon **101 MP4 mit 616 MB**, unsere eigenen
-Reels und Showcase-Filme aus Juni bis August. Produktbilder laufen weiter durch (die
-Importe von heute haben READY-Medien), die Sperre trifft nur diese Bibliothek.
-**Wer den vollen Speicher am Produktbild sucht, löscht am falschen Ort.**
+EINORDNUNG (04.09.2026, zweimal korrigiert — beide Korrekturen gehören zusammen):
+Die Dateien-Bibliothek (GenericFile) umfasst 948 Dateien / 958 MB, davon 101 MP4 mit
+616 MB — unsere eigenen Reels und Werbefilme. Das ist ein sauber aufräumbarer Topf, ABER:
+**Shopifys Basic-Plan erlaubt 100 GB, und die Grenze zählt Produktmedien mit.** Gemessen
+sind es 63'845 Produkte × 1,44 MB ≈ **92 GB** — deshalb scheitert schon ein 10-KB-JSON.
+Dieses Werkzeug räumt also den kleinen, sauberen Teil (0,3 %); die Masse sind Produktbilder
+und dafür ist `dateispeicher_aufraeumen.py` (Medien von ENTWÜRFEN) zuständig.
+**Ein Aufräumwerkzeug ist erst dann die Antwort, wenn es dieselbe Grössenordnung hat wie
+das Problem** — sonst putzt man sauber am falschen Ende.
 
 WAS GELÖSCHT WIRD: nur Videos ohne JEDEN Verweis — nicht im Theme, nicht auf einer Seite,
 nicht in einem Artikel, nicht in einer Queue oder einem Ledger des Repos. Gemessen sind das
@@ -31,6 +33,16 @@ MIND_ALTER_TAGE = int(os.environ.get('MIND_ALTER_TAGE', '7'))
 # Endungsliste einstellbar; die Regeln (kein Verweis, Mindestalter) bleiben für alle gleich.
 ENDUNGEN = tuple(e.strip().lower() for e in os.environ.get('ENDUNGEN', 'mp4').split(',') if e.strip())
 LEDGER = 'dropship/_dateispeicher_videos_geloescht.txt'
+STAND = '/tmp/dateispeicher_produktref.json'
+# VERBRAUCHT (04.09.2026): Ein Reel, das gepostet ist, wird nie wieder gepostet — das ist
+# Hausregel seit dem 06.07. («immer nur NEUES posten»). Seine CDN-Kopie hat damit keine
+# Zukunft mehr; dasselbe gilt fuer tote URLs und Dubletten-Absagen. Mit VERBRAUCHT=1 werden
+# solche Videos zusaetzlich freigegeben — aber nur, wenn ALLE Queue-Eintraege dazu
+# verbraucht sind. Steht dasselbe Video irgendwo noch auf «ready», bleibt es.
+# ⚠️ «saison-skip» ist bewusst NICHT verbraucht: Sommerware kommt im Sommer wieder.
+VERBRAUCHT_STATUS = {'posted', 'posted-ig-fb', 'posted-tiktok', 'archived-deadurl',
+                     'dup-produkt-skip', 'dup-reel-owner-skip', 'skip-produkt-ausverkauft'}
+VERBRAUCHT = os.environ.get('VERBRAUCHT') == '1' 
 
 
 def gql(q, v=None, tries=10):
@@ -101,21 +113,65 @@ def produkt_referenzen():
     kein Beleg. Deshalb wird hier paginiert und im TEXT gelesen, nicht gesucht.
     (Videos betten Produkttexte nie ein — gemessen 0 in 2'000 Texten; Bilder sehr wohl.)
     """
-    ref = set()
+    # ⚠️ FORTSETZBAR. 53'000 Produkttexte zu lesen dauert länger, als dieser Container lebt
+    # (er startet etwa stündlich neu, Lehre 03.09.). Ohne Zwischenstand beginnt jeder Lauf von
+    # vorn und kommt nie an — dieselbe Falle wie der Klassen-Vollscan.
+    stand = {'fertig': [], 'status': 'active', 'cursor': None, 'namen': []}
+    if os.path.exists(STAND) and os.environ.get('NEU') != '1':
+        try:
+            stand = json.load(open(STAND))
+            if time.time() - os.path.getmtime(STAND) > 43200:   # ein Tag alter Stand ist wertlos
+                stand = {'fertig': [], 'status': 'active', 'cursor': None, 'namen': []}
+        except Exception:
+            pass
+    ref = set(stand.get('namen') or [])
     for status in ('active', 'draft'):
-        c = None
+        if status in stand.get('fertig', []):
+            continue
+        c = stand['cursor'] if stand.get('status') == status else None
+        seite = 0
         while True:
             d = gql('query($c:String,$q:String!){products(first:50,after:$c,query:$q){'
                     'pageInfo{hasNextPage endCursor} nodes{descriptionHtml}}}',
                     {'c': c, 'q': 'status:' + status})
             o = d.get('products') or {}
+            if not o:
+                break
             for n in o.get('nodes', []):
                 ref.update(m.group(1) for m in re.finditer(r'/files/([A-Za-z0-9._\-]+)',
                                                            n.get('descriptionHtml') or ''))
+            seite += 1
             if not o.get('pageInfo', {}).get('hasNextPage'):
+                stand.setdefault('fertig', []).append(status)
+                stand['cursor'] = None
+                json.dump({'fertig': stand['fertig'], 'status': status, 'cursor': None,
+                           'namen': sorted(ref)}, open(STAND, 'w'))
                 break
             c = o['pageInfo']['endCursor']
+            if seite % 10 == 0:
+                json.dump({'fertig': stand.get('fertig', []), 'status': status, 'cursor': c,
+                           'namen': sorted(ref)}, open(STAND, 'w'))
+                print(f'   … {status}: {seite*50} Texte gelesen, {len(ref)} Dateinamen', flush=True)
     return ref
+
+
+def queue_status(namen):
+    """Status je Datei aus den Warteschlangen — welche Videos sind verbraucht?"""
+    import csv
+    st = {}
+    for pfad in ('automation/reels_seed.csv', 'social/video_queue.csv'):
+        if not os.path.exists(pfad):
+            continue
+        try:
+            for r in csv.DictReader(open(pfad, encoding='utf-8', errors='ignore')):
+                zeile = ' '.join(str(x) for x in r.values())
+                s = (r.get('status') or '').strip()
+                for n in namen:
+                    if n in zeile:
+                        st.setdefault(n, set()).add(s)
+        except Exception:
+            pass
+    return st
 
 
 def repo_erwaehnungen(namen):
@@ -165,6 +221,11 @@ def main():
         print('   … Produkttexte werden mitgelesen (Bilder werden dort eingebettet)')
         ref |= produkt_referenzen()
     grenze = time.time() - MIND_ALTER_TAGE * 86400
+    if VERBRAUCHT:
+        qs = queue_status(namen)
+        verbraucht = {n for n, sts in qs.items() if sts and sts <= VERBRAUCHT_STATUS}
+        print(f'   … {len(verbraucht)} Dateien sind laut Warteschlange verbraucht (gepostet/tot/Dublette)')
+        ref -= verbraucht
     frei = [x for x in dateien
             if dateiname(x['url']) not in ref
             and time.mktime(time.strptime(x['createdAt'][:19], '%Y-%m-%dT%H:%M:%S')) < grenze]
