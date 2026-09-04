@@ -1197,3 +1197,4 @@ haustierbett-all-seasons-623200	2602030229541623500	0	-	KEINE CH-Option → DRAF
 hunde-agility-set-mit-verstellbaren-hurden-041281	2034276716693868545	0	-	KEINE CH-Option → DRAFT	landeseite
 schnellheizender-wasserspender-fur-zuhause-639600	2604071018061630000	-	-	unklar 0  rest=None	landeseite
 alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=55601	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=55341	klinge

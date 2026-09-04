@@ -20267,3 +20267,28 @@
 15481251004801	ersetzt-1	Wasserdichtes Sport-Armband mit Farbdisplay
 15481251856769	ersetzt-1	G26T Smart-Armband mit Temperaturmessung
 15481253069185	ersetzt-1	Silikon-Desinfektionsarmband
+15481253495169	ersetzt-1	Lern-Timer für Küche und Studium
+15481253527937	ersetzt-1	T91 Smartwatch mit integrierten Bluetooth-Kopfhörern
+15481254838657	ersetzt-1	Ersatz-Lithium-Akku für Elektro-Handbohrer
+15481254936961	ersetzt-1	DT88 Smart-Armband
+15481255592321	ersetzt-1	Walkie-Talkie Batteriebox
+15481255690625	ersetzt-1	Smart-Armband mit Multisport-Modus
+15481255985537	ersetzt-1	Magnetische Wireless Powerbank mit Digitalanzeige
+15481256116609	ersetzt-1	Mi Band 5 Fitness-Tracker
+15481256214913	ersetzt-1	EN-EL12 Akku für Digitalkameras
+15481256280449	ersetzt-1	Smart Color Screen Armband
+15481256542593	ersetzt-1	Smart-Armband F10T zur Körpertemperaturmessung
+15481256706433	ersetzt-1	PSP2000/3000 Akku-Schlankheitsmaschine
+15481256837505	ersetzt-1	L818 Smart-Armband mit Farbdisplay
+15481258049921	ersetzt-1	Powerbank für PS5-Controller
+15481258148225	ersetzt-1	T6 Smartwatch mit Touchscreen
+15481258443137	ersetzt-1	Ersatz-Lithium-Akku für Elektrowerkzeuge
+15481258934657	ersetzt-1	Smartes Fitness-Armband mit Pulsoximeter
+15481259032961	ersetzt-1	Soft Elastic Air Toy Gun Lithium-Akku
+15481259164033	ersetzt-1	Überwachungsarmband
+15481259360641	ersetzt-1	R3L Smartwatch mit Touch-Display
+15481259655553	ersetzt-1	Smart-Armband mit integrierten Kopfhörern
+15481259753857	ersetzt-1	LED-Drehlampe, wiederaufladbar
+15481259819393	ersetzt-1	V19 Smart Armband mit PPG und SpO2
+15481260048769	ersetzt-1	Tragbares magnetisches Wireless Ladegerät für Apple Watch
+15481260114305	ersetzt-1	Wasserdichtes Smartphone-Armband

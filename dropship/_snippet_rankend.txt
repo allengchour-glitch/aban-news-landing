@@ -1015,3 +1015,30 @@ automatischer-schwenkventilator-fur-kinderwage-638500	Dieser tragbare Ventilator
 15447564452225	Dieses Set enthält wiederaufladbare CR123A Lithium-Ionen-Akkus und ein passendes USB-Ladegerät. Akkukapazität: 1300 mAh.
 15447564550529	Das X2 Dual-Elektro-Display kombiniert innovative Technik mit benutzerfreundlichem Design. 2.8-Zoll-Bildschirm für einfache Steuerung.
 15447564714369	Dieses 3er-Set Ersatzakkus ist speziell für die Modelle E88 und E99 entwickelt worden. Exklusiv für E88- und E99-Modelle.
+15447564976513	Dieses praktische Set enthält vier wiederaufladbare CR123A Lithium-Ionen-Akkus mit einer Kapazität von je 1300 mAh und einer Spannung von 3.7 V.
+15447565205889	Dieses Set enthält vier wiederaufladbare CR123A Lithium-Ionen-Akkus mit einer Kapazität von je 1300 mAh und einer Spannung von 3.7 V.
+15447565304193	Dieser faltbare Mini-Quadrocopter ist ideal für Luftaufnahmen und bietet ein immersives Flugerlebnis. Faltbares Mini-Design.
+15447565664641	Dieses ferngesteuerte Fluggerät bietet langanhaltenden Spass und fördert gleichzeitig verschiedene Fähigkeiten.
+15447565861249	Dieser faltbare Quadrocopter mit bürstenlosem Motor bietet hochauflösende Luftaufnahmen und ist ideal für alle Altersgruppen ab 7 Jahren.
+15447566320001	Dieses kompakte USB-Ladegerät ist ideal für 3.7V Lithium-Ionen-Akkus mit einer Kapazität von bis zu 3000mAh.
+15447566385537	Die L106 Pro Drohne ist ein Quadcopter für alle Altersgruppen, der sich hervorragend für Luftaufnahmen eignet.
+15447566549377	Diese faltbare Drohne wurde für den Einstieg in die Luftbildfotografie entwickelt und eignet sich ideal für alle Altersgruppen ab 15 Jahren.
+15447566844289	Diese kabellose Seilwinden-Fernbedienung in elegantem Schwarz ist ein unverzichtbares Gadget für alle, die eine effiziente und bequeme Steuerung ihrer …
+15447567040897	Dieses Set aus wiederaufladbaren Lithium-Ionen-Akkus und einem passenden Ladegerät ist ideal für verschiedene tragbare Geräte.
+15447567303041	Dieses kompakte Set besteht aus einem wiederaufladbaren 3000mAh Li-ion Akku und einem intelligenten USB-Ladegerät.
+15447567335809	Erweitern Sie die Steuerung Ihrer Nebelmaschine mit diesem praktischen Fernbedienungszubehör.
+15447567466881	Dieses Set enthält ein kompaktes Ladegerät und zwei leistungsstarke 3.7V 3000mAh Li-Ion Akkus. Kein Memory-Effekt der Akkus.
+15447567532417	Diese wiederaufladbare Multi-Frequenz Fernbedienung ist ein praktisches Gadget für Ihr Garagentor. Kopierfunktion für 1 bis 20 Lademodelle.
+15447567729025	Dieses multifunktionale Notfallradio ist ein unverzichtbarer Begleiter für Outdoor-Aktivitäten und zur Katastrophenvorsorge. Kompakte Masse: 156x80x63mm.
+15447567794561	Dieser innovative Smart Ring ist Ihr vielseitiger Begleiter für digitale Interaktionen. Kompakte Masse: 48x48x32mm.
+15447567958401	Der 18650 Li-ion Akku ist die ideale Energiequelle für diverse Geräte. Wiederaufladbarer Li-ion Akku (nicht AA/AAA).
+15447568023937	Steigern Sie Ihre Interaktionen bei Live-Streams mühelos mit dem Wireless Bluetooth Auto-Clicker. Kabellose Bluetooth-Verbindung für einfache Handhabung.
+15447568253313	Dieser intelligente Motor bringt Komfort in Ihr Zuhause. Integrierter Akku mit langer Laufzeit.
+15447568482689	Dieses kompakte Abwurfmodul erweitert die Einsatzmöglichkeiten Ihrer Drohne erheblich. Ladezeit von nur 90 Minuten via MICRO USB.
+15447568744833	Entdecken Sie die vielseitige Fernsteuerung für Ihre Modellautos und Boote. 8-Wege-Empfänger und Batterie (optional).
+15447568908673	Dieses praktische Funksteckdosen-Set bringt Komfort in Ihr Zuhause. 5 Funksteckdosen.
+15447569367425	Dieser Akku wurde speziell für elektrische Relaxsessel entwickelt und bietet eine zuverlässige Energieversorgung.
+15447569465729	Diese ELRS 3-in-1 Flugsteuerung ist speziell für den Einsatz in kleinen Drohnen konzipiert. Kompakte 3-in-1-Flugsteuerung.
+15447569596801	Dieses 12er-Pack 9V Alkaline Batterien liefert langanhaltende und zuverlässige Energie für eine Vielzahl von Geräten.
+15447569891713	Entdecken Sie das Dual Gyroskop, ein faszinierendes Gadget für Technikbegeisterte. Lieferumfang: 1 Chip.
+15447570186625	Diese digitale Waage nutzt fortschrittliche Technologie zur umfassenden Körperanalyse.
