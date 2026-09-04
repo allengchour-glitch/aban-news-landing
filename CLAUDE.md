@@ -1,5 +1,38 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 📣 Der CHF-65-Widerspruch sitzt in den ANZEIGEN, nicht im Shop (2026-09-04)
+Eine parallele Session meldete, die Juli-Anzeigen versprächen «Gratis-Versand ab CHF 65»,
+während der Shop CHF 50 sagt — mit der Bitte, das anzugleichen, «egal in welche Richtung».
+**Erst gemessen, dann geantwortet, und die Richtung ist damit entschieden:**
+
+| geprüft am 04.09. | Treffer «CHF 65» |
+|---|---:|
+| aktive Produkte | **0** |
+| veröffentlichte Seiten · Artikel · Kollektionstexte | **0** |
+| Theme + Repo (ausser Kommentaren in den Reparaturwerkzeugen) | **0** |
+| Automatik-Rabatt «Gratis-Versand ab CHF 65» | **EXPIRED** |
+| wirksam ist | **ab CHF 49** (beworben ab 50 — 49 < 50, also wahr) |
+
+**Der Shop ist konsistent; veraltet sind allein die TikTok-Anzeigentexte.** Sie tragen einen
+Stand von vor dem 11.08. (damals steckte die 65 in 12 Importern). Angleichen heisst hier
+also NICHT, den Shop zu ändern — es hiesse, die Anzeigen zu reparieren.
+- ⚠️ **Und genau das ist die falsche Reparatur.** Die Kampagne hat CHF 499.99 ausgegeben und
+  **einen** Kauf gebracht (29.08. gemessen); der gesamte Shop-Umsatz aller Zeiten liegt bei
+  CHF 227.22. Bessere Texte an einer Kampagne, die strukturell verliert, machen den Verlust
+  nur genauer. Die Empfehlung ist DISABLE, nicht Textpflege.
+- **Kampagne 1869987705486481 steht weiter auf ENABLE mit BUDGET_EXCEED** — sie gibt nichts
+  aus und läuft an, sobald Guthaben kommt. NICHT von hier abgeschaltet: Kampagnen und Budget
+  sind Betreibersache (§10), und es geht um echtes Geld.
+- **Der inhaltliche Befund der anderen Session deckt sich mit der eigenen Messung:** Alle drei
+  Anzeigen führen auf KOLLEKTIONSSEITEN, nicht auf ein Produkt. Dazu passt, dass
+  `/collections/viral-hits` 527 Sitzungen hatte, davon 493 aus Social — und 0 Kassengänge
+  (28.08.). Kalter Traffic auf einer Kategorieseite hat keinen Kaufgrund.
+- **Lehre über die Zusammenarbeit: Ein Bericht einer anderen Session ist ein Hinweis, kein
+  Beleg** (Regel 28.08.). Hier war er in der Sache richtig und in der Schlussfolgerung
+  unvollständig — «angleichen, egal in welche Richtung» wäre ohne die Messung womöglich zu
+  einer Shop-Änderung geworden, die nichts zu reparieren gehabt hätte.
+
+
 ## 💽 Der Grind schreibt EIN GIGABYTE Bilder pro Tag — und blockiert damit alles andere (2026-09-04)
 Der volle Shopify-Dateispeicher stand seit dem 02.09. als «Betreiber-Klick» in der Ampel. Heute
 gemessen statt vermutet, und der Befund ist grösser als der Klick:
