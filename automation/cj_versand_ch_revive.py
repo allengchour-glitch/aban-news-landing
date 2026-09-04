@@ -174,12 +174,20 @@ def main():
     # und der taegliche CAP reicht nie bis zu den wenigen, auf denen wirklich jemand landet.
     # `TOTE-LANDESEITEN.md` misst genau das (Sitzungen je Handle) und wird taeglich neu
     # geschrieben — ein wiederbelebtes Produkt heilt den 404 besser als jede Weiterleitung.
+    # ⚠️ ZWEITE Quelle, 04.09.2026: TOTE-RANKINGS.md fuehrt die Seiten, fuer die GOOGLE uns
+    # zeigt (Semrush-Position + Suchvolumen) — das sind andere als die mit gemessenen
+    # Sitzungen, und es sind die wertvolleren: der 4L-Luftbefeuchter steht auf Position 20
+    # fuer «luftbefeuchter grosse raeume» (340 Suchen/Monat) und war als DRAFT ein 404.
+    # Ein Bericht kennt immer nur SEINE Frage; wer nach Verkehr priorisiert, findet die
+    # Seiten nicht, die Verkehr bekommen KOENNTEN.
     prio = set()
-    ber = os.path.join(REPO, "dropship", "TOTE-LANDESEITEN.md")
-    if os.path.exists(ber):
+    for name, muster in (("TOTE-LANDESEITEN.md", r"`([^`]+)`"),
+                         ("TOTE-RANKINGS.md", r"/products/([a-z0-9\-]+)")):
+        ber = os.path.join(REPO, "dropship", name)
+        if not os.path.exists(ber):
+            continue
         for z in open(ber, encoding="utf-8", errors="ignore"):
-            m = re.findall(r"`([^`]+)`", z)
-            prio.update(m)
+            prio.update(re.findall(muster, z))
     if prio:
         kand.sort(key=lambda p: 0 if p["handle"] in prio else 1)
         print(f"  {sum(1 for p in kand if p['handle'] in prio)} davon mit gemessenem Verkehr — die zuerst")
