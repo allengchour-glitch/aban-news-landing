@@ -141,3 +141,4 @@ gid://shopify/Product/15479486579073	bereinigt
 gid://shopify/Product/15481070649729	bereinigt
 gid://shopify/Product/15508424524161	bereinigt
 gid://shopify/Product/15516198175105	bereinigt
+gid://shopify/Product/15525142790529	bereinigt

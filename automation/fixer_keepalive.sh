@@ -665,8 +665,14 @@ while true; do
       # Listenpunkte an, nie einen Absatz mit Auszeichnung, und schreibt jede Streichung ins
       # Ledger. Erste Charge am 27.08.: 500 geprueft, 89 gemeldet, 28 bereinigt — die uebrigen
       # 61 tragen eine zweite Aussage und bleiben fuer eine Hand liegen.
+      # ⚠️ 04.09.2026: ARBEITSLISTE statt Katalog-Durchlauf. Der Cursor-Weg blaettert 6'000
+      # Produkte durch, um die Treffer zu finden, die der Klassen-Vollscan laengst kennt —
+      # live gemessen sind es 1'337. Die Liste ist die Quelle; ohne sie bleibt der Cursor-Weg
+      # als Netz (das Werkzeug faellt bei LISTE='' von selbst darauf zurueck).
+      WVL="$REPO/dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt"
+      [ -s "$WVL" ] || WVL=""
       ( cd "$REPO" && setsid flock -n /tmp/lock_produkttext.lock \
-          env CAP=6000 FIX=1 python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
+          env CAP=6000 FIX=1 LISTE="$WVL" python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) wahlversprechen geprüft"
     fi
   fi

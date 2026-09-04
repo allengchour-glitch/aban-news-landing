@@ -53,7 +53,22 @@ WAHL = re.compile(
     # «in einer Grösse» und «in der Farbe Schwarz» treffen bewusst nicht.
     r'|(?:verf[üu]gbar|erh[äa]ltlich|lieferbar) in '
     r'(?:den |diversen |unterschiedlichen |verschiedenen |mehreren )?'
-    r'(?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)(?![\wäöüß])', re.I)
+    r'(?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)(?![\wäöüß])'
+    # 04.09.: Das SUBSTANTIV war eine feste Liste — die echten Faelle nennen aber
+    # «vier attraktiven FARBKOMBINATIONEN», «mehreren FARBVARIANTEN», «dreizehn
+    # verschiedenen STILRICHTUNGEN». Der Klassen-Vollscan fand 1'337 solcher Produkte, dieses
+    # Werkzeug in denselben 50 genau EINES: zwei Muster, zwei Wahrheiten — und das engere sass
+    # ausgerechnet im Reparaturwerkzeug. Jetzt Zahlwort/Adjektiv dazwischen erlaubt und das
+    # Substantiv im PLURAL offen.
+    # ⚠️ Der Plural traegt die Aussage: «in der Farbe Schwarz» und «in einer Groesse» duerfen
+    # NICHT treffen — deshalb keine nackten Singulare in der Liste.
+    r'|(?:verf[üu]gbar|erh[äa]ltlich|lieferbar) in '
+    r'(?:(?:den|diversen|unterschiedlichen|verschiedenen|mehreren|zwei|drei|vier|f[üu]nf|'
+    r'sechs|sieben|acht|neun|zehn|elf|zw[öo]lf|dreizehn|\d+)\s+){1,3}'
+    r'(?:[\wäöüß]+en\s+|[\wäöüß]+e\s+)?'
+    r'(?:Farb(?:en|varianten|kombinationen|t[öo]nen|ausf[üu]hrungen|optionen)|'
+    r'Gr[öo]ssen(?:varianten)?|Stilrichtungen|Designs|Motiven|Mustern|L[äa]ngen|'
+    r'Ausf[üu]hrungen|Varianten|Modellen|Versionen)(?![\wäöüß])', re.I)
 
 def gql(q, v=None):
     gedrosselt, i = 0, 0
