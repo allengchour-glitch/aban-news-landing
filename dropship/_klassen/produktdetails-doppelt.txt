@@ -1,6 +1,6 @@
-15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
-15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
-15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben
+15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Far
+15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Far
 15412825063809	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
 15412825194881	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
 15412828733825	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
@@ -28,7 +28,7 @@
 15413076853121	Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock
 15413083242881	Boho Resort-Set · 2-teilig (Top & Hose)
 15413083832705	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
-15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2026)
+15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2
 15413084160385	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
 15413649998209	Spitzen-Bluse mit Schleife · Damen, Patchwork-Design
 15413724676481	Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch
@@ -38,8 +38,8 @@
 15413738996097	Bandeau-Top uni · Damen, schulterfrei & elastisch
 15413739684225	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
 15416026235265	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
-15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen, 4 Farben)
-15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farben)
+15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen,
+15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farbe
 15416343986561	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
 15416491704705	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
 15416493506945	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)

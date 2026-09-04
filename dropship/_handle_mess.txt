@@ -80,3 +80,4 @@ gid://shopify/Product/15510336176513	smartwatch-mit-ekg-kabellosem-laden-122752	
 gid://shopify/Product/15516195815809	ekg-bluetooth-sport-armband-210112	bluetooth-sport-armband-210112	301
 gid://shopify/Product/15518577525121	h80-smartwatch-mit-ekg-und-blutsauerstoffmessu-10605c	h80-smartwatch-mit-blutsauerstoffmessung-10605c	301
 gid://shopify/Product/15522454176129	smartwatch-mit-ekg-und-bluetooth-anrufen-621800	smartwatch-mit-bluetooth-anrufen-621800	301
+gid://shopify/Product/15524695638401	smartwatch-mit-blutsauerstoff-glukosemessung-381504	smartwatch-mit-blutsauerstoff-381504	301

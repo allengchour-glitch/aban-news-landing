@@ -11029,3 +11029,7 @@ gid://shopify/Product/15453776019841	CHF 14.53	4 Varianten	Zip-Lock Aufbewahrung
 gid://shopify/Product/15453776052609	CHF 24.12	3 Varianten	Fitness-Tasche für unterwegs
 gid://shopify/Product/15453776118145	CHF 10.82	6 Varianten	Lederarmband 26mm
 gid://shopify/Product/15453776150913	CHF 32.28	2 Varianten	Grosses Reisegepäck für Outdoor-Aktivitäten
+gid://shopify/Product/15453776183681	CHF 19.82	6 Varianten	Rückenstützkissen für Bürostühle
+gid://shopify/Product/15453776216449	CHF 26.65	9 Varianten	Leichte, atmungsaktive Sicherheitsschuhe für Herre
+gid://shopify/Product/15453776249217	CHF 29.94	1 Varianten	Selbstklebende Wandverkleidung
+gid://shopify/Product/15453776281985	CHF 104.36	2 Varianten	Reise-Pass-Tasche
