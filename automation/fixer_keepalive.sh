@@ -706,6 +706,55 @@ while true; do
       echo "$(date -u +%H:%M) cj_versand_ch_revive gestartet"
     fi
   fi
+  # ── Zombie-Wache: WER schreibt einen reparierten Text zurueck? (04.09.2026) ────────────
+  # 987 USA-Lieferzusagen lebten wieder, 978 davon standen als repariert im Ledger. Kein
+  # Werkzeug BAUT den Block neu — jemand schreibt einen ALTEN descriptionHtml zurueck. Die
+  # Logs des Tatzeitpunkts waren laengst ueberschrieben; wenn kein Log mehr da ist, fragt man
+  # nicht die Vergangenheit, sondern stellt eine Falle. Dauerlaeufer, deshalb hier.
+  if [ -f "$REPO/automation/zombie_wache.sh" ]; then
+    if ! ps -eo args --no-headers | grep -q "[z]ombie_wache.sh"; then
+      ( setsid bash "$REPO/automation/zombie_wache.sh" > /dev/null 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) zombie_wache gestartet"
+    fi
+  fi
+
+  # ── Lieferanten-Artikelnummern aus dem Kundentext (04.09.2026) ─────────────────────────
+  # Die Klasse waechst mit dem Grind nach: CJ-Texte nennen «mit der Artikelnummer Ltao7547…».
+  # Unter dem GETEILTEN Produkttext-Schloss — zwei Massen-Schreiber auf descriptionHtml sind
+  # die Zombie-Klasse vom 15.08.
+  AN=/tmp/artikelnummer.log
+  if [ -f "$REPO/automation/artikelnummer_entfernen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$AN" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_produkttext.lock; flock -w 1800 9 || exit 0; exec python3 automation/artikelnummer_entfernen.py" \
+          > "$AN" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) artikelnummer_entfernen gestartet"
+    fi
+  fi
+
+  # ── Sie→du in Produkttexten (04.09.2026) ──────────────────────────────────────────────
+  # Der Shop duzt ueberall, die CJ-Texte des alten Prompts siezen. Erst Analyse, dann
+  # Schreiben — beides unter dem GETEILTEN Produkttext-Schloss.
+  # ⚠️ Dass dieser Massen-Textschreiber automatisch laufen darf, haengt an drei Dingen:
+  #   1. die Pruefungen sind in BEIDE Richtungen getestet (Sache-«Sie» erlaubt, Anrede-«Sie»
+  #      blockiert; echte Frage erlaubt, Aussage-aus-Imperativ blockiert),
+  #   2. jeder geschriebene Text wird VORHER nach /tmp/produkt_du_alt.jsonl gesichert,
+  #   3. das Tageskontingent ist klein. Ohne den Rueckweg waere ein systematischer Fehler
+  #      unumkehrbar — dann gehoerte das Schreiben in eine gelesene Entscheidung.
+  DU=/tmp/produkt_du_lauf.log
+  if [ -f "$REPO/automation/produkttexte_du_form.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$DU" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_produkttext.lock; flock -w 2400 9 || exit 0; \
+           CAP=150 python3 automation/produkttexte_du_form.py && \
+           WRITE=1 exec python3 automation/produkttexte_du_form.py" \
+          > "$DU" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) produkttexte_du_form gestartet"
+    fi
+  fi
+
   KK=/tmp/klassen_kontrolle.log
   if [ -f "$REPO/automation/klassen_kontrolle.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KK" 2>/dev/null || echo 0) ))

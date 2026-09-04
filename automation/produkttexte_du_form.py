@@ -28,6 +28,9 @@ WRITE = os.environ.get("WRITE") == "1"
 PLAN = os.environ.get("PLAN", "/tmp/produkt_du.json")
 LESEN = os.environ.get("LESEN", "/tmp/produkt_du.txt")
 LEDGER = "dropship/_produkttexte_du_form.txt"
+# Alter Text je geschriebenem Produkt — der Rueckweg, nicht im Repo (zu gross, /tmp reicht
+# fuer den Tag; wer zurueck muss, tut es am selben Tag).
+SICHERUNG = os.environ.get("SICHERUNG", "/tmp/produkt_du_alt.jsonl")
 
 SIE = re.compile(r'\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b')
 TAGS = re.compile(r'<[^>]+>')
@@ -44,13 +47,26 @@ def pruefen(alt, neu):
         gruende.append("tags-verändert")
     if re.findall(r'\d+', alt) != re.findall(r'\d+', neu):
         gruende.append("zahlen-verändert")
-    rest = SIE.findall(klartext(neu))
+    # ⚠️ 04.09.2026: «Sie» ist nicht immer die Anrede. In «Diese Handpresse … Sie wurde
+    # entwickelt» meint es die PRESSE (3. Person feminin) — der Text ist nach der Umstellung
+    # korrekt, und die Pruefung blockierte ihn trotzdem (7 von 8 Faellen). Unterscheidbar am
+    # Verb: die Hoeflichkeitsform ist 3. Person PLURAL («Sie koennen/finden/erhalten»), die
+    # Sache steht im SINGULAR («Sie wurde/ist/hat/bietet/eignet»). Nur der Plural ist ein Rest.
+    txt = klartext(neu)
+    txt_ohne_sache = re.sub(
+        r'\bSie\s+(?:wurde|war|ist|hat|bietet|eignet|besteht|verfügt|sorgt|ermöglicht|'
+        r'lässt|liegt|kommt|passt|schützt|hält|misst|wiegt|[a-zäöüß]+t)\b', ' ', txt)
+    rest = SIE.findall(txt_ohne_sache)
     if rest:
         gruende.append("sie-rest:" + ",".join(sorted(set(rest))[:3]))
     # ⚠️ Der Imperativ kippt bei Modellen in eine Frage; bei Regeln kippt er in einen
     # Aussagesatz («und wirst du zum …»). Beides ist am Satzanfang erkennbar.
-    if re.search(r'(?:^|[.!?]\s+)(?:[A-ZÄÖÜ][\wäöüß]+st)\s+du\b', klartext(neu)):
-        gruende.append("frage-statt-imperativ")
+    # ⚠️ Nur melden, wenn daraus KEINE echte Frage wurde: «Benötigen Sie Strom?» → «Benötigst
+    # du Strom?» ist richtig und endet mit «?». Der Fehler ist der Aussagesatz, der aus einem
+    # Imperativ entstand («Entdeckst du unsere Kollektion.»).
+    for satz in re.split(r'(?<=[.!?])\s+', klartext(neu)):
+        if re.match(r'^[A-ZÄÖÜ][\wäöüß]+st\s+du\b', satz) and not satz.rstrip().endswith('?'):
+            gruende.append("aussage-statt-imperativ"); break
     if not (0.85 <= len(neu) / max(len(alt), 1) <= 1.15):
         gruende.append("laenge")
     # ⚠️ 04.09.2026 — DIE ZWEI FEHLER, DIE DIE PRUEFUNG DURCHGELASSEN HAT (an 60 Texten gelesen):
@@ -88,6 +104,10 @@ def hole(ids):
 def schreiben():
     plan = json.load(open(PLAN, encoding="utf-8"))
     led = open(LEDGER, "a", encoding="utf-8")
+    # ⚠️ 04.09.2026 — RUECKWEG. Erst mit dieser Sicherung darf der Lauf automatisch schreiben:
+    # ein Textschreiber, der den alten Stand nicht aufhebt, macht einen systematischen Fehler
+    # unumkehrbar. Eine Zeile je Produkt (JSON), damit `alt` auch mit Zeilenumbruechen passt.
+    sich = open(SICHERUNG, "a", encoding="utf-8")
     n = 0
     for e in plan:
         if not e.get("neu"):
@@ -105,6 +125,7 @@ def schreiben():
             print(f"  ⛔ {e['handle'][:44]} {str(pu.get('userErrors'))[:60]}")
             continue
         n += 1
+        sich.write(json.dumps({"id": e["id"], "handle": e["handle"], "alt": e["alt"]}, ensure_ascii=False) + "\n")
         led.write(f"{e['id'].split('/')[-1]}\tdu-form\t{e['handle'][:60]}\n")
         if n % 100 == 0:
             led.flush(); print(f"  … {n}")
