@@ -1,5 +1,24 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 💊 «Nagelpilz-Reparaturserum» stand in allen sechs Kanaelen (2026-09-04, abends)
+Die Gegenprobe zum Wimpern-Fall («gibt es weitere Wachstums-Zusagen?») fand ueber die
+Inhalts-Suche 14 aktive Produkte — **keines davon im TITEL**, deshalb hat der Klassen-Scan
+sie nicht gemeldet: er prueft Titel, die Zusagen stehen im TEXT.
+- **Der harte Fall ist ein anderer als gesucht:** «Nagelpilz-Reparaturserum», laut eigenem
+  Text «speziell fuer die Reparatur von Naegeln entwickelt, die von Pilz befallen sind».
+  Nagelpilz ist eine Krankheit; das ist eine Heilaussage an einem Kosmetikum, und es stand
+  ACTIVE in **allen sechs Kanaelen inklusive Google**. Praezedenz aus dem 40-Agenten-Audit
+  (16.08.): ein «Antifungal» wurde damals gedraftet. Also DRAFT + `heilaussage-pruefen`,
+  vorher aus den vier Werbekanaelen genommen — **ein DRAFT behaelt seine Publikationen**
+  (Lehre von heute Mittag), sonst stuende es bei einer Wiederbelebung sofort wieder bei Google.
+- **Die 13 Haarwachstums-Texte sind NICHT pauschal gestrichen.** Sie sind unterschiedlich
+  stark: «die Durchblutung wird gefoerdert, was das Haarwachstum unterstuetzen kann» ist eine
+  gehedgte Aussage ueber eine Massage, «foerdert das Haarwachstum» eine unbedingte Zusage.
+  Ein breites Muster ist ein Netz, kein Urteil — sie stehen als Aufgabe mit Einzelfall-Lesung.
+- **Lehre: Zwei Scans, zwei Orte.** Der Klassen-Vollscan misst Titel; Zusagen im TEXT findet
+  nur eine Inhalts-Suche. Wer eine Klasse fuer erledigt haelt, weil der Titel-Scan schweigt,
+  hat die Haelfte gemessen.
+
 ## 📧 1'482 erfundene Adressen auf der EIGENEN Domain — Klaviyo rechnet nach Profilen (2026-09-04)
 Nach dem Wiederanschluss des Klaviyo-Konnektors nachgesehen, ob die Newsletter-Liste seit
 dem 29.08. gewachsen ist: **`T2VHfu` hat 1 Profil.** Die Verkabelung stimmt (Popup und
