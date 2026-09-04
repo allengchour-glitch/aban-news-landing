@@ -1251,3 +1251,10 @@ faltmesser-wild-life-schutz-mit-holzgriff-623900	2504010846391624100	1	6.81	ok	k
 kuchenmesser-aus-edelstahl-24-m-lange-601700	2504010533201601900	1	13.26	ok	klinge
 trapezformiges-klappmesser-607300	2503080837151607600	1	8.57	ok	klinge
 faltmesser-aus-metall-604800	2503070555451605100	1	6.49	ok	klinge
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=56265	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=56095	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
+kochmesser-western-stil-8-zoll-a547f6	-	-	-	unklar keine CJ-SKU	klinge
+japanische-damast-kuchenmesser-a0b8c1	-	-	-	unklar keine CJ-SKU	klinge

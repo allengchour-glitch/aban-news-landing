@@ -35,6 +35,8 @@ EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 # ist. Mit dem alten Ledger würde der Lauf ausgerechnet die Betroffenen überspringen und
 # «nichts zu tun» melden. Wird die REGEL erweitert, ist das alte Erledigt-Zeichen wertlos.
 LEDGER = os.environ.get("LEDGER", "dropship/_produktdetails_vereint2.txt")
+# Arbeitsliste aus dem taeglichen Klassen-Vollscan (statt eines alternden Exports).
+LISTE = os.environ.get("LISTE", "")
 # ⚠️ 20.08.2026 — DRITTER DURCHGANG NÖTIG. `versandaussagen_wahrheit.py` (14.08.) hat bei
 # 150 aktiven Produkten den entfernten Zweitblock aus einer STUNDEN ALTEN Textbasis wieder
 # zurückgeschrieben. Alle 150 stehen in _produktdetails_vereint.txt UND ...2.txt als
@@ -188,10 +190,31 @@ def vereinen(html):
     return neu_html, True
 
 
+def kandidaten_live(pfad):
+    """Holt die Produkte einer Arbeitsliste LIVE — ein Scan (klassen_kontrolle), viele Listen.
+
+    ⚠️ Der EXPORT-Weg liest /tmp/export.jsonl. Diese Datei altert (gemessen: 30.08. noch als
+    Quelle gelesen, waehrend der Katalog taeglich waechst) — ein Werkzeug, dessen Quelle
+    veraltet, meldet Vollzug ueber eine Vergangenheit. Die Arbeitsliste von
+    klassen_kontrolle.py wird taeglich neu gemessen; daraus wird hier live nachgeladen.
+    """
+    ids = [z.split("\t")[0].strip() for z in open(pfad) if z.strip()]
+    Q = ('query($ids:[ID!]!){nodes(ids:$ids){... on Product'
+         '{id title status descriptionHtml}}}')
+    for i in range(0, len(ids), 50):
+        gids = [f"gid://shopify/Product/{d}" for d in ids[i:i + 50]]
+        r = gql(Q, {"ids": gids})
+        for p in ((r.get("data") or {}).get("nodes") or []):
+            if p:
+                yield p
+        time.sleep(0.3)
+
+
 def main():
     aufgaben = []
-    for zeile in open(EXPORT):
-        p = json.loads(zeile)
+    quelle = (kandidaten_live(LISTE) if LISTE
+              else (json.loads(z) for z in open(EXPORT)))
+    for p in quelle:
         # ⚠️ Entwürfe MIT aufräumen. 1'212 DRAFTs tragen die Doppelung ebenfalls; der Autopilot
         # schaltet laufend Entwürfe auf ACTIVE, also käme der bereinigte Fehler von dort
         # automatisch zurück. Ein Reiniger, der nur das Sichtbare putzt, arbeitet gegen eine

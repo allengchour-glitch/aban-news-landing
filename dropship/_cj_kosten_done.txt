@@ -9944,3 +9944,21 @@ gid://shopify/Product/15452688679297	CHF 17.79	49 Varianten	Rundhals-Glitzer-Par
 gid://shopify/Product/15452688712065	CHF 18.31	21 Varianten	Elegant Langarm-Shirt-Kleid für Büro & Alltag
 gid://shopify/Product/15452688777601	CHF 16.11	36 Varianten	V-Ausschnitt 3/4-Arm Minikleid
 gid://shopify/Product/15452688810369	CHF 34.05	10 Varianten	Damenleichtes Trägerkleid mit Rüschendetails
+gid://shopify/Product/15452688843137	CHF 18.91	5 Varianten	Retro Streifen-Langrock mit Polo-Kragen & Seitensc
+gid://shopify/Product/15452688875905	CHF 20.43	5 Varianten	Boho-Stil Tief-V Reissverschluss Langarm Raffung M
+gid://shopify/Product/15452688908673	CHF 38.48	3 Varianten	Woll-Tweed Charme-Style Slipkleid ohne Ärmel
+gid://shopify/Product/15452688974209	CHF 18.54	5 Varianten	Eleganter Damen A-Linien-Midi-Rock mit V-Ausschnit
+gid://shopify/Product/15452689006977	CHF 13.07	8 Varianten	Weit geschnittener Damenrock für Plus-Grössen
+gid://shopify/Product/15452689072513	CHF 13.35	20 Varianten	3/4-Arm Elegant Business-Office-Kleid
+gid://shopify/Product/15452689138049	CHF 14.84	25 Varianten	Enganliegendes Turtleneck-Kleid mit Falten
+gid://shopify/Product/15452689203585	CHF 14.84	20 Varianten	Dreiviertelarm Doppelreihiges Anzugkleid
+gid://shopify/Product/15452689236353	CHF 10.82	72 Varianten	Damenmode-Lockerkleid Plus-Grösse
+gid://shopify/Product/15452689301889	CHF 22.83	18 Varianten	Elegantes Langarm-Maxikleid
+gid://shopify/Product/15452689334657	CHF 12.53	5 Varianten	Damen V-Ausschnitt Shirt 3/4-Arm gestreift
+gid://shopify/Product/15452689400193	CHF 14.03	30 Varianten	Elegantes Cape-Oberteil · Schalkragen
+gid://shopify/Product/15452689432961	CHF 15.07	45 Varianten	Peplum-Bluse mit Schleifen-Details · Trompetenärme
+gid://shopify/Product/15452689465729	CHF 15.62	6 Varianten	Retro Crop Top
+gid://shopify/Product/15452689498497	CHF 12.88	24 Varianten	Lässige Hemdbluse Langarm · Baumwoll-Optik
+gid://shopify/Product/15452689564033	CHF 11.89	12 Varianten	Casual Volant-Top mit Flügelärmeln
+gid://shopify/Product/15452689596801	CHF 9.77	4 Varianten	Polka-Dot Oberteil mit Taille
+gid://shopify/Product/15452689629569	CHF 13.17	12 Varianten	Elegante transparente Bluse mit Blumen-Stickerei

@@ -855,6 +855,24 @@ while true; do
       fi
     fi
   fi
+  # PRODUKTDETAILS DOPPELT (04.09.2026): Der Block «Produktdetails» stand bei 1'542 aktiven
+  # Produkten ZWEIMAL untereinander, teils mit widersprüchlichem Material. Das Werkzeug gibt es
+  # seit dem 11.08. — es las aber /tmp/export.jsonl (Stand 30.08.) und meldete deshalb täglich
+  # «0 doppelte Blöcke», während die Klasse live 1'542 gross war. ⚠️ Ein Werkzeug, dessen Quelle
+  # veraltet, meldet Vollzug über eine Vergangenheit. Es liest jetzt die Arbeitsliste des
+  # täglichen Klassen-Vollscans (LISTE) und holt jeden Text unmittelbar vor dem Schreiben LIVE.
+  # Läuft unter dem GETEILTEN Produkttext-Schloss — zwei Massen-Schreiber auf descriptionHtml
+  # sind die Zombie-Klasse vom 15.08.
+  PDL="$REPO/dropship/_klassen/produktdetails-doppelt.txt"
+  PDV=/tmp/pd_vereinen.log
+  if [ -f "$REPO/automation/produktdetails_vereinen.py" ] && [ -s "$PDL" ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/produktdetails_vereinen.py"{n++} END{exit(n?0:1)}'; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; LISTE=dropship/_klassen/produktdetails-doppelt.txt LEDGER=dropship/_produktdetails_vereint4.txt exec python3 automation/produktdetails_vereinen.py" \
+          >> "$PDV" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) produktdetails_vereinen gestartet"
+    fi
+  fi
   # CH-VERSENDBARKEIT SICHTBARER CJ-WARE (03.09.2026, Klasse Bestellung #1016): Klingen/Schärfer, Such-
   # Landeseiten, Hype, Bestseller per freightCalculate CN→CH; ohne Option → DRAFT + cj-nicht-versendbar-ch.
   # Läuft gegen den geteilten CJ-Eimer langsam (~1–2/min) und stirbt mit jedem Container-Neustart —
