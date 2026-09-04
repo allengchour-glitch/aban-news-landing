@@ -54,3 +54,7 @@
 15448845779329	keine-linie	multifunktionales-survival-klappmesser-608400
 15448845943169	wiederbelebt	japanisches-damast-messer-mit-ebenholzgriff-628700	6.57	13.49
 15448846041473	keine-linie	6-teiliges-kuchenmesser-set-aus-geschmiedetem-082433
+15448846074241	wiederbelebt	swedwood-taschenmesser-aus-stahl-619900	4.77	13.58
+15448846139777	wiederbelebt	g10-allzweckmesser-mit-rutschfestem-griff-623300	8.54	18.00
+15448846172545	wiederbelebt	shadow-dancer-kupfer-damast-klappmesser-609900	6.06	32.93
+15448846205313	wiederbelebt	damast-outdoor-faltmesser-624300	6.35	24.34

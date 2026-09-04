@@ -7012,3 +7012,33 @@ geprüft — «Blutdruckmessgerät für den Oberarm» bleibt unberührt, es ist 
   **Ein Werkzeug, dessen Quelle veraltet, meldet Vollzug über eine Vergangenheit.**
 - ⚠️ Der Berichts-Deckel stand bei 8 Beispielen je Klasse und hat damit **genau die zwei
   Fälle versteckt, die noch offen waren** («… und 2 weitere»). Jetzt 25.
+
+## 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
+Der Betreiber schickte den CJ-Chat: Agentin Iris hat auf die #1016-Anfrage **«CJPacket EQ
+Sensitive»** freigeschaltet. **Gemessen statt geglaubt** (am 03.09. galt eine solche Zusage für
+SCHWEDEN, nicht die Schweiz): Das Messer aus #1016 hat damit eine CH-Linie, **USD 7.30**.
+1'001 Produkte standen mit `cj-nicht-versendbar-ch` auf DRAFT.
+**Eine Quittung gilt nur für die Welt, in der sie ausgestellt wurde** — die Drafts waren zu
+ihrer Zeit richtig, geändert hat sich nicht unsere Regel, sondern die Wirklichkeit beim
+Lieferanten. `automation/cj_versand_ch_revive.py` misst deshalb jede Absage neu: Risiko-Tag →
+Finger weg · LIVE-Fracht → keine Linie bleibt DRAFT · **Marge mit der GEMESSENEN Fracht**
+(die alte Schätzung `3.84+16.42·kg` wird aus der Kostenzahl herausgerechnet) → Verlust bleibt
+DRAFT. Erster Lauf: **13 wiederbelebt, 46 ohne Linie, 1 lieferbar-aber-Verlust**; alle 13 am
+Objekt gegengeprüft (ACTIVE, Tag weg, im Onlineshop). Das #1016-Messer ist wieder kaufbar.
+- ⚠️ **Korrektur an meiner eigenen Hochrechnung:** Die erste Stichprobe (9 von 15 lieferbar)
+  stammte aus den ersten 400 Ledger-Zeilen — fast reine Klingenware. Der Kanal heisst
+  **Sensitive** und hilft genau dieser Klasse; Sprinkler, Dashcam, Luftbefeuchter und
+  Bausteine haben weiter keine Linie. **Eine Stichprobe aus einem sortierten Ledger ist keine
+  Stichprobe der Menge.** Ehrliche Quote im Lauf: 13 von 60.
+- ⛔ **Und der eigene Fehler, der teuer hätte werden können: Ein DRAFT behält seine
+  Werbekanäle.** Ich hatte bewusst nur in Online Store + Shop publiziert — aber das
+  Reaktivieren machte die alten Publikationen wieder wirksam: **14 Klingen standen danach in
+  TikTok, Meta und Pinterest, fünf davon bei GOOGLE**, dem einzigen Kanal, der verkauft und
+  dessen Sperre das Merchant-Konto kostet. «Nur dorthin publizieren» genügt nicht — was schon
+  publiziert war, muss aktiv WEGGENOMMEN werden. Alle 14 geräumt, das Werkzeug räumt jetzt
+  vor der Quittung (sonst steht eine Klinge für immer als «wiederbelebt» im Ledger und wird
+  nie wieder angesehen).
+- ⚠️ **Beim Einbau der Klingenprüfung habe ich die Regel NACHGEBAUT statt sie zu benutzen** —
+  und prompt meldete sie «Herzfrequenzmesser» als Klinge. Die Messgeräte-Ausnahme steckt in
+  `klingenregel.py`, nicht im Muster. Jetzt importiert; 11 Testfälle in beide Richtungen.
+  Dieselbe Lehre wie am 29.08., als dieselbe Regex wörtlich in fünf Dateien stand.

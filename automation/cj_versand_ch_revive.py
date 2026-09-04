@@ -46,6 +46,30 @@ RISIKO = {"medizinprodukt-pruefen", "waffengesetz-verboten", "duplikat-auto-draf
 
 ONLINE = "gid://shopify/Publication/301970915713"
 SHOP = "gid://shopify/Publication/301971014017"
+# ⚠️ Ein DRAFT behaelt seine Werbekanaele — das Reaktivieren macht sie wieder wirksam.
+# Beim ersten Lauf standen dadurch 14 Klingen in TikTok/Meta/Pinterest und fuenf davon bei
+# GOOGLE, dem einzigen Kanal, der verkauft und dessen Sperre das Merchant-Konto kostet.
+# «Publiziere nur in Online Store + Shop» genuegt also NICHT: was schon publiziert war,
+# muss aktiv WEGGENOMMEN werden. Hausregel 29.08.: Ware, die aus dem Google-Kanal gehoert,
+# gehoert aus ALLEN Werbekanaelen — die Verbote sind dieselben.
+WERBEKANAELE = ["gid://shopify/Publication/302032716161",   # TikTok
+                "gid://shopify/Publication/302566834561",   # Facebook & Instagram
+                "gid://shopify/Publication/302872297857",   # Google & YouTube
+                "gid://shopify/Publication/302994456961"]   # Pinterest
+
+# ⚠️ Die Klingenfrage beantwortet AUSSCHLIESSLICH automation/klingenregel.py — EINE
+# Regelquelle (Lehre 29.08.: dieselbe Regex stand einmal woertlich in fuenf Dateien, und
+# eine Nachbau-Fassung hier hat prompt «Herzfrequenzmesser» als Klinge gemeldet. Die
+# Messgeraete-Ausnahme steckt in der Regel, nicht im Muster.)
+sys.path.insert(0, os.path.join(REPO, "automation"))
+from klingenregel import ist_klinge as _ist_klinge          # noqa: E402
+
+KLINGE_TAG = ("messer", "outdoor-messer", "messer-outdoor")
+
+
+def ist_klinge(titel, tags):
+    return _ist_klinge(titel or "") or any(
+        t.startswith("google-kanal-klinge") or t in KLINGE_TAG for t in (tags or []))
 
 SHOPAPI = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
 
@@ -217,6 +241,25 @@ def main():
             kanaele = [n["publication"]["name"] for n in
                        pb["publishablePublish"]["publishable"]["resourcePublicationsV2"]["nodes"]
                        if n["isPublished"]]
+        # Werbekanaele raeumen, BEVOR quittiert wird: eine Klinge, die im Ledger als
+        # «wiederbelebt» steht und in Google haengt, wird nie wieder angesehen.
+        if ist_klinge(p["title"], p["tags"]):
+            u = sgql("""mutation($id:ID!,$p:[PublicationInput!]!){
+                     publishableUnpublish(id:$id,input:$p){userErrors{message}
+                     publishable{ ... on Product{ resourcePublicationsV2(first:12){
+                       nodes{publication{name} isPublished}}}}}}""",
+                     {"id": p["id"], "p": [{"publicationId": w} for w in WERBEKANAELE]})
+            offen = []
+            if u and not u["publishableUnpublish"]["userErrors"]:
+                offen = [n["publication"]["name"] for n in
+                         u["publishableUnpublish"]["publishable"]["resourcePublicationsV2"]["nodes"]
+                         if n["isPublished"] and n["publication"]["name"] in
+                         ("TikTok", "Facebook & Instagram", "Google & YouTube", "Pinterest")]
+            else:
+                offen = ["(Antwort fehlt)"]
+            if offen:
+                print(f"   ⛔ Klinge steht weiter in {offen} — NICHT quittiert")
+                continue
         if "Online Store" not in kanaele:
             print(f"   ⛔ nicht im Onlineshop ({kanaele}) — NICHT quittiert")
             continue
