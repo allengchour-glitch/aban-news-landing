@@ -9962,3 +9962,7 @@ gid://shopify/Product/15452689498497	CHF 12.88	24 Varianten	Lässige Hemdbluse L
 gid://shopify/Product/15452689564033	CHF 11.89	12 Varianten	Casual Volant-Top mit Flügelärmeln
 gid://shopify/Product/15452689596801	CHF 9.77	4 Varianten	Polka-Dot Oberteil mit Taille
 gid://shopify/Product/15452689629569	CHF 13.17	12 Varianten	Elegante transparente Bluse mit Blumen-Stickerei
+gid://shopify/Product/15452689990017	CHF 12.07	99 Varianten	3D-Druck Weihnachts-Shirt Herren
+gid://shopify/Product/15452690776449	CHF 14.21	36 Varianten	Herren Langarm Polo-Shirt mit Knopfleiste
+gid://shopify/Product/15452691071361	CHF 21.98	36 Varianten	Winter Heizweste mit Batterie für Herren
+gid://shopify/Product/15452691104129	CHF 12.85	18 Varianten	Gradient Ice Silk Sonnenschutz-Jacke Herren
