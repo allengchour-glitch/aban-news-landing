@@ -27777,3 +27777,58 @@
 15496330346881	ersetzt-1	High-Heel Sandalen mit Knöchelriemen
 15496330412417	ersetzt-1	Winddichtes Fahrrad-Gesichtstuch
 15496330477953	ersetzt-1	Hohle Mesh-Sandalen für Pendler
+15496330510721	ersetzt-1	Sturmhaube wind- und wasserfest
+15496330576257	ersetzt-1	Herren Casual Schuhe mit dezenter Fersenerhöhung
+15496330609025	ersetzt-1	Infrarot Dampf-Glätteisen
+15496330641793	ersetzt-1	Unisex Camping & Fischerstiefel
+15496330674561	ersetzt-1	Plüsch-Auto mit Sound für Hunde
+15496330740097	ersetzt-1	LCD Haarglättungsbürste
+15496330772865	ersetzt-1	Quietschendes Plüschtier zum Zähneknirschen
+15496330805633	ersetzt-1	Ionen-Glättbürste mit Keramikbeschichtung
+15496330838401	ersetzt-1	Sicherheitsschuhe High-Top mit Stahlkappe
+15496330871169	ersetzt-1	Plüsch-Vogel-Spielzeug mit Sound für Haustiere
+15496330903937	ersetzt-1	Haarglätter Turmalin-Keramik
+15496330936705	ersetzt-1	Schnüffelball Plüschtier für Hunde
+15496330969473	ersetzt-1	Personality-driven Canvas Skate-Schuhe
+15496331002241	ersetzt-1	PRITECH Glätteisen mit Anti-Verbrühungsfunktion
+15496331035009	ersetzt-1	Blumen-Haarband mit farbigen Strass-Steinen
+15496331067777	ersetzt-1	Outdoor Casual Sneaker mit breiter Zehenpartie
+15496331100545	ersetzt-1	Intelligentes, automatisches Katzenspielzeug
+15496331133313	ersetzt-1	Keramik-Glätteisen mit Anionen- & Infrarotfunktion
+15496331166081	ersetzt-1	Herren High-Top Slip-On Sneaker
+15496331198849	ersetzt-1	Interaktives Plüschtier mit Sound für Haustiere
+15496331231617	ersetzt-1	Kabelloser, smarter Lockenstab
+15496331264385	ersetzt-1	Vielseitige Slip-on Freizeitschuhe für Herren
+15496331329921	ersetzt-1	Beissfestes Plüsch-Dinosaurier-Hundespielzeug mit Sound
+15496331362689	ersetzt-1	Automatischer Lockenstab für einfache Wellen
+15496331395457	ersetzt-1	Hundespielzeug Sushi-Rolle mit Sound & Leckerli-Versteck
+15496331428225	ersetzt-1	Britische Slip-on Casual Schuhe für Herren
+15496332476801	ersetzt-1	Sisal-Kratzbaum mit Liegemulde
+15496332509569	ersetzt-1	Kabelloser USB-Haarglätter
+15496332542337	ersetzt-1	Outdoor Casual Martin Boots
+15496332575105	ersetzt-1	Physischer Gaming-Griff fürs Smartphone
+15496332607873	ersetzt-1	Steam-Glätteisen für Locken und Glätte
+15496332673409	ersetzt-1	PS4 Gamepad Rücken-Erweiterungstaste
+15496332738945	ersetzt-1	Gemüse-Bällchen Schnüffelspielzeug für Hunde
+15496332771713	ersetzt-1	Minimalistische Herren-Freizeitschuhe
+15496332804481	ersetzt-1	Kabelloser Lockenstab mit Glättfunktion
+15496332837249	ersetzt-1	Kabelloser Bluetooth-Controller für PC & Android
+15496332870017	ersetzt-1	Hundespielzeug Brotmaschine mit Versteckfunktion
+15496332902785	ersetzt-1	Atmungsaktive Veloschuhe für Herren
+15496332935553	ersetzt-1	Kabelloser 2-in-1 Lockenstab & Glätteisen
+15496333033857	ersetzt-1	Kabelloser Bluetooth Gamecontroller mit Licht
+15496333132161	ersetzt-1	Beissfestes Plüschtier mit Sound für Hunde
+15496333164929	ersetzt-1	Handgenähte Leder Slipper
+15496333197697	ersetzt-1	Multifunktionales Glätteisen
+15496333230465	ersetzt-1	Kabelloses Bluetooth-Gamepad mit Vibration
+15496333296001	ersetzt-1	Pocket Love Tibetan Food Bear – Spielzeug für Hunde
+15496333328769	ersetzt-1	Herren Loafer Canvas Casual Schuhe
+15496333361537	ersetzt-1	Föhn-Düse für schnelleres Trocknen
+15496333394305	ersetzt-1	GameSir X2 Type-C Bluetooth Gamepad
+15496333459841	ersetzt-1	Brot-Schnüffelspielzeug für Hunde
+15496333492609	ersetzt-1	Herren Canvas Loafers
+15496333558145	ersetzt-1	Gamepad mit Somatosensorik und Burst-Funktion
+15496333623681	ersetzt-1	LED-Hundegeschirr mit Display
+15496333656449	ersetzt-1	Bequeme Schnürschuhe für Herren
+15496333689217	ersetzt-1	Glättbürste mit Lockenfunktion
+15496333721985	ersetzt-1	Kabelloser Bluetooth-Gamepad mit Vibration

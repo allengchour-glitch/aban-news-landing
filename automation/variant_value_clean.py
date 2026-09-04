@@ -125,6 +125,21 @@ BAD=re.compile(r'^[A-Z]{2,}\d{2,}|^[A-Z0-9]{7,}$|US Size|\bYards\b|Generation \d
                # 115 Produkte trugen so weiter Lieferantencodes im Auswahlfeld. Das Tor und
                # die Regel muessen dieselbe Frage stellen; sonst prueft man zwei Dinge.
                r'|Default Item|\S\s{2,}\S|(?i:^\s*(?:\d{1,3}\s*styles?|styles?\s*\d{1,3})\s*$)')
+# ── Muster fuer den Zubehoer-Melder ───────────────────────────────────────────────
+# Nur Optionen, in denen die Kundin eine AUSFUEHRUNG desselben Produkts erwartet.
+FARBOPTION = re.compile(r'(?i)^(farbe|color|colour|ausf(ü|ue)hrung|style|stil|muster|variante)')
+# Ein Zubehoer-Nomen genuegt; «Set» steht bewusst NICHT drin (ein Set IST das Produkt plus
+# etwas, kein Ersatz dafuer), «ohne» ebenso wenig (es gibt «ohne Muster» als echte Wahl).
+ZUBEHOER = re.compile(r'(?i)(cartridge|refill|replacement|spare\s*part|ersatzfilter|ersatzteil'
+                      r'|nachf(ü|ue)ll|filterpatrone|nur\s+(filter|kabel|h(ü|ue)lle|band|riemen)'
+                      r'|\b(strap|band|cable|charger)\s+only\b|only\s+(strap|band|cable))')
+# ⚠️ Gegenrichtung: Ein SET ist das Produkt PLUS etwas, kein Ersatz dafuer — «Set: Brunnen +
+# Ersatzfilter» ist eine ehrliche Wahl und darf nicht als Zubehoer gemeldet werden. Der
+# Set-Marker muss aber vorn stehen; «Cartridge set» bleibt ein Befund.
+IST_SET = re.compile(r'(?i)^\s*set\b|\bset:')
+melde = []
+BERICHT = 'dropship/ZUBEHOER-ALS-FARBE.md'
+
 while True:
     d=gql('query($c:String){products(first:60,after:$c,query:"status:ACTIVE"){pageInfo{hasNextPage endCursor} nodes{id options{id name optionValues{id name}}}}}',{"c":cur})
     pg=(d.get("data") or {}).get("products")
@@ -137,6 +152,20 @@ while True:
         raise SystemExit(0)
     for p in pg["nodes"]:
         sc+=1
+        # ── MELDER: Zubehoer als Farbe ────────────────────────────────────────────────
+        # ⛔ Am 04.09.2026 bot der 3L-Trinkbrunnen (die Seite, auf die 2'600 Suchen im Monat
+        # zulaufen) unter «Farbe» den Wert «Cartridge3 layers of filtrati-USB socket 5V» an —
+        # einen ERSATZFILTER zum selben Preis wie den Brunnen. Wer eine Farbe waehlt, bekommt
+        # ein anderes Produkt. Das ist die einzige Stelle im Shop, an der ein falsches Wort
+        # unmittelbar eine falsche WARE bestellt.
+        # Der Melder aendert NICHTS: was ein Wert wirklich bezeichnet, entscheidet ein Mensch
+        # am Bild und am Preis (heute war «Set» richtig und «Cartridge» falsch).
+        for o in p["options"]:
+            if not FARBOPTION.search(o["name"] or ""):
+                continue
+            for v in o["optionValues"]:
+                if ZUBEHOER.search(v["name"] or "") and not IST_SET.search(v["name"] or ""):
+                    melde.append((p["id"].split("/")[-1], o["name"], v["name"]))
         for o in p["options"]:
             vals=o["optionValues"]
             if not any(BAD.search(v["name"] or "") for v in vals): continue
@@ -175,4 +204,21 @@ while True:
     if not pg["pageInfo"]["hasNextPage"]: break
     cur=pg["pageInfo"]["endCursor"]; open(state,"w").write(cur)
     if sc%600<60: print(f"gescannt {sc} | Varianten-Werte bereinigt {fx}",flush=True)
+# Bericht anhaengen statt ueberschreiben waere falsch: dieser Lauf ist ein Durchgang durch
+# den Katalog, und ein Bericht, der alte Funde mitschleppt, listet Erledigtes (Lehre 21.08.).
+# Ohne Befund wird der Bericht GELOESCHT — ein leerer Rueckstand ist kein Rueckstand.
+if melde:
+    with open(BERICHT, 'w', encoding='utf-8') as bf:
+        bf.write('# Zubehoer als Farbe angeboten (MELDET NUR)\n\n'
+                 '> Die Option heisst «Farbe»/«Ausfuehrung», ein Wert bezeichnet aber ein ANDERES\n'
+                 '> Produkt (Ersatzfilter, Ersatzband, nur Kabel). Wer eine Ausfuehrung waehlt,\n'
+                 '> bestellt dann Zubehoer. Praezedenz 04.09.2026: 3L-Trinkbrunnen, Ersatzfilter\n'
+                 '> zum Brunnenpreis auf der Seite mit 2\'600 Suchen/Monat.\n\n'
+                 '> ⚠️ Nichts wird automatisch geaendert: ob ein Wert Zubehoer ODER eine legitime\n'
+                 '> Ausfuehrung ist, entscheidet der Blick auf Bild und Preis.\n\n')
+        for pid, on, vn in melde:
+            bf.write(f'- `{pid}` [{on}] `{vn}`\n')
+    print(f'MELDER: {len(melde)} Zubehoer-Werte in Farboptionen -> {BERICHT}')
+elif os.path.exists(BERICHT):
+    os.remove(BERICHT); print('MELDER: 0 — Bericht geloescht')
 print(f"FERTIG: {sc} gescannt, {fx} Optionen bereinigt")
