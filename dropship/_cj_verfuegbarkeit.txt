@@ -23952,3 +23952,6 @@ gid://shopify/Product/15512269783425	ok
 gid://shopify/Product/15512269554049	ok
 gid://shopify/Product/15512269422977	ok
 gid://shopify/Product/15512269357441	ok
+gid://shopify/Product/15512269095297	ok
+gid://shopify/Product/15512268964225	ok
+gid://shopify/Product/15512268800385	ok
