@@ -10729,3 +10729,15 @@ gid://shopify/Product/15453761929601	CHF 15.09	25 Varianten	Farbige Hoodie mit K
 gid://shopify/Product/15453761962369	CHF 24.20	1 Varianten	Zen-Bodhidharma Flussüberquerung Ornament
 gid://shopify/Product/15453761995137	CHF 13.17	5 Varianten	Herbststil Kapuze mit Holz Ohrenschützern
 gid://shopify/Product/15453762027905	CHF 29.27	2 Varianten	Kupfer-Löwe Dekoration
+gid://shopify/Product/15453762060673	CHF 7.45	1 Varianten	Weihnachts-Fridge-Dekoration
+gid://shopify/Product/15453762093441	CHF 13.70	42 Varianten	Lässiger Farbblock-Patchwork-Hoodie mit Taschen
+gid://shopify/Product/15453762158977	CHF 46.48	5 Varianten	Holz-Ornament mit Edelstein
+gid://shopify/Product/15453762191745	CHF 7.69	6 Varianten	Doppeltes Diamant-Mesh-Hauptband
+gid://shopify/Product/15453762224513	CHF 12.11	6 Varianten	Sportliche Hoodie
+gid://shopify/Product/15453762257281	CHF 10.31	6 Varianten	Kaschmir-Hoodie · Damen
+gid://shopify/Product/15453762290049	CHF 14.98	15 Varianten	Koreaner Stil Liebesmotiv Patchwork Langarmshirt
+gid://shopify/Product/15453762322817	CHF 19.13	6 Varianten	Damen Strickcardigan
+gid://shopify/Product/15453762355585	CHF 16.53	1 Varianten	Trendiger Premium-Strickcardigan mit Farbblock
+gid://shopify/Product/15453762388353	CHF 54.86	1 Varianten	Arm Strength Trainer
+gid://shopify/Product/15453762421121	CHF 15.56	1 Varianten	Regenbogen Streifen-Achsellos mit Bootsnacken
+gid://shopify/Product/15453762453889	CHF 45.85	1 Varianten	2-in-1 Bauchrad mit Automatik-Funktion
