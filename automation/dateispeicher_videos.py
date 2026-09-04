@@ -89,6 +89,35 @@ def referenzen():
     return ref
 
 
+def produkt_referenzen():
+    """⛔ 04.09.2026, vor der zweiten Löschrunde gefunden: PRODUKTTEXTE betten Dateien der
+    Bibliothek ein — gemessen 166 Bildverweise in 2'000 aktiven Texten, darunter die
+    Vorschaubilder des «Selbst gestalten»-Editors (Hausregel 4: der Editor ist heilig).
+    Der erste Entwurf dieses Werkzeugs hat nur Theme, Seiten und Artikel geprüft; sein
+    Trockenlauf hätte 400 Dateien gelöscht, darunter diese Bilder.
+    ⚠️ Und der Grund, warum das fast durchging: Shopifys Produktsuche findet die Zeichenkette
+    NICHT — «cdn.shopify.com/s/files» meldet 0 Treffer, während dieselben 300 Texte 120
+    Verweise tragen. Ein Nullergebnis aus einer Suche, die das Feld gar nicht indexiert, ist
+    kein Beleg. Deshalb wird hier paginiert und im TEXT gelesen, nicht gesucht.
+    (Videos betten Produkttexte nie ein — gemessen 0 in 2'000 Texten; Bilder sehr wohl.)
+    """
+    ref = set()
+    for status in ('active', 'draft'):
+        c = None
+        while True:
+            d = gql('query($c:String,$q:String!){products(first:50,after:$c,query:$q){'
+                    'pageInfo{hasNextPage endCursor} nodes{descriptionHtml}}}',
+                    {'c': c, 'q': 'status:' + status})
+            o = d.get('products') or {}
+            for n in o.get('nodes', []):
+                ref.update(m.group(1) for m in re.finditer(r'/files/([A-Za-z0-9._\-]+)',
+                                                           n.get('descriptionHtml') or ''))
+            if not o.get('pageInfo', {}).get('hasNextPage'):
+                break
+            c = o['pageInfo']['endCursor']
+    return ref
+
+
 def repo_erwaehnungen(namen):
     """Queues und Ledger im Repo — die TikTok-Warteschlange lebt von diesen Dateien."""
     treffer = set()
@@ -132,6 +161,9 @@ def main():
     ref = referenzen()
     namen = {dateiname(x['url']) for x in dateien}
     ref |= repo_erwaehnungen(namen)
+    if any(e not in ('mp4', 'mov', 'webm') for e in ENDUNGEN):
+        print('   … Produkttexte werden mitgelesen (Bilder werden dort eingebettet)')
+        ref |= produkt_referenzen()
     grenze = time.time() - MIND_ALTER_TAGE * 86400
     frei = [x for x in dateien
             if dateiname(x['url']) not in ref
