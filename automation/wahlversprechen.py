@@ -92,7 +92,14 @@ def gql(q, v=None):
     return {}
 
 erledigt = set()
-if os.path.exists(LEDGER):
+# ⚠️ 04.09.2026: Kommt die Kandidatenliste aus einer LIVE-Messung (LISTE= aus dem
+# Klassen-Vollscan), darf das Ledger sie NICHT filtern. Eine Quittung sagt, was einmal
+# geschrieben wurde — nicht, was jetzt gilt; eine Quittung aus einer TEILreparatur
+# (ein Satz entfernt, ein zweiter blieb) ueberspraenge den Fall fuer immer. Gemessen an
+# der Floskel- und der Doppelblock-Klasse: beide meldeten «0», waehrend live 124 bzw. 150
+# Produkte den Befund trugen. Die Sicherung sitzt ohnehin am OBJEKT: geschrieben wird nur,
+# wenn der LIVE-Text den Satz noch traegt (`neu == h` -> nichts).
+if os.path.exists(LEDGER) and not os.environ.get('LISTE'):
     erledigt = {z.split('\t')[0] for z in open(LEDGER, errors='ignore')}
 
 abfrage = 'status:active' + (f' created_at:>={SEIT}' if SEIT else '')
