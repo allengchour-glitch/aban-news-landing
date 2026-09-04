@@ -1,5 +1,43 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔪 Die Ausnahme «rasier» gab ein Rasiermesser frei — und HEIKEL stand zweimal (2026-09-04)
+Der wiederbelebte Google-Luecken-Waechter meldete 29 Produkte ohne erkennbaren Grund
+draussen. Der Nachpublizier-Lauf haette **27 richtig und 2 falsch** publiziert:
+- **«Vintage Rasiermesser aus Edelstahl»** — ein offenes Rasiermesser. Freigegeben von der
+  Kontext-Ausnahme `rasier`, die ich am selben Tag fuer Rasierapparate und Schermaschinen
+  ergaenzt hatte. Jetzt `rasier(?![- ]?messer)`: der Apparat bleibt Ausnahme, die Klinge
+  nicht (10 Testfaelle Python, 7 JS, 0 Abweichungen). **Jede Lockerung braucht ihre
+  Gegenrichtung — das gilt auch fuer eine Ausnahmeliste, nicht nur fuer eine Trefferregel.**
+- **«Sturmfeuerzeug fuer Outdoor & Kueche»** — Google behandelt Rauchzubehoer wie Tabak.
+  Ob ein Allzweck-Feuerzeug darunter faellt, entscheidet der Betreiber; bis dahin gilt die
+  billigere Seite des Irrtums: draussen kostet einen Artikel, drinnen das Merchant-Konto.
+- ⚠️ **Und der Grund, warum das ueberhaupt auffiel, ist ein zweiter Befund:** Die
+  HEIKEL-Liste stand in `google_kanal_luecke_schliessen.py` UND in
+  `google_kanal_nachziehen.py` — und die Fassungen waren auseinandergelaufen. Der Schliesser
+  wurde am 29.08. verankert, der Zwilling trug weiter das ungeankerte
+  `messer|dolch|machete|waffe|maske\b|grinder\b`: dort galten Waffelstrick-Pullover als
+  Waffe, Schlafmasken als Kostuem, ein Seifengrinder als Rauchzubehoer — und die gepflegte
+  Klingenregel war vollstaendig beschattet, weil HEIKEL VOR ihr geprueft wird. Beide lesen
+  jetzt EINE Liste aus `google_sperrliste.py`; der Nachzieher fragt zusaetzlich
+  `ist_klinge()`. **Eine Reparatur, die nur eine von zwei Kopien erreicht, ist eine halbe.**
+- 27 nachpubliziert und am Objekt gegengeprueft (6 Kanaele). Das Rasiermesser stand in
+  TikTok, Meta und Pinterest — **was aus Google fliegt, gehoert aus allen Werbekanaelen**
+  (Hausregel 29.08.); dort entfernt, Online Store und Shop bleiben.
+
+## 🗂️ Drei Waechter warteten fuenf Tage auf einen Export, den niemand baut (2026-09-04)
+`farbwert_dubletten`, `mass_im_farbwert` und `groesse_im_farbwert` lesen einen
+Options-Export. Den hat am 23.08. ein Mensch von Hand gebaut; der /tmp-Wipe vom 30.08. hat
+ihn geloescht, und seither meldeten alle drei brav «PAUSE (Quelle fehlt)».
+**Ein Werkzeug, dessen Eingabe niemand herstellt, ist ein Einmal-Lauf, kein Waechter.**
+`automation/optionen_export.py` baut ihn jetzt selbst — fortsetzbar wie der Klassen-Scan
+(Cursor, seitenweise angehaengt), und die fertige Datei kommt erst am Ende an ihren Platz:
+**ein halber Export waere schlimmer als keiner**, weil die Waechter ihn fuer den ganzen
+Katalog hielten und «0 Befunde» meldeten. Belegt: Lauf 1 endet bei 200, Lauf 2 meldet
+FORTSETZUNG und ist bei 400, 0 Dubletten.
+⚠️ Ihr Verhalten war dabei vorbildlich: Sie haben NICHT «FERTIG» gemeldet, sondern PAUSE
+mit Grund. Genau deshalb war der Ausfall nachweisbar — **ein Werkzeug, das bei fehlender
+Quelle Vollzug meldet, waere fuenf Tage unsichtbar gewesen.**
+
 ## 🛌 «FERTIG» war ein Ausschalter — neun Waechter schliefen fuenf Tage (2026-09-04)
 Der Google-Luecken-Bericht trug den Stand **30.08.** Nachgesehen, warum: Der Aufseher
 ueberspringt jeden Waechter, in dessen Log `FERTIG` steht — **ohne Verfallsdatum**. Geweckt
