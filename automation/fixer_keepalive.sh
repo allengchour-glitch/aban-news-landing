@@ -691,6 +691,21 @@ while true; do
   # ⚠️ Laeuft ZULETZT und pausiert 0,5 s je Seite: der Scan zieht den Shopify-Eimer sonst
   # leer und die uebrigen Waechter melden Drosselung als «nicht ladbar» — eine Kontrolle,
   # die die Kontrollierten aushungert, misst am Ende sich selbst.
+  # Drafts wiederbeleben, die CJ jetzt DOCH in die Schweiz liefert. Anlass: der CJ-Agent hat
+  # am 04.09. den Kanal «CJPacket EQ Sensitive» freigeschaltet — das Messer aus Bestellung
+  # #1016 hat damit eine CH-Linie. 1'001 Produkte stehen mit `cj-nicht-versendbar-ch` auf
+  # DRAFT; eine Quittung gilt nur fuer die Welt, in der sie ausgestellt wurde, also wird jede
+  # Absage neu gemessen. Es prueft Risiko-Tags, die LIVE-Fracht und die Marge und publiziert
+  # nur in Online Store + Shop — ueber Google entscheidet der eigene Waechter.
+  CVR=/tmp/cj_versand_ch_revive.log
+  if [ -f "$REPO/automation/cj_versand_ch_revive.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$CVR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 43200 ]; then
+      ( cd "$REPO" && setsid flock -n /tmp/lock_cj_versand_revive.lock \
+          env CAP=120 python3 automation/cj_versand_ch_revive.py >> "$CVR" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) cj_versand_ch_revive gestartet"
+    fi
+  fi
   KK=/tmp/klassen_kontrolle.log
   if [ -f "$REPO/automation/klassen_kontrolle.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KK" 2>/dev/null || echo 0) ))

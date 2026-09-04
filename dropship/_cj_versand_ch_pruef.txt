@@ -1185,3 +1185,14 @@ hd-astronomisches-teleskop-fur-kinder-123904	1459100899317256192	7	40.54	ok	land
 sofa-kissenbezug-aus-lammfell-imitat-rutschfes-631500	2605280138521632100	12	9.60	ok	landeseite
 brotkasten-aus-bambus-141505	2074709116983164929	0	-	KEINE CH-Option → DRAFT	landeseite
 multifunktionale-piloten-umhangetasche-616000	2603180019351616300	12	14.97	ok	landeseite
+sofa-kissenhulle-aus-chenille-rutschfest-606800	2604180802381607300	12	9.52	ok	landeseite
+langes-eisseiden-kissen-fur-den-sommer-619200	2606170204551610500	12	16.75	ok	landeseite
+brocade-raute-beifuss-kissen-mit-buchweizensch-611100	2606160856261611700	7	34.18	ok	landeseite
+zierkissen-mit-blumenmuster-im-franzosischen-s-632900	2605200919321633400	12	19.43	ok	landeseite
+sofa-kissen-abstrakt-geometrisch-635400	2605130829161636200	12	27.14	ok	landeseite
+bambusfaser-memory-foam-kissen-636900	2605050450161637400	12	28.63	ok	landeseite
+haustierbett-zur-selbstabholung-961601	2062015431972249602	0	-	KEINE CH-Option → DRAFT	landeseite
+ganzjahres-hundebett-fur-mittlere-bis-grosse-r-606100	2605130745381607200	0	-	KEINE CH-Option → DRAFT	landeseite
+haustierbett-all-seasons-623200	2602030229541623500	0	-	KEINE CH-Option → DRAFT	landeseite
+hunde-agility-set-mit-verstellbaren-hurden-041281	2034276716693868545	0	-	KEINE CH-Option → DRAFT	landeseite
+schnellheizender-wasserspender-fur-zuhause-639600	2604071018061630000	-	-	unklar 0  rest=None	landeseite

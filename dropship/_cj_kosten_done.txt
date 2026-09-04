@@ -9820,3 +9820,32 @@ gid://shopify/Product/15452680028545	CHF 101.02	3 Varianten	Holzverbrennungs-Ofe
 gid://shopify/Product/15452680061313	CHF 70.29	18 Varianten	Faltzelt für 3-4 Personen
 gid://shopify/Product/15452680094081	CHF 40.14	3 Varianten	Faltbarer Campingstuhl
 gid://shopify/Product/15452680126849	CHF 21.76	7 Varianten	Einpersonen-Schlafpad
+gid://shopify/Product/15452680159617	CHF 50.67	1 Varianten	Pollinator-Wasserstake
+gid://shopify/Product/15452680257921	CHF 95.34	1 Varianten	Gartenrandsteine
+gid://shopify/Product/15452680290689	CHF 88.45	2 Varianten	Campingliege mit Fussstütze
+gid://shopify/Product/15452680323457	CHF 96.06	1 Varianten	Faltbarer Strandstuhl
+gid://shopify/Product/15452680782209	CHF 49.66	1 Varianten	Type-C Wireless Mirroring Adapter für PCs
+gid://shopify/Product/15452680814977	CHF 8.78	1 Varianten	Weihnachts-Projektionslicht
+gid://shopify/Product/15452680847745	CHF 30.99	1 Varianten	3D-Hologramm-Fan
+gid://shopify/Product/15452680913281	CHF 53.56	1 Varianten	4K-Wireless-Controller mit Android 11 & Bluetooth 
+gid://shopify/Product/15452681011585	CHF 149.40	1 Varianten	Nacktes Auge 3D-Holografischer Projektor
+gid://shopify/Product/15452681208193	CHF 18.72	1 Varianten	Schlaf- und Konzentrationshilfe für Babys
+gid://shopify/Product/15452681273729	CHF 100.37	1 Varianten	Retro-CD-Player mit Vinyl-Look
+gid://shopify/Product/15452681404801	CHF 14.86	1 Varianten	Klangsystem
+gid://shopify/Product/15452681503105	CHF 25.17	1 Varianten	Vintage Auto-Bluetooth-Modell mit LED-Licht
+gid://shopify/Product/15452681535873	CHF 59.09	2 Varianten	Digitaler Hörer im Ohr mit 32 Kanälen und Bluetoot
+gid://shopify/Product/15452681601409	CHF 31.02	2 Varianten	AI-Übersetzungshörer für 165 Sprachen, kabellos
+gid://shopify/Product/15452681798017	CHF 12.46	1 Varianten	Kabelloser Bluetooth-Headset mit Störschutz
+gid://shopify/Product/15452681863553	CHF 12.30	1 Varianten	VR-Brille für Smartphone 3D
+gid://shopify/Product/15452681896321	CHF 24.67	1 Varianten	Dual-Bildschirm-Halterung F100A, Teleskop-Dreh-Heb
+gid://shopify/Product/15452681929089	CHF 24.47	2 Varianten	Selfie-Stativ mit Farblicht & Bluetooth
+gid://shopify/Product/15452681994625	CHF 16.76	6 Varianten	Acacia-Snackplatte Handpoliert
+gid://shopify/Product/15452682092929	CHF 11.40	2 Varianten	Mini LED-Fotolicht mit Lithium-Akku
+gid://shopify/Product/15452682125697	CHF 11.59	1 Varianten	Gigabit-Faserkabel Kategorie 6
+gid://shopify/Product/15452682224001	CHF 9.69	1 Varianten	Virtueller Helm mit Smartphone-Display
+gid://shopify/Product/15452682387841	CHF 50.70	2 Varianten	Faltbare Silikon-Handroll-Trommel
+gid://shopify/Product/15452682486145	CHF 13.08	3 Varianten	3D-VR-Brille für Smartphone 4.7-6 Zoll
+gid://shopify/Product/15452682518913	CHF 12.32	3 Varianten	Romantischer Sternenhimmel-Projektor
+gid://shopify/Product/15452682584449	CHF 129.01	12 Varianten	RG106PRO Drohne mit Hindernisvermeidung und 3-Achs
+gid://shopify/Product/15452682617217	CHF 42.06	6 Varianten	Mini-Drohne mit 4K & Fernbedienung
+gid://shopify/Product/15452682649985	CHF 48.81	3 Varianten	M7 Brushless Drohne mit Bildschirmsteuerung und Du

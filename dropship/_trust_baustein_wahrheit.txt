@@ -20066,3 +20066,117 @@
 15480563597697	ersetzt-1	Ultradünne Powerbank mit Farbdisplay & MagSafe
 15480563892609	ersetzt-1	Multifunktionales Mikrofon mit Rauschunterdrückung
 15480564089217	ersetzt-1	High-Power Powerbank mit Farbdisplay
+15480564154753	ersetzt-1	Bluetooth Speaker mit Dual-Mikrofon
+15480564351361	ersetzt-1	Kabellose Powerbank mit Kabel und Magnet
+15480564613505	ersetzt-1	Ultra-dünne 10000 mAh Powerbank mit Digitalanzeige
+15480564679041	ersetzt-1	Mini-Lavalier-Mikrofon für Mobilgeräte & DSLR
+15480564875649	ersetzt-1	Solar- und Kurbel-Powerbank, 20'000 mAh
+15480564973953	ersetzt-1	Mikrofon-Konverter für kabellose Übertragung
+15480565137793	ersetzt-1	Ultradünnes magnetisches 15W Powerbank-Ladegerät
+15480565236097	ersetzt-1	Kabelloses Karaoke-Mikrofon für Zuhause
+15480565301633	ersetzt-1	Outdoor Solar Powerbank 10000mAh mit LED & Kompass
+15480565531009	ersetzt-1	K38 Karaoke Mikrofon-Set
+15480565563777	ersetzt-1	UGREEN 67W Powerbank mit integriertem USB-C Kabel
+15480565793153	ersetzt-1	Bluetooth Speaker mit KTV-Mikrofon
+15480565825921	ersetzt-1	Outdoor Powerbank mit Solar- und Handkurbel-Ladegerät
+15480566055297	ersetzt-1	Kabelloser Bluetooth Lautsprecher mit Mikrofon
+15480566251905	ersetzt-1	Mini Powerbank 20000 mAh, 120W Super Fast Charging
+15480566350209	ersetzt-1	Speicherkarte für Handy-Überwachung
+15480566382977	ersetzt-1	Konferenzmikrofon mit DSP Rauschunterdrückung
+15480566579585	ersetzt-1	Powerbank mit integriertem Kabel, 10'000 mAh
+15480566743425	ersetzt-1	NM Speicherkarte 128 GB für Huawei Smartphones
+15480566776193	ersetzt-1	Kondensator-Mikrofon mit RGB-Beleuchtung
+15480569037185	ersetzt-1	Magnetische Mobile SSD
+15480569069953	ersetzt-1	USB-Stick aus Metall mit hoher Speicherkapazität
+15480569168257	ersetzt-1	Externe Mechanische Plug-and-Play Gaming Festplatte
+15480569299329	ersetzt-1	Externes Multifunktions-CD-Laufwerk
+15480569430401	ersetzt-1	USB4 SSD-Gehäuse für Notebooks, bis 40 Gbit/s
+15480569594241	ersetzt-1	Steam Deck 6-in-1 Docking Station
+15480569659777	ersetzt-1	Lightning M.2 SSD-Gehäuse mit 40 Gbit/s
+15480569692545	ersetzt-1	USB-Festplattengehäuse transparent
+15480570020225	ersetzt-1	USB 3.0 Festplattengehäuse für 3.5 Zoll SATA HDD/SSD
+15480570315137	ersetzt-1	USB ISP Programmer Kabel
+15480570610049	ersetzt-1	USB-Stick für Auto, wasserdicht, USB 3.2 Gen 1
+15480570937729	ersetzt-1	USB-Stick Luxusauto-Modell
+15480571068801	ersetzt-1	USB 3.0 externes 2.5 Zoll Festplattengehäuse
+15480571199873	ersetzt-1	M.2 SSD externes Gehäuse
+15480571298177	ersetzt-1	Mobiles 2.5-Zoll USB 3.0 SSD/HDD Gehäuse
+15480571330945	ersetzt-1	Cartoon USB-Stick 64 GB mit grossem Speicher
+15480571494785	ersetzt-1	V1SPro Programmer für BGA315 Festplatten
+15480571527553	ersetzt-1	Mobile Festplatte für beliebte PC-Einzelspieler
+15480571560321	ersetzt-1	Lenkrad-Aufsatz für PS5-Controller
+15480571593089	ersetzt-1	M.2 SATA NVME High-Speed Festplattengehäuse
+15480571724161	ersetzt-1	MP3-Player mit Diktiergerät und USB-Speicher
+15480630116737	ersetzt-1	Metal-Mikrofon
+15480630182273	ersetzt-1	Nageldeko Rose
+15480630346113	ersetzt-1	Moving Coil Mikrofon
+15480630378881	ersetzt-1	Dunkelblaues Katzenaugen-Design mit Strass
+15480630477185	ersetzt-1	Retro-Sandalen mit eckiger Zehenpartie
+15480630542721	ersetzt-1	Karaoke Mikrofon & Bluetooth Speaker
+15480630608257	ersetzt-1	Modern-Look Weiss zum Aufkleben
+15480630706561	ersetzt-1	Stereo-Kameramikrofon für professionelle Interviews
+15480630739329	ersetzt-1	Dunkelgraue Cat-Eye-Press-On Nägel (Kurz)
+15480630870401	ersetzt-1	Duales Stereo Karaoke-System
+15480630903169	ersetzt-1	Stiletto-Sandalen mit Schnallenriemen
+15480630935937	ersetzt-1	Star Coffee Press-on Nägel für Damen
+15480631001473	ersetzt-1	Kabelloses Bluetooth Karaoke-Mikrofon Set
+15480631034241	ersetzt-1	Press-on Nägel «Taoxi»
+15480631067009	ersetzt-1	Modische Mules mit Blockabsatz
+15480631132545	ersetzt-1	Kabelloses Mini-Mikrofon mit Rauschunterdrückung
+15480631165313	ersetzt-1	Silber Spiegel-Finish Kunstnägel
+15480631198081	ersetzt-1	Keilsandalen mit Schleife in Roségold
+15480631263617	ersetzt-1	Kabelgebundenes Mikrofon mit Soundkarte
+15480631296385	ersetzt-1	Handgemachte Cat's Eye Press-on Nägel
+15480631329153	ersetzt-1	Bohemian Sandalen mit Ethno-Print
+15480631394689	ersetzt-1	Dunkelgrüne Cat Eye Kunstnägel
+15480631427457	ersetzt-1	Pailletten Peep-Toe Espadrille Sandalen
+15480631492993	ersetzt-1	S17 Kabelloses 3-in-1 Mikrofon-Set
+15480631525761	ersetzt-1	Barocke Fake Nails mit Glitzersteinen
+15480631558529	ersetzt-1	Keile Sandalen im Ethno-Stil
+15480631591297	ersetzt-1	Kabelloses Mikrofon-Set mit Soundkarte
+15480631624065	ersetzt-1	Handgemachte Schmetterlings-Kunstnägel, spitz
+15480631656833	ersetzt-1	Römer Sandalen mit Riemchen und dicker Sohle
+15480631722369	ersetzt-1	Kondensator-Mikrofon-Set mit Soundkarte
+15480631787905	ersetzt-1	Vintage-Sandalen aus Vollnarbenleder
+15480631853441	ersetzt-1	Kondensatormikrofon-Set mit Galgenarm
+15480631886209	ersetzt-1	Offene High-Heel-Sandalen mit Riemen
+15480631918977	ersetzt-1	USB Soundkarte für Live-Streaming & Aufnahme
+15480631984513	ersetzt-1	Schwarze Sandalen mit Strass-Dekor
+15480632050049	ersetzt-1	Kabelloses Ansteckmikrofon für Outdoor-Aufnahmen
+15480632115585	ersetzt-1	Keilabsatz-Sandalen im Feen-Stil mit Plateau
+15480632279425	ersetzt-1	Bequeme Sandalen mit Lochmuster
+15480632344961	ersetzt-1	Kabelloses Mini-Mikrofon mit Magnetclip
+15480632410497	ersetzt-1	Wasserdichter Bluetooth-Lautsprecher für Bad
+15480632476033	ersetzt-1	Kabelloses Bluetooth-Mikrofon mit Rauschunterdrückung
+15480632574337	ersetzt-1	Portables Bluetooth Audio mit kabellosem Mikrofon
+15480653152641	ersetzt-1	64GB Speicherkarte
+15480653218177	ersetzt-1	1.6 Zoll LCD-Display für CPU-Informationen
+15480653414785	ersetzt-1	Lexar 1066x microSD Speicherkarte für 4K UHD
+15480653513089	ersetzt-1	4-in-1 Multi-Funktions Kartenleser
+15480823611777	ersetzt-1	Höhenverstärkende Sneaker
+15480823873921	ersetzt-1	Weissrauschen-Schlafhilfe
+15480823972225	ersetzt-1	Intelligentes Schlafhilfe-Gerät
+15480824037761	ersetzt-1	Bluetooth Übersetzungs-Kopfhörer
+15480824103297	ersetzt-1	Business Casual Boots für Herren
+15480825020801	ersetzt-1	Fingerabdruck-Vorhängeschloss mit App
+15480825217409	ersetzt-1	PLA Filament für 3D-Drucker und 3D-Stifte
+15480825446785	ersetzt-1	Herren Retro Arbeitsstiefel
+15480825774465	ersetzt-1	Notfallknopf für Senioren und Pflegebedürftige
+15480825807233	ersetzt-1	Wasserdichte Smartwatch mit MP3-Player
+15480825840001	ersetzt-1	Vintage Martin Boots aus Echtleder
+15480826036609	ersetzt-1	Meta Quest 3 Kopfband mit 5000mAh Akku
+15480826069377	ersetzt-1	Retro-Herren-Stiefeletten mit Streifenmuster
+15480826102145	ersetzt-1	Wasserdichtes Smart-Armband mit LED-Display
+15480826167681	ersetzt-1	VR-Brille G04EA 7. Generation
+15480826200449	ersetzt-1	Winter-Boots gefüttert
+15480826233217	ersetzt-1	Oculus Quest 3 Kopfband mit 10000mAh Powerbank
+15480826265985	ersetzt-1	Warme Snow Boots für Herren
+15480826298753	ersetzt-1	Wasserdichte Smartwatch mit Gesundheitsmonitoring
+15480826331521	ersetzt-1	Lederarmband für Fitbit Charge 3/4
+15480827150721	ersetzt-1	Herren Boots im britischen Stil
+15480827412865	ersetzt-1	M3 Smart Armband mit Farbdisplay
+15480827806081	ersetzt-1	Edelstahl-Schutzhülle für Apple Watch
+15480828068225	ersetzt-1	Retro High Leg Boots für Herren
+15480828100993	ersetzt-1	D20 Smart Health Armband Y68 Sports-Armband
+15480828199297	ersetzt-1	Notruf-Armband mit Sturzsensor und Bluetooth
+15480828232065	ersetzt-1	Desert Battle Outdoor Wanderstiefel
