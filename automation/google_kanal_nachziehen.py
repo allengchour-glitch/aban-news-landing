@@ -46,13 +46,14 @@ EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 GOOG = "gid://shopify/Publication/302872297857"
 LEDGER = "dropship/_google_kanal_nachziehen.txt"
 
-HEIKEL = re.compile(
-    r'kost[üu]m|verkleid|fasnacht|halloween|per[üu]cke|maske\b|tutu\b|hexe|vampir|zombie|clown|'
-    r'dessous|reizw|erotik|18\+|generalüberholt|restauriert|refurb|ersatzteil|ersatzkopf|'
-    r'messer|dolch|machete|waffe|munition|armbrust|'
-    # Rauchzubehör: Google behandelt es wie Tabak. Die «Gravity Shisha» für CHF 104.90 stand
-    # im ersten Entwurf noch auf der Veröffentlichungsliste.
-    r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|grinder\b|cbd\b', re.I)
+# ⚠️ 04.09.2026: Diese Liste war die ALTE, ungeankerte Fassung — «messer|dolch|machete|
+# waffe|maske\b|grinder\b». Damit galten Waffelstrick-Pullover als Waffe, Schlafmasken als
+# Kostuem und ein Seifengrinder als Rauchzubehoer, und die gepflegte Klingenregel war
+# beschattet (HEIKEL wird VOR ihr geprueft). Der Schliesser wurde am 29.08. repariert,
+# dieser Zwilling nicht. Jetzt EINE Quelle — und die Klingenfrage beantwortet
+# ausschliesslich ist_klinge().
+from google_sperrliste import HEIKEL
+from klingenregel import ist_klinge
 CODE = re.compile(r'\b[A-Z]{2,}\d{3,}\b|\b[A-Z0-9]{8,}\b|\bUS Size\b|\bYards\b|Generation \d')
 
 
@@ -104,7 +105,7 @@ def main():
         preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
         bilder = (p.get("mediaCount") or {}).get("count") or 0
         grund = None
-        if HEIKEL.search(titel) or HEIKEL.search(typ):
+        if HEIKEL.search(titel) or HEIKEL.search(typ) or ist_klinge(titel):
             grund = "heikle Ware"
         elif CODE.search(titel):
             grund = "Code im Titel"

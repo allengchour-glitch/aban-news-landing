@@ -62,13 +62,9 @@ DRY = os.environ.get("DRY") == "1"
 #              Tabak-Grinder fängt zusätzlich `tabak`.
 # Sechste Fassung der Substring-Familie nach IPL, led-in-Leder, ski-in-Skincare,
 # auto-in-Automatik und monitor-in-Monitoring.
-HEIKEL = re.compile(
-    r'kost[üu]m|verkleid|fasnacht|halloween|per[üu]cke|(?<![\wäöüß])maske\b|tutu\b|'
-    r'hexe|vampir|zombie|clown|'
-    r'dessous|reizw|erotik|18\+|generalüberholt|restauriert|refurb|ersatzteil|ersatzkopf|'
-    r'waffen?\b|munition|armbrust|'
-    r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|'
-    r'(?<![\wäöüß])grinder\b|cbd\b', re.I)
+# ⚠️ 04.09.2026: Die Liste liegt jetzt EINMAL in google_sperrliste.py — sie stand hier
+# und in google_kanal_nachziehen.py, und die beiden Fassungen waren auseinandergelaufen.
+from google_sperrliste import HEIKEL
 CODE = re.compile(r'\b[A-Z]{2,}\d{3,}\b|\b[A-Z0-9]{8,}\b|\bUS Size\b|\bYards\b|Generation \d')
 # ⚠️ 28.08.2026 — DIE SPERR-MENGE STAND HIER UND IM WÄCHTER WORTGLEICH und war in beiden
 # unvollständig: elf am Produkt begründete Ausschluss-Tags fehlten (verdeckte-ueberwachung,

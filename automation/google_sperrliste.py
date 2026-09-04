@@ -156,3 +156,34 @@ def darf_zu_google(pid, tags, sperrliste=None):
     """Einzige Frage, die ein Publizierer stellen muss."""
     sperr = gesperrte_ids() if sperrliste is None else sperrliste
     return not (id_zahl(pid) in sperr or tag_gesperrt(tags))
+
+
+# ---------------------------------------------------------------------------
+# HEIKLE WARENGRUPPEN — EINE Quelle fuer alle Google-Publizierer (04.09.2026).
+#
+# Sie stand wortgleich in `google_kanal_luecke_schliessen.py` und
+# `google_kanal_nachziehen.py` — und die beiden Fassungen waren AUSEINANDERGELAUFEN:
+# der Schliesser wurde am 29.08. verankert (`maske`, `grinder`, `waffen?`) und von den
+# Klingenwoertern befreit, der Nachzieher trug weiter das ungeankerte
+# `messer|dolch|machete|waffe|maske\b|grinder\b`. Damit galten dort Waffelstrick-Pullover
+# als Waffen, Schlafmasken als Kostuem und ein Seifengrinder als Rauchzubehoer — und die
+# gepflegte Klingenregel war vollstaendig beschattet, weil HEIKEL VOR ihr geprueft wird.
+# **Die Klingenfrage beantwortet ausschliesslich `klingenregel.ist_klinge()`** — hier
+# stehen deshalb KEINE Klingenwoerter.
+HEIKEL = re.compile(
+    r'kost[üu]m|verkleid|fasnacht|halloween|per[üu]cke|(?<![\wäöüß])maske\b|tutu\b|'
+    r'hexe|vampir|zombie|clown|'
+    r'dessous|reizw|erotik|18\+|generalüberholt|restauriert|refurb|ersatzteil|ersatzkopf|'
+    r'waffen?\b|munition|armbrust|'
+    # Rauchzubehoer behandelt Google wie Tabak. 04.09.: `feuerzeug` ergaenzt — ein
+    # «Sturmfeuerzeug fuer Outdoor & Kueche» stand auf der Veroeffentlichungsliste.
+    # Ob ein Allzweck-Feuerzeug wirklich darunter faellt, ist eine BETREIBER-Entscheidung;
+    # bis dahin gilt die teurere Seite des Irrtums nicht: draussen kostet einen Artikel,
+    # drinnen im schlimmsten Fall das Merchant-Konto.
+    r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|feuerzeug|'
+    r'(?<![\wäöüß])grinder\b|cbd\b', re.I)
+
+
+def ist_heikel(*texte):
+    """True, wenn einer der Texte (Titel, productType, Tags) eine heikle Warengruppe nennt."""
+    return any(HEIKEL.search(t or '') for t in texte)
