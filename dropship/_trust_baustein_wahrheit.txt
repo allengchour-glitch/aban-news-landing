@@ -20240,3 +20240,30 @@
 15481070649729	ersetzt-1	R5 Sportuhr mit Herzfrequenz
 15481070780801	ersetzt-1	Smart-Armband für Sport und Gesundheit
 15481072550273	ersetzt-1	Multi-Sport Smart Bracelet
+15481072681345	ersetzt-1	Mückenabwehr Gerät
+15481072779649	ersetzt-1	Smartwatch mit Schrittzähler für Sport & Alltag
+15481072877953	ersetzt-1	CYCPLUS Smart-Herz­frequenz­gurt für den Oberarm
+15481073500545	ersetzt-1	F18 Smartwatch mit Metallarmband für Damen
+15481074778497	ersetzt-1	Smart-Armband mit Temperatur- und Herzfrequenzmessung
+15481074942337	ersetzt-1	Zweifarbiger Doppelring-Armband (2. Gen.)
+15481075138945	ersetzt-1	Smartes Sportarmband mit Gesundheits-Tracking
+15481075237249	ersetzt-1	N8 HD Smart-Armband mit Touchscreen
+15481075401089	ersetzt-1	Smartwatch mit Musikplayer und Armband
+15481075466625	ersetzt-1	Smartwatch mit Bluetooth-Telefonie & Temperaturmessung
+15481076875649	ersetzt-1	Smart-Armband: Herzfrequenz, Temperatur
+15481077334401	ersetzt-1	Wasserdichte Pedometer Smartwatch für iOS/Android
+15481077498241	ersetzt-1	D28 Sport-Smart-Armband
+15481077629313	ersetzt-1	Kabelloses Bluetooth Headset mit Ladebox
+15481077760385	ersetzt-1	I7S Smartwatch mit Herzfrequenzsensor
+15481079693697	ersetzt-1	Kabelloses RGB-Ladegerät für's Auto
+15481080250753	ersetzt-1	Fokus- & Belichtungssteuerung für Smartphone-Fotos
+15481081332097	ersetzt-1	Welpen Quicksand Magnet-Hülle fürs iPhone
+15481081594241	ersetzt-1	Magnetische Handy-Kamerahilfe MOCA ARCO
+15481248514433	ersetzt-1	Smart Armband · Glas
+15481250120065	ersetzt-1	Bluetooth-Headset-Armband
+15481250447745	ersetzt-1	Sportliches Fitness-Armband
+15481250677121	ersetzt-1	Wasserdichtes Smart-Armband
+15481250873729	ersetzt-1	S20 Smart-Armband für Schlaf-Tracking
+15481251004801	ersetzt-1	Wasserdichtes Sport-Armband mit Farbdisplay
+15481251856769	ersetzt-1	G26T Smart-Armband mit Temperaturmessung
+15481253069185	ersetzt-1	Silikon-Desinfektionsarmband

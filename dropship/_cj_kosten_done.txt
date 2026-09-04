@@ -9868,3 +9868,12 @@ gid://shopify/Product/15452683469185	CHF 38.25	1 Varianten	Wasserdichter Rücksi
 gid://shopify/Product/15452683534721	CHF 13.39	3 Varianten	PU-Sitzauflage SUV-Viereckstühle
 gid://shopify/Product/15452683567489	CHF 22.44	8 Varianten	3-teiliges Auto-Kissen Set Winter-Plüsch
 gid://shopify/Product/15452683600257	CHF 11.78	1 Varianten	Armlehnen-Schutzauflage mit Tasche
+gid://shopify/Product/15452683665793	CHF 66.85	2 Varianten	Auto-Hundematte mit erweiterter Stütze für Rücksit
+gid://shopify/Product/15452683698561	CHF 31.86	20 Varianten	Sommer-Minimales EisSilk Autositze-Polster
+gid://shopify/Product/15452683862401	CHF 15.86	1 Varianten	Versteckter Sitzhaken für Rückbank – Kleine Gegens
+gid://shopify/Product/15452683927937	CHF 38.51	1 Varianten	Autositzkissen mit Lendenwirbelstütze
+gid://shopify/Product/15452683993473	CHF 13.41	1 Varianten	Universelles Auto Nackenkissen mit Memory Foam für
+gid://shopify/Product/15452684059009	CHF 11.99	1 Varianten	Leinen-Auto-Sitzkissen Universal
+gid://shopify/Product/15452684124545	CHF 19.17	1 Varianten	Auto-Lendenstütze mit Memory-Foam
+gid://shopify/Product/15452684157313	CHF 12.00	1 Varianten	Höhenverstellbares dickes Po-Kissen
+gid://shopify/Product/15452684222849	CHF 21.26	1 Varianten	Schaumgummi-Auto-Kissen mit Fixiergurt für Auto un

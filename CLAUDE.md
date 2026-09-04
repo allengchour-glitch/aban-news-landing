@@ -7074,3 +7074,9 @@ zulässig (12.08.). Also getrennt statt pauschal:
   Ersetzung **vor** dem Schreiben mit `re.compile` geprüft. **Wer an einer geteilten Regel
   schneidet, kompiliert sie, bevor er sie speichert.**
 - ⚠️ «Messer blutverschmiert» (2×) ist eine Halloween-Requisite und bleibt.
+- **Und der Kunde wurde korrigiert, nicht nur der Shop:** In der Rückerstattungs-Mail vom
+  03.09. stand «Wir haben das Messer inzwischen aus dem Shop genommen, damit es niemandem
+  sonst so geht.» Das stimmt seit dem 04.09. nicht mehr. Er hat eine kurze Richtigstellung
+  bekommen — ohne Verkaufsdruck, die Rückerstattung bleibt bestehen. **Eine Aussage, die man
+  einem Kunden gegenüber gemacht hat, gehört korrigiert, sobald sie falsch wird** — auch
+  wenn niemand nachfragt und es keinen Vorteil bringt. Bestellnotiz in Shopify nachgezogen.

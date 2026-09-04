@@ -990,3 +990,28 @@ automatischer-schwenkventilator-fur-kinderwage-638500	Dieser tragbare Ventilator
 15447560520065	Dieses kompakte Ladegerät ist perfekt für den täglichen Gebrauch zu Hause oder unterwegs.
 15447560749441	Dieses hochwertige Universal-Ladegerät aus robustem Kunststoff ist speziell für 60V Elektrofahrzeuge wie E-Scooter und E-Bikes konzipiert.
 15447560978817	Diese elegante 3-in-1 Ladestation aus Aluminiumlegierung bietet eine praktische Lösung, um Ihre Apple-Geräte gleichzeitig und kabellos zu laden.
+15447561109889	Diese vielseitige 4-in-1 Ladestation ermöglicht das gleichzeitige Laden von Smartphone, Smartwatch und kabellosen Kopfhörern.
+15447561273729	Der Smart Splitter mit TYPE-C Schnittstelle optimiert Ihr Ladeerlebnis durch schnelles und sicheres Laden.
+15447561535873	Dieser vielseitige Stromwandler ermöglicht den Betrieb von 12V-Geräten mit einem 220V-Netzanschluss. Wandelt 220V Wechselstrom in 12V Gleichstrom um.
+15447561765249	Das Multifunktionale Wireless Desktop W90 Ladegerät ist eine praktische 3-in-1-Lösung für Ihren Schreibtisch.
+15447561929089	Dieses 2er-Set USB C Schnellladegeräte ist ideal für Android-Smartphones und Tablets.
+15447562158465	Dieses kompakte und leistungsstarke 65W PD (Power Delivery) Ladegerät nutzt fortschrittliche Galliumnitrid-Technologie (GaN), um Ihre Geräte effizient und …
+15447562289537	Dieses vielseitige USB-C Ladegerät liefert eine Gesamtleistung von 120W und ermöglicht das schnelle Laden verschiedener Mobilgeräte.
+15447562420609	Diese ferngesteuerte Mini-Rakete aus Kunststoff ist ein faszinierendes Spielzeug für alle, die sich für Luft- und Raumfahrt begeistern.
+15447562486145	Dieses praktische 10er-Pack universeller DC-Auto-Ladeadapter ist ideal für unterwegs. 100 % neu und hochwertig.
+15447562617217	Das ZQ-K26 Rotes Doppeltes Elektrisches Gerät ist ein vielseitiges Beauty-Gadget, das für den täglichen Gebrauch konzipiert wurde.
+15447562715521	Dieses AC Wandladegerät ist ideal, um Ihre wiederaufladbaren Stirnlampen und Taschenlampen bequem zu Hause aufzuladen. 100% brandneu und hochwertig.
+15447563010433	Dieses Doppel-Schnellladegerät ist speziell für Makita 18V Li-Ion-Akkus konzipiert. Lädt zwei Makita 18V Li-Ion-Akkus gleichzeitig.
+15447563043201	Das A19-4.3 Screen in Grau ist ein vielseitiges Gerät, das durch seine Dual-Battery-Funktion besonders hervorsticht. Kompaktes 4.3-Zoll-Display.
+15447563174273	Dieses hochwertige Ersatz-Ladegerät wurde speziell entwickelt, um Ihre Milwaukee M18 Li-ion Akkus optimal zu laden und die Lebensdauer Ihrer …
+15447563272577	Die MINI Blue ist eine kompakte elektrische Zahnbürste, die sich ideal für den täglichen Gebrauch und auf Reisen eignet.
+15447563403649	Dieses kompakte 20W Reise-Ladegerät ist der ideale Begleiter für unterwegs. 20W Leistung für schnelles Aufladen.
+15447563534721	Dieses ferngesteuerte Flugzeug aus leichtem Schaumstoff ist ideal für alle, die den Himmel erobern möchten.
+15447563633025	Dieses kabellose 7-in-1 Schnellladegerät aus Aluminiumlegierung ist die ideale Lösung, um mehrere Geräte gleichzeitig effizient zu laden.
+15447563764097	Dieses ferngesteuerte Flugzeug aus leichtem EPP-Schaumstoff ist perfekt für Einsteiger und erfahrene Piloten.
+15447563895169	Dieses universelle 320W GaN Hochleistungs-Ladegerät in Schwarz ist ein vielseitiges Kraftpaket für Ihre elektronischen Geräte.
+15447564222849	Dieses kompakte USB-Ladegerät wurde speziell für 3.7V Lithium-Ionen-Akkus des Typs 18650 entwickelt. Reparaturfunktion für tiefentladene Akkus.
+15447564321153	Das ZQ-K26 in elegantem Blau ist ein vielseitiges Doppelelektrogerät, das speziell für den modernen Haushalt entwickelt wurde.
+15447564452225	Dieses Set enthält wiederaufladbare CR123A Lithium-Ionen-Akkus und ein passendes USB-Ladegerät. Akkukapazität: 1300 mAh.
+15447564550529	Das X2 Dual-Elektro-Display kombiniert innovative Technik mit benutzerfreundlichem Design. 2.8-Zoll-Bildschirm für einfache Steuerung.
+15447564714369	Dieses 3er-Set Ersatzakkus ist speziell für die Modelle E88 und E99 entwickelt worden. Exklusiv für E88- und E99-Modelle.
