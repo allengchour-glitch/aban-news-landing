@@ -19,6 +19,17 @@ immer moeglich — aus genau diesen Werkzeugen (EINE Regelquelle, Lehre 29.08. K
 
   DRY=1     nur zaehlen, keinen Bericht schreiben
   CAP=N     nach N Produkten abbrechen (fuer einen schnellen Blick)
+  NEU=1     Runde von vorn beginnen statt fortzusetzen
+
+⚠️ 04.09.2026 — FORTSETZBAR, weil der Container etwa STUENDLICH neu startet: Der Lauf
+braucht ueber 52'000 Produkte laenger als eine Stunde, sammelte aber alles im Speicher und
+schrieb erst am Ende. Jeder Neustart warf damit die ganze Arbeit weg, und der Bericht stand
+dauerhaft auf «TEILSCAN, 300» — die Arbeitslisten, aus denen die Reparaturwerkzeuge lesen,
+blieben entsprechend kurz. Jetzt wird der Cursor nach jeder Seite gesichert und jede Seite
+sofort an die Arbeitslisten angehaengt; die naechste Runde setzt fort, wo die letzte
+abbrach. **Ein Lauf, der laenger dauert als sein Container lebt, muss seinen Fortschritt
+festhalten** (dieselbe Lehre wie beim DEPTH-Reset der CJ-Runner und beim Seiten-Zeiger des
+Bewertungs-Imports).
 Bericht: dropship/KLASSEN-KONTROLLE.md   ·   ohne Befund wird er GELOESCHT (Lehre 21.08.)
 """
 import ast, json, os, re, ssl, sys, time, urllib.request
@@ -30,6 +41,8 @@ CAP = int(os.environ.get('CAP', '0')) or None
 DRY = os.environ.get('DRY') == '1'
 SHOP = 'au3j0y-hq.myshopify.com'
 API = f'https://{SHOP}/admin/api/2024-10/graphql.json'
+STAND = '/tmp/_klassen_stand.json'      # Cursor + Zaehler; /tmp ueberlebt den Neustart
+NEU = os.environ.get('NEU') == '1'
 CTX = ssl.create_default_context(cafile='/root/.ccr/ca-bundle.crt') if os.path.exists('/root/.ccr/ca-bundle.crt') else None
 
 
@@ -179,9 +192,46 @@ Q = """query($c:String){ products(first:100, after:$c, query:"status:active"){
         nodes{ id title descriptionHtml variantsCount{count} } } }"""
 
 
+def listen_ordner():
+    d = os.path.join(REPO, 'dropship', '_klassen')
+    os.makedirs(d, exist_ok=True)
+    return d
+
+
+def slug(name):
+    return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')[:50]
+
+
+def anhaengen(treffer):
+    """Seitenweise an die Arbeitslisten anhaengen — nicht erst am Ende schreiben."""
+    d = listen_ordner()
+    for name, v in treffer.items():
+        if not v:
+            continue
+        with open(os.path.join(d, slug(name) + '.txt'), 'a', encoding='utf-8') as f:
+            for pid, titel in v:
+                f.write(f'{pid}\t{titel}\n')
+
+
 def main():
     treffer = {k[0]: [] for k in KLASSEN}
+    gesamt = {k[0]: 0 for k in KLASSEN}
     n = 0; cursor = None; seiten = 0; abbruch = False
+    # Fortsetzen, wo die letzte Runde abbrach (Container-Neustart, Turn-Reaping).
+    if not NEU and not CAP and os.path.exists(STAND):
+        try:
+            st = json.load(open(STAND))
+            cursor = st.get('cursor'); n = int(st.get('n', 0))
+            gesamt.update({k: int(v) for k, v in (st.get('gesamt') or {}).items() if k in gesamt})
+            if cursor:
+                print(f'FORTSETZUNG bei Produkt {n} (Cursor gesichert)', flush=True)
+        except Exception:
+            cursor = None; n = 0
+    if cursor is None:
+        # Neue Runde: alte Arbeitslisten leeren, sonst mischen sich zwei Staende.
+        for f in os.listdir(listen_ordner()):
+            if f.endswith('.txt'):
+                os.remove(os.path.join(listen_ordner(), f))
     while True:
         d = gql(Q, {'c': cursor})
         if d is None:
@@ -203,6 +253,17 @@ def main():
                 except Exception:
                     pass
         seiten += 1
+        if not DRY:
+            anhaengen(treffer)
+        for k, v in treffer.items():
+            gesamt[k] += len(v)
+            v.clear()                      # Speicher freigeben: der Lauf sieht 52'000 Produkte
+        if not DRY and not CAP:
+            try:
+                json.dump({'cursor': pg['pageInfo']['endCursor'], 'n': n, 'gesamt': gesamt},
+                          open(STAND, 'w'))
+            except Exception:
+                pass
         # ⚠️ Ruecksicht auf die Waechter (gemessen 03.09.): Dieser Vollscan zieht den
         # Shopify-Eimer auf unter 10 herunter — waehrenddessen scheiterte `kollektion_leer`
         # an der Drosselung und meldete «Kollektionen nicht ladbar», also einen Fehlalarm,
@@ -218,38 +279,46 @@ def main():
             break
         cursor = pg['pageInfo']['endCursor']
 
+    if not DRY:
+        anhaengen(treffer)                        # letzte, unvollstaendige Seite
+        for k, v in treffer.items():
+            gesamt[k] += len(v); v.clear()
     art = 'TEILSCAN' if abbruch else 'VOLLSCAN'
     print(f'{art}: {n} aktive Produkte geprüft')
-    offen = [(k, v) for k, v in treffer.items() if v]
     for name, _f, _w, _fix, _p in KLASSEN:
-        v = treffer[name]
-        print(f'   {len(v):>6}  {name}')
+        print(f'   {gesamt[name]:>6}  {name}')
 
     if DRY:
         return
-    if not offen:
+    # Runde zu Ende gelaufen -> Cursor weg, die naechste faengt vorn an.
+    if not abbruch and os.path.exists(STAND):
+        os.remove(STAND)
+    # Arbeitslisten leerer Klassen entfernen — eine alte Liste ist schlimmer als keine.
+    for name in gesamt:
+        if not gesamt[name]:
+            d = os.path.join(listen_ordner(), slug(name) + '.txt')
+            if os.path.exists(d):
+                os.remove(d)
+    if not any(gesamt.values()):
         if os.path.exists(BERICHT):
             os.remove(BERICHT)
         print('Keine Klasse offen — Bericht geloescht.')
         return
 
-    # ⚠️ Die VOLLSTAENDIGE Trefferliste je Klasse als Arbeitsliste ablegen. Ohne sie muesste
-    # jedes Reparaturwerkzeug denselben Vollscan noch einmal fahren — und mehrere davon lesen
-    # heute einen Bulk-Export vom 30.08. und melden deshalb «0», waehrend die Klasse live
-    # 1'542 Produkte gross ist (ein Werkzeug, dessen Quelle veraltet, meldet Vollzug ueber
-    # eine Vergangenheit). EIN Scan, viele Arbeitslisten.
-    lst = os.path.join(REPO, 'dropship', '_klassen')
-    os.makedirs(lst, exist_ok=True)
-    for name, v in treffer.items():
-        slug = re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')[:50]
-        datei = os.path.join(lst, slug + '.txt')
-        if not v:
-            if os.path.exists(datei):
-                os.remove(datei)          # Klasse leer -> Arbeitsliste weg, nicht veralten lassen
-            continue
-        with open(datei, 'w', encoding='utf-8') as f:
-            for pid, tit in v:
-                f.write(f'{pid}\t{tit}\n')
+    def beispiele(name, k=25):
+        """Beispiele kommen aus der Arbeitsliste — die Treffer sind laengst im Speicher weg."""
+        d = os.path.join(listen_ordner(), slug(name) + '.txt')
+        aus = []
+        try:
+            with open(d, encoding='utf-8') as f:
+                for z in f:
+                    if len(aus) >= k:
+                        break
+                    t = z.rstrip('\n').split('\t')
+                    aus.append((t[0], t[1] if len(t) > 1 else ''))
+        except FileNotFoundError:
+            pass
+        return aus
 
     zeilen = [f'# Klassen-Kontrolle ({art}, {n} aktive Produkte)', '',
               '> Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.',
@@ -258,14 +327,16 @@ def main():
     if abbruch:
         zeilen += ['⚠️ **TEILSCAN** — die Zahlen sind Untergrenzen, nicht die Klassengroesse.', '']
     for name, _feld, warum, fix, _p in KLASSEN:
-        v = treffer[name]
-        if not v:
+        anz = gesamt[name]
+        if not anz:
             continue
-        zeilen += [f'## {name} — {len(v)}', '', warum, '', f'Reparatur: `{fix}`', '']
-        for pid, tit in v[:25]:
+        zeilen += [f'## {name} — {anz}', '', warum, '', f'Reparatur: `{fix}`', '',
+                   f'Vollstaendige Liste: `dropship/_klassen/{slug(name)}.txt`', '']
+        bsp = beispiele(name)
+        for pid, tit in bsp:
             zeilen.append(f'- `{pid}` {tit}')
-        if len(v) > 25:
-            zeilen.append(f'- … und {len(v) - 25} weitere')
+        if anz > len(bsp):
+            zeilen.append(f'- … und {anz - len(bsp)} weitere')
         zeilen.append('')
     with open(BERICHT, 'w', encoding='utf-8') as f:
         f.write('\n'.join(zeilen) + '\n')
