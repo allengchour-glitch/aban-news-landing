@@ -4555,3 +4555,127 @@
 15449150718337	farbe-floskel-entfernt	Lässiger Hoodie im koreanischen Stil
 15449150751105	farbe-floskel-entfernt	3D-Print V-Ausschnitt Sweatshirt für Damen
 15449150947713	material-floskel-entfernt	Langarm-Sweatshirt mit Sternenmuster
+15412751499649	material-floskel-entfernt	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen
+15412751860097	material-floskel-entfernt	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Da
+15412825063809	material-floskel-entfernt	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere
+15412825194881	farbe-floskel-entfernt,material-floskel-entfernt	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Dame
+15412828733825	material-floskel-entfernt	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+15412830634369	material-floskel-entfernt	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+15412830896513	material-floskel-entfernt	Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
+15412902953345	material-floskel-entfernt	2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
+15412915110273	material-floskel-entfernt	Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
+15412915339649	material-floskel-entfernt	Strand-Maxikleid «Bali» – luftiges Stufenkleid
+15412915470721	material-floskel-entfernt	Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
+15412916060545	material-floskel-entfernt	Sommerkleid «Savanna» – Western-Style Midi
+15412918190465	material-floskel-entfernt	Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
+15412919402881	material-floskel-entfernt	Etuikleid «Lumea» – Cut-Out Sheath
+15412919533953	material-floskel-entfernt	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+15412919566721	material-floskel-entfernt	Schnürkleid «Noir» – Schleifen-Detail
+15412919763329	material-floskel-entfernt	Off-Shoulder-Kleid «Brise» – locker & ärmellos
+15412969144705	material-floskel-entfernt	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+15412969406849	material-floskel-entfernt	T-Shirt-Kleid «Casa» – locker mit Print
+15413023015297	material-floskel-entfernt	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+15413024915841	material-floskel-entfernt	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+15413025014145	material-floskel-entfernt	Strandkleid «Playa» – Halter mit Schnür-Detail
+15413074985345	material-floskel-entfernt	Sommer-Top «Sole» – V-Neck mit Knopfleiste
+15413083242881	material-floskel-entfernt	Boho Resort-Set · 2-teilig (Top & Hose)
+15413083832705	material-floskel-entfernt	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
+15413084062081	material-floskel-entfernt	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet 
+15413084160385	material-floskel-entfernt	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
+15413724873089	material-floskel-entfernt	Wide-Leg-Hose · Damen, fliessend & locker (Elegant 2026)
+15413725102465	material-floskel-entfernt	Cropped Blazer · Damen, mit Pailletten-Detail
+15413726282113	material-floskel-entfernt	Jumpsuit mit Blazer-Kragen · Damen, chic & uni
+15413739684225	material-floskel-entfernt	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
+15416026235265	material-floskel-entfernt	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbeton
+15416343757185	material-floskel-entfernt	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3X
+15416343986561	material-floskel-entfernt	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (
+15416491704705	material-floskel-entfernt	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
+15416493506945	material-floskel-entfernt	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)
+15421165339009	material-floskel-entfernt	Long-Weste «Resort» · ärmellos, Colorblock mit Schleife
+15421165601153	material-floskel-entfernt	Herren-Set «Resort» · Kurzarm-Hemd + Hose
+15421165666689	material-floskel-entfernt	Long-Blazer «Milano» · uni, ohne Knöpfe (Damen)
+15421165764993	material-floskel-entfernt	Kapuzen-Cardigan «Cosy» · uni, mit Knöpfen (Damen)
+15421414113665	material-floskel-entfernt	Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
+15421442261377	material-floskel-entfernt	Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürte
+15421513630081	material-floskel-entfernt	Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
+15421516218753	material-floskel-entfernt	Blazer «Roma» · Tailliert mit Bindegürtel & Revers
+15421594501505	material-floskel-entfernt	Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
+15421606953345	material-floskel-entfernt	Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
+15421615473025	farbe-floskel-entfernt,material-floskel-entfernt	Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
+15421617537409	material-floskel-entfernt	Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & Volant
+15421620257153	material-floskel-entfernt	Keil-Sandalen «Capri» · Geflochten, Espadrille-Look
+15422040277377	material-floskel-entfernt	Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
+15422401479041	farbe-floskel-entfernt,material-floskel-entfernt	Sommer-Playsuit «Marigold» · Blüten-Print, Träger
+15422403051905	material-floskel-entfernt	Plateau-Pumps «Wild» · Leoparden-Print, Knöchelriemen
+15422787453313	material-floskel-entfernt	Mary-Jane-Ballerina «Dolce» · Lack, mit Riemchen
+15422811439489	farbe-floskel-entfernt,material-floskel-entfernt	Unisex T-Shirt – Selbst gestalten
+15422815699329	farbe-floskel-entfernt,material-floskel-entfernt	Unisex Hoodie – Selbst gestalten
+15422857642369	farbe-floskel-entfernt,material-floskel-entfernt	Klassisches Unisex T-Shirt – Selbst gestalten
+15422933500289	material-floskel-entfernt	Herren-Set «Costa» · Kapuzen-Shirt + Jogger
+15422937792897	material-floskel-entfernt	Stiletto-Sandalette «Gala» · Violett, Knöchelriemen
+15422939267457	farbe-floskel-entfernt,material-floskel-entfernt	Boardshorts mit Allover-Druck – Selbst gestalten
+15422943822209	farbe-floskel-entfernt,material-floskel-entfernt	Einteiliger Allover-Badeanzug – Selbst gestalten
+15422945034625	farbe-floskel-entfernt,material-floskel-entfernt	Allover-Yoga-Leggings – Selbst gestalten
+15422949130625	farbe-floskel-entfernt,material-floskel-entfernt	Recycelter Unisex Allover-Pullover – Selbst gestalten
+15422953062785	farbe-floskel-entfernt,material-floskel-entfernt	Hoodie bedrucken · recycelter Unisex Allover-Hoodie selbst g
+15422956798337	farbe-floskel-entfernt,material-floskel-entfernt	Unisex Allover-Bomberjacke – Selbst gestalten
+15422958338433	farbe-floskel-entfernt,material-floskel-entfernt	Kleid mit Schlitz und Allover-Druck – Selbst gestalten
+15422959518081	farbe-floskel-entfernt,material-floskel-entfernt	Recycelte Allover-Jogginghosen – Selbst gestalten
+15427278963073	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Alphorn»
+15427279028609	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «1 August»
+15427279094145	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Alpaufzug»
+15427279159681	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Apero Time»
+15427279225217	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Baehnli»
+15427279290753	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Baern»
+15427279356289	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Basel»
+15427279421825	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Bernese Dog»
+15427279487361	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Bernhardiner»
+15427279552897	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Braunvieh»
+15427279618433	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Buenzli»
+15427279683969	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Cervelat»
+15427279782273	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chalet»
+15427279880577	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Chuchichaeschtli»
+15427279978881	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Edelweiss»
+15427280077185	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Eidgenoss»
+15427280142721	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Enzian»
+15427280208257	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Es Git Nu Eis Zueri»
+15427280306561	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fasnacht Mask»
+15427280339329	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Feierabig»
+15427280404865	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue»
+15427280470401	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gaell»
+15427280568705	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gopfertami»
+15427280634241	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gruezi»
+15427280732545	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Haeee»
+15427280765313	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Haerzlech»
+15427280830849	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Heidi»
+15427280929153	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Hoi»
+15427280961921	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Matterhorn»
+15427281027457	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Merci»
+15427281092993	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Murmeli»
+15427281191297	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Postauto Horn»
+15427281256833	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Prosit»
+15427281355137	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Raclette»
+15427281420673	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Sali»
+15427281453441	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Schoggi Bar»
+15427281518977	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Steinbock»
+15427281617281	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Army Knife»
+15427281682817	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Cross Badge»
+15427281715585	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Znueni»
+15427281781121	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue» · Modell 2
+15427281879425	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Matterhorn» · Modell 2
+15427281912193	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Chocolate»
+15427282010497	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Swiss Cowbell»
+15427282141569	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Grüezi»
+15427282207105	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Hoi» · Modell 2
+15427282305409	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Merci» · Modell 2
+15427283157377	material-floskel-entfernt	T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv
+15429997724033	farbe-floskel-entfernt,material-floskel-entfernt	King & Queen Partner-Shirts · Couple T-Shirts 👑
+15429997822337	farbe-floskel-entfernt,material-floskel-entfernt	Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍
+15429997855105	farbe-floskel-entfernt,material-floskel-entfernt	Her King & His Queen Partner-Shirts · Couple T-Shirts 👑
+15429997920641	farbe-floskel-entfernt,material-floskel-entfernt	Hubby & Wifey Partner-Shirts · Couple T-Shirts mit Herz ❤️
+15430344311169	groesse-ohne-deckung-entfernt,material-floskel-entfernt	Wide-Leg Midi-Rock «Studio» · fliessend, Freigrösse
+15430344409473	farbe-floskel-entfernt,material-floskel-entfernt	Polka-Dot Wickel-Rock «Dolce» · High-Waist, asymmetrisch
+15430344573313	farbe-floskel-entfernt,material-floskel-entfernt	Damen Komfort-Sandalen «Estate» · Elastik-Riemen
+15430344606081	farbe-floskel-entfernt,material-floskel-entfernt	Herren High-Top-Sneaker «Brooklyn» · Mesh, atmungsaktiv
+15430344671617	farbe-floskel-entfernt,material-floskel-entfernt	Herren Sport-Sneaker «Velocità» · Mesh, Wide-Toe
+15430444253569	farbe-floskel-entfernt,material-floskel-entfernt	Herren Sommer-Set «Riviera» · Hemd + Shorts

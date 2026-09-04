@@ -1,5 +1,52 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🧾 Zwei Quittungen, zwei blinde Klassen — und «Wuchs» kannte kein einziges Muster (2026-09-04, spät)
+Der Klassen-Vollscan meldete 150 doppelte «Produktdetails»-Blöcke und 124 Produkte mit
+«Material: hochwertiges Material». Beide Werkzeuge dafür gibt es längst — und beide meldeten
+brav «0», weil **jeder einzelne Fall bereits als erledigt quittiert war**: 124× «material-
+floskel-entfernt», 150× «vereint». Live trugen sie den Befund trotzdem.
+- **Der Grund ist messbar und hübsch:** Alle 124 Floskel-Fälle sind eine **TEILMENGE** der 150
+  Doppelblöcke (Schnittmenge 124 von 124). Der erste Block ist sauber, die Floskel steht im
+  ZWEITEN. Der Floskel-Lauf hat also seinerzeit richtig gearbeitet — an dem Block, den es damals
+  gab; der zweite kam danach. **Eine Quittung aus einer Teilreparatur überspringt den Fall für
+  immer** (dieselbe Familie wie die falsche Titel-Quittung am 03.09.).
+- **Regel: Kommt die Kandidatenliste aus einer LIVE-Messung, darf das Ledger sie nicht filtern.**
+  Beide Werkzeuge ignorieren im `LISTE=`-Modus jetzt ihre Quittungen; geschrieben wird weiterhin
+  nur, wenn der LIVE-Text den Befund noch trägt — die Sicherung sitzt am Objekt, nicht am Zettel.
+  Ergebnis: 124 + 150 geschrieben, Gegenprobe am Objekt **0 doppelt · 0 Floskel**.
+- ⚠️ **Und der Lauf meldete sein Nichtstun als Erfolg:** «Produkte mit doppeltem Block: 150» und
+  in derselben Ausgabe «FERTIG: 0 vereint» — der `continue` auf die Quittung druckt nichts. Ein
+  Werkzeug, das 150 Kandidaten findet und 0 anfasst, muss sagen warum.
+- **Reihenfolge unter dem geteilten Schloss war die zweite Ursache:** Alle Produkttext-Schreiber
+  nehmen `/tmp/lock_produkttext.lock` mit `flock -n` — wer zuerst startet, gewinnt, die anderen
+  treten ab. Der Trust-Baustein-Lauf (21'949 kosmetische Fälle, CAP 2500) hielt es ~40 Minuten,
+  und die kleinen ENDLICHEN Klassen kamen nie an die Reihe. Jetzt: versandaussagen → Floskel (124)
+  → Doppelblock (150) → Trust (CAP 1200). **Endliche Klassen zuerst, der Dauerläufer zuletzt.**
+- ⚠️ `produktdetails_wahrheit.py` stand ausserdem in **keiner** Aufseher-Liste (vierte Fassung von
+  «wer startet DICH neu?») und las nur ein JSONL aus `/tmp`. Es liest jetzt die Arbeitsliste des
+  Klassen-Scans und ist registriert.
+
+**⛔ Und der Fund daneben wiegt schwerer: «Wuchs» kannte KEIN Muster dieses Repos.**
+Beim Lesen der 14 Haarwachstums-Texte fiel auf, dass sechs davon die Zusage auch im TITEL tragen —
+in der Form **«Haarwuchsserum», «Bartwuchs-Set», «Infrarot-Haarwuchs-Kamm»**. Der tägliche
+Klassen-Scan, `hype_kuratieren`, `querbeet`, `voll_audit`, der Social-Filter und der
+deterministische Titel-Schutz der Importer (`wirkSicher`) kennen ausnahmslos nur *wachstum*.
+Deutsch bildet dasselbe Versprechen aber mit *Wuchs* — **neunte Fassung der Wortform-Familie:
+eine Klassenzahl gilt nur für die Form, mit der man gesucht hat.** Alle sechs Muster ergänzt,
+in beide Richtungen belegt (7 Treffer, 7 Gegenfälle, 0 Abweichungen) — «Wuchsform-Schere» und
+«Zimmerpflanze mit kräftigem Wuchs» bleiben unberührt.
+- **6 Titel repariert, alle sechs Felder** (Titel · Handle + 301 · SEO-Titel · SEO-Text ·
+  Beschreibung · Bild-Alt-Text, 53 Alt-Texte): «Tunmate Kopfhaut-Serum», «Bartpflege-Set mit
+  Mikro-Nadel-Roller», «Kopfhaut-Massagegerät mit Vibration», «Infrarot-Massagekamm».
+- **7 Texte entschärft**, jede Regel genau 1× und mit Nahtprüfung: «fördert das Haarwachstum
+  **um das 2-3-fache**» (eine erfundene Zahl), «Reduziert Haarausfall», «Wirkt gegen Schuppen»,
+  «Magnetfeldtherapie», «Lichttherapie hemmt die Ölsekretion».
+- ⚠️ **Vier Fälle bleiben bewusst stehen, und das ist der Kern der Klasse:** «die Durchblutung
+  wird gefördert, was das Haarwachstum unterstützen **kann**» ist eine gehedgte Aussage über eine
+  MASSAGE; «Juckreiz, der oft während des Bartwachstums auftritt» beschreibt einen natürlichen
+  Vorgang. Gestrichen wird die unbedingte ZUSAGE, nicht das Wort. Ein breites Muster ist ein Netz,
+  kein Urteil — hier zum wiederholten Mal, und diesmal in der Gegenrichtung.
+
 ## 💊 «Nagelpilz-Reparaturserum» stand in allen sechs Kanaelen (2026-09-04, abends)
 Die Gegenprobe zum Wimpern-Fall («gibt es weitere Wachstums-Zusagen?») fand ueber die
 Inhalts-Suche 14 aktive Produkte — **keines davon im TITEL**, deshalb hat der Klassen-Scan
