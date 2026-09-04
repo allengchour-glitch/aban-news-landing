@@ -20292,3 +20292,192 @@
 15481259819393	ersetzt-1	V19 Smart Armband mit PPG und SpO2
 15481260048769	ersetzt-1	Tragbares magnetisches Wireless Ladegerät für Apple Watch
 15481260114305	ersetzt-1	Wasserdichtes Smartphone-Armband
+15481260704129	ersetzt-1	Powerbank 20000mAh, ultraschlank, Fast Charge
+15481261425025	ersetzt-1	Smartwatch mit Temperaturmessung
+15481261654401	ersetzt-1	Metall-Armband für Xiaomi Smartwatch
+15481262178689	ersetzt-1	Game Card Schutzbox
+15481263620481	ersetzt-1	Herren Handtasche aus vollnarbigem Leder
+15481263980929	ersetzt-1	Leichte, wasserdichte Hüfttasche für Outdoor
+15481265258881	ersetzt-1	Leichtes Strandzelt für 2-3 Personen
+15481379062145	ersetzt-1	Kabelloses Lavalier-Mikrofon
+15481379815809	ersetzt-1	Kabelloses Mikrofon
+15481379946881	ersetzt-1	Solar Photovoltaik Panel 6W Ladegerät
+15481380012417	ersetzt-1	RGB USB Kondensator-Mikrofon mit Stimmungslicht
+15481380536705	ersetzt-1	Kabelloses Ansteckmikrofon mit Ladebox
+15481381028225	ersetzt-1	Drahtloses Kragen-Mikrofon-Set
+15481382404481	ersetzt-1	Handy-Mikrofon
+15481383682433	ersetzt-1	Drahtloses Lavalier-Mikrofon (1-zu-2)
+15481384108417	ersetzt-1	Gaming Mikrofon mit Geräuschunterdrückung
+15481384599937	ersetzt-1	Grossmembran-Kondensatormikrofon für K-Song & Aufnahme
+15481385124225	ersetzt-1	Gaming-Mikrofon mit RGB und DSP-Rauschunterdrückung
+15481394135425	ersetzt-1	Powerbank mit 10'000 mAh und Schnellladefunktion
+15481395511681	ersetzt-1	Powerbank 10000 mAh mit Digitalanzeige
+15481396035969	ersetzt-1	Super-schnelle Mini Power Bank
+15481396134273	ersetzt-1	Pinguin Mini-Handwärmer & Powerbank
+15481396265345	ersetzt-1	Kompakte Powerbank mit hoher Kapazität
+15481398296961	ersetzt-1	Yoga Bluetooth Kopfhörer-Stirnband
+15481398395265	ersetzt-1	Ear-Clip Bluetooth Kopfhörer mit Geräuschunterdrückung
+15481398526337	ersetzt-1	AI Smart Bluetooth Kopfhörer
+15481509380481	ersetzt-1	Innenreiniger
+15481599951233	ersetzt-1	Spielkartenbox 35 in 1
+15481606537601	ersetzt-1	Silberne Sandalen
+15481608700289	ersetzt-1	Retro Slipper · Damen
+15481609781633	ersetzt-1	Sandalen mit Nieten und hohem Absatz
+15481612042625	ersetzt-1	Minimalistische Keilabsatz-Sandalen
+15481612861825	ersetzt-1	Plateau Leder Zehensteg-Sandalen
+15481638551937	ersetzt-1	Vibrierender Silikon-Gesichtsreiniger mit Wärmefunktion
+15481680494977	ersetzt-1	Thermokamera
+15481680527745	ersetzt-1	Sternenprojektor
+15481680593281	ersetzt-1	USB Weltraum Kapsel Sternenprojektor
+15481680691585	ersetzt-1	P330 Mini Beamer – Heimkino für unterwegs
+15481680757121	ersetzt-1	HD Heimkino-Projektor für Smart Home
+15481680789889	ersetzt-1	Smarter HD-Projektor für Zuhause
+15481680822657	ersetzt-1	Smarter Full HD Heimkino-Projektor
+15481680888193	ersetzt-1	Thermisches Stichheiler-Gerät
+15481680953729	ersetzt-1	Mini-Projektor für Smartphone (kabelgebunden)
+15481681019265	ersetzt-1	Tragbarer Mini-Projektor mit WiFi · 720p nativ
+15481681052033	ersetzt-1	M100 Mini Beamer für Zuhause – Tragbar
+15481681117569	ersetzt-1	Mini Beamer für Smartphone-Projektion
+15481681150337	ersetzt-1	Graffiti Sky Projektionslampe «Sternenhimmel»
+15481681215873	ersetzt-1	EZCast2: Dual Band Wireless 4K Screen Saver
+15481681281409	ersetzt-1	Kondensator-Mikrofon für Computer und Mobilgeräte
+15481681314177	ersetzt-1	USB Kondensatormikrofon für Desktop & Notebook
+15481681346945	ersetzt-1	USB Kondensator-Mikrofon mit Stativ
+15481681412481	ersetzt-1	Maono Shunk PM320 Live Mikrofon-Set
+15481681445249	ersetzt-1	KMC-45 Lautsprechermikrofon mit Headset-Anschluss
+15481681510785	ersetzt-1	Mikrofon-Pop-Schutz-Netz
+15481681543553	ersetzt-1	Live Broadcast Soundkarten-Set mit Kondensatormikrofon
+15481681609089	ersetzt-1	Kabelloses Lavalier-Mikrofon für Mobiltelefone
+15481681641857	ersetzt-1	Grossmembran-Kondensatormikrofon
+15481681707393	ersetzt-1	AK-5 Kondensatormikrofon-Set
+15481681740161	ersetzt-1	VLOG-Mikrofon für Kameras und Notebooks
+15481681805697	ersetzt-1	Desktop-Mikrofon für PC, Laptop & Konsolen
+15481681838465	ersetzt-1	Kabelloses Ansteckmikrofon für Mobilgeräte
+15481681871233	ersetzt-1	Drahtloses Ansteckmikrofon mit Rauschunterdrückung
+15481681936769	ersetzt-1	Drahtloses Ansteckmikrofon Little Bee
+15481681969537	ersetzt-1	Kabelloses Kragenclip-Mikrofon mit Rauschunterdrückung
+15481682067841	ersetzt-1	Mechanische Taschenuhr mit Klappdeckel
+15481682100609	ersetzt-1	Multifunktionale digitale Herrenuhr
+15481682297217	ersetzt-1	Stillkissen mit Lagerungskissen
+15481682362753	ersetzt-1	Hängesessel für Drinnen & Draussen
+15481682395521	ersetzt-1	Kubanisches Gliederarmband, poliert
+15481682461057	ersetzt-1	Retro-Totenkopfring aus Edelstahl
+15481691308417	ersetzt-1	Drahtloser Beamer
+15481691373953	ersetzt-1	Autokissen mit Drehfunktion
+15481691406721	ersetzt-1	Regenbogen-Projektor
+15481691439489	ersetzt-1	Full HD Heimkino-Projektor für Schlafzimmer
+15481691570561	ersetzt-1	Smart HD Heimprojektor Hy300
+15481691603329	ersetzt-1	T07 Full HD Smart Projektor (320 ANSI Lumen)
+15481691668865	ersetzt-1	3D Hologramm Projektor
+15481691701633	ersetzt-1	Sternenlicht-Projektor «Häschen»
+15481691767169	ersetzt-1	HD Mini-Beamer für Heimkino & Büro
+15481691799937	ersetzt-1	Dream Sternenhimmel Projektor HD Laser
+15481691832705	ersetzt-1	Sternenhimmel Projektor mit Bluetooth für Kinder
+15481691898241	ersetzt-1	Full HD Smart Mini Beamer mit WLAN
+15481691931009	ersetzt-1	Handy-Projektor für die gleiche Bildschirmanzeige
+15481691996545	ersetzt-1	Sternenhimmel Projektionslampe Luftbefeuchter
+15481692062081	ersetzt-1	Mini-LED-Projektor für Zuhause
+15481692127617	ersetzt-1	Sternenlicht-Projektor für Galaxien-Ambiente
+15481692160385	ersetzt-1	Mini-Beamer 720p
+15481692193153	ersetzt-1	HD Smart Mini-Projektor für Home Office
+15481692258689	ersetzt-1	HD Mini-Projektor für Zuhause
+15481692291457	ersetzt-1	Sternenhimmel Projektor mit Musik und App
+15481692356993	ersetzt-1	Laser Sternenhimmel Projektor mit Bluetooth-Musik
+15481700712833	ersetzt-1	Holz Bluetooth Lautsprecher
+15481700778369	ersetzt-1	Türreparatur-Werkzeug
+15481700843905	ersetzt-1	330W Super-Schnelllade-Netzteil
+15481700876673	ersetzt-1	Bluetooth Speaker mit Mikrofon & Stage Lights
+15481700909441	ersetzt-1	Mikrofaser-Reinigungswerkzeug für Autos
+15481700942209	ersetzt-1	Polierscheibe für spiegelglatte Autolacke
+15481701007745	ersetzt-1	MH1 Faltbares Over-Ear Bluetooth Headset
+15481701040513	ersetzt-1	Bluetooth 5.3 Kopfhörer mit Stereo-Sound
+15481701695873	ersetzt-1	Metall Roboter USB-Stick Springman
+15481701826945	ersetzt-1	USB 2.0 Farbdisplay Tester mit Bluetooth
+15481711886721	ersetzt-1	Kabelloses Ladegerät
+15481711919489	ersetzt-1	Auto-Organizer-Beutel
+15481711985025	ersetzt-1	Magnetische Wireless Power Bank 10000mAh
+15481712017793	ersetzt-1	Maniküre Diamant-Schmuckset, 24 Fächer
+15481712050561	ersetzt-1	Sonnenblenden-Organizer für Auto & LKW
+15481712083329	ersetzt-1	Elegante Mid-Heel Pumps mit offener Spitze
+15481712116097	ersetzt-1	Ultradünne magnetische Powerbank mit Qi2
+15481712148865	ersetzt-1	"Lost Paradise" Nagel-Set im Dark Personality Stil
+15481712181633	ersetzt-1	Schlüssel-Organizer aus Karbonfaser-Aluminium
+15481712214401	ersetzt-1	Vintage Pumps mit Knöchelriemen
+15481712279937	ersetzt-1	Mini Powerbank mit integriertem Kabel, 5000 mAh
+15481712312705	ersetzt-1	Cat Eye Kirschblüten-Nagelsticker
+15481712345473	ersetzt-1	Mary Jane Halbschuhe mit Riemen
+15481712378241	ersetzt-1	Mini USB Handwärmer mit Magnetfunktion
+15481712411009	ersetzt-1	Mini Powerbank PD20W mit Kabel
+15481712476545	ersetzt-1	Powerbank 20000 mAh mit Kabel, 22.5W Fast Charge
+15481712509313	ersetzt-1	Ultradünne magnetische Powerbank mit Schnellladekabel
+15481712542081	ersetzt-1	Magnetische Powerbank mit hoher Kapazität
+15481712640385	ersetzt-1	Mini Powerbank – Abnehmbare Zylinderzellen
+15481712673153	ersetzt-1	Powerbank 10000 mAh mit integriertem Kabel
+15481712771457	ersetzt-1	Super Fast Charge Powerbank
+15481712836993	ersetzt-1	Magnetischer Powerbank
+15481712869761	ersetzt-1	Kompakte Powerbank mit integriertem Kabel
+15481712902529	ersetzt-1	Smartwatch mit Videoanruf und Kamera
+15481712968065	ersetzt-1	Powerbank für Heizwesten & Kleinlektronik
+15481713000833	ersetzt-1	Tragbarer 12V Auto-Kompressor mit Licht
+15481713066369	ersetzt-1	3-in-1 Powerbank mit AC-Stecker, 10'000 mAh
+15481713099137	ersetzt-1	Oarmio Powerbank 20000 mAh
+15481713131905	ersetzt-1	Solar Powerbank, faltbar, 20000 mAh
+15481713230209	ersetzt-1	Mini Capsule Power Bank 5000 mAh
+15481713262977	ersetzt-1	Solar Powerbank 20000mAh mit Kabel
+15481713688961	ersetzt-1	Multifunktionaler Rollkoffer mit USB-Port
+15481713754497	ersetzt-1	DIY Häkelset Fantasy Kapuzenmütze
+15481713820033	ersetzt-1	Wasserfeste Volumen-Mascara
+15481754648961	ersetzt-1	Weisse Leder-Sneaker mit dicker Sohle
+15481754812801	ersetzt-1	Leder-Sandalen mit Klettverschluss für Herren
+15481754878337	ersetzt-1	Herren Leder Business-Schuhe mit Schnürung
+15481755074945	ersetzt-1	Business-Casual Schuhe mit Absatzerhöhung
+15481755238785	ersetzt-1	Atmungsaktive Slip-On Loafers für Herren
+15481755271553	ersetzt-1	Vintage-Lederimitat Herrenschuhe
+15481755304321	ersetzt-1	High-Heel Party- & Tanzschuhe für Herren
+15481755369857	ersetzt-1	Herren Slipper mit Metallschnalle
+15481755402625	ersetzt-1	Elegante handgemachte Lederschuhe mit dicker Sohle
+15481755468161	ersetzt-1	One-Strap Blockabsatz-Sandalen für Damen
+15481755500929	ersetzt-1	Slip-on Driving Shoes für Herren
+15481755533697	ersetzt-1	Business-Casual Lederschuhe mit Horsebit-Schnalle
+15481755599233	ersetzt-1	Leder-Sneaker für Herren
+15481755632001	ersetzt-1	Elegante Business-Schuhe aus echtem Leder
+15481755664769	ersetzt-1	Herren Freizeit-Schuhe mit 8cm Innenabsatz
+15481755730305	ersetzt-1	Stylische Slip-on Casual Lederschuhe für Herren
+15481755763073	ersetzt-1	Britische Casual-Schuhe für Herren
+15481755861377	ersetzt-1	Vintage Loafer für Herren im Old Coin-Stil
+15481755894145	ersetzt-1	Business Oxford-Schuhe mit spitzer Zehenpartie
+15481755926913	ersetzt-1	Trendige Business-Lederschuhe für Herren
+15481755992449	ersetzt-1	Business-Schuhe im britischen Stil mit Schnürung
+15481756057985	ersetzt-1	Erhöhende Leder-Schuhe für Herren mit dicker Sohle
+15481756090753	ersetzt-1	Leder Slipper im britischen Casual-Stil
+15481756123521	ersetzt-1	Business-Schnürschuhe aus PU-Leder für Herren
+15481756189057	ersetzt-1	Herren Business-Schuhe mit Holzmaserung
+15481756221825	ersetzt-1	Retro Slip-on Loafers
+15481756287361	ersetzt-1	Britische Stiefeletten aus Leder mit Reissverschluss
+15481756352897	ersetzt-1	Business-Lederstiefel mit runder Kappe
+15481756418433	ersetzt-1	Business Casual Stiefeletten
+15481756451201	ersetzt-1	Bestickte knöchelhohe Martin Boots für Herren
+15481756549505	ersetzt-1	Herren Leder Business-Schuhe mit spitzer Zehenpartie
+15481756680577	ersetzt-1	S925 Silber Armband mit Stern- und Herz-Motiv
+15481756713345	ersetzt-1	Minimalistisches 925 Silber Moissanit Armband
+15481756778881	ersetzt-1	Herz-Ring aus 925 Sterling Silber
+15481763791233	ersetzt-1	Kabelloses Kragenmikrofon
+15481763889537	ersetzt-1	Kondensatormikrofon
+15481763922305	ersetzt-1	Kabelloses Ansteckmikrofon mit Bluetooth & Rauschunterdrücku
+15481764020609	ersetzt-1	Kabelloses Handmikrofon für Gesang und Sprache
+15481764053377	ersetzt-1	USB Gaming Mikrofon für Laptop
+15481764118913	ersetzt-1	USB-Kondensatormikrofon für Mobile & PC
+15481764151681	ersetzt-1	DM30 Gaming-Mikrofon für Esports
+15481764184449	ersetzt-1	Schutzhülle für Nintendo Switch
+15481764282753	ersetzt-1	Funkmikrofon-Set mit Echo und Klangregelung
+15481764315521	ersetzt-1	Bluetooth Mikrofon und Lautsprecher
+15481764413825	ersetzt-1	Kabelloses Lavalier Mikrofon mit Ladecase
+15481764446593	ersetzt-1	USB Kamera mit Mikrofon für Desktop
+15481764512129	ersetzt-1	Mini-Mikrofon für Live-Streams mit Ständer
+15481764544897	ersetzt-1	Retro Metall Mikrofon für Zuhause & Bühne
+15481764643201	ersetzt-1	Retro Kondensator-Mikrofon für Gesang & Aufnahmen
+15481764675969	ersetzt-1	Kondensator-Mikrofon für Gesang & Streaming
+15481764708737	ersetzt-1	Profi Kondensator-Mikrofon für Gaming & Streaming
+15481764807041	ersetzt-1	Retro Dynamisches Mikrofon
+15481764872577	ersetzt-1	USB Schwanenhals Mikrofon für Computer
+15481764938113	ersetzt-1	Kabelloses Lavalier-Mikrofon mit Dual-Core Rauschunterdrücku
