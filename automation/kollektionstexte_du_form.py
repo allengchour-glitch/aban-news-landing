@@ -40,25 +40,34 @@ def um(t):
         t=t.replace(a,b)
     t=re.sub(r'\bIhnen\b','dir',t); t=re.sub(r'\bIhr(e|en|em|er|es)?\b',lambda m:'dein'+(m.group(1) or ''),t)
     return t
-WRITE=os.environ.get('WRITE')=='1'
-if WRITE:
-    for k in json.load(open('/tmp/koll_du_det.json')):
-        if not k.get('neu'): continue
-        live=gql('query($id:ID!){collection(id:$id){descriptionHtml}}',{'id':k['id']})['data']['collection']['descriptionHtml']
-        if live!=k['alt']: print('⚠ live geändert',k['handle']); continue
-        r=gql('mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{descriptionHtml} userErrors{message}}}',{'i':{'id':k['id'],'descriptionHtml':k['neu']}})
-        cu=r['data']['collectionUpdate']; print('✔' if not cu['userErrors'] and cu['collection']['descriptionHtml']==k['neu'] else '⛔',k['handle'])
-    sys.exit()
-sie=json.load(open('/tmp/koll_sie.json')); out=[]; D=open('/tmp/koll_du_det.txt','w')
-for k in sie:
-    live=gql('query($id:ID!){collection(id:$id){descriptionHtml}}',{'id':k['id']})['data']['collection']['descriptionHtml'] or ''
-    txt=re.sub(r'<[^>]+>','',live)
-    if not SIE.search(txt): continue
-    neu=um(live); rest=SIE.findall(re.sub(r'<[^>]+>','',neu))
-    # «Für Sie» als Kollektionsname bleibt: Rest zulassen, wenn nur in "Für Sie"
-    rest=[r for r in rest if not re.search(r'"Für Sie"|«Für Sie»',neu) or r!='Sie']
-    ok= not rest and re.findall(r'<[^>]+>',live)==re.findall(r'<[^>]+>',neu) and re.findall(r'\d+',live)==re.findall(r'\d+',neu)
-    D.write(f"\n### {k['handle']} {'OK' if ok else '⛔ '+str(rest)}\nALT: {re.sub(r'<[^>]+>','',live)}\nNEU: {re.sub(r'<[^>]+>','',neu)}\n")
-    out.append({'id':k['id'],'handle':k['handle'],'alt':live,'neu':neu if ok else None,'rest':rest})
-json.dump(out,open('/tmp/koll_du_det.json','w'),ensure_ascii=False)
-print('gesamt',len(out),'ok',sum(1 for o in out if o['neu']),'rest',[(o['handle'],o['rest']) for o in out if not o['neu']][:20])
+# ⚠️ 04.09.2026: WACHE. Diese Datei ist ein SKRIPT und war zugleich die einzige Quelle der
+# Umstell-Regeln. Wer `um()` importieren wollte, startete beim Import den ganzen Lauf — genau
+# die Falle, in die die Klassen-Kontrolle heute schon einmal gelaufen ist. Ab hier laeuft nur
+# noch etwas, wenn die Datei direkt aufgerufen wird.
+def _lauf():
+  WRITE=os.environ.get('WRITE')=='1'
+  if WRITE:
+      for k in json.load(open('/tmp/koll_du_det.json')):
+          if not k.get('neu'): continue
+          live=gql('query($id:ID!){collection(id:$id){descriptionHtml}}',{'id':k['id']})['data']['collection']['descriptionHtml']
+          if live!=k['alt']: print('⚠ live geändert',k['handle']); continue
+          r=gql('mutation($i:CollectionInput!){collectionUpdate(input:$i){collection{descriptionHtml} userErrors{message}}}',{'i':{'id':k['id'],'descriptionHtml':k['neu']}})
+          cu=r['data']['collectionUpdate']; print('✔' if not cu['userErrors'] and cu['collection']['descriptionHtml']==k['neu'] else '⛔',k['handle'])
+      sys.exit()
+  sie=json.load(open('/tmp/koll_sie.json')); out=[]; D=open('/tmp/koll_du_det.txt','w')
+  for k in sie:
+      live=gql('query($id:ID!){collection(id:$id){descriptionHtml}}',{'id':k['id']})['data']['collection']['descriptionHtml'] or ''
+      txt=re.sub(r'<[^>]+>','',live)
+      if not SIE.search(txt): continue
+      neu=um(live); rest=SIE.findall(re.sub(r'<[^>]+>','',neu))
+      # «Für Sie» als Kollektionsname bleibt: Rest zulassen, wenn nur in "Für Sie"
+      rest=[r for r in rest if not re.search(r'"Für Sie"|«Für Sie»',neu) or r!='Sie']
+      ok= not rest and re.findall(r'<[^>]+>',live)==re.findall(r'<[^>]+>',neu) and re.findall(r'\d+',live)==re.findall(r'\d+',neu)
+      D.write(f"\n### {k['handle']} {'OK' if ok else '⛔ '+str(rest)}\nALT: {re.sub(r'<[^>]+>','',live)}\nNEU: {re.sub(r'<[^>]+>','',neu)}\n")
+      out.append({'id':k['id'],'handle':k['handle'],'alt':live,'neu':neu if ok else None,'rest':rest})
+  json.dump(out,open('/tmp/koll_du_det.json','w'),ensure_ascii=False)
+  print('gesamt',len(out),'ok',sum(1 for o in out if o['neu']),'rest',[(o['handle'],o['rest']) for o in out if not o['neu']][:20])
+
+
+if __name__ == '__main__':
+    _lauf()

@@ -73,8 +73,44 @@ def neuer_block(tier):
             f'📦 <strong>Lieferzeit</strong> Schweiz: <strong>{zeit}</strong> '
             f'<span style="opacity:.7;">· {zusatz}</span></p>')
 
+def kandidaten_live(fertig=frozenset()):
+    """Kandidaten LIVE aus dem Katalog — ohne Export, ohne Verfallsdatum.
+
+    ⚠️ 04.09.2026: Das Werkzeug las `/tmp/groessen_export.jsonl`. Die Datei ueberlebt keinen
+    Container-Neustart, und der Aufseher rief den Lauf deshalb taeglich ins Leere; das Ledger
+    steht seit dem 30.08. bei 1'000. Gemessen am OBJEKT tragen dagegen die ersten 600 aktiven
+    Produkte den Block ALLE. Ein Werkzeug, dessen Quelle veraltet, meldet Vollzug ueber eine
+    Vergangenheit — deshalb sucht es seine Kandidaten jetzt selbst.
+    ⚠️ Neuimporte sind NICHT betroffen (50 neueste: 0) — die Quelle ist seit dem 14.08. dicht,
+    es ist reiner Altbestand.
+    """
+    Q = ('query($c:String){products(first:100,after:$c,query:"status:active"){'
+         'pageInfo{hasNextPage endCursor} nodes{id descriptionHtml}}}')
+    ids, cur = [], None
+    while len(ids) < CAP * 3:
+        d = gql(Q, {'c': cur})
+        pg = (d.get('data') or {}).get('products')
+        if not pg:
+            print('PAUSE (Shopify stumm) — kein Ergebnis ist kein Befund.'); break
+        for p in pg['nodes']:
+            h = p.get('descriptionHtml') or ''
+            if p['id'] in fertig:
+                continue          # ⚠️ WAEHREND des Scans ueberspringen, nicht danach — sonst
+                                  # sammelt der Lauf immer wieder denselben Katalogbeginn ein
+                                  # und meldet «0 offen», obwohl der Rest unberuehrt ist.
+            if 'ls-liefer' in h and 'je nach Land' in re.sub(r'<[^>]+>', ' ', h):
+                ids.append(p['id'])
+        if not pg['pageInfo']['hasNextPage']:
+            break
+        cur = pg['pageInfo']['endCursor']
+        time.sleep(0.2)
+    return ids
+
+
 def kandidaten():
     """IDs aus dem Export — nur die Liste, der Text kommt später live."""
+    if QUELLE == 'live' or not os.path.exists(QUELLE):
+        return kandidaten_live(_FERTIG)
     ids = []
     for line in open(QUELLE, encoding='utf-8'):
         try: o = json.loads(line)
@@ -85,10 +121,19 @@ def kandidaten():
             ids.append(o['id'])
     return ids
 
+_FERTIG = frozenset()
+
+
 def main():
+    global _FERTIG
     fertig = set()
-    if os.path.exists(LEDGER):
+    # ⚠️ 04.09.2026: DIE ALTEN QUITTUNGEN SIND WERTLOS. 1'000 Produkte stehen seit dem 30.08.
+    # als «ersetzt» im Ledger und tragen den Block LIVE weiter (5 von 5 Stichproben) — ein
+    # spaeterer Schreiber hat sie zurueckgeholt. Eine falsche Quittung ueberspringt den Fall
+    # fuer immer, deshalb hier derselbe Schalter wie bei den anderen Textwerkzeugen.
+    if os.path.exists(LEDGER) and not os.environ.get('IGNORIERE_LEDGER'):
         fertig = {l.split('\t')[0] for l in open(LEDGER, encoding='utf-8') if l.strip()}
+    _FERTIG = frozenset(fertig)
     offen = [i for i in kandidaten() if i not in fertig]
     print(f"Kandidaten: {len(offen)} offen ({len(fertig)} laut Ledger erledigt)")
     if not offen:
