@@ -116,3 +116,5 @@ gid://shopify/Product/15516235170177	publiziert	Bambus-Käsebrett-Set mit Messer
 gid://shopify/Product/15517578396033	publiziert	Multifunktionaler Messerhalter mit Wellenmuster
 gid://shopify/Product/15518601511297	publiziert	Diamant-Messerschärfer mit festem Winkel
 gid://shopify/Product/15520411255169	publiziert	Laniska Beinpflege-Pflaster (4 Stk.)
+gid://shopify/Product/15520409452929	bleibt-draussen:heikle Ware	Sturmfeuerzeug für Outdoor & Küche
+gid://shopify/Product/15521239138689	bleibt-draussen:Klingen-Hausregel	Vintage Rasiermesser aus Edelstahl
