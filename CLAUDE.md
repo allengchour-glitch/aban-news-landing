@@ -7396,6 +7396,17 @@ geprüft — «Blutdruckmessgerät für den Oberarm» bleibt unberührt, es ist 
 - **Die Selbstkontrolle hat sich damit zum ersten Mal selbst bezahlt gemacht:** Der Fall war
   vier Stunden alt und stand in keinem Bericht, keiner Suche, keinem Ledger — nur der
   Objektscan hat ihn gesehen.
+- ⚠️ **ZWEITER Fall am selben Tag, andere Klasse:** Um 16:41 legte der Grind ein
+  **«Wimpernwachstums- und Augenstift-Set»** an — ACTIVE in allen sechs Kanaelen, obwohl der
+  Prompt Wirkversprechen im Titel seit dem 03.09. verbietet. Ein Wachstumsversprechen ist eine
+  Heilaussage (29.08.). **Eine Prompt-Regel haelt also auch beim zweiten Anlauf nicht; sie ist
+  eine Bitte an ein Modell, das gerade etwas anderes tut.** `wirkSicher()` schneidet
+  Wachstums-, Gegen-Befund- und Kur-Zusagen jetzt deterministisch aus dem Titel und haengt in
+  allen drei Importern hinter `messSicher()`. In beide Richtungen geprueft (8 Faelle,
+  0 Abweichungen): «Anti-Aging-Creme», «Hyaluronsaeure Serum» und die **«Wachstumstabelle fuer
+  Kinder»** bleiben unberuehrt — eine zulaessige kosmetische Aussage und ein Messband sind
+  keine Heilaussagen. Das Bestandsprodukt ist in allen sechs Feldern repariert (Titel, Handle
+  + 301, SEO-Titel, SEO-Text, Beschreibung, Alt-Text), Gegenprobe 0.
 
 ## 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 52'023 aktive Produkte, gemessen mit demselben Werkzeug wie am Vortag:
