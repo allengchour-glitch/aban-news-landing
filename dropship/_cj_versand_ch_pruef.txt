@@ -2153,3 +2153,9 @@ premium-leder-geldborse-slim	-	-	-	unklar keine CJ-SKU	bestseller
 hochdruck-tassenreiniger-fur-kaffeepitcher-147072	1409776968303513600	-	-	unklar 1602002 Product has been removed from  rest=233	bestseller
 haarentferner-mit-kristalltechnik-827648	1552885208847372288	-	-	unklar 1602002 Product has been removed from  rest=213	bestseller
 augenbrauen-epilierer-5121f6	-	-	-	unklar keine CJ-SKU	bestseller
+alu-retraktionsmesser-mit-5-ersatzklingen-244098	2032736007038599169	-	-	unklar 1602002 Product has been removed from  rest=281	klinge
+aluminium-einziehmesser-mit-5-ersatzklingen-108289	2032738533589823490	-	-	unklar 1602002 Product has been removed from  rest=305	klinge
+diamant-messerscharfer-aus-wolframstahl-746280	-	-	-	unklar keine CJ-SKU	klinge
+3-in-1-messerscharfer-fur-kuche-restaurant-983426	-	-	-	unklar pid 1602002 Product has been removed from 	klinge
+elektrischer-3-klingen-zwiebelschneider-609f82	-	-	-	unklar keine CJ-SKU	klinge
+kochmesser-western-stil-8-zoll-a547f6	-	-	-	unklar keine CJ-SKU	klinge
