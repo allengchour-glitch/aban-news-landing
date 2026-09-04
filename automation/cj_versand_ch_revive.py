@@ -170,6 +170,20 @@ def main():
             break
         c = pg["pageInfo"]["endCursor"]
 
+    # ⚠️ ZUERST DIE SEITEN MIT BESUCHERN. Die Kandidaten kommen sonst in Katalogreihenfolge,
+    # und der taegliche CAP reicht nie bis zu den wenigen, auf denen wirklich jemand landet.
+    # `TOTE-LANDESEITEN.md` misst genau das (Sitzungen je Handle) und wird taeglich neu
+    # geschrieben — ein wiederbelebtes Produkt heilt den 404 besser als jede Weiterleitung.
+    prio = set()
+    ber = os.path.join(REPO, "dropship", "TOTE-LANDESEITEN.md")
+    if os.path.exists(ber):
+        for z in open(ber, encoding="utf-8", errors="ignore"):
+            m = re.findall(r"`([^`]+)`", z)
+            prio.update(m)
+    if prio:
+        kand.sort(key=lambda p: 0 if p["handle"] in prio else 1)
+        print(f"  {sum(1 for p in kand if p['handle'] in prio)} davon mit gemessenem Verkehr — die zuerst")
+
     print(f"Drafts mit {TAG}: {len(kand)} pruefbar (ohne Risiko-Tag, mit vid, nicht quittiert)")
     n_ok = n_keine = n_verlust = n_unklar = 0
     led = open(LEDGER, "a", encoding="utf-8") if not DRY else None

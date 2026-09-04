@@ -9,6 +9,5 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 | Sitzungen | Titel | Handle |
 |---:|---|---|
 | 3 | (gelöscht) | `%F0%9F%8C%B8-muttertag-box-2026-schmuck-beauty-seide-spare-chf-60` |
-| 3 | (gelöscht) | `mini-ventilator-mit-eis-kuhlung-tragbar-leise-usb-sommer-2026` |
 | 3 | (gelöscht) | `kaschmir-schal-premium-100-bergkaschmir-handgewebt` |
 | 3 | (gelöscht) | `badeset-3-teilig-mit-neckholder-spitze-elegant-damen-mehrere-grossen` |

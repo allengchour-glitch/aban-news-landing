@@ -1,5 +1,29 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🧭 Tote Landeseiten heilen jetzt ohne Hand — die KATEGORIE ist die zweite Wahl (2026-09-04)
+`tote_landeseiten.py` setzte eine 301 nur, wenn ein fast identisches aktives Produkt existiert
+(Ähnlichkeit ≥ 0,70) — alles andere ging in den Bericht «hier entscheidet ein Mensch». Das ist
+für den ERSATZ richtig (ein halbwegs passendes Produkt ist ein Köderwechsel, 28.08.), für die
+KATEGORIE aber nicht: Wer auf einer toten Küchenmatte landet und in der Küchen-Abteilung
+ankommt, bekommt genau das, wonach er gesucht hat — nur breiter (Hausregel 29.08.).
+- Neue Reihenfolge: **Titel → Tag → Warengruppe**, jedes Ziel LIVE geprüft (im Onlineshop,
+  aktive Ware, selbst keine Weiterleitung — Shopify lehnt 301 auf 301 ab).
+  **Von 13 toten Seiten mit Verkehr sind 10 automatisch gesetzt**, 3 bleiben im Bericht.
+- ⚠️ **Der Titel ist genauer als der Tag** — der erste Trockenlauf schickte einen
+  «Quallen-Diffuser» auf *Wohnen & Dekoration* (Tag `deko`) und einen 4-l-Luftbefeuchter in die
+  *Küche* (Tag `haushalt`). Nicht falsch, aber unnötig grob; mit Titelwörtern zuerst landen sie
+  auf `sub-aroma-diffuser` und `haushaltsgeraete`.
+- ⚠️ **Bei GELÖSCHTEN Produkten gibt es weder Titel noch Tag — die Warenart steht nur im
+  HANDLE.** Der Handle ist der slugifizierte Titel, dieselben Wörter greifen also; damit wurde
+  aus einem unauflösbaren Fall («Mini-Ventilator …») ein sauberes Ziel. Vierte Fassung der
+  Lehre «wenn der Titel schweigt, reden productType, Beschreibung und Handle».
+- **Und der Grund, warum diese 13 überhaupt tot sind:** 8 tragen `cj-nicht-versendbar-ch`.
+  `cj_versand_ch_revive.py` hatte sie heute schon gegen den neuen CJ-Kanal gemessen — sie haben
+  **weiterhin keine CH-Linie**. Ein wiederbelebtes Produkt wäre besser als jede Weiterleitung,
+  deshalb sortiert der Revive-Lauf jetzt die Seiten mit gemessenem VERKEHR nach vorn
+  (`TOTE-LANDESEITEN.md` liefert die Sitzungszahlen). Der Tages-CAP reichte sonst nie bis zu
+  den wenigen Seiten, auf denen wirklich jemand landet.
+
 ## 📚 Der Phantom-Katalog lebte in 11 Ratgebern weiter — und er erfand Studien (2026-09-04)
 Betreiber: «verbessern alles, automatiseren, selbstentscheiden». Beim Prüfen EINES Weihnachts-
 Ratgebers fiel «Gentleman's Premium Gift Box (CHF 299.90)» auf — DRAFT, also nicht kaufbar.
