@@ -1569,3 +1569,30 @@ ak66-sechs-finger-gamepad-mit-vier-tasten-37ee65	-	-	-	unklar keine CJ-SKU	lande
 kabelloser-controller-fur-switch-ps3-bee6ad	-	-	-	unklar keine CJ-SKU	landeseite
 drahtloses-bluetooth-gamepad-4404b7	-	-	-	unklar keine CJ-SKU	landeseite
 kabelloser-gamecontroller-fur-switch-pc-659d62	-	-	-	unklar keine CJ-SKU	landeseite
+gamepad-fur-pubg-und-andere-games-1032a0	-	-	-	unklar keine CJ-SKU	landeseite
+teleskopisches-bluetooth-gamepad-27c168	-	-	-	unklar keine CJ-SKU	landeseite
+oxford-rucksack-wasserdicht-45l-842240	1519179018548031488	15	21.64	ok	landeseite
+brusttasche-fur-herren-rautenformig-217024	1424984591931936768	16	11.84	ok	landeseite
+brusttasche-fur-alltag-und-freizeit-349760	1424983959120515072	16	11.10	ok	landeseite
+brusttasche-wasserdicht-873216	1424983291513147392	16	10.83	ok	landeseite
+umhangetasche-herren-casual-445376	1424982623230496768	16	11.60	ok	landeseite
+canvas-rucksack-fur-reisen-und-laptop-796096	1420275225337139200	16	21.28	ok	landeseite
+canvas-retro-umhangetasche-254336	1420274098336043008	16	12.81	ok	landeseite
+luminoser-lidschatten-fur-augen-und-gesicht-d6c18d	-	-	-	unklar keine CJ-SKU	landeseite
+langanhaltender-uv-lidschatten-769542	-	-	-	unklar keine CJ-SKU	landeseite
+wimpernserum-3-ml-b5f10d	-	-	-	unklar keine CJ-SKU	landeseite
+reparaturplatten-set-7a9af5	-	-	-	unklar keine CJ-SKU	landeseite
+multifunktionale-flussige-grundierung-8e59e6	-	-	-	unklar keine CJ-SKU	landeseite
+silikon-narbenpflaster-606600	2503310231361608200	3	5.54	ok	landeseite
+kanguru-geldborse-business-clutch-445376	1529715896053411840	16	8.79	ok	landeseite
+kamera-schultertasche-aus-leder-081344	1529696835902910464	11	34.02	ok	landeseite
+damen-rucksack-reisetasche-mit-viel-stauraum-227456	1529001759161724928	16	12.81	ok	landeseite
+rindsleder-rucksack-fur-business-laptop-354496	1524600960780349440	16	23.15	ok	landeseite
+ultra-leichter-faltbarer-reise-rucksack-765632	1520040921251983360	16	5.55	ok	landeseite
+keramik-glasiertes-mehrstufiges-haarglattungsg-603100	2609020326381604400	7	12.17	ok	landeseite
+vintage-umhangetasche-aus-segeltuch-463296	1519236012105543680	16	12.21	ok	landeseite
+herren-bauchtasche-aus-oxford-stoff-400512	1519234672629395456	16	8.11	ok	landeseite
+brusttasche-im-chinesischen-stil-846336	1519231361759064064	16	9.47	ok	landeseite
+vintage-herren-schultertasche-aus-canvas-481344	1519229517729116160	16	11.00	ok	landeseite
+elektrische-gesichtsburste-mit-reinigungsfunkt-999bc1	-	-	-	unklar keine CJ-SKU	landeseite
+elektrisches-reinigungsgerat-fur-poren-b73b35	-	-	-	unklar keine CJ-SKU	landeseite

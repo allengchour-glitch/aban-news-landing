@@ -182,17 +182,26 @@ def main():
         body = a.get("body") or ""
 
         # A) Benannte Ware mit Preis, die auf eine Kollektion zeigt.
-        for m in re.finditer(r'<a href="/collections/[^"]+">([^<]{6,70})</a>(.{0,60})', body, re.S):
+        # ⚠️ 04.09.2026: DER PREIS STEHT MEIST IM LINKTEXT, NICHT DAHINTER.
+        # Diese Pruefung sah nur die 60 Zeichen NACH `</a>` — der 29.05.-Generator schreibt ihn
+        # aber INS Anker-Etikett: `<a href="/collections/x">Akupressur-Matte Premium Set
+        # (CHF 49.90)</a>`. Deshalb meldete der Lauf «0» und mein Klassen-Scan vom 02.09.
+        # ebenso, waehrend live 47 solcher Stellen standen. Zwoelfte Fassung derselben Lehre:
+        # eine Klassenzahl gilt nur fuer die FORM, mit der man gesucht hat.
+        for m in re.finditer(r'<a href="/collections/[^"]+">([^<]{6,90})</a>(.{0,60})', body, re.S):
             name, danach = m.group(1).strip(), m.group(2)
-            if not re.search(r"CHF\s*\d", danach):
+            if not re.search(r"CHF\s*\d", name + " " + danach):
                 continue
+            # Preis aus dem Etikett herausloesen, sonst verzerrt er das Kennwort.
+            name = re.sub(r"\s*[\(–—-]?\s*(?:fuer|für|zu|ab)?\s*CHF\s*[\d'’.]+\s*\)?\s*$",
+                          "", name).strip(" -–—") or name
             if KNOPF.match(name):
                 continue
             k = kennwort(name)
             if not k:
                 continue
             if not gibt_es(k, cache_n):
-                preis = re.search(r"CHF\s*[\d'’.]+", danach)
+                preis = re.search(r"CHF\s*[\d'’.]+", m.group(1) + " " + danach)
                 versprechen.append((a, name, preis.group(0) if preis else "—", k))
 
         # B) Ueberhaupt kein aktives Produkt verlinkt.
