@@ -26,6 +26,28 @@ mit dem Stand vom 31.08. weiter (7 geprüfte Beiträge, sicher, aber einfrierend
 - Einordnung: Der Katalog wächst um ~1'000 Produkte/Tag mit je ~5 Bildern — der
   Speicherdeckel ist damit keine Einmal-Sache, sondern eine Wachstumsgrenze des Plans.
 
+### 04.09. gemessen — jetzt mit Zahlen, und es ist eine ENTSCHEIDUNG, kein Klick
+| | |
+|---|---:|
+| Shopify Basic erlaubt | **100 GB — Produktmedien zählen mit** |
+| Katalog (Preisbänder gezählt) | 43'964 aktiv · **24'101 Entwürfe** |
+| Medien je Produkt (gemessen) | aktiv 1,49 MB · Entwurf 0,61 MB |
+| Produktmedien-Topf | **≈ 80 GB** · Dateien-Bibliothek nur 0,6 GB |
+| von hier gefahrlos löschbar (Entwurfsmedien sicherer Klassen) | **≈ 7 GB** |
+| bisher freigegeben | 342 MB — Upload-Probe scheitert **weiterhin** |
+
+**Was ich schon getan habe (ohne dich):** Zuflussbremse auf 1 statt 4 CJ-Runner
+(`dropship/_GRIND_RUNNER_ZAHL`, ~250 statt ~1'000 MB Bilder/Tag) und das Löschen der
+Entwurfsmedien abgeschalteter Lieferanten läuft. **Das Produkt bleibt jeweils vollständig
+bestehen** — Titel, Text, Preis, Tags; nur die Bilder gehen.
+
+**Deine Entscheidung — es gibt genau zwei Wege, und keiner ist technisch:**
+1. **Plan erhöhen** (Grow = 300 GB). Kostet Geld, löst das Problem für lange.
+2. **Katalog kleiner machen.** 24'101 Entwürfe stehen im Shop, die niemand kaufen kann.
+   Sie wirklich zu LÖSCHEN (statt nur zu entbildern) gibt ~15 GB frei und ist die Richtung,
+   die die eigene Aktenlage seit dem 29.08. ohnehin nahelegt: mehr Produkte bringen keinen
+   Suchverkehr. ⚠️ Das ist unumkehrbar — deshalb frage ich, statt es zu tun.
+
 ---
 
 ## ⏱️ Wenn du heute nur drei Dinge machst

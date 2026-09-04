@@ -10,7 +10,9 @@ und **zweimal habe ich mich dabei selbst korrigiert:**
 |---|---:|
 | Dateien-Bibliothek (GenericFile) | 948 Dateien · **958 MB** |
 | davon MP4 (eigene Reels, Werbefilme Juni–Aug.) | 101 · 616 MB |
-| **Produktmedien**: 63'845 Produkte × 1,44 MB | **≈ 92 GB** |
+| **Produktmedien** (gemessen an 240 Produkten, `originalSource.fileSize`) | **aktiv 1,49 MB · Entwurf 0,61 MB je Produkt** |
+| Katalog in Preisbändern gezählt (`productsCount` deckelt bei 10'000) | **43'964 aktiv · 24'101 Entwürfe** |
+| daraus der Produktmedien-Topf | **≈ 65 GB aktiv + ≈ 15 GB Entwürfe ≈ 80 GB** |
 | **Shopify Basic** | **100 GB, Produktmedien zählen mit** |
 
 1. **Erste Korrektur:** Ich begann mit den Medien von BigBuy-Entwürfen — und stoppte, als die
@@ -42,9 +44,20 @@ und **zweimal habe ich mich dabei selbst korrigiert:**
 - **Zuflussbremse:** `dropship/_GRIND_RUNNER_ZAHL` steuert die Zahl der CJ-Runner (jetzt **1
   statt 4**, ~250 statt ~1'000 MB Bilder pro Tag). Zurückdrehen heisst: Zahl auf 4 setzen.
   Die eigene Aktenlage sagt seit dem 29.08., dass mehr Produkte keinen Suchverkehr bringen.
-- **Der ehrliche Rest ist eine Betreiber-Entscheidung:** Bei ~92 GB gegen 100 GB und einem
-  Katalog, der weiter wächst, ist Aufräumen ein Aufschub, kein Ausweg. Entweder der Katalog
-  wird kleiner (Entwürfe löschen statt nur entbildern) oder der Plan grösser (Grow = 300 GB).
+- **Wie viel überhaupt zu holen ist, ist jetzt gemessen statt geschätzt:** ALLE Entwurfsmedien
+  wären **≈ 15 GB**; die drei Klassen, deren Sicherheit belegt ist (BigBuy · nicht-lieferbar-ch ·
+  bb-versand-unrentabel), sind davon **≈ 7 GB**. Das ist kein Rundungsfehler — es sind 7 %
+  des Deckels, und mit der gedrosselten Zuflussrate (~0,25 statt ~1 GB/Tag) reicht das rund
+  **vier Wochen statt einer**.
+- ⚠️ **Und es reicht trotzdem nicht als Lösung:** Nach 342 MB freigegebenem Platz scheitert die
+  Upload-Probe unverändert mit `FILE_STORAGE_LIMIT_EXCEEDED` — wir stehen also nicht bei 92 von
+  100 GB, sondern faktisch AM Deckel. **Ein Speicherstand, den die API nicht ausgibt, ist nur
+  über die Probe messbar** (Shopify liefert keine Nutzungszahl); jede GB-Angabe hier ist eine
+  Hochrechnung aus Stichproben, die Probe ist die einzige harte Aussage.
+- **Der ehrliche Rest ist eine Betreiber-Entscheidung:** Bei ~80 GB Produktbildern gegen 100 GB
+  und einem Katalog, der weiter wächst, ist Aufräumen ein Aufschub, kein Ausweg. Entweder der
+  Katalog wird kleiner (Entwürfe löschen statt nur entbildern — 24'101 Stück) oder der Plan
+  grösser (Grow = 300 GB).
 
 ## 🛒 Der Kassentest, den es nie gab — Warenkorb, Rabatt und Kasse sind in Ordnung (2026-09-04, spät)
 Seit dem 29.08. steht im Gedächtnis: «Ein echter Kassentest wäre der endgültige Beweis; den habe
