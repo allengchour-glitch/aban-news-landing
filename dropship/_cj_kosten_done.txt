@@ -10391,3 +10391,11 @@ gid://shopify/Product/15453540745601	CHF 8.33	16 Varianten	Hundebademantel
 gid://shopify/Product/15453540811137	CHF 17.44	5 Varianten	Leopard-Print-Kleid
 gid://shopify/Product/15453540843905	CHF 36.57	2 Varianten	Hundeschutzmatte
 gid://shopify/Product/15453540909441	CHF 7.51	2 Varianten	Katzen Geburtstag
+gid://shopify/Product/15453540942209	CHF 46.90	1 Varianten	Faltenhundebett aus Kunststoff
+gid://shopify/Product/15453569450369	CHF 6.52	14 Varianten	Haarbancken für Mädchen
+gid://shopify/Product/15453569810817	cj-abgekuendigt-pruefen
+gid://shopify/Product/15453569941889	CHF 12.59	1 Varianten	Widerstands-Bänder Set
+gid://shopify/Product/15453570105729	CHF 22.40	1 Varianten	Minimassager
+gid://shopify/Product/15453570302337	CHF 5.04	8 Varianten	Schreibhilfe für Kinder
+gid://shopify/Product/15453570400641	CHF 25.29	2 Varianten	Farbblock-Strickpullover
+gid://shopify/Product/15453570433409	CHF 13.57	5 Varianten	Lederfreie Strickjacke

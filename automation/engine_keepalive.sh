@@ -360,6 +360,10 @@ for P in "$REPO_AUTO"/*.py; do
 done
 
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
+# BETREIBER-AMPEL (04.09.2026, «mach das alles geht ohne mich»): EINE Zeile mit dem, was
+# gerade wirklich einen Menschen braucht — messbare Blocker werden LIVE nachgemessen und
+# verschwinden von selbst, der unmessbare Rest wird nur gezaehlt. Schweigt, wenn nichts ist.
+[ -f "$REPO_AUTO/betreiber_ampel.py" ] && python3 "$REPO_AUTO/betreiber_ampel.py" 2>/dev/null
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim

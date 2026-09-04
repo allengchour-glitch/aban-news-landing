@@ -182,17 +182,31 @@ def main():
                 print(f"{pid} create-fehler {med.get('mediaUserErrors')}", flush=True); continue
             # ⚠️ Auf READY warten. Ein FAILED-Medium wird geloescht — ein Produkt mit
             # unsichtbarem Hauptbild ist schlimmer als eines mit kleinem (Messer-Falle 11.08.).
-            status = "PROCESSING"
+            status, fehler = "PROCESSING", []
             for _ in range(12):
                 time.sleep(3)
-                st = sgql('query($id:ID!){ node(id:$id){ ... on MediaImage{ status } } }', {"id": mid})
-                status = (((st.get("data") or {}).get("node") or {}).get("status")) or status
+                st = sgql('query($id:ID!){ node(id:$id){ ... on MediaImage{ status '
+                          'fileErrors{code message} } } }', {"id": mid})
+                nd = ((st.get("data") or {}).get("node") or {})
+                status = nd.get("status") or status
+                fehler = nd.get("fileErrors") or fehler
                 if status in ("READY", "FAILED"):
                     break
             if status != "READY":
                 sgql('mutation($id:ID!,$m:[ID!]!){ productDeleteMedia(productId:$id, mediaIds:$m){ deletedMediaIds } }',
                      {"id": p["id"], "m": [mid]})
-                print(f"{pid} medium-{status.lower()}-geloescht", flush=True); continue
+                # ⚠️ 04.09.2026: Ein FAILED sagte bisher nur «medium-failed-geloescht» — der GRUND
+                # steht aber in fileErrors, und er war an diesem Morgen 33× derselbe:
+                # FILE_STORAGE_LIMIT_EXCEEDED. Ohne ihn sieht ein voller Datei-Speicher aus wie
+                # ein sprunghafter Bildfehler, und der Lauf probiert stur weiter.
+                code = (fehler[0].get("code") if fehler else "") or ""
+                print(f"{pid} medium-{status.lower()}-geloescht {code}", flush=True)
+                if code == "FILE_STORAGE_LIMIT_EXCEEDED":
+                    print("⛔ DATEI-SPEICHER VOLL — jeder weitere Upload scheitert gleich. "
+                          "Lauf beendet (Betreiber: Shopify → Einstellungen → Dateien).",
+                          flush=True)
+                    return
+                continue
             sgql('mutation($id:ID!,$m:[MoveInput!]!){ productReorderMedia(id:$id, moves:$m){ userErrors{message} }}',
                  {"id": p["id"], "m": [{"id": mid, "newPosition": "0"}]})
             sgql('mutation($id:ID!,$t:[String!]!){ tagsRemove(id:$id, tags:$t){ userErrors{message} }}',
