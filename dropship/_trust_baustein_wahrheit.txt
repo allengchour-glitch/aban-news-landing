@@ -20180,3 +20180,63 @@
 15480828100993	ersetzt-1	D20 Smart Health Armband Y68 Sports-Armband
 15480828199297	ersetzt-1	Notruf-Armband mit Sturzsensor und Bluetooth
 15480828232065	ersetzt-1	Desert Battle Outdoor Wanderstiefel
+15480828264833	ersetzt-1	Mi Band 6 Runway Smartwatch
+15480828395905	ersetzt-1	Augenmassagegerät gegen Müdigkeit
+15480828428673	ersetzt-1	Fashion Martin Worker Boots
+15480828461441	ersetzt-1	F9 Smart-Armband mit Farbdisplay
+15480828526977	ersetzt-1	X6 Smart Bracelet: Bluetooth Anrufe & Musik
+15480828559745	ersetzt-1	Android Auto & CarPlay Modul fürs Auto
+15480828592513	ersetzt-1	Britische Retro-Stiefel für Herren
+15480828887425	ersetzt-1	Lederarmband aus Rindsleder
+15480828920193	ersetzt-1	Smart-Armband mit Herzfrequenz
+15480828952961	ersetzt-1	Martin Booties im Britischen Stil
+15480830099841	ersetzt-1	Vintage Lederarmband für Apple Watch
+15480830198145	ersetzt-1	Stahlkappen-Mid-Top Sicherheitsschuh
+15480830493057	ersetzt-1	Smart Ring Bluetooth-Fernbedienung
+15480830558593	ersetzt-1	Herren Cargo Boots aus PU-Leder
+15480830624129	ersetzt-1	USB 3.0 Stick mit Metallgehäuse und Halskette
+15480830656897	ersetzt-1	USB-Taschenlampe für Outdoor und Zuhause
+15480830689665	ersetzt-1	Chelsea Boots mit Stickerei
+15480830722433	ersetzt-1	Mini USB-Stick mit Cartoon-Anhänger
+15480830755201	ersetzt-1	Selfie Stick Stativ mit LED-Ringlicht
+15480830820737	ersetzt-1	Green Link Externe Festplattenstation
+15480830886273	ersetzt-1	Rutschfeste Retro Martin Boots für Herren
+15480830951809	ersetzt-1	USB-Stick Set aus Holz
+15480831017345	ersetzt-1	Britische Wildleder-Martin Boots für Herren
+15480831050113	ersetzt-1	Fusswärmer – schnell & bequem
+15480831082881	ersetzt-1	USB-Hub mit 4 Ports und Verlängerungskabel
+15480832196993	ersetzt-1	Atmungsaktive, rutschfeste Herren-Stiefelette
+15480832328065	ersetzt-1	Smarte Schlafmaske für entspannte Augen
+15480832721281	ersetzt-1	Martin Boots – Hohe Arbeitsstiefel für Herren
+15480832983425	ersetzt-1	Marathon Herzfrequenzmesser V9
+15480833016193	ersetzt-1	High-Speed Mobile SSD
+15480833048961	ersetzt-1	Herren Martin Boots mit Absatzerhöhung
+15480833114497	ersetzt-1	Portables Mikrofon für Interviews und Radio
+15480833147265	ersetzt-1	Western Cowboystiefel für Herren
+15480833245569	ersetzt-1	Digitales Meridian-Massagegerät mit Farb-Touchscreen
+15480833311105	ersetzt-1	Warme Lammfell-Boots aus Veloursleder
+15480833474945	ersetzt-1	WLAN-Überwachungskamera für Aussenbereiche
+15480833507713	ersetzt-1	Elegante Wildleder-Schuhe für Herren
+15480833540481	ersetzt-1	Mückenstich Heilstift
+15480833606017	ersetzt-1	Martin Boots Leder High-Top
+15480833671553	ersetzt-1	Smart Rope Skipping Cordless Ball
+15480833802625	ersetzt-1	Chelsea Low-Top Martin Boots für Herren
+15480833868161	ersetzt-1	Bluetooth-Brille mit Stereo-Headset
+15480834883969	ersetzt-1	Herren Multifunktions-Quarzuhr, wasserdicht
+15480835277185	ersetzt-1	Smart Stereo Bluetooth Sonnenbrille
+15480836030849	ersetzt-1	Highlighter Ball Rosy-cheeked
+15480838029697	ersetzt-1	Micro-Pore Kapuze mit 3D-Reissverschluss
+15480840225153	ersetzt-1	Wasserdichter Laptop-Rucksack (Unisex)
+15480947212673	ersetzt-1	Kabellose Bluetooth-Kopfhoerer
+15480948261249	ersetzt-1	Bluetooth Intercom Headset für Velohelme
+15480948982145	ersetzt-1	Kabellose Knochenschall Sport-Kopfhörer
+15481067405697	ersetzt-1	Smart-Armband
+15481068323201	ersetzt-1	Intelligenter Handring
+15481068421505	ersetzt-1	QS19 Smart-Armband mit Gesundheitsmonitoring
+15481068552577	ersetzt-1	DTX Smartwatch 1.78" HD Sport & Alarm
+15481069339009	ersetzt-1	Smart Armband für Herzfrequenz und Sport
+15481070190977	ersetzt-1	LEMFO Y99 Kinder Smartwatch mit 4G & GPS
+15481070485889	ersetzt-1	Lederarmband im Literatur-Stil für Samsung S3
+15481070649729	ersetzt-1	R5 Sportuhr mit Herzfrequenz
+15481070780801	ersetzt-1	Smart-Armband für Sport und Gesundheit
+15481072550273	ersetzt-1	Multi-Sport Smart Bracelet
