@@ -10720,3 +10720,12 @@ gid://shopify/Product/15453761601921	CHF 7.11	5 Varianten	Französische Stickere
 gid://shopify/Product/15453761634689	CHF 13.38	60 Varianten	Damenkleid 'Zuerst Kaffee' Kartoon-Muster mit Getr
 gid://shopify/Product/15453761667457	CHF 11.33	40 Varianten	Trendy Sweatshirt mit Kapuze
 gid://shopify/Product/15453761700225	CHF 7.91	2 Varianten	Flexible USB-Sticklampe, 30 cm
+gid://shopify/Product/15453761732993	CHF 13.88	60 Varianten	Damen Sweat Hoodie mit Kapuze und Tasche
+gid://shopify/Product/15453761765761	CHF 32.07	1 Varianten	Afrikanische Wachstuchdrucke
+gid://shopify/Product/15453761798529	CHF 13.31	60 Varianten	Lässiger Waffelstrick-Stehkragen-Pullover mit Reis
+gid://shopify/Product/15453761831297	CHF 7.65	2 Varianten	Tischkalender mit Doppelfotorahmen
+gid://shopify/Product/15453761864065	CHF 14.29	30 Varianten	Bequem Fit Fleecefutter Hoodie mit Taschen
+gid://shopify/Product/15453761929601	CHF 15.09	25 Varianten	Farbige Hoodie mit Kordelzug
+gid://shopify/Product/15453761962369	CHF 24.20	1 Varianten	Zen-Bodhidharma Flussüberquerung Ornament
+gid://shopify/Product/15453761995137	CHF 13.17	5 Varianten	Herbststil Kapuze mit Holz Ohrenschützern
+gid://shopify/Product/15453762027905	CHF 29.27	2 Varianten	Kupfer-Löwe Dekoration

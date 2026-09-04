@@ -1648,3 +1648,8 @@ buro-heizdecke-mit-bauchstutze-629500	2607100820221620900	7	16.90	ok	hype-jetzt
 full-hd-mini-beamer-mit-autofokus-619300	2607020914411610000	7	31.00	ok	hype-jetzt
 3-in-1-magsafe-power-bank-fur-smartwatches-601800	2606120857201602400	0	-	KEINE CH-Option → DRAFT	hype-jetzt
 mini-beamer-fur-home-office-heimkino-623500	2505010609241624000	3	45.67	ok	hype-jetzt
+kabelloses-mini-mikrofon-mit-magnetclip-297088	1797869064514183168	7	8.10	ok	hype-jetzt
+selfie-stick-stativ-mit-led-ringlicht-699712	1516325762050306048	7	12.41	ok	hype-jetzt
+kabelloses-ansteckmikrofon-mit-ladebox-016064	1723906111528513536	7	6.88	ok	hype-jetzt
+tragbarer-mini-projektor-mit-wifi-720p-nativ-366976	1795728107614253056	7	16.75	ok	hype-jetzt
+mini-beamer-720p-716096	1733064571608379392	7	18.08	ok	hype-jetzt

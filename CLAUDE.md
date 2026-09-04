@@ -1,5 +1,77 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 📚 Der Phantom-Katalog lebte in 11 Ratgebern weiter — und er erfand Studien (2026-09-04)
+Betreiber: «verbessern alles, automatiseren, selbstentscheiden». Beim Prüfen EINES Weihnachts-
+Ratgebers fiel «Gentleman's Premium Gift Box (CHF 299.90)» auf — DRAFT, also nicht kaufbar.
+Die Klassenmessung darauf: **47 Stellen, an denen ein Produktname MIT Preis an einem
+KOLLEKTIONS-Link hängt.** Eine Kollektion hat keinen Preis; wo einer steht, ist er behauptet.
+- **Warum das zweimal übersehen wurde:** `ratgeber_ohne_ware.py` liest die 60 Zeichen NACH
+  `</a>` — der 29.05.-Generator schreibt Name und Preis aber **INS Anker-Etikett**
+  (`<a href="/collections/x">Akupressur-Matte Premium Set (CHF 49.90)</a>`). Deshalb meldete
+  der Wächter «0», und mein eigener Klassen-Scan vom 02.09. ebenso. **Zwölfte Fassung
+  derselben Lehre: eine Klassenzahl gilt nur für die FORM, mit der man gesucht hat.**
+  Behoben — der Melder sieht jetzt beide Formen und fand sofort 4 harte Fälle.
+- **39 Stellen in 11 Ratgebern ersetzt**, jede einzeln gegen den Live-Katalog geprüft: echte
+  Ware mit echtem Preis (UFO Kristall-Salzlampe 24.90 · TPE-Falt-Yogamatte 22.90 ·
+  Akupressur-Set 49.90 · Teleskop-Faszienrolle 31.90 + Peanut-Ball 31.90 · 6er-Set ätherische
+  Öle **14.90 statt 29.90** · Sojawachskerze 15.90 · Thermosflasche 28.90 · Keramik-Blumentopf
+  24.90 · Leinwandbild 20.90 · Wolldecken 18.90/78.90 · Home-Wellness-Bundle 99.00 · Tech Hero
+  Geschenkbox 199.90). Wo es NICHTS gibt, fallen Name UND Preis weg.
+- ⚠️ **Erfundene Attribute gehen mit:** «Jacquard im Nordic-Style», «handgeschnitzt», «6 mm
+  Dämpfung», «Kuznetsov-Spikes», «spart CHF 25», «per App steuerbar», «Anti-Oxidations-
+  Innenseite». Nur den Link zu tauschen genügt nie — der Folgetext beschreibt die Phantom-Ware.
+- **⛔ Und der schwerere Fund daneben: der Generator hat STUDIEN ERFUNDEN und sie NAMEN
+  zugeschrieben.** «Studie der Universität Zürich 2021: −18 % Cortisol», «Universität Wien an
+  200 Teilnehmern: −28 % Stress-Marker», «Studie Harvard 2024: 47 % weniger Burnout»,
+  «Journal of Alternative Medicine 2019: +35 % Schlafqualität», «+28 % Konzentration»,
+  «−32 % Augenermüdung», «−23 % Cortisol». Dazu Heilaussagen an Ware, die der Shop FÜHRT:
+  «antibakteriell, antiviral, immunstärkend», «schleimlösend», «angstlösend», «bei Pickeln»,
+  «bei Kopfschmerzen», «bei Erkältung». 11 Studien-Aussagen und 35 Wirkaussagen in 10 Artikeln
+  entfernt; Gegenprobe über alle 307: **0**. Die Sicherheitshinweise bleiben — sie stimmen.
+  **Eine erfundene Zahl einer echten Universität zuzuschreiben ist die schlimmste Form dieser
+  Klasse.** Was sich nicht belegen lässt, wird nicht behauptet — auch nicht abgeschwächt.
+- ⚠️ **Nicht angefasst:** «Holz/Bambusviskose ist antibakteriell» und «Sportsocken mit
+  antibakterieller Ausrüstung» — das sind Materialeigenschaften, keine Heilversprechen.
+  Ein Wortfund ist noch kein Grund (Lehre 22.08.).
+- ⚠️ **Eine Melder-Erweiterung wurde VERWORFEN, weil sie ihre Beweislast nicht trug:** Eine
+  Klasse «Name + Preis OHNE Link» erzeugte 7 Treffer, **7 Fehlalarme** («Schwimmbrillen starten
+  in der Schweiz bei CHF 20») — und verfehlte den echten Fall. Deutsch schreibt Substantive
+  gross, ein Grossbuchstabe unterscheidet nichts. **Bei einem Melder liegt die Beweislast beim
+  Alarm; ein Melder, der nur Fehlalarme liefert, ist schlechter als keiner.**
+
+## 🧾 «Produktdetails» stand 1'542-mal doppelt — das Werkzeug las einen Export vom 30.08. (2026-09-04)
+Der Klassen-Vollscan meldete 1'542 aktive Produkte mit dem Block zweimal untereinander; zehn
+davon am OBJEKT nachgeprüft: 10/10 tragen ihn wirklich. Das Werkzeug dafür gibt es seit dem
+11.08. — es las aber `/tmp/export.jsonl` (Stand 30.08.) und meldete deshalb täglich «0».
+**Ein Werkzeug, dessen Quelle veraltet, meldet Vollzug über eine Vergangenheit.**
+Es liest jetzt die Arbeitsliste des täglichen Klassen-Vollscans (`LISTE=`) und holt jeden Text
+unmittelbar vor dem Schreiben LIVE; im Aufseher registriert, unter dem GETEILTEN
+Produkttext-Schloss (zwei Massen-Schreiber auf `descriptionHtml` sind die Zombie-Klasse 15.08.).
+
+## 🧭 «Mach das alles geht ohne mich» — eine Ampel, die sich selbst abräumt (2026-09-04)
+Was einen Menschen braucht, stand in `dropship/COWORK-AUFTRAEGE.md` — einem Dokument, das nur
+liest, wer danach fragt, und das veraltet, sobald er etwas erledigt.
+`automation/betreiber_ampel.py` misst jeden MESSBAREN Blocker live und druckt EINE Zeile in
+jedem Keepalive; behobene Blocker verschwinden von selbst:
+`BRAUCHT DICH: Shopify-Datei-Speicher voll · TikTok-Queue 4 Tage alt · 19 Punkte`
+- ⚠️ **Zwei Messfallen, beide vor dem Scharfschalten gefunden:** (1) Die neuesten 25 Dateien zu
+  lesen findet den Fehlschlag NICHT — der Grind legt ~2'000 Produktbilder am Tag an, ein Fehler
+  von 06:47 ist mittags 2'000 Einträge zurück; `query:"status:FAILED"` trifft ihn direkt
+  (`file_status:` wird still ignoriert und liefert PROCESSING — der stille Filter, sechste
+  Fassung). (2) **Das Alter einer CDN-Datei ist NICHT am HTTP-Kopf messbar:** Shopify setzt
+  `last-modified` auf den Zeitpunkt, zu dem der Edge sie geholt hat — gemessen «jetzt» für eine
+  Datei vom 31.08. **Ein Zeitstempel des Zustellers ist kein Alter des Inhalts**; gelesen wird
+  jetzt das Feld `stand` IM Inhalt.
+- **Der Datei-Speicher ist wirklich voll, und er trifft nur die Bibliothek:** 33 Uploads sind
+  heute um 06:45–06:47 mit `FILE_STORAGE_LIMIT_EXCEEDED` gescheitert. Die 393 heute
+  importierten Produkte haben trotzdem alle READY-Bilder — Produktmedien holt Shopify selbst
+  von der Quell-URL. `bild_quadrat_auffuellen.py` meldete einen solchen Fehlschlag bisher nur
+  als «medium-failed-geloescht»; es nennt jetzt den Grund und bricht bei vollem Speicher ab,
+  statt jeden weiteren Kandidaten gleich scheitern zu lassen.
+- **Und die Container-Wahrheit, die jede Diagnose vorher braucht:** `uptime` zeigt regelmässig
+  «up 5 min» — der Container startet etwa stündlich neu und nimmt jeden Motor mit. Kein Killer,
+  sondern Neustarts.
+
 ## 🩺 «104 bereinigt, 0 übrig» galt nur für Wörter, die das Muster kannte (2026-09-03, abends)
 Beim Ansehen der neu ins Menü gehobenen Geschenk-Kategorie fiel eine Produkt-URL auf:
 `smartwatch-mit-herzfrequenz-**blutdruck**-schlaftr-102528`. Nachgemessen über alle 52'043
