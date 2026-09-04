@@ -22109,3 +22109,16 @@
 15491414524289	ersetzt-1	Japanisches Eis-Nagelset mit Goldfolie
 15491415507329	ersetzt-1	Flache Freizeitschuhe für Damen
 15491415671169	ersetzt-1	Vielseitige Sandalen mit dicker Sohle
+15491415966081	ersetzt-1	Bequeme, atmungsaktive High-Top-Schuhe für Herren
+15491416097153	ersetzt-1	Herren Outdoor-Sandalen mit rutschfester Sohle
+15491416588673	ersetzt-1	Barock Perlenarmband – Edelstahl, 18K vergoldet
+15491416719745	ersetzt-1	Titanstahl-Ring vergoldet, oval
+15491416818049	ersetzt-1	Retro-Ring aus Titanstahl mit Antik-Finish
+15491416949121	ersetzt-1	Mehrfarbiger Geburtsstein-Ring aus Kupfer
+15491417047425	ersetzt-1	Unendlichkeitssymbol Geburtsstein Ring
+15491417112961	ersetzt-1	Personalisierbarer Silberring mit Zirkonia
+15491417244033	ersetzt-1	DIY Buchstaben-Halskette aus Edelstahl
+15491417309569	ersetzt-1	Edelstahl-Halskette mit U-Form & Perle
+15491417440641	ersetzt-1	Herz-Halskette mit bunten Kristall-Zirkonia
+15491417506177	ersetzt-1	Exklusive Halskette aus Titanstahl
+15491417604481	ersetzt-1	Halskette "Wassertropfen" mit Zirkonia

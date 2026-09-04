@@ -1,5 +1,35 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 📸 Die Kundinnenfotos: erst zuordnen, dann zeigen — und eine Fehlermeldung, die in die Irre führt (2026-09-04)
+Betreiber: «eine kunde hat fotos gemacht … zeigen und model für mich» und danach ein iCloud-Link
+mit «mach zuerst einse screenshot oder so bevor online». Beides eingehalten: 10 Fotos geholt,
+Vorschau gebaut, **nichts publiziert**.
+- **Zugeordnet statt geraten:** Der Betreiber selbst hat am 14.08. mit **#1013** genau zwei Kleider
+  bestellt — die Bestellliste beantwortet die Frage «welches Produkt ist das?» ohne jede Vermutung.
+  Bildvergleich bestätigt: 7 Fotos zeigen das «Blumenkleid mit Schnürung» (Bänder einmal offen,
+  einmal gebunden — dasselbe Kleid, nicht zwei), 3 das «Midikleid mit Zopfmuster».
+- ⚠️ **In meiner ersten Vorschau standen erfundene Grössen** («S · M · L · XL»), weil ein Mockup
+  sich harmlos anfühlt. Es ist keins: Der Betreiber liest es als Tatsache. Echte Werte geholt —
+  Blumenkleid XS–L (4 Varianten), Midikleid **8 Farben × 5 Grössen = 40**. **Auch eine Vorschau
+  darf nichts behaupten, was der Shop nicht hergibt.**
+- ⚠️ **Und daraus folgte der eigentliche Befund:** Beim Midikleid darf das Kundinnenfoto NICHT das
+  Hauptbild werden — es zeigt EINE der acht Farben, für die anderen sieben wäre es eine
+  Falschangabe. Beim Blumenkleid (eine Farbe) darf es vorn. **Ein echtes Foto ist kein Freibrief;
+  es gilt nur für die Variante, die darauf zu sehen ist.**
+- **iCloud-Abruf ohne Anmeldung, Rezept in `dropship/KUNDIN-MODEL.md`.** Der Trick ist EIN
+  Parametername: `publicAccessAuthToken`. `ckWebAuthToken` antwortet «check you have the correct
+  API Token for this container» — und schickt damit auf die Suche nach einem Container-Token, den
+  es gar nicht braucht. Gefunden wurde der richtige Name im Bundle der Web-App.
+  **Eine Fehlermeldung nennt oft nicht das fehlende Stück, sondern das erste, das auffällt.**
+- ⚠️ Der `sharedstreams`-Weg gilt nur für klassische geteilte Alben; ein
+  `share.icloud.com/photos/…`-Link ist ein CloudKit-Share und antwortet dort mit **404** — was wie
+  ein toter Link aussieht und keiner ist. Ich habe zuerst 130 Partitionen abgeklappert und dabei
+  die Antwort verschluckt; **die erste Diagnose war, EINE rohe Antwort mit Kopfzeilen anzusehen.**
+- ⚠️ **Kein Foto kommt ins Repo — es ist öffentlich**, und die Person ist erkennbar. Die Bilder
+  liegen in /tmp; der Link ist dauerhaft, das Rezept steht in der Datei. Offen bleiben die
+  schriftliche Einwilligung und der volle Shopify-Dateispeicher.
+
+
 ## 🧭 Tote Landeseiten heilen jetzt ohne Hand — die KATEGORIE ist die zweite Wahl (2026-09-04)
 `tote_landeseiten.py` setzte eine 301 nur, wenn ein fast identisches aktives Produkt existiert
 (Ähnlichkeit ≥ 0,70) — alles andere ging in den Bericht «hier entscheidet ein Mensch». Das ist
