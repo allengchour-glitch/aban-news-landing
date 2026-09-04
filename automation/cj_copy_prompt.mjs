@@ -50,6 +50,33 @@ export function floskelZaehler(html) {
 const TRAEGER_RE = /(?<![\wäöüß])(smartwatch|smart\s*watch|armband|fitness[- ]?tracker|smart[- ]?ring|wearable)|[\wäöüß]*(uhr|watch)(?![\wäöüß])/i;
 const MESSWORT = 'Blutdruck|EKG|Blutzucker|Glukose|Elektrokardiogramm|ECG';
 
+// ⚠️ 04.09.2026 — WIRKVERSPRECHEN IM TITEL, deterministisch statt als Bitte.
+// Der Prompt verbietet sie seit dem 03.09.; heute um 16:41 legte der Grind trotzdem ein
+// «Wimpernwachstums- und Augenstift-Set» an, ACTIVE in allen sechs Kanaelen. Ein Modell
+// kann eine Anweisung ignorieren, eine Pruefung nicht — dieselbe Lehre wie bei messSicher().
+// Ein Wachstumsversprechen ist eine Heilaussage (Lehre 29.08.); eine zulaessige kosmetische
+// Aussage ist es NICHT: «Anti-Aging-Creme» und «Hyaluron-Serum» bleiben unberuehrt.
+const WACHSTUM_RE = /\b(wimpern|haar|bart|augenbrauen|n[äa]gel|nagel|brust|penis)[a-zäöüß]*wachstums?[a-zäöüß]*\b/gi;
+const GEGEN_RE = /\bgegen\s+(pigmentflecken|falten|akne|cellulite|haarausfall|schuppen|krampfadern|besenreiser|narben|dehnungsstreifen)\b/gi;
+const KUR_RE = /\b(abnehm[a-zäöüß]*|detox|whitening|aufhellend)\b/gi;
+
+export function wirkSicher(o) {
+  if (!o || !o.title) return o;
+  const schnitt = (t) => t
+    .replace(WACHSTUM_RE, (m) => m.replace(/wachstums?[a-zäöüß]*/i, ''))
+    .replace(GEGEN_RE, '')
+    .replace(KUR_RE, '')
+    .replace(/\s*[,&]\s*(?=[,&])/g, '')
+    .replace(/\s*(?:und|&)\s*(?=[,.]|$)/gi, '')
+    .replace(/^\s*[,&·–-]+\s*|\s*[,&·–-]+\s*$/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\b(?:mit|für|fuer|zur|zum|und|inkl\.?)\s*$/i, '')
+    .trim();
+  const t2 = schnitt(o.title);
+  if (t2.length >= 8 && t2 !== o.title) o.title = t2;
+  return o;
+}
+
 export function messSicher(o) {
   if (!o || !o.title) return o;
   if (!TRAEGER_RE.test(o.title)) return o;
