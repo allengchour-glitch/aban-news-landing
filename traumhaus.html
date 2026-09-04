@@ -8214,7 +8214,22 @@ setTimeout(function baueGebaeude(){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,bahnFest,true);});
   /* Die Haltestelle bleibt bewusst OHNE fest: sie ist Strassenmoebel und darf
      ausweichen — festgenagelt stand sie auf dem Mastfuss bei x -24. */
-  bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ⚠️ x -20 WAR VIER METER VOM MASTFUSS (Masten bei -96,-60,-24,24,60,96).
+     GEMESSEN (th-echt): th17_oberleitungsmast schneidet die Haltestelle mit echten
+     Mesh-Paaren, 1,03 m tief — und weil die Haltestelle absichtlich ohne `fest`
+     steht und ausweichen darf, traf sie in einem zweiten Lauf stattdessen
+     th8_werkstatt_offen (1,18 m, 18 Paare). Sie hatte schlicht keinen Platz.
+     -42 liegt mittig zwischen den Masten -60 und -24: 18 m nach beiden Seiten. */
+  /* ⚠️ x -20 WAR VIER METER VOM MASTFUSS (Masten bei -96,-60,-24,24,60,96).
+     GEMESSEN (th-echt): der Oberleitungsmast schnitt die Haltestelle mit echten
+     Mesh-Paaren, 1,03 m tief; weil sie absichtlich ohne `fest` steht und ausweichen
+     darf, traf sie im naechsten Lauf stattdessen th8_werkstatt_offen (18 Paare). Sie
+     hatte schlicht keinen Platz.
+     ⚠️ x -42 GERATEN UND FALSCH: dort steht das Baulager (th46_materiallager 39
+     Paare, th46_baucontainer 25). Danach GEMESSEN statt geraten — Belegung entlang
+     z = 108 fuer x -100..100, 126 Bauwerke im Band: die breitesten Luecken liegen bei
+     x = -78 und x = +78 mit je 8 m Luft zum naechsten Nachbarn (einem Signal). */
+  bau("th17_tramhaltestelle.glb",3.0,-78,0,108,Math.PI,false,null,true);
   /* ── 🏪 Charge 48: Marktplatz ───────────────────────────────────────────────
      Der Platz bei (26|67) war ein Kartenpunkt mit zwei Ahornbaeumen. Das Rathaus
      steht bei (40|84) und zeigt seinen Portikus nach Sueden auf diesen Platz —
