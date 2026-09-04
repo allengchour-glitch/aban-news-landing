@@ -21,7 +21,7 @@ import { heikelZweck } from './heikel_zweck.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
-import { copyPrompt } from './cj_copy_prompt.mjs';
+import { copyPrompt, messSicher } from './cj_copy_prompt.mjs';
 import { groqText } from './groq_text.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -610,10 +610,10 @@ async function gemini(nameEn,feats,kat){
  const prompt=copyPrompt({nameEn,feats,kat});   // EINE Quelle: automation/cj_copy_prompt.mjs (02.09.2026)
  // KOSTEN-REGEL (User 2026-07-06): Groq (gratis) ist PRIMÄR — Gemini (bezahlt) nur noch Fallback,
  // Massen-Importe haben sonst CHF 46/Woche Gemini-Guthaben verbrannt.
- const g0=await groq(prompt); if(g0&&g0.title&&g0.html)return g0;
+ const g0=await groq(prompt); if(g0&&g0.title&&g0.html)return messSicher(g0);
  for(let i=0;i<3;i++){const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GK}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.5,maxOutputTokens:1500,thinkingConfig:{thinkingBudget:0},responseMimeType:'application/json'}})});
   const j=await r.json(); if(j.error){if(j.error.code===429){await sleep(15000);continue;}break;}
-  try{const t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';const o=JSON.parse(t);if(o.title&&o.html)return o;}catch{}
+  try{const t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';const o=JSON.parse(t);if(o.title&&o.html)return messSicher(o);}catch{}
  }
  return null;
 }

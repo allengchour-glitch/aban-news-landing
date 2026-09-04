@@ -14,7 +14,7 @@ import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
-import { copyPrompt } from './cj_copy_prompt.mjs';
+import { copyPrompt, messSicher } from './cj_copy_prompt.mjs';
 import { groqText } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
@@ -70,7 +70,9 @@ const GROQ_KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 
 // 'llama-3.3-70b-versatile' wird am 16.08.2026 abgeschaltet — aus der Reihe genommen.
 // Modellwahl + Parser liegen seit 02.09.2026 in automation/groq_text.mjs (EINE Quelle).
 async function groq(nameEn, feats) {
-  return await groqText(copyPrompt({ nameEn, feats, kat: '' }));
+  // messSicher(): harte Pruefung der Modellantwort auf Messwerte bei Wearables — ein
+  // Prompt-Verbot allein hat am 04.09. nicht gereicht (siehe cj_copy_prompt.mjs).
+  return messSicher(await groqText(copyPrompt({ nameEn, feats, kat: '' })));
 }
 async function attachVideo(t, pid, url, tag) {
   try {

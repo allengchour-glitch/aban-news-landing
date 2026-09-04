@@ -67,8 +67,14 @@ def titel_saeubern(t):
     «Smart-Armband mit Blutdruck- und Herzfrequenzmessung» und «F16 Smartwatch mit EKG,
     Blutdruck & Herzfrequenz». Hier wird nur herausgeschnitten, nie verworfen."""
     n = re.sub(r'\bKörpertemperatur', 'Hauttemperatur', t)
-    n = re.sub(r'\b(?:Blutdruck|EKG|Blutzucker)[- ]?(?:messung|überwachung|funktion|analyse)\b', '', n, flags=re.I)
-    n = re.sub(r'\b(?:Blutdruck|EKG|Blutzucker|Elektrokardiogramm)\b[- ]?', '', n, flags=re.I)
+    # ⚠️ EINE Wortliste fuer Erkennung UND Reinigung (03.09.2026). KRITISCH kannte
+    # «Glukose», der Reiniger nicht — der Waechter fand «Smartwatch mit Blutsauerstoff &
+    # Glukosemessung» und liess den Titel unveraendert stehen. Ein Waechter, der findet und
+    # nicht beheben kann, meldet denselben Fall jeden Tag neu.
+    WORT = r'Blutdruck|EKG|Blutzucker|Glukose|Elektrokardiogramm|\bECG\b'
+    n = re.sub(r'\b(?:' + WORT + r')[- ]?(?:messung|überwachung|ueberwachung|funktion|analyse|sensor|tracking)\b',
+               '', n, flags=re.I)
+    n = re.sub(r'\b(?:' + WORT + r')\b[- ]?', '', n, flags=re.I)
     n = re.sub(r'\s*[,&]\s*(?=[,&])', '', n)              # doppelte Trenner
     # ⚠️ OHNE das \s* vor dem Trenner bleibt «mit& Herzfrequenz» stehen: das Leerzeichen
     # zwischen «mit» und «&» ist beim Herausschneiden schon verschwunden.

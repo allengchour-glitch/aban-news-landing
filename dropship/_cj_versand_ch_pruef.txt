@@ -1147,3 +1147,8 @@ drehbarer-gewurzstander-fur-die-kuche-843393	2075118210102226946	0	-	KEINE CH-Op
 3er-set-bambus-schneidebretter-629000	2605280309471629700	7	34.18	ok	landeseite
 doppelstockiges-katzenhaus-aus-massivholz-619800	2605050330161610500	7	78.90	ok	landeseite
 antihaft-bratpfanne-aus-karbonstahl-620800	2604170512121621400	7	34.86	ok	landeseite
+12-teiliges-kochtopf-set-aus-edelstahl-309954	2041713097669242881	0	-	KEINE CH-Option → DRAFT	landeseite
+2-in-1-entsafter-mixer-mit-kaffeemuhle-292545	2041710561314893825	0	-	KEINE CH-Option → DRAFT	landeseite
+sofauberzug-vintage-katzenfreundlich-elastisch-608900	2601060813381609100	12	21.21	ok	landeseite
+gestreiftes-katzensofa-plusch-rutschfest-620900	2605110149301621400	12	30.99	ok	landeseite
+faltbarer-pee-pad-halter-fur-hunde-191361	2034276744523075585	0	-	KEINE CH-Option → DRAFT	landeseite

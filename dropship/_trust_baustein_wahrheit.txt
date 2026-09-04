@@ -19813,3 +19813,31 @@
 15480285299073	ersetzt-1	Ersatzakku für DJI Phantom 3SE/3P/3A (4500mAh)
 15480285331841	ersetzt-1	Atmungsaktive Canvas Boots mit dicker Sohle
 15480285364609	ersetzt-1	Powerbank 20000 mAh, 120W, 4 Anschlüsse
+15480285397377	ersetzt-1	Gefütterte Casual Boots für Damen
+15480285462913	ersetzt-1	Mini Powerbank mit Digitalanzeige, 20000 mAh
+15480285528449	ersetzt-1	Wind Denim Mid-Calf Boots mit spitzer Zehe
+15480285659521	ersetzt-1	Keil-Zehentrenner mit Höhenlift
+15480285725057	ersetzt-1	Power Bank mit Schnellladung & integriertem Kabel
+15480285757825	ersetzt-1	Overknee-Stiefel mit Chunky-Heel und Reissverschluss
+15480285888897	ersetzt-1	Niche Leder-Overknee-Stiefel mit Schnalle
+15480285987201	ersetzt-1	Klassische Eisenbahn mit Licht & Musik
+15480286019969	ersetzt-1	Wasserdichte Solar-Powerbank mit Wireless Charging
+15480286085505	ersetzt-1	Retro vielseitige spitze Stiefeletten
+15480286151041	ersetzt-1	Solar Powerbank 20'000 mAh
+15480286183809	ersetzt-1	Damen Stiefel mit hohem Chunky-Absatz
+15480286216577	ersetzt-1	Intelligenter Roboter-Hund mit Fernsteuerung
+15480286282113	ersetzt-1	Faltbare Solar Powerbank mit Wireless Charging
+15480286380417	ersetzt-1	Zebra Lilie Handgeschnitztes Nageldesign
+15480286413185	ersetzt-1	High-Top Denim Boots mit Blockabsatz
+15480286445953	ersetzt-1	Ferngesteuertes Krokodilkopf-Boot
+15480338284929	ersetzt-1	Leder-Schlüsselanhänger
+15480338383233	ersetzt-1	Bequeme Flachschuhe
+15480338448769	ersetzt-1	Atmungsaktive Slip-on Sportschuhe für Damen
+15480338547073	ersetzt-1	Magnetisches Beauty-Licht fürs Smartphone
+15480338612609	ersetzt-1	Vintage Strick-Mules im französischen Stil
+15480338743681	ersetzt-1	Magnetische Teleskop-Halterung mit Airbag
+15480338776449	ersetzt-1	Magnetische Handyhalterung mit Stativ
+15480338940289	ersetzt-1	Faltbares Tablet-Kissen für gemütlichen Komfort
+15480339038593	ersetzt-1	Faltbarer Laptop-Ständer mit Kühlfunktion
+15480339104129	ersetzt-1	Magnetische kabellose Handyhalterung fürs Auto
+15480339169665	ersetzt-1	Magnetischer Handyhalter aus Aluminiumlegierung

@@ -6975,3 +6975,40 @@ Nahtprüfung sie geparkt hat — die Prüfung hat also getan, wofür sie da ist.
   Domainnamen, für eine Naht. Ein Prüfmuster, das die eigene Adresse für einen Fehler hält,
   erfindet einen Befund. Geprüft wird jetzt nur der Text VOR dem Link.
 - Stand: **76 `ready`**, davon 0 mit CH-/Tempo-Zusage, 0 mit Naht, 0 mit leerem Hashtag.
+
+## ⛔ Ein Prompt-Verbot ist eine Bitte — das Modell hat sie ignoriert (2026-09-04)
+Der zweite Objektscan fand **«Smartwatch mit Blutsauerstoff & Glukosemessung»**, angelegt um
+**02:17 desselben Tages** — also mit dem am 03.09. um 15:48 gehärteten Prompt, der Blutdruck,
+EKG, Blutzucker und Glukose bei Uhren ausdrücklich verbietet, und in allen sechs Kanälen.
+Der Runner war um 02:13 frisch gestartet, las also die neue Fassung. **Ein Modell kann eine
+Anweisung ignorieren; eine Prüfung kann es nicht.** Bei dieser Klasse zählt ein Irrtum
+gesundheitlich — deshalb `messSicher()` in `cj_copy_prompt.mjs` (EINE Quelle, alle drei
+Importer), direkt an der Stelle, wo die Modellantwort angenommen wird. Es SCHNEIDET, verwirft
+nicht: ein leerer Titel wird von Shopify ohnehin abgelehnt. 6 Titel in beide Richtungen
+geprüft — «Blutdruckmessgerät für den Oberarm» bleibt unberührt, es ist kein Wearable.
+- ⚠️ **Und der Wächter konnte es finden, aber nicht beheben:** `KRITISCH` (Erkennung) kannte
+  «Glukose», `titel_saeubern()` (Reinigung) nicht — der Lauf hätte den Fall täglich neu
+  gemeldet und den Titel jedes Mal stehen gelassen. Jetzt EINE Wortliste für beides.
+  **Ein Wächter, der findet und nicht beheben kann, ist ein Dauerbefund mit Extraschritten.**
+- **Die Selbstkontrolle hat sich damit zum ersten Mal selbst bezahlt gemacht:** Der Fall war
+  vier Stunden alt und stand in keinem Bericht, keiner Suche, keinem Ledger — nur der
+  Objektscan hat ihn gesehen.
+
+## 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
+52'023 aktive Produkte, gemessen mit demselben Werkzeug wie am Vortag:
+| Klasse | vorher | nachher |
+|---|---:|---:|
+| USA-Lieferzusage | 0 | **0** (hält) |
+| EU-Lieferzusage | 0 | **0** |
+| Wirkversprechen im TITEL | 10 | **0** (8 + 2 repariert) |
+| Mess-Versprechen an Wearables | 3 | **0** (2 Fehlalarme entlastet, 1 echt behoben) |
+| «Geprüfte Qualität» | 29'468 | 28'337 (Schreiber läuft) |
+| «Produktdetails» doppelt | 1'542 | 1'542 |
+| Auswahl-Versprechen bei 1 Variante | 2'704 | 2'706 |
+| Sie-Anrede im Produkttext | 1'339 | 1'339 |
+- **Der Scan schreibt jetzt seine vollständigen Trefferlisten** nach `dropship/_klassen/` —
+  ein Scan, viele Arbeitslisten. Mehrere Reparaturwerkzeuge lesen sonst einen Bulk-Export vom
+  30.08. und melden brav «0», während die Klasse live 1'542 Produkte gross ist.
+  **Ein Werkzeug, dessen Quelle veraltet, meldet Vollzug über eine Vergangenheit.**
+- ⚠️ Der Berichts-Deckel stand bei 8 Beispielen je Klasse und hat damit **genau die zwei
+  Fälle versteckt, die noch offen waren** («… und 2 weitere»). Jetzt 25.

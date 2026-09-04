@@ -39,3 +39,38 @@ export function floskelZaehler(html) {
   const t = String(html || '').replace(/<[^>]+>/g, ' ').toLowerCase();
   return VERBOTEN.filter(w => t.includes(w.toLowerCase().replace(' … ', ' '))).length;
 }
+
+// ⛔ HARTE PRUEFUNG statt Bitte (04.09.2026). Der Prompt verbietet Blutdruck/EKG/Blutzucker/
+// Glukose bei Uhren, Armbaendern und Ringen seit dem 03.09. — und um 02:17 legte der Grind
+// trotzdem «Smartwatch mit Blutsauerstoff & Glukosemessung» an, mit dem NEUEN Prompt und in
+// allen sechs Kanaelen. Ein Modell kann eine Anweisung ignorieren; eine Pruefung kann es
+// nicht. Bei dieser Klasse zaehlt ein Irrtum gesundheitlich (wer sich als Diabetikerin auf
+// eine Uhr verlaesst, riskiert eine Unterzuckerung) — deshalb wird hier geschnitten, nicht
+// gebeten. Reinigung, kein Verwerfen: ein leerer Titel wird von Shopify ohnehin abgelehnt.
+const TRAEGER_RE = /(?<![\wäöüß])(smartwatch|smart\s*watch|armband|fitness[- ]?tracker|smart[- ]?ring|wearable)|[\wäöüß]*(uhr|watch)(?![\wäöüß])/i;
+const MESSWORT = 'Blutdruck|EKG|Blutzucker|Glukose|Elektrokardiogramm|ECG';
+
+export function messSicher(o) {
+  if (!o || !o.title) return o;
+  if (!TRAEGER_RE.test(o.title)) return o;
+  const schnitt = (t) => t
+    .replace(new RegExp(`\\b(?:${MESSWORT})[- ]?(?:messung|überwachung|ueberwachung|funktion|analyse|sensor|tracking)\\b`, 'gi'), '')
+    .replace(new RegExp(`\\b(?:${MESSWORT})\\b[- ]?`, 'gi'), '')
+    .replace(/\s*[,&]\s*(?=[,&])/g, '')
+    .replace(/\b(mit|für|fuer|zur|zum|inkl\.?|inklusive)\s*(?:und|&|,|-)+\s*/gi, (m, w) => w + ' ')
+    .replace(/\s*(?:und|&)\s*(?=[,.]|$)/gi, '')
+    .replace(/^\s*[,&·–-]+\s*|\s*[,&·–-]+\s*$/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\b(?:mit|für|fuer|zur|zum|und|inkl\.?)\s*$/i, '')
+    .trim();
+  const t2 = schnitt(o.title);
+  if (t2.length >= 8 && t2 !== o.title) o.title = t2;
+  if (o.html) {
+    // Im TEXT die Bindestrich-Koppelung in EINEM Schritt aufloesen, sonst bleibt ein
+    // Fragment stehen («Unterstützt Herzfrequenz- und») — Lehre 03.09.
+    o.html = o.html
+      .replace(new RegExp(`([A-Za-zÄÖÜäöüß]+)-\\s*(?:und|oder|&amp;|&)\\s*(?:${MESSWORT})[- ]?(?:messung|überwachung|funktion|analyse|sensor|tracking)\\b`, 'gi'), '$1messung')
+      .replace(new RegExp(`\\b(?:${MESSWORT})[- ]?(?:messung|überwachung|funktion|analyse|sensor|tracking)\\s*(?:und|oder|&amp;|&|,)\\s*`, 'gi'), '');
+  }
+  return o;
+}
