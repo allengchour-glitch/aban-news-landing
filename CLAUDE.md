@@ -47,6 +47,12 @@ davon am OBJEKT nachgeprüft: 10/10 tragen ihn wirklich. Das Werkzeug dafür gib
 Es liest jetzt die Arbeitsliste des täglichen Klassen-Vollscans (`LISTE=`) und holt jeden Text
 unmittelbar vor dem Schreiben LIVE; im Aufseher registriert, unter dem GETEILTEN
 Produkttext-Schloss (zwei Massen-Schreiber auf `descriptionHtml` sind die Zombie-Klasse 15.08.).
+**Ergebnis: 1'542 geschrieben, 40 von 40 Stichproben am Objekt sauber, 0 Dubletten im Ledger.**
+- ⚠️ Kleine Selbstkontroll-Lehre am Rand: Nach 25 Sekunden zählte ich 200 Ledger-Zeilen und hielt
+  sie für den Fortschritt meines Laufs. Es war der **Bestand von gestern** — die Datei existierte
+  schon. **Die erste Zahl aus einem Ledger, das man nicht selbst angelegt hat, ist eine
+  Fremdzahl.** Folgenlos hier (die 200 sind vom Kandidatensatz disjunkt, die Rechnung geht auf),
+  aber genau so entsteht ein «Fortschritt», den niemand gemacht hat.
 
 ## 🧭 «Mach das alles geht ohne mich» — eine Ampel, die sich selbst abräumt (2026-09-04)
 Was einen Menschen braucht, stand in `dropship/COWORK-AUFTRAEGE.md` — einem Dokument, das nur

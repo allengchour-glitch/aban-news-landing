@@ -20482,3 +20482,48 @@
 15481764872577	ersetzt-1	USB Schwanenhals Mikrofon für Computer
 15481764938113	ersetzt-1	Kabelloses Lavalier-Mikrofon mit Dual-Core Rauschunterdrücku
 15481764970881	ersetzt-1	Kabelloses 2.4G Mikrofon mit Live Soundkarte
+15481765101953	ersetzt-1	Kondensator-Mikrofon für Live-Streaming & Podcasts
+15481765134721	ersetzt-1	Mini-Mikrofon mit Rauschunterdrückung
+15481765233025	ersetzt-1	Rhythmuslicht-Modul mit Scrolling-Display
+15481765265793	ersetzt-1	Kabelloses Lavalier-Mikrofon für Handy-Aufnahmen
+15481765331329	ersetzt-1	Kabelloses Lavalier-Mikrofon für Handy-Video & Live
+15481765396865	ersetzt-1	Gaming Headset für PS4
+15481765462401	ersetzt-1	Handmikrofon-Set für vielseitigen Einsatz
+15481765659009	ersetzt-1	2.5 Zoll SATA USB 3.0 SSD/HDD Gehäuse
+15481773687169	ersetzt-1	Handgemachte Nageltipps
+15481773719937	ersetzt-1	Bluetooth-Kopfhörer mit ENC-Geräuschunterdrückung
+15481773752705	ersetzt-1	Handgemachte Nude-Farbverlauf Nägel
+15481773818241	ersetzt-1	Hollyland Lark M2S Funkmikrofon für Kameras
+15481773851009	ersetzt-1	Dunkle Ästhetik Press-on Nails
+15481773883777	ersetzt-1	High Heel Sandalen mit Kristallabsatz
+15481773916545	ersetzt-1	Faltbare Bluetooth-Kopfhörer mit Farbverlauf
+15481773949313	ersetzt-1	Abnehmbare kurze Nägel mit Muster
+15481773982081	ersetzt-1	Transparente Riemen-Sandalen
+15481774047617	ersetzt-1	Open-Ear Noise-Cancelling Kopfhörer
+15481774080385	ersetzt-1	Handgemachte, anpassbare Nägel mit Blumenmuster
+15481774113153	ersetzt-1	Pumps mit kleinem Goldbohnen-Absatz
+15481774145921	ersetzt-1	Nagelpflege-Stift für Finger- und Fussnägel
+15481774178689	ersetzt-1	Kabelloses Ear-Clip Sport-Headset
+15481774211457	ersetzt-1	Bestickte Tanzschuhe im antiken Stil
+15481774244225	ersetzt-1	Helm Bluetooth Headset für Velofahrer
+15481774276993	ersetzt-1	Elegante Preppy-Leder-Schuhe mit Chunky-Absatz
+15481774342529	ersetzt-1	USB-Stick Cartoon-Design
+15481774375297	ersetzt-1	Motorradhelm-Headset mit Geräuschunterdrückung
+15481774408065	ersetzt-1	Riemchen High Heels mit offener Spitze
+15481774473601	ersetzt-1	USB Stick Glace Mini
+15481774506369	ersetzt-1	Bluetooth Schlaf-Stirnband mit Musik
+15481774539137	ersetzt-1	Retro Slingback Keilsandalen mit Strohgeflecht
+15481774571905	ersetzt-1	USB Stick Schachfigur König Holz
+15481774637441	ersetzt-1	AI-Übersetzungs-Kopfhörer mit Open-Ear-Design
+15481774670209	ersetzt-1	Mary Jane Sandalen mit Blockabsatz
+15481774702977	ersetzt-1	Wasserdichter USB 3.0 Stick 64 GB für Musik & Daten
+15481774735745	ersetzt-1	Bluetooth Kopfhörer-Etui aus Nussholz
+15481774768513	ersetzt-1	Smart Voice Recorder mit One-Key-Aufnahme
+15481774801281	ersetzt-1	Spitze Sandalette mit Riemchen und Blockabsatz
+15481774899585	ersetzt-1	Elegante High Heels mit Riemchen
+15481774932353	ersetzt-1	Over-Ear Bluetooth Kopfhörer mit Katzenohren
+15481774965121	ersetzt-1	Pumps mit Riemen und Chunky-Absatz
+15481775063425	ersetzt-1	3D Surround HD Bluetooth Sport-Kopfhörer
+15481775161729	ersetzt-1	Spitze High Heels mit dünnem Absatz
+15481775194497	ersetzt-1	Q25Pro TWS Sport-Kopfhörer mit Geräuschunterdrückung
+15481775227265	ersetzt-1	Wildleder-Sandalen mit offenem Zeh
