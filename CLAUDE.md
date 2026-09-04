@@ -1,5 +1,43 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🐱 Auf der Seite mit 2'600 Suchen/Monat stand ein ERSATZFILTER als «Farbe» (2026-09-04, nachts)
+Semrush nach den Adressen gefragt, die knapp vor Seite 1 stehen. Vier aktive Seiten ranken
+und hatten **ausnahmslos KEINEN SEO-Titel** — `snippet_rankende_seiten.py` setzt nur die
+BESCHREIBUNG und lässt den Titel unangetastet (zu Recht: ein selbstgebauter Titel ist meist
+schlechter als Shopifys Vorgabe). Für eine Seite, die für ein Wort rankt, das im Titel gar
+nicht vorkommt, ist der handgeschriebene SEO-Titel aber genau der Hebel:
+
+| Seite | Position | Suchen/Mt. | neuer SEO-Titel |
+|---|---:|---:|---|
+| Ballettschuhe aus Leder | 29 | 590 | «… · Gr. 34–45, weiche Sohle» |
+| K68 Tastatur | 28 | 390 | «**Bluetooth**-Tastatur K68 · mechanisch, 60 %» |
+| 3L Trinkbrunnen | 46 | 1'300 | «Trinkbrunnen für **Katzen** · 3 L, unter 30 dB» |
+| Selfie Stick Stativ | 29 | 1'000 | «Selfie Stick mit Stativ & Bluetooth-Fernbedienung» |
+
+- ⚠️ **Die Tastatur durfte «Bluetooth» heissen — und das war am 29.08. noch offen.** Damals
+  blieb sie unbenannt, weil «kabellos» auch 2,4-GHz-Funk sein kann. Ihr eigener Text sagt
+  «duale Konnektivität über **Bluetooth 5.0** und einen 2,4-GHz-Empfänger» — beides. Damit ist
+  die Zurückhaltung von damals aufgelöst, nicht gebrochen: **belegt der Text das Wort, darf es
+  in den Titel.**
+- **⛔ Und der eigentliche Fund liegt eine Ebene tiefer:** Der 3L-Trinkbrunnen (die Seite, auf
+  die 2'600 Suchen im Monat zulaufen) bot unter **«Farbe»** an: «Berlin blue silent models-USB
+  socket 5V», «Ore white highend models-USB socket 5V», «**Cartridge3 layers of filtrati**-USB
+  socket 5V» — der fünfte Wert ist kein Brunnen, sondern ein **ERSATZFILTER, zum selben Preis
+  von CHF 14.90**. Wer im Farbfeld wählt, kann für 14.90 einen Filter bekommen und einen
+  Brunnen erwarten. Jetzt «Ausführung» mit sechs deutschen Werten, darunter **«Nur Ersatzfilter
+  (3 Lagen) – ohne Brunnen»** und «Set: Brunnen + Ersatzfilter»; «USB socket 5V» stand in JEDEM
+  Wert und ist damit eine Produkteigenschaft, keine Wahl (Lehre 23.08.). Variantenzahl
+  vorher/nachher 6 = 6 gegengeprüft.
+  **Ein Optionswert ist das Letzte, was die Kundin vor dem Kauf liest — und der einzige Ort,
+  an dem ein falsches Wort direkt eine falsche Ware bestellt.**
+- **Die Weiterleitung umgehängt:** «trinkbrunnen katze» / «trinkbrunnen für katzen» zeigten auf
+  einen **generischen** Haustier-Brunnen, dessen Titel und Text Katzen nirgends nennen. Ziel ist
+  jetzt der Katzen-Brunnen — beide Ziele vorher am Objekt geprüft (ACTIVE, im Onlineshop, selbst
+  keine Weiterleitung). Dieselbe Regel wie am 04.09.: **ein passenderes PRODUKT schlägt ein
+  ungefähres.**
+- ⚠️ Die drei rankenden DRAFTS (Selfie-Stick 1'000, Trinkbrunnen 2×1'300, CeraVe 1'000) haben
+  alle bereits eine 301 — der Wächter `tote_rankings.py` arbeitet. Geprüft, nicht angenommen.
+
 ## 🚚 Der letzte ungeprüfte Meter: die Versandart erscheint — und sie stimmt (2026-09-04, nachts)
 Der Kassentest von heute endete bei «die Versandart und der Gratis-Versand ab CHF 49 erscheinen
 erst NACH der Adresseingabe» — genau dort, wo diese Woche 3 von 3 Kassengängen abgebrochen sind.
