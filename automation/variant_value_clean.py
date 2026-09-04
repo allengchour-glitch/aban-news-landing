@@ -84,13 +84,18 @@ DEFITEM  = re.compile(r'(?:\s*-\s*Default Item)+\s*$', re.I)
 # die einzige Information, die es dazu gibt. Aus «3 style» wird «Muster 3» — geraten wird nichts.
 # 03.09.2026: auch die Mehrzahl — «5 Styles» stand als einziger Wert roh zwischen
 # «Muster 1» bis «Muster 6». CJ schreibt beides.
-STYLENR  = re.compile(r'^\s*(\d{1,3})\s*styles?\s*$', re.I)
+# 04.09.2026: auch die UMGEKEHRTE Form «Style 1» / «Style1». Sie ist im frischen
+# Options-Export bei 37 Produkten der einzige Farbwert — die bekannte Form «<N> style»
+# steht dagegen bei 0. Dieselbe Klasse in neuer Wortstellung; ein Muster, das nur die
+# eine Reihenfolge kennt, meldet die andere nie.
+# ⚠️ Voll verankert, damit «Freestyle Blau» und «Lifestyle-Set» unberuehrt bleiben.
+STYLENR  = re.compile(r'^\s*(?:(\d{1,3})\s*styles?|styles?\s*(\d{1,3}))\s*$', re.I)
 
 def clean(v):
     o = v or ''
     m = STYLENR.match(o)
     if m:
-        return f'Muster {m.group(1)}'
+        return f'Muster {m.group(1) or m.group(2)}'
     n = DEFITEM.sub('', o)
     n = PREFIX.sub('', n)
     # einzeln stehende Schluessel-Tokens entfernen — aber nur, wenn danach noch etwas bleibt
@@ -119,7 +124,7 @@ BAD=re.compile(r'^[A-Z]{2,}\d{2,}|^[A-Z0-9]{7,}$|US Size|\bYards\b|Generation \d
                # «3Style», «10 Style» und «1Style» nie — sie kamen am Tor gar nicht vorbei.
                # 115 Produkte trugen so weiter Lieferantencodes im Auswahlfeld. Das Tor und
                # die Regel muessen dieselbe Frage stellen; sonst prueft man zwei Dinge.
-               r'|Default Item|\S\s{2,}\S|(?i:^\d{1,3}\s*style?s?\s*$)')
+               r'|Default Item|\S\s{2,}\S|(?i:^\s*(?:\d{1,3}\s*styles?|styles?\s*\d{1,3})\s*$)')
 while True:
     d=gql('query($c:String){products(first:60,after:$c,query:"status:ACTIVE"){pageInfo{hasNextPage endCursor} nodes{id options{id name optionValues{id name}}}}}',{"c":cur})
     pg=(d.get("data") or {}).get("products")
