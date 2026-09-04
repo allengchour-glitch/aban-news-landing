@@ -169,3 +169,60 @@ Und der Beleg ist ihre Antwort: aufheben, nicht bloss erinnern.
 ⚠️ Das Bild wird dem Betreiber direkt geschickt und von ihm weitergeleitet — **nicht** irgendwo
 gehostet. Eine Vorschau, die man verlinkt, ist bereits eine Veröffentlichung; genau das war
 die Frage, die noch offen ist.
+
+## ✅ EINWILLIGUNG DA — Fassung A, und eine Bedingung (2026-09-04)
+Betreiber: «die bilder mit gesicht, wen in insta post dann
+https://www.instagram.com/tatjanalarsinamoira … mnarkieren tati unbedingt» und
+«wen auf insta post das beste bildervideo machen, das ist unser model».
+
+**Damit gilt:**
+- Fassung **A (mit Gesicht)** für Shop und Social.
+- **BEDINGUNG: Bei jedem Instagram-Beitrag mit ihrem Material wird `@tatjanalarsinamoira`
+  markiert.** Das ist keine Empfehlung — es ist der Teil der Abmachung, für den sie
+  zugestimmt hat.
+
+**Technisch durchgesetzt statt notiert:** `automation/post_guard.mjs` hat
+`markierungFehlt(medium, caption, zeilenId)`; erkennt es Material der Kundin
+(`kundin-NN`, `luxestyle-model-*`) ohne die Markierung in der Caption, gibt es einen Grund
+zurück, und der Poster bricht ab. Eingehängt in `social-autopost-meta.mjs` (postIG) und
+`meta_reel_post.mjs` (vor dem REELS-Container); in beide Richtungen geprüft — mit Markierung
+frei, ohne gesperrt, fremdes Material unberührt.
+⚠️ **Ehrliche Lücke:** Die übrigen fünf Poster (Stories, TikTok, Video, post-next-reel)
+haben die Sperre NICHT. Sie beziehen ihr Material aus anderen Queues, in denen dieses
+Material nicht liegt — wer es dorthin legt, muss die Sperre mitnehmen.
+**Eine Zusage an eine Person gehört dorthin, wo sie gebrochen werden könnte, nicht in eine
+Datei, die man beim dritten Post nicht mehr liest.**
+
+### Das Reel (04.09.)
+`luxestyle-model-clean.mp4` (ohne Ton, für Trend-Sound) und `-musik.mp4` — 15,0 s gemessen,
+1080×1920, 30 fps, 6 Slides à 2,4 s mit Ken Burns **1.045** (stärkerer Zoom schneidet die
+Ränder an, Lehre 28.08.), Crossfades 0,35 s, Markenband als stabiles Overlay statt
+eingebrannt, Abschluss-Slide mit den echten Preisen.
+- ⚠️ **Ein Slide flog nach der Einzelbild-Kontrolle raus:** Bei Foto 4 schnitt der Zoom den
+  Kopf oben an — im Standbild war er drin, im bewegten Bild nicht. Ersetzt durch Foto 7,
+  das auch am stärksten gezoomten Punkt vollständig bleibt. **Ein Zoomwert ist erst geprüft,
+  wenn man das am stärksten gezoomte EINZELBILD angesehen hat** — hier zum zweiten Mal, und
+  diesmal ging es um das Gesicht der Person, die uns ihre Bilder geliehen hat.
+- ⚠️ **KEIN KI-Video.** Der Betreiber fragte nach Gemini/Veo. Der ganze Wert dieser Bilder
+  ist, dass sie echt sind — eine KI-Fassung würde genau das zerstören, und die Budget-Regel
+  (Veo nur für einzelne Hero-Clips) spricht ohnehin dagegen.
+
+### Caption für Instagram (enthält die Markierung — nicht entfernen)
+```
+Echt getragen, nicht im Studio fotografiert.
+Zwei Sommerkleider, getragen von @tatjanalarsinamoira 💛
+
+Blumenkleid mit Schnürung · CHF 14.90
+Midikleid mit Zopfmuster · CHF 14.90
+
+Beide im Shop → luxestyle.ch
+#luxestyle #schweiz #sommerkleid #ootd #modeschweiz #kleiderliebe
+```
+
+### ⛔ Shop-Upload weiterhin blockiert
+Acht Fotos wurden an die zwei Produkte gehängt — **alle acht FAILED mit
+`FILE_STORAGE_LIMIT_EXCEEDED`**, auch nachdem 18,6 MB freigemacht waren (Shopify gibt den
+Platz nicht sofort frei). Alle acht Medien wurden wieder entfernt, Gegenprobe: 0 FAILED an
+beiden Produkten. **Ein FAILED-Medium am Produkt ist schlimmer als gar keins** (Lehre 11.08.:
+ein Produkt stand live mit 7 FAILED-Medien und ohne sichtbares Bild im Google-Kanal).
+Der Upload gelingt erst, wenn der Dateispeicher wirklich Luft hat — siehe den Grind-Befund.

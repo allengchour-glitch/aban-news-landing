@@ -114,3 +114,31 @@ export function produktMerken(caption, zeilenId) {
   const s = ladeProdukte(); if (s.has(k)) return;
   fs.appendFileSync(P_LEDGER, k + '\n');
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * MODEL-MARKIERUNG — eine Zusage an eine Person, technisch durchgesetzt (04.09.2026)
+ *
+ * Die Kundin hat ihre Fotos unter EINER Bedingung freigegeben: Wenn sie auf Instagram
+ * erscheinen, wird sie markiert (Betreiber wörtlich: «mnarkieren tati unbedingt»). Eine
+ * Bedingung, die nur in einer Doku steht, wird beim dritten Post vergessen — deshalb steht
+ * sie hier, wo jeder Poster vorbeikommt.
+ *
+ * `markierungFehlt(medium, caption)` gibt einen Grund zurück, wenn ein Beitrag Material
+ * dieser Kundin zeigt und die Markierung NICHT in der Caption steht. Ein Poster, der einen
+ * Grund bekommt, postet nicht — genauso wie beim Doppelpost-Schutz.
+ * ────────────────────────────────────────────────────────────────────────── */
+export const MODEL_HANDLE = '@tatjanalarsinamoira';
+// Merkmale des Materials: die Dateinamen der Kundinnenfotos und des daraus gebauten Reels.
+const MODEL_MEDIEN = /(^|[^a-z])(kundin-\d\d|luxestyle-model-(clean|musik))/i;
+
+export function istModelMaterial(medium = '', zeilenId = '') {
+  return MODEL_MEDIEN.test(String(medium)) || MODEL_MEDIEN.test(String(zeilenId));
+}
+
+export function markierungFehlt(medium = '', caption = '', zeilenId = '') {
+  if (!istModelMaterial(medium, zeilenId)) return null;
+  const c = String(caption).toLowerCase();
+  if (c.includes(MODEL_HANDLE.toLowerCase())) return null;
+  return `Model-Markierung fehlt: ${MODEL_HANDLE} muss in der Caption stehen `
+       + `(Bedingung der Einwilligung, 04.09.2026) — Post gesperrt.`;
+}

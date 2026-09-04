@@ -20,7 +20,8 @@
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark,
+import { markierungFehlt,
+         lock as postLock, seen as postSeen, mark as postMark,
          produktGepostet, produktMerken, produktKey } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
@@ -79,6 +80,9 @@ async function waitContainer(statusUrl){
 }
 async function postIG(imageUrl, caption){
   if(!IG_ID || !IG_TOK) return null;
+  // Einwilligungs-Bedingung der Kundin: ihr Material nur MIT Markierung (04.09.2026).
+  const fehlt = markierungFehlt(imageUrl, caption);
+  if (fehlt) { console.error('⛔', fehlt); return false; }
   const base = `https://graph.facebook.com/${V}/${IG_ID}`;
   const c = await gpost(`${base}/media`, { image_url: imageUrl, caption, access_token: IG_TOK });
   if(!c.ok || !c.j.id){ console.error('IG container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }

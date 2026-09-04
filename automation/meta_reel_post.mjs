@@ -11,7 +11,7 @@
  *      FB_PAGE_ID (Default 1049840534888592) · [DRY=1] · [MIN_GAP_H=48]
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 const CSV = 'automation/reels_seed.csv';
 const V = 'v21.0';
 const DRY = process.env.DRY === '1';
@@ -140,6 +140,9 @@ writeLedger();
 
 let igPermalink = '';
 // 1) Instagram Reel
+{ // Einwilligungs-Bedingung der Kundin: ihr Material nur MIT Markierung (04.09.2026).
+  const fehlt = markierungFehlt(url, text, cand[idx.id]);
+  if (fehlt) { console.error('⛔', fehlt); process.exit(0); } }
 const c = await api(`${IG}/media`, { media_type: 'REELS', video_url: url, caption: text, share_to_feed: 'true' });
 if (!c.id) { console.error('IG-Container-Fehler:', JSON.stringify(c).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
 for (let a = 0; a < 30; a++) {
