@@ -283,7 +283,26 @@ for Q in cj_runner_template cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
   fi
 done
 
+# ⚠️ 04.09.2026 — GRIND-DROSSEL. Der Grind legt rund 2'000 Produkte und damit ~1 GB
+# Bilder pro Tag an; der Shopify-Dateispeicher ist seit dem 01.09. voll und laesst KEINEN
+# Upload in die Dateien-Bibliothek mehr durch (TikTok-Queue, Befehlskanal, Kundinnenfotos).
+# Die eigene Aktenlage sagt seit dem 29.08.: mehr Produkte bringen keinen Suchverkehr.
+# dropship/_GRIND_RUNNER_ZAHL bestimmt, wie viele Runner laufen (1..4). Zurueckdrehen:
+# Zahl auf 4 setzen — sonst aendert sich nichts an der Mechanik.
+GRZ=$(cat "${REPO_AUTO%/automation}/dropship/_GRIND_RUNNER_ZAHL" 2>/dev/null | tr -dc '0-9')
+case "$GRZ" in ''|*[!0-9]*) GRZ=4;; esac
+[ "$GRZ" -gt 4 ] && GRZ=4
+RUNNERS=""; i=2; while [ "$i" -lt $((2+GRZ)) ]; do RUNNERS="$RUNNERS cj_runner$i"; i=$((i+1)); done
+# ueberzaehlige Runner beenden, wenn die Zahl gesenkt wurde
 for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
+  case " $RUNNERS " in *" $R "*) ;; *)
+    if [ "$(zaehle "$R")" -gt 0 ]; then
+      echo "$R gestoppt (Grind-Drossel: $GRZ Runner)"
+      ps -eo pid,args --no-headers | awk -v s="$R" 'index($0,s)' | awk '{print $1}' | xargs -r kill 2>/dev/null
+    fi ;;
+  esac
+done
+for R in $RUNNERS; do
   [ -f "/tmp/$R.sh" ] || { echo "$R FEHLT (auch im Repo nicht)"; continue; }
   n=$(zaehle "$R")
   if [ "$n" -eq 0 ]; then

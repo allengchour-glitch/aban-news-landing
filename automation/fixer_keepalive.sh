@@ -985,6 +985,25 @@ while true; do
       fi
     fi
   fi
+  # DATEISPEICHER (04.09.2026, Betreiber «datei speicher regeln»): Der Shopify-Dateispeicher
+  # ist voll — seit dem 01.09. scheitert JEDER Upload in die Dateien-Bibliothek mit
+  # FILE_STORAGE_LIMIT_EXCEEDED (TikTok-Queue, Befehlskanal, Kundinnenfotos). Gemessen sind
+  # die 4'000 neuesten Dateien ausnahmslos Produktbilder aus dem September (912 MB); der
+  # Grind legt ~1 GB pro Tag an. Der grösste sicher löschbare Block sind die Medien der
+  # BigBuy-ENTWÜRFE — der Lieferant ist seit dem 10.07. abgeschaltet (Betreiber-Entscheid),
+  # die Ware ist nicht kaufbar, und das PRODUKT bleibt vollständig bestehen; gelöscht wird
+  # nur das Bildmaterial. ⚠️ Der Lauf fasst NIE ein aktives Produkt an (Prüfung am Objekt).
+  DSL=/tmp/dateispeicher.log
+  if [ -f "$REPO/automation/dateispeicher_aufraeumen.py" ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/dateispeicher_aufraeumen.py"{n++} END{exit(n?0:1)}'; then
+      if ! grep -q "^Klasse vollstaendig durchlaufen" "$DSL" 2>/dev/null; then
+        ( cd "$REPO" && setsid bash -c \
+            "exec 9>/tmp/lock_dateispeicher.lock; flock -n 9 || exit 0; DRY=0 CAP=150 exec python3 automation/dateispeicher_aufraeumen.py" \
+            >> "$DSL" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) dateispeicher_aufraeumen gestartet"
+      fi
+    fi
+  fi
   # CH-VERSENDBARKEIT SICHTBARER CJ-WARE (03.09.2026, Klasse Bestellung #1016): Klingen/Schärfer, Such-
   # Landeseiten, Hype, Bestseller per freightCalculate CN→CH; ohne Option → DRAFT + cj-nicht-versendbar-ch.
   # Läuft gegen den geteilten CJ-Eimer langsam (~1–2/min) und stirbt mit jedem Container-Neustart —
