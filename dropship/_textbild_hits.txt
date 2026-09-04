@@ -14653,3 +14653,4 @@ gid://shopify/Product/15523817980289	55->0	Handtasche für Männer – grosse Ka
 gid://shopify/Product/15523818078593	35->1	Latzstoff-Top mit Fransen, knappe Passform
 gid://shopify/Product/15523818373505	32->0	Buntes Stickerei-Oberteil mit langen Ärmeln
 gid://shopify/Product/15523818439041	38->0	Schwarze Schultertasche mit Gürtelschnalle
+gid://shopify/Product/15502557741441	10->0	EMS Mikrostrom Massagegerät

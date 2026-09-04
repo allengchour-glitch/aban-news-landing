@@ -1,5 +1,33 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🗣️ Sie→du an Produkttexten: gebaut, gemessen — und NICHT ausgeführt (2026-09-04, spät)
+Der Klassen-Scan führt 1'170 aktive Produkttexte, die siezen, während der ganze Shop duzt.
+Die Regeln dafür gibt es seit dem 03.09. (`kollektionstexte_du_form.um()`, an 75 Kollektions-
+texten gelesen und nachgebessert). Sie auf Produkttexte anzuwenden lag nahe — und war falsch.
+`automation/produkttexte_du_form.py` stellt nur TEXTKNOTEN um (nie Tags oder Attribute), prüft
+Struktur, Links, Zahlen, Länge und Anrede-Reste, schreibt das Ergebnis zum LESEN in eine Datei.
+**Die Lektüre der ersten elf Diffs hat den Lauf gestoppt**, mit zwei Klassen:
+1. **Halbe Umstellung.** «benötigst du keine Steckdose und **können sie** einsetzen» ·
+   «Geniesse …, wo immer **Sie** sind» · «falls **Sie** bereits verfügen» · «**Sie können** die
+   Bürste alleine verwenden» · «**Steuern Sie** deine Vorhänge». Kollektionstexte sind formelhaft
+   («Entdecken Sie … hier finden Sie …»); Produkttexte haben Nebensätze, Modalketten und
+   Akkusativ-«Sie». Ein halb umgestellter Satz ist schlimmer als ein siezender.
+2. **⛔ Dritte Person.** «**Ihr** spezielles Doppelform-Design ermöglicht es …» meint die
+   ZITRUSPRESSE. Daraus wird «dein Doppelform-Design» — grammatisch sauber, inhaltlich falsch,
+   und **keine Nachprüfung am Ergebnis kann das sehen**. Dieselbe Falle wie «Sie hat ein rundes
+   Zifferblatt» (die UHR), an der heute schon meine eigene Import-Stichprobe fehlalarmiert hat.
+**Konsequenz: Annahme hart gemacht statt Lauf gestartet.** Übernommen wird ein Text nur, wenn er
+im Original GAR KEINE Ihr-Form trägt (Klasse 2 ausgeschlossen) und danach keine Sie-/Ihr-Form mehr
+übrig ist (Klasse 1 ausgeschlossen). Gemessen an 59 Fällen: **1 sauber, 58 mit Befund** (46× Ihr-Form
+im Original, 46× Anrede-Rest). Bei 2 % Ausbeute ist ein Massen-Schreiber über 1'170 Produkte kein
+Fortschritt, sondern ein Risiko — **das Werkzeug bleibt im Repo, ist aber NICHT im Aufseher
+registriert.** Die Quelle ist ohnehin dicht: die heutigen Importe duzen (12 von 12 geprüft).
+- ⚠️ **Und der Fehlalarm, der fast ein Befund geworden wäre:** Meine Stichprobe der frischen
+  Importe meldete «10 von 12 siezen». Gelesen waren es ausnahmslos Sätze wie «**Sie** hat ein
+  rundes Zifferblatt von 44 mm» — die dritte Person über die Uhr. **Eine Prüfung muss dasselbe
+  prüfen wie die Regel** (Lehre vom Belp-Fall, heute Nachmittag); `SIE_RE` im Klassen-Scan macht
+  es richtig und verlangt einen Imperativ davor. Die 1'170 sind also echt.
+
 ## 🧾 Zwei Quittungen, zwei blinde Klassen — und «Wuchs» kannte kein einziges Muster (2026-09-04, spät)
 Der Klassen-Vollscan meldete 150 doppelte «Produktdetails»-Blöcke und 124 Produkte mit
 «Material: hochwertiges Material». Beide Werkzeuge dafür gibt es längst — und beide meldeten

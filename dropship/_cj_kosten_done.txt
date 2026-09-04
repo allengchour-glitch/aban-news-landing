@@ -11033,3 +11033,5 @@ gid://shopify/Product/15453776183681	CHF 19.82	6 Varianten	Rückenstützkissen f
 gid://shopify/Product/15453776216449	CHF 26.65	9 Varianten	Leichte, atmungsaktive Sicherheitsschuhe für Herre
 gid://shopify/Product/15453776249217	CHF 29.94	1 Varianten	Selbstklebende Wandverkleidung
 gid://shopify/Product/15453776281985	CHF 104.36	2 Varianten	Reise-Pass-Tasche
+gid://shopify/Product/15453776314753	CHF 7.72	22 Varianten	Nylon-Schnellwechselarmband geflochten
+gid://shopify/Product/15453776347521	CHF 27.62	11 Varianten	Männer Sicherheitsschuhe
