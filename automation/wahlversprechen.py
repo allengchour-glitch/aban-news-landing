@@ -331,6 +331,18 @@ def bereinige(html):
     neu = re.sub(r'<li[^>]*>\s*</li>', '', neu)
     neu = re.sub(r'<(p|ul|ol)[^>]*>\s*</\1>', '', neu)
     neu = re.sub(r'[ \t]{2,}', ' ', neu)
+
+    # 3) NAHT-REPARATUR (04.09.2026, an einer eigenen Charge gefunden).
+    # Faellt ein Satz weg, dessen Vorgaenger sein Trennzeichen NICHT mittrug, kleben die
+    # Nachbarn aneinander: «…Portionsgroessen ausgelegt.Das Set beinhaltet…». Ein fehlendes
+    # Leerzeichen ist kein Drama, aber es ist SICHTBAR — und es entsteht nur da, wo wir
+    # geschnitten haben. Nur dann wird es repariert.
+    # ⚠️ Eng gefasst, damit nichts Richtiges zerschnitten wird:
+    #   «luxestyle.ch»  -> danach klein  -> kein Treffer
+    #   «z.B.Das»       -> davor nur EIN Buchstabe -> kein Treffer
+    #   «14.5»          -> Ziffern       -> kein Treffer
+    if weg:
+        neu = re.sub(r'(?<=[a-zäöüß]{2}[.!?])(?=[A-ZÄÖÜ][a-zäöüß])', ' ', neu)
     return neu, weg
 
 gefixt = 0
