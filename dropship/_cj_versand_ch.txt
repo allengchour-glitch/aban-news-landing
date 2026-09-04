@@ -1002,3 +1002,11 @@ gid://shopify/Product/15524361011585	ok	Multisport‑Smartwatch mit Schlaf‑ un
 gid://shopify/Product/15524697407873	nicht-versendbar	Bluetooth-Lautsprecher aus Acryl
 gid://shopify/Product/15524696457601	ok	Grosser Vintage-Cowhide-Rucksack mit 16‑Zoll‑Laptopfach
 gid://shopify/Product/15524700979585	ok	Multifunktionaler LCD-Projektor
+gid://shopify/Product/15524866294145	ok	Aufblasbare Gymnastikmatte
+gid://shopify/Product/15524868292993	ok	Verstellbare Hantel für vielseitiges Training
+gid://shopify/Product/15524870095233	ok	Rotierender Kristall-Glas-Wein-Entkorker 1000 ml
+gid://shopify/Product/15524870979969	nicht-versendbar	Kochmesser mit Holzgriff und Stahlklinge
+gid://shopify/Product/15524888772993	ok	Reisetasche aus Rindsleder mit Krokoprägung
+gid://shopify/Product/15524888445313	ok	Hundeleine wasserfest und schmutzabweisend
+gid://shopify/Product/15524872126849	ok	Rucksack aus Rindsleder
+gid://shopify/Product/15524867113345	ok	Kettlebell aus Stahl für Krafttraining

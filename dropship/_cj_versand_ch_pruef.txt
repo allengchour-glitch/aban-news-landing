@@ -1603,3 +1603,48 @@ auto-reinigungsset-fur-bohrmaschine-20-teilig-611600	2407250240241611900	16	19.6
 stahlfelgen-und-nabenburste-524224	1788121886665216000	16	7.57	ok	landeseite
 scheinwerfer-vernebler-becher-a1978c	-	-	-	unklar keine CJ-SKU	landeseite
 leder-lenkradbezug-38cm-19018d	-	-	-	unklar keine CJ-SKU	landeseite
+superhydrophobe-9h-keramik-lackversiegelung-e9a470	-	-	-	unklar keine CJ-SKU	landeseite
+lackschadenfreies-dellenreparatur-set-b56fe1	-	-	-	unklar keine CJ-SKU	landeseite
+autoschlusselhullen-638300	2608140344181639400	16	6.01	ok	landeseite
+glaskrausler-mit-teleskopstange-623600	2603210238091624000	7	28.32	ok	landeseite
+sitzhocker-fur-das-lenkrad-4d96d4	-	-	-	unklar keine CJ-SKU	landeseite
+plusch-sitzkissen-fur-junge-erwachsene-604200	2608040806411604900	16	15.81	ok	landeseite
+auto-waschhandschuh-wachsschwamm-set-635300	2608230242101636200	16	8.79	ok	landeseite
+smarter-auto-aroma-diffuser-626900	2608311734591628000	3	9.69	ok	landeseite
+universal-autositzkissen-aus-baumwolle-631800	2609011043161633700	16	9.47	ok	landeseite
+kabellose-poliermaschine-fur-dein-auto-614200	2608290304181615200	7	15.45	ok	landeseite
+lidschatten-palette-16-farben-e283c6	-	-	-	unklar keine CJ-SKU	landeseite
+wasserfester-eyeliner-stift-12-farben-3d7198	-	-	-	unklar keine CJ-SKU	landeseite
+miss-rose-highlighter-puder-80c2c1	-	-	-	unklar keine CJ-SKU	landeseite
+avocado-bb-cream-mit-pilzkopf-applikator-69b717	-	-	-	unklar keine CJ-SKU	landeseite
+feuchtigkeitspflegecreme-9e5547	-	-	-	unklar keine CJ-SKU	landeseite
+kabellose-auto-poliermaschine-612600	2409240826441612800	7	14.52	ok	landeseite
+vakuumierer-kabellos-lebensmittel	2606120903381608500	7	18.24	ok	hype-jetzt
+high-gloss-rouge-stick-250754	2072204959262994434	0	-	KEINE CH-Option → DRAFT	hype-jetzt
+vollautomatischer-32mm-lockenstab-mit-negativ-607000	2605030157031607800	7	13.48	ok	hype-jetzt
+3-in-1-ladestation-mit-uhr-wireless-charging-608200	2602270700081608600	7	8.32	ok	hype-jetzt
+britischer-oversize-hoodie-mit-polo-kragen-602300	2606120247051603000	16	9.33	ok	hype-jetzt
+oversized-hoodie-mit-bauchtasche-005377	2039271052232749057	-	-	unklar 1602002 Product has been removed from  rest=15971	hype-jetzt
+nahtloser-body-shaper-mit-bauchkontrolle-173825	2063164850712997889	0	-	KEINE CH-Option → DRAFT	hype-jetzt
+high-waist-body-shaper-shorts-887234	2063173412034048001	0	-	KEINE CH-Option → DRAFT	hype-jetzt
+body-shaper-mit-bh-und-bauchkontrolle-463425	2044328980618960897	16	6.48	ok	hype-jetzt
+taillenformer-mit-bh-und-doppelter-bauchkontro-551042	2043611013783408641	16	6.48	ok	hype-jetzt
+high-compression-shapewear-mit-frontreissversc-360578	2038486436956966914	16	8.53	ok	hype-jetzt
+fajas-colombianas-postpartum-shapewear-889346	2038480287504969730	16	6.01	ok	hype-jetzt
+nahtloser-body-shaper-mit-rundhals-und-bauchko-341953	2036036960078782466	16	5.41	ok	hype-jetzt
+bluetooth-schlafmaske-fur-lange-wimpern-626400	2506180740231626800	7	5.86	ok	hype-jetzt
+mini-karaoke-maschine-mit-kabellosen-mikros-868034	2069323160031891458	0	-	KEINE CH-Option → DRAFT	hype-jetzt
+new-flame-aroma-diffuser-mit-flammeneffekt-620700	2410050244571620900	7	16.06	ok	hype-jetzt
+astronaut-galaxy-sternenlicht-projektor-836224	1734820599236665344	7	12.34	ok	hype-jetzt
+xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264	1581947835309248512	16	16.76	ok	hype-jetzt
+tragbarer-mixer-fur-frische-drinks-770432	1595981253914931200	7	13.63	ok	hype-jetzt
+flammen-aroma-diffusor-fur-zuhause-910208	1674779378170990592	7	12.61	ok	hype-jetzt
+magnetische-wireless-powerbank-10-000-mah-924098	2044605442511753217	0	-	KEINE CH-Option → DRAFT	hype-jetzt
+full-hd-webcam-mit-ringlicht-und-mikrofon-728832	1387039373295489024	16	5.81	ok	hype-jetzt
+kabelloser-diamant-haarglatter-484864	1757050408452759552	7	9.81	ok	hype-jetzt
+pdrn-jelly-split-gesichtsmaske-4-stk-161090	2074728441844715522	16	7.10	ok	hype-jetzt
+usb-heizdecke-aus-lambschafwolle-150x80-cm-629100	2410200508561629200	0	-	KEINE CH-Option → DRAFT	hype-jetzt
+buro-heizdecke-mit-bauchstutze-629500	2607100820221620900	7	16.90	ok	hype-jetzt
+full-hd-mini-beamer-mit-autofokus-619300	2607020914411610000	7	31.00	ok	hype-jetzt
+3-in-1-magsafe-power-bank-fur-smartwatches-601800	2606120857201602400	0	-	KEINE CH-Option → DRAFT	hype-jetzt
+mini-beamer-fur-home-office-heimkino-623500	2505010609241624000	3	45.67	ok	hype-jetzt
