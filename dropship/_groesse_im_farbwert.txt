@@ -348,3 +348,7 @@
 15509234188673	repariert:4	Warmes Langarmhemd mit Fleece-Futter für Herren
 15509386232193	repariert:5	Freizeit Hemd aus Baumwoll-Leinen, Stehkragen
 15509386428801	repariert:9	Businesshemd bügelfrei mit Stretch
+15510306423169	repariert:1	Zweiteiliges V-Neck Slipdress mit Print
+15510323298689	repariert:5	Kurzes Camisole-Kleid mit eckigem Ausschnitt
+15510327427457	repariert:3	Tailliertes Off-Shoulder Maxikleid
+15510330900865	repariert:7	Lockere 3D-Druck Strickjacke für Herren
