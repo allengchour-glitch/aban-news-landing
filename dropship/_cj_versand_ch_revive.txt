@@ -75,3 +75,7 @@
 15448928911745	keine-linie	nackenkissen-mit-buchweizenfullung-und-baumwol-624500
 15448936513921	keine-linie	gesichtsdampfer-fur-umfassende-pflege-624200
 15448937431425	keine-linie	kuscheliges-all-season-haustierzelt-628300
+15448937562497	keine-linie	katzenbett-aus-holz-fur-kleine-hunde-617300
+15448937660801	keine-linie	massivholz-kratzbaum-fur-katzen-629100
+15448937955713	keine-linie	massivholz-katzenbaum-mit-rattan-bett-632400
+15448938021249	keine-linie	kompakter-kratzbaum-mit-kuschelnest-633900
