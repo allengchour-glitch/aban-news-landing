@@ -1209,7 +1209,21 @@ while true; do
   # startet, erzeugt eine zweite Kopie. Genau so lief heute jeder Runner doppelt. Die
   # Sperre gehört dem laufenden Runner für seine ganze Lebensdauer — ein Zweitstart endet
   # dann von selbst, egal von welcher Seite er kommt. Gleicher Sperrname wie in engines_up.sh.
+  # ⚠️ 04.09.2026 — GRIND-DROSSEL AUCH HIER. dropship/_GRIND_RUNNER_ZAHL begrenzt die Zahl
+  # der Runner (Dateispeicher voll: der Grind legt ~1 GB Bilder pro Tag an). Dieser Block ist
+  # der ZWEITE Runner-Starter neben engine_keepalive.sh — wer nur einen drosselt, sieht 20
+  # Minuten spaeter wieder vier laufen. Dieselbe Geschwister-Falle wie bei der Zuruf-Pause.
+  GRZ=$(tr -dc '0-9' < "$REPO/dropship/_GRIND_RUNNER_ZAHL" 2>/dev/null)
+  case "$GRZ" in ''|*[!0-9]*) GRZ=4;; esac
+  [ "$GRZ" -gt 4 ] && GRZ=4
+  ERLAUBT=""; i=2; while [ "$i" -lt $((2+GRZ)) ]; do ERLAUBT="$ERLAUBT cj_runner$i"; i=$((i+1)); done
   for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
+    case " $ERLAUBT " in *" $R "*) ;; *)
+      pgrep -f "cj_runner_template.sh $R" >/dev/null && {
+        echo "$(date -u +%H:%M) $R gestoppt (Grind-Drossel: $GRZ)"
+        pkill -f "cj_runner_template.sh $R" 2>/dev/null; }
+      continue ;;
+    esac
     [ -f /tmp/$R.sh ] || continue
     pgrep -f "cj_runner_template.sh $R" >/dev/null && continue
     setsid bash -c "exec 9>/tmp/lock_cj_runner_template-$R.lock; flock -n 9 || exit 0;
