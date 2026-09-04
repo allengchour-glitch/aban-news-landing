@@ -1,5 +1,30 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🚚 Der letzte ungeprüfte Meter: die Versandart erscheint — und sie stimmt (2026-09-04, nachts)
+Der Kassentest von heute endete bei «die Versandart und der Gratis-Versand ab CHF 49 erscheinen
+erst NACH der Adresseingabe» — genau dort, wo diese Woche 3 von 3 Kassengängen abgebrochen sind.
+Der Schritt ist ohne Zahlung prüfbar: `/cart/shipping_rates.json` nimmt eine Adresse und gibt die
+Tarife zurück, die die Kundin an der Kasse sieht. Zweimal von aussen gemessen (Cookie-Jar,
+Browser-Kennung, echte Storefront):
+
+| Korb | Adresse | angebotene Versandarten |
+|---|---|---|
+| CHF 44.90 | 3123 CH, ohne Kanton | **nur «Standard» CHF 7.00** |
+| CHF 49.90 | 8001 CH, ohne Kanton | **«Kostenloser Versand» CHF 0.00 + «Standard» CHF 7.00** |
+
+**Damit ist der Trichter bis zur Zahlung lückenlos belegt** — Korb, Automatik-Rabatt, Kasse
+(200, TWINT · Klarna · PayPal), Lieferland nur CH, und jetzt die Versandart. Die 49er-Schwelle
+greift wirklich, und die Zusage «ab CHF 50» bleibt wahr (49 < 50). Offen bleibt allein die
+Zahlung selbst — ein Betreiber-Test mit echter Karte.
+- **Die Folgerung ist unbequem und deshalb wichtig: der Ausfall ist NICHT technisch.** Es gibt
+  keinen Schritt mehr, auf den man ihn schieben könnte. Was bleibt, sind Verkehrsqualität
+  (social 6'060 Sitzungen → 0 Kassengänge), Vertrauen und Preis — alles Dinge, die keine
+  Reparatur löst, sondern eine Entscheidung.
+- ⚠️ **Ein leerer Kanton ist KEIN Hindernis** — das war die naheliegende Vermutung («Shopify
+  verlangt eine Provinz»), und sie ist widerlegt: beide Abfragen liefen ohne `province`.
+  **Eine Vermutung über eine fremde Kasse kostet zwei Minuten Messung** — und diese hier hätte
+  sonst als «vielleicht die Ursache» monatelang im Raum gestanden.
+
 ## 💽 «Datei speicher regeln»: Basic erlaubt 100 GB — und die Grenze zählt PRODUKTBILDER mit (2026-09-04, nachts)
 Betreiber mitten in der Arbeit: «datei speicher regeln». Die Sperre besteht seit dem 01.09.:
 **jeder** Upload in die Dateien-Bibliothek scheitert mit `FILE_STORAGE_LIMIT_EXCEEDED`, auch
