@@ -10776,3 +10776,4 @@ gid://shopify/Product/15453763731841	CHF 28.93	1 Varianten	Kratzbrett für Katze
 gid://shopify/Product/15453763764609	CHF 15.59	1 Varianten	Casual Langarm Pullover Herren
 gid://shopify/Product/15453763797377	CHF 7.08	1 Varianten	Farbwechsler für Haustiere
 gid://shopify/Product/15453764125057	CHF 8.87	1 Varianten	Intelligenter Springball für Hund und Katze
+gid://shopify/Product/15453764157825	CHF 14.09	1 Varianten	Herren Sommer Streifen Kurzarm Polo-Shirt

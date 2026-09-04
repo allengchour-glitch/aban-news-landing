@@ -20542,3 +20542,5 @@
 15481775784321	ersetzt-1	Elegante Low-Cut Lederboots mit Blockabsatz
 15481775849857	ersetzt-1	Magnetische Wireless Powerbank
 15481775980929	ersetzt-1	Solar Outdoor Powerbank mit Handkurbel
+15481776013697	ersetzt-1	Intelligenter Roboterhund mit Touch-Funktion
+15481776046465	ersetzt-1	45W Power Bank mit Kabel, 20000 mAh
