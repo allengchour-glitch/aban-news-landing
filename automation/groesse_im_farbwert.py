@@ -33,6 +33,7 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_groesse_im_farbwert.txt"
 KANDIDATEN = "/tmp/groesse_im_farbwert.json"
+OPTS = os.environ.get("OPTS", "/tmp/opts_frisch.jsonl")
 MAX = int(os.environ.get("MAX") or 0)
 
 # Nur eindeutige Grössen-Anhänge. «S», «M», «L», «XL» stehen bewusst NICHT drin: ein
@@ -114,11 +115,31 @@ def main():
         liste = [i.strip() for i in ids.split(",") if i.strip()]
     elif os.path.exists(KANDIDATEN):
         liste = [t[0].split("/")[-1] for t in json.load(open(KANDIDATEN))]
+    elif os.path.exists(OPTS):
+        # ⚠️ 04.09.2026: Zweite Quelle, damit dieser Waechter einen /tmp-Wipe ueberlebt.
+        # Seine eigene Kandidatenliste hat am 23.08. ein Mensch von Hand gebaut; nach dem
+        # Wipe vom 30.08. meldete er fuenf Tage lang PAUSE, ohne dass es auffiel. Der
+        # Options-Export (automation/optionen_export.py) wird dagegen automatisch gebaut
+        # und traegt genau das, was hier gebraucht wird: die Farbwerte je Produkt.
+        liste = []
+        for zeile in open(OPTS, encoding="utf-8"):
+            try:
+                p_ = json.loads(zeile)
+            except Exception:
+                continue
+            for o in (p_.get("options") or []):
+                if (o.get("name") or "").strip().lower() not in ("farbe", "color", "colour", "farben"):
+                    continue
+                werte = [(v.get("name") if isinstance(v, dict) else v) or ""
+                         for v in (o.get("optionValues") or o.get("values") or [])]
+                if any(ANHANG.match(w.strip()) for w in werte):
+                    liste.append(p_["id"].split("/")[-1])
+                break
     else:
         # Die Kandidatenliste kommt aus einem Bulk-Export (Variantentitel enthalten die
         # Optionskombination). Fehlt sie — Container gewiped —, ist das KEIN «nichts zu
         # tun»: ohne frischen Export blieben genau die neuesten Produkte ungeprueft.
-        print(f"PAUSE ({KANDIDATEN} fehlt — frischen Export bauen)")
+        print(f"PAUSE ({KANDIDATEN} und {OPTS} fehlen — Options-Export bauen)")
         return
     erledigt = set()
     if os.path.exists(LEDGER):

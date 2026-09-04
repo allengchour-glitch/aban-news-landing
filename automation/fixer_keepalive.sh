@@ -263,6 +263,18 @@ while true; do
   # `CONTINUE` mit erfundenem Bestand (35 bis 100 Stück). Genau das Muster von Bestellung
   # #1008: bezahlt, nie lieferbar. Der Wächter erkennt sie längst (er prüft seit dem 20.08.
   # die FORM der SKU, nicht das Präfix) — er lief nur nie.
+  # OPTIONS-EXPORT: Eingabe fuer drei Variantenwert-Waechter (farbwert_dubletten,
+  # mass_im_farbwert, groesse_im_farbwert). Er wurde am 23.08. von Hand gebaut, der
+  # /tmp-Wipe hat ihn geloescht — und alle drei meldeten fuenf Tage PAUSE, ohne dass es
+  # auffiel. Ein Werkzeug, dessen Eingabe niemand herstellt, ist ein Einmal-Lauf, kein
+  # Waechter. Der Export ist fortsetzbar (Container-Neustart) und laeuft unter Sperre.
+  if [ -f "$REPO/automation/optionen_export.py" ] && [ ! -f /tmp/opts_frisch.jsonl ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2 ~ /optionen_export\.py$/ {n++} END {exit(n?0:1)}'; then
+      ( cd "$REPO" && setsid flock -n /tmp/lock_optionen_export.lock \
+          python3 automation/optionen_export.py >> /tmp/optionen_export.log 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
+    fi
+  fi
   for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
