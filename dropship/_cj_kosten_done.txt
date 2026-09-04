@@ -11035,3 +11035,5 @@ gid://shopify/Product/15453776249217	CHF 29.94	1 Varianten	Selbstklebende Wandve
 gid://shopify/Product/15453776281985	CHF 104.36	2 Varianten	Reise-Pass-Tasche
 gid://shopify/Product/15453776314753	CHF 7.72	22 Varianten	Nylon-Schnellwechselarmband geflochten
 gid://shopify/Product/15453776347521	CHF 27.62	11 Varianten	Männer Sicherheitsschuhe
+gid://shopify/Product/15453776380289	CHF 46.32	2 Varianten	Quadratische Eiswürfelform für Stir-fry Ice Cream
+gid://shopify/Product/15453776413057	CHF 69.29	2 Varianten	Kinder-Schlafkissen mit Schlaf-Puppe
