@@ -47,6 +47,10 @@ TOKEN  = os.environ.get('SHOPIFY_ADMIN_TOKEN') or open('/tmp/cj_shop_token.txt')
 DRY    = os.environ.get('DRY') == '1'
 CAP    = int(os.environ.get('CAP', '200'))
 QUELLE = os.environ.get('QUELLE', '/tmp/hc_prods.jsonl')
+# LISTE (04.09.2026): Arbeitsliste des taeglichen Klassen-Vollscans
+# (dropship/_klassen/<klasse>.txt, Spalte 1 = Produkt-ID). Ein Scan, viele Arbeitslisten —
+# ein Werkzeug, dessen Quelle ein alter Export ist, meldet Vollzug ueber eine Vergangenheit.
+LISTE  = os.environ.get('LISTE', '')
 MODUS  = os.environ.get('MODUS', 'floskel')   # floskel | spiegel
 LEDGER = ('dropship/_produktdetails_wahrheit.txt' if MODUS == 'floskel'
           else 'dropship/_produktdetails_spiegel.txt')
@@ -170,6 +174,18 @@ def reparieren(html, options):
 # ---------------------------------------------------------------- Kandidaten
 def kandidaten():
     hat = erledigt(); out = []
+    if LISTE:
+        # ⚠️ Die Arbeitsliste stammt aus einer LIVE-Messung am Objekt — dann darf das Ledger
+        # sie NICHT filtern. Gemessen 04.09.2026: alle 124 Floskel-Faelle standen bereits als
+        # «material-floskel-entfernt» quittiert und trugen die Floskel trotzdem live, weil sie
+        # im ZWEITEN (doppelten) Produktdetails-Block steht, den der damalige Lauf nicht sah.
+        # Eine Quittung sagt, was einmal geschrieben wurde — nicht, was jetzt gilt.
+        # Geschrieben wird ohnehin nur, wenn der LIVE-Text den Befund noch traegt.
+        for ln in open(LISTE):
+            pid = ln.split('\t')[0].strip().rsplit('/', 1)[-1]
+            if pid.isdigit():
+                out.append(pid)
+        return out
     for ln in open(QUELLE):
         try: o = json.loads(ln)
         except Exception: continue
@@ -190,7 +206,7 @@ M = '''mutation($id:ID!,$d:String!){ productUpdate(input:{id:$id,descriptionHtml
 
 def main():
     ids = kandidaten()
-    print(f'Kandidaten aus {QUELLE}: {len(ids)} (CAP={CAP}, DRY={DRY})')
+    print(f'Kandidaten aus {LISTE or QUELLE}: {len(ids)} (CAP={CAP}, DRY={DRY})')
     ids = ids[:CAP]
     geaendert = 0; unveraendert = 0
     fh = None if DRY else open(LEDGER, 'a')

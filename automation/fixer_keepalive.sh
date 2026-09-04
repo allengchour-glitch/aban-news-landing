@@ -930,19 +930,20 @@ while true; do
       fi
     fi
   fi
-  # TRUST-BAUSTEIN-WAHRHEIT (02.09.2026): «✅ Geprüfte Qualität» → «✅ Geprüfte Angaben» in den
-  # Produkttexten (über 10'000; JSON-LD und Google-Feed lesen product.description roh, die
-  # Laufzeit-Ausblendung im Theme hilft dort nicht). Läuft in Chargen von 2500 bis die
-  # Schlusszeile «FERTIG:» im Log steht (Index erschöpft); danach Ruhe. Lock gegen Doppelstart.
-  TB=/tmp/trust_baustein.log
-  if [ -f "$REPO/automation/trust_baustein_wahrheit.py" ]; then
-    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/trust_baustein_wahrheit.py"{n++} END{exit(n?0:1)}'; then
-      if ! grep -q "^FERTIG:" "$TB" 2>/dev/null; then
-        ( cd "$REPO" && setsid bash -c \
-            "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; CAP=2500 exec python3 automation/trust_baustein_wahrheit.py" \
-            >> "$TB" 2>&1 9>&- & )
-        echo "$(date -u +%H:%M) trust_baustein_wahrheit gestartet"
-      fi
+  # PRODUKTDETAILS-FLOSKEL (04.09.2026): «Material: hochwertiges Material» ist eine Werbefloskel
+  # in einem FAKTENFELD. Gemessen sind alle 124 Faelle eine TEILMENGE der 150 doppelten Bloecke:
+  # der erste Block ist sauber, die Floskel steht im zweiten. Deshalb laeuft dieser Lauf VOR
+  # produktdetails_vereinen — sonst uebernimmt die Vereinigung die Floskel in den Sammelblock.
+  # ⚠️ LISTE ignoriert bewusst das Ledger: alle 124 standen als «erledigt» quittiert und trugen
+  # die Floskel trotzdem live. Eine Quittung sagt, was einmal geschrieben wurde, nicht was gilt.
+  PDF="$REPO/dropship/_klassen/floskel-hochwertiges-material.txt"
+  PDW=/tmp/pd_wahrheit.log
+  if [ -f "$REPO/automation/produktdetails_wahrheit.py" ] && [ -s "$PDF" ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/produktdetails_wahrheit.py"{n++} END{exit(n?0:1)}'; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; MODUS=floskel CAP=200 LISTE=dropship/_klassen/floskel-hochwertiges-material.txt exec python3 automation/produktdetails_wahrheit.py" \
+          >> "$PDW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) produktdetails_wahrheit (Floskel) gestartet"
     fi
   fi
   # PRODUKTDETAILS DOPPELT (04.09.2026): Der Block «Produktdetails» stand bei 1'542 aktiven
@@ -961,6 +962,27 @@ while true; do
           "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; LISTE=dropship/_klassen/produktdetails-doppelt.txt LEDGER=dropship/_produktdetails_vereint4.txt exec python3 automation/produktdetails_vereinen.py" \
           >> "$PDV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) produktdetails_vereinen gestartet"
+    fi
+  fi
+  # TRUST-BAUSTEIN-WAHRHEIT (02.09.2026): «✅ Geprüfte Qualität» → «✅ Geprüfte Angaben» in den
+  # Produkttexten (über 10'000; JSON-LD und Google-Feed lesen product.description roh, die
+  # Laufzeit-Ausblendung im Theme hilft dort nicht). Läuft in Chargen von 2500 bis die
+  # Schlusszeile «FERTIG:» im Log steht (Index erschöpft); danach Ruhe.
+  # ⚠️ REIHENFOLGE (04.09.2026): Dieser Block steht bewusst ZULETZT unter dem geteilten
+  # Produkttext-Schloss. Alle Schreiber nehmen es mit «flock -n» — wer zuerst startet,
+  # gewinnt, die anderen treten sofort ab. Mit 21'949 kosmetischen Faellen und CAP=2500
+  # hielt dieser Lauf das Schloss ~40 Minuten und die KLEINEN, endlichen Klassen kamen
+  # nie an die Reihe. Endliche Klassen zuerst, der Dauerlaeufer zuletzt — und mit
+  # kleinerer Charge, damit er das Schloss oefter freigibt.
+  TB=/tmp/trust_baustein.log
+  if [ -f "$REPO/automation/trust_baustein_wahrheit.py" ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/trust_baustein_wahrheit.py"{n++} END{exit(n?0:1)}'; then
+      if ! grep -q "^FERTIG:" "$TB" 2>/dev/null; then
+        ( cd "$REPO" && setsid bash -c \
+            "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; CAP=1200 exec python3 automation/trust_baustein_wahrheit.py" \
+            >> "$TB" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) trust_baustein_wahrheit gestartet"
+      fi
     fi
   fi
   # CH-VERSENDBARKEIT SICHTBARER CJ-WARE (03.09.2026, Klasse Bestellung #1016): Klingen/Schärfer, Such-
