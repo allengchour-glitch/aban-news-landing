@@ -432,3 +432,26 @@ Produktseite und die Weiterleitung schaltet sich von selbst ab.
 
 ## Gmail «Senden als» info@luxestyle.ch (03.09.2026)
 Kundenmails aus dem Konnektor gehen vom privaten Gmail raus. In Gmail → Einstellungen → Konten → «Senden als» die Adresse info@luxestyle.ch hinzufügen (SMTP der Domain-Mailbox) und als Standard setzen. Danach tragen Kundenmails die Shop-Adresse.
+
+## 🧹 Klaviyo: 1'482 Karteileichen aus dem Bewertungs-Import (04.09.2026)
+
+**Was**: Judge.me spiegelt seine Rezensenten nach Klaviyo. Unser Bewertungs-Import hat bis
+heute fuer jede CJ-Bewertung ohne Adresse eine **erfundene** Adresse erzeugt
+(`cj-import+<zufall>@luxestyle.ch`). Gemessen ueber die Judge.me-API: **1'482 von 1'724
+Bewertungen (86 %)**.
+
+**Warum es Geld kostet**: Klaviyo rechnet nach aktiven Profilen ab. 1'482 Karteileichen
+koennen die Preisstufe heben, ohne dass jemals eine Mail an sie geht — und wenn doch, prallt
+sie gegen unseren eigenen Mailserver (Absenderreputation).
+
+**Die Quelle ist behoben** (04.09.): kuenftig eine einzige technische Adresse
+`cj-import@luxestyle.ch` statt einer je Bewertung.
+
+**Deine Entscheidung** (ich fasse ein Abrechnungssystem nicht von mir aus an):
+1. **Unterdruecken** (`bulk_suppress_profiles`, umkehrbar) — sie bekommen nie Mail, zaehlen
+   je nach Tarif aber weiter.
+2. **Loeschen** (`request_profile_deletion`, UNUMKEHRBAR) — raus aus der Abrechnung, die
+   Bewertungen in Judge.me bleiben davon unberuehrt.
+3. **Nichts tun** — kostet nur, wenn die naechste Preisstufe erreicht wird.
+
+Sag mir, welche Variante, dann fuehre ich sie chargenweise mit Gegenprobe aus.
