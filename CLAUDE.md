@@ -1,5 +1,33 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🛒 Der Kassentest, den es nie gab — Warenkorb, Rabatt und Kasse sind in Ordnung (2026-09-04, spät)
+Seit dem 29.08. steht im Gedächtnis: «Ein echter Kassentest wäre der endgültige Beweis; den habe
+ich nicht gemacht.» Diese Woche erreichten 3 von 469 Sitzungen die Kasse und **0 schlossen ab** —
+solange die Kasse ungeprüft ist, ist jede andere Erklärung eine Vermutung. Also von aussen
+durchgespielt (Cookie-Jar, Browser-Kennung, echte Storefront):
+
+| Schritt | Ergebnis |
+|---|---|
+| `cart/add.js` mit einer aktiven Variante | **200**, Position im Korb, CHF 48.00 |
+| `cart.js` | 1 Artikel, Token vergeben |
+| zweiter Artikel dazu | **Automatik-Rabatt «Bundle: 2+ Artikel −10%» greift: −CHF 9.79** |
+| `/checkout` | **200**, 269 KB, Titel «Checkout - LuxeStyle», Sprache de-CH |
+| Zahlarten im ausgelieferten HTML | **TWINT · Klarna · PayPal** |
+| Lieferländer | `"shippingCountries":[{"value":"CH"}]` — nur Schweiz, wie gewollt |
+
+**Die Kasse ist also nicht kaputt, und der Mengenrabatt greift wirklich ab ZWEI Artikeln** —
+die Ankündigungsleiste sagt korrekt «–10% ab 2 Artikeln». Damit ist die teuerste offene
+Annahme dieses Shops ausgeräumt: Der Ausfall liegt nicht in der technischen Kette.
+- ⚠️ **Ein 422 beim zweiten Stück desselben Artikels ist KEIN Fehler**, sondern die
+  Bestandsbremse: Fortura-CH-Ware ist `tracked` und hatte genau 1 Stück. Mit einem zweiten
+  PRODUKT lief es sofort. Wer aus dem 422 einen Warenkorb-Defekt liest, meldet den Bestand als Bug.
+- ⚠️ **Der Test hinterlässt keinen abgebrochenen Checkout** — vorher/nachher 9, jüngster
+  06.06. Shopify legt einen erst an, wenn eine ADRESSE eingetippt ist (Lehre 04.09.). Wer die
+  Liste als Trichter-Messung liest, misst nur die Leute, die schon getippt haben.
+- **Was damit NICHT geprüft ist und ehrlich offen bleibt:** die Versandart und der
+  Gratis-Versand ab CHF 49 erscheinen erst NACH der Adresseingabe, und bezahlt wurde nichts.
+  Der letzte Meter bleibt ein Betreiber-Test mit echter Karte.
+
 ## 🗣️ Sie→du an Produkttexten: gebaut, gemessen — und NICHT ausgeführt (2026-09-04, spät)
 Der Klassen-Scan führt 1'170 aktive Produkttexte, die siezen, während der ganze Shop duzt.
 Die Regeln dafür gibt es seit dem 03.09. (`kollektionstexte_du_form.um()`, an 75 Kollektions-
