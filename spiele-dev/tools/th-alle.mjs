@@ -23,6 +23,7 @@
 import { spawn } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { mkdirSync, writeFileSync } from 'node:fs'
 
 const HIER = dirname(fileURLToPath(import.meta.url))
 const SCHNELL = process.argv.includes('--schnell')
@@ -189,6 +190,7 @@ const PRUEFUNGEN = [
     gut: (s) => /kommen an/.test(s) },
 ]
 
+const LOGS = join(HIER, '_fehlprotokolle')
 const lauf = (datei) => new Promise((res) => {
   const t0 = Date.now()
   const p = spawn(process.execPath, [join(HIER, datei)], { env: process.env })
@@ -218,6 +220,19 @@ for (const p of liste) {
   let wieder = false
   if (!ok) { wieder = true; r = await lauf(p.datei); ok = r.code === 0 && p.gut(r.out) }
   if (!ok) schlecht++
+  /* ⚠️ DIE AUSGABE EINES GESCHEITERTEN WERKZEUGS AUFHEBEN. Dreimal in Folge ist im
+     Tor eine Pruefung gefallen, deren Einzellauf danach durchlief — und jedes Mal war
+     der Grund weg, weil hier nur die Zusammenfassung uebrig blieb. Ein Fehler, den man
+     nur unter Torlast sieht, ist genau der, dessen Ausgabe man braucht. Beide
+     Versuche werden abgelegt; der Pfad steht unten bei den Nicht-Gehaltenen. */
+  if (!ok) {
+    try {
+      mkdirSync(LOGS, { recursive: true })
+      writeFileSync(join(LOGS, p.datei.replace('.mjs', '') + '.txt'),
+        `=== ${p.name} · ${new Date().toISOString()} · Rueckgabe ${r.code}\n\n` +
+        (wieder ? '--- ZWEITER VERSUCH ---\n' : '') + r.out)
+    } catch (e) { /* Protokoll ist Beiwerk, nie Grund zum Abbruch */ }
+  }
   const wert = (() => { try { return p.wert(r.out) || '—' } catch (e) { return '—' } })()
   zeilen.push({ name: p.name, ok, wert, s: Math.round(r.ms / 1000), code: r.code, wieder })
   process.stdout.write(`${TTY ? '\r' : ''}${ok ? '✅' : '❌'} ${p.name.padEnd(38)} ${String(wert).padStart(16)}  ${String(Math.round(r.ms / 1000)).padStart(4)} s${wieder ? '  (zweiter Versuch)' : ''}\n`)
@@ -226,7 +241,7 @@ for (const p of liste) {
 const dauer = zeilen.reduce((a, z) => a + z.s, 0)
 console.log(`\n${liste.length - schlecht} von ${liste.length} halten · ${Math.round(dauer / 60)} min gesamt`)
 if (schlecht) {
-  console.log('\nNicht gehalten — das betroffene Werkzeug einzeln aufrufen und seine Ausgabe lesen:')
+  console.log(`\nNicht gehalten — die volle Ausgabe liegt in ${LOGS}/ :`)
   zeilen.filter((z) => !z.ok).forEach((z) => console.log(`   ${z.name}  (Rueckgabe ${z.code})`))
 }
 process.exit(schlecht ? 1 : 0)
