@@ -1329,3 +1329,45 @@ feuchtigkeitsspendendes-hautpflege-set-cca2d7	-	-	-	unklar keine CJ-SKU	landesei
 taille-twist-board-143169	2057033969720664066	0	-	KEINE CH-Option → DRAFT	landeseite
 6-teiliges-feuchtigkeitspflege-set-abdcce	-	-	-	unklar keine CJ-SKU	landeseite
 traditioneller-eisen-wok-handgemacht-e53438	-	-	-	unklar keine CJ-SKU	landeseite
+schnellheizender-wasserspender-fur-zuhause-639600	2604071018061630000	3	59.29	ok	landeseite
+unisex-trolley-koffer-mit-reissverschluss-624400	2510110330241624800	11	36.36	ok	landeseite
+katzenfutter-stander-613200	2606020528251613900	16	8.79	ok	landeseite
+faltbare-schuhbox-615800	2605140755431616500	16	25.83	ok	landeseite
+baby-nest-reisebettchen-aus-baumwolle-20552f	-	-	-	unklar keine CJ-SKU	landeseite
+farbige-fitness-hanteln-93c600	-	-	-	unklar keine CJ-SKU	landeseite
+ultraschall-massagegerat-zur-hautstraffung-e20115	-	-	-	unklar keine CJ-SKU	landeseite
+badezimmerschrank-mit-rollenhalter-602178	1990535913729089538	0	-	KEINE CH-Option → DRAFT	landeseite
+seidenbettwasche-set-mit-geometrischem-muster-613100	2606060653451613900	11	34.02	ok	landeseite
+2-in-1-entsafter-mixer-1-5l-924162	2041443956330639362	0	-	KEINE CH-Option → DRAFT	landeseite
+vakuum-kompressions-reiserucksack-fur-herren-629500	2604230822461621500	7	19.72	ok	landeseite
+recyceltes-sofa-kissen-fur-haustiere-wasserdic-620700	2604280132131621200	16	13.43	ok	landeseite
+samt-sofakissenbezug-fur-herbst-und-winter-611300	2601290349431611700	16	11.23	ok	landeseite
+langes-waschbares-seitenschlaferkissen-609400	2605220634111600000	11	35.31	ok	landeseite
+kuscheliges-all-season-haustierzelt-628300	2605050242591628800	0	-	KEINE CH-Option → DRAFT	landeseite
+kratzbrett-und-katzenhohle-tv-design-608800	2604170915451609800	16	23.61	ok	landeseite
+faltbarer-futtercontainer-mit-rollen-878466	2061755340740124674	16	21.75	ok	landeseite
+teigbrett-aus-edelstahl-600700	2606190928091601300	16	14.60	ok	landeseite
+led-halsmaske-fur-hautverjungung-625300	2410140204251625500	7	18.18	ok	landeseite
+bettwasche-set-mit-fixleintuch-und-kissenbezug-620600	2607010524021621200	16	16.40	ok	landeseite
+faltbares-ipl-gerat-fur-strahlende-haut-616400	2502200949381616600	11	38.35	ok	landeseite
+fitness-push-up-gerat-603000	2605040635301603800	16	25.60	ok	landeseite
+leichte-sichtvorhange-646466	1990497368540356609	0	-	KEINE CH-Option → DRAFT	landeseite
+kuhlende-sommerdecke-mit-klimafunktion-603800	2606150909261604400	16	20.58	ok	landeseite
+sommerdecke-aus-soja-faser-624100	2606150903411624800	11	29.00	ok	landeseite
+luxurioser-sofakissenbezug-627200	2601040650591627400	16	7.99	ok	landeseite
+verstellbarer-futter-und-wassernapf-fur-hunde-143424	1609361979230138368	11	29.65	ok	landeseite
+kuhlendes-eis-seide-anti-rutsch-sitzkissen-619200	2606100915571619900	16	7.99	ok	landeseite
+kinder-dreirad-zum-sitzen-oder-fahren-633700	2605220640171634500	0	-	KEINE CH-Option → DRAFT	landeseite
+wollmantel-mit-daunenfutter-fur-damen-616200	2601120931191616600	16	24.32	ok	landeseite
+2-stockiger-abtropfgestell-mit-besteckhalter-137026	2044964242670714881	0	-	KEINE CH-Option → DRAFT	landeseite
+sofauberzug-chenille-kratzfest-rutschfest-616500	2605040616141617200	16	8.66	ok	landeseite
+sofa-sitzkissenbezug-aus-chenille-629500	2604170659311620000	16	8.79	ok	landeseite
+langes-eisseiden-kissen-mit-sommer-motiv-620200	2606170214461621200	16	14.00	ok	landeseite
+multifunktionales-memory-foam-kissen-607000	2605260237271607600	16	22.57	ok	landeseite
+nackenkissen-und-ruckenlehne-mit-memory-schaum-615400	2605120845001615900	16	10.83	ok	landeseite
+ganzjahres-katzenhohle-617800	2605050307571618300	16	13.92	ok	landeseite
+katzenbett-aus-holz-fur-kleine-hunde-617300	2605050232431617800	0	-	KEINE CH-Option → DRAFT	landeseite
+pilz-kratzbaum-fur-katzen-626625	2058759415099650049	0	-	KEINE CH-Option → DRAFT	landeseite
+galaxy-edelstahl-katzentoilette-grau-065601	2052593482905866242	0	-	KEINE CH-Option → DRAFT	landeseite
+erhohter-keramiknapf-fur-katzen-hunde-639100	2603081014211639500	16	26.42	ok	landeseite
+doppelt-faltbarer-handtuchhalter-aus-walnussho-639300	2605190850481639800	0	-	KEINE CH-Option → DRAFT	landeseite

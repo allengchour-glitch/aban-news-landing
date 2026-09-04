@@ -1001,3 +1001,4 @@ gid://shopify/Product/15524257694081	ok	Mechanische Automatikuhr mit grossen Zif
 gid://shopify/Product/15524361011585	ok	Multisport‑Smartwatch mit Schlaf‑ und Gesundheitsfunktionen
 gid://shopify/Product/15524697407873	nicht-versendbar	Bluetooth-Lautsprecher aus Acryl
 gid://shopify/Product/15524696457601	ok	Grosser Vintage-Cowhide-Rucksack mit 16‑Zoll‑Laptopfach
+gid://shopify/Product/15524700979585	ok	Multifunktionaler LCD-Projektor
