@@ -998,7 +998,7 @@ while true; do
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/dateispeicher_aufraeumen.py"{n++} END{exit(n?0:1)}'; then
       if ! grep -q "^Klasse vollstaendig durchlaufen" "$DSL" 2>/dev/null; then
         ( cd "$REPO" && setsid bash -c \
-            "exec 9>/tmp/lock_dateispeicher.lock; flock -n 9 || exit 0; DRY=0 CAP=150 exec python3 automation/dateispeicher_aufraeumen.py" \
+            "exec 9>/tmp/lock_dateispeicher.lock; flock -n 9 || exit 0; DRY=0 CAP=2500 PARALLEL=4 exec python3 automation/dateispeicher_aufraeumen.py" \
             >> "$DSL" 2>&1 9>&- & )
         echo "$(date -u +%H:%M) dateispeicher_aufraeumen gestartet"
       fi
