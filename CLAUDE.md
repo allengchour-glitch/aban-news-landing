@@ -1,5 +1,51 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 💽 «Datei speicher regeln»: Basic erlaubt 100 GB — und die Grenze zählt PRODUKTBILDER mit (2026-09-04, nachts)
+Betreiber mitten in der Arbeit: «datei speicher regeln». Die Sperre besteht seit dem 01.09.:
+**jeder** Upload in die Dateien-Bibliothek scheitert mit `FILE_STORAGE_LIMIT_EXCEEDED`, auch
+ein 10-KB-JSON — die TikTok-Queue steht deshalb seit vier Tagen. Gemessen, in drei Schritten,
+und **zweimal habe ich mich dabei selbst korrigiert:**
+
+| Messung | Ergebnis |
+|---|---:|
+| Dateien-Bibliothek (GenericFile) | 948 Dateien · **958 MB** |
+| davon MP4 (eigene Reels, Werbefilme Juni–Aug.) | 101 · 616 MB |
+| **Produktmedien**: 63'845 Produkte × 1,44 MB | **≈ 92 GB** |
+| **Shopify Basic** | **100 GB, Produktmedien zählen mit** |
+
+1. **Erste Korrektur:** Ich begann mit den Medien von BigBuy-Entwürfen — und stoppte, als die
+   Bibliothek sich als eigener, kleiner Topf zeigte. **Falsch gestoppt.** Die Bibliothek ist
+   1 % des Problems; die Masse SIND die Produktbilder. **Ein Aufräumwerkzeug ist erst dann die
+   Antwort, wenn es dieselbe Grössenordnung hat wie das Problem** — sonst putzt man sauber am
+   falschen Ende.
+2. **⛔ Zweite Korrektur, und sie hätte den Editor gekostet:** Der Trockenlauf über Bilder
+   wollte 400 Dateien löschen, darunter `allover-rucksack-selbst-gestalten.jpg` und
+   `blank-tee-white.png` — die Vorschaubilder des **Selbst-gestalten-Editors** (Hausregel 4:
+   der Editor ist heilig). Meine Referenzsuche kannte Theme, Seiten und Artikel, aber nicht
+   die PRODUKTTEXTE; gemessen tragen 2'000 aktive Texte **166 Verweise** auf die Bibliothek.
+   ⚠️ Und der Grund, warum es fast durchging: **Shopifys Produktsuche indexiert dieses Feld
+   nicht.** Die Suche nach «cdn.shopify.com/s/files» meldet **0 Treffer**, während dieselben
+   300 Texte 120 Verweise tragen — ein Nullergebnis aus einer Suche, die das Feld gar nicht
+   kennt, ist kein Beleg. Das Werkzeug paginiert jetzt und LIEST, statt zu suchen.
+3. **Gelöscht wurde, was belegbar tot ist:** 31 verwaiste Werbefilme (190 MB) und 25
+   verbrauchte Reels (126 MB) — ein gepostetes Reel wird nie wieder gepostet (Hausregel
+   06.07.), seine CDN-Kopie hat keine Zukunft. Dazu die Medien von BigBuy-Entwürfen; der
+   Lieferant ist seit dem 10.07. per Betreiber-Entscheid abgeschaltet. **Das Produkt bleibt
+   vollständig** — Titel, Text, Preis, Tags; nur die Bilder gehen.
+- ⚠️ **Die grösste Klasse bleibt bewusst liegen.** «duplikat-auto-draft» wären 4'908 Produkte
+  und ~4 GB, begründet mit «der lebende Zwilling hat eigene Bilder». Genau das liess sich an
+  fünf Stichproben **nicht zeigen** (kein aktiver Zwilling über den Handle-Stamm; die
+  Dubletten wurden am 28.08. über BILDHASHES gefunden, nicht über Handles).
+  **Eine Löschung, deren Sicherheitsannahme man nicht belegen kann, unterbleibt.**
+  Ebenso draussen: «ausverkauft-lieferant» und «cj-nicht-versendbar-ch» — von letzterer wurden
+  heute 13 wiederbelebt, als CJ eine CH-Linie freischaltete.
+- **Zuflussbremse:** `dropship/_GRIND_RUNNER_ZAHL` steuert die Zahl der CJ-Runner (jetzt **1
+  statt 4**, ~250 statt ~1'000 MB Bilder pro Tag). Zurückdrehen heisst: Zahl auf 4 setzen.
+  Die eigene Aktenlage sagt seit dem 29.08., dass mehr Produkte keinen Suchverkehr bringen.
+- **Der ehrliche Rest ist eine Betreiber-Entscheidung:** Bei ~92 GB gegen 100 GB und einem
+  Katalog, der weiter wächst, ist Aufräumen ein Aufschub, kein Ausweg. Entweder der Katalog
+  wird kleiner (Entwürfe löschen statt nur entbildern) oder der Plan grösser (Grow = 300 GB).
+
 ## 🛒 Der Kassentest, den es nie gab — Warenkorb, Rabatt und Kasse sind in Ordnung (2026-09-04, spät)
 Seit dem 29.08. steht im Gedächtnis: «Ein echter Kassentest wäre der endgültige Beweis; den habe
 ich nicht gemacht.» Diese Woche erreichten 3 von 469 Sitzungen die Kasse und **0 schlossen ab** —
