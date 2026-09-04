@@ -409,6 +409,13 @@ def main():
     with open(BERICHT, 'w', encoding='utf-8') as f:
         f.write('\n'.join(zeilen) + '\n')
     print(f'Bericht: {BERICHT}')
+    # ⚠️ 04.09.2026: Der Aufseher entscheidet an einer Zeile, die mit FERTIG beginnt,
+    # ob ein Lauf durch ist. Dieses Skript schrieb sie nie — und nachdem der Aufseher
+    # gelernt hatte, einen Teilscan fortzusetzen, startete er den Vollscan deshalb in
+    # JEDER Runde neu. Eine Abschlussmeldung ist kein Schmuck: sie ist die Schnittstelle
+    # zum Aufseher.
+    if not abbruch:
+        print(f'FERTIG: {n} aktive Produkte geprueft')
 
 
 if __name__ == '__main__':
