@@ -6379,6 +6379,52 @@ setTimeout(function baueGebaeude(){
       scene.add(st); scene.add(kr);
     },1400);
     /* Park-Ausstattung entlang der Hauptachse: Wegweiser, Plan, Beete, Laternen */
+    /* ═══ 🪑 STRASSENMOEBEL FUER DIE KAHLEN VIERTEL ══════════════════════════════
+       GEMESSEN 2026-09-04, Kleinteile (Huelle < 6 m) je Hektar:
+         Altstadt 47 · Freizeitpark 6 · Bauernhof 6 · Vergnuegungsviertel 4
+         Gewerbe Ost 2 · Sportpark 0 · Zoo 0 · Flughafen 0
+       Drei Viertel hatten NULL. Deshalb wirkten sie auf den Bildern wie Bauten auf
+       einer leeren Platte — es fehlten nicht Haeuser, sondern alles dazwischen.
+
+       ⚠️ DIE ECHTE MITTE, NICHT DER WUNSCH. Dieselbe Falle wie bei parkDeko unten und
+       beim Bauernhof: `viertelOrt()` weicht aus, und wer die cfg-Koordinaten
+       abschreibt, stellt die Baenke zehn Meter neben das Viertel.
+       ⚠️ UND NICHT AUF DEN BELAG. Die Viertelstrasse ist 9 m breit, dazu 2,2 m Gehweg
+       je Seite (TO = 5,8 in viertel()). Gesetzt wird ab 8,5 m von der Mittelachse —
+       hinter dem Gehweg, vor der Bauzeile (setback = TO + abstand, also >= 18 m).
+       Jede Stelle wird vorher mit `imBau` geprueft; was belegt ist, faellt aus. */
+    function viertelMoeblieren(v,satz,abstandVonAchse){
+      if(!v)return 0;
+      var laengs=v.laengs, laenge=laengs?v.w:v.d, off=abstandVonAchse||8.5, n=0, i=0;
+      for(var t=-laenge/2+12;t<=laenge/2-12;t+=11){
+        for(var s2=-1;s2<=1;s2+=2){
+          var x=laengs?(v.x+t):(v.x+s2*off), z=laengs?(v.z+s2*off):(v.z+t);
+          if(typeof imBau==="function"&&imBau(x,z))continue;
+          var m=satz[i++%satz.length];
+          bau(m[0],m[1],x,0,z,laengs?(s2>0?Math.PI:0):(s2>0?-Math.PI/2:Math.PI/2),false,null,true);
+          n++;}}
+      return n;}
+    setTimeout(function moebelKahleViertel(){
+      var L=(window._viertelSolver&&window._viertelSolver.VIERTEL)||[];
+      function v(n){for(var i=0;i<L.length;i++)if(L[i].name===n)return L[i];return null;}
+      /* Je Viertel ein passender Satz — Baenke und Abfall ueberall, dazu das, was
+         zum Ort gehoert. Alle Modelle liegen schon im Repo. */
+      viertelMoeblieren(v("Sportpark Sued"),
+        [["lp_parkbank.glb",0.9],["th4_muelleimer.glb",0.9],["th33_blumenrabatte.glb",0.9],
+         ["lp_parkbank.glb",0.9],["th2_gartenbank.glb",0.8],["th4_muelleimer.glb",0.9]]);
+      viertelMoeblieren(v("Zoo"),
+        [["lp_parkbank.glb",0.9],["th4_muelleimer.glb",0.9],["th33_blumenrabatte.glb",0.9],
+         ["th31_schild_rund.glb",1.6],["lp_parkbank.glb",0.9],["th4_muelleimer.glb",0.9]]);
+      viertelMoeblieren(v("Flughafen"),
+        [["th4_muelleimer.glb",0.9],["th31_schild_rund.glb",1.6],["lp_parkbank.glb",0.9],
+         ["th4_muelleimer.glb",0.9],["th21_bauzaun_modul.glb",2.0],["th31_schild_rund.glb",1.6]]);
+      viertelMoeblieren(v("Gewerbe Ost"),
+        [["th6_muellcontainer.glb",1.2],["th4_muelleimer.glb",0.9],["th2_gartenbank.glb",0.8],
+         ["lp_parkbank.glb",0.9],["th6_muellcontainer.glb",1.2],["th4_muelleimer.glb",0.9]]);
+      viertelMoeblieren(v("Vergnuegungsviertel"),
+        [["th4_muelleimer.glb",0.9],["lp_parkbank.glb",0.9],["th33_blumenrabatte.glb",0.9],
+         ["th4_muelleimer.glb",0.9],["th33_parklaterne.glb",5.4],["lp_parkbank.glb",0.9]]);
+    },600);
     setTimeout(function parkDeko(){
       /* ⚠️ DER WUNSCHORT IST NICHT DER STANDORT. Hier stand fest `PZ=330` — der
          Wunschort des Viertels. `viertelOrt()` weicht aber aus, und der Freizeitpark
