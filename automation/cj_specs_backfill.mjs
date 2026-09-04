@@ -94,7 +94,16 @@ async function main() {
     const nurVersand = alt && altKeys.length > 0 && altKeys.every(k => /^(Versand|Lieferzeit|Lieferung)$/i.test(k));
     if ((alt && !nurVersand) || /<h4>Details<\/h4>/.test(p.descriptionHtml || '')) { if (!DRY) fs.appendFileSync(LEDGER, `${h}\that-liste\n`); continue; }
     const sku = p.variants.nodes[0]?.sku; n++;
-    const j = await cjProdukt(sku); await sleep(1100);
+    let j = await cjProdukt(sku); await sleep(1100);
+    // ⚠️ 04.09.2026: 16900500 kommt AUCH bei leerem Eimer, nicht nur am Tagesende (Lehre
+    // 03.09.). Gemessen: dieser Lauf brach nach EINEM Produkt ab, waehrend CJ 655 Punkte
+    // meldete. Der Eimer fuellt mit ~2,75 Punkten/s nach — also warten und nachfassen;
+    // erst fuenf erfolglose Wartezyklen sind das Tagesende.
+    for (let w = 0; w < 5 && budgetLeer(j); w++) {
+      console.log(`  Eimer leer — warte 40 s (${w + 1}/5)`);
+      await sleep(40000);
+      j = await cjProdukt(sku); await sleep(1100);
+    }
     if (budgetLeer(j)) { console.log('CJ-Tagesbudget erschöpft — Pause'); break; }
     if (j?.unbekannteForm) { console.log('  keine CJ-SKU', h, sku); if (!DRY) fs.appendFileSync(LEDGER, `${h}\tkeine-cj-sku\n`); continue; }
     if (!j || !j.result || !j.data) { console.log('  unklar', h, String(j?.message || '').slice(0, 60)); continue; }   // keine Quittung

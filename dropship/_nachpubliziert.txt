@@ -274,3 +274,4 @@ gid://shopify/Product/15523939385729	freizeit-hemd-shorts-kombination-607100	Fre
 gid://shopify/Product/15523939484033	transparenter-hakelvorhang-landhausstil-003840	Transparenter Häkelvorhang Landhausstil
 gid://shopify/Product/15523942203777	verstellbarer-doppelnapf-fur-haustiere-de9b9c	Verstellbarer Doppelnapf für Haustiere
 gid://shopify/Product/15523942236545	freizeit-hemdjacke-mit-revers-615200	Freizeit-Hemdjacke mit Revers
+gid://shopify/Product/15525250695553	feuchtigkeitsspendende-cc-creme-6f4dc5	Feuchtigkeitsspendende CC Creme
