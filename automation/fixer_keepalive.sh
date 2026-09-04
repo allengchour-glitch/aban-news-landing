@@ -761,13 +761,26 @@ while true; do
     fi
   fi
 
+  # KLASSEN-KONTROLLE: der Vollscan ueber 52'000 Produkte dauert laenger als ein
+  # Container-Leben (Neustart etwa stuendlich, Lehre 03.09.). Er ist deshalb seit dem
+  # 04.09. fortsetzbar — und darf NICHT hinter einem 24-Stunden-Tor stehen: ein Teilscan,
+  # der einmal taeglich eine Stunde laeuft, braucht Wochen und meldet solange TEILSCAN.
+  # Regel: laeuft er, bleibt er in Ruhe. Ist er MITTENDRIN und tot, wird sofort fortgesetzt
+  # (Cursor, Log anhaengen). Ist er FERTIG, faengt er hoechstens einmal taeglich neu an.
   KK=/tmp/klassen_kontrolle.log
   if [ -f "$REPO/automation/klassen_kontrolle.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KK" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid flock -n /tmp/lock_klassen_kontrolle.lock \
-          python3 automation/klassen_kontrolle.py > "$KK" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) klassen_kontrolle gestartet"
+    KK_N=$(ps -eo args --no-headers | awk '$1 ~ /python3?$/ && $2 ~ /klassen_kontrolle\.py$/' | wc -l)
+    if [ "${KK_N:-0}" -eq 0 ]; then
+      if [ -s "$KK" ] && ! grep -q "^FERTIG" "$KK" 2>/dev/null; then
+        ( cd "$REPO" && setsid flock -n /tmp/lock_klassen_kontrolle.lock \
+            python3 automation/klassen_kontrolle.py >> "$KK" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) klassen_kontrolle fortgesetzt"
+      elif [ "$ALTER" -gt 86400 ]; then
+        ( cd "$REPO" && setsid flock -n /tmp/lock_klassen_kontrolle.lock \
+            env NEU=1 python3 automation/klassen_kontrolle.py > "$KK" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) klassen_kontrolle neu gestartet"
+      fi
     fi
   fi
   BD=/tmp/bilddubletten.log
