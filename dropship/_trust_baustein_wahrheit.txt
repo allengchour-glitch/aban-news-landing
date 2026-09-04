@@ -22394,3 +22394,22 @@
 15492085776769	ersetzt-1	Mini USB Stick 4GB 8GB 16GB
 15492085973377	ersetzt-1	EAGET T1 Micro SD Speicherkarte
 15492086071681	ersetzt-1	Faltbarer Sonnen- und Regenschirm
+15492086563201	ersetzt-1	USB Lötkolben für Reparaturen
+15492086825345	ersetzt-1	Mini-Hand-Siegelgerät, USB-C aufladbar
+15492087087489	ersetzt-1	Elektrischer Hornhautentferner für seidig glatte Füsse
+15492087447937	ersetzt-1	Alu-Dreieckswinkel für präzises Holzhandwerk
+15492088529281	ersetzt-1	Kontur-Stick Set für multidimensionales Contouring
+15492090757505	ersetzt-1	Holzregal mit 4 Ebenen
+15492091019649	ersetzt-1	Kabel-Organizer mit Deckel und Rollen/Füssen
+15492091347329	ersetzt-1	Smarter Aroma Diffuser für Bars und Hotels
+15492091937153	ersetzt-1	Magnetisches Silikonarmband für Apple Watch
+15492092232065	ersetzt-1	Memory Foam Kissenbezug, Eiskühlend (Paar)
+15492092494209	ersetzt-1	PGM Golfschläger (Holz) für Damen und Herren
+15492095771009	ersetzt-1	Präzisions-Wasserwaage aus Aluminium
+15492096033153	ersetzt-1	Winkel Lineal 4-in-1 Orange
+15492096295297	ersetzt-1	Dreieck-Lineal aus Aluminiumlegierung
+15492096590209	ersetzt-1	Holzbearbeitungs-Bohrlehre für gerade Löcher
+15492096852353	ersetzt-1	ToolkitRC WM150 Leistungsmesser 50V 150A
+15492097147265	ersetzt-1	Profi Golf-Entfernungsmesser & Monokular
+15492097409409	ersetzt-1	Stossfestes Manometer aus Edelstahl
+15492097900929	ersetzt-1	Digitaler Neigungsmesser und Winkelmesser
