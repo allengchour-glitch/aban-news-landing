@@ -2,25 +2,12 @@
 
 Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, der rankt und die Leserin ins Leere schickt, verschenkt genau die Kaufabsicht, die am teuersten zu bekommen ist.
 
-## ⚠️ Benannte Ware zu benanntem Preis — die es nicht gibt
-
-Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen und Preis, den niemand kaufen kann.
-
-| Ratgeber | verspricht | Preis | kein Produkt zu |
-|---|---|---|---|
-| [Edelstahl Schmuck Pflege & hypoallergen: Der ](/blogs/ratgeber/edelstahl-schmuck-pflege-hypoallergen) | Reise-Schmuckbinder Premium Leder | CHF 39.90 | `Schmuckbinder` |
-| [Reise Gadgets & Packtipps: Clever packen fürs](/blogs/ratgeber/reise-gadgets-packtipps-handgepaeck) | Reise-Schmuckbinder Premium aus Leder | CHF 39.90 | `Schmuckbinder` |
-| [Weihnachtsgeschenke 2026 Schweiz: Ideen nach ](/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
-| [Yoga für Anfänger zuhause: So startest du ent](/blogs/ratgeber/yoga-anfaenger-zuhause-starten) | Yoga Devotion Gift Box | CHF 149.90 | `Devotion` |
-
 ## Ratgeber ohne einen einzigen kaufbaren Produktlink
 
 | Ratgeber | Produktlinks (alle tot/keine) |
 |---|---:|
 | [Ätherische Öle für besseren Schlaf: Die Top 5 (2026)](/blogs/ratgeber/atherische-ole-fur-besseren-schlaf-die-top-5-2026) | 0 |
-| [Welcher Aroma-Diffuser passt zu dir? Der ultimative Guide 20](/blogs/ratgeber/welcher-aroma-diffuser-passt-zu-dir-guide-2026) | 0 |
 | [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
-| [Ätherische Öle — Welches Öl wofür? Der ultimative Schweizer ](/blogs/ratgeber/atherische-ole-guide-schweiz) | 0 |
 | [Wellness-Routine ab CHF 100 — So baust du dir dein Spa zuhau](/blogs/ratgeber/wellness-routine-100-chf) | 0 |
 | [Diffuser kaufen 2026 — Worauf du in der Schweiz unbedingt ac](/blogs/ratgeber/diffuser-kaufen-schweiz-2026) | 0 |
 | [Lavendel — Der Wellness-Champion. Warum dieses eine Öl alles](/blogs/ratgeber/lavendel-wellness-champion-schweiz) | 0 |
@@ -29,8 +16,6 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Aromatherapie für Anfänger — Der ehrliche 7-Tage-Plan](/blogs/ratgeber/aromatherapie-fur-anfanger) | 0 |
 | [Geschenke, die Eindruck machen — ohne dass du ein Vermögen a](/blogs/ratgeber/geschenke-die-eindruck-machen) | 0 |
 | [Die besten Aroma-Diffuser 2026 — Kaufratgeber für die Schwei](/blogs/ratgeber/beste-aroma-diffuser-2026-kaufratgeber-schweiz) | 0 |
-| [Nackenverspannung lösen zuhause: Sanfte Wege zu mehr Entspan](/blogs/ratgeber/nackenverspannung-loesen-zuhause) | 0 |
-| [Yoga für Anfänger zuhause: So startest du entspannt und rich](/blogs/ratgeber/yoga-anfaenger-zuhause-starten) | 0 |
 | [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
 | [Aroma-Diffuser kaufen: Der grosse Ratgeber 2026](/blogs/ratgeber/aroma-diffuser-kaufen-der-grosse-ratgeber-2026) | 0 |
 | [Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass](/blogs/ratgeber/geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass) | 0 |
