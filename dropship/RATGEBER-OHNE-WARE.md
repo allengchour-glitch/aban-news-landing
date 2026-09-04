@@ -8,13 +8,10 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 
 | Ratgeber | verspricht | Preis | kein Produkt zu |
 |---|---|---|---|
-| [UV400 vs. Polarisiert — Wie du echte Sonnenbr](/blogs/ratgeber/uv400-polarisiert-sonnenbrillen-guide) | PC-Rahmen und Federscharnieren kostet beim Op | CHF 150 | `Federscharnieren` |
-| [UV400 vs. Polarisiert — Wie du echte Sonnenbr](/blogs/ratgeber/uv400-polarisiert-sonnenbrillen-guide) | Federscharnieren und Schutzbeutel. | CHF 39.90 | `Federscharnieren` |
-| [Home Office gesünder einrichten: 6 Bereiche, ](/blogs/ratgeber/home-office-gesuender-einrichten) | Augen am Abend weniger überreizt anfühlen. Di | CHF 15.90 | `überreizt` |
-| [Bartpflege & Rasur 2026: Der komplette Ratgeb](/blogs/ratgeber/bartpflege-rasur-2026-ratgeber) | Nassrasierers. Ein guter Rasierhobel kostet u | CHF 30 | `Nassrasierers` |
-| [Pool & Schwimmen 2026: Sommer-Spass im & am W](/blogs/ratgeber/pool-schwimmen-2026-ratgeber) | Schwimmbrillen starten in der Schweiz bei etw | CHF 20 | `Schwimmbrillen` |
-| [Camping & Outdoor 2026: Die wichtigste Ausrüs](/blogs/ratgeber/camping-outdoor-2026-ausruestung) | Nässe und teurer | CHF 300. | `teurer` |
-| [Powerbank kaufen 2026: So erkennst du den mAh](/blogs/ratgeber/powerbank-kaufen-mah-schwindel-2026) | Eine Prozentanzeige wie bei der | CHF 17.90 | `Prozentanzeige` |
+| [Edelstahl Schmuck Pflege & hypoallergen: Der ](/blogs/ratgeber/edelstahl-schmuck-pflege-hypoallergen) | Reise-Schmuckbinder Premium Leder | CHF 39.90 | `Schmuckbinder` |
+| [Reise Gadgets & Packtipps: Clever packen fürs](/blogs/ratgeber/reise-gadgets-packtipps-handgepaeck) | Reise-Schmuckbinder Premium aus Leder | CHF 39.90 | `Schmuckbinder` |
+| [Weihnachtsgeschenke 2026 Schweiz: Ideen nach ](/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
+| [Yoga für Anfänger zuhause: So startest du ent](/blogs/ratgeber/yoga-anfaenger-zuhause-starten) | Yoga Devotion Gift Box | CHF 149.90 | `Devotion` |
 
 ## Ratgeber ohne einen einzigen kaufbaren Produktlink
 

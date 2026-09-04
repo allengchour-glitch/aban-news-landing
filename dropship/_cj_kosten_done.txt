@@ -10468,3 +10468,62 @@ gid://shopify/Product/15453672309121	CHF 7.87	1 Varianten	Perlen-Abakus-Halskett
 gid://shopify/Product/15453672407425	CHF 7.49	1 Varianten	Edelstahl 3D Katzenpendant mit Blumenkranz – Unise
 gid://shopify/Product/15453672472961	CHF 7.69	1 Varianten	18K Gold-Plated Anpassbarer Weizenähren-Indexring
 gid://shopify/Product/15453672571265	CHF 16.25	1 Varianten	Kreuz-Mehrschicht Halskette & Ohrschmuck
+gid://shopify/Product/15453672636801	CHF 10.22	1 Varianten	Böhmisches Halsband
+gid://shopify/Product/15453672702337	CHF 9.41	1 Varianten	Koreaner Stil Halskette mit Zirkonia
+gid://shopify/Product/15453672800641	CHF 9.05	1 Varianten	Choker mit Herz-Design – Täglich tragbar
+gid://shopify/Product/15453673095553	CHF 8.13	1 Varianten	Majestätische Hip-Hop-Titanstahlkette für Herren
+gid://shopify/Product/15453673750913	CHF 19.11	1 Varianten	Kreis und Karo Hochwertiger 925 Silberohrclip
+gid://shopify/Product/15453673816449	CHF 9.95	1 Varianten	Geometrische Twist-Ohrstecker aus Edelmetall
+gid://shopify/Product/15453673881985	CHF 8.59	1 Varianten	Neu: Retro-Geometrische Steckerohrgehänge
+gid://shopify/Product/15453673947521	CHF 12.02	1 Varianten	Koreanische Weiche Damen Ohrstecker, Waldstil mit 
+gid://shopify/Product/15453674013057	CHF 6.86	1 Varianten	Farbige Edelstein Ohrringe, unisex
+gid://shopify/Product/15453674111361	CHF 10.99	1 Varianten	Retro-Glam Geometrische Ohrringe mit Diamant
+gid://shopify/Product/15453674209665	CHF 13.09	1 Varianten	S925 Silber Vintage Rhombus Tassel Ohrstecker
+gid://shopify/Product/15453674307969	CHF 15.00	1 Varianten	Vintage-Steckerohr Sterlingsilber Luxus
+gid://shopify/Product/15453674373505	CHF 11.29	1 Varianten	Premium-Herz-U-Form Hörlinge
+gid://shopify/Product/15453724180865	CHF 10.99	1 Varianten	Herz-Ring · Damen
+gid://shopify/Product/15453724213633	CHF 10.39	1 Varianten	Liebesring · Damen
+gid://shopify/Product/15453724246401	CHF 6.82	1 Varianten	Perlenring Schmetterling
+gid://shopify/Product/15453724311937	CHF 8.02	1 Varianten	Outdoor Schmuck · Damen
+gid://shopify/Product/15453724344705	CHF 6.82	1 Varianten	Camellien-Stein-Offenring
+gid://shopify/Product/15453724377473	CHF 7.18	1 Varianten	Mode-Schmetterling-Offener Ring
+gid://shopify/Product/15453724443009	CHF 7.21	1 Varianten	Diamond-Ring-Set für Damen
+gid://shopify/Product/15453724541313	CHF 19.78	1 Varianten	Schrittzähler-Ring mit Herzfrequenz- und Blutsauer
+gid://shopify/Product/15453724606849	CHF 7.29	1 Varianten	Personalisierter Edelstahlring
+gid://shopify/Product/15453724639617	CHF 20.92	1 Varianten	S925 Silber Herz-Halskette mit doppelt graviertem 
+gid://shopify/Product/15453724672385	CHF 15.72	1 Varianten	Perlenkette · Damen
+gid://shopify/Product/15453724705153	CHF 8.27	1 Varianten	Natürliche Süsswasserperlen-Perlenkette
+gid://shopify/Product/15453724737921	CHF 19.93	1 Varianten	Natürliche Diamantförmige Süsswasserperlen
+gid://shopify/Product/15453724770689	CHF 15.72	1 Varianten	Natürliche Süsswasserperle feine Kette Schmuckmate
+gid://shopify/Product/15453724803457	CHF 28.77	1 Varianten	Hotan-Weissnephrit Ziegenfett Rundperle Armreif
+gid://shopify/Product/15453724836225	CHF 11.68	1 Varianten	Natürliche Süsswasserperlen für DIY
+gid://shopify/Product/15453724901761	CHF 11.68	1 Varianten	Natürliche Süsswasserperlen-Nackenketten Zubehör
+gid://shopify/Product/15453724934529	CHF 7.64	1 Varianten	Olivformiger Pferdeaugen-Zirkon-Halsreif aus Titan
+gid://shopify/Product/15453724967297	CHF 20.39	1 Varianten	Zartes Zuckerstück Feine Zirkonia Süsswasserperlen
+gid://shopify/Product/15453725000065	CHF 9.76	1 Varianten	Baroque Hochzeitskrone mit Rosensteinen – Prinzess
+gid://shopify/Product/15453725065601	CHF 10.01	1 Varianten	Perlen Splitter · Damen
+gid://shopify/Product/15453725131137	CHF 10.37	1 Varianten	Perlen-Strap-Armband
+gid://shopify/Product/15453725229441	CHF 20.82	1 Varianten	Natürlich Elegante Feinsilber-Ohrstecker mit Olivz
+gid://shopify/Product/15453725262209	CHF 14.34	1 Varianten	Europäisch-Amerikanischer Prinzessin-Trauring
+gid://shopify/Product/15453725294977	CHF 10.65	1 Varianten	Luxuriöse Perlen-Ohrhänger für den Sommer
+gid://shopify/Product/15453725327745	CHF 13.99	1 Varianten	Barocker Haarband-Trend
+gid://shopify/Product/15453725360513	CHF 17.80	1 Varianten	S925 Sterlingsilber Damen Ohrstecker Langbogen
+gid://shopify/Product/15453725393281	CHF 10.53	1 Varianten	Anpassbares Armband-Ring-Set
+gid://shopify/Product/15453725458817	CHF 7.31	1 Varianten	925 Sterlingsilber Barockperle Halskette in Gold
+gid://shopify/Product/15453725491585	CHF 10.26	1 Varianten	Marmergriff Gold · Damen
+gid://shopify/Product/15453725589889	CHF 16.21	1 Varianten	Damenkleid
+gid://shopify/Product/15453725622657	CHF 30.25	1 Varianten	Retro-Stil Halter-Ausschnitt Rüschentier-Midi-Klei
+gid://shopify/Product/15453725688193	CHF 13.62	1 Varianten	Quadratische Ausschnitt Taille-geknöpft Elegante K
+gid://shopify/Product/15453725753729	CHF 18.55	1 Varianten	Cheongsam-Kleid Damen
+gid://shopify/Product/15453725786497	CHF 15.26	1 Varianten	Modisches Damenkleid mit Digitaldruck
+gid://shopify/Product/15453725819265	CHF 13.31	1 Varianten	V-Ausschnitt-Minikleid mit Schleife und kurzen Ärm
+gid://shopify/Product/15453725852033	CHF 10.22	1 Varianten	Leopard-Print Straps Gaze Kleid
+gid://shopify/Product/15453725884801	CHF 15.00	1 Varianten	Kapuzen-Kleid Damen
+gid://shopify/Product/15453725950337	CHF 12.08	1 Varianten	Sommer-Mini-Kleid
+gid://shopify/Product/15453726015873	CHF 20.84	1 Varianten	Einfaches, langärmliges Kleid mit Kapuze
+gid://shopify/Product/15453726081409	CHF 15.82	1 Varianten	Langes Freizeitkleid für Damen
+gid://shopify/Product/15453726114177	CHF 13.84	1 Varianten	Sexy Patchwork-Kleid mit Rüschen
+gid://shopify/Product/15453726146945	cj-abgekuendigt-pruefen
+gid://shopify/Product/15453726212481	CHF 16.23	1 Varianten	Einseitige Midi-Kleider mit Farbblock
+gid://shopify/Product/15453726245249	CHF 17.11	1 Varianten	Elegant Armlos Modischer Halsausschnitt Damenkleid
+gid://shopify/Product/15453726310785	CHF 13.54	1 Varianten	Retro-Kleid mit Schnürung
