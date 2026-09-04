@@ -14721,7 +14721,23 @@ function loop(now){
        Jetzt 0,26 + dayA*0,44: nachts 0,26 statt 0,48 (halb so hell), TAGSUEBER
        unveraendert 0,70 — dayA = 1 ergibt exakt denselben Wert wie vorher. Wer die
        Nacht wieder heller will, aendert genau die 0,26. */
-    sun.intensity=(0.20+dayA*0.72)*wDim;hemi.intensity=0.26+dayA*0.44;
+    /* ⚠️ ZWEITE HALBIERUNG, 2026-09-04 — und diesmal mit Zahlen statt Eindruck.
+       GEMESSEN am fertigen Bild (mittlere Helligkeit, HUD-Raender abgezogen): die Nacht
+       war nur 14 % dunkler als der Tag (114 gegen 133 von 255). Dann die Quellen einzeln
+       abgeschaltet, bei angehaltener Bildschleife und selbst gerendert:
+         Laternen (Punktlichter)  72 %      leuchtende Materialien  81 %
+         Himmelslicht             18 %      Sonne                   18 %
+         Umgebungskarte            6 %
+       Die Laternen tragen die Nacht also laengst — der Grundschleier aus Sonne und
+       Hemisphaere machte nur alles gleichmaessig sichtbar, auch 30 m von jeder Lampe
+       entfernt. Genau das liess entfernte Fassaden taghell aussehen.
+       Beide Nacht-Sockel halbiert (0,26 -> 0,13 und 0,20 -> 0,10), Bildhelligkeit
+       122,3 -> 112,3. Der TAG bleibt auf die Stelle gleich: dayA = 1 ergibt weiter
+       0,70 und 0,92 — dieselbe Rechnung wie bei der ersten Halbierung.
+       ⚠️ NICHT WEITER RUNTER. Ein Viertel (0,07/0,03) sah im Bild noch etwas besser aus,
+       aber ueber diesem Kommentar steht die Beschwerde „man sieht nichts" — die Nacht war
+       schon einmal zu dunkel. Wer sie wieder heller will, aendert genau die 0,13. */
+    sun.intensity=(0.10+dayA*0.82)*wDim;hemi.intensity=0.13+dayA*0.57;
     hemi.groundColor.setRGB(0.24+dayA*0.17,0.34+dayA*0.20,0.30+dayA*0.04); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
