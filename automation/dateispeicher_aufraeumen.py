@@ -61,7 +61,7 @@ LEDGER = 'dropship/_dateispeicher_media_geloescht.txt'
 CURSOR = '/tmp/dateispeicher_cursor.txt'
 
 
-def gql(q, v=None, tries=10):
+def gql(q, v=None, tries=25):
     for i in range(tries):
         try:
             r = urllib.request.Request(
@@ -87,10 +87,13 @@ def gql(q, v=None, tries=10):
     return {}
 
 
-Q = '''query($q:String!,$c:String){ products(first:25, after:$c, query:$q){
+# ⚠️ Kosten klein halten: 10x10 statt 25x25. Der Shopify-Eimer (2000, +100/s) wird von den
+# taeglichen Waechtern fast leergehalten; eine teure Abfrage kommt dort nie durch und
+# meldet «Throttled» — was ohne die Abbruch-Unterscheidung wie eine leere Klasse aussah.
+Q = '''query($q:String!,$c:String){ products(first:10, after:$c, query:$q){
   pageInfo{ hasNextPage endCursor }
   nodes{ id title status
-    media(first:25){ nodes{ ... on MediaImage { id originalSource{ fileSize } } } } } } }'''
+    media(first:10){ nodes{ ... on MediaImage { id originalSource{ fileSize } } } } } } }'''
 M = '''mutation($p:ID!,$m:[ID!]!){ productDeleteMedia(productId:$p, mediaIds:$m){
   deletedMediaIds mediaUserErrors{ message } userErrors{ message } } }'''
 
@@ -134,6 +137,12 @@ def main():
     byt = 0
     while prod < CAP:
         d = gql(Q, {'q': KLASSE, 'c': cur})
+        # ⚠️ Ein leeres Ergebnis aus einer GESCHEITERTEN Abfrage ist kein Befund (Lehre 28.08.).
+        # Genau das ist hier passiert: Der Lauf meldete «keine weiteren Produkte», waehrend
+        # dieselbe Abfrage von Hand 1'200 Produkte lieferte — die Abfrage war nur gedrosselt.
+        if 'products' not in d:
+            print('ABBRUCH: Shopify hat nicht geantwortet — kein Befund, nur keine Antwort')
+            break
         p = d.get('products') or {}
         knoten = p.get('nodes') or []
         if not knoten:

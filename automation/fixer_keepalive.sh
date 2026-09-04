@@ -381,13 +381,20 @@ while true; do
   # ⚠️ Was er NICHT kann: neue Themen finden. Dafür braucht es eine Web-Recherche, und die
   # gehört an den Anfang jeder Session (siehe CLAUDE.md). Der Automat hält die Reihe frisch,
   # aktuell hält sie nur, wer nachschaut, was gerade läuft.
+  # ⚠️ 04.09.2026 — EINE SPERRE JE WAECHTER. Die taeglichen Waechter wurden bisher allein
+  # ueber das ALTER ihres Logs gestartet. Das ist kein Prozess-Test: Ein Lauf, der lange
+  # arbeitet und nichts schreibt, laesst die Log-Uhr stehen — und der Aufseher startet in
+  # jeder Runde einen weiteren. Gemessen liefen SIEBEN google_size_metafeld gleichzeitig und
+  # haben den geteilten Shopify-Eimer auf 57 von 2000 gedrueckt; jede andere Arbeit lief
+  # daraufhin in «Throttled» und meldete leere Ergebnisse. Jeder Waechter nimmt jetzt eine
+  # eigene flock-Sperre; ein Zweitstart endet von selbst.
   HY=/tmp/hype_kuratieren.log
   if [ -f "$REPO/automation/hype_kuratieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HY" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
       # NUR_RAEUMEN: unbeaufsichtigt nur Abgelaufenes abräumen — Neuaufnahme braucht den
       # Kontaktbogen-Blick einer betreuten Runde (15.08.: 5 untaugliche Bilder auf Position 1).
-      ( cd "$REPO" && setsid env NUR_RAEUMEN=1 python3 automation/hype_kuratieren.py >> "$HY" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_hype_kuratieren.lock; flock -n 9 || exit 0; env NUR_RAEUMEN=1 exec python3 automation/hype_kuratieren.py" >> "$HY" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
@@ -400,7 +407,7 @@ while true; do
   if [ -f "$REPO/automation/querbeet_kuratieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$QB" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/querbeet_kuratieren.py >> "$QB" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_querbeet_kuratieren.lock; flock -n 9 || exit 0; exec python3 automation/querbeet_kuratieren.py" >> "$QB" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) querbeet_kuratieren gestartet"
     fi
   fi
@@ -411,7 +418,7 @@ while true; do
   if [ -f "$REPO/automation/bestseller_rotation.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BR" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/bestseller_rotation.py >> "$BR" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bestseller_rotation.lock; flock -n 9 || exit 0; exec python3 automation/bestseller_rotation.py" >> "$BR" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bestseller_rotation gestartet"
     fi
   fi
@@ -422,7 +429,7 @@ while true; do
   if [ -f "$REPO/automation/ig_dup_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$IW" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/ig_dup_wache.py >> "$IW" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ig_dup_wache.lock; flock -n 9 || exit 0; exec python3 automation/ig_dup_wache.py" >> "$IW" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ig_dup_wache gestartet"
     fi
   fi
@@ -501,7 +508,7 @@ while true; do
   if [ -f "$REPO/automation/ratgeber_ohne_ware.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$ROW" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/ratgeber_ohne_ware.py >> "$ROW" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ratgeber_ohne_ware.lock; flock -n 9 || exit 0; exec python3 automation/ratgeber_ohne_ware.py" >> "$ROW" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
     fi
   fi
@@ -517,7 +524,7 @@ while true; do
   if [ -f "$REPO/automation/tote_rankings.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TRK" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/tote_rankings.py >> "$TRK" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_rankings.lock; flock -n 9 || exit 0; exec python3 automation/tote_rankings.py" >> "$TRK" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-rankings geprüft"
     fi
   fi
@@ -592,7 +599,7 @@ while true; do
   if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid env FIX=1 python3 automation/tote_landeseiten.py >> "$TLS" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_landeseiten.lock; flock -n 9 || exit 0; env FIX=1 exec python3 automation/tote_landeseiten.py" >> "$TLS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-landeseiten geprüft"
     fi
   fi
@@ -606,7 +613,7 @@ while true; do
   if [ -f "$REPO/automation/google_size_metafeld.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid env FIX=1 CAP=1200 python3 automation/google_size_metafeld.py >> "$GS" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_size_metafeld.lock; flock -n 9 || exit 0; env FIX=1 CAP=1200 exec python3 automation/google_size_metafeld.py" >> "$GS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) google-size Nachtrag gestartet"
     fi
   fi
@@ -620,7 +627,7 @@ while true; do
   if [ -f "$REPO/automation/ratgeber_rueckverweis.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$RV" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid env FIX=1 python3 automation/ratgeber_rueckverweis.py >> "$RV" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ratgeber_rueckverweis.lock; flock -n 9 || exit 0; env FIX=1 exec python3 automation/ratgeber_rueckverweis.py" >> "$RV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ratgeber-rueckverweis gestartet"
     fi
   fi
@@ -634,7 +641,7 @@ while true; do
   if [ -f "$REPO/automation/tote_rabattcodes.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TR" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/tote_rabattcodes.py >> "$TR" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_rabattcodes.lock; flock -n 9 || exit 0; exec python3 automation/tote_rabattcodes.py" >> "$TR" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-rabattcodes geprüft"
     fi
   fi
@@ -647,7 +654,7 @@ while true; do
   if [ -f "$REPO/automation/veraltete_verweise.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$VV" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/veraltete_verweise.py >> "$VV" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_veraltete_verweise.lock; flock -n 9 || exit 0; exec python3 automation/veraltete_verweise.py" >> "$VV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) veraltete-verweise geprüft"
     fi
   fi
@@ -666,7 +673,7 @@ while true; do
   if [ -f "$REPO/automation/bild_quadrat_auffuellen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BQ" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && CAP=60 setsid python3 automation/bild_quadrat_auffuellen.py >> "$BQ" 2>&1 9>&- & )
+      ( cd "$REPO" && CAP=60 setsid bash -c "exec 9>/tmp/lock_bild_quadrat_auffuellen.lock; flock -n 9 || exit 0; exec python3 automation/bild_quadrat_auffuellen.py" >> "$BQ" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bild-quadrat gestartet"
     fi
   fi
@@ -809,7 +816,7 @@ while true; do
   if [ -f "$REPO/automation/bilddubletten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && HASHCAP=4000 setsid python3 automation/bilddubletten.py >> "$BD" 2>&1 9>&- & )
+      ( cd "$REPO" && HASHCAP=4000 setsid bash -c "exec 9>/tmp/lock_bilddubletten.lock; flock -n 9 || exit 0; exec python3 automation/bilddubletten.py" >> "$BD" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bild-dubletten geprüft"
     fi
   fi
@@ -835,7 +842,7 @@ while true; do
   if [ -f "$REPO/automation/google_kanal_saeubern.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && SEIT=7 setsid python3 automation/google_kanal_saeubern.py >> "$GS" 2>&1 9>&- & )
+      ( cd "$REPO" && SEIT=7 setsid bash -c "exec 9>/tmp/lock_google_kanal_saeubern.lock; flock -n 9 || exit 0; exec python3 automation/google_kanal_saeubern.py" >> "$GS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) google-kanal-saeuberer (live, 7 Tage) gestartet"
     fi
   fi
@@ -852,7 +859,7 @@ while true; do
     GATE=86400
     tail -3 "$BG" 2>/dev/null | grep -q "Tagesbudget erschoepft" && GATE=7200
     if [ "$ALTER" -gt "$GATE" ]; then
-      ( cd "$REPO" && CAP=150 setsid python3 automation/bild_gross_nachladen.py >> "$BG" 2>&1 9>&- & )
+      ( cd "$REPO" && CAP=150 setsid bash -c "exec 9>/tmp/lock_bild_gross_nachladen.lock; flock -n 9 || exit 0; exec python3 automation/bild_gross_nachladen.py" >> "$BG" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bild-gross-nachladen gestartet"
     fi
   fi
@@ -868,7 +875,7 @@ while true; do
   if [ -f "$REPO/automation/kollektion_leer.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/kollektion_leer.py >> "$KL" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektion_leer.lock; flock -n 9 || exit 0; exec python3 automation/kollektion_leer.py" >> "$KL" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) leere-kollektionen geprüft"
     fi
   fi
@@ -1043,7 +1050,7 @@ while true; do
   if [ -f "$REPO/automation/merchant_sperre_durchsetzen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$MS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/merchant_sperre_durchsetzen.py >> "$MS" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_merchant_sperre_durchsetzen.lock; flock -n 9 || exit 0; exec python3 automation/merchant_sperre_durchsetzen.py" >> "$MS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) merchant_sperre_durchsetzen gestartet"
     fi
   fi
@@ -1059,7 +1066,7 @@ while true; do
   if [ -f "$REPO/automation/bb_unrentabel_guard.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BB" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/bb_unrentabel_guard.py >> "$BB" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bb_unrentabel_guard.lock; flock -n 9 || exit 0; exec python3 automation/bb_unrentabel_guard.py" >> "$BB" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bb_unrentabel_guard gestartet"
     fi
   fi
@@ -1148,7 +1155,7 @@ while true; do
   if [ -f "$REPO/automation/pod_designzwang.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$PD" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/pod_designzwang.py >> "$PD" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_pod_designzwang.lock; flock -n 9 || exit 0; exec python3 automation/pod_designzwang.py" >> "$PD" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) pod_designzwang gestartet"
     fi
   fi
@@ -1163,7 +1170,7 @@ while true; do
   if [ -f "$REPO/automation/versandprofil_poster.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$VP" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/versandprofil_poster.py --scharf >> "$VP" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_versandprofil_poster.lock; flock -n 9 || exit 0; exec python3 automation/versandprofil_poster.py" --scharf >> "$VP" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) versandprofil_poster gestartet"
     fi
   fi
