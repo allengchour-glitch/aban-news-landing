@@ -102,3 +102,50 @@ aus dem Shop nehmen.
 mit `FILE_STORAGE_LIMIT_EXCEEDED` gescheitert. Bevor Kundenfotos hochgeladen werden, muss in
 **Shopify → Einstellungen → Dateien** Platz geschaffen oder der Plan erhöht werden. Sonst
 landen die Bilder als FAILED und niemand merkt es.
+
+## 📥 Die Fotos sind da — 10 Stück, zwei Kleider (2026-09-04)
+
+**Zuordnung, belegt über Bestellung #1013 (14.08.) und den Bildvergleich:**
+
+| Fotos | Produkt | Handle | Stand |
+|---|---|---|---|
+| 1 · 2 · 3 · 7 · 8 · 9 · 10 | Blumenkleid mit Schnürung | `blumenkleid-mit-schnurung-613000` | ACTIVE · CHF 14.90 · 4 Varianten (XS–L) |
+| 4 · 5 · 6 | Midikleid mit Zopfmuster und Blumenprint | `midikleid-mit-zopfmuster-und-blumenprint-600200` | ACTIVE · CHF 14.90 · **8 Farben** × 5 Grössen = 40 Varianten |
+
+Aufnahmequalität: 3024×4032, Tageslicht, graue/braune Wand, Person erkennbar. Deutlich besser
+als die CJ-Katalogbilder (Studio-Freisteller + Wiesen-Stockfoto).
+
+⚠️ **Beim Midikleid darf das Kundinnenfoto NICHT das Hauptbild werden.** Es zeigt EINE der acht
+Farben; als erstes Bild wäre es für die anderen sieben eine Falschangabe — dieselbe Klasse wie
+ein Titel, der eine Auswahl verschweigt (03.09.). Vorschlag: Katalogbild bleibt vorn, das
+Kundinnenfoto steht an Position 2. Beim Blumenkleid gibt es nur eine Farbe → dort darf es vorn.
+
+⚠️ **Vor dem Online-Stellen fehlt weiterhin die schriftliche Einwilligung.** Die Person ist
+erkennbar; der Mailentwurf steht oben in dieser Datei. Ohne Antwort geht kein Bild live.
+
+⚠️ **Und der Speicher ist immer noch voll** — `FILE_STORAGE_LIMIT_EXCEEDED`. Selbst mit
+Einwilligung scheitert jeder Upload, bis der Betreiber unter Einstellungen → Dateien Platz
+schafft oder den Plan erhöht.
+
+### Wie die Fotos wieder zu holen sind (kein Foto liegt im Repo — es ist öffentlich)
+Der iCloud-Link des Betreibers ist dauerhaft; der Abruf geht ohne Anmeldung in drei Schritten:
+1. `POST https://ckdatabasews.icloud.com/database/1/com.apple.photos.cloud/production/public/records/resolve`
+   mit `{"shortGUIDs":[{"value":"<token aus dem share.icloud.com/photos/-Link>"}]}` → liefert
+   `zoneID`, `anonymousPublicAccess.token` und `databasePartition`.
+2. `POST <partition>/database/1/com.apple.photos.cloud/production/shared/records/query?publicAccessAuthToken=<token>`
+   mit `{"query":{"recordType":"CPLAssetAndMasterByAssetDateWithoutHiddenOrDeleted"},"zoneID":…}`
+   → je Foto ein `CPLMaster` mit `resJPEGMedRes.downloadURL` (1536×2048) und `resOriginalRes`.
+3. Die `downloadURL` enthält `${f}` — durch einen Dateinamen ersetzen. **Die Antwort ist kein
+   nacktes JPEG:** CloudKit legt einen kurzen Container-Kopf davor (`0a` + Längen-Varint) und
+   hängt Bytes an. Ab dem ersten `ffd8ff` bis zum letzten `ffd9` schneiden.
+
+⚠️ **Der Parametername `publicAccessAuthToken` ist der ganze Trick.** `ckWebAuthToken`,
+`ckShareToken` und `ckAnonymousUserToken` scheitern mit 401 — der erste sogar mit der
+irreführenden Meldung «check you have the correct API Token for this container», die zur Suche
+nach einem Container-Token verleitet, den es hier gar nicht braucht. Gefunden wurde der richtige
+Name im Bundle der Web-App (`main.js`, `s.set("publicAccessAuthToken", …)`).
+**Eine Fehlermeldung nennt oft nicht das fehlende Stück, sondern das erste, das auffällt.**
+
+⚠️ Der `sharedstreams`-Weg (Eintrag von früher) gilt NUR für klassische geteilte Alben
+(`icloud.com/sharedalbum/#B…`). Ein `share.icloud.com/photos/…`-Link ist ein CloudKit-Share und
+antwortet dort mit 404 — was wie ein toter Link aussieht und keiner ist.
