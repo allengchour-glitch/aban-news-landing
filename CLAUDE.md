@@ -1,5 +1,61 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🛌 «FERTIG» war ein Ausschalter — neun Waechter schliefen fuenf Tage (2026-09-04)
+Der Google-Luecken-Bericht trug den Stand **30.08.** Nachgesehen, warum: Der Aufseher
+ueberspringt jeden Waechter, in dessen Log `FERTIG` steht — **ohne Verfallsdatum**. Geweckt
+hat sie seither nur der /tmp-Wipe. Gemessen ruhten **neun** taegliche Waechter seit dem
+30./31.08., waehrend der Grind taeglich hunderte Produkte anlegte:
+`google_kanal_luecke` (der EINZIGE Kanal mit belegten Verkaeufen), `ohne_lieferantenref_guard`
+(die #1008-Klasse: bezahlt, nie lieferbar), `handle_messversprechen`, `menue_links`,
+`tote_kollektionslinks`, `variant_value_clean`, `suchwort_tags`, `google_identifier`,
+`pod_druckdatei`.
+**FERTIG heisst «zu DIESEM Zeitpunkt nichts zu tun», nicht «fuer immer erledigt».** Es gilt
+jetzt 20 Stunden; danach ist der Waechter wieder faellig (in beide Richtungen geprueft:
+115 h altes FERTIG faellig, frisches ruht). Dieselbe Familie wie das 24-Stunden-Tor des
+Klassen-Vollscans, das denselben Tag lahmlegte — **ein Tor, das den Normalfall regelt, muss
+den Ausnahmefall kennen: einen Lauf, der laenger dauert als sein Container lebt, und einen
+Katalog, der sich taeglich aendert.**
+⚠️ Und die unangenehme Nebenwirkung des /tmp-Wipes: Er war **das einzige Mittel**, das die
+Waechter je wieder geweckt hat. Ein Mechanismus, dessen Gesundheit an einem Datenverlust
+haengt, ist keiner.
+
+## 🏔️ «Versand aus Belp» stand auf 21 Produkten — versendet wird ab Werk (2026-09-04)
+Beim Nachsehen, warum das Slim Wallet elf Tage in Folge eine Versand-Quittung bekam, fiel
+der Trust-Block auf: «Versand aus **Belp** · 10–20 Werktage · Tracking inklusive». Belp ist
+der Firmensitz — die Ware geht aber **direkt ab Herstellerlager**, und genau das sagt die
+Zahl daneben. Eine Schweizer Versandherkunft neben 10–20 Werktagen widerspricht sich selbst.
+Gemessen: **21 aktive Produkte**, ausnahmslos `direkt` klassifiziert, **kein einziges mit
+`ch-lager`** — darunter die handkuratierte Ur-Ware mit den besten Bewertungen (Slim Wallet,
+Jade Roller, Sonnenbrille), also genau die Karten der Startseite.
+- **«Kuratiert in Belp» bleibt stehen** — das ist eine Aussage ueber die MARKE, und sie
+  stimmt (Impressum, AGB und «Ueber uns» nennen dieselbe Adresse). Falsch war nur, wo der
+  Text den VERSAND in der Schweiz verortet. **Ein Ortsname ist nicht automatisch eine
+  Herkunftsbehauptung — es kommt darauf an, worueber der Satz spricht.**
+- ⚠️ Meine erste Fassung pruefte auf «Belp» im Ergebnis und meldete deshalb 21 von 21
+  Fehlschlaegen — sie schlug bei der WAHREN Marken-Aussage an. **Eine Nachkontrolle muss
+  dasselbe pruefen wie die Regel, nicht mehr.**
+- Vier exakte Formen ersetzt (je 1× je Produkt), Seiten und Kollektionstexte gegengeprueft:
+  dort steht Belp nur als Adresse und in persoenlichen Saetzen — 0 Versandaussagen.
+
+## 🧭 Vier rankende 404 aufgefangen — und die Reihenfolge der Ziele (2026-09-04)
+`TOTE-RANKINGS.md` fuehrte vier Adressen, fuer die Google uns zeigt und die als DRAFT ein
+404 sind (zusammen ~970 Suchen/Monat). Der neue CJ-Kanal «CJPacket EQ Sensitive» half
+ihnen nicht — er ist fuer heikle Ware, nicht fuer sperrige; alle vier haben weiterhin
+**keine CH-Linie** (live gemessen, nicht vermutet). Also Weiterleitungen:
+| Suchbegriff | Sucher/Mt. | Ziel |
+|---|---:|---|
+| luftbefeuchter grosse raeume | 340 | «Grosser Ultraschall-Luftbefeuchter» (ACTIVE, CHF 24.90) |
+| katzenklo moebel | 320 | `/collections/katzenwelt` (932 aktiv) |
+| schwere decken | 140 | «Kuehlende Gewichtsdecke mit Glasperlen» (ACTIVE) |
+| kabelschellen | 170 | **bleibt offen** — es gibt nichts Verwandtes |
+- ⚠️ Der Luftbefeuchter hatte bereits eine 301 auf `/collections/haushaltsgeraete`, gesetzt
+  vom Landeseiten-Lauf. **Ein gleichartiges PRODUKT ist besser als eine Kategorie** — die
+  Weiterleitung wurde deshalb umgehaengt, nicht neu erfunden.
+- **Der Ratgeber musste mit.** Mein eigener Luftbefeuchter-Ratgeber (01.09.) bewarb den
+  gedrafteten 4L mit «Mit **4 Litern** … CHF 54.90». Das neue Ziel nennt keine Literzahl —
+  also steht dort jetzt «grosse Kapazitaet», nicht eine geratene Zahl. **Wer einen Link
+  umhaengt, muss den Satz drumherum lesen**, sonst beschreibt der Text die alte Ware.
+
 ## 🔎 Drei Prüf-Lehren an einem Nachmittag — und zwei Fehlalarme, die ich NICHT gemeldet habe (2026-09-04)
 1. **Naht nach dem Streichen:** Faellt ein Satz weg, dessen Vorgaenger sein Trennzeichen nicht
    mittrug, kleben die Nachbarn aneinander («…Portionsgroessen ausgelegt.**Das** Set beinhaltet»).
