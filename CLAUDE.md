@@ -1,5 +1,37 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔎 Drei Prüf-Lehren an einem Nachmittag — und zwei Fehlalarme, die ich NICHT gemeldet habe (2026-09-04)
+1. **Naht nach dem Streichen:** Faellt ein Satz weg, dessen Vorgaenger sein Trennzeichen nicht
+   mittrug, kleben die Nachbarn aneinander («…Portionsgroessen ausgelegt.**Das** Set beinhaltet»).
+   Ueber alle 3'000 Ledger-Produkte gemessen: **2 Faelle**, beide live repariert. Die Quelle
+   (`wahlversprechen.py`) heilt die Naht jetzt selbst — eng gefasst und in beide Richtungen
+   geprueft (7 Faelle, 0 Abweichungen): «luxestyle.ch» (danach klein), «z.B.Das» (davor nur ein
+   Buchstabe) und «14.5 cm» (Ziffern) bleiben unberuehrt.
+2. ⚠️ **Shopifys Ereignisprotokoll kennt KEINE Textaenderung.** Beim Zombie-Jagen habe ich das
+   Instrument geholt, das am 22.08. die Google-Kanal-Ursache fand — `product.events`. Beim Slim
+   Wallet steht dort als letzter Eintrag der **08.08.**, waehrend `updatedAt` auf **04.09. 13:48**
+   steht. Das Protokoll fuehrt Kanal-, Status- und App-Ereignisse, aber kein `descriptionHtml`.
+   **Ein Protokoll, das eine Sorte Aenderung fuehrt, fuehrt deswegen nicht jede.**
+   Brauchbar war stattdessen die **Historie des eigenen Ledgers**: `git log -S<pid>` zeigt fuer das
+   Slim Wallet eine Quittung **an elf Tagen in Folge**, jedes Mal «direkt 2». Ein Ledger ohne
+   Zeitstempel bekommt seinen Zeitstempel aus der Versionsgeschichte.
+   ⚠️ Der Zombie ist damit **noch nicht benannt**: 40 von 40 Stichproben sind drei Stunden nach der
+   Reparatur sauber, und `updatedAt` steht unveraendert auf meinem eigenen Lauf. Die Falle laeuft.
+3. ⚠️ **Ein Treffer in einer Skript-Nutzlast ist kein Befund auf der Seite.** Im Salzlampen-Ratgeber
+   (groesste Such-Landeseite der Woche) fand ich `/products/052d-raketenzerstorer-modellbausatz`,
+   `1-zoll-zapfpistole-fur-diesel` und `1-6-zoll-lcd-display` — exakt das Muster der Warenkorb-
+   Empfehlung aus «all», alphabetisch ab Ziffer 0. Ich war eine Minute davon entfernt, einen
+   Empfehlungs-Defekt auf dem Blog zu melden. Sie stehen im **JSON des web-pixels-managers**, also
+   im Tracking, unsichtbar fuer die Kundin. **Vor jedem Befund aus einem Seiten-Grep gehoert der
+   Kontext gelesen, nicht nur der Treffer.**
+4. Und zwei Dinge, die ich geprueft und NICHT angefasst habe: `build_ricardo_export.py` traegt den
+   alten USA-Block als fest getippten Text — sein `clean()` schneidet ihn aber nachweislich weg
+   (Testfall: «USA» nicht im Ergebnis). Und die Kasse ist strukturell in Ordnung
+   (`customerAccounts: OPTIONAL`, `loginRequiredAtCheckout: false`, `taxesIncluded: true`).
+   ⚠️ Die drei Kassengaenge dieser Woche haben **keinen** abgebrochenen Checkout hinterlassen —
+   Shopify legt einen erst an, wenn eine Adresse eingetippt ist. Sie sind also auf dem ERSTEN
+   Schritt gegangen; die Liste steht unveraendert bei 9 Eintraegen seit dem 22.08.
+
 ## 📣 Der CHF-65-Widerspruch sitzt in den ANZEIGEN, nicht im Shop (2026-09-04)
 Eine parallele Session meldete, die Juli-Anzeigen versprächen «Gratis-Versand ab CHF 65»,
 während der Shop CHF 50 sagt — mit der Bitte, das anzugleichen, «egal in welche Richtung».
