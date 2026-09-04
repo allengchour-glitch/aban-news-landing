@@ -9849,3 +9849,6 @@ gid://shopify/Product/15452682518913	CHF 12.32	3 Varianten	Romantischer Sternenh
 gid://shopify/Product/15452682584449	CHF 129.01	12 Varianten	RG106PRO Drohne mit Hindernisvermeidung und 3-Achs
 gid://shopify/Product/15452682617217	CHF 42.06	6 Varianten	Mini-Drohne mit 4K & Fernbedienung
 gid://shopify/Product/15452682649985	CHF 48.81	3 Varianten	M7 Brushless Drohne mit Bildschirmsteuerung und Du
+gid://shopify/Product/15452682682753	CHF 48.16	4 Varianten	HD-Quadrocopter mit Fernbedienung
+gid://shopify/Product/15452682715521	CHF 46.79	6 Varianten	Ferngesteuertes Fluggerät mit HD-Bildschirm
+gid://shopify/Product/15452682781057	CHF 53.02	1 Varianten	10-Zoll-FPV-Rahmen-Kit aus Carbon · ohne Elektroni

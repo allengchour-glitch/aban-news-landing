@@ -7054,9 +7054,23 @@ zulässig (12.08.). Also getrennt statt pauschal:
 | Outdoor-/Waffenklingen (Survival-, Klapp-, Einziehmesser, Leucht-Schwert, Schwertpflegeöl) | **18** | aus allen vier Werbekanälen genommen |
 | Küchenbesteck (Kochmesser, Küchenmesser-Sets, Schärfer, Scheren, Gedecke) | 46 | bleibt — zulässig |
 | gemischt, ungelesen | 55 | Aufgabe, nicht Automatik |
-- ⚠️ In der dritten Gruppe stecken zwei Fehlalarme der Klingenregel, die zeigen, wo sie noch
-  dünn ist: **«Kühlmittel-Dichtemesser für Radiatoren»** (ein Messgerät — die Ausnahmeliste
-  kennt Puls-, Winkel-, Reifendruck-, Entfernungsmesser, aber `-dichtemesser` fällt weder
-  darunter noch unter die Sprachregel `-keits-/-itäts-/-ungsmesser` vom 03.09.) und
-  **«Messer blutverschmiert»**, eine Halloween-Requisite. **Eine Ausnahmeliste ist immer
-  unvollständig; die nächste Lücke findet man im Ergebnis, nicht in der Liste.**
+- **Die 55 dann einzeln gelesen** (04.09.): fast alles Küchenbesteck (Ausbein-, Hack-,
+  Fisch-, Metzger-, Schälmesser, Wetzstahl, Schärfsystem) und **Werkzeugklingen**
+  (Hobelmesser, Plotter-Klingen, Drechselmesser, CNC-Wendeplatten, Papierschneider) — beides
+  zulässig, Cuttermesser sind ausdrücklich kein Richtlinienverstoss (12.08.). Eindeutig raus
+  gehörten **zwei**, die unser eigener `productType` als «Outdoor-Messer» führt. Damit sind
+  aus 119 Treffern **20 entfernt und 99 bewusst gelassen** — hätte ich die Zahl statt der
+  Titel gelesen, wären 99 Artikel aus dem einzigen verkaufenden Kanal geflogen.
+- ⚠️ **Drei Fehlalarme der Klingenregel, alle behoben:** «Kühlmittel-**Dichte**messer»,
+  «Reifen-**Profiltiefen**messer» und «Elektronischer **Handkraft-Messer**» sind Messgeräte.
+  Die Ausnahmeliste kannte «dicken», aber nicht «dichte/tiefen/kraft» — und die letzte Form
+  rutschte selbst danach durch, weil die Ausnahme das Wort **direkt angehängt** erwartete,
+  die Klingenregel «Messer» aber auch als **eigenes Wort** trifft. Jetzt `[- ]?messer`.
+  Belegt: 28 Bestandsfälle + 13 neue (Python) und 7 (JS), 0 Abweichungen — sieben Dateien
+  lesen dieselbe Regeldatei. **Eine Ausnahmeliste ist immer unvollständig; die nächste Lücke
+  findet man im Ergebnis, nicht in der Liste.**
+- ⚠️ Und beim Nachbessern habe ich die Regex mit einem Schnitt selbst zerstört (eine Klammer
+  zu viel) — sie ist die Grundlage von fünf Werkzeugen. Aus der Historie zurückgeholt und die
+  Ersetzung **vor** dem Schreiben mit `re.compile` geprüft. **Wer an einer geteilten Regel
+  schneidet, kompiliert sie, bevor er sie speichert.**
+- ⚠️ «Messer blutverschmiert» (2×) ist eine Halloween-Requisite und bleibt.

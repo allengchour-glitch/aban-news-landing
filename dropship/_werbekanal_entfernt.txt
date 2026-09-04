@@ -53,3 +53,5 @@ gid://shopify/Product/15448841978241	kiffer-zubehoer-0209	TikTok,Facebook & Inst
 15524699210113	outdoor-klinge-werbekanal	Nylon-Klappmesser für Camping und Survival
 15524699308417	outdoor-klinge-werbekanal	Klappmesser mit Holzgriff
 15524699406721	outdoor-klinge-werbekanal	Klappmesser aus D2-Stahl für Outdoor
+15524695703937	outdoor-messer-typ-werbekanal	Faltmesser Wild Life-Schutz mit Holzgriff
+15524699144577	outdoor-messer-typ-werbekanal	Faltmesser aus Metall
