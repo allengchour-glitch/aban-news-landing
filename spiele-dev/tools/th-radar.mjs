@@ -26,7 +26,15 @@ mitSonden('traumhaus.html', {
       for(var i=0;i<d.length;i+=4){
         if(Math.abs(d[i]-255)<12&&Math.abs(d[i+1]-225)<12&&Math.abs(d[i+2]-74)<26&&d[i+3]>200)n++;}
       return n;}
-    if(was==="nah"){var m3=document.getElementById("minimap");
+    if(was==="nah"){
+      /* ⚠️ ERST NEU ZEICHNEN LASSEN, DANN LESEN. "updMinimap" ist auf 0,12 s WELTZEIT
+         gedrosselt (_mmT -= dt). Auf dem Software-Rasterizer sind das rund 1,4
+         Wanduhrsekunden — das Werkzeug wartete 1,2 s und las darum mal das neue, mal
+         das alte Bild. GEMESSEN: vier Laeufe, zweimal 0 Pixel und zweimal 47…53, auf
+         DEMSELBEN Stand und auch auf origin/main. Kein Fehler im Spiel, ein Fehler in
+         der Messung. Ein grosses dt drueckt _mmT unter null und erzwingt den Strich. */
+      if(typeof updMinimap==="function")updMinimap(1);
+      var m3=document.getElementById("minimap");
       var d3=m3.getContext("2d").getImageData(0,0,m3.width,m3.height).data,n3=0;
       for(var j=0;j<d3.length;j+=4){
         if(Math.abs(d3[j]-255)<14&&Math.abs(d3[j+1]-107)<16&&Math.abs(d3[j+2]-90)<20&&d3[j+3]>200)n3++;}
