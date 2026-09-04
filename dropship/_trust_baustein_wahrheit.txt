@@ -20992,3 +20992,12 @@
 15484421669249	ersetzt-1	Multifunktionaler Business Rucksack
 15484421702017	ersetzt-1	Business Rucksack für Pendler und Reisen
 15484421964161	ersetzt-1	Multifunktionaler XXL Rucksack für Damen
+15484422553985	ersetzt-1	Baby-Kopfkissen für Neugeborene
+15484422619521	ersetzt-1	Baby- und Kinderkissen mit Trennwand
+15484422685057	ersetzt-1	Atmungsaktives Silikonkissen für Kinder
+15484422914433	ersetzt-1	Baby-Kopfkissen mit Hirsekissen
+15484424454529	ersetzt-1	Wolkenkissen für Nacken- und Wirbelsäulenstütze
+15484424520065	ersetzt-1	Dekokissen mit Tiermuster oder geometrischem Design
+15484424683905	ersetzt-1	Baby Seitenkissen Beruhigendes Bonbon
+15484424847745	ersetzt-1	Baby-Stillkissen mit Neigung
+15484424946049	ersetzt-1	Baby-Rückenstützkissen Candy
