@@ -2239,3 +2239,10 @@ pagani-design-berjani-armbanduhr-b1264f	-	-	-	unklar keine CJ-SKU	landeseite
 pagani-design-berjani-quarzuhr-4b0f6a	-	-	-	unklar keine CJ-SKU	landeseite
 pagani-design-berjani-3306-quarzuhr-38360c	-	-	-	unklar keine CJ-SKU	landeseite
 pagani-design-gold-armbanduhr-mit-stahlband-d62c72	-	-	-	unklar keine CJ-SKU	landeseite
+damen-quarzuhr-mit-kalender-und-24-stunden-anz-5f29a0	-	-	-	unklar keine CJ-SKU	landeseite
+nibosi-quarzuhr-mit-edelstahlband-e89d0a	-	-	-	unklar keine CJ-SKU	landeseite
+armbanduhr-manschettenknopfe-kugelschreiber-ge-393b44	-	-	-	unklar keine CJ-SKU	landeseite
+klassische-quarzuhr-mit-leuchtanzeige-cb137b	-	-	-	unklar keine CJ-SKU	landeseite
+gelbgold-business-uhr-adcad7	-	-	-	unklar keine CJ-SKU	landeseite
+wasserdichte-quarzuhr-mit-ultradunnem-gehause-de6886	-	-	-	unklar keine CJ-SKU	landeseite
+smart-armband-mit-temperatur-und-blutsauerstof-a18f60	-	-	-	unklar keine CJ-SKU	landeseite
