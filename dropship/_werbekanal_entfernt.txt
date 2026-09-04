@@ -35,3 +35,21 @@ gid://shopify/Product/15449493733761	kiffer-zubehoer-0209	TikTok,Facebook & Inst
 gid://shopify/Product/15449425314177	kiffer-zubehoer-0209	TikTok,Facebook & Instagram,Pinterest
 gid://shopify/Product/15448845025665	kiffer-zubehoer-0209	TikTok,Facebook & Instagram,Pinterest
 gid://shopify/Product/15448841978241	kiffer-zubehoer-0209	TikTok,Facebook & Instagram,Pinterest
+15448844599681	outdoor-klinge-werbekanal	Alu-Retraktionsmesser mit 5 Ersatzklingen
+15448844665217	outdoor-klinge-werbekanal	Aluminium Einziehmesser mit 5 Ersatzklingen
+15468735365505	outdoor-klinge-werbekanal	Yoland Schwertpflegeöl – Rostschutz für Klingen
+15472318316929	outdoor-klinge-werbekanal	Multifunktionales Karabiner-Messer mit LED
+15480161927553	outdoor-klinge-werbekanal	Full Moon Leucht-Schwert, Cyberpunk-Stil
+15493251891585	outdoor-klinge-werbekanal	Faltmesser mit Holzgriff und Lasermuster
+15493846630785	outdoor-klinge-werbekanal	Multifunktionales Klappmesser für Outdoor & Haushalt
+15493849022849	outdoor-klinge-werbekanal	Caba Survival-Messer BK18/
+15495105347969	outdoor-klinge-werbekanal	Knochenbeil mit integriertem Kupfergriff
+15495105872257	outdoor-klinge-werbekanal	A5 Outdoor-Messer mit Multifunktionswerkzeug
+15495230685569	outdoor-klinge-werbekanal	Outdoor-Messer-Set aus Edelstahl
+15496370979201	outdoor-klinge-werbekanal	Exquisites Mini-Faltmesser aus Messing
+15497492464001	outdoor-klinge-werbekanal	Multifunktionales Taschenmesser mit Licht
+15523941351809	outdoor-klinge-werbekanal	Klappmesser für Camping und Jagd
+15524698947969	outdoor-klinge-werbekanal	Trapezförmiges Klappmesser
+15524699210113	outdoor-klinge-werbekanal	Nylon-Klappmesser für Camping und Survival
+15524699308417	outdoor-klinge-werbekanal	Klappmesser mit Holzgriff
+15524699406721	outdoor-klinge-werbekanal	Klappmesser aus D2-Stahl für Outdoor

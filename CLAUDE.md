@@ -7042,3 +7042,21 @@ Objekt gegengeprüft (ACTIVE, Tag weg, im Onlineshop). Das #1016-Messer ist wied
   und prompt meldete sie «Herzfrequenzmesser» als Klinge. Die Messgeräte-Ausnahme steckt in
   `klingenregel.py`, nicht im Muster. Jetzt importiert; 11 Testfälle in beide Richtungen.
   Dieselbe Lehre wie am 29.08., als dieselbe Regex wörtlich in fünf Dateien stand.
+
+## 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+Nach dem eigenen Fehler bei der Wiederbelebung habe ich die Klasse über den ganzen Katalog
+gemessen: **526 klingenverdächtige aktive Produkte, 119 in mindestens einem Werbekanal.**
+Die Versuchung war, alle 119 zu räumen. **Falsch — Ware aus dem einzigen verkaufenden Kanal
+zu werfen kostet Geld** (Lehre 28.08.), und Küchenbesteck ist bei Google ausdrücklich
+zulässig (12.08.). Also getrennt statt pauschal:
+| Gruppe | Zahl | Entscheid |
+|---|---:|---|
+| Outdoor-/Waffenklingen (Survival-, Klapp-, Einziehmesser, Leucht-Schwert, Schwertpflegeöl) | **18** | aus allen vier Werbekanälen genommen |
+| Küchenbesteck (Kochmesser, Küchenmesser-Sets, Schärfer, Scheren, Gedecke) | 46 | bleibt — zulässig |
+| gemischt, ungelesen | 55 | Aufgabe, nicht Automatik |
+- ⚠️ In der dritten Gruppe stecken zwei Fehlalarme der Klingenregel, die zeigen, wo sie noch
+  dünn ist: **«Kühlmittel-Dichtemesser für Radiatoren»** (ein Messgerät — die Ausnahmeliste
+  kennt Puls-, Winkel-, Reifendruck-, Entfernungsmesser, aber `-dichtemesser` fällt weder
+  darunter noch unter die Sprachregel `-keits-/-itäts-/-ungsmesser` vom 03.09.) und
+  **«Messer blutverschmiert»**, eine Halloween-Requisite. **Eine Ausnahmeliste ist immer
+  unvollständig; die nächste Lücke findet man im Ergebnis, nicht in der Liste.**
