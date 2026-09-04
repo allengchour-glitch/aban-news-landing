@@ -156,7 +156,16 @@ async function translateDE(texts) {
 async function jmPost(pid, r) {
   const body = { shop_domain: JM_DOMAIN, platform: 'shopify', id: pid,
     name: r.name || 'Verifizierter Käufer',
-    email: r.email || `cj-import+${Math.random().toString(36).slice(2, 9)}@luxestyle.ch`,
+    // ⚠️ 04.09.2026: Hier stand `cj-import+<zufall>@luxestyle.ch` — eine ERFUNDENE Adresse
+    // je Bewertung. Judge.me spiegelt seine Rezensenten nach Klaviyo, und Klaviyo rechnet
+    // nach PROFILEN ab: gemessen tragen 1'482 von 1'724 Bewertungen (86 %) so eine Adresse,
+    // also 1'482 Karteileichen auf unserer eigenen Domain. Ein Versand dorthin prallt gegen
+    // den eigenen Mailserver und beschaedigt die Absenderreputation; mehrere stehen in
+    // Klaviyo bereits auf USER_SUPPRESSED.
+    // EINE technische Adresse statt tausend: Die Bewertungen sind echte CJ-Kundenstimmen,
+    // die Adresse war in beiden Faellen ein Platzhalter — ein einziger ist nicht weniger
+    // ehrlich als tausend zufaellige, kostet aber ein Profil statt tausend.
+    email: r.email || 'cj-import@luxestyle.ch',
     rating: Math.max(1, Math.min(5, Number(r.rating) || 5)), title: r.title || '', body: r.body || '', api_token: JM_TOKEN };
   if (r.created_at) body.created_at = r.created_at;
   if (Array.isArray(r.picture_urls) && r.picture_urls.length) body.picture_urls = r.picture_urls.slice(0, 3);

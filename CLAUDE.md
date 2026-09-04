@@ -1,5 +1,27 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 📧 1'482 erfundene Adressen auf der EIGENEN Domain — Klaviyo rechnet nach Profilen (2026-09-04)
+Nach dem Wiederanschluss des Klaviyo-Konnektors nachgesehen, ob die Newsletter-Liste seit
+dem 29.08. gewachsen ist: **`T2VHfu` hat 1 Profil.** Die Verkabelung stimmt (Popup und
+Footer-Zuhoerer schreiben beide auf `T2VHfu`, am Theme-Ursprung geprueft) — es meldet sich
+schlicht fast niemand an. Beim Blaettern durch die neuesten Profile fiel dafuer etwas
+anderes auf: Dutzende Eintraege `cj-import+<zufall>@luxestyle.ch`, im Sekundentakt angelegt.
+**Die Quelle ist unser eigener Bewertungs-Import.** `cj_reviews_import.mjs` erfand fuer jede
+CJ-Bewertung ohne Adresse eine neue; Judge.me spiegelt seine Rezensenten nach Klaviyo.
+Gemessen ueber die Judge.me-API: **1'482 von 1'724 Bewertungen (86 %)** tragen so eine
+Adresse. Das ist teuer und schaedlich zugleich: **Klaviyo rechnet nach PROFILEN ab**, ein
+Versand dorthin prallt gegen den eigenen Mailserver, und mehrere stehen dort schon auf
+`USER_SUPPRESSED`.
+- Quelle behoben: **EINE** technische Adresse (`cj-import@luxestyle.ch`) statt tausend. Die
+  Bewertungen sind echte CJ-Kundenstimmen; die Adresse war in beiden Faellen ein Platzhalter —
+  ein einziger ist nicht weniger ehrlich als tausend zufaellige, kostet aber ein Profil.
+- ⚠️ **Der Bestand ist NICHT angefasst.** Profile zu unterdruecken oder zu loeschen greift in
+  ein Abrechnungssystem und ist bei `request_profile_deletion` unumkehrbar — das gehoert dem
+  Betreiber, mit der Zahl daneben.
+- **Lehre: Ein Platzhalter, der EINDEUTIG sein soll, wird zur Karteileiche.** Wer eine
+  Pflichtangabe einer fremden Schnittstelle erfindet, muss fragen, wohin diese Angabe
+  WEITERFLIESST — hier von Judge.me nach Klaviyo, in ein System, das nach Stueckzahl kostet.
+
 ## ⛔ «Alles ohne bild-ok draften» haette 51'980 Produkte abgeschaltet — der Tag ist ein Datum, kein Urteil (2026-09-04)
 Der Betreiber lud den Plan einer anderen Session hoch: alle aktiven Produkte ohne den Tag
 `bild-ok` auf Entwurf setzen — **51'980 von 52'829**, uebrig blieben 849. Das Werkzeug dazu
