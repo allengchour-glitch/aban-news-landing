@@ -3,6 +3,21 @@
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 
+> ⚠️ **NACHGEZAEHLT am 04.09. um 17:35, nach dem Lauf** — waehrend eines Vollscans
+> reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand von jetzt:
+>
+> | Klasse | im Lauf gezaehlt | jetzt offen |
+> |---|---:|---:|
+> | USA-Lieferzusage | 987 | **0** |
+> | EU-Lieferzusage | 987 | **0** |
+> | Sie-Anrede im Produkttext | 1330 | 1170 |
+> | Auswahl-Versprechen bei EINER Variante | 2260 | 2243 |
+> | «Produktdetails» doppelt | 150 | 150 |
+> | Floskel «hochwertiges Material» | 124 | 124 |
+> | «Geprüfte Qualität» | 25167 | nicht nachgeprueft (Liste > 3000) |
+>
+> Die Arbeitslisten in `dropship/_klassen/` sind auf diesen Stand gekuerzt.
+
 ## USA-Lieferzusage im Text — 987
 
 Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).

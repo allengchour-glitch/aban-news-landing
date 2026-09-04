@@ -202,6 +202,52 @@ def slug(name):
     return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')[:50]
 
 
+NACHPRUEF_MAX = int(os.environ.get('NACHPRUEF_MAX', '3000'))
+Q_IDS = """query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product{
+        id title descriptionHtml variantsCount{count} } } }"""
+
+
+def nachpruefen(name, pruef):
+    """Die Arbeitsliste einer Klasse AM OBJEKT nachzaehlen.
+
+    ⚠️ 04.09.2026: Der Vollscan ueber 52'000 Produkte dauert Stunden — und waehrenddessen
+    reparieren die Waechter weiter. Die WAEHREND des Laufs gezaehlte Zahl ist deshalb eine
+    Zahl von vorhin, nicht der Stand jetzt: der Bericht meldete «USA-Lieferzusage 987»,
+    waehrend live 0 von 987 den Block noch trugen (um 13:49 repariert, Scan lief bis 17:30).
+    Wer so eine Zahl als Arbeitsliste nimmt, arbeitet gegen einen Katalog, den es nicht
+    mehr gibt. Also am Ende nachzaehlen und die Liste auf die WIRKLICH offenen kuerzen.
+
+    Rueckgabe: (offen, geprueft) — oder (None, 0), wenn nicht nachgeprueft wurde
+    (zu lange Liste, oder Shopify blieb stumm: keine Antwort ist kein Ergebnis).
+    """
+    d = os.path.join(listen_ordner(), slug(name) + '.txt')
+    if not os.path.exists(d):
+        return None, 0
+    zeilen = [z.rstrip('\n').split('\t') for z in open(d, encoding='utf-8') if z.strip()]
+    zeilen = [t for t in zeilen if t and t[0].isdigit()]
+    if not zeilen or len(zeilen) > NACHPRUEF_MAX:
+        return None, 0
+    offen = []
+    for i in range(0, len(zeilen), 50):
+        ids = ['gid://shopify/Product/' + t[0] for t in zeilen[i:i + 50]]
+        antwort = gql(Q_IDS, {'ids': ids})
+        if antwort is None:
+            return None, 0
+        for nd in antwort.get('nodes') or []:
+            if not nd:
+                continue
+            try:
+                if pruef(nd.get('title') or '', nd.get('descriptionHtml') or '', [],
+                         (nd.get('variantsCount') or {}).get('count', 0)):
+                    offen.append((nd['id'].split('/')[-1], (nd.get('title') or '')[:80]))
+            except Exception:
+                pass
+    with open(d, 'w', encoding='utf-8') as f:
+        for pid, tit in offen:
+            f.write(f'{pid}\t{tit}\n')
+    return len(offen), len(zeilen)
+
+
 def anhaengen(treffer):
     """Seitenweise an die Arbeitslisten anhaengen — nicht erst am Ende schreiben."""
     d = listen_ordner()
@@ -293,13 +339,27 @@ def main():
     # Runde zu Ende gelaufen -> Cursor weg, die naechste faengt vorn an.
     if not abbruch and os.path.exists(STAND):
         os.remove(STAND)
+
+    # JETZT nachzaehlen, was von den gesammelten Treffern wirklich noch offen ist.
+    jetzt = {}
+    for name, _f, _w, _fix, pruef in KLASSEN:
+        if not gesamt[name]:
+            continue
+        offen, geprueft = nachpruefen(name, pruef)
+        if offen is not None:
+            jetzt[name] = offen
+            print(f'   nachgeprueft {name}: {geprueft} → {offen} offen')
+
+    def stand(name):
+        return jetzt.get(name, gesamt[name])
+
     # Arbeitslisten leerer Klassen entfernen — eine alte Liste ist schlimmer als keine.
     for name in gesamt:
-        if not gesamt[name]:
+        if not stand(name):
             d = os.path.join(listen_ordner(), slug(name) + '.txt')
             if os.path.exists(d):
                 os.remove(d)
-    if not any(gesamt.values()):
+    if not any(stand(k[0]) for k in KLASSEN):
         if os.path.exists(BERICHT):
             os.remove(BERICHT)
         print('Keine Klasse offen — Bericht geloescht.')
@@ -323,14 +383,22 @@ def main():
     zeilen = [f'# Klassen-Kontrolle ({art}, {n} aktive Produkte)', '',
               '> Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.',
               '> Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.',
+              '> Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines\n> Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.',
               '']
     if abbruch:
         zeilen += ['⚠️ **TEILSCAN** — die Zahlen sind Untergrenzen, nicht die Klassengroesse.', '']
     for name, _feld, warum, fix, _p in KLASSEN:
-        anz = gesamt[name]
+        anz = stand(name)
         if not anz:
             continue
-        zeilen += [f'## {name} — {anz}', '', warum, '', f'Reparatur: `{fix}`', '',
+        kopf = f'## {name} — {anz}'
+        if name in jetzt and jetzt[name] != gesamt[name]:
+            kopf += f' (waehrend des Laufs {gesamt[name]} gezaehlt, seither repariert)'
+        if name not in jetzt:
+            warum += ('\n\n⚠️ NICHT nachgeprueft (Liste laenger als '
+                      f'{NACHPRUEF_MAX}) — die Zahl ist der Stand WAEHREND des Laufs, '
+                      'nicht der von jetzt.')
+        zeilen += [kopf, '', warum, '', f'Reparatur: `{fix}`', '',
                    f'Vollstaendige Liste: `dropship/_klassen/{slug(name)}.txt`', '']
         bsp = beispiele(name)
         for pid, tit in bsp:
