@@ -1,5 +1,33 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⛔ «Alles ohne bild-ok draften» haette 51'980 Produkte abgeschaltet — der Tag ist ein Datum, kein Urteil (2026-09-04)
+Der Betreiber lud den Plan einer anderen Session hoch: alle aktiven Produkte ohne den Tag
+`bild-ok` auf Entwurf setzen — **51'980 von 52'829**, uebrig blieben 849. Das Werkzeug dazu
+ist sauber gebaut (Trockenlauf als Standard, `--apply` Pflicht, `--undo`, Checkpoint).
+**Falsch ist nicht die Mechanik, sondern das Kriterium.** Gemessen statt uebernommen:
+| Messung | Ergebnis |
+|---|---|
+| Wer setzt `bild-ok`? | **KEIN Werkzeug im Repo** — die Zeichenkette steht nur in einem Kommentar |
+| Anlegemonat der 849 | **Mai 135 · Juni 710 · Juli 4 · seither 0** |
+| Rizinusoel-Wickel-Set (groesste Such-Landeseite) | **ohne** bild-ok, 3× 1000×1000 px |
+| beide heutigen Weiterleitungsziele (~480 Suchen/Mt.) | **ohne** bild-ok, 800–1001 px |
+| das eine gepruefte MIT bild-ok | **ein einziges** 800×800-Bild |
+| 300 neueste ohne bild-ok | **95 % haben ≥2 Bilder, mind. eins ≥500 px · 0 ohne Bild** |
+`bild-ok` ist die Quittung eines Laufs aus dem Fruehsommer, den seither niemand wiederholt.
+Jedes Produkt der letzten zwei Monate traegt ihn **per Konstruktion** nicht — nicht, weil
+seine Bilder schlecht waeren. Der Tag ist damit sogar GEGENLAEUFIG zur Qualitaet.
+**Vierte Fassung von «ein Tag-Name ist eine Behauptung ueber ein Produkt, keine Tatsache
+ueber es» (29.08.) — und die teuerste: Der Lauf haette den gesamten verkaufenden Katalog
+abgeschaltet**, samt der einen Seite, die messbar Kaufverkehr bringt, und den Zielen der
+Weiterleitungen, die am selben Tag gesetzt wurden.
+- **Das ZIEL dahinter ist trotzdem richtig** — die eigene Aktenlage sagt seit dem 29.08.:
+  «Mehr Produkte bringen keinen Suchverkehr». Ein kleineres, gepflegtes Sortiment ist eine
+  vernuenftige Strategie. Sie braucht nur ein **gemessenes** Kriterium (Bilder ≥ 500 px,
+  Lieferanten-SKU vorhanden, CH-lieferbar, im Google-Kanal, kein Risiko-Tag) statt der
+  Quittung eines alten Laufs.
+- **Nichts ausgefuehrt.** Ein Massenschritt dieser Groesse ist eine Betreiber-Entscheidung,
+  und er waere auf einem Irrtum aufgesetzt gewesen.
+
 ## 🔪 Die Ausnahme «rasier» gab ein Rasiermesser frei — und HEIKEL stand zweimal (2026-09-04)
 Der wiederbelebte Google-Luecken-Waechter meldete 29 Produkte ohne erkennbaren Grund
 draussen. Der Nachpublizier-Lauf haette **27 richtig und 2 falsch** publiziert:
