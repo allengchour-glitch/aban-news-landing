@@ -132,11 +132,22 @@ def main():
     # das ist ein paar Abfragen teurer und kommt dafuer an jedes Produkt.
     stand = {}
     cur = None
+    # ⚠️ Ohne Cursor beginnt jeder Lauf von vorn — nach 3'374 abgearbeiteten Produkten sind das
+    # ~340 Seitenabfragen, bevor die erste echte Arbeit kommt, und der Shopify-Eimer ist ohnehin
+    # knapp. `productDeleteMedia` setzt aber `updatedAt` auf JETZT: alles, was dieser Lauf heute
+    # schon entbildert hat, traegt das heutige Datum. `updated_at:<heute` schneidet genau diese
+    # Menge weg — kostenlos, ohne Cursor und ohne zusaetzliche Mutation (ein Marker-Tag waere
+    # eine Mutation JE PRODUKT gewesen und damit teurer als das Problem).
+    # ⚠️ Nur im Schreibmodus: ein Trockenlauf soll den ganzen Ausschnitt sehen.
+    filter_klasse = KLASSE
+    if not DRY:
+        filter_klasse += ' AND updated_at:<' + time.strftime('%Y-%m-%d', time.gmtime())
+        print(f'Filter: {filter_klasse}')
     led = None if DRY else open(LEDGER, 'a')
     prod = bilder = 0
     byt = 0
     while prod < CAP:
-        d = gql(Q, {'q': KLASSE, 'c': cur})
+        d = gql(Q, {'q': filter_klasse, 'c': cur})
         # ⚠️ Ein leeres Ergebnis aus einer GESCHEITERTEN Abfrage ist kein Befund (Lehre 28.08.).
         # Genau das ist hier passiert: Der Lauf meldete «keine weiteren Produkte», waehrend
         # dieselbe Abfrage von Hand 1'200 Produkte lieferte — die Abfrage war nur gedrosselt.

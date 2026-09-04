@@ -3372,3 +3372,137 @@
 15442053071233	2	63816	Deckenventilator mit Licht: Kühle & Helligkeit für Ihr Heim
 15442053169537	6	606407	Grosser Deckenventilator Weiss: Optimale Kühlung für Ihr Zuh
 15442064376193	5	409809	Italienische Induktions-Kanne: 12 Tassen, rot & robust
+15442067587457	2	343185	Luxus Weingläser 550ml – Wein voll entfalten!
+15442067489153	3	110331	Aromagläser 190ml – Wein in Perfektion geniessen!
+15442064408961	4	415833	Kaffeemühle Schwarz: Für frischen Kaffee & volles Aroma
+15442067521921	2	297250	Premium Weingläser 400ml – Für vollen Weingenuss!
+15442071585153	2	294892	Grüne Handyhülle mit Geldbörse – Alles sicher verstaut
+15442071650689	3	206875	USB Tischladegerät – Mehrere Geräte gleichzeitig laden
+15442076991873	3	301132	Flugsimulator-Joystick: Präzision & Action
+15442071617921	5	413068	Robuste Handyhülle – Optimaler Schutz für Ihr Smartphone
+15442077090177	3	140450	Gaming Mauspad: Präzision für deine Siege
+15442077155713	6	793570	Action-Rollenspiel: Deine Helden, dein Sieg!
+15442089410945	2	82036	Präzisions-Set – Für feinste Arbeiten & Elektronik.
+15442121720193	3	336395	Freiheit & Kontrolle: Robuste Hundeleine 5m Blau M
+15442121851265	3	335815	Freiheit & Kontrolle: Robuste Hundeleine 5m Grün S
+15442089443713	6	4013012	Elektro-Schrauber – Schnell & mühelos schrauben.
+15442150556033	2	245188	Granit Blumentopf Rot – Robust & Schön für deine Pflanzen
+15442122015105	6	483615	Gesund & Sauber: Hundenapf Edelstahl Weiss 160ml für deinen 
+15442150719873	4	512167	Runder Blumentopf Weiss 50cm – Zeitlose Eleganz für dein Grü
+15442150654337	2	203696	Grosser Blumentopf Grau kariert – Dein stilvolles Statement
+15442152194433	6	1231419	Klapptisch Mehrzweck – Flexibel, kompakt, platzsparend!
+15442152227201	3	103062	Weisser Klapptisch – Modern, stabil, platzsparend!
+15442187190657	2	124940	Sonnenbrillen Unisex – Stilvoller Schutz für jeden Look
+15442152325505	3	247957	Klapptisch Metall Holz – Stabil, flexibel, platzsparend!
+15442187092353	2	148357	Sonnenbrillen Unisex – Dein perfekter Schutz & Stil
+15442187256193	2	131066	Unisex Sonnenbrillen – Dein Schutz mit Stil & Komfort
+15442187583873	2	232105	Damenringe: Stilvoll glänzen, jeden Tag!
+15442187616641	2	232105	Damenringe: Stilvoll glänzen, jeden Tag!
+15442187682177	2	232105	Damenringe: Stilvoll glänzen, jeden Tag!
+15442194432385	2	140549	Roter Schulranzen – Robust, geräumig & bereit für Abenteuer
+15442194530689	2	221959	Blau-hellblauer Schulranzen – Robust & geräumig für den Star
+15442194596225	4	409836	Blau-oranger Schulranzen – Dein farbenfroher Start ins Schul
+15442217435521	3	274295	Rosa Hundehalsband – Komfortabel & sicher für jeden Tag.
+15442245943681	3	100255	Gelbe Bluetooth Kopfhörer – Dein Sound, kabellos!
+15442217107841	6	460320	Robuster Hundenapf Schwarz – Langlebig & leicht zu reinigen.
+15442217304449	6	460320	Hygienischer Hundenapf Schwarz – Robust für grosse Hunde.
+15442246041985	6	319344	Weisse Kopfhörer – Klarer Sound, stilvoll geniessen!
+15442246009217	6	393628	Schwarze Drahtlose Kopfhörer – Purer Sound, keine Kabel
+15442246861185	2	230352	Blitz-Zerkleinerer: Frische Zutaten schnell zubereiten
+15442246926721	5	574521	Vakuumiergerät: Lebensmittel länger frisch & haltbar
+15442246992257	2	189333	Gemüse-Zerkleinerer: Gesund & schnell zubereiten
+15442256265601	3	378127	Eleganter Pflanzkasten Anthrazit – Modern & Wetterfest
+15442256298369	3	345324	Grosser Weisser Pflanzkasten – Helle Eleganz für Deine Oase
+15442259378561	4	438658	Blaue Schultasche – Leicht & organisiert in die Schule
+15442256331137	3	313021	Hoher Rattan Pflanztopf – Natürliche Eleganz im Bali-Stil
+15442259345793	4	306476	Dunkelblaue Schultasche – Robust & praktisch für den Alltag
+15442261016961	2	176755	USB-A auf C Kabel – Alte Geräte, neue Power!
+15442259411329	4	257380	Türkise Schultasche – Stylisch & geräumig für den Alltag
+15442260984193	3	254314	USB-C Kabel 3m – Maximale Reichweite, volle Power!
+15442261049729	3	181501	USB-C Kabel 15cm – Kompakt, schnell, kein Kabelsalat!
+15442264490369	2	131201	Grosse Damenuhr – Ihr Statement für Eleganz
+15442264555905	2	171156	Zierliche Damenuhr – Dezente Eleganz für Sie
+15442267275649	2	126151	Italia Independent Sonnenbrille – Pink-Camouflage, verspiege
+15442267242881	2	152072	Italia Independent Sonnenbrille – Rot-Leopard, verspiegelt
+15442267308417	2	145456	Italia Independent Sonnenbrille – Blau-Camouflage, verspiege
+15442264621441	2	174945	Elegante Damenuhr – Ihr dezenter Stil-Akzent
+15442267799937	2	463540	Kühltasche Weiss-Schwarz – Ideal für frische Mahlzeiten.
+15442284642689	5	330532	Kopfhörer Schwarz – Geniesse klaren Sound!
+15442267767169	3	729562	Kühltasche Weiss-Schwarz – Hält Getränke & Snacks frisch.
+15442267734401	3	249635	Klapptisch Holz-Metall – Stabil, platzsparend, vielseitig.
+15442284708225	2	89186	Kopfhörer Weiss – Kristallklarer Sound für dich!
+15442284675457	5	604157	Lautsprecher Rot – Dein Sound für unterwegs!
+15442288738689	2	53597	Smarte Fitnessuhr: Dein Coach für Sport & Alltag
+15442288771457	2	48167	Rosa Fitnessuhr: Dein stilvoller Coach für Sport & Alltag
+15442288804225	5	273079	Elegante Fitnessuhr: Silber, schlank & immer dabei
+15442290114945	6	657123	Gesunde Küche: Spiralschneider & Reibe mit Rezepten
+15442290180481	3	255711	Deine Küchenmaschine: Vielseitig & zeitsparend kochen
+15442292507009	3	183391	USB-C Kabel 2m: Schnell laden & Daten übertragen!
+15442292539777	3	213279	Laptop Ladekabel: Immer volle Power für dein Notebook!
+15442290147713	4	334948	Doppel-Spiralschneider: Schnell & einfach Gemüse!
+15442292572545	3	119571	Wandladegerät + USB-C Kabel: Schnell & komplett laden!
+15442293555585	5	2149709	Stabiler Gartengrill Schwarz – Langlebig & pflegeleicht
+15442294309249	4	358461	Kompakter Tischventilator – Persönliche Frische am Platz
+15442293588353	6	2015619	Gesunder Tischgrill – Schnell & rauchfrei geniessen
+15442293686657	4	244691	Antihaft Grillpfanne Schwarz – Langlebig & leicht zu reinige
+15442294276481	6	529064	Industrie Deckenventilator – Stark & Stilvoll Kühlen
+15442295783809	2	220805	Filterkaffee: Lange heiss, frisch gebrüht geniessen!
+15442295816577	3	233219	Italienischer Mokka: 12 Tassen voller Genuss!
+15442295849345	4	496846	Filterkaffee: Einfach zubereitet, aromatisch & schnell!
+15442294342017	6	862883	Mobiler Sprühventilator – Extra Frische für unterwegs
+15442296471937	3	364329	Wein-Genuss-Set: 6 Gläser für stilvolle Abende
+15442296504705	3	272594	Edles Cocktail-Set: Mixen Sie Drinks wie ein Profi
+15442301550977	2	68746	Starke Powerbank 20000 mAh: Energie für unterwegs & Notfälle
+15442296537473	3	208914	Natur-Cocktail-Set: Profi-Drinks für Ihr Zuhause
+15442301452673	3	119571	Schnelles Laden: Wandladegerät & USB-C Kabel für dein Handy
+15442301485441	4	608876	Batterie-Fit: Dein Ladegerät für Auto & mehr – Immer Startkl
+15442303254913	6	1133167	Werkzeugkasten Robust – Ordnung für deine Projekte.
+15442303287681	6	968431	Dein Elektro-Schrauber – Schnell & mühelos schrauben.
+15442303320449	6	1445934	Dein Multiwerkzeug – Alles in einem, immer dabei.
+15442305843585	3	364619	Rosa Halsband XS/S – Bequem & schick für kleine Hunde
+15442305876353	3	271350	Rotes Halsband L – Robust & sicher für grosse Hunde
+15442305909121	6	453442	Halsband Schwarz Gold – Eleganz & Stil für deinen Liebling
+15442310955393	4	497766	Terrakotta Keramik Töpfe – Natürliche Schönheit
+15442311020929	4	499306	Gelbe Keramik Töpfe – Frische Farbakzente für dein Heim
+15442311283073	3	625329	Rosa Glitzer Kühltasche – Snacks frisch für Kinder-Spass!
+15442310988161	6	1100217	Moderne Harz Töpfe Grau – Leicht & Wetterfest für dein Zuhau
+15442311348609	2	1214671	Lila Lunch-Kühltasche – Dein Essen frisch für unterwegs!
+15442311315841	4	582811	Duo Kühltaschen – Immer frisch für Picknick & Reise!
+15442312069505	3	327295	Blau-weisse Allzwecktasche: Kompakt & praktisch für dich.
+15442312036737	4	419603	Rosa Schultasche: Stilvoll & geräumig für den Schulstart!
+15442313576833	2	73236	Damen Sonnenbrillen: Dein stilvoller UV-Schutz
+15442312102273	4	463841	Granatrote Allzwecktasche: Kompakt & vielseitig für dich.
+15442315280769	2	119095	Moderne Damenuhren: Setze farbige Akzente
+15442313740673	2	103367	Unisex Sonnenbrillen: Dein Look, dein Schutz
+15442315248001	2	181309	Elegante Damenuhren: Stilvoll die Zeit im Blick
+15442313642369	2	86803	Damen Sonnenbrillen: Dein Must-have für Schutz & Stil
+15442315313537	2	165918	Robuste Herrenuhren: Stilvoll und präzise durch den Tag
+15442386649473	2	131971	Cremefarbene Unisex Uhren: Moderner Look für Alle
+15442386616705	2	150261	Herrenuhren 42mm: Zeitloser Stil für den Mann
+15442386682241	3	197560	Damenuhren 37,5mm: Feminine Eleganz am Handgelenk
+15442387239297	2	97269	Damen Sonnenbrillen: Stilvoll & geschützt durch den Sommer
+15442386715009	2	127873	Damenuhren 37mm: Stilvolle Akzente für Ihr Outfit
+15442387272065	2	74892	Unisex Sonnenbrillen: Dein Style, dein Schutz!
+15442387337601	2	140892	Unisex Sonnenbrillen: Cool bleiben, Augen schützen!
+15442387304833	2	136795	Unisex Sonnenbrillen: Immer im Trend, immer geschützt
+15442387599745	3	278558	Edles Cocktail-Set: Mixe Drinks wie ein Profi!
+15442387632513	2	121908	6er Weinglas-Set 380ml: Für vollen Wein-Genuss
+15442387665281	2	255101	6er Weinglas-Set 280ml: Purer Genuss für jeden Wein
+15442387698049	2	135323	6er Weinglas-Set 450ml: Für den grossen Wein-Moment
+15442390647169	5	341992	Rotgold Smartwatch – Eleganz trifft Fitness
+15442390712705	2	184198	Praktische Smartwatch – Dein smarter Start
+15442390679937	4	292029	Graue Smartwatch – Dein smarter Alltagsbegleiter
+15442394448257	2	41363	Wandladegerät 15W: Kompakt & schnell laden!
+15442394513793	2	360737	Handyhülle mit Geldbörse: Stilvoll & praktisch!
+15442394382721	4	510818	Akku-Ladegerät 60W: Schnell & zuverlässig laden!
+15442394579329	3	143864	USB-C Wandlader 57W: Blitzschnell laden mit PD 3.0!
+15442399166849	2	126452	Herren Sonnenbrillen – Dein Style, Dein Schutz
+15442399232385	2	113522	Männerbrillen: Klare Sicht & UV-Schutz für dich
+15442399297921	2	105661	Deine Herrenbrille – Style trifft auf Augenschutz
+15442399363457	2	160389	Damenbrillen: Eleganz & Schutz für deine Augen
+15442463523201	2	130659	Elegante Damenuhren – Zeit für deinen Stil.
+15442463687041	2	140385	Feminine Uhren – Dein Accessoire für jeden Tag.
+15442463883649	2	134580	Moderne Unisex-Uhren – Für jeden Stil das Richtige.
+15442464014721	2	164268	Markante Unisex-Uhren – Dein Stil, deine Zeit.
+15442510676353	4	379723	Strahlende Haut: Sanfte Gesichtsreinigung für jeden Tag
+15442510709121	5	558631	Sonic Gesichtsreinigungsbürste – Premium-Tiefenreinigung
