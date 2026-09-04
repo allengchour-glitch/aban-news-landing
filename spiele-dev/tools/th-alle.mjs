@@ -170,6 +170,13 @@ const PRUEFUNGEN = [
   { name: 'Fahrgeschaefte (drehen sie sich)', datei: 'th-fahrt.mjs', kern: false,
     wert: (s) => (s.match(/— (\d+) geprueft/) || [, '?'])[1] + ' Fahrten',
     gut: (s) => /🎉 FAHRGESCHAEFTE BESTANDEN/.test(s) },
+  /* ⚠️ Aus der Sichtrunde 2026-09-02: Vergnuegungsviertel und Sportpark zeigten der
+     Strasse ihre Rueckwand, weil der Generator pauschal "-z zur Strasse" drehte. Kein
+     Werkzeug konnte das melden — es ist kein Kollider- und kein Strassenfehler,
+     sondern eine Blickrichtung. */
+  { name: 'Schauseite (Fassade zur Strasse)', datei: 'th-schauseite.mjs', kern: false,
+    wert: (s) => (s.match(/— (\d+) geprueft/) || [, '?'])[1] + ' Bauten',
+    gut: (s) => /🎉 SCHAUSEITE BESTANDEN/.test(s) },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },
