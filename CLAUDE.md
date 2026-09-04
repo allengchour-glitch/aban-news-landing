@@ -7080,3 +7080,13 @@ zulässig (12.08.). Also getrennt statt pauschal:
   bekommen — ohne Verkaufsdruck, die Rückerstattung bleibt bestehen. **Eine Aussage, die man
   einem Kunden gegenüber gemacht hat, gehört korrigiert, sobald sie falsch wird** — auch
   wenn niemand nachfragt und es keinen Vorteil bringt. Bestellnotiz in Shopify nachgezogen.
+- **Und der Kunde wollte das Messer doch:** «Kann man die Rückerstattung nicht stornieren und
+  dafür das Messer zuschicken?» **Belegt statt behauptet:** Die Admin-API kennt genau eine
+  Refund-Mutation — `refundCreate`, kein Storno (Introspektion, nicht Erinnerung). Eine
+  ausgelöste Rückerstattung läuft durch. Statt ihn auf «bestell halt neu» zu vertrösten:
+  **Entwurfsbestellung #D2 mit Zahlungslink** (gleiche Variante, gleiche Adresse, CHF 40.90,
+  Versand als Wiedergutmachung geschenkt — die Marge von +25.37 trägt die 7 Franken). Er
+  muss nichts suchen und nichts neu eintippen. **Wo etwas technisch nicht geht, ist die
+  Antwort nicht «geht nicht», sondern der kürzeste Weg zum selben Ergebnis.**
+  ⚠️ Zahlt er, muss `cj_fulfill_runner` den CJ-Auftrag über «CJPacket EQ Sensitive» anlegen —
+  genau daran ist #1016 gescheitert. Steht als Aufgabe.

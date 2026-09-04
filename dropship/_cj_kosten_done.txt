@@ -9943,3 +9943,4 @@ gid://shopify/Product/15452688646529	CHF 16.08	35 Varianten	Sommer-Strap-Dress m
 gid://shopify/Product/15452688679297	CHF 17.79	49 Varianten	Rundhals-Glitzer-Partykleid
 gid://shopify/Product/15452688712065	CHF 18.31	21 Varianten	Elegant Langarm-Shirt-Kleid für Büro & Alltag
 gid://shopify/Product/15452688777601	CHF 16.11	36 Varianten	V-Ausschnitt 3/4-Arm Minikleid
+gid://shopify/Product/15452688810369	CHF 34.05	10 Varianten	Damenleichtes Trägerkleid mit Rüschendetails

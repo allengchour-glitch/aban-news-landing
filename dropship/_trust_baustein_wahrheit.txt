@@ -20481,3 +20481,4 @@
 15481764807041	ersetzt-1	Retro Dynamisches Mikrofon
 15481764872577	ersetzt-1	USB Schwanenhals Mikrofon für Computer
 15481764938113	ersetzt-1	Kabelloses Lavalier-Mikrofon mit Dual-Core Rauschunterdrücku
+15481764970881	ersetzt-1	Kabelloses 2.4G Mikrofon mit Live Soundkarte
