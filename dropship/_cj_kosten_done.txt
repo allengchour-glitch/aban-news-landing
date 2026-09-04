@@ -9751,3 +9751,9 @@ gid://shopify/Product/15452675965313	CHF 15.78	1 Varianten	Keramik Teekanne
 gid://shopify/Product/15452675998081	CHF 26.67	1 Varianten	Yakitori-Teller
 gid://shopify/Product/15452676096385	CHF 100.31	1 Varianten	Rote Obstschale
 gid://shopify/Product/15452676129153	CHF 21.81	1 Varianten	Keramik-Halter
+gid://shopify/Product/15452676161921	CHF 26.44	1 Varianten	Tiefes Salatschalen-Set
+gid://shopify/Product/15452676194689	CHF 14.47	1 Varianten	Keramiktopf
+gid://shopify/Product/15452676227457	CHF 23.66	1 Varianten	Elegante Tiefplatte
+gid://shopify/Product/15452676292993	CHF 31.49	1 Varianten	Elektrischer Wasserkocher
+gid://shopify/Product/15452676358529	CHF 18.56	1 Varianten	Chinesischer Teller
+gid://shopify/Product/15452676391297	CHF 16.79	1 Varianten	Keramik-Teller

@@ -1152,3 +1152,5 @@ antihaft-bratpfanne-aus-karbonstahl-620800	2604170512121621400	7	34.86	ok	landes
 sofauberzug-vintage-katzenfreundlich-elastisch-608900	2601060813381609100	12	21.21	ok	landeseite
 gestreiftes-katzensofa-plusch-rutschfest-620900	2605110149301621400	12	30.99	ok	landeseite
 faltbarer-pee-pad-halter-fur-hunde-191361	2034276744523075585	0	-	KEINE CH-Option → DRAFT	landeseite
+wok-aus-karbonstahl-mit-flachem-boden-642561	2065642182698049537	0	-	KEINE CH-Option → DRAFT	landeseite
+shisha-glasrohr-617800	2504081546341618000	0	-	KEINE CH-Option → DRAFT	landeseite

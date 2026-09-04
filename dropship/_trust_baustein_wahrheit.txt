@@ -19841,3 +19841,24 @@
 15480339038593	ersetzt-1	Faltbarer Laptop-Ständer mit Kühlfunktion
 15480339104129	ersetzt-1	Magnetische kabellose Handyhalterung fürs Auto
 15480339169665	ersetzt-1	Magnetischer Handyhalter aus Aluminiumlegierung
+15480339202433	ersetzt-1	Linienfolger Roboter-Spielzeug
+15480339399041	ersetzt-1	Smartphone-Halterung fürs Auto, magnetisch
+15480339431809	ersetzt-1	RC Drift-Sportwagen ferngesteuert (1:18)
+15480339530113	ersetzt-1	Magnetischer Handy-Ständer für den Schreibtisch
+15480339562881	ersetzt-1	Klassisches Jurassic Dinosaurier-Modell
+15480339595649	ersetzt-1	Magnetische kabellose Auto-Ladestation
+15480339628417	ersetzt-1	Lamm-Plüschtier mit Sound & Licht
+15480339661185	ersetzt-1	Smartwatch mit Farbdisplay & Herzfrequenz
+15480339759489	ersetzt-1	Faltbarer kabelloser Ladeständer für Smartphones
+15480339825025	ersetzt-1	Elektrische Blasen-Ente für Badespass
+15480339923329	ersetzt-1	Magnetischer Handy-Ständer aus Aluminium
+15480339956097	ersetzt-1	RC Offroad-Fahrzeug für Kinder
+15480340021633	ersetzt-1	Faltbarer Handyhalter mit vielseitiger Befestigung
+15480340119937	ersetzt-1	RC Offroad-Drift-Buggy mit Allradantrieb
+15480340185473	ersetzt-1	Taktisches Outdoor-Stativ, faltbar, V8
+15480340218241	ersetzt-1	Externes SSD-Gehäuse – NVME/NGFF Dual Protokoll
+15480340251009	ersetzt-1	Sprechende Kürbis-Süssigkeitenschale
+15480340283777	ersetzt-1	Kabelloses Ladegerät aus Bambus und Holz
+15480340316545	ersetzt-1	Externes Festplatten-Lesegerät
+15480340349313	ersetzt-1	Ferngesteuertes Kothaufen-Streichspielzeug
+15480340414849	ersetzt-1	Multifunktionaler Auto-Getränkehalter
