@@ -1035,10 +1035,19 @@ for(const [cat,label] of grp.cats){
    // «Apricot-Sandalen mit Klettverschluss» und «Schmale Wedges»: 40 identische Varianten-
    // SKUs, zwei aktive Produkte, beide vom selben Tag. Die Varianten-SKU des Lieferanten
    // ist eindeutig; steht sie schon an einem aktiven Produkt, ist die Ware schon im Shop.
+   // ⚠️ 04.09.2026: DIE SKU HAT ZWEI SCHREIBWEISEN. Der Bild-Hash-Waechter fand 13 Paare,
+   // deren Varianten-SKU sich NUR im Praefix unterscheidet — «CJLY291739901AZ» (Juni) gegen
+   // «CJ-CJLY291739901AZ» (August), dasselbe Kleid, einmal CHF 39.90 und einmal 24.90, beide
+   // aktiv. Die Wache suchte exakt die eigene Schreibweise und ging an der anderen vorbei.
+   // Gesucht wird deshalb in BEIDEN Formen. (Dieselbe Familie wie «eine Klassenzahl gilt nur
+   // fuer die Form, mit der man gesucht hat».)
    const ersteSku=(variants[0]?.inventoryItem?.sku||'').replace(/"/g,'');
    if(ersteSku.length>8){
+     const ohne=ersteSku.replace(/^CJ-/,'');
+     const formen=[...new Set([ersteSku, ohne, 'CJ-'+ohne])];
+     const q=formen.map(f=>`sku:"${f}"`).join(' OR ');
      const sq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,
-                         {q:`sku:"${ersteSku}" status:active`});
+                         {q:`(${q}) AND status:active`});
      if(sq.data?.products?.edges?.length){console.log('  skip(dup-sku)',ersteSku.slice(0,30));
        fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;}
    }

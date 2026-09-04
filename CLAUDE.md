@@ -1,5 +1,34 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 👯 Zwei Importer, zwei Schreibweisen derselben Lieferanten-SKU — 129 bildgleiche Paare (2026-09-04, nachts)
+Der Bild-Hash-Wächter hat seinen Vollscan beendet: **129 bildgleiche Produktpaare**, kein
+einziges davon über Titel, Handle oder SKU auffindbar. Bei **13** liegt die Ursache offen da:
+
+| angelegt | SKU | Preis |
+|---|---|---:|
+| Juni, `cj_category_fill.mjs` | `CJLY291739901AZ` | CHF 39.90 |
+| August, `cj_trending_import.mjs` | `CJ-CJLY291739901AZ` | **CHF 24.90** |
+
+Dasselbe Kleid, dieselben fünf Bilder, **beide aktiv** — und der Kundin zwei Preise für
+dasselbe. Zwei Importer schreiben die Varianten-SKU des Lieferanten verschieden: der eine
+nackt, der andere mit `CJ-` davor. **Und daran ist auch die Wache gescheitert**, denn sie
+suchte jeweils ihre EIGENE Schreibweise.
+- **Gemessen, nicht angenommen** (und die Richtung ist überraschend): `sku:"CJLY291739901AZ"`
+  findet **beide** Produkte — Shopify trennt am Bindestrich. `sku:"CJ-CJLY291739901AZ"` findet
+  **nur sich selbst**. Wer mit der LANGEN Form sucht, ist blind für die kurze; umgekehrt nicht.
+  Gegenprobe mit einer erfundenen SKU: 0 Treffer, der Filter wirkt also wirklich.
+- Beide Importer suchen jetzt in allen Formen (`sku:"X" OR sku:"CJ-X"`). **`cj_trending_import`
+  hatte als einziger gar keine SKU-Wache — und genau er erzeugt die Prefix-Form.**
+  Vierzehnte Fassung der Geschwister-Lehre: zwei Kopien sind zwei Stände, und hier waren es
+  sogar zwei Datenformate.
+- ⚠️ **Die übrigen 116 Paare sind KEIN Prefix-Fall**, sondern echte Neu-Listings desselben
+  Artikels durch CJ unter neuer SKU. Die findet nur der Bildinhalt (MD5) — Titel, SKU und
+  Bild-URL täuschen bei CJ-Doppellistings alle drei (Lehre 27.08.).
+- ⚠️ **Nichts gedraftet.** Welcher Zwilling gehen soll, ist keine Rechenfrage: der ältere trägt
+  Bewertungen und interne Links, der jüngere den nach heutiger Formel richtigen Preis. Der
+  Bericht steht in `dropship/BILD-DUBLETTEN.md`; `bilddubletten_draften.py` erledigt es, wenn
+  jemand die Regel bestätigt.
+
 ## 🐱 Auf der Seite mit 2'600 Suchen/Monat stand ein ERSATZFILTER als «Farbe» (2026-09-04, nachts)
 Semrush nach den Adressen gefragt, die knapp vor Seite 1 stehen. Vier aktive Seiten ranken
 und hatten **ausnahmslos KEINEN SEO-Titel** — `snippet_rankende_seiten.py` setzt nur die

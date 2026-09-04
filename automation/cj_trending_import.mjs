@@ -332,6 +332,21 @@ for(const p of cand){
  // fuer sie zwei Produkte. Der Handle-Stamm ist derselbe — automation/cj_dublette.mjs.
  const dublette=await dubletteFinden(sgql,st,title);
  if(dublette){console.log('  skip(dup-handle)',title.slice(0,40),'≈',String(dublette).slice(0,40));continue;}
+ // ⚠️ SKU-WACHE (04.09.2026) — dieser Importer hatte als einziger KEINE, und genau er hat
+ // die Zwillinge erzeugt: er schreibt die Varianten-SKU MIT Praefix («CJ-CJLY291739901AZ»),
+ // cj_category_fill.mjs schreibt sie OHNE («CJLY291739901AZ»). Zwei Importer, zwei
+ // Schreibweisen fuer dieselbe Lieferanten-SKU — der Bild-Hash-Waechter fand 13 solcher Paare
+ // (dasselbe Kleid, CHF 39.90 und CHF 24.90, beide aktiv). Gesucht wird deshalb in BEIDEN
+ // Formen; gemessen findet die kurze Form ohnehin beide (Shopify trennt am Bindestrich), die
+ // lange nur sich selbst — deshalb war die Wache dort, wo es sie gab, blind fuer die Altware.
+ const ersteSku=(variants[0]?.inventoryItem?.sku||'').replace(/"/g,'');
+ if(ersteSku.length>8){
+   const ohne=ersteSku.replace(/^CJ-/,'');
+   const formen=[...new Set([ersteSku, ohne, 'CJ-'+ohne])];
+   const sq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,
+                       {q:`(${formen.map(f=>`sku:"${f}"`).join(' OR ')}) AND status:active`});
+   if(sq.data?.products?.edges?.length){console.log('  skip(dup-sku)',ersteSku.slice(0,30));continue;}
+ }
  slugMerken(title);
  // Rennschutz (01.09.): siehe cj_claim.mjs.
  if(schonBeansprucht(p.pid)){console.log('  = Rennschutz: pid parallel in Arbeit —',title.slice(0,40));continue;}
