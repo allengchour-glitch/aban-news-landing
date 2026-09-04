@@ -91,15 +91,23 @@ const BLOCK_TAGS = /<\/?(?:address|article|aside|blockquote|br|dd|details|div|dl
    Engine jetzt dort: <main>, ersatzweise <article>, sonst das Dokument ohne nav/footer/aside.
    Die 200-Zeichen-Schwelle verhindert, dass ein leeres <main> (App-Gerüst) den ganzen Text
    verschluckt; dann gilt wieder das ganze Dokument. */
-function inhaltsBereich(htmlOhneSkripte) {
-  for (const tag of ["main", "article"]) {
-    const m = new RegExp("<" + tag + "\\b[^>]*>([\\s\\S]*?)<\\/" + tag + "\\s*>", "i").exec(htmlOhneSkripte);
-    if (m && m[1].replace(/<[^>]{0,2000}>/g, " ").replace(/\s+/g, " ").trim().length >= 200) return m[1];
-  }
-  return htmlOhneSkripte
+function ohneNavigation(teil) {
+  /* ⚠️ Zweiter Anlauf. Erst wurden nav/footer/aside NUR im Rückfall entfernt, nicht
+     innerhalb eines <main> — und genau dort stehen sie in der Praxis: Brotkrume und
+     Rücklink sitzen fast immer im Inhaltsbereich. Gemessen an 157 eigenen Seiten: das
+     Auszeichnen der Brotkrumen als <nav> änderte am Ergebnis exakt nichts, weil die
+     Engine sie im <main> weiterlas. Eine Navigation ist Navigation, wo immer sie steht. */
+  return teil
     .replace(/<nav\b[^>]*>[\s\S]*?<\/nav\s*>/gi, " ")
     .replace(/<footer\b[^>]*>[\s\S]*?<\/footer\s*>/gi, " ")
     .replace(/<aside\b[^>]*>[\s\S]*?<\/aside\s*>/gi, " ");
+}
+function inhaltsBereich(htmlOhneSkripte) {
+  for (const tag of ["main", "article"]) {
+    const m = new RegExp("<" + tag + "\\b[^>]*>([\\s\\S]*?)<\\/" + tag + "\\s*>", "i").exec(htmlOhneSkripte);
+    if (m && m[1].replace(/<[^>]{0,2000}>/g, " ").replace(/\s+/g, " ").trim().length >= 200) return ohneNavigation(m[1]);
+  }
+  return ohneNavigation(htmlOhneSkripte);
 }
 function visibleText(htmlOhneSkripte) {
   const ohneKopf = htmlOhneSkripte
@@ -244,7 +252,13 @@ function answerFirstScore(text) {
   const tooLong = fw > 28;
   const isFluff = FLUFF_OPENERS.test(first.trim());
   const isBareQuestion = /\?\s*$/.test(first) && sentences.length === 1;
-  const ok = !tooLong && !isFluff && !isBareQuestion && fw >= 4;
+  /* ⚠️ Die Untergrenze lag bei 4 Wörtern und verwarf damit genau die BESTEN Anfänge:
+     „Viel ist kostenlos." und „Ich bin Aban." sind drei Wörter und beantworten die Frage
+     sofort — beide Seiten bekamen dafür null Punkte. Die Grenze sollte Bruchstücke
+     abwehren (ein hängengebliebenes Wort aus einer Tabellenzelle), und das tut inzwischen
+     die Fliesstext-Auswahl: bewertet wird nur, was mit einem Satzzeichen endet. Zwei
+     Wörter sind das Minimum für einen echten Satz. */
+  const ok = !tooLong && !isFluff && !isBareQuestion && fw >= 2;
   return {
     ok,
     firstSentenceWords: fw,
@@ -291,7 +305,14 @@ export function analyze(input) {
   const avgSentenceLen = Math.round((basisWorte.length / sentenceCount) * 10) / 10;
   const longSentenceCount = basis.filter((x) => words(x).length > 25).length;
 
-  const af = answerFirstScore(text);
+  /* ⚠️ „Antwort zuerst" misst den ersten FLIESSTEXT-Satz, nicht die erste Zeile.
+     Gemessen an den eigenen Rechner-Seiten: deren erste Zeile ist die Überschrift
+     („Farben umrechnen", 2 Wörter), und die Prüfung fiel durch, obwohl der Satz direkt
+     darunter genau die gewünschte direkte Aussage ist („HEX, RGB und HSL ineinander
+     umrechnen — mit Live-Vorschau …"). Überschriften, Knopf-Beschriftungen und
+     Tabellenzellen sind Etiketten, keine Sätze; sie werden in „struktur" bzw. „listen"
+     ohnehin eigens bewertet. Damit misst dieselbe Grundlage wie bei der Lesbarkeit. */
+  const af = answerFirstScore(basis.join("\n"));
   const questionHeadings = [...doc.h1, ...doc.h2, ...doc.h3].filter(isQuestionHeading);
 
   // -------------------------------------------------------------------------

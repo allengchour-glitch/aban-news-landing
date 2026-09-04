@@ -232,6 +232,60 @@ check("Inhalt ohne <main>/<article>: nav und footer fliegen raus", (() => {
 })());
 
 // ---------------------------------------------------------------------------
+// 9) Navigation IM Inhalt, Etiketten und kurze Antworten (gemessen 2026-09-03)
+// ---------------------------------------------------------------------------
+console.log("\nTest 9 — Navigation im Inhalt, Etiketten, kurze Antworten:");
+
+check("Brotkrume IM <main> zaehlt nicht als Inhalt", (() => {
+  /* 157 eigene Seiten tragen Brotkrume oder Ruecklink INNERHALB von <main>. Wer nav nur
+     ausserhalb entfernt, misst weiter die Navigation: beratung.html bekam 3/18, obwohl
+     ihr Einstieg direkt antwortet. */
+  const r = analyze(`<html><body><main><nav aria-label="Brotkrume"><p><a href="/">Startseite</a> › <a href="/x">Alle Angebote und Leistungen</a> › <span>Beratung</span></p></nav>
+    <h1>Beratung und KI-Setup</h1>
+    <p>Ich helfe Selbststaendigen, KI praktisch einzufuehren. Kein Buzzword-Bingo, sondern konkrete Ablaeufe,
+    die nach dem Termin wirklich laufen und die du selbst anpassen kannst, ohne auf eine Agentur zu warten.</p></main></body></html>`);
+  /* ⚠️ Der Inhalt MUSS ueber 200 Zeichen liegen, sonst greift der Rueckfall aufs ganze
+     Dokument — der entfernt nav ohnehin, und die Pruefung liefe ins Leere (genau so
+     passiert: Sabotage „nav im main mitlesen" blieb gruen). Jetzt 32 Woerter Inhalt;
+     die sechs Woerter der Brotkrume duerfen nicht mitzaehlen. */
+  return r.metrics.answerFirst === true && r.metrics.wordCount === 32;
+})());
+
+check("Ueberschrift ist ein Etikett, kein Antwortsatz", (() => {
+  /* Rechner-Seiten beginnen mit einer zweiwoertrigen H1 („Farben umrechnen"). Der Satz
+     darunter ist die eigentliche Antwort — der wird bewertet. */
+  /* Ein-Wort-Ueberschrift: als „Satz" gelesen faellt sie durch (zu kurz), als Etikett
+     erkannt zaehlt der Absatz darunter. */
+  const r = analyze(`<html><body><main><h1>Farben</h1>
+    <p>HEX, RGB und HSL rechnen sich hier ineinander um, mit Vorschau und Werten zum Kopieren.</p>
+    </main></body></html>`);
+  return r.metrics.answerFirst === true;
+})());
+
+check("Kurzer, direkter Einstieg zaehlt (3 Woerter)", (() => {
+  /* „Viel ist kostenlos." und „Ich bin Aban." sind die besten denkbaren Anfaenge und
+     fielen an der alten Untergrenze von vier Woertern durch. */
+  const r = analyze(`<html><body><main><p>Viel ist kostenlos. Die Bezahl-Produkte sind fair und ohne Hype.</p></main></body></html>`);
+  return r.metrics.answerFirst === true;
+})());
+
+check("GEGENPROBE: Floskel bleibt Floskel", (() => {
+  const r = analyze(`<html><body><main><p>Willkommen auf unserer Seite. Hier finden Sie alles rund um unser Angebot.</p></main></body></html>`);
+  return r.metrics.answerFirst === false;
+})());
+
+check("GEGENPROBE: blosse Frage ohne Antwort bleibt durchgefallen", (() => {
+  const r = analyze(`<html><body><main><h1>Preise</h1><p>Was kostet eine Steuererklaerung?</p></main></body></html>`);
+  return r.metrics.answerFirst === false;
+})());
+
+check("GEGENPROBE: sehr langer erster Satz bleibt durchgefallen", (() => {
+  const lang = "Wir sind ein Unternehmen das seit vielen Jahren im Bereich der ganzheitlichen Beratung taetig ist und dabei stets darauf achtet die individuellen Beduerfnisse jedes einzelnen Kunden umfassend zu beruecksichtigen.";
+  const r = analyze(`<html><body><main><p>${lang}</p></main></body></html>`);
+  return r.metrics.answerFirst === false;
+})());
+
+// ---------------------------------------------------------------------------
 console.log("\n" + "=".repeat(48));
 console.log(pass + " bestanden, " + fail + " fehlgeschlagen.");
 if (fail > 0) process.exit(1);
