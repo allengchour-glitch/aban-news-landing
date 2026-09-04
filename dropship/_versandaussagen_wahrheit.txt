@@ -39817,3 +39817,12 @@ gid://shopify/Product/15443497714049	direkt	1	Sternenhimmel-Projektor «Cosmos»
 gid://shopify/Product/15443498336641	direkt	1	Wireless-Charger «PowerPad» · kabellos laden
 gid://shopify/Product/15443498893697	direkt	1	Kabellose Kopfhörer «AeroPods» · Bluetooth TWS
 gid://shopify/Product/15443497976193	direkt	1	LED-Projektor «Aurora» · Stimmungslicht
+gid://shopify/Product/15443500302721	direkt	1	Mini-Drohne «SkyCam» · faltbar
+gid://shopify/Product/15443502072193	direkt	1	Fitness-Tracker «StepGo» · Herzfrequenz & Schritte
+gid://shopify/Product/15443499647361	direkt	1	LED-Projektor «GlowCast» · Stimmungslicht
+gid://shopify/Product/15443498959233	direkt	1	Kabellose Kopfhörer «WavePods» · Bluetooth TWS
+gid://shopify/Product/15443500368257	direkt	1	Mini-Drohne «AeroX» · faltbar
+gid://shopify/Product/15443500466561	direkt	1	Mini-Drohne «Nimbus» · mit HD-Kamera
+gid://shopify/Product/15443500597633	direkt	1	Mini-Drohne «FalconEye» · faltbar
+gid://shopify/Product/15443502006657	direkt	1	Smartwatch «FitPro» · Fitness & Anrufe
+gid://shopify/Product/15443502104961	direkt	1	Smartwatch «SmartOne» · Fitness & Anrufe

@@ -1,5 +1,67 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 💽 Der Grind schreibt EIN GIGABYTE Bilder pro Tag — und blockiert damit alles andere (2026-09-04)
+Der volle Shopify-Dateispeicher stand seit dem 02.09. als «Betreiber-Klick» in der Ampel. Heute
+gemessen statt vermutet, und der Befund ist grösser als der Klick:
+
+| gemessen am 04.09. | |
+|---|---:|
+| neue Dateien HEUTE (Tag noch nicht zu Ende) | **4'000+** |
+| Datenmenge davon | **912 MB** |
+| neue Produkte heute · gestern · vorgestern | 873 · 873 · 660 |
+| Bilder je Produkt | ~5 |
+
+**Damit ist Aufräumen Symbolpolitik, und das ist jetzt belegt statt behauptet:** Wer 40 MB alte
+TikTok-Kopien löscht, hat den Platz in einer Stunde wieder verloren. Die 1'500 neuesten Dateien
+sind ausnahmslos `MediaImage` — Produktbilder, kein Fremdmüll.
+- **Und es kostet nicht nur Speicher, es blockiert Arbeit:** Am vollen Deckel scheitern der
+  TikTok-Queue-Transport zum PC (seit 4 Tagen, der Generator baut brav weiter und kann nichts
+  abliefern), `bild_quadrat_auffuellen`, und ab heute auch die Kundinnenfotos.
+- **Die eigene Aktenlage widerspricht dem Nutzen:** «MEHR PRODUKTE BRINGEN KEINEN SUCHVERKEHR»
+  (29.08., an den Suchsitzungen gemessen) und «Punkte für das 46'749-ste Produkt bringen
+  nachweislich nichts» (20.08.). Der Grind zahlt also nicht mehr ein — er zahlt drauf.
+  Das ist eine Betreiber-Entscheidung (Grind drosseln oder Plan erhöhen), keine technische.
+- **Was ohne diese Entscheidung geht:** `dropship/_GRIND_PAUSE_BIS` (04.09.) hält die Runner
+  gezielt an. Wer einen Upload braucht, pausiert den Grind, schafft Platz, lädt hoch. Das ist
+  der Weg für die Kundinnenfotos, sobald die Einwilligung da ist.
+
+## 🧟 «0 übrig» hiess «0 übrig unter denen, die ich gefragt habe» — 987 USA-Zusagen leben (2026-09-04)
+Die Klassen-Kontrolle fand in den ersten 300 aktiven Produkten **300 von 300** mit
+«🇺🇸 USA: 12–22 Tage» — der Klasse, die am 01.09. («alle Klassen auf 0») und am 02.09.
+(«983 geschrieben, 0 offen») zweimal als erledigt galt. Live über den ganzen Katalog: **987.**
+- **Davon standen 978 bereits als repariert im Ledger**, das Slim Wallet sogar **zehnmal**.
+  Es ist also ein Zombie: Ein anderer Schreiber stellt den alten Text wieder her, und die
+  Quittung sorgt dafür, dass der Versandlauf ihn nie wieder ansieht (Klasse vom 15.08.).
+- ⚠️ **Ich hätte das beinahe falsch abgelegt, wegen meines eigenen Prüfmusters:** `grep -c
+  "^15396249502081"` fand 0 Treffer und ich schloss «kein Zombie, der Lauf hat sie nie
+  erreicht». Das Ledger führt aber die volle GID (`gid://shopify/Product/…`), und `^` verankert
+  am Zeilenanfang. **Ein Prüfmuster, das die Kennung verfehlt, erfindet einen Befund** — dieselbe
+  Familie wie das zerschnittene Handle-Muster (03.09.) und der kleingeschriebene Emoji-Pfad
+  (29.08.). Erst die Zahl des Werkzeugs selbst («schon quittiert: 31'617, noch zu schreiben: 9»)
+  hat mich zurückgeholt.
+- **Der Täter ist noch nicht benannt.** 23 Werkzeuge lesen aus einem Export und schreiben
+  `descriptionHtml`; keines davon baut den USA-Block NEU (Grep über den ganzen Code: nur
+  `versandaussagen_wahrheit`, `delivery_block.mjs` — beide repariert — und der Ricardo-Export).
+  Es muss also jemand einen ALTEN Text zurückschreiben. `/tmp/zombie_wache.sh` beobachtet fünf
+  frisch reparierte Produkte und hält bei jeder Änderung von `updatedAt` fest, WER gerade läuft.
+  **Wenn kein Log mehr da ist, fragt man nicht die Vergangenheit, sondern stellt eine Falle.**
+
+## 🔁 Ein Vollscan, der länger dauert als sein Container lebt, wird nie fertig (2026-09-04)
+`klassen_kontrolle.py` prüft 52'000 Produkte am Objekt — das dauert über eine Stunde, der
+Container startet aber etwa stündlich neu (Lehre 03.09.). Es sammelte alles im Speicher und
+schrieb erst am Ende: **jeder Neustart warf die ganze Arbeit weg.** Der Bericht stand deshalb
+dauerhaft auf «TEILSCAN, 300», und die Arbeitslisten in `dropship/_klassen/`, aus denen die
+Reparaturwerkzeuge seit dem 04.09. lesen, blieben genauso kurz — die Reparaturen liefen also
+gegen einen Ausschnitt und meldeten trotzdem Vollzug.
+Jetzt: Cursor nach jeder Seite nach `/tmp/_klassen_stand.json`, Treffer sofort an die
+Arbeitslisten angehängt, die nächste Runde setzt fort. `NEU=1` beginnt bewusst von vorn.
+**In beide Richtungen belegt:** Lauf 1 bricht bei Produkt 5'900 ab, Lauf 2 meldet «FORTSETZUNG
+bei 5'900» und ist bei 9'600 — 0 Dubletten in der Arbeitsliste.
+Dieselbe Lehre wie der DEPTH-Reset der CJ-Runner (29.07.) und der Seiten-Zeiger des
+Bewertungs-Imports (28.08.): **wer über Neustarts hinweg arbeitet, muss seinen Fortschritt
+festhalten — sonst misst er ewig denselben Anfang.**
+
+
 ## 📸 Die Kundinnenfotos: erst zuordnen, dann zeigen — und eine Fehlermeldung, die in die Irre führt (2026-09-04)
 Betreiber: «eine kunde hat fotos gemacht … zeigen und model für mich» und danach ein iCloud-Link
 mit «mach zuerst einse screenshot oder so bevor online». Beides eingehalten: 10 Fotos geholt,
