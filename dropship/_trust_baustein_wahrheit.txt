@@ -19454,3 +19454,137 @@
 15479489003905	ersetzt-1	Business Slipper aus Leder für Herren
 15479512367489	ersetzt-1	Beach Slide Sandalen
 15479512498561	ersetzt-1	Powerbank 20.000 mAh
+15479512531329	ersetzt-1	Herren-Flip-Flops mit 5.5cm Holzabsatz
+15479512564097	ersetzt-1	Rost- und Reinigungsentferner für Auto & Haushalt
+15479512629633	ersetzt-1	Powerbank mit 10000mAh und Dual-Kabel
+15479512727937	ersetzt-1	Motorrad-Hausschuhe für Herren
+15479512793473	ersetzt-1	GaN Power Bank 120W, 10'000 mAh
+15479512826241	ersetzt-1	Elektrischer A4 Papier-Aktenvernichter
+15479512859009	ersetzt-1	Kork-Slippers für Herren
+15479512924545	ersetzt-1	Smart-Armband mit Herzfrequenz und Temperatur
+15479512957313	ersetzt-1	Mini Powerbank mit Dual-Kabel
+15479512990081	ersetzt-1	3D Touch Sensor für 3D-Drucker
+15479513022849	ersetzt-1	Herren Sandalen und Pantoletten für den Sommer
+15479513121153	ersetzt-1	Smart Bracelet 115Plus mit Farbdisplay
+15479513153921	ersetzt-1	Mini Powerbank mit integriertem Kabel
+15479513186689	ersetzt-1	12V20A Schaltnetzteil für 3D-Drucker
+15479513219457	ersetzt-1	Atmungsaktive Casual-Sandalen aus Leder mit Hohl-Design
+15479513252225	ersetzt-1	MagSafe 15W Kabelloses Magnet-Ladegerät fürs Auto
+15479513284993	ersetzt-1	Ender-3 Karbon-Kristall Silikon-Glasplatte
+15479513317761	ersetzt-1	V9 Smart-Armband mit Temperaturmessung
+15479513350529	ersetzt-1	Herren Freizeit-Sandalen aus Leder
+15479513416065	ersetzt-1	Solar Powerbank Holzmaserung mit LED-Licht
+15479513481601	ersetzt-1	Linearführungsschiene MGN-Serie
+15479513514369	ersetzt-1	Smart-Armband mit Herzfrequenzmessung · Musiksteuerung & Sto
+15479513547137	ersetzt-1	Western-Slipper aus Rindsleder
+15479513612673	ersetzt-1	Magnetische Powerbank 10’000 mAh
+15479513645441	ersetzt-1	M1 Smart Bracelet Bluetooth Headset
+15479513678209	ersetzt-1	3-in-1 MagSafe Power Bank für Smartwatches
+15479513809281	ersetzt-1	Kabellose Powerbank mit Magnet und Ständer
+15479513842049	ersetzt-1	Herren Freizeit-Pantoletten aus Vollnarbenleder
+15479513874817	ersetzt-1	Tracker mit Farbdisplay
+15479513907585	ersetzt-1	Leder-Sandalen für Herren
+15479513940353	ersetzt-1	High-Capacity Super-Fast Lade-Akku
+15479514005889	ersetzt-1	Smartes Sportarmband mit Bluetooth-Headset B6
+15479514071425	ersetzt-1	Magnetische Wireless Powerbank aus Aluminium
+15479514104193	ersetzt-1	Atmungsaktive Slide-Sandalen für Herren
+15479514235265	ersetzt-1	Powerbank 20'000 mAh, ultraschlank
+15479514268033	ersetzt-1	Freizeit-Slipper aus Veloursleder
+15479514399105	ersetzt-1	Powerbank mit LED-Anzeige, 20’000 mAh
+15479514431873	ersetzt-1	Herren Flip-Flops mit Wildleder-Optik
+15479514464641	ersetzt-1	Powerbank mit integriertem Kabel, 225W
+15479514497409	ersetzt-1	Bequeme, rutschfeste Sandalen für Herren
+15479514661249	ersetzt-1	Magnetische Handyhalterung mit Wireless Charger
+15479514726785	ersetzt-1	EVA Hausschuhe für Drinnen und Draussen
+15479514792321	ersetzt-1	Magnetische Wireless Powerbank 10'000 mAh
+15479514890625	ersetzt-1	Faltbare Outdoor Power Bank 10'000 mAh mit Wireless Charging
+15479516299649	ersetzt-1	Ultradünne MagSafe Powerbank 10'000 mAh
+15479516594561	ersetzt-1	Kompakte 10000 mAh Powerbank mit integriertem Kabel
+15479530553729	ersetzt-1	Leichte Plateau-Sneaker
+15479530619265	ersetzt-1	Half-Slipper für Damen
+15479530652033	ersetzt-1	Kabelgebundene Kopfhörer mit Dot-Muster
+15479530717569	ersetzt-1	Leichte Sommer-Sneaker zum Schnüren
+15479531471233	ersetzt-1	Bluetooth Ear-Hook Kopfhörer mit langer Akkulaufzeit
+15479532454273	ersetzt-1	Sprachübersetzer In-Ear
+15479532552577	ersetzt-1	Knochenschall Sport-Kopfhörer mit Ohrbügel
+15479532650881	ersetzt-1	AI-Bluetooth-Kopfhörer mit Knochenschall
+15479532749185	ersetzt-1	120W Fast-Charging Power Bank mit Digitalanzeige
+15479532781953	ersetzt-1	3D Star Wings Kopfhörer-Dekoration
+15479532880257	ersetzt-1	Powerbank Cartoon-Design, 10'000 mAh
+15479532945793	ersetzt-1	DMX In-Ear Kopfhörer mit Fernbedienung
+15479533961601	ersetzt-1	Kompakte 5000mAh Powerbank für Heizwesten
+15479624728961	ersetzt-1	Leder-Sandalen · Herren
+15479624794497	ersetzt-1	Schutzcase für PS5
+15479624958337	ersetzt-1	Schutzhülle für Nintendo Switch OLED
+15479625056641	ersetzt-1	Rutschfeste Outdoor-Sandalen für Herren
+15479625122177	ersetzt-1	Acryl Aufbewahrungsbox für Controller
+15479625187713	ersetzt-1	Vollleder-Autositzkissen mit Kontrastnaht
+15479625351553	ersetzt-1	Kabelloser Multi-Funktions-Gamepad «My World»
+15479625384321	ersetzt-1	Drehbares Anti-Rutsch-Sitzkissen fürs Auto
+15479625482625	ersetzt-1	Vibrierender Wireless Bluetooth Gaming-Controller
+15479625613697	ersetzt-1	Tennis-Schläger für Nintendo Switch Controller
+15479625712001	ersetzt-1	Sitzkissen für Autofahrten
+15479625744769	ersetzt-1	NS Dual Gamepad mit Handschlaufe
+15479625777537	ersetzt-1	Ganzjahres-Leder-Sitzkissen Universal
+15479625908609	ersetzt-1	Tanz- & Fitness-Armbänder für Switch Joy-Con
+15479625941377	ersetzt-1	Auto-Sitzkissen aus Fleece – ohne Rückenlehne
+15479626006913	ersetzt-1	Leinen-Sitzkissen für alle Jahreszeiten
+15479626137985	ersetzt-1	Kindersitz-Tischchen, abnehmbar und waschbar
+15479626531201	ersetzt-1	Overload Sound Pedal für E-Gitarre
+15479626858881	ersetzt-1	Externe Halterung für Etikettendrucker
+15479631380865	ersetzt-1	Lithium-Ionen-Akku für Elektrowerkzeuge
+15479631446401	ersetzt-1	Herren Casual Strandsandalen
+15479631479169	ersetzt-1	Gamepad Lenkradhalterung mit Saugnapf
+15479631577473	ersetzt-1	Mini FPV Lithium-Akku mit hoher Entladerate
+15479631610241	ersetzt-1	RFID-Schutzbox mit 2 Schlüssel-Etuis
+15479631643009	ersetzt-1	Bequeme Halbsocken-Schuhe für den Sommer
+15479631741313	ersetzt-1	GNB 720mAh 1S 3.8V HV TinyHawk S II Lipo Akku
+15479631774081	ersetzt-1	Schlüssel-Cover aus Carbon/Glasfaser
+15479631806849	ersetzt-1	Unisex Operationsschuhe Rutschfest
+15479631872385	ersetzt-1	GNB High Energy 550MAH 1S 3.8V LiPo Akku A30 Stecker
+15479631937921	ersetzt-1	Vintage Sandalen aus Rindsleder für Herren
+15479632003457	ersetzt-1	Schlüsselgehäuse für Fiat 500 & Boyue
+15479632134529	ersetzt-1	GNB High Energy 380mAh 2S 90C HV LiPo Akku
+15479632200065	ersetzt-1	Schutzhülle für Fernbedienung
+15479632953729	ersetzt-1	Lithium-Polymer-Akku für Modellflugzeuge
+15479632986497	ersetzt-1	Lässiger Leder-Slipper für Herren
+15479633314177	ersetzt-1	Auto Sonnenblenden-Organizer
+15479633936769	ersetzt-1	Hochleistungs-Lithium-Akku, wiederaufladbar
+15479634067841	ersetzt-1	Minimalistische Übergrössen-Sandalen
+15479634198913	ersetzt-1	Auto-Schlüsseletui aus Vollleder
+15479634362753	ersetzt-1	Smart AA Ladegerät mit 8 Lithium-Akkus
+15479634395521	ersetzt-1	Retro Chunky-Soled Elevator Slip-On Casual Outdoor Slippers
+15479634428289	ersetzt-1	Schlüsseletui aus Crazy Horse Leder
+15479634493825	ersetzt-1	Akku für Ring Video-Türklingel V4
+15479634526593	ersetzt-1	Herren Slip-on Sneaker mit Chunky Sohle
+15479634559361	ersetzt-1	Schutzhülle für Autoschlüssel aus Carbon
+15479634723201	ersetzt-1	3D-texturierte, weiche Zehenschuhe
+15479634755969	ersetzt-1	Starthilfe & Reifenfüller Powerbank
+15479634788737	ersetzt-1	Schutzhülle für Autoschlüssel mit Strass-Design
+15479634821505	ersetzt-1	Classic Controller für Wii mit Rumble-Funktion
+15479634887041	ersetzt-1	Baotou Sandalen für Herren mit Chunky Sohle
+15479635050881	ersetzt-1	Power Bank für Heizkleidung
+15479635575169	ersetzt-1	Schlüsselmäppchen mit Strass und Rosen
+15479635607937	ersetzt-1	Kabelloses Teleskop-Gamepad für Mobile & Konsole
+15479636394369	ersetzt-1	Herren Leder-Sandalen mit dicker Sohle
+15479636623745	ersetzt-1	Recycling Kamera-Akku 4800 mAh
+15479636787585	ersetzt-1	TPU Silikon Schlüsselhülle für BMW
+15479636951425	ersetzt-1	Multifunktionale 12V USB Power Batterieabdeckung
+15479636984193	ersetzt-1	Silikon-Schlüsseletui für Autoschlüssel
+15479637082497	ersetzt-1	Solar Powerbank 30000 mAh
+15479637115265	ersetzt-1	Ast-Katze Rückspiegel-Anhänger
+15479637180801	ersetzt-1	Akku für AirPods 1. und 2. Generation
+15479637213569	ersetzt-1	Doppelseitiger Schwan-Anhänger mit Kristallen
+15479637246337	ersetzt-1	Memory Foam Sitzkissen für Auto und Büro
+15479637442945	ersetzt-1	Lithium-Batterie für Zähler · ER26500
+15479637475713	ersetzt-1	Schlüsselhülle für Ford Maverick
+15479637508481	ersetzt-1	Keilsandalen aus Leinen mit Lederfutter
+15479638589825	ersetzt-1	Auto-Anhänger mit Kristallkugel
+15479639376257	ersetzt-1	Schlüsseletui aus Leder mit Sichtfenster
+15479639441793	ersetzt-1	Elegante High-Heel-Sandalen mit Riemchen
+15479639474561	ersetzt-1	Schlüsseletui für Mazda CX4, Angkerra 3, Atez 6
+15479639572865	ersetzt-1	Bequeme Loafer mit weicher Sohle
+15479639605633	ersetzt-1	USB Mikrofon RGB für Handy, PC & Live-Streaming
+15479639703937	ersetzt-1	Damen Sandalen mit Keilabsatz
+15479639736705	ersetzt-1	Schlüsseletui für Geely Binrui
+15479639867777	ersetzt-1	USB Kondensator Bluetooth Mikrofon

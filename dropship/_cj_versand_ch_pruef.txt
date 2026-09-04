@@ -1090,3 +1090,25 @@ reise-hangematte-aus-fallschirm-nylon-86eb20	-	-	-	unklar keine CJ-SKU	landeseit
 deformierbare-led-garagenleuchte-60w-7122ff	-	-	-	unklar keine CJ-SKU	landeseite
 kuscheliges-haustierbett-fur-herbst-und-winter-95ccbf	-	-	-	unklar keine CJ-SKU	landeseite
 2er-set-bambus-badematten-428418	1990481895262167042	0	-	KEINE CH-Option → DRAFT	landeseite
+smarter-snack-futterautomat-fur-katzen-hunde-611300	2604230634181611800	2	49.87	ok	landeseite
+keramik-futternapf-fur-hunde-und-katzen-629700	2603260848111620100	11	32.65	ok	landeseite
+katzen-und-hunde-gras-biskuits-gegen-haarballe-639800	2601260224591630200	2	12.90	ok	landeseite
+eckregal-aus-massivholz-schmal-8-etagen-610200	2606230531501610800	0	-	KEINE CH-Option → DRAFT	landeseite
+trolley-handgepack-mit-frontoffnung-609500	2603250621421609900	0	-	KEINE CH-Option → DRAFT	landeseite
+trolley-koffer-mit-aluminiumrahmen-24-zoll-621100	2602060915411621500	0	-	KEINE CH-Option → DRAFT	landeseite
+universal-rollkoffer-mit-grosser-kapazitat-658500	2510050925071658700	6	102.56	ok	landeseite
+aluminium-koffer-mit-rahmen-20-zoll-633200	2509300653411633400	6	152.37	ok	landeseite
+ruckenmassage-stretcher-b9d61a	-	-	-	unklar keine CJ-SKU	landeseite
+schlafhilfe-gerat-mit-fernbedienung-619300	2408150627371619500	6	6.56	ok	landeseite
+whiskey-set-mit-goldrand-618300	2606230139201619000	6	70.06	ok	landeseite
+duschturrollo-stoffbreite-116-cm-086081	1990490639538757633	0	-	KEINE CH-Option → DRAFT	landeseite
+regen-und-sonnenschirm-fur-outdoor-606300	2605150237321606800	0	-	KEINE CH-Option → DRAFT	landeseite
+aufblasbares-auto-bett-63bf55	-	-	-	unklar keine CJ-SKU	landeseite
+faltbarer-handwagen-621200	2411301014221621500	6	65.03	ok	landeseite
+12-teiliges-edelstahl-kochtopf-set-097474	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+profi-eismaschine-standmixer-143937	2042119919738654722	0	-	KEINE CH-Option → DRAFT	landeseite
+magnetischer-messerhalter-aus-kunstharz-636600	2601130604011636800	3	49.87	ok	landeseite
+chenille-sofauberwurf-fur-alle-jahreszeiten-606700	2603041133511607100	6	45.63	ok	landeseite
+wasserfester-sofa-schutz-fur-alle-jahreszeiten-619300	2602250750501619700	11	9.97	ok	landeseite
+warmer-plusch-sofabezug-rutschfest-und-einfarb-630600	2602240707161630900	11	11.40	ok	landeseite
+hundebett-mit-sonnendach-erhoht-122x91cm-rot-185921	2003454800836358145	0	-	KEINE CH-Option → DRAFT	landeseite
