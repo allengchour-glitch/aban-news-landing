@@ -9769,3 +9769,7 @@ gid://shopify/Product/15452677210497	CHF 332.73	1 Varianten	Faltbarer Aufbewahru
 gid://shopify/Product/15452677276033	CHF 26.32	1 Varianten	Holz-Desktop-Organizer
 gid://shopify/Product/15452677308801	CHF 56.08	1 Varianten	Toiletten-Reinigungssatz
 gid://shopify/Product/15452677341569	cj-abgekuendigt-pruefen
+gid://shopify/Product/15452677374337	CHF 8.68	1 Varianten	Haushaltsreinigungstücher
+gid://shopify/Product/15452677439873	cj-abgekuendigt-pruefen
+gid://shopify/Product/15452677472641	CHF 83.09	1 Varianten	Badezimmerhahn
+gid://shopify/Product/15452677538177	CHF 8.68	1 Varianten	Badezimmerreinigungspads

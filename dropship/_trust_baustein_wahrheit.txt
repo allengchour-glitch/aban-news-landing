@@ -19892,3 +19892,11 @@
 15480410145153	ersetzt-1	Kompakter Stoff-Mini-Lautsprecher mit Subwoofer
 15480410243457	ersetzt-1	Kindersitzerhöhung
 15480410276225	ersetzt-1	Magnetischer Fluid-Lautsprecher mit Lichteffekt
+15480410341761	ersetzt-1	Keile-Sandalen im Römer-Stil mit Klettverschluss
+15480410505601	ersetzt-1	Magnetischer 2-in-1 Bluetooth Lautsprecher
+15480410636673	ersetzt-1	Plateau-Mules mit Fesselriemen
+15480410669441	ersetzt-1	Autositzbezug-Set
+15480410964353	ersetzt-1	Bluetooth Speaker mit RGB-Lampe & TWS
+15480411062657	ersetzt-1	Gummifussmatten für Tesla Model 3/X
+15480411128193	ersetzt-1	Keilabsatz-Sandalen mit dicker Sohle
+15480411390337	ersetzt-1	Taschenradio mit Uhr und Stereo-Sound
