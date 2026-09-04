@@ -29850,3 +29850,4 @@ gid://shopify/Product/15525205901697	bereinigt
 gid://shopify/Product/15525205934465	bereinigt
 gid://shopify/Product/15525223334273	bereinigt
 gid://shopify/Product/15525223661953	bereinigt
+gid://shopify/Product/15525231296897	bereinigt
