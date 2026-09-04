@@ -22342,3 +22342,55 @@
 15492023943553	ersetzt-1	Gesundheits-Smartwatch mit Körperanalyse
 15492024172929	ersetzt-1	Beheizbare Weste Powerbank
 15492024271233	ersetzt-1	Magnetische Kartenhülle mit Ständer
+15492029940097	ersetzt-1	Plateau-Sandalen mit Chunky-Absatz
+15492029972865	ersetzt-1	Elegante High-Heel-Sandalen
+15492030038401	ersetzt-1	Niche Stiletto-heel Sandalen
+15492030071169	ersetzt-1	Modische offene Pantoletten mit hohem Absatz
+15492030136705	ersetzt-1	Mary Jane Plateau-Wedge mit verstecktem Absatz
+15492030169473	ersetzt-1	Retro-Freizeitsneaker für Frühling und Herbst
+15492030202241	ersetzt-1	Bequeme Canvas Mary Jane Flats
+15492030267777	ersetzt-1	Warme Baumwoll-Hausschuhe für Damen
+15492030464385	ersetzt-1	Fotorahmen-Halskette im Retro-Stil
+15492034691457	ersetzt-1	Buchstaben-Halskette
+15492034756993	ersetzt-1	Kugelkettchen Halskette
+15492034789761	ersetzt-1	Kettenhalsband mit Buchstaben
+15492034855297	ersetzt-1	Englische Buchstaben Halskette
+15492034920833	ersetzt-1	Halskette mit Initialen – Kupfer, Kreuzkette
+15492034953601	ersetzt-1	Dopamine Buchstabenkette für Damen
+15492035019137	ersetzt-1	Dopamin-Halskette mit Initialen
+15492035084673	ersetzt-1	Eleganter 925er Silberring mit 3 Karat Moissanit
+15492035346817	ersetzt-1	Off-Shoulder Polka-Dot Maxikleid
+15492035379585	ersetzt-1	Etuikleid mit Raffung, One-Shoulder & Strass
+15492035445121	ersetzt-1	Farbenfrohes Neckholder-Kleid
+15492035477889	ersetzt-1	Pailletten-Spitzen Maxikleid
+15492035543425	ersetzt-1	Halterneck Minikleid aus Chiffon
+15492035576193	ersetzt-1	Pailletten-Minikleid mit Neckholder
+15492035608961	ersetzt-1	Neckholder-Kleid mit Spitze
+15492035674497	ersetzt-1	Elegantes Maxikleid mit Schlitz und Falten
+15492035707265	ersetzt-1	Gestricktes Patchwork-Kleid mit Spitze
+15492035772801	ersetzt-1	Asymmetrisches Bodycon-Kleid mit Schlitz
+15492035805569	ersetzt-1	Pailletten Neckholder Maxikleid
+15492035838337	ersetzt-1	Elegantes Asymmetrisches Wave-Hemd Kleid
+15492035969409	ersetzt-1	Retro Loose Wide-Leg Hose für Herren
+15492036002177	ersetzt-1	Retro Loose-fit Straight-leg Herrenhosen
+15492036067713	ersetzt-1	Loose-Fit Wide-Leg Hose im Used-Look
+15492036100481	ersetzt-1	Herren Loose-Fit Hose mit Blitzmuster
+15492036166017	ersetzt-1	Herren Relaxed-Fit Bootcut Hose mit geradem Bein
+15492068573569	ersetzt-1	Herren Baumwoll-Hoodie für Frühling & Herbst
+15492068934017	ersetzt-1	Lockerer Hoodie für Herren
+15492069228929	ersetzt-1	Herren-Hoodie mit Totenkopf-Print
+15492069458305	ersetzt-1	Fleece-Ausgestattetes Sweatshirt
+15492069753217	ersetzt-1	Personalisierter Kapuzenpullover für Herren
+15492069982593	ersetzt-1	Gaming Hoodie im europäischen Stil
+15492070277505	ersetzt-1	Herren-Cropped-Hosen
+15492070539649	ersetzt-1	Weite Freizeithose für Herren
+15492070801793	ersetzt-1	Herren Straight-Slit Denim Jeans
+15492071096705	ersetzt-1	Retro Distressed Scythe Jeans für Herren
+15492071588225	ersetzt-1	Kurze Washed Denim Jeans für Herren
+15492072735105	ersetzt-1	Reisetasche mit Nieten, gross
+15492080075137	ersetzt-1	Doppelstöckiger Korb für Zwiebeln, Ingwer, Knoblauch
+15492080435585	ersetzt-1	Mundspülung für die tägliche Mundhygiene · 20 × 12 ml
+15492084924801	ersetzt-1	C28 Smartwatch Outdoor Sportuhr
+15492085776769	ersetzt-1	Mini USB Stick 4GB 8GB 16GB
+15492085973377	ersetzt-1	EAGET T1 Micro SD Speicherkarte
+15492086071681	ersetzt-1	Faltbarer Sonnen- und Regenschirm

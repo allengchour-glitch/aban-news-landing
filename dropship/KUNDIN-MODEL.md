@@ -149,3 +149,23 @@ Name im Bundle der Web-App (`main.js`, `s.set("publicAccessAuthToken", …)`).
 ⚠️ Der `sharedstreams`-Weg (Eintrag von früher) gilt NUR für klassische geteilte Alben
 (`icloud.com/sharedalbum/#B…`). Ein `share.icloud.com/photos/…`-Link ist ein CloudKit-Share und
 antwortet dort mit 404 — was wie ein toter Link aussieht und keiner ist.
+
+## 👀 «Sie will zuerst schauen, ob das ok ist» (2026-09-04)
+Genau die richtige Reihenfolge — und sie erspart den Fall, in dem ein Bild live steht und
+nachträglich verhandelt wird. Gebaut: eine Vorschau **für sie** (`FUER-DIE-KUNDIN.png`,
+Vorlage `scratchpad/fuer_sie.html`), die zeigt, wo genau ihre Fotos hinkämen — ohne unser
+Werkstattvokabular («Produktseite 1», «Vorschau — nichts online»), dafür mit dem, was eine
+Einwilligung tragen muss:
+1. **wo** die Bilder erscheinen (Shop, welche zwei Produkte, Startseite),
+2. **ob Social** mitgemeint ist — als eigene Frage, nicht stillschweigend mit drin,
+3. dass **kein Name** dabeisteht, ausser sie will es,
+4. dass sie **jederzeit widerrufen** kann und die Bilder dann verschwinden,
+5. dass nichts weiterverkauft oder an Dritte gegeben wird.
+
+**Regel: Eine Einwilligung ist keine Ja/Nein-Frage, sondern eine Aufzählung.** Wer nur «darf
+ich?» fragt, bekommt ein Ja, das später nichts mehr trägt — weil niemand geklärt hat, WOFÜR.
+Und der Beleg ist ihre Antwort: aufheben, nicht bloss erinnern.
+
+⚠️ Das Bild wird dem Betreiber direkt geschickt und von ihm weitergeleitet — **nicht** irgendwo
+gehostet. Eine Vorschau, die man verlinkt, ist bereits eine Veröffentlichung; genau das war
+die Frage, die noch offen ist.
