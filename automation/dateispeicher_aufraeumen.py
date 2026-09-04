@@ -121,15 +121,14 @@ def main():
     # ⚠️ Ein Cursor gehoert zu SEINER Abfrage. Der erste Entwurf las den Cursor der
     # BigBuy-Klasse und schickte ihn an die Dubletten-Abfrage — Antwort «keine weiteren
     # Produkte», und die Klasse haette als leer gegolten. Deshalb je Klasse ein Cursor.
+    # ⚠️ 04.09.2026: KEIN Cursor mehr. Gemessen hat der Cursor-Weg nach 724 Produkten
+    # «keine weiteren Produkte» gemeldet, waehrend von 1'200 Kandidaten derselben Klasse noch
+    # 487 Medien trugen — ein Cursor ueber eine Menge, die sich WAEHREND des Laufs aendert
+    # (jedes geloeschte Produkt faellt aus dem «hat Medien»-Bild), fuehrt an Arbeit vorbei.
+    # Der Lauf beginnt jetzt jedes Mal von vorn und ueberspringt, was keine Medien mehr hat;
+    # das ist ein paar Abfragen teurer und kommt dafuer an jedes Produkt.
     stand = {}
-    if os.path.exists(CURSOR) and os.environ.get('NEU') != '1':
-        try:
-            stand = json.load(open(CURSOR))
-        except Exception:
-            stand = {}
-    cur = stand.get(KLASSE)
-    if cur:
-        print(f'FORTSETZUNG ab Cursor …{cur[-12:]}')
+    cur = None
     led = None if DRY else open(LEDGER, 'a')
     prod = bilder = 0
     byt = 0
@@ -164,15 +163,12 @@ def main():
             print(f'Klasse vollstaendig durchlaufen: {KLASSE}')
             if not DRY:
                 open(FERTIGDATEI, 'a').write(KLASSE + '\n')
-                stand.pop(KLASSE, None)
-                json.dump(stand, open(CURSOR, 'w'))
+                pass
             cur = None; break
         cur = p['pageInfo']['endCursor']
         # ⚠️ Cursor NUR im Schreibmodus fortschreiben — ein Anzeigemodus darf keinen
         # Fortschritt merken (Lehre 28.08.).
-        if not DRY:
-            stand[KLASSE] = cur
-            json.dump(stand, open(CURSOR, 'w'))
+        # (kein Cursor — siehe oben)
     if led:
         led.close()
     print(f'FERTIG: {prod} Produkte, {bilder} Bilder, {byt/1e6:.1f} MB {"(DRY)" if DRY else "geloescht"}')
