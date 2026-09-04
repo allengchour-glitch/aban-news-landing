@@ -20527,3 +20527,18 @@
 15481775161729	ersetzt-1	Spitze High Heels mit dünnem Absatz
 15481775194497	ersetzt-1	Q25Pro TWS Sport-Kopfhörer mit Geräuschunterdrückung
 15481775227265	ersetzt-1	Wildleder-Sandalen mit offenem Zeh
+15481775260033	ersetzt-1	Stereo Bluetooth Headset mit Heavy Bass
+15481775292801	ersetzt-1	Elegante Stiletto-Sandalen
+15481775358337	ersetzt-1	Stiletto-Pumps mit spitzer Zehenpartie
+15481775391105	ersetzt-1	Ultradünne Powerbank 20000 mAh
+15481775423873	ersetzt-1	Spitze Stiletto-Pumps mit hohem Absatz
+15481775489409	ersetzt-1	Magnetische Wireless Powerbank mit Schnellladung
+15481775522177	ersetzt-1	Elegante Pumps mit Blockabsatz
+15481775554945	ersetzt-1	Magnetische Powerbank mit drehbarer Halterung
+15481775587713	ersetzt-1	Spitze Chunky-Heel Pumps aus Wildleder
+15481775620481	ersetzt-1	Magnetische kabellose Powerbank mit Halterung
+15481775686017	ersetzt-1	Satin-Sandalen mit Laternenfalten
+15481775718785	ersetzt-1	Chunky-Heel Sandalette mit Farbblock
+15481775784321	ersetzt-1	Elegante Low-Cut Lederboots mit Blockabsatz
+15481775849857	ersetzt-1	Magnetische Wireless Powerbank
+15481775980929	ersetzt-1	Solar Outdoor Powerbank mit Handkurbel

@@ -10770,3 +10770,9 @@ gid://shopify/Product/15453763535233	CHF 24.78	1 Varianten	Einreihiger Anzug
 gid://shopify/Product/15453763568001	CHF 19.95	1 Varianten	Intelligentes Katzen Spielgerät
 gid://shopify/Product/15453763600769	CHF 10.82	1 Varianten	Bissfeste Elektro-Jump-Ball für Katzen & Hunde
 gid://shopify/Product/15453763633537	CHF 21.20	1 Varianten	Lässig geschnittene Herrenjacke
+gid://shopify/Product/15453763666305	CHF 26.13	1 Varianten	Winter-Cardigan für Herren
+gid://shopify/Product/15453763699073	CHF 8.57	1 Varianten	Interaktiver Ball mit 3 Modi & USB-Ladekugel für H
+gid://shopify/Product/15453763731841	CHF 28.93	1 Varianten	Kratzbrett für Katzen · schont Möbel und Krallen
+gid://shopify/Product/15453763764609	CHF 15.59	1 Varianten	Casual Langarm Pullover Herren
+gid://shopify/Product/15453763797377	CHF 7.08	1 Varianten	Farbwechsler für Haustiere
+gid://shopify/Product/15453764125057	CHF 8.87	1 Varianten	Intelligenter Springball für Hund und Katze

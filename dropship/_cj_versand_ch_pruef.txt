@@ -1688,3 +1688,5 @@ mini-projektor-mit-multi-screen-funktion-215040	1634062892737769472	7	14.08	ok	h
 premium-leder-geldborse-slim	-	-	-	unklar keine CJ-SKU	bestseller
 smartwatch-pro-1-78-amoled-herzfrequenz-fitness-tracker-bluetooth	1629381857571778560	6	6.68	ok	bestseller
 strand-maxikleid-bali-luftiges-stufenkleid	2605300930501638100	16	9.33	ok	bestseller
+boho-kleid-ibiza-baumwoll-leinen-locker	2605300748161610600	16	7.64	ok	bestseller
+boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose	2605300752571606100	16	10.96	ok	bestseller
