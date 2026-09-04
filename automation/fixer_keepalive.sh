@@ -265,7 +265,17 @@ while true; do
   # die FORM der SKU, nicht das Präfix) — er lief nur nie.
   for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert; do
     fehlt "$REPO/automation/$L.py" && continue
-    grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
+    # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
+    # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
+    # NEUN von ihnen ruhten seit dem 30./31.08., darunter `google_kanal_luecke` (der einzige
+    # Kanal mit Verkaeufen), `ohne_lieferantenref_guard` (die #1008-Klasse) und
+    # `handle_messversprechen` — waehrend der Grind taeglich hunderte Produkte anlegte.
+    # FERTIG heisst «zu DIESEM Zeitpunkt nichts zu tun», nicht «fuer immer erledigt».
+    # Es gilt deshalb nur noch 20 Stunden; danach ist der Waechter wieder faellig.
+    if grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null; then
+      F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
+      [ "$F_ALTER" -lt 72000 ] && continue
+    fi
     pause_kuehlt "$L" && continue                                # hat sich mit PAUSE verabschiedet
     dreht_sich_im_kreis "$L" && continue                         # endet immer sofort ohne FERTIG
     # ⚠️ NICHT `pgrep -f`. Steht das Suchmuster in der eigenen Kommandozeile, findet pgrep
