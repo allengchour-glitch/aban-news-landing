@@ -19862,3 +19862,33 @@
 15480340316545	ersetzt-1	Externes Festplatten-Lesegerät
 15480340349313	ersetzt-1	Ferngesteuertes Kothaufen-Streichspielzeug
 15480340414849	ersetzt-1	Multifunktionaler Auto-Getränkehalter
+15480341463425	ersetzt-1	Sandalen mit Chunky-Heel und Anti-Kollisionsschutz
+15480341594497	ersetzt-1	Elegante Wildleder-Sandalen mit Stiletto-Absatz
+15480341692801	ersetzt-1	Riemchen-Sandalen mit Chunky-Heel
+15480341791105	ersetzt-1	Elegante Slip-ons mit Plissee-Blockabsatz
+15480341856641	ersetzt-1	M.2 NVMe SSD USB-C Gehäuse
+15480343495041	ersetzt-1	4-in-1 Multi-Device USB Stick
+15480343953793	ersetzt-1	Externe SSD für Handy & Computer
+15480344314241	ersetzt-1	Fingerprint USB Stick für PC & Smartphone
+15480344641921	ersetzt-1	USB-Stick für Host-Systeme
+15480347394433	ersetzt-1	USB-C 7-in-1 Dockingstation
+15480409031041	ersetzt-1	Wasserdichter Auto-Tiermatte
+15480409293185	ersetzt-1	Kindersitz-Schutzmatte
+15480409358721	ersetzt-1	Kabelloser Mini Bluetooth Schlaf-Lautsprecher
+15480409391489	ersetzt-1	9-teiliges Universal-Autositzbezug-Set
+15480409457025	ersetzt-1	Outdoor Bluetooth Lautsprecher mit Farbwechsel-Licht
+15480409522561	ersetzt-1	Reisekissen für Rückbank
+15480409555329	ersetzt-1	Bluetooth-Lautsprecher mit Farblicht
+15480409620865	ersetzt-1	Sandalen mit Schnalle und Peep-Toe
+15480409653633	ersetzt-1	Lendenkissen und Rückenstütze
+15480409686401	ersetzt-1	Wasserdichter Outdoor-Lautsprecher im Stein-Design
+15480409751937	ersetzt-1	Sandalen mit Chunky-Heel, Schnalle und Blumen-Detail
+15480409817473	ersetzt-1	Auto-Kissen aus Memory-Schaum
+15480409850241	ersetzt-1	Portabler S18 Bluetooth Lautsprecher
+15480409883009	ersetzt-1	Sandalen mit eckiger Zehenpartie und T-Riemen
+15480409948545	ersetzt-1	USB Computer Lautsprecher mit Subwoofer
+15480410079617	ersetzt-1	Nackenkissen & Lordosenstütze Memory Foam
+15480410112385	ersetzt-1	Casual Plateau-Sandalen mit Cut-Outs
+15480410145153	ersetzt-1	Kompakter Stoff-Mini-Lautsprecher mit Subwoofer
+15480410243457	ersetzt-1	Kindersitzerhöhung
+15480410276225	ersetzt-1	Magnetischer Fluid-Lautsprecher mit Lichteffekt
