@@ -1,5 +1,50 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🤝 2026-09-04 — Übergabe an die Cowork-/PC-Session (was NICHT nochmal gemessen werden muss)
+
+**Der CHF-65-Widerspruch ist geklärt, und die Richtung ist die umgekehrte.** Eine Session
+meldete, die Juli-Anzeigen versprächen «Gratis-Versand ab CHF 65» gegen CHF 50 im Shop, mit der
+Bitte anzugleichen, «egal in welche Richtung». Nachgemessen am 04.09.:
+
+| geprüft | Treffer «CHF 65» |
+|---|---:|
+| aktive Produkte · veröffentlichte Seiten · Artikel · Kollektionstexte | **je 0** |
+| Theme + Repo (ausser Kommentaren in Reparaturwerkzeugen) | **0** |
+| Automatik-Rabatt «Gratis-Versand ab CHF 65» | **EXPIRED** |
+| wirksam | **ab CHF 49** (beworben ab 50 — wahr, weil 49 < 50) |
+
+→ **Am Shop ist NICHTS zu ändern.** Veraltet sind allein die TikTok-Anzeigentexte (Stand vor
+dem 11.08.). Und die Empfehlung dort ist DISABLE, nicht Textpflege: CHF 499.99 Ausgaben, 1 Kauf,
+gegen CHF 227.22 Gesamtumsatz des Shops. Kampagne 1869987705486481 steht auf ENABLE/BUDGET_EXCEED
+— **nicht von einer Session abschalten**, das ist Betreibersache (echtes Geld).
+
+**Was heute gemessen wurde und als Ausgangslage gilt:**
+- **Dateispeicher voll, und Aufräumen hilft nicht:** 4'000+ neue Dateien / **912 MB an EINEM Tag**
+  bei 873 neuen Produkten (~5 Bilder je Stück). Blockiert TikTok-Queue-Transport, Bildreparatur
+  und Produktbild-Uploads (auch `productCreateMedia` scheitert — die Mutation meldet Erfolg, das
+  Medium wird danach FAILED). Entscheidung Grind drosseln / Plan erhöhen liegt beim Betreiber.
+- **USA/EU-Lieferzusage: 987 aktive Produkte, davon 978 als «repariert» im Ledger** — echter
+  Zombie. Repariert (978 geschrieben), Gegenprobe am Objekt über 1'200 Produkte: 0. Der SCHREIBER
+  ist noch nicht benannt; `/tmp/zombie_wache.sh` beobachtet fünf Produkte und protokolliert bei
+  jeder Änderung, wer läuft.
+- **`klassen_kontrolle.py` ist seit heute fortsetzbar** (Cursor `/tmp/_klassen_stand.json`,
+  Arbeitslisten in `dropship/_klassen/` wachsen seitenweise). Wer eine Klasse reparieren will,
+  nimmt die Arbeitsliste — nicht einen Bulk-Export, die sind veraltet.
+
+**Kundinnenfotos (neu, betrifft Social):** Eine Kundin hat zwei Kleider fotografiert und die
+Nutzung freigegeben — **unter der Bedingung, dass sie bei Instagram-Posts markiert wird**
+(`@tatjanalarsinamoira`). Das ist technisch durchgesetzt: `post_guard.markierungFehlt()` sperrt
+jeden Post ihres Materials ohne die Markierung (eingehängt in `social-autopost-meta` und
+`meta_reel_post`; die übrigen fünf Poster haben es NICHT — wer dort Material einstellt, muss die
+Sperre mitnehmen). Fotos liegen NICHT im Repo (öffentlich, Person erkennbar); Abrufrezept und
+Zuordnung in `dropship/KUNDIN-MODEL.md`.
+
+**Arbeitsteilung, die sich heute bewährt hat:** Ein Bericht einer anderen Session ist ein
+Hinweis, kein Beleg. Der CHF-65-Hinweis war in der Sache richtig und in der Schlussfolgerung
+unvollständig — ohne die Messung wäre daraus eine Shop-Änderung geworden, die nichts zu
+reparieren gehabt hätte.
+
+
 > **Mehrere Sessions arbeiten parallel auf DIESEM Repo (`allengchour-glitch/aban-news-landing`)
 > UND demselben Shopify-Shop (LuxeStyle, `au3j0y-hq.myshopify.com` / luxestyle.ch).**
 > Diese Datei verhindert, dass sie sich gegenseitig überschreiben. **Jede Session:** erst hier rein,
