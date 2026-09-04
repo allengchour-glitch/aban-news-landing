@@ -19136,3 +19136,210 @@
 15479420944769	ersetzt-1	Karaoke Mikrofon mit Bluetooth Lautsprecher
 15479420977537	ersetzt-1	Spitze Pumps mit Stilettoabsatz und Schleife
 15479421010305	ersetzt-1	Mini Karaoke Mikrofon mit Wireless Speaker
+15479421141377	ersetzt-1	Spitze High-Heel Sandalen im Elfen-Look
+15479421174145	ersetzt-1	VHF Funkmikrofon-Set für Karaoke
+15479421239681	ersetzt-1	Sexy Quasten Ultra-High-Heels
+15479421305217	ersetzt-1	Retro Bluetooth-Lautsprecher mit Plattenspieler-Design
+15479421370753	ersetzt-1	Retro Sandalen mit Blockabsatz
+15479421436289	ersetzt-1	Drahtloses FM-Bühnenmikrofon (2er-Set)
+15479421469057	ersetzt-1	Sommer-Sandalen mit spitzer Zehenpartie
+15479421534593	ersetzt-1	Magnetisches kabelloses Ladegerät mit Dual-Coil Ständer
+15479421600129	ersetzt-1	Gewobene Peep-Toe Sandalen mit hohem Absatz
+15479421731201	ersetzt-1	Ultradünne magnetische Powerbank
+15479433888129	ersetzt-1	Herren-Sandale
+15479433953665	ersetzt-1	Spielcontroller Schutzbox
+15479433986433	ersetzt-1	PS5 Controller Silikon-Schutzhülle mit Stick-Caps
+15479434019201	ersetzt-1	UV/LED Mini Nagellampe für Gel-Maniküre
+15479434117505	ersetzt-1	Controller Silikonhülle «Spray Soldier 3»
+15479434150273	ersetzt-1	Handgemachte, wiederverwendbare Nägel, Kurz & Rund
+15479434248577	ersetzt-1	Acryl Staubschutzhülle & Controller-Halterung
+15479434281345	ersetzt-1	Handgemachte, wiederverwendbare Nägel
+15479434412417	ersetzt-1	Schutzhülle für Gaming-Zubehör
+15479434445185	ersetzt-1	Handgemachte Kunstnägel, mittel-lang
+15479434477953	ersetzt-1	Gaming Controller Staubschutzhülle mit Stick-Caps
+15479434510721	ersetzt-1	Transparente, kühle handgemachte Nägel
+15479434576257	ersetzt-1	Red Bat Wireless Bluetooth Gaming Controller
+15479434609025	ersetzt-1	Handgemachte Aufklebe-Nägel im Ombré-Verlauf
+15479434674561	ersetzt-1	TPU Schutzhülle für Nintendo Switch
+15479434707329	ersetzt-1	Handgemachte Nägel mit Schmetterling & Cat Eye
+15479434740097	ersetzt-1	Kabellose Mini HD Motion-Sensing Spielekonsole
+15479434838401	ersetzt-1	Kabelloser 2.4G Gamepad für PC, TV & Android
+15479434871169	ersetzt-1	Brook Wingman XB PS3/PS4 Controller Adapter
+15479434969473	ersetzt-1	GameSir G4 Pro Bluetooth Controller
+15479435002241	ersetzt-1	Aolion PG-NX1056 Wireless Bluetooth Controller
+15479435067777	ersetzt-1	Schutzhülle für Controller-Sticks
+15479435166081	ersetzt-1	Western-Cowboy-Boots mit Nieten und Chunky-Heel
+15479435264385	ersetzt-1	Retro Ankle Boots mit dicker Sohle
+15479435297153	ersetzt-1	Overknee-Stiefel mit Schnallen und Blockabsatz
+15479435428225	ersetzt-1	Western Stiefel mit hohem Schaft und seitlichem Reissverschl
+15479435460993	ersetzt-1	Napapi Universal-Autositzkissen für alle Jahreszeiten
+15479435493761	ersetzt-1	Western Ankle Boots mit Chunky-Absatz
+15479435592065	ersetzt-1	Elegante Stiefeletten aus mattem Wildleder
+15479435624833	ersetzt-1	Overknee-Stiefel mit Stiletto-Absatz
+15479435690369	ersetzt-1	Ankle Boots mit Chunky Heel und Seitenreissverschluss
+15479435755905	ersetzt-1	Overknee-Stiefel mit Blockabsatz
+15479435821441	ersetzt-1	Overknee-Stiefel aus Wildlederimitat
+15479435886977	ersetzt-1	Elegante Stiletto-Pumps mit hohem Absatz
+15479435952513	ersetzt-1	Spitze Stiletto-Stiefeletten mit Riemen
+15479436018049	ersetzt-1	Chunky-Heel Ankle Boots für Damen
+15479436050817	ersetzt-1	Elegante High-Heel Boots mit Chunky-Absatz
+15479436149121	ersetzt-1	Sock-Style Boots mit Chunky-Heel
+15479436181889	ersetzt-1	Herren Business-Lederschuhe mit Absatzerhöhung
+15479436214657	ersetzt-1	Mary Jane Pumps mit moderatem Absatz
+15479436280193	ersetzt-1	Modische Casual Sandalen mit hohem Absatz
+15479436312961	ersetzt-1	Vintage Schnürschuhe im British Style
+15479436411265	ersetzt-1	Business-Slipper im Retro-Look
+15479436444033	ersetzt-1	Business-Lederschuhe mit spitzer Zehenpartie
+15479436476801	ersetzt-1	Elegante Loafer aus weichem Wildleder
+15479436575105	ersetzt-1	Atmungsaktive Leder-Freizeitschuhe
+15479436607873	ersetzt-1	Keilabsatz-Sandalen aus Lackleder
+15479436673409	ersetzt-1	Herren Business-Casual Lederschuhe
+15479436706177	ersetzt-1	Elegante Stilettos in Nude-Optik (7 cm Absatz)
+15479436837249	ersetzt-1	Britische Lackleder-Loafer für Herren
+15479436870017	ersetzt-1	Chunky Pumps mit Riemen
+15479436935553	ersetzt-1	Budapester Anzugschuhe
+15479436968321	ersetzt-1	Wasserdichte Plateau-Wedge-Heels für Damen
+15479437001089	ersetzt-1	Alleyway Street View Bausteine Modell
+15479437033857	ersetzt-1	Personality Wild Suit British Plus Size Shoes
+15479437099393	ersetzt-1	Perforierte Leder-Sandalen mit Riemchen
+15479437197697	ersetzt-1	Retro Leder Halbschuhe für Herren
+15479437230465	ersetzt-1	High Heel Sandalen mit passender Handtasche
+15479437296001	ersetzt-1	Elegante offene Sandalen mit Schnalle
+15479437427073	ersetzt-1	Vintage Leder Slipper für Herren
+15479437459841	ersetzt-1	Satin Plateau-Sandalen mit Stickerei
+15479437525377	ersetzt-1	Herren Leder-Pantoletten mit spitzer Zehe
+15479437558145	ersetzt-1	Elegante Wildleder-Sandalen mit spitzer Zehe
+15479437623681	ersetzt-1	Handgefertigte Oxford Schuhe aus Rindsleder
+15479437656449	ersetzt-1	Elegante goldene High Heels aus weichem Leder
+15479437689217	ersetzt-1	Mosquito Radiator Ganzmetall, hitzebeständig
+15479437754753	ersetzt-1	Elegante Casual-Sandalen mit Chunky-Absatz
+15479437787521	ersetzt-1	Modische Flip-Flops für Herren
+15479437820289	ersetzt-1	HTL 903XL Tintenpatronen-Set für HP Officejet Pro
+15479437853057	ersetzt-1	Retro Mary Jane Pumps aus Schafsleder
+15479437885825	ersetzt-1	Rotlichttherapie-Schuhe mit Infrarot für Knöchel
+15479450337665	ersetzt-1	1080P Cloud IP Kamera
+15479450370433	ersetzt-1	Hole Shoes Unisex-Sandalen
+15479450403201	ersetzt-1	LED/UV Nageltrockner für alle Gel-Lacke
+15479450468737	ersetzt-1	Herren Roman Beach Sandale
+15479450501505	ersetzt-1	Wasserdichte Sportkamera
+15479450534273	ersetzt-1	AI Temperaturkontrolle 3-Port GaN Ladegerät
+15479450567041	ersetzt-1	LED Nagel Lampe für Gel Nägel
+15479450632577	ersetzt-1	Herren Sandalen mit Zehenschutz
+15479450665345	ersetzt-1	Outdoor-Kamera-Recorder
+15479450698113	ersetzt-1	Roman Casual Sandalen aus weichem Leder
+15479450763649	ersetzt-1	Full HD Bodycam mit 140° Weitwinkel
+15479450796417	ersetzt-1	Herren Casual Strandschuhe
+15479450829185	ersetzt-1	Kameradetektor
+15479450927489	ersetzt-1	4K HD Wi-Fi Action-Kamera
+15479450960257	ersetzt-1	Herren Kork-Slipper mit Hohlmuster
+15479450993025	ersetzt-1	SQ13 Wireless Mini-Kamera Full HD
+15479451025793	ersetzt-1	Sportliche Casual Sandalen für Herren
+15479451124097	ersetzt-1	Makro-Zwischenring für Canon FD & Nikon F
+15479451156865	ersetzt-1	Atmungsaktive Sport- und Outdoorsandalen für Herren
+15479451189633	ersetzt-1	4K Mini Sport-Kamera wasserdicht
+15479451681153	ersetzt-1	Starthilfe Powerbank für’s Auto, 10000mAh
+15479451746689	ersetzt-1	Mule-Sandalen mit klobiger Plateau-Sohle
+15479451812225	ersetzt-1	Atmungsaktives Autositzkissen für alle Jahreszeiten
+15479451844993	ersetzt-1	Outdoor-Sandalen mit Klettverschluss
+15479451910529	ersetzt-1	Freizeitschuhe mit Schnürung und spitzer Zehenpartie
+15479451976065	ersetzt-1	One-Strap Chunky-Heel Sandale
+15479452074369	ersetzt-1	Chunky-Heel Sandalen mit Schnürung
+15479452107137	ersetzt-1	Business-Schuhe mit Metall-Detail
+15479452172673	ersetzt-1	Riemchen-Sandalen mit klobigem Absatz
+15479452270977	ersetzt-1	Damen-Sandalen aus Wildlederimitat
+15479452336513	ersetzt-1	Lenkradbezug Carbon-Muster 2er-Set
+15479452369281	ersetzt-1	Römer Sandalen mit Chunky-Absatz
+15479452434817	ersetzt-1	Perforierter Lenkradbezug aus Nappaleder
+15479452500353	ersetzt-1	Trendige Mules mit dicker Sohle
+15479452533121	ersetzt-1	Nappaleder-Lenkradbezug
+15479466590593	ersetzt-1	Keilsandalen mit extrahohem Absatz für Damen
+15479466656129	ersetzt-1	HD21 Smartwatch mit Bluetooth-Telefonie
+15479466688897	ersetzt-1	Vintage Western Cowboy Boots
+15479466721665	ersetzt-1	Smartwatch P90 mit Bluetooth-Anruffunktion
+15479466787201	ersetzt-1	Satin-Sandalen mit Schleife
+15479466885505	ersetzt-1	H9 Smartwatch mit Bluetooth-Anruffunktion
+15479466918273	ersetzt-1	Plateau-Sandalen mit Riemchen und Peeptoe
+15479466951041	ersetzt-1	Smartwatch mit Runddisplay
+15479467016577	ersetzt-1	Faltbarer Handy-Ständer aus Aluminium
+15479467049345	ersetzt-1	H10 Smartwatch mit Runddisplay
+15479467082113	ersetzt-1	Denim Peep-Toe Keilsandalen für Damen
+15479467114881	ersetzt-1	Motorrad Seitenständer-Halterung für Action-Kameras
+15479467147649	ersetzt-1	APPLLP 7 MAX Smartwatch mit ausziehbarer Kamera
+15479467245953	ersetzt-1	Chunky-Heel Sandalette mit eckiger Zehenpartie
+15479467278721	ersetzt-1	Handstativ für Action Cams und Smartphones
+15479467377025	ersetzt-1	X8X9X10 Smartwatch mit Powerbank & Headset
+15479467409793	ersetzt-1	Velo-Halterung aus Aluminium für Filmaufnahmen
+15479467442561	ersetzt-1	Minimalistische Baumwoll-Slipper für Damen
+15479467475329	ersetzt-1	Smartwatch mit Bluetooth-Telefonie & Herzfrequenz
+15479467508097	ersetzt-1	Velo-Handyhalterung mit mechanischem Schloss
+15479467540865	ersetzt-1	Sommerliche Vintage-Sandalen mit Perlen
+15479467573633	ersetzt-1	Wasserdichte Smartwatch mit HD Dual-Kamera
+15479467671937	ersetzt-1	Magnetischer 2-in-1 Selfie Stick
+15479467704705	ersetzt-1	Matte Sandalen mit Schleife
+15479467737473	ersetzt-1	V89 Ultra-dünne Smartwatch mit Bluetooth-Anrufen
+15479467770241	ersetzt-1	Bluetooth Lautsprecher mit Handyhalterung
+15479467803009	ersetzt-1	Retro Mules mit spitzer Kappe und mittlerem Absatz
+15479467835777	ersetzt-1	Smart Watch Ultra-dünn mit Bluetooth-Anruffunktion
+15479467934081	ersetzt-1	Nackenhalterung für Smartphones mit Magnetverschluss
+15479467966849	ersetzt-1	Keilsandalen aus Mikrofaser
+15479467999617	ersetzt-1	Smartwatch mit Sprachassistent & Offline-Zahlung
+15479468032385	ersetzt-1	Magnetischer Smartphone-Kühler mit Eis-Funktion
+15479468065153	ersetzt-1	D11 Smartwatch mit Anruffunktion
+15479468130689	ersetzt-1	Drehbarer magnetischer Handyhalter für zwei Telefone
+15479468163457	ersetzt-1	Mules mit eckiger Schnalle und Strasskappe
+15479468196225	ersetzt-1	Smartwatch mit Gesundheits-Monitoring
+15479468261761	ersetzt-1	Unsichtbarer, ausziehbarer Selfie Stick
+15479468294529	ersetzt-1	Outdoor Smartwatch mit Gesundheitsfunktionen
+15479468327297	ersetzt-1	Roman Casual Half-Slipper Loafers
+15479468392833	ersetzt-1	512GB SATA SSD für Laptops und Desktops
+15479468425601	ersetzt-1	Bequeme Slip-on Halbslipper-Sneaker
+15479468523905	ersetzt-1	SATA3 Laptop SSD-Festplatte
+15479468556673	ersetzt-1	Smartwatch T17F mit Herzfrequenz- und Schlafmonitor
+15479468589441	ersetzt-1	Bequeme Slip-on Sandalen im Feen-Stil
+15479468622209	ersetzt-1	USB-Software-Dongle für Entwickler
+15479468654977	ersetzt-1	Smarte Gesundheits-Uhr
+15479468687745	ersetzt-1	Damen Plateau-Pumps mit Keilabsatz
+15479468720513	ersetzt-1	Reobrix E100 World Of Tanks Panzer-Modell
+15479468753281	ersetzt-1	Retro-Flip-Flops mit gewebtem Riemen
+15479468786049	ersetzt-1	Smartwatch für Senioren mit GPS
+15479468884353	ersetzt-1	Motorrad Bausteine für Kinder
+15479468917121	ersetzt-1	M.2 SSD Gehäuse extern
+15479468949889	ersetzt-1	Keilabsatz-Sandalen mit Stroh- und Plateau-Sohle
+15479468982657	ersetzt-1	Smartwatch mit Fitness- & Schlaf-Tracking
+15479469015425	ersetzt-1	Dampfzug & Schnellzug Modell Bausteine
+15479469048193	ersetzt-1	Multifunktionale SSD
+15479469080961	ersetzt-1	Geschlossene Mules zum Hineinschlüpfen
+15479469146497	ersetzt-1	Smartwatch für Senioren mit GPS und Video
+15479469212033	ersetzt-1	Retro E-Lok Modell Bausatz für Kinder
+15479469277569	ersetzt-1	Elegante Slip-on Sandalen
+15479469343105	ersetzt-1	Smarte Gesundheits-Sportuhr Touch
+15479469375873	ersetzt-1	Märchen-Eck Vergnügungspark DIY 3D Puzzle
+15479469441409	ersetzt-1	Smartwatch mit Herzfrequenz- & Schlaf-Tracking
+15479469474177	ersetzt-1	Niche Fishnet Sandalen
+15479469506945	ersetzt-1	Seagate Exos Enterprise Helium Festplatte 10 TB
+15479469539713	ersetzt-1	3D Holzpuzzle Blumen-Modellbausatz
+15479469638017	ersetzt-1	Bluetooth Smartwatch für Damen, ultradünn
+15479469670785	ersetzt-1	Damen-Flip-Flops mit flacher Sohle
+15479469703553	ersetzt-1	Montessori Spielhaus für frühe Lernphasen
+15479469769089	ersetzt-1	Offene Sandalen für Damen
+15479469834625	ersetzt-1	Smartwatch für Herzfrequenz, Schlaf & Blutsauerstoff
+15479469867393	ersetzt-1	DIY Tierperlen-Set
+15479469900161	ersetzt-1	M.2 NVMe SSD 128 GB für Laptop & Desktop
+15479469932929	ersetzt-1	Transparente Chunky-Heel Sandalen für Damen
+15479469998465	ersetzt-1	M99 Smartwatch mit grossem AMOLED-Display
+15479470064001	ersetzt-1	Montessori Puzzle: Pinyin & Silbenstruktur
+15479470096769	ersetzt-1	Phantom Butterfly SSD 128GB/512GB SATA3.0
+15479470129537	ersetzt-1	Keilsandalen mit Klettverschluss
+15479470162305	ersetzt-1	IwatchS10 Silikonarmband mit Litschi-Muster
+15479470195073	ersetzt-1	Farbige Instagram-Style Holz-Ornamente & Lernspielzeug
+15479470260609	ersetzt-1	Mobile SSD Ultra-dünn
+15479470293377	ersetzt-1	Spitzen-Slipper mit Schleife und Keilabsatz
+15479470358913	ersetzt-1	Intelligente Outdoor-Sportuhr mit GPS
+15479470391681	ersetzt-1	Holz-Angelspiel für Kinder
+15479470457217	ersetzt-1	X99 Computer Motherboard DDR4 Server
+15479470489985	ersetzt-1	Halb-Slipper für Damen mit geschlossener Zehenpartie
+15479470522753	ersetzt-1	Fliegender Mecha Zhuque Zhang (Bausteine)
+15479470588289	ersetzt-1	Retro-Sandalen mit flachem Absatz
+15479470621057	ersetzt-1	M.2 NVMe SSD-Gehäuse USB 3.1 Gen2
+15479470653825	ersetzt-1	High-Speed TF Speicherkarte
+15479470686593	ersetzt-1	Breaking Bad RV Bausteine für Kinder
