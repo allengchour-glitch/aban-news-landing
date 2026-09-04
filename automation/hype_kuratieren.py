@@ -180,7 +180,7 @@ NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid
 # «gegen» ist zu häufig, «Serum» ist harmlos. Eine Anti-Aging-CREME bleibt zulässig — das ist
 # eine kosmetische Aussage; ein WACHSTUMSVERSPRECHEN ist es nicht.
 WIRKVERSPRECHEN = re.compile(
-    r'(wimpern|haar|bart|n[äa]gel|nagel|brust|penis)wachstum'
+    r'(wimpern|haar|bart|n[äa]gel|nagel|brust|penis)(wachstum|wuchs)'
     r'|wachstums(serum|elixier|fluid|booster)'
     r'|gegen\s+(pigmentflecken|falten|akne|cellulite|haarausfall|schuppen|narben|'
     r'dehnungsstreifen|kr[äa]mpfadern|besenreiser|schmerzen|migr[äa]ne)'

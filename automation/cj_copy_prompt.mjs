@@ -56,14 +56,14 @@ const MESSWORT = 'Blutdruck|EKG|Blutzucker|Glukose|Elektrokardiogramm|ECG';
 // kann eine Anweisung ignorieren, eine Pruefung nicht — dieselbe Lehre wie bei messSicher().
 // Ein Wachstumsversprechen ist eine Heilaussage (Lehre 29.08.); eine zulaessige kosmetische
 // Aussage ist es NICHT: «Anti-Aging-Creme» und «Hyaluron-Serum» bleiben unberuehrt.
-const WACHSTUM_RE = /\b(wimpern|haar|bart|augenbrauen|n[äa]gel|nagel|brust|penis)[a-zäöüß]*wachstums?[a-zäöüß]*\b/gi;
+const WACHSTUM_RE = /\b(wimpern|haar|bart|augenbrauen|n[äa]gel|nagel|brust|penis)[a-zäöüß]*(wachstums?|wuchs)[a-zäöüß]*\b/gi;
 const GEGEN_RE = /\bgegen\s+(pigmentflecken|falten|akne|cellulite|haarausfall|schuppen|krampfadern|besenreiser|narben|dehnungsstreifen)\b/gi;
 const KUR_RE = /\b(abnehm[a-zäöüß]*|detox|whitening|aufhellend)\b/gi;
 
 export function wirkSicher(o) {
   if (!o || !o.title) return o;
   const schnitt = (t) => t
-    .replace(WACHSTUM_RE, (m) => m.replace(/wachstums?[a-zäöüß]*/i, ''))
+    .replace(WACHSTUM_RE, (m) => m.replace(/(wachstums?|wuchs)[a-zäöüß]*/i, ''))
     .replace(GEGEN_RE, '')
     .replace(KUR_RE, '')
     .replace(/\s*[,&]\s*(?=[,&])/g, '')

@@ -238,8 +238,13 @@ def main():
     if not aufgaben:
         return
 
+    # ⚠️ 04.09.2026: Kommen die Kandidaten aus einer LIVE-Messung (LISTE), darf das Ledger sie
+    # NICHT filtern. Gemessen: alle 150 Faelle standen als «vereint» quittiert und trugen den
+    # Doppelblock trotzdem live — der Lauf meldete daraufhin still «0 vereint». Eine Quittung
+    # sagt, was einmal geschrieben wurde, nicht was jetzt gilt. Geschrieben wird ohnehin nur,
+    # wenn der LIVE-Text den Doppelblock noch traegt (Pruefung direkt darunter).
     done = set()
-    if os.path.exists(LEDGER):
+    if os.path.exists(LEDGER) and not LISTE:
         done = {l.split("\t")[0] for l in open(LEDGER)}
     f = open(LEDGER, "a")
     n = 0

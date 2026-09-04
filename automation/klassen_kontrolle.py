@@ -84,7 +84,7 @@ FLOSKEL_RE = re.compile(r'Material:\s*' + TAGS + r'hochwertiges Material', re.I)
 # Wirkversprechen im TITEL — dieselbe Familie wie hype_kuratieren.WIRKVERSPRECHEN, hier
 # bewusst eng: nur Wachstum und «gegen <Befund>», beides sind Heilaussagen.
 TITEL_WIRK_RE = re.compile(
-    r'(?:wimpern|haar|bart|augenbrauen|nagel)wachstum|wachstums(?:serum|öl|oel)|'
+    r'(?:wimpern|haar|bart|augenbrauen|nagel)(?:wachstum|wuchs)|wachstums(?:serum|öl|oel)|'
     r'gegen\s+(?:pigmentflecken|falten|akne|cellulite|haarausfall|schuppen)|'
     r'\bfacelift\b|dauerhafte\s+haarentfernung', re.I)
 

@@ -53,7 +53,7 @@ RISIKO_TAG = {"kostuem-accessoire", "ft-damenkostuem", "ft-herrenkostuem", "ft-k
               "nicht-bewerben", "nur-onlineshop", "lizenz-risiko"}
 NICHT_TITEL = re.compile(
     r"(kost[üu]m|per[üu]cke|fasnacht|halloween|intim|vibrator|dessous"
-    r"|(?:wimpern|haar|bart|brust)wachstum|gegen\s+(?:pigmentflecken|falten|akne|haarausfall)"
+    r"|(?:wimpern|haar|bart|brust)(?:wachstum|wuchs)|gegen\s+(?:pigmentflecken|falten|akne|haarausfall)"
     r"|abnehm|whitening|facelift|blutzucker|blutdruck)", re.I)
 
 

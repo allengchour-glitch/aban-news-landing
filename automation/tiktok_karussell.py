@@ -78,7 +78,7 @@ SANSB = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 # --- Ausschluesse -----------------------------------------------------------
 # Wirk- und Heilversprechen im TITEL. Auf der Produktseite reguliert, im Social-Post beworben.
 CLAIM = re.compile(
-    r"wachstum|gegen\s+pigment|pigmentflecken|anti[- ]?falten|faltenreduz|straff|"
+    r"wachstum|(?:haar|bart|wimpern|nagel|brust)wuchs|gegen\s+pigment|pigmentflecken|anti[- ]?falten|faltenreduz|straff|"
     r"blutzucker|blutdruck|\bekg\b|abnehm|schlankheit|heil|therapie|schmerz",
     re.I)
 # Tags, die ein Produkt aus jeder Werbung heraushalten.

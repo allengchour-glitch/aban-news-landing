@@ -29,7 +29,7 @@ except Exception:
 # Verankert, weil kurze Wörter als Fremdwort-Endung vorkommen (IPL in Lipliner, led in Leder,
 # ski in Skincare, auto in Automatik, monitor in Monitoring) — Substring-Familie, 8 Fassungen.
 WIRKVERSPRECHEN = re.compile(
-    r"(?:(?:wimpern|haar|bart|augenbrauen|nagel|nägel)\w*wachstum|wachstums(?:serum|öl|oel)"
+    r"(?:(?:wimpern|haar|bart|augenbrauen|nagel|nägel)\w*(?:wachstum|wuchs)|wachstums(?:serum|öl|oel)"
     r"|gegen\s+(?:pigmentflecken|falten|akne|cellulite|haarausfall|schuppen|narben|krampfadern)"
     r"|anti[- ]?aging\s*facelift|facelift|dauerhafte\s+haarentfernung"
     r"|abnehmen\b|gewichtsverlust|schlankheits\w*|fettverbrenn\w*|detox\b|whitening)", re.I)
