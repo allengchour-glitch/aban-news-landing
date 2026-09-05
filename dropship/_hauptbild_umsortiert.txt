@@ -40,3 +40,4 @@
 15448847778177	bild-5-nach-vorn	kontaktbogen-0509 gaming
 15448848040321	bild-6-nach-vorn	kontaktbogen-0509 gaming
 15412677607809	bild-2-nach-vorn	kontaktbogen-0509 sub-haustier
+15448925929857	bild-6-nach-vorn	kontaktbogen-0509 sub-haustier

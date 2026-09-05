@@ -29,10 +29,15 @@ kuratiert wurde.** Damen-Mode, Neuheiten, Elektronik, Wohnen, Schmuck & Uhren, H
   supported`, was wie ein Punkteproblem aussieht und keines ist (`pointsInfo` steht trotzdem drin:
   remaining 22'087).
 
-- **Abends nachgemessen, und die Zahl ist besser als am Morgen:** Die 20 sichtbaren Reihen zeigen
-  **83 von 480 Karten mit Sterne-Badge (17 %)** — morgens waren es 23 von 187 (12 %), und davon
-  standen 21 in `bestseller`. Jetzt tragen auch Uhren 12/24, Querbeet 11/24, Schmuck & Uhren 6/24,
-  Wohnen · Handy · Gaming je 4/24. **Judge.me 1'953 → 2'727 an einem Tag (+774).**
+- **Abends nachgemessen — und die erste Zahl war meine eigene Schoenfaerberei.** Ich zaehlte
+  «hat eine Bewertung» (83 von 480 = 17 %) und schrieb das als Sterne-Badges auf. **Das Badge
+  erscheint aber erst ab 4,0 ★ UND 3 Stimmen** (Schwelle 01.09.). Mit der ECHTEN Badge-Bedingung
+  gezaehlt sind es **63 von 480 (13 %)** — 20 Produkte tragen eine Bewertung, die niemand sieht.
+  Reihen mit Badges: Bestseller 22/24, Uhren 11/24, Schmuck & Uhren 6/24, Querbeet 6/24.
+  **Judge.me 1'953 → 2'727 an einem Tag (+774).**
+  **Regel: Eine Abdeckungszahl misst man mit der Bedingung, unter der die Kundin es SIEHT** —
+  nicht mit der, unter der die Daten existieren. Dieselbe Familie wie «eine Aussenwirkung prueft
+  man an der Aussenwirkung» (29.08.), nur eine Ebene frueher: schon beim Zaehlen.
 - ⛔ **Vier grosse Reihen stehen auf 0/24 — und das ist KEINE Lücke in unserer Arbeit:** Damen-Mode,
   Sneaker, Elektronik & Technik, Blitzversand. Am Objekt geprüft sind dort **24 von 24 Produkten
   bereits bei CJ gefragt worden**; der Lieferant hat für sie schlicht keine Kommentare. Diese Reihen
