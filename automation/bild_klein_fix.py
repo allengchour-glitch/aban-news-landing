@@ -15,7 +15,12 @@ def gql(q,v=None):
             if "data" in d: return d
         except Exception: pass
         time.sleep(4)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
+    # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation
+    # ohne userErrors unterscheiden — er quittiert dann Arbeit, die nie stattfand.
+    # Ein lauter Abbruch ist hier richtig: eine falsche Quittung ueberspringt den Fall
+    # fuer immer, ein Absturz nur diesen Lauf.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 
 Q='''query($c:String){ products(first:60,after:$c,query:"status:ACTIVE"){ pageInfo{hasNextPage endCursor}
  nodes{ id title

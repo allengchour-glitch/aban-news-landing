@@ -119,7 +119,12 @@ def gql(q, v=None):
             pass
         i += 1
         time.sleep(2.5)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
+    # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation
+    # ohne userErrors unterscheiden — er quittiert dann Arbeit, die nie stattfand.
+    # Ein lauter Abbruch ist hier richtig: eine falsche Quittung ueberspringt den Fall
+    # fuer immer, ein Absturz nur diesen Lauf.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 
 def hol(url):
     r = subprocess.run(['curl', '-sL', '--max-time', '25', url.split('?')[0]], capture_output=True)

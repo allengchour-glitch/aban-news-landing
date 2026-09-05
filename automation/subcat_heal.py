@@ -25,7 +25,12 @@ def gql(q, v=None):
             return j
         except Exception:
             time.sleep(3)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
+    # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation
+    # ohne userErrors unterscheiden — er quittiert dann Arbeit, die nie stattfand.
+    # Ein lauter Abbruch ist hier richtig: eine falsche Quittung ueberspringt den Fall
+    # fuer immer, ein Absturz nur diesen Lauf.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 
 # Konfiguration je Kategorie: search=Titel-Suchbegriffe (wie kaputte Regel),
 # echt=Positiv-Regex (Wortgrenzen!), mode=Kontext-Pflicht (None=kein Kontext nötig), ban=Hart-Ausschluss.

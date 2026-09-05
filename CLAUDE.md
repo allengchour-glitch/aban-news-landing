@@ -8,9 +8,14 @@ als betriebsstillegend gemessen hatte: **328 Dateien lesen dieses Token** (Impor
 Rueckerstattung, Tresor, Ampeln, 194 Waechter). Der SHOP selbst ist gesund (Kollektionsseiten 6/6
 HTTP 200); nur unser API-Zugang ist tot. Der Tresor laesst sich ebenfalls nicht oeffnen — sein
 Schluessel IST dieses Token (Lehre 30.08.).
-- **Was das sofort anrichtet, und es ist schlimmer als Stillstand:** Gemessen ignorieren **68 der
-  schreibenden Werkzeuge** die OBERE Fehlerebene der GraphQL-Antwort. Faellt die Auth aus, kommt
-  `data:null` **ohne** `userErrors` — der Lauf haelt das fuer Erfolg und schreibt eine Quittung.
+- **Was das sofort anrichtet, und es ist schlimmer als Stillstand:** Der Shop hat **97 schreibende
+  Werkzeuge**. Bei den meisten laeuft derselbe Mechanismus, und er ist gemeiner als «die obere
+  Fehlerebene wird ignoriert» (so stand es hier zuerst, das war zu grob): Ihr `gql()` PRUEFT sogar
+  brav `data is not None` — und gibt bei Misserfolg ein **leeres Dict** zurueck. Der Aufrufer kann
+  `{}` dann nicht von einer geglueckten Mutation ohne `userErrors` unterscheiden:
+  `((r.get("data") or {}).get("productVariantsBulkUpdate") or {}).get("userErrors")` ist in beiden
+  Faellen falsy — und die naechste Zeile schreibt die Quittung. **Die Sicherung in `gql()` verwandelt
+  einen lauten Fehlschlag in ein stilles leeres Dict, und der Aufrufer liest es als Erfolg.**
   **Belegt an zwei POD-Produkten** («T-Shirt Gopfertami», «Tasche Heidi»): beide stehen ZWEIMAL als
   `ersetzt` im Ledger und tragen den alten Block «🇨🇭 CH / 🇪🇺 EU: 7–14 Tage · 🇺🇸 USA: 6–12 Tage»
   live weiter. Eine falsche Quittung ueberspringt den Fall FUER IMMER. Beide Zeilen entfernt.
@@ -21,10 +26,19 @@ Schluessel IST dieses Token (Lehre 30.08.).
   Stillstand** — er erzeugt Quittungen ueber Arbeit, die nie stattgefunden hat.
 - `versand_jenachland.py` als erstes richtig repariert: `gql()` wirft jetzt bei `errors`, und
   quittiert wird nur gegen eine **bestaetigte Produkt-ID** in der Antwort, nicht gegen das blosse
-  Ausbleiben von `userErrors`. Belegt: Der Lauf endet jetzt laut mit `HTTP 401` statt still mit
-  «PAUSE». **Die uebrigen 67 Werkzeuge sind NICHT einzeln repariert** — sie haengen hinter dem Tor;
-  die saubere Loesung ist EIN geteilter `gql()`-Helfer (Geschwister-Lehre), und das ist ein Umbau,
-  den man nicht blind macht, waehrend die API nicht antwortet.
+  Ausbleiben von `userErrors`. Belegt: Der Lauf endet jetzt laut mit `HTTP 401` statt still mit «PAUSE».
+- **Danach mechanisch gehaertet: 58 der 97** tragen jetzt statt `return {}` einen lauten
+  `raise RuntimeError`, sobald alle Wiederholungen erschoepft sind. Die Umformung ist ueberall
+  dieselbe und wurde vor dem Schreiben im Trockenlauf gezeigt, danach `ast.parse` ueber ALLE
+  `automation/*.py`, und die Funktion isoliert gegengeprueft (ungueltiges Token → Abbruch statt
+  stiller Rueckgabe). ⚠️ Die Ersetzung sitzt bewusst NACH der Wiederholungsschleife — eine
+  Drosselung ist kein Abbruchgrund (Lehre 23.08.).
+- ⚠️ **39 Werkzeuge bleiben ungehaertet, und das ist kein Versaeumnis, sondern Ehrlichkeit:** Sie
+  haben eine andere Form (kein `def gql`, oder `return json.loads(...)` roh). Stichprobe: `faser_wahrheit`
+  gibt die Rohantwort zurueck (gleiche Gefahr), `fremdzeichen_guard` **wirft bereits** nach drei
+  Versuchen (kein Handlungsbedarf). Eine mechanische Umformung ueber unterschiedliche Formen waere
+  geraten statt gemessen. Sie haengen ohnehin hinter dem Tor; die saubere Loesung bleibt EIN
+  geteilter `gql()`-Helfer (Geschwister-Lehre).
 - ⚠️ **Ein Fehlalarm auf dem Weg, den ich fast gemeldet haette:** Die Startseite antwortete
   5× hintereinander zu 40 % mit **HTTP 500**, und ich war beim Satz «die Haustuer ist kaputt».
   Sechs Abrufe spaeter: **6/6 = 200**, ebenso zwei Kollektionsseiten. Es war der kalte Edge-Cache

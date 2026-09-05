@@ -20,7 +20,12 @@ def gql(q,v=None):
         r=subprocess.run(["curl","-s","--max-time","40","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json","-H","X-Shopify-Access-Token: "+STOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
         try: return json.loads(r.stdout)
         except Exception: time.sleep(2)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
+    # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation
+    # ohne userErrors unterscheiden — er quittiert dann Arbeit, die nie stattfand.
+    # Ein lauter Abbruch ist hier richtig: eine falsche Quittung ueberspringt den Fall
+    # fuer immer, ein Absturz nur diesen Lauf.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 ADDR={"firstName":"Test","lastName":"Test","country":"CH","postcode":"8000","town":"Zurich","address":"Teststrasse 1","phone":"0790000000","email":"info@luxestyle.ch"}
 # Kandidaten laden (einmalig)
 if not os.path.exists("/tmp/bb_revive_pool.json"):
