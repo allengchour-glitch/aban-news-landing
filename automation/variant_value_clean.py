@@ -42,7 +42,10 @@ def gql(q,v=None):
             time.sleep(min(20, 1+fehlt/(st.get("restoreRate") or 100))); continue
         if "data" in d: return d
         time.sleep(min(30, 2 ** versuch))
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Der Aufrufer kann ein leeres Dict nicht von
+    # einer geglueckten Mutation ohne userErrors unterscheiden und quittiert dann Arbeit,
+    # die nie stattfand. Lauter Abbruch statt stiller Rueckgabe.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 M='''mutation($pid:ID!,$o:OptionUpdateInput!,$u:[OptionValueUpdateInput!]){
  productOptionUpdate(productId:$pid, option:$o, optionValuesToUpdate:$u, variantStrategy:LEAVE_AS_IS){ userErrors{message} }}'''
 COL={"black":"Schwarz","white":"Weiss","red":"Rot","blue":"Blau","green":"Grün","yellow":"Gelb","pink":"Pink","purple":"Lila",

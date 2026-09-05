@@ -9,7 +9,10 @@ def gql(q,v=None):
             if "data" in d: return d
         except Exception: pass
         time.sleep(3)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Der Aufrufer kann ein leeres Dict nicht von
+    # einer geglueckten Mutation ohne userErrors unterscheiden und quittiert dann Arbeit,
+    # die nie stattfand. Lauter Abbruch statt stiller Rueckgabe.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 GOOG="gid://shopify/Publication/302872297857"; OS="gid://shopify/Publication/301970915713"
 Q='''query($c:String){products(first:100,after:$c){pageInfo{hasNextPage endCursor} nodes{id title status
   g:publishedOnPublication(publicationId:"%s") o:publishedOnPublication(publicationId:"%s")

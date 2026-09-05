@@ -56,6 +56,18 @@ Schluessel IST dieses Token (Lehre 30.08.).
 - ⚠️ Mein Klassifizierungs-Grep hat dabei zweimal danebengelegen (er kannte nur `return {}`, nicht
   `return None`, und wertete jede unbekannte Form als verdaechtig). **Ein Suchmuster taugt zum
   Sieben, nicht zum Urteilen** — die Entscheidung fiel bei jeder Datei am gelesenen Code.
+- **Damit die Klasse nicht zurueckkommt: `automation/quittungs_wache.py`** (taeglich im Aufseher,
+  MELDET NUR, braucht keine API). Sie meldet **nur** die eine Form, die sich zuverlaessig erkennen
+  laesst — ein GraphQL-Helfer, der mit `return {}` endet — und ignoriert alle legitimen Schutzarten.
+  In DREI Richtungen geprueft: absichtlich schlechtes Werkzeug → gemeldet, entfernt → still, und ein
+  reiner LESER mit `return {}` → **kein Fehlalarm**.
+- ⛔ **Und sie hat sofort 15 weitere Werkzeuge gefunden, die meine eigene Kandidatenliste nicht
+  kannte** (`gfeed_apply`, `google_kanal_nachziehen`, `variant_value_clean`, `option_umbenennen`,
+  `farbwerte_uebersetzen` …). Meine Liste verlangte die Zeichenkette `userErrors`; diese schreiben
+  aber ueber `publishablePublish`/`productOptionUpdate`. Damit war auch meine korrigierte Zahl («97»)
+  noch zu klein. **Zweite Fassung derselben Lehre an einem Abend: ein Suchmuster taugt zum Sieben,
+  nicht zum Zaehlen** — die Wache sucht jetzt nach der GEFAHR (stiller Helfer), nicht nach einem Wort.
+  Alle 15 gehaertet, Gegenprobe: «kein Schreib-Werkzeug kehrt bei Misserfolg still zurueck».
 - ⚠️ **Ein Fehlalarm auf dem Weg, den ich fast gemeldet haette:** Die Startseite antwortete
   5× hintereinander zu 40 % mit **HTTP 500**, und ich war beim Satz «die Haustuer ist kaputt».
   Sechs Abrufe spaeter: **6/6 = 200**, ebenso zwei Kollektionsseiten. Es war der kalte Edge-Cache
