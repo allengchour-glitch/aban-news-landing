@@ -422,6 +422,17 @@ while true; do
       echo "$(date -u +%H:%M) bestseller_rotation gestartet"
     fi
   fi
+  # NEUHEITEN-ROTATION, einmal täglich (05.09.2026, Audit mobil-startseite: «Neuheiten 2026» und
+  # «Elektronik» zeigten 10/12 dieselben Beamer — CREATED_DESC folgt dem Grind). Holt je Welt das
+  # juengste brauchbare Produkt an den Anfang der MANUAL-Kollektion `neu-eingetroffen`. Idempotent je Tag.
+  NR=/tmp/neuheiten_rotation.log
+  if [ -f "$REPO/automation/neuheiten_rotation.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$NR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_neuheiten_rotation.lock; flock -n 9 || exit 0; exec python3 automation/neuheiten_rotation.py" >> "$NR" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) neuheiten_rotation gestartet"
+    fi
+  fi
   # IG-DUPLIKAT-WACHE, einmal täglich (User 18.08.: «poste nie mehr das gleiche»): ein
   # externer Planer re-postet die alte Queue ~alle 12 Tage; bis die Quelle gefunden ist,
   # löscht die Wache jeden neuen Doppelpost (ältester bleibt, nie >10 Likes).

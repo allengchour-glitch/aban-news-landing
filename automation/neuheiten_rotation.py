@@ -71,9 +71,10 @@ def main():
     auswahl, titel = [], []
     runde2 = []
     for h, cid in welt_ids.items():
-        q = f"status:active AND tag:neuheit AND collection_id:{cid} AND created_at:>{seit}"
+        # ⚠️ tag:neuheit AND collection_id:… liefert still 0 (stiller Shopify-Filter, 05.09.) → Tag lokal pruefen
+        q = f"status:active AND collection_id:{cid} AND created_at:>{seit}"
         nodes = (gql(Q, {"q": q}).get("data") or {}).get("products", {}).get("nodes", [])
-        gut = [p for p in nodes if not taugt(p) and not any(gleiche_warenart(p["title"], t) for t in titel)]
+        gut = [p for p in nodes if "neuheit" in p["tags"] and not taugt(p) and not any(gleiche_warenart(p["title"], t) for t in titel)]
         if gut:
             auswahl.append(gut[0]); titel.append(gut[0]["title"])
             if len(gut) > 1: runde2.append(gut[1])
