@@ -1,5 +1,33 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🛰️ Eine zweite Session postet ab morgen aus dem Shop-Metafeld — ohne unsere sieben Wachen (2026-09-05)
+Übergabe-Paket v2 der anderen Session: eine «Cloud-Redaktion» (06:00) füllt das Shop-Metafeld
+`luxestyle.social_queue` sieben Tage voraus, ein PC-Skript (`social-post.mjs`, 17:00 MESZ) postet daraus
+auf Instagram und legt den Eintrag in `tiktok_queue.json`. Sein einziges Ledger ist das Metafeld selbst
+(`kanaele.instagram`) — es kennt weder `post_guard` (Produkt-Ledger, Live-IG-Abgleich, EIN Lock) noch
+`_SOCIAL_STOPP`, und es prüft die Ware beim Posten nicht. **Das ist die Doppelpost-Klasse vom 26.07.
+(zwei Poster, zwei Queues) in neuer Verkleidung — nur dass dieser Poster auf einem fremden Rechner läuft.**
+Was hier geht: Das Skript respektiert `status: "pausiert"`. `automation/social_queue_wache.py` (alle 6 h im
+Aufseher, FIX=1, Bericht `dropship/SOCIAL-QUEUE-WACHE.md`) prüft jeden Eintrag am Objekt und pausiert
+umkehrbar mit `grund`: Produkt ACTIVE/Onlineshop/Preis, Risiko-Tags, topische Kosmetik (30.08.),
+Produkt-Ledger (schon gepostet), Aussagen, die für dieses Produkt falsch sind (CH-Lager, 1–2 Tage, «Link
+in Bio», #fyp), Bild-URL, und **Lieferanten-Referenz** (`gfeed_restore.lieferantenref`, EINE Regel).
+- **Erster Lauf, erster Treffer, und er war für MORGEN geplant:** «Jade Roller & Gua Sha Premium Set»,
+  SKU `JADE-SET-001`, Bestand 100 erfunden, kein Lieferant dahinter — die #1008-Klasse (bezahlt, nie
+  lieferbar), seit dem 22.08. als handkuratierte Altware bekannt. Die fremde Regel `nurTags:["bild-ok"]`
+  wählt genau diese Ur-Ware AUS, weil nur sie den Tag trägt (04.09.: bild-ok ist die Quittung eines
+  Frühjahrslaufs). **Ein Auswahlkriterium, das auf die älteste Ware zeigt, bewirbt die Ware ohne Lieferant.**
+- ⚠️ **Und der zweite Eintrag hatte eine ABGESCHNITTENE SKU:** «Aroma Diffuser Holzoptik 400ml» trug
+  `CJ-CJJJTJT22925` (12 Zeichen); CJ antwortet darauf «Product not found» (schon am 02.09. im
+  Specs-Nachtrag). Die echte SKU ist `CJJJJTJT22925` — ein «J» mehr, am Namen verifiziert («Wood grain
+  aroma diffuser»). Korrigiert per `productVariantsBulkUpdate`. Klasse gemessen: 492 Ur-Waren vor Juli,
+  **0 weitere** 12-Zeichen-SKUs. Der Bestell-Automat hätte an dieser SKU dieselbe Absage bekommen wie der
+  Specs-Nachtrag — **ein «not found» an einer SKU aus dem eigenen Importer ist ein Formfehler, bevor es
+  ein Verschwinden ist** (sechste Fassung der SKU-Formen-Falle; diesmal ein fehlendes Zeichen).
+- ⚠️ `/tmp/cj_token.json` vom 30.08. ist noch gültig (CJ-Token leben 15 Tage) — für Einzelabfragen
+  nehmen, statt `getAccessToken` (1×/300 s, macht die Token der Runner ungültig). 429 = geteiltes
+  1-req/s-Limit, mit Backoff wiederholen, kein Befund.
+
 ## 🧪 Fünf KI-Schlüssel im Chat — zwei antworten, und Groq ist jetzt KAPUTT statt repariert (2026-09-05)
 Betreiber: «webshop alles mit andere ki wo du hast kritik holen und verbessern» und dazu fünf Schlüssel
 (Grok, DeepSeek, Groq, OpenAI, Gemini). Alle in den Tresor «dienste» + `/tmp/dienste.env` geschrieben,
