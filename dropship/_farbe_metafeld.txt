@@ -379,3 +379,8 @@ gid://shopify/Product/15525196136833	Marineblau
 gid://shopify/Product/15525485904257	Schwarz
 gid://shopify/Product/15525487903105	Schwarz
 gid://shopify/Product/15525489312129	Silber
+gid://shopify/Product/15500113641857	Gold
+gid://shopify/Product/15500163711361	Schwarz
+gid://shopify/Product/15525496488321	Schwarz
+gid://shopify/Product/15525500158337	Silber
+gid://shopify/Product/15525500748161	Silber
