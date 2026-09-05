@@ -4576,6 +4576,22 @@ function updLandbus(dt){
     b.w.rotation.y=Math.atan2(-sa*b.rdir, ca*b.rdir);
   }
 }
+/* 🚗 WELCHE WAGEN TEILEN SICH EINE SPUR? GEMESSEN 2026-09-05: auf der Landstrasse
+   standen sechs Paare enger als ihre eigene Laenge, das engste 0,34 m bei noetigen
+   5,13 m — sie fuhren ineinander. Die Abstandsregel unten gab es laengst, sie
+   verglich aber nur Wagen mit DEMSELBEN Routen-Objekt (`o.route !== v.route`).
+   ROUTEN hat fuer den Ring aber ZWEI Eintraege je Radius (r 197,5 zweimal dir 1,
+   r 202,5 zweimal dir -1) — physisch dieselbe Spur, fuer die Regel zwei Welten.
+   Der Schluessel beschreibt darum die STRASSE, nicht das Objekt: Achse, Spurlage
+   und Richtung. Bei Zubringer und Stich haengt die Richtung am Wagen (`rdir`), das
+   prueft die Regel selbst. */
+function _spurKey(r){
+  if(!r)return "?";
+  if(r.axis==="x")return "x|"+r.z+"|"+r.dir;
+  if(r.axis==="z")return "z|"+r.x+"|"+r.dir;
+  if(r.axis==="ring")return "ring|"+r.r+"|"+r.dir;
+  if(r.axis==="radial")return "radial|"+r.gr;
+  return r.axis;}
 function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
   verkehr.forEach(function(v){
@@ -4585,7 +4601,26 @@ function updVerkehr(dt){
        aktuelle Fahrtrichtung des Wagens — er wendet an beiden Enden. */
     if((v.route.axis==="radial"||v.route.axis==="stich")&&v.rdir===undefined)v.rdir=v.route.dir;
     var rd=(v.route.axis==="radial"||v.route.axis==="stich")?v.rdir:v.route.dir;
-    v.pos+=rd*(v.speed||v.route.speed)*dt;
+    /* 🚦 ERST SCHAUEN, DANN FAHREN. Die Regel weiter unten schob den Wagen bei zu
+       geringem Abstand einfach auf 7,5 m zurueck — ein Sprung. Gemessen sah man das
+       am Bremslicht: nach dem Sprung betraegt der Abstand exakt 7,5 m, die Bedingung
+       "kleiner als 7,5" ist also nie erfuellt, und das Licht blieb ueber sechs Proben
+       immer aus. Jetzt wird der freie Weg VOR dem Vorruecken gemessen und die
+       Geschwindigkeit gedaempft: ab 13,5 m beginnt das Bremsen, bei 7,5 m steht der
+       Wagen. Das ist zugleich das, was man sehen will — er rollt aus, statt zu zucken.
+       Der Rueckschub unten bleibt als Notbremse fuer alles, was sich trotzdem naehert
+       (Ampelhalt, Schranke, frisch gesetzte Wagen). */
+    var _frei=1;
+    for(var fi=0;fi<verkehr.length;fi++){var f=verkehr[fi];
+      if(f===v||f===driveCar||_spurKey(f.route)!==_spurKey(v.route))continue;
+      if((v.route.axis==="radial"||v.route.axis==="stich")&&f.rdir!==v.rdir)continue;
+      var fg=(f.pos-v.pos)*rd;
+      if(v.route.axis==="ring"){var U3=6.283185*v.route.r;fg=((fg%U3)+U3)%U3;}
+      if(fg<=0)continue;
+      var t9=Math.max(0,Math.min(1,(fg-7.5)/6));
+      if(t9<_frei)_frei=t9;}
+    v._bremst=_frei<0.85;
+    v.pos+=rd*(v.speed||v.route.speed)*_frei*dt;
     /* 🛞 Rollen: gefahrener Weg durch Radradius — HIER, direkt nach dem Vorruecken.
        GEMESSEN (th-raeder.mjs, erster Lauf): der Block stand vor dieser Zeile und
        rechnete v.pos - _pv, also immer 0; 27 m Fahrt, Raeder still. `pos` ist Bogen-
@@ -4623,13 +4658,18 @@ function updVerkehr(dt){
       if(v.route.dir>0){if(_pv<=hl&&v.pos>hl)v.pos=hl;}
       else{if(_pv>=hl&&v.pos<hl)v.pos=hl;}}
     for(var vi=0;vi<verkehr.length;vi++){        // Sicherheitsabstand auf derselben Spur
-      var o=verkehr[vi];if(o===v||o===driveCar||o.route!==v.route)continue;
+      var o=verkehr[vi];if(o===v||o===driveCar)continue;
+      if(_spurKey(o.route)!==_spurKey(v.route))continue;
       /* ⚠️ Auf dem Zubringer nur gegen Wagen abstandhalten, die in DIESELBE
          Richtung fahren — der Gegenverkehr liegt auf der anderen Spur und
          wuerde den Wagen sonst grundlos ausbremsen. */
       if((v.route.axis==="radial"||v.route.axis==="stich")&&o.rdir!==v.rdir)continue;
       var gap=(o.pos-v.pos)*rd;
-      if(gap>0&&gap<7.5){v.pos=o.pos-rd*7.5;break;}}
+      /* ⚠️ AUF DEM RING LAEUFT `pos` UM. Wer gerade ueber die Naht gefahren ist, hat
+         eine kleine Bogenlaenge, der Hintermann eine grosse — der Abstand wird dann
+         stark negativ und der Vordermann uebersehen. Der Umlauf holt ihn zurueck. */
+      if(v.route.axis==="ring"){var U2=6.283185*v.route.r;gap=((gap%U2)+U2)%U2;}
+      if(gap>0&&gap<7.5){v.pos=o.pos-rd*7.5;v._bremst=true;break;}}   /* Notbremse */
     var px,pz,fx=0,fz=0;
     // Modell-Vorderachse ist +x -> Rotation entsprechend (vorher 90° verdreht = seitwaerts)
     if(v.route.axis==="ring"){
@@ -4665,7 +4705,11 @@ function updVerkehr(dt){
     else if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
     else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?-Math.PI/2:Math.PI/2;}
     if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
-      var opK=nn?1:0,opH=nn?0.85:0;
+      /* 🔴 BREMSLICHT. Gemessen war die Heck-Deckkraft ueber sechs Proben immer 0 —
+         die Lichter gab es (26 von 26 Wagen), sie schalteten nur nachts mit und sonst
+         nie. Wer vor einem anderen abbremst, zeigt das jetzt auch am Tag; das macht
+         den neuen Sicherheitsabstand ueberhaupt erst sichtbar. */
+      var opK=nn?1:0,opH=v._bremst?1:(nn?0.85:0);
       for(var li=0;li<2;li++){var sd=li?1:-1;
         v.kopf[li].position.set(px+fx*2.0+qx*0.55*sd,0.75,pz+fz*2.0+qz*0.55*sd);v.kopf[li].material.opacity=opK;
         v.heck[li].position.set(px-fx*2.0+qx*0.55*sd,0.7,pz-fz*2.0+qz*0.55*sd);v.heck[li].material.opacity=opH;}}});
