@@ -10,7 +10,10 @@ def gql(q,v=None):
             if "data" in d: return d
         except Exception: pass
         time.sleep(3)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Der Aufrufer kann ein leeres Dict nicht von
+    # einer geglueckten Mutation ohne userErrors unterscheiden und quittiert dann Arbeit,
+    # die nie stattfand. Lauter Abbruch statt stiller Rueckgabe.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 def fetch(url):
     try:
         r=subprocess.run(["curl","-sL","--max-time","25",url.split("?")[0]],capture_output=True)

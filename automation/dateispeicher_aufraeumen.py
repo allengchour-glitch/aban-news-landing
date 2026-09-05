@@ -86,7 +86,10 @@ def gql(q, v=None, tries=25):
         except Exception as ex:
             sys.stderr.write(f'  ⚠️ {ex}\n')
         time.sleep(3)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Der Aufrufer kann ein leeres Dict nicht von
+    # einer geglueckten Mutation ohne userErrors unterscheiden und quittiert dann Arbeit,
+    # die nie stattfand. Lauter Abbruch statt stiller Rueckgabe.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 
 
 # ⚠️ Kosten klein halten: 10x10 statt 25x25. Der Shopify-Eimer (2000, +100/s) wird von den

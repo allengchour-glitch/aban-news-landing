@@ -68,6 +68,20 @@ Schluessel IST dieses Token (Lehre 30.08.).
   noch zu klein. **Zweite Fassung derselben Lehre an einem Abend: ein Suchmuster taugt zum Sieben,
   nicht zum Zaehlen** — die Wache sucht jetzt nach der GEFAHR (stiller Helfer), nicht nach einem Wort.
   Alle 15 gehaertet, Gegenprobe: «kein Schreib-Werkzeug kehrt bei Misserfolg still zurueck».
+- ⛔ **Und dann fand sie 24 WEITERE — weil ihre eigene Mutationsliste zu kurz war.** Sie kannte
+  `productUpdate` und Verwandte, aber nicht `productReorderMedia`, `metafieldsSet`,
+  `collectionUpdate`, `menuUpdate`, `themeFilesUpsert`, `refundCreate` … Darunter waren
+  `hauptbild_ohne_text` (taeglicher Waechter) und `neuheiten_rotation` — **ein Werkzeug, das ich
+  am selben Tag selbst gebaut hatte**. **Dritte Fassung derselben Lehre an einem Abend: ein
+  Suchmuster taugt zum Sieben, nicht zum Zaehlen.** Wer eine Mutation ergaenzt, ergaenzt sie in
+  der Wache — sonst waechst eine neue blinde Klasse nach. Alle 24 gehaertet, Gegenprobe sauber.
+- ✅ **Gegenprobe zum Erstbilder-Workflow, und sie faellt beruhigend aus:** Er lief ueber zwei
+  Stunden und der Zugang starb mittendrin; 33 Ledger-Zeilen wurden NACH 20:36 committet. Neun
+  sagen ausdruecklich «per MCP, Admin-Token tot» — diese Agenten haben den Ausfall bemerkt und den
+  Konnektor genommen. Die uebrigen sind ebenfalls echt: `urlopen` **wirft** bei 401, der Helfer
+  erschoepfte seine Versuche, und der Aufrufer beendete sich mit `sys.exit(1)` **ohne** Ledger-Zeile.
+  Die spaeteren Commit-Zeiten sind nur der gebuendelte Auto-Committer. **Eine Commit-Zeit ist kein
+  Schreibzeitpunkt** — und ein Verdacht gehoert am Code geprueft, bevor man ein Ledger aufraeumt.
 - ⚠️ **Ein Fehlalarm auf dem Weg, den ich fast gemeldet haette:** Die Startseite antwortete
   5× hintereinander zu 40 % mit **HTTP 500**, und ich war beim Satz «die Haustuer ist kaputt».
   Sechs Abrufe spaeter: **6/6 = 200**, ebenso zwei Kollektionsseiten. Es war der kalte Edge-Cache

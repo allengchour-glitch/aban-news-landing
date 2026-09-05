@@ -31,7 +31,10 @@ def gql(q, v=None):
         if d.get("data") is not None:
             return d
         time.sleep(2 + 2 * i)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Der Aufrufer kann ein leeres Dict nicht von
+    # einer geglueckten Mutation ohne userErrors unterscheiden und quittiert dann Arbeit,
+    # die nie stattfand. Lauter Abbruch statt stiller Rueckgabe.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 
 
 def main():
@@ -56,8 +59,11 @@ def main():
     r = gql('mutation($id:ID!,$m:[MoveInput!]!){productReorderMedia(id:$id,moves:$m){userErrors{message}}}',
             {"id": gid, "m": [{"id": ziel["id"], "newPosition": "0"}]})
     err = ((r.get("data") or {}).get("productReorderMedia") or {}).get("userErrors")
-    if err or not r:
-        print("FEHLER:", err or "keine Antwort"); sys.exit(1)
+    # ⚠️ 05.09.2026: `not r` genuegt NICHT — eine Antwort mit `errors` und `data:null` (tote
+    # Anmeldung) ist truthy, `userErrors` ist dann None, und der Lauf haette quittiert, ohne
+    # dass ein Bild bewegt wurde. Quittiert wird nur gegen eine Antwort MIT `data`.
+    if err or not r or r.get("errors") or (r.get("data") or {}).get("productReorderMedia") is None:
+        print("FEHLER:", err or r.get("errors") or "keine Antwort"); sys.exit(1)
     with open(LEDGER, "a") as f:
         f.write(f"{gid.split('/')[-1]}\tbild-{pos}-nach-vorn\t{grund}\n")
     print(f"OK: {p['title'][:50]} → Bild {pos} nach vorn ({grund})")

@@ -38,7 +38,10 @@ def gql(q, v=None):
             return d
         ts = (d.get("extensions") or {}).get("cost", {}).get("throttleStatus") or {}
         time.sleep(max(2, (d["extensions"]["cost"].get("requestedQueryCost", 60) - ts.get("currentlyAvailable", 0)) / 50 + 1) if ts else 2 + 2 * i)
-    return {}
+    # ⚠️ 05.09.2026: Hier stand `return {}`. Der Aufrufer kann ein leeres Dict nicht von
+    # einer geglueckten Mutation ohne userErrors unterscheiden und quittiert dann Arbeit,
+    # die nie stattfand. Lauter Abbruch statt stiller Rueckgabe.
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
 
 
 Q = '''query($q:String!){products(first:60,query:$q,sortKey:CREATED_AT,reverse:true){

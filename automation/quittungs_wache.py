@@ -17,8 +17,17 @@ gelesen. MELDET NUR, aendert nichts.
 import os, re, sys
 
 ORDNER = os.path.dirname(os.path.abspath(__file__))
+# ⚠️ 05.09.2026: Diese Liste war beim ersten Anlauf zu kurz — `erstbild_nach_vorn.py` schreibt
+# ueber `productReorderMedia` und fiel deshalb durch. Dritte Fassung derselben Lehre an einem
+# Abend: ein Suchmuster taugt zum Sieben, nicht zum Zaehlen. Wer eine Mutation ergaenzt, ergaenzt
+# sie HIER — sonst waechst eine neue blinde Klasse nach.
 MUTATION = re.compile(r'productUpdate|productVariantsBulkUpdate|tagsAdd|tagsRemove|'
-                      r'publishablePublish|publishableUnpublish|productOptionUpdate')
+                      r'publishablePublish|publishableUnpublish|productOptionUpdate|'
+                      r'productReorderMedia|productCreateMedia|productDeleteMedia|'
+                      r'metafieldsSet|metafieldsDelete|collectionUpdate|collectionAddProducts|'
+                      r'collectionReorderProducts|menuUpdate|urlRedirectCreate|urlRedirectUpdate|'
+                      r'pageUpdate|pageCreate|articleUpdate|themeFilesUpsert|productCreate|'
+                      r'productSet|inventory\w*Update|discount\w*Create|refundCreate|draftOrder\w+')
 HELFER = re.compile(r'(?ms)^def (?:s?gql|shop_gql|api)\(.*?(?=^\S|\Z)')
 
 
