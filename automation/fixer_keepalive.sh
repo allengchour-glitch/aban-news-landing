@@ -209,11 +209,24 @@ while true; do
     _api=000
   fi
   if [ "$_api" != "200" ]; then
-    echo "$(date -u +%H:%M) ⛔ SHOPIFY ANTWORTET NICHT (HTTP $_api) — Waechter werden NICHT gestartet."
-    echo "$(date -u +%H:%M)    Grund pruefen: Custom-App installiert? Token erneuerbar? Danach laeuft alles von selbst weiter."
+    # ⚠️ Nicht bei JEDER Runde melden: alle 2 Minuten dieselbe Zeile sind ueber Nacht ~700
+    # Wiederholungen, und eine Meldung, die sich staendig wiederholt, liest niemand mehr
+    # (Lehre 29.08.). Voll melden beim ERSTEN Mal und danach hoechstens alle 30 Minuten.
+    _jetzt=$(date -u +%s); _letzt=$(cat /tmp/_api_tot_gemeldet 2>/dev/null || echo 0)
+    case "$_letzt" in ''|*[!0-9]*) _letzt=0;; esac
+    if [ $((_jetzt - _letzt)) -ge 1800 ]; then
+      echo "$(date -u +%H:%M) ⛔ SHOPIFY ANTWORTET NICHT (HTTP $_api) — Waechter werden NICHT gestartet."
+      echo "$(date -u +%H:%M)    Grund pruefen: Custom-App installiert? Token erneuerbar? Danach laeuft alles von selbst weiter."
+      echo "$_jetzt" > /tmp/_api_tot_gemeldet
+    fi
     [ -x "$REPO/automation/autocommit.sh" ] && bash "$REPO/automation/autocommit.sh" >/dev/null 2>&1
     sleep 120
     continue
+  fi
+  # Erholung ausdruecklich melden — sonst merkt niemand, dass es wieder laeuft.
+  if [ -f /tmp/_api_tot_gemeldet ]; then
+    echo "$(date -u +%H:%M) ✅ Shopify antwortet wieder — Waechter laufen weiter."
+    rm -f /tmp/_api_tot_gemeldet
   fi
 
   # ── MOTOREN SELBST AM LEBEN HALTEN (29.08.2026) ─────────────────────────────────────
