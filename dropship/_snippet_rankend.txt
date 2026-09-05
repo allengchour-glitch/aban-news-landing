@@ -1246,3 +1246,55 @@ automatischer-schwenkventilator-fur-kinderwage-638500	Dieser tragbare Ventilator
 15447623139713	Der Naicai Kissenbezug aus Lammwolle bringt Gemütlichkeit und Stil in Ihr Zuhause. Hergestellt aus hochwertiger Lammwolle.
 15447623303553	Dieses Zierkissen aus einer hochwertigen Baumwoll-Leinen-Mischung bringt mit seinem floralen Design eine natürliche Note in Ihr Zuhause.
 15447623467393	Dieses 2er-Set Zierkissen verleiht Ihrem Zuhause eine spielerische und zugleich luxuriöse Note. Zwei Kissen im Mass 35x35 cm.
+15447623696769	Dieser Baumwoll-Kissenbezug im Homestay-Stil bringt eine gemütliche Atmosphäre in Ihr Wohnzimmer. Masse von 45 cm, passend für gängige Sofakissen.
+15447623958913	Dieses kugelige Zierkissen im nordischen Stil ist eine stilvolle Ergänzung für jedes Zuhause. Kompakte Grösse von 30 x 30 cm.
+15447624188289	Dieses moderne, minimalistische Kissen aus hochwertigem holländischem Samt bereichert Ihr Zuhause mit Stil und Komfort. Masse: 45 x 45 cm.
+15447624417665	Dieser Kissenbezug im amerikanischen Stil bringt maritimes Flair in Ihr Zuhause. Masse: 45 × 45 cm (nur Kissenbezug).
+15447624548737	Dieses ergonomische Kopfkissen wurde speziell für die Anwendung auf Massageliegen entwickelt und bietet optimalen Komfort in Bauchlage.
+15447624810881	Das Cloud Bread Nackenkissen ist eine Wohltat für alle, die eine erholsame Nacht suchen. Grösse: 48x75 cm.
+15447625007489	Verschönern Sie Ihr Zuhause mit diesem modernen und schlichten Kissenbezug-Set. Set enthält 2 Kissenbezüge.
+15447625204097	Dieser Kissenbezug mit Ethno-Muster ist eine stilvolle Ergänzung für jedes Zuhause oder Büro. Masse von 45×45 cm, auch als 30×50 cm Variante erhältlich.
+15447625433473	Dieses rechteckige Kissen mit Hohlwebstruktur imitiert die Optik von Bambusgeflecht und bringt eine natürliche Note in Ihr Zuhause.
+15447625630081	Dieser moderne, minimalistische Kissenbezug aus Samt, verziert mit einem ansprechenden Rüschenmuster, ist eine stilvolle Ergänzung für jedes Zuhause.
+15447625793921	Dieses 2er-Set Kissenbezüge im koreanischen Stil bringt schlichte Eleganz in Ihr Schlafzimmer. Masse pro Kissenbezug: 48x74 cm.
+15447625957761	Dieser Kissenbezug vereint den Charme des Landhausstils mit hochwertigen Materialien. Masse: 48 x 74 cm.
+15447626219905	Dieses 4-teilige Haarbürsten-Set wurde für den professionellen Salon-Gebrauch entwickelt und eignet sich ideal für die tägliche Haarpflege zu Hause.
+15447626449281	Dieser professionelle Haartrockner mit 2200W Leistung sorgt für schnelles und schonendes Trocknen. Hitzebeständiges und flammhemmendes Nylon-Gehäuse.
+15447626678657	Dieser professionelle Keramik-Haarglätter ist Ihr idealer Begleiter für schnelles und effizientes Haarstyling. 30 Sekunden Aufheizzeit.
+15447626875265	Diese Glättbürste ist perfekt für alle, die sich eine schnelle und unkomplizierte Lösung für glattes Haar wünschen. Leistungsstarke 40 Watt.
+15447627137409	Dieses kabellose 2-in-1 Mini-Glätteisen ist perfekt für unterwegs und ermöglicht Ihnen, Ihre Frisur jederzeit aufzufrischen.
+15447627334017	Kreieren Sie mühelos grosse, schwungvolle Locken, ohne Ihr Haar zu schädigen. 32mm Durchmesser für grosse Locken.
+15447627497857	Dieser professionelle und faltbare Haartrockner ist ideal für den täglichen Gebrauch zu Hause. Faltbares Design für einfache Lagerung und Reisen.
+15447627760001	Der kabellose Spliss-Trimmer wurde entwickelt, um langes Haar zu pflegen und Spliss effektiv zu entfernen.
+15447627989377	Dieser hochwertige Massagekamm aus erlesenem grünem Sandelholz ist ein wahrer Wohltäter für Haar und Kopfhaut.
+15447628251521	Der kabellose Mini-Haarglätter und Lockenstab ist ein vielseitiges Styling-Tool für Männer. Kabelloser Betrieb dank Lithium-Akku.
+15447628480897	Der Glättende Haarkamm ist Ihr idealer Begleiter für geschmeidiges und glattes Haar.
+15447628710273	Diese innovative Föhn-Bürste vereint drei Funktionen in einem Gerät: Haare trocknen, locken und glätten. 3-in-1 Funktion: Trocknen, Locken und Glätten.
+15447628874113	Egal ob glatt, lockig oder wellig – mit diesem professionellen 3-in-1 Styling-Tool zaubern Sie im Handumdrehen vielseitige Frisuren.
+15447629103489	Dieser handliche Haarkamm mit Luftkissenfunktion aus hochwertigem Acetat ist ideal für die tägliche Haarpflege und eine sanfte Kopfhautmassage.
+15447629332865	Mit diesem praktischen Einweg-Haarfärbekamm bringen Sie im Handumdrehen bunte Akzente in Ihr Haar. Set mit 10 verschiedenen Haarfarben.
+15447629529473	Dieses vielseitige 2-in-1 Gerät ist perfekt für alle, die sowohl glattes Haar als auch Locken lieben. Nennleistung: 22–24 W.
+15447629758849	Dieser Lockenstab ist das perfekte Styling-Tool für Damen, die sich wunderschöne Locken oder eine dauerhafte Umformung wünschen. Nennleistung von 65 Watt.
+15447629955457	Der 5-in-1 Warmluftstyler ist Ihr vielseitiger Helfer für das Haarstyling zuhause. Leistung: 1000 W.
+15447630152065	Der elektrische Haarschneider KM-2293 ist ein vielseitiges Gerät für den allgemeinen Gebrauch. Wiederaufladbarer Akku für kabellose Nutzung.
+15447630348673	Dieser kabellose Glättkamm ist die ideale Lösung für schnelles und unkompliziertes Haarstyling zu Hause. Kabelloses Design für maximale Flexibilität.
+15447630512513	Der kabellose Keramik-Glättkamm ist Ihr idealer Begleiter für geschmeidiges, glattes Haar, egal wo Sie sind.
+15447630741889	Diese beheizbare Bürste bändigt und glättet Ihr Haar oder Ihren Bart im Handumdrehen. Schnelle Aufheizzeit von 30 Sekunden.
+15447630872961	Dieser vollautomatische Lockenstab zaubert im Handumdrehen wunderschöne Locken. Leistung: 33W.
+15447631069569	Der automatische Lockenstab wurde speziell für langes Haar entwickelt und ermöglicht müheloses Styling.
+15447631298945	Dieser Haarglätter bringt Ihr Haar schnell in Form. Leistung: 44 W.
+15447631528321	Der automatische Spliss-Entferner ist ein kabelloses Gerät, das speziell für Frauen entwickelt wurde, um trockene, strapazierte und brüchige Haarspitzen …
+15447631724929	Der Belmaker B1 ist ein rotierender Keramik-Lockenstab mit einem 2,5 cm (1 Zoll) Durchmesser, der sich ideal für alle Haartypen eignet.
+15447631987073	Der tragbare Glätt- und Lockenstab bietet maximale Flexibilität für Ihr Haarstyling. Kabelloses Design mit Lithium-Akku.
+15447632150913	Dieses vielseitige 3-in-1 Styling-Tool vereint Lockenstab, Welleneisen und Glätteisen in einem Gerät.
+15447632347521	Diese intelligente Körperanalysewaage bietet präzise Messungen und eine umfassende Analyse Ihrer Körperzusammensetzung. Robustes 4 mm gehärtetes Glas.
+15447632576897	Dieses innovative 2-in-1-Gerät ermöglicht Ihnen müheloses Styling, egal ob Sie glattes Haar oder wunderschöne Locken wünschen.
+15447632740737	Dieser professionelle Haarglätter ist ideal für den Salongebrauch oder für anspruchsvolle Stylings zu Hause. Leistungsbereich von 40–65 W.
+15447632937345	Dieses vielseitige Massagegerät wurde entwickelt, um Ihre Hautpflege zu optimieren.
+15447633068417	Dieses kompakte und stilvolle 3-in-1 Gesichtsmassagegerät ist Ihr idealer Begleiter für die tägliche Hautpflege, ob zu Hause oder unterwegs.
+15447633330561	Dieser elektrische Ultraschall-Hautschrubber bietet eine 3-in-1-Lösung für Ihre Hautpflege.
+15447633822081	Dieses Katzenmöbelstück vereint Kratzbaum und Bett in einem minimalistischen Design.
+15447634477441	Diese Rattan-Kühlmatte bietet Ihrer Katze an warmen Tagen einen angenehmen Rückzugsort. Robustes Holzmaterial.
+15447634706817	Dieser festliche Katzen-Kratzbaum in Form eines Weihnachtsbaums ist das ideale Geschenk für Ihre Katze. Integrierter Sisal-Kratzstamm.
+15447634903425	Dieses doppellagige Katzenbett bietet Ihrer Katze einen gemütlichen Rückzugsort mit viel Platz. Gewicht: ca. 6.5 kg.
+15447635329409	Dieser charmante Katzenbaum im niedlichen Wolken-Stil bietet Ihrer Katze den idealen Rückzugsort zum Ausruhen und Spielen.
