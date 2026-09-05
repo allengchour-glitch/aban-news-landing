@@ -22,3 +22,21 @@ gid://shopify/Product/15524971315585	2026-09-04	Damen-Mode
 gid://shopify/Product/15524701766017	2026-09-04	Uhren
 gid://shopify/Product/15523222651265	2026-09-04	Kopfhörer & Audio
 gid://shopify/Product/15524862099841	2026-09-04	Haustierwelt
+gid://shopify/Product/15525484134785	2026-09-05	Damen-Mode
+gid://shopify/Product/15524898668929	2026-09-05	Herren-Mode
+gid://shopify/Product/15421171859841	2026-09-05	Premium Schmuck
+gid://shopify/Product/15525265670529	2026-09-05	Uhren
+gid://shopify/Product/15525458149761	2026-09-05	Beauty & Pflege
+gid://shopify/Product/15525496848769	2026-09-05	Wohnen & Dekoration
+gid://shopify/Product/15525495308673	2026-09-05	Küche & Kochen
+gid://shopify/Product/15524888609153	2026-09-05	Elektronik & Technik
+gid://shopify/Product/15524866228609	2026-09-05	Haustierwelt
+gid://shopify/Product/15525488001409	2026-09-05	Kinder & Baby
+gid://shopify/Product/15525508841857	2026-09-05	Sport, Fitness & Outdoor
+gid://shopify/Product/15524864852353	2026-09-05	Taschen & Rucksäcke
+gid://shopify/Product/15524945789313	2026-09-05	Herren-Mode
+gid://shopify/Product/15525480333697	2026-09-05	Uhren
+gid://shopify/Product/15525498585473	2026-09-05	Wohnen & Dekoration
+gid://shopify/Product/15525497897345	2026-09-05	Küche & Kochen
+gid://shopify/Product/15524901028225	2026-09-05	Elektronik & Technik
+gid://shopify/Product/15524901028225	2026-09-05	Kopfhörer & Audio
