@@ -13,6 +13,17 @@ nicht mehr gelesen.
 
 ---
 
+> ### ✅ 05.09.2026 — vier Punkte per Konnektor selbst erledigt (Betreiber: «cowork sachen auch»)
+> - **1** TikTok «Wasserfest CH Juni» (CHF 30/Tag) → DISABLE; Konto 2 war schon aus. Wieder einschalten = ein Aufruf.
+> - **7** VIP-Flow «VIP Tier-Upgrade Welcome» → Entwurf (kein Programm, keine Kundin über CHF 500).
+> - **8** Klaviyo-Bestellbestätigung → Entwurf; Shopify bestätigt, Klaviyo fragt nach 7 Tagen nach der Bewertung.
+> - **17** Vier «Weekly billing audit»-Sitzungen archiviert. ⚠️ Die Routine dazu existiert in diesem Konto nicht
+>   mehr — der **Discord-Webhook bleibt DEIN Klick** (in Discord neu erzeugen).
+> - **Karteileichen:** Segment `VNybXM` (1'480 Profile, Muster `cj-import+…@luxestyle.ch`) steht bereit.
+>   `bulk_suppress` verlangt deine ausdrückliche Freigabe → **sag «unterdrücken»**, dann ist es ein Aufruf.
+> - ⚠️ Nebenfund: die **stündliche Keepalive-Routine war seit 03.09. 22:07 AUS** (von Hand pausiert), die
+>   2-h-Routine existiert nicht mehr → wieder EIN. Ohne sie bleibt nach jedem Container-Neustart alles stehen.
+
 ## 🆕 02.09.: Shopify-DATEI-SPEICHER IST VOLL — TikTok-Nachschub zum PC steht
 Seit dem 01.09. lehnt Shopify jeden Upload in die Dateien-Bibliothek ab
 (`FILE_STORAGE_LIMIT_EXCEEDED`, live belegt). Folgen: Die **TikTok-Queue und der

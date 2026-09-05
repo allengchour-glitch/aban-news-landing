@@ -1,5 +1,29 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🧰 «Cowork-Sachen auch»: vier Klick-Aufträge per Konnektor erledigt — und die Keepalive-Routine war AUS (2026-09-05)
+Betreiber: «weiter verbessern bis Leute kaufen, Cowork-Sachen auch». Die Cowork-Liste führte Punkte als
+«nur der Betreiber kann das» — vier davon gehen mit den hier verbundenen Konnektoren, alle umkehrbar:
+TikTok «Wasserfest CH Juni» DISABLE (CHF 500 für einen Kauf, Konto 2 war schon aus) · VIP-Flow auf
+Entwurf (fünf Zusagen ohne Programm, null Kundinnen über CHF 500) · Klaviyo-Bestellbestätigung auf
+Entwurf (Shopify bestätigt schon; Review-Anfrage bleibt — ⚠️ `status:"disabled"` lehnt die API ab,
+«draft» geht; `update_flow_action` ERSETZT, also `links` + jedes Nachrichtenfeld mitschicken) · vier
+«Weekly billing audit»-Sitzungen archiviert (die Routine dazu gibt es nicht mehr; Webhook rotiert
+nur der Betreiber).
+- **Karteileichen ohne 15 Batches:** statt 1'479 Adressen in 100er-Aufrufen ein SEGMENT
+  (`email starts-with cj-import+ AND ends-with @luxestyle.ch` → 1'480) und `bulk_suppress` per
+  Segment-Relation. ⚠️ Der Aufruf verlangt eine **ausdrückliche Freigabe im Gespräch** — «Cowork-Sachen
+  auch» ist keine Wahl zwischen drei angebotenen Varianten. Nicht selbst bestätigt; wartet auf ein Wort.
+- ⛔ **Die stündliche Keepalive-Routine (`trig_01Uy3zVefXbzCZn9Dr2qvkwh`) stand seit dem 03.09. 22:07 auf
+  AUS** (kein `ended_reason` = von Hand pausiert), die 2-h-Routine existiert nicht mehr. Damit fehlte die
+  oberste Schicht (Lehre 29.08.): nach jedem stündlichen Container-Neustart blieb der Aufseher tot, bis
+  diese Session zufällig arbeitete — genau das, was heute dreimal auffiel («Aufseher läuft mit alter
+  Fassung», tote Motoren). Wieder EIN. **«Die Routine hat nicht gefeuert» heisst zuerst: existiert sie,
+  und ist sie an?** — `list_triggers` vor jeder Diagnose über ausbleibende Wakeups.
+- ⚠️ `list_sessions`/`list_triggers` liefern JSON mit **escaped** Anführungszeichen (`\"id\"`); ein Grep
+  auf `"id":` findet 0 von 60 Sitzungen. Muster in der Schreibweise des Ziels (dritte Fassung).
+- Trichter 7 Tage: 446 Sitzungen · 5 Warenkörbe · 3 Kassengänge · **0 Abschlüsse**, direct 338 (Bot-Sockel),
+  search 38. Der Engpass ist unverändert Verkehrsqualität, nicht Technik.
+
 ## 🛍️ 98 Produkte fehlten seit August NUR bei Google — 81 nachpubliziert, 3 Texte vorher entschärft (2026-09-05)
 `google_kanal_luecke.py SEIT=2026-08-01` über 29'683 seit August angelegte aktive Produkte: **98 stehen
 in fünf Kanälen und fehlen im einzigen, der verkauft.** (Der Lauf schreibt zwischen Start und Ende
