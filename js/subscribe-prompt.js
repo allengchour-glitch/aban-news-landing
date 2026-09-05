@@ -13,6 +13,16 @@
     if (seen && (Date.now() - parseInt(seen, 10)) < DAYS * 864e5) return;
   } catch (e) { /* localStorage blocked -> show once per page load */ }
 
+  /* ⚠️ KEIN POPUP AUF VERKAUFSSEITEN (gemessen 2026-09-05 auf beratung.html: nach 8 s
+     legte sich der Newsletter-Kasten ueber die Preise). Wer gerade eine Beratung fuer
+     CHF 290–990 oder ein Produkt anschaut, soll nicht zum Gratis-Newsletter umgelenkt
+     werden — das ist der teuerste Klick der Seite fuer den billigsten. Erkannt wird eine
+     Verkaufsseite an zwei Dingen: dem Pfad, oder einem Kauf-/Anfrage-Ziel im Inhalt. */
+  var pfad = (location.pathname || "").replace(/^\/+/, "");
+  var VERKAUF = /^(beratung|produkte|angebote|shop|vorlagen(-set)?|kurse?|workshops|ki-schnellstart|ki-compliance[a-z-]*|ki-sichtbarkeit-[a-z-]*|ki-audit|notfall-ordner|texte-service|founding|buch|premium-briefing|ki-tools-datensatz)\.html$/;
+  if (VERKAUF.test(pfad)) return;
+  if (document.querySelector('a[href*="buy.stripe.com"], a[href*="lemonsqueezy.com"], a[href^="#kaufen"], [data-aban-faq]')) return;
+
   var shown = false;
 
   function markSeen() {

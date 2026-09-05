@@ -90,4 +90,6 @@ _*.html
 #    nicht hinein. Nur die Vorlage der Konfiguration wird mitgeführt.
 buero/*
 !buero/konfig.example.json
+!reports/design/
+!reports/design/*.md
 _fehlprotokolle/

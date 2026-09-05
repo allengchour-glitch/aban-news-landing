@@ -29,6 +29,7 @@ import html
 import json
 import os
 import re
+import subprocess
 import sys
 from datetime import date, timedelta
 
@@ -124,7 +125,80 @@ tr.summe td{border-top:2px solid #1f2937;border-bottom:0;font-weight:800;font-si
 .zahlung b{color:#b45309}
 .fuss{margin-top:26px;padding-top:10px;border-top:1px solid #ece3d4;font-size:10.5px;color:#6b7280}
 .notiz{margin-top:14px;font-size:12.5px;white-space:pre-line}
-@media print{body{padding:0}}"""
+@media print{body{padding:0}}
+.zt{width:210mm;height:105mm;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;color:#000;background:#fff;display:flex;border-top:1px dashed #000;margin:26px -28px 0}
+.zt .es{width:62mm;padding:5mm;border-right:1px dashed #000;display:flex;flex-direction:column}
+.zt .zp{width:148mm;padding:5mm;display:grid;grid-template-columns:51mm 1fr;grid-template-rows:auto 1fr auto;column-gap:5mm}
+.zt h2{font-size:11pt;font-weight:bold;margin:0 0 3mm;line-height:1}
+.zt .k{font-size:6pt;font-weight:bold;line-height:1.2;margin-top:2.5mm}.zt .v{font-size:8pt;line-height:1.2}
+.zt .zp .k{font-size:8pt}.zt .zp .v{font-size:10pt}
+.zt .es .betrag{display:flex;gap:6mm;margin-top:auto}.zt .es .annahme{text-align:right;font-size:6pt;font-weight:bold;margin-top:4mm;height:18mm}
+.zt .qr{grid-column:1;grid-row:2;align-self:start}.zt .zp .betragz{grid-column:1;grid-row:3;display:flex;gap:8mm;margin-top:3mm}.zt .zp .rechts{grid-column:2;grid-row:1/4}.zt .zp h2{grid-column:1;grid-row:1}
+@media print{.zt{position:fixed;left:0;bottom:0;margin:0}}"""
+
+
+def qr_zahlteil(nr, kunde, total, cfg):
+    """Schweizer QR-Rechnung (Zahlteil + Empfangsschein) unter die Rechnung.
+
+    Die Nutzdaten kommen aus js/qr-rechnung.js — derselbe Rechenkern wie das Web-Werkzeug
+    (30 Prüfungen gegen den Standard), damit es hier nicht eine zweite, abweichende Wahrheit
+    gibt. Der Code selbst entsteht mit segno (pip install segno). Ohne IBAN, ohne Node oder
+    ohne segno: kein Zahlteil, die Rechnung bleibt wie bisher (IBAN + Mitteilung im Kasten)."""
+    iban = cfg.get("iban")
+    if not iban:
+        return ""
+    zeilen = kunde.splitlines()
+    # Zahler nur mitgeben, wenn die Adresse vollständig ist (Name + PLZ/Ort); der Standard
+    # verlangt sonst einen Fehler. Ein Kunde mit nur einem Namen bekommt ein leeres
+    # „Zahlbar durch"-Feld — das ist eine gültige QR-Rechnung, keine kaputte.
+    ganz = len(zeilen) >= 2
+    empf = {"iban": iban, "name": cfg.get("kontoinhaber", ABSENDER["name"]), "strasse": ABSENDER["strasse"],
+            "plzOrt": ABSENDER["ort"], "betrag": f"{total:.2f}", "waehrung": "CHF",
+            "zahlerName": zeilen[0] if ganz else "", "zahlerStrasse": zeilen[-2] if len(zeilen) >= 3 else "",
+            "zahlerPlzOrt": zeilen[-1] if ganz else "",
+            "refTyp": "SCOR", "referenz": "", "mitteilung": f"Rechnung {nr}"}
+    js = ("const Q=require(process.argv[1]);const d=JSON.parse(process.argv[2]);"
+          "d.referenz=Q.rfErzeugen(d.referenz||'');if(Q.istQrIban(d.iban)){d.refTyp='QRR';d.referenz=Q.qrrErzeugen(d.referenz);}"
+          "const p=Q.payload(d);if(!p.ok){console.error(p.fehler.join(' | '));process.exit(2);}"
+          "console.log(JSON.stringify({text:p.text,ref:d.refTyp==='QRR'?Q.qrrFormat(d.referenz):Q.rfFormat(d.referenz),iban:Q.ibanFormat(d.iban)}));")
+    empf["referenz"] = nr
+    try:
+        r = subprocess.run(["node", "-e", js, os.path.join(ROOT, "js", "qr-rechnung.js"), json.dumps(empf, ensure_ascii=False)],
+                           capture_output=True, text=True, timeout=20)
+        if r.returncode != 0:
+            print("  ⚠️  QR-Rechnung nicht möglich: " + (r.stderr.strip() or "Node-Fehler"))
+            return ""
+        nutz = json.loads(r.stdout)
+        import segno
+        qr = segno.make(nutz["text"], error="m")
+        svg = qr.svg_inline(scale=1, border=0, dark="#000")
+        n = qr.symbol_size(scale=1, border=0)[0]
+    except Exception as ex:  # segno fehlt, Node fehlt, ...
+        print(f"  ⚠️  QR-Rechnung nicht möglich: {ex}")
+        return ""
+    k = n / 2
+    kreuz = (f'<rect x="{k-3.5*n/46:.3f}" y="{k-3.5*n/46:.3f}" width="{7*n/46:.3f}" height="{7*n/46:.3f}" fill="#000"/>'
+             f'<rect x="{k-0.6*n/46:.3f}" y="{k-2.2*n/46:.3f}" width="{1.2*n/46:.3f}" height="{4.4*n/46:.3f}" fill="#fff"/>'
+             f'<rect x="{k-2.2*n/46:.3f}" y="{k-0.6*n/46:.3f}" width="{4.4*n/46:.3f}" height="{1.2*n/46:.3f}" fill="#fff"/>')
+    svg = svg.replace("</svg>", kreuz + "</svg>", 1).replace("<svg ", '<svg style="width:46mm;height:46mm" ', 1)
+    zahler = "<br>".join(e(z) for z in zeilen) if ganz else '<span style="display:inline-block;width:52mm;height:20mm;border:.5pt dashed #000"></span>'
+    konto = e(nutz["iban"]) + "<br>" + e(empf["name"]) + "<br>" + e(ABSENDER["strasse"]) + "<br>" + e(ABSENDER["ort"])
+    return f"""
+<div class="zt" aria-label="QR-Rechnung: Zahlteil und Empfangsschein">
+  <div class="es"><h2>Empfangsschein</h2>
+    <div class="k">Konto / Zahlbar an</div><div class="v">{konto}</div>
+    <div class="k">Referenz</div><div class="v">{e(nutz['ref'])}</div>
+    <div class="k">Zahlbar durch</div><div class="v">{zahler}</div>
+    <div class="betrag"><div><div class="k">Währung</div><div class="v">CHF</div></div><div><div class="k">Betrag</div><div class="v">{chf(total)}</div></div></div>
+    <div class="annahme">Annahmestelle</div></div>
+  <div class="zp"><h2>Zahlteil</h2>
+    <div class="qr">{svg}</div>
+    <div class="betragz"><div><div class="k">Währung</div><div class="v">CHF</div></div><div><div class="k">Betrag</div><div class="v">{chf(total)}</div></div></div>
+    <div class="rechts"><div class="k" style="margin-top:0">Konto / Zahlbar an</div><div class="v">{konto}</div>
+      <div class="k">Referenz</div><div class="v">{e(nutz['ref'])}</div>
+      <div class="k">Zusätzliche Informationen</div><div class="v">Rechnung {e(nr)}</div>
+      <div class="k">Zahlbar durch</div><div class="v">{zahler}</div></div></div>
+</div>"""
 
 
 def blatt(art, nr, kunde, posten, datum, frist, notiz, cfg):
@@ -174,6 +248,7 @@ def blatt(art, nr, kunde, posten, datum, frist, notiz, cfg):
 </table>
 {zahlung}
 {f'<div class="notiz">{e(notiz)}</div>' if notiz else ''}
+{qr_zahlteil(nr, kunde, total, cfg) if art == "rechnung" else ""}
 <div class="fuss">{e(MWST_HINWEIS)}<br>Fragen zur {e(titel)} {e(nr)}? Eine Mail an {e(ABSENDER["mail"])} genügt.</div>
 </div></body></html>
 """

@@ -260,7 +260,7 @@ def render(s: dict, date: str, imgdir: Path, sub: str | None = None) -> str:
     if s["intro"]:
         H.append(f"<h1>{html.escape(s['intro'][:90])}</h1>" if len(s["intro"]) < 90
                  else f"<p style='font-size:1.1rem'>{html.escape(s['intro'])}</p>")
-    H.append("<h2>📰 Was heute zählt</h2>")
+    H.append("<h2>Was heute zählt</h2>")
     for i, u in enumerate(s["updates"]):
         img = optimize(make_visual(u["bild"] or u["headline"], f"update-{i+1}", imgdir,
                                    prefer="pexels" if i % 2 == 0 else "ai"))
@@ -278,16 +278,16 @@ def render(s: dict, date: str, imgdir: Path, sub: str | None = None) -> str:
         H.append("</div>")
     chart, csrc = build_chart(date, imgdir)
     if chart:
-        H.append("<h2>📊 In Zahlen</h2>")
+        H.append("<h2>In Zahlen</h2>")
         H.append(img_tag(rel_url(chart, sub), "Diagramm", 520))
         if csrc:
             H.append(f"<p class=cap>{html.escape(csrc)}</p>")
     if s["tiefer"]:
-        H.append("<h2>🔍 Tiefer geschaut</h2>" + paras(s["tiefer"]))
+        H.append("<h2>Tiefer geschaut</h2>" + paras(s["tiefer"]))
     if s["tool"]:
-        H.append("<div class=card><h2 style='margin-top:0'>🛠 Tool</h2>" + paras(s["tool"]) + "</div>")
+        H.append("<div class=card><h2 style='margin-top:0'>Tool</h2>" + paras(s["tool"]) + "</div>")
     if s["prompt"]:
-        H.append("<h2>💡 Prompt zum Kopieren</h2><div class=prompt><pre>"
+        H.append("<h2>Prompt zum Kopieren</h2><div class=prompt><pre>"
                  + html.escape(s["prompt"]) + "</pre></div>")
     if s["outro"]:
         H.append(paras(s["outro"]) + "<p>— Aban</p>")

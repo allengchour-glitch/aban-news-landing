@@ -70,6 +70,8 @@ PAGE = """<!DOCTYPE html>
 "offers":{"@type":"Offer","price":"29","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://abannews.com/ki-schnellstart.html"}}
 </script>
 <style>__CSS__</style>
+<script type="application/ld+json" data-aban-faq>{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Für wen ist der KI-Schnellstart gedacht?","acceptedAnswer":{"@type":"Answer","text":"Für Selbstständige und kleine Teams, die KI im Betrieb einführen wollen, aber weder Zeit für Experimente noch Lust auf Datenschutz-Risiken haben."}},{"@type":"Question","name":"Was ist drin?","acceptedAnswer":{"@type":"Answer","text":"Ein 30-Tage-Plan in vier Wochenblöcken, Datenschutz-Leitplanken als Checkliste, eine Tool-Auswahl-Hilfe und ein kurzes Team-Onboarding mit Richtlinie und ersten Prompts. Workbook und Checklisten kommen als bearbeitbare Dateien."}},{"@type":"Question","name":"Was kostet es?","acceptedAnswer":{"@type":"Answer","text":"__PREIS__ einmalig, sofort als Download. Die Abwicklung läuft über Lemon Squeezy oder Stripe, eine Rechnung ist inklusive."}},{"@type":"Question","name":"Wie lange dauert die Einführung?","acceptedAnswer":{"@type":"Answer","text":"30 Tage: Woche eins Orientierung und Datenschutz, dann erste Anwendungsfälle, dann Tools und Richtlinie, zuletzt verankern und messen."}},{"@type":"Question","name":"Ersetzt das eine Datenschutz- oder Rechtsberatung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Das Workbook gibt Leitplanken und Checklisten; Datenschutzfragen vor dem Einsatz fachkundig prüfen zu lassen, bleibt deine Aufgabe."}},{"@type":"Question","name":"Was, wenn wir kaum Zeit haben?","acceptedAnswer":{"@type":"Answer","text":"Dann erst recht nur ein bis zwei echte Abläufe verbessern. Der Plan ist darauf gebaut: lieber zwei Dinge richtig als zehn halb — er verspricht kein Wunder, sondern macht das Machbare machbar."}}]}</script>
+<style data-aban-faq>.faq h3{font-size:1.05rem;margin:18px 0 4px}.faq p{margin:0 0 6px}.faq h2{margin-bottom:6px}</style>
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt</a>
@@ -101,6 +103,14 @@ PAGE = """<!DOCTYPE html>
     <div class="warn">⚠️ <strong>Ehrlich:</strong> Ein Plan ersetzt nicht das Tun. KI bringt erst Nutzen, wenn ihr 1–2 echte Abläufe damit verbessert — der Schnellstart macht genau das machbar, verspricht aber kein Wunder.</div>
   </section>
   <section>
+<section id="faq" data-aban-faq class="faq"><div class="wrap"><h2>Häufige Fragen</h2>
+<h3>Für wen ist der KI-Schnellstart gedacht?</h3><p>Für Selbstständige und kleine Teams, die KI im Betrieb einführen wollen, aber weder Zeit für Experimente noch Lust auf Datenschutz-Risiken haben.</p>
+<h3>Was ist drin?</h3><p>Ein 30-Tage-Plan in vier Wochenblöcken, Datenschutz-Leitplanken als Checkliste, eine Tool-Auswahl-Hilfe und ein kurzes Team-Onboarding mit Richtlinie und ersten Prompts. Workbook und Checklisten kommen als bearbeitbare Dateien.</p>
+<h3>Was kostet es?</h3><p>__PREIS__ einmalig, sofort als Download. Die Abwicklung läuft über Lemon Squeezy oder Stripe, eine Rechnung ist inklusive.</p>
+<h3>Wie lange dauert die Einführung?</h3><p>30 Tage: Woche eins Orientierung und Datenschutz, dann erste Anwendungsfälle, dann Tools und Richtlinie, zuletzt verankern und messen.</p>
+<h3>Ersetzt das eine Datenschutz- oder Rechtsberatung?</h3><p>Nein. Das Workbook gibt Leitplanken und Checklisten; Datenschutzfragen vor dem Einsatz fachkundig prüfen zu lassen, bleibt deine Aufgabe.</p>
+<h3>Was, wenn wir kaum Zeit haben?</h3><p>Dann erst recht nur ein bis zwei echte Abläufe verbessern. Der Plan ist darauf gebaut: lieber zwei Dinge richtig als zehn halb — er verspricht kein Wunder, sondern macht das Machbare machbar.</p>
+</div></section>
     <p>Schon weiter? <a href="/ki-sichtbarkeit.html">Wirst du von KI gefunden?</a> · <a href="/shop.html">Branchen-Starter-Kits</a> · <a href="/start">Alles auf einen Blick</a></p>
   </section>
 <script src="/js/checkout-config.js"></script>
