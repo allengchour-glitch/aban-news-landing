@@ -73,3 +73,4 @@
 15412945355137	bild-2-nach-vorn	kontaktbogen-0509 uhren
 15448903647617	bild-4-nach-vorn	kontaktbogen-0509 uhren
 15448903844225	bild-2-nach-vorn	kontaktbogen-0509 uhren
+15448904597889	bild-7-nach-vorn	kontaktbogen-0509 uhren
