@@ -4,7 +4,7 @@
  * gpsStrasse kannte nur die Innenstadt, die Karte zeichnete weder Landstrasse noch Sued-Viertel.
  *
  * Checks:
- *  1. gpsStrasse kennt Ring (r 200), Meer-Sektor bleibt ausgespart
+ *  1. gpsStrasse kennt den Ring (r 200) rundum — seit dem Damm auch ueber dem Meer
  *  2. gpsStrasse kennt Zubringer + Freizeitpark-Verbinder, Wiese bleibt Wiese
  *  3. Route Marktplatz -> Freizeitpark (60,330) existiert, endet am Ziel,
  *     benutzt den Sued-Verbinder (Punkte auf x~60, z>220) und >50 % Strassen
@@ -46,7 +46,12 @@ const check = (name, gut, detail) => {
 /* 1+2: Strassen-Erkennung punktweise */
 const c30 = Math.cos(Math.PI / 6), s30 = Math.sin(Math.PI / 6)
 check('Ring Ost (0,200) ist Strasse', await S('strasse', 0, 200))
-check('Ring im Meer-Sektor (-200,0) ist KEINE Strasse', !(await S('strasse', -200, 0)))
+/* ⚠️ HIER STAND DAS GEGENTEIL. Bis 2026-09-05 galt der Meer-Sektor als "keine
+   Strasse", und der Test hat das richtig festgehalten — die Fahrbahn war dort
+   ausgespart. Nur fuhren die Ring-Wagen trotzdem hindurch und schwammen im
+   Wasser (spiele-dev/screenshots/r59/landstrasse-tag.png). Seit dem Damm ist der
+   Sektor befahrbar, und der Test prueft jetzt genau das. */
+check('Ring ueber dem Meer (-200,0) ist seit dem Damm Strasse', await S('strasse', -200, 0))
 check('Zubringer 30 Grad (r 160) ist Strasse', await S('strasse', c30 * 160, s30 * 160))
 /* ⚠️ PRUEFPUNKTE AUS DER WELT, NICHT AUS DEM TEST. Hier standen (60,300) und
    (-40,-150) fest — beides Korridore aus einer frueheren Wegfuehrung. Nachdem der
