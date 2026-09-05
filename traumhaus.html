@@ -5903,12 +5903,23 @@ setTimeout(function baueGebaeude(){
         if(ny>=0)ii.push(vb0,vb0+1,vb0+2, vb0,vb0+2,vb0+3);
         else      ii.push(vb0,vb0+2,vb0+1, vb0,vb0+3,vb0+2);
       }
-      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0;
+      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0, _damm=[];
       for(var i=0;i<N;i++){
         var a0=i/N*6.283, a1=(i+1)/N*6.283;
-        /* Meer aussparen: im Westen liegt bei r 200 offenes Wasser. */
+        /* 🌊 DAMM STATT LUECKE. Bisher stand hier `continue`: im Westen liegt bei
+           r 200 offenes Wasser, und die Fahrbahn wurde dort einfach weggelassen.
+           Die grosse Karte zeichnete die Luecke sogar korrekt ein — nur die
+           Ring-ROUTEN wussten nichts davon und fuhren den vollen Kreis. Im Bild
+           (spiele-dev/screenshots/r59/landstrasse-tag.png) schwammen darum zwei
+           Autos auf dem offenen Meer.
+           Die Wagen sitzen auf einer FESTEN Hoehe (`v.homeY`) — eine erhoehte
+           Bruecke wuerde sie in der Luft oder im Deck fahren lassen. Ein Damm auf
+           Fahrbahnhoehe braucht dagegen keinen Eingriff am Fahrzeug. Die Wellen
+           reichen gemessen bis y = -0,016 (Grundhoehe -0,04, gedaempfte Amplitude
+           0,024); der Belag auf 0,012 liegt knapp 3 cm darueber, also kein
+           Flimmern zwischen Wasser und Asphalt. */
         var mx=Math.cos((a0+a1)/2)*R, mz=Math.sin((a0+a1)/2)*R;
-        if(mx<-118&&Math.abs(mz)<184)continue;
+        if(mx<-118&&Math.abs(mz)<184)_damm.push([a0,a1]);
         [[a0,-1],[a0,1],[a1,1],[a1,-1]].forEach(function(P){
           pos.push(Math.cos(P[0])*(R+P[1]*HB),0.012,Math.sin(P[0])*(R+P[1]*HB));});
         idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;   // Wicklung: Vorderseite nach OBEN
@@ -5971,6 +5982,45 @@ setTimeout(function baueGebaeude(){
       window._zubringer=ZUB;
       mesh(pos,idx,betMat(0x4a4a53,0.92));
       mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));
+      /* 🌊 DAMMFLANKE UND BRUESTUNG. Ein Asphaltband, das auf dem Wasser liegt,
+         sieht aus wie ein Fehler. Zwei Teile machen daraus einen Damm: eine
+         Steinboeschung, die von der Fahrbahnkante schraeg ins Wasser laeuft (sie
+         gibt dem Band Dicke und verdeckt die Wasserlinie), und eine niedrige
+         Bruestung als Absturzsicherung. Auf dem Damm gibt es weder Kies-Bankett
+         noch Leitpfosten — beide bleiben ausgespart, die Bruestung tritt an ihre
+         Stelle. */
+      (function dammBau(){
+        if(!_damm.length)return;
+        var fp=[],fi=[];
+        _damm.forEach(function(D){
+          var c0=D[0],c1=D[1];
+          [-1,1].forEach(function(sd){
+            function pk(cc,br,hh){return [Math.cos(cc)*(R+sd*br),hh,Math.sin(cc)*(R+sd*br)];}
+            quadOben(fp,fi, pk(c0,HB,0.010), pk(c0,HB+3.4,-0.95),
+                            pk(c1,HB+3.4,-0.95), pk(c1,HB,0.010));});
+        });
+        mesh(fp,fi,betMat(0x7d7566,0.98));
+        /* Die Bruestung als InstancedMesh geschlossener Kaesten: eine offene
+           Flaeche haette bei senkrechter Wand keine eindeutige Wickelrichtung
+           (quadOben rechnet sie aus der y-Komponente aus, die hier 0 ist). */
+        var bg=new THREE.BoxGeometry(1,0.55,0.22),
+            bm=new THREE.MeshStandardMaterial({color:0xbdb7a8,roughness:0.85});
+        var bi2=new THREE.InstancedMesh(bg,bm,_damm.length*2);
+        var Mb=new THREE.Matrix4(),Qb=new THREE.Quaternion(),
+            Pb=new THREE.Vector3(),Sb=new THREE.Vector3(1,1,1),nb=0;
+        var EU=new THREE.Euler();
+        _damm.forEach(function(D){
+          var cm=(D[0]+D[1])/2, ln=Math.abs(D[1]-D[0])*R*1.02;
+          [-1,1].forEach(function(sd){
+            Pb.set(Math.cos(cm)*(R+sd*(HB+0.4)),0.28,Math.sin(cm)*(R+sd*(HB+0.4)));
+            EU.set(0,-cm-Math.PI/2,0); Qb.setFromEuler(EU);   /* lokales X auf die Tangente */
+            Sb.set(ln,1,1);
+            bi2.setMatrixAt(nb++,Mb.compose(Pb,Qb,Sb));});
+        });
+        bi2.count=nb; bi2.instanceMatrix.needsUpdate=true;
+        bi2.frustumCulled=false; bi2.userData.nieAusblenden=1; scene.add(bi2);
+        window._dammBogen=_damm.length;
+      })();
       /* 🚧 BANKETT UND LEITPFOSTEN — das, was eine Asphaltbahn erst zu einer
          fertigen Landstrasse macht. Ohne Bankett endet der Belag als harte Kante
          im Gras; ohne Leitpfosten fehlt der Massstab entlang der Fahrbahn. */
@@ -13642,10 +13692,10 @@ function drawBigMap(){
   road(-78,-112,-78,112,10);road(78,-112,78,112,10);
   road(-112,-112,-112,112,9);road(112,-112,112,112,9);
   road(-232,-112,-232,112,0);
-  // 🛣️ Landstrasse (Ring r 200, Meer-Sektor 126°..234° ausgespart) + 6 Zubringer + Verbinder
-  var ct=S(0,0),D9=Math.PI/180;
+  // 🛣️ Landstrasse (Ring r 200, ueber dem Meer als Damm) + 6 Zubringer + Verbinder
+  var ct=S(0,0);
   c.lineWidth=Math.max(2,8*sc);
-  c.beginPath();c.arc(ct[0],ct[1],200*sc,234*D9,126*D9+6.283);c.stroke();
+  c.beginPath();c.arc(ct[0],ct[1],200*sc,0,6.283);c.stroke();   /* seit dem Damm geschlossen */
   for(var zb=0;zb<_GPS_ZUB.length;zb++){var zv=_GPS_ZUB[zb];
     road(zv[0]*118,zv[1]*118,zv[0]*204,zv[1]*204,8);}
   for(var vb9=0;vb9<_GPS_VERB.length;vb9++){var vv=_GPS_VERB[vb9];
@@ -13796,7 +13846,7 @@ function gpsStrasse(x,z){
   if(Math.abs(x)<118&&(Math.abs(z-118)<4.5||Math.abs(z+100)<4.5))return true;  // Ring waagrecht
   if(Math.abs(x)<4&&z>118&&z<150)return true;                                  // Seepark-Stich
   var rr=Math.hypot(x,z);                                                      // Landstrasse (Ring r 200)
-  if(Math.abs(rr-200)<5&&!(x<-118&&Math.abs(z)<184))return true;               // Meer-Sektor ausgespart
+  if(Math.abs(rr-200)<5)return true;                                           // seit dem Damm ein voller Rundkurs
   if(rr>116&&rr<205)for(var zi=0;zi<_GPS_ZUB.length;zi++){var w9=_GPS_ZUB[zi]; // 6 Zubringer (radial)
     if(Math.abs(-x*w9[1]+z*w9[0])<4.5&&x*w9[0]+z*w9[1]>116)return true;}
   for(var vi=0;vi<_GPS_VERB.length;vi++){var v9=_GPS_VERB[vi];                 // Viertel-Verbinder
