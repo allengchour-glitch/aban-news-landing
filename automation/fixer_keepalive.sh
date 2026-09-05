@@ -1030,7 +1030,12 @@ while true; do
   DSL=/tmp/dateispeicher.log
   if [ -f "$REPO/automation/dateispeicher_aufraeumen.py" ]; then
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/dateispeicher_aufraeumen.py"{n++} END{exit(n?0:1)}'; then
-      if ! grep -q "^Klasse vollstaendig durchlaufen" "$DSL" 2>/dev/null; then
+      # Tor auf dem ZUSTAND, nicht auf dem Log (05.09.): «Klasse vollstaendig durchlaufen» stand
+      # im Log vom Lauf UNTER dem Stichtag — das Log ist ein Zeugnis ueber die Vergangenheit.
+      # Das Skript selbst haelt in /tmp/dateispeicher_klassen_fertig.txt fest, welche Klasse
+      # OHNE Abkuerzung durch ist; erst wenn alle drei (KLASSEN-Standard im Skript) dort
+      # stehen, gibt es nichts mehr zu tun.
+      if [ "$(sort -u /tmp/dateispeicher_klassen_fertig.txt 2>/dev/null | grep -c .)" -lt 3 ]; then
         ( cd "$REPO" && setsid bash -c \
             "exec 9>/tmp/lock_dateispeicher.lock; flock -n 9 || exit 0; DRY=0 CAP=2500 PARALLEL=4 exec python3 automation/dateispeicher_aufraeumen.py" \
             >> "$DSL" 2>&1 9>&- & )
