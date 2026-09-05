@@ -40,3 +40,4 @@ gid://shopify/Product/15525498585473	2026-09-05	Wohnen & Dekoration
 gid://shopify/Product/15525497897345	2026-09-05	Küche & Kochen
 gid://shopify/Product/15524901028225	2026-09-05	Elektronik & Technik
 gid://shopify/Product/15524901028225	2026-09-05	Kopfhörer & Audio
+gid://shopify/Product/15525512544641	2026-09-05	Haustierwelt

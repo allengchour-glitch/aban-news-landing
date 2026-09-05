@@ -252,3 +252,74 @@
 15493251596673	wiederbelebt	outdoor-messer-mit-feststehender-klinge-626800	6.57	21.33
 15493251727745	wiederbelebt	edc-outdoor-messer-mit-d2-klinge-606000	6.42	21.48
 15493845778817	wiederbelebt	multifunktionsaxt-fur-outdoor-und-reise-604000	12.20	6.70
+15493846172033	wiederbelebt	multifunktionales-7-teiliges-kuchenmesser-set-612800	17.75	0.15
+15493846303105	wiederbelebt	damast-messer-mit-adlerklinge-627900	11.44	68.46
+15493846434177	wiederbelebt	outdoor-survival-seil-messer-628900	5.82	11.08
+15493846565249	wiederbelebt	aluminium-klappmesser-fur-camping-outdoor-618100	7.27	4.63
+15493855609217	wiederbelebt	damast-stahl-kochmesser-mit-edelholzgriff-610700	7.00	17.90
+15493855674753	wiederbelebt	japanisches-kochmesser-verschiedene-ausfuhrung-616900	8.43	4.47
+15493871731073	wiederbelebt	scharfes-mehrzweckmesser-fur-kuche-outdoor-606600	7.51	4.39
+15493872615809	wiederbelebt	multifunktions-campingmesser-mit-geschenkbox-954560	10.90	16.00
+15493931762049	keine-linie	geschmiedetes-haushalts-kuchenmesser-683200
+15495105708417	wiederbelebt	klappmesser-aus-d2-stahl-565568	6.96	12.94
+15495143489921	wiederbelebt	japanisches-kochmesser-fur-lachs-und-sushi-534528	11.94	9.96
+15495213941121	wiederbelebt	taktisches-outdoormesser-hohe-harte-951872	9.59	9.31
+15496230142337	wiederbelebt	damaststahl-vg10-sande-kochmesser-959232	11.31	40.59
+15496230306177	keine-linie	faltbares-outdoor-trainingsmesser-492800
+15496426783105	wiederbelebt	keramikmesser-set-5-teilig-mit-farbigen-griffe-566400	9.01	5.89
+15496427405697	wiederbelebt	g10-damast-kochmesser-67-lagen-257280	13.38	44.52
+15496520401281	keine-linie	mehrzweck-ausbeinmesser-blauwal-472000
+15496599994753	keine-linie	geschmiedetes-mehrzweck-ausbeinmesser-144000
+15497451110785	keine-linie	mcd71-manuell-geschmiedetes-tranchiermesser-889024
+15497474998657	wiederbelebt	kiryu-amber-damastmesser-harzgriff-100864	11.07	16.83
+15497524937089	wiederbelebt	schwingmesser-aus-edelstahl-172864	6.71	5.20
+15497591193985	wiederbelebt	muheloses-gemuseschneiden-mit-edelstahlklinge-704704	11.07	11.83
+15499899142529	wiederbelebt	wanderklinge-662592	7.53	12.37
+15499899961729	wiederbelebt	mini-survivalmesser-mit-fester-klinge-908672	7.29	37.61
+15500072092033	wiederbelebt	stahlmesser-591616	7.88	6.02
+15500073238913	keine-linie	outdoor-faltmesser-409280
+15500347179393	wiederbelebt	damastmesser-fur-japanische-kuche-438400	10.17	29.73
+15500348883329	wiederbelebt	stahlmesser-fur-fleisch-263808	8.93	3.97
+15500371755393	keine-linie	kochmesser-aus-edelstahl-035840
+15500507840897	wiederbelebt	longshui-pine-yi-geschmiedetes-kochmesser-745536	9.20	1.70
+15500508004737	wiederbelebt	faltmesser-aus-damaststahl-und-ebenholz-080896	6.49	70.41
+15500508135809	keine-linie	outdoor-survivalmesser-aus-chromstahl-637760
+15500508234113	keine-linie	survival-messer-fur-outdoor-camping-679488
+15500508397953	keine-linie	6-teiliges-kuchenmesser-set-mit-hammerschlagmu-027520
+15500508594561	wiederbelebt	robustes-klappmesser-fur-camping-survival-259520	7.71	4.19
+15500910100865	wiederbelebt	mcd135-mehrzweck-metzgermesser-038720	10.26	2.64
+15500925960577	wiederbelebt	6-teiliges-kuchenmesser-set-antihaftbeschichte-038080	17.34	4.56
+15500926189953	wiederbelebt	messer-mit-damaskus-laser-maserung-und-grunem-147200	5.58	5.32
+15500954993025	keine-linie	damast-survivalmesser-mit-kamelknochengriff-881536
+15500955320705	keine-linie	edelstahl-kochmesser-692992
+15500955451777	keine-linie	damaststahl-sashimi-messer-341632
+15500967838081	keine-linie	faltmesser-aus-stahl-981760
+15500967969153	wiederbelebt	handgeschmiedetes-damast-teemesser-341056	5.59	37.31
+15500968558977	keine-linie	sashimi-messer-mit-weidenklingen-852288
+15501383434625	wiederbelebt	damast-kuchenmesser-olivenholz-409920	6.28	18.62
+15501383598465	wiederbelebt	japanisches-damascus-fleischhackmesser-000896	8.28	13.62
+15501383795073	wiederbelebt	damasker-schneidmesser-736512	6.96	46.94
+15501847953793	wiederbelebt	damast-messer-set-mit-holzgriff-011968	7.54	17.36
+15501848347009	keine-linie	mini-faltmesser-fur-outdoor-620864
+15501848707457	keine-linie	mini-damascus-messer-111872
+15501849624961	keine-linie	damastmesser-mit-sandelholz-griff-733056
+15501901660545	wiederbelebt	damast-kuchenmesser-850816	8.27	14.63
+15502065107329	wiederbelebt	carbon-klappmesser-mit-hoher-harte-483520	6.60	11.30
+15502065467777	keine-linie	haushalts-hackmesser-longquan-kuche-075584
+15502065893761	wiederbelebt	outdoor-faltmesser-mit-g10-griff-013696	6.01	13.89
+15502066319745	wiederbelebt	multifunktionales-outdoor-messer-mit-walnussgr-442432	8.00	30.90
+15502066712961	wiederbelebt	multi-zweckmesser-227456	6.77	5.13
+15502067270017	wiederbelebt	knochen-und-allzweckmesser-set-028224	8.45	16.45
+15502265581953	wiederbelebt	longquan-knochenhackmesser-handgeschmiedet-749056	16.01	9.89
+15502265713025	wiederbelebt	dragon-s-descendant-knochenbeil-381184	21.75	34.15
+15502265909633	wiederbelebt	shui-shui-furong-knochenhackmesser-774080	20.82	34.08
+15502266139009	wiederbelebt	tiger-head-knochenbeil-595776	22.42	21.48
+15502266302849	wiederbelebt	flying-dragon-knochenhauer-messer-584256	17.08	43.82
+15502266597761	wiederbelebt	drachenkopf-hackbeil-aus-t10-stahl-059520	19.75	32.14
+15502266859905	wiederbelebt	knochenbeil-aus-manganstahl-und-palisander-446208	17.08	18.82
+15502266958209	wiederbelebt	knochenbeil-adlerkopf-aus-manganstahl-180992	17.08	18.82
+15502267154817	wiederbelebt	antihaft-hackmesser-fur-die-kuche-225024	19.75	12.14
+15502267384193	wiederbelebt	stahl-hackmesser-041664	15.74	24.16
+15502267449729	wiederbelebt	stahl-hackmesser-460416	15.74	29.16
+15502391181697	wiederbelebt	raptor-knochenbeil-751232	17.49	18.41
+15502391705985	wiederbelebt	fire-dragon-knochenbeil-148096	16.42	20.48
