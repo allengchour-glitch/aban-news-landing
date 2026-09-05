@@ -29,6 +29,31 @@ kuratiert wurde.** Damen-Mode, Neuheiten, Elektronik, Wohnen, Schmuck & Uhren, H
   supported`, was wie ein Punkteproblem aussieht und keines ist (`pointsInfo` steht trotzdem drin:
   remaining 22'087).
 
+- **Abends nachgemessen, und die Zahl ist besser als am Morgen:** Die 20 sichtbaren Reihen zeigen
+  **83 von 480 Karten mit Sterne-Badge (17 %)** — morgens waren es 23 von 187 (12 %), und davon
+  standen 21 in `bestseller`. Jetzt tragen auch Uhren 12/24, Querbeet 11/24, Schmuck & Uhren 6/24,
+  Wohnen · Handy · Gaming je 4/24. **Judge.me 1'953 → 2'727 an einem Tag (+774).**
+- ⛔ **Vier grosse Reihen stehen auf 0/24 — und das ist KEINE Lücke in unserer Arbeit:** Damen-Mode,
+  Sneaker, Elektronik & Technik, Blitzversand. Am Objekt geprüft sind dort **24 von 24 Produkten
+  bereits bei CJ gefragt worden**; der Lieferant hat für sie schlicht keine Kommentare. Diese Reihen
+  lassen sich mit CJ-Bewertungen NIE füllen. Wer dort Sterne will, muss die Reihe aus bewerteter
+  Ware kuratieren (wie `bestseller`) oder die Bewertungen anders beschaffen — mehr Import hilft nicht.
+- ⚠️ **Und die Messfalle, die mich fast eine Werkzeug-Änderung gekostet hätte:** Zwei Messungen der
+  Trefferquote je Warengruppe widersprachen sich um den Faktor 30 — aus den heutigen Import-Logs
+  **31 %** für Uhren, aus dem Ledger gerechnet **1 %**. Beide Zahlen stimmen für ihre Population:
+  Das Ledger führt auch die Anfragen aus MONATEN mit einem kaputten Importer (Stichwort
+  `resolvePid`-Rückfall 28.08., Drosselungs-Abbruch 28.08.) — dort kam nichts zurück, weil das
+  Werkzeug defekt war, nicht weil CJ nichts hatte. **Eine Trefferquote gilt nur für die
+  Werkzeug-Fassung, die sie erzeugt hat** (dieselbe Familie wie «eine Klassenzahl gilt nur für die
+  Form, mit der man gesucht hat»). Die Gegenprobe an NIE gefragten Produkten ist gebaut
+  (`automation/bewertungen_quote_probe.py`), lief aber ins leere CJ-Tagesbudget → nach dem Reset nachholen,
+  BEVOR `GRUPPEN` in `bewertungen_prio.py` angefasst wird. Die dortige Annahme «Schmuck ist eine
+  Hochquoten-Gruppe» ist bis dahin **unbelegt**.
+- **Die Tagesdecke ist gemessen:** Nach ~774 importierten Bewertungen war CJs Tagesbudget leer
+  (`16900500`). Mehr als grob 700–800 Bewertungen pro Tag gehen also nicht, egal wie viele
+  Kandidaten die Liste hat. ✅ Der Importer quittiert dabei korrekt NICHT («pid unbekannt und keine
+  Punkte → später erneut») — die Lehre vom 20.08. trägt.
+
 ## 🗂️ «Katalog, dass man alles sieht» + «Webseite top»: Raster, Regeln, Menü, 24 Audit-Befunde (2026-09-05)
 Betreiber: «den katalog viel besser machen und schöner und so das man alles sieht» und «webseite, top machen».
 Erst gemessen (Playwright-Geometrie, nicht Screenshot-Gefühl), dann geschrieben:

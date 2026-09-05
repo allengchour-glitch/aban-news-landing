@@ -29,7 +29,11 @@ SICHTBAR = ["hype-jetzt", "bestseller", "neu-eingetroffen", "blitzversand-highli
             "wohnen-dekoration", "fur-ihn", "schmuck-uhren", "schuhe-sneaker", "sub-baby-kids",
             "elektronik-technik", "handy-zubehoer", "gaming", "sub-haustier", "beauty-pflege",
             "auto-kfz-zubehoer", "querbeet", "sub-kueche", "uhren", "sub-taschen"]
-# Warengruppen mit gemessen hoher Kommentar-Quote bei CJ.
+# Warengruppen, bei denen CJ erfahrungsgemaess Kommentare hat.
+# ACHTUNG (05.09.): Diese Liste ist NICHT sauber gemessen. Die Quote aus dem Ledger ist
+# wertlos, weil das Ledger auch Anfragen eines KAPUTTEN Importers fuehrt (resolvePid-Rueckfall,
+# Drosselungs-Abbruch) — dort kam nichts zurueck, weil das Werkzeug defekt war. Vor jeder
+# Aenderung an GRUPPEN: automation/bewertungen_quote_probe.py an NIE gefragten Produkten laufen lassen.
 GRUPPEN = ["status:active AND product_type:Uhren", "status:active AND product_type:Schmuck",
            "status:active AND tag:kueche", "status:active AND tag:haustier"]
 
