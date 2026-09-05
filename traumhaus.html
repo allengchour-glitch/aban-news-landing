@@ -2794,6 +2794,9 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
        hinaus ins Gras. Sie endet jetzt exakt in der Eckenmitte; die Rundung macht
        die Eckscheibe. */
     var RGZ_N=-100,RGZ_S=118,RGX=112,RLEN=2*RGX,RTIEF=2*Math.abs(RGZ_N)+2*RGZ_S;
+    /* Der Verkehr muss wissen, wo dieser Asphalt endet — sonst faehrt er darueber
+       hinaus. Zahlen hier NICHT abschreiben, sondern durchreichen. */
+    window._ringGeo={n:RGZ_N,s:RGZ_S,x:RGX};
     strasseMesh(RLEN,9,0,RGZ_N);strasseMesh(RLEN,9,0,RGZ_S);
     strasseMesh(9,RGZ_S-RGZ_N,-RGX,(RGZ_N+RGZ_S)/2);strasseMesh(9,RGZ_S-RGZ_N,RGX,(RGZ_N+RGZ_S)/2);
     // Zubringer: Querstrassen-Enden an den Ring anschliessen
@@ -4117,7 +4120,7 @@ setTimeout(function baueVerkehr(){
         ? RAD_R0+((_pr+0.5)/_np)*(RAD_R1-RAD_R0)              // ueber die Laenge verteilen
         :(r.axis==="stich")
         ? ((_pr+0.5)/_np)*STICH.len                           // ueber den L-Weg verteilen
-        : -150+((_pr+0.5)/_np)*300+((i*37)%17)-8;
+        : -86+((_pr+0.5)/_np)*172+((i*37)%17)-8;   /* innerhalb des Asphalts, nicht ±150 */
       m.userData.nieAusblenden=true; /* 🩹 Schwarm-7: LOD registrierte Kleinteile der FAHRENDEN Wagen an ihrer Ladeposition — unterwegs verschwanden Raeder/Anbauteile */
       (function(){var s9=m.scale.x||1,sz9=new THREE.Vector3();b2.getSize(sz9);      /* Kontaktschatten, Modell-Einheiten */
         _blob(m,(sz9.x*0.52)/s9,(sz9.z*0.56)/s9,(b2.min.y+0.012)/s9);})();
@@ -4585,13 +4588,53 @@ function updLandbus(dt){
    Der Schluessel beschreibt darum die STRASSE, nicht das Objekt: Achse, Spurlage
    und Richtung. Bei Zubringer und Stich haengt die Richtung am Wagen (`rdir`), das
    prueft die Regel selbst. */
-function _spurKey(r){
+function _spurKey(v){
+  var r=v.route;
   if(!r)return "?";
-  if(r.axis==="x")return "x|"+r.z+"|"+r.dir;
-  if(r.axis==="z")return "z|"+r.x+"|"+r.dir;
+  /* Auf Gitterstrassen zaehlt STRASSE + Spurabstand + aktuelle Fahrtrichtung.
+     Die blosse Routen-Zahl reicht nicht mehr: seit die Wagen am Strassenende
+     wenden, wechselt ein Wagen die Spur auf die andere Seite der Mittellinie —
+     und liegt dort mit den Wagen der Gegenroute in EINER Spur. */
+  if(r.axis==="x"){var gx=_strGrenzen(r);return "x|"+gx.mitte+"|"+gx.versatz+"|"+v.rdir;}
+  if(r.axis==="z"){var gz=_strGrenzen(r);return "z|"+gz.mitte+"|"+gz.versatz+"|"+v.rdir;}
   if(r.axis==="ring")return "ring|"+r.r+"|"+r.dir;
   if(r.axis==="radial")return "radial|"+r.gr;
   return r.axis;}
+/* 🛣️ WO ENDET DIE STRASSE, UND WO LIEGT DIE SPUR?
+   GEMESSEN 2026-09-05 (20 Proben, Strahl von jedem Wagen nach unten): in 69 von
+   520 Faellen lag KEIN Asphalt unter dem Wagen — ein Viertel des Gitterverkehrs
+   fuhr durch die Landschaft. Der Grund stand in einer einzigen Zeile:
+
+     var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit ausserhalb der Sicht
+
+   Das stimmte, als drumherum nichts war. Inzwischen liegen dort Felder, Waldsaum,
+   Zubringer und die Landstrasse — "ausserhalb der Sicht" gibt es nicht mehr.
+   Der Asphalt endet bei x = ±RL/2 (±102) und bei z = -100 / +118; die Wagen liefen
+   bis ±152 bzw. ±126, also bis zu 50 m ins Gruene, und sprangen dort um.
+
+   Statt umzuspringen wenden sie jetzt am Strassenende — dasselbe, was die
+   Zubringer-Routen (`radial`) seit jeher tun. Beim Wenden wechselt der Wagen auf
+   die andere Seite der Mittellinie; darum wird die Spur aus MITTE + Versatz
+   gerechnet und nicht mehr fest in der Route hinterlegt.
+
+   ⚠️ Dabei kam eine zweite Sache heraus: die Route x = -109,5 (Richtung Sued) lag
+   auf der FALSCHEN Seite ihrer Mittellinie (-112). Nach der Hausregel — wer nach
+   Sueden faehrt, gehoert westlich der Mitte — muss sie bei -114,5 liegen. Das ist
+   dieselbe Spiegelung, die fuer die Nordstrasse schon einmal gefunden wurde. Die
+   Rechnung unten setzt sie nebenbei richtig. */
+function _strGrenzen(r){
+  var RG=window._ringGeo||{n:-100,s:118,x:112};
+  if(r.axis==="x"){
+    var mz=(r.z>0?1:-1)*(GH*CS/2+12);        /* Hauptstrassen-Mitte z = ±58 */
+    return {mitte:mz, versatz:Math.abs(r.z-mz), von:-RL/2+6, bis:RL/2-6};
+  }
+  /* z-Routen liegen entweder an den Querstrassen (±RX) oder an den senkrechten
+     Ringschenkeln (±RG.x). Der naehere der beiden ist die Mittellinie. */
+  var kandidat=[RX,-RX,RG.x,-RG.x], mx=kandidat[0];
+  for(var k=1;k<kandidat.length;k++)
+    if(Math.abs(r.x-kandidat[k])<Math.abs(r.x-mx))mx=kandidat[k];
+  return {mitte:mx, versatz:Math.abs(r.x-mx), von:RG.n+6, bis:RG.s-6};
+}
 function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
   verkehr.forEach(function(v){
@@ -4599,8 +4642,10 @@ function updVerkehr(dt){
     var _pv=v.pos;
     /* Auf dem Zubringer gilt nicht die feste Routenrichtung, sondern die
        aktuelle Fahrtrichtung des Wagens — er wendet an beiden Enden. */
-    if((v.route.axis==="radial"||v.route.axis==="stich")&&v.rdir===undefined)v.rdir=v.route.dir;
-    var rd=(v.route.axis==="radial"||v.route.axis==="stich")?v.rdir:v.route.dir;
+    /* Seit auch die Gitterstrassen am Ende gewendet werden, gilt fuer JEDEN Wagen
+       die eigene Fahrtrichtung. Bei Ring-Routen aendert sie sich nie. */
+    if(v.rdir===undefined)v.rdir=v.route.dir;
+    var rd=v.rdir;
     /* 🚦 ERST SCHAUEN, DANN FAHREN. Die Regel weiter unten schob den Wagen bei zu
        geringem Abstand einfach auf 7,5 m zurueck — ein Sprung. Gemessen sah man das
        am Bremslicht: nach dem Sprung betraegt der Abstand exakt 7,5 m, die Bedingung
@@ -4612,7 +4657,7 @@ function updVerkehr(dt){
        (Ampelhalt, Schranke, frisch gesetzte Wagen). */
     var _frei=1;
     for(var fi=0;fi<verkehr.length;fi++){var f=verkehr[fi];
-      if(f===v||f===driveCar||_spurKey(f.route)!==_spurKey(v.route))continue;
+      if(f===v||f===driveCar||_spurKey(f)!==_spurKey(v))continue;
       if((v.route.axis==="radial"||v.route.axis==="stich")&&f.rdir!==v.rdir)continue;
       var fg=(f.pos-v.pos)*rd;
       if(v.route.axis==="ring"){var U3=6.283185*v.route.r;fg=((fg%U3)+U3)%U3;}
@@ -4640,26 +4685,27 @@ function updVerkehr(dt){
     }else if(v.route.axis==="stich"){          // Achterbahn-Stich: Einmuendung <-> Vorplatz
       if(v.pos>STICH.len){v.pos=STICH.len;v.rdir=-1;rd=-1;}
       if(v.pos<0){v.pos=0;v.rdir= 1;rd= 1;}
-    }else{
-      var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht umkehren
-      if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
+    }else{                                     // Gitterstrassen: am Asphaltende wenden
+      var G9=_strGrenzen(v.route);
+      if(v.pos>G9.bis){v.pos=G9.bis;v.rdir=-1;rd=-1;}
+      if(v.pos<G9.von){v.pos=G9.von;v.rdir= 1;rd= 1;}
     }
     /* 🚦 Verkehrsregeln: an Rot/Gelb vor der Haltelinie stehen bleiben UND Abstand zum
        Vordermann halten. Vorher wurde die Position hart auf die Haltelinie geklemmt —
        Autos sprangen dadurch und fuhren ineinander. */
     if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&ampRed(v.route.axis)){
       var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?9.5:11;
-      for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-v.route.dir*off;
-        if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
+      for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-rd*off;
+        if(rd>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
         else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
     if(window._schrankenZu&&v.route.axis==="z"&&Math.abs(Math.abs(v.route.x)-RX)<3){
       /* Geschlossene Schranke: vor dem Uebergang bei z=112 anhalten */
-      var hl=v.route.dir>0?104:120;
-      if(v.route.dir>0){if(_pv<=hl&&v.pos>hl)v.pos=hl;}
+      var hl=rd>0?104:120;
+      if(rd>0){if(_pv<=hl&&v.pos>hl)v.pos=hl;}
       else{if(_pv>=hl&&v.pos<hl)v.pos=hl;}}
     for(var vi=0;vi<verkehr.length;vi++){        // Sicherheitsabstand auf derselben Spur
       var o=verkehr[vi];if(o===v||o===driveCar)continue;
-      if(_spurKey(o.route)!==_spurKey(v.route))continue;
+      if(_spurKey(o)!==_spurKey(v))continue;
       /* ⚠️ Auf dem Zubringer nur gegen Wagen abstandhalten, die in DIESELBE
          Richtung fahren — der Gegenverkehr liegt auf der anderen Spur und
          wuerde den Wagen sonst grundlos ausbremsen. */
@@ -4702,8 +4748,18 @@ function updVerkehr(dt){
       v.mesh.position.set(px,v.homeY,pz);
       v.mesh.rotation.y=Math.atan2(-fz,fx);
     }
-    else if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
-    else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?-Math.PI/2:Math.PI/2;}
+    else if(v.route.axis==="x"){
+      /* Rechtsverkehr: wer nach OSTEN faehrt (rd>0), gehoert suedlich der Mitte
+         (groesseres z). Nach dem Wenden liegt der Wagen darum auf der anderen Seite. */
+      var GX=_strGrenzen(v.route);
+      px=v.pos;pz=GX.mitte+rd*GX.versatz;fx=rd;
+      v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=rd>0?0:Math.PI;}
+    else{
+      /* Und quer dazu: wer nach SUEDEN faehrt (rd>0, wachsendes z), gehoert
+         westlich der Mitte (kleineres x). */
+      var GZ=_strGrenzen(v.route);
+      px=GZ.mitte-rd*GZ.versatz;pz=v.pos;fz=rd;
+      v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=rd>0?-Math.PI/2:Math.PI/2;}
     if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
       /* 🔴 BREMSLICHT. Gemessen war die Heck-Deckkraft ueber sechs Proben immer 0 —
          die Lichter gab es (26 von 26 Wagen), sie schalteten nur nachts mit und sonst
