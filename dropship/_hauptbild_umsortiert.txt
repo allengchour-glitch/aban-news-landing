@@ -44,3 +44,5 @@
 15448933368193	bild-2-nach-vorn	kontaktbogen-0509 sub-haustier
 15448937595265	bild-6-nach-vorn	kontaktbogen-0509 sub-haustier
 15448938348929	bild-6-nach-vorn	kontaktbogen-0509 sub-haustier
+15448647106945	bild-5-nach-vorn	kontaktbogen-0509 beauty-pflege
+15412433256833	bild-2-nach-vorn	kontaktbogen-0509 beauty-pflege
