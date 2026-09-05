@@ -2323,3 +2323,6 @@ gid://shopify/Product/15448802656641	bild-urls-tot
 gid://shopify/Product/15448802722177	bild-urls-tot
 gid://shopify/Product/15448802754945	bild-urls-tot
 gid://shopify/Product/15448802853249	bild-urls-tot
+gid://shopify/Product/15448802951553	bild-urls-tot
+gid://shopify/Product/15448803017089	bild-urls-tot
+gid://shopify/Product/15448803049857	bild-urls-tot
