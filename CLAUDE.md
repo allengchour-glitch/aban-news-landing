@@ -1,5 +1,27 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 📝 Zwei Ratgeber nach der Rizinusöl-Methode — dort schreiben, wo Nachfrage BELEGT ist (2026-09-05)
+Die eigene Aktenlage sagt: Suchverkehr ist der einzige Kanal, der verkauft, und was rankt, ist
+Text, den es sonst nirgends gibt. Semrush nennt die Begriffe, für die der Shop schon in den
+Top 100 steht — dort ist die Nachfrage belegt und die Ware vorhanden:
+| Ratgeber | Suchbegriff | Suchen/Mt. | Position vorher |
+|---|---|---:|---:|
+| `trinkbrunnen-katzen-groesse-material-ratgeber` | trinkbrunnen katze / für katzen | **2'600** | 46–48 |
+| `handstaubsauger-kaufen-saugkraft-akku-ratgeber` | handstaubsauger | **5'400** | 73 |
+- **Jeder Preis vor dem Schreiben LIVE geprüft**, jedes Produkt auf ACTIVE — ein Ratgeber mit
+  erfundener Ware ist die Phantom-Klasse vom 02.09. Das Werkzeug bricht ab, wenn ein Produkt
+  nicht aktiv ist, statt den Text ohne es zu schreiben.
+- **Keine Zahl, die der Produkttext nicht hergibt.** Beim Staubsauger sagt der Ratgeber
+  ausdrücklich, dass die Pa-Angabe der Hersteller nicht vergleichbar ist, statt eine Rangfolge
+  zu behaupten; beim Trinkbrunnen steht der Hinweis, dass ein Brunnen kein Medizinprodukt ist.
+- ⚠️ **Ein Handle aus einer gekürzten Ausgabe abgeschrieben — und diesmal hat die Wache es
+  gefangen.** `kabelloser-auto-staubsauger-mit-reifendruckmes-624` war auf 50 Zeichen
+  abgeschnitten; der exakte Handle-Vergleich (Lehre 02.09.) meldete «nicht aktiv» und der
+  Ratgeber wurde NICHT geschrieben. Genau dafür ist die Regel da.
+- ⚠️ Der Trinkbrunnen-Ratgeber nennt ausdrücklich, dass beim 3-Liter-Modell der **Ersatzfilter
+  als eigene Ausführung** wählbar ist — die Stelle, an der gestern noch ein Filter als «Farbe»
+  zum Brunnenpreis stand. Was man repariert hat, darf man auch erklären.
+
 ## 🔍 Wer die Suche öffnet, sah zuerst «052D Raketenzerstörer Modellbausatz» (2026-09-05)
 Beim Gegenlesen des neuen Katzen-Ratgebers standen im ausgelieferten HTML drei Produktlinks,
 die nichts mit dem Thema zu tun haben — alphabetisch ab Ziffer 0. **Der Reflex aus dem
