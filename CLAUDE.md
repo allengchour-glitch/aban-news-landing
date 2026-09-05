@@ -1,5 +1,28 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔍 Wer die Suche öffnet, sah zuerst «052D Raketenzerstörer Modellbausatz» (2026-09-05)
+Beim Gegenlesen des neuen Katzen-Ratgebers standen im ausgelieferten HTML drei Produktlinks,
+die nichts mit dem Thema zu tun haben — alphabetisch ab Ziffer 0. **Der Reflex aus dem
+Gedächtnis (04.09.) war «das ist der web-pixels-manager, also unsichtbar» — und diesmal stimmte
+er nicht.** Der Kontext gelesen: `class="resource-card__link"` mit Bild und Titel, im Container
+`data-testid="products-list-default--modal"` und `aria-expanded="true"`. Das ist der
+**Leerzustand des Such-Overlays**: was die Kundin sieht, sobald sie auf die Lupe klickt, bevor
+sie tippt. Dieselbe Klasse wie die Warenkorb-Empfehlung aus «all» (02.09.), nur an einer Stelle,
+die niemand je angesehen hatte.
+- Die Ursache steht in EINER Zeile von `snippets/predictive-search-empty-state.liquid`:
+  `assign collection = settings.empty_state_collection | default: collections.all`. Das Setting
+  war **gar nicht gesetzt**, also griff der Standard — der ganze Katalog in Handle-Reihenfolge.
+- Gesetzt auf `bestseller` (MANUAL, tägliche Rotation der Bewertungssieger). Live gegengeprüft:
+  jetzt «Heizjacke mit USB-Anschluss» und «Edelstahl-Uhr Herren klassisch». Backup
+  `theme_backup/settings_data.json.vor-suche-empty-0509`.
+- ⚠️ **Ein Theme-Setting, das in `settings_data.json` FEHLT, ist nicht «neutral» — es ist der
+  Schema-Standard.** Wer nur die gesetzten Werte liest, sieht die Hälfte; die andere Hälfte steht
+  als `default:` im Liquid. Dieselbe Denkfigur wie der Block, der im Theme steht und nie
+  ausgeliefert wird (29.08.) — nur in der Gegenrichtung.
+- ⚠️ Und die Prüfregel, die diesmal getragen hat: **Vor jedem Befund aus einem Seiten-Grep den
+  Kontext lesen — aber auch vor jedem NICHT-Befund.** «Kenne ich, ist Tracking» hätte den Fall
+  begraben.
+
 ## 👯 Zwei Importer, zwei Schreibweisen derselben Lieferanten-SKU — 129 bildgleiche Paare (2026-09-04, nachts)
 Der Bild-Hash-Wächter hat seinen Vollscan beendet: **129 bildgleiche Produktpaare**, kein
 einziges davon über Titel, Handle oder SKU auffindbar. Bei **13** liegt die Ursache offen da:
