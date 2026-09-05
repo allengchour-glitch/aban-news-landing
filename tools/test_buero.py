@@ -43,6 +43,8 @@ def main():
     tmp = tempfile.mkdtemp(prefix="buero-test-")
     os.makedirs(os.path.join(tmp, "tools"), exist_ok=True)
     shutil.copy(os.path.join(ROOT, "tools", "buero.py"), os.path.join(tmp, "tools", "buero.py"))
+    os.makedirs(os.path.join(tmp, "js"), exist_ok=True)
+    shutil.copy(os.path.join(ROOT, "js", "qr-rechnung.js"), os.path.join(tmp, "js", "qr-rechnung.js"))
 
     print("Test 1 — Offerte anlegen:")
     r = lauf("offerte", "--kunde", "Muster GmbH\\nBern", "--pos", "Audit:490", cwd=tmp)
@@ -93,6 +95,10 @@ def main():
     pruef("Mitteilung = Rechnungsnummer", "2026-003" in r3)
     m3 = open(os.path.join(tmp, "buero", "2026-003-rechnung-mail.txt"), encoding="utf-8").read()
     pruef("Mailtext nennt IBAN statt Warnung", "CH93" in m3 and "IBAN fehlt" not in m3)
+    pruef("Rechnung trägt einen QR-Zahlteil (Swiss QR Code + Empfangsschein)",
+          "Empfangsschein" in r3 and "<svg" in r3 and "Zahlteil" in r3, "braucht node + segno")
+    pruef("QR-Referenz aus der Rechnungsnummer (RF…)", re.search(r"RF\d{2} ", r3) is not None)
+    pruef("Offerte hat KEINEN Zahlteil", "Empfangsschein" not in open(os.path.join(tmp, "buero", "2026-001-offerte.html"), encoding="utf-8").read())
 
     print("\nTest 6 — Schweizer Schreibweise und Journal:")
     lauf("rechnung", "--kunde", "Gross AG", "--pos", "Projekt:12345.5", cwd=tmp)
