@@ -1011,3 +1011,4 @@ gid://shopify/Product/15524888445313	ok	Hundeleine wasserfest und schmutzabweise
 gid://shopify/Product/15524872126849	ok	Rucksack aus Rindsleder
 gid://shopify/Product/15524867113345	ok	Kettlebell aus Stahl für Krafttraining
 gid://shopify/Product/15525252399489	ok	Corgeut Automatikuhr mit Lederarmband
+gid://shopify/Product/15525482299777	ok	Armbanduhr mit Dualzeit-Anzeige
