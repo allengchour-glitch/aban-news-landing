@@ -12097,3 +12097,8 @@ gid://shopify/Product/15454035607937	CHF 24.59	1 Varianten	Männer-Multifunktion
 gid://shopify/Product/15454035673473	CHF 12.32	1 Varianten	Drahtloser Türsummer
 gid://shopify/Product/15454035706241	CHF 17.75	36 Varianten	Leichte, atmungsaktive Wanderschuhe für Herren
 gid://shopify/Product/15454035739009	CHF 16.68	1 Varianten	Retro-Tropfen-Uhr
+gid://shopify/Product/15454035771777	CHF 50.36	1 Varianten	18K-Gold Akoya-Perlen Armband
+gid://shopify/Product/15454035804545	CHF 15.85	1 Varianten	Lebensmittel-Vakuumiergerät
+gid://shopify/Product/15454035837313	CHF 20.25	12 Varianten	Frauen Plateau-Casual-Sneaker
+gid://shopify/Product/15454035870081	CHF 21.85	1 Varianten	Perlenarmband aus Süsswasserperlen
+gid://shopify/Product/15454035902849	CHF 18.32	1 Varianten	Infrarot-Alarm für Wandmontage
