@@ -24,3 +24,7 @@
 15447930831233	bild-8-nach-vorn	kontaktbogen-0509 sub-baby-kids
 15412447543681	bild-5-nach-vorn	kontaktbogen-0509 elektronik-technik
 15448852300161	bild-3-nach-vorn	kontaktbogen-0509 elektronik-technik
+15448852464001	bild-3-nach-vorn	kontaktbogen-0509 elektronik-technik
+15448872452481	bild-3-nach-vorn	kontaktbogen-0509 elektronik-technik
+15412447543681	bild-5-nach-vorn	kontaktbogen-0509 handy-zubehoer
+15412301922689	bild-3-nach-vorn	kontaktbogen-0509 handy-zubehoer
