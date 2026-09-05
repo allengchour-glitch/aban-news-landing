@@ -1,5 +1,69 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🧪 Fünf KI-Schlüssel im Chat — zwei antworten, und Groq ist jetzt KAPUTT statt repariert (2026-09-05)
+Betreiber: «webshop alles mit andere ki wo du hast kritik holen und verbessern» und dazu fünf Schlüssel
+(Grok, DeepSeek, Groq, OpenAI, Gemini). Alle in den Tresor «dienste» + `/tmp/dienste.env` geschrieben,
+DANN getestet — **falsche Reihenfolge, und sie hat gekostet:**
+| Dienst | Antwort |
+|---|---|
+| Grok (`grok-4`) · Gemini (`gemini-2.5-pro`) | **OK** |
+| DeepSeek | 402 Insufficient Balance |
+| OpenAI | 429 «no credits remaining» |
+| **Groq** | **401 Invalid API Key — 55 Zeichen, einer fehlt** |
+⛔ Der Queue-Runner hatte um 08:28 noch 20 ✅ mit dem ALTEN Groq-Schlüssel; den habe ich mit dem
+ungültigen überschrieben, und kein Prozess trägt ihn mehr. **Ein Schlüssel wird ZUERST getestet und
+DANN gespeichert — nie umgekehrt.** Bis der Betreiber ihn neu einfügt, fallen die Importer auf Gemini
+zurück (Schlüssel geprüft). Nebenbei `/tmp/github_pat.env` gelöscht (der PAT gehört ohnehin widerrufen).
+- **Kritik-Lauf** (`/tmp/kritik/lauf.py`, 7 Live-Seiten als Text, ~50 KB): 31 Befunde. **Verifiziert
+  ECHT (repariert):** «Jedes Produkt geprüft — Bilder & Angaben kontrolliert» im Vertrauensblock der
+  Startseite (Überzusage, jetzt «Angaben laufend geprüft · Preise, Bilder & Texte kontrolliert»); «direkt
+  ab Werk» als Beschönigung (Hero, Produkt-Lieferblock, Versandseite → «vom Hersteller in Asien»,
+  Backups `theme_backup/*.vor-ehrlich-0509`). **Verifiziert FALSCH:** «Trend-Produkte 2026 ist ein
+  Tippfehler» (beide Modelle halten 2025 für das aktuelle Jahr), «Über-uns-Seite fehlt» (stand nur hinter
+  der Navigation im Textauszug), «Angebotspreis = Normaler Preis» (Screenreader-Label, nicht sichtbar),
+  «No reviews» (Zitat steht in keinem der Texte — erfunden). **Eine KI-Kritik ist ein Hinweis, kein
+  Beleg: ihr Jahr, ihre Zitate und ihre «fehlt»-Aussagen gehören einzeln geprüft**, sonst repariert man
+  einen Shop kaputt, der stimmt. Der gemeinsame Nenner beider Modelle stimmt trotzdem: Der Widerspruch
+  «Schweizer Shop» gegen 10–20 Werktage aus Asien ist DAS Scam-Signal — nicht zu verstecken, sondern
+  offen zu sagen.
+
+## 📱 «TikTok ist zu fest KI gemacht, wie Scam» (Kunde) — und der Queue-Runner importierte in den vollen Speicher (2026-09-05)
+Das Kundenfeedback passt auf die Warteschlange: **jede** Caption trug «Jetzt im Shop · Code WELCOME10
+für −10% · #fyp», die CTA-Slide eine Rabatt-Pille — Preis + Code + Massen-Tag auf jedem Beitrag ist
+exakt das Muster von Scam-Konten. `tiktok_karussell.py`: Rabatt-Pille und `#fyp` raus, dafür
+`laden_zeile()` («Kleiner Schweizer Shop aus Belp, kein Konzern · Lieferung 10–20 Werktage, dafür
+ehrlich angeschrieben · 30 Tage Rückgabe · TWINT oder Rechnung · Fragen? Kommentare»), Lieferzeit
+nur, wenn sie für DIESES Produkt belegt ist (`ch-lager` → 1–2 Werktage). Die 9 Queue-Captions
+umgeschrieben; 8 frei, 1 geparkt (Top-5 mit Hyaluron-**Gesichtscreme** — topische Kosmetik wird seit
+dem 30.08. nicht beworben, stand aber seit dem 29.08. in der Queue).
+- ⚠️ **Der Queue-Slug ist NICHT der Handle** («…-aufbewahrungs» ohne «-622300»): `productByIdentifier`
+  meldete «nicht aktiv», das Produkt ist ACTIVE — dieselbe Handle-Falle wie am 02.09., diesmal in der
+  Gegenrichtung (ein Fehlalarm statt eines 404). Handle aus dem Video-Manifest geholt, Feld `handle`
+  in der Queue ergänzt.
+- ⛔ **Die CDN-Kopie der Queue lässt sich nicht aktualisieren** — Datei-Speicher voll
+  (`FILE_STORAGE_LIMIT_EXCEEDED`, Probe erneut FAILED). Der PC liest also weiter die alte Fassung mit
+  Rabatt-Push. Bis der Speicher frei ist, gilt: **nicht posten** (Windows-Tasks sind laut Übergabe der
+  anderen Session ohnehin deaktiviert).
+- **Das stärkste Gegenmittel ist kein Text, sondern ein echter Mensch:** die Kundin hat eingewilligt;
+  Vorschau (Instagram-Beitrag mit Markierung IM Foto per Graph-API `user_tags`, nur ihr Insta-Name —
+  Betreiber: «ihre name auch nicht, lieber insta namen»; Satz «Echt getragen — kein Studio» gefiel ihm
+  gar nicht → weg) ist beim Betreiber, nichts online. ⚠️ `user_tags` braucht eine ÖFFENTLICHE Bild-URL;
+  das Shopify-CDN ist wegen des vollen Speichers zu — Ausweichweg: Google-Drive-Freigabe
+  (`uc?export=download&id=`), das Foto liegt NIE im Repo.
+- **Der Queue-Runner kannte die Grind-Pause nicht:** `engine_keepalive` stoppte bei `_GRIND_PAUSE_BIS`
+  nur cj_runner2–5; `cj_queue_runner` legte um 08:28 zwanzig Produkte an — je ~5 Bilder in den
+  vollen Speicher. Jetzt `pause_pruefen()` vor jedem Importer-Aufruf (ein laufender Runner wartet
+  selbst, statt dass ihn jemand killen muss). Zweite Fassung von «zwei Starter, eine Regel» (03.09.).
+- **Übergabe-Paket der anderen Session (`luxestyleuebergabe0509.zip`) gelesen — drei Punkte widersprechen
+  der eigenen Messung:** (1) «alle 51'980 ohne `bild-ok` draften» — am 04.09. widerlegt, der Tag ist die
+  Quittung eines Frühjahrslaufs; (2) «Import-App deinstallieren, damit kein Runner mehr schreibt» — es ist
+  DIESELBE App, über die Bestell-Automat, Rückerstattung, alle Wächter und der Tresor laufen; (3) «Gratis-
+  Versand real ab CHF 45» — 45 = 50 × 0,9 ist Absicht (20.08.), wirksam beworben 50, Automatik ab 49.
+  Richtig und wertvoll: der react-joyride-Fix des PC-Posters (er hat nie gepostet) und dass die andere
+  Session die drei Cloud-Trigger BEWUSST deaktiviert hat — das erklärt die Keepalive-Lücke seit dem 03.09.
+  **Ein Bericht einer anderen Session ist ein Hinweis, kein Beleg** (Regel 28.08.), auch wenn er als
+  Übergabe daherkommt.
+
 ## 🧰 «Cowork-Sachen auch»: vier Klick-Aufträge per Konnektor erledigt — und die Keepalive-Routine war AUS (2026-09-05)
 Betreiber: «weiter verbessern bis Leute kaufen, Cowork-Sachen auch». Die Cowork-Liste führte Punkte als
 «nur der Betreiber kann das» — vier davon gehen mit den hier verbundenen Konnektoren, alle umkehrbar:

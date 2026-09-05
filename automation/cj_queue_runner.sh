@@ -22,12 +22,24 @@ set -a; source /tmp/dienste.env 2>/dev/null; set +a
 [ -z "$GROQ_API_KEY2" ] && export GROQ_API_KEY2=$(cat /tmp/groq_key2 2>/dev/null)
 [ -z "$GEMINI_API_KEY" ] && export GEMINI_API_KEY=$(cat /tmp/gemini_key 2>/dev/null)
 if [ -z "$GROQ_API_KEY" ]; then echo "GROQ_API_KEY fehlt (/tmp/dienste.env?) — Queue bleibt offen"; exit 3; fi
+# 05.09.2026: Grind-Pause gilt auch fuer den Queue-Runner. engine_keepalive stoppte bei
+# dropship/_GRIND_PAUSE_BIS nur cj_runner2-5 — dieser Runner importierte weiter (20 Produkte
+# um 08:28 bei VOLLEM Datei-Speicher, je ~5 Bilder). Vor jedem Importer-Aufruf pruefen; ein
+# laufender Runner wartet also selbst, statt dass ihn jemand von aussen killen muss.
+pause_pruefen(){
+  local PBF=dropship/_GRIND_PAUSE_BIS
+  while [ -f "$PBF" ] && [ "$(tr -dc 0-9 < "$PBF")" -gt "$(date -u +%s)" ] 2>/dev/null; do
+    echo "### GRIND-PAUSE bis $(date -u -d @"$(tr -dc 0-9 < "$PBF")" +%d.%m.%H:%M) UTC — Queue-Runner wartet 10 min $(date -u +%H:%M)"
+    sleep 600
+  done
+}
 Q=automation/cj_search_queue.txt
 while true; do
   mapfile -t BATCH < <(grep -v '^#' "$Q" | head -4)
   [ ${#BATCH[@]} -eq 0 ] && break
   ITEMS=$(IFS=,; echo "${BATCH[*]}")
   echo "### BATCH: $ITEMS  $(date -u +%H:%M)"
+  pause_pruefen
   ITEMS="$ITEMS" /opt/node22/bin/node automation/cj_sku_import.mjs
   RC=$?
   if [ $RC -ne 0 ]; then echo "Importer RC=$RC — Punkte weg? Pause 30min"; sleep 1800; continue; fi
@@ -61,6 +73,7 @@ echo "### RUNDE $R · MAXPAGE=$TIEFE"
 for G in $GRPS; do
   grep -qx "$G" $GRPDONE && continue
   echo "### GRP $G $(date -u +%H:%M)"
+  pause_pruefen
   GRP=$G CAP=25 MAXPAGE=$TIEFE /opt/node22/bin/node automation/cj_category_fill.mjs 2>&1 | tee /tmp/cj_queue_grp.out
   RC=${PIPESTATUS[0]}
   [ $RC -ne 0 ] && { echo "GRP $G RC=$RC — Punkte weg? Stop."; break; }

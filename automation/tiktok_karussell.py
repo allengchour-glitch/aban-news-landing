@@ -349,9 +349,13 @@ def slide_cta(titelzeile):
     _cta = cta_slide()
     if _cta:
         d.text((B / 2, y + 176), _cta, font=f(SANS, 40), fill=WEISS, anchor="mm")
-    d.rounded_rectangle([190, y + 250, B - 190, y + 366], radius=58, outline=GOLD, width=3)
-    d.text((B / 2, y + 308), "Code  WELCOME10  ·  −10%",
-           font=f(SANSB, 40), fill=WEISS, anchor="mm")
+    # 05.09.2026: Kundenfeedback «zu fest KI gemacht, wie Scam». Die Rabattcode-Pille war
+    # exakt das Muster, das Scam-Konten fahren (Preis + Code + #fyp auf jedem Beitrag).
+    # Statt Rabatt-Druck stehen hier die pruefbaren Fakten des Ladens.
+    d.text((B / 2, y + 270), "Kleiner Schweizer Shop aus Belp",
+           font=f(SANSB, 38), fill=WEISS, anchor="mm")
+    d.text((B / 2, y + 330), "30 Tage Rückgabe · TWINT & Rechnung",
+           font=f(SANS, 34), fill=CREME, anchor="mm")
     return img
 
 
@@ -359,8 +363,23 @@ def chf(p):
     return "CHF " + f"{float(p):.2f}".replace(".00", ".–")
 
 
+def laden_zeile(tags=None):
+    """Ehrliche Laden-Zeile statt Rabatt-Push (Kundenfeedback 05.09.: «zu fest KI, wie Scam»).
+    Lieferzeit nur nennen, wenn sie fuer DIESES Produkt belegt ist (Tag ch-lager = 1–2 Werktage,
+    CJ = 10–20 Werktage); bei gemischten Beitraegen steht sie auf jeder Produktseite."""
+    t = {x.lower() for x in (tags or [])}
+    if tags is None:
+        liefer = "Lieferzeit steht auf jeder Produktseite"
+    elif "ch-lager" in t:
+        liefer = "Versand ab Schweizer Lager in 1–2 Werktagen"
+    else:
+        liefer = "Lieferung 10–20 Werktage, dafür ehrlich angeschrieben"
+    return (f"Kleiner Schweizer Shop aus Belp, kein Konzern. {liefer} · "
+            "30 Tage Rückgabe · TWINT oder Rechnung.\nFragen? Schreib sie in die Kommentare 👇")
+
+
 def hashtags(tags):
-    fest = ["#fyp", "#schweiz", "#luxestyle"]
+    fest = ["#schweiz", "#luxestyle"]   # 05.09.: #fyp raus — das Massen-Tag ist ein Scam-Signal
     karte = {"beauty": "#beauty", "skincare": "#skincare", "pflege": "#selfcare",
              "haustier": "#petsoftiktok", "katze": "#katze", "hund": "#hund",
              "mode": "#outfit", "damen": "#fashion", "kueche": "#kitchenhacks",
@@ -371,7 +390,7 @@ def hashtags(tags):
         h = karte.get(t.lower())
         if h and h not in extra:
             extra.append(h)
-    return " ".join(fest + extra[:4])
+    return " ".join(fest + extra[:3])
 
 
 def schreibe(slug, bilder_liste, caption, produkte):
@@ -415,8 +434,8 @@ def bau_produkt(p, benutzt):
     slides.append(slide_cta(titel))
     slug = re.sub(r"[^a-z0-9]+", "-", p["handle"].lower()).strip("-")  # NIE kuerzen: Slug==Handle ist die Vertragsbasis der Live-Pruefung
     cap = (f"{titel} · {preis}\n"
-           f"{cta_zeile()}\n"
-           f"Code WELCOME10 für −10%\n\n{hashtags(p.get('tags') or [])}")
+           f"{laden_zeile(p.get('tags') or [])}\n"
+           f"{cta_zeile()}\n\n{hashtags(p.get('tags') or [])}")
     return slug, slides, cap, [p["handle"]]
 
 
@@ -448,7 +467,7 @@ def bau_top(kandidaten):
                       for i, (p, _) in enumerate(tmp, 1))
     alle_tags = [t for p, _ in tmp for t in (p.get("tags") or [])]
     cap = (f"{hook} 🇨🇭\n\n{liste}\n\n"
-           f"{cta_zeile('Alles auf ')}\nCode WELCOME10 für −10%\n\n"
+           f"{laden_zeile()}\n{cta_zeile('Alles auf ')}\n\n"
            f"{hashtags(alle_tags)}")
     return slug, slides, cap, [p["handle"] for p, _ in tmp]
 
