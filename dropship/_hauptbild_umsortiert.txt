@@ -70,3 +70,5 @@
 15412361593217	bild-2-nach-vorn	kontaktbogen-0509 premium-geschenke (per MCP, Admin-Token tot: app_not_installed)
 15412945355137	bild-7-nach-vorn	kontaktbogen-0509 schmuck-uhren
 15448875827585	bild-2-nach-vorn	kontaktbogen-0509 schmuck-uhren
+15412945355137	bild-2-nach-vorn	kontaktbogen-0509 uhren
+15448903647617	bild-4-nach-vorn	kontaktbogen-0509 uhren
