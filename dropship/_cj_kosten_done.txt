@@ -11555,3 +11555,6 @@ gid://shopify/Product/15453895098753	CHF 17.32	36 Varianten	Warme Mädchen-Kotto
 gid://shopify/Product/15453895131521	CHF 10.00	6 Varianten	Streetwear-Hose für Herren
 gid://shopify/Product/15453895164289	CHF 29.32	7 Varianten	Retro Casual Overalls Herren Hochelastisch
 gid://shopify/Product/15453895197057	CHF 14.14	6 Varianten	Sommerschuhe für Mädchen
+gid://shopify/Product/15453895229825	CHF 15.03	21 Varianten	Retro-Herren Sporthosen
+gid://shopify/Product/15453895262593	CHF 9.96	3 Varianten	Prinzessinnen-Schuh für Mädchen
+gid://shopify/Product/15453895295361	CHF 11.29	18 Varianten	Lauflernschuhe mit Riemen, beige/silber
