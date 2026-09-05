@@ -1012,3 +1012,5 @@ gid://shopify/Product/15524872126849	ok	Rucksack aus Rindsleder
 gid://shopify/Product/15524867113345	ok	Kettlebell aus Stahl für Krafttraining
 gid://shopify/Product/15525252399489	ok	Corgeut Automatikuhr mit Lederarmband
 gid://shopify/Product/15525482299777	ok	Armbanduhr mit Dualzeit-Anzeige
+gid://shopify/Product/15525496226177	ok	Automatische Mini-Sojamilchmaschine
+gid://shopify/Product/15525492818305	nicht-versendbar	CuddleCloud Hug Kissen

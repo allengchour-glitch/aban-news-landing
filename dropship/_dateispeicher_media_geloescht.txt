@@ -12370,3 +12370,63 @@
 15444051820929	2	77865	Unisex-Sonnenbrille Guess GU7921-H
 15444052509057	2	334108	Heißluftfritteuse Tefal EY855D10 Schwarz 7,5 L
 15444052410753	6	456002	Filterkaffeemaschine Melitta Schwarz 1000 W
+15444061880705	1	113461	Kreissäge BOSCH PKS 66 AF 230 V 240 V
+15444062077313	10	1243320	Laser-Wasserwaage BOSCH GCL 2-50
+15444063093121	2	89725	Winkelschleifer BOSCH 06017D0100 1400 W 125 mm
+15444064240001	3	133181	Bohrhammer Dewalt DCH263N-XJ
+15444065976705	5	558396	Elektrischer Schraubendreher Metabo SSW 18 LT 300 BL
+15444067090817	7	539417	Elektrischer Schraubendreher Metabo BS 18 LTX BL QI
+15444071121281	1	102029	Satz Bohrer BOSCH 12 Stücke
+15444070793601	5	570801	Säge BOSCH
+15444070498689	10	992645	Laubsäge Ryobi 18 V 3000 rpm
+15444071940481	1	157261	3D Puzzle Ravensburger Iceland: Kirkjuffellsfoss 54 Stücke 3
+15444634042753	1	17850	Powerbank Baseus P10059001513-00 Purpur mAh
+15444637811073	1	76547	Smart Glühbirne Muvit iO 5 W GU10 2700 K 6500 K Wi-Fi LED 40
+15444638040449	8	604009	Smart Glühbirne Muvit 8,5 W E27 2700 K 6500 K 800 lm Wi-Fi L
+15444639056257	3	285591	Smartwatch Forever IGo Watch 3 JW-500 Blau 1,83"
+15444639383937	8	194478	Powerbank Xiaomi 165W ICAB GY Grau Silberfarben mAh 165 W
+15444639547777	10	864892	Tragbare Bluetooth-Lautsprecher Xiaomi QBH4269GL Schwarz 5 W
+15444639711617	10	780289	Bluetooth-Kopfbügelkopfhörer Muvit
+15444640006529	7	1079279	Wandladegerät Muvit MCACC0047 30 W
+15444640301441	5	258932	Smartwatch SPC 9654B Silberfarben
+15444640432513	10	1134092	Kabelloses Ladegerät Muvit MCWIR0012
+15444653834625	10	711440	Wasserkocher BOSCH TWK8611P 2400 W Weiß Grau Anthrazit plást
+15444793655681	2	197884	Elektrischer Schraubendreher BOSCH GDR 12V-110 Professional 
+15444796342657	6	686199	Kreissäge BOSCH Circular saw PKS 16 Multi
+15444797784449	5	410407	Laser-Wasserwaage BOSCH Quigo Green
+15444801028481	5	506011	Elektrischer Schraubendreher BOSCH GTB 12V-11 Professional
+15444800536961	7	739177	Elektrischer Schraubendreher BOSCH GDX 18V-200 Professional 
+15444810301825	3	230254	Elektrischer Schraubendreher Metabo 1300 W
+15444812136833	1	77876	Elektrischer Schraubendreher BOSCH IXO 7
+15444811678081	5	583790	Elektrischer Schraubendreher BOSCH 100 W 15 Nm 30 Nm
+15444812464513	10	1332500	Elektrischer Schraubendreher Dewalt DCD805P2T 90 nm
+15446311862657	9	777808	Elektrischer Schraubendreher Ryobi Auswirkungen
+15446445949313	1	89898	Dauerkochtopf Russell Hobbs 6L 6 L 200 W
+15446438445441	2	136329	Wasserkocher Kenwood KMix 2200 W 1 L Weiß
+15446454206849	3	361462	Elektrischer Wasserkocher mit LED-Licht Braun 1,7 L Schwarz 
+15446457155969	2	114243	Express-Kaffeemaschine Kenwood COX750RD 1200 W 1200 W
+15446458139009	4	186036	Besenstaubsauger Philips FC8289/09 750 W 77 dB 750 W
+15446454993281	1	76942	Kapsel-Kaffeemaschine Philips HD6553/71 Senseo Original
+15446469640577	1	102221	Luftkompressor Ryobi R18AC-0 4 L
+15446470001025	1	43015	Säge/Blatt BOSCH 2609256D86
+15446472688001	1	139955	Satz Bohrer BOSCH (50 Stücke)
+15446472294785	1	101267	Satz Bohrer BOSCH Aufbewahrungsbox (32 Stücke)
+15446473048449	1	134881	Satz Bohrer BOSCH Aufbewahrungsbox Transporthülle (91 Stücke
+15446473965953	1	163802	Satz Bohrer Ryobi (71 Stücke)
+15446473736577	1	168986	Satz Bohrer Facom E.120PB Aufbewahrungsbox (28 Stücke)
+15446473408897	2	229736	Werkzeugkasten Facom TBX1M.PG Polypropylen 20 Stücke
+15446475473281	1	129338	Sägeblatt BOSCH 10 Stücke
+15446484713857	1	85634	Gehrungssäge Ryobi 1500 W
+15446477668737	3	416402	Motorsäge BOSCH 0600849G02 18 V
+15446495560065	1	65153	Elektrische Kettensäge Ryobi RCS1935B2C 1900 W 35 cm
+15446496903553	7	1492461	Motorsäge BOSCH UniversalChainPole 18 Stabsäge
+15446501360001	6	533401	Elektrischer Schraubendreher BOSCH GSR 12V-15 FC Professiona
+15446502146433	1	201074	Elektrischer Schraubendreher BOSCH GSR 12V-35 35 Nm
+15446505292161	2	179536	Elektrischer Schraubendreher Ryobi 1010 W
+15446506275201	4	311327	Elektrischer Schraubendreher BOSCH GSR 12V-35 HX Professiona
+15446509945217	2	125574	Luftkompressor Stanley 1868 1100 W 230 V
+15446509617537	3	332697	Bohrhammer BOSCH PBH 2500 SRE 600 W 2000 rpm
+15446521676161	6	754788	3D Puzzle Ravensburger Iceland: Kirkjuffellsfoss 216 Stücke 
+15446522954113	1	48034	Bluetooth-Kopfhörer Xiaomi Redmi Buds 5 Pro Weiß
+15446526329217	1	17921	Powerbank Baseus P10059001313-00 Blau mAh
+15446526394753	1	30152	Powerbank Baseus P10059002313-00 Blau 6000 mAh
