@@ -13072,3 +13072,31 @@ gid://shopify/Product/15454192828801	CHF 9.59	1 Varianten	Mini Haarstyling-Gerä
 gid://shopify/Product/15454192861569	CHF 35.00	1 Varianten	Intelligenter Futternapf mit Zeitsteuerung
 gid://shopify/Product/15454192894337	CHF 38.62	21 Varianten	Leichte, hochgeschnittene Jeans
 gid://shopify/Product/15454192927105	CHF 21.85	1 Varianten	Tierhaar-Entferner
+gid://shopify/Product/15454192959873	CHF 10.52	1 Varianten	Wi-Fi LED-Steuerung für RGB-LEDs
+gid://shopify/Product/15454192992641	CHF 27.71	1 Varianten	Heizschüssel für Haustiere
+gid://shopify/Product/15454193025409	CHF 20.91	4 Varianten	Blaues Straight-Jeans
+gid://shopify/Product/15454193058177	CHF 33.55	1 Varianten	Haarständer
+gid://shopify/Product/15454193123713	CHF 12.56	30 Varianten	Prinzessinnen-Schuhe mit Bows, weiches Sohlen
+gid://shopify/Product/15454193156481	CHF 11.44	1 Varianten	Langsam-Futter-Matte
+gid://shopify/Product/15454193189249	CHF 16.67	4 Varianten	Patchwork-Denim-Hosen
+gid://shopify/Product/15454193222017	CHF 17.75	1 Varianten	Automatischer Lockenstab
+gid://shopify/Product/15454193254785	CHF 9.55	1 Varianten	Signaldetektor gegen Wanzen und Kameras
+gid://shopify/Product/15454193287553	CHF 19.15	1 Varianten	Automatischer Futterplatz
+gid://shopify/Product/15454193320321	CHF 26.66	6 Varianten	Weisse, stonewashed Jeans
+gid://shopify/Product/15454193353089	CHF 30.67	1 Varianten	Keratine Kamm mit Massagefunktion
+gid://shopify/Product/15454193385857	CHF 13.49	28 Varianten	Weisse Perlen-Prinzessin Schuhe
+gid://shopify/Product/15454193418625	CHF 10.33	1 Varianten	Owl Puzzle Futterspielzeug für Katzen
+gid://shopify/Product/15454193451393	CHF 17.13	4 Varianten	Dunkelblaue Slim-Fit Jeans mit Stretch
+gid://shopify/Product/15454193484161	CHF 42.13	1 Varianten	Kabelloser Lockenstab mit Schnellladung
+gid://shopify/Product/15454193549697	CHF 19.92	1 Varianten	Avocado-Futter Schüssel
+gid://shopify/Product/15454193582465	CHF 43.23	1 Varianten	Mini Haarstecker mit USB
+gid://shopify/Product/15454193615233	CHF 14.90	4 Varianten	Stretch-Denim Jeans
+gid://shopify/Product/15454193648001	CHF 13.19	20 Varianten	Laufschuhe für Kids
+gid://shopify/Product/15454193680769	CHF 72.56	1 Varianten	Intelligenter Futternapf
+gid://shopify/Product/15454193713537	CHF 31.38	4 Varianten	Retro-Shorts für Damen
+gid://shopify/Product/15454193746305	CHF 25.24	1 Varianten	Haartrockner mit mehreren Funktionen
+gid://shopify/Product/15454193779073	CHF 12.19	16 Varianten	Kinder-Sandalen mit Cartoon-Muster
+gid://shopify/Product/15454193811841	CHF 68.33	1 Varianten	Intelligenter Futtermatcher für Hunde und Katzen
+gid://shopify/Product/15454193844609	CHF 22.00	8 Varianten	Kapri-Hosen mit Stern-Applikation
+gid://shopify/Product/15454193877377	CHF 23.00	1 Varianten	3-in-1 Heissluftkamm
+gid://shopify/Product/15454193910145	CHF 12.55	50 Varianten	Wasserschuhe für Kinder, schnell trocknend
