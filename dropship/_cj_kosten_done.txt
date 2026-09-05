@@ -11455,3 +11455,12 @@ gid://shopify/Product/15453825532289	CHF 8.47	1 Varianten	Farbenfrohes Wimpernbu
 gid://shopify/Product/15453825630593	CHF 12.23	9 Varianten	Casual Stilvoll Kurzarm-Shirt
 gid://shopify/Product/15453825663361	CHF 18.97	1 Varianten	Scorpio 7-farbiger Fahrradhelm
 gid://shopify/Product/15453825696129	CHF 10.53	1 Varianten	Natürliche DIY-Wimpern, dicht, täglicher Gebrauch
+gid://shopify/Product/15453825728897	CHF 16.44	40 Varianten	Patchwork-Hemd mit Kurzarm
+gid://shopify/Product/15453825761665	CHF 24.23	1 Varianten	Radhelm mit integrierten Schutzbrillen
+gid://shopify/Product/15453825794433	CHF 15.60	1 Varianten	Magnetischer Wimpernformer
+gid://shopify/Product/15453825859969	CHF 35.67	1 Varianten	Downhill Helm
+gid://shopify/Product/15453825925505	CHF 13.65	20 Varianten	Herren-Streifenhemd, knitterfrei
+gid://shopify/Product/15453825958273	CHF 32.10	1 Varianten	Kinder-Helm für Balance-Bikes
+gid://shopify/Product/15453825991041	CHF 7.21	1 Varianten	Doppelte falsche Wimpern
+gid://shopify/Product/15453826023809	CHF 15.69	1 Varianten	Kinder Fahrradhelm
+gid://shopify/Product/15453826089345	CHF 7.51	1 Varianten	Dichte, Lockige Einzel-Wimpern
