@@ -6496,3 +6496,206 @@
 15444139901313	4	298742	Zusammenfaltbarer Fressnapf Trixie Tx- Silikon 2 L
 15444139966849	8	545641	Beißring für Hunde Trixie TX- Polyester
 15444139934081	10	696359	Kratzbaum für Katzen Trixie Ø 9 x 40 cm
+15444139999617	6	846766	Hundemäntelchen Trixie TX- Rot 40 cm
+15444140556673	4	610508	Führgeschirr für Hund Trixie Top Trainer Schwarz M
+15444140196225	10	689746	Kratzbaum für Katzen Trixie Ersatzteil
+15444140786049	6	400197	Futternapf für Hunde Trixie Pet's Home Blau Creme Ø 12 cm 30
+15444140884353	1	171952	Katzenspielzeug Trixie TX
+15444140818817	7	299999	Futternapf für Katzen Trixie Kunststoff
+15444140917121	10	2028802	Hundemäntelchen Trixie Explore Schwarz XS
+15444140949889	9	894075	Hundemäntelchen Trixie Oslo Jade S 36 cm
+15444140982657	9	748722	Hundemäntelchen Trixie Oslo Jade M 45 cm
+15444141048193	10	1167172	Hundemäntelchen Trixie Pontis Grau XS 30 cm
+15444141146497	1	82071	Hundemäntelchen Trixie Pontis Aquamarin S 33 cm
+15444141080961	10	1653648	Hundemäntelchen Trixie Brizon Schwarz XS
+15444141212033	6	1205237	Hundemäntelchen Trixie Riom Blau M
+15444141113729	10	1054443	Hundemäntelchen Trixie Pontis Grau S 40 cm
+15444141277569	4	404626	Hundegeschirr Trixie Confort New Premium Schwarz L/XL
+15444141310337	4	403778	Hundegeschirr Trixie Confort New Premium Schwarz S/M
+15444141506945	4	442847	Hundegeschirr Trixie Confort New Premium Rot L/XL
+15444141605249	4	453830	Hundegeschirr Trixie Confort New Premium Karamell S
+15444141638017	4	471248	Hundegeschirr Trixie Confort New Premium Graphit
+15444141408641	4	434215	Hundegeschirr Trixie Confort New Premium Kobaltblau
+15444141703553	4	471248	Hundegeschirr Trixie Confort New Premium Graphit XS/S
+15444141801857	4	488653	Hundegeschirr Trixie Confort New Premium Pink
+15444141834625	4	449003	Hundegeschirr Trixie Confort New Premium Azul Océano
+15444141900161	4	451024	Hundegeschirr Trixie Confort New Premium grün S/M
+15444141932929	4	482561	Hundegeschirr Trixie Confort New Premium Apfel L/XL
+15444141965697	4	457003	Hundegeschirr Trixie Confort New Premium L/XL
+15444142031233	4	610508	Führgeschirr für Hund Trixie Top Trainer Schwarz XL
+15444141998465	4	451024	Hundegeschirr Trixie Confort New Premium grün
+15444142162305	4	753371	Führgeschirr für Hund Trixie Stay Schwarz L/XL
+15444142096769	4	753371	Führgeschirr für Hund Trixie Stay Schwarz M/L
+15444142195073	4	397245	Hundegeschirr Trixie New Premium Schwarz XL/XXL
+15444142260609	4	457438	Hundegeschirr Trixie New Premium Graphit L/XL
+15444142326145	4	494527	Hundegeschirr Trixie Comfort Sof Azul Océano S
+15444142227841	4	476483	Hundegeschirr Trixie New Premium Kobaltblau XS/S
+15444142358913	4	466140	Hundegeschirr Trixie New Premium Rot XL/XXL
+15444142391681	4	348190	Hundegeschirr Trixie Comfort Sof Schwarz XXS/XS
+15444142588289	1	151333	Hundegeschirr Trixie Premium Trekking grün Graphit M
+15444142686593	1	152752	Hundegeschirr Trixie Fusion Confort Graphit Azul Océano S/M
+15444142457217	4	369899	Hundegeschirr Trixie Power Braun XL 3
+15444142653825	8	784065	Hundehalsband Trixie New Premium Pink M/L 35-55 cm
+15444142719361	1	106913	Hundehalsband Trixie BE NORDIC Sand S/M 40 cm
+15444142752129	1	105126	Hundegeschirr Trixie Premium Rosa XXS/XS
+15444142817665	1	147084	Hundegeschirr Trixie Premium Trekking Blau Graphit XL
+15444143014273	1	147084	Hundegeschirr Trixie Premium Trekking Blau Graphit S/M
+15444142915969	1	145794	Hundegeschirr Trixie Premium Trekking Graphit Hellblau M L
+15444142883201	9	1233898	Hundegeschirr Trixie Power Anthrazit XS
+15444143833473	1	146941	Hundegeschirr Trixie Premium Trekking Graphit Blush M/L
+15444144193921	1	146941	Hundegeschirr Trixie Premium Trekking Graphit Blush M
+15444143407489	10	981581	Hundegeschirr Trixie Premium Haselnussbraun XXS/XS
+15444143112577	10	808589	Hundegeschirr Trixie Premium Trekking Rot Graphit S
+15444144259457	1	151320	Hundegeschirr Trixie Premium Trekking Graphit Sand M/L
+15444144292225	3	401712	Radiergummi Milan Jet eraser Bleistift Blau Bunt
+15444144488833	1	61070	Dauermarker Milan grün PVC 12 Stück (Ø 4 mm)
+15444144619905	1	204739	Buntstifte Staedtler Bunt 144 Stücke
+15444144554369	1	62878	Dauermarker Milan 10 Stück Schwarz PVC
+15444144685441	3	228237	Textmarker Stabilo Swing Cool Pfirsich 10 Stücke
+15444144783745	1	46899	Flüssigtintenstift Uni-Ball Rollerball Eye Fine UB-157 Blau 
+15444144947585	2	153663	Flüssigtintenstift Uni-Ball Rollerball Eye Broad UB-150 Rot 
+15444144816513	1	42649	Flüssigtintenstift Uni-Ball Eye Ultra Micro UB- Rot (12 Stüc
+15444144718209	4	347331	Textmarker Stabilo Swing Cool Rosa 10 Stücke (1 Stück)
+15444145209729	1	33376	Flüssigtintenstift Uni-Ball Rollerball Signo Angelic Colour 
+15444145144193	1	27448	Flüssigtintenstift Uni-Ball Signo Broad UM-153 W Silberfarbe
+15444145275265	1	38223	Flüssigtintenstift Uni-Ball Rollerball Signo Angelic Colour 
+15444145340801	1	47927	Flüssigtintenstift Uni-Ball Jetstream Schwarz 1 mm (12 Stück
+15444145439105	1	117901	Filzstifte Stabilo Pen 68 Fluoreszierend Rosa (10 Stücke)
+15444145406337	1	106101	Filzstifte Stabilo Pen 68 Fluoreszierend grün (10 Stücke)
+15444145734017	1	65554	Notizbuch Oxford European Book Mint grün A4 5 Stücke
+15444145766785	1	45526	Notizbuch Oxford &You Banana A4 A4+ 80 Blatt 5 Stücke
+15444145602945	1	119328	Filzstifte Stabilo Pen 68 Dunkelrot (10 Stücke)
+15444145668481	1	59854	Notizbuch Oxford European Book Ice Minze A4 A4+ 80 Blatt 5 S
+15444145799553	1	30596	Flüssige Kreidemarker Pentel Maxiflo MWL-5S Blau (12 Stücke)
+15444145832321	2	285791	Dauermarker Uni-Ball Paint PX-21L Schwarz 12 Stücke
+15444145865089	3	305486	Filzstifte Tombow ABT DUAL Bunt
+15444146258305	1	109756	Bleistift Staedtler NORIS 120-2 Holz
+15444146585985	2	234935	Buntstifte Faber-Castell Bunt 4 Stücke
+15444146684289	2	99172	Filzstifte Faber-Castell Pitt Artist Kalligraphie (10 Stück)
+15444146749825	2	79507	Filzstifte Faber-Castell Pitt Artist Zimt (10 Stück)
+15444146848129	2	85685	Buntstifte Faber-Castell Jumbo Blau Rot (12 Stück)
+15444146782593	4	351378	Dauermarker Edding 751 Blau (10 Stück)
+15444146815361	4	472755	Dauermarker Edding 3300 Schwarz (10 Stück)
+15444146913665	2	90674	Dauermarker Pentel Maxiflo NLF50 Blau 12 Stücke (12 Stück)
+15444146880897	4	331598	Dauermarker Edding 750 Weiß (10 Stück)
+15444147011969	4	416913	Dauermarker Edding 8300 Blau (10 Stück)
+15444147077505	4	392473	Flüssige Kreidemarker Edding 4095 Schwarz (10 Stück)
+15444147110273	2	107862	Druckbleistift Faber-Castell Tk 4600 grün 0,7 mm (10 Stück)
+15444147143041	2	72494	Klebeband Apli 66 m 12 mm Weiß PVC (12 Stück)
+15444147208577	2	230525	Tinte Faber-Castell Schwarz 6 Stücke 30 ml
+15444147241345	2	79554	Flüssigtintenstift Pilot V Pen Einwegartikel Kalligrafie-Fed
+15444147175809	2	107791	Dauermarker Staedtler Lumocolor Rot 10 Stück
+15444147306881	3	130096	Stift Pilot Frixion Ball Löschbare Tinte Rot 0,4 mm 12 Stück
+15444147372417	2	66241	Bleistift Faber-Castell Grip 2001 Ökologisch Grau HB (12 Stü
+15444147405185	2	85699	Bleistift Faber-Castell 9000 Ökologisch Sechseckig B (12 Stü
+15444147339649	4	189293	Stift Pilot Frixion Clicker Löschbare Tinte Schwarz 0,4 mm 1
+15444147470721	2	69890	Bleistift Faber-Castell 9000 Ökologisch Sechseckig (12 Stück
+15444147503489	2	73572	Bleistift Staedtler Tradition HB (12 Stück)
+15444147536257	2	73572	Bleistift Staedtler Tradition (12 Stück)
+15444147569025	2	91420	Druckbleistift Pilot Super Grip Rot 0,5 mm (12 Stück)
+15444147667329	2	88991	Buntstifte Faber-Castell Polychromos Braun 6 Stücke
+15444147732865	2	193597	Buntstifte Faber-Castell Bunt (5 Stück)
+15444147798401	2	104690	Schiefermarker Edding 661 Weißes Brett Blau Weiß (10 Stück)
+15444147896705	2	106995	Schiefermarker Bic Velleda 1741 Schwarz Weißes Brett (12 Stü
+15444147863937	2	90970	Textmarker Pilot V Light Gelb (12 Stück)
+15444147962241	2	104919	Textmarker Pilot Frixion Light Fluoreszierend Abgeschrägt Lö
+15444148027777	3	186875	Radiergummi Staedtler Mars Plastic Ersatzteil (10 Stück)
+15444148060545	1	50302	Dauermarker Sharpie W10 Schwarz 12 Stück
+15444147700097	2	84818	Buntstifte Faber-Castell Gelb (12 Stück)
+15444148224385	1	84301	Dauermarker Uni-Ball PIN-200(S) Schwarz Grau Bunt 6 Stücke
+15444148158849	1	36177	Bleistift Stabilo Easygraph Holz
+15444148257153	2	87562	Filzstifte Edding 4200 Pinsel Rot (10 Stück)
+15444148126081	1	56306	Flüssige Kreidemarker Uni-Ball PWE-5M Gelb (6 Stücke)
+15444148322689	2	77239	Dauermarker Faber-Castell Multimark 1525 M Rot (10 Stück)
+15444148355457	2	94034	Dauermarker Faber-Castell Multimark 1523 M Blau (10 Stück)
+15444148420993	4	177330	Dauermarker Sharpie Fine Point Rot (12 Stück)
+15444148486529	2	95531	Dauermarker Staedtler Lumocolor 317-2 M Rot (10 Stück)
+15444148453761	2	163521	Dauermarker Staedtler Lumocolor 348-9 Schwarz (10 Stück)
+15444148519297	2	103906	Dauermarker Edding 800 Rot (5 Stück)
+15444148552065	2	90863	Stift Pilot Frixion Clicker Löschbare Tinte Violett 0,4 mm 1
+15444148683137	2	78224	Dauermarker Uni-Ball PX-20 Weiß (12 Stück)
+15444148650369	2	95108	Dauermarker Uni-Ball PX-20 Silberfarben 2,8 mm (12 Stück)
+15444148584833	2	103231	Dauermarker Pilot Gold (12 Stück)
+15444148748673	1	30041	Dauermarker Pilot SCA-100 Rot (12 Stück)
+15444148781441	1	30776	Schiefermarker Pilot V Board Master grün Weißes Brett Auflad
+15444148715905	3	177215	Marker Faber-Castell Textliner 1546 Pastel Lila (10 Stück)
+15444148814209	3	266759	Schiefermarker Bic Velleda Schwarz 12 Stücke
+15444148912513	2	65145	Marker Staedtler Gelb Bleistift (12 Stück)
+15444149272961	4	377675	Schere Milan 9 Stücke Bunt Kunststoff
+15444149633409	2	101816	Dauermarker Pilot Sca-F Blau Aufladbar (12 Stück)
+15444150714753	3	346197	Flüssiggummi für Autos Foliatec Schwarz 400 ml (2 pcs)
+15444150747521	1	123342	Flüssiggummi für Autos Foliatec Matte Hinterseite Schwarz 15
+15444150649217	6	783005	Auto-Schneeketten Goodyear ULTRA GRIP (S)
+15444150780289	1	81528	Flüssiggummi für Autos Foliatec 2107 400 ml
+15444150813057	2	129427	Armaturenbrett-Reiniger Turtle Wax Fresh Shine 500 ml
+15444150911361	1	26955	Scheibenwischer Goodyear Ultima 40 cm 16"
+15444150944129	1	24349	Scheibenwischer Goodyear Ultima 66 cm 26"
+15444151075201	1	72871	Reifen-Klebstoff Foliatec Blau (4 x 2,15 m)
+15444150976897	2	174169	Reifenkleber Foliatec Rot (4 x 2,15 m)
+15444151861633	1	43539	Auto-Antenne Foliatec Fact Arena Schwarz (7,5 cm)
+15444151763329	1	90992	Reifenreiniger Turtle Wax Spray (500 ml)
+15444151828865	2	122378	Autoglühbirne Osram 5627 R5W Halogen 24 V (10 pcs)
+15444151435649	1	42510	Reifen-Klebstoff Foliatec grün Neon
+15444151959937	1	302723	Reiniger Goodyear Fluid Räder/Reifen 500 ml
+15444151927169	2	162494	Reifenreiniger Turtle Wax ml
+15444151894401	3	189692	Autoglühbirne Osram 880
+15444151992705	1	66445	Reifen-Klebstoff Foliatec Orange 6 mm
+15444152058241	3	724015	Auto-Schneeketten Michelin SOS GRIP EVO 2
+15444152091009	6	804588	Autowachs Turtle Wax ml Schwarze Farbe
+15444152123777	4	823837	Auto-Schneeketten Michelin Easy Grip EVOLUTION 3
+15444152254849	4	823837	Auto-Schneeketten Michelin Easy Grip EVOLUTION 2
+15444152156545	4	823837	Auto-Schneeketten Michelin Easy Grip EVOLUTION 18
+15444152189313	7	386487	Flüssiggummi für Autos Foliatec Weiß Brillant 400 ml
+15444152353153	1	116328	Armaturenbrett-Reiniger Sonax LEMON ROCKS Zitronengelb Frisc
+15444152287617	5	1332905	Scheibenreiniger mit Sprühgerät Sonax ml
+15444152320385	5	1570645	Reifenreiniger Sonax Beast 1 L
+15444152385921	5	585463	Armaturenbrett-Reiniger Sonax
+15444152680833	1	44731	Fahrzeugshampoo Sonax
+15444153074049	7	895745	Päzisionsepilierer mit LED für das Gesicht InnovaGoods
+15444153237889	2	79173	Deckenlampe Philips Foco Silberfarben Metall 15,5 x 10 x 69 
+15444153303425	2	97963	Deckenlampe Philips Foco Metall
+15444153368961	9	5120122	LED-Leisten Philips Wiz 1600 lm
+15444153401729	10	1035452	LED Lampe mit Bewegungssensor Lumact 360º InnovaGoods
+15444153434497	2	55200	Deckenlampe Philips Moire Weiß 6 W Metall/Kunststoff (4000 K
+15444153467265	2	82990	Deckenlampe Philips Shell Ø 25 cm Weiß 10 W Metall/Kunststof
+15444153532801	2	160450	LED-Deckenleuchte Philips Downlight 24 W (4000 K)
+15444153565569	6	378269	Monitor Philips 243V7QSB/93 24" Full HD LED HDMI IPS LED 23,
+15444153598337	5	491368	Kaltlicht LED-Glühbirne Philips Wiz Weiß F 4,7 W GU10 345 Lm
+15444153631105	5	329383	LED-Lampe Philips Kerze E 6,5 W E14 806 lm 3,5 x 9,7 cm (650
+15444153794945	2	53834	LED Röhre Philips 30 W
+15444153729409	3	239274	LED-Lampe Philips 4,9 W GU10 550 lm (3000 K)
+15444153762177	3	239183	LED-Lampe Philips 4,9 W GU10 550 lm (4000 K)
+15444153696641	5	399069	LED-Lampe Philips E 6,5 W 60 W E27 806 lm 4,5 x 7,8 cm (2700
+15444153893249	1	158450	LED-Lampe Philips Bombilla Durchsichtig E 60 W (2700k)
+15444153860481	5	335697	LED-Lampe Philips D 120 W 13 W E27 2000 Lm 7 x 12 cm (6500 K
+15444153926017	4	245070	LED-Lampe Philips Equivalent E27 60 W E (2700 K)
+15444153991553	4	216611	LED-Lampe Philips 75 W E (2700 K)
+15444154057089	3	194838	LED-Lampe Philips Bombilla E 7 W 60 W 806 lm (2700k)
+15444154024321	7	521278	Smart Glühbirne Philips Globo G93 - Bombilla inteligente E27
+15444154155393	4	248367	LED-Lampe Philips Bombilla Weiß F 40 W E27 (4000 K)
+15444154319233	5	120588	Lampenschirm Activejet Irma Weiß Glas 13 x 10 x 9,5 cm
+15444154089857	5	354261	LED-Lampe Philips Equivalent 100 W E27 Weiß D (2700 K) (2 St
+15444154220929	7	362628	Tischlampe Activejet AJE-VENUS RGB Schwarz Grau Ja 80 Kunsts
+15444154352001	7	297885	Tischlampe Activejet AJE-VENUS RGB Schwarz Kunststoff 5 W 23
+15444154384769	6	745051	LED-Leisten Activejet AJE-LED MUSIC STRIPE Weiß Schwarz Bunt
+15444154515841	3	233601	Deckenlampe Activejet AJE-UFO 24W Weiß Silberfarben 80 24 W 
+15444154483073	10	978100	Deckenventilator mit LED-Licht und 3 ABS-Flügeln Flaled Inno
+15444154581377	6	315062	LED-Lampe Philips Classic A 75 W 5,2 W E27 1095 Lm (2700 K)
+15444154548609	5	294419	Wandleuchte Philips 1,5 W 200 Lm Solar karriert (2700 K)
+15444154745217	1	49302	LED-Leiste Activejet AJE-DUO
+15444154646913	3	194922	LED-Deckenstrahler Philips Meson 23,5 W 2550 Lm (4000 K)
+15444154712449	6	397498	Deckenlampe Activejet AJE-CARLOS 40W Weiß Schwarz 80 (4000 K
+15444154679681	6	415304	LED-Lampe Philips Ultra Efficient Led Classic 4 W 60 W E27 8
+15444154843521	7	505924	Tischlampe Philips Lámpara de mesa Weiß Metall 3 W
+15444154876289	4	433861	Tischlampe Activejet AJE-CORNELIA Schwarz Holz
+15444154810753	10	492464	LED-Deckenleuchte Activejet AJE-CAMELIA NW Schwarz Weiß natü
+15444154941825	7	421636	LED-Lampe Philips A67 Weiß E 100 W E27 3 Stück (4000 K)
+15444155007361	5	170338	LED-Leiste Philips projectline 18 W 58 x 6 x 6 cm Weiß Kunst
+15444155040129	2	45988	LED-Leiste Philips projectline
+15444155171201	3	290744	LED-Lampe Philips Weiß E27
+15444155236737	3	215118	Taschenlampe Acebeam L19 2.0 OSRAM GREEN 2200 lm 2 Lm
+15444155072897	9	491076	LED-Lampe Philips Weiß E GU10 400 lm 2 Stück (6500 K)
+15444155105665	5	467080	Einbaustrahler Activejet AJE-EMILY 5P GD
+15444155269505	6	395790	LED-Deckenleuchte Activejet AJE-LOGAN Gelb Schwarz Warmes We
+15444155302273	10	863663	Leuchtende Dekoration Activejet AJE-NEON GITARA Bunt (1 Stüc
+15444155335041	7	681201	Leuchtende Dekoration Activejet AJE-NEON PLANET Bunt (1 Stüc
