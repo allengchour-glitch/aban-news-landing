@@ -12770,3 +12770,4 @@ gid://shopify/Product/15454110482817	CHF 10.63	1 Varianten	Wasserdichte Handschu
 gid://shopify/Product/15454110515585	CHF 18.58	1 Varianten	Gedrehter Keramik-Blumenbecher
 gid://shopify/Product/15454110581121	CHF 18.15	1 Varianten	Automatische Brust- und Rückengurt-Set
 gid://shopify/Product/15454110613889	CHF 55.35	1 Varianten	Winterpracht Duvetcover
+gid://shopify/Product/15454110646657	CHF 5.61	1 Varianten	Duftende Mini-Teelichter · Farbmix
