@@ -297,10 +297,16 @@ def umschreiben(h, w):
 
 
 # Kontrollmuster: bleibt danach IRGENDWO noch eine Lieferzeit mit EU/USA als ZIEL stehen?
+# ⚠️ 05.09.2026: Die alte Fassung schloss `<` aus (`[^.<]`) und konnte deshalb NICHT durch
+# HTML-Tags sehen. Im Live-Text steht aber «🇺🇸 USA: <strong>12–22 Tage</strong>» — die
+# Kontrolle meldete «0 REST», während 573 aktive Produkte den Block weiter trugen. Ein
+# Kontrollmuster, das die Form des Ziels nicht kennt, bestaetigt die eigene Reparatur ins Blaue.
+_TAG = r'(?:<[^>]+>|\s|&nbsp;)*'
 REST_RE = re.compile(
-    r'(?:Lieferzeit|Lieferung|Versand)[^.<]{0,60}?(?:🇪🇺|🇺🇸|\bEU\b|\bUSA\b)[^.<]{0,60}?'
-    r'\d{1,2}\s*[–-]\s*\d{1,2}\s*(?:Werk)?[Tt]ag'
-    r'|\d{1,2}\s*[–-]\s*\d{1,2}\s*(?:Werk)?[Tt]age?[^.<]{0,40}?(?:🇺🇸|\bUSA\b)')
+    r'(?:Lieferzeit|Lieferung|Versand)(?:[^.<]|<[^>]+>){0,80}?(?:🇪🇺|🇺🇸|\bEU\b|\bUSA\b)'
+    r'(?:[^.<]|<[^>]+>){0,80}?\d{1,2}\s*[–-]\s*\d{1,2}\s*(?:Werk)?[Tt]ag'
+    r'|(?:🇺🇸|\bUSA\b):?' + _TAG + r'\d{1,2}\s*[–-]\s*\d{1,2}\s*(?:Werk)?[Tt]age'
+    r'|\d{1,2}\s*[–-]\s*\d{1,2}\s*(?:Werk)?[Tt]age?(?:[^.<]|<[^>]+>){0,50}?(?:🇺🇸|\bUSA\b)')
 
 
 def produkte():
