@@ -20,6 +20,12 @@ das: nie wieder. Umleitung steht jetzt überall HINTER dem `flock`; in beide Ric
   Ich hatte behauptet, JEDE Umleitung fasse das Log an. Der Test zeigt das Gegenteil für `>>`.
   Eine Ursache, die man nicht gemessen hat, ist eine Vermutung — auch wenn die daraus
   abgeleitete Änderung richtig ist (dieselbe Selbstkorrektur wie gestern bei den «100 GB»).
+- ⚠️ **Auf der Suche danach hätte ich beinahe einen zweiten Fehler erfunden:** Zwei
+  Handstarts des Wahlversprechen-Laufs endeten sofort und schrieben nichts — ich hielt das für
+  einen kaputten Start. Sie sind am `flock -n` sauber abgetreten, weil in genau dem Moment
+  `textbild_fix.py` das geteilte Schloss hielt (es ist selbst ein Produkttext-Schreiber).
+  **Ein `flock -n` tritt STILL ab — das ist seine Aufgabe, nicht sein Fehler.** Für einen
+  Handstart neben der Aufseher-Rotation gehört `flock -w`, nicht `-n`.
 - **Und die Sicherung, die keine war:** Der Aufseher lässt `produkttexte_du_form` nur deshalb
   automatisch schreiben, weil «jeder Text VORHER gesichert wird». Gesichert wurde er in der
   Arbeitsdatei unter `/tmp` — die den Wipe nicht überlebt und die der **nächste eigene
