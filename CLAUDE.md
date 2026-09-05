@@ -1,5 +1,29 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⚖️ Zwei Sessions, ein Shop: der Zustandsspeicher `luxestyle.lage` und der Schalter, den beide umlegen (2026-09-05)
+Die andere Session (Cowork/PC-Übergabe) führt ein Shop-Metafeld `luxestyle.lage` als Kanal zum PC («nur die
+Routine schreibt hier»; der PC hängt Zeilen unter `erledigtSeitLetztem` an). Fünf ihrer Behauptungen mit fünf
+Prüfern und fünf Skeptikern am Live-Shop gemessen (Workflow, 205 Abfragen, **0 widerlegt**), Einspruch als
+zehn Zeilen in denselben Kanal geschrieben (`scratchpad/lage_einspruch.py`, sanktionierter Weg):
+| Behauptung | Messung |
+|---|---|
+| «Import-App deinstallieren / Token entziehen» | **eine** Custom-App «autopilot2» (ffe6c3…, 180 Scopes): Importer, Bestell-Automat, Rückerstattung #1016, Tresor, Ampeln, 194 Wächter — 328 Dateien lesen dieses Token. Entzug = Betrieb aus. |
+| «51'980 ohne bild-ok draften» | bild-ok ist der Schnappschuss EINES Laufs am **16.06. 09:46–10:00Z**, der alles taggte, was da war — inkl. **358 Produkte ohne ein einziges Bild**; 478/849 sind Printful-POD; `--keep-pod` wirkungslos. 180/180 Stichproben ohne Tag haben ≥2 Bilder. |
+| «vollständig umkehrbar» | Weg A (Admin-Filter) hat kein Log — «Rückgängig» aktiviert **23'181 absichtlich gedraftete** Produkte (Waffen, Medizin, #1008-Ware). Tag 1: ~51'300 Google-Einträge weg, 149 Ratgeber-Links, 210 Weiterleitungen ins 404. |
+| «Gratis-Versand real ab 45, vereinheitlichen» | Profilregel ≥45 prüft den Korb NACH Rabatt; der 49er-Automatik-Rabatt kombiniert NICHT mit «2+ −10%»: **2×24.90 = 49.80 → 44.82 → CHF 7**, 2×25.00 → gratis. «ab 50» ist die einzige Zahl, die in jedem Korb wahr ist. |
+| «importLaeuft: false, letztes Produkt 04.09. 23:27» | letztes Produkt 05.09. 08:29:34Z (457 am Morgen, dann Pause); `created_at:>` **ignoriert die Uhrzeit** (Zukunfts-Zeitstempel liefert dieselbe Zahl) — «neu24h 1070» ist der Kalendertag 04.09., echt 1'301; aktiv 53'303, nicht 52'832. |
+- ⛔ **Die andere Session hat um 09:33 UTC die stündliche Keepalive-Routine erneut deaktiviert** («Nachstarter
+  der CJ-Runner»). Sie startet bei gesetzter Grind-Pause keinen Runner, hält aber Aufseher, Bestell-Runner und
+  Auto-Committer nach jedem stündlichen Container-Neustart am Leben (Lehre 29.08.). Um 09:43 wieder
+  eingeschaltet, Grund im Metafeld. **Ein Schalter, den zwei Sessions gegenläufig umlegen, ist keine
+  Automatik mehr — das entscheidet der Betreiber, nicht die schnellere Session.**
+- ⚠️ **Der Warenkorb-Balken stand seit dem 31.08. auf 4900 und versprach einem 2er-Korb von 49.80 Gratis-
+  Versand, den die Kasse nicht gibt** — die 31.08.-Messung kannte nur den Einzelkorb. Zurück auf 5000
+  (`theme_backup/theme.liquid.schwelle-0509`). Eine Schwelle, die man für den Einzelkorb misst, gilt nicht
+  für den Rabattkorb; und der einzige Korb, in dem sich «gratis» rechnet, ist gerade der mit zwei Artikeln.
+- ⚠️ `scratchpad/gql.py` wurde WÄHREND des Laufs von einer anderen Session überschrieben (andere Rückgabeform)
+  — zwei Abfragen scheiterten still mit `{}`. **Der Scratchpad ist geteilt; Helfer-Dateinamen gehören eindeutig.**
+
 ## 🛰️ Eine zweite Session postet ab morgen aus dem Shop-Metafeld — ohne unsere sieben Wachen (2026-09-05)
 Übergabe-Paket v2 der anderen Session: eine «Cloud-Redaktion» (06:00) füllt das Shop-Metafeld
 `luxestyle.social_queue` sieben Tage voraus, ein PC-Skript (`social-post.mjs`, 17:00 MESZ) postet daraus
