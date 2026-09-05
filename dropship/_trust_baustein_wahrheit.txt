@@ -32978,3 +32978,62 @@
 15500908167553	ersetzt-1	Business Rucksack aus Leder
 15500908200321	ersetzt-1	Bequeme, atmungsaktive Schutzschuhe für Herren
 15500908233089	ersetzt-1	Hals-Schönheitsinstrument mit Infrarotlicht
+15500908265857	ersetzt-1	Wasserdichter Oxford Rucksack mit Kopfhöreranschluss
+15500908298625	ersetzt-1	Militär-Helikopter Modellbausatz für Jugendliche
+15500908331393	ersetzt-1	Herren Sportschuh – weiter Leisten
+15500908364161	ersetzt-1	Zahnpflegestreifen für Zuhause
+15500908396929	ersetzt-1	Wasserdichter Oxford-Stoff Turnbeutel-Rucksack
+15500908429697	ersetzt-1	Retro Bausteine: Schreibmaschine, Kamera & Co.
+15500908462465	ersetzt-1	Low-top Sneaker mit runder Zehenpartie
+15500908495233	ersetzt-1	Business-Aktentasche aus Leder
+15500908528001	ersetzt-1	Holz-Puzzle für frühe Bildung
+15500908560769	ersetzt-1	Multifunktionales Haarentfernungsgerät
+15500908593537	ersetzt-1	Damen Fashion Stiefel mit warmer Fütterung
+15500908626305	ersetzt-1	Retro Leder Reisetasche
+15500908659073	ersetzt-1	8-Gitter GT Rennauto Baustein-Puzzle
+15500908724609	ersetzt-1	Sanftes Haarentfernungsgerät für den ganzen Körper
+15500908757377	ersetzt-1	Damen Plateau-Sneaker mit Farbblock-Design
+15500908790145	ersetzt-1	Trendige Canvas-Brusttasche für Herren
+15500908822913	ersetzt-1	Holzbausteine mit 27 englischen Buchstaben
+15500908855681	ersetzt-1	Moxibustion-Heizgurt für die Taille
+15500908888449	ersetzt-1	Damen Freizeit-Sneaker mit Kreuzriemen
+15500908921217	ersetzt-1	Leichter, wasserdichter Outdoor-Rucksack
+15500908953985	ersetzt-1	Dino Offroad-Fahrzeug Bausatz (352 Teile)
+15500908986753	ersetzt-1	Nährende Haarpflege-Essenz für Glanz & Geschmeidigkeit
+15500909019521	ersetzt-1	DIY Retro Loft Apartment Holzmodell
+15500909117825	ersetzt-1	Tulpen-Rose Puzzle Bausteine
+15500909150593	ersetzt-1	Butterdose aus Edelstahl mit Deckel
+15500909183361	ersetzt-1	Manueller Kartoffel- und Gemüseschneider
+15500909216129	ersetzt-1	Farbige Trinkhalme aus Borosilikatglas
+15500909248897	ersetzt-1	Locken- und Glätte-Kombe
+15500909281665	ersetzt-1	Mini-Milchtopf «Golden Snow» 20cm
+15500909314433	ersetzt-1	Automatischer Lockenstab für vielseitiges Styling
+15500909347201	ersetzt-1	Waben Antihaft-Wokpfanne 28 cm
+15500909379969	ersetzt-1	Lockenstab für einfache Stylings
+15500909412737	ersetzt-1	Japanische Retro Messenger Bag für Herren
+15500909445505	ersetzt-1	Weindekanter-Set mit Holzständer
+15500909478273	ersetzt-1	Glättbürste Anion Dual-Use
+15500909511041	ersetzt-1	Erweiterbarer Reise-Rucksack für Studenten
+15500909543809	ersetzt-1	Multifunktionales Wandregal für die Küche
+15500909576577	ersetzt-1	Lippenstift-Haarstyler für unterwegs
+15500909609345	ersetzt-1	Rucksack für Alltag, Studium und Beruf
+15500909674881	ersetzt-1	Vorratsdosen-Set mit Deckel und Schnappverschluss
+15500909707649	ersetzt-1	Tragbarer Glätteisen für nasses und trockenes Haar
+15500909740417	ersetzt-1	Wasserdichter Bergrucksack mit Tragesystem
+15500909773185	ersetzt-1	Unregelmässiges Schokoladenformteil
+15500909805953	ersetzt-1	Kabelloser Glättkamm mit Negativ-Ionen
+15500909838721	ersetzt-1	Camel Bag Knight Messenger Motorradrucksack
+15500909871489	ersetzt-1	Mini-Elektro-Entsafter Glas
+15500909904257	ersetzt-1	Magnetischer Messerhalter aus Bambus
+15500909937025	ersetzt-1	Grosser Laptop-Rucksack für Reisen und Alltag
+15500909969793	ersetzt-1	Ersatz-Fernbedienung für Panasonic TVs
+15500910002561	ersetzt-1	Holzschale mit Mondgöttin und Pentagramm
+15500910035329	ersetzt-1	Outdoor Rucksack für Sport und Freizeit
+15500910068097	ersetzt-1	LED Leuchtkasten mit Buchstabenkarten
+15500910100865	ersetzt-1	MCD135 Mehrzweck-Metzgermesser
+15500910133633	ersetzt-1	3-in-1 Glätteisen & Lockenstab für trockenes/nasses Haar
+15500911247745	ersetzt-1	Trendy Oxford-Tasche
+15500911280513	ersetzt-1	Grosser Keramiktopf
+15500911313281	ersetzt-1	Luftbefeuchter für Grossraum
+15500911346049	ersetzt-1	Grauer Schulterbeutel
+15500911378817	ersetzt-1	Keramik-Schüssel
