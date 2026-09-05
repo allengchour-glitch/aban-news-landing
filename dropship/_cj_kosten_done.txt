@@ -13001,3 +13001,6 @@ gid://shopify/Product/15454161797505	CHF 31.69	1 Varianten	Memory-Foam-Halsstüt
 gid://shopify/Product/15454161830273	CHF 26.64	9 Varianten	Mintgrüne Freizeit-Sneaker für Paare
 gid://shopify/Product/15454161863041	CHF 18.82	6 Varianten	Braune Freizeit-Hose
 gid://shopify/Product/15454161895809	CHF 8.19	1 Varianten	Atmungsaktive Kissenbezüge für Kinder
+gid://shopify/Product/15454161928577	CHF 38.88	11 Varianten	Winter-Suede-Schuhe für Herren
+gid://shopify/Product/15454161961345	CHF 23.78	6 Varianten	Camo-Overalls für Herren
+gid://shopify/Product/15454161994113	CHF 29.44	1 Varianten	Büro-Heizdecke mit Bauchstütze
