@@ -59,3 +59,5 @@
 15450167705985	bild-4-nach-vorn	kontaktbogen-0509 auto-kfz-zubehoer
 15502391804289	bild-7-nach-vorn	kontaktbogen-0509 querbeet
 15510926918017	bild-3-nach-vorn	kontaktbogen-0509 querbeet
+15523138961793	bild-8-nach-vorn	kontaktbogen-0509 querbeet (per MCP, Admin-Token tot: app_not_installed)
+15523921527169	bild-7-nach-vorn	kontaktbogen-0509 querbeet (per MCP, Admin-Token tot: app_not_installed)
