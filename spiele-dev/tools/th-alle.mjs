@@ -168,6 +168,12 @@ const PRUEFUNGEN = [
   { name: 'Raeder (rollen die Verkehrswagen)', datei: 'th-raeder.mjs', kern: false,
     wert: (s) => (s.match(/(\d+) rollen richtig/) || [, '?'])[1] + ' Wagen',
     gut: (s) => /🎉 RAEDER BESTANDEN/.test(s) },
+  /* ⚠️ Dass Wagen ueber offenes Wasser fuhren, hat kein Messwert gemeldet — es stand
+     im Bild einer ganz anderen Runde. Diese Pruefung schickt darum von jedem Wagen
+     einen Strahl nach unten und fragt, ob darunter Asphalt liegt. */
+  { name: 'Wasserwagen (faehrt jemand aufs Meer)', datei: 'th-wasserwagen.mjs', kern: false,
+    wert: (s) => (s.match(/ueber Wasser \(8 Proben\): (\d+)/) || [, '?'])[1] + ' Sichtungen',
+    gut: (s) => /🎉 WASSERWAGEN BESTANDEN/.test(s) },
   /* ⚠️ Die TAFELN sah bis 2026-09-04 niemand nach. th-hud prueft die immer sichtbare
      Leiste, th-spielerblick die Welt — was der Spieler OEFFNET (Erfolge, Karte,
      Bau-Palette, Krimi-Auswahl, Hetze), stand nirgends. Genau dort war der letzte
