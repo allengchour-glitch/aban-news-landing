@@ -1,0 +1,293 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section": {
+      "type": "section",
+      "blocks": {
+        "text_tqQTNE": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.collection.title }}</h1>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_twGGkJ": {
+          "type": "text",
+          "name": "Description",
+          "settings": {
+            "text": "{{ closest.collection.description }}",
+            "width": "fit-content",
+            "max_width": "wide",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_tqQTNE",
+        "text_twGGkJ"
+      ],
+      "name": "Collection heading",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 28,
+        "padding-block-end": 20
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": true,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "judge_me_reviews_preview_badge_hLVFzX": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "settings": {}
+            },
+            "review_YLpDhT": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "shaded",
+                "show_number": true,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_4nY4eT": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_EzJzMm": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "judge_me_reviews_preview_badge_hLVFzX",
+            "review_YLpDhT",
+            "card-gallery",
+            "product_title_4nY4eT",
+            "price_EzJzMm"
+          ]
+        }
+      },
+      "custom_css": [],
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 32,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 32
+      }
+    },
+    "lux_faq": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width:820px;margin:0 auto;font-size:15px;line-height:1.6;color:#333\"><h2 style=\"font-size:20px;margin:0 0 6px\">Häufige Fragen zu {{ collection.title }}</h2><p style=\"color:#666;margin:0 0 8px\">Alles rund um {{ collection.title }} bei LuxeStyle – kuratierte Schweizer Auswahl, faire Preise, schneller Versand.</p><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">🚚 Wie lange dauert der Versand in die Schweiz?</summary><p style=\"margin:8px 0 0;color:#555\">Das steht bei jedem Artikel: ab Schweizer Lager 1–2 Werktage, ab EU-Lager 2–7 Werktage, Direktversand 10–20 Werktage — immer mit Sendungsverfolgung. Gratis-Versand ab CHF 50, sonst CHF 7.00.</p></details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">💳 Welche Zahlungsmethoden gibt es?</summary><p style=\"margin:8px 0 0;color:#555\">TWINT, Visa, Mastercard und weitere – sicher und SSL-verschlüsselt.</p></details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">↩️ Wie funktioniert die Rückgabe?</summary><p style=\"margin:8px 0 0;color:#555\">Wir gewähren ein freiwilliges 30-Tage-Rückgaberecht. Eine kurze Nachricht an info@luxestyle.ch genügt.</p></details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">📏 Wie finde ich die richtige Grösse?</summary><p style=\"margin:8px 0 0;color:#555\">Bei Mode- und Schuh-Artikeln findest du eine cm-Grössentabelle direkt auf der jeweiligen Produktseite.</p></details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">🇨🇭 Warum bei LuxeStyle kaufen?</summary><p style=\"margin:8px 0 0;color:#555\">Schweizer Online-Shop mit kuratierter Auswahl, fairen Preisen, sicherer Zahlung und persönlichem Support auf Deutsch.</p></details></div>",
+        "section_width": "page-width",
+        "padding-block-start": 28,
+        "padding-block-end": 28
+      }
+    },
+    "lux_breadcrumb": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- liquid\n  assign p_title = ''\n  assign p_url = ''\n  for link in linklists.main-menu.links\n    for sub in link.links\n      if sub.url == collection.url and p_title == ''\n        assign p_title = link.title\n        assign p_url = link.url\n      endif\n      for sub2 in sub.links\n        if sub2.url == collection.url and p_title == ''\n          assign p_title = sub.title\n          assign p_url = sub.url\n        endif\n      endfor\n    endfor\n  endfor\n-%}\n<nav aria-label=\"Breadcrumb\" style=\"max-width:var(--page-width,1200px);margin:0 auto;padding:.4rem 1.5rem 0;font-size:.8rem;line-height:1.4;color:#888;display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;\">\n  <a href=\"{{ routes.root_url }}\" style=\"color:#8a6d3b;text-decoration:none;\">Home</a>\n  {%- if p_title != blank %}<span aria-hidden=\"true\">&rsaquo;</span>\n  <a href=\"{{ p_url }}\" style=\"color:#8a6d3b;text-decoration:none;\">{{ p_title | strip }}</a>{% endif -%}\n  <span aria-hidden=\"true\">&rsaquo;</span>\n  <span aria-current=\"page\" style=\"color:#999;\">{{ collection.title }}</span>\n</nav>\n<script type=\"application/ld+json\">\n{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[\n{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"{{ shop.url }}{{ routes.root_url }}\"}{%- if p_title != blank %},\n{\"@type\":\"ListItem\",\"position\":2,\"name\":{{ p_title | strip | json }},\"item\":\"{{ shop.url }}{{ p_url }}\"},\n{\"@type\":\"ListItem\",\"position\":3,\"name\":{{ collection.title | json }},\"item\":\"{{ shop.url }}{{ collection.url }}\"}{% else %},\n{\"@type\":\"ListItem\",\"position\":2,\"name\":{{ collection.title | json }},\"item\":\"{{ shop.url }}{{ collection.url }}\"}{% endif -%}\n]}\n</script>",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "lux_subchips": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- liquid\n  assign chips = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url and link.links.size > 1\n      assign chips = link.links\n    endif\n    for sub in link.links\n      if sub.url == collection.url and link.links.size > 1\n        assign chips = link.links\n      endif\n    endfor\n  endfor\n-%}\n{%- if chips != '' and chips.size > 1 -%}\n<div style=\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.5rem 1.5rem .2rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\">\n  <div style=\"display:flex;gap:.5rem;width:max-content;padding-bottom:.3rem;\">\n    {%- for ch in chips -%}\n      {%- assign act = false -%}{%- if ch.url == collection.url -%}{%- assign act = true -%}{%- endif -%}\n      <a href=\"{{ ch.url }}\" style=\"white-space:nowrap;font-size:.85rem;padding:.4rem .85rem;border-radius:999px;text-decoration:none;border:1px solid {% if act %}#8a6d3b{% else %}#e0d8c8{% endif %};{% if act %}background:#8a6d3b;color:#fff;{% else %}background:#fff;color:#5a4a2f;{% endif %}font-weight:{% if act %}600{% else %}400{% endif %};\">{{ ch.title }}</a>\n    {%- endfor -%}\n  </div>\n</div>\n{%- endif -%}\n{%- comment -%}\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\n{%- endcomment -%}\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\n{%- capture fchips -%}\n  {%- for paar in filterpaare -%}\n    {%- assign teile = paar | split: '|' -%}\n    {%- assign t = teile[0] -%}\n    {%- if collection.all_tags contains t -%}\n      {%- assign akt = false -%}\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\n      {%- if akt -%}\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\n        {%- assign rest = rest | remove_first: '+' -%}\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\n      {%- else -%}\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\n      {%- endif -%}\n      <a href=\"{{ ziel }}\" rel=\"nofollow\" style=\"white-space:nowrap;font-size:.82rem;padding:.35rem .8rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#d8e0d8{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:600;{% else %}background:#f7faf7;color:#2f4a35;{% endif %}\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\n    {%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if fchips contains '<a' -%}\n<div style=\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\">\n  <div style=\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\">\n    <span style=\"font-size:.78rem;color:#7a7a72;white-space:nowrap;\">Filtern:</span>\n    {{ fchips }}\n  </div>\n</div>\n{%- endif -%}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "lux_usp_coll": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width:var(--page-width,1200px);margin:0 auto;padding:.4rem 1.5rem;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px 4px;justify-content:space-between;background:#faf7f1;border:1px solid #ece4d6;border-radius:10px;padding:10px 14px;font-size:12.5px;color:#4a4a4a;text-align:center;\"><span style=\"flex:1 1 130px;\">🚚 <strong>Gratis-Versand</strong> ab CHF 50</span><span style=\"flex:1 1 130px;\">↩️ <strong>30 Tage</strong> Rückgabe</span><span style=\"flex:1 1 130px;\">🇨🇭 <strong>Schweizer Shop</strong></span><span style=\"flex:1 1 130px;\">🔒 <strong>Sichere Zahlung</strong> · TWINT</span><span style=\"flex:1 1 130px;\">🎁 <strong>–10%</strong> mit WELCOME10</span></div></div>",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "lux_breadcrumb",
+    "lux_subchips",
+    "lux_usp_coll",
+    "section",
+    "main",
+    "lux_faq"
+  ]
+}
