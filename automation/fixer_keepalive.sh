@@ -700,8 +700,18 @@ while true; do
       # als Netz (das Werkzeug faellt bei LISTE='' von selbst darauf zurueck).
       WVL="$REPO/dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt"
       [ -s "$WVL" ] || WVL=""
-      ( cd "$REPO" && setsid flock -n /tmp/lock_produkttext.lock \
-          env CAP=6000 FIX=1 LISTE="$WVL" python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
+      # ⚠️ 05.09.2026: DIE UMLEITUNG GEHOERT HINTER DAS SCHLOSS. Die Shell richtet Umleitungen
+      # VOR dem Kommando ein. Gemessen, nicht angenommen — und der Unterschied ist genau EIN
+      # Zeichen: Mit `>>` bleibt das Log unberuehrt (ein Oeffnen im Anhaengemodus aendert die
+      # mtime nicht, nur ein Schreiben tut das). Mit `>` wird es beim Scheitern des Schlosses
+      # GELEERT und traegt die aktuelle Zeit. Wo ein 24-Stunden-Tor auf dieser mtime sitzt,
+      # markiert sich ein blockierter Waechter damit selbst als «heute gelaufen» — und der
+      # Bericht des letzten echten Laufs ist weg. Betroffen waren `artikelnummer_entfernen`
+      # und `produkttexte_du_form`; beide standen hinter einem Dauerlaeufer, der das geteilte
+      # Schloss stundenlang haelt. Hier ist die Umleitung nur zur Einheitlichkeit nachgezogen.
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; exec >> \"$WV\" 2>&1; \
+           CAP=6000 FIX=1 LISTE=\"$WVL\" exec python3 automation/wahlversprechen.py" 9>&- & )
       echo "$(date -u +%H:%M) wahlversprechen geprüft"
     fi
   fi
@@ -713,8 +723,10 @@ while true; do
   if [ -f "$REPO/automation/wearable_messversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WM" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid flock -n /tmp/lock_produkttext.lock \
-          env QUELLE=live CAP=200 python3 automation/wearable_messversprechen.py >> "$WM" 2>&1 9>&- & )
+      # Umleitung hinter dem Schloss — siehe wahlversprechen oben.
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; exec >> \"$WM\" 2>&1; \
+           QUELLE=live CAP=200 exec python3 automation/wearable_messversprechen.py" 9>&- & )
       echo "$(date -u +%H:%M) wearable_messversprechen geprüft"
     fi
   fi
@@ -761,9 +773,11 @@ while true; do
   if [ -f "$REPO/automation/artikelnummer_entfernen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$AN" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
+      # ⚠️ Umleitung hinter dem Schloss — und sie war hier `>`, hat das Log eines blockierten
+      # Laufs also nicht nur angefasst, sondern GELEERT (der Bericht des letzten echten Laufs war weg).
       ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_produkttext.lock; flock -w 1800 9 || exit 0; exec python3 automation/artikelnummer_entfernen.py" \
-          > "$AN" 2>&1 9>&- & )
+          "exec 9>/tmp/lock_produkttext.lock; flock -w 1800 9 || exit 0; exec > \"$AN\" 2>&1; \
+           exec python3 automation/artikelnummer_entfernen.py" 9>&- & )
       echo "$(date -u +%H:%M) artikelnummer_entfernen gestartet"
     fi
   fi
@@ -774,7 +788,9 @@ while true; do
   # ⚠️ Dass dieser Massen-Textschreiber automatisch laufen darf, haengt an drei Dingen:
   #   1. die Pruefungen sind in BEIDE Richtungen getestet (Sache-«Sie» erlaubt, Anrede-«Sie»
   #      blockiert; echte Frage erlaubt, Aussage-aus-Imperativ blockiert),
-  #   2. jeder geschriebene Text wird VORHER nach /tmp/produkt_du_alt.jsonl gesichert,
+  #   2. jeder geschriebene Text wird VORHER nach dropship/_produkttexte_du_form_alt.jsonl
+  #      gesichert — im REPO, nicht in /tmp (dort ueberlebt eine Sicherung weder den Wipe
+  #      noch den naechsten Sammellauf, der die Arbeitsdatei ueberschreibt),
   #   3. das Tageskontingent ist klein. Ohne den Rueckweg waere ein systematischer Fehler
   #      unumkehrbar — dann gehoerte das Schreiben in eine gelesene Entscheidung.
   DU=/tmp/produkt_du_lauf.log
@@ -782,10 +798,9 @@ while true; do
     ALTER=$(( $(date +%s) - $(stat -c %Y "$DU" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
       ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_produkttext.lock; flock -w 2400 9 || exit 0; \
+          "exec 9>/tmp/lock_produkttext.lock; flock -w 2400 9 || exit 0; exec > \"$DU\" 2>&1; \
            CAP=150 python3 automation/produkttexte_du_form.py && \
-           WRITE=1 exec python3 automation/produkttexte_du_form.py" \
-          > "$DU" 2>&1 9>&- & )
+           WRITE=1 exec python3 automation/produkttexte_du_form.py" 9>&- & )
       echo "$(date -u +%H:%M) produkttexte_du_form gestartet"
     fi
   fi
@@ -1034,9 +1049,12 @@ while true; do
   if [ -f "$REPO/automation/cj_specs_backfill.mjs" ] && [ -f "$REPO/dropship/_cj_specs_prio.txt" ]; then
     SB_ALTER=$(( $(date +%s) - $(stat -c %Y "$SB" 2>/dev/null || echo 0) ))
     if ! grep -q "^FERTIG:" "$SB" 2>/dev/null && [ "$SB_ALTER" -gt 43200 ]; then
+      # ⚠️ Umleitung HINTER dem Schloss: `>` leert das Log schon beim Einrichten. Ein Lauf, der
+      # am `flock -n` scheitert, haette hier gleich zwei Tore zurueckgesetzt — die «FERTIG:»-Zeile
+      # waere weg (der Lauf finge von vorn an) und die mtime waere frisch (12-Stunden-Tor).
       ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_cj_specs_backfill.lock; flock -n 9 || exit 0; LIMIT=30 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" \
-          > "$SB" 2>&1 9>&- & )
+          "exec 9>/tmp/lock_cj_specs_backfill.lock; flock -n 9 || exit 0; exec > \"$SB\" 2>&1; \
+           LIMIT=30 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" 9>&- & )
       echo "$(date -u +%H:%M) cj_specs_backfill gestartet"
     fi
   fi

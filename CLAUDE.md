@@ -1,5 +1,32 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔓 Ein Zeichen Unterschied: `>` löschte den Bericht eines blockierten Wächters (2026-09-05)
+Beim Nachsehen, warum `wahlversprechen` seine Arbeitsliste nicht abarbeitet, fiel die Bauart der
+Startzeilen auf: Die Shell richtet Umleitungen **vor** dem Kommando ein — also bevor `flock -n`
+überhaupt entscheidet. **Gemessen statt angenommen, und der Unterschied ist genau EIN Zeichen:**
+
+| Form | Log eines am Schloss gescheiterten Laufs |
+|---|---|
+| `>> "$LOG"` | **unberührt** — ein Öffnen im Anhängemodus ändert die mtime nicht, nur ein Schreiben tut das |
+| `> "$LOG"` | **geleert, mtime = jetzt** |
+
+Und genau darauf sitzen die 24-Stunden-Tore (`stat -c %Y`). Betroffen waren
+`artikelnummer_entfernen`, `produkttexte_du_form` und `cj_specs_backfill`: Wer am geteilten
+Produkttext-Schloss scheiterte, **markierte sich damit selbst als «heute gelaufen» und warf den
+Bericht des letzten echten Laufs weg** — beim Specs-Nachtrag zusätzlich die `FERTIG:`-Zeile, an
+der sein zweites Tor hängt. Hinter einem Dauerläufer, der das Schloss stundenlang hält, heisst
+das: nie wieder. Umleitung steht jetzt überall HINTER dem `flock`; in beide Richtungen belegt.
+- ⚠️ **Meine erste Erklärung war zu weit gefasst und ich habe sie im selben Zug korrigiert:**
+  Ich hatte behauptet, JEDE Umleitung fasse das Log an. Der Test zeigt das Gegenteil für `>>`.
+  Eine Ursache, die man nicht gemessen hat, ist eine Vermutung — auch wenn die daraus
+  abgeleitete Änderung richtig ist (dieselbe Selbstkorrektur wie gestern bei den «100 GB»).
+- **Und die Sicherung, die keine war:** Der Aufseher lässt `produkttexte_du_form` nur deshalb
+  automatisch schreiben, weil «jeder Text VORHER gesichert wird». Gesichert wurde er in der
+  Arbeitsdatei unter `/tmp` — die den Wipe nicht überlebt und die der **nächste eigene
+  Sammellauf überschreibt**. Der alte Text geht jetzt Zeile für Zeile ins Repo
+  (`dropship/_produkttexte_du_form_alt.jsonl`), und zwar VOR der Mutation.
+  **Eine Sicherung, die vor dem nächsten eigenen Lauf verschwindet, ist keine.**
+
 ## 📝 Zwei Ratgeber nach der Rizinusöl-Methode — dort schreiben, wo Nachfrage BELEGT ist (2026-09-05)
 Die eigene Aktenlage sagt: Suchverkehr ist der einzige Kanal, der verkauft, und was rankt, ist
 Text, den es sonst nirgends gibt. Semrush nennt die Begriffe, für die der Shop schon in den

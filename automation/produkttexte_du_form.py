@@ -30,6 +30,14 @@ CAP   = int(os.environ.get('CAP', '40'))
 WRITE = os.environ.get('WRITE') == '1'
 ZIEL  = os.environ.get('ZIEL', '/tmp/produkt_du.json')
 LEDGER = 'dropship/_produkttexte_du_form.txt'
+# ⚠️ 05.09.2026: RUECKWEG INS REPO, nicht nach /tmp. Der Aufseher laesst diesen
+# Massen-Textschreiber ausdruecklich nur deshalb automatisch laufen, weil «jeder
+# geschriebene Text VORHER gesichert wird» — gesichert war er aber nur in der
+# Arbeitsdatei unter /tmp, und die ueberlebt weder einen Wipe noch den naechsten
+# Sammellauf, der sie ueberschreibt. Eine Sicherung, die vor dem naechsten eigenen
+# Lauf verschwindet, ist keine. Der alte Text steht jetzt Zeile fuer Zeile im Repo;
+# bei 1'170 Produkten in dieser Klasse bleibt die Datei im einstelligen MB-Bereich.
+ALT_SICHERUNG = 'dropship/_produkttexte_du_form_alt.jsonl'
 
 # ⚠️ 04.09.2026, aus der Lektuere der ersten 11 Diffs: Die Regeln der KOLLEKTIONStexte
 # uebertragen sich NICHT eins zu eins auf Produkttexte. Gefunden wurden zwei Klassen, die
@@ -112,6 +120,12 @@ def schreiben():
         live = (((lr.get('data') or {}).get('product') or {}).get('descriptionHtml')) or ''
         if live != f['alt']:
             print('⚠ live geaendert — uebersprungen:', f['titel'][:50]); fehl += 1; continue
+        # Erst sichern, dann schreiben — nie umgekehrt (sonst fehlt genau der Text, den
+        # man zurueckholen will, wenn die Mutation zwar durchgeht, das Ergebnis aber falsch ist).
+        with open(ALT_SICHERUNG, 'a') as sic:
+            sic.write(json.dumps({'id': f['id'], 'titel': f['titel'], 'alt': live},
+                                 ensure_ascii=False) + '\n')
+            sic.flush()
         r = gql(M, {'i': {'id': f['id'], 'descriptionHtml': f['neu']}})
         ue = ((r.get('data') or {}).get('productUpdate') or {}).get('userErrors') or []
         if ue:
