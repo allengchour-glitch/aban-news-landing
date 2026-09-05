@@ -149,17 +149,23 @@ def main():
     # angefasst hat, wird uebersprungen. Bei Entwuerfen eines abgeschalteten Lieferanten ist
     # das selten, und ein `KLASSE=`-Lauf ohne Stichtag holt sie jederzeit nach.
     filter_klasse = KLASSE
+    stichtage = {}
     if not DRY:
-        stichtage = {}
         if os.path.exists(STICHTAGE):
             stichtage = json.load(open(STICHTAGE))
-        tag = stichtage.get(KLASSE)
-        if not tag:
-            tag = time.strftime('%Y-%m-%d', time.gmtime())
-            stichtage[KLASSE] = tag
+        # Drei Zustaende, nicht zwei: KEIN Eintrag = erster Lauf (Stichtag setzen) ·
+        # Datum = laufende Abkuerzung · null = Stichtag wurde aufgehoben, dieser Lauf sieht
+        # die GANZE Klasse. Ohne den dritten Zustand haette der naechste Lauf sofort wieder
+        # einen frischen Stichtag gesetzt und dieselbe Menge erneut ausgeblendet.
+        if KLASSE not in stichtage:
+            stichtage[KLASSE] = time.strftime('%Y-%m-%d', time.gmtime())
             json.dump(stichtage, open(STICHTAGE, 'w'))
-        filter_klasse += ' AND updated_at:<' + tag
-        print(f'Filter: {filter_klasse}')
+        tag = stichtage.get(KLASSE)
+        if tag:
+            filter_klasse += ' AND updated_at:<' + tag
+            print(f'Filter: {filter_klasse}')
+        else:
+            print(f'Ohne Stichtag (Schlusskontrolle ueber die ganze Klasse): {KLASSE}')
     led = None if DRY else open(LEDGER, 'a')
     prod = bilder = 0
     byt = 0
@@ -197,10 +203,21 @@ def main():
                 list(pool.map(loeschen, auftraege))
             auftraege = []
         if not p.get('pageInfo', {}).get('hasNextPage'):
-            print(f'Klasse vollstaendig durchlaufen: {KLASSE}')
-            if not DRY:
-                open(FERTIGDATEI, 'a').write(KLASSE + '\n')
-                pass
+            # ⚠️ «Durchlaufen» heisst hier zunaechst nur: durchlaufen UNTER DEM STICHTAG.
+            # Ein Produkt, das ein anderer Waechter nach dem Stichtag angefasst hat, war in
+            # dieser Abfrage gar nicht drin — die Klasse als FERTIG zu quittieren waere
+            # «0 uebrig unter denen, die ich gefragt habe» (Lehre 03.09.). Deshalb: Stichtag
+            # aufheben und den naechsten Lauf die GANZE Klasse sehen lassen; erst wenn die
+            # auch nichts mehr hergibt, ist sie wirklich fertig.
+            if not DRY and stichtage.get(KLASSE):
+                stichtage[KLASSE] = None          # null = «Stichtag aufgehoben», nicht «nie gesetzt»
+                json.dump(stichtage, open(STICHTAGE, 'w'))
+                print(f'Unter Stichtag nichts mehr offen — Stichtag aufgehoben, '
+                      f'der naechste Lauf prueft die GANZE Klasse: {KLASSE}')
+            else:
+                print(f'Klasse vollstaendig durchlaufen: {KLASSE}')
+                if not DRY:
+                    open(FERTIGDATEI, 'a').write(KLASSE + '\n')
             cur = None; break
         cur = p['pageInfo']['endCursor']
         # ⚠️ Cursor NUR im Schreibmodus fortschreiben — ein Anzeigemodus darf keinen
