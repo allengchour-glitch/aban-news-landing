@@ -82,6 +82,16 @@ Schluessel IST dieses Token (Lehre 30.08.).
   erschoepfte seine Versuche, und der Aufrufer beendete sich mit `sys.exit(1)` **ohne** Ledger-Zeile.
   Die spaeteren Commit-Zeiten sind nur der gebuendelte Auto-Committer. **Eine Commit-Zeit ist kein
   Schreibzeitpunkt** — und ein Verdacht gehoert am Code geprueft, bevor man ein Ledger aufraeumt.
+- ⚠️ **Gelesene Stichprobe von drei getauschten Erstbildern (die Pruef-Agenten waren am
+  Sitzungslimit gestorben): 2 sauber, 1 verbessert-aber-nicht-sauber.** Beamer und Herrenuhr sind
+  reine Produktfotos; die «Herren Batik Kapuzenjacke» traegt oben weiterhin montierten englischen
+  Text («QUALITY SMART PRINTED · STREET RETRO STYLE»). Der Agent hatte ihn GESEHEN und begruendet
+  verworfen: derselbe Banner steht auf ALLEN Bildern des Satzes, ist also kein
+  Unterscheidungskriterium. Das Urteil ist richtig, die Folgerung wichtig:
+  **«Erstbild getauscht» heisst nicht «Erstbild sauber».** Wo der ganze Bildsatz kontaminiert ist,
+  hilft Umsortieren nicht — dort braucht es besseres Quellmaterial, und solange der Datei-Speicher
+  voll ist, geht das gar nicht. Der OCR-Waechter `hauptbild_ohne_text` meldet solche Faelle zu Recht
+  weiter; sie sind kein Fehlschlag des Tauschs, sondern eine andere Klasse.
 - ⚠️ **Ein Fehlalarm auf dem Weg, den ich fast gemeldet haette:** Die Startseite antwortete
   5× hintereinander zu 40 % mit **HTTP 500**, und ich war beim Satz «die Haustuer ist kaputt».
   Sechs Abrufe spaeter: **6/6 = 200**, ebenso zwei Kollektionsseiten. Es war der kalte Edge-Cache
