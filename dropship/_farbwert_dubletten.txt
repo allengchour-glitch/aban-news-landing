@@ -313,3 +313,14 @@
 15503958442369	uebersprungen:black red -> Schwarz-Rot kollidiert	Kinder Barfussschuhe für Strand und Freizeit
 15504103768449	uebersprungen:Black Color -> Schwarz kollidiert	Pailletten Disco Hemd für Teenager
 15506325275009	uebersprungen:Blue Color -> Blau kollidiert	Ethno-Sandalen mit Klettverschluss und dicker Sohle
+15450036601217	uebersprungen:Black -> Schwarz kollidiert	Retro-High-Top-Schuhe für Herren
+15450830176641	uebersprungen:Dark gray -> Dunkelgrau kollidiert	Kuschel-Hoodie mit grosser Tasche
+15458844049793	uebersprungen:Pink Color -> Pink kollidiert	Herren Langarm Button-Down Hemd
+15468651315585	uebersprungen:Pink Color -> Pink kollidiert	Retro-Bluse · Damen
+15479418618241	uebersprungen:black -> Schwarz kollidiert	Robuste, leichte Herren-Arbeitsschuhe
+15479812489601	uebersprungen:Blue -> Blau kollidiert	Herren Zehensteg-Sandalen
+15480167530881	uebersprungen:Black -> Schwarz kollidiert	Leder-Sneaker mit Seitenreissverschluss
+15485613965697	uebersprungen:Black -> Schwarz kollidiert	Herren Outdoor Flip-Flops für Zuhause
+15503958442369	uebersprungen:black red -> Schwarz-Rot kollidiert	Kinder Barfussschuhe für Strand und Freizeit
+15504103768449	uebersprungen:Black Color -> Schwarz kollidiert	Pailletten Disco Hemd für Teenager
+15506325275009	uebersprungen:Blue Color -> Blau kollidiert	Ethno-Sandalen mit Klettverschluss und dicker Sohle

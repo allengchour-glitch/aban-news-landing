@@ -50332,3 +50332,5 @@ gid://shopify/Product/15523819061633	gid://shopify/MediaImage/70766914666881
 gid://shopify/Product/15523819094401	gid://shopify/MediaImage/70766914699649
 gid://shopify/Product/15496229585281	gid://shopify/MediaImage/70506114253185
 gid://shopify/Product/15502557741441	gid://shopify/MediaImage/70563606888833
+gid://shopify/Product/15448826413441	gid://shopify/MediaImage/69861137973633
+gid://shopify/Product/15448949195137	gid://shopify/MediaImage/69862507217281
