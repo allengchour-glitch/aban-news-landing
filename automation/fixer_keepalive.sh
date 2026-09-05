@@ -303,10 +303,17 @@ while true; do
     EXP=""; [ "$L" = hauptbild_ohne_text ] && [ -f /tmp/ocr_export_keep.jsonl ] \
       && EXP="EXPORT=/tmp/ocr_export_keep.jsonl"
     [ "$L" = umlaut_suchtags ] && [ -f /tmp/opts_keep.jsonl ] && EXP="QUELLE=/tmp/opts_keep.jsonl"
-    # versand_jenachland braucht seine Kandidatenliste; ohne sie fände es nichts und
-    # meldete stillschweigend Erfolg. Fehlt die Datei (Container gewiped), wird der Lauf
-    # übersprungen statt ins Leere zu laufen — ein neuer Export ist dann fällig.
-    if [ "$L" = versand_jenachland ] || [ "$L" = fremdzeichen_guard ]; then
+    # versand_jenachland sucht seine Kandidaten seit dem 05.09.2026 SELBST (Inhalts-Suche
+    # «USA: 12-22 Tage», mit einem Unsinnswort gegengeprüft). Vorher hing es an
+    # /tmp/versand_quelle.jsonl — die Datei überlebt keinen Container-Neustart, und der
+    # Lauf wurde deshalb JEDES Mal übersprungen; live trugen 573 aktive Produkte den
+    # USA-Lieferblock weiter. Gibt es die Datei noch, wird sie bevorzugt.
+    if [ "$L" = versand_jenachland ]; then
+      if [ -f /tmp/versand_quelle.jsonl ]; then EXP="QUELLE=/tmp/versand_quelle.jsonl"; else EXP="QUELLE=live"; fi
+    fi
+    # fremdzeichen_guard braucht seine Kandidatenliste weiterhin; ohne sie fände es nichts
+    # und meldete stillschweigend Erfolg.
+    if [ "$L" = fremdzeichen_guard ]; then
       [ -f /tmp/versand_quelle.jsonl ] || continue
       EXP="QUELLE=/tmp/versand_quelle.jsonl"
     fi
