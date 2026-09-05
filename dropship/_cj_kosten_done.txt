@@ -12283,3 +12283,5 @@ gid://shopify/Product/15454049665409	CHF 12.30	1 Varianten	Motorradhelm-Wandhalt
 gid://shopify/Product/15454049698177	CHF 15.27	33 Varianten	Wollfutter-Kinderschuhe
 gid://shopify/Product/15454049730945	CHF 22.45	1 Varianten	Kinderschutzhelm für Schule & Freizeit
 gid://shopify/Product/15454049763713	CHF 150.60	1 Varianten	Faltbarer Schuhschrank mit 3-9 Lagen, transparent,
+gid://shopify/Product/15454049796481	CHF 20.28	30 Varianten	Atmungsaktive Basketball-Schuhe für Jungen
+gid://shopify/Product/15454049829249	CHF 20.59	1 Varianten	Fahrradhelm
