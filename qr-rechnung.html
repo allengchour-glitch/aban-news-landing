@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR-Rechnung erstellen (Schweiz) — gratis, ohne Konto · aban news</title>
+<meta name="description" content="Schweizer QR-Rechnung mit Zahlteil und Empfangsschein erstellen: IBAN oder QR-IBAN, Referenz, Betrag — nach Swiss Payment Standards, druckfertig auf A4. Läuft im Browser, nichts wird gesendet.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/qr-rechnung.html">
+<meta property="og:title" content="QR-Rechnung erstellen (Schweiz) — gratis">
+<meta property="og:description" content="Zahlteil und Empfangsschein nach Standard, druckfertig. Im Browser, ohne Konto.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/qr-rechnung.html">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"QR-Rechnung erstellen (Schweiz)",
+"url":"https://abannews.com/qr-rechnung.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de-CH","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},
+"description":"Erstellt eine Schweizer QR-Rechnung (Zahlteil und Empfangsschein) nach Swiss Payment Standards, druckfertig auf A4.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was ist eine QR-Rechnung?","acceptedAnswer":{"@type":"Answer","text":"Die QR-Rechnung hat in der Schweiz und in Liechtenstein den orangen und roten Einzahlungsschein abgelöst. Sie besteht aus dem Zahlteil mit dem Swiss QR Code und dem Empfangsschein, beides unten auf der Rechnung. Wer den Code mit der Banking-App scannt, hat alle Zahlungsdaten drin."}},
+{"@type":"Question","name":"Brauche ich eine QR-IBAN?","acceptedAnswer":{"@type":"Answer","text":"Nein. Mit deiner normalen IBAN geht es ohne Referenz oder mit einer Creditor Reference (RF). Eine QR-IBAN bekommst du von deiner Bank, wenn du strukturierte QR-Referenzen willst, zum Beispiel für den automatischen Abgleich in der Buchhaltung."}},
+{"@type":"Question","name":"Werden meine Daten gesendet oder gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. IBAN, Adressen und Beträge bleiben im Browser. Es gibt kein Konto, keinen Upload und kein Tracking. Zum Drucken nutzt du die Druckfunktion deines Browsers, zum Beispiel als PDF."}},
+{"@type":"Question","name":"Kann ich den Betrag offen lassen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Ohne Betrag druckt der Zahlteil ein leeres Feld, in das die zahlende Person den Betrag einträgt, wie bei einer Spende."}},
+{"@type":"Question","name":"Ist das Ergebnis normgerecht?","acceptedAnswer":{"@type":"Answer","text":"Die Nutzdaten folgen den Swiss Payment Standards, Version 0200, und werden vor dem Erzeugen geprüft: IBAN-Prüfsumme, QR-IBAN-Erkennung, Prüfziffern der QR-Referenz und der Creditor Reference, Betragsformat. Das Layout des Zahlteils entspricht den Vorgaben in Grösse und Schriftgrad. Für die Gestaltung des Schweizer Kreuzes gilt die Vorlage von SIX; hier wird sie als Vektor nachgezeichnet."}},
+{"@type":"Question","name":"Was kostet das?","acceptedAnswer":{"@type":"Answer","text":"Zahlteil und Empfangsschein sind kostenlos, ohne Konto. Die komplette Rechnung auf einer A4-Seite, mit Absender, Positionen und Total über dem Zahlteil, ist Teil von aban Pro."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#241c14;--ink2:#3c3025;--muted:#7a6a58;--line:#ead9c2;--bg:#fffbf5;--card:#fffdf8;--field:#fff;--ok:#2f7d4a;--warn:#b3261e}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:9px;border:0;cursor:pointer;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--line)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.hero{padding:38px 0 6px}
+.hero h1{font-size:clamp(25px,4.4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.hero p{font-size:clamp(15px,2vw,17px);color:var(--ink2);max-width:640px}
+.zwei{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
+@media(min-width:900px){.zwei{grid-template-columns:400px 1fr;align-items:start}}
+fieldset{border:0;border-top:1px solid var(--line);padding:14px 0 6px;margin:0}
+legend{font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding-right:8px}
+label{display:block;font-weight:600;font-size:13px;margin:10px 0 4px;color:var(--ink2)}
+input[type=text],select{width:100%;font-size:15px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.reihe{display:flex;gap:10px}.reihe>*{flex:1}
+.hinweis{font-size:.82rem;color:var(--muted);margin-top:4px}
+.fehler{display:none;background:#fdecea;border:1px solid #f1b8b3;color:var(--warn);border-radius:8px;padding:10px 12px;font-size:.9rem;margin-top:12px}
+.fehler ul{margin:4px 0 0 18px}
+.aktionen{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.status{font-size:.85rem;color:var(--ok);margin-top:8px;min-height:1.3em}
+
+/* ── Zahlteil: Masse in mm nach Standard (210 × 105 mm) ─────────────────── */
+.blatt{background:#fff;border:1px solid var(--line);padding:10px;overflow:auto}
+.zt{width:210mm;height:105mm;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;color:#000;background:#fff;display:flex;position:relative;border-top:1px dashed #000}
+.zt .es{width:62mm;height:105mm;padding:5mm;border-right:1px dashed #000;display:flex;flex-direction:column}
+.zt .zp{width:148mm;height:105mm;padding:5mm;display:grid;grid-template-columns:51mm 1fr;grid-template-rows:auto 1fr auto;column-gap:5mm}
+.zt h2{font-size:11pt;font-weight:bold;margin:0 0 3mm;line-height:1}
+.zt .k{font-size:6pt;font-weight:bold;line-height:1.2;margin-top:2.5mm}
+.zt .v{font-size:8pt;line-height:1.2;white-space:pre-line}
+.zt .zp .k{font-size:8pt}.zt .zp .v{font-size:10pt}
+.zt .es .betrag{display:flex;gap:6mm;margin-top:auto}
+.zt .es .annahme{text-align:right;font-size:6pt;font-weight:bold;margin-top:4mm;height:18mm}
+.zt .qr{width:46mm;height:46mm;grid-column:1;grid-row:2;align-self:start;margin-top:0}
+.zt .qr svg{width:46mm;height:46mm;display:block}
+.zt .zp .betragz{grid-column:1;grid-row:3;display:flex;gap:8mm;margin-top:3mm}
+.zt .zp .rechts{grid-column:2;grid-row:1/4}
+.zt .zp h2{grid-column:1;grid-row:1}
+.zt .leerfeld{display:inline-block;width:30mm;height:10mm;border:0;position:relative;vertical-align:top}
+.zt .leerfeld::before,.zt .leerfeld::after{content:"";position:absolute;width:3mm;height:3mm;border:.75pt solid #000}
+.zt .leerfeld::before{left:0;top:0;border-right:0;border-bottom:0}
+.zt .leerfeld::after{right:0;bottom:0;border-left:0;border-top:0}
+.zt .leerfeld.gross{width:40mm;height:15mm}
+.zt .es .leerfeld.zahler{width:52mm;height:20mm}
+.zt .zp .leerfeld.zahler{width:65mm;height:25mm}
+.zt .schere{position:absolute;left:62mm;top:-3.5mm;font-size:9pt;transform:rotate(90deg);background:#fff;line-height:1}
+.zt .schere2{position:absolute;left:8mm;top:-4.2mm;font-size:9pt;background:#fff;line-height:1}
+@media print{
+  body{background:#fff}header.site,.zwei>form,.hero,.faq,.pro,.aktionen,.status,footer,aside,nav,.hinweis-druck{display:none!important}
+  .blatt{border:0;padding:0;overflow:visible}
+  .zt{position:fixed;left:0;bottom:0;border-top:1px dashed #000}
+  @page{size:A4;margin:0}
+}
+.pro{margin-top:26px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card)}
+.pro h2{font-size:1.1rem;margin-bottom:6px}
+.pro p{color:var(--ink2);font-size:.95rem}
+.pro .schluessel{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.pro .schluessel input{flex:1;min-width:220px}
+.faq{margin-top:34px}.faq h2{font-size:1.25rem;margin-bottom:6px}.faq h3{font-size:1.02rem;margin:16px 0 4px}.faq p{color:var(--ink2)}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:22px 0;font-size:.82rem;color:var(--muted);text-align:center}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a><a href="/online-tools.html" class="btn ghost">Alle Gratis-Tools</a></div></header>
+<main id="main"><div class="wrap">
+  <nav aria-label="Übergeordnete Seite" style="font-size:.9rem;margin-top:10px">← <a href="/geld-und-ki.html">Geld &amp; KI: alle Themen, Rechner &amp; Checks</a></nav>
+  <section class="hero">
+    <h1>QR-Rechnung erstellen — Schweiz, gratis, ohne Konto</h1>
+    <p>Zahlteil und Empfangsschein nach Swiss Payment Standards, druckfertig auf A4. IBAN oder QR-IBAN, Referenz, Betrag eingeben, drucken. Alles bleibt in deinem Browser.</p>
+  </section>
+
+  <div class="zwei">
+  <form id="f" autocomplete="on" novalidate>
+    <fieldset><legend>Zahlungsempfänger (du)</legend>
+      <label for="iban">IBAN oder QR-IBAN</label><input type="text" id="iban" placeholder="CH93 0076 2011 6238 5295 7">
+      <div class="hinweis" id="ibanInfo"></div>
+      <label for="name">Name / Firma</label><input type="text" id="name" maxlength="70" placeholder="Muster GmbH">
+      <label for="strasse">Strasse und Nummer</label><input type="text" id="strasse" maxlength="70" placeholder="Bahnhofstrasse 1">
+      <label for="plzOrt">PLZ und Ort</label><input type="text" id="plzOrt" maxlength="70" placeholder="3000 Bern">
+    </fieldset>
+    <fieldset><legend>Zahlung</legend>
+      <div class="reihe">
+        <div><label for="betrag">Betrag (leer = offen)</label><input type="text" id="betrag" inputmode="decimal" placeholder="1949.75"></div>
+        <div><label for="waehrung">Währung</label><select id="waehrung"><option>CHF</option><option>EUR</option></select></div>
+      </div>
+      <label for="refTyp">Referenz</label>
+      <select id="refTyp"><option value="NON">Keine Referenz</option><option value="SCOR">Creditor Reference (RF) aus Rechnungsnummer</option><option value="QRR">QR-Referenz (nur mit QR-IBAN)</option></select>
+      <label for="referenz" id="referenzLabel">Rechnungsnummer / Referenz</label><input type="text" id="referenz" placeholder="2026-001">
+      <div class="hinweis" id="refInfo"></div>
+      <label for="mitteilung">Mitteilung (optional, max. 140 Zeichen)</label><input type="text" id="mitteilung" maxlength="140" placeholder="Rechnung 2026-001">
+    </fieldset>
+    <fieldset><legend>Zahler (optional)</legend>
+      <label for="zahlerName">Name</label><input type="text" id="zahlerName" maxlength="70">
+      <label for="zahlerStrasse">Strasse und Nummer</label><input type="text" id="zahlerStrasse" maxlength="70">
+      <label for="zahlerPlzOrt">PLZ und Ort</label><input type="text" id="zahlerPlzOrt" maxlength="70">
+    </fieldset>
+    <div class="fehler" id="fehler" role="alert"></div>
+    <div class="aktionen">
+      <button type="submit" class="btn" id="drucken">Drucken / als PDF sichern</button>
+      <button type="button" class="btn ghost" id="beispiel">Beispiel laden</button>
+    </div>
+    <div class="status" id="status"></div>
+  </form>
+
+  <div>
+    <div class="blatt" role="img" aria-label="Vorschau des Zahlteils">
+      <div class="zt" id="zt">
+        <span class="schere2" aria-hidden="true">✂</span><span class="schere" aria-hidden="true">✂</span>
+        <div class="es">
+          <h2>Empfangsschein</h2>
+          <div class="k">Konto / Zahlbar an</div><div class="v" id="esKonto"></div>
+          <div id="esRefBlock"><div class="k">Referenz</div><div class="v" id="esRef"></div></div>
+          <div class="k">Zahlbar durch</div><div class="v" id="esZahler"></div>
+          <div class="betrag"><div><div class="k">Währung</div><div class="v" id="esWaehrung">CHF</div></div><div><div class="k">Betrag</div><div class="v" id="esBetrag"></div></div></div>
+          <div class="annahme">Annahmestelle</div>
+        </div>
+        <div class="zp">
+          <h2>Zahlteil</h2>
+          <div class="qr" id="qr" role="img" aria-label="Swiss QR Code"></div>
+          <div class="betragz"><div><div class="k">Währung</div><div class="v" id="zpWaehrung">CHF</div></div><div><div class="k">Betrag</div><div class="v" id="zpBetrag"></div></div></div>
+          <div class="rechts">
+            <div class="k" style="margin-top:0">Konto / Zahlbar an</div><div class="v" id="zpKonto"></div>
+            <div id="zpRefBlock"><div class="k">Referenz</div><div class="v" id="zpRef"></div></div>
+            <div id="zpInfoBlock"><div class="k">Zusätzliche Informationen</div><div class="v" id="zpInfo"></div></div>
+            <div class="k">Zahlbar durch</div><div class="v" id="zpZahler"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hinweis hinweis-druck" style="margin-top:8px">Vorschau in Originalgrösse (210 × 105 mm). Beim Drucken sitzt der Zahlteil unten auf der A4-Seite; die Perforationslinie ist gestrichelt.</p>
+
+    <section class="pro" id="pro">
+      <h2>Komplette Rechnung auf einer Seite — aban Pro</h2>
+      <p>Absender, Empfänger, Positionen, Total und der Zahlteil auf einer A4-Seite, druckfertig. Dazu bleiben deine Absenderdaten im Browser gespeichert. Freischalten mit dem Lizenzschlüssel von <a href="/ki-studio.html#pro">aban Pro</a> (19 € im Monat, alle KI-Werkzeuge inklusive).</p>
+      <div class="schluessel">
+        <input type="text" id="proKey" placeholder="aban-Pro-Lizenzschlüssel" autocomplete="off" spellcheck="false" aria-label="Pro-Lizenzschlüssel">
+        <button type="button" class="btn ghost" id="proBtn">Freischalten</button>
+        <a class="btn" id="proKauf" href="/ki-studio.html#pro">Pro holen</a>
+      </div>
+      <div class="status" id="proStatus"></div>
+      <div id="proBereich" hidden>
+        <fieldset><legend>Rechnung (Pro)</legend>
+          <label for="pNr">Rechnungsnummer</label><input type="text" id="pNr" placeholder="2026-001">
+          <label for="pDatum">Datum</label><input type="text" id="pDatum" placeholder="05.09.2026">
+          <label for="pPosten">Positionen — je Zeile „Bezeichnung;Menge;Preis"</label>
+          <textarea id="pPosten" rows="4" style="width:100%;font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px" placeholder="Beratung;2;290&#10;Audit;1;490"></textarea>
+          <div class="hinweis">Total wird gerechnet und als Betrag in den Zahlteil übernommen. Keine MWST-Zeile: wer nicht MWST-pflichtig ist, darf keine ausweisen.</div>
+          <div class="aktionen"><button type="button" class="btn" id="pDrucken">Rechnung drucken / PDF</button></div>
+        </fieldset>
+      </div>
+    </section>
+  </div>
+  </div>
+
+  <div id="rechnungA4" hidden></div>
+
+  <section class="faq">
+    <h2>Häufige Fragen</h2>
+    <h3>Was ist eine QR-Rechnung?</h3><p>Die QR-Rechnung hat in der Schweiz und in Liechtenstein den orangen und roten Einzahlungsschein abgelöst. Sie besteht aus dem Zahlteil mit dem Swiss QR Code und dem Empfangsschein, beides unten auf der Rechnung. Wer den Code mit der Banking-App scannt, hat alle Zahlungsdaten drin.</p>
+    <h3>Brauche ich eine QR-IBAN?</h3><p>Nein. Mit deiner normalen IBAN geht es ohne Referenz oder mit einer Creditor Reference (RF). Eine QR-IBAN bekommst du von deiner Bank, wenn du strukturierte QR-Referenzen willst, zum Beispiel für den automatischen Abgleich in der Buchhaltung.</p>
+    <h3>Werden meine Daten gesendet oder gespeichert?</h3><p>Nein. IBAN, Adressen und Beträge bleiben im Browser. Es gibt kein Konto, keinen Upload und kein Tracking. Zum Drucken nutzt du die Druckfunktion deines Browsers, zum Beispiel als PDF.</p>
+    <h3>Kann ich den Betrag offen lassen?</h3><p>Ja. Ohne Betrag druckt der Zahlteil ein leeres Feld, in das die zahlende Person den Betrag einträgt, wie bei einer Spende.</p>
+    <h3>Ist das Ergebnis normgerecht?</h3><p>Die Nutzdaten folgen den Swiss Payment Standards, Version 0200, und werden vor dem Erzeugen geprüft: IBAN-Prüfsumme, QR-IBAN-Erkennung, Prüfziffern der QR-Referenz und der Creditor Reference, Betragsformat. Das Layout des Zahlteils entspricht den Vorgaben in Grösse und Schriftgrad. Für die Gestaltung des Schweizer Kreuzes gilt die Vorlage von SIX; hier wird sie als Vektor nachgezeichnet.</p>
+    <h3>Was kostet das?</h3><p>Zahlteil und Empfangsschein sind kostenlos, ohne Konto. Die komplette Rechnung auf einer A4-Seite, mit Absender, Positionen und Total über dem Zahlteil, ist Teil von aban Pro.</p>
+  </section>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) · <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script src="/js/vendor/qrcode-generator.js"></script>
+<script src="/js/qr-rechnung.js"></script>
+<script src="/js/pay-config.js"></script>
+<script>
+(function(){
+  var Q=window.QRRECHNUNG, $=function(id){return document.getElementById(id);};
+  var felder=["iban","name","strasse","plzOrt","betrag","waehrung","refTyp","referenz","mitteilung","zahlerName","zahlerStrasse","zahlerPlzOrt"];
+  function daten(){var d={};felder.forEach(function(k){d[k]=$(k).value;});
+    if(d.refTyp==="SCOR"&&d.referenz&&!/^RF/i.test(d.referenz.replace(/\s/g,"")))d.referenz=Q.rfErzeugen(d.referenz);
+    if(d.refTyp==="QRR"&&d.referenz&&!Q.qrrOk(d.referenz))d.referenz=Q.qrrErzeugen(d.referenz);
+    return d;}
+  /* Swiss QR Code: Fehlerkorrektur M, Schweizer Kreuz 7×7 mm in der Mitte (46 mm Kantenlänge). */
+  function qrSvg(text){var qr=qrcode(0,"M");qr.addData(text);qr.make();var n=qr.getModuleCount(),s=46/n,p="";
+    for(var r=0;r<n;r++)for(var c=0;c<n;c++)if(qr.isDark(r,c))p+="M"+(c*s).toFixed(3)+" "+(r*s).toFixed(3)+"h"+s.toFixed(3)+"v"+s.toFixed(3)+"h-"+s.toFixed(3)+"z";
+    var k=23-3.5, kr='<rect x="'+k+'" y="'+k+'" width="7" height="7" fill="#000"/><rect x="'+(k+1.4)+'" y="'+(k+1.4)+'" width="4.2" height="4.2" fill="#000" stroke="#fff" stroke-width=".5"/>'+
+      '<rect x="'+(23-0.6)+'" y="'+(23-2.2)+'" width="1.2" height="4.4" fill="#fff"/><rect x="'+(23-2.2)+'" y="'+(23-0.6)+'" width="4.4" height="1.2" fill="#fff"/>';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46" shape-rendering="crispEdges"><rect width="46" height="46" fill="#fff"/><path d="'+p+'" fill="#000"/>'+kr+'</svg>';}
+  function adresse(n,s,po){return [n,s,po].filter(Boolean).join("\n");}
+  function refAnzeige(d){if(d.refTyp==="QRR")return Q.qrrFormat(d.referenz);if(d.refTyp==="SCOR")return Q.rfFormat(d.referenz);return "";}
+  function zeichnen(){
+    var d=daten(),f=Q.pruefen(d),box=$("fehler");
+    $("ibanInfo").textContent=Q.ibanOk(d.iban)?(Q.istQrIban(d.iban)?"QR-IBAN erkannt — QR-Referenz ist Pflicht.":"Normale IBAN — Referenz optional (RF) oder keine."):(d.iban?"IBAN noch nicht gültig.":"");
+    $("refInfo").textContent=d.refTyp==="SCOR"?(d.referenz?"Wird gesendet als "+Q.rfFormat(d.referenz):"Rechnungsnummer eingeben — daraus entsteht RF… mit Prüfziffern."):d.refTyp==="QRR"?(d.referenz?"QR-Referenz: "+Q.qrrFormat(d.referenz):"27-stellige QR-Referenz oder eine Zahl, die aufgefüllt wird."):"";
+    if(f.length){box.style.display="block";box.innerHTML="<b>Noch nicht druckbar:</b><ul>"+f.map(function(x){return "<li>"+x.replace(/</g,"&lt;")+"</li>";}).join("")+"</ul>";$("drucken").disabled=true;$("qr").innerHTML="";$("status").textContent="";}
+    else{box.style.display="none";$("drucken").disabled=false;var p=Q.payload(d);$("qr").innerHTML=qrSvg(p.text);$("status").textContent="Bereit — "+p.zeilen.length+" Datenzeilen, Swiss QR Code erzeugt.";}
+    var konto=Q.ibanOk(d.iban)?Q.ibanFormat(d.iban)+"\n"+adresse(d.name,d.strasse,d.plzOrt):"";
+    $("esKonto").textContent=konto;$("zpKonto").textContent=konto;
+    var ref=refAnzeige(d);$("esRefBlock").style.display=ref?"":"none";$("zpRefBlock").style.display=ref?"":"none";$("esRef").textContent=ref;$("zpRef").textContent=ref;
+    $("zpInfoBlock").style.display=d.mitteilung?"":"none";$("zpInfo").textContent=d.mitteilung;
+    var zahler=d.zahlerName?adresse(d.zahlerName,d.zahlerStrasse,d.zahlerPlzOrt):"";
+    $("esZahler").innerHTML=zahler?"":'<span class="leerfeld zahler"></span>';if(zahler)$("esZahler").textContent=zahler;
+    $("zpZahler").innerHTML=zahler?"":'<span class="leerfeld zahler"></span>';if(zahler)$("zpZahler").textContent=zahler;
+    var b=Q.betragNorm(d.betrag);$("esWaehrung").textContent=d.waehrung;$("zpWaehrung").textContent=d.waehrung;
+    $("esBetrag").innerHTML=b?Q.betragAnzeige(b):'<span class="leerfeld"></span>';$("zpBetrag").innerHTML=b?Q.betragAnzeige(b):'<span class="leerfeld gross"></span>';
+  }
+  felder.forEach(function(k){$(k).addEventListener("input",zeichnen);$(k).addEventListener("change",zeichnen);});
+  $("refTyp").addEventListener("change",function(){$("referenzLabel").textContent=this.value==="QRR"?"QR-Referenz (27 Ziffern)":this.value==="SCOR"?"Rechnungsnummer (wird zu RF-Referenz)":"Rechnungsnummer / Referenz";});
+  $("f").addEventListener("submit",function(e){e.preventDefault();if(!$("drucken").disabled)window.print();});
+  $("beispiel").addEventListener("click",function(){var b={iban:"CH93 0076 2011 6238 5295 7",name:"Muster GmbH",strasse:"Bahnhofstrasse 1",plzOrt:"3000 Bern",betrag:"1949.75",waehrung:"CHF",refTyp:"SCOR",referenz:"2026-001",mitteilung:"Rechnung 2026-001",zahlerName:"Pia-Maria Rutschmann-Schnyder",zahlerStrasse:"Grosse Marktgasse 28",zahlerPlzOrt:"9400 Rorschach"};
+    Object.keys(b).forEach(function(k){$(k).value=b[k];});$("refTyp").dispatchEvent(new Event("change"));zeichnen();});
+
+  /* ── Pro: Lizenzschlüssel wie im KI-Studio (localStorage aban_pro_key, /api/pro-validate) ── */
+  var KEY="aban_pro_key";
+  function proAn(ja){$("proBereich").hidden=!ja;$("proStatus").textContent=ja?"Pro aktiv — komplette Rechnung freigeschaltet.":"";}
+  function proPruefen(k,leise){k=(k||"").trim();if(!k){if(!leise)$("proStatus").textContent="Schlüssel eingeben.";return;}
+    fetch("/api/pro-validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({license_key:k})})
+      .then(function(r){return r.json();}).then(function(d){if(d&&d.valid){try{localStorage.setItem(KEY,k);}catch(e){}proAn(true);}
+        else{proAn(false);if(!leise)$("proStatus").textContent="Schlüssel ungültig oder abgelaufen.";}})
+      .catch(function(){if(!leise)$("proStatus").textContent="Prüfung gerade nicht möglich.";});}
+  $("proBtn").addEventListener("click",function(){proPruefen($("proKey").value,false);});
+  try{var k0=localStorage.getItem(KEY);if(k0){$("proKey").value=k0;proPruefen(k0,true);}}catch(e){}
+  if(window.ABAN_PAY&&window.ABAN_PAY.PRO_MONTHLY_URL){$("proKauf").href=window.ABAN_PAY.PRO_MONTHLY_URL;$("proKauf").target="_blank";$("proKauf").rel="noopener";}
+  /* Komplette Rechnung: Kopf + Positionen + Total oben, Zahlteil unten (derselbe Zahlteil, Betrag = Total). */
+  $("pDrucken").addEventListener("click",function(){
+    var zeilen=$("pPosten").value.split("\n").map(function(z){return z.split(";");}).filter(function(t){return t[0]&&t[0].trim();});
+    var total=0,rows="";zeilen.forEach(function(t){var m=parseFloat(String(t[1]||"1").replace(",", "."))||1,p=parseFloat(String(t[2]||"0").replace(",", "."))||0,s=Math.round(m*p*100)/100;total+=s;
+      rows+="<tr><td>"+esc(t[0])+"</td><td class='z'>"+m+"</td><td class='z'>"+p.toFixed(2)+"</td><td class='z'>"+s.toFixed(2)+"</td></tr>";});
+    total=Math.round(total*100)/100;if(total>0){$("betrag").value=total.toFixed(2);}
+    if(!$("mitteilung").value&&$("pNr").value)$("mitteilung").value="Rechnung "+$("pNr").value;
+    zeichnen();if($("drucken").disabled){$("proStatus").textContent="Erst die Fehler oben beheben.";return;}
+    var d=daten();var a4=$("rechnungA4");
+    a4.innerHTML='<style>#rechnungA4{display:none}@media print{#rechnungA4{display:block!important;position:fixed;left:0;top:0;width:210mm;height:190mm;padding:18mm 16mm 0;font:10.5pt/1.5 Arial,"Liberation Sans",Helvetica,sans-serif;color:#000;background:#fff}#rechnungA4 table{width:100%;border-collapse:collapse;margin-top:8mm}#rechnungA4 th,#rechnungA4 td{text-align:left;padding:2mm 1.5mm;border-bottom:.5pt solid #999}#rechnungA4 .z{text-align:right}#rechnungA4 .tot td{font-weight:bold;border-top:1.5pt solid #000;border-bottom:0}}</style>'+
+      '<div style="display:flex;justify-content:space-between"><div><b>'+esc(d.name)+'</b><br>'+esc(d.strasse)+'<br>'+esc(d.plzOrt)+'</div><div style="text-align:right">Rechnung '+esc($("pNr").value)+'<br>'+esc($("pDatum").value)+'</div></div>'+
+      '<div style="margin-top:14mm">'+esc(d.zahlerName)+'<br>'+esc(d.zahlerStrasse)+'<br>'+esc(d.zahlerPlzOrt)+'</div>'+
+      '<h1 style="font-size:16pt;margin-top:12mm">Rechnung '+esc($("pNr").value)+'</h1>'+
+      '<table><thead><tr><th>Leistung</th><th class="z">Menge</th><th class="z">Preis</th><th class="z">'+esc(d.waehrung)+'</th></tr></thead><tbody>'+rows+'<tr class="tot"><td colspan="3">Total '+esc(d.waehrung)+'</td><td class="z">'+total.toFixed(2)+'</td></tr></tbody></table>'+
+      '<p style="margin-top:6mm;font-size:9pt">Zahlbar mit dem Zahlteil unten — per Banking-App scannen oder am Schalter einzahlen.</p>';
+    window.print();
+  });
+  function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  zeichnen();
+})();
+</script>
+</body>
+</html>
