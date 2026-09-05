@@ -64,6 +64,26 @@ def main():
                 continue
             gesehen.add(pid); handles.append(n["handle"])
 
+    # ZUERST die Produktseiten, auf denen tatsächlich jemand ankommt (30 Tage). Sie sind die
+    # wertvollsten Bewertungsplätze des Shops: Suchbesucher haben Kaufabsicht, und die grösste
+    # Such-Landeseite (Rizinusöl-Set) stand am 05.09. bei 0 Bewertungen.
+    ql = ("FROM sessions SHOW sessions GROUP BY landing_page_path SINCE -30d UNTIL today "
+          "ORDER BY sessions DESC LIMIT 60")
+    d = (gql('query($q:String!){shopifyqlQuery(query:$q){tableData{columns{name} rows}}}', {"q": ql})
+         .get("data") or {}).get("shopifyqlQuery") or {}
+    pfade = []
+    for row in ((d.get("tableData") or {}).get("rows") or []):
+        pfad = row[0] if isinstance(row, list) else row.get("landing_page_path")
+        if pfad and pfad.startswith("/products/"):
+            pfade.append(pfad.split("/products/")[1].split("?")[0])
+    for i in range(0, len(pfade), 40):
+        q = " OR ".join(f"handle:{x}" for x in pfade[i:i + 40])
+        r = (gql('query($q:String!){products(first:60,query:$q){nodes{id handle status '
+                 'rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}', {"q": q}).get("data") or {}).get("products")
+        if r:
+            nimm([n for n in r["nodes"] if n["status"] == "ACTIVE"])
+    print(f"Landeseiten mit Verkehr, ohne Bewertung: {len(handles)}")
+
     for h in SICHTBAR:
         c = (gql('query($h:String!){collectionByHandle(handle:$h){products(first:60){nodes{id handle status '
                  'rc:metafield(namespace:"reviews",key:"rating_count"){value}}}}}', {"h": h})

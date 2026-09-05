@@ -84,7 +84,11 @@ def kandidaten_live(fertig=frozenset()):
     ⚠️ Neuimporte sind NICHT betroffen (50 neueste: 0) — die Quelle ist seit dem 14.08. dicht,
     es ist reiner Altbestand.
     """
-    Q = ('query($c:String){products(first:100,after:$c,query:"status:active"){'
+    # ⚠️ 05.09.2026: Der Lauf paginierte den GANZEN Katalog (53'000 Produkte, descriptionHtml
+    # je 100 Stueck) und endete regelmaessig mit «PAUSE (Shopify stumm)» — der Eimer traegt
+    # diese Abfrage nicht. Die Inhalts-Suche liefert dieselben Kandidaten in Sekunden; sie ist
+    # mit einem Unsinnswort gegengeprueft (0 Treffer), der Filter wirkt also wirklich.
+    Q = ('query($c:String){products(first:100,after:$c,query:"status:active AND \\"USA: 12-22 Tage\\""){'
          'pageInfo{hasNextPage endCursor} nodes{id descriptionHtml}}}')
     ids, cur = [], None
     while len(ids) < CAP * 3:
@@ -163,7 +167,11 @@ def main():
         if ungeklaert: unklar += 1
         if not ersetzt:
             schon += 1
-            open(LEDGER, 'a', encoding='utf-8').write(f"{pid}\tnichts-zu-tun\n")
+            # ⚠️ 05.09.2026: Diese Quittung stand VOR der DRY-Abfrage — ein Anzeigemodus
+            # merkte sich damit Fortschritt und haette die Faelle fuer immer uebersprungen
+            # (dieselbe Falle wie am 28.08. beim google_size_metafeld).
+            if not DRY:
+                open(LEDGER, 'a', encoding='utf-8').write(f"{pid}\tnichts-zu-tun\n")
             continue
         # SICHERUNG — prüft genau das, worauf es ankommt: Ausserhalb des ls-liefer-Blocks
         # darf sich kein Zeichen ändern. (Eine reine Längenprüfung wäre falsch: der neue
