@@ -23,6 +23,19 @@ die niemand je angesehen hatte.
   Kontext lesen — aber auch vor jedem NICHT-Befund.** «Kenne ich, ist Tracking» hätte den Fall
   begraben.
 
+**Dieselbe Lesung der Startseite fand vier veraltete Bild-Alt-Texte.** «Frauen – Sommer-Mode
+2026» und «Herren – Sommer-Styles» auf den zwei grössten Kacheln, im September; «Grill & BBQ –
+Sommer-Grillen im Garten» an einer ganzjährigen Kategorie; und **«WM 2026 – Hopp Schwiiz»** an
+der Kollektion, die am 26.08. GENAU DESHALB in «Fussball & Fan 2026» umbenannt wurde. Der Titel
+war korrigiert, der Alt-Text nicht — die Feldliste-Lehre (29.08.) gilt auch für Kollektionen.
+Wirklich saisonale Kollektionen (Sommer-Kollektion, Vatertag, Reisen & Sommer) blieben unberührt:
+dort ist das Saisonwort wahr.
+- ⚠️ **Und ein Fehlalarm aus meiner eigenen Kontrolle:** Ich habe nach dem Schreiben geprüft, ob
+  das Bild dasselbe geblieben ist, und viermal «⛔ NEIN» bekommen. Shopify hängt an die CDN-URL
+  einen Cache-Stempel `?v=…`, und der ändert sich bei JEDER Änderung am Datensatz. Dateiname und
+  Masse waren identisch. **Eine CDN-URL mit `?v=` vergleicht man ohne den Parameter** — sonst
+  meldet die eigene Wache einen Bildverlust, den es nicht gibt.
+
 ## 👯 Zwei Importer, zwei Schreibweisen derselben Lieferanten-SKU — 129 bildgleiche Paare (2026-09-04, nachts)
 Der Bild-Hash-Wächter hat seinen Vollscan beendet: **129 bildgleiche Produktpaare**, kein
 einziges davon über Titel, Handle oder SKU auffindbar. Bei **13** liegt die Ursache offen da:

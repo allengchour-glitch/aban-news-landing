@@ -29093,3 +29093,137 @@
 15496608088449	ersetzt-1	M6 Kabelloses magnetisches Auto-Ladegerät
 15496608842113	ersetzt-1	Kabelloses Einbau-Ladegerät für Smartphones
 15496609038721	ersetzt-1	Futter-Bowling für Haustiere
+15496609825153	ersetzt-1	Interaktives Katzen-Labyrinth mit Kratzbrett
+15496610283905	ersetzt-1	Netzteil für Xbox 360 E
+15496610480513	ersetzt-1	Voice Rugby Spielzeug für Hunde
+15496610775425	ersetzt-1	Bedruckter Sofaüberzug
+15496610972033	ersetzt-1	Velo-Scheinwerfer mit 16 T6-LEDs
+15496611168641	ersetzt-1	Handy- und Uhrenhalter aus Holz
+15496611332481	ersetzt-1	Wiederaufladbares, selbsterwärmendes Haustierspielzeug
+15496611758465	ersetzt-1	Handgewobener Baumwoll-Kissenbezug
+15496611889537	ersetzt-1	Velo-LED-Licht
+15496611955073	ersetzt-1	3-in-1 Wireless Charger
+15496612381057	ersetzt-1	Plüsch-Liebes-Quaste Katzenangel
+15496612512129	ersetzt-1	Intelligentes USB-Velo-Frontlicht mit Sensor
+15496612643201	ersetzt-1	USB-C zu VGA + USB 3.0 + Ladeanschluss Adapter
+15496612839809	ersetzt-1	Stretch-Sofabezug mit Pflanzenmuster
+15496613134721	ersetzt-1	Interaktiver Katzenball mit Ladestation
+15496613233025	ersetzt-1	USB Lade-Rücklicht für Velo
+15496613364097	ersetzt-1	Kabelloses Qi Lade-Mauspad aus PU-Leder
+15496613593473	ersetzt-1	Niedliches Cartoon Kinder-Sofa (2-in-1)
+15496613888385	ersetzt-1	Automatischer Plüschball für Haustiere
+15496613953921	ersetzt-1	LED-Fahrradrücklicht
+15496614216065	ersetzt-1	Multifunktionales Tatami-Kissen mit Rundkissen
+15496614379905	ersetzt-1	Dual-Ladestation für PS5 Wireless Gamepads
+15496614543745	ersetzt-1	Mimi Electric Fish Tumbler Katzenball
+15496614642049	ersetzt-1	Wasserdichte Velo-Beleuchtung mit USB
+15496614969729	ersetzt-1	Rutschfeste, saugfähige Küchenmatte
+15496702525825	ersetzt-1	Powerbank 20000mAh
+15496702624129	ersetzt-1	Jacquard-Kissenbezug im chinesischen Stil
+15496702689665	ersetzt-1	Robustes Quietsch-Rugby für Hunde
+15496702722433	ersetzt-1	Duke Universal Reise-Ladegerät mit 3 USB
+15496702886273	ersetzt-1	Kissenbezug mit Pflanzen- und Blumenmuster
+15496702919041	ersetzt-1	FDGAO 3-in-1 Ladegerät mit USB-A & USB-C
+15496703082881	ersetzt-1	Elastischer Stuhlhussen-Bezug, halbe Sitzfläche
+15496703115649	ersetzt-1	USB Rücklicht Rot-Blau für Mountainbikes
+15496703148417	ersetzt-1	Vokalisierender Spielball für Katzen
+15496703181185	ersetzt-1	Bluetooth Audio Empfänger fürs Auto
+15496703213953	ersetzt-1	USB Heizschal für Auto & Büro
+15496703246721	ersetzt-1	Spider-Man Laser-Rücklicht
+15496703279489	ersetzt-1	Avocado-Futterball für Hunde
+15496703345025	ersetzt-1	PS5 Controller Ladestation mit LED
+15496703377793	ersetzt-1	Känguru Stofftier
+15496703410561	ersetzt-1	Xlite100 Intelligentes Velo-Rücklicht
+15496703443329	ersetzt-1	Elektrische Spielmaus mit Kratzmatte
+15496703607169	ersetzt-1	Multifunktionale Ladestation für PS5, PS4, Switch Pro, Xbox
+15496703771009	ersetzt-1	Niedliches Husky Plüschkissen, 60 cm
+15496703934849	ersetzt-1	Chenille Kissen mit Quasten
+15496704000385	ersetzt-1	Faltbarer Reise-Napf für Hunde & Katzen
+15496704065921	ersetzt-1	USB Handwärmer & Powerbank
+15496704098689	ersetzt-1	Fitness-Gurt mit Druckunterstützung
+15496704131457	ersetzt-1	Faltbarer Reise-Napf für Hunde und Katzen
+15496704164225	ersetzt-1	Handgewebtes Kissen mit Quasten
+15496704196993	ersetzt-1	Elektrischer Handwärmer & Powerbank
+15496704262529	ersetzt-1	Bestickter Kissenbezug
+15496704328065	ersetzt-1	Kabelloser Powerbank Handyhalter
+15496704360833	ersetzt-1	Blumen Katzennapf aus Keramik
+15496704426369	ersetzt-1	Netzteil für Video-Türklingel
+15496704491905	ersetzt-1	Boho-Kissenbezug im Marokkanischen Stil
+15496704524673	ersetzt-1	Verstellbarer Futternapf-Halter
+15496704590209	ersetzt-1	3-in-1 Wireless Ladestation für Smartphone, Watch, Headset
+15496704622977	ersetzt-1	Sofa-Kissenbezug für Wohn- und Teeraum
+15496704655745	ersetzt-1	Keramik-Doppelnapf für Katzen mit Neigung
+15496704688513	ersetzt-1	Multifunktionales Split-Bauchtrainer
+15496704786817	ersetzt-1	Ersatzakku für MacBook Pro 15″ (A1707)
+15496704917889	ersetzt-1	Futter- und Wasserspender 3.8l
+15496704983425	ersetzt-1	Intelligente Boxmaschine mit Bluetooth-Musik
+15496705147265	ersetzt-1	Fressnapf für Nacken- und Wirbelsäulenschutz
+15496705704321	ersetzt-1	Futter- und Wasserspender 2-in-1
+15496705737089	ersetzt-1	Atemtrainer für Yoga und Pilates
+15496705769857	ersetzt-1	Mobiles Wireless Gamepad für Smartphones
+15496705835393	ersetzt-1	Smart GPS-Halsband für Haustiere
+15496705868161	ersetzt-1	Gaming-Tastatur mit mechanischem Gefühl
+15496705900929	ersetzt-1	Halsband aus Echtleder für Hunde
+15496705999233	ersetzt-1	Mobiler Gamecontroller für diverse Plattformen
+15496706097537	ersetzt-1	Hundehalsband mit AirTag-Hülle
+15496706195841	ersetzt-1	Mobiler Gaming Controller für Smartphone
+15496706228609	ersetzt-1	Halsband gegen Flöhe und Mücken für Hunde
+15496706261377	ersetzt-1	Gamepad Tablet mit Hühnchen-Griff
+15496710881665	ersetzt-1	Leichte Sandalen im Römer-Stil
+15496711078273	ersetzt-1	Sandalen mit Peep Toe und Reissverschluss
+15496711274881	ersetzt-1	Keilabsatz-Sandalen mit Kette
+15496711307649	ersetzt-1	Atmungsaktive Mesh-Sandalen mit niedrigem Absatz
+15496711373185	ersetzt-1	Keilabsatz-Sandalen mit Strohgeflecht
+15496711438721	ersetzt-1	Retro-Mules aus Wildlederimitat mit eckiger Spitze
+15496711504257	ersetzt-1	Baotou Riemchensandalen mit eckiger Spitze
+15496846770561	ersetzt-1	Retro Sandalen mit eckiger Zehe
+15496846901633	ersetzt-1	Retroflag SUPERPi Case Box mit Kabel-Controller
+15496847753601	ersetzt-1	Elegante Pumps mit V-Ausschnitt und Blockabsatz
+15496847819137	ersetzt-1	Wii Wireless Gamepad ohne Beschleunigungssensor
+15496848245121	ersetzt-1	Hundetrainer mit GPS
+15496848474497	ersetzt-1	Beach Sandalen
+15496848638337	ersetzt-1	Gaming-Controller für Smartphone
+15496849326465	ersetzt-1	Plateau-Sandalen mit Riemchen
+15496849490305	ersetzt-1	Kabelloses PS4 Gamepad mit Touch & Vibration
+15496849916289	ersetzt-1	Halloween-Deko: Realistische Kunststoffkette
+15496850276737	ersetzt-1	Plateau-Clogs mit Schnalle
+15496850309505	ersetzt-1	GAMO Einhand-Gamepad
+15496850833793	ersetzt-1	LED-Halsbandlicht für Haustiere, farbig, wasserdicht
+15496851063169	ersetzt-1	Spitze Ballerinas für Damen
+15496851161473	ersetzt-1	Kabelloser PS4-Gamepad
+15496851685761	ersetzt-1	GPS-Tracker für Haustiere, wasserdicht
+15496851882369	ersetzt-1	Chunky-Sandalen mit Klettverschluss
+15496852603265	ersetzt-1	Halsband mit Fliege für Hunde
+15496853029249	ersetzt-1	Chunky-Heel Schuhe mit Metallschnallen
+15496862957953	ersetzt-1	Feizhi Hornets 2 Gamepad
+15496863023489	ersetzt-1	Günstiges Switch-Controller-Ladegerät
+15496863154561	ersetzt-1	Gaming-Tastatur mit USB-Kabel und Beleuchtung
+15496863187329	ersetzt-1	Tastatur- & Maus-Konverter für Konsolen
+15496863285633	ersetzt-1	Bluetooth Gamepad für PS4/PS5/Xbox
+15496863449473	ersetzt-1	Anpassbare RGB-Tastatur für Gaming-Enthusiasten
+15496891695489	ersetzt-1	Gaming-Tastatur-Adapter
+15496891924865	ersetzt-1	Keile-Sandalen mit Schnallenriemen
+15496892154241	ersetzt-1	Bluetooth-Controller mit Kühlfunktion für iPhone
+15496892547457	ersetzt-1	Gaming-Griff für Smartphones
+15496936423809	ersetzt-1	Klassischer Game-Controller
+15496936456577	ersetzt-1	Thousand Magic Mirror Bluetooth Gamepad
+15496981217665	ersetzt-1	Kabelloser Controller
+15496981250433	ersetzt-1	Wedgesandalen
+15496981315969	ersetzt-1	Game Controller H10
+15496981512577	ersetzt-1	Strand-Sandalen
+15496981643649	ersetzt-1	Gamepad-Metal-Hilfe
+15496981741953	ersetzt-1	Atmungsaktive Mesh Slip-on Schuhe
+15496981774721	ersetzt-1	Leuchthalsband mit USB-Ladefunktion
+15496981807489	ersetzt-1	G4 Bluetooth Mobile Game Controller
+15496981873025	ersetzt-1	Bequeme Outdoor-Sandalen mit T-Riemen
+15496981938561	ersetzt-1	Kabelloses Gamepad für Xbox One
+15496981971329	ersetzt-1	Leuchtendes LED-Halsband für Haustiere
+15496982135169	ersetzt-1	Elegante High-Heel Sandalen im Sommer-Stil
+15496982200705	ersetzt-1	Joy-Con Handgelenkschlaufen (2er-Pack)
+15496982266241	ersetzt-1	USB Leuchthalsband für Hunde
+15496982299009	ersetzt-1	Outdoor-Halsband für mittelgrosse bis grosse Hunde
+15496982331777	ersetzt-1	Vintage-Leder-Schuhe mit Blockabsatz
+15496982397313	ersetzt-1	4K HDMI Videospielkonsole
+15496982462849	ersetzt-1	LED-Hundehalsband Fashion
+15496982593921	ersetzt-1	Halsband mit Schleife im Britischen Weihnachts-Stil
+15496991932801	ersetzt-1	Ninja Gamepad für Android, Apple & PC

@@ -9026,3 +9026,462 @@
 15448662704513	6	432543	The Last of Us Part II Remastered: Packendes PS5-Abenteuer!
 15448662770049	5	638481	Tekken 8 für Xbox Series X: Next-Gen Kampf-Action!
 15448662802817	4	246992	Präziser Gaming Controller für intensives Spiel.
+15448662868353	4	286467	Gaming Controller für Switch: Präzise Steuerung!
+15448663032193	3	241775	Electrolux Frische-Matte für den Kühlschrank – gegen Feuchti
+15448662966657	4	193940	Gaming Maus Schwarz-Weiss: Hohe Präzision für Siege!
+15448663064961	6	552523	Mario vs. Donkey Kong: Kniffliger Puzzle-Spass!
+15448662933889	3	347781	Extra grosses Mauspad mit System-Design für Gamer.
+15448663130497	4	347518	Rennlenkrad für PS3 & Xbox 360: Realistischer Fahrspass!
+15448663097729	6	296964	USB-Ladegerät für PlayStation 5: Schnell & zuverlässig.
+15448663228801	6	603775	Mechanische Tastatur: Präzision & buntes QWERTY-Design!
+15448663425409	6	602388	Dein PlayStation 5 Videospiel: Next-Gen Gaming erleben!
+15448697995649	2	225568	Buntes Moosgummi Kosmos: Weltraum-Bastelspass!
+15448698028417	2	221062	Bunte Moosgummi Zahlen: Lernspass & Deko!
+15448698126721	2	220480	Buntes Moosgummi Einhörner: Magisch basteln!
+15448698093953	2	228089	Bunte Moosgummi Herzen: Liebevoll basteln!
+15448698257793	2	240928	Kawaii Bastelset: Süsse Figuren ohne Backen!
+15448698192257	2	188111	Kreativ-Bastelset: Ideen für Gross & Klein!
+15448698356097	2	241325	Weihnachts-Bastelset: Christbaumschmuck selbst machen!
+15448759566721	6	265093	Tauche ein: VR-Brille für atemberaubende Welten
+15448759665025	6	526322	Wärme-Kälte-Massagepistole für schnelle Linderung
+15448759730561	5	418757	Wärmebildkamera: Entdecke, was verborgen bleibt
+15448759501185	4	142334	Tiefenmassage für Entspannung & Regeneration
+15448759796097	6	357531	Präzise Wärmebildkamera für schnelle Analysen
+15448759861633	6	504927	Wärmebildkamera: Sicher und effizient prüfen
+15448759959937	6	431944	Roboterstaubsauger: Dein Zuhause, immer sauber
+15448759992705	6	721812	Kompakte Wärmebildkamera für schnelle Diagnose
+15448759894401	6	467009	Roboterstaubsauger: Dein Zuhause, immer sauber
+15448760025473	3	433034	VR-Wissenschaftsspiel: Entdecke spielend die Welt
+15448760189313	2	112210	Roboterstaubsauger: Mehr Zeit, weniger Putzen
+15448760123777	6	840716	Mobiler LED-Projektor: Kino & Sound für unterwegs
+15448760222081	6	544189	Roboterstaubsauger: Geniesse ein sauberes Heim
+15448760287617	2	116100	Roboterstaubsauger: Dein smarter Putzhelfer
+15448760320385	6	757355	Roboterstaubsauger: Automatisch saubere Böden
+15448760516993	5	472069	Elektroroller: Deine smarte Lösung für Mobilität
+15448760451457	3	217146	Unterwasser-Scooter: Tauche ab ins Abenteuer!
+15448760353153	6	486635	Roboterstaubsauger: Starke Leistung für Reinheit
+15448760418689	5	330998	Elektroroller: Schnell, flexibel, umweltfreundlich
+15448760615297	5	254549	Roboterstaubsauger: Saugen & Wischen in Einem
+15448760648065	6	290798	Elektroroller: Kraftvoll & stylisch durch die Stadt
+15448760713601	6	369400	Elektroroller: Dein leichter Begleiter für jeden Tag
+15448760582529	6	256060	Elektroroller: Dein wendiger Stadtflitzer
+15448760811905	3	107772	Roboterstaubsauger: Für ein makelloses Zuhause
+15448760779137	6	491259	Elektroroller: Komfortabel & zuverlässig pendeln
+15448760844673	2	110539	Elektroroller: Erlebe puren Fahrspass & Speed
+15448760877441	6	402019	Fensterreinigungsroboter: Strahlende Scheiben
+15448761074049	4	126596	Roboterstaubsauger: Effizient & smart reinigen
+15448761008513	6	865737	Roboterstaubsauger: Dein intelligenter Putzroboter
+15448761106817	3	178554	Roboterstaubsauger: Für ein stets sauberes Heim
+15448761270657	6	407393	Roboterstaubsauger: Dein Helfer für mehr Freizeit
+15448761172353	6	1008128	Aurora-Projektor: Magische Lichter für dein Heim
+15448761368961	6	421630	Roboterstaubsauger: Dein zuverlässiger Putzpartner
+15448761336193	6	598759	Roboterstaubsauger: Leistungsstark für Reinheit
+15448761401729	6	269412	Elektroroller: Schnell & bequem durch die Stadt
+15448761565569	3	172962	Aussenkamera: Sicherheit für dein Zuhause
+15448761467265	4	225181	Roboterstaubsauger: Effizient & smart reinigen
+15448761598337	4	281333	Elektroroller: Dein Spass für unterwegs
+15448761532801	6	654117	Roboterstaubsauger: Dein intelligenter Putzroboter
+15448761762177	6	776444	Roboterstaubsauger: Effizient & smart reinigen
+15448761663873	3	396754	Roboterstaubsauger: Für ein makelloses Zuhause
+15448761827713	6	878640	Roboterstaubsauger: Starke Leistung für Reinheit
+15448761860481	6	735201	Roboterstaubsauger: Starke Leistung für Reinheit
+15448778080641	2	141805	Sanfter Epilierer für seidig glatte Haut – schnell & effekti
+15448761893249	4	377319	Roboterstaubsauger: Für ein makelloses Zuhause
+15448778244481	3	194788	Präzise Pinzette für perfekte Augenbrauen
+15448778211713	5	174011	Präziser Epilierer für langanhaltend glatte Haut
+15448778146177	6	379417	Wachserhitzer für professionelle Haarentfernung daheim
+15448778178945	6	548688	Gesichtssauna für tiefe Porenreinigung & Entspannung
+15448778310017	3	139689	Schräge Pinzette für müheloses, präzises Zupfen
+15448778342785	6	633869	Anti-Aging Massagegerät: Straffe & verjüngte Haut
+15448778375553	6	628438	IPL Epilierer für dauerhaft glatte Haut – schmerzfrei
+15448778441089	6	649954	Eis-Gesichtsroller für frische, straffe Haut & weniger Schwe
+15448778473857	6	600875	Kristall-Epilierer für sanfte, glatte Haut – schmerzfrei
+15448778506625	6	495546	Wachserhitzer für schnelle & effektive Haarentfernung
+15448778572161	3	116369	Präzise Pinzette für perfekte Augenbrauenform
+15448778736001	2	131352	Mini-Pinzette für präzises Zupfen – ideal für unterwegs
+15448778703233	2	105806	Rosenquarz Gua Sha für straffe Haut & Entspannung
+15448778637697	3	116991	Rosenquarz-Roller für strahlende Haut & Entspannung
+15448778768769	6	449197	Effizienter Epilierer für langanhaltend glatte Haut
+15448778801537	4	219887	Gesichtssauna zur Tiefenreinigung & Porenöffnung
+15448778899841	6	680969	Entspannende Gesichtssauna für reine Haut
+15448778932609	2	182886	Mini-Wachserhitzer für schnelle Haarentfernung daheim
+15448778998145	3	167532	Gesichtsroller für straffe Haut & entspannende Massage
+15448778965377	6	287457	Gründlicher Epilierer für sanfte & glatte Haut
+15448779096449	2	126226	Stein-Gesichtsroller für natürlichen Lifting-Effekt
+15448779260289	6	626426	Einfacher Epilierer für seidig glatte Haut
+15448779194753	6	644504	Effektiver Epilierer für schmerzarme Haarentfernung
+15448779161985	6	625980	Sanfter Epilierer für gründliche Haarentfernung
+15448779293057	6	660561	Flexibler Epilierer für gründliche Haarentfernung
+15448779358593	3	153507	Laser-Epilierer für dauerhaft glatte Haut – professionell
+15448779325825	6	664449	Schneller Epilierer für langanhaltend glatte Haut
+15448779489665	4	349079	Hochfrequenz-Massagegerät für jugendlich straffe Haut
+15448785682817	2	82818	Scheibenwischer – Streifenfreie Sicht bei jedem Wetter
+15448785617281	2	82763	Premium Scheibenwischer 33cm – Klare Sicht, sicher fahren
+15448785781121	2	82818	Premium Scheibenwischer 43cm – Klare Sicht, sicher fahren
+15448785813889	2	82818	Premium Scheibenwischer 45cm – Klare Sicht, sicher fahren
+15448785846657	2	82818	Premium Scheibenwischer 48cm – Klare Sicht, sicher fahren
+15448785748353	2	82818	Premium Scheibenwischer 38cm – Klare Sicht, sicher fahren
+15448785879425	2	82826	Premium Scheibenwischer 53cm – Klare Sicht, sicher fahren
+15448785912193	2	82826	Premium Scheibenwischer 56cm – Klare Sicht, sicher fahren
+15448785944961	2	82818	Premium Scheibenwischer 58cm – Klare Sicht, sicher fahren
+15448785977729	2	82818	Premium Scheibenwischer 60cm – Klare Sicht, sicher fahren
+15448786076033	2	82826	Premium Scheibenwischer 65cm – Klare Sicht, sicher fahren
+15448786108801	2	82826	Premium Scheibenwischer 70cm – Klare Sicht, sicher fahren
+15448786207105	2	82818	Premium Scheibenwischer 80cm – Klare Sicht, sicher fahren
+15448786272641	3	156666	Robuster Scheibenwischer 33cm – Zuverlässig bei jedem Wetter
+15448786141569	2	82818	Premium Scheibenwischer 75cm – Klare Sicht, sicher fahren
+15448786239873	3	157182	Robuster Scheibenwischer 28cm – Zuverlässig bei jedem Wetter
+15448786305409	3	156658	Robuster Scheibenwischer 35cm – Zuverlässig bei jedem Wetter
+15448786370945	3	156666	Robuster Scheibenwischer 38cm – Zuverlässig bei jedem Wetter
+15448786469249	3	156658	Robuster Scheibenwischer 41cm – Zuverlässig bei jedem Wetter
+15448786502017	3	156666	Robuster Scheibenwischer 43cm – Zuverlässig bei jedem Wetter
+15448786534785	3	156674	Robuster Scheibenwischer 48cm – Zuverlässig bei jedem Wetter
+15448786567553	3	156658	Robuster Scheibenwischer 51cm – Zuverlässig bei jedem Wetter
+15448786633089	3	156658	Robuster Scheibenwischer 56cm – Zuverlässig bei jedem Wetter
+15448786698625	3	156658	Robuster Scheibenwischer 60cm – Zuverlässig bei jedem Wetter
+15448786600321	3	156666	Robuster Scheibenwischer 53cm – Zuverlässig bei jedem Wetter
+15448786665857	3	156666	Robuster Scheibenwischer 58cm – Zuverlässig bei jedem Wetter
+15448786731393	2	82818	Premium Scheibenwischer 51cm – Klare Sicht, sicher fahren
+15448786829697	2	193750	Sport Scheibenwischer – Optimale Sicht bei jeder Fahrt
+15448786764161	3	292754	Einparkhilfe Sensor – Stressfrei parken, keine Kratzer
+15448786895233	4	244405	Leistungsstarker Scheibenwischer 65cm – Top-Sicht garantiert
+15448786993537	2	73319	Flachblatt Scheibenwischer 65cm – Perfekte Sicht & Sicherhei
+15448787059073	2	84209	Flachblatt Scheibenwischer 50cm – Perfekte Sicht & Sicherhei
+15448787124609	2	85592	Flachblatt Scheibenwischer 55cm – Perfekte Sicht & Sicherhei
+15448787190145	2	92223	Flachblatt Scheibenwischer 45cm – Perfekte Sicht & Sicherhei
+15448787091841	2	79344	Flachblatt Scheibenwischer 60cm – Perfekte Sicht & Sicherhei
+15448787157377	2	85084	Flachblatt Scheibenwischer 48cm – Perfekte Sicht & Sicherhei
+15448787255681	2	95376	Flachblatt Scheibenwischer 43cm – Perfekte Sicht & Sicherhei
+15448787321217	2	88846	Universeller Scheibenwischer – Klare Sicht für jedes Auto
+15448787288449	3	330419	Flachblatt Scheibenwischer 38cm – Perfekte Sicht & Sicherhei
+15448787386753	3	354138	2er Kofferraum Organizer Set – Alles sicher verstaut
+15448787452289	3	432647	Kofferraum Organizer – Mehr Ordnung & Platz im Auto
+15448795808129	6	840716	Mobiler LED-Projektor mit Sound für Kino überall.
+15448893653377	3	353379	Perfektes Schleifpapier für glatte Flächen
+15448796266881	5	472069	Leistungsstarker Elektroroller für schnelle Fahrten.
+15448796856705	6	1008128	Aurora LED-Projektor: Nordlicht-Magie für dein Zuhause.
+15448905482625	5	480341	Figurbetontes Kleid Schwarz – Dein sexy Auftritt!
+15448905646465	2	72549	Sport Leggings – Maximaler Komfort für dein Training!
+15448905515393	4	332065	Elegantes Kleid Grün – Für einen frischen Look!
+15448905679233	3	150654	Robuste Leggings – Perfekter Halt bei jeder Bewegung!
+15448905712001	4	494600	Kleid Schwarz Einheitsgrösse – Passt perfekt, wirkt sexy!
+15448905777537	2	192421	Minikleid Schwarz Einheitsgrösse – Für jede Figur ein Hit!
+15448905810305	6	468755	Verführerisches Kleid Schwarz – Zeig deine Kurven!
+15448905941377	2	161933	Kleid Schwarz Einheitsgrösse – Dein Allrounder für Style!
+15448905974145	2	162673	Elegantes Kleid Weiss – Für einen strahlenden Auftritt!
+15448906006913	2	188368	Rotes Minikleid – Zieh alle Blicke auf dich!
+15448905875841	4	480425	Rotes Partykleid – Für einen unvergesslichen Abend!
+15448906072449	2	197790	Figurbetontes Kleid Schwarz – Für eine tolle Silhouette!
+15448906105217	2	205811	Kleid Schwarz Einheitsgrösse – Immer perfekt gestylt!
+15448906137985	2	197418	Kleid Schwarz Plus Size – Komfortabel & super sexy!
+15448906203521	5	381069	Kleid Schwarz Einheitsgrösse – Dein Must-Have für den Abend!
+15448906236289	2	174051	Kleid Schwarz Grosse Grössen – Für deine schönsten Kurven!
+15448906269057	2	172189	Kleid Schwarz Einheitsgrösse – Passt immer, macht schlank!
+15448906367361	2	176557	Rotes Kleid Plus Size – Zeig deine Leidenschaft!
+15448906400129	2	224354	Rotes Kleid Einheitsgrösse – Für einen heissen Auftritt!
+15448906432897	2	225278	Kleid Schwarz Einheitsgrösse – Dein Favorit für jede Party!
+15448906498433	4	342688	Kleid Schwarz Einheitsgrösse – Zeitlos elegant & sexy!
+15448906596737	2	275383	Kleid Schwarz Einheitsgrösse – Für unvergessliche Nächte!
+15448906563969	4	1193629	Kleid Schwarz Einheitsgrösse – Dein verführerischer Look!
+15448906727809	4	1059416	Rosa Kleid Plus Size – Süss & sexy für tolle Kurven!
+15448906695041	4	1212784	Kleid Schwarz Plus Size – Betont deine Weiblichkeit!
+15448906760577	4	1091812	Rosa Kleid Einheitsgrösse – Dein verspielter Hingucker!
+15448906924417	4	428434	Kleid Schwarz Einheitsgrösse – Für einen selbstbewussten Sty
+15448907022721	5	545046	Elegantes Kleid Schwarz – Für jeden Anlass perfekt!
+15448907284865	5	553206	Kleid Schwarz XL – Für eine verführerische Silhouette!
+15448907219329	5	220263	Kleid Schwarz S – Für eine atemberaubende Figur!
+15448907153793	5	458276	Kleid Schwarz – Dein zeitloser Klassiker für Eleganz!
+15448907383169	5	553206	Kleid Schwarz S – Dein kleiner Schwarzer für den Abend!
+15448907350401	6	351880	Schwarze Leggings – Perfekter Sitz für dein Workout!
+15448907448705	5	220263	Kleid Schwarz L – Für einen selbstbewussten Auftritt!
+15448907514241	5	220263	Kleid Schwarz – Dein Geheimnis für einen Wow-Effekt!
+15448907547009	3	257831	Kleid Schwarz S/M – Für eine unwiderstehliche Ausstrahlung!
+15448907645313	2	109911	Sinnliches Gleitgel Erdbeere – Für süsse Momente zu zweit!
+15448907678081	2	104264	Erfrischendes Gleitgel Minze – Für prickelnde Leidenschaft!
+15448907710849	2	76814	Sportliches Kleid – Für aktive Frauen mit Stil!
+15448907874689	3	1210914	Kleid Schwarz XS – Dein figurbetonter Hingucker!
+15448907809153	4	429274	Kleid Schwarz L/XL – Für einen selbstbewussten Look!
+15448907940225	3	1039051	Kleid Schwarz XXL – Für tolle Kurven & maximalen Komfort!
+15448908005761	5	518740	Kleid Schwarz S/M – Dein perfekter Style für jede Party!
+15448923144577	5	472120	Eiscreme-Spielzeug für Hunde – Süsser Spass garantiert!
+15448923111809	5	570939	Kuschelaffe für Hunde – Bringt Freude & Spielspass!
+15448923177345	4	530536	Grauer Kuschelaffe für Hunde – Riesenspass für grosse Pfoten
+15448923275649	4	506496	Oranger Kuschelaffe für Hunde – Riesenspass für grosse Pfote
+15448923439489	4	360480	Kuschelhase für Hunde – Perfekt zum Toben & Schmusen!
+15448923373953	5	842178	Kuschelkuh für Hunde – Für langanhaltenden Spielspass!
+15448923341185	4	445284	Rosa Elefant für Hunde – Niedlicher Spielspass für kleine Pf
+15448923308417	5	855974	Brauner Kuschelaffe für Hunde – Riesenspass für grosse Pfote
+15448923570561	4	445268	Rosa Elefant für Hunde – Niedlicher Spielspass für alle!
+15448923472257	4	709942	Monster-Spielzeug für Hunde – Für wilden Spielspass!
+15448923505025	5	762488	Nilpferd-Spielzeug für Hunde – Süsser Spass für kleine Pfote
+15448923603329	5	762488	Nilpferd-Spielzeug für Hunde – Für robusten Spielspass!
+15448923701633	3	293695	Enten-Spielzeug für Hunde – Bringt Freude & Abwechslung!
+15448923767169	5	819505	Frosch-Spielzeug für Hunde – Für lustige Apportierspiele!
+15448924094849	5	611695	Narwal für Hunde – Exotischer Spielspass für Abenteurer!
+15448923799937	4	615959	Maus-Spielzeug für Hunde – Weckt den Jagdinstinkt!
+15448923996545	6	975619	Pommes-Spielzeug für Hunde – Witziger Knabberspass!
+15448923963777	5	788019	Hamburger für Hunde – Witziger Spielspass ohne Kalorien!
+15448924127617	2	279392	Krabben-Spielzeug für Hunde – Maritimer Spass für alle!
+15448924389761	2	264803	Enten-Spielzeug mit Seil – Für interaktiven Zerrspass!
+15448924258689	3	329735	Champagner für Hunde – Prost auf den Spielspass!
+15448924422529	3	263180	Rosa Donut für Hunde – Süsser Spielspass ohne Kalorien!
+15448924520833	2	324482	Schoko-Donut für Hunde – Süsser Spass ohne Kalorien!
+15448924553601	4	404550	Rosa Dino für Hunde – Für urzeitlichen Spielspass!
+15448924619137	4	1916540	Interaktives Tierspiel – Spielerisch lernen & entdecken!
+15448924750209	6	2159040	Baustein-Spieltisch – Fördert Kreativität & Motorik!
+15448924782977	2	902213	Ferkel-Kostüm für Kinder – Süsser Rollenspiel-Spass!
+15448924717441	6	2799011	Musik-Lernbuch für Babys – Erste Lieder & Melodien!
+15448924914049	2	894818	Oscar-Kostüm für Kinder – Für lustigen Verkleidungsspass!
+15448924848513	4	982472	Alpaka-Kostüm für Kinder – Flauschiger Rollenspiel-Spass!
+15448924881281	2	895441	Krümelmonster-Kostüm – Für lustigen Verkleidungsspass!
+15448924979585	4	1767601	Stapelturm für Babys – Fördert Motorik & Geschick!
+15448925012353	5	1907022	Musik-Set für Kinder – Fördert Rhythmus & Kreativität!
+15448925077889	6	1967247	Baustein-Zug für Babys – Fördert Bau- & Spielspass!
+15448925241729	2	922810	Spielzeug-Kettensäge – Für spannende Rollenspiele!
+15448925208961	3	1085022	Kinder-Trennwerkzeug «Werkstatt» · Rollenspiel
+15448925143425	5	1903182	Spielzeug-Toaster-Set – Für realistische Rollenspiele!
+15448925176193	5	1907835	Zieh-Schnecke für Kinder – Fördert Motorik & Bewegung!
+15448925340033	3	1016379	Kinder-Motorwerkzeug «Waldprofi» · Rollenspiel
+15448962793857	2	225460	Elektrische Heizdecke – Sofortige Wärme & Komfort
+15448962826625	3	447762	Wendetagesdecke – 2 Looks für Ihr Schlafzimmer
+15448963285377	2	132162	Doppel-Heizdecke – Kuschelige Wärme für zwei
+15448963350913	3	185762	Wärmeunterbett Doppelbett – Für kuschelige Nächte
+15448963940737	6	653891	Wärmeunterbett Einzelbett – Für kuschelige Nächte
+15448965022081	2	77657	Komposter Aktivkohlefilter – Geruchsfrei in Ihrer Küche
+15448964923777	3	325942	4er Aktivkohlefilter Set – Saubere Luft, bunte Vielfalt
+15448964956545	5	421108	4er Aktivkohlefilter Schwarz – Für frische, reine Luft
+15448967577985	4	305620	Präzise PH-Messung für optimale Pflanzen-Gesundheit
+15448967610753	2	306375	Rasendünger 3-in-1 – Für dichten, grünen Traumrasen
+15448967643521	2	130036	Blütenstimulator – Für prächtige Blüten & reiche Ernte
+15448967709057	3	431117	Tropfschlauch 7,5m – Gezielte Bewässerung, spart Wasser
+15448967741825	3	431069	Tropfschlauch 22,5m – Gezielte Bewässerung, spart Wasser
+15448967774593	3	429908	Tropfschlauch 30m – Gezielte Bewässerung, spart Wasser
+15448967807361	6	755221	Universaldünger – Für kräftiges, gesundes Pflanzenwachstum
+15448967938433	2	157161	Hydrochar Universaldünger – Für vitalen Boden & Wachstum
+15448967971201	2	356639	Universaldünger Frucht – Für reiche, leckere Ernte
+15448967840129	5	850561	PH-Messgerät – Präzise Werte für gesunde Pflanzen
+15448967872897	5	969928	Premium Pflanzendünger – Für üppiges Wachstum
+15448973377921	3	156658	Scheibenwischer: Klare Sicht für sichere Fahrt.
+15448973410689	3	358920	Kofferraum-Organizer: Endlich Ordnung im Auto!
+15448973672833	3	399531	Kofferraum-Organizer: Alles sicher verstaut & ordentlich.
+15448973771137	3	353580	Kofferraum-Organizer: Schluss mit dem Chaos im Auto!
+15448973836673	3	368544	Kofferraum-Organizer: Für mehr Platz & Ordnung im Auto.
+15448985534849	6	553059	Glatte Haut, langanhaltend: Dein Epilierer für Zuhause
+15448985600385	2	113153	Anti-Aging Gesichtsmassage: Straffe Haut & Jugend-Glow
+15448985633153	2	235677	Gründliche Haarentfernung: Dein Weg zur seidigen Haut
+15448985698689	3	253271	Langfristig glatte Haut: Kompakter IPL-Epilierer
+15448985665921	5	379352	Dauerhafte Haarentfernung: Sanft & effektiv mit IPL
+15448985829761	2	114077	Exakte Haarentfernung: Deine Pinzette für Details
+15448985862529	2	58243	Schnell & glatt: Dein Epilierer für den Alltag
+15448985764225	2	122000	Präzise Haarentfernung: Perfektion für deine Schönheit
+15448985895297	2	142929	Effiziente Haarentfernung: Für langanhaltend glatte Haut
+15448985993601	6	558151	Einfache Haarentfernung: Für perfekte Ergebnisse
+15448985960833	6	488672	Seidig glatte Haut: Dein zuverlässiger Epilierer
+15448986026369	4	216704	Sanft & gründlich: Dein Epilierer für seidige Beine
+15448986124673	6	397432	Glatte Haut mühelos: Dein Epilierer für jeden Tag
+15448986059137	6	406493	Komfortable Haarentfernung: Für langanhaltende Glätte
+15448986190209	6	469383	Zuverlässige Haarentfernung: Für dauerhafte Glätte
+15448986222977	6	425959	Schmerzfreie Haarentfernung: Dein IPL für Zuhause
+15448986354049	3	178120	Perfekte Glätte: Dein Epilierer für makellose Haut
+15448986255745	6	401913	Professionelle Haarentfernung: Dein IPL für den Körper
+15448986288513	6	422029	Einfache Haarentfernung: Für seidig glatte Haut
+15448986386817	2	77898	Dauerhafte Haarentfernung: Präziser IPL-Epilierer
+15448986419585	6	392218	Sanfte Haarentfernung: Für empfindliche Haut
+15448986517889	3	335119	Gründliche Körperhaarentfernung: Dein Allrounder
+15448986452353	4	233329	Präzise Haarentfernung: Langlebiger Epilierer aus Metall
+15448986485121	6	537919	Effiziente Haarentfernung: Für glatte Haut ohne Mühe
+15448986583425	6	282682	Schnelle Glätte: Dein Epilierer für langanhaltende Haut
+15448986681729	2	67705	Schmerzfreie Haarentfernung: Für seidig glatte Haut
+15448986747265	4	127771	Sanfte Haarentfernung: Dein Epilierer für Komfort
+15448986812801	6	365475	Effektive Haarentfernung: Für makellose Ergebnisse
+15448986911105	6	616223	Glatte Haut einfach: Dein Epilierer für jeden Tag
+15448987009409	6	657256	Vielseitige Haarentfernung: Für makellose Glätte
+15449001722241	6	278881	Dein leistungsstarker E-Roller für die Stadt
+15449001853313	2	125744	Sichere dein Zuhause: Alles im Blick behalten
+15449001820545	2	100098	Kraftvoller E-Roller für maximalen Fahrspass
+15449001755009	6	529314	Flitzer für die City: Schnell & flexibel unterwegs
+15449001886081	4	136038	Tauche ein in faszinierende VR-Welten
+15449001918849	6	214648	Gaming neu erleben: Virtuelle Realität pur
+15449001951617	6	243872	Dein smarter Putzhelfer für mühelose Reinheit
+15449001984385	6	638936	Automatisch sauber: Spare Zeit beim Putzen
+15449002017153	5	226581	Dein schneller Stadtflitzer für jeden Tag
+15449002115457	6	987661	Automatisch sauber: Dein Helfer für Reinheit
+15449002082689	5	196484	Leistungsstarker E-Roller für bequemes Fahren
+15449002246529	6	771931	Intelligenter Saugroboter für dein Zuhause
+15449002148225	6	799518	Dein smarter Putzroboter für ein sauberes Heim
+15449002180993	6	816753	Mühelose Sauberkeit: Dein automatischer Helfer
+15449002213761	6	578225	Automatische Reinigung für mehr Freizeit
+15449002279297	6	655721	Nie wieder selbst saugen: Dein Putzroboter
+15449002344833	6	293824	Dein autonomer Helfer für tägliche Reinheit
+15449002312065	6	501956	Glänzende Böden ganz ohne Mühe
+15449002377601	6	327622	Leichter E-Roller für Wendigkeit in der Stadt
+15449002410369	6	417040	Automatisch saubere Böden, jeden Tag
+15449002443137	6	761616	Dein smarter Helfer für ein stets sauberes Heim
+15449002606977	2	126090	Smart & sauber: Dein automatischer Putzhelfer
+15449002541441	3	398856	Mühelose Reinigung für mehr Freizeit
+15449002574209	5	705168	Dein Reinigungsroboter für glänzende Böden
+15449002639745	6	662182	Kraftvoller Saugroboter für makellose Reinheit
+15449002672513	6	272605	Dein intelligenter Helfer für Sauberkeit
+15449002738049	4	157639	Robuster E-Roller mit starker Leistung
+15449002705281	6	1099774	Automatisch saubere Böden, jeden Tag
+15449002770817	6	260971	Bequemer E-Roller für stilvolles Pendeln
+15449002836353	5	291873	Ausdauernder Saugroboter für dauerhafte Reinheit
+15449002869121	6	316292	Dein flexibler E-Roller für die City
+15449002967425	3	308703	Einfach mobil: Dein praktischer E-Roller
+15449002934657	5	356622	Intelligente Outdoor-Kamera für dein Heim
+15449002901889	6	589881	Fahrspass pur: Entdecke die Stadt neu
+15449003000193	6	415668	Dein smarter Helfer für ein sauberes Heim
+15449003032961	6	249966	Schnell durch die Stadt mit deinem E-Roller
+15449003098497	6	123429	Tauche ein: Gaming in neuen Dimensionen
+15449003131265	6	747440	Smarter Saugroboter mit Sprachsteuerung
+15449003164033	6	398104	Unsichtbares sichtbar machen: Dein Wärme-Detektor
+15449003196801	6	522365	Energie sparen: Wärme präzise aufspüren
+15449003229569	6	514183	Präzise Inspektion: Wärme-Kamera für Profis
+15449003327873	3	215841	Volle Power: Länger fahren mit neuem Akku
+15449003295105	3	215841	Mehr Reichweite: Ersatz-Akku für deinen E-Roller
+15449003426177	4	128828	Leichter E-Roller für maximale Flexibilität
+15449003393409	6	375218	Dein kraftvoller E-Roller für die Stadt
+15449029247361	3	138058	Lila Gaming Controller Bluetooth PS5 – Kabelloser Spielspass
+15449029214593	3	149054	Blauer Gaming Controller Bluetooth – Kabellos zocken!
+15449029280129	3	144479	Rosa Gaming Controller Bluetooth – Für stylisches Zocken!
+15449029345665	6	481982	Controller Bluetooth für Xbox – Kabellos & kompatibel!
+15449029411201	6	779784	PS5 Spiel – Dein nächstes Abenteuer wartet!
+15449029378433	5	327894	Gaming Tastatur & Maus Set Schwarz – Spanisches Layout!
+15449029575041	2	65054	Schwarzer Gaming Controller – Für maximale Kontrolle!
+15449029542273	2	79987	Schwarzer Gaming Controller Bluetooth – Kabellos zocken!
+15449029476737	2	82059	Roter Gaming Controller Bluetooth – Kabellos & stylisch!
+15449029443969	2	76476	Weisser Gaming Controller – Für präzise Manöver!
+15449029640577	2	73669	Weisser Gaming Controller Bluetooth – Kabellos & modern!
+15449029673345	2	370012	Rotes Mauspad – Für präzise Mausführung & Style!
+15449029706113	3	159051	Weisser Gaming Controller für Switch – Optimaler Grip!
+15449029738881	6	544558	PS5 Spiel Helldivers – Stürze dich ins Gefecht!
+15449029804417	6	908661	PS5 Spiel Construction Simulator – Baue deine Welt!
+15449029837185	6	724106	Gaming Controller – Für maximale Kontrolle im Spiel!
+15449029935489	2	145247	Gaming Controller – Für ein besseres Spielerlebnis!
+15449029968257	6	509125	Gaming Controller für Switch – Optimal für deine Konsole!
+15449029902721	6	525989	Gaming Controller für Switch – Perfekt für unterwegs!
+15449029869953	6	641795	Gaming Controller – Erlebe präzises Gameplay!
+15449030001025	3	208105	Gaming Headset mit Mikrofon – Für klaren Teamspeak!
+15449030066561	3	253091	Schwarzes Mauspad – Für präzise & flüssige Bewegungen!
+15449030099329	4	244234	Gaming Controller – Für ultimative Spielkontrolle!
+15449030132097	6	384160	Schwarzes Mauspad – Optimiere deine Präzision!
+15449030164865	6	681957	Gaming Headset mit Mikrofon – Tauche ins Spiel ein!
+15449030197633	6	654720	PS5 Spiel Death Stranding – Einzigartiges Abenteuer!
+15449030394241	2	491599	PS4 Spiel RDR2 – Tauche in den Wilden Westen ein!
+15449030295937	3	279818	Gaming Controller für Switch – Perfekt für deine Konsole!
+15449030328705	4	165968	Gaming Maus – Für blitzschnelle Reaktionen!
+15449030230401	5	479435	PS4 Spiel Spider-Man – Werde zum Superhelden!
+15449030525313	6	671611	PS5 Spiel HappyFunland – Spass für die ganze Familie!
+15449030459777	6	640797	PS5 Spiel Sandland – Erlebe ein Wüstenabenteuer!
+15449030558081	6	696703	PS4 Spiel Top Spin 2K25 – Dein Match wartet!
+15449030590849	6	698358	PS5 Spiel Top Spin 2K25 – Dein Match wartet!
+15449030656385	4	234938	Schwarzes Mauspad – Für präzise Mausbewegungen!
+15449030623617	6	707232	Xbox Spiel Top Spin 2K25 – Dein Match wartet!
+15449030721921	4	212487	Gaming Headset mit Mikrofon – Für immersive Sounds!
+15449030689153	5	337238	Schwarzes Mauspad – Optimiere deine Gaming-Präzision!
+15449030787457	6	765151	PS5 Spiel Sea Of Stars – Erlebe ein magisches RPG!
+15449030754689	6	755901	PS5 Spiel House Flipper 2 – Baue dein Traumhaus!
+15449030885761	2	95045	Gaming Controller – Für dein bestes Spielerlebnis!
+15449030918529	2	74277	Schwarzer Gaming Controller PS4 – Für präzises Zocken!
+15449030951297	3	236338	Gaming Headset mit Mikrofon PS4 – Für klaren Sound!
+15449030820225	6	829248	PS5 Spiel Dragon Ball Xenoverse 2 – Epische Kämpfe!
+15449043239297	2	109061	5 Steinbohrer für müheloses Bohren in Mauerwerk
+15449043304833	2	95294	Holzbohrer-Set für saubere, präzise Holzarbeiten
+15449043337601	2	114046	Holzbohrer-Set für schnelle & saubere Löcher
+15449043599745	2	178252	Bit-Set PZ/PH für gängige Schrauben – sicher & fest
+15449043370369	4	481900	6 Holzbohrer für präzise & ausrissfreie Löcher
+15449043665281	6	574169	Robuster Schraubendreher für sicheres Arbeiten
+15449043698049	3	192331	Vielseitige Säge für schnelle & saubere Schnitte
+15449043730817	4	384151	Bit-Set für diverse Schraubarbeiten – immer passend
+15449043796353	2	391742	10x Schleifpapier 80er Körnung – grober Schliff
+15449043829121	2	391742	10x Schleifpapier 120er Körnung – feiner Schliff
+15449043861889	2	300219	10er Schleifpapier-Set für glatte Oberflächen
+15449043894657	6	798323	Elektrischer Schrauber für schnelles & müheloses Arbeiten
+15449044255105	2	290747	Kompakte Alu-Wasserwaage 30cm – immer im Lot
+15449044189569	2	265257	Aluminium-Wasserwaage 60cm – präzise Ausrichtung
+15449044156801	4	225076	Robuste Säge für präzise & schnelle Schnitte
+15449044222337	3	356942	Wasserwaage 50cm für exakte Messungen
+15449044386177	2	211691	Schraubendreher-Set PH2/Flach – für alle Schrauben
+15449044451713	2	116840	Phillips Schraubendreher-Set für Kreuzschlitzschrauben
+15449044287873	4	210536	Fliesenbohrer-Set für saubere & präzise Löcher
+15449044353409	4	221173	Fliesenbohrer-Set für müheloses Bohren in Keramik
+15449044550017	2	64753	Elektriker-Schraubendreher Flach – für sicheres Arbeiten
+15449044517249	2	73548	Elektriker-Schraubendreher PH2 – sicher & präzise
+15449044615553	2	75333	Robuster Schraubendreher für tägliche Arbeiten
+15449044681089	2	149584	Feinmechaniker-Schrauber-Set für präzise Arbeiten
+15449044713857	2	106567	Kompakter Flachschraubendreher für enge Stellen
+15449044648321	2	219213	PH2 Phillips Schraubendreher-Set – fester Halt
+15449044877697	2	75333	Robuster Schraubendreher für zuverlässiges Schrauben
+15449044844929	2	75933	1000V Elektriker-Schrauber Flach – höchste Sicherheit
+15449044746625	2	106567	Kurzer Flachschraubendreher für präzise Arbeiten
+15449044910465	2	75718	Vielseitiger Schraubendreher für jeden Haushalt
+15449044976001	2	64317	1/4 Ratschenschlüssel für schnelles Anziehen
+15449044943233	2	75333	Handlicher Schraubendreher für präzise Arbeiten
+15449049334145	3	337310	Leidenschaftliches Kleid Rot/Schwarz – Dein Auftritt!
+15449049268609	2	812462	Verführerisches Kleid Rosa – Dein femininer Look
+15449049203073	3	575714	Verführerisches Kleid Schwarz/Rosa – Zeig dich!
+15449049301377	4	429274	Verführerisches Kleid Schwarz – Zeitlose Eleganz
+15449049596289	3	640365	Aufregendes Kleid Schwarz – Für geheimnisvolle Nächte
+15449049399681	3	1094137	Verführerisches Kleid Blau – Für deinen starken Stil
+15449049989505	3	446041	Sinnliches Kleid – Für verspielte Momente
+15449049923969	6	432981	Elegantes Kleid Schwarz – Dein luxuriöser Auftritt
+15449050022273	3	303808	Sinnliches Kleid Schwarz – Zeitlose Verführung
+15449050055041	2	246798	Sinnliches Kleid – Komfortabel & Verführerisch
+15449050186113	4	422266	Moderne LED-Lampe Weiss – Stilvolle Beleuchtung
+15449050218881	5	564116	Sport Leggings – Für deine beste Performance
+15449050153345	6	535755	Süsses Kinderkleid Beige – Bequem & zauberhaft
+15449050087809	2	182213	Sinnliches Kleid Rosa – Für verspielte Looks
+15449050349953	3	165570	Trainings Leggings – Für dein intensives Workout
+15449050415489	4	849426	Grüne Trinkgläser (6er Set) – Für stilvollen Genuss
+15449050251649	4	183840	Outdoor Rock Braun – Robust für dein Abenteuer
+15449050284417	5	303763	Sport Leggings – Maximale Bewegungsfreiheit
+15449050448257	4	350127	Süsses Kinderkleid – Perfekt zum Spielen & Träumen
+15449050481025	5	398258	Buntes Kinderkleid – Für kleine Eisprinzessinnen
+15449050612097	6	929715	Dunkelblaues Kinderkleid – Für kleine Bluey Fans
+15449050579329	5	384767	Hellrosa Kinderkleid – Bequem & zauberhaft
+15449050546561	5	634628	Buntes Kinderkleid – Für kleine Hello Kitty Fans
+15449050513793	6	772965	Rosa Kinderkleid – Dein süsser Hello Kitty Look
+15449050677633	2	214293	Hellblaues Kinderkleid – Bequem & zauberhaft
+15449050743169	5	667464	Rotes Kinderkleid – Dein süsser Hello Kitty Look
+15449050808705	4	449348	Buntes Mädchenkleid – Für kleine Hello Kitty Fans
+15449050841473	4	198302	Hellrosa Mädchenkleid – Bequem & zauberhaft
+15449050874241	4	350127	Blaues Mädchenkleid – Bequem & zauberhaft
+15449050907009	4	214633	Buntes Mädchenkleid – Für kleine Eisprinzessinnen
+15449051005313	2	282570	Bunte Leggings – Für mehr Farbe in deinem Alltag
+15449061818753	2	878879	Helden-Feuerlöscher aufblasbar – Spass für kleine Retter!
+15449050939777	4	200593	Rosa Mädchenkleid – Bequem & zauberhaft
+15449050972545	5	477971	Rosa Mädchenkleid – Dein süsser Hello Kitty Look
+15449061884289	2	933763	Flauschiges Weihnachtsmann-Kostüm – Festtagsfreude pur!
+15449061917057	2	946557	Süsses Kürbis-Kostüm – Perfekt für Halloween-Spass!
+15449061949825	2	987731	Flauschiges Drachen-Kostüm – Für kleine Fantasy-Helden!
+15449062015361	2	947725	Niedliches Nilpferd-Kostüm – Tierischer Verkleidungsspass!
+15449062048129	3	1025222	Schaumstoff-Motorwerkzeug für Kinder · sicher & leise
+15449062080897	5	821760	Buntes Zoo-Puzzle – Fördert spielerisch die Motorik!
+15449062244737	3	856774	Stadt-Puzzle – Entdecke das bunte Treiben der City!
+15449062211969	3	980342	Musikalisches Bau-Puzzle Haus – Kreativer Spielspass!
+15449062113665	3	778947	Bauernhof-Lernkarten – Tiere spielend leicht entdecken!
+15449062179201	6	1574686	Lern-Handtasche: Zahlen & Alphabet – Ideal für unterwegs!
+15449062310273	4	1076968	Musikalisches Bauernhof-Puzzle – Melodischer Spielspass!
+15449062441345	3	771698	Tier-Alphabet-Puzzle – Spielerisch Buchstaben lernen!
+15449062474113	2	418758	Klangvolle Untertassen – Für kleine Musiker-Talente!
+15449062375809	3	836945	Tierisches Formen-Puzzle mit Musik – Lernspass garantiert!
+15449062572417	2	416543	Bunte Maracas – Rhythmus-Spass für kleine Hände!
+15449062539649	4	462352	Xylofon-Klavier – Fördert musikalische Frühbegabung!
+15449062670721	3	481140	Robuste Trommel – Rhythmus-Spass für kleine Musiker!
+15449062703489	3	404048	Handliche Trommel – Fördert Taktgefühl & Kreativität!
+15449062769025	4	822956	Robuste Kindertrommel – Für lauten Musik-Spass!
+15449062637953	4	1000774	Kleine Trommel – Für erste musikalische Entdeckungen!
+15449062834561	3	388970	Kinder-Saxofon – Entdecke die Welt der Melodien!
+15449062867329	2	233311	Bunte Rasseln – Fördern Rhythmusgefühl & Hörsinn!
+15449062900097	3	174641	Süsse Kinderflöte – Für erste musikalische Klänge!
+15449062932865	5	1037473	Robuste Trommel – Für lauten Rhythmus-Spass!
+15449062998401	4	633879	Kindertrommel aus Kunststoff – Musikalischer Spielspass!
+15449063031169	4	348514	Coole Kinderflöte – Für musikalische Rennfahrer!
+15449063162241	3	524057	Grosses Tamburin – Für schwungvollen Rhythmus-Spass!
+15449063063937	3	353869	Bunte Schelle – Fördert Taktgefühl & musikalischen Spass!
+15449063195009	4	324077	Dreieck-Mundharmonika – Für erste Melodien und Spass!
+15449063096705	5	894595	Akkordeon-Klavier – Für kleine Virtuosen und Melodien!
+15449063227777	3	271699	Hochwertige Rasseln – Fördern Rhythmus & Hörsinn!
+15449063260545	3	172719	Melodische Kinderflöte – Für musikalische Entdecker!
+15449063326081	3	393517	Kuscheliger Dino – Dein treuer Freund für Abenteuer!
+15449063293313	4	757490	Grosse Trommel – Für lauten Rhythmus- und Spielspass!

@@ -1356,3 +1356,91 @@ automatischer-schwenkventilator-fur-kinderwage-638500	Dieser tragbare Ventilator
 15447875715457	Dieses kompakte Wireless Screen Device (63 x 77 mm) ist ideal für alle, die Inhalte von ihrem Smartphone oder Tablet auf einen grösseren Bildschirm …
 15447875912065	Der Wasserhahnfilter ist die ideale Lösung für die zuverlässige Reinigung Ihres Leitungswassers direkt am Wasserhahn.
 15447876370817	Diese elektronische Uhr ist ein vielseitiger Begleiter für den Alltag und beim Sport. Wasserdichtes Design.
+15447876862337	Das G69 Armband ist ein vielseitiger Begleiter für den Alltag, der Ihnen hilft, Ihre Gesundheitsdaten im Blick zu behalten.
+15447877091713	Diese Smartwatch wurde für den täglichen Gebrauch entwickelt und ist für Frauen, Männer, Teenager, Paare, Erwachsene und Senioren geeignet.
+15447877353857	Der Auto-Clicker mit vier Fingern und variabler Geschwindigkeit ist das ideale Gadget für Mobile-Gaming-Enthusiasten im Alter von 14 bis 30 Jahren.
+15447877583233	Diese universelle TV-Fernbedienung ist der ideale Ersatz für deine verlorene oder defekte Originalfernbedienung. Übertragungsdistanz von bis zu 12 Metern.
+15447877747073	Dieses intelligente GPS-Tracking-Gerät hilft Ihnen, Ihr Auto oder Handy wiederzufinden. 240 mA Akkukapazität.
+15447878041985	Dieser intelligente Vorhang-Controller macht Ihr Zuhause smarter.
+15447878271361	Dieses Rack-Zubehör wurde entwickelt, um die Fähigkeiten von Jugendlichen zwischen 15 und 35 Jahren zu fördern. Geeignet für Jugendliche (15-35 Jahre).
+15447878500737	Diese Wandhalterung aus Aluminiumlegierung ist die ideale Lösung, um Ihre Spielkonsole platzsparend und stilvoll zu verstauen.
+15447878762881	Dieses moderne Babyphone bietet Ihnen die Möglichkeit, Ihr Kind jederzeit und überall im Blick zu behalten.
+15447880335745	Dieser hochwertige Schal ist ein vielseitiges Accessoire für Damen und Herren. Zusammensetzung: Enthält zwischen 70% und 80% Viskosefasern.
+15447881974145	Dieser modische Dreiecksschal ist ein vielseitiges Accessoire für Damen. Hergestellt aus 95–100 % Polyesterfaser.
+15447882137985	Dieser elegante, extra-lange Schal aus einer hochwertigen Polyesterfaser-Mischung (Jacquard-Gewebe) ist das ideale Accessoire für den Sommer.
+15447882301825	Dieses quadratische Halstuch aus einem angenehmen Baumwoll-Mischgewebe ist ein vielseitiges Accessoire für jede Garderobe. Masse: 65 × 65 cm.
+15447882432897	Dieses elegante Damen-Cape ist ein vielseitiges Accessoire, das sich für alle Jahreszeiten eignet. Extra-langes Design (130 x 150 cm).
+15447882596737	Dieser vielseitige Halswärmer ist das ideale Accessoire für Damen, das sich nahtlos in jede Garderobe einfügt.
+15447882695041	Dieser vielseitige Cape-Schal ist das ideale Accessoire für Herbst und Winter. Masse: 70x180cm.
+15447882891649	Dieser gestreifte Strick-Schal im Cape-Stil ist ein vielseitiges Accessoire für jede Jahreszeit. Aus Viskosefaser gefertigt (80–90% Anteil).
+15447883022721	Dieser vielseitige Schal ist ein echtes Multitalent für jede Jahreszeit. Material: Viskosefaser (80–90%).
+15447883153793	Dieser lange Schal ist ein vielseitiges Accessoire für den Frühling. Masse: 170x10cm.
+15447883317633	Dieses vielseitige Dreieckstuch aus Baumwolle ist das ideale Accessoire für den Sommer. Gefertigt aus angenehmer Baumwolle.
+15447883383169	Dieser extra-lange Schal aus 100% Polyesterfaser ist Ihr vielseitiger Begleiter durch alle Jahreszeiten. Masse: 190 x 80 cm.
+15447883514241	Dieser vielseitige Halsschal aus Polyesterfaser ist der ideale Begleiter für kühle Umgebungen, insbesondere in klimatisierten Räumen. Masse: 180 × 85 cm.
+15447883645313	Dieser vielseitige Seidenschal ist Ihr idealer Begleiter für Frühling und Sommer. Extra-langer Seidenschal (185 x 85 cm).
+15447883710849	Dieser elegante Schal aus einem Kaschmir-Blend ist ein vielseitiges Accessoire für Damen. Material: Kaschmir-Blend (50–70% Anteil).
+15447883841921	Dieser vielseitige Dreiecksschal ist ein modisches Accessoire für Damen. Aus Polyester gefertigt (70–80%).
+15447883972993	Dieser leichte Schal aus Eisseide ist ein vielseitiges Accessoire für jede Garderobe. Leichtes Material aus 70–80% Polyester.
+15447884104065	Dieser gestreifte Plissee-Schal aus einem Baumwoll-Leinen-Mix ist das ideale Accessoire für den Sommer. Vielseitiger, langer Schal (210x75 cm).
+15447884267905	Dieses vielseitige quadratische Halstuch aus 100% Polyester bietet nicht nur einen stilvollen Akzent, sondern auch praktischen Sonnenschutz.
+15447884398977	Dieser elegante, extra lange Schal aus Polyesterfaser ist ein vielseitiges Accessoire für den Frühling. Masse: 180 x 50 cm.
+15447884530049	Dieser vielseitige Wollschal ist ein Must-have für jede Jahreszeit und bietet mit seiner breiten Farbpalette von hellem Blau über Gelb bis hin zu …
+15447884661121	Dieses vielseitige Cape für Damen ist ein stilvolles Accessoire für Frühling, Sommer und Herbst. Masse: 55 x 45 cm.
+15447884792193	Dieser vielseitige Schal aus hochwertigem Faux-Kaschmir (Polyester) ist das ideale Accessoire für Damen, die Wert auf Stil und Komfort legen.
+15447884890497	Dieser vielseitige Schal aus leichtem Lingxiao Chiffon ist das ideale Accessoire für den Sommer. Grosszügige Grösse von 110 x 110 cm.
+15447885087105	Dieses ultradünne und atmungsaktive Seidentuch ist ein vielseitiges Accessoire für jede modebewusste Frau. Masse: 70 x 70 cm.
+15447885185409	Dieser dünne Organza Schal mit Quasten ist ein vielseitiges Accessoire für jede modebewusste Frau. Masse: 140 x 60 cm.
+15447885316481	Dieses vielseitige Halstuch im Retro-Stil ist ein modisches Accessoire für den Frühling. Masse: 70 x 70 cm.
+15447885480321	Dieser vielseitige Halsschal im Vintage-Stil ist aus 100% Ramie gefertigt und besticht durch sein angenehmes Tragegefühl. Hergestellt aus 100% Ramie.
+15447885742465	Dieser extra-lange Poncho im Ethno-Stil ist ein vielseitiges Accessoire für jede Jahreszeit. Masse: 130 x 150 cm.
+15447886004609	Dieser vielseitige Dreiecksschal aus Baumwolle ist ein modisches Accessoire für Frühling und Herbst. Stoffzusammensetzung: Baumwolle.
+15447886266753	Dieser extra lange Schal aus 100% Polyester im Baumwoll-Leinen-Look überzeugt mit seinem einzigartigen Distressed-Design.
+15447886561665	Dieser elegante Cape-Schal ist das ideale Accessoire für deine Resort- und Strandoutfits.
+15447886758273	Dieses stilvolle Cape aus Acryl und Kunstpelz ist ein vielseitiges Accessoire für Damen. Masse: Breite 100 cm, Länge 135–175 cm.
+15447886987649	Dieser vielseitige Seidenschal ist das ideale Accessoire für den Frühling und Herbst. Masse: 70 x 70 cm.
+15447887282561	Dieser stilvolle Schal mit Katzenmuster im koreanischen Stil ist ein vielseitiges Accessoire für jede Garderobe.
+15447887675777	Dieser minimalistische Schal im Oversize-Stil ist aus weichem Polarfleece gefertigt und bietet wohlige Wärme. Masse: 25 × 150 cm oder 50 × 170 cm.
+15447887970689	Dieses vielseitige 3-teilige Set aus Hut, Schal und Handschuhen ist der ideale Begleiter für Herbst und Winter. 3-teiliges Set: Hut, Schal und Handschuhe.
+15447888265601	Dieses elegante Schultertuch ist ein vielseitiges Accessoire für jede Garderobe.
+15447888593281	Dieser vielseitige Schal für Damen ist der ideale Begleiter für kühle Tage. Grosszügige Masse von 200 x 68 cm.
+15447888855425	Dieser vielseitige Schal ist ein stilvolles Accessoire für Erwachsene und hält Sie an kühleren Tagen angenehm warm. Masse: 30 × 175 cm.
+15447889084801	Dieser vielseitige und minimalistische Cardigan aus Chiffon ist der ideale Begleiter für sonnige Tage. Einheitsgrösse (200*68cm).
+15447889478017	Dieser elegante Schal aus Polyester ist ein vielseitiges Accessoire für jede Garderobe. Masse: 180 x 70 cm.
+15447889740161	Dieses stylische Cape im Retro-Stil ist nicht nur ein dekoratives Accessoire, sondern bietet auch Sonnenschutz.
+15447889969537	Dieser stilvolle Schal ist der ideale Begleiter für kalte Wintertage. 80 cm langer Cross Style.
+15447890264449	Dieser gestrickte Schal aus Kaschmir ist der ideale Begleiter für die kalte Jahreszeit. Masse: 150 × 20 cm.
+15447890493825	Dieser weisse Maxirock im japanisch-koreanischen Casual-Stil ist ein echter Hingucker. Material: 100% Polyesterfaser.
+15447890821505	Dieser einfarbige Schal aus hochwertiger Imitationsseide ist ein vielseitiges Accessoire für jede Jahreszeit. Masse: 180 x 70 cm.
+15447891050881	Dieser vielseitige Kapuzen-Schal aus Chiffon ist ein praktisches und stilvolles Accessoire für jede Frau.
+15447891214721	Dieser quadratische Seidenschal für Damen ist ein stilvolles Accessoire für den Sommer. Masse: 90 x 90 cm.
+15447891378561	Dieses quadratische Seidentuch ist ein vielseitiges Accessoire für den Sommer. Vintage 3D-Buchstabenmuster (doppelseitig bedruckt).
+15447891542401	Dieser Crinkled Satin Schal ist ein vielseitiges Accessoire für jede Jahreszeit. Masse: 180 x 70 cm.
+15447891673473	Dieser stilvolle Schal für Damen präsentiert sich in einem eleganten Cashew-Print mit aufwendiger Jacquard-Webart. Masse: 170 cm.
+15447891771777	Dieses vielseitige Kopftuch im arabischen Ethno-Stil ist ein modisches Accessoire für Damen. Masse: 180 x 70 cm.
+15447891902849	Dieser lange Jacquard-Schal im Ethno-Stil ist ein vielseitiges Accessoire für Damen. Masse: 70 cm Breite, 175 cm und länger.
+15447892099457	Dieser modische Schal im Ethno-Stil ist ein vielseitiges Accessoire für Damen.
+15447892230529	Dieser quadratische Schal ist ein modisches Accessoire, das sich vielseitig kombinieren lässt.
+15447892361601	Der Retro Color-Block Blumen-Schal ist ein vielseitiges Accessoire für Damen, das zu jeder Jahreszeit getragen werden kann. Aus 100% Polyester gefertigt.
+15447892492673	Dieser elegante Schal im Retro-Ethno-Stil ist das ideale Accessoire für Frauen, die Wert auf Wärme und Stil legen.
+15447892656513	Dieser vielseitige Schal ist für Damen und Herren geeignet und kann das ganze Jahr über getragen werden. Masse: 35 x 160 cm (oder 175 cm und länger).
+15447892787585	Dieser elegante Herbstschal kombiniert die Wärme von Kaschmir mit einem ansprechenden Jacquard-Design. Masse: 70 x 180 cm.
+15447892885889	Dieser stilvolle Poncho ist der ideale Begleiter für kalte Wintertage. Masse: 200x65 cm.
+15447893049729	Dieser vielseitige Schal im Retro-Stil ist ein echtes Multitalent für jede Jahreszeit. Erhältlich in 15 attraktiven Farben.
+15447893180801	Dieser elegante Schal für Damen ist das perfekte Accessoire, um Sie stilvoll durch den Winter zu begleiten. Masse: 200x70 cm.
+15447893311873	Dieser hochwertige Schal für Damen ist der ideale Begleiter für die kalte Jahreszeit. Masse: 200 × 70 cm.
+15447893475713	Dieser lange Damenschal aus Polyesterfaser ist ein stilvolles Accessoire für jede modebewusste Frau. Masse: 180 x 70 cm.
+15447893737857	Dieser lässige Kapuzen-Poncho aus weichem Arctic Fleece ist perfekt für entspannte Stunden zu Hause oder gemütliche Momente im Freien.
+15447893901697	Dieser flauschige Umhang aus Flanell ist ideal für gemütliche Abende zu Hause oder als bequeme Pyjama-Alternative.
+15447894098305	Dieser handbestickte Schal aus Polyesterfaser ist das ideale Accessoire für die kalte Jahreszeit. Masse: 200 x 70 cm.
+15447894294913	Diese hochwertige Gesichtsmaske aus Maulbeerseide wurde speziell für Frauen entwickelt und bietet eine stilvolle Lösung für den Sommer.
+15447894458753	Diese leichte Gesichtsmaske aus Maulbeerseide schützt Ihre Haut zuverlässig vor UV-Strahlen und ist ideal für Outdoor-Aktivitäten oder in der Stadt.
+15447894688129	Diese minimalistische Gesichtsmaske bietet umfassenden Schutz für Ihr Gesicht in jeder Outdoor-Umgebung.
+15447894819201	Die Ice Silk Gesichtsmaske für Damen ist der ideale Begleiter für alle Outdoor-Aktivitäten.
+15447894983041	Diese leichte Gesichtsmaske bietet umfassenden Schutz vor Sonne, Wind und UV-Strahlen.
+15447895114113	Diese Gesichtsmaske wurde entwickelt, um Ihr Gesicht vor Wind und Sonne zu schützen.
+15447895310721	Dieses Facekini ist Ihr idealer Begleiter für vielfältige Outdoor-Szenarien und schützt Sie zuverlässig vor urbanem Smog.
+15447895736705	Diese Thermo-Gesichtsmaske ist der ideale Begleiter für kalte, windige und staubige Bedingungen. Erhältlich in 16 verschiedenen Farbvarianten.
+15447895933313	Die taktische Halbgesichtsmaske «Scorpion» ist für alle Geschlechter geeignet und kommt in einer Einheitsgrösse.
+15447896097153	Diese Halb Gesichtsmaske wurde entwickelt, um Ihr Gesicht vor Wind, Staub, Kälte, Schnee und Regen zu schützen.
+15447896195457	Dieser vielseitige Jacquard Schal ist aus hochwertiger Baumwolle gefertigt und bietet optimalen Schutz sowie Komfort. Material: Baumwolle.
