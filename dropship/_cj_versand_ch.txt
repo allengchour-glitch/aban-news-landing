@@ -1014,3 +1014,12 @@ gid://shopify/Product/15525252399489	ok	Corgeut Automatikuhr mit Lederarmband
 gid://shopify/Product/15525482299777	ok	Armbanduhr mit Dualzeit-Anzeige
 gid://shopify/Product/15525496226177	ok	Automatische Mini-Sojamilchmaschine
 gid://shopify/Product/15525492818305	nicht-versendbar	CuddleCloud Hug Kissen
+gid://shopify/Product/15525506482561	ok	Verstellbares Hantel-Set für das Heimtraining
+gid://shopify/Product/15525513920897	ok	Mini-Projektor für Heim- und Bürogebrauch
+gid://shopify/Product/15525509038465	ok	Klappbarer Campingtisch mit 4 Stühlen
+gid://shopify/Product/15525509824897	nicht-versendbar	100W Solarmodul Faltbar für Outdoor
+gid://shopify/Product/15525513658753	ok	HD‑WLAN‑Tragbarer Handy‑Projektor
+gid://shopify/Product/15525513757057	ok	Mini Full HD LED-Projektor für Zuhause
+gid://shopify/Product/15525508841857	ok	Multifunktionaler Sandsack für das Krafttraining
+gid://shopify/Product/15525514314113	ok	WLAN Android Beamer für Zuhause
+gid://shopify/Product/15525501796737	ok	Orientalische Quarzuhr mit Kalender
