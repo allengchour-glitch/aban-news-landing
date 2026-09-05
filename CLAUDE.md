@@ -1,5 +1,31 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🛍️ 98 Produkte fehlten seit August NUR bei Google — 81 nachpubliziert, 3 Texte vorher entschärft (2026-09-05)
+`google_kanal_luecke.py SEIT=2026-08-01` über 29'683 seit August angelegte aktive Produkte: **98 stehen
+in fünf Kanälen und fehlen im einzigen, der verkauft.** (Der Lauf schreibt zwischen Start und Ende
+KEINE Zeile — 33 Minuten, 1 s CPU, schlafend in `poll`: er wartet auf den geteilten Shopify-Eimer,
+er hängt nicht. `pgrep -f` fand dabei eine «zweite Instanz» — meine eigene Shell, Lehre 1.)
+- **Schliesser-DRY gelesen, nicht gezählt:** 81 publizierbar, 17 draussen — darunter **alle 9
+  Feuerzeuge** (Entscheid 04.09.: draussen, bis der Betreiber entscheidet) und die Whitening-Maske.
+  ⚠️ Drei «heikel»-Urteile sind Fehltreffer der Wortliste (`perücke`→Perücken-**Spray**,
+  `maske`→Haarreparatur-**Maske**, Bluetooth-**Schlaf**maske) — konservativ, kein Schaden, nur notiert.
+- ⛔ **Der Schliesser hätte zwei LED-Gesichtsmasken publiziert, deren TEXT «Beauty-Therapie»,
+  «Lichttherapie», «Hautbehandlungen» und «regt die Kollagenproduktion an» sagt** — die Klasse, die am
+  22.08. und 29.08. draussen blieb, damals nur zufällig über das ungeankerte `maske\b`
+  («eine Sicherung aus einem Fehler ist keine Sicherung»). Er prüft nur den TITEL. Statt die Wortliste
+  zu verbreitern: die drei Texte (2 Masken + Nackenkissen «Verspannungen lindern … Wirbelsäule
+  korrigieren») auf Erscheinungsbild-Sprache gesetzt (7 exakte Regeln, je 1×, Rest-Wirkwörter 0), DANN
+  publiziert — als Kette hinter dem Produkttext-Schloss, denn die Reihenfolge ist die Reparatur.
+- ⚠️ **Die Kette wartete auf ein Schloss, das der Trust-Schreiber für den GANZEN Lauf hält** (~45 min) —
+  und der stündliche Container-Neustart hätte Kette UND Schreiber vorher getötet. Der Schreiber ist
+  idempotent und wird vom Aufseher ohnehin neu gestartet → beendet, Schloss frei, Kette in 2 Minuten
+  durch. **Ein Wartender, der länger warten muss als sein Container lebt, wartet vergebens.**
+- Belegt am Objekt, nicht an der Meldung: 8/8 Stichproben in 6 Kanälen, Sturmfeuerzeug und Maono
+  weiterhin ohne Google. Ledger `_google_kanal_luecke_geschlossen.txt` (245).
+- ⚠️ Dead-page-Berichte (`TOTE-LANDESEITEN.md` 3 Seiten, `TOTE-RANKINGS.md` Kabelschellen) waren älter
+  als ihre Reparatur bzw. ein bewusst offener Fall — beide vor dem Handeln LIVE geprüft (voller Pfad,
+  Emoji klein): alle drei tragen längst eine 301. Ein Bericht ist ein Zeugnis über seinen Zeitpunkt.
+
 ## 🎬 «Webseite auch mit Videos» — das Startseiten-Video lud seit Wochen einen 404 (2026-09-05)
 Betreiber: «webseite auch mit videos». Erst gemessen, was die Seite HAT: zwei Video-Sektionen —
 `banner_selbst_gestalten` (POD-Banner, 162 KB, 200) und `lux_spotlight_video` auf Position 14,
