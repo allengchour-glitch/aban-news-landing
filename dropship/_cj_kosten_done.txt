@@ -13069,3 +13069,6 @@ gid://shopify/Product/15454192730497	CHF 12.71	10 Varianten	Hochtaillierte Damen
 gid://shopify/Product/15454192763265	CHF 31.11	1 Varianten	Automatischer Futternapf
 gid://shopify/Product/15454192796033	CHF 16.30	5 Varianten	Gezackte Denim-Shorts
 gid://shopify/Product/15454192828801	CHF 9.59	1 Varianten	Mini Haarstyling-Gerät
+gid://shopify/Product/15454192861569	CHF 35.00	1 Varianten	Intelligenter Futternapf mit Zeitsteuerung
+gid://shopify/Product/15454192894337	CHF 38.62	21 Varianten	Leichte, hochgeschnittene Jeans
+gid://shopify/Product/15454192927105	CHF 21.85	1 Varianten	Tierhaar-Entferner
