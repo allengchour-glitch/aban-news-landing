@@ -48,3 +48,4 @@
 15412433256833	bild-2-nach-vorn	kontaktbogen-0509 beauty-pflege
 15448797905281	bild-3-nach-vorn	kontaktbogen-0509 beauty-pflege
 15448798003585	bild-8-nach-vorn	kontaktbogen-0509 beauty-pflege
+15448798101889	bild-4-nach-vorn	kontaktbogen-0509 beauty-pflege
