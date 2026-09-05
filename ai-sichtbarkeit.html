@@ -178,6 +178,8 @@ footer a{color:var(--muted)}
   *{transition-duration:.001ms !important}
 }
 </style>
+<script type="application/ld+json" data-aban-faq>{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Was prüft der KI-Sichtbarkeits-Check?","acceptedAnswer":{"@type":"Answer","text":"Sieben Bereiche einer Seite: Antwort-zuerst-Struktur, Überschriften, FAQ, strukturierte Daten (JSON-LD), Listen und Tabellen, Klartext und Lesbarkeit sowie die Meta-Angaben. Jeder Bereich vergibt Punkte, die Summe ist der Score von 0 bis 100 — mit konkreten Empfehlungen dazu."}},{"@type":"Question","name":"Fragt der Check ChatGPT oder Google wirklich ab?","acceptedAnswer":{"@type":"Answer","text":"Nein. Er analysiert nur den Inhalt, den du einfügst, und bewertet, wie gut Antwort-Maschinen ihn verwerten können. Ob dein Name in KI-Antworten tatsächlich fällt, prüft der separate KI-Erwähnungs-Check."}},{"@type":"Question","name":"Was passiert mit meinem Text?","acceptedAnswer":{"@type":"Answer","text":"Er wird für die Analyse verarbeitet und nicht gespeichert. Kein Konto, kein Tracking, kein externes Skript."}},{"@type":"Question","name":"Was soll ich einfügen — Text oder HTML?","acceptedAnswer":{"@type":"Answer","text":"Am aussagekräftigsten ist der komplette HTML-Quelltext der Seite, denn reiner Text hat keine Überschriften, Listen oder strukturierten Daten. Bis 120'000 Zeichen sind möglich."}},{"@type":"Question","name":"Was kostet der Check?","acceptedAnswer":{"@type":"Answer","text":"Nichts. Der Check ist kostenlos und braucht kein Konto."}},{"@type":"Question","name":"Und wenn ich es nicht selbst machen will?","acceptedAnswer":{"@type":"Answer","text":"Dann gibt es den Einmal-Audit mit einer konkreten Massnahmenliste oder das monatliche Report-Abo. Beides wird per Mail angefragt: kein Abo-Zwang, keine Vorkasse, Umfang und Preis vorab schriftlich."}}]}</script>
+<style data-aban-faq>.faq h3{font-size:1.05rem;margin:18px 0 4px}.faq p{margin:0 0 6px}.faq h2{margin-bottom:6px}</style>
 </head>
 <body>
 
@@ -277,7 +279,15 @@ footer a{color:var(--muted)}
       </p>
     </div>
 
-    <details class="how">
+    <section id="faq" data-aban-faq class="faq"><div class="wrap"><h2>Häufige Fragen</h2>
+<h3>Was prüft der KI-Sichtbarkeits-Check?</h3><p>Sieben Bereiche einer Seite: Antwort-zuerst-Struktur, Überschriften, FAQ, strukturierte Daten (JSON-LD), Listen und Tabellen, Klartext und Lesbarkeit sowie die Meta-Angaben. Jeder Bereich vergibt Punkte, die Summe ist der Score von 0 bis 100 — mit konkreten Empfehlungen dazu.</p>
+<h3>Fragt der Check ChatGPT oder Google wirklich ab?</h3><p>Nein. Er analysiert nur den Inhalt, den du einfügst, und bewertet, wie gut Antwort-Maschinen ihn verwerten können. Ob dein Name in KI-Antworten tatsächlich fällt, prüft der separate KI-Erwähnungs-Check.</p>
+<h3>Was passiert mit meinem Text?</h3><p>Er wird für die Analyse verarbeitet und nicht gespeichert. Kein Konto, kein Tracking, kein externes Skript.</p>
+<h3>Was soll ich einfügen — Text oder HTML?</h3><p>Am aussagekräftigsten ist der komplette HTML-Quelltext der Seite, denn reiner Text hat keine Überschriften, Listen oder strukturierten Daten. Bis 120&#x27;000 Zeichen sind möglich.</p>
+<h3>Was kostet der Check?</h3><p>Nichts. Der Check ist kostenlos und braucht kein Konto.</p>
+<h3>Und wenn ich es nicht selbst machen will?</h3><p>Dann gibt es den Einmal-Audit mit einer konkreten Massnahmenliste oder das monatliche Report-Abo. Beides wird per Mail angefragt: kein Abo-Zwang, keine Vorkasse, Umfang und Preis vorab schriftlich.</p>
+</div></section>
+<details class="how">
       <summary>Was der Check prüft — und was AEO bedeutet</summary>
       <div class="body">
         <p><b>AEO</b> steht für Answer-Engine-Optimierung: die Frage, wie gut eine Seite von Antwort-Maschinen (ChatGPT, Perplexity, Google AI Overviews) gelesen und zitiert werden kann. Diese Systeme bevorzugen klare Struktur und direkte Aussagen — anders als die klassische Suche, die stärker auf Links und Keywords schaut.</p>

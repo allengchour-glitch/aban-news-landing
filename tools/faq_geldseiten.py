@@ -88,6 +88,27 @@ FAQ = {
         ("Gibt es die Vorlagen auch auf Englisch?",
          "Ja, jede Vorlage liegt auf Deutsch und auf Englisch vor — für Kundinnen und Kunden in beiden Sprachen."),
     ],
+    "ai-sichtbarkeit.html": [
+        ("Was prüft der KI-Sichtbarkeits-Check?",
+         "Sieben Bereiche einer Seite: Antwort-zuerst-Struktur, Überschriften, FAQ, strukturierte Daten "
+         "(JSON-LD), Listen und Tabellen, Klartext und Lesbarkeit sowie die Meta-Angaben. Jeder Bereich "
+         "vergibt Punkte, die Summe ist der Score von 0 bis 100 — mit konkreten Empfehlungen dazu."),
+        ("Fragt der Check ChatGPT oder Google wirklich ab?",
+         "Nein. Er analysiert nur den Inhalt, den du einfügst, und bewertet, wie gut Antwort-Maschinen ihn "
+         "verwerten können. Ob dein Name in KI-Antworten tatsächlich fällt, prüft der separate "
+         "KI-Erwähnungs-Check."),
+        ("Was passiert mit meinem Text?",
+         "Er wird für die Analyse verarbeitet und nicht gespeichert. Kein Konto, kein Tracking, kein "
+         "externes Skript."),
+        ("Was soll ich einfügen — Text oder HTML?",
+         "Am aussagekräftigsten ist der komplette HTML-Quelltext der Seite, denn reiner Text hat keine "
+         "Überschriften, Listen oder strukturierten Daten. Bis 120'000 Zeichen sind möglich."),
+        ("Was kostet der Check?",
+         "Nichts. Der Check ist kostenlos und braucht kein Konto."),
+        ("Und wenn ich es nicht selbst machen will?",
+         "Dann gibt es den Einmal-Audit mit einer konkreten Massnahmenliste oder das monatliche Report-Abo. "
+         "Beides wird per Mail angefragt: kein Abo-Zwang, keine Vorkasse, Umfang und Preis vorab schriftlich."),
+    ],
     # ki-schnellstart: __PREIS__ ist der Platzhalter der Vorlage und wird vom Generator ersetzt.
     "ki-schnellstart.html": [
         ("Für wen ist der KI-Schnellstart gedacht?",
@@ -149,6 +170,7 @@ ANKER = {
     "beratung.html": r'<section id="anfragen">',
     "produkte.html": r'</main>',
     "vorlagen-set.html": r'</main>',
+    "ai-sichtbarkeit.html": r'<details class="how">',
 }
 
 

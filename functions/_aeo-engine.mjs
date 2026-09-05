@@ -159,10 +159,14 @@ function parseHtml(html) {
     if (nameAttr === "robots" && !metaRobots) metaRobots = (attr(t, "content") || "").toLowerCase();
   }
 
-  // Headings
-  const h1 = collectTags(html, "h1");
-  const h2 = collectTags(html, "h2");
-  const h3 = collectTags(html, "h3");
+  /* ⚠️ Überschriften aus dem Dokument OHNE Skripte lesen. Gemessen an ai-sichtbarkeit.html
+     (2026-09-05): die Seite bekam „2 H1" und fünf Frage-Überschriften angerechnet, die es
+     auf der Seite gar nicht gibt — sie stehen als Beispiel-HTML in einer JavaScript-
+     Zeichenkette (die Demo „Gut optimiert" des Checks). Ein Kunde mit einem HTML-Beispiel
+     im Skript bekäme denselben falschen Befund „mehrere H1". */
+  const h1 = collectTags(noScript, "h1");
+  const h2 = collectTags(noScript, "h2");
+  const h3 = collectTags(noScript, "h3");
 
   // Strukturierte Daten / JSON-LD
   const jsonLd = [];
