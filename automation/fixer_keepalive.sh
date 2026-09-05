@@ -540,6 +540,18 @@ while true; do
       echo "$(date -u +%H:%M) startseiten-video geprüft"
     fi
   fi
+  # 05.09.2026: Wache über die FREMDE Social-Warteschlange (Metafeld luxestyle.social_queue), aus der
+  # ein PC-Skript täglich 17:00 MESZ auf Instagram postet — ohne unsere Doppelpost-/Wahrheits-Wachen.
+  # Alle 6 h, damit die 06:00-Füllung der anderen Session vor 15:00 UTC geprüft ist. FIX=1 pausiert
+  # (umkehrbar), MELDET in dropship/SOCIAL-QUEUE-WACHE.md.
+  SQW=/tmp/social_queue_wache.log
+  if [ -f "$REPO/automation/social_queue_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$SQW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 21600 ]; then
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_social_queue_wache.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/social_queue_wache.py" >> "$SQW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) social-queue-wache gestartet"
+    fi
+  fi
   SNP=/tmp/snippet_rankende.log
   if [ -f "$REPO/automation/snippet_rankende_seiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$SNP" 2>/dev/null || echo 0) ))

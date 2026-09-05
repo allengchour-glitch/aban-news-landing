@@ -12419,3 +12419,14 @@ gid://shopify/Product/15454069522817	CHF 38.65	42 Varianten	Leichte, atmungsakti
 gid://shopify/Product/15454069555585	CHF 8.02	1 Varianten	Seiten-Tasten für Google Pixel 4/5/6/7
 gid://shopify/Product/15454069653889	CHF 24.49	35 Varianten	Atmungsaktive Anti-Rutsch Mama-Schuhe
 gid://shopify/Product/15454069752193	CHF 42.51	40 Varianten	Atmungsaktive Casual-Schuhe
+gid://shopify/Product/15454069784961	CHF 18.41	99 Varianten	LED-High-Top-Sneaker mit Licht
+gid://shopify/Product/15454069817729	CHF 21.94	12 Varianten	Bequeme, erhöhende Laufschuhe
+gid://shopify/Product/15454069850497	CHF 14.14	1 Varianten	Gradient-Fahrradhelm
+gid://shopify/Product/15454069883265	CHF 21.60	27 Varianten	Leichte atmung. Sandalen Outdoor-Casual
+gid://shopify/Product/15454069916033	CHF 19.20	1 Varianten	Downhill Mountain Bike Schutzhelm
+gid://shopify/Product/15454070014337	CHF 17.16	1 Varianten	Kinder-Elektroautohelm
+gid://shopify/Product/15454070047105	CHF 10.41	1 Varianten	Fahrradtaschen fürs Heck
+gid://shopify/Product/15454070079873	CHF 12.33	36 Varianten	Sommer Streifen-Weitgeschnittenes Kragen T-Shirt H
+gid://shopify/Product/15454078042497	CHF 35.01	1 Varianten	3D Fiber Eye Black
+gid://shopify/Product/15454078075265	CHF 8.71	1 Varianten	Makeup Pinsel
+gid://shopify/Product/15454078108033	CHF 27.42	1 Varianten	Barockperlen-Ohrhänger-Set
