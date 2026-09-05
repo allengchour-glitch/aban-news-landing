@@ -11324,3 +11324,23 @@ gid://shopify/Product/15453794599297	CHF 25.05	1 Varianten	Wärmendes Sofa-Bett 
 gid://shopify/Product/15453794632065	CHF 7.13	1 Varianten	Natürliche portablen magnetischen Wimpern ohne Kle
 gid://shopify/Product/15453794664833	CHF 9.33	1 Varianten	Bissfester Spielkamerad
 gid://shopify/Product/15453794697601	CHF 99.77	1 Varianten	Einweg-Bettwäsche für Hunde
+gid://shopify/Product/15453794730369	CHF 60.24	1 Varianten	Rundes Hundebett
+gid://shopify/Product/15453794795905	CHF 21.85	1 Varianten	Katzenklettergerüst mit Saugnapf
+gid://shopify/Product/15453794828673	CHF 36.26	1 Varianten	Grosses Atmungsaktives Katzen- und Hundehaus
+gid://shopify/Product/15453794861441	CHF 27.96	1 Varianten	Zahnreinigungs-Spielzeug für Hunde
+gid://shopify/Product/15453794894209	CHF 38.92	1 Varianten	Wasserdichter Hunde-Bett mit waschbarem Kissen
+gid://shopify/Product/15453794926977	CHF 14.09	1 Varianten	Personalisiertes Hundespielzeug
+gid://shopify/Product/15453794959745	CHF 72.01	1 Varianten	Doppellagige Falt-Hundematte
+gid://shopify/Product/15453794992513	CHF 150.10	1 Varianten	Hundebett mit entfernbarer, waschbarer wasserdicht
+gid://shopify/Product/15453795025281	CHF 38.91	1 Varianten	Rattan-Pet-Nest
+gid://shopify/Product/15453795058049	CHF 78.21	1 Varianten	Haustierbett im Karo-Design
+gid://shopify/Product/15453795090817	CHF 45.94	1 Varianten	Universelle Hundebett-Matte
+gid://shopify/Product/15453795221889	CHF 109.13	1 Varianten	Wasserfestes Hundebett
+gid://shopify/Product/15453795254657	CHF 21.15	1 Varianten	Gesichtsmaske mit Kurkuma und Kojisäure
+gid://shopify/Product/15453795352961	CHF 256.48	1 Varianten	Rechteckiges Hundebett mit doppelter Matratze
+gid://shopify/Product/15453795385729	CHF 8.47	1 Varianten	Augen-Patches mit Mikroneedles
+gid://shopify/Product/15453795680641	CHF 19.12	1 Varianten	Jutestil Katzenkratzbrett mit integriertem Körbche
+gid://shopify/Product/15453795746177	CHF 82.00	1 Varianten	Wasserdichte Hundehütte
+gid://shopify/Product/15453803151745	CHF 60.09	6 Varianten	Kinderskates mit Doppelreihe, 4 Rollen aus PU
+gid://shopify/Product/15453803839873	CHF 8.02	1 Varianten	Ganzkörper Sonnencreme SPF50 mit Lichtschutz
+gid://shopify/Product/15453803970945	CHF 14.44	5 Varianten	Navy Blue Ärmelloses Rundhals-Minikleid

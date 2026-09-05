@@ -1298,3 +1298,61 @@ automatischer-schwenkventilator-fur-kinderwage-638500	Dieser tragbare Ventilator
 15447634706817	Dieser festliche Katzen-Kratzbaum in Form eines Weihnachtsbaums ist das ideale Geschenk für Ihre Katze. Integrierter Sisal-Kratzstamm.
 15447634903425	Dieses doppellagige Katzenbett bietet Ihrer Katze einen gemütlichen Rückzugsort mit viel Platz. Gewicht: ca. 6.5 kg.
 15447635329409	Dieser charmante Katzenbaum im niedlichen Wolken-Stil bietet Ihrer Katze den idealen Rückzugsort zum Ausruhen und Spielen.
+15447635984769	Dieses Katzenbett bietet Ihrer Katze einen gemütlichen Rückzugsort, der das ganze Jahr über Komfort spendet. Hergestellt aus hochwertigem Holz und Stoff.
+15447636771201	Der Miao Xianer Katzenbaum ist ein stilvolles und funktionales Möbelstück für Ihre Katze. Material: Holz.
+15447637000577	Dieses doppelstöckige Katzenhaus aus Massivholz bietet Ihrer Katze einen gemütlichen Rückzugsort für alle Jahreszeiten. Aus robustem Massivholz gefertigt.
+15447637557633	Dieses vielseitige Katzenbett ist der ideale Rückzugsort für Ihre Katze und bietet gleichzeitig eine Kratzgelegenheit.
+15447637787009	Dieses gemütliche Katzenbett in Form eines Zeltes bietet Ihrer Katze das ganze Jahr über einen warmen und sicheren Rückzugsort. Maximale Traglast: 1 kg.
+15447637950849	Das erhöhte Haustierbett mit atmungsaktivem Netzstoff bietet Ihrem Vierbeiner luxuriösen Komfort und Funktionalität. Masse: 76 x 49 x 19 cm (L x B x H).
+15447638868353	Dieses gestreifte Plüsch-Haustiersofa verbindet stilvolles Wohndesign mit Komfort für Ihre Lieblinge.
+15447639097729	Dieses wetterfeste und faltbare Outdoor-Katzenhaus bietet streunenden Katzen und kleinen Hunden einen warmen und geschützten Unterschlupf im Winter.
+15447864508801	Diese vielseitige 3-in-1 Ladestation kombiniert eine digitale Uhr mit praktischem Wireless Charging für Ihre Geräte.
+15447864934785	Dieses kabellose Magsafe-Ladegerät wurde speziell für den Einsatz im Auto entwickelt. Kabelloses Laden mit Magsafe-Technologie.
+15447865098625	Dieses vielseitige Lithium-Akku-Ladegerät ist die ideale Lösung für verschiedene Geräte. Universelle Eingangsspannung (AC 100–240V).
+15447865295233	Dieses universelle 200W GaN-Ladegerät ist die ideale Lösung für alle, die eine effiziente und kompakte Stromversorgung für ihre Mobiltelefone und Laptops …
+15447865491841	Das Xingrui Digital-Schnellladegerät in elegantem Schwarz ist die ideale Lösung für alle, die ihre Geräte schnell und effizient aufladen möchten.
+15447865819521	Dieses 65W GaN Ladegerät ist ein schneller Ladeadapter, der mit einem US-Standard-Konversionsstecker ausgestattet ist. Leistungsstarkes 65W GaN Ladegerät.
+15447866081665	Dieser universelle Reiseadapter ist Ihr idealer Begleiter für unterwegs. Universelle Reisebuchse (Modell 148C).
+15447866311041	Dieses kompakte 30W GaN Schnellladegerät ist Ihr idealer Begleiter für unterwegs. Kompaktes 30W GaN Schnellladegerät.
+15447866507649	Dieses tragbare kabellose Ladegerät mit Magnetfunktion ist universell einsetzbar und lädt Ihr Smartphone schnell und effizient auf.
+15447866704257	Dieses hochwertige 4-in-1 Auto-Ladegerät ist die ideale Lösung, um unterwegs mehrere Geräte gleichzeitig zu laden. 180 Grad drehbar für flexible Nutzung.
+15447866900865	Dieses kompakte und tragbare Ladegerät wurde speziell für Fixed-wing FPV Drohnen entwickelt und ist ideal für junge Erwachsene im Alter von 15 bis 35 …
+15447867163009	Dieses magnetische kabellose Desktop-Ladegerät bietet eine schnelle und effiziente Lademöglichkeit für Ihre kompatiblen Geräte.
+15447867359617	Dieser elektrische Lift-Ständer ist eine praktische All-in-One-Lösung für Ihren Desktop.
+15447867588993	Dieses vielseitige 3-in-1-Ladegerät im eleganten Weiss ist die ideale Lösung, um Ihre Geräte effizient und ordentlich aufzuladen. 3-in-1 Ladefunktion.
+15447867687297	Dieser praktische 3-in-1 Ladeständer lädt dein Smartphone, deine Kopfhörer und deine Smartwatch gleichzeitig auf.
+15447867949441	Dieses kompakte Ladedock wurde speziell für das PlayStation Portal Streaming-Handheld entwickelt. Kompakte Masse: 22.6 x 8.5 x 7.1 cm.
+15447868146049	Dieser vielseitige Desktop-Organizer bringt Ordnung auf jeden Schreibtisch. Kabelloses Laden für kompatible Geräte.
+15447868309889	Dieses leistungsstarke Multi-USB-Ladegerät mit 60W Leistung und 10 Ports ist die ideale Lösung, um all Ihre Geräte gleichzeitig und effizient zu laden.
+15447868440961	Dieses leistungsstarke Multi-Port Ladegerät mit 50W ist die ideale Lösung, um mehrere Geräte gleichzeitig effizient und sicher zu laden.
+15447868670337	Dieses kompakte USB-Ladegerät ist ein praktischer Begleiter für alle, die mehrere Geräte gleichzeitig laden möchten.
+15447869587841	Diese vielseitige, wiederaufladbare Backup-Stromversorgung ist ideal für unterwegs. Nennkapazität: 150 Ah.
+15447870112129	Dieses 66W Schnellladegerät des Typs B ist ein unverzichtbarer Begleiter für alle, die Wert auf Effizienz legen. 66W Schnellladefunktion.
+15447870308737	Die magnetische Powerbank in Weiss ist der ideale Begleiter für unterwegs.
+15447870538113	Dieses Set enthält vier wiederaufladbare 18650 Li-ion Akkus mit je 3000mAh Kapazität. Vier wiederaufladbare Li-ion Akkus.
+15447870800257	Dieses faltbare Solarpanel ist Ihr idealer Begleiter für unterwegs, wenn Sie eine zuverlässige Energiequelle benötigen.
+15447871029633	Dieses faltbare Solarpanel mit 36 Wp Nennleistung ist ideal für unterwegs. Nennleistung von 36 Wp.
+15447871226241	Dieser Lithium-Ionen-Ersatzakku wurde speziell für die BXM-10 Systemkamera entwickelt. Lithium-Ionen-Akku mit 1000 mAh Kapazität.
+15447871422849	Diese kompakte Powerbank ist Ihr idealer Begleiter für unterwegs, um Ihren Geräten schnell und effizient neue Energie zu verleihen.
+15447871848833	Dieses 2er-Pack wiederaufladbarer 18650 Li-ion Akkus mit je 3000 mAh und 3.7V ist ideal für eine Vielzahl von Geräten.
+15447872045441	Dieses Set enthält zehn wiederaufladbare 18650 Lithium-Ionen-Akkus mit einer Spannung von 3.7V und einer Kapazität von 3000mAh.
+15447872209281	Dieser wiederaufladbare 9V Lithium-Ionen-Akku ist ideal für Multimeter und andere kompatible Elektronikgeräte. Wiederaufladbarer 9V Lithium-Ionen-Akku.
+15447872438657	Dieses Set enthält fünf hochwertige CR1225 Lithium-Knopfzellen mit einer Spannung von 3V. 5 Stück CR1225 Lithium-Knopfzellen.
+15447872831873	Dieses Set enthält zehn hochwertige LR1130 AG10 Alkaline-Knopfzellen mit einer Spannung von 1.5V. Zehn LR1130 AG10 Alkaline-Knopfzellen.
+15447873028481	Diese CR2032 Lithium-Knopfzellen sind ideal für eine Vielzahl von Geräten, die eine zuverlässige 3V-Stromversorgung benötigen.
+15447873159553	Dieser hochwertige Ersatzakku wurde speziell für das ferngesteuerte unbemannte Flugobjekt 4 D-V14 entwickelt. Speziell für das UAV 4 D-V14 entwickelt.
+15447873356161	Dieser Lithium-Ionen-Akku wurde speziell für den Einsatz in Staubsaugern entwickelt und bietet eine zuverlässige Energieversorgung.
+15447873552769	Dieser wiederaufladbare Lithium-Akku im AA-Format liefert eine konstante Spannung von 1.5V und ist ideal für elektrische Spielzeuge, Fernbedienungen und …
+15447873749377	Der Drohnen-Akku ist ein unverzichtbares Zubehör für alle Drohnen-Besitzer, die ihre Flugzeit verlängern möchten. Enthält 1 Drohnen-Akku.
+15447873945985	Dieser Nickel-Ersatzakku wurde speziell für Elektrowerkzeuge entwickelt und bietet eine zuverlässige Energiequelle. Nickel-Akku für Elektrowerkzeuge.
+15447874208129	Dieser Hochleistungs-Lithium-Akku wurde speziell für FPV-Crossing-Machines entwickelt und bietet zuverlässige Energie für Ihre Drohne.
+15447874371969	Dieser spezielle Lithium-Akku wurde für die Fernsteuerungen TX16S, TX12 und Boxer entwickelt. Kompatibel mit TX16S, TX12 und Boxer Fernsteuerungen.
+15447874568577	Der Nanohawk 435HV 1S 300mAh Lipo Akku ist ein Ersatzteil für ferngesteuerte Modelle und richtet sich an Jugendliche und Erwachsene im Alter von 15 bis 35 …
+15447874797953	Dieser Hochleistungs-Akku ist ideal für Modellflugzeuge mit einer Grösse von 2 bis 2,5 Zoll. Nennkapazität: 850 mAh.
+15447874961793	Der GNB 650mAh 3S 11.1V 80C Lithium-Akku ist ein leistungsstarker Energiespeicher, ideal für Drohnen und andere Anwendungen, die eine zuverlässige …
+15447875158401	Dieser HDMI Adapter wurde speziell für die Nutzung mit dem Amazon Fire TV Stick entwickelt und ermöglicht Ihnen, Ihre Inhalte auf dem Original-Bildschirm …
+15447875355009	Dieser elegante Tischspiegel ist perfekt für Ihr tägliches Beauty-Ritual. Lange Akkulaufzeit (3600 mAh).
+15447875584385	Der Pushbao Dual-Band WiFi Adapter verbindet Ihren Fernseher oder Projektor mühelos mit dem Internet. Prozessor: RK3036.
+15447875715457	Dieses kompakte Wireless Screen Device (63 x 77 mm) ist ideal für alle, die Inhalte von ihrem Smartphone oder Tablet auf einen grösseren Bildschirm …
+15447875912065	Der Wasserhahnfilter ist die ideale Lösung für die zuverlässige Reinigung Ihres Leitungswassers direkt am Wasserhahn.
+15447876370817	Diese elektronische Uhr ist ein vielseitiger Begleiter für den Alltag und beim Sport. Wasserdichtes Design.

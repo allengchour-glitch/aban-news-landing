@@ -1010,3 +1010,4 @@ gid://shopify/Product/15524888772993	ok	Reisetasche aus Rindsleder mit Krokoprä
 gid://shopify/Product/15524888445313	ok	Hundeleine wasserfest und schmutzabweisend
 gid://shopify/Product/15524872126849	ok	Rucksack aus Rindsleder
 gid://shopify/Product/15524867113345	ok	Kettlebell aus Stahl für Krafttraining
+gid://shopify/Product/15525252399489	ok	Corgeut Automatikuhr mit Lederarmband
