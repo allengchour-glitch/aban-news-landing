@@ -1,0 +1,15 @@
+{
+  "_zweck": "Was im Startseiten-Video EINGEBRANNT steht (Preise, Titel). startseiten_video_wahrheit.py haelt es taeglich gegen den Shop.",
+  "sektion": "lux_spotlight_video",
+  "video": "meisterwerk-0830-clean.mp4",
+  "cta": "/collections/hype-jetzt",
+  "code": "WELCOME10",
+  "produkte": [
+    {"handle": "8-teiliges-make-up-pinselset-mit-aufbewahrungs-622300", "preis": "28.90"},
+    {"handle": "elektrischer-kopfhautmassage-roller-620600", "preis": "20.90"},
+    {"handle": "hyaluronsaure-hautpflege-5er-set-623900", "preis": "21.90"},
+    {"handle": "lockenstab-fur-einfache-stylings-631872", "preis": "53.90"},
+    {"handle": "schmuck-organizer-mit-faltwand-958528", "preis": "21.90"},
+    {"handle": "vakuumierer-kabellos-lebensmittel", "preis": "26.90"}
+  ]
+}

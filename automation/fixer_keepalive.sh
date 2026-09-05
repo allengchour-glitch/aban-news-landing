@@ -528,6 +528,18 @@ while true; do
       echo "$(date -u +%H:%M) tote-rankings geprüft"
     fi
   fi
+  # (3) startseiten_video_wahrheit.py (05.09.2026): Das Spotlight-Video der Startseite
+  #     traegt Preise und Titel EINGEBRANNT — was fest im Video steht, altert wie fest
+  #     getippte Preise im HTML (lux_spotlight_favs, 30.08.). Haelt das Manifest
+  #     dropship/_startseiten_video.json taeglich gegen den Shop. ⚠️ MELDET NUR.
+  SVW=/tmp/startseiten_video.log
+  if [ -f "$REPO/automation/startseiten_video_wahrheit.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$SVW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_startseiten_video.lock; flock -n 9 || exit 0; exec python3 automation/startseiten_video_wahrheit.py" >> "$SVW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) startseiten-video geprüft"
+    fi
+  fi
   SNP=/tmp/snippet_rankende.log
   if [ -f "$REPO/automation/snippet_rankende_seiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$SNP" 2>/dev/null || echo 0) ))

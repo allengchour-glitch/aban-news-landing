@@ -1,5 +1,41 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🎬 «Webseite auch mit Videos» — das Startseiten-Video lud seit Wochen einen 404 (2026-09-05)
+Betreiber: «webseite auch mit videos». Erst gemessen, was die Seite HAT: zwei Video-Sektionen —
+`banner_selbst_gestalten` (POD-Banner, 162 KB, 200) und `lux_spotlight_video` auf Position 14,
+deren `<video src>` **404** liefert (ein Juli-Reel, längst gelöscht). Das Poster (200) verdeckte
+es: Besucherinnen sahen ein Standbild in einer Sektion, die ein Video verspricht. Und der Grund,
+warum es nie ersetzt wurde: **das wöchentliche Meisterwerk-Reel wird seit dem 01.09. gebaut und
+scheitert still am vollen Datei-Speicher** — Upload-Probe heute: `FILE_STORAGE_LIMIT_EXCEEDED`.
+Neues Video ist also NICHT möglich; **eingesetzt wurde das jüngste, das oben liegt**
+(`meisterwerk-0830-clean.mp4`, 2,9 MB, 6 Produkte).
+- ⛔ **Vor dem Einsetzen alle sechs eingebrannten Preise am Objekt geprüft** (Kontaktbogen mit
+  1 Bild/s — der erste mit 1 Bild/3 s zeigte nur 4 von 6): 6/6 ACTIVE, 6/6 Preis exakt,
+  WELCOME10 ACTIVE bis 2027. Meine erste Prüfung per Freitextsuche traf **drei FALSCHE
+  Produkte** (Kopfhautmassage-BÜRSTE 33.90 statt -ROLLER 20.90) und hätte den Reel verworfen —
+  Handle bzw. exakter Titel, nie das Suchwort (Lehre 02.09.).
+- **CTA umgehängt:** die Sektion hiess «Viral-Hits» und zeigte auf `/collections/viral-hits`
+  (0 der 6 Produkte drin); der Reel nennt sich selbst «Gerade im Trend», 4 von 6 stehen in
+  `hype-jetzt` → CTA und Video-Link dorthin, Eyebrow «Gerade im Trend · Highlights der Woche».
+- **Weil Preise im Video ALTERN** (lux_spotlight_favs-Klasse, 30.08.): Manifest
+  `dropship/_startseiten_video.json` + `automation/startseiten_video_wahrheit.py` (täglich,
+  MELDET NUR) hält Produkte/Preise/CTA/Code/Datei gegen den Shop; in beide Richtungen getestet
+  (Positiv 0 Befund, absichtlich falscher Preis + toter Handle → 2 Befunde, Bericht verschwindet
+  danach wieder).
+- ⚠️ **Drei Nullergebnisse an einem Vormittag, keines ein Befund:** `media_type:VIDEO` ist ein
+  STILLER Shopify-Filter (Gegenprobe `media_type:QUATSCHXY` liefert dieselbe Zahl — siebte
+  Fassung); `tag:video-hit` (1'204) steht auf DRAFTs ohne Video, weil `cj_trending_import` ihn
+  in BEIDEN Zweigen setzt — der Tag ist eine Behauptung; und «0 CJ-Produkte mit Video» kam von
+  einem abgelaufenen Token (1600001) — erst der Gegentest mit einem bekannt-guten Aufruf hat
+  es gezeigt. Gemessen bleibt: **0 von 400 neuesten aktiven Produkten tragen ein Video**,
+  obwohl alle drei Importer `attachVideo` können — CJ liefert `productVideo: null`.
+- **Ehrlicher Rest:** Mehr Video auf der Seite (Produktvideos, frisches Wochen-Reel) hängt am
+  Datei-Speicher — Betreiber-Entscheid (Plan oder kleinerer Katalog), nicht an Technik.
+- ⚠️ Nebenbei belegt: Die Klasse `bb-versand-unrentabel` war als FERTIG quittiert, der DRY-Lauf
+  über die GANZE Klasse fand **27 Produkte / 86 Bilder / 9,6 MB** — die Quittung stammte vom
+  Lauf UNTER dem Stichtag. Drei-Zustände-Stichtag (kein Eintrag · Datum · null) eingebaut,
+  Quittung entfernt.
+
 ## 🔓 Ein Zeichen Unterschied: `>` löschte den Bericht eines blockierten Wächters (2026-09-05)
 Beim Nachsehen, warum `wahlversprechen` seine Arbeitsliste nicht abarbeitet, fiel die Bauart der
 Startzeilen auf: Die Shell richtet Umleitungen **vor** dem Kommando ein — also bevor `flock -n`
