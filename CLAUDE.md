@@ -60,7 +60,10 @@ Neues Video ist also NICHT möglich; **eingesetzt wurde das jüngste, das oben l
 - ⚠️ Nebenbei belegt: Die Klasse `bb-versand-unrentabel` war als FERTIG quittiert, der DRY-Lauf
   über die GANZE Klasse fand **27 Produkte / 86 Bilder / 9,6 MB** — die Quittung stammte vom
   Lauf UNTER dem Stichtag. Drei-Zustände-Stichtag (kein Eintrag · Datum · null) eingebaut,
-  Quittung entfernt.
+  Quittung entfernt. **Die Schlusskontrolle der bigbuy-Klasse fand danach 106 Produkte /
+  390 Bilder / 44 MB**, die als «fertig» galten — und das Aufseher-Tor las das LOG («Klasse
+  vollstaendig durchlaufen» stand drin) und hätte den ehrlichen Lauf nie gestartet; es zählt
+  jetzt die FERTIG-Datei, die das Skript selbst führt.
 
 ## 🔓 Ein Zeichen Unterschied: `>` löschte den Bericht eines blockierten Wächters (2026-09-05)
 Beim Nachsehen, warum `wahlversprechen` seine Arbeitsliste nicht abarbeitet, fiel die Bauart der
