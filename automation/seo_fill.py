@@ -45,8 +45,13 @@ for pid in ids:
     sd=(f"{t} – jetzt bei LuxeStyle CH bestellen. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, "
         f"Kauf auf Rechnung mit Klarna & TWINT.")[:320]
     e=gql(pid,{"title":st,"description":sd})
+    # ⚠️ 05.09.2026: Hier stand die Quittung UNBEDINGT vor der Erfolgspruefung — auch ein
+    # `retry-fail` wurde quittiert, und eine falsche Quittung ueberspringt das Produkt fuer
+    # immer. Geschrieben wird jetzt nur, wenn die Mutation wirklich ohne Fehler zurueckkam.
+    if e:
+        print(f"  ⚠️ {pid}: {str(e)[:80]} — NICHT quittiert"); continue
     open(LEDGER,'a').write(pid+"\n")
-    if not e: ok+=1
+    ok+=1
     if ok%200==0 and ok: print(f"  ...{ok} gefüllt")
     time.sleep(0.35)
 print(f"✅ FERTIG SEO-Fill: {ok} gefüllt")

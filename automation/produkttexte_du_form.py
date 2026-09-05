@@ -130,6 +130,10 @@ def schreiben():
         ue = ((r.get('data') or {}).get('productUpdate') or {}).get('userErrors') or []
         if ue:
             print('⛔', f['titel'][:40], ue); fehl += 1; continue
+        # ⚠️ 05.09.2026: Ohne diese Zeile wird auch quittiert, wenn die Antwort gar kein `data`
+        # trug (tote Anmeldung) — `userErrors` ist dann None und damit falsy.
+        if r.get('errors') or (r.get('data') or {}).get('productUpdate') is None:
+            print('⛔', f['titel'][:40], '— keine Bestaetigung, NICHT quittiert'); fehl += 1; continue
         led.write('%s\tdu-form\t%s\n' % (f['id'].split('/')[-1], f['titel'][:60]))
         led.flush(); ok += 1
         time.sleep(0.3)

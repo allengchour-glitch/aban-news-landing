@@ -56,6 +56,11 @@ for gid in kand:
     if DRY: print(f"   {t[:46]:<48} → {neu[:52]}"); continue
     r=gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',{"i":{"id":gid,"title":neu}})
     if ((r.get('data') or {}).get('productUpdate') or {}).get('userErrors'): continue
+    # ⚠️ 05.09.2026: Ohne diese Zeile quittierte der Lauf auch dann, wenn die Antwort GAR kein
+    # `data` trug (tote Anmeldung, `errors` auf oberster Ebene) — dann ist `userErrors` schlicht
+    # None und damit falsy. Eine falsche Quittung ueberspringt das Produkt fuer immer.
+    if r.get('errors') or (r.get('data') or {}).get('productUpdate') is None:
+        print('  ⚠️', neu[:40], '— keine Bestaetigung, NICHT quittiert'); continue
     f.write(f"{gid}\t{neu[:60]}\n"); f.flush()
     print('  ✓',neu[:54]); time.sleep(0.3)
 print(('PROBE' if DRY else 'FERTIG')+f": {getan}")

@@ -33,12 +33,29 @@ Schluessel IST dieses Token (Lehre 30.08.).
   `automation/*.py`, und die Funktion isoliert gegengeprueft (ungueltiges Token → Abbruch statt
   stiller Rueckgabe). ⚠️ Die Ersetzung sitzt bewusst NACH der Wiederholungsschleife — eine
   Drosselung ist kein Abbruchgrund (Lehre 23.08.).
-- ⚠️ **39 Werkzeuge bleiben ungehaertet, und das ist kein Versaeumnis, sondern Ehrlichkeit:** Sie
-  haben eine andere Form (kein `def gql`, oder `return json.loads(...)` roh). Stichprobe: `faser_wahrheit`
-  gibt die Rohantwort zurueck (gleiche Gefahr), `fremdzeichen_guard` **wirft bereits** nach drei
-  Versuchen (kein Handlungsbedarf). Eine mechanische Umformung ueber unterschiedliche Formen waere
-  geraten statt gemessen. Sie haengen ohnehin hinter dem Tor; die saubere Loesung bleibt EIN
-  geteilter `gql()`-Helfer (Geschwister-Lehre).
+- **Die uebrigen 39 danach EINZELN gelesen statt mechanisch umgeformt — und das war richtig, denn
+  die Mehrheit war bereits sicher.** Sie schuetzen sich auf vier verschiedene Arten, die kein
+  gemeinsames Suchmuster erkennt: `wirft` (11, u. a. `fremdzeichen_guard`), `sys.exit` (2),
+  `return None` mit Pruefung beim Aufrufer (`variantenwerte_deutsch`, `trust_baustein_wahrheit`),
+  ausdrueckliche Pruefung `if d is None` (`versandaussagen_wahrheit` — «keine Antwort ist kein
+  Ergebnis», `merchant_sperre_durchsetzen`, `medizin_zweck_guard`, `hoodies_shirts_kuratieren`,
+  `titel_kappe70`, `mass_im_farbwert`, `ueberwachung_waffen_guard`, `ratgeber_rueckverweis`).
+  Drei bauen nur Batch-Dateien und fuehren gar nichts aus (`catalog_enrich`, `google_category_assign`,
+  `seo_catalog_fix`). Und `artikelnummer_entfernen` ist am elegantesten abgesichert: es prueft den
+  ZURUECKGEGEBENEN Text und setzt als `get`-Default genau das Wort, das verschwinden soll — bei
+  fehlender Antwort ist die Bedingung damit automatisch falsch.
+- **Wirklich verwundbar waren sechs, alle einzeln repariert:** `seo_fill` (quittierte
+  **unbedingt**, auch nach `retry-fail`), `faser_wahrheit`, `produkttexte_du_form`,
+  `kosten_boden15_korrigieren` (quittierte im `else`-Zweig der Wiederholungsschleife),
+  `bild_gross_nachladen` und `bild_quadrat_auffuellen` (`sgql` mit `return {}`).
+- ⚠️ **Und eine Spielart, die ich fast uebersehen haette:** `variantenwerte_deutsch` schreibt bei
+  fehlendem Knoten `nicht-gefunden` ins Ledger — waere sein `gql()` auf `{}` statt `None`
+  ausgelegt, wuerde ein **Lesefehler als Tatsache ueber das Produkt** quittiert («gibt es nicht»),
+  und das Produkt waere fuer immer weg. Es ist sauber gebaut; die Klasse gehoert aber notiert:
+  **eine Quittung darf nie eine Aussage ueber die Welt sein, wenn die Welt gerade nicht antwortet.**
+- ⚠️ Mein Klassifizierungs-Grep hat dabei zweimal danebengelegen (er kannte nur `return {}`, nicht
+  `return None`, und wertete jede unbekannte Form als verdaechtig). **Ein Suchmuster taugt zum
+  Sieben, nicht zum Urteilen** — die Entscheidung fiel bei jeder Datei am gelesenen Code.
 - ⚠️ **Ein Fehlalarm auf dem Weg, den ich fast gemeldet haette:** Die Startseite antwortete
   5× hintereinander zu 40 % mit **HTTP 500**, und ich war beim Satz «die Haustuer ist kaputt».
   Sechs Abrufe spaeter: **6/6 = 200**, ebenso zwei Kollektionsseiten. Es war der kalte Edge-Cache

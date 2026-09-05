@@ -166,6 +166,12 @@ def main():
             ue = (((j or {}).get("data") or {}).get("productVariantsBulkUpdate") or {}).get("userErrors") or []
             if ue:
                 print("     FEHLER:", ue[:2]); break
+            # ⚠️ 05.09.2026: Ohne diese Zeile lief die Schleife bei einer Antwort OHNE `data`
+            # (tote Anmeldung) sauber durch, und der else-Zweig quittierte die Korrektur —
+            # `userErrors` ist dann leer und damit falsy. Eine falsche Quittung ist hier
+            # besonders teuer: das Produkt gilt als kostenkorrigiert und wird nie wieder angesehen.
+            if (j or {}).get("errors") or ((j or {}).get("data") or {}).get("productVariantsBulkUpdate") is None:
+                print("     FEHLER: keine Bestaetigung — NICHT quittiert"); break
             time.sleep(0.6)
         else:
             with open(LEDGER, "a") as f:
