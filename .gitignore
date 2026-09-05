@@ -92,3 +92,4 @@ buero/*
 !buero/konfig.example.json
 !reports/design/
 !reports/design/*.md
+_fehlprotokolle/
