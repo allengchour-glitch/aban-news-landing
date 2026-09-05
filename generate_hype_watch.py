@@ -183,7 +183,7 @@ def hub_page(db):
     body = f"""{head(db['titel']+' — KI-Behauptungen im Faktencheck | aban news', db['untertitel'], url, jsonld)}
 <div class="hero">
 <span class="badge">Faktencheck-Serie · {len(faelle)} Fälle · läuft weiter</span>
-<h1>🔍 {e(db['titel'])}</h1>
+<h1>{e(db['titel'])}</h1>
 <p class="lead">{e(db['untertitel'])} {e(db['hinweis'])}</p>
 </div>
 {cards}

@@ -103,7 +103,7 @@ footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);fon
 </head>
 <body>
 <header><div class="wrap">
-<a href="/"><h1>📬 aban news — Archiv</h1></a>
+<a href="/"><h1>aban news — Archiv</h1></a>
 <p>Alle {len(issues)} Ausgaben zum Nachlesen · Mo–Fr, kein Hype</p>
 <p style="margin-top:14px;"><a class="cta" href="/dossiers.html">📚 Themen-Dossiers</a> <a class="cta" href="/gratis-ki-tools.html" style="margin-left:8px;">Kostenlos abonnieren →</a></p>
 </div></header>
@@ -201,7 +201,7 @@ footer{{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);fon
 </head>
 <body>
 <header><div class="wrap">
-<a href="/en/"><h1>📬 aban news — Archive</h1></a>
+<a href="/en/"><h1>aban news — Archive</h1></a>
 <p>All {len(issues)} issues to read back · Mon–Fri, no hype</p>
 <p style="margin-top:14px;"><a class="cta" href="/en/dossiers.html">📚 Topic dossiers</a> <a class="cta" href="https://abannews.beehiiv.com/subscribe" style="margin-left:8px;">Subscribe free →</a></p>
 </div></header>
