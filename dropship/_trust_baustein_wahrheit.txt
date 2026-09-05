@@ -28628,3 +28628,35 @@
 15496442085761	ersetzt-1	Fahrrad Radbeleuchtung
 15496442118529	ersetzt-1	Lern-Tablet für Kinder und Studenten
 15496442151297	ersetzt-1	GPS-Tracker für Haustiere mit Anti-Verlust-Alarm
+15496442184065	ersetzt-1	Nackenstützkissen mit Massagefunktion
+15496497168769	ersetzt-1	Picnic-Decke
+15496497267073	ersetzt-1	Sattelkissen
+15496497365377	ersetzt-1	Geometrisches Baumwoll-Plaid Sucre
+15496497398145	ersetzt-1	Solare Tierabwehr
+15496497529217	ersetzt-1	Infrarot-Wärmelampe aus Carbonfaser
+15496497561985	ersetzt-1	Nackenkissen für Ihr Auto, 1 Paar
+15496497594753	ersetzt-1	Hundehalsband
+15496497660289	ersetzt-1	Mountainbike LED-Rücklicht mit Fernbedienung
+15496497693057	ersetzt-1	Cross-Border HD 4K Dual-Kamera Drohne
+15496497725825	ersetzt-1	Nordisches Baumwoll-Bettwäsche-Set
+15496497758593	ersetzt-1	Anti-Kratz- und Leckschutz für Katzen
+15496497856897	ersetzt-1	LED-Nachtwarnlicht für Velos
+15496497889665	ersetzt-1	Kabelloser Mini-Bluetooth-Lautsprecher TWS
+15496497922433	ersetzt-1	Rutschfester Sofaüberzug aus Polyester
+15496497987969	ersetzt-1	Telefon Lippenstift Rot
+15496498020737	ersetzt-1	Solar Horn Light
+15496498053505	ersetzt-1	Semi-kontrolliertes P-Kettenhalsband aus Rindsleder
+15496498119041	ersetzt-1	Doppellagiges Buchweizenkissen, Sommer
+15496498184577	ersetzt-1	Mini HD-Überwachungskamera mit Nachtsicht
+15496498217345	ersetzt-1	Multifunktionaler Veloscheinwerfer mit Handyhalterung
+15496498250113	ersetzt-1	Hundehalsband mit Schutzhülle für Locator
+15496498348417	ersetzt-1	Bein- und Kniekissen für Seitenschläfer
+15496498413953	ersetzt-1	USB-Fahrradlampe für Nachtfahrten
+15496498446721	ersetzt-1	Smarte Netzwerk-Kamera für Zuhause
+15496498512257	ersetzt-1	Lammwoll-Kissen Buchstabe Kinder
+15496498577793	ersetzt-1	Wasserdichtes LED-Rücklicht für Velo
+15496498610561	ersetzt-1	Funk-Helligkeitssensor
+15496498643329	ersetzt-1	Airtag Halsband aus Leder für Haustiere
+15496498676097	ersetzt-1	Multifunktionales Schwangerschaftskissen
+15496498708865	ersetzt-1	Faltbarer LED-Scheinwerfer für E-Scooter & Bikes
+15496498741633	ersetzt-1	Saug-, Wisch- & Kehrroboter, ultradünn

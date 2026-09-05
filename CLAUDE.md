@@ -142,7 +142,8 @@ und **zweimal habe ich mich dabei selbst korrigiert:**
   des Deckels, und mit der gedrosselten Zuflussrate (~0,25 statt ~1 GB/Tag) reicht das rund
   **vier Wochen statt einer**.
 - ⚠️ **Und es reicht trotzdem nicht als Lösung:** Nach 342 MB freigegebenem Platz scheitert die
-  Upload-Probe unverändert mit `FILE_STORAGE_LIMIT_EXCEEDED` — nach 1,16 GB ebenso. Wir stehen
+  Upload-Probe unverändert mit `FILE_STORAGE_LIMIT_EXCEEDED` — nach 1,16 GB und nach **2,07 GB**
+  ebenso. Wir stehen
   also nicht knapp unter dem Deckel, sondern faktisch AN ihm (oder Shopify gibt gelöschte Medien
   verzögert frei; beides ist von hier nicht unterscheidbar). **Ein Speicherstand, den die API
   nicht ausgibt, ist nur über die Probe messbar** — jede GB-Angabe hier ist eine Hochrechnung
