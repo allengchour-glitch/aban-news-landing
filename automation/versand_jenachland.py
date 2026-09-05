@@ -60,10 +60,19 @@ def gql(q, v=None):
         headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
     for versuch in range(4):
         try:
-            return json.load(urllib.request.urlopen(req, timeout=45))
-        except Exception as e:
+            d = json.load(urllib.request.urlopen(req, timeout=45))
+        except Exception:
             if versuch == 3: raise
-            time.sleep(2 ** versuch)
+            time.sleep(2 ** versuch); continue
+        # ⚠️ 05.09.2026: Die OBERE Fehlerebene wurde nie gelesen. Faellt die Auth aus (die
+        # Custom-App war weg, «app_not_installed»), antwortet Shopify mit `errors` und
+        # `data:null` — `userErrors` ist dann leer, und der Lauf hielt das fuer Erfolg und
+        # quittierte «ersetzt». Belegt an zwei POD-Produkten, die zweimal so im Ledger stehen
+        # und den alten Block live weitertragen. Eine falsche Quittung ueberspringt den Fall
+        # fuer immer — deshalb ist ein Abbruch hier richtig und ein stilles Weiterlaufen falsch.
+        if d.get('errors'):
+            raise RuntimeError('Shopify-Fehler: ' + str(d['errors'])[:200])
+        return d
 
 BLOCK = re.compile(r'<p class="ls-liefer"[^>]*data-tier="([^"]*)"[^>]*>.*?</p>', re.S)
 
@@ -192,6 +201,11 @@ def main():
             errs = (rr.get('data') or {}).get('productUpdate', {}).get('userErrors') or []
             if errs:
                 print(f"  X  {p['title'][:40]}: {errs[0]['message']}"); continue
+            # Quittiert wird NUR gegen einen bestaetigten Rueckgabewert — nicht gegen das
+            # blosse Ausbleiben von userErrors (siehe Kommentar in gql()).
+            bestaetigt = ((rr.get('data') or {}).get('productUpdate') or {}).get('product') or {}
+            if not bestaetigt.get('id'):
+                print(f"  X  {p['title'][:40]}: keine Bestaetigung — NICHT quittiert"); continue
             open(LEDGER, 'a', encoding='utf-8').write(f"{pid}\tersetzt\n")
         geaendert += 1
         if n % 50 == 0: print(f"  … {n}/{min(len(offen), CAP)}")

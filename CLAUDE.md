@@ -1,5 +1,40 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⛔ Die Custom-App ist WEG — und 68 Werkzeuge quittieren stille Fehlschlaege (2026-09-05, abends)
+Um 20:36 UTC antwortete Shopify ploetzlich mit **401**; die Token-Erneuerung scheitert seither mit
+**`400 app_not_installed`** (zweimal gemessen, kein Aussetzer). Damit ist der Zugang der Custom-App
+**autopilot2** weg — genau der Schritt, den die andere Session vorgeschlagen und den ich am 05.09.
+als betriebsstillegend gemessen hatte: **328 Dateien lesen dieses Token** (Importer, Bestell-Automat,
+Rueckerstattung, Tresor, Ampeln, 194 Waechter). Der SHOP selbst ist gesund (Kollektionsseiten 6/6
+HTTP 200); nur unser API-Zugang ist tot. Der Tresor laesst sich ebenfalls nicht oeffnen — sein
+Schluessel IST dieses Token (Lehre 30.08.).
+- **Was das sofort anrichtet, und es ist schlimmer als Stillstand:** Gemessen ignorieren **68 der
+  schreibenden Werkzeuge** die OBERE Fehlerebene der GraphQL-Antwort. Faellt die Auth aus, kommt
+  `data:null` **ohne** `userErrors` — der Lauf haelt das fuer Erfolg und schreibt eine Quittung.
+  **Belegt an zwei POD-Produkten** («T-Shirt Gopfertami», «Tasche Heidi»): beide stehen ZWEIMAL als
+  `ersetzt` im Ledger und tragen den alten Block «🇨🇭 CH / 🇪🇺 EU: 7–14 Tage · 🇺🇸 USA: 6–12 Tage»
+  live weiter. Eine falsche Quittung ueberspringt den Fall FUER IMMER. Beide Zeilen entfernt.
+- **Tor im Aufseher (05.09.):** Nach der Token-Erneuerung wird EINMAL je Runde geprueft, ob die API
+  wirklich antwortet (`{shop{id}}`). Tut sie es nicht, startet der Aufseher **gar keinen Waechter**,
+  meldet den HTTP-Code und committet nur. In beide Richtungen geprueft (totes Token 401 → zu,
+  fehlende Datei 000 → zu, 200 → offen). **Ein toter Zugang ist gefaehrlicher als ein stiller
+  Stillstand** — er erzeugt Quittungen ueber Arbeit, die nie stattgefunden hat.
+- `versand_jenachland.py` als erstes richtig repariert: `gql()` wirft jetzt bei `errors`, und
+  quittiert wird nur gegen eine **bestaetigte Produkt-ID** in der Antwort, nicht gegen das blosse
+  Ausbleiben von `userErrors`. Belegt: Der Lauf endet jetzt laut mit `HTTP 401` statt still mit
+  «PAUSE». **Die uebrigen 67 Werkzeuge sind NICHT einzeln repariert** — sie haengen hinter dem Tor;
+  die saubere Loesung ist EIN geteilter `gql()`-Helfer (Geschwister-Lehre), und das ist ein Umbau,
+  den man nicht blind macht, waehrend die API nicht antwortet.
+- ⚠️ **Ein Fehlalarm auf dem Weg, den ich fast gemeldet haette:** Die Startseite antwortete
+  5× hintereinander zu 40 % mit **HTTP 500**, und ich war beim Satz «die Haustuer ist kaputt».
+  Sechs Abrufe spaeter: **6/6 = 200**, ebenso zwei Kollektionsseiten. Es war der kalte Edge-Cache
+  nach den heutigen Theme-Aenderungen (Lehre 29.08./31.08.), keine Stoerung. **Vor einem
+  Ausfall-Alarm misst man ein zweites Mal** — 6,9 MB Startseite bleiben trotzdem am oberen Rand.
+- ⚠️ **Und der Weg zurueck fuehrt NICHT ueber mich:** Der Shopify-MCP-Konnektor antwortet zwar noch
+  (er haengt an einer anderen Anmeldung), aber er **blockt Theme-Schreibzugriffe auf das Live-Theme**
+  und ist kein Ersatz fuer den Betrieb. Die App wieder zu installieren bzw. den Zugang neu
+  auszustellen ist eine Betreiber-Handlung im Shopify-Admin.
+
 ## ⭐ «Bewertungen machen»: der tägliche Import suchte an der falschen Stelle (2026-09-05)
 Betreiber: «bewertungen machen». **Nie erfundene Bewertungen** — der einzige zulässige Weg ist der
 Import echter CJ-Kundenkommentare (≥4★, ins Deutsche übersetzt) über `cj_reviews_import.mjs`.
@@ -38,6 +73,12 @@ kuratiert wurde.** Damen-Mode, Neuheiten, Elektronik, Wohnen, Schmuck & Uhren, H
   **Regel: Eine Abdeckungszahl misst man mit der Bedingung, unter der die Kundin es SIEHT** —
   nicht mit der, unter der die Daten existieren. Dieselbe Familie wie «eine Aussenwirkung prueft
   man an der Aussenwirkung» (29.08.), nur eine Ebene frueher: schon beim Zaehlen.
+- ✅ **Und die Gegenprobe in die andere Richtung ist beruhigend: KEIN sichtbares Produkt traegt eine
+  Bewertung unter 4,0 ★** (bei ≥3 Stimmen: 0 von 480). Die 21 Produkte ohne Badge sind ausnahmslos
+  ≥4,0 ★ mit erst **1–2 Stimmen** — es fehlt die dritte, nicht die Qualitaet. Ein Nachfragen bei CJ
+  bringt sie nicht: der Importer holt 20 Kommentare und nimmt alle ≥4★; wer nur zwei hat, hat bei CJ
+  nur zwei. **Die Badge-Schwelle (≥4,0 ★ UND ≥3 Stimmen) bleibt** — sie fuer die Optik auf 2 Stimmen
+  zu senken hiesse, eine bewusst gesetzte Sicherung fuer ein paar Sterne aufzuweichen.
 - ⛔ **Vier grosse Reihen stehen auf 0/24 — und das ist KEINE Lücke in unserer Arbeit:** Damen-Mode,
   Sneaker, Elektronik & Technik, Blitzversand. Am Objekt geprüft sind dort **24 von 24 Produkten
   bereits bei CJ gefragt worden**; der Lieferant hat für sie schlicht keine Kommentare. Diese Reihen

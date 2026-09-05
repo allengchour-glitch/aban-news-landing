@@ -191,6 +191,31 @@ while true; do
   if [ -f "$REPO/automation/shop_token_refresh.sh" ]; then bash "$REPO/automation/shop_token_refresh.sh"
   elif [ -f /tmp/shop_token_refresh.sh ]; then bash /tmp/shop_token_refresh.sh; fi
 
+  # ── TOR: KEIN SCHREIBEN OHNE ANTWORTENDE API (05.09.2026) ───────────────────────────
+  # Am 05.09. war die Custom-App weg ("app_not_installed"); das Token liess sich nicht mehr
+  # erneuern. Gemessen ignorieren 68 der schreibenden Werkzeuge die OBERE Fehlerebene der
+  # GraphQL-Antwort: faellt die Auth aus, kommt `data:null` ohne `userErrors` zurueck — der
+  # Lauf haelt das fuer Erfolg und quittiert. Belegt an zwei POD-Produkten, die zweimal als
+  # «ersetzt» im Ledger stehen und den alten Lieferblock live weitertragen. Eine falsche
+  # Quittung ueberspringt den Fall FUER IMMER, also ist ein toter Zugang gefaehrlicher als
+  # ein stiller Stillstand. Der Aufseher prueft deshalb EINMAL je Runde, ob die API
+  # ueberhaupt antwortet, und laesst die Waechter sonst gar nicht erst los.
+  if [ -s /tmp/cj_shop_token.txt ]; then
+    _api=$(curl -s -o /dev/null -w '%{http_code}' --max-time 25 \
+      -X POST "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json" \
+      -H "X-Shopify-Access-Token: $(cat /tmp/cj_shop_token.txt)" \
+      -H 'Content-Type: application/json' --data-binary '{"query":"{shop{id}}"}' 2>/dev/null)
+  else
+    _api=000
+  fi
+  if [ "$_api" != "200" ]; then
+    echo "$(date -u +%H:%M) ⛔ SHOPIFY ANTWORTET NICHT (HTTP $_api) — Waechter werden NICHT gestartet."
+    echo "$(date -u +%H:%M)    Grund pruefen: Custom-App installiert? Token erneuerbar? Danach laeuft alles von selbst weiter."
+    [ -x "$REPO/automation/autocommit.sh" ] && bash "$REPO/automation/autocommit.sh" >/dev/null 2>&1
+    sleep 120
+    continue
+  fi
+
   # ── MOTOREN SELBST AM LEBEN HALTEN (29.08.2026) ─────────────────────────────────────
   # Bis heute hing die ganze Motorenschicht an der stuendlichen Routine: Nur SIE rief
   # engine_keepalive.sh auf. Antwortet die Session eine Weile nicht — Turn-Reaping,
