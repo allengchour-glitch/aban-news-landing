@@ -12707,3 +12707,4 @@ gid://shopify/Product/15454108123521	CHF 34.35	1 Varianten	Frontscheinwerfer fü
 gid://shopify/Product/15454108156289	CHF 5.90	1 Varianten	Gold Schmuckstein-Ring
 gid://shopify/Product/15454108189057	CHF 49.54	1 Varianten	Fahrrad-Scheinwerfer mit USB-Ladung
 gid://shopify/Product/15454108221825	CHF 48.34	1 Varianten	Natürliche grosse Muschel für Aquarien & Dekoratio
+gid://shopify/Product/15454108287361	CHF 11.08	1 Varianten	Mobiltelefonhalterung mit starkem Licht für Radspo
