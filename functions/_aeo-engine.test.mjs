@@ -285,6 +285,16 @@ check("GEGENPROBE: sehr langer erster Satz bleibt durchgefallen", (() => {
   return r.metrics.answerFirst === false;
 })());
 
+check("Ueberschriften in einer Skript-Zeichenkette zaehlen nicht", (() => {
+  /* ai-sichtbarkeit.html traegt Beispiel-HTML in einem <script> (Demo des Checks) und
+     bekam dafuer „2 H1" und fuenf Frage-Ueberschriften angerechnet, die kein Leser sieht. */
+  const r = analyze(`<html><body><main><h1>Echte Seite</h1>
+    <p>Der Check misst, wie gut eine Seite fuer Antwort-Maschinen aufgestellt ist.</p>
+    <script>const BEISPIEL = "<h1>Demo-Kanzlei</h1><h2>Was kostet es?</h2><h2>Wie lange dauert es?</h2>";</script>
+    </main></body></html>`);
+  return r.metrics.h1Count === 1 && r.metrics.questionHeadings === 0;
+})());
+
 // ---------------------------------------------------------------------------
 console.log("\n" + "=".repeat(48));
 console.log(pass + " bestanden, " + fail + " fehlgeschlagen.");
