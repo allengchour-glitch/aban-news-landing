@@ -1,5 +1,34 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⭐ «Bewertungen machen»: der tägliche Import suchte an der falschen Stelle (2026-09-05)
+Betreiber: «bewertungen machen». **Nie erfundene Bewertungen** — der einzige zulässige Weg ist der
+Import echter CJ-Kundenkommentare (≥4★, ins Deutsche übersetzt) über `cj_reviews_import.mjs`.
+Gemessen, wo der Shop steht: **von 187 Produkten in den sichtbaren Reihen hatten 23 eine Bewertung
+(12 %) — und 21 davon stehen in `bestseller`, weil diese Reihe AUS den bewerteten Produkten
+kuratiert wurde.** Damen-Mode, Neuheiten, Elektronik, Wohnen, Schmuck & Uhren, Herren: **0 von je 24.**
+- **Die Ursache ist die Auswahl, nicht der Import:** Der Aufseher lief mit `QUERY=tag:cj-real
+  LIMIT=120` — eine Zufallsscheibe aus 53'000 Produkten. Die Chance, dabei eines der ~190 sichtbaren
+  zu treffen, liegt bei 0,3 %. Der Import arbeitete also seit Wochen korrekt an Ware, die niemand sieht.
+- **Gezielt nachgeholt:** 126 sichtbare Produkte ohne Bewertung an CJ gefragt → **12 Treffer,
+  60 echte Bewertungen**; danach die Warengruppen mit gemessen hoher Quote (Uhren, Schmuck, Küche,
+  Haustier) in Chargen. Judge.me **1'953 → 2'174**, `/collections/uhren` zeigt jetzt 11 Sterne-Badges
+  (4.8–5.0 aus 6–8 Stimmen), vorher 0.
+- **Die Trefferquote ist warengruppenabhängig, und zwar drastisch:** Uhren liefern 8 Kommentare je
+  Produkt, Mode (Blusen, Hemden, Schuhe) **null**. Von 114 geprüften Mode-/Technikartikeln hatte
+  KEINER einen CJ-Kommentar. Wer Bewertungen will, holt sie dort, wo der Lieferant welche hat —
+  und kuratiert die Startseite danach.
+- `automation/bewertungen_prio.py` baut die Arbeitsliste (erst die 20 sichtbaren Reihen, dann die
+  vier Warengruppen; alles ohne Bewertung und noch nicht im Ledger), der Aufseher füttert sie dem
+  Importer (`ONLY=` erste 150). **3'483 Kandidaten**, die Liste schrumpft mit jedem Lauf, weil der
+  Importer jedes geprüfte Produkt quittiert — ein Container-Neustart kostet höchstens eine Charge.
+- ⚠️ Eine Quittung «CJ hat 0 Kommentare» ist eine ANTWORT, keine Panne — sie darf ins Ledger.
+  Fehlen dagegen die CJ-Punkte, wird NICHT quittiert (`punkteLeer` → «später erneut»); sonst wäre
+  die Zeile eine Lüge und das Produkt für immer übersprungen (Lehre 20.08.).
+- ⚠️ `/tmp/cj_token.json` hat die Form `{accessToken, exp}` — **kein `data`-Objekt**. Und
+  `product/query` ist ein **GET**; ein POST antwortet mit `16900202 Request method 'POST' not
+  supported`, was wie ein Punkteproblem aussieht und keines ist (`pointsInfo` steht trotzdem drin:
+  remaining 22'087).
+
 ## 🗂️ «Katalog, dass man alles sieht» + «Webseite top»: Raster, Regeln, Menü, 24 Audit-Befunde (2026-09-05)
 Betreiber: «den katalog viel besser machen und schöner und so das man alles sieht» und «webseite, top machen».
 Erst gemessen (Playwright-Geometrie, nicht Screenshot-Gefühl), dann geschrieben:
