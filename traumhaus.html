@@ -2783,7 +2783,11 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
      das war das Flimmern auf Strasse und Trottoir. Jede Fahrbahn bekommt jetzt ihre eigene
      Hoehe, gestaffelt um 0.4 mm; sichtbar ist das nicht, der Streit hoert damit auf. */
   var _strLage=0;
-  function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),w>h?strMatH:strMatV);
+  /* Das Material waehlt sich normalerweise selbst aus der Form: breiter als tief =
+     Laengstextur. Ein KURZES Stueck einer Ost-West-Strasse ist aber schmaler als breit
+     und bekaeme damit die Quertextur — die Rillen laegen quer zur Fahrtrichtung. Darum
+     laesst sich das Material uebergeben. */
+  function strasseMesh(w,h,x,z,mat){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat||(w>h?strMatH:strMatV));
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003-(_strLage++)*0.0004,z);
     st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,16,0,-SZ-12);
@@ -2803,6 +2807,28 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     [RX,-RX].forEach(function(cx8){
       strasseMesh(9,Math.abs(RGZ_N+SZ+23),cx8,(RGZ_N-(SZ+23))/2);
       strasseMesh(9,Math.abs(RGZ_S-(SZ+23)),cx8,(RGZ_S+(SZ+23))/2);});
+    /* 🛣️ DIE HAUPTSTRASSEN ENDETEN 5,5 m VOR DEM RING.
+       GEMESSEN 2026-09-05 (Strahlengitter im Halbmeterraster quer ueber die Naht):
+       die beiden Hauptstrassen sind 204 m lang und enden bei x = ±102; die senkrechten
+       Ringschenkel liegen bei x = ±112 und sind 9 m breit, reichen also von ±107,5 nach
+       aussen. Dazwischen: 5,5 m Rasen — an VIER Stellen (beide Strassen, beide Seiten).
+       Die Strasse hoerte auf und fing wieder an.
+
+       ⚠️ Beim ersten Hinsehen sah nur die Westseite kaputt aus, die Ostseite schien
+       durchgehend. Das war Zufall: dort kreuzt der 30-Grad-Zubringer genau ueber der
+       Naht (r = 120 bei 28,9 Grad) und deckt sie ab. Wer nur eine Seite prueft, haelt
+       den Fehler fuer halb so gross.
+
+       Das WEGENETZ wusste laengst, dass hier eine Kreuzung ist: gpsStrasse laesst die
+       Hauptstrasse bis |x| < RL/2+6 = 108 gelten und den Ringschenkel ab 107,5. Nur der
+       Asphalt fehlte. */
+    (function ringAnschluss(){
+      var LB=RL/2, RA=RGX-4.5;          // Ende der Hauptstrasse | Innenkante des Ringschenkels
+      if(RA<=LB)return;                 // beruehren sich schon: nichts zu tun
+      [-1,1].forEach(function(sx){[-1,1].forEach(function(sz){
+        strasseMesh(RA-LB,16,sx*(LB+RA)/2,sz*(SZ+12),strMatH);});});
+      window._ringAnschluss=RA-LB;
+    })();
     /* 🛣️ Die Ring-Segmente endeten als harte Kante im Gras/Sand — "Kreuzung, dann endet die
        Strasse" (User). Die vier Ecken bekommen jetzt eine ausgerundete Fahrbahn mit Bordstein,
        damit der Ring sichtbar geschlossen ist statt abzubrechen. */

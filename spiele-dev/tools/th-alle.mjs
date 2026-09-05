@@ -174,6 +174,12 @@ const PRUEFUNGEN = [
   { name: 'Wasserwagen (faehrt jemand aufs Meer)', datei: 'th-wasserwagen.mjs', kern: false,
     wert: (s) => (s.match(/ueber Wasser \(8 Proben\): (\d+)/) || [, '?'])[1] + ' Sichtungen',
     gut: (s) => /🎉 WASSERWAGEN BESTANDEN/.test(s) },
+  /* ⚠️ Die Hauptstrassen endeten 5,5 m vor dem Stadtring — an vier Stellen Rasen
+     zwischen zwei Fahrbahnen. Gemerkt hat das keine Pruefung: das Wegenetz hielt die
+     Kreuzung fuer vorhanden, nur der Asphalt fehlte. Diese Pruefung schaut nach unten. */
+  { name: 'Naht (Hauptstrasse an den Ring)', datei: 'th-naht.mjs', kern: false,
+    wert: (s) => (s.match(/ohne Asphalt: (\d+)/) || [, '?'])[1] + ' Luecken',
+    gut: (s) => /🎉 NAHT GESCHLOSSEN/.test(s) },
   /* ⚠️ Die TAFELN sah bis 2026-09-04 niemand nach. th-hud prueft die immer sichtbare
      Leiste, th-spielerblick die Welt — was der Spieler OEFFNET (Erfolge, Karte,
      Bau-Palette, Krimi-Auswahl, Hetze), stand nirgends. Genau dort war der letzte
