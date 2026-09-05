@@ -52,6 +52,8 @@ KLASSEN = [k.strip() for k in os.environ.get(
     'status:draft AND tag:nicht-lieferbar-ch|status:draft AND tag:bb-versand-unrentabel'
 ).split('|') if k.strip()]
 FERTIGDATEI = '/tmp/dateispeicher_klassen_fertig.txt'
+# Stichtag je Klasse: ab wann gilt ein neues updatedAt als «von mir angefasst».
+STICHTAGE = 'dropship/_dateispeicher_stichtage.json'
 _fertig = set()
 if os.path.exists(FERTIGDATEI):
     _fertig = {z.strip() for z in open(FERTIGDATEI) if z.strip()}
@@ -139,9 +141,24 @@ def main():
     # Menge weg — kostenlos, ohne Cursor und ohne zusaetzliche Mutation (ein Marker-Tag waere
     # eine Mutation JE PRODUKT gewesen und damit teurer als das Problem).
     # ⚠️ Nur im Schreibmodus: ein Trockenlauf soll den ganzen Ausschnitt sehen.
+    # ⚠️ Der Stichtag ist der Tag, an dem DIESE Klasse zum ersten Mal drankam — nicht «heute».
+    # Mit «heute» faengt jeder neue Kalendertag wieder bei den Produkten von gestern an
+    # (nach 6'701 abgearbeiteten sind das ~670 leere Seitenabfragen). Alles, was dieser Lauf
+    # je entbildert hat, traegt ein updatedAt AB dem Stichtag und faellt damit dauerhaft weg.
+    # ⚠️ Preis dieser Abkuerzung: ein Produkt, das ein ANDERER Waechter nach dem Stichtag
+    # angefasst hat, wird uebersprungen. Bei Entwuerfen eines abgeschalteten Lieferanten ist
+    # das selten, und ein `KLASSE=`-Lauf ohne Stichtag holt sie jederzeit nach.
     filter_klasse = KLASSE
     if not DRY:
-        filter_klasse += ' AND updated_at:<' + time.strftime('%Y-%m-%d', time.gmtime())
+        stichtage = {}
+        if os.path.exists(STICHTAGE):
+            stichtage = json.load(open(STICHTAGE))
+        tag = stichtage.get(KLASSE)
+        if not tag:
+            tag = time.strftime('%Y-%m-%d', time.gmtime())
+            stichtage[KLASSE] = tag
+            json.dump(stichtage, open(STICHTAGE, 'w'))
+        filter_klasse += ' AND updated_at:<' + tag
         print(f'Filter: {filter_klasse}')
     led = None if DRY else open(LEDGER, 'a')
     prod = bilder = 0
