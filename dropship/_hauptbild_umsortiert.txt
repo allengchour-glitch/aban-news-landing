@@ -67,3 +67,4 @@
 15448600478081	bild-5-nach-vorn	kontaktbogen-0509 jacken-outdoor (per MCP, Admin-Token tot: app_not_installed)
 15447933059457	bild-6-nach-vorn	kontaktbogen-0509 fitness-training (per MCP, Admin-Token tot: app_not_installed)
 15447979819393	bild-5-nach-vorn	kontaktbogen-0509 fitness-training (per MCP, Admin-Token tot: app_not_installed)
+15412361593217	bild-2-nach-vorn	kontaktbogen-0509 premium-geschenke (per MCP, Admin-Token tot: app_not_installed)
