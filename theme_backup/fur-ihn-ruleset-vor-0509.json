@@ -1,0 +1,29 @@
+{
+ "id": "gid://shopify/Collection/687522283905",
+ "title": "Herren-Mode",
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "herrenschmuck"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "herrenuhr"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "herren"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "vatertag"
+   }
+  ]
+ }
+}

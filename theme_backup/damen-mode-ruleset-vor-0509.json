@@ -1,0 +1,34 @@
+{
+ "id": "gid://shopify/Collection/687524381057",
+ "title": "Damen-Mode",
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "damen"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "kleid"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "damen-mode"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "damen-taschen"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sandalen"
+   }
+  ]
+ }
+}
