@@ -1,5 +1,77 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🗂️ «Katalog, dass man alles sieht» + «Webseite top»: Raster, Regeln, Menü, 24 Audit-Befunde (2026-09-05)
+Betreiber: «den katalog viel besser machen und schöner und so das man alles sieht» und «webseite, top machen».
+Erst gemessen (Playwright-Geometrie, nicht Screenshot-Gefühl), dann geschrieben:
+- ⛔ **Das Kollektionsraster stand auf Desktop 219 px zu weit rechts — wegen EINES ungültigen Settings.**
+  `filter_style` war auf «horizontal», `filter_width` aber noch auf **«left»** (ein Wert des vertikalen
+  Layouts). Der Filterblock bekam `grid-column: var(--left)` = ungültig → `auto` → er rutschte in die
+  1fr-Randspalte, und `1fr` = `minmax(auto,1fr)` dehnt sich auf die min-content-Breite der Toolbar
+  («12368 Artikel · Sortieren», 219 px). Das Raster stand daneben. Fix: `filter_width: centered`.
+  Meine erste Reparatur (CSS `luxGridVoll`, `grid-column: 2 / -2`) traf das Symptom — sie bleibt als
+  Schutznetz, aber **ein Grid-Kind mit ungültigem grid-column baut die Spalte um, in die es fällt.**
+  Gemessen nachher: Filterzeile 40–1400 (volle Breite), Raster darunter, 5 Spalten à 259 px.
+- **«Damen-Mode» begann mit zwölf Armbändern von heute:** Regel `TAG damen` (13'898) holte 2'213 Schmuck
+  und Herrenmode herein, CREATED_DESC zeigte den Grind. Jetzt `TYPE Damenmode/Damenschuhe` + Tags
+  kleid/damen-mode/damen-taschen/sandalen (9'781 aktiv); «Herren» analog (`TYPE Herrenmode/Herrenschuhe`).
+  ⚠️ Die Regel-Spalte heisst in der API **`TYPE`**, nicht `PRODUCT_TYPE`. Backups `theme_backup/*-ruleset-vor-0509.json`.
+- **Top-Level «Schmuck & Uhren» führte auf «Premium Schmuck» mit 57 aktiven** — die Unterpunkte tragen
+  Tausende. Neue Smart-Kollektion `schmuck-uhren` (`TYPE Schmuck` + `TYPE Uhren` + `kategorie-uhr`, ~4'950
+  aktiv, 6 Kanäle publiziert). ⚠️ Erste Fassung mit `TAG uhren` zeigte als erste Reihe Kinder-GPS-Tracker
+  und Smartwatch-Armbänder (der Tag ist breit); der Warentyp «Uhren» (1'877) zeigt Uhren.
+  ⚠️ Die API gibt für Kollektions-Menüpunkte die URL mit **`/en/`-Präfix** zurück (`/en/collections/…`,
+  404 beim Aufruf) — das Theme rendert `/collections/…` (200). **Die API-URL eines Menüpunkts ist ein
+  Locale-Echo, kein Beleg; der Beleg ist das href im ausgelieferten HTML.**
+- **Hauptmenü nach Grösse sortiert:** Desktop zeigt 8 Punkte + «Mehr»; Technik & Gaming (4'515), Kinder &
+  Haustier (3'794) standen hinter «Mehr», «Highlights» (23) vorn. Jetzt Damen · Herren · Schuhe · Schmuck &
+  Uhren · Beauty · Wohnen · Technik · Kinder & Haustier | Mehr: Highlights, Herbst, Sport & Party, Geschenke,
+  Merkliste. 143 → 143 nachgezählt.
+- **Produktkarten trugen DREI Bewertungsanzeigen** (Judge.me-App-Block VOR dem Bild, Horizon-«review»-
+  Block mit englischem «6 Reviews», mein Sterne-Badge). Nur das Badge bleibt (≥4.0 ★, ≥3 Stimmen).
+- **Filter-Chips je Welt** (`lux_subchips`): «Jacken» auf Wohnen führte zu 1 Hundejacke, «Ringe» auf
+  Elektronik zu «Monitoring»-Smartwatches — `collection.all_tags contains` kennt keine Stückzahl. Jetzt
+  Whitelist je Elternpunkt (`case welt`), Chips, die schon als Menü-Chip stehen, fallen weg, und auf Desktop
+  wird umgebrochen statt rechts abgeschnitten (`.lx-chiprow/.lx-chipflex`, Mobil weiter wischbar).
+- **«Neuheiten 2026» und «Elektronik» zeigten 13 von 16 dieselben Beamer** — beide CREATED_DESC, die
+  jüngsten Importe waren Elektronik. `automation/neuheiten_rotation.py` (täglich): `neu-eingetroffen` auf
+  MANUAL, je Welt das jüngste brauchbare Produkt (Kriterien aus `querbeet_kuratieren`) nach vorn, 24 Karten.
+  ⚠️ `tag:neuheit AND collection_id:X` liefert **still 0** (achte Fassung des stillen Filters) — der Tag
+  wird lokal geprüft. ⚠️ `created_at:>=` ebenso 0, `created_at:>` zählt.
+- **Produktseite:** Horizon-Lagerabzeichen «Auf Lager» (direkt unter dem Preis) neben meinem Lieferblock
+  «Direktversand aus Asien, 10–20 Werktage» → Abzeichen raus (der Lieferblock sagt es je Weg). Akkordeon
+  «Material & Pflege» sagte auf JEDEM Produkt «Hochwertige Materialien … Premium-Qualität» → Zeile raus.
+  Spezifikationstabelle: «Grössen/Grösse», «Muster/Design» normalisiert (`gesehen`-Liste).
+  **Leeres Judge.me-Widget** («Kundenbewertungen — Schreiben Sie die erste Bewertung», Sie-Form, App-Text
+  ohne API) auf jeder Seite ohne Bewertung: App-Block-Setting `empty_state: hide_widget` (per Upsert
+  durchprobiert; ungültige Werte lehnt Shopify ab). Gemessen: Höhe 0, kein Text. ⚠️ Mein CSS
+  `.jdgm-rev-widg[data-number-of-reviews="0"]` griff NICHT — das «revamp»-Widget (Vue) hat den Zähler
+  nicht am Wurzelelement. **Ein CSS-Selektor gegen ein Fremd-Widget ist erst belegt, wenn man das DOM
+  gemessen hat**, nicht wenn er plausibel klingt.
+- **Mobil:** USP-Streifen stapelte weiter in 3 Reihen — der Inline-Stil `flex-wrap:wrap` des Containers
+  schlug die Media-Query (31.08.-Fix wirkungslos); jetzt `!important` an Container UND Kindern, gemessen: eine
+  Wischzeile. Hero-Text weiss auf hellem Kleid → mobiler Verlauf von unten + Textschatten.
+  ⚠️ Die Sektions-ID heisst live `shopify-section-template--…__hero_jVaWmY` — mein erster Selektor
+  `#shopify-section-hero_jVaWmY` traf nichts (Suffix-Selektor `[id$="__hero_jVaWmY"]`). Popup 7 s → 30 s
+  (lag über dem Cookie-Banner, bevor ein Produkt sichtbar war).
+- **Seiten:** `garantie` versprach «Geld zurück. Keine Diskussion.» und «12 Monate Hersteller-Garantie»
+  (gibt es bei Dropship-Ware nicht); `ueber-uns` beschrieb einen anderen Shop («Ich teste jedes selbst»,
+  «200 Pieces statt 10 000 Random-Items», «bedingungslos», «CHF/EUR/GBP/USD», «50-70% günstiger»);
+  `widerruf`/`widerrufsbelehrung`/`rueckgabe-widerruf` erklärten ein EU-Widerrufsrecht für Kund:innen, die
+  nicht bestellen können (nur CH); `tracking` nannte Post/DHL und POD 10–20 (Versandseite: 7–14); FAQ-Zoll
+  «praktisch immer unter der Freigrenze» neben CHF-199-Ware. Alle neu geschrieben bzw. gezielt ersetzt
+  (Backups `theme_backup/pages-0509/`), drei Doppelseiten unpubliziert + 301, Footer «Widerruf (14 Tage)» raus.
+  Zoll jetzt als Regel (Einfuhrsteuer ab CHF 5 Steuerbetrag ≈ CHF 60 Warenwert), nicht als Zusage.
+- **Audit-Methode:** Der Sieben-Linsen-Workflow lieferte 4 Linsen mit 24 Befunden; 27 Agenten (3 Linsen +
+  alle Skeptiker) starben am Sitzungslimit. **Ein Befund ohne Gegenprüfung ist ein Hinweis** — jeder wurde
+  vor dem Handeln am Objekt geprüft (Live-HTML, Playwright-Geometrie, Admin-API). Alle 24 hielten.
+- **Erstbilder:** Workflow `erstbilder-katalog` sichtet je 24 Erstbilder von 29 Kollektionen per
+  Kontaktbogen (~117 Befunde: Massgrafiken, Collagen, englische Infografiken, Verpackung) und holt per
+  `automation/erstbild_nach_vorn.py` (Ledger `_hauptbild_umsortiert.txt`) das sauberste Foto aus dem
+  eigenen Bildsatz nach vorn — kein Upload (Speicher voll), nur Reihenfolge; jede Änderung von einem
+  Skeptiker gegengeprüft. `automation/produkt_bildsatz.py <id>` baut den Bogen eines Produkts.
+  Von Hand: Rizinusöl-Set (Nr.-1-Suchprodukt) begann mit einem **Organ-Diagramm** (Leber, Thyroid …) —
+  Bild 7 (Wickel + Ölflasche + Model, ohne Text) nach vorn.
+
 ## ⚖️ Zwei Sessions, ein Shop: der Zustandsspeicher `luxestyle.lage` und der Schalter, den beide umlegen (2026-09-05)
 Die andere Session (Cowork/PC-Übergabe) führt ein Shop-Metafeld `luxestyle.lage` als Kanal zum PC («nur die
 Routine schreibt hier»; der PC hängt Zeilen unter `erledigtSeitLetztem` an). Fünf ihrer Behauptungen mit fünf
