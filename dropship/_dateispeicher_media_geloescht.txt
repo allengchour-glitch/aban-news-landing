@@ -12314,3 +12314,5 @@
 15449666355585	6	995740	Shiatsu-Thermo-Massagegerät 2 in 1 Futsa InnovaGoods
 15449666519425	6	622235	4-in-1 Luftkompressions-Augenmassagegerät Eyesky InnovaGoods
 15452618850689	6	508520	Kuscheliger Babyschlafsack – Süsse Träume für dein Baby
+15443493945729	1	62320	Wandladegerät Baseus Speed Mini Schwarz 20 W
+15443495485825	1	23951	Powerbank Baseus P10059001113-00 Schwarz mAh
