@@ -4087,7 +4087,26 @@ setTimeout(function baueVerkehr(){
     {axis:"radial",gr: 30,dir: 1,speed:6.6},{axis:"radial",gr: 60,dir:-1,speed:7.4},
     {axis:"radial",gr:120,dir: 1,speed:6.9},{axis:"radial",gr:240,dir:-1,speed:7.1},
     {axis:"radial",gr:300,dir: 1,speed:7.8},{axis:"radial",gr:330,dir:-1,speed:6.3},
+    /* 🏘️ VIERTELSTRASSEN. Dieselbe Luecke wie bei den Zubringern eine Runde zuvor:
+       sieben Viertel haben eine Erschliessungsstrasse mit Trottoir, Mittelstreifen und
+       Laternen — und niemand faehrt darauf. Gesehen auf der Sichtrunde 67 (Zoo,
+       Gewerbe Ost, Vergnuegungsviertel): gebaute, beleuchtete, leere Strassen.
+       ⚠️ DIE VIERTEL GIBT ES HIER NOCH NICHT. Sie entstehen rund 1500 Zeilen weiter
+       unten und WEICHEN BEIM SETZEN AUS — ihre Koordinaten stehen erst zur Laufzeit
+       fest. Darum Platzhalter: `bereit` bleibt falsch, bis `viertelVerkehr()` die
+       tatsaechliche Lage eingetragen hat. Wer hier Zahlen hinschreibt, schreibt den
+       Wunschort hin, und der ist in dieser Datei schon dreimal der falsche gewesen. */
+    {axis:"viertel",vn:"Gewerbe Ost",       bereit:false,speed:5.0},
+    {axis:"viertel",vn:"Sportpark Sued",    bereit:false,speed:4.6},
+    {axis:"viertel",vn:"Freizeitpark",      bereit:false,speed:4.4},
+    {axis:"viertel",vn:"Vergnuegungsviertel",bereit:false,speed:5.2},
+    {axis:"viertel",vn:"Zoo",               bereit:false,speed:4.8},
+    {axis:"viertel",vn:"Flughafen",         bereit:false,speed:5.4},
+    {axis:"viertel",vn:"Bauernhof",         bereit:false,speed:4.2},
     {axis:"stich",dir: 1,speed:6.2},{axis:"stich",dir:-1,speed:5.6}];
+  /* Die Viertelrouten werden erst zur Laufzeit ausgefuellt (siehe viertelVerkehr()) —
+     dafuer muss die Liste von aussen erreichbar sein. */
+  window._ROUTEN=ROUTEN;
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
     /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
      darum 20 statt 34; die Strassen wirken trotzdem belebt. */
@@ -4621,6 +4640,7 @@ function _spurKey(v){
      Die blosse Routen-Zahl reicht nicht mehr: seit die Wagen am Strassenende
      wenden, wechselt ein Wagen die Spur auf die andere Seite der Mittellinie —
      und liegt dort mit den Wagen der Gegenroute in EINER Spur. */
+  if(r.axis==="viertel")return "v|"+r.vn+"|"+v.rdir;
   if(r.axis==="x"){var gx=_strGrenzen(r);return "x|"+gx.mitte+"|"+gx.versatz+"|"+v.rdir;}
   if(r.axis==="z"){var gz=_strGrenzen(r);return "z|"+gz.mitte+"|"+gz.versatz+"|"+v.rdir;}
   if(r.axis==="ring")return "ring|"+r.r+"|"+r.dir;
@@ -4649,6 +4669,9 @@ function _spurKey(v){
    dieselbe Spiegelung, die fuer die Nordstrasse schon einmal gefunden wurde. Die
    Rechnung unten setzt sie nebenbei richtig. */
 function _strGrenzen(r){
+  /* Die Viertelstrasse traegt ihre Masse selbst — sie wurden zur Laufzeit aus dem
+     tatsaechlich gesetzten Viertel gerechnet, nicht aus dem Wunschort. */
+  if(r.axis==="viertel")return {mitte:r.c, versatz:r.off, von:r.von, bis:r.bis};
   var RG=window._ringGeo||{n:-100,s:118,x:112};
   if(r.axis==="x"){
     var mz=(r.z>0?1:-1)*(GH*CS/2+12);        /* Hauptstrassen-Mitte z = ±58 */
@@ -4663,8 +4686,26 @@ function _strGrenzen(r){
 }
 function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
+  /* 🔭 WEIT WEG HEISST UNSICHTBAR. Ein Viertelwagen steht 250 bis 400 m entfernt; im
+     Bild ist er nicht zu sehen, im Schattenwurf der Sonne aber schon — der rendert die
+     ganze Welt —, und `nieAusblenden` (das die Raeder unterwegs sichtbar haelt) nimmt
+     ihn zusaetzlich vom LOD aus. Ab 300 m wird er darum von Hand ausgeblendet; die
+     Position laeuft weiter, sonst springt er beim Naeherkommen.
+
+     ⚠️ WIE VIEL DAS SPART, WEISS ICH NICHT — und der erste Anlauf dieses Kommentars
+     behauptete es trotzdem ("443 Zeichenaufrufe"). Nachgemessen streut
+     `renderer.info` auf DEMSELBEN Stand zwischen zwei Laeufen um bis zu 30 %
+     (Stadtmitte 13 537 gegen 15 251 Aufrufe, Zoo 12 548 gegen 16 391): der LOD-Zustand
+     haengt davon ab, wie lange das Spiel schon laeuft und wo die Kamera vorher war.
+     Jede Zahl, die ich dazu genannt hatte, lag innerhalb dieser Streuung. Das
+     Ausblenden bleibt — weil ein unsichtbarer Wagen nicht gezeichnet werden muss,
+     nicht weil eine Messung es belegt haette. */
+  var _sp=spielerPos();
   verkehr.forEach(function(v){
     if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}
+    /* Solange die Lage des Viertels nicht eingetragen ist, gibt es keine Strasse,
+       auf der dieser Wagen stehen koennte — er bleibt weg statt im Nullpunkt zu parken. */
+    if(v.route.axis==="viertel"&&!v.route.bereit){if(v.mesh.visible)v.mesh.visible=false;return;}
     var _pv=v.pos;
     /* Auf dem Zubringer gilt nicht die feste Routenrichtung, sondern die
        aktuelle Fahrtrichtung des Wagens — er wendet an beiden Enden. */
@@ -4719,7 +4760,7 @@ function updVerkehr(dt){
     /* 🚦 Verkehrsregeln: an Rot/Gelb vor der Haltelinie stehen bleiben UND Abstand zum
        Vordermann halten. Vorher wurde die Position hart auf die Haltelinie geklemmt —
        Autos sprangen dadurch und fuhren ineinander. */
-    if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&ampRed(v.route.axis)){
+    if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&v.route.axis!=="viertel"&&ampRed(v.route.axis)){
       var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?9.5:11;
       for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-rd*off;
         if(rd>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
@@ -4774,7 +4815,9 @@ function updVerkehr(dt){
       v.mesh.position.set(px,v.homeY,pz);
       v.mesh.rotation.y=Math.atan2(-fz,fx);
     }
-    else if(v.route.axis==="x"){
+    /* Eine Viertelstrasse laeuft je nach Viertel in x oder in z — sie verhaelt sich
+       dann genau wie eine Gitterstrasse derselben Richtung. */
+    else if((v.route.axis==="viertel"?v.route.qa:v.route.axis)==="x"){
       /* Rechtsverkehr: wer nach OSTEN faehrt (rd>0), gehoert suedlich der Mitte
          (groesseres z). Nach dem Wenden liegt der Wagen darum auf der anderen Seite. */
       var GX=_strGrenzen(v.route);
@@ -4786,6 +4829,9 @@ function updVerkehr(dt){
       var GZ=_strGrenzen(v.route);
       px=GZ.mitte-rd*GZ.versatz;pz=v.pos;fz=rd;
       v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=rd>0?-Math.PI/2:Math.PI/2;}
+    if(v.route.axis==="viertel"){
+      var _nah=Math.hypot(px-_sp.x,pz-_sp.z)<300;
+      if(v.mesh.visible!==_nah)v.mesh.visible=_nah;}
     if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
       /* 🔴 BREMSLICHT. Gemessen war die Heck-Deckkraft ueber sechs Proben immer 0 —
          die Lichter gab es (26 von 26 Wagen), sie schalteten nur nachts mit und sonst
@@ -6625,6 +6671,29 @@ setTimeout(function baueGebaeude(){
         [["th4_muelleimer.glb",0.9],["lp_parkbank.glb",0.9],["th33_blumenrabatte.glb",0.9],
          ["th4_muelleimer.glb",0.9],["th33_parklaterne.glb",5.4],["lp_parkbank.glb",0.9]]);
     },600);
+    /* 🏘️ VERKEHR AUF DIE VIERTELSTRASSEN. Die Platzhalter-Routen (siehe ROUTEN) tragen
+       nur den Namen des Viertels; erst hier steht fest, WO es tatsaechlich liegt —
+       `viertelOrt()` weicht beim Setzen aus, und der Wunschort aus dem Bauplan war in
+       dieser Datei schon dreimal die falsche Zahl.
+       Die Erschliessungsstrasse ist 9 m breit (SW in `viertel()`), die Spur liegt also
+       2,5 m neben der Mitte — dieselbe Lage wie auf den Querstrassen. Gewendet wird
+       8 m vor dem Viertelrand, damit der Wagen nicht im Gras kehrt. */
+    setTimeout(function viertelVerkehr(){
+      var V=(window._viertelSolver||{}).VIERTEL||[], n=0;
+      (window._ROUTEN||[]).forEach(function(r){
+        if(r.axis!=="viertel"||r.bereit)return;
+        var g=null;for(var i=0;i<V.length;i++)if(V[i].name===r.vn)g=V[i];
+        if(!g)return;                                   /* Viertel hat keinen Platz gefunden */
+        var laenge=g.laengs?g.w:g.d;
+        r.qa=g.laengs?"x":"z";
+        r.c=g.laengs?g.z:g.x;                           /* Mitte der Fahrbahn */
+        r.off=2.5;
+        r.von=(g.laengs?g.x:g.z)-laenge/2+8;
+        r.bis=(g.laengs?g.x:g.z)+laenge/2-8;
+        r.dir=1;
+        r.bereit=true;n++;});
+      window._viertelRouten=n;
+    },1400);
     setTimeout(function parkDeko(){
       /* ⚠️ DER WUNSCHORT IST NICHT DER STANDORT. Hier stand fest `PZ=330` — der
          Wunschort des Viertels. `viertelOrt()` weicht aber aus, und der Freizeitpark
