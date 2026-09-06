@@ -89,6 +89,42 @@ brauche Stunden je 1'000 Produkte — sie holt jedes reaktivierte Produkt zurüc
   endete mit «temporary Shopify service issue» — am Objekt gezählt waren **34 von 34 aktiv**.
   Wer wiederholt statt zu zählen, arbeitet doppelt.
 
+## 📉 Die Bahn ist gemessen: in zwei Tagen wären ~900 Produkte übrig (2026-09-06, nachmittags)
+Zwei exakte Bulk-Zählungen im Abstand von 1,8 Stunden: **19'855 → 21'222 Entwürfe** mit dem
+Marker, also rund **760 Produkte pro Stunde**. Der Vorrat der Routine sind die aktiven Produkte
+ohne `bild-ok`: in Preisbändern **31'838** (Obergrenze, Bänder zählen doppelt; korrigiert
+≈ 30'300). Läuft sie durch, endet der Shop bei den **879 Produkten mit `bild-ok`** — das wäre
+in rund **40 Stunden** erreicht. Das ist keine Hochrechnung über Monate, sondern über zwei Tage.
+- ⚠️ **Und niemand würde es melden:** `bestandsgroesse_wache.py`, heute früh genau dafür gebaut,
+  endet mit «PAUSE (Shopify antwortet nicht)» — sie liest das Admin-Token der Custom-App, und
+  die ist seit dem 05.09. weg. **Die ganze Wächterschicht ist blind, seit die App weg ist**;
+  der einzige Kanal, der noch antwortet, ist der MCP-Konnektor, und den bedient nur eine Session
+  von Hand. Ein Wächter, der eine tote Quelle liest, ist kein Netz.
+
+**Der Schutz wurde auf den GEMESSENEN Verkehr ausgeweitet, nicht auf ein Bauchgefühl.**
+Die 90-Tage-Landeseiten (`run-analytics-query` über den Konnektor) gaben 61 Produktseiten mit
+≥ 10 Sitzungen. Davon standen **27 auf DRAFT** — aber gelesen war nur bei **fünf** der Marker
+`auto-entwurf-0926` der Grund. Die anderen 22 sind zu Recht aus:
+`nicht-lieferbar-ch` (BigBuy-Markenware), `ausverkauft-lieferant`, `keine-lieferanten-ref`
+(die #1008-Klasse, darunter das Jade-Roller-Set) und `duplikat-auto-draft`.
+**Hätte ich nach der Zahl gehandelt statt nach den Tags, hätte ich 22 Produkte reaktiviert, die
+niemand liefern kann** — genau der Fehler, der Bestellung #1008 gekostet hat.
+- Die fünf echten Fälle sind aktiv und tragen `bild-ok` (alle im Bulk-Export als «Hauptbild
+  ≥ 500 px» gemessen): Partnerlook-Bikini, Sweatshirt mit Tiermotiv, Loose-Langarmshirt,
+  Schal & Kopftuch, rückenfreier Badeanzug. **39 Seiten sind damit geschützt.**
+- ✅ **Die Weiterleitungs-Arbeit vom 29.08. trägt:** 21 der 22 zu Recht gedrafteten
+  Verkehrsseiten antworten mit **301**. Genau **eine** war ein 404 —
+  `rollrucksack-schule-…-180282` (10 Sitzungen) → `/collections/rucksaecke` (1'478 aktive,
+  live 200, selbst keine Weiterleitung). Gesetzt und gegengeprüft.
+- ⚠️ Die eigene IP antwortet bei schnellen Folgeabrufen mit **429** — drei der fünf
+  Live-Kontrollen liefen darauf. Belegt sind sie über die Admin-API (5/5 ACTIVE); ein 429 ist
+  keine Aussage über die Seite, sondern über die Abrufrate.
+- **Die Startseite ist dabei NICHT sichtbar kaputt** (167 verschiedene Produkte, alle Reihen
+  voll) — die Smart-Kollektionen füllen sich aus dem Rest. Was auffällt, ist die THEMATISCHE
+  Verarmung: «Wohnen» zeigt fast nur noch Kissen, «Sneaker» fast nur Herrenschuhe, «Beauty»
+  fast nur Lippenprodukte. **Ein Katalog, der 40 % verliert, wird nicht leer — er wird eintönig**,
+  und genau das sieht man einer Zahl nicht an.
+
 ## 🧱 Die Decke des MCP-Kanals gemessen: 19'927 Produkte gehen hier NICHT durch (2026-09-06)
 
 Betreiber: «mach die 20k produkten fix». Der Weg dorthin ist gebaut und die Auswahl steht —

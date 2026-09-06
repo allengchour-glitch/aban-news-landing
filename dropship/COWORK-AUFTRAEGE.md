@@ -64,6 +64,11 @@ mit gemessenem Verkehr tragen jetzt den Tag **`bild-ok`** — genau das Merkmal,
 Routine auswählt. Sie fasst sie deshalb nicht mehr an. Der Tag ist dabei nicht getrickst: für
 alle 34 ist im Bulk-Export gemessen, dass das Hauptbild auf beiden Kanten ≥ 500 px hat.
 
+**Wie schnell es geht — gemessen, nicht geschätzt:** Zwei exakte Zählungen im Abstand von
+1,8 Stunden ergeben **760 Produkte pro Stunde**. Der Vorrat sind rund **30'000** aktive
+Produkte ohne `bild-ok`. Läuft die Routine durch, hat der Shop in etwa **zwei Tagen noch
+rund 900 Produkte**.
+
 **Sag mir A, B oder C — dann setze ich es um.** Ohne dein Wort bleibt es, wie es ist.
 Bei A oder C: bitte zuerst die Routine oben pausieren, sonst arbeiten wir gegeneinander.
 
