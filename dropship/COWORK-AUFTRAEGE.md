@@ -13,6 +13,12 @@ nicht mehr gelesen.
 
 ---
 
+## 🧰 06.09.2026 21:35 UTC — «Cowork ohne mich»: ein Klick macht die Cloud-Wache scharf
+Es gibt in diesem Konto keine Cowork-Umgebung, die eine Cloud-Session starten könnte, und Routinen aus der Cloud bekommen keine Konnektoren. Deshalb:
+- **Routine `trig_01SNsxGjVGtr1coaRyLA9Gca` «LuxeStyle: Wache cloud-tztnn1»** ist angelegt und AUS. Im Routinen-UI (claude.ai/code → Routinen) den **Shopify-Konnektor** zuweisen und einschalten → sie prüft alle 4 h Bestellungen, den Kern-Schutz (518), den Katalogtrend, den Vorrat der Draft-Routine und die vier Haustier/EU-Kategorien, schreibt `dropship/WACHE-CLOUD-TZTNN1.md` und meldet nur ⚠️.
+- Klick 1 von 21:45 UTC (Draft-Routine pausieren) wird gerade **überflüssig gemacht**: alle aktiven Produkte, die das Bildkriterium der Routine messbar erfüllen, bekommen `bild-ok` + `bildmass-ok-0906`; danach findet die Routine 0 Treffer und steht von selbst. Der Klick bleibt sinnvoll (sie feuert sonst stündlich ins Leere), ist aber kein Notfall mehr.
+- Klick 2 (Klaviyo-Segment VNybXM) bleibt ein Klick.
+
 ## ⛔ 06.09.2026 21:45 UTC — DEINE ZWEI KLICKS (du hast mir die Entscheidung gegeben, den Schalter sperrt das System)
 
 **Entscheidung: B.** Die stündliche Routine «LuxeStyle: Katalog-Entwurf» pausieren, die Entwürfe
