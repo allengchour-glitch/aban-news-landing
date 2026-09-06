@@ -5434,10 +5434,38 @@ setTimeout(function baueGebaeude(){
        nicht, ob 0 m oder 120 m ausgewichen wurde. */
     var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD,bauten:[],laengs:laengs,cfg:cfg,wx:cfg.x,wz:cfg.z};VIERTEL.push(g);
     if(window._gpsNachziehen)window._gpsNachziehen();   /* Navigationsraster mitziehen */
-    /* 1) Grundflaeche */
+    /* 1) Grundflaeche
+       ⚠️ DIE TEXTUR WAR DA UND TROTZDEM NICHT ZU SEHEN. `betMat()` liefert eine
+       Betonstruktur, aber mit `repeat` 1x1 — eine 128-Pixel-Kachel ueber 110 bis 330 m
+       ist keine Struktur mehr, sondern eine Farbe. Genau so sahen die Viertel auf der
+       Sichtrunde 67 aus: Zoo und Flughafen als grosse tote graue Flaechen, waehrend
+       die Wiese ringsum (grasTex, Kachel ~11 m) lebt. Der Rasen-Fall hatte gar keine.
+       Jetzt bekommt jeder Boden eine Kachel von rund 7 m — dieselbe Groessenordnung
+       wie Fahrbahn (6 m) und Kurpark-Pflaster.
+
+       ⚠️ UND DIE TEXTUR MUSS GEKLONT WERDEN. `_texBeton` ist ein Singleton, das JEDE
+       Betonflaeche der Welt teilt (betMat gibt allen dieselbe Instanz). Wer `repeat`
+       daran dreht, dreht es an Bordsteinen, Bruecken, Pfeilern und Vorplaetzen mit.
+       Dieselbe Falle wie bei den geteilten Wagen-Materialien (siehe dort). */
     var bodenM=cfg.boden==="platz"?betMat(0xc6c0b2,0.93)
               :cfg.boden==="kies"?betMat(0x9c9384,0.98)
               :new THREE.MeshStandardMaterial({color:0x6ea055,roughness:0.95,envMapIntensity:0.18});
+    (function bodenKachel(){
+      var M=7;                                   /* Meter je Kachel */
+      /* ⚠️ KIES IST KEIN BETON. Der erste Anlauf gab allen dieselbe Betonstruktur —
+         und die hat FUGENLINIEN alle 32 Pixel. Auf dem Zoo-Boden (boden "kies") lagen
+         damit Plattenfugen im Kiesweg, im Bild deutlich als Raster zu sehen. Die
+         Erd-Struktur aus demselben Helfer hat nur Koernung, keine Linien — genau das,
+         was Kies braucht. Beton bleibt den Plaetzen. */
+      var t=(cfg.boden==="rasen")?(typeof grasTex!=="undefined"?grasTex.clone():null)
+           :(cfg.boden==="kies")?_strukTex("erde")
+                                 :(bodenM.map?bodenM.map.clone():null);
+      if(!t)return;
+      t.wrapS=t.wrapT=THREE.RepeatWrapping;
+      t.repeat.set(Math.max(2,Math.round(VW/M)),Math.max(2,Math.round(VD/M)));
+      t.needsUpdate=true;bodenM.map=t;bodenM.needsUpdate=true;
+      if(cfg.boden==="rasen")bodenM.color.setHex(0x9fbf7a);   /* die Grastextur bringt das Gruen mit */
+    })();
     var pl=new THREE.Mesh(new THREE.PlaneGeometry(VW,VD),bodenM);
     pl.rotation.x=-Math.PI/2;pl.position.set(VX,-0.012,VZ);pl.receiveShadow=true;scene.add(pl);
     /* 2) Erschliessungsstrasse laengs durch das Viertel, mit Trottoir beidseits */
