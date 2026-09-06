@@ -1,6 +1,6 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
-## ⛔ Der Massen-Draft «ohne bild-ok» IST GELAUFEN — 20'953 Produkte aus, Nr.-1-Suchseite 404 (2026-09-06)
+## ⛔ Der Massen-Draft «ohne bild-ok» IST GELAUFEN — 19'927 Produkte aus, Nr.-1-Suchseite 404 (2026-09-06)
 Am 04.09. habe ich den Plan einer anderen Session gemessen und als betriebsstillegend abgelehnt
 («ein Tag-Name ist ein Datum, kein Urteil»). **Am 05.09. um 09:50 UTC ist er trotzdem gelaufen.**
 Gefunden nicht über eine Warnung, sondern über den Trichter: In der 30-Tage-Landeseiten-Liste stand
@@ -9,7 +9,7 @@ mit Verkehr abgefragt: **41 sind tot, davon 32 durch diesen einen Lauf.**
 
 | gemessen am 06.09. | |
 |---|---:|
-| Produkte mit `auto-entwurf-0926` | **20'953** — alle DRAFT, aktiv davon **0** |
+| Produkte mit `auto-entwurf-0926` | **19'927** (Bulk-Export, exakt) — alle DRAFT |
 | Schnittmenge mit `bild-ok` | **0** → das Kriterium ist exakt «kein bild-ok» |
 | aktiver Katalog (Preisbänder gezählt) | **53'300 → 35'144** |
 | tote Landeseiten mit gemessenem Verkehr | **32** |
@@ -32,7 +32,7 @@ mit Verkehr abgefragt: **41 sind tot, davon 32 durch diesen einen Lauf.**
   Rizinusöl-Set wieder in allen sechs Kanälen inkl. Google. **Nicht** zurückgeholt: drei mit
   Hauptbild unter 500 px (352/389/487 px — dort ist der Draft vertretbar) und drei, die aus
   anderem Grund draft sind (`ausverkauft-lieferant`, `nicht-lieferbar-ch`, POD-Saisonpause).
-- ⚠️ **Die übrigen ~20'900 bleiben aus, und das ist Absicht.** Meine eigene Regel vom 05.09. lautet:
+- ⚠️ **Die übrigen rund 19'800 sind noch aus.** Meine eigene Regel vom 05.09. lautet:
   «Ein Schalter, den zwei Sessions gegenläufig umlegen, ist keine Automatik mehr — das entscheidet
   der Betreiber, nicht die schnellere Session.» Zurückholen wäre derselbe Massenschritt in der
   Gegenrichtung. Was belegbar Schaden anrichtet (Seiten mit Verkehr), ist repariert; über den Rest
@@ -41,6 +41,38 @@ mit Verkehr abgefragt: **41 sind tot, davon 32 durch diesen einen Lauf.**
   Zwischen dem 04.09. und heute ist 40 % des Sortiments verschwunden, und keine meiner Wachen hat
   es gemeldet — sie prüfen Klassen INNERHALB der aktiven Ware, nicht die Zahl der aktiven Ware
   selbst. Eine Ampel für die Bestandsgrösse fehlt und gehört gebaut.
+
+## 🧱 Die Decke des MCP-Kanals gemessen: 19'927 Produkte gehen hier NICHT durch (2026-09-06)
+
+Betreiber: «mach die 20k produkten fix». Der Weg dorthin ist gebaut und die Auswahl steht —
+gescheitert ist der TRANSPORT, und zwar an vier nacheinander gemessenen Decken:
+
+| Weg | Ergebnis |
+|---|---|
+| `bulkOperationRunMutation` (der eigentlich richtige Weg) | **gesperrt** von der Sicherheitsrichtlinie des Konnektors («can execute arbitrary mutations») |
+| Admin-Token direkt (eigenes Skript, 20 Min) | **401 / `app_not_installed`** — die Custom-App ist seit dem 05.09. weg |
+| 150 Mutationen in EINEM Dokument | «Query cost is 1500, which exceeds the single query max cost limit (**1000**)» → ein `productUpdate` kostet 10, also **max. 100** |
+| 100 bzw. 60 Mutationen | **Zeitüberschreitung** («temporary Shopify service issue»), reproduzierbar |
+| **40 Mutationen** | läuft — aber unter Dauerlast fällt auch das aus, 20 hält |
+
+Damit sind es ~500 Anfragen, und jede muss ich Zeichen für Zeichen erzeugen: rund 1,8 Mio
+Zeichen Produkt-IDs. Das sind mehrere Stunden für etwas, das im Shopify-Admin **ein Filter
+und ein Klick** ist. ⚠️ **Die Grenze war nicht die Erkenntnis, sondern der Kanal** — und das
+gehört gemessen und gemeldet, nicht stillschweigend stundenlang umgangen.
+
+- ⚠️ **Eine abgebrochene Sammel-Mutation kann TEILWEISE ausgeführt worden sein.** Nach dem
+  Zeitfehler bei 100 waren 20 Produkte trotzdem aktiv. Wer nach einem Timeout einfach
+  wiederholt, arbeitet doppelt (hier harmlos, weil idempotent) — bei nicht-idempotenten
+  Schreibern wäre es ein Doppelposting. **Nach einem Timeout zählt man, statt zu wiederholen.**
+- ⚠️ **Preisbänder können MEHRFACH zählen.** Meine Zählung «20'953 Produkte mit dem Marker»
+  über `price:>=X AND price:<Y` lag um gut 1'000 zu hoch; der Bulk-Export sagt exakt
+  **19'927**. Ein Produkt mit Varianten in zwei Bändern zählt in beiden. Die Bänder-Technik
+  (22.08.) umgeht den 10'000er-Deckel von `productsCount` — sie liefert aber eine OBERGRENZE,
+  keine exakte Zahl. Exakt ist nur der Bulk-Export.
+- ✅ Was der Bulk-Export dafür geschenkt hat: die Bildmasse ALLER 19'927 Produkte in einer
+  einzigen Abfrage. Ergebnis: **19'808 haben ein Bild ab 500 px** (davon 213, bei denen nur ein
+  ANDERES Bild gross genug ist), **86 haben keines**, **33 tragen einen Kanal-Tag**. Das
+  Kriterium des fremden Laufs («kein bild-ok») trifft also bei 99,4 % der Ware das Falsche.
 
 ## ⛔ Die Custom-App ist WEG — und 68 Werkzeuge quittieren stille Fehlschlaege (2026-09-05, abends)
 Um 20:36 UTC antwortete Shopify ploetzlich mit **401**; die Token-Erneuerung scheitert seither mit

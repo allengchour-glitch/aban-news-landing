@@ -13,9 +13,9 @@ nicht mehr gelesen.
 
 ---
 
-## ⛔ 06.09.2026 — ENTSCHEIDUNG: 20'900 Produkte sind seit gestern ABGESCHALTET
+## ⛔ 06.09.2026 — ENTSCHEIDUNG: 19'900 Produkte sind seit gestern ABGESCHALTET
 
-Am **05.09. um 09:50 UTC** hat ein Lauf **20'953 Produkte auf Entwurf** gesetzt — alle mit dem Tag
+Am **05.09. um 09:50 UTC** hat ein Lauf **19'927 Produkte auf Entwurf** gesetzt — alle mit dem Tag
 `auto-entwurf-0926`. Kriterium war exakt «Produkt trägt nicht den Tag `bild-ok`».
 **Der aktive Katalog ist damit von rund 53'300 auf 35'144 Produkte gefallen** (in Preisbändern
 gezählt, weil Shopify bei 10'000 deckelt).
@@ -35,14 +35,14 @@ ganzen Shops und das einzige Produkt mit belegtem Suchverkehr.
 - Die toten Produktlinks in den drei Ratgebern mit Suchverkehr repariert.
 
 **Was ICH NICHT entschieden habe — das gehört dir:**
-Die übrigen **rund 20'900 Produkte bleiben aus**. Sie zurückzuholen wäre derselbe Massenschritt in
+Die übrigen **rund 19'800 Produkte sind noch aus**. Sie zurückzuholen wäre derselbe Massenschritt in
 der Gegenrichtung, und zwei Sessions, die denselben Schalter gegenläufig umlegen, sind keine
 Automatik mehr. Drei Wege:
 
 | Weg | Folge |
 |---|---|
 | **A — alles zurück** | Katalog wieder ~53'000. Gefahrlos machbar: die Schnittmenge des Tags mit JEDEM absichtlichen Draft-Grund (Waffen, Medizin, keine Lieferanten-Referenz, nicht CH-lieferbar, ausverkauft, Dubletten) ist **null** — der Lauf hat ausschliesslich Ware erwischt, die vorher bewusst aktiv war. |
-| **B — so lassen** | Kleinerer Katalog. Dann sollten die ~20'900 aber nach einem MESSBAREN Kriterium ausgewählt werden (Bildgrösse, Lieferanten-SKU, CH-lieferbar), nicht nach einem alten Tag. Und jede Seite mit Verkehr braucht eine Weiterleitung, sonst wachsen die 404 weiter. |
+| **B — so lassen** | Kleinerer Katalog. Dann sollten die ~19'800 aber nach einem MESSBAREN Kriterium ausgewählt werden (Bildgrösse, Lieferanten-SKU, CH-lieferbar), nicht nach einem alten Tag. Und jede Seite mit Verkehr braucht eine Weiterleitung, sonst wachsen die 404 weiter. |
 | **C — Mittelweg** | Zurückholen, was ein Hauptbild ab 500 px hat; der Rest bleibt aus. Das ist das Kriterium, das der Lauf eigentlich meinte. |
 
 **Sag mir A, B oder C — dann setze ich es um.** Ohne dein Wort bleibt es, wie es ist.
