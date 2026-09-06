@@ -6388,3 +6388,37 @@ steht** — dann steht er unter dem Dach. Zu Fuss: 3 → 0 von 10. Die Halle ist
 ### Werkzeuge
 - `th-stadtrundgang.mjs` — Bilder, kein Urteil. Anschauen.
 - `th-verdeckung.mjs` — Auto ≥ 92 % frei, Figur ≤ 1/10 verdeckt, Gegenkontrolle ≥ 20 %.
+
+## 2026-09-06 · ✍️ „Cooler, nicht so KI-generiert" — die Handschrift-Runde, Teil 1 (Identität)
+
+Zwei unabhängige Gutachten mit verschiedenen Modellen (`reports/design/spiel-review-opus.md`,
+`…-sonnet.md`), gleiche Bilder, gleicher Auftrag. Ihr gemeinsamer Kern: das Spiel ist technisch
+weit besser, als es aussieht — es fehlt keine Arbeit, sondern eine **Entscheidung**. Gezählt mit
+`th-handschrift.py` (vorher → nachher):
+
+| Muster | vorher | nachher |
+|---|---:|---:|
+| Farbverläufe auf Knöpfen, alle verschieden | 19 | **0** |
+| Farbverläufe im HUD-CSS | 7 | 2 |
+| Knöpfe mit Betriebssystem-Emoji | 41 / 61 | **3** (die Emotes — dort ist Emoji Inhalt) |
+| Fassadenfarben im Zyklus | 8 Pastelle | **4 warme Töne** + Streuung je Haus aus dem Seed |
+| Vignetten übereinander | 2 | 1 |
+
+**Was jetzt gilt:** Bedienung ist Creme auf Tinte oder Tinte auf Creme; **Bernstein bedeutet
+genau eine Handlung je Bild** (Bauen, Los geht's); Orange und Dunkel bleiben Alarm (Nitro,
+Krimi). Ikonen sind 16 Strich-Symbole im `<symbol>`-Sprite in `currentColor` — gleich auf iOS
+und Android. Zahlen und Titel in einer Serife mit `tabular-nums`: Geld, Uhr und Tacho zappeln
+nicht mehr. Ein Licht statt drei Korrekturen: die zweite Vignette ist weg, eine Soft-Light-Schicht
+färbt den Tag bernsteinwarm und die Nacht kaltblau (eine Composite-Schicht, kein Render-Target),
+der Nebel liegt einen Hauch heller und wärmer als der Himmel (Luftperspektive). Juice: Kamera-
+Nicken bei Münze und Erfolg, Brennweite wächst mit dem Tempo (mit Schwelle — `updateProjection-
+Matrix()` nicht jedes Bild), Töne mit 8-ms-Anstieg statt Klicken, der Hinweis federt ein wie der
+Erfolgs-Toast.
+
+**Noch offen (Teil 2/3):** Hinweistexte (142 von 154 beginnen mit Emoji, 73 mit „!"), Ortsnamen
+(„Villen Ost"), Passanten-Sprüche, Erfolgsnamen; Kontaktschatten auf dem Handy als eine
+`InstancedMesh`; Materialdisziplin (`stdMat` ohne `metalness`, 208 Aufrufe).
+
+> **Werkzeug-Falle:** Eine entkoppelte Prüfkette (`nohup setsid … &`) überlebt nur, wenn sie
+> der EINZIGE Befehl im Aufruf ist. Folgt im selben Aufruf noch ein `python3`/`grep`, stirbt
+> die Kette mit dem Aufruf (zweimal gemessen: Log bricht nach der ersten Zeile ab).
