@@ -13,6 +13,22 @@ nicht mehr gelesen.
 
 ---
 
+## ⛔ 06.09.2026 21:45 UTC — DEINE ZWEI KLICKS (du hast mir die Entscheidung gegeben, den Schalter sperrt das System)
+
+**Entscheidung: B.** Die stündliche Routine «LuxeStyle: Katalog-Entwurf» pausieren, die Entwürfe
+stehen lassen, zurückgeholt wird nur nach Messung. Gemessen: 99,4 % der abgeschalteten Produkte
+haben Bilder ab 500 px — das Kriterium der Routine ist falsch; alles zurückholen bringt aber auch
+keinen Verkehr. Ich habe geschützt, was messbar zählt (518 Produkte, Marker `menue-kern-0906`).
+
+1. **Routine pausieren — 1 Klick:** claude.ai → Routinen → «LuxeStyle: Katalog-Entwurf
+   (setzt ungeprüfte Produkte stückweise auf Entwurf)» → aus. Mein Aufruf dazu wurde vom
+   System gesperrt (fremde Routine). Solange sie läuft, verschwinden ~1'000 Produkte pro Stunde;
+   Stand 20:20 UTC waren noch 28'441 aktiv.
+2. **Klaviyo-Karteileichen unterdrücken — 1 Bestätigung:** Segment `VNybXM` (1'480 Adressen
+   `cj-import+…@luxestyle.ch`, von unserem eigenen Bewertungs-Import erfunden, kosten Profile).
+   Klaviyo → Listen & Segmente → Segment → «Alle unterdrücken». Umkehrbar (Unsuppress).
+   Auch dieser Aufruf ist für mich gesperrt.
+
 ## ⛔ 06.09.2026 — ENTSCHEIDUNG: 19'900 Produkte sind seit gestern ABGESCHALTET
 
 Am **05.09. um 09:50 UTC** hat ein Lauf **19'927 Produkte auf Entwurf** gesetzt — alle mit dem Tag

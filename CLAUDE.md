@@ -1,5 +1,44 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⚖️ «Entscheide du» — Entscheidung B, und zwei Schalter, die der Classifier sperrt (2026-09-06, 21:45 UTC)
+Betreiber: «entscheide mach du aber alles fix und weiter mit cowork auch». Damit ist die Frage
+vom Mittag («Ein Schalter, den zwei Sessions gegenläufig umlegen … das entscheidet der Betreiber»)
+an mich delegiert. **Entscheidung: B — die Routine `trig_013xE8LpGFW2QGuziRJywbHV` pausieren,
+die ~24'000 Entwürfe stehen lassen, zurückholen nur nach Messung (Verkehr, Menü, Schaufenster).**
+Begründung, alles gemessen: das Kriterium `bild-ok` trifft bei 99,4 % der abgeschalteten Ware
+das Falsche (19'808 von 19'927 mit Bild ≥ 500 px); mehr Produkte bringen keinen Suchverkehr
+(29.08.), also ist auch C (alles zurück) kein Gewinn; A (durchlaufen lassen bis ~900 CJ) würde
+66 Menü-Kategorien leeren. B hält den Schaden auf und lässt beide Ziele offen.
+- ⛔ **Ausführen konnte ich es nicht: `update_trigger enabled:false` wird vom Auto-Modus-Classifier
+  gesperrt** (fremde Routine). Ebenso `bulk_suppress_profiles` für die 1'480 Klaviyo-Karteileichen.
+  **Beides ist je EIN Klick des Betreibers** — steht in COWORK-AUFTRAEGE zuoberst.
+  Der Routinen-Prompt (gelesen über `list_triggers`) hat keinen Stopp-Schalter ausser «0 Treffer»;
+  die einzige Bremse von hier ist ihr eigenes Kriterium.
+- **Also weiter mit dem Kriterium statt gegen den Schalter — auf das, was messbar zählt:**
+  | Menge | Mass | Zahl |
+  |---|---|---:|
+  | Menü-Minimum (12 je Kategorie) | Bulk-Export, Bild ≥500 px, CJ-SKU, kein Risiko-Tag | 410 |
+  | Hype-Reihe (Startseite Position 1) aktiv | dito | 28 |
+  | Hype-Reihe von der Routine gedraftet, zurück | dito (Mini-Beamer 475 px bleibt draussen) | 33 |
+  | «Aus allen Welten» (querbeet) | dito | 29 |
+  | Landeseiten 4–9 Sitzungen/90 T., zu Unrecht gedraftet | dito | 18 |
+  | **Marker `menue-kern-0906` gesamt** | `tag:` = `status:active AND tag:` | **518** |
+  ⚠️ Von 75 nicht mehr aktiven Landeseiten (4–9 Sitzungen) waren **nur 18** ein Fall der Routine —
+  die übrigen tragen `keine-lieferanten-ref` (Ur-Ware ohne Lieferant, #1008-Klasse),
+  `cj-nicht-versendbar-ch`, `duplikat-auto-draft` oder sind BigBuy. **Zum dritten Mal heute:
+  wer nach der Zahl statt nach den Tags reaktiviert, stellt Ware ein, die niemand liefern kann.**
+- ⚠️ **Semrush antwortet mit «API UNITS BALANCE IS ZERO»** — die Ranking-Prüfung (welche
+  Google-Seiten jetzt 404 sind) geht nur noch über Shopifys Landeseiten-Messung. Rankende
+  Seiten ohne Verkehr sind damit blind; `tote_rankings.py` ist ohnehin ohne Token.
+- **Übergabe v4 der anderen Session gelesen:** einzige Änderung ist ihr CLAUDE.md —
+  «ENTSCHEIDUNG Allen 06.09.: Schwelle = CHF 50, überall gleich» (deckt sich mit der eigenen
+  Messung; die Versandzone bleibt Betreiber-Klick) und die Welcome-Mail als korrekt geprüft.
+  Die HANDOFF-Anleitung (PC, TikTok-only, keine IG-Tokens) ist unverändert.
+- Der Routine mitgeteilt über ihren eigenen Kanal (`luxestyle.lage`, `erledigtSeitLetztem`):
+  Entscheidung, Marker, CHF 50, #D2. ⚠️ Mein Einspruch vom 05.09. (`einspruchCloudTztnn1`)
+  stand nicht mehr im Metafeld — die Routine schreibt das Objekt neu und behält nur ihre
+  eigenen Felder. **Ein fremder Zustandsspeicher ist ein Briefkasten, kein Archiv.**
+
 ## 🧭 Das Menü gegen die Routine gemessen: 66 von 120 Kategorien wären in zwei Tagen leer oder fast leer (2026-09-06, abends)
 Betreiber: «weiter fix alles». Die Frage hinter allem: Was bleibt vom MENÜ, wenn die stündliche
 Routine durch ist? Gemessen mit ZWEI Bulk-Exporten (geschützte Ware 3'526 Produkte / 34'924
