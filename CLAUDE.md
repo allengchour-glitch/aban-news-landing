@@ -102,6 +102,47 @@ Schluessel IST dieses Token (Lehre 30.08.).
   und ist kein Ersatz fuer den Betrieb. Die App wieder zu installieren bzw. den Zugang neu
   auszustellen ist eine Betreiber-Handlung im Shopify-Admin.
 
+## 🎬 Ein TikTok des Betreibers ist LESBAR — die Auto-Untertitel liegen im HTML (2026-09-06)
+Betreiber schickte `vm.tiktok.com/ZN8YcrmwG` mit «setze das um». Das Gedächtnis sagte bisher:
+TikTok rendert clientseitig, von hier nicht lesbar. **Für das VIDEO stimmt das nicht mehr.**
+Der Weg, in vier Schritten und ohne Anmeldung:
+1. Kurzlink auflösen: `curl -o /dev/null -w '%{redirect_url}'` → `@denizdeke/video/7675016774584110343`.
+2. `tiktok.com/oembed?url=…` gibt Titel und Kanal (Caption = Titel, mehr nicht).
+3. **Die Videoseite mit Browser-Kennung holen** — sie kommt serverseitig mit 422 KB.
+   Darin steht `"claInfo":{…"captionInfos":[{"language":"deu-DE","url":"…","captionFormat":"webvtt"}]}`.
+4. Diese URL mit `Referer: https://www.tiktok.com/` laden → **fertige WebVTT-Untertitel**,
+   also der komplette gesprochene Text. ⚠️ Die URL trägt ein `expire` (~24 h) — sofort holen.
+**Damit ist ein TikTok-Link des Betreibers eine Quelle, kein Rätsel.** Vorher hätte ich raten
+oder nachfragen müssen; das Cover half nicht (es zeigt nur den Hook «Das Geheimnis von Claude:»).
+- **Inhalt des Videos, wörtlich aus den Untertiteln:** fünf Claude-Skills fürs Design —
+  (1) **frontend-design** (von Anthropic, entscheidet Design anhand der Brand),
+  (2) **impeccable** (verkettet Skills: erst Branding, dann Vorschläge, Kritik, Ausarbeitung),
+  (3) **UI UX Pro Max** (professionelle Frameworks),
+  (4) **Emil Kowalskis Design-Skill** (Animation und Bewegung),
+  (5) **Taste** (zieht Referenzen aus dem Netz).
+- **Was davon HIER wirklich da ist, gemessen statt behauptet:** `ListSkills` zeigt u.a.
+  `canvas-design`, `theme-factory`, `web-artifacts-builder`, `brand-guidelines`; das Plugin
+  **«Design»** (design-critique, design-system, ux-copy, accessibility-review) ist im Konto
+  aktiviert — **seine Skills sind in dieser Session aber nicht ladbar** (`Unknown skill:
+  design:design-critique`). Die vier genannten Fremd-Skills (impeccable, UI UX Pro Max,
+  Kowalski, Taste) stehen in keinem Katalog dieses Kontos. **Ein Skill, den man nicht laden
+  kann, ist kein Werkzeug** — installieren kann sie nur der Betreiber.
+- **Also das Prinzip angewandt statt den Namen:** Die drei Vertrauensseiten liefen im selben
+  Design-System (`No. 001 Über uns`, `No. 003 Versand`) — **`garantie` war als einzige völlig
+  ungestaltet** (nackte `<h1>`/`<table>`), also genau die Seite, die vor dem Kauf über
+  Vertrauen entscheidet. Jetzt `No. 002` in derselben Sprache (Cormorant-Überschriften,
+  cremefarbene Kästen, dunkler Ablauf-Block, gestaltete Kostentabelle) — **Inhalt Wort für
+  Wort unverändert**, nur die Form. Live gegengeprüft (11× Cormorant, vorher 0).
+- ⚠️ **Und dabei fiel eine falsche Zusage auf:** «Sofort nach Bestellabsendung bekommst du eine
+  **Tracking-Nummer** per Email» — falsch. Shopify schickt sofort die BESTELLBESTÄTIGUNG; die
+  Sendungsnummer kommt mit der Versandmail, bei Direktversand aus Asien also Tage später (der
+  Bestell-Automat benachrichtigt bewusst erst bei `SHIPPED`, Lehre 22.08.). Die Seite
+  `/pages/tracking` sagt es seit jeher richtig — **zwei Seiten, zwei Wahrheiten**, und die
+  falsche stand auf der, die im Footer verlinkt ist. Korrigiert und live belegt.
+- ⚠️ Theme-Schreibzugriffe sind über MCP gesperrt (Live-Theme) und das Admin-Token ist tot —
+  gestaltbar war also nur, was in einer SEITE steht. Das ist die Grenze dieser Arbeit heute,
+  nicht ihr Umfang.
+
 ## ⛔ KORREKTUR: Der «tote» Kategorie-Link war ein UMWEG — 301 ist kein 404 (2026-09-05/06)
 Ich hatte gestern Abend an der «Sport-Sonnenbrille «Velo»» den Querverweis
 `/collections/sonnenbrillen-eyewear` gefunden — eine Kollektion, die nur in **Inbox** und
