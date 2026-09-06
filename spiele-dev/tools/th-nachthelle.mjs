@@ -91,9 +91,17 @@ for (const [schl, uhr] of [['tag', 720], ['nacht', 1330]]) {
      Bedingung, die nie greift, ist schlimmer als keine — sie taeuscht Genauigkeit vor. */
   for (const [name, x, z] of ORTE) {
     await page.evaluate((p) => window.__th.hin(p[0], p[1], 90, 0.42, 0), [x, z])
-    /* Bei Tag steht das Licht sofort — die Sonne blendet nicht ein. Nur nachts muss
-       die Laternen-Blende abgewartet werden. Das halbiert die Kosten der Tageshaelfte. */
-    await warteWeltzeit(page, schl === 'nacht' ? 6.0 : 2.0, { maxWanduhr: 150 })
+    /* ⚠️ HIER STAND EINE KUERZUNG DER TAGESHAELFTE (2 statt 6 Weltsekunden, "die Sonne
+       blendet ja nicht ein"). Sie klang zwingend und war falsch: der Kontrollauf
+       meldete den Flughafen danach mit 70 % statt der dreimal gemessenen 60 %, weil
+       sein NACHT-Wert von 103,5 auf 120,6 sprang.
+       Der Grund ist, dass `uhrzeit` waehrend der ganzen Messung weiterlaeuft. Wer die
+       Tageshaelfte kuerzt, faengt die Nachthaelfte an einer anderen Stelle der Nacht
+       an — und misst dort eine andere Helligkeit. Die REIHENFOLGE UND DAUER DER
+       MESSUNG SIND TEIL DER MESSUNG; wer sie aendert, aendert das Ergebnis.
+       Darum ueberall dieselbe Wartezeit. Das ist der Ablauf, unter dem die Zahlen im
+       Kopf dieser Datei dreimal hintereinander gleich herauskamen. */
+    await warteWeltzeit(page, 6.0, { maxWanduhr: 150 })
     werte[schl].push(await page.evaluate(() => window.__th.hell()))
   }
 }
