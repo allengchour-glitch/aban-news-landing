@@ -102,6 +102,32 @@ Schluessel IST dieses Token (Lehre 30.08.).
   und ist kein Ersatz fuer den Betrieb. Die App wieder zu installieren bzw. den Zugang neu
   auszustellen ist eine Betreiber-Handlung im Shopify-Admin.
 
+## 🕳️ Ein Kategorie-Link im PRODUKTTEXT führte ins 404 — eine blinde Klasse (2026-09-05, abends)
+Beim Lesen eines Produkttextes (MCP, weil das Admin-Token tot ist) fiel an der
+«Sport-Sonnenbrille «Velo»» der Schlusslink auf: `/collections/sonnenbrillen-eyewear` — eine
+Kollektion, die nur in **Inbox** und **Point of Sale** publiziert ist, im Onlineshop also nicht
+existiert. Für die Kundin ein 404 mitten im Kaufweg, gesetzt vom Querverweis-Baustein der
+Importer («👉 Passt dazu: …»).
+- **Warum es niemand gemeldet hat:** `tote_kollektionslinks.py` liest **Seiten und Artikel** —
+  Produkte prüft es nicht (nachgezählt: 0). Und eine billige Inhalts-Suche kann es nicht
+  ersetzen: `productsCount(query:"status:active AND \"sonnenbrillen-eyewear\"")` gibt **0**,
+  obwohl ein bekannt-positives Produkt existiert — **Shopifys Produktsuche indexiert URLs im
+  `descriptionHtml` nicht** (dieselbe Beobachtung wie am 04.09. beim Datei-Aufräumer).
+  Ein Nullergebnis aus einer Suche, die das Feld gar nicht kennt, ist kein Beleg.
+- **Deshalb gehört die Prüfung in den Volltext-Scan, der ohnehin JEDEN Produkttext liest:**
+  neue Klasse «Toter Kategorie-Link im Produkttext» in `klassen_kontrolle.py`. Sie lädt EINMAL
+  die im Onlineshop veröffentlichten Handles plus alle `urlRedirects`-Pfade; scheitert die
+  Abfrage, bleibt die Menge leer und die Klasse meldet **nichts** — ein Melder, der bei
+  kaputter Quelle Alarm schlägt, meldet den ganzen Katalog. In 7 Richtungen offline geprüft
+  (Treffer, Gegenfall, 301-Ziel, `all`, leere Menge, kein Link, mehrere Links).
+- **`sonnenbrillen-eyewear` bleibt bewusst UNVERÖFFENTLICHT** — sie ist der Doppelgänger von
+  `sonnenbrillen-damen`/`-herren` (Lehre 11.08.: zwei Verzeichnisse sind eines zu viel).
+  Der Link zeigt jetzt auf `sonnenbrillen-alle` (im Onlineshop, 36 aktive — mit
+  Gegenprobe `price:<0.01` = 0 belegt, dass der Filter wirklich wirkt).
+- **Regel: Ein Wächter deckt genau die Objektart ab, die er liest.** «Tote Links» hiess hier
+  seit dem 20.08. «tote Links in Seiten und Artikeln» — die grösste Objektart des Shops kam
+  darin nie vor. Wer eine Klasse für erledigt hält, prüft zuerst, WORÜBER der Wächter läuft.
+
 ## ⭐ «Bewertungen machen»: der tägliche Import suchte an der falschen Stelle (2026-09-05)
 Betreiber: «bewertungen machen». **Nie erfundene Bewertungen** — der einzige zulässige Weg ist der
 Import echter CJ-Kundenkommentare (≥4★, ins Deutsche übersetzt) über `cj_reviews_import.mjs`.

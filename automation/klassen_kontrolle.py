@@ -117,7 +117,72 @@ def mess_echt(titel, html):
     return False
 
 
+# ── Kollektionslinks im PRODUKTtext (05.09.2026) ────────────────────────────────────────
+# WARUM HIER: `tote_kollektionslinks.py` liest nur Seiten und Artikel — Kategorie-Links in
+# PRODUKTtexten waren damit eine blinde Klasse. Gefunden an der Sport-Sonnenbrille «Velo»,
+# die auf `/collections/sonnenbrillen-eyewear` zeigt; die Kollektion ist nur in Inbox und
+# Point of Sale publiziert, fuer Kundinnen also ein 404.
+# WARUM NICHT PER SUCHE: Gegengeprueft am bekannten Fall — `productsCount(query:"...
+# sonnenbrillen-eyewear")` liefert 0, obwohl das Produkt den Handle traegt. Die Produktsuche
+# indexiert `descriptionHtml`-URLs nicht (Lehre 04.09.). Es geht also nur beim LESEN aller
+# Texte — und genau das tut dieser Vollscan ohnehin, deshalb haengt die Klasse hier.
+KOLL_LINK_RE = re.compile(r'/collections/([a-z0-9][a-z0-9-]*)')
+_KOLL_OK = set()          # im Onlineshop veroeffentlicht ODER per 301 sauber abgeloest
+_KOLL_GELADEN = [False]
+
+
+def _koll_laden():
+    """Laedt EINMAL die brauchbaren Kollektions-Handles. Scheitert es, bleibt die Menge leer
+    und die Klasse meldet NICHTS — ein Nullergebnis aus einer kaputten Abfrage ist kein Befund."""
+    if _KOLL_GELADEN[0]:
+        return
+    _KOLL_GELADEN[0] = True
+    try:
+        cur = None
+        while True:
+            r = gql('query($c:String){collections(first:250,after:$c,query:"published_status:published")'
+                    '{pageInfo{hasNextPage endCursor} nodes{handle}}}', {'c': cur})
+            p = (r or {}).get('collections') or {}
+            if not p:
+                _KOLL_OK.clear(); return
+            for n in p['nodes']:
+                _KOLL_OK.add(n['handle'])
+            if not p['pageInfo']['hasNextPage']:
+                break
+            cur = p['pageInfo']['endCursor']
+        cur = None
+        while True:
+            r = gql('query($c:String){urlRedirects(first:250,after:$c)'
+                    '{pageInfo{hasNextPage endCursor} nodes{path}}}', {'c': cur})
+            p = (r or {}).get('urlRedirects') or {}
+            if not p:
+                break
+            for n in p['nodes']:
+                m = re.match(r'^/collections/([a-z0-9][a-z0-9-]*)$', n.get('path') or '')
+                if m:
+                    _KOLL_OK.add(m.group(1))
+            if not p['pageInfo']['hasNextPage']:
+                break
+            cur = p['pageInfo']['endCursor']
+        _KOLL_OK.add('all')            # Shopifys eingebaute Route
+    except Exception:
+        _KOLL_OK.clear()
+
+
+def toter_kolllink(html):
+    _koll_laden()
+    if not _KOLL_OK:                   # Abfrage gescheitert → NICHTS melden
+        return False
+    return any(h not in _KOLL_OK for h in set(KOLL_LINK_RE.findall(html or '')))
+
+
 KLASSEN = [
+    ('Toter Kategorie-Link im Produkttext', 'text',
+     'Der Text zeigt auf eine Kollektion, die weder im Onlineshop steht noch eine 301 hat — '
+     'fuer die Kundin ein 404 mitten im Kaufweg. `tote_kollektionslinks.py` liest nur Seiten '
+     'und Artikel, deshalb war das eine blinde Klasse (gefunden 05.09. an der Sonnenbrille «Velo»).',
+     'von Hand — Link umbiegen oder Kollektion veroeffentlichen; kein Massenlauf',
+     lambda t, h, tg, vc: toter_kolllink(h)),
     ('USA-Lieferzusage im Text', 'text',
      'Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).',
      'automation/versandaussagen_wahrheit.py  (QUELLE=live IGNORIERE_LEDGER=1)',
