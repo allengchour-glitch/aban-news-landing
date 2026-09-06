@@ -83,6 +83,14 @@ canvas{display:block}
   /* Bau-Werkzeuge (Drehen/Abreissen): die Spalte endete oben bei 42 und lag damit 10 px
      in der Kopfzeile — 23 % des Dreh-Knopfs unter dem Stufen-Feld (th-hud, 844x390). */
   #tools{bottom:calc(232px + env(safe-area-inset-bottom)) !important}
+  /* Die acht Aktions-Knoepfe (Ansprechen, Laden, Werkstatt, Markthalle, Kirche, Bahn,
+     Fahrgeschaeft, Coup) sassen bei bottom 190 — auf 390 px Hoehe ist das die Bildmitte,
+     also genau auf der eigenen Figur (th-stadtrundgang, Marktplatz und Park: Knopf auf
+     dem Spieler). Jetzt am unteren Rand ueber dem Joystick-Band; Strassenmusik und
+     Growbox eine Stufe darueber, weil sie gleichzeitig mit einem der acht auftreten
+     koennen. */
+  #npcBtn,#shopBtn,#werkBtn,#markthalleBtn,#kircheBtn,#coasterBtn,#fahrtBtn,#coupBtn{bottom:calc(74px + env(safe-area-inset-bottom)) !important}
+  #buskBtn,#growBtn{bottom:calc(126px + env(safe-area-inset-bottom)) !important}
   /* Tacho: stand bottom 74 in der Mitte — exakt unter dem Hinweistext (#hint, bottom 76,
      z 21). Jeder Hinweis waehrend der Fahrt (Einsteigen, Airtime, Muenze) deckte ihn zu
      (Bild 5: kein Tacho zu sehen). Jetzt rechts neben "Aussteigen" am unteren Rand. */
@@ -13704,6 +13712,78 @@ function steerMove(s9,sv,dt,sprint){
   if(inSolid(s9.x,nz))nz=s9.z;
   s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9*(sprint?1.5:1);}
 // Folge-Kamera: beim aktiven Steuern schneller + leicht vorausschauend (fühlt sich flott an)
+/* 🌳 VERDECKER AUSBLENDEN. Gemessen (th-verdeckung, 4 Strassen x 300 Bilder): das Auto war
+   in 38 % der Bilder hinter etwas versteckt — und zwar fast nie hinter Haeusern, sondern
+   hinter BAUMKRONEN (Cone/Sphere, 2–3 m hoch) am Strassenrand zwischen Kamera und Wagen;
+   zu Fuss an 3 von 10 Orten. Steilere Kamera half nicht (31 % bei camB 1,15). Darum das
+   uebliche Mittel: was auf der Sichtlinie Kamera → Spieler liegt und krone-artig ist
+   (1–5,5 m hoch, schwebt ueber 0,8 m, hoechstens 14 m breit — also auch Vordaecher und
+   die Markthallen-Segmente, unter denen man sonst verschwindet), wird durchsichtig, bis
+   es wieder frei ist. Nur jedes dritte Bild, nur Kandidaten nahe der Sichtlinie
+   (Kugel-gegen-Strecke), Materialien werden je Netz einmal geklont — geteilte Materialien
+   (_matVereinheitlichen) bleiben unberuehrt. Liste alle 20 s neu (die Welt waechst nach). */
+var _vdListe=[],_vdGross=[],_vdNext=0,_vdTick=0,_vdAktiv=[],_vdRay=null,_vdBauten=0,_vdFertigGesehen=false;
+function _vdAufbau(){var L=[],G=[],ac=window.autoRec&&window.autoRec.mesh,me=sims[0]&&sims[0].mesh;
+  /* ⚠️ NICHT nach `visible` filtern: das LOD blendet ferne Objekte aus, die Liste entstand
+     am Startpunkt — die Kronen an der Suedstrasse fehlten darin, und die Ausblendung
+     wirkte gar nicht (gemessen: 34 % statt 38 %, also Rauschen). Sichtbarkeit wird beim
+     Strahl geprueft, nicht beim Sammeln. */
+  scene.traverse(function(o){if(!o.isMesh||o.isInstancedMesh||o.isSprite||!o.geometry)return;
+    for(var p=o;p;p=p.parent){if(p===ac||p===me)return;if(p.userData&&(p.userData._bewegt||p.userData.nieAusblenden))return;}
+    var bb=new THREE.Box3().setFromObject(o);if(!isFinite(bb.min.y)||!isFinite(bb.max.y))return;
+    var h=bb.max.y-bb.min.y,w=Math.max(bb.max.x-bb.min.x,bb.max.z-bb.min.z);
+    /* Kronen: bis 14 m breit. Daecher und Zeltkegel: breiter, aber hoch oben (ab 5 m) —
+       gemessen war der haeufigste Rest-Verdecker ein 21 m breiter Kegel bei 7,2 m Hoehe
+       (40 von 51 Treffern), und die Markthallen-Segmente sind 25 m lang. */
+    o.userData._vdC=bb.getCenter(new THREE.Vector3());o.userData._vdR=bb.getSize(new THREE.Vector3()).length()/2;
+    /* Grosse Bauten (Hallenkoerper, Zeltdaecher, Vordaecher mit Waenden): nur ausblenden,
+       wenn der Spieler IN ihrer Grundflaeche steht — dann steht er unter dem Dach. Gemessen:
+       die Markthalle ist ein Netz „Cube002", 6,3 m hoch, 20 m breit, ab 0,9 m; die Kamera
+       sah nur das Dach. */
+    if(h>=3&&(h>5.5||w>14)&&!(bb.min.y>=5&&w<=40&&h<=5.5)){o.userData._vdBB=bb;G.push(o);return;}
+    if(h<1||h>5.5||bb.min.y<0.8)return;
+    if(w>14&&!(bb.min.y>=5&&w<=40))return;
+    L.push(o);});
+  _vdListe=L;_vdGross=G;}
+function _vdFrei(o){if(o._vdMat){var k=o.material;o.material=o._vdMat;o._vdMat=null;if(k&&k.dispose)k.dispose();}}
+function _vdAlleFrei(){for(var i=0;i<_vdAktiv.length;i++)_vdFrei(_vdAktiv[i]);_vdAktiv=[];}
+function updVerdecker(){
+  if(!running||buildMode||egoMode||window._vdAus){if(_vdAktiv.length)_vdAlleFrei();return;}
+  /* ⚠️ Der Aufbau kostet 56 ms (65 000 Objekte durchlaufen) — alle 20 s waere das ein
+     Aussetzer, genau die Sorte, die die LOD-Runde am 31.08. schon einmal selbst eingebaut
+     hatte. Darum hoechstens dreimal: beim Start, wenn die letzte Ladung durch ist
+     (_ladeOffen === 0), und 30 s danach fuer den spaeten Umbau. Danach nie wieder. */
+  var now=performance.now();
+  if(_vdBauten===0||(!_vdFertigGesehen&&window._ladeOffen===0)||(_vdBauten===2&&now>_vdNext)){
+    if(_vdBauten===1||(_vdBauten===0&&window._ladeOffen===0))_vdFertigGesehen=true;
+    if(_vdBauten<3){_vdAufbau();_vdBauten++;_vdNext=now+30000;}}
+  if((++_vdTick)%3)return;
+  var zx,zz,zy,a=fahren&&(driveCar||window.autoRec);
+  if(a){zx=a.mesh.position.x;zz=a.mesh.position.z;zy=a.mesh.position.y+0.8;}
+  else{var me=sims[meinSi()]||sims[0];if(!me||!me.mesh){_vdAlleFrei();return;}zx=me.x;zz=me.z;zy=me.mesh.position.y+1.0;}
+  var von=camera.position,dir=new THREE.Vector3(zx,zy,zz).sub(von),d=dir.length();dir.normalize();
+  var nah=[],q=new THREE.Vector3();
+  for(var i=0;i<_vdListe.length;i++){var o=_vdListe[i],c=o.userData._vdC;
+    if(!o.visible||Math.abs(c.x-zx)>45||Math.abs(c.z-zz)>45)continue;
+    var t=q.copy(c).sub(von).dot(dir);if(t<0||t>d)continue;
+    q.copy(von).addScaledVector(dir,t);if(q.distanceTo(c)<=o.userData._vdR)nah.push(o);}
+  /* Grosse Bauten in zwei Sorten: HOCH OBEN (Unterkante ab 3 m — Dachsegmente, Vordaecher,
+     Bruecken) wie Kronen per Sichtlinie pruefen: die Markthalle ist NICHT ein Netz, sondern
+     drei Zylinder-Segmente je 12 m; die Figur stand unter dem einen, die Kamera sah durch die
+     zwei anderen (gemessen: Treffer bei 14, 16, 21 m, alle in der Liste, keins in der
+     Grundflaeche der Figur). AM BODEN (Waende) nur, wenn die Figur in der Grundflaeche steht. */
+  for(var g=0;g<_vdGross.length;g++){var og=_vdGross[g],b3=og.userData._vdBB;if(!og.visible)continue;
+    if(b3.min.y>=3){var cg=og.userData._vdC;if(Math.abs(cg.x-zx)>60||Math.abs(cg.z-zz)>60)continue;
+      var tg=q.copy(cg).sub(von).dot(dir);if(tg<0||tg>d)continue;q.copy(von).addScaledVector(dir,tg);if(q.distanceTo(cg)<=og.userData._vdR)nah.push(og);}
+    else if(zx>=b3.min.x&&zx<=b3.max.x&&zz>=b3.min.z&&zz<=b3.max.z&&zy<b3.max.y)nah.push(og);}
+  var treffer={};
+  if(nah.length){if(!_vdRay)_vdRay=new THREE.Raycaster();_vdRay.set(von,dir);_vdRay.near=0;_vdRay.far=Math.max(0,d-0.8);
+    var hs=_vdRay.intersectObjects(nah,false);for(var j=0;j<hs.length;j++)treffer[hs[j].object.id]=hs[j].object;}
+  var bleibt=[];
+  for(var k=0;k<_vdAktiv.length;k++){var ak=_vdAktiv[k];if(treffer[ak.id]){bleibt.push(ak);delete treffer[ak.id];}else _vdFrei(ak);}
+  for(var id in treffer){var o2=treffer[id];if(!o2._vdMat){o2._vdMat=o2.material;var m2=o2.material.clone();m2.transparent=true;m2.opacity=0.22;m2.depthWrite=false;o2.material=m2;}bleibt.push(o2);}
+  _vdAktiv=bleibt;}
+
 var _eigenRing=null,_eigenRingDunkel=null,_eigenRingT=0;
 function updEigenRing(dt){
   /* 👤 WER BIN ICH? Auf dem Startbild (844x390) stehen vier aehnliche Figuren am
@@ -15341,7 +15421,7 @@ function loop(now){
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
-    updEigenRing(dt);updFollow(dt);updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
+    updEigenRing(dt);updFollow(dt);updVerdecker();updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
     updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();tragBtnUpd();
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
