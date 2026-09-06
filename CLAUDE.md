@@ -1,5 +1,47 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⛔ Der Massen-Draft «ohne bild-ok» IST GELAUFEN — 20'953 Produkte aus, Nr.-1-Suchseite 404 (2026-09-06)
+Am 04.09. habe ich den Plan einer anderen Session gemessen und als betriebsstillegend abgelehnt
+(«ein Tag-Name ist ein Datum, kein Urteil»). **Am 05.09. um 09:50 UTC ist er trotzdem gelaufen.**
+Gefunden nicht über eine Warnung, sondern über den Trichter: In der 30-Tage-Landeseiten-Liste stand
+`/products/xl-strandtuch-…` mit `de-de`-Präfix — beide Formen 404. Von da aus alle 250 Landeseiten
+mit Verkehr abgefragt: **41 sind tot, davon 32 durch diesen einen Lauf.**
+
+| gemessen am 06.09. | |
+|---|---:|
+| Produkte mit `auto-entwurf-0926` | **20'953** — alle DRAFT, aktiv davon **0** |
+| Schnittmenge mit `bild-ok` | **0** → das Kriterium ist exakt «kein bild-ok» |
+| aktiver Katalog (Preisbänder gezählt) | **53'300 → 35'144** |
+| tote Landeseiten mit gemessenem Verkehr | **32** |
+
+- ⛔ **Darunter das Rizinusöl-Wickel-Set** — die grösste PRODUKT-Landeseite des Shops (53 Sitzungen
+  in 60 Tagen), Ziel meines eigenen Ratgebers, und das einzige Produkt mit belegtem Suchverkehr.
+  Genau das Beispiel, mit dem ich am 04.09. begründet habe, warum das Kriterium falsch ist.
+- **Und die Stichprobe belegt es an echten Objekten:** die 32 wiederhergestellten Produkte haben
+  **5 bis 23 Bilder** und Hauptbilder von **800×800 bis 1920×1920** — sie tragen `bild-ok` nur
+  deshalb nicht, weil sie NACH dem Frühjahrslauf vom 16.06. importiert wurden. Der Tag ist
+  gegenläufig zur Qualität, nicht ein Mass dafür.
+- ✅ **Der Lauf hat NICHTS Absichtliches erwischt:** Schnittmenge mit `waffengesetz-verboten`,
+  `waffe-pruefen`, `medizinprodukt-pruefen`, `heilaussage-pruefen`, `keine-lieferanten-ref`,
+  `nicht-lieferbar-ch`, `cj-nicht-versendbar-ch`, `ausverkauft-lieferant`, `duplikat-auto-draft`,
+  `cj-abgekuendigt`, `marge-verlust-draft`, `bb-versand-unrentabel` = **je 0**. Er hat
+  ausschliesslich Ware abgeschaltet, die vorher bewusst aktiv war. Damit ist der Tag
+  `auto-entwurf-0926` eine saubere Rückgängig-Marke — die Warnung vom 04.09. («Rückgängig
+  aktiviert 23'181 absichtlich gedraftete Produkte») gilt für den Admin-Filter-Weg, NICHT für diese.
+- **Zurückgeholt habe ich genau 32: die mit gemessenem Verkehr.** Alle live 200, Tag entfernt,
+  Rizinusöl-Set wieder in allen sechs Kanälen inkl. Google. **Nicht** zurückgeholt: drei mit
+  Hauptbild unter 500 px (352/389/487 px — dort ist der Draft vertretbar) und drei, die aus
+  anderem Grund draft sind (`ausverkauft-lieferant`, `nicht-lieferbar-ch`, POD-Saisonpause).
+- ⚠️ **Die übrigen ~20'900 bleiben aus, und das ist Absicht.** Meine eigene Regel vom 05.09. lautet:
+  «Ein Schalter, den zwei Sessions gegenläufig umlegen, ist keine Automatik mehr — das entscheidet
+  der Betreiber, nicht die schnellere Session.» Zurückholen wäre derselbe Massenschritt in der
+  Gegenrichtung. Was belegbar Schaden anrichtet (Seiten mit Verkehr), ist repariert; über den Rest
+  entscheidet der Betreiber — mit der Messung daneben.
+- **Die Lehre über den Fall hinaus: Ein Katalog-Zustand gehört gemessen, nicht vorausgesetzt.**
+  Zwischen dem 04.09. und heute ist 40 % des Sortiments verschwunden, und keine meiner Wachen hat
+  es gemeldet — sie prüfen Klassen INNERHALB der aktiven Ware, nicht die Zahl der aktiven Ware
+  selbst. Eine Ampel für die Bestandsgrösse fehlt und gehört gebaut.
+
 ## ⛔ Die Custom-App ist WEG — und 68 Werkzeuge quittieren stille Fehlschlaege (2026-09-05, abends)
 Um 20:36 UTC antwortete Shopify ploetzlich mit **401**; die Token-Erneuerung scheitert seither mit
 **`400 app_not_installed`** (zweimal gemessen, kein Aussetzer). Damit ist der Zugang der Custom-App
