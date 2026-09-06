@@ -1,0 +1,19 @@
+{
+ "zeit": "2026-08-29 16:22:23",
+ "zeit_utc": "2026-08-29T14:22:23Z",
+ "hinweise": [],
+ "fassung": "568d9a6",
+ "schritte": 2,
+ "gleiche_ansicht": 0,
+ "unbekannt_am_stueck": 0,
+ "zaehler": {
+  "task:kalibrieren": 1,
+  "task:lebenszeichen": 1
+ },
+ "vorlagen_offen": 31,
+ "vorlagen_veraltet": [],
+ "verworfene_vorlagen": [],
+ "verdaechtige_regeln": {},
+ "schwellen_belege": {},
+ "bild": "austausch/lauf.png"
+}
