@@ -72,6 +72,37 @@ rund 900 Produkte**.
 **Sag mir A, B oder C — dann setze ich es um.** Ohne dein Wort bleibt es, wie es ist.
 Bei A oder C: bitte zuerst die Routine oben pausieren, sonst arbeiten wir gegeneinander.
 
+## 🔁 06.09.2026 — Zwei Routinen mit Fakten von Mai (nur du kannst sie ändern)
+> Beide wurden über die Web-Oberfläche angelegt (`created_via: http_api`) — kein Agent darf
+> sie bearbeiten, ich habe es versucht. Die andere Session hat dasselbe festgestellt
+> (`routinen-korrektur.md` im Übergabe-Paket). Öffne die Routine, ersetze NUR die genannten
+> Stellen, lass den Discord-Webhook stehen (und rotiere ihn bei Gelegenheit — er steht in
+> beiden Routinen im Klartext).
+>
+> ⚠️ Zwei Stellen weichen bewusst von `routinen-korrektur.md` ab: **«Gratis-Versand real ab
+> CHF 45»** ist die Regel NACH Rabatt (45 = 50 × 0,9, Absicht seit 20.08.); die einzige
+> Zahl, die in jedem Korb wahr ist, ist **ab CHF 50** — so steht sie überall im Shop. Und die
+> Produktzahl ändert sich stündlich — deshalb keine Zahl in die Routine schreiben.
+>
+> **A · «Email-Check alle 2h» (`trig_01KAnvaXU7rbVVBbaUqrg6ci`)** — hier geht es um
+> Kundenmails, die sonst ohne Entwurf durchrutschen (Saud, #1016, passte auf kein Muster):
+>
+> 1. Kategorie KUNDE-LUXESTYLE, alt: `(echte Kunden-Anfragen via aban-192.myshopify.com oder luxestyle.com.co — Order-Status, Versand, Refund, Produkt-Fragen)`
+>    neu: `(echte Kunden-Anfragen zum Shop luxestyle.ch — Order-Status, Versand, Refund, Produkt-Fragen). Erkennungsmerkmale: Antworten auf Threads mit Betreff «Deine Bestellung #NNNN bei LuxeStyle», Mails mit einer Bestellnummer #10xx, Shopify-Benachrichtigungen von store+94368563585@t.shopifyemail.com, Mails an info@luxestyle.ch, oder Absender, die auf eine Mail von «Allen von LuxeStyle» antworten`
+> 2. Draft-Regel Versand, alt: `Bei Versand-Fragen: ehrlich 'wir versenden via Standard-Shipping, Lieferzeit ~7-14 Tage' (Dropship)`
+>    neu: `Bei Versand-Fragen: ehrlich und exakt wie auf der Produktseite — CJ-Direktversand «Lieferzeit Schweiz 10–20 Werktage, Direktversand ab Herstellerlager»; Ware ab Schweizer Lager (Tag ch-lager) 1–2 Werktage; Druck auf Bestellung 7–14 Werktage. NIE etwas Kürzeres versprechen. Versand CHF 7, gratis ab CHF 50. Lieferung nur Schweiz/Liechtenstein.`
+> 3. Projekt 1, alt: `LuxeStyle CH (Shopify Dropship) — Live-URL luxestyle.com.co, Backend aban-192.myshopify.com — 82 Produkte`
+>    neu: `LuxeStyle CH (Shopify Dropship) — Live-URL luxestyle.ch, Shopify-Backend au3j0y-hq.myshopify.com, Kontakt info@luxestyle.ch. Lieferant CJdropshipping (Direktversand aus Asien) plus Schweizer Lager Fortura. Der Katalog wird gerade auf ein geprüftes Kernsortiment bereinigt — Produktzahlen nicht nennen. Rückgabe 30 Tage (Ausnahmen laut Rückgaberichtlinie), kein gesetzliches Widerrufsrecht in der Schweiz. Zahlarten TWINT, Klarna, Karten, PayPal.`
+>
+> **B · «Daily Brief – Allen 6 Projekte» (`trig_01JTFjZkj2dZzhshVrEfcTKU`)** — postet jeden
+> Morgen «82 Produkte live, 0 Sales» und schlägt montags den Kauf einer .ch-Domain vor:
+>
+> 1. Projekt 1, alt: `LuxeStyle CH (Shopify) — 82 Produkte live, 0 Sales. Fehlt: .ch-Domain, Reviews-App, Ads schalten.`
+>    neu: `LuxeStyle CH (Shopify, luxestyle.ch) — live, einzelne Bestellungen, Katalog wird per stündlicher Cloud-Routine auf ein geprüftes Kernsortiment bereinigt. Offen für Allen: Entscheid zur Katalog-Routine (A/B/C in dropship/COWORK-AUFTRAEGE.md), Custom-App autopilot2 wiederherstellen (Wächter sind seit 05.09. blind), AGB Ziffer 7 + Telefonnummer in der Datenschutzerklärung, Shopify-Datei-Speicher, TikTok-Unternehmensverifizierung.`
+> 2. Montags-Vorschläge, alt: `'15 Min: .ch-Domain bei Hostpoint kaufen …' oder '2 Min: Refund-Policy Section 6 löschen' oder '15 Min: Loox/Judge.me Reviews-App installieren'`
+>    neu: `'1 Min: Routine «LuxeStyle: Katalog-Entwurf» ansehen und A/B/C entscheiden' oder '10 Min: Shopify → Einstellungen → Apps → App-Entwicklung → Custom-App mit read/write_products anlegen, Client-ID/Secret in die Claude-Umgebungsvariablen' oder '5 Min: Shopify → Richtlinien: AGB Ziffer 7 ersetzen + Telefonnummer in der Datenschutzerklärung' oder '5 Min: Shopify → Einstellungen → Dateien: Speicher prüfen (voll seit 01.09.)'`
+> 3. Footer, alt: `Kein Stress, keine Projekte live` → neu: `Kein Stress`
+
 ## ⚖️ 06.09.2026 — ZWEI Rechtstexte, die ich nicht schreiben darf (nur du)
 > Der Shopify-MCP-Konnektor hat den Scope `write_legal_policies` **nicht**, und das Admin-Token
 > der Custom-App ist tot. Beides sind reine Copy-Paste-Änderungen in
