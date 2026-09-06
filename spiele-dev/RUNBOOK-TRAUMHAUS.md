@@ -6306,3 +6306,58 @@ Radzahl. Umgesetzt:
 **Lehre:** Ein Vorab-Messblatt der Vorgänger-Runde ist mehr wert als jede Vermutung — wer ein
 Modell ins Spiel holt, misst zuerst Front, dünne Achse und Radzahl (trimesh oder `th-mass`) und
 schreibt es ins Runbook, auch wenn er es nicht selbst einbaut.
+
+## 2026-09-05 · 🌳 „Spiele selber, dann siehst du es" — der Stadtrundgang und die Baumkronen
+
+User: *„Traumhaus verbessern, Selbstdiagnose, spiele selber."* Neues Werkzeug
+`th-stadtrundgang.mjs`: die Figur an sechs Orte (Zentrum, Altstadt, Bahnhof, Seepark,
+Marktplatz, Park), Nacht in der Altstadt, eine Fahrt auf der Südstrasse — immer mit der
+Folgekamera des Spiels, 844×390. Drei Befunde aus den Bildern, zwei davon gemessen und behoben:
+
+### 1. Beim Fahren war das Auto nicht im Bild
+Auf der Südstrasse zeigte das Bild Strasse, Häuser, Hinweis, Tacho — aber kein Auto.
+`th-verdeckung.mjs` (Strahl Kamera → Auto gegen alle Netze, 4 Strassen × 300 Bilder):
+**verdeckt in 38 % der Bilder**. Erste Vermutung „Häuser, steilere Kamera hilft" —
+gemessen: camB 0,72 → 38 %, 0,95 → 33 %, 1,15 → 31 %. **Hilft nicht.** Die
+Verdecker-Liste sagte, warum: 72 von 82 Treffern waren **Baumkronen** (Cone/Sphere,
+2–3 m) am Strassenrand, nicht Häuser.
+
+Also das übliche Mittel: `updVerdecker()` blendet aus, was auf der Sichtlinie liegt und
+kronen-artig ist (1–5,5 m hoch, schwebt über 0,8 m, ≤ 14 m breit; zusätzlich Dächer ≥ 5 m
+hoch bis 40 m breit). Jedes dritte Bild, Kandidaten per Kugel-gegen-Strecke, Materialien
+je Netz einmal geklont (geteilte Materialien bleiben unberührt). Die Kandidatenliste kostet
+**56 ms** (65 000 Objekte) — alle 20 s neu gebaut wäre das derselbe Aussetzer wie beim LOD am
+31.08. Darum höchstens dreimal: Start, wenn `_ladeOffen === 0`, und 30 s danach. Wirksamer
+Takt danach: 0,14 ms.
+**Ergebnis: 0 % beim Fahren, zu Fuss 1 von 10 Orten** (vorher 3). Gegenkontrolle im
+Prüfer: mit `window._vdAus` wieder 38 %.
+
+Zwei Anläufe, die nichts brachten — und warum:
+- **Liste nur aus sichtbaren Netzen:** das LOD blendet ferne Objekte aus; die Liste
+  entstand am Startpunkt, die Kronen an der Südstrasse fehlten. 34 % = Rauschen.
+- **Breite ≤ 14 m ohne Ausnahme:** der häufigste Rest-Verdecker war ein 21 m breiter
+  Kegel bei 7,2 m Höhe (40 von 51 Treffern) — ein Zeltdach — und die Markthallen-
+  Segmente (25 m). Darum die Dach-Ausnahme.
+> **Regel:** Erst die Verdecker *benennen* lassen (Name, Höhe, Breite, in-Liste?),
+> dann filtern. Zwei Runden „mehr ausblenden" ohne diese Liste wären ins Leere gelaufen.
+
+### 2. Der Aktions-Knopf sass auf der Figur
+„Ansprechen", „Laden", „Werkstatt", „Markthalle", „Kirche", „Bahn", „Fahrgeschäft",
+„Coup": alle bei `bottom:190px` — auf 390 px Höhe die Bildmitte, also die eigene Figur
+(Marktplatz- und Park-Bild). Im Querformat-Block jetzt bei 74 px, Strassenmusik und
+Growbox bei 126 px (können gleichzeitig auftreten).
+
+### 3. In der Markthalle verschwindet man unter dem Dach
+Teleport auf den POI der Halle: die Kamera sieht nur das Dach. Die Dach-Ausnahme allein
+reichte NICHT — der Verdecker-Liste nach war die Halle ein einziges Netz „Cube002",
+6,3 m hoch, 20 m breit, ab 0,9 m: zu gross für jede Kronen-Regel. Darum eine zweite
+Liste `_vdGross` (grosse Bauten), die nur greift, wenn der Spieler **in der Grundfläche
+steht** — dann steht er unter dem Dach. Zu Fuss: 3 → 0 von 10. Die Halle ist einer von
+**25 begehbaren Bauten** (`addSolid` mit Türöffnung); alle profitieren.
+> Zweiter Prüfer-Fehler auf dem Weg: der Strahl traf ein **unsichtbares** Netz
+> („Karosserie002 … unsichtbar", ein vom LOD ausgeblendetes Auto). three.js' Raycaster
+> prüft `visible` nicht — der Prüfer muss es selbst tun.
+
+### Werkzeuge
+- `th-stadtrundgang.mjs` — Bilder, kein Urteil. Anschauen.
+- `th-verdeckung.mjs` — Auto ≥ 92 % frei, Figur ≤ 1/10 verdeckt, Gegenkontrolle ≥ 20 %.
