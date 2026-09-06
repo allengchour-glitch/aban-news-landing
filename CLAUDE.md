@@ -153,6 +153,27 @@ gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-
   das über eine Retoure. Die zweite Tabelle ist ersatzlos weg und verweist auf die eine gültige
   — der Rest der Seite (Ringgrösse, Kettenlänge, Materialien) bleibt, er steht sonst nirgends.
   **Zwei Tabellen sind eine zu viel** (dieselbe Familie wie zwei Verzeichnisse, 03.09.).
+- ⛔ **«Wir sind ein Schweizer Team» stand auf der Kontaktseite** — während «Über uns» sagt:
+  «Kein Marketing-Team. Kein Investor. 1 Tisch · 1 MacBook · ich antworte selbst auf jede Mail.»
+  Dazu drei verschiedene Antwortzusagen auf drei Seiten: **4 Stunden** (Kontakt, Mo–Fr),
+  24 Stunden (Über uns), «innert 24 Stunden an Werktagen» (Garantie). Eine 4-Stunden-Zusage
+  kann eine Einzelperson nicht halten, und sie steht ausgerechnet dort, wo jemand mit einem
+  Problem landet. Alles auf die eine Formel gebracht und die Ein-Personen-Wahrheit
+  vorangestellt — **das ist kein Nachteil, das ist das Verkaufsargument** («deine Mail landet
+  direkt bei mir»). Dazu der Hinweis, dass die Impressum-Adresse **keine Retourenadresse** ist —
+  er stand nur auf `widerruf`, gebraucht wird er auf der Seite mit der Adresse darauf.
+- ⚠️ **`groessenberatung` war eine Mass-Tabelle für Ware, die es teils nicht gibt:** «Slim
+  Wallet 10×7, 6 Fächer», «Damen XL 20×10, 12 Fächer», «Reisepass-Hülle 15×10.5» — am Katalog
+  geprüft ist die **Reisepass-Hülle 0× aktiv**, und die übrigen Masse sind für kein bestimmtes
+  Modell belegt. Das ist die Phantom-Klasse (02.09.) in einem Grössen-Guide: Die Kundin liest
+  eine Zahl und erwartet genau die. Ebenso «Uhr: Gehäuse 42 mm, Armband 22 mm» — die Angabe
+  EINES Modells, präsentiert als allgemeine Regel. Die Seite berät jetzt (welches Format wofür,
+  wie messen) und verweist für Zahlen auf die **Spezifikationen-Tabelle der Produktseite**,
+  die seit dem 31.08. auf jeder Seite steht und aus echten Herstellerdaten kommt.
+  **Ein Ratgeber darf sagen, wie man wählt — Zahlen gehören dorthin, wo sie gemessen sind.**
+- ⚠️ **Offen und nur gemeldet:** «Service in Deutsch · English · Français · **Italiano**»
+  (Über uns, Versand) gegen «Deutsch, Englisch oder Französisch» (Kontakt). Welche Sprachen der
+  Betreiber wirklich bedient, weiss nur er — eine Selbstbeschreibung kürze ich nicht still.
 - **Sie→du auf Shop-Seiten zu Ende gemessen:** `groessen-material-guide` (8 Imperativ+Sie) und
   `faq-zahlung-sicherheit` (durchgehend Sie) waren die letzten beiden. **12 Inhaltsseiten
   gegengeprüft (RFID, Leder, Jade Roller, Hyaluron …): 0 Treffer** — die Klasse war auf die
