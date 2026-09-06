@@ -171,6 +171,28 @@ gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-
   wie messen) und verweist für Zahlen auf die **Spezifikationen-Tabelle der Produktseite**,
   die seit dem 31.08. auf jeder Seite steht und aus echten Herstellerdaten kommt.
   **Ein Ratgeber darf sagen, wie man wählt — Zahlen gehören dorthin, wo sie gemessen sind.**
+- ⚠️ **«Wasserdicht bis 50 m» stand als Regel für ALLE Uhren** in den Pflegehinweisen — der Shop
+  führt Uhren von 3 ATM (nur spritzwassergeschützt) bis IP67. Wer das liest und schwimmen geht,
+  hat eine kaputte Uhr und einen Supportfall. Jetzt: die Angabe steht auf der Produktseite, und
+  ohne Angabe bleibt die Uhr trocken. Ebenso entschärft: «Originalanleitung **liegt jedem
+  Produkt bei**» (bei CJ-Ware oft nicht), «immer im **mitgelieferten** Hartschalencase»
+  (liegt nicht jedem Modell bei), «zerstört die **Bio-Baumwoll**-Fasern» (das Material ist nicht
+  durchgehend Bio), «Batteriewechsel CHF 15–25» (das legt der Uhrmacher fest, nicht wir).
+  **Eine Pflegeangabe ist eine Produktaussage** — sie gehört genauso geprüft wie ein Preis.
+- **Die Newsletter-Seite verschenkte den Code, ohne etwas dafür zu bekommen:** Überschrift
+  «Newsletter abonnieren — sofort 10 % Rabatt», darunter der Code — und **kein Anmeldefeld auf
+  der Seite** (nur das Footer-Formular weiter unten). Dazu Zusagen, die es nicht gibt («Geheime
+  Bestseller-Empfehlungen **jeden Monat**» — es gibt keine monatliche Kampagne, nur die
+  Willkommens-Strecke). Neu: ehrlich, was man bekommt, ein klarer Zeiger aufs Anmeldefeld, und
+  die Gestaltung in der Hausfarbe statt im violett-pinken Verlauf, den sonst keine Seite trägt.
+- ✅ **Und ein Fehlalarm, den die Gegenprobe verhindert hat:** Die Seite nannte den Code
+  **NEWSLETTER10**, während der ganze Shop WELCOME10 bewirbt — nach der Lehre vom 20.08. (tote
+  Rabattcodes) sah das nach einem Kaufabbruch an der Kasse aus. Live abgefragt ist NEWSLETTER10
+  **ACTIVE ohne Enddatum**; beide Codes funktionieren. Auf der Seite steht jetzt trotzdem
+  WELCOME10 — nicht weil der andere falsch wäre, sondern weil EIN Code im ganzen Shop weniger
+  Fragen erzeugt als zwei. **Ein Widerspruch ist nicht automatisch ein Defekt.**
+  ⚠️ WELCOME10 gegengeprüft: 10 %, `allItems: true`, Mindestwert CHF 0.01 (= keiner),
+  gültig bis 31.12.2027 — die Zusage «ohne Mindestbestellwert» ist damit belegt, nicht behauptet.
 - ⚠️ **Offen und nur gemeldet:** «Service in Deutsch · English · Français · **Italiano**»
   (Über uns, Versand) gegen «Deutsch, Englisch oder Französisch» (Kontakt). Welche Sprachen der
   Betreiber wirklich bedient, weiss nur er — eine Selbstbeschreibung kürze ich nicht still.
