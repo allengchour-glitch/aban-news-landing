@@ -970,6 +970,20 @@ while true; do
   # der Wächter zählt deshalb einzeln mit `status`. Neue Löcher entstehen bei JEDEM Draft-Lauf
   # (keine-lieferanten-ref, Dubletten, Sperr-Tags). Meldet nur — Füllen oder Unveröffentlichen
   # (dann IMMER erst 301-Weiterleitung!) braucht eine Entscheidung.
+  # BESTANDSGRÖSSE, einmal täglich: Am 05.09.2026 hat ein fremder Lauf 20'953 Produkte auf
+  # Entwurf gesetzt (Kriterium «kein bild-ok»), der aktive Katalog fiel von ~53'300 auf 35'144
+  # und 32 Landeseiten mit Verkehr wurden zu 404 — darunter die grösste Produkt-Landeseite des
+  # Shops. KEINE der 194 Wachen hat es gemeldet: sie prüfen Klassen INNERHALB der aktiven Ware,
+  # keine prüft die ZAHL der aktiven Ware. Gefunden wurde es einen Tag später über den Trichter.
+  # Meldet nur; ein Massenschritt in der Gegenrichtung gehört dem Betreiber.
+  BG=/tmp/bestandsgroesse.log
+  if [ -f "$REPO/automation/bestandsgroesse_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BG" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bestandsgroesse.lock; flock -n 9 || exit 0; exec python3 automation/bestandsgroesse_wache.py" >> "$BG" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bestandsgroesse geprüft"
+    fi
+  fi
   KL=/tmp/kollektion_leer.log
   if [ -f "$REPO/automation/kollektion_leer.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) ))
