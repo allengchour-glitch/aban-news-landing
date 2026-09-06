@@ -196,6 +196,17 @@ gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-
 - ⚠️ **Offen und nur gemeldet:** «Service in Deutsch · English · Français · **Italiano**»
   (Über uns, Versand) gegen «Deutsch, Englisch oder Französisch» (Kontakt). Welche Sprachen der
   Betreiber wirklich bedient, weiss nur er — eine Selbstbeschreibung kürze ich nicht still.
+- **Vier weitere Seiten ins Design-System gehoben** (No. 004 Sendungsverfolgung, No. 005
+  Rückgabe, No. 006 Kontakt — dazu der Grössen-Guide): EIN gescopter `<style>`-Block `.lxs`
+  je Seite statt Inline-Stilen an jedem Element. Cormorant live 2 → 6 je Seite gegengeprüft.
+  **Der Block ist auf jeder Seite identisch** — wer eine fünfte Seite hebt, kopiert ihn und
+  schreibt nur den Inhalt neu.
+- ⛔ **`/pages/widerruf` war eine vierte Kopie derselben Rückgaberegeln — und ein Waisenkind:**
+  kein Menü, kein Footer, keine andere Seite verlinkte sie (gemessen an 30 ausgelieferten
+  Seiten, 0 Verweise). Statt sie als vierte Fassung zu pflegen: **301 auf `/pages/rueckgabe`
+  und unpubliziert** — derselbe Weg wie bei den drei Doppelseiten am 05.09., live belegt
+  (301 → rueckgabe, 200). **Eine Seite, die niemand verlinkt, aber alle Regeln wiederholt,
+  ist keine Reserve, sondern die nächste Abweichung.**
 - **Sie→du auf Shop-Seiten zu Ende gemessen:** `groessen-material-guide` (8 Imperativ+Sie) und
   `faq-zahlung-sicherheit` (durchgehend Sie) waren die letzten beiden. **12 Inhaltsseiten
   gegengeprüft (RFID, Leder, Jade Roller, Hyaluron …): 0 Treffer** — die Klasse war auf die
