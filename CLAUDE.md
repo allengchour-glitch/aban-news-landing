@@ -102,6 +102,36 @@ Schluessel IST dieses Token (Lehre 30.08.).
   und ist kein Ersatz fuer den Betrieb. Die App wieder zu installieren bzw. den Zugang neu
   auszustellen ist eine Betreiber-Handlung im Shopify-Admin.
 
+## 🤝 Die drittgrösste Landeseite versprach CHF 1'900 im Monat — und überschrieb `body{}` (2026-09-06)
+Der Trichter über 14 Tage (209 Sitzungen, 2 Warenkörbe, 2 Kassengänge, **0 Abschlüsse**) zeigte
+auf Platz 3 eine Seite, die in keiner meiner Listen stand: **`/pages/influencer-partner`,
+16 Sitzungen**. Gelesen war sie ein Kostenrisiko und ein Layout-Fehler zugleich.
+- ⛔ **Ihr `<style>`-Block begann mit `body{font-family:…;max-width:760px;margin:auto;padding:30px}`.**
+  Eine Seite kann in Shopify beliebiges HTML tragen — und dieser Selektor greift auf das GANZE
+  Dokument: Kopfzeile, Menü, Fusszeile. **Ein Seitentext darf nie `body`, `h1` oder `a` global
+  stylen**; genau deshalb sind meine Blöcke auf `.lxs`/`.lxg`/`.lxp` gescopt. Live gegengeprüft:
+  0 Vorkommen von `body{`.
+- ⛔ **Und die Zusagen waren rechnerisch unmöglich:** «Kompletter Produkt-Katalog im Tausch»
+  (53'000 Artikel), «CHF 500 Fixum» monatlich (der Shop hat in seiner Geschichte CHF 227
+  Umsatz), «Beispiel-Verdienst CHF 1'900/Monat» — eine erfundene Projektion in derselben
+  Familie wie die erfundenen Studien vom 04.09. Dazu **15–25 % Provision PLUS 15–25 %
+  Rabattcode** auf eine Marge, die im Median bei rund CHF 10 je Einzelbestellung liegt: jede
+  vermittelte Bestellung wäre ein Verlust gewesen.
+- ⛔ **«Schweiz, Deutschland, Österreich als Hauptmarkt»** — der Shop liefert nur CH/FL. Eine
+  Influencerin mit DE-Community hätte Reichweite auf einen Shop geschickt, in dem ihre Leute
+  nicht bestellen können. Steht jetzt als **erster** Kasten auf der Seite, nicht im Kleingedruckten.
+- **Neu geschrieben, ohne eine Zahl zu erfinden:** zwei Stufen statt drei, Konditionen
+  ausdrücklich «besprechen wir direkt und schriftlich, bevor etwas rausgeht», dazu der Satz,
+  WARUM keine Verdienst-Beispiele dastehen. Und die Lieferzeit (10–20 Werktage) steht im
+  Ablauf, damit niemand seinen Content auf ein Paket plant, das drei Wochen braucht.
+- ⚠️ **Die Prozentsätze selbst habe ich nicht angefasst** — ob 15 oder 25 % tragbar sind, ist
+  eine Geschäftsentscheidung des Betreibers. Gemeldet ist sie: mit Rabattcode obendrauf ist
+  jede Stufe bei der heutigen Marge defizitär. **Ein Automat darf eine falsche Zahl entfernen,
+  aber keine neue Kondition erfinden.**
+- ⚠️ **Gefunden nur, weil ich den Trichter nach LANDESEITEN gefragt habe statt nach Seiten, die
+  ich kenne.** Sie stand in keiner meiner 18 Service-Seiten, in keinem Menü und in keiner
+  Fusszeile — trotzdem landen dort mehr Leute als auf jeder Produktseite.
+
 ## 📐 Der Grössen-Guide steht auf JEDER Kleiderseite — und widersprach der Garantieseite (2026-09-06)
 Nach der Garantie-Seite die übrigen Service-Seiten durchgezählt: **Von 14 Seiten tragen genau
 drei das Design-System** (`ueber-uns` No. 001, `garantie` No. 002, `versand-lieferung` No. 003);
