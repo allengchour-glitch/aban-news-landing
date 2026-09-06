@@ -7889,57 +7889,68 @@ setTimeout(function baueGebaeude(){
        Massstab: `bau()` skaliert auf die HOEHE, darum steht hier jeweils die
        gemessene Modellhoehe aus models/TH5-ASSETS.md — nicht geraten. */
     (function kurpark(){
-      var CX=-74.5, CZ=148, oh=true;      // ohneSchutz: die Wiese hat keine Strassen
+      /* ⚠️ HIER STAND: "ohneSchutz: die Wiese hat keine Strassen". Das stimmte, als der
+         Park gebaut wurde — inzwischen laeuft der ZUBRINGER 120 GRAD durch diese Wiese.
+         GEMESSEN (Strahl vom Parkmittelpunkt entlang der Senkrechten zur Zubringer-Achse):
+         Belag samt Bankett liegt bei t = -15 bis -4, der naechste Rand also 4 m vom
+         Mittelpunkt — die 11-m-Scheibe des Parks lag mit 7 m darauf. th-strassen zaehlte
+         18 Stellen auf dem Zubringer, fast alles Kurpark.
+         Der Park rueckt darum 10 m senkrecht von der Achse weg: (0,866 | 0,5) x 10.
+         Damit liegt sein Rand 1 m hinter dem Belag statt 7 m darauf.
+         ⚠️ Und weil ALLE Teile ihre z-Werte als feste Zahlen trugen, war "den Park
+         verschieben" bisher ein Eingriff an zwanzig Stellen. KZ ist der Versatz: eine
+         Zahl fuer den ganzen Park. Wer ihn wieder bewegt, aendert CX und KZ. */
+      var CX=-71.84, KZ=15.4, CZ=148, oh=true; // ohneSchutz: bau() prueft hier nicht auf Strassen
       var pM=betMat(0xcdc6b6,0.93);
       /* r = 11,0: mit 11,5 schnitt die Scheibe die Suedwestecke des Dorfhauses an. */
       var pf=new THREE.Mesh(new THREE.CircleGeometry(11.0,40),pM);
-      pf.rotation.x=-Math.PI/2;pf.position.set(CX,-0.010,CZ);pf.receiveShadow=true;scene.add(pf);
+      pf.rotation.x=-Math.PI/2;pf.position.set(CX,-0.010,KZ+CZ);pf.receiveShadow=true;scene.add(pf);
       var weg=new THREE.Mesh(new THREE.PlaneGeometry(3.2,17),pM.clone());
-      weg.rotation.x=-Math.PI/2;weg.position.set(CX,-0.009,129.9);weg.receiveShadow=true;scene.add(weg);
+      weg.rotation.x=-Math.PI/2;weg.position.set(CX,-0.009,KZ+129.9);weg.receiveShadow=true;scene.add(weg);
       /* Mittelachse innerhalb des Platzes: Tor -> Brunnen -> Pavillon -> Rondell.
          Ohne sie war der Platz eine leere graue Scheibe mit Moebeln am Rand. */
       var ach=new THREE.Mesh(new THREE.PlaneGeometry(3.6,20),pM.clone());
-      ach.rotation.x=-Math.PI/2;ach.position.set(CX,-0.008,148);ach.receiveShadow=true;scene.add(ach);
-      bau("th35_torbogen.glb",       3.850, CX,       0, 137.8,  0,         false,null,oh);
-      bau("th35_brunnen_zier.glb",   2.555, CX,       0, 143.5,  0,         false,null,oh);
-      bau("th36_musikpavillon.glb",  4.900, CX,       0, 149.5,  0,         false,null,oh);
-      bau("th36_rondell.glb",        1.120, CX,       0, 155.5,  0,         false,null,oh);
-      bau("th36_obelisk.glb",        5.200, CX-8.5,   0, 143.5,  0,         false,null,oh);
-      bau("th35_pergola.glb",        3.109, CX-8.5,   0, 153.5,  Math.PI/2, false,null,oh);
-      bau("th36_vogeltraenke.glb",   0.995, CX+8.5,   0, 147.5,  0,         false,null,oh);
-      bau("th36_trinkbrunnen.glb",   1.970, CX+8.0,   0, 153.5, -Math.PI/2, false,null,oh);
-      bau("th35_sonnenuhr.glb",      1.616, CX-8.5,   0, 147.5,  0,         false,null,oh);
-      [[-2.6,141.5],[2.6,141.5]].forEach(function(P){
+      ach.rotation.x=-Math.PI/2;ach.position.set(CX,-0.008,KZ+148);ach.receiveShadow=true;scene.add(ach);
+      bau("th35_torbogen.glb",       3.850, CX,       0, KZ+137.8,  0,         false,null,oh);
+      bau("th35_brunnen_zier.glb",   2.555, CX,       0, KZ+143.5,  0,         false,null,oh);
+      bau("th36_musikpavillon.glb",  4.900, CX,       0, KZ+149.5,  0,         false,null,oh);
+      bau("th36_rondell.glb",        1.120, CX,       0, KZ+155.5,  0,         false,null,oh);
+      bau("th36_obelisk.glb",        5.200, CX-8.5,   0, KZ+143.5,  0,         false,null,oh);
+      bau("th35_pergola.glb",        3.109, CX-8.5,   0, KZ+153.5,  Math.PI/2, false,null,oh);
+      bau("th36_vogeltraenke.glb",   0.995, CX+8.5,   0, KZ+147.5,  0,         false,null,oh);
+      bau("th36_trinkbrunnen.glb",   1.970, CX+8.0,   0, KZ+153.5, -Math.PI/2, false,null,oh);
+      bau("th35_sonnenuhr.glb",      1.616, CX-8.5,   0, KZ+147.5,  0,         false,null,oh);
+      [[-2.6,KZ+141.5],[2.6,KZ+141.5]].forEach(function(P){
         bau("th35_pflanzschale.glb", 1.156, CX+P[0], 0, P[1],    0,         false,null,oh);});
-      [[-5.6,143.5,Math.PI/2],[5.6,143.5,-Math.PI/2],
-       [-5.6,152.0,Math.PI/2],[5.6,152.0,-Math.PI/2]].forEach(function(P){
+      [[-5.6,KZ+143.5,Math.PI/2],[5.6,KZ+143.5,-Math.PI/2],
+       [-5.6,KZ+152.0,Math.PI/2],[5.6,KZ+152.0,-Math.PI/2]].forEach(function(P){
         bau("th35_bank_zier.glb",    0.984, CX+P[0], 0, P[1],    P[2],      false,null,oh);});
-      [[-9.0,141.0],[9.0,141.0],[-9.0,156.5],[9.0,156.5]].forEach(function(P){
+      [[-9.0,KZ+141.0],[9.0,KZ+141.0],[-9.0,KZ+156.5],[9.0,KZ+156.5]].forEach(function(P){
         bau("th35_laterne_schmiede.glb",4.550,CX+P[0],0,P[1],    0,         false,null,oh);});
       /* Einfriedung: Eisen im Norden (Raster 2,04), Stein im Sueden (Raster 2,00).
          Beide laufen auf demselben Raster — genau dafuer sind sie so gebaut. */
       [3.2,5.24,7.28].forEach(function(dx){
         [-1,1].forEach(function(s9){
-          bau("th36_zierzaun.glb",   1.560, CX+s9*dx, 0, 137.8,  0,         false,null,oh);});});
+          bau("th36_zierzaun.glb",   1.560, CX+s9*dx, 0, KZ+137.8,  0,         false,null,oh);});});
       [-4,-2,0,2,4].forEach(function(dx){
-        bau("th35_balustrade.glb",   1.085, CX+dx,   0, 158.4,  0,         false,null,oh);});
+        bau("th35_balustrade.glb",   1.085, CX+dx,   0, KZ+158.4,  0,         false,null,oh);});
       /* 🧱 Kollider. Der Pavillon ist BEGEHBAR — eine geschlossene Box wuerde ihn
          zusperren, und `autoKollider` haette ihm genau die verpasst (Dach > 5 m
          Grundflaeche, > 2,2 m hoch). Darum von Hand mit Tueroeffnung nach Norden. */
-      addSolid(CX, 149.5, 5.6, 5.9, {a:"z", at:149.5-2.95, c:CX, w:2.2});
-      addSolid(CX-8.5, 143.5, 3.1, 3.1, null);          /* Obelisk */
-      addSolid(CX, 143.5, 3.4, 3.4, null);              /* Brunnenbecken */
-      addSolid(CX-8.5, 153.5, 2.8, 4.0, null);          /* Pergola-Pfosten */
+      addSolid(CX, KZ+149.5, 5.6, 5.9, {a:"z", at:KZ+149.5-2.95, c:CX, w:2.2});
+      addSolid(CX-8.5, KZ+143.5, 3.1, 3.1, null);          /* Obelisk */
+      addSolid(CX, KZ+143.5, 3.4, 3.4, null);              /* Brunnenbecken */
+      addSolid(CX-8.5, KZ+153.5, 2.8, 4.0, null);          /* Pergola-Pfosten */
       /* Zaun und Bruestung sind je 2 m breite Module — zu schmal fuer
          `autoKollider` (der verlangt 5 m Grundflaeche). Ohne Kollider laeuft man
          glatt durch die Einfriedung; genau der Befund „man kann durch Haeuser
          gehen", nur an einem Zaun. Die Tor-Oeffnung bleibt frei, sonst waere der
          Park zugesperrt. */
-      addSolid(CX-5.25, 137.8, 6.1, 0.4, null);         /* Zierzaun West */
-      addSolid(CX+5.25, 137.8, 6.1, 0.4, null);         /* Zierzaun Ost */
-      addSolid(CX,      158.4, 10.2, 0.4, null);        /* Balustrade Sued */
+      addSolid(CX-5.25, KZ+137.8, 6.1, 0.4, null);         /* Zierzaun West */
+      addSolid(CX+5.25, KZ+137.8, 6.1, 0.4, null);         /* Zierzaun Ost */
+      addSolid(CX,      KZ+158.4, 10.2, 0.4, null);        /* Balustrade Sued */
       /* 💡 Nachtlicht unter dem Pavillondach */
-      var kl=new THREE.PointLight(0xffe0b0,0,18,2);kl.position.set(CX,3.4,149.5);scene.add(kl);
+      var kl=new THREE.PointLight(0xffe0b0,0,18,2);kl.position.set(CX,3.4,KZ+149.5);scene.add(kl);
       kl._ti=0;kl._max=1.0;nachtLampen.push(kl);
     })();
     /* 💡 Innenraum-Licht für die begehbaren Gebaeude — nachts warm erleuchtet (Fade wie Strassenlampen) */
