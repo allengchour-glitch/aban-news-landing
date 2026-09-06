@@ -89,6 +89,55 @@ brauche Stunden je 1'000 Produkte — sie holt jedes reaktivierte Produkt zurüc
   endete mit «temporary Shopify service issue» — am Objekt gezählt waren **34 von 34 aktiv**.
   Wer wiederholt statt zu zählen, arbeitet doppelt.
 
+## 🔗 Die zwei grössten Landeseiten nach der Startseite zeigten zusammen 18 Produkte (2026-09-06)
+Betreiber: «weiter verbessern». Erst gemessen, wo Besucher wirklich ankommen (90 Tage,
+`run-analytics-query`) — und die Antwort steht NICHT bei den Produktseiten:
+
+| Landeseite | Sitzungen/90 T. | aktive Produkte vorher | nachher |
+|---|---:|---:|---:|
+| `/` | 933 | — | — |
+| **`/collections/viral-hits`** | **527** | **11** von 1'246 | **45** |
+| **`/collections/wasserfester-schmuck`** | **496** | **7** von 13 | **102** |
+
+**1'023 Sitzungen liefen auf zwei fast leere Seiten**, und keine davon stand je in einer
+Prüfliste — sie sind keine Produktseite und kein Ratgeber, also hat sie niemand angesehen.
+**Eine Landeseiten-Messung fragt nach der ADRESSE, nicht nach der Gattung.**
+
+- **Wasserfester Schmuck**: Der Tag `wasserfest` sass auf 13 Produkten. Gemessen tragen
+  **122 aktive Schmuckstücke «Edelstahl» im TITEL** — eine Materialaussage, die das Produkt
+  selbst belegt. 96 getaggt, **102 aktiv** (live «102 Artikel»).
+  ⚠️ **20 wurden ausgeschlossen, und das ist der ganze Punkt:** Leder-, Süsswasserperlen-,
+  Muschel- und ein LED-Armband. «Edelstahl im Titel» heisst nicht «verträgt Wasser» — bei
+  einem Lederarmband mit Edelstahl-Kette ist der KÖRPER das Problem, nicht der Beschlag.
+  Ein Zähler hätte 116 gemeldet; gelesen sind es 96.
+  ⚠️ Und der Kollektionstext sagt jetzt selbst, was NICHT geht: «Vergoldete Stücke sind
+  anlauffrei, die Beschichtung mag aber keinen Dauerkontakt mit Chlor oder Salzwasser» plus
+  die Begründung, warum Leder/Perlen/Muschel fehlen. **Eine Einschränkung im Text kostet
+  keinen Verkauf — eine Retoure schon.**
+  ⚠️ Selbstkorrektur: Ich hielt den «Trésor»-Armreif für ein Phantom, weil meine Suche
+  «tresor armreif» nichts fand. Er heisst «Edelstahl-Armband «Trésor»» und ist aktiv.
+  **Ein Nullergebnis aus einer schlecht formulierten Suche ist kein Phantom.**
+- **Viral-Hits**: Die Regel hing an `video-hit` — dem Tag, den `cj_trending_import` in BEIDEN
+  Zweigen setzt (Lehre 05.09.: der Tag ist eine Behauptung). 1'246 Produkte tragen ihn, **11
+  waren aktiv**, und die elf waren kein Trend, sondern Zufall (Schwangerschaftskissen,
+  Daunendecke, zwei Schulrucksäcke). Regel jetzt `video-hit` ODER **`hype-jetzt`** — die
+  täglich kuratierte Reihe mit ihren Ausschlüssen. 45 aktive, live gegengeprüft.
+  ⛔ Und in dieser über TikTok beworbenen Reihe stand ein **Feuerzeug**. Rauchzubehör gehört
+  aus jedem Werbekanal (Hausregel 29.08.); `video-hit`/`viral`/`trend` entfernt, Produkt bleibt.
+  Der Text verspricht nicht mehr «die Produkte, über die alle reden» und «meistverkauft
+  weltweit» — beides unbelegbar —, sondern sagt, was er ist: täglich kuratiert.
+- ⚠️ **Eine Smart-Kollektion rechnet ASYNCHRON nach.** Direkt nach dem Taggen meldete sie 54
+  statt 102; eine Minute später stimmte es. Wer sofort nachzählt, misst den halben Stand und
+  hält seine eigene Änderung für gescheitert.
+- ⚠️ **Ich habe eine Produkt-ID GERATEN**, um das Feuerzeug zu enttaggen — die Mutation
+  antwortete «Product existiert nicht». Peinlich, aber folgenlos, weil Shopify prüft. Die
+  Regel von Tag 1 gilt unverändert: **IDs kommen aus einer Antwort, nie aus dem Kopf.**
+- **Die 96 neu getaggten sind gegen die stündliche Draft-Routine geschützt:** Hauptbild-Masse
+  am Objekt gemessen (`featuredMedia{...on MediaImage{image{width height}}}`), **90 von 91
+  ≥ 500 px** → `bild-ok`. Genau eines (361 px) bleibt ungeschützt, und das ist richtig.
+  **Wer eine Kategorie füllt, während ein Automat leert, muss sie im selben Zug schützen** —
+  sonst hat er in einem Tag wieder sieben Produkte.
+
 ## 📉 Die Bahn ist gemessen: in zwei Tagen wären ~900 Produkte übrig (2026-09-06, nachmittags)
 Zwei exakte Bulk-Zählungen im Abstand von 1,8 Stunden: **19'855 → 21'222 Entwürfe** mit dem
 Marker, also rund **760 Produkte pro Stunde**. Der Vorrat der Routine sind die aktiven Produkte
