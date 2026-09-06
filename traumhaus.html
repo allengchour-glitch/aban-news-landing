@@ -5458,7 +5458,21 @@ setTimeout(function baueGebaeude(){
       var bw=b.w||10,bd=b.d||8;
       var vor=laengs?bw:bd;                              // Ausdehnung entlang der Strasse
       var pos=cur[k]+vor/2;
-      cur[k]+=vor+(cfg.luecke===undefined?14:cfg.luecke);
+      /* 🛣️ LUECKE FUER DEN ANSCHLUSS DES NACHBARN. Ein Viertel weiss beim Bauen nichts
+         von den Wegen, die spaeter durch es hindurchfuehren — der Freizeitpark-Anschluss
+         laeuft bei x = 0 quer durch die Nordzeile des Sportparks, und dort stand die
+         Eishalle mit 8 Mesh-Positionen mitten auf dem Asphalt (th-strassen).
+         Eine fruehere Runde hat beide Ausweich-Enden durchgemessen — (88|246) brachte
+         nichts, (-88|246) raeumte die Strasse und zerstoerte dafuer die Wegfuehrung
+         (Routenanteil 90 % -> 43 %) — und den richtigen Weg gleich danebengeschrieben:
+         nicht den Weg um die Bauzeile herum, sondern eine Luecke IN die Bauzeile.
+         Genau das macht `cfg.freiQuer`: Weltkoordinaten laengs der Strasse, an denen
+         kein Gebaeude stehen darf. Der Laufcursor springt hinter den Korridor. */
+      (cfg.freiQuer||[]).forEach(function(wq){
+        var hb9=(cfg.freiBreite===undefined?13:cfg.freiBreite);
+        var lq=wq-(laengs?VX:VZ)+laenge/2;               // Weltmass -> Laufmass
+        if(pos-vor/2<lq+hb9&&pos+vor/2>lq-hb9){cur[k]=lq+hb9;pos=cur[k]+vor/2;}});
+      cur[k]=pos+vor/2+(cfg.luecke===undefined?14:cfg.luecke);
       if(pos+vor/2>laenge-(cfg.rand||14)){console.warn("Viertel "+cfg.name+": "+b.file+" passt nicht mehr");return;}
       var bx,bz;
       if(laengs){bx=VX-laenge/2+pos;bz=VZ+seite*setback;}
@@ -5677,7 +5691,13 @@ setTimeout(function baueGebaeude(){
        Basketballplatz standen mit zusammen 50 Mesh-Positionen darin.
        z 216 -> 236 schiebt die Suedzeile auf z ~ 215: bei x=0 sind das r=215,
        bei x=+-40 r=219 — in beiden Faellen mehr als 10 m Luft zum Belagsrand. */
-    viertel({name:"Sportpark Sued",x:0,z:236,w:180,d:84,achse:"x",boden:"rasen",
+    /* Der Freizeitpark haengt seinen Anschluss an die Sportpark-Strasse und laeuft
+       von dort nach Norden — quer durch dessen Nordzeile. Die Stelle steht darum EINMAL
+       hier und wird von beiden Vierteln benutzt: der Sportpark haelt sie frei, der
+       Freizeitpark setzt seinen Anschluss darauf. Wer die Zahl aendert, aendert beides. */
+    var FP_KREUZ_X=0;
+    viertel({name:"Sportpark Sued",x:0,z:236,w:220,d:84,achse:"x",boden:"rasen",
+      freiQuer:[FP_KREUZ_X],freiBreite:20,
       /* 🐛 anschluss war [0,146] — die SEEMITTE. Der Verbinder endete als Asphalt-
          zunge samt Mittelstreifen und Laterne mitten im Wasser (User: „wasser?").
          Jetzt endet er am Suedufer (Wasserradius ~20 + Sandring). */
@@ -5720,7 +5740,11 @@ setTimeout(function baueGebaeude(){
          findet den Park dann nicht mehr ueber Asphalt. Weniger Treffer waeren hier das
          schlechtere Spiel. Wer es besser loesen will, laesst die Bauzeile des Sportparks
          eine Luecke fuer den Anschluss — nicht den Anschluss aussen herum. */
-      anschluss:[0,246],abstand:18,luecke:20,rand:20,
+      /* Der eigene Anschluss laeuft bei FP_KREUZ_X von Sueden herein und kreuzt damit
+         die Suedzeile dieses Parks — dieselbe Luecke wie beim Sportpark, nur eine
+         Strasse weiter. Ohne sie standen die Teetassen auf der eigenen Zufahrt. */
+      freiQuer:[FP_KREUZ_X],freiBreite:20,
+      anschluss:[FP_KREUZ_X,246],abstand:18,luecke:20,rand:20,
       bauten:[{file:"th32_parkeingang.glb",h:14,w:28,d:10},
               {file:"th13_riesenrad.glb",h:26,w:22,d:16,tuer:false,fahrt:"riesenrad"},
               {file:"th32_kettenkarussell.glb",h:15,w:19,d:19,tuer:false,fahrt:"kettenkarussell"},
