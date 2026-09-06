@@ -201,6 +201,11 @@ gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-
   je Seite statt Inline-Stilen an jedem Element. Cormorant live 2 → 6 je Seite gegengeprüft.
   **Der Block ist auf jeder Seite identisch** — wer eine fünfte Seite hebt, kopiert ihn und
   schreibt nur den Inhalt neu.
+- ⚠️ **Und beim Umbau der FAQ habe ich beinahe selbst eine Waise erzeugt:** Meine neue Fassung
+  ersetzte den Link auf `faq-rueckgabe-umtausch` durch `rueckgabe` + `garantie` — gemessen war
+  die FAQ die EINZIGE Seite, die ihn verlinkt. Wieder eingesetzt, dazu `pflegehinweise`, die
+  vorher gar keinen internen Link hatte. **Wer einen Link ersetzt, prüft, ob er der letzte war**
+  — bei einer Hub-Seite wie der FAQ ist er es fast immer.
 - ⛔ **`/pages/widerruf` war eine vierte Kopie derselben Rückgaberegeln — und ein Waisenkind:**
   kein Menü, kein Footer, keine andere Seite verlinkte sie (gemessen an 30 ausgelieferten
   Seiten, 0 Verweise). Statt sie als vierte Fassung zu pflegen: **301 auf `/pages/rueckgabe`
