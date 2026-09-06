@@ -13,7 +13,41 @@ nicht mehr gelesen.
 
 ---
 
-> ### ⚖️ 06.09.2026 — ZWEI Rechtstexte, die ich nicht schreiben darf (nur du)
+## ⛔ 06.09.2026 — ENTSCHEIDUNG: 20'900 Produkte sind seit gestern ABGESCHALTET
+
+Am **05.09. um 09:50 UTC** hat ein Lauf **20'953 Produkte auf Entwurf** gesetzt — alle mit dem Tag
+`auto-entwurf-0926`. Kriterium war exakt «Produkt trägt nicht den Tag `bild-ok`».
+**Der aktive Katalog ist damit von rund 53'300 auf 35'144 Produkte gefallen** (in Preisbändern
+gezählt, weil Shopify bei 10'000 deckelt).
+
+**Warum das Kriterium falsch ist — gemessen, nicht vermutet:**
+`bild-ok` ist die Quittung EINES Laufs vom 16.06.; alles, was danach importiert wurde, trägt ihn
+per Konstruktion nicht — unabhängig von der Bildqualität. Die 32 Produkte, die ich heute
+zurückgeholt habe, haben **5 bis 23 Bilder** und Hauptbilder von **800×800 bis 1920×1920 Pixel**.
+
+**Was es angerichtet hat:** Von 250 Seiten, auf denen in 60 Tagen wirklich Besucher gelandet sind,
+waren **32 tot (404)** — darunter das **Rizinusöl-Wickel-Set**, die grösste Produkt-Landeseite des
+ganzen Shops und das einzige Produkt mit belegtem Suchverkehr.
+
+**Was ich schon gemacht habe (fertig, live geprüft):**
+- Alle 34 Seiten mit gemessenem Verkehr wieder aktiv, Tag entfernt, Rizinusöl-Set wieder in allen
+  sechs Kanälen inklusive Google.
+- Die toten Produktlinks in den drei Ratgebern mit Suchverkehr repariert.
+
+**Was ICH NICHT entschieden habe — das gehört dir:**
+Die übrigen **rund 20'900 Produkte bleiben aus**. Sie zurückzuholen wäre derselbe Massenschritt in
+der Gegenrichtung, und zwei Sessions, die denselben Schalter gegenläufig umlegen, sind keine
+Automatik mehr. Drei Wege:
+
+| Weg | Folge |
+|---|---|
+| **A — alles zurück** | Katalog wieder ~53'000. Gefahrlos machbar: die Schnittmenge des Tags mit JEDEM absichtlichen Draft-Grund (Waffen, Medizin, keine Lieferanten-Referenz, nicht CH-lieferbar, ausverkauft, Dubletten) ist **null** — der Lauf hat ausschliesslich Ware erwischt, die vorher bewusst aktiv war. |
+| **B — so lassen** | Kleinerer Katalog. Dann sollten die ~20'900 aber nach einem MESSBAREN Kriterium ausgewählt werden (Bildgrösse, Lieferanten-SKU, CH-lieferbar), nicht nach einem alten Tag. Und jede Seite mit Verkehr braucht eine Weiterleitung, sonst wachsen die 404 weiter. |
+| **C — Mittelweg** | Zurückholen, was ein Hauptbild ab 500 px hat; der Rest bleibt aus. Das ist das Kriterium, das der Lauf eigentlich meinte. |
+
+**Sag mir A, B oder C — dann setze ich es um.** Ohne dein Wort bleibt es, wie es ist.
+
+## ⚖️ 06.09.2026 — ZWEI Rechtstexte, die ich nicht schreiben darf (nur du)
 > Der Shopify-MCP-Konnektor hat den Scope `write_legal_policies` **nicht**, und das Admin-Token
 > der Custom-App ist tot. Beides sind reine Copy-Paste-Änderungen in
 > **Shopify-Admin → Einstellungen → Richtlinien**.
