@@ -45,7 +45,27 @@ Automatik mehr. Drei Wege:
 | **B — so lassen** | Kleinerer Katalog. Dann sollten die ~19'800 aber nach einem MESSBAREN Kriterium ausgewählt werden (Bildgrösse, Lieferanten-SKU, CH-lieferbar), nicht nach einem alten Tag. Und jede Seite mit Verkehr braucht eine Weiterleitung, sonst wachsen die 404 weiter. |
 | **C — Mittelweg** | Zurückholen, was ein Hauptbild ab 500 px hat; der Rest bleibt aus. Das ist das Kriterium, das der Lauf eigentlich meinte. |
 
+### ⏳ NEU um 13:10 UTC: der Lauf ist nicht vorbei — er läuft STÜNDLICH weiter
+
+Ich habe heute Vormittag 633 Produkte zurückgeholt und danach nachgezählt: es sind **561 MEHR**
+mit dem Marker als am Morgen. Das **Rizinusöl-Set, um 11:20 von mir reaktiviert, stand um 11:32
+wieder auf DRAFT.** Die Quelle ist eine Routine deines Kontos:
+
+> **«LuxeStyle: Katalog-Entwurf (setzt ungeprüfte Produkte stückweise auf Entwurf)»**
+> `trig_013xE8LpGFW2QGuziRJywbHV` — Zeitplan `52 * * * *`, also **jede Stunde**, aktiv,
+> angelegt am 05.09. um 09:52 UTC.
+
+**Damit ändert sich die Reihenfolge deiner Entscheidung:** Weg A und C sind erst möglich, wenn
+diese Routine steht — sonst holt sie alles binnen einer Stunde zurück. Das ist **ein Klick**
+in deiner Routinen-Liste (pausieren, nicht löschen — die Historie bleibt).
+
+**Was in der Zwischenzeit sicher steht, ohne dass jemand einen Schalter umlegt:** Die 34 Seiten
+mit gemessenem Verkehr tragen jetzt den Tag **`bild-ok`** — genau das Merkmal, nach dem die
+Routine auswählt. Sie fasst sie deshalb nicht mehr an. Der Tag ist dabei nicht getrickst: für
+alle 34 ist im Bulk-Export gemessen, dass das Hauptbild auf beiden Kanten ≥ 500 px hat.
+
 **Sag mir A, B oder C — dann setze ich es um.** Ohne dein Wort bleibt es, wie es ist.
+Bei A oder C: bitte zuerst die Routine oben pausieren, sonst arbeiten wir gegeneinander.
 
 ## ⚖️ 06.09.2026 — ZWEI Rechtstexte, die ich nicht schreiben darf (nur du)
 > Der Shopify-MCP-Konnektor hat den Scope `write_legal_policies` **nicht**, und das Admin-Token

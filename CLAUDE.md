@@ -42,6 +42,53 @@ mit Verkehr abgefragt: **41 sind tot, davon 32 durch diesen einen Lauf.**
   es gemeldet — sie prüfen Klassen INNERHALB der aktiven Ware, nicht die Zahl der aktiven Ware
   selbst. Eine Ampel für die Bestandsgrösse fehlt und gehört gebaut.
 
+## ⏳ Der Massen-Draft ist keine Vergangenheit — er ist eine STÜNDLICHE Routine (2026-09-06, mittags)
+Ich habe den ganzen Vormittag in 20er-Blöcken zurückgeholt (633 aktiv), dann die Restmenge neu
+gezählt: **19'855 Entwürfe + 633 aktive = 20'488 — also 561 MEHR als mein Export von 11:30.**
+Die jüngsten Drafts trugen `updatedAt` von **13:02 UTC**, Minuten vorher. Und der teuerste Beleg:
+Das **Rizinusöl-Wickel-Set — die grösste Such-Landeseite des Shops, um 11:20 von mir reaktiviert —
+stand um 11:32 wieder auf DRAFT**, mit frisch gesetztem `auto-entwurf-0926`.
+
+**Die Quelle ist eine Routine dieses Kontos**, gefunden über `list_triggers` (nicht über die
+Prozessliste — lokal läuft nichts):
+
+| | |
+|---|---|
+| `trig_013xE8LpGFW2QGuziRJywbHV` | **«LuxeStyle: Katalog-Entwurf (setzt ungeprüfte Produkte stückweise auf Entwurf)»** |
+| Zeitplan | `52 * * * *` — **stündlich**, angelegt 05.09. 09:52 UTC (zwei Minuten vor dem grossen Lauf) |
+| Stand | **enabled**, letzter Lauf 12:52 PENDING, nächster 13:52 |
+
+Damit war der 05.09. kein einmaliger Ausrutscher, sondern der erste Tick. **Weiter zurückholen
+war ab diesem Moment nicht langsam, sondern sinnlos:** Die Routine feuert jede Stunde, ich
+brauche Stunden je 1'000 Produkte — sie holt jedes reaktivierte Produkt zurück.
+- ⚠️ **«Der Lauf IST gelaufen» war eine Aussage über die Vergangenheit — richtig war die Frage
+  nach dem Zeitplan.** Ich habe zwei Stunden gegen einen Automaten gearbeitet, ohne zu prüfen,
+  ob er noch läuft. **Vor jeder Reparatur an fremder Massenarbeit gehört die Frage: gibt es
+  einen Zeitplan, der das wieder tut?** — `list_triggers` beantwortet sie in einer Abfrage.
+- ⚠️ Und die Prozessliste beantwortet sie NICHT: `ps` zeigte nichts, weil die Routine eine
+  eigene Cloud-Sitzung startet. **Ein Automat, den man lokal nicht sieht, ist nicht abwesend.**
+- ✅ **Was stattdessen wirkt, ohne den fremden Schalter anzufassen:** Die 34 Produkte mit
+  gemessenem Verkehr (32 Landeseiten + beide Kleider aus #1013) tragen jetzt **`bild-ok`** —
+  das Kriterium, nach dem die Routine selbst auswählt. Damit greift sie dort nicht mehr, und
+  ich muss nicht gegen sie anrennen. **Der Tag ist dabei WAHR benutzt, nicht getrickst:** für
+  alle 34 ist im Bulk-Export gemessen, dass das Hauptbild auf beiden Kanten ≥ 500 px hat
+  (Liste `gut`). Alle 34 danach am Objekt geprüft: ACTIVE, `bild-ok` gesetzt; das Rizinusöl-Set
+  wieder in allen sechs Kanälen inkl. Google.
+- **Regel daraus: Wo zwei Automaten gegeneinander laufen, ist die Lösung nicht der schnellere
+  Schreiber, sondern das gemeinsame Kriterium.** Ein Produkt, das die Bedingung der fremden
+  Regel nachweislich erfüllt, gehört mit ihrem eigenen Merkmal markiert — dann hören beide auf
+  zu streiten, und kein Schalter muss gegen den anderen umgelegt werden.
+- ⚠️ **NICHT abgeschaltet.** Die Routine gehört zum Plan der anderen Session; meine eigene Regel
+  vom 05.09. gilt: «Ein Schalter, den zwei Sessions gegenläufig umlegen, ist keine Automatik
+  mehr — das entscheidet der Betreiber.» Zum Anhalten genügt EIN Klick auf die Routine.
+- ⚠️ Nebenbefund derselben Liste: Die stündliche Keepalive-Routine
+  (`trig_01Uy3zVefXbzCZn9Dr2qvkwh`) steht **wieder auf AUS** (nächster Lauf datiert 05.09.) —
+  zum dritten Mal. Und `trig_01Fks8G3zVunFbfaGjWtep6f` setzt **am 16.09. die BigBuy-Ware auf
+  Entwurf**; das ist eingeplant und läuft ohne weiteres Zutun.
+- ⚠️ **Dritte Bestätigung: ein Timeout ist kein Fehlschlag.** Die Sammel-Mutation über die 34
+  endete mit «temporary Shopify service issue» — am Objekt gezählt waren **34 von 34 aktiv**.
+  Wer wiederholt statt zu zählen, arbeitet doppelt.
+
 ## 🧱 Die Decke des MCP-Kanals gemessen: 19'927 Produkte gehen hier NICHT durch (2026-09-06)
 
 Betreiber: «mach die 20k produkten fix». Der Weg dorthin ist gebaut und die Auswahl steht —
