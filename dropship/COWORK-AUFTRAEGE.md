@@ -13,6 +13,13 @@ nicht mehr gelesen.
 
 ---
 
+## 📸 06.09.2026 21:45 UTC — Instagram-Token-Anleitung (Upload des Betreibers) gelesen: technisch richtig, drei Dinge VORHER
+Die Anleitung (Graph-API v21.0, `fb_exchange_token` → langlebiger User-Token → Seiten-Token aus `me/accounts`, `instagram_business_account.id` als `IG_USER_ID`, Umgebungsvariablen statt Dateien) ist korrekt und sicher formuliert. Ausführen kann sie nur der Betreiber (Meta-Portal, Browser-Login). Bevor der PC-Poster damit Instagram bedient, gehört dreierlei geklärt — sonst wiederholt sich die Doppelpost-Klasse vom Juli:
+1. **Ein fremder Instagram-Poster läuft bereits** täglich 09:00 und 17:00 UTC (Schweizerdeutsch-Captions, App «LuxeStyle Social», in keiner unserer Queues — 03.09. gemessen). Zwei Poster auf einem Konto ohne gemeinsames Ledger = Doppelposts. Erst den abstellen oder benennen.
+2. `social-post.mjs` kennt weder `post_guard` (Produkt-/Medien-/Live-IG-Abgleich) noch `dropship/_SOCIAL_STOPP`. Der Social-Stopp gilt weiter (30.08.).
+3. Kundenfotos: nur mit `@tatjanalarsinamoira`-Markierung, ohne Vornamen, nichts vor deinem «ok».
+`business_management` in Schritt 2 ist für reines Posten nicht nötig (weniger Rechte = kleinerer Schaden bei Token-Verlust). Meta-Zugangsdaten liegen im Tresor «meta» — der ist ohne Custom-App (#49) verschlossen; deshalb kann diese Session den Token nicht selbst erneuern.
+
 ## 🧰 06.09.2026 21:35 UTC — «Cowork ohne mich»: ein Klick macht die Cloud-Wache scharf
 Es gibt in diesem Konto keine Cowork-Umgebung, die eine Cloud-Session starten könnte, und Routinen aus der Cloud bekommen keine Konnektoren. Deshalb:
 - **Routine `trig_01SNsxGjVGtr1coaRyLA9Gca` «LuxeStyle: Wache cloud-tztnn1»** ist angelegt und AUS. Im Routinen-UI (claude.ai/code → Routinen) den **Shopify-Konnektor** zuweisen und einschalten → sie prüft alle 4 h Bestellungen, den Kern-Schutz (518), den Katalogtrend, den Vorrat der Draft-Routine und die vier Haustier/EU-Kategorien, schreibt `dropship/WACHE-CLOUD-TZTNN1.md` und meldet nur ⚠️.
