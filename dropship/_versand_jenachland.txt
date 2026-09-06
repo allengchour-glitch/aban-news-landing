@@ -1879,3 +1879,5 @@ gid://shopify/Product/15431606862209	nichts-zu-tun
 gid://shopify/Product/15431607452033	nichts-zu-tun
 gid://shopify/Product/15431608140161	nichts-zu-tun
 gid://shopify/Product/15431609418113	nichts-zu-tun
+gid://shopify/Product/15427280568705	ersetzt-per-mcp
+gid://shopify/Product/15427284795777	ersetzt-per-mcp
