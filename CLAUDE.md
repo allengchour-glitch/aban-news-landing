@@ -133,6 +133,32 @@ gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-
 - **Regel, dritte Fassung an zwei Tagen: Wo zwei Seiten dieselbe Zusage machen, machen sie sie
   verschieden.** Tracking (gestern), Umtausch und Zoll (heute) — jedes Mal stand die falsche
   Fassung auf der Seite, die früher gelesen wird. Wer eine Zusage ändert, sucht sie überall.
+- ⛔ **Vier Seiten erklären dieselbe Rückgabe — und eine erklärte die falsche Rechtsordnung.**
+  `rueckgabe` versprach «Beim gesetzlichen Widerruf nach **EU-Recht** erstatten wir zusätzlich
+  die Standard-Lieferkosten» und trug ein vollständiges **EU-Widerrufsformular** («Hiermit
+  widerrufe ich den Vertrag») — während `widerruf`, `faq-rueckgabe-umtausch` und die
+  Rückgaberichtlinie übereinstimmend sagen, dass es in der Schweiz **kein** gesetzliches
+  Widerrufsrecht gibt. Der Aufräumlauf vom 05.09. hat drei solche Doppelseiten unpubliziert —
+  **diese eine blieb stehen, weil sie die ist, auf die garantie und FAQ verlinken.**
+  Korrigiert; das Formular ist jetzt eine schlichte Rückgabe-Meldung ohne Rechtsbehauptung.
+- ⚠️ **Und ich habe die Klasse im selben Zug selbst erzeugt:** Mein neuer Grössen-Guide sprach
+  vom «Umtausch wegen der Grösse» — `faq-rueckgabe-umtausch` sagt aber ausdrücklich «Einen
+  direkten Umtausch bieten wir nicht an». Zurückschicken und neu bestellen ist der einzige
+  Weg, den dieser Shop wirklich anbietet. Beide Stellen sagen es jetzt gleich.
+  **Wer eine Zusage neu formuliert, muss zuerst lesen, was die anderen Seiten dazu sagen** —
+  sonst repariert man einen Widerspruch und legt daneben einen neuen an.
+- ⛔ **Zwei Grössentabellen mit verschiedenen Zahlen, beide aus der FAQ verlinkt:**
+  `groessen-material-guide` gab für Damen XS «Brust 78–82 / Taille 60–64 / Hüfte 84–88»,
+  der Grössen-Guide «Büste 80–84 / Taille 62–66 / Hüfte 86–90». Bei Kleidergrössen entscheidet
+  das über eine Retoure. Die zweite Tabelle ist ersatzlos weg und verweist auf die eine gültige
+  — der Rest der Seite (Ringgrösse, Kettenlänge, Materialien) bleibt, er steht sonst nirgends.
+  **Zwei Tabellen sind eine zu viel** (dieselbe Familie wie zwei Verzeichnisse, 03.09.).
+- **Sie→du auf Shop-Seiten zu Ende gemessen:** `groessen-material-guide` (8 Imperativ+Sie) und
+  `faq-zahlung-sicherheit` (durchgehend Sie) waren die letzten beiden. **12 Inhaltsseiten
+  gegengeprüft (RFID, Leder, Jade Roller, Hyaluron …): 0 Treffer** — die Klasse war auf die
+  drei Service-Seiten begrenzt und ist jetzt bei 0. ⚠️ Gemessen mit «Grossbuchstabenwort +
+  Sie» plus Ihr-Formen, nicht mit dem engen 6-Verben-Muster des Produkttext-Scans; für
+  Fliesstext-Seiten hätte das zu wenig gefunden.
 - ✅ Die fünf FAQ-Unterseiten (`faq-versand-lieferung` …) sind inhaltlich sauber und antworten
   live mit 200 — sie standen nur nicht in den ersten 50 Seiten der Auflistung. **Ein Link, den
   eine gedeckelte Liste nicht kennt, ist kein toter Link** (Lehre 28.08., wieder).
