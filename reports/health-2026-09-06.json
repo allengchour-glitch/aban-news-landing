@@ -1,0 +1,37 @@
+{
+  "ts": "2026-09-06T11:28:24.454Z",
+  "ai": {
+    "groq": "down",
+    "gemini": "live",
+    "together": "kein Key",
+    "deepseek": "down",
+    "openrouter": "kein Key",
+    "cloudflare": "kein Key",
+    "mistral": "kein Key",
+    "openai": "down"
+  },
+  "binaries": {
+    "ffmpeg": "fehlt",
+    "yt-dlp": "fehlt",
+    "piper": "fehlt",
+    "python3": "fehlt",
+    "node": "fehlt",
+    "curl": "fehlt",
+    "gallery-dl": "fehlt",
+    "wrangler": "fehlt"
+  },
+  "data": {
+    "music_tracks": 11,
+    "top_products": 27,
+    "text_image_cards": 21,
+    "google_trends_ch": "erreichbar",
+    "image_gen_free": "erreichbar"
+  },
+  "summary": {
+    "ai_live": [
+      "gemini"
+    ],
+    "ai_live_count": 1,
+    "automation_ok": true
+  }
+}
