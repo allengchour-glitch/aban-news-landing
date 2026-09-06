@@ -201,6 +201,17 @@ gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-
   je Seite statt Inline-Stilen an jedem Element. Cormorant live 2 → 6 je Seite gegengeprüft.
   **Der Block ist auf jeder Seite identisch** — wer eine fünfte Seite hebt, kopiert ihn und
   schreibt nur den Inhalt neu.
+- ✅ **Alle 18 veröffentlichten Service-Seiten tragen jetzt dasselbe Design** (No. 001–010 plus
+  die vier FAQ-Unterseiten, Impressum, Cookie-Richtlinie, Newsletter). Gemessen an der
+  ausgelieferten Seite: «Cormorant Garamond» 5–12× statt der Theme-Grundlast 2.
+  ⚠️ **`groessentabelle` misst dabei nur 3 — und ist trotzdem richtig:** Sie sitzt in einem
+  Akkordeon der Produktseite und hat deshalb bewusst keine Eyebrow, keine H1 und keinen Lead.
+  **Ein Schwellenwert, der für 17 Seiten passt, urteilt bei der 18. falsch** — die Gegenprobe
+  war die Zahl der Tabellen-Container, nicht die der Schriftnennungen.
+- ⚠️ Nebenbei: Die Cookie-Richtlinie verlinkte `/pages/datenschutz` — ein **301** auf
+  `/policies/privacy-policy`, also wieder ein Umweg statt eines toten Links (Lehre von heute
+  früh). Direkt gesetzt. Und das Impressum trägt jetzt den Retourenadressen-Hinweis, der bisher
+  nur auf `widerruf` stand — also auf der Seite, die es nicht mehr gibt.
 - ⚠️ **Und beim Umbau der FAQ habe ich beinahe selbst eine Waise erzeugt:** Meine neue Fassung
   ersetzte den Link auf `faq-rueckgabe-umtausch` durch `rueckgabe` + `garantie` — gemessen war
   die FAQ die EINZIGE Seite, die ihn verlinkt. Wieder eingesetzt, dazu `pflegehinweise`, die
