@@ -72,18 +72,20 @@ for (const [schl, uhr] of [['tag', 720], ['nacht', 1330]]) {
      zwoelfmal langsamer als die Wanduhr, und wie viel Spielzeit in acht Sekunden
      Wanduhr passt, haengt an der Systemlast. Wer nach der Wanduhr wartet, misst die
      Maschine mit.
-     Darum wird JE ORT gewartet, und zwar in WELTZEIT, bis zwei Ablesungen im Abstand
-     einer Weltsekunde weniger als 1 auseinanderliegen. */
+     Darum wird JE ORT in WELTZEIT gewartet.
+
+     ⚠️ ZUERST STAND HIER EINE ABBRUCHBEDINGUNG ("warten, bis zwei Ablesungen weniger
+     als 1 auseinanderliegen"), und die hat NIE gegriffen: das Bild flackert von Bild
+     zu Bild um ein paar Stufen — Wolken ziehen, Wasser kraeuselt sich, Autos fahren.
+     Die Schleife lief also jedes Mal bis an ihre Obergrenze. Beim Lockern der Toleranz
+     von 1 auf 2 wurde die Pruefung sogar LANGSAMER statt schneller (773 s im Tor
+     gegen 886 und 921 s einzeln) — ein Beleg, dass die Bedingung nichts entschied.
+     Jetzt steht da, was ohnehin geschah: eine feste Wartezeit in Weltsekunden. Eine
+     Bedingung, die nie greift, ist schlimmer als keine — sie taeuscht Genauigkeit vor. */
   for (const [name, x, z] of ORTE) {
     await page.evaluate((p) => window.__th.hin(p[0], p[1], 90, 0.42, 0), [x, z])
-    let a1 = -99, a2 = -50, runden = 0
-    while (Math.abs(a1 - a2) >= 1 && runden++ < 10) {
-      a1 = a2
-      await warteWeltzeit(page, 1.0, { maxWanduhr: 40 })
-      a2 = await page.evaluate(() => window.__th.hell())
-    }
-    if (runden >= 10) console.log(`  ⚠️ ${schl}/${name}: Messwert stand nach 10 Weltsekunden noch nicht still (${a1} -> ${a2})`)
-    werte[schl].push(a2)
+    await warteWeltzeit(page, 6.0, { maxWanduhr: 150 })
+    werte[schl].push(await page.evaluate(() => window.__th.hell()))
   }
 }
 console.log('\nMittlere Bildhelligkeit, gleiche Kamera (0 = schwarz, 255 = weiss):')
