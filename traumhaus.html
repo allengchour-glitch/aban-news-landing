@@ -285,7 +285,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="coupBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:var(--tinte);color:var(--creme)">Bank-Coup zu zweit</button>
 <button id="coasterBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Achterbahn fahren</button>
 <button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 18px;min-height:44px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Villa-Vorlage · 3500 $</button>
-<button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Straßenmusik machen</button>
+<button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Strassenmusik machen</button>
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4)">Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat"><svg class="ik" aria-hidden="true"><use href="#i-chat"/></svg></button>
@@ -315,7 +315,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" type="text" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
 <div id="tools">
   <button class="tbtn" id="rotBtn" title="Drehen (R)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg></button>
-  <button class="tbtn" id="delBtn" title="Abreißen"><svg class="ik" aria-hidden="true"><use href="#i-trash"/></svg></button>
+  <button class="tbtn" id="delBtn" title="Abreissen"><svg class="ik" aria-hidden="true"><use href="#i-trash"/></svg></button>
 </div>
 <div id="palette">
   <div id="palCats"></div>
@@ -420,7 +420,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> leben ihr eigenes Leben — sie kochen, angeln, tanzen und erkunden die Stadt. Alle 4 Tage kommt die <b>Bauabnahme</b>: besteh sie und steig von der Hütte bis zum Palast auf. Tag- und Nachtwechsel inklusive.</p>
-  <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
+  <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reisst ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -453,7 +453,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
     <div style="text-align:left;display:flex;flex-direction:column;gap:13px;font-size:1.02rem;color:#3a4a5a;line-height:1.35">
       <div>🕹️ <b>Bewegen</b> — Joystick unten links (oder WASD am PC)</div>
       <div>🔨 <b>Bauen</b> — „Bauen" tippen → etwas wählen → aufs Grundstück tippen</div>
-      <div>💰 <b>Geld verdienen</b> — die Aufträge vom Bürgermeister erfüllen</div>
+      <div>💰 <b>Geld verdienen</b> — die Aufträge vom Stadtpräsidenten erfüllen</div>
       <div>👫 <b>Tipp auf Max/Mia</b> — Kamera folgt. Herd = 🍳 Kochen, Teich = 🎣 Angeln</div>
       <div style="margin-top:8px;padding:9px 11px;border-radius:10px;background:#fff4dc;border:1px dashed #d8a84a">
         🏅 <b>Dein Ziel: die Bauabnahme.</b> Alle 4 Tage kommt der Inspektor und prüft
@@ -682,7 +682,7 @@ function putzTex(rx,ry){
 
 // ===================== Grundstück =====================
 var GW=72,GH=46,CS=2; // Open-World XXL-BREIT 2026-07-25 (alt 60x46/50x38 → Migration in loadSnapshot)
-var RX=GW*CS/2+6,RL=2*RX+48; // Querstraßen-Abstand (x) + Straßenlänge — skalieren mit der Map
+var RX=GW*CS/2+6,RL=2*RX+48; // Querstrassen-Abstand (x) + Strassenlänge — skalieren mit der Map
 /* 🏗️ BAUFENSTER (User: „das bauland kann 1/4 von mitte sein, du kannst der rest
    fuellen mit sachen wo n stadt passen"). Das Gitter bleibt 72 x 46 Zellen — daran
    haengen Saves, Wegfindung, Sim-Logik und die Strassenlage (RX). Neu GEBAUT wird
@@ -704,16 +704,16 @@ var TEXLOADER=new THREE.TextureLoader();
 var WORLD_POIS=[
   [-58,-78,"⛪","Kathedrale"],[-136,-196,"🌬️","Windmühle"],[-40,-196,"🚜","Bauernhof"],
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
-  [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[96,14,"⛲","Brunnen-Park"],
+  [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Stadtpark"],[96,14,"⛲","Brunnmatt"],
   [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
-  [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
-  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[172,60,"🏙️","Stadthaeuser Ost"],
+  [96,-33,"🏰","Sunnehalde"],[-96,18,"🏰","Rebhalde"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
+  [172,0,"🏢","Gewerbe Rietli"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[172,60,"🏙️","Bürgli"],
   /* Die drei Viertel dieser Charge hatten keine Marke — sie standen in der Welt, aber
      auf der Karte war dort nichts, und kein Lieferauftrag fuehrte hin. Ein Viertel, das
      man nicht findet, ist so gut wie nicht gebaut.
      Die Koordinaten hier sind nur der Startwert: `marke()` in `viertel()` schreibt die
      ECHTE Lage hinein, sobald das Viertel steht (Namensgleichheit genuegt). */
-  [160,220,"🎰","Vergnuegungsviertel"],[-200,-250,"🦓","Zoo"],[300,-260,"✈️","Flughafen"],
+  [160,220,"🎰","Chilbiplatz"],[-200,-250,"🦓","Zoo"],[300,-260,"✈️","Flughafen"],
   /* ⚠️ „Ein Viertel, das man nicht findet, ist so gut wie nicht gebaut" — der Satz
      zwei Zeilen weiter oben gilt fuer den Spielclub genauso. Er steht 130 m ausserhalb
      bei (126|102); ohne Marke auf der Karte laeuft niemand zufaellig dorthin. Feste
@@ -917,7 +917,7 @@ function ladeTex(url,rx,ry,cb){TEXLOADER.load(url,function(t){
   cb(t);},undefined,function(){});}
 var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
   c.fillStyle="#5a9c44";c.fillRect(0,0,256,256);
-  // weiche große Tonflächen gegen den flachen Look
+  // weiche grosse Tonflächen gegen den flachen Look
   /* Nur noch ein Hauch Ton-Variation IN der Kachel — grosse Blobs im 256er-Tile ergaben
      ein sichtbares Wiederhol-Raster, sobald die Kamera weiter draussen steht. Die grossflaechige
      Variation kommt aus dem nicht-kachelnden Overlay unten. */
@@ -934,7 +934,7 @@ var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.Me
    Nah-Overlay -0.035, Wasser -0.022, Plaetze/Viertel -0.012, Strassen -0.003,
    Markierungen +0.005. Mindestabstand ueberall >= 0.01. */
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scene.add(rasen);
-// Boden-Variation: EINE große nicht-kachelnde Overlay-Textur bricht das Kachelmuster
+// Boden-Variation: EINE grosse nicht-kachelnde Overlay-Textur bricht das Kachelmuster
 // (weiche rgba-Blotches im Canvas vorgeblendet, gleiche Beleuchtung wie der Rasen darunter)
 (function bodenVariation(){
   var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
@@ -2876,7 +2876,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
        Strasse" (User). Die vier Ecken bekommen jetzt eine ausgerundete Fahrbahn mit Bordstein,
        damit der Ring sichtbar geschlossen ist statt abzubrechen. */
     /* ❗ Hier stand CircleGeometry(9) — das ist die Strassen BREITE, nicht der Radius.
-       Der Teller war damit doppelt so breit wie die Fahrbahn, fraß die Gehwege und lag
+       Der Teller war damit doppelt so breit wie die Fahrbahn, frass die Gehwege und lag
        als schwarze Scheibe im Gras (User-Screenshot „strasse hier gefaellt mir nicht").
        Die Fahrbahn ist 9 m breit, also 4.5 m Halbbreite — genau das ist der Eckradius. */
     [[-RGX,RGZ_N],[RGX,RGZ_N],[-RGX,RGZ_S],[RGX,RGZ_S]].forEach(function(E){
@@ -3566,7 +3566,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     if(i%2===0){var ki9=new THREE.Mesh(new THREE.BoxGeometry(0.6,0.5,0.6),stdMat(0x9a7a4a,0.85));
       ki9.position.set(-2.2,0.25,-3.05);ki9.rotation.y=0.4+i;ki9.castShadow=true;g.add(ki9);}
     g.position.set(sh[0],0,SZ+32);g.rotation.y=Math.PI;scene.add(g);}); // 24.5 -> 32: Front stand quasi auf dem Trottoir
-  // ---- Skyline: Wolkenkratzer mit Glasfassade (weit draußen) ----
+  // ---- Skyline: Wolkenkratzer mit Glasfassade (weit draussen) ----
   // Fassaden-Kachel (1 Etage, 3 Fenster) als Textur: Tag = dunkles Glas in warmgrauer Wand,
   // Nacht = warme Fenster via separater Emissive-Map (nur einmal erzeugen, alle Tuerme teilen sie)
   var _twTex=null,_twEmi=null;
@@ -4005,10 +4005,10 @@ document.addEventListener("DOMContentLoaded",function(){});
   document.body.appendChild(kb);
   kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
     if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7){kb.style.display="none";return;} // Distanz frisch pruefen
-    if(geld<hs.preis){hint("\uD83D\uDCB8 Zu teuer \u2014 dir fehlen "+(hs.preis-geld)+" $");beep(200,.15,"sawtooth",.05);return;}
+    if(geld<hs.preis){hint("Zu teuer. Dir fehlen "+(hs.preis-geld)+" $");beep(200,.15,"sawtooth",.05);return;}
     geld-=hs.preis;geldSend();immo.push(i);if(MPs&&mpHost)netSend({t:"immo",i:i});if(!hs.flagge)immoFlagge(hs);stats.immobilien=(stats.immobilien||0)+1;updHUD(); /* 🩹 Schwarm-P3: Gast erfaehrt vom Hauskauf */
     beep(660,.09,"square",.05);setTimeout(function(){beep(880,.11,"square",.05);},90);
-    hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 $ Miete pro Tag");};})();
+    hint("Haus gekauft. Ab morgen 150 $ Miete pro Tag.");};})();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
 /* 🎢 ACHTERBAHN-STICH ALS FAHRSTRECKE. Der Stich bekam in #2326 Asphalt, aber
@@ -4143,10 +4143,10 @@ setTimeout(function baueVerkehr(){
        fest. Darum Platzhalter: `bereit` bleibt falsch, bis `viertelVerkehr()` die
        tatsaechliche Lage eingetragen hat. Wer hier Zahlen hinschreibt, schreibt den
        Wunschort hin, und der ist in dieser Datei schon dreimal der falsche gewesen. */
-    {axis:"viertel",vn:"Gewerbe Ost",       bereit:false,speed:5.0},
+    {axis:"viertel",vn:"Gewerbe Rietli",       bereit:false,speed:5.0},
     {axis:"viertel",vn:"Sportpark Sued",    bereit:false,speed:4.6},
     {axis:"viertel",vn:"Freizeitpark",      bereit:false,speed:4.4},
-    {axis:"viertel",vn:"Vergnuegungsviertel",bereit:false,speed:5.2},
+    {axis:"viertel",vn:"Chilbiplatz",bereit:false,speed:5.2},
     {axis:"viertel",vn:"Zoo",               bereit:false,speed:4.8},
     {axis:"viertel",vn:"Flughafen",         bereit:false,speed:5.4},
     {axis:"viertel",vn:"Bauernhof",         bereit:false,speed:4.2},
@@ -4287,7 +4287,7 @@ setTimeout(function baueVerkehr(){
      abstand ab Strassenmitte) und damit hinter den Gehweg ins Gras — eine Haltestelle
      gehoert an den Bordstein. */
   hs.position.set(-8,0.06,SZ+2.6);scene.add(hs);
-  // ---- Parkplätze am Straßenrand (Parktaschen mit Markierung + geparkten Autos) ----
+  // ---- Parkplätze am Strassenrand (Parktaschen mit Markierung + geparkten Autos) ----
   (function baueParkplaetze(){
     var padMat=new THREE.MeshStandardMaterial({color:0x44444c,roughness:0.95});
     var lineMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.8});lineMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(lineMat);
@@ -5171,7 +5171,7 @@ setTimeout(function baueGebaeude(){
      auf der Fahrbahn oder in einem anderen Haus landet. */
   var VIERTEL=[];
   /* ⚠️ GEMESSEN: `viertelFrei` prueft das BRUTTO-Rechteck (w x d) plus 6 m. Damit sind
-     drei Viertel still ausgefallen — "Gewerbe Ost", "Sportpark Sued" und "Bauernhof"
+     drei Viertel still ausgefallen — "Gewerbe Rietli", "Sportpark Sued" und "Bauernhof"
      meldeten nur ein console.warn und bauten NICHTS. Die Blocker lagen jedes Mal am
      aeussersten Rand und nie dort, wo das Viertel wirklich baut:
        Bauernhof (-40|-196, 170x90): Arztpraxis (-6|-152) und Bank (-66|-137) —
@@ -5353,7 +5353,7 @@ setTimeout(function baueGebaeude(){
       var laengs=cfg.achse==="x";
       /* ⚠️ EIN KREUZ IST KEINE FLAECHE. Gesucht wurde nur in VIER Richtungen — damit
          liegt alles Diagonale ausserhalb der Suche, egal wie weit sie reicht. Gemessen
-         mit `spiele-dev/tools/th-viertel.mjs`: fuer "Gewerbe Ost" fand das Kreuz auf
+         mit `spiele-dev/tools/th-viertel.mjs`: fuer "Gewerbe Rietli" fand das Kreuz auf
          260 m KEINEN strassenfreien Ort, ein Ringtest mit 16 Richtungen aber einen bei
          (250|-78), nur 110 m entfernt. Die Welt war nie zu eng — die Suche war es.
          Genau daraus stammt die alte Notiz "das Viertel passt einfach nirgends hin, nur
@@ -5366,7 +5366,7 @@ setTimeout(function baueGebaeude(){
                        :[[cfg.x,cfg.z+d],[cfg.x,cfg.z-d],[cfg.x+d,cfg.z],[cfg.x-d,cfg.z]];
         /* ⚠️ `w+=2` waere hier falsch: das laesst nur die UNGERADEN Achtel uebrig und
            ueberspringt ausgerechnet die vier 45-Grad-Diagonalen (w = 2, 6, 10, 14).
-           Gemessen: genau dort lag der Platz fuer "Gewerbe Ost" (250|-78, 110 m) — mit
+           Gemessen: genau dort lag der Platz fuer "Gewerbe Rietli" (250|-78, 110 m) — mit
            dem Zweierschritt landete es stattdessen 170 m entfernt. Also alle Achtel
            ausser den Achsen, die oben schon drin sind. */
         for(var w=1;w<16;w++){
@@ -5678,7 +5678,7 @@ setTimeout(function baueGebaeude(){
        ist, `viertelPasst()` die Landstrasse und die sechs Zubringer beizubringen — das
        verschiebt aber auch den Bauernhof, dessen Aecker, Zaeune, Traktor und Heuballen
        auf festen Koordinaten liegen. Das ist eine eigene Runde wert. */
-    var _go = viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:180,achse:"z",boden:"platz",
+    var _go = viertel({name:"Gewerbe Rietli",x:172,z:0,w:96,d:180,achse:"z",boden:"platz",
       anschluss:[112,0],abstand:13,luecke:10,rand:14,
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
          richtig, die aelteren th20/th22/th23 standen noch mit Phantasiewerten da:
@@ -5756,7 +5756,7 @@ setTimeout(function baueGebaeude(){
       /* Die Stadthaeuser haengen am Ostviertel, ihre Kartenmarke stand aber fest auf
          (172|60) — also 60 m noerdlich des WUNSCH-Orts. Gleicher Versatz, echte Lage. */
       if(typeof WORLD_POIS!=="undefined")WORLD_POIS.forEach(function(P){
-        if(P[3]==="Stadthaeuser Ost"){P[0]=_go.x;P[1]=_go.z+60;}});
+        if(P[3]==="Bürgli"){P[0]=_go.x;P[1]=_go.z+60;}});
     }
     /* 🏙️ STADTVIERTEL SUEDOST — die Stadthaeuser und Fahrzeuge aus Charge 37.
        Sie lagen bisher nur in models/, im Spiel sah sie niemand. Standort so
@@ -5878,7 +5878,7 @@ setTimeout(function baueGebaeude(){
        57 gueltige Plaetze; der stadtnaechste ist (160|220) mit r = 272, direkt neben dem
        Sportpark. Dessen Strasse laeuft auf der Mittelachse bei z = 236, das Ostende bei
        x = 90 — daher der kurze Anschluss dorthin statt quer ueber Land. */
-    viertel({name:"Vergnuegungsviertel",x:160,z:220,w:150,d:90,achse:"x",boden:"platz",
+    viertel({name:"Chilbiplatz",x:160,z:220,w:150,d:90,achse:"x",boden:"platz",
       anschluss:[80,236],abstand:12,luecke:12,rand:14,
       bauten:[{file:"th12_bowlingbahn.glb",h:6, w:32.7,d:25.8},
               {file:"th12_casino.glb",     h:8, w:27.6,d:26.0},
@@ -6711,10 +6711,10 @@ setTimeout(function baueGebaeude(){
       viertelMoeblieren(v("Flughafen"),
         [["th4_muelleimer.glb",0.9],["th31_schild_rund.glb",1.6],["lp_parkbank.glb",0.9],
          ["th4_muelleimer.glb",0.9],["th21_bauzaun_modul.glb",2.0],["th31_schild_rund.glb",1.6]]);
-      viertelMoeblieren(v("Gewerbe Ost"),
+      viertelMoeblieren(v("Gewerbe Rietli"),
         [["th6_muellcontainer.glb",1.2],["th4_muelleimer.glb",0.9],["th2_gartenbank.glb",0.8],
          ["lp_parkbank.glb",0.9],["th6_muellcontainer.glb",1.2],["th4_muelleimer.glb",0.9]]);
-      viertelMoeblieren(v("Vergnuegungsviertel"),
+      viertelMoeblieren(v("Chilbiplatz"),
         [["th4_muelleimer.glb",0.9],["lp_parkbank.glb",0.9],["th33_blumenrabatte.glb",0.9],
          ["th4_muelleimer.glb",0.9],["th33_parklaterne.glb",5.4],["lp_parkbank.glb",0.9]]);
     },600);
@@ -8502,7 +8502,7 @@ setTimeout(function baueGebaeude(){
   bau("th4_birke.glb",5.2,-70,0,64,0.3,false);bau("th4_birke.glb",4.8,-110,0,62,1.1,false);bau("th4_birke.glb",5.5,-68,0,70,2.2,false);   /* war (-100|98) — das ist seit Charge 42 die Turnhalle */
   // Tannen-Gruppe Nordwesten + Norden
   bau("th4_tanne.glb",6,-90,0,-70,0,false);bau("th4_tanne.glb",5.2,-98,0,-58,0.7,false);bau("th4_tanne.glb",6.6,-80,0,-84,1.5,false);bau("th4_tanne.glb",5.6,30,0,-84,2.4,false);
-  // Herbst-Ahorne + große Eichen als Landmarks
+  // Herbst-Ahorne + grosse Eichen als Landmarks
   bau("th4_ahorn.glb",5.1,58,0,76,0.5,false);bau("th4_ahorn.glb",5.4,-34,0,-80,1.8,false);
   bau("th4_eiche.glb",7.4,0,0,-82,0.9,false);/* ⚠️ Hier stand eine Einzel-Eiche (z 74): KOMPLETT im Stadthaus (-46|80,
      Box z 70…90). Ausweichen unmoeglich — zwischen Haupt-S-Band (bis z 68,8)
@@ -8512,7 +8512,7 @@ setTimeout(function baueGebaeude(){
   bau("th4_busch_blueten.glb",1.15,90,0,-30,0,false);bau("th4_busch_blueten.glb",1.1,10,0,65,1,false);
   // Verkehrsschilder auf den Trottoirs
   bau("th4_schild_stop.glb",2.4,-58,0,-50.2,0,false);bau("th4_schild_tempo.glb",2.45,40,0,50.2,Math.PI,false);
-  // Moderne Laternen an der Süd-Außenseite
+  // Moderne Laternen an der Süd-Aussenseite
   bau("th4_laterne_modern.glb",4.5,-45,0,64.2,Math.PI,false);bau("th4_laterne_modern.glb",4.5,45,0,64.2,Math.PI,false);
   // Mülleimer (Haltestelle + Spielplatz)
   bau("th4_muelleimer.glb",0.9,-5,0,50.2,0,false);bau("th4_muelleimer.glb",0.9,88,0,7,0,false);
@@ -8908,7 +8908,7 @@ setTimeout(function baueGebaeude(){
      ⚠️ GEMESSEN: die Bank stand bisher NIRGENDS in der Welt. `th23_bank.glb` gibt
      es seit Charge 23 (Kassenhalle mit vier Schaltern, drei Beratungskabinen
      hinter Glas, Geldautomaten-Nische, Tresortuer, Marmorboden) — sie gehoert
-     zum Viertel "Gewerbe Ost", und das wird nicht gebaut: im Spiel sind NULL
+     zum Viertel "Gewerbe Rietli", und das wird nicht gebaut: im Spiel sind NULL
      th23-Bauten geladen und `window._bankPos` ist undefined. Der Koop-Coup lief
      damit gegen seine Fallback-Koordinate (172|-20), wo nichts steht: ein
      Bankueberfall auf freiem Feld.
@@ -9511,7 +9511,7 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
       var lim=108;if(Math.abs(an.x)>lim||Math.abs(an.z)>lim){an.head+=Math.PI;an.x=Math.max(-lim,Math.min(lim,an.x));an.z=Math.max(-lim,Math.min(lim,an.z));}}
     an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.head+(an.yaw||0);
     var lg=an.mesh.userData.legs;if(lg){var sw=Math.sin(an.walkT)*0.5;lg[0].rotation.x=sw;lg[3].rotation.x=sw;lg[1].rotation.x=-sw;lg[2].rotation.x=-sw;}}}
-// ---- Heißluftballon, der über die Stadt zieht ----
+// ---- Heissluftballon, der über die Stadt zieht ----
 setTimeout(function baueBallon(){
   var bg=new THREE.Group();
   var huelle=new THREE.Mesh(new THREE.SphereGeometry(4,18,14),new THREE.MeshStandardMaterial({color:0xff5a6a,roughness:0.5}));huelle.scale.set(1,1.24,1);huelle.position.y=6;huelle.castShadow=true;bg.add(huelle);
@@ -9636,14 +9636,14 @@ function updFest(dt,now){var FE=window._fest;if(!FE)return;
   FE.grp.visible=aktiv;
   if(!aktiv)return;
   for(var i=0;i<FE.lamps.length;i++)FE.lamps[i].emissiveIntensity=0.8+Math.sin(now*0.004+i)*0.4;
-  if(FE.hintTag!==tag){FE.hintTag=tag;hint("🎆 Stadtfest am See! Lampions, Feuerwerk — kommt vorbei!");}
+  if(FE.hintTag!==tag){FE.hintTag=tag;hint("Stadtfest am See. Lampions ab acht, Feuerwerk um zehn.");}
   if(window._dorfNacht&&window._fw&&(window._fw.rockets.length+window._fw.bursts.length)<6&&Math.random()<dt*0.5)
     launchFirework(FE.x+(Math.random()-0.5)*24,FE.z+(Math.random()-0.5)*18);
   FE.cd-=dt;
   if((!MPs||mpHost)&&FE.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
     if(sq.mesh.visible&&Math.hypot(sq.x-FE.x,sq.z-FE.z)<14){FE.cd=30;
       sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+12);});
-      simEmoji(sq,"🎆");beep(660,.08,"sine",.04);hint("🎆 Festlaune! +Spaß");break;}}}}
+      simEmoji(sq,"🎆");beep(660,.08,"sine",.04);hint("Festlaune. +Spass");break;}}}}
 // ---- Brunnen (Landmark, hebt die Laune) ----
 setTimeout(function baueBrunnen(){
   var g=new THREE.Group();var stein=new THREE.MeshStandardMaterial({color:0xbfc4cc,roughness:0.6});
@@ -9689,7 +9689,7 @@ function updBrunnen(dt,now){var B=window._brunnen;if(!B)return;
   if((!MPs||mpHost)&&B.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
     if(sq.mesh.visible&&Math.hypot(sq.x-B.x,sq.z-B.z)<3.4){B.cd=25;
       sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+14);});
-      if(typeof hearts==="function")hearts(B.x,B.z);simEmoji(sq,"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");if(MPs)netSend({t:"brunnen",si:q});break;}}}}
+      if(typeof hearts==="function")hearts(B.x,B.z);simEmoji(sq,"✨");beep(720,.08,"sine",.04);hint("Kalt und klar, Brunnenwasser. +Laune");if(MPs)netSend({t:"brunnen",si:q});break;}}}}
 /* ═══════════ 🦆 AMBIENTE: Enten, Fahnen, Falter, Nachthimmel ═══════════════════
    Vier kleine, staendig sichtbare Bewegungen — zusammen unter zehn Zeichenaufrufe:
    * ENTEN auf dem Seepark-See (3 InstancedMesh fuer 5 Enten). Wer ans Ufer tritt,
@@ -9776,8 +9776,8 @@ function updEnten(dt,now){
         sims[qi].needs.spass=Math.min(100,sims[qi].needs.spass+(zwei?18:8));});
       beep(660,.08,"sine",.04);
       if(zwei){setTimeout(function(){beep(880,.10,"sine",.05);},110);
-        hint("🦆👫 Zu zweit gefüttert — der ganze Schwarm kommt! +Laune");}
-      else hint("🦆 Die Enten kommen angeschwommen!");
+        hint("Zu zweit gefüttert. Jetzt kommt der ganze Schwarm. +Laune");}
+      else hint("Die Enten haben dich gesehen.");
       if(MPs)netSend({t:"enten",x:zx9,z:zz9,si:amUfer[0],zwei:zwei,wer:amUfer});
     }
   }
@@ -9940,17 +9940,17 @@ function updClub(dt){
   var s9=sims[meinSi?meinSi():0]; if(!s9)return;
   var drin=Math.hypot(s9.x-C.tanzX,s9.z-C.tanzZ)<C.tanzR;
   if(drin&&!_clubHint.drin&&!TANZ.on&&!MG.on&&!KOCH.on&&!ANGEL.on)
-    hint("💃 Tanzfläche — tippen und tanzen!");
+    hint("Tanzfläche. Tippen im Takt.");
   _clubHint.drin=drin;
 }
 function updEis(dt,now){
   EIS.cd-=dt;
   if((!MPs||mpHost)&&EIS.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
     if(!sq.mesh.visible||Math.hypot(sq.x-EIS.x,sq.z-EIS.z)>=3.5)continue;
-    if(geld<3){EIS.cd=10;hint("🍦 Eis kostet 3 $ — zu wenig Geld");break;}
+    if(geld<3){EIS.cd=10;hint("Eine Kugel kostet 3 $. So viel hast du nicht.");break;}
     EIS.cd=25;geld-=3;geldSend();stats.eis=(stats.eis||0)+1;updHUD();
     if(typeof hearts==="function")hearts(EIS.x,EIS.z);simEmoji(sq,"🍦");
-    eisJingle();hint("🍦 Eine Kugel für alle! −3 $");
+    eisJingle();hint("Eine Kugel für alle. −3 $");
     if(MPs)netSend({t:"eis",si:q});break;}}
 }
 /* ── 🪁 DRACHEN ueber dem Sportplatz ─────────────────────────────────────────
@@ -10198,7 +10198,7 @@ function anpfiff(){
   BALL.stand=[0,0];BALL.anpfT=0;anzeigeUpd();
   beep(880,.12,"square",.05);setTimeout(function(){beep(880,.12,"square",.05);},180);
   setTimeout(function(){beep(1175,.22,"square",.05);},360);
-  hint("🏁 Anpfiff — neues Spiel!");
+  hint("Anpfiff.");
   if(MPs&&mpHost)netSend({t:"anpfiff"});
 }
 function tor(seite){
@@ -10208,7 +10208,7 @@ function tor(seite){
   var tx=seite?31:75;
   if(typeof launchFirework==="function")launchFirework(tx,155);
   beep(660,.09,"square",.05);setTimeout(function(){beep(880,.14,"square",.05);},140);
-  hint("⚽ TOOOR! Stand "+B.stand[0]+" : "+B.stand[1]);
+  hint("Tor! Stand "+B.stand[0]+" : "+B.stand[1]);
   if(MPs&&mpHost)netSend({t:"tor",st:B.stand.slice(),tx:tx});
   ballReset();
 }
@@ -10505,7 +10505,7 @@ var KATALOG={
   {id:"messingtopf",n:"⭐ Messingtopf",e:"🍲",cost:140,size:[1,1],norm:1,zielH:0.3},
   {id:"holzschale",n:"⭐ Holzschale",e:"🥣",cost:120,size:[1,1],norm:1,zielH:0.15},
   /* 🆕 gemessen 3,24 x 2,23 x 0,71 — die breiteste Zeile im Katalog, darum [2,1]. */
-  {id:"kuechenzeile_gr",n:"⭐ Große Küchenzeile",e:"🍽️",cost:1450,size:[2,1],datei:"th11_kuechenzeile.glb",norm:1,zielH:2.2,
+  {id:"kuechenzeile_gr",n:"⭐ Grosse Küchenzeile",e:"🍽️",cost:1450,size:[2,1],datei:"th11_kuechenzeile.glb",norm:1,zielH:2.2,
    use:{need:"hunger",pose:"stand",off:[0,1],dur:6}}],
  bad:[
   {id:"toilette",n:"Toilette",e:"🚽",cost:260,size:[1,1],use:{need:"hygiene",pose:"sit",off:[0,0],dur:4}},
@@ -10537,7 +10537,7 @@ var KATALOG={
   {id:"deckenlampe",n:"⭐ Deckenlampe",e:"💡",cost:240,size:[1,1],norm:1,zielH:0.4,light:1},
   {id:"keramiktopf",n:"⭐ Keramiktopf",e:"🪴",cost:150,size:[1,1],norm:1,zielH:0.35},
   {id:"kommode",n:"⭐ Kommode",e:"🗄️",cost:460,size:[1,1],norm:1,zielH:0.85},
-  {id:"monstera2",n:"⭐ Große Monstera",e:"🪴",cost:280,size:[1,1],norm:1,zielH:1.2},
+  {id:"monstera2",n:"⭐ Grosse Monstera",e:"🪴",cost:280,size:[1,1],norm:1,zielH:1.2},
   {id:"calathea",n:"⭐ Korbmarante",e:"🌿",cost:240,size:[1,1],norm:1,zielH:0.6},
   {id:"kamera",n:"⭐ Foto-Kamera",e:"📷",cost:160,size:[1,1],norm:1,zielH:0.2},
   {id:"bild",n:"⭐ Bilderrahmen",e:"🖼️",cost:180,size:[1,1],norm:1,zielH:0.5},
@@ -10571,7 +10571,7 @@ var KATALOG={
   {id:"holzbank",n:"⭐ Holzbank",e:"🪑",cost:220,size:[2,1],norm:1,zielH:0.85,use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
   {id:"gazanie",n:"⭐ Gazanie",e:"🌼",cost:120,size:[1,1],norm:1,zielH:0.25},
   {id:"holzkiste",n:"⭐ Holzkiste",e:"📦",cost:90,size:[1,1],norm:1,zielH:0.5},
-  {id:"strassenlaterne",n:"⭐ Kandelaber (Straße)",e:"🚦",cost:380,size:[1,1],norm:1,zielH:4.6,light:2}] /* 💡 grösser + hellere Strasse; kleine Garten-Laterne = Gehweg */
+  {id:"strassenlaterne",n:"⭐ Kandelaber (Strasse)",e:"🚦",cost:380,size:[1,1],norm:1,zielH:4.6,light:2}] /* 💡 grösser + hellere Strasse; kleine Garten-Laterne = Gehweg */
 };
 var CATS=[["alle","🧰 Alles"],["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
@@ -10694,7 +10694,7 @@ function hetzeStart(){
   KOMBO.n=0;KOMBO.t=0;KOMBO.verdient=0;KOMBO._neuerRekord=false;komboHudUpd();
   var p1=document.getElementById("hetzePanel");if(p1)p1.style.display="none";
   var p2=document.getElementById("achPanel");if(p2)p2.style.display="none";
-  hint("🏁 Hetze laeuft — "+HETZE.dauer+" Sekunden, jeder Verdienst zaehlt!");
+  hint("Hetze läuft. "+HETZE.dauer+" Sekunden, jeder Verdienst zaehlt.");
   if(typeof beep==="function")beep(660,.11,"square",.05);
   hetzeHudUpd();}
 function hetzeTakt(dt){
@@ -10791,7 +10791,7 @@ var ACH=[
  ["verlobt","💎","Verlobt","Den Antrag erlebt",function(){return verlobt;}],
  ["hochzeit","💍","Frisch vermählt","Unterm Rosenbogen geheiratet",function(){return verheiratet;}],
  ["baby","👶","Nachwuchs","Das erste Baby ist da",function(){return kinder.length>=1;}],
- ["grossfamilie","👨‍👩‍👧‍👦","Großfamilie","3 Kinder im Haus",function(){return kinder.length>=3;}],
+ ["grossfamilie","👨‍👩‍👧‍👦","Grossfamilie","3 Kinder im Haus",function(){return kinder.length>=3;}],
  ["hund","🐕","Bester Freund","Einen Hund adoptiert",function(){return !!haustier;}],
  ["gaertner","🥕","Grüner Daumen","5 Ernten eingefahren",function(){return stats.ernten>=5;}],
  ["auto","🚙","Mobil","Ein Auto gekauft",function(){return !!window.autoRec;}],
@@ -10799,7 +10799,7 @@ var ACH=[
  ["gauner","🕶️","Kleinganove","Ersten Coup geschafft",function(){return stats.coupsOk>=1;}],
  ["bankraeuber","🏦","Profi-Ganove","Ganoven-Level 2 erreicht",function(){return skills.krimi.lv>=2;}],
  ["dealer","🌿","Diskreter Händler","Eine Ernte diskret verkauft",function(){return stats.growSold>=1;}],
- ["musiker","🎸","Straßenstar","Perfekte Straßenmusik-Show",function(){return stats.buskPerfekt>=1;}],
+ ["musiker","🎸","Strassenstar","Perfekte Strassenmusik-Show",function(){return stats.buskPerfekt>=1;}],
  ["koch","🍳","Sternekoch","Ein perfektes Menü gekocht",function(){return (stats.kochPerfekt||0)>=1;}],
  ["angler","🎣","Petri Heil","5 Fische geangelt",function(){return (stats.fische||0)>=5;}],
  ["taenzer","💃","Tanzfieber","Eine perfekte Tanz-Session",function(){return (stats.tanzPerfekt||0)>=1;}],
@@ -10897,7 +10897,7 @@ function achNahPruef(a2){
   var s=achStand(a2[0]);
   if(!s||!s.wort||s.rest!==1)return;
   _achNah[a2[0]]=1;
-  hint("🎯 Nur noch 1 "+s.wort+" bis „"+a2[2]+"“!");
+  hint("Nur noch 1 "+s.wort+" bis „"+a2[2]+"“.");
   if(typeof beep==="function")beep(700,.08,"triangle",.045);}
 function achNahOffen(){
   for(var k in _achNah)if(_achNah[k]&&!achDone[k])return true;
@@ -11012,14 +11012,14 @@ function missCheck(){
     try{ wert9=MISS_POOL[m.i][3](); }
     catch(em){ if(!_achLaut["m"+m.i]){_achLaut["m"+m.i]=1;console.warn("Missions-Zaehler wirft:",m.i,em);} }
     if(wert9!==null&&wert9-m.basis>=m.ziel){m.done=true;neu=true;
-      verdiene(180);hint("🎯 Mission geschafft: "+m.e+" "+m.tx+"  +180 $");
+      verdiene(180);hint("Mission erledigt: "+m.e+" "+m.tx+"  +180 $");
       if(typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);
       beep(700,.1,"triangle",.05);}
     if(!m.done)alle=false;});
   if(alle&&!missHeute.bonus){missHeute.bonus=true;neu=true;
     var bs=250+Math.min(500,missSerie*50);
     geld+=bs;geldSend();
-    hint("🏆 Alle Tages-Missionen geschafft! Bonus +"+bs+" $"+(missSerie>0?" · 🔥 "+(missSerie+1)+". Tag in Folge!":""));
+    hint("Alle Tagesmissionen erledigt. Bonus +"+bs+" $"+(missSerie>0?" · 🔥 "+(missSerie+1)+". Tag in Folge.":""));
     feier(3);}
   if(neu&&MPs&&mpHost)netSend({t:"tmiss",m:missHeute,ser:missSerie});
 }
@@ -11368,7 +11368,7 @@ function applyFurn(id,gx,gy,rot,fid){
       m.position.y=-bb10.min.y+0.012;}
     if(def.korr){m.scale.multiplyScalar(def.korr);
       var bbk=new THREE.Box3().setFromObject(m);m.position.y=-bbk.min.y+0.012;}
-    // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Größe passt (1 Einheit = 1m, Zelle 2m)
+    // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Grösse passt (1 Einheit = 1m, Zelle 2m)
     scene.add(m);rec.mesh=m;plopFx(m,cx(gx),cz(gy));
     if(rec.lv>1){var cv7=document.createElement("canvas");cv7.width=128;cv7.height=64;var c7=cv7.getContext("2d");
       c7.font="44px sans-serif";c7.textAlign="center";c7.fillText(rec.lv>2?"⭐⭐":"⭐",64,48);
@@ -11476,7 +11476,7 @@ function furnAt(gx,gy){
   return null;}
 function editVerschiebe(nx,ny){
   var f9=editSel;if(!f9)return false;
-  if(!footprintFree(f9.def,nx,ny,f9.rot,f9)){hint("Da ist kein Platz");return false;}
+  if(!footprintFree(f9.def,nx,ny,f9.rot,f9)){hint("Da ist kein Platz.");return false;}
   var _ix=furn.indexOf(f9);if(_ix<0){editHide();return false;} /* 🩹 Schwarm-P2: im Koop schon geloescht → splice(-1,1) haette ein FREMDES Moebel zerstoert */
   var ox=f9.gx,oy=f9.gy,rot=f9.rot,id=f9.id,lv0=f9.lv||1,aw=f9.wachs;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
@@ -11484,7 +11484,7 @@ function editVerschiebe(nx,ny){
   netSend({t:"del",x:ox,y:oy});
   doPlaceFurn(id,nx,ny,rot,false,undefined,lv0);
   _restoreLvWachs(furn[furn.length-1],lv0,aw,f9.gratis,f9.bezahlt);
-  editHide();hint("↔️ Umgestellt!");beep(620,.07,"triangle",.05);
+  editHide();hint("Umgestellt.");beep(620,.07,"triangle",.05);
   return true;}
 function _restoreLvWachs(rec,lv0,alteWachs,gratis9,bez9){ /* 🩹 Schwarm-P1: Verschieben/Drehen loeschte Stufe (Lv2/3→1) und Wachstums-Fortschritt */
   if(!rec)return;
@@ -11496,7 +11496,7 @@ function _restoreLvWachs(rec,lv0,alteWachs,gratis9,bez9){ /* 🩹 Schwarm-P1: Ve
     if(rec.grow&&rec.krauts)rec.krauts.forEach(function(kr9,k9){kr9.scale.setScalar(scU*(0.85+(k9%3)*0.1));});
     if(rec.beet&&rec.sprossen){var sbU=0.05+alteWachs*0.95;rec.sprossen.forEach(function(sp9,k9){sp9.scale.setScalar(sbU*(0.8+((k9*7)%5)*0.08));
       if(alteWachs>0.85)sp9.material.color.setHex(0xe8722a);});}}}
-document.getElementById("edMove").onclick=function(){editMove=true;hint("Tippe auf den neuen Platz");};
+document.getElementById("edMove").onclick=function(){editMove=true;hint("Tippe auf den neuen Platz.");};
 document.getElementById("edRot").onclick=function(){
   var f9=editSel;if(!f9)return;
   var _ir=furn.indexOf(f9);if(_ir<0){editHide();return;} /* 🩹 Schwarm-P2 */
@@ -11508,9 +11508,9 @@ document.getElementById("edRot").onclick=function(){
 document.getElementById("edUp").onclick=function(){
   var f9=editSel;if(!f9)return;
   var lv0=f9.lv||1;
-  if(lv0>=3){hint("⭐⭐ Ist schon Maximal-Stufe!");return;}
+  if(lv0>=3){hint("Höher geht nicht.");return;}
   var kost=Math.round(f9.def.cost*0.6);
-  if(geld<kost){hint("💰 Aufwerten kostet "+kost+" $");return;}
+  if(geld<kost){hint("Aufwerten kostet "+kost+" $");return;}
   geld-=kost;geldSend();
   var _iu=furn.indexOf(f9);if(_iu<0){editHide();return;} /* 🩹 Schwarm-P2 */
   var gx=f9.gx,gy=f9.gy,rot=f9.rot,id=f9.id;
@@ -11540,12 +11540,12 @@ document.getElementById("edUp").onclick=function(){
       if(editSel.beet&&editSel.sprossen){var sbU=0.05+alteWachs*0.95;editSel.sprossen.forEach(function(sp9,k9){sp9.scale.setScalar(sbU*(0.8+((k9*7)%5)*0.08));
         if(alteWachs>0.85)sp9.material.color.setHex(0xe8722a);});}}}
   editShow(editSel);
-  hint("⬆️ Aufgewertet auf Stufe "+(lv0+1)+" — wirkt besser & steigert den Haus-Wert!");
+  hint("Aufgewertet auf Stufe "+(lv0+1)+" — wirkt besser & steigert den Haus-Wert.");
   beep(700,.08,"triangle",.05);setTimeout(function(){beep(940,.1,"triangle",.06);},110);updHUD();};
 document.getElementById("edSell").onclick=function(){
   var f9=editSel;if(!f9)return;
   var gx=f9.gx,gy=f9.gy;editHide();
-  if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
+  if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("Verkauft. Die Hälfte gibt es zurück.");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
   furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0,g:f.gratis?1:0,b:f.bezahlt||0};}),
@@ -11655,35 +11655,35 @@ function onNetMsg(m){
   else if(m.t==="tragStop"&&mpHost){if(TRAGM)tragEnde(false);}      /* Gast bittet um Abbruch */
   else if(m.t==="trag"){if(m.on){if(!mpHost)tragArm(m.x,m.z);}else{if(TRAGM){scene.remove(TRAGM.g);scene.remove(TRAGM.ring);TRAGM=null;
     var th=document.getElementById("tragHud");if(th)th.style.display="none";}
-    if(m.ok)hint("📦 Geschafft! Das Sperrgut steht.");}}
+    if(m.ok)hint("Das Sperrgut steht.");}}
   else if(m.t==="tragP"&&!mpHost&&TRAGM){TRAGM.x=m.x;TRAGM.z=m.z;}
   else if(m.t==="hide"&&mpHost&&!m.on){if(hideSpiel)endeVerstecken(!!m.found);} /* 🩩 Schwarm-7: Gast-Abbruch wurde verworfen — Host hing in der Runde */
   else if(m.t==="fahndung"&&mpHost){wantedPlus(m.n|0);polizeiPending=true;npcTimer=Math.min(npcTimer,5);} /* 🩩 Schwarm-7: Gast-Verbrechen zaehlen jetzt */
   else if(m.t==="hide"&&!mpHost){if(m.on){hideSpiel={phase:"gast",t:0};
       var gh=document.getElementById("hideHud");gh.style.display="block";gh.textContent="🙈 VERSTECK DICH! Der Sucher kommt gleich …";
-      hint("🙈 VERSTECK DICH! Du hast 20 Sekunden …");beep(600,.1,"sine",.05);}
-    else{hideSpiel=null;document.getElementById("hideHud").style.display="none";if(m.found){hint("🎉 Gefunden! +100 $ — alle haben Spaß!");beep(880,.09,"square",.05);}}}
-  else if(m.t==="mitfahrt"&&!mpHost)hint(m.on?"🚗👫 Du fährst als Beifahrer mit!":"🚶 Ausgestiegen — ihr seid wieder zu Fuß");
+      hint("Versteck dich. 20 Sekunden.");beep(600,.1,"sine",.05);}
+    else{hideSpiel=null;document.getElementById("hideHud").style.display="none";if(m.found){hint("Gefunden. +100 $");beep(880,.09,"square",.05);}}}
+  else if(m.t==="mitfahrt"&&!mpHost)hint(m.on?"🚗👫 Du fährst als Beifahrer mit.":"🚶 Ausgestiegen — ihr seid wieder zu Fuss");
   else if(m.t==="coupStart"){coupStart(true);}
   else if(m.t==="coupBeute"&&!mpHost){COUP.beute=m.v|0;} /* 🩹 Schwarm-4: Gast zeigt die Host-Beute im Coup-HUD */
   else if(m.t==="coasterStart"){var C9=window._coaster;if(C9&&!C9.faehrt){C9.faehrt=true;C9.v=5;C9.t=0;C9.runden=0;}}
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
   else if(m.t==="ball"&&!mpHost){netAnnehmen(BALL,{x:m.x,z:m.z},performance.now());}
   else if(m.t==="anpfiff"&&!mpHost){BALL.stand=[0,0];anzeigeUpd();
-    beep(880,.12,"square",.05);hint("🏁 Anpfiff — neues Spiel!");}
+    beep(880,.12,"square",.05);hint("Anpfiff.");}
   else if(m.t==="tor"&&!mpHost){BALL.stand=m.st;anzeigeUpd();ballReset();BALL.net=null;BALL.netV=null;
     if(typeof launchFirework==="function")launchFirework(m.tx,155);
-    beep(660,.09,"square",.05);hint("⚽ TOOOR! Stand "+m.st[0]+" : "+m.st[1]);}
+    beep(660,.09,"square",.05);hint("Tor! Stand "+m.st[0]+" : "+m.st[1]);}
   else if(m.t==="eis"&&!mpHost){if(typeof hearts==="function")hearts(EIS.x,EIS.z);
-    if(sims[m.si])simEmoji(sims[m.si],"🍦");eisJingle();hint("🍦 Eine Kugel für alle! −3 $");}
+    if(sims[m.si])simEmoji(sims[m.si],"🍦");eisJingle();hint("Eine Kugel für alle. −3 $");}
   else if(m.t==="enten"&&!mpHost){ENTEN.ziel={x:m.x,z:m.z};ENTEN.zielT=m.zwei?12:8;
     if(typeof hearts==="function")hearts(m.x,m.z);
     (m.wer||[m.si]).forEach(function(qi){if(sims[qi])simEmoji(sims[qi],"🦆");});
     beep(660,.08,"sine",.04);
     if(m.zwei){setTimeout(function(){beep(880,.10,"sine",.05);},110);
-      hint("🦆👫 Zu zweit gefüttert — der ganze Schwarm kommt! +Laune");}
-    else hint("🦆 Die Enten kommen angeschwommen!");}
-  else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
+      hint("Zu zweit gefüttert. Jetzt kommt der ganze Schwarm. +Laune");}
+    else hint("Die Enten haben dich gesehen.");}
+  else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("Kalt und klar, Brunnenwasser. +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
   else if(m.t==="hallo"&&mpHost){
     LOBBY.spieler=[myName,(m.n||"Gast")];lobbyNamenUpd();lobbyStartKnopf(!LOBBY.gestartet);
@@ -11714,7 +11714,7 @@ function onNetMsg(m){
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
   else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;}
   else if(m.t==="immo"&&!mpHost){if(immo.indexOf(m.i)<0)immo.push(m.i);} /* 🩹 Schwarm-P3: Gast sieht Hauskaeufe des Hosts */
-  else if(m.t==="wanted"&&!mpHost){wanted=m.w|0;updWantedHUD();if(m.w>0)hint("🚨 Fahndung Stufe "+m.w+" — die Polizei sucht euch!");} /* 🩹 Schwarm-P2: Gast sieht den Fahndungsstand */
+  else if(m.t==="wanted"&&!mpHost){wanted=m.w|0;updWantedHUD();if(m.w>0)hint("Fahndung Stufe "+m.w+" — die Polizei sucht euch.");} /* 🩹 Schwarm-P2: Gast sieht den Fahndungsstand */
   else if(m.t==="growSold"&&mpHost){stats.growSold=(stats.growSold||0)+1;} /* 🩹 Gast-Deal zaehlt */
   else if(m.t==="growReset"&&mpHost){for(var _gi=0;_gi<furn.length;_gi++){var _gf=furn[_gi];
     if(_gf.gx===m.x&&_gf.gy===m.y&&_gf.grow){_gf.wachs=0;if(_gf.krauts)_gf.krauts.forEach(function(k5){k5.scale.setScalar(0.06);});break;}}}
@@ -11772,10 +11772,10 @@ function onNetMsg(m){
 }
 function partnerAct(k,silent,fromName){
   var who=fromName||myName;
-  if(k==="wink"){sims.forEach(function(s2){simEmoji(s2,"👋");});hint("👋 "+who+" winkt!");beep(660,.1,"triangle",.05);}
+  if(k==="wink"){sims.forEach(function(s2){simEmoji(s2,"👋");});hint(who+" winkt.");beep(660,.1,"triangle",.05);}
   else if(k==="gift"){sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+12);simEmoji(s2,"🎁");});
-    hearts(sims[0].x,sims[0].z);hint("🎁 "+who+" macht eine Überraschung — alle freuen sich!");}
-  else if(k==="dance"){loveEvent("dance",true);hint("💃 "+who+" schlägt einen Tanz vor!");}
+    hearts(sims[0].x,sims[0].z);hint(who+" macht eine Überraschung — alle freuen sich.");}
+  else if(k==="dance"){loveEvent("dance",true);hint(who+" schlägt einen Tanz vor.");}
   if(!silent)netSend({t:"pi",k:k,n:myName});}
 document.getElementById("piWink").onclick=function(){partnerAct("wink");};
 document.getElementById("piGift").onclick=function(){partnerAct("gift");};
@@ -11823,17 +11823,17 @@ var hideSpiel=null;
 var HIDESPOTS=[[-84,-44],[84,-24],[88,30],[-86,74],[26,70],[-30,70],[80,2],[-76,20],[50,-70],[-52,-70],[94,-12],[-98,-60]];
 function startVerstecken(){
   if(fahren)return;
-  if(hideSpiel){endeVerstecken(false);hint("\uD83D\uDE48 Runde abgebrochen");return;} // Toggle = Abbruch
+  if(hideSpiel){endeVerstecken(false);hint("Runde abgebrochen.");return;} // Toggle = Abbruch
   if(MPs&&mpHost){hideSpiel={phase:"hide",t:20};netSend({t:"hide",on:1});
     document.getElementById("hideHud").style.display="block";
-    hint("🙈 Verstecken! Dein Partner hat 20s zum Verstecken …");}
+    hint("Dein Partner hat 20 Sekunden zum Verstecken.");}
   else if(!MPs){var sp=HIDESPOTS[(Math.random()*HIDESPOTS.length)|0];
     var mia=sims[1];if(mia.target){mia.target.busy=false;mia.target=null;}mia.path=null;
     mia.x=sp[0];mia.z=sp[1];mia.state="idle";mia._hide=true;
     mia.mesh.position.set(sp[0],0,sp[1]); // Mesh sofort mit (sonst Doppelgaengerin am alten Ort)
     hideSpiel={phase:"seek",t:0};
     document.getElementById("hideHud").style.display="block";
-    hint("🙈 Mia hat sich versteckt — finde sie! 🔥=nah ❄️=weit");beep(600,.1,"sine",.05);}}
+    hint("Mia hat sich versteckt. Warm heisst nah, kalt heisst weit.");beep(600,.1,"sine",.05);}}
 function endeVerstecken(gefunden){
   if(!hideSpiel)return;hideSpiel=null;
   document.getElementById("hideHud").style.display="none";
@@ -11843,18 +11843,18 @@ function endeVerstecken(gefunden){
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+16);});
     if(mia)hearts(mia.x,mia.z);simEmoji(sims[0],"🎉");if(mia)simEmoji(mia,"😆");
     beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
-    hint("🎉 GEFUNDEN! +100 $ und alle haben Spaß!");updHUD();
+    hint("Gefunden. +100 $");updHUD();
     if(MPs)netSend({t:"hide",on:0,found:1});}}
 function updVerstecken(dt){
   if(!hideSpiel)return;
   var hud=document.getElementById("hideHud");
   if(hideSpiel.phase==="hide"){hideSpiel.t-=dt;
     hud.textContent="🙈 Partner versteckt sich … "+Math.max(0,hideSpiel.t|0)+"s";
-    if(hideSpiel.t<=0){hideSpiel.phase="seek";hint("🔎 Los! Finde deinen Partner — 🔥/❄️ hilft dir");}return;}
+    if(hideSpiel.t<=0){hideSpiel.phase="seek";hint("Finde deinen Partner. Warm heisst nah, kalt heisst weit.");}return;}
   if(hideSpiel.phase==="gast")return; // Gast versteckt sich nur — kein Heiss/Kalt
   var mp9=spielerPos(),mia=sims[1];if(!mia)return;
   var d=Math.hypot(mp9.x-mia.x,mp9.z-mia.z);
-  hud.textContent=d<6?"🔥🔥🔥 GANZ HEISS!":d<14?"🔥 heiß":d<30?"🌡️ warm":d<55?"❄️ kalt":"❄️❄️ eiskalt";
+  hud.textContent=d<6?"🔥🔥🔥 GANZ HEISS!":d<14?"🔥 heiss":d<30?"🌡️ warm":d<55?"❄️ kalt":"❄️❄️ eiskalt";
   if((!MPs||mpHost)&&d<3)endeVerstecken(true);}
 // ---- Koop-Mission: Sperrgut zu zweit tragen ----
 /* ⚠️ Warum eine ZWEITE Koop-Mission neben dem Bank-Coup? Der Coup prueft ZONEN:
@@ -11905,13 +11905,13 @@ function startTrag(){
        Und zurueckholen konnte er sie nicht: der Host reagiert auf `tragReq` nur, wenn er
        selbst KEINE Kiste hat. Der Auftrag steckte damit fest, bis der Host abbrach.
        Jetzt bittet der Gast, und der Host beendet fuer beide. */
-    if(MPs&&!mpHost){netSend({t:"tragStop"});hint("📦 Abbruch angefragt …");return;}
+    if(MPs&&!mpHost){netSend({t:"tragStop"});hint("Abbruch angefragt …");return;}
     tragEnde(false);return;}                            /* Knopf = Abbruch */
-  if(!MPs){hint("🤝 Sperrgut geht nur zu zweit — lade jemanden in deine Runde ein.");return;}
-  if(!mpHost){netSend({t:"tragReq"});hint("📦 Anfrage an den Gastgeber …");return;}
+  if(!MPs){hint("Sperrgut trägt niemand allein. Lade jemanden in deine Runde ein.");return;}
+  if(!mpHost){netSend({t:"tragReq"});hint("Anfrage an den Gastgeber …");return;}
   tragArm(TRAG_VON[0],TRAG_VON[1]);
   netSend({t:"trag",on:1,x:TRAG_VON[0],z:TRAG_VON[1]});
-  hint("📦 Sperrgut geliefert! Tragt es GEMEINSAM aufs Grundstueck — es bewegt sich nur, wenn ihr BEIDE dabei seid.");
+  hint("Sperrgut geliefert. Tragt es GEMEINSAM aufs Grundstueck — es bewegt sich nur, wenn ihr BEIDE dabei seid.");
   beep(520,.12,"triangle",.06);}
 function tragEnde(ok){
   if(!TRAGM)return;
@@ -11920,10 +11920,10 @@ function tragEnde(ok){
   if(ok){
     verdiene(TRAG_LOHN);stats.sperrgut=(stats.sperrgut||0)+1;
     sims.forEach(function(s){s.needs.spass=Math.min(100,s.needs.spass+12);});
-    hint("📦 Geschafft! Das Sperrgut steht — +"+TRAG_LOHN+" $.");
+    hint("Das Sperrgut steht. +"+TRAG_LOHN+" $.");
     beep(760,.1,"triangle",.06);setTimeout(function(){beep(1040,.15,"triangle",.07);},130);
     if(MPs&&mpHost)netSend({t:"trag",on:0,ok:1});}
-  else{hint("📦 Transport abgebrochen.");if(MPs&&mpHost)netSend({t:"trag",on:0,ok:0});}}
+  else{hint("Transport abgebrochen.");if(MPs&&mpHost)netSend({t:"trag",on:0,ok:0});}}
 function updTrag(dt){
   if(!TRAGM)return;
   var a=sims[0],b=sims[1];if(!a||!b)return;
@@ -11971,7 +11971,7 @@ setTimeout(function bauePickups(){
 function collectPickup(i){var pk=pickups[i];if(!pk||!pk.active)return;pk.active=false;pk.mesh.visible=false;
   verdiene(pk.reward);
   beep(880,.07,"square",.05);setTimeout(function(){beep(1180,.1,"square",.05);},80);
-  hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden! +"+pk.reward+" $");
+  hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden. +"+pk.reward+" $");
   if(pk.gift&&typeof hearts==="function")hearts(pk.x,pk.z);
   if(MPs)netSend({t:"pickup",i:i,on:false});
   setTimeout(function(){pk.active=true;pk.mesh.visible=true;if(MPs&&mpHost)netSend({t:"pickup",i:i,on:true});},90000);} // 90s statt 30s: Muenzen nicht farmbar, Jobs lohnen sich
@@ -12088,7 +12088,7 @@ var sims=simDefs.map(function(sd,i){
     state:"idle",pose:"stand",path:[],target:null,useT:0,walkT:0,net:null,emoji:null,emoT:0,glb:null,mixer:null,walkAction:null};});
 attachRealChar(sims[0],"th_mann.glb",1.48);
 attachRealChar(sims[1],"th_frau.glb",1.40);
-// ---- Partner-Marker (nur Koop): findet den Mitspieler in der großen Welt ----
+// ---- Partner-Marker (nur Koop): findet den Mitspieler in der grossen Welt ----
 var partnerMark=null,partnerDist=null,_pdCtx=null,_pdTex=null,_pdT=0,_pdLast=-1;
 function ensurePartnerMark(){
   if(partnerMark)return partnerMark;
@@ -12267,11 +12267,11 @@ function crimeBtnUpd(){
 function startCrime(jobIdx,withAccomplice,silent){
   if(crime.on)return;
   if(!silent&&window._coupTag===tag&&(window._coupHeute||0)>=2){
-    hint("👮 Zwei krumme Dinger an einem Tag reichen — die Stadt ist wachsam!");return;}
+    hint("Zwei krumme Dinger an einem Tag reichen. Die Stadt schaut jetzt genauer hin.");return;}
   var job=CRIMES[Math.min(jobIdx,CRIMES.length-1)];
   crime.on=true;crime.t=7;crime.job=job;crime.accomplice=!!withAccomplice;
   sims.forEach(function(s2){zielFrei(s2);s2.state="work";s2.pose="stand";s2.mesh.visible=false;});
-  hint("🕶️ "+job.n+" läuft … "+(crime.accomplice?"MIT Komplize!":""));
+  hint(job.n+" läuft … "+(crime.accomplice?"MIT Komplize.":""));
   if(!silent)netSend({t:"crimeGo",j:jobIdx,a:!!withAccomplice});
   updHUD();}
 function zielFrei(s9){if(s9.target&&s9.target.busy!==undefined)s9.target.busy=false;s9.target=null;s9.path=[];}
@@ -12363,7 +12363,7 @@ function updBeete(dt){
           f3.wachs=0;f3.sprossen.forEach(function(sp6){sp6.scale.setScalar(0.05);sp6.material.color.setHex(0x3a8a3a);});
           var ertrag=Math.round((35+skills.arbeit.lv*8)*stufenBonus());verdiene(ertrag);stats.ernten++;stats.ernteLager=(stats.ernteLager||0)+1;geldSend(); /* 🩹 Schwarm-4: Lager (verkaufbar) getrennt von der Lebenszeit-Statistik */
           s5.needs.hunger=Math.min(100,s5.needs.hunger+12);
-          simEmoji(s5,"🥕");hint("🥕 Ernte! +"+ertrag+" $");updHUD();break;}}}
+          simEmoji(s5,"🥕");hint("Geerntet. +"+ertrag+" $");updHUD();break;}}}
   }}
 function updAuto(dt){
   var a=window.autoRec;if(!a)return;
@@ -12392,7 +12392,7 @@ function ensureNitroFx(){
 var driveKopf=null,driveHeck=null;
 function ensureDriveLights(){if(driveKopf)return;driveKopf=[mkLicht("w"),mkLicht("w")];driveHeck=[mkLicht("r"),mkLicht("r")];}
 function einsteigen(rec,geklaut){
-  if(MPs&&!mpHost){hint("\uD83D\uDE97 Nur der Host kann fahren \u2014 fahrt zusammen mit!");return;}
+  if(MPs&&!mpHost){hint("Nur der Gastgeber fährt. Steig ein.");return;}
   var a=rec||window.autoRec;if(!a||fahren)return;
   fahren=true;driveCar=a;driveGeklaut=!!geklaut;
   if(a.state!==undefined)a.state="fahren";
@@ -12406,15 +12406,15 @@ function einsteigen(rec,geklaut){
   document.getElementById("speedo").style.display="block";
   var kn9=document.getElementById("joyKnob");if(kn9){kn9.dataset.alt=kn9.textContent;kn9.textContent="🚗";} /* der Stick lenkt jetzt ein Auto */
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
-    hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei kommt! 🚨");
+    hint("Auto geklaut. Die Polizei ist schon unterwegs.");
     setTimeout(function(){if(fahren)wantedPlus(2);},1500);}
-  else hint("🚗 Stick: hoch Gas · runter Bremse · seitlich lenken");
+  else{var _sh=null;try{_sh=localStorage.getItem("th_stickhint");}catch(e){} if(!_sh){try{localStorage.setItem("th_stickhint","1");}catch(e){} hint("Stick nach oben ist Gas, nach unten Bremse, seitlich lenken.");}}
   // Beifahrer: steht der Partner nahe am Auto, faehrt er wirklich mit (Koop: "alles zu 2")
   var bf=sims[1];
   if(bf&&Math.hypot(bf.x-a.mesh.position.x,bf.z-a.mesh.position.z)<4.5){
     if(bf.target){bf.target.busy=false;bf.target=null;}bf.path=null;bf.state="idle";
     bf._bf=true;bf.mesh.visible=false;
-    hint("🚗👫 "+bf.name+" fährt als Beifahrer mit!");
+    hint(bf.name+" fährt als Beifahrer mit.");
     if(MPs)netSend({t:"mitfahrt",on:1});}}
 function aussteigen(){
   if(!fahren)return;fahren=false;
@@ -12446,7 +12446,7 @@ function aussteigen(){
   if(bf2&&bf2._bf){bf2._bf=false;bf2.mesh.visible=true;bf2.pose="stand";bf2.state="idle";
     bf2.x=a.mesh.position.x-Math.cos(carRot)*1.6;bf2.z=a.mesh.position.z+Math.sin(carRot)*1.6;
     if(MPs)netSend({t:"mitfahrt",on:0});}
-  hint(lackiert?"🎨 Auto umlackiert & versteckt — die Polizei hat die Spur verloren! 😎":"🚶 Ausgestiegen");}
+  hint(lackiert?"🎨 Auto umlackiert & versteckt — die Polizei hat die Spur verloren. 😎":"🚶 Ausgestiegen");}
 var carSpeed=0,carLenk=0,carStandT=0; /* m/s (negativ = rueckwaerts) und der aktuelle Lenkausschlag */
 function autoFahr(dt){
   var a=driveCar||window.autoRec;if(!a){fahren=false;return;}
@@ -12532,7 +12532,7 @@ function autoFahr(dt){
     if(carAirY<=0&&carVY<0){carVY=0;
       if(carAirT>0.3){var pkt=(carAirT*80)|0;verdiene(pkt);stats.stunts=(stats.stunts||0)+1;
         beep(760,.09,"square",.05);setTimeout(function(){beep(1020,.1,"square",.05);},80);
-        hint("🛹 AIRTIME "+carAirT.toFixed(1)+"s! +"+pkt+" $");}
+        hint("AIRTIME "+carAirT.toFixed(1)+"s. +"+pkt+" $");}
       carAirT=0;}}
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
   var _sn=document.getElementById("spNum"),_sb=document.getElementById("spBar");
@@ -12560,21 +12560,21 @@ var liefer=null;
    waechst mit der Strecke (`lohn = (40 + t*1,6 + weg*0,5) * bonus`), lange Ziele zahlen
    sich also selbst. Die Koordinaten sind Startwerte; `marke()` zieht sie auf die echte
    Lage nach, sobald das Viertel steht. */
-var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Ost",172,0],
-  ["Vergnuegungsviertel",160,220],["Zoo",-200,-250],["Flughafen",300,-260],["Spielclub",126,102]];
+var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnmatt",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Rietli",172,0],
+  ["Chilbiplatz",160,220],["Zoo",-200,-250],["Flughafen",300,-260],["Spielclub",126,102]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
   /* 💰 Die Lieferung war die einzige UNGEDECKELTE Geldquelle: ~120-260 $ pro Minute,
      das 4- bis 7-fache des Tagesgehalts, endlos wiederholbar — sie entwertete Arbeit,
      Ernte und Auftraege. Vier pro Tag reichen als Bonus-Einkommen. */
   if(window._liefTag===tag&&(window._liefHeute||0)>=4){
-    hint("📦 Feierabend — die Zentrale hat heute keine Auftraege mehr (4/4). Morgen wieder!");
+    hint("Feierabend. Die Zentrale hat heute nichts mehr (4/4).");
     beep(220,.12,"square",.04);return;}
   window._liefHeute=(window._liefTag===tag?(window._liefHeute||0):0)+1;window._liefTag=tag;
   /* ⚠️ GEMESSEN: `slice().sort(function(){return 0.5-Math.random();})[0]` ist kein
      Zufall. Ein Zufallsvergleich in sort() liefert keine gleichverteilte Permutation,
      und das erste Element ist am staerksten verzerrt. Ueber 200.000 Ziehungen mit den
-     neun Zielen kam "Markt" in 20,85 % und "Gewerbe Ost" in 6,57 % — statt 11,1 % fuer
+     neun Zielen kam "Markt" in 20,85 % und "Gewerbe Rietli" in 6,57 % — statt 11,1 % fuer
      jedes. Das naechstgelegene Ziel also dreimal so oft wie das entfernteste. Wer EIN
      zufaelliges Element braucht, zieht einen Index. */
   var m=driveCar.mesh;
@@ -12595,10 +12595,10 @@ document.getElementById("lieferBtn").onclick=function(){
   makePing(liefer.x,liefer.z);if(MPs)netSend({t:"ping",x:liefer.x,z:liefer.z});
   document.getElementById("lieferZiel").textContent=liefer.n;
   document.getElementById("lieferHud").style.display="block";
-  hint("📦 Blitz-Lieferung zum "+liefer.n+" — 60 Sekunden!");beep(520,.1,"square",.05);};
+  hint("Lieferung zum "+liefer.n+" — 60 Sekunden.");beep(520,.1,"square",.05);};
 function updLiefer(dt){
   if(!liefer)return;
-  if(!fahren){liefer=null;document.getElementById("lieferHud").style.display="none";hint("📦 Lieferung abgebrochen — du bist ausgestiegen");return;}
+  if(!fahren){liefer=null;document.getElementById("lieferHud").style.display="none";hint("Lieferung abgebrochen. Du bist ausgestiegen.");return;}
   liefer.t-=dt;document.getElementById("lieferZeit").textContent=Math.max(0,liefer.t)|0;
   var m=driveCar.mesh;
   if(Math.hypot(m.position.x-liefer.x,m.position.z-liefer.z)<7){
@@ -12615,10 +12615,10 @@ function updLiefer(dt){
     var lohn=((40+liefer.t*1.6+(liefer.weg||0)*0.5)*bonus*stufenBonus())|0;
     verdiene(lohn);stats.lieferungen=(stats.lieferungen||0)+1;
     hearts(liefer.x,liefer.z);beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
-    hint("📦✅ Geliefert! +"+lohn+" $"+(bonus>1?" (Team-Bonus 👫)":""));
+    hint("Geliefert. +"+lohn+" $"+(bonus>1?" (Team-Bonus 👫)":""));
     liefer=null;document.getElementById("lieferHud").style.display="none";return;}
   if(liefer.t<=0){liefer=null;document.getElementById("lieferHud").style.display="none";
-    hint("⏱️ Zeit abgelaufen — Lieferung verpasst");beep(200,.25,"sawtooth",.05);}}
+    hint("Zeit um. Lieferung verpasst.");beep(200,.25,"sawtooth",.05);}}
 document.getElementById("hornBtn").onclick=function(){if(fahren){beep(340,.18,"square",.06);setTimeout(function(){beep(300,.2,"square",.06);},120);
   npcs.forEach(function(n){if(n.mesh)npcEmoji(n,"😠");});fussg.forEach(function(p){/*erschreckt*/});}};
 // ---- Polizei-Jagd (nach Autoklau) ----
@@ -12665,7 +12665,7 @@ function wantedPlus(n){
   if(MPs&&!mpHost){netSend({t:"fahndung",n:n|0});return;}
   var vor=wanted;setWanted(wanted+n);
   if(MPs&&mpHost&&wanted!==vor)netSend({t:"wanted",w:wanted}); /* 🩹 Schwarm-P2: Gast sieht den Fahndungsstand (Bussen wirkten sonst wie zufaelliger Geldverlust) */
-  if(wanted>vor)hint("🚔 Fahndung: "+"⭐".repeat(wanted)+" — häng sie ab!");}
+  if(wanted>vor)hint("Fahndung: "+"⭐".repeat(wanted)+" — häng sie ab.");}
 function updPolizei(dt,now){
   if(MPs&&!mpHost)return; /* 🩹 Schwarm-4: der Gast hat nie Polizei-Autos — dieser Zweig setzte sein vom Host geschicktes wanted im naechsten Frame wieder auf 0 (Sterne-HUD blitzte nur 1 Frame) */
   if(!polizei.length){if(wanted!==0){wanted=0;updWantedHUD();if(MPs&&mpHost)netSend({t:"wanted",w:0});}return;} /* 🩹 Entwarnung auch an den Gast */
@@ -12679,14 +12679,14 @@ function updPolizei(dt,now){
     if(dist<3.2){pj.t+=dt;if(pj.t>1.2){
       var busse=Math.min(geld,200+wanted*150+(skills.krimi.lv||0)*60);geld-=busse;geldSend();updHUD();
       if(fahren)aussteigen();
-      hint("🚔 Geschnappt! Busse: −"+busse+" $ (Fahndung "+wanted+"⭐)");
+      hint("Geschnappt. Busse −"+busse+" $ (Fahndung "+wanted+"⭐)");
       polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];wanted=0;updWantedHUD();return;}}else pj.t=0;}
   // Entkommen: alle weit weg für 8 s → Fahndung sinkt um 1 Stern
   if(minDist>55){wantedEntkomm+=dt;if(wantedEntkomm>8){
     stats.entkommen=(stats.entkommen||0)+1;wantedEntkomm=0;
     setWanted(wanted-1);
-    if(wanted===0)hint("🏁 Sauber abgehängt! Fahndung aufgehoben 😎");
-    else hint("🏁 Ein Stern weniger — dranbleiben!");}}else wantedEntkomm=0;}
+    if(wanted===0)hint("Abgehängt. Fahndung aufgehoben.");
+    else hint("Ein Stern weniger.");}}else wantedEntkomm=0;}
 
 function updWork(dt){
   if(MPs&&!mpHost)return;
@@ -12696,7 +12696,7 @@ function updWork(dt){
     sims.forEach(function(s2,i2){if(i2===0)return; // Spielfigur bleibt sichtbar & steuerbar
       zielFrei(s2);s2.state="work";s2.pose="stand";
       s2.mesh.visible=false;simEmojiSafe(s2);});
-    hint("💼 Mia ist bei der Arbeit … (bis 17:00)");}
+    hint("Mia ist bei der Arbeit, bis 17 Uhr.");}
   else if(arbeiten&&(hh>=17||hh<9)){arbeiten=false;
     if(window.autoRec){window.autoRec.state="heim";window.autoRec.mesh.position.set(70,0.01,GH*CS/2+11);window.autoRec.mesh.visible=true;}
     var lohn=2*(100+skills.arbeit.lv*40);
@@ -12706,7 +12706,7 @@ function updWork(dt){
       if(i>0){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";}
       s2.needs.hunger=Math.max(10,s2.needs.hunger-18);s2.needs.energie=Math.max(10,s2.needs.energie-20);
       simEmoji(s2,"💰");});
-    hint("💰 Feierabend! +"+lohn+" $ Gehalt (Karriere-Lv "+skills.arbeit.lv+")");
+    hint("Feierabend. +"+lohn+" $ Gehalt (Karriere-Lv "+skills.arbeit.lv+")");
     geldSend();
     updHUD();}
 }
@@ -12804,7 +12804,7 @@ function updKind(k,dt,now){
     if(k.baby&&k.alter>=3){k.baby=false;
       var gp=k.mesh;scene.remove(gp);
       var nm=mkKind(false);nm.position.set(k.x,0,k.z);scene.add(nm);k.mesh=nm;
-      hint("👶 "+k.name+" ist zum Kind herangewachsen!");simEmojiK(k,"🌟");}
+      hint(k.name+" ist zum Kind herangewachsen.");simEmojiK(k,"🌟");}
     // Elternteil in der Nähe suchen und hinterherlaufen (Baby: nur krabbeln nahe Mama)
     var p=sims[k.alter<3?1:(kinder.indexOf(k)%2)];
     if(p&&p.mesh.visible){var dx=p.x-k.x,dz=p.z-k.z,d=Math.hypot(dx,dz);
@@ -12876,7 +12876,7 @@ function checkQuest(){
   if(questIdx<QUESTS.length)erfuellt=QUESTS[questIdx][4]();
   else{ensurePQ();erfuellt=window._pq.ok();}
   if(erfuellt){questBusy=true;buergermeisterPending=true;npcTimer=Math.min(npcTimer,3);
-    hint("📜 Auftrag erfüllt! Der Bürgermeister ist unterwegs …");}}
+    hint("Auftrag erfüllt. Der Stadtpräsident ist unterwegs.");}}
 // ---- Koop-Team-Aufgaben (viele, rotierend, gemeinsame Ziele) ----
 var teamIdx=0,teamBasis=null;
 var TEAMQ=[
@@ -12900,7 +12900,7 @@ function checkTeamQ(){
   if(teamProg()>=q[4]){
     geld+=q[2];geldSend();window._teamGeldBonus=0; // Belohnung syncen, Bonus-Inflation stoppen
     teamIdx++;teamBasis=geld;teamBase[teamIdx%TEAMQ.length]=undefined;teamArm(); /* neue Aufgabe frisch einmessen */
-    hint("🤝 Team-Aufgabe geschafft! +"+q[2]+" $ — Neu: "+teamTxt());
+    hint("Zu zweit geschafft. +"+q[2]+" $ — Neu: "+teamTxt());
     netSend({t:"teamq",i:teamIdx});
     beep(700,.1,"triangle",.06);setTimeout(function(){beep(980,.14,"triangle",.07);},130);}}
 
@@ -12934,42 +12934,42 @@ function npcAct(n){
   for(var i2=0;i2<sims.length;i2++)if(sims[i2].mesh.visible&&Math.hypot(sims[i2].x-n.x,sims[i2].z-n.z)<6)nah=sims[i2];
   if(n.typ==="postbote"){
     var r=Math.random();
-    if(r<0.34){var betrag=20+((Math.random()*30)|0);geld=Math.max(0,geld-betrag);hint("📬 Post: eine RECHNUNG … −"+betrag+" $");npcEmoji(n,"🧾");}
-    else if(r<0.67){var g2=30+((Math.random()*50)|0);geld+=g2;hint("📬 Post: ein Geschenk von Oma! +"+g2+" $");npcEmoji(n,"🎁");}
+    if(r<0.34){var betrag=20+((Math.random()*30)|0);geld=Math.max(0,geld-betrag);hint("Post. Eine Rechnung, −"+betrag+" $");npcEmoji(n,"🧾");}
+    else if(r<0.67){var g2=30+((Math.random()*50)|0);geld+=g2;hint("Post. Ein Couvert von Oma, +"+g2+" $");npcEmoji(n,"🎁");}
     else{sims.forEach(function(s3){s3.needs.spass=Math.min(100,s3.needs.spass+8);});liebe=Math.min(100,liebe+4);
-      hint("📬 Post: ein Liebesbrief 💌");npcEmoji(n,"💌");hearts(n.x,n.z);}
+      hint("Post. Ein Liebesbrief.");npcEmoji(n,"💌");hearts(n.x,n.z);}
     geldSend();}
   else if(n.typ==="nachbarin"){
-    hint("🧓 Frau Krause tratscht über die Nachbarschaft …");npcEmoji(n,"🗣️");
+    hint("Frau Krause weiss, wer gestern spät heimgekommen ist.");npcEmoji(n,"🗣️");
     if(nah){nah.needs.spass=Math.min(100,nah.needs.spass+10);simEmoji(nah,"😄");}}
   else if(n.typ==="haendler"){
     if(geld>=100&&Math.random()<0.8){geld-=100;var wert=40+((Math.random()*210)|0);geld+=wert;
-      hint("🛒 Überraschungskiste gekauft (100 $) … enthielt "+wert+" $"+(wert>100?" — Gewinn! 🎉":" 😅"));
+      hint("Überraschungskiste, 100 $. Drin war: "+wert+" $"+(wert>100?" — Gewinn. 🎉":" 😅"));
       npcEmoji(n,wert>100?"🤑":"📦");geldSend();}
-    else{hint("🛒 Der fliegende Händler zieht weiter …");npcEmoji(n,"👋");}}
+    else{hint("Der fliegende Händler ist weitergezogen.");npcEmoji(n,"👋");}}
   else if(n.typ==="polizist"){
-    hint("👮 Die Polizei schaut nochmal vorbei … alle unschuldig pfeifen!");npcEmoji(n,"🚨");
+    hint("Die Polizei schaut nochmal vorbei. Alle pfeifen unschuldig.");npcEmoji(n,"🚨");
     sims.forEach(function(s4){if(s4.mesh.visible)simEmoji(s4,"😇");});}
   else if(n.typ==="inspektor"){
     n.t=6;                                       /* bleibt laenger stehen als die anderen */
-    hint("📋 Der Bauinspektor ist da — er prueft Wert, Bereiche und Komfort …");
+    hint("Der Bauinspektor ist da. Er prüft Wert, Bereiche und Komfort.");
     npcEmoji(n,"📋");beep(440,.08,"sine",.04);
     setTimeout(function(){if(running)bauabnahme();},2600);}
   else if(n.typ==="buergermeister"){
     if(questBusy){
       var rw=questIdx<QUESTS.length?QUESTS[questIdx][3]:(ensurePQ(),window._pq.rw);
       verdiene(rw);stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;window._pq=null;
-      hint("🎖️ Bürgermeister: „Großartig!“ +"+rw+" $ — Neuer Auftrag: "+questTxt());
+      hint("Stadtpräsident: „Sauber gemacht.“ +"+rw+" $ — Neuer Auftrag: "+questTxt());
       npcEmoji(n,"💰");beep(700,.1,"triangle",.06);setTimeout(function(){beep(940,.16,"triangle",.07);},140);
       geldSend();netSend({t:"quest",i:questIdx});}
-    else{hint("🏛️ Der Bürgermeister schaut nur kurz vorbei.");npcEmoji(n,"👋");}}
+    else{hint("Der Stadtpräsident bleibt nur kurz.");npcEmoji(n,"👋");}}
   else if(n.typ==="nachbarskind"){
-    if(kinder.length){hint("🧒 Das Nachbarskind kommt zum Spielen!");npcEmoji(n,"🎈");
+    if(kinder.length){hint("Das Nachbarskind kommt zum Spielen.");npcEmoji(n,"🎈");
       kinder.forEach(function(k8){simEmojiK(k8,"🎉");});
       sims.forEach(function(s8){s8.needs.spass=Math.min(100,s8.needs.spass+6);});n.t=7;}
-    else{hint("🧒 Das Nachbarskind klingelt … aber hier wohnen noch keine Kinder.");npcEmoji(n,"🏀");}}
+    else{hint("Das Nachbarskind klingelt. Hier wohnen noch keine Kinder.");npcEmoji(n,"🏀");}}
   else if(n.typ==="katze"){
-    hint("🐈 Eine Streunerkatze schaut vorbei");npcEmoji(n,"🐟");
+    hint("Eine Katze schaut vorbei. Sie gehört niemandem, sagt sie.");npcEmoji(n,"🐟");
     kinder.forEach(function(k){simEmojiK(k,"😻");});}
   updHUD();}
 function npcEmoji(n,txt){
@@ -12984,7 +12984,7 @@ function updNpcs(dt,now){
     npcs.forEach(function(n){var _nz=netZiel(n,performance.now());if(_nz){n.x+=(_nz.x-n.x)*Math.min(1,dt*8);n.z+=(_nz.z-n.z)*Math.min(1,dt*8);n.rot=n.net.r;
       n.mesh.position.set(n.x,0,n.z);n.mesh.rotation.y=n.rot;}});
     return;}
-  /* 🏛️ Ein anstehender Amtsbesuch (Polizist/Buergermeister/Inspektor) wartet nicht
+  /* 🏛️ Ein anstehender Amtsbesuch (Polizist/Stadtpraesident/Inspektor) wartet nicht
      den vollen Besuchs-Takt von 25-55 s ab — Aemter kommen puenktlich. */
   if((polizeiPending||buergermeisterPending||inspektorPending)&&npcTimer>3)npcTimer=3;
   npcTimer-=dt;
@@ -13166,7 +13166,7 @@ function updCoaster(dt,now){
     C.t+=C.v*dt/C.kurve.getLength();
     if(C.t>=1){C.t=0;C.runden=(C.runden||0)+1;
       if(C.runden>=2){C.faehrt=false;C.v=0;
-        if(C.mit){coasterAussteigen();hint("🎢 Angekommen — gute Fahrt gehabt!");}}}}
+        if(C.mit){coasterAussteigen();hint("Angekommen. Die Knie zittern noch.");}}}}
   var t0=C.t,pos=C.kurve.getPointAt(t0),tan=C.kurve.getTangentAt(t0);
   C.zug.position.copy(pos);
   C.zug.rotation.set(0,Math.atan2(tan.x,tan.z),0);
@@ -13188,7 +13188,7 @@ function coasterEinsteigen(){
   C.mit=true;C.runden=0;
   if(!C.faehrt){C.faehrt=true;C.v=5;C.t=0;}
   if(!egoMode)egoToggle();                        // Ego-Perspektive fuer die Fahrt
-  hint("🎢 Festhalten!");beep(520,.12,"square",.05);
+  hint("Festhalten!");beep(520,.12,"square",.05);
   if(MPs)netSend({t:"coasterStart"});}
 function coasterAussteigen(){
   var C=window._coaster;if(!C)return;
@@ -13204,16 +13204,27 @@ function coasterAussteigen(){
    manchmal einen kleinen Auftrag mit Belohnung. Jede Person hat ein eigenes
    Gespraechs-Guthaben pro Tag, damit man nicht dieselbe Person melken kann. */
 var NPC_SPRUECHE=[
-  "Schoenes Wetter heute, nicht wahr?","Haben Sie den neuen Park schon gesehen?",
-  "Die Bauarbeiten dauern ewig...","Ich warte auf den Bus.",
-  "Kennen Sie ein gutes Lokal hier?","Mein Hund ist schon wieder weggelaufen.",
-  "Am Seepark ist es jetzt am schoensten.","Die Achterbahn draussen ist der Wahnsinn!",
-  "Ich such eine Wohnung — kennen Sie was?","Gestern war ein Konzert am Marktplatz."];
+  "Der Bus kommt seit Jahren drei Minuten zu spät. Ich bin trotzdem jedes Mal überrascht.",
+  "Am Seepark haben sie die Bänke neu gestrichen. Grün. Das alte Blau war besser.",
+  "Die Baustelle beim Bahnhof? Die war schon da, als ich eingezogen bin.",
+  "Kennen Sie das Café hinter der Markthalle? Der Kaffee ist stark, die Wirtin auch.",
+  "Mein Hund ist wieder weg. Er geht immer zur Metzgerei, ich hole ihn nachher.",
+  "Die Achterbahn hört man bis zu mir nach Hause. Ich habe mich daran gewöhnt. Fast.",
+  "Ich suche eine Wohnung. Zwei Zimmer, Balkon, unter tausend. Ja, ich weiss.",
+  "Gestern Konzert am Marktplatz. Laut, aber gut. Der Bassist konnte was.",
+  "Frau Krause hat schon wieder Kuchen gebracht. Ich glaube, sie will etwas.",
+  "Wenn es regnet, riecht die Altstadt nach 1950. Das ist als Kompliment gemeint.",
+  "Die Enten am See sind frech geworden. Eine hat mir das Sandwich aus der Hand genommen.",
+  "Ich war zwanzig Jahre bei der Bahn. Jetzt schaue ich den Zügen zu. Ist auch Arbeit.",
+  "Das Wetter? Wird morgen anders. Mehr weiss der Wetterbericht auch nicht.",
+  "Der Stadtpräsident hat wieder ein Band durchgeschnitten. Diesmal für eine Bushaltestelle.",
+  "Auf der Sunnehalde kostet ein Haus mehr, als ich in dreissig Jahren verdient habe. Schöne Aussicht, sagen sie.",
+  "Beim Brunnen auf der Brunnmatt trinke ich seit der Schulzeit. Schmeckt immer noch gleich."];
 var NPC_AUFTRAEGE=[
-  ["Ich hab meinen Schluessel verloren — halten Sie die Augen offen!",120],
-  ["Bringen Sie das bitte zur Post, ja?",180],
-  ["Koennen Sie meiner Oma beim Einkauf helfen?",150],
-  ["Ich brauch dringend Wechselgeld fuer den Automaten.",90]];
+  ["Ich habe meinen Schlüssel verloren. Roter Anhänger, falls Sie einen finden.",120],
+  ["Bringen Sie das zur Post? Ich schaffe es vor fünf nicht mehr.",180],
+  ["Meine Oma braucht Hilfe beim Einkauf. Sie redet viel, aber sie zahlt anständig.",150],
+  ["Ich brauche Münz für den Automaten. Der nimmt keine Noten, seit 2009.",90]];
 var _npcNah=null;
 function npcBtnUpd(){
   var b=document.getElementById("npcBtn");if(!b)return;
@@ -13228,7 +13239,7 @@ function npcAnsprechen(){
   var f=_npcNah;if(!f)return;
   if(f._tag!==tag){f._tag=tag;f._reden=0;}
   f._reden=(f._reden||0)+1;
-  if(f._reden>2){hint("🙂 „Wir haben doch gerade schon geredet."); return;}
+  if(f._reden>2){hint("„Wir haben doch gerade schon geredet."); return;}
   /* 🩹 Schwarm-7: bei Marktverkaeufern ist stand=true das DAUER-Flag (hinter
      der Theke) — der 3,5-s-Reset schickte sie nach dem ersten Gespraech auf
      Wanderschaft. Nur temporaer stoppen, wer nicht ohnehin steht. */
@@ -13236,11 +13247,11 @@ function npcAnsprechen(){
   if(Math.random()<0.35){
     var a=NPC_AUFTRAEGE[(Math.random()*NPC_AUFTRAEGE.length)|0];
     verdiene(Math.round(a[1]*stufenBonus()));
-    hint("💬 „"+a[0]+"“  → +"+a[1]+" $");
+    hint("„"+a[0]+"“  → +"+a[1]+" $");
     beep(700,.09,"sine",.05);setTimeout(function(){beep(920,.11,"sine",.05);},110);
     stats.gespraeche=(stats.gespraeche||0)+1;
   }else{
-    hint("💬 „"+NPC_SPRUECHE[(Math.random()*NPC_SPRUECHE.length)|0]+"“");
+    hint("„"+NPC_SPRUECHE[(Math.random()*NPC_SPRUECHE.length)|0]+"“");
     beep(560,.07,"sine",.04);}
   if(typeof simEmoji==="function"&&sims[meinSi()])simEmoji(sims[meinSi()],"💬");}
 /* ═══════ 🎡 FAHRGESCHAEFTE ══════════════════════════════════════════════════════
@@ -13338,7 +13349,7 @@ function fahrtEinsteigen(){
           zurueck:{x:p0.x,z:p0.z}};
   var b=document.getElementById("fahrtBtn");if(b)b.style.display="none";
   if(!egoMode)egoToggle();
-  hint("🎢 Festhalten!");beep(520,.12,"square",.05);}
+  hint("Festhalten!");beep(520,.12,"square",.05);}
 function fahrtAussteigen(){
   if(!_fahrt)return;
   var zk=_fahrt.zurueck;_fahrt=null;window._camHebung=0;
@@ -13346,7 +13357,7 @@ function fahrtAussteigen(){
   if(me){me.x=zk.x;me.z=zk.z;me.pose="stand";if(me.mesh)me.mesh.position.y=0;me._hoehe=0;}
   if(egoMode)egoToggle();
   camTx=zk.x;camTz=zk.z;camRT=30;updCam();
-  hint("🎡 Ausgestiegen — hat es Spass gemacht?");}
+  hint("Ausgestiegen.");}
 /* ── 🎠 FAHRGESCHAEFTE DREHEN SICH — auch ohne Fahrgast ─────────────────────
    Bisher stand der ganze Freizeitpark still: updFahrt bewegt nur die KAMERA,
    die Modelle selbst haben sich nie geruehrt, nicht einmal waehrend der Fahrt.
@@ -13616,7 +13627,7 @@ function simEmojiRoh(mesh,txt){
 }
 
 var COUP={phase:0,t:0,beute:0};
-/* Der Ersatzwert galt noch fuer die Zeit, als die Bank im Viertel "Gewerbe Ost"
+/* Der Ersatzwert galt noch fuer die Zeit, als die Bank im Viertel "Gewerbe Rietli"
    stehen sollte — dort steht sie seit Charge 50 nicht mehr, und das Viertel selbst
    ist inzwischen nach (212|0) gewandert. Greift der Ersatz (Modell nicht geladen),
    zeigte der Coup damit auf freies Feld. Jetzt auf den echten Bauplatz der Bank. */
@@ -13629,9 +13640,9 @@ function coupBtnUpd(){
   b.style.display=(Math.hypot(p.x-z.x,p.z-z.z)<12)?"block":"none";}
 function coupStart(silent){
   if(COUP.phase>0)return;
-  if(!MPs){hint("🏦 Der grosse Coup geht nur zu zweit — hol dir einen Mitspieler.");return;}
+  if(!MPs){hint("Der grosse Coup geht nur zu zweit.");return;}
   COUP.phase=1;COUP.t=12;COUP.beute=0;
-  hint("🏦 Beide an der Bank bleiben — 12 Sekunden!");
+  hint("Beide bei der Bank bleiben. 12 Sekunden.");
   beep(140,.3,"sawtooth",.06);
   if(!silent&&MPs)netSend({t:"coupStart"});}
 function coupEnde(txt,ton){
@@ -13657,7 +13668,7 @@ function updCoup(dt){
       if(!MPs||mpHost){COUP.beute=2200+Math.floor(Math.random()*900);netSend({t:"coupBeute",v:COUP.beute});
         /* setWanted statt nackter Zuweisung: spawnt die Polizeiautos + HUD — sonst war die Flucht gefahrlos */
         setWanted(Math.max(wanted||0,3));if(MPs)netSend({t:"wanted",w:wanted});}
-      hint("🚨 Alarm!"+(COUP.beute?" Beute "+COUP.beute+" $ —":"")+" beide zum Parkplatz am Bahnhof!"); /* Gast kennt die Beute erst per coupBeute-Nachricht */
+      hint("Alarm!"+(COUP.beute?" Beute "+COUP.beute+" $ —":"")+" beide zum Parkplatz am Bahnhof."); /* Gast kennt die Beute erst per coupBeute-Nachricht */
       beep(880,.15,"square",.06);}}
   else if(COUP.phase===2){
     var ichWeg=Math.hypot(me.x-fl.x,me.z-fl.z)<16;
@@ -13678,8 +13689,8 @@ function updCoup(dt){
 function egoToggle(){
   egoMode=!egoMode;
   var _me=sims[meinSi()]||sims[0];
-  if(egoMode){if(!followSim&&_me)followSim=_me;hint("👁️ Ego-Modus — nochmal tippen für Übersicht");}
-  else{if(_me&&_me.mesh)_me.mesh.visible=true;if(followSim&&followSim.mesh)followSim.mesh.visible=true;camB=0.72;camRT=Math.max(camRT,26);hint("🎥 Übersicht");}
+  if(egoMode){if(!followSim&&_me)followSim=_me;hint("Aus den Augen der Figur. Nochmal tippen für die Übersicht.");}
+  else{if(_me&&_me.mesh)_me.mesh.visible=true;if(followSim&&followSim.mesh)followSim.mesh.visible=true;camB=0.72;camRT=Math.max(camRT,26);hint("Übersicht");}
   updCam();}
 updCam();
 // ---- Direkte Steuerung: Joystick + WASD ----
@@ -13880,7 +13891,7 @@ function updMinimap(dt){
   if(GPS.aktiv&&GPS.pfad){
     while(GPS.pfad.length>1&&Math.hypot(GPS.pfad[0][0]-pcx,GPS.pfad[0][1]-pcz)<6)GPS.pfad.shift();
     if(Math.hypot(GPS.x-pcx,GPS.z-pcz)<8){
-      gpsWeg();hint("🧭 Ziel erreicht!");beep(1180,.08,"sine",.05);
+      gpsWeg();hint("Ziel erreicht.");beep(1180,.08,"sine",.05);
       stats.gpsZiele=(stats.gpsZiele||0)+1;}
     else if(Math.hypot(GPS.pfad[0][0]-pcx,GPS.pfad[0][1]-pcz)>16){
       var _nf=gpsRoute(pcx,pcz,GPS.x,GPS.z);if(_nf)GPS.pfad=_nf;}
@@ -14257,7 +14268,7 @@ function gpsSetz(x,z){
   var px=(fahren&&driveCar)?driveCar.mesh.position.x:me.x,
       pz=(fahren&&driveCar)?driveCar.mesh.position.z:me.z;
   var pf=gpsRoute(px,pz,x,z);
-  if(!pf){hint("🧭 Kein Weg dorthin gefunden");return false;}
+  if(!pf){hint("Dorthin führt kein Weg.");return false;}
   GPS.aktiv=true;GPS.x=x;GPS.z=z;GPS.pfad=pf;
   if(!GPS.beam){ /* GTA-Leuchtsaeule am Ziel — einmal gebaut, danach nur versetzt.
                     _bewegt schuetzt vor _einfrieren, MeshBasic ist nachts ungedimmt. */
@@ -14272,7 +14283,7 @@ function gpsSetz(x,z){
   GPS.beam.position.set(x,32,z);GPS.beam.visible=true;
   GPS.ring.position.set(x,0.06,z);GPS.ring.visible=true;
   stats.gpsGesetzt=(stats.gpsGesetzt||0)+1;
-  hint("📍 Wegpunkt gesetzt — folge der lila Linie");beep(880,.06,"sine",.04);
+  hint("Wegpunkt gesetzt. Folge der Linie.");beep(880,.06,"sine",.04);
   return true;}
 var _bigTrafo=null;
 document.getElementById("bigmap").addEventListener("click",function(e){
@@ -14280,11 +14291,11 @@ document.getElementById("bigmap").addEventListener("click",function(e){
   var r=this.getBoundingClientRect();
   var mx=(e.clientX-r.left)*this.width/r.width,my=(e.clientY-r.top)*this.height/r.height;
   var wx=_bigTrafo.X0+(mx-_bigTrafo.ox)/_bigTrafo.sc,wz=_bigTrafo.Z0+(my-_bigTrafo.oy)/_bigTrafo.sc;
-  if(GPS.aktiv&&Math.hypot(wx-GPS.x,wz-GPS.z)<14){gpsWeg();hint("📍 Wegpunkt entfernt");drawBigMap();return;}
+  if(GPS.aktiv&&Math.hypot(wx-GPS.x,wz-GPS.z)<14){gpsWeg();hint("Wegpunkt entfernt");drawBigMap();return;}
   var mzK=missZiele();                       // 🎯 Tipp nahe einem Missions-Marker rastet ein
   for(var s9=0;s9<mzK.length;s9++){
     if(Math.hypot(wx-mzK[s9].x,wz-mzK[s9].z)<16){
-      if(gpsSetz(mzK[s9].x,mzK[s9].z)){hint("🎯 Route zur Mission: "+mzK[s9].e+" "+mzK[s9].tx);drawBigMap();}
+      if(gpsSetz(mzK[s9].x,mzK[s9].z)){hint("Route zur Mission: "+mzK[s9].e+" "+mzK[s9].tx);drawBigMap();}
       return;}}
   if(gpsSetz(wx,wz))drawBigMap();});
 function bigMapOpen(){var w=document.getElementById("bigmapWrap");if(!w)return;
@@ -14302,7 +14313,7 @@ function paintFloorAt(px,py){
   var c=pickCell(px,py);if(!c||!inBau(c.gx,c.gy))return true;
   var key=c.gx+"_"+c.gy;if(_paintSet&&_paintSet.has(key))return true;
   var def=defOf(curItem);
-  if(geld<def.cost){if(!_paintHinted){_paintHinted=true;hint("💰 Zu wenig Geld!");}return true;}
+  if(geld<def.cost){if(!_paintHinted){_paintHinted=true;hint("Zu wenig Geld.");}return true;}
   if(_paintSet)_paintSet.add(key);
   doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;geldSend();updHUD();beep(660,.04,"triangle",.03);
   return true;}
@@ -14421,35 +14432,35 @@ function tapAt(px,py){
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
-        else{followSim=s2;camR=Math.min(camR,22);camRT=camR;hint("🎥 Kamera folgt "+s2.name+" — nochmal tippen zum Lösen");}
+        else{followSim=s2;camR=Math.min(camR,22);camRT=camR;hint("Kamera folgt "+s2.name+" — nochmal tippen zum Lösen");}
         return;}}}
     return;}
   var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return;
-  if(delMode){editHide();if(doDelete(c.gx,c.gy))hint("Abgerissen (50% zurück)");return;}
+  if(delMode){editHide();if(doDelete(c.gx,c.gy))hint("Abgerissen. Die Hälfte gibt es zurück.");return;}
   if(editSel&&editMove){editVerschiebe(c.gx,c.gy);return;}
   if(!curItem){var fEd=furnAt(c.gx,c.gy);
     if(fEd)editShow(fEd);else editHide();
     return;}
   var def=defOf(curItem);
-  if(def.stufe&&def.stufe>wohnstufe&&MODUS!=="sandbox"){hint("🔒 Erst ab Wohnstufe "+WOHNSTUFEN[def.stufe][0]);return;}
-  if(geld<def.cost){hint("💰 Zu wenig Geld!");return;}
+  if(def.stufe&&def.stufe>wohnstufe&&MODUS!=="sandbox"){hint("Erst ab Wohnstufe "+WOHNSTUFEN[def.stufe][0]);return;}
+  if(geld<def.cost){hint("Zu wenig Geld.");return;}
   if(curItem.indexOf("boden")===0){
     /* 🐛 Schwarm-Befund: mousedown malt bereits (paintFloorAt) und bucht ab; dieser Tap-Zweig
        legte dieselbe Zelle nochmal und buchte ein zweites Mal — jeder Einzelklick auf einen
        Bodenbelag kostete doppelt. _paintSet kennt die schon bezahlten Zellen dieses Zugs. */
     if(_paintSet&&_paintSet.has(c.gx+"_"+c.gy))return;
-    if(!inBau(c.gx,c.gy)){hint("🚧 Nur im Baufenster bauen");return;} /* 🩹 Schwarm-4: Vorschau zeigte rot, gebaut wurde trotzdem */
+    if(!inBau(c.gx,c.gy)){hint("Nur im Baufenster bauen.");return;} /* 🩹 Schwarm-4: Vorschau zeigte rot, gebaut wurde trotzdem */
     doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;}
   else if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"){
-    if(!inBau(c.gx,c.gy)){hint("🚧 Nur im Baufenster bauen");return;} /* 🩹 Schwarm-4: man konnte quer durch Stadtstrassen mauern */
+    if(!inBau(c.gx,c.gy)){hint("Nur im Baufenster bauen.");return;} /* 🩹 Schwarm-4: man konnte quer durch Stadtstrassen mauern */
     var e=nearestEdge(c);doPlaceWall(e.x,e.y,e.d,curItem);geld-=def.cost;}
   else if(def.paint){
     var e2=nearestEdge(c),ok9=doPaint(e2.x,e2.y,e2.d,def.paint);
     if(!ok9){var kand=[[c.gx,c.gy,0],[c.gx,c.gy+1,0],[c.gx-1,c.gy,1],[c.gx,c.gy,1]];
       for(var q9=0;q9<kand.length&&!ok9;q9++)ok9=doPaint(kand[q9][0],kand[q9][1],kand[q9][2],def.paint);}
-    if(!ok9){hint("Erst eine Wand bauen, dann streichen 🎨");return;}
-    geld-=def.cost;hint("🎨 "+def.n+"!");}
-  else{if(!footprintFree(def,c.gx,c.gy,curRot)){hint("Hier steht schon etwas");return;}
+    if(!ok9){hint("Erst eine Wand bauen, dann streichen.");return;}
+    geld-=def.cost;hint(def.n+".");}
+  else{if(!footprintFree(def,c.gx,c.gy,curRot)){hint("Hier steht schon etwas.");return;}
     doPlaceFurn(curItem,c.gx,c.gy,curRot);geld-=def.cost;if(MPs&&!mpHost)netSend({t:"moebelStat"});else stats.moebelGekauft++;}
   geldSend();
   updHUD();beep(660,.06,"triangle",.04);}
@@ -14462,29 +14473,29 @@ document.getElementById("fahrtBtn").onclick=function(){fahrtEinsteigen();};
 document.getElementById("npcBtn").onclick=function(){npcAnsprechen();};
 document.getElementById("villaBtn").onclick=function(){stampVilla();};
 document.getElementById("kircheBtn").onclick=function(){ /* 💒 Traumhochzeit in der Kathedrale */
-  if(!verlobt){hint("💎 Erst verloben — dann heiraten!");return;}
-  if(verheiratet){hint("💍 Ihr seid schon verheiratet!");return;}
-  if(geld<800){hint("💰 Die Traumhochzeit kostet 800 $");return;}
+  if(!verlobt){hint("Erst verloben, dann heiraten.");return;}
+  if(verheiratet){hint("Ihr seid schon verheiratet.");return;}
+  if(geld<800){hint("Die Hochzeit in der Kathedrale kostet 800 $.");return;}
   geld-=800;geldSend();
   loveEvent("hochzeit");                                /* setzt verheiratet + Feier-Effekte + Koop-Sync */
-  hint("💒 Kirchliche Traumhochzeit in der Kathedrale! 🔔");
+  hint("Hochzeit in der Kathedrale. Die Glocken läuten.");
   for(var _gl=0;_gl<8;_gl++)setTimeout(function(){hearts(-58+(Math.random()-0.5)*8,-78+(Math.random()-0.5)*10);},_gl*380);
   [523,659,784,1046,784,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.3,"triangle",.07);},i*300);}); /* Glocken */
   updHUD();};
 document.getElementById("werkBtn").onclick=function(){ /* 🔧 Werkstatt: Umlackieren loescht die Fahndung */
-  if(!fahren){hint("🚗 Fahr mit dem Auto in die Werkstatt!");return;}
-  if(geld<250){hint("💰 Umlackieren kostet 250 $");return;}
-  if(wanted<=0){hint("👌 Alles sauber — keine Fahndung.");return;}
+  if(!fahren){hint("Fahr mit dem Auto in die Werkstatt.");return;}
+  if(geld<250){hint("Umlackieren kostet 250 $.");return;}
+  if(wanted<=0){hint("Alles sauber. Keine Fahndung.");return;}
   geld-=250;geldSend();
   polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];
   wanted=0;updWantedHUD();if(MPs&&mpHost)netSend({t:"wanted",w:0});
   stats.lackiert=(stats.lackiert||0)+1;
-  hint("🎨 Frisch lackiert — die Polizei hat die Spur verloren! 😎");
+  hint("Frisch lackiert. Die Polizei sucht jetzt die falsche Farbe.");
   beep(520,.1,"triangle",.05);setTimeout(function(){beep(760,.12,"triangle",.05);},120);updHUD();};
 document.getElementById("markthalleBtn").onclick=function(){ /* 🥕 Markthalle: Ernte zu besseren Preisen */
   /* 🩹 Schwarm-4: Verkauf leert nur noch das LAGER — stats.ernten ist Lebenszeit-Statistik
      (Erfolg „Grüner Daumen", Team-Aufgabe „6 Ernten") und wurde hier faelschlich genullt. */
-  var e9=stats.ernteLager||0;if(e9<=0){hint("🌱 Erst ernten — dann verkaufen!");return;}
+  var e9=stats.ernteLager||0;if(e9<=0){hint("Erst ernten, dann verkaufen.");return;}
   var erloes=Math.round(e9*45*(1+skills.arbeit.lv*0.15));
   erloes=Math.round(erloes*stufenBonus());verdiene(erloes);
   /* 🩹 Schwarm-6: der Endlos-Auftrag "Verkaufe X Ernten am Markt" prueft einen
@@ -14493,14 +14504,14 @@ document.getElementById("markthalleBtn").onclick=function(){ /* 🥕 Markthalle:
      Eigener Zaehler marktVerkauft; der Auftrag unten prueft beide. */
   stats.marktVerkauft=(stats.marktVerkauft||0)+e9;
   stats.ernteLager=0;geldSend();
-  hint("🥕 "+e9+" Ernten verkauft: +"+erloes+" $ (Marktpreis!)");
+  hint(e9+" Ernten verkauft: +"+erloes+" $ (Marktpreis!)");
   sims.forEach(function(s8){simEmoji(s8,"🤑");});
   beep(700,.09,"triangle",.05);setTimeout(function(){beep(950,.12,"triangle",.06);},120);updHUD();};
 document.getElementById("shopBtn").onclick=function(){ /* 🛒 Einkauf: kostet Geld, hebt Laune, zaehlt fuer die Tagesmission */
-  if(geld<60){hint("💰 Zu wenig Geld — 60 $ noetig!");return;}
+  if(geld<60){hint("Zu wenig Geld. 60 $ nötig.");return;}
   geld-=60;geldSend();stats.einkaeufe=(stats.einkaeufe||0)+1;
   sims.forEach(function(s9){s9.needs.spass=Math.min(100,(s9.needs.spass||100)+15);simEmoji(s9,"🛍️");});
-  hint("🛍️ Eingekauft! Frische Snacks fuer alle (+Laune)");
+  hint("Eingekauft. Frische Snacks für alle. +Laune");
   beep(680,.08,"triangle",.05);setTimeout(function(){beep(900,.1,"triangle",.05);},110);updHUD();};
 // ---- Mini-Game: Timing-Bar (3 Runden, Ergebnis 0..1) ----
 var MG={on:false,pos:0,dir:1,speed:1.6,round:0,scores:[],cb:null,raf:0};
@@ -14555,7 +14566,7 @@ function tanzEnd(){
   var avg=TANZ.scores.length?sum/TANZ.scores.length:0;
   if(avg>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;
   if(MPs&&!mpHost)netSend({t:"tanzBoost",s:avg});else tanzApply(avg);
-  hint(avg>=0.999?"💃🕺 PERFEKTE Tanz-Session! Die Liebe glüht":
+  hint(avg>=0.999?"💃🕺 PERFEKTE Tanz-Session. Die Liebe glüht":
        avg>=0.55?"🎶 Was für ein Abend! Alle sind happy":"🎵 Übung macht den Meister …");}
 function tanzApply(avg){
   sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10+25*avg);simEmoji(s2,avg>=0.55?"💃":"🎵");});
@@ -14570,7 +14581,7 @@ var FISCHE=[["🐠 Prachtfisch",70,300],["🐟 Barsch",28,600],["🐟 Rotauge",1
 function angelStart(){
   if(ANGEL.on||KOCH.on||MG.on)return;
   if(window._angelCd!==undefined&&(uhrzeit-window._angelCd+1440)%1440<180){
-    hint("🐟 Die Fische brauchen eine Pause — komm später wieder!");return;}
+    hint("Die Fische beissen heute nicht mehr. Komm morgen wieder.");return;}
   ANGEL.on=true;ANGEL.round=0;ANGEL.fang=0;ANGEL.geldSum=0;
   document.getElementById("angel").style.display="flex";
   angelWurf();}
@@ -14606,7 +14617,7 @@ function angelEnd(){
   if(ANGEL.geldSum>0){verdiene(Math.round(ANGEL.geldSum*stufenBonus()));}
   sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+8+ANGEL.fang*4);});
   window._angelCd=uhrzeit;
-  hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" $":"🌊 Heute beißt nichts …");}
+  hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" $":"🌊 Heute beisst nichts …");}
 document.getElementById("angelZieh").onclick=function(){
   if(!ANGEL.on)return;
   if(ANGEL.phase==="biss"){var ms=Math.round(performance.now()-ANGEL.t0);ANGEL.phase="done";angelResult(ms);}
@@ -14662,7 +14673,7 @@ function kochEnd(){
   var score=KOCH.total?KOCH.hits/KOCH.total:0;
   if(score>=0.999){stats.kochPerfekt=(stats.kochPerfekt||0)+1;}
   if(MPs&&!mpHost)netSend({t:"kochBoost",s:score});else kochApply(score);
-  hint(score>=0.999?"🌟 PERFEKT gekocht! Alle sind satt & glücklich":
+  hint(score>=0.999?"🌟 PERFEKT gekocht. Alle sind satt & glücklich":
        score>=0.6?"🍳 Lecker! Das Essen kommt gut an":"🥢 Naja … ein paar Zutaten waren falsch");
   beep(score>=0.6?880:330,.15,"triangle",.06);}
 function kochApply(score){
@@ -14673,11 +14684,11 @@ function kochApply(score){
 document.getElementById("kochQuit").onclick=function(){
   KOCH.on=false;clearTimeout(KOCH.tmr);document.getElementById("koch").style.display="none";};
 function taschendieb(n9){
-  if(n9.bestohlen){hint("👀 Der passt jetzt auf seine Taschen auf!");return;}
+  if(n9.bestohlen){hint("Der passt jetzt auf seine Taschen auf.");return;}
   if(n9.typ==="polizist"){
     n9.bestohlen=true; /* 🩹 Schwarm-P3: einmal pro Polizist — vorher kassierte JEDER Tap erneut 80 $ */
     var str9=Math.min(geld,80);geld-=str9;geldSend();updHUD();
-    hint("👮 Beim POLIZISTEN?! Busse: −"+str9+" $");
+    hint("Beim Polizisten? Busse −"+str9+" $");
     npcEmoji(n9,"🚨");beep(240,.2,"sawtooth",.06);return;}
   n9.bestohlen=true;
   mgStart("🤏 Taschendiebstahl","Ruhige Hand — dreimal sauber treffen, sonst fliegst du auf!",function(avg){
@@ -14686,13 +14697,13 @@ function taschendieb(n9){
       verdiene(beute9);if(MPs&&!mpHost)netSend({t:"dieb"});else stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
       geldSend();updHUD();
       if(Math.random()<0.12){polizeiPending=true;wantedPlus(1);npcTimer=Math.min(npcTimer,5);
-        hint("🤏 +"+beute9+" $ … aber jemand hat es GESEHEN! 🚨");}
-      else hint("🤏 Zack — Portemonnaie! +"+beute9+" $ (unbemerkt)");
+        hint("+"+beute9+" $ … aber jemand hat es GESEHEN. 🚨");}
+      else hint("Portemonnaie. +"+beute9+" $ (unbemerkt)");
       npcEmoji(n9,"❓");sims.forEach(function(s9){simEmoji(s9,"🤫");});}
     else{
       polizeiPending=true;npcTimer=Math.min(npcTimer,4);
       var str8=Math.min(geld,60+skills.krimi.lv*20);geld-=str8;geldSend();updHUD();
-      hint("💢 Erwischt! "+(n9.typ==="nachbarin"?"Frau Krause":"Das Opfer")+" ruft die Polizei … −"+str8+" $");
+      hint("Erwischt. "+(n9.typ==="nachbarin"?"Frau Krause":"Das Opfer")+" ruft die Polizei … −"+str8+" $");
       npcEmoji(n9,"😠");beep(220,.25,"sawtooth",.06);}});}
 function mgStart(title,sub,cb){
   MG.on=true;MG.round=0;MG.scores=[];MG.cb=cb;MG.speed=1.5;
@@ -14752,9 +14763,9 @@ document.getElementById("achClose").onclick=function(){document.getElementById("
 (function(){var el=document.getElementById("stufeBox");if(!el)return;
   el.onclick=function(){
     var l=stufenLuecke();
-    if(!l){hint("👑 Hoechste Stufe erreicht — der Palast steht.");return;}
+    if(!l){hint("Höchste Stufe. Der Palast steht.");return;}
     var z=l.ziel;
-    hint("🏅 Naechste Stufe "+z[0]+" — Hauswert "+l.wert+"/"+z[1]+" $ · Wohnbereiche "
+    hint("Nächste Stufe "+z[0]+" — Hauswert "+l.wert+"/"+z[1]+" $ · Wohnbereiche "
       +l.kat+"/"+z[2]+" · Komfort (nutzbare Möbel) "+l.zuf+"/"+z[3]
       +"  (Abnahme an Tag "+naechsteAbnahme+")");};})();
 var hintT=null;
@@ -14777,7 +14788,7 @@ function renderPalette(){
     if(gesperrt){
       b.style.opacity="0.55";
       b.innerHTML="<div class='pe'>🔒</div><div class='pn'>"+d.n+"</div><div class='pp'>ab "+WOHNSTUFEN[d.stufe][0]+"</div>";
-      b.onclick=function(){hint("🔒 "+d.n+" gibt es ab Wohnstufe "+WOHNSTUFEN[d.stufe][0]+" — bestehe die Bauabnahme!");beep(220,.1,"square",.04);};
+      b.onclick=function(){hint(d.n+" gibt es ab Wohnstufe "+WOHNSTUFEN[d.stufe][0]+" — bestehe die Bauabnahme.");beep(220,.1,"square",.04);};
     }else{
       b.innerHTML="<div class='pe'>"+d.e+"</div><div class='pn'>"+d.n+"</div><div class='pp'>"+d.cost+" $</div>";
       b.onclick=function(){curItem=d.id;delMode=false;editHide();document.getElementById("delBtn").classList.remove("on");renderPalette();refreshGhost();};
@@ -14801,10 +14812,10 @@ document.getElementById("growBtn").onclick=function(){
     if(MPs&&!mpHost)netSend({t:"growReset",x:f5.gx,y:f5.gy}); /* 🩹 Schwarm-P1: Host muss die Ernte auch leeren — sonst endloser Re-Verkauf */
     if(ok2){var erloes=Math.round((180+Math.random()*160)*(1+lv2*0.3));geld+=erloes;
       if(MPs&&!mpHost)netSend({t:"growSold"});else stats.growSold++; /* 🩹 Schwarm-P1: Gast meldet den Deal — sonst zaehlte er nie (love-Broadcast ueberschreibt) */
-      hint("🌿 Diskret verkauft: +"+erloes+" $ … pssst!");skillXp("krimi",2);
+      hint("Diskret verkauft: +"+erloes+" $ … pssst.");skillXp("krimi",2);
       sims.forEach(function(s6){simEmoji(s6,"🤫");});}
     else{polizeiPending=true;var str2=Math.min(geld,150+lv2*40);geld-=str2;
-      hint("🚔 Aufgeflogen! Ernte beschlagnahmt, −"+str2+" $ Strafe");
+      hint("Aufgeflogen. Ernte beschlagnahmt, −"+str2+" $ Strafe");
       skillXp("krimi",1);
       sims.forEach(function(s7){s7.needs.spass=Math.max(5,s7.needs.spass-20);simEmoji(s7,"😰");});}
     geldSend();updHUD();});};
@@ -14812,14 +14823,14 @@ function buskAvailable(){var hh=uhrzeit/60;return running&&!buildMode&&!arbeiten
 function buskBtnUpd(){document.getElementById("buskBtn").style.display=buskAvailable()?"block":"none";}
 document.getElementById("buskBtn").onclick=function(){
   if(!buskAvailable())return;
-  if(window._buskTag===tag&&(window._buskHeute||0)>=3){hint("🎸 Für heute ist das Publikum durch — morgen wieder!");return;}
-  mgStart("🎸 Straßenmusik","Triff den Takt — je genauer, desto mehr Trinkgeld!",function(avg){
+  if(window._buskTag===tag&&(window._buskHeute||0)>=3){hint("Das Publikum hat für heute genug gehört.");return;}
+  mgStart("🎸 Strassenmusik","Triff den Takt — je genauer, desto mehr Trinkgeld!",function(avg){
     var verdienst=Math.round(30+avg*170*(1+skills.liebe.lv*0.1));
     verdiene(verdienst);
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10);});
     window._buskHeute=(window._buskTag===tag?(window._buskHeute||0):0)+1;window._buskTag=tag;
     if(avg>=0.99){if(MPs&&!mpHost)netSend({t:"busk"});else stats.buskPerfekt++;}
-    hint(avg>=0.8?("🎉 Die Menge tobt! +"+verdienst+" $ Trinkgeld"):(avg>0.3?("🎵 Solide Show: +"+verdienst+" $"):("😅 Schräge Töne … trotzdem +"+verdienst+" $")));
+    hint(avg>=0.8?("🎉 Die Menge tobt. +"+verdienst+" $ Trinkgeld"):(avg>0.3?("🎵 Solide Show: +"+verdienst+" $"):("😅 Schräge Töne … trotzdem +"+verdienst+" $")));
     simEmoji(sims[0],"🎸");simEmoji(sims[1],"🎤");hearts(sims[0].x,sims[0].z);
     updHUD();});};
 document.getElementById("crimeBtn").onclick=function(){
@@ -14837,7 +14848,7 @@ document.getElementById("crimeWahlAbbr").onclick=function(){document.getElementB
 function crimeGo(ji){
   mgStart("🔓 Tresor knacken","Timing entscheidet über deine Coup-Chance!",function(avg){
     crime.mgBonus=avg*0.25-0.08; // -8% bis +17%
-    hint(avg>=0.8?"🔓 Sauber geknackt — beste Chancen!":(avg>0.3?"🔧 Ganz ok …":"💥 Das war laut! Riskant …"));
+    hint(avg>=0.8?"🔓 Sauber geknackt — beste Chancen.":(avg>0.3?"🔧 Ganz ok …":"💥 Das war laut. Riskant …"));
     if(MPs){crime.askJob=ji;netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
       crime.ask=true;setTimeout(function(){if(crime.ask){crime.ask=false;startCrime(ji,false);}},10000);}
     else startCrime(ji,false);});}
@@ -14933,14 +14944,14 @@ function startGame(){
       var bon8=Math.min(40*n8,280);geld+=bon8;geldSend();updHUD();
       var txt8=n8>1?"🔥 Tag-"+n8+"-Serie! Treue-Bonus +"+bon8+" $":"👋 Willkommen! Tages-Bonus +"+bon8+" $";
       setTimeout(function(){if(running)hint(txt8);},4500);}
-  }catch(e){}}setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("📜 Stadt-Auftrag vom Bürgermeister: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
+  }catch(e){}}setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("Auftrag vom Stadtpräsidenten: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
   romantik=document.getElementById("romChk").checked||romantik;
   renderPalette();updHUD();MUS.play().catch(function(){});
   // Anfänger-Intro einmalig zeigen (für Einsteiger)
   try{if((!MPs||mpHost)&&!localStorage.getItem("th_intro_seen")){var _ic=document.getElementById("introCard");
     if(_ic){_ic.style.display="flex";document.getElementById("introOk").onclick=function(){_ic.style.display="none";try{localStorage.setItem("th_intro_seen","1");}catch(e){}};}}}catch(e){}
-  hint("🔨 Bauen antippen — dann Boden legen, Wände ziehen, Möbel stellen!");}
+  hint("Bauen antippen. Dann Boden legen, Wände ziehen, Möbel stellen.");}
 document.getElementById("soloBtn").onclick=function(){
   /* 🐛 Schwarm-Befund: Wer erst "Raum erstellen"/"Beitreten" tippt und dann doch auf
      "Solo bauen" geht, liess die Koop-Sitzung offen. MPs blieb gesetzt, saveGame()
@@ -15072,7 +15083,7 @@ function hostStatus(st){
   document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
   /* 🩹 Schwarm-4: Gast weg MITTEN im Spiel → Koop sauber beenden (sonst zeigen Partner-Marker/
      Coup-Knopf usw. weiter auf einen toten Kanal). Host bleibt Autoritaet, spielt solo weiter. */
-  if(st==="closed"&&running){MPs=null;document.getElementById("netBadge").style.display="none";hint("🔌 Partner hat das Spiel verlassen — du spielst allein weiter");}
+  if(st==="closed"&&running){MPs=null;document.getElementById("netBadge").style.display="none";hint("Dein Partner ist weg. Du spielst allein weiter.");}
   document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";}
 function beitreten(code){
   myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
@@ -15088,7 +15099,7 @@ function beitreten(code){
       /* 🩹 Schwarm-4: Host weg MITTEN im Spiel — die Meldung oben liegt im versteckten #start,
          und mit MPs+!mpHost blieben alle Gast-Sperren aktiv (Figur eingefroren, Uhr stand,
          kein Save). Der Ex-Gast uebernimmt jetzt selbst und spielt solo weiter. */
-      if(running){mpHost=true;MPs=null;document.getElementById("netBadge").style.display="none";hint("🔌 Partner hat das Spiel verlassen — du spielst allein weiter");}}
+      if(running){mpHost=true;MPs=null;document.getElementById("netBadge").style.display="none";hint("Dein Partner ist weg. Du spielst allein weiter.");}}
     document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
   if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});}
 document.getElementById("hostBtn").onclick=function(){
@@ -15115,21 +15126,21 @@ function voiceRemote(rs){
   if(!voice.remoteEl){voice.remoteEl=document.createElement("audio");voice.remoteEl.autoplay=true;document.body.appendChild(voice.remoteEl);}
   voice.remoteEl.srcObject=rs;voice.remoteEl.play().catch(function(){});}
 function voiceStart(){
-  if(!MPs){hint("🎙️ Voice geht nur im Koop-Spiel");return;}
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){hint("🎙️ Mikrofon vom Browser nicht unterstützt");return;}
+  if(!MPs){hint("Das Mikrofon geht nur zu zweit.");return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){hint("Der Browser gibt kein Mikrofon her.");return;}
   navigator.mediaDevices.getUserMedia({audio:true,video:false}).then(function(st){
     voice.stream=st;voice.on=true;voice.muted=false;
     var b=document.getElementById("micBtn");b.classList.add("on");b.textContent="🔴";
     var peer=MPs._peer;
-    if(!peer){hint("🎙️ Verbindung noch nicht bereit — kurz warten");return;}
+    if(!peer){hint("Verbindung noch nicht bereit. Kurz warten.");return;}
     if(mpHost){
       peer.on("call",function(c){c.answer(voice.stream);voice.call=c;c.on("stream",voiceRemote);});
     }else{
       var hostId="aban-traumhaus-"+(window._roomCode||"");
       var c=peer.call(hostId,voice.stream);voice.call=c;
       if(c)c.on("stream",voiceRemote);}
-    hint("🎙️ Voice AN — sprich mit deinem Mitspieler!");
-  }).catch(function(){hint("🎙️ Mikrofon-Zugriff verweigert");});}
+    hint("Mikrofon an.");
+  }).catch(function(){hint("Mikrofon-Zugriff verweigert.");});}
 function voiceToggleMute(){
   if(!voice.stream)return;
   voice.muted=!voice.muted;
@@ -15147,7 +15158,7 @@ var last=performance.now(),simTick=0,saveTick=0,netTick=0;
    fertiger 20x14-Bauplan: 7 Zimmer, Türen/Fenster, voll möbliert. Ein Tipp stempelt sie auf freie Fläche. */
 var VILLA={"name":"Riesen-Villa","w":20,"h":14,"floors":[[0,0,0],[0,1,0],[0,2,0],[0,3,0],[0,4,0],[0,5,0],[1,0,0],[1,1,0],[1,2,0],[1,3,0],[1,4,0],[1,5,0],[2,0,0],[2,1,0],[2,2,0],[2,3,0],[2,4,0],[2,5,0],[3,0,0],[3,1,0],[3,2,0],[3,3,0],[3,4,0],[3,5,0],[4,0,0],[4,1,0],[4,2,0],[4,3,0],[4,4,0],[4,5,0],[5,0,0],[5,1,0],[5,2,0],[5,3,0],[5,4,0],[5,5,0],[6,0,0],[6,1,0],[6,2,0],[6,3,0],[6,4,0],[6,5,0],[7,0,0],[7,1,0],[7,2,0],[7,3,0],[7,4,0],[7,5,0],[8,0,0],[8,1,0],[8,2,0],[8,3,0],[8,4,0],[8,5,0],[9,0,0],[9,1,0],[9,2,0],[9,3,0],[9,4,0],[9,5,0],[10,0,0],[10,1,0],[10,2,0],[10,3,0],[10,4,0],[10,5,0],[11,0,0],[11,1,0],[11,2,0],[11,3,0],[11,4,0],[11,5,0],[12,0,0],[12,1,0],[12,2,0],[12,3,0],[12,4,0],[12,5,0],[13,0,1],[13,1,1],[13,2,1],[13,3,1],[13,4,1],[13,5,1],[14,0,1],[14,1,1],[14,2,1],[14,3,1],[14,4,1],[14,5,1],[15,0,1],[15,1,1],[15,2,1],[15,3,1],[15,4,1],[15,5,1],[16,0,1],[16,1,1],[16,2,1],[16,3,1],[16,4,1],[16,5,1],[17,0,1],[17,1,1],[17,2,1],[17,3,1],[17,4,1],[17,5,1],[18,0,1],[18,1,1],[18,2,1],[18,3,1],[18,4,1],[18,5,1],[19,0,1],[19,1,1],[19,2,1],[19,3,1],[19,4,1],[19,5,1],[0,6,3],[0,7,3],[1,6,3],[1,7,3],[2,6,3],[2,7,3],[3,6,3],[3,7,3],[4,6,3],[4,7,3],[5,6,3],[5,7,3],[6,6,3],[6,7,3],[7,6,3],[7,7,3],[8,6,3],[8,7,3],[9,6,3],[9,7,3],[10,6,3],[10,7,3],[11,6,3],[11,7,3],[12,6,3],[12,7,3],[13,6,3],[13,7,3],[14,6,3],[14,7,3],[15,6,3],[15,7,3],[16,6,3],[16,7,3],[17,6,3],[17,7,3],[18,6,3],[18,7,3],[19,6,3],[19,7,3],[0,8,2],[0,9,2],[0,10,2],[0,11,2],[0,12,2],[0,13,2],[1,8,2],[1,9,2],[1,10,2],[1,11,2],[1,12,2],[1,13,2],[2,8,2],[2,9,2],[2,10,2],[2,11,2],[2,12,2],[2,13,2],[3,8,2],[3,9,2],[3,10,2],[3,11,2],[3,12,2],[3,13,2],[4,8,2],[4,9,2],[4,10,2],[4,11,2],[4,12,2],[4,13,2],[5,8,2],[5,9,2],[5,10,2],[5,11,2],[5,12,2],[5,13,2],[6,8,1],[6,9,1],[6,10,1],[6,11,1],[6,12,1],[6,13,1],[7,8,1],[7,9,1],[7,10,1],[7,11,1],[7,12,1],[7,13,1],[8,8,1],[8,9,1],[8,10,1],[8,11,1],[8,12,1],[8,13,1],[9,8,1],[9,9,1],[9,10,1],[9,11,1],[9,12,1],[9,13,1],[10,8,3],[10,9,3],[10,10,3],[10,11,3],[10,12,3],[10,13,3],[11,8,3],[11,9,3],[11,10,3],[11,11,3],[11,12,3],[11,13,3],[12,8,3],[12,9,3],[12,10,3],[12,11,3],[12,12,3],[12,13,3],[13,8,3],[13,9,3],[13,10,3],[13,11,3],[13,12,3],[13,13,3],[14,8,2],[14,9,2],[14,10,2],[14,11,2],[14,12,2],[14,13,2],[15,8,2],[15,9,2],[15,10,2],[15,11,2],[15,12,2],[15,13,2],[16,8,2],[16,9,2],[16,10,2],[16,11,2],[16,12,2],[16,13,2],[17,8,2],[17,9,2],[17,10,2],[17,11,2],[17,12,2],[17,13,2],[18,8,2],[18,9,2],[18,10,2],[18,11,2],[18,12,2],[18,13,2],[19,8,2],[19,9,2],[19,10,2],[19,11,2],[19,12,2],[19,13,2]],"walls":[[0,0,0,"wand"],[0,14,0,"wand"],[1,0,0,"fenster"],[1,14,0,"wand"],[2,0,0,"wand"],[2,14,0,"fenster"],[3,0,0,"wand"],[3,14,0,"wand"],[4,0,0,"fenster"],[4,14,0,"wand"],[5,0,0,"wand"],[5,14,0,"wand"],[6,0,0,"wand"],[6,14,0,"fenster"],[7,0,0,"fenster"],[7,14,0,"wand"],[8,0,0,"wand"],[8,14,0,"wand"],[9,0,0,"wand"],[9,14,0,"tuer"],[10,0,0,"fenster"],[10,14,0,"tuer"],[11,0,0,"wand"],[11,14,0,"wand"],[12,0,0,"wand"],[12,14,0,"wand"],[13,0,0,"fenster"],[13,14,0,"wand"],[14,0,0,"wand"],[14,14,0,"fenster"],[15,0,0,"wand"],[15,14,0,"wand"],[16,0,0,"fenster"],[16,14,0,"wand"],[17,0,0,"wand"],[17,14,0,"wand"],[18,0,0,"wand"],[18,14,0,"fenster"],[19,0,0,"fenster"],[19,14,0,"wand"],[0,0,1,"wand"],[20,0,1,"wand"],[0,1,1,"fenster"],[20,1,1,"fenster"],[0,2,1,"wand"],[20,2,1,"wand"],[0,3,1,"wand"],[20,3,1,"wand"],[0,4,1,"fenster"],[20,4,1,"fenster"],[0,5,1,"wand"],[20,5,1,"wand"],[0,6,1,"wand"],[20,6,1,"wand"],[0,7,1,"fenster"],[20,7,1,"fenster"],[0,8,1,"wand"],[20,8,1,"wand"],[0,9,1,"wand"],[20,9,1,"wand"],[0,10,1,"fenster"],[20,10,1,"fenster"],[0,11,1,"wand"],[20,11,1,"wand"],[0,12,1,"wand"],[20,12,1,"wand"],[0,13,1,"fenster"],[20,13,1,"fenster"],[0,6,0,"wand"],[1,6,0,"wand"],[2,6,0,"wand"],[3,6,0,"tuer"],[4,6,0,"wand"],[5,6,0,"wand"],[6,6,0,"wand"],[7,6,0,"wand"],[8,6,0,"wand"],[9,6,0,"wand"],[10,6,0,"tuer"],[11,6,0,"wand"],[12,6,0,"wand"],[13,6,0,"wand"],[14,6,0,"wand"],[15,6,0,"wand"],[16,6,0,"tuer"],[17,6,0,"wand"],[18,6,0,"wand"],[19,6,0,"wand"],[0,8,0,"wand"],[1,8,0,"wand"],[2,8,0,"tuer"],[3,8,0,"wand"],[4,8,0,"wand"],[5,8,0,"wand"],[6,8,0,"wand"],[7,8,0,"tuer"],[8,8,0,"wand"],[9,8,0,"wand"],[10,8,0,"wand"],[11,8,0,"tuer"],[12,8,0,"wand"],[13,8,0,"wand"],[14,8,0,"wand"],[15,8,0,"wand"],[16,8,0,"wand"],[17,8,0,"tuer"],[18,8,0,"wand"],[19,8,0,"wand"],[8,0,1,"wand"],[13,0,1,"wand"],[8,1,1,"wand"],[13,1,1,"wand"],[8,2,1,"wand"],[13,2,1,"wand"],[8,3,1,"wand"],[13,3,1,"wand"],[8,4,1,"wand"],[13,4,1,"wand"],[8,5,1,"wand"],[13,5,1,"wand"],[6,8,1,"wand"],[10,8,1,"wand"],[14,8,1,"wand"],[6,9,1,"wand"],[10,9,1,"wand"],[14,9,1,"wand"],[6,10,1,"wand"],[10,10,1,"wand"],[14,10,1,"wand"],[6,11,1,"wand"],[10,11,1,"wand"],[14,11,1,"wand"],[6,12,1,"wand"],[10,12,1,"wand"],[14,12,1,"wand"],[6,13,1,"wand"],[10,13,1,"wand"],[14,13,1,"wand"]],"furn":[["sofa_design",1,1,0],["sessel_ohren",4,1,0],["tv",1,4,0],["lampe",6,1,0],["topfpflanze",6,4,0],["tisch",9,2,0],["stuhl",9,1,0],["stuhl",10,1,0],["stuhl",9,4,0],["stuhl",10,4,0],["deckenlampe",11,3,0],["kueche",14,1,0],["herd",16,1,0],["kuehlschrank",17,1,0],["tisch",15,4,0],["stuhl",15,3,0],["bett",1,10,0],["lampe",4,9,0],["buecherregal",4,12,0],["dusche",7,9,0],["badewanne",7,12,0],["toilette",9,9,0],["schreibtisch",11,9,0],["stuhl",11,10,0],["schreiblampe",12,9,0],["buecherregal",13,12,0],["bett",15,10,0],["sessel",18,9,0],["topfpflanze",18,12,0],["pflanze",7,7,0],["oellampe",12,7,0]]};
 function stampVilla(){
-  if(geld<3500){hint("💰 Villa kostet 3500 $ — zu wenig Geld!");return;}
+  if(geld<3500){hint("Die Villa kostet 3500 $. So viel hast du nicht.");return;}
   var W9=VILLA.w,H9=VILLA.h,ax=-1,ay=-1;
   var cands=[[((GW-W9)/2)|0,4],[((GW-W9)/2)|0,((GH-H9)/2)|0],[4,4],[GW-W9-4,4],[4,GH-H9-4],[GW-W9-4,GH-H9-4]];
   for(var ci=0;ci<cands.length&&ax<0;ci++){var cx0=cands[ci][0],cy0=cands[ci][1],ok=true;
@@ -15157,7 +15168,7 @@ function stampVilla(){
     for(var sy=1;sy<GH-H9&&ax<0;sy++)for(var sx=1;sx<GW-W9&&ax<0;sx++){var ok2=true;
       for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){var _wx=sx+x2,_wy=sy+y2;if(!inBau(_wx,_wy)||!cellFree(_wx,_wy)||floors[fkey(_wx,_wy)]!==undefined||walls[_wx+","+_wy+",0"]||walls[_wx+","+_wy+",1"])ok2=false;}
       if(ok2){ax=sx;ay=sy;}}}
-  if(ax<0){hint("🏰 Kein Platz frei — räume eine 20×14-Fläche frei!");return;}
+  if(ax<0){hint("Kein Platz. Die Villa braucht 20×14 Meter.");return;}
   geld-=3500;geldSend();
   /* 🔒 Die Vorlage stellte das ab Stufe 1 gesperrte Designer-Sofa auch bei Stufe 0
      ins Haus und umging damit die frische Freischaltung. Gesperrte Stuecke werden
@@ -15177,7 +15188,7 @@ function stampVilla(){
     var _neu=furn[furn.length-1];if(_neu){_neu.gratis=1;if(MPs)netSend({t:"furnG",fid:_neu.fid});}});
   stats.moebelGekauft=(stats.moebelGekauft||0)+VILLA.furn.length;
   updHUD();beep(660,.1,"triangle",.06);setTimeout(function(){beep(880,.14,"triangle",.06);},140);
-  hint("🏰 Riesen-Villa gebaut — geh rein! (7 Zimmer, voll möbliert)");}
+  hint("Villa steht. Sieben Zimmer, möbliert. Geh rein.");}
 function loop(now){
   requestAnimationFrame(loop);
   var _roh=(now-last)/1000;                 /* echte Bildzeit — dt ist gedeckelt */
@@ -15233,23 +15244,23 @@ function loop(now){
       _z.g.position.x=_z.x;_z.g.rotation.y=_z.dir<0?0:Math.PI;}
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
     if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;
-      if(immo.length){var miete=Math.round(immo.length*150*stufenBonus());geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" $ ("+immo.length+" H\u00E4user)");}
+      if(immo.length){var miete=Math.round(immo.length*150*stufenBonus());geld+=miete;geldSend();updHUD();hint("Miete: +"+miete+" $ ("+immo.length+" H\u00E4user)");}
       /* 🏅 Die Bauabnahme ist der Taktgeber des Spiels — sie kommt zum Termin,
          egal was der Spieler gerade tut, und sagt konkret, was noch fehlt. */
       /* 🏅 Die Abnahme war ein stilles Popup — jetzt kommt der BAUINSPEKTOR sichtbar
-         zu Fuss aufs Grundstueck (gleiches Amts-Gate wie Polizist/Buergermeister)
+         zu Fuss aufs Grundstueck (gleiches Amts-Gate wie Polizist/Stadtpraesident)
          und prueft erst dann. Faellt der Spawn einen ganzen Tag lang aus
          (NPC-Limit), wird direkt abgenommen — der Termin darf nie verhungern. */
       if(tag>naechsteAbnahme){inspektorPending=false;setTimeout(bauabnahme,1400);}
       else if(tag>=naechsteAbnahme)inspektorPending=true;
       if(!MPs||mpHost){tagesReport();missNeu();
-        if(missHeute)setTimeout(function(){hint("🎯 Neue Tages-Missionen: "+missHeute.liste.map(function(m){return m.e;}).join(" ")+" — Details unter 🏆");},3500);
+        if(missHeute)setTimeout(function(){hint("Heute: "+missHeute.liste.map(function(m){return m.e;}).join(" ")+" — Details unter 🏆");},3500);
         if(MODUS==="sprint"&&!sprintFertig){
           if(wohnstufe>=3){sprintFertig=true;feier(4);
-            hint("🏁 SPRINT GEWONNEN — Traumvilla an Tag "+tag+"! Du spielst entspannt weiter.");}
+            hint("Sprint gewonnen. Traumvilla an Tag "+tag+". Du spielst entspannt weiter.");}
           else if(tag>20){sprintFertig=true;MODUS="klassisch";
-            hint("🏁 Sprint vorbei — die Villa kam nicht bis Tag 20. Weiter im Klassisch-Modus!");}
-          else hint("🏁 Sprint: Tag "+tag+"/20 — Ziel Traumvilla (Stufe 3)");}}
+            hint("Sprint vorbei. Die Villa stand nicht bis Tag 20. Weiter im klassischen Modus.");}
+          else hint("Sprint: Tag "+tag+"/20 — Ziel Traumvilla (Stufe 3)");}}
       rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
@@ -15502,7 +15513,7 @@ function loop(now){
       if(!_ic||_ic.style.display==="none"||!_ic.style.display){
         window._mapTip=true;
         try{if(!localStorage.getItem("th_maptip")){localStorage.setItem("th_maptip","1");
-          setTimeout(function(){hint("🗺️ Tipp aufs Radar = grosse Weltkarte");},4000);}}catch(e){}}}
+          setTimeout(function(){hint("Tipp aufs Radar für die grosse Karte");},4000);}}catch(e){}}}
     document.getElementById("emoteToggle").style.display=(running&&!buildMode&&!fahren)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";

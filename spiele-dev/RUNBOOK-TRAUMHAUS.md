@@ -6422,3 +6422,45 @@ Erfolgs-Toast.
 > **Werkzeug-Falle:** Eine entkoppelte Prüfkette (`nohup setsid … &`) überlebt nur, wenn sie
 > der EINZIGE Befehl im Aufruf ist. Folgt im selben Aufruf noch ein `python3`/`grep`, stirbt
 > die Kette mit dem Aufruf (zweimal gemessen: Log bricht nach der ersten Zeile ab).
+
+## 2026-09-06 · ✍️ Handschrift-Runde, Teil 2 (Texte, Namen, Passanten)
+
+Teil 1 hat die Oberfläche entschieden; die Texte sprachen noch wie ein Assistent: Emoji voran,
+Ausrufezeichen hinten, „Geschafft!", „Großartig!". Gezählt mit `th-handschrift.py` und
+`th-texte.py` (vorher → nachher):
+
+| Muster | vorher | nachher |
+|---|---:|---:|
+| `hint()`-Texte, die mit Emoji beginnen | 146 / 154 | **0** |
+| `hint()`-Texte mit „!" | 70 | **5** (Tor, Alarm, Festhalten — dort ist der Ausruf Inhalt) |
+| ß (deutsche statt Schweizer Schreibung) | 29 | 0 |
+| „Bürgermeister" | 7 | 0 → **Stadtpräsident** |
+| Passanten-Sprüche mit Meinung oder Ort | 0 / 10 | **16 / 16** |
+
+**Werkzeug:** `spiele-dev/tools/th-texte.py` — idempotent (zweiter Lauf: „nichts zu tun").
+~115 Meldungen von Hand (Tabelle im Skript), der Rest mechanisch: Kopf-/Fuss-Emoji nur im
+ERSTEN Literal des `hint()`-Aufrufs (die anderen Literale auf der Zeile können Inhalt sein,
+z. B. `simEmoji(…,"💬")`), „!" → „." in allen Literalen der Zeile, Ausnahmeliste.
+
+**Stimme:** trocken, konkret, ein Ort oder eine Zahl statt Jubel. „Stadtfest am See! Lampions,
+Feuerwerk — kommt vorbei!" → „Stadtfest am See. Lampions ab acht, Feuerwerk um zehn."
+„Der fliegende Händler zieht weiter …" → „Der fliegende Händler ist weitergezogen."
+Passanten haben jetzt eine Meinung („Grün. Das alte Blau war besser.") und kennen die Stadt
+(Sunnehalde, Brunnmatt, Metzgerei, die Baustelle beim Bahnhof).
+
+**Ortsnamen:** Villen Ost → **Sunnehalde**, Villen West → **Rebhalde**, Gewerbe Ost →
+**Gewerbe Rietli**, Stadthaeuser Ost → **Bürgli**, Vergnuegungsviertel → **Chilbiplatz**,
+Grosser Park → **Stadtpark**, Brunnen-Park → **Brunnmatt**.
+
+> **Namens-Falle:** `WORLD_POIS`, `viertel({name})`, `LIEFERZIELE`, die Buslinien (`vn:`) und
+> `marke()` sind über **Namensgleichheit** verknüpft. Wer nur die Karte umbenennt, trennt
+> die Marke vom Viertel, und der Lieferauftrag fährt ins Leere. Deshalb ersetzt das Skript den
+> exakten String in Anführungszeichen überall — auch in Kommentaren, das ist gewollt.
+> Kontrolle: `th-marken.mjs` (Marken/Lieferziele ohne Ziel = 0).
+
+**Nur einmal:** der Stick-Hinweis beim Einsteigen („Stick nach oben ist Gas …") kommt über
+`localStorage th_stickhint` nur beim ersten Mal — beim zwanzigsten Einsteigen ist er Lärm.
+
+**Nicht angefasst:** `MISS_POOL`/`QUESTS`/`PQ_TPL` — dort ist das Emoji ein eigenes Feld (`e`),
+der Text ist bereits nüchtern. Erfolgsnamen (`ACH`) bleiben; die Emoji dort sind das Icon
+der Liste, kein Textpräfix.
