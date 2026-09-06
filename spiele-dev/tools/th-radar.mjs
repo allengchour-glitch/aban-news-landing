@@ -21,7 +21,16 @@ mitSonden('traumhaus.html', {
       m.style.display="block";return m.style.display;}
     /* Muenz-Punkte auszaehlen: Fuellfarbe ist #ffe14a = 255/225/74. Toleranz, weil
        Antialiasing die Raender abschwaecht; der Kern bleibt eindeutig. */
-    if(was==="punkte"){var m2=document.getElementById("minimap");
+    if(was==="punkte"){
+      /* ⚠️ DERSELBE STRICH-ZWANG WIE BEI "nah" — und er fehlte hier. Unter Torlast
+         hinkte diese Sonde genau EINEN Schritt hinterher: nach dem Ausschalten der
+         Muenzen las sie noch 51 Pixel, nach dem Einschalten 0. Die beiden Ergebnisse
+         waren vertauscht, weil updMinimap auf 0,12 s WELTZEIT gedrosselt ist und bei
+         1,7 Bildern/s erst nach rund 1,4 Wanduhrsekunden zeichnet — das Werkzeug
+         wartet 1,2 s. Allein lief die Pruefung durch, im Tor fiel sie dreimal.
+         Gefunden erst, als th-alle die Ausgabe gescheiterter Pruefungen aufhob. */
+      if(typeof updMinimap==="function")updMinimap(1);
+      var m2=document.getElementById("minimap");
       var d=m2.getContext("2d").getImageData(0,0,m2.width,m2.height).data,n=0;
       for(var i=0;i<d.length;i+=4){
         if(Math.abs(d[i]-255)<12&&Math.abs(d[i+1]-225)<12&&Math.abs(d[i+2]-74)<26&&d[i+3]>200)n++;}

@@ -2791,7 +2791,11 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
      das war das Flimmern auf Strasse und Trottoir. Jede Fahrbahn bekommt jetzt ihre eigene
      Hoehe, gestaffelt um 0.4 mm; sichtbar ist das nicht, der Streit hoert damit auf. */
   var _strLage=0;
-  function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),w>h?strMatH:strMatV);
+  /* Das Material waehlt sich normalerweise selbst aus der Form: breiter als tief =
+     Laengstextur. Ein KURZES Stueck einer Ost-West-Strasse ist aber schmaler als breit
+     und bekaeme damit die Quertextur — die Rillen laegen quer zur Fahrtrichtung. Darum
+     laesst sich das Material uebergeben. */
+  function strasseMesh(w,h,x,z,mat){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat||(w>h?strMatH:strMatV));
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003-(_strLage++)*0.0004,z);
     st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,16,0,-SZ-12);
@@ -2802,12 +2806,37 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
        hinaus ins Gras. Sie endet jetzt exakt in der Eckenmitte; die Rundung macht
        die Eckscheibe. */
     var RGZ_N=-100,RGZ_S=118,RGX=112,RLEN=2*RGX,RTIEF=2*Math.abs(RGZ_N)+2*RGZ_S;
+    /* Der Verkehr muss wissen, wo dieser Asphalt endet — sonst faehrt er darueber
+       hinaus. Zahlen hier NICHT abschreiben, sondern durchreichen. */
+    window._ringGeo={n:RGZ_N,s:RGZ_S,x:RGX};
     strasseMesh(RLEN,9,0,RGZ_N);strasseMesh(RLEN,9,0,RGZ_S);
     strasseMesh(9,RGZ_S-RGZ_N,-RGX,(RGZ_N+RGZ_S)/2);strasseMesh(9,RGZ_S-RGZ_N,RGX,(RGZ_N+RGZ_S)/2);
     // Zubringer: Querstrassen-Enden an den Ring anschliessen
     [RX,-RX].forEach(function(cx8){
       strasseMesh(9,Math.abs(RGZ_N+SZ+23),cx8,(RGZ_N-(SZ+23))/2);
       strasseMesh(9,Math.abs(RGZ_S-(SZ+23)),cx8,(RGZ_S+(SZ+23))/2);});
+    /* 🛣️ DIE HAUPTSTRASSEN ENDETEN 5,5 m VOR DEM RING.
+       GEMESSEN 2026-09-05 (Strahlengitter im Halbmeterraster quer ueber die Naht):
+       die beiden Hauptstrassen sind 204 m lang und enden bei x = ±102; die senkrechten
+       Ringschenkel liegen bei x = ±112 und sind 9 m breit, reichen also von ±107,5 nach
+       aussen. Dazwischen: 5,5 m Rasen — an VIER Stellen (beide Strassen, beide Seiten).
+       Die Strasse hoerte auf und fing wieder an.
+
+       ⚠️ Beim ersten Hinsehen sah nur die Westseite kaputt aus, die Ostseite schien
+       durchgehend. Das war Zufall: dort kreuzt der 30-Grad-Zubringer genau ueber der
+       Naht (r = 120 bei 28,9 Grad) und deckt sie ab. Wer nur eine Seite prueft, haelt
+       den Fehler fuer halb so gross.
+
+       Das WEGENETZ wusste laengst, dass hier eine Kreuzung ist: gpsStrasse laesst die
+       Hauptstrasse bis |x| < RL/2+6 = 108 gelten und den Ringschenkel ab 107,5. Nur der
+       Asphalt fehlte. */
+    (function ringAnschluss(){
+      var LB=RL/2, RA=RGX-4.5;          // Ende der Hauptstrasse | Innenkante des Ringschenkels
+      if(RA<=LB)return;                 // beruehren sich schon: nichts zu tun
+      [-1,1].forEach(function(sx){[-1,1].forEach(function(sz){
+        strasseMesh(RA-LB,16,sx*(LB+RA)/2,sz*(SZ+12),strMatH);});});
+      window._ringAnschluss=RA-LB;
+    })();
     /* 🛣️ Die Ring-Segmente endeten als harte Kante im Gras/Sand — "Kreuzung, dann endet die
        Strasse" (User). Die vier Ecken bekommen jetzt eine ausgerundete Fahrbahn mit Bordstein,
        damit der Ring sichtbar geschlossen ist statt abzubrechen. */
@@ -4066,7 +4095,26 @@ setTimeout(function baueVerkehr(){
     {axis:"radial",gr: 30,dir: 1,speed:6.6},{axis:"radial",gr: 60,dir:-1,speed:7.4},
     {axis:"radial",gr:120,dir: 1,speed:6.9},{axis:"radial",gr:240,dir:-1,speed:7.1},
     {axis:"radial",gr:300,dir: 1,speed:7.8},{axis:"radial",gr:330,dir:-1,speed:6.3},
+    /* 🏘️ VIERTELSTRASSEN. Dieselbe Luecke wie bei den Zubringern eine Runde zuvor:
+       sieben Viertel haben eine Erschliessungsstrasse mit Trottoir, Mittelstreifen und
+       Laternen — und niemand faehrt darauf. Gesehen auf der Sichtrunde 67 (Zoo,
+       Gewerbe Ost, Vergnuegungsviertel): gebaute, beleuchtete, leere Strassen.
+       ⚠️ DIE VIERTEL GIBT ES HIER NOCH NICHT. Sie entstehen rund 1500 Zeilen weiter
+       unten und WEICHEN BEIM SETZEN AUS — ihre Koordinaten stehen erst zur Laufzeit
+       fest. Darum Platzhalter: `bereit` bleibt falsch, bis `viertelVerkehr()` die
+       tatsaechliche Lage eingetragen hat. Wer hier Zahlen hinschreibt, schreibt den
+       Wunschort hin, und der ist in dieser Datei schon dreimal der falsche gewesen. */
+    {axis:"viertel",vn:"Gewerbe Ost",       bereit:false,speed:5.0},
+    {axis:"viertel",vn:"Sportpark Sued",    bereit:false,speed:4.6},
+    {axis:"viertel",vn:"Freizeitpark",      bereit:false,speed:4.4},
+    {axis:"viertel",vn:"Vergnuegungsviertel",bereit:false,speed:5.2},
+    {axis:"viertel",vn:"Zoo",               bereit:false,speed:4.8},
+    {axis:"viertel",vn:"Flughafen",         bereit:false,speed:5.4},
+    {axis:"viertel",vn:"Bauernhof",         bereit:false,speed:4.2},
     {axis:"stich",dir: 1,speed:6.2},{axis:"stich",dir:-1,speed:5.6}];
+  /* Die Viertelrouten werden erst zur Laufzeit ausgefuellt (siehe viertelVerkehr()) —
+     dafuer muss die Liste von aussen erreichbar sein. */
+  window._ROUTEN=ROUTEN;
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
     /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
      darum 20 statt 34; die Strassen wirken trotzdem belebt. */
@@ -4125,7 +4173,7 @@ setTimeout(function baueVerkehr(){
         ? RAD_R0+((_pr+0.5)/_np)*(RAD_R1-RAD_R0)              // ueber die Laenge verteilen
         :(r.axis==="stich")
         ? ((_pr+0.5)/_np)*STICH.len                           // ueber den L-Weg verteilen
-        : -150+((_pr+0.5)/_np)*300+((i*37)%17)-8;
+        : -86+((_pr+0.5)/_np)*172+((i*37)%17)-8;   /* innerhalb des Asphalts, nicht ±150 */
       m.userData.nieAusblenden=true; /* 🩹 Schwarm-7: LOD registrierte Kleinteile der FAHRENDEN Wagen an ihrer Ladeposition — unterwegs verschwanden Raeder/Anbauteile */
       (function(){var s9=m.scale.x||1,sz9=new THREE.Vector3();b2.getSize(sz9);      /* Kontaktschatten, Modell-Einheiten */
         _blob(m,(sz9.x*0.52)/s9,(sz9.z*0.56)/s9,(b2.min.y+0.012)/s9);})();
@@ -4584,16 +4632,115 @@ function updLandbus(dt){
     b.w.rotation.y=Math.atan2(-sa*b.rdir, ca*b.rdir);
   }
 }
+/* 🚗 WELCHE WAGEN TEILEN SICH EINE SPUR? GEMESSEN 2026-09-05: auf der Landstrasse
+   standen sechs Paare enger als ihre eigene Laenge, das engste 0,34 m bei noetigen
+   5,13 m — sie fuhren ineinander. Die Abstandsregel unten gab es laengst, sie
+   verglich aber nur Wagen mit DEMSELBEN Routen-Objekt (`o.route !== v.route`).
+   ROUTEN hat fuer den Ring aber ZWEI Eintraege je Radius (r 197,5 zweimal dir 1,
+   r 202,5 zweimal dir -1) — physisch dieselbe Spur, fuer die Regel zwei Welten.
+   Der Schluessel beschreibt darum die STRASSE, nicht das Objekt: Achse, Spurlage
+   und Richtung. Bei Zubringer und Stich haengt die Richtung am Wagen (`rdir`), das
+   prueft die Regel selbst. */
+function _spurKey(v){
+  var r=v.route;
+  if(!r)return "?";
+  /* Auf Gitterstrassen zaehlt STRASSE + Spurabstand + aktuelle Fahrtrichtung.
+     Die blosse Routen-Zahl reicht nicht mehr: seit die Wagen am Strassenende
+     wenden, wechselt ein Wagen die Spur auf die andere Seite der Mittellinie —
+     und liegt dort mit den Wagen der Gegenroute in EINER Spur. */
+  if(r.axis==="viertel")return "v|"+r.vn+"|"+v.rdir;
+  if(r.axis==="x"){var gx=_strGrenzen(r);return "x|"+gx.mitte+"|"+gx.versatz+"|"+v.rdir;}
+  if(r.axis==="z"){var gz=_strGrenzen(r);return "z|"+gz.mitte+"|"+gz.versatz+"|"+v.rdir;}
+  if(r.axis==="ring")return "ring|"+r.r+"|"+r.dir;
+  if(r.axis==="radial")return "radial|"+r.gr;
+  return r.axis;}
+/* 🛣️ WO ENDET DIE STRASSE, UND WO LIEGT DIE SPUR?
+   GEMESSEN 2026-09-05 (20 Proben, Strahl von jedem Wagen nach unten): in 69 von
+   520 Faellen lag KEIN Asphalt unter dem Wagen — ein Viertel des Gitterverkehrs
+   fuhr durch die Landschaft. Der Grund stand in einer einzigen Zeile:
+
+     var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit ausserhalb der Sicht
+
+   Das stimmte, als drumherum nichts war. Inzwischen liegen dort Felder, Waldsaum,
+   Zubringer und die Landstrasse — "ausserhalb der Sicht" gibt es nicht mehr.
+   Der Asphalt endet bei x = ±RL/2 (±102) und bei z = -100 / +118; die Wagen liefen
+   bis ±152 bzw. ±126, also bis zu 50 m ins Gruene, und sprangen dort um.
+
+   Statt umzuspringen wenden sie jetzt am Strassenende — dasselbe, was die
+   Zubringer-Routen (`radial`) seit jeher tun. Beim Wenden wechselt der Wagen auf
+   die andere Seite der Mittellinie; darum wird die Spur aus MITTE + Versatz
+   gerechnet und nicht mehr fest in der Route hinterlegt.
+
+   ⚠️ Dabei kam eine zweite Sache heraus: die Route x = -109,5 (Richtung Sued) lag
+   auf der FALSCHEN Seite ihrer Mittellinie (-112). Nach der Hausregel — wer nach
+   Sueden faehrt, gehoert westlich der Mitte — muss sie bei -114,5 liegen. Das ist
+   dieselbe Spiegelung, die fuer die Nordstrasse schon einmal gefunden wurde. Die
+   Rechnung unten setzt sie nebenbei richtig. */
+function _strGrenzen(r){
+  /* Die Viertelstrasse traegt ihre Masse selbst — sie wurden zur Laufzeit aus dem
+     tatsaechlich gesetzten Viertel gerechnet, nicht aus dem Wunschort. */
+  if(r.axis==="viertel")return {mitte:r.c, versatz:r.off, von:r.von, bis:r.bis};
+  var RG=window._ringGeo||{n:-100,s:118,x:112};
+  if(r.axis==="x"){
+    var mz=(r.z>0?1:-1)*(GH*CS/2+12);        /* Hauptstrassen-Mitte z = ±58 */
+    return {mitte:mz, versatz:Math.abs(r.z-mz), von:-RL/2+6, bis:RL/2-6};
+  }
+  /* z-Routen liegen entweder an den Querstrassen (±RX) oder an den senkrechten
+     Ringschenkeln (±RG.x). Der naehere der beiden ist die Mittellinie. */
+  var kandidat=[RX,-RX,RG.x,-RG.x], mx=kandidat[0];
+  for(var k=1;k<kandidat.length;k++)
+    if(Math.abs(r.x-kandidat[k])<Math.abs(r.x-mx))mx=kandidat[k];
+  return {mitte:mx, versatz:Math.abs(r.x-mx), von:RG.n+6, bis:RG.s-6};
+}
 function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
+  /* 🔭 WEIT WEG HEISST UNSICHTBAR. Ein Viertelwagen steht 250 bis 400 m entfernt; im
+     Bild ist er nicht zu sehen, im Schattenwurf der Sonne aber schon — der rendert die
+     ganze Welt —, und `nieAusblenden` (das die Raeder unterwegs sichtbar haelt) nimmt
+     ihn zusaetzlich vom LOD aus. Ab 300 m wird er darum von Hand ausgeblendet; die
+     Position laeuft weiter, sonst springt er beim Naeherkommen.
+
+     ⚠️ WIE VIEL DAS SPART, WEISS ICH NICHT — und der erste Anlauf dieses Kommentars
+     behauptete es trotzdem ("443 Zeichenaufrufe"). Nachgemessen streut
+     `renderer.info` auf DEMSELBEN Stand zwischen zwei Laeufen um bis zu 30 %
+     (Stadtmitte 13 537 gegen 15 251 Aufrufe, Zoo 12 548 gegen 16 391): der LOD-Zustand
+     haengt davon ab, wie lange das Spiel schon laeuft und wo die Kamera vorher war.
+     Jede Zahl, die ich dazu genannt hatte, lag innerhalb dieser Streuung. Das
+     Ausblenden bleibt — weil ein unsichtbarer Wagen nicht gezeichnet werden muss,
+     nicht weil eine Messung es belegt haette. */
+  var _sp=spielerPos();
   verkehr.forEach(function(v){
     if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}
+    /* Solange die Lage des Viertels nicht eingetragen ist, gibt es keine Strasse,
+       auf der dieser Wagen stehen koennte — er bleibt weg statt im Nullpunkt zu parken. */
+    if(v.route.axis==="viertel"&&!v.route.bereit){if(v.mesh.visible)v.mesh.visible=false;return;}
     var _pv=v.pos;
     /* Auf dem Zubringer gilt nicht die feste Routenrichtung, sondern die
        aktuelle Fahrtrichtung des Wagens — er wendet an beiden Enden. */
-    if((v.route.axis==="radial"||v.route.axis==="stich")&&v.rdir===undefined)v.rdir=v.route.dir;
-    var rd=(v.route.axis==="radial"||v.route.axis==="stich")?v.rdir:v.route.dir;
-    v.pos+=rd*(v.speed||v.route.speed)*dt;
+    /* Seit auch die Gitterstrassen am Ende gewendet werden, gilt fuer JEDEN Wagen
+       die eigene Fahrtrichtung. Bei Ring-Routen aendert sie sich nie. */
+    if(v.rdir===undefined)v.rdir=v.route.dir;
+    var rd=v.rdir;
+    /* 🚦 ERST SCHAUEN, DANN FAHREN. Die Regel weiter unten schob den Wagen bei zu
+       geringem Abstand einfach auf 7,5 m zurueck — ein Sprung. Gemessen sah man das
+       am Bremslicht: nach dem Sprung betraegt der Abstand exakt 7,5 m, die Bedingung
+       "kleiner als 7,5" ist also nie erfuellt, und das Licht blieb ueber sechs Proben
+       immer aus. Jetzt wird der freie Weg VOR dem Vorruecken gemessen und die
+       Geschwindigkeit gedaempft: ab 13,5 m beginnt das Bremsen, bei 7,5 m steht der
+       Wagen. Das ist zugleich das, was man sehen will — er rollt aus, statt zu zucken.
+       Der Rueckschub unten bleibt als Notbremse fuer alles, was sich trotzdem naehert
+       (Ampelhalt, Schranke, frisch gesetzte Wagen). */
+    var _frei=1;
+    for(var fi=0;fi<verkehr.length;fi++){var f=verkehr[fi];
+      if(f===v||f===driveCar||_spurKey(f)!==_spurKey(v))continue;
+      if((v.route.axis==="radial"||v.route.axis==="stich")&&f.rdir!==v.rdir)continue;
+      var fg=(f.pos-v.pos)*rd;
+      if(v.route.axis==="ring"){var U3=6.283185*v.route.r;fg=((fg%U3)+U3)%U3;}
+      if(fg<=0)continue;
+      var t9=Math.max(0,Math.min(1,(fg-7.5)/6));
+      if(t9<_frei)_frei=t9;}
+    v._bremst=_frei<0.85;
+    v.pos+=rd*(v.speed||v.route.speed)*_frei*dt;
     /* 🛞 Rollen: gefahrener Weg durch Radradius — HIER, direkt nach dem Vorruecken.
        GEMESSEN (th-raeder.mjs, erster Lauf): der Block stand vor dieser Zeile und
        rechnete v.pos - _pv, also immer 0; 27 m Fahrt, Raeder still. `pos` ist Bogen-
@@ -4613,31 +4760,37 @@ function updVerkehr(dt){
     }else if(v.route.axis==="stich"){          // Achterbahn-Stich: Einmuendung <-> Vorplatz
       if(v.pos>STICH.len){v.pos=STICH.len;v.rdir=-1;rd=-1;}
       if(v.pos<0){v.pos=0;v.rdir= 1;rd= 1;}
-    }else{
-      var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht umkehren
-      if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
+    }else{                                     // Gitterstrassen: am Asphaltende wenden
+      var G9=_strGrenzen(v.route);
+      if(v.pos>G9.bis){v.pos=G9.bis;v.rdir=-1;rd=-1;}
+      if(v.pos<G9.von){v.pos=G9.von;v.rdir= 1;rd= 1;}
     }
     /* 🚦 Verkehrsregeln: an Rot/Gelb vor der Haltelinie stehen bleiben UND Abstand zum
        Vordermann halten. Vorher wurde die Position hart auf die Haltelinie geklemmt —
        Autos sprangen dadurch und fuhren ineinander. */
-    if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&ampRed(v.route.axis)){
+    if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&v.route.axis!=="viertel"&&ampRed(v.route.axis)){
       var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?9.5:11;
-      for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-v.route.dir*off;
-        if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
+      for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-rd*off;
+        if(rd>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
         else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
     if(window._schrankenZu&&v.route.axis==="z"&&Math.abs(Math.abs(v.route.x)-RX)<3){
       /* Geschlossene Schranke: vor dem Uebergang bei z=112 anhalten */
-      var hl=v.route.dir>0?104:120;
-      if(v.route.dir>0){if(_pv<=hl&&v.pos>hl)v.pos=hl;}
+      var hl=rd>0?104:120;
+      if(rd>0){if(_pv<=hl&&v.pos>hl)v.pos=hl;}
       else{if(_pv>=hl&&v.pos<hl)v.pos=hl;}}
     for(var vi=0;vi<verkehr.length;vi++){        // Sicherheitsabstand auf derselben Spur
-      var o=verkehr[vi];if(o===v||o===driveCar||o.route!==v.route)continue;
+      var o=verkehr[vi];if(o===v||o===driveCar)continue;
+      if(_spurKey(o)!==_spurKey(v))continue;
       /* ⚠️ Auf dem Zubringer nur gegen Wagen abstandhalten, die in DIESELBE
          Richtung fahren — der Gegenverkehr liegt auf der anderen Spur und
          wuerde den Wagen sonst grundlos ausbremsen. */
       if((v.route.axis==="radial"||v.route.axis==="stich")&&o.rdir!==v.rdir)continue;
       var gap=(o.pos-v.pos)*rd;
-      if(gap>0&&gap<7.5){v.pos=o.pos-rd*7.5;break;}}
+      /* ⚠️ AUF DEM RING LAEUFT `pos` UM. Wer gerade ueber die Naht gefahren ist, hat
+         eine kleine Bogenlaenge, der Hintermann eine grosse — der Abstand wird dann
+         stark negativ und der Vordermann uebersehen. Der Umlauf holt ihn zurueck. */
+      if(v.route.axis==="ring"){var U2=6.283185*v.route.r;gap=((gap%U2)+U2)%U2;}
+      if(gap>0&&gap<7.5){v.pos=o.pos-rd*7.5;v._bremst=true;break;}}   /* Notbremse */
     var px,pz,fx=0,fz=0;
     // Modell-Vorderachse ist +x -> Rotation entsprechend (vorher 90° verdreht = seitwaerts)
     if(v.route.axis==="ring"){
@@ -4670,10 +4823,29 @@ function updVerkehr(dt){
       v.mesh.position.set(px,v.homeY,pz);
       v.mesh.rotation.y=Math.atan2(-fz,fx);
     }
-    else if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
-    else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?-Math.PI/2:Math.PI/2;}
+    /* Eine Viertelstrasse laeuft je nach Viertel in x oder in z — sie verhaelt sich
+       dann genau wie eine Gitterstrasse derselben Richtung. */
+    else if((v.route.axis==="viertel"?v.route.qa:v.route.axis)==="x"){
+      /* Rechtsverkehr: wer nach OSTEN faehrt (rd>0), gehoert suedlich der Mitte
+         (groesseres z). Nach dem Wenden liegt der Wagen darum auf der anderen Seite. */
+      var GX=_strGrenzen(v.route);
+      px=v.pos;pz=GX.mitte+rd*GX.versatz;fx=rd;
+      v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=rd>0?0:Math.PI;}
+    else{
+      /* Und quer dazu: wer nach SUEDEN faehrt (rd>0, wachsendes z), gehoert
+         westlich der Mitte (kleineres x). */
+      var GZ=_strGrenzen(v.route);
+      px=GZ.mitte-rd*GZ.versatz;pz=v.pos;fz=rd;
+      v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=rd>0?-Math.PI/2:Math.PI/2;}
+    if(v.route.axis==="viertel"){
+      var _nah=Math.hypot(px-_sp.x,pz-_sp.z)<300;
+      if(v.mesh.visible!==_nah)v.mesh.visible=_nah;}
     if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
-      var opK=nn?1:0,opH=nn?0.85:0;
+      /* 🔴 BREMSLICHT. Gemessen war die Heck-Deckkraft ueber sechs Proben immer 0 —
+         die Lichter gab es (26 von 26 Wagen), sie schalteten nur nachts mit und sonst
+         nie. Wer vor einem anderen abbremst, zeigt das jetzt auch am Tag; das macht
+         den neuen Sicherheitsabstand ueberhaupt erst sichtbar. */
+      var opK=nn?1:0,opH=v._bremst?1:(nn?0.85:0);
       for(var li=0;li<2;li++){var sd=li?1:-1;
         v.kopf[li].position.set(px+fx*2.0+qx*0.55*sd,0.75,pz+fz*2.0+qz*0.55*sd);v.kopf[li].material.opacity=opK;
         v.heck[li].position.set(px-fx*2.0+qx*0.55*sd,0.7,pz-fz*2.0+qz*0.55*sd);v.heck[li].material.opacity=opH;}}});
@@ -5340,7 +5512,21 @@ setTimeout(function baueGebaeude(){
       var bw=b.w||10,bd=b.d||8;
       var vor=laengs?bw:bd;                              // Ausdehnung entlang der Strasse
       var pos=cur[k]+vor/2;
-      cur[k]+=vor+(cfg.luecke===undefined?14:cfg.luecke);
+      /* 🛣️ LUECKE FUER DEN ANSCHLUSS DES NACHBARN. Ein Viertel weiss beim Bauen nichts
+         von den Wegen, die spaeter durch es hindurchfuehren — der Freizeitpark-Anschluss
+         laeuft bei x = 0 quer durch die Nordzeile des Sportparks, und dort stand die
+         Eishalle mit 8 Mesh-Positionen mitten auf dem Asphalt (th-strassen).
+         Eine fruehere Runde hat beide Ausweich-Enden durchgemessen — (88|246) brachte
+         nichts, (-88|246) raeumte die Strasse und zerstoerte dafuer die Wegfuehrung
+         (Routenanteil 90 % -> 43 %) — und den richtigen Weg gleich danebengeschrieben:
+         nicht den Weg um die Bauzeile herum, sondern eine Luecke IN die Bauzeile.
+         Genau das macht `cfg.freiQuer`: Weltkoordinaten laengs der Strasse, an denen
+         kein Gebaeude stehen darf. Der Laufcursor springt hinter den Korridor. */
+      (cfg.freiQuer||[]).forEach(function(wq){
+        var hb9=(cfg.freiBreite===undefined?13:cfg.freiBreite);
+        var lq=wq-(laengs?VX:VZ)+laenge/2;               // Weltmass -> Laufmass
+        if(pos-vor/2<lq+hb9&&pos+vor/2>lq-hb9){cur[k]=lq+hb9;pos=cur[k]+vor/2;}});
+      cur[k]=pos+vor/2+(cfg.luecke===undefined?14:cfg.luecke);
       if(pos+vor/2>laenge-(cfg.rand||14)){console.warn("Viertel "+cfg.name+": "+b.file+" passt nicht mehr");return;}
       var bx,bz;
       if(laengs){bx=VX-laenge/2+pos;bz=VZ+seite*setback;}
@@ -5559,7 +5745,13 @@ setTimeout(function baueGebaeude(){
        Basketballplatz standen mit zusammen 50 Mesh-Positionen darin.
        z 216 -> 236 schiebt die Suedzeile auf z ~ 215: bei x=0 sind das r=215,
        bei x=+-40 r=219 — in beiden Faellen mehr als 10 m Luft zum Belagsrand. */
-    viertel({name:"Sportpark Sued",x:0,z:236,w:180,d:84,achse:"x",boden:"rasen",
+    /* Der Freizeitpark haengt seinen Anschluss an die Sportpark-Strasse und laeuft
+       von dort nach Norden — quer durch dessen Nordzeile. Die Stelle steht darum EINMAL
+       hier und wird von beiden Vierteln benutzt: der Sportpark haelt sie frei, der
+       Freizeitpark setzt seinen Anschluss darauf. Wer die Zahl aendert, aendert beides. */
+    var FP_KREUZ_X=0;
+    viertel({name:"Sportpark Sued",x:0,z:236,w:220,d:84,achse:"x",boden:"rasen",
+      freiQuer:[FP_KREUZ_X],freiBreite:20,
       /* 🐛 anschluss war [0,146] — die SEEMITTE. Der Verbinder endete als Asphalt-
          zunge samt Mittelstreifen und Laterne mitten im Wasser (User: „wasser?").
          Jetzt endet er am Suedufer (Wasserradius ~20 + Sandring). */
@@ -5602,7 +5794,11 @@ setTimeout(function baueGebaeude(){
          findet den Park dann nicht mehr ueber Asphalt. Weniger Treffer waeren hier das
          schlechtere Spiel. Wer es besser loesen will, laesst die Bauzeile des Sportparks
          eine Luecke fuer den Anschluss — nicht den Anschluss aussen herum. */
-      anschluss:[0,246],abstand:18,luecke:20,rand:20,
+      /* Der eigene Anschluss laeuft bei FP_KREUZ_X von Sueden herein und kreuzt damit
+         die Suedzeile dieses Parks — dieselbe Luecke wie beim Sportpark, nur eine
+         Strasse weiter. Ohne sie standen die Teetassen auf der eigenen Zufahrt. */
+      freiQuer:[FP_KREUZ_X],freiBreite:20,
+      anschluss:[FP_KREUZ_X,246],abstand:18,luecke:20,rand:20,
       bauten:[{file:"th32_parkeingang.glb",h:14,w:28,d:10},
               {file:"th13_riesenrad.glb",h:26,w:22,d:16,tuer:false,fahrt:"riesenrad"},
               {file:"th32_kettenkarussell.glb",h:15,w:19,d:19,tuer:false,fahrt:"kettenkarussell"},
@@ -5867,12 +6063,23 @@ setTimeout(function baueGebaeude(){
         if(ny>=0)ii.push(vb0,vb0+1,vb0+2, vb0,vb0+2,vb0+3);
         else      ii.push(vb0,vb0+2,vb0+1, vb0,vb0+3,vb0+2);
       }
-      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0;
+      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0, _damm=[];
       for(var i=0;i<N;i++){
         var a0=i/N*6.283, a1=(i+1)/N*6.283;
-        /* Meer aussparen: im Westen liegt bei r 200 offenes Wasser. */
+        /* 🌊 DAMM STATT LUECKE. Bisher stand hier `continue`: im Westen liegt bei
+           r 200 offenes Wasser, und die Fahrbahn wurde dort einfach weggelassen.
+           Die grosse Karte zeichnete die Luecke sogar korrekt ein — nur die
+           Ring-ROUTEN wussten nichts davon und fuhren den vollen Kreis. Im Bild
+           (spiele-dev/screenshots/r59/landstrasse-tag.png) schwammen darum zwei
+           Autos auf dem offenen Meer.
+           Die Wagen sitzen auf einer FESTEN Hoehe (`v.homeY`) — eine erhoehte
+           Bruecke wuerde sie in der Luft oder im Deck fahren lassen. Ein Damm auf
+           Fahrbahnhoehe braucht dagegen keinen Eingriff am Fahrzeug. Die Wellen
+           reichen gemessen bis y = -0,016 (Grundhoehe -0,04, gedaempfte Amplitude
+           0,024); der Belag auf 0,012 liegt knapp 3 cm darueber, also kein
+           Flimmern zwischen Wasser und Asphalt. */
         var mx=Math.cos((a0+a1)/2)*R, mz=Math.sin((a0+a1)/2)*R;
-        if(mx<-118&&Math.abs(mz)<184)continue;
+        if(mx<-118&&Math.abs(mz)<184)_damm.push([a0,a1]);
         [[a0,-1],[a0,1],[a1,1],[a1,-1]].forEach(function(P){
           pos.push(Math.cos(P[0])*(R+P[1]*HB),0.012,Math.sin(P[0])*(R+P[1]*HB));});
         idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;   // Wicklung: Vorderseite nach OBEN
@@ -5935,6 +6142,45 @@ setTimeout(function baueGebaeude(){
       window._zubringer=ZUB;
       mesh(pos,idx,betMat(0x4a4a53,0.92));
       mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));
+      /* 🌊 DAMMFLANKE UND BRUESTUNG. Ein Asphaltband, das auf dem Wasser liegt,
+         sieht aus wie ein Fehler. Zwei Teile machen daraus einen Damm: eine
+         Steinboeschung, die von der Fahrbahnkante schraeg ins Wasser laeuft (sie
+         gibt dem Band Dicke und verdeckt die Wasserlinie), und eine niedrige
+         Bruestung als Absturzsicherung. Auf dem Damm gibt es weder Kies-Bankett
+         noch Leitpfosten — beide bleiben ausgespart, die Bruestung tritt an ihre
+         Stelle. */
+      (function dammBau(){
+        if(!_damm.length)return;
+        var fp=[],fi=[];
+        _damm.forEach(function(D){
+          var c0=D[0],c1=D[1];
+          [-1,1].forEach(function(sd){
+            function pk(cc,br,hh){return [Math.cos(cc)*(R+sd*br),hh,Math.sin(cc)*(R+sd*br)];}
+            quadOben(fp,fi, pk(c0,HB,0.010), pk(c0,HB+3.4,-0.95),
+                            pk(c1,HB+3.4,-0.95), pk(c1,HB,0.010));});
+        });
+        mesh(fp,fi,betMat(0x7d7566,0.98));
+        /* Die Bruestung als InstancedMesh geschlossener Kaesten: eine offene
+           Flaeche haette bei senkrechter Wand keine eindeutige Wickelrichtung
+           (quadOben rechnet sie aus der y-Komponente aus, die hier 0 ist). */
+        var bg=new THREE.BoxGeometry(1,0.55,0.22),
+            bm=new THREE.MeshStandardMaterial({color:0xbdb7a8,roughness:0.85});
+        var bi2=new THREE.InstancedMesh(bg,bm,_damm.length*2);
+        var Mb=new THREE.Matrix4(),Qb=new THREE.Quaternion(),
+            Pb=new THREE.Vector3(),Sb=new THREE.Vector3(1,1,1),nb=0;
+        var EU=new THREE.Euler();
+        _damm.forEach(function(D){
+          var cm=(D[0]+D[1])/2, ln=Math.abs(D[1]-D[0])*R*1.02;
+          [-1,1].forEach(function(sd){
+            Pb.set(Math.cos(cm)*(R+sd*(HB+0.4)),0.28,Math.sin(cm)*(R+sd*(HB+0.4)));
+            EU.set(0,-cm-Math.PI/2,0); Qb.setFromEuler(EU);   /* lokales X auf die Tangente */
+            Sb.set(ln,1,1);
+            bi2.setMatrixAt(nb++,Mb.compose(Pb,Qb,Sb));});
+        });
+        bi2.count=nb; bi2.instanceMatrix.needsUpdate=true;
+        bi2.frustumCulled=false; bi2.userData.nieAusblenden=1; scene.add(bi2);
+        window._dammBogen=_damm.length;
+      })();
       /* 🚧 BANKETT UND LEITPFOSTEN — das, was eine Asphaltbahn erst zu einer
          fertigen Landstrasse macht. Ohne Bankett endet der Belag als harte Kante
          im Gras; ohne Leitpfosten fehlt der Massstab entlang der Fahrbahn. */
@@ -6433,6 +6679,29 @@ setTimeout(function baueGebaeude(){
         [["th4_muelleimer.glb",0.9],["lp_parkbank.glb",0.9],["th33_blumenrabatte.glb",0.9],
          ["th4_muelleimer.glb",0.9],["th33_parklaterne.glb",5.4],["lp_parkbank.glb",0.9]]);
     },600);
+    /* 🏘️ VERKEHR AUF DIE VIERTELSTRASSEN. Die Platzhalter-Routen (siehe ROUTEN) tragen
+       nur den Namen des Viertels; erst hier steht fest, WO es tatsaechlich liegt —
+       `viertelOrt()` weicht beim Setzen aus, und der Wunschort aus dem Bauplan war in
+       dieser Datei schon dreimal die falsche Zahl.
+       Die Erschliessungsstrasse ist 9 m breit (SW in `viertel()`), die Spur liegt also
+       2,5 m neben der Mitte — dieselbe Lage wie auf den Querstrassen. Gewendet wird
+       8 m vor dem Viertelrand, damit der Wagen nicht im Gras kehrt. */
+    setTimeout(function viertelVerkehr(){
+      var V=(window._viertelSolver||{}).VIERTEL||[], n=0;
+      (window._ROUTEN||[]).forEach(function(r){
+        if(r.axis!=="viertel"||r.bereit)return;
+        var g=null;for(var i=0;i<V.length;i++)if(V[i].name===r.vn)g=V[i];
+        if(!g)return;                                   /* Viertel hat keinen Platz gefunden */
+        var laenge=g.laengs?g.w:g.d;
+        r.qa=g.laengs?"x":"z";
+        r.c=g.laengs?g.z:g.x;                           /* Mitte der Fahrbahn */
+        r.off=2.5;
+        r.von=(g.laengs?g.x:g.z)-laenge/2+8;
+        r.bis=(g.laengs?g.x:g.z)+laenge/2-8;
+        r.dir=1;
+        r.bereit=true;n++;});
+      window._viertelRouten=n;
+    },1400);
     setTimeout(function parkDeko(){
       /* ⚠️ DER WUNSCHORT IST NICHT DER STANDORT. Hier stand fest `PZ=330` — der
          Wunschort des Viertels. `viertelOrt()` weicht aber aus, und der Freizeitpark
@@ -7697,57 +7966,68 @@ setTimeout(function baueGebaeude(){
        Massstab: `bau()` skaliert auf die HOEHE, darum steht hier jeweils die
        gemessene Modellhoehe aus models/TH5-ASSETS.md — nicht geraten. */
     (function kurpark(){
-      var CX=-74.5, CZ=148, oh=true;      // ohneSchutz: die Wiese hat keine Strassen
+      /* ⚠️ HIER STAND: "ohneSchutz: die Wiese hat keine Strassen". Das stimmte, als der
+         Park gebaut wurde — inzwischen laeuft der ZUBRINGER 120 GRAD durch diese Wiese.
+         GEMESSEN (Strahl vom Parkmittelpunkt entlang der Senkrechten zur Zubringer-Achse):
+         Belag samt Bankett liegt bei t = -15 bis -4, der naechste Rand also 4 m vom
+         Mittelpunkt — die 11-m-Scheibe des Parks lag mit 7 m darauf. th-strassen zaehlte
+         18 Stellen auf dem Zubringer, fast alles Kurpark.
+         Der Park rueckt darum 10 m senkrecht von der Achse weg: (0,866 | 0,5) x 10.
+         Damit liegt sein Rand 1 m hinter dem Belag statt 7 m darauf.
+         ⚠️ Und weil ALLE Teile ihre z-Werte als feste Zahlen trugen, war "den Park
+         verschieben" bisher ein Eingriff an zwanzig Stellen. KZ ist der Versatz: eine
+         Zahl fuer den ganzen Park. Wer ihn wieder bewegt, aendert CX und KZ. */
+      var CX=-71.84, KZ=15.4, CZ=148, oh=true; // ohneSchutz: bau() prueft hier nicht auf Strassen
       var pM=betMat(0xcdc6b6,0.93);
       /* r = 11,0: mit 11,5 schnitt die Scheibe die Suedwestecke des Dorfhauses an. */
       var pf=new THREE.Mesh(new THREE.CircleGeometry(11.0,40),pM);
-      pf.rotation.x=-Math.PI/2;pf.position.set(CX,-0.010,CZ);pf.receiveShadow=true;scene.add(pf);
+      pf.rotation.x=-Math.PI/2;pf.position.set(CX,-0.010,KZ+CZ);pf.receiveShadow=true;scene.add(pf);
       var weg=new THREE.Mesh(new THREE.PlaneGeometry(3.2,17),pM.clone());
-      weg.rotation.x=-Math.PI/2;weg.position.set(CX,-0.009,129.9);weg.receiveShadow=true;scene.add(weg);
+      weg.rotation.x=-Math.PI/2;weg.position.set(CX,-0.009,KZ+129.9);weg.receiveShadow=true;scene.add(weg);
       /* Mittelachse innerhalb des Platzes: Tor -> Brunnen -> Pavillon -> Rondell.
          Ohne sie war der Platz eine leere graue Scheibe mit Moebeln am Rand. */
       var ach=new THREE.Mesh(new THREE.PlaneGeometry(3.6,20),pM.clone());
-      ach.rotation.x=-Math.PI/2;ach.position.set(CX,-0.008,148);ach.receiveShadow=true;scene.add(ach);
-      bau("th35_torbogen.glb",       3.850, CX,       0, 137.8,  0,         false,null,oh);
-      bau("th35_brunnen_zier.glb",   2.555, CX,       0, 143.5,  0,         false,null,oh);
-      bau("th36_musikpavillon.glb",  4.900, CX,       0, 149.5,  0,         false,null,oh);
-      bau("th36_rondell.glb",        1.120, CX,       0, 155.5,  0,         false,null,oh);
-      bau("th36_obelisk.glb",        5.200, CX-8.5,   0, 143.5,  0,         false,null,oh);
-      bau("th35_pergola.glb",        3.109, CX-8.5,   0, 153.5,  Math.PI/2, false,null,oh);
-      bau("th36_vogeltraenke.glb",   0.995, CX+8.5,   0, 147.5,  0,         false,null,oh);
-      bau("th36_trinkbrunnen.glb",   1.970, CX+8.0,   0, 153.5, -Math.PI/2, false,null,oh);
-      bau("th35_sonnenuhr.glb",      1.616, CX-8.5,   0, 147.5,  0,         false,null,oh);
-      [[-2.6,141.5],[2.6,141.5]].forEach(function(P){
+      ach.rotation.x=-Math.PI/2;ach.position.set(CX,-0.008,KZ+148);ach.receiveShadow=true;scene.add(ach);
+      bau("th35_torbogen.glb",       3.850, CX,       0, KZ+137.8,  0,         false,null,oh);
+      bau("th35_brunnen_zier.glb",   2.555, CX,       0, KZ+143.5,  0,         false,null,oh);
+      bau("th36_musikpavillon.glb",  4.900, CX,       0, KZ+149.5,  0,         false,null,oh);
+      bau("th36_rondell.glb",        1.120, CX,       0, KZ+155.5,  0,         false,null,oh);
+      bau("th36_obelisk.glb",        5.200, CX-8.5,   0, KZ+143.5,  0,         false,null,oh);
+      bau("th35_pergola.glb",        3.109, CX-8.5,   0, KZ+153.5,  Math.PI/2, false,null,oh);
+      bau("th36_vogeltraenke.glb",   0.995, CX+8.5,   0, KZ+147.5,  0,         false,null,oh);
+      bau("th36_trinkbrunnen.glb",   1.970, CX+8.0,   0, KZ+153.5, -Math.PI/2, false,null,oh);
+      bau("th35_sonnenuhr.glb",      1.616, CX-8.5,   0, KZ+147.5,  0,         false,null,oh);
+      [[-2.6,KZ+141.5],[2.6,KZ+141.5]].forEach(function(P){
         bau("th35_pflanzschale.glb", 1.156, CX+P[0], 0, P[1],    0,         false,null,oh);});
-      [[-5.6,143.5,Math.PI/2],[5.6,143.5,-Math.PI/2],
-       [-5.6,152.0,Math.PI/2],[5.6,152.0,-Math.PI/2]].forEach(function(P){
+      [[-5.6,KZ+143.5,Math.PI/2],[5.6,KZ+143.5,-Math.PI/2],
+       [-5.6,KZ+152.0,Math.PI/2],[5.6,KZ+152.0,-Math.PI/2]].forEach(function(P){
         bau("th35_bank_zier.glb",    0.984, CX+P[0], 0, P[1],    P[2],      false,null,oh);});
-      [[-9.0,141.0],[9.0,141.0],[-9.0,156.5],[9.0,156.5]].forEach(function(P){
+      [[-9.0,KZ+141.0],[9.0,KZ+141.0],[-9.0,KZ+156.5],[9.0,KZ+156.5]].forEach(function(P){
         bau("th35_laterne_schmiede.glb",4.550,CX+P[0],0,P[1],    0,         false,null,oh);});
       /* Einfriedung: Eisen im Norden (Raster 2,04), Stein im Sueden (Raster 2,00).
          Beide laufen auf demselben Raster — genau dafuer sind sie so gebaut. */
       [3.2,5.24,7.28].forEach(function(dx){
         [-1,1].forEach(function(s9){
-          bau("th36_zierzaun.glb",   1.560, CX+s9*dx, 0, 137.8,  0,         false,null,oh);});});
+          bau("th36_zierzaun.glb",   1.560, CX+s9*dx, 0, KZ+137.8,  0,         false,null,oh);});});
       [-4,-2,0,2,4].forEach(function(dx){
-        bau("th35_balustrade.glb",   1.085, CX+dx,   0, 158.4,  0,         false,null,oh);});
+        bau("th35_balustrade.glb",   1.085, CX+dx,   0, KZ+158.4,  0,         false,null,oh);});
       /* 🧱 Kollider. Der Pavillon ist BEGEHBAR — eine geschlossene Box wuerde ihn
          zusperren, und `autoKollider` haette ihm genau die verpasst (Dach > 5 m
          Grundflaeche, > 2,2 m hoch). Darum von Hand mit Tueroeffnung nach Norden. */
-      addSolid(CX, 149.5, 5.6, 5.9, {a:"z", at:149.5-2.95, c:CX, w:2.2});
-      addSolid(CX-8.5, 143.5, 3.1, 3.1, null);          /* Obelisk */
-      addSolid(CX, 143.5, 3.4, 3.4, null);              /* Brunnenbecken */
-      addSolid(CX-8.5, 153.5, 2.8, 4.0, null);          /* Pergola-Pfosten */
+      addSolid(CX, KZ+149.5, 5.6, 5.9, {a:"z", at:KZ+149.5-2.95, c:CX, w:2.2});
+      addSolid(CX-8.5, KZ+143.5, 3.1, 3.1, null);          /* Obelisk */
+      addSolid(CX, KZ+143.5, 3.4, 3.4, null);              /* Brunnenbecken */
+      addSolid(CX-8.5, KZ+153.5, 2.8, 4.0, null);          /* Pergola-Pfosten */
       /* Zaun und Bruestung sind je 2 m breite Module — zu schmal fuer
          `autoKollider` (der verlangt 5 m Grundflaeche). Ohne Kollider laeuft man
          glatt durch die Einfriedung; genau der Befund „man kann durch Haeuser
          gehen", nur an einem Zaun. Die Tor-Oeffnung bleibt frei, sonst waere der
          Park zugesperrt. */
-      addSolid(CX-5.25, 137.8, 6.1, 0.4, null);         /* Zierzaun West */
-      addSolid(CX+5.25, 137.8, 6.1, 0.4, null);         /* Zierzaun Ost */
-      addSolid(CX,      158.4, 10.2, 0.4, null);        /* Balustrade Sued */
+      addSolid(CX-5.25, KZ+137.8, 6.1, 0.4, null);         /* Zierzaun West */
+      addSolid(CX+5.25, KZ+137.8, 6.1, 0.4, null);         /* Zierzaun Ost */
+      addSolid(CX,      KZ+158.4, 10.2, 0.4, null);        /* Balustrade Sued */
       /* 💡 Nachtlicht unter dem Pavillondach */
-      var kl=new THREE.PointLight(0xffe0b0,0,18,2);kl.position.set(CX,3.4,149.5);scene.add(kl);
+      var kl=new THREE.PointLight(0xffe0b0,0,18,2);kl.position.set(CX,3.4,KZ+149.5);scene.add(kl);
       kl._ti=0;kl._max=1.0;nachtLampen.push(kl);
     })();
     /* 💡 Innenraum-Licht für die begehbaren Gebaeude — nachts warm erleuchtet (Fade wie Strassenlampen) */
@@ -9958,7 +10238,22 @@ function _wandTiefe(m){
         /* Staerke: erster Anlauf 0,88 + 0,14 war im Bild kaum zu sehen (Vergleich
            derselben Kameraposition vorher/nachher). 0,82 + 0,22 gibt einer 11-m-Wand
            einen erkennbaren Verlauf vom Sockel zur Traufe, ohne dass die Farbe kippt. */
-        "\t\tdiffuseColor.rgb *= 0.82 + 0.22 * hh + 0.030 * sw;\n\t}");
+        /* ⚠️ DIE HOEHEN-ABSTUFUNG ALLEIN REICHT NUR FUER HOHE BAUTEN. Nachgesehen an
+           der Scheune (6 m hoch): sie deckt nur die untere Haelfte von 0…11 m ab, das
+           Bild blieb vorher/nachher praktisch gleich, obwohl die Zahl von 48 auf 40 %
+           flacher Flaeche fiel. Eine kurzwellige Struktur (rund 2 m Wellenlaenge, aus
+           der Weltposition) ist dagegen von der Bauhoehe UNABHAENGIG und liest sich auf
+           Gehweite als Oberflaeche statt als Lackschicht. Amplitude bewusst klein —
+           4 %; mehr sieht schmutzig aus, nicht plastisch. */
+        /* ⚠️ EIN EINZELNER SINUS SIEHT AUS WIE STREIFEN, nicht wie Oberflaeche. Der
+           erste Anlauf (ein Produkt aus zwei Sinus, 4 %) legte auf die grossen Flaechen
+           im Vergnuegungsviertel ein regelmaessiges Balkenmuster — im Bild sofort als
+           Artefakt zu erkennen. Drei Anteile mit unteilbaren Frequenzen ueberlagern
+           sich zu etwas Unregelmaessigem; die Amplitude faellt zugleich auf 3 %. */
+        "\t\tfloat fein = sin( vWeltPos.x * 3.1 + vWeltPos.z * 1.7 ) * 0.5\n"+
+        "\t\t\t+ sin( vWeltPos.y * 2.3 - vWeltPos.x * 1.1 ) * 0.3\n"+
+        "\t\t\t+ sin( vWeltPos.z * 4.7 + vWeltPos.y * 0.9 ) * 0.2;\n"+
+        "\t\tdiffuseColor.rgb *= 0.82 + 0.22 * hh + 0.030 * sw + 0.030 * fein;\n\t}");
   };
   m.customProgramCacheKey=function(){return "wandtiefe";};
   m.needsUpdate=true;return m;}
@@ -10011,7 +10306,17 @@ function _istWand(m){
   if(!m||m.map)return false;
   var n=m.name||"";
   if(/glas|glass|fenster|stahl|metall|dach|roof|licht|lamp|neon|schild|plakat/i.test(n))return false;
-  return /wand|fassade|facade|putz|mauer|beton|wall/i.test(n);}
+  /* ⚠️ NACHGEZAEHLT 2026-09-04: nach der ersten Fassung waren noch 48 % der
+     Wandflaeche flach. Der Rest ist grossteils zu Recht flach (Stahl, Dach, Rahmen,
+     Stuetzen, Netze) — aber vier Namen gehoeren dazu und fehlten:
+       Sockel 3526 m2 · VlStein 1497 · ScheunenHolz 910 · BnStein 815
+       FwStein 712 · MkStein 661 · SuStein 652
+     "Stein" und "Sockel" sind Wand, und `ScheunenHolz` ist genau der flache rote
+     Kasten, der in der Sichtrunde aufgefallen ist.
+     ⚠️ "holz" allein waere zu weit: so heissen auch Baenke, Zaeune und Kisten, und die
+     Hoehen-Abstufung (0…11 m) wuerde ein 1-m-Objekt gleichmaessig abdunkeln. Darum
+     nur `scheune`, nicht `holz`. */
+  return /wand|fassade|facade|putz|mauer|beton|wall|stein|sockel|scheune|klinker|ziegel/i.test(n);}
 var _matReg={};
 /* 🪧 PLAKATE AUF DIE LITFASSSAEULEN. Sichtrunde 2026-09-02: die Saeulen am Markt
    sahen aus wie Betonsilos — das Material "Plakat" ist eine einfarbige beige Flaeche.
@@ -13653,10 +13958,10 @@ function drawBigMap(){
   road(-78,-112,-78,112,10);road(78,-112,78,112,10);
   road(-112,-112,-112,112,9);road(112,-112,112,112,9);
   road(-232,-112,-232,112,0);
-  // 🛣️ Landstrasse (Ring r 200, Meer-Sektor 126°..234° ausgespart) + 6 Zubringer + Verbinder
-  var ct=S(0,0),D9=Math.PI/180;
+  // 🛣️ Landstrasse (Ring r 200, ueber dem Meer als Damm) + 6 Zubringer + Verbinder
+  var ct=S(0,0);
   c.lineWidth=Math.max(2,8*sc);
-  c.beginPath();c.arc(ct[0],ct[1],200*sc,234*D9,126*D9+6.283);c.stroke();
+  c.beginPath();c.arc(ct[0],ct[1],200*sc,0,6.283);c.stroke();   /* seit dem Damm geschlossen */
   for(var zb=0;zb<_GPS_ZUB.length;zb++){var zv=_GPS_ZUB[zb];
     road(zv[0]*118,zv[1]*118,zv[0]*204,zv[1]*204,8);}
   for(var vb9=0;vb9<_GPS_VERB.length;vb9++){var vv=_GPS_VERB[vb9];
@@ -13807,7 +14112,7 @@ function gpsStrasse(x,z){
   if(Math.abs(x)<118&&(Math.abs(z-118)<4.5||Math.abs(z+100)<4.5))return true;  // Ring waagrecht
   if(Math.abs(x)<4&&z>118&&z<150)return true;                                  // Seepark-Stich
   var rr=Math.hypot(x,z);                                                      // Landstrasse (Ring r 200)
-  if(Math.abs(rr-200)<5&&!(x<-118&&Math.abs(z)<184))return true;               // Meer-Sektor ausgespart
+  if(Math.abs(rr-200)<5)return true;                                           // seit dem Damm ein voller Rundkurs
   if(rr>116&&rr<205)for(var zi=0;zi<_GPS_ZUB.length;zi++){var w9=_GPS_ZUB[zi]; // 6 Zubringer (radial)
     if(Math.abs(-x*w9[1]+z*w9[0])<4.5&&x*w9[0]+z*w9[1]>116)return true;}
   for(var vi=0;vi<_GPS_VERB.length;vi++){var v9=_GPS_VERB[vi];                 // Viertel-Verbinder

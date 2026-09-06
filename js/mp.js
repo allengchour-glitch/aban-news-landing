@@ -113,6 +113,14 @@
         var jetzt = Date.now(), spaet = jetzt - takt - 2000; takt = jetzt;
         if (spaet > 800) lastRecv += spaet;
         if (S.status === "closed") { clearInterval(wd); return; }
+        /* ⚠️ DIESELBE UNGEDULD STECKT HIER — und ist NICHT behoben. Engine B (unten)
+           zaehlt seit 2026-09-06 den Verbindungszustand mit: solange die Peer-Verbindung
+           steht, heisst Stille "beschaeftigt", nicht "weg". Hier oben laeuft die echte
+           Produktion ueber PeerJS, und die kann in diesem Container gar nicht gemessen
+           werden (kein Signaling nach draussen). Eine Aenderung waere geraten statt
+           belegt — der Kommentar drueber sagt selbst, dass das auf einem langsamen Handy
+           der Normalfall ist. Zu pruefen mit zwei echten Geraeten; der wahrscheinliche
+           Griff ist derselbe: `main && main.open` als Lebenszeichen werten. */
         if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); wd = null; lost(); return; }
         /* 🩹 Schwarm4: eigener Transport-Keepalive — in der Lobby sendet das Spiel oft
            nichts (hb läuft erst im Match), ohne Keepalive feuerte der 6s-Watchdog dann
@@ -307,7 +315,25 @@
         var jetzt = Date.now(), spaet = jetzt - takt - 2000; takt = jetzt;
         if (spaet > 800) lastRecv += spaet;
         if (S.status === "closed") { clearInterval(wd); return; }
-        if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); gone("stille"); }
+        /* 🤝 EIN BESCHAEFTIGTER PARTNER IST KEIN VERLORENER PARTNER.
+           Bis hierher galt: 6 s ohne Nachricht = Verbindung verloren. Die Zeile
+           darueber verzeiht schon die Blockade der EIGENEN Seite — nur hilft das
+           nichts, wenn die ANDERE Seite blockiert: der Keepalive haengt an einem
+           setInterval auf deren Hauptthread, und genau der steht, waehrend sie ihre
+           Welt baut. Auf schneller Hardware faellt das nicht auf; auf langsamer
+           schon.
+           GEMESSEN (th-koop, fuenf Laeufe): zwei kamen durch, drei starben mit
+           "lost:stille" beim Start. Die Systemlast trennt die Faelle NICHT
+           (3,51 kam durch, 1,85 starb) — es haengt daran, wie lange der Weltbau
+           zufaellig braucht.
+           Darum zaehlt jetzt der Zustand der Verbindung mit: solange die
+           Peer-Verbindung nachweislich steht, heisst Stille "der andere ist
+           beschaeftigt" und nicht "weg". Erst nach 25 s wird aufgegeben. Eine
+           WIRKLICH tote Verbindung faengt `onconnectionstatechange` weiterhin in
+           Sekunden ab — dort aendert sich nichts. */
+        var _pcLebt = (pc.connectionState === "connected" || pc.connectionState === "connecting" ||
+                       pc.iceConnectionState === "connected" || pc.iceConnectionState === "completed");
+        if (S.status === "connected" && Date.now() - lastRecv > (_pcLebt ? 25000 : 6000)) { clearInterval(wd); gone("stille"); }
         /* ⚠️ DER KEEPALIVE HAT HIER GEFEHLT. Engine A sendet alle 2 s ein
            `__ka`; Engine B hat nur GELAUSCHT. Damit starb jede Testsitzung,
            sobald das Spiel selbst 6 s nichts schickte — reproduzierbar GENAU
