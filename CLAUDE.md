@@ -201,6 +201,23 @@ gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-
   je Seite statt Inline-Stilen an jedem Element. Cormorant live 2 → 6 je Seite gegengeprüft.
   **Der Block ist auf jeder Seite identisch** — wer eine fünfte Seite hebt, kopiert ihn und
   schreibt nur den Inhalt neu.
+- ⚖️ **Die Rechtstexte gegengelesen — und die letzte EU-Widerruf-Stelle sitzt in den AGB.**
+  Ziffer 7 sagt «Für EU-Kund:innen gilt zusätzlich das gesetzliche 14-tägige Widerrufsrecht»,
+  während Ziffer 5 **derselben AGB**, die Versandbedingungen und die Rückgaberichtlinie
+  übereinstimmend sagen: nur Schweiz und Liechtenstein, kein gesetzliches Widerrufsrecht.
+  **Ein Widerspruch innerhalb EINES Dokuments ist die schärfste Form der Klasse** — und es ist
+  das rechtlich bindende Dokument.
+  ⛔ **Schreiben geht von hier nicht:** `shopPolicyUpdate` verlangt den Scope
+  `write_legal_policies`, den der MCP-Konnektor nicht hat, und das Admin-Token ist tot. Der
+  fertige Ersatztext für Ziffer 7 steht in `dropship/COWORK-AUFTRAEGE.md` — Copy-Paste in
+  Shopify-Admin → Richtlinien.
+  ⚠️ Zweiter Fund derselben Runde: Die Datenschutzerklärung sagt «wenden Sie sich bitte
+  telefonisch unter **,** per E-Mail …» — die Nummer fehlt ganz (Shopify-Platzhalter), und
+  «3123 **belp**» ist kleingeschrieben. Dieselbe Sperre, also ebenfalls Betreiber-Sache.
+  ✅ Versand- und Rückgaberichtlinie sind dagegen sauber und decken sich Wort für Wort mit den
+  Seiten — dort war nichts zu tun.
+  ⚠️ Und die API-Falle aus dem Gedächtnis (14.08.) hat gehalten: `ShopPolicyInput` nimmt
+  **`type`**, nicht `id`, und `body` ist `String!`, nicht `HTML!`.
 - ✅ **Alle 18 veröffentlichten Service-Seiten tragen jetzt dasselbe Design** (No. 001–010 plus
   die vier FAQ-Unterseiten, Impressum, Cookie-Richtlinie, Newsletter). Gemessen an der
   ausgelieferten Seite: «Cormorant Garamond» 5–12× statt der Theme-Grundlast 2.

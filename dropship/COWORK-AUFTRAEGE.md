@@ -13,6 +13,40 @@ nicht mehr gelesen.
 
 ---
 
+> ### ⚖️ 06.09.2026 — ZWEI Rechtstexte, die ich nicht schreiben darf (nur du)
+> Der Shopify-MCP-Konnektor hat den Scope `write_legal_policies` **nicht**, und das Admin-Token
+> der Custom-App ist tot. Beides sind reine Copy-Paste-Änderungen in
+> **Shopify-Admin → Einstellungen → Richtlinien**.
+>
+> **A · AGB Ziffer 7 widerspricht Ziffer 5 derselben AGB.** Dort steht heute:
+> «Für EU-Kund:innen gilt zusätzlich das gesetzliche 14-tägige Widerrufsrecht.» —
+> während Ziffer 5, die Versandbedingungen und die Rückgaberichtlinie übereinstimmend sagen,
+> dass wir **nur in die Schweiz und nach Liechtenstein** liefern und es in der Schweiz **kein**
+> gesetzliches Widerrufsrecht gibt. Das ist die letzte Stelle dieser Klasse; alle Shop-Seiten
+> sind seit dem 06.09. bereinigt. **Ersetze Ziffer 7 durch:**
+>
+> > **7. RÜCKGABERECHT**
+> > Es gilt unsere Rückgaberichtlinie. Wir gewähren dir **freiwillig 30 Tage Rückgaberecht**
+> > ab Erhalt der Ware, ohne Angabe von Gründen.
+> > Ein gesetzliches Widerrufsrecht besteht im schweizerischen Recht für den Online-Kauf
+> > grundsätzlich nicht; unser 30-Tage-Recht geht damit über die gesetzliche Lage hinaus.
+> > Da wir ausschliesslich in die Schweiz und nach Liechtenstein liefern (Ziffer 5), kommt
+> > ausländisches Verbraucherrecht nicht zur Anwendung.
+>
+> **B · Datenschutzerklärung: leere Telefonnummer und ein kleingeschriebenes «belp».**
+> Im Abschnitt «Kontakt» steht wörtlich «wenden Sie sich bitte telefonisch unter **,** per
+> E-Mail unter info@luxestyle.ch oder per Post an LuxeStyle, Hühnerhubelstrasse 37, 3123
+> **belp**, Schweiz». Die Telefonnummer fehlt ganz (Shopify-Platzhalter), «Belp» ist klein.
+> Das ist die einzige Stelle, an der der Shop unfertig wirkt, wo er es am wenigsten darf.
+> Einsetzen: **+41 79 538 28 14** und **Belp**.
+>
+> ⚠️ Nicht geändert wird der Titel der Rückgabe-Richtlinie: Shopify nennt sie im Footer
+> «Widerrufsrecht», obwohl ihr eigener Text richtig sagt, dass es keines gibt. Der Titel hängt
+> am Richtlinien-Typ und lässt sich über die API gar nicht setzen — das ist ein Shopify-Detail,
+> keine Falschaussage im Text.
+
+---
+
 > ### ✅ 05.09.2026 — vier Punkte per Konnektor selbst erledigt (Betreiber: «cowork sachen auch»)
 > - **1** TikTok «Wasserfest CH Juni» (CHF 30/Tag) → DISABLE; Konto 2 war schon aus. Wieder einschalten = ein Aufruf.
 > - **7** VIP-Flow «VIP Tier-Upgrade Welcome» → Entwurf (kein Programm, keine Kundin über CHF 500).
