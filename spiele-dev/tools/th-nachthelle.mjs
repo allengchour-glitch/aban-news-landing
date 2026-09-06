@@ -19,11 +19,14 @@
  *     Es muss im selben Arbeitsschritt vorher selbst gezeichnet werden.
  *
  * ⚠️ WIE LANGE DIE PRUEFUNG BRAUCHT, LAESST SICH HIER NICHT VERGLEICHEN. Gemessen
- *   wurden 773 s (im Tor), 886 s, 921 s und 1353 s — bei fast gleichem Ablauf. Der
+ *   wurden 773 s, 886 s, 921 s, 1353 s und 1573 s — bei fast gleichem Ablauf. Der
  *   Grund ist derselbe wie beim Warten: das Verhaeltnis von Spielzeit zu Wanduhrzeit
  *   haengt an der Systemlast, und die schwankt hier um das Vierfache. Wer zwei Laeufe
  *   nach der Wanduhr vergleicht, vergleicht die Maschine. Die Pruefung ist darum
  *   `kern: false` — `--schnell` laesst sie aus.
+ *   Sie ist die teuerste im Tor (10…26 min). Wer sie guenstiger braucht, streicht
+ *   Orte aus ORTE — muss dann aber den Stand oben NEU messen, denn die Reihenfolge
+ *   ist Teil der Messung (siehe die Wartezeit weiter unten).
  *
  * GEMESSENER STAND 2026-09-06, zwei Laeufe (Nacht in Prozent des Tages):
  *   Innenstadt 52/54 · Flughafen 58/60 · Gewerbe Ost 64/66 · Bauernhof 65/66
