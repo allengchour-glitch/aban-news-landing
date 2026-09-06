@@ -13462,8 +13462,15 @@ function updVerdecker(){
     if(!o.visible||Math.abs(c.x-zx)>45||Math.abs(c.z-zz)>45)continue;
     var t=q.copy(c).sub(von).dot(dir);if(t<0||t>d)continue;
     q.copy(von).addScaledVector(dir,t);if(q.distanceTo(c)<=o.userData._vdR)nah.push(o);}
-  for(var g=0;g<_vdGross.length;g++){var og=_vdGross[g],b3=og.userData._vdBB;
-    if(og.visible&&zx>=b3.min.x&&zx<=b3.max.x&&zz>=b3.min.z&&zz<=b3.max.z&&zy<b3.max.y)nah.push(og);}
+  /* Grosse Bauten in zwei Sorten: HOCH OBEN (Unterkante ab 3 m — Dachsegmente, Vordaecher,
+     Bruecken) wie Kronen per Sichtlinie pruefen: die Markthalle ist NICHT ein Netz, sondern
+     drei Zylinder-Segmente je 12 m; die Figur stand unter dem einen, die Kamera sah durch die
+     zwei anderen (gemessen: Treffer bei 14, 16, 21 m, alle in der Liste, keins in der
+     Grundflaeche der Figur). AM BODEN (Waende) nur, wenn die Figur in der Grundflaeche steht. */
+  for(var g=0;g<_vdGross.length;g++){var og=_vdGross[g],b3=og.userData._vdBB;if(!og.visible)continue;
+    if(b3.min.y>=3){var cg=og.userData._vdC;if(Math.abs(cg.x-zx)>60||Math.abs(cg.z-zz)>60)continue;
+      var tg=q.copy(cg).sub(von).dot(dir);if(tg<0||tg>d)continue;q.copy(von).addScaledVector(dir,tg);if(q.distanceTo(cg)<=og.userData._vdR)nah.push(og);}
+    else if(zx>=b3.min.x&&zx<=b3.max.x&&zz>=b3.min.z&&zz<=b3.max.z&&zy<b3.max.y)nah.push(og);}
   var treffer={};
   if(nah.length){if(!_vdRay)_vdRay=new THREE.Raycaster();_vdRay.set(von,dir);_vdRay.near=0;_vdRay.far=Math.max(0,d-0.8);
     var hs=_vdRay.intersectObjects(nah,false);for(var j=0;j<hs.length;j++)treffer[hs[j].object.id]=hs[j].object;}
