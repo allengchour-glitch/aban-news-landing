@@ -180,6 +180,12 @@ const PRUEFUNGEN = [
   { name: 'Naht (Hauptstrasse an den Ring)', datei: 'th-naht.mjs', kern: false,
     wert: (s) => (s.match(/ohne Asphalt: (\d+)/) || [, '?'])[1] + ' Luecken',
     gut: (s) => /🎉 NAHT GESCHLOSSEN/.test(s) },
+  /* Kein Fund, sondern ein Massstab: dass ein Ort nachts dunkel AUSSIEHT, heisst
+     nicht, dass er dunkel IST — dafuer braucht es den Vergleich mit seinem eigenen
+     Tagbild. Die Pruefung schlaegt an, wenn irgendwo wirklich das Licht ausgeht. */
+  { name: 'Nachthelle (wird irgendwo dunkel)', datei: 'th-nachthelle.mjs', kern: false,
+    wert: (s) => ((s.match(/(\d+) %/g) || []).length) + ' Orte',
+    gut: (s) => /🎉 NACHTHELLE BESTANDEN/.test(s) },
   /* ⚠️ Die TAFELN sah bis 2026-09-04 niemand nach. th-hud prueft die immer sichtbare
      Leiste, th-spielerblick die Welt — was der Spieler OEFFNET (Erfolge, Karte,
      Bau-Palette, Krimi-Auswahl, Hetze), stand nirgends. Genau dort war der letzte

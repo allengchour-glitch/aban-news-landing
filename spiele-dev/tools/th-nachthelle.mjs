@@ -18,12 +18,23 @@
  *     `drawImage` liefert dann schwarz — der erste Anlauf meldete fuer JEDEN Ort 0.
  *     Es muss im selben Arbeitsschritt vorher selbst gezeichnet werden.
  *
- * GEMESSENER STAND 2026-09-06 (Nacht in Prozent des Tages):
- *   Innenstadt 31 · Flughafen 32 · Gewerbe Ost 54 · Bauernhof 66 · Freizeitpark 67
+ * GEMESSENER STAND 2026-09-06, zwei Laeufe (Nacht in Prozent des Tages):
+ *   Innenstadt 52/54 · Flughafen 58/60 · Gewerbe Ost 64/66 · Bauernhof 65/66
+ *   Freizeitpark 76/76
  * Die Unterschiede sind Untergrund und Bebauung: eine helle Kies- oder Rasenflaeche
  * gibt im Mondlicht mehr zurueck als eine enge Gasse. Es gibt also KEINEN einzelnen
  * richtigen Wert — die Pruefung schlaegt erst an, wenn ein Ort unter 20 % faellt,
  * also wenn dort wirklich niemand mehr das Licht anmacht.
+ *
+ * ⚠️ NUR DAS VERHAELTNIS IST VERGLEICHBAR, NICHT DIE ABSOLUTE ZAHL. Zwischen den
+ * beiden Laeufen sprang die Tageshelligkeit des Flughafens von 134,6 auf 172,3 —
+ * das ist das Wetter. Die Verhaeltnisse blieben dabei auf zwei Punkte genau gleich.
+ * Wer absolute Helligkeiten zwischen Laeufen vergleicht, vergleicht Wolken.
+ *
+ * ⚠️ UND DIE ERSTE FASSUNG DIESES WERKZEUGS HAT FALSCHE ZAHLEN GELIEFERT: sie mass
+ * "Innenstadt 31 %, Flughafen 32 %". Richtig sind 52…54 und 58…60 — der Flughafen
+ * ist nachts sogar HELLER als die Innenstadt. Der Fehler lag im Warten (siehe unten),
+ * nicht in der Welt.
  */
 import { spielOeffnen, mitSonden, warteWeltzeit } from './th-lib.mjs'
 
