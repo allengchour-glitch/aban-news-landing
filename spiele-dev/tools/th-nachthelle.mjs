@@ -18,6 +18,13 @@
  *     `drawImage` liefert dann schwarz — der erste Anlauf meldete fuer JEDEN Ort 0.
  *     Es muss im selben Arbeitsschritt vorher selbst gezeichnet werden.
  *
+ * ⚠️ WIE LANGE DIE PRUEFUNG BRAUCHT, LAESST SICH HIER NICHT VERGLEICHEN. Gemessen
+ *   wurden 773 s (im Tor), 886 s, 921 s und 1353 s — bei fast gleichem Ablauf. Der
+ *   Grund ist derselbe wie beim Warten: das Verhaeltnis von Spielzeit zu Wanduhrzeit
+ *   haengt an der Systemlast, und die schwankt hier um das Vierfache. Wer zwei Laeufe
+ *   nach der Wanduhr vergleicht, vergleicht die Maschine. Die Pruefung ist darum
+ *   `kern: false` — `--schnell` laesst sie aus.
+ *
  * GEMESSENER STAND 2026-09-06, zwei Laeufe (Nacht in Prozent des Tages):
  *   Innenstadt 52/54 · Flughafen 58/60 · Gewerbe Ost 64/66 · Bauernhof 65/66
  *   Freizeitpark 76/76
@@ -84,7 +91,9 @@ for (const [schl, uhr] of [['tag', 720], ['nacht', 1330]]) {
      Bedingung, die nie greift, ist schlimmer als keine — sie taeuscht Genauigkeit vor. */
   for (const [name, x, z] of ORTE) {
     await page.evaluate((p) => window.__th.hin(p[0], p[1], 90, 0.42, 0), [x, z])
-    await warteWeltzeit(page, 6.0, { maxWanduhr: 150 })
+    /* Bei Tag steht das Licht sofort — die Sonne blendet nicht ein. Nur nachts muss
+       die Laternen-Blende abgewartet werden. Das halbiert die Kosten der Tageshaelfte. */
+    await warteWeltzeit(page, schl === 'nacht' ? 6.0 : 2.0, { maxWanduhr: 150 })
     werte[schl].push(await page.evaluate(() => window.__th.hell()))
   }
 }
