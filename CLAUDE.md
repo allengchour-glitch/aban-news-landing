@@ -102,6 +102,41 @@ Schluessel IST dieses Token (Lehre 30.08.).
   und ist kein Ersatz fuer den Betrieb. Die App wieder zu installieren bzw. den Zugang neu
   auszustellen ist eine Betreiber-Handlung im Shopify-Admin.
 
+## 📐 Der Grössen-Guide steht auf JEDER Kleiderseite — und widersprach der Garantieseite (2026-09-06)
+Nach der Garantie-Seite die übrigen Service-Seiten durchgezählt: **Von 14 Seiten tragen genau
+drei das Design-System** (`ueber-uns` No. 001, `garantie` No. 002, `versand-lieferung` No. 003);
+die anderen elf sind nackte `<h2>`/`<table>`. Gemessen wurde nicht am Quelltext, sondern an den
+ausgelieferten Seiten: «Cormorant Garamond» kommt bei jeder Seite 2× aus dem Theme — **wer diese
+Grundlast nicht abzieht, hält jede Seite für gestaltet**.
+Die wichtigste davon ist nicht die Fusszeile: **`groessentabelle` wird vom Theme in JEDE
+Kleider-Produktseite eingeblendet** (`pages['groessentabelle'].content`, Lehre 28.08.). Neu
+gestaltet, live auf der Produktseite gegengeprüft (4 Tabellen-Container, Style-Block da).
+- ⚠️ **Gestaltung in einem Akkordeon ist eine andere Aufgabe als eine Seite.** Kein
+  `max-width`, keine Zentrierung, kleinere Überschriften — sonst sitzt eine 800-px-Seite in
+  einer schmalen Klappe. Und statt Inline-Stilen an jeder Zelle EIN `<style>`-Block, streng auf
+  `.lxg` gescopt: **13'776 → 6'380 Zeichen** und nichts davon färbt auf die Produktseite ab.
+- ⛔ **Zwei Widersprüche, beide nur durch LESEN gefunden, keiner durch ein Muster:**
+  1. Der Guide versprach «Schreib uns … und **wir tauschen kostenlos**» — die Garantieseite sagt
+     für dieselbe Lage «Gefällt nicht → **du** (CHF 7–15)». Zwei veröffentlichte Seiten, zwei
+     Wahrheiten, und die grosszügigere steht auf der Seite, die die Kundin VOR dem Kauf liest.
+     Bei CJ-Ware ist ein Gratis-Umtausch ausserdem rechnerisch unmöglich (zweite Sendung bei
+     ~CHF 10 Marge). Angeglichen — Ton freundlich, Zahl ehrlich.
+  2. **Die FAQ beantwortete «Fallen Zollgebühren an?» mit einem fetten «Nein»** und widerlegte
+     sich drei Sätze später selbst («Bei teureren Artikeln … können Einfuhrsteuer und eine
+     Verzollungsgebühr anfallen»). Genau der Fall trifft jeden Korb über CHF 60 — also den,
+     zu dem «Gratis-Versand ab CHF 50» die Kundin gerade hindrängt. Jetzt «Bei den meisten
+     Bestellungen nicht — aber wir versprechen es dir nicht für jede», Regel unverändert.
+- ⚠️ **Und die Anrede kippte MITTEN in der Seite:** oben «Damit **dir** deine Kleidung passt»,
+  bei den Schuhen «Stellen **Sie** sich mit der Ferse an eine Wand». Der Sie→du-Lauf vom 03.09.
+  galt Ratgebern und Kollektionstexten — **Shop-Seiten standen in keiner Kandidatenliste**,
+  und diese hier wird auf Tausenden Produktseiten mitgeliefert. 0 Sie-Reste gegengeprüft.
+- **Regel, dritte Fassung an zwei Tagen: Wo zwei Seiten dieselbe Zusage machen, machen sie sie
+  verschieden.** Tracking (gestern), Umtausch und Zoll (heute) — jedes Mal stand die falsche
+  Fassung auf der Seite, die früher gelesen wird. Wer eine Zusage ändert, sucht sie überall.
+- ✅ Die fünf FAQ-Unterseiten (`faq-versand-lieferung` …) sind inhaltlich sauber und antworten
+  live mit 200 — sie standen nur nicht in den ersten 50 Seiten der Auflistung. **Ein Link, den
+  eine gedeckelte Liste nicht kennt, ist kein toter Link** (Lehre 28.08., wieder).
+
 ## 🎬 Ein TikTok des Betreibers ist LESBAR — die Auto-Untertitel liegen im HTML (2026-09-06)
 Betreiber schickte `vm.tiktok.com/ZN8YcrmwG` mit «setze das um». Das Gedächtnis sagte bisher:
 TikTok rendert clientseitig, von hier nicht lesbar. **Für das VIDEO stimmt das nicht mehr.**
