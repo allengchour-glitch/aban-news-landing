@@ -4686,12 +4686,20 @@ function _strGrenzen(r){
 }
 function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
-  /* 🔭 GEMESSEN: die sieben Viertelwagen kosteten auch in der STADTMITTE noch 443
-     Zeichenaufrufe — sie stehen 250 bis 400 m weit weg und sind im Bild nicht zu
-     sehen, landen aber im Schattenwurf der Sonne, und der rendert die ganze Welt.
-     `nieAusblenden` (das die Raeder unterwegs sichtbar haelt) schuetzt sie zusaetzlich
-     vor dem LOD. Darum hier von Hand: weiter als 300 m weg, also unsichtbar. Die
-     Position wird trotzdem weitergerechnet, sonst springt der Wagen beim Naeherkommen. */
+  /* 🔭 WEIT WEG HEISST UNSICHTBAR. Ein Viertelwagen steht 250 bis 400 m entfernt; im
+     Bild ist er nicht zu sehen, im Schattenwurf der Sonne aber schon — der rendert die
+     ganze Welt —, und `nieAusblenden` (das die Raeder unterwegs sichtbar haelt) nimmt
+     ihn zusaetzlich vom LOD aus. Ab 300 m wird er darum von Hand ausgeblendet; die
+     Position laeuft weiter, sonst springt er beim Naeherkommen.
+
+     ⚠️ WIE VIEL DAS SPART, WEISS ICH NICHT — und der erste Anlauf dieses Kommentars
+     behauptete es trotzdem ("443 Zeichenaufrufe"). Nachgemessen streut
+     `renderer.info` auf DEMSELBEN Stand zwischen zwei Laeufen um bis zu 30 %
+     (Stadtmitte 13 537 gegen 15 251 Aufrufe, Zoo 12 548 gegen 16 391): der LOD-Zustand
+     haengt davon ab, wie lange das Spiel schon laeuft und wo die Kamera vorher war.
+     Jede Zahl, die ich dazu genannt hatte, lag innerhalb dieser Streuung. Das
+     Ausblenden bleibt — weil ein unsichtbarer Wagen nicht gezeichnet werden muss,
+     nicht weil eine Messung es belegt haette. */
   var _sp=spielerPos();
   verkehr.forEach(function(v){
     if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}

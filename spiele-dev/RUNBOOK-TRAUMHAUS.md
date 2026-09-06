@@ -6306,3 +6306,30 @@ Radzahl. Umgesetzt:
 **Lehre:** Ein Vorab-Messblatt der Vorgänger-Runde ist mehr wert als jede Vermutung — wer ein
 Modell ins Spiel holt, misst zuerst Front, dünne Achse und Radzahl (trimesh oder `th-mass`) und
 schreibt es ins Runbook, auch wenn er es nicht selbst einbaut.
+
+## 2026-09-06 · 📏 `renderer.info` taugt hier NICHT als Kostenmass
+
+Beim Einbau des Viertelverkehrs (Runde 67) wollte ich den Preis von sieben zusätzlichen
+Wagen belegen — Dreiecke und Zeichenaufrufe statt Bildrate, weil die Bildrate auf diesem
+Container mit der Systemlast schwankt. Das klang wie der solide Weg. Zwei Läufe **auf
+demselben Stand** sagen etwas anderes:
+
+| Ort | Lauf 1 | Lauf 2 | Streuung |
+|---|---|---|---|
+| Stadtmitte | 13 537 Aufrufe | 15 251 | 13 % |
+| Gewerbe Ost | 11 288 | 11 820 | 5 % |
+| Zoo | 12 548 | 16 391 | **30 %** |
+
+Der Grund ist der LOD-Zustand: er hängt davon ab, wie lange das Spiel schon läuft und wo die
+Kamera vorher war. Die Messung hat also ein Gedächtnis.
+
+**Was daran teuer war:** Ich hatte aus einem Vorher/Nachher-Paar (14 902 → 15 345 Aufrufe)
+geschlossen, die sieben Wagen kosteten „443 Zeichenaufrufe auch in der Stadtmitte", und daraus
+eine Änderung abgeleitet *und die Zahl in einen Code-Kommentar geschrieben*. Beide Zahlen lagen
+innerhalb der Streuung. Die Änderung (Ausblenden ab 300 m) ist für sich richtig — ein
+unsichtbarer Wagen muss nicht gezeichnet werden —, aber die Begründung war ein Phantom.
+
+**Regel:** Wer mit `renderer.info` argumentiert, misst denselben Stand mindestens zweimal und
+nennt die Streuung, bevor er eine Differenz deutet. Unter ~30 % Unterschied ist auf diesem
+Container gar nichts belegt. Für echte Kostenfragen gilt dasselbe wie für Laufzeiten
+(siehe `th-nachthelle`): **die Maschine misst sich mit.**
