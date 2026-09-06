@@ -32,12 +32,12 @@ if (!ADMIN_TOKEN && !(CID && CSEC)) {
 }
 
 const PRIO = [
-  ['kleider', 'Mehr Kleider entdecken'],
-  ['taschen-sub', 'Mehr Taschen entdecken'],
-  ['sonnenbrillen-eyewear', 'Mehr Sonnenbrillen entdecken'],
+  ['sub-kleider', 'Mehr Kleider entdecken'],
+  ['sub-taschen', 'Mehr Taschen entdecken'],
+  ['sonnenbrillen-alle', 'Mehr Sonnenbrillen entdecken'],
   ['schuhe', 'Mehr Schuhe entdecken'],
-  ['damen-schmuck-sub', 'Mehr Schmuck entdecken'],
-  ['premium-beauty', 'Mehr Beauty entdecken'],
+  ['premium-schmuck', 'Mehr Schmuck entdecken'],
+  ['beauty-pflege', 'Mehr Beauty entdecken'],
   ['wohnen-dekoration', 'Mehr fürs Zuhause entdecken'],
   ['damen-mode', 'Mehr Damen-Mode entdecken'],
 ];
