@@ -1,5 +1,65 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🧭 Das Menü gegen die Routine gemessen: 66 von 120 Kategorien wären in zwei Tagen leer oder fast leer (2026-09-06, abends)
+Betreiber: «weiter fix alles». Die Frage hinter allem: Was bleibt vom MENÜ, wenn die stündliche
+Routine durch ist? Gemessen mit ZWEI Bulk-Exporten (geschützte Ware 3'526 Produkte / 34'924
+Zeilen; alle aktiven 28'441 Produkte / 460'543 Zeilen mit Kollektionen, Bildmassen, SKU, Tags) —
+nicht mit `productsCount`, denn **`collection_id:X AND status:active AND tag:Y` liefert STILL 0**
+(am bekannt-positiven Fall `wasserfester-schmuck` geprüft: 102 aktiv, davon 0 «mit bild-ok»,
+obwohl 90 den Tag tragen; auch `-tag:` und OR-Gruppen fallen in Kombination mit `collection_id`
+auf 0). **Zehnte Fassung des stillen Shopify-Filters — und die erste, die ich durch eine
+Gegenprobe VOR dem Schluss gefangen habe.** Ohne den Test hätte ich «keine Kategorie überlebt» gemeldet.
+
+| gemessen 06.09. 20:20 UTC | |
+|---|---:|
+| aktive Produkte (Bulk, exakt) | **28'441** (15:39 waren es 31'045 → weiter ~1'000/h) |
+| Menü-Kategorien gesamt | 120 |
+| davon JETZT schon leer (alle Produkte DRAFT) | **4** — tier-leinen-kleidung, tierspielzeug, tier-naepfe-fuettern, eu-lager-schnell |
+| werden auf 0 fallen | **13** — herren-jacken, sneaker-sportschuhe, sub-wander-arbeitsschuhe, naegel-manikuere, haarstyling-geraete, werkzeug-maschinen, gaming, drohnen-kameras, beamer-heimkino, ventilatoren, fussball-fanshop, wandern-trekking, smoke-zubehoer |
+| unter 12 überlebende Produkte | **66** |
+| Menüpunkte, die den Lauf gut überstehen | Fortura/CH-Lager, Kostüme, Halloween, POD, Schmuck (bild-ok-Frühjahrslauf), Preisbänder |
+
+- ⚠️ **Vier Menüpunkte führten HEUTE schon auf leere Seiten** (Leinen & Tierkleidung 321 Produkte,
+  Tierspielzeug 192, Näpfe 130, EU-Lager 320 — alle DRAFT). Ein Menülink auf eine leere Kategorie
+  ist dieselbe Klasse wie die 32 toten Landeseiten von heute früh: belegbarer Schaden, kein Bauchgefühl.
+- **Gehandelt mit dem KRITERIUM der Routine, nicht gegen ihren Schalter** (Regel von heute Mittag):
+  Je Kategorie unter 12 bis zu 12 Produkte mit gemessenem Hauptbild ≥ 500 px auf beiden Kanten,
+  CJ-Lieferanten-SKU und ohne Risiko-Tag (Waffe/Klinge/Medizin/Heilaussage/Raucher/Erotik/
+  Überwachung/Lizenz/Dublette/nicht-lieferbar/marge-verlust …) → **`bild-ok` + Marker
+  `menue-kern-0906`**. Reihenfolge: meiste Bilder zuerst. **362 aktive geschützt, 48 aus den vier
+  leeren Kategorien reaktiviert** (Tag `auto-entwurf-0926` entfernt, ACTIVE — Publikationen bleiben
+  bei einem DRAFT erhalten, Lehre 04.09.). Gegenprobe: `tag:menue-kern-0906` = **410**, alle vier
+  leeren Kategorien zeigen wieder 12–13 aktive.
+  ⚠️ **Der Marker ist die Rückgängig-Marke:** wer die Aktion aufheben will, nimmt `bild-ok` genau
+  von den Produkten mit `menue-kern-0906` — nicht von allen bild-ok.
+- ⚠️ **Vier der 362 hat die Routine zwischen Export und Tag erwischt** (20:28 gedraftet, mein Tag
+  kam 20:30): `tag:menue-kern-0906` 410, aber `status:active` 406. Nachgezogen. **Wer gegen einen
+  laufenden Automaten taggt, zählt hinterher Tag UND Status.**
+- **Bewusst NICHT geschützt:** `smoke-zubehoer` (18+, Werbekanal-Sperre — ob Rauchzubehör zum
+  Kernsortiment gehört, entscheidet der Betreiber) und alle Kategorien, die ohnehin ≥ 12 überleben.
+  Das ist ein MINIMUM je Menüpunkt (12 Karten = eine Kollektionsseite ohne Leerraum), keine
+  Wiederherstellung: 66 Kategorien × 12 sind 1,4 % des Katalogs.
+- ⚠️ **Eine Sammel-Mutation mit 72 Aufrufen (720 Kostenpunkte) lief in den Timeout — und war
+  vollständig ausgeführt** (24/24 ACTIVE gezählt). Vierte Bestätigung: nach einem Timeout zählen,
+  nicht wiederholen. Sicher unter Dauerlast: 40 `tagsAdd` (400) oder 12 Produkte × 3 Mutationen (360).
+- ⚠️ **Der Bulk-Export ignoriert `first:` an verschachtelten Verbindungen** — `variants(first:1)`
+  lieferte ALLE Varianten als Kindzeilen. Kindzeilen tragen kein `id`, nur `__parentId`; wer sie
+  über `o['id']` unterscheidet, stürzt auf der zweiten Zeile ab.
+- **Nebenbefund mit Kundenwirkung:** Das **#1016-Messer** (Entwurfsbestellung #D2, Zahlungslink beim
+  Kunden) war seit 05.09. 20:35 wieder DRAFT — `auto-entwurf-0926`, kein bild-ok. Ein Kunde mit
+  Zahlungslink auf ein Entwurfsprodukt. Wiederhergestellt (800×800 gemessen → bild-ok, ACTIVE, nur
+  Onlineshop + Shop). **Wer einem Kunden einen Link gibt, muss prüfen, ob das Ziel morgen noch steht.**
+
+## 🧾 Der «Automations-Audit» der anderen Session — drei Aussagen gegen die Messung (2026-09-06)
+Der Betreiber schickte den Bericht als Artefakt. Traffic-Analyse (Juli-Welle = kein Menschenverhalten,
+0,4 % Conversion real) und Import-Stopp decken sich mit der eigenen Messung. Drei Punkte nicht:
+| Aussage im Audit | Messung |
+|---|---|
+| «Es gibt kein Schweizer Lager, aus dem in 1–2 Tagen geliefert wird» (Hero-Widerspruch «dringend») | **2'408 aktive Produkte tragen `ch-lager`** (Fortura, Belp-Grosshandel) — der Bericht nennt sie zwei Absätze weiter oben selbst. Der Hero-Satz ist wahr; die Stichprobe des Audits bestand nur aus CJ-Ware. |
+| «Jede Produktbeschreibung sagt ‹CH / EU: 10–18 Tage›, Produkttexte nennen USA 12–22 Tage» | am Objekt: **0** (`"USA: 12"` 0, `"CH / EU: 10"` 0) — die 983 wurden am 03.09. repariert, der Befund ist vom 03./04.09. |
+| «Gratis-Versand real ab CHF 45 — Korrektur unter Versand → Zone Domestic» | die 45 ist Absicht (50 × 0,9, Lehre 20.08.); wirksam ist der Automatik-Rabatt **ab 49**, beworben 50 — die einzige Zahl, die in jedem Korb wahr ist (05.09.). Die Zone anzufassen wäre die falsche Reparatur. |
+Dazu zwei Fakten, die dort fehlen: Die Routine hat **nicht 25/h, sondern ~1'000/h** (gemessen 31'045 → 28'441 in 4,7 h), und das «Ziel 849 Produkte» trifft laut Bulk-Messung von heute Mittag bei **99,4 % der abgeschalteten Ware das Falsche** (19'808 von 19'927 haben ein Bild ≥ 500 px). **Ein Bericht einer anderen Session ist ein Hinweis, kein Beleg** — zum dritten Mal in zwei Tagen, und jedes Mal war er in der Sache richtig und in einer Zahl falsch.
+
 ## ⛔ Der Massen-Draft «ohne bild-ok» IST GELAUFEN — 19'927 Produkte aus, Nr.-1-Suchseite 404 (2026-09-06)
 Am 04.09. habe ich den Plan einer anderen Session gemessen und als betriebsstillegend abgelehnt
 («ein Tag-Name ist ein Datum, kein Urteil»). **Am 05.09. um 09:50 UTC ist er trotzdem gelaufen.**

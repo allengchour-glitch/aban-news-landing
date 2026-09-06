@@ -72,6 +72,37 @@ rund 900 Produkte**.
 **Sag mir A, B oder C — dann setze ich es um.** Ohne dein Wort bleibt es, wie es ist.
 Bei A oder C: bitte zuerst die Routine oben pausieren, sonst arbeiten wir gegeneinander.
 
+### 🧭 NEU um 21:00 UTC: gemessen, was die Routine vom MENÜ übrig lässt
+Von **120 Menü-Kategorien** überleben **66 nicht** (unter 12 Produkte), **13 fallen auf 0**
+(herren-jacken, sneaker-sportschuhe, sub-wander-arbeitsschuhe, naegel-manikuere, haarstyling-geraete, werkzeug-maschinen, gaming, drohnen-kameras, beamer-heimkino, ventilatoren, fussball-fanshop, wandern-trekking, smoke-zubehoer), und **4 waren heute Abend SCHON leer** — Menülinks auf Seiten ohne ein
+einziges Produkt: tier-leinen-kleidung, tierspielzeug, tier-naepfe-fuettern, eu-lager-schnell.
+Aktive Produkte 20:20 UTC: **28'441** (15:39 waren es 31'045 → die Routine läuft mit ~1'000/h).
+
+**Was ich gemacht habe (umkehrbar, mit eigener Marke):** Je betroffener Kategorie bis zu 12
+Produkte mit gemessenem Bild ≥ 500 px, CJ-SKU und ohne Risiko-Tag → `bild-ok` + Marker
+**`menue-kern-0906`** (410 Produkte, davon 48 aus den vier leeren Kategorien reaktiviert).
+Das ist das Kriterium der Routine selbst — sie überspringt diese Produkte jetzt. **Rückgängig:**
+Filter «Tag ist menue-kern-0906» → Tag `bild-ok` entfernen. Nicht angefasst: Kiffer-Zubehör (18+).
+
+**Damit ist das Menü in zwei Tagen zwar nicht leer, aber überall dünn (12 Karten).** Ob das
+Sortiment bei ~4'000 Produkten bleiben soll (A), die Routine pausiert (B) oder alles zurückkommt
+(C), bleibt deine Entscheidung — siehe oben. **Bei A gehört das Menü danach auf die Kategorien
+gekürzt, die noch Ware haben** (das mache ich, sobald du A sagst).
+
+⚠️ **Dein Zahlungslink an den #1016-Kunden (#D2) zeigte auf ein Entwurfsprodukt** — die Routine hatte
+das Fuda-Messer am 05.09. 20:35 wieder auf Entwurf gesetzt. Wiederhergestellt (bild-ok, aktiv, nur
+Onlineshop + Shop). Zahlt er, muss der CJ-Auftrag von Hand über «CJPacket EQ Sensitive» laufen —
+der Bestell-Automat ist ohne Admin-Token blind.
+
+### Zum «Automations-Audit» (Artefakt der anderen Session), drei Korrekturen
+1. **«Es gibt kein Schweizer Lager» — falsch.** 2'408 aktive Produkte sind Fortura-Ware ab Belp
+   (`ch-lager`, 1–2 Werktage). Der Hero-Satz ist wahr; nichts ändern.
+2. **«Produkttexte nennen USA/EU-Lieferzeiten» — veraltet.** Am Objekt 0 Treffer; die 983 wurden
+   am 03.09. repariert.
+3. **«Gratis-Versand real ab CHF 45, Zone Domestic korrigieren» — bitte NICHT.** Die 45 ist Absicht
+   (50 × 0,9 wegen des 10-%-Rabatts), wirksam ist der Automatik-Rabatt ab 49, beworben 50 — das ist
+   die einzige Zahl, die in jedem Korb stimmt. Die Versandzone anzufassen kann den Checkout lahmlegen.
+
 ## 🔁 06.09.2026 — Zwei Routinen mit Fakten von Mai (nur du kannst sie ändern)
 > Beide wurden über die Web-Oberfläche angelegt (`created_via: http_api`) — kein Agent darf
 > sie bearbeiten, ich habe es versucht. Die andere Session hat dasselbe festgestellt
