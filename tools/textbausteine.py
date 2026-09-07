@@ -35,6 +35,14 @@ SCHWANZ = [
     re.compile(r'\s*(?:&mdash;|—|·|-)\s*ohne Hype(\.?)(?=["<])'),
     re.compile(r'(?<=\.)\s*[Ee]hrlich(?:\s+und)?,?\s*ohne Hype(\.)'),
     re.compile(r',?\s*[Ee]hrlich(?:\s+und)?,?\s*ohne Hype(\.?)(?=["<])'),
+    # ⚠️ Zweite Familie derselben Floskel, 2026-09-07 nachgezogen: „kein Hype" und
+    #    „kein Buzzword-Bingo" hängen genauso am Satzende.
+    #    TEUER GELERNT: der erste Entwurf hatte den einfachen Bindestrich in der
+    #    Trennzeichen-Auswahl. Aus „3-5 Minuten, kein Hype." wurde damit „3." — das
+    #    Muster frass die Zahlenspanne mit. Nur Gedankenstrich und Mittelpunkt, nie
+    #    der Bindestrich; und vor dem Komma muss ein Wortzeichen stehen.
+    re.compile(r'\s*(?:&mdash;|—|·)\s*kein Hype(\.?)'),
+    re.compile(r'(?<=[\wäöüß])\s*,\s*kein (?:Buzzword-Bingo|Hype)(\.?)'),
 ]
 
 
@@ -55,6 +63,9 @@ def _weg(m):
 BADGE = (re.compile(r'(class="badge">[^<]*?)\s*·\s*ehrlich,\s*ohne Hype'), r'\1')
 
 
+FLOSKEL = re.compile(r'ohne Hype|kein Hype|kein Buzzword-Bingo|ohne Buzzword-Bingo')
+
+
 def bereinigen(h):
     """Gibt (neuer Text, Anzahl entfernt) zurück. Titel und Überschriften bleiben."""
     # Titel/Überschriften schützen: Inhalt merken, durch Platzhalter ersetzen.
@@ -67,11 +78,11 @@ def bereinigen(h):
     h = re.sub(r'(?is)<title>.*?</title>', merken, h)
     h = re.sub(r'(?is)<h[1-3][^>]*>.*?</h[1-3]>', merken, h)
 
-    vorher = len(re.findall(r'ohne Hype', h))
+    vorher = len(FLOSKEL.findall(h))
     h = BADGE[0].sub(BADGE[1], h)
     for muster in SCHWANZ:
         h = muster.sub(_weg, h)
-    nachher = len(re.findall(r'ohne Hype', h))
+    nachher = len(FLOSKEL.findall(h))
 
     h = re.sub(r'\x00(\d+)\x00', lambda m: schutz[int(m.group(1))], h)
     return h, vorher - nachher
@@ -90,18 +101,18 @@ def main():
     ges_vor = ges_weg = betroffen = mehrfach = 0
     for p in seiten():
         h = open(p, encoding="utf-8", errors="ignore").read()
-        if "ohne Hype" not in h:
+        if not FLOSKEL.search(h):
             continue
-        ges_vor += len(re.findall(r'ohne Hype', h))
+        ges_vor += len(FLOSKEL.findall(h))
         neu, weg = bereinigen(h)
         if weg:
             betroffen += 1
             ges_weg += weg
             if schreiben:
                 open(p, "w", encoding="utf-8").write(neu)
-        if len(re.findall(r"ohne Hype", neu)) > 1:
+        if len(FLOSKEL.findall(neu)) > 1:
             mehrfach += 1
-    print(f"„ohne Hype\": {ges_vor} Vorkommen · {ges_weg} entfernbar auf {betroffen} Seiten "
+    print(f"Hype-Floskeln: {ges_vor} Vorkommen · {ges_weg} entfernbar auf {betroffen} Seiten "
           f"· es blieben {ges_vor - ges_weg}")
     print(f"Seiten, auf denen danach noch mehr als eines steht: {mehrfach}")
     if not schreiben:
