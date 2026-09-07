@@ -18361,3 +18361,12 @@ gid://shopify/Product/15497435971969	CHF 45.48	1 Varianten	Yoga Pilates Set · 1
 gid://shopify/Product/15497436004737	CHF 50.80	1 Varianten	GPS-Trainingshalsband für drahtlose Outdoor-Positi
 gid://shopify/Product/15497436037505	CHF 23.39	1 Varianten	RC-Flugzeug mit Kamera für Kinder
 gid://shopify/Product/15497436070273	CHF 20.17	1 Varianten	Klimmzugband-Set für zuhause und draussen
+gid://shopify/Product/15497436103041	CHF 63.31	1 Varianten	Antihaft-Suppentopf «Medical Stone» (24 cm)
+gid://shopify/Product/15497436135809	CHF 11.06	1 Varianten	LED Leuchtanhänger für Hunde
+gid://shopify/Product/15497436168577	CHF 15.29	1 Varianten	Weltraum-Bausteine für kreative Köpfe
+gid://shopify/Product/15497436201345	CHF 18.72	1 Varianten	V-Griff für Latzug und Rudern
+gid://shopify/Product/15497436234113	CHF 15.36	1 Varianten	Fleisch-Dampfgarer mit Temperaturanzeige
+gid://shopify/Product/15497436266881	CHF 11.72	1 Varianten	Hundehalsband Reflektierend & Weich
+gid://shopify/Product/15497436299649	CHF 42.11	1 Varianten	Wu Zhishi Lei Yin God Of War Baustein-Modell
+gid://shopify/Product/15497436332417	CHF 22.43	1 Varianten	Tragbarer Mini-Entsafter
+gid://shopify/Product/15497436397953	CHF 10.86	1 Varianten	Verstellbares Trainingshalsband für Hunde
