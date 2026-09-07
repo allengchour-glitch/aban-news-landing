@@ -70,6 +70,38 @@ Kosten 44.85 USD) → **Preis jetzt 59.90 ✅**. **Klaviyo-Sync kaputt** (zeigt 
 verbinden, nur User). Katalog: **10'000+ aktiv** (Füll-Session). Details: Top-Block `SHARED-MEMORY.md` §LIVE-STAND.
 Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts (GitLab prüfen).
 
+**📌 2026-09-07 (Handschrift-Runden: Spiel + Webseite „nicht so KI-generiert" — 8 PRs, alle gemessen):**
+- **Auftrag:** „mach das Spiel cooler und nicht so KI generiert" + „verbesser die Webseite, zu fest KI gemacht".
+  Vorgehen jedes Mal: **erst ein Messgerät bauen, dann ändern, dann gegenprüfen** — nie nach Gefühl.
+- **Traumhaus, 4 Teile (#2489, #2491, #2494, #2495):** 19 Knopf-Verläufe → 0 (eine Palette: Creme/Tinte,
+  Bernstein = genau EINE Handlung je Bild) · 41/61 Emoji-Knöpfe → 3 · 146/154 Hinweise mit Emoji voran → 0,
+  70 Ausrufezeichen → 5 · ß → ss, „Bürgermeister" → Stadtpräsident · Ortsnamen: Sunnehalde, Rebhalde, Bürgli,
+  Chilbiplatz, Brunnmatt · Passanten mit Meinung statt Smalltalk · `stdMat` bekam **metalness in 3 Stufen**
+  (vorher NIE gesetzt → alles matt) · 93 identische Blob-Schatten-Materialien → 1 · **HUD-Emoji 7 → 0**
+  (35 Strich-Ikonen im Sprite, `ik()`/`txt()`).
+- **Werkzeuge (spiele-dev/tools/):** `th-handschrift.py` (zählt Verläufe/Emoji/Fassaden/Vignetten/HUD),
+  `th-texte.py` (idempotentes Umschreiben der 154 Hinweise).
+- **Webseite (#2496–#2500):** klebende Kopfleiste war Glas (85 %) → Schlagzeilen lasen sich durch, jetzt
+  deckende Fläche, **Durchschlag 2.78 → 0.00** auf 54 Seiten · **Eckenradien 30 verschiedene → 3**
+  (8 klein / 14 Karte / 999 Pille, 15 907 Deklarationen) · **Farbverläufe 1111 → 438** (Flächen flach; Masken,
+  mehrstufige Motive und `background-clip:text` bleiben) · **Hype-Floskeln 1627 → 716** + 13 Generatoren gefixt.
+- **Werkzeuge (tools/):** `ki_look.py` (Bestandszählung), `textbausteine.py`+`test_`, `ecken.py`+`test_`,
+  `flaechen.py`+`test_`, `seiten_blick.mjs` (Seiten in BILDSCHIRMHÖHEN statt 21 000-px-Bild),
+  `kopfleiste.mjs` (Durchschlag-Messung mit eingebauter Gegenprobe). Bericht: `reports/KI-LOOK.md`.
+- **🔑 DREI TEUER GELERNTE LEHREN (für jede Session):**
+  1. **Messgerät zuerst gegenprüfen.** `kopfleiste.mjs` meldete überall 0,00 — die eingebaute Gegenprobe
+     (künstlich 50 % transparent muss ausschlagen) entlarvte es: `page.screenshot({clip})` rechnet in
+     **Dokument**-, nicht Bildschirmkoordinaten. Ohne die Kontrolle hätte ich „alles sauber" gemeldet.
+  2. **Bei Massenersetzungen den DIFF lesen, nicht die Zahl.** Ein Muster mit einfachem Bindestrich machte
+     aus „3-5 Minuten, kein Hype." → „3." auf 264 Seiten. Zahlen und html-validate sahen unauffällig aus.
+  3. **Ein Messgerät, das Bauteile als Fehler zählt, treibt die Arbeit in die falsche Richtung.** „Kästen
+     ≥ 14 px" stieg nach der Radien-Leiter von 4119 auf 9591 (14 px IST die gewählte Sprosse); „Auf einen
+     Blick" (433) ist das Label des Antwort-Kastens, keine Floskel. Beide Kennzahlen korrigiert.
+  4. Zusatz: `background-image` nimmt **keine Farbe** an — dort einen Verlauf durch eine Farbe zu ersetzen
+     erzeugt eine ungültige Angabe, die der Browser **still** verwirft (Fläche danach durchsichtig).
+- **⚠️ LIVE-DEPLOY STEHT WEITERHIN** (seit 29.08.): nichts davon ist auf abannews.com sichtbar, bis der User
+  einen PAT in `/etc/abannews/deploy.env` legt und `bash /opt/abannews/server/auto-deploy.sh` läuft.
+
 **📌 2026-09-02 (Webseite: „Frag aban"-Assistent entfernt — User: „ohne die Chatfenster, alles eleganter"):**
 - `/js/assistant.js` ist **von allen 152 Seiten** raus (52 im Wurzelverzeichnis, 100 in `maerkte/`, `dossier/`, `en/…`).
   Gemessen war der Grund: mobil lagen nach dem Scrollen **vier fixierte Schichten** übereinander (Sprach-Banner 98 px,
