@@ -14718,3 +14718,4 @@ gid://shopify/Product/15523902751105	107->1	Klassische Rosengold-Schnuraufbewahr
 gid://shopify/Product/15523902914945	15->0	Stossfeste Aufbewahrungstasche aus Cord
 gid://shopify/Product/15523903013249	15->0	Fantasy Forest Schmetterling Vierfarb-Palette
 gid://shopify/Product/15523903209857	15->0	Retro Keramik Schale auf Fuss
+gid://shopify/Product/15523903832449	45->1	Nadel-Holzbox für Handarbeiten
