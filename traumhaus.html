@@ -6948,13 +6948,26 @@ setTimeout(function baueGebaeude(){
           w.traverse(function(m){if(m.isMesh&&m.geometry)
             teile.push({g:m.geometry,mat:m.material,
                         l:new THREE.Matrix4().multiplyMatrices(inv,m.matrixWorld)});});
-          var M=new THREE.Matrix4(),T=new THREE.Matrix4(),R=new THREE.Matrix4();
+          var M=new THREE.Matrix4(),T=new THREE.Matrix4(),R=new THREE.Matrix4(),SK=new THREE.Matrix4();
+          /* 🌿 EINE HECKE WAECHST, SIE WIRD NICHT GESTANZT. GEMESSEN: 98 Plaetze x 6
+             Teilnetze = 588 Instanzen mit EINER Groesse und ZWEI Drehungen (0 und 90
+             Grad, die beiden Zaunrichtungen). Im Bild ist das eine Reihe voellig
+             gleicher Kugeln — genau der Eindruck, den der User "zu KI-generiert" nennt.
+             Jeder Platz bekommt darum seine eigene Hoehe, Tiefe und ein paar Grad
+             Drehung. Die Werte kommen aus dem Platz-Index, nicht aus Math.random():
+             die Welt muss bei jedem Laden gleich aussehen (Koop, Bildvergleiche).
+             ⚠️ Die Laenge waechst nur nach OBEN (1,00…1,06). Wuerde sie auch schrumpfen,
+             risse die Hecke im 2,3-m-Raster auf — sichtbare Luecken statt Wuchs. */
+          function _wuchs(i,k){var v=Math.sin(i*12.9898+k*78.233)*43758.5453;return v-Math.floor(v);}
           teile.forEach(function(t){
             var im=new THREE.InstancedMesh(t.g,t.mat,heckenStellen.length);
             for(var i=0;i<heckenStellen.length;i++){
               var st=heckenStellen[i];
-              R.makeRotationY(st[2]);T.makeTranslation(st[0],0,st[1]);
-              M.multiplyMatrices(T,R);M.multiply(t.l);
+              var a=_wuchs(i,1),b=_wuchs(i,2),c=_wuchs(i,3);
+              R.makeRotationY(st[2]+(c-0.5)*0.14);
+              T.makeTranslation(st[0]+(a-0.5)*0.12,0,st[1]+(b-0.5)*0.12);
+              SK.makeScale(1+a*0.06, 0.85+b*0.33, 0.92+c*0.18);
+              M.multiplyMatrices(T,R);M.multiply(SK);M.multiply(t.l);
               im.setMatrixAt(i,M);}
             im.instanceMatrix.needsUpdate=true;
             im.castShadow=true;im.receiveShadow=true;
