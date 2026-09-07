@@ -15112,3 +15112,18 @@ gid://shopify/Product/15525141512577	32->0	Browen-Trimmer-Set aus Edelstahl
 gid://shopify/Product/15525141774721	70->0	Tätowier-Mustercreme – temporär, wasserfest
 gid://shopify/Product/15525141840257	32->3	Schwarze Armbanduhr mit Holzgehäuse
 gid://shopify/Product/15525142135169	18->0	Nordische Glas- und Messing-Aufbewahrungsbox
+gid://shopify/Product/15525142626689	51->0	Smartwatch Outdoor mit Bluetooth‑Anruf
+gid://shopify/Product/15525142856065	100->1	Holzgehäuse-Armbanduhr mit Lederimitatband
+gid://shopify/Product/15525143249281	82->0	High-Gloss-Reparatur-Disc
+gid://shopify/Product/15525143937409	10->0	Smartwatch für Kinder mit Videoanruffunktion
+gid://shopify/Product/15525144527233	10->0	Mädchen High Heels mit Strass
+gid://shopify/Product/15525144691073	36->0	Lidschatten-Palette mit 12 Farben
+gid://shopify/Product/15525144723841	27->0	Kurze Mädchenstiefel mit Reissverschluss
+gid://shopify/Product/15525145084289	22->0	Chameleon Diamant-Perl-Kohlpuder
+gid://shopify/Product/15525189353857	8->0	Liquid Concealer 5 Farben
+gid://shopify/Product/15525189616001	38->1	Wasserfarben-Schminkset für Gesicht und Körper
+gid://shopify/Product/15525190369665	45->0	Farbwechselnde Grundierung mit Lichtschutzfaktor
+gid://shopify/Product/15525190435201	58->0	Flüssiger Eyeliner Diamond Ryukin Small Steel
+gid://shopify/Product/15525190566273	15->0	Feuchtigkeitsspendende Mascara
+gid://shopify/Product/15525192958337	51->0	Kinder-Lollipop-Make-up-Spielzeug
+gid://shopify/Product/15525195710849	79->0	Sportuhr für Herren, analog, 30 m wasserdicht
