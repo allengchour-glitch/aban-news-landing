@@ -698,7 +698,15 @@ for(const [cat,label] of grp.cats){
   // setzt alle Seiten-Zeiger auf 1 zurück und verliert die mühsam erarbeitete Tiefe — beim
   // ersten Anlauf am 10.08. ist genau das mit vier Kategorien passiert.
   if(!list.length){
-    if(Number(j.code)===200){ letzteSeite=0; }          // wirklich am Ende -> neu von vorn
+    // ⚠️ 1600300 «the max offset is 6000» ist KEIN Ausfall, sondern ein ENDE-Signal: CJ
+    // laesst sich ab diesem Offset nicht weiter blaettern, die Kategorie ist bis zur
+    // API-Decke ausgelesen. Wer ihn wie einen Punktemangel behandelt, laesst den Zeiger
+    // ueber der Decke stehen — die Kategorie liefert dann FUER IMMER 0 und kostet je Lauf
+    // eine Anfrage (gemessen 07.09.2026: 2 von 168 Kategorien standen auf Seite 202).
+    // Richtig ist der Neu-Sweep von vorn; Dubletten fangen Titel-, SKU-, Bild- und
+    // Handle-Wache plus cj_claim ab, und CJ legt oben taeglich neue Ware an.
+    const offsetDecke = Number(j.code)===1600300 || /max offset/i.test(String(j.message||''));
+    if(Number(j.code)===200 || offsetDecke){ letzteSeite=0; }   // am Ende -> neu von vorn
     else { console.log(`  ⛔ CJ-Fehler ${j.code}: ${String(j.message||'').slice(0,60)} — Zeiger bleibt`); zeigerBehalten=true;
            letzterFehler=`${j.code}: ${String(j.message||'').slice(0,60)}`;
            if(Number(j.code)===16900500||/Insufficient API points/i.test(String(j.message||''))) budgetLeer=true; }
