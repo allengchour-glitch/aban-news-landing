@@ -28374,3 +28374,12 @@ gid://shopify/Product/15506261016961	ok
 gid://shopify/Product/15506260885889	ok
 gid://shopify/Product/15506260820353	ok
 gid://shopify/Product/15506260754817	ok
+gid://shopify/Product/15506260623745	ok
+gid://shopify/Product/15506260558209	ok
+gid://shopify/Product/15506260525441	ok
+gid://shopify/Product/15506260459905	ok
+gid://shopify/Product/15506260394369	ok
+gid://shopify/Product/15506260328833	ok
+gid://shopify/Product/15506260263297	ok
+gid://shopify/Product/15506260197761	ok
+gid://shopify/Product/15506260033921	ok
