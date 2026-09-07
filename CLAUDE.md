@@ -1,5 +1,47 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔁 «cj grind weiter» — und zwei Fehlermeldungen, die seit Wochen niemand gelesen hat (2026-09-07, 20:00 UTC)
+Betreiber: «cj grind weiter». Die Pause `dropship/_GRIND_PAUSE_BIS` stand auf **12.09. 08:25 UTC**
+(gesetzt am 05.09., nicht heute) — entfernt, Runner über `engine_keepalive.sh` gestartet.
+**Belegt ist nicht der Start, sondern die Arbeit:** im Runner-Log stehen echte `✅`-Zeilen mit neuen
+Produkt-IDs, **1'273 erfolgreiche Importe** am heutigen Tag. «Gestartet» ist nicht «arbeitet» — der
+Beleg ist die Zahl der angelegten Einheiten, nicht die Startmeldung (dritte Fassung, 23.08.).
+⚠️ Die Zuflussbremse `_GRIND_RUNNER_ZAHL` steht weiterhin auf **1** (statt 4, gesetzt am 04.09.
+wegen des vollen Datei-Speichers). «Weiter» hiess Pause aufheben, nicht die zweite, unbelegte
+Entscheidung mittreffen — wer 4 will, setzt die Zahl auf 4.
+
+**Und beim Lesen des Logs fielen zwei Defekte auf, die sich in jeder Zeile melden und nie
+gelesen wurden:**
+
+1. **⛔ `1600300 «the max offset is 6000»` ist ein ENDE-Signal, kein Ausfall.**
+   `cj_category_fill.mjs` behandelte jeden CJ-Fehlercode gleich: **Zeiger bleibt**. Für
+   `16900500` (Punktemangel) ist das richtig und bewusst so gebaut — ein leeres Budget darf die
+   mühsam erarbeitete Tiefe nicht zerstören (Lehre 10.08.). Für die Offset-Decke ist es falsch:
+   CJ sagt damit, dass die Kategorie bis zur API-Grenze ausgelesen ist. Der Zeiger blieb ÜBER der
+   Decke stehen → die Kategorie liefert **für immer 0** und kostet je Lauf eine Anfrage.
+   Gemessen: **2 von 168 Kategorien** standen auf Seite 202 (Offset 6'060), beide auf 1 zurück.
+   `1600300` gilt jetzt wie «code 200 mit leerer Liste» als Ende und löst den Neu-Sweep aus.
+   ⚠️ **Der Fix ist heute NICHT auslösbar und damit nicht am Objekt belegt** — die Zeiger stehen
+   nach dem Reset auf 1. Er ist Vorsorge für den nächsten Durchlauf bis zur Decke; das gehört so
+   gesagt und nicht als «geprüft» verkauft.
+   **Die Lehre ist die Gegenrichtung zur Drosselungs-Regel:** dort war eine Warteanweisung kein
+   Abbruchgrund — hier ist ein Ende kein Ausfall. **Ein Fehlercode sagt nicht, ob man es später
+   nochmal versuchen soll; das muss man je Code entscheiden.**
+
+2. **⚠️ 130 von 1'273 Importen (10 %) bekamen GAR KEINEN Bild-Alt-Text.**
+   `altTexte()` schrieb sofort nach dem Anlegen; Shopify lehnt `fileUpdate` mit
+   **«Non-ready files cannot be updated»** ab, solange ein Bild `PROCESSING` ist. Die Meldung stand
+   in jeder dieser 130 Zeilen — der Lauf lief ja weiter, also hat sie niemand gelesen.
+   Jetzt wird bis zu viermal auf `status: READY` gewartet und nur fertige Bilder werden beschrieben.
+   ⚠️ Die Bildnummer kommt aus der **vollen** Medienliste, nicht aus der gefilterten — sonst
+   verschieben sich die Nummern, sobald ein Bild fehlt, und zwei Läufe vergeben dieselbe doppelt.
+   ✅ **Am echten Erzeugnis belegt: 23 neue Importe nach dem Fix, 0 neue Alt-Text-Fehler**
+   (vorher 132 auf 1'277). Der Rückstand von heute holen `alt_text_backfill.mjs` und
+   `alt_texte_nachziehen.py` nach — beide sind im Aufseher registriert (nachgesehen, nicht vermutet).
+   **Regel: Eine Warnung, die sich bei jedem zehnten Durchlauf wiederholt, ist ein Defekt, keine
+   Randnotiz** (dieselbe Familie wie «eine Zeile, die sich in jedem Durchgang wiederholt, ist eine
+   Meldung», 29.08.).
+
 ## ♻️ «fix die 27k Produkte»: 26'625 zurückgeholt — und der Schutz galt nur für EINEN Lieferanten (2026-09-07, abends)
 Betreiber: «fix die 27k peodukten?». Zurückgeholt wurde, was die stündliche Draft-Routine
 (`trig_013xE8LpGFW2QGuziRJywbHV`, Kriterium «kein `bild-ok`») abgeschaltet hatte — **nach Messung,
