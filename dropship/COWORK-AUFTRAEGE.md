@@ -11,29 +11,31 @@ anmelden — Cowork soll die bereits offene Sitzung benutzen.
 mehr in der Liste — eine Aufgabenliste, in der Erledigtes mitläuft, wird nach dem zweiten Mal
 nicht mehr gelesen.
 
-## 💶 BigBuy-Auszahlung (07.09.2026): von hier aus NICHT messbar — zwei Wege
+## 💶 BigBuy: **€1'000.00 liegen im Konto** — gemessen 07.09.2026, 15:30 UTC
 
-Gemessen, nicht vermutet:
+Der Betreiber hat den Produktions-Schlüssel geliefert; er ist ZUERST getestet und DANN gespeichert
+worden (Lehre 05.09.). Damit ist der Stand kein Rätsel mehr:
 
-| geprüft | Ergebnis |
+| gemessen | Ergebnis |
 |---|---|
-| `BIGBUY_API_KEY` in `/tmp`, in der Umgebung, in den Tresor-Dateien | **nirgends vorhanden** |
-| Tresor (dort läge der Schlüssel) | **nicht lesbar** — sein Schlüssel IST das Shopify-Admin-Token, und das ist tot (heute erneut 401) |
-| Moneybox-Stand | zuletzt gemessen **0.00 am 07.07.2026**; seither kein Zugriff |
+| `GET /rest/catalog/languages.json` (Schlüssel gültig?) | **HTTP 200** |
+| `GET /rest/user/purse.json` | **`"1000.00"`** (zweimal unabhängig gelesen) |
+| `GET /rest/user/moneybox.json` | HTTP 400 — **diesen Endpunkt gibt es nicht** |
 | Auszahl-Endpunkt in unserem Code | **keiner** — `paymentMethod: 'moneybox'` bezahlt nur Bestellungen, holt kein Geld heraus |
 
-**Ich kann den Stand also weder abfragen noch eine Auszahlung auslösen.** Zwei Wege, beide bei dir:
+⚠️ Die Zahl aus dem Gedächtnis («Moneybox 0.00 seit 07.07.») war überholt UND am falschen
+Endpunkt gemessen. Der Topf heisst **purse**, nicht moneybox.
 
-1. **Schnell:** In der BigBuy-Konsole unter Guthaben/Moneybox nachsehen, wie viel dort liegt.
-   Steht dort etwas, ist die Rückzahlung eine Anfrage beim BigBuy-Support — dafür gibt es keine
-   API, das war schon 2026-07-07 so.
-2. **Dauerhaft:** Den `BIGBUY_API_KEY` einmal als Umgebungs-Variable des Claude-Kontos hinterlegen
-   (nicht in /tmp, nicht ins Repo — das Repo ist öffentlich). Dann kann ich den Stand jederzeit
-   selbst messen und melden.
+**Was das für dich heisst — zwei Wege, beide bei dir:**
 
-⚠️ Das hängt am selben Nagel wie alles andere: **solange die Custom-App `autopilot2` weg ist, ist
-der Tresor zu** und jeder Schlüssel darin unerreichbar. Das ist der eine Klick, der die halbe
-Automatik zurückbringt.
+1. **Auszahlen:** Es gibt in der BigBuy-API keinen Auszahl-Aufruf (geprüft). Das ist eine
+   Support-Anfrage in der BigBuy-Konsole. Ich kann sie vorbereiten, absenden musst du sie.
+2. **Verbrauchen:** Rechnerisch der schlechtere Weg — der BigBuy-Import ist seit dem 10.07. auf
+   deinen Entscheid abgeschaltet, und der CH-Versand kostet dort **mindestens ~27.94 EUR je
+   Sendung** (SEUR, einziger Carrier). Kleinteilige Ware ist dort strukturell Verlust.
+
+⚠️ **Der Schlüssel stand im Chat** — bitte in der BigBuy-Konsole neu erzeugen, sobald es passt.
+Er liegt jetzt im Shopify-Tresor (Fach `bigbuy`) und in `/tmp/bigbuy.env` (0600), **nicht im Repo**.
 
 ## ✅ ERLEDIGT (07.09.2026, 15:20 UTC): #1017 ist beim Lieferanten bezahlt
 

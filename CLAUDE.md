@@ -1,5 +1,50 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ✅ Die Custom-App war NIE weg — zwei Tage Diagnose an einem abgelaufenen Token (2026-09-07, 15:11 UTC)
+Seit dem 05.09. steht hier «die Custom-App **autopilot2** ist weg», belegt mit `400 app_not_installed`.
+**Falsch.** Der Betreiber schickte die Anmeldedaten-Seite; gemessen statt vermutet:
+| geprüft | Ergebnis |
+|---|---|
+| Client-Credentials-Grant mit dem **alten** Secret (27.05.) | **Token** |
+| dito mit dem **neuen** Secret (05.09.) | **Token** |
+| Admin-API `{shop{id}}` mit dem frischen Token | **HTTP 200** |
+| Tresor (`ls_tresor`) | **offen, 6 Fächer** (judgeme · cj · tiktok · dienste · meta · github) |
+Die App lebt, beide Secrets sind gültig. Verloren war nur das, was in `/tmp` lag: **`secrets_env.sh`
+mit `SHOPIFY_CLIENT_SECRET`**. Ohne Secret kein Grant — und Shopify antwortet darauf mit
+`app_not_installed`, also mit einer Aussage über die INSTALLATION, obwohl das Problem die
+ANMELDUNG war. **Eine Fehlermeldung benennt oft die Folge, nicht die Ursache** (dieselbe Familie
+wie `ckWebAuthToken` bei iCloud, 04.09.).
+- ⚠️ **Zwei Tage lang habe ich auf dieser Fehlmeldung aufgebaut** — «Tresor zu», «Verzeichnis
+  wird nicht mehr nachgezogen», «BigBuy-Stand nicht messbar», «alle 194 Wächter blind». Die
+  Wächterschicht war die ganze Zeit einen einzigen Wert vom Laufen entfernt. **Wer eine Sperre
+  meldet, muss den Weg dahin einmal von Hand gehen** — der Grant ist ein `curl`, und er hätte
+  am 05.09. dieselbe Antwort gegeben, sobald das Secret dagewesen wäre.
+- ✅ Sofort wiederhergestellt: `/tmp/secrets_env.sh` (0600), Token erneuert, alle fünf
+  /tmp-Geheimnisdateien aus dem Tresor zurückgelegt, `engine_keepalive.sh` gestartet
+  (**Aufseher=1**, «BESTELLUNGEN: 0 offen», «CJ-ZAHLUNG: nichts offen»).
+- ⚠️ **Beide Secrets standen im Chat** → in Shopify neu erzeugen. Das ALTE (27.05.) gehört
+  ohnehin widerrufen, sobald das neue überall benutzt wird.
+- **Und die Lehre über die Ablage, zum dritten Mal:** Was nur in `/tmp` lebt, existiert nicht.
+  `SHOPIFY_CLIENT_ID`/`_SECRET` gehören in die Umgebungs-Variablen des Claude-Kontos — sie sind
+  das eine Geheimnis, das der Tresor nicht halten kann (er wird mit ihnen aufgesperrt).
+
+## 💶 BigBuy: €1'000 liegen im Konto — und der Topf heisst «purse», nicht «moneybox» (2026-09-07)
+Betreiber: «big buy auszahlung push». Bis heute stand hier «Moneybox 0.00, seit 07.07. kein
+Zugriff». Der Betreiber lieferte den Produktions-Schlüssel; ZUERST getestet, DANN gespeichert
+(Lehre 05.09., als ich es umgekehrt machte und einen Groq-Schlüssel zerstörte):
+`/rest/catalog/languages.json` **200** → `/rest/user/purse.json` **`"1000.00"`**, zweimal gelesen.
+- ⚠️ **`/rest/user/moneybox.json` gibt HTTP 400 — diesen Endpunkt gibt es nicht.** Die 0.00 aus
+  dem Gedächtnis war also nicht nur veraltet, sie war am falschen Ort gemessen. **Eine Zahl aus
+  dem Gedächtnis ist keine Messung** (vierte Fassung), und ein Endpunktname aus dem Gedächtnis
+  erst recht nicht.
+- **Herausholen kann es nur der Betreiber:** In der BigBuy-API gibt es keinen Auszahl-Aufruf
+  (`paymentMethod:'moneybox'` bezahlt nur Bestellungen). Das ist eine Support-Anfrage.
+  Verbrauchen ist der schlechtere Weg — BigBuy-Import ist seit 10.07. abgeschaltet, und der
+  CH-Versand kostet dort mindestens ~27.94 EUR je Sendung.
+- Schlüssel liegt im Tresor (Fach `bigbuy`) und in `/tmp/bigbuy.env` (0600), **nie im Repo**;
+  er stand im Chat und gehört rotiert.
+
+
 ## 🔓 Der Tresor meldete «0 Einträge», statt zu sagen, dass er zu ist (2026-09-07)
 Auf «big buy auszahlung» wollte ich den BigBuy-Schlüssel aus dem Tresor holen — `tresor.py liste`
 antwortete **«0 Einträge im Tresor»**. Der Tresor hat nachweislich Fächer (cj, dienste, judgeme,
@@ -525,6 +570,11 @@ gehört gemessen und gemeldet, nicht stillschweigend stundenlang umgangen.
   Kriterium des fremden Laufs («kein bild-ok») trifft also bei 99,4 % der Ware das Falsche.
 
 ## ⛔ Die Custom-App ist WEG — und 68 Werkzeuge quittieren stille Fehlschlaege (2026-09-05, abends)
+> ⛔ **ÜBERHOLT am 07.09.2026:** Die App war NIE weg — nur das Token war abgelaufen und der
+> Client-Secret im Container verloren. Mit beiden Secrets (alt UND neu) liefert der
+> Client-Credentials-Grant ein Token, die Admin-API antwortet 200, der Tresor ist offen.
+> Siehe den Eintrag «Die Custom-App war nie weg» oben. Die Haertung der 97 Schreiber bleibt
+> richtig — sie war der Grund, warum in zwei Tagen ohne Token keine falsche Quittung entstand.
 Um 20:36 UTC antwortete Shopify ploetzlich mit **401**; die Token-Erneuerung scheitert seither mit
 **`400 app_not_installed`** (zweimal gemessen, kein Aussetzer). Damit ist der Zugang der Custom-App
 **autopilot2** weg — genau der Schritt, den die andere Session vorgeschlagen und den ich am 05.09.

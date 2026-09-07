@@ -38,6 +38,9 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Capsule Wardrobe Sommer 2026: 10 Teile, unzählige Looks](/blogs/ratgeber/capsule-wardrobe-sommer-10-teile) | 0 |
 | [1. August Geschenke & Gastgeschenke 2026: die schönsten Schw](/blogs/ratgeber/1-august-geschenke-gastgeschenke-schweiz-2026) | 0 |
 | [Selbst gestalten: dein eigenes Schweiz-Design auf Tasse, Shi](/blogs/ratgeber/schweiz-design-selbst-gestalten-tasse-shirt-tasche) | 0 |
+| [Fussballtrikots WM 2026: Adidas, Puma & Joma in der Schweiz ](/blogs/ratgeber/fussballtrikots-wm-2026-schweiz-kaufen) | 1 |
+| [Fussballtrikot: Die richtige Grösse, Material & Pflege (Ratg](/blogs/ratgeber/fussballtrikot-groesse-material-pflege-2026) | 1 |
+| [WM-Trikot selbst gestalten: Name, Nummer & Farbe online bedr](/blogs/ratgeber/wm-trikot-selbst-gestalten-anleitung-2026) | 1 |
 | [Gaming-Zubehör 2026: Maus, Headset & Tastatur richtig auswäh](/blogs/ratgeber/gaming-zubehoer-2026-maus-headset-tastatur) | 0 |
 | [Handy-Zubehör Ratgeber: Hülle, Halterung & schnelles Laden](/blogs/ratgeber/handy-zubehoer-ratgeber-huelle-halterung-laden) | 0 |
 | [Haustierzubehör 2026: Das Wichtigste für Hund & Katze](/blogs/ratgeber/haustierzubehoer-2026-hund-katze-ratgeber) | 0 |
@@ -66,6 +69,7 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Smartwatch Damen 2026: Elegant & smart fürs Handgelenk](/blogs/ratgeber/smartwatch-damen-2026-ratgeber) | 0 |
 | [Wasserfester Schmuck 2026: Duschen, Schwimmen & Sport ohne A](/blogs/ratgeber/wasserfester-schmuck-2026-ratgeber) | 0 |
 | [Personalisierte Geschenke 2026: Mit Namen, Foto & eigenem De](/blogs/ratgeber/personalisierte-geschenke-2026-selbst-gestalten) | 0 |
+| [Fussballtrikot bedrucken 2026: Name, Nummer & Wunschfarbe ge](/blogs/ratgeber/fussballtrikot-bedrucken-2026-name-nummer) | 1 |
 | [Schweizer Geschenke & Mitbringsel 2026: Von Edelweiss bis Ma](/blogs/ratgeber/schweizer-geschenke-mitbringsel-2026) | 0 |
 | [Parfum finden: EdP vs. EdT & die 4 Duftfamilien – der Ratgeb](/blogs/ratgeber/parfum-finden-edp-vs-edt-die-4-duftfamilien-der-ratgeber) | 0 |
 | [Nägel & Maniküre zuhause: UV-Lampe, Press-on & Polygel – der](/blogs/ratgeber/nagel-manikure-zuhause-uv-lampe-press-on-polygel-der-anfanger-ratgeber) | 0 |
@@ -245,3 +249,5 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Sonnenbrillen-Trends 2026: Der Schweizer Sommer-Guide für de](/blogs/ratgeber/sonnenbrillen-trends-2026-der-schweizer-sommer-guide-fur-den-perfekten-look) | 0 |
 | [Edelstahl-Schmuck für Herren 2026: Der Guide für hypoallerge](/blogs/ratgeber/edelstahl-schmuck-fur-herren-2026-der-guide-fur-hypoallergene-ketten-armbander) | 0 |
 | [Beauty-Routine 2026: Die 5 Essentials für strahlende Haut](/blogs/ratgeber/beauty-routine-2026-die-5-essentials-fur-strahlende-haut) | 0 |
+| [Luftbefeuchter: Welche Grösse passt zu welchem Raum?](/blogs/ratgeber/luftbefeuchter-groesse-raum-ratgeber) | 2 |
+| [Handstaubsauger kaufen: Saugkraft, Akku und Filter — worauf ](/blogs/ratgeber/handstaubsauger-kaufen-saugkraft-akku-ratgeber) | 4 |
