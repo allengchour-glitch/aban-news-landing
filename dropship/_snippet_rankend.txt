@@ -1491,3 +1491,48 @@ automatischer-schwenkventilator-fur-kinderwage-638500	Dieser tragbare Ventilator
 15447911760257	Diese Vollrandbrille ist ein modisches Accessoire für Damen. Gestell und Bügel aus TR90.
 15447911956865	Diese stilvolle Brille wurde entwickelt, um Ihre Augen vor potenziell schädlichem blauem Licht zu schützen, das von digitalen Bildschirmen ausgestrahlt …
 15447912153473	Diese stilvolle Blaulichtfilter-Brille wurde speziell für Frauen entworfen und kombiniert Funktionalität mit modernem Design.
+15447912415617	Diese hochwertige Sonnenbrille mit markantem quadratischem Rahmen schützt Ihre Augen stilvoll vor der Sonne. Effektiver UV400/ANSI Z80.3 Schutz.
+15447912644993	Diese ultraleichte, randlose Sonnenbrille bietet optimalen Schutz und Komfort. UV-Schutzklasse: UV400.
+15447912907137	Diese Sportbrille ist der ideale Begleiter für alle Outdoor-Aktivitäten.
+15447913234817	Diese tragbare und vielseitige Sonnenbrille bietet nicht nur zuverlässigen UV-Schutz, sondern setzt auch ein modisches Statement.
+15447913464193	Diese HD polarisierte Sonnenbrille wurde speziell für Damen entwickelt und bietet optimalen Sonnenschutz. UV400 Schutz.
+15447913660801	Diese sportliche Brille ist mehr als nur ein stylisches Accessoire.
+15447913890177	Die Smart-Brille Q01 kombiniert Stil mit Funktionalität. Integrierte 8-Megapixel-Kamera.
+15447914152321	Schützen Sie Ihre Brille stilvoll und praktisch mit diesem tragbaren Brillenetui. Nicht faltbares Design für optimalen Schutz.
+15447914381697	Die TR1002 Sonnenbrille im koreanischen Stil ist ein vielseitiges Accessoire für Damen und Herren.
+15447914643841	Diese intelligente Brille vereint modernste Technologie mit stilvollem Design. 8 Megapixel Kamera für Fotos und Videos.
+15447915168129	Die Sport- und Fahrradkamera ist Ihr idealer Begleiter für alle Outdoor-Abenteuer. Kompakte Sport- und Fahrradkamera (12 × 4 × 4 cm).
+15447915561345	Diese stilvolle Brille kombiniert modernen Look mit nützlichen Funktionen.
+15447915790721	Diese multifokale Brille kombiniert Business-Eleganz mit sportlicher Vielseitigkeit und ist ideal für die moderne Bürodame.
+15447915987329	Diese modische Sonnenbrille im Retro-Stil bietet nicht nur einen stilvollen Auftritt, sondern auch zuverlässigen Schutz für Ihre Augen.
+15447916183937	Diese polarisierte Sport-Sonnenbrille wurde speziell für den Aussenbereich entwickelt und bietet optimalen Schutz sowie klare Sicht.
+15447916347777	Diese handgefertigte Sonnenbrille wurde speziell für Reisen und Outdoor-Abenteuer entwickelt.
+15447916511617	Diese hochwertige, randlose Sonnenbrille bietet zuverlässigen UV-Schutz und ist für Damen und Herren gleichermassen geeignet.
+15447916609921	Diese trendige Clip-On Sonnenbrille im europäischen und amerikanischen Stil ist ein vielseitiges Accessoire für Damen und Herren.
+15447916839297	Diese stilvolle Brillenrahmen-Verzierung im europäisch-amerikanischen Stil ist ein trendiges Accessoire für Frauen.
+15447917068673	Diese stilvolle Lesebrille wurde speziell für Senioren entwickelt und kombiniert Funktionalität mit modischem Design.
+15447917199745	Schützen Sie Ihre Augen stilvoll mit dieser schlichten Blaulichtfilter-Brille. Rahmenmaterial: TR90.
+15447917330817	Diese ultradünne Lesebrille aus TR90-Kunststoff und Glas ist der ideale Begleiter für unterwegs.
+15447917494657	Diese modische Brille im polygonalen Retro-Design ist ein vielseitiges Accessoire für Damen.
+15447917625729	Diese modische Sonnenbrille im Retro-Stil schützt Ihre Augen stilvoll vor der Sonne.
+15447917822337	Diese modische Sonnenbrille im Retro-Stil überzeugt mit ihrem zeitlosen Design und bietet gleichzeitig optimalen Schutz für Ihre Augen.
+15447917920641	Diese randlose Sonnenbrille für Damen mit Leopardenkopf-Details ist ein modisches Accessoire, das sich ideal für verschiedene Outdoor-Aktivitäten eignet.
+15447918051713	Diese stilvolle Sonnenbrille im neuen Design bietet optimalen Sonnenschutz und ist ein vielseitiges Accessoire für jede Garderobe.
+15447918182785	Diese Kinder-Schwimmbrille überzeugt mit beschlagfreien, wasserdichten Gläsern aus Polycarbonat. Beschlagfreie und wasserdichte Gläser.
+15447918313857	Diese Kinder Schwimmbrille ist der ideale Begleiter für junge Wasserratten. Kategorie: Schwimmbrille.
+15447918477697	Diese Kinder-Schwimmbrille bietet klare Sicht und hohen Tragekomfort für junge Wasserratten. Wasserdichte und beschlagfreie High-Definition-PC-Gläser.
+15447918608769	Die MT5 ULTRA AI Brille ist ein innovatives Accessoire, das Technologie und Stil vereint.
+15447918739841	Diese Kinder-Schwimmbrille bietet eine klare Sicht unter Wasser dank ihrer High-Definition-PC-Linsen. Wasserdichtes Design für trockene Augen.
+15447918903681	Diese professionelle Schwimmbrille wurde speziell für Kinder entwickelt und bietet optimalen Schutz und Komfort im Wasser. Wasserdicht und beschlagfrei.
+15447919001985	Die Kinder Schwimmbrille ist der ideale Begleiter für junge Wasserratten. Wasserdichtes Design.
+15447919133057	Diese Schwimmbrille wurde speziell für Kinder entwickelt und bietet eine Kombination aus Komfort und Funktionalität. Wasserdicht.
+15447919264129	Diese Brille im europäischen und amerikanischen Stil ist ein modisches Accessoire für Erwachsene.
+15447919395201	Diese stilvolle Sonnenbrille mit quadratischem Design und Doppelsteg ist ein Must-have für modebewusste Damen.
+15447919559041	Die Tauchmaske ist der ideale Begleiter für Unterwasserabenteuer. Wasserdicht und beschlagfrei für klare Sicht.
+15447919722881	Diese praktische Lesebrille kombiniert Komfort und Funktionalität. Rahmenmaterial: TR90.
+15447919788417	Dieses Set aus 10 hochwertigen Mikrofaser-Reinigungstüchern ist ideal für die schonende und effektive Pflege Ihrer Brillen, Sonnenbrillen, Kameralinsen …
+15447919919489	Die Steampunk Industrial Retro Metall-Goggles sind ein einzigartiges Accessoire für alle, die ihren Look mit einem Hauch von Vintage-Industrie-Chic …
+15447920116097	Diese quadratische Sonnenbrille im Vintage-Stil ist ein vielseitiges Accessoire für diverse Anlässe.
+15447920279937	Diese Handgelenkstütze bietet dank ihres 3D-Gel-Designs optimalen Komfort und Unterstützung. Unterstützt das Handgelenk mit 3D-Gel-Design.
+15447920411009	Diese fingerlosen Strickhandschuhe im Tattered-Punk-Stil sind ein vielseitiges Accessoire für Damen und Herren. Länge von 33 cm.
+15447920542081	Diese dünnen Sommerhandschuhe bieten optimalen UV-Schutz und ein angenehm kühles Tragegefühl. Effektiver Sonnenschutz für den Sommer.
