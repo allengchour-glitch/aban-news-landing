@@ -16899,3 +16899,10 @@ gid://shopify/Product/15496384512385	CHF 16.08	1 Varianten	Foot Balance Fitness 
 gid://shopify/Product/15496384545153	CHF 13.46	1 Varianten	Muschel Plüschkissen – Dekoratives Kuschelobjekt
 gid://shopify/Product/15496384577921	CHF 24.58	1 Varianten	4-in-1 Wireless Charger für iPhone & Zubehör
 gid://shopify/Product/15496384643457	CHF 11.29	1 Varianten	Tischtennis Kantenband 25m (Nylonfaser)
+gid://shopify/Product/15496384676225	CHF 46.05	1 Varianten	Anti-Kratz Sofa- und Bettüberwurf aus Plüsch
+gid://shopify/Product/15496384708993	CHF 13.10	1 Varianten	3-in-1 Wireless Charger für Handy, Watch, Headset
+gid://shopify/Product/15496384741761	CHF 23.22	1 Varianten	Latex Widerstandsbänder Set
+gid://shopify/Product/15496384774529	CHF 57.85	1 Varianten	Sofa-Schonbezug «Nordic»
+gid://shopify/Product/15496384807297	CHF 16.28	1 Varianten	Kabelloses 6-in-1 Multifunktions-Ladegerät
+gid://shopify/Product/15496384840065	CHF 16.79	1 Varianten	Faltbare TPE Yoga Matte, rutschfest
+gid://shopify/Product/15496384872833	CHF 11.50	1 Varianten	Atem-Hantel für Lungenfunktion & Yoga
