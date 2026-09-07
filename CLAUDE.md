@@ -64,9 +64,22 @@ Pratteln**. Genau die Ware, an der der Bestell-Automat am 03.09. gescheitert ist
   noch auf $0.00. Daraus «Zahlung nicht angekommen» zu schliessen und `payBalance` zu schicken, wäre
   eine zweite Zahlung gewesen. Der Betreiber hatte den AUFTRAG bezahlt, nicht das Guthaben aufgeladen.
   **Wer eine fremde Zahlung prüft, misst das ZIEL (den Auftragsstatus), nicht den Umweg (das Guthaben).**
-- ⚠️ **Noch nicht in Shopify erfüllt und keine Versandmail:** `UNSHIPPED` heisst bezahlt, aber noch
-  nicht an den Transporteur übergeben. Benachrichtigt wird bei `SHIPPED` (Hausregel 22.08.) — gerade
-  bei diesem Kunden, der schon eine Rückerstattung hinter sich hat.
+- ⛔ **KORREKTUR am selben Tag, und sie ist die eigentliche Lehre:** Ich hatte notiert «noch nicht
+  erfüllt, keine Versandmail — wird bei SHIPPED nachgeholt». Das Ereignisprotokoll der Bestellung
+  sagt etwas anderes: **14:56:13 hat die CJdropshipping-App den Artikel ausgeführt, 14:56:14 die
+  Versandbestätigung an den Kunden geschickt**, und Shopify hat die Bestellung daraufhin
+  **automatisch archiviert** (Standard bei bezahlt + vollständig ausgeführt). Meine Notiz entstand
+  um **14:56:51** — 37 Sekunden danach — und behauptete das Gegenteil.
+  **Der Fehler war nicht die Regel, sondern die Reihenfolge: Ich habe den Zustand aus meinem PLAN
+  geschrieben statt ihn unmittelbar vor dem Schreiben neu zu lesen.** Bei einer kundensichtbaren
+  Akte ist das die teuerste Sorte Irrtum — sie sieht aus wie eine Messung.
+  ⚠️ Dahinter steht ein struktureller Punkt: **die App des Lieferanten ist schneller als die eigene
+  Notiz.** Wer bei CJ-Bestellungen den Fulfillment-Stand plant, muss damit rechnen, dass CJs
+  Shopify-App bereits erfüllt und benachrichtigt hat — die Hausregel «erst bei SHIPPED
+  benachrichtigen» gilt für UNSEREN Automaten, nicht für den des Lieferanten.
+- ✅ Endstand: FULFILLED, Sendungsnummer **EQKPT8612701376YQ** (cjpacket.com), Kunde benachrichtigt,
+  Bestellung archiviert. **«Archiviert» ist hier kein Fehler, sondern die Quittung** — Shopify nimmt
+  eine bezahlte, vollständig ausgeführte Bestellung von selbst aus der offenen Liste.
 
 ## 🔎 Das Kategorien-Verzeichnis führte 10 Links auf LEERE Kategorien — alle 356 gemessen (2026-09-07, 09:50 UTC)
 `/pages/alle-kategorien` (352 Links) wird täglich von `kategorien_verzeichnis.py` gebaut — das liest das
