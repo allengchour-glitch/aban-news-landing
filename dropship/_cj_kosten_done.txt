@@ -15822,3 +15822,8 @@ gid://shopify/Product/15495396917633	CHF 12.46	1 Varianten	Herren-Armbanduhr im 
 gid://shopify/Product/15495397474689	CHF 12.43	1 Varianten	Kabelloses Ladegerät für Apple Watch
 gid://shopify/Product/15495397572993	CHF 11.27	1 Varianten	Herren Business Armbanduhr mit Lederarmband
 gid://shopify/Product/15495397638529	CHF 34.51	1 Varianten	Elektrischer Haarschneider aus Edelstahl
+gid://shopify/Product/15495397867905	CHF 13.15	1 Varianten	Mori Style Rucksack mit grossem Fassungsvermögen
+gid://shopify/Product/15495398162817	CHF 7.38	1 Varianten	PD QC3.0 Mini Super Fast Auto-Ladegerät 30W
+gid://shopify/Product/15495398228353	CHF 16.31	1 Varianten	Herren-Quarzuhr mit sechs Zeigern
+gid://shopify/Product/15495398326657	CHF 19.15	1 Varianten	LCD Haarglätter mit Keramikbeschichtung
+gid://shopify/Product/15495398556033	CHF 17.71	1 Varianten	Canvas Schulrucksack mit Reissverschluss
