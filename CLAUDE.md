@@ -4,8 +4,17 @@
 Betreiber: «cj grind weiter». Die Pause `dropship/_GRIND_PAUSE_BIS` stand auf **12.09. 08:25 UTC**
 (gesetzt am 05.09., nicht heute) — entfernt, Runner über `engine_keepalive.sh` gestartet.
 **Belegt ist nicht der Start, sondern die Arbeit:** im Runner-Log stehen echte `✅`-Zeilen mit neuen
-Produkt-IDs, **1'273 erfolgreiche Importe** am heutigen Tag. «Gestartet» ist nicht «arbeitet» — der
-Beleg ist die Zahl der angelegten Einheiten, nicht die Startmeldung (dritte Fassung, 23.08.).
+Produkt-IDs — **48 Importe seit dem Neustart um 19:39**, gegengeprüft an Shopify
+(`created_at:>2026-09-06` = 88 inkl. Queue-Runner). «Gestartet» ist nicht «arbeitet» — der Beleg
+ist die Zahl der angelegten Einheiten, nicht die Startmeldung (dritte Fassung, 23.08.).
+⛔ **KORREKTUR meiner eigenen Zahl:** Ich hatte «1'273 Importe am heutigen Tag» gemeldet und hier
+eingetragen. Falsch: `/tmp/cj_runner2.log` läuft seit dem **30.08.** und ist kumulativ — 1'313 `✅`
+verteilen sich auf sieben Tage (31.08. 173 · 01.09. 245 · 02.09. 166 · 03.09. 180 · 04.09. 298 ·
+05.09. 203 · 07.09. 48; am 06.09. lief er wegen der Pause gar nicht). Aufgefallen ist es nur, weil
+Shopify für dieselbe Zeit 88 statt 1'273 zählte. **Eine Zahl aus einem Log, dessen Zeitraum man
+nicht geprüft hat, ist keine Tageszahl** — dieselbe Familie wie «die erste Zahl aus einem fremden
+Ledger ist eine Fremdzahl» (04.09.), und diesmal habe ich sie dem Betreiber genannt, bevor ich
+den Log-Kopf gelesen hatte.
 ⚠️ Die Zuflussbremse `_GRIND_RUNNER_ZAHL` steht weiterhin auf **1** (statt 4, gesetzt am 04.09.
 wegen des vollen Datei-Speichers). «Weiter» hiess Pause aufheben, nicht die zweite, unbelegte
 Entscheidung mittreffen — wer 4 will, setzt die Zahl auf 4.
@@ -28,7 +37,8 @@ gelesen wurden:**
    Abbruchgrund — hier ist ein Ende kein Ausfall. **Ein Fehlercode sagt nicht, ob man es später
    nochmal versuchen soll; das muss man je Code entscheiden.**
 
-2. **⚠️ 130 von 1'273 Importen (10 %) bekamen GAR KEINEN Bild-Alt-Text.**
+2. **⚠️ 132 von 1'313 Importen (10 %) bekamen GAR KEINEN Bild-Alt-Text** (Summe über sieben Tage,
+   nicht über einen — siehe Korrektur oben; der Anteil stimmt, der Zeitraum war falsch bezeichnet).
    `altTexte()` schrieb sofort nach dem Anlegen; Shopify lehnt `fileUpdate` mit
    **«Non-ready files cannot be updated»** ab, solange ein Bild `PROCESSING` ist. Die Meldung stand
    in jeder dieser 130 Zeilen — der Lauf lief ja weiter, also hat sie niemand gelesen.
@@ -36,7 +46,8 @@ gelesen wurden:**
    ⚠️ Die Bildnummer kommt aus der **vollen** Medienliste, nicht aus der gefilterten — sonst
    verschieben sich die Nummern, sobald ein Bild fehlt, und zwei Läufe vergeben dieselbe doppelt.
    ✅ **Am echten Erzeugnis belegt: 23 neue Importe nach dem Fix, 0 neue Alt-Text-Fehler**
-   (vorher 132 auf 1'277). Der Rückstand von heute holen `alt_text_backfill.mjs` und
+   (vorher 132 auf 1'277 — als DIFFERENZ gemessen und deshalb von der Zeitraum-Verwechslung
+   unberührt; am 07.09. waren es 10 Fehler auf die 48 Importe des Tages, alle vor dem Fix). Der Rückstand von heute holen `alt_text_backfill.mjs` und
    `alt_texte_nachziehen.py` nach — beide sind im Aufseher registriert (nachgesehen, nicht vermutet).
    **Regel: Eine Warnung, die sich bei jedem zehnten Durchlauf wiederholt, ist ein Defekt, keine
    Randnotiz** (dieselbe Familie wie «eine Zeile, die sich in jedem Durchgang wiederholt, ist eine
