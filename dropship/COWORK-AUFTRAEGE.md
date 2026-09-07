@@ -11,6 +11,30 @@ anmelden — Cowork soll die bereits offene Sitzung benutzen.
 mehr in der Liste — eine Aufgabenliste, in der Erledigtes mitläuft, wird nach dem zweiten Mal
 nicht mehr gelesen.
 
+## 🔑 EIN Klick, der die 05.09.-Panne unmöglich macht: zwei Umgebungs-Variablen
+
+**Gerade brauche ich nichts** — gemessen 07.09. 16:00 UTC: Der Grant liefert ein Token, die
+Admin-API antwortet 200, der Tresor ist offen, das BigBuy-Guthaben lesbar. Alles läuft.
+
+**Aber es hält nur bis zum nächsten /tmp-Wipe**, und die Kette hat genau ein schwaches Glied:
+
+| Geheimnis | wo es liegt | überlebt einen /tmp-Wipe? |
+|---|---|---|
+| BigBuy-Schlüssel | **Tresor** (Shop-Metafeld) + /tmp | **ja** — der Tresor legt ihn zurück |
+| CJ, Judge.me, TikTok, Meta, GitHub | **Tresor** + /tmp | **ja** |
+| **`SHOPIFY_CLIENT_ID` / `_SECRET`** | **nur `/tmp/secrets_env.sh`** | **NEIN** |
+
+Der Shopify-Client-Secret ist das eine Geheimnis, das der Tresor **nicht** halten kann — man
+braucht ihn, um den Tresor aufzusperren. Genau er ging am 05.09. verloren, und weil Shopify auf
+ein fehlendes Secret mit `app_not_installed` antwortet, habe ich zwei Tage lang eine
+deinstallierte App diagnostiziert, die nie weg war.
+
+**Der Klick:** In den Umgebungs-Einstellungen des Claude-Kontos zwei Variablen setzen —
+`SHOPIFY_CLIENT_ID` und `SHOPIFY_CLIENT_SECRET`. Dort erreicht sie weder ein /tmp-Wipe noch ein
+Container-Neustart, und die ganze Wächterschicht startet danach von selbst wieder. **Nicht ins
+Repo — es ist öffentlich.** (Gegengeprüft in einer sauberen Shell: aktuell ist keine der drei
+Variablen gesetzt.)
+
 ## 💶 BigBuy: **€1'000.00 liegen im Konto** — gemessen 07.09.2026, 15:30 UTC
 
 Der Betreiber hat den Produktions-Schlüssel geliefert; er ist ZUERST getestet und DANN gespeichert
