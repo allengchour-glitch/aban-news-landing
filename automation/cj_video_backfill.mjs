@@ -1,6 +1,32 @@
 #!/usr/bin/env node
 /* cj_video_backfill.mjs — holt die CJ-Produktvideos auf die Produktseiten nach.
  *
+ * ⛔ KORREKTUR 07.09.2026 — DIESES WERKZEUG HAT 1'426 PRODUKTE FALSCH QUITTIERT.
+ * Es fragte `product/query?pid=` und las dort `productVideo`. Dieses Feld ist bei CJ
+ * IMMER `null`, auch wenn ein Video existiert — `product/list` meldet für dieselben
+ * Produkte `isVideo: 1`. Der richtige, dokumentierte Endpunkt ist ein POST:
+ *
+ *     POST /product/queryVideosByProductId   {"productId": "<pid>"}
+ *     -> data[] mit videoUrl, coverURL, videoSize, duration, isFree
+ *
+ * Der Parameter heisst `productId`; `pid` gibt «productId must be not empty», und ein GET
+ * gibt «Request method 'GET' not supported» — die Antwort sagt also jedes Mal, was fehlt.
+ * Gemessen an 25 Ledger-Produkten: 2 haben sehr wohl ein Video (8 %). Alle 1'426 alten
+ * Zeilen «kein-video-beim-lieferanten» sind damit eine Aussage über die Welt, die auf
+ * einer nicht gestellten Frage beruht — sie wurden entfernt.
+ *
+ * ⚠️ DER DOWNLOAD BRAUCHT EINEN REFERER. Ohne `Referer: https://developers.cjdropshipping.com/`
+ * antwortet der Video-Server mit 403; mit ihm mit 200 und der Bytezahl, die die API nennt.
+ *
+ * ⚠️ EIN STAGED UPLOAD QUITTIERT MIT 204, NICHT MIT 200. Die alte Prüfung liess nur 200/201
+ * gelten und hätte jeden gelungenen Upload als «upload-abgelehnt» verbucht.
+ *
+ * ⛔ UND DIE EIGENTLICHE GRENZE IST DER SHOPIFY-PLAN: «Your plan does not permit more than
+ * 250 videos and 3D models.» Der Deckel gilt für den GANZEN Shop. `stagedUploadsCreate`
+ * antwortet dabei trotzdem mit einem Ziel — dessen `url` ist aber `null`, und die Absage
+ * steht nur in `userErrors`. Wer nur auf das Ziel prüft, läuft in einen URL-Parse-Fehler.
+ * Bei dieser Meldung endet der ganze Lauf, statt Produkt für Produkt dagegenzurennen.
+ *
  * DER BEFUND (Betreiber, 14.08.2026: «da sind videos von cj, kannst du die auch auf webseite
  * machen?»). Nachgezählt über einen Bulk-Export ALLER aktiven Produkte, nicht über eine
  * Stichprobe:
@@ -64,12 +90,16 @@ async function sgql(q, v) {
   return { data: null };
 }
 
-let punkteWeg = false;
-async function cj(path) {
+let punkteWeg = false, planDeckel = '';
+async function cj(path, body) {
   for (let i = 0; i < 5; i++) {
     try {
       const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1' + path,
-        { headers: { 'CJ-Access-Token': CJT }, signal: AbortSignal.timeout(45000) });
+        { method: body ? 'POST' : 'GET',
+          headers: body ? { 'CJ-Access-Token': CJT, 'Content-Type': 'application/json' }
+                        : { 'CJ-Access-Token': CJT },
+          body: body ? JSON.stringify(body) : undefined,
+          signal: AbortSignal.timeout(45000) });
       const t = await r.text();
       let j; try { j = JSON.parse(t); } catch { await sleep(2500 * (i + 1)); continue; }
       if (Number(j.code) === 16900500) { punkteWeg = true; return j; }   // Tagesbudget leer
@@ -77,7 +107,9 @@ async function cj(path) {
       return j;
     } catch { await sleep(2500 * (i + 1)); }
   }
-  return { code: 0, data: null };
+  // ⚠️ NICHT code 0 — das ist beim Video-Endpunkt der ERFOLGSFALL. Ein erschöpfter Versuch
+  // muss als Fehler erkennbar bleiben, sonst gilt «nicht erreicht» als «hat kein Video».
+  return { code: -1, data: null, message: 'CJ nach 5 Versuchen nicht erreichbar' };
 }
 
 // ⚠️ IN DER SHOPIFY-SKU STECKT DIE VARIANTEN-SKU, NICHT DIE PRODUKT-SKU. «CJ-CJSJ150909801AZ»
@@ -98,8 +130,19 @@ function cjSchluessel(sku) {
   return formen.map(productSku => ({ productSku }));
 }
 
+// CJ gibt die Video-URL NUR über diesen POST heraus (siehe Kopf). Er kostet nach Messung
+// praktisch nichts — der Punktestand blieb über mehrere Aufrufe stabil.
+async function cjVideos(productId) {
+  const r = await cj('/product/queryVideosByProductId', { productId: String(productId) });
+  if (Number(r.code) !== 0 && Number(r.code) !== 200) return { fehler: r.message || 'unbekannt' };
+  const v = (r.data || []).filter(x => /^https/.test(String(x.videoUrl || '')));
+  return { videos: v };
+}
+
 async function anhaengen(pid, vurl, name) {
-  const vr = await fetch(vurl, { signal: AbortSignal.timeout(120000) });
+  // ⚠️ Ohne Referer antwortet der CJ-Videoserver mit 403.
+  const vr = await fetch(vurl, { headers: { Referer: 'https://developers.cjdropshipping.com/' },
+                                 signal: AbortSignal.timeout(120000) });
   if (!vr.ok) return 'video-url-tot';
   const buf = Buffer.from(await vr.arrayBuffer());
   if (buf.length > 60 * 1024 * 1024) return 'video-zu-gross';
@@ -107,13 +150,16 @@ async function anhaengen(pid, vurl, name) {
   const stg = await sgql(`mutation($input:[StagedUploadInput!]!){stagedUploadsCreate(input:$input){stagedTargets{url resourceUrl parameters{name value}}userErrors{message}}}`,
     { input: [{ resource: 'VIDEO', filename: `${name}.mp4`, mimeType: 'video/mp4',
                 httpMethod: 'POST', fileSize: String(buf.length) }] });
+  const stgErr = (stg?.data?.stagedUploadsCreate?.userErrors || []).map(e => e.message).join(' ');
+  if (/250 videos|does not permit/i.test(stgErr)) { planDeckel = stgErr; return 'plan-deckel'; }
   const tgt = stg?.data?.stagedUploadsCreate?.stagedTargets?.[0];
-  if (!tgt) return 'kein-upload-ziel';
+  // ⚠️ Bei erreichtem Deckel liefert Shopify ein Ziel MIT url:null — das ist kein Ziel.
+  if (!tgt || !tgt.url) return stgErr ? 'kein-upload-ziel:' + stgErr.slice(0, 60) : 'kein-upload-ziel';
   const form = new FormData();
   for (const p of tgt.parameters) form.append(p.name, p.value);
   form.append('file', new Blob([buf], { type: 'video/mp4' }), `${name}.mp4`);
   const up = await fetch(tgt.url, { method: 'POST', body: form });
-  if (up.status !== 201 && up.status !== 200) return 'upload-abgelehnt';
+  if (up.status >= 300) return 'upload-abgelehnt-' + up.status;   // 204 ist der Normalfall
   const cm = await sgql(`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){media{id} mediaUserErrors{message}}}`,
     { id: pid, m: [{ originalSource: tgt.resourceUrl, mediaContentType: 'VIDEO' }] });
   if (cm.data?.productCreateMedia?.mediaUserErrors?.length) return 'shopify-lehnt-ab';
@@ -157,27 +203,44 @@ async function main() {
 
   let ok = 0, ohne = 0, fehler = 0;
   for (const k of kand.slice(0, CAP)) {
-    let j = { code: 0 };
-    for (const form of k.s) {
-      j = await cj(form.pid ? `/product/query?pid=${form.pid}`
-                            : `/product/query?productSku=${form.productSku}`);
-      if (punkteWeg || Number(j.code) === 200) break;
-      await sleep(2500);
+    // Schritt 1: die CJ-Produkt-ID beschaffen. Steht sie im SKU, kostet das nichts;
+    // sonst muss `product/query` sie nachschlagen (10 Punkte).
+    let pidCJ = k.s.find(f => f.pid)?.pid || '';
+    if (!pidCJ) {
+      let j = { code: -1 };
+      for (const form of k.s.filter(f => f.productSku)) {
+        j = await cj(`/product/query?productSku=${form.productSku}`);
+        if (punkteWeg || Number(j.code) === 200) break;
+        await sleep(2500);
+      }
+      if (punkteWeg) { console.log('⛔ CJ-Tagesbudget erschöpft — Lauf beendet, Ledger bleibt gültig'); break; }
+      // ⚠️ EINE FEHLGESCHLAGENE ANFRAGE IST KEIN «HAT KEIN VIDEO». Genau dieser Trugschluss hat
+      // im Bild-Backfill 530 von 752 Produkten falsch als erledigt abgehakt.
+      if (Number(j.code) !== 200) { fehler++; await sleep(2500); continue; }
+      pidCJ = String(j.data?.pid || '').trim();
+      if (!pidCJ) { fehler++; await sleep(2500); continue; }
     }
+
+    // Schritt 2: die Videoliste — der EINZIGE Weg an die URL (siehe Kopf).
+    const vr = await cjVideos(pidCJ);
     if (punkteWeg) { console.log('⛔ CJ-Tagesbudget erschöpft — Lauf beendet, Ledger bleibt gültig'); break; }
-    // ⚠️ EINE FEHLGESCHLAGENE ANFRAGE IST KEIN «HAT KEIN VIDEO». Genau dieser Trugschluss hat
-    // im Bild-Backfill 530 von 752 Produkten falsch als erledigt abgehakt.
-    if (Number(j.code) !== 200) { fehler++; await sleep(2500); continue; }
-    const v = String(j.data?.productVideo || '').trim();   // CJ liefert hier `null`, nicht ''
-    if (!/^https/.test(v)) {
+    if (vr.fehler) { fehler++; await sleep(1200); continue; }
+    if (!vr.videos.length) {
       ohne++;
       fs.appendFileSync(LEDGER, `${k.id}\tkein-video-beim-lieferanten\n`);
-      await sleep(2500); continue;
+      await sleep(1200); continue;
     }
-    const r = await anhaengen(k.id, v, 'cj-' + (k.s.pid || k.s.productSku));
+    // Die kleinste brauchbare Fassung nehmen — sie lädt auf dem Handy am schnellsten.
+    const beste = vr.videos.sort((a, b) => (Number(a.videoSize) || 0) - (Number(b.videoSize) || 0))[0];
+    const r = await anhaengen(k.id, beste.videoUrl, 'cj-' + pidCJ);
+    if (r === 'plan-deckel') {
+      console.log(`⛔ SHOPIFY-PLAN-DECKEL: ${planDeckel}\n   Der Deckel gilt für den GANZEN Shop. `
+                + `Bis er steigt oder Videos frei werden, kann kein weiteres angehängt werden.`);
+      break;   // Produkt für Produkt dagegenzurennen kostet nur Zeit.
+    }
     fs.appendFileSync(LEDGER, `${k.id}\t${r}\t${k.titel.slice(0, 60)}\n`);
     if (r === 'ok') { ok++; console.log(`  🎬 ${k.titel.slice(0, 52)}`); } else fehler++;
-    await sleep(2500);
+    await sleep(1500);
   }
   // Siehe cj_variantenbild.mjs: «FERTIG» sperrt den Neustart durch den Aufseher — nach einem
   // Abbruch wegen leerem Punktebudget wäre der Lauf damit endgültig erledigt.
