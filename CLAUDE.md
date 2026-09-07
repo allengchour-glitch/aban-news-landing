@@ -1,5 +1,29 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔓 Der Tresor meldete «0 Einträge», statt zu sagen, dass er zu ist (2026-09-07)
+Auf «big buy auszahlung» wollte ich den BigBuy-Schlüssel aus dem Tresor holen — `tresor.py liste`
+antwortete **«0 Einträge im Tresor»**. Der Tresor hat nachweislich Fächer (cj, dienste, judgeme,
+meta, tt). Ursache: `gql()` gab die Antwort roh zurück, und bei totem Token steht dort
+`{"errors":"[API] Invalid API key…"}` ohne `data` — `lesen()` machte daraus `None`, und `None`
+hiess an jeder Stelle «gibt es nicht». **Ein nicht erreichbarer Tresor sah aus wie ein leerer.**
+- ⛔ **Und das war nicht nur eine schiefe Meldung, sondern ein Datenverlust-Pfad:** `setzen` machte
+  `daten = lesen(name) or {}`. Schlägt das Lesen fehl, während das Schreiben gelingt (transienter
+  Fehler, knappe Rechte), wird das Fach mit einem EINZIGEN Schlüssel überschrieben — alle übrigen
+  Geheimnisse darin sind weg. Genau die Klasse, gegen die am 05.09. 58 Werkzeuge gehärtet wurden,
+  nur diesmal im Werkzeug, das die Geheimnisse HÜTET.
+- Behoben: eigene Ausnahme `TresorFehler`; `gql()` wirft bei `errors`, bei fehlendem `data` und bei
+  unlesbarer Antwort; `setzen` schreibt nach einem Lesefehler gar nicht; `liste` unterscheidet
+  «leer (lesbar)» von «nicht erreichbar». In beide Richtungen belegt: totes Token → **Exit 2 mit
+  «TRESOR NICHT LESBAR»** statt «0 Einträge» bzw. «nichts gespeichert».
+- **Die Lehre allgemein: «leer» und «nicht lesbar» dürfen nie denselben Rückgabewert haben.**
+  Wer beides auf `None` abbildet, baut eine Antwort, die in der einen Hälfte der Fälle lügt — und
+  bei einem Tresor lügt sie über genau das, was man ersetzen würde.
+- ⚠️ **BigBuy-Auszahlung bleibt damit unmessbar:** kein `BIGBUY_API_KEY` in /tmp, keiner in der
+  Umgebung, und der Tresor ist zu. Letzter gemessener Moneybox-Stand: **0.00 am 07.07.2026**. Einen
+  Auszahl-Endpunkt gibt es in unserem Code nicht — `paymentMethod:'moneybox'` bezahlt nur
+  Bestellungen. Steht in COWORK-AUFTRAEGE mit den zwei Wegen (Konsole ansehen / Schlüssel als
+  Umgebungs-Variable hinterlegen).
+
 ## 💳 CJ nimmt Guthaben erst ab USD 2000 — der Bestell-Automat kann NIE selbst bezahlen (2026-09-07)
 Betreiber: «cj kann ich erst ab 2000 dollar einzahlen immernoch». Damit ist `shopping/pay/payBalance`
 für diesen Shop **strukturell tot**, nicht vorübergehend leer: Das Guthaben steht dauerhaft auf

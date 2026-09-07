@@ -11,6 +11,30 @@ anmelden — Cowork soll die bereits offene Sitzung benutzen.
 mehr in der Liste — eine Aufgabenliste, in der Erledigtes mitläuft, wird nach dem zweiten Mal
 nicht mehr gelesen.
 
+## 💶 BigBuy-Auszahlung (07.09.2026): von hier aus NICHT messbar — zwei Wege
+
+Gemessen, nicht vermutet:
+
+| geprüft | Ergebnis |
+|---|---|
+| `BIGBUY_API_KEY` in `/tmp`, in der Umgebung, in den Tresor-Dateien | **nirgends vorhanden** |
+| Tresor (dort läge der Schlüssel) | **nicht lesbar** — sein Schlüssel IST das Shopify-Admin-Token, und das ist tot (heute erneut 401) |
+| Moneybox-Stand | zuletzt gemessen **0.00 am 07.07.2026**; seither kein Zugriff |
+| Auszahl-Endpunkt in unserem Code | **keiner** — `paymentMethod: 'moneybox'` bezahlt nur Bestellungen, holt kein Geld heraus |
+
+**Ich kann den Stand also weder abfragen noch eine Auszahlung auslösen.** Zwei Wege, beide bei dir:
+
+1. **Schnell:** In der BigBuy-Konsole unter Guthaben/Moneybox nachsehen, wie viel dort liegt.
+   Steht dort etwas, ist die Rückzahlung eine Anfrage beim BigBuy-Support — dafür gibt es keine
+   API, das war schon 2026-07-07 so.
+2. **Dauerhaft:** Den `BIGBUY_API_KEY` einmal als Umgebungs-Variable des Claude-Kontos hinterlegen
+   (nicht in /tmp, nicht ins Repo — das Repo ist öffentlich). Dann kann ich den Stand jederzeit
+   selbst messen und melden.
+
+⚠️ Das hängt am selben Nagel wie alles andere: **solange die Custom-App `autopilot2` weg ist, ist
+der Tresor zu** und jeder Schlüssel darin unerreichbar. Das ist der eine Klick, der die halbe
+Automatik zurückbringt.
+
 ## ✅ ERLEDIGT (07.09.2026, 15:20 UTC): #1017 ist beim Lieferanten bezahlt
 
 Der Betreiber hat den CJ-Auftrag **direkt bezahlt** (nicht das Guthaben aufgeladen — das steht

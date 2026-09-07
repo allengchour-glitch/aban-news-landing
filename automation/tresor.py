@@ -42,6 +42,12 @@ def token():
     return t
 
 
+class TresorFehler(RuntimeError):
+    """Der Tresor konnte NICHT gelesen werden. Das ist etwas anderes als «leer» — wer beides
+    gleich behandelt, haelt ein totes Token fuer einen leeren Tresor und ueberschreibt beim
+    naechsten `setzen` echte Geheimnisse mit einem einzigen Schluessel."""
+
+
 def gql(q, v=None):
     b = {"query": q}
     if v:
@@ -51,7 +57,17 @@ def gql(q, v=None):
                         "-H", "X-Shopify-Access-Token: " + token(),
                         "-H", "Content-Type: application/json",
                         "-d", json.dumps(b)], capture_output=True, text=True)
-    return json.loads(r.stdout)
+    try:
+        d = json.loads(r.stdout)
+    except Exception:
+        raise TresorFehler(f"keine lesbare Antwort von Shopify: {r.stdout[:120]!r}")
+    # ⚠️ Ein totes Token liefert {"errors":"[API] Invalid API key..."} — ohne diese Pruefung
+    # sieht ein NICHT ERREICHBARER Tresor aus wie ein LEERER (Lehre 07.09.2026).
+    if "errors" in d:
+        raise TresorFehler(str(d["errors"])[:200])
+    if d.get("data") is None:
+        raise TresorFehler("Shopify antwortet ohne data — Tresor nicht lesbar")
+    return d
 
 
 def lesen(name):
@@ -84,7 +100,11 @@ def main():
 
     if befehl == "setzen":
         name = sys.argv[2]
-        daten = lesen(name) or {}
+        # ⚠️ NICHT «lesen(name) or {}»: schlaegt das Lesen fehl, wuerde das Fach mit einem
+        # einzigen Schluessel ueberschrieben und alle uebrigen Geheimnisse waeren weg.
+        daten = lesen(name)
+        if daten is None:
+            daten = {}
         for paar in sys.argv[3:]:
             if "=" not in paar:
                 print("erwartet SCHLUESSEL=WERT, bekam:", paar, file=sys.stderr); return 1
@@ -137,6 +157,10 @@ def main():
         d = gql('query($ns:String!){shop{metafields(first:25,namespace:$ns){nodes{key updatedAt}}}}',
                 {"ns": NS})
         n = (((d.get("data") or {}).get("shop") or {}).get("metafields") or {}).get("nodes") or []
+        if not n:
+            print("Tresor ist LEER (lesbar, aber ohne Faecher) — das ist etwas anderes "
+                  "als «nicht erreichbar».")
+            return 0
         print(f"{len(n)} Einträge im Tresor:")
         for x in n:
             print(f"   {x['key']:20s} zuletzt {x['updatedAt'][:16]}")
@@ -147,4 +171,9 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except TresorFehler as e:
+        # Laut scheitern statt still «nichts gefunden» melden.
+        print(f"TRESOR NICHT LESBAR: {e}", file=sys.stderr)
+        sys.exit(2)
