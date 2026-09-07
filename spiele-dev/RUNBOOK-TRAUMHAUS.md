@@ -6464,3 +6464,38 @@ Grosser Park → **Stadtpark**, Brunnen-Park → **Brunnmatt**.
 **Nicht angefasst:** `MISS_POOL`/`QUESTS`/`PQ_TPL` — dort ist das Emoji ein eigenes Feld (`e`),
 der Text ist bereits nüchtern. Erfolgsnamen (`ACH`) bleiben; die Emoji dort sind das Icon
 der Liste, kein Textpräfix.
+
+## 2026-09-06 · ✍️ Handschrift-Runde, Teil 3 (Materialien)
+
+Der dritte Vorwurf der Gutachten: „Alles ist aus demselben Material." Gemessen stimmte das
+wörtlich — `stdMat()` setzte **nie** `metalness`, `MeshStandardMaterial` nimmt dann 0, und
+`envMapIntensity` stand pauschal auf 0.35. Die Umgebungskarte wird seit jeher geladen
+(`PMREMGenerator`, Zeile ~549) und war praktisch ungenutzt: Putz, Dachziegel, Laternenmast
+und Blechdach reflektierten identisch.
+
+**Drei Stufen, mehr nicht** — `stdMat(c,rough,einzeln,metal)`:
+
+| Was | roughness | metalness | envMapIntensity |
+|---|---:|---:|---:|
+| Putz, Holz, Stoff (Vorgabe) | 0.8 | 0.04 | 0.5 |
+| Autolack (bestehende Aufrufe) | 0.28 | 0.35 | 0.75 |
+| Blech, Mast, Schiene, Griff (`metallM()`) | 0.35 | 0.7 | 0.75 |
+
+> **Cache-Falle:** Der Schlüssel in `_matCache` war `c+"_"+r`. Ohne den Metallgrad darin
+> bekäme der zweite Aufrufer mit derselben Farbe stillschweigend das Material des ersten —
+> der Metallmast wäre wieder Putz. Schlüssel ist jetzt `c+"_"+r+"_"+mt`.
+
+> **Und nur diese drei Stufen.** Wer frei streut, macht aus 40 Materialien 4000 und verliert
+> das Zusammenfassen der Zeichenaufrufe. Deshalb `metallM()` als eine Zeile statt vier Zahlen
+> an zwölf Stellen; vergeben wird nur dort, wo der Name sagt, dass es Metall ist (Mast, Kopf,
+> Klimagerät, Fahnenstange, Rohr, Türgriff) — Holztüren haben zufällig dieselbe Rauheit 0.5
+> und bleiben Holz.
+
+**Kontaktschatten: ein Material statt 93.** `_blobMat()` legte bei jedem Aufruf ein neues
+`MeshBasicMaterial` an — `th-material.mjs` zählte **93 exakte Zwillinge** derselben schwarzen
+Scheibe, also 93 Sortier-Hindernisse. Jetzt ein geteiltes Objekt. Kein Aufrufer ändert es zur
+Laufzeit; wer das je tut, muss sich ein eigenes anfordern (steht als Warnung im Code).
+
+**Werkzeug:** `th-material.mjs` (Zwillingszählung), `th-nachthelle.mjs` (Tag/Nacht-Helligkeit
+je Ort — die höhere `envMapIntensity` hellt alles auf, das muss gemessen sein, nicht geschätzt),
+`th-leistung.mjs`.
