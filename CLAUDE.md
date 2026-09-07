@@ -1,5 +1,36 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔧 «fix alles» (07.09.): 50 Produkte zurück — nach Messung, nicht pauschal (2026-09-07, 07:20 UTC)
+Betreiber: «fix alles». Entscheidung B gilt weiter (zurück nur mit Messung). Gemessen, was die Routine
+BELEGBAR kaputt gemacht hat, und genau das repariert — über den MCP-Konnektor, jede Antwort gelesen:
+| gemessen 07.09. 07:15 UTC | vorher | nachher |
+|---|---:|---:|
+| Such-/Verkehrs-Landeseiten (30 T.) geprüft | 107 | 9 zu Unrecht DRAFT → **aktiv** (`verkehr-rueckhol-0907`), 7 verwaiste `auto-entwurf-0926` an aktiven Produkten entfernt |
+| Menü-Kategorien unter 12 aktiven (120 gemessen) | **10** | **3** |
+| damen-strick-pullover · sub-roecke · nachtwaesche-pyjamas · kuschel-heizdecken · tier-pflege-unterwegs · hoodies-sweatshirts · bestseller | 11·4·4·10·3·5·11 | **16·12·12·12·12·12·12** |
+| vr-ai-neuheiten | 4 | 9 (nur 5 messbar gute Kandidaten) |
+| parfum-duefte · camping-outdoor | 4 · 5 | **unverändert — 0 rückholbare Kandidaten** (alles BigBuy `ausverkauft-lieferant` / `nicht-lieferbar-ch` / `keine-lieferanten-ref`) |
+| smoke-zubehoer | 11 | bewusst unangetastet (18+, Betreiber) |
+| `status:active AND tag:menue-kern-0906` | 518 | **559** (= 518 + 41 `menue-rueckhol-0907`) |
+| Kandidatenfilter der Routine | 0 | **0** |
+| Rückhol-Pool `status:draft AND tag:bildmass-ok-0906` | 1'426 | 1'426 (Index) |
+Jedes zurückgeholte Produkt: Hauptbild ≥ 500 px auf beiden Kanten (Bulk-Export gemessen), `CJ-`-SKU
+(in der Mutationsantwort abgefragt), kein Risiko-Tag; bekommt `bild-ok` + `bildmass-ok-0906` (Schutz
+vor der Routine) + Rückhol-Marker, `auto-entwurf-0926` entfernt. **Der Marker ist die Rückgängig-Marke.**
+- ⚠️ **82 gemischte Aliasse (41 `productUpdate` + 41 `tagsAdd`) in EINEM Aufruf laufen in den Timeout**
+  — 50 `tagsAdd` gehen, ein `productUpdate` kostet mehr. Geteilt in 21/20 je Aufruf, parallel: sauber.
+  Beides idempotent, deshalb ohne Zählen wiederholbar (Lehre 06.09.).
+- ⚠️ **Der Draft-Export vom 06.09. 12:13 hat KEINE Varianten-Zeilen** — meine lokale SKU-Prüfung sagte bei
+  allen 41 «nein». Ein Nullergebnis aus einer Quelle, die das Feld gar nicht führt, ist kein Befund
+  (sechste Fassung); die SKU kam über `variants(first:1){nodes{sku}}` im Rückfeld der Mutation.
+- **Nicht gemacht und warum:** Parfum und Camping lassen sich aus dem Draft-Pool nicht füllen — die Drafts
+  dort sind zu Recht Drafts (BigBuy-Klassen), das ist ein Sortimentsloch, kein Routine-Schaden. Die übrigen
+  ~1'376 Pool-Produkte bleiben DRAFT: kein gemessener Verkehr, keine Menü-Lücke — Entscheidung B.
+- Nebenbei: Container um 06:55 UTC neu gestartet, Aufseher/Queue-Runner/Hygiene per Keepalive wieder da,
+  0 offene bezahlte Bestellungen (Ampel «unklar 401» = totes Admin-Token, gemessen über den Konnektor),
+  #D2 weiter unbezahlt.
+
+
 ## ✅ Der Vorrat der Draft-Routine ist trocken: 24'000 → 100 Kandidaten, ohne den fremden Schalter (2026-09-07, 04:30 UTC)
 Fortsetzung von «Entscheidung B mit anderem Mittel»: 419 Chargen à 50 `tagsAdd` über den Shopify-MCP-Konnektor,
 sechs parallel je Antwort, jede Antwort gelesen (`userErrors: []` bei allen 50 Aliassen), Ledger
