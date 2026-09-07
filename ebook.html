@@ -35,7 +35,7 @@
     a{color:inherit}
 
     /* Reading-progress bar (memory feature) */
-    #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber-dk));z-index:60;transition:width .15s ease}
+    #progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--amber);z-index:60;transition:width .15s ease}
 
     header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
     header .wrap{display:flex;justify-content:space-between;align-items:center}
@@ -56,7 +56,7 @@
 
     /* Cover + download card */
     .dl{background:var(--card);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);display:flex;gap:1.25rem;align-items:center;text-align:left;margin:1.5rem 0}
-    .cover{flex-shrink:0;width:120px;height:160px;border-radius:14px;background:linear-gradient(160deg,var(--amber),var(--amber-dk));color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;box-shadow:var(--shadow);padding:.5rem;text-align:center}
+    .cover{flex-shrink:0;width:120px;height:160px;border-radius:14px;background:var(--amber);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;box-shadow:var(--shadow);padding:.5rem;text-align:center}
     .cover .c-emoji{font-size:1.6rem}
     .cover .c-t{font-weight:800;font-size:1.05rem;line-height:1.1}
     .cover .c-s{font-size:.62rem;opacity:.9;line-height:1.2}
@@ -103,7 +103,7 @@
     .subscribe .micro{font-size:.74rem;color:var(--muted);margin:.55rem 0 0}
     @media(max-width:560px){.subscribe .row{flex-direction:column}.subscribe .row .btn{width:100%;justify-content:center}}
     /* Founding upsell */
-    .upsell{background:linear-gradient(160deg,#fff7ed,#fff);border:1px solid #fed7aa;border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+    .upsell{background:#fff7ed;border:1px solid #fed7aa;border-radius:var(--r);padding:1.5rem;margin:1.5rem 0;display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
     .upsell .u-body{flex:1;min-width:220px}
     .upsell h2{font-size:1.15rem;margin-bottom:.3rem;color:var(--amber-dk)}
     .upsell p{font-size:.92rem;color:#7c2d12;margin-bottom:0}

@@ -37,7 +37,7 @@
 html,body{height:100%;overflow:hidden;background:#8fc8e8;color:#2a3040;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent;user-select:none}
 #wrap{position:fixed;inset:0}
 canvas{display:block}
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,rgba(160,210,240,.94),rgba(220,238,250,.97));padding:20px;z-index:30;overflow-y:auto}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:rgba(160,210,240,.94);padding:20px;z-index:30;overflow-y:auto}
 .overlay h1{font-size:2.3rem;color:var(--tinte);margin-bottom:.2rem}
 .overlay p{color:#3a4a5f;max-width:430px;margin:.5rem 0;font-size:1rem;line-height:1.55}
 .tag{font-size:.8rem;letter-spacing:3px;color:#5a7a9a;text-transform:uppercase;margin-bottom:6px}
@@ -53,7 +53,7 @@ canvas{display:block}
 .needs{display:flex;flex-direction:column;gap:3px;font-size:.72rem;min-width:130px}
 .needs .nrow{display:flex;align-items:center;gap:5px}
 .needs .nbar{flex:1;height:7px;border-radius:8px;background:#e8e0d0;overflow:hidden}
-.needs .nbar i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
+.needs .nbar i{display:block;height:100%;border-radius:8px;background:#8fd8a0}
 /* 📱 War auf max-height:480px begrenzt — moderne Handys sind quer hoeher (der Bauen-Knopf
    lag deshalb weiter unter dem Radar). 620px deckt alle gaengigen Geraete ab. */
 @media (orientation:landscape) and (max-height:620px){
@@ -341,7 +341,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <div id="palCats"></div>
   <div id="palItems"></div>
 </div>
-<div id="rotHint" style="position:fixed;inset:0;z-index:70;display:none;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,#241d15,#140f0a);color:#fff;text-align:center;padding:24px;font-size:1.1rem">
+<div id="rotHint" style="position:fixed;inset:0;z-index:70;display:none;flex-direction:column;align-items:center;justify-content:center;background:#241d15;color:#fff;text-align:center;padding:24px;font-size:1.1rem">
   <div style="font-size:3rem;animation:rotwig 1.5s infinite">📱↻</div>
   <div style="margin-top:14px;font-weight:800">Dreh dein Handy quer!</div>
   <div style="margin-top:6px;opacity:.8;font-size:.9rem">Im Querformat spielt sich Traumhaus am besten 🏡</div>
@@ -364,7 +364,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <b style="font-size:1.1rem;color:#7a3a90">💃 Tanzen</b>
   <div id="tanzInfo" style="font-size:.8rem;color:#9a6aab;margin-top:4px">Tippe, wenn der Ring den Kreis trifft!</div>
   <div style="position:relative;width:190px;height:190px;margin:14px auto">
-    <div style="position:absolute;inset:55px;border-radius:50%;background:linear-gradient(135deg,#c878dc,#9048b0);display:flex;align-items:center;justify-content:center;font-size:2rem">💃</div>
+    <div style="position:absolute;inset:55px;border-radius:50%;background:#c878dc;display:flex;align-items:center;justify-content:center;font-size:2rem">💃</div>
     <div id="tanzRing" style="position:absolute;inset:55px;border-radius:50%;border:4px solid #e8a8f8;transform:scale(2.1);opacity:0"></div>
   </div>
   <div id="tanzScore" style="font-size:.9rem;font-weight:800;color:#7a3a90;min-height:24px">Beat 0/8</div>
@@ -4064,7 +4064,7 @@ document.addEventListener("DOMContentLoaded",function(){});
 (function(){var kb=document.createElement("button");kb.id="kaufBtn";
   /* 📱 Lag frueher in der linken Spalte auf Hoehe von Radar und Pokal — auf dem Handy quer
      ueberlappten sich die drei. Jetzt in der Mitte ueber den anderen Aktions-Knoepfen. */
-  kb.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(248px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:14px 18px;min-height:48px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#e8b04a,#c88a20);box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
+  kb.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(248px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:14px 18px;min-height:48px;font-size:1.05rem;font-weight:800;color:#fff;background:#e8b04a;box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
   document.body.appendChild(kb);
   kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
     if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7){kb.style.display="none";return;} // Distanz frisch pruefen
@@ -12435,7 +12435,7 @@ function crimeScene(ok,job,betrag){
   if(ok){el.style.background="radial-gradient(circle at 50% 60%,rgba(20,60,20,.6),rgba(5,20,5,.92))";
     document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" $ Beute 🤑";
     [523,659,784,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.14,"triangle",.06);},i*140);});}
-  else{el.style.background="repeating-linear-gradient(90deg,rgba(30,30,150,.75) 0 40px,rgba(150,30,30,.75) 40px 80px)";
+  else{el.style.background="repeating-rgba(30,30,150,.75)";
     document.getElementById("romTxt").innerHTML="🚓 ERWISCHT beim "+job.n+"!<br>−"+betrag+" $ Strafe … das war knapp!";
     [300,240,300,240].forEach(function(fq,i){setTimeout(function(){beep(fq,.22,"square",.06);},i*240);});}
   setTimeout(function(){el.style.display="none";
@@ -14969,7 +14969,7 @@ document.getElementById("crimeBtn").onclick=function(){
   var box=document.getElementById("crimeWahlBtns");box.innerHTML="";
   for(var i=0;i<=maxJob;i++){(function(ji){var c=CRIMES[ji];
     var b=document.createElement("button");
-    b.style.cssText="border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer;font-size:.95rem;color:#fff;background:linear-gradient(90deg,#5a3a6e,#8a4a8e);text-align:left;min-height:44px;box-shadow:0 4px 12px rgba(60,30,80,.3)";
+    b.style.cssText="border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer;font-size:.95rem;color:#fff;background:#5a3a6e;text-align:left;min-height:44px;box-shadow:0 4px 12px rgba(60,30,80,.3)";
     b.innerHTML=c.e+" "+c.n+" <span style='float:right;color:#ffd9a0;font-weight:900'>~"+Math.round(c.base*(1+lv*0.4))+" $</span>";
     b.onclick=function(){document.getElementById("crimeWahl").style.display="none";crimeGo(ji);};
     box.appendChild(b);})(i);}
@@ -15027,7 +15027,7 @@ function updHUD(){
   skr.innerHTML=ik("i-work")+"\u00A0Lv"+skills.arbeit.lv+" · "+ik("i-heart")+"\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · "+ik("i-mask")+"\u00A0Lv"+skills.krimi.lv:"")+_st9;
   nb.appendChild(skr);
   var lr=document.createElement("div");lr.className="nrow";
-  lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
+  lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:#ff9ab8'></i></span>";
   nb.appendChild(lr);
   /* 🎮 GTA-Modus: Bedürfnis-Balken entfernt (User: „Anzeige rechts mit Balken — ohne") — Panel zeigt nur noch Familie/Level/Liebe */}
 
