@@ -19246,3 +19246,22 @@ gid://shopify/Product/15497644605825	CHF 46.43	1 Varianten	Holz-Aufbewahrungsbox
 gid://shopify/Product/15497644671361	CHF 12.87	1 Varianten	Doppelschlange Armband aus Titanstahl
 gid://shopify/Product/15497644769665	CHF 10.52	1 Varianten	24er Make-up Pinselset mit PU-Aufbewahrungstasche
 gid://shopify/Product/15497645097345	CHF 10.97	1 Varianten	Space Odyssey Kopfhörer-Schutzhülle
+gid://shopify/Product/15497645162881	CHF 35.84	1 Varianten	College Style Abschlussring mit Zirkonia
+gid://shopify/Product/15497645228417	CHF 10.90	1 Varianten	Konjac Gesichtsreinigungs-Puff
+gid://shopify/Product/15497645621633	CHF 11.95	1 Varianten	Personalisierter Kupferring mit Zirkonia
+gid://shopify/Product/15497645687169	CHF 7.85	1 Varianten	4-in-1 Multifunktions-Make-up-Pinsel Metallic
+gid://shopify/Product/15497646080385	CHF 12.26	1 Varianten	Wasserdichtes Reise-Kompressionsbeutel-Set
+gid://shopify/Product/15497646178689	CHF 12.76	1 Varianten	Damen Geburtsstein-Ring
+gid://shopify/Product/15497646244225	CHF 7.75	1 Varianten	UNNY Beauty Make-up Ei (2er-Set)
+gid://shopify/Product/15497646571905	CHF 16.93	1 Varianten	Reise Kompressionsbeutel 6er-Set
+gid://shopify/Product/15497646637441	CHF 13.93	1 Varianten	Vergoldeter Moissanit-Ring
+gid://shopify/Product/15497646735745	CHF 25.08	1 Varianten	Natürliche Kreuzfaser-Wimpern
+gid://shopify/Product/15497646965121	CHF 18.09	1 Varianten	Reise-Organizer-Set mit Kompression
+gid://shopify/Product/15497647030657	CHF 6.94	1 Varianten	Vergoldeter Ring im Minimal-Design
+gid://shopify/Product/15497647128961	CHF 10.56	1 Varianten	10-teiliges Make-up Pinselset Roségold
+gid://shopify/Product/15497647358337	CHF 140.49	1 Varianten	Stapelbare Acryl-Aufbewahrungsbox
+gid://shopify/Product/15497647391105	CHF 7.31	1 Varianten	Gestreifter Ring im Instagram-Stil
+gid://shopify/Product/15497647489409	CHF 27.86	1 Varianten	Multifunktionales Make-up-Set im Punk-Stil
+gid://shopify/Product/15497647784321	CHF 16.65	1 Varianten	Offener Ring Kirschblüte & Schmetterling 925 Silbe
+gid://shopify/Product/15497647882625	CHF 8.14	1 Varianten	8-Farben Highlighting Puder für Ausstrahlung
+gid://shopify/Product/15497648243073	CHF 9.79	1 Varianten	Klaisy Lock Makeup Flawless Liquid Foundation Set

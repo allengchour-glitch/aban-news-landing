@@ -45105,3 +45105,41 @@
 15519830540673	ersetzt-1	Outdoor Tactics Rucksack
 15519830573441	ersetzt-1	Holz-Wippe: Waldtiere oder Dinosaurier
 15519830606209	ersetzt-1	Multifunktionaler Business Rucksack, wasserdicht
+15519830638977	ersetzt-1	Kinder Puzzle Baustein Set – 172 Teile
+15519830671745	ersetzt-1	Business Bag aus Echtleder
+15519830704513	ersetzt-1	Rennauto-Modellbausatz für Kinder
+15519830737281	ersetzt-1	Wasserdichte Umhängetasche für Sport & Freizeit
+15519830835585	ersetzt-1	Reise-Rucksack aus Canvas
+15519830868353	ersetzt-1	Business Rucksack – wasserdicht & erweiterbar
+15519830933889	ersetzt-1	Computer-Rucksack aus Rindsleder
+15519831032193	ersetzt-1	Beheizbares Tassenpad
+15519831064961	ersetzt-1	Tragbarer Campingkocher mit Grillfunktion
+15519831097729	ersetzt-1	Kabellose Ladetasse mit Henkel
+15519831163265	ersetzt-1	USB Heizuntersetzer
+15519831196033	ersetzt-1	Elektrische Pfeffermühle mit Gravitationssensor
+15519831228801	ersetzt-1	7-teiliges Aluminium-Kochgeschirr-Set · 7 Stück
+15519833129345	ersetzt-1	Ferngesteuertes Hunde-Trainingshalsband
+15519833162113	ersetzt-1	Halsband- und Leinen-Set mit Blumenmuster
+15519833194881	ersetzt-1	Halsband im Marmor-Design
+15519833227649	ersetzt-1	Multifunktionale Haustier-Leine mit integrierter Trinkflasch
+15519833260417	ersetzt-1	Automatisches Doppelkopf-Hundegeschirr mit Licht
+15519833325953	ersetzt-1	LEMFO LF26 Smart-Armband
+15519833358721	ersetzt-1	Hunde-Jogging-Set mit Bauchtasche
+15519833391489	ersetzt-1	Smartes Sport-Armband mit Herzfrequenzmessung
+15519833424257	ersetzt-1	Halsband-Set für Hunde mit Leine und Fliege
+15519833457025	ersetzt-1	G218 Sportarmband
+15519833489793	ersetzt-1	UFO 2 AIR Hundeleine, einziehbar
+15519833522561	ersetzt-1	Sportliche wasserdichte Uhr
+15519833555329	ersetzt-1	Reflektierende Hunde-Leine Okinawa
+15519833588097	ersetzt-1	U8 Smartwatch – Kompatibel mit iPhone
+15519833653633	ersetzt-1	Smart-Armband mit Runddisplay
+15519833686401	ersetzt-1	Gestreiftes Silikon-Armband für Apple Watch
+15519833719169	ersetzt-1	Brustgeschirr mit Sicherheitsgurt für Haustiere
+15519833751937	ersetzt-1	Herzfrequenz-Tracker für iPhone
+15519833784705	ersetzt-1	Hundeleine für Training & Tracking
+15519833817473	ersetzt-1	Z01 Smartwatch
+15519833850241	ersetzt-1	Reflektierende Hundeleine für Brustgeschirr
+15519833883009	ersetzt-1	Smartes Armband mit Körpertemperaturmessung
+15519833915777	ersetzt-1	Stoppuhr für Sport und Training
+15519833981313	ersetzt-1	T2 Smart-Armband mit Farbdisplay
+15519834014081	ersetzt-1	Halsband, Leine und Kotbeutel-Set für Welpen
