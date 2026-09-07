@@ -43,6 +43,24 @@ Zugriff». Der Betreiber lieferte den Produktions-Schlüssel; ZUERST getestet, D
   CH-Versand kostet dort mindestens ~27.94 EUR je Sendung.
 - Schlüssel liegt im Tresor (Fach `bigbuy`) und in `/tmp/bigbuy.env` (0600), **nie im Repo**;
   er stand im Chat und gehört rotiert.
+- ⛔ **KORREKTUR eine Stunde später, und sie dreht den Befund um:** Der Betreiber hielt fest,
+  die Auszahlungs-Mail sei längst vorbereitet. Nachgesehen: Sie ist nicht nur vorbereitet, der
+  **Antrag ist am 16.08. gestellt und von BigBuy bestätigt** worden («wirksam innerhalb von
+  5 Werktagen», `noreply@bigbuy.eu` 11:12 UTC). Gmail seither (`from:bigbuy after:2026/08/15`):
+  **keine weitere Mail**. Und das Guthaben steht heute unverändert auf 1'000. **Der Antrag ist
+  also nicht offen — er ist stillschweigend nicht ausgeführt worden.** Meine Empfehlung «ich
+  kann eine Support-Anfrage vorbereiten» war damit doppelt falsch: sie existiert, und der Weg
+  ist ohnehin Selbstbedienung in der Konsole (Recherche des Betreibers, 04.09.), nicht Mail.
+  **Bevor man einen Weg vorschlägt, prüft man, ob er schon beschritten wurde** — hier hätte
+  eine Gmail-Suche über den Absender genügt, und die war zwei Minuten Arbeit.
+- ⚠️ **Die Frist ist enger, als die Zahl aussieht:** BigBuy bearbeitet Auszahlungen **nur
+  dienstags**; das Abo endet am 15.09. — einem Dienstag. Der letzte Bearbeitungstag mit
+  Reserve ist damit **Dienstag 08.09.**, nicht «irgendwann bis zum 15.». Eine Frist gehört
+  gegen den Bearbeitungsrhythmus gerechnet, nicht gegen den Kalender.
+- Verdacht, ausdrücklich NICHT belegt: die offene Transaktion **18138523** (1'000 €, «fällige
+  Zahlung») könnte das Guthaben binden. Sie ist zu stornieren, nie zu bezahlen.
+- Zwei Selbstmessungen gesetzt (Di 08.09., Fr 11.09.) — das Guthaben ist ab jetzt von hier aus
+  messbar, der Betreiber muss dafür nichts mehr nachsehen.
 
 
 ## 🔓 Der Tresor meldete «0 Einträge», statt zu sagen, dass er zu ist (2026-09-07)

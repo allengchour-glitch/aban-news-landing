@@ -28,11 +28,23 @@ Endpunkt gemessen. Der Topf heisst **purse**, nicht moneybox.
 
 **Was das für dich heisst — zwei Wege, beide bei dir:**
 
-1. **Auszahlen:** Es gibt in der BigBuy-API keinen Auszahl-Aufruf (geprüft). Das ist eine
-   Support-Anfrage in der BigBuy-Konsole. Ich kann sie vorbereiten, absenden musst du sie.
-2. **Verbrauchen:** Rechnerisch der schlechtere Weg — der BigBuy-Import ist seit dem 10.07. auf
-   deinen Entscheid abgeschaltet, und der CH-Versand kostet dort **mindestens ~27.94 EUR je
-   Sendung** (SEUR, einziger Carrier). Kleinteilige Ware ist dort strukturell Verlust.
+⛔ **KORREKTUR am selben Tag: Der Antrag ist längst gestellt — und NICHT ausgeführt worden.**
+Am 16.08. hast du die Auszahlung beantragt, BigBuy hat sie bestätigt («wirksam innerhalb von
+5 Werktagen»). Drei Wochen später liegt das Geld unverändert da, und seither kam **keine
+einzige weitere BigBuy-Mail**. Meine Zeile «ich kann die Support-Anfrage vorbereiten» war
+also doppelt falsch: Die Anfrage ist gestellt, und der Weg ist ohnehin **Selbstbedienung in
+der Konsole**, keine Mail. BigBuy bearbeitet Auszahlungen **nur dienstags**.
+
+**Der nächste Bearbeitungstag ist DIENSTAG 08.09. — und realistisch der letzte vor der Frist
+15.09.** (die selbst ein Dienstag ist, also keine Reserve). Zu tun:
+
+1. Konsole → Geldbörse: steht der Antrag vom 16.08. noch offen? Wenn nicht: neu stellen.
+2. Offene Transaktion **18138523** (1'000 €, «fällige Zahlung») **stornieren, nicht bezahlen.**
+   ⚠️ Vermutung, nicht belegt: sie könnte das Guthaben binden und den Antrag blockieren.
+3. ⚠️ Nie den offenen Marketplace-Checkout (1'190 €/Jahr) abschicken.
+
+Ganzer Stand samt fertigem Support-Text: `dropship/BIGBUY-AUSZAHLUNG-NACHFASS.md`.
+Ich messe das Guthaben am Di 08.09. und Fr 11.09. selbst nach — dafür brauche ich dich nicht mehr.
 
 ⚠️ **Der Schlüssel stand im Chat** — bitte in der BigBuy-Konsole neu erzeugen, sobald es passt.
 Er liegt jetzt im Shopify-Tresor (Fach `bigbuy`) und in `/tmp/bigbuy.env` (0600), **nicht im Repo**.
