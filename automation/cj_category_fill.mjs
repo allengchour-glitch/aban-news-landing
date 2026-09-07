@@ -21,7 +21,7 @@ import { heikelZweck } from './heikel_zweck.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
-import { copyPrompt, messSicher, wirkSicher} from './cj_copy_prompt.mjs';
+import { copyPrompt, messSicher, wirkSicher, wahlSicher} from './cj_copy_prompt.mjs';
 import { groqText } from './groq_text.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -816,9 +816,14 @@ for(const [cat,label] of grp.cats){
    const heik=heikelZweck(title, g.html);
    if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${tsch?' 🐾DRAFT('+tsch.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=slugStamm(title)+'-'+String(p.pid).slice(-6);
+   const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
+   // ⚠️ 07.09.2026: Ohne `fash` legen wir EINE Variante «Standard» an — dann darf der Text
+   // keine Auswahl versprechen. Der Prompt verbietet das seit dem 03.09.; gemessen versprechen
+   // trotzdem 52 von 1'205 seither angelegten Ein-Varianten-Produkten eine Auswahl (4,3 %).
+   // Ein Modell kann eine Anweisung ignorieren, eine Pruefung nicht (Lehre 04.09.).
+   if(!fash) g=wahlSicher(g);
    // 📋 Faktenblock (02.09.2026): Material/Gewicht/Masse aus CJ → Tabelle «Spezifikationen» im Theme. Quelle: cj_specs.mjs
    const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
-   const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
    const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];

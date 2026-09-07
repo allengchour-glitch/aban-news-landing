@@ -101,3 +101,50 @@ export function messSicher(o) {
   }
   return o;
 }
+
+// ⚠️ 07.09.2026 — AUSWAHL-VERSPRECHEN BEI EINER VARIANTE, deterministisch statt als Bitte.
+// Der Prompt verbietet sie seit dem 03.09. Gemessen am 07.09.: von 1'205 seither angelegten
+// Ein-Varianten-Produkten versprechen 52 (4,3 %) trotzdem eine Auswahl. Dritte Fassung der
+// Lehre vom 04.09.: ein Modell kann eine Anweisung ignorieren, eine Pruefung nicht.
+//
+// Warum das hier geht und im BESTAND nicht: Der Importer kennt die Variantenzahl, bevor der
+// Text geschrieben wird, und der Text ist frisch — ein Satz weniger kostet nichts, die Fakten
+// stehen ohnehin im Faktenblock. Im Bestand traegt derselbe Satz fast immer eine zweite
+// Aussage («Erhältlich in verschiedenen Farben, passt er sich jedem Stil an»), deshalb meldet
+// wahlversprechen.py dort nur und schneidet nicht (an 28 Faellen gelesen, 28 davon Mischsaetze).
+//
+// Gearbeitet wird SATZWEISE: ein halber Satz ist schlimmer als ein fehlender (Lehre 21.08.).
+const WAHL_RE = /(?:erh[äa]ltlich|verf[üu]gbar|lieferbar)\s+in\s+(?:verschiedenen|unterschiedlichen|mehreren|zwei|drei|vier|f[üu]nf|sechs|den)\b|\bin\s+(?:verschiedenen|unterschiedlichen|mehreren|zwei|drei|vier)\s+[\wäöüß]+\s+(?:erh[äa]ltlich|verf[üu]gbar|lieferbar)\b|\bw[äa]hlen\s+sie\s+(?:aus|zwischen)\b|\bzur\s+auswahl\b/i;
+
+// Ein SET-Inhalt ist keine Auswahl: «4 Boxen in zwei Grössen: 2× gross, 2× klein» beschreibt,
+// was mitgeliefert wird (Lehre 01.09.). Stueckzahl «N×» vor einem Buchstaben schuetzt den Satz.
+const SET_RE = /\b\d+\s*[×x]\s*[a-zäöüß]/i;
+
+export function wahlSicher(o) {
+  if (!o || !o.html) return o;
+  const raus = (txt) => {
+    // Saetze an .!? trennen, aber nicht zwischen Ziffern (14.5 cm) — Lehre 03.09.
+    const teile = txt.split(/(?<=[.!?])(?!\d)\s+/);
+    const bleibt = teile.filter(t => !(WAHL_RE.test(t) && !SET_RE.test(t)));
+    return bleibt.length === teile.length ? null : bleibt.join(' ').replace(/\s{2,}/g, ' ').trim();
+  };
+  let h = o.html;
+  // 1. Listenpunkte, die nur die Klausel tragen, ganz entfernen.
+  h = h.replace(/<li>([\s\S]*?)<\/li>/gi, (m, inner) => {
+    const t = inner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    return (WAHL_RE.test(t) && !SET_RE.test(t)) ? '' : m;
+  });
+  // 2. Absaetze satzweise saeubern; bleibt nichts uebrig, faellt der Absatz weg.
+  h = h.replace(/<p>([\s\S]*?)<\/p>/gi, (m, inner) => {
+    if (/<[a-z]/i.test(inner)) return m;      // Auszeichnung im Absatz: nicht anfassen
+    const neu = raus(inner);
+    if (neu === null) return m;
+    return neu.length >= 25 ? `<p>${neu}</p>` : '';
+  });
+  h = h.replace(/<ul>\s*<\/ul>/gi, '').replace(/\n{3,}/g, '\n\n');
+  // Sicherung: lieber die falsche Klausel als ein leerer Text.
+  const nackt = h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (nackt.length < 120) return o;
+  o.html = h;
+  return o;
+}
