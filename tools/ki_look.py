@@ -36,7 +36,13 @@ def messen(pfad):
         "h1_emoji": sum(1 for x in h1 if EMO.search(x)),
         "h2_emoji": sum(1 for x in h2 if EMO.search(x)),
         "verlaeufe": len(re.findall(r'linear-gradient\(', h)),
-        "rund14": len(re.findall(r'border-radius:\s*(?:1[4-9]|[2-9]\d)px', h)),
+        # ⚠️ Bis 2026-09-07 stand hier „Kästen ≥ 14 px gerundet". Diese Zahl war nach
+        # der Radien-Leiter (tools/ecken.py) WERTLOS: 14 px ist jetzt die gewählte
+        # Karten-Sprosse, also stieg der „Befund" von 4119 auf 9591, obwohl genau das
+        # die Verbesserung war. Ein Messgerät, das eine Entscheidung als Fehler zählt,
+        # misst das Falsche. Gezählt wird jetzt, was den Eindruck wirklich erzeugt:
+        # wie viele VERSCHIEDENE Radien eine Seite verwendet.
+        "radien": len(set(re.findall(r'border-radius:\s*(\d+(?:\.\d+)?)px', h))),
         "tics": sum(tics.values()),
         "tics_detail": tics,
     }
@@ -44,11 +50,16 @@ def messen(pfad):
 
 def main():
     seiten = sorted(glob.glob(os.path.join(ROOT, "*.html")))
-    summe = {"h1_emoji": 0, "h2_emoji": 0, "verlaeufe": 0, "rund14": 0, "tics": 0}
+    summe = {"h1_emoji": 0, "h2_emoji": 0, "verlaeufe": 0, "tics": 0}
+    radien_gesamt = set()
     betroffen = {k: 0 for k in summe}
     tics_gesamt = {t: 0 for t in TICS}
+    radien_max = 0
     for p in seiten:
         m = messen(p)
+        radien_max = max(radien_max, m["radien"])
+        radien_gesamt |= set(re.findall(r'border-radius:\s*(\d+(?:\.\d+)?)px',
+                                        open(p, encoding="utf-8", errors="ignore").read()))
         for k in summe:
             summe[k] += m[k]
             if m[k]:
@@ -57,13 +68,16 @@ def main():
             tics_gesamt[t] += m["tics_detail"][t]
     n = len(seiten)
     if "--json" in sys.argv:
-        print(json.dumps({"seiten": n, "summe": summe, "betroffen": betroffen, "tics": tics_gesamt}, ensure_ascii=False, indent=1))
+        print(json.dumps({"seiten": n, "summe": summe, "betroffen": betroffen, "tics": tics_gesamt,
+                          "radien": sorted(float(x) for x in radien_gesamt),
+                          "radien_hoechstens_je_seite": radien_max}, ensure_ascii=False, indent=1))
         return
     print(f"KI-Look über {n} Seiten\n")
     print(f"{'Muster':28} {'Vorkommen':>10} {'Seiten':>8}")
     for k, label in [("h1_emoji", "Emoji in H1"), ("h2_emoji", "Emoji in H2"), ("tics", "Textbausteine (alle)"),
-                     ("verlaeufe", "Farbverläufe"), ("rund14", "Kästen ≥ 14 px gerundet")]:
+                     ("verlaeufe", "Farbverläufe")]:
         print(f"{label:28} {summe[k]:>10} {betroffen[k]:>8}")
+    print(f"{'Verschiedene Eckenradien':28} {len(radien_gesamt):>10} {'(max ' + str(radien_max) + ' je Seite)':>8}")
     print("\nTextbausteine einzeln:")
     for t, v in sorted(tics_gesamt.items(), key=lambda x: -x[1]):
         print(f"  {t:20} {v:>6}")
