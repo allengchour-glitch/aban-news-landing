@@ -1,5 +1,79 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🎬 «Coole Videos auf die Webseite»: der Endpunkt war ein POST — und der Deckel ist der Plan (2026-09-07, 21:30 UTC)
+Betreiber mit Screenshot der CJ-App («die bären und sonstige videos auch»). Mein Gedächtnis vom
+05.09. sagte «CJ liefert `productVideo: null`, 0 von 400 Produkten haben ein Video» — der
+Screenshot zeigte Abspielknöpfe. Einer von beiden musste falsch sein, und es war das Gedächtnis:
+`product/list` führt ein Feld **`isVideo`**, das ich nie gesehen hatte, und meldet für dieselben
+Produkte `isVideo: 1`. Der richtige Weg steht in CJs Doku und ist ein **POST**:
+
+    POST /product/queryVideosByProductId   {"productId": "<pid>"}
+    → data[] mit videoUrl · coverURL · videoSize · duration · isFree
+
+⚠️ **Die Antwort sagt jedes Mal, was fehlt** — man muss sie nur lesen: ein GET gibt «Request
+method 'GET' not supported» (also: es gibt den Endpunkt), `{"pid":…}` gibt «productId must be
+not empty» (also: anderer Parametername). Fünf geratene Endpunktnamen davor gaben dagegen
+`1600101 Interface not found` — **ein «gibt es nicht» ist etwas anderes als ein «so nicht»**,
+und bei drei Fehlermeldungen in Folge gehört die Doku gelesen statt weiter geraten.
+
+**⛔ Und deshalb hat `cj_video_backfill.mjs` 1'426 Produkte FALSCH quittiert.** Es fragte
+`product/query` und las dort `productVideo` — das Feld ist bei CJ immer null. Alle 1'426
+Zeilen «kein-video-beim-lieferanten» sind damit eine Aussage über die Welt, die auf einer nicht
+gestellten Frage beruht; an 25 Stichproben gemessen haben **8 % sehr wohl ein Video**. Ledger
+geleert. **Eine Quittung darf nie eine Aussage über die Welt sein, wenn man die Welt nicht
+gefragt hat** (dieselbe Familie wie «nicht erreicht» ≠ «hat keines», 20.08.).
+
+**Drei weitere Defekte im selben Weg, jeder am Objekt gemessen:**
+| Stelle | Befund |
+|---|---|
+| Download ohne `Referer: https://developers.cjdropshipping.com/` | **403** · mit Referer 200 und exakt die Bytezahl der API |
+| `if (up.status !== 200 && !== 201) return 'upload-abgelehnt'` | Staged Uploads quittieren mit **204** — jeder gelungene Upload galt als abgelehnt |
+| `cj()` gab nach erschöpften Versuchen `code: 0` | **0 ist beim Video-Endpunkt der ERFOLGSFALL** — ein Ausfall hätte wie «hat kein Video» ausgesehen |
+
+**⛔ DIE EIGENTLICHE GRENZE IST DER SHOPIFY-PLAN, und es sind ZWEI unabhängige Deckel:**
+| Weg | Antwort |
+|---|---|
+| `stagedUploadsCreate(resource: VIDEO)` | «Your plan does not permit more than **250 videos and 3D models**» |
+| `resource: FILE` (der Weg des Startseiten-Videos, zählt NICHT gegen die 250) | **`FILE_STORAGE_LIMIT_EXCEEDED`** — Dateispeicher voll seit 01.09. |
+
+⚠️ **Bei erreichtem Deckel liefert Shopify trotzdem ein Ziel — mit `url: null`**, und die Absage
+steht nur in `userErrors`. Wer nur auf «Ziel vorhanden» prüft, läuft in einen URL-Parse-Fehler
+statt in eine lesbare Meldung. Dritte Fassung von «ein Endpunkt, der antwortet, beweist nur,
+dass er antwortet» (28.08.).
+
+**Was die 250 Plätze belegt — gemessen, nicht geschätzt** (Bulk-Export über 77'547 Produkte plus
+`files(media_type:VIDEO)`):
+| | |
+|---|---:|
+| Video-Dateien im Shop | **249** (Shopify zählt 250 und lehnt ab; 3D-Modelle: 0) |
+| davon an einem AKTIVEN Produkt | 123 |
+| davon an einem ENTWURF (für Kundinnen unsichtbar) | **61** |
+| davon an gar keinem Produkt | **65** |
+| davon im Live-Theme verwendet | **0** |
+**126 der 250 Plätze dienen keiner Kundin**, und kein einziger trägt ein CJ-Produktvideo — alle
+249 stammen aus Mai–Juli (eigene Reels, KI-Clips, BigBuy-Markenware). Vollständige Liste:
+`dropship/VIDEO-DECKEL.md`.
+- ⚠️ **NICHTS gelöscht, und das ist die Entscheidung, nicht die Bequemlichkeit.** Die Hausregel
+  «ein gepostetes Reel ist verbraucht» (06.07., am 04.09. angewandt) trägt hier nicht: **0 der
+  65 stehen in einem Post-Ledger**. Und ein Teil sind Veo-/Seedance-/Luma-Videos, die echtes
+  Geld gekostet haben. Löschen ist unumkehrbar — das gehört dem Betreiber, mit der Messung daneben.
+- **Der Lauf prüft den Deckel jetzt VORAB** (eine Mutation, kein CJ-Punkt) und endet mit
+  **PAUSE** statt FERTIG — sonst sperrt das FERTIG-Tor des Aufsehers ihn dauerhaft. Sobald ein
+  Platz frei ist, hängt derselbe Lauf die Videos ohne weiteres Zutun an.
+- Neu in `betreiber_ampel.py`: `video_deckel()` misst den ZWECK (entsteht ein Upload-Ziel?)
+  statt die Videos zu zählen — die Zählung sagte 249, Shopify lehnte trotzdem ab. **In beide
+  Richtungen geprüft:** VIDEO → Meldung, IMAGE (kein Deckel) → kein Befund.
+
+**⚠️ Und zwei Substring-Fallen in EINER eigenen Prüfung, beide von mir:** Ich suchte die
+Dateinamen als STÄMME — `d1`, `x1`, `p1` treffen jede Zeichenkette und meldeten 33 «Verweise».
+Mit dem vollen Dateinamen blieben 3, und davon war `x1.mp4` immer noch ein Fehltreffer: es
+steckt in `luxestyle_bestseller_**1x1.mp4**`. Dreizehnte Fassung der Familie — **auch ein voller
+Dateiname ist noch keine Wortgrenze.**
+⚠️ **Korrektur am Eintrag vom 05.09.:** Dort steht «`media_type:VIDEO` ist ein STILLER
+Shopify-Filter». Heute an derselben Stelle gegengeprüft: `media_type:QUATSCHXY` gibt **0**,
+`media_type:VIDEO` gibt ausschliesslich `Video`-Knoten — auf `files` **wirkt** er. Ein stiller
+Filter ist eine Eigenschaft der ABFRAGE, nicht des Wortes.
+
 ## 🎚️ «fix weiter»: die USA-Klasse auf 0 — und ein Prompt-Verbot, das zum dritten Mal ignoriert wurde (2026-09-07, 20:30 UTC)
 Betreiber: «fix weiter». Drei Klassen gemessen und bearbeitet, jede am OBJEKT, nicht aus dem Bericht:
 

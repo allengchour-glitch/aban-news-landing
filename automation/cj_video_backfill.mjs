@@ -174,8 +174,30 @@ async function anhaengen(pid, vurl, name) {
   return 'ok';
 }
 
+// Der Plan-Deckel gilt für den GANZEN Shop. Ihn EINMAL vorab zu prüfen kostet nichts und
+// spart im Sperrfall den gesamten CJ-Punkteverbrauch der pid-Nachschläge (10 je Produkt).
+async function deckelFrei() {
+  const r = await sgql(`mutation($i:[StagedUploadInput!]!){stagedUploadsCreate(input:$i){stagedTargets{url} userErrors{message}}}`,
+    { i: [{ resource: 'VIDEO', filename: 'deckelprobe.mp4', mimeType: 'video/mp4',
+            httpMethod: 'POST', fileSize: '1048576' }] });
+  const m = (r?.data?.stagedUploadsCreate?.userErrors || []).map(e => e.message).join(' ');
+  if (/250 videos|does not permit/i.test(m)) return { frei: false, grund: m };
+  // ⚠️ Bei erreichtem Deckel kommt ein Ziel MIT url:null zurück — das Ziel allein beweist nichts.
+  if (!r?.data?.stagedUploadsCreate?.stagedTargets?.[0]?.url) return { frei: false, grund: m || 'kein Upload-Ziel' };
+  return { frei: true };
+}
+
 async function main() {
   if (!CJT) { console.log('kein CJ-Token'); return; }
+  const d = await deckelFrei();
+  if (!d.frei) {
+    console.log(`PAUSE (Shopify-Plan): ${d.grund}\n`
+      + `   Der Deckel gilt für den ganzen Shop; ohne freien Platz kann kein Video angehängt\n`
+      + `   werden. Kein CJ-Punkt wird dafür verbraucht. Gemessen 07.09.: 249 Video-Dateien,\n`
+      + `   davon 65 an keinem Produkt und 61 an Entwürfen — 126 Plätze ohne Kundennutzen.\n`
+      + `   Platz schaffen oder Plan erhöhen ist eine Betreiber-Entscheidung.`);
+    return;
+  }
   const erledigt = new Set(fs.existsSync(LEDGER)
     ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
 

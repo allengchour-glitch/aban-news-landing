@@ -58,6 +58,28 @@ def datei_speicher_voll():
     return None
 
 
+def video_deckel():
+    """Shopify deckelt Videos je PLAN — gemessen 07.09.: 250, und der Deckel ist voll.
+
+    ⚠️ NICHT die Videos zaehlen: `files(media_type:VIDEO)` meldete 249, Shopify lehnte
+    trotzdem ab. Gemessen wird deshalb der ZWECK — ob ein Upload-Ziel entsteht. Und ein
+    zurueckgegebenes Ziel allein beweist nichts: bei erreichtem Deckel kommt es MIT
+    `url: null`, die Absage steht nur in `userErrors`.
+    """
+    try:
+        d = gql('mutation{stagedUploadsCreate(input:[{resource:VIDEO,filename:"ampel.mp4",'
+                'mimeType:"video/mp4",httpMethod:POST,fileSize:"1048576"}])'
+                '{stagedTargets{url} userErrors{message}}}')
+        r = ((d.get("data") or {}).get("stagedUploadsCreate") or {})
+    except Exception:
+        return None                      # kein Befund aus einer kaputten Abfrage
+    fehler = " ".join(e.get("message", "") for e in (r.get("userErrors") or []))
+    ziel = (r.get("stagedTargets") or [{}])[0].get("url")
+    if re.search(r"250 videos|does not permit", fehler, re.I) or not ziel:
+        return "Shopify-Video-Deckel voll (250) — 126 Plaetze ohne Kundennutzen, s. dropship/VIDEO-DECKEL.md"
+    return None
+
+
 def tiktok_queue_alt():
     """Der PC-Poster liest die Queue vom CDN. Steht sie still, postet er alten Stand.
 
@@ -94,7 +116,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (datei_speicher_voll(), tiktok_queue_alt()) if t]
+    teile = [t for t in (datei_speicher_voll(), video_deckel(), tiktok_queue_alt()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
