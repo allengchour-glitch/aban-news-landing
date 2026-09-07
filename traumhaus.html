@@ -29,6 +29,7 @@
    tabular-nums, damit Geld, Uhr und Tacho nicht zappeln. Strich-Ikonen in currentColor
    statt Betriebssystem-Emoji, die je nach Geraet anders aussehen. */
 :root{--creme:#fdf6e6;--creme2:#f3e6cc;--bern:#d97706;--bern-dk:#b45309;--tinte:#241c12;--tinte70:rgba(36,28,18,.72)}
+.ik-s{width:1em;height:1em;vertical-align:-.13em;stroke-width:2.15;opacity:.85}
 .ik{width:1.15em;height:1.15em;vertical-align:-.2em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .tbtn .ik,#achBtn .ik,#nitroBtn .ik,#hornBtn .ik,#lieferBtn .ik,#tragBtn .ik,#chatToggle .ik,#pingBtn .ik,#hideBtn .ik,#micBtn .ik,#emoteToggle .ik{width:1.35em;height:1.35em;vertical-align:middle}
 #geld,#uhr,#spNum,#stufeBox,.overlay h1,#achToastTxt b,#hetzeHud,#komboHud{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-variant-numeric:tabular-nums;letter-spacing:.01em}
@@ -262,12 +263,31 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6-6 6-11a6 6 0 0 0-12 0c0 5 6 11 6 11z"/><circle cx="12" cy="10" r="2"/></symbol>
 <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/></symbol>
 <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 4v5h-5M20 12a8 8 0 0 1-14 5l-2-2M4 20v-5h5"/></symbol>
+<symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.2v9.6M14.6 9.3c-.7-.9-5-1.1-5 .9 0 1.9 5 1.1 5 3.1 0 2-4.3 1.7-5 .8"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 6.8V12l3.4 2"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M19 14.5A8 8 0 0 1 9.5 5a8 8 0 1 0 9.5 9.5z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol>
+<symbol id="i-blossom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2"/><path d="M12 9.8C12 7 13.4 5 15 5s1.6 3-3 4.8zM14.2 12c2.8 0 4.8 1.4 4.8 3s-3 1.6-4.8-3zM12 14.2c0 2.8-1.4 4.8-3 4.8s-1.6-3 3-4.8zM9.8 12C7 12 5 10.6 5 9s3-1.6 4.8 3z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4c0 9-5 13-11 13-2 0-3.5-.8-3.5-.8S5 8 20 4zM9 15c1.5-4 4-6.5 7-8"/></symbol>
+<symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></symbol>
+<symbol id="i-rain" viewBox="0 0 24 24"><path d="M7 15a4 4 0 0 1 .4-8 5.5 5.5 0 0 1 10.4 1.6A3.5 3.5 0 0 1 17.5 15zM9 18l-1 2.5M13 18l-1 2.5M17 18l-1 2.5"/></symbol>
+<symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="15" r="5.5"/><path d="M8.5 10L6 3h12l-2.5 7"/></symbol>
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V3M6 4h12l-2.5 4L18 12H6"/></symbol>
+<symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5zM5 19h14"/></symbol>
+<symbol id="i-work" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M9 7.5V5.5h6v2M3 13h18"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20S3.5 14.5 3.5 9A4.5 4.5 0 0 1 12 6.8 4.5 4.5 0 0 1 20.5 9c0 5.5-8.5 11-8.5 11z"/></symbol>
+<symbol id="i-mask" viewBox="0 0 24 24"><path d="M2.5 9h19M4 9l1 5.5a3 3 0 0 0 6 0V9M13 9v5.5a3 3 0 0 0 6 0L20 9M11 11h2"/></symbol>
+<symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a9 9 0 1 1 16 0M12 15l4-5"/><circle cx="12" cy="16" r="1.4"/></symbol>
+<symbol id="i-run" viewBox="0 0 24 24"><circle cx="14.5" cy="4.5" r="2"/><path d="M12.5 9l-3 3 2.5 2.5.5 6M12 12.5l4 1.5 1.5 4M9.5 12L5 13"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="M3 15v-2.5l2-4.5h14l2 4.5V15M3 13h18M6.5 15v2M17.5 15v2"/><circle cx="7.5" cy="15" r="1.6"/><circle cx="16.5" cy="15" r="1.6"/></symbol>
+<symbol id="i-people" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.2"/><path d="M3 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M16 14.5c2.5 0 4.5 1.6 4.5 4"/></symbol>
+<symbol id="i-child" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3"/><path d="M8 20c0-2.6 1.8-4.5 4-4.5s4 1.9 4 4.5"/></symbol>
 <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
 </defs></svg>
 <div id="wrap"></div>
 <div id="hud" class="hide">
-  <div class="panel" id="geld">💰 5000</div>
-  <div class="panel" id="uhr">🕗 Tag 1 · 08:00</div>
+  <div class="panel" id="geld"><svg class="ik ik-s" aria-hidden="true"><use href="#i-coin"/></svg> 5000</div>
+  <div class="panel" id="uhr"><svg class="ik ik-s" aria-hidden="true"><use href="#i-clock"/></svg> Tag 1 · 08:00</div>
   <div class="panel needs" id="needsBox"></div>
   <div class="panel" id="stufeBox" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
 </div>
@@ -337,7 +357,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <button class="ebtn" id="edX" style="border:0;background:#d8d0c0;border-radius:10px;padding:12px 16px;min-height:44px;min-width:44px;margin-left:10px;font-size:.95rem;cursor:pointer">✕</button>
 </div>
 <div id="joy" style="position:fixed;left:16px;bottom:100px;width:112px;height:112px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.4);z-index:13;display:none;touch-action:none;backdrop-filter:blur(2px)">
-  <div id="joyKnob" style="position:absolute;left:34px;top:34px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);box-shadow:0 3px 10px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;pointer-events:none">🏃</div>
+  <div id="joyKnob" style="position:absolute;left:34px;top:34px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);box-shadow:0 3px 10px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;pointer-events:none"><svg class="ik" aria-hidden="true"><use href="#i-run"/></svg></div>
 </div>
 <div id="tanz" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(40,20,45,.6)">
  <div id="tanzBox" style="background:#fdf4ff;border:3px solid #b060c8;border-radius:18px;padding:18px;text-align:center;max-width:340px;width:90vw;cursor:pointer;user-select:none">
@@ -381,7 +401,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <button id="bigmapClose" style="border:0;background:#ffdf7a;color:#3a2b06;font-weight:900;border-radius:14px;padding:12px 30px;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)">Schliessen</button>
 </div>
 <div id="speedo" style="position:fixed;left:calc(50% + 170px);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:12px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
-  <div style="font-size:1.15rem;font-weight:900;line-height:1">🏎️ <span id="spNum">0</span> <span style="font-size:.7rem;opacity:.7">km/h</span></div>
+  <div style="font-size:1.15rem;font-weight:900;line-height:1"><svg class="ik ik-s" aria-hidden="true"><use href="#i-gauge"/></svg> <span id="spNum">0</span> <span style="font-size:.7rem;opacity:.7">km/h</span></div>
   <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:4px;overflow:hidden"><div id="spBar" style="height:100%;width:0;background:#3ad0ff;border-radius:3px"></div></div>
 </div>
 <div id="achPanel" style="position:fixed;inset:0;z-index:27;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.6)">
@@ -2402,7 +2422,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 })();
 // ---- Wetter & Jahreszeiten ----
 var wetter="sonne";
-var SAISON=[["🌸 Frühling",0xb8e0a0],["☀️ Sommer",0xaecf7d],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]]; // gruener Tint gegen Stroh-Look
+var SAISON=[["Frühling",0xb8e0a0,"i-blossom"],["Sommer",0xaecf7d,"i-sun"],["Herbst",0xe8c088,"i-leaf"],["Winter",0xdfe8f2,"i-snow"]]; // gruener Tint gegen Stroh-Look
 function calcSaison(){return Math.floor((tag-1)/5)%4;}
 /* ❄️ Der Winter faerbte bisher nur den Rasen um. Jetzt haengt auch der Wintermarkt
    daran (Aufbau weiter unten, `_winterTeile`) — er steht nur in Saison 3 und ist die
@@ -11196,16 +11216,16 @@ function stufenLuecke(){
 function stufeHudUpd(){
   var el=document.getElementById("stufeBox");if(!el)return;
   var l=stufenLuecke();
-  if(!l){el.textContent="👑 Palast — alles erreicht";return;}
+  if(!l){el.innerHTML=ik("i-crown")+" Palast — alles erreicht";return;}
   var tage=Math.max(0,naechsteAbnahme-tag);
   var kurz=l.fehltWert?("+"+l.fehltWert+" $")
           :l.fehltKat?("+"+l.fehltKat+" Bereich"+(l.fehltKat>1?"e":""))
-          :l.fehltZuf?("+"+l.fehltZuf+" Komfort-Möbel"):"bereit ✓";
+          :l.fehltZuf?("+"+l.fehltZuf+" Komfort-Möbel"):"bereit";
   /* ⚠️ Reihenfolge ist hier eine Design-Entscheidung: Erst stand der STUFENNAME
      vorn — auf dem Handy schnitt die Kopfzeile dann ausgerechnet den Fehlbetrag ab,
      also genau die Information, wegen der die Anzeige existiert. Jetzt kommt immer
      zuerst, was zu tun ist, dann der Termin; der Titel nur, wenn Platz bleibt. */
-  el.textContent=(MODUS==="sprint"&&!sprintFertig?"🏁 T"+tag+"/20 · ":"")+"🏅 "+kurz+" · "+tage+"T"
+  el.innerHTML=(MODUS==="sprint"&&!sprintFertig?ik("i-flag")+" T"+tag+"/20 · ":"")+ik("i-medal")+" "+txt(kurz)+" · "+tage+"T"
     +(innerWidth>=1000?"  ("+l.ziel[0]+")":"");
   el.style.background=l.erfuellt?"rgba(180,240,190,.92)":"";}
 /* Die Abnahme selbst: ein Ereignis mit klarer Ansage, kein stiller Zahlensprung. */
@@ -12331,7 +12351,9 @@ function simUse(s,dt){
     if(u.pose==="lie")s.x+=0.9;
     simEmoji(s,"😊");}}
 // ---- Liebes-System: Nähe, Tanzen, Verlobung, Hochzeit ----
-function loveHud(){return verheiratet?"💍 Verheiratet":(verlobt?"💎 Verlobt":(liebe>=60?"😍 Verliebt":"💑"));}
+/* Die Liebes-Zeile der Kopfzeile: dieselben Strich-Ikonen wie ueberall.
+   `ik()` steht weiter unten (updHUD), wird aber erst zur Laufzeit gerufen. */
+function loveHud(){return verheiratet?ik("i-heart")+" Verheiratet":(verlobt?ik("i-heart")+" Verlobt":(liebe>=60?ik("i-heart")+" Verliebt":ik("i-people")));}
 function loveScene(txt,dauer){
   var el=document.getElementById("romKiss");el.style.display="flex";
   document.getElementById("romTxt").textContent=txt;
@@ -12512,7 +12534,7 @@ function einsteigen(rec,geklaut){
   if(!MPs||mpHost)document.getElementById("lieferBtn").style.display="block";
   document.getElementById("hornBtn").style.display="block";
   document.getElementById("speedo").style.display="block";
-  var kn9=document.getElementById("joyKnob");if(kn9){kn9.dataset.alt=kn9.textContent;kn9.textContent="🚗";} /* der Stick lenkt jetzt ein Auto */
+  var kn9=document.getElementById("joyKnob");if(kn9){kn9.dataset.alt=kn9.innerHTML;kn9.innerHTML='<svg class="ik" aria-hidden="true"><use href="#i-car"/></svg>';} /* der Stick lenkt jetzt ein Auto */
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("Auto geklaut. Die Polizei ist schon unterwegs.");
     setTimeout(function(){if(fahren)wantedPlus(2);},1500);}
@@ -12549,7 +12571,7 @@ function aussteigen(){
   document.getElementById("lieferBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
   document.getElementById("speedo").style.display="none";
-  var kn8=document.getElementById("joyKnob");if(kn8&&kn8.dataset.alt){kn8.textContent=kn8.dataset.alt;}
+  var kn8=document.getElementById("joyKnob");if(kn8&&kn8.dataset.alt){kn8.innerHTML=kn8.dataset.alt;}
   var bf2=sims[1];
   if(bf2&&bf2._bf){bf2._bf=false;bf2.mesh.visible=true;bf2.pose="stand";bf2.state="idle";
     bf2.x=a.mesh.position.x-Math.cos(carRot)*1.6;bf2.z=a.mesh.position.z+Math.sin(carRot)*1.6;
@@ -14978,25 +15000,31 @@ document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
   document.getElementById("palette").style.display=buildMode?"block":"none";
   document.getElementById("tools").style.display=buildMode?"flex":"none";
   gridHelper.visible=buildMode;refreshGhost();};
+/* 🖋️ Eine Ikone als Text-Baustein. Die Kopfzeile trug bis hierher Betriebssystem-
+   Emoji (💰 🕗 💼 💘), die auf iOS, Android und im Emulator drei verschiedene Bilder
+   sind und farbig gegen die eine Palette stehen. Dieselben Strich-Symbole wie auf
+   den Knoepfen, in currentColor. */
+function ik(n){return '<svg class="ik ik-s" aria-hidden="true"><use href="#'+n+'"/></svg>';}
+function txt(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function updHUD(){
-  document.getElementById("geld").textContent="💰 "+geld;
+  document.getElementById("geld").innerHTML=ik("i-coin")+" "+geld;
   stufeHudUpd();                      /* 🏅 Ziel bleibt immer sichtbar */
   var hh=Math.floor(uhrzeit/60)%24,mm=Math.floor(uhrzeit%60);
-  document.getElementById("uhr").textContent=(hh<6||hh>=21?"🌙":"🕗")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0")+" "+SAISON[calcSaison()][0].split(" ")[0]+(wetter==="regen"?"🌧️":wetter==="schnee"?"🌨️":"");
+  document.getElementById("uhr").innerHTML=ik(hh<6||hh>=21?"i-moon":"i-clock")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0")+" "+ik(SAISON[calcSaison()][2])+(wetter==="regen"?ik("i-rain"):wetter==="schnee"?ik("i-snow"):"");
   var nb=document.getElementById("needsBox");nb.innerHTML="";
   if(kinder.length){var kr=document.createElement("div");kr.style.cssText="font-size:.72rem;color:#c05a8a;font-weight:800";
-    kr.textContent="👨‍👩‍👧 Familie: "+kinder.map(function(k){return (k.baby?"👶":"🧒")+k.name;}).join(" · ");nb.appendChild(kr);}
+    kr.innerHTML=ik("i-people")+" Familie: "+kinder.map(function(k){return ik(k.baby?"i-child":"i-people")+txt(k.name);}).join(" · ");nb.appendChild(kr);}
   var skr=document.createElement("div");skr.style.cssText="font-size:.72rem;color:#5a4a30;font-weight:800";
   /* Feste Leerzeichen innerhalb eines Eintrags: wird es doch einmal zu eng, faellt
      der Umbruch ZWISCHEN zwei Eintraege statt mitten hinein ("Lv1" allein). */
   /* ⚠️ Auf schmalen Geraeten war genau der Status-Nachsatz das, was die Zeile brechen
      liess: bei 568 px braucht sie 217 px und hat 162 (gemessen mit th-hud). Statt den
      Umbruch hinzunehmen wird die FORM gekuerzt, nicht die Information — aus
-     "· Arbeit …" wird "· 🔨". Der Wortlaut bleibt, wo Platz ist. */
+     "· Arbeit …" wird die Hammer-Ikone. Der Wortlaut bleibt, wo Platz ist. */
   var _eng9=innerWidth<700;
-  var _st9=arbeiten?(_eng9?" · 🔨":" · Arbeit\u00A0…")
-          :(crime.on?(_eng9?" · 🌙":" · unterwegs\u00A0🌙"):"");
-  skr.textContent="💼\u00A0Lv"+skills.arbeit.lv+" · 💘\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️\u00A0Lv"+skills.krimi.lv:"")+_st9;
+  var _st9=arbeiten?(_eng9?" · "+ik("i-hammer"):" · Arbeit\u00A0…")
+          :(crime.on?(_eng9?" · "+ik("i-moon"):" · unterwegs\u00A0"+ik("i-moon")):"");
+  skr.innerHTML=ik("i-work")+"\u00A0Lv"+skills.arbeit.lv+" · "+ik("i-heart")+"\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · "+ik("i-mask")+"\u00A0Lv"+skills.krimi.lv:"")+_st9;
   nb.appendChild(skr);
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
@@ -15369,7 +15397,7 @@ function loop(now){
           else if(tag>20){sprintFertig=true;MODUS="klassisch";
             hint("Sprint vorbei. Die Villa stand nicht bis Tag 20. Weiter im klassischen Modus.");}
           else hint("Sprint: Tag "+tag+"/20 — Ziel Traumvilla (Stufe 3)");}}
-      rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+      rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · Regen":wetter==="schnee"?" · Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;

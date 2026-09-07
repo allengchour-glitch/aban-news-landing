@@ -6499,3 +6499,38 @@ Laufzeit; wer das je tut, muss sich ein eigenes anfordern (steht als Warnung im 
 **Werkzeug:** `th-material.mjs` (Zwillingszählung), `th-nachthelle.mjs` (Tag/Nacht-Helligkeit
 je Ort — die höhere `envMapIntensity` hellt alles auf, das muss gemessen sein, nicht geschätzt),
 `th-leistung.mjs`.
+
+## 2026-09-07 · ✍️ Handschrift-Runde, Teil 4 (die Kopfzeile)
+
+Teil 1 hat die Knöpfe entschieden, Teil 2 die Texte, Teil 3 die Materialien — die
+**Kopfzeile** sprach noch Emoji: 💰 5040 · 🕗 Tag 1 · 💼 Lv1 · 💘 Lv1 · 🏅 +2500 $.
+Das sind Betriebssystem-Bilder: auf iOS anders als auf Android, farbig gegen die eine
+Palette, und in der Grösse nicht steuerbar.
+
+| Muster | vorher | nachher |
+|---|---:|---:|
+| Emoji in der Kopfzeile (immer sichtbar) | 7 | **0** |
+| Strich-Ikonen im Sprite | 16 | **35** |
+
+**Ersetzt:** Geld (`i-coin`), Uhr/Nacht (`i-clock`/`i-moon`), Jahreszeit
+(`i-blossom`/`i-sun`/`i-leaf`/`i-snow`), Wetter (`i-rain`/`i-snow`), Wohnstufe
+(`i-medal`, Sprint `i-flag`, Palast `i-crown`), Familie (`i-people`/`i-child`),
+Fertigkeiten (`i-work`/`i-heart`/`i-mask`), Arbeit/unterwegs (`i-hammer`/`i-moon`),
+Tacho (`i-gauge`), Stick-Knopf (`i-run`, im Auto `i-car`).
+
+**Wie:** `ik(name)` liefert `<svg class="ik ik-s"><use href="#…"/></svg>`; `.ik-s` ist
+1 em hoch, sitzt auf der Grundlinie und erbt `currentColor`. `txt()` maskiert alles,
+was aus dem Spielstand kommt (Kindernamen), weil aus `textContent` jetzt `innerHTML`
+wurde.
+
+> **Falle:** `SAISON` trug den Namen samt Emoji in einem String (`"🌸 Frühling"`), und
+> die Kopfzeile schnitt sich mit `.split(" ")[0]` das Emoji heraus. Jetzt hat der
+> Eintrag drei Felder — Name, Farbe, Ikone. Sonst hätte der Jahreszeiten-Hinweis
+> weiter mit einem Emoji begonnen, obwohl Teil 2 alle 154 Hinweise davon befreit hat.
+
+> **Warum das HUD-Werkzeug hier entscheidet:** Ikonen sind anders breit als Emoji.
+> `th-hud.mjs` misst genau das (3 Formate × 3 Modi): 0 Umbrüche, 0 Überlappungen,
+> 0 Tippziele unter 44 px. Ohne diese Messung wäre die Prüfung ein Blick auf ein Bild.
+
+**Bewusst geblieben:** Emoji in Overlays (Erfolgsliste, Katalog, Intro) — dort ist das
+Bildchen der Listeneintrag selbst, kein Ersatz für eine Ikone.
