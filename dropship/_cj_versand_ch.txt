@@ -1023,3 +1023,6 @@ gid://shopify/Product/15525513757057	ok	Mini Full HD LED-Projektor für Zuhause
 gid://shopify/Product/15525508841857	ok	Multifunktionaler Sandsack für das Krafttraining
 gid://shopify/Product/15525514314113	ok	WLAN Android Beamer für Zuhause
 gid://shopify/Product/15525501796737	ok	Orientalische Quarzuhr mit Kalender
+gid://shopify/Product/15527363641729	ok	Wanbo T2max/Free HD Mini Beamer
+gid://shopify/Product/15527365673345	ok	Mini Tisch-Heizlüfter mit Keramikheizung
+gid://shopify/Product/15527364886913	nicht-versendbar	L900 PRO MAX Laser Drohne
