@@ -18697,3 +18697,4 @@ gid://shopify/Product/15497448882561	CHF 9.36	1 Varianten	Nylon P-Kette Hunde-Le
 gid://shopify/Product/15497448915329	CHF 14.72	1 Varianten	Reise Schmuck-Etui mit Reissverschluss
 gid://shopify/Product/15497448948097	CHF 8.99	1 Varianten	Fashion Waffle Katzengeschirr mit Leine
 gid://shopify/Product/15497448980865	CHF 15.40	1 Varianten	Digital Printing Gossip Mask Wandteppich
+gid://shopify/Product/15497449013633	CHF 58.05	1 Varianten	Stretch Trainingsstab mit Expander
