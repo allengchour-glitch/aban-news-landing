@@ -15,9 +15,15 @@ den Rückgängig-Marker **`rueckhol-0907`**, und verliert `auto-entwurf-0926`.
 | **Kandidatenfilter der Routine** (`status:active AND -tag:bild-ok`) | 2'724 → **72** |
 | Menüpunkte, die am 06.09. **0** aktive Produkte hatten | Leinen & Tierkleidung **290** · Tierspielzeug **176** · Näpfe **120** · EU-Lager **215** |
 
-- ⛔ **Und der Fund, der die Arbeit erst zu Ende bringt: die Routine war NICHT trocken.** Nach dem
-  Rückhol-Lauf standen **2'724 aktive Produkte ohne `bild-ok`** — sie wären in den nächsten Stunden
-  gedraftet worden. Gelesen war das **keine CJ-Ware**: BigBuy-Markenware (Michael Kors, Police,
+- ⛔ **Und der Fund, der die Arbeit erst zu Ende bringt: das Kriterium der Routine war NICHT trocken.**
+  Nach dem Rückhol-Lauf standen **2'724 aktive Produkte ohne `bild-ok`** — genau die Menge, die die
+  Routine als nächstes gedraftet hätte.
+  ⚠️ **Korrektur an meiner eigenen ersten Fassung:** Ich hatte geschrieben, sie «wären in den nächsten
+  Stunden gedraftet worden». Gemessen (`list_triggers`, 19:32 UTC) steht
+  `trig_013xE8LpGFW2QGuziRJywbHV` inzwischen auf **enabled=false** — die Routine feuert gar nicht mehr.
+  Der Schutz bleibt richtig, aber als VORSORGE für den Fall, dass sie wieder eingeschaltet wird,
+  nicht als Abwehr einer laufenden Gefahr. **Eine Dringlichkeit gehört genauso gemessen wie ein
+  Befund** — ich hatte den Schalterstand aus dem Gedächtnis vorausgesetzt statt ihn zu lesen. Gelesen war das **keine CJ-Ware**: BigBuy-Markenware (Michael Kors, Police,
   Jimmy Choo, Lechuza), die eigenen Geschenk-Sets («Aura», «Badi-Ready», «Eternità») und POD.
   Die Messung vom 06.09. hatte nur `tag:cj-real` erfasst — **ein Schutz, der aus der Messung EINES
   Lieferanten gebaut ist, lässt die Ware jedes anderen Lieferanten ungeschützt.** Dieselbe Familie wie
