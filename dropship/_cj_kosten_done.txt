@@ -17799,3 +17799,69 @@ gid://shopify/Product/15496702886273	CHF 18.53	1 Varianten	Kissenbezug mit Pflan
 gid://shopify/Product/15496702919041	CHF 11.80	1 Varianten	FDGAO 3-in-1 Ladegerät mit USB-A & USB-C
 gid://shopify/Product/15496703082881	CHF 30.97	1 Varianten	Elastischer Stuhlhussen-Bezug, halbe Sitzfläche
 gid://shopify/Product/15496703115649	CHF 7.75	1 Varianten	USB Rücklicht Rot-Blau für Mountainbikes
+gid://shopify/Product/15496703148417	CHF 7.34	1 Varianten	Vokalisierender Spielball für Katzen
+gid://shopify/Product/15496703181185	CHF 12.51	1 Varianten	Bluetooth Audio Empfänger fürs Auto
+gid://shopify/Product/15496703213953	CHF 18.29	1 Varianten	USB Heizschal für Auto & Büro
+gid://shopify/Product/15496703279489	CHF 8.48	1 Varianten	Avocado-Futterball für Hunde
+gid://shopify/Product/15496703345025	CHF 11.41	1 Varianten	PS5 Controller Ladestation mit LED
+gid://shopify/Product/15496703377793	CHF 19.44	1 Varianten	Känguru Stofftier
+gid://shopify/Product/15496703410561	CHF 20.17	1 Varianten	Xlite100 Intelligentes Velo-Rücklicht
+gid://shopify/Product/15496703443329	CHF 17.23	1 Varianten	Elektrische Spielmaus mit Kratzmatte
+gid://shopify/Product/15496703607169	CHF 27.21	1 Varianten	Multifunktionale Ladestation für PS5, PS4, Switch 
+gid://shopify/Product/15496703771009	CHF 17.25	1 Varianten	Niedliches Husky Plüschkissen, 60 cm
+gid://shopify/Product/15496703934849	CHF 29.21	1 Varianten	Chenille Kissen mit Quasten
+gid://shopify/Product/15496704000385	CHF 9.50	1 Varianten	Faltbarer Reise-Napf für Hunde & Katzen
+gid://shopify/Product/15496704065921	CHF 17.93	1 Varianten	USB Handwärmer & Powerbank
+gid://shopify/Product/15496704131457	CHF 10.74	1 Varianten	Faltbarer Reise-Napf für Hunde und Katzen
+gid://shopify/Product/15496704164225	CHF 16.46	1 Varianten	Handgewebtes Kissen mit Quasten
+gid://shopify/Product/15496704196993	CHF 15.00	1 Varianten	Elektrischer Handwärmer & Powerbank
+gid://shopify/Product/15496704262529	CHF 8.78	1 Varianten	Bestickter Kissenbezug
+gid://shopify/Product/15496704328065	CHF 17.77	1 Varianten	Kabelloser Powerbank Handyhalter
+gid://shopify/Product/15496704360833	CHF 14.75	1 Varianten	Blumen Katzennapf aus Keramik
+gid://shopify/Product/15496704426369	CHF 12.30	1 Varianten	Netzteil für Video-Türklingel
+gid://shopify/Product/15496704491905	CHF 16.29	1 Varianten	Boho-Kissenbezug im Marokkanischen Stil
+gid://shopify/Product/15496704524673	CHF 21.60	1 Varianten	Verstellbarer Futternapf-Halter
+gid://shopify/Product/15496704590209	CHF 65.06	1 Varianten	3-in-1 Wireless Ladestation für Smartphone, Watch,
+gid://shopify/Product/15496704622977	CHF 10.27	1 Varianten	Sofa-Kissenbezug für Wohn- und Teeraum
+gid://shopify/Product/15496704655745	CHF 18.88	1 Varianten	Keramik-Doppelnapf für Katzen mit Neigung
+gid://shopify/Product/15496704688513	CHF 66.98	1 Varianten	Multifunktionales Split-Bauchtrainer
+gid://shopify/Product/15496704786817	CHF 45.45	1 Varianten	Ersatzakku für MacBook Pro 15″ (A1707)
+gid://shopify/Product/15496704917889	CHF 13.68	1 Varianten	Futter- und Wasserspender 3.8l
+gid://shopify/Product/15496704983425	CHF 51.85	1 Varianten	Intelligente Boxmaschine mit Bluetooth-Musik
+gid://shopify/Product/15496705147265	CHF 9.88	1 Varianten	Fressnapf für Nacken- und Wirbelsäulenschutz
+gid://shopify/Product/15496705704321	CHF 14.41	1 Varianten	Futter- und Wasserspender 2-in-1
+gid://shopify/Product/15496705737089	CHF 63.09	1 Varianten	Atemtrainer für Yoga und Pilates
+gid://shopify/Product/15496705769857	CHF 15.00	1 Varianten	Mobiles Wireless Gamepad für Smartphones
+gid://shopify/Product/15496705835393	CHF 9.81	1 Varianten	Smart GPS-Halsband für Haustiere
+gid://shopify/Product/15496705868161	CHF 18.18	1 Varianten	Gaming-Tastatur mit mechanischem Gefühl
+gid://shopify/Product/15496705900929	CHF 12.85	1 Varianten	Halsband aus Echtleder für Hunde
+gid://shopify/Product/15496705999233	CHF 43.29	1 Varianten	Mobiler Gamecontroller für diverse Plattformen
+gid://shopify/Product/15496706097537	CHF 12.02	1 Varianten	Hundehalsband mit AirTag-Hülle
+gid://shopify/Product/15496706195841	CHF 12.00	1 Varianten	Mobiler Gaming Controller für Smartphone
+gid://shopify/Product/15496706228609	CHF 7.53	1 Varianten	Halsband gegen Flöhe und Mücken für Hunde
+gid://shopify/Product/15496706261377	CHF 12.31	1 Varianten	Gamepad Tablet mit Hühnchen-Griff
+gid://shopify/Product/15496710881665	CHF 21.79	41 Varianten	Leichte Sandalen im Römer-Stil
+gid://shopify/Product/15496711078273	CHF 33.15	9 Varianten	Sandalen mit Peep Toe und Reissverschluss
+gid://shopify/Product/15496711274881	CHF 14.20	27 Varianten	Keilabsatz-Sandalen mit Kette
+gid://shopify/Product/15496711307649	CHF 16.96	12 Varianten	Atmungsaktive Mesh-Sandalen mit niedrigem Absatz
+gid://shopify/Product/15496711373185	CHF 15.51	24 Varianten	Keilabsatz-Sandalen mit Strohgeflecht
+gid://shopify/Product/15496711438721	CHF 16.08	18 Varianten	Retro-Mules aus Wildlederimitat mit eckiger Spitze
+gid://shopify/Product/15496711504257	CHF 28.33	24 Varianten	Baotou Riemchensandalen mit eckiger Spitze
+gid://shopify/Product/15496846770561	CHF 20.33	42 Varianten	Retro Sandalen mit eckiger Zehe
+gid://shopify/Product/15496846901633	CHF 29.16	1 Varianten	Retroflag SUPERPi Case Box mit Kabel-Controller
+gid://shopify/Product/15496847753601	CHF 12.60	32 Varianten	Elegante Pumps mit V-Ausschnitt und Blockabsatz
+gid://shopify/Product/15496847819137	CHF 11.28	1 Varianten	Wii Wireless Gamepad ohne Beschleunigungssensor
+gid://shopify/Product/15496848245121	CHF 45.41	1 Varianten	Hundetrainer mit GPS
+gid://shopify/Product/15496848474497	CHF 23.53	24 Varianten	Beach Sandalen
+gid://shopify/Product/15496848638337	CHF 30.13	1 Varianten	Gaming-Controller für Smartphone
+gid://shopify/Product/15496849326465	CHF 18.58	18 Varianten	Plateau-Sandalen mit Riemchen
+gid://shopify/Product/15496849490305	CHF 17.86	1 Varianten	Kabelloses PS4 Gamepad mit Touch & Vibration
+gid://shopify/Product/15496849916289	CHF 21.55	1 Varianten	Halloween-Deko: Realistische Kunststoffkette
+gid://shopify/Product/15496850276737	CHF 24.02	30 Varianten	Plateau-Clogs mit Schnalle
+gid://shopify/Product/15496850309505	CHF 24.30	1 Varianten	GAMO Einhand-Gamepad
+gid://shopify/Product/15496850833793	CHF 14.06	1 Varianten	LED-Halsbandlicht für Haustiere, farbig, wasserdic
+gid://shopify/Product/15496851063169	CHF 18.89	20 Varianten	Spitze Ballerinas für Damen
+gid://shopify/Product/15496851161473	CHF 20.29	1 Varianten	Kabelloser PS4-Gamepad
+gid://shopify/Product/15496851685761	CHF 29.38	1 Varianten	GPS-Tracker für Haustiere, wasserdicht
+gid://shopify/Product/15496851882369	CHF 13.55	24 Varianten	Chunky-Sandalen mit Klettverschluss
+gid://shopify/Product/15496852603265	CHF 44.31	1 Varianten	Halsband mit Fliege für Hunde
