@@ -16380,3 +16380,16 @@ gid://shopify/Product/15496307376513	CHF 18.87	1 Varianten	Seidenkissenbezug mit
 gid://shopify/Product/15496307442049	CHF 10.06	1 Varianten	Kabelloses Android Gamepad
 gid://shopify/Product/15496307474817	CHF 10.03	1 Varianten	Elastischer Stuhlhusse aus Fuchssamt
 gid://shopify/Product/15496307507585	CHF 6.90	1 Varianten	Feuchtigkeitsspendender Concealer Honig
+gid://shopify/Product/15496307540353	CHF 9.17	1 Varianten	Mobile Game Trigger L1R1 Shooter Controller
+gid://shopify/Product/15496307605889	CHF 14.75	1 Varianten	Runder Teppich für Stuhl und Boden
+gid://shopify/Product/15496308359553	CHF 7.17	1 Varianten	Bein-Make-up, wasserfest und langhaltend
+gid://shopify/Product/15496308523393	CHF 21.15	1 Varianten	Elastischer L-Sofa Bezug, einfarbig
+gid://shopify/Product/15496308556161	CHF 24.43	1 Varianten	Retro Strickdecke für Sofa
+gid://shopify/Product/15496308621697	CHF 30.48	1 Varianten	Elastischer Polyester-Sofabezug mit Kissenhüllen
+gid://shopify/Product/15496308687233	CHF 17.00	1 Varianten	Modernes geometrisches Kissen «Hug»
+gid://shopify/Product/15496319467905	CHF 12.37	1 Varianten	Luxus Kissen
+gid://shopify/Product/15496319533441	CHF 31.50	1 Varianten	Ladbarer Gamepad
+gid://shopify/Product/15496319598977	CHF 27.42	1 Varianten	Plüsch-Bodenmatte «Lazy Mat»
+gid://shopify/Product/15496319730049	CHF 15.63	1 Varianten	Kissenbezug Satin Uni
+gid://shopify/Product/15496319762817	CHF 7.05	1 Varianten	Feuchtigkeitsspendendes mattes Creme-Rouge
+gid://shopify/Product/15496319861121	CHF 13.90	1 Varianten	Bein-Beauty- Trainer

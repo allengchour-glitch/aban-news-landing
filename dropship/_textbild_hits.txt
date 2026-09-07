@@ -14752,3 +14752,10 @@ gid://shopify/Product/15523921527169	12->3	Herren Quarzuhr Sandelholz Schwarz
 gid://shopify/Product/15523921658241	35->0	Multifunktionale Sport Smartwatch Wasserdicht
 gid://shopify/Product/15523922215297	23->2	Sportliche Mini-Umhängetasche
 gid://shopify/Product/15523922477441	10->0	Quarzuhr Geschenkset
+gid://shopify/Product/15523922641281	15->0	Sport-Uhr mit Schrittzähler und Anruffunktion
+gid://shopify/Product/15523923526017	34->2	Vertikaljalousie Vertikaler Traum Weiss
+gid://shopify/Product/15523923952001	16->1	Nordische Vorhänge Stern Prinzessin
+gid://shopify/Product/15523924017537	43->0	Napf mit Saugnapf gegen Umkippen
+gid://shopify/Product/15523924410753	25->0	Sanda Grünlicht Wecker Multifunktionsuhr
+gid://shopify/Product/15523936043393	36->1	Faltloses Spitzen-Tops ohne Ärmel
+gid://shopify/Product/15523936272769	34->2	Weites A‑Linien‑Shirt mit 3D‑Effekt
