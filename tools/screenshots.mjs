@@ -28,7 +28,12 @@ const VIEWPORTS = [
   { name: "mobil", width: 390, height: 844, mobile: true },
 ];
 
-const browser = await chromium.launch();
+/* ⚠️ Die mitgelieferte Playwright-Version sucht ein Chromium mit passender Build-Nummer
+   (…_headless_shell-1223) und bricht ab, wenn nur die vorinstallierte Version daliegt.
+   In dieser Umgebung darf nichts nachgeladen werden ("playwright install" ist gesperrt),
+   also wird das vorhandene Chromium direkt benannt — wie in spiele-dev/tools/th-lib.mjs. */
+const CHROMIUM = process.env.CHROMIUM_PATH || "/opt/pw-browsers/chromium";
+const browser = await chromium.launch({ executablePath: CHROMIUM });
 let n = 0;
 for (const page of PAGES) {
   const url = pathToFileURL(resolve(root, page)).href;
