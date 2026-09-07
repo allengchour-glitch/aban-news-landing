@@ -1,0 +1,1018 @@
+[
+ {
+  "id": "gid://shopify/MenuItem/798548722049",
+  "title": "Damen",
+  "type": "HTTP",
+  "url": "/collections/damen-mode",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/804806099329",
+    "title": "Taschen & Rucksäcke",
+    "type": "HTTP",
+    "url": "/collections/sub-taschen",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548754817",
+    "title": "Kleider",
+    "type": "HTTP",
+    "url": "/collections/sub-kleider",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548951425",
+    "title": "Schuhe",
+    "type": "HTTP",
+    "url": "/collections/damen-schuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548984193",
+    "title": "T-Shirts & Tops",
+    "type": "HTTP",
+    "url": "/collections/t-shirts-tops",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548918657",
+    "title": "Strick & Pullover",
+    "type": "HTTP",
+    "url": "/collections/damen-strick-pullover",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549016961",
+    "title": "Jeans & Denim",
+    "type": "HTTP",
+    "url": "/collections/jeans-denim",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548885889",
+    "title": "Jacken & Mäntel",
+    "type": "HTTP",
+    "url": "/collections/damen-jacken-maentel",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549082497",
+    "title": "Jacken & Outdoor-Mode",
+    "type": "HTTP",
+    "url": "/collections/jacken-outdoor",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549049729",
+    "title": "Jumpsuits & Overalls",
+    "type": "HTTP",
+    "url": "/collections/jumpsuits-overalls",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548787585",
+    "title": "Blusen & Tops",
+    "type": "HTTP",
+    "url": "/collections/damen-blusen",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548820353",
+    "title": "Hosen & Leggings",
+    "type": "HTTP",
+    "url": "/collections/damen-hosen",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548853121",
+    "title": "Röcke",
+    "type": "HTTP",
+    "url": "/collections/sub-roecke",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723111809",
+    "title": "Shorts & Bermudas",
+    "type": "HTTP",
+    "url": "/collections/shorts-bermudas",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723079041",
+    "title": "Nachtwäsche & Pyjamas",
+    "type": "HTTP",
+    "url": "/collections/nachtwaesche-pyjamas",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798549148033",
+  "title": "Herren",
+  "type": "HTTP",
+  "url": "/collections/fur-ihn",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/798549213569",
+    "title": "Schuhe",
+    "type": "HTTP",
+    "url": "/collections/herren-schuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549311873",
+    "title": "Hemden",
+    "type": "HTTP",
+    "url": "/collections/herren-hemden",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549279105",
+    "title": "Shirts & Polos",
+    "type": "HTTP",
+    "url": "/collections/herren-shirts",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549246337",
+    "title": "Uhren",
+    "type": "HTTP",
+    "url": "/collections/herren-uhren",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549344641",
+    "title": "Hosen",
+    "type": "HTTP",
+    "url": "/collections/herren-hosen",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549410177",
+    "title": "Pullover",
+    "type": "HTTP",
+    "url": "/collections/herren-pullover",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549377409",
+    "title": "Jacken",
+    "type": "HTTP",
+    "url": "/collections/herren-jacken",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549180801",
+    "title": "Bart & Rasur",
+    "type": "HTTP",
+    "url": "/collections/sub-bart-rasur",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798549934465",
+  "title": "Schuhe",
+  "type": "HTTP",
+  "url": "/collections/schuhe",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/798549967233",
+    "title": "Damenschuhe",
+    "type": "HTTP",
+    "url": "/collections/damen-schuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550000001",
+    "title": "Herrenschuhe",
+    "type": "HTTP",
+    "url": "/collections/herren-schuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550098305",
+    "title": "Sandalen",
+    "type": "HTTP",
+    "url": "/collections/sub-sandalen",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550065537",
+    "title": "Kinderschuhe",
+    "type": "HTTP",
+    "url": "/collections/kinderschuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550262145",
+    "title": "Lauf- & Sportschuhe",
+    "type": "HTTP",
+    "url": "/collections/sub-laufschuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550131073",
+    "title": "Stiefel & Boots",
+    "type": "HTTP",
+    "url": "/collections/sub-stiefel-boots",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550032769",
+    "title": "Sneaker & Sport",
+    "type": "HTTP",
+    "url": "/collections/sneaker-sportschuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550163841",
+    "title": "Pumps & High Heels",
+    "type": "HTTP",
+    "url": "/collections/sub-pumps-heels",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550196609",
+    "title": "Ballerinas & Flats",
+    "type": "HTTP",
+    "url": "/collections/sub-ballerinas",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550229377",
+    "title": "Hausschuhe & Slipper",
+    "type": "HTTP",
+    "url": "/collections/sub-hausschuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550294913",
+    "title": "Wander- & Arbeitsschuhe",
+    "type": "HTTP",
+    "url": "/collections/sub-wander-arbeitsschuhe",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798549442945",
+  "title": "Schmuck & Uhren",
+  "type": "COLLECTION",
+  "url": "/collections/schmuck-uhren",
+  "resourceId": "gid://shopify/Collection/692904526209",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/806210568577",
+    "title": "Premium Schmuck",
+    "type": "COLLECTION",
+    "url": "/collections/premium-schmuck",
+    "resourceId": "gid://shopify/Collection/687724560769",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549639553",
+    "title": "Uhren",
+    "type": "HTTP",
+    "url": "/collections/uhren",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549574017",
+    "title": "Armbänder",
+    "type": "HTTP",
+    "url": "/collections/sub-armbaender",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549475713",
+    "title": "Ringe",
+    "type": "HTTP",
+    "url": "/collections/sub-ringe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549508481",
+    "title": "Halsketten",
+    "type": "HTTP",
+    "url": "/collections/sub-halsketten",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549541249",
+    "title": "Ohrringe",
+    "type": "HTTP",
+    "url": "/collections/sub-ohrringe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549606785",
+    "title": "Sets",
+    "type": "HTTP",
+    "url": "/collections/schmuck-sets",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549672321",
+    "title": "Sonnenbrillen",
+    "type": "HTTP",
+    "url": "/collections/sonnenbrillen-alle",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798549705089",
+  "title": "Beauty & Parfüm",
+  "type": "HTTP",
+  "url": "/collections/beauty-pflege",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/798549737857",
+    "title": "Beauty & Pflege",
+    "type": "HTTP",
+    "url": "/collections/beauty-pflege",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549901697",
+    "title": "Nägel & Maniküre",
+    "type": "HTTP",
+    "url": "/collections/naegel-manikuere",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723144577",
+    "title": "Make-up & Kosmetik",
+    "type": "HTTP",
+    "url": "/collections/make-up",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723177345",
+    "title": "Hautpflege & Skincare",
+    "type": "HTTP",
+    "url": "/collections/hautpflege-skincare",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549770625",
+    "title": "Haarpflege & Styling",
+    "type": "HTTP",
+    "url": "/collections/beauty-haar",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798549868929",
+    "title": "Haarstyling-Geräte",
+    "type": "HTTP",
+    "url": "/collections/haarstyling-geraete",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798666883457",
+    "title": "Parfum & Düfte",
+    "type": "HTTP",
+    "url": "/collections/parfum-duefte",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798550622593",
+  "title": "Wohnen & Garten",
+  "type": "HTTP",
+  "url": "/collections/wohnen-dekoration",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/805458411905",
+    "title": "Wohnen & Deko",
+    "type": "HTTP",
+    "url": "/collections/wohnen-dekoration",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723210113",
+    "title": "Aufbewahrung",
+    "type": "HTTP",
+    "url": "/collections/aufbewahrung-sub",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458444673",
+    "title": "Küche & Kochen",
+    "type": "HTTP",
+    "url": "/collections/sub-kueche",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723275649",
+    "title": "Küchenhelfer & Gadgets",
+    "type": "HTTP",
+    "url": "/collections/kuechenhelfer",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723242881",
+    "title": "Kissen & Wohntextilien",
+    "type": "HTTP",
+    "url": "/collections/kissen-wohntextilien",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798551015809",
+    "title": "Basteln & DIY",
+    "type": "HTTP",
+    "url": "/collections/basteln-diy",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458608513",
+    "title": "Garten & Outdoor",
+    "type": "HTTP",
+    "url": "/collections/outdoor-garten",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/799320932737",
+    "title": "Werkzeug & Maschinen",
+    "type": "HTTP",
+    "url": "/collections/werkzeug-maschinen",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458542977",
+    "title": "Aroma & Diffuser",
+    "type": "HTTP",
+    "url": "/collections/sub-aroma-diffuser",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458510209",
+    "title": "Vasen & Deko",
+    "type": "HTTP",
+    "url": "/collections/sub-deko",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798551179649",
+    "title": "Ersatzteile & Zubehör",
+    "type": "HTTP",
+    "url": "/collections/ersatzteile-zubehoer",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458477441",
+    "title": "Beleuchtung",
+    "type": "HTTP",
+    "url": "/collections/sub-beleuchtung",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798551081345",
+    "title": "Geschenkverpackung",
+    "type": "HTTP",
+    "url": "/collections/geschenkverpackung",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458575745",
+    "title": "Kuschel- & Heizdecken",
+    "type": "HTTP",
+    "url": "/collections/kuschel-heizdecken",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798550655361",
+  "title": "Technik & Gaming",
+  "type": "HTTP",
+  "url": "/collections/elektronik-technik",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/805458641281",
+    "title": "Elektronik & Technik",
+    "type": "HTTP",
+    "url": "/collections/elektronik-technik",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723341185",
+    "title": "Lifestyle & Trends",
+    "type": "HTTP",
+    "url": "/collections/trends-gadgets",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/804813013377",
+    "title": "Elektronik-Kleinteile",
+    "type": "HTTP",
+    "url": "/collections/elektronik-kleinteile",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723308417",
+    "title": "Ladegeräte & Powerbanks",
+    "type": "HTTP",
+    "url": "/collections/elektronik-laden",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/804806132097",
+    "title": "Handy-Zubehör",
+    "type": "HTTP",
+    "url": "/collections/handy-zubehoer",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458674049",
+    "title": "Smartwatches & Wearables",
+    "type": "HTTP",
+    "url": "/collections/smartwatches-wearables",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/804806197633",
+    "title": "Auto & KFZ-Zubehör",
+    "type": "HTTP",
+    "url": "/collections/auto-kfz-zubehoer",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/804806164865",
+    "title": "Gaming",
+    "type": "HTTP",
+    "url": "/collections/gaming",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458706817",
+    "title": "Kopfhörer & Audio",
+    "type": "HTTP",
+    "url": "/collections/kopfhoerer-audio",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458772353",
+    "title": "Drohnen & Kameras",
+    "type": "HTTP",
+    "url": "/collections/drohnen-kameras",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458805121",
+    "title": "PC & Homeoffice",
+    "type": "HTTP",
+    "url": "/collections/pc-homeoffice",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458739585",
+    "title": "Beamer & Heimkino",
+    "type": "HTTP",
+    "url": "/collections/beamer-heimkino",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798550557057",
+  "title": "Kinder & Haustier",
+  "type": "HTTP",
+  "url": "/collections/sub-baby-kids",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/805458837889",
+    "title": "Kinder & Baby",
+    "type": "HTTP",
+    "url": "/collections/sub-baby-kids",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550688129",
+    "title": "Haustierwelt",
+    "type": "HTTP",
+    "url": "/collections/sub-haustier",
+    "items": [
+     {
+      "id": "gid://shopify/MenuItem/798779244929",
+      "title": "Hunde",
+      "type": "HTTP",
+      "url": "/collections/haustier-hunde",
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/798779277697",
+      "title": "Katzen",
+      "type": "HTTP",
+      "url": "/collections/haustier-katzen",
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/798779310465",
+      "title": "Leinen & Tierkleidung",
+      "type": "HTTP",
+      "url": "/collections/tier-leinen-kleidung",
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/798779343233",
+      "title": "Tierspielzeug",
+      "type": "HTTP",
+      "url": "/collections/tierspielzeug",
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/798779376001",
+      "title": "Näpfe & Füttern",
+      "type": "HTTP",
+      "url": "/collections/tier-naepfe-fuettern",
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/798779408769",
+      "title": "Pflege & Unterwegs",
+      "type": "HTTP",
+      "url": "/collections/tier-pflege-unterwegs",
+      "items": []
+     }
+    ]
+   },
+   {
+    "id": "gid://shopify/MenuItem/798707646849",
+    "title": "Spielzeug & Plüsch",
+    "type": "HTTP",
+    "url": "/collections/spielzeug",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458903425",
+    "title": "Kinderschuhe",
+    "type": "HTTP",
+    "url": "/collections/kinderschuhe",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458870657",
+    "title": "Spielzeug ab CH-Lager 🇨🇭",
+    "type": "HTTP",
+    "url": "/collections/spielzeug-ch-lager",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805447500161",
+    "title": "Klemmbausteine & Bausätze",
+    "type": "HTTP",
+    "url": "/collections/klemmbausteine-bausaetze",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798548361601",
+  "title": "Highlights",
+  "type": "HTTP",
+  "url": "/collections/bestseller",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/798548525441",
+    "title": "Topseller",
+    "type": "HTTP",
+    "url": "/collections/bestseller",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/803299230081",
+    "title": "🇨🇭 Ab Schweizer Lager · 1–2 Tage",
+    "type": "HTTP",
+    "url": "/collections/blitzversand-schweiz",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/804810064257",
+    "title": "Kostüme ab CH-Lager 🎃",
+    "type": "HTTP",
+    "url": "/collections/kostueme-ch-lager",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548590977",
+    "title": "Viral-Hits",
+    "type": "HTTP",
+    "url": "/collections/viral-hits",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548492673",
+    "title": "EU-Lager — Schnell geliefert",
+    "type": "HTTP",
+    "url": "/collections/eu-lager-schnell",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548394369",
+    "title": "Schweizer Editionen 🇨🇭",
+    "type": "HTTP",
+    "url": "/collections/erste-august",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548623745",
+    "title": "Premium & Marken",
+    "type": "HTTP",
+    "url": "/collections/luxestyle-premium",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548558209",
+    "title": "Ventilatoren & Kühlung",
+    "type": "HTTP",
+    "url": "/collections/ventilatoren",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548427137",
+    "title": "Fussball & Fanshop",
+    "type": "HTTP",
+    "url": "/collections/fussball-fanshop",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548459905",
+    "title": "VR, AI & Neuheiten",
+    "type": "HTTP",
+    "url": "/collections/vr-ai-neuheiten",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798548689281",
+    "title": "Schnell finden",
+    "type": "HTTP",
+    "url": "/pages/marken-kategorien",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798550327681",
+  "title": "Herbst & Übergang",
+  "type": "HTTP",
+  "url": "/collections/jacken-outdoor",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/803299262849",
+    "title": "Jacken & Mäntel",
+    "type": "HTTP",
+    "url": "/collections/jacken-outdoor",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550458753",
+    "title": "Reisen & Outdoor",
+    "type": "HTTP",
+    "url": "/collections/sub-reise",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/803299295617",
+    "title": "Strick & Pullover",
+    "type": "HTTP",
+    "url": "/collections/damen-strick-pullover",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550393217",
+    "title": "Sommer-Auslauf",
+    "type": "HTTP",
+    "url": "/collections/sommer",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/803299361153",
+    "title": "Mützen & Schals",
+    "type": "HTTP",
+    "url": "/collections/muetzen-schals",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550360449",
+    "title": "Ventilatoren",
+    "type": "HTTP",
+    "url": "/collections/ventilatoren",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/803299328385",
+    "title": "Hoodies & Sweatshirts",
+    "type": "HTTP",
+    "url": "/collections/hoodies-sweatshirts",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550425985",
+    "title": "Sonnenbrillen",
+    "type": "HTTP",
+    "url": "/collections/sonnenbrillen-alle",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/803299393921",
+    "title": "Kuschel- & Heizdecken",
+    "type": "HTTP",
+    "url": "/collections/kuschel-heizdecken",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798550589825",
+  "title": "Sport & Party",
+  "type": "HTTP",
+  "url": "/collections/fitness-training",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/805458936193",
+    "title": "Sport & Fitness",
+    "type": "HTTP",
+    "url": "/collections/fitness-training",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723373953",
+    "title": "Rucksäcke",
+    "type": "HTTP",
+    "url": "/collections/rucksaecke",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805459100033",
+    "title": "Kostüme ab CH-Lager 🎃",
+    "type": "HTTP",
+    "url": "/collections/kostueme-ch-lager",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550720897",
+    "title": "Kostüme & Party",
+    "type": "HTTP",
+    "url": "/collections/kostueme-fasnacht",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805459034497",
+    "title": "Reisen & Outdoor",
+    "type": "HTTP",
+    "url": "/collections/sub-reise",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805458968961",
+    "title": "Yoga & Fitness",
+    "type": "HTTP",
+    "url": "/collections/sub-yoga-fitness",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550524289",
+    "title": "Halloween 🎃",
+    "type": "HTTP",
+    "url": "/collections/halloween",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798551146881",
+    "title": "Wandern & Trekking",
+    "type": "HTTP",
+    "url": "/collections/wandern-trekking",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805459067265",
+    "title": "Fussball & Fanshop",
+    "type": "HTTP",
+    "url": "/collections/fussball-fanshop",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805459001729",
+    "title": "Camping & Outdoor",
+    "type": "HTTP",
+    "url": "/collections/camping-outdoor",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805448417665",
+    "title": "Süsses & Esswaren 🍬",
+    "type": "HTTP",
+    "url": "/collections/suesses-esswaren",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798550491521",
+  "title": "🎁 Geschenke & Mehr",
+  "type": "HTTP",
+  "url": "/collections/premium-geschenke",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/805723505025",
+    "title": "Kleine Mitbringsel unter CHF 20",
+    "type": "HTTP",
+    "url": "/collections/kleine-geschenke-mitbringsel",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805459132801",
+    "title": "Preis-Hits unter CHF 25",
+    "type": "HTTP",
+    "url": "/collections/unter-chf-25",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723406721",
+    "title": "Geschenke bis CHF 30",
+    "type": "HTTP",
+    "url": "/collections/%F0%9F%8E%81-geschenke-bis-chf-30",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723439489",
+    "title": "Geschenke unter CHF 50",
+    "type": "HTTP",
+    "url": "/collections/geschenke-unter-50-franken",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723472257",
+    "title": "Geschenke unter CHF 100",
+    "type": "HTTP",
+    "url": "/collections/geschenke-unter-100-franken",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723603329",
+    "title": "Geschenke für Kinder",
+    "type": "HTTP",
+    "url": "/collections/geschenke-fuer-kinder",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723570561",
+    "title": "Geschenke für Sie",
+    "type": "HTTP",
+    "url": "/collections/geschenke-fuer-sie",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723636097",
+    "title": "Sets & Bundles",
+    "type": "HTTP",
+    "url": "/collections/sets-bundles",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/805723537793",
+    "title": "Premium ab CHF 80",
+    "type": "HTTP",
+    "url": "/collections/%F0%9F%92%8E-premium-ab-chf-80",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798551114113",
+    "title": "Kiffer-Zubehör (18+)",
+    "type": "HTTP",
+    "url": "/collections/smoke-zubehoer",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550753665",
+    "title": "Selbst gestalten",
+    "type": "HTTP",
+    "url": "/pages/selbst-gestalten",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/798550819201",
+    "title": "Ratgeber",
+    "type": "HTTP",
+    "url": "/blogs/ratgeber",
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/802316222849",
+    "title": "🔎 Alle Kategorien",
+    "type": "HTTP",
+    "url": "/pages/alle-kategorien",
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/MenuItem/798695457153",
+  "title": "♥ Merkliste",
+  "type": "HTTP",
+  "url": "/pages/merkliste",
+  "items": []
+ }
+]

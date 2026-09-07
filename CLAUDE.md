@@ -1,5 +1,21 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🧭 «fix weiter» (07.09.): Startseite gemessen heil, Camping 5 → 129, Parfüm-Link ehrlich (2026-09-07, 09:50 UTC)
+Nach dem Draft-Lauf die STARTSEITE gemessen statt vermutet: alle 17 Reihen-/Kachel-Kollektionen haben
+≥ 12 aktive Produkte (kleinste: Auto-Zubehör 30, Bestseller 12; Damen 2'948, Neuheiten 7'154). Kein
+Reihen-Tausch nötig. Die zwei nicht füllbaren Menüpunkte aus «fix alles» sind anders gelöst:
+| Menüpunkt | vorher | Befund | jetzt |
+|---|---:|---|---|
+| Camping & Outdoor (`camping-outdoor`) | 5 aktiv | Regel war NUR `TAG camping` — der Tag sitzt auf 5 aktiven, `outdoor` auf 566; die 227 Entwürfe sind Ur-Ware ohne Lieferant + BigBuy | Regel ODER: TAG camping + TITLE Camping/Isomatte/Schlafsack/Gaskocher/Kühlbox/Picknick/Stirnlampe/Hängematte/Survival/Trekking/Wanderrucksack/…zelt → **129 aktiv**, erste Karten gelesen (Survival-Set, Gaskocher, Campingtisch, Trekking-Rucksack) |
+| Parfum & Düfte (`parfum-duefte`) | 4 aktiv (2 Diffuser, 2 Fasnachts-Parfüms) | 1'278 Entwürfe, ALLE BigBuy `ausverkauft`/`nicht-lieferbar-ch`; Schwestern damen-/herren-duefte 0 aktiv; BigBuy endet 16.09. | Menüpunkt entfernt, Top-Level «Beauty & Parfüm» → **«Beauty & Pflege»** (Beschriftung folgt der Ware). Kollektion bleibt publiziert und im Verzeichnis. Menü 143 → 142, Backup `theme_backup/menu-main-vor-0907.json` |
+- ⚠️ **`zelt` als CONTAINS-Regel ist eine Substring-Falle** («Ein**zelt**eile») — deshalb nur die
+  Zusammensetzungen Campingzelt/Wurfzelt/Strandzelt/Kuppelzelt. Zwölfte Fassung derselben Familie.
+- **`menuUpdate` über den MCP-Konnektor:** der volle Baum (3 Ebenen, `id`+`type`+`url`, `resourceId` nur
+  bei COLLECTION-Typ) als `variables.items`; vorher aus der Abfrage mit `type`/`resourceId` gebaut und als
+  JSON gesichert. Ohne `type` in der Abfrage hätte ich COLLECTION-Punkte als HTTP zurückgeschrieben.
+- Container war um 09:28 UTC erneut neu gestartet (Aufseher tot, Herzschlag 2,5 h) — `engine_keepalive`
+  per `setsid` neu gestartet, Herzschlag 22 s. **Nach jedem `uptime` unter 10 Minuten zuerst der Aufseher.**
+
 ## ⛔ Betreiber 07.09.: «privat account und geschäfts account im fb unbedingt trennen … soll nie mehr vorkommen» (2026-09-07, 07:40 UTC)
 Ein Beitrag ist auf dem PRIVATEN Facebook-Profil des Betreibers gelandet. Gemessen, was von hier aus
 überhaupt schreiben kann — und ob es das gewesen sein kann:
