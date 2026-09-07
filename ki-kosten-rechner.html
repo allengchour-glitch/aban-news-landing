@@ -79,7 +79,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dark)}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px;top:0;background:var(--amber-dark);color:var(--btn-fg);padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
 .skip:focus{left:0}
 header.site{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -99,21 +99,21 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 table.rows{width:100%;border-collapse:collapse}
 table.rows th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;padding:0 8px 8px}
 table.rows td{padding:5px 8px}
-.rows input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;font:inherit;font-size:15px;background:var(--field-bg);color:var(--ink)}
+.rows input{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit;font-size:15px;background:var(--field-bg);color:var(--ink)}
 .rows input:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .rows input[type=number]{text-align:right}
 .col-name{width:42%}.col-num{width:20%}.col-x{width:38px}
-.del{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;padding:4px 6px;border-radius:6px}
+.del{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;padding:4px 6px;border-radius:8px}
 .del:hover{color:var(--weak-fg);background:var(--weak-bg)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .hint{font-size:13px;color:var(--muted);margin-top:10px}
 .results{margin-top:20px;display:none}
 .results.show{display:block}
 .totals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
-.tot{background:var(--cream);border:1px solid var(--amber-light);border-radius:12px;padding:16px;text-align:center}
+.tot{background:var(--cream);border:1px solid var(--amber-light);border-radius:14px;padding:16px;text-align:center}
 .tot .v{font-size:clamp(22px,4vw,30px);font-weight:800;color:var(--amber-dark);line-height:1.1;letter-spacing:-.02em}
 .tot .l{display:block;margin-top:6px;font-size:13px;color:var(--ink-soft);font-weight:600}
-.verdict{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.verdict{border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .vrow{display:flex;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--line);flex-wrap:wrap}
 .vrow:first-child{border-top:none}
 .vrow .vn{font-weight:700;flex:1;min-width:120px}
@@ -125,7 +125,7 @@ table.rows td{padding:5px 8px}
 .cta{margin:36px 0 8px;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-light);border-radius:14px;padding:24px;text-align:center}
 .cta h2{font-size:22px;margin-bottom:6px}
 .cta p{color:var(--ink-soft);margin-bottom:14px}
-.how{margin:22px 0 8px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.how{margin:22px 0 8px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
 .how summary{padding:16px 18px;font-weight:700;cursor:pointer;list-style:none}
 .how summary::-webkit-details-marker{display:none}
 .how summary::after{content:"+";float:right;color:var(--amber);font-weight:800}
@@ -157,7 +157,7 @@ footer a{color:var(--muted)}
       <p>Trag deine Tools, Monatspreise und wie oft du sie nutzt ein. Du siehst die Jahreskosten — und was dich jede einzelne Nutzung kostet. Mit ehrlichem Urteil, ohne Login.</p>
     </div>
   </section>
-<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Zählt deine KI-Abos zusammen und zeigt, was du wirklich pro Monat und Jahr zahlst.</p>
+<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Zählt deine KI-Abos zusammen und zeigt, was du wirklich pro Monat und Jahr zahlst.</p>
 
   <section class="tool">
     <div class="wrap">
@@ -191,7 +191,7 @@ footer a{color:var(--muted)}
             <button type="button" class="cmode" data-m="bars" aria-pressed="true" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:0;background:#b45309;color:#fff;cursor:pointer">Balken (€)</button>
             <button type="button" class="cmode" data-m="donut" aria-pressed="false" style="font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--amber-dk);cursor:pointer">Donut (Anteil)</button>
           </div>
-          <div style="margin-top:10px;border-radius:12px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+          <div style="margin-top:10px;border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
             <canvas role="img" id="kk-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:200px;touch-action:none" aria-label="3D-Diagramm: Monatskosten je Tool"></canvas>
           </div>
           <p style="text-align:center;font-size:.78rem;color:var(--muted);margin:.35rem 0 0" id="chartCap">3D: deine Monatskosten je Tool — aus deinen Eingaben.</p>
@@ -220,9 +220,9 @@ footer a{color:var(--muted)}
 <aside data-aban-news-cta aria-label="Newsletter-Hinweis" style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
   <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
   <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:8px;font-size:.95rem">Newsletter gratis abonnieren →</a>
 </aside>
-<aside data-aban-premium aria-label="Premium-Hinweis" style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
+<aside data-aban-premium aria-label="Premium-Hinweis" style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:8px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
 </main>
 
 <footer>

@@ -121,7 +121,7 @@ a:hover{color:var(--accent-dk)}
 .hero{background:linear-gradient(135deg,#0c1a2e 0%,#0891b2 55%,#22d3ee 100%);color:#e8f4fd;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 20%,rgba(255,255,255,.08),transparent 55%);pointer-events:none}
 .hero .in{max-width:820px;margin:0 auto;padding:46px 18px 38px;position:relative;z-index:1}
-.hero .ic{font-size:2.1rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:18px;margin-bottom:10px}
+.hero .ic{font-size:2.1rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.6rem,4.2vw,2.2rem);margin:6px 0 10px;line-height:1.18;letter-spacing:-.02em;font-weight:800}
 .hero .sub{color:#bdeef9;font-size:1.04rem;max-width:640px}
 .hero .trust{margin-top:14px;display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.82rem;color:#bdeef9}
@@ -133,7 +133,7 @@ a:hover{color:var(--accent-dk)}
 .bc a:hover{text-decoration:underline}
 
 /* ANSWER FIRST */
-.answer-first{background:var(--accent-lt);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:16px 20px;margin:22px 0 26px;font-size:1.03rem;color:var(--ink)}
+.answer-first{background:var(--accent-lt);border-left:4px solid var(--accent);border-radius:0 14px 14px 0;padding:16px 20px;margin:22px 0 26px;font-size:1.03rem;color:var(--ink)}
 .answer-first strong{color:var(--accent-dk)}
 
 /* SECTION HEADINGS */
@@ -145,24 +145,24 @@ li{margin-bottom:4px}
 
 /* TIPS GRID */
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 28px}
-.tip{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;padding:16px 18px}
+.tip{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:16px 18px}
 .tip h3{font-size:1rem;margin:0 0 5px;color:var(--accent-dk)}
 .tip p{font-size:.92rem;margin:0;color:var(--ink2)}
 
 /* COMPARISON TABLE */
-.ctable-wrap{overflow-x:auto;margin:6px 0 24px;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.ctable-wrap{overflow-x:auto;margin:6px 0 24px;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
 .ctable{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--card)}
 .ctable thead th{background:var(--accent);color:#fff;padding:10px 14px;text-align:left;font-weight:700;white-space:nowrap}
-.ctable thead th:first-child{border-radius:10px 0 0 0}
-.ctable thead th:last-child{border-radius:0 10px 0 0}
+.ctable thead th:first-child{border-radius:14px 0 0 0}
+.ctable thead th:last-child{border-radius:0 14px 0 0}
 .ctable td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
 .ctable tr:last-child td{border-bottom:none}
 .ctable tr:nth-child(even) td{background:#f8fbfe}
-.ctable .best{display:inline-block;background:#dcfce7;color:#166534;font-size:.78rem;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}
-.ctable .gut{display:inline-block;background:#fef9c3;color:#854d0e;font-size:.78rem;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.ctable .best{display:inline-block;background:#dcfce7;color:#166534;font-size:.78rem;font-weight:700;padding:2px 7px;border-radius:14px;white-space:nowrap}
+.ctable .gut{display:inline-block;background:#fef9c3;color:#854d0e;font-size:.78rem;font-weight:700;padding:2px 7px;border-radius:14px;white-space:nowrap}
 
 /* CONTENT CARD */
-.content-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px}
+.content-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px}
 
 /* PRICE TABLE */
 .ptable{width:100%;border-collapse:collapse;font-size:.91rem;margin:8px 0 16px}
@@ -171,7 +171,7 @@ li{margin-bottom:4px}
 .ptable tr:nth-child(even) td{background:#f8fbfe}
 
 /* FAQ */
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:13px 18px;margin-bottom:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 18px;margin-bottom:10px}
 details[open]{border-color:var(--accent)}
 summary{font-weight:700;cursor:pointer;font-size:1rem;color:var(--ink);list-style:none;display:flex;align-items:center;gap:8px}
 summary::before{content:"▶";font-size:.7rem;color:var(--accent);transition:transform .2s;flex-shrink:0}
@@ -183,16 +183,16 @@ details .faq-body{margin-top:10px;font-size:.95rem;color:var(--ink2)}
 .cta-box{background:linear-gradient(135deg,var(--accent) 0%,#22d3ee 100%);color:#fff;border-radius:14px;padding:28px 24px;text-align:center;margin:32px 0}
 .cta-box h3{color:#fff;font-size:1.3rem;margin-bottom:8px}
 .cta-box p{color:#e0fbff;margin-bottom:0}
-.cta-btn{display:inline-block;margin-top:16px;background:#fff;color:var(--accent);border-radius:30px;padding:13px 30px;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.cta-btn{display:inline-block;margin-top:16px;background:#fff;color:var(--accent);border-radius:14px;padding:13px 30px;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.2)}
 .cta-btn:hover{background:#e0f2fe;color:var(--accent-dk)}
 
 /* NEWSLETTER */
-.newsletter{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;margin:24px 0;text-align:center}
+.newsletter{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin:24px 0;text-align:center}
 .newsletter h3{color:var(--ink);margin-bottom:6px}
 .newsletter p{font-size:.92rem;margin-bottom:14px}
 
 /* RELATED */
-.related-links{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:24px 0}
+.related-links{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:24px 0}
 .related-links h3{color:var(--ink);margin-bottom:10px;font-size:1rem}
 .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
 .related-grid a{display:block;padding:9px 14px;background:var(--accent-lt);border:1px solid #a5f3fc;border-radius:8px;color:var(--accent-dk);text-decoration:none;font-size:.9rem;font-weight:600}
@@ -204,7 +204,7 @@ footer a{color:var(--muted)}
 footer a:hover{color:var(--accent)}
 
 /* BADGE */
-.badge{display:inline-block;background:var(--accent-lt);color:var(--accent-dk);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+.badge{display:inline-block;background:var(--accent-lt);color:var(--accent-dk);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:14px;margin-left:6px}
 
 /* HIGHLIGHT BOX */
 .highlight{background:#fff7ed;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:13px 16px;margin:12px 0 18px;font-size:.94rem;color:var(--ink2)}
@@ -217,7 +217,7 @@ footer a:hover{color:var(--accent)}
 main{padding:8px 0 56px}
 
 /* FOCUS */
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
 
 @media(max-width:600px){
   .hero .in{padding:32px 16px 28px}
@@ -882,7 +882,7 @@ main{padding:8px 0 56px}
 <div class="newsletter">
   <h3>📬 Kaufberater-Newsletter</h3>
   <p>Neue Vergleiche, Preis-Tipps und Schweizer Angebote direkt in die Inbox — ohne Spam.</p>
-  <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+  <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
 </div>
 
 <p style="font-size:.82rem;color:var(--muted);margin-top:8px">

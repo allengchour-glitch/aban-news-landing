@@ -108,12 +108,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:860px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dk)}
-:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px;z-index:100}
 header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;color:var(--amber);text-decoration:none;font-size:1.05rem}
-.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:8px;border:0;cursor:pointer;font-size:1rem}
 .btn:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
 .btn-buy{
@@ -121,7 +121,7 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
   background:linear-gradient(135deg,var(--amber),var(--amber-dk));
   color:#fff;text-decoration:none;
   font-weight:800;font-size:1.1rem;
-  padding:16px 32px;border-radius:12px;
+  padding:16px 32px;border-radius:14px;
   border:0;cursor:pointer;text-align:center;
   box-shadow:0 4px 14px rgba(180,83,9,.25);
   transition:filter .15s,transform .1s
@@ -139,33 +139,33 @@ section{padding:16px 0}
 h2{font-size:1.3rem;font-weight:800;margin:20px 0 12px;letter-spacing:-.01em}
 h3{font-size:1rem;font-weight:700;margin:0 0 4px}
 .categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:12px 0}
-.cat-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.cat-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:12px;align-items:flex-start}
 .cat-card .num{font-size:1.3rem;font-weight:800;color:var(--amber);min-width:28px;line-height:1}
 .cat-card .label{font-size:.9rem}
 .cat-card strong{display:block;font-weight:700;margin-bottom:2px;font-size:.92rem}
-.buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:2px solid var(--amber-lt);border-radius:18px;padding:28px 24px;text-align:center;margin:22px 0}
+.buybox{background:linear-gradient(135deg,var(--cream),var(--card));border:2px solid var(--amber-lt);border-radius:14px;padding:28px 24px;text-align:center;margin:22px 0}
 .buybox .price{font-size:2.4rem;font-weight:800;margin-bottom:6px}
 .buybox .price small{font-size:.85rem;color:var(--muted);font-weight:500}
 .buybox p{font-size:.92rem;color:var(--ink2);max-width:480px;margin:0 auto 18px}
 .buybox .meta{font-size:.82rem;color:var(--muted);margin-top:12px}
-.guarantee{display:inline-block;background:color-mix(in srgb,#d1fae5 60%,var(--card));border:1px solid #a7f3d0;border-radius:10px;padding:10px 16px;font-size:.87rem;color:#065f46;margin-top:12px}
+.guarantee{display:inline-block;background:color-mix(in srgb,#d1fae5 60%,var(--card));border:1px solid #a7f3d0;border-radius:14px;padding:10px 16px;font-size:.87rem;color:#065f46;margin-top:12px}
 .audience-list{list-style:none;margin:10px 0;padding:0}
 .audience-list li{padding:7px 0;border-bottom:1px solid var(--line);font-size:.92rem}
 .audience-list li:last-child{border-bottom:0}
 .audience-list li::before{content:"→ ";color:var(--amber-dk);font-weight:700}
 .example-prompts{margin:14px 0;display:flex;flex-direction:column;gap:14px}
-.prompt-example{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.prompt-example{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .prompt-example .cat-label{background:var(--cream);padding:6px 14px;font-size:.78rem;font-weight:700;color:var(--amber-dk);letter-spacing:.04em;text-transform:uppercase}
 .prompt-example pre{padding:14px 16px;font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-size:.83rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;color:var(--ink);background:color-mix(in srgb,var(--bg) 60%,var(--card));margin:0}
 .social-proof{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;margin:14px 0}
 .stars{font-size:1.4rem;letter-spacing:.1em;margin-bottom:6px}
 .social-proof p{font-size:.88rem;color:var(--muted)}
-.format-box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:12px 0}
+.format-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:12px 0}
 .format-box ul{margin:8px 0 0 18px}
 .format-box li{font-size:.91rem;margin:5px 0}
-.warn{background:color-mix(in srgb,var(--amber-lt) 50%,var(--card));border:1px solid var(--amber-lt);border-radius:12px;padding:12px 16px;font-size:.9rem;margin:10px 0}
+.warn{background:color-mix(in srgb,var(--amber-lt) 50%,var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:12px 16px;font-size:.9rem;margin:10px 0}
 .faq-list{margin:12px 0}
-.faq-list details{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:8px 0;background:var(--card)}
+.faq-list details{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:8px 0;background:var(--card)}
 .faq-list details summary{font-weight:700;cursor:pointer;list-style:none;font-size:.95rem}
 .faq-list details summary::-webkit-details-marker{display:none}
 .faq-list details summary::before{content:"+ ";color:var(--amber-dk);font-weight:800}

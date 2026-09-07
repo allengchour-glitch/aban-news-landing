@@ -33,7 +33,7 @@
     align-self: flex-start;
     background: #fffdf6;
     border: none;
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 10px 16px;
     font-size: 16px;
     font-weight: 700;
@@ -60,7 +60,7 @@
   .pcard {
     flex: 1;
     background: #fffdf6;
-    border-radius: 18px;
+    border-radius: 14px;
     padding: 10px 8px;
     text-align: center;
     box-shadow: 0 4px 14px rgba(40,90,150,.15);
@@ -90,7 +90,7 @@
   }
   .card {
     position: relative;
-    border-radius: 16px;
+    border-radius: 14px;
     cursor: pointer;
     perspective: 600px;
     min-height: 46px;
@@ -105,7 +105,7 @@
   .face {
     position: absolute;
     inset: 0;
-    border-radius: 16px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,7 +127,7 @@
   .card.matched { animation: pop .4s; }
   @keyframes pop { 50% { transform: scale(1.12); } }
   .confetti {
-    position: fixed; top: -16px; z-index: 20; border-radius: 3px; pointer-events: none;
+    position: fixed; top: -16px; z-index: 20; border-radius: 8px; pointer-events: none;
     animation: cfall linear forwards;
   }
   @keyframes cfall { to { transform: translateY(112vh) rotate(720deg); } }
@@ -144,7 +144,7 @@
   .overlay.show { display: flex; }
   .modal {
     background: #fffdf6;
-    border-radius: 26px;
+    border-radius: 14px;
     padding: 26px 22px;
     text-align: center;
     max-width: 340px;
@@ -158,7 +158,7 @@
     background: linear-gradient(180deg, #ffd75e, #ffcf3a 55%, #ff8c2a);
     color: #5a3600;
     border: none;
-    border-radius: 18px;
+    border-radius: 14px;
     padding: 14px 22px;
     font-size: 19px;
     font-weight: 900;

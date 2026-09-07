@@ -112,12 +112,12 @@ a:hover{color:var(--accent)}
 .hero{background:linear-gradient(135deg,#0f2318 0%,#14532d 45%,#166534 80%,#15803d 100%);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 15%,rgba(134,239,172,.18),transparent 42%),radial-gradient(circle at 6% 88%,rgba(21,128,61,.35),transparent 40%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:40px 18px 36px;position:relative;z-index:1}
-.hero .ic{font-size:2rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);border-radius:18px;margin-bottom:10px}
+.hero .ic{font-size:2rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.55rem,4.2vw,2.05rem);margin:4px 0 10px;line-height:1.18;font-weight:800}
 .hero p{color:#bbf7d0;font-size:1.03rem;max-width:640px}
 .hero .trust{margin-top:14px;display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.82rem;color:#bbf7d0}
 .hero .trust span{display:inline-flex;align-items:center;gap:5px}
-.bigcta{display:inline-block;margin-top:18px;background:#fff;color:var(--accent-dk);border-radius:24px;padding:12px 26px;font-weight:800;font-size:1rem;box-shadow:0 8px 22px rgba(0,0,0,.2);text-decoration:none}
+.bigcta{display:inline-block;margin-top:18px;background:#fff;color:var(--accent-dk);border-radius:14px;padding:12px 26px;font-weight:800;font-size:1rem;box-shadow:0 8px 22px rgba(0,0,0,.2);text-decoration:none}
 .bigcta:hover{background:var(--accent-lt);color:var(--accent-dk)}
 
 /* Breadcrumb */
@@ -126,7 +126,7 @@ a:hover{color:var(--accent)}
 .abn-bc a:hover{text-decoration:underline}
 
 /* Answer box */
-.answer-first{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--accent);border-radius:12px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem;line-height:1.6}
+.answer-first{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid var(--accent);border-radius:14px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem;line-height:1.6}
 
 /* Comparison table */
 .ctable{width:100%;border-collapse:collapse;margin:6px 0 22px;font-size:.9rem}
@@ -138,18 +138,18 @@ a:hover{color:var(--accent)}
 .ctable .ck2{color:#7c3aed;font-weight:700}
 .ctable .ck3{color:#b45309;font-weight:700}
 .ctable .ck4{color:#be185d;font-weight:700}
-@media(max-width:580px){.ctable,.ctable thead,.ctable tbody,.ctable th,.ctable td,.ctable tr{display:block}.ctable thead{display:none}.ctable td{padding:6px 10px;border:0;border-bottom:1px solid var(--line2)}.ctable td::before{content:attr(data-label);font-weight:700;display:block;font-size:.75rem;color:var(--muted);margin-bottom:2px}.ctable tr{border:1px solid var(--line2);border-radius:10px;margin-bottom:10px;background:var(--card);overflow:hidden}}
+@media(max-width:580px){.ctable,.ctable thead,.ctable tbody,.ctable th,.ctable td,.ctable tr{display:block}.ctable thead{display:none}.ctable td{padding:6px 10px;border:0;border-bottom:1px solid var(--line2)}.ctable td::before{content:attr(data-label);font-weight:700;display:block;font-size:.75rem;color:var(--muted);margin-bottom:2px}.ctable tr{border:1px solid var(--line2);border-radius:14px;margin-bottom:10px;background:var(--card);overflow:hidden}}
 
 /* Tips grid */
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:13px;margin:8px 0 26px}
-.tip{background:var(--card);border:1px solid var(--line2);border-left:4px solid var(--accent);border-radius:12px;padding:15px 17px;transition:box-shadow .15s,transform .15s}
+.tip{background:var(--card);border:1px solid var(--line2);border-left:4px solid var(--accent);border-radius:14px;padding:15px 17px;transition:box-shadow .15s,transform .15s}
 .tip:hover{box-shadow:0 8px 22px rgba(21,128,61,.11);transform:translateY(-2px)}
 .tip h3{font-size:1rem;margin-bottom:4px;color:var(--accent-dk)}
 .tip p{font-size:.92rem;color:var(--ink2)}
 
 /* Season grid */
 .season-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:10px 0 24px}
-.season{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:16px 18px}
+.season{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:16px 18px}
 .season h3{margin-top:0;display:flex;align-items:center;gap:8px}
 .season ul{margin-left:18px}
 
@@ -161,7 +161,7 @@ ul{margin:0 0 12px 20px}
 ul li{margin-bottom:5px;font-size:.96rem}
 
 /* FAQ details */
-details{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:13px 17px;margin-bottom:10px;transition:border-color .15s}
+details{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:13px 17px;margin-bottom:10px;transition:border-color .15s}
 details[open]{border-color:#86efac}
 summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px;font-size:.98rem}
 summary::-webkit-details-marker{display:none}
@@ -172,21 +172,21 @@ details p{margin-top:9px;color:var(--ink2);font-size:.94rem}
 /* CTA boxes */
 .cta2{text-align:center;background:var(--accent-lt);border:1px solid #86efac;border-radius:14px;padding:24px;margin-top:28px}
 .cta2 strong{font-size:1.08rem}
-.cta2 a{display:inline-block;background:var(--accent-dk);color:#fff;border-radius:24px;padding:12px 28px;font-weight:800;margin-top:10px;text-decoration:none}
+.cta2 a{display:inline-block;background:var(--accent-dk);color:#fff;border-radius:14px;padding:12px 28px;font-weight:800;margin-top:10px;text-decoration:none}
 .cta2 a:hover{background:var(--accent)}
 
 /* Info box */
-.infobox{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #d97706;border-radius:12px;padding:14px 17px;margin:14px 0 18px;font-size:.93rem}
+.infobox{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #d97706;border-radius:14px;padding:14px 17px;margin:14px 0 18px;font-size:.93rem}
 .infobox strong{color:#92400e}
 
 /* Law box */
-.lawbox{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid #2563eb;border-radius:12px;padding:14px 17px;margin:14px 0 18px;font-size:.93rem}
+.lawbox{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid #2563eb;border-radius:14px;padding:14px 17px;margin:14px 0 18px;font-size:.93rem}
 .lawbox strong{color:#1e40af}
 
 /* Related links */
 .rel{margin-top:10px;font-size:.9rem;color:var(--muted)}
 .rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:10px 0 20px}
-.rel-grid a{background:var(--card);border:1px solid var(--line2);border-radius:10px;padding:11px 14px;text-decoration:none;font-size:.9rem;font-weight:600;color:var(--accent-dk);display:flex;align-items:center;gap:7px;transition:border-color .15s,box-shadow .15s}
+.rel-grid a{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:11px 14px;text-decoration:none;font-size:.9rem;font-weight:600;color:var(--accent-dk);display:flex;align-items:center;gap:7px;transition:border-color .15s,box-shadow .15s}
 .rel-grid a:hover{border-color:#86efac;box-shadow:0 4px 12px rgba(21,128,61,.1)}
 
 /* Newsletter */
@@ -195,7 +195,7 @@ details p{margin-top:9px;color:var(--ink2);font-size:.94rem}
 
 footer{border-top:1px solid var(--line2);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
 footer a{color:var(--muted)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
 
 main{padding:24px 0 56px}
 
@@ -874,7 +874,7 @@ main{padding:24px 0 56px}
   <section class="nl-box">
     <strong style="font-size:1.05rem">📬 Gratis: Schnäppchen- &amp; Garten-Tipps</strong>
     <p>Das Beste aus dem Marktplatz + saisonale Gartentipps für die Schweiz. Kein Spam, jederzeit abbestellbar.</p>
-    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
   </section>
 
   <p class="rel" style="margin-top:20px">Mehr Kaufberater: <a href="/kueche-kaufen-schweiz.html">Küche &amp; Haushalt</a> · <a href="/kaffeemaschine-kaufen-schweiz.html">Kaffeemaschine</a> · <a href="/werkbank-kaufen-schweiz.html">Werkbank</a> · <a href="/bohrmaschine-kaufen-schweiz.html">Bohrmaschine</a> · <a href="/kaufberater-schweiz.html">Alle Kaufberater</a></p>

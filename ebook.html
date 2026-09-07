@@ -27,7 +27,7 @@
   <meta name="twitter:description" content="Wie deutsche Solopreneure KI ohne Bullshit einsetzen. Kostenlos, ohne Email-Gate.">
   <meta name="author" content="Aban (Allen Chour)">
   <style>
-    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:8px}
     *{box-sizing:border-box;margin:0}
     :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#0f9d6b;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
@@ -45,7 +45,7 @@
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.8rem;font-weight:700;margin-left:1.2rem}
     .lang a{padding:.3rem .55rem;color:var(--muted);text-decoration:none;margin:0}
     .lang a.on{background:var(--ink);color:#fff}
-    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:14px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
     .btn--ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--line)}
 
     .hero{padding:3rem 0 1.5rem;text-align:center}
@@ -56,7 +56,7 @@
 
     /* Cover + download card */
     .dl{background:var(--card);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow);display:flex;gap:1.25rem;align-items:center;text-align:left;margin:1.5rem 0}
-    .cover{flex-shrink:0;width:120px;height:160px;border-radius:10px;background:linear-gradient(160deg,var(--amber),var(--amber-dk));color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;box-shadow:var(--shadow);padding:.5rem;text-align:center}
+    .cover{flex-shrink:0;width:120px;height:160px;border-radius:14px;background:linear-gradient(160deg,var(--amber),var(--amber-dk));color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.3rem;box-shadow:var(--shadow);padding:.5rem;text-align:center}
     .cover .c-emoji{font-size:1.6rem}
     .cover .c-t{font-weight:800;font-size:1.05rem;line-height:1.1}
     .cover .c-s{font-size:.62rem;opacity:.9;line-height:1.2}
@@ -66,7 +66,7 @@
     .dl-state{font-size:.78rem;color:var(--ok);font-weight:600}
 
     /* Resume banner (memory feature) */
-    #resume{display:none;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.7rem 1rem;margin:1rem 0;font-size:.9rem;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
+    #resume{display:none;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:14px;padding:.7rem 1rem;margin:1rem 0;font-size:.9rem;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
     #resume.show{display:flex}
     #resume .btn{padding:.45rem .8rem;font-size:.85rem}
     #resume .dismiss{background:none;border:0;color:var(--muted);cursor:pointer;font-size:.85rem;text-decoration:underline}
@@ -98,7 +98,7 @@
     .subscribe h2{font-size:1.15rem;margin-bottom:.25rem}
     .subscribe p{font-size:.9rem;color:var(--muted);margin-bottom:.9rem}
     .subscribe .row{display:flex;gap:.5rem}
-    .subscribe input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem;font-size:1rem;background:#fff}
+    .subscribe input{flex:1;min-width:0;border:1px solid var(--line);border-radius:14px;padding:.8rem .9rem;font-size:1rem;background:#fff}
     .subscribe input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
     .subscribe .micro{font-size:.74rem;color:var(--muted);margin:.55rem 0 0}
     @media(max-width:560px){.subscribe .row{flex-direction:column}.subscribe .row .btn{width:100%;justify-content:center}}
@@ -139,7 +139,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
-<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
+<style>.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}</style>
 
 <div id="progress" role="progressbar" aria-label="Lesefortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
@@ -310,12 +310,12 @@
       <p class="refer-ok" id="shMsg" role="status" aria-live="polite"></p>
     </div>
     <style>
-      .refer-box{background:#fff;border:1px solid #ece6db;border-radius:16px;padding:1.25rem 1.4rem;margin:1.5rem 0;box-shadow:0 6px 18px rgba(28,37,48,.08)}
+      .refer-box{background:#fff;border:1px solid #ece6db;border-radius:14px;padding:1.25rem 1.4rem;margin:1.5rem 0;box-shadow:0 6px 18px rgba(28,37,48,.08)}
       .refer-h{margin:0 0 .4rem;font-size:1.15rem}
       .refer-p{margin:0;color:#3b4654;line-height:1.5}
       .refer-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
       .refer-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #ece6db;background:#fff;
-        color:#b45309;font-weight:700;font-size:.92rem;line-height:1;padding:.65rem .95rem;border-radius:10px;
+        color:#b45309;font-weight:700;font-size:.92rem;line-height:1;padding:.65rem .95rem;border-radius:14px;
         text-decoration:none;cursor:pointer;font-family:inherit;transition:transform .12s ease,border-color .12s ease}
       .refer-btn:hover{transform:translateY(-1px);border-color:#d97706}
       .refer-btn:focus-visible{outline:3px solid #d97706;outline-offset:2px}

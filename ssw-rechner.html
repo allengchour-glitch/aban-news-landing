@@ -39,12 +39,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:720px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dk)}
-:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
 header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;color:var(--amber);text-decoration:none}
-.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:8px;border:0;cursor:pointer;font-size:.92rem}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
 .hero{padding:40px 0 8px;text-align:center}
 .hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
@@ -52,17 +52,17 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
 label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
-input{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+input{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:560px){.cols{grid-template-columns:1fr}}
 .fld{margin-bottom:12px}
 .res{margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:520px){.res{grid-template-columns:1fr}}
-.rc{background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.rc{background:var(--cream);border:1px solid var(--amber-lt);border-radius:14px;padding:16px;text-align:center}
 .rc .lab{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);font-weight:700}
 .rc .big{font-size:clamp(22px,5.5vw,30px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
 .rc .u{font-size:.74rem;color:var(--muted)}
-.bar{height:12px;border-radius:7px;background:var(--field);border:1px solid var(--line);overflow:hidden;margin:14px 0 4px}
+.bar{height:12px;border-radius:8px;background:var(--field);border:1px solid var(--line);overflow:hidden;margin:14px 0 4px}
 .bar i{display:block;height:100%;background:var(--amber-dk)}
 .note{color:var(--muted);font-size:.82rem;margin-top:12px}
 .cta{text-align:center;margin:22px 0 4px}
@@ -81,7 +81,7 @@ footer a{color:var(--muted)}
     <h1><span class="a">SSW &amp; Geburtstermin</span> berechnen</h1>
     <p>In welcher Schwangerschaftswoche bist du, und wann ist der voraussichtliche Termin? Aus dem ersten Tag der letzten Periode — mit Zykluslänge, Trimester und Resttagen. Lokal im Browser.</p>
   </section>
-  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Gezählt wird ab dem <strong>1. Tag der letzten Periode</strong> (Naegele-Regel, + 280 Tage). Nur ~4 % kommen genau am Termin — er ist eine Orientierung. Verbindlich ist der Ultraschall. Nichts wird hochgeladen.</p>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Gezählt wird ab dem <strong>1. Tag der letzten Periode</strong> (Naegele-Regel, + 280 Tage). Nur ~4 % kommen genau am Termin — er ist eine Orientierung. Verbindlich ist der Ultraschall. Nichts wird hochgeladen.</p>
 
   <section class="panel" id="tool">
     <div class="cols">
@@ -106,7 +106,7 @@ footer a{color:var(--muted)}
 <aside data-aban-news-cta aria-label="Newsletter-Hinweis" style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
   <strong style="font-size:1.08rem;color:#1f2937">5 Minuten KI ohne Hype — jeden Werktag</strong>
   <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:8px;font-size:.95rem">Newsletter gratis abonnieren →</a>
 </aside>
 </div>
 </main>

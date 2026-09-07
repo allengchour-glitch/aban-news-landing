@@ -79,12 +79,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:900px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dk)}
-:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
 header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;color:var(--amber);text-decoration:none}
-.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:9px;border:0;cursor:pointer;font-size:.95rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;font-size:.95rem}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
 .btn.big{padding:13px 22px;font-size:1.05rem}
@@ -96,7 +96,7 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .chip{font-size:.82rem;font-weight:600;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:999px;padding:5px 12px}
 /* Steps */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:30px 0}
-.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
 .step .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--amber);color:#fff;font-weight:800;margin-bottom:8px}
 .step b{display:block;margin-bottom:3px}
 .step span{color:var(--muted);font-size:.9rem}
@@ -118,22 +118,22 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .plan .tag{display:inline-block;font-size:.72rem;font-weight:700;background:var(--amber);color:#fff;border-radius:999px;padding:2px 9px;margin-bottom:8px}
 .plan .free::before{content:"•";color:var(--muted)}
 /* App */
-.app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px;margin:8px 0 6px}
+.app{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;margin:8px 0 6px}
 .tabs{display:flex;gap:6px;padding:8px 8px 0}
-.tab{flex:1;text-align:center;background:transparent;border:0;border-radius:10px 10px 0 0;padding:12px 10px;font-weight:700;color:var(--muted);cursor:pointer;font-size:.98rem}
+.tab{flex:1;text-align:center;background:transparent;border:0;border-radius:14px 14px 0 0;padding:12px 10px;font-weight:700;color:var(--muted);cursor:pointer;font-size:.98rem}
 .tab[aria-selected=true]{background:var(--field);color:var(--amber-dk);box-shadow:inset 0 -3px 0 var(--amber)}
 .panel{padding:18px}
 .panel[hidden]{display:none}
 .field{margin-bottom:14px}
 .field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
 .field .hint{color:var(--muted);font-weight:400;font-size:.84rem}
-input[type=text],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+input[type=text],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
 textarea{min-height:84px;resize:vertical}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:560px){.row{grid-template-columns:1fr}}
 .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px}
 .quota{font-size:.85rem;color:var(--muted);margin-left:auto}
-.result{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:16px;display:none}
+.result{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:14px;padding:16px;display:none}
 .result.show{display:block}
 .result h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
 .result .out{white-space:pre-wrap;font-size:1rem;line-height:1.65}
@@ -141,7 +141,7 @@ textarea{min-height:84px;resize:vertical}
 .reslink{margin-top:12px;font-size:.88rem;color:var(--muted)}.reslink a{font-weight:600}
 .copied{color:var(--ok)!important}
 /* Pro */
-.pro{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:26px}
+.pro{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:26px}
 .pro h2{font-size:1.4rem;margin-bottom:6px}
 .pro .price{font-size:1.05rem;color:var(--ink2);margin-bottom:14px}
 .pro .price b{color:var(--amber-dk);font-size:1.25rem}
@@ -150,13 +150,13 @@ textarea{min-height:84px;resize:vertical}
 .pro li{padding-left:26px;position:relative;color:var(--ink2);font-size:.95rem}
 .pro li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
 .pro .note{color:var(--muted);font-size:.85rem;margin-top:12px}
-.upsell{display:none;margin-top:16px;background:var(--okbg);border:1px solid var(--amber-lt);border-radius:12px;padding:14px 16px}
+.upsell{display:none;margin-top:16px;background:var(--okbg);border:1px solid var(--amber-lt);border-radius:14px;padding:14px 16px}
 .upsell.show{display:block}
 .upsell b{color:var(--amber-dk)}
-.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:24px;text-align:center}
 .band h2{font-size:1.25rem;margin-bottom:8px}.band p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
 .faq{margin:30px 0}.faq h2{font-size:1.3rem;margin-bottom:10px}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin-bottom:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 15px;margin-bottom:10px}
 summary{font-weight:700;cursor:pointer}details p{color:var(--ink2);margin-top:8px;font-size:.95rem}
 .disc{color:var(--muted);font-size:.82rem;margin:18px 0;text-align:center}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
@@ -209,7 +209,7 @@ footer a{color:var(--muted)}
       <span style="display:block;color:#475569;font-size:.92rem;margin-top:.2rem">„KI" heißt einfach: ein Computer-Helfer, der dir einen ersten Text schreibt. Du musst nichts können — du tippst ein paar Worte, der Rest kommt von selbst. Du entscheidest am Ende, was du nimmst.</span>
     </div>
     <div style="display:grid;gap:1rem;padding:1.1rem;grid-template-columns:1fr">
-      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:.9rem 1rem">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:.9rem 1rem">
         <div style="font-size:.78rem;font-weight:700;color:#0ea5e9;text-transform:uppercase;letter-spacing:.03em">Das tippst du ein</div>
         <ul style="margin:.5rem 0 0;padding-left:1.1rem;color:#334155;line-height:1.6">
           <li><b>Deine Branche:</b> Bäckerei</li>
@@ -217,7 +217,7 @@ footer a{color:var(--muted)}
           <li><b>Stichworte</b> (= ein paar einzelne Worte, keine ganzen Sätze): <i>Butterzopf, frisch, Sonntag, handgemacht</i></li>
         </ul>
       </div>
-      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:.9rem 1rem">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:.9rem 1rem">
         <div style="font-size:.78rem;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:.03em">Das kommt heraus (Beispiel)</div>
         <p style="margin:.5rem 0 0;color:#334155;line-height:1.6;font-style:italic">„Unser handgemachter Butterzopf — jeden Sonntag frisch aus dem Ofen. Goldbraun gebacken, locker und buttrig. Hol dir ein Stück Sonntagsgefühl in deine Küche."</p>
         <p style="margin:.6rem 0 0;color:#64748b;font-size:.88rem">Den Text kannst du dann ändern, wie du willst, und mit einem Klick kopieren — also herausnehmen, um ihn woanders einzufügen (z. B. auf deiner Webseite oder bei Instagram).</p>

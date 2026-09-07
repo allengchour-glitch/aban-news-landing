@@ -344,12 +344,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:900px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dk)}
-:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
 header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;color:var(--amber);text-decoration:none}
-.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:9px;border:0;cursor:pointer;font-size:.95rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;font-size:.95rem}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
 .hero{padding:42px 0 6px;text-align:center}
 .hero h1{font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:14px}
@@ -361,22 +361,22 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .cat h2{font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
 .catsub{color:var(--muted);font-size:.92rem;margin-bottom:12px}
 .tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.tool{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.tool{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
 .tool:hover{border-color:var(--amber);transform:translateY(-1px)}
 .tool b{display:block;color:var(--amber-dk);font-size:1rem}
 .tool span{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
-.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:24px;text-align:center}
 .band h2{font-size:1.3rem;margin-bottom:8px}
 .band p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
 .faq{margin:30px 0}
 .faq h2{font-size:1.3rem;margin-bottom:10px}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin-bottom:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 15px;margin-bottom:10px}
 summary{font-weight:700;cursor:pointer}
 details p{color:var(--ink2);margin-top:8px;font-size:.95rem}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}
 .toolfind{margin:20px 0 4px}
-.toolfind input{width:100%;font-size:1rem;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.toolfind input{width:100%;font-size:1rem;padding:13px 15px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink)}
 .toolfind input:focus{outline:2px solid var(--amber-lt,#fde9c8);border-color:var(--amber)}
 .tschips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .tschips button{font:inherit;font-size:.85rem;font-weight:700;border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:999px;padding:6px 13px;cursor:pointer;transition:background .12s,color .12s}
@@ -386,8 +386,8 @@ footer a{color:var(--muted)}
 .tsmeta #tscount{font-size:.88rem;color:var(--muted);font-weight:600}
 .tsmeta #tsrandom{font:inherit;font-size:.85rem;font-weight:700;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);border-radius:999px;padding:6px 14px;cursor:pointer}
 .tsmeta #tsrandom:hover{background:var(--cream)}
-.tsempty{margin:18px 0;padding:16px;text-align:center;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px}
-.cat mark{background:var(--cream);color:inherit;padding:0 1px;border-radius:3px}
+.tsempty{margin:18px 0;padding:16px;text-align:center;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:14px}
+.cat mark{background:var(--cream);color:inherit;padding:0 1px;border-radius:8px}
 .hero-art{max-width:172px;margin:0 auto 4px}
 .hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 7px 16px rgba(180,83,9,.14))}
 </style>
@@ -678,11 +678,11 @@ footer a{color:var(--muted)}
     <h2 style="margin:0 0 .5rem;font-size:1.15rem;color:#1f2937">Schon weiter? Bezahlte Angebote</h2>
     <p style="margin:0 0 .9rem;color:#374151;font-size:.95rem;line-height:1.6">Die Gratis-Tools helfen beim Einstieg. Wenn du tiefer willst:</p>
     <div style="display:grid;gap:.7rem;grid-template-columns:1fr">
-      <a href="/shop.html" style="display:block;text-decoration:none;color:inherit;padding:.8rem 1rem;border:1px solid #ece3d4;border-radius:10px;background:#fffbf5">
+      <a href="/shop.html" style="display:block;text-decoration:none;color:inherit;padding:.8rem 1rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5">
         <strong style="color:#1f2937">Branchen-Kits — CHF 12</strong>
         <span style="display:block;color:#374151;font-size:.9rem;margin-top:.2rem">Spickzettel + erprobte Prompts + Datenschutz-Checkliste für deine Branche.</span>
       </a>
-      <a href="/founding.html" style="display:block;text-decoration:none;color:inherit;padding:.8rem 1rem;border:1px solid #ece3d4;border-radius:10px;background:#fffbf5">
+      <a href="/founding.html" style="display:block;text-decoration:none;color:inherit;padding:.8rem 1rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5">
         <strong style="color:#1f2937">Premium — ab €9/Monat · Founding €69 lifetime</strong>
         <span style="display:block;color:#374151;font-size:.9rem;margin-top:.2rem">Werbefreies Voll-Archiv, Tool-Datenbank und direkter Draht. Founding-Mitglieder zahlen einmal, nie wieder.</span>
       </a>

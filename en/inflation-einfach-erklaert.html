@@ -39,14 +39,14 @@
   main{max-width:760px;margin:0 auto;padding:0 20px}
   h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
   .lead{font-size:1.12rem;color:var(--ink2)}
-  .note{background:var(--field);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;margin:22px 0;color:var(--ink2);font-size:.96rem}
+  .note{background:var(--field);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:14px 16px;margin:22px 0;color:var(--ink2);font-size:.96rem}
   h2{font-size:1.35rem;margin:34px 0 6px}
   p{color:var(--ink2)}
-  .tip{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;background:#fff}
+  .tip{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0;background:#fff}
   .tip h3{margin:0 0 6px;font-size:1.12rem}
   .n{display:inline-block;min-width:1.6rem;color:var(--amber-dk);font-weight:800}
   .tip p{margin:.3rem 0 0}
-  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  details{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;background:#fff}
   summary{font-weight:700;cursor:pointer}
   .premium{background:linear-gradient(180deg,#fff7ed,#fffbf5);border:1px solid #f6d9ad;border-radius:14px;padding:22px;margin:30px 0}
   footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
@@ -78,7 +78,7 @@
 
   <div class="note">⚠️ <strong>Important:</strong> General information, <strong>not investment advice</strong>. Nobody knows future inflation. The calculator below uses an assumption, not a prediction.</div>
 
-  <p class="answer-first" data-aban-answer style="background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid #d97706;border-radius:12px;padding:13px 16px;margin:0 0 18px;font-size:1.02rem"><strong>In short:</strong> Inflation means prices rise, so your money becomes worth less over time. For the same amount you get less later than today. That's called a loss of purchasing power.</p>
+  <p class="answer-first" data-aban-answer style="background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid #d97706;border-radius:14px;padding:13px 16px;margin:0 0 18px;font-size:1.02rem"><strong>In short:</strong> Inflation means prices rise, so your money becomes worth less over time. For the same amount you get less later than today. That's called a loss of purchasing power.</p>
 <h2>What is inflation?</h2>
   <p>When prices generally rise, the <strong>purchasing power</strong> of your money falls: for the same amount you get less later. If, say, everything rises 3% a year, a purchase that costs &euro;100 today costs about &euro;103 next year — and your &euro;100 note buys correspondingly less. Over many years this adds up significantly.</p>
 
@@ -102,8 +102,8 @@
       <label style="font-size:.88rem;color:var(--ink2)">Inflation p.a. (%)<input id="if-rate" type="number" min="0" max="20" step="0.5" value="3" inputmode="decimal" style="display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem"></label>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px">
-      <div style="background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Real purchasing power later</span><b id="if-real" style="font-size:1.35rem;color:var(--amber-dk)">–</b></div>
-      <div style="background:var(--field);border:1px solid var(--line);border-radius:10px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Purchasing-power loss</span><b id="if-loss" style="font-size:1.35rem;color:#b91c1c">–</b></div>
+      <div style="background:var(--field);border:1px solid var(--line);border-radius:14px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Real purchasing power later</span><b id="if-real" style="font-size:1.35rem;color:var(--amber-dk)">–</b></div>
+      <div style="background:var(--field);border:1px solid var(--line);border-radius:14px;padding:12px 14px"><span style="font-size:.85rem;color:var(--muted);display:block">Purchasing-power loss</span><b id="if-loss" style="font-size:1.35rem;color:#b91c1c">–</b></div>
     </div>
     <p style="font-size:.82rem;color:var(--muted);margin-top:12px">Simplified calculation with constant inflation (purchasing-power adjusted, no interest/investment). Real inflation varies. Not investment advice.</p>
     <script>
@@ -132,7 +132,7 @@
   </div>
 
   
-<section data-aban-signup style="max-width:760px;margin:30px auto;padding:20px;border:1px solid #ece3d4;border-radius:14px;background:#fff;text-align:center"><h2 style="margin:0 0 6px;font-size:1.25rem">One AI tip a day, in 5 minutes</h2><p style="margin:0 0 12px;color:#374151">Honest, anti-hype, free. Mon&ndash;Fri, unsubscribe anytime.</p><form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:460px;margin:0 auto"><input type="email" name="email" required placeholder="you@email.com" autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse" style="flex:1;min-width:200px;padding:11px 14px;border:1px solid #ece3d4;border-radius:10px;font-size:1rem"><button type="submit" style="background:#b45309;color:#fff;border:0;border-radius:10px;padding:11px 20px;font-weight:700;font-size:1rem;cursor:pointer">Subscribe free</button></form></section>
+<section data-aban-signup style="max-width:760px;margin:30px auto;padding:20px;border:1px solid #ece3d4;border-radius:14px;background:#fff;text-align:center"><h2 style="margin:0 0 6px;font-size:1.25rem">One AI tip a day, in 5 minutes</h2><p style="margin:0 0 12px;color:#374151">Honest, anti-hype, free. Mon&ndash;Fri, unsubscribe anytime.</p><form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:460px;margin:0 auto"><input type="email" name="email" required placeholder="you@email.com" autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse" style="flex:1;min-width:200px;padding:11px 14px;border:1px solid #ece3d4;border-radius:14px;font-size:1rem"><button type="submit" style="background:#b45309;color:#fff;border:0;border-radius:14px;padding:11px 20px;font-weight:700;font-size:1rem;cursor:pointer">Subscribe free</button></form></section>
 <h2>Common questions</h2>
   <details><summary>What is inflation, simply put?</summary><p>Inflation means prices rise, so your money becomes worth less over time. For the same amount you get less later than today. That's called a loss of purchasing power.</p></details>
   <details><summary>What does inflation mean for my savings?</summary><p>Money in a checking or savings account loses real value during inflation if interest is below inflation. The emergency fund still belongs in a safe account; long-term money, broadly invested, can offset inflation better — with no guarantee.</p></details>

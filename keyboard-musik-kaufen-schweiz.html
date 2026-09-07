@@ -113,12 +113,12 @@ a:hover{color:#5b21b6}
 .hero{background:linear-gradient(135deg,#1e1040,#4c1d95 55%,#7c3aed);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(167,139,250,.28),transparent 45%),radial-gradient(circle at 8% 90%,rgba(124,58,237,.25),transparent 42%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:42px 18px 38px;position:relative;z-index:1}
-.hero .ic{font-size:2.2rem;width:66px;height:66px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:18px;margin-bottom:10px}
+.hero .ic{font-size:2.2rem;width:66px;height:66px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.55rem,4.2vw,2.1rem);margin:6px 0 10px;line-height:1.18}
 .hero p{color:#e9d5ff;font-size:1.04rem;max-width:620px}
 .hero .trust{margin-top:16px;display:flex;gap:8px 16px;flex-wrap:wrap;font-size:.82rem;color:#e9d5ff}
 .hero .trust span{display:inline-flex;align-items:center;gap:5px}
-.bigcta{display:inline-block;margin-top:18px;background:#fff;color:var(--amber-dk);border-radius:24px;padding:12px 26px;font-weight:800;font-size:1rem;box-shadow:0 10px 26px rgba(0,0,0,.22);text-decoration:none}
+.bigcta{display:inline-block;margin-top:18px;background:#fff;color:var(--amber-dk);border-radius:14px;padding:12px 26px;font-weight:800;font-size:1rem;box-shadow:0 10px 26px rgba(0,0,0,.22);text-decoration:none}
 .bigcta:hover{background:var(--cream);color:#5b21b6}
 
 /* Breadcrumb */
@@ -127,13 +127,13 @@ a:hover{color:#5b21b6}
 .bc a:hover{text-decoration:underline}
 
 /* Answer-first */
-.answer-first{background:var(--cream);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem}
+.answer-first{background:var(--cream);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:14px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem}
 .answer-first strong{color:var(--amber-dk)}
 
 /* Tips cards */
 main{padding:28px 0 60px}
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:8px 0 28px}
-.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:14px 16px;transition:box-shadow .15s,transform .15s}
+.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:14px;padding:14px 16px;transition:box-shadow .15s,transform .15s}
 .tip:hover{box-shadow:0 8px 24px rgba(109,40,217,.1);transform:translateY(-1px)}
 .tip h3{font-size:1.01rem;margin-bottom:4px;color:var(--amber-dk)}
 .tip p{font-size:.93rem;color:var(--ink2)}
@@ -148,7 +148,7 @@ ul.prose-list{margin:6px 0 14px 20px;color:var(--ink2);font-size:.96rem}
 ul.prose-list li{margin-bottom:5px}
 
 /* Table of contents */
-.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 0 26px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:0 0 26px}
 .toc h2{margin:0 0 10px;font-size:1.05rem}
 .toc ol{margin:0;padding-left:20px;columns:2;column-gap:22px;font-size:.89rem;color:var(--ink2)}
 .toc li{margin-bottom:6px;break-inside:avoid}
@@ -166,10 +166,10 @@ ul.prose-list li{margin-bottom:5px}
 .ctable .ck2{color:#b45309;font-weight:700}
 .ctable .ck3{color:#0369a1;font-weight:700}
 .ctable .ck4{color:#9f1239;font-weight:700}
-.tag-badge{display:inline-block;font-size:.76rem;font-weight:700;padding:2px 7px;border-radius:20px;background:#ede9fe;color:#5b21b6;margin-top:2px}
+.tag-badge{display:inline-block;font-size:.76rem;font-weight:700;padding:2px 7px;border-radius:14px;background:#ede9fe;color:#5b21b6;margin-top:2px}
 
 /* Details / FAQ */
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:10px;transition:border-color .15s}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 16px;margin-bottom:10px;transition:border-color .15s}
 details[open]{border-color:#c4b5fd}
 summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
 summary::-webkit-details-marker{display:none}
@@ -180,19 +180,19 @@ details p{margin-top:10px;color:var(--ink2);font-size:.95rem;line-height:1.6}
 /* CTA box */
 .cta2{text-align:center;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:24px;margin-top:28px}
 .cta2 p{font-size:.95rem;color:var(--ink2);margin:6px 0 14px}
-.cta2 a.btn{display:inline-block;background:var(--amber-dk);color:#fff;border-radius:24px;padding:13px 28px;font-weight:800;text-decoration:none;font-size:1rem}
+.cta2 a.btn{display:inline-block;background:var(--amber-dk);color:#fff;border-radius:14px;padding:13px 28px;font-weight:800;text-decoration:none;font-size:1rem}
 .cta2 a.btn:hover{background:#5b21b6}
 
 /* Highlight box */
-.highlight{background:#ede9fe;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0 20px;font-size:.95rem;color:#4c1d95}
+.highlight{background:#ede9fe;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:14px 0 20px;font-size:.95rem;color:#4c1d95}
 .highlight strong{color:#3b0764}
 
 /* Newsletter */
 .newsletter{margin-top:28px;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
 .newsletter p{font-size:.88rem;color:var(--ink2);margin:5px 0 12px}
 .newsletter form{display:flex;gap:8px;max-width:390px;margin:0 auto;flex-wrap:wrap}
-.newsletter input[type=email]{flex:1;min-width:160px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem}
-.newsletter button{background:var(--amber-dk);color:#fff;border:0;border-radius:24px;padding:10px 20px;font-weight:800;cursor:pointer;font-size:.95rem}
+.newsletter input[type=email]{flex:1;min-width:160px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;font-family:inherit;font-size:.95rem}
+.newsletter button{background:var(--amber-dk);color:#fff;border:0;border-radius:14px;padding:10px 20px;font-weight:800;cursor:pointer;font-size:.95rem}
 .newsletter button:hover{background:#5b21b6}
 
 /* Related links */
@@ -203,7 +203,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var
 footer a{color:var(--muted)}
 footer a:hover{color:var(--amber-dk)}
 
-:focus-visible{outline:3px solid #7c3aed;outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid #7c3aed;outline-offset:2px;border-radius:8px}
 
 @media(max-width:520px){
   .ctable{font-size:.83rem}
@@ -859,7 +859,7 @@ footer a:hover{color:var(--amber-dk)}
   <section class="newsletter">
     <strong style="font-size:1.05rem">📬 Gratis: Schnäppchen- &amp; Musik-Tipps</strong>
     <p>Das Beste aus dem Marktplatz + 1 Kaufberater-Tipp, Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.</p>
-<iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+<iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
   </section>
 
   <!-- Related links -->

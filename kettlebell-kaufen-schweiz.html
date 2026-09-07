@@ -123,23 +123,23 @@ a:hover{color:var(--accent)}
 .hero{background:linear-gradient(135deg,#0f172a,#7f1d1d 55%,#dc2626);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(248,113,113,.24),transparent 45%),radial-gradient(circle at 8% 90%,rgba(153,27,27,.32),transparent 42%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:40px 18px 36px;position:relative;z-index:1}
-.hero .ic{font-size:2rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:18px;margin-bottom:10px}
+.hero .ic{font-size:2rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.55rem,4.5vw,2.1rem);margin:4px 0 10px;line-height:1.18}
 .hero p{color:#fecaca;font-size:1.04rem;max-width:620px}
 .hero .trust{margin-top:14px;display:flex;gap:8px 16px;flex-wrap:wrap;font-size:.82rem;color:#fecaca}
 .hero .trust span{display:inline-flex;align-items:center;gap:5px}
-.bigcta{display:inline-block;margin-top:18px;background:#fff;color:var(--accent-dk);border-radius:24px;padding:12px 26px;font-weight:800;font-size:1rem;box-shadow:0 10px 24px rgba(0,0,0,.22);text-decoration:none}
+.bigcta{display:inline-block;margin-top:18px;background:#fff;color:var(--accent-dk);border-radius:14px;padding:12px 26px;font-weight:800;font-size:1rem;box-shadow:0 10px 24px rgba(0,0,0,.22);text-decoration:none}
 .bigcta:hover{background:var(--cream);color:var(--accent-dk)}
 
 /* Main */
 main{padding:26px 0 60px}
 
 /* Answer-first box */
-.answer-first{background:var(--cream);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem;line-height:1.6}
+.answer-first{background:var(--cream);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem;line-height:1.6}
 
 /* Tips grid */
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0 28px}
-.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;transition:box-shadow .15s,transform .15s}
+.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:14px 16px;transition:box-shadow .15s,transform .15s}
 .tip:hover{box-shadow:0 8px 24px rgba(220,38,38,.10);transform:translateY(-2px)}
 .tip .tip-icon{font-size:1.4rem;margin-bottom:4px}
 .tip h3{font-size:.98rem;margin-bottom:3px;color:var(--ink)}
@@ -167,11 +167,11 @@ li{margin-bottom:5px;font-size:.95rem;color:var(--ink2)}
 @media(max-width:600px){.ctable{font-size:.8rem}.ctable th,.ctable td{padding:7px 8px}}
 
 /* Infobox */
-.infobox{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0}
+.infobox{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:18px 0}
 .infobox strong{color:var(--accent-dk)}
 
 /* Details / FAQ */
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:10px;transition:border-color .15s}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 16px;margin-bottom:10px;transition:border-color .15s}
 details[open]{border-color:#fca5a5}
 summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px;font-size:.97rem}
 summary::-webkit-details-marker{display:none}
@@ -185,15 +185,15 @@ details .detail-body ul{margin-bottom:8px}
 .cta2{text-align:center;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:24px;margin-top:30px}
 .cta2 h3{font-size:1.1rem;margin-bottom:6px;border:none;padding:0}
 .cta2 p{font-size:.92rem;color:var(--ink2);margin-bottom:12px}
-.cta2 a.cta-btn{display:inline-block;background:var(--accent-dk);color:#fff;border-radius:24px;padding:13px 28px;font-weight:800;font-size:1rem;text-decoration:none;transition:background .15s}
+.cta2 a.cta-btn{display:inline-block;background:var(--accent-dk);color:#fff;border-radius:14px;padding:13px 28px;font-weight:800;font-size:1rem;text-decoration:none;transition:background .15s}
 .cta2 a.cta-btn:hover{background:var(--accent)}
 
 /* Newsletter */
 .newsletter{margin-top:28px;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
 .newsletter p{font-size:.88rem;color:var(--ink2);margin:4px 0 12px}
 .newsletter form{display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap}
-.newsletter input{flex:1;min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem}
-.newsletter button{background:var(--accent-dk);color:#fff;border:0;border-radius:24px;padding:10px 20px;font-weight:800;cursor:pointer;font-size:.93rem}
+.newsletter input{flex:1;min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;font-family:inherit;font-size:.95rem}
+.newsletter button{background:var(--accent-dk);color:#fff;border:0;border-radius:14px;padding:10px 20px;font-weight:800;cursor:pointer;font-size:.93rem}
 .newsletter button:hover{background:var(--accent)}
 
 /* Related links */
@@ -209,7 +209,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var
 footer a{color:var(--muted)}
 footer a:hover{color:var(--accent-dk)}
 
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
 </style>
 </head>
 <body>
@@ -876,7 +876,7 @@ footer a:hover{color:var(--accent-dk)}
   <section class="newsletter">
     <strong style="font-size:1.05rem">📬 Gratis: Schnäppchen- &amp; Sport-Updates</strong>
     <p>Das Beste aus dem Marktplatz + 1 Tipp, Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.</p>
-    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
   </section>
 
   <p class="rel">Mehr im <a href="/marktplatz.html">aban-Marktplatz</a>: Jobs, Fahrzeuge, Immobilien, Angebote &amp; Inserate für die Schweiz &amp; DACH. Oder gleich alles auf einmal in der <a href="/suche.html">Universal-Suche</a>.</p>

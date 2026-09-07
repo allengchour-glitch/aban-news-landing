@@ -37,7 +37,7 @@
   /* Spieler-Hälften */
   .haelfte{
     flex:1;position:relative;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;overflow:hidden;border-radius:20px;
+    align-items:center;justify-content:center;overflow:hidden;border-radius:14px;
     box-shadow:0 4px 14px rgba(40,90,150,.12), inset 0 0 0 2px rgba(255,255,255,.6);
   }
   .haelfte.oben{transform:rotate(180deg);background:
@@ -46,7 +46,7 @@
   .haelfte.unten{background:
     radial-gradient(120% 100% at 50% 100%,rgba(255,255,255,.55),rgba(255,255,255,0) 65%),
     linear-gradient(0deg,#cdeed8,#e0f6e8)}
-  .rand{position:absolute;inset:8px;border-radius:16px;border:3px dashed transparent;pointer-events:none;transition:border-color .15s}
+  .rand{position:absolute;inset:8px;border-radius:14px;border:3px dashed transparent;pointer-events:none;transition:border-color .15s}
   .haelfte.aktiv .rand{border-color:#ffcf3a}
 
   .kopf{display:flex;align-items:center;gap:10px;margin-bottom:10px;z-index:2}
@@ -61,7 +61,7 @@
   }
   .zielwort{
     font-size:clamp(34px,11vw,64px);font-weight:900;margin-bottom:12px;z-index:2;
-    background:#fffdf6;border-radius:18px;padding:2px 26px;line-height:1.25;
+    background:#fffdf6;border-radius:14px;padding:2px 26px;line-height:1.25;
     box-shadow:0 4px 14px rgba(40,90,150,.15);
     text-shadow:0 2px 4px rgba(0,0,0,.08);
   }
@@ -71,7 +71,7 @@
     width:92%;max-width:460px;z-index:2;
   }
   .fbtn{
-    aspect-ratio:1.5/1;border:none;border-radius:16px;cursor:pointer;
+    aspect-ratio:1.5/1;border:none;border-radius:14px;cursor:pointer;
     box-shadow:0 4px 0 rgba(0,0,0,.16), 0 6px 14px rgba(40,90,150,.18);min-height:46px;
     background-image:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,0) 55%,rgba(0,0,0,.08));
     transition:transform .06s;
@@ -83,7 +83,7 @@
   /* Mittelstreifen / Runde */
   .mitte{
     height:42px;display:flex;align-items:center;justify-content:center;gap:14px;
-    background:#fffdf6;border-radius:21px;box-shadow:0 4px 14px rgba(40,90,150,.18);z-index:10;
+    background:#fffdf6;border-radius:14px;box-shadow:0 4px 14px rgba(40,90,150,.18);z-index:10;
     flex:0 0 auto;
   }
   .mitte b{font-size:15px;color:#3a7dd8}
@@ -101,13 +101,13 @@
   }
   .overlay.hide{display:none}
   .card{
-    background:#fffdf6;border-radius:24px;padding:28px 24px;max-width:360px;width:100%;
+    background:#fffdf6;border-radius:14px;padding:28px 24px;max-width:360px;width:100%;
     box-shadow:0 14px 34px rgba(40,90,150,.22);
   }
   .card h1{font-size:30px;margin-bottom:8px;color:#3a7dd8}
   .card p{font-size:16px;line-height:1.5;margin-bottom:18px;color:#41597a}
   .big{
-    background:linear-gradient(180deg,#ffcf3a,#ff8c2a);color:#fff;border:none;border-radius:18px;
+    background:linear-gradient(180deg,#ffcf3a,#ff8c2a);color:#fff;border:none;border-radius:14px;
     padding:14px 30px;font-size:20px;font-weight:bold;cursor:pointer;
     text-shadow:0 1px 3px rgba(140,60,0,.35);
     box-shadow:0 6px 16px rgba(255,140,42,.45);min-height:46px;

@@ -121,7 +121,7 @@ a:hover{color:var(--accent)}
 .hero{background:linear-gradient(135deg,#1a0a0a,#3b0a0a 55%,#991b1b);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(239,68,68,.22),transparent 45%),radial-gradient(circle at 8% 88%,rgba(220,38,38,.18),transparent 40%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:40px 18px 36px;position:relative;z-index:1}
-.hero .ic{font-size:2rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:18px;margin-bottom:10px}
+.hero .ic{font-size:2rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.55rem,4.5vw,2.05rem);margin:4px 0 10px;line-height:1.2}
 .hero p{color:#fecaca;font-size:1.03rem;max-width:620px}
 .hero .trust{margin-top:14px;display:flex;gap:8px 16px;flex-wrap:wrap;font-size:.82rem;color:#fecaca}
@@ -132,14 +132,14 @@ a:hover{color:var(--accent)}
 .bc a{color:var(--accent-dk)}
 
 /* Answer-first box */
-.answer-first{background:#fff1f1;border:1px solid #fecaca;border-left:4px solid var(--accent);border-radius:12px;padding:14px 18px;margin:0 0 20px;font-size:1.03rem;line-height:1.6}
+.answer-first{background:#fff1f1;border:1px solid #fecaca;border-left:4px solid var(--accent);border-radius:14px;padding:14px 18px;margin:0 0 20px;font-size:1.03rem;line-height:1.6}
 
 /* Main layout */
 main{padding:28px 0 60px}
 
 /* Tips grid */
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:8px 0 28px}
-.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:15px 16px;transition:box-shadow .15s,transform .15s}
+.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:15px 16px;transition:box-shadow .15s,transform .15s}
 .tip:hover{box-shadow:0 8px 24px rgba(31,41,55,.09);transform:translateY(-2px)}
 .tip h3{font-size:1.01rem;margin-bottom:4px;color:var(--ink)}
 .tip p{font-size:.92rem;color:var(--ink2)}
@@ -162,18 +162,18 @@ h3{font-size:1.05rem;margin:16px 0 6px;color:var(--ink)}
 
 /* Product card rows */
 .prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:8px 0 20px}
-.prod-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
-.prod-card .badge{display:inline-block;background:var(--accent-lt);color:var(--accent-dk);font-size:.75rem;font-weight:700;border-radius:6px;padding:2px 8px;margin-bottom:6px}
+.prod-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.prod-card .badge{display:inline-block;background:var(--accent-lt);color:var(--accent-dk);font-size:.75rem;font-weight:700;border-radius:8px;padding:2px 8px;margin-bottom:6px}
 .prod-card h4{font-size:.97rem;margin-bottom:4px}
 .prod-card .price{font-weight:700;color:var(--accent-dk);font-size:1.05rem}
 .prod-card p{font-size:.87rem;color:var(--ink2);margin-top:4px}
 
 /* Info box */
-.info-box{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid #16a34a;border-radius:12px;padding:13px 16px;margin:12px 0 20px;font-size:.93rem;color:#166534}
-.warn-box{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #d97706;border-radius:12px;padding:13px 16px;margin:12px 0 20px;font-size:.93rem;color:#92400e}
+.info-box{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid #16a34a;border-radius:14px;padding:13px 16px;margin:12px 0 20px;font-size:.93rem;color:#166534}
+.warn-box{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #d97706;border-radius:14px;padding:13px 16px;margin:12px 0 20px;font-size:.93rem;color:#92400e}
 
 /* FAQ details */
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin-bottom:10px;transition:border-color .15s}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 16px;margin-bottom:10px;transition:border-color .15s}
 details[open]{border-color:#fecaca}
 summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px;color:var(--ink)}
 summary::-webkit-details-marker{display:none}
@@ -185,27 +185,27 @@ details li{margin-bottom:3px}
 
 /* Retailer list */
 .retailer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:8px 0 20px}
-.retailer{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.retailer{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px}
 .retailer strong{display:block;margin-bottom:3px;font-size:.97rem}
 .retailer p{font-size:.86rem;color:var(--ink2)}
 
 /* CTA box */
-.cta-box{text-align:center;background:var(--cream);border:1px solid #fecaca;border-radius:16px;padding:24px 20px;margin-top:30px}
+.cta-box{text-align:center;background:var(--cream);border:1px solid #fecaca;border-radius:14px;padding:24px 20px;margin-top:30px}
 .cta-box p{color:var(--ink2);font-size:.96rem;margin:6px 0 14px}
 .btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn-primary{display:inline-block;background:var(--accent);color:#fff;border-radius:24px;padding:12px 24px;font-weight:700;font-size:.97rem;text-decoration:none;transition:background .15s}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;border-radius:14px;padding:12px 24px;font-weight:700;font-size:.97rem;text-decoration:none;transition:background .15s}
 .btn-primary:hover{background:var(--accent-dk);color:#fff}
-.btn-secondary{display:inline-block;background:#fff;color:var(--accent-dk);border:2px solid var(--accent);border-radius:24px;padding:11px 22px;font-weight:700;font-size:.97rem;text-decoration:none;transition:background .15s}
+.btn-secondary{display:inline-block;background:#fff;color:var(--accent-dk);border:2px solid var(--accent);border-radius:14px;padding:11px 22px;font-weight:700;font-size:.97rem;text-decoration:none;transition:background .15s}
 .btn-secondary:hover{background:var(--accent-lt)}
 
 /* Newsletter */
-.newsletter{background:var(--cream);border:1px solid #fecaca;border-radius:16px;padding:20px;text-align:center;margin-top:28px}
+.newsletter{background:var(--cream);border:1px solid #fecaca;border-radius:14px;padding:20px;text-align:center;margin-top:28px}
 .newsletter strong{font-size:1.05rem}
 .newsletter p{font-size:.88rem;color:var(--ink2);margin:4px 0 12px}
 
 /* Related pages */
 .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:12px 0 20px}
-.related-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,border-color .15s}
+.related-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,border-color .15s}
 .related-card:hover{box-shadow:0 6px 18px rgba(31,41,55,.09);border-color:#fca5a5;color:var(--ink)}
 .related-card .ricon{font-size:1.4rem;margin-bottom:4px;display:block}
 .related-card strong{font-size:.93rem;display:block;margin-bottom:2px}
@@ -224,7 +224,7 @@ ul.check li::before{content:"✓ ";color:#16a34a;font-weight:700}
 ul.cross li::before{content:"✗ ";color:var(--accent);font-weight:700}
 p+p{margin-top:10px}
 
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
 @media(max-width:500px){.btn-row{flex-direction:column;align-items:center}}
 </style>
 
@@ -831,7 +831,7 @@ p+p{margin-top:10px}
 <div class="newsletter">
   <strong>📬 Gratis: Technik-Schnäppchen &amp; Kaufberater-Updates</strong>
   <p>Neue Kaufberater, aktuelle Preistipps und Angebote aus der Schweiz — Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.</p>
-  <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+  <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
 </div>
 
 <!-- Related pages -->
