@@ -15138,3 +15138,19 @@ gid://shopify/Product/15525244174721	75->0	Armbanduhr Damen Casual Fashion 40mm
 gid://shopify/Product/15525244273025	51->0	Armbanduhr Holzquarz mit Luminanz
 gid://shopify/Product/15525249712513	10->1	Hochhellende Reparaturpaste 19 g
 gid://shopify/Product/15525250498945	33->2	Augenbrauen-Schablone
+gid://shopify/Product/15525252301185	60->0	LED-Studenten-Uhr mit Wochenanzeige
+gid://shopify/Product/15525265637761	17->0	Portabler Schmuckschrank in Blau
+gid://shopify/Product/15525265703297	38->0	Makeup-Set mit 24 Farb‑Lids, 8 Lippen, 4 Rouge, 3 Puderkuche
+gid://shopify/Product/15525265899905	9->1	Bronzer & Highlighter Palette 18x75 mm
+gid://shopify/Product/15525265965441	31->0	Tragbarer LED‑Schminkspiegel mit Aufladung
+gid://shopify/Product/15525266096513	44->0	Transparentes Puder für mattes Finish
+gid://shopify/Product/15525266227585	75->0	Holz-Chronograph mit Edelstahl
+gid://shopify/Product/15525272977793	78->0	35‑Farben‑Glitter‑Palette
+gid://shopify/Product/15525275500929	38->0	Mascara Rotwein Schokolade
+gid://shopify/Product/15525275795841	10->1	PAGANI DESIGN Totenkopf Quarzuhr
+gid://shopify/Product/15525278056833	52->2	Minimalistisches Quadrat-Sofa-Kissen 40x40 cm
+gid://shopify/Product/15525456871809	32->0	Brow Pencil Spinning Round – 3‑in‑1 Augenbrauenstift
+gid://shopify/Product/15525457232257	77->1	Kissenbezug 45x45 mit Muster
+gid://shopify/Product/15525457330561	89->0	Twelve Constellation Augenstiftpalette
+gid://shopify/Product/15525457396097	34->2	5‑Farben‑Gradient‑Palette für Augen
+gid://shopify/Product/15525457723777	132->2	High-Gloss-Matte Augenstiftpalette
