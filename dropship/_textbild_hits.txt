@@ -14663,3 +14663,5 @@ gid://shopify/Product/15448798003585	17->2	3-Farben-Marmor-Rouge & Highlighter
 gid://shopify/Product/15448903647617	28->0	Chinesische Drachen-Skelett-Taschenuhr
 gid://shopify/Product/15448903844225	43->0	Mechanische Taschenuhr mit römischem Zifferblatt
 gid://shopify/Product/15448925929857	34->3	Sofaüberzug Vintage – Katzenfreundlich & Elastisch
+gid://shopify/Product/15450829357441	20->2	5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht
+gid://shopify/Product/15450851934593	30->0	6er Set Ätherische Öle
