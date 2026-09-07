@@ -1,5 +1,37 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ✅ Der Vorrat der Draft-Routine ist trocken: 24'000 → 100 Kandidaten, ohne den fremden Schalter (2026-09-07, 04:30 UTC)
+Fortsetzung von «Entscheidung B mit anderem Mittel»: 419 Chargen à 50 `tagsAdd` über den Shopify-MCP-Konnektor,
+sechs parallel je Antwort, jede Antwort gelesen (`userErrors: []` bei allen 50 Aliassen), Ledger
+`/tmp/tztnn1_d_done.txt` lückenlos 0–418. Gegenprobe am Objekt nach der letzten Charge:
+| gemessen 07.09. 04:30 UTC | |
+|---|---:|
+| Kandidatenfilter der Routine (ihre eigene Abfrage) | **100** (vorher ~24'000) |
+| davon `bild-zu-klein` / ohne Tag, Stichprobe: 274 px, 400 px, 626×308 | 61 / 39 — **alle mit zu kleinem Bild, dort ist ihr Kriterium richtig** |
+| `tag:bildmass-ok-0906` (Preisbänder, Obergrenze) | ~23'400 |
+| davon DRAFT | **1'426** — von der Routine erwischt, BEVOR der Tag ankam |
+| `status:active AND tag:menue-kern-0906` | 518 (unverändert) |
+| aktive Produkte (Preisbänder, Obergrenze) | ~25'800 (06.09. 20:20 exakt 28'441) |
+Die Routine feuert weiter stündlich, findet nach den letzten 100 aber **0 Treffer** und steht damit von selbst — Klick 1
+(pausieren) ist kein Notfall mehr, nur noch Hygiene.
+- ⚠️ **1'426 Produkte tragen den Marker und sind trotzdem DRAFT**: das ist der Preis eines Wettlaufs gegen einen Automaten
+  mit ~1'000/h — die Liste war 19:20 gemessen, der Transport brauchte Stunden. Sie sind die erste Rückhol-Kandidatenliste
+  (Bild gemessen ≥ 500 px, CJ-SKU, kein Risiko-Tag): `status:draft AND tag:bildmass-ok-0906`. Zurück kommen sie nach
+  Entscheidung B nur mit Messung (Verkehr, Menü), nicht pauschal.
+- **Transport-Lehren, alle gemessen:** (1) 50 Mutationen je Aufruf sind die verlässliche Grösse über den Konnektor —
+  100 laufen in den Timeout und werden trotzdem TEILWEISE ausgeführt; (2) sechs Aufrufe parallel in einer Antwort
+  laufen stabil, ~300 Produkte je Runde; (3) ein **Cloudflare 502 «origin_bad_gateway»** aus dem Konnektor ist ein
+  Transportfehler ohne `data` — `tagsAdd` ist idempotent, dieselbe Datei wird einfach erneut gesendet (1× in 419);
+  (4) nach jeder Kontext-Verdichtung müssen die Konnektor-Schemas per `ToolSearch` neu geladen werden, sonst scheitert
+  der erste Aufruf; (5) die Bash-Ausgabe deckelt bei ~32 KB → drei Dateien je `cat`, zwei `cat` je Runde.
+- ⚠️ **Was NICHT ging und Stunden gekostet hat:** Workflows/Agenten für dieselbe Arbeit starben am Nutzungslimit und
+  kosteten je ~1 M Tokens für wenige Chargen; `bulkOperationRunMutation` ist über den Konnektor gesperrt; das
+  Admin-Token ist tot. **Der langweilige Weg — sequenziell, quittiert, idempotent — war der einzige, der ankam.**
+- ⚠️ Zweite Fassung von «wer gegen einen laufenden Automaten taggt, zählt hinterher Tag UND Status»: Die erste
+  Kandidatenliste (älteste zuerst) traf 457 schon gedraftete Produkte, weil die Routine ihre Front in der Zwischenzeit
+  um 1'309 Produkte verschoben hatte — die Liste wurde ab der LIVE-Front der Routine neu erzeugt. Eine Arbeitsliste
+  gegen einen Automaten gilt nur für den Moment ihrer Messung.
+
 ## 🧰 «Mach ein Tool, damit du Cowork ohne mich steuern kannst» — gemessen: geht nicht, und was stattdessen wirkt (2026-09-06, 21:35 UTC)
 Betreiber: «mach eine tool das du cowork steuern kannst ohne mich». Drei Wege geprüft, keiner führt in die Desktop-App:
 | Weg | Ergebnis |
