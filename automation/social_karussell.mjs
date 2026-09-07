@@ -24,7 +24,7 @@
  */
 import fs from 'fs';
 import { lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken } from './post_guard.mjs';
+         produktGepostet, produktMerken, fbSeitenIdentitaet } from './post_guard.mjs';
 
 const V = 'v21.0';
 const IG_ID  = process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id','utf8').trim() : '');
@@ -93,6 +93,8 @@ for (const p of posten) { postMark(p.img); produktMerken(p.titel, p.gid); }
 
 // Facebook: unveroeffentlichte Fotos + ein Beitrag mit attached_media (Album)
 try {
+  const ident = await fbSeitenIdentitaet(TOK, FB_ID);
+  if (!ident.ok) throw new Error(`FB-Seitenwache: ${ident.grund}`);
   const fbIds = [];
   for (const p of posten) {
     const f = await g(`${FB_ID}/photos`, { url: quadrat(p.img), published: 'false' });

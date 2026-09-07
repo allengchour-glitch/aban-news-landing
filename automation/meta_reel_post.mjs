@@ -11,7 +11,7 @@
  *      FB_PAGE_ID (Default 1049840534888592) · [DRY=1] · [MIN_GAP_H=48]
  */
 import fs from 'node:fs';
-import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
 const CSV = 'automation/reels_seed.csv';
 const V = 'v21.0';
 const DRY = process.env.DRY === '1';
@@ -169,6 +169,8 @@ if (pub.id) {
   cand[idx.status] = 'ready'; cand[idx.posted_at] = ''; writeLedger(); process.exit(1);
 }
 // 2) Facebook-Seitenvideo (best effort — Ledger ist bereits committet, FB-Fehler löst KEINEN Re-Post aus)
-const fb = await api(`${FB}/videos`, { file_url: url, description: text });
+const fbIdent = await fbSeitenIdentitaet(TOK, FB);
+if (!fbIdent.ok) { console.error('⛔ FB-Seitenwache:', fbIdent.grund); }
+const fb = fbIdent.ok ? await api(`${FB}/videos`, { file_url: url, description: text }) : { error: 'FB-Seitenwache: ' + fbIdent.grund };
 console.log(fb.id ? `✅ Facebook-Video live: ${fb.id}` : `FB-Fehler (IG war ok, Ledger committet): ${JSON.stringify(fb).slice(0, 200)}`);
 console.log('Ledger aktualisiert →', id, 'posted-ig-fb');

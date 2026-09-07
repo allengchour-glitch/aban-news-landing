@@ -16,7 +16,7 @@
  *      META_GRAPH_VERSION(Default v21.0) · MAX_PER_RUN(1) · DRY_RUN=1
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
 
 const CSV = new URL('../social/story_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -94,6 +94,7 @@ async function igStory(type, url){
 async function fbPhotoStory(url){
   if(!FB_ID || !FB_TOK) return null;
   const tok = await fbToken();
+  { const ident = await fbSeitenIdentitaet(tok, FB_ID); if(!ident.ok){ console.error('⛔ FB-Seitenwache:', ident.grund); return false; } }
   const up = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/photos`, { url, published:'false', access_token:tok });
   if(!up.ok || !up.j.id){ console.error('FB-Foto-Upload:', up.status, JSON.stringify(up.j.error||up.j)); return false; }
   const st = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/photo_stories`, { photo_id:up.j.id, access_token:tok });
@@ -105,6 +106,7 @@ async function fbPhotoStory(url){
 async function fbVideoStory(url){
   if(!FB_ID || !FB_TOK) return null;
   const tok = await fbToken();
+  { const ident = await fbSeitenIdentitaet(tok, FB_ID); if(!ident.ok){ console.error('⛔ FB-Seitenwache:', ident.grund); return false; } }
   const start = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/video_stories`, { upload_phase:'start', access_token:tok });
   if(!start.ok || !start.j.video_id){ console.error('FB-Video-Story start:', start.status, JSON.stringify(start.j.error||start.j)); return false; }
   const vid = start.j.video_id;

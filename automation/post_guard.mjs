@@ -127,6 +127,22 @@ export function produktMerken(caption, zeilenId) {
  * dieser Kundin zeigt und die Markierung NICHT in der Caption steht. Ein Poster, der einen
  * Grund bekommt, postet nicht — genauso wie beim Doppelpost-Schutz.
  * ────────────────────────────────────────────────────────────────────────── */
+// 07.09.2026 — Betreiber: «privat account und geschäfts account im fb unbedingt trennen … soll nie
+// mehr vorkommen». Ein Facebook-Beitrag geht NUR an die Geschaeftsseite. Vor JEDEM FB-Schreiben
+// wird gemessen, WER das Token ist: /me muss die Seiten-ID liefern. Ein User-Token (Privatprofil),
+// eine fremde Seite oder ein Netzfehler → Abbruch. Ein ausgelassener Post kostet nichts; ein
+// Beitrag auf dem falschen Konto kostet Vertrauen.
+export const FB_SEITE = '1049840534888592';
+export async function fbSeitenIdentitaet(token, pageId = FB_SEITE) {
+  if (!token) return { ok: false, grund: 'kein Token' };
+  try {
+    const r = await fetch(`https://graph.facebook.com/v21.0/me?fields=id,name&access_token=${encodeURIComponent(token)}`);
+    const j = await r.json().catch(() => ({}));
+    if (j && String(j.id) === String(pageId)) return { ok: true, name: j.name };
+    return { ok: false, grund: j?.id ? `Token gehoert "${j.name}" (${j.id}), nicht der Seite ${pageId}` : `Token ungueltig (${JSON.stringify(j?.error?.message || j).slice(0, 120)})` };
+  } catch (e) { return { ok: false, grund: `Identitaet nicht pruefbar: ${e.message}` }; }
+}
+
 export const MODEL_HANDLE = '@tatjanalarsinamoira';
 // Merkmale des Materials: die Dateinamen der Kundinnenfotos und des daraus gebauten Reels.
 const MODEL_MEDIEN = /(^|[^a-z])(kundin-\d\d|luxestyle-model-(clean|musik))/i;

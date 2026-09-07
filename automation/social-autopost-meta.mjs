@@ -22,7 +22,7 @@
 import fs from 'node:fs';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken, produktKey } from './post_guard.mjs';
+         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -105,6 +105,8 @@ async function postFB(imageUrl, caption){
       else console.log('FB: Seite', FB_ID, 'nicht in /me/accounts gefunden — nutze Original-Token.');
     }
   }catch(e){ /* Netzfehler → Fallback auf Original-Token */ }
+  const ident = await fbSeitenIdentitaet(tok, FB_ID);
+  if(!ident.ok){ console.error('⛔ FB-Seitenwache:', ident.grund); return false; }
   const r = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/photos`,
     { url: imageUrl, message: caption, access_token: tok });
   if(!r.ok || !(r.j.id||r.j.post_id)){

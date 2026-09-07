@@ -21,7 +21,7 @@
  *   MAX_PER_RUN=1 · DRY_RUN=1
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
 
 const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -100,6 +100,8 @@ async function postFB(videoUrl, caption){
       else console.log('FB: Seite', FB_ID, 'nicht in /me/accounts — nutze Original-Token.');
     }
   }catch(e){ /* Netzfehler → Original-Token */ }
+  const ident = await fbSeitenIdentitaet(tok, FB_ID);
+  if(!ident.ok){ console.error('⛔ FB-Seitenwache:', ident.grund); return false; }
   const r = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/videos`,
     { file_url: videoUrl, description: caption, access_token: tok });
   if(!r.ok || !r.j.id){

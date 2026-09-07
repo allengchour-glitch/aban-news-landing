@@ -1,5 +1,34 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⛔ Betreiber 07.09.: «privat account und geschäfts account im fb unbedingt trennen … soll nie mehr vorkommen» (2026-09-07, 07:40 UTC)
+Ein Beitrag ist auf dem PRIVATEN Facebook-Profil des Betreibers gelandet. Gemessen, was von hier aus
+überhaupt schreiben kann — und ob es das gewesen sein kann:
+| gemessen | Ergebnis |
+|---|---|
+| `/me` mit unserem Token (`/tmp/meta_page_token`) | **Seite «LuxeStyle CH» 1049840534888592**, kein Nutzer |
+| Ziel aller FB-Schreibstellen im Repo (karussell · autopost · video · story · meta_reel) | ausnahmslos `${FB_PAGE_ID}/…`, Default 1049840534888592; kein `/me/feed`, kein Profil |
+| Seiten-Feed 03.–05.09. | alle Beiträge `from: LuxeStyle CH` |
+| PC-Poster der anderen Session (`social-post.mjs`) | postet nur Instagram (`/{IG_ID}/media`), keine FB-Stelle |
+| Routinen dieses Kontos (11) | keine postet auf Facebook |
+| Graph API | kann seit 2018 (Ende `publish_actions`) **gar nicht** auf ein Privatprofil schreiben |
+**Aus diesem Repo kann also kein Beitrag auf ein Privatprofil gekommen sein** — dafür braucht es
+einen Browser, der als Person eingeloggt ist (PC-Skripte, Business-Suite-Composer «auch auf Profil
+teilen») oder ein Teilen von Hand. Welcher Weg es war, weiss nur der Beitrag selbst: Link/Screenshot
+vom Betreiber erbeten. **Löschen kann diese Session nicht** — kein Zugriff auf das Profil, und
+Live-Posts löschen ist hier ohnehin gesperrt (28.07.).
+- **Damit es NIE aus diesem Repo passieren kann: `post_guard.fbSeitenIdentitaet(token, pageId)`.**
+  Vor JEDEM Facebook-Schreiben wird `/me` gefragt; nur wenn die Antwort die Seiten-ID ist, wird
+  gepostet. User-Token, fremde Seite, ungültiges Token, Netzfehler → Abbruch. In allen fünf FB-Postern
+  verdrahtet (karussell wirft, autopost/video/story `return false`, meta_reel überspringt FB — IG ist
+  dann schon raus und quittiert). In vier Richtungen belegt: Seiten-Token ok, fremde Seiten-ID
+  abgelehnt, kaputtes Token abgelehnt, leeres Token abgelehnt.
+- ⚠️ `social-autopost-meta` und `video-autopost-meta` holen sich bei einem USER-Token via `/me/accounts`
+  selbst einen Seiten-Token und fallen sonst auf den «Original-Token» zurück — genau dieser Rückfall
+  ist jetzt durch die Wache gedeckt: ein Original-Token, das keine Seite ist, postet nichts mehr.
+- **Regel: Ein Social-Token wird vor dem Schreiben nach seiner IDENTITÄT gefragt, nicht nach seiner
+  Gültigkeit.** «Token funktioniert» sagt nicht, WESSEN Token es ist — dieselbe Familie wie «ein
+  Endpunkt, der antwortet, beweist nur, dass er antwortet» (28.08.).
+
 ## 🔧 «fix alles» (07.09.): 50 Produkte zurück — nach Messung, nicht pauschal (2026-09-07, 07:20 UTC)
 Betreiber: «fix alles». Entscheidung B gilt weiter (zurück nur mit Messung). Gemessen, was die Routine
 BELEGBAR kaputt gemacht hat, und genau das repariert — über den MCP-Konnektor, jede Antwort gelesen:
