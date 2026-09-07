@@ -1526,13 +1526,31 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       _halmBM=new THREE.MeshStandardMaterial({color:0x3a8a3a,roughness:0.9}),
       _bluetG=new THREE.SphereGeometry(0.12,6,5),
       _bluetM=BF.map(function(f){return new THREE.MeshStandardMaterial({color:f,roughness:0.7,emissive:f,emissiveIntensity:0.12});});
+  /* 🌼 EINE WIESE STEHT NICHT STRAMM. GEMESSEN (th-vielfalt): 595 Blueten und 558 Halme
+     mit je EINER Groesse und EINER Drehung — jede Blume exakt 0,42 m hoch, exakt gleich
+     dick, kerzengerade, und jedes Feld einfarbig. Aus der Naehe, etwa auf dem eigenen
+     Grundstueck, liest sich das als Stempelmuster.
+     Jede Blume bekommt jetzt eigene Halmlaenge, Bluetengroesse und eine leichte Neigung;
+     jede vierte Bluete faellt aus der Farbe des Feldes. Halm und Bluete sitzen dafuer in
+     einer eigenen kleinen Gruppe — nur so kippt die Bluete MIT dem Halm, statt neben ihm
+     in der Luft zu haengen. Die Gruppe dreht um ihren Fusspunkt, die Blume bleibt also
+     gepflanzt. Zusaetzliche Zeichenaufrufe kostet das keine: Gruppen werden nicht
+     gezeichnet, und Geometrie wie Material bleiben geteilt.
+     ⚠️ Math.random() ist hier richtig (anders als bei der Hecke): die Standorte dieser
+     Funktion sind ohnehin zufaellig, eine feste Streuung waere ein Stilbruch. */
   function blumenfeld(x,z){
     var mi=(Math.random()*BF.length)|0,grp=new THREE.Group();
     for(var b2=0;b2<6;b2++){
+      var h=0.70+Math.random()*0.65, d=0.80+Math.random()*0.45;
+      var e=new THREE.Group();
+      e.position.set((Math.random()-0.5)*1.4,0,(Math.random()-0.5)*1.4);
+      e.rotation.set((Math.random()-0.5)*0.34,Math.random()*6.283,(Math.random()-0.5)*0.34);
       var st=new THREE.Mesh(_halmBG,_halmBM);
-      st.position.set((Math.random()-0.5)*1.4,0.2,(Math.random()-0.5)*1.4);grp.add(st);
-      var bl=new THREE.Mesh(_bluetG,_bluetM[mi]);
-      bl.position.set(st.position.x,0.42,st.position.z);grp.add(bl);}
+      st.scale.set(1,h,1);st.position.y=0.2*h;e.add(st);
+      var mj=(Math.random()<0.25)?((Math.random()*BF.length)|0):mi;
+      var bl=new THREE.Mesh(_bluetG,_bluetM[mj]);
+      bl.scale.setScalar(d);bl.position.y=0.4*h+0.02*d;e.add(bl);
+      grp.add(e);}
     grp.position.set(x,0,z);scene.add(grp);}
   // ---- Schönes animiertes Wasser: See mit Wellen ----
   window._wasser=[];
