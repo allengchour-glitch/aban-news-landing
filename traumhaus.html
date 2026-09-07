@@ -6146,6 +6146,24 @@ setTimeout(function baueGebaeude(){
        als 48 Einzelstuecke waeren es 96 Zeichenaufrufe. */
     (function landstrasse(){
       var R=200, HB=4.2, N=64;
+      /* ⚠️ DIE LANDSTRASSE LAG UEBER DEM WOLKENSCHATTEN. GEMESSEN (Strahl von oben auf
+         jede Strasse der Karte): der Wolkenschatten ist eine Flaeche auf y = 0,008, und
+         sein eigener Kommentar sagt, wo er hingehoert — "ueber den Strassenmarkierungen
+         (0,005…0,006) liegt er weiterhin, dort gehoert er auch hin". Ueber JEDER Strasse
+         lag er auch: Hauptstrasse -0,003, Querstrasse -0,005, Viertelstrasse -0,003.
+         Nur die Landstrasse lag auf 0,012, ihre Mittelstreifen auf 0,022 — also DARUEBER.
+         Sie war damit die einzige Strasse der Welt, ueber die nie eine Wolke zog.
+         Die 0,012 stammten aus der Zeit, als sie als "gebauter Boden" (0,01) gedacht war.
+         Jetzt liegt die ganze Familie im selben Band wie die Stadt.
+         ⚠️ Untergrenze ist das MEER: die Wellen reichen bis y = -0,016 (siehe Damm),
+         der Belag auf 0,004 haelt 20 mm Abstand. */
+      /* ⚠️ DIE MITTELSTREIFEN BLEIBEN OBEN (0,022), UND ZWAR ABSICHTLICH. Sie unter den
+         Wolkenschatten zu legen hiesse, sie auf 0,0065 zu setzen — 2,5 mm ueber dem
+         Belag, wo die Stadt 8 mm Abstand haelt. Auf einem 400 m langen Ring, aus der
+         Ferne flach gesehen, ist das zu wenig: die Streifen wuerden mit dem Belag um die
+         Sichtbarkeit streiten. Dass ueber einem 0,28 m schmalen Strich keine Wolke
+         zieht, sieht dagegen niemand. Lieber ein unsichtbarer Mangel als ein sichtbarer. */
+      var HD=0.004, HB2=0.001, HM=0.022;   /* Belag · Bankett · Markierung */
       /* 🔁 EINMAL RICHTIG, DANN NIE WIEDER. Die Wickelrichtung selbst gebauter
          Flaechen ist mir in dieser Datei jetzt DREIMAL falsch herum geraten —
          bei den Bergen, bei den Feldern und hier bei den Zubringern. Symptom ist
@@ -6194,7 +6212,7 @@ setTimeout(function baueGebaeude(){
         var mx=Math.cos((a0+a1)/2)*R, mz=Math.sin((a0+a1)/2)*R;
         if(mx<-118&&Math.abs(mz)<184)_damm.push([a0,a1]);
         [[a0,-1],[a0,1],[a1,1],[a1,-1]].forEach(function(P){
-          pos.push(Math.cos(P[0])*(R+P[1]*HB),0.012,Math.sin(P[0])*(R+P[1]*HB));
+          pos.push(Math.cos(P[0])*(R+P[1]*HB),HD,Math.sin(P[0])*(R+P[1]*HB));
           /* laengs die Bogenlaenge, quer die Fahrbahnbreite — beides in Kacheln.
              Der Winkel kommt aus der Schleife und laeuft durch; eine Rechnung aus
              der Weltlage (atan2) haette an der Naht einen verschmierten Streifen. */
@@ -6203,7 +6221,7 @@ setTimeout(function baueGebaeude(){
         if(i%2===0){                                    // Mittelstreifen, gestrichelt
           var am=(a0+a1)/2, ad=(a1-a0)*0.32;
           [[am-ad,-0.18],[am-ad,0.18],[am+ad,0.18],[am+ad,-0.18]].forEach(function(P){
-            dpos.push(Math.cos(P[0])*(R+P[1]),0.022,Math.sin(P[0])*(R+P[1]));});
+            dpos.push(Math.cos(P[0])*(R+P[1]),HM,Math.sin(P[0])*(R+P[1]));});
           didx.push(dvb,dvb+2,dvb+1, dvb,dvb+3,dvb+2); dvb+=4;
         }
       }
@@ -6244,20 +6262,20 @@ setTimeout(function baueGebaeude(){
         for(var s9=0;s9<N9;s9++){
           var ra=r0+(r1-r0)*s9/N9, rb=r0+(r1-r0)*(s9+1)/N9;
           /* laengs der Radius, quer die (mit der Trompete wachsende) halbe Breite */
-          quadOben(pos,idx, pkt(ra,-hb(ra),0.012), pkt(ra,hb(ra),0.012),
-                            pkt(rb, hb(rb),0.012), pkt(rb,-hb(rb),0.012), uvs,
+          quadOben(pos,idx, pkt(ra,-hb(ra),HD), pkt(ra,hb(ra),HD),
+                            pkt(rb, hb(rb),HD), pkt(rb,-hb(rb),HD), uvs,
                    [ra/KM,0], [ra/KM,2*hb(ra)/KM], [rb/KM,2*hb(rb)/KM], [rb/KM,0]);
         }
         for(var t9=0.08;t9<0.95;t9+=0.10){       // Mittelstreifen
           var rm=r0+(r1-r0)*t9, rl=(r1-r0)*0.035;
-          quadOben(dpos,didx, pkt(rm-rl,-0.18,0.022),pkt(rm-rl,0.18,0.022),
-                              pkt(rm+rl,0.18,0.022), pkt(rm+rl,-0.18,0.022));
+          quadOben(dpos,didx, pkt(rm-rl,-0.18,HM),pkt(rm-rl,0.18,HM),
+                              pkt(rm+rl,0.18,HM), pkt(rm+rl,-0.18,HM));
         }
         /* Haltelinie quer ueber die Zufahrt, dort wo das Vorfahrtsschild steht.
            Ohne sie regelt das Schild etwas, wovon die Fahrbahn nichts weiss. */
         var rh=191.4, bh=hb(rh);
-        quadOben(dpos,didx, pkt(rh-0.22,-bh+0.3,0.023), pkt(rh-0.22,bh-0.3,0.023),
-                            pkt(rh+0.22, bh-0.3,0.023), pkt(rh+0.22,-bh+0.3,0.023));
+        quadOben(dpos,didx, pkt(rh-0.22,-bh+0.3,HM+0.0005), pkt(rh-0.22,bh-0.3,HM+0.0005),
+                            pkt(rh+0.22, bh-0.3,HM+0.0005), pkt(rh+0.22,-bh+0.3,HM+0.0005));
       });
       window._zubringer=ZUB;
       mesh(pos,idx,betMat(0x4a4a53,0.92),uvs);
@@ -6276,8 +6294,8 @@ setTimeout(function baueGebaeude(){
           var c0=D[0],c1=D[1];
           [-1,1].forEach(function(sd){
             function pk(cc,br,hh){return [Math.cos(cc)*(R+sd*br),hh,Math.sin(cc)*(R+sd*br)];}
-            quadOben(fp,fi, pk(c0,HB,0.010), pk(c0,HB+3.4,-0.95),
-                            pk(c1,HB+3.4,-0.95), pk(c1,HB,0.010), fuv,
+            quadOben(fp,fi, pk(c0,HB,HD-0.001), pk(c0,HB+3.4,-0.95),
+                            pk(c1,HB+3.4,-0.95), pk(c1,HB,HD-0.001), fuv,
                      [c0/6.283*KR,0], [c0/6.283*KR,3.5/KM], [c1/6.283*KR,3.5/KM], [c1/6.283*KR,0]);});
         });
         mesh(fp,fi,betMat(0x7d7566,0.98),fuv);
@@ -6312,7 +6330,7 @@ setTimeout(function baueGebaeude(){
         if(bmx<-118&&Math.abs(bmz)<184)continue;
         [-1,1].forEach(function(sd){
           [[b0,HB],[b0,HB+1.5],[b1,HB+1.5],[b1,HB]].forEach(function(P){
-            bp.push(Math.cos(P[0])*(R+sd*P[1]),0.008,Math.sin(P[0])*(R+sd*P[1]));
+            bp.push(Math.cos(P[0])*(R+sd*P[1]),HB2,Math.sin(P[0])*(R+sd*P[1]));
             buv.push(P[0]/6.283*KR,(P[1]-HB)/KM);});
           if(sd<0)bi.push(bv,bv+2,bv+1, bv,bv+3,bv+2);
           else     bi.push(bv,bv+1,bv+2, bv,bv+2,bv+3);
@@ -6354,7 +6372,7 @@ setTimeout(function baueGebaeude(){
         var zp=[],zi=[],zuv=[],hbz=window._zubBreite;
         ZUB.forEach(function(gr){
           var A=achse(gr);
-          function pk(rr,q){return [A.ca*rr+A.qx*q, 0.008, A.sa*rr+A.qz*q];}
+          function pk(rr,q){return [A.ca*rr+A.qx*q, HB2, A.sa*rr+A.qz*q];}
           for(var s8=0;s8<16;s8++){
             var ra=r0+(r1-r0)*s8/16, rb=r0+(r1-r0)*(s8+1)/16;
             [-1,1].forEach(function(sd){
