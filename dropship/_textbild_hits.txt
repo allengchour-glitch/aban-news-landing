@@ -14958,3 +14958,14 @@ gid://shopify/Product/15524856267137	28->0	Damen Langarm-Satinbluse in Weiss
 gid://shopify/Product/15524856693121	94->1	Robuste Nylon-Hundeleine
 gid://shopify/Product/15524857250177	127->0	Duschvorhang aus Polyester mit Landschaftsmuster
 gid://shopify/Product/15524857381249	25->1	Futterautomat mit 6 Fächern für Haustiere
+gid://shopify/Product/15524857577857	48->2	Duschvorhang mit 3D-Meeresblick
+gid://shopify/Product/15524857807233	56->0	Hundehalsband aus Stoff
+gid://shopify/Product/15524858036609	21->1	Duschvorhang mit Bauernhof-Kuh-Motiv
+gid://shopify/Product/15524858331521	66->0	Doppelseitige Schleckmatte für Hunde und Katzen
+gid://shopify/Product/15524858560897	61->1	Beissfestes Baumwollseil-Spielzeug für Hunde
+gid://shopify/Product/15524858659201	46->2	Reflektierendes Hundegeschirr gepolstert
+gid://shopify/Product/15524859707777	22->1	Herren Hemd aus Baumwolle und Leinen
+gid://shopify/Product/15524860297601	20->3	Elastische Laufleine für Hunde
+gid://shopify/Product/15524860756353	120->0	Geflochtene Hundeleine
+gid://shopify/Product/15524861641089	13->1	Damen Hemd mit Reverskragen
+gid://shopify/Product/15524862329217	15->1	Elastische Outdoor-Hundeleine
