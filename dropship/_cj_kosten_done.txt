@@ -19242,3 +19242,7 @@ gid://shopify/Product/15497643852161	CHF 7.63	1 Varianten	Multifunktionales 12-t
 gid://shopify/Product/15497644114305	CHF 43.97	1 Varianten	Edle Schmuckbox aus Palisanderholz mit Elster-Moti
 gid://shopify/Product/15497644179841	CHF 7.01	1 Varianten	Minimalistisches Armband mit Pferd und Perle
 gid://shopify/Product/15497644278145	CHF 9.21	1 Varianten	6er-Set Fächerpinsel für Gouache und Aquarell
+gid://shopify/Product/15497644605825	CHF 46.43	1 Varianten	Holz-Aufbewahrungsbox mit Klappdeckel
+gid://shopify/Product/15497644671361	CHF 12.87	1 Varianten	Doppelschlange Armband aus Titanstahl
+gid://shopify/Product/15497644769665	CHF 10.52	1 Varianten	24er Make-up Pinselset mit PU-Aufbewahrungstasche
+gid://shopify/Product/15497645097345	CHF 10.97	1 Varianten	Space Odyssey Kopfhörer-Schutzhülle

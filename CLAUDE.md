@@ -1,5 +1,51 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🎚️ «fix weiter»: die USA-Klasse auf 0 — und ein Prompt-Verbot, das zum dritten Mal ignoriert wurde (2026-09-07, 20:30 UTC)
+Betreiber: «fix weiter». Drei Klassen gemessen und bearbeitet, jede am OBJEKT, nicht aus dem Bericht:
+
+| Klasse | vorher | nachher |
+|---|---:|---:|
+| USA-Lieferzusage im Text (tag-tolerant gemessen) | **3** | **0** |
+| EU-Lieferzusage im Text | **3** | **0** |
+| Auswahl-Versprechen bei EINER Variante, NEUE Importe seit 04.09. | 52 von 1'205 (4,3 %) | Quelle geschlossen |
+
+- Die drei USA/EU-Fälle waren dieselben drei Mauspads mit dem alten Block «🇨🇭 CH / 🇪🇺 EU: 10–18
+  Tage · 🇺🇸 USA: 12–22 Tage». Repariert mit den **Regeln des vorhandenen Werkzeugs**
+  (`versandaussagen_wahrheit.umschreiben`), nicht mit einer zweiten Regelquelle — unter dem
+  geteilten Produkttext-Schloss, weil der Trust-Baustein-Schreiber dasselbe Feld schreibt.
+  Gegenprobe am Objekt: 34 bzw. 843 Kandidaten durchsucht, **0 tragen die Zusage**.
+
+**⛔ Der eigentliche Fund: `wahlversprechen` ist keine Bestandsklasse, sondern eine offene Quelle.**
+Der Prompt verbietet Auswahl-Behauptungen bei Ein-Varianten-Ware seit dem 03.09. Gemessen:
+**52 von 1'205** seither angelegten Ein-Varianten-Produkten versprechen trotzdem eine Auswahl.
+**Dritte Fassung der Lehre vom 04.09.** (nach Mess- und Wirkversprechen): *ein Modell kann eine
+Anweisung ignorieren, eine Prüfung nicht.* Deshalb `wahlSicher()` in `cj_copy_prompt.mjs`, in
+**allen drei** Importern verdrahtet (`cj_sku_import` legt immer eine Standard-Variante an und
+prüft deshalb ausnahmslos) — Geschwister-Lehre 29.08.
+- **Warum die Reparatur beim IMPORT geht und im BESTAND nicht:** Beim Import steht die
+  Variantenzahl vor dem Text fest, der Text ist frisch, und die Fakten stehen ohnehin im
+  Faktenblock — ein Satz weniger kostet nichts. Im Bestand trägt derselbe Satz fast immer eine
+  zweite Aussage: **28 gelesene Stichproben, 28 Mischsätze** («Erhältlich in verschiedenen
+  Farben, passt er sich jedem Stil an»). Dort meldet `wahlversprechen.py` zu Recht nur und
+  schneidet nicht — die täglichen 2 von 1'294 sind kein Versagen, sondern die ehrliche Ausbeute.
+- `wahlSicher()` arbeitet SATZWEISE und lässt in Ruhe, was es nicht sicher entscheiden kann:
+  Absätze mit Auszeichnung, Set-Inhalte («4 Boxen in zwei Grössen: 2× gross»), und Texte, die
+  danach zu kurz wären. 12 Testfälle in beide Richtungen, 0 Abweichungen.
+  ⚠️ **Am echten Erzeugnis NICHT belegt:** Die 12 Importe nach dem Einbau hatten alle mehrere
+  Varianten — der Fix war an ihnen gar nicht auslösbar. Modul geprüft, Erzeugnis offen; das
+  gehört so gesagt und nicht als «belegt» verkauft (zweiter Fall an einem Abend nach der
+  CJ-Offset-Decke). Nachprüfung: morgen dieselbe Messung über `created_at:>2026-09-07`.
+
+**⚠️ Und zwei Mess-Lehren, beide teuer:**
+1. **`/tmp/cj_runner2.log` ist KUMULATIV seit dem 30.08.** Ich habe seine 1'313 `✅` als Tageszahl
+   gelesen, sie ins Gedächtnis geschrieben und dem Betreiber genannt. Echt sind es 48 an diesem
+   Tag. Aufgefallen nur, weil Shopify für denselben Zeitraum 88 statt 1'273 zählte. **Eine Zahl
+   aus einem Log, dessen Zeitraum man nicht geprüft hat, ist keine Tageszahl.**
+2. **`created_at:>DATUM` zählt, `created_at:>DATUMT00:00:00Z AND created_at:<…` gibt 0.** Meine
+   erste Messung meldete «0 angelegt» an drei Tagen — bei 1'313 Importen im Log. Ein Nullergebnis
+   aus einer kaputten Abfrage ist kein Befund (fünfte Fassung); die Gegenprobe war, dieselbe
+   Frage in vier Schreibweisen zu stellen — alle vier gaben 88, die eigene Form gab 0.
+
 ## 🔁 «cj grind weiter» — und zwei Fehlermeldungen, die seit Wochen niemand gelesen hat (2026-09-07, 20:00 UTC)
 Betreiber: «cj grind weiter». Die Pause `dropship/_GRIND_PAUSE_BIS` stand auf **12.09. 08:25 UTC**
 (gesetzt am 05.09., nicht heute) — entfernt, Runner über `engine_keepalive.sh` gestartet.
