@@ -53,7 +53,7 @@
   .board{
     display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
     width:min(88vw,360px);aspect-ratio:1/1;
-    background:linear-gradient(160deg,#a7d8ff,#7fbcf2);
+    background:#a7d8ff;
     border-radius:14px;padding:10px;
     box-shadow:0 10px 26px rgba(40,90,150,.28),inset 0 1px 0 rgba(255,255,255,.55);
   }
@@ -70,7 +70,7 @@
   .cell:active{transform:scale(.94)}
   .cell.x{color:#e8574a;text-shadow:0 3px 6px rgba(232,87,74,.28)}
   .cell.o{color:#3a7dd8;text-shadow:0 3px 6px rgba(58,125,216,.28)}
-  .cell.win{background:linear-gradient(170deg,#fff7d0,#ffe9a0);box-shadow:0 0 0 4px #ffcf3a inset,0 4px 14px rgba(255,140,42,.35);animation:pop .5s}
+  .cell.win{background:#fff7d0;box-shadow:0 0 0 4px #ffcf3a inset,0 4px 14px rgba(255,140,42,.35);animation:pop .5s}
   .cell.pop{animation:pop .3s}
   @keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
   .score{
@@ -88,12 +88,12 @@
   .scard .val{font-size:26px;font-weight:900;color:#274b63}
   .scard.active{outline:3px solid #ffcf3a;transform:translateY(-3px);box-shadow:0 8px 18px rgba(255,140,42,.25)}
   .btn{
-    margin-top:16px;background:linear-gradient(180deg,#f0685c,#e8574a);color:#fff;border:none;
+    margin-top:16px;background:#f0685c;color:#fff;border:none;
     border-radius:14px;padding:14px 30px;font-size:18px;font-weight:800;
     cursor:pointer;box-shadow:0 6px 16px rgba(232,87,74,.35),inset 0 1px 0 rgba(255,255,255,.35);min-height:46px;
   }
   .btn:active{transform:scale(.95)}
-  .btn.blue{background:linear-gradient(180deg,#4c8ce2,#3a7dd8);box-shadow:0 6px 16px rgba(58,125,216,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+  .btn.blue{background:#4c8ce2;box-shadow:0 6px 16px rgba(58,125,216,.35),inset 0 1px 0 rgba(255,255,255,.35)}
   /* End overlay */
   .overlay{
     position:fixed;inset:0;z-index:20;

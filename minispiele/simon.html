@@ -57,12 +57,12 @@
   .pad.lit{opacity:1;transform:scale(1.05);filter:brightness(1.18) saturate(1.25);
     box-shadow:inset 0 -6px 0 rgba(0,0,0,.10), 0 0 26px var(--glow), 0 0 60px var(--glow), 0 4px 14px rgba(40,90,150,.2)}
   .pad:active{transform:scale(.97)}
-  #g{background:linear-gradient(160deg,#5ecf6a,#33ab41);--glow:rgba(80,220,110,.85)}
-  #r{background:linear-gradient(160deg,#f56d70,#e8574a);--glow:rgba(255,110,100,.85)}
-  #y{background:linear-gradient(160deg,#ffdf66,#ffcf3a);--glow:rgba(255,215,80,.9)}
-  #b{background:linear-gradient(160deg,#5b9be6,#3a7dd8);--glow:rgba(90,160,255,.85)}
+  #g{background:#5ecf6a;--glow:rgba(80,220,110,.85)}
+  #r{background:#f56d70;--glow:rgba(255,110,100,.85)}
+  #y{background:#ffdf66;--glow:rgba(255,215,80,.9)}
+  #b{background:#5b9be6;--glow:rgba(90,160,255,.85)}
   .bigbtn{
-    background:linear-gradient(180deg,#ffcf3a,#ff8c2a);color:#fff;border:none;border-radius:14px;
+    background:#ffcf3a;color:#fff;border:none;border-radius:14px;
     padding:15px 30px;font-size:20px;font-weight:bold;cursor:pointer;
     text-shadow:0 1px 2px rgba(120,60,0,.35);
     box-shadow:0 5px 0 #d9821e,0 8px 18px rgba(224,140,40,.35);font-family:inherit;
@@ -218,7 +218,7 @@
   }
 
   function wrongFlash(){
-    document.body.style.background='linear-gradient(160deg,#ffd6d6,#ffeaea)';
+    document.body.style.background='#ffd6d6';
     timers.push(setTimeout(function(){
       document.body.style.background='';
     },400));

@@ -19,7 +19,7 @@ h1{font-size:2rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px}
 .warn{display:inline-block;padding:4px 10px;background:rgba(245,158,11,0.15);color:var(--warn);border-radius:8px;font-size:0.8rem;margin-top:12px;font-weight:600}
 .progress-wrap{margin:24px 0 8px}
 .progress-bar{height:14px;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;position:relative}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 0.6s cubic-bezier(.4,0,.2,1);width:0%;border-radius:14px}
+.progress-fill{height:100%;background:var(--accent);transition:width 0.6s cubic-bezier(.4,0,.2,1);width:0%;border-radius:14px}
 .progress-text{display:flex;justify-content:space-between;margin-top:8px;font-size:0.9rem}
 .progress-text strong{color:var(--accent2)}
 .section{margin-top:32px}
@@ -55,7 +55,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color
 .celebrate.show{display:block}
 .confetti{position:absolute;width:10px;height:10px;animation:fall 3s linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
-.banner{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:14px 24px;border-radius:14px;font-weight:700;box-shadow:0 10px 40px rgba(124,58,237,0.4);z-index:10000;animation:pop 0.5s}
+.banner{display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:14px 24px;border-radius:14px;font-weight:700;box-shadow:0 10px 40px rgba(124,58,237,0.4);z-index:10000;animation:pop 0.5s}
 .banner.show{display:block}
 @keyframes pop{from{transform:translateX(-50%) scale(0.5);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
 @media print{body{background:#fff;color:#000;max-width:none}.controls,.toggle,footer .nav{display:none}.item{break-inside:avoid;border:1px solid #ccc;background:#fff}.check{border:2px solid #000}.check.checked{background:#000}.details{display:block;background:#f5f5f5;border-left-color:#000}.progress-fill{background:#000}h1,.title,.section-title{color:#000}.desc,.sub,.muted{color:#444}}

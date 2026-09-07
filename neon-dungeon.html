@@ -30,7 +30,7 @@ if(window.parent===window&&!/[?&](station=1|raum=|lvl=)/.test(location.search)){
   #bossBar{position:absolute;top:calc(44px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(420px,80vw);display:none}
   #bossBar .lbl{text-align:center;font-weight:900;font-size:.78rem;color:#ff9a8a;letter-spacing:.2em;margin-bottom:3px;text-shadow:0 1px 3px #000}
   #bossBar .bar{height:12px;background:rgba(0,0,0,.55);border-radius:8px;overflow:hidden;border:1px solid rgba(255,90,90,.5)}
-  #bossBar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff5a5a,#ff9a3a);transition:width .25s}
+  #bossBar i{display:block;height:100%;width:100%;background:#ff5a5a;transition:width .25s}
   #bossBar i.flash{background:#fff}
   #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.7rem;color:#ffd166;
     text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
@@ -49,7 +49,7 @@ if(window.parent===window&&!/[?&](station=1|raum=|lvl=)/.test(location.search)){
   #ov h1{font-size:clamp(1.9rem,7vw,3rem);color:#c98bff;text-shadow:0 0 24px rgba(201,139,255,.55);letter-spacing:.06em}
   #ov p{color:#b8a8d8;max-width:460px;margin:12px 0;line-height:1.5;font-size:.95rem}
   #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.1rem;padding:14px 38px;border-radius:14px;color:#140a20;margin:5px;
-    background:linear-gradient(92deg,#ffce8a,#c98bff);box-shadow:0 10px 34px rgba(201,139,255,.35);pointer-events:auto}
+    background:#ffce8a;box-shadow:0 10px 34px rgba(201,139,255,.35);pointer-events:auto}
   #ov .big.sec{background:rgba(20,14,32,.7);color:#e6d8ff;border:2px solid #6a4a9a;box-shadow:none;font-size:1rem;padding:11px 26px}
   #ov .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 16px}
   #ov .chip{background:rgba(255,255,255,.07);border:1px solid rgba(201,139,255,.3);border-radius:14px;padding:5px 12px;font-size:.78rem;font-weight:700;color:#cfc0ff}
@@ -76,7 +76,7 @@ if(window.parent===window&&!/[?&](station=1|raum=|lvl=)/.test(location.search)){
   <p>Steig hinab in die <b>Katakomben</b>: meistere den Fackel-Parcours mit <b>Doppelsprung</b> — dann wartet in der Tiefe <b>DER KOLOSS</b>.</p>
   <div class="chips" id="ovChips"><span class="chip">⤴ Doppelsprung</span><span class="chip">💎 Kristalle sammeln</span><span class="chip">🗿 Schockwellen überspringen</span><span class="chip">⚔️ Glühende Fäuste treffen</span></div>
   <button class="big" id="startBtn">Hinabsteigen ▶</button>
-  <button class="big" id="dCoopBtn" style="background:linear-gradient(92deg,#ffb066,#7de3ff);margin-top:8px">🤝 Zu zweit hinabsteigen — 1 Tipp</button>
+  <button class="big" id="dCoopBtn" style="background:#ffb066;margin-top:8px">🤝 Zu zweit hinabsteigen — 1 Tipp</button>
   <details style="margin:6px auto;max-width:340px;text-align:center;color:#c8b8ff;font-size:.9rem"><summary style="cursor:pointer;opacity:.85">oder gezielt mit einem Freund ▾</summary>
     <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px">
       <button class="big sec" id="dHostBtn" style="margin:0;font-size:.9rem;padding:9px 13px">🏠 Raum erstellen</button>
