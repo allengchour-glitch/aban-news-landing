@@ -384,3 +384,4 @@ gid://shopify/Product/15500163711361	Schwarz
 gid://shopify/Product/15525496488321	Schwarz
 gid://shopify/Product/15525500158337	Silber
 gid://shopify/Product/15525500748161	Silber
+gid://shopify/Product/15527361839489	Mehrfarbig
