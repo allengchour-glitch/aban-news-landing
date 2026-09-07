@@ -11,8 +11,8 @@ den Rückgängig-Marker **`rueckhol-0907`**, und verliert `auto-entwurf-0926`.
 |---|---:|
 | Status-Chargen (25 `productChangeStatus` je Aufruf) | **1'065 / 1'065** |
 | Tag-Chargen (50 Produkte = 100 Mutationen je Aufruf) | **465 / 465** |
-| aktive Produkte | ~25'800 → **~43'900** |
 | `status:draft AND tag:auto-entwurf-0926` | ~19'800 → **1'231** (Bild zu klein — dort ist der Draft richtig) |
+| **Kandidatenfilter der Routine** (`status:active AND -tag:bild-ok`) | 2'724 → **72** |
 | Menüpunkte, die am 06.09. **0** aktive Produkte hatten | Leinen & Tierkleidung **290** · Tierspielzeug **176** · Näpfe **120** · EU-Lager **215** |
 
 - ⛔ **Und der Fund, der die Arbeit erst zu Ende bringt: die Routine war NICHT trocken.** Nach dem
@@ -23,7 +23,12 @@ den Rückgängig-Marker **`rueckhol-0907`**, und verliert `auto-entwurf-0926`.
   Lieferanten gebaut ist, lässt die Ware jedes anderen Lieferanten ungeschützt.** Dieselbe Familie wie
   «wer eine Klasse shopweit repariert, prüft danach die Ware, die anders getaggt ist» (28.08.).
   Alle 2'724 am Objekt gemessen: **2'652 gut** (Bild ≥ 500 px, kein Risiko-Tag) → `bild-ok` +
-  Marker **`bildmass-ok-0907`**; 13 zu klein und 59 mit Risiko-Tag bleiben bewusst ungeschützt.
+  Marker **`bildmass-ok-0907`**, alle 2'652 geschrieben und gegengeprüft; 13 zu klein und 59 mit
+  Risiko-Tag bleiben bewusst ungeschützt — dort ist der Draft richtig.
+  ⚠️ **Die Gesamtzahl der aktiven Produkte ist mit Preisbändern NICHT messbar** (die unteren Bänder
+  laufen in den 10'000er-Deckel, und Varianten zählen in zwei Bändern doppelt) — exakt ist nur ein
+  Bulk-Export. Belastbar sind die Zahlen, an denen die Entscheidung hängt: Kandidatenfilter,
+  Rest-Drafts und die aktiven Produkte je Menüpunkt.
 - ⚠️ **Der Engpass war am Ende nicht Shopify, sondern der GETEILTE Eimer.** Der Tagger kam nicht vom
   Fleck; die Messung sagte warum: `throttleStatus.currentlyAvailable` stand dauerhaft bei **77–99 von
   2'000** (Restore 100/s) — alle Repo-Skripte teilen sich den Eimer EINES Zugangs-Tokens, und
