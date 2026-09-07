@@ -16551,3 +16551,23 @@ gid://shopify/Product/15496333623681	CHF 17.67	1 Varianten	LED-Hundegeschirr mit
 gid://shopify/Product/15496333656449	CHF 28.93	55 Varianten	Bequeme Schnürschuhe für Herren
 gid://shopify/Product/15496333689217	CHF 33.30	1 Varianten	Glättbürste mit Lockenfunktion
 gid://shopify/Product/15496333721985	CHF 19.07	1 Varianten	Kabelloser Bluetooth-Gamepad mit Vibration
+gid://shopify/Product/15496333787521	CHF 22.03	60 Varianten	ML Barefoot Indoor Trainingsschuhe
+gid://shopify/Product/15496333820289	CHF 32.02	1 Varianten	Infrarot-Haarglätter
+gid://shopify/Product/15496333853057	CHF 13.68	1 Varianten	Switch Mini Bluetooth Gamepad
+gid://shopify/Product/15496333885825	CHF 12.49	1 Varianten	Aufblasbarer Schutzkragen für Hunde
+gid://shopify/Product/15496333918593	CHF 20.54	48 Varianten	Barfussschuhe für Paare mit breiter Zehenbox
+gid://shopify/Product/15496333951361	CHF 29.56	1 Varianten	Ionen-Glätteisen für nasses und trockenes Haar
+gid://shopify/Product/15496334016897	CHF 16.43	1 Varianten	Kabelloses Bluetooth Gamepad mit Makro & Gyroskop
+gid://shopify/Product/15496334049665	CHF 8.64	1 Varianten	Halskrause für Hunde und Katzen
+gid://shopify/Product/15496334082433	CHF 21.79	48 Varianten	Outdoor Wanderschuhe für Herren
+gid://shopify/Product/15496334115201	CHF 17.35	1 Varianten	USB Gamepad mit Vibration für PS4/PS5/Xbox
+gid://shopify/Product/15496334147969	CHF 13.50	1 Varianten	Hundehalsband mit Leine im Set
+gid://shopify/Product/15496334180737	CHF 26.82	1 Varianten	Keramik-Dampfglätteisen für schnelles Styling
+gid://shopify/Product/15496334213505	CHF 19.72	44 Varianten	Outdoor Fly-knit Sportschuhe Unisex
+gid://shopify/Product/15496334246273	CHF 15.08	1 Varianten	Bluetooth Wireless Game Controller
+gid://shopify/Product/15496334311809	CHF 8.86	1 Varianten	Beruhigendes Halsband für Katzen und Hunde
+gid://shopify/Product/15496334508417	CHF 11.84	3 Varianten	Off-Shoulder Minikleid mit Cut-Outs
+gid://shopify/Product/15496334541185	CHF 12.06	20 Varianten	Mädchen Sandalen mit Perlen
+gid://shopify/Product/15496334606721	CHF 46.37	1 Varianten	Z6 Kinder Smartwatch
+gid://shopify/Product/15496334737793	CHF 11.94	1 Varianten	Gobelin Kissen mit Jacquard-Blumenmuster
+gid://shopify/Product/15496334770561	CHF 16.37	25 Varianten	Elegantes V-Neck A-Linien Kleid
