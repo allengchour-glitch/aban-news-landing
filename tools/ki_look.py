@@ -23,7 +23,16 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EMO = re.compile(r'[\U0001F300-\U0001FAFF☀-➿]')
-TICS = ["ohne Hype", "kein Hype", "Buzzword-Bingo", "ehrlich", "Auf einen Blick", "kein Login", "Kurz & bündig"]
+# ⚠️ 2026-09-07 durchgesehen, was diese Liste wirklich zählt. Zwei Einträge waren
+#    falsch drin und blähten die Zahl auf:
+#      · „Auf einen Blick" (433) ist kein Füllsatz, sondern das LABEL des Antwort-
+#        Kastens oben auf jeder Ratgeberseite — ein Bauteil, keine Floskel.
+#      · „ehrlich" (2255) ist das Kernwort der Marke und steht meist in echten Sätzen.
+#    Beide sind jetzt getrennt ausgewiesen statt mitgezählt: ein Messgerät, das
+#    Bauteile als Fehler zählt, treibt die Arbeit in die falsche Richtung — dieselbe
+#    Lehre wie bei „Kästen ≥ 14 px".
+TICS = ["ohne Hype", "kein Hype", "Buzzword-Bingo", "kein Login", "Kurz & bündig"]
+NUR_ZAEHLEN = ["ehrlich", "Auf einen Blick"]
 
 
 def messen(pfad):
@@ -31,7 +40,7 @@ def messen(pfad):
     h1 = re.findall(r'<h1[^>]*>(.*?)</h1>', h, re.S)
     h2 = re.findall(r'<h2[^>]*>(.*?)</h2>', h, re.S)
     text = re.sub(r'(?is)<(script|style)[^>]*>.*?</\1>', ' ', h)
-    tics = {t: len(re.findall(re.escape(t).replace(r'\&', '(?:&|&amp;)'), text)) for t in TICS}
+    tics = {t: len(re.findall(re.escape(t).replace(r'\&', '(?:&|&amp;)'), text)) for t in TICS + NUR_ZAEHLEN}
     return {
         "h1_emoji": sum(1 for x in h1 if EMO.search(x)),
         "h2_emoji": sum(1 for x in h2 if EMO.search(x)),
@@ -43,7 +52,7 @@ def messen(pfad):
         # misst das Falsche. Gezählt wird jetzt, was den Eindruck wirklich erzeugt:
         # wie viele VERSCHIEDENE Radien eine Seite verwendet.
         "radien": len(set(re.findall(r'border-radius:\s*(\d+(?:\.\d+)?)px', h))),
-        "tics": sum(tics.values()),
+        "tics": sum(tics[t] for t in TICS),
         "tics_detail": tics,
     }
 
@@ -53,7 +62,7 @@ def main():
     summe = {"h1_emoji": 0, "h2_emoji": 0, "verlaeufe": 0, "tics": 0}
     radien_gesamt = set()
     betroffen = {k: 0 for k in summe}
-    tics_gesamt = {t: 0 for t in TICS}
+    tics_gesamt = {t: 0 for t in TICS + NUR_ZAEHLEN}
     radien_max = 0
     for p in seiten:
         m = messen(p)
@@ -64,7 +73,7 @@ def main():
             summe[k] += m[k]
             if m[k]:
                 betroffen[k] += 1
-        for t in TICS:
+        for t in TICS + NUR_ZAEHLEN:
             tics_gesamt[t] += m["tics_detail"][t]
     n = len(seiten)
     if "--json" in sys.argv:
@@ -79,8 +88,11 @@ def main():
         print(f"{label:28} {summe[k]:>10} {betroffen[k]:>8}")
     print(f"{'Verschiedene Eckenradien':28} {len(radien_gesamt):>10} {'(max ' + str(radien_max) + ' je Seite)':>8}")
     print("\nTextbausteine einzeln:")
-    for t, v in sorted(tics_gesamt.items(), key=lambda x: -x[1]):
+    for t, v in sorted(((t, tics_gesamt[t]) for t in TICS), key=lambda x: -x[1]):
         print(f"  {t:20} {v:>6}")
+    print("\nNur beobachtet (Bauteil bzw. echtes Wort, kein Baustein):")
+    for t in NUR_ZAEHLEN:
+        print(f"  {t:20} {tics_gesamt[t]:>6}")
 
 
 if __name__ == "__main__":
