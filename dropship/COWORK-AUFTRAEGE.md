@@ -11,20 +11,32 @@ anmelden — Cowork soll die bereits offene Sitzung benutzen.
 mehr in der Liste — eine Aufgabenliste, in der Erledigtes mitläuft, wird nach dem zweiten Mal
 nicht mehr gelesen.
 
-## 🛴 JETZT: Bestellung #1018 bezahlen — und dabei die richtige Steckerversion wählen
+## 🛴 JETZT: Bestellung #1018 — Produkt in der CJ-App verbinden, dann bezahlen
 
 Neu bezahlt am 07.09. 19:11: **E-Scooter-Ladegerät, CHF 28.90** (21.90 Ware + 7.00 Versand),
 nach 4657 Dulliken. Ausführen bis 09.09. 12:00.
 
-**Der CJ-Auftrag existiert schon** (CJs eigene Shopify-App hat ihn angelegt):
-`2609071711580640400`, Status CREATED. **Keinen zweiten anlegen** — das gäbe zwei Sendungen.
+**Warum der CJ-Auftrag leer ist:** Das Produkt steht in der CJ-App unter **«Unconnected
+Products»** — es ist keinem CJ-Produkt zugeordnet. Deshalb hat Auftrag
+`2609071711580640400` zwar Status CREATED, aber `productAmount 0.00`, keine vid und keine
+Versandlinie. So lässt er sich gar nicht bezahlen.
 
-> ⚠️ **Beim Bezahlen in der CJ-Konsole: Variante `EU-Black` wählen, vid `2608150717551606700`.**
+**⚠️ Die CJ-App sucht nach SPU oder SKU, NICHT nach der pid.** Deshalb:
 
-CJ führt dieses Ladegerät in **vier** Steckerversionen (EU · US · AU · UK), unser Shop hat nur
-**eine** Variante — der Kunde konnte also gar nicht wählen. Ein US-, AU- oder UK-Stecker passt
-nicht in eine Schweizer Steckdose; das wäre ein Rückläufer, den niemand bemerkt hätte, bis das
-Paket da ist.
+1. Ins Suchfeld: **`CJYD3064243`** (das ist die SPU) → findet «Electric Scooter Lithium
+   Battery Charger Accessories»
+2. **Variante `EU-Black` wählen, SKU `CJYD306424301AZ`**
+
+   | Version | SKU | |
+   |---|---|---|
+   | **EU-Black** | **`CJYD306424301AZ`** | **← diese, passt in Schweizer Steckdosen** |
+   | US-Black | `CJYD306424302BY` | passt nicht |
+   | AU-Black | `CJYD306424303CX` | passt nicht |
+   | UK-Black | `CJYD306424304DW` | passt nicht |
+
+3. Verbinden — danach bekommt der Auftrag seine Position und wird zahlbar (IN_CART).
+
+**Keinen zweiten CJ-Auftrag anlegen** — das gäbe zwei Sendungen.
 
 Gemessen am 07.09.: **CH-Versand geht** (16 Linien, günstigste CJPacket Ordinary VIP **$8.79**,
 7–10 Tage) — kein zweiter #1016-Fall. Ware $3.34, Kosten also rund **CHF 10.90** gegen CHF 28.90
@@ -32,7 +44,7 @@ Erlös: **Marge rund +CHF 16.80.**
 
 Produkttext am selben Tag korrigiert — er versprach vier Steckerversionen zur Auswahl bei einer
 einzigen Variante und siezte; er nennt jetzt fest den EU-Stecker und den Hinweis auf die
-Akku-Spannung. Notiz mit allen Zahlen hängt an der Bestellung.
+Akku-Spannung. Notiz mit allen Zahlen und der SPU hängt an der Bestellung.
 
 ## 🔑 EIN Klick, der die 05.09.-Panne unmöglich macht: zwei Umgebungs-Variablen
 
