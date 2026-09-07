@@ -15165,3 +15165,5 @@ gid://shopify/Product/15525460967809	11->1	Handgefertigter 3‑D Kreuzanhänger 
 gid://shopify/Product/15525461459329	22->1	Metall-Wanddeko fliegender Vogel
 gid://shopify/Product/15525461655937	38->0	Korallenornament – europäisch‑geometrisch
 gid://shopify/Product/15525461885313	12->2	Vase für Blumen und Dekoration
+gid://shopify/Product/15525463458177	31->1	Meilenstein-Foto-Set aus Holz für Babys
+gid://shopify/Product/15525463949697	54->0	Acryl 3D-Puzzle Katze
