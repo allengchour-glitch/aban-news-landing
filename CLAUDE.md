@@ -1,5 +1,23 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔎 Das Kategorien-Verzeichnis führte 10 Links auf LEERE Kategorien — alle 356 gemessen (2026-09-07, 09:50 UTC)
+`/pages/alle-kategorien` (352 Links) wird täglich von `kategorien_verzeichnis.py` gebaut — das liest das
+Admin-Token, und das ist seit dem 05.09. tot. Die Seite stand also auf dem Stand vom 03.09., VOR dem
+Draft-Lauf. Alle 356 publizierten Kollektionen über den Konnektor auf AKTIVE Ware gezählt
+(`collection_id:X AND status:active`, 8 Aufrufe à 45 Aliasse, Zahlen in `dropship/_kollektionen_aktiv_0907_*.txt`,
+IDs in `_kollektionen_ids_0907.txt`):
+| Befund | Zahl |
+|---|---:|
+| Links auf Kollektionen mit **0** aktiven | **10** (velo-radsport, angeln, herren-grooming, moissanit-schmuck, gaming-headsets, 3d-druck, topseller, raucherzubehoer, wimpern-lashes, gravur-personalisiert) |
+| Links auf 1–3 aktive | 16 (dünn, nicht leer — bleiben) |
+| Links auf nicht publizierte Kollektionen | 0 (`all` ist Shopifys eingebaute Route) |
+Die 10 aus dem Seitentext entfernt (`pageUpdate` über den Konnektor, Body 27 KB), Zähler 352 → **342**,
+live gegengeprüft. **Solange das Admin-Token tot ist, wird das Verzeichnis nicht mehr automatisch
+nachgezogen** — jede Draftwelle erzeugt hier neue Leerlinks. `bestseller` steht dort noch als
+«Hero-Favoriten» (interner Name, 03.09. am Titel korrigiert, in der Seite nicht) — beim nächsten Bau.
+- ⚠️ **Eine Seite, die ein Skript pflegt, ist nur so frisch wie das Token des Skripts.** Wer das Verzeichnis
+  liest, prüft zuerst `updatedAt` gegen den letzten Katalog-Umbruch.
+
 ## 🧭 «fix weiter» (07.09.): Startseite gemessen heil, Camping 5 → 129, Parfüm-Link ehrlich (2026-09-07, 09:50 UTC)
 Nach dem Draft-Lauf die STARTSEITE gemessen statt vermutet: alle 17 Reihen-/Kachel-Kollektionen haben
 ≥ 12 aktive Produkte (kleinste: Auto-Zubehör 30, Bestseller 12; Damen 2'948, Neuheiten 7'154). Kein
