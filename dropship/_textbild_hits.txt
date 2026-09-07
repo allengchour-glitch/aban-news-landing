@@ -15224,3 +15224,38 @@ gid://shopify/Product/15525494915457	14->0	Blumenmuster Hemd oder Strandhose
 gid://shopify/Product/15525495243137	13->0	Eingangs-Organizer mit Hasen-Design
 gid://shopify/Product/15525495308673	157->0	Schürze für Küche, Haushalt und Blumenladen
 gid://shopify/Product/15525495406977	101->3	Rechteckige Servierplatte aus Porzellan
+gid://shopify/Product/15525496029569	68->0	Nussschale aus Bambus
+gid://shopify/Product/15525496095105	21->1	Manuelle Kaffeemühle aus Aluminium
+gid://shopify/Product/15525496226177	23->0	Automatische Mini-Sojamilchmaschine
+gid://shopify/Product/15525496357249	64->2	Küchen-Organizer für Messer und Geschirr
+gid://shopify/Product/15525496422785	24->2	Insektenschutz-Türvorhang aus Netzstoff
+gid://shopify/Product/15525496848769	8->0	Keramik Gewürzgläser-Set mit Löffeln
+gid://shopify/Product/15525497176449	47->2	Besteck-Aufbewahrungsbox mit Deckel
+gid://shopify/Product/15525497536897	24->0	Faltbare Waschmaschine mit Schleuderfunktion
+gid://shopify/Product/15525498454401	14->0	Silikon-Kochschaufel mit Holzgriff
+gid://shopify/Product/15525498782081	28->3	Mini-Eismaschine
+gid://shopify/Product/15525499011457	12->0	Glas-Weindekanter oder Rotweingläser
+gid://shopify/Product/15525499830657	13->0	Automatischer Futterspender WLAN
+gid://shopify/Product/15525499863425	34->0	Silberarmband mit Moissanit-Besatz
+gid://shopify/Product/15525499896193	17->0	Anti-Schlingnapf für Hunde
+gid://shopify/Product/15525500748161	8->0	Armband aus 925er Silber mit Zirkonia-Nieten
+gid://shopify/Product/15525500977537	85->0	Damen-Armbanduhr mit Magnetverschluss
+gid://shopify/Product/15525501337985	56->0	Wasserdichte Damenuhr mit Metallarmband
+gid://shopify/Product/15525502058881	30->0	Elektrischer Faszienball zur Muskelentspannung
+gid://shopify/Product/15525502157185	10->0	Quarzuhr für Damen mit Farbverlauf
+gid://shopify/Product/15525502222721	13->0	Saugfuss-Seilzug zum Trainieren
+gid://shopify/Product/15525502353793	21->0	Sichtbarer Ohrenreiniger mit WLAN
+gid://shopify/Product/15525502583169	11->0	Faltbare Yogamatte mit Handyhalter
+gid://shopify/Product/15525502812545	18->0	Gleitpads für Core-Training
+gid://shopify/Product/15525506482561	48->0	Verstellbares Hantel-Set für das Heimtraining
+gid://shopify/Product/15525508841857	20->0	Multifunktionaler Sandsack für das Krafttraining
+gid://shopify/Product/15525509038465	11->0	Klappbarer Campingtisch mit 4 Stühlen
+gid://shopify/Product/15525509169537	26->0	Mehrzweck-Kissen für Seiten- und Bauchschläfer
+gid://shopify/Product/15525509595521	52->0	Memory-Schaum-Beinkissen zur Beinauflage
+gid://shopify/Product/15525509988737	41->0	Kissenbezug aus Baumwoll-Twill, 45 × 120 cm
+gid://shopify/Product/15525511168385	36->0	Outdoor Smartwatch für Sport & Gesundheit
+gid://shopify/Product/15525511233921	8->0	Hundeleine für mittlere und grosse Hunde
+gid://shopify/Product/15525511758209	59->0	Schwarze Hundeleine mit Zugkraft
+gid://shopify/Product/15525511987585	11->1	Hundeleine mit 3D-Blumen
+gid://shopify/Product/15525512872321	118->0	Smartwatch Armband mit Perlen
+gid://shopify/Product/15525513101697	8->0	Kinder Smartwatch mit GPS-Ortung
