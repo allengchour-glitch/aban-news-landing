@@ -38306,3 +38306,28 @@
 15505709138305	ersetzt-1	Wandhalterung für Gewürzflaschen
 15505709957505	ersetzt-1	TV-Box & Router Wandhalterung ohne Bohren
 15505710383489	ersetzt-1	Hitzebeständige Feuerdecke für Outdoor & BBQ
+15505714053505	ersetzt-1	Multifunktions-Schmuckzange
+15505715102081	ersetzt-1	Spritzpistole für Backwaren und Dekoration
+15505716281729	ersetzt-1	O-Ring Dichtungsset, Staub- und Wasserdicht
+15505717559681	ersetzt-1	Profi-Schuhbürste für Tanzschuhsohlen
+15505718935937	ersetzt-1	Elektrischer Ohrenreiniger für Kinder
+15505720148353	ersetzt-1	Vierweg-Eckverbinder aus Temperguss
+15505721295233	ersetzt-1	Boden-Dreifach-Rasensprenger
+15505722737025	ersetzt-1	Sägekette für Elektrokettensägen
+15505725686145	ersetzt-1	Hochdruck-Metall-Gartenspritze
+15505727127937	ersetzt-1	Verstellbarer Ratschenschlüssel, einklappbar
+15505835655553	ersetzt-1	Atmungsaktive Outdoor-Laufschuhe für Herren
+15505835950465	ersetzt-1	Elektrischer Fleischwolf, 6L
+15505836802433	ersetzt-1	Smarte WLAN-Video-Türklingel
+15505837654401	ersetzt-1	Bequeme, atmungsaktive Herren-Sneaker zum Schnüren
+15505838375297	ersetzt-1	Edelstahl-Spatel und Schöpflöffel Set
+15505838473601	ersetzt-1	Multimedia Bluetooth Radio Lautsprecher
+15505839292801	ersetzt-1	Herren Freizeit-Sneaker aus Strick
+15505839784321	ersetzt-1	Mobiles Solar-Panel zum Laden (7W)
+15505840046465	ersetzt-1	Herzförmige Obstschale mit Gabel-Set
+15505840701825	ersetzt-1	Freizeitschuhe für Jugendliche
+15505841226113	ersetzt-1	Smarte Küchenwaage mit App-Anbindung
+15505841488257	ersetzt-1	Frucht-Cutter aus Edelstahl
+15505842766209	ersetzt-1	Smarter Saugroboter für den Haushalt
+15505842930049	ersetzt-1	Pizzateller aus Bambus mit Griff
+15505844404609	ersetzt-1	Digitaler Multifunktions-Stromzähler mit LCD

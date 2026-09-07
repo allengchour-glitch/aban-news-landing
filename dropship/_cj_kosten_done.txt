@@ -16940,3 +16940,11 @@ gid://shopify/Product/15496388706689	CHF 11.51	1 Varianten	Schildkröten Schnüf
 gid://shopify/Product/15496388739457	CHF 19.00	1 Varianten	Interaktiver Plüsch-Rollball für Haustiere
 gid://shopify/Product/15496388804993	CHF 19.65	18 Varianten	Chic Stiletto-Sandalen mit spitzer Zehe
 gid://shopify/Product/15496388837761	CHF 27.60	30 Varianten	Denim-Sandalen mit Riemen und Plateau
+gid://shopify/Product/15496388870529	CHF 7.29	1 Varianten	Cat Eye Nägel zum Aufkleben
+gid://shopify/Product/15496388903297	CHF 8.67	1 Varianten	Halsband mit Leine aus Leder
+gid://shopify/Product/15496388968833	CHF 10.90	1 Varianten	30-teiliges Nagelpflege-Set aus Edelstahl
+gid://shopify/Product/15496389001601	CHF 22.86	18 Varianten	Sommer Sandalen mit Schleife und Perlen
+gid://shopify/Product/15496389034369	CHF 9.29	1 Varianten	Geprägtes Lederhalsband mit weichem Futter
+gid://shopify/Product/15496389067137	CHF 7.18	1 Varianten	Handgemachte Eis-Transparente Full Diamond Manikür
+gid://shopify/Product/15496389099905	CHF 10.22	1 Varianten	GPS-Halsband für Haustiere
+gid://shopify/Product/15496389132673	CHF 16.06	27 Varianten	High-Heel Sandalen mit Strass-Spitze
