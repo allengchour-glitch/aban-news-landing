@@ -17778,3 +17778,24 @@ gid://shopify/Product/15496611332481	CHF 8.29	1 Varianten	Wiederaufladbares, sel
 gid://shopify/Product/15496611889537	CHF 10.04	1 Varianten	Velo-LED-Licht
 gid://shopify/Product/15496611955073	CHF 22.16	1 Varianten	3-in-1 Wireless Charger
 gid://shopify/Product/15496612381057	CHF 8.07	1 Varianten	Plüsch-Liebes-Quaste Katzenangel
+gid://shopify/Product/15496612512129	CHF 9.47	1 Varianten	Intelligentes USB-Velo-Frontlicht mit Sensor
+gid://shopify/Product/15496612643201	CHF 10.24	1 Varianten	USB-C zu VGA + USB 3.0 + Ladeanschluss Adapter
+gid://shopify/Product/15496612839809	CHF 23.73	1 Varianten	Stretch-Sofabezug mit Pflanzenmuster
+gid://shopify/Product/15496613134721	CHF 12.67	1 Varianten	Interaktiver Katzenball mit Ladestation
+gid://shopify/Product/15496613233025	CHF 10.83	1 Varianten	USB Lade-Rücklicht für Velo
+gid://shopify/Product/15496613364097	CHF 18.51	1 Varianten	Kabelloses Qi Lade-Mauspad aus PU-Leder
+gid://shopify/Product/15496613593473	CHF 43.52	1 Varianten	Niedliches Cartoon Kinder-Sofa (2-in-1)
+gid://shopify/Product/15496613953921	CHF 23.31	1 Varianten	LED-Fahrradrücklicht
+gid://shopify/Product/15496614216065	CHF 44.54	1 Varianten	Multifunktionales Tatami-Kissen mit Rundkissen
+gid://shopify/Product/15496614379905	CHF 21.63	1 Varianten	Dual-Ladestation für PS5 Wireless Gamepads
+gid://shopify/Product/15496614543745	CHF 14.76	1 Varianten	Mimi Electric Fish Tumbler Katzenball
+gid://shopify/Product/15496614642049	CHF 12.98	1 Varianten	Wasserdichte Velo-Beleuchtung mit USB
+gid://shopify/Product/15496614969729	CHF 51.10	1 Varianten	Rutschfeste, saugfähige Küchenmatte
+gid://shopify/Product/15496702525825	CHF 24.96	1 Varianten	Powerbank 20000mAh
+gid://shopify/Product/15496702624129	CHF 10.25	1 Varianten	Jacquard-Kissenbezug im chinesischen Stil
+gid://shopify/Product/15496702689665	CHF 8.53	1 Varianten	Robustes Quietsch-Rugby für Hunde
+gid://shopify/Product/15496702722433	CHF 12.87	1 Varianten	Duke Universal Reise-Ladegerät mit 3 USB
+gid://shopify/Product/15496702886273	CHF 18.53	1 Varianten	Kissenbezug mit Pflanzen- und Blumenmuster
+gid://shopify/Product/15496702919041	CHF 11.80	1 Varianten	FDGAO 3-in-1 Ladegerät mit USB-A & USB-C
+gid://shopify/Product/15496703082881	CHF 30.97	1 Varianten	Elastischer Stuhlhussen-Bezug, halbe Sitzfläche
+gid://shopify/Product/15496703115649	CHF 7.75	1 Varianten	USB Rücklicht Rot-Blau für Mountainbikes
