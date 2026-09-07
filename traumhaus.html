@@ -600,6 +600,20 @@ function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.hei
 var _texBeton=null,_texBlatt=null,_texErde=null;
 function betMat(c,rough){if(!_texBeton)_texBeton=_strukTex("beton");
   var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.85,map:_texBeton});m.envMapIntensity=0.3;return m;}
+/* 📏 KACHELGROESSE IN METERN — und die Falle, die dabei zweimal zugeschlagen hat.
+   `betMat()` gibt JEDEM Aufrufer dieselbe Texturinstanz (`_texBeton`). Wer `repeat`
+   daran dreht, dreht es an Bordsteinen, Bruecken, Pfeilern und Vorplaetzen mit; und
+   `material.clone()` hilft nicht, denn der Klon teilt die MAP weiter. Geklont werden
+   muss die Textur.
+   Ohne das bleibt `repeat` bei 1x1, und eine 128-Pixel-Kachel ueber 44 m ist keine
+   Struktur mehr, sondern eine Farbe (gefunden von th-kachel: Kirchplatz 30x44 m auf
+   EINER Kachel, Achterbahn-Stich 98 m, Viertelboeden bis 180 m). */
+function kacheln(mat,breite,tiefe,meter){
+  if(!mat||!mat.map)return mat;
+  var t=mat.map.clone();t.needsUpdate=true;
+  t.wrapS=t.wrapT=THREE.RepeatWrapping;
+  t.repeat.set(Math.max(1,Math.round(breite/(meter||6))),Math.max(1,Math.round(tiefe/(meter||6))));
+  mat.map=t;mat.needsUpdate=true;return mat;}
 /* 🎨 Verputz-Struktur fuer Fassaden (weisse Basis -> jede Hausfarbe faerbt sie ein).
    Vorher waren alle Waende einfarbig und wirkten wie Plastik. */
 var _texPutz=null;
@@ -5672,7 +5686,8 @@ setTimeout(function baueGebaeude(){
       _s9=addSolid(bx,bz,bw+1,bd+1,tuer);
       /* Zugangsweg von der Gehwegkante zum Eingang */
       var wl=setback-TO;
-      var weg=new THREE.Mesh(new THREE.PlaneGeometry(laengs?2.2:wl,laengs?wl:2.2),betMat(0xcfc8b8,0.92));
+      var weg=new THREE.Mesh(new THREE.PlaneGeometry(laengs?2.2:wl,laengs?wl:2.2),
+        kacheln(betMat(0xcfc8b8,0.92),laengs?2.2:wl,laengs?wl:2.2,5));
       weg.rotation.x=-Math.PI/2;
       weg.position.set(laengs?bx:VX+seite*(TO+wl/2),0.004,laengs?VZ+seite*(TO+wl/2):bz);
       weg.receiveShadow=true;scene.add(weg);});
@@ -7342,8 +7357,13 @@ setTimeout(function baueGebaeude(){
     (function achterbahnStich(){
       var A=betMat(0x4a4a53,0.92), B=betMat(0x9a9384,0.98);
       var D=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});
+      /* ⚠️ EIN MATERIAL FUER PLATTEN VERSCHIEDENER GROESSE GEHT NICHT. A und B werden
+         von allen Platten geteilt; ein `repeat` daran passt dann zur einen und nicht
+         zur anderen. Darum je Platte ein eigener Klon — und `kacheln` klont zusaetzlich
+         die TEXTUR, weil ein Material-Klon die map weiterteilt.
+         Ohne das lag hier eine 128-Pixel-Kachel ueber 98 m Fahrbahn (th-kachel). */
       function platte(w,d,x,z,mat,y){
-        var p=new THREE.Mesh(new THREE.PlaneGeometry(w,d),mat);
+        var p=new THREE.Mesh(new THREE.PlaneGeometry(w,d),kacheln(mat.clone(),w,d,6));
         p.rotation.x=-Math.PI/2;p.position.set(x,y,z);p.receiveShadow=true;scene.add(p);}
       /* Segment A: z=173, x -194.2..-96 (Ost-Ende ueberlappt die Ring-Fahrbahn = Einmuendung) */
       platte(98.2,8.4,-145.1,173,A,0.012);
@@ -7947,7 +7967,7 @@ setTimeout(function baueGebaeude(){
      verloren zwischen Parkplatz und Bahn. Jetzt flankieren sie die Park-Zufahrt. */
   bau("th3_marktstand.glb",1.35,36,0,300,0,false);bau("th3_marktstand.glb",1.35,84,0,300,0,false);
   (function riesenPark(){ /* 🌳 W2a: grosser Park rund um den Markt-Platz */
-    var pb=new THREE.Mesh(new THREE.PlaneGeometry(36,18),betMat(0xcfc8b8,0.9));
+    var pb=new THREE.Mesh(new THREE.PlaneGeometry(36,18),kacheln(betMat(0xcfc8b8,0.9),36,18,5));
     pb.rotation.x=-Math.PI/2;pb.position.set(68,-0.008,87);pb.receiveShadow=true;scene.add(pb);
     var weg=new THREE.Mesh(new THREE.PlaneGeometry(5,26),betMat(0xcfc8b8,0.9));
     weg.rotation.x=-Math.PI/2;weg.position.set(68,-0.009,68);weg.receiveShadow=true;scene.add(weg); /* Weg von der Strasse zum Platz */
@@ -8088,13 +8108,13 @@ setTimeout(function baueGebaeude(){
       var CX=-71.84, KZ=15.4, CZ=148, oh=true; // ohneSchutz: bau() prueft hier nicht auf Strassen
       var pM=betMat(0xcdc6b6,0.93);
       /* r = 11,0: mit 11,5 schnitt die Scheibe die Suedwestecke des Dorfhauses an. */
-      var pf=new THREE.Mesh(new THREE.CircleGeometry(11.0,40),pM);
+      var pf=new THREE.Mesh(new THREE.CircleGeometry(11.0,40),kacheln(pM,22,22,5));
       pf.rotation.x=-Math.PI/2;pf.position.set(CX,-0.010,KZ+CZ);pf.receiveShadow=true;scene.add(pf);
-      var weg=new THREE.Mesh(new THREE.PlaneGeometry(3.2,17),pM.clone());
+      var weg=new THREE.Mesh(new THREE.PlaneGeometry(3.2,17),kacheln(pM.clone(),3.2,17,5));
       weg.rotation.x=-Math.PI/2;weg.position.set(CX,-0.009,KZ+129.9);weg.receiveShadow=true;scene.add(weg);
       /* Mittelachse innerhalb des Platzes: Tor -> Brunnen -> Pavillon -> Rondell.
          Ohne sie war der Platz eine leere graue Scheibe mit Moebeln am Rand. */
-      var ach=new THREE.Mesh(new THREE.PlaneGeometry(3.6,20),pM.clone());
+      var ach=new THREE.Mesh(new THREE.PlaneGeometry(3.6,20),kacheln(pM.clone(),3.6,20,5));
       ach.rotation.x=-Math.PI/2;ach.position.set(CX,-0.008,KZ+148);ach.receiveShadow=true;scene.add(ach);
       bau("th35_torbogen.glb",       3.850, CX,       0, KZ+137.8,  0,         false,null,oh);
       bau("th35_brunnen_zier.glb",   2.555, CX,       0, KZ+143.5,  0,         false,null,oh);
@@ -8371,9 +8391,9 @@ setTimeout(function baueGebaeude(){
           SW=DOM_SW,          /* Schauseite/Portal (Sueden), gemessen Anker+11,2 */
           NW=DOM_NW;          /* Chorwand (Norden), gemessen Anker-9,3 */
       /* Kirchplatz: Belag ueber das ganze Geviert, Fassung in zweitem Ton */
-      var ring=new THREE.Mesh(new THREE.PlaneGeometry(30,44),betMat(0xbdb5a4,0.93));
+      var ring=new THREE.Mesh(new THREE.PlaneGeometry(30,44),kacheln(betMat(0xbdb5a4,0.93),30,44,5));
       ring.rotation.x=-Math.PI/2;ring.position.set(DOM_X,-0.0125,DOM_Z-1);ring.receiveShadow=true;scene.add(ring);
-      var vp=new THREE.Mesh(new THREE.PlaneGeometry(24,10),betMat(0xcfc7b6,0.9));
+      var vp=new THREE.Mesh(new THREE.PlaneGeometry(24,10),kacheln(betMat(0xcfc7b6,0.9),24,10,5));
       vp.rotation.x=-Math.PI/2;vp.position.set(DOM_X,-0.011,SW+5.0);vp.receiveShadow=true;scene.add(vp);
       /* Spitzbogenfenster an den LAENGSwaenden (x-Seiten), Scheibe quer dazu */
       (function fenster(){

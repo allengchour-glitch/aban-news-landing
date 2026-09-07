@@ -68,8 +68,22 @@ const datei = mitSonden('traumhaus.html', {
 }, 'spiele-dev/tools/_kachel_probe.html')
 
 const { browser, page, jsFehler } = await spielOeffnen(datei, { warten: 55000 })
-const alle = await page.evaluate((g) => window.__th.kacheln(g), GRENZE)
-const treffer = alle.filter((o) => !AUSNAHMEN.some((a) => String(o.n).toLowerCase().includes(a)))
+/* ⚠️ ZWEIMAL MESSEN, SONST MELDET DIE PRUEFUNG LADEZEIT ALS FEHLER. Texturen aus
+   Dateien kommen ueber `ladeTex` NACH, und bis dahin haengt am Material noch die
+   prozedurale Notloesung mit repeat 1x1. Der Altstadt-Platz stand darum einmal mit
+   "49 m Kachel" in der Liste — und war in Wahrheit sauber gekachelt (2,5 m), die
+   Datei war nur noch unterwegs. Verraten hat es die FARBE: `ladeTex` setzt sie beim
+   Laden auf ffffff, in der Meldung stand aber noch der Notton.
+   Gemeldet wird darum nur, was in BEIDEN Messungen steht. */
+const lauf1 = await page.evaluate((g) => window.__th.kacheln(g), GRENZE)
+await page.waitForTimeout(20000)
+const lauf2 = await page.evaluate((g) => window.__th.kacheln(g), GRENZE)
+const schluessel = (o) => o.n + '|' + o.gr + '|' + o.x + '|' + o.z
+const bleibt = new Set(lauf1.map(schluessel))
+const alle = lauf2.filter((o) => bleibt.has(schluessel(o)))
+const verschwunden = lauf2.length - alle.length + (lauf1.length - alle.length)
+if (verschwunden) console.log('  (' + verschwunden + ' Meldung(en) waren nur Ladezeit und sind in der zweiten Messung weg)')
+const treffer = alle.filter((a) => !AUSNAHMEN.some((x) => String(a.n).toLowerCase().includes(x)))
 console.log('\nFlaechen ab 20 m mit Kachel groesser ' + GRENZE + ' m:')
 if (!treffer.length) console.log('   keine')
 const ohneUV = treffer.filter((o) => o.kachel < 0)
