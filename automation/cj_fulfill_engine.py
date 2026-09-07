@@ -5,6 +5,9 @@ ab ausser dem Aufladen der CJ-Geldboerse — das kann nur der Kontoinhaber.
 
 Je Bestellung aus dropship/_cj_orders_done.txt:
   IN_CART  + Guthaben reicht  -> bezahlen (mehrere ID-Varianten, CJ ist hier inkonsistent)
+           ⚠️ Guthaben reicht bei diesem Shop NIE: CJ nimmt Einzahlungen erst ab USD 2000
+           an (Betreiber 07.09.2026). Der Zweig bleibt fuer den Fall, dass sich das aendert;
+           im Alltag meldet `cj_zahlung_offen.py`, was auf einen Betreiber-Klick wartet.
   SHIPPED  + Shopify offen    -> Fulfillment mit echter Tracking-Nummer anlegen
 
 ⚠️ Tracking wird NUR uebernommen, wenn CJ es selbst liefert. Bei #1011 stand eine Nummer in
@@ -217,7 +220,8 @@ def main():
         if status == "IN_CART":
             if bal < betrag:
                 print(f"  {name} ({lx}): unbezahlt, {betrag:.2f} USD nötig, Guthaben {bal:.2f} "
-                      f"→ Geldbörse aufladen", flush=True)
+                      f"→ ⚠️ Betreiber muss in der CJ-Konsole bezahlen "
+                      f"(Guthaben ist erst ab USD 2000 aufladbar, Betreiber 07.09.)", flush=True)
                 continue
             if DRY:
                 print(f"  {name} ({lx}): würde {betrag:.2f} USD bezahlen", flush=True); continue

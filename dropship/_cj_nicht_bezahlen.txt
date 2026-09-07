@@ -1,0 +1,2 @@
+# CJ-Auftraege, die NIE bezahlt werden duerfen. Format: orderId<TAB>Grund
+2609030857400653900	Schatten zu #1016 — Bestellung ist vollstaendig rueckerstattet (03.09.2026)

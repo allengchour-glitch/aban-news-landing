@@ -1,5 +1,49 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 💳 CJ nimmt Guthaben erst ab USD 2000 — der Bestell-Automat kann NIE selbst bezahlen (2026-09-07)
+Betreiber: «cj kann ich erst ab 2000 dollar einzahlen immernoch». Damit ist `shopping/pay/payBalance`
+für diesen Shop **strukturell tot**, nicht vorübergehend leer: Das Guthaben steht dauerhaft auf
+**$0.00** (gemessen), und eine Aufladung von ~$26 für eine einzelne Bestellung ist gar nicht möglich.
+Jede Kundenbestellung braucht einen Klick des Betreibers in der CJ-Konsole.
+- **Die Automatik wurde auf die Wirklichkeit umgebaut, statt weiter zu versuchen, was nicht geht:**
+  `automation/cj_zahlung_offen.py` (im `engine_keepalive`, **MELDET NUR**) listet Aufträge mit
+  Status `IN_CART` samt Betrag und Shopify-Nummer, schreibt `dropship/CJ-ZAHLUNG-OFFEN.md` **nur
+  wenn etwas offen ist** und löscht den Bericht sonst. Er hängt **allein am CJ-Token** — das
+  Shopify-Admin-Token ist seit dem 05.09. tot (heute erneut 401 gemessen), ein Wächter an dieser
+  Quelle wäre blind wie die übrigen Ampeln.
+- **Sperrliste `dropship/_cj_nicht_bezahlen.txt`** (orderId + Grund): Aufträge, die nie bezahlt
+  werden dürfen — etwa der Schatten zu einer rückerstatteten Bestellung. Sie werden **getrennt
+  ausgewiesen, nicht verschwiegen**; ein Wächter, der einen gefährlichen Auftrag einfach weglässt,
+  nimmt dem Betreiber die Entscheidung ab.
+- In beide Richtungen geprüft: etwas offen → Bericht mit Zeile · derselbe Auftrag gesperrt → wandert
+  in den Sperr-Abschnitt · nichts offen → Bericht wird gelöscht. Der zahlbare Status ist über
+  `STATUS_ZAHLBAR` konfigurierbar, damit der Wächter überhaupt in beide Richtungen prüfbar ist und
+  eine CJ-Umbenennung ihn nicht stillschweigend verstummen lässt.
+- ⚠️ Die alte Meldung des Bestell-Automaten «→ Geldbörse aufladen» war ab heute ein **falscher Rat**
+  und heisst jetzt «Betreiber muss in der CJ-Konsole bezahlen». **Ein Hinweis, der einen unmöglichen
+  Weg empfiehlt, ist schlimmer als keiner** — er lässt den Leser nach einem Knopf suchen, den es nicht gibt.
+
+## 🔪 Bestellung #1017 (Ersatz für #1016): der CH-Kanal trägt, und der Schatten war der richtige Auftrag (2026-09-07)
+Der Kunde hat den Zahlungslink aus #D2 bezahlt → **#1017, CHF 40.90, Fuda-Damast-Taschenmesser nach
+Pratteln**. Genau die Ware, an der der Bestell-Automat am 03.09. gescheitert ist. Alles am Objekt gemessen:
+| gemessen 07.09. | |
+|---|---|
+| CJ-Linie CN→CH für vid 2601150313151634500 | **«CJPacket EQ Sensitive», USD 7.30, 6–10 Tage** — der am 03.09. fehlende Kanal trägt heute wirklich |
+| CJ-Auftrag | **CJs eigene Shopify-App hatte ihn schon angelegt**: `2609071450210669900`, `#1017`, IN_CART, $25.54, richtige Linie/Adresse/Variante |
+| Guthaben | $0.00 → Betreiber hat den Auftrag **direkt** bezahlt |
+| danach | orderStatus **UNSHIPPED**, Sendungsnummer **EQKPT8612701376YQ** (equick_Standard) |
+- ⚠️ **Bewusst KEIN eigener `LX1017` angelegt.** Der Schatten war diesmal der richtige, vollständige
+  Auftrag. Einen zweiten daneben zu stellen hätte zwei zahlbare Aufträge und damit eine doppelte
+  Sendung ergeben (Schatten-Klasse 20.08.). **Vor dem Anlegen erst nachsehen, ob CJs App die
+  Bestellung schon hat** — bei paid orders legt sie sie sofort mit an.
+- ⚠️ **Und der Fehler, der fast passiert wäre:** Auf «habe cj bezahlt» hin stand das Guthaben immer
+  noch auf $0.00. Daraus «Zahlung nicht angekommen» zu schliessen und `payBalance` zu schicken, wäre
+  eine zweite Zahlung gewesen. Der Betreiber hatte den AUFTRAG bezahlt, nicht das Guthaben aufgeladen.
+  **Wer eine fremde Zahlung prüft, misst das ZIEL (den Auftragsstatus), nicht den Umweg (das Guthaben).**
+- ⚠️ **Noch nicht in Shopify erfüllt und keine Versandmail:** `UNSHIPPED` heisst bezahlt, aber noch
+  nicht an den Transporteur übergeben. Benachrichtigt wird bei `SHIPPED` (Hausregel 22.08.) — gerade
+  bei diesem Kunden, der schon eine Rückerstattung hinter sich hat.
+
 ## 🔎 Das Kategorien-Verzeichnis führte 10 Links auf LEERE Kategorien — alle 356 gemessen (2026-09-07, 09:50 UTC)
 `/pages/alle-kategorien` (352 Links) wird täglich von `kategorien_verzeichnis.py` gebaut — das liest das
 Admin-Token, und das ist seit dem 05.09. tot. Die Seite stand also auf dem Stand vom 03.09., VOR dem

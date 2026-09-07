@@ -379,6 +379,9 @@ for P in "$REPO_AUTO"/*.py; do
 done
 
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
+# CJ nimmt Guthaben erst ab USD 2000 an -> der Automat kann nie selbst bezahlen.
+# Deshalb MELDEN, was auf einen Betreiber-Klick wartet, statt es zu versuchen.
+python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar (Waechter fehlt oder CJ antwortet nicht)"
 # BETREIBER-AMPEL (04.09.2026, «mach das alles geht ohne mich»): EINE Zeile mit dem, was
 # gerade wirklich einen Menschen braucht — messbare Blocker werden LIVE nachgemessen und
 # verschwinden von selbst, der unmessbare Rest wird nur gezaehlt. Schweigt, wenn nichts ist.
