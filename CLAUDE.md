@@ -62,6 +62,26 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-07 (🔓 REVIEW-GRIND ENTSPERRT — CJ-Auth-Bug gefunden, „Decke" war falsch):**
+- **Widerlegt:** die Memory-Aussage „nur ~3 cj-real-Produkte haben CJ-Kommentare, listLen=0 = echte 0, KEIN Bug".
+  **Gemessen mit gültigen CJ-Creds:** von 60 CJ-pids aus den Repo-Ledgers haben **13 Kommentare, 198 davon ≥4★**;
+  bei 5 numerischen Ledger-pids: 4/5 mit Kommentaren, **86 brauchbare ≥4★**. Bei **7588 Ledger-Einträgen** sind
+  damit realistisch **tausende echte ≥4★-Reviews importierbar** — der billigste Conversion-Hebel, ohne User-Klick.
+- **🐛 URSACHE (behoben):** `automation/cj_reviews_import.mjs` sendete bei `getAccessToken` das Feld **`apiKey`**;
+  CJ erwartet **`password`** → Auth schlug fehl → leere Listen → falscher Schluss „keine Kommentare".
+  Jetzt: `password` zuerst, `apiKey` als Fallback (beide Pfade verifiziert, Token 566 Zeichen).
+- **Weitere Fixes im Importer:** Shopify-**Cursor-Pagination** (statt hartem `first:LIMIT`), Defaults
+  `LIMIT 25→250` / `PER 6→8`, und Nicht-CJ-SKUs (`bb-`/`pf-`/`pod-`) werden übersprungen (spart CJ-Quota).
+- **Reviews sind hochwertig:** echte Käufer-Kommentare mit `score`, `commentDate`, `countryCode` und
+  **Foto-URLs (`commentUrls`)** — Foto-Reviews konvertieren ~2× besser; der Importer reicht sie an Judge.me durch.
+- **❌ SACKGASSE (nicht erneut versuchen):** CJ liefert **keine AliExpress-Quell-ID** (`sourceFrom` ist nur ein
+  Zahlen-Flag, „aliexpress" kommt im JSON nirgends vor) → ein automatischer AliExpress-Review-Grind über CJ-Daten
+  geht nicht. Reviews per Namens-Ähnlichkeit zuzuordnen ist **verboten** (irreführend = Fake-Review-Grenze/UWG).
+- **🟡 ZUM SCHARFSTELLEN FEHLEN NUR CREDS** (Skript ist fertig + gefixt): `JUDGEME_PRIVATE_TOKEN` (Judge.me →
+  Settings → API) **plus** `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET`/`SHOPIFY_SHOP` (o. `SHOPIFY_ADMIN_TOKEN`),
+  `CJ_EMAIL`/`CJ_API_KEY`, optional `GEMINI_API_KEY` (DE-Übersetzung).
+  Lauf: `DRY_RUN=1` zuerst, dann scharf — `QUERY` ggf. auf den grossen Katalog weiten statt nur `tag:cj-real`.
+
 **📌 2026-07-05 (🎉 ERSTE VERKÄUFE — Order-Audit live verifiziert):** **2 bezahlte Bestellungen:**
 **#1004 (25.6., erster Verkauf!)** LED-Laterne «Boho» (BigBuy `bb-S3414715`, fulfilled — ⚠️ BigBuy-Bestellung
 verifizieren!) + **#1005 (3.7.)** ⚽ WM-Trikot selbst gestalten (Printful `165452870`, in Produktion, **Shopify noch
@@ -223,9 +243,8 @@ Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts (GitLab prüfen).
   **Reviews-Stand (2026-06-12):** `JUDGEME_PRIVATE_TOKEN`+`CJ_EMAIL`/`CJ_API_KEY` gesetzt. **ECHTER Reviews-Import
   gebaut & live:** `automation/cj_reviews_import.mjs`+`cj-reviews.yml` zieht echte CJ-`productComments` (≥4★) →
   DE-Übersetzung (Gemini) → Judge.me (Shopify-SKU→CJ-pid via productSku/variantSku-Resolver; idempotent, Ledger
-  `dropship/cj_reviews_done.txt`). **Verifiziert:** Smartwatch = 5,0★/5 echte Reviews live. **DECKE rigoros bestätigt:
-  nur ~3 cj-real-Produkte haben überhaupt CJ-Kommentare** (Rest: CJ liefert `list listLen=0` = echte 0 Kommentare,
-  KEIN Bug) → nicht sinnlos neu laufen lassen. Fertig-POD-Produkte: keine CJ-Quelle → nur organisch (Judge.me-Mails).
+  `dropship/cj_reviews_done.txt`). **Verifiziert:** Smartwatch = 5,0★/5 echte Reviews live. **⚠️ DIESE „DECKE" WAR FALSCH — WIDERLEGT 2026-09-07 (s. Stand oben):** CJ hat sehr wohl
+  massenhaft Kommentare; der Importer scheiterte an einem **Auth-Bug** (`apiKey` statt `password`). Jetzt gefixt. Fertig-POD-Produkte: keine CJ-Quelle → nur organisch (Judge.me-Mails).
   Theme: `Horizon · LuxeStyle + Email-Popup (Claude)` (MAIN; `templates/index.json` auto-generiert — Skript-Replace
   ok, aber Customizer kann überschreiben).
 - **Branch-Hinweis:** Diese POD/Editor/Audit-Arbeit lief via PRs direkt auf **`main`** (#683/#685/#690/#691 u.a.),
