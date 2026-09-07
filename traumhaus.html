@@ -1392,8 +1392,14 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     /* 🛣️ FAHRWEG: Serpentine vom Fuss zum Gipfel. Sie folgt derselben
        Hoehenfunktion, liegt also IMMER auf dem Hang — kein Schweben, kein
        Versinken, egal wie sich das Profil spaeter aendert. */
+    /* 🧵 AUCH HIER FEHLTE DAS UV. Die beiden Bergwege sind selbst gebaute Geometrie;
+       ihr Material traegt eine Textur, die Geometrie aber kein `uv` — damit liest jeder
+       Punkt dieselbe Stelle des Bildes, und der Weg ist einfarbig. Gefunden von
+       th-kachel zusammen mit Landstrasse, Bankett und Dammflanke. Laengs die
+       tatsaechliche Weglaenge, quer die Breite, beides in 6-m-Kacheln. */
     function band(vonR,bisR,uml,breite,hoehe,mat,stufen){
-      var pp=[],ii=[],vb=0;
+      var pp=[],ii=[],vb=0,uv=[],KM9=6;
+      var _lg=Math.abs(uml)*6.283*(vonR+bisR)/2;        /* ungefaehre Weglaenge */
       for(var i=0;i<stufen;i++){
         var t0=i/stufen, t1=(i+1)/stufen;
         function pkt(t,sd){
@@ -1405,10 +1411,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         }
         var A=pkt(t0,-1),B=pkt(t0,1),C=pkt(t1,1),D=pkt(t1,-1);
         [A,B,C,D].forEach(function(P){pp.push(P[0],P[1],P[2]);});
+        [[t0,0],[t0,1],[t1,1],[t1,0]].forEach(function(U){
+          uv.push(U[0]*_lg/KM9, U[1]*breite/KM9);});
         ii.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;
       }
       var gg=new THREE.BufferGeometry();
       gg.setAttribute("position",new THREE.Float32BufferAttribute(pp,3));
+      gg.setAttribute("uv",new THREE.Float32BufferAttribute(uv,2));
       gg.setIndex(ii); gg.computeVertexNormals();
       var mm=new THREE.Mesh(gg,mat); mm.receiveShadow=true; mm.frustumCulled=false;
       mm.userData.nieAusblenden=1; scene.add(mm); return mm;
@@ -1695,17 +1704,25 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
          dazu eine Stichstrasse von der Ringstrasse, damit der See angebunden ist. */
       var SX=0,SZ2=146,SEG=44;
       var rad=window._seeUfer;    /* war eine Zeichen fuer Zeichen identische Kopie von seeR */
-      /* Kies-Ton ohne Textur: die Ring-Geometrie hat keine UVs, eine Textur waere
-         auf einen einzigen Texel gefallen (erster Versuch war tiefschwarz). */
+      /* ⚠️ HIER STAND: "Kies-Ton ohne Textur: die Ring-Geometrie hat keine UVs, eine
+         Textur waere auf einen einzigen Texel gefallen (erster Versuch war
+         tiefschwarz)." Die Beobachtung war richtig — nur ist `betMat()` gar keine
+         Umgehung: es haengt IMMER eine Textur an. Der Weg lief also weiter auf einem
+         einzigen Texel, nur eben auf einem hellen. Gefunden von th-kachel, das nach
+         Flaechen MIT Textur und OHNE uv sucht.
+         Jetzt gibt es UV: laengs die Bogenlaenge, quer die 2,8 m Wegbreite. Die
+         Kachelzahl rundherum ist ganzzahlig, damit die Naht aufgeht. */
       var pM=betMat(0xc9c2b2,0.95);
-      var pos=[],idx=[];
+      var pos=[],idx=[],puv=[],KS=Math.round(6.283*15/6);
       for(var u=0;u<SEG;u++){var a=u/SEG*Math.PI*2,r=rad(a);
         pos.push(Math.cos(a)*(r+1.6),Math.sin(a)*(r+1.6),0);
-        pos.push(Math.cos(a)*(r+4.4),Math.sin(a)*(r+4.4),0);}
+        pos.push(Math.cos(a)*(r+4.4),Math.sin(a)*(r+4.4),0);
+        puv.push(u/SEG*KS,0, u/SEG*KS,2.8/6);}
       for(var v=0;v<SEG;v++){var i0=v*2,i1=((v+1)%SEG)*2;
         idx.push(i0,i0+1,i1+1,i0,i1+1,i1);}
       var g=new THREE.BufferGeometry();
       g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+      g.setAttribute("uv",new THREE.Float32BufferAttribute(puv,2));
       g.setIndex(idx);g.computeVertexNormals();
       var weg=new THREE.Mesh(g,pM);
       weg.rotation.x=-Math.PI/2;weg.position.set(SX,-0.008,SZ2);weg.receiveShadow=true;scene.add(weg);
@@ -6121,16 +6138,30 @@ setTimeout(function baueGebaeude(){
          Flaeche), die Ursache dieselbe. Darum legt dieser Helfer die Reihenfolge
          nicht mehr fest, sondern RECHNET sie: Kreuzprodukt bilden, und wenn die
          y-Komponente nach unten zeigt, umdrehen. */
-      function quadOben(pp,ii,A,B,C,D){
+      /* 🧵 UV KOMMT MIT ODER GAR NICHT. Eine selbstgebaute BufferGeometry hat nur die
+         Attribute, die man ihr gibt — Position und Index reichten hier bisher. Ein
+         Material MIT Textur braucht aber `uv`; fehlt es, liest jeder Punkt dieselbe
+         Stelle des Bildes, und die Flaeche wird einfarbig. GEMESSEN (th-kachel):
+         Landstrasse, beide Bankette, Zubringer, Dammflanke und der Wanderweg trugen
+         eine Textur und hatten KEIN uv — zusammen die groesste Flaeche der Karte.
+         Darum nehmen die Helfer jetzt optional UV-Paare entgegen. */
+      function quadOben(pp,ii,A,B,C,D,uu,ua,ub,uc,ud){
         var vb0=pp.length/3;
         [A,B,C,D].forEach(function(P){pp.push(P[0],P[1],P[2]);});
         var ux=B[0]-A[0],uy=B[1]-A[1],uz=B[2]-A[2];
         var vx=C[0]-A[0],vy=C[1]-A[1],vz=C[2]-A[2];
         var ny=uz*vx-ux*vz;                 // y-Komponente von u x v
+        if(uu){[ua,ub,uc,ud].forEach(function(U){uu.push(U[0],U[1]);});}
         if(ny>=0)ii.push(vb0,vb0+1,vb0+2, vb0,vb0+2,vb0+3);
         else      ii.push(vb0,vb0+2,vb0+1, vb0,vb0+3,vb0+2);
       }
-      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0, _damm=[];
+      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0, _damm=[], uvs=[], KM=6;   /* KM: Meter je Kachel */
+      /* ⚠️ DIE NAHT MUSS AUFGEHEN. Ein Ring schliesst sich bei 2*pi wieder an seinen
+         Anfang an. Steht dort keine GANZE Kachelzahl, springt die Textur an genau
+         einer Stelle mitten im Bild — ein verschmierter Streifen quer ueber die
+         Fahrbahn. 2*pi*200/6 waere 209,4; gerundet auf 209 geht die Naht auf, und die
+         Kachel misst statt 6,00 m eben 6,01 m. */
+      var KR=Math.round(6.283*R/KM);
       for(var i=0;i<N;i++){
         var a0=i/N*6.283, a1=(i+1)/N*6.283;
         /* 🌊 DAMM STATT LUECKE. Bisher stand hier `continue`: im Westen liegt bei
@@ -6148,7 +6179,11 @@ setTimeout(function baueGebaeude(){
         var mx=Math.cos((a0+a1)/2)*R, mz=Math.sin((a0+a1)/2)*R;
         if(mx<-118&&Math.abs(mz)<184)_damm.push([a0,a1]);
         [[a0,-1],[a0,1],[a1,1],[a1,-1]].forEach(function(P){
-          pos.push(Math.cos(P[0])*(R+P[1]*HB),0.012,Math.sin(P[0])*(R+P[1]*HB));});
+          pos.push(Math.cos(P[0])*(R+P[1]*HB),0.012,Math.sin(P[0])*(R+P[1]*HB));
+          /* laengs die Bogenlaenge, quer die Fahrbahnbreite — beides in Kacheln.
+             Der Winkel kommt aus der Schleife und laeuft durch; eine Rechnung aus
+             der Weltlage (atan2) haette an der Naht einen verschmierten Streifen. */
+          uvs.push(P[0]/6.283*KR, (P[1]+1)*HB/KM);});
         idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;   // Wicklung: Vorderseite nach OBEN
         if(i%2===0){                                    // Mittelstreifen, gestrichelt
           var am=(a0+a1)/2, ad=(a1-a0)*0.32;
@@ -6157,9 +6192,10 @@ setTimeout(function baueGebaeude(){
           didx.push(dvb,dvb+2,dvb+1, dvb,dvb+3,dvb+2); dvb+=4;
         }
       }
-      function mesh(pp,ii,mat){
+      function mesh(pp,ii,mat,uu){
         var g=new THREE.BufferGeometry();
         g.setAttribute("position",new THREE.Float32BufferAttribute(pp,3));
+        if(uu&&uu.length===pp.length/3*2)g.setAttribute("uv",new THREE.Float32BufferAttribute(uu,2));
         g.setIndex(ii); g.computeVertexNormals();
         var m=new THREE.Mesh(g,mat); m.receiveShadow=true; m.frustumCulled=false;
         m.userData.nieAusblenden=1; scene.add(m); return m;}
@@ -6192,8 +6228,10 @@ setTimeout(function baueGebaeude(){
         var N9=16;
         for(var s9=0;s9<N9;s9++){
           var ra=r0+(r1-r0)*s9/N9, rb=r0+(r1-r0)*(s9+1)/N9;
+          /* laengs der Radius, quer die (mit der Trompete wachsende) halbe Breite */
           quadOben(pos,idx, pkt(ra,-hb(ra),0.012), pkt(ra,hb(ra),0.012),
-                            pkt(rb, hb(rb),0.012), pkt(rb,-hb(rb),0.012));
+                            pkt(rb, hb(rb),0.012), pkt(rb,-hb(rb),0.012), uvs,
+                   [ra/KM,0], [ra/KM,2*hb(ra)/KM], [rb/KM,2*hb(rb)/KM], [rb/KM,0]);
         }
         for(var t9=0.08;t9<0.95;t9+=0.10){       // Mittelstreifen
           var rm=r0+(r1-r0)*t9, rl=(r1-r0)*0.035;
@@ -6207,7 +6245,7 @@ setTimeout(function baueGebaeude(){
                             pkt(rh+0.22, bh-0.3,0.023), pkt(rh+0.22,-bh+0.3,0.023));
       });
       window._zubringer=ZUB;
-      mesh(pos,idx,betMat(0x4a4a53,0.92));
+      mesh(pos,idx,betMat(0x4a4a53,0.92),uvs);
       mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));
       /* 🌊 DAMMFLANKE UND BRUESTUNG. Ein Asphaltband, das auf dem Wasser liegt,
          sieht aus wie ein Fehler. Zwei Teile machen daraus einen Damm: eine
@@ -6218,15 +6256,16 @@ setTimeout(function baueGebaeude(){
          Stelle. */
       (function dammBau(){
         if(!_damm.length)return;
-        var fp=[],fi=[];
+        var fp=[],fi=[],fuv=[];
         _damm.forEach(function(D){
           var c0=D[0],c1=D[1];
           [-1,1].forEach(function(sd){
             function pk(cc,br,hh){return [Math.cos(cc)*(R+sd*br),hh,Math.sin(cc)*(R+sd*br)];}
             quadOben(fp,fi, pk(c0,HB,0.010), pk(c0,HB+3.4,-0.95),
-                            pk(c1,HB+3.4,-0.95), pk(c1,HB,0.010));});
+                            pk(c1,HB+3.4,-0.95), pk(c1,HB,0.010), fuv,
+                     [c0/6.283*KR,0], [c0/6.283*KR,3.5/KM], [c1/6.283*KR,3.5/KM], [c1/6.283*KR,0]);});
         });
-        mesh(fp,fi,betMat(0x7d7566,0.98));
+        mesh(fp,fi,betMat(0x7d7566,0.98),fuv);
         /* Die Bruestung als InstancedMesh geschlossener Kaesten: eine offene
            Flaeche haette bei senkrechter Wand keine eindeutige Wickelrichtung
            (quadOben rechnet sie aus der y-Komponente aus, die hier 0 ist). */
@@ -6251,19 +6290,20 @@ setTimeout(function baueGebaeude(){
       /* 🚧 BANKETT UND LEITPFOSTEN — das, was eine Asphaltbahn erst zu einer
          fertigen Landstrasse macht. Ohne Bankett endet der Belag als harte Kante
          im Gras; ohne Leitpfosten fehlt der Massstab entlang der Fahrbahn. */
-      var bp=[],bi=[],bv=0;
+      var bp=[],bi=[],bv=0,buv=[];
       for(var i2=0;i2<N;i2++){
         var b0=i2/N*6.283, b1=(i2+1)/N*6.283;
         var bmx=Math.cos((b0+b1)/2)*R, bmz=Math.sin((b0+b1)/2)*R;
         if(bmx<-118&&Math.abs(bmz)<184)continue;
         [-1,1].forEach(function(sd){
           [[b0,HB],[b0,HB+1.5],[b1,HB+1.5],[b1,HB]].forEach(function(P){
-            bp.push(Math.cos(P[0])*(R+sd*P[1]),0.008,Math.sin(P[0])*(R+sd*P[1]));});
+            bp.push(Math.cos(P[0])*(R+sd*P[1]),0.008,Math.sin(P[0])*(R+sd*P[1]));
+            buv.push(P[0]/6.283*KR,(P[1]-HB)/KM);});
           if(sd<0)bi.push(bv,bv+2,bv+1, bv,bv+3,bv+2);
           else     bi.push(bv,bv+1,bv+2, bv,bv+2,bv+3);
           bv+=4;});
       }
-      mesh(bp,bi,betMat(0x9a9384,0.98));
+      mesh(bp,bi,betMat(0x9a9384,0.98),buv);
       var lpG=new THREE.CylinderGeometry(0.06,0.07,1.0,5),
           lpM=new THREE.MeshStandardMaterial({color:0xf0efe8,roughness:0.7});
       var NLP=48, lp=new THREE.InstancedMesh(lpG,lpM,NLP*2);
@@ -6296,7 +6336,7 @@ setTimeout(function baueGebaeude(){
            liefe es an der Einmuendung quer ueber den aufgeweiteten Belag —
            Kies mitten auf der Fahrbahn. Darum dieselbe Breitenfunktion und
            dieselbe Unterteilung wie beim Belag. */
-        var zp=[],zi=[],hbz=window._zubBreite;
+        var zp=[],zi=[],zuv=[],hbz=window._zubBreite;
         ZUB.forEach(function(gr){
           var A=achse(gr);
           function pk(rr,q){return [A.ca*rr+A.qx*q, 0.008, A.sa*rr+A.qz*q];}
@@ -6304,10 +6344,11 @@ setTimeout(function baueGebaeude(){
             var ra=r0+(r1-r0)*s8/16, rb=r0+(r1-r0)*(s8+1)/16;
             [-1,1].forEach(function(sd){
               quadOben(zp,zi, pk(ra,sd*hbz(ra)), pk(ra,sd*(hbz(ra)+1.5)),
-                              pk(rb,sd*(hbz(rb)+1.5)), pk(rb,sd*hbz(rb)));});
+                              pk(rb,sd*(hbz(rb)+1.5)), pk(rb,sd*hbz(rb)), zuv,
+                       [ra/KM,0], [ra/KM,1.5/KM], [rb/KM,1.5/KM], [rb/KM,0]);});
           }
         });
-        mesh(zp,zi,betMat(0x9a9384,0.98));
+        mesh(zp,zi,betMat(0x9a9384,0.98),zuv);
         /* Leitpfosten entlang der Zubringer, als EINE InstancedMesh.
            ⚠️ InstancedMesh prueft die Sichtbarkeit gegen die Bounding-Sphere
            EINER Geometrie am Objektursprung. Bei ueber die halbe Karte

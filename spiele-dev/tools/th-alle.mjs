@@ -186,6 +186,12 @@ const PRUEFUNGEN = [
   { name: 'Nachthelle (wird irgendwo dunkel)', datei: 'th-nachthelle.mjs', kern: false,
     wert: (s) => ((s.match(/(\d+) %/g) || []).length) + ' Orte',
     gut: (s) => /🎉 NACHTHELLE BESTANDEN/.test(s) },
+  /* Eine Textur ohne uv kann nicht erscheinen — die Landstrasse, beide Bankette, die
+     Zubringer, die Bergwege und die Seepromenade waren so einfarbig, obwohl sie eine
+     Textur trugen. Das faellt in keinem Modelltest auf. */
+  { name: 'Kachel (Textur ohne uv)', datei: 'th-kachel.mjs', kern: false,
+    wert: (s) => (s.match(/(\d+) grosse Kacheln/) || [, '?'])[1] + ' grosse',
+    gut: (s) => /🎉 KACHEL BESTANDEN/.test(s) },
   /* ⚠️ Die TAFELN sah bis 2026-09-04 niemand nach. th-hud prueft die immer sichtbare
      Leiste, th-spielerblick die Welt — was der Spieler OEFFNET (Erfolge, Karte,
      Bau-Palette, Krimi-Auswahl, Hetze), stand nirgends. Genau dort war der letzte
