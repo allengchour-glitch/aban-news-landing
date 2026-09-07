@@ -11,6 +11,29 @@ anmelden — Cowork soll die bereits offene Sitzung benutzen.
 mehr in der Liste — eine Aufgabenliste, in der Erledigtes mitläuft, wird nach dem zweiten Mal
 nicht mehr gelesen.
 
+## 🔴 SOFORT (07.09.2026, 15:05 UTC): CJ-Guthaben aufladen — eine bezahlte Kundenbestellung wartet
+
+**Bestellung #1017 ist bezahlt** (CHF 40.90, Saud Esatovski, 4133 Pratteln, Fuda-Damast-Taschenmesser)
+und liegt versandbereit bei CJ — bezahlen lässt sie sich nicht:
+
+| gemessen am Objekt | |
+|---|---|
+| Shopify #1017 | BEZAHLT, unerfüllt |
+| CJ-Versandlinie CN→CH (vid 2601150313151634500) | **«CJPacket EQ Sensitive», USD 7.30, 6–10 Tage** — der am 03.09. fehlende Kanal trägt |
+| CJ-Auftrag (von CJs eigener Shopify-App angelegt) | orderId `2609071450210669900`, `#1017`, **IN_CART**, **USD 25.54** |
+| **CJ-Guthaben** | **USD 0.00** ← der ganze Blocker |
+
+**Ein Klick: CJ-Guthaben aufladen** (mindestens ~USD 26). Danach bezahle ich den Auftrag und
+verfolge die Sendungsnummer; der Kunde braucht nichts zu tun.
+
+- ⚠️ **KEIN zweiter Auftrag angelegt.** CJs App hatte den Auftrag mit der richtigen Linie und der
+  richtigen Adresse schon im Warenkorb. Ein eigener `LX1017` daneben wären zwei zahlbare Aufträge
+  und damit eine doppelte Sendung (Schatten-Klasse 20.08.).
+- ⛔ Der ALTE Schatten **«#1016»** (orderId `2609030857400653900`, Status CREATED) darf **nie**
+  bezahlt werden — diese Bestellung ist vollständig rückerstattet.
+- Marge nach Zahlungsgebühr rund **+CHF 16** (Versand war als Wiedergutmachung geschenkt).
+
+
 ---
 
 ## 📸 06.09.2026 21:45 UTC — Instagram-Token-Anleitung (Upload des Betreibers) gelesen: technisch richtig, drei Dinge VORHER
