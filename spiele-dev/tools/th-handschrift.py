@@ -32,3 +32,28 @@ vign = len(re.findall(r'id="vign"', h)) + len(re.findall(r'var _vig=', h))
 print(f"{'Vignetten-Schichten':44} {vign:>6}")
 stdmat = len(re.findall(r'stdMat\(', h))
 print(f"{'stdMat()-Aufrufe (ein Material für alles)':44} {stdmat:>6}")
+
+# ── Die Kopfzeile: was dauerhaft auf dem Bild steht ──────────────────────────
+#   Nicht die Overlays (dort ist ein Emoji Inhalt, z. B. die Erfolgsliste), sondern
+#   die Anzeigen, die IMMER sichtbar sind: Geld, Uhr, Wohnstufe, Familie/Fertig-
+#   keiten, Tacho, Stick-Knopf. Sie trugen Betriebssystem-Emoji — auf iOS, Android
+#   und im Emulator drei verschiedene Bilder, farbig gegen die eine Palette.
+def _block(name):
+    i = h.find("function " + name + "(")
+    if i < 0: return ""
+    tiefe, j, start = 0, h.index("{", i), None
+    for k in range(j, min(j + 8000, len(h))):
+        if h[k] == "{":
+            tiefe += 1
+            if start is None: start = k
+        elif h[k] == "}":
+            tiefe -= 1
+            if tiefe == 0: return h[i:k]
+    return h[i:i + 4000]
+kopf = _block("updHUD") + _block("stufeHudUpd")
+for zeile in h.split("\n"):
+    if 'id="speedo"' in zeile or 'id="geld"' in zeile or 'id="uhr"' in zeile or "joyKnob" in zeile:
+        kopf += zeile
+kopf = re.sub(r"/\*.*?\*/", "", kopf, flags=re.S)   # Kommentare sieht niemand
+print(f"{'Emoji in der Kopfzeile (immer sichtbar)':44} {len(EMO.findall(kopf)):>6}")
+print(f"{'Strich-Ikonen im Sprite':44} {h.count(chr(60) + chr(115) + chr(121) + chr(109) + chr(98) + chr(111) + chr(108) + chr(32)):>6}")

@@ -96,7 +96,7 @@ UI = {
                "deinem Steuerbüro abstimmt. Dieser Radar vergleicht Werkzeuge — er verspricht "
                "keine automatische Steuerersparnis und keine Wunder."),
     "meta_home": ("{n} KI-Buchhaltungs- und Rechnungs-Tools im Vergleich: "
-                  "EU-Hosting, deutsche Oberfläche, DATEV-Export, GoBD, Belegerfassung, Banking-Anbindung — ehrlich, ohne Hype."),
+                  "EU-Hosting, deutsche Oberfläche, DATEV-Export, GoBD, Belegerfassung, Banking-Anbindung."),
     "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten Buchhaltungs- & Rechnungs-Tools im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Buchhaltungs-Tools mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",

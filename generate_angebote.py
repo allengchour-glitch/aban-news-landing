@@ -19,7 +19,7 @@ SITE = "https://abannews.com"
 
 GROUPS = [
     ("Kostenlos starten", [
-        ("Newsletter", "gratis", "Mo–Fr, 5 Min KI auf Deutsch — ehrlich, ohne Hype.", "https://abannews.beehiiv.com/subscribe"),
+        ("Newsletter", "gratis", "Mo–Fr, 5 Min KI auf Deutsch.", "https://abannews.beehiiv.com/subscribe"),
         ("KI-Reels", "gratis", "Kurze, ehrliche Tool-Checks als Video — täglich neu.", "/reels"),
         ("KI-Tool-Datenbank", "gratis", "140+ Tools, bewertet, filterbar — ohne Login.", "/tools.html"),
         ("KI-Werkzeug", "gratis", "Texte & KI-Fahrplan in Minuten — ohne Login.", "/ki-werkzeug.html"),

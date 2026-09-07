@@ -98,7 +98,7 @@ UI = {
                "klären. Dieser Radar vergleicht Werkzeuge — er verspricht keine perfekte Wortgenauigkeit."),
     "meta_home": ("{n} KI-Voice- und Transkriptions-Tools im Vergleich: "
                   "EU-Hosting, deutsche Spracherkennung, Untertitel/SRT, Sprechererkennung, "
-                  "Text-to-Speech — ehrlich, ohne Hype."),
+                  "Text-to-Speech."),
     "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten KI-Voice- & Transkriptions-Tools im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Voice-Tools mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",

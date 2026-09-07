@@ -99,7 +99,7 @@ UI = {
                "er verspricht keine fertige Lösung per Knopfdruck."),
     "meta_home": ("{n} KI- und Workflow-Automatisierungs-Tools im Vergleich: "
                   "EU-Hosting, deutsche Oberfläche, No-Code-Workflows, iPaaS, KI-Agenten, "
-                  "RPA — ehrlich, ohne Hype."),
+                  "RPA."),
     "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Preismodell, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten KI- & Workflow-Automatisierungs-Tools im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Automatisierungs-Tools mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",

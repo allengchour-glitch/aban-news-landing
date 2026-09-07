@@ -96,7 +96,7 @@ UI = {
                "musst du selbst sauber umsetzen. Dieser Radar vergleicht Werkzeuge — "
                "er verspricht keine Wunder-Öffnungsraten."),
     "meta_home": ("{n} Newsletter- und E-Mail-Marketing-Tools im Vergleich: "
-                  "EU-Hosting, deutsche Oberfläche, Integrationen, KI-Funktionen — ehrlich, ohne Hype."),
+                  "EU-Hosting, deutsche Oberfläche, Integrationen, KI-Funktionen."),
     "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten Newsletter- & E-Mail-Tools im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Newsletter-Tools mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",

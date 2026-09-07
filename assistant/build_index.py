@@ -40,7 +40,7 @@ CURATED = [
      "Ja: 326 Tools (DACH) als CSV + JSON, einmalig oder als Abo mit Updates.",
      "/ki-tools-datensatz.html", ["datensatz", "csv", "json", "daten", "api"]),
     ("Was ist aban news?",
-     "Ein täglicher deutschsprachiger KI-Newsletter für DACH-Profis: Mo–Fr, 5 Minuten, ehrlich, ohne Hype.",
+     "Ein täglicher deutschsprachiger KI-Newsletter für DACH-Profis: Mo–Fr, 5 Minuten.",
      "https://abannews.beehiiv.com/subscribe", ["newsletter", "aban", "about", "abo"]),
     ("Was kostet der Newsletter?",
      "Der Newsletter ist kostenlos und jederzeit kündbar.",
