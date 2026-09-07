@@ -6517,6 +6517,16 @@ setTimeout(function baueGebaeude(){
               if(p&&!imRingBand(p,pad))return p;}
             return p;}
           var o1=freiAusserhalb(-(HB+2.0),1.0);          // Ortstafel am Stadtrand
+          /* ⚠️ DIE ORTSTAFEL BLEIBT LEER — nach fuenf gemessenen Anlaeufen bewusst.
+             Ihre Tafelflaeche (Material StWeiss) nimmt keine flache Projektion an: die
+             Schrift landet auf einem schmalen Streifen und wird zu einem dunklen Balken
+             (Bilder r74/ortstafel-a.png). Versucht und jeweils am Bild geprueft:
+             Modell-UV benutzen · Leinwand an das Seitenverhaeltnis anpassen · eigene
+             flache UV · Hoehenachse aus der Weltlage statt aus dem Modell · Huelle nur
+             ueber die Punkte mit passender Normale. Keiner half.
+             Ein Balken ist SCHLECHTER als die leere Tafel, darum bleibt sie leer. Wer es
+             loesen will, braucht die UV im Modell selbst (Blender), nicht im Spiel.
+             Das Ortsschild (th5) nimmt dieselbe Behandlung dagegen sauber an. */
           stell("th39_ortstafel.glb",2.50,o1,her);
           if(gi%2===0){                                  // Wegweiser an jeder zweiten
             /* ⚠️ r = 197 stand MITTEN auf der Ringlandstrasse: die laeuft bei
@@ -6998,7 +7008,8 @@ setTimeout(function baueGebaeude(){
       /* Ecken markieren + Zufahrt beschildern */
       [[-BW,-BH],[BW,-BH],[-BW,BH],[BW,BH]].forEach(function(e){
         bau("th5_poller.glb",1.0,e[0],0,e[1],0,false,null);});
-      bau("th5_ortsschild.glb",2.6,7,0,BH+3,0,false,null);
+      bau("th5_ortsschild.glb",2.6,7,0,BH+3,0,false,function(w9){
+        schildText(w9,[_naechsterOrt(7,BH+3)],{gross:104});});
       /* ⚠️ GEMESSENE GRUNDFLAECHEN — bau() skaliert NUR ueber die Hoehe, die Breite
          ergibt sich aus dem Modell. Die erste Fassung nannte w:11,d:9 im cfg und
          setzte die Haeuser 14 m auseinander; real sind es aber:
@@ -8083,7 +8094,8 @@ setTimeout(function baueGebaeude(){
     bau("th5_baum_pappel.glb",7.0,63,0,60,0,false);bau("th5_baum_pappel.glb",7.0,73,0,60,0.5,false);
     bau("th5_baum_pappel.glb",7.0,63,0,68,1.1,false);bau("th5_baum_pappel.glb",7.0,73,0,68,1.7,false);
     bau("th5_baum_ahorn.glb",4.7,48,0,78,0.4,false);bau("th5_baum_ahorn.glb",4.7,88,0,78,1.3,false);
-    bau("th5_ortsschild.glb",2.4,64,0,58,Math.PI,false);
+    bau("th5_ortsschild.glb",2.4,64,0,58,Math.PI,false,function(w9){
+      schildText(w9,[_naechsterOrt(64,58)],{gross:104});});
     bau("th5_telefonzelle.glb",2.7,73,0,57,Math.PI,false);
     bau("th5_poller.glb",1.05,68,0,56,0,false);
     bau("th5_marktstand.glb",1.5,60,0,302,0,false); /* 🎪 vom Parkplatzrand an die Freizeitpark-Zufahrt */
@@ -10536,6 +10548,139 @@ var _matReg={};
    Materialnamen an jedes Plakatmaterial gehaengt — vor der Vereinheitlichung, damit
    der Schluessel die Karte mitzaehlt und kein plakatloses Material dafuer einspringt. */
 var _plakatTexObj=null;
+/* 🔤 SCHRIFT AUF EIN SCHILD.
+   GEMESSEN: 22 Schilder stehen in der Welt — Ortstafeln, Ortsschilder, Preistafel,
+   Anzeigetafel, Neonschilder — und KEIN EINZIGES traegt eine Textur. Jede Tafel ist
+   eine leere Farbflaeche. Eine Stadt voller unbeschrifteter Schilder liest sich als
+   unfertig, und es ist genau die Sorte Detail, die man nicht misst, sondern sieht.
+
+   ⚠️ DAS MATERIAL MUSS GEKLONT WERDEN. Alle sechs Ortstafeln kommen aus DERSELBEN
+   geladenen Vorlage und teilen sich ihre Materialien; wer die Textur direkt setzt,
+   schreibt auf alle sechs denselben Namen. (Dieselbe Falle wie bei `betMat` in
+   Runde 68 und 70 — dort war es die Textur, hier ist es das Material.)
+
+   ⚠️ UND DIE UV DES MODELLS ENTSCHEIDET, WIE DIE SCHRIFT SITZT. Sie kommt aus der
+   GLB-Datei und ist nicht garantiert 0…1 auf der Tafelflaeche. Darum wird das
+   Ergebnis nach dem Einbau angesehen und nicht nur gezaehlt. */
+function _schildTex(zeilen,opt){
+  opt=opt||{};
+  /* ⚠️ DIE LEINWAND MUSS ZUR TAFEL PASSEN, SONST WIRD DIE SCHRIFT GEZOGEN. Eine
+     Ortstafel ist 1,77 x 0,49 m — also 3,6 zu 1. Auf einer 2-zu-1-Leinwand waere die
+     Schrift um mehr als das Doppelte in die Breite gezerrt.
+     Dazu kommt, dass die UV der Modelle nicht die ganze Leinwand nutzt: gemessen
+     u 0,13…0,88, v 0…1 bei ALLEN vier Schildmodellen. Sichtbar sind also nur 75 % der
+     Breite. Die Leinwand wird darum um genau diesen Faktor breiter gerechnet. */
+  var seiten=(opt.seiten||2)/(opt.uAnteil||1);
+  var H=256, W=Math.max(128,Math.min(2048,Math.round(H*seiten)));
+  var cv=document.createElement("canvas");cv.width=W;cv.height=H;
+  var c=cv.getContext("2d");
+  c.fillStyle=opt.grund||"#edede5";c.fillRect(0,0,W,H);
+  /* Der sichtbare Ausschnitt liegt mittig; nur dort darf Schrift stehen. */
+  var ua=(opt.uAnteil||1), sichtbar=W*ua, links=(W-sichtbar)/2;
+  if(opt.rand!==false){c.strokeStyle=opt.randFarbe||"#191e59";c.lineWidth=Math.round(H*0.055);
+    c.strokeRect(links+H*0.035,H*0.035,sichtbar-H*0.07,H-H*0.07);}
+  c.fillStyle=opt.schrift||"#191e59";c.textAlign="center";c.textBaseline="middle";
+  var n=zeilen.length, hoehe=(opt.gross||96);
+  if(n>1)hoehe=Math.min(hoehe,(H*0.74)/n);
+  var breit=sichtbar-H*0.22;
+  for(var i=0;i<n;i++){
+    var gr=(i===0?hoehe:hoehe*0.62);
+    c.font="bold "+Math.round(gr)+"px system-ui,sans-serif";
+    var t=String(zeilen[i]);
+    while(c.measureText(t).width>breit&&gr>12){gr-=3;c.font="bold "+Math.round(gr)+"px system-ui,sans-serif";}
+    c.fillText(t,W/2,H/2+(i-(n-1)/2)*hoehe*0.95);}
+  var t2=new THREE.CanvasTexture(cv);
+  if(THREE.sRGBEncoding!==undefined)t2.encoding=THREE.sRGBEncoding;
+  t2.needsUpdate=true;return t2;}
+/* 🧵 EIGENE UV FUER DIE TAFELFLAECHE.
+   ⚠️ ERSTER ANLAUF: die UV des Modells benutzen. Sie meldete brav u 0,13…0,88, v 0…1 —
+   und im Bild war die Schrift zu blauen Streifen zerzogen (spiele-dev/screenshots/r74/
+   ortstafel-a.png). Die Zahlen sagen nur, WELCHE Werte vorkommen, nicht wie sie auf der
+   Flaeche verteilt sind: die Modelle tragen eine Atlas-UV, in der die Tafel ein
+   schmaler Streifen ist. Eine Schrift darauf wird gezogen, egal wie gut die Leinwand
+   passt.
+   Darum bekommt die Tafel eine eigene, flache UV aus ihrer eigenen Geometrie —
+   dieselbe Loesung wie bei den selbst gebauten Strassen in Runde 69, nur andersherum:
+   dort fehlte die UV ganz, hier ist die vorhandene fuer diesen Zweck unbrauchbar.
+   Die duennste Achse ist die Normale der Tafel; die beiden anderen spannen sie auf.
+   Wer nach hinten schaut, bekommt u gespiegelt — sonst stuende die Schrift auf der
+   Rueckseite verkehrt. */
+function _tafelUV(mesh){
+  var geo=mesh&&mesh.geometry;
+  if(!geo||!geo.attributes||!geo.attributes.position)return false;
+  if(geo.userData&&geo.userData._tafelUV)return true;
+  var pos=geo.attributes.position,nor=geo.attributes.normal;
+  var bb=new THREE.Box3().setFromBufferAttribute(pos),e=new THREE.Vector3();bb.getSize(e);
+  var s3=[e.x,e.y,e.z],mi=[bb.min.x,bb.min.y,bb.min.z];
+  var duenn=(s3[0]<=s3[1]&&s3[0]<=s3[2])?0:((s3[1]<=s3[2])?1:2);
+  var rest=[0,1,2].filter(function(i){return i!==duenn;});
+  /* ⚠️ "HOEHE IST y" GILT NUR IM WELTBILD, NICHT IM MODELL. Die Ortstafel ist im
+     Modell FLACH gebaut (lokal duenn in y) und wird erst vom Knoten aufgerichtet.
+     Wer hier die lokale y-Achse fuer die Hoehe haelt, dreht die Schrift um 90 Grad —
+     im Bild wurde sie zu einem dunklen Balken (r74/ortstafel, zweiter Anlauf).
+     Darum werden die beiden Achsen in die WELT gedreht und die genommen, die dort
+     am steilsten steht. */
+  var m4=new THREE.Matrix3().setFromMatrix4(mesh.matrixWorld);
+  function steil(i){var v=new THREE.Vector3(i===0?1:0,i===1?1:0,i===2?1:0);
+    v.applyMatrix3(m4).normalize();return Math.abs(v.y);}
+  var ih=(steil(rest[0])>=steil(rest[1]))?rest[0]:rest[1];
+  var ib=rest.filter(function(i){return i!==ih;})[0];
+  /* ⚠️ NUR DIE TAFELFLAECHE NORMIEREN, NICHT DAS GANZE TEIL. Die Ortstafel bringt in
+     demselben Netz noch Rand und Halterung mit; ueber deren Huelle normiert, faellt die
+     Schrift auf einen schmalen Streifen der Flaeche — im Bild ein dunkler Balken mit
+     einem einzigen sichtbaren Buchstaben (r74/ortstafel, dritter Anlauf). Gemessen wird
+     darum die Huelle NUR der Punkte, deren Normale wirklich auf den Betrachter zeigt. */
+  var f0=[1e9,1e9,1e9],f1=[-1e9,-1e9,-1e9],treffer=0;
+  for(var q0=0;q0<pos.count;q0++){
+    if(nor&&Math.abs([nor.getX(q0),nor.getY(q0),nor.getZ(q0)][duenn])<0.7)continue;
+    treffer++;
+    [0,1,2].forEach(function(k3){var w3=[pos.getX(q0),pos.getY(q0),pos.getZ(q0)][k3];
+      if(w3<f0[k3])f0[k3]=w3;if(w3>f1[k3])f1[k3]=w3;});}
+  if(treffer>=4){mi=[f0[0],f0[1],f0[2]];s3=[f1[0]-f0[0],f1[1]-f0[1],f1[2]-f0[2]];}
+  var uv=new Float32Array(pos.count*2);
+  for(var i=0;i<pos.count;i++){
+    var pb=[pos.getX(i),pos.getY(i),pos.getZ(i)];
+    var u=(pb[ib]-mi[ib])/(s3[ib]||1), v=(pb[ih]-mi[ih])/(s3[ih]||1);
+    /* ⚠️ RICHTUNG GEMESSEN, NICHT GERATEN: mit `< 0` stand die Schrift auf der
+       Vorderseite spiegelverkehrt (r74/ortsschild-a.png, "Stadtpark" rueckwaerts).
+       Wer auf eine Flaeche schaut, blickt ihrer Normalen ENTGEGEN — darum wird u
+       gespiegelt, wo die Normale in die positive Achse zeigt. */
+    if(nor){var nn=[nor.getX(i),nor.getY(i),nor.getZ(i)];if(nn[duenn]>0)u=1-u;}
+    uv[i*2]=u;uv[i*2+1]=1-v;}
+  geo.setAttribute("uv",new THREE.BufferAttribute(uv,2));
+  geo.userData=geo.userData||{};geo.userData._tafelUV=1;
+  return true;}
+/* Beschriftet die Tafelflaeche eines geladenen Schildmodells. Gibt zurueck, wie viele
+   Flaechen getroffen wurden — 0 heisst: der Materialname passt nicht, nachsehen. */
+function schildText(w,zeilen,opt){
+  opt=opt||{};
+  var muster=opt.muster||/tafel|weiss|white|rim|platte|schild/i;
+  var n=0;
+  w.updateMatrixWorld(true);
+  w.traverse(function(m){
+    if(!m.isMesh||!m.material)return;
+    var liste=Array.isArray(m.material)?m.material:[m.material];
+    liste.forEach(function(q,i){
+      if(!q||!muster.test(String(q.name||"")))return;
+      /* Seitenverhaeltnis und UV-Anteil AUS DIESEM Teil holen — jede Tafel ist anders.
+         Breite ist die groessere der beiden Waagrechten, Hoehe ist y: ein Schild steht. */
+      var bb=new THREE.Box3().setFromObject(m),e=new THREE.Vector3();bb.getSize(e);
+      var br=Math.max(e.x,e.z), ho=Math.max(0.01,e.y);
+      m.updateMatrixWorld(true);
+      _tafelUV(m);                          /* eigene, flache UV — siehe oben */
+      var o2={};for(var k2 in opt)o2[k2]=opt[k2];
+      o2.seiten=br/ho; o2.uAnteil=1;
+      var k=q.clone();k.map=_schildTex(zeilen,o2);k.color.setHex(0xffffff);k.needsUpdate=true;
+      if(Array.isArray(m.material))m.material[i]=k;else m.material=k;
+      n++;});});
+  return n;}
+/* Naechster benannter Ort zu einem Punkt — die Ortstafel nennt, wohin man kommt.
+   Quelle ist WORLD_POIS, damit Schild und Karte nie auseinanderlaufen. */
+function _naechsterOrt(x,z){
+  var b=null,bd=1e9;
+  (window.WORLD_POIS||WORLD_POIS||[]).forEach(function(p){
+    var d=Math.hypot(p[0]-x,p[1]-z);if(d<bd){bd=d;b=p[3];}});
+  return b||"Traumhausen";}
 function _plakatTex(){
   if(_plakatTexObj)return _plakatTexObj;
   var cv=document.createElement("canvas");cv.width=1024;cv.height=512;var c=cv.getContext("2d");
