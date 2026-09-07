@@ -32,12 +32,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:920px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dk)}
-:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
 header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;color:var(--amber);text-decoration:none}
-.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:8px;border:0;cursor:pointer;font-size:.92rem}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
 .hero{padding:38px 0 6px;text-align:center}
 .hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
@@ -46,7 +46,7 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
 .panel h2{font-size:1.05rem;margin-bottom:12px}
 label{display:block;font-weight:600;font-size:12.5px;margin:0 0 5px;color:var(--ink2)}
-input,textarea,select{width:100%;font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);font-family:inherit}
+input,textarea,select{width:100%;font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);font-family:inherit}
 textarea{resize:vertical;min-height:74px}
 input:focus,textarea:focus,select:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -59,12 +59,12 @@ table.items th,table.items td{text-align:left;font-size:13px;padding:6px 6px}
 table.items th{color:var(--muted);font-weight:600;border-bottom:1px solid var(--line)}
 table.items td input{padding:7px 8px}
 table.items td.num input{text-align:right}
-.delrow{background:transparent;border:1px solid var(--line);color:var(--bad);border-radius:7px;cursor:pointer;padding:9px 12px;font-weight:700;min-height:36px;min-width:36px}
+.delrow{background:transparent;border:1px solid var(--line);color:var(--bad);border-radius:8px;cursor:pointer;padding:9px 12px;font-weight:700;min-height:36px;min-width:36px}
 .bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
 .note{font-size:.85rem;color:var(--muted);margin-top:10px}
-.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:14px;padding:10px 12px;margin-top:12px}
 /* Vorschau / Druckbogen */
-.sheet{background:#fff;color:#1a1a1a;border:1px solid var(--line);border-radius:12px;padding:34px;margin:18px 0;font-size:14px;line-height:1.5}
+.sheet{background:#fff;color:#1a1a1a;border:1px solid var(--line);border-radius:14px;padding:34px;margin:18px 0;font-size:14px;line-height:1.5}
 .sheet .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .sheet .from{font-size:12px;color:#555}
 .sheet h3{font-size:20px;margin:18px 0 2px}
@@ -103,7 +103,7 @@ footer a{color:var(--muted)}
     <h1><span class="a">Rechnung</span> schreiben</h1>
     <p>Trag deine Daten ein, sieh die Rechnung live und speicher sie als PDF (Drucken &rarr; „Als PDF sichern"). Mit MwSt oder Kleinunternehmer-Regelung. Lokal im Browser &mdash; nichts wird hochgeladen, deine Daten bleiben auf dem Gerät.</p>
   </section>
-<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Hilft dir, eine vollständige Rechnung zu erstellen und als PDF zu speichern — mit allen Pflichtangaben.</p>
+<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Hilft dir, eine vollständige Rechnung zu erstellen und als PDF zu speichern — mit allen Pflichtangaben.</p>
 
   <div class="app">
     <section class="panel">
@@ -176,8 +176,8 @@ IBAN: CH00 0000 0000 0000 0000 0 · Bank: Beispielbank</textarea></div>
       <a class="btn ghost" href="/mahnung-schreiben.html">Mahnung schreiben</a>
       <a class="btn ghost" href="/mwst-rechner.html">MwSt-Rechner</a>
       <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
-</div><aside data-aban-aff aria-label="Anzeige" style="max-width:760px;margin:18px auto 4px;background:#fff;border:1px solid #fde9c8;border-radius:14px;padding:16px 18px;text-align:center"><strong style="color:#1f2937">💡 Öfter als einmal im Monat Rechnungen?</strong><span style="color:#374151"> Dann spart eine Buchhaltungs-Software dir Zeit (Vorlagen, USt, Mahnwesen automatisch). Wir haben die DACH-Anbieter ehrlich verglichen.</span><span style="display:block;margin-top:10px"><a href="/buchhaltung-software.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Buchhaltungs-Software vergleichen →</a></span></aside>
-<aside data-aban-premium aria-label="Premium-Hinweis" style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
+</div><aside data-aban-aff aria-label="Anzeige" style="max-width:760px;margin:18px auto 4px;background:#fff;border:1px solid #fde9c8;border-radius:14px;padding:16px 18px;text-align:center"><strong style="color:#1f2937">💡 Öfter als einmal im Monat Rechnungen?</strong><span style="color:#374151"> Dann spart eine Buchhaltungs-Software dir Zeit (Vorlagen, USt, Mahnwesen automatisch). Wir haben die DACH-Anbieter ehrlich verglichen.</span><span style="display:block;margin-top:10px"><a href="/buchhaltung-software.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:8px;font-size:.92rem">Buchhaltungs-Software vergleichen →</a></span></aside>
+<aside data-aban-premium aria-label="Premium-Hinweis" style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:8px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
 </main>
 <footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
   <a href="/mwst-rechner.html">MwSt</a> &middot; <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot;

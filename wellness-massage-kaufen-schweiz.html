@@ -109,7 +109,7 @@ a:hover{color:var(--accent)}
 .tn-brand{font-weight:900;font-size:1.18rem;color:#fff;letter-spacing:-.5px;text-decoration:none}
 .tn-brand:hover{text-decoration:none;color:#f9a8d4}
 .tn-links{display:flex;gap:4px;flex-wrap:wrap}
-.tn-links a{color:#f9a8d4;font-size:.82rem;padding:4px 10px;border-radius:6px;transition:background .15s;text-decoration:none}
+.tn-links a{color:#f9a8d4;font-size:.82rem;padding:4px 10px;border-radius:8px;transition:background .15s;text-decoration:none}
 .tn-links a:hover{background:rgba(255,255,255,.1);text-decoration:none;color:#fff}
 
 /* ── HERO ── */
@@ -134,7 +134,7 @@ a:hover{color:var(--accent)}
   font-size:2rem;width:64px;height:64px;
   display:inline-flex;align-items:center;justify-content:center;
   background:rgba(244,114,182,.15);border:1px solid rgba(244,114,182,.45);
-  border-radius:18px;margin-bottom:10px;
+  border-radius:14px;margin-bottom:10px;
 }
 .hero h1{
   font-size:clamp(1.65rem,4.2vw,2.25rem);
@@ -154,7 +154,7 @@ a:hover{color:var(--accent)}
 .answer-first{
   background:var(--highlight);
   border-left:4px solid var(--accent);
-  border-radius:0 12px 12px 0;
+  border-radius:0 14px 14px 0;
   padding:16px 20px;
   margin:22px 0 26px;
   font-size:.98rem;
@@ -179,7 +179,7 @@ strong{color:var(--ink)}
 .tip{
   background:var(--card);border:1px solid var(--line);
   border-left:4px solid var(--accent);
-  border-radius:12px;padding:14px 16px;
+  border-radius:14px;padding:14px 16px;
 }
 .tip h3{font-size:.97rem;margin:0 0 4px;color:var(--accent-dk)}
 .tip p{font-size:.9rem;color:var(--ink2);margin:0}
@@ -208,7 +208,7 @@ strong{color:var(--ink)}
 /* ── INFO BOX ── */
 .infobox{
   background:var(--card);border:1px solid var(--line);
-  border-radius:12px;padding:16px 18px;margin:16px 0;
+  border-radius:14px;padding:16px 18px;margin:16px 0;
 }
 .infobox.purple{border-left:4px solid var(--accent);background:var(--highlight)}
 
@@ -224,7 +224,7 @@ strong{color:var(--ink)}
 /* ── FAQ ── */
 details{
   background:var(--card);border:1px solid var(--line);
-  border-radius:12px;padding:12px 18px;margin-bottom:10px;
+  border-radius:14px;padding:12px 18px;margin-bottom:10px;
 }
 details[open]{border-color:#fbcfe8}
 summary{font-weight:700;cursor:pointer;color:var(--ink);list-style:none;padding-right:4px}
@@ -238,7 +238,7 @@ details ul{margin-top:8px;color:var(--ink2);font-size:.95rem}
 .cta-box{
   text-align:center;
   background:linear-gradient(135deg,#fce7f3 0%,#fdf2f8 100%);
-  border:1px solid #fbcfe8;border-radius:16px;
+  border:1px solid #fbcfe8;border-radius:14px;
   padding:28px 22px;margin-top:32px;
 }
 .cta-box h3{font-size:1.1rem;margin-bottom:6px;color:#3d0a24}
@@ -246,7 +246,7 @@ details ul{margin-top:8px;color:var(--ink2);font-size:.95rem}
 .btn-cta{
   display:inline-block;
   background:var(--accent);color:#fff;
-  border-radius:26px;padding:12px 28px;
+  border-radius:14px;padding:12px 28px;
   font-weight:800;font-size:.98rem;
   text-decoration:none;
   box-shadow:0 6px 22px rgba(190,24,93,.30);
@@ -263,13 +263,13 @@ details ul{margin-top:8px;color:var(--ink2);font-size:.95rem}
 .nl p{font-size:.87rem;color:var(--muted);margin-bottom:12px}
 .nl form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .nl input[type=email]{
-  padding:10px 14px;border:1px solid var(--line);border-radius:24px;
+  padding:10px 14px;border:1px solid var(--line);border-radius:14px;
   font-size:.9rem;flex:1;min-width:200px;max-width:280px;outline:none;
 }
 .nl input[type=email]:focus{border-color:var(--accent)}
 .nl button{
   background:var(--accent);color:#fff;border:none;
-  padding:10px 20px;border-radius:24px;font-weight:700;cursor:pointer;font-size:.9rem;
+  padding:10px 20px;border-radius:14px;font-weight:700;cursor:pointer;font-size:.9rem;
 }
 .nl button:hover{background:var(--accent-dk)}
 
@@ -279,7 +279,7 @@ details ul{margin-top:8px;color:var(--ink2);font-size:.95rem}
 .rel .tags{display:flex;flex-wrap:wrap;gap:8px}
 .rel .tags a{
   background:var(--highlight);color:var(--accent-dk);
-  border:1px solid #fbcfe8;border-radius:20px;
+  border:1px solid #fbcfe8;border-radius:14px;
   padding:5px 13px;font-size:.85rem;text-decoration:none;
 }
 .rel .tags a:hover{background:#fbcfe8}
@@ -291,7 +291,7 @@ footer a:hover{color:var(--accent-dk)}
 
 /* ── SHOP ROW ── */
 .prow{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;margin-top:12px}
-.pc{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.pc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
 .pc:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.1)}
 .pc .im{aspect-ratio:1/1;background:#f1ece2 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#c4b89f}
 .pc .pb{padding:8px 10px}
@@ -301,7 +301,7 @@ footer a:hover{color:var(--accent-dk)}
 /* ── HIGHLIGHT BAND ── */
 .band{
   background:var(--highlight);border:1px solid #fbcfe8;
-  border-radius:12px;padding:14px 18px;margin:16px 0;
+  border-radius:14px;padding:14px 18px;margin:16px 0;
   font-size:.93rem;color:var(--ink2);
 }
 .band strong{color:var(--accent-dk)}
@@ -312,7 +312,7 @@ footer a:hover{color:var(--accent-dk)}
   h2{font-size:1.15rem}
   .ctable th,.ctable td{padding:7px 9px;font-size:.83rem}
 }
-:focus-visible{outline:3px solid var(--accent-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--accent-dk);outline-offset:2px;border-radius:8px}
 </style>
 </head>
 <body>
@@ -890,7 +890,7 @@ footer a:hover{color:var(--accent-dk)}
   <div class="nl">
     <h3>Schweizer Kaufberater per E-Mail</h3>
     <p>Neue Ratgeber, Preistipps und Produktvergleiche — keine Werbung, kein Spam.</p>
-    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
   </div>
 
   <p style="margin-top:22px;font-size:.82rem;color:var(--muted)">

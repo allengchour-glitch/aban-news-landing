@@ -38,12 +38,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dk)}
-:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
 header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;color:var(--amber);text-decoration:none}
-.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:8px;border:0;cursor:pointer;font-size:.92rem}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
 .hero{padding:40px 0 8px;text-align:center}
 .hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
@@ -52,13 +52,13 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .p{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
 .p h2{font-size:1.05rem;margin-bottom:4px}
 .p .use{font-size:.84rem;color:var(--muted);margin-bottom:10px}
-.p pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;background:var(--field);border:1px solid var(--line);border-radius:9px;padding:12px;color:var(--ink)}
+.p pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;background:var(--field);border:1px solid var(--line);border-radius:8px;padding:12px;color:var(--ink)}
 .p .copy{margin-top:10px}
 .note{color:var(--muted);font-size:.82rem;margin-top:6px}
 .cta{text-align:center;margin:22px 0 4px}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:9px;font-size:.86rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:8px;font-size:.86rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
 .toast.show{opacity:1}
 </style>
 </head>
@@ -73,7 +73,7 @@ footer a{color:var(--muted)}
     <h1><span class="a">11 KI-Prompts</span> für Selbstständige</h1>
     <p>Erprobt, ehrlich, zum Kopieren — für die Aufgaben, die jeden Tag Zeit fressen: Angebot, Kundenmail, Mahnung, Bewertung, Social und mehr. Gratis, ohne Anmeldung.</p>
   </section>
-  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">So nutzt du sie:</strong> Prompt kopieren → in ChatGPT, Gemini oder Claude einfügen → die [Platzhalter] ersetzen → Ergebnis gegenlesen. KI liefert Entwürfe, die Endkontrolle bleibt bei dir.</p>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">So nutzt du sie:</strong> Prompt kopieren → in ChatGPT, Gemini oder Claude einfügen → die [Platzhalter] ersetzen → Ergebnis gegenlesen. KI liefert Entwürfe, die Endkontrolle bleibt bei dir.</p>
 
   <div id="prompts"></div>
 

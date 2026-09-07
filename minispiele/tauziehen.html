@@ -26,7 +26,7 @@
   }
   .back {
     position: absolute; top: 12px; left: 12px; z-index: 20;
-    background: #fffdf6; border: none; border-radius: 16px;
+    background: #fffdf6; border: none; border-radius: 14px;
     padding: 10px 16px; font-size: 16px; font-weight: bold; color: #2b7bb0;
     box-shadow: 0 4px 14px rgba(40,90,150,.18); cursor: pointer; min-height: 46px;
   }
@@ -39,7 +39,7 @@
 
   /* Player 2 area (top, rotated) */
   .pad {
-    flex: 1; border-radius: 20px; display: flex; flex-direction: column;
+    flex: 1; border-radius: 14px; display: flex; flex-direction: column;
     align-items: center; justify-content: center; cursor: pointer;
     box-shadow: 0 4px 14px rgba(40,90,150,.2), inset 0 0 0 3px rgba(255,255,255,.45);
     position: relative; overflow: hidden;
@@ -49,7 +49,7 @@
   .pad .emo { font-size: 58px; line-height: 1; }
   .pad .hint { font-size: 14px; margin-top: 6px; color: #fff; opacity: .9; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,.2); }
   .pad .score { position: absolute; top: 10px; right: 14px; font-size: 22px; font-weight: 900; color: #fff;
-    background: rgba(0,0,0,.16); border-radius: 12px; padding: 2px 12px; }
+    background: rgba(0,0,0,.16); border-radius: 14px; padding: 2px 12px; }
   .pad.p2 { background:
     radial-gradient(120% 90% at 50% 100%, rgba(255,255,255,.3), rgba(255,255,255,0) 60%),
     linear-gradient(160deg, #7fb3ea, #3a7dd8); transform: rotate(180deg); }
@@ -64,17 +64,17 @@
   .ropewrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
   .track {
     width: 100%; max-width: 520px; height: 48px; background: #fffdf6;
-    border-radius: 24px; position: relative;
+    border-radius: 14px; position: relative;
     box-shadow: inset 0 3px 8px rgba(40,90,150,.2), 0 4px 14px rgba(40,90,150,.15);
     overflow: hidden;
   }
   .center-line { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 5px; margin-left: -2.5px;
-    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); border-radius: 3px; }
+    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); border-radius: 8px; }
   .flag { position: absolute; top: 50%; font-size: 32px; transition: left .06s linear; transform: translate(-50%,-50%);
     filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
   .zoneL, .zoneR { position: absolute; top: 0; bottom: 0; width: 12%; }
-  .zoneL { left: 0; background: linear-gradient(90deg, rgba(232,87,74,.45), rgba(232,87,74,.15)); border-radius: 24px 0 0 24px;}
-  .zoneR { right: 0; background: linear-gradient(270deg, rgba(58,125,216,.45), rgba(58,125,216,.15)); border-radius: 0 24px 24px 0;}
+  .zoneL { left: 0; background: linear-gradient(90deg, rgba(232,87,74,.45), rgba(232,87,74,.15)); border-radius: 14px 0 0 14px;}
+  .zoneR { right: 0; background: linear-gradient(270deg, rgba(58,125,216,.45), rgba(58,125,216,.15)); border-radius: 0 14px 14px 0;}
 
   .countdown {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -89,7 +89,7 @@
     gap: 0; z-index: 25; text-align: center; padding: 20px;
   }
   .card {
-    background: #fffdf6; border-radius: 24px; padding: 28px 24px; max-width: 360px; width: 100%;
+    background: #fffdf6; border-radius: 14px; padding: 28px 24px; max-width: 360px; width: 100%;
     box-shadow: 0 14px 34px rgba(40,90,150,.22);
     display: flex; flex-direction: column; align-items: center; gap: 14px;
   }
@@ -97,7 +97,7 @@
   .overlay .big { font-size: 76px; }
   .overlay p { font-size: 18px; color: #5a8bab; line-height: 1.45; }
   .btn {
-    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); border: none; border-radius: 18px; padding: 16px 34px;
+    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); border: none; border-radius: 14px; padding: 16px 34px;
     font-size: 22px; font-weight: bold; color: #fff; text-shadow: 0 1px 3px rgba(140,60,0,.35);
     box-shadow: 0 6px 16px rgba(255,140,42,.45);
     cursor: pointer; min-height: 46px;

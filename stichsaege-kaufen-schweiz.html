@@ -125,7 +125,7 @@ a:hover{color:var(--accent)}
 .tn-brand{color:#f9fafb;font-weight:700;font-size:1.05rem;text-decoration:none;letter-spacing:.01em}
 .tn-brand:hover{color:#d1d5db}
 .tn-links{display:flex;gap:4px;margin-left:auto}
-.tn-links a{color:#d1d5db;text-decoration:none;font-size:.86rem;padding:6px 10px;border-radius:6px;transition:background .15s}
+.tn-links a{color:#d1d5db;text-decoration:none;font-size:.86rem;padding:6px 10px;border-radius:8px;transition:background .15s}
 .tn-links a:hover{background:rgba(255,255,255,.1);color:#fff}
 
 /* ── Layout ── */
@@ -136,7 +136,7 @@ a:hover{color:var(--accent)}
 .hero::before{content:"🔧";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:6rem;opacity:.08;pointer-events:none;user-select:none}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(209,213,219,.12),transparent 45%),radial-gradient(circle at 5% 85%,rgba(55,65,81,.25),transparent 42%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:42px 18px 36px;position:relative;z-index:1}
-.hero .ic{font-size:2rem;width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:16px;margin-bottom:10px}
+.hero .ic{font-size:2rem;width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.55rem,4.2vw,2.05rem);margin:4px 0 10px;line-height:1.2;font-weight:800}
 .hero p.lead{color:#cbd5e1;font-size:1.05rem;max-width:640px;line-height:1.55}
 .hero .trust{margin-top:16px;display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.8rem;color:#94a3b8}
@@ -170,11 +170,11 @@ article strong{color:var(--ink2)}
 .answer-first .af-bullets li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700}
 
 /* ── Comparison table ── */
-.ctable-wrap{overflow-x:auto;margin:18px 0 26px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.ctable-wrap{overflow-x:auto;margin:18px 0 26px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
 .ctable{width:100%;border-collapse:collapse;font-size:.92rem;background:#fff}
 .ctable thead th{background:var(--accent-dk);color:#fff;padding:11px 14px;text-align:left;font-weight:600;white-space:nowrap}
-.ctable thead th:first-child{border-radius:12px 0 0 0}
-.ctable thead th:last-child{border-radius:0 12px 0 0}
+.ctable thead th:first-child{border-radius:14px 0 0 0}
+.ctable thead th:last-child{border-radius:0 14px 0 0}
 .ctable tbody tr:nth-child(even){background:#f8fafc}
 .ctable tbody tr:hover{background:#f1f5f9}
 .ctable td{padding:10px 14px;border-bottom:1px solid #e5e7eb;vertical-align:top;color:#374151}
@@ -185,14 +185,14 @@ article strong{color:var(--ink2)}
 
 /* ── Tips grid ── */
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0 30px}
-.tip-card{background:#fff;border-radius:12px;padding:18px 16px;border:1px solid var(--line);box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.tip-card{background:#fff;border-radius:14px;padding:18px 16px;border:1px solid var(--line);box-shadow:0 1px 6px rgba(0,0,0,.04)}
 .tip-card .tip-icon{font-size:1.7rem;margin-bottom:8px}
 .tip-card h3{font-size:.95rem;margin:0 0 6px;color:var(--ink2)}
 .tip-card p{font-size:.86rem;color:var(--muted);margin:0;line-height:1.5}
 
 /* ── Material cards ── */
 .mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0 28px}
-.mat-card{background:#fff;border-radius:10px;padding:16px;border-left:4px solid var(--accent);box-shadow:0 1px 5px rgba(0,0,0,.05)}
+.mat-card{background:#fff;border-radius:14px;padding:16px;border-left:4px solid var(--accent);box-shadow:0 1px 5px rgba(0,0,0,.05)}
 .mat-card h3{font-size:.93rem;font-weight:700;margin:0 0 7px;color:var(--ink2)}
 .mat-card ul{list-style:none;padding:0;margin:0}
 .mat-card ul li{font-size:.84rem;color:var(--muted);padding:2px 0 2px 14px;position:relative}
@@ -200,8 +200,8 @@ article strong{color:var(--ink2)}
 
 /* ── Model cards ── */
 .model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:20px 0 28px}
-.model-card{background:#fff;border-radius:12px;padding:18px 16px;border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative}
-.model-card .mc-badge{position:absolute;top:14px;right:14px;font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:20px;background:var(--accent);color:#fff;text-transform:uppercase;letter-spacing:.05em}
+.model-card{background:#fff;border-radius:14px;padding:18px 16px;border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative}
+.model-card .mc-badge{position:absolute;top:14px;right:14px;font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:14px;background:var(--accent);color:#fff;text-transform:uppercase;letter-spacing:.05em}
 .model-card .mc-badge.budget{background:#16a34a}
 .model-card .mc-badge.pro{background:#1d4ed8}
 .model-card .mc-badge.premium{background:#7c3aed}
@@ -212,7 +212,7 @@ article strong{color:var(--ink2)}
 .model-card ul li::before{content:"✓";position:absolute;left:0;color:#16a34a;font-size:.75rem;font-weight:700}
 
 /* ── Sägeblatt table ── */
-.blade-table-wrap{overflow-x:auto;margin:16px 0 24px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.blade-table-wrap{overflow-x:auto;margin:16px 0 24px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .blade-table{width:100%;border-collapse:collapse;font-size:.9rem;background:#fff}
 .blade-table thead th{background:var(--accent);color:#fff;padding:10px 12px;text-align:left;font-weight:600}
 .blade-table tbody tr:nth-child(even){background:#f8fafc}
@@ -220,7 +220,7 @@ article strong{color:var(--ink2)}
 .blade-table td:first-child{font-weight:600;color:var(--ink2)}
 
 /* ── Price table ── */
-.price-table-wrap{overflow-x:auto;margin:16px 0 24px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.price-table-wrap{overflow-x:auto;margin:16px 0 24px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .price-table{width:100%;border-collapse:collapse;font-size:.9rem;background:#fff}
 .price-table thead th{background:var(--accent-lt);color:#fff;padding:10px 12px;text-align:left;font-weight:600}
 .price-table tbody tr:nth-child(even){background:#f8fafc}
@@ -229,7 +229,7 @@ article strong{color:var(--ink2)}
 .price-table td:first-child{font-weight:600;color:var(--ink2)}
 
 /* ── Infobox ── */
-.infobox{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px 18px;margin:18px 0 24px;font-size:.92rem;color:#0c4a6e}
+.infobox{background:#f0f9ff;border:1px solid #bae6fd;border-radius:14px;padding:16px 18px;margin:18px 0 24px;font-size:.92rem;color:#0c4a6e}
 .infobox strong{color:#0369a1}
 .infobox.warn{background:#fffbeb;border-color:#fde68a;color:#78350f}
 .infobox.warn strong{color:#92400e}
@@ -238,7 +238,7 @@ article strong{color:var(--ink2)}
 
 /* ── FAQ section ── */
 .faq-section{margin:20px 0 30px}
-.faq-section details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.faq-section details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
 .faq-section summary{padding:14px 18px;font-weight:600;color:var(--ink2);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:.96rem}
 .faq-section summary::-webkit-details-marker{display:none}
 .faq-section summary::after{content:"＋";color:var(--accent);font-size:1.1rem;flex-shrink:0;margin-left:10px;transition:transform .2s}
@@ -251,7 +251,7 @@ article strong{color:var(--ink2)}
 .faq-section .faq-body ul li{margin-bottom:5px}
 
 /* ── CTA box ── */
-.cta-box{background:linear-gradient(135deg,#0f172a,#1e293b 60%,#374151);color:#fff;border-radius:16px;padding:30px 24px;text-align:center;margin:34px 0}
+.cta-box{background:linear-gradient(135deg,#0f172a,#1e293b 60%,#374151);color:#fff;border-radius:14px;padding:30px 24px;text-align:center;margin:34px 0}
 .cta-box h2{font-size:1.25rem;margin:0 0 10px;font-weight:700;border:none;padding:0;color:#fff}
 .cta-box p{color:#cbd5e1;margin:0 0 18px;font-size:.95rem}
 .cta-box .cta-btn{display:inline-block;background:#fff;color:var(--accent-dk);font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:.97rem;transition:opacity .15s}
@@ -264,13 +264,13 @@ article strong{color:var(--ink2)}
 
 /* ── Retailer list ── */
 .retailer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0 26px}
-.retailer-item{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:.9rem}
+.retailer-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:.9rem}
 .retailer-item .r-name{font-weight:700;color:var(--ink2);margin-bottom:3px}
 .retailer-item .r-note{color:var(--muted);font-size:.82rem}
 
 /* ── Security tips ── */
 .sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0 28px}
-.sec-item{background:#fff;border-radius:10px;padding:16px;border:1px solid var(--line)}
+.sec-item{background:#fff;border-radius:14px;padding:16px;border:1px solid var(--line)}
 .sec-item .si-icon{font-size:1.5rem;margin-bottom:6px}
 .sec-item h3{font-size:.92rem;font-weight:700;margin:0 0 5px;color:var(--ink2)}
 .sec-item p{font-size:.83rem;color:var(--muted);margin:0;line-height:1.5}
@@ -911,7 +911,7 @@ footer .wrap{line-height:1.8}
   <div class="wrap">
     <h2>Schweizer Kauftipps direkt ins Postfach</h2>
     <p>Wöchentliche Ratgeber, Preisvergleiche und Angebote – kostenlos.</p>
-    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+    <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
   </div>
 </section>
 </main>

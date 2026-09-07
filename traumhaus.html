@@ -41,19 +41,19 @@ canvas{display:block}
 .overlay h1{font-size:2.3rem;color:var(--tinte);margin-bottom:.2rem}
 .overlay p{color:#3a4a5f;max-width:430px;margin:.5rem 0;font-size:1rem;line-height:1.55}
 .tag{font-size:.8rem;letter-spacing:3px;color:#5a7a9a;text-transform:uppercase;margin-bottom:6px}
-.btn{margin-top:12px;border:0;cursor:pointer;font-weight:800;font-size:1.1rem;padding:14px 34px;min-height:48px;border-radius:40px;color:#fff;background:var(--bern);box-shadow:0 10px 30px rgba(36,28,18,.28)}
+.btn{margin-top:12px;border:0;cursor:pointer;font-weight:800;font-size:1.1rem;padding:14px 34px;min-height:48px;border-radius:14px;color:#fff;background:var(--bern);box-shadow:0 10px 30px rgba(36,28,18,.28)}
 .btn.ghost{background:rgba(255,255,255,.7);color:#4a5a7a;border:2px solid #b8cee0;box-shadow:none;font-size:1rem;padding:12px 24px}
 .small{font-size:.85rem;color:#6a8aa8;margin-top:14px}.small a{color:#4a7ab0}
 #hud{position:fixed;top:calc(10px + env(safe-area-inset-top));left:calc(10px + env(safe-area-inset-left));right:calc(10px + env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:10;gap:8px;flex-wrap:wrap}
 /* 🎨 RAHMENLOS (User: "keine rahmen"). Die dauerhaft sichtbaren Bedienelemente tragen keine Linie mehr — Trennung macht der Schatten. Ein 2-px-Strich um jede Kachel zerschneidet das Bild in Kaesten; ein weicher Schatten hebt sie ab, ohne die Szene zu zerteilen. Dialoge behalten ihre Kante: dort trennt sie sinnvoll. */
-.panel{background:rgba(255,253,248,.94);border:0;border-radius:16px;padding:8px 12px;font-weight:800;box-shadow:0 6px 20px rgba(40,30,10,.22);pointer-events:auto}
+.panel{background:rgba(255,253,248,.94);border:0;border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 6px 20px rgba(40,30,10,.22);pointer-events:auto}
 #geld{font-size:1.25rem;font-weight:900;background:#fff6dc}
 #uhr{font-size:1rem;max-width:min(60vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #geld{color:#b8860b}
 .needs{display:flex;flex-direction:column;gap:3px;font-size:.72rem;min-width:130px}
 .needs .nrow{display:flex;align-items:center;gap:5px}
-.needs .nbar{flex:1;height:7px;border-radius:4px;background:#e8e0d0;overflow:hidden}
-.needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
+.needs .nbar{flex:1;height:7px;border-radius:8px;background:#e8e0d0;overflow:hidden}
+.needs .nbar i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
 /* 📱 War auf max-height:480px begrenzt — moderne Handys sind quer hoeher (der Bauen-Knopf
    lag deshalb weiter unter dem Radar). 620px deckt alle gaengigen Geraete ab. */
 @media (orientation:landscape) and (max-height:620px){
@@ -204,19 +204,19 @@ canvas{display:block}
 }
 #palette{position:fixed;left:0;right:0;bottom:0;z-index:12;background:rgba(255,253,248,.95);border-top:2px solid rgba(120,110,80,.2);padding:6px 8px calc(6px + env(safe-area-inset-bottom));display:none}
 #palCats{display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap}
-.pcat{border:0;border-radius:20px;padding:11px 16px;font-weight:800;cursor:pointer;background:#e8e0d0;color:#5a4a30;font-size:.85rem;min-height:44px}
+.pcat{border:0;border-radius:14px;padding:11px 16px;font-weight:800;cursor:pointer;background:#e8e0d0;color:#5a4a30;font-size:.85rem;min-height:44px}
 .pcat.on{background:var(--bern);color:#fff}
 #palItems{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
-.pitem{flex:0 0 auto;border:2px solid #d8cdb8;border-radius:12px;background:#fff;padding:6px 10px;text-align:center;cursor:pointer;min-width:74px;min-height:56px}
+.pitem{flex:0 0 auto;border:2px solid #d8cdb8;border-radius:14px;background:#fff;padding:6px 10px;text-align:center;cursor:pointer;min-width:74px;min-height:56px}
 .pitem.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.25)}
 .pitem .pe{font-size:1.4rem}.pitem .pn{font-size:.66rem;font-weight:700;color:#5a4a30}.pitem .pp{font-size:.66rem;color:#b8860b;font-weight:800}
 #tools{position:fixed;right:calc(10px + env(safe-area-inset-right));bottom:calc(252px + env(safe-area-inset-bottom));display:none;flex-direction:column;gap:8px;z-index:13}
-.tbtn{width:48px;height:48px;border-radius:16px;border:0;background:rgba(255,253,248,.95);font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)}
+.tbtn{width:48px;height:48px;border-radius:14px;border:0;background:rgba(255,253,248,.95);font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)}
 .tbtn.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.3)}
 #modeBtn.building{top:calc(58px + env(safe-area-inset-top));bottom:auto;left:50%;transform:translateX(-50%)}
-#modeBtn{position:fixed;left:calc(10px + env(safe-area-inset-left));bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#fff;background:var(--bern);box-shadow:0 8px 24px rgba(36,28,18,.3)}
+#modeBtn{position:fixed;left:calc(10px + env(safe-area-inset-left));bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:0;border-radius:14px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#fff;background:var(--bern);box-shadow:0 8px 24px rgba(36,28,18,.3)}
 #hint.an{transform:translate(-50%,0)}
-#hint{position:fixed;bottom:calc(76px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,8px);z-index:21;background:var(--tinte70);color:#fff;border-radius:12px;padding:5px 14px;font-size:.85rem;opacity:0;transition:opacity .35s,transform .5s cubic-bezier(.2,1.2,.4,1);pointer-events:none;max-width:92vw;text-align:center}
+#hint{position:fixed;bottom:calc(76px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,8px);z-index:21;background:var(--tinte70);color:#fff;border-radius:14px;padding:5px 14px;font-size:.85rem;opacity:0;transition:opacity .35s,transform .5s cubic-bezier(.2,1.2,.4,1);pointer-events:none;max-width:92vw;text-align:center}
 #romKiss{position:fixed;inset:0;background:radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92));z-index:20;display:none;align-items:center;justify-content:center;flex-direction:column;color:#ffc8e0;font-size:1.4rem;font-weight:800;text-align:center}
 #chatBox{position:fixed;left:10px;bottom:calc(120px + env(safe-area-inset-bottom));z-index:22;width:min(280px,72vw);background:rgba(255,253,246,.97);border:2px solid #e8b04a;border-radius:14px;display:none;flex-direction:column;box-shadow:0 10px 30px rgba(60,40,10,.3)}
 #chatMsgs{max-height:160px;overflow-y:auto;padding:8px 10px;font-size:.82rem;line-height:1.45}
@@ -236,14 +236,14 @@ canvas{display:block}
 #hideBtn{position:fixed;right:134px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,200,80,.96);box-shadow:0 6px 18px rgba(120,80,20,.34);font-size:1.4rem;cursor:pointer;display:none}
 #pingBtn{position:fixed;right:72px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(58,208,255,.96);box-shadow:0 6px 18px rgba(20,80,120,.34);font-size:1.4rem;cursor:pointer;display:none}
 #pingBtn:active{transform:scale(.9)}
-#chatSend{border:0;background:#ffd166;padding:0 14px;cursor:pointer;font-weight:800;border-radius:0 0 12px 0}
+#chatSend{border:0;background:#ffd166;padding:0 14px;cursor:pointer;font-weight:800;border-radius:0 0 14px 0}
 #chatToggle{position:fixed;left:calc(150px + env(safe-area-inset-left));bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:2px solid #e8b04a;background:rgba(255,253,246,.94);border-radius:50%;width:48px;height:48px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:cblink 1s infinite}
 @keyframes cblink{50%{box-shadow:0 0 0 6px rgba(255,209,102,.5)}}
 @keyframes komboPuls{50%{transform:scale(1.07)}}
-#netBadge{position:fixed;top:calc(60px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:11;background:rgba(90,150,90,.9);color:#fff;border-radius:20px;padding:4px 14px;font-size:.8rem;font-weight:800;display:none}
+#netBadge{position:fixed;top:calc(60px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:11;background:rgba(90,150,90,.9);color:#fff;border-radius:14px;padding:4px 14px;font-size:.8rem;font-weight:800;display:none}
 .hide{display:none!important}
-input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-size:16px}
+input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-size:16px}
 </style>
 </head>
 <body>
@@ -295,32 +295,32 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="hetzeHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(40,26,14,.88);color:#fff;padding:7px 14px;border-radius:14px;min-width:118px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn"><svg class="ik" aria-hidden="true"><use href="#i-hammer"/></svg> Bauen</button>
-<button id="kircheBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Kirchlich heiraten · 800 $</button>
-<button id="werkBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Auto umlackieren · 250 $</button>
-<button id="markthalleBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#2a3a10;background:var(--creme)">Ernte verkaufen</button>
-<button id="shopBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#3a2a10;background:var(--creme)">Einkaufen · 60 $</button>
-<button id="npcBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Ansprechen</button>
-<button id="fahrtBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Einsteigen</button>
+<button id="kircheBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Kirchlich heiraten · 800 $</button>
+<button id="werkBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Auto umlackieren · 250 $</button>
+<button id="markthalleBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:#2a3a10;background:var(--creme)">Ernte verkaufen</button>
+<button id="shopBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:#3a2a10;background:var(--creme)">Einkaufen · 60 $</button>
+<button id="npcBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Ansprechen</button>
+<button id="fahrtBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Einsteigen</button>
 <div id="coupHud" style="display:none;position:fixed;left:50%;transform:translateX(-50%);top:calc(112px + env(safe-area-inset-top));z-index:17;background:rgba(30,10,20,.88);color:#ffd9e0;border:2px solid #b02a5a;border-radius:14px;padding:8px 18px;font-weight:900;font-size:.95rem"></div>
-<button id="coupBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:var(--tinte);color:var(--creme)">Bank-Coup zu zweit</button>
-<button id="coasterBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Achterbahn fahren</button>
-<button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 18px;min-height:44px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Villa-Vorlage · 3500 $</button>
-<button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Strassenmusik machen</button>
-<button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Ernte verkaufen (riskant)</button>
-<button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4)">Krummes Ding drehen …</button>
+<button id="coupBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:var(--tinte);color:var(--creme)">Bank-Coup zu zweit</button>
+<button id="coasterBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Achterbahn fahren</button>
+<button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 18px;min-height:44px;font-weight:900;cursor:pointer;color:var(--tinte);background:var(--creme)">Villa-Vorlage · 3500 $</button>
+<button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Strassenmusik machen</button>
+<button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Ernte verkaufen (riskant)</button>
+<button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4)">Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat"><svg class="ik" aria-hidden="true"><use href="#i-chat"/></svg></button>
 <button id="emoteToggle" title="Emotes"><svg class="ik" aria-hidden="true"><use href="#i-smile"/></svg></button>
 <button id="pingBtn" title="Treffpunkt setzen"><svg class="ik" aria-hidden="true"><use href="#i-pin"/></svg></button>
 <button id="hideBtn" title="Verstecken spielen"><svg class="ik" aria-hidden="true"><use href="#i-eyeoff"/></svg></button>
-<div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:12px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
+<div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:14px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
 <button id="tragBtn" title="Sperrgut zu zweit tragen" style="display:none"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
-<div id="tragHud" style="position:fixed;top:calc(140px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(20,35,55,.88);color:#fff;border:2px solid #6ab8ff;border-radius:12px;padding:6px 16px;font-weight:800;font-size:1.02rem"></div>
+<div id="tragHud" style="position:fixed;top:calc(140px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(20,35,55,.88);color:#fff;border:2px solid #6ab8ff;border-radius:14px;padding:6px 16px;font-weight:800;font-size:1.02rem"></div>
 <button id="micBtn" title="Voice-Chat"><svg class="ik" aria-hidden="true"><use href="#i-mic"/></svg></button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:#ff6a2a;box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-rocket"/></svg></button>
 <button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(308px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
-<div id="lieferHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(178px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(20,60,25,.88);color:#fff;border:2px solid #4ad06a;border-radius:12px;padding:6px 14px;font-weight:800">📦 <span id="lieferZeit">60</span>s → <span id="lieferZiel">Markt</span></div>
+<div id="lieferHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(178px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(20,60,25,.88);color:#fff;border:2px solid #4ad06a;border-radius:14px;padding:6px 14px;font-weight:800">📦 <span id="lieferZeit">60</span>s → <span id="lieferZiel">Markt</span></div>
 <button id="hornBtn" style="position:fixed;right:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:rgba(255,253,246,.96);box-shadow:0 6px 20px rgba(60,40,10,.3);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-horn"/></svg></button>
-<button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(128px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:30px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-door"/></svg> Aussteigen</button>
+<button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(128px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-door"/></svg> Aussteigen</button>
 <div id="emoteBar"></div>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
   <button class="tbtn" id="piWink" title="Winken">👋</button>
@@ -348,19 +348,19 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="hint"></div>
 <div id="wanted" style="position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:15;display:none;background:rgba(20,15,20,.82);border:2px solid #ff5a3a;border-radius:14px;padding:6px 14px;font-size:1.3rem;letter-spacing:3px;box-shadow:0 4px 16px rgba(255,90,40,.5)"></div>
-<div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:16px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
+<div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:14px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
   <span id="editName" style="align-self:center;font-weight:800;font-size:.85rem;color:#5a4a30;margin-right:4px"></span>
-  <button class="ebtn" id="edMove" style="border:0;background:#e0ecf8;border-radius:10px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">↔️ Verschieben</button>
-  <button class="ebtn" id="edRot" style="border:0;background:#e8f0dc;border-radius:10px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg> Drehen</button>
-  <button class="ebtn" id="edUp" style="border:0;background:#fdf0d0;border-radius:10px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">⬆️ Aufwerten</button>
-  <button class="ebtn" id="edSell" style="border:0;background:#f8e0dc;border-radius:10px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">Verkaufen</button>
-  <button class="ebtn" id="edX" style="border:0;background:#d8d0c0;border-radius:10px;padding:12px 16px;min-height:44px;min-width:44px;margin-left:10px;font-size:.95rem;cursor:pointer">✕</button>
+  <button class="ebtn" id="edMove" style="border:0;background:#e0ecf8;border-radius:14px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">↔️ Verschieben</button>
+  <button class="ebtn" id="edRot" style="border:0;background:#e8f0dc;border-radius:14px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg> Drehen</button>
+  <button class="ebtn" id="edUp" style="border:0;background:#fdf0d0;border-radius:14px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">⬆️ Aufwerten</button>
+  <button class="ebtn" id="edSell" style="border:0;background:#f8e0dc;border-radius:14px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">Verkaufen</button>
+  <button class="ebtn" id="edX" style="border:0;background:#d8d0c0;border-radius:14px;padding:12px 16px;min-height:44px;min-width:44px;margin-left:10px;font-size:.95rem;cursor:pointer">✕</button>
 </div>
 <div id="joy" style="position:fixed;left:16px;bottom:100px;width:112px;height:112px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.4);z-index:13;display:none;touch-action:none;backdrop-filter:blur(2px)">
   <div id="joyKnob" style="position:absolute;left:34px;top:34px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);box-shadow:0 3px 10px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;pointer-events:none"><svg class="ik" aria-hidden="true"><use href="#i-run"/></svg></div>
 </div>
 <div id="tanz" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(40,20,45,.6)">
- <div id="tanzBox" style="background:#fdf4ff;border:3px solid #b060c8;border-radius:18px;padding:18px;text-align:center;max-width:340px;width:90vw;cursor:pointer;user-select:none">
+ <div id="tanzBox" style="background:#fdf4ff;border:3px solid #b060c8;border-radius:14px;padding:18px;text-align:center;max-width:340px;width:90vw;cursor:pointer;user-select:none">
   <b style="font-size:1.1rem;color:#7a3a90">💃 Tanzen</b>
   <div id="tanzInfo" style="font-size:.8rem;color:#9a6aab;margin-top:4px">Tippe, wenn der Ring den Kreis trifft!</div>
   <div style="position:relative;width:190px;height:190px;margin:14px auto">
@@ -368,68 +368,68 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
     <div id="tanzRing" style="position:absolute;inset:55px;border-radius:50%;border:4px solid #e8a8f8;transform:scale(2.1);opacity:0"></div>
   </div>
   <div id="tanzScore" style="font-size:.9rem;font-weight:800;color:#7a3a90;min-height:24px">Beat 0/8</div>
-  <button id="tanzQuit" style="margin-top:8px;border:0;background:#ecdcf2;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
+  <button id="tanzQuit" style="margin-top:8px;border:0;background:#ecdcf2;border-radius:14px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
  </div>
 </div>
 <div id="angel" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(20,30,40,.55)">
- <div style="background:#f4faff;border:3px solid #4a90c8;border-radius:18px;padding:18px;text-align:center;max-width:340px;width:90vw">
+ <div style="background:#f4faff;border:3px solid #4a90c8;border-radius:14px;padding:18px;text-align:center;max-width:340px;width:90vw">
   <b style="font-size:1.1rem;color:#2a5a80">🎣 Angeln</b>
   <div id="angelInfo" style="font-size:.8rem;color:#4a7aa0;margin-top:4px">Wurf 1/3</div>
   <div id="angelIcon" style="font-size:3.2rem;margin:12px 0">🪱</div>
   <div id="angelSub" style="font-size:.9rem;color:#5a7a95;min-height:38px">Wirf die Angel aus …</div>
   <button id="angelZieh" style="margin-top:8px;border:0;background:var(--creme);color:var(--tinte);border-radius:14px;padding:14px 34px;font-size:1.05rem;font-weight:800;cursor:pointer">ZIEHEN!</button>
-  <br><button id="angelQuit" style="margin-top:10px;border:0;background:#dde8f0;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
+  <br><button id="angelQuit" style="margin-top:10px;border:0;background:#dde8f0;border-radius:14px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
  </div>
 </div>
 <div id="koch" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.55)">
- <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:18px;text-align:center;max-width:360px;width:90vw">
+ <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:14px;padding:18px;text-align:center;max-width:360px;width:90vw">
   <b style="font-size:1.1rem;color:#5a4a30">🍳 Kochen</b>
   <div id="kochSub" style="font-size:.85rem;color:#8a7a5a;margin:6px 0">Merke dir die Reihenfolge!</div>
   <div id="kochSeq" style="font-size:1.9rem;min-height:52px;letter-spacing:5px;margin:8px 0"></div>
   <div id="kochBtns" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px"></div>
   <div id="kochInfo" style="font-size:.8rem;color:#b8862a;margin-top:8px">Runde 1/3</div>
-  <button id="kochQuit" style="margin-top:10px;border:0;background:#e8e0d0;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
+  <button id="kochQuit" style="margin-top:10px;border:0;background:#e8e0d0;border-radius:14px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
  </div>
 </div>
 <div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;pointer-events:none;background:#fff6dc;border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
-<button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:0;background:rgba(255,253,248,.95);border-radius:16px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)"><svg class="ik" aria-hidden="true"><use href="#i-trophy"/></svg></button>
+<button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:0;background:rgba(255,253,248,.95);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)"><svg class="ik" aria-hidden="true"><use href="#i-trophy"/></svg></button>
 <canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:0;box-shadow:0 6px 20px rgba(20,30,15,.42);background:#3a5a34;cursor:pointer"></canvas>
 <!-- 🗺️ Grosse Karte (User: „map ist noch zu klein") — Tipp auf das Radar oeffnet die ganze Welt -->
 <div id="bigmapWrap" style="position:fixed;inset:0;z-index:60;display:none;background:rgba(12,16,12,.86);backdrop-filter:blur(3px);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:10px">
   <div style="color:#fff;font-weight:900;font-size:1.05rem;text-shadow:0 2px 6px #000">🗺️ Weltkarte <span style="font-weight:700;font-size:.8rem;opacity:.85">· Tipp auf die Karte = 📍 GPS-Wegpunkt</span></div>
-  <canvas id="bigmap" width="920" height="554" style="max-width:97vw;max-height:78vh;border-radius:16px;border:3px solid rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(0,0,0,.6);background:#3a5a34"></canvas>
+  <canvas id="bigmap" width="920" height="554" style="max-width:97vw;max-height:78vh;border-radius:14px;border:3px solid rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(0,0,0,.6);background:#3a5a34"></canvas>
   <button id="bigmapClose" style="border:0;background:#ffdf7a;color:#3a2b06;font-weight:900;border-radius:14px;padding:12px 30px;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)">Schliessen</button>
 </div>
-<div id="speedo" style="position:fixed;left:calc(50% + 170px);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:12px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
+<div id="speedo" style="position:fixed;left:calc(50% + 170px);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:14px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
   <div style="font-size:1.15rem;font-weight:900;line-height:1"><svg class="ik ik-s" aria-hidden="true"><use href="#i-gauge"/></svg> <span id="spNum">0</span> <span style="font-size:.7rem;opacity:.7">km/h</span></div>
-  <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:4px;overflow:hidden"><div id="spBar" style="height:100%;width:0;background:#3ad0ff;border-radius:3px"></div></div>
+  <div style="height:5px;background:rgba(255,255,255,.15);border-radius:8px;margin-top:4px;overflow:hidden"><div id="spBar" style="height:100%;width:0;background:#3ad0ff;border-radius:8px"></div></div>
 </div>
 <div id="achPanel" style="position:fixed;inset:0;z-index:27;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.6)">
-  <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:16px;max-width:420px;width:92vw;max-height:80vh;overflow-y:auto">
+  <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:14px;padding:16px;max-width:420px;width:92vw;max-height:80vh;overflow-y:auto">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <b style="font-size:1.1rem;color:#5a4a30">🏆 Erfolge</b>
       <span id="hausWertTxt" style="font-size:.85rem;color:#b8862a;font-weight:800"></span>
-      <button id="achClose" style="border:0;background:#e8e0d0;border-radius:10px;width:36px;height:36px;font-size:1rem;cursor:pointer">✕</button>
+      <button id="achClose" style="border:0;background:#e8e0d0;border-radius:14px;width:36px;height:36px;font-size:1rem;cursor:pointer">✕</button>
     </div>
-    <div id="questTxt" style="margin-top:10px;padding:9px 12px;border-radius:10px;background:#fff4dc;border:1px dashed #d8a84a;font-size:.85rem;color:#7a5a20"></div>
-    <button id="hetzeBtn" style="margin-top:10px;width:100%;border:0;border-radius:12px;padding:12px;min-height:44px;font-weight:900;font-size:.95rem;cursor:pointer;color:var(--tinte);background:var(--creme)"></button>
+    <div id="questTxt" style="margin-top:10px;padding:9px 12px;border-radius:14px;background:#fff4dc;border:1px dashed #d8a84a;font-size:.85rem;color:#7a5a20"></div>
+    <button id="hetzeBtn" style="margin-top:10px;width:100%;border:0;border-radius:14px;padding:12px;min-height:44px;font-weight:900;font-size:.95rem;cursor:pointer;color:var(--tinte);background:var(--creme)"></button>
     <div id="achList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px"></div>
   </div>
 </div>
 <div id="hetzePanel" style="position:fixed;inset:0;z-index:29;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.66)">
-  <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:20px 22px;text-align:center;max-width:340px;width:88vw">
+  <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:14px;padding:20px 22px;text-align:center;max-width:340px;width:88vw">
     <div id="hetzeErg" style="color:#5a4a30"></div>
     <div style="display:flex;gap:10px;margin-top:15px">
-      <button id="hetzeNochmal" style="flex:1;border:0;border-radius:12px;padding:13px 10px;min-height:44px;font-weight:900;font-size:1rem;cursor:pointer;color:var(--tinte);background:var(--creme)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg> Nochmal</button>
-      <button id="hetzeZu" style="border:0;border-radius:12px;padding:13px 16px;min-height:44px;font-weight:800;cursor:pointer;background:#e8e0d0">Schluss</button>
+      <button id="hetzeNochmal" style="flex:1;border:0;border-radius:14px;padding:13px 10px;min-height:44px;font-weight:900;font-size:1rem;cursor:pointer;color:var(--tinte);background:var(--creme)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg> Nochmal</button>
+      <button id="hetzeZu" style="border:0;border-radius:14px;padding:13px 16px;min-height:44px;font-weight:800;cursor:pointer;background:#e8e0d0">Schluss</button>
     </div>
   </div>
 </div>
 <div id="mg" style="position:fixed;inset:0;z-index:28;display:none;align-items:center;justify-content:center;flex-direction:column;background:rgba(20,15,30,.82)">
-  <div style="background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;padding:18px 22px;text-align:center;max-width:340px">
+  <div style="background:#fffdf6;border:3px solid #ffcf3a;border-radius:14px;padding:18px 22px;text-align:center;max-width:340px">
     <div id="mgTitle" style="font-weight:900;font-size:1.1rem;color:#5a4a30">🎯 Timing!</div>
     <div id="mgSub" style="font-size:.85rem;color:#8a7a5a;margin:4px 0 10px">Stoppe den Zeiger im grünen Bereich</div>
-    <canvas id="mgCv" width="280" height="46" style="border-radius:10px"></canvas>
+    <canvas id="mgCv" width="280" height="46" style="border-radius:14px"></canvas>
     <div id="mgScore" style="font-weight:800;margin-top:8px;color:#c05a2a">Runde 1/3</div>
     <button id="mgBtn" class="btn" style="margin-top:10px;padding:12px 40px">STOPP!</button>
   </div>
@@ -441,7 +441,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> leben ihr eigenes Leben — sie kochen, angeln, tanzen und erkunden die Stadt. Alle 4 Tage kommt die <b>Bauabnahme</b>: besteh sie und steig von der Hütte bis zum Palast auf. Tag- und Nachtwechsel inklusive.</p>
   <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reisst ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
-  <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
+  <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
   <button class="btn" id="soloBtn">Solo bauen ▶</button>
@@ -467,7 +467,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 
 <div id="introCard" style="position:fixed;inset:0;z-index:65;display:none;align-items:center;justify-content:center;background:rgba(20,25,35,.74);padding:20px">
-  <div style="background:#fffdf7;border-radius:22px;max-width:430px;width:92vw;padding:24px 22px;text-align:center;box-shadow:0 20px 60px rgba(20,30,50,.5)">
+  <div style="background:#fffdf7;border-radius:14px;max-width:430px;width:92vw;padding:24px 22px;text-align:center;box-shadow:0 20px 60px rgba(20,30,50,.5)">
     <div style="font-size:1.5rem;font-weight:900;color:#e8722a">👋 Willkommen im Traumhaus!</div>
     <div style="font-size:.9rem;color:#6a7a8a;margin:6px 0 16px">So einfach geht's los:</div>
     <div style="text-align:left;display:flex;flex-direction:column;gap:13px;font-size:1.02rem;color:#3a4a5a;line-height:1.35">
@@ -475,21 +475,21 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
       <div>🔨 <b>Bauen</b> — „Bauen" tippen → etwas wählen → aufs Grundstück tippen</div>
       <div>💰 <b>Geld verdienen</b> — die Aufträge vom Stadtpräsidenten erfüllen</div>
       <div>👫 <b>Tipp auf Max/Mia</b> — Kamera folgt. Herd = 🍳 Kochen, Teich = 🎣 Angeln</div>
-      <div style="margin-top:8px;padding:9px 11px;border-radius:10px;background:#fff4dc;border:1px dashed #d8a84a">
+      <div style="margin-top:8px;padding:9px 11px;border-radius:14px;background:#fff4dc;border:1px dashed #d8a84a">
         🏅 <b>Dein Ziel: die Bauabnahme.</b> Alle 4 Tage kommt der Inspektor und prüft
         <b>Hauswert</b>, <b>Wohnbereiche</b> und die <b>Laune deiner Bewohner</b>.
         Bestehst du, steigst du eine Wohnstufe auf — von der Hütte bis zum Palast —
         und verdienst dauerhaft mehr. Oben rechts steht immer, was noch fehlt.</div>
     </div>
-    <button id="introOk" style="margin-top:20px;border:0;border-radius:40px;padding:14px 42px;font-size:1.12rem;font-weight:900;color:#fff;background:var(--bern);cursor:pointer;min-height:48px;box-shadow:0 8px 24px rgba(232,90,160,.4)">Los geht's! ▶</button>
+    <button id="introOk" style="margin-top:20px;border:0;border-radius:14px;padding:14px 42px;font-size:1.12rem;font-weight:900;color:#fff;background:var(--bern);cursor:pointer;min-height:48px;box-shadow:0 8px 24px rgba(232,90,160,.4)">Los geht's! ▶</button>
   </div>
 </div>
 <div id="crimeWahl" style="position:fixed;inset:0;z-index:28;display:none;align-items:center;justify-content:center;background:rgba(20,15,30,.82)">
-  <div style="background:#fffdf6;border:3px solid #7a5aa8;border-radius:18px;padding:18px 20px;text-align:center;max-width:360px;width:90vw;box-shadow:0 16px 44px rgba(30,15,45,.5)">
+  <div style="background:#fffdf6;border:3px solid #7a5aa8;border-radius:14px;padding:18px 20px;text-align:center;max-width:360px;width:90vw;box-shadow:0 16px 44px rgba(30,15,45,.5)">
     <div style="font-size:1.15rem;font-weight:900;color:#5a3a6e">🕶️ Welches krumme Ding?</div>
     <div style="font-size:.8rem;color:#8a6a9a;margin:4px 0 12px">Risiko steigt mit der Beute</div>
     <div id="crimeWahlBtns" style="display:flex;flex-direction:column;gap:8px"></div>
-    <button id="crimeWahlAbbr" style="margin-top:14px;border:0;background:#e8e0e8;border-radius:12px;padding:11px 22px;font-weight:800;cursor:pointer;color:#6a5a7a;min-height:44px">Abbrechen</button>
+    <button id="crimeWahlAbbr" style="margin-top:14px;border:0;background:#e8e0e8;border-radius:14px;padding:11px 22px;font-weight:800;cursor:pointer;color:#6a5a7a;min-height:44px">Abbrechen</button>
   </div>
 </div>
 <script src="/js/vendor/three.min.js"></script>
@@ -10777,7 +10777,7 @@ function komboHudUpd(){
   el.innerHTML='<div style="display:flex;align-items:center;gap:8px">'+
     '<span style="font-size:1.05rem;font-weight:900">🔥 '+KOMBO.n+'</span>'+
     '<span style="font-weight:900;color:#ffd166">x'+komboMult().toFixed(2).replace(/0$/,"")+'</span>'+
-    '</div><div style="margin-top:4px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden">'+
+    '</div><div style="margin-top:4px;height:5px;border-radius:8px;background:rgba(255,255,255,.25);overflow:hidden">'+
     '<div style="height:100%;width:'+(anteil*100).toFixed(0)+'%;background:'+(eng?"#ff6b5a":"#ffd166")+
     ';transition:width .12s linear"></div></div>';
   el.style.animation=eng?"komboPuls .6s infinite":"none";}
@@ -10862,7 +10862,7 @@ function hetzeVerlauf(){
   for(var i=0;i<L.length;i++){
     var hoch=Math.max(4,Math.round(L[i]/max*34)),letzt=(i===L.length-1);
     h+='<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px">'+
-       '<div style="width:100%;height:'+hoch+'px;border-radius:4px 4px 0 0;background:'+
+       '<div style="width:100%;height:'+hoch+'px;border-radius:8px 8px 0 0;background:'+
        (letzt?"#d4802a":(L[i]>=max?"#e8b04a":"#cfc4ae"))+'"></div>'+
        '<small style="font-size:.62rem;color:#8a7a5a">'+L[i]+'</small></div>';}
   return '<div style="margin-top:12px"><small style="color:#8a7a5a;font-weight:800">Deine letzten '+
@@ -10898,7 +10898,7 @@ function hetzeHudUpd(){
     (HETZE.best>0&&HETZE.punkte<HETZE.best&&HETZE.punkte>=HETZE.best*0.5
       ?'<span style="font-weight:900;color:#ff9f45">· noch '+(HETZE.best-HETZE.punkte)+' $</span>'
       :(HETZE.best>0&&HETZE.punkte>=HETZE.best?'<span style="font-weight:900;color:#8fe08f">· REKORD!</span>':''))+
-    '</div><div style="margin-top:4px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden">'+
+    '</div><div style="margin-top:4px;height:5px;border-radius:8px;background:rgba(255,255,255,.25);overflow:hidden">'+
     '<div style="height:100%;width:'+(anteil*100).toFixed(0)+'%;background:'+(eng?"#ff6b5a":"#e8a33d")+
     ';transition:width .12s linear"></div></div>';
   el.style.animation=eng?"komboPuls .6s infinite":"none";}
@@ -11178,7 +11178,7 @@ function tagesReport(){
   var at=Math.max(0,naechsteAbnahme-tag);
   var el=document.createElement("div");
   el.style.cssText="position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:66;"+
-    "background:#fffdf6;border:3px solid #e8b04a;border-radius:16px;padding:11px 17px;"+
+    "background:#fffdf6;border:3px solid #e8b04a;border-radius:14px;padding:11px 17px;"+
     "box-shadow:0 12px 36px rgba(40,30,10,.35);font-size:.95rem;color:#5a4a30;max-width:92vw;text-align:center;cursor:pointer";
   el.innerHTML="<b style='color:#e8722a'>🌅 Tag "+tag+"</b> · gestern: 💰 "+(gd>=0?"+":"")+Math.round(gd)+" $ · 🎯 "+md+"/3 Missionen"
     +(st>=2?" · 🔥"+st+" Tage":"")
@@ -11871,12 +11871,12 @@ function onNetMsg(m){
       var alt9=document.getElementById("crimeAskOv");if(alt9)alt9.remove();
       var ov=document.createElement("div");ov.id="crimeAskOv";
       ov.style.cssText="position:fixed;left:50%;top:38%;transform:translate(-50%,-50%);z-index:80;"+
-        "background:#1e1e2e;color:#fff;border:2px solid #7a1a3a;border-radius:16px;padding:16px 18px;"+
+        "background:#1e1e2e;color:#fff;border:2px solid #7a1a3a;border-radius:14px;padding:16px 18px;"+
         "max-width:320px;width:92vw;text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.5)";
       ov.innerHTML="<div style='font-weight:900;margin-bottom:10px'>🕶️ "+String(m.n).slice(0,12).replace(/[<>&]/g,"")+
         " plant: "+CRIMES[jj].e+" "+CRIMES[jj].n+"</div><div style='font-size:.9rem;color:#c8c8d8;margin-bottom:12px'>Als Komplize mitmachen? (Mehr Beute, bessere Chancen!)</div>"+
-        "<button id='caJa' style='border:0;border-radius:10px;padding:10px 22px;font-weight:900;background:#7a1a3a;color:#fff;margin-right:10px;min-height:42px'>Mitmachen</button>"+
-        "<button id='caNein' style='border:0;border-radius:10px;padding:10px 22px;font-weight:900;background:#3a3a4a;color:#fff;min-height:42px'>Lieber nicht</button>";
+        "<button id='caJa' style='border:0;border-radius:14px;padding:10px 22px;font-weight:900;background:#7a1a3a;color:#fff;margin-right:10px;min-height:42px'>Mitmachen</button>"+
+        "<button id='caNein' style='border:0;border-radius:14px;padding:10px 22px;font-weight:900;background:#3a3a4a;color:#fff;min-height:42px'>Lieber nicht</button>";
       document.body.appendChild(ov);
       var fertig=false,weg=function(ja){if(fertig)return;fertig=true;ov.remove();
         netSend(ja?{t:"crimeJoin",j:jj}:{t:"crimeNo"});};
@@ -14782,7 +14782,7 @@ function kochRound(){
     document.getElementById("kochSub").textContent="Tippe die Zutaten in der richtigen Reihenfolge!";
     var bx=document.getElementById("kochBtns");
     ZUTATEN.forEach(function(z){var b=document.createElement("button");
-      b.textContent=z;b.style.cssText="border:2px solid #e0d4b8;background:#fff;border-radius:12px;width:52px;height:52px;font-size:1.5rem;cursor:pointer";
+      b.textContent=z;b.style.cssText="border:2px solid #e0d4b8;background:#fff;border-radius:14px;width:52px;height:52px;font-size:1.5rem;cursor:pointer";
       b.onclick=function(){kochTap(z);};bx.appendChild(b);});
   },1700+len*400);}
 function kochTap(z){
@@ -14866,9 +14866,9 @@ document.getElementById("achBtn").onclick=function(){
        steht voll da. Vorher lagen alle 40 gleich blass nebeneinander. */
     var st3=ok3?null:achStand(a3[0]);
     var kl3=ok3?1:(st3?(st3.rest===1?0.95:0.72):0.55);
-    d3.style.cssText="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:"+(ok3?"#f0f8e8":(st3&&st3.rest===1?"#fdf1dd":"#f5f2ea"))+";opacity:"+kl3;
+    d3.style.cssText="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:14px;background:"+(ok3?"#f0f8e8":(st3&&st3.rest===1?"#fdf1dd":"#f5f2ea"))+";opacity:"+kl3;
     var bar3=st3?("<div style='margin-top:5px;display:flex;align-items:center;gap:7px'>"+
-      "<div style='flex:1;min-width:60px;height:6px;border-radius:3px;background:rgba(120,110,80,.22);overflow:hidden'>"+
+      "<div style='flex:1;min-width:60px;height:6px;border-radius:8px;background:rgba(120,110,80,.22);overflow:hidden'>"+
       "<div style='height:100%;width:"+Math.round(st3.ist/st3.soll*100)+"%;background:"+(st3.rest===1?"#e8a33d":"#8fb86a")+"'></div></div>"+
       "<small style='color:#8a7a5a;font-weight:800;white-space:nowrap'>"+st3.ist+"/"+st3.soll+"</small></div>"):"";
     d3.innerHTML="<span style='font-size:1.4rem'>"+(ok3?a3[1]:"🔒")+"</span><span style='flex:1;min-width:0'><b>"+a3[2]+"</b><br><small style='color:#8a7a5a'>"+a3[3]+"</small>"+bar3+"</span>"+(ok3?"<span style='margin-left:auto;color:#5ab86a;font-weight:800'>✓</span>":"");
@@ -14969,7 +14969,7 @@ document.getElementById("crimeBtn").onclick=function(){
   var box=document.getElementById("crimeWahlBtns");box.innerHTML="";
   for(var i=0;i<=maxJob;i++){(function(ji){var c=CRIMES[ji];
     var b=document.createElement("button");
-    b.style.cssText="border:0;border-radius:12px;padding:13px 14px;font-weight:800;cursor:pointer;font-size:.95rem;color:#fff;background:linear-gradient(90deg,#5a3a6e,#8a4a8e);text-align:left;min-height:44px;box-shadow:0 4px 12px rgba(60,30,80,.3)";
+    b.style.cssText="border:0;border-radius:14px;padding:13px 14px;font-weight:800;cursor:pointer;font-size:.95rem;color:#fff;background:linear-gradient(90deg,#5a3a6e,#8a4a8e);text-align:left;min-height:44px;box-shadow:0 4px 12px rgba(60,30,80,.3)";
     b.innerHTML=c.e+" "+c.n+" <span style='float:right;color:#ffd9a0;font-weight:900'>~"+Math.round(c.base*(1+lv*0.4))+" $</span>";
     b.onclick=function(){document.getElementById("crimeWahl").style.display="none";crimeGo(ji);};
     box.appendChild(b);})(i);}
@@ -15118,7 +15118,7 @@ document.getElementById("soloBtn").onclick=function(){
   function kn(emoji,titel,sub,modus,farbe){
     return "<button data-m='"+modus+"' style=\"display:block;width:100%;margin:7px 0;border:0;border-radius:14px;padding:13px 15px;text-align:left;cursor:pointer;background:"+farbe+";min-height:52px\">"+
       "<span style='font-size:1.05rem;font-weight:900'>"+emoji+" "+titel+"</span><br><span style='font-size:.85rem;color:#4a5a6a'>"+sub+"</span></button>";}
-  mw.innerHTML="<div style='background:#fffdf7;border-radius:20px;max-width:420px;width:94vw;padding:20px;box-shadow:0 20px 60px rgba(20,30,50,.5)'>"+
+  mw.innerHTML="<div style='background:#fffdf7;border-radius:14px;max-width:420px;width:94vw;padding:20px;box-shadow:0 20px 60px rgba(20,30,50,.5)'>"+
     "<div style='font-size:1.3rem;font-weight:900;color:#e8722a;text-align:center;margin-bottom:8px'>🎮 Wie willst du spielen?</div>"+
     kn("🏡","Klassisch","Das volle Spiel — bauen, Familie, Karriere, Bauabnahmen.","klassisch","#eef6ff")+
     kn("🏁","Sprint","Schaffst du die Traumvilla bis Tag 20? Danach entspannt weiter.","sprint","#fff4dc")+
@@ -15164,7 +15164,7 @@ function lobbyNamenUpd(){
   if(!LOBBY.spieler.length){el.innerHTML="";return;}
   el.innerHTML="<div style='font-weight:800;color:#2a6ab0;margin-bottom:4px'>👥 Im Raum:</div>"+
     LOBBY.spieler.map(function(n,i){
-      return "<div style='padding:5px 10px;background:#fff8ec;border:2px solid #f0c8a0;border-radius:10px;margin-bottom:5px'>"+
+      return "<div style='padding:5px 10px;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;margin-bottom:5px'>"+
              (i===0?"👑 ":"🙋 ")+String(n).replace(/[<>&]/g,"")+"</div>";}).join("");}
 function lobbyStartKnopf(an){
   var b=document.getElementById("mpStartBtn");if(b)b.style.display=an?"inline-block":"none";}
@@ -16171,7 +16171,7 @@ window.__th={
 };
 })();
 </script>
-<div id="aban-recht" style="position:fixed;left:50%;transform:translateX(-50%);bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:7px"><a href="/suchmaschine.html">Suche</a>
+<div id="aban-recht" style="position:fixed;left:50%;transform:translateX(-50%);bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:8px"><a href="/suchmaschine.html">Suche</a>
 <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
 </body>
 </html>

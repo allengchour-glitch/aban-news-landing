@@ -28,11 +28,11 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dk)}
-:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:8px}
 header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
 .brand{font-weight:800;color:var(--amber);text-decoration:none}
-.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:9px;border:0;cursor:pointer;font-size:.95rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:8px;border:0;cursor:pointer;font-size:.95rem}
 .btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
 .hero{padding:40px 0 6px;text-align:center}
 .hero h1{font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:12px}
@@ -41,17 +41,17 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .controls{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:26px 0 8px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:620px){.controls{grid-template-columns:1fr}}
 .field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
-select{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+select{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
 .checks{grid-column:1/-1;display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem;color:var(--ink2)}
 .checks label{display:flex;gap:7px;align-items:center;cursor:pointer}
 .count{color:var(--muted);font-size:.9rem;margin:10px 2px}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 8px}
 @media(max-width:620px){.cards{grid-template-columns:1fr}}
-.tool{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px;display:flex;flex-direction:column}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column}
 .tool .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .tool h3{font-size:1.12rem;margin:0}
 .tool .vendor{color:var(--muted);font-size:.82rem}
-.score{flex-shrink:0;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:4px 9px;font-weight:800;color:var(--amber-dk);font-size:.95rem;text-align:center;line-height:1.1}
+.score{flex-shrink:0;background:var(--cream);border:1px solid var(--amber-lt);border-radius:14px;padding:4px 9px;font-weight:800;color:var(--amber-dk);font-size:.95rem;text-align:center;line-height:1.1}
 .score small{display:block;font-weight:600;color:var(--muted);font-size:.62rem}
 .badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 8px}
 .bdg{font-size:.74rem;font-weight:700;border-radius:999px;padding:3px 9px;background:var(--field);border:1px solid var(--line);color:var(--ink2)}
@@ -63,9 +63,9 @@ select{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1
 .tool .go{margin-top:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .tool .go a{font-weight:700;font-size:.9rem}
 .alt{color:var(--muted);font-size:.8rem}
-.empty{text-align:center;color:var(--muted);padding:30px;background:var(--card);border:1px dashed var(--line);border-radius:12px}
+.empty{text-align:center;color:var(--muted);padding:30px;background:var(--card);border:1px dashed var(--line);border-radius:14px}
 .disc{color:var(--muted);font-size:.82rem;margin:14px 0;text-align:center}
-.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:24px;text-align:center}
 .band h2{font-size:1.25rem;margin-bottom:8px}.band p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}
@@ -80,7 +80,7 @@ footer a{color:var(--muted)}
     <h1><span class="a">Welche KI</span> für was?</h1>
     <p>Sag, was du brauchst — bekomm die passende KI. <b>über 175 Tools ehrlich bewertet</b> (Worth-it-Score, Preis, DSGVO), kein Affiliate-Hype, fokussiert auf DACH.</p>
   </section>
-<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Hilft dir, für deine Aufgabe das passende KI-Tool zu finden.</p>
+<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Hilft dir, für deine Aufgabe das passende KI-Tool zu finden.</p>
 
   <div class="controls">
     <div class="field">

@@ -41,8 +41,8 @@
     position: relative; overflow: hidden; transition: background .12s;
     box-shadow: inset 0 0 60px rgba(255,255,255,.16);
   }
-  .pane.top { border-radius: 0 0 26px 26px; }
-  .pane.bottom { border-radius: 26px 26px 0 0; }
+  .pane.top { border-radius: 0 0 14px 14px; }
+  .pane.bottom { border-radius: 14px 14px 0 0; }
   #p1 { background: linear-gradient(180deg, #f2867b, #e8574a); }  /* Spieler 1 = Rot */
   #p2 { background: linear-gradient(0deg, #3a7dd8, #5f97e4); }    /* Spieler 2 = Blau */
   .pane.armed { background: linear-gradient(180deg, #c8f8ce, #a9efb4) !important; } /* bereit, aber noch nicht grün */
@@ -66,14 +66,14 @@
     padding: 0 16px; pointer-events: none; z-index: 20;
   }
   .score {
-    background: #fffdf6; border-radius: 16px; padding: 6px 14px;
+    background: #fffdf6; border-radius: 14px; padding: 6px 14px;
     font-weight: 900; font-size: 18px; box-shadow: 0 4px 14px rgba(40,90,150,.22);
     min-width: 62px; text-align: center;
   }
   .score.p1 { color: #e8574a; transform: rotate(180deg); }
   .score.p2 { color: #3a7dd8; }
   #round {
-    background: #274b63; color:#fff; border-radius: 20px; padding: 8px 16px;
+    background: #274b63; color:#fff; border-radius: 14px; padding: 8px 16px;
     font-weight: 900; font-size: 15px; box-shadow: 0 4px 14px rgba(40,90,150,.3);
   }
 
@@ -84,14 +84,14 @@
     background: linear-gradient(160deg, #bce6ff, #dff2ff, #eaf7ff); padding: 24px;
   }
   .card {
-    background: #fffdf6; border-radius: 26px; padding: 26px 22px; max-width: 420px; width: 100%;
+    background: #fffdf6; border-radius: 14px; padding: 26px 22px; max-width: 420px; width: 100%;
     box-shadow: 0 16px 40px rgba(20,60,110,.25);
   }
   .card h1 { font-size: 30px; margin-bottom: 8px; color: #2f6db3; text-shadow: 0 2px 0 rgba(255,255,255,.9); }
   .card p { font-size: 16px; line-height: 1.5; margin-bottom: 14px; color: #456; }
   .big { font-size: 46px; margin-bottom: 6px; }
   .btn {
-    background: linear-gradient(180deg, #ffd75e, #ffcf3a 55%, #ff8c2a); border: none; border-radius: 18px;
+    background: linear-gradient(180deg, #ffd75e, #ffcf3a 55%, #ff8c2a); border: none; border-radius: 14px;
     padding: 15px 26px; font-size: 20px; font-weight: 900; color: #5a3600;
     min-height: 46px; cursor: pointer;
     box-shadow: 0 4px 14px rgba(255,140,42,.4), inset 0 1px 0 rgba(255,255,255,.5); margin-top: 8px;
@@ -100,7 +100,7 @@
   .hidden { display: none !important; }
   .flag { display:flex; gap:8px; justify-content:center; margin-bottom:12px; font-size:26px; }
   .confetti {
-    position: fixed; top: -16px; z-index: 55; border-radius: 3px; pointer-events: none;
+    position: fixed; top: -16px; z-index: 55; border-radius: 8px; pointer-events: none;
     animation: cfall linear forwards;
   }
   @keyframes cfall { to { transform: translateY(112vh) rotate(720deg); } }
@@ -296,6 +296,6 @@
   document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
 })();
 </script>
-<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:7px"><a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
+<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:8px"><a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
 </body>
 </html>

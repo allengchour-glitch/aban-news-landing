@@ -20,7 +20,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <style>
-    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:8px}
     *,*::before,*::after{box-sizing:border-box;margin:0}
     :root{--bg:#fffbf5;--card:#fff;--ink:#1c2530;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--line:#ece6db;--r:16px;--shadow:0 6px 22px rgba(28,37,48,.09)}
     html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -37,7 +37,7 @@
     .brand{display:flex;align-items:center;gap:.45rem;font-weight:800;font-size:1.1rem;text-decoration:none;color:var(--ink)}
     nav a{margin-left:1.1rem;color:var(--muted);text-decoration:none;font-size:.9rem}
     nav a:hover{color:var(--ink)}
-    .nav-cta{background:var(--amber-dk);color:#fff!important;padding:.5rem .9rem;border-radius:10px;font-weight:700}
+    .nav-cta{background:var(--amber-dk);color:#fff!important;padding:.5rem .9rem;border-radius:14px;font-weight:700}
 
     .breadcrumb{max-width:1080px;margin:0 auto;padding:.7rem 1.15rem;font-size:.82rem;color:var(--muted)}
     .breadcrumb a{color:var(--muted);text-decoration:none}
@@ -59,7 +59,7 @@
 
     /* Section heading */
     .sec-h{display:flex;align-items:center;gap:.6rem;margin:2.2rem 0 1.1rem;font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
-    .sec-h::after{content:"";flex:1;height:2px;background:var(--line);border-radius:2px}
+    .sec-h::after{content:"";flex:1;height:2px;background:var(--line);border-radius:8px}
 
     /* Story card */
     .story{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:1.3rem;box-shadow:0 1px 2px rgba(28,37,48,.04),0 8px 22px rgba(28,37,48,.06);transition:transform .18s,box-shadow .18s}
@@ -84,7 +84,7 @@
     .prompt-card{background:#1c2530;border-radius:var(--r);padding:1.2rem 1.3rem;margin-bottom:1rem;color:#e6ebf1}
     .prompt-card h3{color:#fff;font-size:1.2rem;margin-bottom:.6rem}
     .prompt-card p{font-size:.95rem;color:#aeb8c4;margin-bottom:.8rem}
-    .prompt-card pre{background:#0f1620;border:1px solid #2a3543;border-radius:10px;padding:1rem;overflow-x:auto;font-size:.86rem;line-height:1.55}
+    .prompt-card pre{background:#0f1620;border:1px solid #2a3543;border-radius:14px;padding:1rem;overflow-x:auto;font-size:.86rem;line-height:1.55}
     .prompt-card code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#e6ebf1;white-space:pre-wrap}
     .prompt-card .why{font-size:.88rem;color:#aeb8c4;margin-top:.8rem;margin-bottom:0}
 
@@ -93,13 +93,13 @@
 
     .endcta{text-align:center;padding:1rem 0 .5rem}
     .endcta p{color:var(--muted);margin-bottom:.9rem}
-    .btn-lg{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:800;font-size:1.05rem;padding:.95rem 1.8rem;border-radius:12px;box-shadow:0 10px 26px rgba(180,83,9,.3)}
+    .btn-lg{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:800;font-size:1.05rem;padding:.95rem 1.8rem;border-radius:14px;box-shadow:0 10px 26px rgba(180,83,9,.3)}
 
     /* Related */
     .related{max-width:1080px;margin:2rem auto 0;padding:1.6rem 1.15rem;border-top:1px solid var(--line)}
     .related h2{font-size:1rem;color:var(--muted);margin-bottom:.8rem}
     .rel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .rel-cards a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;color:var(--ink)}
+    .rel-cards a{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;text-decoration:none;color:var(--ink)}
     .rel-cards a:hover{border-color:var(--amber)}
     .rel-cards strong{display:block;font-size:.95rem;margin-bottom:.2rem}
     .rel-cards span{font-size:.82rem;color:var(--muted)}
@@ -286,12 +286,12 @@ Output: nur der neue Satz + Begründung in einem Halbsatz.</code></pre>
       <p class="refer-ok" id="shMsg" role="status" aria-live="polite"></p>
     </div>
     <style>
-      .refer-box{background:#fff;border:1px solid #ece6db;border-radius:16px;padding:1.25rem 1.4rem;margin:1.5rem 0;box-shadow:0 6px 18px rgba(28,37,48,.08)}
+      .refer-box{background:#fff;border:1px solid #ece6db;border-radius:14px;padding:1.25rem 1.4rem;margin:1.5rem 0;box-shadow:0 6px 18px rgba(28,37,48,.08)}
       .refer-h{margin:0 0 .4rem;font-size:1.15rem}
       .refer-p{margin:0;color:#3b4654;line-height:1.5}
       .refer-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
       .refer-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #ece6db;background:#fff;
-        color:#b45309;font-weight:700;font-size:.92rem;line-height:1;padding:.65rem .95rem;border-radius:10px;
+        color:#b45309;font-weight:700;font-size:.92rem;line-height:1;padding:.65rem .95rem;border-radius:14px;
         text-decoration:none;cursor:pointer;font-family:inherit;transition:transform .12s ease,border-color .12s ease}
       .refer-btn:hover{transform:translateY(-1px);border-color:#d97706}
       .refer-btn:focus-visible{outline:3px solid #d97706;outline-offset:2px}

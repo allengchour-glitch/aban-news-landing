@@ -33,7 +33,7 @@
   /* Ein Spieler-Halbfeld */
   .half{
     flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    position:relative;padding:8px;overflow:hidden;border-radius:18px;
+    position:relative;padding:8px;overflow:hidden;border-radius:14px;
     box-shadow:0 4px 14px rgba(40,90,150,.12), inset 0 0 0 2px rgba(255,255,255,.55);
   }
   .top{transform:rotate(180deg);background:
@@ -43,7 +43,7 @@
     radial-gradient(120% 100% at 50% 100%,rgba(255,255,255,.5),rgba(255,255,255,0) 65%),
     linear-gradient(0deg,#f9d3ce,#fbe3e0);}
   .divider{
-    height:8px;border-radius:4px;background:linear-gradient(90deg,#ffcf3a,#ff8c2a,#ffcf3a);
+    height:8px;border-radius:8px;background:linear-gradient(90deg,#ffcf3a,#ff8c2a,#ffcf3a);
     flex:0 0 auto;box-shadow:0 2px 8px rgba(255,140,42,.4);
   }
 
@@ -56,14 +56,14 @@
   .pips{font-size:16px;letter-spacing:2px;margin-bottom:8px;min-height:20px;opacity:.85}
   .question{
     font-size:min(11vw,46px);font-weight:900;margin-bottom:12px;
-    background:#fffdf6;border-radius:18px;padding:8px 24px;
+    background:#fffdf6;border-radius:14px;padding:8px 24px;
     box-shadow:0 4px 14px rgba(40,90,150,.15);
   }
   .answers{
     display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:340px;
   }
   .ans{
-    border:none;border-radius:16px;padding:16px 6px;min-height:56px;
+    border:none;border-radius:14px;padding:16px 6px;min-height:56px;
     font-size:min(7vw,26px);font-weight:bold;color:#fff;cursor:pointer;
     text-shadow:0 1px 3px rgba(0,0,0,.25);
     box-shadow:0 4px 0 rgba(0,0,0,.14), 0 6px 14px rgba(40,90,150,.18);
@@ -94,14 +94,14 @@
   }
   #end.show{display:flex}
   .card{
-    background:#fffdf6;border-radius:24px;padding:30px 26px;max-width:360px;width:100%;
+    background:#fffdf6;border-radius:14px;padding:30px 26px;max-width:360px;width:100%;
     box-shadow:0 14px 34px rgba(40,90,150,.22);
   }
   .card .emoji{font-size:76px;margin-bottom:10px}
   .card h1{font-size:34px;margin-bottom:10px;color:#0d3b66}
   .card p{font-size:18px;margin-bottom:22px;color:#41597a;line-height:1.45}
   #end button, #startBtn{
-    border:none;border-radius:18px;padding:16px 32px;font-size:22px;font-weight:bold;
+    border:none;border-radius:14px;padding:16px 32px;font-size:22px;font-weight:bold;
     color:#fff;background:linear-gradient(180deg,#ffcf3a,#ff8c2a);
     text-shadow:0 1px 3px rgba(140,60,0,.35);
     box-shadow:0 6px 16px rgba(255,140,42,.45);cursor:pointer;min-height:56px;

@@ -74,7 +74,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px}
 a{color:var(--amber-dark)}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
 .skip{position:absolute;left:-9999px;top:0;background:var(--amber-dark);color:var(--btn-fg);padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
 .skip:focus{left:0}
 header.site{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -93,13 +93,13 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .tool{padding:8px 20px 16px}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
 label.fld{display:block;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink-soft)}
-textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--field-bg);color:var(--ink)}
+textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--field-bg);color:var(--ink)}
 textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .row .count{margin-left:auto;font-size:13px;color:var(--muted)}
 .count.warn{color:var(--err-fg);font-weight:600}
 .kbdhint{font-size:12px;color:var(--muted);margin-top:8px}
-.kbd{display:inline-block;font:inherit;font-size:11px;line-height:1;padding:3px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:var(--bg);color:var(--ink-soft)}
+.kbd{display:inline-block;font:inherit;font-size:11px;line-height:1;padding:3px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:8px;background:var(--bg);color:var(--ink-soft)}
 .restored{display:none;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
 .restored.show{display:flex}
 .linkbtn{font:inherit;font-size:13px;background:none;border:none;color:var(--amber-dark);cursor:pointer;text-decoration:underline;padding:4px 6px;min-height:24px}
@@ -123,12 +123,12 @@ textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
 .verdict h2{font-size:20px;margin-bottom:4px}
 .verdict p{color:var(--ink-soft);font-size:15px}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:16px 0}
-.metric{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.metric{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px}
 .metric .v{font-size:22px;font-weight:800;line-height:1}
 .metric .k{font-size:12px;color:var(--muted);margin-top:3px}
 h3.sec{font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:22px 0 10px}
-.highlight{line-height:1.9;font-size:15px;background:var(--field-bg);border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;word-break:break-word}
-mark{border-radius:4px;padding:0 3px;font-weight:600;cursor:help}
+.highlight{line-height:1.9;font-size:15px;background:var(--field-bg);border:1px solid var(--line);border-radius:14px;padding:16px;white-space:pre-wrap;word-break:break-word}
+mark{border-radius:8px;padding:0 3px;font-weight:600;cursor:help}
 mark.superlativ,mark.versprechen{background:var(--mark-sup-bg);color:var(--mark-sup-fg)}
 mark.buzzword{background:var(--mark-buzz-bg);color:var(--mark-buzz-fg)}
 mark.intensivierer,mark.füllwort{background:var(--mark-int-bg);color:var(--mark-int-fg)}
@@ -136,9 +136,9 @@ mark.passiv{background:var(--mark-pas-bg);color:var(--mark-pas-fg)}
 mark.interpunktion{background:var(--mark-itp-bg);color:var(--mark-itp-fg)}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
-.swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+.swatch{width:12px;height:12px;border-radius:8px;display:inline-block}
 .cats{display:grid;gap:10px}
-.cat{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--card)}
+.cat{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--card)}
 .cat .ch{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .cat .ct{font-weight:700;font-size:14px}
 .badge{background:var(--cream);color:var(--amber-dark);font-weight:700;font-size:12px;border-radius:999px;padding:2px 10px}
@@ -147,7 +147,7 @@ mark.interpunktion{background:var(--mark-itp-bg);color:var(--mark-itp-fg)}
 .cat li b{color:var(--ink)}
 ul.tips{margin:6px 0 0;padding-left:18px}
 ul.tips li{margin:6px 0;font-size:15px}
-.rewrite{background:var(--field-bg);border:1px solid var(--line);border-radius:10px;padding:16px;white-space:pre-wrap;font-size:15px;line-height:1.7}
+.rewrite{background:var(--field-bg);border:1px solid var(--line);border-radius:14px;padding:16px;white-space:pre-wrap;font-size:15px;line-height:1.7}
 .rwhint{font-size:13px;color:var(--muted);margin:8px 0 4px}
 .rwhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:22px 0 10px}
 .rwhead h3.sec{margin:0}
@@ -155,9 +155,9 @@ ul.tips li{margin:6px 0;font-size:15px}
 .cta{margin:36px 0 8px;background:linear-gradient(135deg,var(--cream),#fff);border:1px solid var(--amber-light);border-radius:14px;padding:24px;text-align:center}
 .cta h2{font-size:22px;margin-bottom:6px}
 .cta p{color:var(--ink-soft);max-width:520px;margin:0 auto 16px}
-.err{display:none;background:var(--err-bg);color:var(--err-fg);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14px}
+.err{display:none;background:var(--err-bg);color:var(--err-fg);border-radius:14px;padding:12px 14px;margin-top:12px;font-size:14px}
 .err.show{display:block}
-details.how{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0}
+details.how{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0}
 details.how summary{cursor:pointer;font-weight:600;padding:14px 16px;list-style:none}
 details.how summary::-webkit-details-marker{display:none}
 details.how summary::after{content:"+";float:right;color:var(--muted);font-size:20px}
@@ -204,7 +204,7 @@ footer a{color:var(--muted)}
     <p>Füg deinen Marketing- oder Website-Text ein. Der Hype-Filter zeigt dir in Sekunden Buzzwords, leere Versprechen, Füllwörter und Schachtelsätze — mit konkreten Vorschlägen. Dasselbe Werkzeug, mit dem ich jede aban-news-Ausgabe prüfe.</p>
   </div>
 </section>
-<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Markiert übertriebene Buzzwords in deinem Marketing-Text.</p>
+<p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:14px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Markiert übertriebene Buzzwords in deinem Marketing-Text.</p>
 
 <section class="tool">
   <div class="wrap">

@@ -26,8 +26,8 @@
     body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;cursor:pointer;font-weight:800;font-size:1rem;padding:.85rem 1.5rem;background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 10px 24px rgba(21,32,43,.2);transition:.14s}
     .btn:hover{transform:translateY(-2px)}
@@ -52,7 +52,7 @@
     .lead{font-size:clamp(1.02rem,1.4vw,1.16rem);color:var(--ink2);max-width:62ch;margin:0 0 1rem}
     .pricerow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin:.4rem 0 0}
     .price{font-weight:900;font-size:1.3rem}.price small{font-weight:700;color:var(--muted);font-size:.85rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.65rem .95rem;font-size:.88rem;font-weight:600;margin:1.1rem 0 0;max-width:74ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.65rem .95rem;font-size:.88rem;font-weight:600;margin:1.1rem 0 0;max-width:74ch}
     .sec{padding:clamp(1.8rem,4vw,2.8rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dk)}
     .eyebrow::before{content:"";width:20px;height:2px;background:var(--amber)}
@@ -71,11 +71,11 @@
     .tool h3{margin:0 0 .2rem;font-size:1.12rem;display:flex;align-items:center;gap:.5rem}
     .tool .td{color:var(--muted);font-size:.9rem;margin:0 0 .8rem}
     .tool label{display:block;font-size:.8rem;font-weight:800;color:var(--ink2);margin:.5rem 0 .25rem}
-    .tool input[type=text],.tool select,.tool textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:.6rem .8rem;font:inherit;font-size:.95rem;background:var(--field);color:var(--ink)}
+    .tool input[type=text],.tool select,.tool textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:.6rem .8rem;font:inherit;font-size:.95rem;background:var(--field);color:var(--ink)}
     .tool textarea{min-height:90px;resize:vertical}
     .tool .frow{display:flex;gap:.6rem;flex-wrap:wrap}.tool .frow>*{flex:1;min-width:120px}
     .tool .run{margin-top:.8rem}
-    .tool .out{margin-top:.9rem;background:#fbf7ef;border:1px solid var(--line);border-radius:12px;padding:.85rem;font-size:.92rem;white-space:pre-wrap;display:none}
+    .tool .out{margin-top:.9rem;background:#fbf7ef;border:1px solid var(--line);border-radius:14px;padding:.85rem;font-size:.92rem;white-space:pre-wrap;display:none}
     .tool .out.show{display:block}
     .tool .hint{font-size:.78rem;color:var(--muted);margin-top:.5rem}
     .lockmsg{font-size:.82rem;color:var(--amber-dk);font-weight:700;margin-top:.4rem;display:none}
@@ -84,7 +84,7 @@
     @media(max-width:760px){.grid3{grid-template-columns:1fr}}
     .mini{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem}
     .mini b{color:var(--amber-dk)}.mini p{margin:.3rem 0 0;color:var(--muted);font-size:.9rem}
-    details.faq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.5rem .9rem;margin:.6rem 0}
+    details.faq{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.5rem .9rem;margin:.6rem 0}
     details.faq summary{font-weight:800;cursor:pointer;padding:.4rem 0}
     details.faq p{margin:.2rem 0 .6rem;color:var(--muted)}
     footer{background:#fff;border-top:1px solid var(--line);margin-top:2rem}
@@ -166,7 +166,7 @@
         <span id="demoMsg" style="color:var(--muted);font-size:.9rem"></span>
       </div>
       <div id="demoOut" class="out" style="margin-top:.7rem" hidden></div>
-      <div id="demoUpsell" hidden style="margin-top:.7rem;padding:.7rem .9rem;background:var(--amber-lt);border-radius:10px">
+      <div id="demoUpsell" hidden style="margin-top:.7rem;padding:.7rem .9rem;background:var(--amber-lt);border-radius:14px">
         <b>That was a mini taste.</b> With aban&nbsp;Pro: full length, <b>22 text types</b>, audit, API &amp; no limit.
         <a href="#preise" class="btn btn--amber btn--sm" style="margin-left:.4rem">Get aban Pro &rarr;</a>
         <p style="margin:.5rem 0 0;font-size:.88rem">Not ready yet? Get the best AI tips <b>free</b> every morning &mdash; <a href="/en/#signup">subscribe to the newsletter &rarr;</a></p>

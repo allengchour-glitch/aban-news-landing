@@ -36,21 +36,21 @@ html,body{height:100%;overflow:hidden;background:#04050d;color:#fff;font-family:
 #wrap{position:fixed;inset:0}
 canvas{display:block}
 #hud{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 10px;gap:8px;font-weight:800;text-shadow:0 2px 8px #000;pointer-events:none;z-index:5}
-.panel{background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:12px;padding:7px 13px;box-shadow:0 4px 18px rgba(0,0,0,.4);backdrop-filter:blur(3px)}
+.panel{background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:14px;padding:7px 13px;box-shadow:0 4px 18px rgba(0,0,0,.4);backdrop-filter:blur(3px)}
 #spd{font-size:1.5rem;line-height:1.15;white-space:nowrap}#spd small{font-size:1rem;color:#9fb2ff;font-weight:600}
 #coinpanel{white-space:nowrap}
 .best{font-size:1rem;text-align:right;line-height:1.4;margin-right:56px;white-space:nowrap}
 /* Schmale Screens: kompaktere Chips, sonst umbrachen km/h + Rekord und kollidierten mit der Schild-Leiste */
 @media (max-width:560px){#spd{font-size:1.2rem}#spd small{font-size:.85rem}.best{font-size:.88rem;margin-right:46px}#coinpanel{font-size:1.15rem}}
-#shieldwrap{position:fixed;top:66px;left:10px;display:flex;align-items:center;gap:7px;pointer-events:none;background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:10px;padding:6px 10px;z-index:5}
+#shieldwrap{position:fixed;top:66px;left:10px;display:flex;align-items:center;gap:7px;pointer-events:none;background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:14px;padding:6px 10px;z-index:5}
 #shieldwrap .sic{font-size:1rem;line-height:1}
-#shieldtrack{display:block;width:150px;height:10px;background:rgba(16,20,43,.9);border-radius:6px;overflow:hidden}
+#shieldtrack{display:block;width:150px;height:10px;background:rgba(16,20,43,.9);border-radius:8px;overflow:hidden}
 #shieldFill{display:block;height:100%;width:100%;background:linear-gradient(90deg,#5ef2ff,#b98bff)}
 .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(4,5,13,.93));padding:20px;backdrop-filter:blur(3px)}
 .overlay h1{font-size:2.1rem;letter-spacing:1px;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem}
 .overlay p{color:#c7cbe6;max-width:380px;margin:.5rem 0;font-size:1rem;line-height:1.55}
 .tag{font-size:.8rem;letter-spacing:3px;color:#8e98d0;text-transform:uppercase;margin-bottom:6px}
-.btn{margin-top:12px;border:0;cursor:pointer;font-weight:800;font-size:1.05rem;padding:13px 30px;border-radius:40px;color:#04050d;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
+.btn{margin-top:12px;border:0;cursor:pointer;font-weight:800;font-size:1.05rem;padding:13px 30px;border-radius:14px;color:#04050d;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
 .btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:1rem;padding:12px 24px}
 .small{font-size:1rem;color:#9aa2c8;margin-top:16px}.small a{color:#9fb2ff}
 #muteBtn{position:fixed;top:10px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:46px;height:46px;font-size:1.15rem;cursor:pointer}
@@ -639,7 +639,7 @@ if(STATION){
   document.querySelectorAll('a[href="/spiele.html"]').forEach(function(a){a.style.display="none";});
   /* '← Wildnis'-Knopf (immer sichtbar) */
   var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
-  _wb.style.cssText="position:fixed;top:8px;left:10px;z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:22px;padding:10px 16px;font-weight:800;font-size:1rem;cursor:pointer";
+  _wb.style.cssText="position:fixed;top:8px;left:10px;z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:14px;padding:10px 16px;font-weight:800;font-size:1rem;cursor:pointer";
   _wb.onclick=function(){stationPost("mini-back");};
   document.body.appendChild(_wb);
   /* HUD unter den Wildnis-Knopf schieben (Tempo-Anzeige war sonst verdeckt) */

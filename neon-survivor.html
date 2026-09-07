@@ -37,9 +37,9 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#fff;font-family:
 canvas{display:block}
 #hud{position:fixed;top:0;left:0;right:0;padding:calc(10px + env(safe-area-inset-top)) calc(14px + env(safe-area-inset-right)) 10px calc(14px + env(safe-area-inset-left));pointer-events:none;font-weight:700;text-shadow:0 2px 6px #000}
 /* HUD-Lesbarkeit: halbtransparentes Panel hinter allen Anzeigen, Text >=16px (1rem) auch mobil */
-#hudPanel{max-width:430px;background:rgba(9,12,28,.82);border:1px solid rgba(130,150,240,.5);border-radius:12px;padding:8px 12px 10px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:0 4px 18px rgba(0,0,0,.45)}
+#hudPanel{max-width:430px;background:rgba(9,12,28,.82);border:1px solid rgba(130,150,240,.5);border-radius:14px;padding:8px 12px 10px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:0 4px 18px rgba(0,0,0,.45)}
 @media(max-width:520px){#hudPanel{max-width:calc(100% - 58px)}}
-.bar{height:12px;border-radius:6px;background:#1b2040;overflow:hidden;margin-top:4px}
+.bar{height:12px;border-radius:8px;background:#1b2040;overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;width:100%}
 #hpFill{background:linear-gradient(90deg,#ff6b6b,#ff9e7a)}
 #xpFill{background:linear-gradient(90deg,#5ef2ff,#b98bff)}
@@ -52,13 +52,13 @@ canvas{display:block}
 .overlay h1{font-size:2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem}
 .overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:1rem;line-height:1.5}
 .tag{font-size:.72rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
-.btn{margin-top:8px;border:0;cursor:pointer;font-weight:800;font-size:1.02rem;padding:13px 28px;border-radius:40px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
+.btn{margin-top:8px;border:0;cursor:pointer;font-weight:800;font-size:1.02rem;padding:13px 28px;border-radius:14px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
 .btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.9rem;padding:10px 20px}
 #ups{display:flex;flex-direction:column;gap:10px;width:100%;max-width:360px;margin-top:10px}
 .up{cursor:pointer;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#141a3a,#0c1024);border:1px solid #2a3170;border-radius:14px;padding:12px 14px;text-align:left;color:#e6e9ff;font-weight:700;font-size:1rem;transition:transform .13s,border-color .13s,box-shadow .13s;animation:upIn .38s cubic-bezier(.2,.9,.3,1.2) both}
 .up:hover{border-color:#5ef2ff;transform:translateY(-2px) scale(1.02);box-shadow:0 8px 26px rgba(94,242,255,.28)}
 .up:active{transform:scale(.98)}
-.up .uic{flex:0 0 46px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:1.65rem;line-height:1;background:rgba(94,242,255,.09);border:1px solid rgba(94,242,255,.28);border-radius:12px}
+.up .uic{flex:0 0 46px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:1.65rem;line-height:1;background:rgba(94,242,255,.09);border:1px solid rgba(94,242,255,.28);border-radius:14px}
 .up .utx{flex:1;min-width:0}
 .up small{display:block;color:#8890b8;font-weight:500;margin-top:3px}
 .up.upnew{border-color:rgba(255,209,102,.6);background:linear-gradient(135deg,#221c38,#0d1024)}
@@ -75,13 +75,13 @@ canvas{display:block}
 .hide{display:none!important}
 /* Game-Over: Stats als Karten statt Textwand (Hierarchie: Titel > Runde/Rekord > Karten) */
 #over #verdict{font-size:1.05rem;margin:.35rem 0 .2rem}
-#nsRunStats,#nsBestStats,#nsLboard{width:100%;max-width:320px;background:rgba(13,17,40,.78);border:1px solid #2a3170;border-radius:12px;padding:9px 14px}
+#nsRunStats,#nsBestStats,#nsLboard{width:100%;max-width:320px;background:rgba(13,17,40,.78);border:1px solid #2a3170;border-radius:14px;padding:9px 14px}
 #nsRunStats{margin-top:8px}
 #nsBestStats{margin-top:8px!important;border-color:rgba(255,209,102,.45);background:rgba(30,24,10,.55)}
 #nsLboard{margin-top:10px!important;max-width:320px!important}
 #nsRec{animation:luPop .5s cubic-bezier(.2,.9,.3,1.25) both}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
-.bcard{cursor:pointer;background:#10142b;border:1px solid #2a3170;border-radius:12px;padding:12px 14px;text-align:left;color:#e6e9ff;font-weight:700;font-size:1rem;display:flex;align-items:center;gap:12px}
+.bcard{cursor:pointer;background:#10142b;border:1px solid #2a3170;border-radius:14px;padding:12px 14px;text-align:left;color:#e6e9ff;font-weight:700;font-size:1rem;display:flex;align-items:center;gap:12px}
 .bcard:hover{border-color:#ffb347}
 .bcard[disabled]{opacity:.45;cursor:default}
 .bcard .bi{font-size:1.7rem;line-height:1}
@@ -94,7 +94,7 @@ canvas{display:block}
 #cbHpOuter{margin-top:5px;height:14px;border-radius:8px;background:rgba(10,12,26,.8);border:1px solid rgba(255,120,180,.55);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.5)}
 #cbHp{height:100%;width:100%;background:linear-gradient(90deg,#ff4d6d,#ff9a4a);transition:width .1s linear}
 #cbPips{margin-top:4px;display:flex;gap:5px;justify-content:center}
-#cbPips i{width:22px;height:4px;border-radius:2px;background:rgba(255,255,255,.18)}
+#cbPips i{width:22px;height:4px;border-radius:8px;background:rgba(255,255,255,.18)}
 #cbPips i.on{background:#ff7ad9;box-shadow:0 0 8px #ff7ad9}
 @media(max-width:640px){#cbBar{top:auto;bottom:calc(112px + env(safe-area-inset-bottom));width:min(300px,58vw)}}
 @media(max-height:520px){#cbBar{top:auto;bottom:calc(112px + env(safe-area-inset-bottom));width:min(300px,42vw)}} /* Querformat-Handys: oben lag der Boss-Balken sonst direkt auf dem HUD-Panel */
@@ -137,8 +137,8 @@ canvas{display:block}
 <button id="skBtn3" class="skbtn" title="Heilen (3)" style="color:#6aff9e;border-color:#6aff9e">✚<span class="skcd"></span><small>3</small><span class="sklock"></span></button>
 <button id="pauseBtn" title="Pause (Esc/P)" style="position:fixed;top:calc(60px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;display:none">⏸</button>
 <button id="buildBtn" title="Bauen (B)" style="position:fixed;right:104px;bottom:22px;z-index:7;width:74px;height:74px;border-radius:50%;border:2px solid #ffb347;background:rgba(50,34,14,.6);color:#ffb347;font-size:1.7rem;font-weight:800;cursor:pointer;display:none;align-items:center;justify-content:center">🔨</button>
-<button id="okBtn" title="Platzieren" style="position:fixed;left:50%;transform:translateX(-118px);bottom:26px;z-index:9;width:94px;height:64px;border-radius:16px;border:2px solid #6aff9e;background:rgba(16,50,30,.85);color:#6aff9e;font-size:1.5rem;font-weight:800;cursor:pointer;display:none">✓</button>
-<button id="cancelBtn" title="Abbrechen (Esc)" style="position:fixed;left:50%;transform:translateX(24px);bottom:26px;z-index:9;width:94px;height:64px;border-radius:16px;border:2px solid #ff6b6b;background:rgba(50,16,20,.85);color:#ff9e9e;font-size:1.5rem;font-weight:800;cursor:pointer;display:none">✕</button>
+<button id="okBtn" title="Platzieren" style="position:fixed;left:50%;transform:translateX(-118px);bottom:26px;z-index:9;width:94px;height:64px;border-radius:14px;border:2px solid #6aff9e;background:rgba(16,50,30,.85);color:#6aff9e;font-size:1.5rem;font-weight:800;cursor:pointer;display:none">✓</button>
+<button id="cancelBtn" title="Abbrechen (Esc)" style="position:fixed;left:50%;transform:translateX(24px);bottom:26px;z-index:9;width:94px;height:64px;border-radius:14px;border:2px solid #ff6b6b;background:rgba(50,16,20,.85);color:#ff9e9e;font-size:1.5rem;font-weight:800;cursor:pointer;display:none">✕</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · 3D-Roguelite</div>
@@ -148,11 +148,11 @@ canvas{display:block}
   <div id="nameWrap" style="margin:6px 0 2px">
     <label for="nameInput" style="font-size:.8rem;color:#8890b8;display:block;margin-bottom:4px">👤 Dein Name</label>
     <input id="nameInput" maxlength="12" placeholder="Spieler" autocomplete="off" spellcheck="false"
-      style="width:220px;max-width:80vw;text-align:center;padding:11px 14px;border-radius:12px;border:1px solid #3a4170;background:#10142b;color:#e6e9ff;font-size:1.05rem;font-weight:700;outline:none">
+      style="width:220px;max-width:80vw;text-align:center;padding:11px 14px;border-radius:14px;border:1px solid #3a4170;background:#10142b;color:#e6e9ff;font-size:1.05rem;font-weight:700;outline:none">
   </div>
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
-  <div id="coopBox" style="margin-top:12px;max-width:360px;width:100%;font-size:.9rem;border:1px solid #2a3170;border-radius:12px;padding:10px;background:rgba(10,13,30,.5)">
+  <div id="coopBox" style="margin-top:12px;max-width:360px;width:100%;font-size:.9rem;border:1px solid #2a3170;border-radius:14px;padding:10px;background:rgba(10,13,30,.5)">
     <div style="font-weight:800;color:#9fb2ff;margin-bottom:6px">🌐 Online-Koop — zu zweit gegen die Schwärme</div>
     <button class="btn" id="mpOpenBtn" style="margin-top:0;width:100%;max-width:340px;font-size:1.02rem;background:linear-gradient(135deg,#5ee0a0,#2fb8ff);color:#08131c" title="Ohne Code — findet automatisch einen Mitspieler oder öffnet einen Raum">🌍 Sofort zusammen spielen — 1 Tipp, ohne Code</button>
     <details style="margin-top:8px">
@@ -160,7 +160,7 @@ canvas{display:block}
       <div style="margin-top:8px;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap">
         <button class="btn ghost" id="mpMakeBtn" style="margin-top:0">🎲 Raum erstellen</button>
         <input id="mpCodeIn" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Raum-Code"
-          style="width:118px;text-align:center;padding:10px;border-radius:10px;border:1px solid #3a4170;background:#10142b;color:#eaf0ff;font-size:16px;font-weight:900;letter-spacing:4px;text-transform:uppercase;outline:none">
+          style="width:118px;text-align:center;padding:10px;border-radius:14px;border:1px solid #3a4170;background:#10142b;color:#eaf0ff;font-size:16px;font-weight:900;letter-spacing:4px;text-transform:uppercase;outline:none">
         <button class="btn ghost" id="mpGoBtn" style="margin-top:0">Beitreten ▶</button>
       </div>
     </details>
@@ -923,7 +923,7 @@ function recordRun(name,time,wave,kills,mode){
 // Konfetti-Feier (Web Animations API, mit Timeout-Fallback) — rein kosmetisch, kein Gameplay.
 function nsConfetti(){var cols=["#5ef2ff","#b98bff","#ff7ad9","#ffd166","#6aff9e"];
   for(var i=0;i<30;i++){var d=document.createElement("div");var sz=6+Math.random()*7;
-    d.style.cssText="position:fixed;z-index:20;top:-16px;left:"+(Math.random()*100)+"vw;width:"+sz+"px;height:"+sz+"px;background:"+cols[i%cols.length]+";border-radius:2px;pointer-events:none";
+    d.style.cssText="position:fixed;z-index:20;top:-16px;left:"+(Math.random()*100)+"vw;width:"+sz+"px;height:"+sz+"px;background:"+cols[i%cols.length]+";border-radius:8px;pointer-events:none";
     document.body.appendChild(d);var dx=(Math.random()-.5)*180;
     (function(d,dx){if(d.animate){var a=d.animate([{transform:"translate(0,0) rotate(0deg)",opacity:1},{transform:"translate("+dx+"px,"+(window.innerHeight+50)+"px) rotate("+(360+Math.random()*720)+"deg)",opacity:.85}],{duration:1500+Math.random()*1400,easing:"cubic-bezier(.3,.6,.5,1)"});a.onfinish=function(){d.remove();};}else setTimeout(function(){d.remove();},1700);})(d,dx);}}
 // Game-Over-Extras füllen: Runde #N, Diese-Runde, Bestwerte, Rekord-Feier, Top-3-Bestenliste.
@@ -973,7 +973,7 @@ var META=[
 function renderShop(){var el=document.getElementById("shop");if(!el)return;var cores=loadCores(),meta=loadMeta();
   var html="<div style='font-weight:800;color:#ffd166;margin-bottom:8px'>🔩 Werkstatt · "+cores+" ⬢ Kerne</div>";
   html+=META.map(function(u){var l=meta[u.id]||0,maxed=l>=u.max,c=u.cost(l),afford=cores>=c&&!maxed;
-    return "<button data-id='"+u.id+"' "+(afford?"":"disabled")+" style='display:block;width:100%;text-align:left;margin:4px 0;padding:8px 10px;border-radius:10px;border:1px solid "+(maxed?"#2a7f4a":"#2a3170")+";background:#10142b;color:"+(afford?"#e6e9ff":"#7a83ad")+";cursor:"+(afford?"pointer":"default")+"'>"+u.n+"<span style='float:right'>"+(maxed?"MAX":(c+" ⬢"))+"</span><br><small style='color:#8890b8'>"+u.d+" · Lv "+l+"/"+u.max+"</small></button>";
+    return "<button data-id='"+u.id+"' "+(afford?"":"disabled")+" style='display:block;width:100%;text-align:left;margin:4px 0;padding:8px 10px;border-radius:14px;border:1px solid "+(maxed?"#2a7f4a":"#2a3170")+";background:#10142b;color:"+(afford?"#e6e9ff":"#7a83ad")+";cursor:"+(afford?"pointer":"default")+"'>"+u.n+"<span style='float:right'>"+(maxed?"MAX":(c+" ⬢"))+"</span><br><small style='color:#8890b8'>"+u.d+" · Lv "+l+"/"+u.max+"</small></button>";
   }).join("");
   el.innerHTML=html;
   el.querySelectorAll("button[data-id]").forEach(function(b){b.onclick=function(){var id=b.getAttribute("data-id"),m=loadMeta(),l=m[id]||0,def=null;for(var i=0;i<META.length;i++)if(META[i].id===id)def=META[i];if(!def||l>=def.max)return;var c=def.cost(l),cr=loadCores();if(cr<c)return;saveCores(cr-c);m[id]=l+1;saveMeta(m);renderShop();beep(660,.1,"triangle",.07);};});}
@@ -1847,7 +1847,7 @@ function spawnLoot(x,z,bias){var g=getMesh(loot,lootMesh);var ri=rollRarity(bias
 var _lpN=0;
 function lootPop(ri,picks){var r=RARITY[ri],col="#"+("000000"+r.c.toString(16)).slice(-6),leg=ri>=3;
   var d=document.createElement("div");_lpN++;d.className="lootpop";
-  d.style.cssText="position:fixed;left:50%;top:calc(33% + "+((_lpN%3)*52)+"px);transform:translate(-50%,0);z-index:8;pointer-events:none;font-weight:800;text-align:center;padding:"+(leg?"10px 20px":"7px 14px")+";border-radius:12px;background:rgba(8,10,24,.88);border:1px solid "+col+";color:"+col+";box-shadow:0 0 "+(leg?"28px":"12px")+" "+col+";font-size:"+(leg?"1.3rem":"1.02rem")+";text-shadow:0 2px 8px #000;max-width:88vw";
+  d.style.cssText="position:fixed;left:50%;top:calc(33% + "+((_lpN%3)*52)+"px);transform:translate(-50%,0);z-index:8;pointer-events:none;font-weight:800;text-align:center;padding:"+(leg?"10px 20px":"7px 14px")+";border-radius:14px;background:rgba(8,10,24,.88);border:1px solid "+col+";color:"+col+";box-shadow:0 0 "+(leg?"28px":"12px")+" "+col+";font-size:"+(leg?"1.3rem":"1.02rem")+";text-shadow:0 2px 8px #000;max-width:88vw";
   d.innerHTML=(leg?"⭐ ":"")+"["+r.n+"]"+(leg?" ⭐":"")+" <span style='color:#fff;font-weight:700'>"+picks.join(" · ")+"</span>";
   document.body.appendChild(d);
   var rm=function(){if(d.parentNode)d.parentNode.removeChild(d);};
@@ -2386,7 +2386,7 @@ if(STATION){
   var _db=document.getElementById("dailyBtn");if(_db)_db.style.display="none";
   /* '← Wildnis'-Knopf (immer sichtbar, unter Mute/Pause rechts oben) */
   var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
-  _wb.style.cssText="position:fixed;top:calc(112px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:22px;padding:10px 14px;font-weight:800;font-size:.95rem;cursor:pointer";
+  _wb.style.cssText="position:fixed;top:calc(112px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:14px;padding:10px 14px;font-weight:800;font-size:.95rem;cursor:pointer";
   _wb.onclick=function(){stationPost("mini-back");};
   document.body.appendChild(_wb);
   /* '← Zurück zur Wildnis' im Game-Over- UND Sieg-Screen */

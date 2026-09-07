@@ -33,8 +33,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
 
     /* buttons — Brevo/Mailchimp-style large pills */
@@ -90,7 +90,7 @@
     .quicklinks{background:#fff;border-bottom:1px solid var(--line)}
     .quicklinks .qwrap{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:.5rem;overflow-x:auto;padding:.55rem 1.25rem;scrollbar-width:thin}
     .quicklinks .qwrap::-webkit-scrollbar{height:6px}
-    .quicklinks .qwrap::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+    .quicklinks .qwrap::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
     .quicklinks .qlabel{flex:0 0 auto;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-right:.1rem}
     .quicklinks a{flex:0 0 auto;font-size:.95rem;font-weight:700;color:var(--ink2);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.55rem 1.05rem;text-decoration:none;white-space:nowrap;transition:.12s}
     .quicklinks a:hover{border-color:var(--amber);color:var(--amber-dk)}
@@ -144,7 +144,7 @@
     /* sections */
     .sec{padding:clamp(2.8rem,6vw,4.6rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.6rem,3.4vw,2.4rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:56ch;margin:.7rem 0 0}
     .center{text-align:center}.center .eyebrow{justify-content:center}.center .sub{margin-left:auto;margin-right:auto}
@@ -159,7 +159,7 @@
     /* steps */
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2rem;counter-reset:s}
     .stepc{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem 1.4rem;box-shadow:var(--shadow-sm)}
-    .stepc::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:12px;
+    .stepc::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:14px;
       background:var(--ink);color:#fff;font-weight:900;margin-bottom:.9rem}
     .stepc h3{margin:0 0 .35rem;font-size:1.1rem}.stepc p{margin:0;color:var(--muted);font-size:.93rem}
 
@@ -195,7 +195,7 @@
     .faq p{margin:0 0 1rem;color:var(--muted);font-size:.96rem}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{margin:0 auto;max-width:520px}
@@ -227,7 +227,7 @@
     .leadmag a:hover{border-color:var(--amber)}
 
     /* Founding ROI-Anker */
-    .proi{font-size:.82rem;color:var(--amber-dk);background:var(--cream);border-radius:10px;padding:.55rem .7rem;margin:0 0 1.1rem;font-weight:700;text-align:center}
+    .proi{font-size:.82rem;color:var(--amber-dk);background:var(--cream);border-radius:14px;padding:.55rem .7rem;margin:0 0 1.1rem;font-weight:700;text-align:center}
 
     /* rotierende Mail-Vorschau */
     .mockbody.fade{animation:mfade .5s ease}
@@ -254,7 +254,7 @@
     .issue .rd{margin-top:auto;padding-top:.7rem;font-size:.84rem;color:var(--amber-dk);font-weight:700}
     @media(max-width:860px){.issues{grid-template-columns:1fr}}
     /* Gründer-Block */
-    .founder{display:flex;gap:1rem;align-items:center;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.3rem;box-shadow:var(--shadow-sm);text-align:left}
+    .founder{display:flex;gap:1rem;align-items:center;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.3rem;box-shadow:var(--shadow-sm);text-align:left}
     .founder .av{flex:none;width:54px;height:54px;border-radius:50%;background:var(--amber);color:#fff;display:grid;place-items:center;font-weight:900;font-size:1.4rem}
     .founder p{margin:0;font-size:.92rem;color:var(--muted)}.founder b{color:var(--ink)}
     /* Teilen */
@@ -378,30 +378,30 @@
   <!-- MARKTPLATZ (Jobs, Auto, Immobilien, Angebote & Inserate — Schweiz/DACH) -->
   <section class="sec" id="marktplatz" style="padding-top:0">
     <div class="wrap">
-      <div style="border-radius:18px;overflow:hidden;background:radial-gradient(120% 140% at 10% 12%,#2a221a,#161310 58%,#0f0d0b);color:#f6efe2;padding:28px 24px;position:relative">
+      <div style="border-radius:14px;overflow:hidden;background:radial-gradient(120% 140% at 10% 12%,#2a221a,#161310 58%,#0f0d0b);color:#f6efe2;padding:28px 24px;position:relative">
         <span class="eyebrow" style="color:#f0a93a">🛒 Marktplatz Schweiz · neu</span>
         <h2 style="color:#fff;margin:.3rem 0 .4rem">Jobs, Fahrzeuge, Immobilien &amp; Angebote — eine Suche</h2>
         <p style="color:#f4e7d3;margin:0 0 1rem;max-width:560px">Durchsuche Stellen, Autos, Wohnungen, Schnäppchen und Kleinanzeigen an einem Ort — für die Schweiz &amp; die ganze DACH-Region.</p>
-        <form id="mpSearch" onsubmit="return false" style="display:flex;gap:8px;flex-wrap:wrap;max-width:600px;background:#fff;border-radius:12px;padding:8px">
+        <form id="mpSearch" onsubmit="return false" style="display:flex;gap:8px;flex-wrap:wrap;max-width:600px;background:#fff;border-radius:14px;padding:8px">
           <input id="mpQ" type="search" placeholder="🔍 Was suchst du? z. B. Handy, Wohnung Bern, Lehrstelle …" aria-label="Marktplatz-Suche" style="flex:1;min-width:180px;border:0;background:transparent;padding:11px;font-size:15px;color:#1f2937">
           <button class="btn btn--amber" type="submit" style="white-space:nowrap">Alles durchsuchen →</button>
         </form>
         <div style="margin-top:11px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">
           <span style="color:#f4e7d3;font-weight:700;font-size:.84rem">Beliebt:</span>
-          <a href="/suche.html?q=Wohnung" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🏠 Wohnung</a>
-          <a href="/suche.html?q=Auto" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🚗 Auto</a>
-          <a href="/suche.html?q=Velo" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🚲 Velo</a>
-          <a href="/suche.html?q=Handy" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">📱 Handy</a>
-          <a href="/suche.html?q=Sofa" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🛋️ Sofa</a>
-          <a href="/suche.html?q=Job" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">💼 Job</a>
+          <a href="/suche.html?q=Wohnung" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🏠 Wohnung</a>
+          <a href="/suche.html?q=Auto" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🚗 Auto</a>
+          <a href="/suche.html?q=Velo" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🚲 Velo</a>
+          <a href="/suche.html?q=Handy" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">📱 Handy</a>
+          <a href="/suche.html?q=Sofa" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">🛋️ Sofa</a>
+          <a href="/suche.html?q=Job" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:4px 11px;color:#fff;font-weight:600;font-size:.83rem;text-decoration:none">💼 Job</a>
         </div>
         <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-          <a href="/stellenangebote.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">💼 Jobs</a>
-          <a href="/auto-suche.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🚗 Auto</a>
-          <a href="/immobilien.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🏠 Immobilien</a>
-          <a href="/angebote-suche.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🛍️ Angebote</a>
-          <a href="/inserate.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">📋 Inserate</a>
-          <a href="/marktplatz.html" style="background:#fff;border:1px solid #fff;border-radius:18px;padding:7px 14px;color:#b45309;font-weight:800;font-size:.86rem;text-decoration:none">Alle Kategorien →</a>
+          <a href="/stellenangebote.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">💼 Jobs</a>
+          <a href="/auto-suche.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🚗 Auto</a>
+          <a href="/immobilien.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🏠 Immobilien</a>
+          <a href="/angebote-suche.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">🛍️ Angebote</a>
+          <a href="/inserate.html" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:7px 14px;color:#fff;font-weight:700;font-size:.86rem;text-decoration:none">📋 Inserate</a>
+          <a href="/marktplatz.html" style="background:#fff;border:1px solid #fff;border-radius:14px;padding:7px 14px;color:#b45309;font-weight:800;font-size:.86rem;text-decoration:none">Alle Kategorien →</a>
         </div>
         <p style="margin-top:12px;font-size:.84rem;color:#f4e7d3">Kaufberater Schweiz:
           <a href="/auto-kaufen-schweiz.html" style="color:#fff">Auto</a> ·
@@ -431,27 +431,27 @@
       function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
       var d=document.getElementById("homeDeals");
       if(d){fetch("/api/ebay?limit=6&q=Angebote").then(function(r){return r.json()}).then(function(x){var it=(x.items||[]).slice(0,6);if(!it.length){d.parentNode.style.display="none";return}
-        d.innerHTML=it.map(function(p){var img=p.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(p.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';var href=(p.url&&p.url!=="#")?esc(p.url):"#";return '<a href="'+href+'" target="_blank" rel="sponsored nofollow noopener" style="background:#fff;border-radius:11px;overflow:hidden;text-decoration:none;color:#1f2937;display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(p.title)+'</div><div style="color:#b45309;font-weight:800;font-size:.9rem">'+esc(p.price||"")+'</div></div></a>'}).join("")}).catch(function(){d.parentNode.style.display="none"});}
+        d.innerHTML=it.map(function(p){var img=p.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(p.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';var href=(p.url&&p.url!=="#")?esc(p.url):"#";return '<a href="'+href+'" target="_blank" rel="sponsored nofollow noopener" style="background:#fff;border-radius:14px;overflow:hidden;text-decoration:none;color:#1f2937;display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(p.title)+'</div><div style="color:#b45309;font-weight:800;font-size:.9rem">'+esc(p.price||"")+'</div></div></a>'}).join("")}).catch(function(){d.parentNode.style.display="none"});}
       var sh=document.getElementById("homeShop");
       if(sh){fetch("/api/luxestyle?limit=6").then(function(r){return r.json()}).then(function(x){var it=(x.items||[]).slice(0,6);if(!it.length){sh.parentNode.style.display="none";return}
-        sh.innerHTML=it.map(function(p){var img=p.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(p.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';return '<a href="'+esc(p.url)+'" target="_blank" rel="noopener" style="background:#fff;border-radius:11px;overflow:hidden;text-decoration:none;color:#1f2937;display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(p.title)+'</div><div style="color:#b45309;font-weight:800;font-size:.9rem">'+esc(p.price||"")+'</div></div></a>'}).join("")}).catch(function(){sh.parentNode.style.display="none"});}
+        sh.innerHTML=it.map(function(p){var img=p.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(p.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';return '<a href="'+esc(p.url)+'" target="_blank" rel="noopener" style="background:#fff;border-radius:14px;overflow:hidden;text-decoration:none;color:#1f2937;display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(p.title)+'</div><div style="color:#b45309;font-weight:800;font-size:.9rem">'+esc(p.price||"")+'</div></div></a>'}).join("")}).catch(function(){sh.parentNode.style.display="none"});}
       var j=document.getElementById("homeJobs");
       if(j){fetch("/api/jobs?q=").then(function(r){return r.json()}).then(function(x){var it=(x.items||[]).slice(0,4);if(!it.length){j.parentNode.style.display="none";return}
-        j.innerHTML=it.map(function(o){var href=(o.url&&o.url!=="#")?esc(o.url):"#";return '<a href="'+href+'" target="_blank" rel="noopener nofollow" style="background:#fff;border-radius:11px;padding:12px 13px;text-decoration:none;color:#1f2937;display:block"><div style="font-weight:700;font-size:.9rem;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(o.title)+'</div><div style="font-size:.78rem;color:#6b7280">'+esc([o.company,o.location].filter(Boolean).join(" · "))+(o.remote?" · 🏠":"")+'</div></a>'}).join("")}).catch(function(){j.parentNode.style.display="none"});}
+        j.innerHTML=it.map(function(o){var href=(o.url&&o.url!=="#")?esc(o.url):"#";return '<a href="'+href+'" target="_blank" rel="noopener nofollow" style="background:#fff;border-radius:14px;padding:12px 13px;text-decoration:none;color:#1f2937;display:block"><div style="font-weight:700;font-size:.9rem;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(o.title)+'</div><div style="font-size:.78rem;color:#6b7280">'+esc([o.company,o.location].filter(Boolean).join(" · "))+(o.remote?" · 🏠":"")+'</div></a>'}).join("")}).catch(function(){j.parentNode.style.display="none"});}
     })();</script>
   </section>
 
   <!-- LEISTUNG: KI-Automation für KMU (Verdien-Kanal) -->
   <section class="sec" id="ki-automation" style="padding-top:0">
     <div class="wrap">
-      <div style="border-radius:18px;overflow:hidden;background:radial-gradient(120% 140% at 90% 10%,#23304a,#1b2335 55%,#141a28);color:#eef2f8;padding:28px 24px">
+      <div style="border-radius:14px;overflow:hidden;background:radial-gradient(120% 140% at 90% 10%,#23304a,#1b2335 55%,#141a28);color:#eef2f8;padding:28px 24px">
         <span class="eyebrow" style="color:#7cc0ff">Für Unternehmen · KI-Automation</span>
         <h2 style="color:#fff;margin:.3rem 0 .4rem">Lass die KI die Fleissarbeit machen — du kümmerst dich ums Geschäft</h2>
         <p style="color:#d7deea;margin:0 0 1rem;max-width:600px">Wir bauen Schweizer KMU massgeschneiderte KI-Helfer, die rund um die Uhr Anfragen beantworten, Termine annehmen und keine Anfrage mehr liegen lassen. Weniger Telefon, weniger Tipparbeit, mehr gewonnene Kund:innen — fair und transparent.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;max-width:680px;margin:0 0 16px">
-          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 15px"><b style="color:#fff">💬 24/7-Support-Bot</b><br><span style="color:#c4cdde;font-size:.88rem">Beantwortet häufige Fragen sofort — Tag und Nacht.</span></div>
-          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 15px"><b style="color:#fff">📅 Termin-Automation</b><br><span style="color:#c4cdde;font-size:.88rem">Kund:innen buchen selbst, inkl. Erinnerungen.</span></div>
-          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 15px"><b style="color:#fff">🎯 Lead-Erfassung</b><br><span style="color:#c4cdde;font-size:.88rem">Jede Anfrage erfasst, sortiert und nachgefasst.</span></div>
+          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:13px 15px"><b style="color:#fff">💬 24/7-Support-Bot</b><br><span style="color:#c4cdde;font-size:.88rem">Beantwortet häufige Fragen sofort — Tag und Nacht.</span></div>
+          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:13px 15px"><b style="color:#fff">📅 Termin-Automation</b><br><span style="color:#c4cdde;font-size:.88rem">Kund:innen buchen selbst, inkl. Erinnerungen.</span></div>
+          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:13px 15px"><b style="color:#fff">🎯 Lead-Erfassung</b><br><span style="color:#c4cdde;font-size:.88rem">Jede Anfrage erfasst, sortiert und nachgefasst.</span></div>
         </div>
         <a href="/ki-automation.html" class="btn btn--amber" style="text-decoration:none">KI-Automation entdecken →</a>
         <a href="/ki-automation.html#anfrage" style="margin-left:10px;color:#cfe0ff;font-weight:700;text-decoration:none">Kostenloses Erstgespräch</a>
@@ -488,7 +488,7 @@
           <button type="button" id="hdRun" class="btn btn--amber btn--sm">Gratis erstellen</button>
           <span id="hdMsg" style="color:var(--muted);font-size:.88rem"></span>
         </div>
-        <div id="hdOut" style="margin-top:.7rem;white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:.8rem;font-size:.95rem" hidden></div>
+        <div id="hdOut" style="margin-top:.7rem;white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:.8rem;font-size:.95rem" hidden></div>
         <div id="hdUpsell" hidden style="margin-top:.7rem;font-size:.92rem">
           <b>Mini-Vorgeschmack.</b> Volle Länge, 22 Arten, Audit &amp; API gibt's in <a href="/ki-studio.html">aban&nbsp;Pro</a>.
           <a href="/ki-studio.html" class="btn btn--amber btn--sm" style="margin-left:.3rem">KI-Studio ansehen →</a>
@@ -525,7 +525,7 @@
       <h2>KI-Reels — ehrlich in 20 Sekunden</h2>
       <p class="sub">Kurze, ehrliche Tool-Checks &amp; Faktenchecks als Video — täglich neu, ohne Hype.</p>
       <div style="display:flex;justify-content:center;margin:1.2rem 0">
-        <a id="reelteaserwrap" href="/reels" style="display:none;width:248px;max-width:80vw;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.10);background:#000">
+        <a id="reelteaserwrap" href="/reels" style="display:none;width:248px;max-width:80vw;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.10);background:#000">
           <video id="reelteaser" muted loop playsinline preload="none" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover" role="img" aria-label="KI-Reel Vorschau"></video>
         </a>
       </div>

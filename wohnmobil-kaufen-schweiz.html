@@ -118,7 +118,7 @@ a:hover{color:var(--accent)}
 .hero{background:linear-gradient(135deg,#0f172a 0%,#7c2d12 55%,#9a3412);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(251,146,60,.20),transparent 45%),radial-gradient(circle at 8% 90%,rgba(234,88,12,.24),transparent 42%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:40px 18px 36px;position:relative;z-index:1}
-.hero .ic{font-size:2.1rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:18px;margin-bottom:10px}
+.hero .ic{font-size:2.1rem;width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.55rem,4.2vw,2.1rem);margin:6px 0 10px;line-height:1.18;font-weight:800}
 .hero p{color:#fed7aa;font-size:1.04rem;max-width:640px}
 .hero .trust{margin-top:14px;display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.82rem;color:#fed7aa}
@@ -130,14 +130,14 @@ a:hover{color:var(--accent)}
 .bc a:hover{text-decoration:underline}
 
 /* Answer-first box */
-.answer-first{background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid var(--accent);border-radius:12px;padding:14px 18px;margin:18px 0;font-size:1.02rem;line-height:1.55}
+.answer-first{background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid var(--accent);border-radius:14px;padding:14px 18px;margin:18px 0;font-size:1.02rem;line-height:1.55}
 
 /* Comparison table */
 .ctable{width:100%;border-collapse:collapse;margin:6px 0 22px;font-size:.91rem;overflow-x:auto;display:block}
 .ctable th{background:#fff7ed;padding:10px 13px;border:1px solid #fed7aa;font-weight:700;text-align:left;white-space:nowrap}
 .ctable td{padding:9px 13px;border:1px solid var(--line);vertical-align:top}
 .ctable tr:nth-child(even) td{background:#f9fafb}
-.ctable .badge{display:inline-block;font-size:.76rem;font-weight:700;padding:2px 8px;border-radius:20px}
+.ctable .badge{display:inline-block;font-size:.76rem;font-weight:700;padding:2px 8px;border-radius:14px}
 .badge-green{background:#dcfce7;color:#15803d}
 .badge-blue{background:#dbeafe;color:#1d4ed8}
 .badge-yellow{background:#fef9c3;color:#854d0e}
@@ -146,7 +146,7 @@ a:hover{color:var(--accent)}
 
 /* Tips grid */
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:10px 0 28px}
-.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px 18px;transition:box-shadow .15s,transform .15s}
+.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:16px 18px;transition:box-shadow .15s,transform .15s}
 .tip:hover{box-shadow:0 6px 22px rgba(15,23,42,.08);transform:translateY(-2px)}
 .tip h3{font-size:1rem;margin-bottom:5px;color:var(--ink)}
 .tip p{font-size:.91rem;color:var(--ink2)}
@@ -160,7 +160,7 @@ ul,ol{padding-left:20px;margin-bottom:12px}
 li{margin-bottom:4px;font-size:.95rem;color:var(--ink2)}
 
 /* FAQ */
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 17px;margin-bottom:10px;transition:border-color .15s}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 17px;margin-bottom:10px;transition:border-color .15s}
 details[open]{border-color:#fdba74}
 summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;font-size:1rem}
 summary::-webkit-details-marker{display:none}
@@ -172,9 +172,9 @@ details p,details ul{margin-top:10px;color:var(--ink2);font-size:.94rem}
 .cta2{text-align:center;background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:26px 22px;margin-top:28px}
 .cta2 p{color:var(--ink2);margin-bottom:14px;font-size:.97rem}
 .cta2 .btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn-primary{display:inline-block;background:var(--accent);color:#fff;border-radius:24px;padding:12px 26px;font-weight:800;text-decoration:none;font-size:.97rem}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;border-radius:14px;padding:12px 26px;font-weight:800;text-decoration:none;font-size:.97rem}
 .btn-primary:hover{background:var(--accent-dk);color:#fff}
-.btn-secondary{display:inline-block;background:#fff;color:var(--accent-dk);border:2px solid var(--accent);border-radius:24px;padding:11px 24px;font-weight:700;text-decoration:none;font-size:.97rem}
+.btn-secondary{display:inline-block;background:#fff;color:var(--accent-dk);border:2px solid var(--accent);border-radius:14px;padding:11px 24px;font-weight:700;text-decoration:none;font-size:.97rem}
 .btn-secondary:hover{background:var(--accent-lt)}
 
 /* Newsletter */
@@ -184,23 +184,23 @@ details p,details ul{margin-top:10px;color:var(--ink2);font-size:.94rem}
 
 /* Related pages grid */
 .rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin:14px 0 6px}
-.rel-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--ink);font-size:.88rem;font-weight:600;transition:border-color .15s,box-shadow .15s}
+.rel-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--ink);font-size:.88rem;font-weight:600;transition:border-color .15s,box-shadow .15s}
 .rel-card:hover{border-color:var(--accent);box-shadow:0 4px 12px rgba(194,65,12,.1);color:var(--accent-dk)}
 .rel-card span{display:block;font-size:1.3rem;margin-bottom:4px}
 
 /* Info box */
-.infobox{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:13px 16px;margin:14px 0;font-size:.93rem;color:var(--ink2)}
+.infobox{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:13px 16px;margin:14px 0;font-size:.93rem;color:var(--ink2)}
 .infobox strong{color:var(--accent-dk)}
 
 /* Warning box */
-.warnbox{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:10px;padding:13px 16px;margin:14px 0;font-size:.93rem;color:#78350f}
+.warnbox{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:14px;padding:13px 16px;margin:14px 0;font-size:.93rem;color:#78350f}
 
 /* Footer */
 footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var(--muted);text-align:center}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--accent-dk)}
 
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
 @media(max-width:540px){.ctable th,.ctable td{padding:7px 9px;font-size:.84rem}}
 </style>
 </head>
@@ -872,7 +872,7 @@ footer a:hover{color:var(--accent-dk)}
 <div class="nl">
   <strong>📬 Gratis: Kaufberater &amp; Spartipps für die Schweiz</strong>
   <p>Das Beste aus unseren Ratgebern — kompakt, ohne Spam, jederzeit abbestellbar.</p>
-  <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
+  <iframe title="Newsletter abonnieren" loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px"></iframe>
 </div>
 
 <!-- Related Pages -->

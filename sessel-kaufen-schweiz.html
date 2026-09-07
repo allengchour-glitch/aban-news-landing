@@ -114,7 +114,7 @@ a:hover{color:var(--accent)}
 .hero::before{content:"🪑";position:absolute;right:6%;top:50%;transform:translateY(-50%);font-size:7rem;opacity:.12;pointer-events:none;user-select:none}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(134,239,172,.18),transparent 45%),radial-gradient(circle at 8% 90%,rgba(22,101,52,.3),transparent 42%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:42px 18px 36px;position:relative;z-index:1}
-.hero .ic{font-size:2rem;width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:18px;margin-bottom:10px}
+.hero .ic{font-size:2rem;width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.45rem,4.5vw,2.1rem);margin:4px 0 10px;line-height:1.18}
 .hero p{color:#bbf7d0;font-size:1.04rem;max-width:620px}
 .hero .trust{margin-top:14px;display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.82rem;color:#bbf7d0}
@@ -136,15 +136,15 @@ li{margin-bottom:5px}
 strong{color:var(--ink2)}
 
 /* Answer first */
-.answer-first{background:#dcfce7;border:1px solid #86efac;border-left:4px solid var(--accent);border-radius:12px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem}
+.answer-first{background:#dcfce7;border:1px solid #86efac;border-left:4px solid var(--accent);border-radius:14px;padding:14px 18px;margin:0 0 22px;font-size:1.02rem}
 .answer-first p:last-child{margin-bottom:0}
 
 /* Comparison table */
-.ctable-wrap{overflow-x:auto;margin:10px 0 24px;border-radius:12px;border:1px solid var(--line)}
+.ctable-wrap{overflow-x:auto;margin:10px 0 24px;border-radius:14px;border:1px solid var(--line)}
 .ctable{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--card)}
 .ctable thead th{background:var(--accent-dk);color:#fff;padding:10px 12px;text-align:left;font-weight:700;white-space:nowrap}
-.ctable thead th:first-child{border-radius:11px 0 0 0}
-.ctable thead th:last-child{border-radius:0 11px 0 0}
+.ctable thead th:first-child{border-radius:14px 0 0 0}
+.ctable thead th:last-child{border-radius:0 14px 0 0}
 .ctable tbody tr:nth-child(odd){background:#f0fdf4}
 .ctable tbody tr:nth-child(even){background:#fff}
 .ctable tbody td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -153,24 +153,24 @@ strong{color:var(--ink2)}
 
 /* Tips grid */
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin:10px 0 28px}
-.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:15px 16px;transition:box-shadow .15s,transform .15s}
+.tip{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:15px 16px;transition:box-shadow .15s,transform .15s}
 .tip:hover{box-shadow:0 8px 24px rgba(10,31,13,.09);transform:translateY(-2px)}
 .tip .tip-icon{font-size:1.5rem;margin-bottom:6px}
 .tip h3{font-size:1rem;margin:0 0 4px}
 .tip p{font-size:.9rem;color:#374151;margin:0}
 
 /* Info box */
-.infobox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0 22px}
+.infobox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:12px 0 22px}
 .infobox.warn{border-left:4px solid #f59e0b;background:#fffbeb}
 .infobox.good{border-left:4px solid var(--accent);background:#dcfce7}
 
 /* Material table */
 .mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0 24px}
-.mat-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mat-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .mat-card h3{font-size:.98rem;margin:0 0 6px;color:var(--accent-dk)}
 .mat-card ul{font-size:.88rem;padding-left:16px;margin:0}
 .mat-card ul li{margin-bottom:3px}
-.mat-label{display:inline-block;background:var(--accent-dk);color:#fff;border-radius:6px;font-size:.72rem;font-weight:700;padding:2px 7px;margin-bottom:6px}
+.mat-label{display:inline-block;background:var(--accent-dk);color:#fff;border-radius:8px;font-size:.72rem;font-weight:700;padding:2px 7px;margin-bottom:6px}
 
 /* Price table */
 .price-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0 22px}
@@ -181,12 +181,12 @@ strong{color:var(--ink2)}
 
 /* Retailer list */
 .retailer-list{list-style:none;padding:0;margin:10px 0 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-.retailer-list li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:.92rem}
+.retailer-list li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 15px;font-size:.92rem}
 .retailer-list li strong{display:block;margin-bottom:2px;color:var(--accent-dk)}
 
 /* FAQ details */
 .faq-list{margin:10px 0 28px;display:flex;flex-direction:column;gap:8px}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 details[open]{border-color:#86efac}
 summary{padding:13px 16px;cursor:pointer;font-weight:600;font-size:.98rem;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--ink2)}
 summary::-webkit-details-marker{display:none}
@@ -196,10 +196,10 @@ details[open] summary::after{content:"－"}
 .faq-body p:last-child{margin-bottom:0}
 
 /* CTA box */
-.cta-box{background:linear-gradient(135deg,#052e16,#166534);color:#fff;border-radius:16px;padding:24px 22px;margin:30px 0 24px;text-align:center}
+.cta-box{background:linear-gradient(135deg,#052e16,#166534);color:#fff;border-radius:14px;padding:24px 22px;margin:30px 0 24px;text-align:center}
 .cta-box h2{color:#fff;border:none;padding:0;margin:0 0 8px;font-size:1.2rem}
 .cta-box p{color:#bbf7d0;margin:0 0 14px;font-size:.96rem}
-.cta-btn{display:inline-block;background:#fff;color:var(--accent-dk);border-radius:24px;padding:11px 26px;font-weight:800;font-size:.96rem;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.cta-btn{display:inline-block;background:#fff;color:var(--accent-dk);border-radius:14px;padding:11px 26px;font-weight:800;font-size:.96rem;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .cta-btn:hover{background:#dcfce7;color:var(--accent-dk)}
 
 /* Newsletter */
@@ -214,7 +214,7 @@ footer a:hover{color:#fff}
 footer .wrap{line-height:1.8}
 
 /* Utilities */
-.tag{display:inline-block;background:#dcfce7;color:var(--accent-dk);border-radius:6px;font-size:.75rem;font-weight:700;padding:2px 7px;margin:0 2px 2px 0}
+.tag{display:inline-block;background:#dcfce7;color:var(--accent-dk);border-radius:8px;font-size:.75rem;font-weight:700;padding:2px 7px;margin:0 2px 2px 0}
 .section-intro{font-size:1.0rem;color:#374151;margin:0 0 14px}
 table.simple{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0 20px}
 table.simple th{background:#dcfce7;color:var(--ink2);padding:8px 12px;text-align:left;font-weight:700;border-bottom:2px solid var(--line)}
@@ -887,7 +887,7 @@ table.simple tr:last-child td{border-bottom:none}
   <div class="wrap">
     <h2>Schweizer Kauftipps direkt ins Postfach</h2>
     <p>Wöchentliche Ratgeber, Preisvergleiche und Angebote – kostenlos.</p>
-    <iframe loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px" title="Newsletter anmelden"></iframe>
+    <iframe loading="lazy" src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:14px;margin-top:12px" title="Newsletter anmelden"></iframe>
   </div>
 </section>
 

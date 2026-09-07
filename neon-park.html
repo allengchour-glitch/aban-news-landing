@@ -21,25 +21,25 @@
   canvas{display:block;touch-action:none}
   #hud{position:fixed;inset:0;pointer-events:none;z-index:5}
   #top{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;display:flex;gap:8px;font-weight:900;font-size:.86rem}
-  .pill{background:rgba(12,22,38,.78);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:3px 10px;color:#bfe6ff}
+  .pill{background:rgba(12,22,38,.78);border:1px solid rgba(120,200,255,.35);border-radius:14px;padding:3px 10px;color:#bfe6ff}
   #rides{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;flex-direction:column;gap:5px;align-items:flex-end}
-  .ride{background:rgba(12,22,38,.72);border:1px solid rgba(120,200,255,.25);border-radius:10px;padding:2px 9px;font-size:.76rem;font-weight:800;color:#9fc4e0}
+  .ride{background:rgba(12,22,38,.72);border:1px solid rgba(120,200,255,.25);border-radius:14px;padding:2px 9px;font-size:.76rem;font-weight:800;color:#9fc4e0}
   .ride.on{border-color:rgba(120,255,190,.7);color:#8dffc8;background:rgba(14,42,32,.8)}
   #tag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);
-    background:rgba(12,22,38,.78);border:1px solid rgba(255,200,110,.4);border-radius:12px;padding:3px 12px;
+    background:rgba(12,22,38,.78);border:1px solid rgba(255,200,110,.4);border-radius:14px;padding:3px 12px;
     font-weight:900;font-size:.8rem;color:#ffd98a;white-space:nowrap;max-width:64vw;overflow:hidden;text-overflow:ellipsis}
   #ann{position:absolute;top:24%;left:0;right:0;text-align:center;font-weight:900;font-size:1.5rem;color:#ffd166;
     text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;padding:0 14px}
   #hint{position:absolute;bottom:calc(160px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
-    background:rgba(12,22,38,.85);border-radius:12px;padding:6px 14px;font-weight:800;font-size:.84rem;color:#cfe8ff;
+    background:rgba(12,22,38,.85);border-radius:14px;padding:6px 14px;font-weight:800;font-size:.84rem;color:#cfe8ff;
     opacity:0;transition:opacity .25s;max-width:92vw;text-align:center}
   #cross{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;opacity:.75}
   #cross:before,#cross:after{content:"";position:absolute;background:#dff0ff;box-shadow:0 0 4px #000}
   #cross:before{left:7px;top:0;width:2px;height:16px}
   #cross:after{top:7px;left:0;height:2px;width:16px}
   #bar{position:absolute;left:50%;bottom:calc(120px + env(safe-area-inset-bottom));transform:translateX(-50%);
-    width:180px;height:9px;border-radius:6px;background:rgba(0,0,0,.5);border:1px solid rgba(140,220,255,.4);display:none}
-  #bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,#7dffc8,#7de3ff)}
+    width:180px;height:9px;border-radius:8px;background:rgba(0,0,0,.5);border:1px solid rgba(140,220,255,.4);display:none}
+  #bar i{display:block;height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#7dffc8,#7de3ff)}
   .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-size:1.4rem;font-weight:900;border:3px solid;background:rgba(12,24,40,.6);backdrop-filter:blur(3px);cursor:pointer}
   .btn:active,.btn.pressed{transform:scale(.9);filter:brightness(1.4)}
@@ -52,14 +52,14 @@
     text-align:center;background:radial-gradient(ellipse at 50% 28%,#1b3350 0%,#0d1524 72%);padding:18px;overflow:auto}
   #ov h1{font-size:clamp(1.7rem,6vw,2.7rem);color:#7de3ff;text-shadow:0 0 24px rgba(125,227,255,.5);letter-spacing:.04em}
   #ov p{color:#a8c8e0;max-width:480px;margin:10px 0;line-height:1.5;font-size:.93rem}
-  #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.03rem;padding:13px 30px;border-radius:40px;color:#0a1c2a;
+  #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.03rem;padding:13px 30px;border-radius:14px;color:#0a1c2a;
     background:linear-gradient(92deg,#7de3ff,#7dffc8);box-shadow:0 10px 34px rgba(125,227,255,.32);pointer-events:auto;margin:4px}
-  #ov .ghost{border:2px solid #2a5a7a;background:rgba(14,28,46,.6);color:#8ad0ff;font-weight:800;padding:10px 22px;border-radius:40px;cursor:pointer;margin:4px}
+  #ov .ghost{border:2px solid #2a5a7a;background:rgba(14,28,46,.6);color:#8ad0ff;font-weight:800;padding:10px 22px;border-radius:14px;cursor:pointer;margin:4px}
   #ov .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 12px}
-  #ov .chip{background:rgba(255,255,255,.06);border:1px solid rgba(125,227,255,.28);border-radius:12px;padding:5px 12px;font-size:.75rem;font-weight:700;color:#bfe0ee}
+  #ov .chip{background:rgba(255,255,255,.06);border:1px solid rgba(125,227,255,.28);border-radius:14px;padding:5px 12px;font-size:.75rem;font-weight:700;color:#bfe0ee}
   #st{font-size:.85rem;font-weight:800;color:#8ad0ff;min-height:1.2em;margin-top:6px}
   #sBack{position:fixed;top:calc(8px + env(safe-area-inset-top));right:12px;z-index:31;border:1px solid rgba(125,227,255,.45);
-    background:rgba(16,24,48,.85);color:#9fdcff;border-radius:12px;padding:7px 13px;font-weight:800;cursor:pointer;display:none}
+    background:rgba(16,24,48,.85);color:#9fdcff;border-radius:14px;padding:7px 13px;font-weight:800;cursor:pointer;display:none}
   #lade{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;background:#0d1524;color:#7de3ff;font-weight:900}
 </style>
 </head>
@@ -750,7 +750,7 @@ window.__np={
 };
 })();
 </script>
-<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:7px"><a href="/suchmaschine.html">Suche</a>
+<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:8px"><a href="/suchmaschine.html">Suche</a>
 <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
 </body>
 </html>

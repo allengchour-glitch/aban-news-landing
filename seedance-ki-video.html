@@ -24,22 +24,22 @@ a{color:var(--amber-dk)}
 .hero{background:linear-gradient(135deg,#0f172a,#1e1b4b 50%,#4338ca);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(99,102,241,.3),transparent 45%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:38px 18px 34px;position:relative;z-index:1}
-.hero .ic{font-size:2rem;width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:18px;margin-bottom:8px}
+.hero .ic{font-size:2rem;width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;margin-bottom:8px}
 .hero h1{font-size:clamp(1.6rem,4.5vw,2.1rem);margin:4px 0 8px;line-height:1.18}
-.hero .badge{display:inline-block;background:rgba(99,102,241,.4);border:1px solid rgba(165,180,252,.5);border-radius:20px;padding:3px 12px;font-size:.8rem;margin-bottom:10px}
+.hero .badge{display:inline-block;background:rgba(99,102,241,.4);border:1px solid rgba(165,180,252,.5);border-radius:14px;padding:3px 12px;font-size:.8rem;margin-bottom:10px}
 .hero p{color:#c7d2fe;font-size:1.04rem;max-width:620px}
 main{padding:26px 0 56px}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:8px 0 26px}
-.fact{background:var(--card);border:1px solid var(--line);border-left:4px solid #6366f1;border-radius:12px;padding:14px 16px}
+.fact{background:var(--card);border:1px solid var(--line);border-left:4px solid #6366f1;border-radius:14px;padding:14px 16px}
 .fact h3{font-size:1rem;color:#4338ca;margin-bottom:3px}.fact p{font-size:.93rem;color:var(--ink2)}
 h2{font-size:1.3rem;margin:24px 0 12px}
 .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 20px}
 @media(max-width:520px){.pros-cons{grid-template-columns:1fr}}
-.pros,.cons{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.pros,.cons{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .pros{border-top:3px solid #059669}.cons{border-top:3px solid #dc2626}
 .pros h3{color:#059669}.cons h3{color:#dc2626}
 .pros ul,.cons ul{padding-left:16px;font-size:.93rem;color:var(--ink2);margin-top:6px}
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px}
 details[open]{border-color:#c7d2fe}
 summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px}
 summary::-webkit-details-marker{display:none}
@@ -47,10 +47,10 @@ summary::after{content:"+";color:#6366f1;font-weight:800;font-size:1.1rem}
 details[open] summary::after{content:"–"}
 details p{margin-top:8px;color:var(--ink2);font-size:.95rem}
 .cta2{text-align:center;background:var(--cream);border:1px solid #f3dca0;border-radius:14px;padding:22px;margin-top:26px}
-.cta2 a{display:inline-block;background:var(--amber-dk);color:#fff;border-radius:24px;padding:12px 26px;font-weight:800;margin-top:8px}
+.cta2 a{display:inline-block;background:var(--amber-dk);color:#fff;border-radius:14px;padding:12px 26px;font-weight:800;margin-top:8px}
 .rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
 footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
-:focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:8px}
 </style>
 <script type="application/ld+json" data-aban-article>{"@context": "https://schema.org", "@type": "Article", "headline": "Seedance 2.5 — 30-Sekunden-KI-Video in 4K von ByteDance", "datePublished": "2026-06-26", "dateModified": "2026-06-26", "author": {"@id": "https://abannews.com/#person"}, "publisher": {"@id": "https://abannews.com/#org"}, "mainEntityOfPage": "https://abannews.com/seedance-ki-video.html", "inLanguage": "de-CH", "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1", ".answer-first"]}}</script>
 </head>
@@ -63,7 +63,7 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
   <p>ByteDance bricht die 30-Sekunden-Barriere: Das erste KI-Modell, das ohne Zusammenstückeln native 30-Sek.-Videos in echter 4K-Auflösung generiert.</p>
 </div></header>
 <main><div class="wrap">
-  <p class="answer-first" style="background:#eef2ff;border:1px solid #c7d2fe;border-left:4px solid #6366f1;border-radius:12px;padding:13px 16px;margin:0 0 18px;font-size:1.02rem"><strong>Auf einen Blick:</strong> Seedance 2.5 von ByteDance generiert native 30-Sekunden-Videos in 4K (10-bit) — ohne Clips zusammenzukleben. Bis zu 50 multimodale Referenzen, integrierter Lipsync, direktionable Kamera. API via Volcano Engine, Launch Anfang Juli 2026.</p>
+  <p class="answer-first" style="background:#eef2ff;border:1px solid #c7d2fe;border-left:4px solid #6366f1;border-radius:14px;padding:13px 16px;margin:0 0 18px;font-size:1.02rem"><strong>Auf einen Blick:</strong> Seedance 2.5 von ByteDance generiert native 30-Sekunden-Videos in 4K (10-bit) — ohne Clips zusammenzukleben. Bis zu 50 multimodale Referenzen, integrierter Lipsync, direktionable Kamera. API via Volcano Engine, Launch Anfang Juli 2026.</p>
 
   <h2>Was ist neu in Version 2.5?</h2>
   <div class="facts">
@@ -103,15 +103,15 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
 
   <h2>Preiseinschätzung (basierend auf 2.0)</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:10px;margin:8px 0 20px">
-    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px 16px">
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:14px 16px">
       <strong style="color:#059669">💚 Kurzclip · 5 Sek.</strong>
       <p style="font-size:.9rem;color:#374151;margin-top:5px">Ca. $0.50–1.00 bei 480p/720p — für Social-Media-Posts, Produktshots.</p>
     </div>
-    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:14px 16px">
+    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:14px 16px">
       <strong style="color:#d97706">🔶 Standard · 15 Sek.</strong>
       <p style="font-size:.9rem;color:#374151;margin-top:5px">Ca. $1.50–3.00 bei 1080p — für YouTube-Intros, Werbe-Spots.</p>
     </div>
-    <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:12px;padding:14px 16px">
+    <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:14px;padding:14px 16px">
       <strong style="color:#7c3aed">⭐ Full Clip · 30 Sek. 4K</strong>
       <p style="font-size:.9rem;color:#374151;margin-top:5px">Ca. $3–8 (geschätzt) — für YouTube-Videos, professionelle Spots.</p>
     </div>
@@ -128,8 +128,8 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
     <strong>Mehr KI-News täglich?</strong><br>
     <p style="font-size:.88rem;margin:6px 0">KI-Tools, neue Modelle, Praxis-Tipps — Mo–Fr in 5 Minuten.</p>
     <form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:8px;max-width:380px;margin:8px auto 0;flex-wrap:wrap">
-      <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail" style="flex:1;min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:inherit">
-      <button style="background:#b45309;color:#fff;border:0;border-radius:24px;padding:10px 20px;font-weight:800;cursor:pointer">Abonnieren</button>
+      <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail" style="flex:1;min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;font-family:inherit">
+      <button style="background:#b45309;color:#fff;border:0;border-radius:14px;padding:10px 20px;font-weight:800;cursor:pointer">Abonnieren</button>
     </form>
   </div>
 <div data-ad-slot="landing-mid" style="margin-top:18px"></div>

@@ -38,11 +38,11 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #hud{position:fixed;inset:0;pointer-events:none;z-index:10}
 /* Spieler-Panel */
 #players{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;max-width:min(300px,60vw)}
-.pcard{background:linear-gradient(180deg,#fffef9,#fdf6e6);border:2px solid rgba(120,110,80,.25);border-radius:12px;padding:7px 11px;font-size:.78rem;transition:border-color .3s,box-shadow .3s;box-shadow:0 3px 10px rgba(60,40,10,.18),inset 0 2px 0 rgba(255,255,255,.9)}
+.pcard{background:linear-gradient(180deg,#fffef9,#fdf6e6);border:2px solid rgba(120,110,80,.25);border-radius:14px;padding:7px 11px;font-size:.78rem;transition:border-color .3s,box-shadow .3s;box-shadow:0 3px 10px rgba(60,40,10,.18),inset 0 2px 0 rgba(255,255,255,.9)}
 .pcard.on{border-color:#ff8c2a;box-shadow:0 0 18px rgba(255,150,40,.45)}
 .pcard .nm{font-weight:900;font-size:.85rem;color:#2a3040;display:flex;align-items:center;gap:5px}
 .pcard .st{display:flex;gap:5px;color:#4a5262;margin-top:3px;flex-wrap:wrap;font-weight:600}
-.pcard .st span{white-space:nowrap;background:rgba(255,255,255,.6);border:1px solid rgba(120,110,80,.16);border-left:3px solid var(--sc,#c8b88a);border-radius:9px;padding:1px 7px 1px 5px;cursor:pointer;pointer-events:auto;transition:transform .2s}
+.pcard .st span{white-space:nowrap;background:rgba(255,255,255,.6);border:1px solid rgba(120,110,80,.16);border-left:3px solid var(--sc,#c8b88a);border-radius:8px;padding:1px 7px 1px 5px;cursor:pointer;pointer-events:auto;transition:transform .2s}
 .pcard .st span b{font-weight:900;color:#2a3040}
 .pcard .st span.up{animation:statUp .9s ease}
 .pcard .st span.dn{animation:statDn .9s ease}
@@ -58,13 +58,13 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   .pcard{font-size:.7rem;padding:5px 8px}}
 #chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 1px 2px rgba(10,20,35,.9),0 2px 8px rgba(10,20,35,.6)}
 #chapterTag small{display:block;color:#fdf3d0;font-size:.72rem;margin-top:1px;text-shadow:0 1px 3px rgba(10,20,35,.85)}
-#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffe49a;background:rgba(28,40,58,.66);padding:4px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95);white-space:nowrap;line-height:1.2}
+#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffe49a;background:rgba(28,40,58,.66);padding:4px 13px;border-radius:14px;text-shadow:0 1px 3px rgba(8,14,26,.95);white-space:nowrap;line-height:1.2}
 #turnTag:empty{display:none}
 #turnTag small{display:block;font-size:.68em;font-weight:800;color:#ffedb8;letter-spacing:.5px;opacity:.9}
 /* Würfel-Knopf */
 @keyframes rollPulse{0%,100%{outline:4px solid rgba(255,209,102,0)}50%{outline:4px solid rgba(255,209,102,.55)}}
 #rollBtn:not(:disabled):not(.hide){animation:rollPulse 2.4s ease-in-out infinite}
-#rollBtn{outline-offset:3px;position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:50px;max-width:86vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#1a1020;background:linear-gradient(180deg,#ffe08a 0%,#ffd166 30%,#ff7ad9 100%);box-shadow:0 12px 44px rgba(255,180,110,.45),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -3px 6px rgba(160,60,120,.35);transition:transform .12s,opacity .3s}
+#rollBtn{outline-offset:3px;position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:14px;max-width:86vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#1a1020;background:linear-gradient(180deg,#ffe08a 0%,#ffd166 30%,#ff7ad9 100%);box-shadow:0 12px 44px rgba(255,180,110,.45),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -3px 6px rgba(160,60,120,.35);transition:transform .12s,opacity .3s}
 #rollBtn:active{transform:translateX(-50%) scale(0.95)}
 #rollBtn:disabled{opacity:.35;cursor:default}
 #dice{position:fixed;bottom:104px;left:50%;transform:translateX(-50%);font-size:3rem;z-index:20;text-shadow:0 6px 24px rgba(255,209,102,.5);opacity:0;transition:opacity .3s;pointer-events:none}
@@ -80,13 +80,13 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #flash.on{opacity:1;transition:opacity .06s}
 #keysHelp{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#fff;text-shadow:0 1px 4px rgba(40,60,90,.7);white-space:nowrap;background:rgba(60,90,130,.35);border-radius:14px;padding:3px 12px}
 /* Ereignis-Karte */
-#card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .45s,transform .45s cubic-bezier(.2,1.1,.4,1);max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
+#card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:14px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .45s,transform .45s cubic-bezier(.2,1.1,.4,1);max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
 #card.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
 #card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#a86c08;margin-bottom:8px;font-weight:800}
 #card h3{font-size:1.2rem;color:#2a3040;margin-bottom:8px;line-height:1.35}
 #card .txt{color:#4a5262;font-size:.94rem;line-height:1.55;margin-bottom:14px}
 #card .opts{display:flex;flex-direction:column;gap:8px}
-#card button{border:2px solid #e8d8b0;background:#fff;color:#2a3040;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:.88rem;text-align:left;transition:border-color .15s,background .15s,transform .1s;box-shadow:0 3px 0 #e8d8b0}
+#card button{border:2px solid #e8d8b0;background:#fff;color:#2a3040;border-radius:14px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:.88rem;text-align:left;transition:border-color .15s,background .15s,transform .1s;box-shadow:0 3px 0 #e8d8b0}
 #card button:hover{border-color:#ffcf3a;background:#fffbe8;transform:translateY(-1px)}
 #card button small{display:block;color:#6a5a2c;font-weight:600;margin-top:3px;font-size:.76rem}
 /* Overlays */
@@ -95,14 +95,14 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#4a6a8a;text-transform:uppercase;margin-bottom:12px;font-weight:800}
 .overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#ff8c2a,#ff5db8 45%,#2f8cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 0 rgba(255,255,255,.8)) drop-shadow(0 8px 22px rgba(80,60,20,.25))}
 .overlay p{color:#3a4252;max-width:540px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
-.btn{border:0;cursor:pointer;font-weight:900;font-size:1.02rem;padding:13px 30px;border-radius:44px;color:#1a1020;background:linear-gradient(92deg,#ffd166,#ff7ad9);box-shadow:0 10px 40px rgba(255,180,110,.35);margin:4px}
+.btn{border:0;cursor:pointer;font-weight:900;font-size:1.02rem;padding:13px 30px;border-radius:14px;color:#1a1020;background:linear-gradient(92deg,#ffd166,#ff7ad9);box-shadow:0 10px 40px rgba(255,180,110,.35);margin:4px}
 .btn.ghost{background:#fffdf6;color:#8a6a2a;border:2px solid #d8c8a0;box-shadow:none;font-size:.88rem;padding:10px 22px}
 .pselect{display:flex;gap:10px;justify-content:center;margin:8px 0 4px;flex-wrap:wrap}
-.pselect button{width:64px;height:64px;border-radius:16px;border:3px solid #d8c8a0;background:#fffdf6;color:#3a4252;font-size:1.5rem;font-weight:900;cursor:pointer;box-shadow:0 3px 0 #d8c8a0}
+.pselect button{width:64px;height:64px;border-radius:14px;border:3px solid #d8c8a0;background:#fffdf6;color:#3a4252;font-size:1.5rem;font-weight:900;cursor:pointer;box-shadow:0 3px 0 #d8c8a0}
 .pselect button.on{border-color:#ff8c2a;box-shadow:0 0 16px rgba(255,150,40,.5)}
 .foot{margin-top:14px;font-size:.78rem;color:#6a7282}.foot a{color:#2f7dd0;font-weight:700}
 /* Biografie */
-#bio{max-width:600px;text-align:left;background:#fffdf6;border:3px solid #ffcf3a;border-radius:16px;padding:18px 22px;margin:10px 0;font-size:.9rem;line-height:1.65;color:#3a4252;max-height:44vh;overflow:auto;box-shadow:0 10px 30px rgba(60,40,10,.2);flex-shrink:0;width:min(600px,94vw)} /* flex-shrink:0: Overlay ist flex-column — sonst wird die Biografie-Box auf wenige px gequetscht */
+#bio{max-width:600px;text-align:left;background:#fffdf6;border:3px solid #ffcf3a;border-radius:14px;padding:18px 22px;margin:10px 0;font-size:.9rem;line-height:1.65;color:#3a4252;max-height:44vh;overflow:auto;box-shadow:0 10px 30px rgba(60,40,10,.2);flex-shrink:0;width:min(600px,94vw)} /* flex-shrink:0: Overlay ist flex-column — sonst wird die Biografie-Box auf wenige px gequetscht */
 #bio:empty{display:none}
 #bio h4{color:#c9821a;margin:10px 0 4px;font-size:.95rem}
 #scores{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:8px 0}
@@ -134,8 +134,8 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #chatMsgs{max-height:180px;overflow-y:auto;padding:8px 10px;font-size:.82rem;line-height:1.45}
 #chatMsgs b{color:#c05a2a}
 #chatRow{display:flex;border-top:1px solid #eee}
-#chatIn{flex:1;border:0;padding:10px;border-radius:0 0 0 12px;font-size:16px;background:transparent}
-#chatSend{border:0;background:#ffd166;padding:0 14px;border-radius:0 0 12px 0;cursor:pointer;font-weight:800}
+#chatIn{flex:1;border:0;padding:10px;border-radius:0 0 0 14px;font-size:16px;background:transparent}
+#chatSend{border:0;background:#ffd166;padding:0 14px;border-radius:0 0 14px 0;cursor:pointer;font-weight:800}
 #chatBox.mini #chatMsgs{max-height:58px;opacity:.92}
 #voiceBtn{border:0;border-right:1px solid #eee;background:#f6efdc;padding:0 12px;cursor:pointer;font-size:1.05rem}
 #voiceBtn.on{background:#8fd8a0;animation:chatBlink 1.6s ease-in-out infinite}
@@ -154,32 +154,32 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .pcard .items span{pointer-events:auto;cursor:pointer;font-size:18px;line-height:28px;min-width:28px;height:28px;text-align:center;background:rgba(255,255,255,.6);border:1px solid rgba(120,110,80,.28);border-radius:8px;box-shadow:0 1px 0 rgba(120,110,80,.15)}
 /* Charakter-Picker (Startscreen) */
 .charCard{background:#fffdf6;border-radius:14px;padding:8px 8px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:0 4px 14px rgba(60,40,10,.15)}
-.charCard canvas{border-radius:10px;background:linear-gradient(180deg,#dff2ff,#f8f0dc)}
+.charCard canvas{border-radius:14px;background:linear-gradient(180deg,#dff2ff,#f8f0dc)}
 .charCard .crow{display:flex;gap:5px;align-items:center;justify-content:center}
 .charCard .crow.wrap{flex-wrap:wrap;max-width:100%;row-gap:6px} /* Swatch-Reihe (10 Knoepfe) darf umbrechen — lief sonst aus der Karte/dem Screen */
 .charCard{max-width:min(240px,92vw)}
-.charCard button{border:2px solid #d8c8a0;background:#fffdf6;border-radius:10px;min-width:44px;min-height:44px;font-size:1.15rem;cursor:pointer;font-weight:900;color:#3a4252;padding:0 6px}
+.charCard button{border:2px solid #d8c8a0;background:#fffdf6;border-radius:14px;min-width:44px;min-height:44px;font-size:1.15rem;cursor:pointer;font-weight:900;color:#3a4252;padding:0 6px}
 .charCard button.on{border-color:#ff8c2a;box-shadow:0 0 10px rgba(255,150,40,.45);background:#fff6e2}
 .charCard .lbl{font-size:.72rem;font-weight:800;color:#6a7282;min-width:96px;text-align:center}
 .charCard .skin{min-width:34px!important;min-height:34px!important;border-radius:50%!important;padding:0!important}
 /* Pass B2: Gabelungs-Wahl, Quiz-Timer, Smiley-Fast-Chat */
 #card button.forkBtn{font-size:1.02rem;padding:16px 18px;min-height:60px;border-width:3px}
-#qTimer{height:10px;background:#f0e4c4;border-radius:6px;margin-top:12px;overflow:hidden}
+#qTimer{height:10px;background:#f0e4c4;border-radius:8px;margin-top:12px;overflow:hidden}
 #qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 22s linear}
 #emoBtn{position:fixed;right:14px;bottom:160px;z-index:16;width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);font-size:1.3rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)}
 #emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;flex-wrap:wrap;gap:8px;max-height:calc(100vh - 300px)}
 #emoFan button{width:48px;height:48px;border-radius:50%;border:2px solid #ffcf3a;background:#fffdf6;font-size:1.05rem;cursor:pointer;box-shadow:0 3px 10px rgba(60,40,10,.25)}
 /* 📷 Foto-Album: HUD-Zähler + Polaroid-Galerie am Spielende */
-#albumBadge{position:fixed;top:10px;right:104px;z-index:16;display:none;align-items:center;gap:5px;height:38px;padding:0 13px;border-radius:19px;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.92);color:#c9821a;font-weight:800;font-size:.9rem;box-shadow:0 2px 8px rgba(60,40,10,.2);pointer-events:none}
+#albumBadge{position:fixed;top:10px;right:104px;z-index:16;display:none;align-items:center;gap:5px;height:38px;padding:0 13px;border-radius:14px;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.92);color:#c9821a;font-weight:800;font-size:.9rem;box-shadow:0 2px 8px rgba(60,40,10,.2);pointer-events:none}
 #albumBadge b{color:#e8722a;font-size:1rem}
 #albumBadge.pop2{animation:albumPop .5s cubic-bezier(.2,1.5,.4,1)}
 @keyframes albumPop{0%{transform:scale(1)}35%{transform:scale(1.4)}100%{transform:scale(1)}}
 #snapFlash{position:fixed;inset:0;z-index:28;pointer-events:none;background:#fff;opacity:0}
 .album{display:flex;flex-wrap:wrap;gap:16px 11px;justify-content:center;padding:16px 8px 8px;margin:8px 0 4px;background:repeating-linear-gradient(135deg,#f3e4c8,#f3e4c8 13px,#efdcbb 13px,#efdcbb 26px);border-radius:14px;border:2px solid #e2cfa2;box-shadow:inset 0 2px 12px rgba(90,60,20,.15)}
 .album h5{width:100%;text-align:center;color:#8a6a2a;font-size:.82rem;margin:0 0 2px;font-weight:800}
-.polaroid{background:#fff;padding:8px 8px 24px;border-radius:3px;box-shadow:0 6px 15px rgba(50,35,10,.28);position:relative;width:104px;transform:rotate(var(--r,0deg))}
+.polaroid{background:#fff;padding:8px 8px 24px;border-radius:8px;box-shadow:0 6px 15px rgba(50,35,10,.28);position:relative;width:104px;transform:rotate(var(--r,0deg))}
 .polaroid::before{content:"📌";position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:1rem;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
-.polaroid .pic{height:88px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:2.7rem;background:linear-gradient(160deg,var(--c1,#dff2ff),var(--c2,#ffe8c8));box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+.polaroid .pic{height:88px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:2.7rem;background:linear-gradient(160deg,var(--c1,#dff2ff),var(--c2,#ffe8c8));box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
 .polaroid .cap{font-family:'Comic Sans MS','Segoe Print',cursive;font-size:.66rem;font-weight:700;color:#3a4252;text-align:center;margin-top:7px;line-height:1.18}
 .polaroid .meta{font-size:.55rem;color:#a89468;text-align:center;margin-top:3px}
 .album.play .polaroid{opacity:0;animation:polFly .55s cubic-bezier(.2,1.1,.4,1) forwards;animation-delay:var(--d,0s)}
@@ -197,10 +197,10 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="players"></div>
   <div id="chapterTag"><b id="chapTxt">KINDHEIT</b><small id="chapSub">Kapitel 1 von 8</small></div>
   <div id="turnTag"></div>
-  <div id="goalTag" style="position:absolute;top:132px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.72rem;color:#2a3040;background:rgba(255,247,220,.82);padding:3px 12px;border-radius:11px;box-shadow:0 2px 8px rgba(60,40,10,.2);white-space:nowrap;max-width:80vw;overflow:hidden;text-overflow:ellipsis"></div>
+  <div id="goalTag" style="position:absolute;top:132px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.72rem;color:#2a3040;background:rgba(255,247,220,.82);padding:3px 12px;border-radius:14px;box-shadow:0 2px 8px rgba(60,40,10,.2);white-space:nowrap;max-width:80vw;overflow:hidden;text-overflow:ellipsis"></div>
   <div id="announce"></div><div id="hint"></div>
   <div id="progMap" style="position:absolute;bottom:96px;left:50%;transform:translateX(-50%);width:min(520px,88vw);height:16px;pointer-events:none">
-    <div id="progSegs" style="display:flex;height:8px;border-radius:6px;overflow:hidden;opacity:.85"></div>
+    <div id="progSegs" style="display:flex;height:8px;border-radius:8px;overflow:hidden;opacity:.85"></div>
     <div id="progDots" style="position:relative;height:8px"></div>
   </div>
   <div id="keysHelp"></div>
@@ -208,7 +208,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <!-- 🌐 Online-Präsenz-Anzeige + Auto-Pause (nur im Online-Modus sichtbar) -->
 <div id="netHud" class="hide" style="position:fixed;bottom:150px;left:10px;z-index:17;display:flex;flex-direction:column;gap:4px;pointer-events:none;max-width:46vw"></div>
 <div id="netPause" class="hide" style="position:fixed;inset:0;z-index:44;display:flex;align-items:center;justify-content:center;background:rgba(18,22,34,.72)">
-  <div style="background:#fffdf6;border:3px solid #ffcf3a;border-radius:20px;padding:22px 26px;max-width:min(420px,90vw);text-align:center;box-shadow:0 18px 50px rgba(20,15,5,.5)">
+  <div style="background:#fffdf6;border:3px solid #ffcf3a;border-radius:14px;padding:22px 26px;max-width:min(420px,90vw);text-align:center;box-shadow:0 18px 50px rgba(20,15,5,.5)">
     <div id="netPauseIcon" style="font-size:2.4rem">⏸️</div>
     <div id="netPauseTxt" style="font-weight:900;color:#2a3040;font-size:1.05rem;margin:8px 0 4px">Warte auf Mitspieler …</div>
     <div id="netPauseSub" style="font-size:.82rem;color:#7a8a9a;margin-bottom:12px"></div>
@@ -228,19 +228,19 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <button id="emoBtn" class="hide" title="Emotes (Tasten 1–6)">😊</button>
 <div id="emoFan" class="hide"></div>
 <!-- 💞 Begegnungs-Aktion wählen (zwei Figuren treffen sich) -->
-<div id="meetPick" class="hide" style="position:fixed;left:50%;bottom:158px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,253,246,.95);border:2px solid #ff9ecf;border-radius:16px;padding:9px 13px;box-shadow:0 12px 32px rgba(120,40,80,.28);max-width:min(480px,calc(100vw - 128px))">
+<div id="meetPick" class="hide" style="position:fixed;left:50%;bottom:158px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,253,246,.95);border:2px solid #ff9ecf;border-radius:14px;padding:9px 13px;box-shadow:0 12px 32px rgba(120,40,80,.28);max-width:min(480px,calc(100vw - 128px))">
   <div style="font-weight:900;color:#c23a7a;font-size:.82rem">💞 Was macht ihr zusammen?</div>
   <div id="meetPickRow" style="display:flex;gap:7px;flex-wrap:wrap;justify-content:center"></div>
 </div>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
 <button id="chatBtn" title="Chat mit Oma Hilde" style="position:fixed;bottom:96px;right:14px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)" class="hide">💬</button>
-<div id="chatW" class="hide" style="position:fixed;bottom:96px;right:14px;width:min(320px,90vw);height:min(400px,60vh);background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;z-index:35;display:flex;flex-direction:column;box-shadow:0 16px 44px rgba(60,40,10,.35);overflow:hidden">
+<div id="chatW" class="hide" style="position:fixed;bottom:96px;right:14px;width:min(320px,90vw);height:min(400px,60vh);background:#fffdf6;border:3px solid #ffcf3a;border-radius:14px;z-index:35;display:flex;flex-direction:column;box-shadow:0 16px 44px rgba(60,40,10,.35);overflow:hidden">
   <div style="background:linear-gradient(92deg,#ffd166,#ffb46e);padding:10px 14px;font-weight:900;color:#4a3010;display:flex;justify-content:space-between;align-items:center">
     <span>👵 Oma Hilde</span><button id="chatX" style="border:0;background:none;font-size:1.1rem;cursor:pointer;color:#4a3010;width:44px;height:44px;line-height:44px;padding:0;margin:-10px -12px -10px 0;text-align:center">✕</button><!-- 44px-Trefferfläche (Schwarm-4): der 💬-Öffnen-Knopf liegt exakt unter dem Fenster, ✕ ist der einzige Ausweg --></div>
   <div id="chatLog" style="flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;font-size:.85rem"></div>
   <div style="display:flex;gap:6px;padding:8px;border-top:2px solid #f0e0b8">
-    <input id="omaIn" type="text" maxlength="80" placeholder="Frag Oma Hilde…" style="flex:1;border:2px solid #e8d8b0;border-radius:10px;padding:8px 10px;font-size:16px;background:#fff;color:#2a3040"><!-- 16px: iOS-Fokus-Zoom vermeiden (Schwarm-4) -->
-    <button id="chatGo" style="border:0;background:linear-gradient(92deg,#ffd166,#ff7ad9);border-radius:10px;padding:8px 14px;font-weight:900;cursor:pointer;color:#4a3010">➤</button>
+    <input id="omaIn" type="text" maxlength="80" placeholder="Frag Oma Hilde…" style="flex:1;border:2px solid #e8d8b0;border-radius:14px;padding:8px 10px;font-size:16px;background:#fff;color:#2a3040"><!-- 16px: iOS-Fokus-Zoom vermeiden (Schwarm-4) -->
+    <button id="chatGo" style="border:0;background:linear-gradient(92deg,#ffd166,#ff7ad9);border-radius:14px;padding:8px 14px;font-weight:900;cursor:pointer;color:#4a3010">➤</button>
   </div>
 </div>
 <button id="menuBtn" title="Menü" style="position:fixed;top:10px;right:58px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.9);color:#5a6272;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;box-shadow:0 2px 8px rgba(60,40,10,.2)">☰</button>
@@ -263,28 +263,28 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <p>Würfle durch <b>acht Kapitel eines ganzen Lebens</b> — Kindheit bis Lebensabend. Über <b>100 Ereignisse</b> formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
   <div id="startStats" style="margin:2px 0 10px"></div>
   <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
-  <label id="botRow" style="display:none;align-items:center;gap:8px;background:#fffdf6;border:2px solid #cbb8e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin:6px auto 0;width:max-content">
+  <label id="botRow" style="display:none;align-items:center;gap:8px;background:#fffdf6;border:2px solid #cbb8e8;border-radius:14px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin:6px auto 0;width:max-content">
     <input type="checkbox" id="botChk" checked style="width:18px;height:18px;accent-color:#8a5acf"> 🤖 Gegen Robo spielen (empfohlen)</label>
   <div class="pselect" id="pselect"></div>
   <div id="nameRow" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0"></div>
   <div id="charRow" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:4px 0 8px"></div>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
   <button class="btn ghost" id="tutBtn" style="font-size:.88rem">❓ So geht's — Regeln für Anfänger</button>
-  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e0cba0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-top:6px">
+  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e0cba0;border-radius:14px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-top:6px">
     <input type="checkbox" id="adultChk" checked style="width:18px;height:18px;accent-color:#e84a3a;display:none"> <span style="color:#8a6a3a;font-weight:700">🎭 Echtes-Leben-Modus (immer an): frecher Humor & echte Risiken — auch der Tod kann mitspielen.</span></label>
-  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
+  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:14px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
     <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
-      <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:150px;font-size:16px;text-align:center">
+      <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:14px;border:1px solid #b8c8d8;width:150px;font-size:16px;text-align:center">
       <button class="btn" id="netInviteBtn" style="margin-top:0;flex-basis:100%;max-width:380px;background:linear-gradient(135deg,#25c366,#1fa855);font-size:1.08rem;padding:14px 18px">💬 Mit Freund spielen — Link per WhatsApp</button>
       <button class="btn" id="quickPlayBtn" style="margin-top:0;flex-basis:100%;max-width:360px;background:linear-gradient(135deg,#5ee0a0,#2fb8ff);font-size:.95rem">🌍 Sofort online spielen — mit irgendwem</button>
       <details style="flex-basis:100%">
         <summary style="cursor:pointer;color:#2a6ab0;font-weight:700;font-size:.86rem">👥 Mit Freunden per Code spielen</summary>
         <div style="margin-top:8px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
           <button class="btn ghost" id="netHostBtn" style="margin-top:0">Raum erstellen</button>
-          <input id="netCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:76px;text-transform:uppercase;font-size:16px">
+          <input id="netCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:14px;border:1px solid #b8c8d8;width:76px;text-transform:uppercase;font-size:16px">
           <button class="btn ghost" id="netJoinBtn" style="margin-top:0">Beitreten</button>
         </div>
       </details>
@@ -295,7 +295,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
-      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:10px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:10px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">📲 Link teilen</button> <button id="netWaBtn" style="border:1px solid #25c366;background:#e7f9ee;border-radius:10px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">💬 WhatsApp</button></div>
+      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:14px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:14px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">📲 Link teilen</button> <button id="netWaBtn" style="border:1px solid #25c366;background:#e7f9ee;border-radius:14px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">💬 WhatsApp</button></div>
       <div id="netModeTag" style="font-size:.8rem;font-weight:800;color:#2a6ab0"></div>
       <div id="netPlayers" style="margin:6px 0;font-weight:700;display:flex;flex-wrap:wrap;gap:6px;justify-content:center"></div>
       <div id="netCharWrap" style="margin:8px auto"></div>
@@ -312,7 +312,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       <div style="font-weight:800;color:#b07a2a;font-size:.88rem">Öffne Lebenspfad auf BEIDEN Geräten — eins sendet, eins empfängt. Spielstand, Charaktere &amp; Erfolge wandern mit.</div>
       <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap;align-items:center">
         <button class="btn ghost" id="syncSendBtn" style="margin-top:0">📤 Von HIER senden</button>
-        <input id="syncCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #d8c8a8;width:76px;text-transform:uppercase;font-size:16px">
+        <input id="syncCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:14px;border:1px solid #d8c8a8;width:76px;text-transform:uppercase;font-size:16px">
         <button class="btn ghost" id="syncRecvBtn" style="margin-top:0">📥 HIER empfangen</button>
       </div>
       <div id="syncStatus" style="min-height:1.2em;font-size:.84rem;font-weight:700;color:#7a8a9a;margin-top:6px"></div>
@@ -460,7 +460,7 @@ function unlockAch(id){if(LPACH[id])return false;var a=achDef(id);if(!a)return f
 function achGalleryHTML(){var got=0;ACHIEVEMENTS.forEach(function(a){if(LPACH[a.id])got++;});
   var h="<div style='font-size:.74rem;color:#8a6a2a;font-weight:800;letter-spacing:.06em;margin:2px 0 5px'>🏆 ERFOLGE ("+got+"/"+ACHIEVEMENTS.length+")</div><div style='display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:340px;margin:0 auto'>";
   ACHIEVEMENTS.forEach(function(a){var g=!!LPACH[a.id];
-    h+="<div title=\""+a.titel+"\" style='width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;"+(g?"background:linear-gradient(180deg,#fff6d8,#ffe0a0);border:2px solid #ffb347;box-shadow:0 2px 6px rgba(200,140,20,.3)":"background:#e6e6ec;border:2px solid #cfcfd6;filter:grayscale(1);opacity:.5")+"'>"+(g?a.emoji:"❓")+"</div>";});
+    h+="<div title=\""+a.titel+"\" style='width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;"+(g?"background:linear-gradient(180deg,#fff6d8,#ffe0a0);border:2px solid #ffb347;box-shadow:0 2px 6px rgba(200,140,20,.3)":"background:#e6e6ec;border:2px solid #cfcfd6;filter:grayscale(1);opacity:.5")+"'>"+(g?a.emoji:"❓")+"</div>";});
   return h+"</div>";}
 var GOALS=[
   {k:"glueck",n:25,ic:"❤️",label:"Sammle 25 Glueck"},
@@ -1611,7 +1611,7 @@ function meetPickShow(asReply){var el=document.getElementById("meetPick"),row=do
   window._lpMeetReply=!!asReply;
   row.innerHTML="";MEET_ACTS.forEach(function(a){var bt=document.createElement("button");
     bt.innerHTML=a[0]+"<small style='display:block;font-size:.5rem;font-weight:800;color:#a05a80;line-height:1.1'>"+a[1]+"</small>";bt.title=a[1]; // 📱 Wort unterm Emoji (Tooltip gibt es mobil nicht)
-    bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:12px;width:52px;height:54px;font-size:1.25rem;cursor:pointer;line-height:1.15;padding:2px 0";
+    bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:14px;width:52px;height:54px;font-size:1.25rem;cursor:pointer;line-height:1.15;padding:2px 0";
     bt.onclick=function(){meetDoChosen(a[2]);};row.appendChild(bt);});
   el.classList.remove("hide");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.add("hide");},10000);}
 function meetDoChosen(kind){var m=window._lpMeet,el=document.getElementById("meetPick");if(el)el.classList.add("hide");
@@ -2398,7 +2398,7 @@ function showEnd(){
   rankedP.forEach(function(p){
     if(!p.hist||p.hist.length<2)return;
     var h4=document.createElement("h4");h4.textContent="📈 Der Lebensweg von "+p.name;bio.appendChild(h4);
-    var cv=document.createElement("canvas");cv.width=540;cv.height=110;cv.style.cssText="width:100%;max-width:540px;background:#fff8ea;border-radius:10px;border:1px solid #e8d8b0";
+    var cv=document.createElement("canvas");cv.width=540;cv.height=110;cv.style.cssText="width:100%;max-width:540px;background:#fff8ea;border-radius:14px;border:1px solid #e8d8b0";
     var cx=cv.getContext("2d");
     var series=[["g","#d9a21f","💰"],["h","#ff5db8","❤️"],["w","#2f7dff","🧠"],["f","#1fb96a","👥"]];
     var mx=1;p.hist.forEach(function(pt){mx=Math.max(mx,pt.g,pt.h,pt.w,pt.f);});
@@ -2854,8 +2854,8 @@ function updDriftBalloons(dt,t){
 // ===================== Chat: Oma Hilde (kontextbewusst, offline) =====================
 function chatMsg(txt,who){
   var log=document.getElementById("chatLog"),d=document.createElement("div");
-  d.style.cssText=who==="ich"?"align-self:flex-end;background:#e8f2ff;border-radius:12px 12px 2px 12px;padding:8px 11px;max-width:85%;color:#2a3040":
-    "align-self:flex-start;background:#fff2d0;border-radius:12px 12px 12px 2px;padding:8px 11px;max-width:85%;color:#3a3040";
+  d.style.cssText=who==="ich"?"align-self:flex-end;background:#e8f2ff;border-radius:14px 14px 8px 14px;padding:8px 11px;max-width:85%;color:#2a3040":
+    "align-self:flex-start;background:#fff2d0;border-radius:14px 14px 14px 8px;padding:8px 11px;max-width:85%;color:#3a3040";
   d.textContent=txt;log.appendChild(d);log.scrollTop=log.scrollHeight;}
 function hildeContext(){
   var p=G.players[G.turn],ch=chapterOf(p.tile);
@@ -3050,7 +3050,7 @@ var selN=1; /* 🌐 Online-Koop = jeder wählt nur SEINEN 1 Charakter (User); me
 })();
 function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML="";
   for(var i=0;i<selN;i++){var inp=document.createElement("input");inp.type="text";inp.maxLength=12;inp.placeholder=PNAMES[i];inp.id="pn"+i;
-    inp.style.cssText="width:110px;padding:9px 10px;border-radius:10px;border:3px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:16px"; // Schwarm-4: 16px wie #netName/#netCode — unter 16px zoomt iOS beim Fokus rein (und user-scalable=no lässt nicht mehr rauszoomen)
+    inp.style.cssText="width:110px;padding:9px 10px;border-radius:14px;border:3px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:16px"; // Schwarm-4: 16px wie #netName/#netCode — unter 16px zoomt iOS beim Fokus rein (und user-scalable=no lässt nicht mehr rauszoomen)
     nr.appendChild(inp);}
   renderCharUI();}
 // ===================== Charakter-Picker (Startscreen): 👩/👨 + 4 Styles + 3 Hauttöne =====================
@@ -3135,7 +3135,7 @@ function renderCharUI(){
     var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
     rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
     var advT=document.createElement("button");advT.textContent="✨ Feinschliff (Haut, Kleidung …)"; // 👕 Toon-Details einklappen — Figur bleibt sichtbar
-    advT.style.cssText="border:1px dashed #cbb8e8;background:#fffdf6;color:#7a5aa0;border-radius:10px;padding:4px 10px;font-size:.72rem;font-weight:800;cursor:pointer;margin:2px auto 0";
+    advT.style.cssText="border:1px dashed #cbb8e8;background:#fffdf6;color:#7a5aa0;border-radius:14px;padding:4px 10px;font-size:.72rem;font-weight:800;cursor:pointer;margin:2px auto 0";
     var adv=document.createElement("div");adv.style.display="none";adv.style.width="100%";
     advT.onclick=function(){adv.style.display=(adv.style.display==="none")?"":"none";beep(560,.04,"triangle",.03);};
     card.appendChild(advT);card.appendChild(adv);
@@ -3186,7 +3186,7 @@ function renderNetHud(){var el=document.getElementById("netHud");if(!el)return;
     var here=netPresent(i),mine=(i===NET.my),done=!!(G.players[i]&&G.players[i].done);
     var dot=done?"🏁":(here?"🟢":"🔴");var turnMark=(G.turn===i&&running&&!done)?" 🎲":"";
     var chip=document.createElement("div");
-    chip.style.cssText="display:inline-flex;align-items:center;gap:5px;background:rgba(255,253,246,"+(here?".92":".72")+");border:2px solid "+col+";border-radius:16px;padding:2px 9px;font-size:.72rem;font-weight:800;color:"+(here?"#2a3040":"#9aa0aa")+";box-shadow:0 1px 5px rgba(60,40,10,.18)";
+    chip.style.cssText="display:inline-flex;align-items:center;gap:5px;background:rgba(255,253,246,"+(here?".92":".72")+");border:2px solid "+col+";border-radius:14px;padding:2px 9px;font-size:.72rem;font-weight:800;color:"+(here?"#2a3040":"#9aa0aa")+";box-shadow:0 1px 5px rgba(60,40,10,.18)";
     chip.textContent=dot+" "+String(nm).slice(0,12)+(mine?" (du)":"")+turnMark;
     el.appendChild(chip);}}
 function netCheckPause(){var ov=document.getElementById("netPause");if(!ov)return;
@@ -3486,7 +3486,7 @@ function netLobbyShow(){document.getElementById("netSetup").style.display="none"
     var wb2=document.getElementById("netWaBtn");if(wb2){wb2.style.cssText="border:0;background:linear-gradient(135deg,#25c366,#1fa855);color:#fff;border-radius:14px;padding:12px 22px;font-size:1.05rem;font-weight:800;cursor:pointer;display:block;margin:10px auto 0;box-shadow:0 4px 18px rgba(37,195,102,.45);animation:pulse 1.6s infinite";} /* 💬 WhatsApp-Knopf gross+pulsierend — falls das Share-Blatt blockt, ist der Weg offensichtlich */}
   (function(){var bb=document.getElementById("netBotBtn");
     if(!bb){bb=document.createElement("button");bb.id="netBotBtn";
-      bb.style.cssText="margin-top:8px;border:1px solid #b89ad8;background:#f4ecff;border-radius:10px;padding:6px 12px;font-size:.8rem;font-weight:800;color:#5a3a8a;cursor:pointer";
+      bb.style.cssText="margin-top:8px;border:1px solid #b89ad8;background:#f4ecff;border-radius:14px;padding:6px 12px;font-size:.8rem;font-weight:800;color:#5a3a8a;cursor:pointer";
       var anchor=document.getElementById("netPlayers");if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(bb,anchor.nextSibling);
       bb.onclick=function(){if(!NET.host)return;
         var bi=NET.names.indexOf("Robo 🤖");
@@ -3516,7 +3516,7 @@ function netPlayersUpd(){
       var col="#"+("00000"+((typeof PCOLORS!=="undefined"&&PCOLORS[i])||0x888888).toString(16)).slice(-6);
       var rdy=(i===0)?" 👑":((NET.ready&&NET.ready[i])?" ✅":" ⏳");
       var chip=document.createElement("span");
-      chip.style.cssText="display:inline-flex;align-items:center;gap:5px;background:#fff;border:2px solid "+col+";border-radius:20px;padding:3px 11px;font-size:.84rem;color:#2a3040;font-weight:800";
+      chip.style.cssText="display:inline-flex;align-items:center;gap:5px;background:#fff;border:2px solid "+col+";border-radius:14px;padding:3px 11px;font-size:.84rem;color:#2a3040;font-weight:800";
       chip.textContent=lookEmoji(NET.cfgs&&NET.cfgs[i])+" "+String(nm).slice(0,12).replace(/[<>&]/g,"")+rdy;
       box.appendChild(chip);});}
   if(NET.host)document.getElementById("netStartBtn").style.display=netAllReady()?"inline-block":"none";
@@ -4135,18 +4135,18 @@ function renderMenu(){
   var r=document.getElementById("optRows");r.innerHTML="";
   [["🎵 Musik","music"],["🔔 Effekte","sfx"],["🦋 Bewegung (Schmetterlinge/Partikel)","motion"]].forEach(function(o){
     var d=document.createElement("button");
-    d.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
+    d.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:14px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
     d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
     d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();
       if(o[1]==="music"){try{if(!OPT.music){if(!MUS.paused)MUS.pause();}else if(running&&!muted){music.on=true;MUS.play().catch(function(){});}}catch(e){}}
       renderMenu();};r.appendChild(d);});
   var t=document.createElement("button");
-  t.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
+  t.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:14px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
   t.innerHTML="<span>⏩ Zug-Tempo</span><span>"+(OPT.tempo>1?"SCHNELL":"NORMAL")+"</span>";
   t.onclick=function(){OPT.tempo=OPT.tempo>1?1:1.7;saveOpt();renderMenu();};r.appendChild(t);
   if(!NET.on){ /* 📱↔💻 mitten im Spiel aufs andere Geraet wechseln (nur lokal — Online-Staende haengen am Raum) */
     var sy=document.createElement("button");
-    sy.style.cssText="border:2px solid #d8c8a8;background:#fff8ea;color:#8a5a2a;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
+    sy.style.cssText="border:2px solid #d8c8a8;background:#fff8ea;color:#8a5a2a;border-radius:14px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
     sy.innerHTML="<span>📱↔💻 Auf anderes Gerät</span><span>Code ▶</span>";
     sy.onclick=function(){syncSendStart();};r.appendChild(sy);
     var st2=document.createElement("div");st2.id="syncStatus2";
@@ -4165,7 +4165,7 @@ function renderMenu(){
     hd.textContent="🔓 Freischaltungen "+pu.name;r.appendChild(hd);
     var grid=document.createElement("div");grid.style.cssText="display:flex;flex-direction:column;gap:5px";
     UNL.forEach(function(u){var row=document.createElement("div");
-      row.style.cssText="display:flex;align-items:center;gap:8px;border-radius:10px;padding:7px 10px;font-size:.8rem;text-align:left;"+(u[2]?"background:linear-gradient(180deg,#fff6d8,#ffe8b8);border:2px solid #ffb347;color:#3a3020":"background:#ececf0;border:2px solid #d4d4da;color:#9a9aa4;filter:grayscale(1)");
+      row.style.cssText="display:flex;align-items:center;gap:8px;border-radius:14px;padding:7px 10px;font-size:.8rem;text-align:left;"+(u[2]?"background:linear-gradient(180deg,#fff6d8,#ffe8b8);border:2px solid #ffb347;color:#3a3020":"background:#ececf0;border:2px solid #d4d4da;color:#9a9aa4;filter:grayscale(1)");
       row.innerHTML="<span style=\'font-size:1.2rem\'>"+(u[2]?u[0]:"🔒")+"</span><span><b>"+u[1]+(u[2]?" ✓":"")+"</b><br><span style=\'font-size:.72rem;font-weight:600\'>"+u[3]+"</span></span>";
       grid.appendChild(row);});
     r.appendChild(grid);}
@@ -4191,7 +4191,7 @@ function showTutorial(st){
   var ov=document.getElementById("tutOv");
   if(!ov){ov=document.createElement("div");ov.id="tutOv";
     ov.style.cssText="position:fixed;inset:0;background:rgba(20,30,45,.6);z-index:62;display:flex;align-items:center;justify-content:center;padding:18px";
-    ov.innerHTML='<div style="max-width:420px;width:100%;background:#fffdf6;border-radius:20px;padding:22px 20px;box-shadow:0 10px 40px rgba(0,0,0,.35);text-align:center">'+
+    ov.innerHTML='<div style="max-width:420px;width:100%;background:#fffdf6;border-radius:14px;padding:22px 20px;box-shadow:0 10px 40px rgba(0,0,0,.35);text-align:center">'+
       '<div id="tutEmo" style="font-size:3.2rem;line-height:1.1"></div>'+
       '<div id="tutTitle" style="font-weight:900;font-size:1.15rem;color:#2a3040;margin:8px 0 6px"></div>'+
       '<div id="tutBody" style="font-size:.92rem;color:#3a4252;line-height:1.55;text-align:left"></div>'+
@@ -4215,10 +4215,10 @@ function showLocalInfo(title,html){
   var ov=document.getElementById("localInfoOv");
   if(!ov){ov=document.createElement("div");ov.id="localInfoOv";
     ov.style.cssText="position:fixed;inset:0;background:rgba(20,30,45,.55);z-index:60;display:flex;align-items:center;justify-content:center;padding:18px";
-    ov.innerHTML='<div style="max-width:520px;max-height:80vh;overflow:auto;background:#fffdf6;border-radius:18px;padding:18px 20px;box-shadow:0 10px 40px rgba(0,0,0,.3)">'+
+    ov.innerHTML='<div style="max-width:520px;max-height:80vh;overflow:auto;background:#fffdf6;border-radius:14px;padding:18px 20px;box-shadow:0 10px 40px rgba(0,0,0,.3)">'+
       '<div id="liTitle" style="font-weight:900;font-size:1.05rem;color:#2a3040;margin-bottom:8px"></div>'+
       '<div id="liBody" style="font-size:.88rem;color:#3a4252;line-height:1.55"></div>'+
-      '<button id="liClose" style="margin-top:14px;width:100%;padding:11px;border:none;border-radius:12px;background:#2f8cff;color:#fff;font-weight:900;font-size:.95rem;cursor:pointer">Alles klar ▶</button></div>';
+      '<button id="liClose" style="margin-top:14px;width:100%;padding:11px;border:none;border-radius:14px;background:#2f8cff;color:#fff;font-weight:900;font-size:.95rem;cursor:pointer">Alles klar ▶</button></div>';
     document.body.appendChild(ov);
     document.getElementById("liClose").onclick=function(){ov.style.display="none";};
     ov.onclick=function(e){if(e.target===ov)ov.style.display="none";};}
@@ -4590,7 +4590,7 @@ function handleField(p,f){
 }
 })();
 </script>
-<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:7px"><a href="/suchmaschine.html">Suche</a>
+<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:8px"><a href="/suchmaschine.html">Suche</a>
 <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
 </body>
 </html>

@@ -26,7 +26,7 @@ button{font-family:inherit}
 .top .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
 .brand{font-weight:900;color:var(--amber-dk);font-size:19px;white-space:nowrap}
 .top .links{margin-left:auto;display:flex;gap:8px}
-.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:7px 12px;border:1px solid var(--line);border-radius:20px}
+.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:7px 12px;border:1px solid var(--line);border-radius:14px}
 .top .links a:hover{background:var(--cream);color:var(--amber-dk);border-color:var(--cream)}
 
 /* Hero + große Suche (wie autoscout/immoscout) */
@@ -35,17 +35,17 @@ button{font-family:inherit}
 .hero .in{max-width:1180px;margin:0 auto;padding:34px 16px 30px;position:relative;z-index:1}
 .hero h1{font-size:1.85rem;line-height:1.2;margin-bottom:6px}
 .hero p{color:#f4e7d3;font-size:1rem;max-width:560px}
-.searchbox{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.28);padding:12px;margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
-.searchbox .fld{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:#f5f2ec;border:1px solid var(--line);border-radius:11px;padding:0 12px}
+.searchbox{background:#fff;border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.28);padding:12px;margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+.searchbox .fld{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:#f5f2ec;border:1px solid var(--line);border-radius:14px;padding:0 12px}
 .searchbox .fld span{font-size:17px}
 .searchbox input{flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font-size:15px;color:var(--ink);font-family:inherit}
 .searchbox input:focus{outline:0}
 .searchbox .fld:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15);background:#fff}
-.searchbox button.go{background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px 30px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap}
+.searchbox button.go{background:var(--amber-dk);color:#fff;border:0;border-radius:14px;padding:13px 30px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap}
 .searchbox button.go:hover{background:#a04708}
 .hero .quick{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap;font-size:.84rem}
 .hero .quick b{color:#f4e7d3;font-weight:700;align-self:center}
-.hero .quick a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:4px 12px;font-weight:600}
+.hero .quick a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:4px 12px;font-weight:600}
 .hero .quick a:hover{background:rgba(255,255,255,.28)}
 
 /* Layout: Sidebar + Ergebnisse (PC = mehr) */
@@ -69,29 +69,29 @@ button{font-family:inherit}
 .rhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .rhead .cnt{font-weight:800;font-size:1.05rem}
 .rhead .sort{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--muted)}
-.rhead select{border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:.85rem;background:#fff;font-family:inherit;color:var(--ink)}
+.rhead select{border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:.85rem;background:#fff;font-family:inherit;color:var(--ink)}
 .filterbtn{display:none}
 .feed{display:grid;gap:12px}
 .job{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:14px;transition:box-shadow .15s,transform .15s,border-color .15s}
 .job:hover{box-shadow:0 18px 40px rgba(40,30,15,.16);transform:translateY(-3px);border-color:#e3d4b6}
-.job .av{width:50px;height:50px;border-radius:12px;flex:0 0 50px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#fff;font-weight:800}
+.job .av{width:50px;height:50px;border-radius:14px;flex:0 0 50px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#fff;font-weight:800}
 .job .b{flex:1;min-width:0}
 .job h3{font-size:1.08rem;line-height:1.25;margin-bottom:3px}
 .job h3 a{color:var(--ink)}.job h3 a:hover{color:var(--amber-dk)}
 .job .meta{font-size:.88rem;color:var(--muted)}
 .job .badges{margin:9px 0 0}
-.badge{display:inline-block;border-radius:7px;padding:3px 9px;font-size:.73rem;font-weight:700;margin:0 6px 5px 0}
+.badge{display:inline-block;border-radius:8px;padding:3px 9px;font-size:.73rem;font-weight:700;margin:0 6px 5px 0}
 .badge.r{background:#e8f5ee;color:#06623b}.badge.t{background:var(--cream);color:var(--amber-dk)}.badge.g{background:#eef1f5;color:#3a4759}
 .job .side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:8px;text-align:right}
 .job .ago{font-size:.76rem;color:var(--muted);white-space:nowrap}
-.job .go2{background:var(--amber-dk);color:#fff;border-radius:20px;padding:8px 16px;font-weight:700;font-size:.85rem;white-space:nowrap}
+.job .go2{background:var(--amber-dk);color:#fff;border-radius:14px;padding:8px 16px;font-weight:700;font-size:.85rem;white-space:nowrap}
 .job .go2:hover{background:#a04708}
 .status{text-align:center;color:var(--muted);padding:34px 0;font-size:.95rem}
 .skl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:14px}
-.skl .a{width:50px;height:50px;border-radius:12px;background:#ece6da;flex:0 0 50px}
-.skl .l{flex:1}.skl .l div{height:12px;background:#ece6da;border-radius:6px;margin-bottom:9px}
+.skl .a{width:50px;height:50px;border-radius:14px;background:#ece6da;flex:0 0 50px}
+.skl .l{flex:1}.skl .l div{height:12px;background:#ece6da;border-radius:8px;margin-bottom:9px}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}.skl{animation:pulse 1.2s infinite}
-.more{display:block;margin:20px auto;background:#fff;color:var(--amber-dk);border:1.5px solid var(--amber-dk);border-radius:22px;padding:11px 28px;font-weight:700;cursor:pointer}
+.more{display:block;margin:20px auto;background:#fff;color:var(--amber-dk);border:1.5px solid var(--amber-dk);border-radius:14px;padding:11px 28px;font-weight:700;cursor:pointer}
 .more:hover{background:var(--amber-dk);color:#fff}
 .src{text-align:center;font-size:.78rem;color:var(--muted);margin:16px 0}
 footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color:var(--muted);text-align:center}
@@ -101,18 +101,18 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 @media(max-width:860px){
   .wrap{grid-template-columns:1fr}
   .hero h1{font-size:1.5rem}
-  .filterbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:20px;padding:8px 15px;font-weight:700;font-size:.85rem;cursor:pointer}
+  .filterbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:14px;padding:8px 15px;font-weight:700;font-size:.85rem;cursor:pointer}
   .sidebar{position:fixed;inset:auto 0 0 0;top:0;z-index:100;background:var(--bg);padding:0;transform:translateY(100%);transition:transform .25s;overflow-y:auto;max-height:100vh}
   .sidebar.open{transform:translateY(0)}
   .sidebar .sheethead{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:14px 16px;font-weight:800}
   .sidebar .sheethead .x{background:none;border:0;font-size:24px;cursor:pointer;color:var(--muted);line-height:1}
   .sidebar .fcard{margin:12px 14px;border-radius:14px}
   .sidebar .applybar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 16px}
-  .sidebar .applybar button{width:100%;background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:800;font-size:15px;cursor:pointer}
+  .sidebar .applybar button{width:100%;background:var(--amber-dk);color:#fff;border:0;border-radius:14px;padding:13px;font-weight:800;font-size:15px;cursor:pointer}
   .sheetbg.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
 }
 @media(min-width:861px){.sidebar .sheethead,.sidebar .applybar{display:none}}
-:focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+:focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:8px}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://abannews.com/"},{"@type":"ListItem","position":2,"name":"Marktplatz","item":"https://abannews.com/marktplatz.html"},{"@type":"ListItem","position":3,"name":"Jobs","item":"https://abannews.com/stellenangebote.html"}]}</script>
 
@@ -190,7 +190,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
         </select>
       </span>
     </div>
-    <div id="portals" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px"></div>
+    <div id="portals" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:14px"></div>
     <div class="feed" id="feed"></div>
     <div class="status" id="status" hidden></div>
     <button class="more" id="more" type="button" hidden>Mehr Jobs laden</button>
@@ -201,9 +201,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <div class="sheetbg" id="sheetbg"></div>
 
 <nav style="max-width:1180px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/stellenangebote.html">Jobs</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a> · <a href="/luxestyle.html">🛍️ Shop</a></nav>
-<section style="max-width:1100px;margin:24px auto 6px;padding:0 16px" aria-label="Häufige Fragen"><h2 style="font-size:1.2rem;margin-bottom:10px">Häufige Fragen</h2><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Woher kommen die Stellen?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Live aus mehreren Job-Börsen (Arbeitnow, The Muse, Remotive, Jobicy) und für die Schweiz zusätzlich Adzuna. Der Klick führt immer zur Original-Anzeige, wo du dich direkt bewirbst.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Ist die Job-Suche kostenlos?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Ja, die Suche ist komplett kostenlos. Es gibt kein Konto und keine Gebühren — du bewirbst dich direkt beim Arbeitgeber.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Wie kann ich filtern?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Nach Stichwort, Ort bzw. Kanton, Branche/Kategorie und nach Remote. So findest du gezielt passende Stellen.</p></details></section>
+<section style="max-width:1100px;margin:24px auto 6px;padding:0 16px" aria-label="Häufige Fragen"><h2 style="font-size:1.2rem;margin-bottom:10px">Häufige Fragen</h2><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Woher kommen die Stellen?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Live aus mehreren Job-Börsen (Arbeitnow, The Muse, Remotive, Jobicy) und für die Schweiz zusätzlich Adzuna. Der Klick führt immer zur Original-Anzeige, wo du dich direkt bewirbst.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Ist die Job-Suche kostenlos?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Ja, die Suche ist komplett kostenlos. Es gibt kein Konto und keine Gebühren — du bewirbst dich direkt beim Arbeitgeber.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Wie kann ich filtern?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Nach Stichwort, Ort bzw. Kanton, Branche/Kategorie und nach Remote. So findest du gezielt passende Stellen.</p></details></section>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Woher kommen die Stellen?", "acceptedAnswer": {"@type": "Answer", "text": "Live aus mehreren Job-Börsen (Arbeitnow, The Muse, Remotive, Jobicy) und für die Schweiz zusätzlich Adzuna. Der Klick führt immer zur Original-Anzeige, wo du dich direkt bewirbst."}}, {"@type": "Question", "name": "Ist die Job-Suche kostenlos?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, die Suche ist komplett kostenlos. Es gibt kein Konto und keine Gebühren — du bewirbst dich direkt beim Arbeitgeber."}}, {"@type": "Question", "name": "Wie kann ich filtern?", "acceptedAnswer": {"@type": "Answer", "text": "Nach Stichwort, Ort bzw. Kanton, Branche/Kategorie und nach Remote. So findest du gezielt passende Stellen."}}]}</script>
-<aside data-aban-premium aria-label="Premium-Hinweis" style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
+<aside data-aban-premium aria-label="Premium-Hinweis" style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Mehr Tiefe, kein Hype.</strong><span style="color:#374151"> aban news Premium: werbefrei, volles Archiv, täglicher KI-Kompass fürs Business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:8px;font-size:.92rem">Founding-Mitglied — €69 lifetime →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Erst gratis testen →</a></span></aside>
 <footer>aban news · Job-Suche · Stellen von Partner-Jobbörsen, Angaben ohne Gewähr · © 2026 ·
   <a href="/auftraege.html">Aufträge &amp; Jobs</a> · <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a></footer>
 
@@ -300,7 +300,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       {n:"🔎 Indeed",u:q||loc?"https://ch.indeed.com/jobs?q="+t+(loc?"&l="+l:""):"https://ch.indeed.com"},
       {n:"🏢 JobScout24",u:"https://www.jobscout24.ch/de"},
       {n:"🔗 LinkedIn",u:q?"https://www.linkedin.com/jobs/search/?keywords="+t+"&location="+(loc?l:"Schweiz"):"https://www.linkedin.com/jobs"}];
-    box.innerHTML='<span style="font-size:.86rem;font-weight:800;width:100%">🇨🇭 Auch auf Job-Portalen suchen'+(q?' nach „'+esc(q)+'“':'')+':</span>'+L.map(function(p){return '<a href="'+esc(p.u)+'" target="_blank" rel="noopener nofollow" style="font-size:.83rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:6px 11px;text-decoration:none">'+esc(p.n)+' →</a>'}).join("");}
+    box.innerHTML='<span style="font-size:.86rem;font-weight:800;width:100%">🇨🇭 Auch auf Job-Portalen suchen'+(q?' nach „'+esc(q)+'“':'')+':</span>'+L.map(function(p){return '<a href="'+esc(p.u)+'" target="_blank" rel="noopener nofollow" style="font-size:.83rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:14px;padding:6px 11px;text-decoration:none">'+esc(p.n)+' →</a>'}).join("");}
   function load(append){
     renderPortals();
     if(!append){allItems=[];page=1;skeleton();cntEl.textContent="Lade Stellen …"}

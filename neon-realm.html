@@ -25,7 +25,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .hide{display:none!important}
 #hud{position:fixed;inset:0;pointer-events:none;z-index:10}
 #stats{position:absolute;top:12px;left:12px;width:min(300px,52vw)}
-.bar{height:18px;border-radius:9px;background:rgba(8,10,24,.72);border:1px solid rgba(120,140,255,.3);overflow:hidden;margin-bottom:5px}
+.bar{height:18px;border-radius:8px;background:rgba(8,10,24,.72);border:1px solid rgba(120,140,255,.3);overflow:hidden;margin-bottom:5px}
 .bar i{display:block;height:100%;transition:width .15s}
 #hpB i{background:linear-gradient(90deg,#ff4d6d,#ff9a8b)}
 #enB i{background:linear-gradient(90deg,#5ef2ff,#b98bff)}
@@ -34,13 +34,13 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 #lvlTag .shards{color:#7de3ff}
 #zoneTag{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-weight:900;letter-spacing:.22em;font-size:1.05rem;color:#e6efff;text-shadow:0 2px 10px #000,0 0 14px rgba(0,0,0,.9);text-transform:uppercase;opacity:.95;white-space:nowrap}
 #clock{position:absolute;top:40px;left:50%;transform:translateX(-50%);font-size:.95rem;color:#aab4d8;text-shadow:0 2px 8px #000;white-space:nowrap}
-#mapWrap{position:absolute;top:12px;right:12px;border:1px solid rgba(120,140,255,.35);border-radius:10px;overflow:hidden;background:rgba(8,10,24,.75)}
-#quests{position:absolute;top:214px;right:12px;width:min(300px,50vw);background:rgba(8,10,24,.8);border:1px solid rgba(120,140,255,.25);border-radius:12px;padding:12px 14px;font-size:1rem}
+#mapWrap{position:absolute;top:12px;right:12px;border:1px solid rgba(120,140,255,.35);border-radius:14px;overflow:hidden;background:rgba(8,10,24,.75)}
+#quests{position:absolute;top:214px;right:12px;width:min(300px,50vw);background:rgba(8,10,24,.8);border:1px solid rgba(120,140,255,.25);border-radius:14px;padding:12px 14px;font-size:1rem}
 #quests h3{font-size:.9rem;letter-spacing:.2em;color:#ffcf6e;text-transform:uppercase;margin-bottom:6px}
 #quests .q{color:#cfd8ff;margin-bottom:4px;line-height:1.35}
 #quests .q b{color:#7de3ff}
 #quests .q.done{color:#6affab;text-decoration:line-through;opacity:.7}
-#hint{position:absolute;bottom:120px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1.2rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;background:rgba(8,10,24,.78);border:1px solid rgba(255,209,102,.25);border-radius:12px;padding:8px 16px;max-width:92vw}
+#hint{position:absolute;bottom:120px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1.2rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;background:rgba(8,10,24,.78);border:1px solid rgba(255,209,102,.25);border-radius:14px;padding:8px 16px;max-width:92vw}
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.06em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none}
 #dmg{position:fixed;inset:0;pointer-events:none;z-index:11}
 .dnum{position:absolute;font-weight:900;font-size:19px;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .7s ease-out,opacity .7s;opacity:1;will-change:transform,opacity}
@@ -48,29 +48,29 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 #achToast.on{opacity:1;transform:translate(-50%,0)}
 #achToast small{display:block;color:#cfd8ff;font-weight:600;font-size:.92rem}
 .achGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-top:14px}
-.ach{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:9px;font-size:.85rem;color:#9aa4c8}
+.ach{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:14px;padding:9px;font-size:.85rem;color:#9aa4c8}
 .ach.on{border-color:#ffcf6e;color:#ffd166}
 .ach b{display:block;font-size:.92rem}
 #hurt{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 55%,rgba(255,30,60,.5));opacity:0;transition:opacity .25s;z-index:9}
-#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.95rem;color:#b6c0e4;text-shadow:0 1px 6px #000;line-height:1.6;background:rgba(8,10,24,.6);border-radius:10px;padding:6px 10px;max-width:calc(100vw - 320px)} /* Platz für die Skillbar rechts (Kombo/Ladung-Hinweis wurde länger) */
+#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.95rem;color:#b6c0e4;text-shadow:0 1px 6px #000;line-height:1.6;background:rgba(8,10,24,.6);border-radius:14px;padding:6px 10px;max-width:calc(100vw - 320px)} /* Platz für die Skillbar rechts (Kombo/Ladung-Hinweis wurde länger) */
 /* Kontextuelle Tasten-Anzeige („E Reden") — Key-Cap-Badge unten mittig */
-#kprompt{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:10px;background:rgba(8,10,24,.86);border:1px solid rgba(106,255,171,.5);border-radius:12px;padding:9px 16px;font-size:1.06rem;font-weight:800;color:#dff7ff;text-shadow:0 1px 6px #000;white-space:nowrap;max-width:94vw;overflow:hidden}
+#kprompt{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:10px;background:rgba(8,10,24,.86);border:1px solid rgba(106,255,171,.5);border-radius:14px;padding:9px 16px;font-size:1.06rem;font-weight:800;color:#dff7ff;text-shadow:0 1px 6px #000;white-space:nowrap;max-width:94vw;overflow:hidden}
 #kprompt .kcap{display:inline-block;min-width:32px;text-align:center;background:linear-gradient(180deg,#2a3160,#141838);border:1px solid #7de3ff;border-bottom-width:3px;border-radius:8px;padding:4px 10px;color:#7de3ff;font-weight:900}
 @keyframes tpulse{0%{box-shadow:0 0 0 0 rgba(106,255,171,.75)}70%{box-shadow:0 0 0 16px rgba(106,255,171,0)}100%{box-shadow:0 0 0 0 rgba(106,255,171,0)}}
 #tAct.pulse{animation:tpulse 1.1s infinite}
 /* Dialog */
-#dialog{position:fixed;left:50%;bottom:12%;transform:translateX(-50%);width:min(560px,92vw);background:rgba(10,12,28,.94);border:1px solid rgba(125,227,255,.45);border-radius:16px;padding:16px 18px;z-index:20}
+#dialog{position:fixed;left:50%;bottom:12%;transform:translateX(-50%);width:min(560px,92vw);background:rgba(10,12,28,.94);border:1px solid rgba(125,227,255,.45);border-radius:14px;padding:16px 18px;z-index:20}
 #dialog .who{font-weight:900;color:#7de3ff;letter-spacing:.08em;margin-bottom:6px;font-size:1.1rem}
 #dialog .txt{color:#dbe4ff;font-size:1.08rem;line-height:1.5;min-height:44px}
 #dialog .opts{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-#dialog button{pointer-events:auto;border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:24px;padding:12px 20px;font-weight:700;cursor:pointer;font-size:1rem;min-height:44px}
+#dialog button{pointer-events:auto;border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:14px;padding:12px 20px;font-weight:700;cursor:pointer;font-size:1rem;min-height:44px}
 #dialog button.main{background:linear-gradient(92deg,#5ef2ff,#b98bff);color:#0a1020;border:0}
 /* Panels (Inventar/Skills) */
-.panel{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(600px,94vw);max-height:86vh;overflow:auto;background:rgba(9,11,26,.97);border:1px solid rgba(185,139,255,.4);border-radius:18px;padding:18px;z-index:30}
+.panel{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(600px,94vw);max-height:86vh;overflow:auto;background:rgba(9,11,26,.97);border:1px solid rgba(185,139,255,.4);border-radius:14px;padding:18px;z-index:30}
 .panel h2{font-size:1.25rem;letter-spacing:.12em;color:#b98bff;text-transform:uppercase;margin-bottom:10px}
 .panel .x{position:absolute;top:6px;right:8px;background:none;border:0;color:#aab4d8;font-size:1.5rem;cursor:pointer;pointer-events:auto;width:44px;height:44px}
 #invGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
-.slot{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:9px;font-size:.88rem;min-height:84px;cursor:pointer;pointer-events:auto;position:relative}
+.slot{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:14px;padding:9px;font-size:.88rem;min-height:84px;cursor:pointer;pointer-events:auto;position:relative}
 .slot:hover{border-color:#7de3ff}
 .slot .nm{font-weight:800;line-height:1.2;margin-bottom:3px}
 .slot .st{color:#9aa6d8}
@@ -84,7 +84,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .branch{margin-bottom:12px}
 .branch h4{font-size:.95rem;color:#7de3ff;margin-bottom:6px}
 .branch .nodes{display:flex;gap:8px;flex-wrap:wrap}
-.node{flex:1;min-width:150px;background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:10px;font-size:.9rem;cursor:pointer;pointer-events:auto}
+.node{flex:1;min-width:150px;background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:14px;padding:10px;font-size:.9rem;cursor:pointer;pointer-events:auto}
 .node b{display:block;color:#dbe4ff;margin-bottom:2px}
 .node .lv{color:#ffcf6e;font-weight:800}
 .node.max{opacity:.65;cursor:default}
@@ -96,7 +96,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .overlay p{color:#c7cbe6;max-width:520px;margin:.8rem 0;font-size:1.05rem;line-height:1.55}
 .overlay .keys{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;font-size:.95rem;color:#9fb2ff;margin:.4rem 0 .8rem}
 .overlay .keys span{background:rgba(30,36,80,.6);border:1px solid #3a4170;border-radius:8px;padding:6px 12px}
-.btn{border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:14px 34px;border-radius:44px;color:#0a1020;background:linear-gradient(92deg,#5ef2ff,#b98bff);box-shadow:0 10px 40px rgba(94,242,255,.35);min-height:48px}
+.btn{border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:14px 34px;border-radius:14px;color:#0a1020;background:linear-gradient(92deg,#5ef2ff,#b98bff);box-shadow:0 10px 40px rgba(94,242,255,.35);min-height:48px}
 .btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:1rem;padding:12px 24px}
 .foot{margin-top:16px;font-size:.9rem;color:#98a0c8}.foot a{color:#9fb2ff}
 /* Klassenwahl im Startmenü (optional — Held vorgewählt, Start geht immer sofort) */
@@ -110,12 +110,12 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 @media (max-width:560px){#classRow{grid-template-columns:1fr 1fr}}
 /* Skill-Slots (Desktop, unten rechts) + grosse Level-Up-Anzeige */
 #skillbar{position:absolute;right:12px;bottom:12px;display:flex;gap:8px}
-.sk{position:relative;width:56px;height:56px;border-radius:12px;background:rgba(8,10,24,.82);border:1px solid rgba(120,140,255,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.sk{position:relative;width:56px;height:56px;border-radius:14px;background:rgba(8,10,24,.82);border:1px solid rgba(120,140,255,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
 .sk .ico{font-size:1.3rem;line-height:1.15}
 .sk .kk{font-size:16px;font-weight:900;color:#7de3ff;line-height:1}
 .sk .cdov{position:absolute;inset:0;background:rgba(5,6,15,.74);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff}
 .sk.locked{opacity:.5}
-#lvlBig{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) scale(.8);font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:#ffd166;text-shadow:0 4px 24px #000;background:rgba(8,10,24,.88);border:1px solid rgba(255,207,110,.55);border-radius:18px;padding:12px 32px;opacity:0;transition:opacity .25s,transform .25s;z-index:35;pointer-events:none;white-space:nowrap}
+#lvlBig{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) scale(.8);font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:#ffd166;text-shadow:0 4px 24px #000;background:rgba(8,10,24,.88);border:1px solid rgba(255,207,110,.55);border-radius:14px;padding:12px 32px;opacity:0;transition:opacity .25s,transform .25s;z-index:35;pointer-events:none;white-space:nowrap}
 #lvlBig.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 /* Kombo-Zähler (dezent, unter dem Announce): Pop via JS-Transform */
 #comboTag{position:fixed;top:37%;left:50%;transform:translate(-50%,-50%) scale(1);font-size:1.55rem;font-weight:900;letter-spacing:.04em;color:#7de3ff;text-shadow:0 3px 14px #000;opacity:0;transition:opacity .18s,transform .16s ease-out;pointer-events:none;z-index:30}
@@ -130,7 +130,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 #tDodge{right:106px;bottom:30px;border-color:#5ef2ff;background:rgba(16,50,64,.55);color:#7de3ff}
 #tBolt{right:24px;bottom:188px;border-color:#ffcf6e;background:rgba(64,48,16,.55);color:#ffd166}
 #tAct{right:112px;bottom:132px;border-color:#6affab;background:rgba(18,58,36,.55);color:#8affc0;font-size:1.2rem}
-#tInv,#tSkl{position:absolute;top:162px;right:116px;width:44px;height:44px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.35rem;pointer-events:auto}
+#tInv,#tSkl{position:absolute;top:162px;right:116px;width:44px;height:44px;border-radius:14px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.35rem;pointer-events:auto}
 #tSkl{right:168px} /* Skill-Baum auf Touch: sonst nur über Taste T erreichbar */
 /* Mobile Skill-Buttons (Nova/Signature + Kettenblitz bzw. Ultimate) — ≥44px, kollisionsfrei zur bestehenden Button-Wolke */
 #tSkA{right:24px;bottom:280px;border-color:#ffd166;background:rgba(64,48,16,.55);color:#ffd166}
@@ -176,7 +176,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 </div>
 <div id="dmg"></div>
 <div id="achToast"><span id="achTxt">🏆</span><small id="achSub"></small></div>
-<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:162px;right:64px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:12px;width:44px;height:44px;font-size:1.25rem;cursor:pointer">🔊</button>
+<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:162px;right:64px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:14px;width:44px;height:44px;font-size:1.25rem;cursor:pointer">🔊</button>
 
 <div id="dialog" class="hide"><div class="who" id="dWho">—</div><div class="txt" id="dTxt">—</div><div class="opts" id="dOpts"></div></div>
 
@@ -211,7 +211,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <a href="/neon-wildnis.html" style="display:block;margin:10px auto;max-width:430px;padding:12px 16px;border-radius:14px;text-decoration:none;background:linear-gradient(135deg,#123a2a,#0d2b3d);border:2px solid rgba(125,232,138,.55);color:#c9f5d4;font-weight:800">
     ⚡ NEU: Realm &amp; Wildnis sind jetzt EIN grosses Spiel!<br>
     <span style="font-weight:600;color:#9fd8b4;font-size:.85em">Klassen, Skills, Ausweichrolle, Dialoge &amp; Nexus — alles in der neuen Riesen-Welt.</span><br>
-    <span style="display:inline-block;margin-top:6px;background:#7de88a;color:#062012;border-radius:10px;padding:5px 14px;font-weight:900">▶ Zur grossen Fusion</span>
+    <span style="display:inline-block;margin-top:6px;background:#7de88a;color:#062012;border-radius:14px;padding:5px 14px;font-weight:900">▶ Zur grossen Fusion</span>
   </a>
   <p>Das Reich ist zerbrochen. Erkunde <b>vier Zonen</b>, erfülle die Quests der Dorfbewohner, sammle <b>Loot mit Seltenheitsstufen</b>, lerne Skills — und wecke am Ende den <b>NEXUS</b>, um das Reich zu einen. Dein Fortschritt wird gespeichert.</p>
   <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Kombo · halten ⚡</span><span><b>Q</b> Puls</span><span><b>R/F/C/V</b> Skills</span><span><b>SHIFT</b> Roll</span><span><b>G</b> Spott</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
@@ -236,7 +236,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   </div>
   <div class="foot">Fortschritt wird automatisch gespeichert</div>
 </div>
-<button id="menuBtn" title="Menü (ESC)" style="position:fixed;top:162px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:12px;width:44px;height:44px;font-size:1.25rem;cursor:pointer">☰</button>
+<button id="menuBtn" title="Menü (ESC)" style="position:fixed;top:162px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:14px;width:44px;height:44px;font-size:1.25rem;cursor:pointer">☰</button>
 <div class="overlay hide" id="winO">
   <div class="kicker">Das Reich ist geeint</div>
   <h1>DU HAST GEWONNEN</h1>
@@ -2080,7 +2080,7 @@ function begin(){
 function renderMenu(){var r=document.getElementById("optRows");r.innerHTML="";
   [["🎵 Musik","music"],["🔔 Effekte","sfx"]].forEach(function(o){
     var d=document.createElement("button");
-    d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:12px;padding:13px 16px;font-weight:800;cursor:pointer;font-size:1.05rem;display:flex;justify-content:space-between;min-height:48px";
+    d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:14px;padding:13px 16px;font-weight:800;cursor:pointer;font-size:1.05rem;display:flex;justify-content:space-between;min-height:48px";
     d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
     d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();renderMenu();};r.appendChild(d);});}
 function toggleMenu(){if(!G)return;paused=!paused;try{if(paused)MUS.pause();else if(music.on&&!muted&&OPT.music)MUS.play().catch(function(){});}catch(e){}
@@ -2107,7 +2107,7 @@ window.__realm={pos:function(x,z){player.position.x=x;player.position.z=z;},occl
 requestAnimationFrame(loop);
 })();
 </script>
-<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:7px"><a href="/suchmaschine.html">Suche</a>
+<div id="aban-recht" style="position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:8px"><a href="/suchmaschine.html">Suche</a>
 <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
 </body>
 </html>

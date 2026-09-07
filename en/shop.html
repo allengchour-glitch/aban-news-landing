@@ -32,11 +32,11 @@
     .lead{color:#374151;max-width:60ch;margin:0 0 1.6rem}
     .grid{display:grid;gap:1.1rem;grid-template-columns:1fr}
     @media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
-    .card{background:#fff;border:1px solid #ece3d4;border-radius:16px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
+    .card{background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
     .card h2{font-size:1.15rem;margin:0 0 .4rem}
     .card p{color:#374151;font-size:.96rem;flex:1}
     .price{font-weight:800;color:#1f2937;margin:.7rem 0}
-    .btn{display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:10px;text-align:center}
+    .btn{display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:14px;text-align:center}
     .btn.soon{background:#f3eee4;color:#9a7b4f;pointer-events:none}
     .fine{color:#6b7280;font-size:.85rem;margin:1.4rem 0}
     footer{border-top:1px solid #ece3d4;margin-top:2rem;color:#6b7280;font-size:.85rem}
@@ -64,26 +64,26 @@
   <div class="grid" id="shop"></div>
 
   <section style="margin:2.4rem 0 0">
-    <p class="answer-first" data-aban-answer style="background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid #d97706;border-radius:12px;padding:13px 16px;margin:0 0 18px;font-size:1.02rem"><strong>In short:</strong> A cheat sheet as PDF (the realistic AI use cases for your industry), a set of proven copy-paste prompts and a short data-protection / practice checklist.</p>
+    <p class="answer-first" data-aban-answer style="background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid #d97706;border-radius:14px;padding:13px 16px;margin:0 0 18px;font-size:1.02rem"><strong>In short:</strong> A cheat sheet as PDF (the realistic AI use cases for your industry), a set of proven copy-paste prompts and a short data-protection / practice checklist.</p>
 <h2 style="font-size:1.3rem;margin:0 0 .8rem">Frequently asked questions</h2>
     <div style="display:grid;gap:.7rem">
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
+      <details style="background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:.8rem 1rem">
         <summary style="font-weight:600;cursor:pointer">What's in a kit?</summary>
         <p style="margin:.6rem 0 0;color:#374151">A cheat sheet as PDF (the realistic AI use cases for your industry), a set of proven copy-paste prompts and a short data-protection / practice checklist.</p>
       </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
+      <details style="background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:.8rem 1rem">
         <summary style="font-weight:600;cursor:pointer">What format do I get?</summary>
         <p style="margin:.6rem 0 0;color:#374151">A ZIP with a PDF and text/markdown files, downloadable instantly after purchase. No special software needed.</p>
       </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
+      <details style="background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:.8rem 1rem">
         <summary style="font-weight:600;cursor:pointer">How do I pay?</summary>
         <p style="margin:.6rem 0 0;color:#374151">Securely by card via Stripe. At international checkout the amount may be shown in your local currency.</p>
       </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
+      <details style="background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:.8rem 1rem">
         <summary style="font-weight:600;cursor:pointer">Can I get a refund?</summary>
         <p style="margin:.6rem 0 0;color:#374151">For digital content the right of withdrawal ends once the download starts — before you download, withdrawal within 14 days is possible.</p>
       </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
+      <details style="background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:.8rem 1rem">
         <summary style="font-weight:600;cursor:pointer">Do I need prior knowledge?</summary>
         <p style="margin:.6rem 0 0;color:#374151">No. The kits are made for beginners: copy, fill in your details, check the result. AI gives you drafts — the final professional check stays with you.</p>
       </details>
@@ -102,7 +102,7 @@
       el.innerHTML=items.map(function(p){
         var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Buy — '+p.price+'</a>')
                      :('<span class="btn soon">Coming soon</span>');
-        var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:.5rem">BEST VALUE</span><br>':'';
+        var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-bottom:.5rem">BEST VALUE</span><br>':'';
         var style='scroll-margin-top:1.5rem'+(p.bundle?';border-color:#b45309;box-shadow:0 0 0 2px rgba(180,83,9,.12)':'');
         return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+'</div>';
       }).join('');
