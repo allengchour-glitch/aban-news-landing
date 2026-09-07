@@ -568,14 +568,30 @@ async function grossbildNachVorn(st,productId){
 // Vorhandene Alt-Texte werden NIE überschrieben.
 async function altTexte(st,productId,title){
  try{
-  const r=await sgql(st,`query($id:ID!){product(id:$id){media(first:25){nodes{
-    id mediaContentType ... on MediaImage{alt}}}}}`,{id:productId});
-  const nodes=(r?.data?.product?.media?.nodes||[]).filter(n=>n.mediaContentType==='IMAGE');
   const t=String(title||'').slice(0,90);
-  if(!t||!nodes.length)return 0;
-  const files=nodes.map((n,i)=>({node:n,alt:`${t} – Bild ${i+1} | LuxeStyle`}))
-                   .filter(x=>!String(x.node.alt||'').trim())
-                   .map(x=>({id:x.node.id,alt:x.alt}));
+  if(!t)return 0;
+  // ⚠️ Shopify lehnt fileUpdate mit «Non-ready files cannot be updated» ab, solange ein
+  // Bild noch verarbeitet wird — und der Importer schrieb blind sofort nach dem Anlegen.
+  // Gemessen am 07.09.2026 im Runner-Log: 130 von 1'273 Importen (10 %) bekamen deshalb
+  // GAR KEINEN Alt-Text. Der Fehler meldete sich brav in jeder Zeile und wurde nie gelesen.
+  // Also auf READY warten statt blind schreiben; was dann noch nicht fertig ist, holt der
+  // tägliche Alt-Text-Wächter nach — besser eine Lücke als eine verschluckte Fehlermeldung.
+  let alle=[],nodes=[];
+  for(let v=0;v<4;v++){
+    const r=await sgql(st,`query($id:ID!){product(id:$id){media(first:25){nodes{
+      id mediaContentType status ... on MediaImage{alt}}}}}`,{id:productId});
+    alle=(r?.data?.product?.media?.nodes||[]).filter(n=>n.mediaContentType==='IMAGE');
+    if(!alle.length)return 0;
+    nodes=alle.filter(n=>String(n.status||'')==='READY');
+    if(nodes.length===alle.length)break;
+    await sleep(1500);
+  }
+  if(!nodes.length)return 0;
+  // Die Bildnummer kommt aus der VOLLEN Liste — sonst verschieben sich die Nummern,
+  // sobald ein Bild noch nicht bereit ist, und zwei Läufe vergeben dieselbe Zahl doppelt.
+  const nr=new Map(alle.map((n,i)=>[n.id,i+1]));
+  const files=nodes.filter(n=>!String(n.alt||'').trim())
+                   .map(n=>({id:n.id,alt:`${t} – Bild ${nr.get(n.id)} | LuxeStyle`}));
   if(!files.length)return 0;
   const u=await sgql(st,`mutation($files:[FileUpdateInput!]!){fileUpdate(files:$files){userErrors{message}}}`,{files});
   const e=u?.data?.fileUpdate?.userErrors||[];
