@@ -324,3 +324,8 @@
 15503958442369	uebersprungen:black red -> Schwarz-Rot kollidiert	Kinder Barfussschuhe für Strand und Freizeit
 15504103768449	uebersprungen:Black Color -> Schwarz kollidiert	Pailletten Disco Hemd für Teenager
 15506325275009	uebersprungen:Blue Color -> Blau kollidiert	Ethno-Sandalen mit Klettverschluss und dicker Sohle
+15447889740161	uebersprungen:White Color -> Weiss kollidiert	Sonnen-Cape im Retro-Stil
+15450036601217	uebersprungen:Black -> Schwarz kollidiert	Retro-High-Top-Schuhe für Herren
+15503958442369	uebersprungen:black red -> Schwarz-Rot kollidiert	Kinder Barfussschuhe für Strand und Freizeit
+15504103768449	uebersprungen:Black Color -> Schwarz kollidiert	Pailletten Disco Hemd für Teenager
+15506325275009	uebersprungen:Blue Color -> Blau kollidiert	Ethno-Sandalen mit Klettverschluss und dicker Sohle

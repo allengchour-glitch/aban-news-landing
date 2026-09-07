@@ -14656,3 +14656,6 @@ gid://shopify/Product/15523818439041	38->0	Schwarze Schultertasche mit Gürtelsc
 gid://shopify/Product/15502557741441	10->0	EMS Mikrostrom Massagegerät
 gid://shopify/Product/15412447543681	18->1	Auto-Schnellladegerät PD – ausziehbares Kabel, für Apple & A
 gid://shopify/Product/15414271836545	24->3	Statement-Ohrringe «Retro» · geometrisch & oversized
+gid://shopify/Product/15412301922689	8->1	Panda Handyhalter – süsser Schreibtisch-Ständer für Smartpho
+gid://shopify/Product/15412361593217	144->3	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt f
+gid://shopify/Product/15412433256833	13->2	Handliches Massagegerät – Vibrations-Massage mit mehreren St
