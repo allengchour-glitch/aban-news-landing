@@ -12,6 +12,7 @@ sechs parallel je Antwort, jede Antwort gelesen (`userErrors: []` bei allen 50 A
 | davon DRAFT | **1'426** — von der Routine erwischt, BEVOR der Tag ankam |
 | `status:active AND tag:menue-kern-0906` | 518 (unverändert) |
 | aktive Produkte (Preisbänder, Obergrenze) | ~25'800 (06.09. 20:20 exakt 28'441) |
+✅ **Nachgemessen 07.09. 05:18 UTC, nach dem 04:52-Tick: Kandidatenfilter der Routine = 0, `menue-kern-0906` aktiv = 518, Rückhol-Kandidaten (`status:draft AND tag:bildmass-ok-0906`) = 1'426, unverändert.** Die Routine hat die letzten 100 (zu kleines Bild) gedraftet und findet nichts mehr — der Vorrat ist trocken, bestätigt am Objekt, nicht hochgerechnet.
 Die Routine feuert weiter stündlich, findet nach den letzten 100 aber **0 Treffer** und steht damit von selbst — Klick 1
 (pausieren) ist kein Notfall mehr, nur noch Hygiene.
 - ⚠️ **1'426 Produkte tragen den Marker und sind trotzdem DRAFT**: das ist der Preis eines Wettlaufs gegen einen Automaten
