@@ -14674,3 +14674,7 @@ gid://shopify/Product/15523828990337	11->0	Weisse Färbe‑Nagelaufkleber Durchs
 gid://shopify/Product/15523829055873	16->2	Antihaft-Bratpfanne mit Holzgriff
 gid://shopify/Product/15523829088641	37->0	Canvas-Messenger Tasche 34×8×26 cm
 gid://shopify/Product/15523829121409	26->1	Lichtluxus-Fee-Hemd-weiss Nagelpatch
+gid://shopify/Product/15523829252481	76->0	Tweed Schleifen Nagelpatch
+gid://shopify/Product/15523829547393	10->0	Milk Tea Nagel-Set mit 10 Stück
+gid://shopify/Product/15523829612929	20->0	Ovale Servierplatte aus Massivholz
+gid://shopify/Product/15523829809537	50->0	Champagner-Fake-Nägel mit Astringenz
