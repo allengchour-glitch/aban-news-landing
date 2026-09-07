@@ -1,5 +1,52 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ♻️ «fix die 27k Produkte»: 26'625 zurückgeholt — und der Schutz galt nur für EINEN Lieferanten (2026-09-07, abends)
+Betreiber: «fix die 27k peodukten?». Zurückgeholt wurde, was die stündliche Draft-Routine
+(`trig_013xE8LpGFW2QGuziRJywbHV`, Kriterium «kein `bild-ok`») abgeschaltet hatte — **nach Messung,
+nicht pauschal**: Hauptbild am Objekt ≥ 500 px auf beiden Kanten, kein Risiko-Tag, Lieferanten-SKU.
+Jedes Produkt bekommt `bild-ok` (das Kriterium der Routine selbst) + `bildmass-ok-0906` +
+den Rückgängig-Marker **`rueckhol-0907`**, und verliert `auto-entwurf-0926`.
+
+| gemessen 07.09. 19:30 UTC | |
+|---|---:|
+| Status-Chargen (25 `productChangeStatus` je Aufruf) | **1'065 / 1'065** |
+| Tag-Chargen (50 Produkte = 100 Mutationen je Aufruf) | **465 / 465** |
+| aktive Produkte | ~25'800 → **~43'900** |
+| `status:draft AND tag:auto-entwurf-0926` | ~19'800 → **1'231** (Bild zu klein — dort ist der Draft richtig) |
+| Menüpunkte, die am 06.09. **0** aktive Produkte hatten | Leinen & Tierkleidung **290** · Tierspielzeug **176** · Näpfe **120** · EU-Lager **215** |
+
+- ⛔ **Und der Fund, der die Arbeit erst zu Ende bringt: die Routine war NICHT trocken.** Nach dem
+  Rückhol-Lauf standen **2'724 aktive Produkte ohne `bild-ok`** — sie wären in den nächsten Stunden
+  gedraftet worden. Gelesen war das **keine CJ-Ware**: BigBuy-Markenware (Michael Kors, Police,
+  Jimmy Choo, Lechuza), die eigenen Geschenk-Sets («Aura», «Badi-Ready», «Eternità») und POD.
+  Die Messung vom 06.09. hatte nur `tag:cj-real` erfasst — **ein Schutz, der aus der Messung EINES
+  Lieferanten gebaut ist, lässt die Ware jedes anderen Lieferanten ungeschützt.** Dieselbe Familie wie
+  «wer eine Klasse shopweit repariert, prüft danach die Ware, die anders getaggt ist» (28.08.).
+  Alle 2'724 am Objekt gemessen: **2'652 gut** (Bild ≥ 500 px, kein Risiko-Tag) → `bild-ok` +
+  Marker **`bildmass-ok-0907`**; 13 zu klein und 59 mit Risiko-Tag bleiben bewusst ungeschützt.
+- ⚠️ **Der Engpass war am Ende nicht Shopify, sondern der GETEILTE Eimer.** Der Tagger kam nicht vom
+  Fleck; die Messung sagte warum: `throttleStatus.currentlyAvailable` stand dauerhaft bei **77–99 von
+  2'000** (Restore 100/s) — alle Repo-Skripte teilen sich den Eimer EINES Zugangs-Tokens, und
+  `trust_baustein_wahrheit.py` nahm ihn praktisch vollständig. Eine 400-Punkte-Charge passt dort nie
+  hinein. Zwei Konsequenzen: Chargengrösse auf **25 (=250 Punkte)**, und die Wartezeit wird aus
+  `throttleStatus` BERECHNET statt geraten (`(Kosten − frei)/Rate`). **Fünfte Fassung von «eine
+  Drosselung ist kein Abbruchgrund» — und die erste, in der ein eigener Dauerläufer der Verursacher war.**
+  ⚠️ Der MCP-Konnektor hat einen EIGENEN Eimer (anderer App-Zugang) — dass er flüssig antwortet,
+  sagt nichts über den Eimer der Skripte.
+- ⚠️ **Zwei Agenten haben «Product existiert nicht» gemeldet, und beide Male war es falsch.** Charge
+  0325 («43 von 50 gibt es nicht») und 0375 — beide danach von Hand gesendet: **50/50 `userErrors`
+  leer**. Unter Drosselung liefert Shopify Fehler, die wie ein Datenbefund aussehen. **Ein
+  Agentenurteil ist ein Hinweis, kein Messwert** (28.08.), und diese Klasse gehört an EINER ID mit
+  `product(id:)` gegengeprüft, bevor man sie glaubt.
+- ⚠️ **Vierte Bestätigung: nach einem Timeout zählen, nicht wiederholen.** Eine Sammel-Mutation über
+  30 `productChangeStatus` lief in den Timeout — gemessen waren danach **31 → 3** Produkte übrig,
+  sie war also fast vollständig ausgeführt.
+- ⚠️ **Nicht wiederbelebt und das ist richtig:** ein Produkt mit `sortiment-dedup-draft` (bewusster
+  Draft eines anderen Wächters). Die Rückhol-Prüfung liest die Tags, nicht nur die Zahl —
+  sonst hätte sie den Doppelgänger mit zurückgeholt.
+- **Rückgängig machen** heisst: `bild-ok` von genau den Produkten mit `rueckhol-0907` bzw.
+  `bildmass-ok-0907` nehmen — nicht von allen `bild-ok`.
+
 ## 🔌 Bestellung #1018: vier Steckerversionen, EINE Shop-Variante — der Kunde konnte nicht wählen (2026-09-07, 19:45 UTC)
 Zweite bezahlte Bestellung des Tages: **E-Scooter-Ladegerät, CHF 28.90** (21.90 + 7.00 Versand)
 nach Dulliken, per TWINT. Ausgeliefert und beim Kunden gemeldet innerhalb von **34 Minuten**
