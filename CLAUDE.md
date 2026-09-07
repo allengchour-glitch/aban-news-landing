@@ -1,5 +1,49 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔌 Bestellung #1018: vier Steckerversionen, EINE Shop-Variante — der Kunde konnte nicht wählen (2026-09-07, 19:45 UTC)
+Zweite bezahlte Bestellung des Tages: **E-Scooter-Ladegerät, CHF 28.90** (21.90 + 7.00 Versand)
+nach Dulliken, per TWINT. Ausgeliefert und beim Kunden gemeldet innerhalb von **34 Minuten**
+nach der CJ-Zahlung. Alles am Objekt gemessen, nicht aus dem Bildschirm des Betreibers gelesen:
+| gemessen | |
+|---|---|
+| CJ-Auftrag | `2609071724100987400`, **UNSHIPPED**, bezahlt 17:44:23 |
+| Betrag | **$12.36** = Ware $3.34 + Fracht $9.02 — exakt die vorab gemessene Linie |
+| Linie | CJPacket EQ Ordinary, ab Jinhua ZJ |
+| Variante | vid `2608150717551606700` = **EU-Black** ✓ |
+| Land | **CH**, Dulliken ✓ |
+| Sendungsnummer | **EQKPT8612702883YQ** (equick_Standard) |
+| Shopify | FULFILLED 17:45:18, Versandmail an den Kunden raus, Bestellung archiviert |
+**Marge: 28.90 − ~11.10 Kosten − 1.15 Zahlungsgebühr ≈ +CHF 16.65.**
+- ⛔ **Der eigentliche Fund war kein Versandproblem, sondern ein Auswahlproblem:** CJ führt dieses
+  Ladegerät in **vier Steckerversionen** (EU · US · AU · UK), unser Shop hatte **eine einzige
+  Variante ohne Auswahl** — und der Produkttext versprach trotzdem «Erhältlich mit EU-, US-, AU-
+  oder UK-Stecker». Hätte CJ die US-Version geschickt, hätte der Kunde in Dulliken ein Ladegerät
+  bekommen, das in keine Schweizer Steckdose passt, und **niemand hätte es vor dem Auspacken
+  gemerkt**. Das ist die Wahlversprechen-Klasse (27.08.) mit Kundenwirkung: **bei einem Netzstecker
+  ist die «Farbe» keine Kosmetik, sondern die Funktion.** Titel und Text stehen jetzt fest auf
+  EU-Stecker, samt Hinweis auf die Akku-Spannung.
+- ⚠️ **Und zweimal war meine Anleitung falsch, beide Male durch einen Screenshot korrigiert:**
+  (1) Ich nannte die **pid** — die CJ-App sucht aber nach **SPU/SKU/Name**; richtig ist SPU
+  `CJYD3064243`, Variante `CJYD306424301AZ`. (2) Der Verbinden-Dialog stand auf **Shipping
+  Country: Austria**; das musste auf Switzerland. **Wer jemanden durch eine fremde Oberfläche
+  lotst, muss die Kennung nennen, nach der DIESE Oberfläche sucht** (dritte Fassung nach dem
+  TikTok-Verifizierungs-Irrweg, 29.08.).
+- **Warum der erste CJ-Auftrag leer war:** Das Produkt stand in der CJ-App unter «Unconnected
+  Products» — ohne Zuordnung legt CJs App zwar einen Auftrag an (`CREATED`), aber mit
+  `productAmount 0.00`, ohne vid und ohne Versandlinie. **Ein Auftrag ohne Position ist kein
+  Auftrag, sondern eine Hülle**; er verschwindet beim Verbinden und wird durch einen neuen ersetzt
+  (alte orderId danach «order not found»). Wer nach der Zahlung den alten Auftrag abfragt, hält
+  eine gelungene Bestellung für verschwunden.
+- ✅ Diesmal die Lehre vom #1017 angewandt: Der Zustand wurde **nach** der Zahlung neu gelesen,
+  bevor irgendetwas behauptet wurde — die Versandmail war schon draussen, die Bestellung schon
+  archiviert. Kein zweiter «37-Sekunden-Irrtum».
+- ⚠️ **Ein Fehlalarm, den die Gegenprobe verhindert hat:** CJ meldet `shippingZip = None` — eine
+  Schweizer Adresse ohne Postleitzahl sieht nach einem Zustellrisiko aus. Gegengeprüft an drei
+  weiteren Aufträgen (#1017, LX1015, LX1014): **überall None, zwei davon DELIVERED.** Das Feld
+  wird von dieser API schlicht nicht geführt. **Ein leeres Feld ist erst ein Befund, wenn es bei
+  einem bekannt-gelungenen Fall gefüllt wäre.**
+
+
 ## ✅ Die Custom-App war NIE weg — zwei Tage Diagnose an einem abgelaufenen Token (2026-09-07, 15:11 UTC)
 Seit dem 05.09. steht hier «die Custom-App **autopilot2** ist weg», belegt mit `400 app_not_installed`.
 **Falsch.** Der Betreiber schickte die Anmeldedaten-Seite; gemessen statt vermutet:
