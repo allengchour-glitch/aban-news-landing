@@ -98,7 +98,7 @@ UI = {
                "Werkzeuge — er verspricht kein Google-Ranking."),
     "meta_home": ("{n} KI- & No-Code-Website-Baukästen im Vergleich: "
                   "EU-Hosting, deutsche Oberfläche, KI-Generierung, Online-Shop "
-                  "— ehrlich, ohne Hype, für DACH-Selbstständige."),
+                  "— für DACH-Selbstständige."),
     "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten KI- & No-Code-Website-Baukästen im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Website-Baukästen mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",

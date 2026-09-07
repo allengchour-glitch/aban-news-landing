@@ -98,7 +98,7 @@ UI = {
                "klären. Dieser Radar vergleicht Werkzeuge — er verspricht kein fertiges Video per Klick."),
     "meta_home": ("{n} KI-Video-Tools im Vergleich: "
                   "Text-zu-Video, KI-Avatare/Sprecher, Schnitt & Repurposing, "
-                  "Untertitel & Übersetzung — ehrlich, ohne Hype."),
+                  "Untertitel & Übersetzung."),
     "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten KI-Video-Tools im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "KI-Video-Tools mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",

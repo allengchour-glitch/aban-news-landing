@@ -287,7 +287,7 @@ def render_index(themen):
     <div class="hero">
       <span class="eyebrow">Wissen</span>
       <h1>Themen</h1>
-      <p class="lead">KI verständlich erklärt für Solos und KMU im DACH-Raum — ehrlich, ohne Hype. {len(themen)} Themen, laufend erweitert.</p>
+      <p class="lead">KI verständlich erklärt für Solos und KMU im DACH-Raum. {len(themen)} Themen, laufend erweitert.</p>
     </div>
     <div class="tgrid">
 {cards}    </div>

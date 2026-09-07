@@ -96,7 +96,7 @@ UI = {
                "Datenschutz-Hinweise, Auftragsverarbeitung nach DSGVO) musst du selbst sauber "
                "umsetzen. Dieser Radar vergleicht Werkzeuge — er verspricht keine Wunder-Lösungsquote."),
     "meta_home": ("{n} KI-Kundenservice- und Chatbot-Tools im Vergleich: "
-                  "EU-Hosting, deutsche Oberfläche, Integrationen, Intent-Erkennung & RAG — ehrlich, ohne Hype."),
+                  "EU-Hosting, deutsche Oberfläche, Integrationen, Intent-Erkennung & RAG."),
     "meta_tool": "{name} ({anbieter}): Typ, Schwerpunkt, Integrationen, EU-Hosting und offizieller Link.",
     "meta_cat": "Die besten KI-Kundenservice- & Chatbot-Tools im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Chatbot-Tools mit Schwerpunkt {foc} — Funktionen und offizielle Links im Vergleich.",

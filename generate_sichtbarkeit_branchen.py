@@ -274,7 +274,7 @@ def page(b):
     fragen = "".join(f"<li>„{e(q)}“</li>" for q in b["fragen"])
     title = f"Empfiehlt ChatGPT {b['kurz']}? — KI-Sichtbarkeit für {b['wer']} · aban news"
     desc = (f"Wird {b['kurz']} von ChatGPT, Perplexity & Google AI empfohlen? "
-            f"Gratis prüfen und mit dem Monitor dranbleiben — ehrlich, ohne Hype.")
+            f"Gratis prüfen und mit dem Monitor dranbleiben.")
     kit = KIT.get(slug)
     comp = COMPLIANCE.get(slug)
     cross = ""

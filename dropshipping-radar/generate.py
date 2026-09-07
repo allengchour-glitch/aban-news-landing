@@ -95,7 +95,7 @@ UI = {
                "Produktsicherheit) liegen bei dir. Dieser Radar vergleicht Werkzeuge — "
                "er verspricht keinen schnellen Reichtum."),
     "meta_home": ("{n} Dropshipping-Tools, Lieferanten und Shop-Plattformen im Vergleich: "
-                  "EU-/DACH-Lager, deutsche Oberfläche, Shop-Anbindung — ehrlich, ohne Hype."),
+                  "EU-/DACH-Lager, deutsche Oberfläche, Shop-Anbindung."),
     "meta_tool": "{name} ({anbieter}): Typ, Markt-Fokus, Shop-Anbindung, EU-Lager und offizieller Link.",
     "meta_cat": "Die besten Dropshipping-Anbieter im Bereich {cat} — ehrlich verglichen für DACH.",
     "meta_foc": "Dropshipping-Anbieter mit Fokus {foc} — Shop-Anbindung und offizielle Links im Vergleich.",
