@@ -15154,3 +15154,14 @@ gid://shopify/Product/15525457232257	77->1	Kissenbezug 45x45 mit Muster
 gid://shopify/Product/15525457330561	89->0	Twelve Constellation Augenstiftpalette
 gid://shopify/Product/15525457396097	34->2	5‑Farben‑Gradient‑Palette für Augen
 gid://shopify/Product/15525457723777	132->2	High-Gloss-Matte Augenstiftpalette
+gid://shopify/Product/15525458444673	17->0	Farbwechselndes Lippenlack mit Feuchtigkeit
+gid://shopify/Product/15525458542977	10->0	3D-Fibre Mascara mit Kollagen-Gel · 2 Stück
+gid://shopify/Product/15525458575745	25->0	16 Reihen Fake-Mink Wimpernverlängerung
+gid://shopify/Product/15525460279681	87->0	Stichnadel mit 3 Nadeln aus Holz
+gid://shopify/Product/15525460345217	66->0	Tierfussabdruck-Pad für Katzen – 100 × 70 cm
+gid://shopify/Product/15525460410753	139->1	Makramee Wandbehang mit Quasten
+gid://shopify/Product/15525460672897	21->1	Dekorative Leinwandbilder Set – 3‑teilige Wandkunst
+gid://shopify/Product/15525460967809	11->1	Handgefertigter 3‑D Kreuzanhänger aus farbigem Glas
+gid://shopify/Product/15525461459329	22->1	Metall-Wanddeko fliegender Vogel
+gid://shopify/Product/15525461655937	38->0	Korallenornament – europäisch‑geometrisch
+gid://shopify/Product/15525461885313	12->2	Vase für Blumen und Dekoration
