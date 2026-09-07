@@ -33708,3 +33708,160 @@
 15500968067457	ersetzt-1	Herren Automatikuhr mit Doppelkalender
 15500968100225	ersetzt-1	Teeknife aus Edelstahl
 15500968165761	ersetzt-1	Herren- Quarzuhr mit Stahlarmband und Kalender
+15500968231297	ersetzt-1	Haltungskorrektur Gurt für Rücken und Schultern
+15500968296833	ersetzt-1	Smartes Katzen-Spielzeug mit Sound
+15500968362369	ersetzt-1	Multifunktionaler Liegestütztrainer für Zuhause
+15500968427905	ersetzt-1	Ventilator mit Farblicht, Akku
+15500968493441	ersetzt-1	Eishockey-Helm mit Gesichtsschutz
+15500968526209	ersetzt-1	HD Panorama-Überwachungskamera für Smartphones
+15500968591745	ersetzt-1	Herren Multifunktions-Quarzuhr
+15500968657281	ersetzt-1	Verstellbarer Speedball mit Wandhalterung
+15500968755585	ersetzt-1	5-Schicht-Regal
+15500968788353	ersetzt-1	Multifunktionale, wasserdichte Herrenuhr mit Leuchtfunktion
+15500968821121	ersetzt-1	Geräuschloser Indoor-Basketball für Kinder
+15500968853889	ersetzt-1	Pico Neo3 Controller-Schutzhülle
+15500968952193	ersetzt-1	Armmassagegurt mit Rotlicht und Wärmefunktion
+15500968984961	ersetzt-1	Smartes WLAN-Schaltmodul
+15500969083265	ersetzt-1	RJ45 Netzwerk Switch 2-in-1 / 1-in-2
+15500969116033	ersetzt-1	Taekwondo Kick-Pad für Training und Sparring
+15500969148801	ersetzt-1	Dekokissen mit abstrakten Mustern
+15500971344257	ersetzt-1	Blumenmuster-Kissenbezug
+15500971409793	ersetzt-1	Bambus-Kühlkissen
+15500971442561	ersetzt-1	Geometrisches Sofa-Deckchen
+15500971508097	ersetzt-1	Warme Caramel-Orange-Kissen
+15500971540865	ersetzt-1	Schränkchen für Schmuck
+15500971573633	ersetzt-1	Keramik-Futternapf für Haustiere
+15500971671937	ersetzt-1	Reise-Schmuckbox aus Samt
+15500971704705	ersetzt-1	Fressnapf aus Edelstahl mit erhöhtem Rand
+15500971770241	ersetzt-1	Vintage Schmuckbox mit grossem Fassungsvermögen
+15500971803009	ersetzt-1	Dunkelgrünes Kissen mit geometrischem Steppmuster
+15500971901313	ersetzt-1	Multifunktionales Fitness Board, faltbar
+15500971934081	ersetzt-1	Futterspender Holz für Hamster
+15500971966849	ersetzt-1	Rundes Tablett aus Massivholz
+15500971999617	ersetzt-1	Wendbarer Kissenbezug Orange-Rot aus Baumwoll-Leinen
+15500972032385	ersetzt-1	SD Exerciser mit Metallring
+15500972065153	ersetzt-1	Automatischer Futterspender (5L)
+15500972097921	ersetzt-1	Verlängerungsbügel für Dyson V7–V15
+15500972130689	ersetzt-1	Nordisches Dekokissen für Sofa und Wohnraum
+15500972163457	ersetzt-1	Flying Bird Clip Chest Biceps Bend Lift Fitness Taper Rope G
+15500972228993	ersetzt-1	Wandregal-Set aus Holz, 2-teilig
+15500972294529	ersetzt-1	Kissenhülle Imitat Kaschmir Kontrastfarben
+15500972327297	ersetzt-1	Wasserdichte Outdoor-Matte aus Aluminiumfolie
+15500972360065	ersetzt-1	Smarter 2L Futterautomat für Haustiere
+15500972392833	ersetzt-1	Faltbarer Wäschekorb mit Rollen, XL
+15500972425601	ersetzt-1	Dunkelgraues Kissen aus Baumwolle und Leinen
+15500972458369	ersetzt-1	Hexagonale Kurzhanteln für Zuhause
+15500972556673	ersetzt-1	Rechteckiges Holztablett mit Metallgriff
+15500972589441	ersetzt-1	Sofa Kissenbezug mit geometrischem Muster
+15500972622209	ersetzt-1	Verstellbare Kurzhanteln für Frauen (2–5 kg)
+15500972687745	ersetzt-1	Futtertonne mit Deckel
+15500972753281	ersetzt-1	Ausziehbarer Organizer für Küchenutensilien
+15500972786049	ersetzt-1	Lazy Sofa Tatami Bett Rückenlehnenstuhl
+15500972884353	ersetzt-1	Wasserableiches Hundeschnuppelzeug
+15500972917121	ersetzt-1	Badregal aus Edelstahl
+15500972949889	ersetzt-1	Intelligenter Futterautomat mit Video
+15500973015425	ersetzt-1	Dachshund Couchtisch-Aufbewahrungsbox
+15500973048193	ersetzt-1	Outdoor Wasserdispenser mit Elektropumpe
+15500973277569	ersetzt-1	Faltbarer Silikon-Napf für Hunde und Katzen
+15500973310337	ersetzt-1	Milchzahn-Sammelbox aus Buchenholz
+15500973343105	ersetzt-1	Wasserdichter Leucht-Kartenkompass mit Spiegel
+15500973605249	ersetzt-1	Futterautomat für Aquarien
+15500974129537	ersetzt-1	Outdoor-Zeltpfosten
+15500974162305	ersetzt-1	Multifunktionale Regenbogen-Hundeleine
+15500974195073	ersetzt-1	Outdoor Faltmatte XPE
+15500974227841	ersetzt-1	DIY Diamond Painting Nachtlicht «Jahreszeitenbaum»
+15500974260609	ersetzt-1	Halsband- und Leinen-Set «Small Leaf»
+15500974326145	ersetzt-1	Emoticon Diamond Painting Schlüsselanhänger DIY
+15500974358913	ersetzt-1	Hundehalsband für kleine bis grosse Hunde
+15500974391681	ersetzt-1	DIY Diamond Painting Schlüsselanhänger «Katzenpfote»
+15500974424449	ersetzt-1	USB-LED-Hundehalsband für mehr Sicherheit
+15500974457217	ersetzt-1	DIY Diamond Painting Schlüsselanhänger Katze
+15500974522753	ersetzt-1	Atmungsaktive Zehenkappen-Sandalen mit flachem Absatz
+15500974588289	ersetzt-1	Katzenkopf-Halter
+15500974621057	ersetzt-1	Diamond Painting Schlüsselanhänger DIY Set
+15500974653825	ersetzt-1	Keilsandalen mit Blumen-Cutouts
+15500974686593	ersetzt-1	Hundehalsband aus Titanstahl mit Diamant-Knopf
+15500974752129	ersetzt-1	DIY Diamond Painting Schlüsselanhänger Weihnachten
+15500974817665	ersetzt-1	Halsband aus Rindsleder mit Strass-Punkten
+15500974883201	ersetzt-1	Elegante Cat-Heel Sandalette
+15500974915969	ersetzt-1	DIY Diamant Schlüsselanhänger Set
+15500974948737	ersetzt-1	Hundehalsband aus Edelstahl und Titan
+15500975014273	ersetzt-1	Lackleder-Sandalen mit niedrigem Absatz
+15500975047041	ersetzt-1	Schmetterling Diamond Painting Schlüsselanhänger Set
+15500975079809	ersetzt-1	Hundehalsband
+15500975178113	ersetzt-1	Hundeführsel
+15500975210881	ersetzt-1	Diamond Painting Set mit runden Kristalldiamanten
+15500975309185	ersetzt-1	Retro T-Riemen Sandalen mit runder Kappe
+15500982223233	ersetzt-1	Bär im Neon-Licht
+15500982288769	ersetzt-1	Kaninchenmuster-Kanvas
+15500982321537	ersetzt-1	Pfingstrosa Flip-Flops
+15500982419841	ersetzt-1	Mein Edelsteinbild
+15500982452609	ersetzt-1	Damen Sandalen mit dicker Sohle aus Leder
+15500982518145	ersetzt-1	Leopard-Diamantmalerei
+15500982616449	ersetzt-1	Farbenprächtige Schwertfisch-Diamantmalerei
+15500982649217	ersetzt-1	Spitze Sandaletten mit niedrigem Absatz
+15500982681985	ersetzt-1	Elektronisches Hunde-Trainingshalsband
+15500982747521	ersetzt-1	Katzen Diamond Painting Set
+15500982780289	ersetzt-1	Halstuch mit grosser Saphir-Schleife für Haustiere
+15500982813057	ersetzt-1	Geflochtene Sandalen mit Blockabsatz
+15500982845825	ersetzt-1	Gestricktes Kirschblüten-Halsband für Haustiere
+15500982878593	ersetzt-1	Laufendes Pferd Diamond Painting
+15500982944129	ersetzt-1	Keilsandalen aus Strohgeflecht
+15500982976897	ersetzt-1	Explosionsgeschütztes, bissfestes Haustierhalsband
+15500983009665	ersetzt-1	Schneeleoparden-Stickerei
+15500983042433	ersetzt-1	Halskette für grosse Hunde
+15500983075201	ersetzt-1	Sandalen mit klobigem Absatz und Metallschnalle
+15500983140737	ersetzt-1	Fisch im Wasser Digital Painting
+15500983173505	ersetzt-1	Halsband mit Schleife für Hunde und Katzen
+15500983206273	ersetzt-1	Serpentine Pumps mit spitzer Zehenkappe
+15500983271809	ersetzt-1	Halsband mit grosser Schleife für Katzen & Hunde
+15500983337345	ersetzt-1	Elegante Peep-Toe Sandalette aus Wildleder
+15500983402881	ersetzt-1	GPS-Tracker für Haustiere und Personen
+15500983501185	ersetzt-1	Handgefertigtes Gemälde
+15500983566721	ersetzt-1	Retro Halstuch mit Glocke für Haustiere
+15500983632257	ersetzt-1	Sommer-Plattform-Sandalen mit Klettverschluss
+15500983665025	ersetzt-1	Halstuch mit Glöckchen für Haustiere
+15500983796097	ersetzt-1	Keilabsatz-Slipper mit Klettverschluss
+15500983828865	ersetzt-1	Festliches Halsband mit Schleife für Haustiere
+15500983861633	ersetzt-1	Halsband Kleine Duftperle
+15500983992705	ersetzt-1	Plateau-Sandalen im römischen Stil
+15500984025473	ersetzt-1	Hunde-Geschirr mit Leine, bequem & wasserdicht
+15500984058241	ersetzt-1	Luftstromladegerät
+15500984091009	ersetzt-1	Sommer-Sandalen im Römer-Stil
+15500984156545	ersetzt-1	Hund- und Katzenkleid «Tausendfüssler»
+15500984222081	ersetzt-1	Reissfestes Zuggeschirr für Haustiere
+15500984320385	ersetzt-1	Hundeleine aus Baumwollseil
+15500984353153	ersetzt-1	Herren Leder Schnürschuhe Casual
+15500984385921	ersetzt-1	Outdoor Nylon Hundeleine
+15500984680833	ersetzt-1	Britische Casual-Lederschuhe mit Metallschnalle
+15500984713601	ersetzt-1	3-in-1 OTG Kartenleser für Mobile Geräte
+15500984746369	ersetzt-1	Outdoor-Hundeleine, wasserdicht & robust
+15500984779137	ersetzt-1	Atmungsaktive Stoffschuhe für Herren
+15500984811905	ersetzt-1	Elegantes Etui-Kleid mit eckigem Ausschnitt
+15500984844673	ersetzt-1	T100 Kabelloses Ladegerät mit Ständer
+15500984877441	ersetzt-1	Leder Sneaker Atmungsaktiv Bequem
+15500984910209	ersetzt-1	Geblümtes Baumwoll-Trägerkleid mit weitem Rock
+15500985041281	ersetzt-1	Unisex Badeschuhe
+15500988481921	ersetzt-1	Sommerkleid mit gefälteter Rockschürze
+15500988580225	ersetzt-1	Wireless Ladestation
+15500988612993	ersetzt-1	Sicherheitsstiefel mit Stahlkappe
+15500988678529	ersetzt-1	Kurzarm-Sommerkleid für Damen
+15500988744065	ersetzt-1	Retro-Kleid mit Reverskragen und Karomuster
+15500988776833	ersetzt-1	Ultraleichte Flyknit Running-Sneaker
+15500988809601	ersetzt-1	Grossraum-Ladestation
+15500988907905	ersetzt-1	Strickkleid mit langen Ärmeln für Damen
+15500988940673	ersetzt-1	High-top Running Mesh Sneaker für Herren
+15500988973441	ersetzt-1	Elegantes Langarm-Kleid in Schwarz
+15500989596033	ersetzt-1	Elegantes, hochtailliertes Langarmkleid mit V-Ausschnitt
+15500989661569	ersetzt-1	Magnetisches kabelloses Ladegerät fürs Auto
+15500989694337	ersetzt-1	Herren Outdoor-Sportschuh
+15500989759873	ersetzt-1	Tailliertes ärmelloses Midikleid mit Taschen
+15500989792641	ersetzt-1	Kabelloses Ladehalterung für’s Auto
+15500989825409	ersetzt-1	Leder Casual Sportschuhe mit Flügelmuster
+15500989858177	ersetzt-1	Elegantes zweiteiliges Midi-Kleid mit Häkelspitze
+15500989923713	ersetzt-1	Multi-Funktions Reiseadapter mit Dual-USB-Charger
+15500989956481	ersetzt-1	Atmungsaktive Leinen-Sneaker für Herren
+15500989989249	ersetzt-1	Lässiges Polka-Dot Langarmkleid
+15500990022017	ersetzt-1	Pink Sommerkleid
+15500990087553	ersetzt-1	Atmungsaktive Wildleder-Freizeitschuhe für Herren
+15500990120321	ersetzt-1	Chiffon-Kleid mit kurzen Ärmeln für grosse Grössen
