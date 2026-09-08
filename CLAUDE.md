@@ -1,5 +1,32 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🎯 Ein Stellvertretermerkmal beantwortet die Frage nicht, die man stellen wollte (2026-09-08)
+Der offene Beleg von gestern eingelöst — und er hat den Fix widerlegt, nicht bestätigt.
+`wahlSicher()` war am Modul geprüft (12 Testfälle), am Erzeugnis nie. Gemessen an den Importen
+seit dem Einbau:
+| | Ein-Varianten-Produkte | mit Auswahl-Versprechen |
+|---|---:|---:|
+| ab 03.09. (vor dem Einbau) | 1'907 | 156 (**8,2 %**) |
+| ab 07.09. (nach dem Einbau) | 75 | 4 (**5,3 %**) |
+Besser, aber **nicht dicht** — und die Ursache war mein eigenes Tor, nicht die Regel. Ich hatte
+`if(!fash) g=wahlSicher(g)` geschrieben, weil Modeartikel «ja Varianten haben». **`buildFashion`
+liefert aber auch dann ein Objekt, wenn CJ genau EINE Variante führt.** Ein Outdoor-Rucksack und
+ein Smartwatch-Armband gelten als Mode, bekamen eine einzige Variante und versprachen im Text
+trotzdem «Erhältlich in verschiedenen Farben».
+- **Gefragt wird jetzt die VARIANTENZAHL selbst** (`if(variants.length===1)`), in beiden
+  betroffenen Importern; dafür musste der `variants`-Block vor die Textstufe. `cj_sku_import`
+  legt immer eine Standard-Variante an und prüft ohnehin ausnahmslos.
+- **Die Regel war die ganze Zeit richtig:** an den vier durchgerutschten Texten gemessen
+  1–2 Klauseln → **0**, bei 25–115 Zeichen Verlust — kein zerschnittener Satz. Alle vier live
+  repariert, mit demselben `wahlSicher()` statt einer zweiten Regelquelle; Faktenblock und
+  Trust-Baustein je 1→1 und 2→2 gegengeprüft, Rest-Klauseln live **0/4**.
+- **Die Lehre ist die Familie von «eine PID ist ein Name, kein Zeitstempel» (20.08.):** `fash`
+  war ein Stellvertreter für «hat mehrere Varianten» — und Stellvertreter liegen irgendwann
+  daneben. Wo das Merkmal selbst verfügbar ist, fragt man das Merkmal.
+- ⚠️ **Und die Messung wäre ohne Gegenprobe wertlos gewesen:** «4 Treffer» allein sagt nichts.
+  Erst die Zahl VOR dem Einbau (8,2 %) macht daraus einen Befund — und zeigt zugleich, dass
+  die verbleibenden 5,3 % kein Rauschen sind, sondern ein Loch.
+
 ## 🎬 «Coole Videos auf die Webseite»: der Endpunkt war ein POST — und der Deckel ist der Plan (2026-09-07, 21:30 UTC)
 Betreiber mit Screenshot der CJ-App («die bären und sonstige videos auch»). Mein Gedächtnis vom
 05.09. sagte «CJ liefert `productVideo: null`, 0 von 400 Produkten haben ein Video» — der

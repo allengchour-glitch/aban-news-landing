@@ -310,10 +310,12 @@ for(const p of cand){
  // ⚠️ 07.09.2026: Ohne `fash` entsteht EINE Variante «Standard» — dann darf der Text keine
  // Auswahl versprechen. Deterministisch statt als Prompt-Bitte (Lehre 04.09.); dieselbe
  // Pruefung steckt in cj_category_fill und cj_sku_import (Geschwister-Lehre 29.08.).
- if(!fash) g=wahlSicher(g);
- const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS'); // Faktenblock: cj_specs.mjs (02.09.2026)
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
  const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
+ // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — `buildFashion` liefert aber auch bei
+ // EINER CJ-Variante ein Objekt. Gefragt wird jetzt die VARIANTENZAHL selbst.
+ if(variants.length===1) g=wahlSicher(g);
+ const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS'); // Faktenblock: cj_specs.mjs (02.09.2026)
  const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
   tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neuheit','neu']:['trend','viral','video-hit','cj-real','dropship','neuheit','neu'],descriptionHtml:html,
   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},

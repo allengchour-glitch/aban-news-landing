@@ -821,11 +821,16 @@ for(const [cat,label] of grp.cats){
    // keine Auswahl versprechen. Der Prompt verbietet das seit dem 03.09.; gemessen versprechen
    // trotzdem 52 von 1'205 seither angelegten Ein-Varianten-Produkten eine Auswahl (4,3 %).
    // Ein Modell kann eine Anweisung ignorieren, eine Pruefung nicht (Lehre 04.09.).
-   if(!fash) g=wahlSicher(g);
-   // 📋 Faktenblock (02.09.2026): Material/Gewicht/Masse aus CJ → Tabelle «Spezifikationen» im Theme. Quelle: cj_specs.mjs
-   const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
+   // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — aber `buildFashion` liefert auch dann
+   // ein Objekt, wenn CJ nur EINE Variante hat. Ein Rucksack und ein Smartwatch-Armband gelten
+   // als Mode, bekamen genau eine Variante und versprachen im Text trotzdem «erhältlich in
+   // verschiedenen Farben». Gefragt werden muss die VARIANTENZAHL, nicht die Warengruppe —
+   // ein Stellvertretermerkmal beantwortet die Frage nicht, die man stellen wollte.
+   if(variants.length===1) g=wahlSicher(g);
+   // 📋 Faktenblock (02.09.2026): Material/Gewicht/Masse aus CJ → Tabelle «Spezifikationen» im Theme. Quelle: cj_specs.mjs
+   const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];
    // 03.09.2026: Der Tag «neuheit» speist die Startseiten-Reihe «Neuheiten 2026»
    // (Smart-Regel TAG=neuheit, CREATED_DESC). KEIN Importer setzte ihn — der juengste
