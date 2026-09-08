@@ -372,6 +372,30 @@ Zugriff». Der Betreiber lieferte den Produktions-Schlüssel; ZUERST getestet, D
   weiterhin **«1000.00»**, Gmail seit dem 16.08. **keine** weitere BigBuy-Mail. Der bestätigte
   Antrag («wirksam innerhalb von 5 Werktagen») ist damit seit **23 Tagen** nicht ausgeführt.
   Nächster Bearbeitungsdienstag ist der 15.09. — der Tag, an dem das Abo endet.
+- ⛔ **08.09.: DIE URSACHE IST GEFUNDEN, und sie liegt bei BigBuy — die gespeicherte IBAN ist
+  kaputt.** Es gab nicht einen Antrag, sondern **zwei** (15.07. EUR 750, 16.08. EUR 1'000),
+  beide von BigBuy als erfolgreich bestätigt, keiner je angekommen. Selbst nachgerechnet
+  (ISO 13616, mod 97):
+  | gespeichert | Länge | Prüfziffer | Folge |
+  |---|---:|---|---|
+  | 16.08. (1'000 €) | **22** statt 21 | **ungültig** | keine Bank kann das ausführen — das Geld konnte nie weg |
+  | 15.07. (750 €) | 21 | **gültig** | technisch ausführbar, gehört laut Betreiber aber nicht ihm |
+  **Der Unterschied ist der Punkt: eine ungültige IBAN prallt ab, eine gültige FREMDE zahlt an
+  einen Fremden.** Beruhigend ist die Bilanz: die Geldbörse steht auf 1'000.00 — hätte das
+  750er-Geld sie verlassen und wäre nicht zurückgekommen, stünde dort weniger. Das ist
+  vereinbar mit «nie etwas hinausgegangen», aber kein Beweis; nur BigBuy weiss es.
+- ⚠️ **BigBuys Support-Mail ist ein Autoresponder.** Auf die ausführliche Anfrage vom 07.09.
+  kam am 08.09. 07:39 UTC eine Vorlage: «der schnellste Weg ist ein Ticket im Contact Area»,
+  Abteilung **💳 Administration** (Invoices, refunds, tax information), «nur am Computer
+  bedienbar, nicht am Handy». **Keine der vier Fragen wurde beantwortet.** Wer dort per Mail
+  nachfasst, muss damit rechnen, im Vorlagen-Kreis zu landen — das Ticket ist der Kanal.
+- **Auf «bigbuy mail antworten» (08.09.) beantwortet:** Anfrage kompakt wiederholt, um
+  Weiterleitung an Administration gebeten, und ausdrücklich um die **Ticket-Referenz**, falls
+  der Mail-Kanal nicht bearbeiten kann. Zwei Punkte bewusst anders als in der Mail des
+  Betreibers: die Stornierung von 18138523 steht als **Frage** («bitte erklärt mir erst, was
+  dieser Datensatz ist»), und die 750er-IBAN ist als *gültig, aber fremd* benannt — das ist
+  eine andere Dringlichkeit als eine kaputte Nummer.
+  ⚠️ Bankdaten stehen in KEINER Repo-Datei — das Repo ist öffentlich; sie leben nur in der Mail.
 - Zwei Selbstmessungen gesetzt (Di 08.09., Fr 11.09.) — das Guthaben ist ab jetzt von hier aus
   messbar, der Betreiber muss dafür nichts mehr nachsehen.
 
