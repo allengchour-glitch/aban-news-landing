@@ -22386,3 +22386,4 @@ gid://shopify/Product/15500990185857	CHF 18.65	60 Varianten	Marathon Carbon Raci
 gid://shopify/Product/15500990251393	CHF 23.54	5 Varianten	Elegantes Abendkleid für Damen
 gid://shopify/Product/15500990284161	CHF 7.13	1 Varianten	Handgemachte Pinch-Blumen Mandel-Nagelspitzen
 gid://shopify/Product/15500990349697	CHF 23.21	52 Varianten	Business Casual Slipper aus Wildleder
+gid://shopify/Product/15500990382465	CHF 7.64	1 Varianten	Fingernagel-Patch «Blauer Kontrast»
