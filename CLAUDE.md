@@ -1,3 +1,80 @@
+## 🩻 Ein Kommentar hinter einer fortgesetzten Zeile hat einen Wächter 166-mal abgeschaltet (2026-09-08)
+Im Aufseher-Log stand zwischen zwei Startmeldungen `bash: -c: option requires an argument` —
+166-mal, seit 15:16 desselben Tages. Ursache ist mein eigener Kommentar von 15:16:
+```
+( cd "$REPO" && setsid bash -c \
+    # ⚠️ EIN Schloss fuer ALLE Schreiber auf descriptionHtml …
+    "exec 9>/tmp/lock_produkttext.lock; … versandaussagen_wahrheit.py" \
+```
+**Ein Backslash-Zeilenumbruch klebt die NÄCHSTE Zeile an — und das war ein Kommentar.**
+`bash -c` bekam damit gar kein Argument. **`versandaussagen_wahrheit.py` — die tägliche
+Live-Kontrolle gegen die Zombie-Klasse vom 15.08. — ist seit 15:16 KEIN EINZIGES MAL
+gestartet**, und die Zeile darunter meldete trotzdem brav «versandaussagen Live-Kontrolle
+gestartet». **Zweite Fassung von «eine Meldung, die eine ABSICHT meldet statt eines
+Ergebnisses» (29.08.)** — nur diesmal war die Absicht selbst schon gescheitert.
+- **Die Ironie gehört zur Lehre:** Der Kommentar, der die Schloss-Regel erklärt, hat genau
+  den Lauf abgeschaltet, den er schützen sollte. **Ein Kommentar gehört VOR das Kommando,
+  nie in eine fortgesetzte Zeile** — `bash -n` sieht das nicht, es ist syntaktisch gültig.
+- Prüfregel statt Gedächtnis (über die ganze Datei, genau 1 Fundstelle):
+  `awk '/\\$/{p=NR; getline; if ($0 ~ /^[[:space:]]*#/) print p}'`
+- Belegt ist nicht die Reparatur, sondern der Lauf: nach dem Fix steht
+  `python3 automation/versandaussagen_wahrheit.py` in der Prozessliste, und die Fehlerzeile
+  ist aus der Runde verschwunden.
+- ⚠️ Gefunden nur, weil ich eine unerklärte Zeile im Log NICHT überlesen habe. Sie stand
+  166-mal da und sah aus wie Rauschen (Lehre 29.08.: eine Zeile, die sich in jedem Durchgang
+  wiederholt, ist eine Meldung).
+
+## 🔀 EIN Werkzeug, ZWEI Registrierungen — die mit der veralteten Quelle gewann (2026-09-08)
+`produktdetails_vereinen` stand im Aufseher **zweimal**: in der generischen Wächterschleife
+**ohne `LISTE=`** (also mit seiner Vorgabequelle `/tmp/export.jsonl`, Stand 30.08.) und in
+einem eigenen Kettenblock **mit `LISTE=`** (Arbeitsliste des Klassen-Scans, live).
+Die Schleife steht weiter oben und startet zuerst; danach greift im Kettenblock die
+`ps`-Prüfung «läuft schon» und der RICHTIGE Lauf tritt still am `flock -n` ab — ohne eine
+Zeile im Log. Ergebnis: alle zwei Minuten ein Neustart (**236 «restart»-Meldungen in vier
+Minuten**), jedes Mal die Meldung «Produkte mit doppeltem Produktdetails-Block: **0**» —
+und live trugen **147 Produkte** den Befund.
+- **Die Lehre von 20.08. in neuer Form:** Damals war es «die Startliste gehört an EINE
+  Stelle», hier ist es **ein Werkzeug in zwei Listen mit verschiedenen Quellen**. Wer eine
+  Konfiguration an zwei Orten pflegt, pflegt zwei Stände — und der schlechtere kann gewinnen,
+  weil er zuerst dran ist.
+- ⚠️ Beide Meldungen waren für sich plausibel: der Kettenblock sagte «gestartet», die
+  Schleife sagte «0». **Zwei richtige Meldungen können zusammen eine Lüge ergeben.**
+- Behoben: aus der Schleife entfernt, der Kettenblock bleibt. Danach 150 → **0 am Objekt**.
+
+## ⛔ Meine Zwei-Produkt-Stichprobe hätte eine echte Klasse geschlossen (2026-09-08)
+Der Klassen-Bericht meldete 150 doppelte «Produktdetails»-Blöcke und 124 Floskeln; die
+Werkzeuge meldeten 0. Ich habe **zwei** Produkte am Objekt gelesen, in beiden 0 gefunden und
+war einen Satz davon entfernt, die Klassenkontrolle für falsch zu erklären.
+**Die Nachzählung über ALLE 150 mit dem Muster der Kontrolle selbst: 147 echt.** Meine zwei
+Griffe hatten ausgerechnet zwei der drei bereits sauberen erwischt.
+- **Eine Stichprobe von zwei hat keinen Plural** (dieselbe Familie wie die 30er-Stichprobe
+  am 29.08., die einen gesunden Menülink als tot meldete). Die Gegenprobe kostete EINE
+  Abfrage über 150 IDs.
+- **Und die Gegenrichtung stimmte:** Die Floskel-Klasse ist wirklich 0 — die tägliche Kette
+  hatte sie geschlossen. **Der Bericht ist ein Zeugnis über seinen Zeitpunkt; die
+  ARBEITSLISTE ist der ehrlichere Gegenstand**, denn sie lässt sich am Objekt nachzählen,
+  eine Zahl im Bericht nicht.
+- ⚠️ Zählfalle daneben: «Produktdetails» kommt im Text zweimal vor, weil der CSS-Klassenname
+  `ls-produktdetails` mitzählt — genau der Fehlalarm, der am 03.09. schon einmal 4'559 statt
+  1'743 meldete. Die Kontrolle zählt richtig (`<h4>…</h4>`), meine schnelle Probe nicht.
+
+## 🧟 Der zweite Block hat KEINEN Schreiber mehr — und ist trotzdem dreimal zurückgekommen (2026-09-08)
+Die 150 Produkte tragen zwei Faktenblöcke mit **verschiedenen Containern**:
+`ls-produktdetails` **und** `ls-feed-details`. Gemessen statt vermutet: `ls-feed-details`
+wird von drei Werkzeugen GELESEN (`produktdetails_wahrheit`, `produktdetails_vereinen`,
+`cj_specs_backfill`) und von **keinem geschrieben** — es ist der Rest eines Generators von
+vor dem 11.08. `cj_specs_backfill` hängt auch nichts an: findet es einen echten Block, macht
+es `continue`.
+- ⚠️ **Der Verursacher ist damit NICHT benannt, und das gehört so gesagt.** Das Ledger führt
+  jede der 150 IDs **dreimal** — Quittungen vom 03., 04. und 05.09. (datiert über
+  `git log -S`, Lehre 04.09.: ein Ledger ohne Zeitstempel bekommt ihn aus der Versionsgeschichte).
+  Dreimal vereint, dreimal zurück. Wer den alten Text zurückschreibt, weiss ich nicht; es kann
+  auch ausserhalb dieses Repos liegen. **Nachmessen, nicht behaupten** — dieselben 150 IDs
+  morgen erneut am Objekt zählen.
+- Die betroffenen Produkte stammen aus dem Juni und wurden heute um 18:08 von einem
+  Massen-Schreiber angefasst (`updatedAt` sekundengenau aufsteigend) — das erklärt die
+  Berührung, nicht die Doppelung.
+
 # CLAUDE.md — Projekt-Gedächtnis
 
 ## 🪟 Die Titel im Schaufenster gelesen: 6 von 248 mit Befund — und premium-schmuck war ein Fehlalarm (2026-09-08)

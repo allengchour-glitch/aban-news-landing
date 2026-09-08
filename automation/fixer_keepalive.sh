@@ -313,7 +313,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -381,7 +381,11 @@ while true; do
     # Sie nehmen zusaetzlich das GETEILTE Schloss — mit `-w`, damit ein kurz belegtes
     # Schloss keinen Lauf verschluckt, aber nicht laenger als der Container lebt.
     # Regel seit 03.09.: EIN Lock, EIN Ledger — nie ein eigener Lockfile je Werkzeug.
-    case " produktdetails_vereinen versand_jenachland ss_statt_scharf_s fremdzeichen_guard " in
+    # ⚠️ produktdetails_vereinen steht hier NICHT mehr: es hat weiter unten einen eigenen
+    # Startblock mit LISTE= (Arbeitsliste des Klassen-Scans). In dieser Schleife lief es
+    # OHNE LISTE, las den Export vom 30.08. und meldete «0 doppelte Bloecke» — und sein
+    # laufender Prozess liess den richtigen Lauf per ps-Pruefung aussetzen (08.09.2026).
+    case " versand_jenachland ss_statt_scharf_s fremdzeichen_guard " in
       *" $L "*) TXTLOCK="exec 8>/tmp/lock_produkttext.lock; flock -w 240 8 || exit 0;" ;;
       *)        TXTLOCK="" ;;
     esac
@@ -1075,15 +1079,20 @@ while true; do
       START=0
       if ! grep -q "Produkte geschrieben:" "$VL" 2>/dev/null; then START=1
       elif [ "$ALTER" -gt 259200 ]; then mv "$VL" "$VL.alt" 2>/dev/null; START=1; fi
+      # ⚠️ EIN Schloss fuer ALLE Schreiber auf descriptionHtml (03.09.2026).
+      # Jeder Schreiber hatte seinen EIGENEN Lockfile — das verhindert nur seinen
+      # eigenen Doppelstart, nicht zwei VERSCHIEDENE Werkzeuge auf demselben Feld.
+      # Gemessen: versandaussagen und trust_baustein liefen gleichzeitig; trust haelt
+      # seinen Seitentext bis zu 15 s, in dieser Luecke schreibt es die eben gemachte
+      # Reparatur zurueck (Zombie-Klasse 15.08.). Dieselbe Lehre wie post_guard:
+      # EIN Lock, EIN Ledger — nie ein eigener Lockfile je Werkzeug.
+      # ⚠️⚠️ 08.09.2026: Dieser Kommentarblock stand ZWISCHEN «bash -c \» und seinem
+      # Argument. Ein Backslash-Zeilenumbruch klebt die naechste Zeile an — und das war
+      # ein Kommentar. Folge: `bash: -c: option requires an argument`, der Lauf startete
+      # 166-mal NICHT, und die Zeile darunter meldete trotzdem «gestartet». Ein Kommentar
+      # gehoert VOR das Kommando, nie in eine fortgesetzte Zeile.
       if [ "$START" = 1 ]; then
         ( cd "$REPO" && setsid bash -c \
-            # ⚠️ EIN Schloss fuer ALLE Schreiber auf descriptionHtml (03.09.2026).
-            # Jeder Schreiber hatte seinen EIGENEN Lockfile — das verhindert nur seinen
-            # eigenen Doppelstart, nicht zwei VERSCHIEDENE Werkzeuge auf demselben Feld.
-            # Gemessen: versandaussagen und trust_baustein liefen gleichzeitig; trust haelt
-            # seinen Seitentext bis zu 15 s, in dieser Luecke schreibt es die eben gemachte
-            # Reparatur zurueck (Zombie-Klasse 15.08.). Dieselbe Lehre wie post_guard:
-            # EIN Lock, EIN Ledger — nie ein eigener Lockfile je Werkzeug.
             "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; QUELLE=live IGNORIERE_LEDGER=1 exec python3 automation/versandaussagen_wahrheit.py" \
             >> "$VL" 2>&1 9>&- & )
         echo "$(date -u +%H:%M) versandaussagen Live-Kontrolle gestartet"
