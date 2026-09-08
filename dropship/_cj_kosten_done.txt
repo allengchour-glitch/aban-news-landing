@@ -20606,3 +20606,26 @@ gid://shopify/Product/15500403212673	CHF 20.66	1 Varianten	Keramik-Spatel- und L
 gid://shopify/Product/15500403245441	CHF 17.30	1 Varianten	Tischtennisball-Verstärker
 gid://shopify/Product/15500403310977	CHF 12.75	1 Varianten	Reinigungs-Schaufel
 gid://shopify/Product/15500403343745	CHF 10.26	1 Varianten	Gestricktes Hundehalstuch im Weihnachtslook
+gid://shopify/Product/15500403376513	CHF 8.30	1 Varianten	Uhrenkiste
+gid://shopify/Product/15500403409281	CHF 24.39	1 Varianten	Bauch-Training Hula-Hoop
+gid://shopify/Product/15500403442049	CHF 10.08	1 Varianten	Aluminium-Armband
+gid://shopify/Product/15500403474817	CHF 9.62	1 Varianten	Kartoon-Halsband für Hunde
+gid://shopify/Product/15500403507585	CHF 21.75	1 Varianten	Crossbody Sport- & Reisetasche
+gid://shopify/Product/15500403605889	CHF 7.37	1 Varianten	Sockenhilfe für Senioren
+gid://shopify/Product/15500403638657	CHF 24.13	1 Varianten	Hundetrage
+gid://shopify/Product/15500403671425	CHF 14.99	1 Varianten	Holz-Schmuckkiste für Ringe, Ohrringe und Stecker
+gid://shopify/Product/15500403704193	CHF 19.63	1 Varianten	Peak Racket Silikon-Handschlaufe
+gid://shopify/Product/15500403736961	CHF 5.54	1 Varianten	Auslaufsichere Silikon-Stöpsel für Trinkhalme
+gid://shopify/Product/15500403769729	CHF 9.02	1 Varianten	H-förmiges Brustgeschirr für Haustiere
+gid://shopify/Product/15500403802497	CHF 30.60	1 Varianten	Retro Schmuckbox aus Metall mit Schloss
+gid://shopify/Product/15500403835265	CHF 41.89	1 Varianten	Trainingsrad für den Bauch
+gid://shopify/Product/15500403868033	CHF 30.13	1 Varianten	Teleskop-Ratschenschlüssel 72 Zähne
+gid://shopify/Product/15500403900801	CHF 6.89	1 Varianten	Hundeleinen-Tragegurt
+gid://shopify/Product/15500403933569	CHF 14.73	1 Varianten	Drehbarer, wasserdichter Smartphone-Halter
+gid://shopify/Product/15500403966337	CHF 5.01	1 Varianten	Nuss-Ei-Öffner
+gid://shopify/Product/15500404031873	CHF 8.96	1 Varianten	Skyblauer Halsgurt
+gid://shopify/Product/15500404064641	CHF 14.73	1 Varianten	Boxbirne für reaktionsschnelles Boxtraining
+gid://shopify/Product/15500404097409	CHF 14.54	1 Varianten	Schmuckkästchen
+gid://shopify/Product/15500404130177	CHF 16.09	1 Varianten	Haltbarer Hundelehreif
+gid://shopify/Product/15500404294017	CHF 13.80	1 Varianten	Hundesicherheitsgurt
+gid://shopify/Product/15500404326785	CHF 59.22	1 Varianten	Yoga Wheel Set 4-teilig

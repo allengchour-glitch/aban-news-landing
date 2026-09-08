@@ -1,3 +1,29 @@
+# Cowork-Aufträge (nur der Betreiber kann das)
+
+## 📬 ZWEI unbeantwortete Anfragen im Postfach — Entwürfe liegen bereit (08.09.2026)
+`/pages/influencer-partner` ist die **zweitgrösste Landeseite des Shops** (25 Sitzungen in 30 Tagen,
+mehr als jede Produktseite ausser dem Rizinusöl-Set). Sie hat auch geliefert — nur hat es niemand
+beantwortet:
+| eingegangen | Absender | offen seit |
+|---|---|---:|
+| 21.08. «Influencer-Bewerbung» | Hafir Elshani (Privatperson, 18) | **18 Tage** |
+| 30.08. «KOOPERATION x STEFANIE_MLR» | NovasphereMedia (Agentur, DE) | **9 Tage** |
+**Beide Antworten liegen als GMAIL-ENTWURF bereit** — lesen, anpassen, senden. Bewusst NICHT
+gesendet: die Mail ginge aus dem privaten Gmail des Betreibers hinaus (es gibt keinen
+«Senden als»-Alias für info@luxestyle.ch), und Konditionen einer Zusammenarbeit sind eine
+Geschäftsentscheidung.
+- **Beide Entwürfe nennen zuerst die harte Bedingung:** Wir liefern nur CH/FL. Beim Bewerber sitzt
+  «ein grosser Teil der Community in Italien» — dort kann niemand bestellen; das gehört gesagt,
+  bevor jemand Arbeit hineinsteckt. Beide fragen nach ZAHLEN (Schweizer Anteil, Aufrufe, Preis)
+  und sagen keine Konditionen zu.
+- ⚠️ **Die Agentur-Mail trägt vier Merkmale einer Massen-Vorlage:** «Nach eingehender
+  Auseinandersetzung mit Ihrer Marke» ohne einen einzigen konkreten Bezug, ein Angebot zur
+  **Event-Begleitung** an einen Shop ohne Events, ein Widerspruch in der Signatur («Mein Name ist
+  Sabrina» / gezeichnet «Steffi») und ein `utm_source=chatgpt.com` im eigenen Link. Weder
+  Reichweite noch Preis genannt. Der Entwurf verlangt beides — kommt nichts, ist die Sache erledigt.
+- **Dauerlösung, ein Klick:** In Gmail einen «Senden als»-Alias für `info@luxestyle.ch` einrichten.
+  Dann können Antworten auf Shop-Post unter der Shop-Adresse rausgehen statt privat.
+
 # Aufträge für Claude Cowork — Stand 29.08.2026, 23:10 UTC
 
 Hier steht, was ich aus der Cloud-Session **nicht** erledigen kann: Klicks in fremden
