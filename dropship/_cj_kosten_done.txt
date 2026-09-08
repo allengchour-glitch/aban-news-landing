@@ -20836,3 +20836,8 @@ gid://shopify/Product/15500485394817	CHF 27.50	1 Varianten	Pelvikboden-Trainings
 gid://shopify/Product/15500485427585	CHF 18.43	30 Varianten	Mädchen Sandalen mit Lotusblatt-Design
 gid://shopify/Product/15500485460353	CHF 16.33	1 Varianten	Weihnachtliche Hundeleine
 gid://shopify/Product/15500485525889	CHF 52.47	1 Varianten	Farbige Tastaturbeleuchtung
+gid://shopify/Product/15500485558657	CHF 9.56	1 Varianten	Lendenmassage-Stütze
+gid://shopify/Product/15500485591425	CHF 15.69	18 Varianten	Dicke Baumwoll-Sportschuhe mit Hasenmotiv
+gid://shopify/Product/15500485624193	CHF 67.15	1 Varianten	Stahlhalter für Hunde
+gid://shopify/Product/15500485656961	CHF 24.66	1 Varianten	Sternenleuchte
+gid://shopify/Product/15500485755265	CHF 9.96	1 Varianten	Haltungs-Korrekturgurt mit Sensor
