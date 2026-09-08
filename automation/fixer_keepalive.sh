@@ -341,14 +341,17 @@ while true; do
     EXP=""; [ "$L" = hauptbild_ohne_text ] && [ -f /tmp/ocr_export_keep.jsonl ] \
       && EXP="EXPORT=/tmp/ocr_export_keep.jsonl"
     [ "$L" = umlaut_suchtags ] && [ -f /tmp/opts_keep.jsonl ] && EXP="QUELLE=/tmp/opts_keep.jsonl"
-    # versand_jenachland sucht seine Kandidaten seit dem 05.09.2026 SELBST (Inhalts-Suche
-    # «USA: 12-22 Tage», mit einem Unsinnswort gegengeprüft). Vorher hing es an
-    # /tmp/versand_quelle.jsonl — die Datei überlebt keinen Container-Neustart, und der
-    # Lauf wurde deshalb JEDES Mal übersprungen; live trugen 573 aktive Produkte den
-    # USA-Lieferblock weiter. Gibt es die Datei noch, wird sie bevorzugt.
-    if [ "$L" = versand_jenachland ]; then
-      if [ -f /tmp/versand_quelle.jsonl ]; then EXP="QUELLE=/tmp/versand_quelle.jsonl"; else EXP="QUELLE=live"; fi
-    fi
+    # versand_jenachland sucht seine Kandidaten seit dem 05.09.2026 SELBST. Die Phrase war
+    # bis zum 08.09. «USA: 12-22 Tage» — mit BINDESTRICH, waehrend der Text einen
+    # Halbgeviertstrich und ein <strong> zwischen «USA:» und der Zahl traegt; sie fand 463
+    # von 996 Produkten und der Lauf meldete FERTIG. Jetzt «je nach Land» (996, mit einem
+    # Unsinnswort gegengeprueft: 0).
+    # ⚠️ 08.09.2026: Hier stand «gibt es /tmp/versand_quelle.jsonl noch, wird sie bevorzugt».
+    # Genau das ist die Falle, gegen die der Absatz darueber geschrieben wurde: eine Export-Datei
+    # in /tmp altert und meldet Vollzug ueber eine Vergangenheit. Es gilt ausnahmslos live.
+    # Dazu CAP hoch: die Klasse ist am 08.09. mit 996 gemessen worden, der Standard-CAP haette
+    # sie in Tagesscheiben zerlegt.
+    if [ "$L" = versand_jenachland ]; then EXP="QUELLE=live CAP=1200"; fi
     # fremdzeichen_guard braucht seine Kandidatenliste weiterhin; ohne sie fände es nichts
     # und meldete stillschweigend Erfolg.
     if [ "$L" = fremdzeichen_guard ]; then
