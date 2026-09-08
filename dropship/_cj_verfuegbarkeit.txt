@@ -34372,3 +34372,5 @@ gid://shopify/Product/15500542935425	ok
 gid://shopify/Product/15500542837121	ok
 gid://shopify/Product/15500542804353	ok
 gid://shopify/Product/15500542771585	ok
+gid://shopify/Product/15500542738817	ok
+gid://shopify/Product/15500542706049	ok

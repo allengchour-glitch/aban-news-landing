@@ -22507,3 +22507,20 @@ gid://shopify/Product/15501003424129	CHF 11.11	1 Varianten	Zahnarzt Übungs-Set 
 gid://shopify/Product/15501003456897	CHF 29.90	21 Varianten	Herren High-Top Casual Schuhe mit Gummisohle
 gid://shopify/Product/15501003555201	CHF 59.95	14 Varianten	Herren Sneaker mit durchgehender Luftpolsterung
 gid://shopify/Product/15501003587969	CHF 12.27	1 Varianten	Sicherheitsschiebegriff für Holzarbeiten
+gid://shopify/Product/15501003620737	CHF 14.69	1 Varianten	Fussschutz-Plastikstreifen
+gid://shopify/Product/15501003653505	CHF 22.15	18 Varianten	Atmungsaktiver Mesh-Sneaker mit Graffiti-Design
+gid://shopify/Product/15501003686273	CHF 10.22	1 Varianten	Tägliches Feuchtigkeits- und Pflegepflaster
+gid://shopify/Product/15501003719041	CHF 23.59	12 Varianten	Leder-Sneaker für Herren, leicht und vielseitig
+gid://shopify/Product/15501003784577	CHF 20.84	1 Varianten	Massagekamm für Kopfhautpflege
+gid://shopify/Product/15501003817345	CHF 8.73	1 Varianten	Reines Ätherisches Öl (10 ml)
+gid://shopify/Product/15501003850113	CHF 24.96	18 Varianten	High-top Sneaker für Jugendliche
+gid://shopify/Product/15501003882881	CHF 44.23	1 Varianten	Dental Handstück-Set
+gid://shopify/Product/15501003948417	CHF 7.94	1 Varianten	Titanstahl-Armband mit Kristallen oder Diamanten
+gid://shopify/Product/15501003981185	CHF 12.22	1 Varianten	IMIEUX Aroma-Massageöl (10 ml)
+gid://shopify/Product/15501005029761	CHF 8.32	1 Varianten	Gold-Edelsteinarmband
+gid://shopify/Product/15501005062529	CHF 7.53	1 Varianten	Vintage Herren-Lederarmband mit Leopardenkopf
+gid://shopify/Product/15501005095297	CHF 14.57	1 Varianten	Collagen Hydrating Maske
+gid://shopify/Product/15501005128065	CHF 63.62	6 Varianten	Retro Jogging-Sneaker mit dicker Sohle
+gid://shopify/Product/15501005160833	CHF 7.53	1 Varianten	Personalisiertes Vintage-Stahl-Armband
+gid://shopify/Product/15501005193601	CHF 14.26	1 Varianten	Beruhigende Seiden-Feuchtigkeitsmaske
+gid://shopify/Product/15501005226369	CHF 7.05	1 Varianten	Geflochtenes Lederarmband mit Verschluss
