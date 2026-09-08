@@ -15259,3 +15259,29 @@ gid://shopify/Product/15525511758209	59->0	Schwarze Hundeleine mit Zugkraft
 gid://shopify/Product/15525511987585	11->1	Hundeleine mit 3D-Blumen
 gid://shopify/Product/15525512872321	118->0	Smartwatch Armband mit Perlen
 gid://shopify/Product/15525513101697	8->0	Kinder Smartwatch mit GPS-Ortung
+gid://shopify/Product/15527361642881	103->0	Grosser Nylon-Rucksack für Reisen
+gid://shopify/Product/15527361675649	20->1	Grosse wasserdichte Bein-, Taillen- & Tanktasche
+gid://shopify/Product/15527361708417	13->0	Lederarmband für Apple Watch
+gid://shopify/Product/15527361937793	20->0	Outdoor-Rucksack für Reisen und Sport
+gid://shopify/Product/15527362036097	105->0	Grosser Rucksack für Reisen
+gid://shopify/Product/15527362199937	24->3	Leder Reisetasche
+gid://shopify/Product/15527362232705	58->3	Herren-Quarzuhr mit gebogenem Glas
+gid://shopify/Product/15527362265473	10->1	Brusttasche aus PU-Leder
+gid://shopify/Product/15527362429313	75->0	Metallarmband für Smartwatch
+gid://shopify/Product/15527362691457	9->0	Leder-Armband für Uhr
+gid://shopify/Product/15527363117441	34->0	Smartwatch mit Herzfrequenz und Schlafaufzeichnung
+gid://shopify/Product/15527363215745	28->1	Silikon-Kuchenform mit 8 Mulden
+gid://shopify/Product/15527363248513	11->0	Sport Silikonarmband für Apple Watch
+gid://shopify/Product/15527363445121	12->0	Avocado-Schneider und Frucht-Teiler
+gid://shopify/Product/15527363608961	139->0	Kochbesteck-Set mit Schöpflöffel und Sieb
+gid://shopify/Product/15527363772801	50->1	Teekessel aus Gusseisen
+gid://shopify/Product/15527364100481	18->0	HD Heimkino WLAN Projektor
+gid://shopify/Product/15527364624769	50->1	Knoblauchpresse für den Haushalt
+gid://shopify/Product/15527364788609	31->3	Camping Kochgeschirr-Set mit Teekanne
+gid://shopify/Product/15527365083521	16->0	Titanstahl-Armband mit Totenkopf-Muster
+gid://shopify/Product/15527365214593	41->0	WLAN Video-Türsprechanlage
+gid://shopify/Product/15527365542273	13->1	Zigarettenetui mit automatischem Auswurf
+gid://shopify/Product/15527365673345	23->0	Mini Tisch-Heizlüfter mit Keramikheizung
+gid://shopify/Product/15527377600897	61->0	Asymmetrisches ärmelloses Damen-Shirt
+gid://shopify/Product/15527377797505	162->0	Damen Festliches Maxikleid mit Blumenmuster
+gid://shopify/Product/15527378092417	98->0	Damen trägerloses Off-Shoulder-Kleid
