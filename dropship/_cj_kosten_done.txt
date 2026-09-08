@@ -19985,3 +19985,8 @@ gid://shopify/Product/15499955831169	CHF 16.47	40 Varianten	Dreiviertelarm-Moded
 gid://shopify/Product/15499955962241	CHF 20.04	1 Varianten	Rucksack Computer-Tasche Grosses Fassungsvermögen
 gid://shopify/Product/15499956027777	CHF 10.77	1 Varianten	Tier-Silhouette
 gid://shopify/Product/15499956126081	CHF 9.86	1 Varianten	Grüner Stoff-Halsband
+gid://shopify/Product/15499956289921	CHF 19.23	6 Varianten	Rüschen-Patchwork-Dress
+gid://shopify/Product/15499956355457	CHF 8.66	1 Varianten	Outdoor-Sicherheitsleine
+gid://shopify/Product/15499956519297	CHF 8.56	1 Varianten	Navyblauer Schleifehalsband
+gid://shopify/Product/15499956552065	CHF 9.82	1 Varianten	Sunset Lovers Diamond Painting Kit
+gid://shopify/Product/15499956781441	CHF 30.90	1 Varianten	Grosses Outdoor-Rucksack
