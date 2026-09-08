@@ -1,5 +1,26 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 📉 Grosse Bestandsklassen sind auf den Seiten mit VERKEHR fast immer klein (2026-09-08)
+Zwei offene Klassen aus dem Klassen-Vollscan gegen die 32 Landeseiten gehalten, auf denen in 30 Tagen
+wirklich jemand ankam:
+| Klasse | im Bestand | auf Seiten MIT Verkehr |
+|---|---:|---:|
+| Sie-Anrede im Produkttext | 716 | **5 von 32** |
+| Auswahl-Versprechen bei EINER Variante | 1'189 | **1 von 32** |
+Damit ist die Entscheidung vom 07.09. bestätigt, den Bestand NICHT massenhaft zu schneiden (28 gelesene
+Stichproben, 28 Mischsätze) — und zugleich der richtige Hebel benannt: **die Klasse dort reparieren, wo
+sie gesehen wird.** Sechs Fälle von Hand, jede Regel im Trockenlauf auf «genau 1×» geprüft, Rest 0.
+- **Alle fünf Sie-Stellen waren echte Anreden**, keine dritte Person — die Falle vom 04.09. («Ihr
+  Doppelform-Design» meint die Zitruspresse) hat hier nicht zugeschlagen, weil ich jede Stelle im Kontext
+  GELESEN habe statt dem Muster zu glauben. Der Werbesatz «Wenn Sie mit den neuesten Mode und
+  Accessoire-Trends schritthalten wollen, kaufen Sie … zum besten Preis» ging dabei ganz weg: er hatte
+  einen Grammatikfehler UND einen unbelegbaren Superlativ.
+- **Der eine Wahlversprechen-Fall ist der teuerste seiner Klasse:** «Wimpernstempel Eyeliner 2-in-1»
+  versprach zweimal «Erhältlich in den Farben Schwarz und Braun» — bei EINER Variante «Default Title».
+  Die Kundin sucht die Farbwahl und findet keine. **Die Aussage wurde ENTFERNT, nicht ersetzt** — welche
+  Farbe CJ schickt, ist nicht belegt, und wo nichts belegt ist, wird nichts behauptet (auch nichts
+  Schwächeres, Lehre 29.08.).
+
 ## 🕳️ Fünf publizierte Kollektionen waren LEER — und «Kiffer-Zubehör» hatte die Draft-Routine erwischt (2026-09-08)
 `kollektion_leer.py` lief zuletzt am 07.09. und meldete «LEER: 0»; die sechs Zeilen danach waren
 «FEHLER: Kollektionen nicht ladbar». Also nachgemessen statt geglaubt — **heute meldet er 5**, und alle
