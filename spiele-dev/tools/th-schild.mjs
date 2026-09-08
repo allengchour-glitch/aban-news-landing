@@ -30,7 +30,7 @@
  * verdeckter Schrift sogar HOEHER (34 % gegen 20 %), weil die Zierde selbst bunt ist.
  */
 import { spielOeffnen, mitSonden } from './th-lib.mjs'
-import { writeFileSync } from 'node:fs'
+import { writeFileSync, mkdirSync } from 'node:fs'
 
 const datei = mitSonden('traumhaus.html', {
   setzSpieler: 'function(x,z){var s=sims[meinSi()]||sims[0];s.x=x;s.z=z;return [s.x,s.z];}',
@@ -73,6 +73,7 @@ const datei = mitSonden('traumhaus.html', {
 
 const MODELL = process.argv[2] || 'th14_neonschild_gross.glb'
 const ORDNER = process.argv[3] || '/tmp'
+mkdirSync(ORDNER, { recursive: true })   /* sonst bricht der erste Aufruf mit ENOENT ab */
 const { browser, page, jsFehler } = await spielOeffnen(datei, { warten: 40000 })
 await page.evaluate((m) => { window.__thModell = m }, MODELL)
 console.log('\nSchilder aus ' + MODELL + ':')
