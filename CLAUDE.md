@@ -1,5 +1,44 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🕳️ Fünf publizierte Kollektionen waren LEER — und «Kiffer-Zubehör» hatte die Draft-Routine erwischt (2026-09-08)
+`kollektion_leer.py` lief zuletzt am 07.09. und meldete «LEER: 0»; die sechs Zeilen danach waren
+«FEHLER: Kollektionen nicht ladbar». Also nachgemessen statt geglaubt — **heute meldet er 5**, und alle
+fünf waren echt. Der Wächter arbeitet; der 07.09.-Lauf ist nicht mehr rekonstruierbar (⚠️ die 6 Fehler
+stammen von SPÄTEREN Läufen — stdout und stderr in einer Logdatei sind nicht zeitlich sortiert, ein
+Nebeneinander ist keine Reihenfolge).
+| Kollektion | Ursache | jetzt |
+|---|---|---:|
+| **`raucherzubehoer`** (Betreiber-Wunsch 02.09.) | alle 74 tragen **`auto-entwurf-0926`** — die stündliche Draft-Routine | **71 aktiv** |
+| `velo-radsport` | `TAG velo`, alles BigBuy `nicht-lieferbar-ch` | **226** |
+| `angeln` | `TAG angeln`, alles DRAFT | **18** |
+| `topseller` | `VENDOR Nike/Adidas/Michael Kors` = BigBuy, seit 10.07. tot | **301 + unpubliziert** |
+| `angebote` | `IS_PRICE_REDUCED` — die 57 konstruierten Streichpreise sind am 24.08. zu Recht entfernt worden | **bewusst gelassen** |
+- **`angebote` bleibt, und das ist die Entscheidung, nicht die Bequemlichkeit:** Ihre Regel stimmt, sie ist
+  nur gerade leer und heilt sich selbst, sobald es einen echten Rabatt gibt. **Eine leere Kollektion ist
+  kein Fehler, wenn ihre Regel stimmt** (wörtlich seit 29.08.). `topseller` dagegen kann NIE wieder
+  greifen — und «Topseller» wäre bei 7 Bestellungen in der Shop-Geschichte ohnehin eine unbelegbare
+  Behauptung. 301 auf `bestseller` (aus Bewertungen kuratiert, also belegt), Ziel vorher auf alle drei
+  Bedingungen geprüft: publiziert, aktive Ware, selbst keine Weiterleitung.
+- ⚠️ **Die Rauchartikel sind der teuerste Fall, weil sie ein BETREIBER-WUNSCH waren:** Am 02.09. auf
+  «kiffer zubehör rein» gebaut (92 aktiv), am 05.–07.09. von der Draft-Routine abgeschaltet, weil sie kein
+  `bild-ok` trugen. Der Schutzlauf vom 07.09. hat 2'652 Produkte markiert — diese nicht. **Was ein Mensch
+  ausdrücklich bestellt hat, gehört auf die Schutzliste eines Automaten**, sonst räumt der Automat es weg
+  und niemand merkt es. Zurückgeholt mit denselben Kriterien wie am 07.09. (Bild ≥ 500 px beidseitig,
+  Lieferanten-SKU, kein Risiko-Tag) — 3 blieben zu Recht draussen (Bild 393×463, `bild-zu-klein`,
+  `cj-nicht-versendbar-ch`). Ledger `dropship/_raucher_rueckhol_0809.txt`.
+- ✅ **Gegenprobe, die beruhigend ausfällt:** Ein DRAFT behält seine Publikationen (Lehre 04.09.) — bei
+  Rauchzubehör wäre das die Merchant-Sperre. Gemessen: **0 von 71 stehen in einem Werbekanal**, die
+  Säuberung vom 02.09. hat gehalten. Gemessen statt angenommen; hätte ich blind unpubliziert, hätte ich
+  nie erfahren, dass die Sicherung trägt.
+- ⚠️ **Zwei Substring-Fallen beim Füllen, beide vor dem Schreiben gelesen:** `angel` trifft
+  «Katz**enangel**», «**Angel** Wings Ladegerät» und «Little **Angel** Luftbefeuchter» — im Englischen ist
+  «angel» der Engel. Und `rennrad`/`velo` trafen **BRUDER-Spielzeug** («BRUDER Roadster mit 1 Rennrad»,
+  «bworld Fahrradshop») sowie «**Velo**urs» und «**Velo**cità». Dreizehnte Fassung der Familie. Verworfen
+  statt geschrieben; `fahrrad` (222) trägt die Kollektion allein.
+- ⚠️ **Und die Reihenfolge, die man leicht falsch macht:** Am 07.09. wurden diese Kollektionen aus dem
+  Kategorien-Verzeichnis ENTFERNT, weil sie leer waren. Wer sie heute füllt, muss das Verzeichnis neu
+  bauen — sonst ist die Ware da und der Weg dorthin nicht.
+
 ## 👻 Die STARTSEITE bewarb Casio-Uhren und «Dolce & Gabbana The One» — beide DRAFT (2026-09-08)
 Nach camping-kueche und sommer die Frage als KLASSE gestellt statt als Einzelfall: Wie viele der 365 im
 Onlineshop publizierten Kollektionen bewerben namentlich Ware, die es nicht kaufbar gibt? Der Hausstil setzt

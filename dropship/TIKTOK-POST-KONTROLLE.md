@@ -1,7 +1,7 @@
 # ⛔ TikTok-Autoposter steht — 3 Tage keine neuen Videos
 
-Stand 2026-09-07: Das Profil @luxestyle.ch zeigt seit 3 erfassten Tagen
-unverändert **66 Videos**, obwohl die Queue **6 freie Beiträge** hat.
+Stand 2026-09-08: Das Profil @luxestyle.ch zeigt seit 3 erfassten Tagen
+unverändert **66 Videos**, obwohl die Queue **7 freie Beiträge** hat.
 Der tägliche 17:31-Post auf dem PC läuft also nicht.
 
 ## Die vier üblichen Ursachen, in Prüf-Reihenfolge (alles am PC)

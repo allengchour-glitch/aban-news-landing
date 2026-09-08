@@ -24415,3 +24415,4 @@ gid://shopify/Product/15525275402625	ein_bild
 gid://shopify/Product/15525457691009	ein_bild
 gid://shopify/Product/15525458018689	ein_bild
 gid://shopify/Product/15525458084225	ein_bild
+gid://shopify/Product/15527364034945	ein_bild
