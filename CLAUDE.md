@@ -1,3 +1,91 @@
+## 🛑 Die #1008-Klasse ist an der KASSE geschlossen — und `DENY` allein tut gar nichts (2026-09-08, 20:40 UTC)
+Betreiber: «behebe». Gemeint war das Jade-Roller-Set, das ohne Lieferanten in der
+Startseiten-Kollektion stand. Repariert ist die ganze Klasse: **8 handkuratierte Ur-Produkte
+ohne prüfbare Lieferanten-SKU, 22 Varianten** — Slim Wallet (5,0★), Herrenuhr, Retro-Sonnenbrille,
+LED-Lampe, Fitnessbänder, Baby-Lätzchen, Jade-Set, Sternenhimmel-Projektor.
+Gewählt wurde Weg (a) von dreien: **Bestandsführung EIN · `inventoryPolicy: DENY` · Bestand 0.**
+Sie bleiben sichtbar, behalten ihre Bewertungen und alle 20 Kollektionen — **kaufen kann sie
+niemand mehr.** Rückgängig ist es eine Zahl. Gegenprobe am Objekt: **22 von 22
+`availableForSale: false`.**
+- ⚠️ **`DENY` allein bewirkt NICHTS, wenn `tracked: false` war.** Sieben der acht Produkte führten
+  gar keinen Bestand — dann ist die Ware *immer* verfügbar, egal was in `inventoryQuantity` steht.
+  Und beim Einschalten der Bestandsführung **überleben die erfundenen Zahlen** (50 · 100 · 40 · 80):
+  nach `DENY` + `tracked:true` stand `availableForSale` unverändert auf **true**. Erst
+  `inventorySetQuantities` auf 0 hat es geschlossen. **Drei Schalter, und nur alle drei zusammen
+  wirken** — wer nach der Mutation nicht `availableForSale` liest, hält eine wirkungslose
+  Reparatur für erledigt.
+- ⚠️ **Und meine Abfrage hat zwei Varianten versteckt:** `variants(first:5)` gab genau fünf zurück,
+  das Wallet hat **sieben**. `WALLET-RED`, `WALLET-ROS` und `SUNGLASS-BRN` blieben deshalb im ersten
+  Lauf auf `CONTINUE` — also ausgerechnet kaufbar. **Vierte Fassung von «eine volle Seite ist ein
+  Weiterblättern-Befehl»** (nach appInstallations 30.08., Merchant-Export 31.08., interne_links
+  01.09.). `variantsCount` neben `variants` zu stellen kostet nichts und beantwortet es sofort.
+
+## 💾 Der Speicherdeckel meldet sich NICHT MEHR im Upload-Ziel — nur noch in der fertigen Datei (2026-09-08, 20:45 UTC)
+Auf «behebe» den Dateispeicher gemessen. Die Kette sah dreimal gesund aus und war es nicht:
+| Schritt | Antwort |
+|---|---|
+| `stagedUploadsCreate(resource: FILE)` | Ziel **mit URL**, `userErrors` **leer** |
+| Upload nach Google Storage | **HTTP 201** |
+| `fileCreate` | `fileStatus: UPLOADED`, `fileErrors: []` |
+| **25 Sekunden später am Knoten** | **`FAILED` · `FILE_STORAGE_LIMIT_EXCEEDED`** |
+**Der Deckel ist unverändert erreicht.** Neu ist, wie er sich meldet: Am 07.09. kam das Ziel noch
+mit `url: null` und die Absage stand in `userErrors` — heute passiert die Anfrage alle drei Tore
+und scheitert erst in der **asynchronen Verarbeitung**. Damit ist die Prüfform von gestern blind.
+**Die einzige belastbare Probe ist die ganze Kette bis `fileStatus`** (dieselbe Familie wie
+«`fileUpdate` ist asynchron», 02.09. — nur eine Stufe früher und mit einem Tor mehr).
+- ✅ **Die Speicher-Ampel misst trotzdem richtig**, und das war Glück in der Bauart: Sie liest
+  `files(query:"status:FAILED")` der letzten 24 h — also das ERGEBNIS, nicht die Absicht. Wer den
+  Zweck misst statt den Weg, überlebt eine Änderung am Weg.
+- ⚠️ **Der Video-Deckel dagegen prüft «entsteht ein Ziel?» — und würde heute «gesund» melden.**
+  Er ist NICHT repariert worden, denn er hat recht: seit dem 07.09. sind 38 Videoplätze frei.
+  **Eine Prüfung, die aus dem richtigen Grund schweigt, wird nicht angefasst** (die Beinahe-Reparatur
+  vom Morgen an der heilen `compareQuantity`-Sicherung, in klein).
+- **Aufgeräumt wurde, was BELEGBAR sicher ist, und das ist wenig:** BigBuy- und
+  `nicht-lieferbar-ch`-Entwürfe tragen am Objekt geprüft **0 Medien** — dort ist wirklich nichts
+  mehr zu holen. Übrig bleibt als grösste Reserve `duplikat-auto-draft`: **4'908 Entwürfe mit je
+  9–10 Bildern**. Belegt ist der lebende Zwilling aber nur für **195 Paare** (aus
+  `_dubletten_gedraftet.txt` und `_bilddubletten_gedraftet.txt`); davon halten **189** die
+  Prüfung «Zwilling ist ACTIVE UND hat eigene Bilder». Nur deren **913 Medien** wurden gelöscht.
+  Die übrigen ~4'700 bleiben liegen — ihre Sicherheitsannahme ist seit dem 04.09. unverändert
+  **unbelegt**, und eine Löschung, deren Sicherheit man nicht zeigen kann, unterbleibt.
+- **Der ehrliche Rest ist keine Aufräumfrage:** rund 52'000 aktive Produkte × ~1,4 MB sind der
+  Deckel. Aufräumen ist ein Aufschub; die Entscheidung heisst kleinerer Katalog oder grösserer Plan.
+
+## 💸 Zwei Bestätigungen in zwölf Minuten sind zwei ANTRÄGE — mit zwei verschiedenen Kontonummern (2026-09-08, 20:30 UTC)
+Betreiber meldete die BigBuy-IBAN als «erledigt». Am Objekt geprüft ist sie es halb: Er hat den
+Auszahlungsantrag heute **zweimal** gestellt, und die zwei Bestätigungsmails tragen **zwei
+verschiedene Nummern**.
+| Antrag | Länge | mod 97 | |
+|---|---:|---:|---|
+| 20:00 UTC (spanische Mail) | 22 | 54 | **UNGÜLTIG** — dieselbe kaputte Nummer wie 15.07. und 16.08. |
+| 20:12 UTC (deutsche Mail) | **21** | **1** | **GÜLTIG** |
+Die korrigierte Fassung ist **exakt die eine**, die meine Streichungsrechnung vom Vormittag
+vorhergesagt hatte: eine verdoppelte Ziffer weniger (`06300` statt `066300`), Prüfziffer stimmt.
+Der Betreiber hat also richtig repariert — und den ersten, kaputten Antrag daneben stehen lassen.
+- ⚠️ **Beide laufen über EUR 1'000 gegen ein Guthaben von EUR 1'000.** Wird der erste zuerst
+  bearbeitet, prallt er zum dritten Mal ab, und der zweite kann mangels Guthaben abgelehnt werden.
+  Klarstellung liegt als Gmail-Entwurf im bestehenden Support-Verlauf (welcher zu stornieren, welcher
+  auszuführen ist); senden ist ein Klick des Betreibers.
+- **Die Lehre: Zwei Bestätigungen in zwölf Minuten sind nicht eine Bestätigung in zwei Sprachen.**
+  Ich hätte die deutsche Mail lesen, «21 Zeichen, mod 97 = 1» feststellen und zufrieden sein können.
+  Die spanische zwölf Minuten davor trug die kaputte Nummer. **Eine Bestätigung gilt für ihren
+  eigenen Vorgang, nicht für den Vorgang** — und bei Geld wird jede einzelne nachgerechnet.
+- ⚠️ Die Geldbörse steht unverändert auf 1'000.00 — es ist noch nichts hinausgegangen.
+
+## 🔁 Der Schalter-Streit ist beendet — an der Ursache, nicht am Schalter (2026-09-08, 20:35 UTC)
+Auf «ja» des Betreibers: Der Satz «prüfen, ob der Nachstarter `trig_01Uy3zVefXbzCZn9Dr2qvkwh`
+wieder aktiv ist … `update_trigger enabled false` auf genau diese ID» ist aus dem Prompt der
+Routine `trig_017r619TeGtaS9Rsjjw24E96` («Lagebeurteilung 07:30 + 17:30») **entfernt**. An seine
+Stelle traten zwei Sätze: «Fremde Routinen werden NICHT verändert — weder ein- noch ausgeschaltet;
+wer eine Routine für falsch hält, meldet das im Bericht» und in Schritt 2d «Nur LESEN — kein
+`update_trigger`, an keiner Routine». Auch die ALARM-Zeile nennt den Nachstarter nicht mehr.
+Cron `30 5,15` unverändert, aktiv, alle 19 Konnektoren und das Modell erhalten.
+- **Der Keepalive-Schalter selbst wurde NICHT angefasst** — zum vierten Mal umgelegt hätte den
+  Streit gewonnen, nicht beendet. **Wer einen Automaten gegen sich arbeiten sieht, ändert seine
+  ANWEISUNG, nicht laufend sein Ergebnis.**
+- ⚠️ `list_triggers` liefert ~10 KB je Routine; mit `limit` und `cursor` blättern statt alles zu
+  holen. Die gesuchte stand erst auf Seite 2.
+
 ## 🔑 Der Schlüssel ist gültig, das Konto ist leer — und der Gratis-Endpunkt hat es verdeckt (2026-09-08, 20:25 UTC)
 Betreiber: «kimi api für hilfe wie fehler suchen oder so». Die Regel vom 05.09. eingehalten — **erst
 testen, dann speichern** —, und der Test sagte OK: `GET /v1/models` antwortet mit **4 Modellen**

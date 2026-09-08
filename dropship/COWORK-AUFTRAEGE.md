@@ -1,3 +1,32 @@
+## ✅ ERLEDIGT 08.09.2026 abends — was auf «1 erledigt · 3 ja · 2 nein · 4 behebe» geschah
+
+**3 (ja):** Der Satz, der den Keepalive-Nachstarter dreimal abgeschaltet hat, ist aus dem Prompt
+der Routine «Lagebeurteilung» heraus. Sie prüft jetzt nur noch LESEND und fasst fremde Routinen
+nicht mehr an. Zeitplan, Konnektoren und Modell unverändert. Der Schalter selbst blieb unberührt.
+
+**4 (behebe) — Jade-Set und seine ganze Klasse:** 8 Ur-Produkte ohne Lieferanten, 22 Varianten,
+jetzt **22/22 nicht mehr bestellbar** (Bestandsführung ein, DENY, Bestand 0). Sichtbar, mit
+Bewertungen, in allen Kollektionen — nur kaufen kann sie niemand. Rückgängig = Bestandszahl setzen.
+
+**4 (behebe) — die zwei Anfragen:** Beide Antworten sind **gesendet** (Elshani 21.08., Novasphere
+30.08.). Beide nennen zuerst die Bedingung «nur CH/FL», fragen nach Zahlen und sagen keine
+Konditionen zu. ⚠️ Zwei alte Entwürfe liegen noch im Postfach und können weg.
+
+**4 (behebe) — Dateispeicher: NICHT lösbar von hier.** Ganze Kette gemessen, weiterhin voll.
+913 Medien belegbarer Dubletten gelöscht (~270 MB) — reicht nicht. BigBuy-Entwürfe tragen bereits
+0 Medien. Alles Weitere trüge eine unbelegte Sicherheitsannahme. **Das ist dein Entscheid:
+kleinerer Katalog oder grösserer Plan** (Details unter «Dateispeicher» weiter unten).
+
+**1 (erledigt) — BigBuy: halb.** Die neue IBAN ist zum ersten Mal **gültig** (21 Zeichen, mod 97 = 1).
+Aber du hast heute **zwei** Anträge gestellt: 20:00 UTC noch auf die **kaputte** Nummer, 20:12 UTC
+auf die richtige. Beide über EUR 1'000 gegen ein Guthaben von EUR 1'000. Eine Klarstellung liegt
+als **Gmail-Entwurf** im BigBuy-Verlauf — sie sagt, welcher zu stornieren und welcher auszuführen
+ist. Senden ist ein Klick.
+
+**2 (nein) — Kimi:** kein Guthaben, verstanden. `automation/kimi_frage.py` bleibt liegen und meldet
+eine lesbare Zeile statt eines Absturzes. Der Schlüssel stand im Chat — wenn das Konto nie benutzt
+wird, ist Rotieren unnötig; sonst vorher rotieren.
+
 # Cowork-Aufträge (nur der Betreiber kann das)
 
 ## 💳 Kimi/Moonshot: Schlüssel liegt bereit, Konto hat kein Guthaben (08.09.2026, 20:25 UTC)
