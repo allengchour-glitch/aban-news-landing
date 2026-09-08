@@ -1,5 +1,19 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ✅ «Geprüfte Qualität» ist bei 0 — 29'468 Produkttexte über sechs Tage (2026-09-08)
+Die Klasse vom 02.09. (der Trust-Baustein aller CJ-Importe versprach «Geprüfte **Qualität**», geprüft
+werden aber ANGABEN — die 29.08.-Lehre am Vertrauensblock hatte den Produkttext nie erreicht) ist
+abgearbeitet: **29'468 → 0 am Objekt**, Gegenrichtung «Geprüfte Angaben» ≥ 10'000 (der `productsCount`-
+Deckel, Lehre 22.08.).
+- ⚠️ **Der Index meldet noch 1 — und das ist KEIN Rest.** Am Objekt geprüft trägt die «Silikon-Backform»
+  den Text nicht mehr; Shopifys Suchindex hinkt nach einem Massen-Schreiblauf nach. **Bodenwahrheit ist
+  `descriptionHtml` am Objekt, nicht die Trefferzahl** (Lehre 02.09., und sie hat heute verhindert, dass
+  ich einen Lauf für einen Phantom-Rest starte).
+- Der Schreiber arbeitet in Chargen mit CAP und endet sauber an seinem Deckel («geprüft 1200 · geschrieben
+  1200»); ein Container-Neustart kostet höchstens eine Charge. Für den Rest von 278 genügte ein Lauf mit
+  CAP 600 — **unter dem geteilten Produkttext-Schloss** (`flock -w 300`), weil mehrere Massen-Schreiber
+  auf dasselbe Feld gehen (die Zombie-Klasse vom 15.08.).
+
 ## 📉 Grosse Bestandsklassen sind auf den Seiten mit VERKEHR fast immer klein (2026-09-08)
 Zwei offene Klassen aus dem Klassen-Vollscan gegen die 32 Landeseiten gehalten, auf denen in 30 Tagen
 wirklich jemand ankam:
