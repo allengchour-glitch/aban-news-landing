@@ -10676,9 +10676,14 @@ function schildText(w,zeilen,opt){
   return n;}
 /* Naechster benannter Ort zu einem Punkt — die Ortstafel nennt, wohin man kommt.
    Quelle ist WORLD_POIS, damit Schild und Karte nie auseinanderlaufen. */
+/* ⚠️ NICHT ueber `window` fragen. `WORLD_POIS` ist eine normale Variable in dieser
+   Huelle — `window.WORLD_POIS` ist undefined, und der Ausdruck faellt nur deshalb nicht
+   auf, weil dahinter ein Ersatz steht. Genau diese Form hat th-fenster gemeldet (und
+   genau dafuer gibt es die Pruefung seit #2445: ein Waechter, der window nach etwas
+   fragt, das in der Huelle liegt, prueft immer gegen undefined). */
 function _naechsterOrt(x,z){
   var b=null,bd=1e9;
-  (window.WORLD_POIS||WORLD_POIS||[]).forEach(function(p){
+  (WORLD_POIS||[]).forEach(function(p){
     var d=Math.hypot(p[0]-x,p[1]-z);if(d<bd){bd=d;b=p[3];}});
   return b||"Traumhausen";}
 function _plakatTex(){
