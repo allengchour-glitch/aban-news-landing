@@ -1,31 +1,29 @@
 # Cowork-Aufträge (nur der Betreiber kann das)
 
-## ⛔ Die stündliche Keepalive-Routine steht auf AUS — und ohne sie kommt nach einem
-## Container-Neustart NICHTS von selbst zurück (gemessen 08.09.2026, 19:17 UTC)
+## ⏳ Die Keepalive-Routine ist wieder AN — aber eine ANDERE Routine schaltet sie
+## morgen um 05:37 UTC wieder aus (gemessen 08.09.2026, 20:05 UTC)
 
-`trig_01Uy3zVefXbzCZn9Dr2qvkwh` «LuxeStyle CJ-Grind + Social Keepalive (stündlich)» ist
-**enabled = false**, letzter geplanter Lauf datiert auf den **05.09.** Sie ist die oberste
-Schicht: Sie liegt ausserhalb des Containers und startet nach jedem Neustart den Aufseher —
-und der startet alles andere.
+Danke — `trig_01Uy3zVefXbzCZn9Dr2qvkwh` steht seit **20:03:44 UTC auf `enabled: true`**,
+nächster Lauf 20:07. Das ist die oberste Schicht: Sie liegt ausserhalb des Containers und
+startet nach jedem Neustart den Aufseher, und der startet alles andere.
 
-**Heute um 19:17 UTC gemessen, unmittelbar nach einem Neustart:**
+**Der Klick hält aber nur bis morgen früh, und das ist messbar:**
 
-| | |
-|---|---:|
-| Container-Laufzeit | **5 Minuten** |
-| laufende Aufseher | **0** |
-| laufende CJ-Runner | **0** |
+| Routine | Zeitplan | Zustand |
+|---|---|---|
+| `trig_01Uy3zVefXbzCZn9Dr2qvkwh` Keepalive | stündlich `7 * * * *` | **AN** (seit 20:03) |
+| `trig_017r619TeGtaS9Rsjjw24E96` «Lagebeurteilung 07:30 + 17:30» | `30 5,15 * * *`, **nächster Lauf 09.09. 05:37 UTC** | AN |
 
-Der Container startet etwa **stündlich** neu. Ohne diese Routine steht der Shop nach jedem
-Neustart ohne Wächter da, bis zufällig eine Session arbeitet — heute habe ich von Hand
-gestartet (danach `Aufseher=1`, 1 Runner, 0 offene Bestellungen).
+Im Prompt der **Lagebeurteilung** steht wörtlich die Anweisung, zu prüfen, «ob der Nachstarter
+`trig_01Uy3zVefXbzCZn9Dr2qvkwh` wieder aktiv ist — wenn er aktiv ist: `update_trigger enabled
+false` auf genau diese ID». Sie wird ihn morgen um 05:37 UTC also wieder abschalten.
 
-**Der Klick:** Routine wieder einschalten. Sie ist harmlos: Bei gesetzter Grind-Pause startet
-sie keinen Import-Runner, sie hält nur Aufseher, Bestell-Runner und Auto-Committer am Leben.
-⚠️ Sie wurde von einer anderen Session bewusst abgeschaltet («Nachstarter der CJ-Runner»).
-Ein Schalter, den zwei Sessions gegenläufig umlegen, ist keine Automatik mehr — **deshalb
-lege ich ihn nicht zum vierten Mal selbst um, sondern frage dich.**
+**Damit ist auch erklärt, warum der Schalter dreimal umgelegt wurde:** Es waren nie zwei
+Menschen, es ist ein Automat gegen einen Klick.
 
+→ **Sag ein Wort, dann nehme ich diese Zeile aus dem Prompt der Lagebeurteilung** (nur diesen
+Satz, der Rest der Routine bleibt). Von selbst lege ich den Schalter nicht zum vierten Mal um —
+das ist die Regel vom 05.09., und sie hat genau diesen Grund.
 
 ## 💎 Das Jade-Roller-Set steht in der STARTSEITEN-Kollektion — ohne Lieferanten (08.09.2026)
 Die #1008-Klasse (bezahlt, nie lieferbar) ist seit dem 20.08. bekannt und bewusst offen gelassen:
@@ -125,6 +123,33 @@ deinstallierte App diagnostiziert, die nie weg war.
 Container-Neustart, und die ganze Wächterschicht startet danach von selbst wieder. **Nicht ins
 Repo — es ist öffentlich.** (Gegengeprüft in einer sauberen Shell: aktuell ist keine der drei
 Variablen gesetzt.)
+
+## ⛔ BigBuy 08.09.2026, 20:00 UTC: DRITTER Auszahlungsantrag — auf DERSELBEN kaputten IBAN
+
+BigBuy hat soeben bestätigt: «Su petición de retirada de fondos se ha realizado correctamente
+y se hará efectiva en 5 días laborables», EUR 1'000, Banküberweisung. **Genau diese Mail kam
+schon am 15.07. und am 16.08. — und beide Male ist nichts angekommen.**
+
+Die Bestätigungsmail nennt die Zielkontonummer, und die habe ich selbst nachgerechnet
+(ISO 13616, mod 97):
+
+| geprüft | Ergebnis |
+|---|---|
+| Länge | **22 Zeichen** — eine Schweizer IBAN hat **21** |
+| Prüfsumme mod 97 | **54** — gültig ist nur **1** |
+| Folge | keine Bank kann das ausführen; der Antrag prallt ab wie die zwei davor |
+
+**Die IBAN ist also unverändert gespeichert — der neue Antrag ändert daran nichts.**
+
+✅ **Und der Fehler ist eingegrenzt:** Streicht man genau EINE verdoppelte Ziffer, entsteht eine
+**gültige** 21-stellige IBAN (mod 97 = 1), und die Prüfziffer bleibt dieselbe. Es gibt genau
+diese eine Lösung — ein Tippfehler beim Eintragen, keine falsche Bank. Die konkrete Nummer
+steht im Chat und in BigBuys Mail, **nicht hier: dieses Repo ist öffentlich.**
+
+**Reihenfolge (die ist der ganze Punkt):** erst die IBAN in der Konsole korrigieren, DANN den
+Antrag stellen. Wer nur den Antrag wiederholt, bekommt eine vierte Bestätigungsmail und wieder
+kein Geld. Auszahlungen laufen nur dienstags; heute ist Dienstag, der nächste ist der **15.09.**
+— derselbe Tag, an dem das Abo endet.
 
 ## 💶 BigBuy: **€1'000.00 liegen im Konto** — gemessen 07.09.2026, 15:30 UTC
 
@@ -481,7 +506,16 @@ Zwei-Artikel-Korb Gratis-Versand versprechen, den die Kasse nicht gibt — das i
 Sorte Irrtum. **5000 ist die einzige Zahl, die in keinem Korb luegt**, sie verspricht hoechstens
 zu wenig. Nichts zu tun.
 
-## 3. Klaviyo: die QUELLE der toten Domain abstellen  ⭐
+## 3. ✅ ERLEDIGT (08.09.2026, gemessen): Klaviyo-Konto zeigt auf luxestyle.ch
+
+`get_account_details` liefert jetzt `website_url: https://luxestyle.ch` (vorher die tote
+`luxestyle.com.co`). Absender steht auf `LuxeStyle CH / info@luxestyle.ch`. Damit ist die
+QUELLE zu: Klaviyo baut in neue Vorlagen keine tote Domain mehr ein.
+⚠️ Zwei Kleinigkeiten stehen im selben Dialog noch falsch: **Währung `USD`** und **Sprache
+`de-DE`** bei einem Schweizer Shop. Beides kostet nichts, verzerrt aber jede Umsatzzahl, die
+Klaviyo dir zeigt. Wenn du ohnehin dort bist: auf CHF und de-CH stellen.
+
+<details><summary>alter Auftrag (erledigt)</summary>
 
 > Klaviyo-Konsole (Konto XWqMAD, LuxeStyle CH) → Settings → Account → Contact information.
 > **Website URL** `https://luxestyle.com.co` → `https://luxestyle.ch`. Bei der Gelegenheit
@@ -496,6 +530,8 @@ Das Konto-Feld bleibt trotzdem die Quelle: Klaviyo baut die Domain in NEUE Vorla
 **Noch wirksamer, falls die Domain dir gehört:** `luxestyle.com.co` per DNS auf Shopify zeigen
 lassen und in Shopify als Weiterleitungs-Domain eintragen. Das rettet zusätzlich alle BEREITS
 VERSCHICKTEN Mails und alten Social-Posts.
+
+</details>
 
 ## 3f. Filter: aufgeklärt — kein Handgriff nötig  (KORRIGIERT 30.08., 22:40)
 

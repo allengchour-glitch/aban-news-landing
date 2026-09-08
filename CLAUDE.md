@@ -1,3 +1,48 @@
+## 🔁 Der Schalter-Streit war nie zwischen zwei Menschen — ein Automat legt ihn um (2026-09-08, 20:05 UTC)
+Seit dem 05.09. steht hier «ein Schalter, den zwei Sessions gegenläufig umlegen». Heute ist der
+Grund benannt, und er ist banaler und schlimmer: Der Betreiber hat die Keepalive-Routine
+`trig_01Uy3zVefXbzCZn9Dr2qvkwh` um **20:03:44 UTC eingeschaltet** (`enabled: true`, nächster Lauf
+20:07). Im Prompt einer ANDEREN, aktiven Routine — `trig_017r619TeGtaS9Rsjjw24E96`
+«Lagebeurteilung 07:30 + 17:30», cron `30 5,15 * * *`, **nächster Lauf 09.09. 05:37 UTC** — steht
+wörtlich: *«prüfen, ob der Nachstarter `trig_01Uy3zVefXbzCZn9Dr2qvkwh` wieder aktiv ist. Wenn er
+aktiv ist: `update_trigger enabled false` auf genau diese ID.»*
+**Der Klick hält also 9,5 Stunden.** Und keine der drei früheren Abschaltungen war eine
+Entscheidung — es war jedes Mal derselbe Automat.
+- **Die Lehre: Wer einen Schalter dreimal umgelegt findet, sucht nicht den zweiten Menschen,
+  sondern den Automaten, der ihn umlegt.** Ein Zustand, der sich ohne Zutun zurückstellt, hat
+  einen Schreiber; er steht im PROMPT einer Routine, nicht in der Prozessliste. `list_triggers`
+  gibt die Prompts mit aus — man muss sie lesen, nicht nur die Namen.
+- ⚠️ **NICHT von selbst geändert.** Die Regel vom 05.09. gilt weiter: Ich lege den Schalter nicht
+  zum vierten Mal um. Vorgeschlagen ist die Reparatur eine Ebene tiefer — **den Satz aus dem
+  fremden Prompt nehmen statt den Schalter zu halten**; das beendet den Streit, statt ihn zu
+  gewinnen. Auf ein Wort des Betreibers.
+- ⚠️ `list_triggers` liefert hier ~123 KB in EINER Zeile — die Read-Chunkung greift daran nicht.
+  Auslesen mit Python über die gespeicherte Datei (Zeichenbereiche), nicht mit `offset/limit`.
+
+## 💸 Eine Bestätigungsmail bestätigt den ANTRAG, nicht die AUSFÜHRUNG (2026-09-08, 20:00 UTC)
+BigBuy hat den **dritten** Auszahlungsantrag über EUR 1'000 bestätigt («wirksam innerhalb von
+5 Werktagen») — dieselbe Mail wie am 15.07. und 16.08., und beide Male kam nichts an. Die Mail
+nennt die Zielkontonummer; selbst nachgerechnet (ISO 13616, mod 97): **22 statt 21 Zeichen,
+mod 97 = 54 statt 1.** Die IBAN ist unverändert kaputt, der Antrag prallt zum dritten Mal ab.
+- **Der Fehler ist eingegrenzt statt vermutet:** Über alle Einzelstreichungen gerechnet gibt es
+  **genau EINE** 21-stellige Fassung mit mod 97 = 1 — eine verdoppelte Ziffer, Prüfziffer bleibt
+  gültig. Ein Tippfehler, keine falsche Bank. **Eine Prüfziffer ist ein harter Filter (1/97), sie
+  taugt zur Diagnose, nicht nur zur Ablehnung.**
+- **Die Reihenfolge ist die ganze Reparatur:** erst die IBAN korrigieren, DANN den Antrag stellen.
+  Ein wiederholter Antrag auf ein kaputtes Ziel erzeugt nur eine vierte Bestätigungsmail.
+- ⚠️ **Die Nummer steht NICHT im Repo** (es ist öffentlich) — sie lebt in BigBuys Mail und im Chat.
+- ⚠️ Und die Selbstkorrektur: Meine Morgenmessung («Geldbörse 1'000, keine Mail») war um 06:30
+  richtig und um 20:00 überholt. **Ein Postfach ist kein Zustand, sondern ein Strom** — vor einer
+  Aussage über «keine Antwort seit X» wird neu gesucht, nicht das Gedächtnis zitiert.
+
+## ✅ Klaviyo: die tote Domain ist an der QUELLE abgestellt (2026-09-08, gemessen)
+`get_account_details` gibt `website_url: https://luxestyle.ch` (vorher `luxestyle.com.co`,
+Befund 21.08.), Absender `LuxeStyle CH / info@luxestyle.ch`. Damit baut Klaviyo in NEUE Vorlagen
+keine tote Domain mehr ein — der 29.08.-Fix an den Flow-Snapshots hat jetzt auch seine Quelle.
+⚠️ Im selben Konto stehen weiterhin **`preferred_currency: USD`** und **`locale: de-DE`** bei
+einem Schweizer Shop, der nur nach CH liefert. Beides ist kosmetisch für den Versand und
+**verzerrt jede Umsatzzahl, die Klaviyo anzeigt** — gemeldet, nicht angefasst (Konto-Einstellung).
+
 ## 🧂 Die grösste Suchseite verkaufte nichts — der Ratgeber beschrieb einen Felsbrocken, verlinkt war eine Kuppel (2026-09-08, abends)
 Trichter 7 Tage: 399 Sitzungen, 5 Körbe, 2 Kassengänge, **0 Abschlüsse**; kein neuer abgebrochener
 Checkout seit dem 22.08., die zwei gingen also VOR der Adresseingabe. Bei zwei Fällen ist das
