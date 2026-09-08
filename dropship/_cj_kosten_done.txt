@@ -21829,3 +21829,8 @@ gid://shopify/Product/15500933267841	CHF 18.95	12 Varianten	Milchweisse Retro-Sa
 gid://shopify/Product/15500933300609	CHF 9.67	1 Varianten	Gelbes Kissenbezug
 gid://shopify/Product/15500933366145	CHF 31.28	1 Varianten	Hundestraining-Kollektiv
 gid://shopify/Product/15500933398913	CHF 16.65	1 Varianten	Kreative Bauklötze
+gid://shopify/Product/15500933431681	CHF 22.06	12 Varianten	Retro-Sandalen mit T-Buckle
+gid://shopify/Product/15500933464449	CHF 9.65	1 Varianten	Halsstütze für Wohnzimmer
+gid://shopify/Product/15500933497217	CHF 7.92	1 Varianten	Kuschelband für Hunde
+gid://shopify/Product/15500933529985	CHF 34.27	1 Varianten	Kleinkugeln Baukasten
+gid://shopify/Product/15500933562753	CHF 20.09	21 Varianten	Brown Sandalen mit Kubusabsatz

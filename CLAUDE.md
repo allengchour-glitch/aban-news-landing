@@ -1,3 +1,38 @@
+## 🕰️ Unsere API-Version ist seit Monaten abgelaufen — und niemand hat es gemerkt (2026-09-08, 20:15 UTC)
+Der Betreiber schickte Shopifys Monitoring-Screenshot: `InventoryQuantityInput.compareQuantity` und
+`InventorySetQuantitiesInput.ignoreCompareQuantity` fallen zum **01.01.2027** weg, zuletzt erkannt am
+21.08.2026. Gemessen statt gelesen — und die Umgebung ist ernster als die Meldung:
+| gefragt | Antwort |
+|---|---|
+| `publicApiVersions` (was Shopify HEUTE unterstützt) | **2025-10 · 2026-01 · 2026-04 · 2026-07** |
+| unsere Aufrufe | **214 Dateien auf 2024-10, 44 auf 2025-01** — beide **nicht mehr in der Liste** |
+| antworten sie trotzdem? | **ja**, mit Daten, ohne Warnung |
+**Unser ganzer Betrieb läuft auf zwei Versionen, die Shopify nicht mehr als unterstützt führt.**
+Nichts ist kaputt, und genau das ist die Gefahr: Eine abgelaufene Version meldet sich nicht ab, sie
+antwortet weiter — bis sie es eines Tages nicht mehr tut, und dann fallen 258 Aufrufstellen
+gleichzeitig aus. **Eine API-Version in der URL ist eine Bitte, keine Garantie**; ob sie noch gilt,
+beantwortet nur `publicApiVersions`, nicht das Ausbleiben von Fehlern.
+- ⛔ **Und der Beinahe-Schaden: Ich hätte fast eine heile Sicherung „repariert".** Die Introspektion
+  von `InventoryQuantityInput` gab auf ALLEN Versionen nur `inventoryItemId, locationId, quantity` —
+  kein `compareQuantity`. Daraus las ich, das Feld sei längst weg und `fortura_bestand_sync.mjs`
+  schreibe seit Wochen ohne seinen Nebenläufigkeits-Schutz (die Ghost-Sale-Klasse aus #1008/#1009).
+  **Falsch: GraphQL-Introspektion VERSCHWEIGT veraltete Felder, solange man nicht
+  `inputFields(includeDeprecated:true)` fragt.** Damit gefragt steht es da — `compareQuantity(veraltet)`
+  auf 2024-10 und 2025-10, ersetzt durch `changeFromQuantity` ab 2026-04.
+- **Entschieden hat aber erst das Objekt, nicht das Schema:** ein Schreibvorgang auf ein echtes
+  CH-Lager-Produkt (Bestand 8) mit `quantity:8` und absichtlich falschem `compareQuantity:999` —
+  in beiden Ausgängen ein No-op. Antwort: **«The compareQuantity argument no longer matches the
+  persisted quantity.»**, Bestand nachher unverändert 8. **Die Sicherung wirkt.**
+  **Ein gefahrloses Experiment ist eines, dessen beide Ausgänge nichts ändern** — so lässt sich auch
+  an echter, verkaufter Ware messen, statt zu vermuten.
+- ⚠️ Betroffen sind genau **zwei** Dateien (`fortura_bestand_sync.mjs`, `google_feed/bb_track_all.py`);
+  die erste läuft täglich über `fortura_runner.sh`. Die Umstellung auf `changeFromQuantity` ist damit
+  datiert, nicht dringend — und sie gehört ZUSAMMEN mit dem Versionssprung gemacht, sonst repariert
+  man ein Feld und lässt 258 Aufrufstellen auf einer toten Version stehen.
+- ⚠️ **Die Meldung im Dashboard nennt die kleinere Hälfte.** Sie warnt vor zwei Feldern und schweigt
+  darüber, dass die angefragte Version selbst abgelaufen ist. **Eine Deprecation-Warnung ist ein
+  Symptom; die Frage dahinter ist immer, auf welcher Version man überhaupt fährt.**
+
 ## 🔁 Der Schalter-Streit war nie zwischen zwei Menschen — ein Automat legt ihn um (2026-09-08, 20:05 UTC)
 Seit dem 05.09. steht hier «ein Schalter, den zwei Sessions gegenläufig umlegen». Heute ist der
 Grund benannt, und er ist banaler und schlimmer: Der Betreiber hat die Keepalive-Routine

@@ -1,5 +1,12 @@
 # Cowork-Aufträge (nur der Betreiber kann das)
 
+## ⏳ SHOPIFY_CLIENT_ID/_SECRET: gemeldet erledigt — Beleg folgt beim nächsten Neustart (08.09.2026, 20:15 UTC)
+Der Betreiber hat die beiden Werte in die Claude-Umgebungsvariablen eingetragen. **In diesem Container
+sind sie leer** — und das ist kein Widerspruch: Der Container läuft seit 20:01 UTC, also seit VOR der
+Eintragung, und Umgebungsvariablen kommen beim Containerstart hinein. Nachgemessen wird beim nächsten
+stündlichen Neustart; sind sie dann da, ist der Punkt endgültig zu und `/tmp/secrets_env.sh` nur noch
+ein Rückfall. **Nichts zu tun** — die Meldung steht hier nur, damit die Gegenprobe nicht vergessen geht.
+
 ## ⏳ Die Keepalive-Routine ist wieder AN — aber eine ANDERE Routine schaltet sie
 ## morgen um 05:37 UTC wieder aus (gemessen 08.09.2026, 20:05 UTC)
 
