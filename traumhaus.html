@@ -9410,8 +9410,11 @@ setTimeout(function baueGebaeude(){
      ⚠️ Die Ausfahrtsmarkierung wird HIER gezeichnet, nicht im Modell: sie gehoert
      zum Grundstueck, und im Gebaeude machte sie es 20,97 statt 13,5 tief. */
   (function wacheUndTanke(){
-    function fest(datei,hoehe,x,z,ry){
-      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    /* `dann` ist neu und optional: die Preistafel muss nach dem Laden beschriftet
+       werden. Die vier gleichnamigen Helfer in den Nachbar-Bloecken bleiben
+       unangetastet — sie brauchen es nicht. */
+    function fest(datei,hoehe,x,z,ry,dann){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(dann)dann(w);},true);
     }
     /* Feuerwache bei (56|100), Tore nach +z auf den Vorplatz. Zielhoehe 11,5
        statt 13,81: der alte Bau war samt Turm rund 10,3 hoch. */
@@ -9467,7 +9470,21 @@ setTimeout(function baueGebaeude(){
     addSolid(98.75,-75.3,7.6,5.2,{a:"z",at:-72.6,c:98.75,w:3.0});
     for(var z9=0;z9<2;z9++)
       fest("th43_zapfsaeule.glb",2.03,92.1+z9*3.4,-72.0,Math.PI);
-    fest("th43_preistafel.glb",5.20,88.0,-69.6,Math.PI);
+    /* ⛽ PREISE UND SORTEN. Das Modell bringt drei fertige Preiszeilen mit — je ein
+       Sortenschild (0,36 x 0,20 m) und ein Anzeigefeld (0,62 x 0,20 m) —, und alle
+       sechs standen leer. Die Hoehen sind GEMESSEN (Weltkoordinaten, nicht aus der
+       GLB gerechnet): 4,16 / 3,80 / 3,44.
+       ⚠️ Der weisse Kopfstreifen des Modells bleibt bewusst leer: er steckt mit
+       z -69,65…-69,55 INNERHALB der gruenen Tafel (-69,81…-69,39) und ist damit gar
+       nicht sichtbar. Schrift darauf waere Arbeit ohne Wirkung.
+       Die Vorderseite zeigt nach +z — das Modell steht um 180 Grad gedreht, und die
+       Seitenpruefung in schildTafel findet das von selbst. */
+    fest("th43_preistafel.glb",5.20,88.0,-69.6,Math.PI,function(w9){
+      [[4.16,"95","1.79"],[3.80,"98","1.89"],[3.44,"Diesel","1.86"]].forEach(function(z9){
+        schildTafel(w9,[z9[1]],{muster:/FwWeiss/,beiY:z9[0],gross:96,
+          grund:"#f2f2ea",schrift:"#1b2430",randFarbe:"#1b2430"});
+        schildTafel(w9,[z9[2]],{muster:/FwAnzeig/,beiY:z9[0],gross:96,
+          grund:"#12140f",schrift:"#f2c14e",randFarbe:"#3a3f2f",leuchtet:true});});});
     fest("th43_luftstation.glb",1.80,89.5,-76.9,0);
     fest("th43_waschbox.glb",3.93,66.5,-75.5,0);
   })();
@@ -10685,11 +10702,21 @@ function schildTafel(w,zeilen,opt){
   var muster=opt.muster||/tafel|weiss|white|rim|platte|schild/i;
   var treffer=null;
   w.updateMatrixWorld(true);
+  /* ⚠️ EIN MATERIALNAME KANN MEHRERE FLAECHEN MEINEN. Die Preistafel der Tankstelle
+     traegt `FwWeiss` viermal: einmal als Kopfstreifen und dreimal als Sortenschild
+     einer Preiszeile. Wer die erste nimmt, beschriftet die falsche. `opt.beiY` waehlt
+     darum die Flaeche, deren Mitte einer Hoehe am naechsten liegt — eine Zahl, die man
+     der Welt ansieht, im Gegensatz zu einer Nummer in der Reihenfolge des Durchlaufs. */
+  var beiY=opt.beiY, bestAbst=1e9;
   w.traverse(function(m){
-    if(treffer||!m.isMesh||!m.material)return;
+    if(!m.isMesh||!m.material)return;
+    if(treffer&&beiY===undefined)return;
     var liste=Array.isArray(m.material)?m.material:[m.material];
     if(!liste.some(function(q){return q&&muster.test(String(q.name||""));}))return;
-    treffer=m;});
+    if(beiY===undefined){treffer=m;return;}
+    var bb0=new THREE.Box3().setFromObject(m),mp0=new THREE.Vector3();bb0.getCenter(mp0);
+    var d0=Math.abs(mp0.y-beiY);
+    if(d0<bestAbst){bestAbst=d0;treffer=m;}});
   if(!treffer)return 0;
   var bb=new THREE.Box3().setFromObject(treffer),e=new THREE.Vector3(),mp=new THREE.Vector3();
   bb.getSize(e);bb.getCenter(mp);
