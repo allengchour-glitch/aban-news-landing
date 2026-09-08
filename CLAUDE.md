@@ -76,6 +76,13 @@ Produkt-Eigennamen in « »; alle 37 gefundenen Namen einzeln gegen den Katalog 
 - **`automation/kollektionstexte_wahrheit.py`** (täglich im Aufseher, **MELDET NUR**): Ein Kollektionstext
   ist eine redaktionelle Entscheidung; ihn automatisch umzuschreiben hiesse, den Grund für den Satz zu
   erfinden — dieselbe Begründung, aus der `ratgeber_ohne_ware.py` seit dem 28.08. keinen Auto-Fix hat.
+  **In VIER Richtungen belegt**, nicht nur am Nullbefund: «Aura» (0 aktiv, 2 DRAFT) → Phantom · «Markgräfin»
+  (0/3) → Phantom · «Bali» (1/6) → in Ordnung · ein erfundener Name (0/0) → Konzept, kein Befund.
+  Der Vollauf über 364 Kollektionen meldet danach **0** — und das ist erst dadurch eine Aussage.
+  **Ein Wächter, der nur «0» meldet, ist kein Beweis** (Gegenrichtung zu «ein Wächter, der nur Positive
+  findet, ist ein Alarm», 27.08.).
+- **Live gegengeprüft, nicht nur am Ursprung:** `/collections/topseller` → **301** auf `bestseller`;
+  `camping-kueche`, `gravur-personalisiert` und `raucherzubehoer` antworten mit **200**.
 - **Die Lehre über den Fall hinaus:** `ratgeber_ohne_ware.py` kennt diese Klasse seit dem 28.08. — aber nur
   für BLOGARTIKEL. Kollektionstexte stehen auf jeder Kategorieseite über der Ware und standen in keiner
   Prüfliste. **Wer eine Fehlerklasse in einer Textsorte findet, muss fragen, welche anderen Textsorten der
