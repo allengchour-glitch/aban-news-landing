@@ -369,10 +369,26 @@ while true; do
       [ -f /tmp/opts_frisch.jsonl ] || continue
       EXP="QUELLE=/tmp/opts_frisch.jsonl"
     fi
+    # ⚠️ 08.09.2026: Hier nahm JEDER Waechter nur sein EIGENES Schloss (`lock_$L.lock`).
+    # Das verhindert den Doppelstart DESSELBEN Werkzeugs — nicht aber, dass zwei
+    # VERSCHIEDENE Massen-Schreiber gleichzeitig auf `descriptionHtml` gehen. Genau das
+    # ist heute passiert: der Aufseher-Lauf von `versand_jenachland` und ein Handstart
+    # unter dem geteilten Schloss liefen 10 Minuten nebeneinander (236 Doppelquittungen
+    # im Ledger). Folgenlos, weil beide dasselbe schreiben — aber es ist die Zombie-Klasse
+    # vom 15.08., und beim naechsten Paar waere es ein Ueberschreiben.
+    # Vier Werkzeuge dieser Liste schreiben Produkttext (gemessen, nicht vermutet):
+    # produktdetails_vereinen · versand_jenachland · ss_statt_scharf_s · fremdzeichen_guard.
+    # Sie nehmen zusaetzlich das GETEILTE Schloss — mit `-w`, damit ein kurz belegtes
+    # Schloss keinen Lauf verschluckt, aber nicht laenger als der Container lebt.
+    # Regel seit 03.09.: EIN Lock, EIN Ledger — nie ein eigener Lockfile je Werkzeug.
+    case " produktdetails_vereinen versand_jenachland ss_statt_scharf_s fremdzeichen_guard " in
+      *" $L "*) TXTLOCK="exec 8>/tmp/lock_produkttext.lock; flock -w 240 8 || exit 0;" ;;
+      *)        TXTLOCK="" ;;
+    esac
     date +%s > "/tmp/_start_$L"
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP exec python3 automation/$L.py" \
-        >> "/tmp/$L.log" 2>&1 9>&- & )
+        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $TXTLOCK $EXP exec python3 automation/$L.py" \
+        >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
     echo "$(date -u +%H:%M) restart $L"
     sleep 5
   done

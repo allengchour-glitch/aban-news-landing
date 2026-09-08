@@ -1,5 +1,30 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔓 Jeder Wächter hatte sein EIGENES Schloss — zwei Produkttext-Schreiber liefen 10 Minuten nebeneinander (2026-09-08)
+Der USA-Lauf ist durch (**996 → 0**, am Objekt an 40 Stichproben mit tag-tolerantem Muster
+gegengeprüft, Index 0, Kontrollwort 0). Aufgefallen ist dabei etwas anderes: Das Ledger hatte
+**1'366 Zeilen bei nur 1'130 eindeutigen IDs** — 236 Doppelquittungen. `ps` zeigte **zwei** Läufe:
+den des Aufsehers und meinen Handstart, 10 Minuten parallel auf demselben Feld.
+**Die Ursache ist ein Schloss zu viel, nicht eines zu wenig.** Die Wächterschleife im Aufseher
+nimmt `/tmp/lock_$L.lock` — ein eigenes Schloss JE WERKZEUG. Das verhindert den Doppelstart
+desselben Werkzeugs und lässt zwei VERSCHIEDENE Massen-Schreiber ungehindert gleichzeitig auf
+`descriptionHtml` los. Genau die Zombie-Klasse vom 15.08.; hier folgenlos, weil beide dasselbe
+schreiben, beim nächsten Paar wäre es ein Überschreiben.
+- **Gemessen, nicht vermutet, welche vier es betrifft:** `produktdetails_vereinen` ·
+  `versand_jenachland` · `ss_statt_scharf_s` · `fremdzeichen_guard`. Sie nehmen jetzt
+  ZUSÄTZLICH das geteilte `/tmp/lock_produkttext.lock` (mit `-w 240`, damit ein kurz belegtes
+  Schloss keinen Lauf verschluckt). In beide Richtungen belegt: die vier bekommen es, die
+  übrigen 20 nicht; Schloss belegt → Start bricht ab, Schloss frei → Start läuft.
+- **Dritte Fassung von «EIN Lock, EIN Ledger»** (nach den Social-Postern 26.07. und den
+  Produkttext-Schreibern 03.09.) — und die erste, in der das eigene Schloss die Sicherheit
+  nur VORTÄUSCHTE: Jeder Lauf war für sich korrekt gesperrt, und trotzdem liefen zwei.
+  **Ein Schloss schützt die Ressource, nicht den Prozess** — wer es nach dem Werkzeug benennt,
+  hat es nach dem Falschen benannt.
+- ⚠️ Und der Grund, warum ich die zwei Läufe für einen hielt: Ich hatte nach dem Start `ps`
+  gefragt und die erste passende PID genommen — das war der ältere Lauf des Aufsehers.
+  **Wer einen Prozess startet und danach die Prozessliste fragt, bekommt irgendeinen** (Lehre 1
+  in neuer Form). Belastbar ist die Startzeit: 650 s gegen 573 s hat es entschieden.
+
 ## 🧾 Sechs falsche Zusagen auf Kundenseiten — «14 Tage» statt 30, Schweizer Versand für CJ-Ware (2026-09-08)
 Die drittgrösste Ratgeber-Landeseite der letzten 30 Tage (`einschlaf-ritual-aromatherapie-pillow-spray`,
 5 Sitzungen) stand in KEINER Prüfliste — sie hat kaufbare Produktlinks, also meldet
