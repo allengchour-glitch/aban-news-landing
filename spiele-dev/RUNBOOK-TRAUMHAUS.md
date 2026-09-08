@@ -6564,3 +6564,28 @@ eine Ampel fotografieren will, fotografiert damit den Boden davor:
 **Und immer zwei Fragen trennen:** traegt die Flaeche ueberhaupt eine Textur
 (`material.map`, per Sonde abfragbar), und kommt sie am Bildschirm an. Das Foto
 allein beantwortet beides gleichzeitig falsch.
+
+## Drei Abschalter, die ein leeres Bild erzeugen — ohne dass etwas fehlt
+
+Gelernt 2026-09-08 an den Neonschildern. Fuer die eine Frage „steht die Schrift da"
+sind VIER Bildlaeufe nacheinander gescheitert, und kein einziger davon lag an der Welt.
+Wer ein Objekt fotografiert und nichts sieht, muss diese drei zuerst ausschliessen:
+
+1. **`lodTakt` haengt an der SPIELFIGUR, nicht an der Kamera.** Steht die Figur noch am
+   Startpunkt, ist alles im Umkreis der Kamera abgeschaltet. → Figur mitnehmen
+   (`sims[meinSi()].x/z` setzen).
+2. **`gruppenSicht` haengt an der HAUPTkamera.** Es setzt `visible=false` fuer Gruppen
+   ausserhalb ihres Sichtkegels. Eine eigene Kamera fuer `renderer.render` hilft
+   deshalb NICHT — die Gruppe ist beim Zeichnen schon aus. → unmittelbar vor dem
+   Rendern `visible=true` und `_gsAus=false` die Elternkette hinauf.
+3. **Freistellen heisst nicht „Eltern an".** Wer `scene.children` ausblendet und danach
+   die Elternkette des Ziels wieder sichtbar setzt, holt alle GESCHWISTER darin zurueck
+   (im Bild standen dann die Marktstaende statt des Schildes). → jedes andere Kind
+   desselben Elternteils einzeln aus, nicht den Elternteil an.
+
+**Fertiges Werkzeug dafuer:** `spiele-dev/tools/th-schild.mjs` — umgeht alle drei und
+rendert mit eigener Kamera frontal vor die Flaeche in ein Render-Ziel.
+
+**Und die Lehre ueber die Kennzahl:** der Anteil farbiger Bildpunkte taugt nur fuer
+„ueberhaupt gezeichnet". Er war mit VERDECKTER Schrift sogar hoeher (34 % gegen 20 %),
+weil die verdeckende Zierde selbst bunt ist. Was gut aussieht, entscheidet das Bild.
