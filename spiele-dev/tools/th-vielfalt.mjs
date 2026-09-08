@@ -48,14 +48,25 @@ const datei = mitSonden('traumhaus.html', {
         'if(o.count<min)return;' +
         'var M=new THREE.Matrix4(),P=new THREE.Vector3(),Q=new THREE.Quaternion(),S=new THREE.Vector3();' +
         'var sk={},dr={};' +
+        'var ix0=1e9,ix1=-1e9,iz0=1e9,iz1=-1e9,iy0=1e9,iy1=-1e9,isx=0,isz=0;' +
         'for(var i=0;i<o.count;i++){o.getMatrixAt(i,M);M.decompose(P,Q,S);' +
           'sk[Math.round(S.x*200)+"|"+Math.round(S.y*200)+"|"+Math.round(S.z*200)]=1;' +
-          'var e=new THREE.Euler().setFromQuaternion(Q);dr[Math.round(e.y*200)]=1;}' +
-        'var wp=new THREE.Vector3();o.getWorldPosition(wp);' +
+          'var e=new THREE.Euler().setFromQuaternion(Q);dr[Math.round(e.y*200)]=1;' +
+          /* ⚠️ DER ORT EINER INSTANZ-GRUPPE STEHT NICHT AM CONTAINER. Die erste
+             Fassung las o.getWorldPosition() — das ist bei einer InstancedMesh fast
+             immer der Ursprung, und die Liste meldete brav "(0|0), Weite 0 m" fuer
+             Gruppen, die quer durch die Stadt stehen. Die Lage steckt in denselben
+             Matrizen, die hier ohnehin durchlaufen werden. */
+          'isx+=P.x;isz+=P.z;' +
+          'if(P.x<ix0)ix0=P.x;if(P.x>ix1)ix1=P.x;' +
+          'if(P.z<iz0)iz0=P.z;if(P.z>iz1)iz1=P.z;' +
+          'if(P.y<iy0)iy0=P.y;if(P.y>iy1)iy1=P.y;}' +
+        'var imx=isx/o.count,imz=isz/o.count;' +
         'out.push({n:o.count,art:"Instanzen",name:nam||schluessel(o,m),' +
           'groessen:Object.keys(sk).length,drehungen:Object.keys(dr).length,' +
-          'ort:_naechsterOrt(wp.x,wp.z),x:Math.round(wp.x),z:Math.round(wp.z),' +
-          'yMin:0,yMax:0,weite:0});return;}' +
+          'ort:_naechsterOrt(imx,imz),x:Math.round(imx),z:Math.round(imz),' +
+          'yMin:+iy0.toFixed(1),yMax:+iy1.toFixed(1),' +
+          'weite:Math.round(Math.max(ix1-ix0,iz1-iz0))});return;}' +
       /* Einzelmeshes nach Geometrie + Farbe buendeln — die Welt-Matrix zaehlt. */
       'var k=schluessel(o,m)+"|"+nam;' +
       'if(!G[k])G[k]={n:0,name:nam,art:"Einzelteile",sk:{},dr:{},bsp:schluessel(o,m),' +
@@ -89,9 +100,14 @@ console.log('  Anzahl  Gr.  Dreh.  Streuung  Hoehe        Weite  Wo             
 for (const q of L) {
   const streu = ((q.groessen + q.drehungen) / q.n).toFixed(2)
   const hoehe = q.yMax > q.yMin ? `${q.yMin}…${q.yMax} m` : `${q.yMin} m`
+  /* ⚠️ EIN ORTSNAME FUER EINE VERSTREUTE GRUPPE LUEGT. Der Schwerpunkt von 778
+     Flaechen, die 629 m weit auseinanderliegen, landet zufaellig irgendwo — die
+     erste Fassung schrieb dann „Dein Grundstueck" hin, als staende die Gruppe dort.
+     Ab 80 m Ausdehnung heisst es darum „verstreut", und der Ort entfaellt. */
+  const wo = q.weite > 80 ? `verstreut (${q.weite} m)` : `${q.ort} (${q.x}|${q.z})`
   console.log('  ' + String(q.n).padStart(5) + String(q.groessen).padStart(5) + String(q.drehungen).padStart(7) +
     streu.padStart(10) + '  ' + hoehe.padEnd(12) + String(q.weite).padStart(4) + 'm  ' +
-    (String(q.ort) + ' (' + q.x + '|' + q.z + ')').padEnd(22) + ' ' + String(q.name).slice(0, 30))
+    wo.padEnd(24) + ' ' + String(q.name).slice(0, 30))
 }
 console.log('\nStreuung = (Groessen + Drehungen) / Anzahl. 0,03 heisst: 100 Dinge teilen sich')
 console.log('drei Auspraegungen. Bei Industrieprodukten (Laternen, Poller, Schilder) ist das')
