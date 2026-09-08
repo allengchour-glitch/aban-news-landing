@@ -354,8 +354,24 @@ Zugriff». Der Betreiber lieferte den Produktions-Schlüssel; ZUERST getestet, D
   dienstags**; das Abo endet am 15.09. — einem Dienstag. Der letzte Bearbeitungstag mit
   Reserve ist damit **Dienstag 08.09.**, nicht «irgendwann bis zum 15.». Eine Frist gehört
   gegen den Bearbeitungsrhythmus gerechnet, nicht gegen den Kalender.
-- Verdacht, ausdrücklich NICHT belegt: die offene Transaktion **18138523** (1'000 €, «fällige
-  Zahlung») könnte das Guthaben binden. Sie ist zu stornieren, nie zu bezahlen.
+- ⛔ **KORREKTUR 08.09.: «Sie ist zu stornieren» war eine gefährliche Anweisung — zurückgezogen.**
+  Ich hatte 18138523 aus der Konsolen-Beschriftung («fällige Zahlung») als FORDERUNG GEGEN uns
+  gelesen. Am Objekt gelesen ist sie das Gegenteil: `order/18138523.json` gibt Position
+  **«Ingreso en monedero»** — spanisch für *Einzahlung in die Geldbörse* —, Versandart «Pack
+  servicios, **no requiere entrega**», 1'000 €, angelegt **07.07.2026**, Status «Pendiente de
+  pago». Das ist die Einzahlung SELBST, nicht eine Rechnung an uns. **Wer sie storniert,
+  storniert womöglich genau den Vorgang, der die 1'000 € trägt.** Nicht anfassen, ohne BigBuy
+  zu fragen.
+  ⚠️ Offen bleibt der Widerspruch, und er ist NICHT aufgelöst: Die Geldbörse steht auf
+  1'000.00, die Einzahlungs-Bestellung steht auf «unbezahlt». Entweder wurde eingezahlt und
+  der Datensatz nie geschlossen, oder die 1'000 stammen von woanders. Das weiss nur BigBuy.
+  **Eine Beschriftung in einer fremden Oberfläche ist keine Tatsache über den Vorgang** —
+  dieselbe Familie wie «ein Tag-Name ist eine Behauptung» (29.08.); hier hätte sie 1'000 €
+  gekostet.
+- **Messung Di 08.09. 06:30 UTC (der letzte Bearbeitungstag mit Reserve):** Geldbörse
+  weiterhin **«1000.00»**, Gmail seit dem 16.08. **keine** weitere BigBuy-Mail. Der bestätigte
+  Antrag («wirksam innerhalb von 5 Werktagen») ist damit seit **23 Tagen** nicht ausgeführt.
+  Nächster Bearbeitungsdienstag ist der 15.09. — der Tag, an dem das Abo endet.
 - Zwei Selbstmessungen gesetzt (Di 08.09., Fr 11.09.) — das Guthaben ist ab jetzt von hier aus
   messbar, der Betreiber muss dafür nichts mehr nachsehen.
 
