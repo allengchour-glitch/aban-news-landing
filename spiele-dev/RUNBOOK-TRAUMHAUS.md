@@ -6534,3 +6534,33 @@ wurde.
 
 **Bewusst geblieben:** Emoji in Overlays (Erfolgsliste, Katalog, Intro) — dort ist das
 Bildchen der Listeneintrag selbst, kein Ersatz für eine Ikone.
+
+## `__CAM` zielt auf den BODEN — fuer alles Hochmontierte unbrauchbar
+
+Gelernt 2026-09-08 an den drei Neonschildern, nach **drei** vergeigten Bildlaeufen
+hintereinander. `window.__CAM(x,z,r,b)` setzt
+
+    camera.position = ziel + (sin(camA), , cos(camA)) * cos(b) * r,  Hoehe sin(b)*r + 2
+    camera.lookAt(ziel.x, 0.6, ziel.z)
+
+Der Blick geht also immer auf **y = 0,6**. Wer ein Schild, eine Tafel, ein Dach oder
+eine Ampel fotografieren will, fotografiert damit den Boden davor:
+
+1. **Blickrichtung geraten** — bei der Suedansicht stand die Kamera im Clubgebaeude,
+   das Bild war leer. Ein leeres Bild heisst hier NICHT „das Objekt fehlt".
+2. **Richtung ausgelesen, Hoehe vergessen** — Kamera bei 9 m Abstand und Neigung 0,16
+   steht 3,4 m hoch und schaut auf den Boden. Eine Tafel auf 2,8 m rutscht an den
+   oberen Bildrand, eine auf 5,24 m ist ganz aus dem Bild (`t1-nah.png`: nur ein
+   brauner Dachbalken).
+
+**Rezept, das funktioniert:** Weltlage *und* Normale der Flaeche aus der Szene lesen
+(nicht aus dem Quelltext rechnen), daraus
+
+    camA = atan2(n.x, n.z)                 /* die Kamera steht VOR der Flaeche */
+    b    = asin(max(0,(hoehe-2))/r)        /* Kamera auf Tafelhoehe */
+    r    = 12 (nah) und 25 (weit)          /* zwei Abstaende, sonst haelt man ein
+                                              verbautes Bild fuer „Schrift fehlt" */
+
+**Und immer zwei Fragen trennen:** traegt die Flaeche ueberhaupt eine Textur
+(`material.map`, per Sonde abfragbar), und kommt sie am Bildschirm an. Das Foto
+allein beantwortet beides gleichzeitig falsch.
