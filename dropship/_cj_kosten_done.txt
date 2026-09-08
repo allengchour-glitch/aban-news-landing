@@ -21653,3 +21653,5 @@ gid://shopify/Product/15500914983297	CHF 13.45	1 Varianten	Jacquard Strick-Kisse
 gid://shopify/Product/15500915016065	CHF 12.59	1 Varianten	Isolierte Lunchbox aus Edelstahl mit Thermotasche
 gid://shopify/Product/15500915048833	CHF 44.08	3 Varianten	3D Schmetterlingskleid mit Taillengürtel
 gid://shopify/Product/15500915081601	CHF 22.84	1 Varianten	Kabelbinder-Zange manuell
+gid://shopify/Product/15500915147137	CHF 45.78	4 Varianten	Ärmelloses Polka-Dot Kleid im French-Stil
+gid://shopify/Product/15500915179905	CHF 16.35	1 Varianten	Stahlband-Ölfilterschlüssel

@@ -40823,3 +40823,42 @@ gid://shopify/Product/15408458072449	direkt	1	Cellulite Massage Roller
 gid://shopify/Product/15408458563969	direkt	1	Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe
 gid://shopify/Product/15411555533185	direkt	1	Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetoot
 gid://shopify/Product/15411554910593	direkt	1	Aromadiffusor Holzmaserung
+gid://shopify/Product/15411564446081	direkt	1	Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugn
+gid://shopify/Product/15411563823489	direkt	1	Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
+gid://shopify/Product/15411554320769	direkt	1	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-
+gid://shopify/Product/15411565429121	direkt	1	Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hob
+gid://shopify/Product/15411565035905	direkt	1	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset
+gid://shopify/Product/15412297073025	direkt	1	Solar Camping-Laterne im Vintage-Look – wiederaufladbar, IP44 wetterfe
+gid://shopify/Product/15412297007489	direkt	1	LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten & Balk
+gid://shopify/Product/15412299760001	direkt	1	Vintage Sonnenbrille Oval – Metallrahmen, UV-Schutz (Damen)
+gid://shopify/Product/15412299661697	direkt	1	Kühlmatte für Hunde & Katzen – Ice-Silk, selbstkühlend (waschbar)
+gid://shopify/Product/15411556614529	direkt	1	Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
+gid://shopify/Product/15412301922689	direkt	1	Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones
+gid://shopify/Product/15412302414209	direkt	1	Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
+gid://shopify/Product/15412304773505	direkt	1	Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser
+gid://shopify/Product/15412304707969	direkt	1	Übersetzer-Kopfhörer – 144 Sprachen, Echtzeit, Bluetooth 5.3
+gid://shopify/Product/15412304871809	direkt	1	Komfort-Fahrradsattel XXL – extrabreit, gefedert, ergonomisch gepolste
+gid://shopify/Product/15412306772353	direkt	1	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle 
+gid://shopify/Product/15412307165569	direkt	1	Selbstklebende 3D-Wimpern – wiederverwendbar, ohne Kleber, natürlicher
+gid://shopify/Product/15412306608513	direkt	1	16-in-1 Gemüseschneider – Multi-Hobel, Würfler & Slicer
+gid://shopify/Product/15412307100033	direkt	1	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung, wasserabweisend
+gid://shopify/Product/15412304806273	direkt	1	Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)
+gid://shopify/Product/15412302020993	direkt	1	Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 
+gid://shopify/Product/15412306215297	direkt	1	Augenmassagegerät mit Wärme & Musik – Bluetooth, faltbar, gegen müde A
+gid://shopify/Product/15412432175489	direkt	1	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
+gid://shopify/Product/15412433256833	direkt	1	Handliches Massagegerät – Vibrations-Massage mit mehreren Stufen
+gid://shopify/Product/15412405272961	direkt	1	All-in-One Elektro-Kochtopf – Keramik-Beschichtung, Glasdeckel & Zange
+gid://shopify/Product/15412408615297	direkt	1	Monitor-Lichtleiste mit Bewegungssensor – blendfreies Schreibtischlich
+gid://shopify/Product/15412361593217	direkt	1	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlaf
+gid://shopify/Product/15412447543681	direkt	1	Auto-Schnellladegerät PD – ausziehbares Kabel, für Apple & Android
+gid://shopify/Product/15412659978625	direkt	1	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schlüsselbund 
+gid://shopify/Product/15412678328705	direkt	1	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen für Setzlinge & Krä
+gid://shopify/Product/15412302512513	direkt	1	Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichte
+gid://shopify/Product/15412476445057	direkt	1	Flötenkessel 2L – Edelstahl-Wasserkessel mit Pfeife, für alle Herde & 
+gid://shopify/Product/15412463108481	direkt	1	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, Fashion-Look (Herren
+gid://shopify/Product/15412307657089	direkt	1	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserung, 2 Helligkeitsstuf
+gid://shopify/Product/15412677607809	direkt	1	Elektrischer Krallenschleifer für Hund & Katze – leise, USB-Akku, mit 
+gid://shopify/Product/15412751499649	direkt	1	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben
+gid://shopify/Product/15412751860097	direkt	1	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Far
+gid://shopify/Product/15412825129345	direkt	1	Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farbe
+gid://shopify/Product/15412825063809	direkt	1	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
