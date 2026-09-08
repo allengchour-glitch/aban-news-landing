@@ -1,0 +1,14 @@
+{
+ "id": "gid://shopify/Collection/688928915841",
+ "sortOrder": "CREATED_DESC",
+ "ruleSet": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "velo"
+   }
+  ]
+ }
+}
