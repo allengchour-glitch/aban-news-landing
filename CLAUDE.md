@@ -37,7 +37,13 @@ Nebeneinander ist keine Reihenfolge).
   statt geschrieben; `fahrrad` (222) trägt die Kollektion allein.
 - ⚠️ **Und die Reihenfolge, die man leicht falsch macht:** Am 07.09. wurden diese Kollektionen aus dem
   Kategorien-Verzeichnis ENTFERNT, weil sie leer waren. Wer sie heute füllt, muss das Verzeichnis neu
-  bauen — sonst ist die Ware da und der Weg dorthin nicht.
+  bauen — sonst ist die Ware da und der Weg dorthin nicht. Nachgeholt: **340 → 353 Links**, alle vier
+  gefüllten sind zurück, `topseller` (unpubliziert) und `angebote` (leer) bleiben korrekt draussen.
+- ⚠️ **Dritte Bestätigung an einem Tag: ein `setsid`-Start meldet Exit 0 SOFORT.** Ich habe daraufhin
+  zweimal ein Ergebnis geprüft, während das Skript noch lief — beim Verzeichnis stand die Seite noch auf
+  dem 07.09., und ich war einen Satz davon entfernt, «schreibt nicht» zu melden. Der Prozess lief noch
+  92 Sekunden. **Der Exit-Code des Startenden sagt nichts über das Gestartete** — gewartet wird auf den
+  PROZESS (`until ! ps … grep`), nicht auf den Wrapper.
 
 ## 👻 Die STARTSEITE bewarb Casio-Uhren und «Dolce & Gabbana The One» — beide DRAFT (2026-09-08)
 Nach camping-kueche und sommer die Frage als KLASSE gestellt statt als Einzelfall: Wie viele der 365 im

@@ -41,3 +41,25 @@ gid://shopify/Product/15525497897345	2026-09-05	Küche & Kochen
 gid://shopify/Product/15524901028225	2026-09-05	Elektronik & Technik
 gid://shopify/Product/15524901028225	2026-09-05	Kopfhörer & Audio
 gid://shopify/Product/15525512544641	2026-09-05	Haustierwelt
+gid://shopify/Product/15525457330561	2026-09-08	Beauty & Pflege
+gid://shopify/Product/15525494161793	2026-09-08	Wohnen & Dekoration
+gid://shopify/Product/15525490950529	2026-09-08	Küche & Kochen
+gid://shopify/Product/15524900077953	2026-09-08	Elektronik & Technik
+gid://shopify/Product/15496847819137	2026-09-08	Gaming
+gid://shopify/Product/15525511496065	2026-09-08	Haustierwelt
+gid://shopify/Product/15525488427393	2026-09-08	Kinder & Baby
+gid://shopify/Product/15525462606209	2026-09-08	Spielzeug & Plüsch
+gid://shopify/Product/15525487739265	2026-09-08	Taschen & Rucksäcke
+gid://shopify/Product/15493857051009	2026-09-08	Auto & KFZ-Zubehör
+gid://shopify/Product/15518559207809	2026-09-08	Handy-Zubehör
+gid://shopify/Product/15525457330561	2026-09-08	Beauty & Pflege
+gid://shopify/Product/15525494161793	2026-09-08	Wohnen & Dekoration
+gid://shopify/Product/15525490950529	2026-09-08	Küche & Kochen
+gid://shopify/Product/15524900077953	2026-09-08	Elektronik & Technik
+gid://shopify/Product/15496847819137	2026-09-08	Gaming
+gid://shopify/Product/15525511496065	2026-09-08	Haustierwelt
+gid://shopify/Product/15525488427393	2026-09-08	Kinder & Baby
+gid://shopify/Product/15525462606209	2026-09-08	Spielzeug & Plüsch
+gid://shopify/Product/15525487739265	2026-09-08	Taschen & Rucksäcke
+gid://shopify/Product/15493857051009	2026-09-08	Auto & KFZ-Zubehör
+gid://shopify/Product/15518559207809	2026-09-08	Handy-Zubehör
