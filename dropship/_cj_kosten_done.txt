@@ -22379,3 +22379,5 @@ gid://shopify/Product/15500989858177	CHF 16.82	6 Varianten	Elegantes zweiteilige
 gid://shopify/Product/15500989923713	CHF 12.86	1 Varianten	Multi-Funktions Reiseadapter mit Dual-USB-Charger
 gid://shopify/Product/15500989956481	CHF 18.96	68 Varianten	Atmungsaktive Leinen-Sneaker für Herren
 gid://shopify/Product/15500989989249	CHF 18.90	5 Varianten	Lässiges Polka-Dot Langarmkleid
+gid://shopify/Product/15500990022017	CHF 57.98	4 Varianten	Pink Sommerkleid
+gid://shopify/Product/15500990087553	CHF 18.72	32 Varianten	Atmungsaktive Wildleder-Freizeitschuhe für Herren
