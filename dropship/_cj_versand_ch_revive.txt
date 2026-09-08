@@ -473,3 +473,8 @@
 15523129655681	wiederbelebt	antihaft-fleischhackmesser-fur-die-kuche-138240	19.75	16.70
 15523129688449	wiederbelebt	knochenbeil-aus-manganstahl-mit-bambusgriff-195200	20.41	16.06
 15523129786753	wiederbelebt	knochenbeil-aus-longquan-stahl-387584	17.08	14.82
+15523129917825	wiederbelebt	antihaft-hackmesser-fur-fleisch-109824	16.42	15.01
+15523129983361	wiederbelebt	messer-zum-hacken-von-knochen-und-fleisch-565632	17.08	18.33
+15523130311041	wiederbelebt	tigerkopf-knochenbeil-662144	23.09	17.68
+15523130540417	wiederbelebt	kirin-knochenhackbeil-171264	18.81	15.97
+15523130638721	wiederbelebt	shenlong-knochenhackmesser-307584	20.41	17.04
