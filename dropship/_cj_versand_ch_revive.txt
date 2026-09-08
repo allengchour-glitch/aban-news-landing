@@ -363,3 +363,4 @@
 15502804320641	wiederbelebt	chilong-knochenmesser-klein-208768	8.00	13.90
 15502874182017	wiederbelebt	chilong-segmentierungs-und-knochenmesser-klein-098880	8.00	13.90
 15502874280321	wiederbelebt	chilong-ausbeinmesser-segmentiert-188864	10.17	12.73
+15502874411393	wiederbelebt	chilong-ausbein-filetiermesser-schlank-073728	8.00	13.90
