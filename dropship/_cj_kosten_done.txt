@@ -22468,3 +22468,10 @@ gid://shopify/Product/15501001687425	CHF 19.10	12 Varianten	Gummistiefel Kinder 
 gid://shopify/Product/15501001720193	CHF 140.34	1 Varianten	Flammenfeste Keramikpfanne mit Deckel
 gid://shopify/Product/15501001752961	CHF 7.61	1 Varianten	Wasserfeste Augenbrauencreme mit Doppelstift
 gid://shopify/Product/15501001785729	CHF 13.32	1 Varianten	DIY Sportwagen Bausteine für Kinder
+gid://shopify/Product/15501001851265	CHF 9.09	1 Varianten	12 Farben Eyeliner – Wasser- und Ölfest
+gid://shopify/Product/15501001884033	CHF 12.04	1 Varianten	MOC Rennwagen-Modell Bausatz für Kinder
+gid://shopify/Product/15501001916801	CHF 16.51	24 Varianten	Hohle Flying Knit Sneakers
+gid://shopify/Product/15501001949569	CHF 15.11	1 Varianten	Manuelle Nudelmaschine aus Edelstahl
+gid://shopify/Product/15501001982337	CHF 14.48	1 Varianten	DIY Bausteine für Kinder (321 Teile)
+gid://shopify/Product/15501002015105	CHF 6.80	1 Varianten	Lidschatten-Palette mit 35 Farben
+gid://shopify/Product/15501002047873	CHF 16.86	21 Varianten	Rutschfeste Klett-Sneakers für Kinder

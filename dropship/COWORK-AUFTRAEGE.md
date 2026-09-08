@@ -1,3 +1,19 @@
+## 🔑 NEU 08.09. 22:12 — Ein Klick, der den Betrieb gegen den nächsten /tmp-Wipe absichert
+
+Du hattest gemeldet, `SHOPIFY_CLIENT_ID` und `SHOPIFY_CLIENT_SECRET` seien in den
+Umgebungs-Einstellungen hinterlegt. Der Container ist um 22:09 neu gestartet — der einzige
+Moment, in dem sich das messen lässt. **Beide sind leer.** In diesem Container ist die
+Einstellung nicht angekommen.
+
+**Es ist gerade nichts kaputt:** Die Datei `/tmp/secrets_env.sh`, die du am 07.09. von Hand
+wiederhergestellt hast, ist noch da, und Shopify antwortet. Was fehlt, ist das Netz darunter —
+genau diese Datei hat der Wipe vom 30.08. gelöscht, und ohne sie ist auch der Tresor zu
+(sein Schlüssel IST dieses Secret). Dann steht alles, bis du die Zugangsdaten neu einträgst.
+
+**Der Klick:** Claude-Konto → Umgebungs-Einstellungen → `SHOPIFY_CLIENT_ID` und
+`SHOPIFY_CLIENT_SECRET` (Werte stehen im Shopify-Dev-Dashboard, Custom-App «autopilot2»).
+Danach überlebt der Zugang jeden Wipe und jeden Rewind. Ich messe es beim nächsten Neustart nach.
+
 ## ✅ ERLEDIGT 08.09.2026 abends — was auf «1 erledigt · 3 ja · 2 nein · 4 behebe» geschah
 
 **3 (ja):** Der Satz, der den Keepalive-Nachstarter dreimal abgeschaltet hat, ist aus dem Prompt

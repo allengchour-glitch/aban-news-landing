@@ -1,3 +1,26 @@
+## 🔑 «Ist gesetzt» ist keine Messung — die Zugangsdaten sind in KEINER Umgebungsvariable (2026-09-08, 22:12 UTC)
+Der Betreiber hatte gemeldet, `SHOPIFY_CLIENT_ID`/`_SECRET` seien in den Umgebungs-Einstellungen
+hinterlegt. Der Container startete um 22:09 neu — der einzige Moment, in dem sich das prüfen lässt.
+Gemessen bei `up 3 minutes`:
+| gefragt | Antwort |
+|---|---|
+| `echo $SHOPIFY_CLIENT_ID` / `$SHOPIFY_CLIENT_SECRET` | **beide LEER** |
+| `/tmp/secrets_env.sh` | da, 07.09. 15:11 — von Hand wiederhergestellt, hat den Neustart überlebt |
+| Admin-API `{shop{id}}` | **200** |
+**Der Betrieb läuft also, und trotzdem ist die Sache nicht erledigt.** Er läuft über die
+/tmp-Datei — genau die, die der Wipe vom 30.08. gelöscht hat und deren Verlust den Tresor
+zusperrte (sein Schlüssel IST dieses Secret). Ein Neustart, der /tmp verschont, beweist nichts
+über einen Wipe; die zwei Ereignisse sind verschieden, und nur gegen das zweite schützt die
+Umgebungsvariable. Der SessionStart-Hook sagt es bei jedem Start mit («SHOPIFY_CLIENT_ID fehlt →
+No-op») — eine Zeile, die man nach dem hundertsten Mal nicht mehr liest.
+- **Die Lehre: Eine Meldung «ist gesetzt» ist eine Absicht, kein Zustand.** Sie gehört an der
+  Stelle gemessen, an der sie wirken soll — hier die Prozess-Umgebung nach einem Neustart, nicht
+  das Vorhandensein einer Datei, die aus einer anderen Quelle stammt. Dieselbe Familie wie
+  «eine Bestätigungsmail bestätigt den ANTRAG, nicht die AUSFÜHRUNG» (08.09.).
+- ⚠️ Und der Zeitpunkt ist der ganze Trick: **Diese Frage ist NUR in den Minuten nach einem
+  Neustart beantwortbar.** Wer sie mitten in einer langen Sitzung stellt, misst eine Umgebung,
+  die seit Stunden von Hand geflickt ist.
+
 ## 🛑 Die #1008-Klasse ist an der KASSE geschlossen — und `DENY` allein tut gar nichts (2026-09-08, 20:40 UTC)
 Betreiber: «behebe». Gemeint war das Jade-Roller-Set, das ohne Lieferanten in der
 Startseiten-Kollektion stand. Repariert ist die ganze Klasse: **8 handkuratierte Ur-Produkte
