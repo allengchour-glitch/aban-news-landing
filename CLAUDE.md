@@ -1,5 +1,41 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 👻 Die STARTSEITE bewarb Casio-Uhren und «Dolce & Gabbana The One» — beide DRAFT (2026-09-08)
+Nach camping-kueche und sommer die Frage als KLASSE gestellt statt als Einzelfall: Wie viele der 365 im
+Onlineshop publizierten Kollektionen bewerben namentlich Ware, die es nicht kaufbar gibt? Der Hausstil setzt
+Produkt-Eigennamen in « »; alle 37 gefundenen Namen einzeln gegen den Katalog geprüft.
+| | |
+|---|---:|
+| Kollektionen mit Produktnamen im Text | 22 |
+| geprüfte Namen | 32 (5 Kategorienamen/Emoji ausgeschlossen) |
+| **Namen ohne ein einziges aktives Produkt** | **3** |
+- ⛔ **«The One» steht in `frontpage` — der Startseiten-Kollektion.** Der Text bewarb «Accessoires wie
+  **Casio** Damenuhren und Düfte wie **Dolce & Gabbana «The One»**». Beides ist BigBuy-Markenware, seit
+  dem 10.07. abgeschaltet, beides DRAFT — und beides sind **fremde Marken**, die der Shop gar nicht führt.
+  Wer nach «Dolce & Gabbana The One» sucht und hier landet, findet nichts. Dazu «alles für den **Sommer**»
+  im September. Text neu, nur aus der Ware, die live in der Kollektion steht.
+- ⛔ **`gravur-personalisiert` war publiziert und komplett LEER** — die Regel hing an `TAG gravur`, den
+  genau drei Produkte tragen, und alle drei sind seit dem **04.09.** DRAFT. Am Objekt gemessen gibt es
+  aber reichlich aktive Ware: 44 «mit Gravur», 99 «personalisiert», 56 «Geburtsstein», 6 «Initialen».
+  Regel auf sieben gemessene Titelwörter umgestellt → **0 → 182 aktive Produkte**, CREATED_DESC.
+  ⚠️ **Restrauschen ehrlich: 3 Haarschneider** («Retro-Haarschneider mit Gravur») — bei Haarschneidern ist
+  «Gravur» eine FRISURENTECHNIK, kein Schmuck. Eine echte Homonym-Falle, 1,6 %, dokumentiert statt
+  wegoptimiert. Backup `theme_backup/gravur-personalisiert-ruleset-vor-0809.json`.
+- **Zwei weitere Befunde im selben Zug:** `top-5-start` bewarb ebenfalls «The One» und ein DRAFT-Serum;
+  `home-office-setup` versprach «**Alle Artikel sofort ab Lager**» — bei CJ-Ware sind das 10–20 Werktage.
+- ⚠️ **Und ein Fehlalarm meines eigenen Musters, der die Regel schärft:** `home-office-setup` schreibt
+  «für einen aufgeräumten «**Clean Desk**»» — ein KONZEPT in Anführungszeichen, kein Produktname.
+  **« » bedeutet nicht immer «Produkt».** Der Wächter überspringt deshalb Namen mit Emoji oder «&» und
+  wertet einen Namen, zu dem es im Katalog GAR KEIN Produkt gibt (auch kein DRAFT), als Konzept — ein
+  Produkt, das der Shop nie hatte, wurde hier nie beworben. Nur «existiert, aber nur als DRAFT» ist ein Phantom.
+- **`automation/kollektionstexte_wahrheit.py`** (täglich im Aufseher, **MELDET NUR**): Ein Kollektionstext
+  ist eine redaktionelle Entscheidung; ihn automatisch umzuschreiben hiesse, den Grund für den Satz zu
+  erfinden — dieselbe Begründung, aus der `ratgeber_ohne_ware.py` seit dem 28.08. keinen Auto-Fix hat.
+- **Die Lehre über den Fall hinaus:** `ratgeber_ohne_ware.py` kennt diese Klasse seit dem 28.08. — aber nur
+  für BLOGARTIKEL. Kollektionstexte stehen auf jeder Kategorieseite über der Ware und standen in keiner
+  Prüfliste. **Wer eine Fehlerklasse in einer Textsorte findet, muss fragen, welche anderen Textsorten der
+  Shop hat** — Produkttexte, Ratgeber, Kollektionstexte, Shop-Seiten, Theme-Bausteine, Metafelder.
+
 ## ☀️ «Sommer-Kollektion 2026» bewarb zwei Kleider, die DRAFT sind (2026-09-08)
 Nach camping-kueche dieselbe Frage an die übrigen Landeseiten mit Verkehr gestellt: Welche KOLLEKTION
 bekommt Besucher und stand nie in einer Prüfliste? Zwei — `/collections/sommer` (4 Sitzungen/30 T.) und

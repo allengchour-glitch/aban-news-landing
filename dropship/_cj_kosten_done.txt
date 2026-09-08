@@ -19692,3 +19692,13 @@ gid://shopify/Product/15499699126657	CHF 9.53	1 Varianten	Weinrot-Schwarzes Sofa
 gid://shopify/Product/15499699224961	CHF 27.64	1 Varianten	Heiss-Kalt Mitesser-Entferner & Hautverjünger
 gid://shopify/Product/15499699290497	CHF 23.44	1 Varianten	Dreifach-Wireloser Ladegerät
 gid://shopify/Product/15499699454337	CHF 36.33	36 Varianten	Sommer Loafer mit Plateausohle
+gid://shopify/Product/15499699585409	CHF 20.49	1 Varianten	Nanodampfer
+gid://shopify/Product/15499699683713	CHF 19.78	1 Varianten	Seiden-Kissenbezug doppelseitig
+gid://shopify/Product/15499699782017	CHF 16.52	1 Varianten	Dreifach-Ladestation
+gid://shopify/Product/15499699978625	CHF 15.01	1 Varianten	Mini Luftbefeuchter
+gid://shopify/Product/15499700109697	CHF 39.24	1 Varianten	Wasserdichte, rutschfeste Sofakissen‑Abdeckung – U
+gid://shopify/Product/15499700142465	CHF 52.99	1 Varianten	Magnetische 3-in-1-Ladestation
+gid://shopify/Product/15499700306305	CHF 19.65	21 Varianten	Koreanische Canvas Freizeitschuhe
+gid://shopify/Product/15499700371841	CHF 36.40	1 Varianten	Wasserfestes Hautpeeling-System
+gid://shopify/Product/15499700535681	CHF 23.29	1 Varianten	Farbige Polsterkissen
+gid://shopify/Product/15499700797825	CHF 33.73	12 Varianten	Business-Sneaker

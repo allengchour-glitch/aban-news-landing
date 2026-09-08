@@ -995,6 +995,21 @@ while true; do
       echo "$(date -u +%H:%M) leere-kollektionen geprüft"
     fi
   fi
+  # PHANTOM-WARE IN KOLLEKTIONSTEXTEN, einmal taeglich: Am 08.09.2026 bewarben drei
+  # Kollektionstexte mit gemessenem Suchverkehr Ware, die es nicht kaufbar gibt —
+  # `camping-kueche` Geschirrspueler von Bosch/Samsung/Whirlpool, `sommer` das
+  # «Markgraefin Kleid» (3 Treffer, alle DRAFT), und `frontpage` (die STARTSEITE)
+  # «Casio Damenuhren» und «Dolce & Gabbana «The One»». Der Ratgeber-Waechter kennt
+  # diese Klasse seit dem 28.08. — aber nur fuer Blogartikel; Kollektionstexte stehen
+  # auf JEDER Kategorieseite ueber der Ware und hat nie jemand geprueft. MELDET NUR.
+  KTW=/tmp/kollektionstexte_wahrheit.log
+  if [ -f "$REPO/automation/kollektionstexte_wahrheit.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KTW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektionstexte_wahrheit.lock; flock -n 9 || exit 0; exec python3 automation/kollektionstexte_wahrheit.py" >> "$KTW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) kollektionstexte-wahrheit geprüft"
+    fi
+  fi
   # FARBCODES IN DER VARIANTEN-AUSWAHL, einmal täglich gegen LIVE: Am 20.08.2026 stand bei
   # 151 aktiven Produkten der CJ-Artikelcode im Dropdown «Farbe» — «A039 Black», «E7916 White».
   # Titel und Beschreibung waren sauber; die beiden alten Reiniger (farbcode_bereinigen.py,
