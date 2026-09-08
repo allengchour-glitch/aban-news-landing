@@ -34242,3 +34242,5 @@ gid://shopify/Product/15500686492033	ok
 gid://shopify/Product/15500686426497	ok
 gid://shopify/Product/15500686393729	ok
 gid://shopify/Product/15500686360961	ok
+gid://shopify/Product/15500686328193	ok
+gid://shopify/Product/15500686295425	ok
