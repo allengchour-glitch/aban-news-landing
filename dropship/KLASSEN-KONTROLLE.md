@@ -1,11 +1,11 @@
-# Klassen-Kontrolle (VOLLSCAN, 34978 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 52459 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## USA-Lieferzusage im Text — 3 (waehrend des Laufs 118 gezaehlt, seither repariert)
+## USA-Lieferzusage im Text — 996
 
 Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).
 
@@ -13,11 +13,34 @@ Reparatur: `automation/versandaussagen_wahrheit.py  (QUELLE=live IGNORIERE_LEDGE
 
 Vollstaendige Liste: `dropship/_klassen/usa-lieferzusage-im-text.txt`
 
-- `15433463103873` Grosse Schreibtischunterlage für Maus und Tastatur
-- `15433463234945` Mauspad mit Apfel-Design – 1 Stück
-- `15433463267713` PVC Mauspad, doppelseitig, 100x50 cm, Silber/Puder
+- `15396249502081` Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
+- `15396249960833` Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
+- `15396250321281` Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
+- `15396404789633` LED Schreibtischlampe Dimmbar · Augenschutz, USB-C
+- `15396404855169` Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
+- `15397218320769` Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
+- `15397247385985` Jade Roller & Gua Sha Premium Set · echter Jade, Doppelkopf-Roller
+- `15397247484289` Sternenhimmel Projektor · Baby Nachtlicht mit Musik
+- `15406765801857` Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
+- `15408457744769` Premium Bambus Aroma Diffuser 300ml
+- `15408457941377` Rosenquarz Gua Sha Set
+- `15408457974145` Jade Roller Premium Doppelseitig
+- `15408458006913` Kristall-Set 3-teilig
+- `15408458072449` Cellulite Massage Roller
+- `15408458170753` Bambus Aufbewahrungssystem Modular
+- `15408458236289` Bambus Kosmetik-Organizer Premium
+- `15408458563969` Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
+- `15411554320769` Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
+- `15411554910593` Aromadiffusor Holzmaserung
+- `15411555533185` Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
+- `15411556614529` Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
+- `15411563823489` Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
+- `15411564446081` Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
+- `15411565035905` LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
+- `15411565429121` Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
+- … und 971 weitere
 
-## EU-Lieferzusage im Text — 3 (waehrend des Laufs 118 gezaehlt, seither repariert)
+## EU-Lieferzusage im Text — 996
 
 Gleiche Klasse wie USA: es gibt genau EINEN aktiven Markt (Schweiz).
 
@@ -25,48 +48,104 @@ Reparatur: `automation/versandaussagen_wahrheit.py`
 
 Vollstaendige Liste: `dropship/_klassen/eu-lieferzusage-im-text.txt`
 
-- `15433463103873` Grosse Schreibtischunterlage für Maus und Tastatur
-- `15433463234945` Mauspad mit Apfel-Design – 1 Stück
-- `15433463267713` PVC Mauspad, doppelseitig, 100x50 cm, Silber/Puder
+- `15396249502081` Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
+- `15396249960833` Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
+- `15396250321281` Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
+- `15396404789633` LED Schreibtischlampe Dimmbar · Augenschutz, USB-C
+- `15396404855169` Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
+- `15397218320769` Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
+- `15397247385985` Jade Roller & Gua Sha Premium Set · echter Jade, Doppelkopf-Roller
+- `15397247484289` Sternenhimmel Projektor · Baby Nachtlicht mit Musik
+- `15406765801857` Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
+- `15408457744769` Premium Bambus Aroma Diffuser 300ml
+- `15408457941377` Rosenquarz Gua Sha Set
+- `15408457974145` Jade Roller Premium Doppelseitig
+- `15408458006913` Kristall-Set 3-teilig
+- `15408458072449` Cellulite Massage Roller
+- `15408458170753` Bambus Aufbewahrungssystem Modular
+- `15408458236289` Bambus Kosmetik-Organizer Premium
+- `15408458563969` Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
+- `15411554320769` Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
+- `15411554910593` Aromadiffusor Holzmaserung
+- `15411555533185` Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
+- `15411556614529` Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
+- `15411563823489` Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
+- `15411564446081` Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
+- `15411565035905` LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
+- `15411565429121` Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
+- … und 971 weitere
 
-## «Geprüfte Qualität» (Überzusage) — 13381
+## «Produktdetails» doppelt — 150
 
-Geprueft werden ANGABEN, nicht die Ware (Lehre 29.08.). Steht im JSON-LD und im Google-Feed.
+Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
 
-⚠️ NICHT nachgeprueft (Liste laenger als 3000) — die Zahl ist der Stand WAEHREND des Laufs, nicht der von jetzt.
+Reparatur: `automation/produktdetails_vereinen.py`
 
-Reparatur: `automation/trust_baustein_wahrheit.py`
+Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 
-Vollstaendige Liste: `dropship/_klassen/gepr-fte-qualit-t-berzusage.txt`
+- `15412751499649` Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
+- `15412751860097` Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
+- `15412752155009` Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+- `15412825063809` Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
+- `15412825194881` Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
+- `15412828733825` 2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+- `15412830634369` Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+- `15412830896513` Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
+- `15412902953345` 2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
+- `15412911964545` 2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose
+- `15412915110273` Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
+- `15412915339649` Strand-Maxikleid «Bali» – luftiges Stufenkleid
+- `15412915470721` Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
+- `15412916060545` Sommerkleid «Savanna» – Western-Style Midi
+- `15412918190465` Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
+- `15412919402881` Etuikleid «Lumea» – Cut-Out Sheath
+- `15412919533953` Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+- `15412919566721` Schnürkleid «Noir» – Schleifen-Detail
+- `15412919763329` Off-Shoulder-Kleid «Brise» – locker & ärmellos
+- `15412969144705` Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+- `15412969406849` T-Shirt-Kleid «Casa» – locker mit Print
+- `15413023015297` Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+- `15413023113601` Herren-Strickshirt «Riviera» – Cord-Kurzarm
+- `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+- `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
+- … und 125 weitere
 
-- `15500926583169` Kurzarmhemd mit Retro-Tiermuster
-- `15500926615937` Naturstein-Armband mit runden Kristallperlen
-- `15500926648705` Antibakterielles, doppelseitiges Schneidebrett
-- `15500926681473` Langarm-Base Layer Shirt für Herbst und Winter
-- `15500926714241` Armband Süsswasserperle & Edelstahl
-- `15500926747009` Japanischer Baumwollstoff mit Goldpuder-Druck
-- `15500926779777` Waben-Bratpfanne aus Edelstahl
-- `15500926812545` Bagger Sweatshirt für Jungen
-- `15500926845313` Blättermuster Kupferarmband
-- `15500926878081` Nähmaschinen-Zubehör-Set für diverse Anwendungen · 11-teilig
-- `15500926910849` Vintage Servierplatte aus Massivholz mit Metallgriff
-- `15500926943617` Bagger Cartoon Kapuzenpullover für Jungen
-- `15500926976385` Herzförmiger Edelstahlring mit verstellbarer Öffnung
-- `15500927009153` Patchwork Saum-Clips (20er-Set)
-- `15500927041921` Kabelloser elektrischer Knoblauchhacker
-- `15500927074689` Herren Kunstfellmantel mit Leopardenmuster
-- `15500927107457` Moissanite 925 Sterling Silber Ring mit Liebe
-- `15500927140225` Mandala Wandteppich
-- `15500927172993` Herren Trenchcoat im Biker-Stil
-- `15500927238529` Business-Armbanduhr mit feinem Stahlband
-- `15500927271297` Mini Powerbank für Smartphones (USB-C)
-- `15500927304065` Rosegold-Armbanduhr
-- `15500928319873` Universal Ladegerät
-- `15500928352641` Wasserdichter Stahlarmband
-- `15500928385409` Rapid Ladegerät
-- … und 13356 weitere
+## Floskel «hochwertiges Material» — 124
 
-## Sie-Anrede im Produkttext — 716
+Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
+
+Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
+
+Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
+
+- `15412751499649` Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
+- `15412751860097` Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
+- `15412825063809` Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
+- `15412825194881` Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
+- `15412828733825` 2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+- `15412830634369` Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+- `15412830896513` Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
+- `15412902953345` 2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
+- `15412915110273` Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
+- `15412915339649` Strand-Maxikleid «Bali» – luftiges Stufenkleid
+- `15412915470721` Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
+- `15412916060545` Sommerkleid «Savanna» – Western-Style Midi
+- `15412918190465` Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
+- `15412919402881` Etuikleid «Lumea» – Cut-Out Sheath
+- `15412919533953` Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+- `15412919566721` Schnürkleid «Noir» – Schleifen-Detail
+- `15412919763329` Off-Shoulder-Kleid «Brise» – locker & ärmellos
+- `15412969144705` Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+- `15412969406849` T-Shirt-Kleid «Casa» – locker mit Print
+- `15413023015297` Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+- `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+- `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
+- `15413074985345` Sommer-Top «Sole» – V-Neck mit Knopfleiste
+- `15413083242881` Boho Resort-Set · 2-teilig (Top & Hose)
+- `15413083832705` Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
+- … und 99 weitere
+
+## Sie-Anrede im Produkttext — 1055 (waehrend des Laufs 1069 gezaehlt, seither repariert)
 
 Der ganze Shop duzt. Offene Klasse (03.09.), Massenlauf ist eine eigene Entscheidung.
 
@@ -99,9 +178,9 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15448887918977` 5 Core Akustikgitarrensaiten (6er-Set)
 - `15448891457921` Karaoke Bluetooth-Lautsprecher-Set K12 · tragbar
 - `15448898306433` Geometrisches Zirkon-Armband, 18K vergoldet
-- … und 691 weitere
+- … und 1030 weitere
 
-## Auswahl-Versprechen bei EINER Variante — 1189
+## Auswahl-Versprechen bei EINER Variante — 1746
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -134,5 +213,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448924684673` Luxuriöser Plüsch Kissenbezug
 - `15448926060929` Weinroter Kissenbezug aus Rex Kaninchenfell
 - `15448926257537` Langes Eisseiden-Kissen mit Sommer-Motiv
-- … und 1164 weitere
+- … und 1721 weitere
 
