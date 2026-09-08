@@ -1,5 +1,38 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🧾 Sechs falsche Zusagen auf Kundenseiten — «14 Tage» statt 30, Schweizer Versand für CJ-Ware (2026-09-08)
+Die drittgrösste Ratgeber-Landeseite der letzten 30 Tage (`einschlaf-ritual-aromatherapie-pillow-spray`,
+5 Sitzungen) stand in KEINER Prüfliste — sie hat kaufbare Produktlinks, also meldet
+`ratgeber_ohne_ware.py` sie zu Recht nicht. Gelesen versprach sie **«14-tägiges Rückgaberecht»**,
+während der ganze Shop 30 Tage gibt. Die Klasse dann über **alle 426 veröffentlichten Artikel und
+Seiten** gemessen — sechs Treffer, alle echt, alle jetzt bei 0:
+| Klasse | Fundstellen |
+|---|---:|
+| «14-tägiges Rückgaberecht» (Shop gibt 30) | 2 |
+| «30 Tage Geld-zurück — **bedingungslos**» (die Richtlinie kennt Ausnahmen) | 1 |
+| «Versand / Blitzversand **aus der Schweiz**» an CJ-Schmuck | 3 |
+- **Die Schweiz-Zusage wurde GEMESSEN, nicht vermutet** — sie hätte wahr sein können (2'409 Produkte
+  tragen `ch-lager`). Ergebnis: Schmuck **32 von 2'523** mit CH-Lager, Edelstahl-Schmuck (das Thema
+  aller drei Seiten) **0 von 855**. Erst damit war die Reparatur belegt statt plausibel. Ersetzt durch
+  die Hausformel «Lieferzeit steht auf jeder Produktseite», nicht durch eine neue Zahl.
+- **Zwei Seiten siezten**, eine kippte mitten im Text («finden Sie das Stück» … «Das könnte dich auch
+  interessieren») — die Halbumstellungs-Klasse vom 04.09., diesmal im Bestand statt im Lauf.
+- ⚠️ **Und die Falle von heute früh in der eigenen Ersetzungsregel:** «Versand aus der Schweiz · 30 Tage
+  Rückgabe» traf **0×**, weil ein `<strong>` zwischen «· » und «30 Tage» steht. Genau der Grund, aus dem
+  die USA-Suchphrase 533 Produkte nicht sah. **Eine Ersetzungsregel endet vor dem nächsten Tag** — und
+  die Sperre «nicht genau 1× → NICHTS schreiben» hat den Fall abgefangen, statt halb zu reparieren.
+- ⚠️ **`articleUpdate.body` ist `HTML!`, `pageUpdate.body` ist `String`** — dasselbe Feldwort, zwei
+  Typen. Wer einen für beide nimmt, bekommt «Type mismatch on variable $b». Beides in EINEM Skript
+  (`automation/seiten_zusagen_fix.py`) sauber getrennt.
+- ⚠️ **Und ein `grep` auf Erfolgszeichen hat einen Absturz verschluckt:** `WRITE=1 … | grep -E '✔|⛔'`
+  gab GAR NICHTS aus — der Lauf war an eben diesem Typfehler gestorben, und «keine Ausgabe» sah aus wie
+  «nichts zu tun». **Ein gefilterter Schreiblauf gehört einmal ungefiltert gelesen**, sonst hält man
+  einen Absturz für einen No-op (dieselbe Familie wie «FERTIG heisst nicht, dass etwas getan wurde»).
+- **Der Weg dorthin ist die Methode, nicht der Zufall:** 240 Ratgeber tragen laut Wächter keinen
+  kaufbaren Produktlink — gemessen haben aber nur **3 von ihnen überhaupt Verkehr**, und zwei davon
+  waren längst repariert. Die Schaufenster-Lehre in dritter Anwendung: **erst messen, was gesehen wird,
+  dann reparieren.** Ein Bericht mit 240 Zeilen ist eine Liste, keine Rangfolge.
+
 ## ⏱️ Der eigene Reparaturlauf starb an einer Drosselung — und mein Grep hätte 6 gesunde Werkzeuge «repariert» (2026-09-08)
 Der Lauf über die 996 USA-Zusagen kam bis 871 und endete mit
 `RuntimeError: Shopify-Fehler: [{'message': 'Throttled'}]`. Die Härtung vom 05.09. ist
