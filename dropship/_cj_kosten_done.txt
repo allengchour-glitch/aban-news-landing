@@ -19778,3 +19778,4 @@ gid://shopify/Product/15499805688193	CHF 15.59	93 Varianten	Anti-Statik-Sneaker
 gid://shopify/Product/15499805786497	CHF 32.70	1 Varianten	Winterkissen
 gid://shopify/Product/15499805917569	CHF 17.64	1 Varianten	Magnetische Nachtlicht-Ladestation
 gid://shopify/Product/15499806212481	CHF 9.52	1 Varianten	Wasserfeste Armlehnen-Tuch
+gid://shopify/Product/15499806245249	CHF 37.30	10 Varianten	Komfortable Arbeitsschutz‑Schuhe für Herren
