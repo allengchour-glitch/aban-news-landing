@@ -1,5 +1,27 @@
 # Cowork-Aufträge (nur der Betreiber kann das)
 
+## 💎 Das Jade-Roller-Set steht in der STARTSEITEN-Kollektion — ohne Lieferanten (08.09.2026)
+Die #1008-Klasse (bezahlt, nie lieferbar) ist seit dem 20.08. bekannt und bewusst offen gelassen:
+rund 30 handkuratierte Ur-Produkte ohne prüfbare Lieferanten-SKU, darunter Bewertungssieger —
+«pauschales Draften wäre teuer». **Neu gemessen ist, WO eines davon steht:**
+| | |
+|---|---|
+| Produkt | «Jade Roller & Gua Sha Premium Set», SKU **`JADE-SET-001`** |
+| Status | **ACTIVE**, Bestand **100 erfunden**, `CONTINUE` (= kaufbar, auch ohne Bestand) |
+| Bewertung | **5,0 ★ aus 7** — einer der bestbewerteten Artikel des Shops |
+| steht in | **20 Kollektionen**, darunter `frontpage` (Startseite), `bestseller`, `top-5-start` |
+Jemand kann es also von der Startseite aus kaufen, und dahinter steht kein Lieferant.
+**Nicht angefasst:** Ein Draft nimmt einen 5,0-★-Artikel aus 20 Kollektionen; ob du ihn beschaffen
+kannst, weiss nur du. Das ist deine Entscheidung, nicht meine — gemeldet statt gehandelt.
+**Drei echte, lieferbare Entsprechungen sind längst im Katalog** (alle mit CJ-SKU, alle aktiv):
+- `15450850853249` **Gua Sha Stein & Roller Set** · CHF 15.90 · `CJ-CJPF121214401AZ` — am nächsten dran
+- `15497464349057` Rosenquarz- und Jade-Roller mit 3D-Metall · CHF 19.90
+- `15422970134913` Gua-Sha-Set «Jade» · CHF 34.90
+**Drei Wege, alle umkehrbar:** (a) Bestand auf 0 + `DENY` → bleibt sichtbar, behält Bewertungen,
+ist nur nicht mehr bestellbar; (b) DRAFT + 301 auf eines der drei; (c) so lassen, wenn du es
+beschaffen kannst. Ohne dein Wort geschieht nichts.
+
+
 ## 📬 ZWEI unbeantwortete Anfragen im Postfach — Entwürfe liegen bereit (08.09.2026)
 `/pages/influencer-partner` ist die **zweitgrösste Landeseite des Shops** (25 Sitzungen in 30 Tagen,
 mehr als jede Produktseite ausser dem Rizinusöl-Set). Sie hat auch geliefert — nur hat es niemand

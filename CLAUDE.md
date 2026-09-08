@@ -3,7 +3,7 @@
 ## 🪟 Das SCHAUFENSTER als dritte Linse — 1'746 im Bestand, 3 auf den Karten (2026-09-08)
 Nach «Bestand» (Klassen-Vollscan) und «Seiten mit Verkehr» (07./08.09.) die dritte Frage gestellt:
 *Wie viele Fälle stehen auf den Karten, die JEDE Besucherin sieht?* Gemessen an den ersten 16
-Karten der 17 Startseiten-Kollektionen — **252 sichtbare Produkte**:
+Karten der 17 Startseiten-Kollektionen — **248 sichtbare Produkte**:
 | Klasse | im Bestand | im Schaufenster |
 |---|---:|---:|
 | Auswahl-Versprechen bei EINER Variante | 1'746 | **3** |
@@ -14,6 +14,10 @@ Karten der 17 Startseiten-Kollektionen — **252 sichtbare Produkte**:
 **Dasselbe Bild wie bei den Verkehrsseiten: die grossen Bestandsklassen sind dort, wo man sie
 sieht, winzig.** 8 Fälle von Hand repariert (die übrigen deckt die laufende Kette ab), jede Regel
 im Trockenlauf auf «genau 1×» geprüft, Gegenprobe am Objekt 0.
+- ⚠️ **Korrektur an der eigenen ersten Zahl:** Ich hatte 252 gezählt — `products(first:16)` auf einer
+  Kollektion liefert **Entwürfe MIT** (Falle 11.08.). Aktiv sind 248; die Klassenzahlen ändern sich
+  dadurch nicht, aber zwei der drei «auffälligen» Schaufenster-Produkte waren in Wahrheit DRAFT und
+  damit gar nicht sichtbar. **Wer misst, was die Kundin sieht, filtert auf `status: ACTIVE`.**
 - **Die Schaufenster-Liste kommt aus dem Theme, nicht aus einer Vermutung:** `templates/index.json`
   nennt die 17 Kollektionen, die Reihen zeigen 12–16 Karten. Das ist in zwei Minuten messbar und
   beantwortet die Frage «lohnt der Massenlauf?» besser als jede Bestandszahl.
