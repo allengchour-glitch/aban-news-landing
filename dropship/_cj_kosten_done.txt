@@ -20629,3 +20629,23 @@ gid://shopify/Product/15500404097409	CHF 14.54	1 Varianten	Schmuckkästchen
 gid://shopify/Product/15500404130177	CHF 16.09	1 Varianten	Haltbarer Hundelehreif
 gid://shopify/Product/15500404294017	CHF 13.80	1 Varianten	Hundesicherheitsgurt
 gid://shopify/Product/15500404326785	CHF 59.22	1 Varianten	Yoga Wheel Set 4-teilig
+gid://shopify/Product/15500404359553	CHF 17.83	1 Varianten	Amethystzodiakarmband
+gid://shopify/Product/15500404392321	CHF 24.39	1 Varianten	Rubik's Käfig
+gid://shopify/Product/15500404457857	CHF 7.05	1 Varianten	Agat-Fuchs-Armband
+gid://shopify/Product/15500404490625	CHF 14.54	1 Varianten	Edelsteinmalerei Katze
+gid://shopify/Product/15500404523393	CHF 51.16	1 Varianten	Muskelaufbauer für den Oberkörper
+gid://shopify/Product/15500404556161	CHF 9.60	1 Varianten	Farbenfrohes Handgeflecht
+gid://shopify/Product/15500404588929	CHF 26.42	1 Varianten	Fisch auf der Strasse
+gid://shopify/Product/15500404621697	CHF 7.72	1 Varianten	Cuban-Link-Armband aus Titan
+gid://shopify/Product/15500404687233	CHF 21.18	1 Varianten	Diamanten-Design
+gid://shopify/Product/15500404720001	CHF 11.10	1 Varianten	Hip-Hop Kette aus Edelstahl, vergoldet oder Stahl
+gid://shopify/Product/15500404785537	CHF 25.24	1 Varianten	Kreuz-Border Heimdekoration
+gid://shopify/Product/15500404851073	CHF 16.94	1 Varianten	Schwarzer Onyx-Armband
+gid://shopify/Product/15500404916609	CHF 18.29	18 Varianten	Satin Slingback Sandalen mit Schleife
+gid://shopify/Product/15500404949377	CHF 26.42	1 Varianten	Glückskatze-Explosion
+gid://shopify/Product/15500404982145	CHF 20.89	6 Varianten	Weite Sandalen
+gid://shopify/Product/15500405014913	CHF 11.70	1 Varianten	Farbiges Schädelgemälde
+gid://shopify/Product/15500405047681	CHF 7.29	1 Varianten	Titanium-Steckarmband
+gid://shopify/Product/15500405080449	CHF 17.96	18 Varianten	Sandalen mit runder Absatz
+gid://shopify/Product/15500405113217	CHF 6.97	1 Varianten	Stahl- und Lederarmband
+gid://shopify/Product/15500405145985	CHF 7.37	1 Varianten	Schwarzes Lederarmband
