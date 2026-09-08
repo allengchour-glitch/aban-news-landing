@@ -22264,3 +22264,95 @@ gid://shopify/Product/15500972163457	CHF 71.55	1 Varianten	Flying Bird Clip Ches
 gid://shopify/Product/15500972228993	CHF 17.25	1 Varianten	Wandregal-Set aus Holz, 2-teilig
 gid://shopify/Product/15500972294529	CHF 39.14	1 Varianten	Kissenhülle Imitat Kaschmir Kontrastfarben
 gid://shopify/Product/15500972327297	CHF 11.63	1 Varianten	Wasserdichte Outdoor-Matte aus Aluminiumfolie
+gid://shopify/Product/15500972360065	CHF 52.81	1 Varianten	Smarter 2L Futterautomat für Haustiere
+gid://shopify/Product/15500972392833	CHF 32.98	1 Varianten	Faltbarer Wäschekorb mit Rollen, XL
+gid://shopify/Product/15500972425601	CHF 43.87	1 Varianten	Dunkelgraues Kissen aus Baumwolle und Leinen
+gid://shopify/Product/15500972458369	CHF 217.27	1 Varianten	Hexagonale Kurzhanteln für Zuhause
+gid://shopify/Product/15500972556673	CHF 17.80	1 Varianten	Rechteckiges Holztablett mit Metallgriff
+gid://shopify/Product/15500972589441	CHF 15.12	1 Varianten	Sofa Kissenbezug mit geometrischem Muster
+gid://shopify/Product/15500972622209	CHF 67.73	1 Varianten	Verstellbare Kurzhanteln für Frauen (2–5 kg)
+gid://shopify/Product/15500972687745	CHF 27.25	1 Varianten	Futtertonne mit Deckel
+gid://shopify/Product/15500972753281	CHF 35.08	1 Varianten	Ausziehbarer Organizer für Küchenutensilien
+gid://shopify/Product/15500972786049	CHF 49.84	1 Varianten	Lazy Sofa Tatami Bett Rückenlehnenstuhl
+gid://shopify/Product/15500972884353	CHF 11.35	1 Varianten	Wasserableiches Hundeschnuppelzeug
+gid://shopify/Product/15500972917121	CHF 20.10	1 Varianten	Badregal aus Edelstahl
+gid://shopify/Product/15500972949889	CHF 85.16	1 Varianten	Intelligenter Futterautomat mit Video
+gid://shopify/Product/15500973015425	CHF 37.72	1 Varianten	Dachshund Couchtisch-Aufbewahrungsbox
+gid://shopify/Product/15500973048193	CHF 43.33	1 Varianten	Outdoor Wasserdispenser mit Elektropumpe
+gid://shopify/Product/15500973277569	CHF 11.57	1 Varianten	Faltbarer Silikon-Napf für Hunde und Katzen
+gid://shopify/Product/15500973310337	CHF 17.06	1 Varianten	Milchzahn-Sammelbox aus Buchenholz
+gid://shopify/Product/15500973343105	CHF 8.26	1 Varianten	Wasserdichter Leucht-Kartenkompass mit Spiegel
+gid://shopify/Product/15500973605249	CHF 21.55	1 Varianten	Futterautomat für Aquarien
+gid://shopify/Product/15500974129537	CHF 25.96	1 Varianten	Outdoor-Zeltpfosten
+gid://shopify/Product/15500974162305	CHF 29.84	1 Varianten	Multifunktionale Regenbogen-Hundeleine
+gid://shopify/Product/15500974195073	CHF 12.55	1 Varianten	Outdoor Faltmatte XPE
+gid://shopify/Product/15500974227841	CHF 8.78	1 Varianten	DIY Diamond Painting Nachtlicht «Jahreszeitenbaum»
+gid://shopify/Product/15500974260609	CHF 13.26	1 Varianten	Halsband- und Leinen-Set «Small Leaf»
+gid://shopify/Product/15500974326145	CHF 7.72	1 Varianten	Emoticon Diamond Painting Schlüsselanhänger DIY
+gid://shopify/Product/15500974358913	CHF 24.49	1 Varianten	Hundehalsband für kleine bis grosse Hunde
+gid://shopify/Product/15500974391681	CHF 6.99	1 Varianten	DIY Diamond Painting Schlüsselanhänger «Katzenpfot
+gid://shopify/Product/15500974424449	CHF 9.08	1 Varianten	USB-LED-Hundehalsband für mehr Sicherheit
+gid://shopify/Product/15500974457217	CHF 7.88	1 Varianten	DIY Diamond Painting Schlüsselanhänger Katze
+gid://shopify/Product/15500974522753	CHF 22.89	33 Varianten	Atmungsaktive Zehenkappen-Sandalen mit flachem Abs
+gid://shopify/Product/15500974588289	CHF 8.46	1 Varianten	Katzenkopf-Halter
+gid://shopify/Product/15500974621057	CHF 7.48	1 Varianten	Diamond Painting Schlüsselanhänger DIY Set
+gid://shopify/Product/15500974653825	CHF 11.29	32 Varianten	Keilsandalen mit Blumen-Cutouts
+gid://shopify/Product/15500974686593	CHF 16.53	1 Varianten	Hundehalsband aus Titanstahl mit Diamant-Knopf
+gid://shopify/Product/15500974752129	CHF 8.51	1 Varianten	DIY Diamond Painting Schlüsselanhänger Weihnachten
+gid://shopify/Product/15500974817665	CHF 11.27	1 Varianten	Halsband aus Rindsleder mit Strass-Punkten
+gid://shopify/Product/15500974883201	CHF 28.46	33 Varianten	Elegante Cat-Heel Sandalette
+gid://shopify/Product/15500974915969	CHF 7.31	1 Varianten	DIY Diamant Schlüsselanhänger Set
+gid://shopify/Product/15500974948737	CHF 40.67	1 Varianten	Hundehalsband aus Edelstahl und Titan
+gid://shopify/Product/15500975014273	CHF 15.26	20 Varianten	Lackleder-Sandalen mit niedrigem Absatz
+gid://shopify/Product/15500975047041	CHF 7.97	1 Varianten	Schmetterling Diamond Painting Schlüsselanhänger S
+gid://shopify/Product/15500975079809	CHF 11.98	1 Varianten	Hundehalsband
+gid://shopify/Product/15500975178113	CHF 10.91	1 Varianten	Hundeführsel
+gid://shopify/Product/15500975210881	CHF 8.79	1 Varianten	Diamond Painting Set mit runden Kristalldiamanten
+gid://shopify/Product/15500975309185	CHF 51.90	12 Varianten	Retro T-Riemen Sandalen mit runder Kappe
+gid://shopify/Product/15500982223233	CHF 22.23	1 Varianten	Bär im Neon-Licht
+gid://shopify/Product/15500982288769	CHF 32.76	1 Varianten	Kaninchenmuster-Kanvas
+gid://shopify/Product/15500982321537	CHF 10.92	36 Varianten	Pfingstrosa Flip-Flops
+gid://shopify/Product/15500982419841	CHF 45.79	1 Varianten	Mein Edelsteinbild
+gid://shopify/Product/15500982452609	CHF 19.10	27 Varianten	Damen Sandalen mit dicker Sohle aus Leder
+gid://shopify/Product/15500982518145	CHF 27.10	1 Varianten	Leopard-Diamantmalerei
+gid://shopify/Product/15500982616449	CHF 15.52	1 Varianten	Farbenprächtige Schwertfisch-Diamantmalerei
+gid://shopify/Product/15500982649217	CHF 21.58	24 Varianten	Spitze Sandaletten mit niedrigem Absatz
+gid://shopify/Product/15500982681985	CHF 18.53	1 Varianten	Elektronisches Hunde-Trainingshalsband
+gid://shopify/Product/15500982747521	CHF 8.19	1 Varianten	Katzen Diamond Painting Set
+gid://shopify/Product/15500982780289	CHF 9.11	1 Varianten	Halstuch mit grosser Saphir-Schleife für Haustiere
+gid://shopify/Product/15500982813057	CHF 19.44	12 Varianten	Geflochtene Sandalen mit Blockabsatz
+gid://shopify/Product/15500982845825	CHF 7.27	1 Varianten	Gestricktes Kirschblüten-Halsband für Haustiere
+gid://shopify/Product/15500982878593	CHF 9.40	1 Varianten	Laufendes Pferd Diamond Painting
+gid://shopify/Product/15500982944129	CHF 20.07	6 Varianten	Keilsandalen aus Strohgeflecht
+gid://shopify/Product/15500982976897	CHF 11.75	1 Varianten	Explosionsgeschütztes, bissfestes Haustierhalsband
+gid://shopify/Product/15500983009665	CHF 9.40	1 Varianten	Schneeleoparden-Stickerei
+gid://shopify/Product/15500983042433	CHF 49.81	1 Varianten	Halskette für grosse Hunde
+gid://shopify/Product/15500983075201	CHF 18.17	16 Varianten	Sandalen mit klobigem Absatz und Metallschnalle
+gid://shopify/Product/15500983140737	CHF 8.47	1 Varianten	Fisch im Wasser Digital Painting
+gid://shopify/Product/15500983173505	CHF 9.21	1 Varianten	Halsband mit Schleife für Hunde und Katzen
+gid://shopify/Product/15500983206273	CHF 21.64	20 Varianten	Serpentine Pumps mit spitzer Zehenkappe
+gid://shopify/Product/15500983271809	CHF 9.86	1 Varianten	Halsband mit grosser Schleife für Katzen & Hunde
+gid://shopify/Product/15500983337345	CHF 24.52	10 Varianten	Elegante Peep-Toe Sandalette aus Wildleder
+gid://shopify/Product/15500983402881	CHF 20.41	1 Varianten	GPS-Tracker für Haustiere und Personen
+gid://shopify/Product/15500983501185	CHF 19.22	1 Varianten	Handgefertigtes Gemälde
+gid://shopify/Product/15500983566721	CHF 8.41	1 Varianten	Retro Halstuch mit Glocke für Haustiere
+gid://shopify/Product/15500983632257	CHF 17.72	20 Varianten	Sommer-Plattform-Sandalen mit Klettverschluss
+gid://shopify/Product/15500983665025	CHF 9.01	1 Varianten	Halstuch mit Glöckchen für Haustiere
+gid://shopify/Product/15500983796097	CHF 13.88	48 Varianten	Keilabsatz-Slipper mit Klettverschluss
+gid://shopify/Product/15500983828865	CHF 12.03	1 Varianten	Festliches Halsband mit Schleife für Haustiere
+gid://shopify/Product/15500983861633	CHF 9.97	1 Varianten	Halsband Kleine Duftperle
+gid://shopify/Product/15500983992705	CHF 21.61	12 Varianten	Plateau-Sandalen im römischen Stil
+gid://shopify/Product/15500984025473	CHF 24.76	1 Varianten	Hunde-Geschirr mit Leine, bequem & wasserdicht
+gid://shopify/Product/15500984058241	CHF 17.75	1 Varianten	Luftstromladegerät
+gid://shopify/Product/15500984091009	CHF 15.73	12 Varianten	Sommer-Sandalen im Römer-Stil
+gid://shopify/Product/15500984156545	CHF 8.50	1 Varianten	Hund- und Katzenkleid «Tausendfüssler»
+gid://shopify/Product/15500984222081	CHF 14.39	1 Varianten	Reissfestes Zuggeschirr für Haustiere
+gid://shopify/Product/15500984320385	CHF 10.38	1 Varianten	Hundeleine aus Baumwollseil
+gid://shopify/Product/15500984353153	CHF 28.55	27 Varianten	Herren Leder Schnürschuhe Casual
+gid://shopify/Product/15500984385921	CHF 10.43	1 Varianten	Outdoor Nylon Hundeleine
+gid://shopify/Product/15500984680833	CHF 30.01	20 Varianten	Britische Casual-Lederschuhe mit Metallschnalle
+gid://shopify/Product/15500984713601	CHF 10.67	1 Varianten	3-in-1 OTG Kartenleser für Mobile Geräte
+gid://shopify/Product/15500984746369	CHF 18.97	1 Varianten	Outdoor-Hundeleine, wasserdicht & robust
+gid://shopify/Product/15500984779137	CHF 16.98	18 Varianten	Atmungsaktive Stoffschuhe für Herren
+gid://shopify/Product/15500984811905	CHF 18.31	12 Varianten	Elegantes Etui-Kleid mit eckigem Ausschnitt
+gid://shopify/Product/15500984844673	CHF 9.69	1 Varianten	T100 Kabelloses Ladegerät mit Ständer
