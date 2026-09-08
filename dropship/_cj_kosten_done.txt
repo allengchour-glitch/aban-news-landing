@@ -22381,3 +22381,4 @@ gid://shopify/Product/15500989956481	CHF 18.96	68 Varianten	Atmungsaktive Leinen
 gid://shopify/Product/15500989989249	CHF 18.90	5 Varianten	Lässiges Polka-Dot Langarmkleid
 gid://shopify/Product/15500990022017	CHF 57.98	4 Varianten	Pink Sommerkleid
 gid://shopify/Product/15500990087553	CHF 18.72	32 Varianten	Atmungsaktive Wildleder-Freizeitschuhe für Herren
+gid://shopify/Product/15500990120321	CHF 16.07	4 Varianten	Chiffon-Kleid mit kurzen Ärmeln für grosse Grössen
