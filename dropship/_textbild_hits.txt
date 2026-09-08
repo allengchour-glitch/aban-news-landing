@@ -15285,3 +15285,11 @@ gid://shopify/Product/15527365673345	23->0	Mini Tisch-Heizlüfter mit Keramikhei
 gid://shopify/Product/15527377600897	61->0	Asymmetrisches ärmelloses Damen-Shirt
 gid://shopify/Product/15527377797505	162->0	Damen Festliches Maxikleid mit Blumenmuster
 gid://shopify/Product/15527378092417	98->0	Damen trägerloses Off-Shoulder-Kleid
+gid://shopify/Product/15528306475393	15->0	Gestreiftes V-Ausschnitt-Kleid mit Puffärmeln
+gid://shopify/Product/15528306999681	14->0	Damenkleid mit Fledermausärmeln und Fransen
+gid://shopify/Product/15528307097985	13->1	Abendkleid mit V-Ausschnitt und Pailletten
+gid://shopify/Product/15528307360129	17->0	Midi-Kleid mit V-Ausschnitt und 3D-Effekt
+gid://shopify/Product/15528309162369	29->0	Halloween Kostüm Damen Vintage Performance Outfit
+gid://shopify/Product/15528310243713	52->1	Damen Langarm-Pullover mit Blumenmuster
+gid://shopify/Product/15528310800769	36->0	Langarmshirt mit Bindedekor und Umlegekragen
+gid://shopify/Product/15528310866305	105->1	Damen Strickpullover mit Häkelmuster
