@@ -1,3 +1,44 @@
+## 🧂 Die grösste Suchseite verkaufte nichts — der Ratgeber beschrieb einen Felsbrocken, verlinkt war eine Kuppel (2026-09-08, abends)
+Trichter 7 Tage: 399 Sitzungen, 5 Körbe, 2 Kassengänge, **0 Abschlüsse**; kein neuer abgebrochener
+Checkout seit dem 22.08., die zwei gingen also VOR der Adresseingabe. Bei zwei Fällen ist das
+Anekdote — belastbar ist die Suche, und dort steht eine Zahl, die sich lohnt:
+| Such-Landeseite (14 T.) | Sitzungen | Körbe |
+|---|---:|---:|
+| `/blogs/ratgeber/himalaya-salzlampe-wirkung-mythen` | **18** | **0** |
+| `/` | 14 | 0 |
+| `/products/rizinusol-wickel-set-…` | 10 | **2** |
+Die Produktseite wandelt mit 20 %, der grösste Ratgeber mit 0. **Der Ratgeber holt Leute und gibt
+sie nicht weiter** — und der Grund steht in einem einzigen Satz, den er selbst schreibt:
+«du stellst kein Massenprodukt aufs Sideboard, sondern ein **handgeschnitztes Unikat**» — darunter,
+sieben Mal verlinkt, eine Serienlampe für CHF 24.90. Der Text beschreibt einen **grossen Brocken
+Steinsalz**, das Produkt ist eine **Salzkristall-Kuppel auf einem Kunststoff-Sockel, 99 mm, 380 g**.
+Wer klickt, bekommt nicht, worüber er gerade gelesen hat.
+- **Repariert, ohne ein anderes Produkt unterzuschieben:** Der Absatz sagt jetzt ausdrücklich, was
+  der Shop **nicht** führt (den handgeschnitzten Salzfelsen) und was er führt, mit Massen, Gewicht,
+  Touch-Dimmung und USB — plus dem Satz, für wen das taugt und für wen nicht. **Eine Lücke im
+  Sortiment ehrlich zu benennen ist besser, als sie mit dem nächstbesten Artikel zu füllen**
+  (dieselbe Linie wie «ein halbwegs passender Ersatz ist ein Köderwechsel», 28.08.).
+- **Und die Produktseite verschwieg ihr bestes Argument:** Die Herstellerbilder zeigen «Touch
+  Controlled Lighting · Low/Medium/High», der Datenblock bestätigt es unabhängig
+  («Arbeitsstrom 100–500 mA», also regelbar) — im Text stand davon **kein Wort**. Ergänzt.
+  **Zwei unabhängige Quellen machen aus einer Bildbeschriftung eine belegte Angabe.**
+- ⛔ **ZWEI eigene Fehlurteile auf dem Weg, beide durch Hinsehen gekippt.** Ich hatte aus
+  «Material: ABS/PC» und 380 g bei 99 × 99 × 65 mm gerechnet, ein Salzkörper müsste ~1,4 kg wiegen,
+  und war beim Satz «das ist eine Plastiklampe, der Salz-Anspruch ist eine Falschangabe» — mit
+  Titel-, Handle- und SEO-Reparatur im Kopf. **Falsch gerechnet:** Ich hatte das Volumen der
+  UMVERPACKUNG genommen, nicht das der Kuppel (~155 cm³ ≈ 340 g Salz — passt). Und «F0» im
+  Datenblock, das ich für einen Tippfehler von «UFO» hielt, steht so auf der SCHACHTEL
+  («F0 CRYSTAL SALT LAMP»). Beides sichtbar auf dem Kontaktbogen, in zehn Sekunden.
+  **Eine Physik-Rechnung ist nur so gut wie das Volumen, das man einsetzt — und ein Blick auf
+  das Bild schlägt jede Plausibilitätsrechnung über das Bild.** Beinahe hätte ich ein ehrliches
+  Produkt umbenannt und seine Suchbarkeit zerstört.
+- **Und die Lücke bleibt bewusst offen, mit Zahl:** Ein echter Salzfelsen wiegt 2–3 kg; nach der
+  gemessenen Frachtformel (3.84 + 16.42 · kg) sind das allein **~CHF 45 Fracht**, mit Ware ~CHF 58
+  Kosten bei einem Schweizer Marktpreis von 25–40. **Diese Ware ist für diesen Shop strukturell
+  defizitär** (die Gewichtsklasse vom 28.08.), und `search:himalayan salt lamp` steht seit dem
+  28.08. ohnehin auf `#done`. Die ehrliche Lücke im Text ist damit die dauerhafte Antwort, kein
+  Beschaffungsauftrag — **eine Nachfrage, die man nur mit Verlust bedienen kann, bedient man nicht.**
+
 ## 🧟 Der Zombie ist BELEGT — und vier Verdächtige sind ausgeschlossen (2026-09-08, abends)
 Nachmessung der 150 IDs aus `dropship/_klassen/produktdetails-doppelt.txt` am Objekt:
 **0 doppelt, 150 einfach, 0 ohne Block.** Und die Messung ist mehr wert als ihre Zahl: Alle 150
