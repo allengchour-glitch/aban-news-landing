@@ -28,7 +28,8 @@ Schnappschuss meldet höchstens zu viel, nie zu wenig — ein gedraftetes Produk
 
 Nutzung:  python3 automation/tote_rankings.py
 """
-import json, os, sys, urllib.request
+import json
+import datetime, os, sys, urllib.request
 
 SHOP = os.environ.get('SHOPIFY_SHOP', 'au3j0y-hq.myshopify.com')
 TOKEN = (os.environ.get('SHOPIFY_ADMIN_TOKEN')
@@ -90,9 +91,19 @@ def weiterleitung(pfad):
 
 
 def status_produkt(handle):
-    d = gql('{products(first:1,query:"handle:%s"){nodes{status title}}}' % handle)
-    n = (d.get('products', {}).get('nodes') or [None])[0]
-    if not n:
+    # `productByIdentifier` trifft per Definition exakt, und der Handle wird zusaetzlich
+    # zurueckverglichen — eine Statusaussage soll unmoeglich von einem fremden Produkt stammen.
+    # ⚠️ GEMESSEN 08.09.2026, und es widerlegt die Begruendung, mit der ich das gebaut habe:
+    # `products(query:"handle:X")` trifft EXAKT. Gekuerzt, um ein Zeichen verkuerzt oder
+    # verlaengert gibt es `null`; erst ein ausdrueckliches `handle:X*` macht daraus eine
+    # Praefix-Suche. Die alte Form war also nicht gefaehrlich, sondern hoechstens zu streng
+    # (sie haette FEHLT gemeldet, wo es das Produkt gibt) — ein Fehlalarm, kein verdeckter
+    # Defekt. Der Umbau bleibt trotzdem: er ist die Form, die auch dann exakt bleibt, wenn
+    # jemand einen Handle mit `*` hineinreicht.
+    d = gql('{productByIdentifier(identifier:{handle:%s}){handle status title}}'
+            % json.dumps(handle))
+    n = d.get('productByIdentifier')
+    if not n or n.get('handle') != handle:
         return 'FEHLT', ''
     return n['status'], n['title']
 
@@ -160,7 +171,14 @@ def main():
         print('FERTIG: 0')
         return
 
+    # ⚠️ MESSZEITPUNKT IN DEN KOPF. Am 08.09. waren 26 von 33 Eintraegen ueberholt: der
+    # Rueckhol-Lauf hatte sie Stunden nach dem Bericht wieder aktiviert. Ein Bericht ohne
+    # Zeitstempel sieht ewig aktuell aus, und wer ihn als Arbeitsliste nimmt, repariert
+    # Reparariertes. Ein Bericht ist ein Zeugnis ueber SEINEN Zeitpunkt.
+    stand = datetime.datetime.now(datetime.timezone.utc).strftime('%d.%m.%Y %H:%M UTC')
     z = ['# Rankende Seiten, die es nicht mehr zu kaufen gibt', '',
+         f'> **Stand: {stand}.** An einem Katalog, an dem taeglich Waechter arbeiten, altert',
+         '> diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.', '',
          'Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher',
          'auf diese Adressen; für sie ist die Seite ein 404.', '']
     for vol, pfad, st, titel, treffer in tot:

@@ -19,6 +19,17 @@ gesetzt, die längst selbst leben. **Ein Bericht ist ein Zeugnis über seinen Ze
   Wandmontage» tut genau dasselbe — Kabel an einer Wand befestigen. 301 gesetzt, Ziel vorher auf
   ACTIVE, Onlineshop-URL und «selbst keine Weiterleitung» geprüft (Shopify lehnt 301 auf 301 ab).
 - **Gegenprobe live über alle 33: 26× direkt 200, 7× 301 → 200, kein einziger 404.**
+- ⛔ **KORREKTUR am Eintrag vom 02.09.:** Dort steht, `products(query:"handle:X")` treffe
+  «als PRAEFIX/Token» und liefere deshalb ein fremdes Produkt. **Heute an derselben Stelle
+  gemessen ist das falsch:** exakt → Treffer; um EIN Zeichen gekuerzt, stark gekuerzt oder
+  verlaengert → **null**; nur `handle:X*` **mit Stern** ist eine Praefix-Suche. Die Form war
+  also nicht gefaehrlich, sondern hoechstens zu streng — ein Fehlalarm, kein verdeckter
+  Defekt. `tote_rankings.py` nutzt jetzt trotzdem `productByIdentifier` mit
+  Handle-Rueckvergleich (in beide Richtungen geprueft: exakt → ACTIVE, gekuerzt → FEHLT);
+  das ist die Form, die auch dann exakt bleibt, wenn ein `*` im Handle steckt.
+  **Und die Lehre ueber den Fall: ich habe den Fix mit einer Begruendung gebaut, die ich
+  vorher nicht gemessen hatte** — richtige Handlung, falsche Erklaerung. Eine Begruendung
+  im Kommentar ist genauso pruefbedürftig wie eine Zahl im Bericht.
 - ⚠️ **Dritte Fassung einer teuren Falle, und ich bin wieder hineingelaufen:**
   `publishedOnCurrentPublication` braucht den Scope `read_product_listings`. Fehlt er, macht
   GraphQL die **GANZE** Antwort `null` — nicht nur das Feld. Ich hielt daraufhin die Kollektion
