@@ -1,5 +1,35 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ☀️ «Sommer-Kollektion 2026» bewarb zwei Kleider, die DRAFT sind (2026-09-08)
+Nach camping-kueche dieselbe Frage an die übrigen Landeseiten mit Verkehr gestellt: Welche KOLLEKTION
+bekommt Besucher und stand nie in einer Prüfliste? Zwei — `/collections/sommer` (4 Sitzungen/30 T.) und
+`/collections/uhren` (6). Beide gelesen:
+- ⛔ **Der Sommer-Text nannte vier Produkte mit Namen, zwei davon sind DRAFT:** «Markgräfin Kleidern»
+  (3 Treffer im Katalog, **alle drei DRAFT**) und «dem stilvollen **weissen** Tennisrock» (der weisse ist
+  DRAFT; es gibt aktive Tennisröcke, aber keinen weissen). Die «Boston-Henkeltasche «Lussa»» und das
+  «Abendkleid «Aurora»» gibt es wirklich. **Die Phantom-Klasse vom 02.09., diesmal in einem
+  Kollektionstext** — dort hat sie bisher niemand gesucht, weil die Prüfwerkzeuge Ratgeber und
+  Produkttexte lesen, nicht Kollektionsbeschreibungen.
+- ⛔ **Und der SEO-Text trug zwei weitere Altlasten:** «Sommerkleider **ab CHF 34.90**» (ein Preis im
+  Suchergebnis altert — die Preisformel hat sich seit dem 20.08. zweimal geändert) und «Schweizer Shop,
+  **schnelle Lieferung**» (CJ-Direktversand sind 10–20 Werktage). Beide Felder gelesen und beide
+  zurückgeschickt — `seo:{}` ERSETZT das Objekt (Lehre 28.08.).
+- **Titel «Sommer-Kollektion 2026» → «Sommer & Strand».** Eine Jahreszahl in einem Kollektionstitel altert
+  garantiert; dieselbe Klasse wie «WM 2026» (26.08.) und die sechs «(Sommer 2026)»-Produkttitel (29.08.).
+  Handle unverändert, also kein 404 und keine 301 nötig.
+- ⚠️ **Ein neu gesetzter Link wurde vor dem Veröffentlichen wieder entfernt:** Ich hatte auf
+  `/collections/strand` verwiesen — am Objekt gezählt hat die **8 aktive Produkte** von 58. Ein Link auf
+  eine fast leere Kategorie ist eine Sackgasse mit Beschriftung (Lehre 30.08.); übrig blieb der Verweis auf
+  `sonnenbrillen-alle` (65 aktiv, im Onlineshop publiziert — beide Ziele einzeln geprüft).
+- **`uhren` ist dagegen gesund und bleibt, wie es ist:** 1'847 aktive, **27 Zubehör-Verdacht (1,5 %)** —
+  und **drei davon waren Fehltreffer meines eigenen Musters**: «Quarz**uhr** mit Lederarmband **für
+  Herren**» ist eine Uhr, kein Armband; `armband für` trifft die Beschreibung des Armbands AN der Uhr.
+  Zwölfte Fassung der Substring-Familie, diesmal im Prüfmuster. Bei 1,5 % Fremdanteil ist eine
+  Tag-Chirurgie über 1'847 Produkte mehr Risiko als Nutzen — **nicht jede gemessene Unschönheit ist eine
+  Reparatur wert.** Korrigiert wurden nur die zwei absurden Fälle, beide mit `productType: Uhren` von der
+  CJ-Gruppe blanko typisiert (Klasse 31.08.): eine **Schmuckbox** und ein **Handy-Kühler mit Lüfter**
+  → `tagsRemove uhren/kategorie-uhr`, neuer Typ, Ledger `dropship/_uhren_tag_falsch.txt`.
+
 ## 🏕️ Die Kategorie «Camping-Küche» bestand zur Hälfte aus Hundegeschirr und Geschirrspülern (2026-09-08)
 Der 7-Tage-Trichter zeigte `/collections/camping-kueche` mit **6 Suchsitzungen** — und Suche ist der einzige
 Kanal mit gemessenen Kassengängen. Die Seite stand in keiner meiner Prüflisten (sie ist keine Produktseite und
