@@ -22011,3 +22011,6 @@ gid://shopify/Product/15500941230465	CHF 6.86	1 Varianten	Duo-Perlglanz Lidschat
 gid://shopify/Product/15500941263233	CHF 25.76	1 Varianten	Multifunktionaler Canvas Rucksack
 gid://shopify/Product/15500941296001	CHF 9.00	1 Varianten	DIY Diamant Malerei Weihnachtskarten Set
 gid://shopify/Product/15500946276737	CHF 13.51	1 Varianten	Rucksack Youth Campus für Schüler*innen
+gid://shopify/Product/15500946309505	CHF 42.07	30 Varianten	Alphabet-Retro-Sneaker
+gid://shopify/Product/15500946342273	CHF 13.55	1 Varianten	Schmucktasche aus PU-Leder
+gid://shopify/Product/15500946375041	CHF 12.18	1 Varianten	Weihnachtskarten-Kit
