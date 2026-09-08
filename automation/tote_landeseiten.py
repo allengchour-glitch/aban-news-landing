@@ -118,7 +118,21 @@ def ersatz(titel, typ):
         return None
     d = gql('query($q:String!){products(first:8,query:$q){nodes{handle title status productType tags '
             'variants(first:1){nodes{availableForSale}}}}}',
-            {"q": "status:active AND title:" + " ".join(kern)})
+            # ⚠️ 08.09.2026: Hier stand `title:<wort>` OHNE Stern. Gemessen ist `title:` NICHT
+            # stumm, sondern ein EXAKTER Token-Vergleich — und deutsche Titel tragen das Suchwort
+            # fast immer als Teil einer Zusammensetzung («Katzentrinkbrunnen»). Zahlen:
+            #   title:Trinkbrunnen  -> 0   ·  title:Trinkbrunnen*  -> 21  ·  Freitext -> 24
+            #   title:Faszienrolle  -> 0   ·  title:Faszienrolle*  ->  7
+            # Bei MEHREREN Kernwoertern fiel es nie auf, weil nur das erste Wort an `title:` bindet
+            # und der Rest als Freitext lief; bei EINEM Kernwort war der Lauf blind und nahm die
+            # gröbere Kategorie. Der Stern behebt genau das.
+            # ⚠️ NICHT auf reinen Freitext umgestellt, obwohl der noch mehr faende: Freitext sucht
+            # auch in Beschreibung und Tags, und die Schwelle 0.70 unten ist am ENGEN Kandidatensatz
+            # geeicht. Im Test hob Freitext ausgerechnet das dokumentierte Koederwechsel-Paar
+            # «Smaragd-Anhänger Halskette» → «Leopard Anhänger Halskette mit Smaragd» auf 0.75 und
+            # damit UEBER die Schwelle. Wer die Suche verbreitert, muss die Schwelle neu eichen —
+            # zwei Beispiele reichen dafuer nicht.
+            {"q": "status:active AND title:" + "* title:".join(kern) + "*"})
     n = ((d.get("data") or {}).get("products") or {}).get("nodes") or []
     beste, bester_wert = None, 0.0
     for p in n:
@@ -129,6 +143,18 @@ def ersatz(titel, typ):
             continue
         a, b = worte(titel), worte(p["title"])
         if not a or not b:
+            continue
+        # ⚠️ 08.09.2026: Die Schwelle allein reicht NICHT. Gemessen kommt das im Kommentar unten
+        # ausdruecklich als Koederwechsel verworfene Paar «Smaragd-Anhänger Halskette» →
+        # «Leopard Anhänger Halskette mit Smaragd» heute auf 0.75 und damit UEBER die 0.70 —
+        # der Wert ist seit dem Probelauf gestiegen, weil `worte()` seither Fuellwoerter entfernt
+        # und die Vereinigungsmenge kleiner wurde. **Eine Schwelle altert mit der Funktion, die
+        # sie fuettert.** Deshalb zusaetzlich die Regel, die der Kommentar selbst nennt: «ein Wort
+        # im Ziel verschiebt die Ware». Bringt der Kandidat ein LANGES Wort mit, das der Quelltitel
+        # nicht hat, ist er nicht mehr «eindeutig gleichartig» und geht in den Bericht.
+        # In beide Richtungen geprueft: leopard/edelstahl/kurzarm/blumenprint gesperrt,
+        # identischer Titel (kein neues Wort) geht durch.
+        if {w for w in b - a if len(w) >= 5}:
             continue
         wert = len(a & b) / len(a | b)
         if typ and p.get("productType") == typ:

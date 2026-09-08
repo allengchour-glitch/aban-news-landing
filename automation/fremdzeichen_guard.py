@@ -143,4 +143,8 @@ def main():
             print(f"({gemeldet} Zeichen liegen zur Handuebersetzung in {BERICHT})")
         print("FERTIG")
 
-main()
+# ⚠️ 08.09.2026: Ohne diese Wache startet ein blosser `import` den Lauf — heute beim
+# Messen an versand_jenachland passiert, am 03.09. schon einmal beim Melder.
+# Ein Werkzeug, das man zum Messen importiert, darf beim Importieren nichts tun.
+if __name__ == "__main__":
+    main()
