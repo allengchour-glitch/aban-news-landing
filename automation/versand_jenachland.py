@@ -58,11 +58,11 @@ def gql(q, v=None):
         f'https://{SHOP}/admin/api/2024-10/graphql.json',
         data=json.dumps({'query': q, 'variables': v or {}}).encode(),
         headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    for versuch in range(4):
+    for versuch in range(8):
         try:
             d = json.load(urllib.request.urlopen(req, timeout=45))
         except Exception:
-            if versuch == 3: raise
+            if versuch == 7: raise
             time.sleep(2 ** versuch); continue
         # ⚠️ 05.09.2026: Die OBERE Fehlerebene wurde nie gelesen. Faellt die Auth aus (die
         # Custom-App war weg, «app_not_installed»), antwortet Shopify mit `errors` und
@@ -70,7 +70,21 @@ def gql(q, v=None):
         # quittierte «ersetzt». Belegt an zwei POD-Produkten, die zweimal so im Ledger stehen
         # und den alten Block live weitertragen. Eine falsche Quittung ueberspringt den Fall
         # fuer immer — deshalb ist ein Abbruch hier richtig und ein stilles Weiterlaufen falsch.
+        # ⚠️ 08.09.2026: Hier wurde JEDER `errors`-Block geworfen — auch eine DROSSELUNG.
+        # Der Lauf ueber 996 Produkte starb dadurch mitten in der Arbeit an einem
+        # `{'message': 'Throttled'}`, obwohl Shopify damit nur sagt, wie lange zu warten
+        # ist. Fuenfte Fassung der Lehre «eine Warteanweisung ist kein Abbruchgrund»
+        # (nach Shopify-Throttled 21.08., CJ-QPS 1600200, CJ-Eimer 23.08., Kosten-Backfill
+        # 27.08.). Die Haertung von oben BLEIBT: ein totes Token, ein Rechte- oder
+        # Schema-Fehler wirft weiterhin laut — nur die Drosselung wird ausgesessen.
         if d.get('errors'):
+            nur_drossel = all(
+                (e.get('extensions') or {}).get('code') == 'THROTTLED'
+                or 'throttl' in str(e.get('message', '')).lower()
+                for e in d['errors'])
+            if nur_drossel and versuch < 7:
+                time.sleep(4 * (versuch + 1))
+                continue
             raise RuntimeError('Shopify-Fehler: ' + str(d['errors'])[:200])
         return d
 
