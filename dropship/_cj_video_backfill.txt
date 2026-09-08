@@ -236,3 +236,10 @@ gid://shopify/Product/15525143904641	kein-video-beim-lieferanten
 gid://shopify/Product/15525143675265	kein-video-beim-lieferanten
 gid://shopify/Product/15525143413121	kein-video-beim-lieferanten
 gid://shopify/Product/15525143183745	kein-video-beim-lieferanten
+gid://shopify/Product/15411555533185	kein-video-beim-lieferanten
+gid://shopify/Product/15411563823489	kein-video-beim-lieferanten
+gid://shopify/Product/15411564446081	kein-video-beim-lieferanten
+gid://shopify/Product/15411565035905	kein-video-beim-lieferanten
+gid://shopify/Product/15411565429121	ok	Elektrischer Gemüseschneider Multifunktional – Schneiden, Re
+gid://shopify/Product/15428299161985	ok	Kraftvoller Grillreiniger – Für mühelos saubere Roste.
+gid://shopify/Product/15428299194753	kein-video-beim-lieferanten
