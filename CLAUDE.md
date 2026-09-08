@@ -1,5 +1,34 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## ⏱️ Der eigene Reparaturlauf starb an einer Drosselung — und mein Grep hätte 6 gesunde Werkzeuge «repariert» (2026-09-08)
+Der Lauf über die 996 USA-Zusagen kam bis 871 und endete mit
+`RuntimeError: Shopify-Fehler: [{'message': 'Throttled'}]`. Die Härtung vom 05.09. ist
+richtig und bleibt — sie fängt das tote Token, bei dem `userErrors` leer ist und ein
+stiller Erfolg quittiert würde. Sie warf aber **jeden** `errors`-Block, also auch die
+Drosselung. **Fünfte Fassung von «eine Warteanweisung ist kein Abbruchgrund»** (nach
+Shopify-Throttled 21.08., CJ-QPS 1600200, CJ-Eimer 23.08., Kosten-Backfill 27.08.).
+Jetzt wird nur ausgesessen, wenn AUSSCHLIESSLICH `THROTTLED` gemeldet ist (8 Versuche,
+wachsende Pause); ein gemischter Block mit einem echten Fehler bricht weiterhin ab.
+In beide Richtungen belegt, 5 Fälle: Drosselung → Erfolg · totes Token · Rechte-Fehler ·
+Drossel+echter Fehler gemischt · Dauer-Drosselung → jeweils Abbruch.
+- ⛔ **Und die Geschwister-Suche endete anders als erwartet — mein Muster war das Problem.**
+  `d.get('errors')[\s\S]{0,400}?raise` meldete **6 weitere Schreiber** als dieselbe Falle.
+  Gelesen sind alle sechs **richtig gebaut**: Sie setzen bei `errors` ein `continue` und
+  werfen erst NACH erschöpften Versuchen — das gefundene `raise` steht am Schleifenende,
+  nicht im Fehlerzweig. Hätte ich die Zahl statt des Codes gelesen, hätte ich sechs gesunde
+  Werkzeuge umgebaut. **Zwölfte Fassung: ein Suchmuster taugt zum Sieben, nicht zum Urteilen** —
+  und diesmal wäre der Schaden eine Reparatur an etwas Heilem gewesen, nicht ein übersehener Fehler.
+- **`versand_jenachland` war der Einzelfall, und der Grund steht im Datum:** Es wurde am
+  05.09. als ERSTES gehärtet, bevor die Drosselungsfrage überhaupt gestellt war; die 97
+  Härtungen danach haben es von Anfang an richtig gemacht. **Das erste Exemplar einer
+  Reparaturwelle ist das unfertigste** — wer eine Klasse durcharbeitet, sieht den ersten Fall
+  noch einmal an, wenn der letzte fertig ist.
+- ⚠️ Nebenbei ein Fehlalarm meiner eigenen Messung: Beim Auslesen der 17 Schaufenster-Kollektionen
+  meldete `collectionByHandle` für `premium-schmuck` **null**, und ich hielt eine Startseiten-Reihe
+  für tot. Direkt gefragt existiert sie, live 200, 16 aktive Karten. Mein Mess-Skript hatte
+  **keinen Retry** — ein gedrosseltes Nullergebnis sieht aus wie eine gelöschte Kollektion.
+  **Auch ein Messwerkzeug braucht die Drosselungs-Behandlung, nicht nur ein Schreiber.**
+
 ## 🪟 Das SCHAUFENSTER als dritte Linse — 1'746 im Bestand, 3 auf den Karten (2026-09-08)
 Nach «Bestand» (Klassen-Vollscan) und «Seiten mit Verkehr» (07./08.09.) die dritte Frage gestellt:
 *Wie viele Fälle stehen auf den Karten, die JEDE Besucherin sieht?* Gemessen an den ersten 16
