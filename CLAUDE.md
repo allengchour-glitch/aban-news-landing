@@ -1,5 +1,27 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🪟 Die Titel im Schaufenster gelesen: 6 von 248 mit Befund — und premium-schmuck war ein Fehlalarm (2026-09-08)
+Vierte Anwendung der Schaufenster-Linse, diesmal auf die TITEL der Karten, die jede Besucherin
+sieht (17 Kollektionen aus `templates/index.json`, je 16 Karten, nur `status: ACTIVE`).
+**6 von 248** trugen einen Befund — die Titel im Schaufenster sind also weitgehend sauber:
+2 Modellcodes («T20 Mini Beamer», «AK66 Gamepad» — Bezeichnungen mit Bedeutung, wie UV400,
+bleiben) und **4 halbenglische**. Drei davon repariert, jeder neue Titel aus dem EIGENEN
+Produkttext belegt: «Sofa Stuhl Wireless Ladegerät» → «Kabelloses Ladegerät im Sessel-Design» ·
+«Smart Wireless Charger Lampe» → «Schwebende Lampe mit kabellosem Ladepad» ·
+«Bluetooth-Player mit Lampe und Wireless Charger» → «3-in-1 Bluetooth-Lautsprecher · Lampe &
+kabelloses Ladepad». Handle unverändert (kein 404), SEO-Titel und **18 Alt-Texte** nachgezogen —
+die Feldliste vom 29.08. Live an der ausgelieferten Seite gegengeprüft.
+- **«Magnetisches 2-in-1 Wireless-Ladegerät» bleibt:** «Wireless-Ladegerät» ist im Schweizer
+  Handel ein etabliertes Kompositum. Getroffen hatte es nur mein Muster, nicht der Sprachgebrauch.
+- ⚠️ **Und mein Mess-Skript meldete `premium-schmuck` als gelöschte Kollektion** — eine
+  Startseiten-Reihe, die ins Leere zeigt, wäre ein schwerer Befund gewesen. Direkt gefragt:
+  sie existiert, live 200, 16 aktive Karten. Das Skript hatte **keinen Retry**, und eine
+  gedrosselte Antwort gibt `collectionByHandle: null` — nicht zu unterscheiden von «gibt es
+  nicht». **Ein Messwerkzeug braucht die Drosselungs-Behandlung genauso wie ein Schreiber**,
+  sonst erfindet es Befunde über die Welt. Gemeldet habe ich ihn erst nach der Gegenprobe.
+- ⚠️ Der erste Anlauf fand **0 Kollektionen**, weil ich `collections/<handle>` als Wert erwartet
+  hatte — im Theme stehen die Handles NACKT. **Eine Struktur wird gelesen, nicht geraten.**
+
 ## 🔓 Jeder Wächter hatte sein EIGENES Schloss — zwei Produkttext-Schreiber liefen 10 Minuten nebeneinander (2026-09-08)
 Der USA-Lauf ist durch (**996 → 0**, am Objekt an 40 Stichproben mit tag-tolerantem Muster
 gegengeprüft, Index 0, Kontrollwort 0). Aufgefallen ist dabei etwas anderes: Das Ledger hatte
