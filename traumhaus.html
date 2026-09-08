@@ -9410,8 +9410,11 @@ setTimeout(function baueGebaeude(){
      ⚠️ Die Ausfahrtsmarkierung wird HIER gezeichnet, nicht im Modell: sie gehoert
      zum Grundstueck, und im Gebaeude machte sie es 20,97 statt 13,5 tief. */
   (function wacheUndTanke(){
-    function fest(datei,hoehe,x,z,ry){
-      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    /* `dann` ist neu und optional: die Preistafel muss nach dem Laden beschriftet
+       werden. Die vier gleichnamigen Helfer in den Nachbar-Bloecken bleiben
+       unangetastet — sie brauchen es nicht. */
+    function fest(datei,hoehe,x,z,ry,dann){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(dann)dann(w);},true);
     }
     /* Feuerwache bei (56|100), Tore nach +z auf den Vorplatz. Zielhoehe 11,5
        statt 13,81: der alte Bau war samt Turm rund 10,3 hoch. */
@@ -9467,7 +9470,21 @@ setTimeout(function baueGebaeude(){
     addSolid(98.75,-75.3,7.6,5.2,{a:"z",at:-72.6,c:98.75,w:3.0});
     for(var z9=0;z9<2;z9++)
       fest("th43_zapfsaeule.glb",2.03,92.1+z9*3.4,-72.0,Math.PI);
-    fest("th43_preistafel.glb",5.20,88.0,-69.6,Math.PI);
+    /* ⛽ PREISE UND SORTEN. Das Modell bringt drei fertige Preiszeilen mit — je ein
+       Sortenschild (0,36 x 0,20 m) und ein Anzeigefeld (0,62 x 0,20 m) —, und alle
+       sechs standen leer. Die Hoehen sind GEMESSEN (Weltkoordinaten, nicht aus der
+       GLB gerechnet): 4,16 / 3,80 / 3,44.
+       ⚠️ Der weisse Kopfstreifen des Modells bleibt bewusst leer: er steckt mit
+       z -69,65…-69,55 INNERHALB der gruenen Tafel (-69,81…-69,39) und ist damit gar
+       nicht sichtbar. Schrift darauf waere Arbeit ohne Wirkung.
+       Die Vorderseite zeigt nach +z — das Modell steht um 180 Grad gedreht, und die
+       Seitenpruefung in schildTafel findet das von selbst. */
+    fest("th43_preistafel.glb",5.20,88.0,-69.6,Math.PI,function(w9){
+      [[4.16,"95","1.79"],[3.80,"98","1.89"],[3.44,"Diesel","1.86"]].forEach(function(z9){
+        schildTafel(w9,[z9[1]],{muster:/FwWeiss/,beiY:z9[0],gross:96,
+          grund:"#f2f2ea",schrift:"#1b2430",randFarbe:"#1b2430"});
+        schildTafel(w9,[z9[2]],{muster:/FwAnzeig/,beiY:z9[0],gross:96,
+          grund:"#12140f",schrift:"#f2c14e",randFarbe:"#3a3f2f",leuchtet:true});});});
     fest("th43_luftstation.glb",1.80,89.5,-76.9,0);
     fest("th43_waschbox.glb",3.93,66.5,-75.5,0);
   })();
@@ -10685,11 +10702,21 @@ function schildTafel(w,zeilen,opt){
   var muster=opt.muster||/tafel|weiss|white|rim|platte|schild/i;
   var treffer=null;
   w.updateMatrixWorld(true);
+  /* ⚠️ EIN MATERIALNAME KANN MEHRERE FLAECHEN MEINEN. Die Preistafel der Tankstelle
+     traegt `FwWeiss` viermal: einmal als Kopfstreifen und dreimal als Sortenschild
+     einer Preiszeile. Wer die erste nimmt, beschriftet die falsche. `opt.beiY` waehlt
+     darum die Flaeche, deren Mitte einer Hoehe am naechsten liegt — eine Zahl, die man
+     der Welt ansieht, im Gegensatz zu einer Nummer in der Reihenfolge des Durchlaufs. */
+  var beiY=opt.beiY, bestAbst=1e9;
   w.traverse(function(m){
-    if(treffer||!m.isMesh||!m.material)return;
+    if(!m.isMesh||!m.material)return;
+    if(treffer&&beiY===undefined)return;
     var liste=Array.isArray(m.material)?m.material:[m.material];
     if(!liste.some(function(q){return q&&muster.test(String(q.name||""));}))return;
-    treffer=m;});
+    if(beiY===undefined){treffer=m;return;}
+    var bb0=new THREE.Box3().setFromObject(m),mp0=new THREE.Vector3();bb0.getCenter(mp0);
+    var d0=Math.abs(mp0.y-beiY);
+    if(d0<bestAbst){bestAbst=d0;treffer=m;}});
   if(!treffer)return 0;
   var bb=new THREE.Box3().setFromObject(treffer),e=new THREE.Vector3(),mp=new THREE.Vector3();
   bb.getSize(e);bb.getCenter(mp);
@@ -10702,42 +10729,64 @@ function schildTafel(w,zeilen,opt){
                              randFarbe:opt.randFarbe,rand:opt.rand,gross:opt.gross});
   var mat=new THREE.MeshStandardMaterial({map:tex,roughness:0.55,
     emissive:opt.leuchtet?0xffffff:0x000000,emissiveMap:opt.leuchtet?tex:null,emissiveIntensity:opt.leuchtet?0.35:0});
-  /* 🧱 EINE SEITE KANN ZUGEBAUT SEIN. Beim Neonschild sitzt hinter der Anzeige eine
-     RUECKWAND (`NsTafel`, 2,55 x 1,53 m gegen 1,75 x 0,94 m der Anzeige). Die Flaeche
-     fuer die Rueckseite landete mitten darin — im Bild sah man einen leeren dunklen
-     Kasten, obwohl die Textur nachweislich „CLUB / Tanz & Spiel" trug
-     (spiele-dev/screenshots/r76/v2-mittel.png; Panelmitte z 212,45, Rueckwand
-     212,47…212,59, die Flaeche bei 212,49).
-     Welche Seite vorne ist, kann hier nicht festgelegt werden: dasselbe Modell steht
-     beim Casino um 180 Grad gedreht. Darum wird es GEMESSEN — liegt der Punkt kurz vor
-     der Tafel schon in einem groesseren Teil desselben Modells, gehoert dort keine
-     Schrift hin. Sind beide Seiten zu, bleiben beide (dann stimmt die Annahme nicht,
-     und ein sichtbarer Fehler ist besser als gar nichts). */
+  /* 🧭 WELCHE SEITE IST AUSSEN? Ein Schild wird von der Seite gelesen, die vom
+     Koerper des Modells WEGZEIGT — beim Neonschild sitzt hinter der Anzeige eine
+     Rueckwand, bei der Preistafel die gruene Tafel. Die Flaeche fuer die falsche
+     Seite landet mitten darin: im Bild sah man einen leeren dunklen Kasten, obwohl
+     die Textur nachweislich „CLUB / Tanz & Spiel" trug (r76/v2-mittel.png).
+
+     ⚠️ ERSTER ANLAUF, UND WARUM ER ZU KURZ GRIFF: geprueft wurde, ob der Punkt kurz
+     vor der Tafel in einem GROESSEREN Teil desselben Modells liegt. Beim Neonschild
+     stimmte das, bei der Preistafel nur fuer zwei der drei Preiszeilen — die unterste
+     haengt UNTERHALB der gruenen Tafel, dort steht auf beiden Seiten nichts, und sie
+     bekam Schrift auch auf den Ruecken (gemessen: 8 Flaechen statt 6, zwei davon bei
+     z -69,67 statt -69,29). Ein Test auf „steht da was im Weg" beantwortet eben nicht
+     die Frage „wo ist aussen".
+
+     Jetzt die einfachere und richtige Frage: auf welcher Seite der Tafel liegt der
+     Schwerpunkt des Modells? Die andere ist aussen. Festlegen laesst sich das nicht —
+     dasselbe Neonschild steht beim Casino um 180 Grad gedreht —, aber ablesen. Liegt
+     die Tafel mittig (weniger als 5 % der Modelltiefe daneben), ist die Frage offen
+     und beide Seiten bekommen Schrift. */
   var zu={},vor={1:0,"-1":0};
   var achsen=[0,1,2].filter(function(k){return k!==duenn;});
+  var bbW=new THREE.Box3(),eW=new THREE.Vector3(),mpW=new THREE.Vector3();
+  w.traverse(function(m3){
+    if(m3.isMesh&&m3.geometry&&m3.geometry.type!=="PlaneGeometry")
+      bbW.union(new THREE.Box3().setFromObject(m3));});
+  bbW.getSize(eW);bbW.getCenter(mpW);
+  var abstand=mp.getComponent(duenn)-mpW.getComponent(duenn);
+  if(Math.abs(abstand)>eW.getComponent(duenn)*0.05)zu[abstand>0?-1:1]=1;
+  /* 🔦 WIE WEIT STEHT DIE ZIERDE VOR? Beim Neonschild liegen acht Roehren, eine Raute
+     und ein Zapfen VOR der Anzeige. Die Schrift sass dicht an der Tafel und wurde
+     davon zerschnitten — die cyanfarbene Raute lief quer durch „NACHTCLUB"
+     (r76/g1.png). Verdecken heisst hier nicht „Seite zu": die Teile sind klein, die
+     Schrift muss nur DAVOR.
+
+     ⚠️ NICHT NACH GROESSE DER UEBERDECKUNG FILTERN. Ein erster Anlauf verlangte, dass
+     das Teil die Tafel seitlich zu mindestens einem Fuenftel ueberdeckt — und schloss
+     damit genau die acht Neonroehren aus, um die es geht: einzeln sind sie winzig
+     (0,4 x 0,06 m auf 1,75 x 0,94 m), stehen aber mitten vor der Schrift. Gemessen
+     stand die Raute danach wieder quer durch „NACHTCLUB" (33,9 % farbige Bildpunkte
+     wie vor der Korrektur statt 20,4 % danach).
+     Die richtige Unterscheidung ist nicht die GROESSE, sondern die LAGE: liegt die
+     Mitte des Teils innerhalb der Tafelflaeche, steht es davor; ein Pfosten, der nur
+     die Ecke streift, hat seine Mitte draussen. */
   [1,-1].forEach(function(sd){
-    var P=mp.clone();P.setComponent(duenn,mp.getComponent(duenn)+sd*(dick/2+0.05));
+    if(zu[sd])return;
     var flaeche=br*ho;
     w.traverse(function(m2){
       if(!m2.isMesh||m2===treffer||m2.geometry&&m2.geometry.type==="PlaneGeometry")return;
       var b2=new THREE.Box3().setFromObject(m2),e2=new THREE.Vector3();b2.getSize(e2);
       var f2=Math.max(e2.x*e2.y,e2.x*e2.z,e2.y*e2.z);
-      if(f2>flaeche*1.2&&b2.containsPoint(P)){zu[sd]=1;return;}
-      /* 🔦 WIE WEIT STEHT DIE ZIERDE VOR? Beim Neonschild liegen acht Roehren, eine
-         Raute und ein Zapfen VOR der Anzeige. Die Schrift sass dicht an der Tafel und
-         wurde davon zerschnitten — im Bild lief die cyanfarbene Raute quer durch
-         „NACHTCLUB" (spiele-dev/screenshots/r76/g1.png, vor der Korrektur).
-         Verdecken heisst hier nicht „Seite zu": die Teile sind klein. Die Schrift muss
-         nur DAVOR. Wie weit, sagt das Modell — gemessen wird der Ueberstand aller
-         kleinen Teile, die die Tafel seitlich ueberhaupt ueberlappen. */
-      var trifft=achsen.every(function(k){
-        return b2.max.getComponent(k)>mp.getComponent(k)-e.getComponent(k)/2 &&
-               b2.min.getComponent(k)<mp.getComponent(k)+e.getComponent(k)/2;});
-      if(!trifft)return;
+      if(f2>flaeche*4)return;                    /* Gehaeuse, keine Zierde */
+      var c2=new THREE.Vector3();b2.getCenter(c2);
+      var drin=achsen.every(function(k){
+        return Math.abs(c2.getComponent(k)-mp.getComponent(k))<=e.getComponent(k)/2;});
+      if(!drin)return;
       var kante=(sd>0?b2.max:b2.min).getComponent(duenn);
-      var ueber=Math.abs(kante-mp.getComponent(duenn));   /* Abstand von der Tafelmitte */
+      var ueber=(kante-mp.getComponent(duenn))*sd;    /* nur was VOR der Tafel liegt */
       if(ueber>vor[sd])vor[sd]=ueber;});});
-  if(zu[1]&&zu[-1]){zu={};}
   var n=0;
   [1,-1].forEach(function(sd){
     if(zu[sd])return;

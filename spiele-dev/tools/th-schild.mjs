@@ -30,7 +30,7 @@
  * verdeckter Schrift sogar HOEHER (34 % gegen 20 %), weil die Zierde selbst bunt ist.
  */
 import { spielOeffnen, mitSonden } from './th-lib.mjs'
-import { writeFileSync } from 'node:fs'
+import { writeFileSync, mkdirSync } from 'node:fs'
 
 const datei = mitSonden('traumhaus.html', {
   setzSpieler: 'function(x,z){var s=sims[meinSi()]||sims[0];s.x=x;s.z=z;return [s.x,s.z];}',
@@ -50,6 +50,12 @@ const datei = mitSonden('traumhaus.html', {
        HAUPTkamera liegen — eine eigene Kamera nuetzt dann nichts, weil das Schild
        beim Zeichnen schon auf visible=false steht. Direkt vor dem Rendern wieder an. */
     'var q=w;while(q&&q!==scene){q.visible=true;q._gsAus=false;q=q.parent;}' +
+    /* ⚠️ UND NACH UNTEN, NICHT NUR NACH OBEN. Bei der Preistafel war kein einziges
+       MESH unsichtbar, das Gehaeuse fehlte im Bild trotzdem: versteckt war eine
+       ZWISCHENGRUPPE, und die verbirgt ihre Kinder unabhaengig von deren eigener
+       Marke. Ein Zaehler, der nur `isMesh` ansieht, meldet dazu seelenruhig „0
+       unsichtbar". */
+    'w.traverse(function(o){o.visible=true;o._gsAus=false;});' +
     'fl.visible=true;' +
     'var altRT=renderer.getRenderTarget();' +
     'renderer.setRenderTarget(rt);renderer.render(scene,cam2);renderer.setRenderTarget(altRT);' +
@@ -73,6 +79,7 @@ const datei = mitSonden('traumhaus.html', {
 
 const MODELL = process.argv[2] || 'th14_neonschild_gross.glb'
 const ORDNER = process.argv[3] || '/tmp'
+mkdirSync(ORDNER, { recursive: true })   /* sonst bricht der erste Aufruf mit ENOENT ab */
 const { browser, page, jsFehler } = await spielOeffnen(datei, { warten: 40000 })
 await page.evaluate((m) => { window.__thModell = m }, MODELL)
 console.log('\nSchilder aus ' + MODELL + ':')
