@@ -47,7 +47,11 @@ TOKEN = (os.environ.get('SHOPIFY_ADMIN_TOKEN')
          or open('/tmp/cj_shop_token.txt').read().strip())
 DRY = os.environ.get('DRY') == '1'
 CAP = int(os.environ.get('CAP', '60'))
-QUELLE = 'dropship/_rankings_semrush.csv'
+# QUELLE ist ueberschreibbar (08.09.2026): Das Werkzeug hing fest an der Semrush-Datei —
+# aber die Seiten, auf denen HEUTE jemand landet, stehen in ShopifyQL, nicht bei Semrush.
+# Erwartet wird je Zeile ein Pfad im 4. Semikolon-Feld (Semrush-Format); eine Liste blosser
+# Handles geht ebenfalls, weil dann Feld 4 gleich dem Handle ist.
+QUELLE = os.environ.get('QUELLE', 'dropship/_rankings_semrush.csv')
 LEDGER = 'dropship/_snippet_rankend.txt'
 MAXLEN = 155          # darüber schneidet Google ab
 
@@ -156,9 +160,31 @@ def baue(titel, beschreibung):
         s = s[:MAXLEN].rsplit(' ', 1)[0].rstrip(' ,;–-') + ' …'
         return s, None
     m = merkmal(beschreibung)
-    if m and not HEIKEL.search(m) and len(s) + 3 + len(m) <= MAXLEN:
+    # ⚠️ 08.09.2026: Das Merkmal wurde blind angehaengt — beim Tutu-Kleid stand danach
+    # «...fuer kleine Fashionistas im Alter von 3 bis 8 Jahren. Ideal fuer Kinder von 3 bis
+    # 8 Jahren.» Eine Doppelung im Suchergebnis ist schlimmer als ein kurzes Snippet.
+    # Geprueft wird an den ZAHLEN/Werten des Merkmals: steckt jede davon schon im Satz,
+    # sagt das Merkmal nichts Neues.
+    if m and not HEIKEL.search(m) and len(s) + 3 + len(m) <= MAXLEN and not schon_gesagt(s, m):
         s = f'{s} {m}.'
     return s, None
+
+
+def schon_gesagt(satz, m):
+    """Sagt das Merkmal etwas, das im Satz nicht schon steht?
+
+    Vergleicht die inhaltstragenden Teile (Zahlen und Woerter ab 5 Zeichen). Kommen ALLE
+    davon bereits im Satz vor, ist das Merkmal eine Wiederholung. Ohne solche Teile
+    (z. B. «Aus Edelstahl») entscheidet der Wortlaut selbst.
+    """
+    sl = satz.lower()
+    zahlen = re.findall(r'\d+(?:[.,]\d+)?', m)
+    if zahlen:                       # Zahlen tragen die Aussage — Wortwahl ist Formulierung
+        return all(z in sl for z in zahlen)
+    worte = re.findall(r'[A-Za-zÄÖÜäöüß]{5,}', m)
+    if not worte:
+        return m.lower() in sl
+    return all(w.lower() in sl for w in worte)
 
 
 CURSOR = 'dropship/_snippet_katalog_cursor.txt'
@@ -243,8 +269,9 @@ def main():
     for z in open(QUELLE, encoding='utf-8'):
         if not z.strip():
             continue
-        pfad = z.strip().split(';')[3]
-        if '/products/' in pfad:
+        teile = z.strip().split(';')
+        pfad = teile[3] if len(teile) > 3 else teile[0]
+        if '/products/' in pfad or ';' not in z:
             h = pfad.rsplit('/', 1)[-1]
             if h not in handles and h not in fertig:
                 handles.append(h)

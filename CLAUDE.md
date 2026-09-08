@@ -15,6 +15,21 @@ sie gesehen wird.** Sechs Fälle von Hand, jede Regel im Trockenlauf auf «genau
   GELESEN habe statt dem Muster zu glauben. Der Werbesatz «Wenn Sie mit den neuesten Mode und
   Accessoire-Trends schritthalten wollen, kaufen Sie … zum besten Preis» ging dabei ganz weg: er hatte
   einen Grammatikfehler UND einen unbelegbaren Superlativ.
+- **Dritte Klasse auf denselben Seiten: 5 von 32 trugen den Baustein-Snippet** («… bei LuxeStyle Schweiz.
+  Gratis-Versand ab CHF 50, 30 Tage Rückgabe») — er wiederholt den Titel und sagt über die Ware nichts.
+  Repariert mit dem VORHANDENEN Werkzeug vom 29.08. (`snippet_rankende_seiten.py`), nicht mit einer
+  zweiten Regelquelle. Dafür wurde `QUELLE` per Umgebungsvariable überschreibbar: Es hing fest an der
+  Semrush-Datei — **aber die Seiten, auf denen HEUTE jemand landet, stehen in ShopifyQL, nicht bei
+  Semrush.** 5 gesetzt, Gegenprobe am Objekt: 0 Bausteine übrig.
+- ⚠️ **Und der Trockenlauf fand einen Defekt IM Werkzeug, nicht im Bestand:** Beim Tutu-Kleid stand
+  danach «… für kleine Fashionistas im Alter von **3 bis 8 Jahren**. Ideal für Kinder von **3 bis 8
+  Jahren**.» Das Merkmal wurde blind an den ersten Satz gehängt, ohne zu prüfen, ob es dort schon steht.
+  Eine Doppelung im Suchergebnis ist schlimmer als ein kurzes Snippet. `schon_gesagt()` vergleicht jetzt
+  an den **ZAHLEN** des Merkmals (die tragen die Aussage; die Wortwahl ist Formulierung) und nur ohne
+  Zahlen an den langen Wörtern. ⚠️ Meine erste Fassung verlangte, dass ALLE Kernteile im Satz stehen —
+  sie fiel bei genau diesem Fall durch, weil dort «Kinder» gegen «Fashionistas» steht. 7 Testfälle in
+  beide Richtungen, 0 Abweichungen. **Ein Trockenlauf ist erst gelesen, wenn man das Ergebnis als Satz
+  liest** — gezählt hätte er «5 gesetzt» gemeldet und die Doppelung wäre live gegangen.
 - **Der eine Wahlversprechen-Fall ist der teuerste seiner Klasse:** «Wimpernstempel Eyeliner 2-in-1»
   versprach zweimal «Erhältlich in den Farben Schwarz und Braun» — bei EINER Variante «Default Title».
   Die Kundin sucht die Farbwahl und findet keine. **Die Aussage wurde ENTFERNT, nicht ersetzt** — welche
