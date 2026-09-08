@@ -1,5 +1,32 @@
 # Cowork-Aufträge (nur der Betreiber kann das)
 
+## ⛔ Die stündliche Keepalive-Routine steht auf AUS — und ohne sie kommt nach einem
+## Container-Neustart NICHTS von selbst zurück (gemessen 08.09.2026, 19:17 UTC)
+
+`trig_01Uy3zVefXbzCZn9Dr2qvkwh` «LuxeStyle CJ-Grind + Social Keepalive (stündlich)» ist
+**enabled = false**, letzter geplanter Lauf datiert auf den **05.09.** Sie ist die oberste
+Schicht: Sie liegt ausserhalb des Containers und startet nach jedem Neustart den Aufseher —
+und der startet alles andere.
+
+**Heute um 19:17 UTC gemessen, unmittelbar nach einem Neustart:**
+
+| | |
+|---|---:|
+| Container-Laufzeit | **5 Minuten** |
+| laufende Aufseher | **0** |
+| laufende CJ-Runner | **0** |
+
+Der Container startet etwa **stündlich** neu. Ohne diese Routine steht der Shop nach jedem
+Neustart ohne Wächter da, bis zufällig eine Session arbeitet — heute habe ich von Hand
+gestartet (danach `Aufseher=1`, 1 Runner, 0 offene Bestellungen).
+
+**Der Klick:** Routine wieder einschalten. Sie ist harmlos: Bei gesetzter Grind-Pause startet
+sie keinen Import-Runner, sie hält nur Aufseher, Bestell-Runner und Auto-Committer am Leben.
+⚠️ Sie wurde von einer anderen Session bewusst abgeschaltet («Nachstarter der CJ-Runner»).
+Ein Schalter, den zwei Sessions gegenläufig umlegen, ist keine Automatik mehr — **deshalb
+lege ich ihn nicht zum vierten Mal selbst um, sondern frage dich.**
+
+
 ## 💎 Das Jade-Roller-Set steht in der STARTSEITEN-Kollektion — ohne Lieferanten (08.09.2026)
 Die #1008-Klasse (bezahlt, nie lieferbar) ist seit dem 20.08. bekannt und bewusst offen gelassen:
 rund 30 handkuratierte Ur-Produkte ohne prüfbare Lieferanten-SKU, darunter Bewertungssieger —
@@ -396,11 +423,13 @@ bestehen** — Titel, Text, Preis, Tags; nur die Bilder gehen.
 
 ## ⏱️ Wenn du heute nur drei Dinge machst
 
+*(aktualisiert 08.09.2026 — jede Zeile am selben Tag live gemessen)*
+
 | | Aufgabe | Aufwand | warum |
 |---|---|---|---|
-| **1** | **Nichts** — TikTok-Werbekonto NICHT aufladen (Punkt 1) | 0 Min | zwei Kampagnen stehen auf AN und starten sonst von selbst; sie haben CHF 500 für **einen** Kauf verbrannt |
-| **2** | Eine Zahl im Theme: `SCHWELLE=5000` → `4900` (Punkt 2) | 2 Min | der Gratis-Versand-Balken lügt 221 Produkte lang in die teuerste Richtung |
-| **3** | Klaviyo-Konto: Website-URL auf `luxestyle.ch` (Punkt 3) | 2 Min | die Quelle der toten Domain in jeder NEUEN Mail-Vorlage |
+| **1** | **BigBuy: Ticket in Contact Area → 💳 Administration, IBAN korrigieren** | 15 Min | EUR 1'000 liegen seit dem 16.08. fest, die gespeicherte IBAN hat 22 statt 21 Zeichen (mod-97 ungültig). Abo endet 15.09. |
+| **2** | **Stündliche Keepalive-Routine wieder EIN** (`trig_01Uy3zVefXbzCZn9Dr2qvkwh`) | 1 Min | steht seit dem 05.09. auf AUS; der Container startet ~stündlich neu und **nichts** kommt von selbst zurück — heute 19:17 UTC gemessen: 0 Aufseher, 0 Runner, bis ich von Hand startete |
+| **3** | **Nichts** — TikTok-Werbekonto NICHT aufladen (Punkt 1) | 0 Min | zwei Kampagnen stehen auf AN und starten sonst von selbst; sie haben CHF 500 für **einen** Kauf verbrannt |
 
 ---
 
@@ -434,21 +463,23 @@ Bestellung des Shops von TikTok käme, stünden CHF 227 Umsatz gegen CHF 500 Aus
 → **Sag ein Wort, dann pausiere ich beide.** Ich habe es nicht von mir aus getan: Kampagnen und
 Budget sind deine Entscheidung, und es fliesst gerade ohnehin kein Geld.
 
-## 2. Der Gratis-Versand-Balken zeigt die falsche Schwelle  ⭐⭐
+## 2. ✅ ERLEDIGT / ENTSCHIEDEN — der Gratis-Versand-Balken bleibt auf 5000
 
-> Shopify-Admin → MAIN-Theme «Horizon · LuxeStyle + Email-Popup (Claude)» →
-> `layout/theme.liquid` → die eine Zeile `var SCHWELLE=5000;` auf **`var SCHWELLE=4900;`**.
-> Sonst nichts. Bestätige mir den neuen Wert.
+⛔ **Hier stand «`SCHWELLE=5000` → `4900`». BITTE NICHT MEHR MACHEN.** Genau das war am 31.08.
+umgestellt und ist am **05.09. bewusst zurueckgedreht** worden — die 31.08.-Messung kannte nur
+den EINZELkorb. Live gemessen 08.09.: im Theme steht wieder `SCHWELLE = 5000`, und das ist richtig.
 
-**Am 29.08. um 23:05 erneut live geprüft, beides unverändert:** Der Automatik-Rabatt
-«Gratis-Versand ab CHF 49» ist ACTIVE, im Theme steht `SCHWELLE = 5000`.
-Der Balken sagt einem Korb mit CHF 49.90 **«noch CHF 0.10 bis Gratis-Versand»** — obwohl der
-Kunde ihn längst hat. Die Anzeige redet ihm an der teuersten Stelle aus, was er bekommt.
-**221 aktive Produkte kosten CHF 49.00–49.99**, darunter das Abendkleid «Sirène» (141 Sitzungen,
-**9 Warenkörbe, 0 Kassengänge** in 60 Tagen) und die Slim Wallet (5,0★, bestbewertet).
-Die Zusage «ab CHF 50» in allen Texten bleibt wahr (49 < 50) und muss NICHT angefasst werden.
-⚠️ Nicht von der Session geändert: Theme und Checkout-Ökonomie sind Betreibersache, und die Kette
-45/49/50/65 ist bewusst gebaut. Geändert wird hier NUR die Anzeige.
+**Warum keine der beiden Zahlen in jedem Korb stimmt:**
+
+| Korb | Warenwert | nach «2+ Artikel −10 %» | Kasse gibt Gratis-Versand? |
+|---|---:|---:|---|
+| 1 Artikel CHF 49.90 | 49.90 | 49.90 | **ja** (Rabatt ab 49) |
+| 2 Artikel à 24.90 | 49.80 | **44.82** | **nein** |
+
+Shopify prueft die Versandregel gegen den Betrag **nach** Rabatt. Ein Balken auf 4900 wuerde dem
+Zwei-Artikel-Korb Gratis-Versand versprechen, den die Kasse nicht gibt — das ist die teurere
+Sorte Irrtum. **5000 ist die einzige Zahl, die in keinem Korb luegt**, sie verspricht hoechstens
+zu wenig. Nichts zu tun.
 
 ## 3. Klaviyo: die QUELLE der toten Domain abstellen  ⭐
 
