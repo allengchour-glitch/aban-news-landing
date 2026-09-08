@@ -69,9 +69,17 @@ for (const [sx, sz] of richtungen) {
   await R('uhrAn')
   const a1 = await R('figur')
   await R('steuer', [sx, sz])
-  await page.waitForTimeout(4000)
+  /* ⚠️ NICHT 4 s WANDUHR (2026-09-08, im Torlauf aufgeflogen). Der Kopf des Werkzeugs
+     warnt seit jeher davor, das TEMPO an der Wanduhr zu messen — das Mess-FENSTER hing
+     aber weiter an ihr. Unter Last kamen in 4 s Echtzeit kaum Bilder, und eine Richtung
+     ergab 0,00 m/s: nicht weil dort etwas blockiert, sondern weil die Figur in der
+     verfuegbaren Spielzeit keinen messbaren Meter gemacht hatte. Auf der ruhigen
+     Maschine standen dieselben vier Richtungen bei 3,20.
+     Jetzt laeuft das Fenster, bis 2,5 s SPIELZEIT zusammengekommen sind (Deckel 30 s
+     Echtzeit) — dieselbe Groesse, mit der auch das Tempo gerechnet wird. */
+  let gz = 0
+  for (let w = 0; w < 60 && gz < 2.5; w++) { await page.waitForTimeout(500); gz = await R('uhrLies') }
   const a2 = await R('figur')
-  const gz = await R('uhrLies')
   await R('steuer', [0, 0])
   const d = Math.hypot(a2.x - a1.x, a2.z - a1.z)
   tempi.push(gz > 0.05 ? d / gz : 0)
