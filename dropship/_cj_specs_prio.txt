@@ -1,4 +1,12 @@
 # Handles der Produkt-Landeseiten (ShopifyQL 30 Tage, Stand 02.09.2026) — Reihenfolge = Sitzungen. Handle<TAB>Sitzungen
+# NACHTRAG 08.09.2026: 6 Landeseiten, die seit dem 02.09. Verkehr bekommen und in
+# dieser Liste fehlten. Eine Prio-Liste altert — sie ist ein Zeugnis ueber ihren Zeitpunkt.
+herren-ring-vintage-edelstahl-retro	0
+tunika-mini-kleid-riva-v-ausschnitt-strand-stil-damen	0
+bikini-set-damen-einteilig-schmeichelhaft-s-3xl-mehrere-farben	0
+sommerkleid-savanna-western-style-midi	0
+wimpernstempel-eyeliner-2-in-1-577600	0
+damenuhr-bellevue-b39-35-mm-295895	0
 rizinusol-wickel-set-mit-bio-ol-323457	31
 2-teiliges-leinen-set-provence-hemd-wide-leg-hose	8
 kuhlmatte-fur-hunde-katzen-ice-silk-selbstkuhlend-waschbar	7
