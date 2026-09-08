@@ -10702,8 +10702,31 @@ function schildTafel(w,zeilen,opt){
                              randFarbe:opt.randFarbe,rand:opt.rand,gross:opt.gross});
   var mat=new THREE.MeshStandardMaterial({map:tex,roughness:0.55,
     emissive:opt.leuchtet?0xffffff:0x000000,emissiveMap:opt.leuchtet?tex:null,emissiveIntensity:opt.leuchtet?0.35:0});
+  /* 🧱 EINE SEITE KANN ZUGEBAUT SEIN. Beim Neonschild sitzt hinter der Anzeige eine
+     RUECKWAND (`NsTafel`, 2,55 x 1,53 m gegen 1,75 x 0,94 m der Anzeige). Die Flaeche
+     fuer die Rueckseite landete mitten darin — im Bild sah man einen leeren dunklen
+     Kasten, obwohl die Textur nachweislich „CLUB / Tanz & Spiel" trug
+     (spiele-dev/screenshots/r76/v2-mittel.png; Panelmitte z 212,45, Rueckwand
+     212,47…212,59, die Flaeche bei 212,49).
+     Welche Seite vorne ist, kann hier nicht festgelegt werden: dasselbe Modell steht
+     beim Casino um 180 Grad gedreht. Darum wird es GEMESSEN — liegt der Punkt kurz vor
+     der Tafel schon in einem groesseren Teil desselben Modells, gehoert dort keine
+     Schrift hin. Sind beide Seiten zu, bleiben beide (dann stimmt die Annahme nicht,
+     und ein sichtbarer Fehler ist besser als gar nichts). */
+  var zu={};
+  [1,-1].forEach(function(sd){
+    var P=mp.clone();P.setComponent(duenn,mp.getComponent(duenn)+sd*(dick/2+0.05));
+    var flaeche=br*ho;
+    w.traverse(function(m2){
+      if(zu[sd]||!m2.isMesh||m2===treffer||m2.geometry&&m2.geometry.type==="PlaneGeometry")return;
+      var b2=new THREE.Box3().setFromObject(m2),e2=new THREE.Vector3();b2.getSize(e2);
+      /* nur groessere Teile zaehlen — eine Neonroehre vor der Tafel verdeckt nichts */
+      var f2=Math.max(e2.x*e2.y,e2.x*e2.z,e2.y*e2.z);
+      if(f2>flaeche*1.2&&b2.containsPoint(P))zu[sd]=1;});});
+  if(zu[1]&&zu[-1]){zu={};}
   var n=0;
   [1,-1].forEach(function(sd){
+    if(zu[sd])return;
     var g=new THREE.PlaneGeometry(br*0.94,ho*0.90);
     var pl=new THREE.Mesh(g,mat);
     pl.position.copy(mp);
