@@ -20141,3 +20141,7 @@ gid://shopify/Product/15500107874689	CHF 9.06	1 Varianten	Maniküre-Set mit luxu
 gid://shopify/Product/15500107940225	CHF 20.97	1 Varianten	Stehhilfe für Senioren
 gid://shopify/Product/15500108071297	CHF 25.87	1 Varianten	Doppelkopf-Schere
 gid://shopify/Product/15500108235137	CHF 52.44	1 Varianten	Solares Rotationsmodell Erde-Sonne
+gid://shopify/Product/15500108300673	CHF 8.61	1 Varianten	Drei-Dimensional-Gräfin-Nagel-Maniküre
+gid://shopify/Product/15500108464513	CHF 13.67	1 Varianten	Elektrik-Sicherheitsbox
+gid://shopify/Product/15500108661121	CHF 23.90	1 Varianten	Weihnachtliche Baukasten-Box
+gid://shopify/Product/15500108792193	CHF 25.56	1 Varianten	Cork-Yoga-Stab

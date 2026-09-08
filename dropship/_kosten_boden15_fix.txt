@@ -6676,3 +6676,11 @@ gid://shopify/Product/15454078108033	27.42->17.42
 gid://shopify/Product/15454089707905	28.58->18.58
 gid://shopify/Product/15454089773441	41.57->31.57
 gid://shopify/Product/15454090494337	29.62->19.62
+gid://shopify/Product/15454095180161	15.75->5.75
+gid://shopify/Product/15454105993601	27.25->17.25
+gid://shopify/Product/15454109827457	16.20->6.20
+gid://shopify/Product/15454115037569	15.90->5.90
+gid://shopify/Product/15454131323265	16.79->6.79
+gid://shopify/Product/15454200824193	21.27->11.27
+gid://shopify/Product/15454201020801	17.69->7.69
+gid://shopify/Product/15454201086337	27.39->17.39
