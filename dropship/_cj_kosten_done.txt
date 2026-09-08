@@ -19954,3 +19954,8 @@ gid://shopify/Product/15499951473025	CHF 13.26	1 Varianten	Sommer-Studententasch
 gid://shopify/Product/15499951767937	CHF 12.95	30 Varianten	Kurzes, elegantes Casual-Kleid mit kurzen Ärmeln
 gid://shopify/Product/15499951800705	CHF 6.86	1 Varianten	Hundespielzeug aus Gummi
 gid://shopify/Product/15499951964545	CHF 11.70	1 Varianten	Schulrucksack-Set 5-teilig
+gid://shopify/Product/15499952030081	CHF 32.93	1 Varianten	Umbrella-Halter
+gid://shopify/Product/15499952193921	CHF 15.78	1 Varianten	Duschgel-Brausetabletten für Hunde
+gid://shopify/Product/15499952259457	CHF 17.27	18 Varianten	Langes, lockiges T-Shirt
+gid://shopify/Product/15499952423297	CHF 41.80	1 Varianten	Doppelfunktionales Heisshalten-Box-Set
+gid://shopify/Product/15499952587137	CHF 11.77	1 Varianten	Schwingerball für Katze
