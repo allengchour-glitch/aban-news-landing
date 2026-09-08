@@ -19691,3 +19691,4 @@ gid://shopify/Product/15499698962817	CHF 19.90	33 Varianten	Flyknit Mesh Sportsc
 gid://shopify/Product/15499699126657	CHF 9.53	1 Varianten	Weinrot-Schwarzes Sofaüberwurf
 gid://shopify/Product/15499699224961	CHF 27.64	1 Varianten	Heiss-Kalt Mitesser-Entferner & Hautverjünger
 gid://shopify/Product/15499699290497	CHF 23.44	1 Varianten	Dreifach-Wireloser Ladegerät
+gid://shopify/Product/15499699454337	CHF 36.33	36 Varianten	Sommer Loafer mit Plateausohle

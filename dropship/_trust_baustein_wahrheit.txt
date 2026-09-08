@@ -46461,3 +46461,5 @@
 15522164474241	ersetzt-1	Wasserdichter Herren-Reiserucksack, gross
 15522164605313	ersetzt-1	Eleganter Oxford Rucksack für Damen
 15522164638081	ersetzt-1	Herren Umhängetasche in Grau
+15522164670849	ersetzt-1	Robuster Canvas Rucksack mit Lederdetails
+15522164736385	ersetzt-1	Futter- und Trinkbrunnen 1.8L (ohne Strom)
