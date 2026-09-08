@@ -22460,3 +22460,11 @@ gid://shopify/Product/15501001326977	CHF 133.86	1 Varianten	Dampfkochtopf aus Ed
 gid://shopify/Product/15501001392513	CHF 30.52	36 Varianten	Warme Kinder-Sportstiefel
 gid://shopify/Product/15501001458049	CHF 8.02	1 Varianten	8er-Set Neon Liquid Eyeliner
 gid://shopify/Product/15501001490817	CHF 13.59	1 Varianten	Bausteine Muscle Car Bausatz
+gid://shopify/Product/15501001523585	CHF 24.17	14 Varianten	Baotou Kinder-Funktionsschuhe, rutschfest
+gid://shopify/Product/15501001589121	CHF 64.39	1 Varianten	Wok "Honeycomb" für alle Herdarten
+gid://shopify/Product/15501001621889	CHF 7.41	1 Varianten	Farbwechselnde Flüssig-Foundation
+gid://shopify/Product/15501001654657	CHF 12.34	1 Varianten	Sportwagen-Modell Bausatz, 284 Teile
+gid://shopify/Product/15501001687425	CHF 19.10	12 Varianten	Gummistiefel Kinder Regenstiefel
+gid://shopify/Product/15501001720193	CHF 140.34	1 Varianten	Flammenfeste Keramikpfanne mit Deckel
+gid://shopify/Product/15501001752961	CHF 7.61	1 Varianten	Wasserfeste Augenbrauencreme mit Doppelstift
+gid://shopify/Product/15501001785729	CHF 13.32	1 Varianten	DIY Sportwagen Bausteine für Kinder
