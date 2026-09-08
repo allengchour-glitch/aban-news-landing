@@ -18,6 +18,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 9 gemeinsame Bilder (10 bzw. 9 insgesamt, 100%)
   - 15421513630081 · 2026-06-08 · CHF 34.90 · CJYD292448601AZ · Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
   - 15512491196801 · 2026-08-25 · CHF 23.90 · CJ-CJYD292448601AZ · Casual Damen-Midi-Kleid mit Rundhals
+- **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 14 insgesamt, 100%)
+  - 15428421452161 · 2026-06-12 · CHF 18.90 · CJ-CJSL293135501AZ · Tennis-Armband Bunt · Zirkonia funkelnd
+  - 15495190544769 · 2026-08-12 · CHF 17.90 · CJ-2606120755051601100 · Vintage Eulen-Fusskettchen aus Legierung
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 6 insgesamt, 100%)
   - 15430491275649 · 2026-06-14 · CHF 44.90 · CJLY293294401AZ · Damen Chiffon-Kleid «Capri» · Resort, fliessend
   - 15509360411009 · 2026-08-22 · CHF 29.90 · CJ-CJLY293294401AZ · Luftiges Chiffon-Kleid mit Leoparden-Print
@@ -33,12 +36,30 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
   - 15449469485441 · 2026-07-06 · CHF 48.90 · CJ-1388690499426193408 · Game Joystick mit Rocker
   - 15496385331585 · 2026-08-13 · CHF 45.90 · CJ-1388685376935301120 · 7-in-1 Arcade Stick für diverse Konsolen
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
+  - 15463671005569 · 2026-07-20 · CHF 22.90 · CJ-CJMB108818901AZ · Ultraschall-Hautschaufel Reinigungsgerät
+  - 15523907633537 · 2026-09-03 · CHF 28.90 · CJ-1384328122362630144 · Ultraschall-Hautschaufel für die Gesichtsreinigung
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (2 bzw. 2 insgesamt, 100%)
   - 15469970555265 · 2026-07-23 · CHF 32.00 · fortura-OR40032S-M · Tutu Pink
   - 15469975830913 · 2026-07-23 · CHF 31.90 · fortura-OR40032116-140 · Tutu Pink Kindergrösse 116/140
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (2 bzw. 2 insgesamt, 100%)
   - 15470022099329 · 2026-07-23 · CHF 24.50 · fortura-33034 · Fahne Schweiz
   - 15470036091265 · 2026-07-23 · CHF 20.00 · fortura-21137 · Flagge Schweiz 90x90 cm
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
+  - 15474491195777 · 2026-07-27 · CHF 20.90 · CJ-CJNS291962101AZ · Umhängetasche aus Vollnarbenleder
+  - 15485009658241 · 2026-08-03 · CHF 22.90 · CJ-2606030652411614900 · Leder-Crossbody-Bag
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
+  - 15479484416385 · 2026-07-31 · CHF 15.90 · CJ-2505110311451627300 · Handbemalte 3D-Maniküre zum Aufkleben
+  - 15500410814849 · 2026-08-15 · CHF 17.90 · CJ-2503060637151601000 · Rose-Design-Nagel
+- **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 3 insgesamt, 100%)
+  - 15480488493441 · 2026-07-31 · CHF 15.90 · CJ-CJYD203748401AZ · Kamellien-Nageldesign mit Farbverlauf
+  - 15497429713281 · 2026-08-14 · CHF 15.90 · CJ-2505080609491601000 · Grüne Full Diamond Camellia Gradient Chain Nägel
+- **DUBLETTE** · 10 gemeinsame Bilder (11 bzw. 10 insgesamt, 100%)
+  - 15480631067009 · 2026-07-31 · CHF 23.90 · CJ-CJYD297856901AZ · Modische Mules mit Blockabsatz
+  - 15481775718785 · 2026-08-01 · CHF 23.90 · CJ-CJYD298004001AZ · Chunky-Heel Sandalette mit Farbblock
+- **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
+  - 15487652102529 · 2026-08-05 · CHF 19.90 · CJ-2608050555221618900 · Liebes-Geburtsstein-Ring mit Gravur
+  - 15489427603841 · 2026-08-06 · CHF 19.90 · CJ-2608050514071601600 · Engel Flügel Ring
 - **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
   - 15496120205697 · 2026-08-12 · CHF 18.90 · CJ-CJYD285034901AZ · Damen Peep-Toe Sandalen mit Lochmuster
   - 15496120238465 · 2026-08-12 · CHF 18.90 · CJ-CJYD285032801AZ · Hohe Sandalen mit Ausschnitt
@@ -78,6 +99,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 7 gemeinsame Bilder (7 bzw. 8 insgesamt, 100%)
   - 15509403173249 · 2026-08-22 · CHF 50.90 · CJ-6D721EB7-4027-43E7-935D-EE6363C41ED3 · Geprägter 3D-Rucksack "Big Face"
   - 15525497143681 · 2026-09-05 · CHF 49.90 · CJ-1447615447250898944 · Rucksack mit Totenkopfmotiv
+- **DUBLETTE** · 3 gemeinsame Bilder (5 bzw. 3 insgesamt, 100%)
+  - 15510928261505 · 2026-08-24 · CHF 24.90 · CJ-1372520026904596480 · Leckmatte für Hunde & Katzen
+  - 15524858331521 · 2026-09-04 · CHF 23.90 · CJ-204F602B-5A59-48E5-B01C-7522C85DD089 · Doppelseitige Schleckmatte für Hunde und Katzen
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
   - 15517582492033 · 2026-08-27 · CHF 21.90 · CJ-2601221030441630600 · Armband «Hohles Herz» mit Zirkonia · Gravur für die Herzenss
   - 15520299024769 · 2026-08-29 · CHF 21.90 · CJ-2601221027191603000 · Herzarmband mit Zirkonia-Steinen
@@ -105,9 +129,15 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 7 gemeinsame Bilder (8 bzw. 9 insgesamt, 88%)
   - 15422937563521 · 2026-06-08 · CHF 49.90 · CJDK292568901AZ · Tennis-Kleid «Match» · Plissee, integrierte Shorts
   - 15512365302145 · 2026-08-25 · CHF 27.90 · CJ-CJDK292568901AZ · Zweiteiliges Tennis-Fitnesskleid für Damen
+- **DUBLETTE** · 7 gemeinsame Bilder (9 bzw. 8 insgesamt, 88%)
+  - 15483877425537 · 2026-08-03 · CHF 25.90 · CJ-CJZBNSSY00795-Black · Sportuhr Chronograph
+  - 15524777230721 · 2026-09-04 · CHF 29.90 · CJ-F43165FA-7AD0-4C99-98F3-86DF2A61D897 · Karin 8291 Herrenkalenderuhr
 - **DUBLETTE** · 6 gemeinsame Bilder (8 bzw. 7 insgesamt, 86%)
   - 15421167108481 · 2026-06-08 · CHF 24.90 · CJSL292427701AZ · Geburtsstein-Armband «Pois» · zarte Kette mit Steinen
   - 15496425931137 · 2026-08-13 · CHF 17.90 · CJ-2606070406141606300 · Personalisierbares Erbsen-Armband mit Zirkonia
+- **DUBLETTE** · 6 gemeinsame Bilder (7 bzw. 7 insgesamt, 86%)
+  - 15422934647169 · 2026-06-08 · CHF 69.90 · CJYD292633701AZ · Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz
+  - 15512313725313 · 2026-08-25 · CHF 26.90 · CJ-CJYD292633701AZ · Elegantes Satin-Abendkleid mit Mesh-Einsätzen
 - **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 6 insgesamt, 83%)
   - 15516162916737 · 2026-08-26 · CHF 45.90 · CJ-2503131329481608600 · Business Rucksack Gross – Oxford Stoff
   - 15516163539329 · 2026-08-26 · CHF 48.90 · CJ-2503130419071620100 · Multifunktionaler Business Rucksack für Herren
@@ -117,6 +147,60 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 7 insgesamt, 83%)
   - 15523906126209 · 2026-09-03 · CHF 21.90 · CJ-2512300703291626000 · Armband mit Namen und Strass
   - 15524966728065 · 2026-09-04 · CHF 21.90 · CJ-2512210539101614500 · DIY Diamantenkette Mehrnamensarmband
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15500982878593 · 2026-08-16 · CHF 14.90 · CJ-AAFBDBCD-2813-4DE9-A0C8-505C7D73B4CC · Laufendes Pferd Diamond Painting
+  - 15502045577601 · 2026-08-17 · CHF 15.90 · CJ-910C255E-CA0E-40B3-B49A-A48329DEE7AE · Malen nach Zahlen: Kater
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 7 insgesamt, 80%)
+  - 15500982878593 · 2026-08-16 · CHF 14.90 · CJ-AAFBDBCD-2813-4DE9-A0C8-505C7D73B4CC · Laufendes Pferd Diamond Painting
+  - 15502047445377 · 2026-08-17 · CHF 15.90 · CJ-F9E9C28D-8679-43D3-9768-25EED43B5E3F · Malen nach Zahlen: Landschaft 4
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15500982878593 · 2026-08-16 · CHF 14.90 · CJ-AAFBDBCD-2813-4DE9-A0C8-505C7D73B4CC · Laufendes Pferd Diamond Painting
+  - 15502605681025 · 2026-08-17 · CHF 14.90 · CJ-09C57A13-02D9-4A7E-A146-4E1F6EC4CE86 · DIY Digital Malset "Pferd" (rahmenlos)
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15500983009665 · 2026-08-16 · CHF 14.90 · CJ-E7436E5E-29EE-4A1A-A46C-2C463A1C6E2C · Schneeleoparden-Stickerei
+  - 15501882458497 · 2026-08-17 · CHF 15.90 · CJ-1CFA187D-988B-446A-9933-07D48D10474C · Wasserboot
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 7 insgesamt, 80%)
+  - 15502045577601 · 2026-08-17 · CHF 15.90 · CJ-910C255E-CA0E-40B3-B49A-A48329DEE7AE · Malen nach Zahlen: Kater
+  - 15502047445377 · 2026-08-17 · CHF 15.90 · CJ-F9E9C28D-8679-43D3-9768-25EED43B5E3F · Malen nach Zahlen: Landschaft 4
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15502045577601 · 2026-08-17 · CHF 15.90 · CJ-910C255E-CA0E-40B3-B49A-A48329DEE7AE · Malen nach Zahlen: Kater
+  - 15502605681025 · 2026-08-17 · CHF 14.90 · CJ-09C57A13-02D9-4A7E-A146-4E1F6EC4CE86 · DIY Digital Malset "Pferd" (rahmenlos)
+- **DUBLETTE** · 4 gemeinsame Bilder (7 bzw. 5 insgesamt, 80%)
+  - 15502047445377 · 2026-08-17 · CHF 15.90 · CJ-F9E9C28D-8679-43D3-9768-25EED43B5E3F · Malen nach Zahlen: Landschaft 4
+  - 15502605681025 · 2026-08-17 · CHF 14.90 · CJ-09C57A13-02D9-4A7E-A146-4E1F6EC4CE86 · DIY Digital Malset "Pferd" (rahmenlos)
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725347713 · 2026-08-07 · CHF 16.90 · CJ-1423334511374110720 · Digitales Ölbild
+  - 15490725413249 · 2026-08-07 · CHF 16.90 · CJ-1423333969784606720 · Digitales Ölgemälde zum Ausmalen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725347713 · 2026-08-07 · CHF 16.90 · CJ-1423334511374110720 · Digitales Ölbild
+  - 15493908693377 · 2026-08-11 · CHF 16.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725347713 · 2026-08-07 · CHF 16.90 · CJ-1423334511374110720 · Digitales Ölbild
+  - 15500412027265 · 2026-08-15 · CHF 16.90 · CJ-1422983674193907712 · Digital Malerei
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725347713 · 2026-08-07 · CHF 16.90 · CJ-1423334511374110720 · Digitales Ölbild
+  - 15501383696769 · 2026-08-16 · CHF 16.90 · CJ-1423331183227441152 · Digitaler Ölbild
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725413249 · 2026-08-07 · CHF 16.90 · CJ-1423333969784606720 · Digitales Ölgemälde zum Ausmalen
+  - 15493908693377 · 2026-08-11 · CHF 16.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725413249 · 2026-08-07 · CHF 16.90 · CJ-1423333969784606720 · Digitales Ölgemälde zum Ausmalen
+  - 15500412027265 · 2026-08-15 · CHF 16.90 · CJ-1422983674193907712 · Digital Malerei
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725413249 · 2026-08-07 · CHF 16.90 · CJ-1423333969784606720 · Digitales Ölgemälde zum Ausmalen
+  - 15501383696769 · 2026-08-16 · CHF 16.90 · CJ-1423331183227441152 · Digitaler Ölbild
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15493908693377 · 2026-08-11 · CHF 16.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+  - 15500412027265 · 2026-08-15 · CHF 16.90 · CJ-1422983674193907712 · Digital Malerei
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15493908693377 · 2026-08-11 · CHF 16.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+  - 15501383696769 · 2026-08-16 · CHF 16.90 · CJ-1423331183227441152 · Digitaler Ölbild
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15500412027265 · 2026-08-15 · CHF 16.90 · CJ-1422983674193907712 · Digital Malerei
+  - 15501383696769 · 2026-08-16 · CHF 16.90 · CJ-1423331183227441152 · Digitaler Ölbild
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
+  - 15495120486785 · 2026-08-12 · CHF 15.90 · CJ-1433319879871696896 · DIY Diamond Painting Set – Quadratische Steine
+  - 15495120585089 · 2026-08-12 · CHF 16.90 · CJ-1433316211676024832 · DIY Diamond Painting: Vier Bilder in Serie
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
   - 15496403157377 · 2026-08-13 · CHF 16.90 · CJ-1415139307299147776 · Landschaftsmalerei nach Zahlen für Erwachsene & Kinder
   - 15506881511809 · 2026-08-20 · CHF 15.90 · CJ-1397734556987166720 · DIY Digital-Ölgemälde nach Zahlen – Blumen & Landschaft
@@ -144,33 +228,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15497431843201 · 2026-08-14 · CHF 16.90 · CJ-1400264996931375104 · Baby Eule – Malen nach Zahlen
   - 15497432105345 · 2026-08-14 · CHF 16.90 · CJ-1400261343176691712 · DIY Malen nach Zahlen "Herbstliches Weisswedelhirsch"
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
-  - 15500982878593 · 2026-08-16 · CHF 14.90 · CJ-AAFBDBCD-2813-4DE9-A0C8-505C7D73B4CC · Laufendes Pferd Diamond Painting
-  - 15502045577601 · 2026-08-17 · CHF 15.90 · CJ-910C255E-CA0E-40B3-B49A-A48329DEE7AE · Malen nach Zahlen: Kater
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 7 insgesamt, 80%)
-  - 15500982878593 · 2026-08-16 · CHF 14.90 · CJ-AAFBDBCD-2813-4DE9-A0C8-505C7D73B4CC · Laufendes Pferd Diamond Painting
-  - 15502047445377 · 2026-08-17 · CHF 15.90 · CJ-F9E9C28D-8679-43D3-9768-25EED43B5E3F · Malen nach Zahlen: Landschaft 4
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
-  - 15500982878593 · 2026-08-16 · CHF 14.90 · CJ-AAFBDBCD-2813-4DE9-A0C8-505C7D73B4CC · Laufendes Pferd Diamond Painting
-  - 15502605681025 · 2026-08-17 · CHF 14.90 · CJ-09C57A13-02D9-4A7E-A146-4E1F6EC4CE86 · DIY Digital Malset "Pferd" (rahmenlos)
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
-  - 15500983009665 · 2026-08-16 · CHF 14.90 · CJ-E7436E5E-29EE-4A1A-A46C-2C463A1C6E2C · Schneeleoparden-Stickerei
-  - 15501882458497 · 2026-08-17 · CHF 15.90 · CJ-1CFA187D-988B-446A-9933-07D48D10474C · Wasserboot
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 7 insgesamt, 80%)
-  - 15502045577601 · 2026-08-17 · CHF 15.90 · CJ-910C255E-CA0E-40B3-B49A-A48329DEE7AE · Malen nach Zahlen: Kater
-  - 15502047445377 · 2026-08-17 · CHF 15.90 · CJ-F9E9C28D-8679-43D3-9768-25EED43B5E3F · Malen nach Zahlen: Landschaft 4
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
-  - 15502045577601 · 2026-08-17 · CHF 15.90 · CJ-910C255E-CA0E-40B3-B49A-A48329DEE7AE · Malen nach Zahlen: Kater
-  - 15502605681025 · 2026-08-17 · CHF 14.90 · CJ-09C57A13-02D9-4A7E-A146-4E1F6EC4CE86 · DIY Digital Malset "Pferd" (rahmenlos)
-- **DUBLETTE** · 4 gemeinsame Bilder (7 bzw. 5 insgesamt, 80%)
-  - 15502047445377 · 2026-08-17 · CHF 15.90 · CJ-F9E9C28D-8679-43D3-9768-25EED43B5E3F · Malen nach Zahlen: Landschaft 4
-  - 15502605681025 · 2026-08-17 · CHF 14.90 · CJ-09C57A13-02D9-4A7E-A146-4E1F6EC4CE86 · DIY Digital Malset "Pferd" (rahmenlos)
 - **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
   - 15497452093825 · 2026-08-14 · CHF 16.90 · CJ-1398895873806700544 · Digitales Acrylbild auf Leinwand
   - 15497470083457 · 2026-08-14 · CHF 16.90 · CJ-1398157016375103488 · Ölbild Landschaft
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
-  - 15500412027265 · 2026-08-15 · CHF 16.90 · CJ-1422983674193907712 · Digital Malerei
-  - 15501383696769 · 2026-08-16 · CHF 16.90 · CJ-1423331183227441152 · Digitaler Ölbild
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15500899582337 · 2026-08-16 · CHF 17.90 · CJ-1420328904811483136 · Sichtbares Hundehalsband
   - 15500936053121 · 2026-08-16 · CHF 15.90 · CJ-1395675522746421248 · Leuchthalsband für Hunde, wiederaufladbar
@@ -352,6 +412,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15450113769857 · 2026-07-06 · CHF 15.90 · CJ-1600338643208646656 · Leinwandbild "Künstlerische Individualität"
   - 15450114032001 · 2026-07-06 · CHF 15.90 · CJ-1600337364898033664 · Marseille Panorama Leinwandbild
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
+  - 15495141753217 · 2026-08-12 · CHF 15.90 · CJ-67C2C780-8203-4FA8-92CB-48D471E33746 · Kreuzstich-Set "Handgemachtes Geschenk"
+  - 15501883277697 · 2026-08-17 · CHF 15.90 · CJ-E2764BD5-ABD0-4859-B1C5-92A5CD594738 · Neues Kreuzstichen Material für das Wohnzimmer
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15496251113857 · 2026-08-12 · CHF 16.90 · CJ-1421062964181602304 · DIY Malen nach Zahlen Set «Lost My Heart»
   - 15496251212161 · 2026-08-12 · CHF 16.90 · CJ-1421062189216829440 · Malen nach Zahlen: Kleiner klarer Bach
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
@@ -426,6 +489,27 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15453465969025 · 2026-07-10 · CHF 60.50 · bb-S0800557 · Damenuhr Bellevue B42-2 (Ø 40 mm)
   - 15453474881921 · 2026-07-10 · CHF 60.50 · bb-S0800555 · Damenuhr Bellevue B39 (Ø 35 mm)
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15490724725121 · 2026-08-07 · CHF 15.90 · CJ-1433996325439016960 · Diamant Malerei 5D
+  - 15495119765889 · 2026-08-12 · CHF 15.90 · CJ-1434054573760319488 · Diamond Painting: Kreuzstich-Set
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15490724725121 · 2026-08-07 · CHF 15.90 · CJ-1433996325439016960 · Diamant Malerei 5D
+  - 15495119995265 · 2026-08-12 · CHF 15.90 · CJ-1433997816035938304 · DIY 5D Diamond Painting Schlafzimmer Deko
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15490724725121 · 2026-08-07 · CHF 15.90 · CJ-1433996325439016960 · Diamant Malerei 5D
+  - 15495120257409 · 2026-08-12 · CHF 15.90 · CJ-1433997139230461952 · DIY Diamond Painting Set «Schlafzimmer-Deko»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15495119765889 · 2026-08-12 · CHF 15.90 · CJ-1434054573760319488 · Diamond Painting: Kreuzstich-Set
+  - 15495119995265 · 2026-08-12 · CHF 15.90 · CJ-1433997816035938304 · DIY 5D Diamond Painting Schlafzimmer Deko
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15495119765889 · 2026-08-12 · CHF 15.90 · CJ-1434054573760319488 · Diamond Painting: Kreuzstich-Set
+  - 15495120257409 · 2026-08-12 · CHF 15.90 · CJ-1433997139230461952 · DIY Diamond Painting Set «Schlafzimmer-Deko»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15495119995265 · 2026-08-12 · CHF 15.90 · CJ-1433997816035938304 · DIY 5D Diamond Painting Schlafzimmer Deko
+  - 15495120257409 · 2026-08-12 · CHF 15.90 · CJ-1433997139230461952 · DIY Diamond Painting Set «Schlafzimmer-Deko»
+- **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (9 bzw. 6 insgesamt, 67%)
+  - 15495237828993 · 2026-08-12 · CHF 15.90 · CJ-1424186536462782464 · Diamond Painting Wandbild – Volldekoration
+  - 15501877838209 · 2026-08-17 · CHF 23.90 · CJ-6FC1BEB5-74D8-40F1-8E6D-617A9012D1B8 · Schmuckstein-Malerei für zu Hause
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15496405123457 · 2026-08-13 · CHF 16.90 · CJ-1415135727716536320 · DIY Digital Painting: Moderne Landschaft
   - 15500926157185 · 2026-08-16 · CHF 17.90 · CJ-93C478CD-2465-487E-8E97-C20AEA932C2C · Katzen Ölgemälde nach Zahlen
@@ -436,14 +520,44 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15501882261889 · 2026-08-17 · CHF 15.90 · CJ-DBB1341E-E781-44DF-9467-351E2722B506 · Malen nach Zahlen - Boote
   - 15502048428417 · 2026-08-17 · CHF 15.90 · CJ-7D8AE4F8-4387-464C-A7C6-F5C72660F3A3 · Malen nach Zahlen – Winterlandschaft
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (8 bzw. 6 insgesamt, 67%)
-  - 15504104620417 · 2026-08-19 · CHF 33.90 · CJ-1637009815329320960 · Edelstahl Napf mit erhöhtem Ständer für Hunde
-  - 15523940532609 · 2026-09-03 · CHF 27.90 · CJ-798241A2-4DA7-43EC-9449-7A94F6877B3A · Hundenapf aus Edelstahl, höhenverstellbar
+  - 15506535154049 · 2026-08-20 · CHF 19.90 · CJ-CJNY143792001AZ · Mädchen Prinzessinnen Pailletten Tanzschuhe
+  - 15524879597953 · 2026-09-04 · CHF 24.90 · CJ-CJNY143793001AZ · Mädchen Prinzessin Pailletten Tanzschuhe
 - **Bildfamilie — von Hand ansehen** · 5 gemeinsame Bilder (8 bzw. 8 insgesamt, 62%)
   - 15448827199873 · 2026-07-04 · CHF 36.90 · CJ-2037766339821154306 · DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
   - 15448827494785 · 2026-07-04 · CHF 27.90 · CJ-2037764087679721473 · Süssholz-Gesichtsserum mit Vitamin C & Retinol
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
   - 15447564222849 · 2026-07-03 · CHF 18.90 · CJ-CJDC293008601AZ · USB-Ladegerät für 18650 Li-ion Akkus
   - 15447567303041 · 2026-07-03 · CHF 18.90 · CJ-CJDC272928001AZ · Li-ion Akku & USB-Ladegerät Set 3000mAh
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (9 bzw. 5 insgesamt, 60%)
+  - 15454003462529 · 2026-07-12 · CHF 15.90 · CJ-1597823739163586560 · Öl-Gemälde-Kit für Wohnzimmer und Schlafzimmer
+  - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (9 bzw. 5 insgesamt, 60%)
+  - 15454003462529 · 2026-07-12 · CHF 15.90 · CJ-1597823739163586560 · Öl-Gemälde-Kit für Wohnzimmer und Schlafzimmer
+  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15497431908737 · 2026-08-14 · CHF 16.90 · CJ-1400264189557215232 · Artsy Peacock DIY Digital Painting Set
+  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15497709519233 · 2026-08-14 · CHF 16.90 · CJ-1396774748372996096 · Digitales Malset: Sternzeichen-Landschaft
+  - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
+  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15454058250625 · 2026-07-12 · CHF 15.90 · CJ-1397505371513425920 · Water Lambo DIY-Zahlen-Mal-Set
+  - 15454115660161 · 2026-07-12 · CHF 15.90 · CJ-CJHB115784901AZ · DIY Ölmalerei Wandkunst
+- **Bildfamilie — von Hand ansehen** · 9 gemeinsame Bilder (15 bzw. 15 insgesamt, 60%)
+  - 15492034691457 · 2026-08-09 · CHF 15.90 · CJ-2608060329101620200 · Buchstaben-Halskette
+  - 15492034756993 · 2026-08-09 · CHF 15.90 · CJ-2608060322181632800 · Kugelkettchen Halskette
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (7 bzw. 5 insgesamt, 60%)
+  - 15494579552641 · 2026-08-11 · CHF 21.90 · CJ-CJLY299487401AZ · Midi-Kleid mit Blumenmuster und Schlitz
+  - 15516664988033 · 2026-08-26 · CHF 26.90 · CJ-CJLY291895401AZ · Midi-Kleid mit Blumenprint & Seitenschlitz
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
+  - 15494984434049 · 2026-08-11 · CHF 16.90 · CJ-1397414771954946048 · Tribal Dance - Malen nach Zahlen
+  - 15497441608065 · 2026-08-14 · CHF 16.90 · CJ-1399187902361112576 · DIY Malen nach Zahlen Set – Herbstmotiv
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15494984434049 · 2026-08-11 · CHF 16.90 · CJ-1397414771954946048 · Tribal Dance - Malen nach Zahlen
+  - 15508421640577 · 2026-08-21 · CHF 19.90 · CJ-8F85AB24-47E0-427F-A4C6-EB3808E4DE22 · Malen nach Zahlen – Abstrakte Frauen
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (7 bzw. 5 insgesamt, 60%)
   - 15496380875137 · 2026-08-13 · CHF 18.90 · CJ-731EC05A-709A-4941-AD1E-3FE74AD7C77D · Malen nach Zahlen Set – Alaska Berglandschaft
   - 15499992465793 · 2026-08-15 · CHF 14.90 · CJ-20333BEA-3184-44E8-A94D-2EB837C2742A · Vogelbilder DIY Gemälde
@@ -456,21 +570,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
   - 15496403779969 · 2026-08-13 · CHF 16.90 · CJ-1415138073955667968 · New York City Nacht Digital Painting
   - 15500926255489 · 2026-08-16 · CHF 17.90 · CJ-6023CE65-E64F-4B48-8749-342EF5328D63 · Malen nach Zahlen Landschaft mit Rahmen
-- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
-  - 15497431908737 · 2026-08-14 · CHF 16.90 · CJ-1400264189557215232 · Artsy Peacock DIY Digital Painting Set
-  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
-- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
-  - 15497709519233 · 2026-08-14 · CHF 16.90 · CJ-1396774748372996096 · Digitales Malset: Sternzeichen-Landschaft
-  - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
-- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
-  - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
-  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
   - 15516218950017 · 2026-08-26 · CHF 76.90 · CJ-2412130250431625900 · Vakuum-Kompressionsrucksack – schlichtes Design
   - 15516234482049 · 2026-08-26 · CHF 89.90 · CJ-2412090221281609300 · Vakuum-Kompressionsrucksack mit schlichtem Design
-- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
-  - 15523829809537 · 2026-09-02 · CHF 22.90 · CJ-1605246741912236032 · Champagner-Fake-Nägel mit Astringenz
-  - 15523829973377 · 2026-09-02 · CHF 22.90 · CJ-1605246720739389440 · Camellia-Streamer‑Nagel‑Set
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
   - 15422935007617 · 2026-06-08 · CHF 39.90 · CJLX292557401AZ · Zirkonia-Kette «Stella» · Kleeblatt-Anhänger, Silber-Optik
   - 15452618686849 · 2026-07-09 · CHF 52.90 · SET-KLEE-2 · Kleeblatt-Glücks-Duo · 2-teilig
@@ -481,8 +583,20 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15452715221377 · 2026-07-10 · CHF 52.90 · bb-S0800572 · Damenuhr Bellevue H28
   - 15452715254145 · 2026-07-10 · CHF 52.90 · bb-S0800573 · Damenuhr Bellevue H6
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
+  - 15454002971009 · 2026-07-12 · CHF 15.90 · CJ-1599322210488037376 · Digitalölmalerei rahmenlose Landschaftsdekoration
+  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (6 bzw. 4 insgesamt, 50%)
+  - 15454056710529 · 2026-07-12 · CHF 15.90 · CJ-1624224484330844160 · Digitales Ölbild rahmenlos im Blumenstil
+  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
   - 15496251048321 · 2026-08-12 · CHF 25.90 · CJ-BC236048-F847-41B9-941E-C6813DBDE127 · Bild mit Blumenlandschaft
   - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 7 insgesamt, 50%)
+  - 15454107566465 · 2026-07-12 · CHF 14.90 · CJ-70ECF0C8-6741-47C7-84F0-BFC38E96BA85 · Einfacher Feldfahrer-Helm
+  - 15495026049409 · 2026-08-11 · CHF 19.90 · CJ-183522B1-5D64-486D-A04D-96B251BCB7DB · Leichter taktischer Helm
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 12 insgesamt, 50%)
+  - 15495112688001 · 2026-08-12 · CHF 36.90 · CJ-2501190620211628100 · Man Pair Kalender Quarz-Uhr mit Diamanten
+  - 15497494167937 · 2026-08-14 · CHF 36.90 · CJ-1751826853603581952 · Outside The Watch Business Quarzuhr
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 6 insgesamt, 50%)
   - 15503287484801 · 2026-08-18 · CHF 20.90 · CJ-9E242742-C1D5-470E-82C2-12FFF4B10F27 · Hundehalsband- und Leinen-Set «Red Cowboy»
   - 15510332735873 · 2026-08-23 · CHF 20.90 · CJ-4CDBB5E6-C216-47EA-844B-4DF586114897 · Denim-Hundeleine, verschiedene Grössen
