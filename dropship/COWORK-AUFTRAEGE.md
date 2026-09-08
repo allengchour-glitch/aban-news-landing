@@ -127,8 +127,17 @@ der Konsole**, keine Mail. BigBuy bearbeitet Auszahlungen **nur dienstags**.
 15.09.** (die selbst ein Dienstag ist, also keine Reserve). Zu tun:
 
 1. Konsole → Geldbörse: steht der Antrag vom 16.08. noch offen? Wenn nicht: neu stellen.
-2. Offene Transaktion **18138523** (1'000 €, «fällige Zahlung») **stornieren, nicht bezahlen.**
-   ⚠️ Vermutung, nicht belegt: sie könnte das Guthaben binden und den Antrag blockieren.
+2. ⛔ **KORREKTUR 08.09.: Transaktion 18138523 NICHT stornieren** — hier stand «stornieren»,
+   und das war gefährlich. Am Objekt gelesen ist sie **«Ingreso en monedero»** = die EINZAHLUNG
+   in die Geldbörse, keine Rechnung an uns. Wer sie storniert, storniert womöglich den Vorgang,
+   der die 1'000 € trägt. Nur nachfragen, nicht anfassen.
+2b. **Die Ursache ist gefunden und sie liegt bei BigBuy: die gespeicherte IBAN ist kaputt.**
+   Zwei Anträge (15.07. €750, 16.08. €1'000), beide bestätigt, keiner ausgeführt. Nachgerechnet
+   (mod 97): die 16.08.-IBAN hat **22 statt 21 Zeichen** → ungültige Prüfziffer, keine Bank kann
+   das ausführen. Solange sie so gespeichert ist, prallt jeder weitere Antrag ab.
+2c. **Der Kanal ist ein TICKET, keine Mail** — BigBuys Support-Adresse ist ein Autoresponder
+   (Vorlage vom 08.09., keine der vier Fragen beantwortet). Contact Area → **💳 Administration**,
+   nur am Computer bedienbar. Dort zuerst die IBAN korrigieren, dann den Stand erfragen.
 3. ⚠️ Nie den offenen Marketplace-Checkout (1'190 €/Jahr) abschicken.
 
 Ganzer Stand samt fertigem Support-Text: `dropship/BIGBUY-AUSZAHLUNG-NACHFASS.md`.
