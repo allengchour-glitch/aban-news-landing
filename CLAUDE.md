@@ -1,5 +1,36 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🪟 Das SCHAUFENSTER als dritte Linse — 1'746 im Bestand, 3 auf den Karten (2026-09-08)
+Nach «Bestand» (Klassen-Vollscan) und «Seiten mit Verkehr» (07./08.09.) die dritte Frage gestellt:
+*Wie viele Fälle stehen auf den Karten, die JEDE Besucherin sieht?* Gemessen an den ersten 16
+Karten der 17 Startseiten-Kollektionen — **252 sichtbare Produkte**:
+| Klasse | im Bestand | im Schaufenster |
+|---|---:|---:|
+| Auswahl-Versprechen bei EINER Variante | 1'746 | **3** |
+| Sie-Anrede im Produkttext | 1'055 | **5** |
+| «Produktdetails» doppelt | 150 | 3 |
+| Floskel «hochwertiges Material» | 124 | 2 |
+| USA-Lieferzusage | 996 | 24 |
+**Dasselbe Bild wie bei den Verkehrsseiten: die grossen Bestandsklassen sind dort, wo man sie
+sieht, winzig.** 8 Fälle von Hand repariert (die übrigen deckt die laufende Kette ab), jede Regel
+im Trockenlauf auf «genau 1×» geprüft, Gegenprobe am Objekt 0.
+- **Die Schaufenster-Liste kommt aus dem Theme, nicht aus einer Vermutung:** `templates/index.json`
+  nennt die 17 Kollektionen, die Reihen zeigen 12–16 Karten. Das ist in zwei Minuten messbar und
+  beantwortet die Frage «lohnt der Massenlauf?» besser als jede Bestandszahl.
+- ⚠️ **Und wieder hat erst das LESEN des Trockenlaufs den eigentlichen Fall gezeigt:** Beim
+  Futterautomaten strich meine Regel den Aufzählungspunkt «Erhältlich in 4L und 6L» — im
+  Fliesstext stand danach unverändert «**Sie können zwischen zwei Grössen wählen**: 4 Liter …
+  oder 6 Liter …». Bei EINER Variante ist nicht belegt, welche Fassung CJ schickt; also fällt die
+  Wahl ganz weg, statt eine Grösse zu raten. Gezählt hätte der Lauf «2 Regeln, je 1×» gemeldet
+  und die Zusage wäre stehen geblieben.
+- ⚠️ Das «Smartwatch-Gehäuse» versprach vier Farben und nannte dabei die ROHEN Lieferantennamen
+  («Original D13 GS-Tuhao Gold») — bei einer einzigen Variante «Default Title». Entfernt, nicht
+  ersetzt: wo nichts belegt ist, wird nichts behauptet.
+- **Sie→du wurde bewusst GETRENNT von der Wahlversprechen-Reparatur gemacht.** Zwei Regelsorten in
+  einem Lauf sind die Halbumstellungs-Falle vom 04.09.; jede der 12 Ersetzungen ist von Hand
+  formuliert und beide Läufe prüfen ihr eigenes Ergebnis (Wahl-Reste 0, Sie-Reste 0).
+
+
 ## 🔇 Zwei Wächter, die nie fanden — und eine Schwelle, die mit ihrer Funktion gealtert ist (2026-09-08)
 Nach dem Suchphrasen-Befund dieselbe Frage an die Nachbarn gestellt: *Wer misst mit einem Mittel,
 das seine Klasse gar nicht sehen kann?*
