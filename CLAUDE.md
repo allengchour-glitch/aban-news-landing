@@ -1,5 +1,39 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🚢 Der «Zombie» war keiner — die Suchphrase war blind für 533 von 996 (2026-09-08)
+Seit dem 04.09. stand hier «der Täter ist noch nicht benannt: ein späterer Schreiber holt den
+USA-Lieferblock zurück». **Es gibt keinen Täter.** Der Klassen-Vollscan meldete 996 aktive
+Produkte mit «🇺🇸 USA: 12–22 Tage», **991 davon als repariert quittiert** — und die Erklärung
+steht in der Kandidaten-Abfrage von `versand_jenachland.py`:
+```
+query:"status:active AND \"USA: 12-22 Tage\""
+```
+Der Text trägt aber einen **Halbgeviertstrich** (`12–22`) und ein `<strong>` mitten zwischen
+«USA:» und der Zahl. Gemessen, mit Unsinnswort gegengeprüft:
+| Suchphrase | Treffer |
+|---|---:|
+| `USA: 12-22 Tage` (die benutzte) | **463** |
+| `je nach Land` (tag-frei, zusammenhängend) | **996** = Klassenzahl aus dem Objektscan |
+| `QUATSCHXYZ123` | 0 — der Filter wirkt also wirklich |
+**533 Produkte waren für den Lauf unsichtbar, und er meldete «FERTIG».** Dazu kamen 1'879
+Quittungen aus der Zeit, als das Werkzeug einen veralteten Export las (bis 04.09.) — die
+sperrten den Rest dauerhaft. Gesucht wird jetzt nach **«je nach Land»**, also genau der
+Zeichenkette, die der lokale Test des Werkzeugs ohnehin verlangt und die kein Tag zerschneidet.
+Die 1'879 falschen Quittungen entfernt (Ledger 2'035 → 156), Lauf über alle 996 unter dem
+geteilten Produkttext-Schloss.
+- **Die Lehre ist die Umkehrung von «der Index lügt» (02.09.):** Damals hatte ich dem Index
+  Unrecht getan, weil MEIN Prüfmuster die Tags nicht kannte. Heute hatte der Index recht und
+  das WERKZEUG kannte sie nicht. Beide Male derselbe Fehler an verschiedenen Enden.
+  **Eine Suchphrase gehört an einer bekannt-positiven Stelle gegengeprüft — und zwar an dem
+  Zeichen, das die Tags NICHT zerschneiden.**
+- ⚠️ **Und der Import startete den Schreiber:** `import versand_jenachland` führte `main()` aus
+  (kein `__main__`-Schutz) — dieselbe Falle wie am 03.09. beim Melder. Folgenlos, weil die
+  Abfrage 0 Kandidaten fand; nachgerüstet. **Ein Werkzeug, das man zum Messen importiert, darf
+  beim Importieren nichts tun.**
+- ⚠️ Nicht verwechseln: Die 05.09.-Härtung (Quittung nur gegen bestätigte Produkt-ID) ist
+  richtig und greift — sie kam nur zu spät für die Quittungen, die davor entstanden.
+
+
 ## ✅ «Geprüfte Qualität» ist bei 0 — 29'468 Produkttexte über sechs Tage (2026-09-08)
 Die Klasse vom 02.09. (der Trust-Baustein aller CJ-Importe versprach «Geprüfte **Qualität**», geprüft
 werden aber ANGABEN — die 29.08.-Lehre am Vertrauensblock hatte den Produkttext nie erreicht) ist

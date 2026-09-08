@@ -97,7 +97,13 @@ def kandidaten_live(fertig=frozenset()):
     # je 100 Stueck) und endete regelmaessig mit «PAUSE (Shopify stumm)» — der Eimer traegt
     # diese Abfrage nicht. Die Inhalts-Suche liefert dieselben Kandidaten in Sekunden; sie ist
     # mit einem Unsinnswort gegengeprueft (0 Treffer), der Filter wirkt also wirklich.
-    Q = ('query($c:String){products(first:100,after:$c,query:"status:active AND \\"USA: 12-22 Tage\\""){'
+    # ⚠️ 08.09.2026: Die Phrase lautete «USA: 12-22 Tage» — mit BINDESTRICH, waehrend der
+    # Text einen Halbgeviertstrich traegt, und mit einem <strong> mitten zwischen «USA:» und
+    # der Zahl. Gemessen findet diese Phrase 463 von 996 Produkten; 533 waren fuer den Lauf
+    # unsichtbar, und er meldete «FERTIG». Gesucht wird jetzt nach «je nach Land» — genau der
+    # Zeichenkette, die der lokale Test unten ohnehin verlangt, und die KEIN Tag zerschneidet.
+    # Gegengeprueft: 996 Treffer (= Klassenzahl aus dem Objektscan), Unsinnswort 0.
+    Q = ('query($c:String){products(first:100,after:$c,query:"status:active AND \\"je nach Land\\""){'
          'pageInfo{hasNextPage endCursor} nodes{id descriptionHtml}}}')
     ids, cur = [], None
     while len(ids) < CAP * 3:
@@ -216,4 +222,6 @@ def main():
     if geaendert == 0 and schon and not DRY:
         print("FERTIG")
 
-main()
+
+if __name__ == "__main__":
+    main()
