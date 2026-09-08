@@ -479,3 +479,7 @@
 15523130540417	wiederbelebt	kirin-knochenhackbeil-171264	18.81	15.97
 15523130638721	wiederbelebt	shenlong-knochenhackmesser-307584	20.41	17.04
 15523138273665	wiederbelebt	eagle-wings-5-hackbeil-fur-knochen-467520	17.75	16.47
+15523138601345	wiederbelebt	golden-tiger-knochenbeil-974272	13.47	12.62
+15523139027329	wiederbelebt	black-tiger-knochenbeil-577792	14.14	12.58
+15523176513921	wiederbelebt	longquan-handgeschmiedetes-kuchenmesser-884160	7.00	10.87
+15523176874369	wiederbelebt	rosenholz-sternanis-kuchenmesser-977216	8.00	12.22
