@@ -22,6 +22,16 @@
  * und Fahrzeuge sind INDUSTRIEPRODUKTE — die sollen gleich aussehen. Gemeint sind
  * gewachsene Dinge: Hecken, Buesche, Blumen, Steine, Schilf. Die Liste sortiert
  * darum nur; welche Zeile ein Fund ist, entscheidet ein Mensch.
+ *
+ * ⚠️ UND GENAU DAFUER BRAUCHT DER MENSCH DEN ORT (nachgeruestet 2026-09-08). Die
+ * erste Fassung meldete Zeilen wie „261 SphereGeometry|ffe9c0, eine Groesse" — und
+ * damit war nichts anzufangen: cremefarbene Kugeln koennen Lampenschirme sein (dann
+ * ist Gleichheit richtig) oder Bluetenkoepfe (dann ist sie ein Fund). Ohne Ort ist
+ * jede Zeile unentscheidbar, und ein Werkzeug, dessen Ausgabe man nicht entscheiden
+ * kann, wird nicht benutzt — dieses lag von seinem Bau bis heute unberuehrt.
+ * Jetzt nennt jede Zeile zusaetzlich: den naechsten benannten Ort, die Hoehe ueber
+ * Grund und die Ausdehnung der Gruppe. Eine Kugelreihe auf 4 m Hoehe am Seepark ist
+ * eine Lampenkette; dieselbe Reihe auf 0,6 m im Wald ist Gebuesch.
  */
 import { spielOeffnen, mitSonden } from './th-lib.mjs'
 
@@ -41,19 +51,31 @@ const datei = mitSonden('traumhaus.html', {
         'for(var i=0;i<o.count;i++){o.getMatrixAt(i,M);M.decompose(P,Q,S);' +
           'sk[Math.round(S.x*200)+"|"+Math.round(S.y*200)+"|"+Math.round(S.z*200)]=1;' +
           'var e=new THREE.Euler().setFromQuaternion(Q);dr[Math.round(e.y*200)]=1;}' +
+        'var wp=new THREE.Vector3();o.getWorldPosition(wp);' +
         'out.push({n:o.count,art:"Instanzen",name:nam||schluessel(o,m),' +
-          'groessen:Object.keys(sk).length,drehungen:Object.keys(dr).length});return;}' +
+          'groessen:Object.keys(sk).length,drehungen:Object.keys(dr).length,' +
+          'ort:_naechsterOrt(wp.x,wp.z),x:Math.round(wp.x),z:Math.round(wp.z),' +
+          'yMin:0,yMax:0,weite:0});return;}' +
       /* Einzelmeshes nach Geometrie + Farbe buendeln — die Welt-Matrix zaehlt. */
       'var k=schluessel(o,m)+"|"+nam;' +
-      'if(!G[k])G[k]={n:0,name:nam,art:"Einzelteile",sk:{},dr:{},bsp:schluessel(o,m)};' +
+      'if(!G[k])G[k]={n:0,name:nam,art:"Einzelteile",sk:{},dr:{},bsp:schluessel(o,m),' +
+        'sx:0,sz:0,x0:1e9,x1:-1e9,z0:1e9,z1:-1e9,y0:1e9,y1:-1e9};' +
       'var q=G[k];q.n++;' +
-      'var WS=new THREE.Vector3(),WQ=new THREE.Quaternion();' +
-      'o.matrixWorld.decompose(new THREE.Vector3(),WQ,WS);' +
+      'var WP=new THREE.Vector3(),WS=new THREE.Vector3(),WQ=new THREE.Quaternion();' +
+      'o.matrixWorld.decompose(WP,WQ,WS);' +
+      'q.sx+=WP.x;q.sz+=WP.z;' +
+      'if(WP.x<q.x0)q.x0=WP.x;if(WP.x>q.x1)q.x1=WP.x;' +
+      'if(WP.z<q.z0)q.z0=WP.z;if(WP.z>q.z1)q.z1=WP.z;' +
+      'if(WP.y<q.y0)q.y0=WP.y;if(WP.y>q.y1)q.y1=WP.y;' +
       'q.sk[Math.round(WS.x*200)+"|"+Math.round(WS.y*200)+"|"+Math.round(WS.z*200)]=1;' +
       'var we=new THREE.Euler().setFromQuaternion(WQ);q.dr[Math.round(we.y*200)]=1;});' +
     'for(var k2 in G){var q2=G[k2];if(q2.n<min)continue;' +
+      'var mx=q2.sx/q2.n,mz=q2.sz/q2.n;' +
       'out.push({n:q2.n,art:q2.art,name:q2.name||q2.bsp,' +
-        'groessen:Object.keys(q2.sk).length,drehungen:Object.keys(q2.dr).length});}' +
+        'groessen:Object.keys(q2.sk).length,drehungen:Object.keys(q2.dr).length,' +
+        'ort:_naechsterOrt(mx,mz),x:Math.round(mx),z:Math.round(mz),' +
+        'yMin:+q2.y0.toFixed(1),yMax:+q2.y1.toFixed(1),' +
+        'weite:Math.round(Math.max(q2.x1-q2.x0,q2.z1-q2.z0))});}' +
     'out.sort(function(a,b){' +
       'var va=(a.groessen+a.drehungen)/a.n, vb=(b.groessen+b.drehungen)/b.n;' +
       'if(va!==vb)return va-vb;return b.n-a.n;});' +
@@ -63,11 +85,13 @@ const datei = mitSonden('traumhaus.html', {
 const { browser, page, jsFehler } = await spielOeffnen(datei, { warten: 55000 })
 const L = await page.evaluate((m) => window.__th.vielfalt(m), MIN)
 console.log('\nGruppen ab ' + MIN + ' gleichartigen Dingen, die eintoenigsten zuerst:')
-console.log('  Anzahl  Groessen  Drehungen  Streuung  Art          Was')
+console.log('  Anzahl  Gr.  Dreh.  Streuung  Hoehe        Weite  Wo                     Was')
 for (const q of L) {
   const streu = ((q.groessen + q.drehungen) / q.n).toFixed(2)
-  console.log('  ' + String(q.n).padStart(5) + String(q.groessen).padStart(9) + String(q.drehungen).padStart(10) +
-    streu.padStart(10) + '  ' + q.art.padEnd(12) + ' ' + String(q.name).slice(0, 34))
+  const hoehe = q.yMax > q.yMin ? `${q.yMin}…${q.yMax} m` : `${q.yMin} m`
+  console.log('  ' + String(q.n).padStart(5) + String(q.groessen).padStart(5) + String(q.drehungen).padStart(7) +
+    streu.padStart(10) + '  ' + hoehe.padEnd(12) + String(q.weite).padStart(4) + 'm  ' +
+    (String(q.ort) + ' (' + q.x + '|' + q.z + ')').padEnd(22) + ' ' + String(q.name).slice(0, 30))
 }
 console.log('\nStreuung = (Groessen + Drehungen) / Anzahl. 0,03 heisst: 100 Dinge teilen sich')
 console.log('drei Auspraegungen. Bei Industrieprodukten (Laternen, Poller, Schilder) ist das')
