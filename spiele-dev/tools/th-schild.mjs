@@ -50,6 +50,12 @@ const datei = mitSonden('traumhaus.html', {
        HAUPTkamera liegen — eine eigene Kamera nuetzt dann nichts, weil das Schild
        beim Zeichnen schon auf visible=false steht. Direkt vor dem Rendern wieder an. */
     'var q=w;while(q&&q!==scene){q.visible=true;q._gsAus=false;q=q.parent;}' +
+    /* ⚠️ UND NACH UNTEN, NICHT NUR NACH OBEN. Bei der Preistafel war kein einziges
+       MESH unsichtbar, das Gehaeuse fehlte im Bild trotzdem: versteckt war eine
+       ZWISCHENGRUPPE, und die verbirgt ihre Kinder unabhaengig von deren eigener
+       Marke. Ein Zaehler, der nur `isMesh` ansieht, meldet dazu seelenruhig „0
+       unsichtbar". */
+    'w.traverse(function(o){o.visible=true;o._gsAus=false;});' +
     'fl.visible=true;' +
     'var altRT=renderer.getRenderTarget();' +
     'renderer.setRenderTarget(rt);renderer.render(scene,cam2);renderer.setRenderTarget(altRT);' +
