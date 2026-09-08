@@ -6524,9 +6524,16 @@ setTimeout(function baueGebaeude(){
              Modell-UV benutzen · Leinwand an das Seitenverhaeltnis anpassen · eigene
              flache UV · Hoehenachse aus der Weltlage statt aus dem Modell · Huelle nur
              ueber die Punkte mit passender Normale. Keiner half.
-             Ein Balken ist SCHLECHTER als die leere Tafel, darum bleibt sie leer. Wer es
-             loesen will, braucht die UV im Modell selbst (Blender), nicht im Spiel.
-             Das Ortsschild (th5) nimmt dieselbe Behandlung dagegen sauber an. */
+             Ein Balken ist SCHLECHTER als die leere Tafel, darum bleibt sie leer.
+             ⚠️ AUCH DER ZWEITE WEG HILFT HIER NICHT. `schildTafel` legt eine eigene
+             Flaeche vor die Tafel und braucht dafuer nur deren Groesse und Richtung —
+             bei der Anzeigetafel (th41) klappt genau das. Die Ortstafel scheitert eine
+             Stufe frueher: ihr Netz `StWeiss` enthaelt die HALTERUNG mit, gemessen
+             0,8 x 0,5 x 1,34 m. Damit ist die duennste Achse y (0,5) — also die Hoehe,
+             nicht die Blickrichtung, und keine Rechnung findet daraus die Tafelflaeche.
+             Wer das loesen will, trennt im Modell die Tafel von der Halterung (Blender);
+             im Spiel ist die Information dazu nicht vorhanden.
+             Das Ortsschild (th5) nimmt die einfache Behandlung dagegen sauber an. */
           stell("th39_ortstafel.glb",2.50,o1,her);
           if(gi%2===0){                                  // Wegweiser an jeder zweiten
             /* ⚠️ r = 197 stand MITTEN auf der Ringlandstrasse: die laeuft bei
@@ -9629,7 +9636,16 @@ setTimeout(function baueGebaeude(){
        nicht. Lieber kein Prellbock als einer an der falschen Stelle. */
     /* Stattdessen: ein zweites Signal am Ostkopf, wo die Strecke weiterfuehrt. */
     fest("th41_signal.glb",5.49,44,110.4, /* Nordseite: oestlich vom Bahnhofssegment gilt das volle Ring-Band ab z 110,8 */ Math.PI/2);
-    fest("th41_anzeigetafel.glb",3.11,-15,109.9,0,BSH);
+    /* 🚉 EIN BAHNHOF OHNE ABFAHRTEN. Die Anzeigetafel stand seit jeher leer da (eine
+       von 22 unbeschrifteten Tafeln, siehe Runde 74). Sie bekommt jetzt eine echte
+       Abfahrtsliste — die Ziele kommen aus WORLD_POIS, damit Tafel, Karte und
+       Ortsschilder dieselben Namen tragen.
+       Dunkler Grund, bernsteinfarbene Schrift: so sehen Fallblattanzeigen aus, und die
+       Tafel ist nachts damit auch von weitem als solche zu erkennen. */
+    bau("th41_anzeigetafel.glb",3.11,-15,0,109.9,0,false,function(w9){
+      w9.userData.fest=true;
+      schildTafel(w9,["Abfahrt","08:14   Seepark","08:26   Bürgli","08:41   Sportpark"],
+        {muster:/BnDunkel/,grund:"#191c21",schrift:"#f2c14e",randFarbe:"#3a3f47",gross:60,leuchtet:true});},BSH);
     fest("th41_gepaeckkarre.glb",1.35,6.5,109.2,0.4,BSH);
     [-6,17].forEach(function(bx){
       fest("th41_bahnsteigbank.glb",3.51,bx,108.9,0,BSH);});
@@ -10650,6 +10666,54 @@ function _tafelUV(mesh){
   geo.setAttribute("uv",new THREE.BufferAttribute(uv,2));
   geo.userData=geo.userData||{};geo.userData._tafelUV=1;
   return true;}
+/* 🪧 SCHRIFT AUF EINE EIGENE FLAECHE, NICHT AUF DIE DES MODELLS.
+   ⚠️ WARUM ES DIESEN ZWEITEN WEG BRAUCHT: `schildText` malt auf die Tafelflaeche des
+   Modells und braucht dafuer eine brauchbare UV. Beim Ortsschild (th5) klappt das; bei
+   der Ortstafel (th39) und der Anzeigetafel (th41) nicht — deren Tafelnetz enthaelt
+   Rahmen, Haube und beide Seiten in EINEM Netz, und jede flache Projektion darueber
+   verschmiert. Gemessen an Bildern, fuenf Anlaeufe je Modell.
+   Statt weiter an fremder Geometrie zu rechnen, legt dieser Weg eine EIGENE Flaeche
+   knapp davor: Groesse aus der Tafel, Ausrichtung aus ihrer duennsten Achse, UV also
+   von Haus aus richtig. Das kostet ein Netz je Schild und ist dafuer unabhaengig davon,
+   wie das Modell innen gebaut ist.
+   Rueckseite bekommt eine zweite Flaeche, damit das Schild nicht von hinten leer wirkt. */
+function schildTafel(w,zeilen,opt){
+  opt=opt||{};
+  var muster=opt.muster||/tafel|weiss|white|rim|platte|schild/i;
+  var treffer=null;
+  w.updateMatrixWorld(true);
+  w.traverse(function(m){
+    if(treffer||!m.isMesh||!m.material)return;
+    var liste=Array.isArray(m.material)?m.material:[m.material];
+    if(!liste.some(function(q){return q&&muster.test(String(q.name||""));}))return;
+    treffer=m;});
+  if(!treffer)return 0;
+  var bb=new THREE.Box3().setFromObject(treffer),e=new THREE.Vector3(),mp=new THREE.Vector3();
+  bb.getSize(e);bb.getCenter(mp);
+  var s3=[e.x,e.y,e.z];
+  var duenn=(s3[0]<=s3[1]&&s3[0]<=s3[2])?0:((s3[1]<=s3[2])?1:2);
+  if(duenn===1)return 0;                       /* liegt flach — kein Schild zum Lesen */
+  var br=(duenn===0)?e.z:e.x, ho=e.y, dick=s3[duenn];
+  if(br<0.15||ho<0.1)return 0;
+  var tex=_schildTex(zeilen,{seiten:br/ho,uAnteil:1,grund:opt.grund,schrift:opt.schrift,
+                             randFarbe:opt.randFarbe,rand:opt.rand,gross:opt.gross});
+  var mat=new THREE.MeshStandardMaterial({map:tex,roughness:0.55,
+    emissive:opt.leuchtet?0xffffff:0x000000,emissiveMap:opt.leuchtet?tex:null,emissiveIntensity:opt.leuchtet?0.35:0});
+  var n=0;
+  [1,-1].forEach(function(sd){
+    var g=new THREE.PlaneGeometry(br*0.94,ho*0.90);
+    var pl=new THREE.Mesh(g,mat);
+    pl.position.copy(mp);
+    pl.position.setComponent(duenn,mp.getComponent(duenn)+sd*(dick/2+0.012));
+    var ziel=pl.position.clone();ziel.setComponent(duenn,ziel.getComponent(duenn)+sd);
+    pl.lookAt(ziel);
+    pl.renderOrder=2;pl.userData.nieAusblenden=1;
+    w.add(pl);
+    /* Die Flaeche haengt am Schild-Knoten, sitzt aber in WELT-Koordinaten — darum die
+       Weltmatrix des Elternteils herausrechnen, sonst wandert sie mit dessen Drehung. */
+    pl.applyMatrix4(new THREE.Matrix4().copy(w.matrixWorld).invert());
+    n++;});
+  return n;}
 /* Beschriftet die Tafelflaeche eines geladenen Schildmodells. Gibt zurueck, wie viele
    Flaechen getroffen wurden — 0 heisst: der Materialname passt nicht, nachsehen. */
 function schildText(w,zeilen,opt){
