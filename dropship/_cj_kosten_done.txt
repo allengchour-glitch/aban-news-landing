@@ -22382,3 +22382,7 @@ gid://shopify/Product/15500989989249	CHF 18.90	5 Varianten	Lässiges Polka-Dot L
 gid://shopify/Product/15500990022017	CHF 57.98	4 Varianten	Pink Sommerkleid
 gid://shopify/Product/15500990087553	CHF 18.72	32 Varianten	Atmungsaktive Wildleder-Freizeitschuhe für Herren
 gid://shopify/Product/15500990120321	CHF 16.07	4 Varianten	Chiffon-Kleid mit kurzen Ärmeln für grosse Grössen
+gid://shopify/Product/15500990185857	CHF 18.65	60 Varianten	Marathon Carbon Racing Laufschuhe
+gid://shopify/Product/15500990251393	CHF 23.54	5 Varianten	Elegantes Abendkleid für Damen
+gid://shopify/Product/15500990284161	CHF 7.13	1 Varianten	Handgemachte Pinch-Blumen Mandel-Nagelspitzen
+gid://shopify/Product/15500990349697	CHF 23.21	52 Varianten	Business Casual Slipper aus Wildleder
