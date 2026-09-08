@@ -1,3 +1,67 @@
+## 🧟 Der Zombie ist BELEGT — und vier Verdächtige sind ausgeschlossen (2026-09-08, abends)
+Nachmessung der 150 IDs aus `dropship/_klassen/produktdetails-doppelt.txt` am Objekt:
+**0 doppelt, 150 einfach, 0 ohne Block.** Und die Messung ist mehr wert als ihre Zahl: Alle 150
+tragen `updatedAt` **18:58:36–18:59:11 UTC**, also ein 35-Sekunden-Fenster NACH der Reparatur —
+`versand_jenachland` (QUELLE=live, Charge 1'000) hat sie vollständig neu geschrieben, Schnittmenge
+150/150. **Ein kompletter `descriptionHtml`-Durchlauf ist über die Klasse gegangen, ohne sie
+zurückzubringen.**
+- ⚠️ **Meine erste Erklärung war falsch, und die Gegenprobe hat sie gekippt.** Ich hielt die «drei
+  Quittungen» für drei LEDGER-GENERATIONEN (Regel-Änderung → neues Ledger, Lehre 12.08.) und war
+  einen Satz davon entfernt, den Zombie zum Messartefakt zu erklären. Entschieden hat die
+  QUITTUNGSART: Das Werkzeug liest unmittelbar vor dem Schreiben live nach und quittiert
+  `live-schon-sauber`, wenn nichts zu tun ist. In `_produktdetails_vereint4.txt` stehen für die 150
+  Produkte **506 Quittungen — ausnahmslos `vereint`, kein einziges `live-schon-sauber`.** Es hat also
+  jedes Mal einen wirklich vorhandenen Doppelblock vorgefunden. **Eine Wiederholung im Ledger ist
+  erst dann ein Rückkehrer, wenn man die Art der Quittung liest, nicht ihre Zahl.**
+- **Die Runden aus der Versionsgeschichte datiert** (`git log` über das Ledger, Zeilenzahl je Commit):
+  | Runde | aus den 150 vereint |
+  |---|---:|
+  | 03.09. 18:51 | **150** |
+  | 04.09. 20:07 | **150** — alle zurück |
+  | 05.09. 20:01 | **150** — alle zurück |
+  | 08.09. 18:44 | **56** |
+  Der grosse 04.09.-Vormittagslauf (1'359 Zeilen) enthält **0** der 150 — sie waren damals quittiert
+  und wurden vom Ledger-Filter übersprungen.
+- ⛔ **Vier Verdächtige ausgeschlossen, jeder mit einer Messung statt einer Vermutung:**
+  1. **`versand_jenachland`** — hat heute alle 150 live neu geschrieben, Block kam nicht zurück.
+  2. **Der veraltete Export** (`/tmp/export.jsonl`, 30.08.) — er trennt nichts: **alle 150** stehen
+     darin, die 56 wie die 94.
+  3. **Der Printful-Sync.** Die Korrelation war stark und verführerisch: von den 56 Rückkehrern
+     tragen 46 `printful_personalized_product`, 45 `fertig-shirt` (**90 % Rückkehr gegen 11 % ohne**),
+     und **50 von 50** aktiven `fertig-shirt` stehen in der Klasse. Die Gegenprobe kippt sie
+     trotzdem: **478 aktive Printful-Produkte, 61 in der Klasse — und 0 der übrigen 417 tragen den
+     Doppelblock.** Ein Sync, der Texte zurückschreibt, müsste alle treffen. **Eine starke
+     Korrelation ist keine Ursache; die Gegenprobe ist die Kontrollgruppe ausserhalb der Liste.**
+  4. **Ein fremdes System mit eigenem Zugang** — der stärkste Ausschluss, und er kommt aus einem
+     Ausfall: Vom **05.09. 20:36 bis 07.09. 15:11 war unser Admin-Token tot**. In diesem Fenster kam
+     nichts zurück; erst danach wurden 56 wieder doppelt. Ein Schreiber mit eigenem Token (CJs App,
+     Printful, Judge.me) wäre davon unberührt gewesen. **Der Verursacher benutzt unseren Zugang —
+     er läuft also in diesem Repo.** Ein Ausfall ist ein Experiment, das man nicht selbst ansetzen muss.
+- ⚠️ **Nicht benannt, und das gehört so gesagt.** Bekannt ist jetzt: eigener Zugang, Rückkehr binnen
+  ~24 h bei lebendem Token, zuletzt 56 von 150 in 27 h (die Rate ist gefallen — plausibel durch die
+  Härtungen vom 05.–08.09., belegt ist es nicht).
+- **Die Falle für morgen kostet nichts und ist schon gestellt:** Alle 150 stehen jetzt auf
+  `updatedAt` 18:58/18:59. Wer morgen einen Doppelblock trägt, trägt zugleich die MINUTE des
+  Schreibers — und die lässt sich gegen die Zeitstempel der Logs in `/tmp` halten. Genau so wurde
+  heute `versand_jenachland` identifiziert (`find /tmp -name '*.log' -newermt … ! -newermt …`).
+  **Wenn kein Log mehr da ist, fragt man nicht die Vergangenheit, sondern lässt die Gegenwart
+  einen Zeitstempel hinterlassen.**
+  Gebaut als `automation/produktdetails_nachmessen.py` (MELDET NUR, täglich im Aufseher) —
+  die Nachmessung lag vorher als Wegwerf-Skript im Scratchpad und war nach dem
+  Container-Neustart weg. In beide Richtungen belegt: bekannt-positive Minute (18:58) nennt
+  `versand_live.log`, bekannt-negative (03:03) schweigt.
+- ⚠️ **Und die Reihenfolge IST die Falle:** Der Melder steht im Aufseher bewusst **VOR**
+  `produktdetails_vereinen`. Läuft die Reparatur zuerst, überschreibt sie `updatedAt` mit ihrer
+  EIGENEN Schreibminute — und löscht damit genau die Spur, wegen der man misst. **Wer einen
+  Verursacher sucht, misst vor dem Reparieren, nicht danach.**
+- ⚠️ Zweite Falle im selben Werkzeug: Ein MELDER muss **immer** `FERTIG` melden, auch wenn er
+  etwas gefunden hat — sein FERTIG hängt an der Zahl der ÄNDERUNGEN (hier immer 0), nicht an
+  der Zahl der Befunde. Ohne das startet der Aufseher ihn alle zwei Minuten neu (Kurzschluss 21.08.).
+- ⚠️ Und eine alte Falle, in die ich wieder gelaufen bin: Meine Export-Prüfung suchte
+  `Product/<id>` und meldete **0 von 56** — Shopifys Bulk-JSONL escaped `/` als `\/` (Lehre 15.08.).
+  Mit der nackten ID sind es 56 von 56. **Ein Nullergebnis aus einem Muster, das die Kennung
+  zerschneidet, ist kein Befund** — dritte Fassung, diesmal in der eigenen Gegenprobe.
+
 ## 🩻 Ein Kommentar hinter einer fortgesetzten Zeile hat einen Wächter 166-mal abgeschaltet (2026-09-08)
 Im Aufseher-Log stand zwischen zwei Startmeldungen `bash: -c: option requires an argument` —
 166-mal, seit 15:16 desselben Tages. Ursache ist mein eigener Kommentar von 15:16:

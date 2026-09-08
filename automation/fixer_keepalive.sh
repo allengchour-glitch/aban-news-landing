@@ -1115,6 +1115,18 @@ while true; do
       echo "$(date -u +%H:%M) produktdetails_wahrheit (Floskel) gestartet"
     fi
   fi
+  # PRODUKTDETAILS NACHMESSEN (08.09.2026): MELDET NUR — und laeuft bewusst VOR der
+  # Vereinigung. Grund: Der Zombie ist belegt (506 «vereint»-Quittungen auf 150 Produkte, kein
+  # einziges «live-schon-sauber»), der Verursacher aber nicht benannt. Wer den Block
+  # zurueckschreibt, hinterlaesst dabei eine MINUTE in updatedAt — und die Vereinigung wuerde
+  # genau diese Spur ueberschreiben. Erst messen, dann reparieren.
+  PDNM=/tmp/pd_nachmessen.log
+  if [ -f "$REPO/automation/produktdetails_nachmessen.py" ] && [ -s "$REPO/dropship/_klassen/produktdetails-doppelt.txt" ]; then
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/produktdetails_nachmessen.py"{n++} END{exit(n?0:1)}'; then
+      ( cd "$REPO" && setsid bash -c "exec python3 automation/produktdetails_nachmessen.py" >> "$PDNM" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) produktdetails_nachmessen (Falle) gestartet"
+    fi
+  fi
   # PRODUKTDETAILS DOPPELT (04.09.2026): Der Block «Produktdetails» stand bei 1'542 aktiven
   # Produkten ZWEIMAL untereinander, teils mit widersprüchlichem Material. Das Werkzeug gibt es
   # seit dem 11.08. — es las aber /tmp/export.jsonl (Stand 30.08.) und meldete deshalb täglich
