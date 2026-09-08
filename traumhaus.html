@@ -10761,9 +10761,17 @@ function schildTafel(w,zeilen,opt){
      und ein Zapfen VOR der Anzeige. Die Schrift sass dicht an der Tafel und wurde
      davon zerschnitten — die cyanfarbene Raute lief quer durch „NACHTCLUB"
      (r76/g1.png). Verdecken heisst hier nicht „Seite zu": die Teile sind klein, die
-     Schrift muss nur DAVOR. Gezaehlt werden nur Teile, die die Tafel seitlich zu
-     mindestens einem Fuenftel ueberdecken — sonst schiebt ein Pfosten, der die Ecke
-     streift, die Schrift grundlos nach vorn. */
+     Schrift muss nur DAVOR.
+
+     ⚠️ NICHT NACH GROESSE DER UEBERDECKUNG FILTERN. Ein erster Anlauf verlangte, dass
+     das Teil die Tafel seitlich zu mindestens einem Fuenftel ueberdeckt — und schloss
+     damit genau die acht Neonroehren aus, um die es geht: einzeln sind sie winzig
+     (0,4 x 0,06 m auf 1,75 x 0,94 m), stehen aber mitten vor der Schrift. Gemessen
+     stand die Raute danach wieder quer durch „NACHTCLUB" (33,9 % farbige Bildpunkte
+     wie vor der Korrektur statt 20,4 % danach).
+     Die richtige Unterscheidung ist nicht die GROESSE, sondern die LAGE: liegt die
+     Mitte des Teils innerhalb der Tafelflaeche, steht es davor; ein Pfosten, der nur
+     die Ecke streift, hat seine Mitte draussen. */
   [1,-1].forEach(function(sd){
     if(zu[sd])return;
     var flaeche=br*ho;
@@ -10772,12 +10780,10 @@ function schildTafel(w,zeilen,opt){
       var b2=new THREE.Box3().setFromObject(m2),e2=new THREE.Vector3();b2.getSize(e2);
       var f2=Math.max(e2.x*e2.y,e2.x*e2.z,e2.y*e2.z);
       if(f2>flaeche*4)return;                    /* Gehaeuse, keine Zierde */
-      var deckung=1;
-      achsen.forEach(function(k){
-        var lo=Math.max(b2.min.getComponent(k),mp.getComponent(k)-e.getComponent(k)/2);
-        var hi=Math.min(b2.max.getComponent(k),mp.getComponent(k)+e.getComponent(k)/2);
-        deckung*=Math.max(0,hi-lo)/Math.max(1e-6,e.getComponent(k));});
-      if(deckung<0.2)return;
+      var c2=new THREE.Vector3();b2.getCenter(c2);
+      var drin=achsen.every(function(k){
+        return Math.abs(c2.getComponent(k)-mp.getComponent(k))<=e.getComponent(k)/2;});
+      if(!drin)return;
       var kante=(sd>0?b2.max:b2.min).getComponent(duenn);
       var ueber=(kante-mp.getComponent(duenn))*sd;    /* nur was VOR der Tafel liegt */
       if(ueber>vor[sd])vor[sd]=ueber;});});
