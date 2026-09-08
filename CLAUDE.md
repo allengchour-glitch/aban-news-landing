@@ -1,5 +1,50 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔇 Zwei Wächter, die nie fanden — und eine Schwelle, die mit ihrer Funktion gealtert ist (2026-09-08)
+Nach dem Suchphrasen-Befund dieselbe Frage an die Nachbarn gestellt: *Wer misst mit einem Mittel,
+das seine Klasse gar nicht sehen kann?*
+- ⛔ **`fremdzeichen_guard.py` hat in diesem Container NIE gelaufen — es gibt nicht einmal ein Log.**
+  Er hing an `/tmp/versand_quelle.jsonl`, und der Aufseher trug ausdrücklich «gibt es die Datei
+  nicht, gar nicht erst starten». **Diese Datei stellt kein Werkzeug mehr her.** Genau die Klasse
+  vom 04.09. («ein Werkzeug, dessen Eingabe niemand baut, ist ein Einmal-Lauf, kein Wächter») —
+  nur diesmal *stumm*, weil der Aufseher ihn übersprang, statt ihn PAUSE melden zu lassen.
+  **Ein übersprungener Wächter ist unsichtbarer als ein pausierter.** Er liest jetzt die
+  Arbeitsliste des täglichen Klassen-Vollscans (`LISTE=`) und holt jeden Text live; dafür trägt
+  der Scan die neue Klasse **«Fernöstliche Zeichen im Produkttext»**. Muster in beide Richtungen
+  geprüft (5 Fälle): Ideogramme und Hiragana treffen, Fullwidth-Satzzeichen (die der Wächter
+  ohnehin verlustfrei selbst ersetzt) und CJK in **Bild-URLs** nicht — Attribute tragen keine
+  Aussage an die Kundin. ⚠️ Stichprobe 600 aktive Produkte: **0 Treffer**. Ob die Klasse überhaupt
+  besteht, sagt erst der Vollscan — das gehört so gesagt und nicht als Fund verkauft.
+- ⚠️ **`tote_landeseiten.py` war bei EINEM Kernwort blind.** Es suchte `title:<wort>` — und
+  `title:` ist **nicht stumm, sondern ein EXAKTER Token-Vergleich**; deutsche Titel tragen das
+  Wort fast immer in einer Zusammensetzung. Gemessen: `title:Trinkbrunnen` **0**,
+  `title:Trinkbrunnen*` **21**, Freitext **24**; `title:Faszienrolle` **0**, mit Stern **7**.
+  Bei MEHREREN Kernwörtern fiel es nie auf, weil nur das erste Wort an `title:` bindet und der
+  Rest ohnehin als Freitext läuft. **Damit ist die Lehre vom 28.08. präzisiert: `title:` schweigt
+  nicht, es ist zu genau.** Der Stern behebt es.
+- ⛔ **Und beim Prüfen der Gegenrichtung ein Befund, der schwerer wiegt als der Fix:** Das im Code
+  ausdrücklich als Köderwechsel verworfene Paar «Smaragd-Anhänger Halskette» → «Leopard Anhänger
+  Halskette mit Smaragd» erreicht **heute 0.75** und damit **über** die Schutzschwelle von 0.70 —
+  im Probelauf vom 28.08. waren es 0.50. Der Wert ist gestiegen, weil `worte()` seither Füllwörter
+  entfernt und die Vereinigungsmenge schrumpfte. **Eine Schwelle altert mit der Funktion, die sie
+  füttert** — und niemand merkt es, weil die Schwelle selbst unverändert dasteht.
+  Zusätzliche Wache nach der Begründung, die im Kommentar schon stand («ein Wort im Ziel verschiebt
+  die Ware»): Bringt der Kandidat ein Wort ab 5 Zeichen mit, das die Quelle nicht hat, ist er nicht
+  «eindeutig gleichartig» und geht in den Bericht. In beide Richtungen belegt — leopard · edelstahl ·
+  kurzarm · blumenprint gesperrt, identischer Titel und «Rizinusöl-Wickel-Set» (1.00) gehen durch.
+  Die Kategorie als zweite Wahl (04.09.) fängt den Rest; **eine gröbere Kategorie ist immer besser
+  als die falsche Ware.**
+- ⚠️ Bewusst NICHT auf reinen Freitext umgestellt, obwohl der noch mehr fände: Freitext sucht auch
+  in Beschreibung und Tags, und die 0.70 ist am ENGEN Kandidatensatz geeicht. **Wer die Suche
+  verbreitert, muss die Schwelle neu eichen — zwei Beispiele reichen dafür nicht.**
+- **Und die Aufräumarbeit daneben:** Der Aufseher bevorzugte für `versand_jenachland` weiterhin
+  `/tmp/versand_quelle.jsonl`, *falls vorhanden* — genau die Falle, gegen die der Kommentar
+  darüber geschrieben war. Jetzt ausnahmslos `QUELLE=live CAP=1200`. Dazu **`__main__`-Wache in
+  fünf weiteren Werkzeugen**, die beim blossen `import` ihren Lauf starteten
+  (`fremdzeichen_guard`, `google_kanal_luecke`, `handle_messversprechen`, `menue_links`,
+  `querbeet_kuratieren`); Gegenprobe: 7 von 7 Modulen still beim Import.
+
+
 ## 🚢 Der «Zombie» war keiner — die Suchphrase war blind für 533 von 996 (2026-09-08)
 Seit dem 04.09. stand hier «der Täter ist noch nicht benannt: ein späterer Schreiber holt den
 USA-Lieferblock zurück». **Es gibt keinen Täter.** Der Klassen-Vollscan meldete 996 aktive
