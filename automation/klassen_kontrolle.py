@@ -80,6 +80,11 @@ SCHWELLE65_RE = re.compile(r'(?:Gratis|Kostenlos)[^<]{0,30}(?:Versand|Lieferung)
 DETAILS2_RE = re.compile(r'<h4[^>]*>\s*Produktdetails\s*</h4>')
 SIE_RE = re.compile(r'(?<![\wäöüß])(?:Entdecken|Erleben|Geniessen|Sichern|Bestellen|Profitieren)\s+Sie(?![\wäöüß])')
 FLOSKEL_RE = re.compile(r'Material:\s*' + TAGS + r'hochwertiges Material', re.I)
+# Fernoestliche Schriftzeichen MIT Bedeutung (08.09.2026). Fullwidth-Satzzeichen (％：，) sind
+# bewusst NICHT dabei — die ersetzt fremdzeichen_guard verlustfrei selbst; hier geht es um die
+# Klasse, die ein Mensch uebersetzen muss. Geprueft wird der Text OHNE Tags: in Attributen
+# (Bild-URLs, style) stehen keine Aussagen an die Kundin.
+CJK_RE = re.compile(r'[぀-ヿ一-鿿]')
 
 # Wirkversprechen im TITEL — dieselbe Familie wie hype_kuratieren.WIRKVERSPRECHEN, hier
 # bewusst eng: nur Wachstum und «gegen <Befund>», beides sind Heilaussagen.
@@ -207,6 +212,13 @@ KLASSEN = [
      'Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).',
      'automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)',
      lambda t, h, tg, vc: bool(FLOSKEL_RE.search(h))),
+    ('Fernöstliche Zeichen im Produkttext', 'text',
+     'Bleibt ein Wort unuebersetzt, steht es als chinesisches Zeichen mitten im deutschen Satz '
+     '(gefunden 20.08.: «optischer Fluss定位»). Fuer die Kundin sieht das aus wie ein kaputter Shop. '
+     '⚠️ 08.09.: `fremdzeichen_guard.py` hing an /tmp/versand_quelle.jsonl — einer Datei, die kein '
+     'Werkzeug mehr herstellt; der Aufseher uebersprang ihn, es gab nicht einmal ein Log.',
+     'automation/fremdzeichen_guard.py  (LISTE=dropship/_klassen/…)',
+     lambda t, h, tg, vc: bool(CJK_RE.search(re.sub(r'<[^>]+>', ' ', h)))),
     ('Sie-Anrede im Produkttext', 'text',
      'Der ganze Shop duzt. Offene Klasse (03.09.), Massenlauf ist eine eigene Entscheidung.',
      'offen — chargenweise, Diffs lesen',

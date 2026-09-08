@@ -29,6 +29,13 @@ SHOP  = os.environ.get('SHOPIFY_SHOP', 'au3j0y-hq.myshopify.com')
 TOKEN = os.environ.get('SHOPIFY_ADMIN_TOKEN') or open('/tmp/cj_shop_token.txt').read().strip()
 DRY   = os.environ.get('DRY') == '1'
 QUELLE = os.environ.get('QUELLE', '/tmp/versand_quelle.jsonl')
+# LISTE (08.09.2026): Arbeitsliste des taeglichen Klassen-Vollscans (dropship/_klassen/…).
+# ⚠️ WARUM: Der Waechter hing an /tmp/versand_quelle.jsonl — einer Datei, die KEIN Werkzeug
+# mehr herstellt. Der Aufseher uebersprang ihn deshalb bei jedem Lauf, und im ganzen
+# Container gab es nicht einmal ein Log. Ein Werkzeug, dessen Eingabe niemand baut, ist ein
+# Einmal-Lauf, kein Waechter (Lehre 04.09.). Der Klassen-Vollscan liest ohnehin jeden
+# Produkttext am Objekt — ein Scan, viele Arbeitslisten.
+LISTE  = os.environ.get('LISTE', '')
 LEDGER = 'dropship/_fremdzeichen.txt'
 BERICHT = 'dropship/FREMDZEICHEN-ZU-PRUEFEN.md'
 
@@ -50,8 +57,28 @@ def gql(q, v=None):
             if i == 3: raise
             time.sleep(2 ** i)
 
+def zeilen():
+    """Liefert {'id','descriptionHtml'} — aus der Arbeitsliste (live) oder aus dem Export."""
+    if LISTE:
+        for ln in open(LISTE, encoding='utf-8'):
+            pid = ln.split('\t')[0].strip()
+            if not pid:
+                continue
+            gid = pid if pid.startswith('gid://') else f'gid://shopify/Product/{pid}'
+            r = gql('query($id:ID!){product(id:$id){descriptionHtml}}', {'id': gid})
+            p = (r.get('data') or {}).get('product')
+            if not p:
+                continue
+            yield {'id': gid, 'descriptionHtml': p.get('descriptionHtml') or ''}
+            time.sleep(0.3)
+        return
+    for line in open(QUELLE, encoding='utf-8'):
+        try: yield json.loads(line)
+        except Exception: continue
+
+
 def main():
-    if not os.path.exists(QUELLE):
+    if not LISTE and not os.path.exists(QUELLE):
         print(f"PAUSE (Quelle {QUELLE} fehlt — frischer Export noetig)"); return
     fertig = set()
     if os.path.exists(LEDGER):
@@ -59,9 +86,7 @@ def main():
 
     ersetzt = gemeldet = 0
     melden = []
-    for line in open(QUELLE, encoding='utf-8'):
-        try: o = json.loads(line)
-        except Exception: continue
+    for o in zeilen():
         pid = o.get('id', '')
         if not pid.startswith('gid://shopify/Product/') or pid in fertig: continue
         roh = o.get('descriptionHtml') or ''

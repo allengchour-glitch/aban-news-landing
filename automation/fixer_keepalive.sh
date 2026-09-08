@@ -352,11 +352,14 @@ while true; do
     # Dazu CAP hoch: die Klasse ist am 08.09. mit 996 gemessen worden, der Standard-CAP haette
     # sie in Tagesscheiben zerlegt.
     if [ "$L" = versand_jenachland ]; then EXP="QUELLE=live CAP=1200"; fi
-    # fremdzeichen_guard braucht seine Kandidatenliste weiterhin; ohne sie fände es nichts
-    # und meldete stillschweigend Erfolg.
+    # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
+    # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf
+    # uebersprungen, im ganzen Container gab es nicht einmal ein Log. Er liest jetzt die
+    # Arbeitsliste des taeglichen Klassen-Vollscans (ein Scan, viele Arbeitslisten).
     if [ "$L" = fremdzeichen_guard ]; then
-      [ -f /tmp/versand_quelle.jsonl ] || continue
-      EXP="QUELLE=/tmp/versand_quelle.jsonl"
+      KL="$REPO/dropship/_klassen/fern-stliche-zeichen-im-produkttext.txt"
+      [ -s "$KL" ] || continue          # keine Klasse gemessen = nichts zu tun
+      EXP="LISTE=$KL"
     fi
     # groesse_im_farbwert liest seine Kandidaten aus einem Bulk-Export. Ohne die Datei
     # meldet es PAUSE statt ins Leere zu laufen — hier gar nicht erst starten.
