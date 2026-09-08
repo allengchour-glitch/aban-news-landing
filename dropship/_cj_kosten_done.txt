@@ -20145,3 +20145,9 @@ gid://shopify/Product/15500108300673	CHF 8.61	1 Varianten	Drei-Dimensional-Gräf
 gid://shopify/Product/15500108464513	CHF 13.67	1 Varianten	Elektrik-Sicherheitsbox
 gid://shopify/Product/15500108661121	CHF 23.90	1 Varianten	Weihnachtliche Baukasten-Box
 gid://shopify/Product/15500108792193	CHF 25.56	1 Varianten	Cork-Yoga-Stab
+gid://shopify/Product/15500108824961	CHF 7.85	1 Varianten	3D-Maniküre zum Aufkleben, mittellang
+gid://shopify/Product/15500109152641	CHF 14.05	1 Varianten	Tischtennisnetz
+gid://shopify/Product/15500109283713	CHF 9.04	1 Varianten	Händchenkunst
+gid://shopify/Product/15500109480321	CHF 26.12	1 Varianten	Yoga-Trainingsband 180kg
+gid://shopify/Product/15500109742465	CHF 7.25	1 Varianten	Goldkette für Frauen
+gid://shopify/Product/15500110102913	CHF 8.65	1 Varianten	Stainless-Steel-Mondarmband
