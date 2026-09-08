@@ -6010,10 +6010,12 @@ setTimeout(function baueGebaeude(){
        Tuer nach Sueden bei z = 224,3. Die Viertelstrasse belegt z 215,5…224,5 — die
        Moebel bleiben davor bzw. dahinter, sonst stehen sie auf der Fahrbahn. */
     setTimeout(function clubDeko(){
-      bau("th14_neonschild_gross.glb",4,  149.5,0,208.5,0,      false,null,true);
+      bau("th14_neonschild_gross.glb",4,  149.5,0,208.5,0,      false,
+        function(w9){neonSchrift(w9,["NACHTCLUB","ab 22 Uhr"],"#ff5fb0");},true);
       bau("th14_samtkordel.glb",     1.1, 152.0,0,210.5,0,      false,null,true);
       bau("th14_samtkordel.glb",     1.1, 158.5,0,210.5,0,      false,null,true);
-      bau("th14_neonschild_gross.glb",4,  106.5,0,226.5,Math.PI,false,null,true);
+      bau("th14_neonschild_gross.glb",4,  106.5,0,226.5,Math.PI,false,
+        function(w9){neonSchrift(w9,["CASINO","Einlass ab 18"],"#f2c14e");},true);
       bau("th14_samtkordel.glb",     1.1, 109.5,0,226.0,0,      false,null,true);
       bau("th14_samtkordel.glb",     1.1, 116.0,0,226.0,0,      false,null,true);
     },1100);
@@ -7298,7 +7300,8 @@ setTimeout(function baueGebaeude(){
         drin("th14_discokugel.glb",  0.60, CX+2.5, CZ+2.5, 0, 2.75-0.60);
         drin("th14_kronleuchter.glb",0.60, CX-4.7, CZ-3.4, 0, 2.75-0.60);
         /* Draussen: Schild ueber der Tuer, Kordel davor. */
-        bau("th14_neonschild_gross.glb",3.2,CX+2,3.0,CZ-6.3,0,false,null,true);
+        bau("th14_neonschild_gross.glb",3.2,CX+2,3.0,CZ-6.3,0,false,
+          function(w9){neonSchrift(w9,["CLUB","Tanz & Spiel"],"#5fe0ff");},true);
         [-1.8,1.8].forEach(function(dx){bau("th14_samtkordel.glb",0.97,CX+2+dx,0,CZ-7.6,0,false,null,true);});
       })();
     })();
@@ -10716,6 +10719,14 @@ function schildTafel(w,zeilen,opt){
   return n;}
 /* Beschriftet die Tafelflaeche eines geladenen Schildmodells. Gibt zurueck, wie viele
    Flaechen getroffen wurden — 0 heisst: der Materialname passt nicht, nachsehen. */
+/* 🌃 NEONSCHRIFT. `th14_neonschild_gross` bringt einen leeren Kasten mit: das Teil
+   `NsPanel` (4,56 x 2,56 x 0,10 im Modell) ist die Anzeigeflaeche, und sie war bei
+   allen drei Aufstellungen unbeschriftet — ein Nachtclub ohne Namen. Dieselbe
+   Tafel-Flaeche wie bei der Abfahrtstafel, nur dunkel hinterlegt und leuchtend,
+   damit sie auch nachts lesbar ist. */
+function neonSchrift(w9,zeilen,farbe){
+  return schildTafel(w9,zeilen,{muster:/NsPanel/,grund:"#0b0610",schrift:farbe,
+    randFarbe:farbe,rand:0.05,gross:64,leuchtet:true});}
 function schildText(w,zeilen,opt){
   opt=opt||{};
   var muster=opt.muster||/tafel|weiss|white|rim|platte|schild/i;
