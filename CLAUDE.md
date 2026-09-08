@@ -1,5 +1,47 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🏕️ Die Kategorie «Camping-Küche» bestand zur Hälfte aus Hundegeschirr und Geschirrspülern (2026-09-08)
+Der 7-Tage-Trichter zeigte `/collections/camping-kueche` mit **6 Suchsitzungen** — und Suche ist der einzige
+Kanal mit gemessenen Kassengängen. Die Seite stand in keiner meiner Prüflisten (sie ist keine Produktseite und
+kein Ratgeber, dieselbe Lücke wie bei `viral-hits`/`wasserfester-schmuck` am 06.09.). Am Objekt gemessen:
+`sortOrder: PRICE_DESC` und eine Regel `TITLE CONTAINS geschirr` — die trifft **Geschirrspüler UND
+Hundegeschirr**; dazu `flasche` und `besteck`.
+| gemessen | vorher | nachher |
+|---|---:|---:|
+| aktive Produkte | 341 | **38** |
+| davon fremd (Hundeleinen, Babyflaschenwärmer, Brustgeschirre, Geschirrspüler) | **166 (49 %)** | **0** |
+| Regeln | 8 | 13 |
+- **Jede Kandidatenregel EINZELN per Freitext gemessen** (`title:` ist ein stiller Filter) und die Titel
+  GELESEN, nicht gezählt. Verworfen wurden dabei: `kochgeschirr` (9 Treffer, 8 sind Induktions-/Gusseisen-Sets
+  für die Wohnküche), `grillrost` (5 Treffer, 2 sind Backform und Air-Fryer-Zubehör — 40 % Fehlerquote),
+  `picknick` (Decken), `campingtisch` (kein Küchenteil). Aufgenommen: `spirituskocher` (2/2 sauber).
+- ⛔ **Und der eigentliche Fund kam erst aus der GEGENRICHTUNG:** Meine erste Fassung nahm `trinkflasche`,
+  `thermosflasche`, `thermoskanne`, `thermobecher` auf — und schleppte damit 7 Hundeleinen, eine
+  Velo-Flaschentasche und eine Handy-Tasche mit («Hundeleine mit Trinkflasche und Kotbeutelspender»).
+  Beim Messen, was ich durch die Verengung VERLIERE, fiel auf: **die Kollektion `sub-trinkflaschen`
+  «Trinkflaschen & Thermo» existiert längst** und trägt exakt diese fünf Regeln. Ich hatte eine bestehende
+  Kategorie dupliziert und mir dabei ihre Fehltreffer eingekauft. Alle fünf raus, dafür ein Verweis im Text.
+  **Zwei Kollektionen für dieselbe Ware sind eine zu viel** (dieselbe Familie wie die zwei Verzeichnisse
+  am 03.09.) — und die Doppelung ist teurer als sie aussieht: sie verdoppelt nicht nur die Ware, sondern auch
+  jede Substring-Falle der Regel.
+- ⛔ **Der Kollektionstext bewarb Ware, die es nicht gibt** — auf einer Seite mit gemessenem Suchverkehr:
+  «Entdecke tragbare A4-Thermodrucker, **Geschirrspüler von Bosch, Samsung, Cecotec und Whirlpool – auch
+  generalüberholt**. Oder wähle unsere **Outdoor Adventure Gift Box** mit Solar Powerbank, LED-Stirnlampe,
+  Thermoskanne und Hängematte.» Die Geschirrspüler sind BigBuy-Markenware (seit 10.07. abgeschaltet, alle
+  DRAFT), die Gift Box ist ein Phantom, und «zu spülen» kann der Shop gar nicht. Das ist die Phantom-Klasse
+  vom 02.09. — nur nicht in einem Ratgeber, sondern in einem KOLLEKTIONSTEXT, wo sie bisher niemand gesucht
+  hat. Neu geschrieben: nur was die 38 Produkte hergeben, plus der Verweis auf die Trinkflaschen-Abteilung.
+- **Beide Ziele vor dem Verlinken geprüft:** `sub-trinkflaschen` ist im Online Store publiziert und hat
+  30/30 aktive Produkte in der Stichprobe.
+- ⚠️ **`onlineStoreUrl` gibt es auf `Collection` NICHT** («Field doesn't exist on type 'Collection'») — nur
+  auf `Product`. Für Kollektionen ist `resourcePublicationsV2` die belastbare Form. Und mein Helfer
+  verschluckte den Fehler als `KeyError: 'data'`; eine Abfrage, die den Fehler nicht ausgibt, sieht aus wie
+  eine leere Welt (fünfzehnte Fassung derselben Familie).
+- ⚠️ Die Kollektion ist damit von 341 auf 38 geschrumpft. Das ist **kein Verlust, sondern die Korrektur einer
+  Zahl, die nie stimmte** — 166 der 341 gehörten nie hierher, und die übrigen ~137 Trinkflaschen wohnen in
+  ihrer eigenen Kategorie weiter. 38 liegt über dem Menü-Minimum von 12 (Lehre 06.09.).
+Backup der alten Regeln: `theme_backup/camping-kueche-ruleset-vor-0809.json`.
+
 ## 🔎 Tote Rankings: 33 Adressen, 13'350 Suchen/Monat — und 26 waren längst repariert (2026-09-08)
 `TOTE-RANKINGS.md` (07.09. 15:18) führte 33 Adressen, für die Google uns zeigt und die ein 404
 sind — zusammen **13'350 Suchen im Monat**, darunter der grösste Suchbegriff des Shops

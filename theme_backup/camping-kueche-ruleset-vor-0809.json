@@ -1,0 +1,61 @@
+{
+ "id": "gid://shopify/Collection/689160552833",
+ "title": "Camping-Küche",
+ "sortOrder": "PRICE_DESC",
+ "descriptionHtml": "<p>Deine Outdoor-Abenteuer werden noch besser mit unserer Camping-Küche! Hier findest du alles, um unterwegs frisch zu kochen und zu spülen. Entdecke tragbare A4-Thermodrucker, Geschirrspüler von Bosch, Samsung, Cecotec und Whirlpool – auch generalüberholt. Oder wähle unsere Outdoor Adventure Gift Box mit Solar Powerbank, LED-Stirnlampe, Thermoskanne und Hängematte.</p><p>✔ Geprüfte Angaben · 🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p><!--gd2-->",
+ "ruleSet": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "campinggeschirr"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "campingkocher"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "kühlbox"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "kuhlbox"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "besteck"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "geschirr"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "flasche"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Thermosflasche"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Thermoskanne"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Thermobecher"
+   }
+  ]
+ }
+}
