@@ -1,5 +1,32 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔎 Tote Rankings: 33 Adressen, 13'350 Suchen/Monat — und 26 waren längst repariert (2026-09-08)
+`TOTE-RANKINGS.md` (07.09. 15:18) führte 33 Adressen, für die Google uns zeigt und die ein 404
+sind — zusammen **13'350 Suchen im Monat**, darunter der grösste Suchbegriff des Shops
+(«handstaubsauger», 5'400/Mt). Am Objekt nachgemessen statt aus dem Bericht gehandelt:
+| | |
+|---|---:|
+| im Bericht als DRAFT / totes Ziel | 33 |
+| **inzwischen wieder AKTIV** | **26** |
+| dauerhaft tot, aber mit funktionierender 301 | 6 |
+| wirklich offen | **1** |
+Der Rückhol-Lauf vom 07.09. abends hat sie geheilt — der Bericht war **älter als seine eigene
+Reparatur**. Hätte ich ihn als Arbeitsliste genommen, hätte ich 26 Weiterleitungen auf Produkte
+gesetzt, die längst selbst leben. **Ein Bericht ist ein Zeugnis über seinen Zeitpunkt**
+(dieselbe Familie wie 05.09.), und bei einem Katalog, an dem Wächter arbeiten, altert er in Stunden.
+- Der eine offene Fall waren die **Nagel-Kabelschellen (170/Mt)**, die schon am 04.09. offen
+  blieben, weil es «nichts Verwandtes» gab. Heute gibt es das: «Kabelbinder-Halterungen für
+  Wandmontage» tut genau dasselbe — Kabel an einer Wand befestigen. 301 gesetzt, Ziel vorher auf
+  ACTIVE, Onlineshop-URL und «selbst keine Weiterleitung» geprüft (Shopify lehnt 301 auf 301 ab).
+- **Gegenprobe live über alle 33: 26× direkt 200, 7× 301 → 200, kein einziger 404.**
+- ⚠️ **Dritte Fassung einer teuren Falle, und ich bin wieder hineingelaufen:**
+  `publishedOnCurrentPublication` braucht den Scope `read_product_listings`. Fehlt er, macht
+  GraphQL die **GANZE** Antwort `null` — nicht nur das Feld. Ich hielt daraufhin die Kollektion
+  `elektronik-kleinteile` für gelöscht und war einen Satz davon entfernt, einen toten Menülink
+  zu melden. Ohne das Feld gefragt: sie existiert. **Ein Nullergebnis aus einer Abfrage mit
+  einem gesperrten Feld ist kein Befund über die Welt, sondern über die Abfrage.**
+  Belastbar ist `resourcePublicationsV2` bzw. `onlineStoreUrl`.
+
 ## 🎯 Ein Stellvertretermerkmal beantwortet die Frage nicht, die man stellen wollte (2026-09-08)
 Der offene Beleg von gestern eingelöst — und er hat den Fix widerlegt, nicht bestätigt.
 `wahlSicher()` war am Modul geprüft (12 Testfälle), am Erzeugnis nie. Gemessen an den Importen
