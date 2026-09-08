@@ -60,13 +60,26 @@ const gestellt = await page.evaluate(() => window.__th.kat('stellen'))
    sauber ist fuer einen echten Befund. Es waren schlicht die ueber loadTH geladenen
    Modelle, die noch unterwegs waren; die prozeduralen standen sofort da. Gemessen
    wurde also die Ladezeit, nicht die Vollstaendigkeit.
-   Jetzt alle 3 s nachsehen und erst urteilen, wenn die Zahl dreimal gleich bleibt. */
-let R = null, gleich = 0, vorher = -1
-for (let i = 0; i < 40; i++) {
+   Jetzt alle 3 s nachsehen und erst urteilen, wenn die Zahl dreimal gleich bleibt.
+
+   ⚠️ UND DIESE RUHE-REGEL WAR SELBST FALSCH (2026-09-08, im Torlauf aufgeflogen).
+   `vorher` startet auf -1, der erste Blick setzt sie, die naechsten drei zaehlen
+   „gleich" — nach 12 s bricht die Schleife ab. Auf einer BELASTETEN Maschine hatte
+   der Lader bis dahin noch NICHTS geliefert: die Zahl stand konstant auf 53, weil
+   noch gar nichts angekommen war, und genau diese Konstanz wurde als „fertig"
+   gelesen. Gemeldet wurden dann 53 gekaufte, unsichtbare Moebel — alle mit ⭐, also
+   alle ueber loadTH geladen. Auf der ruhigen Maschine fiel die Zahl nach 9 s auf 0.
+   Stillstand auf hohem Niveau ist das Gegenteil von Ruhe. Darum zaehlt „gleich" erst,
+   nachdem die Zahl mindestens EINMAL gefallen ist — oder sie ist ohnehin schon 0. */
+let R = null, gleich = 0, vorher = -1, gefallen = false
+for (let i = 0; i < 60; i++) {
   await page.waitForTimeout(3000)
   R = await page.evaluate(() => window.__th.kat('pruefen'))
-  if (R.ohneMesh.length === vorher) { if (++gleich >= 3) break } else { gleich = 0; vorher = R.ohneMesh.length }
-  process.stdout.write(`\r… warte auf die Modelle: noch ${R.ohneMesh.length} ohne Mesh (${(i + 1) * 3} s)   `)
+  const jetzt = R.ohneMesh.length
+  if (vorher >= 0 && jetzt < vorher) gefallen = true
+  if (jetzt === vorher && (gefallen || jetzt === 0)) { if (++gleich >= 3) break } else { gleich = 0 }
+  vorher = jetzt
+  process.stdout.write(`\r… warte auf die Modelle: noch ${jetzt} ohne Mesh (${(i + 1) * 3} s)   `)
 }
 process.stdout.write('\r' + ' '.repeat(70) + '\r')
 await browser.close()
@@ -80,6 +93,15 @@ if (unklar.length) {
   console.log(`ℹ️  ${unklar.length} landen nicht in der Moebelliste (eigener Weg wie das Auto):`)
   for (const id of unklar) { const e = gestellt.ids.find((x) => x.id === id); console.log(`   ${id.padEnd(20)} ${e ? e.gruppe + ' · ' + e.name : ''}`) }
   console.log()
+}
+/* Nie geladen ist kein Befund, sondern eine geplatzte Messung — und muss anders
+   klingen als „gekauft und unsichtbar", sonst sucht die naechste Sitzung im Spiel
+   nach einem Fehler, der in der Maschine liegt. */
+if (fehlt.length && !gefallen) {
+  console.log(`⛔ MESSUNG UNGUELTIG: nach 180 s hat der Modell-Lader kein einziges Teil geliefert`)
+  console.log(`   (${fehlt.length} ohne Mesh, keine einzige Abnahme gesehen — Maschine ueberlastet?)`)
+  console.log('   Kein Befund ueber das Spiel. Lauf auf ruhiger Maschine wiederholen.')
+  process.exit(2)
 }
 if (!fehlt.length) console.log('✅ Jeder Eintrag in der Moebelliste erscheint')
 else {

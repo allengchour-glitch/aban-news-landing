@@ -6534,3 +6534,58 @@ wurde.
 
 **Bewusst geblieben:** Emoji in Overlays (Erfolgsliste, Katalog, Intro) — dort ist das
 Bildchen der Listeneintrag selbst, kein Ersatz für eine Ikone.
+
+## `__CAM` zielt auf den BODEN — fuer alles Hochmontierte unbrauchbar
+
+Gelernt 2026-09-08 an den drei Neonschildern, nach **drei** vergeigten Bildlaeufen
+hintereinander. `window.__CAM(x,z,r,b)` setzt
+
+    camera.position = ziel + (sin(camA), , cos(camA)) * cos(b) * r,  Hoehe sin(b)*r + 2
+    camera.lookAt(ziel.x, 0.6, ziel.z)
+
+Der Blick geht also immer auf **y = 0,6**. Wer ein Schild, eine Tafel, ein Dach oder
+eine Ampel fotografieren will, fotografiert damit den Boden davor:
+
+1. **Blickrichtung geraten** — bei der Suedansicht stand die Kamera im Clubgebaeude,
+   das Bild war leer. Ein leeres Bild heisst hier NICHT „das Objekt fehlt".
+2. **Richtung ausgelesen, Hoehe vergessen** — Kamera bei 9 m Abstand und Neigung 0,16
+   steht 3,4 m hoch und schaut auf den Boden. Eine Tafel auf 2,8 m rutscht an den
+   oberen Bildrand, eine auf 5,24 m ist ganz aus dem Bild (`t1-nah.png`: nur ein
+   brauner Dachbalken).
+
+**Rezept, das funktioniert:** Weltlage *und* Normale der Flaeche aus der Szene lesen
+(nicht aus dem Quelltext rechnen), daraus
+
+    camA = atan2(n.x, n.z)                 /* die Kamera steht VOR der Flaeche */
+    b    = asin(max(0,(hoehe-2))/r)        /* Kamera auf Tafelhoehe */
+    r    = 12 (nah) und 25 (weit)          /* zwei Abstaende, sonst haelt man ein
+                                              verbautes Bild fuer „Schrift fehlt" */
+
+**Und immer zwei Fragen trennen:** traegt die Flaeche ueberhaupt eine Textur
+(`material.map`, per Sonde abfragbar), und kommt sie am Bildschirm an. Das Foto
+allein beantwortet beides gleichzeitig falsch.
+
+## Drei Abschalter, die ein leeres Bild erzeugen — ohne dass etwas fehlt
+
+Gelernt 2026-09-08 an den Neonschildern. Fuer die eine Frage „steht die Schrift da"
+sind VIER Bildlaeufe nacheinander gescheitert, und kein einziger davon lag an der Welt.
+Wer ein Objekt fotografiert und nichts sieht, muss diese drei zuerst ausschliessen:
+
+1. **`lodTakt` haengt an der SPIELFIGUR, nicht an der Kamera.** Steht die Figur noch am
+   Startpunkt, ist alles im Umkreis der Kamera abgeschaltet. → Figur mitnehmen
+   (`sims[meinSi()].x/z` setzen).
+2. **`gruppenSicht` haengt an der HAUPTkamera.** Es setzt `visible=false` fuer Gruppen
+   ausserhalb ihres Sichtkegels. Eine eigene Kamera fuer `renderer.render` hilft
+   deshalb NICHT — die Gruppe ist beim Zeichnen schon aus. → unmittelbar vor dem
+   Rendern `visible=true` und `_gsAus=false` die Elternkette hinauf.
+3. **Freistellen heisst nicht „Eltern an".** Wer `scene.children` ausblendet und danach
+   die Elternkette des Ziels wieder sichtbar setzt, holt alle GESCHWISTER darin zurueck
+   (im Bild standen dann die Marktstaende statt des Schildes). → jedes andere Kind
+   desselben Elternteils einzeln aus, nicht den Elternteil an.
+
+**Fertiges Werkzeug dafuer:** `spiele-dev/tools/th-schild.mjs` — umgeht alle drei und
+rendert mit eigener Kamera frontal vor die Flaeche in ein Render-Ziel.
+
+**Und die Lehre ueber die Kennzahl:** der Anteil farbiger Bildpunkte taugt nur fuer
+„ueberhaupt gezeichnet". Er war mit VERDECKTER Schrift sogar hoeher (34 % gegen 20 %),
+weil die verdeckende Zierde selbst bunt ist. Was gut aussieht, entscheidet das Bild.

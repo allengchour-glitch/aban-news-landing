@@ -6010,10 +6010,12 @@ setTimeout(function baueGebaeude(){
        Tuer nach Sueden bei z = 224,3. Die Viertelstrasse belegt z 215,5…224,5 — die
        Moebel bleiben davor bzw. dahinter, sonst stehen sie auf der Fahrbahn. */
     setTimeout(function clubDeko(){
-      bau("th14_neonschild_gross.glb",4,  149.5,0,208.5,0,      false,null,true);
+      bau("th14_neonschild_gross.glb",4,  149.5,0,208.5,0,      false,
+        function(w9){neonSchrift(w9,["NACHTCLUB","ab 22 Uhr"],"#ff5fb0");},true);
       bau("th14_samtkordel.glb",     1.1, 152.0,0,210.5,0,      false,null,true);
       bau("th14_samtkordel.glb",     1.1, 158.5,0,210.5,0,      false,null,true);
-      bau("th14_neonschild_gross.glb",4,  106.5,0,226.5,Math.PI,false,null,true);
+      bau("th14_neonschild_gross.glb",4,  106.5,0,226.5,Math.PI,false,
+        function(w9){neonSchrift(w9,["CASINO","Einlass ab 18"],"#f2c14e");},true);
       bau("th14_samtkordel.glb",     1.1, 109.5,0,226.0,0,      false,null,true);
       bau("th14_samtkordel.glb",     1.1, 116.0,0,226.0,0,      false,null,true);
     },1100);
@@ -7298,7 +7300,8 @@ setTimeout(function baueGebaeude(){
         drin("th14_discokugel.glb",  0.60, CX+2.5, CZ+2.5, 0, 2.75-0.60);
         drin("th14_kronleuchter.glb",0.60, CX-4.7, CZ-3.4, 0, 2.75-0.60);
         /* Draussen: Schild ueber der Tuer, Kordel davor. */
-        bau("th14_neonschild_gross.glb",3.2,CX+2,3.0,CZ-6.3,0,false,null,true);
+        bau("th14_neonschild_gross.glb",3.2,CX+2,3.0,CZ-6.3,0,false,
+          function(w9){neonSchrift(w9,["CLUB","Tanz & Spiel"],"#5fe0ff");},true);
         [-1.8,1.8].forEach(function(dx){bau("th14_samtkordel.glb",0.97,CX+2+dx,0,CZ-7.6,0,false,null,true);});
       })();
     })();
@@ -10699,12 +10702,50 @@ function schildTafel(w,zeilen,opt){
                              randFarbe:opt.randFarbe,rand:opt.rand,gross:opt.gross});
   var mat=new THREE.MeshStandardMaterial({map:tex,roughness:0.55,
     emissive:opt.leuchtet?0xffffff:0x000000,emissiveMap:opt.leuchtet?tex:null,emissiveIntensity:opt.leuchtet?0.35:0});
+  /* 🧱 EINE SEITE KANN ZUGEBAUT SEIN. Beim Neonschild sitzt hinter der Anzeige eine
+     RUECKWAND (`NsTafel`, 2,55 x 1,53 m gegen 1,75 x 0,94 m der Anzeige). Die Flaeche
+     fuer die Rueckseite landete mitten darin — im Bild sah man einen leeren dunklen
+     Kasten, obwohl die Textur nachweislich „CLUB / Tanz & Spiel" trug
+     (spiele-dev/screenshots/r76/v2-mittel.png; Panelmitte z 212,45, Rueckwand
+     212,47…212,59, die Flaeche bei 212,49).
+     Welche Seite vorne ist, kann hier nicht festgelegt werden: dasselbe Modell steht
+     beim Casino um 180 Grad gedreht. Darum wird es GEMESSEN — liegt der Punkt kurz vor
+     der Tafel schon in einem groesseren Teil desselben Modells, gehoert dort keine
+     Schrift hin. Sind beide Seiten zu, bleiben beide (dann stimmt die Annahme nicht,
+     und ein sichtbarer Fehler ist besser als gar nichts). */
+  var zu={},vor={1:0,"-1":0};
+  var achsen=[0,1,2].filter(function(k){return k!==duenn;});
+  [1,-1].forEach(function(sd){
+    var P=mp.clone();P.setComponent(duenn,mp.getComponent(duenn)+sd*(dick/2+0.05));
+    var flaeche=br*ho;
+    w.traverse(function(m2){
+      if(!m2.isMesh||m2===treffer||m2.geometry&&m2.geometry.type==="PlaneGeometry")return;
+      var b2=new THREE.Box3().setFromObject(m2),e2=new THREE.Vector3();b2.getSize(e2);
+      var f2=Math.max(e2.x*e2.y,e2.x*e2.z,e2.y*e2.z);
+      if(f2>flaeche*1.2&&b2.containsPoint(P)){zu[sd]=1;return;}
+      /* 🔦 WIE WEIT STEHT DIE ZIERDE VOR? Beim Neonschild liegen acht Roehren, eine
+         Raute und ein Zapfen VOR der Anzeige. Die Schrift sass dicht an der Tafel und
+         wurde davon zerschnitten — im Bild lief die cyanfarbene Raute quer durch
+         „NACHTCLUB" (spiele-dev/screenshots/r76/g1.png, vor der Korrektur).
+         Verdecken heisst hier nicht „Seite zu": die Teile sind klein. Die Schrift muss
+         nur DAVOR. Wie weit, sagt das Modell — gemessen wird der Ueberstand aller
+         kleinen Teile, die die Tafel seitlich ueberhaupt ueberlappen. */
+      var trifft=achsen.every(function(k){
+        return b2.max.getComponent(k)>mp.getComponent(k)-e.getComponent(k)/2 &&
+               b2.min.getComponent(k)<mp.getComponent(k)+e.getComponent(k)/2;});
+      if(!trifft)return;
+      var kante=(sd>0?b2.max:b2.min).getComponent(duenn);
+      var ueber=Math.abs(kante-mp.getComponent(duenn));   /* Abstand von der Tafelmitte */
+      if(ueber>vor[sd])vor[sd]=ueber;});});
+  if(zu[1]&&zu[-1]){zu={};}
   var n=0;
   [1,-1].forEach(function(sd){
+    if(zu[sd])return;
     var g=new THREE.PlaneGeometry(br*0.94,ho*0.90);
     var pl=new THREE.Mesh(g,mat);
     pl.position.copy(mp);
-    pl.position.setComponent(duenn,mp.getComponent(duenn)+sd*(dick/2+0.012));
+    var weg=Math.max(dick/2+0.012, Math.min(vor[sd]+0.02, dick/2+0.30));
+    pl.position.setComponent(duenn,mp.getComponent(duenn)+sd*weg);
     var ziel=pl.position.clone();ziel.setComponent(duenn,ziel.getComponent(duenn)+sd);
     pl.lookAt(ziel);
     pl.renderOrder=2;pl.userData.nieAusblenden=1;
@@ -10716,6 +10757,14 @@ function schildTafel(w,zeilen,opt){
   return n;}
 /* Beschriftet die Tafelflaeche eines geladenen Schildmodells. Gibt zurueck, wie viele
    Flaechen getroffen wurden — 0 heisst: der Materialname passt nicht, nachsehen. */
+/* 🌃 NEONSCHRIFT. `th14_neonschild_gross` bringt einen leeren Kasten mit: das Teil
+   `NsPanel` (4,56 x 2,56 x 0,10 im Modell) ist die Anzeigeflaeche, und sie war bei
+   allen drei Aufstellungen unbeschriftet — ein Nachtclub ohne Namen. Dieselbe
+   Tafel-Flaeche wie bei der Abfahrtstafel, nur dunkel hinterlegt und leuchtend,
+   damit sie auch nachts lesbar ist. */
+function neonSchrift(w9,zeilen,farbe){
+  return schildTafel(w9,zeilen,{muster:/NsPanel/,grund:"#0b0610",schrift:farbe,
+    randFarbe:farbe,rand:0.05,gross:64,leuchtet:true});}
 function schildText(w,zeilen,opt){
   opt=opt||{};
   var muster=opt.muster||/tafel|weiss|white|rim|platte|schild/i;

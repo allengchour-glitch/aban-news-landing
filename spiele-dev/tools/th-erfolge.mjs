@@ -162,7 +162,15 @@ else { fund++; console.log(`❌ Belastungsprobe: ein einziger Fehler legt die ga
 const RA = R.rahmen || {}
 const verlust = RA.ohne ? Math.round((1 - RA.mit / RA.ohne) * 100) : 0
 console.log(`ℹ️  Rahmenprobe: ${RA.ohne} Bilder je 4 s ohne Gift, ${RA.mit} mit — ${verlust} % Verlust an Zeichnen/Speichern/Host-Abgleich`)
-if (verlust > 25) { fund++; console.log('   ❌ mehr als ein Viertel der Bilder faellt aus — der Wurf trifft die Bildschleife haerter als erwartet') }
+/* ⚠️ EIN PROZENTWERT AUS VIER BILDERN IST KEINE AUSSAGE (2026-09-08, im Torlauf
+   aufgeflogen). Der Browser zeichnet hier ohnehin nur ~1 Bild/s; unter Last waren
+   es 3 Bilder ohne Gift und 2 mit — macht 33 % und eine rote Zeile, obwohl EIN
+   einziges Bild den Unterschied ausmachte. Auf der ruhigen Maschine: 4 zu 4, also
+   0 %. Die Schwelle von 25 % ist richtig, aber sie braucht genug Bilder, um sie
+   ueberhaupt aufzuloesen: bei 4 Bildern ist der kleinstmoegliche Schritt selbst
+   schon 25 %. Unter 12 Referenzbildern wird darum nichts behauptet. */
+if (RA.ohne < 12) console.log(`   ℹ️  zu wenig Referenzbilder (${RA.ohne}) — ein einzelnes Bild waere hier schon ${Math.round(100 / Math.max(1, RA.ohne))} %; keine Aussage`)
+else if (verlust > 25) { fund++; console.log('   ❌ mehr als ein Viertel der Bilder faellt aus — der Wurf trifft die Bildschleife haerter als erwartet') }
 
 const MP = R.missProbe || {}
 if (MP.markeGesetzt) console.log('✅ Missionsprobe: ein werfender Missions-Zaehler blockiert die uebrigen NICHT')
