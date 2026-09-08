@@ -1,4 +1,30 @@
-# 🎬 Video-Deckel: 126 von 250 Plätzen ohne Kundennutzen (gemessen 07.09.2026)
+# 🎬 Video-Deckel: 52 Plätze freigemacht, 15 CJ-Videos live (Stand 07.09.2026, 23:10 UTC)
+
+> **Erledigt am 07.09. auf «fix»:** 52 Videos hingen an Produkten, die unsere eigenen Wächter
+> DAUERHAFT abgeschaltet haben (37× `keine-lieferanten-ref` = Phantomware ohne Lieferant,
+> 4× `ausverkauft-lieferant`, 4× `nicht-lieferbar-ch`, 4× `duplikat-auto-draft`,
+> 2× `cj-abgekuendigt`, 1× `cj-nicht-versendbar-ch`). Diese Ware kann niemand je kaufen —
+> ihre Videos waren tote Last in einer hart gedeckelten Ressource. Entfernt und im Ledger
+> `dropship/_video_freigemacht.txt` festgehalten (Datei · Draft-Grund · Produkt).
+>
+> Die freien Plätze gingen an die Ware, die Kundinnen SEHEN: aus den 17 Kollektionen der
+> Startseite wurden 532 aktive CJ-Produkte ohne Video ermittelt (`dropship/_video_prio.txt`)
+> und der Reihe nach bei CJ gefragt. **15 tragen jetzt ihr Lieferantenvideo**, alle READY,
+> bei allen ist das erste Medium weiterhin ein BILD (sonst fehlt der Kollektionskachel das
+> Produktfoto und Google Merchant das `image_link`). Live an der Produktseite gegengeprüft:
+> `<video>` mit Vorschaubild und Shopify-Video-CDN.
+>
+> **Stand jetzt: 212 von 250 Plätzen belegt, 38 frei.** Der Aufseher arbeitet die
+> Prioritätsliste täglich mit 60 Anfragen weiter. Trefferquote bei CJ, an 200 sichtbaren
+> Produkten gemessen: **rund 8 %**.
+>
+> ⚠️ **NICHT angefasst und bewusst so:** die 65 Videos, die an gar keinem Produkt hängen
+> (eigene Reels, Veo-/Seedance-/Luma-Clips, die echtes Geld gekostet haben) und die 9 an
+> Entwürfen ohne dauerhaften Grund. Für die gilt weiterhin: 0 davon stehen in einem
+> Post-Ledger, die Hausregel «ein gepostetes Reel ist verbraucht» trägt also nicht.
+> Die Messung unten ist der Stand VOR der Aktion und bleibt als Beleg stehen.
+
+---
 
 Der Betreiber wollte die CJ-Produktvideos auf der Webseite. **Der Weg dorthin ist gefunden und
 gebaut** (`automation/cj_video_backfill.mjs`, POST `/product/queryVideosByProductId`) — er

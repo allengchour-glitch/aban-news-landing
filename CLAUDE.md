@@ -41,6 +41,28 @@ steht nur in `userErrors`. Wer nur auf «Ziel vorhanden» prüft, läuft in eine
 statt in eine lesbare Meldung. Dritte Fassung von «ein Endpunkt, der antwortet, beweist nur,
 dass er antwortet» (28.08.).
 
+**⛔ NACHTRAG «fix» (07.09., 23:10 UTC) — 52 Plätze freigemacht, 15 CJ-Videos live.**
+Nach dem Bericht sagte der Betreiber «fix». Freigegeben wurde NUR, was am Objekt als dauerhaft
+tot gemessen ist: **52 Videos hingen an Produkten, die unsere eigenen Wächter dauerhaft
+abgeschaltet haben** — 37× `keine-lieferanten-ref` (die Phantomware vom 29.05.), 4× ausverkauft,
+4× nicht CH-lieferbar, 4× Dublette, 2× bei CJ abgekündigt, 1× ohne CH-Linie. **Diese Ware kann
+niemand je kaufen; ihre Videos waren tote Last in einer hart gedeckelten Ressource.** Ledger
+`dropship/_video_freigemacht.txt` (Datei · Draft-Grund · Produkt).
+- **Die Plätze gingen an die Ware, die Kundinnen SEHEN**, nicht an die nächstbeste in
+  Anlegereihenfolge: aus den 17 Kollektionen der Startseite 532 aktive CJ-Produkte ohne Video
+  (`dropship/_video_prio.txt`), neues `PRIO=`-Tor im Werkzeug, Aufseher auf `PRIO` + `CAP=60`
+  umgestellt (die alten `CAP=300` waren bei einem 250er-Deckel ohnehin sinnlos).
+- **Am echten Erzeugnis belegt:** 15 Produkte tragen ihr Lieferantenvideo, **15/15 READY**,
+  **15/15 mit einem BILD als erstem Medium** (sonst verliert die Kollektionskachel das
+  Produktfoto und Google Merchant das `image_link` — die Klasse vom 10.08.). Live an der
+  Produktseite gegengeprüft: `<video>` mit Poster und Shopify-Video-CDN.
+  Trefferquote über 200 sichtbare Produkte: **~8 %**, exakt wie die erste Stichprobe.
+- **Stand 212/250, 38 frei** — Reserve für neue Hype-Ware ist Absicht.
+- ⚠️ **Weiterhin NICHT angefasst:** die 65 Videos an gar keinem Produkt und die 9 an Entwürfen
+  ohne dauerhaften Grund. Begründung unverändert: 0 davon stehen in einem Post-Ledger, und ein
+  Teil sind bezahlte KI-Clips. **Ein «fix» ist keine Erlaubnis, das Unbelegte mitzunehmen** —
+  gehandelt wurde genau dort, wo eine Messung sagt, dass niemand etwas verliert.
+
 **Was die 250 Plätze belegt — gemessen, nicht geschätzt** (Bulk-Export über 77'547 Produkte plus
 `files(media_type:VIDEO)`):
 | | |

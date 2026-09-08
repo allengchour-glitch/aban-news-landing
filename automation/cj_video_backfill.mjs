@@ -68,6 +68,7 @@ const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json')
 const DRY = process.env.DRY === '1';
 const CAP = parseInt(process.env.CAP || '150', 10);
 const NUR = process.env.NUR_VIDEOHIT === '1';
+const PRIO = process.env.PRIO || '';
 const LEDGER = 'dropship/_cj_video_backfill.txt';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -201,11 +202,34 @@ async function main() {
   const erledigt = new Set(fs.existsSync(LEDGER)
     ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
 
+  // ⚠️ Der Plan deckelt bei 250 — die Plaetze gehoeren der Ware, die Kundinnen SEHEN,
+  // nicht der naechstbesten in Anlegereihenfolge. PRIO=<datei> gibt eine Liste von
+  // Produkt-GIDs vor (die Reihen der Startseite, Such-Landeseiten); sie wird zuerst
+  // abgearbeitet, und nur was uebrig bleibt kommt aus der allgemeinen Suche.
+  const kand = [];
+  if (PRIO && fs.existsSync(PRIO)) {
+    const ids = fs.readFileSync(PRIO, 'utf8').split('\n').map(x => x.trim()).filter(Boolean)
+                  .filter(x => !erledigt.has(x));
+    for (let i = 0; i < ids.length && kand.length < CAP * 3; i += 40) {
+      const teil = ids.slice(i, i + 40);
+      const al = teil.map((g, k) => `p${k}: product(id:"${g}"){id title status `
+        + `media(first:20){nodes{mediaContentType}} variants(first:1){nodes{sku}}}`).join(' ');
+      const r = await sgql(`{${al}}`);
+      for (let k = 0; k < teil.length; k++) {
+        const n = r?.data?.[`p${k}`];
+        if (!n || n.status !== 'ACTIVE') continue;
+        if (n.media.nodes.some(m => m.mediaContentType === 'VIDEO')) continue;
+        const sk = cjSchluessel(n.variants.nodes[0]?.sku || '');
+        if (sk && sk.length) kand.push({ id: n.id, titel: n.title, s: sk });
+      }
+    }
+    console.log(`Prioritaet (${PRIO}): ${kand.length} sichtbare Produkte ohne Video`);
+  }
+
   // Kandidaten live holen: aktive Produkte OHNE Video, mit CJ-SKU.
   const frage = NUR ? 'status:active tag:video-hit' : 'status:active tag:cj-real';
-  const kand = [];
   let cursor = null;
-  for (let seite = 0; seite < 400; seite++) {
+  for (let seite = 0; seite < 400 && kand.length < CAP * 3; seite++) {
     const r = await sgql(`query($c:String,$q:String!){products(first:50,after:$c,query:$q){
         pageInfo{hasNextPage endCursor}
         nodes{id title media(first:20){nodes{mediaContentType}} variants(first:1){nodes{sku}}}}}`,

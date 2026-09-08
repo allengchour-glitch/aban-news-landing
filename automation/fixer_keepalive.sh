@@ -415,9 +415,12 @@ while true; do
     touch "/tmp/videos_$(date -u +%F)"
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_cj_video_backfill.lock; flock -n 9 || exit 0;
-         CAP=300 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
+         PRIO=dropship/_video_prio.txt CAP=60 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
         >> /tmp/cj_video_backfill.log 2>&1 9>&- & )
-    echo "$(date -u +%H:%M) start cj_video_backfill (300/Tag — User 19.08.: «überall mit videos, mache auch bei uns»)"
+    # ⚠️ CAP 300 war sinnlos: der Plan deckelt bei 250 Videos FUER DEN GANZEN SHOP. Der
+    # Lauf prueft den Deckel jetzt vorab und arbeitet PRIO zuerst ab — die Plaetze gehoeren
+    # der Ware, die auf der Startseite steht, nicht der naechstbesten in Anlegereihenfolge.
+    echo "$(date -u +%H:%M) start cj_video_backfill (PRIO sichtbare Ware, 60/Tag — User 19.08.: «überall mit videos, mache auch bei uns»)"
   fi
   # HYPE-REIHE DER STARTSEITE, einmal täglich (Auftrag des Betreibers 12.08.2026: «wenn hype
   # vorbei produkt ändern»). Der Lauf nimmt abgelaufene Artikel aus der Reihe und füllt aus den
