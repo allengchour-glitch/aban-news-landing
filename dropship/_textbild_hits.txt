@@ -15293,3 +15293,22 @@ gid://shopify/Product/15528309162369	29->0	Halloween Kostüm Damen Vintage Perfo
 gid://shopify/Product/15528310243713	52->1	Damen Langarm-Pullover mit Blumenmuster
 gid://shopify/Product/15528310800769	36->0	Langarmshirt mit Bindedekor und Umlegekragen
 gid://shopify/Product/15528310866305	105->1	Damen Strickpullover mit Häkelmuster
+gid://shopify/Product/15528350941569	23->0	Damen Chiffon-Kleid mit lockerem Schnitt
+gid://shopify/Product/15528352153985	76->3	Französisches Langarm-Kleid mit Reverskragen
+gid://shopify/Product/15528352809345	36->1	Samtkleid mit Puffärmeln und Tupfen
+gid://shopify/Product/15528356249985	110->1	Strandkleid für Damen mit A-Linie
+gid://shopify/Product/15528357134721	26->0	Samtkleid mit hohem Schlitz und langen Ärmeln
+gid://shopify/Product/15528357495169	44->0	Trägerloses Damen-Kleid
+gid://shopify/Product/15528418902401	19->2	Damen One-Shoulder Kleid mit Digitaldruck
+gid://shopify/Product/15528421196161	42->0	Damen Jeanskleid mit Puffärmeln
+gid://shopify/Product/15528426307969	13->0	Elegantes langes Kleid mit 3D-Effekt
+gid://shopify/Product/15528444002689	114->0	Damen Langarm-Kleid mit V-Ausschnitt
+gid://shopify/Product/15528445378945	13->0	Damen Etuikleid mit V-Ausschnitt und Tiermuster
+gid://shopify/Product/15528447639937	22->0	Damen Bandeau-Kleid mit Prinzessinnenärmeln
+gid://shopify/Product/15528448622977	45->0	Damen-Kleid mit Stufenrock und Spitze
+gid://shopify/Product/15528449638785	137->0	Damen Langarm-Kleid mit Rundhalsausschnitt
+gid://shopify/Product/15528473264513	12->3	Langarm-Kleid mit Knopfleiste
+gid://shopify/Product/15528476803457	17->0	Damen V-Ausschnitt Kleid mit Taillengürtel
+gid://shopify/Product/15528477393281	40->0	Damen Strass-Kleid
+gid://shopify/Product/15528477950337	122->0	Damen-Minirock mit Strass-Verzierungen
+gid://shopify/Product/15528479097217	15->1	Elegantes ärmelloses Jeanskleid mit V-Ausschnitt
