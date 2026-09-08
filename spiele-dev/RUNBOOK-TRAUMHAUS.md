@@ -6589,3 +6589,26 @@ rendert mit eigener Kamera frontal vor die Flaeche in ein Render-Ziel.
 **Und die Lehre ueber die Kennzahl:** der Anteil farbiger Bildpunkte taugt nur fuer
 „ueberhaupt gezeichnet". Er war mit VERDECKTER Schrift sogar hoeher (34 % gegen 20 %),
 weil die verdeckende Zierde selbst bunt ist. Was gut aussieht, entscheidet das Bild.
+
+## `th-vielfalt` lesen: nur KOMPAKTE Gruppen sind ein Fund
+
+Das Werkzeug zaehlt, was gleichfoermig in der Welt steht. Nach der Nachruestung vom
+2026-09-08 nennt jede Zeile Ort, Hoehe und Ausdehnung — und damit wird sichtbar, wie
+die Liste zu lesen ist:
+
+- **„verstreut (629 m)"** heisst: die Gruppe ist kein wiederholtes Objekt, sondern ein
+  geteiltes MATERIAL ueber viele Modelle hinweg (alle weissen Kaesten der Stadt). Da
+  ist nichts zu holen; die Gleichheit ist ein Nebenprodukt der Materialliste.
+- **Eine kompakte Gruppe** (kleine Ausdehnung, viele Stueck) ist dagegen ein echtes
+  Muster an EINEM Ort — und genau dort lohnt das Hinsehen.
+
+Beim ersten brauchbaren Lauf gab es unter 24 Zeilen **genau eine** kompakte: 37 gleiche
+flache Flaechen, 46 m weit, auf Bodenhoehe am Seepark. Das war der Sportplatz, dessen
+Mittelkreis aus 32 einzelnen Quadraten bestand — gepunktet, wo jede andere Linie
+durchgezogen ist. Beim Nachrechnen war er zusaetzlich um die Haelfte zu gross (6,0 m
+statt der 4,04 m, die sich aus dem Verhaeltnis 9,15/68 der Feldbreite ergeben).
+
+**Lehre fuer den naechsten Lauf:** die verstreuten Zeilen oben ueberspringen, in der
+Spalte „Wo" nach einem Ortsnamen suchen. Und wer dort etwas findet, rechnet die Masse
+gegen die ECHTEN Verhaeltnisse nach statt gegen das Augenmass — der zweite Fehler am
+Spielfeld war ohne Zollstock nicht zu sehen.
