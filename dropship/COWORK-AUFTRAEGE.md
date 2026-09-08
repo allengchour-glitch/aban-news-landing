@@ -1,5 +1,11 @@
 # Cowork-Aufträge (nur der Betreiber kann das)
 
+## 💳 Kimi/Moonshot: Schlüssel liegt bereit, Konto hat kein Guthaben (08.09.2026, 20:25 UTC)
+Gemessen: Der Schlüssel ist echt (`/v1/models` gibt 4 Modelle), aber jede Anfrage wird abgewiesen —
+«**suspended due to insufficient balance**», Konto `org-6f1736b2…`. **Aufladen unter
+platform.moonshot.ai → Billing**, dann läuft `automation/kimi_frage.py` ohne weiteres Zutun.
+⚠️ Der Schlüssel stand im Chat — nach dem Aufladen im Portal **neu erzeugen** und mir den neuen geben.
+
 ## ⏳ SHOPIFY_CLIENT_ID/_SECRET: gemeldet erledigt — Beleg folgt beim nächsten Neustart (08.09.2026, 20:15 UTC)
 Der Betreiber hat die beiden Werte in die Claude-Umgebungsvariablen eingetragen. **In diesem Container
 sind sie leer** — und das ist kein Widerspruch: Der Container läuft seit 20:01 UTC, also seit VOR der

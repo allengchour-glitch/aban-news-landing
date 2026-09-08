@@ -21907,3 +21907,8 @@ gid://shopify/Product/15500936544641	CHF 11.95	1 Varianten	RGB Kühlbasis für X
 gid://shopify/Product/15500936577409	CHF 10.83	1 Varianten	Haustier Leine mit Anti-Ausbruch-Funktion
 gid://shopify/Product/15500936610177	CHF 6.85	1 Varianten	Farbige Leuchtmaus für Gaming & Office
 gid://shopify/Product/15500936642945	CHF 9.24	1 Varianten	Hunde Autosicherheitsgurt, elastisch
+gid://shopify/Product/15500936675713	CHF 25.69	22 Varianten	Worker Boot im British Style
+gid://shopify/Product/15500936708481	CHF 7.66	1 Varianten	French Temperament Press-on Nägel
+gid://shopify/Product/15500936741249	CHF 11.41	1 Varianten	Halsband-Sicherheitsleine
+gid://shopify/Product/15500936774017	CHF 17.08	1 Varianten	Nackenmassagegerät mit Bluetooth
+gid://shopify/Product/15500936806785	CHF 6.90	1 Varianten	Dream Magic Color Rod Nagelpinsel-Set

@@ -1,3 +1,27 @@
+## 🔑 Der Schlüssel ist gültig, das Konto ist leer — und der Gratis-Endpunkt hat es verdeckt (2026-09-08, 20:25 UTC)
+Betreiber: «kimi api für hilfe wie fehler suchen oder so». Die Regel vom 05.09. eingehalten — **erst
+testen, dann speichern** —, und der Test sagte OK: `GET /v1/models` antwortet mit **4 Modellen**
+(kimi-k3, k2.7-code …). Also gespeichert (Tresor `dienste` + `/tmp/kimi.env` 0600, **nie im Repo**).
+Die erste echte Frage endete dann mit **HTTP 429** — und im KÖRPER stand der wahre Grund:
+«**suspended due to insufficient balance**». **Das Konto hat kein Guthaben.**
+- **Die Lehre: Ein Schlüsseltest gehört an den Endpunkt, den man BENUTZEN wird, nicht an den
+  billigsten.** `/v1/models` kostet nichts und antwortet deshalb auch einem Konto ohne Guthaben —
+  es beweist die Echtheit des Schlüssels und sonst nichts. Dieselbe Familie wie «ein Endpunkt, der
+  antwortet, beweist nur, dass er antwortet» (28.08.), nur eine Ebene subtiler: hier antwortete der
+  FALSCHE Endpunkt richtig. Vierter Fall dieser Sorte nach DeepSeek (402), OpenAI (429 no credits)
+  und dem 55-Zeichen-Groq-Schlüssel.
+- ⚠️ **429 heisst bei Moonshot ZWEIERLEI** — «zu schnell» (aussitzen, Lehre 21.08.) und «Konto leer»
+  (aussitzen hilft nie). Unterscheidbar sind sie nur am Antwortkörper (`error.type`), nicht am
+  Statuscode. `urllib` wirft den Körper bei einem HTTPError weg, wenn man ihn nicht ausdrücklich
+  liest — genau deshalb sah der erste Lauf wie eine Drosselung aus.
+- **Gebaut ist es trotzdem:** `automation/kimi_frage.py` (Frage + beliebige Dateien → Antwort auf
+  Deutsch) läuft, sobald Guthaben da ist, und meldet bis dahin **eine lesbare Zeile statt eines
+  Tracebacks**. Zwei Warnungen stehen fest im Werkzeug: Kimi k3 legt bei strukturierten Prompts die
+  Antwort in `reasoning_content` statt `content` (26.07.) — das wird ausdrücklich als **Denktext**
+  gekennzeichnet —, und **eine KI-Antwort ist ein Hinweis, kein Beleg** (05.09.: von 31 Befunden
+  zweier Modelle waren mehrere frei erfunden, inklusive Zitaten, die in keinem Text standen).
+- ⚠️ **Der Schlüssel stand im Chat → gehört rotiert**, sobald das Konto benutzt wird.
+
 ## 🕰️ Unsere API-Version ist seit Monaten abgelaufen — und niemand hat es gemerkt (2026-09-08, 20:15 UTC)
 Der Betreiber schickte Shopifys Monitoring-Screenshot: `InventoryQuantityInput.compareQuantity` und
 `InventorySetQuantitiesInput.ignoreCompareQuantity` fallen zum **01.01.2027** weg, zuletzt erkannt am
