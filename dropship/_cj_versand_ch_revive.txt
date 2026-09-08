@@ -478,3 +478,4 @@
 15523130311041	wiederbelebt	tigerkopf-knochenbeil-662144	23.09	17.68
 15523130540417	wiederbelebt	kirin-knochenhackbeil-171264	18.81	15.97
 15523130638721	wiederbelebt	shenlong-knochenhackmesser-307584	20.41	17.04
+15523138273665	wiederbelebt	eagle-wings-5-hackbeil-fur-knochen-467520	17.75	16.47

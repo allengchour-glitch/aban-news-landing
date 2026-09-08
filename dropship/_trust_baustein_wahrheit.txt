@@ -45844,3 +45844,5 @@
 15521253785985	ersetzt-1	Nahtloses Ice Silk T-Shirt für Herren
 15521253982593	ersetzt-1	Kinder Smartwatch mit Vibrationsalarm
 15521254211969	ersetzt-1	Bräunungspuder für natürlichen Bronze-Teint
+15521254408577	ersetzt-1	Perforiertes Wandregal-Set für die Küche
+15521254539649	ersetzt-1	Smartwatch mit Bluetooth-Anrufen und Gesundheitsfunktionen
