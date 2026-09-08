@@ -22014,3 +22014,4 @@ gid://shopify/Product/15500946276737	CHF 13.51	1 Varianten	Rucksack Youth Campus
 gid://shopify/Product/15500946309505	CHF 42.07	30 Varianten	Alphabet-Retro-Sneaker
 gid://shopify/Product/15500946342273	CHF 13.55	1 Varianten	Schmucktasche aus PU-Leder
 gid://shopify/Product/15500946375041	CHF 12.18	1 Varianten	Weihnachtskarten-Kit
+gid://shopify/Product/15500946407809	CHF 31.46	1 Varianten	Grossraum-Tasche für den Geschäftsreisenden
