@@ -20589,3 +20589,20 @@ gid://shopify/Product/15500373590401	CHF 11.17	1 Varianten	Schleifstein für die
 gid://shopify/Product/15500373688705	CHF 11.17	1 Varianten	Hautglätter
 gid://shopify/Product/15500373885313	CHF 10.08	1 Varianten	Nachtlicht fürs Bett
 gid://shopify/Product/15500402000257	CHF 5.77	1 Varianten	Reflektierender Westen
+gid://shopify/Product/15500402360705	CHF 6.51	1 Varianten	Silikon-Abdichtung für Spülmaschine
+gid://shopify/Product/15500402459009	CHF 20.39	1 Varianten	Stainless Stahl Lunchbox
+gid://shopify/Product/15500402524545	CHF 39.13	1 Varianten	Reise- Kompressionsbeutel Set
+gid://shopify/Product/15500402557313	CHF 24.75	1 Varianten	Eingangskorb
+gid://shopify/Product/15500402622849	CHF 13.55	1 Varianten	Sicherheitsleuchte für Fahrrad
+gid://shopify/Product/15500402688385	CHF 8.73	1 Varianten	Vierstufen-Kaffeemühle
+gid://shopify/Product/15500402721153	CHF 29.78	1 Varianten	GPS-Pet-Kollektivset
+gid://shopify/Product/15500402786689	CHF 22.73	1 Varianten	Keramik-Utensilienhalter im Japan-Stil
+gid://shopify/Product/15500402884993	CHF 11.95	1 Varianten	Badezimmerschlauchhalter
+gid://shopify/Product/15500402950529	CHF 6.84	1 Varianten	Halsband mit Schleife
+gid://shopify/Product/15500402983297	CHF 188.80	1 Varianten	Schmuck-Organizer Pfauenblau Samt
+gid://shopify/Product/15500403114369	CHF 37.48	1 Varianten	Luftqualitäts-Überwacher
+gid://shopify/Product/15500403179905	CHF 7.17	1 Varianten	Nylon-Halsband für grosse Hunde
+gid://shopify/Product/15500403212673	CHF 20.66	1 Varianten	Keramik-Spatel- und Löffelbehälter
+gid://shopify/Product/15500403245441	CHF 17.30	1 Varianten	Tischtennisball-Verstärker
+gid://shopify/Product/15500403310977	CHF 12.75	1 Varianten	Reinigungs-Schaufel
+gid://shopify/Product/15500403343745	CHF 10.26	1 Varianten	Gestricktes Hundehalstuch im Weihnachtslook
