@@ -386,6 +386,12 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 # gerade wirklich einen Menschen braucht — messbare Blocker werden LIVE nachgemessen und
 # verschwinden von selbst, der unmessbare Rest wird nur gezaehlt. Schweigt, wenn nichts ist.
 [ -f "$REPO_AUTO/betreiber_ampel.py" ] && python3 "$REPO_AUTO/betreiber_ampel.py" 2>/dev/null
+# ⛔ MOTOR-AMPEL (09.09.2026): Meldet ABSTUERZE der Dauerlaeufer aus ihren Logs.
+# Anlass: Eine Zuweisung an ein `const` liess die zwei Haupt-Importer 6,5 Stunden lang
+# bei jedem Ein-Varianten-Produkt abstuerzen. Der Traceback stand die ganze Zeit im Log —
+# gelesen hat ihn niemand, weil der Grind «laeuft» und die stehende CJ-Zahl eine bequeme
+# Erklaerung hatte. Meldet nur, was seit dem letzten Lauf NEU ist; schweigt sonst.
+[ -f "$REPO_AUTO/motor_ampel.py" ] && python3 "$REPO_AUTO/motor_ampel.py" 2>/dev/null
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim

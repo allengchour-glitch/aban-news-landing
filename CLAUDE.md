@@ -39,6 +39,26 @@ gewollt.
 - ✅ **Am echten Erzeugnis belegt, nicht am Modul:** letzter Absturz **23:13:55**, Fix
   **01:15:18**, erster Lauf danach **01:16:01 → «✅ Reiserucksack mit Reissverschluss»**,
   Ledger 52'032 → **52'035**.
+- ✅ **Daraus gebaut: `automation/motor_ampel.py`** (stündlich im Keepalive, MELDET NUR). Es
+  liest die Logs der Dauerläufer und meldet EINE Zeile, wenn ein harter Absturz seit dem
+  letzten Lauf NEU dazugekommen ist — mit Datei und Zeilennummer:
+  `⛔ MOTOR STUERZT AB: cj_runner2.log 174× (cj_category_fill.mjs:831)`.
+  Nach der Hausregel «bei einem Melder liegt die Beweislast beim Alarm» gebaut: Byte-Cursor je
+  Datei (ein behobener Fehler verschwindet nach einer Runde von selbst, ein Dauerbefund wird
+  nicht gelesen), ein geschrumpftes Log setzt den Cursor zurück statt den Rest zu überspringen,
+  eine FEHLENDE Logdatei ist kein Befund, und gesucht wird nur nach harten Abstürzen —
+  ein generisches «Error» stünde in jedem zweiten Retry-Log und wäre ein Fehlalarm-Generator.
+  In vier Richtungen belegt: Node-TypeError und Python-Traceback → Alarm; Retry/429/das Wort
+  «Fehler» → still; nichts Neues → still; gekürztes Log → still.
+- ⚠️ **Und er hat sofort mehr gefunden, als ich gesucht hatte:** Nicht nur die Grind-Runner,
+  auch **`cj_queue_runner` starb 28× an derselben Zeile** — das ist der Weg, über den die
+  SUCHAUFTRÄGE des Betreibers laufen. Ein Absturz in einer geteilten Funktion trifft mehr
+  Motoren, als der auffällige Symptomträger vermuten lässt.
+- ⚠️ **Zwei eigene Mängel beim Bauen, beide durch den Test gefunden:** Mein Fundstellen-Muster
+  kannte nur Nodes Form (`datei.mjs:831`) und meldete jeden Python-Traceback als «?» — Python
+  schreibt `File "foo.py", line 42`, **ohne Doppelpunkt**. Und meine ersten Testdaten lagen auf
+  ECHTEN Logpfaden (`/tmp/cj_runner3.log` überschrieben); Prüfdaten gehören in ein
+  Temp-Verzeichnis, nie auf den Pfad, den das Werkzeug im Betrieb liest.
 - **Die Lehre über den Fall hinaus: eine Zahl, die sich nicht bewegt, ist ein Befund, kein
   Zustand.** Ich hatte für den Stillstand eine plausible Erklärung parat (der Speicherdeckel ist
   real und dokumentiert) und habe sie dreimal wiederholt, statt einmal in das Log zu sehen, das
