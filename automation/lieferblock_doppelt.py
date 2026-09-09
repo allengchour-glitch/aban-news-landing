@@ -29,7 +29,14 @@ nach Liechtenstein», ist also die vollstaendigere Aussage.
 ⚠️ Sagen die beiden Bloecke VERSCHIEDENE Zeiten, wird ebenfalls nichts angefasst und der
    Fall gemeldet — welche Zahl stimmt, entscheidet kein Automat.
 
-  DRY=1   nur zeigen        CAP=N   hoechstens N Produkte
+  DRY=1   nur zeigen        CAP=N   hoechstens N Produkte      SEITEN=N  hoechstens N Seiten
+
+⚠️ SEITEN ist die wichtigere Bremse. Die Suche kann die Klasse nicht enger fassen: nach der
+Reparatur sagen BEIDE Bloecke «Lieferzeit Schweiz», eine Zwei-Phrasen-Suche findet sie also
+nicht. Ohne Seitenbremse blaettert ein Lauf mit wenigen Treffern den halben Katalog durch und
+hungert den geteilten Shopify-Eimer aus — genau der Fehler, der am 03.09. die Waechter
+fehlalarmieren liess. Der taegliche Lauf nimmt deshalb die AELTESTEN Seiten zuerst
+(CREATED_AT aufsteigend): die Klasse ist Altlast, dort sitzt sie.
 """
 import json, os, re, sys, time, urllib.request
 
@@ -37,6 +44,7 @@ SHOP  = os.environ.get('SHOPIFY_SHOP', 'au3j0y-hq.myshopify.com')
 TOKEN = os.environ.get('SHOPIFY_ADMIN_TOKEN') or open('/tmp/cj_shop_token.txt').read().strip()
 DRY   = os.environ.get('DRY') == '1'
 CAP   = int(os.environ.get('CAP', '400'))
+SEITEN = int(os.environ.get('SEITEN', '40'))   # 40 × 100 = 4'000 aelteste Produkte
 LEDGER = 'dropship/_lieferblock_doppelt.txt'
 
 LS   = re.compile(r'<p class="ls-liefer"[^>]*>(.*?)</p>', re.S)
@@ -82,14 +90,14 @@ def main():
     fertig = set()
     if os.path.exists(LEDGER):
         fertig = {l.split('\t')[0] for l in open(LEDGER, encoding='utf-8') if l.strip()}
-    Q = ('query($c:String){products(first:100,after:$c,'
+    Q = ('query($c:String){products(first:100,after:$c,sortKey:CREATED_AT,'
          'query:"status:active AND \\"Lieferzeit Schweiz\\""){'
          'pageInfo{hasNextPage endCursor} nodes{id title descriptionHtml}}}')
     M = ('mutation($id:ID!,$b:String!){productUpdate(input:{id:$id,descriptionHtml:$b})'
          '{product{id descriptionHtml} userErrors{field message}}}')
     cur = None
-    entfernt = verschieden = gesehen = 0
-    while gesehen < CAP:
+    entfernt = verschieden = gesehen = seite = 0
+    while gesehen < CAP and seite < SEITEN:
         pg = (gql(Q, {'c': cur}).get('data') or {}).get('products')
         if not pg:
             print('PAUSE (Shopify stumm) — kein Ergebnis ist kein Befund.'); break
@@ -117,7 +125,7 @@ def main():
             if gesehen >= CAP: break
         if not pg['pageInfo']['hasNextPage']:
             break
-        cur = pg['pageInfo']['endCursor']
+        cur = pg['pageInfo']['endCursor']; seite += 1
         time.sleep(0.2)
     print(f"{'DRY ' if DRY else ''}entdoppelt: {entfernt} · verschiedene Zeiten: {verschieden}")
     if entfernt == 0 and verschieden == 0 and not DRY:
