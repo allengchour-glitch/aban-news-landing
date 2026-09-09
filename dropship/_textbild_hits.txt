@@ -15337,3 +15337,5 @@ gid://shopify/Product/15528742027649	45->0	Armband mit Magnetverschluss
 gid://shopify/Product/15528742158721	71->0	Full HD 2K Webkamera mit Autofokus und Mikrofon
 gid://shopify/Product/15528742224257	13->0	Elektrischer Aroma-Luftbefeuchter 500ml
 gid://shopify/Product/15528742355329	13->0	Farbblock-Armband mit Zirkonia
+gid://shopify/Product/15523850912129	62->0	Santoku-Messer mit achteckigem Griff, 7 Zoll
+gid://shopify/Product/15523851141505	69->1	Doppeltes Küchenmesser Dragon Phoenix Mandarin Duck
