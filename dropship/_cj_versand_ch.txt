@@ -1026,3 +1026,4 @@ gid://shopify/Product/15525501796737	ok	Orientalische Quarzuhr mit Kalender
 gid://shopify/Product/15527363641729	ok	Wanbo T2max/Free HD Mini Beamer
 gid://shopify/Product/15527365673345	ok	Mini Tisch-Heizlüfter mit Keramikheizung
 gid://shopify/Product/15527364886913	nicht-versendbar	L900 PRO MAX Laser Drohne
+gid://shopify/Product/15528735900033	ok	3-in-1 Toaster-Frühstücksmaschine
