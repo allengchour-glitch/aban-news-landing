@@ -278,7 +278,7 @@ for(const p of cand){
  if(imgs.length<2){continue;}
  const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
  if(VIDEO_ONLY&&!(d.productVideo&&/^https/.test(d.productVideo))){continue;} // ohne Video überspringen
- const g=await gemini(nm,feats,'Trend-Produkt (viral)'); await sleep(GSLEEP);
+ let g=await gemini(nm,feats,'Trend-Produkt (viral)'); await sleep(GSLEEP);
  if(!g){console.log('  skip(copy)',nm.slice(0,30));continue;}
  // Marken-Filter (14.08.2026), siehe automation/marken_filter.mjs
  const ms=produktSaeubern(g.title, g.html);

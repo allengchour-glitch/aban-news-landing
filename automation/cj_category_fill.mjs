@@ -747,7 +747,7 @@ for(const [cat,label] of grp.cats){
      if(imgs.length<grp.minImg)continue;
    }
    const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-   const g=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
+   let g=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
    if(!g){console.log('  skip(gemini)',nm.slice(0,30));continue;}
    // Marken-Filter (14.08.2026): CJ-Listings schreiben «Chanel style» in Name/Features, die
    // Übersetzung übernimmt es wörtlich. Ohne diesen Schnitt entstehen mit jedem Lauf neue
