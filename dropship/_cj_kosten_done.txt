@@ -22965,3 +22965,9 @@ gid://shopify/Product/15501749059969	CHF 20.16	6 Varianten	Hochhackige Satinsand
 gid://shopify/Product/15501749223809	CHF 12.43	1 Varianten	Knoblauchmixer
 gid://shopify/Product/15501749485953	CHF 16.32	14 Varianten	Buchstaben-Bowknot-Sandalen
 gid://shopify/Product/15501749584257	CHF 55.10	1 Varianten	Dreiteilige Kuchenpräsentation
+gid://shopify/Product/15501749879169	CHF 17.71	27 Varianten	Weiche Schuhe für Frauen
+gid://shopify/Product/15501750305153	CHF 19.05	35 Varianten	Schuh mit atmungsaktivem Innenleben
+gid://shopify/Product/15501750370689	CHF 21.20	1 Varianten	Runder Kuchenform
+gid://shopify/Product/15501750763905	CHF 11.57	1 Varianten	Pulverfilter
+gid://shopify/Product/15501750894977	CHF 17.23	15 Varianten	Grüne Koreanische Sandalen
+gid://shopify/Product/15501751157121	CHF 37.77	1 Varianten	Küchenspülradregal
