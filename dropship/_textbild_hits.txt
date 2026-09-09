@@ -15432,3 +15432,11 @@ gid://shopify/Product/15529158443393	20->3	Kreatives Kindergeschirr aus Bambusfa
 gid://shopify/Product/15529158705537	44->1	Klassischer handgemachter Eisen-Wok
 gid://shopify/Product/15529159197057	25->2	Kupfertopf 18 cm
 gid://shopify/Product/15529159917953	15->0	Outdoor Klappmesser aus Stahl
+gid://shopify/Product/15529160442241	142->0	Kordhemd für Herren, lockere Passform
+gid://shopify/Product/15529160475009	30->0	Armband mit Zirkonia
+gid://shopify/Product/15529160737153	9->0	Kupfer Armband mit Zirkonia-Steinen
+gid://shopify/Product/15529160999297	24->2	Denim-Langarmhemd für Herren
+gid://shopify/Product/15529161032065	8->0	Damen Armband mit Zirkonstein
+gid://shopify/Product/15529161261441	24->0	Herren Langarmshirt Baumwolle
+gid://shopify/Product/15529161294209	32->0	Armband Messing mit Zirkonia-Kristallen
+gid://shopify/Product/15529161392513	57->0	Boho-Perlenarmband aus Edelstahl

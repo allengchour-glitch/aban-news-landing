@@ -23673,3 +23673,10 @@ gid://shopify/Product/15502266827137	CHF 66.00	1 Varianten	Handy-Aufbewahrungsbo
 gid://shopify/Product/15502266859905	CHF 35.71	1 Varianten	Knochenbeil aus Manganstahl und Palisander
 gid://shopify/Product/15502266892673	CHF 22.69	1 Varianten	Bohemian Pentagram Kissen mit Quasten
 gid://shopify/Product/15502266958209	CHF 35.71	1 Varianten	Knochenbeil «Adlerkopf» aus Manganstahl
+gid://shopify/Product/15502266990977	CHF 16.81	12 Varianten	Wasserdichte Freizeit-Slipper für Herren
+gid://shopify/Product/15502267056513	CHF 24.03	1 Varianten	Kissenbezug Ethno-Stil Baumwolle getuftet
+gid://shopify/Product/15502267122049	CHF 22.62	1 Varianten	Schwarze Samtbeutel für Schmuck (50 Stück)
+gid://shopify/Product/15502267154817	CHF 33.37	1 Varianten	Antihaft-Hackmesser für die Küche
+gid://shopify/Product/15502267253121	CHF 19.24	1 Varianten	Niedlicher Haustier-Kissenbezug
+gid://shopify/Product/15502267351425	CHF 24.49	21 Varianten	Atmungsaktive Herren-Slipper für den Sommer
+gid://shopify/Product/15502267384193	CHF 38.99	1 Varianten	Stahl-Hackmesser
