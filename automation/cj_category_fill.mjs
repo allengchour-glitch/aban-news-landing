@@ -5,6 +5,12 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+
+// ── Plüsch: Spielzeug oder Heimtextil? EINE Regelquelle (09.09.2026) ──────────
+const _plt=JSON.parse(fs.readFileSync(new URL('./pluesch_textil.json',import.meta.url),'utf8'));
+const PLUESCH_SPIELZEUG=new RegExp(_plt.spielzeug,'i');
+const PLUESCH_TEXTIL=new RegExp(_plt.textil,'i');
+const PLUESCH_TYP=_plt.typ_textil, PLUESCH_TAGS=_plt.tags_textil;
 import { istKlinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
 import {googleKategorie} from './google_kategorie.mjs';
@@ -851,8 +857,17 @@ for(const [cat,label] of grp.cats){
      tagsFinal=tagsFinal.filter(t=>!['elektronik','tech','gadget','gadgets','trend'].includes(t)).concat(['haustier','pet']);
      typeFinal='Haustierbedarf';
    } else if(/plüsch|kuscheltier/i.test(title)&&!/lampe|licht/i.test(title)){
-     tagsFinal=tagsFinal.filter(t=>!['elektronik','tech'].includes(t)).concat(['spielzeug']);
-     typeFinal='Spielzeug & Spiele';
+     // 09.09.2026: «plüsch» allein macht kein Spielzeug — 59 aktive Sofakissen, Kissen-
+     // bezüge, Hussen, Teppiche und Decken standen dadurch in der Startseiten-Kachel
+     // «Spielzeug & Plüsch». EINE Regelquelle: automation/pluesch_textil.json (Python
+     // liest dieselbe Datei). Spielzeug gewinnt: «Plüschtier-Kissen» bleibt Spielzeug.
+     if(!PLUESCH_SPIELZEUG.test(title)&&PLUESCH_TEXTIL.test(title)){
+       tagsFinal=tagsFinal.filter(t=>!['elektronik','tech','spielzeug','kinder','spielzeug-ch-front'].includes(t)).concat(PLUESCH_TAGS);
+       typeFinal=PLUESCH_TYP;
+     } else {
+       tagsFinal=tagsFinal.filter(t=>!['elektronik','tech'].includes(t)).concat(['spielzeug']);
+       typeFinal='Spielzeug & Spiele';
+     }
    } else if(/hydraulik|wegeventil|steuerventil|holzspalter|traktor|bew[äa]sserung/i.test(title)){
      // CJ listet Hydraulik-"Joystick"-Ventile unter Gaming/Joysticks (Garten-Filter-Falle 2026-08-05)
      tagsFinal=tagsFinal.filter(t=>!['gaming','ps4','ps5','xbox','konsole','gadgets','elektronik','tech'].includes(t)).concat(['garten']);

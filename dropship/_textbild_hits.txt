@@ -15440,3 +15440,4 @@ gid://shopify/Product/15529161032065	8->0	Damen Armband mit Zirkonstein
 gid://shopify/Product/15529161261441	24->0	Herren Langarmshirt Baumwolle
 gid://shopify/Product/15529161294209	32->0	Armband Messing mit Zirkonia-Kristallen
 gid://shopify/Product/15529161392513	57->0	Boho-Perlenarmband aus Edelstahl
+gid://shopify/Product/15529161720193	113->0	Kurzarmhemd mit Muscheldruck

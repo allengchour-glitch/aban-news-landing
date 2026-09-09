@@ -1,0 +1,13 @@
+{
+  "_zweck": "Trennt PLÜSCH-SPIELZEUG von PLÜSCH-HEIMTEXTIL (09.09.2026).",
+  "_anlass": "cj_category_fill.mjs:853 taggte JEDEN Titel mit «plüsch» als «spielzeug» + Warengruppe «Spielzeug & Spiele» (Ausnahme nur lampe|licht). Gemessen: 59 aktive Sofakissen, Kissenbezüge, Sofahussen, Teppiche und Decken standen dadurch in der Startseiten-Kachel «Spielzeug & Plüsch» — und weil sie frisch sind, bei CREATED_DESC ganz VORNE. Dieselbe Familie wie die Hundehalsband-Wache eine Zeile darüber (04.08.) und der Blanko-Tag der CJ-Gruppen (03.09.).",
+  "_reihenfolge": "SPIELZEUG gewinnt: «Plüschtier-Kissen» ist ein Spielzeug. Demoted wird NUR, wenn der Titel eine MÖBEL-/TEXTIL-Nutzung benennt (Sofa, Kissenbezug, Husse, Überwurf, Teppich, Decke, Bett, Tatami). Ein blosses «Plüschkissen» bleibt drin — die Kachel heisst «Spielzeug & PLÜSCH», ein Plüschkissen ist dort nicht falsch. Die Verbreiterung auf jedes «kissen» war am 09.09. kurz gesetzt und nach dem LESEN der 35 Treffer zurückgenommen: sie hätte Husky-, Shiba-, Hai- und Rasselkissen zu Heimtextil erklärt.",
+  "spielzeug": "(pl[üu]schtier|kuscheltier|stofftier|pl[üu]sch[- ]?puppe|schmusetier)",
+  "textil": "(sofa|kissenbez|kissenh[üu]lle|husse|[üu]berwurf|[üu]berzug|teppich|\\bdecke\\b|bettw[äa]sche|bettbezug|matratze|vorhang|tatami|lendenkissen|sitzkissen|nackenst[üu]tz|sofakissen)",
+  "typ_textil": "Heimtextilien",
+  "tags_textil": [
+    "wohnen",
+    "dekoration",
+    "heimtextil"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+ "camping-licht-outdoor": {
+  "titel": "Outdoor-Licht & Tools",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "stirnlampe"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "campinglampe"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "campingleuchte"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "outdoor-lampe"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "laterne"
+    }
+   ]
+  }
+ },
+ "garten-leuchten": {
+  "titel": "Gartenleuchten & Solar",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "gartenleuchte"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "solarleuchte"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "gartenlampe"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "solar"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "aussenleuchte"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "wegeleuchte"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "laterne"
+    }
+   ]
+  }
+ },
+ "bar-cocktail": {
+  "titel": "Cocktail & Shaker",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "cocktail"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "shaker"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "barzubehör"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "barset"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "bar-set"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "jigger"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "sieb"
+    }
+   ]
+  }
+ },
+ "sonnenbrillen-herren": {
+  "titel": "Sonnenbrillen Herren",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "herren-sonnenbrille"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "pilotenbrille"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "aviator"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "wayfarer"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "sport-sonnenbrille"
+    }
+   ]
+  }
+ }
+}

@@ -7,10 +7,32 @@ dieselben Produkte. Damals wurden 8 Startseiten-Reihen umgestellt; dieser Lauf
 vervollstaendigt es fuer ALLE veroeffentlichten Kollektionen (225 gemessen).
 - NUR sortOrder wird geaendert; Regeln, Produkte, Bilder bleiben unberuehrt.
 - MANUAL (handkuratiert, z. B. `bestseller`) wird NIE angefasst.
-- PRICE_ASC/PRICE_DESC bleiben stehen — bei Preisband-Kollektionen moeglich Absicht.
+
+NACHTRAG 09.09.2026 — die Annahme von damals ist GEMESSEN und war falsch:
+Der Docstring sagte "PRICE_ASC/PRICE_DESC bleiben stehen — bei Preisband-Kollektionen
+moeglich Absicht". Gezaehlt ueber alle 364 publizierten Kollektionen: 93 sind
+preis-sortiert, und davon traegt **genau EINE** einen Preis im Namen ("Angebote &
+Deals", 0 aktive Produkte). Die ECHTEN Preisbaender ("Unter CHF 25", "Geschenke
+unter CHF 50", "Premium ab CHF 80" …) stehen ausnahmslos auf CREATED_DESC — dort
+waere eine Preissortierung ohnehin sinnlos, das Band filtert den Preis schon.
+Die uebrigen 92 sind normale Kategorien (Kinderspielzeug, Damen-Jacken, Hunde-
+Zubehoer), deren Seite damit eingefroren ist: sie zeigen seit Monaten dieselbe
+Ware, waehrend der Grind taeglich hunderte Produkte anlegt.
+=> PREIS=1 taut sie mit auf; Kollektionen mit einem Preisband im Titel/Handle
+   bleiben ausgenommen (Wache in beide Richtungen geprueft).
+=> DRY=1 zeigt nur, was passieren wuerde.
 Ledger: dropship/_kollektion_auftauen.txt
 """
-import json, sys, time, urllib.request
+import json, os, re, sys, time, urllib.request
+
+DRY   = os.environ.get("DRY") == "1"
+PREIS = os.environ.get("PREIS") == "1"
+# Ein Preisband nennt seinen Preis im Namen. Nur DORT ist eine Preissortierung
+# eine Aussage ueber die Kollektion und keine eingefrorene Zufallsordnung.
+PREISBAND = re.compile(r"(chf|franken|\bunter\b|\bbis\b|\bab\s*\d|preis|budget|g[uü]nstig|sale|angebot|deal)", re.I)
+
+def ist_preisband(handle, titel):
+    return bool(PREISBAND.search(titel or "") or PREISBAND.search(handle or ""))
 
 SHOP="au3j0y-hq.myshopify.com"
 LEDGER="dropship/_kollektion_auftauen.txt"
@@ -35,14 +57,25 @@ except FileNotFoundError: fertig=set()
 
 after=None; geprueft=0; umgestellt=0
 while True:
-    d=gql('query($a:String){ collections(first:100, after:$a){pageInfo{hasNextPage endCursor} nodes{id handle sortOrder resourcePublicationsV2(first:3){nodes{publication{name}}}} } }',{"a":after})
+    d=gql('query($a:String){ collections(first:100, after:$a){pageInfo{hasNextPage endCursor} nodes{id handle title sortOrder resourcePublicationsV2(first:20){nodes{publication{name}}}} } }',{"a":after})
     c=d["collections"]
     for n in c["nodes"]:
         geprueft+=1
-        if n["handle"] in fertig: continue
-        if n["sortOrder"]!="BEST_SELLING": continue
+        # Der Zettel filtert die Live-Messung NICHT: eine Quittung von gestern sagt
+        # nichts darueber, ob die Kollektion heute wieder eingefroren ist. Wahrheit
+        # ist der gelesene sortOrder; das Ledger ist nur das Protokoll.
+        if n["sortOrder"]=="BEST_SELLING":
+            pass
+        elif PREIS and n["sortOrder"] in ("PRICE_ASC","PRICE_DESC"):
+            if ist_preisband(n["handle"], n.get("title")):
+                continue
+        else:
+            continue
         pubs=[p["publication"]["name"] for p in n["resourcePublicationsV2"]["nodes"]]
         if not any(x in ("Online Store","Onlineshop") for x in pubs): continue
+        if DRY:
+            print(f"  DRY {n['sortOrder']:11s} {n['handle']:34s} {(n.get('title') or '')[:44]}")
+            umgestellt+=1; continue
         r=gql('mutation($input:CollectionInput!){collectionUpdate(input:$input){collection{sortOrder} userErrors{field message}}}',
               {"input":{"id":n["id"],"sortOrder":"CREATED_DESC"}})
         ue=r["collectionUpdate"]["userErrors"]

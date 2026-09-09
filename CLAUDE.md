@@ -1,3 +1,102 @@
+## 🧊 92 Kategorieseiten waren nach PREIS eingefroren — und die Begründung dafür war nie gemessen (2026-09-09, 12:30 UTC)
+Betreiber: «katalog auf webseite verbessern? mehr andere produkten». Erst gemessen, was die
+Webseite ZEIGT: 25/25 Sektionen belegt (Deckel), 18 Produktreihen + 16 Kacheln = **28 von 364
+publizierten Kollektionen**, 184 Karten mit **179 verschiedenen** Produkten (5 Dubletten, alle
+plausibel). Auf der Startseite ist also weder Platz noch ein Vielfalts-Problem — das Problem
+liegt eine Ebene tiefer, auf den KATEGORIESEITEN.
+| Sortierung der 364 publizierten Kollektionen | vorher | nachher |
+|---|---:|---:|
+| CREATED_DESC (frischt sich selbst auf) | 263 | **352** |
+| PRICE_ASC / PRICE_DESC (eingefroren) | **93** | **1** |
+| MANUAL (handkuratiert) | 8 | 8 |
+**⛔ Der Docstring von `kollektion_auftauen.py` sagte seit dem 31.08.: «PRICE_ASC/PRICE_DESC
+bleiben stehen — bei Preisband-Kollektionen möglich Absicht.» Das war plausibel und nie
+gemessen.** Gezählt trägt von den 93 **genau EINE** einen Preis im Namen («Angebote & Deals»,
+0 aktive Produkte). Die ECHTEN Preisbänder — «Unter CHF 25», «Geschenke unter CHF 50»,
+«Premium ab CHF 80», «Geschenke bis CHF 30» — stehen **ausnahmslos auf CREATED_DESC**, und das
+ist auch richtig: ein Band filtert den Preis bereits, eine Preissortierung darin sagt nichts.
+Die übrigen 92 sind normale Kategorien (Kinderspielzeug, Damen-Jacken, Hunde-Zubehör,
+Smartwatches), deren Seite dadurch seit Monaten dieselbe Ware zeigt, während der Grind täglich
+hunderte Produkte anlegt. **Eine Annahme, die man nicht gemessen hat, ist eine Vermutung — auch
+wenn sie plausibel klingt und im eigenen Gedächtnis steht.**
+- `PREIS=1` taut sie mit auf, `DRY=1` zeigt es vorher; die Preisband-Wache ist in beide
+  Richtungen belegt (6 Bänder + 12 Kategorien, 0 Abweichungen). Wirkung am Objekt: «Küchenhelfer»
+  führte mit BigBuy-Leichen (Spülmaschine, Smeg, Philips), jetzt mit den Importen von heute.
+- ⚠️ **Zwei Kollektionen blieben trotzdem stehen — `resourcePublicationsV2(first:3)`.** Bei
+  `handwerkzeug` und `elektrowerkzeug` steht «Online Store» an **achter** Stelle; die Prüfung sah
+  nur die ersten drei Kanäle und hielt sie für unpubliziert. **Sechste Fassung von «eine volle
+  Seite ist ein Weiterblättern-Befehl»** (appInstallations 30.08., Merchant-Export 31.08.,
+  interne_links 01.09., variants 08.09.) — und sie entwertet nebenbei die «225 aufgetaut» vom
+  31.08.: der Lauf hat damals jede Kollektion übersprungen, deren Onlineshop-Publikation
+  jenseits von Platz 3 liegt.
+- ⚠️ **Und das Ledger filterte die LIVE-Messung.** Der Zettel wurde VOR dem Lesen des `sortOrder`
+  geprüft — eine Quittung von gestern hätte eine heute wieder eingefrorene Kollektion für immer
+  gesperrt. Jetzt entscheidet der gelesene `sortOrder`, das Ledger ist nur noch Protokoll
+  (dieselbe Lehre wie bei `kandidaten_live()` heute früh).
+
+**⛔ Und der eigentliche Fund kam DANACH: das Einfrieren hatte falsch einsortierte Ware
+VERSTECKT.** Mit CREATED_DESC steht die frischeste Ware vorn — und damit standen plötzlich die
+Fremdtreffer der Smart-Regeln auf Platz 1. Der Defekt ist älter als das Auftauen; sichtbar
+wurde er erst dadurch. Gelesen, nicht gezählt (Trefferliste je Kollektion):
+| Kategorie | zeigte zuerst | Ursache | aktiv vorher → nachher |
+|---|---|---|---:|
+| Outdoor-Licht & Tools | Blusen und Kleider | `laterne` trifft **LATERNENärmel** | 62 → 15 |
+| Gartenleuchten & Solar | Blusen, Solar-Smartwatch, Kurbelradio | `laterne` + nacktes `solar` | 187 → 7 |
+| Cocktail & Shaker | Fritteuse, Teesieb, Baby-Milchshaker, Cocktail**kleid** | `sieb` · `shaker` · `cocktail` | 55 → 11 |
+| Sonnenbrillen Damen | Plüschkissen, Nagel-Patch, Duschvorhang | `schmetterling` · `cat eye` (ein Nagellack-Effekt!) · `oversized` | 225 → 2 |
+| Sonnenbrillen Herren | Leder-**Armband** | `aviator` (1 Treffer, und der war falsch) | 4 → 3 |
+**Vierzehnte Fassung der Substring-Familie** — diesmal in Smart-Collection-Regeln, wo es weder
+`\b` noch einen Ausschluss gibt (ein `NOT_CONTAINS` in einer ODER-Regel ist wirkungslos).
+- **Vier Regeln repariert** (`automation/kollektion_regel_leck.py`, alte Regeln gesichert in
+  `dropship/_kollektion_regeln_alt.json`), jede am Objekt gegengeprüft: die Kategorien führen
+  jetzt mit Stirnlampen, Solarleuchten und Boston-Shakern.
+- **Die zwei Sonnenbrillen-Splits bekamen keine Regel, sondern eine 301.** Ehrlich gefiltert
+  bleiben 2 bzw. 3 Produkte — das ist keine Kategorie. Beide unpubliziert und auf
+  `sonnenbrillen-alle` (64 aktiv, im Menü) weitergeleitet; live belegt 301 → 200. In keinem
+  Menü verlinkt, das Verzeichnis neu gebaut (351 Links, 0 tote).
+- ⚠️ **Und meine Simulation war zuerst falsch gebaut:** Ich habe die neuen Regeln über Shopifys
+  SUCHE geprüft — die tokenisiert, eine Smart-Regel `CONTAINS` ist aber ein **literaler
+  Teilstring**. Die Suche meldete für `sonnenbrillen-herren` 17 Treffer, die Regel-Engine 3.
+  Danach den Pool aus der Suche geholt und lokal literal geprüft — auch falsch, der Pool kannte
+  die Zusammensetzungen nicht («Stirnlampe» fehlt bei `title:*lampe*`). **Belastbar ist nur der
+  Inhalt der Kollektion SELBST: die Regel-Engine hat die Antwort schon berechnet.**
+
+**🧸 Und derselbe Mechanismus in der Startseiten-Kachel: 46 Sofakissen standen unter «Spielzeug».**
+`cj_category_fill.mjs:853` machte aus JEDEM Titel mit «plüsch» ein Spielzeug (Ausnahme nur
+`lampe|licht`). Gemessen: 59 aktive Kissenbezüge, Sofahussen, Sofaüberwürfe, Teppiche und Decken
+trugen `spielzeug` + Warengruppe «Spielzeug & Spiele» — und weil sie frisch sind, standen sie
+mit CREATED_DESC ganz vorne in der Kachel. Dieselbe Familie wie die Hundehalsband-Wache eine
+Zeile darüber (04.08.) und der Blanko-Tag der CJ-Gruppen (03.09.).
+- **EINE Regelquelle für beide Sprachen: `automation/pluesch_textil.json`** (Python und JS lesen
+  dieselbe Datei, je 12 bzw. 6 Testfälle in beide Richtungen, 0 Abweichungen). Spielzeug
+  gewinnt: «Plüschtier-Kissen» bleibt Spielzeug, «Plüsch-Sofakissen» wird Heimtextil.
+  46 umgetypt (`automation/pluesch_textil_fix.py`, `tagsRemove`/`tagsAdd`, nie `productUpdate(tags:)`),
+  Quelle im Importer repariert und mit `node --check` **und** einem Laufzeittest belegt.
+- ⚠️ **Eine Verbreiterung wurde nach dem LESEN wieder zurückgenommen.** Ich hatte `kissen`
+  allgemein als Textil-Signal gesetzt — 35 weitere Treffer. Gelesen waren darunter «Husky
+  Plüschkissen 60 cm», «Shiba Inu Plüschkissen», «Plüschkissen **mit Rassel**». Die Kachel heisst
+  «Spielzeug & **Plüsch**»; ein Plüschkissen ist dort nicht falsch, ein Sofaüberwurf schon.
+  **Demoted wird nur, wo der Titel eine MÖBEL-Nutzung benennt.** Gezählt hätte die Verbreiterung
+  «35 weitere repariert» gemeldet.
+- ⚠️ **`kinderspielzeug` und `spielzeug` hatten DIESELBE Regel (`TAG = spielzeug`) und exakt
+  denselben Inhalt** — zwei Kollektionen für dieselbe Ware (Klasse 28.08.). Die nicht verlinkte
+  mit dem irreführenden Namen ist jetzt unpubliziert und weitergeleitet.
+- ⛔ **Dabei ein Beinahe-Schaden, den nur die Live-Prüfung gefangen hat:** Shopify lehnte die
+  301 ab («Target can't redirect to another redirect») — es gab eine **alte Weiterleitung in der
+  GEGENRICHTUNG** (`spielzeug` → `kinderspielzeug`, aus einer früheren Sitzung, inert weil die
+  Kollektion existierte). Ich hatte aber schon unpubliziert: für zwei Minuten war
+  `/collections/kinderspielzeug` ein **404**, und die alte Weiterleitung hätte bei einem 404 auf
+  `spielzeug` ins Leere geführt. Alte 301 gelöscht, richtige gesetzt, live gegengeprüft
+  (301 → 200). **Die Reihenfolge ist die ganze Reparatur: erst die Weiterleitung setzen, dann
+  unpublizieren — nicht umgekehrt.**
+
+**✅ Was die Messung als GESUND ausgewiesen hat:** alle 16 Startseiten-Kacheln haben ein Bild,
+sind im Onlineshop publiziert und tragen ≥39 aktive Produkte; die 184 Karten zeigen 179
+verschiedene Produkte; kein Menülink zeigt auf eine der reparierten Kollektionen (ein Schrumpfen
+konnte also keinen Menüpunkt leeren). ⚠️ Zwei DRAFT-Karten stehen in `hype-jetzt` (nicht
+CH-versendbar) und `bestseller` (Jade-Set, #1008-Klasse) — für Kundinnen unsichtbar, die
+Storefront zeigt nur Aktive, aber sie belegen je einen kuratierten Platz.
+
 ## 🪟 «Katalog verbessern»: 1'000 unerfüllbare Lieferzusagen — der eigene Ledger hatte sie zugedeckt (2026-09-09, 11:40 UTC)
 Betreiber: «kataligverbessern». Erst gemessen, wo der Katalog GESEHEN wird — zwei Linsen, und
 die zweite ist die schärfere:
