@@ -1,3 +1,50 @@
+## 📦 Zwei Sendungsnummern, null Übergaben — und die Bestell-Ampel war dafür blind (2026-09-09, 03:30 UTC)
+Betreiber schickte einen CJ-App-Screenshot: beide Aufträge vom 07.09. stehen auf **«Pending»**.
+Gemessen statt der Beschriftung geglaubt:
+| | #1017 Messer, Pratteln | #1018 Ladegerät, Dulliken |
+|---|---|---|
+| bezahlt | 07.09. 14:50 UTC | 07.09. 17:44 UTC |
+| Shopify | **FULFILLED**, Kunde benachrichtigt 14:56 | **FULFILLED**, benachrichtigt 17:45 |
+| CJ orderStatus | UNSHIPPED | UNSHIPPED |
+| Sendungsnummer | EQKPT8612701376YQ | EQKPT8612702883YQ |
+| **Stationen bei CJ** | **1 (leer)** | **1 (leer)** |
+**Die Labels existieren, die Pakete sind nie beim Carrier angekommen.** Zwei Kunden sitzen seit
+zwei Tagen auf einer Sendungsverfolgung, die nichts zeigt. **Eine Sendungsnummer ist ein Label,
+keine Übergabe** — dieselbe Familie wie «eine Bestätigungsmail bestätigt den ANTRAG, nicht die
+AUSFÜHRUNG» (08.09.), nur beim Lieferanten statt bei der Bank.
+- **Die Gegenprobe macht den Befund erst hart:** die zugestellte Sendung LX1014
+  (EQKPT8612454928YQ, gleiche EQKPT-Form) hat **21 Stationen**. Ein leeres Feld ist erst ein
+  Befund, wenn es bei einem bekannt-gelungenen Fall gefüllt wäre.
+- ⛔ **Und der Grund, warum es nur ein Screenshot gefunden hat: `bestell_ampel.py` meldet
+  bezahlte, UNERFÜLLTE Bestellungen.** Diese hier sind FULFILLED — für die Ampel sah alles
+  erledigt aus. **Eine Ampel, die den Zustand «erledigt» als Endstation behandelt, sieht nicht,
+  was NACH dem Erledigen schiefgeht.** Neu: `automation/versand_stillstand.py` (stündlich im
+  Keepalive, direkt hinter der Bestell-Ampel, MELDET NUR): erfüllte Bestellungen der letzten
+  30 Tage → Tracking-Nummer → CJ `getTrackInfo`; Befund, wenn seit 48 h **≤ 1 Station** und
+  nicht «Delivered».
+- ⚠️ **Mein erster «Positivtest» war keiner — und das ist die eigentliche Lehre des Abends.**
+  Der scharfe Lauf schwieg, und ich hätte das fast als «funktioniert, nichts offen» gelesen.
+  Der Grund war banal: die Sendungen waren **34–37 h** alt, meine Schwelle steht auf 48. Ein
+  Melder, der bei einem Fall schweigt, den man von Hand gefunden hat, ist NICHT geprüft —
+  er ist erst geprüft, wenn man weiss, **warum** er schweigt. In beide Richtungen belegt:
+  `STILL_H=24` meldet genau die zwei und überspringt die drei zugestellten (#1013/#1014/#1015),
+  `STILL_H=9999` schweigt.
+- ⚠️ **Die 48 h sind GESETZT, nicht gemessen** — CJs Bearbeitungszeit von 1–3 Werktagen ist
+  bekannt, wie lange eine Nummer normalerweise vor dem ersten Scan liegt, nicht. Das gehört so
+  gesagt und nicht als geeichte Schwelle verkauft; der aktuelle Fall erreicht sie heute
+  Nachmittag von selbst.
+- ⚠️ **Fremde Sendungen sind kein Befund:** Kennt CJ eine Nummer gar nicht (0 Stationen, kein
+  Status), wird sie übersprungen — sonst meldete die Ampel Printful-Pakete als Stillstand.
+- ✅ Nachgefasst im BESTEHENDEN Support-Thread (`1a066a03bf2c8dd2`, dort hat CJ am 07.09.
+  zuletzt geantwortet), nicht in einem neuen: beide Aufträge mit **allen drei Kennungen**
+  (CJ-Nummer, DP-Zahlungsreferenz aus dem Screenshot, Tracking) — die CJ-Oberfläche sucht nach
+  der DP-Nummer, die API kennt die Auftragsnummer (Lehre 07.09.: wer durch eine fremde
+  Oberfläche lotst, nennt die Kennung, nach der DIESE Oberfläche sucht).
+- **Kunden bewusst NOCH NICHT informiert.** Zwei Tage sind bei CJ-China im Rahmen; eine Mail
+  «Ihr Paket hängt» erzeugt Unruhe, bevor etwas belegt schiefgelaufen ist. Selbstmessung auf
+  10.09. 07:00 UTC gesetzt: bewegt sich bis dahin nichts UND antwortet CJ nicht, werden beide
+  proaktiv informiert — mit dem ehrlichen Stand und **ohne neues Lieferversprechen**.
+
 ## 💥 Der Grind stand 6,5 Stunden still — eine Zuweisung an ein `const`, unsichtbar für beide Prüfungen (2026-09-09, 01:15 UTC)
 Die CJ-Zahl stand fünf Keepalive-Runden auf **52'032**, und ich habe sie dreimal mit «passt zum
 vollen Dateispeicher» erklärt. **Das war eine Vermutung, keine Messung.** Beim vierten Mal in den

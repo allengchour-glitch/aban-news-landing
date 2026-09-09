@@ -379,6 +379,14 @@ for P in "$REPO_AUTO"/*.py; do
 done
 
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
+
+# 📦 VERSAND-AMPEL (09.09.2026): Meldet Sendungen, die eine NUMMER haben, aber nie losgefahren
+# sind. #1017/#1018 bekamen am 07.09. binnen Minuten eine Tracking-Nummer, beide Kunden wurden
+# benachrichtigt — und zwei Tage spaeter zeigte CJ je EINE leere Station (eine zugestellte
+# Sendung hat 21). Die Bestell-Ampel darueber konnte das nicht sehen: sie meldet UNERFUELLTE
+# Bestellungen, diese hier sind in Shopify FULFILLED. Eine Sendungsnummer ist ein Label, keine
+# Uebergabe. MELDET NUR, und nur bei Befund.
+[ -f "$REPO_AUTO/versand_stillstand.py" ] && python3 "$REPO_AUTO/versand_stillstand.py" 2>/dev/null
 # CJ nimmt Guthaben erst ab USD 2000 an -> der Automat kann nie selbst bezahlen.
 # Deshalb MELDEN, was auf einen Betreiber-Klick wartet, statt es zu versuchen.
 python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar (Waechter fehlt oder CJ antwortet nicht)"

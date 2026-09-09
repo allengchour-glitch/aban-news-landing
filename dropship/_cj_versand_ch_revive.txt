@@ -512,3 +512,23 @@
 15523902718337	wiederbelebt	kuchenmesser-mit-wasserhahn-988608	8.15	11.04
 15523902882177	wiederbelebt	boning-messer-aus-rosenholz-35-cm-315776	8.72	11.41
 15523902980481	wiederbelebt	frucht-und-entbeinmesser-27-5-cm-rosenholzgrif-094976	7.29	11.66
+15523903046017	wiederbelebt	kuchenmesser-aus-rostfreiem-stahl-605600	6.13	9.53
+15523903111553	wiederbelebt	drachen-tiger-knochenmesser-mit-eisriss-klinge-231808	8.72	11.61
+15523903340929	wiederbelebt	knochenmesser-mit-palisandergriff-663104	8.15	10.93
+15523903570305	wiederbelebt	metzgermesser-zum-entbeinen-991168	8.72	11.05
+15523903897985	wiederbelebt	kuchenmesser-chiron-knochen-klein-046080	8.00	11.91
+15523938828673	wiederbelebt	metzger-ausbeinmesser-fur-kuche-und-verkauf-558976	8.00	11.02
+15523939418497	wiederbelebt	obst-und-schalmesser-fur-die-kuche-676608	9.88	12.88
+15523940467073	wiederbelebt	damast-kuchenmesser-set-mit-harzgriff-974656	18.15	14.50
+15523940761985	keine-linie	taschen-klappmesser-fur-outdoor-abenteuer-602800
+15523940893057	wiederbelebt	klappmesser-aus-zinklegierung-und-d2-stahl-608000	5.99	10.89
+15523941843329	wiederbelebt	klappmesser-mit-karbonfasergriff-601600	7.22	11.03
+15523942039937	wiederbelebt	titan-taschenmesser-fur-outdoor-und-alltag-613400	6.82	18.29
+15523994829185	wiederbelebt	japanisches-kochmesser-fur-gemuse-und-fruchte-623500	7.00	10.43
+15523996336513	wiederbelebt	taktisches-messer-mit-hoher-harte-tragbar-600300	6.35	9.90
+15523996959105	wiederbelebt	faltmesser-damaststahl-palisander-618400	6.28	12.11
+15523997712769	keine-linie	faltmesser-mit-g10-griff-606100
+15523998138753	keine-linie	taschenmesser-aus-titanlegierung-606600
+15523998695809	keine-linie	outdoor-klappmesser-d2-605900
+15524694589825	wiederbelebt	stainless-steel-messer-set-17-stuck-176064	35.87	14.70
+15524699406721	keine-linie	klappmesser-aus-d2-stahl-fur-outdoor-614500
