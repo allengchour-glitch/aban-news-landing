@@ -1,3 +1,21 @@
+## ⛔ Der Push ist gesperrt — Lesen geht, Schreiben nicht (2026-09-09, 13:40 UTC)
+
+`git push` antwortet seit 13:38 UTC mit **403**: «Claude doesn't have GitHub access to
+allengchour-glitch/aban-news-landing for your organization». Gemessen statt vermutet:
+**`git fetch` funktioniert weiterhin** (rc=0) — es ist also keine Netzstörung und kein
+kaputter Remote, sondern die **Schreib-Autorisierung der Claude-GitHub-App** ist für dieses
+Repo weg. Passend dazu hat der GitHub-Konnektor in derselben Sitzung mehrfach die Verbindung
+verloren (`CLIENT_HTTP_NOT_IMPLEMENTED`).
+- **Folge:** Commits stapeln sich lokal. Der Auto-Committer läuft weiter und committet die
+  Ledger im 90-Sekunden-Takt — sie kommen nur nicht mehr auf origin an. Ein Container-Neustart
+  verliert sie NICHT (Repo überlebt), ein Snapshot-Rückfall schon.
+- **Beheben kann es nur der Betreiber:** Claude-GitHub-App neu installieren
+  (github.com/apps/claude/installations/select_target) oder GitHub in den claude.ai-Connectors
+  neu verbinden.
+- **Regel: Ein 403 beim Push ist eine Aussage über die BERECHTIGUNG, nicht über die Erreichbarkeit.**
+  Wer ihn für einen Netzfehler hält, wiederholt ihn mit Backoff — und das hilft nie. Die
+  Gegenprobe ist ein `fetch`: geht der durch, ist der Weg offen und nur das Schreiben gesperrt.
+
 ## 🧊 92 Kategorieseiten waren nach PREIS eingefroren — und die Begründung dafür war nie gemessen (2026-09-09, 12:30 UTC)
 Betreiber: «katalog auf webseite verbessern? mehr andere produkten». Erst gemessen, was die
 Webseite ZEIGT: 25/25 Sektionen belegt (Deckel), 18 Produktreihen + 16 Kacheln = **28 von 364
