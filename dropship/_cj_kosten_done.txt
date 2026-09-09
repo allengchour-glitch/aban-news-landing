@@ -23665,3 +23665,11 @@ gid://shopify/Product/15502266532225	CHF 28.66	1 Varianten	Sofa Kissenbezug "Sil
 gid://shopify/Product/15502266564993	CHF 70.58	1 Varianten	Tür-Organizer, mehrlagig
 gid://shopify/Product/15502266597761	CHF 47.38	1 Varianten	Drachenkopf-Hackbeil aus T10 Stahl
 gid://shopify/Product/15502266630529	CHF 40.32	24 Varianten	Robuste Combat Boots für Herren
+gid://shopify/Product/15502266663297	CHF 21.44	1 Varianten	Bauhaus Art Kissenhülle
+gid://shopify/Product/15502266728833	CHF 10.43	1 Varianten	Macaron Schutzhülle für Tablets & Laptops
+gid://shopify/Product/15502266761601	CHF 24.55	96 Varianten	High-top Octopus Martin Boots
+gid://shopify/Product/15502266794369	CHF 47.33	1 Varianten	Rostrotes Kristall-Kissen
+gid://shopify/Product/15502266827137	CHF 66.00	1 Varianten	Handy-Aufbewahrungsbox aus Aluminium
+gid://shopify/Product/15502266859905	CHF 35.71	1 Varianten	Knochenbeil aus Manganstahl und Palisander
+gid://shopify/Product/15502266892673	CHF 22.69	1 Varianten	Bohemian Pentagram Kissen mit Quasten
+gid://shopify/Product/15502266958209	CHF 35.71	1 Varianten	Knochenbeil «Adlerkopf» aus Manganstahl
