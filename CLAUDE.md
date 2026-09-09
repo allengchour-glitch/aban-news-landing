@@ -1,3 +1,64 @@
+## 💽 Dateispeicher gemessen statt geschaetzt — 77 GB, und der Deckel ist der KATALOG (2026-09-09, 08:45 UTC)
+Betreiber: «Dateispeicher check lösche unnötige sachen oder ich gebe dir google speicherplatz».
+Erst gemessen, dann geloescht — und die Messung dreht die Frage um.
+- **Der Deckel ist noch erreicht, am Objekt belegt:** volle Upload-Kette mit einer **25-Byte-Textdatei** —
+  `stagedUploadsCreate` ok, Upload HTTP 201, `fileCreate` ohne `userErrors`, `fileStatus: UPLOADED` —
+  und **20 s spaeter am Knoten `FAILED · FILE_STORAGE_LIMIT_EXCEEDED`**. Zweimal gelaufen, beide Male gleich.
+- ⛔ **Und die Antwort auf «einfach aufraeumen»: 9,1 MB freigegeben, danach dieselbe Absage.** Zusammen mit
+  dem 04.09.-Befund (342 MB · 1,16 GB · **2,07 GB** freigegeben, Probe unveraendert) ist damit die bequeme
+  Erklaerung widerlegt, Shopify gebe geloeschten Platz nur verzoegert frei: **die 2,07 GB sind seit fuenf
+  Tagen weg und die Uploads gehen immer noch nicht.** Der Shop steht nicht knapp ueber dem Deckel, sondern
+  deutlich. Plan gemessen: **Basic** (eine GB-Zahl gibt Shopify weiterhin nirgends aus — Korrektur 04.09. gilt).
+- **Zum ersten Mal GEMESSEN statt hochgerechnet** (1'200 aktive Produkte quer durch fuenf Preisbaender,
+  `originalSource.fileSize` je Medium):
+  | | |
+  |---|---:|
+  | Ø Medien je aktivem Produkt | **4,8** |
+  | Ø Bytes je aktivem Produkt | **1,30 MB** (Ø 280 KB/Bild) |
+  | hochgerechnet auf ~52'000 aktive | **66 GB** |
+  | Entwuerfe mit Medien (gezaehlt) | **~10,5 GB** |
+  | Dateien-Bibliothek (939 GenericFiles, vollstaendig ausgelesen) | **611 MB** |
+  | Videos (215 Stueck, eigener 250er-Deckel) | 357 MB |
+  | **Summe** | **~77 GB** |
+  **Die Bibliothek ist 0,8 % des Problems.** Wer dort aufraeumt, putzt sauber am falschen Ende
+  (dieselbe Lehre wie 04.09., jetzt mit Zahlen statt Stichproben).
+- **Geloescht wurde, was BELEGBAR nichts kostet:** 80 Dateieintraege mit `fileStatus: FAILED`
+  (0 Bytes, keiner in Theme/Seiten/Artikeln referenziert — sie geben keinen Platz frei, aber sie
+  verstopfen die Bibliothek und die Speicher-Ampel) und **zwei wirklich verwaiste Videos, 9,1 MB**:
+  `luxestyle-brand-30s.mp4` (einzige Fundstelle im ganzen Repo ist `render_brand_video.py` Zeile 115 —
+  also das Skript, das es ERZEUGT: jederzeit neu renderbar) und `hyaluronsaure-…-clean.mp4`
+  (**null Fundstellen**, weder Theme noch Seiten noch Queue noch Post-Ledger).
+- ⛔ **Und die vier Videos, die ich NICHT geloescht habe, obwohl sie danach aussahen:**
+  `bestof-20260706-clean.mp4` traegt einen offenen TikTok-Auftrag in `PC-CLAUDE-INBOX.md`,
+  `werbung-selbst-gestalten-de.mp4` steht auf `posted` UND auf `needs-rehost` (widerspruechlich),
+  `luxestyle-mix-2026-06-12.mp4` auf `saison-skip` (kommt wieder), und die 16 Kategorie-Videos vom
+  02./03.08. (~200 MB) stehen als `ready` in `reels_seed.csv`. **Vorbereitete Arbeit ist kein Abfall** —
+  und 200 MB waeren 0,26 % des Deckels gewesen.
+- ⛔ **Die groesste Reserve ist exakt vermessen und bleibt trotzdem liegen: `duplikat-auto-draft` =
+  4'908 Produkte, 25'852 Medien, 6,36 GB.** Der Beweis fehlt weiterhin, und heute ist auch klar warum:
+  Das Bild-Hash-Ledger (`_bildhash.txt`, 55'976 Zeilen) fuehrt **aktive** Produkte — von 60 gepruefen
+  Dubletten-Entwuerfen steht **0** darin. Es kann den lebenden Zwilling also von dieser Seite gar nicht
+  belegen. Dokumentiert sind unveraendert nur **195 Paare** (140 + 55 im Ledger, 129 im Bericht); deren
+  189 pruefbare Faelle sind am 08.09. erledigt. Die uebrigen ~4'700 tragen den Tag aus dem
+  **TITEL**-Abgleich — und am 03.09. ist gemessen, dass **202 gleichnamige Paare KEINE Dubletten sind**
+  (verschiedene SKU, verschiedener Preis). **Eine Loeschung, deren Sicherheit man nicht zeigen kann,
+  unterbleibt** — auch wenn sie 6,36 GB braechte.
+- **Was der Google-Speicher kann und was nicht, gemessen:** Shopify liefert Produktbilder aus dem
+  EIGENEN CDN; eine Drive-Datei ist kein Produktmedium, und ein Import dorthin kostet denselben Platz.
+  **Damit beruehrt das Angebot 99 % des Problems nicht.** Es loest aber genau eine Sache, die der Deckel
+  aktiv kaputt macht: Die TikTok-Queue auf dem CDN steht auf dem **31.08.**, waehrend die lokale Queue vom
+  **08.09.** ist — die Datei traegt `FILE_STORAGE_LIMIT_EXCEEDED`, der PC liest seit **neun Tagen** einen
+  alten Stand. Die Queue liegt jetzt auf Drive (`1WCBBJkivWm6YKCV0QYt3DVJdXyUq1HGC`, 10'655 Bytes,
+  bytegleich). ⚠️ **Zwei Handgriffe fehlen und beide kann diese Sitzung nicht tun:** das
+  Drive-Werkzeug hier teilt nur mit EINER Adresse, nicht «jeder mit dem Link» (ohne das antwortet
+  `uc?export=download` mit der Google-Anmeldeseite — gemessen), und `luxestyle-tt-post.mjs` hat die
+  CDN-Adresse in Zeile 23 fest verdrahtet.
+- **Die Entscheidung ist damit keine Aufraeumfrage mehr, und sie hat jetzt eine Zahl:**
+  **Jede 10'000 Produkte kosten 13 GB.** Der Shop zeigt in seinen Reihen rund 250 Produkte, und in
+  30 Tagen hatten ~30 Landeseiten ueberhaupt Verkehr. Die 52'000 aktiven Produkte kosten 66 GB und
+  bringen **76 kaufbereite Besucher in 14 Tagen** (Trichter 09.09.). Kleinerer Katalog oder groesserer
+  Plan — Aufraeumen ist der Aufschub, den die letzten fuenf Tage widerlegt haben.
+
 ## 🛒 Die Kasse verschweigt den Endbetrag — 6 Kassengänge, 0 abgebrochene Checkouts (2026-09-09, 06:10 UTC)
 Betreiber: «push das jemand kauft». Erst gemessen, 14 Tage:
 | Quelle | Sitzungen | Körbe | Kasse | **Kauf** |

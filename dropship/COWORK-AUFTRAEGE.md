@@ -946,3 +946,16 @@ sie gegen unseren eigenen Mailserver (Absenderreputation).
 3. **Nichts tun** — kostet nur, wenn die naechste Preisstufe erreicht wird.
 
 Sag mir, welche Variante, dann fuehre ich sie chargenweise mit Gegenprobe aus.
+
+## 📦 TikTok-Queue über Google Drive freischalten (09.09.2026) — 2 Klicks
+Der Shopify-Datei-Speicher ist voll; die CDN-Kopie der Queue steht deshalb auf dem **31.08.**,
+während die lokale Queue vom **08.09.** ist. Der PC-Poster liest seit 9 Tagen einen alten Stand.
+Die Queue liegt jetzt bytegleich auf Google Drive und braucht KEINEN Shopify-Speicher:
+1. **Drive → `tiktok_queue.json` → Freigeben → «Jeder mit dem Link» → Betrachter.**
+   (Ohne das antwortet die Abruf-Adresse mit der Google-Anmeldeseite — gemessen 09.09.)
+   Datei-ID `1WCBBJkivWm6YKCV0QYt3DVJdXyUq1HGC`
+2. Auf dem PC in `%USERPROFILE%\LuxeStyleTT\luxestyle-tt-post.mjs` **Zeile 23** ersetzen:
+   `const QUEUE_URL = 'https://drive.google.com/uc?export=download&id=1WCBBJkivWm6YKCV0QYt3DVJdXyUq1HGC';`
+Danach zieht der PC wieder den tagesaktuellen Stand. ⚠️ Das löst NUR den Queue-Transport —
+den Datei-Speicher des Shops berührt es nicht (Produktbilder liefert Shopifys eigenes CDN,
+eine Drive-Datei kann kein Produktmedium sein).
