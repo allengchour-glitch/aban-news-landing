@@ -1,3 +1,50 @@
+## 💥 Der Grind stand 6,5 Stunden still — eine Zuweisung an ein `const`, unsichtbar für beide Prüfungen (2026-09-09, 01:15 UTC)
+Die CJ-Zahl stand fünf Keepalive-Runden auf **52'032**, und ich habe sie dreimal mit «passt zum
+vollen Dateispeicher» erklärt. **Das war eine Vermutung, keine Messung.** Beim vierten Mal in den
+Runner-Log gesehen — dort stand seit Stunden:
+```
+automation/cj_category_fill.mjs:831
+   if(variants.length===1) g=wahlSicher(g);
+TypeError: Assignment to constant variable.
+```
+`g` wird auf Zeile 750 als **`const`** deklariert. Die `wahlSicher`-Korrektur vom 08.09. 14:22
+(`eb4f57922`) schreibt seither dorthin zurück — **173 Abstürze**. Behoben an der Deklaration
+(`const` → `let`, je eine Zeile); `wahlSicher(o)` gibt ein Objekt zurück, die Neuzuweisung ist
+gewollt.
+- ⚠️ **BEIDE Haupt-Importer trugen ihn** (`cj_category_fill` 750/831, `cj_trending_import`
+  281/317) — die Korrektur wurde damals in beide verdrahtet, der Fehler also gleich mit.
+  `cj_sku_import` ist verschont, weil `wahlSicher` dort in einer `return`-Kette steht und nichts
+  zuweist. **Fünfzehnte Fassung der Geschwister-Lehre.**
+- ⛔ **Und der Grund, warum es elf Stunden niemand sah: KEINE der beiden Prüfungen kann es
+  sehen.** `node --check` meldet beide Dateien als **ok** (eine Zuweisung an `const` im
+  Funktionsrumpf ist ein LAUFZEIT-TypeError, kein Syntaxfehler). Und der DRY-Lauf erreicht die
+  Zeile nie — er macht auf Zeile 817 `continue`, also **14 Zeilen davor**. Dieselbe Klasse wie
+  `googleKategorie is not defined` am 03.09.: **eine Reparatur, die hinter mehreren Toren liegt,
+  ist nur durch einen echten Schreiblauf belegbar.** Ein Trockenlauf, der vor der geänderten
+  Zeile abbiegt, prüft die Änderung nicht.
+- ⚠️ **KORREKTUR an meiner eigenen Commit-Meldung, im selben Zug:** Ich schrieb «stand seit 11
+  Stunden still» und «TypeError bei JEDEM Produkt». Beides zu stark. Aus der Versionsgeschichte
+  des Ledgers gemessen (Lehre 04.09.: ein Ledger ohne Zeitstempel bekommt ihn aus `git log`):
+  | Zeitpunkt | Ledger |
+  |---|---:|
+  | 08.09 15:38 | 51'950 |
+  | 08.09 17:17 | 51'972 |
+  | **08.09 18:44** | **52'032** |
+  | 09.09 01:15 (Fix) | 52'032 |
+  Der Fehler trifft **nur Ein-Varianten-Ware** (`variants.length===1`); Mode mit mehreren
+  Varianten lief weiter, deshalb wuchs der Ledger nach 14:22 noch um 82. **Wirklich still stand
+  er 6,5 Stunden (18:44 → 01:15)** — bei der gemessenen Vorher-Rate von ~40/h sind das
+  grössenordnungsmässig 250 Produkte. Teuer ist der Absturz trotzdem über seinen Einzelfall
+  hinaus: er tötet den **ganzen Node-Prozess**, also auch den Rest des Kategorie-Fensters.
+- ✅ **Am echten Erzeugnis belegt, nicht am Modul:** letzter Absturz **23:13:55**, Fix
+  **01:15:18**, erster Lauf danach **01:16:01 → «✅ Reiserucksack mit Reissverschluss»**,
+  Ledger 52'032 → **52'035**.
+- **Die Lehre über den Fall hinaus: eine Zahl, die sich nicht bewegt, ist ein Befund, kein
+  Zustand.** Ich hatte für den Stillstand eine plausible Erklärung parat (der Speicherdeckel ist
+  real und dokumentiert) und habe sie dreimal wiederholt, statt einmal in das Log zu sehen, das
+  die Antwort seit Stunden im Klartext enthielt. **Eine bequeme Erklärung ist die gefährlichste
+  Sorte Vermutung** — sie beendet die Suche, ohne etwas gemessen zu haben.
+
 ## 🔑 «Ist gesetzt» ist keine Messung — die Zugangsdaten sind in KEINER Umgebungsvariable (2026-09-08, 22:12 UTC)
 Der Betreiber hatte gemeldet, `SHOPIFY_CLIENT_ID`/`_SECRET` seien in den Umgebungs-Einstellungen
 hinterlegt. Der Container startete um 22:09 neu — der einzige Moment, in dem sich das prüfen lässt.

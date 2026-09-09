@@ -22809,3 +22809,11 @@ gid://shopify/Product/15501383598465	CHF 201.74	1 Varianten	Japanisches Damascus
 gid://shopify/Product/15501383631233	CHF 17.27	36 Varianten	Männer Casual Langärmliger Stepp‑Cardigan
 gid://shopify/Product/15501383696769	CHF 18.56	1 Varianten	Digitaler Ölbild
 gid://shopify/Product/15501383729537	CHF 14.80	1 Varianten	Macaron H-Geschirrset für Katzen & Hunde
+gid://shopify/Product/15501383795073	CHF 40.22	1 Varianten	Damasker Schneidmesser
+gid://shopify/Product/15501383827841	CHF 18.56	1 Varianten	Digitaler Ölgemälde
+gid://shopify/Product/15501383860609	CHF 11.99	10 Varianten	Cotton-Floral-Hemden
+gid://shopify/Product/15501383958913	CHF 18.70	12 Varianten	Badehut mit Sonnenschutz
+gid://shopify/Product/15501384057217	CHF 18.56	1 Varianten	Digitales Ölgemälde nach Zahlen (ohne Rahmen)
+gid://shopify/Product/15501384450433	CHF 18.23	54 Varianten	Loose-Fit-Pulli
+gid://shopify/Product/15501405487489	CHF 16.63	56 Varianten	Polka-dot-Lockenrock
+gid://shopify/Product/15501412499841	CHF 10.14	72 Varianten	Sommerkleid
