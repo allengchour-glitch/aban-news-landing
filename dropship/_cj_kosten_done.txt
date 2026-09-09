@@ -22888,3 +22888,8 @@ gid://shopify/Product/15501681099137	CHF 13.61	1 Varianten	Blauer Klangball
 gid://shopify/Product/15501681230209	CHF 12.22	5 Varianten	Peach-Pink-Bluse
 gid://shopify/Product/15501681295745	CHF 30.82	1 Varianten	Universal-Ladestation mit Wecker und Licht
 gid://shopify/Product/15501681426817	CHF 14.60	1 Varianten	Tischtennis-Grundplatte
+gid://shopify/Product/15501681557889	CHF 8.67	1 Varianten	Wavy Katzentrackball
+gid://shopify/Product/15501681754497	CHF 41.72	4 Varianten	Blauer A-Linien-Rock
+gid://shopify/Product/15501681787265	CHF 33.73	1 Varianten	Fünf-in-eins-Ladestation
+gid://shopify/Product/15501681918337	CHF 35.05	1 Varianten	Boxing-Ball
+gid://shopify/Product/15501682213249	CHF 81.84	1 Varianten	Dual-Channel-Ladegerät
