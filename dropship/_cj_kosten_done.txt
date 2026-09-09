@@ -23221,3 +23221,9 @@ gid://shopify/Product/15501902709121	CHF 30.61	16 Varianten	Hohe Sneaker
 gid://shopify/Product/15501902741889	CHF 8.14	1 Varianten	Schädelmuster Schnitttuch
 gid://shopify/Product/15501902774657	CHF 33.77	1 Varianten	Blumenbau-Blockset
 gid://shopify/Product/15501902807425	CHF 15.95	1 Varianten	Multifunktionale Abtropfschale für die Küche
+gid://shopify/Product/15501902840193	CHF 30.87	96 Varianten	Radfahrer-Schuhe
+gid://shopify/Product/15501902938497	CHF 35.04	1 Varianten	Wind Samt Kissenbezug für Büro und Zuhause
+gid://shopify/Product/15501903004033	CHF 26.55	1 Varianten	Schalensäge für Fisch
+gid://shopify/Product/15501903036801	CHF 19.90	1 Varianten	Kissenpolster für Wohnzimmer
+gid://shopify/Product/15501903069569	CHF 33.41	1 Varianten	Ferngesteuerte Rennwagen
+gid://shopify/Product/15501903102337	CHF 18.67	36 Varianten	Loafer mit Strass und Cut-outs

@@ -390,3 +390,6 @@ gid://shopify/Product/15527365116289	Silber
 gid://shopify/Product/15527365181825	Mehrfarbig
 gid://shopify/Product/15527365640577	Silber
 gid://shopify/Product/15527365804417	Silber
+gid://shopify/Product/15528737177985	Silber
+gid://shopify/Product/15528737440129	Silber
+gid://shopify/Product/15528737505665	Mehrfarbig
