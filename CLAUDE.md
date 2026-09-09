@@ -87,7 +87,9 @@ Startseiten-Kacheln haben ein Kollektionsbild und 19–20 aktive Produkte; die R
 Schmuck trägt **16 von 16** eine prüfbare CJ-Lieferanten-SKU und kein Risiko-Tag (die
 #1008-Klasse ist dort sauber); die Doppelblock-Klasse ist **reine Altlast** — gemessen 30 % der
 ältesten 300 aktiven Produkte, **0 % der jüngsten 300**, insgesamt genau **150**, und die Quelle
-(`ls-feed-details`) hat seit dem 11.08. keinen Schreiber mehr.
+(`ls-feed-details`) hat seit dem 11.08. keinen Schreiber mehr. **Alle 150 sind jetzt vereint**
+(23 Verkehrsseiten + 127 Rest, je am Objekt gegengeprüft: 0 doppelt). Kommt die Klasse morgen
+zurück, nennt `produktdetails_nachmessen.py` den Schreiber über dessen Schreibminute.
 
 ## 💽 Dateispeicher gemessen statt geschaetzt — 77 GB, und der Deckel ist der KATALOG (2026-09-09, 08:45 UTC)
 Betreiber: «Dateispeicher check lösche unnötige sachen oder ich gebe dir google speicherplatz».

@@ -15382,3 +15382,47 @@ gid://shopify/Product/15529081110913	38->1	Kochgeschirr-Set
 gid://shopify/Product/15529081176449	13->0	Hundegeschirr mit Schnalle
 gid://shopify/Product/15529081995649	24->1	Hundegeschirr Brustgurt Oxford-Stoff
 gid://shopify/Product/15529089302913	14->0	Outdoor-Kochset für 2–3 Personen
+gid://shopify/Product/15529102639489	27->0	Blumen-Armband mit Zugverschluss
+gid://shopify/Product/15529106047361	45->0	Rucksack für Reisen und Alltag
+gid://shopify/Product/15529109455233	27->1	Rucksack für Laptop und Freizeit
+gid://shopify/Product/15529109586305	11->0	Zirkon-Blütenarmband
+gid://shopify/Product/15529112306049	27->0	Unisex Rucksack mit Reissverschlussfächern
+gid://shopify/Product/15529114730881	38->0	Laptoptasche 15.6 Zoll
+gid://shopify/Product/15529115320705	32->0	Wasserdichter Rucksack mit Laptopfach
+gid://shopify/Product/15529116107137	10->0	Computer-Rucksack mit Futter, wasserabweisend
+gid://shopify/Product/15529120399745	10->0	Multifunktionale Wickeltasche
+gid://shopify/Product/15529122726273	71->1	Freizeit Rucksack 20-35L
+gid://shopify/Product/15529123283329	26->0	Nordischer Kissenbezug einfarbig Plüsch
+gid://shopify/Product/15529125740929	12->0	Baby-Kissen mit Polyesterfaserfüllung
+gid://shopify/Product/15529126461825	38->0	Schmetterling Plüschkissen
+gid://shopify/Product/15529127084417	41->2	Samtkissen im Nordic-Stil
+gid://shopify/Product/15529127477633	33->0	Umhängetasche mit Tiermuster
+gid://shopify/Product/15529129247105	64->1	Multifunktionale Sport-Gürteltasche
+gid://shopify/Product/15529132097921	162->1	Weihnachts-Kissenbezug mit Pailletten
+gid://shopify/Product/15529135636865	12->0	Halskette Sterlingsilber Kubanische Kette
+gid://shopify/Product/15529136062849	17->0	Silberarmband mit Zirkonia, quadratisch
+gid://shopify/Product/15529137570177	19->1	Zirkon-Armband mit Federverschluss
+gid://shopify/Product/15529138323841	80->0	Muschelarmband aus Titanstahl
+gid://shopify/Product/15529140420993	44->0	Hundehalsband mit AirTag-Fach
+gid://shopify/Product/15529140945281	41->1	Hundeleine Dreiteiliges Set Edelstahl Halsband
+gid://shopify/Product/15529141469569	20->2	Halsband für Hunde, Gold, 14 mm
+gid://shopify/Product/15529141502337	57->0	Löwenkopf-Armband aus Edelstahl
+gid://shopify/Product/15529142780289	32->1	Kalbsleder-Uhrenarmband
+gid://shopify/Product/15529143402881	119->0	Hundehalsband mit Schnalle
+gid://shopify/Product/15529143828865	29->3	Minimalistisches Tennisarmband mit Zirkonia
+gid://shopify/Product/15529146450305	16->0	Ring mit Süsswasserperle oder Katzenauge
+gid://shopify/Product/15529147040129	75->1	Mehrlagiger breiter Ring
+gid://shopify/Product/15529147597185	8->0	Nagelringe aus Metall
+gid://shopify/Product/15529148744065	11->1	Polo-Rollkragen Strickkleid
+gid://shopify/Product/15529149366657	105->0	Pailletten-Abendkleid ärmellos mit Schlitz
+gid://shopify/Product/15529151234433	62->1	Damenkleid mit blauem Blumenmuster
+gid://shopify/Product/15529151299969	23->0	Damen Bluse mit Notch-Kragen und Bindemanschetten
+gid://shopify/Product/15529152708993	8->0	Langes Kleid mit A-Linie und Neckholder
+gid://shopify/Product/15529153429889	9->0	A-Linien Jeanshemdkleid für Damen
+gid://shopify/Product/15529153560961	8->1	Damen Ärmelloses A-Linien-Kleid mit Blumenmuster
+gid://shopify/Product/15529153626497	51->0	Elegantes, figurbetontes Maxi-Kleid
+gid://shopify/Product/15529153692033	81->1	Cheongsam-Kleid für Mutter und Tochter
+gid://shopify/Product/15529154347393	53->0	Geblümtes Kurzarm-Kleid im Vintage-Stil
+gid://shopify/Product/15529154740609	15->0	Sommer-Outfits für die ganze Familie
+gid://shopify/Product/15529155133825	118->0	Einfaches Etuikleid mit Revers für Damen
+gid://shopify/Product/15529155297665	34->0	Chiffon Strand Maxikleid mit schmaler Taille
