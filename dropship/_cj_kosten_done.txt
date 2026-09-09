@@ -23202,3 +23202,5 @@ gid://shopify/Product/15501901693313	CHF 17.32	1 Varianten	Luxus-Streifen-Bezug
 gid://shopify/Product/15501901758849	CHF 14.01	1 Varianten	Mondkuchen-Form
 gid://shopify/Product/15501901791617	CHF 16.75	1 Varianten	Schwarze und weisse Streifen-Kissen
 gid://shopify/Product/15501901824385	CHF 20.95	1 Varianten	Dreifach-Wireless-Eiergertel
+gid://shopify/Product/15501901955457	CHF 15.93	1 Varianten	Schulterstütze für Bürostuhl
+gid://shopify/Product/15501902020993	CHF 15.59	1 Varianten	Teemat mit Unterteller und Kuchenteller
