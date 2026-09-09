@@ -14,7 +14,30 @@ verloren (`CLIENT_HTTP_NOT_IMPLEMENTED`).
   neu verbinden.
 - **Regel: Ein 403 beim Push ist eine Aussage über die BERECHTIGUNG, nicht über die Erreichbarkeit.**
   Wer ihn für einen Netzfehler hält, wiederholt ihn mit Backoff — und das hilft nie. Die
-  Gegenprobe ist ein `fetch`: geht der durch, ist der Weg offen und nur das Schreiben gesperrt.
+  Gegenprobe ist ein `fetch`.
+- ⛔ **KORREKTUR 90 Minuten später, und sie hebt die Gegenprobe auf: auch das LESEN ist jetzt weg.**
+  Um 13:40 gab `git fetch` noch rc=0, um 15:10 antwortet er mit derselben Meldung wie der Push
+  («GitHub authentication required. Please reconnect your GitHub account»). **Mein eigener Satz
+  «Lesen geht, Schreiben ist gesperrt» hatte damit ein Verfallsdatum von anderthalb Stunden** —
+  eine Zustandsaussage über eine fremde Berechtigung gilt für den Moment ihrer Messung, nicht für
+  die Sitzung. Wer sie ins Gedächtnis schreibt, schreibt ein Datum dazu.
+- ⛔ **Und ein PERSÖNLICHER GITHUB-TOKEN hilft NICHT — gemessen auf drei Wegen.** Der Betreiber
+  schickte einen `github_pat_…`; alle drei Pfade enden vor GitHub:
+  | Weg | Antwort |
+  |---|---|
+  | REST `api.github.com/repos/…` mit `Authorization: Bearer` | **403** «GitHub access is not enabled for this session. An org admin must connect the Claude GitHub App» |
+  | `git push` mit dem PAT (GIT_ASKPASS) | «GitHub authentication required. Please reconnect your GitHub account» |
+  | `git fetch` mit demselben PAT | dieselbe Meldung |
+  **Die Sperre sitzt im Sitzungs-Proxy, nicht bei GitHub** — erkennbar am WORTLAUT: GitHub würde
+  «Invalid username or password» oder «Repository not found» sagen; «reconnect your GitHub account»
+  sagt nur der Vermittler. **Ein Zugangsdatum hilft nur gegen eine Sperre des ZIELS; gegen eine
+  Sperre des WEGES hilft es nie.** Dieselbe Familie wie «ein Endpunkt, der antwortet, beweist nur,
+  dass er antwortet» (28.08.) — nur in der Gegenrichtung: hier antwortet der Falsche mit einer
+  Absage, die wie die des Ziels aussieht.
+- ⚠️ **Der PAT stand im Chat → er gehört WIDERRUFEN** (github.com/settings/personal-access-tokens),
+  und zwar unabhängig davon, dass er hier nichts bewirkt hat: Hausregel seit dem 07.09., und ein
+  Repo-Token mit Schreibrecht ist die teuerste Sorte. Er wurde nirgends gespeichert — kein Repo,
+  keine /tmp-Datei, kein Tresor; die Askpass-Hilfe lag im Scratchpad und ist gelöscht.
 
 ## 🧊 92 Kategorieseiten waren nach PREIS eingefroren — und die Begründung dafür war nie gemessen (2026-09-09, 12:30 UTC)
 Betreiber: «katalog auf webseite verbessern? mehr andere produkten». Erst gemessen, was die
