@@ -22623,3 +22623,14 @@ gid://shopify/Product/15501033046401	CHF 60.94	1 Varianten	Leather-Armbanduhr
 gid://shopify/Product/15501033111937	CHF 25.98	1 Varianten	Leichtes Geschäftsbeutel
 gid://shopify/Product/15501033144705	CHF 10.15	1 Varianten	Dreieckiges Design-Uhr
 gid://shopify/Product/15501033177473	CHF 19.74	1 Varianten	Lockenstab & Glätteisen 2-in-1, Keramik
+gid://shopify/Product/15501033243009	CHF 31.98	1 Varianten	Reiserucksack mit Hartschale · 20–35 L
+gid://shopify/Product/15501033275777	CHF 12.00	1 Varianten	Kalender-Uhr für Männer
+gid://shopify/Product/15501033308545	CHF 14.55	1 Varianten	Wellen-Lockenstab mit drei Heizrohren
+gid://shopify/Product/15501033341313	CHF 34.26	1 Varianten	Grosser Nylon-Rucksack
+gid://shopify/Product/15501033374081	CHF 20.52	1 Varianten	Goldene Uhren
+gid://shopify/Product/15501033406849	CHF 17.08	1 Varianten	Kurzlocken-Iron für Kurzhaarfrisuren
+gid://shopify/Product/15501033439617	CHF 11.15	1 Varianten	Reise-Waschtasche
+gid://shopify/Product/15501033472385	CHF 13.87	1 Varianten	Leichtes Leder-Armband
+gid://shopify/Product/15501033537921	CHF 18.34	1 Varianten	Kurzlocken-Styling-Set
+gid://shopify/Product/15501033570689	CHF 44.49	1 Varianten	Lauf-Trainings-Rucksack
+gid://shopify/Product/15501033603457	CHF 10.05	1 Varianten	Wasserdichter Quartz-Uhr
