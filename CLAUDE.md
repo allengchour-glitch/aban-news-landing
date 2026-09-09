@@ -7,6 +7,8 @@ die zweite ist die schärfere:
 | **«Produktdetails» doppelt** | 3 | **23 (47 %)** |
 | Auswahl-Versprechen bei EINER Variante | 10 | 0 |
 | Geprüfte Qualität · Sie-Anrede · Wirkversprechen · CJK | 0 | 0 |
+Die 23 Verkehrsseiten mit Doppelblock sind repariert (`produktdetails_vereinen`, 23 vereint,
+am Objekt gegengeprüft: 0 doppelt, 0 doppelter Lieferblock).
 **Die grossen Klassen sitzen nicht dort, wo man sie vermutet.** Im Schaufenster tragen 16 von
 23 USA-Zusagen ausgerechnet die Reihe **Premium Schmuck**; auf den Verkehrsseiten ist fast jede
 zweite Seite von der Doppelung betroffen — beides Altware, also genau das, was Google indexiert hat.
@@ -21,7 +23,9 @@ falsche Quittungen, desto weniger Kandidaten — der Lauf machte sich selbst bli
 `produktdetails_vereinen` und war hier nie angewandt: **kommt die Kandidatenliste aus einer
 LIVE-Messung, ist das Objekt die Wahrheit und der Zettel nur ein Zeugnis über die Vergangenheit.**
 Behoben; derselbe Aufruf findet jetzt ohne Sonderschalter Kandidaten, der tägliche Aufseher-Lauf
-arbeitet die Klasse damit von selbst zu Ende.
+arbeitet die Klasse damit von selbst zu Ende. **Lauf durch: 970 geschrieben, 0 schon-sauber,
+0 unklare Stufe; Index «je nach Land» 1'000 → 0, am Objekt an 60 Stichproben tag-tolerant
+gegengeprüft: 0 Befunde, 0 nicht aktiv.**
 - **Vor dem Massenlauf am EINZELFALL geprüft, ob die Schreibvorgänge überhaupt halten:** 30
   repariert → am Objekt sauber, Index 1'000 → 972. **Ein Zombie und eine falsche Quittung sehen
   gleich aus; unterschieden werden sie nur durch einen Schreibvorgang mit sofortiger Gegenprobe.**
@@ -38,7 +42,10 @@ trotzdem beides.**
   EINMAL da?** Keiner der beiden kann sie beantworten — die Sicherung in `versand_jenachland`
   bricht ausdrücklich ab, sobald sich etwas AUSSERHALB seines Blocks ändert (zu Recht, sie
   schützt Nachbarinformation). Also `automation/lieferblock_doppelt.py`, im Aufseher direkt
-  dahinter und unter demselben Produkttext-Schloss. **74 Produkte** betroffen (gemessen).
+  dahinter und unter demselben Produkttext-Schloss. Erster Lauf: **84 entdoppelt, 0 mit
+verschiedenen Zeiten**; Gegenprobe an 40 Stichproben am Objekt: **40 von 40 tragen die
+Lieferaussage jetzt genau EINMAL.** (Die Vorabmessung sagte 74 — die Suche findet die Klasse
+laufend nach, ein Kandidatenzähler ist eine Momentaufnahme.)
 - ⚠️ Konservativ und in beide Richtungen belegt (5 Fälle): nur wenn BEIDE Blöcke da sind fällt
   der nackte; steht nur einer da, bleibt er; nennen sie **verschiedene Zeiten**, wird nichts
   angefasst und der Fall gemeldet — welche Zahl stimmt, entscheidet kein Automat.
@@ -62,7 +69,7 @@ Durchrutscher von heute nennen die zwei Formen, die das Muster nicht kannte:
   Original zurück («lieber die falsche Klausel als ein leerer Text») — meine ersten vier
   Testfälle fielen daran durch, obwohl die Regel stimmte. **Ein Testfall, der die Sicherung des
   Werkzeugs auslöst, prüft die Regel nicht.**
-- **11 sichtbare Fälle von Hand repariert** (jede Regel exakt 1×, Ergebnis als Satz gelesen, Rest
+- **11 sichtbare Fälle von Hand repariert** (Lauf: GESCHRIEBEN 11 · Fehler 0 · Rest-Klauseln je 0) (jede Regel exakt 1×, Ergebnis als Satz gelesen, Rest
   0): Wo nicht belegt ist, welche Ausführung CJ schickt, fällt die Zusage **ganz weg** statt
   ersetzt zu werden — beim Feuerzeug («Dreiflammen- oder Einfachflammen») und beim Rattan-Korb
   («Drei Grössen zur Auswahl: 36x27x21cm …») ist das der ganze Punkt. Nebenbei mitrepariert:
