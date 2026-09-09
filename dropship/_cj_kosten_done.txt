@@ -23195,3 +23195,10 @@ gid://shopify/Product/15501901267329	CHF 17.68	24 Varianten	Sportliche Kindersti
 gid://shopify/Product/15501901300097	CHF 11.30	1 Varianten	Ladestation für alle Geräte
 gid://shopify/Product/15501901431169	CHF 18.01	1 Varianten	Ländliches Sofa-Kissen
 gid://shopify/Product/15501901496705	CHF 16.56	1 Varianten	Nordische Palast-Teller
+gid://shopify/Product/15501901529473	CHF 15.54	63 Varianten	Beachschuhe für Kinder
+gid://shopify/Product/15501901562241	CHF 30.66	1 Varianten	Wasserdichtes Babybettbezug
+gid://shopify/Product/15501901660545	CHF 34.05	1 Varianten	Damast-Küchenmesser
+gid://shopify/Product/15501901693313	CHF 17.32	1 Varianten	Luxus-Streifen-Bezug
+gid://shopify/Product/15501901758849	CHF 14.01	1 Varianten	Mondkuchen-Form
+gid://shopify/Product/15501901791617	CHF 16.75	1 Varianten	Schwarze und weisse Streifen-Kissen
+gid://shopify/Product/15501901824385	CHF 20.95	1 Varianten	Dreifach-Wireless-Eiergertel
