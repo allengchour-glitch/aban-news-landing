@@ -127,10 +127,15 @@ def kandidaten_live(fertig=frozenset()):
             print('PAUSE (Shopify stumm) — kein Ergebnis ist kein Befund.'); break
         for p in pg['nodes']:
             h = p.get('descriptionHtml') or ''
-            if p['id'] in fertig:
-                continue          # ⚠️ WAEHREND des Scans ueberspringen, nicht danach — sonst
-                                  # sammelt der Lauf immer wieder denselben Katalogbeginn ein
-                                  # und meldet «0 offen», obwohl der Rest unberuehrt ist.
+            # ⚠️ 09.09.2026 — DAS LEDGER DARF HIER NICHT FILTERN. Die Abfrage oben liefert
+            # ausschliesslich Produkte, die den Block LIVE noch tragen; eine Quittung fuer so
+            # ein Produkt ist damit per Definition falsch. Genau daran ist die Klasse dreimal
+            # als «erledigt» gemeldet worden: 1'152 Zeilen im Ledger, 1'000 Produkte live mit
+            # dem Block, und der Lauf sagte «Kandidaten: 0 offen». Dieselbe Lehre wie am
+            # 04.09. bei produktdetails_vereinen — **kommt die Kandidatenliste aus einer
+            # LIVE-Messung, ist das Objekt die Wahrheit und der Zettel nur ein Zeugnis ueber
+            # die Vergangenheit.** Geschrieben wird das Ledger weiter (als Spur), gelesen wird
+            # es in diesem Modus nicht mehr.
             if 'ls-liefer' in h and 'je nach Land' in re.sub(r'<[^>]+>', ' ', h):
                 ids.append(p['id'])
         if not pg['pageInfo']['hasNextPage']:
@@ -143,7 +148,7 @@ def kandidaten_live(fertig=frozenset()):
 def kandidaten():
     """IDs aus dem Export — nur die Liste, der Text kommt später live."""
     if QUELLE == 'live' or not os.path.exists(QUELLE):
-        return kandidaten_live(_FERTIG)
+        return kandidaten_live()
     ids = []
     for line in open(QUELLE, encoding='utf-8'):
         try: o = json.loads(line)
@@ -167,8 +172,12 @@ def main():
     if os.path.exists(LEDGER) and not os.environ.get('IGNORIERE_LEDGER'):
         fertig = {l.split('\t')[0] for l in open(LEDGER, encoding='utf-8') if l.strip()}
     _FERTIG = frozenset(fertig)
-    offen = [i for i in kandidaten() if i not in fertig]
-    print(f"Kandidaten: {len(offen)} offen ({len(fertig)} laut Ledger erledigt)")
+    # ⚠️ Im LIVE-Modus filtert das Ledger NICHT (siehe kandidaten_live): die Abfrage liefert
+    # nur Produkte, die den Block noch tragen — jede Quittung dafuer ist falsch.
+    live = QUELLE == 'live' or not os.path.exists(QUELLE)
+    offen = kandidaten() if live else [i for i in kandidaten() if i not in fertig]
+    print(f"Kandidaten: {len(offen)} offen ({len(fertig)} im Ledger"
+          f"{', im LIVE-Modus bewusst ignoriert' if live else ' erledigt'})")
     if not offen:
         print("FERTIG"); return
 
