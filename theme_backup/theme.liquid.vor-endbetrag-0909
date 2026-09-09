@@ -1,0 +1,523 @@
+<!doctype html>
+<html
+  {% if request.design_mode %}
+    class="shopify-design-mode"
+  {% endif %}
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    <meta name="p:domain_verify" content="2dfeba07f6618890b38985e5b46ad70c"/>
+    <meta name="p:domain_verify" content="2a6f78cfbe36db90122bb68faf22887b"/>
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
+
+    {% # theme-check-disable RemoteAsset %}
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
+      <link
+        rel="expect"
+        href="#MainContent"
+        blocking="render"
+        id="view-transition-render-blocker"
+      >
+    {% endif %}
+
+    {%- render 'meta-tags' -%}
+    {%- render 'stylesheets' -%}
+    {%- render 'fonts' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
+
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
+
+    {{ content_for_header }}
+    {% # theme-check-enable RemoteAsset %}
+      <style id="ls-live-hero">
+    /* LuxeStyle — Live-Hero (nur Startseiten-Hero section[id$="__hero_jVaWmY"]).
+       Dezenter Ken-Burns Slow-Zoom + sanfter Pan + fauler Licht-Sheen.
+       Mobile-first, GPU-only (transform/opacity), respektiert prefers-reduced-motion.
+       Eng gescopt aufs Hero → keine Nebenwirkung auf andere Sektionen. */
+    @media (prefers-reduced-motion: no-preference) {
+      section[id$="__hero_jVaWmY"] .hero__media {
+        animation: ls-kenburns 26s ease-in-out infinite alternate;
+        transform-origin: 52% 46%;
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+      @keyframes ls-kenburns {
+        0%   { transform: scale(1)    translate3d(0, 0, 0); }
+        100% { transform: scale(1.08) translate3d(-1.2%, -1%, 0); }
+      }
+      /* Fauler, wandernder Licht-Sheen — sehr niedrige Deckkraft, rein Position-Animation */
+      section[id$="__hero_jVaWmY"] .hero__media-grid::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,0.10) 48%, rgba(255,255,255,0.02) 60%, transparent 72%);
+        background-size: 220% 220%;
+        mix-blend-mode: screen;
+        opacity: 0.5;
+        animation: ls-hero-sheen 15s ease-in-out infinite alternate;
+      }
+      @keyframes ls-hero-sheen {
+        0%   { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+      }
+      /* Premium-Gold-Aurora hinterm Hero-Banner — dezent, hinter dem Text, wie der Sheen (screen-blend, GPU-only) */
+      section[id$="__hero_jVaWmY"] .hero__media-grid::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(60% 55% at 22% 24%, rgba(214,184,120,0.22), transparent 66%),
+          radial-gradient(58% 60% at 84% 78%, rgba(125,138,114,0.16), transparent 68%);
+        mix-blend-mode: screen;
+        opacity: 0.7;
+        will-change: transform, opacity;
+        animation: ls-hero-aurora 24s ease-in-out infinite alternate;
+      }
+      @keyframes ls-hero-aurora {
+        0%   { transform: scale(1)    translate3d(0, 0, 0);       opacity: 0.55; }
+        100% { transform: scale(1.12) translate3d(1.5%, -2%, 0);  opacity: 0.80; }
+      }
+    }
+    /* ls-card-polish v2: KRÄFTIGER Premium-Schatten auf der AEUSSEREN Karte (nicht abgeschnitten, sichtbar) */
+    .product-card, .collection-card {
+      box-shadow: 0 14px 30px -12px rgba(38, 28, 12, 0.55) !important;
+      border-radius: 16px;
+    }
+    @media (any-pointer: fine) {
+      .product-card:hover, .collection-card:hover {
+        box-shadow: 0 26px 48px -14px rgba(38, 28, 12, 0.62) !important;
+      }
+    }
+    /* ls-tile-polish: rundere Kategorie-/Collection-Kacheln (wie freigegebenes Mockup), nur Radius = layout-sicher */
+    .collection-card, .collection-card__content, .collection-card__image,
+    .collection-card__media, .collection-card img {
+      border-radius: 22px;
+    }
+    /* ls-serif-headings: elegante Serif-Ueberschriften (Boutique/Premium, wie freigegebenes Mockup) — layout-sicher, reversibel */
+    h1, h2, .h0, .h1, .h2,
+    .hero__title, .banner__heading, .section-header__heading, .rich-text__heading {
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif !important;
+      letter-spacing: 0 !important;
+      font-weight: 700;
+    }
+    </style>
+    {% if template == 'index' %}<meta property="og:image" content="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-ch-logo_58da73c7-a62c-4790-b820-b5d38b61fa19.png?v=1783620379">{% endif %}
+  <meta name="msvalidate.01" content="9023C06CBEA03B4754B255FF57DC644A" />
+<style>/* lux-empty-facets: leere Filter-Spalte ausblenden, wenn Shopify für eine grosse
+   Kollektion keine Filterwerte liefert (gemessen: «Damen-Mode» mit 10'103 Produkten bekommt
+   NULL Filter, «Herren-Schuhe» mit 837 bekommt fünf).
+   Achtung 1: Ansicht-Radios (name=grid-*) zählen nicht als Filter.
+   Achtung 2 (12.08.2026 — hier lag der Fehler): Im selben Block steckt auch das SORTIER-Menü,
+   und das ist ein <select>. Die alte Bedingung «:has(…,select)» war damit auf JEDER
+   Kollektionsseite wahr, die Ausblendung griff nie, und auf «Damen-Mode» stand über 10'103
+   Artikeln eine Überschrift «Filter» mit nichts darunter. Der Sortier-Select muss deshalb
+   ausdrücklich ausgenommen werden — sonst prüft die Regel ihre eigene Nachbarschaft mit. */
+@media (min-width:750px){
+.facets-block-wrapper--vertical:not(:has(input:not([name^="grid-"]),select:not([name="sort_by"]))){display:none!important}
+.collection-wrapper:has(.facets--vertical:not(:has(input:not([name^="grid-"]),select:not([name="sort_by"])))) .facets-block-wrapper--vertical~.main-collection-grid{grid-column:2/var(--full-width-column-number)!important}
+.collection-wrapper:has(.facets--vertical:not(:has(input:not([name^="grid-"]),select:not([name="sort_by"])))) .facets--filters-title{display:none}
+}
+</style>
+
+<style id="lux-fix-20260809">
+/* Audit 2026-08-09 — drei gemessene Handy-Fehler:
+   1) Overlays wurden so breit wie die (überlaufende) Seite; ihr Schliesskreuz lag bis zu
+      526 px ausserhalb des Bildschirms, die Cookie-Zustimmung war nicht antippbar.
+   2) Der Cookie-Banner (z-index 99999) deckte 73 % der Sticky-Kaufleiste (z-index 7) ab —
+      ein Tipp auf die Knopfmitte traf messbar den Banner, nicht den Knopf.
+   3) Schliesskreuze waren 26x26 px statt der empfohlenen 44x44. */
+#lx-pop, #lx-cookie-banner { max-width: 100vw; box-sizing: border-box; }
+#lx-pop-x { min-width: 44px; min-height: 44px; display: inline-flex;
+            align-items: center; justify-content: center; }
+</style>
+
+<style id="lux-fix-20260814-suchleiste">
+/* 14.08.2026 — die doppelte Handy-Suchleiste, zweiter Anlauf.
+   GEMESSEN (iPhone 390x844, /products/edelstahl-uhr-herren-klassisch): #luxsb-wrap lag mit
+   display:block, position:sticky, z-index 4 bei [16, 115, 358, 65]. Zusammen mit Ankündigungs-
+   band (55) und Kopfzeile (60) waren das 180 von 844 px — 21 % des ersten Bildschirms reine
+   Bedienleiste, bevor das Produktbild anfängt (main begann bei y=180).
+   URSACHE: Die Regel vom 09.08. lautete «body.template-product #luxsb-wrap{display:none}».
+   Horizon setzt dem <body> aber gar keine Seitentyp-Klasse; live stand dort auf JEDER Seite
+   «page-width-narrow card-hover-effect-lift». Die Bedingung konnte nie zutreffen.
+   BEHOBEN, zwei Bedingungen, die beide in dieselbe Richtung zeigen (ausblenden):
+     1. Der <body> trägt jetzt «template-<seitentyp>» (siehe Kommentar am body-Tag).
+        Das ist die Wurzel — damit lebt auch jede KÜNFTIGE body.template-*-Regel.
+     2. Zusätzlich «main[data-template]», das Horizon von sich aus schreibt. Diese Bedingung
+        hält auch dann, wenn jemand die body-Klasse später wieder entfernt — genau die Art
+        stiller Rückschritt, die diesen Fehler überhaupt erst erzeugt hat.
+   Warum ausblenden statt verkleinern: das Lupensymbol in der Kopfzeile öffnet dieselbe Suche,
+   die Leiste ist also reine Dopplung. Auf dem Desktop war sie ohnehin schon aus
+   (@media(min-width:750px) in sections/header-group.json) — Kollektions- und Startseite
+   behalten sie bewusst, dort ist der erste Bildschirm nicht der Kaufabschluss.
+   Gegenprobe nach der Änderung: display:none auf der Produktseite, main beginnt bei y=115
+   statt y=180; auf der Startseite ist die Leiste unverändert sichtbar. */
+@media (max-width: 749px) {
+  body.template-product #luxsb-wrap,
+  body:has(main[data-template='product']) #luxsb-wrap { display: none !important; }
+}
+</style>
+
+<style id="lux-fix-20260814-kaufknopf">
+/* 14.08.2026 — Warum die Reparatur vom 09.08. wirkungslos blieb, und was jetzt trägt.
+   GEMESSEN (iPhone 390x844, /products/edelstahl-uhr-herren-klassisch, nach unten gescrollt):
+     Kaufleiste .sticky-add-to-cart__bar y=770..844 (74 px hoch, z-index 7)
+     Cookie-Banner #lx-cookie-banner    y=708..828 (120 px hoch, z-index 99999)
+     Kauf-Knopf 52x52 px bei x=327/y=781 → 24 von 25 Rasterpunkten trafen den Banner = 96 %.
+   URSACHE: Der Banner trug seine Position als INLINE-Style (style="…bottom:16px…") direkt im
+   Markup. Eine Stylesheet-Regel OHNE !important kann einen Inline-Wert nie überschreiben —
+   die Zeile «body:has(.sticky-add-to-cart__bar) #lx-cookie-banner { bottom: calc(74px+12px) }»
+   war vom ersten Tag an tot. Sie sah im Code aus wie eine Reparatur und war keine.
+   BEHOBEN AN DER WURZEL, in drei Schichten, die alle in dieselbe Richtung zeigen (Anheben):
+     1. «bottom:16px» ist aus dem Inline-Style ENTFERNT → die Position lebt jetzt hier im
+        Stylesheet, wo Media-Queries sie erreichen können.
+     2. Diese Regel hebt den Banner über die Kaufleiste, sobald eine da ist.
+     3. Das Banner-Skript misst die Kaufleiste zusätzlich zur Laufzeit und setzt bottom selbst
+        (Rückfall für Browser ohne :has() — iOS < 15.4, Android-WebViews).
+   NICHT gewählt: den Banner-z-index senken. Dann läge er UNTER der Kaufleiste und seine
+   eigenen Knöpfe («Alle akzeptieren») wären unantippbar — der Fehler wäre nur umgezogen.
+   Gegenprobe nach der Änderung: 0/25 Rasterpunkte verdeckt, Treffer ist der Knopf selbst,
+   und beide Banner-Knöpfe bleiben erreichbar. */
+#lx-cookie-banner { bottom: 16px; }
+body:has(.sticky-add-to-cart__bar) #lx-cookie-banner { bottom: 90px; }
+</style>
+<!-- luxVendorFacet (02.09.2026): Alle Produkte tragen den Vendor «LuxeStyle» — die Facette «Marke»
+     hat deshalb auf jeder Kollektionsseite genau EINEN Wert und filtert nichts. Ausgeblendet, bis es
+     echte Marken gibt (Filter-Konfiguration liegt in der Search-&-Discovery-App, nicht im Theme). -->
+<style>.facets__item[data-filter-param-name="filter-p-vendor"]{display:none!important}</style>
+</head>
+
+  {%- comment -%}
+    14.08.2026 — «template-{{ template.name }}» ist NEU und trägt die eigentliche Reparatur.
+    Horizon gibt dem <body> von Haus aus KEINE Seitentyp-Klasse: live gemessen stand auf der
+    Produktseite wie auf der Startseite dieselbe Zeile
+      <body class="page-width-narrow card-hover-effect-lift">
+    Jede Regel der Form «body.template-product …» war damit tot — nicht nur die eine vom 09.08.,
+    die die doppelte Handy-Suchleiste ausblenden sollte, sondern JEDE künftige seitenspezifische
+    Regel. Der Fehler wäre also immer wieder neu entstanden, ohne je aufzufallen: eine tote
+    CSS-Bedingung wirft keinen Fehler, sie tut einfach nichts.
+    Bewusst «template.name» (liefert «product», «index», «page») statt «template» (liefert bei
+    Sonderfassungen «page.contact» — der Punkt wäre im Klassennamen ein zweiter Selektor).
+    Vorher geprüft: weder assets/base.css noch irgendeine eingebundene App-Datei benutzt einen
+    Selektor «.template-…» — die neue Klasse kann also nichts Bestehendes umschalten.
+  {%- endcomment -%}
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }} template-{{ template.name }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+    <div id="header-group">
+      {% sections 'header-group' %}
+    </div>
+
+    <script>
+      // Inline header height and menu style calculations to prevent layout shift
+      (function setHeaderHeighCustomProperties() {
+        const header = document.querySelector('header-component');
+        const headerGroup = document.querySelector('#header-group');
+        const hasHeaderSection = headerGroup?.querySelector('.header-section');
+
+        if (!header || !headerGroup) return;
+
+        const headerTopRow = header.querySelector('.header__row--top');
+        const headerHeight = header.offsetHeight;
+
+        let headerGroupHeight = 0;
+        const children = headerGroup.children;
+        for (let i = 0; i < children.length; i++) {
+          const element = children[i];
+          if (element === header || !(element instanceof HTMLElement)) continue;
+          headerGroupHeight += element.offsetHeight;
+        }
+
+        if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
+          headerGroupHeight += headerHeight;
+        }
+
+        document.body.style.setProperty('--header-height', `${headerHeight}px`);
+        document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
+
+        if (headerTopRow) {
+          window.requestAnimationFrame(function () {
+            document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
+          });
+        }
+
+        if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
+          document.body.style.setProperty('--transparent-header-offset-boolean', '0');
+          return;
+        }
+
+        const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
+        const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
+        document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
+      })();
+
+      (function setHeaderMenuStyle() {
+        const headerComponent = document.querySelector('#header-component');
+        if (headerComponent) {
+          const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+          const overflowList = headerComponent?.querySelector('overflow-list');
+          const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
+          headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
+        }
+      })();
+    </script>
+
+    <main
+      id="MainContent"
+      class="content-for-layout"
+      role="main"
+      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
+      data-product-transition="{{ settings.transition_to_main_product }}"
+      data-template="{{ template }}"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    <footer>
+      {% sections 'footer-group' %}
+    </footer>
+
+    {% render 'search-modal' %}
+
+    {% if settings.quick_add or settings.mobile_quick_add %}
+      {% render 'quick-add-modal' %}
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!-- LuxeStyle DSGVO Cookie Banner (Markenfarben) -->
+    <!-- ============================================ -->
+    <!-- 14.08.2026: «bottom» steht bewusst NICHT mehr hier im Inline-Style, sondern in
+         <style id="lux-fix-20260814-kaufknopf"> — ein Inline-Wert sticht jede Stylesheet-Regel
+         und hat die Reparatur vom 09.08. lautlos wirkungslos gemacht. Bitte nicht zurücksetzen. -->
+    <div id="lx-cookie-banner" style="display:none;position:fixed;left:16px;right:16px;max-width:560px;margin:0 auto;background:#faf7f2;color:#2c2c2c;padding:16px 20px;border:1px solid #d4b89680;border-radius:10px;box-shadow:0 8px 30px rgba(44,44,44,.18);z-index:99999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+        <p style="flex:1;min-width:220px;margin:0;font-size:13px;line-height:1.5;color:#2c2c2ccf">🍪 Wir nutzen Cookies für das beste Einkaufserlebnis. Mehr in der <a href="/pages/cookie-richtlinie" style="color:#8b7355;text-decoration:underline">Cookie-Richtlinie</a>.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="lxCookieDecline()" style="background:transparent;border:1px solid #2c2c2c;color:#2c2c2c;padding:9px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500">Nur notwendige</button>
+          <button onclick="lxCookieAccept()" style="background:#2c2c2c;border:none;color:#faf7f2;padding:9px 20px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">Alle akzeptieren</button>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var KEY="lx_cookie_consent_v1";
+      var banner=document.getElementById("lx-cookie-banner");
+      /* 14.08.2026 — dritte Schicht gegen den verdeckten Kauf-Knopf: die Kaufleiste real
+         ausmessen statt 74 px zu raten, und den Banner darüber setzen. Trägt auch dort, wo
+         :has() im Stylesheet fehlt (iOS < 15.4). Setzt NUR nach oben, nie nach unten. */
+      function lxBannerPlatzieren(){
+        if(!banner) return;
+        var leiste=document.querySelector(".sticky-add-to-cart__bar");
+        var h=leiste?Math.round(leiste.getBoundingClientRect().height):0;
+        banner.style.bottom=(h>0?h+16:16)+"px";
+      }
+      if(!localStorage.getItem(KEY)){
+        setTimeout(function(){lxBannerPlatzieren();banner.style.display="block"},800);
+        /* Nachmessen, falls die Kaufleiste erst nach dem Banner in den DOM kommt. Bewusst KEIN
+           scroll-Listener: ein getBoundingClientRect() pro Scroll-Ereignis erzwingt auf jeder
+           der 31'398 Produktseiten ein Layout und ruckelt auf dem Telefon mehr, als es nützt. */
+        setTimeout(lxBannerPlatzieren,2500);
+        window.addEventListener("resize",lxBannerPlatzieren);
+      }
+      window.lxCookieAccept=function(){
+        localStorage.setItem(KEY,JSON.stringify({choice:"all",date:new Date().toISOString()}));
+        banner.style.display="none";
+        window.dispatchEvent(new CustomEvent("lx-consent-granted"));
+      };
+      window.lxCookieDecline=function(){
+        localStorage.setItem(KEY,JSON.stringify({choice:"necessary",date:new Date().toISOString()}));
+        banner.style.display="none";
+      };
+      window.lxCookieReset=function(){
+        localStorage.removeItem(KEY);
+        location.reload();
+      };
+    })();
+    </script>
+    <script>(function(){var TIKTOK_PIXEL_ID="D8EKVR3C77U6KT5BTBD0";var KEY="lx_cookie_consent_v1";function loadTikTokPixel(){if(window.ttq||TIKTOK_PIXEL_ID==="HIER_DEINE_PIXEL_ID_EINTRAGEN")return;!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){var e=ttq._i[t]||[];for(var n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript";o.async=!0;o.src=r+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load(TIKTOK_PIXEL_ID);ttq.page();}(window,document,'ttq');}var saved=localStorage.getItem(KEY);if(saved){try{if(JSON.parse(saved).choice==="all")loadTikTokPixel();}catch(e){}}window.addEventListener("lx-consent-granted",loadTikTokPixel);})();</script>
+  <!-- luxe-conversion-pack -->
+<style>
+/* Judge.me: leere Sterne-Zeile verstecken (0 Reviews signalisiert "nie gekauft") */
+.jdgm-prev-badge[data-number-of-reviews="0"]{display:none!important}
+/* Gratisversand-Balken */
+.luxe-ship-bar{margin:10px 0;padding:10px 12px;background:#f6f3ee;border-radius:10px;font-size:13.5px;line-height:1.4}
+.luxe-ship-bar .track{height:7px;background:#e4ddd2;border-radius:4px;margin-top:7px;overflow:hidden}
+.luxe-ship-bar .fill{height:100%;background:linear-gradient(90deg,#b99a5f,#2eaf46);border-radius:4px;transition:width .4s}
+</style>
+<script>
+(function(){
+  var SCHWELLE=5000; /* 05.09.2026 ZURÜCK auf 50: Profilregel «gratis ≥45» prüft den Korb NACH Rabatt, und der 49er-Automatik-Rabatt kombiniert NICHT mit «2+ Artikel −10%» — gemessen 2×24.90=49.80 → 44.82 → CHF 7. Bei 4900 versprach der Balken einem 2er-Korb von 49.80 Gratis-Versand, den die Kasse nicht gab. 50 ist die einzige Zahl, die in JEDEM Korb wahr ist (50×0.9=45). */ // CHF 49 in Rappen — 2026-08-31 LIVE GEMESSEN: der Automatik-Rabatt
+  // «Gratis-Versand ab CHF 49» ist ACTIVE (der 65er EXPIRED). Vorher stand hier 5000 mit einem
+  // Kommentar vom 09.08. — der 49er-Rabatt kam SPAETER; einem Korb mit CHF 49.90 sagte der
+  // Balken «noch CHF 0.10», obwohl der Versand laengst gratis war (221 Produkte kosten genau
+  // 49.00–49.90). Ein Kommentar ist ein Datum, kein Beweis — vor jeder Aenderung den Rabatt
+  // LIVE abfragen. Alter Kommentar (09.08.): entsprach der TATSAECHLICH greifenden
+  // Versandregel (im Profil sind 50 und 65 aktiv, Shopify nimmt die guenstigere). Mit 6500 zeigte
+  // der Balken einem Kunden bei CHF 52 noch "13 Franken bis Gratis-Versand", obwohl er ihn schon hatte.
+  function render(cart){
+    document.querySelectorAll('.luxe-ship-bar').forEach(function(el){el.remove();});
+    var anchors=document.querySelectorAll('cart-items-component, .cart-items, cart-drawer .drawer__content, #cart-drawer');
+    if(!anchors.length||!cart||cart.item_count===0)return;
+    var el=document.createElement('div');el.className='luxe-ship-bar';
+    var ware=(cart.items_subtotal_price!=null?cart.items_subtotal_price:cart.total_price);
+    // 2026-08-14: gegen den Warenwert VOR Rabatt rechnen. Der Automatik-Rabatt
+    // '2+ Artikel -10%' senkte cart.total_price, sodass die Leiste bei CHF 55.00
+    // Ware noch 'Noch CHF 0.50' anzeigte. Die Versandregel steht passend dazu auf
+    // 45.00 = 50.00 x 0.9, damit ab CHF 50 Ware der Versand wirklich gratis ist.
+    var rest=SCHWELLE-ware;
+    if(rest<=0){el.innerHTML='🎉 <strong>Gratis-Versand gesichert!</strong>';}
+    else{var chf=(rest/100).toFixed(2).replace('.', '.');
+      el.innerHTML='🚚 Noch <strong>CHF '+chf+'</strong> bis zum Gratis-Versand'+
+      '<div class="track"><div class="fill" style="width:'+Math.min(100,Math.round(ware/SCHWELLE*100))+'%"></div></div>';}
+    anchors[0].parentNode.insertBefore(el,anchors[0]);
+  }
+  function refresh(){fetch('/cart.js').then(function(r){return r.json()}).then(render).catch(function(){});}
+  document.addEventListener('DOMContentLoaded',refresh);
+  document.addEventListener('cart:update',refresh);
+  document.addEventListener('cart:change',refresh);
+  var _f=window.fetch;window.fetch=function(){var p=_f.apply(this,arguments);
+    try{var u=String(arguments[0]);if(u.indexOf('/cart/')>-1){p.then(function(){setTimeout(refresh,350)});}}catch(e){}
+    return p;};
+})();
+</script>
+
+  <script>
+  (function(){
+    var M={'Availability':'Verfügbarkeit','Price':'Preis','In stock':'Auf Lager','Out of stock':'Ausverkauft','Brand':'Marke','Product type':'Produkttyp'};
+    function fix(){
+      document.querySelectorAll('summary *, fieldset legend, label span, label, .active-facets *').forEach(function(el){
+        if(el.children.length===0){var t=el.textContent.trim();if(M[t]){el.textContent=el.textContent.replace(t,M[t]);}}
+      });
+    }
+    if(document.readyState!=='loading'){fix();}else{document.addEventListener('DOMContentLoaded',fix);}
+    new MutationObserver(fix).observe(document.documentElement,{childList:true,subtree:true});
+  })();
+  </script>
+  <style>
+    .lux-wish{position:absolute;top:8px;right:8px;z-index:3;width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.92);color:#1a1a1a;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+    .lux-wish.on{color:#c0392b;}
+    .product-card{position:relative;}
+  </style>
+  <script>
+  (function(){
+    var KEY='lux_wish';
+    function list(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+    function paint(){var l=list();document.querySelectorAll('.lux-wish').forEach(function(b){var on=l.indexOf(b.dataset.handle)>-1;b.classList.toggle('on',on);b.innerHTML=on?'&#9829;':'&#9825;';});}
+    document.addEventListener('click',function(e){var b=e.target.closest('.lux-wish');if(!b)return;e.preventDefault();e.stopPropagation();var h=b.dataset.handle,l=list(),i=l.indexOf(h);if(i>-1){l.splice(i,1);}else{l.push(h);}localStorage.setItem(KEY,JSON.stringify(l));paint();},true);
+    if(document.readyState!=='loading'){paint();}else{document.addEventListener('DOMContentLoaded',paint);}
+    new MutationObserver(function(m){for(var i=0;i<m.length;i++){for(var j=0;j<m[i].addedNodes.length;j++){var n=m[i].addedNodes[j];if(n.nodeType===1&&(n.matches&&n.matches('.lux-wish')||n.querySelector&&n.querySelector('.lux-wish'))){paint();return;}}}}).observe(document.documentElement,{childList:true,subtree:true});
+  })();
+  </script>
+  <script>
+  /* luxVarHide: Ein-Varianten-Produkte — sinnlose Zeile «Variante: Standard» ausblenden */
+  (function(){
+    function hide(){
+      document.querySelectorAll('variant-picker, .variant-picker').forEach(function(vp){
+        var inputs=vp.querySelectorAll('input[type=radio], option');
+        var labels=vp.textContent||'';
+        if(inputs.length<=1 && /Standard/.test(labels)){ vp.style.display='none'; }
+      });
+    }
+    if(document.readyState!=='loading'){hide();}else{document.addEventListener('DOMContentLoaded',hide);}
+  })();
+  </script>
+  <style>
+    /* luxGrid5: Desktop kompakter — 5 Spalten in der Standard-Rasteransicht */
+    @media screen and (min-width: 990px) {
+      .product-grid[product-grid-view='default'] {
+        --product-grid-columns-desktop: repeat(5, minmax(0, 1fr)) !important;
+      }
+    }
+    /* luxHeroMobil (05.09.2026, Audit mobil-startseite): weisser Hero-Text stand auf dem hellen Kleid des
+   Mobil-Bilds; der Verlaufs-Overlay dunkelt oben ab, der Text steht unten. Auf dem Handy bekommt der
+   Textbereich einen weichen dunklen Verlauf von unten plus Schatten — Desktop unverändert.
+   ⚠️ Die Sektions-ID heisst live «shopify-section-template--…__hero_jVaWmY» → Suffix-Selektor. */
+@media screen and (max-width: 749px) {
+  section[id$="__hero_jVaWmY"] .hero__content-wrapper { background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.65) 100%); padding-top: 2.5rem; }
+  section[id$="__hero_jVaWmY"] .hero__content-wrapper h2, section[id$="__hero_jVaWmY"] .hero__content-wrapper p { text-shadow: 0 1px 8px rgba(0,0,0,.85); }
+}
+/* luxJdgmLeer (05.09.2026, Audit produktseite): Das Judge.me-Widget zeigt auf jeder Seite ohne Bewertung
+   «Kundenbewertungen — Schreiben Sie die erste Bewertung» (Sie-Form, App-Text ohne API). Ohne Bewertung
+   wird der leere Block nicht gezeigt; mit Bewertungen bleibt er vollständig sichtbar. */
+.jdgm-rev-widg[data-number-of-reviews="0"], .jdgm-rev-widg[data-number-of-reviews="0"] ~ .jdgm-rev-widg__header { display:none !important; }
+/* luxGridVoll (05.09.2026, Betreiber «Katalog, dass man alles sieht»): Horizons Kollektionsraster
+       beginnt IMMER in der Spalte, in der die vertikale Filterleiste enden würde
+       (.main-collection-grid { grid-column: var(--facets-vertical-col-width) / … }) — auch ohne
+       Filterleiste. Auf Kollektionen über 5'000 Produkten (keine Facetten, Shopify-Deckel) und seit dem
+       Umstieg auf horizontale Filter blieb links ein leeres Viertel. Ohne vertikale Leiste spannt das
+       Raster jetzt alle Inhaltsspalten. */
+    @media screen and (min-width: 750px) {
+      .collection-wrapper:not(:has(.facets--vertical)) .main-collection-grid { grid-column: 2 / -2; }
+    }
+    /* luxMegaKompakt (02.09.2026, Betreiber-Screenshot «Herbst & Übergang»): Untermenüs OHNE
+       dritte Ebene stapelten alle Links in EINER Rasterspalte (mega-menu__column--span-1) —
+       schmal, jedes Wort umgebrochen, daneben eine leere Fläche. Jetzt: Spalten ohne Kinder
+       (:not(:has(ul))) spannen drei Rasterspalten und fliessen in drei Textspalten, Links ohne
+       Umbruch, keine Mindesthöhe. Mit Kindern (Mehr & Sale) unverändert. */
+    @media screen and (min-width: 990px) {
+      .mega-menu__column--span-1:not(:has(ul)) {
+        grid-column: span 3;
+        column-count: 3;
+        column-gap: 2rem;
+      }
+      .mega-menu__column--span-1:not(:has(ul)) > div { break-inside: avoid; }
+      .mega-menu__link .wrap-text { white-space: nowrap; }
+      .menu-list__submenu-inner .mega-menu__grid { align-items: start; }
+    }
+  </style>
+  <script>
+  /* jdgmBildsperre (14.08.2026) — Vorhang vor zwoelf Bewertungsfotos, die den LIEFERANTEN
+     oder eine FREMDE MARKE zeigen (AliExpress-Bestellabrechnung mit «Cupom AliExpress»,
+     AliExpress-App-Screenshot, AIMIMO-Garantiekarten, CONTACT'S-Konformitaetszertifikat,
+     chinesisches Versandetikett). Belege und Auswahlregel: automation/bewertungsfotos_saeubern.py.
+
+     WARUM HIER UND NICHT BEI JUDGE.ME: Judge.me erlaubt das Bearbeiten von Bewertungsfotos
+     ueber die API ausdruecklich nicht («For authenticity reason, we don't support editing
+     reviews via API»); erlaubt waere nur, die GANZE Bewertung auszublenden — das faellt aus,
+     Bewertungen bleiben. Zehn der zwoelf Bilder liessen sich aus den Shopify-Metafeldern
+     judgeme.widget / judgeme.review_widget_data herausschneiden. ZWEI stehen auf Widget-
+     Seite 2 und werden erst beim Blaettern direkt von api.judge.me nachgeladen — dorthin
+     reicht kein Metafeld. Dieser Vorhang faengt sie, sobald sie im DOM auftauchen.
+
+     ⚠️ Das ist eine Abdeckung, keine Heilung: bei Judge.me liegen die Bilder weiter. Endgueltig
+     weg sind sie erst nach «hide picture» im Judge.me-Backend (braucht einen Browser).
+     Angefasst wird ausschliesslich das <a>-Element des Bildes — Text, Sterne und Anzahl der
+     Bewertungen bleiben unberuehrt. */
+  (function(){
+    var SPERRE=['A049e6ee1b1854447a48744e87e4c3a73S','A0db259d3193b47db9d57b770af95f882o','A57b6db22ff7b446e98023bf3e8b23f82j','A6af78be77c884d1baa332b77a11e15364','A79ff3c1a26bd43feb64273c3da74f6bew','Ac8e5e4638eea4bbf9d3c5829c2be6d01X','Acaf3583b754541f4a53e05c6b3f3b7b2Q','Ad66558c6a94b4d54ab5bab43a405b0b9C','Aeecdddcf6ab8490ab1916d91233ab395d','Af036d6d409724e2c9ce85875d10de131p','Af2ba40433e164ed19245959cf1b74c51x','Afc0c8df5759b4e65b73354bdf443a55cT'];
+    function gesperrt(u){ if(!u){return false;} for(var i=0;i<SPERRE.length;i++){ if(u.indexOf(SPERRE[i])>-1){return true;} } return false; }
+    var laeuft=false;
+    function fegen(){
+      laeuft=false;
+      try{
+        var n=document.querySelectorAll('a.jdgm-rev__pic-link,.jdgm-gallery__thumbnail,.jdgm-rev__pic-img,.jdgm-gallery__thumbnail-img');
+        for(var i=0;i<n.length;i++){
+          var el=n[i];
+          var u=el.getAttribute('href')||el.getAttribute('data-mfp-src')||el.getAttribute('data-src')||el.getAttribute('src')||'';
+          if(!gesperrt(u)){ continue; }
+          var weg=(el.closest&&(el.closest('.jdgm-gallery__thumbnail')||el.closest('a')))||el;
+          if(weg&&weg.parentNode){ weg.parentNode.removeChild(weg); }
+        }
+      }catch(e){}
+    }
+    function planen(){ if(laeuft){return;} laeuft=true; setTimeout(fegen,60); }
+    if(document.readyState!=='loading'){ fegen(); } else { document.addEventListener('DOMContentLoaded',fegen); }
+    try{ new MutationObserver(planen).observe(document.documentElement,{childList:true,subtree:true}); }catch(e){}
+  })();
+  </script>
+</body>
+</html>

@@ -1,3 +1,59 @@
+## 🛒 Die Kasse verschweigt den Endbetrag — 6 Kassengänge, 0 abgebrochene Checkouts (2026-09-09, 06:10 UTC)
+Betreiber: «push das jemand kauft». Erst gemessen, 14 Tage:
+| Quelle | Sitzungen | Körbe | Kasse | **Kauf** |
+|---|---:|---:|---:|---:|
+| direct | 546 | 5 | 3 | **0** |
+| social | 113 | 0 | 0 | 0 |
+| **search** | **76** | **4** | **3** | **0** |
+**6 Kassengänge — und seit dem 22.08. KEIN einziger neuer abgebrochener Checkout.** Shopify legt
+einen erst an, wenn eine Adresse getippt ist; die leere Liste ist damit der Beweis, dass **alle
+sechs gegangen sind, bevor sie ein Feld ausgefüllt hatten.** Statt zu vermuten die Kasse gelesen —
+dort steht wörtlich:
+> Zwischensumme **CHF 39.90** · Versand: **«Lieferadresse eingeben»**
+Die Kundin muss ihre vollständige Adresse eintippen, um zu erfahren, was sie am Ende zahlt. Und
+der Warenkorb davor sagt zwar «Versand CHF 7.00 · gratis ab CHF 50», nennt aber **nirgends die
+eine Zahl, die sie sucht: den Endbetrag.**
+- **Gemessen statt gerechnet — und der Gratis-Versand-Balken lag falsch.** `/cart/shipping_rates.json`
+  (CH 3123) an drei echten Körben:
+  | Korb | vor Rabatt | nach Rabatt | Tarif |
+  |---|---:|---:|---|
+  | 1× 45.90 | 4590 | **4590** | **«Kostenloser Versand» 0.00** |
+  | 2× 24.90 | 4980 | **4482** | Standard 7.00 |
+  | 1× 39.90 | 3990 | 3990 | Standard 7.00 |
+  **Die Regel ist `total_price ≥ 4500`** — der Betrag NACH Rabatt. Der Balken rechnete `5000`
+  gegen `items_subtotal_price` (VOR Rabatt): er trifft den 2er-Fall zufällig (4980 < 5000) und
+  **log jeden Einzelkorb zwischen 45.00 und 49.99 an** — er redete dem Kunden CHF 7 ein, die er
+  längst nicht mehr zahlt (allein 221 Produkte kosten 49.00–49.99). Genau die Klasse aus dem
+  eigenen Kommentar vom 31.08., nur in der Gegenrichtung: dort versprach der Balken zu viel,
+  hier verlangte er zu viel. **Eine konservative Schwelle ist kein Ersatz für eine Messung** —
+  sie kostet auf der anderen Seite genauso.
+- **Der Balken nennt jetzt den Endbetrag:** «Noch CHF 5.10 bis zum Gratis-Versand · Aktuell
+  CHF 39.90 + CHF 7.00 Versand = **CHF 46.90**». Vor dem Schreiben in beide Richtungen
+  simuliert (5 Fälle, alle deckungsgleich mit den gemessenen Tarifen), `node --check` auf den
+  extrahierten Block, Sicherung `theme_backup/theme.liquid.vor-endbetrag-0909`, live gegengeprüft.
+- ⚠️ **Der Trust-Block bleibt bei «gratis ab CHF 50», und das ist Absicht.** 50 ist die einzige
+  Zahl, die in JEDEM Korb wahr ist (50 × 0,9 = 45); «ab 45» wäre bei 2×24.90 eine Falschaussage.
+  **Die pauschale Zusage bleibt konservativ, die konkrete Rechnung wird exakt** — der Balken
+  kennt den echten `total_price`, der Fliesstext nicht.
+- ⛔ **Zwei Reparaturen habe ich NICHT gemacht, beide nach einer Messung:**
+  1. **Bewertungen.** 9 von 9 Verkehrsseiten tragen null Sterne, auch die zwei mit Kassengängen.
+     Erst grep auf Handles → «0 im Ledger», beinahe als Befund gemeldet — **das Ledger führt
+     Produkt-IDs.** Richtig gefragt sind **alle neun längst gefragt**: CJ hat für sie keine
+     Kommentare (Mode 0 von 114, gemessen 05.09.). Ein Import hätte garantiert nichts gefunden.
+  2. **«Über 4'200 Kundenbewertungen» als Vertrauenszeile.** Judge.me steht bei **4'230** (05.09.:
+     2'727 — der tägliche Import arbeitet). Aber das sind importierte **CJ-Kundenkommentare**,
+     nicht Bewertungen von LuxeStyle-Käufern; der Shop hat 7 Bestellungen. Die Zeile hätte
+     impliziert, dass 4'200 Menschen hier gekauft haben. **Eine wahre Zahl an der falschen Stelle
+     ist eine Überzusage** — dieselbe Klasse wie «geprüfte Qualität» und «handverlesen».
+- ⚠️ **Und der ehrliche Rest, der keine Reparatur ist:** Semrush (Datenbank ch) zeigt 40 Begriffe,
+  **alle auf Position 35–98, Traffic 0,00 %, Positionsdifferenz bei fast allen exakt 0** — seit
+  Monaten bewegt sich nichts. Der Shop bekommt **76 kaufbereite Besucher in 14 Tagen**; das ist
+  der eigentliche Engpass, und keine Conversion-Arbeit löst ihn. Was heute besser wurde, wirkt
+  auf die sechs, die es bis zur Kasse schaffen — nicht auf ihre Zahl.
+- ⚠️ Ladezeit von hier NICHT messbar: die Startseite liefert unserem Ausgang **12 KB statt 6,4 MB**
+  (Bot-Kopie). TTFB 3,6 s gegen 0,45 s auf der Produktseite ist damit kein Befund über die Seite,
+  sondern über die Challenge (Lehre 19.08.).
+
 ## 📦 Zwei Sendungsnummern, null Übergaben — und die Bestell-Ampel war dafür blind (2026-09-09, 03:30 UTC)
 Betreiber schickte einen CJ-App-Screenshot: beide Aufträge vom 07.09. stehen auf **«Pending»**.
 Gemessen statt der Beschriftung geglaubt:
