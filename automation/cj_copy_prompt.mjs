@@ -114,25 +114,38 @@ export function messSicher(o) {
 // wahlversprechen.py dort nur und schneidet nicht (an 28 Faellen gelesen, 28 davon Mischsaetze).
 //
 // Gearbeitet wird SATZWEISE: ein halber Satz ist schlimmer als ein fehlender (Lehre 21.08.).
-const WAHL_RE = /(?:erh[äa]ltlich|verf[üu]gbar|lieferbar)\s+in\s+(?:verschiedenen|unterschiedlichen|mehreren|zwei|drei|vier|f[üu]nf|sechs|den)\b|\bin\s+(?:verschiedenen|unterschiedlichen|mehreren|zwei|drei|vier)\s+[\wäöüß]+\s+(?:erh[äa]ltlich|verf[üu]gbar|lieferbar)\b|\bw[äa]hlen\s+sie\s+(?:aus|zwischen)\b|\bzur\s+auswahl\b/i;
+const WAHL_RE = /(?:erh[äa]ltlich|verf[üu]gbar|lieferbar)\s+in\s+(?:verschiedenen|unterschiedlichen|mehreren|zwei|drei|vier|f[üu]nf|sechs|den)\b|\bin\s+(?:verschiedenen|unterschiedlichen|mehreren|zwei|drei|vier)\s+[\wäöüß]+\b[^.!?]{0,60}?\s(?:erh[äa]ltlich|verf[üu]gbar|lieferbar)\b|\b(?:zwei|drei|vier|f[üu]nf|sechs|mehrere|verschiedene|unterschiedliche)\s+(?:verschiedene\s+)?(?:Farben|Gr[öo]ssen|Gr[öö]?[ßs]en|Ausf[üu]hrungen|Varianten|Modelle|Designs|Muster|Motive|Farbvarianten|Farbkombinationen)\s+(?:erh[äa]ltlich|verf[üu]gbar|lieferbar|zur\s+Auswahl)\b|\bw[äa]hlen\s+sie\s+(?:aus|zwischen)\b|\bzur\s+auswahl\b/i;
 
 // Ein SET-Inhalt ist keine Auswahl: «4 Boxen in zwei Grössen: 2× gross, 2× klein» beschreibt,
 // was mitgeliefert wird (Lehre 01.09.). Stueckzahl «N×» vor einem Buchstaben schuetzt den Satz.
 const SET_RE = /\b\d+\s*[×x]\s*[a-zäöüß]/i;
+
+// ⚠️ GEGENRICHTUNG zur Verbreiterung oben (09.09.2026, «Farbblock-Armband mit Zirkonia»):
+// «Es ist mit Zirkonia IN VERSCHIEDENEN FARBEN BESETZT» beschreibt die WARE, nicht eine Wahl —
+// die Steine sind mehrfarbig, es gibt nichts auszuwaehlen. Das enge Muster von vorher traf das
+// nicht; das breitere koennte es treffen, sobald im selben Satz irgendwo «erhaeltlich» steht.
+// Jede Verschaerfung braucht ihre Gegenrichtung, sonst schneidet der Importer einen WAHREN Satz
+// weg — und ein halber Satz ist schlimmer als eine falsche Klausel (Lehre 21.08./01.09.).
+// Bewusst POSITIONSGEBUNDEN: das Partizip muss direkt auf die Farbangabe folgen.
+const BESCHREIBEND_RE = /\bin\s+(?:verschiedenen|unterschiedlichen|mehreren)\s+[\wäöüß]+\s+(?:besetzt|bedruckt|gemustert|gehalten|meliert|lackiert|gef[äa]rbt|verziert|bemalt|schimmernd|changierend|gestreift|kariert)\b/i;
+
+// Zweite Gegenrichtung (09.09.2026): der Marker steht VOR der Klausel — «Im Lieferumfang sind
+// 10 Gummilaschen in verschiedenen Groessen enthalten» ist ein Set-Inhalt, keine Wahl.
+const SETINHALT_RE = /\b(?:Lieferumfang|im Set|Set enth[äa]lt|mitgeliefert|beiliegend)\b/i;
 
 export function wahlSicher(o) {
   if (!o || !o.html) return o;
   const raus = (txt) => {
     // Saetze an .!? trennen, aber nicht zwischen Ziffern (14.5 cm) — Lehre 03.09.
     const teile = txt.split(/(?<=[.!?])(?!\d)\s+/);
-    const bleibt = teile.filter(t => !(WAHL_RE.test(t) && !SET_RE.test(t)));
+    const bleibt = teile.filter(t => !(WAHL_RE.test(t) && !SET_RE.test(t) && !BESCHREIBEND_RE.test(t) && !SETINHALT_RE.test(t)));
     return bleibt.length === teile.length ? null : bleibt.join(' ').replace(/\s{2,}/g, ' ').trim();
   };
   let h = o.html;
   // 1. Listenpunkte, die nur die Klausel tragen, ganz entfernen.
   h = h.replace(/<li>([\s\S]*?)<\/li>/gi, (m, inner) => {
     const t = inner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    return (WAHL_RE.test(t) && !SET_RE.test(t)) ? '' : m;
+    return (WAHL_RE.test(t) && !SET_RE.test(t) && !BESCHREIBEND_RE.test(t) && !SETINHALT_RE.test(t)) ? '' : m;
   });
   // 2. Absaetze satzweise saeubern; bleibt nichts uebrig, faellt der Absatz weg.
   h = h.replace(/<p>([\s\S]*?)<\/p>/gi, (m, inner) => {

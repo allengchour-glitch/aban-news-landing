@@ -170,6 +170,9 @@ for p in quelle:
         txt = re.sub(r'<[^>]+>', ' ', a.get('descriptionHtml') or '')
         txt = re.sub(r'\s+', ' ', txt)
         m = WAHL.search(txt)
+        _u = txt[max(0, m.start() - 90):m.end() + 40]
+        if m and (BESCHREIBEND.search(_u) or SETINHALT.search(_u)):
+            continue          # beschreibt die Ware, kuendigt keine Wahl an
         if m:
             # 01.09.: SET-Inhalt ist keine Auswahl. «4 Bambus-Boxen in zwei Grössen:
             # 2× gross (30×20×12 cm), 2× klein» — BEIDE Grössen sind im Set, die Kundin
@@ -228,6 +231,25 @@ GRENZE_LI = 0.30
 ANSCHLUSS = re.compile(r'[.;]|\b(dazu|zudem|ausserdem|au[sß]erdem|damit|sodass|so dass|wodurch|'
                        r'ideal|perfekt|passt|bietet|sorgt|eignet|verf[üu]gt|besteht|wird geliefert|'
                        r'inklusive|inkl\.|lieferumfang)\b', re.I)
+
+# ⚠️ 09.09.2026 — GEGENRICHTUNG: «Es ist mit Zirkonia IN VERSCHIEDENEN FARBEN BESETZT und
+# wurde galvanisiert.» Der Satz beschreibt die WARE (die Steine sind mehrfarbig), er kuendigt
+# keine Wahl an — gefunden unter den Neuimporten des Tages, als EINER von drei Treffern.
+# Das breite Muster ist ein Netz, kein Urteil: ein Partizip DIREKT hinter der Farbangabe macht
+# aus der Ankuendigung eine Beschreibung. Bewusst positionsgebunden, damit ein echtes
+# «Erhältlich in vier Farben, alle sauber bedruckt» weiterhin gemeldet wird.
+# Dieselbe Regel steht als BESCHREIBEND_RE in automation/cj_copy_prompt.mjs (Importer-Seite);
+# wer sie hier aendert, aendert sie dort mit.
+# ⚠️ 09.09.2026 — ZWEITE Gegenrichtung, beim LESEN der 12 Treffer gefunden: «Im Lieferumfang
+# sind 10 Gummilaschen IN VERSCHIEDENEN GRÖSSEN enthalten» (Dellenreparatur-Set) beschreibt den
+# SET-INHALT — alle Groessen sind dabei, die Kundin waehlt nichts. SET_RE kannte nur die Form
+# «N× gross, N× klein»; hier steht der Marker VOR der Klausel. Zwei Fehlalarme unter zwoelf
+# Treffern — bei einem Melder liegt die Beweislast beim Alarm (Lehre 28.08.).
+SETINHALT = re.compile(r'\b(?:Lieferumfang|im Set|Set enth[äa]lt|mitgeliefert|beiliegend)\b', re.I)
+
+BESCHREIBEND = re.compile(r'\bin\s+(?:verschiedenen|unterschiedlichen|mehreren)\s+[\wäöüß]+\s+'
+                          r'(?:besetzt|bedruckt|gemustert|gehalten|meliert|lackiert|gef[äa]rbt|'
+                          r'verziert|bemalt|schimmernd|changierend|gestreift|kariert)\b', re.I)
 
 AUFZAEHLUNG = re.compile(r'^\s*(?:\w+\s*){0,2}[,:]\s*(?:darunter|z\.?\s?B\.?|etwa|wie|n[äa]mlich)\b', re.I)
 
@@ -298,6 +320,8 @@ def bereinige(html):
         inhalt = re.sub(r'<[^>]+>', ' ', m.group(1))
         inhalt = re.sub(r'\s+', ' ', inhalt).strip()
         f = WAHL.search(inhalt)
+        if f and (BESCHREIBEND.search(inhalt) or SETINHALT.search(inhalt)):
+            return m.group(0)
         # ⚠️ 03.09.2026: Die Anteils-Regel allein ist seit der Muster-Erweiterung UNSICHER.
         # «Erhältlich in den Farben Blau und Grün, ideal für unterwegs» — der Kopf ist 24 von
         # 58 Zeichen, also 41 % und ueber der Grenze; der Punkt waere gefallen und haette
@@ -333,6 +357,8 @@ def bereinige(html):
         for s_ in saetze(innen):
             k = re.sub(r'\s+', ' ', s_).strip()
             f = WAHL.search(k)
+            if f and (BESCHREIBEND.search(k) or SETINHALT.search(k)):
+                raus.append(s_); continue
             if f and k and treffer_anteil(k, f) >= GRENZE:
                 weg.append(k[:70]); continue
             raus.append(s_)
