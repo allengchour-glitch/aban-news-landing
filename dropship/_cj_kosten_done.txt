@@ -23090,3 +23090,22 @@ gid://shopify/Product/15501878690177	CHF 12.25	17 Varianten	Kartun-Canvas-Schuhe
 gid://shopify/Product/15501878722945	CHF 7.34	1 Varianten	Schwarze Onyx-Armband mit Edelstein- und Leder-Ele
 gid://shopify/Product/15501878788481	CHF 30.26	1 Varianten	Edelstein-Tier-Design
 gid://shopify/Product/15501878821249	CHF 12.81	15 Varianten	Kottonschuhe für Kleinkinder
+gid://shopify/Product/15501878886785	CHF 7.25	1 Varianten	Goldener Blumenarmreif
+gid://shopify/Product/15501878952321	CHF 8.99	1 Varianten	Sonne über dem Hündchen
+gid://shopify/Product/15501879017857	CHF 9.89	8 Varianten	Weiche Kinderstiefel
+gid://shopify/Product/15501879050625	CHF 7.69	1 Varianten	Zirkon-Diamantarmband
+gid://shopify/Product/15501879083393	CHF 8.82	1 Varianten	Wohnzimmer-Quadrat-Stickerei
+gid://shopify/Product/15501879116161	CHF 8.52	24 Varianten	Cotton-Kleinkinderstiefel
+gid://shopify/Product/15501879148929	CHF 17.69	1 Varianten	Zitronenarmband
+gid://shopify/Product/15501881803137	CHF 8.76	1 Varianten	Gold-Edelstein-Blume-Klips-Armband
+gid://shopify/Product/15501881868673	CHF 7.34	1 Varianten	Perlen-Diamanten-Malerei
+gid://shopify/Product/15501881999745	CHF 7.61	1 Varianten	Doppelherzarmband mit Zirkonia
+gid://shopify/Product/15501882065281	CHF 7.03	1 Varianten	Alien Nachtvogel
+gid://shopify/Product/15501882098049	CHF 20.62	1 Varianten	Haar-Heiz-Strähner
+gid://shopify/Product/15501882163585	CHF 11.18	70 Varianten	Velours-Schuhe für Kleinkinder
+gid://shopify/Product/15501882261889	CHF 19.46	1 Varianten	Malen nach Zahlen - Boote
+gid://shopify/Product/15501882360193	CHF 26.01	1 Varianten	Haarschneider für Babys und die ganze Familie
+gid://shopify/Product/15501882392961	CHF 11.77	38 Varianten	Baby Lauflernschuhe mit Streifen
+gid://shopify/Product/15501882425729	CHF 8.25	1 Varianten	Edelstahl-Kette
+gid://shopify/Product/15501882458497	CHF 19.95	1 Varianten	Wasserboot
+gid://shopify/Product/15501882524033	CHF 27.69	1 Varianten	Automatischer Lockenstab, USB-Ladefunktion
