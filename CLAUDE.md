@@ -1,3 +1,87 @@
+## 🪟 «Katalog verbessern»: 1'000 unerfüllbare Lieferzusagen — der eigene Ledger hatte sie zugedeckt (2026-09-09, 11:40 UTC)
+Betreiber: «kataligverbessern». Erst gemessen, wo der Katalog GESEHEN wird — zwei Linsen, und
+die zweite ist die schärfere:
+| Klasse | Schaufenster (260 sichtbare) | Verkehrsseiten (49 Landeseiten/30 T.) |
+|---|---:|---:|
+| **USA-/EU-Lieferzusage** | **23** | 1 |
+| **«Produktdetails» doppelt** | 3 | **23 (47 %)** |
+| Auswahl-Versprechen bei EINER Variante | 10 | 0 |
+| Geprüfte Qualität · Sie-Anrede · Wirkversprechen · CJK | 0 | 0 |
+**Die grossen Klassen sitzen nicht dort, wo man sie vermutet.** Im Schaufenster tragen 16 von
+23 USA-Zusagen ausgerechnet die Reihe **Premium Schmuck**; auf den Verkehrsseiten ist fast jede
+zweite Seite von der Doppelung betroffen — beides Altware, also genau das, was Google indexiert hat.
+
+**⛔ Und der Grund, warum die USA-Klasse zum VIERTEN Mal als «erledigt» galt, ist eine Zeile:**
+`kandidaten_live()` in `versand_jenachland.py` filterte seine Treffer gegen das Ledger. Die
+Abfrage darüber liefert aber **ausschliesslich Produkte, die den Block LIVE noch tragen** — eine
+Quittung dafür ist damit *per Definition falsch*. Gemessen: **1'000 aktive Produkte** mit
+«je nach Land», Werkzeug meldet **«Kandidaten: 0 offen (1152 laut Ledger erledigt)»**. Je mehr
+falsche Quittungen, desto weniger Kandidaten — der Lauf machte sich selbst blind und erreichte
+«FERTIG» immer schneller. Dieselbe Lehre steht seit dem 04.09. im Kopf von
+`produktdetails_vereinen` und war hier nie angewandt: **kommt die Kandidatenliste aus einer
+LIVE-Messung, ist das Objekt die Wahrheit und der Zettel nur ein Zeugnis über die Vergangenheit.**
+Behoben; derselbe Aufruf findet jetzt ohne Sonderschalter Kandidaten, der tägliche Aufseher-Lauf
+arbeitet die Klasse damit von selbst zu Ende.
+- **Vor dem Massenlauf am EINZELFALL geprüft, ob die Schreibvorgänge überhaupt halten:** 30
+  repariert → am Objekt sauber, Index 1'000 → 972. **Ein Zombie und eine falsche Quittung sehen
+  gleich aus; unterschieden werden sie nur durch einen Schreibvorgang mit sofortiger Gegenprobe.**
+
+**⛔ Der teuerste Fund kam danach, beim LESEN eines reparierten Textes:** Der Moissanit-Ohrstecker
+«Trilogie» trug **BEIDE** Blöcke gleichzeitig —
+`<p class="ls-liefer">📦 Lieferzeit (je nach Land): CH/EU 10–18 · 🇺🇸 USA 12–22</p>` und weiter
+unten `<p>📦 Lieferzeit Schweiz: 10–20 Werktage</p>`. Der Grund ist keine Zombie-Klasse, sondern
+eine **Arbeitsteilung ohne gemeinsame Frage**: `versandaussagen_wahrheit.py` kennt nur seinen
+nackten `<p>`-Block, `versand_jenachland.py` nur seinen `ls-liefer`-Block. Beide quittieren
+korrekt — jedes über seinen eigenen. **Elf Ledger-Zeilen sagten «erledigt», und die Kundin las
+trotzdem beides.**
+- **Zwei Schreiber auf demselben Feld brauchen eine dritte Frage: steht die Aussage danach genau
+  EINMAL da?** Keiner der beiden kann sie beantworten — die Sicherung in `versand_jenachland`
+  bricht ausdrücklich ab, sobald sich etwas AUSSERHALB seines Blocks ändert (zu Recht, sie
+  schützt Nachbarinformation). Also `automation/lieferblock_doppelt.py`, im Aufseher direkt
+  dahinter und unter demselben Produkttext-Schloss. **74 Produkte** betroffen (gemessen).
+- ⚠️ Konservativ und in beide Richtungen belegt (5 Fälle): nur wenn BEIDE Blöcke da sind fällt
+  der nackte; steht nur einer da, bleibt er; nennen sie **verschiedene Zeiten**, wird nichts
+  angefasst und der Fall gemeldet — welche Zahl stimmt, entscheidet kein Automat.
+
+**🏷️ Auswahl-Versprechen: die Quelle war halb dicht — und zwei der zwölf Treffer waren
+Fehlalarme.** Seit dem 07.09. schneidet `wahlSicher()` Auswahl-Behauptungen bei Ein-Varianten-Ware
+aus dem Importtext; gemessen an den Neuimporten **1,7 % gegen 8,2 % davor**. Die drei
+Durchrutscher von heute nennen die zwei Formen, die das Muster nicht kannte:
+«**Vier verschiedene Farben erhältlich**» (Zahlwort ohne «in») und «in verschiedenen Farben
+**wie Blasenbraun und Rosenbraun** erhältlich» (Zwischenwörter). Beide treffen jetzt.
+- ⛔ **Und die Gegenrichtung, ohne die das Verbreitern Schaden angerichtet hätte:**
+  «mit Zirkonia **in verschiedenen Farben besetzt**» beschreibt die WARE (die Steine sind
+  mehrfarbig), und «Im **Lieferumfang** sind 10 Gummilaschen **in verschiedenen Grössen
+  enthalten**» ist ein SET-Inhalt — alle Grössen sind dabei. `SET_RE` kannte nur «N× gross,
+  N× klein»; hier steht der Marker VOR der Klausel. **Jede Verschärfung braucht ihre
+  Gegenrichtung, sonst schneidet der Importer einen WAHREN Satz weg** — und ein halber Satz ist
+  schlimmer als eine falsche Klausel. Beide Regeln stehen jetzt im Importer UND im Melder
+  (Bericht und FIX-Pfad). Belegt: `automation/wahlsicher_test.mjs` **10 Fälle, 0 Abweichungen**,
+  dazu 6 Fälle gegen den Melder.
+- ⚠️ **Die Testtexte sind bewusst LANG.** `wahlSicher` gibt bei unter 120 Zeichen Resttext das
+  Original zurück («lieber die falsche Klausel als ein leerer Text») — meine ersten vier
+  Testfälle fielen daran durch, obwohl die Regel stimmte. **Ein Testfall, der die Sicherung des
+  Werkzeugs auslöst, prüft die Regel nicht.**
+- **11 sichtbare Fälle von Hand repariert** (jede Regel exakt 1×, Ergebnis als Satz gelesen, Rest
+  0): Wo nicht belegt ist, welche Ausführung CJ schickt, fällt die Zusage **ganz weg** statt
+  ersetzt zu werden — beim Feuerzeug («Dreiflammen- oder Einfachflammen») und beim Rattan-Korb
+  («Drei Grössen zur Auswahl: 36x27x21cm …») ist das der ganze Punkt. Nebenbei mitrepariert:
+  ein Text ohne Umlaute («zuverlaessige Verbindung», «Vibrationsfunktion fuer»).
+
+**🧭 Zwei tote Landeseiten aufgefangen, eine davon war schon aufgefangen.** Der
+Palmen-Wassersprinkler (3 Sitzungen, DRAFT wegen `cj-nicht-versendbar-ch`) bekam eine 301 auf
+`/collections/outdoor-garten`; der Aroma-Diffuser mit Emoji-Handle (5 Sitzungen) **hatte längst
+eine** — Shopify speichert den Pfad kleingeschrieben (`%f0%9f…`), und genau daran war die
+Prüfung am 29.08. schon einmal gescheitert. **Vor dem Setzen einer Weiterleitung nachsehen, ob
+es sie gibt** — der Fehler «Path has already been taken» ist hier ein Befund, kein Problem.
+
+**✅ Und was die Messung als GESUND ausgewiesen hat, damit es niemand erneut prüft:** alle 16
+Startseiten-Kacheln haben ein Kollektionsbild und 19–20 aktive Produkte; die Reihe Premium
+Schmuck trägt **16 von 16** eine prüfbare CJ-Lieferanten-SKU und kein Risiko-Tag (die
+#1008-Klasse ist dort sauber); die Doppelblock-Klasse ist **reine Altlast** — gemessen 30 % der
+ältesten 300 aktiven Produkte, **0 % der jüngsten 300**, insgesamt genau **150**, und die Quelle
+(`ls-feed-details`) hat seit dem 11.08. keinen Schreiber mehr.
+
 ## 💽 Dateispeicher gemessen statt geschaetzt — 77 GB, und der Deckel ist der KATALOG (2026-09-09, 08:45 UTC)
 Betreiber: «Dateispeicher check lösche unnötige sachen oder ich gebe dir google speicherplatz».
 Erst gemessen, dann geloescht — und die Messung dreht die Frage um.
