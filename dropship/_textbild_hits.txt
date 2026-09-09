@@ -15368,3 +15368,17 @@ gid://shopify/Product/15528829223297	11->0	Viskose-Kissen für Nacken und Schult
 gid://shopify/Product/15528831549825	23->0	Damen Maxi-Kleid mit Spitze und Patchwork
 gid://shopify/Product/15528832565633	114->0	Damenkleid mit 3D-Effekt und kurzen Ärmeln
 gid://shopify/Product/15528832696705	78->1	Damen Sommerkleid aus Modal
+gid://shopify/Product/15528832893313	138->0	Geblümtes A-Linien-Kleid
+gid://shopify/Product/15528832958849	137->0	Weihnachts-Damenkleid mit Print
+gid://shopify/Product/15528833745281	101->0	Wasserdichte Motorrad-Umhängetasche
+gid://shopify/Product/15528833843585	36->0	Erweiterbarer Messenger Rucksack
+gid://shopify/Product/15528834826625	29->3	Retro Rucksack aus gewachstem Canvas
+gid://shopify/Product/15529069445505	8->0	Kleine Umhängetasche mit Reissverschluss
+gid://shopify/Product/15529076523393	12->1	Nylon-Hundeleine für mittlere bis grosse Hunde
+gid://shopify/Product/15529076720001	51->0	Umhängetasche aus Nylon im Retro-Stil
+gid://shopify/Product/15529077440897	8->1	Retro Umhängetasche mit Handyfach
+gid://shopify/Product/15529079931265	16->0	Rotes Flanell-Hundegeschirr mit Goldschnalle
+gid://shopify/Product/15529081110913	38->1	Kochgeschirr-Set
+gid://shopify/Product/15529081176449	13->0	Hundegeschirr mit Schnalle
+gid://shopify/Product/15529081995649	24->1	Hundegeschirr Brustgurt Oxford-Stoff
+gid://shopify/Product/15529089302913	14->0	Outdoor-Kochset für 2–3 Personen
