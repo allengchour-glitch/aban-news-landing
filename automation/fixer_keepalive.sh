@@ -496,6 +496,20 @@ while true; do
       echo "$(date -u +%H:%M) bestseller_rotation gestartet"
     fi
   fi
+  # BESTSELLER-AUFFUELLEN, einmal täglich (10.09.2026): Die Reihe «⭐ Unsere Bestseller» stand
+  # bei 20 aktiven von 32 — die Sieger, aus denen sie am 29.08. kuratiert wurde, waren inzwischen
+  # gedraftet (ausverkauft-lieferant / keine-lieferanten-ref / ghost-sale). Eine Reihe, die
+  # «Bestseller» heisst und keine bewerteten Produkte mehr zeigt, ist eine leere Behauptung.
+  # Ergaenzt aus Judge.me nur, was die BADGE-Bedingung erfuellt (≥4,0 ★ UND ≥3 Stimmen), hoechstens
+  # 2 je Warengruppe (sonst siebenmal Kueche), und ENTFERNT nie etwas. Laeuft VOR der Rotation.
+  BA=/tmp/bestseller_auffuellen.log
+  if [ -f "$REPO/automation/bestseller_auffuellen.py" ] && [ -f /tmp/judgeme.env ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BA" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bestseller_auffuellen.lock; flock -n 9 || exit 0; WRITE=1 exec python3 automation/bestseller_auffuellen.py" >> "$BA" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bestseller_auffuellen gestartet"
+    fi
+  fi
   # NEUHEITEN-ROTATION, einmal täglich (05.09.2026, Audit mobil-startseite: «Neuheiten 2026» und
   # «Elektronik» zeigten 10/12 dieselben Beamer — CREATED_DESC folgt dem Grind). Holt je Welt das
   # juengste brauchbare Produkt an den Anfang der MANUAL-Kollektion `neu-eingetroffen`. Idempotent je Tag.
