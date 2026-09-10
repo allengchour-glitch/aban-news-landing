@@ -1,3 +1,75 @@
+## ⭐ Sieben tote Landeseiten hinter der Reihe «Unsere Bestseller» (2026-09-10, 19:00 UTC)
+
+Der Audit-Befund lautete «zwei DRAFT-Karten belegen kuratierte Plätze». Am Objekt gemessen sind es
+**14** — 4 in `hype-jetzt` (harmlos, 68 aktive im Vorrat) und **10 in `bestseller`**, wo nur noch
+**20 von 32** aktiv waren. Und dahinter lag der eigentliche Schaden: **7 der 10 hatten KEINE
+Weiterleitung** — darunter die drei meistbewerteten Produkte des Shops (Slim Wallet 5,0★,
+Herrenuhr 5,0★, Jade-Set 5,0★). Wer über Google kam, landete auf 404.
+- **Alle 7 mit 301 aufgefangen**, jedes Ziel einzeln geprüft (ACTIVE, im Onlineshop, selbst keine
+  Weiterleitung): drei bekamen ein **gleichartiges PRODUKT** (Jade Roller → Jade Roller Premium,
+  Herrenuhr → Herren-Quarzuhr, Salzlampe → UFO Kristall-Salzlampe), vier eine Kategorie.
+  ⚠️ `strand` (8 aktiv) wurde als Ziel VERWORFEN — ein Link auf eine fast leere Kategorie ist eine
+  Sackgasse mit Beschriftung (30.08.); die Strohtasche zeigt auf `sub-taschen` (3'691).
+- **Und die 301 hat sofort mehr geheilt als die Landeseiten: `interne_links_nachziehen.py` schrieb
+  19 Dokumente um** — 11 Ratgeber trugen tote Links auf Jade-Set und Herrenuhr («Geschenk-Guide»,
+  «Weihnachtsgeschenke», «Herrenuhr kaufen» …). Ohne 301 kann das Werkzeug nichts tun; **die
+  Reihenfolge ist die halbe Reparatur: erst weiterleiten, dann Links nachziehen.**
+- **Drei der zehn Drafts hat meine EIGENE Reparatur vom 08.09. ausgelöst.** Damals wurde die
+  #1008-Klasse an der Kasse geschlossen (Bestand 0 + `tracked`), ausdrücklich mit «sie bleiben
+  sichtbar». 13 Minuten später hat der Ausverkauft-Wächter sie folgerichtig gedraftet. **Eine
+  bewusste Entscheidung («sichtbar lassen») und ein Automat («Bestand 0 → Draft») können sich
+  widersprechen, ohne dass einer von beiden falsch ist** — wer einen Zustand herstellt, muss
+  fragen, welcher Wächter ihn als sein Kriterium liest.
+
+**Die Reihe selbst neu aufgebaut, aus BELEGTEN Siegern statt aus einer Behauptung:**
+`automation/bestseller_auffuellen.py` (täglich im Aufseher, ergänzt nur, entfernt nie) aggregiert
+Judge.me — **820 Produkte mit Bewertungen, 599 erfüllen die BADGE-Bedingung des Shops** (≥4,0 ★
+UND ≥3 Stimmen; die Schwelle, ab der die Kundin die Sterne überhaupt SIEHT, 01.09.). 20 → **32 aktiv**.
+- ⚠️ **Der erste Trockenlauf war küchenlastig: 7 von 12 Vorschlägen waren Küchenartikel.** Ursache
+  war meine Sortierung nach STERNEN — bei 599 Kandidaten mit 5,0★ ist das eine Zufallsordnung.
+  Jetzt nach **Stimmenzahl** (acht Stimmen sagen mehr als drei) und höchstens **2 je Warengruppe**.
+  Ergebnis: sieben Warenwelten statt einer. **Eine kuratierte Reihe, die siebenmal dieselbe
+  Warenart zeigt, sieht aus wie ein Katalogauszug** (dieselbe Lehre wie 29.08.).
+- ⚠️ `/tmp/judgeme.env` trägt **`export ` als Präfix** — wer nur an `=` trennt, bekommt den
+  Schlüssel nie und hält es für ein fehlendes Geheimnis.
+- ⚠️ **Und ich bin zweimal in einem Turn in dieselbe Falle gelaufen: meine EIGENE gekürzte
+  Ausgabe als Datenquelle.** Erst ein Handle aus einer `[:52]`-Druckzeile (`…-62670` statt
+  `…-626700`) — die Zielprüfung hat es gefangen; dann ein aus dem Gedächtnis ergänzter Handle im
+  curl-Test, der prompt 404 meldete, obwohl die 301 sass. **Eine Kürzung in der eigenen
+  print-Zeile ist eine Fälschung der Datenlage** (02.09.) — Kennungen kommen aus der Antwort,
+  nie aus der Anzeige.
+
+## 🪞 Ich habe eine Dublette REPARIERT statt sie aufzulösen — und es zweimal fast wiederholt (2026-09-10, 19:20 UTC)
+
+Zwei TAG-basierte Kategorie-Lecks aus dem 09.09.-Audit abgearbeitet, und beide waren grösser als
+der Bericht sagte:
+| Kategorie | Regel | aktiv vorher | gelesener Inhalt | nachher |
+|---|---|---:|---|---:|
+| Haarstyling & Tools | `TAG = haarstyling` | 1'191 | **2 von 20 Titeln waren Styling-Geräte** — der Rest Gesichtsbürsten, Augenmassage, Porenreiniger, Körperöl | 448 |
+| Wärme & Komfort | `TAG = wellness` | 33 | Luftventil-Halter (Auto!), Augenbrauen-Schere, Kristall-Stein-Set | 43 |
+Beide Male vergibt die CJ-Gruppe ihren Tag blanko — dieselbe Klasse wie «918 Spielzeuge unter
+Elektronik» (31.08.) und «226 BRUDER-Traktoren als Kostüm» (03.09.). **Ein Gruppen-Tag ist eine
+Behauptung des Lieferanten, keine Sortierung.**
+
+**⛔ Und der eigene Fehler, der schwerer wiegt als der Befund:** Ich habe `haarstyling-tools` mit
+neun sauberen Titelregeln repariert — und danach gemessen, dass **`haarstyling-geraete` längst
+existiert, im MENÜ steht und dieselbe Ware führt** (295 aktiv, drei Regeln). Ich hatte also eine
+gute Kategorie gebaut, die eine bestehende dupliziert. **Vor jeder Kategorie-Reparatur gehört die
+Frage: gibt es diese Kategorie schon?** — die Lehre steht seit dem 08.09. im Gedächtnis
+(«Zwei Kollektionen für dieselbe Ware sind eine zu viel»), und ich bin trotzdem hineingelaufen.
+Aufgelöst in der richtigen Richtung: Die BESSEREN Regeln wandern in die Kollektion, die im Menü
+steht (295 → **448 aktiv**), die Dublette bekommt eine 301 und wird unpubliziert (live 301 → 200).
+- **Beim zweiten Fall dann zuerst gesucht:** alle 364 Kollektionen nach «wärme/heiz/warm/kuschel»
+  durchgezählt — `kuschel-heizdecken` (19, nur Decken) ist KOMPLEMENTÄR, keine Dublette.
+  Erst danach `waerme-komfort` ins Menü unter «Herbst & Übergang» (142 → 143 Punkte, nachgezählt).
+- ⚠️ **Zwei Fehltreffer nur durch LESEN der Titel gefunden, nicht durch Zählen:** «Heizmatte»
+  trifft ausschliesslich **Reptilien- und Haustier-Heizmatten** (Terrarium), «beheizte» trifft
+  einen **Eisportionierer** und ein **Gesichtsreinigungsgerät**, «Wärmelampe» Nutztierlampen.
+  Alle drei aus der Regel gestrichen. Ein Kandidatenwort ist erst dann eine Regel, wenn man seine
+  Treffer gelesen hat.
+- ⚠️ `menuUpdate` verlangt **`[MenuItemUpdateInput!]!`**, nicht `MenuItemCreateInput` — der
+  Typfehler nennt beide Namen und ist dadurch selbsterklärend, kostet aber einen Anlauf.
+
 ## 📦 «Die Ware wird gerade erst BESCHAFFT» — CJs erste echte Antwort nach vier Tagen (2026-09-10, 18:35 UTC)
 
 Iris Huang hat um **03:25 UTC** geantwortet, und zum ersten Mal auf die GESTELLTE Frage:

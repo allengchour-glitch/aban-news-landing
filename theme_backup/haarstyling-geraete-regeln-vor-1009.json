@@ -1,0 +1,25 @@
+{
+ "c": {
+  "id": "gid://shopify/Collection/689884234113",
+  "ruleSet": {
+   "appliedDisjunctively": true,
+   "rules": [
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Haartrockner"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Glätteisen"
+    },
+    {
+     "column": "TITLE",
+     "relation": "CONTAINS",
+     "condition": "Lockenstab"
+    }
+   ]
+  }
+ }
+}

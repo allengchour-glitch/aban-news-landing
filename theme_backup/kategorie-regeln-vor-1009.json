@@ -1,0 +1,30 @@
+{
+ "c1": {
+  "id": "gid://shopify/Collection/689119068545",
+  "title": "Haarstyling & Tools",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "haarstyling"
+    }
+   ]
+  }
+ },
+ "c2": {
+  "id": "gid://shopify/Collection/689316725121",
+  "title": "Wärme & Komfort",
+  "ruleSet": {
+   "appliedDisjunctively": false,
+   "rules": [
+    {
+     "column": "TAG",
+     "relation": "EQUALS",
+     "condition": "wellness"
+    }
+   ]
+  }
+ }
+}
