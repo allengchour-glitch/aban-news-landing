@@ -1,3 +1,33 @@
+## 📦 «Die Ware wird gerade erst BESCHAFFT» — CJs erste echte Antwort nach vier Tagen (2026-09-10, 18:35 UTC)
+
+Iris Huang hat um **03:25 UTC** geantwortet, und zum ersten Mal auf die GESTELLTE Frage:
+> «the order DP2609071450210661800 (#1018) DP2609071724090988900 (#1017) **Currently being procured**;
+> your order will typically be shipped 3-5 days after payment.»
+
+**Damit ist der Stillstand erklärt, und die Erklärung ist unangenehmer als die Vermutung:** Das
+Etikett entstand am 07.09., die Ware lag zu diesem Zeitpunkt **gar nicht im Lager** — CJ kauft sie
+erst ein. Es gibt kein Paket, das gescannt werden könnte. Die 73/76 h ohne Scan sind kein
+Logistikfehler, sondern der Normalzustand einer Bestellung, deren Ware noch beschafft wird.
+**Eine Sendungsnummer ist ein Label, keine Übergabe** (09.09.) — und jetzt ist belegt, dass sie
+sogar vor dem EINKAUF vergeben wird.
+- ⚠️ **Iris ordnet die zwei Aufträge VERTAUSCHT zu** (sie nennt 1450 → #1018, tatsächlich ist
+  14:50 die Zahlungsminute von **#1017**). Für die Aussage folgenlos, weil sie beide betrifft —
+  aber wer eine fremde Zuordnung übernimmt, ohne sie gegen die eigene Messung zu halten,
+  schreibt den Fehler in die eigene Akte.
+- **Beide Kunden noch am selben Tag informiert, nicht erst am zugesagten Freitag.** Eine Zusage
+  «ich melde mich Freitag» ist eine Untergrenze, keine Sperre: **wer etwas Neues weiss, meldet
+  sich früher.** CJs Zeitfenster wurde ausdrücklich als AUSSAGE DES LIEFERANTEN weitergegeben,
+  nicht als eigenes Versprechen — die eigene Zusage bleibt das, was in der eigenen Hand liegt
+  (Geld zurück).
+- Zusagen unverändert: #1018 keine automatische Rückerstattung (der Kunde will die Ware),
+  Pflichtmeldung Fr 12.09.; #1017 automatische Rückerstattung Mo 15.09.
+- **Die Lehre über den Fall hinaus: eine Standardauskunft und eine Antwort sehen im Postfach
+  gleich aus.** Am 09.09. kam von «Alex» der Textbaustein über Pending-Bestellungen, der den Fall
+  verfehlte; heute kam die echte Antwort — im SELBEN Sammel-Thread, hinter zwanzig zitierten
+  Altnachrichten. Wer nur den Vorschautext liest, sieht «Alan Yang, 18.08.» und hält die Mail für
+  eine Wiederholung. **CJs «Reply to Customer Consultation» trägt die neueste Antwort ganz unten;
+  sie gehört gelesen, nicht überflogen.**
+
 ## 🔒 Die Installation war SUSPENDIERT — und ein Konnektor-Reconnect hebt das nicht auf (2026-09-10, 18:04 UTC)
 
 Der Betreiber schickte den Screenshot von `github.com/settings/installations/136…`. In der Warnleiste
