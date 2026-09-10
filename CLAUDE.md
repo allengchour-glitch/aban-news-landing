@@ -1,3 +1,42 @@
+## 📭 Vier Tage kein Scan, kein Wort von CJ — beide Kunden VOR der Beschwerde informiert (2026-09-10, 07:10 UTC)
+
+Die Selbstmessung vom 09.09. ist fällig geworden und ihre Bedingung war erfüllt. Gemessen, nicht
+vermutet:
+| | #1017 Messer, Pratteln | #1018 Ladegerät, Dulliken |
+|---|---|---|
+| CJ orderStatus | **UNSHIPPED** | **UNSHIPPED** |
+| trackingStatus | Processing | Processing |
+| Stationen | **1**, Text «Label created. Warehouse is processing this order.» | **1**, gleicher Text |
+| Stand der einzigen Station | 07.09. 14:56 | 07.09. 17:45 |
+| seither vergangen | **64 h** | **61 h** |
+| CJ-Antwort auf die Anfrage vom 09.09. | **keine** (Thread `1a066a03bf2c8dd2`) | dieselbe |
+Gegenprobe an derselben Linie: LX1014 (EQKPT8612454928YQ) steht auf **Delivered mit 21 Stationen**.
+Die leere Stationsliste ist also eine Eigenschaft DIESER zwei Pakete, nicht der Tracking-Daten.
+
+- **Beide Kunden proaktiv informiert, bevor sie sich melden** — mit dem gemessenen Stand, der
+  Gegenprobe und dem Satz, dass das Etikett existiert und das Paket trotzdem nicht übergeben ist.
+  **Kein neues Lieferdatum**: «Wann das Paket ankommt, weiss ich ehrlich gesagt nicht – und ich
+  nenne Ihnen deshalb bewusst kein neues Datum, das ich nicht halten kann.»
+- **Statt eines Datums eine ZUSAGE, die ich halten kann:** Bewegt sich bis **Montag 15.09.** nichts,
+  wird automatisch voll erstattet (40.90 / 28.90) — früher auf Wunsch, oder die Bestellung bleibt
+  offen, wenn der Kunde weiter warten will. **Ein Versprechen über fremdes Handeln (CJ) kann man
+  nicht halten; ein Versprechen über das eigene (Geld zurück) schon.** Die Zusage hängt an einer
+  Selbstmessung (12.09., dann 15.09.), sonst wäre sie eine dritte unerfüllte Zusage in derselben Akte.
+- **Beträge vor dem Versprechen am Objekt geprüft** (`totalPriceSet`: 40.90 / 28.90) — eine Zahl in
+  einer Rückerstattungs-Zusage aus dem Gedächtnis zu nehmen ist genau die Sorte Fehler, die man dem
+  Kunden ein zweites Mal erklären muss.
+- **CJ ein zweites Mal nachgefasst, im BESTEHENDEN Thread**, diesmal mit einer Bitte um genau drei
+  Dinge (Übergabedatum · oder klares Nein zu einem der Artikel · oder neue Sendungsnummer) und dem
+  ausdrücklichen Hinweis, dass am 15.09. erstattet wird. **Eine Anfrage mit einer Frist bekommt eher
+  eine Antwort als eine ohne** — und die Frist ist keine Drohung, sondern die Wahrheit über das,
+  was ohnehin passiert.
+- ⚠️ **`getTrackInfo` gibt `data` als LISTE zurück**, nicht als Objekt — `d.get('routes')` stürzt mit
+  `'list' object has no attribute 'get'`. Und der Abruf teilt sich das 1-req/s-Limit mit den vier
+  Grind-Runnern: der erste ungepufferte Lauf endete mit **HTTP 429**. Beides ist bekannt und beides
+  hat mich heute je einen Anlauf gekostet — **eine Drosselung ist kein Abbruchgrund** (sechste Fassung).
+- ⚠️ Die Mails gehen weiterhin aus dem privaten Gmail des Betreibers, nicht von info@luxestyle.ch —
+  der «Senden als»-Alias steht seit dem 03.09. in COWORK-AUFTRAEGE und ist ein Betreiber-Klick.
+
 ## ⛔ Der Push ist gesperrt — Lesen geht, Schreiben nicht (2026-09-09, 13:40 UTC)
 
 `git push` antwortet seit 13:38 UTC mit **403**: «Claude doesn't have GitHub access to
