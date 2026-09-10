@@ -24263,3 +24263,5 @@ gid://shopify/Product/15502661550465	CHF 15.65	22 Varianten	Mädchen Prinzessinn
 gid://shopify/Product/15502661583233	CHF 8.04	1 Varianten	Zifferblatt für Automatikuhr, Camouflage
 gid://shopify/Product/15502661616001	CHF 11.31	1 Varianten	Magnetischer Futter- und Wassernapf für Haustiere
 gid://shopify/Product/15502661648769	CHF 23.72	1 Varianten	Anis Küchenmesser, 20 cm Klinge
+gid://shopify/Product/15502661714305	CHF 8.04	1 Varianten	Grünes Leucht-Zifferblatt für Camouflage-Uhren
+gid://shopify/Product/15502661747073	CHF 15.49	33 Varianten	Mädchen Lauflernschuhe mit weicher Sohle
