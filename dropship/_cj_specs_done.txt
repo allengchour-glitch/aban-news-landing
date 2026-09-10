@@ -684,3 +684,6 @@ lidschatten-palette-16-farben-e283c6	hat-liste
 kabellose-poliermaschine-fur-dein-auto-614200	hat-liste
 universal-autositzkissen-aus-baumwolle-631800	gesetzt-1
 smarter-auto-aroma-diffuser-626900	gesetzt-2
+auto-waschhandschuh-wachsschwamm-set-635300	gesetzt-1
+plusch-sitzkissen-fur-junge-erwachsene-604200	gesetzt-1
+sitzhocker-fur-das-lenkrad-4d96d4	gesetzt-2

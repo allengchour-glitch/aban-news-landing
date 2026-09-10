@@ -1,62 +1,30 @@
-15396249502081	Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
-15396249960833	Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
-15396250321281	Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
-15396404789633	LED Schreibtischlampe Dimmbar · Augenschutz, USB-C
-15396404855169	Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
-15397218320769	Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
-15397247385985	Jade Roller & Gua Sha Premium Set · echter Jade, Doppelkopf-Roller
-15397247484289	Sternenhimmel Projektor · Baby Nachtlicht mit Musik
-15406765801857	Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
-15408457744769	Premium Bambus Aroma Diffuser 300ml
-15408457941377	Rosenquarz Gua Sha Set
-15408457974145	Jade Roller Premium Doppelseitig
-15408458006913	Kristall-Set 3-teilig
-15408458072449	Cellulite Massage Roller
-15408458170753	Bambus Aufbewahrungssystem Modular
-15408458236289	Bambus Kosmetik-Organizer Premium
-15408458563969	Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
-15411554320769	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
-15411554910593	Aromadiffusor Holzmaserung
-15411555533185	Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
-15411556614529	Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
-15411563823489	Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
-15411564446081	Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
-15411565035905	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
-15411565429121	Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
-15412297007489	LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten & Balkon
-15412297073025	Solar Camping-Laterne im Vintage-Look – wiederaufladbar, IP44 wetterfest
-15412299661697	Kühlmatte für Hunde & Katzen – Ice-Silk, selbstkühlend (waschbar)
-15412299760001	Vintage Sonnenbrille Oval – Metallrahmen, UV-Schutz (Damen)
-15412301922689	Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones
-15412302020993	Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)
-15412302414209	Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
-15412302512513	Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
+15412302512513	Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichte
 15412304707969	Übersetzer-Kopfhörer – 144 Sprachen, Echtzeit, Bluetooth 5.3
 15412304773505	Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser
 15412304806273	Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)
-15412304871809	Komfort-Fahrradsattel XXL – extrabreit, gefedert, ergonomisch gepolstert
-15412306215297	Augenmassagegerät mit Wärme & Musik – Bluetooth, faltbar, gegen müde Augen
+15412304871809	Komfort-Fahrradsattel XXL – extrabreit, gefedert, ergonomisch gepolste
+15412306215297	Augenmassagegerät mit Wärme & Musik – Bluetooth, faltbar, gegen müde A
 15412306608513	16-in-1 Gemüseschneider – Multi-Hobel, Würfler & Slicer
-15412306772353	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle Box
+15412306772353	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle 
 15412307100033	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung, wasserabweisend
-15412307165569	Selbstklebende 3D-Wimpern – wiederverwendbar, ohne Kleber, natürlicher Look
-15412307657089	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserung, 2 Helligkeitsstufen
-15412361593217	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlafzimmer
+15412307165569	Selbstklebende 3D-Wimpern – wiederverwendbar, ohne Kleber, natürlicher
+15412307657089	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserung, 2 Helligkeitsstuf
+15412361593217	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlaf
 15412405272961	All-in-One Elektro-Kochtopf – Keramik-Beschichtung, Glasdeckel & Zange
-15412408615297	Monitor-Lichtleiste mit Bewegungssensor – blendfreies Schreibtischlicht, USB
+15412408615297	Monitor-Lichtleiste mit Bewegungssensor – blendfreies Schreibtischlich
 15412432175489	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
 15412433256833	Handliches Massagegerät – Vibrations-Massage mit mehreren Stufen
 15412447543681	Auto-Schnellladegerät PD – ausziehbares Kabel, für Apple & Android
-15412463108481	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, Fashion-Look (Herren)
-15412476445057	Flötenkessel 2L – Edelstahl-Wasserkessel mit Pfeife, für alle Herde & Camping
-15412659978625	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schlüsselbund (4 Farben)
-15412677607809	Elektrischer Krallenschleifer für Hund & Katze – leise, USB-Akku, mit LED
-15412678328705	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen für Setzlinge & Kräuter
-15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
-15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
-15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+15412463108481	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, Fashion-Look (Herren
+15412476445057	Flötenkessel 2L – Edelstahl-Wasserkessel mit Pfeife, für alle Herde & 
+15412659978625	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schlüsselbund 
+15412677607809	Elektrischer Krallenschleifer für Hund & Katze – leise, USB-Akku, mit 
+15412678328705	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen für Setzlinge & Krä
+15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben
+15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Far
+15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Far
 15412825063809	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
-15412825129345	Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben)
+15412825129345	Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farbe
 15412825194881	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
 15412828733825	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
 15412830634369	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
@@ -127,14 +95,14 @@
 15413079343489	Sonnenbrille «Carré» – Retro Small-Square
 15413083242881	Boho Resort-Set · 2-teilig (Top & Hose)
 15413083832705	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
-15413083898241	Herren Leder-Slipper · elegant, zum Reinschlüpfen (Business & Freizeit)
+15413083898241	Herren Leder-Slipper · elegant, zum Reinschlüpfen (Business & Freizeit
 15413083931009	Herren Laufschuhe · Flyknit, atmungsaktiv, leicht (Sport & Alltag)
-15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2026)
+15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2
 15413084160385	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
 15413085733249	Ingwerreibe aus Keramik · für Knoblauch & Wasabi, mit Schälchen
 15413086323073	Thermo-Isolierbecher · Edelstahl, hält warm & kalt (Suppe & Kaffee)
 15413241184641	Picknick-Matte XXL · faltbar, wasserdicht, isoliert (Camping & Strand)
-15413245510017	Smart Auto-Lufterfrischer · nachfüllbar, Aromatherapie-Diffuser fürs Auto
+15413245510017	Smart Auto-Lufterfrischer · nachfüllbar, Aromatherapie-Diffuser fürs A
 15413649998209	Spitzen-Bluse mit Schleife · Damen, Patchwork-Design
 15413724676481	Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch
 15413724873089	Wide-Leg-Hose · Damen, fliessend & locker (Elegant 2026)
@@ -158,10 +126,10 @@
 15414271902081	Halskette mit Ring-Halter-Anhänger · minimalistisch (3 Farben)
 15414490399105	Oversized-Sonnenbrille «Street» · getönt, Square-Style (3 Farben)
 15416026235265	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
-15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen, 4 Farben)
-15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farben)
+15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen,
+15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farbe
 15416343986561	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
-15416470208897	Boston-Henkeltasche «Lussa» · Echtleder im Bowling-Stil (Damen, 9 Farben)
+15416470208897	Boston-Henkeltasche «Lussa» · Echtleder im Bowling-Stil (Damen, 9 Farb
 15416491704705	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
 15416493506945	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)
 15421165339009	Long-Weste «Resort» · ärmellos, Colorblock mit Schleife
@@ -994,3 +962,15 @@
 15445833449857	Feuchtigkeitsspendende, langanhaltende Foundation
 15445833613697	Multi Color Eye Black für Bühnen-Make-up
 15445833646465	Xipu Floral Damenparfum (100ml)
+15445833744769	Peel-Off Lipliner Matt
+15445833875841	Wasserfester Lippenstift & Lipliner-Set
+15445834006913	Unisex Eau de Parfum mit Blüten- & Fruchtduft
+15445834039681	Eau de Toilette Orange Wood Tone (100ml)
+15445834269057	3-in-1 Lipliner für natürliche Lippenkonturen
+15445834367361	Peel-off Lipgloss Nude Brown
+15445834465665	Glitzer Make-up Stick
+15445834498433	Wild Man Sandalwood Eau de Parfum
+15445834531201	Elegantes, blumiges Eau de Parfum (100ml)
+15445834629505	Peel-off Lip Gloss Kakao 3ml
+15445834727809	Concealer & Flüssig-Foundation Set
+15446014886273	Antihaft-Milchtopf aus dreischichtigem Edelstahl
