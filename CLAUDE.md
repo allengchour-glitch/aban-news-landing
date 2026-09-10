@@ -1,3 +1,31 @@
+## 🔒 Die Installation war SUSPENDIERT — und ein Konnektor-Reconnect hebt das nicht auf (2026-09-10, 18:04 UTC)
+
+Der Betreiber schickte den Screenshot von `github.com/settings/installations/136…`. In der Warnleiste
+steht die Ursache, nach der seit dem 09.09. gesucht wurde: **«Your installation was suspended by you
+on September 9th, 2026 at 17:07 (CEST).»** Die Claude-GitHub-App ist nicht deinstalliert und nicht
+falsch berechtigt — sie ist **stillgelegt**, und zwar vom Kontoinhaber selbst.
+- **17:07 CEST = 15:07 UTC** deckt sich auf die Minute mit dem Moment, in dem am 09.09. auch das
+  LESEN wegfiel (dort notiert: «um 13:40 gab `git fetch` noch rc=0, um 15:10 antwortet er mit
+  derselben Meldung wie der Push»). Die Korrektur von damals hat also den richtigen Zustand
+  gemessen und die falsche Ursache vermutet.
+- ⚠️ **Sie erklärt den Push-403 von 13:38 UTC NICHT** — der war anderthalb Stunden früher. Es sind
+  zwei Ereignisse, und das gehört so gesagt: die Suspendierung ist belegt, eine zweite Ursache für
+  den früheren Schreib-403 ist möglich und erst nach dem Unsuspend messbar.
+- ⛔ **Der Betreiber hat den GitHub-Konnektor in claude.ai neu verbunden — und der Push bleibt 403.**
+  Gemessen unmittelbar danach: `git fetch` **rc=0** (Lesen ist zurück), `git push` **403** mit
+  derselben Meldung. **Ein Konnektor-Reconnect verlinkt eine bestehende Installation; er weckt sie
+  nicht auf.** Wer nur den Konnektor neu verbindet, repariert den halben Weg und hält den Rest für
+  einen neuen Fehler.
+- **Der Klick ist einer und steht auf derselben Seite:** Danger zone → «Unsuspend your installation»
+  → **Unsuspend**. NICHT «Uninstall» direkt darunter — der entfernt die App ganz.
+- **Die Lehre über den Fall hinaus: Eine Sperre hat einen ZUSTAND und einen SCHALTER, und beide
+  liegen selten am selben Ort.** Zwei Tage lang wurde die Berechtigung gemessen (403 gegen 404,
+  PAT auf drei Wegen, Proxy-Status) — die Antwort stand die ganze Zeit als gelber Kasten auf der
+  Installationsseite. Bei einer fremden Berechtigung gehört ihre eigene Verwaltungsseite ANGESEHEN,
+  bevor man ihren Zustand aus Fehlermeldungen rekonstruiert.
+- ⚠️ 9 Commits liegen weiterhin lokal. Sie überleben einen Container-Neustart (Repo bleibt), aber
+  keinen Snapshot-Rückfall — nach dem Unsuspend ist der Push das Erste.
+
 ## 🙋 Der Kunde wollte die Ware — und meine Zusage hätte sie ihm storniert (2026-09-10, 09:45 UTC)
 
 Betreiber: «1018 mail? habe nicht durchgelesn, fasse zusqmmen und fix». Gemessen, was seit
