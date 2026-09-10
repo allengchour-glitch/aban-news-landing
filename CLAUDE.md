@@ -1,3 +1,43 @@
+## 🙋 Der Kunde wollte die Ware — und meine Zusage hätte sie ihm storniert (2026-09-10, 09:45 UTC)
+
+Betreiber: «1018 mail? habe nicht durchgelesn, fasse zusqmmen und fix». Gemessen, was seit
+07:10 dazugekommen ist — und es sind ZWEI Antworten:
+- **Der Kunde #1018 hat um 07:48 geantwortet: «Ich will die bestellung wann kommt sie».**
+  Er will die Ware, nicht das Geld.
+- **CJ hat geantwortet — am 09.09. um 12:41, und die Antwort verfehlt den Fall.** Sie erklärt,
+  ein Auftrag im Status **Pending** werde binnen 24–48 h zu **Processing** und bekomme dann eine
+  Sendungsnummer. Unsere beiden Aufträge stehen **längst auf Processing MIT Sendungsnummer** und
+  hängen genau dort seit 67 h ohne einen einzigen Scan. Es ist ein Textbaustein auf eine andere
+  Frage. **«Der Lieferant hat geantwortet» ist nicht «der Lieferant hat auf meine Frage
+  geantwortet»** — eine Antwort gehört gegen die gestellte FRAGE gelesen, nicht abgehakt, weil
+  im Postfach etwas liegt. (Dieselbe Familie wie «ein Endpunkt, der antwortet, beweist nur, dass
+  er antwortet», 28.08.)
+
+**⛔ Und daraus der eigentliche Fund: Meine eigene Zusage wäre am Montag zum Schaden geworden.**
+Ich hatte beiden Kunden geschrieben: «bewegt sich bis 15.09. nichts, wird automatisch voll
+erstattet». Für #1017 ist das richtig. Für #1018 nicht mehr — der Kunde hat sich ausdrücklich
+dagegen entschieden. Die Routine hätte am Montag eine Bestellung storniert, die er behalten
+will, und ihm damit die Ware weggenommen, auf die er gerade zu warten bereit ist.
+**Eine Zusage «ich tue X automatisch, wenn Sie nichts sagen» MUSS zurückgenommen werden, sobald
+der Kunde etwas sagt** — sonst arbeitet die Automatik gegen genau die Person, für die sie
+gebaut wurde. Zurückgenommen an drei Stellen, damit es keine vierte Wahrheit gibt: in der
+Antwortmail, in der Shopify-Bestellnotiz und **im Prompt der Selbstmessungs-Routine**
+(`trig_01Bw9814DapArUNYB5CXsdfs`) — der Automat muss es wissen, nicht nur die Akte.
+- **Statt eines Lieferdatums wieder eine Zusage über das EIGENE Handeln:** «Ich melde mich am
+  Freitag 12.09. von selbst mit dem gemessenen Stand — auch wenn er lautet: immer noch nichts.»
+  Die Routine trägt diesen Termin jetzt als Pflicht, nicht als Option. **Eine Zusage, die man
+  nur einhält, wenn es etwas Gutes zu berichten gibt, ist keine.**
+- **CJ ein drittes Mal nachgefasst, diesmal gegen die Standardauskunft:** ausdrücklich «beide
+  Aufträge sind NICHT Pending, sie sind Processing mit Sendungsnummer und null Scans», mit
+  Stunden, Stationszahl und der Gegenprobe LX1014 (21 Stationen, Delivered) — plus dem Satz,
+  dass mir ein klares Nein lieber ist als eine Statuserklärung.
+- ⚠️ **`/tmp/track_1017_1018.py` war nach dem Container-Neustart wieder die Fassung VOR dem
+  Listen-Fix** und stürzte erneut an `d.get('routes')` ab. Der dauerhafte Wächter
+  `automation/versand_stillstand.py` trägt beide Korrekturen (Liste + 429-Backoff) seit dem
+  09.09. und meldet denselben Befund in einer Zeile. **Ein Wegwerfskript in /tmp ist nach dem
+  nächsten Neustart wieder der alte Fehler** (vierte Fassung von «was nur in /tmp lebt,
+  existiert nicht») — gelöscht; gemessen wird mit dem Werkzeug im Repo.
+
 ## 📭 Vier Tage kein Scan, kein Wort von CJ — beide Kunden VOR der Beschwerde informiert (2026-09-10, 07:10 UTC)
 
 Die Selbstmessung vom 09.09. ist fällig geworden und ihre Bedingung war erfüllt. Gemessen, nicht
