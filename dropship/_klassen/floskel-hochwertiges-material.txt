@@ -1,36 +1,7 @@
-15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben
-15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Far
-15412825063809	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
-15412825194881	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
-15412828733825	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
-15412830634369	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
-15412830896513	Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
-15412902953345	2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
-15412915110273	Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
-15412915339649	Strand-Maxikleid «Bali» – luftiges Stufenkleid
-15412915470721	Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
-15412916060545	Sommerkleid «Savanna» – Western-Style Midi
-15412918190465	Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
-15412919402881	Etuikleid «Lumea» – Cut-Out Sheath
-15412919533953	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
-15412919566721	Schnürkleid «Noir» – Schleifen-Detail
-15412919763329	Off-Shoulder-Kleid «Brise» – locker & ärmellos
-15412969144705	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
-15412969406849	T-Shirt-Kleid «Casa» – locker mit Print
-15413023015297	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
-15413024915841	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
-15413025014145	Strandkleid «Playa» – Halter mit Schnür-Detail
-15413074985345	Sommer-Top «Sole» – V-Neck mit Knopfleiste
-15413083242881	Boho Resort-Set · 2-teilig (Top & Hose)
-15413083832705	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
-15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2
-15413084160385	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
-15413724873089	Wide-Leg-Hose · Damen, fliessend & locker (Elegant 2026)
-15413725102465	Cropped Blazer · Damen, mit Pailletten-Detail
 15413726282113	Jumpsuit mit Blazer-Kragen · Damen, chic & uni
 15413739684225	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
 15416026235265	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
-15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farbe
+15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farben)
 15416343986561	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
 15416491704705	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
 15416493506945	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)

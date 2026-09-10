@@ -1,11 +1,11 @@
-# Klassen-Kontrolle (VOLLSCAN, 52459 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 53085 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## USA-Lieferzusage im Text — 996
+## USA-Lieferzusage im Text — 832 (waehrend des Laufs 976 gezaehlt, seither repariert)
 
 Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).
 
@@ -13,34 +13,34 @@ Reparatur: `automation/versandaussagen_wahrheit.py  (QUELLE=live IGNORIERE_LEDGE
 
 Vollstaendige Liste: `dropship/_klassen/usa-lieferzusage-im-text.txt`
 
-- `15396249502081` Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
-- `15396249960833` Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
-- `15396250321281` Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
-- `15396404789633` LED Schreibtischlampe Dimmbar · Augenschutz, USB-C
-- `15396404855169` Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
-- `15397218320769` Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
-- `15397247385985` Jade Roller & Gua Sha Premium Set · echter Jade, Doppelkopf-Roller
-- `15397247484289` Sternenhimmel Projektor · Baby Nachtlicht mit Musik
-- `15406765801857` Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
-- `15408457744769` Premium Bambus Aroma Diffuser 300ml
-- `15408457941377` Rosenquarz Gua Sha Set
-- `15408457974145` Jade Roller Premium Doppelseitig
-- `15408458006913` Kristall-Set 3-teilig
-- `15408458072449` Cellulite Massage Roller
-- `15408458170753` Bambus Aufbewahrungssystem Modular
-- `15408458236289` Bambus Kosmetik-Organizer Premium
-- `15408458563969` Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
-- `15411554320769` Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
-- `15411554910593` Aromadiffusor Holzmaserung
-- `15411555533185` Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
-- `15411556614529` Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
-- `15411563823489` Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
-- `15411564446081` Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
-- `15411565035905` LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
-- `15411565429121` Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
-- … und 971 weitere
+- `15421167108481` Geburtsstein-Armband «Pois» · zarte Kette mit Steinen
+- `15421167436161` Moissanite-Ohrstecker «Éclat» · S925 Silber (0,5 / 1 Karat)
+- `15421167468929` Deko-Vase «Antique» · Schmiedeeisen Vintage-Look (37 cm)
+- `15421171859841` Statement-Ohrringe «Doré» · gebürstetes Gold, quadratisch
+- `15421171892609` Sommer-Armband «Évil» · Schmetterling & Nazar-Auge, vergoldet
+- `15421226746241` Glücks-Halskette «Fortune» · Hufeisen & Kreuz mit Zirkonia
+- `15421328359809` Doppel-Ring «Duo» · S925 Silber mit Zirkonia & Topas-Blau
+- `15421364896129` Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Panel
+- `15421364928897` Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-lagig
+- `15421414113665` Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
+- `15421414211969` Moissanite-Herzkette «Coeur» · S925 Silber, Infinity
+- `15421414277505` Acryl-Ohrringe «Ambre» · Karamell-Ton, Statement
+- `15421442228609` Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik
+- `15421442261377` Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
+- `15421501211009` Jeans-Shorts «Cristal» · Strass-Besatz, Mid-Rise Stretch
+- `15421502030209` Make-up-Tasche «Mirror» · Kosmetiketui mit integriertem Spiegel
+- `15421513630081` Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
+- `15421516218753` Blazer «Roma» · Tailliert mit Bindegürtel & Revers
+- `15421517889921` Herren-Henley «Waffle» · Waffelstrick, Langarm
+- `15421530603905` Strick-Cardigan «Bohème» · Pointelle, Leicht & Offen
+- `15421564912001` Samt-Cap «Velours» · Retro Baseball-Mütze, verstellbar
+- `15421594501505` Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
+- `15421604299137` Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Leinen-Look
+- `15421606953345` Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
+- `15421615473025` Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
+- … und 807 weitere
 
-## EU-Lieferzusage im Text — 996
+## EU-Lieferzusage im Text — 832 (waehrend des Laufs 976 gezaehlt, seither repariert)
 
 Gleiche Klasse wie USA: es gibt genau EINEN aktiven Markt (Schweiz).
 
@@ -48,32 +48,59 @@ Reparatur: `automation/versandaussagen_wahrheit.py`
 
 Vollstaendige Liste: `dropship/_klassen/eu-lieferzusage-im-text.txt`
 
-- `15396249502081` Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
-- `15396249960833` Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
-- `15396250321281` Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
-- `15396404789633` LED Schreibtischlampe Dimmbar · Augenschutz, USB-C
-- `15396404855169` Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
-- `15397218320769` Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
-- `15397247385985` Jade Roller & Gua Sha Premium Set · echter Jade, Doppelkopf-Roller
-- `15397247484289` Sternenhimmel Projektor · Baby Nachtlicht mit Musik
-- `15406765801857` Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
-- `15408457744769` Premium Bambus Aroma Diffuser 300ml
-- `15408457941377` Rosenquarz Gua Sha Set
-- `15408457974145` Jade Roller Premium Doppelseitig
-- `15408458006913` Kristall-Set 3-teilig
-- `15408458072449` Cellulite Massage Roller
-- `15408458170753` Bambus Aufbewahrungssystem Modular
-- `15408458236289` Bambus Kosmetik-Organizer Premium
-- `15408458563969` Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
-- `15411554320769` Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
-- `15411554910593` Aromadiffusor Holzmaserung
-- `15411555533185` Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
-- `15411556614529` Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
-- `15411563823489` Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
-- `15411564446081` Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
-- `15411565035905` LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
-- `15411565429121` Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
-- … und 971 weitere
+- `15421167108481` Geburtsstein-Armband «Pois» · zarte Kette mit Steinen
+- `15421167436161` Moissanite-Ohrstecker «Éclat» · S925 Silber (0,5 / 1 Karat)
+- `15421167468929` Deko-Vase «Antique» · Schmiedeeisen Vintage-Look (37 cm)
+- `15421171859841` Statement-Ohrringe «Doré» · gebürstetes Gold, quadratisch
+- `15421171892609` Sommer-Armband «Évil» · Schmetterling & Nazar-Auge, vergoldet
+- `15421226746241` Glücks-Halskette «Fortune» · Hufeisen & Kreuz mit Zirkonia
+- `15421328359809` Doppel-Ring «Duo» · S925 Silber mit Zirkonia & Topas-Blau
+- `15421364896129` Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Panel
+- `15421364928897` Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-lagig
+- `15421414113665` Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
+- `15421414211969` Moissanite-Herzkette «Coeur» · S925 Silber, Infinity
+- `15421414277505` Acryl-Ohrringe «Ambre» · Karamell-Ton, Statement
+- `15421442228609` Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik
+- `15421442261377` Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
+- `15421501211009` Jeans-Shorts «Cristal» · Strass-Besatz, Mid-Rise Stretch
+- `15421502030209` Make-up-Tasche «Mirror» · Kosmetiketui mit integriertem Spiegel
+- `15421513630081` Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
+- `15421516218753` Blazer «Roma» · Tailliert mit Bindegürtel & Revers
+- `15421517889921` Herren-Henley «Waffle» · Waffelstrick, Langarm
+- `15421530603905` Strick-Cardigan «Bohème» · Pointelle, Leicht & Offen
+- `15421564912001` Samt-Cap «Velours» · Retro Baseball-Mütze, verstellbar
+- `15421594501505` Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
+- `15421604299137` Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Leinen-Look
+- `15421606953345` Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
+- `15421615473025` Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
+- … und 807 weitere
+
+## «Geprüfte Qualität» (Überzusage) — 18
+
+Geprueft werden ANGABEN, nicht die Ware (Lehre 29.08.). Steht im JSON-LD und im Google-Feed.
+
+Reparatur: `automation/trust_baustein_wahrheit.py`
+
+Vollstaendige Liste: `dropship/_klassen/gepr-fte-qualit-t-berzusage.txt`
+
+- `15523177267585` Kleines gehämmertes Küchenmesser mit Holzgriff
+- `15523177431425` Damast VG-10 Stahl Küchenmesser
+- `15523177759105` Fruchtmesser aus 4Cr13MOV Edelstahl
+- `15523177857409` Kleines Küchenmesser mit Drachengriff
+- `15523178086785` Damast Sante kleines Kochmesser
+- `15523178414465` Santoku Messer
+- `15523178676609` Fischmesser aus Palisanderholz
+- `15523178840449` Klassisches V-Klingen Küchenmesser
+- `15523198665089` Chilong Ausbeinmesser, kleines Modell
+- `15523198796161` Chilong Ausbeinmesser
+- `15523198894465` Chilong Ausbeinmesser, 7Cr17MOV Stahl
+- `15523198992769` Lotus Fischfiletiermesser – scharf & leicht schärfbar
+- `15523199091073` Damast Klappmesser für Outdoor und Küche
+- `15523199123841` Sanhe Stahl SKD-11 Klappmesser
+- `15523199254913` Multifunktionales G10 Outdoor-Faltmesser
+- `15523199582593` G02 Samurai Outdoor-Survivalmesser
+- `15523208266113` GT0042 Faltmesser für Outdoor & Camping
+- `15523210166657` Outdoor-Klappmesser mit Stahlgriff
 
 ## «Produktdetails» doppelt — 150
 
@@ -110,7 +137,7 @@ Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 - `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
 - … und 125 weitere
 
-## Floskel «hochwertiges Material» — 124
+## Floskel «hochwertiges Material» — 95 (waehrend des Laufs 124 gezaehlt, seither repariert)
 
 Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
 
@@ -118,34 +145,34 @@ Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
 
 Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
 
-- `15412751499649` Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
-- `15412751860097` Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
-- `15412825063809` Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
-- `15412825194881` Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
-- `15412828733825` 2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
-- `15412830634369` Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
-- `15412830896513` Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
-- `15412902953345` 2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
-- `15412915110273` Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
-- `15412915339649` Strand-Maxikleid «Bali» – luftiges Stufenkleid
-- `15412915470721` Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
-- `15412916060545` Sommerkleid «Savanna» – Western-Style Midi
-- `15412918190465` Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
-- `15412919402881` Etuikleid «Lumea» – Cut-Out Sheath
-- `15412919533953` Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
-- `15412919566721` Schnürkleid «Noir» – Schleifen-Detail
-- `15412919763329` Off-Shoulder-Kleid «Brise» – locker & ärmellos
-- `15412969144705` Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
-- `15412969406849` T-Shirt-Kleid «Casa» – locker mit Print
-- `15413023015297` Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
-- `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
-- `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
-- `15413074985345` Sommer-Top «Sole» – V-Neck mit Knopfleiste
-- `15413083242881` Boho Resort-Set · 2-teilig (Top & Hose)
-- `15413083832705` Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
-- … und 99 weitere
+- `15413726282113` Jumpsuit mit Blazer-Kragen · Damen, chic & uni
+- `15413739684225` Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
+- `15416026235265` Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
+- `15416343757185` Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farben)
+- `15416343986561` Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
+- `15416491704705` High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
+- `15416493506945` Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)
+- `15421165339009` Long-Weste «Resort» · ärmellos, Colorblock mit Schleife
+- `15421165601153` Herren-Set «Resort» · Kurzarm-Hemd + Hose
+- `15421165666689` Long-Blazer «Milano» · uni, ohne Knöpfe (Damen)
+- `15421165764993` Kapuzen-Cardigan «Cosy» · uni, mit Knöpfen (Damen)
+- `15421414113665` Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
+- `15421442261377` Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
+- `15421513630081` Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
+- `15421516218753` Blazer «Roma» · Tailliert mit Bindegürtel & Revers
+- `15421594501505` Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
+- `15421606953345` Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
+- `15421615473025` Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
+- `15421617537409` Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & Volant
+- `15421620257153` Keil-Sandalen «Capri» · Geflochten, Espadrille-Look
+- `15422040277377` Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
+- `15422401479041` Sommer-Playsuit «Marigold» · Blüten-Print, Träger
+- `15422403051905` Plateau-Pumps «Wild» · Leoparden-Print, Knöchelriemen
+- `15422787453313` Mary-Jane-Ballerina «Dolce» · Lack, mit Riemchen
+- `15422811439489` Unisex T-Shirt – Selbst gestalten
+- … und 70 weitere
 
-## Sie-Anrede im Produkttext — 1055 (waehrend des Laufs 1069 gezaehlt, seither repariert)
+## Sie-Anrede im Produkttext — 1038 (waehrend des Laufs 1050 gezaehlt, seither repariert)
 
 Der ganze Shop duzt. Offene Klasse (03.09.), Massenlauf ist eine eigene Entscheidung.
 
@@ -178,7 +205,7 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15448887918977` 5 Core Akustikgitarrensaiten (6er-Set)
 - `15448891457921` Karaoke Bluetooth-Lautsprecher-Set K12 · tragbar
 - `15448898306433` Geometrisches Zirkon-Armband, 18K vergoldet
-- … und 1030 weitere
+- … und 1013 weitere
 
 ## Auswahl-Versprechen bei EINER Variante — 1746
 
