@@ -23,7 +23,14 @@ falsch berechtigt — sie ist **stillgelegt**, und zwar vom Kontoinhaber selbst.
   PAT auf drei Wegen, Proxy-Status) — die Antwort stand die ganze Zeit als gelber Kasten auf der
   Installationsseite. Bei einer fremden Berechtigung gehört ihre eigene Verwaltungsseite ANGESEHEN,
   bevor man ihren Zustand aus Fehlermeldungen rekonstruiert.
-- ⚠️ 9 Commits liegen weiterhin lokal. Sie überleben einen Container-Neustart (Repo bleibt), aber
+- ✅ **NACHTRAG 18:20 UTC — PUSH IST DURCH.** Nach dem Unsuspend gingen alle **10 Commits** in einem Zug
+  auf origin (`f9fd1e507..18a9d721f`), rc=0, Baum sauber, 0 unpushed. **Damit ist die offene Frage
+  beantwortet: es gab KEINE zweite Ursache.** Der Push-403 von 13:38 UTC und der Lese-Ausfall um 15:07 UTC
+  hatten dieselbe Wurzel — die Suspendierung wirkte auf das Schreiben offenbar früher als auf das Lesen.
+  **Meine Vermutung «zwei Ereignisse» war also falsch, und das gehört so gesagt:** Ich hatte aus zwei
+  verschiedenen Zeitpunkten auf zwei verschiedene Ursachen geschlossen. Eine Sperre kann in zwei Stufen
+  greifen; **ein Zeitversatz zwischen zwei Symptomen belegt keine zwei Ursachen.**
+- ⚠️ 9 Commits lagen bis dahin lokal. Sie überleben einen Container-Neustart (Repo bleibt), aber
   keinen Snapshot-Rückfall — nach dem Unsuspend ist der Push das Erste.
 
 ## 🙋 Der Kunde wollte die Ware — und meine Zusage hätte sie ihm storniert (2026-09-10, 09:45 UTC)
