@@ -57,9 +57,9 @@ const CATS = [
 // Wörtliche Quellen-Strings aus angebote-suche.html, die ersetzt werden:
 const SRC = {
   title: "<title>Angebote &amp; Schnäppchen suchen — eine Suche, viele Angebote | aban</title>",
-  desc: 'content="Angebote und Schnäppchen aus vielen Kategorien an einem Ort suchen und filtern — nach Stichwort, Kategorie, Zustand und Preis. Der Klick führt direkt zum Anbieter (eBay). Ehrlich, mit Affiliate-Kennzeichnung."',
+  desc: "content=\"Angebote, Schnäppchen und gebrauchte wie neue Artikel aus vielen Kategorien an einem Ort suchen, vergleichen und filtern — nach Stichwort, Kategorie, Zustand und Preis. Der Klick führt direkt zum Anbieter (eBay). Ehrlich, mit Affiliate-Kennzeichnung.\"",
   canonical: '<link rel="canonical" href="https://abannews.com/angebote-suche.html">',
-  ogtitle: '<meta property="og:title" content="Angebote & Schnäppchen suchen">',
+  ogtitle: "<meta property=\"og:title\" content=\"Angebote &amp; Schnäppchen suchen\">",
   ogurl: '<meta property="og:url" content="https://abannews.com/angebote-suche.html">',
   bc: "<span>Angebote</span>",
   h1: "<h1>Angebote &amp; Schnäppchen finden</h1>",
