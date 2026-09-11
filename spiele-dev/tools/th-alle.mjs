@@ -209,6 +209,11 @@ const PRUEFUNGEN = [
   { name: 'Schauseite (Fassade zur Strasse)', datei: 'th-schauseite.mjs', kern: false,
     wert: (s) => (s.match(/— (\d+) geprueft/) || [, '?'])[1] + ' Bauten',
     gut: (s) => /🎉 SCHAUSEITE BESTANDEN/.test(s) },
+  /* Bedienung: th-hud prueft die ANORDNUNG (Ueberdeckung, Tippziele), dies das
+     VERHALTEN — gehen, dosieren, umsehen, und vor allem beides zugleich. */
+  { name: 'Steuerung (Handy und PC)', datei: 'th-steuerung.mjs', kern: false,
+    wert: (s) => (s.match(/— (\d+) ok/) || [, '?'])[1] + ' ok',
+    gut: (s) => /🎉 STEUERUNG BESTANDEN/.test(s) },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },
