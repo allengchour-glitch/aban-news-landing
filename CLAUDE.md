@@ -62,6 +62,27 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
+- **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
+  Desktop 1440 **4 Spalten / Bild 205 px / 24 Produkte = 1905 px**; **Mobil 390 nur 1 Spalte / Bild 356 px /
+  24 Produkte = 11 298 px** — auf dem Handy sah man faktisch EIN Produkt.
+- **Geändert (17 Seiten):** `.grid` `minmax(200px,1fr);gap:14px` → **`minmax(150px,1fr);gap:12px`**,
+  Produktbild `.ph`/`.item .ph`/`.skl .ph` `aspect-ratio:1/1` → **`4/3`**.
+  **Nachher:** Desktop **5 Sp. / 122 px / 1162 px (−39 %)**, Mobil **2 Sp. / 128 px / 2887 px (−74 %)**.
+  html-validate: 0 Fehler. Diff war zu 100 % nur Raster-/Bildzeilen (geprüft).
+- **NICHT angefasst** (sind keine Produkte, Lehre 3): `minispiele/drei-gewinnt.html` (Spielfeld),
+  `pod/designer.js` (Sticker), POD-Detailseiten.
+- **🔧 Nebenbefund repariert:** `automation/gen_angebote_pages.mjs` war **seit dem Floskel-Aufräumen kaputt**
+  (Anker `desc` und `ogtitle` stimmten nicht mehr mit der Vorlage `angebote-suche.html` überein → Abbruch).
+  Beide Anker nachgezogen, Generator läuft wieder. **Bewusst NICHT neu generiert:** sein Neubau zieht
+  Vorlagen-Inhalte nach (u. a. ein BreadcrumbList-JSON-LD), die die Kategorieseiten nicht hatten → stattdessen
+  CSS chirurgisch in den 14 Seiten ersetzt, damit der Diff minimal bleibt.
+- **Vorlagen-Kette merken:** `angebote-suche.html` **ist die Vorlage** für alle `*-angebote.html`
+  (Generator kopiert sie und ersetzt nur Kopf/Hero/Query) → Raster-Änderungen dort zuerst.
+- ⚠️ Playwright ist im Container **nicht vorinstalliert** (`npm i playwright --no-save`), und der Browser muss
+  per `executablePath` auf `/opt/pw-browsers/chromium-1194/chrome-linux/chrome` gezeigt werden — **kein**
+  `playwright install`.
+
 **📌 2026-09-07 (🔓 REVIEW-GRIND ENTSPERRT — CJ-Auth-Bug gefunden, „Decke" war falsch):**
 - **Widerlegt:** die Memory-Aussage „nur ~3 cj-real-Produkte haben CJ-Kommentare, listLen=0 = echte 0, KEIN Bug".
   **Gemessen mit gültigen CJ-Creds:** von 60 CJ-pids aus den Repo-Ledgers haben **13 Kommentare, 198 davon ≥4★**;
