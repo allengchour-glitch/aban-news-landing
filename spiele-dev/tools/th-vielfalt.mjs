@@ -90,14 +90,25 @@ const datei = mitSonden('traumhaus.html', {
     'out.sort(function(a,b){' +
       'var va=(a.groessen+a.drehungen)/a.n, vb=(b.groessen+b.drehungen)/b.n;' +
       'if(va!==vb)return va-vb;return b.n-a.n;});' +
-    'return out.slice(0,24);}'
+    'return out.slice(0,200);}'
 }, 'spiele-dev/tools/_vielfalt_probe.html')
 
 const { browser, page, jsFehler } = await spielOeffnen(datei, { warten: 55000 })
 const L = await page.evaluate((m) => window.__th.vielfalt(m), MIN)
+/* ⚠️ DIE INTERESSANTE LISTE STAND NICHT DRIN. Die erste Fassung gab die 24
+   eintoenigsten Zeilen aus — sortiert nach Streuung, und die faellt mit der
+   Stueckzahl. Kompakte Gruppen haben typischerweise WENIGER Stueck und rutschen
+   damit genau aus der Liste, die laut Runbook („verstreut = geteiltes Material,
+   kompakt = Fund") als einzige handlungsfaehig ist. Beim Lauf mit Schwelle 12 war
+   keine einzige kompakte Zeile mehr dabei.
+   Darum jetzt ZWEI Listen: die eintoenigsten wie bisher, und darunter die
+   kompakten nach Stueckzahl. */
+const KOMPAKT = 80
+const kompakt = L.filter((q) => q.weite <= KOMPAKT).sort((a, b) => b.n - a.n).slice(0, 14)
+
 console.log('\nGruppen ab ' + MIN + ' gleichartigen Dingen, die eintoenigsten zuerst:')
 console.log('  Anzahl  Gr.  Dreh.  Streuung  Hoehe        Weite  Wo                     Was')
-for (const q of L) {
+for (const q of L.slice(0, 16)) {
   const streu = ((q.groessen + q.drehungen) / q.n).toFixed(2)
   const hoehe = q.yMax > q.yMin ? `${q.yMin}…${q.yMax} m` : `${q.yMin} m`
   /* ⚠️ EIN ORTSNAME FUER EINE VERSTREUTE GRUPPE LUEGT. Der Schwerpunkt von 778
@@ -108,6 +119,18 @@ for (const q of L) {
   console.log('  ' + String(q.n).padStart(5) + String(q.groessen).padStart(5) + String(q.drehungen).padStart(7) +
     streu.padStart(10) + '  ' + hoehe.padEnd(12) + String(q.weite).padStart(4) + 'm  ' +
     wo.padEnd(24) + ' ' + String(q.name).slice(0, 30))
+}
+console.log('\n🔎 KOMPAKTE Gruppen (hoechstens ' + KOMPAKT + ' m weit) — hier liegen die Funde:')
+if (!kompakt.length) console.log('  keine — die Wiederholung dieser Welt ist durchweg diffus')
+else {
+  console.log('  Anzahl  Gr.  Dreh.  Streuung  Hoehe        Weite  Wo                     Was')
+  for (const q of kompakt) {
+    const streu = ((q.groessen + q.drehungen) / q.n).toFixed(2)
+    const hoehe = q.yMax > q.yMin ? `${q.yMin}…${q.yMax} m` : `${q.yMin} m`
+    console.log('  ' + String(q.n).padStart(5) + String(q.groessen).padStart(5) + String(q.drehungen).padStart(7) +
+      streu.padStart(10) + '  ' + hoehe.padEnd(12) + String(q.weite).padStart(4) + 'm  ' +
+      `${q.ort} (${q.x}|${q.z})`.padEnd(24) + ' ' + String(q.name).slice(0, 30))
+  }
 }
 console.log('\nStreuung = (Groessen + Drehungen) / Anzahl. 0,03 heisst: 100 Dinge teilen sich')
 console.log('drei Auspraegungen. Bei Industrieprodukten (Laternen, Poller, Schilder) ist das')
