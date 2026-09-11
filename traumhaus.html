@@ -11395,7 +11395,16 @@ var ACHFORT={
  verliebt:[function(){return Math.round(liebe||0);},60,null],
  grossfamilie:[function(){return kinder.length;},3,"Kind"],
  gaertner:[function(){return stats.ernten||0;},5,"Ernte"],
- bankraeuber:[function(){return skills.krimi.lv||1;},2,"Ganoven-Level"],
+ /* ⚠️ HIER STAND `skills.krimi.lv||1` — und das hat Fortschritt ERFUNDEN. Die
+    Schreibweise ist von der Zeile darueber uebernommen, wo sie harmlos ist: `arbeit`
+    startet bei lv 1, das `||1` faengt dort nur undefined ab. `krimi` startet aber bei
+    0 (siehe skills-Initialisierung), und `0||1` ist 1. Das Spiel meldete damit ab der
+    ersten Sekunde „Nur noch 1 Ganoven-Level bis Profi-Ganove", ohne dass jemand je
+    etwas angestellt hatte.
+    GEFUNDEN ueber das Tor: th-meter fiel in 2 von 3 Laeufen aus, weil dieser
+    Schein-Fast-Erfolg je nach Reihenfolge das Rennen um den Anstupser gewann. Ein
+    einzelner Vergleichslauf haette mich das dem eigenen Zweig zuschreiben lassen. */
+ bankraeuber:[function(){return skills.krimi.lv||0;},2,"Ganoven-Level"],
  angler:[function(){return stats.fische||0;},5,"Fisch"],
  lieferheld:[function(){return stats.lieferungen||0;},5,"Lieferung"],
  stuntpilot:[function(){return stats.stunts||0;},10,"Sprung"],
