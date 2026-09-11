@@ -104,7 +104,20 @@ const L = await page.evaluate((m) => window.__th.vielfalt(m), MIN)
    Darum jetzt ZWEI Listen: die eintoenigsten wie bisher, und darunter die
    kompakten nach Stueckzahl. */
 const KOMPAKT = 80
-const kompakt = L.filter((q) => q.weite <= KOMPAKT).sort((a, b) => b.n - a.n).slice(0, 14)
+/* ⚠️ EIN OBJEKT, VIERZEHN ZEILEN. Der Parkzaun am Spielplatz erschien vierzehnmal
+   untereinander — einmal je Teilmesh eines Moduls (Pfosten, Latten, Beschlag …),
+   jedes mit denselben 34 Stueck am selben Ort. Als Liste von DINGEN gelesen ist das
+   Unsinn; gemeint ist ein Zaun. Zeilen mit gleichem Namen am gleichen Ort (auf 5 m
+   gerundet) werden darum zu einer zusammengefasst, mit der Zahl der Teilmeshes. */
+const schluessel = (q) => `${q.name}|${Math.round(q.x / 5)}|${Math.round(q.z / 5)}`
+const gebuendelt = new Map()
+for (const q of L.filter((v) => v.weite <= KOMPAKT)) {
+  const k = schluessel(q)
+  const da = gebuendelt.get(k)
+  if (!da) gebuendelt.set(k, { ...q, teile: 1 })
+  else { da.teile++; if (q.yMin < da.yMin) da.yMin = q.yMin; if (q.yMax > da.yMax) da.yMax = q.yMax }
+}
+const kompakt = [...gebuendelt.values()].sort((a, b) => b.n - a.n).slice(0, 14)
 
 console.log('\nGruppen ab ' + MIN + ' gleichartigen Dingen, die eintoenigsten zuerst:')
 console.log('  Anzahl  Gr.  Dreh.  Streuung  Hoehe        Weite  Wo                     Was')
@@ -129,7 +142,8 @@ else {
     const hoehe = q.yMax > q.yMin ? `${q.yMin}…${q.yMax} m` : `${q.yMin} m`
     console.log('  ' + String(q.n).padStart(5) + String(q.groessen).padStart(5) + String(q.drehungen).padStart(7) +
       streu.padStart(10) + '  ' + hoehe.padEnd(12) + String(q.weite).padStart(4) + 'm  ' +
-      `${q.ort} (${q.x}|${q.z})`.padEnd(24) + ' ' + String(q.name).slice(0, 30))
+      `${q.ort} (${q.x}|${q.z})`.padEnd(24) + ' ' + String(q.name).slice(0, 30) +
+      (q.teile > 1 ? `  (${q.teile} Teilmeshes)` : ''))
   }
 }
 console.log('\nStreuung = (Groessen + Drehungen) / Anzahl. 0,03 heisst: 100 Dinge teilen sich')
