@@ -9347,13 +9347,54 @@ setTimeout(function baueGebaeude(){
     var ras=new THREE.Mesh(new THREE.PlaneGeometry(FB+4,FT+4),
       new THREE.MeshStandardMaterial({color:0x24551d,roughness:0.97,envMapIntensity:0.14}));
     ras.rotation.x=-Math.PI/2;ras.position.set(CX,0.028,CZ);ras.receiveShadow=true;scene.add(ras);
+    /* ⚽ FELDMARKIERUNG NACH ECHTEN VERHAELTNISSEN.
+       ⚠️ GEFUNDEN mit th-vielfalt (die einzige KOMPAKTE Gruppe der ganzen Welt): 37
+       gleiche flache Flaechen, eine Groesse, eine Drehung, 46 m weit. Das waren die
+       fuenf Linien — und ein Mittelkreis aus 32 einzelnen Quadraten. Gepunktet, wo
+       jede andere Linie durchgezogen ist.
+       Beim Nachrechnen kam ein zweiter Fehler heraus: das Feld misst 46 x 30 m, also
+       die Proportion eines echten Spielfelds (105 x 68, Verhaeltnis 1,54 gegen 1,53).
+       Danach gehoert der Mittelkreis auf 9,15/68 der Breite = 4,04 m Radius; gezeichnet
+       waren 6,0 m, die Haelfte zu viel.
+       Alle Masse unten stammen aus den Regelmassen, auf dieses Feld heruntergerechnet.
+       Strafraum, Torraum, Elfmeterpunkte und Eckboegen fehlten ganz. */
+    function ring(x,z,r,br,von,weite){
+      var g=new THREE.RingGeometry(r-br/2,r+br/2,64,1,von||0,weite||6.283);
+      var m9=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
+      m9.rotation.x=-Math.PI/2;m9.position.set(x,0.035,z);scene.add(m9);
+    }
+    function punkt(x,z,r){
+      var m9=new THREE.Mesh(new THREE.CircleGeometry(r,16),
+        new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
+      m9.rotation.x=-Math.PI/2;m9.position.set(x,0.035,z);scene.add(m9);
+    }
     strich(CX,CZ-FT/2,FB,0.14); strich(CX,CZ+FT/2,FB,0.14);      // Seitenlinien
     strich(CX-FB/2,CZ,0.14,FT); strich(CX+FB/2,CZ,0.14,FT);      // Torlinien
     strich(CX,CZ,0.14,FT);                                        // Mittellinie
-    for(var k=0;k<32;k++){                                        // Mittelkreis
-      var a=k/32*6.283;
-      strich(CX+Math.cos(a)*6.0,CZ+Math.sin(a)*6.0,0.30,0.30);
-    }
+    var KR=9.15/68*FT;                                            // Mittelkreis 4,04 m
+    ring(CX,CZ,KR,0.14); punkt(CX,CZ,0.16);                       // Kreis + Anstosspunkt
+    var SD=16.5/105*FB, SB=40.32/68*FT;                           // Strafraum 7,2 x 17,8
+    var TD= 5.5/105*FB, TB=18.32/68*FT;                           // Torraum   2,4 x 8,1
+    var EM=11.0/105*FB;                                           // Elfmeter  4,8 m
+    [-1,1].forEach(function(sd){
+      var tor=CX+sd*FB/2;                                         /* Torlinie dieser Seite */
+      [[SD,SB],[TD,TB]].forEach(function(r9){
+        var d=r9[0],b=r9[1];
+        strich(tor-sd*d, CZ, 0.14, b);                            /* Front */
+        [-1,1].forEach(function(q){
+          strich(tor-sd*d/2, CZ+q*b/2, d, 0.14);});               /* Seiten */
+      });
+      punkt(tor-sd*EM, CZ, 0.16);                                 /* Elfmeterpunkt */
+      /* Teilkreis am Strafraum: nur das Stueck ausserhalb, sonst laeuft er hinein.
+         Der Radius ist derselbe wie beim Mittelkreis, der Bogen oeffnet nach aussen. */
+      var dx=SD-EM, halb=Math.acos(Math.max(-1,Math.min(1,dx/KR)));
+      var mitte=(sd>0?Math.PI:0);
+      ring(tor-sd*EM, CZ, KR, 0.14, mitte-halb, 2*halb);
+      /* Eckboegen: 1 m im Regelmass, hier 0,44 m. Der Viertelkreis oeffnet ins Feld. */
+      [-1,1].forEach(function(q){
+        var von=(sd>0?(q>0?Math.PI/2:Math.PI):(q>0?0:-Math.PI/2));
+        ring(tor, CZ+q*FT/2, 1.0/105*FB*2.2, 0.14, von, Math.PI/2);});
+    });
     /* Tore: die Oeffnung liegt auf +y, in three.js also -z. Fuer Blick nach +x
        folgt aus der Normalen (-sin rotY, -cos rotY) = (1,0) gerade rotY = -pi/2. */
     fest("th44_tor.glb",2.50,CX-FB/2+0.5,CZ,-Math.PI/2);
