@@ -748,6 +748,8 @@ var TEXLOADER=new THREE.TextureLoader();
 /* 🧱 WELT-KOLLISION (frueh deklariert, damit alle Bau-Funktionen registrieren koennen) */
 /* 🗺️ Orte der Welt — gemeinsame Quelle fuer Radar + grosse Karte (User: „map ist noch zu klein") */
 var WORLD_POIS=[
+  /* ⚠️ Die Zahlen hier sind nur der Startwert — die echte Lage zieht `domMarke()`
+     beim Bau der Kathedrale nach (siehe dort). Wer sie hier aendert, aendert nichts. */
   [-58,-78,"⛪","Kathedrale"],[-136,-196,"🌬️","Windmühle"],[-40,-196,"🚜","Bauernhof"],
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Stadtpark"],[96,14,"⛲","Brunnmatt"],
@@ -8306,6 +8308,24 @@ setTimeout(function baueGebaeude(){
     addSolid(DOM_X,DOM_Z+0.95,17.6,20.7,{a:"z",at:DOM_SW-0.5,c:DOM_X,w:4.5});
     bau("th8_kirche_offen.glb",13,DOM_X,0,DOM_Z,Math.PI,false,
         function(w){w.userData.fest=true;},true);
+    /* 🗺️ DIE MARKE STAND 216 M DANEBEN. In WORLD_POIS liegt „⛪ Kathedrale" auf
+       (-58|-78) — dort steht aber GEMESSEN (Modelle im Umkreis 30 m) kein Kirchenbau,
+       sondern ein Wohnhaus, drei Baeume, zwei Laternen, Muelleimer, Briefkasten und
+       ein Blumenbeet. Die Kathedrale selbst (13 m hoch, 20,5 m breit) steht hier auf
+       (146|-22) und hatte gar keine Marke: `_naechsterOrt(146,-22)` lieferte
+       „Spielplatz", 48 m entfernt.
+       Das ist nicht nur die Karte. `_naechsterOrt` beschriftet die ORTSSCHILDER, und
+       Lieferauftraege fuehren zu POIs — ein Schild vor der Kathedrale haette
+       „Spielplatz" gesagt. Der Kommentar oben nennt den Grund: der Bau stand frueher
+       114 Zeilen weiter oben an anderer Stelle. Das Gebaeude ist umgezogen, die Marke
+       nicht.
+       Darum wird sie hier NACHGEZOGEN statt in der Liste hart gesetzt: sie haengt an
+       denselben DOM_X/DOM_Z, die auch den Bau stellen. Dieselbe Loesung wie bei
+       `marke()` in viertel() — Namensgleichheit genuegt. */
+    (function domMarke(){
+      for(var i=0;i<WORLD_POIS.length;i++)
+        if(WORLD_POIS[i][3]==="Kathedrale"){WORLD_POIS[i][0]=DOM_X;WORLD_POIS[i][1]=DOM_Z;return;}
+    })();
     (function domVorplatz(){
       /* ⚠️ Alles war auf DZ+12 gerechnet — mit der gemessenen Portalwand bei
          Anker+11,2 haette das Pflaster IN der Kirche gelegen. Jetzt relativ zur
