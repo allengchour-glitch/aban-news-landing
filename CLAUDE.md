@@ -125,6 +125,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   sobald die Sperre fällt**, zwei davon täglich. **Bewusst NICHT geändert** (gehören zum
   Shop-Autopilot, das entscheidet der User). Notiz:
   `brain/vault/Blockiert/Vier-Crons-sind-wieder-aktiv-trotz-Nulldiaet.md`.
+- **🚨 RICHTIGSTELLUNG, die wichtigste dieser Session: GITHUB ACTIONS LÄUFT WIEDER.** Das Gedächtnis
+  behauptet seit 13.06. in Grossbuchstaben „ACCOUNT-WEIT GESPERRT — nichts läuft mehr automatisch",
+  und der ganze GitLab-CI-Umbau steht nur deswegen. **Gemessen an echten Läufen auf PR #2514:**
+  Voice Linter Lauf 2228 lief 14:18:58–14:20:28 (**90 s**) bis `success`, Quality Check Lauf 1488
+  **110 s** bis `success`, Cloudflare Pages `success`. Eine Sperre startet nichts.
+  **Belegt: `push` und `pull_request`. NICHT geprüft: `schedule` und `workflow_dispatch`** — wer
+  darauf baut, misst selbst. **Folge:** Arbeiten, die als „geht nicht" abgehakt waren, sind wieder
+  möglich, u. a. der Reviews-Importer per `workflow_dispatch`. **Fair-Use-Vorsicht bleibt**
+  (die Sperre kam von 158 Workflows/~60 Crons) → Crons weiter nicht massenhaft reaktivieren.
+  ⚠️ **Ich habe die falsche Aussage in dieser Session zuerst selbst weitergetragen** und gemeldet,
+  Actions laufe nicht — bis die PR-Ereignisse das Gegenteil zeigten. Notiz:
+  `brain/vault/Fallen/Actions-Sperre-gilt-nicht-mehr-fuer-push-und-pull-request.md`.
+- **🔴 `metricool-schedule.yml` ist auf `main` dauerhaft rot** (Läufe 7, 8, 18, 33, je 0 s). Bei der
+  Cron-Nulldiät wurde der **einzige Job mitsamt Schritten** auskommentiert, der Schlüssel `jobs:`
+  blieb stehen → leeres `jobs:` = ungültiger Workflow. Nicht diese PR. Patch-Vorschlag steht als
+  Kommentar an PR #2514; bewusst nicht hier mitgeändert.
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m` (vom Session-Auftrag vorgegeben), Draft-PR nach `main`.
 
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**

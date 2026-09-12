@@ -28,6 +28,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 
 ## 🕳️ Fallen — teuer gelernt, gelten weiter
 
+- [[Actions-Sperre-gilt-nicht-mehr-fuer-push-und-pull-request]] — Das Gedaechtnis sagt seit 2026-06-13 in Grossbuchstaben: „GITHUB ACTIONS IST ACCOUNT-WEIT
 - [[Background-image-Falle]] — Einen Verlauf in background-image durch eine Farbe zu ersetzen erzeugt eine ungültige
 - [[Bild-Falle]] — CJ-Bild-URLs unter quick/product/… sind teilweise 404. Jede URL vor dem Anlegen per
 - [[Collections-Publish-Falle]] — Per collectionCreate angelegte Collections sind nicht automatisch im Onlineshop publiziert…
