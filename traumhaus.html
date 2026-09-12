@@ -85,7 +85,13 @@ canvas{display:block}
   #geld{flex-shrink:0}
   #uhr,#needsBox{min-width:0;flex-shrink:1;overflow:hidden}
   #stufeBox{min-width:0;flex-shrink:3}
-  #needsBox>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  /* ⚠️ DIE SCHRIFT MUSS HIER STEHEN, NICHT AM ELTERNTEIL. updHUD setzt die Rangzeile
+     mit `style.cssText="font-size:.72rem…"` INLINE — eine Regel auf #needsBox kommt
+     dagegen nicht an. Genau das ist mir passiert: .58rem auf .52rem gesetzt, und der
+     gemessene Bedarf blieb auf 171 px stehen, Pixel fuer Pixel derselbe.
+     Anders als Uhr und Stufenfeld darf dieser Kasten nicht nachgeben (kein
+     data-kurzbar): eine halbe Rangzeile ist keine Information. */
+  #needsBox>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;font-size:.62rem !important}
   /* Fusszeile (Suche · Impressum · Datenschutz, z 99999) lag beim Spielen ueber den
      Katalog-Preisen, dem unteren Rand von "Aussteigen" und dem Joystick-Ring
      (th-spielerblick, Bilder 3/5/6). Waehrend des Spiels quer ausgeblendet — sie steht
