@@ -83,7 +83,15 @@ canvas{display:block}
      Statt umzubrechen schrumpfen die Felder: zuerst Stufe, dann Uhr/Beduerfnisse — Geld nie. */
   #hud{flex-wrap:nowrap !important}
   #geld{flex-shrink:0}
-  #uhr,#needsBox{min-width:0;flex-shrink:1;overflow:hidden}
+  #uhr{min-width:0;flex-shrink:1;overflow:hidden}
+  /* ⚠️ SCHRIFT SCHRUMPFEN IST HIER EINE VERFOLGUNGSJAGD. Mit kleinerer Schrift
+     schrumpft auch die zugeteilte Breite mit: .62rem gab 147 noetig / 141 da,
+     .58rem gab 137 / 134 — die Luecke blieb, nur die Zahlen wurden kleiner.
+     Die Leiste ist schlicht ueberfuellt, und wer nachgibt, ist eine
+     Design-Entscheidung, die es schon gibt: Uhr und Stufenfeld duerfen ihr Ende
+     verlieren (data-kurzbar), der Rang-Kasten nicht. Also gibt er nicht mehr nach —
+     die anderen beiden fangen den Fehlbetrag auf, wofuer sie gebaut sind. */
+  #needsBox{min-width:0;flex-shrink:0;overflow:hidden}
   #stufeBox{min-width:0;flex-shrink:3}
   /* ⚠️ DIE SCHRIFT MUSS HIER STEHEN, NICHT AM ELTERNTEIL. updHUD setzt die Rangzeile
      mit `style.cssText="font-size:.72rem…"` INLINE — eine Regel auf #needsBox kommt
