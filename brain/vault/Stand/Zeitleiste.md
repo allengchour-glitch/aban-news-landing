@@ -7,6 +7,7 @@ quelle: CLAUDE.md
 Erzeugt von `tools/vault.py bauen` aus den 📌-Bloecken in `CLAUDE.md`.
 **Nicht von Hand bearbeiten** — Aenderungen gehoeren in `CLAUDE.md`.
 
+- **2026-09-12** — 💰 VERKÄUFE — Gedächtnis dreifach widerlegt, Startseite als Hauptdefekt gefunden
 - **2026-09-12** — 🧠 ZWEITES GEHIRN + SKILLS — gelernt aus TikTok @herr_tech „5 Systeme"
 - **2026-09-11** — Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"
 - **2026-09-07** — 🔓 REVIEW-GRIND ENTSPERRT — CJ-Auth-Bug gefunden, „Decke" war falsch

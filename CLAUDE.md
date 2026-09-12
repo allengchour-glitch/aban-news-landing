@@ -68,6 +68,56 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-12 (💰 VERKÄUFE — Gedächtnis dreifach widerlegt, Startseite als Hauptdefekt gefunden):**
+- **Auftrag:** „lerne für luxestyle.ch viele verkäufe". Alles live gemessen. Voller Bericht:
+  **`dropship/VERKAEUFE-BEFUND-2026-09-12.md`**.
+- **🚨 WIDERLEGT 1 — nicht 2 Bestellungen, sondern 14.** Dieses Dokument sagte „2 bezahlte
+  Bestellungen" (05.07.) und „0 Käufe, Conversion 0,0 %" (13.06.). **Gemessen: 14 Orders seit
+  1. Juli, davon 5 echte bezahlte Kundenbestellungen** (#1005, #1011, #1014, #1017, #1018;
+  CHF 21.90–41.90, rund eine alle 12 Tage) plus 3 Inhaber-Tests. **Der Shop konvertiert.**
+- **🔴 WICHTIGSTER EINZELBEFUND — mehr zurückerstattet als eingenommen:** 3 echte
+  Kundenbestellungen über **CHF 869.62** unerfüllt zurückerstattet (vs. CHF 175.50 geblieben).
+  Alle drei **BigBuy-Sperrgut**: #1006 Klimagerät `BB-S0465893` 426.51, #1007 Klimagerät
+  `BB-S91120937` 265.90, #1008 Schlauchboot 366 cm mit **SKU `null`** 177.21. Genau die
+  Fake-SKU- und Sperrgut-Regeln aus §9. Einzelfälle behoben (beide Klimageräte DRAFT, Boot weg).
+  **Klasse offen: 279 aktive BigBuy-Produkte, KEINES mit Gewicht, darunter Markenware**
+  (Michael Kors, Jimmy Choo, Puma Ferrari, Oral-B) → eigene gemessene Runde wert.
+  #1016 war kein Produktfehler (gleiches Messer, gleicher Kunde, gelöst via Ersatz #1017).
+  **Regel: was sich erfüllen lässt, ist CJ-Kleinware mit echter `CJ-`-SKU, CHF 20–45.**
+- **🚨 WIDERLEGT 2 — Traffic halbiert, Verkäufe trotzdem da:** 2994 → **1248 Sessions/30 T**
+  (direct 871, social 227, **search nur 124**, unbekannt 25). „Engpass = Traffic-Qualität" ist
+  nicht mehr die ganze Wahrheit.
+- **🔥 HAUPTDEFEKT GEFUNDEN (Messgerät `tools/shop_startseite.mjs`, Gegenprobe eingebaut):**
+  **Startseite 10/12 Abrufe ok = 17 % HTTP 500, 6,91 MB**, während **Produktseite 0,55 MB / 0 %**
+  und Collection 1,13 MB / 0 % liefern — gleiche Infrastruktur, also DIESE Seite. Fehlerseite ist
+  Shopifys eigene „Something went wrong" (Render-Grenze). **Ursache gezählt:** 17 Produktreihen,
+  jede rendert **72 Links bei 12 verschiedenen Produkten — jedes Produkt 6×** (Häufigkeit `[6]`
+  nachgezählt) → **1108 Produktlinks, 1130 Bilder, 1896 SVGs**.
+- **🎯 DER TREFFER:** alle drei nachprüfbar verkauften Produkte liegen in
+  `geschenke-unter-50-franken` bzw. `bestseller-unter-50`. **KEINE der 17 Reihen nutzt diese
+  Collections.** Die Startseite bewirbt 17 Kategorien, aber nicht die Preisklasse, aus der jeder
+  echte Verkauf kam.
+- **✅ GEBAUT `automation/homepage_slim.mjs`** (+ Workflow „Startseite schlank (LuxeStyle)",
+  nur `workflow_dispatch`, kein Cron): **17 Reihen → 4**, Karten 184 → 32, erwartete
+  Produktlinks 1108 → 192, Vorlage **139 497 → 51 475 B**. Reihenfolge: (1) Geschenke unter
+  CHF 50, (2) Bestseller, (3) Neuheiten, (4) Ab Schweizer Lager 1–2 Tage. Hero/USP/Trust/
+  JSON-LD unberührt. **Idempotent, 5 Selbsttests**, Sicherheitshalt gegen das aktive Theme.
+  Sicherungen: `dropship/theme-backup/index.json.{vorher,schlank}-2026-09-12.jsonc`.
+- **🟡 NUR DER USER: Theme veröffentlichen (1 Klick).** Schreibzugriff auf das **aktive** Theme
+  ist durch die Sicherheitsregel des Shopify-Zugangs blockiert („writes that target the live/MAIN
+  theme are blocked"), `themePublish` ebenfalls. `themeDuplicate` + Schreiben in die **Kopie**
+  geht. Kopie liegt bereit: `gid://shopify/OnlineStoreTheme/190339252609` („Kopie 12.09. (Claude)
+  – noch unveraendert"). Zum Scharfstellen fehlen `SHOPIFY_CLIENT_ID`/`_SECRET`/`SHOPIFY_SHOP`.
+- **❌ BEWUSST NICHT „REPARIERT":** `bestseller-unter-50` ist nur in „Point of Sale" + „Inbox"
+  publiziert — sieht nach Collections-Publish-Falle aus, **ist keine**: die Adresse liefert **301**
+  auf `geschenke-unter-50-franken` (8 Kanäle, 200). Publizieren hätte ein Duplikat erzeugt und die
+  Weiterleitung zerstört.
+- **⚠️ NEUE MESSFALLE:** `productsCount` **ignoriert Preisfilter stillschweigend**
+  (`variants.price:>99999` → 10000) und deckelt bei 10000; der SKU-Filter greift
+  (`sku:zzzgibtesnicht*` → 0). Wer nach Preis zählt, bekommt die Gesamtzahl. Aufgefallen nur,
+  weil vier Abfragen exakt dieselbe Zahl lieferten.
+- **⚠️ Eigene Korrektur:** ich habe zuerst „18 Produktreihen" gemeldet — das Messgerät sagt **17**.
+
 **📌 2026-09-12 (🧠 ZWEITES GEHIRN + SKILLS — gelernt aus TikTok @herr_tech „5 Systeme"):**
 - **Auftrag:** ein TikTok-Link + „lerne alles selbstständig", dann „obsidian 2te gehirn,
   installiere super skills und tools, werde auto besser". Video: `@herr_tech/video/7684308282038603041`,

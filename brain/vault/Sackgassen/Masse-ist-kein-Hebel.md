@@ -5,6 +5,13 @@ gelernt: 2026-06-13
 ---
 # Masse ist bewiesen kein Hebel
 
+> ⚠️ **TEILWEISE ÜBERHOLT am 2026-09-12.** Der Traffic hat sich **halbiert** (2994 → **1248**
+> Sessions/30 T), und trotzdem sind **fünf echte Verkäufe** entstanden. „Engpass = Traffic-
+> Qualität" ist damit nicht mehr die ganze Wahrheit. Der grösste gemessene Defekt sitzt jetzt
+> auf der Seite selbst: [[Startseite-war-69-MB-und-fiel-bei-17-Prozent-aus]]. Was weiter gilt:
+> mehr Produkte und mehr Posts sind kein Hebel. Was neu gilt: die Seite, auf der die Leute
+> landen, war es. Quellen der 1248 Sessions: direct 871, social 227, **search nur 124**.
+
 LuxeStyle über 30 Tage, aus Shopify-Analytics:
 
 | Kennzahl | Wert |

@@ -5,6 +5,12 @@ gelernt: 2026-07-05
 ---
 # Die ersten zwei Verkäufe
 
+> ⚠️ **ÜBERHOLT am 2026-09-12.** Es sind nicht zwei, sondern **14 Bestellungen** seit Juli,
+> davon **fünf echte bezahlte Kundenbestellungen** (CHF 21.90 bis 41.90, rund eine alle zwölf
+> Tage) und **sechs Rückerstattungen**. Drei davon sind echte Kunden über zusammen CHF 869.62,
+> alle BigBuy-Sperrgut — siehe [[BigBuy-Schwergut-erzeugt-Rueckerstattungen]]. Volle Tabelle:
+> `dropship/VERKAEUFE-BEFUND-2026-09-12.md`. Der Rest dieser Notiz beschreibt den Stand von Anfang Juli.
+
 Live verifiziert per Order-Audit. Nach Monaten mit 0 Käufen ist das der erste echte Beleg, dass
 der Funnel funktioniert.
 

@@ -30,6 +30,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 
 - [[Actions-Sperre-gilt-nicht-mehr-fuer-push-und-pull-request]] — Das Gedaechtnis sagt seit 2026-06-13 in Grossbuchstaben: „GITHUB ACTIONS IST ACCOUNT-WEIT
 - [[Background-image-Falle]] — Einen Verlauf in background-image durch eine Farbe zu ersetzen erzeugt eine ungültige
+- [[BigBuy-Schwergut-erzeugt-Rueckerstattungen]] — Von 14 Bestellungen seit Juli sind drei echte Kundenbestellungen ueber CHF 869.62 unerfuel…
 - [[Bild-Falle]] — CJ-Bild-URLs unter quick/product/… sind teilweise 404. Jede URL vor dem Anlegen per
 - [[Collections-Publish-Falle]] — Per collectionCreate angelegte Collections sind nicht automatisch im Onlineshop publiziert…
 - [[Diff-Falle]] — Ein Muster mit einfachem Bindestrich machte aus
@@ -44,6 +45,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[Stale-Ref-Falle]] — aktualisiert: origin/main zeigte auf einen Monate alten Commit. Ein darauf gebauter Branch
 - [[Tag-Regel-Falle]] — Smart-Collections filtern über Tags, und die Regel ist nicht der Collection-Name.
 - [[Workflow-Name-Doppelpunkt]] — Ein name: mit Doppelpunkt im Wert bricht den YAML-Trigger eines GitHub-Workflows — die Fol…
+- [[productsCount-ignoriert-Preisfilter-stillschweigend]] — Shopifys productsCount wirft Preisfilter weg, ohne zu meckern:
 
 ## ⛔ Sackgassen — nicht erneut versuchen
 
@@ -69,6 +71,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[Google-Merchant]] — Konto LuxeStyle CH (5797470070). Google hat über die native Shopify-Integration den ganzen
 - [[LuxeStyle]] — Mode- und Lifestyle-Dropshipping-Shop. luxestyle.ch, Backend au3j0y-hq.myshopify.com,
 - [[Reviews-Importer]] — 518 von 529 cj-real-Produkten (98 %) haben keine Sterne und keine Reviews (gemessen vom
+- [[Startseite-war-69-MB-und-fiel-bei-17-Prozent-aus]] — Gemessen mit tools/shop_startseite.mjs (12 Abrufe je Adresse, Gegenprobe eingebaut):
 - [[Traumhaus]] — Browser-Spiel traumhaus.html, Drei-D über Three.js. Eigene Session-Familie mit eigenem Run…
 - [[abannews]] — Die Webseite im Wurzelverzeichnis dieses Repos: 1133 HTML-Seiten, Schweizer KMU-Werkzeuge,
 
