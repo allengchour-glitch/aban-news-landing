@@ -2500,6 +2500,18 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     window._warmMaterialien=(window._warmMaterialien||0)+neu.mats;
     window._warmProgramme=renderer.info.programs?renderer.info.programs.length:0;}
   window._aufwaermen=_aufwaermen;
+  /* ⏱️ ENTPRELLT AM EREIGNIS STATT AN DER UHR. Der feste Fahrplan traf nur, was
+     zufaellig zu seinen Zeiten schon da war — nach dem letzten Durchgang kam nichts
+     mehr dazu. GEMESSEN blieben so 6 Materialien unvorbereitet, nachdem die
+     objektweise Aufwaermung die ersten 19 auf 6 gedrueckt hatte.
+     Jetzt meldet sich der Modell-Lader selbst, wenn etwas Neues fertig ist. Entprellt,
+     weil Modelle in Schueben ankommen: ein Schwung loest EINEN Durchgang aus, nicht
+     zwanzig. Der feste Fahrplan bleibt als Netz fuer prozedurale Materialien, die
+     ohne Lader entstehen. */
+  var _warmBald=null;
+  window._aufwaermenBald=function(){
+    clearTimeout(_warmBald);
+    _warmBald=setTimeout(function(){_warmBald=null;try{_aufwaermen();}catch(e){}},1200);};
   /* Mehrere Laeufe, weil die Modelle ueber Minuten hereintroepfeln. */
   /* ⚠️ Der Fahrplan endete bei 60 s — die Modelle kommen aber laenger herein. Seit das
      Aufwaermen im Spiel nicht mehr blockiert (je Bild ein Objekt in ein 8x8-Ziel), ist
@@ -11076,6 +11088,8 @@ window._glbVorlage=function(datei,cb){
     _matVereinheitlichen(g.scene);
     e.szene=g.scene; var w=e.warte; e.warte=[];
     for(var i=0;i<w.length;i++)w[i](e.szene);
+    /* Neues Modell ist da und steht gleich in der Welt — aufwaermen anmelden. */
+    if(window._aufwaermenBald)window._aufwaermenBald();
   },undefined,function(){
     var w=e.warte; delete C[datei];
     for(var i=0;i<w.length;i++)w[i](null);});
