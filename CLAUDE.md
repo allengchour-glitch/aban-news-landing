@@ -5,6 +5,12 @@
 
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte.
 
+> 🧠 **NEU 2026-09-12 — suchen statt lesen:** Das Gedächtnis liegt jetzt zusätzlich als
+> Obsidian-Vault in **`brain/vault/`** (Einstieg `00 Start hier.md`), atomar und verlinkt.
+> `python3 tools/gedaechtnis.py "stichwort"` · `--sackgassen` · `--offen` · `--stand` liefert die
+> eine Tatsache mit Quelle und Datum, statt 158 KB Prosa zu lesen. Fünf **Skills** in
+> `.claude/skills/` laden die teuer gelernten Regeln von selbst. Herkunft: `LERNEN-5-SYSTEME.md`.
+
 > 🎮 **Spiele-Sessions** (neon-*/lebenspfad/wort-*): ZUERST `spiele-dev/RUNBOOK-SPIELE.md` lesen —
 > fertige Skill-Bibliothek (Smoke/Screenshot/Vision-Loop, Meshy/HDRI/Musik-Rezepte, alle Fallen). Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
@@ -62,6 +68,184 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-12 (🏷️ VARIANTEN AUF DEUTSCH — 291 Werte live, Wächter fing 2 eigene Fehler):**
+- **Auftrag:** „die bestehenden Produkte optimieren und Webseite". Voller Bericht:
+  **`dropship/VARIANTEN-DEUTSCH-2026-09-12.md`**.
+- **Gemessen** (`tools/produkt_qualitaet.mjs`, 13 Selbsttests, 250 aktive Produkte):
+  **rohe Lieferanten-Variantentexte 11 (4,4 %)**, **erfundene Grössen-Codes 2 (0,8 %)**.
+  **Fünf vermutete Defekte überlebten die Messung nicht** und wurden bewusst nicht
+  „behoben": fehlende Gewichte (Versand rechnet nach Preis), „Gratis ab CHF 50" (gewollt),
+  „ab CHF 80" (ein Collection-Name), die Kanäle der Rauch-Collection (richtig begrenzt),
+  angeblich tote Produktseiten (alle 200).
+- **⚠️ Zwei Fehler steckten im Messgerät selbst:** es meldete 100 % „ohne SEO" für einen
+  Auszug, der das Feld gar nicht abgefragt hatte (**ein nicht abgefragtes Feld ist
+  UNBEKANNT, nicht leer**), und zählte `2XL`–`5XL` als erfundene Grössen — das sind normale
+  Konfektionsgrössen, die Zahl fiel von 48 auf 2.
+- **Der Defekt:** bei den Familien-Pyjamas steckt die ganze Variantenmatrix in EINER Option
+  namens „Farbe", mit Texten wie `Red-FatherS`, `Black-Mom 4XL`, `Picture Color-Tong 2`,
+  `New Flower Deer-Xl For Father`. „Tong" ist chinesisch für Kind, „Picture Color" heisst
+  „wie abgebildet".
+- **✅ GEBAUT + LIVE `tools/varianten_deutsch.mjs`** (56 Selbsttests): **291 Variantenwerte
+  auf 13 aktiven Produkten** übersetzt, Option heisst jetzt „Ausführung & Grösse".
+  `Red-FatherS` → `Rot · Papa S`, `Picture Color-S For Mother` → `Wie abgebildet · Mama S`.
+- **🔑 HARTE REGEL: Grössen werden nie inhaltlich verändert.** Wer aus `0XL` ein `XL` macht,
+  lässt Leute die falsche Grösse bestellen. Der Wächter `groessenUnveraendert` prüft
+  buchstabengenau in beide Richtungen und **fing zwei echte Fehler im eigenen Werkzeug**:
+  aus `3to4` wurde `3to 4` (fehlende Wortgrenze), und `2XLMom` löste einen Fehlalarm aus.
+  Fünf Gegenproben belegen, dass der Wächter selbst ausschlägt.
+- **❌ BEWUSST NICHT ANGEFASST:** Lieferanten-Kennungen (`JJF106230color-`) — sie
+  unterscheiden zwei Muster, Wegwerfen erzeugt Duplikate (betrifft Produkt
+  **15447966515585**, dessen Werte zusätzlich unvollständig sind → eigene Runde);
+  Designnamen (`Vineyard`, `Snowflake Map Pink`) — raten wäre schlimmer als Englisch;
+  DRAFT-Produkte; Altersbereiche `3to4` (Einheit nicht belegt).
+- **🟡 NUR DER USER (Admin-Klick):** zwei Produkte der Rauch-Collection liegen in
+  Marketing-Kanälen (Google/Meta/TikTok/Pinterest), wo die Werberichtlinien sie nicht
+  wollen: **15525490950529** und **15523863101825**. `publishableUnpublish` ist durch die
+  Sicherheitsregel des Zugangs gesperrt. Prüfen: `tools/kanal_waechter.mjs` (5 Selbsttests).
+
+**📌 2026-09-12 (💰 VERKÄUFE — Gedächtnis dreifach widerlegt, Startseite als Hauptdefekt gefunden):**
+- **Auftrag:** „lerne für luxestyle.ch viele verkäufe". Alles live gemessen. Voller Bericht:
+  **`dropship/VERKAEUFE-BEFUND-2026-09-12.md`**.
+- **🚨 WIDERLEGT 1 — nicht 2 Bestellungen, sondern 14.** Dieses Dokument sagte „2 bezahlte
+  Bestellungen" (05.07.) und „0 Käufe, Conversion 0,0 %" (13.06.). **Gemessen: 14 Orders seit
+  1. Juli, davon 5 echte bezahlte Kundenbestellungen** (#1005, #1011, #1014, #1017, #1018;
+  CHF 21.90–41.90, rund eine alle 12 Tage) plus 3 Inhaber-Tests. **Der Shop konvertiert.**
+- **🔴 WICHTIGSTER EINZELBEFUND — mehr zurückerstattet als eingenommen:** 3 echte
+  Kundenbestellungen über **CHF 869.62** unerfüllt zurückerstattet (vs. CHF 175.50 geblieben).
+  Alle drei **BigBuy-Sperrgut**: #1006 Klimagerät `BB-S0465893` 426.51, #1007 Klimagerät
+  `BB-S91120937` 265.90, #1008 Schlauchboot 366 cm mit **SKU `null`** 177.21. Genau die
+  Fake-SKU- und Sperrgut-Regeln aus §9. Einzelfälle behoben (beide Klimageräte DRAFT, Boot weg).
+  **Klasse offen: 279 aktive BigBuy-Produkte, KEINES mit Gewicht, darunter Markenware**
+  (Michael Kors, Jimmy Choo, Puma Ferrari, Oral-B) → eigene gemessene Runde wert.
+  #1016 war kein Produktfehler (gleiches Messer, gleicher Kunde, gelöst via Ersatz #1017).
+  **Regel: was sich erfüllen lässt, ist CJ-Kleinware mit echter `CJ-`-SKU, CHF 20–45.**
+- **🚨 WIDERLEGT 2 — Traffic halbiert, Verkäufe trotzdem da:** 2994 → **1248 Sessions/30 T**
+  (direct 871, social 227, **search nur 124**, unbekannt 25). „Engpass = Traffic-Qualität" ist
+  nicht mehr die ganze Wahrheit.
+- **🔥 HAUPTDEFEKT GEFUNDEN (Messgerät `tools/shop_startseite.mjs`, Gegenprobe eingebaut):**
+  **Startseite 10/12 Abrufe ok = 17 % HTTP 500, 6,91 MB**, während **Produktseite 0,55 MB / 0 %**
+  und Collection 1,13 MB / 0 % liefern — gleiche Infrastruktur, also DIESE Seite. Fehlerseite ist
+  Shopifys eigene „Something went wrong" (Render-Grenze). **Ursache gezählt:** 17 Produktreihen,
+  jede rendert **72 Links bei 12 verschiedenen Produkten — jedes Produkt 6×** (Häufigkeit `[6]`
+  nachgezählt) → **1108 Produktlinks, 1130 Bilder, 1896 SVGs**.
+- **🎯 DER TREFFER:** alle drei nachprüfbar verkauften Produkte liegen in
+  `geschenke-unter-50-franken` bzw. `bestseller-unter-50`. **KEINE der 17 Reihen nutzt diese
+  Collections.** Die Startseite bewirbt 17 Kategorien, aber nicht die Preisklasse, aus der jeder
+  echte Verkauf kam.
+- **✅ GEBAUT `automation/homepage_slim.mjs`** (+ Workflow „Startseite schlank (LuxeStyle)",
+  nur `workflow_dispatch`, kein Cron): **17 Reihen → 4**, Karten 184 → 32, erwartete
+  Produktlinks 1108 → 192, Vorlage **139 497 → 51 475 B**. Reihenfolge: (1) Geschenke unter
+  CHF 50, (2) Bestseller, (3) Neuheiten, (4) Ab Schweizer Lager 1–2 Tage. Hero/USP/Trust/
+  JSON-LD unberührt. **Idempotent, 5 Selbsttests**, Sicherheitshalt gegen das aktive Theme.
+  Sicherungen: `dropship/theme-backup/index.json.{vorher,schlank}-2026-09-12.jsonc`.
+- **🟡 NUR DER USER: Theme veröffentlichen (1 Klick).** Schreibzugriff auf das **aktive** Theme
+  ist durch die Sicherheitsregel des Shopify-Zugangs blockiert („writes that target the live/MAIN
+  theme are blocked"), `themePublish` ebenfalls. `themeDuplicate` + Schreiben in die **Kopie**
+  geht. Kopie liegt bereit: `gid://shopify/OnlineStoreTheme/190339252609` („Kopie 12.09. (Claude)
+  – noch unveraendert"). Zum Scharfstellen fehlen `SHOPIFY_CLIENT_ID`/`_SECRET`/`SHOPIFY_SHOP`.
+- **❌ BEWUSST NICHT „REPARIERT":** `bestseller-unter-50` ist nur in „Point of Sale" + „Inbox"
+  publiziert — sieht nach Collections-Publish-Falle aus, **ist keine**: die Adresse liefert **301**
+  auf `geschenke-unter-50-franken` (8 Kanäle, 200). Publizieren hätte ein Duplikat erzeugt und die
+  Weiterleitung zerstört.
+- **⚠️ NEUE MESSFALLE:** `productsCount` **ignoriert Preisfilter stillschweigend**
+  (`variants.price:>99999` → 10000) und deckelt bei 10000; der SKU-Filter greift
+  (`sku:zzzgibtesnicht*` → 0). Wer nach Preis zählt, bekommt die Gesamtzahl. Aufgefallen nur,
+  weil vier Abfragen exakt dieselbe Zahl lieferten.
+- **⚠️ Eigene Korrektur:** ich habe zuerst „18 Produktreihen" gemeldet — das Messgerät sagt **17**.
+
+**📌 2026-09-12 (🧠 ZWEITES GEHIRN + SKILLS — gelernt aus TikTok @herr_tech „5 Systeme"):**
+- **Auftrag:** ein TikTok-Link + „lerne alles selbstständig", dann „obsidian 2te gehirn,
+  installiere super skills und tools, werde auto besser". Video: `@herr_tech/video/7684308282038603041`,
+  98 s. **Die Caption nennt die 5 Systeme nicht** — Transkript über die deutsche ASR-Untertitelspur
+  aus den TikTok-Metadaten (`subtitleInfos`, WebVTT) geholt. Volle Auswertung: **`LERNEN-5-SYSTEME.md`**.
+- **🔑 GEMESSENER HAUPTFUND:** `find . -name SKILL.md` lieferte **nichts** — **`.claude/skills/`
+  existierte in diesem Repo überhaupt nicht.** Genau das Stück, das das Video „absolute
+  Königsdisziplin" nennt, war das einzige, das vollständig fehlte. Alle teuer gelernten Regeln
+  standen als Prosa in dieser 470-Zeilen-Datei, die jede Session komplett liest und trotzdem
+  einzelne Fallen übersieht.
+- **✅ 5 Skills gebaut** (laden sich selbst, wenn die Beschreibung zur Aufgabe passt):
+  `messgeraet-zuerst` (jede „mach es besser"-Aufgabe) · `shopify-publizieren` (die 4 Publish-Fallen
+  + Client-Credentials-Token) · `massen-html-aendern` (Diff-Pflicht, Generator-Vorlagenkette,
+  `background-image`) · `gedaechtnis` (welche Datei die Wahrheit ist) · `git-und-pr` (Stale-Ref,
+  feste Branches, Spam-Markierung).
+- **✅ Obsidian-Vault `brain/vault/` — 39 atomare Notizen**, über Wikilinks verbunden, jede mit
+  `quelle` + `gelernt`-Datum: 13 Fallen · 5 Sackgassen · 5 Blockaden (nur User) · 7 Projekte ·
+  7 Systeme · erzeugte Zeitleiste. Einstieg `brain/vault/00 Start hier.md`.
+  **Die grossen Dateien bleiben die Historie** — der Vault ist der Zugriff darauf, kein Ersatz.
+- **✅ 4 Werkzeuge, jedes mit Gegenprobe:** `tools/gedaechtnis.py` (suchen statt lesen:
+  `"stichwort"`, `--sackgassen`, `--offen`, `--stand`) · `tools/vault.py bauen` (Index + Zeitleiste,
+  prüft alle 140 Wikilinks) · `tools/skills_pruefen.py` (53 Pfade in Skills/Notizen, findet
+  verrottete Verweise) · `tools/lehre.py` (neue Lehre aufnehmen, idempotent).
+- **🔎 Die Selbsttests haben sich SOFORT bezahlt — zwei echte Fehler im eigenen Code:**
+  (1) `skills_pruefen.py` hatte den Repo-Pfad fest verdrahtet und stürzte auf jeder Kopie ab;
+  (2) `lehre.py` ersetzte Umlaute **nach** der Unicode-Normalisierung, die Ersetzung griff nie
+  („öäü" → „oau" statt „oeaeue"). Beide hätten erst die nächste Session getroffen.
+- **✅ `automation/brain-wake.sh` erweitert** (bleibt schreibfrei): zeigt bei jedem Session-Start
+  Notizen- und Skill-Zahl, die 6 Blockaden „nur User" und die Befehle für Lehre/Prüfen.
+- **❌ BEWUSST NICHT GEBAUT, mit Begründung:** *System 2 Content-Maschine* steht schon (14 Bausteine)
+  und Masse ist hier gemessen ein 0-Hebel. *System 3 Lead-Maschine* = echte Lücke: Bausteine da
+  (`social-comment-reply.mjs` antwortet nur öffentlich, `ig-dm-reply.mjs` wartet passiv), aber die
+  Kette Kommentar→DM→Qualifizierung→Liste fehlt. **Blocker: Meta-Scope
+  `instagram_manage_messages` zusätzlich zu `instagram_manage_comments` — nur der User kann das
+  freigeben.** *System 4 Angebots-Agent* scheitert an der Quelle: Anfragen kommen per
+  `mailto:hallo@abannews.com`, darauf hat keine Session Zugriff → User muss einen maschinenlesbaren
+  Eingang benennen (n8n-Webhook liegt bereit, IMAP, oder Google-Sheet).
+- **🔴 CI-FALLE GEFUNDEN (gemessen, nicht vermutet):** `voice-linter.yml` läuft auf `pull_request`
+  über **alle `**/*.md` mit `--strict`** und hätte diese PR auf **6 Dateien rot** gemacht. Gründe
+  waren durchweg **Newsletter**-Regeln, die auf Entwickler-Doku nicht anwendbar sind: `too_long
+  10598 > 5000`, „Sie-Drift" bei normalem deutschem Satzanfang („Sie stimmte nicht"), und
+  `all_caps` — letzteres erbt die **erzeugte** Zeitleiste aus den Schlagzeilen von `CLAUDE.md`,
+  das der Linter selbst schon ausnimmt. **Fix:** `.claude/`, `brain/`, `LERNEN-*.md` in die
+  bestehende Ausnahmeliste des Workflows (wo CLAUDE.md/docs/README schon stehen), begründet im
+  Workflow-Kommentar. **Lehre für jede Session: bei neuen `.md`-Pfaden prüfen, ob der
+  Voice-Linter sie fängt** — er ist auf Newsletter geeicht, nicht auf Doku.
+- **✅ Alle CI-Prüfungen lokal nachgefahren** (Actions ist gesperrt, läuft also nicht von selbst):
+  `voice-linter` 0 Dateien nach Ausnahme · `quality-check` py_compile **408 Dateien 0 Fehler**,
+  **154 JSON 0 fehlerhaft** (1 JSONC übersprungen, wie der Workflow es tut) · `hype-filter-test`
+  Pfade nicht berührt · `deploy-check` **0 HTML im Diff**.
+- **🟡 NEBENBEFUND, Gedächtnis widerlegt:** die Aussage „0 aktive Crons" (Nulldiät, PR #828,
+  13.06.) stimmt **nicht mehr**. Von 167 Workflows haben **vier** einen aktiven `cron:`:
+  `bestseller-refresh` (`0 6 * * *`), `shop-autopilot` (`45 6 * * *`), `image-audit` (Di),
+  `shop-guards` (Mo). Sie laufen wegen der Actions-Sperre nicht — **starten aber von selbst,
+  sobald die Sperre fällt**, zwei davon täglich. **Bewusst NICHT geändert** (gehören zum
+  Shop-Autopilot, das entscheidet der User). Notiz:
+  `brain/vault/Blockiert/Vier-Crons-sind-wieder-aktiv-trotz-Nulldiaet.md`.
+- **🚨 RICHTIGSTELLUNG, die wichtigste dieser Session: GITHUB ACTIONS LÄUFT WIEDER.** Das Gedächtnis
+  behauptet seit 13.06. in Grossbuchstaben „ACCOUNT-WEIT GESPERRT — nichts läuft mehr automatisch",
+  und der ganze GitLab-CI-Umbau steht nur deswegen. **Gemessen an echten Läufen auf PR #2514:**
+  Voice Linter Lauf 2228 lief 14:18:58–14:20:28 (**90 s**) bis `success`, Quality Check Lauf 1488
+  **110 s** bis `success`, Cloudflare Pages `success`. Eine Sperre startet nichts.
+  **Belegt: `push` und `pull_request`. NICHT geprüft: `schedule` und `workflow_dispatch`** — wer
+  darauf baut, misst selbst. **Folge:** Arbeiten, die als „geht nicht" abgehakt waren, sind wieder
+  möglich, u. a. der Reviews-Importer per `workflow_dispatch`. **Fair-Use-Vorsicht bleibt**
+  (die Sperre kam von 158 Workflows/~60 Crons) → Crons weiter nicht massenhaft reaktivieren.
+  ⚠️ **Ich habe die falsche Aussage in dieser Session zuerst selbst weitergetragen** und gemeldet,
+  Actions laufe nicht — bis die PR-Ereignisse das Gegenteil zeigten. Notiz:
+  `brain/vault/Fallen/Actions-Sperre-gilt-nicht-mehr-fuer-push-und-pull-request.md`.
+- **🔴 `metricool-schedule.yml` ist auf `main` dauerhaft rot** (Läufe 7, 8, 18, 33, je 0 s). Bei der
+  Cron-Nulldiät wurde der **einzige Job mitsamt Schritten** auskommentiert, der Schlüssel `jobs:`
+  blieb stehen → leeres `jobs:` = ungültiger Workflow. Nicht diese PR. Patch-Vorschlag steht als
+  Kommentar an PR #2514; bewusst nicht hier mitgeändert.
+- **🔒 WICHTIG FÜR JEDE SESSION — ein neues Verzeichnis landet ÖFFENTLICH auf abannews.com.**
+  `build-pages.sh` kopiert das Wurzelverzeichnis per `tar` nach `_site/` und nennt nur eine
+  **Ausschlussliste** (`.git`, `node_modules`, `dropship`, `tools`, `automation`, `reports`,
+  `server`, `social`, `reels`, `video-prototypes`, …). Alles andere geht live. `brain/` und
+  `.claude/` standen in keiner Liste → **gemessen 63 Einträge** wären öffentlich abrufbar gewesen
+  (Projekt-Gedächtnis, interne Kennzahlen, Sackgassen). Behoben, nachgemessen **63 → 0**,
+  Gegenprobe `functions/` weiter dabei (39). Kein Test und kein html-validate meldet das, und
+  63 von 7167 Dateien fallen in keiner Zahl auf. **Wer ein Verzeichnis anlegt, das nicht auf die
+  Webseite gehört, trägt es im selben Arbeitsgang ein** und prüft mit
+  `tar -cf - --exclude=./.git --exclude=./node_modules . | tar -tf - | grep -c "^\./<dir>/"`.
+  ⚠️ `build-pages.sh` **schreibt beim Laufen in verfolgte Dateien** (sitemap.xml, erzeugte
+  Übersichtsseiten, Fusszeilen-Anker) → nach einem Testlauf zurücknehmen, sonst wandern fremde
+  Generator-Ausgaben in den eigenen Commit.
+- **Cloudflare:** „Workers Builds: aban-news-landing" und „ki-verzeichnis" sind rot, aber **nicht
+  von hier**: die 5 `workers/*/wrangler.toml` heissen `aban-inserate-brain`, `ki-werkzeug-ai`,
+  `luxestyle-pinterest-cron`, `luxestyle-shop-brain`, `aban-site-brain` — **keiner** davon so.
+  Für die zwei Projekte gibt es im Repo keine Konfiguration → sie fallen bei jedem Commit um.
+  Nur per Cloudflare-Dashboard lösbar. Der Pages-Build dagegen läuft: lokal Exit 0, 7167 Dateien.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m` (vom Session-Auftrag vorgegeben), Draft-PR nach `main`.
+
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
   Desktop 1440 **4 Spalten / Bild 205 px / 24 Produkte = 1905 px**; **Mobil 390 nur 1 Spalte / Bild 356 px /

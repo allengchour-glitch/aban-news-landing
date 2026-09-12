@@ -49,8 +49,14 @@ jobs:
           # fuer Projekt-Memory (CLAUDE.md), Entwickler-Doku (docs/, README) und
           # die KI-Schriftsteller-Romane (ki-schriftsteller/: literarische Prosa
           # in dritter Person mit formellem 'Sie' im Dialog) nicht gelten.
+          # Ebenso ausgenommen (2026-09-12): .claude/ (Skills = Arbeitsanweisungen an
+          # Claude), brain/ (Obsidian-Vault = Projekt-Memory, die Zeitleiste wird aus dem
+          # ohnehin ausgenommenen CLAUDE.md erzeugt) und LERNEN-*.md (technische Berichte).
+          # Gemessen: dort schlugen nur Newsletter-Regeln an, die nicht gelten koennen —
+          # Laengengrenze 5000 Zeichen, 'Sie-Drift' bei normalem deutschem Satzanfang
+          # ('Sie stimmte nicht'), und Grossschreibung aus CLAUDE.md-Schlagzeilen.
           # Marketing-/Content-.md bleiben voll streng.
-          FILES=$(echo "$FILES" | grep -Ev '^(CLAUDE\.md|SHARED-MEMORY\.md|KI-WERKZEUG-HANDOFF\.md|.*-HANDOFF\.md|.*-MEMORY\.md|.*-TODO\.md|.*-CHECKLISTE\.md|docs/|ki-schriftsteller/|.*/README\.md|README\.md)' || true)
+          FILES=$(echo "$FILES" | grep -Ev '^(CLAUDE\.md|SHARED-MEMORY\.md|KI-WERKZEUG-HANDOFF\.md|.*-HANDOFF\.md|.*-MEMORY\.md|.*-TODO\.md|.*-CHECKLISTE\.md|docs/|ki-schriftsteller/|\.claude/|brain/|LERNEN-.*\.md|.*/README\.md|README\.md)' || true)
           echo "Zu pruefende .md-Dateien (ohne Infra-Doku):"
           echo "$FILES"
           echo "files<<EOF" >> "$GITHUB_OUTPUT"

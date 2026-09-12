@@ -100,6 +100,8 @@ tar -cf - \
   --exclude='./linkedin' \
   --exclude='./reports' \
   --exclude='./ki-tools-radar' \
+  --exclude='./brain' \
+  --exclude='./.claude' \
   --exclude='./data/issue-*.html' \
   . | tar -xf - -C _site
 
