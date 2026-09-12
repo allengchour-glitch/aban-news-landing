@@ -105,6 +105,26 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   freigeben.** *System 4 Angebots-Agent* scheitert an der Quelle: Anfragen kommen per
   `mailto:hallo@abannews.com`, darauf hat keine Session Zugriff → User muss einen maschinenlesbaren
   Eingang benennen (n8n-Webhook liegt bereit, IMAP, oder Google-Sheet).
+- **🔴 CI-FALLE GEFUNDEN (gemessen, nicht vermutet):** `voice-linter.yml` läuft auf `pull_request`
+  über **alle `**/*.md` mit `--strict`** und hätte diese PR auf **6 Dateien rot** gemacht. Gründe
+  waren durchweg **Newsletter**-Regeln, die auf Entwickler-Doku nicht anwendbar sind: `too_long
+  10598 > 5000`, „Sie-Drift" bei normalem deutschem Satzanfang („Sie stimmte nicht"), und
+  `all_caps` — letzteres erbt die **erzeugte** Zeitleiste aus den Schlagzeilen von `CLAUDE.md`,
+  das der Linter selbst schon ausnimmt. **Fix:** `.claude/`, `brain/`, `LERNEN-*.md` in die
+  bestehende Ausnahmeliste des Workflows (wo CLAUDE.md/docs/README schon stehen), begründet im
+  Workflow-Kommentar. **Lehre für jede Session: bei neuen `.md`-Pfaden prüfen, ob der
+  Voice-Linter sie fängt** — er ist auf Newsletter geeicht, nicht auf Doku.
+- **✅ Alle CI-Prüfungen lokal nachgefahren** (Actions ist gesperrt, läuft also nicht von selbst):
+  `voice-linter` 0 Dateien nach Ausnahme · `quality-check` py_compile **408 Dateien 0 Fehler**,
+  **154 JSON 0 fehlerhaft** (1 JSONC übersprungen, wie der Workflow es tut) · `hype-filter-test`
+  Pfade nicht berührt · `deploy-check` **0 HTML im Diff**.
+- **🟡 NEBENBEFUND, Gedächtnis widerlegt:** die Aussage „0 aktive Crons" (Nulldiät, PR #828,
+  13.06.) stimmt **nicht mehr**. Von 167 Workflows haben **vier** einen aktiven `cron:`:
+  `bestseller-refresh` (`0 6 * * *`), `shop-autopilot` (`45 6 * * *`), `image-audit` (Di),
+  `shop-guards` (Mo). Sie laufen wegen der Actions-Sperre nicht — **starten aber von selbst,
+  sobald die Sperre fällt**, zwei davon täglich. **Bewusst NICHT geändert** (gehören zum
+  Shop-Autopilot, das entscheidet der User). Notiz:
+  `brain/vault/Blockiert/Vier-Crons-sind-wieder-aktiv-trotz-Nulldiaet.md`.
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m` (vom Session-Auftrag vorgegeben), Draft-PR nach `main`.
 
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
