@@ -12,6 +12,16 @@
  * dorthin, wo seine Kamera steht, und `th-boden` fragt nach dem Untergrund, nicht nach
  * Paaren. Diese Pruefung ist rein geometrisch — kein Bild, kein Zufall.
  *
+ * ⚠️ HUELLKOERPER SIND KEIN FLAECHENMASS — erster Lauf, erste Lehre. Die Pruefung
+ * meldete 543 Paare, das groesste mit 149'000 m² Ueberlappung. Kein Bauwerk ist so
+ * gross: der Huellkoerper eines STRASSENNETZES umspannt die halbe Karte, obwohl die
+ * Geometrie nur duenne Baender sind. Zwei solche Huellen ueberlappen sich fast immer,
+ * ohne dass sich die Flaechen je beruehren.
+ * Darum wird die ECHTE Flaeche gerechnet (Dreiecke, auf die Grundebene projiziert) und
+ * verglichen: deckt die Geometrie weniger als ein Drittel ihrer Huelle, ist sie ein
+ * Geflecht und wird uebersprungen. Wie viele das sind, steht im Bericht — eine stille
+ * Ausnahme waere so schlecht wie die falsche Zahl.
+ *
  * ⚠️ NICHT JEDE NAEHE IST EIN FEHLER. Flaechen mit `polygonOffset` sind ausdruecklich
  * fuer genau diesen Fall gebaut (die Blob-Schatten nutzen das), und `depthWrite:false`
  * nimmt einer Flaeche die Teilnahme am Streit. Beides wird ausgenommen — sonst zaehlt
@@ -36,6 +46,18 @@ mitSonden('traumhaus.html', {
       if(hoehe>0.25)return;                    /* keine flache Flaeche */
       var flaeche=(b.max.x-b.min.x)*(b.max.z-b.min.z);
       if(flaeche<1)return;                     /* Kleinkram interessiert nicht */
+      /* Echte Grundflaeche aus den Dreiecken — sonst zaehlt ein Geflecht wie eine Platte. */
+      var g=o.geometry,pos=g.attributes&&g.attributes.position,echt=0;
+      if(pos){
+        var idx=g.index?g.index.array:null, n3=idx?idx.length:pos.count;
+        var ax=new THREE.Vector3(),bx=new THREE.Vector3(),cx=new THREE.Vector3();
+        for(var t=0;t+2<n3;t+=3){
+          var i0=idx?idx[t]:t,i1=idx?idx[t+1]:t+1,i2=idx?idx[t+2]:t+2;
+          ax.fromBufferAttribute(pos,i0);bx.fromBufferAttribute(pos,i1);cx.fromBufferAttribute(pos,i2);
+          ax.applyMatrix4(o.matrixWorld);bx.applyMatrix4(o.matrixWorld);cx.applyMatrix4(o.matrixWorld);
+          /* Nur die Grundriss-Flaeche: senkrechte Waende zaehlen hier nicht. */
+          echt+=Math.abs((bx.x-ax.x)*(cx.z-ax.z)-(cx.x-ax.x)*(bx.z-ax.z))/2;}}
+      if(echt<flaeche*0.33){window.__zkGeflecht=(window.__zkGeflecht||0)+1;return;}
       out.push({x0:b.min.x,x1:b.max.x,z0:b.min.z,z1:b.max.z,
                 y:(b.min.y+b.max.y)/2,
                 farbe:m.color?"#"+m.color.getHexString():"?",
@@ -45,10 +67,13 @@ mitSonden('traumhaus.html', {
 
 const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000 })
 const F = await page.evaluate(() => window.__th.flach())
+const geflecht = await page.evaluate(() => window.__zkGeflecht || 0)
 await browser.close()
 aufraeumen(TMP)
 
 console.log(`\n${F.length} flache Flaechen (unter 0,25 m hoch, ueber 1 m²) geprueft.`)
+console.log(`${geflecht} als Geflecht uebersprungen — ihre Geometrie deckt weniger als` +
+  ' ein Drittel ihrer Huelle (Strassennetze, Markierungsbaender).')
 /* Paare mit Ueberlappung in xz und fast gleicher Hoehe. */
 const funde = []
 for (let i = 0; i < F.length; i++) {
