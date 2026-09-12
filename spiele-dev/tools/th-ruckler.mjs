@@ -107,6 +107,23 @@ console.log(rest === 0
   : '   Jedes davon ruckelt beim ersten Hinsehen. Ziel ist 0.')
 const objekte = await page.evaluate(() => window._warmObjekte || 0)
 console.log(`   Im Hintergrund objektweise aufgewaermt: ${objekte}`)
+
+/* ⚠️ GEGENPROBE GEGEN DIE EIGENE KENNZAHL. Der Rest blieb bei drei voellig
+   verschiedenen Eingriffen exakt gleich (6), waehrend die Zahl aufgewaermter Objekte
+   von 86 auf 200 stieg. Eine Zahl, die sich bei wirksamen Aenderungen nicht bewegt,
+   misst womoeglich keinen Fehler, sondern einen Boden.
+   Der Verdacht: compile() legt Varianten an, die das echte Zeichnen nie braucht. Dann
+   waere der Rest kein Ruckeln, sondern Buchhaltung. Ein ZWEITES compile() direkt
+   danach entscheidet: legt es wieder welche an, erzeugt compile() Varianten aus sich
+   heraus — dann taugt die Zahl nicht als Ziel. */
+const warm2 = await R('waerme')
+const nachWarm2 = await R('stand')
+const rest2 = nachWarm2.programme - nachWarm.programme
+console.log(`\n   GEGENPROBE: ein ZWEITES compile() legt nochmals ${rest2} an (${warm2} ms).`)
+console.log(rest2 === 0
+  ? '   → 0: compile() ist erschoepft. Die Zahl oben zaehlt echte Nachzuegler.'
+  : `   → nicht 0: compile() erzeugt Varianten aus sich heraus. Die Zahl oben ist` +
+    ' dann keine Ruckler-Zahl, sondern ein Boden des Messverfahrens.')
 console.log(`\nJS-Fehler: ${jsFehler.length}`)
 await browser.close()
 aufraeumen(TMP)
