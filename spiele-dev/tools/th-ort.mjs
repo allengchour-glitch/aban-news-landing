@@ -50,6 +50,12 @@ mitSonden('traumhaus.html', {
         /* Prozedurales hat keinen Dateinamen — als Schluessel dient Bauform und Farbe,
            damit die Zeile wenigstens sagt, WAS es ist. */
         var m9=Array.isArray(o.material)?o.material[0]:o.material;
+        /* ⚠️ WELTGROSSE DINGE HERAUSHALTEN. Himmelskuppel (1040 m), Bodenebene (900 m)
+           und Gelaende haben ihren Ursprung bei (0|0) und rutschen damit durch JEDEN
+           Umkreisfilter — sie uebertoenen die Antwort, nach der man gesucht hat.
+           Wer groesser ist als der Umkreis, steht nicht „hier", er ist ueberall. */
+        var bb9=new THREE.Box3().setFromObject(o),e9=new THREE.Vector3();bb9.getSize(e9);
+        if(Math.max(e9.x,e9.z)>r*2)return;
         k=(o.name||o.geometry.type)+(m9&&m9.color?" "+("#"+m9.color.getHexString()):"");}
       if(o.isInstancedMesh){
         /* Je Instanz pruefen — der Container steht im Ursprung. */
