@@ -748,6 +748,8 @@ var TEXLOADER=new THREE.TextureLoader();
 /* 🧱 WELT-KOLLISION (frueh deklariert, damit alle Bau-Funktionen registrieren koennen) */
 /* 🗺️ Orte der Welt — gemeinsame Quelle fuer Radar + grosse Karte (User: „map ist noch zu klein") */
 var WORLD_POIS=[
+  /* ⚠️ Die Zahlen hier sind nur der Startwert — die echte Lage zieht `domMarke()`
+     beim Bau der Kathedrale nach (siehe dort). Wer sie hier aendert, aendert nichts. */
   [-58,-78,"⛪","Kathedrale"],[-136,-196,"🌬️","Windmühle"],[-40,-196,"🚜","Bauernhof"],
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Stadtpark"],[96,14,"⛲","Brunnmatt"],
@@ -8306,6 +8308,24 @@ setTimeout(function baueGebaeude(){
     addSolid(DOM_X,DOM_Z+0.95,17.6,20.7,{a:"z",at:DOM_SW-0.5,c:DOM_X,w:4.5});
     bau("th8_kirche_offen.glb",13,DOM_X,0,DOM_Z,Math.PI,false,
         function(w){w.userData.fest=true;},true);
+    /* 🗺️ DIE MARKE STAND 216 M DANEBEN. In WORLD_POIS liegt „⛪ Kathedrale" auf
+       (-58|-78) — dort steht aber GEMESSEN (Modelle im Umkreis 30 m) kein Kirchenbau,
+       sondern ein Wohnhaus, drei Baeume, zwei Laternen, Muelleimer, Briefkasten und
+       ein Blumenbeet. Die Kathedrale selbst (13 m hoch, 20,5 m breit) steht hier auf
+       (146|-22) und hatte gar keine Marke: `_naechsterOrt(146,-22)` lieferte
+       „Spielplatz", 48 m entfernt.
+       Das ist nicht nur die Karte. `_naechsterOrt` beschriftet die ORTSSCHILDER, und
+       Lieferauftraege fuehren zu POIs — ein Schild vor der Kathedrale haette
+       „Spielplatz" gesagt. Der Kommentar oben nennt den Grund: der Bau stand frueher
+       114 Zeilen weiter oben an anderer Stelle. Das Gebaeude ist umgezogen, die Marke
+       nicht.
+       Darum wird sie hier NACHGEZOGEN statt in der Liste hart gesetzt: sie haengt an
+       denselben DOM_X/DOM_Z, die auch den Bau stellen. Dieselbe Loesung wie bei
+       `marke()` in viertel() — Namensgleichheit genuegt. */
+    (function domMarke(){
+      for(var i=0;i<WORLD_POIS.length;i++)
+        if(WORLD_POIS[i][3]==="Kathedrale"){WORLD_POIS[i][0]=DOM_X;WORLD_POIS[i][1]=DOM_Z;return;}
+    })();
     (function domVorplatz(){
       /* ⚠️ Alles war auf DZ+12 gerechnet — mit der gemessenen Portalwand bei
          Anker+11,2 haette das Pflaster IN der Kirche gelegen. Jetzt relativ zur
@@ -11375,7 +11395,16 @@ var ACHFORT={
  verliebt:[function(){return Math.round(liebe||0);},60,null],
  grossfamilie:[function(){return kinder.length;},3,"Kind"],
  gaertner:[function(){return stats.ernten||0;},5,"Ernte"],
- bankraeuber:[function(){return skills.krimi.lv||1;},2,"Ganoven-Level"],
+ /* ⚠️ HIER STAND `skills.krimi.lv||1` — und das hat Fortschritt ERFUNDEN. Die
+    Schreibweise ist von der Zeile darueber uebernommen, wo sie harmlos ist: `arbeit`
+    startet bei lv 1, das `||1` faengt dort nur undefined ab. `krimi` startet aber bei
+    0 (siehe skills-Initialisierung), und `0||1` ist 1. Das Spiel meldete damit ab der
+    ersten Sekunde „Nur noch 1 Ganoven-Level bis Profi-Ganove", ohne dass jemand je
+    etwas angestellt hatte.
+    GEFUNDEN ueber das Tor: th-meter fiel in 2 von 3 Laeufen aus, weil dieser
+    Schein-Fast-Erfolg je nach Reihenfolge das Rennen um den Anstupser gewann. Ein
+    einzelner Vergleichslauf haette mich das dem eigenen Zweig zuschreiben lassen. */
+ bankraeuber:[function(){return skills.krimi.lv||0;},2,"Ganoven-Level"],
  angler:[function(){return stats.fische||0;},5,"Fisch"],
  lieferheld:[function(){return stats.lieferungen||0;},5,"Lieferung"],
  stuntpilot:[function(){return stats.stunts||0;},10,"Sprung"],
@@ -14876,20 +14905,35 @@ addEventListener("wheel",function(e){
       camTx=Math.max(-130,Math.min(130,camTx+(P9.x-camTx)*f9));
       camTz=Math.max(-130,Math.min(130,camTz+(P9.z-camTz)*f9));}}
 },{passive:true});
+/* 📱 LAUFEN UND UMSEHEN ZUGLEICH — `targetTouches`, NICHT `touches`.
+   ⚠️ Hier stand `e.touches`, und das ist die Liste ALLER Finger auf dem Schirm, nicht
+   nur derer auf der Leinwand. Wer mit dem linken Daumen den Joystick haelt (ein
+   eigenes Element) und mit dem rechten die Kamera dreht, erzeugte damit
+   `touches.length === 2` — der Zug landete im ZOOM-Zweig, und der Joystick-Daumen
+   ging als zweiter Finger einer Kneif-Geste durch.
+   GEMESSEN (th-steuerung, Handy-Format 844x390): mit gehaltenem Joystick aenderte
+   sich camA um 0,0000, camRT dagegen um 3,51 — die Kamera drehte sich nicht, sie
+   zoomte. Damit war das, was man auf dem Handy die ganze Zeit tut — gehen und sich
+   dabei umsehen —, schlicht nicht moeglich.
+   `targetTouches` enthaelt nur die Finger, die auf DIESEM Element begonnen haben.
+   Der Daumen auf dem Joystick zaehlt damit nicht mehr mit; die echte Zwei-Finger-Geste
+   auf der Leinwand bleibt unveraendert (eigene Pruefung im Werkzeug). */
 renderer.domElement.addEventListener("touchstart",function(e){
   window._lastTouch=performance.now();
-  if(e.touches.length===1){dragging=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;downT=performance.now();downX=lx;downY=ly;
+  var tt=e.targetTouches;
+  if(tt.length===1){dragging=true;lx=tt[0].clientX;ly=tt[0].clientY;downT=performance.now();downX=lx;downY=ly;
     _paintSet=new Set();_paintHinted=false;paintFloorAt(lx,ly);
     if(buildMode)ghostFollow(lx,ly);} /* 🩹 Schwarm-4: Vorschau folgte nur der Maus — auf dem Handy klebte der Geist im Ursprung */
-  else if(e.touches.length===2){pinchD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
+  else if(tt.length===2){pinchD=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);}
 },{passive:true});
 renderer.domElement.addEventListener("touchmove",function(e){
   window._lastTouch=performance.now();
-  if(e.touches.length===1&&dragging){var dx=e.touches[0].clientX-lx,dy=e.touches[0].clientY-ly;lx=e.touches[0].clientX;ly=e.touches[0].clientY;
+  var tt=e.targetTouches;
+  if(tt.length===1&&dragging){var dx=tt[0].clientX-lx,dy=tt[0].clientY-ly;lx=tt[0].clientX;ly=tt[0].clientY;
     if(buildMode)ghostFollow(lx,ly); /* 🩹 Schwarm-4: Vorschau zieht mit dem Finger mit */
     if(paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
     else{camAT=null;window._camHandT=performance.now();camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}}
-  else if(e.touches.length===2){var nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+  else if(tt.length===2){var nd=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
     camRT=Math.max(7,Math.min(135,camRT-(nd-pinchD)*0.06));pinchD=nd;}
   e.preventDefault();},{passive:false});
 renderer.domElement.addEventListener("touchend",function(e){dragging=false;

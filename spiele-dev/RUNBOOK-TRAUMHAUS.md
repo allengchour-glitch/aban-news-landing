@@ -6612,3 +6612,69 @@ statt der 4,04 m, die sich aus dem Verhaeltnis 9,15/68 der Feldbreite ergeben).
 Spalte „Wo" nach einem Ortsnamen suchen. Und wer dort etwas findet, rechnet die Masse
 gegen die ECHTEN Verhaeltnisse nach statt gegen das Augenmass — der zweite Fehler am
 Spielfeld war ohne Zollstock nicht zu sehen.
+
+## Triage einer roten Torzeile: EIN Vergleichslauf traegt kein Urteil
+
+Gelernt 2026-09-11 an `th-meter` („Letzter Meter"). Der uebliche Dreischritt lautet:
+eigener Fehler — Altlast auf `main` — Flackern. Der Fehler steckt darin, wie man den
+mittleren Punkt prueft.
+
+Ablauf, der diesmal in die Irre fuehrte:
+
+1. Zeile rot auf dem eigenen Zweig, Wiederholung ebenfalls rot → kein Flackern.
+2. EIN Lauf gegen `main` → gruen. Schluss: „also mein Fehler."
+3. Drei Laeufe gegen `main` → **2 von 3 rot**, mit derselben Meldung.
+
+Die Pruefung war nicht wacklig — sie meldete einen ECHTEN Fehler (`skills.krimi.lv||1`
+erfand Fortschritt), der je nach Reihenfolge mal sichtbar wurde und mal nicht. Wer
+nach dem ersten gruenen `main`-Lauf aufhoert, hat zwei Moeglichkeiten, falsch zu
+liegen: sich fremde Fehler zuschreiben, oder einen echten Befund als Altlast abtun.
+
+**Regel:** mindestens drei Laeufe je Seite, bevor eine rote Zeile eingeordnet wird.
+
+⚠️ **Und den Vergleich im SELBEN Verzeichnis fahren.** Ein `git worktree` plus
+`TH_REPO` reicht nicht: der HTTP-Server (Port 8899) bedient das Hauptverzeichnis, die
+Sonde landet im Arbeitsbaum, und die Seite findet gar kein `window.__th` — das sieht
+aus wie ein Absturz des Spiels und ist doch nur die Vorrichtung. Stattdessen:
+
+    git checkout origin/main -- traumhaus.html   # main einspielen
+    node spiele-dev/tools/th-<pruefung>.mjs      # messen
+    git checkout HEAD -- traumhaus.html          # zuruecknehmen
+
+Mit einer Gegenprobe im selben Befehl (z. B. `grep -c <eigenes Stichwort>`, das vorher
+0 und nachher wieder die erwartete Zahl liefern muss) — sonst misst man womoeglich die
+falsche Datei und merkt es nicht.
+
+## `e.touches` ist nicht `e.targetTouches` — und auf dem Handy ist das der Unterschied
+## zwischen „gehen und sich umsehen" und „gar nicht"
+
+Gefunden 2026-09-11 mit dem neuen `th-steuerung.mjs`. Die Kamera-Handler der Leinwand
+verzweigten ueber `e.touches.length` (1 = drehen, 2 = zoomen). `touches` ist aber die
+Liste ALLER Finger auf dem Schirm, nicht nur derer auf dem angesprochenen Element. Der
+linke Daumen auf dem Joystick — ein eigenes DOM-Element — zaehlte damit als zweiter
+Finger einer Kneif-Geste.
+
+GEMESSEN bei 844x390: mit gehaltenem Joystick aenderte sich `camA` um **0,0000** und
+`camRT` um **3,51**. Die Kamera drehte sich nicht, sie zoomte. Damit war das, was man
+auf dem Handy die ganze Zeit tut, schlicht nicht moeglich — und keine der 47
+Torpruefungen hat es je bemerkt, weil **keine einzige die Steuerung gemessen hat**.
+
+`targetTouches` enthaelt nur Finger, die auf DIESEM Element begonnen haben. Nach der
+Umstellung: `camA` ±0,36, `camRT` ±0,00, und die echte Zwei-Finger-Geste zoomt weiter.
+
+**Zwei Lehren fuers Messen von Bedienung:**
+
+1. **Beruehrungen von Hand bauen.** Nur so laesst sich der Unterschied zwischen
+   `touches` und `targetTouches` ueberhaupt nachstellen — ein echter Fingertipp im
+   Test fuellt beide Listen gleich.
+2. **Das Messfenster an die SPIELZEIT haengen, nicht an die Wanduhr.** Der erste Lauf
+   meldete dreimal dieselben 0,20 m und sah aus, als liefe die Figur nicht; im
+   Headless-Browser vergehen in 1,2 s Echtzeit ein, zwei Bilder. Mit `warteWeltzeit`
+   waren es 9,20 m. Dieselbe Falle steht seit jeher im Kopf von `th-reichweite` — und
+   ich bin trotzdem hineingetreten. Das Werkzeug prueft darum jetzt selbst, ob sein
+   Fenster lang genug war.
+
+⚠️ Und eine Falle der Vorrichtung: `page.mouse.wheel` kam in zwei Laeufen
+unterschiedlich an (einmal gar kein Zoom, einmal der rechnerisch exakte Wert). Nicht
+das Spiel war unzuverlaessig, sondern die Zustellung. Rad-Ereignisse werden darum
+selbst gebaut und per `dispatchEvent` geschickt.
