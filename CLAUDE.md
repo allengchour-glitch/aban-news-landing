@@ -141,6 +141,24 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Cron-Nulldiät wurde der **einzige Job mitsamt Schritten** auskommentiert, der Schlüssel `jobs:`
   blieb stehen → leeres `jobs:` = ungültiger Workflow. Nicht diese PR. Patch-Vorschlag steht als
   Kommentar an PR #2514; bewusst nicht hier mitgeändert.
+- **🔒 WICHTIG FÜR JEDE SESSION — ein neues Verzeichnis landet ÖFFENTLICH auf abannews.com.**
+  `build-pages.sh` kopiert das Wurzelverzeichnis per `tar` nach `_site/` und nennt nur eine
+  **Ausschlussliste** (`.git`, `node_modules`, `dropship`, `tools`, `automation`, `reports`,
+  `server`, `social`, `reels`, `video-prototypes`, …). Alles andere geht live. `brain/` und
+  `.claude/` standen in keiner Liste → **gemessen 63 Einträge** wären öffentlich abrufbar gewesen
+  (Projekt-Gedächtnis, interne Kennzahlen, Sackgassen). Behoben, nachgemessen **63 → 0**,
+  Gegenprobe `functions/` weiter dabei (39). Kein Test und kein html-validate meldet das, und
+  63 von 7167 Dateien fallen in keiner Zahl auf. **Wer ein Verzeichnis anlegt, das nicht auf die
+  Webseite gehört, trägt es im selben Arbeitsgang ein** und prüft mit
+  `tar -cf - --exclude=./.git --exclude=./node_modules . | tar -tf - | grep -c "^\./<dir>/"`.
+  ⚠️ `build-pages.sh` **schreibt beim Laufen in verfolgte Dateien** (sitemap.xml, erzeugte
+  Übersichtsseiten, Fusszeilen-Anker) → nach einem Testlauf zurücknehmen, sonst wandern fremde
+  Generator-Ausgaben in den eigenen Commit.
+- **Cloudflare:** „Workers Builds: aban-news-landing" und „ki-verzeichnis" sind rot, aber **nicht
+  von hier**: die 5 `workers/*/wrangler.toml` heissen `aban-inserate-brain`, `ki-werkzeug-ai`,
+  `luxestyle-pinterest-cron`, `luxestyle-shop-brain`, `aban-site-brain` — **keiner** davon so.
+  Für die zwei Projekte gibt es im Repo keine Konfiguration → sie fallen bei jedem Commit um.
+  Nur per Cloudflare-Dashboard lösbar. Der Pages-Build dagegen läuft: lokal Exit 0, 7167 Dateien.
 - **Branch:** `claude/selbststaendiges-lernen-h48e6m` (vom Session-Auftrag vorgegeben), Draft-PR nach `main`.
 
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
