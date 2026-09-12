@@ -2437,7 +2437,19 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     requestAnimationFrame(function schritt(){
       var o=_warmObjSchlange.shift();
       try{
-        if(o&&o.parent&&o.visible!==false){
+        /* ⚠️ UNSICHTBARES MUSS FUERS AUFWAERMEN KURZ SICHTBAR SEIN. Der erste Anlauf
+           uebersprang alles mit visible===false — und genau das ist der haeufige Fall:
+           die Sichtbarkeitsstufe (lodTakt, gruppenSicht) blendet aus, was gerade weit
+           weg ist. three.js zeichnet Unsichtbares nicht, also entsteht sein Programm
+           nie, und es ruckelt genau dann, wenn der Spieler hinlaeuft.
+           GEMESSEN: mit dem Ueberspringen blieben 6 Materialien unvorbereitet, und
+           weder ein laengerer Fahrplan noch der Lader-Hook aenderten daran etwas.
+           Darum wird die Kette hier fuer EINEN Zug ins 8x8-Ziel sichtbar geschaltet und
+           sofort wieder zurueckgesetzt — auf dem Bildschirm ist davon nichts zu sehen,
+           weil in ein eigenes Ziel gezeichnet wird. */
+        if(o&&o.parent){
+          var _kette=[],_k=o;
+          while(_k&&_k!==scene){if(!_k.visible){_kette.push(_k);_k.visible=true;}_k=_k.parent;}
           if(!_warmZiel){_warmZiel=new THREE.WebGLRenderTarget(8,8);
             _warmKam=new THREE.PerspectiveCamera(35,1,0.1,900);}
           var bb=new THREE.Box3().setFromObject(o);
@@ -2451,7 +2463,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
             renderer.setRenderTarget(_warmZiel);
             renderer.render(scene,_warmKam);
             renderer.setRenderTarget(alt);
-            window._warmObjekte=(window._warmObjekte||0)+1;}}
+            window._warmObjekte=(window._warmObjekte||0)+1;}
+          for(var _i=0;_i<_kette.length;_i++)_kette[_i].visible=false;}
       }catch(e){}
       if(_warmObjSchlange.length)requestAnimationFrame(schritt);
       else _warmObjLaeuft=false;});}
