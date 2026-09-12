@@ -83,9 +83,23 @@ canvas{display:block}
      Statt umzubrechen schrumpfen die Felder: zuerst Stufe, dann Uhr/Beduerfnisse — Geld nie. */
   #hud{flex-wrap:nowrap !important}
   #geld{flex-shrink:0}
-  #uhr,#needsBox{min-width:0;flex-shrink:1;overflow:hidden}
+  #uhr{min-width:0;flex-shrink:1;overflow:hidden}
+  /* ⚠️ SCHRIFT SCHRUMPFEN IST HIER EINE VERFOLGUNGSJAGD. Mit kleinerer Schrift
+     schrumpft auch die zugeteilte Breite mit: .62rem gab 147 noetig / 141 da,
+     .58rem gab 137 / 134 — die Luecke blieb, nur die Zahlen wurden kleiner.
+     Die Leiste ist schlicht ueberfuellt, und wer nachgibt, ist eine
+     Design-Entscheidung, die es schon gibt: Uhr und Stufenfeld duerfen ihr Ende
+     verlieren (data-kurzbar), der Rang-Kasten nicht. Also gibt er nicht mehr nach —
+     die anderen beiden fangen den Fehlbetrag auf, wofuer sie gebaut sind. */
+  #needsBox{min-width:0;flex-shrink:0;overflow:hidden}
   #stufeBox{min-width:0;flex-shrink:3}
-  #needsBox>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  /* ⚠️ DIE SCHRIFT MUSS HIER STEHEN, NICHT AM ELTERNTEIL. updHUD setzt die Rangzeile
+     mit `style.cssText="font-size:.72rem…"` INLINE — eine Regel auf #needsBox kommt
+     dagegen nicht an. Genau das ist mir passiert: .58rem auf .52rem gesetzt, und der
+     gemessene Bedarf blieb auf 171 px stehen, Pixel fuer Pixel derselbe.
+     Anders als Uhr und Stufenfeld darf dieser Kasten nicht nachgeben (kein
+     data-kurzbar): eine halbe Rangzeile ist keine Information. */
+  #needsBox>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;font-size:.62rem !important}
   /* Fusszeile (Suche · Impressum · Datenschutz, z 99999) lag beim Spielen ueber den
      Katalog-Preisen, dem unteren Rand von "Aussteigen" und dem Joystick-Ring
      (th-spielerblick, Bilder 3/5/6). Waehrend des Spiels quer ausgeblendet — sie steht
@@ -170,7 +184,11 @@ canvas{display:block}
      Fertigkeiten + Status) braucht 175 — sie brach genau dann um, wenn alle drei
      zusammenkamen, also mal so und mal so. Gemessen mit th-hud; 206 gibt 182 und
      damit Luft, ohne die Uhr daneben zu beruehren (Ueberlappung mitgeprueft). */
-  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:min(38vw,206px)}
+  /* ⚠️ .58rem reichte nicht: GEMESSEN bei 568x320 braucht die volle Zeile (drei
+     Fertigkeiten + Status-Ikone) 171 px und hat 154. Anders als Uhr und Stufe darf
+     dieser Kasten NICHT nachgeben — eine halbe Rangzeile ist keine Information.
+     .52rem bringt den Bedarf unter die verfuegbare Breite. */
+  #needsBox{max-height:60vh;overflow-y:auto;font-size:.52rem;min-width:88px;max-width:min(38vw,206px)}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
   #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -287,9 +305,16 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <div id="wrap"></div>
 <div id="hud" class="hide">
   <div class="panel" id="geld"><svg class="ik ik-s" aria-hidden="true"><use href="#i-coin"/></svg> 5000</div>
-  <div class="panel" id="uhr"><svg class="ik ik-s" aria-hidden="true"><use href="#i-clock"/></svg> Tag 1 · 08:00</div>
+  <!-- data-kurzbar: dieser Kasten DARF sein Ende verlieren, das ist kein Fehler.
+       Bei der Uhr faellt zuerst das Wetter-Zeichen weg, die Zeit bleibt. th-hud
+       nimmt solche Kaesten von der Abschneide-Pruefung aus — ohne diesen Vertrag
+       meldet das Messgeraet gewolltes Nachgeben als Defekt und treibt die Arbeit in
+       die falsche Richtung. -->
+  <div class="panel" id="uhr" data-kurzbar="1"><svg class="ik ik-s" aria-hidden="true"><use href="#i-clock"/></svg> Tag 1 · 08:00</div>
   <div class="panel needs" id="needsBox"></div>
-  <div class="panel" id="stufeBox" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
+  <!-- Auch hier ist das Kuerzen Absicht (flex-shrink:3, und stufeHudUpd setzt
+       bewusst zuerst den Fehlbetrag, dann den Termin, den Titel zuletzt). -->
+  <div class="panel" id="stufeBox" data-kurzbar="1" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
 </div>
 <div id="komboHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(24,28,40,.86);color:#fff;padding:7px 14px;border-radius:14px;min-width:104px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>
 <div id="hetzeHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(40,26,14,.88);color:#fff;padding:7px 14px;border-radius:14px;min-width:118px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>
@@ -391,7 +416,14 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <button id="kochQuit" style="margin-top:10px;border:0;background:#e8e0d0;border-radius:14px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
  </div>
 </div>
-<div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;pointer-events:none;background:#fff6dc;border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
+<!-- 🏆 ERFOLGS-EINBLENDUNG AN DEN RAND, NICHT IN DIE MITTE.
+     Frueher: top 64px, left 50%, also waagrecht mittig und auf einem 390 px hohen
+     Handyschirm im oberen Drittel — genau in der Blickachse zur eigenen Figur, die
+     ja ebenfalls in der Bildmitte steht. Der User: "die Platzierung in Mitte passt
+     nicht". Eine Einblendung soll auffallen, aber nicht die Sicht nehmen.
+     Jetzt rechts unter der Geldanzeige, rechtsbuendig, mit gedeckelter Breite —
+     dort ist bis zu den runden Knoepfen am rechten Rand nichts. -->
+<div id="achToast" style="position:fixed;top:calc(64px + env(safe-area-inset-top));right:10px;max-width:min(58vw,320px);transform:translateY(-140px);z-index:26;pointer-events:none;background:#fff6dc;border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
 <button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:0;background:rgba(255,253,248,.95);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)"><svg class="ik" aria-hidden="true"><use href="#i-trophy"/></svg></button>
 <canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:0;box-shadow:0 6px 20px rgba(20,30,15,.42);background:#3a5a34;cursor:pointer"></canvas>
 <!-- 🗺️ Grosse Karte (User: „map ist noch zu klein") — Tipp auf das Radar oeffnet die ganze Welt -->
@@ -1017,6 +1049,39 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
     var m=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+6,GH*CS+6),
       new THREE.MeshStandardMaterial({map:t,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=-0.02;m.receiveShadow=true;scene.add(m);
+  })();
+  /* 🏗️ DER BAUPLATZ SIEHT JETZT AUS WIE EINER. Der User: „die Platzierung in Mitte
+     passt nicht" — gemeint war das eigene Grundstueck, die Mitte der Welt und das
+     Erste, was man beim Start sieht. Es war blanke Wiese mit Maehstreifen.
+
+     ⚠️ GEMESSEN, BEVOR HIER ETWAS STAND (th-ort, Umkreis 50 m): die Parzelle ist
+     durch vier Poller auf (±39|±27) abgesteckt, Gehwegstreifen liegen auf z ±27,
+     die Strassen mit Bushalte, Briefkasten und Kiosk auf z ±45, und ein Ortsschild
+     steht auf (7|30) — also genau an der Zufahrtsseite. Es fehlte nicht die
+     Umrandung, sondern alles, was einen Bauplatz als Bauplatz lesbar macht.
+
+     ⚠️ UND ALLES BLEIBT FLACH. Dieselbe Regel wie bei den Maehstreifen darueber:
+     Overlay ohne Kollider, kein Eintrag ins Bauraster. Wer hier einen Pfosten
+     setzt, nimmt Baugrund weg — das Grundstueck IST die Spielflaeche. */
+  (function bauplatz(){
+    var ZX=7;                                   /* Zufahrt in der Achse des Ortsschilds */
+    function band(x,z,bx,bz,farbe,hoehe){
+      var mm=new THREE.Mesh(new THREE.PlaneGeometry(bx,bz),
+        new THREE.MeshStandardMaterial({color:farbe,roughness:0.96,envMapIntensity:0.14,
+                                        transparent:true,opacity:0.9,depthWrite:false}));
+      mm.rotation.x=-Math.PI/2;mm.position.set(x,hoehe||0.012,z);
+      mm.receiveShadow=true;scene.add(mm);return mm;}
+    /* Kiesauffahrt vom Gehweg (z 27) bis zum Stellplatz. Sie endet bewusst VOR der
+       Mitte: eine Auffahrt, die im Nichts ausläuft, sieht falsch aus — eine, die auf
+       einem Stellplatz endet, sieht nach „hier kann gebaut werden" aus. */
+    band(ZX, 20.5, 4.0, 13, 0xc9bfa6);
+    band(ZX, 12.0, 7.0, 5.0, 0xc2b79c);          /* Stellplatz 7 x 5 m */
+    /* Parzellengrenze als duenne Schnurlinie, aber NUR an den Laengsseiten. Kein Zaun —
+       der naehme die Sicht aufs eigene Haus und stuende im Bauraster.
+       ⚠️ Nord und Sued brauchen KEINE Linie: dort liegen bereits die Gehwegstreifen
+       auf z ±27 (gemessen mit th-flaeche). Eine zweite Markierung an derselben Stelle
+       ist im Bild nicht zu unterscheiden und nur ein Objekt mehr. */
+    [[-39,54,0.25],[39,54,0.25]].forEach(function(q){band(q[0],0,q[2],q[1],0xe8e2d2,0.014);});
   })();
   /* ⚠️ Zwischen der nahen Wiese (204x152) und der Fern-Ebene (600x600 mit nur
      40 Blotches) lag ein breiter Ring, den praktisch keine Variation erreichte —
@@ -11721,9 +11786,9 @@ function achToast(a2){
   camKick=Math.max(camKick,0.016);
   var t=document.getElementById("achToast");
   document.getElementById("achToastTxt").innerHTML=a2[1]+" <b>"+a2[2]+"</b><br><small>"+a2[3]+"</small>";
-  t.style.transform="translateX(-50%) translateY(0)";
+  t.style.transform="translateY(0)";
   beep(784,.12,"triangle",.06);setTimeout(function(){beep(1046,.18,"triangle",.07);},150);
-  clearTimeout(t._t);t._t=setTimeout(function(){t.style.transform="translateX(-50%) translateY(-130px)";},4000);
+  clearTimeout(t._t);t._t=setTimeout(function(){t.style.transform="translateY(-140px)";},4000);
   saveGame();}
 var crime={on:false,t:0,job:null,accomplice:false,ask:false};
 var kinder=[]; // {mesh,name,x,z,rot,alter(Tage),parent,walkT,path,emoji,emoT,net}
@@ -15467,11 +15532,24 @@ function updHUD(){
      liess: bei 568 px braucht sie 217 px und hat 162 (gemessen mit th-hud). Statt den
      Umbruch hinzunehmen wird die FORM gekuerzt, nicht die Information — aus
      "· Arbeit …" wird die Hammer-Ikone. Der Wortlaut bleibt, wo Platz ist. */
-  var _eng9=innerWidth<700;
-  var _st9=arbeiten?(_eng9?" · "+ik("i-hammer"):" · Arbeit\u00A0…")
-          :(crime.on?(_eng9?" · "+ik("i-moon"):" · unterwegs\u00A0"+ik("i-moon")):"");
-  skr.innerHTML=ik("i-work")+"\u00A0Lv"+skills.arbeit.lv+" · "+ik("i-heart")+"\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · "+ik("i-mask")+"\u00A0Lv"+skills.krimi.lv:"")+_st9;
+  /* ⚠️ DIE SCHWELLE STAND AUF DER FALSCHEN GROESSE. Frueher: `innerWidth<700`.
+     Eng wird es aber nicht am Bildschirm, sondern am KASTEN — der ist auf
+     `min(38vw,206px)` gedeckelt (Zeile 173) und wird jenseits von 542 px Bildbreite
+     gar nicht mehr breiter. Bei 844 px Bildbreite greift die alte Schwelle also
+     nicht, obwohl der Kasten genauso schmal ist wie bei 600 px.
+     GEMESSEN mit th-hud bei 568x320: die Zeile braucht 171 px und hat 158 — und das
+     gilt unverändert, wie breit der Bildschirm auch ist.
+     Jetzt wird zuerst die lange Fassung gesetzt und danach NACHGESEHEN, ob sie passt.
+     Das ist dieselbe Groesse, die auch das Messgeraet prueft (scrollWidth gegen
+     clientWidth) — keine zweite Zahl, die auseinanderlaufen kann. */
+  function _zeile9(kurz){
+    var st=arbeiten?(kurz?" · "+ik("i-hammer"):" · Arbeit\u00A0…")
+          :(crime.on?(kurz?" · "+ik("i-moon"):" · unterwegs\u00A0"+ik("i-moon")):"");
+    return ik("i-work")+"\u00A0Lv"+skills.arbeit.lv+" · "+ik("i-heart")+"\u00A0Lv"+skills.liebe.lv+
+      (skills.krimi.lv>0?" · "+ik("i-mask")+"\u00A0Lv"+skills.krimi.lv:"")+st;}
+  skr.innerHTML=_zeile9(false);
   nb.appendChild(skr);
+  if(skr.scrollWidth>skr.clientWidth+1)skr.innerHTML=_zeile9(true);
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:#ff9ab8'></i></span>";
   nb.appendChild(lr);

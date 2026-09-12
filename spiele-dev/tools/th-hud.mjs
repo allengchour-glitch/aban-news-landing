@@ -38,8 +38,16 @@ const tmp = mitSonden('traumhaus.html', {
      Turtel-Vorhang `#romKiss` ueber den Bildschirm, und die Ueberdeckungs-Pruefung
      meldete brav "Sperrschicht aktiv" fuer ALLE drei Formate. Sie war damit
      abgeschaltet, und der Lauf sah trotzdem gruen aus. 13:05 ist gleich breit. */
+  /* ⚠️ UND DER STATUS-NACHSATZ GEHOERT DAZU (2026-09-12). Die Fuellung setzte Raenge,
+     Geld und Uhrzeit — aber nicht `arbeiten`. Damit entstand die LAENGSTE Zeile nie:
+     updHUD haengt bei der Arbeit ein " · Arbeit …" an. Genau diese Fassung zeigte der
+     User im Bild abgeschnitten, waehrend die Pruefung bei 844x390 null meldete.
+     Ein Werkzeug, das verspricht „bis zum Anschlag zu fuellen", muss den Anschlag auch
+     treffen. `arbeiten` ist dafuer unbedenklich: es haengt nur Text an, greift nicht
+     in die Bildschleife ein (anders als Nacht oder Kinder, siehe oben). */
   voll: `function(){
     skills.arbeit.lv=2;skills.liebe.lv=1;skills.krimi.lv=1;liebe=62;geld=1234567;tag=13;uhrzeit=785;
+    arbeiten=true;
     updHUD();return true;}`,
   /* ⚠️ applyFurn/einsteigen/fahren leben in der Huelle — page.evaluate sieht sie nicht
      (erster Anlauf: "applyFurn is not defined"). Also hier als Sonden, Regel 2. */
@@ -180,6 +188,14 @@ const r = await page.evaluate(([B, H, autoP]) => {
   const blaetter = [...document.querySelectorAll('#hud *')]
     .filter((el) => sichtbar(el) && !el.querySelector('*') && (el.textContent || '').trim().length > 1)
   const umbruch = []
+  /* ✂️ ABGESCHNITTEN IST NICHT UMGEBROCHEN — und genau darum hat diese Pruefung den
+     Fehler nie gesehen, den der User im Bild sofort sah. `#stufeBox` traegt
+     `white-space:nowrap` und `text-overflow:ellipsis`: er bricht nie um, er schneidet
+     STILL ab („Lv2 · Lv1 · Lv1 · Arbeit …"). Eine Zaehlung von Zeilen findet dort
+     immer genau eine und meldet „in Ordnung".
+     Gemessen wird darum zusaetzlich der ueberlaufende Text: `scrollWidth` groesser als
+     `clientWidth` heisst, dass etwas hinter dem Rand verschwindet. */
+  const beschnitten = []
   /* ⚠️ HOEHE GETEILT DURCH ZEILENHOEHE IST FALSCH. Der erste Anlauf rechnete so und
      meldete drei Umbrueche, die keine waren — "hat 157 px, braucht 153". Die Hoehe
      eines Kastens enthaelt sein Polster; eine einzeilige Zelle mit 8 px oben und unten
@@ -202,6 +218,22 @@ const r = await page.evaluate(([B, H, autoP]) => {
     el.style.whiteSpace = alt
     umbruch.push({ ort: (el.parentElement && el.parentElement.id) || '#hud', zeilen,
                    ist: Math.round(b.width), noetig, txt: (el.textContent || '').trim().slice(0, 34) })
+  }
+  for (const el of [...document.querySelectorAll('#hud *')].filter(sichtbar)) {
+    const fehlt = Math.ceil(el.scrollWidth - el.clientWidth)
+    if (fehlt < 2 || !el.clientWidth) continue
+    const st = getComputedStyle(el)
+    if (st.overflowX === 'visible') continue          /* laeuft sichtbar ueber, faellt anderswo auf */
+    /* ⚠️ GEWOLLTES NACHGEBEN IST KEIN FEHLER. Die Uhr laesst bei Enge das
+       Wetter-Zeichen fallen, das Stufenfeld seinen Titel — beides steht so im
+       Quelltext und ist die bessere Loesung als Umbruch. Ein Messgeraet, das
+       Bauteile als Fehler zaehlt, treibt die Arbeit in die falsche Richtung
+       (Projektgedaechtnis, Lehre 3). Solche Kaesten tragen `data-kurzbar`. */
+    if (el.closest('[data-kurzbar]')) continue
+    beschnitten.push({ id: el.id || (el.parentElement && el.parentElement.id) || '#hud',
+                       ist: el.clientWidth, noetig: el.scrollWidth, fehlt,
+                       punkte: st.textOverflow === 'ellipsis',
+                       txt: (el.textContent || '').trim().slice(0, 40) })
   }
   ueber.sort((p, q) => q.flaeche - p.flaeche)
   /* ⚠️ ZWEI BLINDFLECKE, gefunden beim SELBSTFAHREN (2026-09-02). Die Mitte-Pruefung oben
@@ -242,7 +274,7 @@ const r = await page.evaluate(([B, H, autoP]) => {
       }
     }
   } catch (e) { autoNah = [{ knopf: 'Messfehler: ' + e, d: 0 }] }
-  return { n: K.length, raus, klein, ueber: ueber.slice(0, 12), umbruch, teilverdeckt, autoNah, alle: K }
+  return { n: K.length, raus, klein, ueber: ueber.slice(0, 12), umbruch, beschnitten, teilverdeckt, autoNah, alle: K }
 }, [B, H, autoP])
 
 console.log(`\nBedienoberflaeche bei ${B}x${H} · ${modus} — ${r.n} sichtbare Elemente\n`)
@@ -271,10 +303,13 @@ if (modus === 'Fahrmodus') {
 }
 console.log(`${r.umbruch.length ? '❌' : '✅'} Textzeilen, die umbrechen: ${r.umbruch.length}`)
 r.umbruch.forEach((u) => console.log(`     ${u.ort.padEnd(12)} ${u.zeilen} Zeilen · hat ${u.ist} px, braucht ${u.noetig} px  „${u.txt}"`))
+console.log(`${r.beschnitten.length ? '❌' : '✅'} Texte, die abgeschnitten werden: ${r.beschnitten.length}`)
+r.beschnitten.forEach((u) => console.log(`     ${String(u.id).padEnd(12)} hat ${u.ist} px, braucht ${u.noetig} px — ${u.fehlt} px fehlen` +
+  `${u.punkte ? ' (mit Punkten)' : ''}  „${u.txt}"`))
 console.log(`JS-Fehler: ${jsFehler.length}`)
 await page.screenshot({ path: REPO + '/spiele-dev/screenshots/hud-' + B + 'x' + H +
   (modus === 'Baumodus' ? '-bau' : modus === 'Fahrmodus' ? '-fahrt' : '') + '.png' })
-return !!(r.raus.length || (!sperre && r.ueber.length) || r.umbruch.length || r.teilverdeckt.length || r.autoNah.length || jsFehler.length)
+return !!(r.raus.length || (!sperre && r.ueber.length) || r.umbruch.length || r.beschnitten.length || r.teilverdeckt.length || r.autoNah.length || jsFehler.length)
 }
 
 let befund = await messen('Spielmodus')
