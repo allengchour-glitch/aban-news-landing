@@ -2397,11 +2397,21 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var ms=o.material;if(!ms)return;
       if(!Array.isArray(ms))ms=[ms];
       for(var i=0;i<ms.length;i++){var m=ms[i];if(!m)continue;
-        /* Je NEUEM Material ein Beispiel-Objekt merken. Das Programm haengt nicht am
-           Material allein, sondern an Material UND Objekt-Zustand (instanziert,
-           Schattenwerfer, zweite UV-Ebene) — nur mit dem echten Objekt entsteht
-           spaeter auch die echte Variante. */
-        if(!_warmMat[m.uuid]){_warmMat[m.uuid]=1;neueMats++;if(o.isMesh)neueObj.push(o);}
+        /* Je neuem Material UND Objekt-ZUSTAND ein Beispiel merken. Das Programm haengt
+           nicht am Material allein: dasselbe Material an einem instanzierten Objekt,
+           an einem Schattenwerfer oder an einer Geometrie mit zweiter UV-Ebene ist ein
+           ZWEITES Programm.
+           ⚠️ ERST WURDE NUR JE MATERIAL GESAMMELT — und genau daran blieben sechs
+           Nachzuegler haengen, bei drei verschiedenen Eingriffen exakt dieselben sechs.
+           compile() laeuft ueber ALLE Objekte und findet die weiteren Varianten, der
+           Sammler fand sie nicht. Dass es echte Nachzuegler sind und kein Messboden,
+           ist gegengeprueft: ein zweites compile() legt 0 mehr an. */
+        if(o.isMesh){
+          var g9=o.geometry,_z9=m.uuid+"|"+(o.isInstancedMesh?"i":"-")+(o.castShadow?"s":"-")+
+            (o.receiveShadow?"e":"-")+(o.isSkinnedMesh?"k":"-")+
+            (g9&&g9.attributes?((g9.attributes.uv2?"2":"-")+(g9.attributes.color?"c":"-")):"--");
+          if(!_warmMat[_z9]){_warmMat[_z9]=1;neueMats++;neueObj.push(o);}}
+        else if(!_warmMat[m.uuid]){_warmMat[m.uuid]=1;neueMats++;}
         for(var k=0;k<_WARM_SLOTS.length;k++){
           var t=m[_WARM_SLOTS[k]];
           if(t&&t.isTexture&&!_warmTex[t.uuid]){_warmTex[t.uuid]=1;neueTex.push(t);}}}});
