@@ -1050,6 +1050,37 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
       new THREE.MeshStandardMaterial({map:t,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=-0.02;m.receiveShadow=true;scene.add(m);
   })();
+  /* 🏗️ DER BAUPLATZ SIEHT JETZT AUS WIE EINER. Der User: „die Platzierung in Mitte
+     passt nicht" — gemeint war das eigene Grundstueck, die Mitte der Welt und das
+     Erste, was man beim Start sieht. Es war blanke Wiese mit Maehstreifen.
+
+     ⚠️ GEMESSEN, BEVOR HIER ETWAS STAND (th-ort, Umkreis 50 m): die Parzelle ist
+     durch vier Poller auf (±39|±27) abgesteckt, Gehwegstreifen liegen auf z ±27,
+     die Strassen mit Bushalte, Briefkasten und Kiosk auf z ±45, und ein Ortsschild
+     steht auf (7|30) — also genau an der Zufahrtsseite. Es fehlte nicht die
+     Umrandung, sondern alles, was einen Bauplatz als Bauplatz lesbar macht.
+
+     ⚠️ UND ALLES BLEIBT FLACH. Dieselbe Regel wie bei den Maehstreifen darueber:
+     Overlay ohne Kollider, kein Eintrag ins Bauraster. Wer hier einen Pfosten
+     setzt, nimmt Baugrund weg — das Grundstueck IST die Spielflaeche. */
+  (function bauplatz(){
+    var ZX=7;                                   /* Zufahrt in der Achse des Ortsschilds */
+    function band(x,z,bx,bz,farbe,hoehe){
+      var mm=new THREE.Mesh(new THREE.PlaneGeometry(bx,bz),
+        new THREE.MeshStandardMaterial({color:farbe,roughness:0.96,envMapIntensity:0.14,
+                                        transparent:true,opacity:0.9,depthWrite:false}));
+      mm.rotation.x=-Math.PI/2;mm.position.set(x,hoehe||0.012,z);
+      mm.receiveShadow=true;scene.add(mm);return mm;}
+    /* Kiesauffahrt vom Gehweg (z 27) bis zum Stellplatz. Sie endet bewusst VOR der
+       Mitte: eine Auffahrt, die im Nichts ausläuft, sieht falsch aus — eine, die auf
+       einem Stellplatz endet, sieht nach „hier kann gebaut werden" aus. */
+    band(ZX, 20.5, 4.0, 13, 0xc9bfa6);
+    band(ZX, 12.0, 7.0, 5.0, 0xc2b79c);          /* Stellplatz 7 x 5 m */
+    /* Parzellengrenze als duenne Schnurlinie zwischen den vier Pollern. Kein Zaun —
+       der wuerde die Sicht auf das eigene Haus nehmen und stuende im Bauraster. */
+    [[-27,78,0.25],[27,78,0.25]].forEach(function(q){band(0,q[0],q[1],q[2],0xe8e2d2,0.014);});
+    [[-39,54,0.25],[39,54,0.25]].forEach(function(q){band(q[0],0,q[2],q[1],0xe8e2d2,0.014);});
+  })();
   /* ⚠️ Zwischen der nahen Wiese (204x152) und der Fern-Ebene (600x600 mit nur
      40 Blotches) lag ein breiter Ring, den praktisch keine Variation erreichte —
      genau der Bereich, den man beim Herauszoomen sieht. Drittes Overlay dafuer. */
