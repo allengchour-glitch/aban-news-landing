@@ -5,6 +5,12 @@
 
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte.
 
+> 🧠 **NEU 2026-09-12 — suchen statt lesen:** Das Gedächtnis liegt jetzt zusätzlich als
+> Obsidian-Vault in **`brain/vault/`** (Einstieg `00 Start hier.md`), atomar und verlinkt.
+> `python3 tools/gedaechtnis.py "stichwort"` · `--sackgassen` · `--offen` · `--stand` liefert die
+> eine Tatsache mit Quelle und Datum, statt 158 KB Prosa zu lesen. Fünf **Skills** in
+> `.claude/skills/` laden die teuer gelernten Regeln von selbst. Herkunft: `LERNEN-5-SYSTEME.md`.
+
 > 🎮 **Spiele-Sessions** (neon-*/lebenspfad/wort-*): ZUERST `spiele-dev/RUNBOOK-SPIELE.md` lesen —
 > fertige Skill-Bibliothek (Smoke/Screenshot/Vision-Loop, Meshy/HDRI/Musik-Rezepte, alle Fallen). Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
@@ -62,6 +68,45 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-12 (🧠 ZWEITES GEHIRN + SKILLS — gelernt aus TikTok @herr_tech „5 Systeme"):**
+- **Auftrag:** ein TikTok-Link + „lerne alles selbstständig", dann „obsidian 2te gehirn,
+  installiere super skills und tools, werde auto besser". Video: `@herr_tech/video/7684308282038603041`,
+  98 s. **Die Caption nennt die 5 Systeme nicht** — Transkript über die deutsche ASR-Untertitelspur
+  aus den TikTok-Metadaten (`subtitleInfos`, WebVTT) geholt. Volle Auswertung: **`LERNEN-5-SYSTEME.md`**.
+- **🔑 GEMESSENER HAUPTFUND:** `find . -name SKILL.md` lieferte **nichts** — **`.claude/skills/`
+  existierte in diesem Repo überhaupt nicht.** Genau das Stück, das das Video „absolute
+  Königsdisziplin" nennt, war das einzige, das vollständig fehlte. Alle teuer gelernten Regeln
+  standen als Prosa in dieser 470-Zeilen-Datei, die jede Session komplett liest und trotzdem
+  einzelne Fallen übersieht.
+- **✅ 5 Skills gebaut** (laden sich selbst, wenn die Beschreibung zur Aufgabe passt):
+  `messgeraet-zuerst` (jede „mach es besser"-Aufgabe) · `shopify-publizieren` (die 4 Publish-Fallen
+  + Client-Credentials-Token) · `massen-html-aendern` (Diff-Pflicht, Generator-Vorlagenkette,
+  `background-image`) · `gedaechtnis` (welche Datei die Wahrheit ist) · `git-und-pr` (Stale-Ref,
+  feste Branches, Spam-Markierung).
+- **✅ Obsidian-Vault `brain/vault/` — 39 atomare Notizen**, über Wikilinks verbunden, jede mit
+  `quelle` + `gelernt`-Datum: 13 Fallen · 5 Sackgassen · 5 Blockaden (nur User) · 7 Projekte ·
+  7 Systeme · erzeugte Zeitleiste. Einstieg `brain/vault/00 Start hier.md`.
+  **Die grossen Dateien bleiben die Historie** — der Vault ist der Zugriff darauf, kein Ersatz.
+- **✅ 4 Werkzeuge, jedes mit Gegenprobe:** `tools/gedaechtnis.py` (suchen statt lesen:
+  `"stichwort"`, `--sackgassen`, `--offen`, `--stand`) · `tools/vault.py bauen` (Index + Zeitleiste,
+  prüft alle 140 Wikilinks) · `tools/skills_pruefen.py` (53 Pfade in Skills/Notizen, findet
+  verrottete Verweise) · `tools/lehre.py` (neue Lehre aufnehmen, idempotent).
+- **🔎 Die Selbsttests haben sich SOFORT bezahlt — zwei echte Fehler im eigenen Code:**
+  (1) `skills_pruefen.py` hatte den Repo-Pfad fest verdrahtet und stürzte auf jeder Kopie ab;
+  (2) `lehre.py` ersetzte Umlaute **nach** der Unicode-Normalisierung, die Ersetzung griff nie
+  („öäü" → „oau" statt „oeaeue"). Beide hätten erst die nächste Session getroffen.
+- **✅ `automation/brain-wake.sh` erweitert** (bleibt schreibfrei): zeigt bei jedem Session-Start
+  Notizen- und Skill-Zahl, die 6 Blockaden „nur User" und die Befehle für Lehre/Prüfen.
+- **❌ BEWUSST NICHT GEBAUT, mit Begründung:** *System 2 Content-Maschine* steht schon (14 Bausteine)
+  und Masse ist hier gemessen ein 0-Hebel. *System 3 Lead-Maschine* = echte Lücke: Bausteine da
+  (`social-comment-reply.mjs` antwortet nur öffentlich, `ig-dm-reply.mjs` wartet passiv), aber die
+  Kette Kommentar→DM→Qualifizierung→Liste fehlt. **Blocker: Meta-Scope
+  `instagram_manage_messages` zusätzlich zu `instagram_manage_comments` — nur der User kann das
+  freigeben.** *System 4 Angebots-Agent* scheitert an der Quelle: Anfragen kommen per
+  `mailto:hallo@abannews.com`, darauf hat keine Session Zugriff → User muss einen maschinenlesbaren
+  Eingang benennen (n8n-Webhook liegt bereit, IMAP, oder Google-Sheet).
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m` (vom Session-Auftrag vorgegeben), Draft-PR nach `main`.
+
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
   Desktop 1440 **4 Spalten / Bild 205 px / 24 Produkte = 1905 px**; **Mobil 390 nur 1 Spalte / Bild 356 px /
