@@ -2392,16 +2392,20 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
                    "aoMap","bumpMap","lightMap","envMap","specularMap","displacementMap","gradientMap"];
   var _warmMat={},_warmTex={},_warmSchlange=[],_warmTaktLaeuft=false;
   function _warmSammeln(){
-    var neueMats=0,neueTex=[];
+    var neueMats=0,neueTex=[],neueObj=[];
     scene.traverse(function(o){
       var ms=o.material;if(!ms)return;
       if(!Array.isArray(ms))ms=[ms];
       for(var i=0;i<ms.length;i++){var m=ms[i];if(!m)continue;
-        if(!_warmMat[m.uuid]){_warmMat[m.uuid]=1;neueMats++;}
+        /* Je NEUEM Material ein Beispiel-Objekt merken. Das Programm haengt nicht am
+           Material allein, sondern an Material UND Objekt-Zustand (instanziert,
+           Schattenwerfer, zweite UV-Ebene) — nur mit dem echten Objekt entsteht
+           spaeter auch die echte Variante. */
+        if(!_warmMat[m.uuid]){_warmMat[m.uuid]=1;neueMats++;if(o.isMesh)neueObj.push(o);}
         for(var k=0;k<_WARM_SLOTS.length;k++){
           var t=m[_WARM_SLOTS[k]];
           if(t&&t.isTexture&&!_warmTex[t.uuid]){_warmTex[t.uuid]=1;neueTex.push(t);}}}});
-    return {mats:neueMats,tex:neueTex};}
+    return {mats:neueMats,tex:neueTex,obj:neueObj};}
   function _warmTakt(){
     if(_warmTaktLaeuft||!_warmSchlange.length)return;
     _warmTaktLaeuft=true;
@@ -2412,6 +2416,45 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         try{renderer.initTexture(_warmSchlange.shift());}catch(e){}}
       if(_warmSchlange.length)requestAnimationFrame(schritt);
       else _warmTaktLaeuft=false;});}
+  /* 🩹 WAS NACH DEM START HEREINKOMMT, WURDE NIE UEBERSETZT — und genau das ruckelt.
+     GEMESSEN (th-ruckler, 2026-09-12): nach dem Laden haelt der Renderer 67 Programme
+     bereit; ein `compile()` nach 66 s liefert 86. Neunzehn Materialien sind also nach
+     dem Spielbeginn hereingetroepfelt, ohne je vorbereitet zu werden. Der Grund steht
+     zwei Absaetze weiter unten: sobald gespielt wird, ueberspringt `_aufwaermen` das
+     Uebersetzen ganz — zu Recht, denn `compile()` blockiert eine halbe Sekunde.
+
+     Die Loesung ist nicht, den Freeze doch zu nehmen, sondern ihn zu vermeiden: je Bild
+     EIN neues Objekt, gezeichnet in ein winziges Ziel (8x8) mit einer Kamera dicht
+     davor. Es ist dieselbe Szene, derselbe Renderer, dieselben Lichter und
+     Schatteneinstellungen — also entsteht genau die Programm-Variante, die spaeter
+     auch beim Spielen gebraucht wird. Weil die Kamera eng steht, faellt fast alles
+     andere aus dem Sichtkegel; die Kosten bleiben bei Bruchteilen einer Millisekunde
+     statt einer halben Sekunde. */
+  var _warmZiel=null,_warmKam=null,_warmObjSchlange=[],_warmObjLaeuft=false;
+  function _warmObjTakt(){
+    if(_warmObjLaeuft||!_warmObjSchlange.length)return;
+    _warmObjLaeuft=true;
+    requestAnimationFrame(function schritt(){
+      var o=_warmObjSchlange.shift();
+      try{
+        if(o&&o.parent&&o.visible!==false){
+          if(!_warmZiel){_warmZiel=new THREE.WebGLRenderTarget(8,8);
+            _warmKam=new THREE.PerspectiveCamera(35,1,0.1,900);}
+          var bb=new THREE.Box3().setFromObject(o);
+          if(isFinite(bb.min.x)){
+            var mp=new THREE.Vector3();bb.getCenter(mp);
+            var sp=bb.getBoundingSphere(new THREE.Sphere());
+            var d=Math.max(2.5,sp.radius*2.4);
+            _warmKam.position.set(mp.x,mp.y+d*0.35,mp.z+d);
+            _warmKam.lookAt(mp);_warmKam.updateMatrixWorld(true);
+            var alt=renderer.getRenderTarget();
+            renderer.setRenderTarget(_warmZiel);
+            renderer.render(scene,_warmKam);
+            renderer.setRenderTarget(alt);
+            window._warmObjekte=(window._warmObjekte||0)+1;}}
+      }catch(e){}
+      if(_warmObjSchlange.length)requestAnimationFrame(schritt);
+      else _warmObjLaeuft=false;});}
   /* ⚠️ compile() ALLEIN REICHT NICHT. Es merkt sich je MATERIAL, dass es fertig ist —
      three.js baut sein Programm aber je Material UND Objekt-Zustand (instanziert,
      Schattenempfaenger, zweite UV-Ebene …). Dasselbe Material an einem anderen Objekt
@@ -2450,14 +2493,20 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(neu.mats>0&&!imSpiel){
       try{renderer.compile(scene,camera);}catch(e){}
       _warmZeichnen();}
-    if(imSpiel){_warmSchlange=_warmSchlange.concat(neu.tex);_warmTakt();}
+    if(imSpiel){_warmSchlange=_warmSchlange.concat(neu.tex);_warmTakt();
+      _warmObjSchlange=_warmObjSchlange.concat(neu.obj);_warmObjTakt();}
     else for(var i=0;i<neu.tex.length;i++){try{renderer.initTexture(neu.tex[i]);}catch(e){}}
     window._warmTexturen=(window._warmTexturen||0)+neu.tex.length;
     window._warmMaterialien=(window._warmMaterialien||0)+neu.mats;
     window._warmProgramme=renderer.info.programs?renderer.info.programs.length:0;}
   window._aufwaermen=_aufwaermen;
   /* Mehrere Laeufe, weil die Modelle ueber Minuten hereintroepfeln. */
-  [16000,26000,40000,60000].forEach(function(ms){setTimeout(_aufwaermen,ms);});
+  /* ⚠️ Der Fahrplan endete bei 60 s — die Modelle kommen aber laenger herein. Seit das
+     Aufwaermen im Spiel nicht mehr blockiert (je Bild ein Objekt in ein 8x8-Ziel), ist
+     ein spaeter Durchgang billig. Darum bis 150 s.
+     ⚠️ WER DIESE LISTE AENDERT: th-ruckler liest sie aus der Quelle und richtet seine
+     Wartezeit danach. Es gibt keine zweite Stelle, die nachgezogen werden muss. */
+  [16000,26000,40000,60000,90000,150000].forEach(function(ms){setTimeout(_aufwaermen,ms);});
   function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_aufwaermen();}
   /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
      VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position

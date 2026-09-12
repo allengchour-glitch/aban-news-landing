@@ -88,10 +88,25 @@ if (neu > 0) {
   console.log(`   Jedes davon ist auf dem Handy ein Aussetzer beim ersten Hinsehen:`)
   spitzen.forEach(([n, d]) => console.log(`     ${n}: ${d}`))
 }
+const vorWarm = await R('stand')
 const warm = await R('waerme')
 const nachWarm = await R('stand')
+const rest = nachWarm.programme - vorWarm.programme
+/* 🔑 DIE WICHTIGSTE ZAHL DES WERKZEUGS. Wie viele Programme legt ein abschliessendes
+   compile() NOCH an? Das sind genau die Materialien, die nach dem Spielbeginn
+   hereingekommen sind und nie vorbereitet wurden — jedes ein Ruckler, sobald der
+   Spieler es zum ersten Mal sieht. Die Kamerafahrt oben findet davon nur die, die
+   zufaellig in einem ihrer acht Blicke liegen; diese Zahl findet alle.
+   ⚠️ Die Fahrt allein taeuscht darum Sicherheit vor: 4 Nachzuegler im Bild, aber 19
+   unvorbereitete Materialien in der Welt (gemessen 2026-09-12, vor der Korrektur). */
 console.log(`\nrenderer.compile(scene,camera) braucht ${warm} ms und haelt danach ` +
   `${nachWarm.programme} Programme bereit (vorher ${start.programme} beim Laden).`)
+console.log(`\n🔑 NACH dem Spielbeginn hereingekommen und NICHT vorbereitet: ${rest} Materialien.`)
+console.log(rest === 0
+  ? '   Nichts offen — jedes Material war vor seinem ersten Auftritt uebersetzt.'
+  : '   Jedes davon ruckelt beim ersten Hinsehen. Ziel ist 0.')
+const objekte = await page.evaluate(() => window._warmObjekte || 0)
+console.log(`   Im Hintergrund objektweise aufgewaermt: ${objekte}`)
 console.log(`\nJS-Fehler: ${jsFehler.length}`)
 await browser.close()
 aufraeumen(TMP)
