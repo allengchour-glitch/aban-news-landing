@@ -38,8 +38,16 @@ const tmp = mitSonden('traumhaus.html', {
      Turtel-Vorhang `#romKiss` ueber den Bildschirm, und die Ueberdeckungs-Pruefung
      meldete brav "Sperrschicht aktiv" fuer ALLE drei Formate. Sie war damit
      abgeschaltet, und der Lauf sah trotzdem gruen aus. 13:05 ist gleich breit. */
+  /* ⚠️ UND DER STATUS-NACHSATZ GEHOERT DAZU (2026-09-12). Die Fuellung setzte Raenge,
+     Geld und Uhrzeit — aber nicht `arbeiten`. Damit entstand die LAENGSTE Zeile nie:
+     updHUD haengt bei der Arbeit ein " · Arbeit …" an. Genau diese Fassung zeigte der
+     User im Bild abgeschnitten, waehrend die Pruefung bei 844x390 null meldete.
+     Ein Werkzeug, das verspricht „bis zum Anschlag zu fuellen", muss den Anschlag auch
+     treffen. `arbeiten` ist dafuer unbedenklich: es haengt nur Text an, greift nicht
+     in die Bildschleife ein (anders als Nacht oder Kinder, siehe oben). */
   voll: `function(){
     skills.arbeit.lv=2;skills.liebe.lv=1;skills.krimi.lv=1;liebe=62;geld=1234567;tag=13;uhrzeit=785;
+    arbeiten=true;
     updHUD();return true;}`,
   /* ⚠️ applyFurn/einsteigen/fahren leben in der Huelle — page.evaluate sieht sie nicht
      (erster Anlauf: "applyFurn is not defined"). Also hier als Sonden, Regel 2. */
