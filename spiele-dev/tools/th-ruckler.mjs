@@ -124,7 +124,10 @@ if (neuKeys.length) {
   console.log(`\n   Die ${neuKeys.length} fehlenden Programme (cacheKey, gekuerzt):`)
   for (const k of neuKeys) {
     const t = k.replace(/\s+/g, ' ')
-    console.log('     ' + t.slice(0, 150))
+    /* 400 statt 150: bei 150 sahen zwei Paare identisch aus, obwohl sie sich
+       unterscheiden — der Unterschied steckt im Rest. Ein gekuerzter Schluessel, der
+       zwei verschiedene Programme gleich aussehen laesst, ist schlimmer als keiner. */
+    console.log('     ' + t.slice(0, 400))
   }
 }
 
