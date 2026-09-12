@@ -68,6 +68,41 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-12 (🏷️ VARIANTEN AUF DEUTSCH — 291 Werte live, Wächter fing 2 eigene Fehler):**
+- **Auftrag:** „die bestehenden Produkte optimieren und Webseite". Voller Bericht:
+  **`dropship/VARIANTEN-DEUTSCH-2026-09-12.md`**.
+- **Gemessen** (`tools/produkt_qualitaet.mjs`, 13 Selbsttests, 250 aktive Produkte):
+  **rohe Lieferanten-Variantentexte 11 (4,4 %)**, **erfundene Grössen-Codes 2 (0,8 %)**.
+  **Fünf vermutete Defekte überlebten die Messung nicht** und wurden bewusst nicht
+  „behoben": fehlende Gewichte (Versand rechnet nach Preis), „Gratis ab CHF 50" (gewollt),
+  „ab CHF 80" (ein Collection-Name), die Kanäle der Rauch-Collection (richtig begrenzt),
+  angeblich tote Produktseiten (alle 200).
+- **⚠️ Zwei Fehler steckten im Messgerät selbst:** es meldete 100 % „ohne SEO" für einen
+  Auszug, der das Feld gar nicht abgefragt hatte (**ein nicht abgefragtes Feld ist
+  UNBEKANNT, nicht leer**), und zählte `2XL`–`5XL` als erfundene Grössen — das sind normale
+  Konfektionsgrössen, die Zahl fiel von 48 auf 2.
+- **Der Defekt:** bei den Familien-Pyjamas steckt die ganze Variantenmatrix in EINER Option
+  namens „Farbe", mit Texten wie `Red-FatherS`, `Black-Mom 4XL`, `Picture Color-Tong 2`,
+  `New Flower Deer-Xl For Father`. „Tong" ist chinesisch für Kind, „Picture Color" heisst
+  „wie abgebildet".
+- **✅ GEBAUT + LIVE `tools/varianten_deutsch.mjs`** (56 Selbsttests): **291 Variantenwerte
+  auf 13 aktiven Produkten** übersetzt, Option heisst jetzt „Ausführung & Grösse".
+  `Red-FatherS` → `Rot · Papa S`, `Picture Color-S For Mother` → `Wie abgebildet · Mama S`.
+- **🔑 HARTE REGEL: Grössen werden nie inhaltlich verändert.** Wer aus `0XL` ein `XL` macht,
+  lässt Leute die falsche Grösse bestellen. Der Wächter `groessenUnveraendert` prüft
+  buchstabengenau in beide Richtungen und **fing zwei echte Fehler im eigenen Werkzeug**:
+  aus `3to4` wurde `3to 4` (fehlende Wortgrenze), und `2XLMom` löste einen Fehlalarm aus.
+  Fünf Gegenproben belegen, dass der Wächter selbst ausschlägt.
+- **❌ BEWUSST NICHT ANGEFASST:** Lieferanten-Kennungen (`JJF106230color-`) — sie
+  unterscheiden zwei Muster, Wegwerfen erzeugt Duplikate (betrifft Produkt
+  **15447966515585**, dessen Werte zusätzlich unvollständig sind → eigene Runde);
+  Designnamen (`Vineyard`, `Snowflake Map Pink`) — raten wäre schlimmer als Englisch;
+  DRAFT-Produkte; Altersbereiche `3to4` (Einheit nicht belegt).
+- **🟡 NUR DER USER (Admin-Klick):** zwei Produkte der Rauch-Collection liegen in
+  Marketing-Kanälen (Google/Meta/TikTok/Pinterest), wo die Werberichtlinien sie nicht
+  wollen: **15525490950529** und **15523863101825**. `publishableUnpublish` ist durch die
+  Sicherheitsregel des Zugangs gesperrt. Prüfen: `tools/kanal_waechter.mjs` (5 Selbsttests).
+
 **📌 2026-09-12 (💰 VERKÄUFE — Gedächtnis dreifach widerlegt, Startseite als Hauptdefekt gefunden):**
 - **Auftrag:** „lerne für luxestyle.ch viele verkäufe". Alles live gemessen. Voller Bericht:
   **`dropship/VERKAEUFE-BEFUND-2026-09-12.md`**.
