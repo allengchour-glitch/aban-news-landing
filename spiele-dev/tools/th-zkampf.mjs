@@ -75,7 +75,16 @@ console.log(`\n${F.length} flache Flaechen (unter 0,25 m hoch, ueber 1 m²) gepr
 console.log(`${geflecht} als Geflecht uebersprungen — ihre Geometrie deckt weniger als` +
   ' ein Drittel ihrer Huelle (Strassennetze, Markierungsbaender).')
 /* Paare mit Ueberlappung in xz und fast gleicher Hoehe. */
+/* Farbabstand: unter 12 von 255 je Kanal sieht man den Wechsel nicht. */
+function kanal (h, i) { return parseInt(h.substr(1 + i * 2, 2), 16) || 0 }
+function naheFarbe (p, q) {
+  if (!p || !q || p[0] !== '#' || q[0] !== '#') return false
+  return Math.abs(kanal(p, 0) - kanal(q, 0)) < 12 &&
+         Math.abs(kanal(p, 1) - kanal(q, 1)) < 12 &&
+         Math.abs(kanal(p, 2) - kanal(q, 2)) < 12
+}
 const funde = []
+let gleich = 0
 for (let i = 0; i < F.length; i++) {
   for (let j = i + 1; j < F.length; j++) {
     const a = F[i], b = F[j]
@@ -86,17 +95,29 @@ for (let i = 0; i < F.length; i++) {
     if (ux <= 0 || uz <= 0) continue
     const u = ux * uz
     if (u < MIN) continue
+    /* ⚠️ GLEICHE FARBE KANN NICHT SICHTBAR FLACKERN. Der zweite Lauf meldete reihenweise
+       Paare wie „#4a4a53 ↔ #4a4a53" — zwei Asphaltplatten auf 1 mm. Sie streiten zwar
+       um die Tiefe, aber das Ergebnis sieht in beiden Faellen gleich aus. Ein
+       Grafikfehler ist es erst, wenn der Streit zu SEHEN ist. */
+    if (naheFarbe(a.farbe, b.farbe)) { gleich++; continue }
     funde.push({ u, dy, a, b })
   }
 }
 funde.sort((p, q) => q.u - p.u)
-if (!funde.length) console.log('✅ Kein Flaechenpaar streitet um dieselbe Tiefe.')
+console.log(`${gleich} Paare uebersprungen, weil beide Flaechen dieselbe Farbe tragen —` +
+  ' sie streiten um die Tiefe, aber der Streit ist nicht zu sehen.')
+if (!funde.length) console.log('✅ Kein sichtbarer Tiefenstreit.')
 else {
-  console.log(`❌ ${funde.length} Paare liegen naeher als 5 mm beieinander und ueberlappen sich:`)
-  for (const f of funde.slice(0, 14))
-    console.log(`   ${Math.round(f.u)} m² · ${(f.dy * 1000).toFixed(1)} mm Abstand · ` +
-      `y ${f.a.y.toFixed(3)} · ${f.a.farbe} ${String(f.a.name).slice(0, 22)}` +
-      `  ↔  ${f.b.farbe} ${String(f.b.name).slice(0, 22)}`)
+  console.log(`❌ ${funde.length} Paare koennen sichtbar flackern:`)
+  /* ⚠️ OHNE ORT IST KEINE ZEILE UEBERPRUEFBAR — dieselbe Lehre wie bei th-vielfalt.
+     Die Mitte der Ueberlappung sagt, wohin die Kamera muss. */
+  for (const f of funde.slice(0, 14)) {
+    const mx = Math.round((Math.max(f.a.x0, f.b.x0) + Math.min(f.a.x1, f.b.x1)) / 2)
+    const mz = Math.round((Math.max(f.a.z0, f.b.z0) + Math.min(f.a.z1, f.b.z1)) / 2)
+    console.log(`   ${String(Math.round(f.u)).padStart(5)} m² · ${(f.dy * 1000).toFixed(1)} mm · ` +
+      `bei (${mx}|${mz}) y ${f.a.y.toFixed(3)} · ${f.a.farbe} ${String(f.a.name).slice(0, 18)}` +
+      `  ↔  ${f.b.farbe} ${String(f.b.name).slice(0, 18)}`)
+  }
 }
 console.log(`\nJS-Fehler: ${jsFehler.length}`)
 process.exit(funde.length ? 1 : 0)
