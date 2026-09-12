@@ -22,7 +22,7 @@ nicht gibt.** Die Reihenfolge ist nicht verhandelbar.
 
 ## Warum die Gegenprobe (Schritt 2) Pflicht ist
 
-`tools/kopfleiste.mjs` meldete auf 54 Seiten überall **0,00** Durchschlag — Ergebnis sah perfekt
+`tools/kopfleiste.mjs` meldete auf 54 Seiten überall **0,00** Durchschlag — Ergebnis sah fehlerfrei
 aus. Die eingebaute Gegenprobe (eine künstlich halbtransparente Leiste MUSS ausschlagen) entlarvte
 das Gerät: `page.screenshot({clip})` rechnet in **Dokument**-, nicht in Bildschirmkoordinaten, der
 Ausschnitt lag also weit unterhalb der Leiste. Ohne Selbsttest wäre "alles sauber" gemeldet worden,

@@ -35,7 +35,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[Generator-Vorlagen-Falle]] — Beim Entfernen des Assistenten gab es drei Einbau-Orte, nicht einen: die HTML-Seiten,
 - [[Hypothese-mit-Datum]] — Der teuerste Fehler der Projektgeschichte war eine als Tatsache notierte Decke:
 - [[Kennzahl-zaehlt-Absicht]] — Zwei Beispiele aus derselben Runde:
-- [[Messgeraet-Gegenprobe]] — perfekt aus. Die eingebaute Gegenprobe — eine künstlich halbtransparente Leiste muss
+- [[Messgeraet-Gegenprobe]] — fehlerfrei aus. Die eingebaute Gegenprobe — eine künstlich halbtransparente Leiste muss
 - [[Publish-Falle]] — Produkt-IDs zum Publizieren immer aus der Antwort von create-product nehmen, nie raten und
 - [[Sechs-Publications]] — Jedes Produkt und jede Collection gehört in alle sechs Kanäle. Erwartet wird danach
 - [[Selbsttests-finden-Fehler-im-Werkzeug-selbst]] — Beim Bau der vier Gedaechtnis-Werkzeuge fanden die eingebauten Gegenproben zwei echte Fehl…
@@ -58,6 +58,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[GitHub-Spam-Markierung]] — GitHubs eigene Meldung aus der Search-API: Validation Failed: User flagged as spammy.
 - [[GitLab-Ersatz]] — Weil Actions-Sperre gilt, laufen alle Automationen auf GitLab-CI, Projekt aban-ci
 - [[Live-Deploy]] — Seit 29.08.2026 ~03:00 UTC. abannews.com zeigt den Stand von Commit 9394a0e. Alles danach
+- [[Vier-Crons-sind-wieder-aktiv-trotz-Nulldiaet]] — Das Gedaechtnis sagt seit 2026-06-13 (Cron-Nulldiaet, PR #828): „ALLE ~60 schedule:-Blöcke
 
 ## 📦 Projekte
 
