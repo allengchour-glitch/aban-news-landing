@@ -16,6 +16,22 @@
  * der Fahrt dazukommen. Jedes davon ist ein potenzieller Ruckler beim Spieler.
  */
 import { mitSonden, spielOeffnen, aufraeumen } from './th-lib.mjs'
+import { readFileSync } from 'node:fs'
+
+/* ⚠️ DIE WARTEZEIT MUSS DEN AUFWAERM-FAHRPLAN UEBERLEBEN. Sie stand fest auf 55 s —
+   der letzte Aufwaerm-Durchgang des Spiels laeuft aber bei 60 s. Die Kamerafahrt
+   startete damit, BEVOR das Vorladen fertig war, und meldete 75 nachgeladene
+   Texturen. Der Quelltext sagt an dieser Stelle ausdruecklich, Texturen seien
+   vollstaendig vorgeladen (174 Nachzuegler → 2) — einer von beiden musste irren,
+   und es war das Messgeraet.
+   Die Zeit wird darum AUS DER QUELLE gelesen statt abgeschrieben: aendert jemand
+   den Fahrplan, folgt das Werkzeug. Dieselbe Regel wie in th-reichweite, das seine
+   Takte ebenfalls aus dem Spiel liest. */
+const _q = readFileSync('traumhaus.html', 'utf8')
+const _plan = _q.match(/\[([\d,\s]+)\]\.forEach\(function\(ms\)\{setTimeout\(_aufwaermen,ms\)/)
+if (!_plan) { console.error('Aufwaerm-Fahrplan nicht in der Quelle gefunden — Werkzeug veraltet'); process.exit(2) }
+const LETZTES_AUFWAERMEN = Math.max(..._plan[1].split(',').map(Number))
+const WARTEN = LETZTES_AUFWAERMEN + 6000
 
 const TMP = 'spiele-dev/tools/_ruckler_probe.html'
 mitSonden('traumhaus.html', {
@@ -47,7 +63,8 @@ const ORTE = [
   ['Achterbahn',   [-190, 10, 160, -190, 3, 207]],
 ]
 
-const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000 })
+console.log(`Warte ${(WARTEN / 1000).toFixed(0)} s — letztes Aufwaermen des Spiels bei ${(LETZTES_AUFWAERMEN / 1000).toFixed(0)} s.`)
+const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: WARTEN })
 const R = (...a) => page.evaluate((args) => window.__th.ruck(...args), a)
 
 const start = await R('stand')
