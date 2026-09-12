@@ -1,4 +1,16 @@
-/* th-zkampf.mjs — flackern zwei Flaechen gegeneinander?
+/* th-zkampf.mjs — VERDACHTSLISTE, kein Urteil. NICHT im Tor.
+ *
+ * ⚠️ ZUERST LESEN: seine Funde sind NICHT als sichtbare Fehler bestaetigt. Der
+ * staerkste Kandidat der Liste (616 m², exakt 0,0 mm Abstand, deutlich verschiedene
+ * Farben, bei 233|202) wurde mit `th-flacker.mjs` nachgeprueft — dort kippen 0,00 %
+ * der Bildpunkte. Es flackert nicht.
+ * Der Grund ist grundsaetzlich: diese Pruefung rechnet GEOMETRIE. Dass zwei Flaechen
+ * nah beieinanderliegen, heisst nicht, dass beide sichtbar sind — eine kann unter
+ * einem Gebaeude liegen, verdeckt sein oder nie ins Bild kommen.
+ * Darum gehoert das Werkzeug NICHT ins Tor. Wer eine Zeile daraus verfolgt, belegt
+ * sie zuerst mit th-flacker; sonst behebt er etwas, das niemand sieht.
+ *
+ * (urspruenglich: flackern zwei Flaechen gegeneinander?)
  *
  *   node spiele-dev/tools/th-zkampf.mjs [mindestUeberlappung=4]
  *
