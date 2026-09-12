@@ -333,14 +333,14 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Strassenmusik machen</button>
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4)">Krummes Ding drehen …</button>
-<button id="chatToggle" title="Chat"><svg class="ik" aria-hidden="true"><use href="#i-chat"/></svg></button>
-<button id="emoteToggle" title="Emotes"><svg class="ik" aria-hidden="true"><use href="#i-smile"/></svg></button>
-<button id="pingBtn" title="Treffpunkt setzen"><svg class="ik" aria-hidden="true"><use href="#i-pin"/></svg></button>
-<button id="hideBtn" title="Verstecken spielen"><svg class="ik" aria-hidden="true"><use href="#i-eyeoff"/></svg></button>
+<button id="chatToggle" title="Chat" aria-label="Chat"><svg class="ik" aria-hidden="true"><use href="#i-chat"/></svg></button>
+<button id="emoteToggle" title="Emotes" aria-label="Emotes"><svg class="ik" aria-hidden="true"><use href="#i-smile"/></svg></button>
+<button id="pingBtn" title="Treffpunkt setzen" aria-label="Treffpunkt setzen"><svg class="ik" aria-hidden="true"><use href="#i-pin"/></svg></button>
+<button id="hideBtn" title="Verstecken spielen" aria-label="Verstecken spielen"><svg class="ik" aria-hidden="true"><use href="#i-eyeoff"/></svg></button>
 <div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:14px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
-<button id="tragBtn" title="Sperrgut zu zweit tragen" style="display:none"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
+<button id="tragBtn" title="Sperrgut zu zweit tragen" aria-label="Sperrgut zu zweit tragen" style="display:none"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
 <div id="tragHud" style="position:fixed;top:calc(140px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(20,35,55,.88);color:#fff;border:2px solid #6ab8ff;border-radius:14px;padding:6px 16px;font-weight:800;font-size:1.02rem"></div>
-<button id="micBtn" title="Voice-Chat"><svg class="ik" aria-hidden="true"><use href="#i-mic"/></svg></button>
+<button id="micBtn" title="Voice-Chat" aria-label="Voice-Chat"><svg class="ik" aria-hidden="true"><use href="#i-mic"/></svg></button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:#ff6a2a;box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-rocket"/></svg></button>
 <button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(308px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
 <div id="lieferHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(178px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(20,60,25,.88);color:#fff;border:2px solid #4ad06a;border-radius:14px;padding:6px 14px;font-weight:800">📦 <span id="lieferZeit">60</span>s → <span id="lieferZiel">Markt</span></div>
@@ -359,8 +359,8 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 </div>
 <div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" type="text" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
 <div id="tools">
-  <button class="tbtn" id="rotBtn" title="Drehen (R)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg></button>
-  <button class="tbtn" id="delBtn" title="Abreissen"><svg class="ik" aria-hidden="true"><use href="#i-trash"/></svg></button>
+  <button class="tbtn" id="rotBtn" title="Drehen (R)" aria-label="Drehen (R)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg></button>
+  <button class="tbtn" id="delBtn" title="Abreissen" aria-label="Abreissen"><svg class="ik" aria-hidden="true"><use href="#i-trash"/></svg></button>
 </div>
 <div id="palette">
   <div id="palCats"></div>
