@@ -44,6 +44,12 @@ mitSonden('traumhaus.html', {
       camera.updateMatrixWorld(true);
       var t0=performance.now();renderer.render(scene,camera);
       return +(performance.now()-t0).toFixed(1);}
+    if(was==="schluessel"){
+      /* Jedes Programm traegt seinen cacheKey. Der Vergleich vor/nach compile() sagt
+         nicht nur WIE VIELE fehlen, sondern WELCHE — ohne das bleibt nur Raten. */
+      var L=renderer.info.programs||[],out=[];
+      for(var i=0;i<L.length;i++)out.push(String(L[i].cacheKey||""));
+      return out;}
     if(was==="waerme"){ /* three.js kann alles vorab uebersetzen */
       var t0=performance.now();renderer.compile(scene,camera);
       return +(performance.now()-t0).toFixed(0);}
@@ -89,6 +95,7 @@ if (neu > 0) {
   spitzen.forEach(([n, d]) => console.log(`     ${n}: ${d}`))
 }
 const vorWarm = await R('stand')
+const schlVor = await R('schluessel')
 const warm = await R('waerme')
 const nachWarm = await R('stand')
 const rest = nachWarm.programme - vorWarm.programme
@@ -107,6 +114,19 @@ console.log(rest === 0
   : '   Jedes davon ruckelt beim ersten Hinsehen. Ziel ist 0.')
 const objekte = await page.evaluate(() => window._warmObjekte || 0)
 console.log(`   Im Hintergrund objektweise aufgewaermt: ${objekte}`)
+
+/* WELCHE fehlen? Ohne Namen bleibt nur Raten — vier Eingriffe hintereinander liessen
+   die Zahl unveraendert bei 6, weil ich die sechs nie angesehen hatte. */
+const schlNach = await R('schluessel')
+const vorSet = new Set(schlVor)
+const neuKeys = schlNach.filter((k) => !vorSet.has(k))
+if (neuKeys.length) {
+  console.log(`\n   Die ${neuKeys.length} fehlenden Programme (cacheKey, gekuerzt):`)
+  for (const k of neuKeys) {
+    const t = k.replace(/\s+/g, ' ')
+    console.log('     ' + t.slice(0, 150))
+  }
+}
 
 /* ⚠️ GEGENPROBE GEGEN DIE EIGENE KENNZAHL. Der Rest blieb bei drei voellig
    verschiedenen Eingriffen exakt gleich (6), waehrend die Zahl aufgewaermter Objekte
