@@ -391,7 +391,14 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <button id="kochQuit" style="margin-top:10px;border:0;background:#e8e0d0;border-radius:14px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
  </div>
 </div>
-<div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;pointer-events:none;background:#fff6dc;border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
+<!-- 🏆 ERFOLGS-EINBLENDUNG AN DEN RAND, NICHT IN DIE MITTE.
+     Frueher: top 64px, left 50%, also waagrecht mittig und auf einem 390 px hohen
+     Handyschirm im oberen Drittel — genau in der Blickachse zur eigenen Figur, die
+     ja ebenfalls in der Bildmitte steht. Der User: "die Platzierung in Mitte passt
+     nicht". Eine Einblendung soll auffallen, aber nicht die Sicht nehmen.
+     Jetzt rechts unter der Geldanzeige, rechtsbuendig, mit gedeckelter Breite —
+     dort ist bis zu den runden Knoepfen am rechten Rand nichts. -->
+<div id="achToast" style="position:fixed;top:calc(64px + env(safe-area-inset-top));right:10px;max-width:min(58vw,320px);transform:translateY(-140px);z-index:26;pointer-events:none;background:#fff6dc;border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
 <button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:0;background:rgba(255,253,248,.95);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)"><svg class="ik" aria-hidden="true"><use href="#i-trophy"/></svg></button>
 <canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:0;box-shadow:0 6px 20px rgba(20,30,15,.42);background:#3a5a34;cursor:pointer"></canvas>
 <!-- 🗺️ Grosse Karte (User: „map ist noch zu klein") — Tipp auf das Radar oeffnet die ganze Welt -->
@@ -11721,9 +11728,9 @@ function achToast(a2){
   camKick=Math.max(camKick,0.016);
   var t=document.getElementById("achToast");
   document.getElementById("achToastTxt").innerHTML=a2[1]+" <b>"+a2[2]+"</b><br><small>"+a2[3]+"</small>";
-  t.style.transform="translateX(-50%) translateY(0)";
+  t.style.transform="translateY(0)";
   beep(784,.12,"triangle",.06);setTimeout(function(){beep(1046,.18,"triangle",.07);},150);
-  clearTimeout(t._t);t._t=setTimeout(function(){t.style.transform="translateX(-50%) translateY(-130px)";},4000);
+  clearTimeout(t._t);t._t=setTimeout(function(){t.style.transform="translateY(-140px)";},4000);
   saveGame();}
 var crime={on:false,t:0,job:null,accomplice:false,ask:false};
 var kinder=[]; // {mesh,name,x,z,rot,alter(Tage),parent,walkT,path,emoji,emoT,net}
@@ -15467,11 +15474,24 @@ function updHUD(){
      liess: bei 568 px braucht sie 217 px und hat 162 (gemessen mit th-hud). Statt den
      Umbruch hinzunehmen wird die FORM gekuerzt, nicht die Information — aus
      "· Arbeit …" wird die Hammer-Ikone. Der Wortlaut bleibt, wo Platz ist. */
-  var _eng9=innerWidth<700;
-  var _st9=arbeiten?(_eng9?" · "+ik("i-hammer"):" · Arbeit\u00A0…")
-          :(crime.on?(_eng9?" · "+ik("i-moon"):" · unterwegs\u00A0"+ik("i-moon")):"");
-  skr.innerHTML=ik("i-work")+"\u00A0Lv"+skills.arbeit.lv+" · "+ik("i-heart")+"\u00A0Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · "+ik("i-mask")+"\u00A0Lv"+skills.krimi.lv:"")+_st9;
+  /* ⚠️ DIE SCHWELLE STAND AUF DER FALSCHEN GROESSE. Frueher: `innerWidth<700`.
+     Eng wird es aber nicht am Bildschirm, sondern am KASTEN — der ist auf
+     `min(38vw,206px)` gedeckelt (Zeile 173) und wird jenseits von 542 px Bildbreite
+     gar nicht mehr breiter. Bei 844 px Bildbreite greift die alte Schwelle also
+     nicht, obwohl der Kasten genauso schmal ist wie bei 600 px.
+     GEMESSEN mit th-hud bei 568x320: die Zeile braucht 171 px und hat 158 — und das
+     gilt unverändert, wie breit der Bildschirm auch ist.
+     Jetzt wird zuerst die lange Fassung gesetzt und danach NACHGESEHEN, ob sie passt.
+     Das ist dieselbe Groesse, die auch das Messgeraet prueft (scrollWidth gegen
+     clientWidth) — keine zweite Zahl, die auseinanderlaufen kann. */
+  function _zeile9(kurz){
+    var st=arbeiten?(kurz?" · "+ik("i-hammer"):" · Arbeit\u00A0…")
+          :(crime.on?(kurz?" · "+ik("i-moon"):" · unterwegs\u00A0"+ik("i-moon")):"");
+    return ik("i-work")+"\u00A0Lv"+skills.arbeit.lv+" · "+ik("i-heart")+"\u00A0Lv"+skills.liebe.lv+
+      (skills.krimi.lv>0?" · "+ik("i-mask")+"\u00A0Lv"+skills.krimi.lv:"")+st;}
+  skr.innerHTML=_zeile9(false);
   nb.appendChild(skr);
+  if(skr.scrollWidth>skr.clientWidth+1)skr.innerHTML=_zeile9(true);
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:#ff9ab8'></i></span>";
   nb.appendChild(lr);
