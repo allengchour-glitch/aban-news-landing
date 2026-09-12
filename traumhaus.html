@@ -170,7 +170,11 @@ canvas{display:block}
      Fertigkeiten + Status) braucht 175 — sie brach genau dann um, wenn alle drei
      zusammenkamen, also mal so und mal so. Gemessen mit th-hud; 206 gibt 182 und
      damit Luft, ohne die Uhr daneben zu beruehren (Ueberlappung mitgeprueft). */
-  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:min(38vw,206px)}
+  /* ⚠️ .58rem reichte nicht: GEMESSEN bei 568x320 braucht die volle Zeile (drei
+     Fertigkeiten + Status-Ikone) 171 px und hat 154. Anders als Uhr und Stufe darf
+     dieser Kasten NICHT nachgeben — eine halbe Rangzeile ist keine Information.
+     .52rem bringt den Bedarf unter die verfuegbare Breite. */
+  #needsBox{max-height:60vh;overflow-y:auto;font-size:.52rem;min-width:88px;max-width:min(38vw,206px)}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
   #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -287,9 +291,16 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <div id="wrap"></div>
 <div id="hud" class="hide">
   <div class="panel" id="geld"><svg class="ik ik-s" aria-hidden="true"><use href="#i-coin"/></svg> 5000</div>
-  <div class="panel" id="uhr"><svg class="ik ik-s" aria-hidden="true"><use href="#i-clock"/></svg> Tag 1 · 08:00</div>
+  <!-- data-kurzbar: dieser Kasten DARF sein Ende verlieren, das ist kein Fehler.
+       Bei der Uhr faellt zuerst das Wetter-Zeichen weg, die Zeit bleibt. th-hud
+       nimmt solche Kaesten von der Abschneide-Pruefung aus — ohne diesen Vertrag
+       meldet das Messgeraet gewolltes Nachgeben als Defekt und treibt die Arbeit in
+       die falsche Richtung. -->
+  <div class="panel" id="uhr" data-kurzbar="1"><svg class="ik ik-s" aria-hidden="true"><use href="#i-clock"/></svg> Tag 1 · 08:00</div>
   <div class="panel needs" id="needsBox"></div>
-  <div class="panel" id="stufeBox" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
+  <!-- Auch hier ist das Kuerzen Absicht (flex-shrink:3, und stufeHudUpd setzt
+       bewusst zuerst den Fehlbetrag, dann den Termin, den Titel zuletzt). -->
+  <div class="panel" id="stufeBox" data-kurzbar="1" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
 </div>
 <div id="komboHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(24,28,40,.86);color:#fff;padding:7px 14px;border-radius:14px;min-width:104px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>
 <div id="hetzeHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(40,26,14,.88);color:#fff;padding:7px 14px;border-radius:14px;min-width:118px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>

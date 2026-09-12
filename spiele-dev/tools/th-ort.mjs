@@ -1,6 +1,13 @@
 /* th-ort.mjs — was steht eigentlich an dieser Stelle?
  *
- *   node spiele-dev/tools/th-ort.mjs <x> <z> [umkreis=30]
+ *   node spiele-dev/tools/th-ort.mjs <x> <z> [umkreis=30] [alles]
+ *
+ * ⚠️ „alles" NIMMT AUCH PROZEDURALES MIT. Ohne den Zusatz werden nur Modelle mit
+ * `userData.datei` gelistet — und damit faellt alles durch, was direkt aus Geometrie
+ * gebaut wurde. Genau daran ist die Suche nach einem grauen Bogen auf dem eigenen
+ * Grundstueck gescheitert: das Werkzeug meldete „nichts", und im Bild lag er da.
+ * Ein Werkzeug, das „was steht hier?" beantworten soll, darf die halbe Welt nicht
+ * stillschweigend auslassen.
  *
  * ⚠️ WOZU. Aus einem Schraegbild laesst sich nicht entscheiden, WAS man sieht. Drei
  * Befunde dieser Woche kamen erst zustande, als die Frage als Liste beantwortet war:
@@ -22,13 +29,14 @@
 import { spielOeffnen, mitSonden, aufraeumen } from './th-lib.mjs'
 
 const [X, Z, R] = [+process.argv[2], +process.argv[3], +(process.argv[4] || 30)]
+const ALLES = process.argv.slice(2).includes('alles')
 if (!isFinite(X) || !isFinite(Z)) {
   console.log('Aufruf: th-ort.mjs <x> <z> [umkreis=30]'); process.exit(1)
 }
 const TMP = 'spiele-dev/tools/_ort_probe.html'
 mitSonden('traumhaus.html', {
   setzSpieler: 'function(x,z){var s=sims[meinSi()]||sims[0];s.x=x;s.z=z;return [s.x,s.z];}',
-  umkreis: `function(x,z,r){
+  umkreis: `function(x,z,r,alles){
     var out={},M=new THREE.Matrix4(),P=new THREE.Vector3(),Q=new THREE.Quaternion(),S=new THREE.Vector3();
     function nimm(k,px,pz,h,b){
       if(!out[k])out[k]={n:0,h:0,b:0,bsp:[]};
@@ -36,8 +44,13 @@ mitSonden('traumhaus.html', {
       if(h>q.h){q.h=+h.toFixed(1);q.b=+b.toFixed(1);}
       if(q.bsp.length<3)q.bsp.push(Math.round(px)+"|"+Math.round(pz));}
     scene.traverse(function(o){
-      if(!o.userData||!o.userData.datei)return;
-      var k=o.userData.datei;
+      var k=o.userData&&o.userData.datei;
+      if(!k){
+        if(!alles||!o.isMesh||!o.geometry)return;
+        /* Prozedurales hat keinen Dateinamen — als Schluessel dient Bauform und Farbe,
+           damit die Zeile wenigstens sagt, WAS es ist. */
+        var m9=Array.isArray(o.material)?o.material[0]:o.material;
+        k=(o.name||o.geometry.type)+(m9&&m9.color?" "+("#"+m9.color.getHexString()):"");}
       if(o.isInstancedMesh){
         /* Je Instanz pruefen — der Container steht im Ursprung. */
         if(!o.geometry.boundingBox)o.geometry.computeBoundingBox();
@@ -60,9 +73,10 @@ const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 45000 })
    geraeumt — siehe RUNBOOK, "Drei Abschalter". */
 await page.evaluate((v) => window.__th.setzSpieler(v[0], v[1]), [X, Z])
 await page.waitForTimeout(6000)
-const O = await page.evaluate((v) => window.__th.umkreis(v[0], v[1], v[2]), [X, Z, R])
+const O = await page.evaluate((v) => window.__th.umkreis(v[0], v[1], v[2], v[3]), [X, Z, R, ALLES])
 const zeilen = Object.entries(O).sort((a, b) => b[1].n - a[1].n)
-console.log(`\nModelle im Umkreis ${R} m um (${X}|${Z}) — ${zeilen.length} verschiedene:`)
+console.log(`\n${ALLES ? 'Alles' : 'Modelle'} im Umkreis ${R} m um (${X}|${Z}) — ${zeilen.length} verschiedene:`)
+if (!ALLES) console.log('(nur Modelle mit Dateinamen — fuer prozedurale Teile „alles" anhaengen)')
 if (!zeilen.length) console.log('  nichts')
 for (const [k, v] of zeilen)
   console.log('  ' + String(v.n).padStart(3) + '×  ' + k.padEnd(30) +

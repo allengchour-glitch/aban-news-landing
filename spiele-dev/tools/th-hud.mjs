@@ -224,6 +224,12 @@ const r = await page.evaluate(([B, H, autoP]) => {
     if (fehlt < 2 || !el.clientWidth) continue
     const st = getComputedStyle(el)
     if (st.overflowX === 'visible') continue          /* laeuft sichtbar ueber, faellt anderswo auf */
+    /* ⚠️ GEWOLLTES NACHGEBEN IST KEIN FEHLER. Die Uhr laesst bei Enge das
+       Wetter-Zeichen fallen, das Stufenfeld seinen Titel — beides steht so im
+       Quelltext und ist die bessere Loesung als Umbruch. Ein Messgeraet, das
+       Bauteile als Fehler zaehlt, treibt die Arbeit in die falsche Richtung
+       (Projektgedaechtnis, Lehre 3). Solche Kaesten tragen `data-kurzbar`. */
+    if (el.closest('[data-kurzbar]')) continue
     beschnitten.push({ id: el.id || (el.parentElement && el.parentElement.id) || '#hud',
                        ist: el.clientWidth, noetig: el.scrollWidth, fehlt,
                        punkte: st.textOverflow === 'ellipsis',
