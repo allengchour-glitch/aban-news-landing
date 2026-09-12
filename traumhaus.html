@@ -1076,9 +1076,11 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
        einem Stellplatz endet, sieht nach „hier kann gebaut werden" aus. */
     band(ZX, 20.5, 4.0, 13, 0xc9bfa6);
     band(ZX, 12.0, 7.0, 5.0, 0xc2b79c);          /* Stellplatz 7 x 5 m */
-    /* Parzellengrenze als duenne Schnurlinie zwischen den vier Pollern. Kein Zaun —
-       der wuerde die Sicht auf das eigene Haus nehmen und stuende im Bauraster. */
-    [[-27,78,0.25],[27,78,0.25]].forEach(function(q){band(0,q[0],q[1],q[2],0xe8e2d2,0.014);});
+    /* Parzellengrenze als duenne Schnurlinie, aber NUR an den Laengsseiten. Kein Zaun —
+       der naehme die Sicht aufs eigene Haus und stuende im Bauraster.
+       ⚠️ Nord und Sued brauchen KEINE Linie: dort liegen bereits die Gehwegstreifen
+       auf z ±27 (gemessen mit th-flaeche). Eine zweite Markierung an derselben Stelle
+       ist im Bild nicht zu unterscheiden und nur ein Objekt mehr. */
     [[-39,54,0.25],[39,54,0.25]].forEach(function(q){band(q[0],0,q[2],q[1],0xe8e2d2,0.014);});
   })();
   /* ⚠️ Zwischen der nahen Wiese (204x152) und der Fern-Ebene (600x600 mit nur
