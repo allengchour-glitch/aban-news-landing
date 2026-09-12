@@ -33,6 +33,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[Bild-Falle]] — CJ-Bild-URLs unter quick/product/… sind teilweise 404. Jede URL vor dem Anlegen per
 - [[Collections-Publish-Falle]] — Per collectionCreate angelegte Collections sind nicht automatisch im Onlineshop publiziert…
 - [[Diff-Falle]] — Ein Muster mit einfachem Bindestrich machte aus
+- [[Ein-neues-Verzeichnis-landet-oeffentlich-auf-abannewscom]] — Wer in diesem Repo ein neues Verzeichnis auf oberster Ebene anlegt, veroeffentlicht es, so…
 - [[Generator-Vorlagen-Falle]] — Beim Entfernen des Assistenten gab es drei Einbau-Orte, nicht einen: die HTML-Seiten,
 - [[Hypothese-mit-Datum]] — Der teuerste Fehler der Projektgeschichte war eine als Tatsache notierte Decke:
 - [[Kennzahl-zaehlt-Absicht]] — Zwei Beispiele aus derselben Runde:
