@@ -47,6 +47,25 @@ falsche "Decke" im Gedächtnis hat monatelang den billigsten Conversion-Hebel bl
 → **Jede "das geht nicht"-Aussage im Gedächtnis ist eine Hypothese mit Datum, kein Naturgesetz.**
 Bevor du darauf aufbaust: einmal messen.
 
+## Die Gegenprobe läuft gegen eine Kopie an einem anderen Pfad
+
+Beim Bau der vier Gedächtnis-Werkzeuge fanden die Selbsttests **zwei echte Fehler im eigenen
+Code** — beide in Werkzeugen, die am Gutfall fehlerfrei liefen:
+
+- `tools/skills_pruefen.py` hatte den Repo-Pfad fest verdrahtet und stürzte ab, sobald der
+  Selbsttest es auf eine Kopie in `/tmp` anwandte. Dasselbe Muster wie bei
+  `spiele-dev/tools/th-pruef.mjs` mit seiner festen `REPO`-Konstante.
+- `tools/lehre.py` ersetzte Umlaute **nach** `unicodedata.normalize("NFKD", …)`. NFKD zerlegt „ä"
+  in „a" plus kombinierendes Trema, die Ersetzung traf deshalb nie etwas. Aus „öäü" wurde „oau"
+  statt „oeaeue" — still, ohne Fehlermeldung.
+
+**Regel:** Das Messgerät bekommt seine Gegenprobe **im selben Arbeitsgang**, und die Gegenprobe
+arbeitet auf einer **Kopie an einem anderen Pfad**. Fest verdrahtete Pfade und
+Reihenfolge-Fallen (normalisieren vor ersetzen) sind die zwei Fehler, die sie zuverlässig fängt.
+
+Vorbilder mit `--selbsttest`: `tools/vault.py`, `tools/gedaechtnis.py`,
+`tools/skills_pruefen.py`, `tools/lehre.py`.
+
 ## Werkzeug-Hinweise für dieses Repo
 
 - Node ist `/opt/node22/bin/node` (v22).

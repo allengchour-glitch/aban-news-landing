@@ -38,6 +38,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[Messgeraet-Gegenprobe]] — perfekt aus. Die eingebaute Gegenprobe — eine künstlich halbtransparente Leiste muss
 - [[Publish-Falle]] — Produkt-IDs zum Publizieren immer aus der Antwort von create-product nehmen, nie raten und
 - [[Sechs-Publications]] — Jedes Produkt und jede Collection gehört in alle sechs Kanäle. Erwartet wird danach
+- [[Selbsttests-finden-Fehler-im-Werkzeug-selbst]] — Beim Bau der vier Gedaechtnis-Werkzeuge fanden die eingebauten Gegenproben zwei echte Fehl…
 - [[Stale-Ref-Falle]] — aktualisiert: origin/main zeigte auf einen Monate alten Commit. Ein darauf gebauter Branch
 - [[Tag-Regel-Falle]] — Smart-Collections filtern über Tags, und die Regel ist nicht der Collection-Name.
 - [[Workflow-Name-Doppelpunkt]] — Ein name: mit Doppelpunkt im Wert bricht den YAML-Trigger eines GitHub-Workflows — die Fol…
