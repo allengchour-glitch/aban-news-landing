@@ -49,6 +49,44 @@ war fünf Tage lang nur ein Label.
   **4'245**; das Rizinusöl-Set (einzige Seite mit Kassengängen, 2 von 2 diese Woche, beide abgebrochen) hat bei
   CJ **0 Kommentare** — mit gültigem Token gemessen.
 
+## 🧠 Zweites Gehirn der anderen Session geladen — und zwei ihrer Befunde am Objekt gegengeprüft (2026-09-13, 20:45 UTC)
+
+Betreiber: «andere session hat neue lern sachen, 2te gehirn etc, lade memory». Von
+`origin/claude/selbststaendiges-lernen-h48e6m` (heute 19:54 UTC) übernommen, ohne Merge des
+Branches (6'449 Dateien Differenz, meist Webseite): **`brain/vault/` (Obsidian, 57 Notizen),
+`.claude/skills/` (7 Skills, laden sich selbst), `tools/gedaechtnis.py`** (`--stand`, `--sackgassen`,
+`"stichwort"`), `tools/preis_marge.mjs`, `tools/shop_conversion.mjs`, `automation/homepage_slim.mjs`
+(**NICHT gestartet**), drei `dropship/LERNEN-*-2026-09-13.md` und ihr Übergabe-Block in
+`SHARED-MEMORY.md`. Der Suchweg funktioniert hier (`gedaechtnis.py "Anmeldefenster"` → Notiz).
+- **Was sie am Shop GEÄNDERT hat (live, zurückdrehbar):** `geschenke-unter-50-franken`,
+  `kleine-geschenke-mitbringsel`, `nachtwaesche-pyjamas` auf **BEST_SELLING** (Kundensicht: 6
+  Hundeartikel unter den ersten 12 → 0); **7 Produkte / 76 Varianten hochgesetzt** (EK/0,55,
+  aufgerundet auf x9.90). Ihr wichtigster Hebel: **Theme-Zugriff per Shopify-CLI + Theme-Access-
+  Token** (`SHOPIFY_CLI_THEME_TOKEN`, App «Theme Access») — ein Betreiber-Klick, danach kann jede
+  Session Themes pushen und publizieren.
+- ⚠️ **Zwei Befunde halten der Gegenprobe nicht stand:**
+  1. **«Es gibt kein Anmeldefenster»** — gemessen wurde nach Fremdskripten (shopify-forms,
+     klaviyo.js). Unser Popup ist Custom-Liquid: `custom_liquid_lxpopup` steht in
+     `sections/footer-group.json`, aktiv, in `order`, mit Liste `T2VHfu` (am Ursprung geprüft).
+     **Der Kern ihres Befunds bleibt trotzdem wahr: 3 Abonnenten bei 1'498 Kunden** — das Popup
+     existiert, es wandelt nur nicht. Eine Messung nach Werkzeugnamen findet keine Eigenbauten.
+  2. **Das Midikleid (40 Var.) 14.90 → 39.90 fusst auf einer Boden-15-Kostenzahl** (20.37 bei
+     320 g; wahre Kosten 14.63, ihre eigene Regel ergäbe 29.90). Das Kleid ging bei 14.90 nicht mit
+     Verlust raus, sondern knapp kostendeckend. Die vier schweren Repricings (>712 g) sind richtig.
+     **NICHT zurückgedreht** — Preis ist Betreibersache; steht als Vault-Notiz
+     `Ein-Preis-aus-einer-alten-Kostenzahl-erbt-deren-Fehler`. Klasse dahinter: Produkte unter
+     712 g mit Kostenzahl, die nicht im `_kosten_boden15_fix`-Ledger stehen.
+- ⚠️ Ihr «Startseite = Hauptdefekt, 17 % HTTP 500 bei 6,91 MB» und `homepage_slim.mjs` (17 → 4
+  Reihen) widersprechen dem Betreiberwunsch «Karussell» (24.07.) und unserer Messung (~180 Karten
+  stabil, 31.08.). Nicht ausgeführt; wer es ausführt, misst vorher 12 Abrufe mit Cache-Buster.
+- ⚠️ Ihr Skill-Satz «`productsCount` ignoriert seinen Filter» ist zu grob: er **deckelt bei
+  10'000** (22.08.); unter dem Deckel filtert er. Die Preisbänder-Technik bleibt der Messweg.
+- ✅ Nebenbei erledigt: drei tote Landeseiten per 301 aufgefangen (Sternenhimmel-Projektor →
+  Galaxy-Nachtlicht, Lost Nomade → beauty-pflege, Signet-Ring → Siegelring; Ziele ACTIVE + CJ-SKU
+  + keine Weiterleitung, live 301). #1017/#1018 seit 12.09. **En Route** (7 Stationen), BigBuy
+  Geldbörse unverändert 1000.00, keine neue Mail von BigBuy/CJ/Kunden. Trichter 7 T: 332 Sitzungen,
+  Suche 44 → 2 an der Kasse, 0 Abschlüsse.
+
 ## ⭐ Sieben tote Landeseiten hinter der Reihe «Unsere Bestseller» (2026-09-10, 19:00 UTC)
 
 Der Audit-Befund lautete «zwei DRAFT-Karten belegen kuratierte Plätze». Am Objekt gemessen sind es
