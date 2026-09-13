@@ -58,6 +58,26 @@ Farben gehören nach `background-color` oder in die `background`-Kurzschrift.
 Nicht alles, was ein Raster hat, ist ein Produktraster. Bewusst ausgenommen bleiben:
 `minispiele/drei-gewinnt.html` (Spielfeld), `pod/designer.js` (Sticker), die POD-Detailseiten.
 
+## Regel 4 — `build-pages.sh` hat eine AUSSCHLUSS-, keine Einschlussliste
+
+Alles, was nicht ausdrücklich genannt ist, geht **öffentlich auf abannews.com** — und das gilt
+**auch für einzelne Dateien im Wurzelverzeichnis**, nicht nur für Verzeichnisse.
+
+Gemessen am 13.09. mit `curl`: `https://abannews.com/CLAUDE.md` lieferte **HTTP 200 mit
+34 399 Bytes**, `SHARED-MEMORY.md` **200 mit 107 585 Bytes** — das vollständige Projekt-
+Gedächtnis samt Umsatzzahlen, Lieferantennamen und Produkt-IDs. Die Session davor hatte
+`brain/` und `.claude/` ausgeschlossen und die Dateien im Wurzelverzeichnis übersehen.
+
+**Wer eine Datei oder ein Verzeichnis anlegt, das nicht auf die Webseite gehört, trägt es im
+selben Arbeitsgang ein** und misst nach:
+
+```bash
+tar -cf - --exclude=./.git --exclude=./node_modules . | tar -tf - | grep -c "^\./<pfad>"
+```
+
+Gegenprobe nicht vergessen: `functions/` muss **weiterhin dabei** sein (39 Dateien), sonst sind
+`/api/*` tot.
+
 ## Ablauf, der sich bewährt hat
 
 1. Messgerät bauen und Bestand zählen (siehe Skill `messgeraet-zuerst`).

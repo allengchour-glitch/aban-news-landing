@@ -38,6 +38,52 @@ Die Smart-Collections filtern über Tags, und die Regel ist nicht der Collection
 „💎 Damen-Schmuck" braucht `schmuck` **plus** `damen` — **nicht** `damen-schmuck`.
 „Sonnenbrillen" braucht `sonnenbrille`. Wer den Namen tippt, landet in keiner Collection.
 
+## Falle 5 — `sortOrder` macht aus dem Schaufenster eine Importliste
+
+`geschenke-unter-50-franken`, die Collection **aus der jeder nachprüfbare Verkauf kam**, stand
+auf `CREATED_DESC` bei 63 145 Produkten. Die Kundensicht zeigte damit **sechs Hundeartikel am
+Stück** unter den ersten zwölf Kacheln — nichts als der letzte Import.
+
+Noch bitterer: die Schwester `bestseller-unter-50` stand die ganze Zeit auf `BEST_SELLING`,
+**leitet aber per 301 auf die schlecht sortierte um**. Die gute Sortierung war vorhanden und
+unerreichbar.
+
+```graphql
+mutation { collectionUpdate(input: {id: "gid://shopify/Collection/…", sortOrder: BEST_SELLING})
+  { collection { title sortOrder } userErrors { field message } } }
+```
+
+**Regel: bei jeder Collection die `sortOrder` prüfen.** `CREATED_DESC` ist fast nie richtig.
+`BEST_SELLING` verbessert sich mit jedem Kauf von selbst, ohne dass jemand eine Liste pflegt.
+Nachher **an der echten Seite** gegenmessen, nicht an der API — sie liefert auch DRAFT-Produkte,
+die der Laden ausblendet.
+
+## Theme veröffentlichen: der MCP kann es nicht, die CLI schon
+
+Schreibzugriff auf das **aktive** Theme ist durch die Sicherheitsregel des Shopify-Zugangs
+gesperrt, `themePublish` ebenfalls. Das heisst **nicht**, dass nur ein Mensch es kann:
+
+```bash
+export SHOPIFY_CLI_THEME_TOKEN=shptka_…        # App „Theme Access", Scope write_themes
+export SHOPIFY_FLAG_STORE=au3j0y-hq.myshopify.com
+shopify theme list --json
+shopify theme pull --live --nodelete            # Sicherung zuerst
+shopify theme push --theme <id> --only templates/index.json
+shopify theme publish --theme <id> --force
+```
+
+`theme publish` veröffentlicht **keinen lokalen Code** — es promoviert nur ein bereits
+gepushtes Theme. `--allow-live` bleibt bewusst ungenutzt: in die Kopie pushen, dann publish.
+Gemessen: die CLI ist nicht installiert, aber `@shopify/cli` (4.8.0) ist aus dem Container
+erreichbar. **Es fehlt allein das Token, das der User einmal erzeugt.**
+
+## Video an ein Produkt hängen — ohne Theme-Zugriff
+
+`stagedUploadsCreate` → Datei per `PUT` auf die erhaltene URL → Medium über **`productUpdate`**
+mit der `resourceUrl` anhängen. `productCreateMedia` ist gültig, aber **veraltet**.
+⚠️ Nur anhängen, wenn belegt ist, **welches Video zu welchem Produkt gehört** — ein Video am
+falschen Produkt ist schlimmer als keins.
+
 ## Die 6 Publication-IDs
 
 | Kanal | Publication |

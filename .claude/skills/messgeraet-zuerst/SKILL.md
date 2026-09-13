@@ -66,6 +66,46 @@ Reihenfolge-Fallen (normalisieren vor ersetzen) sind die zwei Fehler, die sie zu
 Vorbilder mit `--selbsttest`: `tools/vault.py`, `tools/gedaechtnis.py`,
 `tools/skills_pruefen.py`, `tools/lehre.py`.
 
+## Ein `…Count`-Feld mit Filter ist keine Messung, bis der Unsinn-Filter es beweist
+
+Shopifys Zählfelder **ignorieren ihr `query`-Argument stillschweigend**. Gemessen an zwei
+Stellen:
+
+- `productsCount(query: "variants.price:>99999")` → **10000** (deckelt zusätzlich bei 10000).
+- `customersCount` mit `email_marketing_state:subscribed`, mit `orders_count:>0` und mit
+  `email:zzzgibtesnicht@example.invalid` → **jedes Mal 1498**.
+
+Aufgefallen ist es beide Male nur daran, dass **mehrere verschiedene Filter exakt dieselbe Zahl
+lieferten**. Es filtern: `customerSegmentMembers { totalCount }` und die Listenabfragen
+`customers(query:)` / `products(query:)` — die geben auf den Unsinn-Filter korrekt eine leere
+Liste zurück.
+
+**Regel:** Jede gefilterte Zahl bekommt sofort einen zweiten Aufruf mit einem Filter, der **0**
+ergeben muss. Ändert sich die Zahl nicht, filtert das Feld nicht — und die erste Zahl ist
+wertlos.
+
+## Erst nachsehen, wie die Sache auf der Seite heisst, dann das Muster schreiben
+
+`tools/shop_conversion.mjs` suchte in der ersten Fassung nach „Grössentabelle" und meldete bei
+allen Kleidern **NEIN**. Die Seiten nennen es **„Mass-Tabellen"** — Schweizer Schreibweise.
+Eine vorhandene Sache als fehlend zu melden ist genauso schädlich wie ein übersehener Defekt:
+es schickt die nächste Session auf Arbeit, die es nicht braucht.
+
+Zweite Regel desselben Geräts: **vor jeder Textprüfung `<script>`, `<style>` und
+HTML-Kommentare entfernen.** Auf der Produktseite steht in einem JS-Kommentar
+„Gratis-Versand ab CHF 49", während der Kunde überall CHF 50 liest. Wer roh greppt, meldet zwei
+widersprechende Versprechen, die es nie gab.
+
+## Die Kundensicht abrufen, nicht der API-Antwort glauben
+
+Die Admin-API liefert Produkte in der Sortierung der Collection — **einschliesslich DRAFT**.
+Der Laden blendet sie aus. Wer die API-Liste für das Schaufenster hält, zählt Produkte mit, die
+kein Kunde sieht. `tools/shop_conversion.mjs` misst darum die echte Seite.
+
+⚠️ **Shopify drosselt Storefront-Abrufe** (HTTP 429) nach etlichen `curl`-Aufrufen am Stück.
+Eine leere oder winzige Antwort ist **kein Messergebnis** — Grösse prüfen, sonst meldet man
+„0 Treffer" aus einer Fehlerseite.
+
 ## Werkzeug-Hinweise für dieses Repo
 
 - Node ist `/opt/node22/bin/node` (v22).

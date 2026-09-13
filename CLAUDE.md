@@ -8,7 +8,7 @@ Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte.
 > 🧠 **NEU 2026-09-12 — suchen statt lesen:** Das Gedächtnis liegt jetzt zusätzlich als
 > Obsidian-Vault in **`brain/vault/`** (Einstieg `00 Start hier.md`), atomar und verlinkt.
 > `python3 tools/gedaechtnis.py "stichwort"` · `--sackgassen` · `--offen` · `--stand` liefert die
-> eine Tatsache mit Quelle und Datum, statt 158 KB Prosa zu lesen. Fünf **Skills** in
+> eine Tatsache mit Quelle und Datum, statt 158 KB Prosa zu lesen. Sieben **Skills** in
 > `.claude/skills/` laden die teuer gelernten Regeln von selbst. Herkunft: `LERNEN-5-SYSTEME.md`.
 
 > 🎮 **Spiele-Sessions** (neon-*/lebenspfad/wort-*): ZUERST `spiele-dev/RUNBOOK-SPIELE.md` lesen —
@@ -114,6 +114,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   auf YouTube liefert nur die leere Hülle. (2) **Mitbewerber-Seiten inhaltlich klonen** (Copy
   und Testimonials übernehmen, Testimonial-Bilder erzeugen) ist dieselbe Grenze wie
   „NIE Fake-Reviews" — Layout ansehen ja, Inhalte übernehmen nein.
+- **🧰 SKILLS AUSGEBAUT: 5 → 7, und die bestehenden fünf tragen jetzt, was heute gelernt wurde.**
+  Neu: **`recherchieren`** (wie man im Netz lernt, ohne Werbung für Wissen zu halten —
+  GEMESSEN/QUELLE/BEHAUPTUNG markieren, YouTube-Grenzen, wer an dem verdient was er lehrt, und
+  die Pflicht, jede fremde Zahl am eigenen Bestand gegenzuprüfen) und **`werkzeugkasten`**
+  (welches Messgerät es schon gibt, damit keins doppelt gebaut wird — 18 Werkzeuge mit Aufruf).
+  Nachgetragen: `messgeraet-zuerst` bekam die **Count-Filter-Falle**, „erst nachsehen wie die
+  Seite es nennt" und „Kundensicht statt API-Antwort"; `shopify-publizieren` die
+  **`sortOrder`-Falle**, den **Theme-Token-Weg über die CLI** und das Anhängen von Videos ohne
+  Theme-Zugriff; `massen-html-aendern` die **Ausschlussliste von `build-pages.sh`** samt
+  Messbefehl. `skills_pruefen.py`: 7 Skills, 57 Notizen, 0 Befunde.
 - **📧 GEMESSEN, und es beendet ein Thema: der Shop hat 1498 Kundendatensätze und GENAU DREI
   E-Mail-Abonnenten.** (3 abonniert · 1495 nicht · 9 mit mindestens einer Bestellung; Summe
   stimmt.) Die **acht Klaviyo-Strecken**, die das Gedächtnis seit Juni als „LIVE" feiert, haben
