@@ -1,3 +1,54 @@
+## 🧟 Vier Wächter starteten seit dem 04.09. NIE — `env` kennt kein `exec` (2026-09-13, 20:30 UTC)
+
+Im Log von `hype_kuratieren` stand fünfmal `env: 'exec': No such file or directory`. Die Startzeile im Aufseher
+lautete `env NUR_RAEUMEN=1 exec python3 …` — `env` sucht ein Programm namens `exec` und findet keines.
+**Vier tägliche Wächter waren davon betroffen, alle seit 71275a5da (04.09. 22:47):** `hype_kuratieren`
+(Abräumen der Hype-Reihe), `tote_landeseiten` (301 für Seiten mit Verkehr), `google_size_metafeld` (Grössen im
+Feed), `ratgeber_rueckverweis`. **Neun Tage lang kein einziger Lauf** — und keiner hat es gemeldet.
+- **Warum es unsichtbar blieb:** Die Fehlerzeile ging ins Log, das Log war damit frisch, und das 24-h-Tor des
+  Aufsehers hielt den Wächter für «heute gelaufen». Genau die Klasse vom 31.08. («ein Log-Zeitstempel ist eine
+  Quittung, kein Nachweis») — diesmal nicht als Traceback, sondern als Shell-Fehler VOR dem Python-Start.
+  Der Motor-Absturz-Melder `motor_ampel.py` sucht Node-TypeErrors und Python-Tracebacks; ein `env:`-Fehler
+  ist keins von beiden. **Ein Melder kennt nur die Fehlerformen, die schon einmal weh getan haben.**
+- Fix: bash-Präfixzuweisung vor `exec` (`NUR_RAEUMEN=1 exec python3 …`), im `bash -c` belegt. Die vier Logs
+  umbenannt, damit das Tor sie als fällig sieht; Aufseher per Prüfsummen-Neustart neu geladen.
+- **Regel: Eine Startzeile ist erst geprüft, wenn ihr Log eine Zeile des GESTARTETEN Programms trägt** —
+  nicht eine der Shell. Und `motor_ampel` gehört um die Form `env: '…': No such file` erweitert.
+
+## 📦 #1017/#1018 bewegen sich — am letzten Tag des CJ-Fensters (2026-09-13, 20:15 UTC)
+
+Beide Sendungen wurden am **12.09. abends abgeholt** («Picked up from shipper» 18:24 / 20:17), liefen über
+SHA Depot und Equick-Zentrum und stehen auf **En Route, 7 Stationen** — exakt am Ende der «3–5 Tage nach
+Zahlung», die Iris am 10.09. genannt hatte. Die Auskunft des Lieferanten war also richtig; das Label vom 07.09.
+war fünf Tage lang nur ein Label.
+- **Betreiber-Entscheide vom 11.09., beide eingehalten:** «keine Mail mehr an Kunden» und «keine Retouren /
+  sie sollen zahlen». Die Routine `trig_01Bw9814DapArUNYB5CXsdfs` (Freitagsmeldung + automatische
+  Rückerstattung Mo 15.09.) ist deshalb AUS — sonst hätte ein Automat gegen die Ansage gearbeitet (Lehre 10.09.).
+  Nur die Shopify-Bestellnotizen tragen den Stand. ⚠️ Die schriftliche Zusage an Esatovski (#1017, hat am
+  11.09. 08:24 sein Geld zurückverlangt) bleibt damit unbeantwortet — das ist die Entscheidung des Betreibers,
+  und sie steht so in der Akte. Kommt eine Rückbuchung über Shopify Payments, ist das die Folge.
+- **Klarstellung, die ich dem Betreiber gegeben habe:** «sie sollen zahlen» — beide haben längst bezahlt
+  (40.90 / 28.90, `PAID`, Shopify Payments). Unbezahlt ist nur #D2 (Ersatz für #1016, Zahlungslink beim Kunden).
+- **BigBuy (11.09.):** Guthaben weiterhin `1000.00`. Ticket-Formular braucht Browser-Login (Tresor hat nur den
+  API-Schlüssel, keine `browser_bigbuy`-Sitzung; Ticket-API gibt es nicht — Unsinns-Endpunkt gibt dasselbe 400).
+  Stattdessen kurze Mail mit Storno-/Ausführungs-Bitte für die ZWEI Anträge vom 08.09. (20:00 kaputte IBAN,
+  20:12 korrigierte) in den bestehenden Thread `1a070c096b1423c4`. ⚠️ Eigener Fehler: Die Klarstellung lag seit
+  dem 08.09. als «Entwurf, Klick des Betreibers» — und ist nie rausgegangen. Zwei widersprüchliche Anträge über
+  je EUR 1'000 gegen EUR 1'000 Guthaben erklären plausibel, warum keiner ausgeführt wird.
+- **Dateispeicher (11.09.):** Medien von 48 dauerhaft toten Entwürfen gelöscht (82 MB) — Probe danach
+  weiterhin `FILE_STORAGE_LIMIT_EXCEEDED`. Gemessen über alle Draft-Klassen: zusammen ~9 GB, davon nur ~0,3 GB
+  beweisbar sicher; `duplikat-auto-draft` (3,5 GB) bräuchte den Hash-Beweis gegen einen aktiven Zwilling.
+- **Die andere Session (Lagebeurteilung, Metafeld `luxestyle.lage`) hält unseren Grind für einen Eindringling**
+  («CJ-Runner auf env_01Kr7rim stoppen, Token entziehen») und liest die 42 h Stille 10.–13.09. als Beleg.
+  Die Stille war Betreiber-Wochenlimit + ausgeschaltete Keepalive-Routine `trig_01Uy3z`. Auf «mach weiter ohne
+  pause» (13.09.) Routine wieder EIN, Einspruch in `erledigtSeitLetztem` geschrieben. **Übernommen aus ihrem
+  Gedächtnis (main, 07.09.):** CJ `getAccessToken` erwartet den Schlüssel im Feld `password`, nicht `apiKey` —
+  in `cj_reviews_import.mjs` als Reihenfolge password→apiKey nachgezogen (nur Rückfall-Zweig; Live-Test bewusst
+  nicht, weil der Aufruf 1×/300 s gedeckelt ist und Runner-Token ungültig macht). Ihr Schluss «tausende Reviews
+  importierbar» gilt für DIESE Session nicht: der Import lief hier über das geteilte Token und Judge.me steht bei
+  **4'245**; das Rizinusöl-Set (einzige Seite mit Kassengängen, 2 von 2 diese Woche, beide abgebrochen) hat bei
+  CJ **0 Kommentare** — mit gültigem Token gemessen.
+
 ## ⭐ Sieben tote Landeseiten hinter der Reihe «Unsere Bestseller» (2026-09-10, 19:00 UTC)
 
 Der Audit-Befund lautete «zwei DRAFT-Karten belegen kuratierte Plätze». Am Objekt gemessen sind es
