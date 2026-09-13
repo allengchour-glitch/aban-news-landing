@@ -36,6 +36,12 @@ DRY   = os.environ.get('DRY') == '1'
 CAP   = int(os.environ.get('CAP', '1200'))
 LEDGER = 'dropship/_versand_jenachland.txt'
 QUELLE = os.environ.get('QUELLE', '/tmp/groessen_export.jsonl')
+# ⚠️ 13.09.2026: LISTE= — Produkt-IDs aus einer Datei (z. B. dropship/_klassen/usa-lieferzusage-
+# im-text.txt des Objektscans). Grund: 245 Produkte trugen den Block LIVE, aber Shopifys Index
+# fand sie NICHT (`id:X AND "je nach Land"` → 0, `id:X AND Solar` → 1) — die Inhalts-Suche
+# ist fuer einen Teil des Bestands blind, der Objektscan nicht. Der Text kommt auch hier
+# unmittelbar vor dem Schreiben live; die Liste ist nur das Sieb.
+LISTE  = os.environ.get('LISTE')
 
 STIL = ('background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;'
         'padding:10px 14px;font-size:13px;margin:0 0 14px;')
@@ -147,6 +153,13 @@ def kandidaten_live(fertig=frozenset()):
 
 def kandidaten():
     """IDs aus dem Export — nur die Liste, der Text kommt später live."""
+    if LISTE:
+        ids = []
+        for l in open(LISTE, encoding='utf-8'):
+            t = l.strip().split()[0] if l.strip() else ''
+            if t.isdigit(): ids.append('gid://shopify/Product/' + t)
+            elif t.startswith('gid://shopify/Product/'): ids.append(t)
+        return ids
     if QUELLE == 'live' or not os.path.exists(QUELLE):
         return kandidaten_live()
     ids = []
@@ -174,7 +187,7 @@ def main():
     _FERTIG = frozenset(fertig)
     # ⚠️ Im LIVE-Modus filtert das Ledger NICHT (siehe kandidaten_live): die Abfrage liefert
     # nur Produkte, die den Block noch tragen — jede Quittung dafuer ist falsch.
-    live = QUELLE == 'live' or not os.path.exists(QUELLE)
+    live = bool(LISTE) or QUELLE == 'live' or not os.path.exists(QUELLE)
     offen = kandidaten() if live else [i for i in kandidaten() if i not in fertig]
     print(f"Kandidaten: {len(offen)} offen ({len(fertig)} im Ledger"
           f"{', im LIVE-Modus bewusst ignoriert' if live else ' erledigt'})")

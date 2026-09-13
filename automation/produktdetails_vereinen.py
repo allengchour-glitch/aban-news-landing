@@ -105,21 +105,37 @@ MATERIALWORT = re.compile(
 
 
 def gql(q, v=None):
-    with open("/tmp/_pd.json", "w") as f:
+    # ⚠️ 13.09.2026: Der Lauf starb mit «Shopify antwortet nicht», waehrend VIER andere Motoren
+    # den geteilten Eimer hielten (Kosten-Backfill, Boden-15-Korrektur, zwei Grind-Runner).
+    # Sechs Versuche mit festen 6 s reichen dann nie fuer eine 100-Knoten-Abfrage — und das
+    # Werkzeug, das die Doppelbloecke entfernt, lief damit an genau dem Tag nicht, an dem die
+    # Klasse von 150 auf 593 gewachsen war. Sechste Fassung von «eine Drosselung ist kein
+    # Abbruchgrund»: THROTTLED wird aus throttleStatus ausgesessen und zaehlt nicht als Versuch.
+    # Dazu eine Temp-Datei je Prozess — zwei Laeufe haetten sich /tmp/_pd.json ueberschrieben.
+    tmp = f"/tmp/_pd_{os.getpid()}.json"
+    with open(tmp, "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
-    for _ in range(6):
+    fehler = 0
+    while fehler < 8:
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
                             "-H", "Content-Type: application/json",
-                            "--data-binary", "@/tmp/_pd.json"], capture_output=True, text=True)
+                            "--data-binary", "@" + tmp], capture_output=True, text=True)
         try:
             d = json.loads(r.stdout)
-            if d.get("data"):
-                return d
         except Exception:
-            pass
-        time.sleep(6)
+            fehler += 1; time.sleep(6); continue
+        if d.get("data"):
+            return d
+        errs = d.get("errors") or []
+        if any((e.get("extensions") or {}).get("code") == "THROTTLED"
+               or "throttl" in str(e.get("message", "")).lower() for e in errs):
+            st = ((d.get("extensions") or {}).get("cost") or {}).get("throttleStatus") or {}
+            warten = max(3.0, (st.get("maximumAvailable", 2000) * 0.5 - st.get("currentlyAvailable", 0))
+                         / max(1.0, st.get("restoreRate", 100)))
+            time.sleep(min(warten, 30)); continue      # zaehlt NICHT als Versuch
+        fehler += 1; time.sleep(6)
     # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
     # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation
     # ohne userErrors unterscheiden — er quittiert dann Arbeit, die nie stattfand.
