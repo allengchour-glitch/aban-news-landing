@@ -24894,3 +24894,14 @@ gid://shopify/Product/15503146287489	CHF 12.28	1 Varianten	Halsband aus Rindsled
 gid://shopify/Product/15503146320257	CHF 16.04	1 Varianten	Kissenbezug mit tropischem Blättermuster
 gid://shopify/Product/15503146353025	CHF 16.59	12 Varianten	Elegantes Chiffon Maxi-Kleid für Damen
 gid://shopify/Product/15503146385793	CHF 14.40	1 Varianten	8-Fächer Aufbewahrungsbox, tragbar
+gid://shopify/Product/15503146418561	CHF 7.22	1 Varianten	DIY Haustierhalsband
+gid://shopify/Product/15503146451329	CHF 21.96	1 Varianten	Kissenbezug im französischen Landhausstil
+gid://shopify/Product/15503146516865	CHF 15.83	3 Varianten	Gestreiftes Sportkleid mit Reverskragen
+gid://shopify/Product/15503146549633	CHF 16.27	1 Varianten	Uhrenbox aus PU-Leder
+gid://shopify/Product/15503146582401	CHF 12.25	1 Varianten	MUTTCO Fliege für Hunde mit Leine
+gid://shopify/Product/15503146615169	CHF 16.18	1 Varianten	Rosenherz Kissen
+gid://shopify/Product/15503146647937	CHF 14.15	5 Varianten	Elegantes ärmelloses Maxikleid mit Schlitz
+gid://shopify/Product/15503146680705	CHF 13.60	1 Varianten	MUTTCO Cowboy Hundehalsband
+gid://shopify/Product/15503146713473	CHF 21.29	1 Varianten	Luminous Handkurbel-Fotoalbum-Maschine
+gid://shopify/Product/15503146811777	CHF 23.40	6 Varianten	Trägerloses Fishtail Abendkleid-Set mit Mesh-Rock
+gid://shopify/Product/15503146844545	CHF 7.61	1 Varianten	MUTTCO Verstellbares Hundehalsband
