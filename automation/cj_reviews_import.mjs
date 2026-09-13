@@ -84,8 +84,15 @@ async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return A
 // ── CJ ──
 async function cjToken() {
   try { if (fs.existsSync(TOKEN_FILE)) { const t = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8')); if (t.exp > Date.now() + 60000) return t.accessToken; } } catch {}
-  const r = await fetch(`${CJ_BASE}/authentication/getAccessToken`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }) });
-  const j = await r.json().catch(() => ({}));
+  // Feldname des Schluessels: CJ nimmt 'password' (andere Session, 07.09. auf main verifiziert);
+  // 'apiKey' bleibt als Rueckfall. Dieser Zweig laeuft nur, wenn /tmp/cj_token.json fehlt/abgelaufen ist —
+  // getAccessToken ist auf 1x/300 s gedeckelt und macht die Token der Runner ungueltig, also nie zum Testen rufen.
+  let j = {};
+  for (const feld of ['password', 'apiKey']) {
+    const r = await fetch(`${CJ_BASE}/authentication/getAccessToken`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, [feld]: CJ_API_KEY }) });
+    j = await r.json().catch(() => ({}));
+    if (j.result && j?.data?.accessToken) break;
+  }
   if (!j.result || !j?.data?.accessToken) {
     console.log('⚠️  CJ-Auth fehlgeschlagen → No-op. Meldung: ' + (j.message || JSON.stringify(j).slice(0, 160)));
     console.log('    → CJ_API_KEY im CJ-Dashboard (My CJ → Authorization → API) neu generieren & GitHub-Secret aktualisieren.');
