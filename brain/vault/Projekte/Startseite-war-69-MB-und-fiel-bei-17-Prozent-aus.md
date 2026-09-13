@@ -32,3 +32,10 @@ aktive Theme, sondern in eine Kopie. **Veroeffentlichen muss ein Mensch** (ein K
 Bericht mit allen Zahlen: `dropship/VERKAEUFE-BEFUND-2026-09-12.md`
 
 Verwandt: [[Hypothese-mit-Datum]]
+
+## Nachtrag 2026-09-13 — teilweise ueberholt
+
+Der Satz „Veroeffentlichen muss ein Mensch (ein Klick)" galt fuer den Shopify-MCP. Ueber die
+Shopify CLI mit einem Theme-Access-Token laesst sich ein Theme **pushen und veroeffentlichen**,
+ohne dass jemand klickt. Es fehlt nur das Token, das der User einmal erzeugt.
+Siehe [[Theme-veroeffentlichen-geht-doch---per-Theme-Access-Token]].

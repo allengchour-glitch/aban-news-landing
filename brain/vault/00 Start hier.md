@@ -40,12 +40,14 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[Hypothese-mit-Datum]] — Der teuerste Fehler der Projektgeschichte war eine als Tatsache notierte Decke:
 - [[Kennzahl-zaehlt-Absicht]] — Zwei Beispiele aus derselben Runde:
 - [[Messgeraet-Gegenprobe]] — fehlerfrei aus. Die eingebaute Gegenprobe — eine künstlich halbtransparente Leiste muss
+- [[Mitbewerber-Seiten-klonen-ist-keine-Abkuerzung]] — Die grossen Dropshipping-Kanaele lehren: Ganzseiten-Screenshot der Produktseite eines Mitb…
 - [[Publish-Falle]] — Produkt-IDs zum Publizieren immer aus der Antwort von create-product nehmen, nie raten und
 - [[Sechs-Publications]] — Jedes Produkt und jede Collection gehört in alle sechs Kanäle. Erwartet wird danach
 - [[Selbsttests-finden-Fehler-im-Werkzeug-selbst]] — Beim Bau der vier Gedaechtnis-Werkzeuge fanden die eingebauten Gegenproben zwei echte Fehl…
 - [[Stale-Ref-Falle]] — aktualisiert: origin/main zeigte auf einen Monate alten Commit. Ein darauf gebauter Branch
 - [[Tag-Regel-Falle]] — Smart-Collections filtern über Tags, und die Regel ist nicht der Collection-Name.
 - [[Workflow-Name-Doppelpunkt]] — Ein name: mit Doppelpunkt im Wert bricht den YAML-Trigger eines GitHub-Workflows — die Fol…
+- [[build-pagessh-veroeffentlicht-auch-einzelne-Dateien-im-Wurzelverzeichn]] — GEMESSEN am 2026-09-13 mit curl: https://abannews.com/CLAUDE.md liefert HTTP 200 mit 34399…
 - [[productsCount-ignoriert-Preisfilter-stillschweigend]] — Shopifys productsCount wirft Preisfilter weg, ohne zu meckern:
 
 ## ⛔ Sackgassen — nicht erneut versuchen
@@ -55,6 +57,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[CJ-AliExpress-Quell-ID]] — CJ liefert keine AliExpress-Quell-ID. sourceFrom ist nur ein Zahlen-Flag, das Wort
 - [[Fake-Reviews]] — Harte Regel, mehrfach im Gedächtnis wiederholt:
 - [[Masse-ist-kein-Hebel]] — LuxeStyle über 30 Tage, aus Shopify-Analytics:
+- [[YouTube-Transkripte-gehen-aus-diesem-Container-nicht]] — Der Weg, der bei TikTok funktioniert hat (Untertitelspur aus den Seitendaten holen), schei…
 
 ## 🟡 Blockiert — wartet auf den User
 
@@ -63,6 +66,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[GitHub-Spam-Markierung]] — GitHubs eigene Meldung aus der Search-API: Validation Failed: User flagged as spammy.
 - [[GitLab-Ersatz]] — Weil Actions-Sperre gilt, laufen alle Automationen auf GitLab-CI, Projekt aban-ci
 - [[Live-Deploy]] — Seit 29.08.2026 ~03:00 UTC. abannews.com zeigt den Stand von Commit 9394a0e. Alles danach
+- [[Theme-veroeffentlichen-geht-doch---per-Theme-Access-Token]] — Das Gedaechtnis sagte: Theme veroeffentlichen kann nur der User, weil der Shopify-MCP Schr…
 - [[Vier-Crons-sind-wieder-aktiv-trotz-Nulldiaet]] — Das Gedaechtnis sagt seit 2026-06-13 (Cron-Nulldiaet, PR #828): „ALLE ~60 schedule:-Blöcke
 
 ## 📦 Projekte

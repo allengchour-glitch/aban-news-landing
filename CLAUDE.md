@@ -68,6 +68,69 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-13 (📚 NUR GELERNT — Shopify+Claude, Dropship-Szene, Profit; Theme-Sperre GEKNACKT):**
+- **Auftrag:** „lerne du nur und teile dann memory für andere session … morgen macht die andere
+  Session alles." Diese Runde hat **nichts am Shop geändert**. Voller Bericht mit Quellen:
+  **`dropship/LERNEN-SHOPIFY-CLAUDE-2026-09-13.md`** (jeder Punkt markiert als GEMESSEN /
+  QUELLE / BEHAUPTUNG).
+- **🔓 WICHTIGSTER FUND — „Theme veröffentlichen kann nur der User" stimmt so nicht mehr.**
+  Der Shopify-MCP sperrt Schreibzugriff aufs aktive Theme und `themePublish`. **Die Shopify
+  CLI kann es trotzdem:** `SHOPIFY_CLI_THEME_TOKEN` (Passwort aus der kostenlosen App
+  **Theme Access**, Scope `write_themes`) + `SHOPIFY_FLAG_STORE` → `shopify theme list --json`,
+  `theme pull --live --nodelete` (Sicherung), `theme push --theme <id> --only
+  templates/index.json`, `theme publish --theme <id> --force`. **`publish` veröffentlicht
+  keinen lokalen Code**, es promoviert nur ein bereits gepushtes Theme. `--allow-live` bleibt
+  bewusst ungenutzt. **GEMESSEN:** CLI ist im Container nicht installiert, aber
+  `npm view @shopify/cli version` → **4.8.0** erreichbar, Node 22 da → der Weg ist nicht durch
+  die Umgebung blockiert. **🟡 Es fehlt allein das Token (einmalig vom User).** Danach kann
+  jede Session die schlanke Startseite und Sticky-ATC selbst scharf stellen.
+- **Shopify AI Toolkit** (offizielles Claude-Code-Plugin, seit 09.04.2026): MCP + Skills für
+  Admin-GraphQL, Liquid-Validierung, Hydrogen, Metafelder, Functions. **GEMESSEN: im
+  Plugin-Katalog dieses Kontos gibt es KEIN Shopify-Plugin** (nur `wix`, `noibu`,
+  `brightdata-plugin`) → Marktplatz müsste erst hinzugefügt werden, Befehl ungeprüft.
+  ⚠️ Das Toolkit hat **keinen Entwurfsmodus, keine Vorschau, kein Rückgängig** — Mutationen
+  laufen sofort produktiv; und Validierungs-Payloads enthalten den Code
+  (`OPT_OUT_INSTRUMENTATION=true`).
+- **YouTube ausgewertet** (4 Videos, 19 640–257 153 Aufrufe). **Die Umsatztitel („$2.7M",
+  „$400K/m") sind unbelegte Behauptungen**, alle Kanäle verdienen an Partnerlinks. Brauchbar
+  ist das **offizielle Shopify-Video** (106 388 Aufrufe): Hack 1 Markenstimme, Hack 2 täglicher
+  Check — beides läuft hier schon; **Hack 3 Preisstrategie aus eigenem Katalog + eigenen
+  Bestelldaten ist hier noch nie gemacht worden** und ist der Profit-Hebel.
+- **Zahlen für die Arbeit von morgen (QUELLE, mehrfach belegt):** Sticky-ATC mobil
+  **+8–12 % ATC** · Video auf der Produktseite **+10–25 % ATC** · **Foto-Bewertungen 2–3×
+  besser als reiner Text** · Gratis-Versand-Fortschrittsbalken = „stärkster Warenkorb-Hebel" ·
+  Header 5–7 Navigationspunkte · gute Conversion 2–3,5 % · Dropship-Nettomarge 15–20 %.
+  **Vertrauenssignale zählen bei Dropshipping 3× so viel** wie bei bekannten Marken.
+- **🔴 Eigener Befund aus dem Abgleich:** alle echten Bestellungen lagen **CHF 21.90–41.90,
+  also UNTER der Gratis-Versand-Schwelle von CHF 65**. Die Schwelle arbeitet gerade nicht für
+  den Shop — eigene Rechnung wert, bevor jemand sie für gesetzt hält.
+- **⚠️ Zoll-Falle 2026:** die Zollfreiheit für geringwertige Importe fällt in mehreren Märkten;
+  Abgaben und Bearbeitungsgebühren fressen die Marge kleiner Sendungen. Für die Schweiz
+  gesondert prüfen, bevor Preise gesenkt werden.
+- **❌ ZWEI SACKGASSEN:** (1) **YouTube-Transkripte gehen aus diesem Container nicht** —
+  `timedtext` liefert HTTP 200 mit **0 Bytes** in allen Formaten, Innertube sagt `UNPLAYABLE`
+  bzw. `FAILED_PRECONDITION` (PO-Token nötig). Was geht: Videoseite per `curl` mit
+  Browser-Kennung holen und `shortDescription` samt Kapitelmarken herausschneiden; `WebFetch`
+  auf YouTube liefert nur die leere Hülle. (2) **Mitbewerber-Seiten inhaltlich klonen** (Copy
+  und Testimonials übernehmen, Testimonial-Bilder erzeugen) ist dieselbe Grenze wie
+  „NIE Fake-Reviews" — Layout ansehen ja, Inhalte übernehmen nein.
+- **🔒 NEBENBEFUND, LIVE GEMESSEN: das Gedächtnis stand öffentlich im Netz.**
+  `https://abannews.com/CLAUDE.md` → **HTTP 200, 34 399 Bytes**,
+  `https://abannews.com/SHARED-MEMORY.md` → **200, 107 585 Bytes**. Die Session vom 12.09. hat
+  `brain/` und `.claude/` ausgeschlossen, **die Gedächtnis-Dateien im Wurzelverzeichnis aber
+  übersehen** — `build-pages.sh` hat eine Ausschluss-, keine Einschlussliste, und das gilt auch
+  für einzelne Dateien, nicht nur Verzeichnisse. Ausgeliefert wird ein alter Stand (oberster
+  Block **2026-07-05**, passend zum seit 29.08. stehenden Deploy). **Behoben:** `CLAUDE.md`,
+  `SHARED-MEMORY.md`, `LERNEN-*.md`, `*-HANDOFF.md`, `*-MEMORY.md`, `*-CHECKLISTE.md`,
+  `docs/SESSION-HANDOFF.md` ausgeschlossen, **nachgemessen 5 → 0**, Gegenprobe `functions/`
+  weiter 39 und `index.html` dabei (7377 Dateien). ⚠️ **Die bereits veröffentlichte Kopie
+  verschwindet erst mit dem nächsten Deploy** — danach gegenprüfen, dass
+  `curl -o /dev/null -w '%{http_code}' https://abannews.com/CLAUDE.md` **404** liefert.
+- **Reihenfolge für morgen:** (1) Theme-Token → schlanke Startseite scharf + nachmessen,
+  (2) Foto-Bewertungen (fehlt nur `JUDGEME_PRIVATE_TOKEN`), (3) Sticky-ATC, (4) Preisstrategie
+  aus echten Daten, (5) vorhandene Reels auf die Produktseiten. **Nicht:** mehr Produkte,
+  klonen, Bewertungen erfinden, Crons reaktivieren.
+
 **📌 2026-09-12 (🏷️ VARIANTEN AUF DEUTSCH — 291 Werte live, Wächter fing 2 eigene Fehler):**
 - **Auftrag:** „die bestehenden Produkte optimieren und Webseite". Voller Bericht:
   **`dropship/VARIANTEN-DEUTSCH-2026-09-12.md`**.
