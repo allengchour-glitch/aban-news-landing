@@ -117,10 +117,10 @@
 15452677833089	Regendusche mit 6 Sprüheinstellungen
 15452682224001	Virtueller Helm mit Smartphone-Display
 15452706701697	DIY Diamant-Mal-Unterlage mit Obstmuster, für Anfänger und Profis
-15452720660865	Ionen Multifunktionaler Lufttrockner und Stylerbürste mit Coanda-Techn
+15452720660865	Ionen Multifunktionaler Lufttrockner und Stylerbürste mit Coanda-Technologie
 15452721119617	Mini Elektrischer Ellipsentrainer mit Fernbedienung Velora 4000 Innova
 15453406560641	Wasserdichtes Telefon-Case
-15453464396161	2-in-1 Faltbare Camping-Schaukelstuhl mit Tasche, Kissen und Tragetasc
+15453464396161	2-in-1 Faltbare Camping-Schaukelstuhl mit Tasche, Kissen und Tragetasche
 15453464592769	Weinzubehör-Set Chillour InnovaGoods 7 Stücke
 15453744431489	Aerial Photography Drone 8K HD
 15453760225665	Kunstwerk Leinwand
@@ -1028,3 +1028,11 @@
 15522284503425	Doppelter Seidenkissenbezug
 15522294923649	Elektrische Pfeffermühle, wiederaufladbar
 15522444181889	Kopfkissen für Nackenstütze – Hotellerie-Qualität
+15522625192321	Satinhemd mit langen Ärmeln – Champagner
+15523136045441	Historisches Wahrzeichen als Mikro-Bausteinmodell
+15523177660801	Quick Crystal Mini-Verlängerungsgel-Set
+15523179626881	Elegantes Orchideen-Armband im chinesischen Stil
+15523180740993	Funkelnder Zirkon-Kreuzring im Retro-Stil
+15523181953409	Manueller Kaffeemühle aus Edelstahl
+15523183460737	Quilling Papier Malerei Bastelset
+15523186475393	Smarter Rolladenmotor mit Zigbee

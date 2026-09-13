@@ -30,7 +30,12 @@ FATAL = re.compile(
     r"^(?:\w*(?:TypeError|ReferenceError|SyntaxError|RangeError)"
     r"|Traceback \(most recent call last\)"
     r"|Error: Cannot find module"
-    r"|\w*Error: .*is not a function)", re.M)
+    r"|\w*Error: .*is not a function"
+    # Shell-Fehler VOR dem Programmstart (13.09.): `env VAR=x exec python3` — env kennt kein exec.
+    # Vier Waechter starteten damit neun Tage lang nie, und das frische Log galt als «gelaufen».
+    # Ebenso `bash: -c: option requires an argument` (08.09., Kommentar hinter fortgesetzter Zeile).
+    r"|env: '[^']+': No such file or directory"
+    r"|bash: -c: option requires an argument)", re.M)
 # Fundstelle. ZWEI Schreibweisen, und die zweite hat mich beim Testen erwischt:
 # Node schreibt «datei.mjs:831», Python schreibt «File "foo.py", line 42» — OHNE
 # Doppelpunkt. Ein Muster, das nur die eine Form kennt, meldet die andere als «?».

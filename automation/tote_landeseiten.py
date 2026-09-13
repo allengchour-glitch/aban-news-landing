@@ -211,7 +211,10 @@ TYP_ZIEL = {
     "baby & kinder": "kinderspielzeug", "reise & outdoor": "sub-reise",
     "haustier": "sub-haustier", "wellness": "wellness-massage",
     "wellness & haushalt": "haushaltsgeraete", "wohnen": "wohnen-dekoration",
-    "damen-mode": "damen-mode", "herren-mode": "herren-mode",
+    # productType heisst «Damenmode»/«Herrenmode» (ohne Bindestrich) — die alten Schluessel
+    # «damen-mode»/«herren-mode» trafen nie, und «herren-mode» als Kollektion gibt es nicht.
+    "damenmode": "damen-mode", "herrenmode": "fur-ihn",
+    "damenschuhe": "schuhe-sneaker", "herrenschuhe": "herren-schuhe",
 }
 _koll_ok = {}
 
@@ -249,8 +252,11 @@ def kategorie_ziel(p, handle=""):
         if wort in titel and kollektion_taugt(ziel):
             return "/collections/" + ziel
     tags = [t.lower() for t in (p.get("tags") or [])]
+    # ⚠️ EXAKT vergleichen, nicht als Teilstring (13.09.): `any(wort in t)` machte aus dem
+    # Draft-Marker «auto-entwurf-0926» ein «auto» — ein Herren-Rollkragen bekam eine 301 auf
+    # Auto & KFZ-Zubehoer. Die Tags aus cat_tags sind ohnehin ganze Woerter (auto, hund, kueche).
     for wort, ziel in TAG_ZIEL:
-        if any(wort in t for t in tags) and kollektion_taugt(ziel):
+        if wort in tags and kollektion_taugt(ziel):
             return "/collections/" + ziel
     ziel = TYP_ZIEL.get((p.get("productType") or "").strip().lower())
     if ziel and kollektion_taugt(ziel):

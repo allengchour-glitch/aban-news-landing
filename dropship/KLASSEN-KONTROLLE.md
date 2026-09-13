@@ -1,11 +1,11 @@
-# Klassen-Kontrolle (VOLLSCAN, 53085 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 53285 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## USA-Lieferzusage im Text — 832 (waehrend des Laufs 976 gezaehlt, seither repariert)
+## USA-Lieferzusage im Text — 722 (waehrend des Laufs 981 gezaehlt, seither repariert)
 
 Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).
 
@@ -13,34 +13,34 @@ Reparatur: `automation/versandaussagen_wahrheit.py  (QUELLE=live IGNORIERE_LEDGE
 
 Vollstaendige Liste: `dropship/_klassen/usa-lieferzusage-im-text.txt`
 
-- `15421167108481` Geburtsstein-Armband «Pois» · zarte Kette mit Steinen
-- `15421167436161` Moissanite-Ohrstecker «Éclat» · S925 Silber (0,5 / 1 Karat)
-- `15421167468929` Deko-Vase «Antique» · Schmiedeeisen Vintage-Look (37 cm)
-- `15421171859841` Statement-Ohrringe «Doré» · gebürstetes Gold, quadratisch
-- `15421171892609` Sommer-Armband «Évil» · Schmetterling & Nazar-Auge, vergoldet
-- `15421226746241` Glücks-Halskette «Fortune» · Hufeisen & Kreuz mit Zirkonia
-- `15421328359809` Doppel-Ring «Duo» · S925 Silber mit Zirkonia & Topas-Blau
-- `15421364896129` Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Panel
-- `15421364928897` Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-lagig
-- `15421414113665` Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
-- `15421414211969` Moissanite-Herzkette «Coeur» · S925 Silber, Infinity
-- `15421414277505` Acryl-Ohrringe «Ambre» · Karamell-Ton, Statement
-- `15421442228609` Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik
-- `15421442261377` Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
-- `15421501211009` Jeans-Shorts «Cristal» · Strass-Besatz, Mid-Rise Stretch
-- `15421502030209` Make-up-Tasche «Mirror» · Kosmetiketui mit integriertem Spiegel
-- `15421513630081` Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
-- `15421516218753` Blazer «Roma» · Tailliert mit Bindegürtel & Revers
-- `15421517889921` Herren-Henley «Waffle» · Waffelstrick, Langarm
-- `15421530603905` Strick-Cardigan «Bohème» · Pointelle, Leicht & Offen
-- `15421564912001` Samt-Cap «Velours» · Retro Baseball-Mütze, verstellbar
-- `15421594501505` Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
-- `15421604299137` Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Leinen-Look
-- `15421606953345` Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
-- `15421615473025` Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
-- … und 807 weitere
+- `15427230630273` Schweiz-Poster «Grüezi»
+- `15427230663041` Schweiz-Poster «Bergsee»
+- `15427235905921` Sticker «Alien Green» · 1 Stück
+- `15427235938689` Sticker «Alpaca» · 1 Stück
+- `15427235971457` Sticker «Anime Cat Wink» · 1 Stück
+- `15427236036993` Sticker «Anime Eyes» · 1 Stück
+- `15427236069761` Sticker «Art Cow Save» · 1 Stück
+- `15427236102529` Sticker «Art Mountains» · 1 Stück
+- `15427236135297` Sticker «Art Veggies» · 1 Stück
+- `15427236168065` Sticker «Axolotl» · 1 Stück
+- `15427236200833` Sticker «Camera» · 1 Stück
+- `15427236233601` Sticker «Coffee» · 1 Stück
+- `15427236266369` Sticker «Explorer» · 1 Stück
+- `15427236299137` Sticker «Festival» · 1 Stück
+- `15427236331905` Sticker «Music» · 1 Stück
+- `15427236364673` Sticker «Skate» · 1 Stück
+- `15427236495745` Sticker «Surf» · 1 Stück
+- `15427236594049` Sticker «Bagel» · 1 Stück
+- `15427236626817` Sticker «Baseball» · 1 Stück
+- `15427236659585` Sticker «Basketball» · 1 Stück
+- `15427236692353` Sticker «Bat» · 1 Stück
+- `15427236725121` Sticker «Bicycle» · 1 Stück
+- `15427236757889` Sticker «Book Stack» · 1 Stück
+- `15427236823425` Sticker «Boombox» · 1 Stück
+- `15427236888961` Sticker «Boxing Glove» · 1 Stück
+- … und 697 weitere
 
-## EU-Lieferzusage im Text — 832 (waehrend des Laufs 976 gezaehlt, seither repariert)
+## EU-Lieferzusage im Text — 718 (waehrend des Laufs 981 gezaehlt, seither repariert)
 
 Gleiche Klasse wie USA: es gibt genau EINEN aktiven Markt (Schweiz).
 
@@ -48,32 +48,32 @@ Reparatur: `automation/versandaussagen_wahrheit.py`
 
 Vollstaendige Liste: `dropship/_klassen/eu-lieferzusage-im-text.txt`
 
-- `15421167108481` Geburtsstein-Armband «Pois» · zarte Kette mit Steinen
-- `15421167436161` Moissanite-Ohrstecker «Éclat» · S925 Silber (0,5 / 1 Karat)
-- `15421167468929` Deko-Vase «Antique» · Schmiedeeisen Vintage-Look (37 cm)
-- `15421171859841` Statement-Ohrringe «Doré» · gebürstetes Gold, quadratisch
-- `15421171892609` Sommer-Armband «Évil» · Schmetterling & Nazar-Auge, vergoldet
-- `15421226746241` Glücks-Halskette «Fortune» · Hufeisen & Kreuz mit Zirkonia
-- `15421328359809` Doppel-Ring «Duo» · S925 Silber mit Zirkonia & Topas-Blau
-- `15421364896129` Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Panel
-- `15421364928897` Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-lagig
-- `15421414113665` Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
-- `15421414211969` Moissanite-Herzkette «Coeur» · S925 Silber, Infinity
-- `15421414277505` Acryl-Ohrringe «Ambre» · Karamell-Ton, Statement
-- `15421442228609` Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik
-- `15421442261377` Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
-- `15421501211009` Jeans-Shorts «Cristal» · Strass-Besatz, Mid-Rise Stretch
-- `15421502030209` Make-up-Tasche «Mirror» · Kosmetiketui mit integriertem Spiegel
-- `15421513630081` Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
-- `15421516218753` Blazer «Roma» · Tailliert mit Bindegürtel & Revers
-- `15421517889921` Herren-Henley «Waffle» · Waffelstrick, Langarm
-- `15421530603905` Strick-Cardigan «Bohème» · Pointelle, Leicht & Offen
-- `15421564912001` Samt-Cap «Velours» · Retro Baseball-Mütze, verstellbar
-- `15421594501505` Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
-- `15421604299137` Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Leinen-Look
-- `15421606953345` Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
-- `15421615473025` Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
-- … und 807 weitere
+- `15427235971457` Sticker «Anime Cat Wink» · 1 Stück
+- `15427236036993` Sticker «Anime Eyes» · 1 Stück
+- `15427236069761` Sticker «Art Cow Save» · 1 Stück
+- `15427236102529` Sticker «Art Mountains» · 1 Stück
+- `15427236135297` Sticker «Art Veggies» · 1 Stück
+- `15427236168065` Sticker «Axolotl» · 1 Stück
+- `15427236200833` Sticker «Camera» · 1 Stück
+- `15427236233601` Sticker «Coffee» · 1 Stück
+- `15427236266369` Sticker «Explorer» · 1 Stück
+- `15427236299137` Sticker «Festival» · 1 Stück
+- `15427236331905` Sticker «Music» · 1 Stück
+- `15427236364673` Sticker «Skate» · 1 Stück
+- `15427236495745` Sticker «Surf» · 1 Stück
+- `15427236594049` Sticker «Bagel» · 1 Stück
+- `15427236626817` Sticker «Baseball» · 1 Stück
+- `15427236659585` Sticker «Basketball» · 1 Stück
+- `15427236692353` Sticker «Bat» · 1 Stück
+- `15427236725121` Sticker «Bicycle» · 1 Stück
+- `15427236757889` Sticker «Book Stack» · 1 Stück
+- `15427236823425` Sticker «Boombox» · 1 Stück
+- `15427236888961` Sticker «Boxing Glove» · 1 Stück
+- `15427236921729` Sticker «Burger» · 1 Stück
+- `15427236987265` Sticker «Cactus Sunset» · 1 Stück
+- `15427237020033` Sticker «Capybara» · 1 Stück
+- `15427237052801` Sticker «Cassette Tape» · 1 Stück
+- … und 693 weitere
 
 ## «Geprüfte Qualität» (Überzusage) — 18
 
@@ -102,7 +102,7 @@ Vollstaendige Liste: `dropship/_klassen/gepr-fte-qualit-t-berzusage.txt`
 - `15523208266113` GT0042 Faltmesser für Outdoor & Camping
 - `15523210166657` Outdoor-Klappmesser mit Stahlgriff
 
-## «Produktdetails» doppelt — 150
+## «Produktdetails» doppelt — 593
 
 Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
 
@@ -135,9 +135,9 @@ Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 - `15413023113601` Herren-Strickshirt «Riviera» – Cord-Kurzarm
 - `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
 - `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
-- … und 125 weitere
+- … und 568 weitere
 
-## Floskel «hochwertiges Material» — 95 (waehrend des Laufs 124 gezaehlt, seither repariert)
+## Floskel «hochwertiges Material» — 312
 
 Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
 
@@ -145,34 +145,34 @@ Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
 
 Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
 
-- `15413726282113` Jumpsuit mit Blazer-Kragen · Damen, chic & uni
-- `15413739684225` Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
-- `15416026235265` Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
-- `15416343757185` Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farben)
-- `15416343986561` Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
-- `15416491704705` High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
-- `15416493506945` Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)
-- `15421165339009` Long-Weste «Resort» · ärmellos, Colorblock mit Schleife
-- `15421165601153` Herren-Set «Resort» · Kurzarm-Hemd + Hose
-- `15421165666689` Long-Blazer «Milano» · uni, ohne Knöpfe (Damen)
-- `15421165764993` Kapuzen-Cardigan «Cosy» · uni, mit Knöpfen (Damen)
-- `15421414113665` Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
-- `15421442261377` Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
-- `15421513630081` Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
-- `15421516218753` Blazer «Roma» · Tailliert mit Bindegürtel & Revers
-- `15421594501505` Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
-- `15421606953345` Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
-- `15421615473025` Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
-- `15421617537409` Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & Volant
-- `15421620257153` Keil-Sandalen «Capri» · Geflochten, Espadrille-Look
-- `15422040277377` Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
-- `15422401479041` Sommer-Playsuit «Marigold» · Blüten-Print, Träger
-- `15422403051905` Plateau-Pumps «Wild» · Leoparden-Print, Knöchelriemen
-- `15422787453313` Mary-Jane-Ballerina «Dolce» · Lack, mit Riemchen
-- `15422811439489` Unisex T-Shirt – Selbst gestalten
-- … und 70 weitere
+- `15430444286337` Herren Chino-Shorts «Cruise» · Loose-Fit
+- `15430444319105` Herren Tanktop «Court» · Colorblock
+- `15430462669185` Herren Cargo-Hose «Trail» · Multi-Pocket Outdoor
+- `15430464012673` Damen Bikini «Maui» · Neckholder, Floral
+- `15430488326529` Damen Bikini «Sunset» · Front-Zip, Farbverlauf
+- `15430488883585` Damen Bikini «Solé» · One-Shoulder, Cut-out
+- `15430491308417` Damen Maxikleid «Sirena» · Seitenschlitz, einfarbig
+- `15430491373953` Damen A-Linien-Kleid «Fiorella» · Neckholder, bestickt
+- `15430491439489` Damen Sommerkleid «Bloom» · Träger, Print
+- `15430491668865` Damen Kleid «Aria» · Cut-out, einfarbig
+- `15430498353537` Damen Loungewear-Set «Cozy» · Hoodie + Hose
+- `15431384269185` Streifen-Bluse «Marbella» · Colorblock, Kurzarm
+- `15447594467713` Elegantes Bodycon Halterneck-Kleid mit Schnürung
+- `15447594697089` Minikleid mit Cut-Out und Rückenausschnitt
+- `15447595090305` Enges ärmelloses Minikleid mit Spaghettiträgern
+- `15447595254145` Damen Langarm-Rollkragenkleid mit Rüschensaum
+- `15447595549057` Figurbetontes schulterfreies Kleid mit Rosenmuster
+- `15447596499329` Abendkleid mit Perlen & Rüschen
+- `15447596859777` Elegantes Midikleid mit Blumenprint
+- `15447597089153` Florales Etuikleid mit Ballonärmeln
+- `15447597252993` Glänzendes Twill Patchwork Maxikleid
+- `15447597482369` Einfarbiges Oversize-Kleid mit One-Shoulder-Schnitt
+- `15447597711745` Asymmetrisches Maxi-Kleid mit figurbetontem Schnitt
+- `15447597908353` Elegantes blaues Etuikleid
+- `15447598072193` Gestreiftes Langarm-Hemdblusenkleid
+- … und 287 weitere
 
-## Sie-Anrede im Produkttext — 1038 (waehrend des Laufs 1050 gezaehlt, seither repariert)
+## Sie-Anrede im Produkttext — 1038
 
 Der ganze Shop duzt. Offene Klasse (03.09.), Massenlauf ist eine eigene Entscheidung.
 
@@ -207,7 +207,7 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15448898306433` Geometrisches Zirkon-Armband, 18K vergoldet
 - … und 1013 weitere
 
-## Auswahl-Versprechen bei EINER Variante — 1746
+## Auswahl-Versprechen bei EINER Variante — 1747
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -240,5 +240,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448924684673` Luxuriöser Plüsch Kissenbezug
 - `15448926060929` Weinroter Kissenbezug aus Rex Kaninchenfell
 - `15448926257537` Langes Eisseiden-Kissen mit Sommer-Motiv
-- … und 1721 weitere
+- … und 1722 weitere
 
