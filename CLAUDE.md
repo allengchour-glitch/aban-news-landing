@@ -114,6 +114,20 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   auf YouTube liefert nur die leere Hülle. (2) **Mitbewerber-Seiten inhaltlich klonen** (Copy
   und Testimonials übernehmen, Testimonial-Bilder erzeugen) ist dieselbe Grenze wie
   „NIE Fake-Reviews" — Layout ansehen ja, Inhalte übernehmen nein.
+- **🔥 GEÄNDERT (live, ein Feld je Collection): die Verkaufs-Collection war nach IMPORTDATUM
+  sortiert.** `geschenke-unter-50-franken` — die Collection, aus der **jeder nachprüfbare
+  Verkauf** kam — stand auf **`CREATED_DESC`** bei **63 145 Produkten**. Kundensicht vorher:
+  **sechs Hundeartikel am Stück** unter den ersten zwölf Kacheln. **Der bittere Teil:** die
+  Schwester `bestseller-unter-50` stand die ganze Zeit auf **`BEST_SELLING`**, ihre Adresse
+  **leitet aber per 301 auf die schlecht sortierte um** — die gute Sortierung war vorhanden und
+  unerreichbar. Jetzt `BEST_SELLING` bei `geschenke-unter-50-franken` (63 145),
+  `kleine-geschenke-mitbringsel` (28 900) und `nachtwaesche-pyjamas` (69).
+  **Nachgemessen an der echten Seite: Hundeartikel unter den ersten 12 von 6 auf 0**; vorn
+  stehen jetzt das **zweimal bestellte Fuda-Taschenmesser** (#1016/#1017) und Ware zwischen
+  CHF 14.90 und 40.90. Jederzeit zurückdrehbar. ⚠️ Dabei selbst in die Falle getreten: für die
+  zweite Collection die **ID geraten** → „Kollektion ist nicht vorhanden". **IDs immer abfragen.**
+  ⚠️ Und: **DRAFT-Produkte stehen in der API-Liste vorn, der Shop blendet sie aus** — darum die
+  Kundensicht abrufen, nicht der API-Antwort glauben.
 - **🛠️ GEBAUT + GEMESSEN `tools/shop_conversion.mjs`** (12 Selbsttests): ruft die echten Seiten
   ab und zählt benannte Conversion-Bausteine. **Regel des Geräts:** vor jeder Textprüfung
   fliegen `<script>`, `<style>` und HTML-Kommentare raus — auf der Produktseite steht in einem

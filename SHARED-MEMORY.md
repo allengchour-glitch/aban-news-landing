@@ -50,6 +50,14 @@ einer einzigen Produktseite** (105 fertige Reels liegen in `reels/`), und die St
 Theme-Zugriff**: `stagedUploadsCreate` → Datei per `PUT` → `productUpdate` mit der
 `resourceUrl` (`productCreateMedia` ist veraltet).
 
+**🔥 Am 13.09. live geändert (ein Feld je Collection, zurückdrehbar):** die Collection, aus der
+jeder Verkauf kam, war nach **Importdatum** sortiert — Kundensicht: sechs Hundeartikel am
+Stück unter den ersten zwölf Kacheln. Jetzt **`BEST_SELLING`** bei
+`geschenke-unter-50-franken`, `kleine-geschenke-mitbringsel` und `nachtwaesche-pyjamas`.
+Nachgemessen: **Hundeartikel unter den ersten 12 von 6 auf 0**. **Für jede Session: bei jeder
+Collection die `sortOrder` prüfen** — `CREATED_DESC` macht aus dem Schaufenster eine
+Importliste.
+
 **🟡 Was nur der User kann — bitte in dieser Reihenfolge erfragen:**
 1. **`SHOPIFY_CLI_THEME_TOKEN`** (App „Theme Access" im Admin, Passwort erzeugen) → danach
    kann jede Session Themes selbst veröffentlichen. Grösster Hebel.

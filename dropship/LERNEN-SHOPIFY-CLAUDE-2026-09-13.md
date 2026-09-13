@@ -230,6 +230,59 @@ Gegen das Schema geprüft, damit morgen niemand sucht:
 
 ---
 
+## 4b · Geändert, nicht nur gemessen: die Verkaufs-Collection war nach Importdatum sortiert
+
+**Der Fund.** `geschenke-unter-50-franken` — die Collection, aus der **jeder nachprüfbare
+Verkauf** kam — stand auf **`CREATED_DESC`**, also „neuester Import zuerst". Bei 63 145
+Produkten heisst das: das Schaufenster zeigt, was der Importer zuletzt angelegt hat.
+
+**Kundensicht vorher gemessen** (Abruf mit Handy-Kennung, die ersten zwölf Kacheln):
+
+```
+ 1 Minimalistisches Kleid · 2 Damen-Hemdkleid · 3 Gerahmtes Wandbild Katze
+ 4 Damen-Strickkleid · 5 Dekoschwan · 6 Ohrstütze zur Korrektur für Hunde
+ 7 Hunde-Namensschild · 8 Hunde-Schutzhose · 9 Nylon-Brustgeschirr für Hunde
+10 Hundekleid College-Stil · 11 Hunde-Brustgurt-Leine · 12 Hundeleine mit Rollautomatik
+```
+**Sechs Hundeartikel am Stück** im Schaufenster der einzigen Collection, die verkauft.
+
+**Der bittere Teil:** die Schwester-Collection `bestseller-unter-50` („Lieblinge unter CHF 50",
+derselbe Umfang, 63 145) stand die ganze Zeit auf **`BEST_SELLING`** — aber ihre Adresse
+**leitet per 301 auf `geschenke-unter-50-franken` um** (gestern gemessen). Die gute Sortierung
+war also vorhanden und unerreichbar.
+
+**Geändert:** `sortOrder` auf **`BEST_SELLING`** bei drei Collections —
+`geschenke-unter-50-franken` (63 145), `kleine-geschenke-mitbringsel` (28 900) und
+`nachtwaesche-pyjamas` (69). Ein Feld je Collection, jederzeit zurückdrehbar.
+
+**Kundensicht nachher gemessen:**
+
+```
+ 1 Fuda Taschenmesser Damaststahl · 2 E-Scooter-Ladegerät · 3 Interaktives Katzenspielzeug
+ 4 Blumenkleid CHF 14.90 · 5 Reise-Hängematte · 6 Gemüseschneider
+ 7 Midikleid CHF 14.90 · 8 Vakuumierer · 9 Leinen-Set «Provence» …
+```
+
+| Kennzahl | vorher | nachher |
+|---|---|---|
+| Hundeartikel unter den ersten 12 | **6** | **0** |
+| Produkte aus echten Bestellungen vorn | 0 | **Taschenmesser** (#1016/#1017), LED-Laterne «Boho» (#1004) |
+
+Das **Fuda-Taschenmesser** ist genau der Artikel, den ein Kunde zweimal bestellt hat. Die
+**LED-Laterne «Boho»** ist der allererste Verkauf überhaupt (#1004) — sie steht in der
+Admin-Liste weit vorn, ist aber **DRAFT** und wird vom Shop korrekt ausgeblendet. Genau
+deshalb ist die Prüfung an der echten Seite nötig und nicht an der API-Antwort.
+
+**Warum `BEST_SELLING` und nicht von Hand kuratiert:** bei 14 Bestellungen ist die Datenlage
+dünn, aber „meistverkauft" ist trotzdem streng besser als „zuletzt importiert" — und es
+verbessert sich mit jedem Kauf von selbst, ohne dass jemand eine Liste pflegen muss.
+
+**⚠️ Beim Ändern in die eigene Falle getreten:** ich habe für die zweite Collection die ID
+geraten → „Kollektion ist nicht vorhanden". Steht so im Skill `shopify-publizieren`:
+**IDs immer aus einer Abfrage nehmen, nie raten.**
+
+---
+
 ## 5 · Profit maximieren
 
 **Margen-Benchmark (QUELLE, mehrere Quellen einig):** übliche Netto-Marge im Dropshipping
