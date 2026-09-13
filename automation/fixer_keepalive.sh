@@ -468,7 +468,7 @@ while true; do
     if [ "$ALTER" -gt 86400 ]; then
       # NUR_RAEUMEN: unbeaufsichtigt nur Abgelaufenes abräumen — Neuaufnahme braucht den
       # Kontaktbogen-Blick einer betreuten Runde (15.08.: 5 untaugliche Bilder auf Position 1).
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_hype_kuratieren.lock; flock -n 9 || exit 0; env NUR_RAEUMEN=1 exec python3 automation/hype_kuratieren.py" >> "$HY" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_hype_kuratieren.lock; flock -n 9 || exit 0; NUR_RAEUMEN=1 exec python3 automation/hype_kuratieren.py" >> "$HY" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
@@ -726,7 +726,7 @@ while true; do
   if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_landeseiten.lock; flock -n 9 || exit 0; env FIX=1 exec python3 automation/tote_landeseiten.py" >> "$TLS" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_landeseiten.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/tote_landeseiten.py" >> "$TLS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-landeseiten geprüft"
     fi
   fi
@@ -740,7 +740,7 @@ while true; do
   if [ -f "$REPO/automation/google_size_metafeld.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_size_metafeld.lock; flock -n 9 || exit 0; env FIX=1 CAP=1200 exec python3 automation/google_size_metafeld.py" >> "$GS" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_size_metafeld.lock; flock -n 9 || exit 0; FIX=1 CAP=1200 exec python3 automation/google_size_metafeld.py" >> "$GS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) google-size Nachtrag gestartet"
     fi
   fi
@@ -754,7 +754,7 @@ while true; do
   if [ -f "$REPO/automation/ratgeber_rueckverweis.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$RV" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ratgeber_rueckverweis.lock; flock -n 9 || exit 0; env FIX=1 exec python3 automation/ratgeber_rueckverweis.py" >> "$RV" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ratgeber_rueckverweis.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/ratgeber_rueckverweis.py" >> "$RV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ratgeber-rueckverweis gestartet"
     fi
   fi
