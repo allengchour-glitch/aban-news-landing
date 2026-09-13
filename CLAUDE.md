@@ -68,6 +68,48 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-13, dritte Runde (💰 DREI VON NEUN VERKAUFTEN POSTEN GINGEN MIT VERLUST RAUS):**
+- **Auftrag:** „lerne weiter". Endlich **Hack 3 aus dem offiziellen Shopify-Video gemacht:
+  Preisstrategie aus eigenem Katalog UND eigenen Bestelldaten** — der einzige offene Punkt, der
+  keine fehlenden Zugangsdaten braucht. Voller Bericht:
+  **`dropship/LERNEN-PREISE-MARGEN-2026-09-13.md`**.
+- **✅ Es geht: `inventoryItem.unitCost` ist gefüllt** — bei **231 von 250** geprüften aktiven
+  Produkten. **Währung VOR der ersten Rechnung geprüft:** Shop CHF, `unitCost` CHF (CJ rechnet
+  sonst in USD — ohne die Prüfung wäre jede Zahl wertlos). 19 ohne Kosten = **unbekannt**.
+- **🔴 DER TREFFER, aus den echten Bestellungen: 3 von 9 verkauften Posten mit bekanntem
+  Einkaufspreis gingen MIT VERLUST raus.** #1015 Gemüseschneider 15.90 vs. 20.84 · #1013
+  Midikleid 14.90 vs. 20.37 · #1011 Hängematte 14.90 vs. 16.92 — Versand noch nicht abgezogen.
+  **Im Katalog sind es nur 4 von 231 (1,7 %), bei den Verkäufen 3 von 9.** Vermutung (nicht
+  belegt): ein zu tiefer Preis sieht nach einem Fund aus, also verkauft sich genau die Ware
+  ohne Marge. **Die Gewinner:** Fuda-Taschenmesser 40.90 und Leinen-Set 34.90, beide ~44 %
+  Rohmarge, beide CHF 30–45.
+- **✅ GEÄNDERT (live): 7 Produkte / 76 Varianten hochgesetzt**, `userErrors` leer. Regel:
+  EK ÷ 0,55, aufgerundet auf `x9.90`, danach geprüft dass auch **nach WELCOME10** über 38 %
+  bleiben. Fahrradsattel 16.90→**49.90** (EK 27.55) · Titan-Schneidebrett 24.90→**54.90** (28.79)
+  · Elektr. Gemüseschneider 39.90→**74.90** (41.00) · Solar-Lichterkette 19.90→**39.90** (20.17)
+  · Runder Gemüseschneider 15.90→**39.90** (20.84) · Midikleid 40 Var. 14.90→**39.90** (20.37) ·
+  Hängematte 31 Var. 14.90–20.90→**34.90** (16.92). **Nachgemessen: Verlustfälle 4 → 0**, und
+  **an der echten Seite** gegengeprüft (49.90 / 34.90 / 39.90, alle HTTP 200) — nicht der
+  API-Antwort geglaubt. Jederzeit zurückdrehbar, alle Vorher-Werte im Bericht.
+- **🛠️ GEBAUT `tools/preis_marge.mjs`** (20 Selbsttests) + Daten
+  `dropship/preise-kosten-2026-09-13{a-vorher,b-nachher}.csv`. Gegenproben: fehlender
+  Einkaufspreis ergibt **unbekannt statt 100 % Marge**, EK = VK ergibt **genau 0 %**, eine leere
+  Preisklasse behauptet keinen Median, der Gutschein senkt den Erlös statt die Kosten.
+- **⚠️ ZWEI ZAHLEN, DIE NICHT NEBENEINANDER GEHÖREN: Median-ROHMARGE 58,9 %** (nach WELCOME10
+  54,3 %) **ist NICHT die „Dropship-Nettomarge 15–20 %"** von gestern — dort sind Versand,
+  Werbung, Retouren und Gebühren schon abgezogen, in `unitCost` nicht. Wer sie vergleicht,
+  schliesst der Shop verdiene dreimal so gut wie üblich.
+- **❌ VERMUTUNG WIDERLEGT:** „bei billiger Ware frisst der Einkauf den Preis" stimmt nicht —
+  die Klasse **unter CHF 20 hat mit 60,6 % die BESTE** Median-Rohmarge (20–30: 55,6 · 30–40:
+  59,6 · 40–50: 54,9 · ab 50: 56,6). Die Verlustfälle sind Einzelfälle über alle Klassen.
+- **⚠️ `productsCount` DECKELT BEI 10000 und liefert für `status:active`, `status:draft` und
+  ohne Filter DIESELBE 10000** — die Gegenprobe `status:zzzgibtesnicht` ergibt korrekt 0, das
+  Argument wird also gelesen, die Zahl ist trotzdem unbrauchbar. **Die wahre Zahl aktiver
+  Produkte ist damit unbekannt**, und 3 der 4 Verkaufs-Verlustfälle standen NICHT in der
+  Stichprobe → es gibt mehr als die vier gefundenen.
+- **🟡 Nebenbefund, eigene Runde wert:** die Reise-Hängematte hatte für **dieselbe Ware
+  14.90 bis 51.90** bei identischem EK 16.92. Ob weitere Produkte so aussehen: nicht gemessen.
+
 **📌 2026-09-13, zweite Runde (📧 ES GIBT KEIN ANMELDEFENSTER — der Engpass ist gemessen erklärt):**
 - **Auftrag:** „weiter youtube lernen". **Am Shop nichts geändert.** Voller Bericht:
   **`dropship/LERNEN-EMAIL-EINSAMMELN-2026-09-13.md`**.

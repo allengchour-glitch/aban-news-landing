@@ -42,6 +42,7 @@ Node ist **`/opt/node22/bin/node`**. Jedes Werkzeug hier hat `--selbsttest` mit 
 
 | Werkzeug | tut |
 |---|---|
+| `tools/preis_marge.mjs` | Rohmarge des Katalogs aus Verkaufs- und Einkaufspreis (`inventoryItem.unitCost`): Verlustfälle, dünne Margen, Median je Preisklasse, Wirkung von WELCOME10. Daten in `dropship/preise-kosten-*.csv` | `… tools/preis_marge.mjs` |
 | `tools/yt_lernen.mjs` | Titel, Kanal, Datum, Aufrufe, Dauer und Beschreibung samt **Kapitelmarken** einer YouTube-Seite. Transkripte gehen nicht — siehe Skill `recherchieren` |
 | `tools/tiktok_analyze.py` | echte Leistungsdaten des eigenen TikTok-Kontos (`--insecure` im Sandkasten) |
 
