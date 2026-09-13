@@ -8,6 +8,6 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 
 | Sitzungen | Titel | Handle |
 |---:|---|---|
-| 3 | (gelöscht) | `%F0%9F%8C%B8-muttertag-box-2026-schmuck-beauty-seide-spare-chf-60` |
-| 3 | (gelöscht) | `kaschmir-schal-premium-100-bergkaschmir-handgewebt` |
-| 3 | (gelöscht) | `badeset-3-teilig-mit-neckholder-spitze-elegant-damen-mehrere-grossen` |
+| 6 | Sternenhimmel Projektor · Baby Nachtlicht mit Musik | `sternenhimmel-projektor-baby-nachtlicht-mit-musik` |
+| 3 | Lost Nomade | `lost-nomade` |
+| 2 | Signet-Ring · Edelstahl matt gebürstet Unisex | `signet-ring-edelstahl-matt-geburstet-unisex` |
