@@ -402,3 +402,8 @@ gid://shopify/Product/15529234465153	Transparent
 gid://shopify/Product/15530176512385	Gold
 gid://shopify/Product/15530176577921	Silber
 gid://shopify/Product/15530177069441	Mehrfarbig
+gid://shopify/Product/15531866161537	Blau
+gid://shopify/Product/15531866227073	Silber
+gid://shopify/Product/15531868389761	Blau
+gid://shopify/Product/15531879039361	Mehrfarbig
+gid://shopify/Product/15531879301505	Türkis
