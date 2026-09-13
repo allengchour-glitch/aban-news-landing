@@ -114,6 +114,36 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   auf YouTube liefert nur die leere Hülle. (2) **Mitbewerber-Seiten inhaltlich klonen** (Copy
   und Testimonials übernehmen, Testimonial-Bilder erzeugen) ist dieselbe Grenze wie
   „NIE Fake-Reviews" — Layout ansehen ja, Inhalte übernehmen nein.
+- **🛠️ GEBAUT + GEMESSEN `tools/shop_conversion.mjs`** (12 Selbsttests): ruft die echten Seiten
+  ab und zählt benannte Conversion-Bausteine. **Regel des Geräts:** vor jeder Textprüfung
+  fliegen `<script>`, `<style>` und HTML-Kommentare raus — auf der Produktseite steht in einem
+  JS-Kommentar „Gratis-Versand ab CHF 49", reine Entwicklerhistorie. Wer roh greppt, meldet
+  zwei widersprechende Versprechen.
+- **🚨 DREI KORREKTUREN AM GEDÄCHTNIS, live nachgeprüft:** (1) **Die Sticky-ATC-Leiste steht
+  längst** (`sticky-add-to-cart__bar` auf jeder Seite) — das Gedächtnis führte sie seit Juni
+  als offen, **und ich habe das gestern ungeprüft weitergetragen**. (2) **Die
+  Gratis-Versand-Schwelle ist CHF 50, nicht 65**; der Theme-Kommentar begründet die Wahl: der
+  Automatik-Rabatt greift bei 49, die Regel prüft aber **nach** dem 10-%-Gutschein, 50 × 0,9 =
+  45 → **Absicht, nicht anfassen**. (3) **Der Gratisversand-Balken existiert** — laut CRO-
+  Checklisten der stärkste Warenkorb-Hebel, also schon gezogen.
+- **⚠️ Fehler im eigenen Messgerät, gefangen bevor er Schaden anrichtete:** die erste Fassung
+  suchte „Grössentabelle" und meldete bei allen Kleidern NEIN. Die Seiten nennen es
+  **„Mass-Tabellen"** (Schweizer Schreibweise). **Regel: erst nachsehen, wie die Seite es
+  nennt, dann das Muster schreiben.** Kein Defekt sind auch Poncho und Halloween-Umhang ohne
+  Grössenhilfe — sie sind einvariantig.
+- **📊 GEMESSEN (6 Live-Seiten):** Startseite **6,91 MB / 1130 Bilder**, Collection 0,98 MB,
+  Produktseiten 0,53–0,62 MB. Auf **allen**: sticky-ATC ja, Sterne-Widget ja,
+  **Bewertungen 0**, Versand CHF 50 mit Balken, Rückgabe, CH-Signal, 5–6 Zahlungslogos,
+  Lieferdatum auf den PDP. **Kein Video auf einer einzigen Produktseite.**
+- **🎯 NACH DER MESSUNG BLEIBEN NUR DREI LÜCKEN:** (1) Bewertungen 0 überall → fehlt
+  `JUDGEME_PRIVATE_TOKEN`; (2) kein Video auf den PDP, laut Quelle +10–25 % ATC, **105 fertige
+  Reels liegen in `reels/` (494 MB)**; (3) Startseite 6,91 MB → fehlt der Theme-Token.
+  **Alles andere aus den CRO-Checklisten steht bereits. Der Shop ist nicht das Problem, die
+  zwei fehlenden Zugangsdaten sind es.**
+- **✅ Weg für Video auf die PDP vorgeprüft (braucht KEINEN Theme-Zugriff):**
+  `stagedUploadsCreate` ist gültig; `productCreateMedia` ist gültig, aber **veraltet** →
+  `productUpdate`/`productSet` nutzen. Ablauf: staged Upload → Datei per `PUT` → Medium über
+  `productUpdate` mit der `resourceUrl` anhängen.
 - **🔒 NEBENBEFUND, LIVE GEMESSEN: das Gedächtnis stand öffentlich im Netz.**
   `https://abannews.com/CLAUDE.md` → **HTTP 200, 34 399 Bytes**,
   `https://abannews.com/SHARED-MEMORY.md` → **200, 107 585 Bytes**. Die Session vom 12.09. hat

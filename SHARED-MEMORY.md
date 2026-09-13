@@ -38,6 +38,18 @@ aufs aktive Theme und `themePublish`. Die **Shopify CLI** kann es: `SHOPIFY_CLI_
 `theme publish --theme <id> --force`. Gemessen: CLI nicht installiert, aber `@shopify/cli`
 **4.8.0** ist aus dem Container erreichbar. **Es fehlt nur das Token.**
 
+**📊 Am 13.09. nachmittags nachgemessen (`tools/shop_conversion.mjs`, 6 Live-Seiten):** der
+Shop hat mehr Conversion-Bausteine, als das Gedächtnis behauptete. Sticky-ATC-Leiste,
+Gratisversand-Balken, Warenkorb-Schublade, Rückgabe, Schweiz-Signal, Lieferdatum und 5–6
+Zahlungslogos **stehen alle**. Korrekturen: die Sticky-Leiste stand fälschlich seit Juni als
+offener Punkt, und die Gratis-Versand-Schwelle ist **CHF 50, nicht 65** (Absicht: der
+Automatik-Rabatt greift bei 49, die Regel prüft nach dem 10-%-Gutschein — 50 × 0,9 = 45).
+**Es bleiben exakt drei Lücken:** Bewertungen sind auf jeder Seite **0**, **kein Video auf
+einer einzigen Produktseite** (105 fertige Reels liegen in `reels/`), und die Startseite mit
+**6,91 MB / 1130 Bildern**. Der Weg, Videos anzuhängen, ist vorgeprüft und braucht **keinen
+Theme-Zugriff**: `stagedUploadsCreate` → Datei per `PUT` → `productUpdate` mit der
+`resourceUrl` (`productCreateMedia` ist veraltet).
+
 **🟡 Was nur der User kann — bitte in dieser Reihenfolge erfragen:**
 1. **`SHOPIFY_CLI_THEME_TOKEN`** (App „Theme Access" im Admin, Passwort erzeugen) → danach
    kann jede Session Themes selbst veröffentlichen. Grösster Hebel.

@@ -151,22 +151,82 @@ Daneben steht, was LuxeStyle gemessen schon hat.
 
 | Hebel | Angegebene Wirkung | Stand LuxeStyle |
 |---|---|---|
-| **Sticky ATC-Leiste auf dem Handy** | **+8–12 % Add-to-Cart** | seit Juni offen, nie gebaut |
+| **Sticky ATC-Leiste auf dem Handy** | **+8–12 % Add-to-Cart** | **steht live** (gemessen, s. §4a) |
 | **Video auf der Produktseite** | **+10–25 % ATC** | Reel-Pipeline existiert, Videos liegen ungenutzt |
 | **Foto-Bewertungen** | **2–3× besser als reiner Text** | CJ liefert `commentUrls`, Importer fertig, es fehlt nur `JUDGEME_PRIVATE_TOKEN` |
-| **Fortschrittsbalken „Gratis-Versand ab X"** im Warenkorb | „der stärkste einzelne Warenkorb-Hebel" | Gratis-Versand ab CHF 65 existiert, Balken unbekannt |
-| Sternebewertung über der Falz, unter dem Titel | Trust vor dem Scrollen | unbekannt |
+| **Fortschrittsbalken „Gratis-Versand ab X"** im Warenkorb | „der stärkste einzelne Warenkorb-Hebel" | **steht live**, Schwelle **CHF 50** (nicht 65) |
+| Sternebewertung über der Falz, unter dem Titel | Trust vor dem Scrollen | Widget steht, **0 Bewertungen** |
 | **Eine** primäre Handlung auf der Startseite, nicht drei | weniger Entscheidungslähmung | 17 Reihen → `homepage_slim.mjs` bringt 4 |
 | Statisches Produktraster statt Karussell | Karussells schwächer seit 2022 | erledigt (2026-09-11, Raster verdichtet) |
 | Header: Logo links 40–60 px, **5–7 Navigationspunkte** | schlank und schnell | Menü hat 8 Bereiche + Unterkategorien |
 | Ankündigungsleiste = die obersten 30–50 px | teuerste Fläche der Seite | vorhanden (Gratis-Versand · WELCOME10 · 30 T) |
 | Mobil LCP < 2,5 s, INP < 200 ms | Technikziel | Startseite 6,91 MB — weit davon entfernt |
-| Bezahl-Logos unter dem Kaufknopf, „Gratis-Versand ab X" als Text darunter | Vertrauen | teils in Beschreibungen |
+| Bezahl-Logos, Versandversprechen, Rückgabe, CH-Signal | Vertrauen | **alles vorhanden**, 5–6 Zahlungslogos |
 | Express-Bezahlknöpfe oben, ohne Scrollen | „grösster Hebel im Handy-Checkout" | unbekannt |
 
 **Benchmark zur Einordnung (QUELLE):** gute Shopify-Conversion 2–3,5 %, Spitze ab 5 %;
 Dropshipping 2–3 %. **Vertrauenssignale zählen bei Dropshipping-Shops dreimal so viel** wie
 bei bekannten Marken, weil die Kundschaft keine Vorbeziehung hat.
+
+---
+
+## 4a · Gemessen am eigenen Shop statt aus der Checkliste geraten
+
+Werkzeug: **`tools/shop_conversion.mjs`** (12 Selbsttests). Es ruft die echten Seiten ab und
+zählt benannte Bausteine. **Die Regel, die es von einem `grep` unterscheidet:** vor jeder
+Textprüfung fliegen `<script>`, `<style>` und HTML-Kommentare raus. Auf der Produktseite steht
+in einem JS-Kommentar „Gratis-Versand ab CHF 49" — reine Entwicklerhistorie. Wer roh greppt,
+meldet zwei widersprechende Versprechen und schickt die nächste Session auf eine Reparatur,
+die es nicht gibt.
+
+| Seite | Grösse | sticky-ATC | Sterne | Bewertungen | Versand | Balken | Lieferdatum | Video | Logos |
+|---|---|---|---|---|---|---|---|---|---|
+| Startseite | **6,91 MB** / 1130 Bilder | ja | ja | **0** | CHF 50 | ja | – | ja | 6 |
+| `geschenke-unter-50-franken` | 0,98 MB | ja | ja | **0** | CHF 50 | ja | – | nein | 5 |
+| Pyjama-PDP | 0,62 MB | ja | ja | **0** | CHF 50 | ja | ja | **nein** | 6 |
+| Poncho-PDP (verkauft) | 0,53 MB | ja | ja | **0** | CHF 50 | ja | ja | **nein** | 6 |
+| Halloween-PDP (verkauft) | 0,53 MB | ja | ja | **0** | CHF 50 | ja | ja | **nein** | 6 |
+| Kleid-PDP | 0,56 MB | ja | ja | **0** | CHF 50 | ja | ja | **nein** | 6 |
+
+**🚨 Drei Korrekturen am Gedächtnis, alle live nachgeprüft:**
+1. **Die Sticky-ATC-Leiste steht.** Das Gedächtnis führte sie seit Juni als offenen Punkt,
+   und ich habe das gestern ungeprüft weitergetragen. `sticky-add-to-cart__bar` liegt auf
+   jeder gemessenen Seite.
+2. **Die Gratis-Versand-Schwelle ist CHF 50, nicht 65.** Im Theme steht dazu ein Kommentar,
+   der die Wahl begründet: der Automatik-Rabatt greift bei 49, aber die Regel prüft den Korb
+   **nach** dem 10-%-Gutschein — 50 ist die einzige Zahl, die in jedem Korb wahr bleibt
+   (50 × 0,9 = 45). **Das ist Absicht, nicht anfassen.**
+3. **Der Fortschrittsbalken existiert** („Gratisversand-Balken"). Die Checkliste nennt ihn den
+   stärksten Warenkorb-Hebel — der ist also schon gezogen.
+
+**⚠️ Und ein Fehler im eigenen Messgerät, gefangen bevor er Schaden anrichtete:** die erste
+Fassung suchte „Grössentabelle" und meldete bei allen Kleidern **NEIN**. Die Seiten nennen es
+**„Mass-Tabellen"** (Schweizer Schreibweise). Eine vorhandene Hilfe als fehlend zu melden hätte
+die nächste Session auf Arbeit geschickt, die es nicht braucht. Regel fürs Gerät: **erst
+nachsehen, wie die Seite es nennt, dann das Muster schreiben.** Ebenso kein Defekt: Poncho und
+Halloween-Umhang haben keine Grössenhilfe, weil sie einvariantig sind.
+
+**Was nach der Messung übrig bleibt — und es sind nur drei Dinge:**
+1. **Bewertungen: 0 auf jeder gemessenen Seite.** Das Widget ist installiert, der Importer
+   fertig, CJ hat die Kommentare samt Fotos. Es fehlt `JUDGEME_PRIVATE_TOKEN`.
+2. **Kein Video auf einer einzigen Produktseite** (die Startseite hat eines). Laut Quelle
+   +10–25 % ATC. **105 fertige Reels liegen in `reels/` (494 MB).**
+3. **Startseite 6,91 MB / 1130 Bilder.** Werkzeug fertig, es fehlt der Theme-Token.
+
+Alles andere, was die CRO-Checklisten fordern, steht bereits: Sticky-ATC, Warenkorb-Schublade,
+Versandversprechen mit Balken, Rückgabe, Schweiz-Signal, Lieferdatum, 5–6 Zahlungslogos,
+Grössenhilfe und ein ehrlicher Hinweis auf asiatische Konfektion. **Der Shop ist nicht das
+Problem — die zwei fehlenden Zugangsdaten sind es.**
+
+### Video auf die Produktseiten: Weg vorgeprüft
+Gegen das Schema geprüft, damit morgen niemand sucht:
+- `stagedUploadsCreate` → **gültig**.
+- `productCreateMedia` → gültig, aber **veraltet**; Shopify verweist auf `productUpdate`
+  bzw. `productSet`. Nötige Scopes laut Schema: `write_products`, `read_products`,
+  `read_files`, `read_images` u. a.
+- Ablauf: `stagedUploadsCreate` → Datei per `PUT` auf die erhaltene URL → Medium über
+  `productUpdate` mit der `resourceUrl` anhängen. **Braucht keinen Theme-Zugriff** — dieser
+  Hebel ist also auch ohne den Theme-Token erreichbar.
 
 ---
 
@@ -180,9 +240,10 @@ bei bekannten Marken, weil die Kundschaft keine Vorbeziehung hat.
    schon bezahlt. Bündel, Mengenrabatte, Cross-Sell.
 2. **Nachkauf-Upsell** (nach dem Bezahlen, 20–30 % Rabatt auf Ergänzungsprodukt): soll mit
    15–25 % angenommen werden. Ein Klick, kein neuer Traffic nötig.
-3. **Versandschwelle als Upsell-Zwang:** „Gratis ab CHF 65" bei einem Hauptprodukt um
-   CHF 20–45 zwingt rechnerisch zum zweiten Artikel. **Hier gemessen relevant:** jede echte
-   Bestellung lag zwischen CHF 21.90 und 41.90 — also **unter** der Schwelle. Die Schwelle
+3. **Versandschwelle als Upsell-Zwang:** „Gratis ab CHF 50" (**gemessen auf der Live-Seite — nicht 65, wie das
+   Gedächtnis sagte**) bei einem Hauptprodukt um CHF 20–45 zwingt rechnerisch zum zweiten
+   Artikel. **Hier gemessen relevant:** jede echte Bestellung lag zwischen CHF 21.90 und
+   41.90 — also **unter** der Schwelle. Die Schwelle
    arbeitet im Moment nicht für den Shop, sie bremst ihn womöglich.
 4. **Ankerpreis** (durchgestrichener Vorher-Preis) und **Schwellenpreis** (CHF 19.90 statt 20).
 5. **Hack 3 aus dem offiziellen Video:** Preisstrategie aus dem eigenen Katalog plus den
