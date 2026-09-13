@@ -12,7 +12,7 @@ Node ist **`/opt/node22/bin/node`**. Jedes Werkzeug hier hat `--selbsttest` mit 
 
 | Werkzeug | misst | Aufruf |
 |---|---|---|
-| `tools/shop_conversion.mjs` | Conversion-Bausteine auf den **echten** Seiten: sticky-ATC, Sterne, Bewertungszahl, Versandversprechen samt Schwelle, Gratisversand-Balken, Lieferdatum, Grössenhilfe, Video, Zahlungslogos, Seitengewicht | `… tools/shop_conversion.mjs --standard` |
+| `tools/shop_conversion.mjs` | Conversion-Bausteine auf den **echten** Seiten: sticky-ATC, Sterne, Bewertungszahl, Versandversprechen samt Schwelle, Gratisversand-Balken, Lieferdatum, Grössenhilfe, Video, Zahlungslogos, Seitengewicht — dazu **wo das E-Mail-Feld steht** (in Prozent der Seite), ob ein **Anmeldefenster** geladen wird und ob ein **Rabattcode im Klartext** auf der Seite steht | `… tools/shop_conversion.mjs --standard` |
 | `tools/shop_startseite.mjs` | Zuverlässigkeit und Gewicht der Startseite gegen eine Produktseite als Kontrolle | `… tools/shop_startseite.mjs` |
 | `tools/produkt_qualitaet.mjs` | Produktdefekte aus einem GraphQL-Auszug: rohe Lieferantentexte, erfundene Grössen, fehlende Bilder/Alt-Texte/SEO | `… tools/produkt_qualitaet.mjs <dump.json>` |
 | `tools/kanal_waechter.mjs` | heikle Produkte in Marketing-Kanälen (nach Collection, nicht nach Titel) | `… tools/kanal_waechter.mjs <dump.json>` |

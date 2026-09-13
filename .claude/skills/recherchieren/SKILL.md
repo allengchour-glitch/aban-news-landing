@@ -36,11 +36,24 @@ wie ein Transkript.
 /opt/node22/bin/node tools/yt_lernen.mjs --voll <id>         # ganze Beschreibung
 ```
 
-**Zwei Fallen stecken als Gegenprobe im Werkzeug:**
-1. **Grösse beweist nichts.** YouTubes Einwilligungsseite ist ebenfalls über 50 000 Bytes gross
-   und trägt den Titel „Like this video?". Eine Längenprüfung hält sie für eine Videoseite.
-   Geprüft wird darum auf `shortDescription` **und** `viewCount`.
-2. **`19:90` mitten im Satz ist keine Kapitelmarke** — Zeilenanfang verlangen.
+**Drei Fallen stecken als Gegenprobe im Werkzeug:**
+1. **Grösse beweist nichts.** Eine 1,2-MB-Antwort kann trotzdem unbrauchbar sein. Geprüft wird
+   auf die Felder, die eine Videoseite haben muss — nicht auf die Länge.
+2. **YouTube liefert zwei Fassungen derselben Seite** (GEMESSEN 2026-09-13, acht Abrufe
+   desselben Videos). Der **reduzierten** fehlen `shortDescription`, `viewCount`, Dauer und
+   Kanalname; Titel und Beschreibung stehen aber vollständig in `videoPrimaryInfoRenderer`
+   bzw. `attributedDescription`. Bei sechs Abrufen kam die volle Fassung **ein Mal** — darum
+   versucht `hole()` es mehrfach (`YT_VERSUCHE=n`).
+   ⚠️ **Korrektur einer früheren Lehre:** die Seite mit „Like this video?" / „Dieses Video
+   gefällt dir?" ist **keine Einwilligungsseite**, sondern genau diese reduzierte Fassung. Der
+   Satz steht dort unter `"title":{"simpleText"}`, während der echte Titel daneben vollständig
+   vorhanden ist. **Nie die erste Titelquelle nehmen, ohne zu wissen, welche das ist.**
+3. **`19:90` mitten im Satz ist keine Kapitelmarke** — Zeilenanfang verlangen.
+
+**Und eine Falle beim Ausweichen auf Ersatzfelder:** in der reduzierten Fassung steht auch
+`lengthText` — aber es gehört zu einem **Vorschlagsvideo aus der Seitenspalte** und meldete
+38:45 für ein Video von 14 Minuten. **Ein Ersatzfeld muss beweisbar zum Hauptvideo gehören,
+sonst bleibt der Wert unbekannt.** Unbekannt ist ein besseres Ergebnis als falsch.
 
 **Die Grenze, gemessen:** nach rund **einem Dutzend Abrufen** antwortet YouTube mit **HTTP 429**
 (Antwort rund 3,3 KB). Höchstens eine Handvoll Videos am Stück, sonst ist YouTube für Stunden
@@ -80,6 +93,17 @@ Beispiel vom 13.09.: die E-Mail-Benchmarks waren sauber (Warenkorb-Strecken 3.65
 bei 1498 Kundendatensätzen** — die Empfehlung „bessere Strecken bauen" wäre ins Leere gegangen.
 Der Engpass war das Einsammeln. **Ohne Gegenprobe hätte die Recherche in die falsche Richtung
 geschickt.**
+
+Die zweite Runde desselben Tages ging noch einen Schritt weiter und prüfte, **was die Seite
+heute wirklich tut**: es gibt **kein Anmeldefenster** — auf keiner der fünf gemessenen Seiten —
+und der Rabattcode steht im Klartext im Ankündigungsband. Die Videos hatten „Anmeldefenster
+richtig bauen" gelehrt; gebraucht wurde erst einmal der Befund, dass keins existiert.
+**Erst messen, was steht. Dann lesen, wie man es besser macht.**
+
+Und noch eine Beobachtung über die Quellen selbst: ein Kanal betitelt ein Kapitel „Revenue Per
+Recipient: A Misleading Metric" — also genau die Kennzahl, die eine andere Quelle am selben Tag
+als Richtwert lieferte. **Zwei fremde Behauptungen, die sich widersprechen, ergeben keine
+Wahrheit.** Notieren, dass sie sich widersprechen, und am eigenen Bestand entscheiden.
 
 ## Ablegen
 

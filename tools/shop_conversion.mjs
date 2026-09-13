@@ -36,6 +36,18 @@ const BAUSTEINE = [
   ['rueckgabe',         /\d+ Tage R(ü|ue)ckgabe/i,                          'text'],
   ['schweiz_signal',    /Schweizer Shop|🇨🇭/,                               'text'],
 ];
+/**
+ * E-Mail-Einsammeln (2026-09-13 dazugekommen). GEMESSEN war der Engpass nicht die
+ * Klaviyo-Strecke, sondern das Einsammeln: 3 Abonnenten bei 1498 Kundendatensaetzen.
+ * Darum misst das Geraet jetzt, WO das einzige Feld steht und OB ueberhaupt ein
+ * Fenster-Werkzeug geladen wird.
+ */
+const EMAIL_FELD = /name="contact\[email\]"|type="email"/i;
+/** Skripte, die ein Anmeldefenster einblenden koennten — keins davon ist ein Theme-Bestandteil. */
+const FENSTER_WERKZEUG = /shopify-forms|forms\.shopify|static\.klaviyo\.com|klaviyo\.js|privy|omnisend|justuno|optimonk|sumo\.com/i;
+/** Ein Rabattcode im Klartext auf der Seite: dann gibt es nichts mehr einzutauschen. */
+const CODE_IM_KLARTEXT = /\bCode\s+([A-Z][A-Z0-9]{4,15})\b/g;
+
 /** Zahlungs- und Vertrauenslogos: gezaehlt, nicht nur ja/nein. */
 const ZAHLUNG = /visa|mastercard|twint|postfinance|paypal|klarna|american express|amex/gi;
 /** Die Versandschwelle, wie der Kunde sie liest. */
@@ -62,6 +74,11 @@ export function messe(html) {
   const bewertungen = [...String(html).matchAll(/data-number-of-reviews="(\d+)"/g)]
     .map(m => Number(m[1]));
 
+  // Wo steht das erste E-Mail-Feld? Bei 99 % hat es kein Besucher je gesehen.
+  const treffer = String(html).search(EMAIL_FELD);
+  const email_feld_bei = treffer < 0 ? null : Math.round((treffer / html.length) * 1000) / 10;
+  const codes = new Set([...String(sichtbarerText(html)).matchAll(CODE_IM_KLARTEXT)].map(m => m[1]));
+
   return {
     bytes: Buffer.byteLength(html),
     bilder: (html.match(/<img\b/gi) || []).length,
@@ -69,6 +86,10 @@ export function messe(html) {
     zahlungslogos: new Set((html.match(ZAHLUNG) || []).map(s => s.toLowerCase())).size,
     schwellen: [...schwellen].sort((x, y) => x - y),
     bewertungen_max: bewertungen.length ? Math.max(...bewertungen) : null,
+    email_feld: treffer >= 0,
+    email_feld_bei,
+    fenster_werkzeug: FENSTER_WERKZEUG.test(html),
+    codes_im_klartext: [...codes],
     ...b,
   };
 }
@@ -96,6 +117,8 @@ function zeile(url, m, status) {
     `     Versandversprechen ${ja(m.versandversprechen)} (Schwelle ${m.schwellen.join('/') || '—'}) · Balken ${ja(m.gratis_balken)}`,
     `     Lieferdatum ${ja(m.lieferdatum)} · Rueckgabe ${ja(m.rueckgabe)} · CH-Signal ${ja(m.schweiz_signal)}`,
     `     Groessenhilfe ${ja(m.groessenhilfe)} · Asien-Hinweis ${ja(m.asien_hinweis)} · Video ${ja(m.video)} · Zahlungslogos ${m.zahlungslogos}`,
+    `     E-Mail-Feld ${ja(m.email_feld)}${m.email_feld_bei === null ? '' : ` (bei ${m.email_feld_bei} % der Seite)`}` +
+      ` · Anmeldefenster ${ja(m.fenster_werkzeug)} · Code im Klartext ${m.codes_im_klartext.join('/') || '—'}`,
   ].join('\n');
 }
 
@@ -134,6 +157,27 @@ function selbsttest() {
 
   // Die zweite Falle: die Groessenhilfe heisst hier nicht Groessentabelle
   const m8 = messe('<p>📐 Mass-Tabellen ansehen (cm)</p>');
+  // --- E-Mail-Einsammeln, mit Gegenproben ---
+  const unten = 'x'.repeat(9000) + '<input type="email" name="contact[email]">' + 'x'.repeat(100);
+  const mu = messe(unten);
+  pruefe(mu.email_feld && mu.email_feld_bei > 95,
+    `Feld ganz unten wird als solches gemeldet (${mu.email_feld_bei} %)`);
+  const oben = '<input type="email" name="contact[email]">' + 'x'.repeat(9000);
+  pruefe(messe(oben).email_feld_bei < 5, 'Gegenprobe: Feld weit oben ergibt einen kleinen Prozentwert');
+  const ohne = messe('<p>nur Text</p>');
+  pruefe(!ohne.email_feld && ohne.email_feld_bei === null,
+    'Gegenprobe: ohne Feld wird NICHT 0 % gemeldet, sondern unbekannt');
+  pruefe(messe('<script src="https://static.klaviyo.com/onsite/js/klaviyo.js"></script>').fenster_werkzeug,
+    'Anmeldefenster-Werkzeug wird erkannt');
+  pruefe(!messe('<script src="/cdn/shop/t/8/assets/theme.js"></script>').fenster_werkzeug,
+    'Gegenprobe: ein Theme-Skript ist kein Anmeldefenster');
+  pruefe(messe('<p>–10% mit Code WELCOME10 sichern</p>').codes_im_klartext[0] === 'WELCOME10',
+    'Rabattcode im Klartext wird gefunden');
+  pruefe(messe('<p>Wir liefern schnell</p>').codes_im_klartext.length === 0,
+    'Gegenprobe: normaler Satz enthaelt keinen Code');
+  pruefe(messe('<script>var Code = "GEHEIM123";</script>').codes_im_klartext.length === 0,
+    'Gegenprobe: ein Code im Skript zaehlt nicht — kein Kunde liest ihn');
+
   pruefe(m8.groessenhilfe, 'Schweizer Schreibweise „Mass-Tabellen" wird als Groessenhilfe erkannt');
   pruefe(messe('<p>Grössentabelle</p>').groessenhilfe, 'und „Grössentabelle" natuerlich auch');
   pruefe(!messe('<p>Diese Hose ist aus Baumwolle</p>').groessenhilfe,

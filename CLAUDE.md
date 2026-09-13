@@ -68,6 +68,54 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-13, zweite Runde (📧 ES GIBT KEIN ANMELDEFENSTER — der Engpass ist gemessen erklärt):**
+- **Auftrag:** „weiter youtube lernen". **Am Shop nichts geändert.** Voller Bericht:
+  **`dropship/LERNEN-EMAIL-EINSAMMELN-2026-09-13.md`**.
+- **🔴 HAUPTBEFUND, an fünf Live-Seiten GEMESSEN: ein Anmeldefenster existiert NICHT.** Geladen
+  werden genau zwei fremde Erweiterungen (Partnerprogramm, Judge.me) — **kein `shopify-forms`,
+  kein `static.klaviyo.com/onsite/js/klaviyo.js`**, kein Privy/Omnisend/Justuno/OptiMonk. Damit
+  ist die Gedächtnis-Aussage vom 01.06. „**WELCOME10-Popup (Shopify Forms) live**" **widerlegt**.
+  Die 37 „popup"-Treffer im Quelltext sind `aria-haspopup` an Suche und Menü plus die
+  Einstellungen des Judge.me-Fensters.
+- **Das einzige E-Mail-Feld ist das Theme-Formular im Fuss** und steht bei **89,6–99,2 % der
+  Seite** (Startseite: hinter 7,18 von 7,24 Mio. Zeichen). Ein handgeschriebenes Theme-Skript
+  meldet die Adresse zusätzlich an Klaviyo (`custom_source: "Footer Newsletter"`) — es
+  funktioniert, nur sieht es kaum jemand.
+- **🔑 Der zweite Teil wiegt gleich schwer: der Code steht im Klartext im Ankündigungsband**
+  jeder Seite („–10 % … mit Code WELCOME10"). **Wer den Rabatt geschenkt bekommt, trägt dafür
+  keine Adresse ein.** Zusammen erklärt das die 3 Abonnenten bei 1498 Kundendatensätzen
+  vollständig. **Reihenfolge: erst den Anreiz nicht mehr verschenken, dann ein Fenster bauen** —
+  Letzteres braucht `SHOPIFY_CLI_THEME_TOKEN`, **dasselbe Token löst auch die schlanke
+  Startseite**.
+- **🛠️ `tools/shop_conversion.mjs` erweitert (12 → 20 Selbsttests):** misst jetzt zusätzlich
+  Position des E-Mail-Felds in Prozent der Seite, ob ein Anmeldefenster-Werkzeug geladen wird
+  und welche Rabattcodes im **sichtbaren** Text stehen. Gegenproben: Feld oben → kleiner Wert;
+  kein Feld → **unbekannt statt 0 %**; ein Theme-Skript ist kein Anmeldefenster; ein Code im
+  `<script>` zählt nicht.
+- **⚠️ EIGENE KORREKTUR AM WERKZEUG — „Einwilligungsseite" war eine Fehldiagnose.**
+  **GEMESSEN (8 Abrufe desselben Videos): YouTube liefert zufällig zwei Fassungen derselben
+  Seite.** Der reduzierten fehlen `shortDescription`, `viewCount`, Dauer und Kanalname; Titel
+  und Beschreibung stehen aber vollständig in `videoPrimaryInfoRenderer` bzw.
+  `attributedDescription`. Bei sechs Abrufen kam die volle Fassung **ein Mal**. Der Satz
+  „Dieses Video gefällt dir?" steht dort unter `"title":{"simpleText"}` — **deshalb** hielt das
+  Werkzeug gestern die Seite für eine Einwilligungsseite. `tools/yt_lernen.mjs` behoben
+  (**11 → 24 Selbsttests**): beide Fassungen gelten, Titelquellen neu geordnet, mehrere Anläufe
+  (`YT_VERSUCHE`).
+- **⚠️ Und eine Falle beim Ausweichen auf Ersatzfelder:** `lengthText` steht in der reduzierten
+  Fassung, **gehört aber zu einem Vorschlagsvideo aus der Seitenspalte** — es meldete 38:45 für
+  ein 14-Minuten-Video. **Die Dauer bleibt dort unbekannt statt geraten.**
+- **📺 Fünf Videos ausgewertet, Ertrag ehrlich klein:** die Suche liefert zu diesem Thema fast
+  nur kleine Kanäle (167–27 878 Aufrufe). Brauchbar ist das Kapitelverzeichnis eines
+  Anbieter-Webinars (QUELLE): *Fehlgebrauch vermeiden → erst das heutige Seitenerlebnis
+  bewerten → führen statt fragen → Kaufhürden entfernen → testen → Leistung überwachen*.
+  Genau Schritt 2 war hier nie gemacht worden. **GEMESSEN über die Quellen selbst:** das
+  meistgesehene Video trägt **neun Partnerlinks** zu kostenpflichtigen Erweiterungen — sechs
+  der neun Bausteine stehen hier ohnehin schon.
+- **↔️ Zwei fremde Behauptungen widersprechen sich:** ein Kanal nennt „Revenue Per Recipient"
+  ausdrücklich eine **irreführende Kennzahl** — genau den Richtwert (3.65 je Empfänger), der am
+  Morgen als QUELLE notiert wurde. Bei drei Abonnenten ohne Bedeutung; notiert, damit niemand
+  die Zahl für gesichert hält.
+
 **📌 2026-09-13 (📚 NUR GELERNT — Shopify+Claude, Dropship-Szene, Profit; Theme-Sperre GEKNACKT):**
 - **Auftrag:** „lerne du nur und teile dann memory für andere session … morgen macht die andere
   Session alles." Diese Runde hat **nichts am Shop geändert**. Voller Bericht mit Quellen:
