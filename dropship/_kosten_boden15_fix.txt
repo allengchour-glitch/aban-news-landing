@@ -7301,3 +7301,49 @@ gid://shopify/Product/15500069994881	27.08->18.46
 gid://shopify/Product/15497433645441	16.05->7.47
 gid://shopify/Product/15453794369921	18.30->9.72
 gid://shopify/Product/15497454584193	23.11->14.53
+gid://shopify/Product/15448817828225	18.82->8.82	signatur
+gid://shopify/Product/15503127511425	29.33->19.33
+gid://shopify/Product/15448012063105	19.45->9.46	signatur
+gid://shopify/Product/15448011932033	17.69->7.88	signatur
+gid://shopify/Product/15448111382913	18.44->8.63	signatur
+gid://shopify/Product/15448011833729	18.89->9.15	signatur
+gid://shopify/Product/15448016519553	19.53->9.80	signatur
+gid://shopify/Product/15448017174913	18.47->8.75	signatur
+gid://shopify/Product/15448013078913	18.30->8.74	signatur
+gid://shopify/Product/15448009834881	21.87->12.42	signatur
+gid://shopify/Product/15448110432641	19.37->9.97	signatur
+gid://shopify/Product/15448111776129	20.45->11.16	signatur
+gid://shopify/Product/15448013242753	18.92->9.68	signatur
+gid://shopify/Product/15448110760321	19.53->10.30	signatur
+gid://shopify/Product/15448021565825	18.59->9.43	signatur
+gid://shopify/Product/15448016945537	25.15->16.00	signatur
+gid://shopify/Product/15448029757825	18.17->9.02	signatur
+gid://shopify/Product/15448012259713	17.69->8.70	signatur
+gid://shopify/Product/15448110956929	19.35->10.42	signatur
+gid://shopify/Product/15448015176065	19.23->10.32	signatur
+gid://shopify/Product/15448027464065	19.08->10.17	signatur
+gid://shopify/Product/15448016355713	18.77->9.94	signatur
+gid://shopify/Product/15448013570433	24.38->15.55	signatur
+gid://shopify/Product/15448012554625	19.53->10.78	signatur
+gid://shopify/Product/15448110268801	19.23->10.48	signatur
+gid://shopify/Product/15448110989697	19.91->11.16	signatur
+gid://shopify/Product/15448110498177	17.72->8.97	signatur
+gid://shopify/Product/15503128265089	35.71->27.04
+gid://shopify/Product/15448016126337	18.15->9.48	signatur
+gid://shopify/Product/15448111251841	17.72->9.05	signatur
+gid://shopify/Product/15448013406593	19.78->11.20	signatur
+gid://shopify/Product/15448028381569	17.87->9.29	signatur
+gid://shopify/Product/15448111284609	18.77->10.27	signatur
+gid://shopify/Product/15448010260865	18.92->10.42	signatur
+gid://shopify/Product/15448017371521	19.35->10.85	signatur
+gid://shopify/Product/15448015405441	21.71->13.21	signatur
+gid://shopify/Product/15448018485633	18.90->10.40	signatur
+gid://shopify/Product/15448027955585	18.85->10.43	signatur
+gid://shopify/Product/15448110924161	19.51->11.17	signatur
+gid://shopify/Product/15448016224641	18.47->10.13	signatur
+gid://shopify/Product/15448110825857	20.22->11.96	signatur
+gid://shopify/Product/15448010391937	19.37->11.19	signatur
+gid://shopify/Product/15448011538817	19.63->11.45	signatur
+gid://shopify/Product/15448023761281	18.25->10.07	signatur
+gid://shopify/Product/15448017633665	20.67->12.74	signatur
+gid://shopify/Product/15448010883457	18.02->10.09	signatur

@@ -1029,3 +1029,13 @@ gid://shopify/Product/15527364886913	nicht-versendbar	L900 PRO MAX Laser Drohne
 gid://shopify/Product/15528735900033	ok	3-in-1 Toaster-Frühstücksmaschine
 gid://shopify/Product/15528835056001	ok	Picknicktasche mit Geschirr für 4 Personen
 gid://shopify/Product/15528751858049	ok	Thermodrucker für Etiketten
+gid://shopify/Product/15530181886337	ok	Ovaler Blumentopf aus Lila Ton
+gid://shopify/Product/15531872878977	nicht-versendbar	Kieselstein-Sofa
+gid://shopify/Product/15531863376257	nicht-versendbar	Blau-weisse Bodenvase aus Keramik
+gid://shopify/Product/15531863245185	ok	Keramikvase mit Kunstblumen und Dekoration
+gid://shopify/Product/15529156411777	ok	Lederrucksack mit breitem Schultergurt
+gid://shopify/Product/15531862753665	ok	Deko-Objekt aus Naturmarmor
+gid://shopify/Product/15531865735553	nicht-versendbar	ALIiSAR Whisky-Set aus Kristallglas
+gid://shopify/Product/15529154249089	ok	Rindsleder-Rucksack für Damen und Herren
+gid://shopify/Product/15530178150785	ok	Analoguhr mit Quarzwerk und Datumsanzeige
+gid://shopify/Product/15531869307265	ok	Wasserdichte mechanische Uhr aus Wolframstahl
