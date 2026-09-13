@@ -1,3 +1,57 @@
+## 🕵️ «lerne weiter und fix alles» (13.09., 21:10–22:40 UTC): Boden-15 ohne Quittung, Index-blinde USA-Blöcke, 593 Doppelblöcke — und eine Falle, die die falsche Uhr las
+
+Betreiber: «lerne weiter und fix alles». Container um ~21:00 neu gestartet (Aufseher tot, per Keepalive
+wieder da). Vier Klassen gemessen, drei repariert, eine bleibt offen — und die Falle vom 08.09. hat
+sich als schief herausgestellt.
+- **Boden-15-Kosten OHNE Ledger-Quittung (Task #73):** Das Midikleid (40 Var., 320–360 g, alle Kosten
+  20.37, geschrieben 27.08.) stand in KEINEM Ledger. Bulk über 52'000 Produkte: **177 Produkte mit
+  belegter Signatur** (≥2 verschiedene Gewichte <712 g, identische Kosten, alle Juli-Importe) —
+  der Backfill hat sie geschrieben, die Quittung ging im Rewind 25.–30.08. verloren. **Der Importer
+  rechnet je Variante mit ihrem Gewicht (cj_preis, linear ab 70 g) und KANN diese Signatur nicht
+  erzeugen — bei mehreren Varianten ist sie ein Beweis, kein Indiz.** `kosten_boden15_korrigieren.py`
+  hat ein zweites Tor `SIGNATUR=1` (Export trägt jetzt `createdAt`, nur vor 20.08. angelegt, Live-
+  Nachmessung der Signatur unmittelbar vor dem Schreiben); Aufseher-Zeile angepasst. 161 der 177
+  galten NUR wegen der aufgeblähten Zahl als Verlustware (VK 15.90 gegen 18–19 «Kosten»). Lauf per
+  setsid über den ganzen Rest (3'697 Backlog + 177) gestartet. **172 Ein-Varianten-Produkte ohne
+  Quittung bleiben unangetastet — dort gibt es keinen Beweis.**
+- **USA-Lieferzusage: 245 Produkte, die Shopifys Index nicht sieht.** Klassen-Scan meldete 722, live
+  nachgezählt 245 (alle «je nach Land»-Form, alle 3× als «ersetzt» quittiert). `id:X AND "je nach
+  Land"` → **0**, `id:X AND Solar` → **1**: **die Inhalts-Suche ist für einen Teil des Bestands blind,
+  obwohl der Text die Phrase trägt.** `versand_jenachland.py` hat deshalb `LISTE=` (Objektscan-Liste
+  als Sieb, Text live). Die 245 hat `versandaussagen_wahrheit` (QUELLE=live, andere Suchphrase) im
+  Lauf 21:20–21:30 selbst repariert — Gegenprobe am Objekt: **0**.
+- ⛔ **Doppelter Produktdetails-Block: 150 → 593** zwischen 10.09. 18:37 und 13.09. 20:13 (am 11./12.09.
+  lief kein Scan — Wochenlimit). Alle 593 tragen `bild-ok`, angelegt Mai–Juli, 528 cj-real, 61 Printful.
+  Ausgeschlossen mit Messung: `versandaussagen_wahrheit` (nur 169 von 593 in seinem Ledger, umschreiben()
+  verdoppelt nichts), `cj_specs_backfill` (0 von 593), `produktdetails_wahrheit` (162× «live-schon-
+  sauber», schreibt nur Floskeln), `textbild_fix` (schreibt keinen Text), `strip_supplier_leaks` (live).
+  **Der Schreiber ist weiterhin nicht benannt.**
+- ⛔ **Und die Falle vom 08.09. las die falsche Uhr:** `produktdetails_nachmessen` nimmt `updatedAt`
+  als Schreibminute. Gemessen: **593 Produkte «geschrieben» 21:26:01–03** — 200/s, das kann kein
+  Textschreiber dieses Repos (8/s max). `updatedAt` springt auch bei Varianten-Kosten, Metafeldern,
+  Publikationen, Kollektionen. **Ein `updatedAt` ist eine Berührung, kein Textschreibvorgang** —
+  wer den Text-Schreiber sucht, braucht einen Text-HASH je Produkt (Task #74).
+- ⛔ **`produktdetails_vereinen` lief an genau diesem Tag NICHT:** «Shopify antwortet nicht (alle
+  Versuche erschöpft)» — sechs Versuche à 6 s gegen vier Eimer-Mitbenutzer (Kosten-Backfill, Boden-15,
+  zwei Grind-Runner). Sechste Fassung von «eine Drosselung ist kein Abbruchgrund»: THROTTLED wird jetzt
+  aus `throttleStatus` ausgesessen, Temp-Datei je Prozess (zwei Läufe hätten sich `/tmp/_pd.json`
+  überschrieben). Lauf über die 593 unter dem Produkttext-Schloss gestartet.
+- **Tote Ranking-Seite** `sonnenbrillen-set-retro-polarized` (DRAFT `ausverkauft-lieferant`, 170
+  Suchen/Mt.) → 301 auf `retro-polarisierte-sonnenbrille-616000` (gleichartiges PRODUKT, ACTIVE, CJ-SKU,
+  selbst keine 301), live 301 belegt.
+- **Hype-Recherche 13.09.** (eprolo/bebolddigital/sellthetrend Sept./Okt.): neu «Retro-Goggles» (8 Fälle
+  in beide Richtungen, Ski-/Schwimm-/Sonnenbrillen bleiben draussen); Paar-Hoodies, Blush, Lifting-Tape,
+  Ringlicht waren schon Themen. Im Katalog: 1 Steampunk-Goggle aktiv. ⚠️ **Die Neuaufnahme liest
+  `/tmp/export.jsonl` vom 30.08.** — der tägliche Lauf ist NUR_RAEUMEN; ohne frischen Export kommt kein
+  neues Thema in die Reihe (Task #75).
+- **#1004 in der Bestell-Ampel:** Der Betreiber hat am 12.09. 23:23 die Ausführung seiner EIGENEN
+  Juni-Bestellung (BigBuy-Laterne, Kunde = er selbst) storniert; sie steht seither als «bezahlt,
+  unerfüllt» → die Ampel meldet sie stündlich. Erledigt sie nur ein Betreiber-Klick (archivieren,
+  erstatten oder erneut als ausgeführt markieren). Nicht angefasst — kein Kundenfall.
+- **`SHOPIFY_CLIENT_ID`/`_SECRET` sind nach dem Neustart um 21:00 weiterhin LEER** (Task #66 gemessen):
+  Betrieb läuft nur über `/tmp/secrets_env.sh` vom 07.09. Ein Wipe zerlegt ihn wieder.
+- #1017/#1018 unverändert En Route, letzte Station 12.09. 21:57 / 20:04 (Equick-Zentrum, China).
+
 ## 🧟 Vier Wächter starteten seit dem 04.09. NIE — `env` kennt kein `exec` (2026-09-13, 20:30 UTC)
 
 Im Log von `hype_kuratieren` stand fünfmal `env: 'exec': No such file or directory`. Die Startzeile im Aufseher
