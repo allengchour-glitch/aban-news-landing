@@ -81,6 +81,13 @@ Branches (6'449 Dateien Differenz, meist Webseite): **`brain/vault/` (Obsidian, 
   stabil, 31.08.). Nicht ausgeführt; wer es ausführt, misst vorher 12 Abrufe mit Cache-Buster.
 - ⚠️ Ihr Skill-Satz «`productsCount` ignoriert seinen Filter» ist zu grob: er **deckelt bei
   10'000** (22.08.); unter dem Deckel filtert er. Die Preisbänder-Technik bleibt der Messweg.
+- **Und die eine Zahl, die aus ihrem Befund folgt, gemessen: Liste `T2VHfu` hat 15 Tage nach dem
+  Listen-Fix (29.08.) weiterhin GENAU 1 Profil** — bei ~30 Sitzungen/Tag. Das Popup öffnet nach
+  30 s oder bei Exit-Intent (Maus verlässt oben) — mobil gibt es kein Exit-Intent, und 30 s
+  erreicht dort kaum jemand. Zusätzlicher Auslöser: **40 % gescrollt** (Timer bleibt Obergrenze),
+  per `themeFilesUpsert` in `sections/footer-group.json`, am Ursprung gegengeprüft, Backup
+  `theme_backup/footer-group.json.vor-popup-scroll-0913`. **Nachmessen am 27.09.: Profile auf
+  `T2VHfu`** — bleibt es bei 1, liegt es nicht am Auslöser, sondern am Angebot oder am Rendering.
 - ✅ Nebenbei erledigt: drei tote Landeseiten per 301 aufgefangen (Sternenhimmel-Projektor →
   Galaxy-Nachtlicht, Lost Nomade → beauty-pflege, Signet-Ring → Siegelring; Ziele ACTIVE + CJ-SKU
   + keine Weiterleitung, live 301). #1017/#1018 seit 12.09. **En Route** (7 Stationen), BigBuy
