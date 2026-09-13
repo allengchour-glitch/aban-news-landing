@@ -358,6 +358,63 @@ gehört, trägt sie im selben Arbeitsgang ein und misst nach.
 
 ---
 
+## 6b · E-Mail: der Shop hat 1498 Kundendatensätze und **drei** Abonnenten
+
+Die Recherche zu E-Mail-Automatisierung liefert saubere Zahlen (QUELLE, Klaviyo-Benchmarks 2026):
+Warenkorbabbruch-Strecken bringen im Schnitt **3.65 Umsatz je Empfänger** bei 3,33 %
+Conversion, die besten 10 % kommen auf 28.89; Öffnungsrate 41–50 %, Wiederholungsquote der
+Abbrecher 3–5 % im Mittel, 10–14 % bei den Besten. Willkommensstrecken konvertieren im besten
+Zehntel mit 12–18 %. **41 % des E-Mail-Umsatzes kommen aus 5,3 % der Sendungen** — also aus
+den Automatikstrecken, nicht aus Newslettern.
+
+**Dann die Gegenprobe am eigenen Shop — und die beendet das Thema:**
+
+| | Zahl |
+|---|---|
+| Kundendatensätze gesamt | **1498** |
+| davon **E-Mail abonniert** | **3** |
+| nicht abonniert | 1495 |
+| Kunden mit mindestens einer Bestellung | 9 |
+
+Die acht Klaviyo-Strecken, die das Gedächtnis seit Juni als „LIVE" führt, haben **drei
+Empfänger**. Die beste Warenkorb-Strecke der Welt bringt bei drei Abonnenten nichts.
+**Der Engpass ist nicht die Strecke, sondern das Einsammeln.** Das WELCOME10-Fenster ist seit
+Juni aktiv und hat in gut drei Monaten drei Adressen gebracht.
+
+Belegt über zwei unabhängige Wege: `customerSegmentMembers` liefert 3 / 1495 / 1498 (die Summe
+stimmt), und die Liste `customers(query: "email_marketing_state:subscribed")` gibt auf die
+Frage nach zehn genau drei zurück.
+
+**⚠️ Neue Messfalle, dieselbe Klasse wie bei `productsCount`:** **`customersCount` ignoriert
+sein `query`-Argument vollständig.** `email_marketing_state:subscribed`, `orders_count:>0` und
+sogar `email:zzzgibtesnicht@example.invalid` liefern alle **1498**. Nur `customerSegmentMembers`
+und die Listenabfrage `customers(query:)` filtern wirklich — Letztere gibt auf den
+Unsinn-Filter korrekt eine leere Liste zurück. **Wer eine Zahl mit Filter braucht, nimmt nie
+ein `…Count`-Feld, ohne es mit einem Unsinn-Filter gegenzuprüfen.**
+
+---
+
+## 6c · Werkzeug für YouTube — und wo die Grenze liegt
+
+**`tools/yt_lernen.mjs`** (11 Selbsttests) holt Titel, Kanal, Datum, Aufrufe, Dauer und die
+vollständige Beschreibung samt **Kapitelmarken**. Die Marken sind bei diesen Kanälen fast so
+gut wie ein Transkript.
+
+**Zwei Fallen stecken als Gegenprobe im Werkzeug:**
+1. **Grösse beweist nichts.** Die Einwilligungsseite von YouTube ist ebenfalls über 50 000
+   Bytes gross und trägt den Titel „Like this video?". Die erste Fassung des Werkzeugs hielt
+   sie für eine Videoseite und meldete fünf leere Datensätze. Jetzt wird auf die Felder
+   geprüft, die eine echte Videoseite haben **muss** (`shortDescription` **und** `viewCount`).
+2. **`19:90` in einem Satz ist keine Kapitelmarke.** Die Erkennung verlangt Zeilenanfang.
+
+**Die Grenze, gemessen:** nach etwa einem Dutzend Abrufen antwortet YouTube mit **HTTP 429**
+(Antwort rund 3,3 KB). Rückblickend waren die „3257 Bytes"-Fehlschläge ganz am Anfang dieser
+Recherche schon Drosselungen, keine fehlenden Seiten. Das Werkzeug nennt den Statuscode jetzt
+ausdrücklich, statt eine Fehlerseite auszuwerten. **Für die nächste Session: höchstens eine
+Handvoll Videos am Stück, sonst ist YouTube für Stunden zu.**
+
+---
+
 ## 7 · Arbeitsplan für die nächste Session
 
 Nach Wirkung geordnet, mit dem was fehlt:
@@ -370,6 +427,9 @@ Nach Wirkung geordnet, mit dem was fehlt:
 2. **Foto-Bewertungen importieren.** Der Importer ist seit dem Auth-Fix fertig, CJ hat die
    Kommentare, Foto-Bewertungen konvertieren 2–3×. Es fehlt allein
    `JUDGEME_PRIVATE_TOKEN`. **Nie erfundene Bewertungen, nie per Namensähnlichkeit zuordnen.**
+2a. **E-Mail-Adressen einsammeln, nicht weitere Strecken bauen.** Gemessen: **3 Abonnenten**
+   bei 1498 Kundendatensätzen. Die acht Klaviyo-Strecken laufen ins Leere. Erst wenn das
+   Einsammeln funktioniert, ist E-Mail überhaupt ein Hebel.
 3. **Sticky ATC auf dem Handy** (+8–12 % laut Quelle) — geht erst mit Theme-Zugriff, dann
    zusammen mit Punkt 1 in einem Rutsch.
 4. **Preisstrategie aus echten Daten** (Hack 3): 14 Bestellungen, Katalog, Margen. Erst

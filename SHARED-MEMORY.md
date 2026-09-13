@@ -58,6 +58,12 @@ Nachgemessen: **Hundeartikel unter den ersten 12 von 6 auf 0**. **Für jede Sess
 Collection die `sortOrder` prüfen** — `CREATED_DESC` macht aus dem Schaufenster eine
 Importliste.
 
+**📧 Wichtig für die Priorität: der Shop hat 1498 Kundendatensätze und GENAU DREI E-Mail-
+Abonnenten** (gemessen 13.09. über zwei unabhängige Wege). Die acht Klaviyo-Strecken laufen
+ins Leere. **Keine weiteren E-Mail-Strecken bauen** — der Engpass ist das Einsammeln.
+⚠️ Dabei gemessen: **`customersCount` ignoriert sein `query`-Argument** (jeder Filter liefert
+1498, auch ein erfundener). Nur `customerSegmentMembers` und `customers(query:)` filtern.
+
 **🟡 Was nur der User kann — bitte in dieser Reihenfolge erfragen:**
 1. **`SHOPIFY_CLI_THEME_TOKEN`** (App „Theme Access" im Admin, Passwort erzeugen) → danach
    kann jede Session Themes selbst veröffentlichen. Grösster Hebel.

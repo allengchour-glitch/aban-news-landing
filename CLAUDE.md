@@ -114,6 +114,29 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   auf YouTube liefert nur die leere Hülle. (2) **Mitbewerber-Seiten inhaltlich klonen** (Copy
   und Testimonials übernehmen, Testimonial-Bilder erzeugen) ist dieselbe Grenze wie
   „NIE Fake-Reviews" — Layout ansehen ja, Inhalte übernehmen nein.
+- **📧 GEMESSEN, und es beendet ein Thema: der Shop hat 1498 Kundendatensätze und GENAU DREI
+  E-Mail-Abonnenten.** (3 abonniert · 1495 nicht · 9 mit mindestens einer Bestellung; Summe
+  stimmt.) Die **acht Klaviyo-Strecken**, die das Gedächtnis seit Juni als „LIVE" feiert, haben
+  **drei Empfänger**. Das WELCOME10-Fenster läuft seit Juni und hat in gut drei Monaten drei
+  Adressen gebracht. **Der Engpass ist nicht die Strecke, sondern das Einsammeln** — keine
+  weiteren Flows bauen, bevor das Einsammeln misst. Belegt über zwei Wege:
+  `customerSegmentMembers` und die Liste `customers(query:)` (nach 10 gefragt, 3 bekommen).
+  Benchmark zur Einordnung (QUELLE): Warenkorb-Strecken bringen im Schnitt 3.65 je Empfänger,
+  **41 % des E-Mail-Umsatzes kommen aus 5,3 % der Sendungen**.
+- **⚠️ NEUE MESSFALLE, dieselbe Klasse wie `productsCount`: `customersCount` ignoriert sein
+  `query`-Argument vollständig.** `email_marketing_state:subscribed`, `orders_count:>0` und
+  sogar `email:zzzgibtesnicht@example.invalid` liefern **alle 1498**. Es filtern nur
+  `customerSegmentMembers` und `customers(query:)` — Letztere gibt auf den Unsinn-Filter
+  korrekt eine leere Liste. **Regel: nie ein `…Count`-Feld mit Filter glauben, ohne einen
+  Unsinn-Filter gegenzuprüfen.**
+- **🛠️ GEBAUT `tools/yt_lernen.mjs`** (11 Selbsttests): holt Titel, Kanal, Datum, Aufrufe,
+  Dauer und Beschreibung samt **Kapitelmarken** einer YouTube-Seite. Zwei Fallen stecken als
+  Gegenprobe drin: (1) **Grösse beweist nichts** — YouTubes Einwilligungsseite ist ebenfalls
+  über 50 000 Bytes gross und heisst „Like this video?"; die erste Fassung meldete dadurch fünf
+  leere Datensätze, jetzt wird auf `shortDescription` **und** `viewCount` geprüft; (2) „19:90"
+  mitten im Satz ist keine Kapitelmarke. **Gemessene Grenze: nach rund einem Dutzend Abrufen
+  antwortet YouTube mit HTTP 429** (rund 3,3 KB) — die „3257 Bytes"-Fehlschläge vom Anfang der
+  Recherche waren rückblickend schon Drosselungen. Höchstens eine Handvoll Videos am Stück.
 - **🔥 GEÄNDERT (live, ein Feld je Collection): die Verkaufs-Collection war nach IMPORTDATUM
   sortiert.** `geschenke-unter-50-franken` — die Collection, aus der **jeder nachprüfbare
   Verkauf** kam — stand auf **`CREATED_DESC`** bei **63 145 Produkten**. Kundensicht vorher:
