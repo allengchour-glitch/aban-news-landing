@@ -683,7 +683,7 @@ while true; do
     if [ "$ALTER" -gt 86400 ]; then
       ( cd "$REPO" && setsid bash -c '
           python3 automation/kosten_export_bauen.py
-          LIMIT=400 python3 automation/kosten_boden15_korrigieren.py' >> "$KOS" 2>&1 9>&- & )
+          SIGNATUR=1 LIMIT=400 python3 automation/kosten_boden15_korrigieren.py' >> "$KOS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) kostenwahrheit nachgezogen"
     fi
   fi

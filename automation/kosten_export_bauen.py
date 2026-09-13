@@ -28,7 +28,7 @@ ZIEL = os.environ.get("ZIEL", "/tmp/kost28.jsonl")
 MAXALTER = int(os.environ.get("MAXALTER", "86400"))
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-BULK = ('{ products(query:"status:active") { edges { node { id title '
+BULK = ('{ products(query:"status:active") { edges { node { id title createdAt '
         'variants { edges { node { id sku price '
         'inventoryItem { id unitCost { amount } '
         'measurement { weight { value unit } } } } } } } } } }')

@@ -26,6 +26,20 @@ Kein einziger CJ-Aufruf noetig — die Zahl war die ganze Zeit da, nur falsch zu
    ist bereits richtig — wer sie «korrigiert», macht sie kaputt. Der Ledger ist der einzige
    harte Beleg; die Signatur «Gewicht variiert, Kosten konstant» ist nur ein Indiz und
    bei Ein-Varianten-Produkten gar nicht pruefbar.
+   ⚠️ NACHTRAG 13.09.2026 — die Quittung kann FEHLEN, obwohl der Backfill geschrieben hat:
+   Zwischen dem 25. und 30.08. hat der Container mehrfach einen alten Disk-Snapshot
+   hergestellt; der Shopify-Schreibvorgang stand, die Ledger-Zeile war weg. Gemessen am
+   Bulk-Export (13.09.): 177 Produkte tragen die BELEGTE Signatur — mehrere Varianten mit
+   VERSCHIEDENEN Gewichten unter dem Knick und IDENTISCHEN Kosten (Midikleid 15448587075969:
+   40 Varianten, 320–360 g, alle 20.37, Kosten geschrieben 27.08.). Der Importer rechnet je
+   Variante mit ihrem eigenen Gewicht (cj_preis, linear ab 70 g) — er KANN diese Signatur
+   nicht erzeugen. Bei mehreren Varianten ist sie also ein Beweis, kein Indiz.
+   Zweites Tor (`SIGNATUR=1`): Produkt nicht im Ledger, ≥2 Varianten mit Kosten, ≥2
+   verschiedene Gewichte, ALLE unter dem Knick, ALLE Kosten identisch, Kosten ≥ 15, und —
+   wenn der Export `createdAt` traegt — vor dem 20.08. angelegt (davor schrieb der Importer
+   gar keine Kosten). Unmittelbar vor dem Schreiben wird die Signatur LIVE am Produkt
+   nachgemessen; haelt sie nicht mehr, wird nichts geschrieben und nichts quittiert.
+   Ein-Varianten-Produkte ohne Quittung bleiben unangetastet (172 gemessen, kein Beweis).
 2. NUR Varianten mit Gewicht > 0. Ohne Gewicht ist die alte Fracht nicht herausrechenbar —
    geraten wird nichts (dieselbe Regel wie beim Gewichts-Backfill).
 3. Warenkosten muessen >= 0 herauskommen. Wird die Differenz negativ, stammt die Zahl NICHT
@@ -48,6 +62,8 @@ EXPORT = os.environ.get("EXPORT", "/tmp/kost28.jsonl")
 DRY = os.environ.get("DRY") == "1"
 LIMIT = int(os.environ.get("LIMIT", "40"))
 KNICK = (15 - 3.4) / 16.3 * 1000     # 711.7 g
+SIGNATUR = os.environ.get("SIGNATUR") == "1"   # zweites Tor, siehe Docstring (13.09.)
+IMPORTER_SEIT = "2026-08-20"                   # ab hier schreibt der Importer Kosten selbst
 
 
 def tok():
@@ -104,7 +120,7 @@ def main():
     for line in open(EXPORT):
         o = json.loads(line)                      # nie Roh-Zeilenfilter: Shopify escaped / als \/
         if "__parentId" not in o:
-            titel[o["id"]] = o.get("title")
+            titel[o["id"]] = (o.get("title") or "", o.get("createdAt") or "")
         else:
             ii = o.get("inventoryItem") or {}
             uc = ii.get("unitCost") or {}
@@ -113,10 +129,27 @@ def main():
                 "cost": float(uc["amount"]) if uc.get("amount") not in (None, "") else None,
                 "g": gramm(ii.get("measurement"))})
 
-    kandidaten = []
+    def signatur(vs, created):
+        """Beweis statt Indiz (13.09.): verschiedene Gewichte unter dem Knick, identische Kosten."""
+        mit = [v for v in vs if v["cost"] and v["cost"] > 0]
+        if len(mit) < 2:
+            return False
+        if created and created >= IMPORTER_SEIT:
+            return False
+        ws = {round(v["g"]) for v in mit}
+        if len(ws) < 2 or any(v["g"] <= 0 or v["g"] >= KNICK for v in mit):
+            return False
+        cs = {round(v["cost"], 2) for v in mit}
+        return len(cs) == 1 and next(iter(cs)) >= 15.0
+
+    kandidaten, per_signatur = [], set()
     for pid, vs in varianten.items():
-        if pid not in erlaubt or pid in fertig:
+        if pid in fertig:
             continue
+        if pid not in erlaubt:
+            if not (SIGNATUR and signatur(vs, titel.get(pid, ("", ""))[1])):
+                continue
+            per_signatur.add(pid)
         neu = []
         for v in vs:
             if not v["cost"] or v["cost"] <= 0 or v["g"] <= 0 or v["g"] >= KNICK:
@@ -145,7 +178,7 @@ def main():
         return (0 if (galt_als_verlust and ist_dann_ok) else 1,
                 -statistics.median([v["cost"] - nk for v, nk in neu]))
     kandidaten.sort(key=rang)
-    print(f"Zu korrigieren: {len(kandidaten)} Produkte (zeige/schreibe max {LIMIT})\n")
+    print(f"Zu korrigieren: {len(kandidaten)} Produkte, davon {len(per_signatur)} per Signatur (zeige/schreibe max {LIMIT})\n")
 
     getan = 0
     for pid, neu in kandidaten[:LIMIT]:
@@ -154,10 +187,21 @@ def main():
         nachher = statistics.median([nk for _, nk in neu])
         hp = max(v["price"] for v in varianten[pid])
         urteil = "war NIE unter Einstand" if nachher <= hp else "bleibt unter Einstand"
-        print(f"  {pid.split('/')[-1]}  {(titel.get(pid) or '')[:44]:<44} "
+        print(f"  {pid.split('/')[-1]}  {(titel.get(pid, ('', ''))[0] or '')[:44]:<44} "
               f"{len(neu):>3} Var  {vorher:6.2f} -> {nachher:6.2f}  (-{diff:5.2f})  VK {hp:6.2f}  {urteil}")
         if DRY:
             continue
+        if pid in per_signatur:
+            # Die Signatur wird am OBJEKT nachgemessen, nicht am Export: nur wenn Kosten und
+            # Gewichte LIVE noch dasselbe Bild zeigen, darf geschrieben werden.
+            j = gql("query($id:ID!){product(id:$id){variants(first:100){nodes{id "
+                    "inventoryItem{unitCost{amount} measurement{weight{value unit}}}}}}}", {"id": pid})
+            live = ((((j or {}).get("data") or {}).get("product") or {}).get("variants") or {}).get("nodes") or []
+            lv = [{"cost": float(((n["inventoryItem"] or {}).get("unitCost") or {}).get("amount") or 0),
+                   "g": gramm((n["inventoryItem"] or {}).get("measurement"))} for n in live]
+            live_k = {n["id"]: float(((n["inventoryItem"] or {}).get("unitCost") or {}).get("amount") or 0) for n in live}
+            if not lv or not signatur(lv, "") or any(abs(live_k.get(v["id"], -1) - v["cost"]) > 0.005 for v, _ in neu):
+                print("     Signatur LIVE nicht mehr belegt — uebersprungen, nicht quittiert"); continue
         for i in range(0, len(neu), 25):
             teil = [{"id": v["id"], "inventoryItem": {"cost": f"{nk:.2f}"}} for v, nk in neu[i:i + 25]]
             j = gql("mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){"
@@ -174,8 +218,9 @@ def main():
                 print("     FEHLER: keine Bestaetigung — NICHT quittiert"); break
             time.sleep(0.6)
         else:
+            quelle = "\tsignatur" if pid in per_signatur else ""
             with open(LEDGER, "a") as f:
-                f.write(f"{pid}\t{vorher:.2f}->{nachher:.2f}\n")
+                f.write(f"{pid}\t{vorher:.2f}->{nachher:.2f}{quelle}\n")
             getan += 1
     print(f"\n{'DRY — nichts geschrieben' if DRY else f'korrigiert: {getan} Produkte'}")
     return 0
