@@ -27,10 +27,15 @@ sich als schief herausgestellt.
   sauber», schreibt nur Floskeln), `textbild_fix` (schreibt keinen Text), `strip_supplier_leaks` (live).
   **Der Schreiber ist weiterhin nicht benannt.**
 - ⛔ **Und die Falle vom 08.09. las die falsche Uhr:** `produktdetails_nachmessen` nimmt `updatedAt`
-  als Schreibminute. Gemessen: **593 Produkte «geschrieben» 21:26:01–03** — 200/s, das kann kein
-  Textschreiber dieses Repos (8/s max). `updatedAt` springt auch bei Varianten-Kosten, Metafeldern,
-  Publikationen, Kollektionen. **Ein `updatedAt` ist eine Berührung, kein Textschreibvorgang** —
-  wer den Text-Schreiber sucht, braucht einen Text-HASH je Produkt (Task #74).
+  als Schreibminute. Gemessen: die «Schreibminuten» der Doppelblock-Produkte sind **20:11–20:13
+  (~400) und 21:26 (~96)** — exakt die Minuten, in denen `kosten_boden15_korrigieren` Varianten-
+  KOSTEN schrieb (Aufseher-Lauf 20:10 «korrigiert: 400», mein Signatur-Lauf ab 21:19). Ein
+  Varianten-Schreibvorgang hebt `updatedAt` des Produkts — genauso Metafelder, Publikationen,
+  Kollektionen. **Ein `updatedAt` ist eine Berührung, kein Textschreibvorgang** — wer den
+  Text-Schreiber sucht, braucht einen Text-HASH je Produkt (Task #74). Der 08.09.-Treffer
+  (`versand_live.log`) war damit womöglich ebenfalls nur eine Berührung.
+  Und: **am 11./12.09. lief hier KEIN Wächter** (Keepalive aus, Aufseher nach dem Neustart tot) —
+  der Schreiber der 443 neuen Doppelblöcke ist also kein Aufseher-Werkzeug dieser Session.
 - ⛔ **`produktdetails_vereinen` lief an genau diesem Tag NICHT:** «Shopify antwortet nicht (alle
   Versuche erschöpft)» — sechs Versuche à 6 s gegen vier Eimer-Mitbenutzer (Kosten-Backfill, Boden-15,
   zwei Grind-Runner). Sechste Fassung von «eine Drosselung ist kein Abbruchgrund»: THROTTLED wird jetzt
