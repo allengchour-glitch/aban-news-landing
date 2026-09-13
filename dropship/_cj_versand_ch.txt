@@ -1039,3 +1039,4 @@ gid://shopify/Product/15531865735553	nicht-versendbar	ALIiSAR Whisky-Set aus Kri
 gid://shopify/Product/15529154249089	ok	Rindsleder-Rucksack für Damen und Herren
 gid://shopify/Product/15530178150785	ok	Analoguhr mit Quarzwerk und Datumsanzeige
 gid://shopify/Product/15531869307265	ok	Wasserdichte mechanische Uhr aus Wolframstahl
+gid://shopify/Product/15531881038209	nicht-versendbar	Dreieckiges Kissen für Möbel aus Schaumstoff
