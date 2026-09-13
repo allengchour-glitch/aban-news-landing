@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 03.09.2026 (bebolddigital/eprolo/sellthetrend September: smarte Haustier-Spielzeuge und Handy-Umhaengetaschen neu; Blush-Balms, Lifting-Tape, Ordnung/aesthetic living und Kerzenwaermer erneut bestaetigt; Halloween-Kostueme bewusst NICHT in der Hype-Reihe (eigene Reihe seit 31.08.); Snail-Essence/Seren weiterhin NICHT: topische Kosmetik, Betreiber-Entscheid 30.08.)"
+QUELLE = "Web-Recherche 13.09.2026 (eprolo/bebolddigital/sellthetrend Sept.–Okt.: Retro-OTG-Goggles/Motorradbrillen NEU; Doppelseitige Paar-Hoodies, Creator-Handyhalter/Ringlicht, Blush-Balms, Lifting-Tape, Ordnung/aesthetic living erneut bestaetigt; Supplements/Olivenoel ausgeschlossen: Lebensmittel; Halloween-Kostueme bewusst NICHT hier; Snail-Essence/Seren NICHT: topische Kosmetik, Betreiber 30.08.) — davor 03.09.2026 (bebolddigital/eprolo/sellthetrend September: smarte Haustier-Spielzeuge und Handy-Umhaengetaschen neu; Blush-Balms, Lifting-Tape, Ordnung/aesthetic living und Kerzenwaermer erneut bestaetigt; Halloween-Kostueme bewusst NICHT in der Hype-Reihe (eigene Reihe seit 31.08.); Snail-Essence/Seren weiterhin NICHT: topische Kosmetik, Betreiber-Entscheid 30.08.)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -157,6 +157,12 @@ THEMEN = {
         r'Handy[- ]?(?:Umh[äa]nge|Cross-?body|Schulter)[- ]?tasche|Phone[- ]?(?:Holster|Bag|Pouch|Sling)|'
         r'Crossbody[- ]?(?:Phone|Handy)|Smartphone[- ]?(?:Tasche|Holster)|'
         r'Handy-?tasche.*Cross-?body|Cross-?body.*Handy-?tasche|Handy-?tasche.*(?:Umh[äa]nge|Schulter)', re.I),
+    # Neu 13.09.: Retro-Goggles (OTG/Motorrad/Festival, Vintage-Optik) stehen in den
+    # Sept./Okt.-Listen; ⚠️ «Brille» allein träfe Sonnen-/Lesebrillen, «Goggle» auch Ski-
+    # und Schwimmbrillen → Retro/Motorrad/Steampunk als Pflicht-Anker.
+    "Retro-Goggles": re.compile(
+        r'(?:Retro|Vintage|Steampunk|Motorrad|Aviator)[- ]?(?:Goggle|Schutzbrille|Motorradbrille)|'
+        r'Motorradbrille|OTG[- ]?(?:Goggle|Brille)', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
