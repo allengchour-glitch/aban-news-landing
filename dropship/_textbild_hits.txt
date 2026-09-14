@@ -15668,3 +15668,62 @@ gid://shopify/Product/15532086428033	19->1	Verstellbares Nickerchenkissen aus Me
 gid://shopify/Product/15532131975553	86->0	Kissenpaar mit Faserfüllung
 gid://shopify/Product/15532132303233	67->0	Kissen mit Satin-Streifen, 2er-Set
 gid://shopify/Product/15532149244289	9->0	Schulter-Wickelweste für stillende Mütter
+gid://shopify/Product/15532150260097	8->0	Kurzer Kapuzenumhang oder Schal
+gid://shopify/Product/15532151767425	79->2	Doppelter Wollmantel mit lockerer Passform
+gid://shopify/Product/15532152553857	28->0	Damen Kapuzen-Daunenjacke
+gid://shopify/Product/15532154782081	8->1	Gepunktete Strickjacke mit langen Ärmeln
+gid://shopify/Product/15532155404673	94->0	Damen Strickschal
+gid://shopify/Product/15532157305217	14->0	Damen Plissee-Schal und Fischerhut-Set
+gid://shopify/Product/15532157665665	135->0	Modal-Rayon-Schal für Damen
+gid://shopify/Product/15532157927809	22->1	Klemmleuchte mit Doppelkopf für Lesebereich
+gid://shopify/Product/15532158648705	12->0	Halloween-Projektionslicht
+gid://shopify/Product/15532159304065	118->3	Langes Viskose-Tuch mit Kettenmuster und Fransen
+gid://shopify/Product/15532159631745	16->0	Weihnachts-Sternenhimmel-Projektions-Nachtlicht
+gid://shopify/Product/15532160582017	75->0	Gestreifter Jacquard-Wickelschal mit Quasten
+gid://shopify/Product/15532161106305	15->1	Pilz-Tischlampe aus Glas
+gid://shopify/Product/15532161433985	51->0	Zylindrische Gartenlampe für Aussenbereiche
+gid://shopify/Product/15532162679169	30->2	Breiter Gürtel im Vintage-Stil
+gid://shopify/Product/15532163989889	23->0	Mädchen Strampler-Kleid mit Kapuze
+gid://shopify/Product/15532170183041	17->0	Mädchen Pullover-Jeans-Set aus Strick
+gid://shopify/Product/15532175491457	34->0	Damen Winter Steppmantel mit Fellkragen
+gid://shopify/Product/15532177752449	30->0	Damen-Steppjacke aus Baumwolle
+gid://shopify/Product/15532178964865	25->0	Damen Retro Wattierter Mantel mit Froschknöpfen
+gid://shopify/Product/15532179554689	24->1	Damen Daunenmantel mit Kapuze
+gid://shopify/Product/15532180308353	16->0	Damen Baumwoll Pufferjacke mit Schleifentaschen
+gid://shopify/Product/15532182372737	8->1	Damen-Mantel mit Kapuze, wattiert
+gid://shopify/Product/15532184830337	118->0	Gefütterter Stehkragen-Mantel im Karo-Design
+gid://shopify/Product/15532185026945	174->0	Herren Langarmshirt aus Waffelstoff
+gid://shopify/Product/15532185911681	78->0	Herren-Sweatshirt mit Drachen-Stickerei
+gid://shopify/Product/15532188008833	105->1	Damen Mantel aus Baumwolle mit Fleece-Futter
+gid://shopify/Product/15532189155713	9->2	Damen Wintermantel aus Polyester-Baumwoll-Mischung
+gid://shopify/Product/15532189581697	60->1	Damen Mantel mit Kapuze und Fleecefutter
+gid://shopify/Product/15532193612161	60->1	Donut Stimmungslicht zum Berühren
+gid://shopify/Product/15532194955649	9->0	Tragbare Schreibtischlampe
+gid://shopify/Product/15532195774849	53->0	LED Stern- und Mond-Nachtlicht
+gid://shopify/Product/15532196168065	35->3	Kuchenkerzen-Box mit Überraschung
+gid://shopify/Product/15532196266369	23->0	3D Magnetschwebe-Drachen-Buchlampe
+gid://shopify/Product/15532198429057	19->1	Pfingstrosen-Brosche mit Strassbesatz
+gid://shopify/Product/15532199281025	80->0	Retro Vogel- und Blumen-Emaille-Brosche
+gid://shopify/Product/15532199772545	66->3	Bambus Panda Plüschtier Schlüsselanhänger
+gid://shopify/Product/15532200362369	16->0	Wandlampe für Schlafzimmer und Gästezimmer
+gid://shopify/Product/15532200952193	109->1	Plüschtier Schlüsselanhänger
+gid://shopify/Product/15532201148801	137->0	Mythen Wandlampe
+gid://shopify/Product/15532201968001	17->1	Fackel-Wandleuchte im Mittelalter-Stil
+gid://shopify/Product/15532203180417	16->1	Vintage Wandlampe
+gid://shopify/Product/15532236833153	118->0	Fleece-Strampler mit Dinosaurier-Design
+gid://shopify/Product/15532237226369	139->0	Strickpullover für Hunde und Katzen
+gid://shopify/Product/15532239225217	8->0	Sphynx Katze Sommeranzug mit Knöpfen
+gid://shopify/Product/15532240044417	13->0	Mädchen Zweiteiler Oberteil und Hose
+gid://shopify/Product/15532240667009	12->0	Doppelseitiges Fleece für Katzen
+gid://shopify/Product/15532241650049	96->1	Haustier Pullover für Hunde und Katzen
+gid://shopify/Product/15532242239873	22->1	Katzenkleidung aus Sweatshirt-Stoff
+gid://shopify/Product/15532242403713	57->0	Baby Pullover-Set aus Baumwolle
+gid://shopify/Product/15532243485057	146->0	Baby Strampler aus Baumwolle mit Stickerei
+gid://shopify/Product/15532244107649	29->0	Baby Strick-Strampler aus Baumwolle
+gid://shopify/Product/15532245746049	148->2	Baby- und Kleinkind-Set mit Schriftzug
+gid://shopify/Product/15532247613825	87->0	Outdoor-Overalljacke
+gid://shopify/Product/15532250071425	12->2	Winddichte Softshell-Jacke mit Wollfutter
+gid://shopify/Product/15532250562945	10->0	Sport-Zweiteiler für Herren
+gid://shopify/Product/15532252529025	18->3	Baby Langarm-Body mit Gänse-Print
+gid://shopify/Product/15532256166273	15->2	Gestreifter Baby-Strampler mit langen Ärmeln
+gid://shopify/Product/15532257640833	42->0	Stossfeste Laptop-Hülle mit Frontöffnung
