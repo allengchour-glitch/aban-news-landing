@@ -400,7 +400,7 @@ veröffentlicht, ≥300 Produkte, nicht in einer festen Reihe) — Saison zuerst
 der auch in `trust_advantages` und im Band steht) wurde EINMAL zur 18. Reihe umgebaut — die Startseite ist am
 25-Sektionen-Limit, «mehr Kataloge» geht nur durch Umwidmen.
 
-**Gemessen:** 3'753 → **3'104 KB** (Einzelabruf), 148 Karten, 462 `<img>`; Reihen heute: Halloween 2026,
+**Gemessen:** 3'753 → **3'104 KB** (Einzelabruf; 12 Abrufe: 3,04 MB, 0 % Fehler, 314 ms), 148 Karten, 462 `<img>`; Reihen heute: Halloween 2026,
 Geschenke unter CHF 50, Haustierwelt, Küche & Kochen, Taschen & Rucksäcke, Make-up, Spielzeug, Sport & Outdoor.
 Zusammen mit dem Vormittag: **6,92 MB → 3,1 MB** bei MEHR Katalogen (18 statt 17 Reihen, 8 statt 12 Karten).
 
