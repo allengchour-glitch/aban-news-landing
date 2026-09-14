@@ -62,6 +62,23 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-14 (Sechs-Punkte-Auftrag «COWORK-BEFEHL» in der Cloud-Session — gemessen statt geklickt):**
+- Cloud-Session hat **keinen eingeloggten Browser** (nur Shopify-MCP + GitHub-API). Die Datei
+  `dropship/COWORK-BEFEHL-2026-09-14.md` liegt auf **keinem** Remote-Branch (nur lokal beim User).
+- **Befund je Punkt (alles live per API gemessen, nichts erfunden):**
+  1. GROQ: `GROQ_API_KEY` in der Cloud-Umgebung **leer** → Schlüssel anlegen + eintragen geht nur im Browser (User/PC-Claude).
+  2. `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET`/`SHOPIFY_SHOP` **leer** (wie am 08.09.). App «autopilot2» (`autopilot-43`) ist installiert.
+  3. Merchant Center: kein API-Zugang aus der Cloud. Shopify-seitig ist nur Markt **Schweiz** aktiv; der Google-Feed läuft über
+     den nativen Kanal «Google & YouTube» (Publication 302872297857) → Zielland/Versanddienst nur in merchants.google.com.
+  4. Zefix (öffentliche `ZefixREST`-Suche `/api/v1/firm/search.json`): **kein Eintrag** für LuxeStyle/Luxestyle/«Luxe Style»
+     (261 «Luxe»-Treffer, keiner mit «style» oder Sitz Belp). Impressum (Page 697899417985) hat Adresse/Mail/Telefon, **keine UID**
+     → nichts eingetragen. Einzelfirmen unter CHF 100k Umsatz sind nicht HR-pflichtig; UID wäre nur via uid.admin.ch zu finden.
+  5. Bestellung #1004 (Order 13901622411649) war **schon archiviert** (`closedAt` 2026-09-14 10:50 UTC, nicht durch diese Session).
+     Sie ist nicht storniert, sondern PAID/UNFULFILLED mit storniertem Fulfillment (ShipRocket).
+  6. **Shopify Inbox ist bereits installiert** (App «Messaging» `shopify-messaging` von Shopify, Publication «Inbox» 305570283905).
+     Begrüssungstext + Mail-Benachrichtigung sind nur in der Inbox-UI setzbar (kein Admin-API-Feld) → Browser.
+- **Lehre:** Vor «installieren/archivieren» erst per API messen — 2 von 6 Punkten waren bereits erledigt.
+
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
   Desktop 1440 **4 Spalten / Bild 205 px / 24 Produkte = 1905 px**; **Mobil 390 nur 1 Spalte / Bild 356 px /
