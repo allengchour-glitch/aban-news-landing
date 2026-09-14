@@ -179,3 +179,52 @@
 15519829361025	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Mini-Projektor mit Multi-Screen Funktion
 15500908724609	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Sanftes Haarentfernungsgerät für den ganzen Körper
 15527366263169	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Aroma Diffuser mit Luftbefeuchter
+15454104748417	unklar-eu-vorhanden:EU/US	2026-09-14	Automatischer Lockenstab mit negativem Ion
+15454104781185	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Multifunktionaler Tourmalin-Keramik-Glätteisenkamm mit Ionen
+15454104912257	unklar-eu-vorhanden:EU/US	2026-09-14	Mini Lockenstab für nasse und trockene Haare
+15454105076097	draft-kein-eu-stecker:US	2026-09-14	Drei-Stab-Keramik-Glätte- Lockenstab
+15454105338241	draft-kein-eu-stecker:US	2026-09-14	2-in-1 Haartrockner und -glätter
+15454105764225	draft-kein-eu-stecker:US	2026-09-14	Keramik-Glätteisen mit Massagekamm
+15454107468161	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	2-in-1 Haartrockner-Kamm
+15454123852161	unklar-eu-vorhanden:EU/US	2026-09-14	Automatische Lockenstab
+15454123884929	unklar-eu-vorhanden:EU/JP/UK	2026-09-14	3-in-1 Dreiweg Lockenstab 32 mm (Klein, Mittel, Gross) Autom
+15454124114305	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Drei-in-Eins Heissluft-Haarcurler
+15454124212609	kein-stecker-merkmal	2026-09-14	Multifunktionaler Warmluft-Kamm Haartrockner
+15454124343681	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Elektrisches Lockenstab-Set
+15454161994113	kein-stecker-merkmal	2026-09-14	Büro-Heizdecke mit Bauchstütze
+15454193222017	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Automatischer Lockenstab
+15454193484161	kein-stecker-merkmal	2026-09-14	Kabelloser Lockenstab mit Schnellladung
+15454193746305	kein-stecker-merkmal	2026-09-14	Haartrockner mit mehreren Funktionen
+15454193877377	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	3-in-1 Heissluftkamm
+15454197711233	unklar-eu-vorhanden:AU/EU/UK	2026-09-14	Keramik-Bügeleisen mit 3-Stufen-Regelung 2600W
+15454198890881	kein-stecker-merkmal	2026-09-14	Roboter-Staubsauger mit Mop-Funktion
+15454198956417	kein-stecker-merkmal	2026-09-14	Heissluft-Massagegerät mit Musik
+15454204395905	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Elektrisches Glätteisen mit Temperaturregelung
+15454204723585	nur-eu-version	2026-09-14	Lockenstab mit Temperaturstufen
+15454218977665	draft-kein-eu-stecker:IN	2026-09-14	Kleines Locken- und Glätteisen
+15454219108737	kein-stecker-merkmal	2026-09-14	Kabelloser Lockenstab
+15454234771841	draft-kein-eu-stecker:US	2026-09-14	Mini-Heizlüfter mit Fernbedienung
+15454384324993	kein-stecker-merkmal	2026-09-14	LCD-Haarglätteisen mit 10-stufiger Temperaturregelung
+15454472470913	kein-stecker-merkmal	2026-09-14	Auto- und Bürostaubsauger
+15454645617025	kein-stecker-merkmal	2026-09-14	Heizkissen für Auto & Büro
+15454646010241	kein-stecker-merkmal	2026-09-14	Fussheizkissen für den Schreibtisch
+15454914707841	mehrere-varianten	2026-09-14	Portabler Haarglätter & Lockenstab
+15454914871681	mehrere-varianten	2026-09-14	Wellen Lockenstab
+15454915297665	mehrere-varianten	2026-09-14	Leistungsstarker Staubsauger-Stick 2-in-1
+15454915494273	mehrere-varianten	2026-09-14	5-in-1 Heissluft-Bürste Multifunktionaler Hochleistungs-Glät
+15454915527041	nur-eu-version	2026-09-14	Portabler Wasserkocher
+15454915625345	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Multifunktionaler Automatischer Wellenlockenstab
+15454915658113	kein-stecker-merkmal	2026-09-14	Moderne Deckenleuchte
+15454915690881	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Anion-Auto-Lockenstab mit Ionen
+15454915953025	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Wasserwellen Lockenstab 32mm
+15455428968833	kein-stecker-merkmal	2026-09-14	Handstaubsauger mit Akku · kabellos, mit Blasfunktion
+15455657263489	kein-stecker-merkmal	2026-09-14	Rote Kupfer-Wasserkocher
+15460287250817	mehrere-varianten	2026-09-14	Französisch-stil Deckenleuchte mit Sand-Textur & Wellenrand
+15466876338561	unklar-eu-vorhanden:EU/UK	2026-09-14	Haarglätter & Lockenstab
+15468341166465	unklar-eu-vorhanden:EU/US	2026-09-14	Mini Glätteisen und Lockenstab
+15468735889793	kein-stecker-merkmal	2026-09-14	Macaron-farbene Deckenleuchte
+15468759941505	kein-stecker-merkmal	2026-09-14	Nordische Deckenleuchte für Kinderzimmer
+15472050307457	kein-stecker-merkmal	2026-09-14	Tragbarer Multifunktions-Entsafter für Zuhause
+15473069130113	mehrere-varianten	2026-09-14	Automatischer Lockenstab für unterwegs
+15473077223809	kein-stecker-merkmal	2026-09-14	Elektrischer Haarschneider für Glatzrasur
+15473383113089	draft-kein-eu-stecker:US	2026-09-14	Ionen-Glättbürste mit Touchscreen
