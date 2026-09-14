@@ -27284,3 +27284,7 @@ gid://shopify/Product/15506224021889	CHF 7.24	1 Varianten	Matte & Pearlescent Li
 gid://shopify/Product/15506224087425	CHF 27.15	1 Varianten	Multifunktionales Plank- und Sit-up-Trainingsgerät
 gid://shopify/Product/15506224152961	CHF 13.61	1 Varianten	Kissenbezug Haferfarbe für Sofa und Wohnzimmer
 gid://shopify/Product/15506224218497	CHF 11.71	1 Varianten	DIY Sticknadel-Set mit Holzgriff
+gid://shopify/Product/15506224284033	CHF 6.84	1 Varianten	Multicolor Tan Red Matte Pearl Blush Tray
+gid://shopify/Product/15506224349569	CHF 16.96	1 Varianten	Massage-Stick für Yoga und Fitness
+gid://shopify/Product/15506224382337	CHF 19.35	1 Varianten	Luxuriöser Kissenbezug mit Geometrischem Muster
+gid://shopify/Product/15506224447873	CHF 8.07	1 Varianten	Strickmaschine ohne Nadel für individuelle Projekt
