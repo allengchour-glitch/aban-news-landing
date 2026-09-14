@@ -17,3 +17,5 @@ Startbefehl ist eine Zeitbombe, auch wenn das Skript selbst im Repo liegt.
 `skip(dup-titel)` meldet, holt nichts Neues mehr.
 
 Verwandt: [[Masse-ist-kein-Hebel]], [[Katalog-Groesse-und-B2B]]
+
+Verwandt: [[Ein-stummer-Fallback-macht-aus-einem-Ausfall-eine-Rechnung]] — derselbe Tag, dieselbe Familie: ein Zustand, den kein Log nennt.
