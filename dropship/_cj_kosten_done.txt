@@ -26914,3 +26914,4 @@ gid://shopify/Product/15505600610689	CHF 37.72	1 Varianten	Japanischer Reiskübe
 gid://shopify/Product/15505600676225	CHF 15.61	22 Varianten	Kinder Martin Boots – Freizeit-Lederstiefel
 gid://shopify/Product/15505600741761	CHF 18.69	1 Varianten	Ins Blue Planet Kissen bestickt
 gid://shopify/Product/15505601233281	CHF 38.65	1 Varianten	Morandi Fritteuse mit Temperaturkontrolle
+gid://shopify/Product/15505601331585	CHF 23.79	1 Varianten	Niedliches Kopfteil-Kissen in Creme
