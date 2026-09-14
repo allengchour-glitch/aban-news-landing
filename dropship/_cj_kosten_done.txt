@@ -27141,3 +27141,19 @@ gid://shopify/Product/15506163564929	CHF 10.85	8 Varianten	Bedrucktes, figurbeto
 gid://shopify/Product/15506163696001	CHF 13.54	15 Varianten	Ärmelloses Maxi-Kleid mit Taschen
 gid://shopify/Product/15506163761537	CHF 6.90	1 Varianten	Armband mit zwei Initialen
 gid://shopify/Product/15506163859841	CHF 22.11	1 Varianten	Reflektierende Hundeleine für grosse Hunde
+gid://shopify/Product/15506163925377	CHF 13.02	42 Varianten	Damen Faux-Denim V-Neck Shirt
+gid://shopify/Product/15506164023681	CHF 11.14	1 Varianten	Hundeführgurt mit abnehmbarer Teleskop-Leine
+gid://shopify/Product/15506164089217	CHF 16.05	3 Varianten	Französisches Pendlerhemd mit Spitze
+gid://shopify/Product/15506164154753	CHF 28.32	1 Varianten	Verstellbare Hundeleine mit Neopren-Griff
+gid://shopify/Product/15506164253057	CHF 17.51	3 Varianten	Damen Langarm-Hemdbluse mit Krawatte
+gid://shopify/Product/15506164285825	CHF 7.06	1 Varianten	Gassi-Leine «Kleine Gänseblümchen»
+gid://shopify/Product/15506164384129	CHF 12.12	4 Varianten	Kurzes Jacquard-Cardigan-Shirt mit Schnürung
+gid://shopify/Product/15506164416897	CHF 37.01	1 Varianten	UFO Leucht-Rollleine für Hunde
+gid://shopify/Product/15506164547969	CHF 15.55	1 Varianten	Roll-Leine für Haustiere mit ausziehbarem Griff
+gid://shopify/Product/15506164580737	CHF 25.66	12 Varianten	Cardigan mit Blumenstickerei
+gid://shopify/Product/15506164711809	CHF 16.75	1 Varianten	Rollleine für kleine bis grosse Hunde
+gid://shopify/Product/15506164777345	CHF 12.85	8 Varianten	Hoodie-Top mit halbem Reissverschluss & Puffärmeln
+gid://shopify/Product/15506164908417	CHF 6.99	1 Varianten	Kupferarmreif mit bunten Zirkonia-Einlagen
+gid://shopify/Product/15506165006721	CHF 6.86	1 Varianten	Zirkon-Armreif mit Mikro-Pavé und ovalem Ring
+gid://shopify/Product/15506165105025	CHF 11.91	36 Varianten	Herren Henley Shirt Waffelstrick Kurzarm
+gid://shopify/Product/15506165203329	CHF 7.87	1 Varianten	Kupferring mit Zirkonia-Einlage

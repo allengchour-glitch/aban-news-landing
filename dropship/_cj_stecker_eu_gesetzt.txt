@@ -17,3 +17,19 @@
 15452709355905	unklar:farbe-unbekannt	2026-09-14	Negative Ionen Glätt- und Lockenstab 2in1
 15454036328833	eu-sku-gesetzt:CJYD245259302BY	2026-09-14	PTC Heizlüfter mit Fernbedienung 2000 W bis 20 m²
 15454036459905	eu-sku-gesetzt:CJYD245258802BY	2026-09-14	Kleiner Heizlüfter für den Schreibtisch
+15519829361025	unklar:farbe-unbekannt	2026-09-14	Mini-Projektor mit Multi-Screen Funktion
+15500908724609	unklar:farbe-unbekannt	2026-09-14	Sanftes Haarentfernungsgerät für den ganzen Körper
+15527366263169	unklar:farbe-unbekannt	2026-09-14	Aroma Diffuser mit Luftbefeuchter
+15454104748417	eu-sku-gesetzt:CJTF147616101AZ	2026-09-14	Automatischer Lockenstab mit negativem Ion
+15454104781185	eu-sku-gesetzt:CJTF143631402BY	2026-09-14	Multifunktionaler Tourmalin-Keramik-Glätteisenkamm mit Ionen
+15454104912257	eu-sku-gesetzt:CJTF141384202BY	2026-09-14	Mini Lockenstab für nasse und trockene Haare
+15454107468161	eu-sku-gesetzt:CJTF122434202BY	2026-09-14	2-in-1 Haartrockner-Kamm
+15454123852161	eu-sku-gesetzt:CJJF258882901AZ	2026-09-14	Automatische Lockenstab
+15454123884929	eu-sku-gesetzt:CJJF257756402BY	2026-09-14	3-in-1 Dreiweg Lockenstab 32 mm (Klein, Mittel, Gross) Autom
+15454124114305	eu-sku-gesetzt:CJYD256381701AZ	2026-09-14	Drei-in-Eins Heissluft-Haarcurler
+15454124343681	unklar:farbe-unbekannt	2026-09-14	Elektrisches Lockenstab-Set
+15454193222017	unklar:farbe-unbekannt	2026-09-14	Automatischer Lockenstab
+15454193877377	unklar:farbe-unbekannt	2026-09-14	3-in-1 Heissluftkamm
+15454197711233	unklar:farbe-unbekannt	2026-09-14	Keramik-Bügeleisen mit 3-Stufen-Regelung 2600W
+15454204395905	unklar:farbe-unbekannt	2026-09-14	Elektrisches Glätteisen mit Temperaturregelung
+15454915625345	eu-sku-gesetzt:CJJF237572002BY	2026-09-14	Multifunktionaler Automatischer Wellenlockenstab
