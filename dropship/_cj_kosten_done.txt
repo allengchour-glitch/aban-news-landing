@@ -26771,3 +26771,4 @@ gid://shopify/Product/15504224747905	CHF 20.86	1 Varianten	Retro Quarz Multifunk
 gid://shopify/Product/15504224878977	CHF 15.62	36 Varianten	Herren Waffelhemd mit Doppeltaschen
 gid://shopify/Product/15504224911745	CHF 20.34	1 Varianten	Holzarmbanduhr mit Multifunktionswerk
 gid://shopify/Product/15504225042817	CHF 13.57	20 Varianten	Retro Herren-Anzugweste
+gid://shopify/Product/15504225141121	CHF 23.91	1 Varianten	Blumen Zifferblatt Quarzuhr
