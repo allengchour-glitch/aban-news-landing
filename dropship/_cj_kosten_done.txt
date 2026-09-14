@@ -27163,3 +27163,5 @@ gid://shopify/Product/15506165432705	CHF 11.05	42 Varianten	Herren Langarmhemd C
 gid://shopify/Product/15506165465473	CHF 13.96	1 Varianten	Wolframring mit Stufenfacetten und roter Beschicht
 gid://shopify/Product/15506165629313	CHF 15.47	70 Varianten	Business Hemd mit 4-Wege-Stretch
 gid://shopify/Product/15506165760385	CHF 12.31	30 Varianten	Feuchtigkeitsableitendes Kurzarmshirt für Herren
+gid://shopify/Product/15506165858689	CHF 7.82	1 Varianten	Quarz-Armbanduhr mit grossem Zifferblatt
+gid://shopify/Product/15506165924225	CHF 13.86	11 Varianten	Herren Langarmhemd, bügelfrei, elastisch
