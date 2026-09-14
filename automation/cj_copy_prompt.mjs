@@ -20,7 +20,7 @@ Aus dem englischen Produktnamen und den Features machst du:
 1) einen KURZEN deutschen Produkttitel (max 60 Zeichen, keine Marke erfinden, korrekte Umlaute ä/ö/ü, keine englischen Wörter)
 2) eine deutsche Beschreibung, 70–120 Wörter, in dieser Form:
    - Satz 1: Was es ist und wofür man es konkret braucht (der Nutzen im Alltag, kein Werbeton). Beginne NICHT mit «Dieser/Diese/Dieses …» — beginne mit dem Anlass, dem Nutzen oder dem Material (z. B. «An kühlen Herbsttagen …», «Für den Weg ins Büro …», «Wolle mit Karomuster …», «Hält den Nacken warm …»).
-   - Satz 2–4: nur belegbare Fakten aus den Features — Masse, Material, Kapazität, Funktion. Mit Zahlen, wo die Features Zahlen nennen. Den Lieferumfang nur nennen, wenn er MEHR als das Produkt selbst umfasst («1 x scarf» ist kein Satz wert). Keine Katalog-Metadaten als Satz: NICHT «für Erwachsene konzipiert», «dient der Wärmefunktion», «Saison: Sommer», «für Frauen bestimmt».
+   - Satz 2–4: nur belegbare Fakten aus den Features — Masse, Material, Kapazität, Funktion. Mit Zahlen, wo die Features Zahlen nennen. Den Lieferumfang nur nennen, wenn er MEHR als das Produkt selbst umfasst («1 x scarf» ist kein Satz wert). Steht bei Material «Other/Others» oder nichts Konkretes, wird das Material NICHT erwähnt (nie «aus anderen Materialien»). Keine Katalog-Metadaten als Satz: NICHT «für Erwachsene konzipiert», «dient der Wärmefunktion», «Saison: Sommer», «für Frauen bestimmt».
    - Dann <h3>Das zeichnet es aus</h3> mit 3–5 kurzen Stichpunkten (je max 8 Wörter, jeder mit einem Fakt, der im Fliesstext NICHT schon steht).
 Regeln: Kurze Sätze. Keine Superlative. NICHTS erfinden — was nicht in den Features steht, steht nicht im Text.
 Keine Auswahl behaupten: schreibe NICHT «erhältlich in verschiedenen Farben/Grössen», «reicht von … bis …», «wähle zwischen …» — auch dann nicht, wenn die Features mehrere Grössen nennen. Welche Ausführung verkauft wird, zeigt der Shop selbst; nenne höchstens EINE Grössenangabe, wenn sie in den Features steht.
@@ -175,6 +175,12 @@ const META_RE = /^\s*(?:er|sie|es|der \w+|die \w+|das \w+)\s+(?:ist|sind|wurde|w
 // Attributive Floskel-Adjektive fallen als WORT («ein vielseitiges Accessoire» → «ein Accessoire»);
 // der Satz bleibt grammatisch, weil ein Attribut nie Satzglied-tragend ist.
 const ADJ_FLOSKEL_RE = /\b(?:vielseitig|hochwertig|stilvoll|einzigartig|perfekt)(?:e|es|er|en|em)?\s+(?=[\wäöüß])/gi;
+// Stichpunkte, die nur Katalog-Metadaten tragen («Für Damen konzipiert», «Für Herbst und Winter
+// geeignet») — 14 % der Importe vom 14.09. Faellt nur, wenn danach noch ≥2 Stichpunkte bleiben.
+const META_LI_RE = /^\s*f[üu]r\s+(?:damen|herren|frauen|m[äa]nner|erwachsene|kinder|jugendliche|babys?|herbst|winter|sommer|fr[üu]hling|alle\s+jahreszeiten)(?:\s*(?:und|&|\/)\s*[\wäöüß]+)?\s+(?:konzipiert|geeignet|bestimmt|gedacht|entwickelt)\s*[.!]?\s*$/i;
+// CJ «Material: Other» kommt als «aus 100 % anderen Materialien gefertigt» an — eine Aussage ohne Inhalt.
+const ANDERE_MAT_KLAUSEL_RE = /\s*(?:,?\s*(?:und|sowie)\s+)?(?:ist|besteht)?\s*aus\s+(?:100\s*%\s*)?(?:anderen|andere|sonstigen|sonstige|verschiedenen)\s+materialien?(?:\s+(?:gefertigt|hergestellt))?/i;
+const ANDERE_MAT_SATZ_RE = /^\s*(?:er|sie|es|der\s+\w+|die\s+\w+|das\s+\w+)\s+(?:ist|besteht)\s+aus\s+(?:100\s*%\s*)?(?:anderen|andere|sonstigen|sonstige|verschiedenen)\s+materialien?(?:\s+(?:gefertigt|hergestellt))?\s*[.!]?\s*$/i;
 export function beginntMitDies(html) {
   const t = String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   return /^Dies(?:er|e|es)\b/.test(t);
@@ -184,13 +190,19 @@ export function textPolieren(o) {
   let h = o.html.replace(/<p>([\s\S]*?)<\/p>/gi, (m, inner) => {
     if (/<[a-z]/i.test(inner)) return m;                       // Auszeichnung: nicht anfassen
     const teile = inner.split(/(?<=[.!?])(?!\d)\s+/);
-    const bleibt = teile.filter(t => !LIEFER_EINZEL_RE.test(t) && !META_RE.test(t));
+    const bleibt = teile.filter(t => !LIEFER_EINZEL_RE.test(t) && !META_RE.test(t) && !ANDERE_MAT_SATZ_RE.test(t))
+      .map(t => t.replace(ANDERE_MAT_KLAUSEL_RE, '').replace(/\s+([.!?,])/g, '$1'));
     const neu = bleibt.join(' ').replace(ADJ_FLOSKEL_RE, '').replace(/\s{2,}/g, ' ').trim();
     return neu.length >= 25 ? `<p>${neu}</p>` : '';
   });
+  const lis = [...h.matchAll(/<li>([\s\S]*?)<\/li>/gi)].map(m => m[1].replace(/\s+/g, ' ').trim());
+  // Ohne Inhalt → immer weg; Metadaten → nur, wenn danach noch ≥2 Stichpunkte stehen.
+  const leer = (t) => LIEFER_EINZEL_RE.test(t) || /^im lieferumfang:?\s*1\s*(?:x|×)\s*[\wäöüß-]+$/i.test(t) || ANDERE_MAT_KLAUSEL_RE.test(t);
+  const nachLeer = lis.filter(t => !leer(t));
+  const uebrig = nachLeer.filter(t => !META_LI_RE.test(t)).length;
   h = h.replace(/<li>([\s\S]*?)<\/li>/gi, (m, inner) => {
     const t = inner.replace(/\s+/g, ' ').trim();
-    if (LIEFER_EINZEL_RE.test(t) || /^im lieferumfang:?\s*1\s*(?:x|×)\s*[\wäöüß-]+$/i.test(t)) return '';
+    if (leer(t) || (META_LI_RE.test(t) && uebrig >= 2)) return '';
     return `<li>${t.replace(ADJ_FLOSKEL_RE, '').replace(/\s{2,}/g, ' ').trim()}</li>`;
   });
   const nackt = h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();

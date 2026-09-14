@@ -14,6 +14,11 @@ ok(/zwei Bürsten und ein Ladekabel/.test(t2), 'Mehrteiliger Lieferumfang bleibt
 ok(/für Kinder und Erwachsene geeignet, weil/.test(t2), 'Satz mit zweiter Aussage bleibt');
 const t3 = { html: '<p>Kurz. Im Lieferumfang ist ein Schal enthalten.</p>' }; ok(textPolieren(t3).html === t3.html, 'zu kurz → unangetastet (Sicherung)');
 ok(beginntMitDies('<p>Dieses Kissen …</p>') && !beginntMitDies('<p>An kühlen Tagen …</p>'), 'beginntMitDies in beide Richtungen');
+const t4 = textPolieren({ html: '<p>Für kühle Tage ist dieser lange Strick-Cardigan eine wärmende Ergänzung für dein Outfit. Der Cardigan hat eine lockere Passform und ist aus 100 % anderen Materialien gefertigt. Er besteht aus anderen Materialien. Er ist in den Grössen S bis XL erhältlich.</p><h3>Das zeichnet es aus</h3><ul><li>Lockere Passform</li><li>Für Damen konzipiert</li><li>Raglanärmel</li><li>Für Herbst und Winter geeignet</li><li>Aus 100 % anderen Materialien</li></ul>' }).html;
+ok(!/anderen Materialien/.test(t4) && /lockere Passform\./.test(t4), '«aus 100 % anderen Materialien» faellt als Klausel und als Satz: ' + t4.slice(0, 200));
+ok(!/Für Damen konzipiert|Für Herbst/.test(t4) && /<li>Lockere Passform<\/li>/.test(t4), 'Metadaten-Stichpunkte fallen, Fakt-Stichpunkt bleibt');
+const t5 = textPolieren({ html: '<p>Ein Strampler aus Baumwolle für Babys, der sich bequem an- und ausziehen lässt und die Haut nicht reizt.</p><ul><li>Für Babys geeignet</li><li>Aus Baumwolle</li><li>Aus anderen Materialien</li></ul>' }).html;
+ok(/Für Babys geeignet/.test(t5) && !/anderen Materialien/.test(t5), 'Metadaten-Stichpunkt bleibt bei <2 uebrig, Leer-Stichpunkt faellt trotzdem');
 console.log('nurMass:');
 for (const [v, e] of [['180 × 70cm', true], ['ca. 350 g – 512 g (je nach Variante)', true], ['5 W', true], ['45 × 25/height 6cm', false], ['Regular style (50cm < length ≤ 65cm)', false], ['US Size 5, US Size 6', false], ['218g(including sleeve)', false], ['One Size (80–140 jin)', false], ['12 Zoll', true], ['2000 mAh', true]]) ok(nurMass(v) === e, `${v} → ${e}`);
 const sp = extractSpecs('Size: 20*30cm<br>Length: Regular style (50cm<length≤65cm)<br>Weight: 218g(including sleeve)');
