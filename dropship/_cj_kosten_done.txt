@@ -27242,3 +27242,5 @@ gid://shopify/Product/15506200134017	CHF 17.04	1 Varianten	Herrenuhr mit grossem
 gid://shopify/Product/15506200232321	CHF 14.71	42 Varianten	Strickjacke mit Reverskragen für Herren
 gid://shopify/Product/15506200265089	CHF 9.19	1 Varianten	Nagel-Applikationen zum Ausschneiden
 gid://shopify/Product/15506200330625	CHF 17.76	1 Varianten	Türgarderobe mit Haken – Nagel-frei
+gid://shopify/Product/15506200363393	CHF 16.26	1 Varianten	Grosse Quarzuhr mit Lederarmband für Herren
+gid://shopify/Product/15506200494465	CHF 18.50	1 Varianten	Getrocknete Narzissenblüten für Nageldesign

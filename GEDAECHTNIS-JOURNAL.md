@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
 - 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
 - 2026-09-14 · 🔌 «weiterfix mehr»: 64 Netzstecker-Fälle deterministisch aufgelöst, drei neue Warengruppen ins Menü, zwei Kollektions-Leichen
 - 2026-09-14 · ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % — und CLAUDE.md von 970 KB auf 59 KB
@@ -385,6 +386,34 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## ⚖️ «vergleiche andere seite mit unsere und verbessere unsere» (14.09., 09:40–10:15 UTC): 10 CH-Shops gemessen — die Startseite wog 7 MB, weil Horizon jede Reihe zweimal rendert
+
+Betreiber 09:40 UTC. Statt Eindrücken ein Messgerät: `tools/shop_vergleich.mjs` (32 Kennzahlen, Selbsttest mit
+Gegenproben — der Selbsttest fing sofort zwei eigene Fehler: die Lieferzeit-Regex griff «30 Tage Rückgabe», die
+Produktlink-Regex scheiterte an `?variant=`). Galaxus/Zalando/Jumbo/Brack sperren unsere IP (403, 0–800 B) →
+«kein Messwert», nicht geraten. Zehn Shops aus dem Deepdive vom 28.06. antworteten.
+
+**Befund:** Bei Vertrauensbausteinen liegen wir vorn (TWINT+Rechnung, Schwelle, Rückgabe, Sticky-ATC, Cross-Sell).
+Der EINE Ausreisser: **Startseite 7'082 KB gegen Median ~400 KB, 1'122 `<img>` gegen ~60.** Sektion für Sektion
+zerlegt: 17 Produktreihen à ~420 KB, jede mit 24 `<product-card>` für 12 Produkte — `resource-list.liquid` rendert
+bei `grid` + `carousel_on_mobile` das Raster (`hidden--mobile`) UND das Karussell (`hidden--desktop`). 77 % der
+Sitzungen sind mobil und laden das unsichtbare Desktop-Raster mit. Dazu 620 KB identische Inline-SVG (Warenkorb-
+Icon 755×, checkmark-burst 184×), weil `inline_asset_content` je Karte viermal dasselbe Icon einbettet.
+
+**Getan:** (1) 17 Reihen auf `layout_type: carousel` (einmal gerendert, Karussell bleibt — die Einwände vom 12.09.
+gegen «17 → 4 Reihen» bleiben respektiert, Reihenzahl und Karten-Bildkarussell unverändert); (2) Warenkorb-Icon als
+ein `<symbol>` + 368 `<use>`. **Gemessen (12 Abrufe): 6,92 MB → 3,83 MB → 3,75 MB, 0 % Fehler; Produktseite
+unverändert 0,55 MB.** WebFetch bestätigt Rendern von Startseite und Produktseite. Der checkmark-burst blieb inline:
+seine Animation zielt auf innere Pfade, die `<use>` kapselt.
+
+**Zwei Fallen:** (a) Der erste Abruf nach JEDEM `themeFilesUpsert` ist HTTP 500 (12 KB) — Neukompilierung, kein
+Dauerfehler; wer direkt danach misst, misst die Kompilierung. (b) `<body\b` matcht auch `<body-…>`-Custom-Elements
+und Kommentare (5 Treffer, 1 echter) — Anker auf den vollen Tag-Text, `assert len==1` hat den Fehlgriff verhindert.
+
+Betreiber-Optionen aus dem Vergleich (nicht ausgeführt, weil seine Entscheidung): WhatsApp-Kontakt (4/10 Shops),
+Shopify Inbox (gratis Chat, App-Klick), Rabattcode aus dem Klartext nehmen (0/10 zeigen ihn; alle tauschen ihn
+gegen die E-Mail). Bericht: `dropship/VERGLEICH-SHOPS-2026-09-14.md`. Werkzeug im Werkzeugkasten eingetragen.
 
 ## 📺 «lerne im youtube sachen» (14.09., 09:20–10:00 UTC): 4 von 6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf die UID — und ein Befund, der nur im Backup existierte
 
