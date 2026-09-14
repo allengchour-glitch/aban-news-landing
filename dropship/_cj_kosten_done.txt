@@ -27576,3 +27576,6 @@ gid://shopify/Product/15506288083329	CHF 44.35	1 Varianten	Verstellbarer Futterb
 gid://shopify/Product/15506288214401	CHF 13.99	30 Varianten	Off-Shoulder Spitzenkleid mit Gürtel
 gid://shopify/Product/15506288411009	CHF 17.83	25 Varianten	Elegantes schulterfreies Satin-Bodycon-Kleid
 gid://shopify/Product/15506288476545	CHF 10.44	1 Varianten	Verstellbares Armband aus massivem Rotkupfer
+gid://shopify/Product/15506288640385	CHF 11.09	24 Varianten	Ärmelloses A-Linien-Volantkleid mit Rüschen
+gid://shopify/Product/15506288738689	CHF 9.60	1 Varianten	Retro-Armreif aus Rotkupfer für Damen
+gid://shopify/Product/15506288804225	CHF 26.80	1 Varianten	ONOLA Mechanical Herrenuhr – Automatik, Hohl-Desig
