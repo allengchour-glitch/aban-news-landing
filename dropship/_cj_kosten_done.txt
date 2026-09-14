@@ -26996,3 +26996,8 @@ gid://shopify/Product/15505877762433	CHF 40.00	1 Varianten	Digitaler Türspion m
 gid://shopify/Product/15505878516097	CHF 41.93	1 Varianten	Apatit-Kristallkugel, roh
 gid://shopify/Product/15505879728513	CHF 5.52	1 Varianten	Retro Mahagoni Herz-Patch 12x15mm
 gid://shopify/Product/15505882382721	CHF 7.42	1 Varianten	Aromatherapie Gips Seifenform für Wachstafeln
+gid://shopify/Product/15505885561217	CHF 6.47	1 Varianten	DIY Silikonform: Meeresmotive für Epoxidharz
+gid://shopify/Product/15505886577025	CHF 5.41	1 Varianten	3D Silikonform Mini-Goldfische
+gid://shopify/Product/15505891950977	CHF 7.79	1 Varianten	Hunde Autosicherheitsgurt
+gid://shopify/Product/15505893392769	CHF 6.76	1 Varianten	Vintage Blechschild "BBQ Hamburger Bier"
+gid://shopify/Product/15505896112513	CHF 6.00	1 Varianten	Manueller Zigarettenstopfer im neuen Stil
