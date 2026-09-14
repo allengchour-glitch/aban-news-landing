@@ -1151,7 +1151,11 @@ while true; do
   # zurueckschreibt, hinterlaesst dabei eine MINUTE in updatedAt — und die Vereinigung wuerde
   # genau diese Spur ueberschreiben. Erst messen, dann reparieren.
   PDNM=/tmp/pd_nachmessen.log
-  if [ -f "$REPO/automation/produktdetails_nachmessen.py" ] && [ -s "$REPO/dropship/_klassen/produktdetails-doppelt.txt" ]; then
+  # ⚠️ 14.09.: Dieser Melder hatte KEIN Tages-Tor und lief jede Runde neu — 137 Vollmessungen
+  # ueber 593 Produkte in sechs Tagen (Shopify-Eimer), und seit dem Text-Hash-Ledger je Lauf 593
+  # Zeilen. Eine Falle misst einmal am Tag; ein Fenster von 24 h reicht, um den Schreiber zu nennen.
+  PDNM_ALTER=$(( $(date +%s) - $(stat -c %Y "$PDNM" 2>/dev/null || echo 0) ))
+  if [ -f "$REPO/automation/produktdetails_nachmessen.py" ] && [ -s "$REPO/dropship/_klassen/produktdetails-doppelt.txt" ] && [ "$PDNM_ALTER" -gt 72000 ]; then
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/produktdetails_nachmessen.py"{n++} END{exit(n?0:1)}'; then
       ( cd "$REPO" && setsid bash -c "exec python3 automation/produktdetails_nachmessen.py" >> "$PDNM" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) produktdetails_nachmessen (Falle) gestartet"
