@@ -1040,3 +1040,10 @@ gid://shopify/Product/15529154249089	ok	Rindsleder-Rucksack für Damen und Herre
 gid://shopify/Product/15530178150785	ok	Analoguhr mit Quarzwerk und Datumsanzeige
 gid://shopify/Product/15531869307265	ok	Wasserdichte mechanische Uhr aus Wolframstahl
 gid://shopify/Product/15531881038209	nicht-versendbar	Dreieckiges Kissen für Möbel aus Schaumstoff
+gid://shopify/Product/15531931664769	nicht-versendbar	Faltbarer Hochlehner-Stuhl für Draussen
+gid://shopify/Product/15531932254593	nicht-versendbar	Faltbarer Outdoor-Trolley, 130 cm, 200 kg
+gid://shopify/Product/15531932025217	nicht-versendbar	Faltbarer Outdoor-Transportwagen mit vier Rädern
+gid://shopify/Product/15531931730305	nicht-versendbar	Outdoor Campingwagen Faltbar
+gid://shopify/Product/15531932287361	nicht-versendbar	Faltbarer Outdoor-Campingwagen
+gid://shopify/Product/15531931009409	ok	Fitness Widerstandsband für Zugtraining
+gid://shopify/Product/15531933106561	ok	Intelligentes Schnarch-Massagegerät

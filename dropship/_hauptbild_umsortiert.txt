@@ -76,3 +76,9 @@
 15448904597889	bild-7-nach-vorn	kontaktbogen-0509 uhren
 15480285036929	bild-2-nach-vorn	hype 14.09.: Bild 1 englische Collage, Bild 2 reines Produktfoto
 15481692193153	bild-3-nach-vorn	hype 14.09.: Bild 1 Badge-Overlay (4K/5G), Bild 3 reines Produktfoto
+15527366263169	bild-8-nach-vorn	startseite-0914:infografik-vorn
+15525502583169	bild-3-nach-vorn	startseite-0914:farbmuster-vorn
+15510324019585	bild-2-nach-vorn	startseite-0914:infografik-vorn
+15531866325377	bild-5-nach-vorn	startseite-0914:wirk-infografik-vorn
+15530175267201	bild-4-nach-vorn	startseite-0914:colour-panel-vorn
+15516057010561	bild-5-nach-vorn	startseite-0914:collage-vorn

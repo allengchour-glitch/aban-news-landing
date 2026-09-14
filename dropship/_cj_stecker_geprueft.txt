@@ -172,3 +172,10 @@
 15454036328833	unklar-eu-vorhanden:EU/JP/UK/US	2026-09-14	PTC Heizlüfter mit Fernbedienung 2000 W bis 20 m²
 15454036459905	unklar-eu-vorhanden:EU/JP/UK/US	2026-09-14	Kleiner Heizlüfter für den Schreibtisch
 15454038032769	kein-stecker-merkmal	2026-09-14	Kabelloser Handstaubsauger mit grosser Saugkraft
+15481692193153	eu-sku-gesetzt:CJYD191504502BY	2026-09-14	HD Smart Mini-Projektor für Home Office
+15502559084929	eu-sku-gesetzt:CJBJMRJF00040-EU plug	2026-09-14	Glättbürste mit Dampf-Sprühfunktion
+15520410632577	eu-sku-gesetzt:CJTY129227402BY	2026-09-14	T20 Mini Beamer – HD Heimkino für unterwegs
+15481692160385	eu-sku-gesetzt:CJYD191623802BY	2026-09-14	Mini-Beamer 720p
+15519829361025	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Mini-Projektor mit Multi-Screen Funktion
+15500908724609	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Sanftes Haarentfernungsgerät für den ganzen Körper
+15527366263169	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Aroma Diffuser mit Luftbefeuchter
