@@ -30,7 +30,7 @@ vier Kopien desselben Icons.
 
 | Messung (`tools/shop_startseite.mjs`, 12 Abrufe) | vorher | nach 1 | nach 1+2 |
 |---|---|---|---|
-| Startseite | **6,92 MB**, 0 % Fehler, 484 ms | 3,83 MB, 0 % | **3,75 MB** (Einzelabruf; 12er-Lauf s. u.) |
+| Startseite | **6,92 MB**, 0 % Fehler, 484 ms | 3,83 MB, 0 % | **3,67 MB** (12 Abrufe, 0 % Fehler) |
 | `<product-card>` | 408 | 188 | 188 |
 | `<img>` | 1'122 | 583 | 583 |
 | Produktseite (Kontrolle) | 0,55 MB | 0,55 MB | 0,56 MB |
