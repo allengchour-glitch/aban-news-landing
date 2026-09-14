@@ -27140,3 +27140,4 @@ gid://shopify/Product/15506163532161	CHF 8.75	1 Varianten	Taktisches Hundehalsba
 gid://shopify/Product/15506163564929	CHF 10.85	8 Varianten	Bedrucktes, figurbetontes Midi-T-Shirt-Kleid
 gid://shopify/Product/15506163696001	CHF 13.54	15 Varianten	Ärmelloses Maxi-Kleid mit Taschen
 gid://shopify/Product/15506163761537	CHF 6.90	1 Varianten	Armband mit zwei Initialen
+gid://shopify/Product/15506163859841	CHF 22.11	1 Varianten	Reflektierende Hundeleine für grosse Hunde

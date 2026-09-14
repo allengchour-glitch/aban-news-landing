@@ -896,6 +896,18 @@ while true; do
       echo "$(date -u +%H:%M) cj_stecker_pruefen gestartet"
     fi
   fi
+  # 14.09. Task #76: die «unklar-eu-vorhanden»-Faelle des Pruefers deterministisch aufloesen —
+  # genau EINE EU-Variante bei CJ (oder gleiche Farbe wie unsere Varianten-SKU) -> EU-SKU setzen +
+  # Faktenzeile; Farbwahl unbekannt -> Tag stecker-unklar, aus der Hype-Reihe. 10 CJ-Punkte je Produkt.
+  CSE=/tmp/cj_stecker_eu_setzen.log
+  if [ -f "$REPO/automation/cj_stecker_eu_setzen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$CSE" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 43200 ] && ! grep -q "^FERTIG" "$CSE" 2>/dev/null; then
+      ( cd "$REPO" && setsid flock -n /tmp/lock_cj_stecker_eu.lock \
+          env CAP=60 python3 automation/cj_stecker_eu_setzen.py >> "$CSE" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) cj_stecker_eu_setzen gestartet"
+    fi
+  fi
   # ── Zombie-Wache: WER schreibt einen reparierten Text zurueck? (04.09.2026) ────────────
   # 987 USA-Lieferzusagen lebten wieder, 978 davon standen als repariert im Ledger. Kein
   # Werkzeug BAUT den Block neu — jemand schreibt einen ALTEN descriptionHtml zurueck. Die

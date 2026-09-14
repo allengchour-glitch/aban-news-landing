@@ -14,3 +14,6 @@
 15452708241793	unklar:farbe-unbekannt	2026-09-14	Vier-in-Eins Föhn-Kamm für Haushalt
 15452708274561	unklar:farbe-unbekannt	2026-09-14	Multifunktionaler 3-in-1 Haartrockner
 15452708372865	eu-sku-gesetzt:CJTF177984002BY	2026-09-14	Tourmalin-Keramik Lockenstab 31mm
+15452709355905	unklar:farbe-unbekannt	2026-09-14	Negative Ionen Glätt- und Lockenstab 2in1
+15454036328833	eu-sku-gesetzt:CJYD245259302BY	2026-09-14	PTC Heizlüfter mit Fernbedienung 2000 W bis 20 m²
+15454036459905	eu-sku-gesetzt:CJYD245258802BY	2026-09-14	Kleiner Heizlüfter für den Schreibtisch
