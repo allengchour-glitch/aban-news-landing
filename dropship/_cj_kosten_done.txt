@@ -27279,3 +27279,8 @@ gid://shopify/Product/15506223694209	CHF 7.71	1 Varianten	Baumwollstoff mit japa
 gid://shopify/Product/15506223792513	CHF 8.32	1 Varianten	Daba Lash Wimpernserum 5.32ml
 gid://shopify/Product/15506223858049	CHF 69.03	1 Varianten	Multifunktionaler Türreck für Fitness zuhause
 gid://shopify/Product/15506223923585	CHF 27.24	1 Varianten	Geometrisches Jacquard Flanell Sofakissen
+gid://shopify/Product/15506223956353	CHF 23.12	1 Varianten	Afrikanischer Baumwoll-Wax-Stoff mit Geometrie-Pri
+gid://shopify/Product/15506224021889	CHF 7.24	1 Varianten	Matte & Pearlescent Lidschatten-Palette
+gid://shopify/Product/15506224087425	CHF 27.15	1 Varianten	Multifunktionales Plank- und Sit-up-Trainingsgerät
+gid://shopify/Product/15506224152961	CHF 13.61	1 Varianten	Kissenbezug Haferfarbe für Sofa und Wohnzimmer
+gid://shopify/Product/15506224218497	CHF 11.71	1 Varianten	DIY Sticknadel-Set mit Holzgriff

@@ -38770,3 +38770,5 @@ gid://shopify/Product/15496329691521	ok
 gid://shopify/Product/15496329658753	ok
 gid://shopify/Product/15496329593217	ok
 gid://shopify/Product/15496329560449	ok
+gid://shopify/Product/15496329527681	ok
+gid://shopify/Product/15496329494913	ok
