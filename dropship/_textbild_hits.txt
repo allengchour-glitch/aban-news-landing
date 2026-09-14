@@ -15667,3 +15667,4 @@ gid://shopify/Product/15532083806593	182->0	Sofabezug Geometrisches Muster
 gid://shopify/Product/15532086428033	19->1	Verstellbares Nickerchenkissen aus Memory-Schaum
 gid://shopify/Product/15532131975553	86->0	Kissenpaar mit Faserfüllung
 gid://shopify/Product/15532132303233	67->0	Kissen mit Satin-Streifen, 2er-Set
+gid://shopify/Product/15532149244289	9->0	Schulter-Wickelweste für stillende Mütter

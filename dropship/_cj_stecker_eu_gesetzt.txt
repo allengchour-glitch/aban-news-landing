@@ -53,3 +53,10 @@
 15493276631425	unklar:farbe-unbekannt	2026-09-14	Kabelloser Handstaubsauger mit Lithium-Akku
 15493319590273	unklar:farbe-unbekannt	2026-09-14	72V20AH E-Scooter/Auto Ladegerät
 15493320180097	eu-sku-gesetzt:CJCD104716701AZ	2026-09-14	Multifunktionale Pilzlampe mit USB-Ladegerät
+15493443846529	unklar:farbe-unbekannt	2026-09-14	5-Port USB-Ladegerät mit Überhitzungsschutz
+15493444043137	unklar:farbe-unbekannt	2026-09-14	Schnellladegerät 5V/3A · passend für Samsung Note10
+15493498896769	eu-sku-gesetzt:CJXFLPCD00334-Photo Color-EU	2026-09-14	Automatisches 12V/24V LCD Batterieladegerät
+15493499748737	unklar:farbe-unbekannt	2026-09-14	8-Port USB-Netzteil für Mobilgeräte
+15493499847041	unklar:farbe-unbekannt	2026-09-14	USB-Ladegerät QC3.0 für Mobiltelefone, 18W
+15493706744193	eu-sku-gesetzt:CJBJMRJF00014-EU	2026-09-14	Profi-Dampfglätteisen mit Arganöl-Infusion
+15493807833473	eu-sku-gesetzt:CJXFLPCD00238-Black-EU	2026-09-14	Multi-Port USB-Ladegerät

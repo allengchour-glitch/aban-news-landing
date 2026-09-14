@@ -280,3 +280,5 @@ gid://shopify/Product/15531886510465	gewichtheben-bandage-fur-handgelenk-659456	
 gid://shopify/Product/15531935465857	schneider-mini-leistungsschalter-06fc53	Schneider Mini-Leistungsschalter
 gid://shopify/Product/15532055560577	gehhilfe-fur-hintere-haustierbeine-283008	Gehhilfe für hintere Haustierbeine
 gid://shopify/Product/15532143870337	taktisches-messer-mit-lederscheide-023040	Taktisches Messer mit Lederscheide
+gid://shopify/Product/15532259443073	herren-pullover-mit-struktur-und-kapuze-636900	Herren-Pullover mit Struktur und Kapuze
+gid://shopify/Product/15532286869889	multifunktionaler-edelstahl-taschenlampen-stif-610500	Multifunktionaler Edelstahl-Taschenlampen-Stift
