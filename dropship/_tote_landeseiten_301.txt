@@ -16,3 +16,4 @@
 /products/crossbody-tasche-lido-gewebte-color-block-bag	/collections/sub-taschen	0309
 /products/%f0%9f%92%86-recovery-set-premium-akupressur-matte-faszienrolle-wolldecke-spare-chf-25	/collections/wellness-massage	0309
 /products/herren-sommer-mode-markenkleidung-lassige-business-shorts-locker-geschnittenes-vielseitiges-rundhals-t-shirt-atmungsaktives-t-shirt	/collections/herren-shirts	0309
+/collections/trainingsanzuege-sets	/collections/sport-outdoor	2026-09-14	regel TAG=set traf Tassen-Sets, 0 Trainingsanzuege

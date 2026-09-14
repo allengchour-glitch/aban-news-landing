@@ -1,3 +1,44 @@
+## 📱 «mach webseite besser» / «handyversion, bilder kleiner» (14.09., 05:40–06:40 UTC): 75 % Handy-Sitzungen sahen EINE Riesenkarte — und die Elektronik-Kategorie bewarb TCL-Fernseher, die seit Juli DRAFT sind
+
+Container um 05:37 neu gestartet (Aufseher tot, per Keepalive wieder da; der Steckerprüfer war mit
+«Connection refused» gestorben — der Proxy war beim Start noch nicht da — und läuft per setsid weiter).
+Gemessen statt geraten: 7 Tage 349 Sitzungen, **1 Warenkorb, 0 Kasse**; 14 Tage **551 mobil / 180 Desktop**.
+- **Handy-Karten (Betreiber: «bilder kleiner machen?»):** Die Trend-Reihe stand auf `mobile_columns:"1"` /
+  `86cqw` — EINE Karte füllte den ganzen Bildschirm; die 16 anderen Reihen auf `60cqw` (1,6 Karten sichtbar).
+  Jetzt Trend 2 Spalten/60cqw, alle übrigen 44cqw (2,2 Karten). Mobil-Screenshot per `MOBILE=1 site_shot.mjs`
+  vorher/nachher belegt. Backup `theme_backup/index.json.mobil-klein-0914`. ⚠️ Der erste Screenshot lieferte
+  «There was a problem loading this website» — Proxy nach dem Neustart; zweiter Lauf 200. Ein Screenshot-Fehler
+  direkt nach `uptime < 10 min` ist kein Seitenbefund.
+- **Kontaktbogen über alle 17 Reihen (184 Karten) GELESEN:** 6 Erstbilder getauscht (Diffuser
+  «Product use method», Yogamatte Farbmuster, Controller-Infografik, Mikrostrom «Rebuild Youthful Contours»,
+  Pullover COLOUR-Panel, Waschhandschuh-Collage). Ganze Bildsätze kontaminiert (Babyphone MULTILINGUAL,
+  Smartwatch-Gehäuse ULTRA 2) bleiben — Umsortieren hilft dort nicht (Lehre 05.09.).
+  **«Schneider Mini-Leistungsschalter»** (echtes Markenlogo auf einem Sicherungsautomaten, 1 Bild) stand in
+  der Elektronik-Reihe → DRAFT + `lizenz-risiko`, aus TikTok/Meta/Pinterest.
+- ⛔ **12 Kollektionstexte bewarben Marken mit 0 aktiven Produkten** (Nike Court Vapor, Puma R78, Adidas Copa,
+  Casio Solar, Logitech MK540, TCL/Xiaomi-TVs, BenQ/Asus-Monitore, Bosch/Makita …) — BigBuy-Ware, DRAFT seit
+  10.07. `kollektionstexte_wahrheit.py` sucht nur « »-Namen; **Marken stehen ohne Anführungszeichen.** Jeder
+  Text aus den ERSTEN 30 AKTIVEN Titeln neu geschrieben (Backup `theme_backup/kollektionstexte-marken-phantom-vor-0914.json`).
+  Dabei: `trainingsanzuege-sets` (Regel `TAG=set`, BigBuy-Importziel) führte 8 aktive — Tassen-Sets, Ring-Set,
+  Kristall-Set, **0 Trainingsanzüge**; echte Trainingsanzüge im Katalog sind 20, davon ~13 Fasnachtskostüme →
+  301 auf `sport-outdoor` (1'788 aktiv, selbst keine Weiterleitung), unpubliziert.
+- **98 Kollektions-SEO-Beschreibungen trugen «kuratierte Premium-Auswahl … schnelle Lieferung in die Schweiz»**
+  (Baustein `koll_seo_fuellen` 11.08.) — die 29.08.-Überzusage im Google-Snippet. Deterministisch ersetzt, beide
+  SEO-Felder zurückgesendet (Ersetz-Falle), `ft-`/CH-Lager ausgenommen (dort wahr).
+- 🔌 **Steckerfrage in der Hype-Reihe:** 22 Netzgeräte-Kandidaten live bei CJ gemessen — **6 mit AU/EU/UK/US-
+  Varianten bei EINER Shop-Variante**, darunter der HD-Projektor auf Position 5. Bei 4 ist die EU-Variante
+  farblich eindeutig und preisgleich → Shopify-SKU auf die CJ-EU-Varianten-SKU gesetzt
+  (`productVariantsBulkUpdate` mit `inventoryItem.sku` — `sku` direkt gibt es in 2024-10 nicht) + Faktenzeile
+  «Netzstecker: EU-Version»; Mini-Projektor (White/Blue), Haarentferner (3 Farben) und Aroma-Diffuser
+  (4 Holzfarben) → `stecker-unklar`, aus der Hype-Reihe, Ledger `unklar-eu-vorhanden`.
+  ⚠️ **`cj_url()` kannte die UUID-pid-Form `CJ-274ADBCE-…` nicht** (≥10'000 aktive Produkte) und übersprang
+  sie als «keine CJ-SKU» — ergänzt. ⚠️ **Die EU-SKU «CJBJMRJF00040-EU plug» trägt ein LEERZEICHEN**; der
+  Bestell-Automat hätte sie mit «passt zu keinem CJ-Schema» abgewiesen → Muster + `urllib.parse.quote`.
+  **Wer eine SKU setzt, prüft, ob der Automat, der sie liest, sie lesen kann.**
+- Gesund gemessen: Hero-Link → `jacken-outdoor` (200), 0 «Sommer»-Reihen (nur Menü «Sommer-Auslauf» + 2 Kleider),
+  Damen-Mode-Seite ohne Sommer/Englisch/Codes, Produktseite Rizinusöl vollständig (Lieferdatum, Versand CHF 7,
+  Spezifikationen, Ratgeber-Karte). Trichter unverändert 0 — die Seite ist nicht der Engpass, der Verkehr ist es.
+
 ## 🔌 «fix alles weiter und verbessere dann» (14.09., 03:15–04:00 UTC): Text-Hash-Falle, frische Hype-Runde — und ein Netzgerät ohne Schweizer Stecker
 
 Container um 03:12 neu gestartet (Aufseher tot, per Keepalive wieder da; der Boden-15-Signaturlauf
