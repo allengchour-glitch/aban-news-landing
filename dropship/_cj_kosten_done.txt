@@ -26925,3 +26925,5 @@ gid://shopify/Product/15505602773377	CHF 45.43	1 Varianten	Faltbarer Holzkohlegr
 gid://shopify/Product/15505603166593	CHF 26.51	1 Varianten	Wiederverwendbare Nescafé Kapsel aus Edelstahl
 gid://shopify/Product/15505603494273	CHF 11.57	33 Varianten	Leichte Kinder-Sandalen mit Klettverschluss
 gid://shopify/Product/15505603920257	CHF 19.07	1 Varianten	Abtropfgestell für Geschirr
+gid://shopify/Product/15505604346241	CHF 12.89	39 Varianten	Kinder Canvas-Schuhe – Koreanischer Casual-Stil
+gid://shopify/Product/15505604673921	CHF 18.59	1 Varianten	Carbon-Rennvelo-Sattel für Mountainbikes
