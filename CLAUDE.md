@@ -85,6 +85,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   schon auf den gemergten PRs #2512 (11.09.) und #2513 (12.09.), also auf `main`. Ursache Cloudflare-seitig (kein
   `wrangler.*` im Repo-Root, Check-Ausgabe ohne Fehlertext). **Nicht als PR-Fehler jagen**; reparieren/abhängen kann
   nur der User im Cloudflare-Dashboard (Workers → Builds). Die repo-eigenen Checks sind davon unabhängig.
+- **🟡 «Pre-deploy validation» (`deploy-check.yml`) endet auf JEDEM Lauf mit `cancelled`** — eigener `timeout-minutes: 8`,
+  aber der Schritt startet `npx html-validate` einzeln für **2702** HTML-Dateien; Log bricht mitten in der Schleife mit
+  «The operation was canceled» ab. Ebenso auf #2512/#2513 → kein PR-Fehler, die Folgeschritte (Links/Sitemap/JSON-LD)
+  laufen nie. Fix als eigener PR: ein einziger html-validate-Aufruf per `xargs` oder nur geänderte Dateien prüfen
+  (Patch-Vorschlag im Kommentar an PR #2515).
 
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
