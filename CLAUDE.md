@@ -42,6 +42,9 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **YouTube-Runde 14.09.** (`dropship/LERNEN-YOUTUBE-2026-09-14.md`): Merchant-Website-Anforderungen erfüllt bis auf
   **UID im Impressum** (Betreiber, Nummer nicht im Repo); Produktseite hat Reviews/Accordion/Ankündigung, keine Produkt-FAQ/UGC;
   Conversion 0,08 % vs 1,4 % QUELLE. Vor Theme-Reparaturen IMMER die Live-Datei holen — `theme_backup/` ist Vergangenheit.
+- **SEO/Optik 14.09.** (`dropship/LERNEN-SEO-OPTIK-2026-09-14.md`): Startseite Reihenfolge Hero → USP → Trend → Kollektionen →
+  Bestseller → **Kundenstimmen** (`lux_kundenstimmen`, Judge.me-Metafeld, 4.88/4'349) → … ; JSON-LD im Head (`luxJsonLd`, nur index);
+  Cart-Drawer ohne h2. Offen (nur Admin): Startseiten-Meta-Description 196 → ≤150 (Cowork Punkt 5).
 - **Shop-Vergleich 14.09.** (`dropship/VERGLEICH-SHOPS-2026-09-14.md`, `tools/shop_vergleich.mjs`): Startseite **6,92 → 3,1 MB**.
   Betreiber 14.09.: «8 Produkte, ganze Webseite mit anderen Katalogen füllen» → `automation/homepage_katalog_rotation.py`
   (täglich im Aufseher): 18 Reihen à 8 im Karussell (grid+carousel_on_mobile rendert doppelt!), 10 feste Reihen, 8 Wechsel-
@@ -602,6 +605,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-14 · 🧭 «youtube optisch+seo»: 2× Warenkorb-h2 vor H1 (Produkt/Kollektion, nicht Startseite) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach Bestsellern (kein App-Block nötig); damen-mode 174→138
 - 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
 - 2026-09-14 · 🔑 Groq lebt (Chat-Schlüssel, 200), Ampel-403 war der urllib-User-Agent; PC-Gedächtnis hatte Keepalive-Routine AUS und Entwurfs-Routine AN (2'031 Drafts heute) → umgeschaltet; Versand live 45 statt 50, Klick blockiert
 - 2026-09-14 · 🛑 «stoppe cj grind?» / «Grow in ≤6 Monaten, jetzt Verkauf optimieren»: Grind pausiert (Runner 0, Pause +180 T), Bilder gingen trotz 105 % noch; Groq-Schlüssel kam nicht an (Env leer nach Neustart)

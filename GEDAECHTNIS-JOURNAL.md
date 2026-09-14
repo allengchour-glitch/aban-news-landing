@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🧭 «schau in youtube für verbesserung webseite optisch und seo»: 2× Warenkorb-h2 vor der H1 (Produkt/Kollektion) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach den Bestsellern; damen-mode 174→138
 - 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
 - 2026-09-14 · 🔑 Groq lebt (Chat-Schlüssel, 200), Ampel-403 war der urllib-User-Agent; PC-Gedächtnis hatte Keepalive-Routine AUS und Entwurfs-Routine AN (2'031 Drafts heute) → umgeschaltet; Versand live 45 statt 50, Klick blockiert
 - 2026-09-14 · 🛑 «stoppe cj grind?» / «Grow in ≤6 Monaten, jetzt Verkauf optimieren»: Grind pausiert (Runner 0, Pause +180 T), Bilder gingen trotz 105 % noch; Groq-Schlüssel kam nicht an (Env leer nach Neustart)
@@ -391,6 +392,25 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🧭 «schau in youtube für verbesserung webseite optisch und seo» (2026-09-14, 17:40–18:30 UTC)
+
+YouTube drosselte nach zwei Abrufen (429, zweites Mal heute) — ein Video lieferte Kapitel (Hero → Kollektionen →
+Wertversprechen → Bestseller → Social Proof → Markenstory → Angebot → Speed → Trust), der Rest nur oEmbed-Titel;
+dazu Shopify-Blog-Checkliste (Title <55, Description <150, eine H1) und Judge.me-Hilfe. Gegenprobe an sechs eigenen
+Seiten (curl + Admin-API), nicht an einer: **auf Produkt- und Kollektionsseiten standen ZWEI h2 «Dein Warenkorb ist
+leer» VOR der H1** (Header-Cart-Drawer in `snippets/header-actions.liquid`), auf der Startseite nicht — dort steht die
+H1 versteckt im Header. Ein Seitentyp allein hätte «alles ok» gemeldet. Fix: `<div role="heading" aria-level="2">`
+(Barrierefreiheit gleich, `cart-drawer.js` ohne h2-Bezug), gemessen danach 0 auf allen drei Seiten. Zweitens belegte
+ein reines `<script type=ld+json>` als custom-liquid-Sektion einen der 25 Startseiten-Plätze → in den Head von
+`layout/theme.liquid` hinter `template.name == 'index'` (Produkt/Kollektion 0×, Startseite 1×). Der freie Platz wurde
+das, was im Video-Aufbau fehlte: **Social Proof direkt nach den Bestsellern** — Sektion `lux_kundenstimmen` mit
+«Das sagen unsere Kundinnen und Kunden», «4.88 von 5 · 4'349 verifizierte Bewertungen» und 15 echten 5★-Bewertungen,
+alles aus `shop.metafields.judgeme.*` (Vintage-Anleitung 8205142; Klasse `jdgm-carousel-wrapper`,
+`data-auto-install="false"`). **Kein App-Block-Handle nötig**, Titel bleibt deutsch (per WebFetch bestätigt, kein
+«Let customers speak for us»). Nebenbei: damen-mode SEO-Beschreibung 174→138, 9 Kollektionen ≥30 Produkte ohne
+SEO-Text gesetzt, Firmen-&-Vereine-Tags gesetzt. Nicht von hier: Startseiten-Description 196 Zeichen ist die
+Shop-Beschreibung (nur Admin) → Cowork Punkt 5. Bericht: `dropship/LERNEN-SEO-OPTIK-2026-09-14.md`.
 
 ## 📺 Betreiber-Link «Claude kann jetzt ALLES in Shopify» (14.09., 17:00–17:20 UTC): YouTube gedrosselt, oEmbed als Ersatz — und der Shop spricht schon UCP
 

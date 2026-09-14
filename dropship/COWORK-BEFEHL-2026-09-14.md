@@ -31,5 +31,10 @@ Erfinde keine Werte, bezahle nichts, lösche nichts, deinstalliere keine App.
    Liste der selbst erstellten Apps mit «letzte Aktivität» abschreiben und melden. Nichts deinstallieren,
    keinen Token widerrufen — «autopilot2» ist der Betrieb der Cloud-Sitzung.
 
-Am Ende: vier Zeilen Bericht, in derselben Reihenfolge.
+5. STARTSEITEN-META-DESCRIPTION KÜRZEN (gemessen 196 Zeichen, Google schneidet bei ~150): Shopify-Admin → Onlineshop →
+   Einstellungen (Preferences) → «Titel und Meta-Beschreibung» → Meta-Beschreibung ersetzen durch:
+   «LuxeStyle CH: Mode, Schmuck, Beauty & Gadgets. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Rechnung mit
+   Klarna · TWINT. Aus der Schweiz.» (136 Zeichen). Speichern, Zeichenzahl melden.
+
+Am Ende: fünf Zeilen Bericht, in derselben Reihenfolge.
 ```
