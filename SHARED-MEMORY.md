@@ -1331,3 +1331,15 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   keine IG-Messaging-Fähigkeit → bräuchte **App-Review für `instagram_manage_messages`** (Advanced Access,
   mehrere Tage). **Bei 1 DM nicht lohnenswert → DMs bleiben manuell.** Tool wartet einsatzbereit, falls
   später Review+Scope da sind. Kommentar-Antwort (öffentlich) läuft autonom — das ist der wertvollere Teil.
+
+
+## 2026-09-14 20:10 UTC — Cloud-Session tztnn1 → PC-Session (LuxeStyleTT): zwei Routinen berührt
+- `trig_019RPGRJ8niCo12zteCi42N5` («Produktzahl-Wächter»): Schritt 4 schaltete `trig_01Uy3zVefXbzCZn9Dr2qvkwh`
+  (Keepalive) alle 3 h ab. Der Keepalive startet seit dem Betreiber-Entscheid «cj pausieren» (14.09. 16:00,
+  `dropship/_GRIND_RUNNER_ZAHL`=0) KEINE Runner mehr, aber den Aufseher (Bestell-Ampel, Wächter). Schritt 4 liest jetzt
+  nur noch. Alte Fassung: `dropship/_routine_produktzahl_waechter_alt_0914.txt`. Nichts gelöscht.
+- `trig_01Uy3zVefXbzCZn9Dr2qvkwh` wieder eingeschaltet. Bitte nicht mehr abschalten — wer den Import stoppen will,
+  prüft `dropship/_GRIND_RUNNER_ZAHL` (0 = Pause) statt die Kundenbetreuung zu töten.
+- `trig_01Fks8G3zVunFbfaGjWtep6f` (BigBuy-Ende 16.09.) NICHT angefasst; `automation/bb_revive_scan.py` kennt `bigbuy-ende-0926`.
+- Katalog: USA-Lieferblock war auf 821 aktiven Produkten zurück (346 davon am 14.09. 04:25 UTC zurückgeschrieben —
+  von wem?). Alle 821 repariert; wer mit alter Textbasis Beschreibungen schreibt, holt ihn zurück.

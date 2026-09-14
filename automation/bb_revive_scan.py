@@ -36,7 +36,9 @@ if not os.path.exists("/tmp/bb_revive_pool.json"):
         if not pg: break
         for p in pg["nodes"]:
             v=p["variants"]["nodes"][0] if p["variants"]["nodes"] else {}
-            if any(t in p["tags"] for t in ("nicht-lieferbar-ch","ausverkauft-lieferant","duplikat-auto-draft")): continue
+            # 14.09.2026: «bigbuy-ende-0926» = Betreiber-Entscheid (BigBuy-Pack gekündigt, Routine trig_01Fks8G3zVunFbfaGjWtep6f
+            # setzt am 16.09. alle BigBuy-Produkte auf Entwurf). Diese Drafts darf der Scan NIE wiederbeleben.
+            if any(t in p["tags"] for t in ("nicht-lieferbar-ch","ausverkauft-lieferant","duplikat-auto-draft","bigbuy-ende-0926")): continue
             try: pr=float(v.get("price") or 0)
             except Exception: pr=0
             if pr<25: continue                      # unter 25 CHF trägt die Fracht nie

@@ -1,0 +1,19 @@
+Reiner Lesevorgang für den Shopify-Shop luxestyle-ch. Im Shop nichts ändern, nichts anlegen, nichts löschen, keine Produkte umstellen.
+
+HINTERGRUND: Im Shop legen CJ-Import-Runner aus einem früheren Aufbau schubweise neue Produkte an — sofort aktiv und im Onlineshop veröffentlicht, im Takt von drei bis vier pro Minute. Am 04.09.2026 waren es 1'070 an einem Tag, am 05.09. bis 08:29 UTC 457. Der stündliche Nachstarter-Trigger trig_01Uy3zVefXbzCZn9Dr2qvkwh («CJ-Grind + Social Keepalive») war bis 05.09. 09:33 UTC entgegen der Dokumentation noch aktiv und ist seither deaktiviert. Prozesse, die schon laufen, können trotzdem weiterschreiben. Niemand merkt es, wenn ein neuer Schub anläuft. Dafür gibt es diese Prüfung, alle drei Stunden.
+
+AUFGABE:
+1. Bestimme den aktuellen Zeitpunkt (UTC) und daraus den Zeitpunkt vor vier Stunden im Format YYYY-MM-DDTHH:MM:SSZ.
+2. Frag über den Shopify-Connector ab. WICHTIG: Der Zeitstempel MUSS in einfachen Anführungszeichen stehen, sonst ignoriert Shopify die Uhrzeit und zählt den ganzen Tag (gemessen 05.09.: ohne Anführungszeichen 457, mit 0). Also exakt so, wobei <VOR4H> der berechnete Zeitstempel ist:
+   { neu: productsCount(query: "created_at:>'<VOR4H>'", limit: 500000) { count }
+     aktiv: productsCount(query: "status:active", limit: 500000) { count } }
+3. Frag zusätzlich das neueste Produkt ab:
+   { products(first: 1, sortKey: CREATED_AT, reverse: true) { edges { node { title createdAt } } } }
+4. Über den Claude_Code_Remote-Connector list_triggers (enabled: true, recurring: true): Prüfen, ob trig_01Uy3zVefXbzCZn9Dr2qvkwh darunter ist. Wenn JA (also wieder aktiv): sofort update_trigger mit enabled false auf genau diese ID — das ist die EINZIGE Schreiboperation dieser Aufgabe und betrifft nicht den Shop — und im Bericht als erste Zeile melden: «NACHSTARTER WAR WIEDER AN — deaktiviert um <Zeit>». Nichts löschen. Andere Trigger nicht anfassen.
+
+BEWERTUNG — es zählt ausschliesslich das Fenster der letzten vier Stunden, nicht der ganze Tag. Plausibilitätsprüfung: Wenn neu > 0, muss das neueste Produkt (Schritt 3) ein createdAt innerhalb der letzten vier Stunden haben; sonst stimmt die Abfrage nicht — dann das melden statt Alarm zu schlagen.
+- neu > 20 → Ein Schub läuft gerade oder ist eben gelaufen. Melde das deutlich: Anzahl der letzten vier Stunden, Zeitstempel des neuesten Produkts, aktive Produkte gesamt. Weise darauf hin, dass die CJ-Runner wieder schreiben und dass der Shopify-Admin-API-Token entzogen gehört (Einstellungen → Apps und Vertriebskanäle → App-Entwicklung), weil das der einzige Hebel ist, der unabhängig vom Container wirkt.
+- neu zwischen 1 und 20 → eine Zeile: Zuwachs in vier Stunden und aktive Produkte gesamt.
+- neu = 0 → eine Zeile: «Ruhig. Aktive Produkte: X. Letztes Produkt: <Zeitstempel>.»
+
+Antworte auf Deutsch, höchstens sechs Zeilen. Ausser Schritt 4 keine Korrektur durchführen, auch nicht wenn es naheliegt — diese Aufgabe liest und berichtet.

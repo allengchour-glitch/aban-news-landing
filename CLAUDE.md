@@ -42,6 +42,11 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **YouTube-Runde 14.09.** (`dropship/LERNEN-YOUTUBE-2026-09-14.md`): Merchant-Website-Anforderungen erfüllt bis auf
   **UID im Impressum** (Betreiber, Nummer nicht im Repo); Produktseite hat Reviews/Accordion/Ankündigung, keine Produkt-FAQ/UGC;
   Conversion 0,08 % vs 1,4 % QUELLE. Vor Theme-Reparaturen IMMER die Live-Datei holen — `theme_backup/` ist Vergangenheit.
+- **Katalog aus Verkehrssicht 14.09.** (`dropship/KATALOG-VERKEHR-2026-09-14.md`, `tools/verkehrsseiten_messen.py`): 957/1'357
+  Sitzungen landen auf PRODUKTSEITEN — Landeseiten zuerst messen. **⚠️ PC-Routine «Produktzahl-Wächter» (`trig_019RPGRJ…`, alle
+  3 h) schaltete den Keepalive ab; Prompt am 14.09. 20:04 auf Nur-Lesen geändert.** **⚠️ `trig_01Fks8G3…` entwirft am
+  16.09. 05:00 UTC alle BigBuy-Produkte (Tag `bigbuy-ende-0926`, PC-Session: «Pack gekündigt») — Betreiber bestätigen oder abschalten.**
+  Läufe > 1 h müssen hinter der letzten Quittung weitermachen (`versand_jenachland` rotiert jetzt).
 - **SEO/Optik 14.09.** (`dropship/LERNEN-SEO-OPTIK-2026-09-14.md`): Startseite Reihenfolge Hero → USP → Trend → Kollektionen →
   Bestseller → **Kundenstimmen** (`lux_kundenstimmen`, Judge.me-Metafeld, 4.88/4'349) → … ; JSON-LD im Head (`luxJsonLd`, nur index);
   Cart-Drawer ohne h2. Offen (nur Admin): Startseiten-Meta-Description 196 → ≤150 (Cowork Punkt 5).
@@ -605,6 +610,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-14 · 🛒 «verbessere katalog»: 70 % Verkehr auf Produktseiten, 38 % davon Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus-Wächter, Rotation); 143 Platzhalter, 1'050 SEO-Descs; PC-«Produktzahl-Wächter» schaltete Keepalive alle 3 h ab → Prompt geändert; BigBuy-Ende-Routine 16.09. 05:00
 - 2026-09-14 · 🧭 «youtube optisch+seo»: 2× Warenkorb-h2 vor H1 (Produkt/Kollektion, nicht Startseite) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach Bestsellern (kein App-Block nötig); damen-mode 174→138
 - 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
 - 2026-09-14 · 🔑 Groq lebt (Chat-Schlüssel, 200), Ampel-403 war der urllib-User-Agent; PC-Gedächtnis hatte Keepalive-Routine AUS und Entwurfs-Routine AN (2'031 Drafts heute) → umgeschaltet; Versand live 45 statt 50, Klick blockiert

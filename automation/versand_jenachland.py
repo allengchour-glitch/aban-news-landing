@@ -148,6 +148,17 @@ def kandidaten_live(fertig=frozenset()):
             break
         cur = pg['pageInfo']['endCursor']
         time.sleep(0.2)
+    # ⚠️ 14.09.2026 — SISYPHUS-FALLE: Der Container startet ~stuendlich neu (Lehre 03.09.); der
+    # Lauf schaffte 750 von 1'000 und begann nach jedem Neustart wieder VORNE (Log: dreimal
+    # «… 150/1000»). Der Schwanz der Liste wurde nie erreicht — 346 Produkte trugen den Block
+    # fuenf Tage nach «FERTIG». Deshalb: hinter dem zuletzt quittierten Produkt weitermachen.
+    try:
+        letzte = [l.split('\t')[0] for l in open(LEDGER, encoding='utf-8') if l.strip()][-1]
+        if letzte in ids:
+            k = ids.index(letzte) + 1
+            ids = ids[k:] + ids[:k]
+    except (OSError, IndexError):
+        pass
     return ids
 
 

@@ -33,12 +33,12 @@ def kuerzen(s):
         return s
     kopf = s[:ZIEL + 1]
     # 1. Satz-/Gliederungsgrenze so spät wie möglich, aber nicht vor 90 Zeichen
-    best = max((m.end() for m in re.finditer(r"[.!?]|\s[·–—|]\s", kopf) if m.end() >= 90), default=0)
+    best = max((m.end() for m in re.finditer(r"[.!?]|\s[·–—|]\s", kopf) if m.end() >= 70), default=0)
     if best:
         return s[:best].rstrip(" ·–—|")
     # 2. Wortgrenze
     cut = kopf.rfind(" ")
-    if cut < 90:
+    if cut < 70:
         cut = ZIEL
     return s[:cut].rstrip(" ,;:·–—|-") + "…"
 
@@ -77,7 +77,7 @@ def selbsttest():
     t.append(("None-sicher", kuerzen(None) == ""))
     t.append(("idempotent", kuerzen(kuerzen(a)) == kuerzen(a)))
     c = "Elegantes langes Abendkleid im Meerjungfrau-Schnitt mit High-Slit & Schleppe – für Gala, Hochzeit & Ball. Jetzt bei LuxeStyle CH: Gratis-Versand ab CHF 50 · 30 Tage Rückgabe."
-    k = kuerzen(c); t.append(("Grenze «–» oder «.» spät gewählt (>90)", len(k) >= 90 and len(k) <= 155 and not k.endswith("…")))
+    k = kuerzen(c); t.append(("Grenze «–» oder «.» spät gewählt (>70)", len(k) >= 70 and len(k) <= 155 and not k.endswith("…")))
     ok = True
     for n, cnd in t:
         print(("✓ " if cnd else "✗ ") + n); ok &= cnd

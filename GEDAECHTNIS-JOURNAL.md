@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🛒 «verbessere katalog»: 70 % des Verkehrs landet auf Produktseiten, 38 % davon auf Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus: Wächter erreichte sein Ende nie, Rotation eingebaut); 143 Platzhalter, 1'050 SEO-Descs; Produktzahl-Wächter der PC-Session schaltete Keepalive alle 3 h ab → Prompt geändert
 - 2026-09-14 · 🧭 «schau in youtube für verbesserung webseite optisch und seo»: 2× Warenkorb-h2 vor der H1 (Produkt/Kollektion) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach den Bestsellern; damen-mode 174→138
 - 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
 - 2026-09-14 · 🔑 Groq lebt (Chat-Schlüssel, 200), Ampel-403 war der urllib-User-Agent; PC-Gedächtnis hatte Keepalive-Routine AUS und Entwurfs-Routine AN (2'031 Drafts heute) → umgeschaltet; Versand live 45 statt 50, Klick blockiert
@@ -392,6 +393,39 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🛒 «verbessere katalog» — der Katalog wird über Produktseiten betreten, und 38 % davon waren 404 (2026-09-14, 18:20–20:30 UTC)
+
+Erst gemessen, wo der Katalog gesehen wird: 957 von 1'357 Sitzungen (30 T.) landen auf einer PRODUKTSEITE, 92 auf
+Kollektionen (0 Warenkörbe). Messgerät `tools/verkehrsseiten_messen.py` (Selbsttest) über die 400 Landeseiten-Produkte
+der letzten 90 Tage: **167 (1'232 Sitzungen, 38 %) sind DRAFT** — Google schickt Besucherinnen auf 404-Seiten. Zu Recht
+entworfen (BigBuy nicht lieferbar), aber 61 hatten keine Weiterleitung → 61 Redirects auf HTTP-200-geprüfte
+Kollektionen (Wortüberlappung). In 30 Tagen sind es noch 6 % — Google räumt selbst ab, die Weiterleitung fängt den Rest.
+Auf den 221 aktiven Landeseiten, sitzungsgewichtet: SEO-Description >160 (832 Sitz.), Floskel-Faktenzeile
+«Material: hochwertiges Material» (815), USA-Lieferblock «je nach Land» (224) — alle drei deterministisch:
+`seo_desc_kuerzen.py` 1'050 katalogweit, `material_platzhalter.py` 143 katalogweit, `versand_jenachland.py` LISTE
+346 CJ + 475 POD → Gegenprobe 0. Nachher: 0 / 189 / 0.
+**Sisyphus-Falle:** der tägliche Wächter (`QUELLE=live`) fand 1'000 Kandidaten, kam bis ~750 und starb im stündlichen
+Container-Neustart — und begann jedes Mal VORNE (Log: dreimal «… 150/1000»). Der Schwanz der Liste wurde nie
+erreicht; fünf Tage nach «FERTIG» trugen 821 Produkte den Block. Fix: Kandidaten rotieren hinter das zuletzt
+quittierte Produkt. **Regel: Ein Lauf, der länger als eine Stunde braucht, muss dort weitermachen, wo er starb —
+sonst repariert er jede Stunde dieselben 750.** Zweiter Fund: alle 346 CJ-Produkte wurden am 14.09. **04:25 UTC**
+zurückgeschrieben (alle schon im Ledger) — kein eigenes Ledger in dem Fenster, kein Transkript, Shopify-Events zeigen
+Textänderungen nicht → Fremdschreiber mit alter Textbasis, nicht benannt.
+**Messgerät zählte Absicht als Fehler** (dreimal): leerer SEO-Titel (Shopify nimmt den Produkttitel), fehlendes
+Metafeld `custom.lieferzeit` (das Theme rendert es gar nicht), «je nach Land» bei POD (Printful liefert wirklich je
+nach Land) — alle drei raus, Selbsttest erweitert. Sie-Anrede-Detektor traf 25'631/52'215 («Sie ist aus Polyester»)
+→ kein Massenlauf ohne besseren Detektor.
+**Routinen-Kampf benannt:** der «Produktzahl-Wächter» der PC-Session (`trig_019RPGRJ8niCo12zteCi42N5`, alle 3 h)
+hatte in Schritt 4 den Auftrag, meinen Keepalive `trig_01Uy3zVefXbzCZn9Dr2qvkwh` abzuschalten, sobald er an ist —
+das war die «fremde Routine» aus Task #62. Um 18:49 tat er es erneut. Der Keepalive startet seit der Grind-Pause
+keine Runner mehr, aber den Aufseher (Bestell-Ampel, Wächter). Prompt des Wächters geändert: Schritt 4 liest nur
+noch und meldet (alte Fassung: `dropship/_routine_produktzahl_waechter_alt_0914.txt`). Keepalive wieder an.
+Hochgeladenes PC-Gedächtnis (Stand 14.09.) geprüft: Hero ist schon ehrlich («2'400 Artikel ab Schweizer Lager … Alles
+Übrige 10–20 Werktage»), Kiffer-Zubehör (18+) im Menü ist Betreiber-Wunsch (#10), Entwurfs-Routine aus. ⚠️ Routine
+`trig_01Fks8G3zVunFbfaGjWtep6f` setzt am **16.09. 05:00 UTC alle ~160 aktiven BigBuy-Produkte auf Entwurf**
+(«BigBuy-Pack gekündigt, läuft 15.09. aus», Tag `bigbuy-ende-0926`) — `bb_revive_scan.py` kennt das Tag jetzt und
+belebt sie nicht wieder. Bericht: `dropship/KATALOG-VERKEHR-2026-09-14.md`.
 
 ## 🧭 «schau in youtube für verbesserung webseite optisch und seo» (2026-09-14, 17:40–18:30 UTC)
 

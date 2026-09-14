@@ -36,5 +36,10 @@ Erfinde keine Werte, bezahle nichts, lösche nichts, deinstalliere keine App.
    «LuxeStyle CH: Mode, Schmuck, Beauty & Gadgets. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Rechnung mit
    Klarna · TWINT. Aus der Schweiz.» (136 Zeichen). Speichern, Zeichenzahl melden.
 
-Am Ende: fünf Zeilen Bericht, in derselben Reihenfolge.
+6. NUR ENTSCHEIDEN, NICHT KLICKEN (Frage an den Betreiber): Die Routine «LuxeStyle: BigBuy-Ende» (aus der PC-Sitzung)
+   setzt am 16.09. um 05:00 UTC alle noch aktiven BigBuy-Produkte (~160, Adidas/Puma/Parfums/Werkzeug) auf Entwurf,
+   Begründung «BigBuy-Pack gekündigt, läuft 15.09. aus». Stimmt das? Wenn NEIN → Routine trig_01Fks8G3zVunFbfaGjWtep6f
+   im Routinen-Menü deaktivieren. Wenn JA → nichts tun; Rückgängig wäre Tag bigbuy-ende-0926 → wieder ACTIVE.
+
+Am Ende: sechs Zeilen Bericht, in derselben Reihenfolge.
 ```
