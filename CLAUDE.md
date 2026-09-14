@@ -16,7 +16,8 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   ist die oberste Schicht — sie feuert nur in eine RUHENDE Session (Turn beenden!).
 - **⛔ Groq-Schlüssel seit 05.09. ungültig** (55 Zeichen) → alle Produkttexte laufen über **bezahltes Gemini**
   (`groq_text.mjs`-Kette groq→deepseek→gemini, Runner-Log «✍️ Text via gemini»). DeepSeek ohne Guthaben.
-  Beheben kann nur der Betreiber (neuer Schlüssel in `/tmp/dienste.env` + Tresor `dienste`). `betreiber_ampel.py`
+  Beheben kann nur der Betreiber (Schlüssel im CHAT geben → Test → `/tmp/dienste.env` + Tresor; Umgebungsvariablen erreichen
+  laufende Sessions NICHT — 3× gemessen, zuletzt 14.09. 15:58 bei Container-Alter 1 min). `betreiber_ampel.py`
   meldet es stündlich.
 - **Bestellungen:** #1017/#1018 seit 12.09. En Route (CJ EQKPT…). Betreiber-Entscheid 11.09.: **keine Mails mehr an
   Kunden, keine Rückerstattung** — Routine `trig_01Bw9814DapArUNYB5CXsdfs` ist AUS. #1004 (eigene Juni-Bestellung,
@@ -25,8 +26,9 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   + `versand_stillstand.py` in jeder Keepalive-Ausgabe.
 - **Dateispeicher (Basic, 100 GB) seit 01.09. voll** — jeder Upload in die Dateien-Bibliothek scheitert
   (`FILE_STORAGE_LIMIT_EXCEEDED`); Produktmedien laden weiter aus der Quell-URL. Betreiber: «kostenlos, kein Grow».
-- **Katalog:** ~52'000 aktive, 27 CJ-Runner-Gruppen + 13 neue in `cj_groups_extra.json` (Repo-Pfad!). Betreiber
-  14.09.: «erst füllen, dann polieren, neue Ware statt mehr vom Gleichen»; `_GRIND_RUNNER_ZAHL`=1.
+- **Katalog: ~52'000 aktive — GRIND PAUSIERT (Betreiber 14.09. 16:00: «Grow-Upgrade 300 GB in ≤6 Monaten, jetzt auf
+  Verkauf optimieren»; Dateispeicher 105 GB von 100).** `_GRIND_RUNNER_ZAHL`=0, `_GRIND_PAUSE_BIS`=+180 T. Produktbilder per
+  URL gingen trotz Überlauf noch (gemessen 15:54). **Kurs bis auf Widerruf: Conversion, nicht Menge.**
 - **Trichter:** ~1'300 Sitzungen/30 T (77 % mobil), 12 Warenkörbe, 1 Abschluss — Engpass ist Verkehr, nicht Technik.
   Google-Gratis-Einträge sind der einzige Kanal mit Verkäufen. Social-Stopp (`dropship/_SOCIAL_STOPP`) seit 30.08.
 - **Nur-Betreiber-Klicks** (Details `dropship/COWORK-AUFTRAEGE.md`): Groq-Schlüssel · BigBuy-Auszahlung (IBAN,
@@ -596,6 +598,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-14 · 🛑 «stoppe cj grind?» / «Grow in ≤6 Monaten, jetzt Verkauf optimieren»: Grind pausiert (Runner 0, Pause +180 T), Bilder gingen trotz 105 % noch; Groq-Schlüssel kam nicht an (Env leer nach Neustart)
 - 2026-09-14 · 🏢 «b2b optimieren?»: kein Firmenkonten-Ausbau — Seite «Firmen & Vereine» mit Anfrageformular (Merch ab 10 Stk, CH-Lagerware, Rechnung), Footer 15 Einträge; Formular-Knopf hiess «Submit»
 - 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
 - 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)

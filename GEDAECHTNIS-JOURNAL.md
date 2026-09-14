@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🛑 «stoppe cj grind?» / «Grow in ≤6 Monaten, jetzt Verkauf optimieren»: Grind pausiert (Runner 0, Pause +180 T), Bilder gingen trotz 105 % noch; Groq-Schlüssel kam nicht an (Env leer nach Neustart)
 - 2026-09-14 · 🏢 «b2b optimieren?»: kein Firmenkonten-Ausbau — Seite «Firmen & Vereine» mit Anfrageformular (Merch ab 10 Stk, CH-Lagerware, Rechnung), Footer 15 Einträge; Formular-Knopf hiess «Submit»
 - 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
 - 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
@@ -388,6 +389,24 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🛑 «stoppe cj grind?» + «in 6 Monaten oder vorher Grow (300 GB), jetzt auf Verkauf optimieren» (14.09., 16:00 UTC): Grind pausiert, Kurs = Conversion
+
+Betreiber-Screenshot 16:00 UTC: Shopify → Dateien «Bildspeicher ist voll — 105,25 GB von 100 GB». Frage «stoppe cj grind?».
+**Gemessen vorher:** die um 15:53–15:54 UTC importierten CJ-Produkte tragen 6–10 Bilder, alle `READY` auf
+cdn.shopify.com — Produktbilder per URL gehen trotz 105 % weiter, gesperrt ist nur die Dateien-Bibliothek. Der Grind
+schadet also nicht sofort, aber er füllt ~13 GB je 10'000 Produkte in ein Konto, das schon über dem Deckel ist, und
+seit dem 29.08. steht in der eigenen Aktenlage: mehr Produkte bringen keinen Suchverkehr.
+**Entscheid Betreiber:** Grow-Upgrade (300 GB) in spätestens 6 Monaten, **jetzt auf Verkauf optimieren.**
+Umgesetzt: `dropship/_GRIND_RUNNER_ZAHL` = 0 (Keepalive beendet cj_runner2–5) und `dropship/_GRIND_PAUSE_BIS` =
++180 Tage (hält auch den Queue-Runner an); laufende cj_category_fill-Prozesse beendet. Der Morgen-Auftrag «erst füllen»
+(07:30 UTC) ist damit vom Betreiber selbst abgelöst. Katalog bleibt bei ~52'000 aktiven. Wieder anwerfen: Zahl auf
+1–4 setzen und `_GRIND_PAUSE_BIS` löschen.
+**Groq-Stand (gemessen 15:58 UTC, Container 1 min alt = der Moment, in dem Umgebungsvariablen sichtbar wären):**
+`GROQ_API_KEY`, `SHOPIFY_CLIENT_ID/_SECRET` in der Umgebung leer; `/tmp/dienste.env` trägt noch den 55-Zeichen-
+Schlüssel vom 07.09. (HTTP 403). «Groq eingetragen» ist hier nicht angekommen — Umgebungsvariablen erreichen nur
+NEUE Sessions, nicht den Neustart einer laufenden (dritte Messung dieser Art nach 08.09.). Weg: Schlüssel im Chat
+geben → Test am Endpunkt → `/tmp/dienste.env` + Tresor.
 
 ## 🏢 «b2b optimieren?» (14.09., 11:00–11:20 UTC): kein Firmenkonten-Ausbau — eine ehrliche Seite «Firmen & Vereine» mit Anfrageformular, im Footer verlinkt
 
