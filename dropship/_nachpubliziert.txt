@@ -277,3 +277,4 @@ gid://shopify/Product/15523942236545	freizeit-hemdjacke-mit-revers-615200	Freize
 gid://shopify/Product/15525250695553	feuchtigkeitsspendende-cc-creme-6f4dc5	Feuchtigkeitsspendende CC Creme
 gid://shopify/Product/15530179297665	weltflaggen-kissen-mit-fullung-630100	Weltflaggen-Kissen mit Füllung
 gid://shopify/Product/15531886510465	gewichtheben-bandage-fur-handgelenk-659456	Gewichtheben-Bandage für Handgelenk
+gid://shopify/Product/15531935465857	schneider-mini-leistungsschalter-06fc53	Schneider Mini-Leistungsschalter
