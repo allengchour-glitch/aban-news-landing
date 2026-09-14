@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % — und CLAUDE.md von 970 KB auf 59 KB
 - 2026-09-14 · 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallba…
 - 2026-09-14 · 🧭 «mal füllen, dann polieren» + «nicht immer das gleiche suchen» (14.09., 07:30–08:00 UTC): der Grind zog 159 von 578 C…
 - 2026-09-14 · 🔍 «50k Produkte, man findet alles nicht so schnell» + «B2B machen?» (14.09., 06:40–07:00 UTC)
@@ -382,6 +383,27 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % — und CLAUDE.md von 970 KB auf 59 KB (2026-09-14, 08:40–09:00 UTC)
+
+Der Container startete um 08:38 neu; die Runner lasen damit zum ersten Mal die Kette mit der
+Nachbesserung im Fallback (`textErzeugen`, Commit e9f3c3b50). **n=18 Importe nach 08:40, alle über
+Gemini:** «Dies…»-Anfang **0 von 18** (vorher 33 %, ursprünglich 99 %), Lieferumfang-Einzelsatz 0,
+CJ-Metadaten 0, Floskel 0, SEO endet mit «Gewicht» 0, englische Masswerte 0. Satzanfänge jetzt
+«An kühlen Tagen hält dieser Strickpullover …», «Für einen bequemen Alltagslook …».
+- Einziger Rest: 3 Stichpunkte der Form «Für kleine Hunderassen konzipiert» / «Für beide Geschlechter
+  geeignet» / «Für den Innenbereich geeignet». Das sind KEINE CJ-Metadaten-Klone (die Regel `META_LI_RE`
+  kennt Zielgruppe/Saison), sondern schwache, aber wahre Fakten — bewusst NICHT verbreitert: ein
+  breiteres Muster würde «Für Hunde bis 5 kg konzipiert» mitnehmen. **Eine Reparaturregel endet dort,
+  wo der nächste Treffer eine wahre Aussage wäre.**
+- **Betreiber im selben Zug: «prompt zu long immer».** Ursache gemessen: `CLAUDE.md` war **970 KB, 396
+  Abschnitte** und wird bei jedem Sessionstart vollständig in den Prompt geladen. Jetzt geteilt:
+  `CLAUDE.md` = Kern (Regeln, Dauerauftrag, Kernfakten, `## 📌 Aktueller Stand`, Index der 25 jüngsten
+  Lehren; **59 KB**), alles andere unverändert und in Originalreihenfolge hier im Journal (375
+  Abschnitte, Inhaltsverzeichnis oben). `tools/gedaechtnis.py` und `tools/vault.py` lesen beide
+  Dateien; das Skill `gedaechtnis` nennt den neuen Ablageort. **Regel: Neue Lehren kommen OBEN ins
+  Journal, in CLAUDE.md nur die Einzeile — CLAUDE.md bleibt unter ~70 KB.** Kein `sort -u`, keine
+  Kürzung einzelner Abschnitte: das Gedächtnis ist vollständig, nur an zwei Orten.
 
 ## 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallback — und 99 % der Texte begannen gleich
 

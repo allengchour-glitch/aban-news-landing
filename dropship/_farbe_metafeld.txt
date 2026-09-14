@@ -412,3 +412,4 @@ gid://shopify/Product/15531932385665	Silber
 gid://shopify/Product/15532039930241	Silber
 gid://shopify/Product/15532040618369	Silber
 gid://shopify/Product/15532044714369	Silber
+gid://shopify/Product/15532202262913	Silber

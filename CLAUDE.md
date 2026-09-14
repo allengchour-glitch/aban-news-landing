@@ -589,6 +589,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-14 · ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % (n=18 über Gemini) — und CLAUDE.md 970 KB → 59 KB
 - 2026-09-14 · 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallba…
 - 2026-09-14 · 🧭 «mal füllen, dann polieren» + «nicht immer das gleiche suchen» (14.09., 07:30–08:00 UTC): der Grind zog 159 von 578 C…
 - 2026-09-14 · 🔍 «50k Produkte, man findet alles nicht so schnell» + «B2B machen?» (14.09., 06:40–07:00 UTC)

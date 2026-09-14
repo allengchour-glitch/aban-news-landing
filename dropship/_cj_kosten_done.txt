@@ -26980,3 +26980,19 @@ gid://shopify/Product/15505839784321	CHF 18.68	1 Varianten	Mobiles Solar-Panel z
 gid://shopify/Product/15505840046465	CHF 21.27	1 Varianten	Herzförmige Obstschale mit Gabel-Set
 gid://shopify/Product/15505840701825	CHF 24.96	18 Varianten	Freizeitschuhe für Jugendliche
 gid://shopify/Product/15505841226113	CHF 22.94	1 Varianten	Smarte Küchenwaage mit App-Anbindung
+gid://shopify/Product/15505841488257	CHF 8.54	1 Varianten	Frucht-Cutter aus Edelstahl
+gid://shopify/Product/15505842766209	CHF 26.82	1 Varianten	Smarter Saugroboter für den Haushalt
+gid://shopify/Product/15505842930049	CHF 18.01	1 Varianten	Pizzateller aus Bambus mit Griff
+gid://shopify/Product/15505844404609	CHF 30.87	1 Varianten	Digitaler Multifunktions-Stromzähler mit LCD
+gid://shopify/Product/15505844601217	CHF 14.50	1 Varianten	Kabelloser Milchaufschäumer & Handmixer
+gid://shopify/Product/15505845748097	CHF 26.87	1 Varianten	Luminöse elektronische Uhr mit WIFI
+gid://shopify/Product/15505845944705	CHF 42.98	1 Varianten	Duscharmatur aus gebürstetem Edelstahl
+gid://shopify/Product/15505846960513	CHF 18.26	1 Varianten	Songbao Mini-Aquarium Sauerstoffpumpe
+gid://shopify/Product/15505847091585	CHF 27.92	1 Varianten	Tischläufer "Handwerker-Blau" mit Pflanzenmuster
+gid://shopify/Product/15505869963649	CHF 7.16	1 Varianten	Eckschraubendreher, elektrisch
+gid://shopify/Product/15505875403137	CHF 6.03	1 Varianten	Rettungsschere mit feiner Zahnung
+gid://shopify/Product/15505876746625	CHF 8.86	1 Varianten	Wurfspiel-Ring für Wasserspiele
+gid://shopify/Product/15505877762433	CHF 40.00	1 Varianten	Digitaler Türspion mit LCD-Monitor
+gid://shopify/Product/15505878516097	CHF 41.93	1 Varianten	Apatit-Kristallkugel, roh
+gid://shopify/Product/15505879728513	CHF 5.52	1 Varianten	Retro Mahagoni Herz-Patch 12x15mm
+gid://shopify/Product/15505882382721	CHF 7.42	1 Varianten	Aromatherapie Gips Seifenform für Wachstafeln
