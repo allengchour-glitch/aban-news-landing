@@ -27157,3 +27157,9 @@ gid://shopify/Product/15506164908417	CHF 6.99	1 Varianten	Kupferarmreif mit bunt
 gid://shopify/Product/15506165006721	CHF 6.86	1 Varianten	Zirkon-Armreif mit Mikro-Pavé und ovalem Ring
 gid://shopify/Product/15506165105025	CHF 11.91	36 Varianten	Herren Henley Shirt Waffelstrick Kurzarm
 gid://shopify/Product/15506165203329	CHF 7.87	1 Varianten	Kupferring mit Zirkonia-Einlage
+gid://shopify/Product/15506165268865	CHF 10.33	49 Varianten	Kurzarm Leinenhemd für Herren
+gid://shopify/Product/15506165334401	CHF 19.63	1 Varianten	Yinyun Doppelring mit rotem Achat und Türkis
+gid://shopify/Product/15506165432705	CHF 11.05	42 Varianten	Herren Langarmhemd Casual Loose Fit
+gid://shopify/Product/15506165465473	CHF 13.96	1 Varianten	Wolframring mit Stufenfacetten und roter Beschicht
+gid://shopify/Product/15506165629313	CHF 15.47	70 Varianten	Business Hemd mit 4-Wege-Stretch
+gid://shopify/Product/15506165760385	CHF 12.31	30 Varianten	Feuchtigkeitsableitendes Kurzarmshirt für Herren

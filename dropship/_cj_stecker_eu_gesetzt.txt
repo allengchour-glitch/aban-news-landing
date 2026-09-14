@@ -33,3 +33,6 @@
 15454197711233	unklar:farbe-unbekannt	2026-09-14	Keramik-Bügeleisen mit 3-Stufen-Regelung 2600W
 15454204395905	unklar:farbe-unbekannt	2026-09-14	Elektrisches Glätteisen mit Temperaturregelung
 15454915625345	eu-sku-gesetzt:CJJF237572002BY	2026-09-14	Multifunktionaler Automatischer Wellenlockenstab
+15454915690881	unklar:farbe-unbekannt	2026-09-14	Anion-Auto-Lockenstab mit Ionen
+15454915953025	unklar:farbe-unbekannt	2026-09-14	Wasserwellen Lockenstab 32mm
+15466876338561	eu-sku-gesetzt:CJJF299671402BY	2026-09-14	Haarglätter & Lockenstab

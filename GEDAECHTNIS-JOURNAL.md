@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🔌 «weiterfix mehr»: 64 Netzstecker-Fälle deterministisch aufgelöst, drei neue Warengruppen ins Menü, zwei Kollektions-Leichen
 - 2026-09-14 · ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % — und CLAUDE.md von 970 KB auf 59 KB
 - 2026-09-14 · 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallba…
 - 2026-09-14 · 🧭 «mal füllen, dann polieren» + «nicht immer das gleiche suchen» (14.09., 07:30–08:00 UTC): der Grind zog 159 von 578 C…
@@ -383,6 +384,38 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🔌 «weiterfix mehr» (14.09., 09:00–09:40 UTC): 64 Netzstecker-Fälle deterministisch aufgelöst, drei neue Warengruppen ins Menü, zwei Kollektions-Leichen
+
+- **Task #76 zu Ende gebaut:** `cj_stecker_pruefen.py` meldete 64 Geräte «unklar-eu-vorhanden» (CJ führt
+  EU/US/UK/AU, unser Shop EINE Variante mit der Produkt-SKU — welche Version kommt, war nicht belegt).
+  Neu `automation/cj_stecker_eu_setzen.py` (täglich im Aufseher, hinter dem Prüfer): **genau EINE
+  EU-Variante bei CJ → unsere Variante bekommt deren SKU** (zurückgelesen) + Faktenzeile «Netzstecker:
+  EU-Version» unter dem Produkttext-Schloss; gleiche Farbe wie unsere Varianten-SKU → ebenso; **mehrere
+  EU-Farben bei Produkt-SKU → Tag `stecker-unklar`, aus der Hype-Reihe, bleibt aktiv** (welche Farbe CJ
+  schickt, weiss niemand — das ist die Wahlversprechen-Klasse, kein Automat darf raten). Preis-Wache 15 %.
+  DRY über 12 gelesen, dann Lauf: nach 35 von 64 **19 EU-SKUs gesetzt, 16 unklar, 0 teurer, 0 nicht
+  erreicht** (Rest läuft; CJ-QPS teilt sich mit dem Runner). Zwei am Objekt gegengeprüft: SKU + Zeile da.
+  **Regel: Wo eine Wahl EINDEUTIG ist, entscheidet der Automat; wo sie es nicht ist, markiert er.**
+- **Task #78 gemessen statt geraten:** die 13 neuen CJ-Gruppen liefern (seit 13.09.: Baby & Kinder
+  **0 → 40**, Beleuchtung 5 → 42, Büro 0 → 23, Accessoires +34, Sport +46, Taschen +57, Schmuck +56).
+  Je Warengruppe 40 Neuimporte gegen die Menü-Kollektion gehalten: 9 von 11 landen dort (38–40/40).
+  **Zwei nicht:** Büro-Ware fällt in `buro-home-office` (70 aktiv, publiziert — stand in KEINEM Menü),
+  Partydeko in `party-deko-ch` (122 aktiv, ebenfalls unverlinkt). Beide plus «Weihnachten 🎄» ins
+  Hauptmenü (144 → 147, nachgezählt, live 200). **Eine gefüllte Kollektion ohne Menülink ist Ware, die
+  niemand findet** — dieselbe Klasse wie das CH-Lager am 26.08.
+- **Zwei Kollektions-Leichen beim Suchen gefunden:** `weihnachten-2026` hiess «Christmas 2026» (englisch
+  + Jahreszahl) und war eine DUBLETTE von `fortura-weihnachten` (beide `TAG weihnachten`, je 17) →
+  umbenannt, die Fortura-Kopie (Lieferantenname im Handle) 301 + unpubliziert. `express-lieferung`
+  war publiziert mit **0 Produkten und ohne Regel** → 301 auf `eu-lager-schnell` (215 aktiv) +
+  unpubliziert. Reihenfolge wie immer: erst 301, dann unpublizieren; live 301 → 200 belegt.
+- ⚠️ `collections(query:"title:party OR title:büro …")` lieferte **nichts** — der kombinierte
+  `title:`-Filter ist still (28.08./30.08.). Freitext je Wort und `collectionByHandle` fanden alles.
+- ⚠️ Nebenbefund, nur notiert: «Kinder Wollmantel gefüttert» kam über `cjherrenwinter` mit Tag `herren`
+  und steht in keiner Kollektion — CJ-Kategorie-Leck, 2 von 29 Herren-Neuimporten.
+- Container startete 08:38 UND 08:56 neu (zweimal in 18 Minuten); Motoren je per Keepalive zurück.
+  Die Berichte TOTE-LANDESEITEN/TOTE-RANKINGS (13.09. 20:1x) sind älter als ihre Reparaturen — alle
+  drei Adressen antworten live 301. **Ein Bericht ist ein Zeugnis über seinen Zeitpunkt.**
 
 ## ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % — und CLAUDE.md von 970 KB auf 59 KB (2026-09-14, 08:40–09:00 UTC)
 
