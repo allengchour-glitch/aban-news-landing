@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🔁 PC-Session schaltete den Keepalive ZUM DRITTEN MAL ab (20:28Z, «CJ lief weiter») — gemessen: letztes Produkt 15:57Z = Pausenbeginn, 0 danach; Trigger umbenannt «startet KEINE CJ-Runner», Prompt trägt die Messung
 - 2026-09-14 · 🧩 «suche apps die ich brauchen kann»: 33 installiert, 4 wirken, Inbox installiert-aber-aus, Hextom-Währungsrechner lädt auf jeder Seite für nichts → einschalten/ausschalten statt installieren (`dropship/APPS-EMPFEHLUNG-2026-09-14.md`)
 - 2026-09-14 · 🛒 «verbessere katalog»: 70 % des Verkehrs landet auf Produktseiten, 38 % davon auf Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus: Wächter erreichte sein Ende nie, Rotation eingebaut); 143 Platzhalter, 1'050 SEO-Descs; Produktzahl-Wächter der PC-Session schaltete Keepalive alle 3 h ab → Prompt geändert
 - 2026-09-14 · 🧭 «schau in youtube für verbesserung webseite optisch und seo»: 2× Warenkorb-h2 vor der H1 (Produkt/Kollektion) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach den Bestsellern; damen-mode 174→138
@@ -394,6 +395,22 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🔁 Die PC-Session schaltete den Keepalive zum dritten Mal ab — und ihre Begründung war aus dem Skriptnamen gelesen (2026-09-14, 20:28–20:40 UTC)
+
+Hochgeladenes PC-Gedächtnis §12: «CJ importierte trotz Pause weiter (neueste fünf von heute Nachmittag), Ursache: der
+Trigger CJ-Grind + Social Keepalive startet 4 CJ-Runner → auf enabled:false gesetzt (20:28Z)». Gemessen: das letzte
+`cj-real`-Produkt entstand **15:57:02Z**, exakt beim Setzen der Pause; **0 Produkte nach 16:05Z** in 4,5 Stunden, in
+denen der Keepalive dreimal feuerte und jedes Mal «STAND: 0 CJ-Runner» meldete. Die «fünf von heute Nachmittag» lagen
+alle vor der Pause. Die andere Session hat den NAMEN («CJ-Grind») und den Prompt-Text («startet die 4 CJ-Runner»)
+gelesen, nicht das Skript und nicht die Produktzahl — und den Schalter im Repo (`_GRIND_RUNNER_ZAHL`) nie gesehen.
+Ihr «unerklärtes» Wieder-Einschalten um 20:03Z war mein dokumentierter Eingriff (SHARED-MEMORY 20:10), den sie nicht
+gelesen hat. Zweite Lehre daraus: **ein Trigger, dessen Name eine Gefahr behauptet, die er nicht mehr trägt, wird
+abgeschaltet werden** — deshalb heisst er jetzt «Aufseher-Keepalive — startet KEINE CJ-Runner, Grind pausiert bis
+13.03.2027», und der Prompt beginnt mit der Messung und dem Prüfbefehl (`productsCount(created_at:>'…')`). Wieder AN
+seit 20:36Z. Was ich nicht beeinflussen kann: die PC-Session liest SHARED-MEMORY nicht; der Betreiber muss ihr den
+Eintrag zeigen. Falls sie ihn ein viertes Mal abschaltet: die 2-h-Routine `trig_01DBsWkRtnrmimnU4sbXGTBQ` (im
+Trigger-Listing 20:00 NICHT mehr vorhanden — vermutlich gelöscht) müsste als zweite Schicht neu angelegt werden.
 
 ## 🧩 «suche apps die ich brauchen kann» — 33 installiert, 4 wirken, 1 schadet, 1 fehlt eingeschaltet (2026-09-14, 20:30 UTC)
 

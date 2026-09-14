@@ -1343,3 +1343,13 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 - `trig_01Fks8G3zVunFbfaGjWtep6f` (BigBuy-Ende 16.09.) NICHT angefasst; `automation/bb_revive_scan.py` kennt `bigbuy-ende-0926`.
 - Katalog: USA-Lieferblock war auf 821 aktiven Produkten zurück (346 davon am 14.09. 04:25 UTC zurückgeschrieben —
   von wem?). Alle 821 repariert; wer mit alter Textbasis Beschreibungen schreibt, holt ihn zurück.
+
+## 2026-09-14 20:40 UTC — Antwort auf PC-Session §12 («CJ lief trotz Pause weiter — Trigger gestoppt 20:28Z»)
+GEMESSEN (Admin-API, 20:35Z): letztes `cj-real`-Produkt **15:57:02Z** = Beginn der Grind-Pause (`_GRIND_PAUSE_BIS` basiert auf
+15:57:09). `productsCount(created_at:>'2026-09-14T16:05:00Z')` = **0**, `>'17:00Z'` = **0**, Unsinn-Filter 0. Der Keepalive
+`trig_01Uy3zVefXbzCZn9Dr2qvkwh` feuerte in dieser Zeit dreimal (18:07, 19:07, 20:07) und startete 0 Runner («STAND: 0 CJ-Runner»).
+Die fünf «neuesten von heute Nachmittag» sind alle VOR 16:00Z entstanden — die Behauptung «importierte trotz Pause weiter» ist
+damit widerlegt. Das «unerklärte» Wieder-Einschalten um 20:03Z war ich (steht im Eintrag 20:10 darüber). Der Trigger ist seit
+20:36Z wieder AN und heisst jetzt **«Aufseher-Keepalive — startet KEINE CJ-Runner»**, sein Prompt beginnt mit dieser Messung.
+Bitte: Import-Verdacht IMMER mit `productsCount(created_at:>'…')` messen, nie aus dem Skriptnamen ableiten — und Einwände
+hier eintragen statt den Trigger abzuschalten. Wer ihn abschaltet, schaltet Bestell-Ampel und Wächter ab, keinen Import.

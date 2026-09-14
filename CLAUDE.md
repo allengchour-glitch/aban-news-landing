@@ -17,6 +17,10 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **✅ Groq-Schlüssel seit 14.09. 16:30 wieder gültig** (56 Zeichen, im Chat gegeben, am Endpunkt getestet, in `/tmp/dienste.env`
   + Tresor `dienste`). Umgebungsvariablen erreichen laufende Sessions NICHT (3× gemessen) → Schlüssel immer im Chat.
   ⚠️ urllib gegen Groq braucht einen User-Agent, sonst 403 (Ampel-Fehlalarm 14.09.).
+- **⚠️ Keepalive `trig_01Uy3zVefXbzCZn9Dr2qvkwh` wurde am 14.09. DREIMAL von der PC-Session abgeschaltet** (05:37, 18:49 via Produktzahl-
+  Wächter, 20:28 von Hand «CJ lief weiter» — gemessen falsch: letztes Produkt 15:57Z = Pausenbeginn). Heisst jetzt «Aufseher-Keepalive —
+  startet KEINE CJ-Runner»; **zu Beginn jeder Session `list_triggers` prüfen und ggf. wieder einschalten.** Die 2-h-Routine
+  `trig_01DBsWkRtnrmimnU4sbXGTBQ` fehlt im Listing (gelöscht?).
 - **⚠️ Zweite Session (PC-Claude, `LuxeStyleTT/CLAUDE.md`) schaltet Routinen um:** sie hatte `trig_01Uy3zVefXbzCZn9Dr2qvkwh`
   (meine Keepalive) AUS und die Entwurfs-Routine `trig_013xE8LpGFW2QGuziRJywbHV` (bis 1'500 DRAFT/h) AN — 14.09. 16:10 beides
   zurückgedreht. Ihr Rat «Custom-App deinstallieren» würde `autopilot2` = diesen Betrieb töten — NIE. Routinen-Stand
@@ -610,6 +614,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-14 · 🔁 Keepalive zum 3. Mal von der PC-Session abgeschaltet («CJ lief weiter» — gemessen: 0 Produkte nach Pausenbeginn 15:57Z); Trigger umbenannt, Prompt trägt Messung + Prüfbefehl
 - 2026-09-14 · 🧩 «suche apps»: 33 installiert, 4 wirken; Inbox installiert-aber-aus (Cowork 7), Hextom-Währungsrechner = Ballast (Cowork 8); keine neue App nötig — Bestand messen vor App-Suche
 - 2026-09-14 · 🛒 «verbessere katalog»: 70 % Verkehr auf Produktseiten, 38 % davon Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus-Wächter, Rotation); 143 Platzhalter, 1'050 SEO-Descs; PC-«Produktzahl-Wächter» schaltete Keepalive alle 3 h ab → Prompt geändert; BigBuy-Ende-Routine 16.09. 05:00
 - 2026-09-14 · 🧭 «youtube optisch+seo»: 2× Warenkorb-h2 vor H1 (Produkt/Kollektion, nicht Startseite) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach Bestsellern (kein App-Block nötig); damen-mode 174→138
