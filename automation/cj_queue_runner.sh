@@ -51,7 +51,7 @@ while true; do
 done
 echo "### QUEUE LEER → Kategorie-Fill-ROTATION (voll gas, divers statt Nagel-Default)"
 GRPDONE=/tmp/cj_grp_done.txt; touch $GRPDONE
-GRPS="kueche storage pet sport musik cjelektronik cjgadgets cjauto cjhome cjhaustier cjtaschen cjschmuck cjdamen cjherren makeup skincare gaming cjbasteln cjspielelektronik cjbeautytools cjuhren cjsneaker cjschuhekids"
+GRPS="cjaccessoires cjdamenwinter cjbeleuchtung cjbaby cjherrenwinter cjpartydeko cjschmuckmehr cjhaustiermehr cjsportmehr cjbuero cjtaschenmehr cjautoinnen cjhaushaltmehr cjwerkzeug kueche storage pet sport musik cjelektronik cjgadgets cjauto cjhome cjhaustier cjtaschen cjschmuck cjdamen cjherren makeup skincare gaming cjbasteln cjspielelektronik cjbeautytools cjuhren cjsneaker cjschuhekids"
 # ⚠️ 23.08.2026 (zweiter Akt derselben Lehre): Sind ALLE Gruppen im Ledger, uebersprang die
 # Schleife jede einzelne und meldete sofort «CJ-Runner fertig» — der Aufseher startete das
 # Skript alle 25 Minuten, es lief, und tat NICHTS. Im Log stand eine Startzeile und eine
@@ -74,7 +74,7 @@ for G in $GRPS; do
   grep -qx "$G" $GRPDONE && continue
   echo "### GRP $G $(date -u +%H:%M)"
   pause_pruefen
-  GRP=$G CAP=25 MAXPAGE=$TIEFE /opt/node22/bin/node automation/cj_category_fill.mjs 2>&1 | tee /tmp/cj_queue_grp.out
+  GRP=$G CAP=25 MAXPAGE=$TIEFE GROUPS_FILE=automation/cj_groups_extra.json /opt/node22/bin/node automation/cj_category_fill.mjs 2>&1 | tee /tmp/cj_queue_grp.out
   RC=${PIPESTATUS[0]}
   [ $RC -ne 0 ] && { echo "GRP $G RC=$RC — Punkte weg? Stop."; break; }
   # ⚠️ Ein erschoepftes Tagesbudget (Code 16900500) beendet den Lauf mit «FERTIG: 0» und

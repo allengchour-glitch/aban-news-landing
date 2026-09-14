@@ -49,5 +49,827 @@
   ],
   "type": "Werkzeug & Heimwerken",
   "ban": "(waffe|messer set|machete|dolch|schwert|armbrust|erotik|sex)"
+ },
+ "cjaccessoires": {
+  "cats": [
+   [
+    "0DC4DF6F-4EC5-47DF-B20D-863ADF69319F",
+    "Scarves & Wraps"
+   ],
+   [
+    "1E4A1FD7-738C-4AEF-9793-BDE062158BD6",
+    "Belts & Cummerbunds"
+   ],
+   [
+    "7B2039D9-FF87-4514-954B-021289724271",
+    "Woman Gloves & Mittens"
+   ],
+   [
+    "96EBD53A-C941-445C-BBBD-C1D9F858E433",
+    "Woman Socks"
+   ],
+   [
+    "F72DD534-E394-4958-B591-149C488648D7",
+    "Woman Hats & Caps"
+   ],
+   [
+    "1C592A63-6E0F-4F25-9496-8BDD82BF4281",
+    "Socks"
+   ],
+   [
+    "2410301013241608600",
+    "Men's Ties"
+   ],
+   [
+    "37F32196-21BB-49CE-B2D4-80787A5DF276",
+    "Scarves"
+   ],
+   [
+    "44A3ADE0-A8EC-4101-A8DE-DF42F56EF3F1",
+    "Man Gloves & Mittens"
+   ],
+   [
+    "C0EFBA18-A36D-48CD-B953-85DDFCB9B1C6",
+    "Skullies & Beanies"
+   ],
+   [
+    "ECF5842F-2FE6-4DD7-8827-FAA8A1D3D199",
+    "Belts"
+   ],
+   [
+    "0203EC28-49AF-49E4-B899-333C0A235BD4",
+    "Baseball Caps"
+   ],
+   [
+    "3F464061-C4C7-43FE-A3FE-84AD92838E56",
+    "Berets"
+   ],
+   [
+    "EB891BA4-6F5C-4625-B76A-49504556B127",
+    "Fedoras"
+   ],
+   [
+    "2502140903111619100",
+    "Headband & Hair Band & Hairpin"
+   ]
+  ],
+  "type": "Accessoires",
+  "tags": [
+   "accessoires",
+   "mode",
+   "herbst",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Mode-Accessoires (Schals, Mützen, Gürtel, Socken, Haarschmuck)",
+  "ban": "wholesale|\\bsample\\b|kinder|kids|children|real fur|fox fur|mink",
+  "minImg": 2,
+  "minP": 2,
+  "maxP": 50,
+  "maxG": 600
+ },
+ "cjbeleuchtung": {
+  "cats": [
+   [
+    "538CB48E-B7A0-46F7-B5A2-BB8183247B23",
+    "Night Lights"
+   ],
+   [
+    "AC4A8F93-27FF-4531-8394-53E97F02159D",
+    "Wall Lamps"
+   ],
+   [
+    "0591D043-4EFC-494A-9901-358197CC3D18",
+    "Pendant Lights"
+   ],
+   [
+    "EDB5F43E-EAC0-489A-8355-5188EAB72D08",
+    "String Lights"
+   ],
+   [
+    "F9749558-9C47-4612-9411-88FF301DB7AD",
+    "Solar Lamps"
+   ],
+   [
+    "7E431502-1275-4FF3-A236-B97C107C3AFA",
+    "Flashlights & Torches"
+   ],
+   [
+    "DFFFDEDF-42F8-4D1F-B0A3-6B6744F7C1D3",
+    "LED Spotlights"
+   ]
+  ],
+  "type": "Beleuchtung",
+  "tags": [
+   "beleuchtung",
+   "lampe",
+   "licht",
+   "wohnen",
+   "dekoration",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Lampen & Beleuchtung (Nachtlicht, Lichterketten, Solar, Wandlampen)",
+  "ban": "wholesale|\\bsample\\b|chandelier|kronleuchter|crystal ceiling|110v only|replacement part|ersatzteil",
+  "minImg": 3,
+  "minP": 3,
+  "maxP": 80,
+  "maxG": 1500
+ },
+ "cjbaby": {
+  "cats": [
+   [
+    "04D82B39-7CF8-4CA5-ABC9-279181DE7E26",
+    "Baby Clothing Sets"
+   ],
+   [
+    "80304DEB-99FB-4E29-9065-A99F732702C4",
+    "Baby Rompers"
+   ],
+   [
+    "8F8C7970-3965-4EB6-8E13-ED77EB686DBA",
+    "Baby Accessories"
+   ],
+   [
+    "A91DDCDF-A80E-40EE-ADB6-C3CB20CCB07E",
+    "Baby Outerwear"
+   ],
+   [
+    "B34957D5-3AF6-4BE7-AC9F-72BAB8433CB6",
+    "Baby Dresses"
+   ],
+   [
+    "B81FEFAC-C995-4665-8154-631E447F7236",
+    "Baby Pants"
+   ],
+   [
+    "0B08F5C8-0381-446D-A1C0-B90F69F45041",
+    "Nappy Changing"
+   ],
+   [
+    "77A1D79C-B67E-42C0-850F-00005042548C",
+    "Baby Care"
+   ],
+   [
+    "5C374126-AE88-4617-B732-011174077E00",
+    "Backpacks & Carriers"
+   ],
+   [
+    "CBAB567C-28EA-4916-97C9-786EEA80A3B8",
+    "Maternity"
+   ],
+   [
+    "C421D769-76CC-4515-909E-4E7167EE6ABE",
+    "Girl Dresses"
+   ],
+   [
+    "713CBA54-B38E-4C86-9323-1252113E437F",
+    "Girl Clothing Sets"
+   ],
+   [
+    "C938C806-CB88-46AB-B782-89ECD0B25E25",
+    "Boy Clothing Sets"
+   ],
+   [
+    "BB0B0BAD-326B-4328-B1BF-319C420DF782",
+    "Boy Hoodies & Sweatshirts"
+   ],
+   [
+    "62A4235C-31EE-40E3-9D61-8F310470FEBC",
+    "School Bags"
+   ],
+   [
+    "929F5F58-AFBB-43AE-B1BB-CC6AA3844530",
+    "Kids Wallets"
+   ]
+  ],
+  "type": "Baby & Kinder",
+  "tags": [
+   "baby",
+   "kinder",
+   "kids",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Baby & Kinder (Kleidung, Pflege, Schulranzen)",
+  "fashion": true,
+  "ban": "wholesale|\\bsample\\b|disney|marvel|pokemon|pikachu|mario|frozen|barbie|hello kitty|paw patrol|peppa|minecraft|spiderman|batman|bottle nipple|schnuller|pacifier|teether|beissring|medical|thermometer",
+  "minImg": 3,
+  "minP": 2,
+  "maxP": 50,
+  "maxG": 900
+ },
+ "cjdamenwinter": {
+  "cats": [
+   [
+    "2608160530581610700",
+    "Women's Cardigans"
+   ],
+   [
+    "2608160531131634500",
+    "Women's Knit Sets"
+   ],
+   [
+    "2608160531571608800",
+    "Women's Sweater Dresses"
+   ],
+   [
+    "2608160539111638000",
+    "Women's Coats"
+   ],
+   [
+    "2608160540331612200",
+    "Women's Wool Coats"
+   ],
+   [
+    "2409230541081607100",
+    "Women's Padded Jackets"
+   ],
+   [
+    "441DA450-5E5F-41DF-8911-3BAE883C30E8",
+    "Woman Trench"
+   ],
+   [
+    "2608160541241617200",
+    "Women's Blazers"
+   ],
+   [
+    "2608160539271629300",
+    "Women's Sherpa Jackets"
+   ],
+   [
+    "2608160527241639100",
+    "Women's Casual Jackets"
+   ],
+   [
+    "2608160532561632500",
+    "Women's Denim Jackets"
+   ],
+   [
+    "2608160529211619800",
+    "Women's Sweatpants"
+   ],
+   [
+    "2608160530111633000",
+    "Women's Zip-Up Hoodies"
+   ],
+   [
+    "A7DE167B-ECFF-481E-A52A-2E7937BFAA95",
+    "Wide Leg Pants"
+   ],
+   [
+    "2608160536541612900",
+    "Women's Cargo Pants"
+   ],
+   [
+    "2608160534451626700",
+    "Women's Skirts"
+   ],
+   [
+    "2502140253001614100",
+    "Women's Vests"
+   ]
+  ],
+  "type": "Damenmode",
+  "tags": [
+   "damen",
+   "mode",
+   "herbst",
+   "winter",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Damen-Mode Herbst & Winter (Mäntel, Strick, Jacken, Hosen)",
+  "fashion": true,
+  "ban": "wholesale|\\bsample\\b|wedding|bridal|bridesmaid|prom|real fur|fox fur|mink|raccoon|kinder|kids",
+  "minImg": 2,
+  "minP": 4,
+  "maxP": 80,
+  "maxG": 1600
+ },
+ "cjherrenwinter": {
+  "cats": [
+   [
+    "2502140308291606200",
+    "Men's Long-Sleeved"
+   ],
+   [
+    "E6E0E866-DB80-4EC9-9557-578320427C34",
+    "Parkas"
+   ],
+   [
+    "F7CF2C2C-A7F5-488B-B457-646028917DF2",
+    "Down Jackets"
+   ],
+   [
+    "CD1AEB49-F87A-42D2-AD82-77708A8CDFD7",
+    "Wool & Blends"
+   ],
+   [
+    "222439DF-4ED5-4DCF-BB22-8FB41607C7D2",
+    "Man Trench"
+   ],
+   [
+    "007F26BA-B50A-4ADA-BD36-2CD341411230",
+    "Suits & Blazer"
+   ],
+   [
+    "C992BFAB-12A9-4C61-A1DA-6E09C926BB81",
+    "Casual Pants"
+   ],
+   [
+    "D75F1892-F6F8-4295-966B-CB405B77070A",
+    "Sweatpants"
+   ],
+   [
+    "758FE9DE-16D9-4860-8472-46C5BA460FF7",
+    "Pajama Sets"
+   ],
+   [
+    "A6A734F9-6F0B-4A9F-9ED4-0D35A9F5B877",
+    "Man Pajama Sets"
+   ],
+   [
+    "60A76402-BF69-49A3-8FEC-28B9235BED62",
+    "Robes"
+   ],
+   [
+    "0222F963-84BC-4ED8-87A0-2EE6B7890B53",
+    "Men's Sleep & Lounge"
+   ]
+  ],
+  "type": "Herrenmode",
+  "tags": [
+   "herren",
+   "mode",
+   "herbst",
+   "winter",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Herren-Mode Herbst & Winter (Jacken, Parkas, Hosen, Loungewear)",
+  "fashion": true,
+  "ban": "wholesale|\\bsample\\b|damen|women|kinder|kids|real fur|mink|raccoon",
+  "minImg": 2,
+  "minP": 4,
+  "maxP": 80,
+  "maxG": 1600
+ },
+ "cjsportmehr": {
+  "cats": [
+   [
+    "AB04A021-C988-476D-88E7-3CAAE3019D9E",
+    "Hiking Jackets"
+   ],
+   [
+    "937A06CE-ECCC-4C7D-A270-B216DE612AC0",
+    "Sports Bags"
+   ],
+   [
+    "79F47CD1-F813-4B4D-8D21-2B35966FBA66",
+    "Sports Accessories"
+   ],
+   [
+    "8E8CE199-A134-45B1-9EDE-0D4F122F4568",
+    "Outdoor Shorts"
+   ],
+   [
+    "5A053E55-5D18-42EF-A4E7-B08AEA4D9B2F",
+    "Jerseys"
+   ],
+   [
+    "BE08AC4E-D953-413F-93FC-452F635E73EC",
+    "Cycling Jerseys"
+   ],
+   [
+    "2502140309251616200",
+    "Cycling Gloves"
+   ],
+   [
+    "7992143D-A8B2-4A05-A4E4-7F4AF73AA577",
+    "Cycling Eyewear"
+   ],
+   [
+    "2605290527531628800",
+    "Swimming Goggles"
+   ],
+   [
+    "FD5E95E1-C8DC-4CBD-A203-8BCF3BA951B9",
+    "Golf"
+   ],
+   [
+    "8B8C7FFB-6686-4994-B6DB-E5B8C1AAC9A6",
+    "Skiing & Snowboarding"
+   ],
+   [
+    "9704D88F-46A0-49F6-98C4-929AE91941F5",
+    "Fishing Lures"
+   ],
+   [
+    "37C76B77-3E08-456A-B184-4516E7D6EE81",
+    "Fishing Tackle Boxes"
+   ]
+  ],
+  "type": "Sport & Outdoor",
+  "tags": [
+   "sport",
+   "outdoor",
+   "fitness",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Sport & Outdoor (Radsport, Wandern, Ski, Golf, Angeln)",
+  "ban": "wholesale|\\bsample\\b|hunting|jagd|\\bgun\\b|rifle|knife|messer|crossbow|armbrust|nike|adidas|puma|jordan|kinder|kids",
+  "minImg": 3,
+  "minP": 3,
+  "maxP": 90,
+  "maxG": 1500
+ },
+ "cjpartydeko": {
+  "cats": [
+   [
+    "621F9C38-814C-40C2-9F9D-7CE12DB8FB4C",
+    "Christmas Decoration Supplies"
+   ],
+   [
+    "7B975B46-46DF-4C3A-BC58-1F4F2DDB9413",
+    "Decorative Flowers & Wreaths"
+   ],
+   [
+    "779524FE-7E6E-4948-A739-999E07602BE5",
+    "Cake Decorating Supplies"
+   ],
+   [
+    "C329460A-9074-4E42-B1FD-D9E91568A64B",
+    "Event & Party Supplies"
+   ],
+   [
+    "9F52617D-F420-4FA7-8F25-53A9577A9111",
+    "Party Masks"
+   ],
+   [
+    "768DE38B-3FCB-4DD1-B14C-687F03F78D0A",
+    "Invitation Cards"
+   ]
+  ],
+  "type": "Partydeko & Ballone",
+  "tags": [
+   "party",
+   "partydeko",
+   "dekoration",
+   "wohnen",
+   "weihnachten",
+   "geschenk",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Party- & Weihnachtsdeko (Kränze, Girlanden, Tortendeko)",
+  "ban": "wholesale|\\bsample\\b|disney|marvel|pokemon|mario|frozen|barbie|hello kitty|paw patrol|peppa|110v|firework|feuerwerk|sparkler|candle lighter|butane",
+  "minImg": 3,
+  "minP": 2,
+  "maxP": 50,
+  "maxG": 1000
+ },
+ "cjhaustiermehr": {
+  "cats": [
+   [
+    "2410110348401611500",
+    "Pet Sweaters"
+   ],
+   [
+    "2410110348531624100",
+    "Pet Sweatshirts & Hoodies"
+   ],
+   [
+    "2410110350311612500",
+    "Pet Down & Parkas"
+   ],
+   [
+    "2410110349471606300",
+    "Pet Clothings"
+   ],
+   [
+    "2410110350021615300",
+    "Pet Functional Clothings"
+   ],
+   [
+    "2410110349201623700",
+    "Pet Jumpsuits"
+   ],
+   [
+    "2410110350591620800",
+    "Pet Scarves"
+   ],
+   [
+    "2410110342571606700",
+    "Pet Bags"
+   ],
+   [
+    "2410110343211625200",
+    "Pet Car Mats"
+   ],
+   [
+    "2410110343091603200",
+    "Pet Seat Belts"
+   ],
+   [
+    "2410110342321607200",
+    "Dog Training Pads & Diapers"
+   ],
+   [
+    "2410110357391611900",
+    "Pet Mats"
+   ],
+   [
+    "2410110358191601900",
+    "Pet Blankets & Quilts"
+   ],
+   [
+    "2410110357091627600",
+    "Pet Tents"
+   ],
+   [
+    "2410110357221629500",
+    "Pet Hammocks"
+   ],
+   [
+    "2410110354491625800",
+    "Pet Hair Removers & Combs"
+   ],
+   [
+    "2410110355321622400",
+    "Pet Towels"
+   ],
+   [
+    "2410110340031614900",
+    "Pet Training and Educational Toys"
+   ],
+   [
+    "2410110340291603400",
+    "Pet Tunnel Toys"
+   ],
+   [
+    "2410110343481625100",
+    "Bird Feeders"
+   ],
+   [
+    "2410110344291609800",
+    "Bird Toys"
+   ],
+   [
+    "2410110345231624700",
+    "Fish Tank Decorations"
+   ]
+  ],
+  "type": "Haustierbedarf",
+  "tags": [
+   "haustier",
+   "hund",
+   "katze",
+   "pet",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Haustier: Kleidung, Decken, Auto-Zubehör, Vogel & Aquarium",
+  "ban": "wholesale|\\bsample\\b|shock|schock|electric collar|bark control|anti.?bark|human|for people|choke|prong|stachel",
+  "minImg": 3,
+  "minP": 2,
+  "maxP": 60,
+  "maxG": 1500
+ },
+ "cjschmuckmehr": {
+  "cats": [
+   [
+    "1363024200339689472",
+    "Brooches"
+   ],
+   [
+    "1363289906151034880",
+    "Keychains"
+   ],
+   [
+    "2601070548141611900",
+    "Anklets"
+   ],
+   [
+    "89D165E3-EF5F-461D-9DC9-D1041CECEF09",
+    "Fashion Jewelry Sets"
+   ],
+   [
+    "B5525066-3504-4E5C-962F-9C2D8C38F66D",
+    "Men's Cuff Links"
+   ],
+   [
+    "2601070547231620800",
+    "Pocket Watches"
+   ],
+   [
+    "F40CB152-1391-4CA9-9BAE-0316DA2D3D2B",
+    "Women's Bracelet Watches"
+   ],
+   [
+    "A044AC0D-BA3B-4967-8300-1BD57F00048E",
+    "Dress Watches"
+   ],
+   [
+    "DC682F4C-BD7E-4DB0-93CB-33B4CD54BE87",
+    "Lovers' Watches"
+   ],
+   [
+    "DAE17D16-A15F-445D-AE34-B698F3290E56",
+    "Creative Watches"
+   ],
+   [
+    "FBD85934-5409-4EC6-A6B5-FDBF072AA0E2",
+    "Children's Watches"
+   ],
+   [
+    "D7CE9827-F50A-4B07-84BF-1BFE44188A1C",
+    "Fine Earrings"
+   ]
+  ],
+  "type": "Schmuck",
+  "tags": [
+   "schmuck",
+   "accessoire",
+   "geschenk",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Schmuck & Uhren (Broschen, Fussketten, Manschettenknöpfe, Schmucksets, Damenuhren)",
+  "ban": "wholesale|\\bsample\\b|smart ?watch|piercing|body jewelry|nipple|wedding|bridal|engagement|k-gold|18k|real diamond|moissanite",
+  "minImg": 2,
+  "minP": 2,
+  "maxP": 70,
+  "maxG": 300
+ },
+ "cjbuero": {
+  "cats": [
+   [
+    "2252588B-72E3-4397-8C92-7D9967161084",
+    "Office & School Supplies"
+   ],
+   [
+    "2409230543341601500",
+    "Stationeries"
+   ],
+   [
+    "74B144C9-321D-4E78-986C-757BA551DD8C",
+    "Laptop Bags & Cases"
+   ],
+   [
+    "87A618B5-7CB0-4AF7-BCF8-9E9455F06B7E",
+    "Tablet Cases"
+   ],
+   [
+    "11D96803-A0A3-4175-B49B-2102EC285965",
+    "Photo Studio"
+   ],
+   [
+    "A2B55BEF-9B7D-44A0-8E80-A14FFFBBBD94",
+    "Camera & Photo Accessories"
+   ],
+   [
+    "AD2B299F-EC10-4209-998A-8916AE4D4900",
+    "Digital Gear Bags"
+   ]
+  ],
+  "type": "Büro & Home Office",
+  "tags": [
+   "buero",
+   "homeoffice",
+   "schule",
+   "schreibwaren",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Büro, Schule & Foto-Zubehör",
+  "ban": "wholesale|\\bsample\\b|toner|ink cartridge|tinte|printer|drucker|laptop battery|lcd screen|replacement part|ersatzteil",
+  "minImg": 3,
+  "minP": 2,
+  "maxP": 80,
+  "maxG": 1500
+ },
+ "cjautoinnen": {
+  "cats": [
+   [
+    "2601070551481626500",
+    "Car Perfume"
+   ],
+   [
+    "090E48F4-B406-438B-9EBF-D52450AC370A",
+    "Floor Mats"
+   ],
+   [
+    "808A409E-8E16-43A8-879A-153672135DB9",
+    "Automobiles Seat Covers"
+   ],
+   [
+    "255A489E-8518-4E31-AC84-A2E8EB645C78",
+    "Car Stickers"
+   ]
+  ],
+  "type": "Auto-Zubehör",
+  "tags": [
+   "auto",
+   "kfz",
+   "auto-zubehoer",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Auto-Innenraum (Duft, Matten, Sitzbezüge, Sticker)",
+  "ban": "wholesale|\\bsample\\b|motorcycle|motorrad|brake|bremse|spark plug|exhaust|bmw|audi|mercedes|benz|tesla|toyota|honda|ford|vw|volkswagen|porsche|ferrari",
+  "minImg": 3,
+  "minP": 2,
+  "maxP": 60,
+  "maxG": 1500
+ },
+ "cjhaushaltmehr": {
+  "cats": [
+   [
+    "7C8E809A-460A-4F50-8A2F-B62AD010BFF8",
+    "Bakeware"
+   ],
+   [
+    "2601070550351602500",
+    "Floor Mats"
+   ],
+   [
+    "C1394E10-1EDF-4107-AA93-F142B44C3136",
+    "Storage Bottles & Jars"
+   ],
+   [
+    "2601070551041636400",
+    "First Aid Supplies"
+   ],
+   [
+    "1711658677159079936",
+    "Seasonal products"
+   ]
+  ],
+  "type": "Haushalt & Wohnen",
+  "tags": [
+   "haushalt",
+   "wohnen",
+   "kueche",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Haushalt: Backformen, Vorratsgläser, Fussmatten, Erste-Hilfe",
+  "ban": "wholesale|\\bsample\\b|medical|medizin|bandage set only|110v|adult",
+  "minImg": 3,
+  "minP": 2,
+  "maxP": 60,
+  "maxG": 1500
+ },
+ "cjtaschenmehr": {
+  "cats": [
+   [
+    "0ADE366E-CDF4-47E7-8720-B480220E1BD4",
+    "Woman Wallets"
+   ],
+   [
+    "2410301013451614000",
+    "Women's Crossbody Bags"
+   ],
+   [
+    "33AFFE07-CC46-4557-9FD9-27CC9975BEED",
+    "Evening Bags"
+   ],
+   [
+    "78BCE010-8E22-416F-82E2-6E5C6AE0CECE",
+    "Fashion Backpacks"
+   ],
+   [
+    "7DC7FA45-C8E1-4A2E-BA84-B81FB9CA2815",
+    "Shoulder Bags"
+   ],
+   [
+    "8F3ADC01-68FE-4CBE-BB1D-0DE42A730749",
+    "Totes"
+   ],
+   [
+    "CB7C7348-41DC-4AA5-9BD0-CC2D555899BB",
+    "Clutches"
+   ],
+   [
+    "9F5FDE97-3BE8-4EBE-A8EA-48723A307E37",
+    "Briefcases"
+   ]
+  ],
+  "type": "Taschen",
+  "tags": [
+   "tasche",
+   "damen-taschen",
+   "accessoire",
+   "cj-real",
+   "dropship"
+  ],
+  "kat": "Taschen: Handtaschen, Clutches, Rucksäcke, Portemonnaies",
+  "ban": "wholesale|\\bsample\\b|kinder|kids|school bag|gucci|chanel|louis|prada|dior|hermes|coach",
+  "minImg": 2,
+  "minP": 3,
+  "maxP": 80,
+  "maxG": 1200
  }
 }

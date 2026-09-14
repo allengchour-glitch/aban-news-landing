@@ -62,10 +62,13 @@ while true; do
   # MAXPAGE=45 wurden pro Lauf und Kategorie 45 Seiten gelesen, davon 44 längst abgegraste.
   # An einem Tag kostete das 73'220 CJ-Punkte für rund 20 neue Produkte. MAXPAGE bedeutet
   # jetzt «wie viele NEUE Seiten pro Lauf» — ein kleines Fenster genügt, es wandert ja weiter.
+  # ⚠️ 14.09.2026: GROUPS_FILE lag auf /tmp und existierte nach dem Wipe vom 30.08. nicht mehr —
+  # «cjwerkzeug» endete 45× mit «unknown GRP» (Exit 1), und jeder dieser Läufe kostete die Rotation
+  # einen Platz. Was nur in /tmp lebt, existiert nicht (Lehre 11.08., vierte Fassung). Repo-Pfad.
   TIEFE=6
   if [ -n "$TOK" ]; then
     echo "$(date +%T) GRP=$G Runde=$ROUND Fenster=$TIEFE Seiten (ab gespeichertem Zeiger)" >> "$LOG"
-    GRP=$G CAP=12 MAXPAGE=$TIEFE GROUPS_FILE=/tmp/cj_groups_extra.json CJ_TOKEN="$TOK" \
+    GRP=$G CAP=12 MAXPAGE=$TIEFE GROUPS_FILE=automation/cj_groups_extra.json CJ_TOKEN="$TOK" \
       /opt/node22/bin/node automation/cj_category_fill.mjs >> "$LOG" 2>&1
     # Punktetopf leer -> weiterlaufen bringt nichts und erzeugt nur QPS-Drosselung.
     # Lange Pause, bis CJ das Tagesbudget zurücksetzt. (KEIN Strafschlaf wegen vermuteter

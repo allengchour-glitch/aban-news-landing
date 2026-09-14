@@ -740,6 +740,12 @@ for(const [cat,label] of grp.cats){
    if(laserVerboten(nm)){console.log(`  ⛔ Laserpointer (V-NISSG) übersprungen: ${nm.slice(0,60)}`);continue;}
    if(waffenNachbildung(nm)){console.log(`  ⛔ Schusswaffen-Nachbildung übersprungen: ${nm.slice(0,60)}`);continue;}
    const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<grp.minP||pr>grp.maxP)continue;
+   // GEWICHTSDECKEL (14.09.2026): die Fracht CN→CH hängt am Gewicht (3.84+16.42·kg), schwere Ware
+   // verliert im Rabattkorb Geld (Messung 03.09.: 781 von 811 Verlustfällen >712 g). Gruppen mit
+   // maxG (Gramm) überspringen Ware darüber. CJ nennt Gewichte auch als SPANNE «350-512» → OBERE
+   // Grenze (27.08.: die billigste Variante ist nie die, die CJ schickt).
+   if(grp.maxG){ const gwS=String(p.productWeight||p.variantWeight||''); const gwM=gwS.match(/[\d.]+/g)||[];
+     const gw=gwM.length?Math.max(...gwM.map(Number)):0; if(gw>grp.maxG){console.log('  skip(gewicht)',gw+'g',nm.slice(0,40));continue;} }
    // MOQ-Wache (auch FAST): nur ORDINARY/DIY = einzeln bestellbar (list liefert productType mit)
    const pt=p.productType||''; if(pt&&pt!=='ORDINARY_PRODUCT'&&pt!=='DIY_PRODUCT')continue;
    const FAST=process.env.FAST==='1';
