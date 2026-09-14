@@ -17,7 +17,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 VAULT = REPO / "brain" / "vault"
-GROSS = ["CLAUDE.md", "SHARED-MEMORY.md", "dropship/AUTONOMER-MODUS.md",
+GROSS = ["CLAUDE.md", "GEDAECHTNIS-JOURNAL.md", "SHARED-MEMORY.md", "dropship/AUTONOMER-MODUS.md",
          "dropship/USER-CHECKLISTE.md", "dropship/CJ-IMPORT-LOG.md", "automation/BRAIN.md",
          "spiele-dev/RUNBOOK-SPIELE.md", "spiele-dev/RUNBOOK-TRAUMHAUS.md"]
 DATUM = re.compile(r"(\d{4}-\d{2}-\d{2})")
@@ -134,7 +134,7 @@ def offen() -> int:
 
 
 def stand(anzahl: int = 8) -> int:
-    md = (REPO / "CLAUDE.md").read_text(encoding="utf-8")
+    md = "\n".join((REPO / f).read_text(encoding="utf-8") for f in ("CLAUDE.md", "GEDAECHTNIS-JOURNAL.md") if (REPO / f).exists())
     t = re.findall(r"\*\*📌\s*(\d{4}-\d{2}-\d{2})\s*\(([^)]*)\)", md)
     print("\n🗓️  STAND (neueste zuerst, aus CLAUDE.md)\n")
     seen, n = set(), 0

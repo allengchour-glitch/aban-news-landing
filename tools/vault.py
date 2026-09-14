@@ -56,7 +56,7 @@ def pruefen(vault: Path, still: bool = False) -> int:
 
 def zeitleiste_bauen() -> int:
     """Zieht die 📌-Stand-Bloecke aus CLAUDE.md in eine kurze Zeitleiste."""
-    md = (REPO / "CLAUDE.md").read_text(encoding="utf-8")
+    md = "\n".join((REPO / f).read_text(encoding="utf-8") for f in ("CLAUDE.md", "GEDAECHTNIS-JOURNAL.md") if (REPO / f).exists())
     treffer = re.findall(r"\*\*📌\s*(\d{4}-\d{2}-\d{2})\s*\(([^)]*)\)", md)
     zeilen = ["---", "tags: [stand, erzeugt]", "quelle: CLAUDE.md", "---",
               "# Zeitleiste", "",

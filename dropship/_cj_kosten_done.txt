@@ -26965,3 +26965,18 @@ gid://shopify/Product/15505716281729	CHF 9.01	1 Varianten	O-Ring Dichtungsset, S
 gid://shopify/Product/15505717559681	CHF 8.54	1 Varianten	Profi-Schuhbürste für Tanzschuhsohlen
 gid://shopify/Product/15505718935937	CHF 6.04	1 Varianten	Elektrischer Ohrenreiniger für Kinder
 gid://shopify/Product/15505720148353	CHF 7.89	1 Varianten	Vierweg-Eckverbinder aus Temperguss
+gid://shopify/Product/15505721295233	CHF 13.07	1 Varianten	Boden-Dreifach-Rasensprenger
+gid://shopify/Product/15505722737025	CHF 20.51	1 Varianten	Sägekette für Elektrokettensägen
+gid://shopify/Product/15505725686145	CHF 15.41	1 Varianten	Hochdruck-Metall-Gartenspritze
+gid://shopify/Product/15505727127937	CHF 24.04	1 Varianten	Verstellbarer Ratschenschlüssel, einklappbar
+gid://shopify/Product/15505835655553	CHF 26.08	24 Varianten	Atmungsaktive Outdoor-Laufschuhe für Herren
+gid://shopify/Product/15505835950465	CHF 69.75	1 Varianten	Elektrischer Fleischwolf, 6L
+gid://shopify/Product/15505836802433	CHF 28.93	1 Varianten	Smarte WLAN-Video-Türklingel
+gid://shopify/Product/15505837654401	CHF 24.76	18 Varianten	Bequeme, atmungsaktive Herren-Sneaker zum Schnüren
+gid://shopify/Product/15505838375297	CHF 14.52	1 Varianten	Edelstahl-Spatel und Schöpflöffel Set
+gid://shopify/Product/15505838473601	CHF 17.32	1 Varianten	Multimedia Bluetooth Radio Lautsprecher
+gid://shopify/Product/15505839292801	CHF 19.42	24 Varianten	Herren Freizeit-Sneaker aus Strick
+gid://shopify/Product/15505839784321	CHF 18.68	1 Varianten	Mobiles Solar-Panel zum Laden (7W)
+gid://shopify/Product/15505840046465	CHF 21.27	1 Varianten	Herzförmige Obstschale mit Gabel-Set
+gid://shopify/Product/15505840701825	CHF 24.96	18 Varianten	Freizeitschuhe für Jugendliche
+gid://shopify/Product/15505841226113	CHF 22.94	1 Varianten	Smarte Küchenwaage mit App-Anbindung
