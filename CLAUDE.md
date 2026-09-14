@@ -33,6 +33,9 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   2 Anträge) · CJ-Konsole bezahlen · Merchant Ziel-Land nur CH · `SHOPIFY_CLIENT_ID/_SECRET` als Umgebungs-Variablen
   (nach jedem Neustart leer, Betrieb hängt an `/tmp/secrets_env.sh`) · TikTok-Unternehmensverifizierung.
 - **Zweites Gehirn:** `brain/vault/` (Obsidian, 63 Notizen), `tools/vault.py bauen`, `tools/gedaechtnis.py`.
+- **YouTube-Runde 14.09.** (`dropship/LERNEN-YOUTUBE-2026-09-14.md`): Merchant-Website-Anforderungen erfüllt bis auf
+  **UID im Impressum** (Betreiber, Nummer nicht im Repo); Produktseite hat Reviews/Accordion/Ankündigung, keine Produkt-FAQ/UGC;
+  Conversion 0,08 % vs 1,4 % QUELLE. Vor Theme-Reparaturen IMMER die Live-Datei holen — `theme_backup/` ist Vergangenheit.
 
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
@@ -589,6 +592,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
 - 2026-09-14 · 🔌 «weiterfix mehr»: 64 Netzstecker-Fälle deterministisch aufgelöst (EU-SKU / stecker-unklar), Büro + Partydeko + Weihnachten ins Menü, 2 Kollektions-Leichen 301
 - 2026-09-14 · ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % (n=18 über Gemini) — und CLAUDE.md 970 KB → 59 KB
 - 2026-09-14 · 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallba…

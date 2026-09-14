@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
 - 2026-09-14 · 🔌 «weiterfix mehr»: 64 Netzstecker-Fälle deterministisch aufgelöst, drei neue Warengruppen ins Menü, zwei Kollektions-Leichen
 - 2026-09-14 · ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % — und CLAUDE.md von 970 KB auf 59 KB
 - 2026-09-14 · 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallba…
@@ -384,6 +385,28 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 📺 «lerne im youtube sachen» (14.09., 09:20–10:00 UTC): 4 von 6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf die UID — und ein Befund, der nur im Backup existierte
+
+Betreiber 09:20 UTC: «lerne im youtube sachen». Ablauf nach Skill `recherchieren`: Video-Suche nur auf youtube.com
+(vier Suchen, 40 Treffer), sechs Kandidaten per `tools/yt_lernen.mjs` (YT_VERSUCHE=2) geholt, ein `--voll`.
+**13 Abrufe, danach Drossel** — die zwei Schweiz-Videos (`TFzixqET9ds`, `zGPCTF32aMY`) kamen als letzte dran und
+lieferten «keine Seite». Ertrag: KeyCommerce (Merchant-Center-Kurs, 9 Kapitel, 15 Min Website-Anforderungen),
+Judge.me (Produktseiten-Aufbau, 15 Kapitel); zwei Videos mit 11 und 361 Aufrufen ohne Kapitel = nichts.
+
+**Gegenprobe (GEMESSEN):** 6 Shop-Richtlinien da, alle 14 Footer-Ziele veröffentlicht, Adresse+Mail auf Kontakt/
+Impressum/Über uns, Telefon nur im Impressum, Lieferstaffel auf 4 Seiten + Accordion identisch. **Einziger Befund:
+UID (CHE-Nr.) auf keiner Seite** — Nummer nicht im Repo → COWORK-AUFTRAEGE. Produktseite live: Judge.me-Widget +
+Badge, Ankündigungsleiste (5 Botschaften), Accordion Versand/Rückgabe, Faktenblock liest Material-Metafeld
+(9/25 der neuesten CJ-Produkte tragen es). Fehlt: Produkt-FAQ, UGC-Video (beides braucht echte Kunden, #31).
+Conversion 1/1'300 ≈ 0,08 % gegen QUELLE 1,4 % (Shopify-Blog Aug 2026; Mobile 2,0 % vs Desktop 3,7 %).
+
+**Beinahe-Falle:** `theme_backup/product.json` (30.08.) zeigte eine dritte Accordion-Zeile «Material & Pflege» mit
+Floskeltext auf allen 52'000 Produkten — ich hatte den Ersatz durch eine metafeld-gestützte Zeile schon entworfen.
+Die LIVE-Datei (`theme.files(filenames:["templates/product.json"])`) hat die Zeile nicht mehr. **Backup ≠ live;
+vor jeder Theme-Reparatur die Live-Datei holen.** Zweite Lehre: Aufrufzahl und Kapitel VOR dem Abruf filtern
+(Datum ≥ 2026, ≥ 1'000 Aufrufe, Kanal mit Kapitelmarken), sonst frisst die Drossel die wichtigen Videos.
+Bericht: `dropship/LERNEN-YOUTUBE-2026-09-14.md`. Lehren im Vault (`tools/lehre.py`).
 
 ## 🔌 «weiterfix mehr» (14.09., 09:00–09:40 UTC): 64 Netzstecker-Fälle deterministisch aufgelöst, drei neue Warengruppen ins Menü, zwei Kollektions-Leichen
 

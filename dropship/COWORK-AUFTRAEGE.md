@@ -1,3 +1,10 @@
+## 🧾 NEU 14.09. 10:00 — Ein Klick fürs Impressum: die UID (CHE-Nummer) eintragen
+Gemessen 14.09. (YouTube-Runde, Google-«Misrepresentation»-Abgleich): Adresse, Mail und Telefon stehen im Impressum,
+**die UID steht auf keiner Seite** — und die Nummer ist mir nicht bekannt (nicht im Repo, nicht im Tresor). Für eine im
+Handelsregister eingetragene Einzelfirma gehört sie in die Geschäftskorrespondenz und ins Impressum.
+**Dein Klick:** die CHE-Nummer hier antworten oder direkt in Shopify → Onlineshop → Seiten → «Impressum» unter die
+Adresse setzen (Zeile «UID: CHE-xxx.xxx.xxx»). Sag mir die Nummer, dann trage ich sie ein (Impressum + Pinterest-Steuerfeld).
+
 ## 🤖 NEU 14.09. 08:05 — Ein Klick, der die Produkttexte wieder KOSTENLOS macht (Groq-Schlüssel)
 
 Du wolltest «alles kostenlos» und «verbessere dein KI für Shopify». Gemessen: Der Groq-Schlüssel,
