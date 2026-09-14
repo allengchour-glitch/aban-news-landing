@@ -35,7 +35,7 @@ POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "w
         "aufbewahrung-sub", "hundewelt", "buero-schreibwaren", "parfum-duefte", "outdoor-garten",
         "klemmbausteine-bausaetze", "sub-reise", "gaming", "basteln-diy", "katzenwelt", "party-deko-ch",
         "handy-zubehoer", "sub-baby-kids", "auto-kfz-zubehoer", "beauty-pflege", "kostueme-ch-lager",
-        "geschenke-unter-50-franken", "sub-haustier"]
+        "geschenke-unter-50-franken", "sub-haustier", "suesses-esswaren"]   # 14.09.: Betreiber «Kategorie mit Essen von Fortura» — 31 Süsswaren ab CH-Lager
 # Reihenfolge bewusst: Hunde(8)/Katzen(16)/Haustier(24) liegen >= 8 auseinander -> nie zwei Tier-Reihen an einem Tag
 SAISON = [("halloween-2026", (9, 1), (10, 31)), ("weihnachten-2026", (10, 15), (12, 26))]
 
