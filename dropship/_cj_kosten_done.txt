@@ -27226,3 +27226,4 @@ gid://shopify/Product/15506198987137	CHF 138.79	1 Varianten	Explosive Datejust A
 gid://shopify/Product/15506199118209	CHF 11.84	36 Varianten	Leinenhemd Langarm Stehkragen
 gid://shopify/Product/15506199150977	CHF 14.86	1 Varianten	Holzgehäuse-Uhr mit braunem Zifferblatt
 gid://shopify/Product/15506199183745	CHF 37.27	1 Varianten	Ausziehbares Spülbecken-Organizer
+gid://shopify/Product/15506199314817	CHF 56.73	1 Varianten	Herren Automatikuhr mit transparentem Gehäuseboden
