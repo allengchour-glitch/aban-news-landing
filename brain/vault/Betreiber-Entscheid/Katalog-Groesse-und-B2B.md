@@ -12,7 +12,7 @@ gelernt: 2026-09-14
 - 19 publizierte Kollektionen > 5'000 Produkte → Shopify schaltet dort die Filter ab; Menü 143 Punkte, Verzeichnis 348 Links.
 
 ## Warum B2B jetzt nicht trägt
-CJ: 10–20 Werktage, kein Lager, kein Mengenpreis, Fracht je ARTIKEL (2 Artikel = 2 Sendungen). Zahlungsziel = Kreditrisiko bei 0 Abschlüssen. B2B-tauglich wäre nur POD-Merch (Firmen/Vereine) und CH-Lagerware ([[Shopcom]]).
+CJ: 10–20 Werktage, kein Lager, kein Mengenpreis, Fracht je ARTIKEL (2 Artikel = 2 Sendungen). Zahlungsziel = Kreditrisiko bei 0 Abschlüssen. B2B-tauglich wäre nur POD-Merch (Firmen/Vereine) und CH-Lagerware (Shopcom (Antrag offen, Task #24)).
 
 ## Die eigentliche Entscheidung
 Kleinerer, kuratierter Katalog nach gemessenen Kriterien (Verkehr, Bewertung, Marge, Gewicht < 712 g, CH-lieferbar). Löst Speicher-Deckel ([[Dateispeicher-Deckel]]), Filter-Abschaltung und Suchrauschen zugleich. Nichts pauschal draften — Entscheidung B (06.09.) gilt.
