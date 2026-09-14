@@ -51,5 +51,13 @@ Erfinde keine Werte, bezahle nichts, lösche nichts, deinstalliere keine App.
    hat den Knopf selbst). NICHTS anderes deinstallieren — insbesondere nicht autopilot2, Judge.me, Printful, CJdropshipping,
    Klaviyo, Clarity, Search & Discovery, Flow, Forms, Swiss Post Labels, UpPromote.
 
-Am Ende: acht Zeilen Bericht, in derselben Reihenfolge.
+9. NUR ENTSCHEIDEN (Frage an den Betreiber): Shopify zeigt Produkte nur dann direkt in ChatGPT/Copilot (Agentic Storefront),
+   wenn der Shop einen aktiven Markt «USA» hat (Shopify-Hilfe «Selling on ChatGPT»). LuxeStyle hat nur «Schweiz». Empfehlung
+   der Cloud-Sitzung: KEIN US-Markt (USD, US-Versand, englische Texte, CH-Lager nicht lieferbar). Wenn der Betreiber es trotzdem
+   will: Einstellungen → Märkte → Markt hinzufügen → USA (dann melden, ich passe Versandtexte an).
+
+10. BING WEBMASTER TOOLS (ChatGPT sucht über Bing): bing.com/webmasters → luxestyle.ch (Verifikation ist im Theme hinterlegt)
+   → Sitemaps → prüfen, ob https://luxestyle.ch/sitemap.xml eingereicht ist; wenn nicht, einreichen. Zahl «indexierte Seiten» melden.
+
+Am Ende: zehn Zeilen Bericht, in derselben Reihenfolge.
 ```

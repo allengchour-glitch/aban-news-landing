@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🤖 «chatgpt pushen»: ChatGPT 2,17 % Conversion; Shopify-Agentic-Storefront verlangt US-Markt (Shop hat nur CH) → Betreiber-Entscheid; Weg Websuche: 8/12 Zitate auf Influencer-Seite → FAQPage-Strukturdaten auf /pages/faq
 - 2026-09-14 · 🔁 PC-Session schaltete den Keepalive ZUM DRITTEN MAL ab (20:28Z, «CJ lief weiter») — gemessen: letztes Produkt 15:57Z = Pausenbeginn, 0 danach; Trigger umbenannt «startet KEINE CJ-Runner», Prompt trägt die Messung
 - 2026-09-14 · 🧩 «suche apps die ich brauchen kann»: 33 installiert, 4 wirken, Inbox installiert-aber-aus, Hextom-Währungsrechner lädt auf jeder Seite für nichts → einschalten/ausschalten statt installieren (`dropship/APPS-EMPFEHLUNG-2026-09-14.md`)
 - 2026-09-14 · 🛒 «verbessere katalog»: 70 % des Verkehrs landet auf Produktseiten, 38 % davon auf Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus: Wächter erreichte sein Ende nie, Rotation eingebaut); 143 Platzhalter, 1'050 SEO-Descs; Produktzahl-Wächter der PC-Session schaltete Keepalive alle 3 h ab → Prompt geändert
@@ -395,6 +396,18 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🤖 «chatgpt pushen» — der beste Kanal ist der kleinste, und der offizielle Weg ist für CH-Shops zu (2026-09-14, 20:45–21:05 UTC)
+
+Betreiber-Screenshot: chatgpt.com 46 Sitzungen, 1 Bestellung, 2,17 % — vor Google (2,02 %) und 20× Direkt (0,11 %).
+Gemessen (ShopifyQL): Referrer `chatgpt` 12 Sitzungen/90 T., **8 davon auf der Influencer-Seite** — ChatGPT zitiert Seiten
+mit klaren Konditionen, nicht Produktkarussells. Der offizielle Weg (Shopify Agentic Storefront → Produkte direkt in
+ChatGPT/Copilot) ist technisch schon aktiv (`/.well-known/ucp`, `agents.md`, `llms.txt`, Agenten-Sitemap liefern), aber
+die Shopify-Hilfe verlangt «sell to customers in the United States» — der Shop hat genau einen Markt, Schweiz. Ein US-Markt
+nur für den Eintrag wäre USD, US-Versand, englische Texte → Cowork-Frage 9, Empfehlung nein. Der zweite Weg (ChatGPT-Websuche
+über Bing) läuft bereits und liefert die Conversion — dafür: FAQPage-Strukturdaten auf `/pages/faq` (8 Q/A wörtlich aus dem
+Seitentext, keine neuen Behauptungen), Bing-Sitemap-Check als Cowork 10. **Lehre: Bevor man einen Kanal «pusht», die
+Eintrittsbedingung lesen — und was der Kanal heute zitiert, sagt, welche Seiten man bauen soll (Fakten, Konditionen).**
 
 ## 🔁 Die PC-Session schaltete den Keepalive zum dritten Mal ab — und ihre Begründung war aus dem Skriptnamen gelesen (2026-09-14, 20:28–20:40 UTC)
 
