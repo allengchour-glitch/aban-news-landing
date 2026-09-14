@@ -26758,3 +26758,16 @@ gid://shopify/Product/15504199221633	CHF 67.61	1 Varianten	Taktische Smartwatch 
 gid://shopify/Product/15504199254401	CHF 10.67	1 Varianten	Halsband & Leine Set aus Canvas mit Schleife
 gid://shopify/Product/15504199319937	CHF 11.56	16 Varianten	Herren Langarmshirt mit 3D-Streifenmuster
 gid://shopify/Product/15504199352705	CHF 12.41	1 Varianten	Herz-Ohrstecker aus 925er Sterlingsilber
+gid://shopify/Product/15504199385473	CHF 14.30	1 Varianten	Smart Ring mit NFC-Funktion
+gid://shopify/Product/15504199418241	CHF 11.96	1 Varianten	Halsband und Leine mit farblich passender Schnalle
+gid://shopify/Product/15504199451009	CHF 14.81	20 Varianten	Leinen Pullover-Shirt für Herren
+gid://shopify/Product/15504199483777	CHF 21.56	1 Varianten	Q9 Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15504199516545	CHF 10.67	1 Varianten	Lederoptik-Halsband mit Netzschleife
+gid://shopify/Product/15504199549313	CHF 11.84	96 Varianten	Langarm Polo-Shirt mit Knopfleiste
+gid://shopify/Product/15504224420225	CHF 75.23	1 Varianten	Herren- Quarzuhr mit Chronograph
+gid://shopify/Product/15504224485761	CHF 27.34	1 Varianten	Quarz-Paaruhr für Sie und Ihn
+gid://shopify/Product/15504224551297	CHF 10.25	10 Varianten	Lässiges Kurzarm-Shirt für Herren
+gid://shopify/Product/15504224747905	CHF 20.86	1 Varianten	Retro Quarz Multifunktionsuhr für Herren
+gid://shopify/Product/15504224878977	CHF 15.62	36 Varianten	Herren Waffelhemd mit Doppeltaschen
+gid://shopify/Product/15504224911745	CHF 20.34	1 Varianten	Holzarmbanduhr mit Multifunktionswerk
+gid://shopify/Product/15504225042817	CHF 13.57	20 Varianten	Retro Herren-Anzugweste

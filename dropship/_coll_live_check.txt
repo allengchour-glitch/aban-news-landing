@@ -515,3 +515,4 @@ klemmbausteine-bausaetze	ok	29	Klemmbausteine & Bausätze
 suesses-esswaren	ok	22	Süsses & Esswaren
 querbeet	ok	25	🌍 Aus allen Welten
 schmuck-uhren	ok	28	Schmuck & Uhren
+accessoires	ok	29	Accessoires: Schals, Mützen, Gürtel & Socken

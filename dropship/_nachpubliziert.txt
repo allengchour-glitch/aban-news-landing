@@ -279,3 +279,4 @@ gid://shopify/Product/15530179297665	weltflaggen-kissen-mit-fullung-630100	Weltf
 gid://shopify/Product/15531886510465	gewichtheben-bandage-fur-handgelenk-659456	Gewichtheben-Bandage für Handgelenk
 gid://shopify/Product/15531935465857	schneider-mini-leistungsschalter-06fc53	Schneider Mini-Leistungsschalter
 gid://shopify/Product/15532055560577	gehhilfe-fur-hintere-haustierbeine-283008	Gehhilfe für hintere Haustierbeine
+gid://shopify/Product/15532143870337	taktisches-messer-mit-lederscheide-023040	Taktisches Messer mit Lederscheide
