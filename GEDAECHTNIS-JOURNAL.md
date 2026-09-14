@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🍬 «Kategorie mit Essen von Fortura»: gab es schon (`suesses-esswaren`, 29 CH-Lager-Süsswaren, 6 Kanäle, SEO) — 2 nachgetaggt (31), Menü von Platz 13 auf 6 unter «Sport & Party», Startseiten-Rotation +1 Katalog (26)
 - 2026-09-14 · 🤖 «chatgpt pushen»: ChatGPT 2,17 % Conversion; Shopify-Agentic-Storefront verlangt US-Markt (Shop hat nur CH) → Betreiber-Entscheid; Weg Websuche: 8/12 Zitate auf Influencer-Seite → FAQPage-Strukturdaten auf /pages/faq
 - 2026-09-14 · 🔁 PC-Session schaltete den Keepalive ZUM DRITTEN MAL ab (20:28Z, «CJ lief weiter») — gemessen: letztes Produkt 15:57Z = Pausenbeginn, 0 danach; Trigger umbenannt «startet KEINE CJ-Runner», Prompt trägt die Messung
 - 2026-09-14 · 🧩 «suche apps die ich brauchen kann»: 33 installiert, 4 wirken, Inbox installiert-aber-aus, Hextom-Währungsrechner lädt auf jeder Seite für nichts → einschalten/ausschalten statt installieren (`dropship/APPS-EMPFEHLUNG-2026-09-14.md`)

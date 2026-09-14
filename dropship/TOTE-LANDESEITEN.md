@@ -8,6 +8,4 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 
 | Sitzungen | Titel | Handle |
 |---:|---|---|
-| 6 | Sternenhimmel Projektor · Baby Nachtlicht mit Musik | `sternenhimmel-projektor-baby-nachtlicht-mit-musik` |
-| 3 | Lost Nomade | `lost-nomade` |
-| 2 | Signet-Ring · Edelstahl matt gebürstet Unisex | `signet-ring-edelstahl-matt-geburstet-unisex` |
+| 2 | Cellulite-Reduzierende Leggings | `cellulite-reduzierende-leggings-578014` |
