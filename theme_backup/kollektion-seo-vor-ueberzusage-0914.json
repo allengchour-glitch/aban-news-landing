@@ -1,0 +1,786 @@
+[
+ {
+  "id": "gid://shopify/Collection/687409660289",
+  "handle": "express-lieferung",
+  "seo": {
+   "title": "Express-Lieferung EU kaufen | LuxeStyle Schweiz",
+   "description": "Express-Lieferung EU online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687520186753",
+  "handle": "herrenuhren-schmuck",
+  "seo": {
+   "title": "Herrenuhren & Schmuck kaufen | LuxeStyle Schweiz",
+   "description": "Herrenuhren & Schmuck online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687522251137",
+  "handle": "neu",
+  "seo": {
+   "title": "Neu eingetroffen kaufen | LuxeStyle Schweiz",
+   "description": "Neu eingetroffen online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687522316673",
+  "handle": "fur-sie",
+  "seo": {
+   "title": "Für Sie kaufen | LuxeStyle Schweiz",
+   "description": "Für Sie online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687522480513",
+  "handle": "reisen-sommer",
+  "seo": {
+   "title": "Reisen & Sommer kaufen | LuxeStyle Schweiz",
+   "description": "Reisen & Sommer online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687522775425",
+  "handle": "wohnen-dekoration",
+  "seo": {
+   "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+   "description": "Wohnen & Dekoration online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687523299713",
+  "handle": "buro-home-office",
+  "seo": {
+   "title": "Büro & Home Office kaufen | LuxeStyle Schweiz",
+   "description": "Büro & Home Office online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687534997889",
+  "handle": "hochzeitsgeschenke",
+  "seo": {
+   "title": "Hochzeitsgeschenke kaufen | LuxeStyle Schweiz",
+   "description": "Hochzeitsgeschenke online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687535030657",
+  "handle": "berufseinstieg-abschluss",
+  "seo": {
+   "title": "Berufseinstieg & Abschluss kaufen | LuxeStyle Schweiz",
+   "description": "Berufseinstieg & Abschluss online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schwe…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687542698369",
+  "handle": "outdoor-garten",
+  "seo": {
+   "title": "Outdoor & Garten kaufen | LuxeStyle Schweiz",
+   "description": "Outdoor & Garten online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687545581953",
+  "handle": "vegan",
+  "seo": {
+   "title": "Vegan & Cruelty-Free kaufen | LuxeStyle Schweiz",
+   "description": "Vegan & Cruelty-Free online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687691170177",
+  "handle": "unter-chf-25",
+  "seo": {
+   "title": "Unter CHF 25 Impulse-Käufe kaufen | LuxeStyle Schweiz",
+   "description": "Unter CHF 25 Impulse-Käufe online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schwe…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687698116993",
+  "handle": "wellness-komplettset",
+  "seo": {
+   "title": "Wellness-Komplettset Spa zuhause kaufen | LuxeStyle Schweiz",
+   "description": "Wellness-Komplettset Spa zuhause online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687698149761",
+  "handle": "geschenke-unter-30",
+  "seo": {
+   "title": "Geschenke unter CHF 30 getaggt kaufen | LuxeStyle Schweiz",
+   "description": "Geschenke unter CHF 30 getaggt online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die S…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687698313601",
+  "handle": "beauty-selfcare",
+  "seo": {
+   "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+   "description": "Beauty & Self-Care online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687724560769",
+  "handle": "premium-schmuck",
+  "seo": {
+   "title": "Premium Schmuck kaufen | LuxeStyle Schweiz",
+   "description": "Premium Schmuck online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687789113729",
+  "handle": "bestseller",
+  "seo": {
+   "title": "Unsere Bestseller kaufen | LuxeStyle Schweiz",
+   "description": "Unsere Bestseller online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687793897857",
+  "handle": "premium-geschenke",
+  "seo": {
+   "title": "Premium Gifts kaufen | LuxeStyle Schweiz",
+   "description": "Premium Gifts online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687937257857",
+  "handle": "kleine-geschenke-mitbringsel",
+  "seo": {
+   "title": "Kleine Geschenke & Mitbringsel unter CHF 20 kaufen | LuxeStyle Schweiz",
+   "description": "Kleine Geschenke & Mitbringsel unter CHF 20 online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Liefe…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687937323393",
+  "handle": "geschenke-unter-50-franken",
+  "seo": {
+   "title": "Geschenke unter CHF 50 kaufen | LuxeStyle Schweiz",
+   "description": "Geschenke unter CHF 50 online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687937356161",
+  "handle": "geschenke-unter-100-franken",
+  "seo": {
+   "title": "Geschenke unter CHF 100 kaufen | LuxeStyle Schweiz",
+   "description": "Geschenke unter CHF 100 online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687966683521",
+  "handle": "audio-sub",
+  "seo": {
+   "title": "Audio kaufen | LuxeStyle Schweiz",
+   "description": "Audio online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687966814593",
+  "handle": "gaming",
+  "seo": {
+   "title": "Gaming kaufen | LuxeStyle Schweiz",
+   "description": "Gaming online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687966945665",
+  "handle": "strand",
+  "seo": {
+   "title": "Strand kaufen | LuxeStyle Schweiz",
+   "description": "Strand online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687966978433",
+  "handle": "pool",
+  "seo": {
+   "title": "Pool kaufen | LuxeStyle Schweiz",
+   "description": "Pool online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687967011201",
+  "handle": "garten",
+  "seo": {
+   "title": "Garten kaufen | LuxeStyle Schweiz",
+   "description": "Garten online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687967043969",
+  "handle": "camping-sub",
+  "seo": {
+   "title": "Camping kaufen | LuxeStyle Schweiz",
+   "description": "Camping online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687967076737",
+  "handle": "yoga",
+  "seo": {
+   "title": "Yoga kaufen | LuxeStyle Schweiz",
+   "description": "Yoga online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687967109505",
+  "handle": "recovery",
+  "seo": {
+   "title": "Recovery kaufen | LuxeStyle Schweiz",
+   "description": "Recovery online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687967175041",
+  "handle": "auto-halterungen",
+  "seo": {
+   "title": "Auto-Halterungen kaufen | LuxeStyle Schweiz",
+   "description": "Auto-Halterungen online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/687967371649",
+  "handle": "hautpflege-tools",
+  "seo": {
+   "title": "Hautpflege-Tools kaufen | LuxeStyle Schweiz",
+   "description": "Hautpflege-Tools online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688005775745",
+  "handle": "highlights",
+  "seo": {
+   "title": "Highlights Schmuck & Mode kaufen | LuxeStyle Schweiz",
+   "description": "Highlights Schmuck & Mode online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schwei…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688013902209",
+  "handle": "fitness-sub",
+  "seo": {
+   "title": "Fitness kaufen | LuxeStyle Schweiz",
+   "description": "Fitness online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688049095041",
+  "handle": "us-summer-2026",
+  "seo": {
+   "title": "US Summer 2026 kaufen | LuxeStyle Schweiz",
+   "description": "US Summer 2026 online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688391979393",
+  "handle": "hautpflege-skincare",
+  "seo": {
+   "title": "Hautpflege & Skincare kaufen | LuxeStyle Schweiz",
+   "description": "Hautpflege & Skincare online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688392044929",
+  "handle": "deko-wohnaccessoires",
+  "seo": {
+   "title": "Deko & Wohnaccessoires kaufen | LuxeStyle Schweiz",
+   "description": "Deko & Wohnaccessoires online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688399745409",
+  "handle": "strand-look",
+  "seo": {
+   "title": "Strand-Look kaufen | LuxeStyle Schweiz",
+   "description": "Strand-Look online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688399778177",
+  "handle": "office-look",
+  "seo": {
+   "title": "Office-Look kaufen | LuxeStyle Schweiz",
+   "description": "Office-Look online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688399810945",
+  "handle": "abend-look",
+  "seo": {
+   "title": "Abend-Look kaufen | LuxeStyle Schweiz",
+   "description": "Abend-Look online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688427434369",
+  "handle": "selbst-gestalten-1",
+  "seo": {
+   "title": "Selbst gestalten kaufen | LuxeStyle Schweiz",
+   "description": "Selbst gestalten online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688449749377",
+  "handle": "schweiz-edition",
+  "seo": {
+   "title": "Schweiz Edition kaufen | LuxeStyle Schweiz",
+   "description": "Schweiz Edition online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688489726337",
+  "handle": "sticker-aufkleber",
+  "seo": {
+   "title": "Sticker & Aufkleber kaufen | LuxeStyle Schweiz",
+   "description": "Sticker & Aufkleber online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688562766209",
+  "handle": "auto-handy",
+  "seo": {
+   "title": "Auto & Handy kaufen | LuxeStyle Schweiz",
+   "description": "Auto & Handy online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688563749249",
+  "handle": "sub-deko",
+  "seo": {
+   "title": "Vasen & Deko kaufen | LuxeStyle Schweiz",
+   "description": "Vasen & Deko online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688563847553",
+  "handle": "sub-massage",
+  "seo": {
+   "title": "Massage & Wellness kaufen | LuxeStyle Schweiz",
+   "description": "Massage & Wellness online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688564339073",
+  "handle": "sub-bart-rasur",
+  "seo": {
+   "title": "Bart & Rasur kaufen | LuxeStyle Schweiz",
+   "description": "Bart & Rasur online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688564371841",
+  "handle": "sub-yoga-fitness",
+  "seo": {
+   "title": "Yoga & Fitness kaufen | LuxeStyle Schweiz",
+   "description": "Yoga & Fitness online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688564404609",
+  "handle": "sub-trinkflaschen",
+  "seo": {
+   "title": "Trinkflaschen & Thermo kaufen | LuxeStyle Schweiz",
+   "description": "Trinkflaschen & Thermo online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688564502913",
+  "handle": "sub-reise",
+  "seo": {
+   "title": "Reise & Outdoor kaufen | LuxeStyle Schweiz",
+   "description": "Reise & Outdoor online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688564535681",
+  "handle": "sub-kueche",
+  "seo": {
+   "title": "Küche & Kochen kaufen | LuxeStyle Schweiz",
+   "description": "Küche & Kochen online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688576364929",
+  "handle": "handy-zubehoer",
+  "seo": {
+   "title": "Handy-Zubehör kaufen | LuxeStyle Schweiz",
+   "description": "Handy-Zubehör online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688577577345",
+  "handle": "trends-gadgets",
+  "seo": {
+   "title": "Trends & Gadgets kaufen | LuxeStyle Schweiz",
+   "description": "Trends & Gadgets online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688582656385",
+  "handle": "hype-2026",
+  "seo": {
+   "title": "Hype 2026 Trends & Bestseller kaufen | LuxeStyle Schweiz",
+   "description": "Hype 2026 Trends & Bestseller online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Sc…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688585933185",
+  "handle": "herren-shirts",
+  "seo": {
+   "title": "Herren-Shirts & Tops kaufen | LuxeStyle Schweiz",
+   "description": "Herren-Shirts & Tops online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688586031489",
+  "handle": "herren-sets-sub",
+  "seo": {
+   "title": "Herren-Sets kaufen | LuxeStyle Schweiz",
+   "description": "Herren-Sets online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688586621313",
+  "handle": "damen-blusen",
+  "seo": {
+   "title": "Damen-Blusen & Tops kaufen | LuxeStyle Schweiz",
+   "description": "Damen-Blusen & Tops online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688586654081",
+  "handle": "damen-hosen",
+  "seo": {
+   "title": "Damen-Hosen kaufen | LuxeStyle Schweiz",
+   "description": "Damen-Hosen online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688586686849",
+  "handle": "damen-sets",
+  "seo": {
+   "title": "Damen-Sets & 2-Teiler kaufen | LuxeStyle Schweiz",
+   "description": "Damen-Sets & 2-Teiler online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688589996417",
+  "handle": "sg-bekleidung",
+  "seo": {
+   "title": "Bekleidung selbst gestalten kaufen | LuxeStyle Schweiz",
+   "description": "Bekleidung selbst gestalten online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schw…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688590029185",
+  "handle": "sg-taschen",
+  "seo": {
+   "title": "Taschen selbst gestalten kaufen | LuxeStyle Schweiz",
+   "description": "Taschen selbst gestalten online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688590160257",
+  "handle": "sg-alle",
+  "seo": {
+   "title": "Selbst gestalten alle Produkte kaufen | LuxeStyle Schweiz",
+   "description": "Selbst gestalten alle Produkte online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die S…"
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688600547713",
+  "handle": "luxus-highend",
+  "seo": {
+   "title": "Premium-Auswahl kaufen | LuxeStyle Schweiz",
+   "description": "Premium-Auswahl online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688642589057",
+  "handle": "loungewear",
+  "seo": {
+   "title": "Loungewear kaufen | LuxeStyle Schweiz",
+   "description": "Loungewear online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688683942273",
+  "handle": "luxestyle-premium",
+  "seo": {
+   "title": "LuxeStyle Premium kaufen | LuxeStyle Schweiz",
+   "description": "LuxeStyle Premium online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688698884481",
+  "handle": "parfum-duefte",
+  "seo": {
+   "title": "Parfum & Düfte kaufen | LuxeStyle Schweiz",
+   "description": "Parfum & Düfte online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688724935041",
+  "handle": "mauspads",
+  "seo": {
+   "title": "Mauspads kaufen | LuxeStyle Schweiz",
+   "description": "Mauspads online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688725197185",
+  "handle": "sport-outdoor",
+  "seo": {
+   "title": "Sport & Outdoor kaufen | LuxeStyle Schweiz",
+   "description": "Sport & Outdoor online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688725819777",
+  "handle": "buero-schreibwaren",
+  "seo": {
+   "title": "Büro & Schreibwaren kaufen | LuxeStyle Schweiz",
+   "description": "Büro & Schreibwaren online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688732766593",
+  "handle": "spielzeug-lernen",
+  "seo": {
+   "title": "Lernspielzeug kaufen | LuxeStyle Schweiz",
+   "description": "Lernspielzeug online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688732799361",
+  "handle": "spielzeug-basteln",
+  "seo": {
+   "title": "Basteln & Kneten kaufen | LuxeStyle Schweiz",
+   "description": "Basteln & Kneten online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688732864897",
+  "handle": "spielzeug-outdoor-wasser",
+  "seo": {
+   "title": "Outdoor & Wasser kaufen | LuxeStyle Schweiz",
+   "description": "Outdoor & Wasser online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688732897665",
+  "handle": "spielzeug-musik",
+  "seo": {
+   "title": "Musik-Spielzeug kaufen | LuxeStyle Schweiz",
+   "description": "Musik-Spielzeug online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688740663681",
+  "handle": "garten-balkon",
+  "seo": {
+   "title": "Garten & Balkon kaufen | LuxeStyle Schweiz",
+   "description": "Garten & Balkon online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688906764673",
+  "handle": "trainingsanzuege-sets",
+  "seo": {
+   "title": "Trainingsanzüge & Sets kaufen | LuxeStyle Schweiz",
+   "description": "Trainingsanzüge & Sets online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688928817537",
+  "handle": "fitness-training",
+  "seo": {
+   "title": "Fitness & Training kaufen | LuxeStyle Schweiz",
+   "description": "Fitness & Training online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688928915841",
+  "handle": "velo-radsport",
+  "seo": {
+   "title": "Velo & Radsport kaufen | LuxeStyle Schweiz",
+   "description": "Velo & Radsport online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/688929079681",
+  "handle": "angeln",
+  "seo": {
+   "title": "Angeln & Angel-Zubehör online kaufen | LuxeStyle",
+   "description": "Angelruten, Rollen, Köder & Zubehör für jedes Gewässer. Gratis-Versand ab CHF 50, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689028989313",
+  "handle": "socken-strumpfe",
+  "seo": {
+   "title": "Socken & Strümpfe kaufen | LuxeStyle Schweiz",
+   "description": "Socken & Strümpfe online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689055629697",
+  "handle": "🎁-geschenke-bis-chf-30",
+  "seo": {
+   "title": "Geschenke bis CHF 30 kaufen | LuxeStyle Schweiz",
+   "description": "Geschenke bis CHF 30 online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689055662465",
+  "handle": "💎-premium-ab-chf-80",
+  "seo": {
+   "title": "Premium ab CHF 80 kaufen | LuxeStyle Schweiz",
+   "description": "Premium ab CHF 80 online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689252467073",
+  "handle": "drohnen-kameras",
+  "seo": {
+   "title": "Drohnen & Kameras kaufen | LuxeStyle Schweiz",
+   "description": "Drohnen & Kameras online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689252893057",
+  "handle": "smartwatches-wearables",
+  "seo": {
+   "title": "Smartwatches & Wearables kaufen | LuxeStyle Schweiz",
+   "description": "Smartwatches & Wearables online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689253515649",
+  "handle": "yoga-pilates",
+  "seo": {
+   "title": "Yoga & Pilates kaufen | LuxeStyle Schweiz",
+   "description": "Yoga & Pilates online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689316725121",
+  "handle": "waerme-komfort",
+  "seo": {
+   "title": "Wärme & Komfort kaufen | LuxeStyle Schweiz",
+   "description": "Wärme & Komfort online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689471816065",
+  "handle": "wellness-massage",
+  "seo": {
+   "title": "Wellness & Massage kaufen | LuxeStyle Schweiz",
+   "description": "Wellness & Massage online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689473945985",
+  "handle": "strand-wasserspass",
+  "seo": {
+   "title": "Strand & Wasserspass kaufen | LuxeStyle Schweiz",
+   "description": "Strand & Wasserspass online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689681006977",
+  "handle": "elektronik-technik",
+  "seo": {
+   "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+   "description": "Elektronik & Technik online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689681269121",
+  "handle": "3d-druck",
+  "seo": {
+   "title": "3D-Druck & Filament kaufen | LuxeStyle Schweiz",
+   "description": "3D-Druck & Filament online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689698439553",
+  "handle": "pc-gaming",
+  "seo": {
+   "title": "PC-Gaming kaufen | LuxeStyle Schweiz",
+   "description": "PC-Gaming online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689698472321",
+  "handle": "playstation",
+  "seo": {
+   "title": "PlayStation PS4PS5 kaufen | LuxeStyle Schweiz",
+   "description": "PlayStation PS4PS5 online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689698505089",
+  "handle": "xbox",
+  "seo": {
+   "title": "Xbox kaufen | LuxeStyle Schweiz",
+   "description": "Xbox online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689698537857",
+  "handle": "nintendo-switch",
+  "seo": {
+   "title": "Nintendo & Switch kaufen | LuxeStyle Schweiz",
+   "description": "Nintendo & Switch online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689698570625",
+  "handle": "retro-handheld",
+  "seo": {
+   "title": "Retro & Handheld-Gaming kaufen | LuxeStyle Schweiz",
+   "description": "Retro & Handheld-Gaming online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689701454209",
+  "handle": "basteln-diy",
+  "seo": {
+   "title": "Basteln & DIY kaufen | LuxeStyle Schweiz",
+   "description": "Basteln & DIY online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689713054081",
+  "handle": "kopfhoerer-audio",
+  "seo": {
+   "title": "Kopfhörer & Audio kaufen | LuxeStyle Schweiz",
+   "description": "Kopfhörer & Audio online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689713119617",
+  "handle": "computer-zubehoer",
+  "seo": {
+   "title": "Computer & Zubehör kaufen | LuxeStyle Schweiz",
+   "description": "Computer & Zubehör online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689713152385",
+  "handle": "speicher-datentraeger",
+  "seo": {
+   "title": "Speicher & Datenträger kaufen | LuxeStyle Schweiz",
+   "description": "Speicher & Datenträger online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ },
+ {
+  "id": "gid://shopify/Collection/689713283457",
+  "handle": "drohnen-fpv",
+  "seo": {
+   "title": "Drohnen & FPV kaufen | LuxeStyle Schweiz",
+   "description": "Drohnen & FPV online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz."
+  }
+ }
+]

@@ -228,3 +228,28 @@
 15473069130113	mehrere-varianten	2026-09-14	Automatischer Lockenstab für unterwegs
 15473077223809	kein-stecker-merkmal	2026-09-14	Elektrischer Haarschneider für Glatzrasur
 15473383113089	draft-kein-eu-stecker:US	2026-09-14	Ionen-Glättbürste mit Touchscreen
+15474491130241	mehrere-varianten	2026-09-14	Haarschonender 2-in-1 Glätteisen
+15475224379777	mehrere-varianten	2026-09-14	Glättbürste mit Negativ-Ionen-Technologie
+15476164100481	kein-stecker-merkmal	2026-09-14	Dekorative Stehlampe aus Gusseisen
+15476164592001	mehrere-varianten	2026-09-14	Akku-Adapter für Dyson Staubsauger
+15476165280129	kein-stecker-merkmal	2026-09-14	Tragbarer Entsafter für Babynahrung
+15476165345665	kein-stecker-merkmal	2026-09-14	Föhnständer aus Aluminium, bodenstehend
+15477424030081	kein-stecker-merkmal	2026-09-14	Smarte Deckenleuchte mit Ventilator fürs Schlafzimmer
+15477424816513	kein-stecker-merkmal	2026-09-14	Deckenleuchte Flur Modern
+15477425471873	kein-stecker-merkmal	2026-09-14	Leistungsstarker Hand-Haartrockner
+15477929410945	kein-stecker-merkmal	2026-09-14	Mid-Century Deckenleuchte für Wohn- & Schlafzimmer
+15478568124801	unklar-eu-vorhanden:EU/US	2026-09-14	Glätteisen-Kamm-Kombi
+15478568190337	draft-cj-ausgelistet	2026-09-14	Multifunktionaler 7-in-1 High-Speed Haartrockner
+15478568255873	unklar-eu-vorhanden:EU/UK/US	2026-09-14	7-in-1 Warmluftbürste mit Anionenfunktion
+15478568550785	kein-stecker-merkmal	2026-09-14	Multifunktionaler 7-in-1 High-Speed Haartrockner
+15478568616321	mehrere-varianten	2026-09-14	Glätteisen-Kamm
+15478568747393	mehrere-varianten	2026-09-14	Kabelloser 2-in-1 Ionen-Haarglätter & Lockenstab
+15478568944001	mehrere-varianten	2026-09-14	Multifunktionaler Lockenstab für Wellen
+15478569009537	mehrere-varianten	2026-09-14	5-in-1 Multifunktions-Lockenstab mit Digitalanzeige
+15478612754817	mehrere-varianten	2026-09-14	Mini tragbare Kaffeemaschine für unterwegs
+15479338303873	kein-stecker-merkmal	2026-09-14	Kabelloses Ladegerät mit Kuehler
+15479338500481	draft-kein-eu-stecker:US	2026-09-14	Schnellladegerät 3-Port
+15479338828161	kein-stecker-merkmal	2026-09-14	Dual-Channel LiPo-Balancer-Ladegerät
+15479397482881	kein-stecker-merkmal	2026-09-14	45W GaN Ladegerät für Tablets, Smartphones & Laptops
+15479397843329	kein-stecker-merkmal	2026-09-14	Lazy Chair Stand mit Auto-Sensing Ladegerät
+15479398105473	kein-stecker-merkmal	2026-09-14	Kompaktes 4-Schacht-Ladegerät mit USB-C

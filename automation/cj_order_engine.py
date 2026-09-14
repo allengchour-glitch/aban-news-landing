@@ -21,6 +21,7 @@ Idempotent ueber dropship/_cj_orders_done.txt (Shopify-Bestellnummer -> CJ-Order
 DRY=1 rechnet nur durch, ohne bei CJ anzulegen.
 """
 import json, subprocess, time, os, re, sys
+import urllib.parse
 
 CJTOK = open("/tmp/_cjtok").read().strip()
 STOK  = open("/tmp/cj_shop_token.txt").read().strip()
@@ -134,9 +135,11 @@ def vid_fuer(sku, variant_title):
     if not m:
         # Form (b): CJ-eigene variantSku -> exakte Variante
         vsku = re.sub(r'^CJ-', '', s, flags=re.I)
-        if not re.fullmatch(r'[A-Za-z0-9._-]{6,40}', vsku):
+        # CJ-Varianten-SKUs koennen ein Leerzeichen tragen («CJBJMRJF00040-EU plug», Stecker-
+        # Varianten, 14.09.) — ohne quote() waere die URL kaputt und die Bestellung stuende still.
+        if not re.fullmatch(r'[A-Za-z0-9._ -]{6,40}', vsku):
             return None, f"SKU «{s}» passt zu keinem CJ-Schema"
-        d = cj(f"/api2.0/v1/product/query?variantSku={vsku}")
+        d = cj(f"/api2.0/v1/product/query?variantSku={urllib.parse.quote(vsku)}")
         data = d.get("data")
         vs = (data or {}).get("variants") or [] if isinstance(data, dict) else []
         if not vs:

@@ -99,6 +99,10 @@ def cj_url(sku):
     s = re.sub(r"^CJ-", "", sku or "")
     if re.fullmatch(r"\d{10,}", s):
         return f"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid={s}"
+    # CJ-<UUID>: die pid-Form der aelteren Importe (zehntausende Produkte) — vorher als «keine
+    # CJ-SKU» uebersprungen, obwohl product/query sie kennt (gemessen 14.09. an der Hype-Reihe).
+    if re.fullmatch(r"[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}", s):
+        return f"https://developers.cjdropshipping.com/api2.0/v1/product/query?pid={s}"
     m = re.fullmatch(r"(CJ[A-Z]{2}\d{7,})(\d{2}[A-Z]{2})?", s)
     if m:
         return f"https://developers.cjdropshipping.com/api2.0/v1/product/query?productSku={m.group(1)}"
