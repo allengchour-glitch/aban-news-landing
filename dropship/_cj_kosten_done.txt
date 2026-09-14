@@ -26480,3 +26480,5 @@ gid://shopify/Product/15504149774721	CHF 22.21	1 Varianten	Fünffach-Wellenstab 
 gid://shopify/Product/15504149807489	CHF 23.43	1 Varianten	Smart-Armband mit Herzfrequenz- & Schlaf-Tracking
 gid://shopify/Product/15504149873025	CHF 9.43	1 Varianten	GPS-Halsband für Hunde und Katzen
 gid://shopify/Product/15504149905793	CHF 24.14	11 Varianten	Winter Baumwollschuhe mit Kaschmirfutter
+gid://shopify/Product/15504149938561	CHF 18.14	1 Varianten	S2 Sport-Bluetooth-Armband mit Herzfrequenz
+gid://shopify/Product/15504150004097	CHF 33.69	1 Varianten	Multifunktionaler Dampf-Glättkamm
