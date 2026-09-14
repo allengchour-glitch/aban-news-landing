@@ -78,6 +78,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   6. **Shopify Inbox ist bereits installiert** (App «Messaging» `shopify-messaging` von Shopify, Publication «Inbox» 305570283905).
      Begrüssungstext + Mail-Benachrichtigung sind nur in der Inbox-UI setzbar (kein Admin-API-Feld) → Browser.
 - **Lehre:** Vor «installieren/archivieren» erst per API messen — 2 von 6 Punkten waren bereits erledigt.
+- **🟢 GitHub Actions LÄUFT WIEDER (gemessen 14.09. 15:59 UTC):** der Push auf den PR-Branch startete sofort
+  `voice-linter.yml`, `deploy-check.yml` und den Cloudflare-Pages-Deploy (Run-IDs 34865774778/-782/-765). Die Sperre aus
+  dem Stand 06-13/08-30 ist also vorbei. **Cron-Nulldiät-Regel bleibt** (nicht massenhaft reaktivieren, max. 1×/Tag).
 
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
