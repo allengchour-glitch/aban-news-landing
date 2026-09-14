@@ -34,6 +34,20 @@ HEUTE liefert (300 Importe vom 13./14.09., am Objekt gelesen, nicht gezählt):
 - ⚠️ Mein Live-Probelauf der neuen Kette meldete dreimal «KEIN TEXT» — ich hätte das fast als
   Fehler in `textPolieren` gelesen. Es war der ungültige Schlüssel. **Wer eine Textstufe
   prüft, prüft zuerst, welches Modell überhaupt antwortet.**
+- ✅ **Am Erzeugnis belegt (08:20 UTC, nur Importe aus Prozessen, die NACH dem letzten Commit
+  gestartet sind, n=18):** Lieferumfang-Einzelsatz 0 (vorher 31 %), CJ-Metadaten 0, Floskel 0,
+  SEO endet mit «Gewicht» 0 (vorher 13 %), englische Masswerte 0, «andere Materialien» 0 —
+  **nur «Dies…» als Satzanfang bleibt bei 33 % (vorher 100 %)**. Die 16 Zeilen «✍️ Text via
+  gemini» im Runner-Log sind die Quittung, WELCHES Modell schrieb. ⚠️ Der Dies-Rest hat einen
+  Grund: die Nachbesserung lebte nur in `groqText()` — bei totem Groq bekam Gemini nie eine
+  zweite Chance. Jetzt bessert `textErzeugen()` EINMAL nach, egal welches Modell antwortet
+  (kostet bei Gemini einen zweiten Aufruf je Floskel-/Dies-Text; genommen wird die zweite
+  Fassung nur, wenn sie messbar besser ist). **Eine Reparaturschicht, die am Primärmodell
+  hängt, stirbt mit dem Primärmodell.** Erste Messung n=61 (08:05–08:18) trug noch 2 Meta- und
+  1 Material-Fall — beide aus Prozessen, die vor dem Fix gestartet waren; die Politur greift an
+  genau diesen Sätzen (am Modul nachgestellt). Dazu: `cj_sku_import` hatte GAR KEIN Fallback
+  (bei totem Groq «keine Texte», Exit 3) — die drei Importer lesen jetzt EINE Kette
+  (`textErzeugen`, neunte Geschwister-Zusammenlegung).
 - ✅ Am Erzeugnis belegt: erstes Produkt des neuen Codes (cjbaby, 08:03) beginnt «Für warme
   Tage im Freien …», SEO-Snippet trägt den zweiten Satz statt «Gewicht:». Die parallel laufende
   alte Node-Instanz (Start 07:53) schrieb bis zu ihrem Ende noch die alte Form — ein Modul-Fix

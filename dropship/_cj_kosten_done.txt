@@ -26904,3 +26904,13 @@ gid://shopify/Product/15505534878081	CHF 15.22	12 Varianten	Atmungsaktive Fitnes
 gid://shopify/Product/15505535107457	CHF 15.87	1 Varianten	Oxford Rucksack mit Print für Damen und Herren
 gid://shopify/Product/15505595990401	CHF 102.99	1 Varianten	Bettseitenkissen mit integriertem Doppelkissen
 gid://shopify/Product/15505596481921	CHF 12.87	1 Varianten	Kissenbezug aus Baumwolle, garngefärbt
+gid://shopify/Product/15505597038977	CHF 39.03	1 Varianten	Niedliches Latex-Eisseiden-Lendenkissen
+gid://shopify/Product/15505597596033	CHF 40.32	1 Varianten	Dove Wasserfester Kissenbezug für alle Jahreszeite
+gid://shopify/Product/15505598185857	CHF 555.42	1 Varianten	Handgemachter Teppich aus Naturwolle, hellweiss
+gid://shopify/Product/15505599463809	CHF 35.29	1 Varianten	Runder Antirutsch-Teppich "Haig Cake"
+gid://shopify/Product/15505599824257	CHF 19.73	1 Varianten	Bequemes Sitzkissen für langes Sitzen
+gid://shopify/Product/15505600151937	CHF 23.47	1 Varianten	Plüsch-Kissenbezug mit Hasenmotiv
+gid://shopify/Product/15505600610689	CHF 37.72	1 Varianten	Japanischer Reiskübel, 20 kg, feuchtigkeitsdicht
+gid://shopify/Product/15505600676225	CHF 15.61	22 Varianten	Kinder Martin Boots – Freizeit-Lederstiefel
+gid://shopify/Product/15505600741761	CHF 18.69	1 Varianten	Ins Blue Planet Kissen bestickt
+gid://shopify/Product/15505601233281	CHF 38.65	1 Varianten	Morandi Fritteuse mit Temperaturkontrolle

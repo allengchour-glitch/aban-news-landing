@@ -97,10 +97,21 @@ async function geminiText(prompt) {
 }
 
 // Groq (gratis, primaer) → DeepSeek → Gemini (bezahlt). Rueckgabe traegt `_modell`.
+// 14.09. (Beleg am Erzeugnis, 08:20 UTC): Die Nachbesserung in groqText() ist tot, solange
+// Groq tot ist — die Fallback-Modelle bekamen KEINE zweite Chance, und 23–33 % der neuen
+// Texte begannen weiter mit «Dies…». Deshalb bessert die Kette hier EINMAL nach, egal welches
+// Modell geantwortet hat; genommen wird die zweite Fassung nur, wenn sie messbar besser ist.
+const MANGEL = (x) => floskelZaehler(x.html) + (beginntMitDies(x.html) ? 1 : 0);
+const NACHBESSERUNG = `\n\nACHTUNG: Der vorige Entwurf begann mit «Dieser/Diese/Dieses» oder enthielt verbotene Wendungen. Schreibe den Text neu: Satz 1 beginnt mit Anlass, Nutzen oder Material, OHNE: ${VERBOTEN.join(', ')}. Gleiche Fakten, gleiche Form.`;
+async function mitNachbesserung(o, prompt, fn) {
+  if (!o || MANGEL(o) < 1) return o;
+  const o2 = await fn(prompt + NACHBESSERUNG);
+  return (o2 && o2.title && o2.html && MANGEL(o2) < MANGEL(o)) ? o2 : o;
+}
 export async function textErzeugen(prompt) {
-  const g = await groqText(prompt); if (g) { g._modell = 'groq'; return g; }
+  const g = await groqText(prompt); if (g) { g._modell = 'groq'; return g; }   // bessert selbst nach
   if (!groqTotGemeldet) { groqTotGemeldet = true; console.log('  ⚠️ Groq liefert nichts (Schlüssel/Modell?) — Texte laufen über das Fallback (DeepSeek/Gemini, bezahlt)'); }
-  const d = await deepseekText(prompt); if (d) { d._modell = 'deepseek'; return d; }
-  const m = await geminiText(prompt); if (m) { m._modell = 'gemini'; return m; }
+  const d = await mitNachbesserung(await deepseekText(prompt), prompt, deepseekText); if (d) { d._modell = 'deepseek'; return d; }
+  const m = await mitNachbesserung(await geminiText(prompt), prompt, geminiText); if (m) { m._modell = 'gemini'; return m; }
   return null;
 }
