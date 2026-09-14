@@ -345,3 +345,22 @@ gid://shopify/Product/15433464545665	kein-video-beim-lieferanten
 gid://shopify/Product/15443182813569	kein-video-beim-lieferanten
 gid://shopify/Product/15443182846337	kein-video-beim-lieferanten
 gid://shopify/Product/15443182944641	ok	Moissanit-Verlobungsring «Solitär» 1 ct · 925 Silber D-VVS1
+gid://shopify/Product/15443219186049	kein-video-beim-lieferanten
+gid://shopify/Product/15443219218817	kein-video-beim-lieferanten
+gid://shopify/Product/15443240944001	ok	Moissanit-Ohrstecker «Duo» 0,5 & 2 ct · 925 Silber
+gid://shopify/Product/15443241075073	kein-video-beim-lieferanten
+gid://shopify/Product/15443241140609	kein-video-beim-lieferanten
+gid://shopify/Product/15443241173377	kein-video-beim-lieferanten
+gid://shopify/Product/15443241206145	kein-video-beim-lieferanten
+gid://shopify/Product/15443241238913	kein-video-beim-lieferanten
+gid://shopify/Product/15443243663745	kein-video-beim-lieferanten
+gid://shopify/Product/15443243696513	kein-video-beim-lieferanten
+gid://shopify/Product/15443243762049	kein-video-beim-lieferanten
+gid://shopify/Product/15443245433217	kein-video-beim-lieferanten
+gid://shopify/Product/15443245465985	kein-video-beim-lieferanten
+gid://shopify/Product/15443245597057	kein-video-beim-lieferanten
+gid://shopify/Product/15443245629825	kein-video-beim-lieferanten
+gid://shopify/Product/15443245662593	kein-video-beim-lieferanten
+gid://shopify/Product/15443245728129	kein-video-beim-lieferanten
+gid://shopify/Product/15443245760897	kein-video-beim-lieferanten
+gid://shopify/Product/15443495846273	kein-video-beim-lieferanten

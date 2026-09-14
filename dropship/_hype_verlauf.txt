@@ -158,3 +158,17 @@
 2026-09-03	Ringlicht	gid://shopify/Product/15485479715201	Magnetisches Selfie-Licht für Smartphones
 2026-09-03	Haustier-Spielzeug smart	gid://shopify/Product/15495135363457	Futterball-Spender für Hunde – 3-stufig verstellbar
 2026-09-03	Handy-Umhängetasche	gid://shopify/Product/15493870944641	Leder-Handytasche für Herren, Crossbody
+2026-09-14	Beauty-Gerät	gid://shopify/Product/15504142467457	Kopfhaut Massageöl mit Kamm
+2026-09-14	Mini-Beamer	gid://shopify/Product/15481692193153	HD Smart Mini-Projektor für Home Office
+2026-09-14	Ordnung & Aesthetic	gid://shopify/Product/15448960598401	6er Set transparente Aufbewahrungsboxen mit Doppelreissverschluss
+2026-09-14	Shapewear	gid://shopify/Product/15450853704065	Shapewear Kleid Jumpsuit mit Brustpolster
+2026-09-14	Ladestation 3-in-1	gid://shopify/Product/15480285036929	Outdoor Wireless Powerbank mit Kabel
+2026-09-14	Lifting-Tape	gid://shopify/Product/15530179625345	Nacken- und Gesichtsstraffungsgerät
+2026-09-14	Haarglätter & Styler	gid://shopify/Product/15448931139969	Golden Rice Dampfglättbürste für hydratisiertes Haar
+2026-09-14	Hals-Ventilator	gid://shopify/Product/15522128429441	Tragbarer Halsventilator mit USB-Ladefunktion
+2026-09-14	Wärme & Kuschel	gid://shopify/Product/15524700782977	Beheizbare Hausschuhe mit Temperaturregelung
+2026-09-14	Karaoke-Mikrofon	gid://shopify/Product/15479419011457	Boya 2-in-1 Funkmikrofon mit Ansteck-Clip
+2026-09-14	Ringlicht	gid://shopify/Product/15522109784449	Webcam mit Full HD & LED-Ringlicht
+2026-09-14	Tierhaar-Fusselrolle	gid://shopify/Product/15531881955713	Fusselbürste zur Tierhaarentfernung
+2026-09-14	Futterautomat	gid://shopify/Product/15503286075777	Automatischer Futter- und Wassernapf
+2026-09-14	Haustier-Spielzeug smart	gid://shopify/Product/15448945918337	Elektrisches Katzenspielzeug mit Ein-Knopf-Start
