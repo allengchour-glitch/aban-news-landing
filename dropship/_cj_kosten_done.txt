@@ -26486,3 +26486,22 @@ gid://shopify/Product/15504150036865	CHF 15.48	1 Varianten	Smarter Bellstopper f
 gid://shopify/Product/15504150069633	CHF 24.31	1 Varianten	G20 Smart-Armband mit Herzfrequenz
 gid://shopify/Product/15504150102401	CHF 15.13	24 Varianten	Kinder Martin Boots mit Kette
 gid://shopify/Product/15504150397313	CHF 19.99	1 Varianten	Smart-Armband mit Fernbedienung & Tracking
+gid://shopify/Product/15504150430081	CHF 15.68	9 Varianten	DIY-Hausschuhe zum Selbermachen
+gid://shopify/Product/15504150462849	CHF 19.07	1 Varianten	3-Rohr Welleneisen für grosse Locken
+gid://shopify/Product/15504150495617	CHF 10.67	1 Varianten	Halsband oder Leine für Hunde
+gid://shopify/Product/15504150528385	CHF 30.03	1 Varianten	Mini Powerbank 20000mAh
+gid://shopify/Product/15504150561153	CHF 30.28	1 Varianten	Wellen-Eisen mit drei XL-Heizstäben
+gid://shopify/Product/15504150593921	CHF 8.16	1 Varianten	Halsband mit Schutzhülle und Blumenmuster
+gid://shopify/Product/15504150626689	CHF 34.45	1 Varianten	EDAL K18 Smart Armband Kamera
+gid://shopify/Product/15504150659457	CHF 13.58	36 Varianten	Gepolsterte Kinder-Hausschuhe mit Tiermotiven
+gid://shopify/Product/15504150692225	CHF 13.65	1 Varianten	Multifunktionaler 3-in-1 Lockenstab
+gid://shopify/Product/15504150724993	CHF 10.48	1 Varianten	Explosionsgeschütztes Haustierhalsband
+gid://shopify/Product/15504150757761	CHF 14.45	1 Varianten	Edelstahl-Armband für Fitbit Alta
+gid://shopify/Product/15504150823297	CHF 11.35	30 Varianten	Mädchen-Lederstiefeletten mit Reissverschluss
+gid://shopify/Product/15504150921601	CHF 21.02	1 Varianten	Kabelloser Mini-Lockenstab für unterwegs
+gid://shopify/Product/15504150987137	CHF 29.03	1 Varianten	205L Herzfrequenz Armband
+gid://shopify/Product/15504151019905	CHF 30.37	22 Varianten	Mädchen Leder-Bärenstiefel mit Reissverschluss
+gid://shopify/Product/15504151052673	CHF 20.21	1 Varianten	MK18 Smartwatch-Armband
+gid://shopify/Product/15504151249281	CHF 32.11	28 Varianten	Warme Anti-Rutsch Prinzessinnen Stiefel für Kinder
+gid://shopify/Product/15504151314817	CHF 62.20	6 Varianten	Elegantes, tailliertes Maxikleid
+gid://shopify/Product/15504151380353	CHF 12.88	1 Varianten	Baby-Badewannen-Kissen / -Matte
