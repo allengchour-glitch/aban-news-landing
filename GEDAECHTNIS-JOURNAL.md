@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🏢 «b2b optimieren?»: kein Firmenkonten-Ausbau — Seite «Firmen & Vereine» mit Anfrageformular (Merch ab 10 Stk, CH-Lagerware, Rechnung), Footer 15 Einträge; Formular-Knopf hiess «Submit»
 - 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
 - 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
 - 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
@@ -387,6 +388,23 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🏢 «b2b optimieren?» (14.09., 11:00–11:20 UTC): kein Firmenkonten-Ausbau — eine ehrliche Seite «Firmen & Vereine» mit Anfrageformular, im Footer verlinkt
+
+Die Messung vom Morgen gilt weiter (B2B-Firmenkonten gehen auf dem Basic-Plan, passen aber nicht zum Geschäft:
+CJ-Direktware 10–20 Werktage, Fracht je Artikel, kein Mengenpreis, Netto-Zahlungsziel = Kreditrisiko bei 1 Abschluss
+in 30 Tagen). Umgesetzt wurde die schlanke Empfehlung: Seite `/pages/firmen-vereine` (Template `page.contact`, also
+Text + Kontaktformular an info@luxestyle.ch), drei Wege ehrlich beschrieben — Merch über den POD-Editor ab 10 Stück
+mit Offerte, CH-Lagerware in Mengen (1–2 Werktage), direkt im Shop mit den LIVE geltenden Konditionen (–10 % ab
+2 Artikeln automatisch, Gratis-Versand ab CHF 50, Klarna-Rechnung, TWINT) — und der offene Satz, dass Direktware für
+Mengen ungeeignet ist. Footer-Menü 14 → 15 Einträge (nach «Über uns»; Backup `theme_backup/menu-footer-vor-firmen-0914.json`).
+
+**Gefunden beim Gegenlesen (WebFetch):** der Formular-Knopf des Themes hiess **«Submit»** — englisch, auf einer
+deutschen Seite, seit die Vorlage existiert; das Label steckt als Setting in `templates/page.contact.json`
+(`contact-form-submit-button.label`), nicht in den Locale-Dateien. → «Anfrage senden» (Backup
+`theme_backup/page.contact.json.vor-firmen-0914`). ⚠️ `pageUpdate` in 2024-10 kennt kein `seo`-Feld (KeyError
+`data`) — SEO-Titel von Seiten laufen über Metafelder `global.title_tag`/`global.description_tag`, nicht gesetzt.
+Betreiber-Sicht: Anfragen kommen als Mail auf info@luxestyle.ch an — dort liegt dann die Offerte bei ihm.
 
 ## 🎠 «mach 8 produkte aber fülle die ganze webseite mit andere katalogen» (14.09., 10:20–10:45 UTC): 18 Reihen à 8, acht davon drehen täglich durch 25 Kataloge — Startseite 3,1 MB
 
