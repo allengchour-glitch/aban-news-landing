@@ -27353,3 +27353,10 @@ gid://shopify/Product/15506242699649	CHF 23.58	1 Varianten	Smartwatch GT3 Astron
 gid://shopify/Product/15506242830721	CHF 19.92	12 Varianten	Retro Outdoor-Schuhe für Herren
 gid://shopify/Product/15506243027329	CHF 13.95	1 Varianten	Professioneller Lockenstab mit Anionenpflege
 gid://shopify/Product/15506243060097	CHF 23.62	1 Varianten	Smarte wasserdichte Sportuhr mit Herzfrequenz
+gid://shopify/Product/15506243092865	CHF 17.42	30 Varianten	Elegantes Retro-Kleid mit Taillenschnürung
+gid://shopify/Product/15506243158401	CHF 31.36	26 Varianten	Arbeitsschuhe mit Deodorant-Einlegesohle
+gid://shopify/Product/15506243256705	CHF 16.52	1 Varianten	Lockenstab für trockene und nasse Haare 9mm
+gid://shopify/Product/15506243289473	CHF 11.27	1 Varianten	Boho-Armband für Samsung/Huawei Smartwatches
+gid://shopify/Product/15506243355009	CHF 15.42	9 Varianten	Tailliertes Strickkleid mit kurzen Ärmeln
+gid://shopify/Product/15506243420545	CHF 58.03	21 Varianten	Lässige Leder-Sneaker zum Reinschlüpfen
+gid://shopify/Product/15506243518849	CHF 10.97	1 Varianten	Boho Wachsseil-Armband für Smartwatches
