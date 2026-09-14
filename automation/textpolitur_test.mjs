@@ -19,6 +19,8 @@ ok(!/anderen Materialien/.test(t4) && /lockere Passform\./.test(t4), '«aus 100 
 ok(!/Für Damen konzipiert|Für Herbst/.test(t4) && /<li>Lockere Passform<\/li>/.test(t4), 'Metadaten-Stichpunkte fallen, Fakt-Stichpunkt bleibt');
 const t5 = textPolieren({ html: '<p>Ein Strampler aus Baumwolle für Babys, der sich bequem an- und ausziehen lässt und die Haut nicht reizt.</p><ul><li>Für Babys geeignet</li><li>Aus Baumwolle</li><li>Aus anderen Materialien</li></ul>' }).html;
 ok(/Für Babys geeignet/.test(t5) && !/anderen Materialien/.test(t5), 'Metadaten-Stichpunkt bleibt bei <2 uebrig, Leer-Stichpunkt faellt trotzdem');
+const t6 = textPolieren({ html: '<p>An kalten Wintertagen hält dich dieser Schal angenehm warm. Er ist speziell für Frauen konzipiert und hat ein klassisches Karomuster. Der Schal misst 50 x 135 cm und ist ein praktisches Accessoire für die kühle Jahreszeit.</p>' }).html;
+ok(/Er hat ein klassisches Karomuster\./.test(t6) && !/konzipiert/.test(t6), 'Metadaten-Teilsatz faellt, Rest bleibt ganzer Satz: ' + t6.slice(0, 160));
 console.log('nurMass:');
 for (const [v, e] of [['180 × 70cm', true], ['ca. 350 g – 512 g (je nach Variante)', true], ['5 W', true], ['45 × 25/height 6cm', false], ['Regular style (50cm < length ≤ 65cm)', false], ['US Size 5, US Size 6', false], ['218g(including sleeve)', false], ['One Size (80–140 jin)', false], ['12 Zoll', true], ['2000 mAh', true]]) ok(nurMass(v) === e, `${v} → ${e}`);
 const sp = extractSpecs('Size: 20*30cm<br>Length: Regular style (50cm<length≤65cm)<br>Weight: 218g(including sleeve)');

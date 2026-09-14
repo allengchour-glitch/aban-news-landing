@@ -407,3 +407,8 @@ gid://shopify/Product/15531866227073	Silber
 gid://shopify/Product/15531868389761	Blau
 gid://shopify/Product/15531879039361	Mehrfarbig
 gid://shopify/Product/15531879301505	Türkis
+gid://shopify/Product/15531931795841	Silber
+gid://shopify/Product/15531932385665	Silber
+gid://shopify/Product/15532039930241	Silber
+gid://shopify/Product/15532040618369	Silber
+gid://shopify/Product/15532044714369	Silber

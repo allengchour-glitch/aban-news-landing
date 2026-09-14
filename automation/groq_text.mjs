@@ -52,3 +52,55 @@ export async function groqText(prompt, { temperature = 0.5, nachbesserung = fals
   }
   return null;
 }
+
+// ── 14.09.2026: EINE Fallback-Kette fuer alle drei Importer ──────────────────────────────
+// Befund: Groq → DeepSeek → Gemini stand in cj_category_fill und cj_trending_import je als
+// eigene Kopie, cj_sku_import hatte GAR KEIN Fallback (bei totem Groq: «keine Texte», Exit 3).
+// Und die Kette war STUMM: neun Tage lang schrieb das bezahlte Gemini jeden Text, weil der
+// Groq-Schluessel ungueltig war (55 Zeichen), und im Log stand nur «✅». Ein Fallback, der
+// stumm uebernimmt, verwandelt einen Ausfall in eine Rechnung — deshalb traegt jede Antwort
+// hier `_modell`, und der Importer druckt es, sobald es nicht «groq» ist.
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const DS_KEY = (process.env.DEEPSEEK_API_KEY || '').trim();
+const GEMINI_KEY = (process.env.GEMINI_API_KEY || '').trim();
+let groqTotGemeldet = false;
+
+async function deepseekText(prompt) {
+  if (!DS_KEY) return null;
+  for (let i = 0; i < 2; i++) {
+    try {
+      const r = await fetch('https://api.deepseek.com/chat/completions', { method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${DS_KEY}` },
+        body: JSON.stringify({ model: 'deepseek-chat', temperature: 0.5, max_tokens: 1200,
+          response_format: { type: 'json_object' }, messages: [{ role: 'user', content: prompt }] }) });
+      if (r.status === 429) { await sleep(10000); continue; }
+      const j = await r.json(); if (j.error) return null;
+      const o = jsonAusText(j.choices?.[0]?.message?.content); if (o && o.title && o.html) return o;
+    } catch {}
+  }
+  return null;
+}
+
+async function geminiText(prompt) {
+  if (!GEMINI_KEY) return null;
+  for (let i = 0; i < 3; i++) {
+    try {
+      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`, { method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.5, maxOutputTokens: 1500, thinkingConfig: { thinkingBudget: 0 }, responseMimeType: 'application/json' } }) });
+      const j = await r.json(); if (j.error) { if (j.error.code === 429) { await sleep(15000); continue; } break; }
+      const o = jsonAusText(j.candidates?.[0]?.content?.parts?.[0]?.text); if (o && o.title && o.html) return o;
+    } catch {}
+  }
+  return null;
+}
+
+// Groq (gratis, primaer) → DeepSeek → Gemini (bezahlt). Rueckgabe traegt `_modell`.
+export async function textErzeugen(prompt) {
+  const g = await groqText(prompt); if (g) { g._modell = 'groq'; return g; }
+  if (!groqTotGemeldet) { groqTotGemeldet = true; console.log('  ⚠️ Groq liefert nichts (Schlüssel/Modell?) — Texte laufen über das Fallback (DeepSeek/Gemini, bezahlt)'); }
+  const d = await deepseekText(prompt); if (d) { d._modell = 'deepseek'; return d; }
+  const m = await geminiText(prompt); if (m) { m._modell = 'gemini'; return m; }
+  return null;
+}

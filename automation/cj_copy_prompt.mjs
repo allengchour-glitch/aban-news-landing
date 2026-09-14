@@ -180,6 +180,9 @@ const ADJ_FLOSKEL_RE = /\b(?:vielseitig|hochwertig|stilvoll|einzigartig|perfekt)
 const META_LI_RE = /^\s*f[üu]r\s+(?:damen|herren|frauen|m[äa]nner|erwachsene|kinder|jugendliche|babys?|herbst|winter|sommer|fr[üu]hling|alle\s+jahreszeiten)(?:\s*(?:und|&|\/)\s*[\wäöüß]+)?\s+(?:konzipiert|geeignet|bestimmt|gedacht|entwickelt)\s*[.!]?\s*$/i;
 // CJ «Material: Other» kommt als «aus 100 % anderen Materialien gefertigt» an — eine Aussage ohne Inhalt.
 const ANDERE_MAT_KLAUSEL_RE = /\s*(?:,?\s*(?:und|sowie)\s+)?(?:ist|besteht)?\s*aus\s+(?:100\s*%\s*)?(?:anderen|andere|sonstigen|sonstige|verschiedenen)\s+materialien?(?:\s+(?:gefertigt|hergestellt))?/i;
+// Metadaten als TEILSATZ («Er ist speziell für Frauen konzipiert und hat ein Karomuster.») —
+// die Klausel faellt, der Rest bleibt ein ganzer Satz («Er hat ein Karomuster.»).
+const META_KLAUSEL_RE = /\s+(?:ist|sind)\s+(?:speziell\s+)?f[üu]r\s+(?:frauen|damen|herren|m[äa]nner|erwachsene|kinder|babys?)\s+(?:konzipiert|gedacht|bestimmt|entwickelt|geeignet)\s+und\s+(?=[\wäöüß])/i;
 const ANDERE_MAT_SATZ_RE = /^\s*(?:er|sie|es|der\s+\w+|die\s+\w+|das\s+\w+)\s+(?:ist|besteht)\s+aus\s+(?:100\s*%\s*)?(?:anderen|andere|sonstigen|sonstige|verschiedenen)\s+materialien?(?:\s+(?:gefertigt|hergestellt))?\s*[.!]?\s*$/i;
 export function beginntMitDies(html) {
   const t = String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -191,7 +194,7 @@ export function textPolieren(o) {
     if (/<[a-z]/i.test(inner)) return m;                       // Auszeichnung: nicht anfassen
     const teile = inner.split(/(?<=[.!?])(?!\d)\s+/);
     const bleibt = teile.filter(t => !LIEFER_EINZEL_RE.test(t) && !META_RE.test(t) && !ANDERE_MAT_SATZ_RE.test(t))
-      .map(t => t.replace(ANDERE_MAT_KLAUSEL_RE, '').replace(/\s+([.!?,])/g, '$1'));
+      .map(t => t.replace(ANDERE_MAT_KLAUSEL_RE, '').replace(META_KLAUSEL_RE, ' ').replace(/\s+([.!?,])/g, '$1'));
     const neu = bleibt.join(' ').replace(ADJ_FLOSKEL_RE, '').replace(/\s{2,}/g, ' ').trim();
     return neu.length >= 25 ? `<p>${neu}</p>` : '';
   });

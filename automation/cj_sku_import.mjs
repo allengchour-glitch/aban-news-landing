@@ -15,7 +15,7 @@ import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
 import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './cj_copy_prompt.mjs';
-import { groqText } from './groq_text.mjs';
+import { textErzeugen } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
@@ -75,7 +75,10 @@ async function groq(nameEn, feats) {
   // ⚠️ 07.09.2026: Dieser Importer legt IMMER eine Standard-Variante an (Zeile ~212) —
   // ein Auswahl-Versprechen im Text ist hier also nie gedeckt. wahlSicher() schneidet
   // solche Saetze deterministisch heraus; ein Modell kann die Prompt-Regel ignorieren.
-  return wahlSicher(textPolieren(wirkSicher(messSicher(await groqText(copyPrompt({ nameEn, feats, kat: '' }))))));
+  const o = await textErzeugen(copyPrompt({ nameEn, feats, kat: '' }));   // Groq → DeepSeek → Gemini, EINE Kette (14.09.2026)
+  if (!o) return null;
+  if (o._modell !== 'groq') console.log('  ✍️ Text via', o._modell);
+  return wahlSicher(textPolieren(wirkSicher(messSicher(o))));
 }
 async function attachVideo(t, pid, url, tag) {
   try {

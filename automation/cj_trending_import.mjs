@@ -12,7 +12,7 @@ import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './cj_copy_prompt.mjs';
-import { groqText } from './groq_text.mjs';
+import { textErzeugen } from './groq_text.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -197,42 +197,15 @@ const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radi
 
 async function gemini(nameEn,feats,kat){
  const prompt=copyPrompt({nameEn,feats,kat});   // EINE Quelle: automation/cj_copy_prompt.mjs (02.09.2026)
- // KOSTEN-REGEL (User 2026-07-06): Groq (gratis) ist PRIMÄR — Gemini (bezahlt) nur noch Fallback,
- // Massen-Importe haben sonst CHF 46/Woche Gemini-Guthaben verbrannt.
- const g0=await groq(prompt); if(g0&&g0.title&&g0.html)return textPolieren(wirkSicher(messSicher(g0)));
- for(let i=0;i<3;i++){const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GK}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.5,maxOutputTokens:1500,thinkingConfig:{thinkingBudget:0},responseMimeType:'application/json'}})});
-  const j=await r.json(); if(j.error){if(j.error.code===429){await sleep(15000);continue;}break;}
-  try{const t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';const o=JSON.parse(t);if(o.title&&o.html)return textPolieren(wirkSicher(messSicher(o)));}catch{}
- }
- return null;
+ // KOSTEN-REGEL (User 2026-07-06): Groq (gratis) ist PRIMÄR — Gemini (bezahlt) nur Fallback.
+ // Die Kette Groq → DeepSeek → Gemini liegt seit 14.09.2026 EINMAL in groq_text.mjs (textErzeugen)
+ // und meldet, wenn nicht Groq schreibt — neun Tage stummes Gemini waren der Anlass.
+ const o=await textErzeugen(prompt); if(!o) return null;
+ if(o._modell!=='groq') console.log('  ✍️ Text via',o._modell);
+ return textPolieren(wirkSicher(messSicher(o)));
 }
 
-// Fallback: Groq (OpenAI-kompatibel), falls Gemini-Quota erschöpft (2026-07-05).
-const GROQ_KEYS=[(process.env.GROQ_API_KEY||''),(process.env.GROQ_API_KEY2||'')].map(s=>s.trim()).filter(Boolean);
-// Siehe cj_category_fill.mjs: 3.3-70b wird am 16.08.2026 abgeschaltet, qwen3-32b ist schon weg.
-// Modellwahl + Parser liegen seit 02.09.2026 in automation/groq_text.mjs (EINE Quelle).
-async function groq(prompt){
- const o=await groqText(prompt); if(o) return o;
- return await deepseek(prompt);
-}
-
-// 3. Stufe: DeepSeek (OpenAI-kompatibel), falls auch Groq klemmt.
-const DS_KEY=(process.env.DEEPSEEK_API_KEY||'').trim();
-async function deepseek(prompt){
- if(!DS_KEY)return null;
- for(let i=0;i<2;i++){
-  try{
-   const r=await fetch('https://api.deepseek.com/chat/completions',{method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${DS_KEY}`},
-    body:JSON.stringify({model:'deepseek-chat',temperature:0.5,max_tokens:1200,
-     response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
-   if(r.status===429){await sleep(10000);continue;}
-   const j=await r.json(); if(j.error)return null;
-   const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;
-  }catch{}
- }
- return null;
-}
+// Groq/DeepSeek/Gemini-Kette: automation/groq_text.mjs → textErzeugen() (14.09.2026)
 
 // ── TRENDING-Modus: Top-Produkte nach listedNum (CJ "Trending/Video Products") ──
 // Mit Seiten-Cursor (dropship/_cj_all_page.txt) wird daraus der "CJ ALLES"-Sweep:
