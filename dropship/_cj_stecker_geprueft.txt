@@ -147,3 +147,28 @@
 15451915288961	kein-stecker-merkmal	2026-09-14	Mini Wireless Glättbürste mit Anionenfunktion
 15451915747713	kein-stecker-merkmal	2026-09-14	2-in-1 Haarglätter & Lockenstab mit Ionen-Technologie
 15451915977089	kein-stecker-merkmal	2026-09-14	2-in-1 Glätteisen & Lockenstab mit 3D-Muster
+15452676292993	nur-eu-version	2026-09-14	Elektrischer Wasserkocher
+15452708143489	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Starker 2000-W-Haartrockner mit 5 Stufen
+15452708176257	nur-eu-version	2026-09-14	Multifunktions-Haarklammern- und Lockenstab mit Hochleistung
+15452708209025	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Negativ-Ionen Lockenstab-Kamm mit konstanter Temperatur
+15452708241793	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Vier-in-Eins Föhn-Kamm für Haushalt
+15452708274561	unklar-eu-vorhanden:EU/US	2026-09-14	Multifunktionaler 3-in-1 Haartrockner
+15452708340097	nur-eu-version	2026-09-14	Multifunktionaler Haartrockner mit Lüfterkomponente
+15452708372865	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Tourmalin-Keramik Lockenstab 31mm
+15452708602241	kein-stecker-merkmal	2026-09-14	Automatischer Lockenstab 32mm
+15452708635009	kein-stecker-merkmal	2026-09-14	Tragbarer USB-Lockenstab
+15452709355905	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Negative Ionen Glätt- und Lockenstab 2in1
+15453417406849	cj-1602002	2026-09-14	Haarschneider
+15453728637313	keine-cj-sku	2026-09-14	Schnellladegerät fürs Auto
+15453761012097	mehrere-varianten	2026-09-14	Multi-Funktions-Nähmaschine Elektrisch Automatisch mit Erwei
+15453778248065	kein-stecker-merkmal	2026-09-14	Memory Foam Heizkissen
+15453778575745	kein-stecker-merkmal	2026-09-14	Tragbarer kleiner Dampfglätter Weiss
+15453778805121	kein-stecker-merkmal	2026-09-14	Mini-Wasserkocher Edelstahl
+15453781229953	kein-stecker-merkmal	2026-09-14	Graphen-Heizdecke mit konstanter Temperatur
+15453784605057	kein-stecker-merkmal	2026-09-14	Kleinblech Fritteuse mit Sieb
+15453806100865	kein-stecker-merkmal	2026-09-14	Reflektierende LED-Weste mit USB-Ladegerät
+15453920625025	kein-stecker-merkmal	2026-09-14	Notfall-Ladegerät mit Radio und USB
+15454014898561	kein-stecker-merkmal	2026-09-14	21700-Lithium-Akku-Ladegerät
+15454036328833	unklar-eu-vorhanden:EU/JP/UK/US	2026-09-14	PTC Heizlüfter mit Fernbedienung 2000 W bis 20 m²
+15454036459905	unklar-eu-vorhanden:EU/JP/UK/US	2026-09-14	Kleiner Heizlüfter für den Schreibtisch
+15454038032769	kein-stecker-merkmal	2026-09-14	Kabelloser Handstaubsauger mit grosser Saugkraft
