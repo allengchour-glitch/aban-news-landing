@@ -1,3 +1,40 @@
+## 🔌 «fix alles weiter und verbessere dann» (14.09., 03:15–04:00 UTC): Text-Hash-Falle, frische Hype-Runde — und ein Netzgerät ohne Schweizer Stecker
+
+Container um 03:12 neu gestartet (Aufseher tot, per Keepalive wieder da; der Boden-15-Signaturlauf
+war mitgestorben und läuft per setsid weiter, Midikleid steht jetzt auf 13.99–14.31 statt 20.37).
+- **Falle umgebaut (Task #74):** `produktdetails_nachmessen.py` hält je Produkt den **sha1 von
+  `descriptionHtml`** in `dropship/_pd_texthash.txt`. Ändert sich der Hash zwischen zwei Messungen
+  UND ist der Block doppelt, nennt sie die Ledger, die in genau diesem Fenster eine Quittung für
+  diese ID bekommen haben (`git log -p` über `dropship/` — der Auto-Committer stempelt im
+  90-s-Takt) und die /tmp-Logs, die die ID nennen. In beide Richtungen belegt: das 10.09.-Fenster
+  nennt `_produktdetails_wahrheit`, ein leeres Fenster nichts. Baseline: 593 Produkte, 0 doppelt.
+  ⚠️ Dabei geklärt: die «11 Quittungen je Produkt» in `_produktdetails_wahrheit.txt` sind
+  `live-schon-sauber`-Zeilen aus ~180 No-op-Läufen (der Aufseher startete es alle 2 Minuten neu,
+  weil das Log jung war) — nur EINE echte Reparatur je Produkt am 10.09. 18:37/18:43. Die
+  Ausschlussliste vom 13.09. bleibt; **der Schreiber der 443 neuen Doppelblöcke ist weiter
+  unbenannt** — die Falle misst ab jetzt täglich.
+- **Hype-Reihe mit frischem Export (Task #75):** `hype_export_bauen.py` existierte, stand aber in
+  keiner Startliste — jetzt vor dem täglichen NUR_RAEUMEN-Lauf. Vollauf: 14 aufgenommen, dann der
+  Kontaktbogen — **8 wieder raus** (Ledger `dropship/_hype_ausschuss.txt`): 5 mit ausschliesslich
+  englischen Infografik-Bildern (Katzenspielzeug, Boxen-Set, Halsventilator, Fusselbürste, M8-Mikro
+  — der M8 stand seit 30.08. drin), Boya-Fremdmarke, ein Massage**öl** (topische Kosmetik — das
+  Muster kannte Creme/Serum/Lotion, aber nicht Spray/Öl/Tuchmaske; ergänzt, LED-Maske bleibt frei).
+  Powerbank und Projektor bekamen ihr reines Produktfoto nach vorn. **Von 14 Zahlen-Kandidaten
+  waren 6 nach dem Hinsehen tauglich** — die Kontaktbogen-Pflicht vom 15.08. ist keine Formalie.
+- ⛔ **Und der teuerste Fund war die Dampfglättbürste:** im Shop EINE Variante «Default Title», bei
+  CJ drei Versionen **CN / US / UK — keine EU-Version**. Ein Netzgerät, das in keine Schweizer
+  Steckdose passt, stand in der Hype-Reihe. DRAFT + `stecker-unpassend-ch`. Das ist die
+  #1018-Klasse (Ladegerät, vier Stecker, eine Variante), nur ohne den EU-Ausweg. Gemessen:
+  **932 aktive CJ-Netzgeräte mit einer Variante** → `automation/cj_stecker_pruefen.py` (täglich
+  CAP 150, 10 CJ-Punkte je Produkt): kein EU → DRAFT; nur EU → ok; EU vorhanden, unsere SKU ist
+  aber die Produkt-SKU → `dropship/STECKER-UNKLAR.md`, nichts geraten. DRY 25: 3 unklar
+  (10-Port-Ladegerät AU/EU/UK/US, Schnellladegerät EU/KR/US), 0 Draft.
+  **Regel: Bei einem Netzgerät mit EINER Variante ist die Steckerfrage die erste, nicht die Bildfrage.**
+- Nebenbei: `versand_jenachland` LISTE-Modus, THROTTLED-Aussitzen in `produktdetails_vereinen`
+  und die Signatur-Korrektur laufen seit gestern; #1017/#1018 unverändert En Route (12.09.);
+  keine neue Bestellung; #1004 wartet weiter auf den Betreiber-Klick; `SHOPIFY_CLIENT_ID` nach
+  dem 03:12-Neustart erneut LEER.
+
 ## 🕵️ «lerne weiter und fix alles» (13.09., 21:10–22:40 UTC): Boden-15 ohne Quittung, Index-blinde USA-Blöcke, 593 Doppelblöcke — und eine Falle, die die falsche Uhr las
 
 Betreiber: «lerne weiter und fix alles». Container um ~21:00 neu gestartet (Aufseher tot, per Keepalive
