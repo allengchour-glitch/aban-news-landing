@@ -32,3 +32,8 @@ article	1001547104641	vatertag-geschenke-schweiz-2026	edelstahl-uhr-herren-klass
 article	1001547137409	weihnachtsgeschenke-2026-schweiz-ideen	jade-roller-gua-sha-premium-set-doppelkopf -> jade-roller-premium-doppelseitig
 article	1001547137409	weihnachtsgeschenke-2026-schweiz-ideen	edelstahl-uhr-herren-klassisch -> herren-quarzuhr-mit-kalender-und-edelstahlarmb-626700
 article	1001547170177	wellness-geschenke-selfcare-ideen	jade-roller-gua-sha-premium-set-doppelkopf -> jade-roller-premium-doppelseitig
+page	697996738945	polarisierte-sonnenbrillen-vorteile	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+page	697996837249	reise-essentials-sommerferien-2026	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+page	697998541185	wanderziele-schweiz-2026	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+page	697998606721	maenner-style-investitionen-2026	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001442902401	baby-schlaft-nicht-7-tipps-die-wirklich-helfen	sternenhimmel-projektor-baby-nachtlicht-mit-musik -> sternenhimmel-projektor-galaxy-led-nachtlicht-527681

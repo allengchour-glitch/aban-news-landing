@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🧩 «suche apps die ich brauchen kann»: 33 installiert, 4 wirken, Inbox installiert-aber-aus, Hextom-Währungsrechner lädt auf jeder Seite für nichts → einschalten/ausschalten statt installieren (`dropship/APPS-EMPFEHLUNG-2026-09-14.md`)
 - 2026-09-14 · 🛒 «verbessere katalog»: 70 % des Verkehrs landet auf Produktseiten, 38 % davon auf Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus: Wächter erreichte sein Ende nie, Rotation eingebaut); 143 Platzhalter, 1'050 SEO-Descs; Produktzahl-Wächter der PC-Session schaltete Keepalive alle 3 h ab → Prompt geändert
 - 2026-09-14 · 🧭 «schau in youtube für verbesserung webseite optisch und seo»: 2× Warenkorb-h2 vor der H1 (Produkt/Kollektion) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach den Bestsellern; damen-mode 174→138
 - 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
@@ -393,6 +394,19 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🧩 «suche apps die ich brauchen kann» — 33 installiert, 4 wirken, 1 schadet, 1 fehlt eingeschaltet (2026-09-14, 20:30 UTC)
+
+Erst der Bestand: `appInstallations` (33 Apps) gegen das Storefront-HTML (welche laden wirklich?). Auf der Seite wirken
+Judge.me, Clarity, UpPromote — und der **Hextom Currency Converter**, der auf jeder Seite `multicurrencyconverter.js`
+lädt, obwohl der Shop genau EINEN Markt hat (CH/CHF). **«Messaging»/Shopify Inbox ist installiert, aber der Chat-Embed
+ist aus** — der Cowork-Punkt «Inbox installieren» war falsch gestellt; der Klick heisst «App-Embeds → Online store chat».
+Legacy-ScriptTags fremder Apps zeigt `scriptTags` nicht (nur eigene) — die Wahrheit steht im HTML (`urls`-Array des
+Shopify-Script-Loaders). Feature-Matrix (`shop_vergleich.mjs`): Sticky-Kaufknopf, Cross-Sell, Accordion, Zahlungslogos,
+Bewertungen sind da; es fehlen Chat, Produkt-FAQ, Video — davon braucht nur der Chat eine App, und die ist schon drin.
+App-Listen im Netz (delightchat, yotpo, cartylabs) sind Werbung für Lücken, die hier nicht gemessen sind → keine neue
+App. Bericht `dropship/APPS-EMPFEHLUNG-2026-09-14.md`, Cowork-Punkte 7 (Chat einschalten) und 8 (Hextom/SEOWILL raus).
+**Regel: Vor jeder App-Suche den Bestand messen — Einschalten und Ausschalten schlägt Installieren.**
 
 ## 🛒 «verbessere katalog» — der Katalog wird über Produktseiten betreten, und 38 % davon waren 404 (2026-09-14, 18:20–20:30 UTC)
 

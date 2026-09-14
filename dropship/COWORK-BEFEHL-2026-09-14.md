@@ -41,5 +41,15 @@ Erfinde keine Werte, bezahle nichts, lösche nichts, deinstalliere keine App.
    Begründung «BigBuy-Pack gekündigt, läuft 15.09. aus». Stimmt das? Wenn NEIN → Routine trig_01Fks8G3zVunFbfaGjWtep6f
    im Routinen-Menü deaktivieren. Wenn JA → nichts tun; Rückgängig wäre Tag bigbuy-ende-0926 → wieder ACTIVE.
 
-Am Ende: sechs Zeilen Bericht, in derselben Reihenfolge.
+7. SHOPIFY-CHAT EINSCHALTEN (ersetzt Punkt 3, die App «Shopify Inbox/Messaging» ist schon installiert — gemessen 14.09.):
+   Onlineshop → Themes → Anpassen (veröffentlichtes Theme) → linke Leiste, drittes Symbol «App-Embeds» → «Online store chat»
+   einschalten → Speichern. Dann Apps → Inbox → Einstellungen → Begrüssung: «Hoi! Fragen zu Versand, Grösse oder Rückgabe?
+   Wir antworten innert 24 h.» Benachrichtigung an info@luxestyle.ch. Melden: ist der Chat-Knopf auf luxestyle.ch sichtbar?
+
+8. BALLAST-APP ENTFERNEN: Einstellungen → Apps und Vertriebskanäle → «Hextom: Currency Converter» deinstallieren (der Shop
+   verkauft nur in CHF; die App lädt auf jeder Seite ein Skript). Ebenso «SEOWILL – Sticky Cart» (Embed ist aus, das Theme
+   hat den Knopf selbst). NICHTS anderes deinstallieren — insbesondere nicht autopilot2, Judge.me, Printful, CJdropshipping,
+   Klaviyo, Clarity, Search & Discovery, Flow, Forms, Swiss Post Labels, UpPromote.
+
+Am Ende: acht Zeilen Bericht, in derselben Reihenfolge.
 ```
