@@ -882,6 +882,20 @@ while true; do
       echo "$(date -u +%H:%M) cj_versand_ch_revive gestartet"
     fi
   fi
+  # ── Netzstecker-Wache (14.09.2026): Netzgeraete mit EINER Shop-Variante gegen CJs
+  # Stecker-Versionen halten. Die Dampfglaettbuerste stand in der Hype-Reihe, CJ fuehrt sie nur
+  # als CN/US/UK — kein EU-Stecker (die #1018-Klasse). Kein EU -> DRAFT stecker-unpassend-ch;
+  # EU vorhanden, aber unsere SKU ist nicht die EU-SKU -> NUR melden (STECKER-UNKLAR.md).
+  # 10 CJ-Punkte je Produkt, deshalb CAP 150 je Tag; laeuft mit 1 req/s.
+  CST=/tmp/cj_stecker_pruefen.log
+  if [ -f "$REPO/automation/cj_stecker_pruefen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$CST" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 43200 ] && ! grep -q "^FERTIG" "$CST" 2>/dev/null; then
+      ( cd "$REPO" && setsid flock -n /tmp/lock_cj_stecker.lock \
+          env CAP=150 python3 automation/cj_stecker_pruefen.py >> "$CST" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) cj_stecker_pruefen gestartet"
+    fi
+  fi
   # ── Zombie-Wache: WER schreibt einen reparierten Text zurueck? (04.09.2026) ────────────
   # 987 USA-Lieferzusagen lebten wieder, 978 davon standen als repariert im Ledger. Kein
   # Werkzeug BAUT den Block neu — jemand schreibt einen ALTEN descriptionHtml zurueck. Die
