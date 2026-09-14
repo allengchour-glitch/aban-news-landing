@@ -27564,3 +27564,15 @@ gid://shopify/Product/15506286674305	CHF 9.00	1 Varianten	2-in-1 Feuchtigkeitsbe
 gid://shopify/Product/15506286739841	CHF 44.71	3 Varianten	Elegantes Damen-Sommerkleid im französischen Stil
 gid://shopify/Product/15506286903681	CHF 56.33	1 Varianten	Hunde- & Katzennapf „Rice Cream Cake“
 gid://shopify/Product/15506286936449	CHF 13.26	30 Varianten	Elegantes ärmelloses Midikleid mit definierter Tai
+gid://shopify/Product/15506287198593	CHF 12.15	9 Varianten	Damen Kleid mit Rundhals und Print
+gid://shopify/Product/15506287395201	CHF 14.58	15 Varianten	Ärmelloses Maxi-Sommerkleid im A-Linien-Schnitt
+gid://shopify/Product/15506287460737	CHF 11.45	1 Varianten	Keramik Futternapf für Katzen – Halswirbelsäule Sc
+gid://shopify/Product/15506287493505	CHF 19.21	1 Varianten	Lithium-Batterieladegerät
+gid://shopify/Product/15506287624577	CHF 34.27	1 Varianten	Beheizbarer Futternapf mit Temperaturkontrolle
+gid://shopify/Product/15506287722881	CHF 20.56	24 Varianten	Elegantes Maxi-Slip-Kleid mit Blumenmuster
+gid://shopify/Product/15506287853953	CHF 17.58	1 Varianten	Doppel-Futternapf aus Edelstahl mit Strass
+gid://shopify/Product/15506288050561	CHF 14.58	4 Varianten	Figurbetontes Print-Kleid mit V-Ausschnitt
+gid://shopify/Product/15506288083329	CHF 44.35	1 Varianten	Verstellbarer Futterbar für Hunde und Katzen
+gid://shopify/Product/15506288214401	CHF 13.99	30 Varianten	Off-Shoulder Spitzenkleid mit Gürtel
+gid://shopify/Product/15506288411009	CHF 17.83	25 Varianten	Elegantes schulterfreies Satin-Bodycon-Kleid
+gid://shopify/Product/15506288476545	CHF 10.44	1 Varianten	Verstellbares Armband aus massivem Rotkupfer
