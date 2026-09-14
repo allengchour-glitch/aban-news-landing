@@ -121,7 +121,11 @@ def ki_textstufe():
             break
     if not key:
         return "Groq-Schlüssel fehlt → Produkttexte laufen über Gemini (bezahlt)"
-    req = urllib.request.Request("https://api.groq.com/openai/v1/models", headers={"Authorization": "Bearer " + key})
+    # 14.09.2026 16:40: Groq/Cloudflare sperrt den Standard-User-Agent «Python-urllib» mit 403 — der GUELTIGE
+    # 56-Zeichen-Schluessel bekam mit curl 200, mit urllib 403. Ohne eigenen User-Agent misst diese Zeile den
+    # Absender, nicht den Schluessel (Fehlalarm «ungueltig» nach dem Tausch).
+    req = urllib.request.Request("https://api.groq.com/openai/v1/models",
+                                 headers={"Authorization": "Bearer " + key, "User-Agent": "luxestyle-ampel/1.0 (curl-kompatibel)"})
     try:
         urllib.request.urlopen(req, timeout=20).read()
         return None

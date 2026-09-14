@@ -20,7 +20,7 @@ def main():
         tok = open("/tmp/cj_shop_token.txt").read().strip()
     except Exception as e:
         print(f"BESTELLUNGEN: unklar (kein Shop-Token: {e})"); return
-    q = ('{orders(first:20,query:"financial_status:paid AND fulfillment_status:unfulfilled",'
+    q = ('{orders(first:20,query:"financial_status:paid AND fulfillment_status:unfulfilled AND status:open",'
          'sortKey:CREATED_AT,reverse:true){nodes{name createdAt '
          'totalPriceSet{shopMoney{amount}} '
          'refunds(first:3){id totalRefundedSet{shopMoney{amount}}} '

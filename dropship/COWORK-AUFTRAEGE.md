@@ -1,11 +1,17 @@
-## 🧾 NEU 14.09. 10:00 — Ein Klick fürs Impressum: die UID (CHE-Nummer) eintragen
+## 🚚 NEU 14.09. 17:00 — Versandschwelle: live gilt CHF 45, der Shop verspricht 50 (ein Klick, Cowork-Befehl Punkt 1)
+Gemessen am Versandprofil: «Kostenloser Versand ab CHF 45» AKTIV, «ab CHF 50» INAKTIV, an «Standard CHF 7» hängt noch
+«gratis ab CHF 65». Dein Entscheid vom 06.09. war CHF 50. Die API-Änderung wurde hier blockiert → Klick in
+Einstellungen → Versand → Allgemeines Profil → Domestic (siehe `dropship/COWORK-BEFEHL-2026-09-14.md`, Punkt 1).
+⚠️ Die Zeile «Standard CHF 7» selbst muss bleiben, nur ihre 65er-Bedingung weg.
+
+## ✅ ERLEDIGT 14.09. 16:45 — UID: Betreiber hat keine (Einzelunternehmen ohne HR-Eintrag, keine Pflicht) — Punkt geschlossen
 Gemessen 14.09. (YouTube-Runde, Google-«Misrepresentation»-Abgleich): Adresse, Mail und Telefon stehen im Impressum,
 **die UID steht auf keiner Seite** — und die Nummer ist mir nicht bekannt (nicht im Repo, nicht im Tresor). Für eine im
 Handelsregister eingetragene Einzelfirma gehört sie in die Geschäftskorrespondenz und ins Impressum.
 **Dein Klick:** die CHE-Nummer hier antworten oder direkt in Shopify → Onlineshop → Seiten → «Impressum» unter die
 Adresse setzen (Zeile «UID: CHE-xxx.xxx.xxx»). Sag mir die Nummer, dann trage ich sie ein (Impressum + Pinterest-Steuerfeld).
 
-## 🤖 NEU 14.09. 08:05 — Ein Klick, der die Produkttexte wieder KOSTENLOS macht (Groq-Schlüssel)
+## ✅ ERLEDIGT 14.09. 16:30 — Groq-Schlüssel im Chat gegeben, getestet (200), gespeichert (dienste.env + Tresor)
 
 Du wolltest «alles kostenlos» und «verbessere dein KI für Shopify». Gemessen: Der Groq-Schlüssel,
 der am 05.09. eingefügt wurde, hat **55 Zeichen statt 56** (ein Zeichen fehlt) — Groq antwortet
