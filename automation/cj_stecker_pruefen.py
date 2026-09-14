@@ -161,6 +161,15 @@ def main():
             time.sleep(1.1)   # 1 req/s ueber ALLE Prozesse
             if d is None:
                 nicht_erreicht += 1; continue
+            if d.get("code") == 1602002:
+                # «Product has been removed from shelves» — bei CJ AUSGELISTET, bei uns aktiv: die
+                # #1008-Klasse (bezahlt, nie lieferbar). Nebenbefund des ersten Laufs (14.09.: 2 von 50).
+                print(f"  ⛔ {pid} {n['title'][:50]} — bei CJ ausgelistet (1602002) → DRAFT cj-abgekuendigt")
+                if not DRY:
+                    sgql("mutation($id:ID!){productUpdate(input:{id:$id,status:DRAFT}){userErrors{message}}}", {"id": n["id"]})
+                    sgql("mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}", {"id": n["id"], "t": ["cj-abgekuendigt"]})
+                    fh.write(f"{pid}\tdraft-cj-ausgelistet\t{HEUTE}\t{n['title'][:60]}\n")
+                continue
             if d.get("code") != 200:
                 if fh: fh.write(f"{pid}\tcj-{d.get('code')}\t{HEUTE}\t{n['title'][:60]}\n")
                 continue

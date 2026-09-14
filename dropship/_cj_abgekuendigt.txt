@@ -37,3 +37,5 @@
 15447922999681	CJ-2512210658341603000	Product has been removed from shelves, pid:2512210658341603000
 # unklar (alle SKU-Formen not found, nicht gedraftet — Form pruefen):
 # 15411554320769	CJ-CJJJTJT22925
+15447562715521	2026-09-14	1602002 removed from shelves (cj_stecker_pruefen)	AC Wandladegerät für Stirnlampen und Taschenlampen
+15447628874113	2026-09-14	1602002 removed from shelves (cj_stecker_pruefen)	Glätteisen & Lockenstab 3-in-1 Keramik
