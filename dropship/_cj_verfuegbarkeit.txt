@@ -38036,3 +38036,5 @@ gid://shopify/Product/15496427667841	ok
 gid://shopify/Product/15496427635073	ok
 gid://shopify/Product/15496427569537	ok
 gid://shopify/Product/15496427504001	ok
+gid://shopify/Product/15496427471233	ok
+gid://shopify/Product/15496427438465	ok
