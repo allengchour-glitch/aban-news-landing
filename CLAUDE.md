@@ -1,3 +1,44 @@
+## 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallback — und 99 % der Texte begannen gleich
+
+Betreiber: «verbessere dein ki für shopyfi». Erst gemessen, was die Textstufe der Importer
+HEUTE liefert (300 Importe vom 13./14.09., am Objekt gelesen, nicht gezählt):
+| Klasse | Anteil |
+|---|---:|
+| Text beginnt mit «Dieser/Diese/Dieses …» | **99 %** |
+| «Im Lieferumfang ist ein Schal enthalten» (CJ «Packing list: 1 x scarf» als Satz) | 23 % |
+| SEO-Snippet endet mit «Gewicht: ca. 237 g.» | 19 % |
+| Floskel trotz Nachbesserung («vielseitiges Accessoire», «sorgt für») | 14 % |
+| CJ-Metadaten als Prosa («ist für Erwachsene konzipiert», «dient der Wärmefunktion») | 12 % |
+| Faktenblock mit englischem Masswert («Regular style (50cm < length ≤ 65cm)», «US Size 5») | 9 % |
+| Stichpunkt wiederholt den Fliesstext | 95 % |
+- **Repariert an der Quelle, deterministisch statt als Bitte** (Lehre 04.09., dreifach belegt):
+  `textPolieren()` in `cj_copy_prompt.mjs` (alle drei Importer, auch im Gemini-Zweig) schneidet
+  satzweise Einzel-Lieferumfang und Metadaten-Sätze und streicht attributive Floskel-Adjektive
+  («ein vielseitiges Accessoire» → «ein Accessoire»); Sicherung ≥120 Zeichen. Prompt: Satz 1
+  nicht mit «Dies…», Stichpunkte nur mit Fakten, die nicht schon im Text stehen. `groq_text.mjs`
+  bessert jetzt auch bei Dies-Anfang einmal nach. `cj_snippet.merkmal()` überspringt Gewicht/
+  Verpackungsmasse/Zustand, kennt 20 Materialwörter mehr und nimmt sonst den ZWEITEN Satz.
+  `cj_specs.nurMass()` lässt nur Zahl+Einheit in Masszeilen. `automation/textpolitur_test.mjs`:
+  21 Fälle in beide Richtungen, 0 Abweichungen; `wahlsicher_test` weiter 10/0.
+- ⛔ **Der teuerste Fund war kein Textfehler: der Groq-Schlüssel ist seit dem 05.09. ungültig**
+  (55 statt 56 Zeichen, Task #41) — in den Umgebungen der LAUFENDEN Importer gemessen
+  (`/proc/<pid>/environ`), nicht im Gedächtnis. Groq 401/403, DeepSeek 402 (kein Guthaben),
+  Gemini 200: **alle ~2'053 Produkttexte seit dem 05.09. schrieb das BEZAHLTE Gemini-Fallback**,
+  und die Nachbesserungs-Schicht in `groq_text.mjs` (Floskel-Re-Ask) war die ganze Zeit tot.
+  Der Runner meldet nur «✅» — welches Modell schrieb, stand nirgends. **Ein Fallback, der
+  stumm übernimmt, verwandelt einen Ausfall in eine Rechnung.** Jetzt: `betreiber_ampel.py`
+  prüft den Schlüssel stündlich am Gratis-Endpunkt `/v1/models` (beweist genau die Gültigkeit,
+  Lehre 08.09.) und meldet «Groq-Schlüssel ungültig → Produkttexte laufen über Gemini (bezahlt)».
+  Beheben kann es nur der Betreiber (neuer Schlüssel, COWORK-AUFTRAEGE zuoberst); der Tresor
+  trägt denselben 55-Zeichen-Wert, ein älterer ist nirgends.
+- ⚠️ Mein Live-Probelauf der neuen Kette meldete dreimal «KEIN TEXT» — ich hätte das fast als
+  Fehler in `textPolieren` gelesen. Es war der ungültige Schlüssel. **Wer eine Textstufe
+  prüft, prüft zuerst, welches Modell überhaupt antwortet.**
+- ✅ Am Erzeugnis belegt: erstes Produkt des neuen Codes (cjbaby, 08:03) beginnt «Für warme
+  Tage im Freien …», SEO-Snippet trägt den zweiten Satz statt «Gewicht:». Die parallel laufende
+  alte Node-Instanz (Start 07:53) schrieb bis zu ihrem Ende noch die alte Form — ein Modul-Fix
+  gilt erst ab dem nächsten Prozessstart (Lehre 28.08.).
+
 ## 🧭 «mal füllen, dann polieren» + «nicht immer das gleiche suchen» (14.09., 07:30–08:00 UTC): der Grind zog 159 von 578 CJ-Kategorien — und eine davon 45× ins Leere
 
 Betreiber-Antwort auf die Katalog-Frage: **nicht verkleinern, erst füllen, dann polieren; alles

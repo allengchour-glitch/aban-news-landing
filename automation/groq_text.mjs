@@ -11,7 +11,7 @@
 // erfindet aber Details («Aktivkohle, Keramik»). Deshalb 20b zuerst, compound-mini nur Auffangnetz.
 // Der Parser nimmt das JSON zwischen erster «{» und letzter «}» — Fences oder Vorspann sind egal.
 
-import { floskelZaehler, VERBOTEN } from './cj_copy_prompt.mjs';
+import { floskelZaehler, VERBOTEN, beginntMitDies } from './cj_copy_prompt.mjs';
 const KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || '')].map(s => s.trim()).filter(Boolean);
 
 export const GROQ_MODELLE = [
@@ -39,9 +39,12 @@ export async function groqText(prompt, { temperature = 0.5, nachbesserung = fals
       if (o && o.title && o.html) {
         // 03.09.: Stichprobe 8 Neuimporte → 2 mit «sorgt für»/«hochwertig». Einmal nachbessern
         // (~700 ms), dann nehmen, was kommt — ein Floskelsatz ist kein Grund, das Produkt zu verwerfen.
-        if (!nachbesserung && floskelZaehler(o.html) >= 1) {
-          const o2 = await groqText(prompt + `\n\nACHTUNG: Der vorige Entwurf enthielt verbotene Wendungen. Schreibe den Text neu OHNE: ${VERBOTEN.join(', ')}. Gleiche Fakten, gleiche Form.`, { temperature, nachbesserung: true });
-          if (o2 && floskelZaehler(o2.html) < floskelZaehler(o.html)) return o2;
+        // 14.09.: auch der Einheitsanfang «Dieser/Diese/Dieses …» (99 % der Importe) ist ein
+        // Grund fuer EINE Nachbesserung — genommen wird sie nur, wenn sie besser ist.
+        const mangel = (x) => floskelZaehler(x.html) + (beginntMitDies(x.html) ? 1 : 0);
+        if (!nachbesserung && mangel(o) >= 1) {
+          const o2 = await groqText(prompt + `\n\nACHTUNG: Der vorige Entwurf begann mit «Dieser/Diese/Dieses» oder enthielt verbotene Wendungen. Schreibe den Text neu: Satz 1 beginnt mit Anlass, Nutzen oder Material, OHNE: ${VERBOTEN.join(', ')}. Gleiche Fakten, gleiche Form.`, { temperature, nachbesserung: true });
+          if (o2 && mangel(o2) < mangel(o)) return o2;
         }
         return o;
       }

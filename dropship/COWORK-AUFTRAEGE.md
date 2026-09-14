@@ -1,3 +1,15 @@
+## 🤖 NEU 14.09. 08:05 — Ein Klick, der die Produkttexte wieder KOSTENLOS macht (Groq-Schlüssel)
+
+Du wolltest «alles kostenlos» und «verbessere dein KI für Shopify». Gemessen: Der Groq-Schlüssel,
+der am 05.09. eingefügt wurde, hat **55 Zeichen statt 56** (ein Zeichen fehlt) — Groq antwortet
+seither 401/403, DeepSeek hat kein Guthaben (402), und deshalb hat **das bezahlte Gemini alle
+rund 2'050 Produkttexte seit dem 05.09. geschrieben**, ohne dass es irgendwo stand.
+
+**Der Klick:** console.groq.com → API Keys → neuen Schlüssel erzeugen → hier im Chat einfügen
+(ich teste ihn ZUERST am echten Text-Endpunkt und speichere ihn DANN — Lehre 05.09.).
+Bis dahin laufen die Texte weiter über Gemini; die Ampel meldet den Zustand jede Stunde
+(«Groq-Schlüssel ungültig → Produkttexte laufen über Gemini (bezahlt)»).
+
 ## 🔑 NEU 08.09. 22:12 — Ein Klick, der den Betrieb gegen den nächsten /tmp-Wipe absichert
 
 Du hattest gemeldet, `SHOPIFY_CLIENT_ID` und `SHOPIFY_CLIENT_SECRET` seien in den

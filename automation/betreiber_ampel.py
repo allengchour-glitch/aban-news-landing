@@ -100,6 +100,39 @@ def tiktok_queue_alt():
     return f"TikTok-Queue {tage} Tage alt" if tage >= 3 else None
 
 
+def ki_textstufe():
+    """14.09.2026: Die Importer trugen seit dem 05.09. einen UNGUELTIGEN Groq-Schluessel (55 statt
+    56 Zeichen, Task #41) — Groq 401, DeepSeek 402, und ALLE ~2'050 Produkttexte seither schrieb
+    das bezahlte Gemini-Fallback, ohne dass es irgendwo stand (der Runner meldet nur «✅»).
+    Der Betreiber will alles kostenlos; die Nachbesserungs-Schicht in groq_text.mjs war damit
+    ebenfalls tot. Gemessen wird der Schluessel am GRATIS-Endpunkt /v1/models — er beweist nur
+    die Gueltigkeit (Lehre 08.09.), und genau die ist hier die Frage. Netzfehler ist kein Befund."""
+    key = ""
+    for pfad in ("/tmp/dienste.env", "/tmp/groq_key"):
+        try:
+            for z in open(pfad, encoding="utf-8", errors="ignore"):
+                m = re.match(r"\s*(?:export\s+)?GROQ_API_KEY=([\"']?)(.*?)\1\s*$", z)
+                if m and m.group(2).strip():
+                    key = m.group(2).strip()
+                    break
+        except OSError:
+            continue
+        if key:
+            break
+    if not key:
+        return "Groq-Schlüssel fehlt → Produkttexte laufen über Gemini (bezahlt)"
+    req = urllib.request.Request("https://api.groq.com/openai/v1/models", headers={"Authorization": "Bearer " + key})
+    try:
+        urllib.request.urlopen(req, timeout=20).read()
+        return None
+    except urllib.error.HTTPError as e:
+        if e.code in (401, 403):
+            return f"Groq-Schlüssel ungültig ({len(key)} Zeichen, HTTP {e.code}) → Produkttexte laufen über Gemini (bezahlt)"
+        return None
+    except Exception:
+        return None
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -116,7 +149,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (datei_speicher_voll(), video_deckel(), tiktok_queue_alt()) if t]
+    teile = [t for t in (datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

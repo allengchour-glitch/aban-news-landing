@@ -1,0 +1,26 @@
+// textpolitur_test.mjs — Testfaelle in BEIDE Richtungen fuer textPolieren(), nurMass() und snippet() (14.09.2026).
+import { textPolieren, beginntMitDies } from './cj_copy_prompt.mjs';
+import { nurMass, extractSpecs } from './cj_specs.mjs';
+import { snippet } from './cj_snippet.mjs';
+let fehler = 0; const ok = (c, m) => { if (!c) { fehler++; console.log('  ✗', m); } else console.log('  ✓', m); };
+console.log('textPolieren:');
+const t1 = textPolieren({ html: '<p>Dieser Schal aus Modal-Rayon ist ein vielseitiges Accessoire, das du als Halstuch tragen kannst. Er ist speziell für Frauen konzipiert und dient der Wärmefunktion. Das Material ist Modal-Rayon, bedruckt mit Aquarellmustern. Im Lieferumfang ist ein Schal enthalten.</p><h3>Das zeichnet es aus</h3><ul><li>Aus Modal-Rayon gefertigt</li><li>Im Lieferumfang: 1 x Schal</li><li>Hochwertige Quasten</li></ul>' }).html;
+ok(!/vielseitig/.test(t1) && /ein Accessoire, das du/.test(t1), 'Floskel-Adjektiv faellt, Satz bleibt');
+ok(!/konzipiert|Wärmefunktion/.test(t1), 'CJ-Metadaten-Satz faellt');
+ok(!/Lieferumfang/.test(t1), 'Einzel-Lieferumfang faellt (Satz + Listenpunkt)');
+ok(/Modal-Rayon, bedruckt/.test(t1) && /Quasten/.test(t1), 'echte Fakten bleiben');
+const t2 = textPolieren({ html: '<p>Zum Set gehören vier Boxen. Im Lieferumfang sind zwei Bürsten und ein Ladekabel enthalten. Die Bürste ist für Kinder und Erwachsene geeignet, weil der Kopf klein ist. Sie ist wasserdicht nach IPX7.</p>' }).html;
+ok(/zwei Bürsten und ein Ladekabel/.test(t2), 'Mehrteiliger Lieferumfang bleibt');
+ok(/für Kinder und Erwachsene geeignet, weil/.test(t2), 'Satz mit zweiter Aussage bleibt');
+const t3 = { html: '<p>Kurz. Im Lieferumfang ist ein Schal enthalten.</p>' }; ok(textPolieren(t3).html === t3.html, 'zu kurz → unangetastet (Sicherung)');
+ok(beginntMitDies('<p>Dieses Kissen …</p>') && !beginntMitDies('<p>An kühlen Tagen …</p>'), 'beginntMitDies in beide Richtungen');
+console.log('nurMass:');
+for (const [v, e] of [['180 × 70cm', true], ['ca. 350 g – 512 g (je nach Variante)', true], ['5 W', true], ['45 × 25/height 6cm', false], ['Regular style (50cm < length ≤ 65cm)', false], ['US Size 5, US Size 6', false], ['218g(including sleeve)', false], ['One Size (80–140 jin)', false], ['12 Zoll', true], ['2000 mAh', true]]) ok(nurMass(v) === e, `${v} → ${e}`);
+const sp = extractSpecs('Size: 20*30cm<br>Length: Regular style (50cm<length≤65cm)<br>Weight: 218g(including sleeve)');
+ok(sp.length === 1 && sp[0][0] === 'Masse', 'extractSpecs behaelt nur die reine Massangabe: ' + JSON.stringify(sp));
+console.log('snippet:');
+const s1 = snippet('<p>Wolle mit Karomuster hält dich an kühlen Tagen warm und ist nicht zu schwer. Es zeigt ein farbenfrohes Karomuster.</p><h3>Das zeichnet es aus</h3><ul><li>Aus Wolle gefertigt</li></ul><div class="ls-produktdetails"><h4>Produktdetails</h4><ul><li><strong>Gewicht:</strong> ca. 237 g</li></ul></div>', 'Dreieckstuch');
+ok(!/Gewicht/.test(s1) && /Aus Wolle gefertigt\.$/.test(s1), 'Snippet nimmt Materialpunkt statt Gewicht: ' + s1);
+const s2 = snippet('<p>Ein Umhang für festliche Anlässe, der das Outfit ergänzt und leicht ist. Er besteht aus Polyesterfaser.</p><div class="ls-produktdetails"><h4>Produktdetails</h4><ul><li><strong>Gewicht:</strong> ca. 400 g</li></ul></div>', 'Umhang');
+ok(!/Gewicht/.test(s2) && /Polyesterfaser\.$/.test(s2), 'Ohne Merkmal: zweiter Satz statt Gewicht: ' + s2);
+console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Faelle bestanden'); process.exit(fehler ? 1 : 0);

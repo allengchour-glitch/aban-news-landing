@@ -45,6 +45,15 @@ export function einheiten(v){
     .replace(/\b(pcs|pieces?)\b/gi,'Stk.').replace(/\bliters?\b/gi,'l').replace(/\bgrams?\b/gi,'g').replace(/\bkilograms?\b/gi,'kg')
     .replace(/\bmeters?\b/gi,'m').replace(/\bcentimeters?\b/gi,'cm').replace(/\bmillimeters?\b/gi,'mm').replace(/\bapprox\.?\b/gi,'ca.').replace(/\babout\b/gi,'ca.');
 }
+// Ein Masswert darf nur Zahlen, Einheiten und Trennzeichen tragen. Gemessen 14.09.2026 an 300
+// Importen: 26 Faktenblock-Zeilen trugen englische Restworte («Mid-length (65 cm < length ≤ 80 cm)»,
+// «One Size (80–140 jin)», «218g(including sleeve)») — die Ziffernpruefung allein liess sie durch.
+// Erlaubte Woerter sind Einheiten und «ca.»; jedes andere Wort ab 2 Buchstaben verwirft die Zeile.
+const MASS_WORT_OK=/^(?:cm|mm|m|km|g|kg|ml|l|w|v|a|mah|ah|wh|kwh|h|min|s|ms|zoll|stk|ca|hz|khz|db|lm|lux|mpa|bar|psi|gb|mb|tb|px|dpi|nm|µm|oz|lbs?|ft|rpm|kb|k|x|je|nach|variante|bis|und|oder)$/i;
+export function nurMass(v){
+  const woerter=String(v).replace(/[\d.,:;()\[\]×*\/–\-~≤≥<>%°"'′″+±]/g,' ').split(/\s+/).filter(w=>w.length>=2);
+  return woerter.every(w=>MASS_WORT_OK.test(w.replace(/\.$/,'')));
+}
 // Liest «Size: 20*30cm»-Zeilen aus der CJ-Beschreibung. Nur Werte mit Ziffer, max 4 Zeilen.
 export function extractSpecs(desc){
   const t=String(desc||'').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/(p|li|div|tr)>/gi,'\n').replace(/<[^>]+>/g,' ');
@@ -57,6 +66,7 @@ export function extractSpecs(desc){
     let val=m[2].trim().replace(/\s+/g,' ').replace(/\*/g,' × ').replace(/\s*x\s*/gi,' × ');
     val=einheiten(val);
     if(!/\d/.test(val)) continue;
+    if(!nurMass(val)) continue;      // 14.09.: «Regular style (50cm < length ≤ 65cm)», «US Size 5, US Size 6» — Englisch in der deutschen Tabelle
     if(/color|colour/i.test(key)) continue;
     if(/[一-鿿]/.test(val)) continue;      // chinesische Zeichen: nicht in die Tabelle
     seen.add(MAP[key]); rows.push([MAP[key], val]);

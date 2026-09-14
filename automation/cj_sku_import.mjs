@@ -14,7 +14,7 @@ import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
-import { copyPrompt, messSicher, wirkSicher, wahlSicher} from './cj_copy_prompt.mjs';
+import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './cj_copy_prompt.mjs';
 import { groqText } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
@@ -75,7 +75,7 @@ async function groq(nameEn, feats) {
   // ⚠️ 07.09.2026: Dieser Importer legt IMMER eine Standard-Variante an (Zeile ~212) —
   // ein Auswahl-Versprechen im Text ist hier also nie gedeckt. wahlSicher() schneidet
   // solche Saetze deterministisch heraus; ein Modell kann die Prompt-Regel ignorieren.
-  return wahlSicher(wirkSicher(messSicher(await groqText(copyPrompt({ nameEn, feats, kat: '' })))));
+  return wahlSicher(textPolieren(wirkSicher(messSicher(await groqText(copyPrompt({ nameEn, feats, kat: '' }))))));
 }
 async function attachVideo(t, pid, url, tag) {
   try {

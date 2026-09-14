@@ -53,6 +53,16 @@ function ersterSatz(html) {
   return '';
 }
 
+function zweiterSatz(html) {
+  for (const m of (html || '').matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
+    const t = nurText(m[1]);
+    if (t.length < 40 || BAUSTEIN.test(t)) continue;
+    const s = t.split(/(?<=[.!?])\s+/);
+    return (s[1] || '').trim();
+  }
+  return '';
+}
+
 function merkmal(html) {
   for (const m of (html || '').matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)) {
     const t = nurText(m[1]).replace(/^[\s.]+|[\s.]+$/g, '');
@@ -60,7 +70,10 @@ function merkmal(html) {
     // ⚠️ Auch die Merkmalsliste trägt Versandzeilen: «Versand: 🇨🇭 Schweiz · Lieferung
     // 10–20 Werktage» wurde einmal als «Merkmal» gewählt, weil es Ziffern enthält.
     if (BAUSTEIN.test(t) || /Schweiz/.test(t) || HEIKEL.test(t)) continue;
-    if (/\d|cm|mm|ml|liter|holz|leder|edelstahl|akku|wasserdicht|faltbar|kabellos|silikon|baumwolle/i.test(t)) return t;
+    // 14.09.2026: 19 % der Snippets endeten mit «Gewicht: ca. 237 g.» — die Faktenblock-Zeile
+    // hat Ziffern und wurde deshalb gewaehlt. Ein Gewicht ist kein Kaufargument im Suchergebnis.
+    if (/^(Gewicht|Verpackungsmasse|Zustand|Kategorie|Stromversorgung|Saison)\s*:/i.test(t)) continue;
+    if (/\d|cm|mm|ml|liter|holz|leder|edelstahl|akku|wasserdicht|faltbar|kabellos|silikon|baumwolle|wolle|kaschmir|polyester|samt|rayon|modal|viskose|leinen|seide|nylon|keramik|glas|metall|aluminium|bambus|kunststoff|\bPU\b|fleece|strick|jacquard|sterling|zirkonia|titan/i.test(t)) return t;
   }
   return '';
 }
@@ -79,7 +92,11 @@ export function snippet(html, titel) {
     return satz.slice(0, MAXLEN).replace(/\s+\S*$/, '').replace(/[\s,;–-]+$/, '') + ' …';
   }
   const m = merkmal(html);
-  return (m && satz.length + 3 + m.length <= MAXLEN) ? `${satz} ${m}.` : satz;
+  if (m && satz.length + 3 + m.length <= MAXLEN) return `${satz} ${m}.`;
+  // Kein Merkmal: der ZWEITE Satz des Produkttexts ist besser als ein einzelner erster.
+  const s2 = zweiterSatz(html);
+  if (s2 && !HEIKEL.test(s2) && satz.length + 1 + s2.length <= MAXLEN) return `${satz} ${s2}`;
+  return satz;
 }
 
 export default snippet;

@@ -19,9 +19,9 @@ export function copyPrompt({ nameEn, feats, kat }) {
 Aus dem englischen Produktnamen und den Features machst du:
 1) einen KURZEN deutschen Produkttitel (max 60 Zeichen, keine Marke erfinden, korrekte Umlaute ä/ö/ü, keine englischen Wörter)
 2) eine deutsche Beschreibung, 70–120 Wörter, in dieser Form:
-   - Satz 1: Was es ist und wofür man es konkret braucht (der Nutzen im Alltag, kein Werbeton).
-   - Satz 2–4: nur belegbare Fakten aus den Features — Masse, Material, Kapazität, Funktion, Lieferumfang. Mit Zahlen, wo die Features Zahlen nennen.
-   - Dann <h3>Das zeichnet es aus</h3> mit 3–5 kurzen Stichpunkten (je max 8 Wörter, jeder mit einem Fakt).
+   - Satz 1: Was es ist und wofür man es konkret braucht (der Nutzen im Alltag, kein Werbeton). Beginne NICHT mit «Dieser/Diese/Dieses …» — beginne mit dem Anlass, dem Nutzen oder dem Material (z. B. «An kühlen Herbsttagen …», «Für den Weg ins Büro …», «Wolle mit Karomuster …», «Hält den Nacken warm …»).
+   - Satz 2–4: nur belegbare Fakten aus den Features — Masse, Material, Kapazität, Funktion. Mit Zahlen, wo die Features Zahlen nennen. Den Lieferumfang nur nennen, wenn er MEHR als das Produkt selbst umfasst («1 x scarf» ist kein Satz wert). Keine Katalog-Metadaten als Satz: NICHT «für Erwachsene konzipiert», «dient der Wärmefunktion», «Saison: Sommer», «für Frauen bestimmt».
+   - Dann <h3>Das zeichnet es aus</h3> mit 3–5 kurzen Stichpunkten (je max 8 Wörter, jeder mit einem Fakt, der im Fliesstext NICHT schon steht).
 Regeln: Kurze Sätze. Keine Superlative. NICHTS erfinden — was nicht in den Features steht, steht nicht im Text.
 Keine Auswahl behaupten: schreibe NICHT «erhältlich in verschiedenen Farben/Grössen», «reicht von … bis …», «wähle zwischen …» — auch dann nicht, wenn die Features mehrere Grössen nennen. Welche Ausführung verkauft wird, zeigt der Shop selbst; nenne höchstens EINE Grössenangabe, wenn sie in den Features steht.
 Keine Wirkversprechen: nichts «fördert Wachstum», «heilt», «gegen Falten/Pigmentflecken» — nur, was das Produkt IST und TUT (pflegt, reinigt, schützt).
@@ -158,6 +158,43 @@ export function wahlSicher(o) {
   // Sicherung: lieber die falsche Klausel als ein leerer Text.
   const nackt = h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   if (nackt.length < 120) return o;
+  o.html = h;
+  return o;
+}
+
+// ⚠️ 14.09.2026 — TEXTPOLITUR, deterministisch. Gemessen an 300 Importen vom 13./14.09.:
+// 99 % der Texte begannen mit «Dieser/Diese/Dieses …» (Monotonie, die jede Kundin als
+// KI-Muster liest), 23 % trugen «Im Lieferumfang ist ein Schal enthalten» (CJs «Packing
+// list: 1 x scarf» als Satz), 12 % «ist für Erwachsene konzipiert» / «dient der
+// Wärmefunktion» (CJ-Metadaten als Prosa), 14 % eine verbotene Floskel trotz Nachbesserung
+// (16× «vielseitig», 14× «sorgt für»). Der Prompt bittet seit heute um alles vier; eine
+// Bitte reicht bei einem Modell nicht (Lehre 04.09.), deshalb hier der Schnitt — SATZWEISE,
+// nie mitten im Satz (Lehre 21.08.), und nur bei Saetzen, die NUR die Metadatenaussage tragen.
+const LIEFER_EINZEL_RE = /^\s*im lieferumfang (?:ist|sind)\s+(?:ein|eine|einen|1|1×|1 x)\s+[\wäöüß-]+\s+enthalten\s*[.!]?\s*$/i;
+const META_RE = /^\s*(?:er|sie|es|der \w+|die \w+|das \w+)\s+(?:ist|sind|wurde|wurden)\s+(?:speziell\s+)?(?:für\s+(?:erwachsene|frauen|damen|herren|männer|maenner|kinder|jugendliche)(?:\s+(?:und|oder)\s+(?:den\s+)?[\wäöüß ]{3,30})?\s+)?(?:konzipiert|bestimmt|gedacht|entwickelt|geeignet)\s*(?:und\s+dient\s+der\s+[\wäöüß]+funktion)?\s*[.!]?\s*$|^\s*(?:er|sie|es)\s+dient\s+der\s+[\wäöüß]+funktion\s*[.!]?\s*$|^\s*(?:die\s+)?saison\s+ist\s+[\wäöüß/ ]+\s*[.!]?\s*$/i;
+// Attributive Floskel-Adjektive fallen als WORT («ein vielseitiges Accessoire» → «ein Accessoire»);
+// der Satz bleibt grammatisch, weil ein Attribut nie Satzglied-tragend ist.
+const ADJ_FLOSKEL_RE = /\b(?:vielseitig|hochwertig|stilvoll|einzigartig|perfekt)(?:e|es|er|en|em)?\s+(?=[\wäöüß])/gi;
+export function beginntMitDies(html) {
+  const t = String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return /^Dies(?:er|e|es)\b/.test(t);
+}
+export function textPolieren(o) {
+  if (!o || !o.html) return o;
+  let h = o.html.replace(/<p>([\s\S]*?)<\/p>/gi, (m, inner) => {
+    if (/<[a-z]/i.test(inner)) return m;                       // Auszeichnung: nicht anfassen
+    const teile = inner.split(/(?<=[.!?])(?!\d)\s+/);
+    const bleibt = teile.filter(t => !LIEFER_EINZEL_RE.test(t) && !META_RE.test(t));
+    const neu = bleibt.join(' ').replace(ADJ_FLOSKEL_RE, '').replace(/\s{2,}/g, ' ').trim();
+    return neu.length >= 25 ? `<p>${neu}</p>` : '';
+  });
+  h = h.replace(/<li>([\s\S]*?)<\/li>/gi, (m, inner) => {
+    const t = inner.replace(/\s+/g, ' ').trim();
+    if (LIEFER_EINZEL_RE.test(t) || /^im lieferumfang:?\s*1\s*(?:x|×)\s*[\wäöüß-]+$/i.test(t)) return '';
+    return `<li>${t.replace(ADJ_FLOSKEL_RE, '').replace(/\s{2,}/g, ' ').trim()}</li>`;
+  });
+  const nackt = h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (nackt.length < 120) return o;                             // lieber die Floskel als ein leerer Text
   o.html = h;
   return o;
 }
