@@ -1047,3 +1047,4 @@ gid://shopify/Product/15531931730305	nicht-versendbar	Outdoor Campingwagen Faltb
 gid://shopify/Product/15531932287361	nicht-versendbar	Faltbarer Outdoor-Campingwagen
 gid://shopify/Product/15531931009409	ok	Fitness Widerstandsband für Zugtraining
 gid://shopify/Product/15531933106561	ok	Intelligentes Schnarch-Massagegerät
+gid://shopify/Product/15532141838721	ok	Edelstahl-Bratpfanne mit Antihaftbeschichtung
