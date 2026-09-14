@@ -39262,3 +39262,5 @@ gid://shopify/Product/15495733707137	ok
 gid://shopify/Product/15495733641601	ok
 gid://shopify/Product/15495733576065	ok
 gid://shopify/Product/15495733543297	ok
+gid://shopify/Product/15495733510529	ok
+gid://shopify/Product/15495733477761	ok
