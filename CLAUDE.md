@@ -36,9 +36,11 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **YouTube-Runde 14.09.** (`dropship/LERNEN-YOUTUBE-2026-09-14.md`): Merchant-Website-Anforderungen erfüllt bis auf
   **UID im Impressum** (Betreiber, Nummer nicht im Repo); Produktseite hat Reviews/Accordion/Ankündigung, keine Produkt-FAQ/UGC;
   Conversion 0,08 % vs 1,4 % QUELLE. Vor Theme-Reparaturen IMMER die Live-Datei holen — `theme_backup/` ist Vergangenheit.
-- **Shop-Vergleich 14.09.** (`dropship/VERGLEICH-SHOPS-2026-09-14.md`, `tools/shop_vergleich.mjs`): Startseite **6,92 → 3,75 MB**
-  (17 Reihen auf `layout_type: carousel` — grid+carousel_on_mobile rendert doppelt; Warenkorb-Icon als `<symbol>`). Median der
-  CH-Shops ~0,4 MB → nächster Hebel `max_products` 12→8 (nicht gemessen, darum offen). Erster Abruf nach `themeFilesUpsert` = HTTP 500.
+- **Shop-Vergleich 14.09.** (`dropship/VERGLEICH-SHOPS-2026-09-14.md`, `tools/shop_vergleich.mjs`): Startseite **6,92 → 3,1 MB**.
+  Betreiber 14.09.: «8 Produkte, ganze Webseite mit anderen Katalogen füllen» → `automation/homepage_katalog_rotation.py`
+  (täglich im Aufseher): 18 Reihen à 8 im Karussell (grid+carousel_on_mobile rendert doppelt!), 10 feste Reihen, 8 Wechsel-
+  Reihen drehen durch 25 Kataloge (Saison zuerst). Warenkorb-Icon als `<symbol>`. Erster Abruf nach `themeFilesUpsert` = HTTP 500.
+  Template-Bodies an curl nur über stdin (140 KB → «Argument list too long»).
 
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
@@ -47,9 +49,8 @@ auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorb
 die Themenliste in `automation/hype_kuratieren.py` (`THEMEN` + `QUELLE` mit Datum) aktualisieren und
 das Skript laufen lassen. Aufbau:
 - Kollektion **`hype-jetzt` «🔥 Gerade im Trend»** (Smart-Regel Tag `hype-jetzt`, in 6 Kanälen publiziert).
-- Startseite **Position 1 direkt unter dem Hero**, Sektion `pl_trends` umgewidmet: `columns:3`,
-  `max_products:6`, `mobile_columns:"1"` (String! `int` wird mit «must be a string» abgelehnt),
-  `mobile_card_size:86cqw` → wenige, dafür grosse Karten.
+- Startseite **Position 1 direkt unter dem Hero**, Sektion `pl_trends`. **Seit 14.09. (Betreiber «mach 8 produkte»):**
+  8 Karten im Karussell wie alle Reihen — `homepage_katalog_rotation.py` hält das täglich (`mobile_columns` ist ein String!).
 - **Selbstabräumend:** jedes Produkt trägt `hype-seit-JJJJ-MM-TT`; nach `HYPE_TAGE` (21) nimmt der
   nächste Lauf `hype-jetzt` wieder weg. Ware bleibt im Shop. `fixer_keepalive.sh` startet den Lauf
   einmal täglich — das hält die Reihe frisch, aber **aktuell** hält sie nur die Recherche.
@@ -595,6 +596,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
 - 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
 - 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
 - 2026-09-14 · 🔌 «weiterfix mehr»: 64 Netzstecker-Fälle deterministisch aufgelöst (EU-SKU / stecker-unklar), Büro + Partydeko + Weihnachten ins Menü, 2 Kollektions-Leichen 301

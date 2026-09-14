@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
 - 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
 - 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
 - 2026-09-14 · 🔌 «weiterfix mehr»: 64 Netzstecker-Fälle deterministisch aufgelöst, drei neue Warengruppen ins Menü, zwei Kollektions-Leichen
@@ -386,6 +387,28 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 🎠 «mach 8 produkte aber fülle die ganze webseite mit andere katalogen» (14.09., 10:20–10:45 UTC): 18 Reihen à 8, acht davon drehen täglich durch 25 Kataloge — Startseite 3,1 MB
+
+Betreiber-Antwort auf den Vergleich. Umgesetzt als täglicher Automat `automation/homepage_katalog_rotation.py`
+(Selbsttest mit 10 Gegenproben auf einem Kunst-Template, `DRY=1`, Backup `theme_backup/index.json.rot-<datum>`,
+Ursprung wird zurückgelesen; täglich aus `fixer_keepalive.sh`): (1) alle 18 product-list-Reihen `max_products: 8`
++ `carousel`; (2) zehn Reihen FEST (Hype, Bestseller, Neu, CH-Lager, Damen, Herren, Wohnen, Schmuck, Sneaker,
+Elektronik); (3) acht WECHSEL-Reihen bekommen jeden Tag acht andere Kataloge aus einem Pool von 25 (gemessen:
+veröffentlicht, ≥300 Produkte, nicht in einer festen Reihe) — Saison zuerst (Halloween bis 31.10., Weihnachten ab
+15.10.); über 25 Tage kommt jeder Katalog dran (Selbsttest belegt es). (4) `banner_trust` (Hero mit dem Trust-Satz,
+der auch in `trust_advantages` und im Band steht) wurde EINMAL zur 18. Reihe umgebaut — die Startseite ist am
+25-Sektionen-Limit, «mehr Kataloge» geht nur durch Umwidmen.
+
+**Gemessen:** 3'753 → **3'104 KB** (Einzelabruf), 148 Karten, 462 `<img>`; Reihen heute: Halloween 2026,
+Geschenke unter CHF 50, Haustierwelt, Küche & Kochen, Taschen & Rucksäcke, Make-up, Spielzeug, Sport & Outdoor.
+Zusammen mit dem Vormittag: **6,92 MB → 3,1 MB** bei MEHR Katalogen (18 statt 17 Reihen, 8 statt 12 Karten).
+
+**Zwei Fallen:** (a) `curl -d "<140-KB-JSON>"` → `OSError: Argument list too long` — Template-Bodies gehen über
+stdin (`--data-binary @-`, `input=`), nie als Argument; (b) die erste Pool-Reihenfolge hätte Hundewelt UND Katzenwelt
+am selben Tag gezeigt («mehr vom Gleichen») — ähnliche Kataloge im Pool ≥8 Positionen auseinander legen, dann
+fallen sie nie in dasselbe 8er-Fenster. ⚠️ Der Dauerauftrag «pl_trends: 6 Karten, 3 Spalten» (12.08.) ist damit
+durch den Betreiber vom 14.09. überschrieben: 8 Karten, Karussell, wie alle Reihen.
 
 ## ⚖️ «vergleiche andere seite mit unsere und verbessere unsere» (14.09., 09:40–10:15 UTC): 10 CH-Shops gemessen — die Startseite wog 7 MB, weil Horizon jede Reihe zweimal rendert
 

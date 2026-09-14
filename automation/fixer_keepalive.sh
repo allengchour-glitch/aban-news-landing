@@ -899,6 +899,17 @@ while true; do
   # 14.09. Task #76: die «unklar-eu-vorhanden»-Faelle des Pruefers deterministisch aufloesen —
   # genau EINE EU-Variante bei CJ (oder gleiche Farbe wie unsere Varianten-SKU) -> EU-SKU setzen +
   # Faktenzeile; Farbwahl unbekannt -> Tag stecker-unklar, aus der Hype-Reihe. 10 CJ-Punkte je Produkt.
+  # 14.09.2026 «mach 8 produkte aber fuelle die ganze webseite mit anderen katalogen»: Startseite
+  # 8 Produkte je Reihe, 8 Wechsel-Reihen drehen taeglich durch 25 Kataloge (Saison zuerst). Idempotent.
+  HKR=/tmp/homepage_katalog_rotation.log
+  if [ -f "$REPO/automation/homepage_katalog_rotation.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$HKR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && flock -n /tmp/lock_homepage_katalog_rotation.lock \
+          python3 automation/homepage_katalog_rotation.py >> "$HKR" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) homepage_katalog_rotation gestartet"
+    fi
+  fi
   CSE=/tmp/cj_stecker_eu_setzen.log
   if [ -f "$REPO/automation/cj_stecker_eu_setzen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$CSE" 2>/dev/null || echo 0) ))
