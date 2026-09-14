@@ -7,6 +7,7 @@
 
 ## Inhaltsverzeichnis
 
+- 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
 - 2026-09-14 · 🔑 Groq lebt (Chat-Schlüssel, 200), Ampel-403 war der urllib-User-Agent; PC-Gedächtnis hatte Keepalive-Routine AUS und Entwurfs-Routine AN (2'031 Drafts heute) → umgeschaltet; Versand live 45 statt 50, Klick blockiert
 - 2026-09-14 · 🛑 «stoppe cj grind?» / «Grow in ≤6 Monaten, jetzt Verkauf optimieren»: Grind pausiert (Runner 0, Pause +180 T), Bilder gingen trotz 105 % noch; Groq-Schlüssel kam nicht an (Env leer nach Neustart)
 - 2026-09-14 · 🏢 «b2b optimieren?»: kein Firmenkonten-Ausbau — Seite «Firmen & Vereine» mit Anfrageformular (Merch ab 10 Stk, CH-Lagerware, Rechnung), Footer 15 Einträge; Formular-Knopf hiess «Submit»
@@ -390,6 +391,16 @@
 - 2026-09-04 · 🔁 Zweiter Objektscan: was die Reparaturen wirklich bewirkt haben (2026-09-04)
 - 2026-09-04 · 🔪 CJ hat einen CH-Kanal geöffnet — und meine Wiederbelebung stellte 5 Klingen zu Google (2026-09-04)
 - 2026-09-04 · 🔎 119 Klingen standen in Werbekanälen — und nur 18 gehörten wirklich raus (2026-09-04)
+
+## 📺 Betreiber-Link «Claude kann jetzt ALLES in Shopify» (14.09., 17:00–17:20 UTC): YouTube gedrosselt, oEmbed als Ersatz — und der Shop spricht schon UCP
+
+Betreiber schickt `bTojWZdiG60` (Vilius, Kurs-Kanal). `yt_lernen.mjs` → 429 (Drossel aus der Morgenrunde hält Stunden).
+**oEmbed** (`youtube.com/oembed?url=…`) gibt Titel + Kanal ungedrosselt; Inhalt laut Suche = Shopify mit Claude Code
+ohne Programmieren — das Thema von gestern (§2 AI Toolkit) und unser Alltag (Connector + Admin-API + Theme mit Backup).
+Einziger ungemessener Punkt war der KI-Einkaufsassistent: **GEMESSEN** `/api/mcp` nur FAQ-Werkzeug (alter Endpunkt),
+`/api/ucp/mcp` 10 Werkzeuge (Checkout/Cart/Order); `search_catalog` verlangt UCP-Agentenprofil/JWT (422 «Missing ucp
+version» mit einer Nicht-Profil-URL) — Shopify-Standard, kein Schalter. Der Shop ist für UCP-Agenten erreichbar,
+nichts einzustellen. Nachtrag in `dropship/LERNEN-YOUTUBE-2026-09-14.md` §5. Skill `recherchieren`: oEmbed-Weg ergänzt.
 
 ## 🔑 Groq lebt wieder, die Ampel log (User-Agent), und das PC-Gedächtnis hatte meine Stunden-Routine abgeschaltet (14.09., 16:20–17:00 UTC)
 

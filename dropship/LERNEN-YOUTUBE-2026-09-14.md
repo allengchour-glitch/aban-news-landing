@@ -43,3 +43,31 @@ Google «Misrepresentation»-Richtlinie (offiziell): aktuelle Kontaktangaben + �
 ## 4. Offen
 - Betreiber: UID ins Impressum (Nummer nicht im Repo).
 - Nächste YouTube-Runde: zuerst `TFzixqET9ds` («Verkaufen in der Schweiz») und `zGPCTF32aMY` (ECOMVERSE Schweizerdeutsch), dann Kapitel 36:13–50:09 von KeyCommerce (Feed-Optimierung) gegen `automation/google_feed/`.
+
+## 5. Nachtrag 17:20 UTC — Betreiber-Link `bTojWZdiG60` «Claude kann jetzt ALLES in Shopify (Tutorial)»
+
+**Quelle:** Kanal Vilius (@ViliusLite, «Online-Millionär», verkauft Kurse), ~3 Wochen alt. YouTube drosselt uns seit der
+Morgenrunde (HTTP 429, auch nach 90 s Pause) → **Titel/Kanal über den oEmbed-Endpunkt** (`youtube.com/oembed?url=…`,
+ungedrosselt, kein Transkript, keine Kapitel). Inhalt laut Suchtreffer: «Shopify-Shop mit Claude Code 2026 optimieren,
+ohne selbst zu programmieren». Deckungsgleich mit dem Thema von gestern (`LERNEN-SHOPIFY-CLAUDE-2026-09-13.md` §2:
+Shopify AI Toolkit) und dem deutschen Blog digitalsprung.de (QUELLE): vier Ebenen — Shopify-Connector (Chat-Verwaltung),
+Storefront MCP (KI-Einkaufsassistent für Kundinnen, läuft automatisch), Dev MCP/AI Toolkit (Claude Code + Doku/Schema/
+Validierung, nur im Duplicate-Theme mit Git), Claude for Chrome. Grenze: Checkout-Kern nur mit Plus.
+
+**Gegenprobe am eigenen Shop (GEMESSEN 17:10 UTC):**
+- Ebenen 1 und 3 sind hier Alltag: Shopify-Connector + Admin-API (`autopilot2`), Theme-Änderungen mit Backup und
+  Rücklesen — das Video beschreibt, was diese Sitzung seit Juni tut. **Nichts Neues zu übernehmen.**
+- Ebene 2, der KI-Einkaufsassistent, ist der eine Punkt, den noch niemand gemessen hatte:
+  - `luxestyle.ch/api/mcp` → 200, aber **nur `search_shop_policies_and_faqs`** (alter Endpunkt, Abschaltung 31.08.2026
+    angekündigt, antwortet noch).
+  - `luxestyle.ch/api/ucp/mcp` → 200, **10 Werkzeuge**: get/create/update/complete/cancel_checkout, get/create/update/
+    cancel_cart, get_order. Katalogsuche (`search_catalog`) verlangt ein UCP-Agentenprofil bzw. JWT — meine Probe mit
+    einer Nicht-Profil-URL: 422 «Missing ucp version». Das ist Shopify-Standard, kein Schalter bei uns.
+  - **Fazit: Der Shop ist für KI-Einkaufsagenten (UCP) bereits erreichbar; einstellen muss der Betreiber nichts.**
+    Ob je ein Agent kauft, ist nicht messbar, bis eine Bestellung mit UCP-Quelle auftaucht — die Bestell-Ampel würde
+    sie wie jede andere zeigen.
+- Nicht übernommen: WebMCP (Browser-Werkzeuge für Agenten im Tab der Kundin) — laut Doku auf jedem Liquid-Theme
+  «live today», Agentenunterstützung nur Chromium; nichts zu tun.
+
+**Lehre:** Wenn YouTube drosselt, liefert oEmbed Titel und Kanal in einer Sekunde — genug, um zu entscheiden, ob ein
+Video eine zweite Runde wert ist. Dieses war es nicht: ein Kurs-Kanal erklärt den Connector, den wir betreiben.

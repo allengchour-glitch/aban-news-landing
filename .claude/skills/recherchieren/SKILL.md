@@ -55,6 +55,10 @@ wie ein Transkript.
 38:45 für ein Video von 14 Minuten. **Ein Ersatzfeld muss beweisbar zum Hauptvideo gehören,
 sonst bleibt der Wert unbekannt.** Unbekannt ist ein besseres Ergebnis als falsch.
 
+**Wenn die Drossel steht (14.09.2026: 429 auch 90 s später, hält Stunden):** `curl "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<id>&format=json"`
+liefert **Titel und Kanal** ungedrosselt (kein Transkript, keine Kapitel) — genug, um zu entscheiden, ob das Video
+eine zweite Runde wert ist, und um per Web-Suche nach Ersatzquellen (Blog-Artikel zum selben Thema) zu greifen.
+
 **Die Grenze, gemessen:** nach rund **einem Dutzend Abrufen** antwortet YouTube mit **HTTP 429**
 (Antwort rund 3,3 KB). Höchstens eine Handvoll Videos am Stück, sonst ist YouTube für Stunden
 zu. Eine 3-KB-Antwort ist **kein leeres Video**, sondern eine Drosselung.
