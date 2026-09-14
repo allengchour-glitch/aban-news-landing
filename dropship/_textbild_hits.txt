@@ -15595,3 +15595,32 @@ gid://shopify/Product/15531885494657	171->0	Personalisierbare Umhängetasche mit
 gid://shopify/Product/15531885560193	24->0	Springseil für Fitness und Training
 gid://shopify/Product/15531886150017	8->0	Grillrost aus Edelstahl für Picknick und Camping
 gid://shopify/Product/15531886281089	135->0	Volleyballnetz-Set für Outdoor und Strand
+gid://shopify/Product/15531886412161	121->0	Golf Schwungtrainer Ellbogenfixierer
+gid://shopify/Product/15531930747265	54->2	EMS-Massagegurt für Bauch und Muskeln
+gid://shopify/Product/15531930780033	28->2	Elektrisches Wein-Accessoire-Set
+gid://shopify/Product/15531930812801	197->0	Bedrucktes Yoga-Handtuch
+gid://shopify/Product/15531930845569	29->1	Edelstahl-Kochmesser
+gid://shopify/Product/15531930976641	94->1	Kochmesser aus Karbonstahl
+gid://shopify/Product/15531931042177	93->0	Ausbeinmesser aus Karbonstahl
+gid://shopify/Product/15531931369857	67->0	Vakuumisolierte Trinkflasche aus Titan
+gid://shopify/Product/15531931500929	42->0	Keramik-Teekanne mit Teetasse
+gid://shopify/Product/15531931533697	27->0	Gewichthebergurt für Kniebeugen
+gid://shopify/Product/15531931664769	26->1	Faltbarer Hochlehner-Stuhl für Draussen
+gid://shopify/Product/15531931763073	16->0	Minimalistisches Armband mit Wellenlinie
+gid://shopify/Product/15531931992449	36->0	Faltbarer Bollerwagen für Kinder
+gid://shopify/Product/15531932254593	53->0	Faltbarer Outdoor-Trolley, 130 cm, 200 kg
+gid://shopify/Product/15531932352897	15->0	Camping Klapptisch mit Stühlen
+gid://shopify/Product/15531932680577	59->0	Sternen-Diamant-Armbanduhr für Herren
+gid://shopify/Product/15531933041025	138->0	Uhren-Schutzhülle für Apple Watch
+gid://shopify/Product/15531933139329	9->1	Schutzhülle mit Glas für Apple Watch
+gid://shopify/Product/15531933303169	41->0	Uhrengehäuse mit Diamant-Einlage
+gid://shopify/Product/15531933401473	62->0	Leder-Armband für Uhren
+gid://shopify/Product/15531933565313	113->0	Sofa Rückenkissen aus Wolle und Plüsch
+gid://shopify/Product/15531933696385	56->1	Quarzuhr mit Mesh-Armband für Damen
+gid://shopify/Product/15531934056833	38->0	Weihnachtskissen bestickt
+gid://shopify/Product/15531934122369	9->0	Kinderkissen mit Nackenstütze
+gid://shopify/Product/15531934220673	59->0	Sternenhimmel-Projektorlampe
+gid://shopify/Product/15531934351745	10->0	Hundegeschirr für Hinterbeine
+gid://shopify/Product/15531934450049	31->3	Hand-Sterilisator mit Zerstäuber
+gid://shopify/Product/15531934515585	22->2	Brustgeschirr für Katzen
+gid://shopify/Product/15531934941569	22->0	Weisses schulterfreies Kleid mit Rüschensaum

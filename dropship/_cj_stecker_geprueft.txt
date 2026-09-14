@@ -97,3 +97,53 @@
 15448933466497	kein-stecker-merkmal	2026-09-14	Profi Bart- und Haarschneider für Herren
 15448933630337	unklar-eu-vorhanden:EU/US	2026-09-14	Profi Titanium Glätteisen für Bob-Frisuren
 15448933663105	cj-1602002	2026-09-14	Heissluftbürste 1.5 Zoll mit Volumenfunktion
+15448933826945	kein-stecker-merkmal	2026-09-14	Automatischer Lockenstab, kabellos
+15448933925249	kein-stecker-merkmal	2026-09-14	Kabelloser Mini Glätteisen & Lockenstab
+15448934023553	unklar-eu-vorhanden:EU/US	2026-09-14	Warmluftbürste für Locken und Glätten
+15448934220161	kein-stecker-merkmal	2026-09-14	Kabellose Ionen-Glättbürste mit 12 Heizstufen
+15448936808833	kein-stecker-merkmal	2026-09-14	Multifunktionaler Haarschneider für Herren
+15448936841601	kein-stecker-merkmal	2026-09-14	5-in-1 Haarschneider-Set für Herren
+15448965054849	kein-stecker-merkmal	2026-09-14	Aluminium Sandwichmaker für Zuhause, doppelseitig
+15449124733313	kein-stecker-merkmal	2026-09-14	Elektrischer Epilierer für den ganzen Körper
+15449175687553	mehrere-varianten	2026-09-14	3-in-1 Gradient Föhn
+15449176572289	kein-stecker-merkmal	2026-09-14	Retro Haarschneider – Präzision für Ölfrisuren & Gravuren
+15449401917825	mehrere-varianten	2026-09-14	Kabelloses 6-in-1 Ladegerät
+15449425609089	mehrere-varianten	2026-09-14	2-in-1 Haarglätter & Lockenstab mit Ionen
+15449463030145	kein-stecker-merkmal	2026-09-14	Elektrische Wasserkocher 2L Edelstahl
+15449466143105	kein-stecker-merkmal	2026-09-14	Kleiner Haartrockner für unterwegs
+15449481052545	unklar-eu-vorhanden:EU/US	2026-09-14	Multifunktions-Haarschneider
+15449487311233	kein-stecker-merkmal	2026-09-14	Haarschneider für den Hausgebrauch
+15449487442305	unklar-eu-vorhanden:AU/EU/UK	2026-09-14	Reise-Bügeleisen
+15449825739137	kein-stecker-merkmal	2026-09-14	3-in-1 Wireless-Ladegerät
+15449825771905	kein-stecker-merkmal	2026-09-14	Schnellladegerät
+15449825902977	kein-stecker-merkmal	2026-09-14	Schnellladegerät 30W
+15450111345025	cj-1602002	2026-09-14	Tragbare Mini-Nähmaschine · multifunktional
+15450111607169	kein-stecker-merkmal	2026-09-14	Kleine Nähmaschine für unterwegs
+15450116161921	kein-stecker-merkmal	2026-09-14	Portable Nähmaschine
+15450116424065	kein-stecker-merkmal	2026-09-14	Automatische Mini-Nähmaschine
+15450252607873	kein-stecker-merkmal	2026-09-14	Doppel-Ladegerät
+15450303168897	kein-stecker-merkmal	2026-09-14	Heizkissen für Autositz
+15450829357441	mehrere-varianten	2026-09-14	5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht
+15450829521281	mehrere-varianten	2026-09-14	Kabelloser Mini-Entsafter für Früchte & Gemüse
+15450829914497	mehrere-varianten	2026-09-14	Kabellose 2-in-1 Glättbürste für schnelles Styling
+15450830668161	mehrere-varianten	2026-09-14	NEX 2-in-1 Fellpfleger: Föhn & Bürste für Haustiere
+15450830897537	mehrere-varianten	2026-09-14	3-in-1 Kabelloses Ladegerät für iPhone, Watch & AirPods
+15450832175489	mehrere-varianten	2026-09-14	Kabelloser Mini-Staubsauger 5000Pa
+15450832830849	mehrere-varianten	2026-09-14	Drahtloses Dual-Ladegerät für Smartphones
+15450834928001	mehrere-varianten	2026-09-14	Lippenstift & Lipliner Set – 12 Farben
+15450835059073	mehrere-varianten	2026-09-14	Kabelloser Handstaubsauger für Auto & Zuhause
+15450836828545	mehrere-varianten	2026-09-14	Handlicher Mini Auto Staubsauger – kraftvoll & kompakt
+15450837746049	mehrere-varianten	2026-09-14	USB-Ladegerät mit 4 Ports und Quick Charge 3.0
+15450848395649	nur-eu-version	2026-09-14	Zitrus-Entsafter für frische Säfte
+15450849444225	mehrere-varianten	2026-09-14	Mini-Kaffeemaschine für Zuhause und Büro
+15450851213697	mehrere-varianten	2026-09-14	Mini Heizlüfter für Zuhause & Büro
+15450851967361	mehrere-varianten	2026-09-14	Augenbrauen Epilierer
+15450855506305	mehrere-varianten	2026-09-14	Anion Föhn-Bürste für Glanz & Volumen
+15450859864449	kein-stecker-merkmal	2026-09-14	Kompakte Hand-Kaffeemaschine für Kapseln & Pulver
+15451513618817	kein-stecker-merkmal	2026-09-14	Roségold Glättbürste für geschmeidiges Haar
+15451913552257	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	6-in-1 Lockenstab & Glätteisen mit LED-Anzeige
+15451913847169	kein-stecker-merkmal	2026-09-14	Kabelloser 2-in-1 Glätt- & Lockenstab
+15451914797441	kein-stecker-merkmal	2026-09-14	Haarschneider Retro-Look für Herren
+15451915288961	kein-stecker-merkmal	2026-09-14	Mini Wireless Glättbürste mit Anionenfunktion
+15451915747713	kein-stecker-merkmal	2026-09-14	2-in-1 Haarglätter & Lockenstab mit Ionen-Technologie
+15451915977089	kein-stecker-merkmal	2026-09-14	2-in-1 Glätteisen & Lockenstab mit 3D-Muster
