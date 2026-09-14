@@ -1,3 +1,31 @@
+## 🔍 «50k Produkte, man findet alles nicht so schnell» + «B2B machen?» (14.09., 06:40–07:00 UTC)
+
+Beides gemessen statt geraten:
+- **B2B ist auf dem Basic-Plan technisch MÖGLICH** — Probe am Objekt: `companyCreate` legt eine Firma an
+  (`gid://shopify/Company/214077440385`, sofort wieder gelöscht, `companiesDelete` ok, `companiesCount` = 0).
+  Der Gedächtnis-Satz «B2B ist Plus» ist damit überholt; die Doku sagt nur noch «plans that support B2B».
+  **Was NICHT passt, ist das Geschäft, nicht der Plan:** CJ liefert 10–20 Werktage, ohne Lager, ohne
+  Mengenpreis, und **die Fracht fällt je ARTIKEL an** (LX1013: 2 Artikel = 2 Sendungen, 22.08.) — ein
+  Firmenkunde mit 50 Stück bekäme 50 China-Pakete zum Einzelpreis. Netto-Zahlungsziel = Kreditrisiko bei
+  0 Abschlüssen/30 Tage. Einziges B2B-taugliches Eigenprodukt: POD-Merch (Printful, eigener Editor) für
+  Firmen/Vereine — und CH-Lagerware (Fortura, Shopcom nach Antrag #24). Empfehlung: kein B2B-Ausbau jetzt;
+  wenn, dann eine schlanke «Firmen & Vereine»-Seite mit Anfrageformular für Merch, ohne Firmenkonten.
+- **Findbarkeit, 30 Tage:** 1'338 Sitzungen (77 % mobil), 12 Warenkörbe, 1 Abschluss. Landeseiten: 205 auf
+  `/`, Rest breit auf Einzelprodukte; `/search` als Landeseite **6 Sitzungen in 90 Tagen** — niemand kommt
+  über die Suche an, die interne Suchnutzung ist von hier nicht messbar (nur im Admin der S&D-App).
+  Live: Suchvorschläge treffen (hundeleine → 6 Leinen, smartwatch → Kollektion), die Suchseite hat Filter
+  (Typ, Verfügbarkeit, Preis, Marke) — **aber «hundeleine» liefert 832 Ergebnisse**, weil Shopify Beschreibung
+  und Tags durchsucht. **19 publizierte Kollektionen tragen über 5'000 Produkte** (damen-mode 11'707,
+  neu-eingetroffen 14'325, wohnen 9'875, Preisbänder bis 74'328 inkl. Entwürfe) — dort schaltet Shopify die
+  Facetten ab (30.08.), nur die Tag-Chips bleiben. Menü 143 Punkte, Verzeichnis 348 Links.
+  **Der Befund des Betreibers ist richtig, und die Ursache ist die MENGE, nicht die Navigation** — dieselbe
+  Kette wie beim Speicher (13 GB je 10'000 Produkte, Deckel erreicht) und beim Suchverkehr («mehr Produkte
+  bringen keinen Suchverkehr», 29.08.). Der Hebel ist ein kleinerer, kuratierter Katalog nach gemessenen
+  Kriterien (Verkehr, Bewertung, Marge, Gewicht < 712 g, CH-lieferbar) — das ist Betreiber-Entscheid
+  (Entscheidung B vom 06.09. bleibt: nichts pauschal draften).
+  ⚠️ `curl` braucht `-g` für `resources[type]=…` in der Suggest-URL, sonst «bad range in URL».
+  ⚠️ Der Aufseher war nach dem Neustart (uptime 3 min) tot — Keepalive vor der Messung gestartet.
+
 ## 💽 «Datenspeicher von Google nehmen oder Upgrade?» + «2tes Gehirn Obsidian installieren» (14.09., 06:50–07:05 UTC)
 
 Beides gemessen statt aus dem Gedächtnis beantwortet:
