@@ -1,3 +1,41 @@
+## 🧭 «mal füllen, dann polieren» + «nicht immer das gleiche suchen» (14.09., 07:30–08:00 UTC): der Grind zog 159 von 578 CJ-Kategorien — und eine davon 45× ins Leere
+
+Betreiber-Antwort auf die Katalog-Frage: **nicht verkleinern, erst füllen, dann polieren; alles
+kostenlos; NEUE Ware statt mehr vom Gleichen.** Damit ist Task #77 gedreht (kein kuratierter
+Kleinkatalog, kein Grow-Upgrade). Gemessen, was «immer das gleiche» konkret heisst:
+- **CJ hat 578 Blatt-Kategorien, die 27 Runner-Gruppen decken 159** (Damenmode 8/82, Herren 8/42,
+  Haustier 13/68, Home Improvement **0/28**, Handy 2/32). `cjhome` stand auf **Runde 45**; Cat Trees
+  109×, Pet Beds 97×, Cushion Covers 50× «total 0» in den Logs. Die Suchqueue: **628/628 done, 0 offen.**
+  Der Runner hat den Katalog also ausgeschöpft und wiederholt sich — sichtbar an «Runde 45» und an
+  `skip(dup-titel)`/`skip(dup-sku)` als häufigsten Zeilen.
+- ⛔ **`cjwerkzeug` lief 45× in «unknown GRP» (Exit 1):** die Gruppe steht in `cj_groups_extra.json`
+  im Repo, der Runner las `GROUPS_FILE=/tmp/cj_groups_extra.json` — die /tmp-Kopie ist seit dem Wipe
+  vom 30.08. weg. Jeder Exit 1 kostete die Rotation einen Platz. **Vierte Fassung von «was nur in /tmp
+  lebt, existiert nicht»**, diesmal eine KONFIGURATIONSDATEI statt eines Skripts. Repo-Pfad in
+  `cj_runner_template.sh` und `cj_queue_runner.sh` (der hatte die Datei GAR NICHT gesetzt).
+- **13 neue Gruppen (144 nie gezogene Kategorien)** in `cj_groups_extra.json`: Accessoires (Schals,
+  Mützen, Gürtel, Socken, Haarschmuck — Herbst), Damen/Herren Herbst-Winter (Mäntel, Strick, Parkas),
+  Beleuchtung (Nachtlicht, Lichterketten, Solar, Wandlampen), Baby & Kinder, Party-/Weihnachtsdeko,
+  Haustier-Kleidung/Decken/Auto/Vogel/Aquarium, Schmuck-Ergänzung (Broschen, Fussketten, Manschettenknöpfe),
+  Büro & Foto, Auto-Innenraum, Haushalt (Backformen, Vorratsgläser), Taschen-Ergänzung, Sport-Ergänzung.
+  Bewusst NICHT: Weddings, Perücken/Human Hair (Fortura), alte Handyhüllen-Modelle, Motorrad-/Ersatzteile,
+  Möbel/Kronleuchter (schwer), Küchengeräte mit Netzstecker (Stecker-Klasse #76), Bademode (Saison vorbei).
+  Runner-2-Rotation und Queue-Runner nehmen die neuen zuerst; nach `kueche` (idx 356) folgt `cjaccessoires`.
+- **Gewichtsdeckel `maxG` je Gruppe im Importer** (obere Grenze einer CJ-Spanne, Lehre 27.08.) —
+  DRY-Probe: 1'400-g-Decke `skip(gewicht)`, 4 Accessoires-Kandidaten mit deutschem Titel. Grund: 781 von
+  811 Verlustfällen waren >712 g (03.09.); Füllen darf keine Verlustware anlegen.
+- ⚠️ **DRY setzte den Seiten-Zeiger fort** (Scarves → Seite 2) — Zeiger gelöscht. «Ein Anzeigemodus
+  darf keinen Fortschritt merken» (28.08.) gilt auch für den Kategorie-Zeiger.
+- ⚠️ `pkill -f` auf den Runner traf die eigene Shell (Exit 144, Regel 7) und liess zwei Node-Kinder
+  als Waisen weiterimportieren (`kueche`/`cjhaustier` ohne Shell); einzeln per PID beendet.
+- **Dünne Warengruppen im Shop gemessen (250 productTypes, aktiv):** Beleuchtung 5, Garten 5, Büro 0,
+  Baby & Kleinkind 0, Camping 1, Hüte & Caps 12, Musikinstrumente 33 — die grossen sind Damenmode 7'837,
+  Haustier 3'441, Herren 3'055, Elektronik 2'955. Die neuen Gruppen zielen genau auf die dünnen.
+  ⚠️ Viele 0er-Typen sind BigBuy-Altlasten («Original-Toner», «E-Scooter») — Warengruppen-Namen sind kein
+  Bedarfsmass, die CJ-Kategorien-Lücke ist das ehrlichere.
+- Speicher bleibt voll (Betreiber: kostenlos → kein Grow); Produktmedien laden weiter aus der Quell-URL
+  (04.09. gemessen), nur die Dateien-Bibliothek ist zu. Task #33 entsprechend umgeschrieben.
+
 ## 🔍 «50k Produkte, man findet alles nicht so schnell» + «B2B machen?» (14.09., 06:40–07:00 UTC)
 
 Beides gemessen statt geraten:

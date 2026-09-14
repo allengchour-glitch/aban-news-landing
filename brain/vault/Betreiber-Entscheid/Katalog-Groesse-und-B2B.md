@@ -18,3 +18,5 @@ CJ: 10–20 Werktage, kein Lager, kein Mengenpreis, Fracht je ARTIKEL (2 Artikel
 Kleinerer, kuratierter Katalog nach gemessenen Kriterien (Verkehr, Bewertung, Marge, Gewicht < 712 g, CH-lieferbar). Löst Speicher-Deckel ([[Dateispeicher-Deckel]]), Filter-Abschaltung und Suchrauschen zugleich. Nichts pauschal draften — Entscheidung B (06.09.) gilt.
 
 Verwandt: [[Masse-ist-kein-Hebel]] · [[Dateispeicher-Deckel]]
+
+**Nachtrag 14.09.:** Betreiber-Entscheid ist gefallen — nicht verkleinern, erst füllen (neue Warengruppen), dann polieren, alles kostenlos. Siehe [[Eine-Konfigurationsdatei-in-tmp-ist-keine]] für die Messung «immer das gleiche».
