@@ -133,6 +133,11 @@ def cj_kennt(sku):
             return bool(data)
         return None
     # CJ meldet Nichtgefunden mit eigenem Code; alles andere ist ein Fehler, kein Beweis
+    # 14.09.: Code 1602002 «Product has been removed from shelves» ist die EINDEUTIGE Absage
+    # (gemessen 02.09. und 14.09.) — ihr Text enthaelt keines der Woerter unten, deshalb galt
+    # jedes ausgelistete Produkt hier als «unklar» und der Waechter hat in Wochen 0 gedraftet.
+    if code == "1602002":
+        return False
     txt = (d.get("message") or "").lower()
     if "not exist" in txt or "not found" in txt or "no data" in txt:
         return False
