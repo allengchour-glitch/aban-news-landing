@@ -253,3 +253,28 @@
 15479397482881	kein-stecker-merkmal	2026-09-14	45W GaN Ladegerät für Tablets, Smartphones & Laptops
 15479397843329	kein-stecker-merkmal	2026-09-14	Lazy Chair Stand mit Auto-Sensing Ladegerät
 15479398105473	kein-stecker-merkmal	2026-09-14	Kompaktes 4-Schacht-Ladegerät mit USB-C
+15479398990209	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	268W GaN Multiport-Ladegerät
+15479416062337	kein-stecker-merkmal	2026-09-14	Kabelloser Auto-Staubsauger mit Reifendruckmesser
+15479416947073	kein-stecker-merkmal	2026-09-14	Kabelloses 3-in-1-Ladegerät mit Bluetooth
+15479417176449	kein-stecker-merkmal	2026-09-14	Tragbares kabelloses Google Watch Ladegerät
+15479417307521	kein-stecker-merkmal	2026-09-14	Kabelloses Ladegerät mit Klangverstärker
+15479417536897	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Batterieladegerät für Auto und Motorrad
+15479417667969	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	105W Multifunktionales Magnetisches GaN Wireless Ladegerät
+15479417995649	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	800W Gallium Nitride PD Tischladegerät
+15479419044225	unklar-eu-vorhanden:EU/UK/US	2026-09-14	Schnelles Lade-Netzteil für Mobilgeräte
+15479419240833	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Multi-Port USB-Ladegerät mit 240W und Display
+15479419404673	kein-stecker-merkmal	2026-09-14	Schnelles Ladegerät mit Farbdisplay
+15479419699585	kein-stecker-merkmal	2026-09-14	CDC68D Dual-Ladegerät für Totalstation-Akkus
+15479419961729	kein-stecker-merkmal	2026-09-14	GaN-Ladegerät für schnelles Aufladen
+15479421534593	kein-stecker-merkmal	2026-09-14	Magnetisches kabelloses Ladegerät mit Dual-Coil Ständer
+15479450534273	kein-stecker-merkmal	2026-09-14	AI Temperaturkontrolle 3-Port GaN Ladegerät
+15479513186689	kein-stecker-merkmal	2026-09-14	12V20A Schaltnetzteil für 3D-Drucker
+15479513252225	kein-stecker-merkmal	2026-09-14	MagSafe 15W Kabelloses Magnet-Ladegerät fürs Auto
+15479634362753	kein-stecker-merkmal	2026-09-14	Smart AA Ladegerät mit 8 Lithium-Akkus
+15479807672705	kein-stecker-merkmal	2026-09-14	GaN Multiport-Schnellladegerät 100W
+15479811080577	unklar-eu-vorhanden:EU/US	2026-09-14	Lii-S12 Universal-Ladegerät mit 12 Schächten
+15479812063617	kein-stecker-merkmal	2026-09-14	660W Gallium Nitride Multiport-Ladegerät
+15479812981121	kein-stecker-merkmal	2026-09-14	Faltbares 3-in-1 Wireless Ladegerät
+15480282513793	kein-stecker-merkmal	2026-09-14	AutoClean Kabelloser Handstaubsauger
+15480340283777	kein-stecker-merkmal	2026-09-14	Kabelloses Ladegerät aus Bambus und Holz
+15480492589441	kein-stecker-merkmal	2026-09-14	Sicherheits-Hammer-Ladegerät mit USB
