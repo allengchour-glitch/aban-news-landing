@@ -176,7 +176,9 @@ RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung
 # ergab und jeder Treffer denselben Ausschlussgrund trug. Dazu fehlte am Zeilenende das «|» vor
 # «Nagelpilz» — «Balsam\bNagelpilz» konnte nie treffen. Beides behoben.
 NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz|Creme\b|Serum\b|Hautpflege|Lotion\b|Ampulle|Peeling|Balsam\b|'
-                              r'Nagelpilz|Warzen|Hemorrhoid', re.I)
+                              r'Nagelpilz|Warzen|Hemorrhoid|'
+                              # 14.09.: topische Kosmetik aus China wird nicht beworben (Betreiber 30.08.) — auch als SPRAY/Öl/Maske
+                              r'Haarentfernungs(spray|creme|schaum)|Enthaarungs|Gesichts(öl|spray)|(Massage|Haar|Körper|Kopfhaut)[- ]?öl|Tuchmaske|Hautaufhellung|Whitening', re.I)
 
 # ⚠️ 29.08.2026 — WIRKVERSPRECHEN IM TITEL. In der Reihe standen «Wimpernwachstumsserum» und
 # «Tranexamsäure Serum GEGEN PIGMENTFLECKEN». Beide Produkte dürfen im Shop stehen; sie auf der

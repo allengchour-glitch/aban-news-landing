@@ -468,7 +468,9 @@ while true; do
     if [ "$ALTER" -gt 86400 ]; then
       # NUR_RAEUMEN: unbeaufsichtigt nur Abgelaufenes abräumen — Neuaufnahme braucht den
       # Kontaktbogen-Blick einer betreuten Runde (15.08.: 5 untaugliche Bilder auf Position 1).
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_hype_kuratieren.lock; flock -n 9 || exit 0; NUR_RAEUMEN=1 exec python3 automation/hype_kuratieren.py" >> "$HY" 2>&1 9>&- & )
+      # 14.09.: Vorher den Export frisch halten (MAXALTER 86400 = No-op, wenn er juenger ist) — die
+      # Neuaufnahme las sonst /tmp/export.jsonl vom 30.08. und sah kein neues Thema (Task #75).
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_hype_kuratieren.lock; flock -n 9 || exit 0; python3 automation/hype_export_bauen.py; NUR_RAEUMEN=1 exec python3 automation/hype_kuratieren.py" >> "$HY" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
