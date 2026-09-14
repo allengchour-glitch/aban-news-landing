@@ -38,6 +38,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 - [[Diff-Falle]] — Ein Muster mit einfachem Bindestrich machte aus
 - [[Drei-von-neun-verkauften-Posten-gingen-mit-Verlust-raus]] — GEMESSEN 2026-09-13 ueber inventoryItem.unitCost (Waehrung vorher geprueft: Shop CHF, unit…
 - [[Ein-Messgeraet-muss-wissen-wie-die-Seite-es-nennt]] — tools/shop_conversion.mjs suchte in der ersten Fassung nach Groessentabelle und meldete be…
+- [[Ein-Preis-aus-einer-alten-Kostenzahl-erbt-deren-Fehler]] — GEMESSEN 2026-09-13: Das «Midikleid mit Zopfmuster» (40 Varianten, 320 g) wurde von der
 - [[Ein-neues-Verzeichnis-landet-oeffentlich-auf-abannewscom]] — Wer in diesem Repo ein neues Verzeichnis auf oberster Ebene anlegt, veroeffentlicht es, so…
 - [[Es-gibt-kein-Anmeldefenster---das-einzige-E-Mail-Feld-steht-im-Fuss]] — GEMESSEN 2026-09-13 an fuenf Live-Seiten von luxestyle.ch: ein Anmeldefenster existiert NI…
 - [[Generator-Vorlagen-Falle]] — Beim Entfernen des Assistenten gab es drei Einbau-Orte, nicht einen: die HTML-Seiten,
@@ -70,6 +71,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 ## 🟡 Blockiert — wartet auf den User
 
 - [[Actions-Sperre]] — Grund war Fair-Use: 158 Workflows, rund 60 Crons. Die Sperre ist eine Folge der
+- [[Dateispeicher-Deckel]] — Betreiberfrage 14.09.: «Dateispeicher von Google nehmen oder Upgrade?»
 - [[Drei-User-Klicks]] — Nach Masse-ist-kein-Hebel sind das die einzigen verbleibenden echten Hebel am Shop — und
 - [[GitHub-Spam-Markierung]] — GitHubs eigene Meldung aus der Search-API: Validation Failed: User flagged as spammy.
 - [[GitLab-Ersatz]] — Weil Actions-Sperre gilt, laufen alle Automationen auf GitLab-CI, Projekt aban-ci

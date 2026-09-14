@@ -1,3 +1,29 @@
+## 💽 «Datenspeicher von Google nehmen oder Upgrade?» + «2tes Gehirn Obsidian installieren» (14.09., 06:50–07:05 UTC)
+
+Beides gemessen statt aus dem Gedächtnis beantwortet:
+- **Upload-Probe 14.09.** (25-Byte-Textdatei, volle Kette bis `fileStatus`): `stagedUploadsCreate` ok →
+  HTTP 201 → `fileCreate` UPLOADED → 25 s später **FAILED · FILE_STORAGE_LIMIT_EXCEEDED**. Plan live
+  gelesen: **Basic**. Der Deckel ist seit dem 01.09. ununterbrochen erreicht.
+- **Die Plan-Grenzen stehen in der Shopify-Hilfe** (`help.shopify.com/…/file-uploads`, Tabelle «File
+  storage limits by plan»): **Basic 100 GB · Grow 300 GB · Advanced 500 GB · Plus 1 TB**. Damit ist die
+  am 04.09. als unbelegt zurückgezogene «Basic = 100 GB» jetzt belegt — aus der Doku, nicht aus dem
+  Gedächtnis. Die gemessenen ~77 GB (09.09.) liegen unter 100; der Rest ist Shopifys interne
+  Zählung (Originale + Ableitungen), die keine API ausgibt.
+- **Google-Drive löst das Problem NICHT:** Produktbilder liefert Shopify aus dem eigenen CDN, ein
+  Drive-Bild ist kein Produktmedium. Drive trägt genau die TikTok-Queue (liegt seit 09.09. dort).
+  Antwort an den Betreiber: Upgrade auf Grow (300 GB, reicht bei ~13 GB je 10'000 Produkte für
+  ~200'000) ODER Katalog verkleinern (Entwürfe MIT Medien löschen, ~10,5 GB, nur 0,3 GB beweisbar
+  sicher). Als Vault-Notiz `brain/vault/Blockiert/Dateispeicher-Deckel.md`.
+- **Zweites Gehirn:** Der Vault `brain/vault/` (62 → 63 Notizen), `tools/gedaechtnis.py` und die 7
+  Skills sind seit dem 13.09. auf diesem Branch; **fehlten aber `tools/vault.py` (Index/Link-Prüfung)
+  und `tools/lehre.py`** — vom Lern-Branch nachgeholt. `vault.py bauen`: 63 Notizen, 198 Wikilinks,
+  0 kaputt. Obsidian selbst ist eine Desktop-App: Betreiber öffnet den Ordner `brain/vault` des
+  geklonten Repos als Vault («Open folder as vault»); der `.obsidian`-Ordner entsteht dabei von selbst
+  und gehört NICHT ins Repo (persönliche Workspace-Einstellungen).
+  ⚠️ `gedaechtnis.py --stand` liest nur die «📌»-Zeilen unter `## Stand` — der Stand endet dort beim
+  10.07.; die neueren Einträge stehen als Überschriften oben und werden von `--stand` nicht gesehen.
+  `gedaechtnis.py "stichwort"` findet sie trotzdem (Volltext).
+
 ## 📱 «mach webseite besser» / «handyversion, bilder kleiner» (14.09., 05:40–06:40 UTC): 75 % Handy-Sitzungen sahen EINE Riesenkarte — und die Elektronik-Kategorie bewarb TCL-Fernseher, die seit Juli DRAFT sind
 
 Container um 05:37 neu gestartet (Aufseher tot, per Keepalive wieder da; der Steckerprüfer war mit
