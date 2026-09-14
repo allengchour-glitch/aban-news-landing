@@ -81,6 +81,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🟢 GitHub Actions LÄUFT WIEDER (gemessen 14.09. 15:59 UTC):** der Push auf den PR-Branch startete sofort
   `voice-linter.yml`, `deploy-check.yml` und den Cloudflare-Pages-Deploy (Run-IDs 34865774778/-782/-765). Die Sperre aus
   dem Stand 06-13/08-30 ist also vorbei. **Cron-Nulldiät-Regel bleibt** (nicht massenhaft reaktivieren, max. 1×/Tag).
+- **🔴 Cloudflare «Workers Builds» (aban-news-landing / aban-a / ki-verzeichnis) sind auf JEDEM Push rot** — nachweislich
+  schon auf den gemergten PRs #2512 (11.09.) und #2513 (12.09.), also auf `main`. Ursache Cloudflare-seitig (kein
+  `wrangler.*` im Repo-Root, Check-Ausgabe ohne Fehlertext). **Nicht als PR-Fehler jagen**; reparieren/abhängen kann
+  nur der User im Cloudflare-Dashboard (Workers → Builds). Die repo-eigenen Checks sind davon unabhängig.
 
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
