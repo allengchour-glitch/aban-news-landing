@@ -36,3 +36,20 @@
 15454915690881	unklar:farbe-unbekannt	2026-09-14	Anion-Auto-Lockenstab mit Ionen
 15454915953025	unklar:farbe-unbekannt	2026-09-14	Wasserwellen Lockenstab 32mm
 15466876338561	eu-sku-gesetzt:CJJF299671402BY	2026-09-14	Haarglätter & Lockenstab
+15468341166465	unklar:farbe-unbekannt	2026-09-14	Mini Glätteisen und Lockenstab
+15478568124801	unklar:farbe-unbekannt	2026-09-14	Glätteisen-Kamm-Kombi
+15479417536897	unklar:farbe-unbekannt	2026-09-14	Batterieladegerät für Auto und Motorrad
+15479417667969	unklar:farbe-unbekannt	2026-09-14	105W Multifunktionales Magnetisches GaN Wireless Ladegerät
+15479417995649	eu-sku-gesetzt:CJSJ244325301AZ	2026-09-14	800W Gallium Nitride PD Tischladegerät
+15479419044225	eu-sku-gesetzt:CJSJ242073002BY	2026-09-14	Schnelles Lade-Netzteil für Mobilgeräte
+15479419240833	eu-sku-gesetzt:CJYD241943905EV	2026-09-14	Multi-Port USB-Ladegerät mit 240W und Display
+15479811080577	eu-sku-gesetzt:CJYD253980503CX	2026-09-14	Lii-S12 Universal-Ladegerät mit 12 Schächten
+15482000408961	eu-sku-gesetzt:CJCD239700402BY	2026-09-14	130W Laptop-Ladegerät USB-C, 20V/6.5A
+15482001097089	eu-sku-gesetzt:CJYD238603402BY	2026-09-14	ToolkitRC C4 UAV LiPo Balance-Ladegerät
+15482001588609	eu-sku-gesetzt:CJSJ238467602BY	2026-09-14	Multi-Port USB-C Schnellladegerät
+15484628730241	eu-sku-gesetzt:CJYD303107501AZ	2026-09-14	Elektrische Haarglättbürste
+15485336060289	unklar:farbe-unbekannt	2026-09-14	Lockenstab mit Mehrheitsheizstufe
+15491396764033	unklar:farbe-unbekannt	2026-09-14	Warmluftbürste mit Ionen-Technologie
+15493276631425	unklar:farbe-unbekannt	2026-09-14	Kabelloser Handstaubsauger mit Lithium-Akku
+15493319590273	unklar:farbe-unbekannt	2026-09-14	72V20AH E-Scooter/Auto Ladegerät
+15493320180097	eu-sku-gesetzt:CJCD104716701AZ	2026-09-14	Multifunktionale Pilzlampe mit USB-Ladegerät
