@@ -44067,3 +44067,4 @@ gid://shopify/Product/15448496079233	bei-cj-weg	CJ-CJWS296729001AZ
 gid://shopify/Product/15448108237185	bei-cj-weg	CJ-CJLS296111501AZ
 gid://shopify/Product/15448107417985	bei-cj-weg	CJ-CJWY281503401AZ
 gid://shopify/Product/15448044306817	bei-cj-weg	CJ-CJCS295401901AZ
+gid://shopify/Product/15448041193857	bei-cj-weg	CJ-CJMY295835002BY
