@@ -465,3 +465,33 @@
 15495240974721	kein-stecker-merkmal	2026-09-15	Faltbares 4-in-1 Wireless-Ladegerät, 18W
 15495319093633	kein-stecker-merkmal	2026-09-15	3-in-1 magnetisches Wireless-Ladegerät mit Nachtlicht
 15495319454081	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Digitales 3-Port USB-Ladegerät mit Display
+15495319585153	kein-stecker-merkmal	2026-09-15	Mini USB Lockenstab & Glätteisen
+15495319814529	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Keramik-Lockenstab mit Flüssigkristall-Display
+15495319945601	kein-stecker-merkmal	2026-09-15	USB Lockenstab & Glätteisen 2-in-1
+15495320076673	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Automatischer Lockenstab mit Negativ-Ionen
+15495320109441	kein-stecker-merkmal	2026-09-15	Kabelloses Smartwatch-Ladegerät
+15495320666497	kein-stecker-merkmal	2026-09-15	Kabelloses Desktop-Ladegerät für Smartphones
+15495321026945	kein-stecker-merkmal	2026-09-15	5-in-1 Keramik Lockenstab-Set
+15495321158017	kein-stecker-merkmal	2026-09-15	Kabelloses 18W Spiegel-Ladegerät mit Magnet
+15495321190785	kein-stecker-merkmal	2026-09-15	Lockenstab mit LCD-Anzeige für grosses und kleines Volumen
+15495321485697	draft-kein-eu-stecker:US	2026-09-15	4-in-1 Lockenstab mit LCD-Anzeige
+15495321649537	nur-eu-version	2026-09-15	Glätteisen & Lockenstab 2-in-1, Keramik
+15495321813377	draft-kein-eu-stecker:US	2026-09-15	Lockenstab für Wasserwellen 32mm Roségold
+15495396327809	nur-eu-version	2026-09-15	Glätteisen Wet & Dry Keramik
+15495397474689	kein-stecker-merkmal	2026-09-15	Kabelloses Ladegerät für Apple Watch
+15495397638529	kein-stecker-merkmal	2026-09-15	Elektrischer Haarschneider aus Edelstahl
+15495398916481	kein-stecker-merkmal	2026-09-15	Kabelloser Keramik-Lockenstab für unterwegs
+15495398982017	kein-stecker-merkmal	2026-09-15	Kabelloses 15W Schnellladegerät
+15495399604609	kein-stecker-merkmal	2026-09-15	5-in-1 Warmluftbürste mit automatischem Lockenwickler
+15495399702913	kein-stecker-merkmal	2026-09-15	Magnetisches 3-in-1 Wireless Ladegerät für Apple
+15495401177473	unklar-eu-vorhanden:EU/UK/US	2026-09-15	2-in-1 Lockenstab und Glätteisen
+15495401832833	kein-stecker-merkmal	2026-09-15	Infrarot Dampf Keramik Glätteisen
+15496077345153	kein-stecker-merkmal	2026-09-15	Intelligente ölfreie Heissluftfritteuse 6L
+15496184365441	kein-stecker-merkmal	2026-09-15	Dampfdüse für Kaffeemaschine
+15496264188289	kein-stecker-merkmal	2026-09-15	Kabelloses Ladegerät für Möbel, versteckt
+15496264581505	kein-stecker-merkmal	2026-09-15	Auto- und Motorrad-Batterieladegerät 12V
+15496264647041	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	USB-A C Ladegerät mit vier Anschlüssen
+15496264745345	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Lithium-Ionen Akku-Ladegerät 14.4V/18V
+15496330609025	unklar-eu-vorhanden:EU/US	2026-09-15	Infrarot Dampf-Glätteisen
+15496330805633	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Ionen-Glättbürste mit Keramikbeschichtung
+15496331002241	kein-stecker-merkmal	2026-09-15	PRITECH Glätteisen mit Anti-Verbrühungsfunktion

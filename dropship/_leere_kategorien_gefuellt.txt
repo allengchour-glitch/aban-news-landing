@@ -1,0 +1,71 @@
+gid://shopify/Product/15447560520065|Ladegerät	Ladegerät Typ-C (EU-Standard)
+gid://shopify/Product/15447560749441|Ladegerät	Universal-Ladegerät für 60V E-Scooter/Bike
+gid://shopify/Product/15447561765249|Ladegerät	Multifunktionales 3-in-1 Wireless Ladegerät mit Licht
+gid://shopify/Product/15447562158465|Ladegerät	65W PD GaN Ladegerät für Smartphones & Laptops
+gid://shopify/Product/15447562289537|Ladegerät	USB-C Ladegerät, 120W, Multi-Port, Schnellladefunktion
+gid://shopify/Product/15447563174273|Ladegerät	Multi-Ladegerät für Milwaukee M18 Li-ion Akkus
+gid://shopify/Product/15447563403649|Ladegerät	20W Reise-Ladegerät mit USB-A & USB-C
+gid://shopify/Product/15447563895169|Ladegerät	Universal 320W GaN Hochleistungs-Ladegerät
+gid://shopify/Product/15447564222849|Ladegerät	USB-Ladegerät für 18650 Li-ion Akkus
+gid://shopify/Product/15447564452225|Ladegerät	Wiederaufladbare CR123A Li-ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447564976513|Ladegerät	4er-Pack CR123A Li-Ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447565205889|Ladegerät	4er-Pack 16340 Li-Ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447566320001|Ladegerät	USB Li-ion Ladegerät für 3.7V Akkus
+gid://shopify/Product/15447567040897|Ladegerät	Li-ion Akku & Ladegerät Set 3000mAh
+gid://shopify/Product/15447567303041|Ladegerät	Li-ion Akku & USB-Ladegerät Set 3000mAh
+gid://shopify/Product/15447567466881|Ladegerät	Akku-Ladegerät mit 2 Li-Ion Akkus 3.7V 3000mAh
+gid://shopify/Product/15447864934785|Ladegerät	Kabelloses Magsafe Auto-Ladegerät
+gid://shopify/Product/15447865098625|Ladegerät	Lithium-Akku-Ladegerät
+gid://shopify/Product/15447865295233|Ladegerät	200W GaN Ladegerät für Mobilgeräte & Laptops
+gid://shopify/Product/15447865819521|Ladegerät	65W GaN Ladegerät mit US-Stecker
+gid://shopify/Product/15447866507649|Ladegerät	Tragbares magnetisches Wireless-Ladegerät mit Kabel
+gid://shopify/Product/15447866704257|Ladegerät	4-in-1 Auto-Ladegerät mit ausziehbaren Kabeln
+gid://shopify/Product/15447866900865|Ladegerät	Drohnen-Akku-Ladegerät mit USB-Adapter
+gid://shopify/Product/15447867163009|Ladegerät	Magnetisches kabelloses Desktop-Ladegerät mit Ständer
+gid://shopify/Product/15447868309889|Ladegerät	10-Port Multi-USB Ladegerät, 60W
+gid://shopify/Product/15447868440961|Ladegerät	50W Multi-Port Ladegerät mit Lüfter
+gid://shopify/Product/15447868670337|Ladegerät	Universal USB-Ladegerät für Mobiltelefone
+gid://shopify/Product/15448847909249|Ladegerät	Magnetisches 15W Wireless Ladegerät für Smartphones
+gid://shopify/Product/15448848925057|Ladegerät	Kühlstation für Xbox Series S mit Ladegerät & Headset-Halter
+gid://shopify/Product/15449401917825|Ladegerät	Kabelloses 6-in-1 Ladegerät
+gid://shopify/Product/15449825739137|Ladegerät	3-in-1 Wireless-Ladegerät
+gid://shopify/Product/15450252607873|Ladegerät	Doppel-Ladegerät
+gid://shopify/Product/15450829357441|Ladegerät	5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht
+gid://shopify/Product/15450830897537|Ladegerät	3-in-1 Kabelloses Ladegerät für iPhone, Watch & AirPods
+gid://shopify/Product/15450832830849|Ladegerät	Drahtloses Dual-Ladegerät für Smartphones
+gid://shopify/Product/15450837746049|Ladegerät	USB-Ladegerät mit 4 Ports und Quick Charge 3.0
+gid://shopify/Product/15453806100865|Ladegerät	Reflektierende LED-Weste mit USB-Ladegerät
+gid://shopify/Product/15453920625025|Ladegerät	Notfall-Ladegerät mit Radio und USB
+gid://shopify/Product/15454014898561|Ladegerät	21700-Lithium-Akku-Ladegerät
+gid://shopify/Product/15479338303873|Ladegerät	Kabelloses Ladegerät mit Kuehler
+gid://shopify/Product/15479338828161|Ladegerät	Dual-Channel LiPo-Balancer-Ladegerät
+gid://shopify/Product/15479397482881|Ladegerät	45W GaN Ladegerät für Tablets, Smartphones & Laptops
+gid://shopify/Product/15479397843329|Ladegerät	Lazy Chair Stand mit Auto-Sensing Ladegerät
+gid://shopify/Product/15479398105473|Ladegerät	Kompaktes 4-Schacht-Ladegerät mit USB-C
+gid://shopify/Product/15479398990209|Ladegerät	268W GaN Multiport-Ladegerät
+gid://shopify/Product/15479415931265|Ladegerät	48W QC3.0 Auto-Ladegerät mit Voltanzeige
+gid://shopify/Product/15479416947073|Ladegerät	Kabelloses 3-in-1-Ladegerät mit Bluetooth
+gid://shopify/Product/15479417176449|Ladegerät	Tragbares kabelloses Google Watch Ladegerät
+gid://shopify/Product/15479417307521|Ladegerät	Kabelloses Ladegerät mit Klangverstärker
+gid://shopify/Product/15479417667969|Ladegerät	105W Multifunktionales Magnetisches GaN Wireless Ladegerät
+gid://shopify/Product/15479418683777|Ladegerät	Faltbares 40W Solarpanel-Ladegerät
+gid://shopify/Product/15479419240833|Ladegerät	Multi-Port USB-Ladegerät mit 240W und Display
+gid://shopify/Product/15479419404673|Ladegerät	Schnelles Ladegerät mit Farbdisplay
+gid://shopify/Product/15479419699585|Ladegerät	CDC68D Dual-Ladegerät für Totalstation-Akkus
+gid://shopify/Product/15479419830657|Ladegerät	Auto-Ladegerät Quick Charge Stecker
+gid://shopify/Product/15479419961729|Ladegerät	GaN-Ladegerät für schnelles Aufladen
+gid://shopify/Product/15479421534593|Ladegerät	Magnetisches kabelloses Ladegerät mit Dual-Coil Ständer
+gid://shopify/Product/15479450534273|Ladegerät	AI Temperaturkontrolle 3-Port GaN Ladegerät
+gid://shopify/Product/15479513252225|Ladegerät	MagSafe 15W Kabelloses Magnet-Ladegerät fürs Auto
+gid://shopify/Product/15479634362753|Ladegerät	Smart AA Ladegerät mit 8 Lithium-Akkus
+gid://shopify/Product/15479811080577|Ladegerät	Lii-S12 Universal-Ladegerät mit 12 Schächten
+gid://shopify/Product/15479812063617|Ladegerät	660W Gallium Nitride Multiport-Ladegerät
+gid://shopify/Product/15479812981121|Ladegerät	Faltbares 3-in-1 Wireless Ladegerät
+gid://shopify/Product/15480340283777|Ladegerät	Kabelloses Ladegerät aus Bambus und Holz
+gid://shopify/Product/15480492589441|Ladegerät	Sicherheits-Hammer-Ladegerät mit USB
+gid://shopify/Product/15480565137793|Ladegerät	Ultradünnes magnetisches 15W Powerbank-Ladegerät
+gid://shopify/Product/15480565825921|Ladegerät	Outdoor Powerbank mit Solar- und Handkurbel-Ladegerät
+gid://shopify/Product/15481079693697|Ladegerät	Kabelloses RGB-Ladegerät für's Auto
+gid://shopify/Product/15481260048769|Ladegerät	Tragbares magnetisches Wireless Ladegerät für Apple Watch
+gid://shopify/Product/15481379946881|Ladegerät	Solar Photovoltaik Panel 6W Ladegerät
+gid://shopify/Product/15481711886721|Ladegerät	Kabelloses Ladegerät

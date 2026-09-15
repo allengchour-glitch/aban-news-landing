@@ -1,3 +1,63 @@
+# Netzstecker unklar — Stand 2026-09-15
+
+CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Variante, deren SKU nicht die EU-Version ist. Welche Version CJ schickt, ist damit nicht belegt. Entscheidung: Variante auf die EU-SKU umstellen (Betreiber) oder DRAFT.
+
+- `15493830705537` Kabelloses USB-Ladegerät für Smartphones — CJ EU/UK/US · unsere SKU `CJ-CA2271DA-2A3F-4952-BD16-C0DEFA6D099C` · EU-SKU `CJXFLPCD00176-White-EU`
+- `15493830771073` Lithium-Akku-Ladegerät mit LCD-Anzeige — CJ EU/US · unsere SKU `CJ-D0D79BAA-0F1E-478C-9022-8F0AB4268317` · EU-SKU `CJXFLPCD00171-EU`
+- `15493851939201` Vollautomatischer Lockenstab für nasse & trockene Haare — CJ AU/EU/UK/US · unsere SKU `CJ-2411230330131615900` · EU-SKU `CJJF222157502BY`
+- `15493852299649` High-Speed Warmluftbürste 9-in-1 — CJ AU/EU/UK/US · unsere SKU `CJ-2410300946231605500` · EU-SKU `CJYD217664502BY`
+- `15493852561793` Haarglätter und Lockenstab — CJ EU/UK/US · unsere SKU `CJ-2410260122341603500` · EU-SKU `CJJF217205002BY`
+- `15493861245313` Keramik Haarglätter & Lockenstab — CJ EU/UK/US · unsere SKU `CJ-1383242172245086208` · EU-SKU `CJTF108387214NM`
+- `15493861736833` Automatischer Lockenstab Rose Tube Spiral — CJ AU/EU/UK/US · unsere SKU `CJ-1374252455684083712` · EU-SKU `CJTF105214702BY`
+- `15493861966209` Glätteisen & Lockenstab 2-in-1 mit Keramikplatten — CJ EU/UK/US · unsere SKU `CJ-1369174367887560704` · EU-SKU `CJTF103575602BY`
+- `15493862228353` Lockenstab mit Farboptionen — CJ EU/US · unsere SKU `CJ-1768917207410544640` · EU-SKU `CJJF198973802BY`
+- `15493870190977` Automatischer Lockenstab für nasse und trockene Haare — CJ EU/US · unsere SKU `CJ-1362368048094384128` · EU-SKU `CJTF101504602BY`
+- `15493870322049` 2-in-1 Lockenstab & Glätteisen — CJ AU/EU/UK/US · unsere SKU `CJ-1361117633956679680` · EU-SKU `CJTF101284601AZ`
+- `15493870682497` LED Display Anion Glättbürste — CJ EU/US · unsere SKU `CJ-1357596107458351104` · EU-SKU `CJTF100721201AZ`
+- `15493916918145` Lockenstab & Glätteisen mit Keramikheizung — CJ EU/US · unsere SKU `CJ-E5E5D880-93D9-4454-854D-E0EFCC47BB5D` · EU-SKU `CJBJMRTF00229-Black-EU`
+- `15493929042305` Handdampfglätter, multifunktional — CJ EU/UK · unsere SKU `CJ-1393098830223904768` · EU-SKU `CJZN112862703CX`
+- `15493929828737` Tragbares Mini-Reisebügeleisen — CJ AU/EU/UK/US · unsere SKU `CJ-1392713500673052672` · EU-SKU `CJZN112672802BY`
+- `15493935038849` Glätteisen und Lockenstab 2-in-1 — CJ EU/UK/US · unsere SKU `CJ-2F5748B7-4CEA-408B-ACCC-431423AECFC8` · EU-SKU `CJBJMRTF00170-Black-EU`
+- `15493935333761` Automatischer Lockenstab mit Goldkeramik — CJ AU/EU/UK/US · unsere SKU `CJ-582ABD98-62AB-49AE-B0AF-5946382E851E` · EU-SKU `CJBJMRTF00167-Black-EU`
+- `15493935563137` 2-in-1 Glätteisen mit Farb-Schutz — CJ AU/EU/UK/US · unsere SKU `CJ-2D0BEDA8-5943-46A4-982D-443D544CC6CF` · EU-SKU `CJBJMRTF00166-Blue-EU`
+- `15495027097985` 140W USB-C Laptop-Netzteil — CJ AU/EU/UK/US · unsere SKU `CJ-2502230714071623200` · EU-SKU `CJYD230354906FU`
+- `15495067140481` Sky Innovation IMAX B6 V2 Ladegerät — CJ EU/US · unsere SKU `CJ-2410240749501628300` · EU-SKU `CJYD217016202BY`
+- `15495087522177` Lockenstab mit Turmalin-Keramikbeschichtung — CJ EU/US · unsere SKU `CJ-72FA7243-0FF6-4183-8E59-423DAA30DB44` · EU-SKU `CJBJMRTF00119-EU`
+- `15495120617857` Glitzerndes Titanium-Glätteisen für trockenes Haar — CJ EU/UK/US · unsere SKU `CJ-3AA87DFB-8769-4D58-B31C-272388C609F9` · EU-SKU `CJBJMRTF00083-EU`
+- `15495120945537` Glättbürste mit Keramikheizplatte — CJ AU/EU/UK/US · unsere SKU `CJ-3713FA61-FEFA-4C54-A0EC-6EF46E936FC2` · EU-SKU `CJBJMRTF00072-Red-EU`
+- `15495121174913` Mestar Iron Pro Automatischer Lockenstab — CJ EU/UK/US · unsere SKU `CJ-14DC491E-0FFE-43B7-8F10-C0FD6151F9E9` · EU-SKU `CJBJMRTF00068-EU`
+- `15495121535361` Keramik-Glättbürste für glattes Haar — CJ EU/UK/US · unsere SKU `CJ-B0A44B70-26AE-40F4-A396-FECE25D95C95` · EU-SKU `CJBJMRTF00065-Black-EU`
+- `15495121633665` 2-in-1 Glätteisen & Lockenstab — CJ EU/UK/US · unsere SKU `CJ-5C866DCA-1DF9-43CF-B3C0-E18825729573` · EU-SKU `CJBJMRTF00064-Black-EU`
+- `15495122125185` P20 Bleiakku-Ladegerät für Auto & Motorrad — CJ AU/EU/UK/US · unsere SKU `CJ-1734764289375875072` · EU-SKU `CJYD191964802BY`
+- `15495123468673` 2-in-1 Glätteisen & Lockenstab mit LCD-Anzeige — CJ AU/EU/UK/US · unsere SKU `CJ-70AB2181-E297-4CB8-BF5E-3649EC0525D6` · EU-SKU `CJBJMRTF00056-Black-EU`
+- `15495126155649` 12V/6A Smart Batterieladegerät — CJ AU/EU/UK/US · unsere SKU `CJ-1726799058217472000` · EU-SKU `CJCD190212602BY`
+- `15495136346497` Ionen-Haartrockner mit Warmluft & Kaltstufe — CJ EU/US · unsere SKU `CJ-1387371061347225600` · EU-SKU `CJZN110472503CX`
+- `15495142998401` Schnellladegerät für Elektrowerkzeuge — CJ AU/EU/UK/US · unsere SKU `CJ-1656996652177166336` · EU-SKU `CJCD175658706FU`
+- `15495143063937` Vierfach-Schnellladegerät für Elektrowerkzeuge — CJ AU/EU/UK/US · unsere SKU `CJ-1656994222400086016` · EU-SKU `CJCD175658102BY`
+- `15495190839681` 4-in-1 Lockenstab & Haarglätter — CJ EU/US · unsere SKU `CJ-689D3400-C68A-4596-962F-DD299C25CC86` · EU-SKU `CJBJMRTF00030-EU`
+- `15495239664001` 9mm Super Slim Lockenstab für Ringellöckchen — CJ AU/EU/UK/US · unsere SKU `CJ-1692385061548593152` · EU-SKU `CJJF182513010JQ`
+- `15495319454081` Digitales 3-Port USB-Ladegerät mit Display — CJ EU/UK/US · unsere SKU `CJ-1430786237375057920` · EU-SKU `CJCD126456904DW`
+- `15495319814529` Keramik-Lockenstab mit Flüssigkristall-Display — CJ EU/UK/US · unsere SKU `CJ-1614901571899371520` · EU-SKU `CJJF166432804DW`
+- `15495320076673` Automatischer Lockenstab mit Negativ-Ionen — CJ EU/UK/US · unsere SKU `CJ-1613102847162331136` · EU-SKU `CJJF166111507GT`
+- `15495401177473` 2-in-1 Lockenstab und Glätteisen — CJ EU/UK/US · unsere SKU `CJ-1543458955765231616` · EU-SKU `CJJF151576605EV`
+- `15496264647041` USB-A C Ladegerät mit vier Anschlüssen — CJ AU/EU/UK/US · unsere SKU `CJ-1404624144460550144` · EU-SKU `CJCD117425310JQ`
+- `15496264745345` Lithium-Ionen Akku-Ladegerät 14.4V/18V — CJ AU/EU/UK/US · unsere SKU `CJ-1404338228680593408` · EU-SKU `CJCD117338504DW`
+- `15496330609025` Infrarot Dampf-Glätteisen — CJ EU/US · unsere SKU `CJ-9912CD2E-9B93-4270-A754-B87FB2BFA686` · EU-SKU `CJBJMRTF00241-Black-EU`
+- `15496330805633` Ionen-Glättbürste mit Keramikbeschichtung — CJ EU/UK/US · unsere SKU `CJ-D6F58728-3C73-4CF9-B547-944174750647` · EU-SKU `CJBJMRTF00236-Rose Gold-EU`
+
+## Auf DRAFT (keine EU-Version bei CJ)
+
+- `15493855281537` Kleine Tisch-Eismaschine für Zuhause — nur JP/UK/US
+- `15493862097281` Warmluftbürste für glattes & lockiges Haar — nur UK
+- `15495081787777` GaN-Schnellladegerät (100W) — nur AU
+- `15495088112001` Glättbürste — nur UK
+- `15495122780545` Auto Motorrad Batterie-Ladegerät — nur UK
+- `15495143522689` GaN PD-Ladegerät 65W/100W mit 2 oder 4 Ports — nur US
+- `15495238484353` 3-in-1 Warmluftbürste für Glätten & Locken — nur US
+- `15495321485697` 4-in-1 Lockenstab mit LCD-Anzeige — nur US
+- `15495321813377` Lockenstab für Wasserwellen 32mm Roségold — nur US
+
+---
 # Netzstecker unklar — Stand 2026-09-14
 
 CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Variante, deren SKU nicht die EU-Version ist. Welche Version CJ schickt, ist damit nicht belegt. Entscheidung: Variante auf die EU-SKU umstellen (Betreiber) oder DRAFT.
@@ -55,3 +115,4 @@ CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Varian
 - `15473383113089` Ionen-Glättbürste mit Touchscreen — nur US
 - `15479338500481` Schnellladegerät 3-Port — nur US
 - `15493706613121` Keramik-Lockenstab für Birnenblüten-Locken — nur US
+

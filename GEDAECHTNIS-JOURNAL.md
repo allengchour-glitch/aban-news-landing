@@ -65,6 +65,10 @@ Firmenkonten, ohne Preislisten und ohne Plan-Upgrade funktioniert. Verkehr bishe
 die Seite ist einen Tag alt, das ist kein Befund, sondern eine Messung, die erst in zwei Wochen
 etwas sagt.
 
+**BETREIBER-ENTSCHEID am selben Tag, wörtlich: «b2b sein lassen wen kosten».** Damit ist B2B
+geschlossen, solange es Geld kostet. Kein Plan-Upgrade, keine Firmenkonten, keine Preislisten.
+Der kostenlose Ersatz bleibt die Seite «Firmen & Vereine» mit Anfrageformular.
+
 **Lehre: Eine Werbemail des Anbieters ist eine Aufforderung, kein Statusbericht.** Bevor ein
 «Setup fortsetzen» in eine Aufgabe wird, zählt man nach, ob überhaupt etwas existiert. Hier waren
 es vier Abfragen und zwei Minuten.

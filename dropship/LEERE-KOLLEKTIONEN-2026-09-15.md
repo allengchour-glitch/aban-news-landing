@@ -1,170 +1,101 @@
-# Leere Kollektionen — gemessen am 15.09.2026, 05:00 UTC
+# Leere Kollektionen — was füllen, was abmelden (Messung 15.09.2026)
 
-**118 von 518 Kollektionen führen null kaufbare Produkte.** Gemessen mit
-`productsCount(query:"collection_id:<id> AND status:active")` über alle Kollektionen des Shops —
-nicht mit `productsCount` der Kollektion selbst, denn das zählt Entwürfe mit und meldete für
-«LuxeStyle Premium» 7'889, während dort null kaufbare Ware stand.
+Betreiber-Frage: «118 von 518 in Entwurf? oder fix». **Die Antwort ist beides, aber nicht pauschal.**
+Am 14.09. stand «Weihnachten» im Menü und führte auf 4 Artikel, während 162 passende im Katalog
+lagen — es fehlte nur der Tag. Diese Frage wurde deshalb für alle 118 einzeln gestellt:
+**Gibt es die Ware im Katalog, oder gibt es sie nicht mehr?**
 
-## Wie dringend ist das? Zuerst der Verkehr
+Gemessen wurde je Kollektion mit ihrem EIGENEN definierenden Merkmal (Regel-Tag bzw. Hersteller),
+nicht mit Wörtern aus dem Kollektionstitel. Das ist der Unterschied zwischen 39 und 18 «füllbaren»:
+generische Titelwörter wie «Herren» (4'711 Treffer) oder «Damen» (2'487) messen nichts.
 
-90 Tage, Landeseiten vom Typ Kollektion, ShopifyQL: **1'213 Sitzungen gesamt**, davon
-528 auf `viral-hits` und 496 auf `wasserfester-schmuck` — zusammen **84 %**. Auf die leeren
-Kollektionen entfallen zusammen rund **23 Sitzungen in 90 Tagen**. Das ist kein Notfall.
-Was dagegen spricht, sie liegen zu lassen: Google indexiert 118 Seiten ohne Inhalt, und wer doch
-dort landet, sieht ein leeres Regal.
+## Das Ergebnis in vier Gruppen
 
-## Drei Gruppen, drei Antworten
+| Gruppe | Zahl | Was damit zu tun ist |
+|---|---|---|
+| **A FÜLLBAR** | **18** | Die Ware ist da, der Tag fehlt. Füllen. |
+| **B TOT** | **76** | Null passende aktive Artikel. Abmelden und weiterleiten. |
+| **C DÜNN** | **13** | 1 bis 7 Artikel. Einzeln ansehen, meist Saison. |
+| **M ohne Regel** | **11** | Handverlesen, Ware inzwischen Entwurf. Einzeln. |
 
-### 1. Marken-Kollektionen (55) — dauerhaft leer, sie füllen sich nie wieder
-Das waren BigBuy-Marken. Das Abo lief am 15.09. aus, die Ware ist Entwurf, es gibt keinen
-Lieferanten mehr. **Vorschlag: aus dem Onlineshop nehmen und auf die passende Oberkategorie
-weiterleiten** (Uhrenmarken → `/collections/uhren`, Modemarken → `/collections/damen-mode`
-bzw. `herren-mode-sub`, Duft → `/collections/parfum-duefte`). Reihenfolge beachten: eine
-Weiterleitung greift erst, wenn die Seite nicht mehr veröffentlicht ist.
+## A — füllbar (18)
 
-| Handle | Titel |
-|---|---|
-| `adidas` | Adidas |
-| `beauty-marken` | Beauty-Marken |
-| `calvin-klein` | Calvin Klein |
-| `casio` | Casio |
-| `citizen` | Citizen |
-| `dolce-gabbana` | Dolce & Gabbana |
-| `elie-saab` | Elie Saab |
-| `festina` | Festina |
-| `fila` | Fila |
-| `gant` | Gant |
-| `guess` | Guess |
-| `hugo-boss` | Hugo Boss |
-| `kenzo` | Kenzo |
-| `lancome` | Lancôme |
-| `loreal` | L'Oréal |
-| `lorus` | Lorus |
-| `lotus-uhren` | Lotus |
-| `marke-adidas` | Adidas |
-| `marke-artdeco` | Artdeco |
-| `marke-champion` | Champion |
-| `marke-chanel` | Chanel |
-| `marke-clinique` | Clinique |
-| `marke-gant` | Gant |
-| `marke-hi-tec` | Hi-Tec |
-| `marke-jack-jones` | Jack & Jones |
-| `marke-logitech` | Logitech |
-| `marke-nacon` | Nacon |
-| `marke-new-era` | New Era |
-| `marke-nike` | Nike |
-| `marke-project-x-paris` | Project X Paris |
-| `marke-puma` | Puma |
-| `marke-quid` | Quid |
-| `marke-reebok` | Reebok |
-| `marke-safta` | Safta |
-| `marke-startech` | Startech |
-| `marke-under-armour` | Under Armour |
-| `marke-versa` | Versa |
-| `marken-sport` | Marken-Sportswear |
-| `michael-kors` | Michael Kors |
-| `mode-marken` | Mode-Marken |
-| `morellato` | Morellato |
-| `olivia-burton` | Olivia Burton |
-| `paul-hewitt` | Paul Hewitt |
-| `pierre-cardin` | Pierre Cardin |
-| `police` | Police |
-| `puma` | Puma |
-| `reebok` | Reebok |
-| `superdry` | Superdry |
-| `swatch` | Swatch |
-| `tech-marken` | Tech & Audio-Marken |
-| `tom-hope` | Tom Hope |
-| `tommy-hilfiger` | Tommy Hilfiger |
-| `under-armour` | Under Armour |
-| `weleda` | Weleda |
-| `yves-saint-laurent` | Yves Saint Laurent |
+| Handle | Titel | passende aktive Artikel |
+|---|---|---|
+| `spielzeug-kostueme` | Kostüme & Verkleidung | 549 |
+| `ladegeraete` | Ladegeräte | 290 |
+| `velo` | Velo & Radsport | 223 |
+| `spielzeug-puzzles` | Puzzles | 186 |
+| `spielzeug-figuren` | Action- & Sammelfiguren | 186 |
+| `spielzeug-brettspiele` | Brett- & Gesellschaftsspiele | 186 |
+| `spielzeug-puppen` | Puppen & Puppenhaus | 186 |
+| `kaffee-maschinen` | Kaffee & Espresso | 104 |
+| `bar-tools` | Bar-Tools | 97 |
+| `bar-wein` | Bar & Wein | 97 |
+| `premium-beauty` | Beauty · Premium | 59 |
+| `made-in-switzerland-premium` | Curated Premium | 41 |
+| `smart-home-sub` | Smart Home | 27 |
+| `beamer-projektoren` | Beamer & Projektoren | 23 |
+| `vasen` | Vasen | 15 |
+| `maker-elektronik` | Elektronik für Bastler | 13 |
+| `e-scooter-trottinett` | E-Scooter & Trottinett | 12 |
+| `klima-ventilatoren` | Klima & Ventilatoren | 10 |
 
-### 2. Saison (8) — füllen sich von selbst wieder
-Nichts tun. Black Friday, Silvester, Vatertag, WM, Klima und Ventilatoren sind zeitlich gebunden.
-Eine Ausnahme: `klima-ventilatoren` hat **15 Sitzungen** und ist damit die meistbesuchte leere
-Kollektion. Prüfen, ob dort CJ-Ware fehlt.
+**Davon am 15.09. wirklich gefüllt: vier.** Bei den übrigen ist das Suchwort mehrdeutig, und
+Shopify kennt keine Wortgrenze (`title:Velo` ohne Sternchen liefert 0, `title:*velo*` liefert
+«Velours»). Gemessen und deshalb verworfen:
 
-| Handle | Titel |
-|---|---|
-| `black-friday` | Black Friday |
-| `black-friday-2026` | Black Friday & Cyber Week |
-| `fan-zone-schweiz` | Fan-Zone Schweiz – WM 2026 |
-| `haustier-kuehlung` | Haustier-Sommer & Kühlung |
-| `klima-ventilatoren` | Klima & Ventilatoren |
-| `silvester-neujahr` | New Year & Silvester |
-| `vatertag-2026-papa` | Vatertag 2026 – Geschenke für Papa |
-| `wm-fussball-2026` | Fussball & Fan 2026 |
+| Kollektion | Suchwort | was es fälschlich trifft |
+|---|---|---|
+| bar-tools, bar-wein | Bar | Ohrringe «Barque», «Schoggi Bar»-Tasse, Pilates Bar |
+| maker-elektronik | maker | Waffel-Maker, Sandwich-Maker, Smoothie-Maker — **alle sechs Stichproben** |
+| velo | velo | Velours-Cap, Sneaker «Velocità» |
+| kaffee-maschinen | kaffee | Daunenjacke «Kaffeebraun», Kaffee-Nagelsticker |
+| premium-beauty | beauty | Jumpsuit mit «Beauty-Rücken» |
+| smart-home-sub | Smart Home | «Nice Smart» Gemüseschneider |
+| klima-ventilatoren | klima | Halsschal für klimatisierte Räume, Haustierbett |
+| spielzeug-kostueme | Kostüm | trifft sauber, aber es gibt schon zwei Kostüm-Kategorien |
 
-### 3. Der Rest (55) — einzeln ansehen
-Hier ist der Grund nicht einheitlich: manche Regeln zeigen auf Tags, die es nicht mehr gibt,
-manche auf Ware, die gedraftet wurde. Vor jeder Änderung die Regel lesen.
+Diese acht brauchen ein besseres Merkmal als ein Titelwort, zum Beispiel den Produkttyp. Das ist
+Handarbeit pro Kollektion und lohnt sich erst, wenn eine davon Verkehr bekommt.
 
-| Handle | Titel |
-|---|---|
-| `actionfiguren` | Actionfiguren & Sammelfiguren |
-| `akupressur` | Akupressur |
-| `angebote` | Angebote & Deals |
-| `arbeitskleidung` | Arbeitskleidung & Berufsbekleidung |
-| `auto-handy-laden` | Auto-Halterungen & Laden |
-| `auto-power` | Auto-Power |
-| `auto-reinigung` | Auto-Reinigung |
-| `bar-tools` | Bar-Tools |
-| `bar-wein` | Bar & Wein |
-| `beamer-projektoren` | Beamer & Projektoren |
-| `damen-duefte` | Damen-Düfte |
-| `dessous-reizwaesche` | Dessous & Reizwäsche |
-| `e-scooter-trottinett` | E-Scooter & Trottinett |
-| `elektriker-werkzeug` | Elektriker & Installation |
-| `express-lieferung` | Express-Lieferung EU |
-| `haustier-tech` | Haustier-Tech |
-| `herren-duefte` | Herren-Düfte |
-| `home-family` | Home & Family |
-| `indoor-grow` | Indoor-Gärtnern & Grow |
-| `kaffee-maschinen` | Kaffee & Espresso |
-| `kueche-organisation` | Küchen-Organisation |
-| `ladegeraete` | Ladegeräte |
-| `made-in-switzerland-premium` | Curated Premium |
-| `maker-elektronik` | Elektronik für Bastler |
-| `metalldetektor` | Metalldetektoren & Schatzsuche |
-| `metalldetektoren-schatzsuche` | Metalldetektoren & Schatzsuche |
-| `mystery-top-deals` | Mystery & Top-Deals |
-| `naturkosmetik-beauty` | Naturkosmetik & Beauty |
-| `parfuem-damen` | Damenparfüm |
-| `parfuem-herren` | Herrenparfüm |
-| `premium-beauty` | Beauty · Premium |
-| `premium-bundles` | Premium-Bundles — Spare CHF 19+ |
-| `premium-marken-lager` | Premium & Marken |
-| `refurbished` | Refurbished – Generalüberholt & günstiger |
-| `reise-outdoor` | Reise & Outdoor |
-| `self-care-wellness-1` | Self-Care & Wellness |
-| `servieren` | Servieren |
-| `smart-home-sub` | Smart Home |
-| `solar-gartenlicht` | Solar- & Gartenlicht |
-| `spielzeug-brettspiele` | Brett- & Gesellschaftsspiele |
-| `spielzeug-figuren` | Action- & Sammelfiguren |
-| `spielzeug-kostueme` | Kostüme & Verkleidung |
-| `spielzeug-puppen` | Puppen & Puppenhaus |
-| `spielzeug-puzzles` | Puzzles |
-| `tauchen` | Tauchen & Schnorcheln |
-| `tauchen-schnorcheln` | Tauchen & Schnorcheln |
-| `tiktok-ads-ready` | Im Video vorgestellt |
-| `tiktok-hero-products` | Trend-Favoriten |
-| `tiktok-viral` | TikTok-Hits 2026 |
-| `topseller` | Topseller |
-| `vasen` | Vasen |
-| `velo` | Velo & Radsport |
-| `vereins-fanartikel` | Vereins-Fanartikel |
-| `wandkunst` | Wandkunst |
-| `wellness-bundles` | Wellness-Box Bundles |
+## B — tot (76): abmelden und weiterleiten
 
-## Was daran heute schon behoben wurde
+Das sind fast ausschliesslich **BigBuy-Markenregale**, deren Lieferant seit dem 15.09. weg ist:
+Michael Kors, Calvin Klein, Hugo Boss, Swatch, Casio, Adidas, Puma, Lancôme und so weiter. Dazu
+abgelaufene Anlässe (WM 2026) und Kategorien ohne Ware (Tauchen, Servieren).
+Sie füllen sich **nie wieder**, weil es den Lieferanten nicht mehr gibt.
 
-- `luxestyle-premium` (im Menü als «Premium & Marken») hatte die Regel `Tag = bigbuy` und war nach
-  dem BigBuy-Abschied leer. Neue Regel `Tag = premium` → 41 aktive Produkte.
-- Sechs Menüeinträge zeigten auf `/en/collections/…` und damit auf 404, darunter der Hauptpunkt
-  «Schmuck & Uhren». Alle sechs korrigiert.
-- Neun Kollektionstexte nannten Produkte namentlich, die es nicht mehr aktiv gibt
-  («Adidas Colorblock», «Puma Straight», «Champion Legacy», «Gentleman's Premium Gift Box»,
-  «Aromatherapy Atelier Geschenkbox», «Clean Desk», «Scintille», «Wer ist es?», «JRM076»).
-  Der Weihnachts-Text wurde neu geschrieben, die übrigen acht stehen noch offen.
+Vorschlag unverändert: aus dem Onlineshop nehmen, dann 301 auf die passende Oberkategorie.
+**Nicht ausgeführt** — das ist der Punkt, an dem «Katalog nicht verkleinern» und «keine leeren
+Regale» sich widersprechen, und das entscheidest du.
+
+## C — dünn (13) und M — ohne Regel (11)
+
+| Handle | Titel | aktive Artikel |
+|---|---|---|
+| `silvester-neujahr` | New Year & Silvester | 7 |
+| `auto-power` | Auto-Power | 7 |
+| `akupressur` | Akupressur | 6 |
+| `wandkunst` | Wandkunst | 5 |
+| `elektriker-werkzeug` | Elektriker & Installation | 5 |
+| `auto-reinigung` | Auto-Reinigung | 4 |
+| `metalldetektoren-schatzsuche` | Metalldetektoren & Schatzsuche | 4 |
+| `metalldetektor` | Metalldetektoren & Schatzsuche | 4 |
+| `premium-marken-lager` | Premium & Marken | 4 |
+| `indoor-grow` | Indoor-Gärtnern & Grow | 2 |
+| `vatertag-2026-papa` | Vatertag 2026 – Geschenke für Papa | 1 |
+| `mystery-top-deals` | Mystery & Top-Deals | 1 |
+| `vereins-fanartikel` | Vereins-Fanartikel | 1 |
+
+Die Saison-Kollektionen darunter (Vatertag, Silvester, Black Friday) sind kein Befund: Sie füllen
+sich, wenn die Saison kommt und der Tag gesetzt wird.
+
+Ohne Smart-Regel, also handverlesen und inzwischen leer:
+`naturkosmetik-beauty`, `reise-outdoor`, `self-care-wellness-1`, `express-lieferung`, `tiktok-ads-ready`, `home-family`, `wellness-bundles`, `tiktok-viral`, `tiktok-hero-products`, `premium-bundles`, `angebote`
+
+## Werkzeug
+
+`automation/leere_kategorien_fuellen.py` trägt die geprüften Paare aus Suchwort und Tag; jedes neue
+Paar wird erst als Stichprobe angesehen, dann eingetragen. Ledger
+`dropship/_leere_kategorien_gefuellt.txt`, `DRY=1` zeigt nur.

@@ -9,6 +9,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 > Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`. Parallel-Sessions: `SHARED-MEMORY.md`.
 
 ## 📌 Aktueller Stand (15.09.2026, 07:45 UTC) — was JETZT gilt
+- **⛔ B2B bleibt AUS (Betreiber 15.09.: «b2b sein lassen wen kosten»).** Gemessen: 0 Firmen, 0 B2B-Kataloge, Plan Basic. Kein Upgrade, keine Firmenkonten. Ersatz = Seite «Firmen & Vereine» mit Anfrageformular.
 - **BigBuy ist zu Ende.** Abo «Pack Ecommerce» lief am 15.09. aus (gekündigt 16.08.). `bigbuy_abschied.py`
   hat 274 Produkte gedraftet; **0 aktive mit BigBuy-Merkmal**. Seine Abfrage traf nur `tag:bigbuy` — 136
   Produkte mit `bb-…`-SKU wären bestellbar geblieben; Auswahl ist jetzt Tag ODER SKU. Die PC-Routine
