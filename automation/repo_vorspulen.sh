@@ -18,7 +18,10 @@ timeout 60 git fetch origin "$B" || {
   git update-ref -d "refs/remotes/origin/$B" 2>/dev/null
   timeout 60 git fetch origin "$B" || exit 1
 }
-git stash -u >/dev/null 2>&1
+# ⚠️ 15.09.2026: `git stash -u` + `git stash drop` haben unversionierte Arbeit STILL
+# geloescht (der fertige BigBuy-Bericht war weg, bevor er committet war). Der Stash
+# wird deshalb NICHT mehr weggeworfen, und was drin liegt, wird benannt.
+git stash -u >/dev/null 2>&1 && HAT_STASH=1 || HAT_STASH=0
 git reset --hard "origin/$B" || exit 1
 python3 - "$S" <<'EOF'
 import os, sys
@@ -34,7 +37,11 @@ for f in os.listdir(snap):
         mehr += len(neu); print(f, "+", len(neu))
 print("union:", mehr)
 EOF
-git stash drop >/dev/null 2>&1
+if [ "$HAT_STASH" = 1 ]; then
+  echo "STASH BEHALTEN (nicht verworfen) — unversionierte Arbeit lag im Baum:"
+  git stash show --name-only stash@{0} 2>/dev/null | sed "s/^/  /"
+  echo "  zurueckholen: git checkout stash@{0} -- <datei>   ·  Liste: git stash list"
+fi
 rm -rf "$S"
 git add -A dropship/ && git commit -q -m "Ledger-Union nach Snapshot-Restore [skip ci]" 2>/dev/null
 timeout 45 git push origin "$B" 2>&1 | tail -1
