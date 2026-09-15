@@ -5,6 +5,44 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 💰 «lerne von anderen wie man profit macht» — und der Versanderlös trägt alles (15.09., 19:00 UTC)
+
+Vier fremde Ratschläge geholt, jeden an den eigenen neun Bestellungen gegengeprüft. Zwei davon
+gelten bei uns nicht, einer füllte eine echte Lücke, einer traf eine grosse Klasse.
+
+**Der Massstab zuerst** (GEMESSEN, Einkaufspreis je verkaufter Variante aus der Admin-API):
+6 von 9 Bestellungen haben einen belegten EK · Einnahmen CHF 190.32 · netto CHF 55.18 ·
+**29,0 % Nettomarge, CHF 9.20 je Bestellung, AOV 33.00, null Verluste.** Für CHF 1'000 Gewinn
+braucht es 109 Bestellungen; heute sind es rund zwei im Monat.
+
+**Der Ratschlag, der sich in sein Gegenteil drehte.** QUELLE: Gratisversand-Schwelle auf
+15–30 % über dem AOV, über 40 % brechen die Körbe ab. Bei AOV 33 wäre das CHF 38–43, wir
+liegen effektiv bei 50 — nach dem Buchstaben zu hoch. Die Gegenprobe an den echten
+Bestellungen: ohne den Versanderlös von CHF 7 wären **3 von 5 Verluste** gewesen
+(#1011 +3.72 → −2.98, #1013 +4.87 → −1.82, #1015 +0.75 → −5.94). Bei uns ist Fracht eine
+**Stückkost aus China**, kein Lagerfixkostenblock — jede Sendung kostet erneut. Die Schwelle
+ist keine Conversion-Bremse, sondern eine Schutzmauer. **Ein AOV-Ratschlag setzt eine
+Kostenstruktur voraus, die er nicht mitliefert.** Ebenso der «40–60 % Rohmarge»-Benchmark: der
+finanziert Werbung, die wir nicht schalten.
+
+**Der Fund.** Bulk-Export über 432'085 aktive Varianten: **1'785 Produkte verlieren Geld,
+selbst wenn die Kundin CHF 7 Versand zahlt** — 433 rettet eine Preiskorrektur bis 1,6-fach,
+bei 1'352 frisst die Fracht alles (Subwoofer CHF 15.90, nötig wären 992.83; Katzenbaum 41.90
+bei 403.13 Stückkosten — keine kaputten Daten, sperrige Ware aus China kostet wirklich so
+viel). Der bestehende Preisboden konnte das nie verhindern: **er ist absolut (14.90/16.90),
+nicht margenbasiert.** Die zwölf teuersten sind gedraftet (~CHF 5'480 Verlustrisiko);
+`automation/verlustbringer.py` hat den Rest, der Massenlauf ist vom Filter blockiert.
+
+**Und die Lehre über mich selbst.** Mein erster Lauf meldete **229'374 Verlustartikel, 76 % des
+Katalogs** — und meine Bestellrechnung «2 von 6 waren Verluste». Beides falsch, beides
+derselbe Fehler: `cj_kosten_backfill.mjs` schreibt in `unitCost` ausdrücklich «Warenkosten +
+**VOLLE Fracht**», und ich habe die Fracht ein zweites Mal abgezogen. Aufgefallen ist es nur,
+weil die Zahl zu gross war, um wahr zu sein. **Ein Befund, der 76 % des Bestands trifft, ist
+fast immer eine Aussage über das Messgerät.** Regel: bevor eine Kostenrechnung gilt, muss
+belegt sein, was in der Kostenzahl schon steckt — nachzulesen im Skript, das sie geschrieben
+hat, nicht vermutet. Werkzeug mit Selbsttest an den echten Bestellungen:
+`tools/marge_wahrheit.py`. Bericht: `dropship/LERNEN-PROFIT-2026-09-15.md`.
+
 ## 2026-09-15 · 🧷 «Needed a single revision» war kein kaputter Ref, sondern mein Befehl (15.09., 18:35 UTC)
 
 Beim Abschluss von «push überall» meldete
