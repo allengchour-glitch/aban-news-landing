@@ -18,11 +18,16 @@ Der Antwortentwurf lag danach **sechs Wochen unversendet** im Postfach — Betre
   Rückmeldung», Interesse bekräftigt, und **drei Fragen** ergänzt, die die Sichtung offen
   gelassen hatte: Feed-Format und Abrufrhythmus, **Gebühren/Mindestumsatz** (steht nicht
   öffentlich auf der Website), Mindestbestellwert je Auftrag.
-- ⚠️ **Offen und nur vom Betreiber prüfbar: hängt das ausgefüllte, UNTERSCHRIEBENE PDF wirklich
-  am Entwurf?** Der Mailtext behauptet es. Die Unterschrift kann ich nicht leisten, und über die
-  API ist der Anhang eines Entwurfs nicht lesbar (`get_message` → «caller does not have
-  permission»). Ein Neuschreiben des Entwurfstexts kann einen Anhang zudem verlieren.
-  **Vor dem Senden im Gmail-Entwurf nachsehen — ohne Formular ist die Mail wertlos.**
+- ✅ **Betreiber hat bestätigt (15.09.): das ausgefüllte PDF hängt am Entwurf.** Damit ist der
+  einzige Blocker weg. Nachträglich repariert: Gmail hatte die Shop-Adresse im Fliesstext in eine
+  Weiterleitungs-URL verwandelt (`google.com/url?q=http://luxestyle.ch&source=gmail&ust=…`) —
+  Domain steht jetzt gar nicht mehr im Text, nur noch `info@luxestyle.ch` in der Signatur.
+  **Lehre: eine nackte Domain im Mailtext wird beim Speichern linkifiziert und als hässliche
+  Tracking-URL SICHTBAR — in Geschäftsmails Domain weglassen oder in die Signatur setzen.**
+- ⚠️ **Senden muss der Betreiber selbst.** Der Gmail-Konnektor kann einen BESTEHENDEN Entwurf
+  nicht abschicken (kein `send_draft`); `send_message` würde eine neue Mail **ohne Anhang**
+  erzeugen — also genau den Fehler, den wir vermeiden wollen. Gleiches gilt künftig für jede
+  Mail mit Anhang.
 ### Was kostet Shopcom? — gemessen am 15.09.2026: **nirgends veröffentlicht**
 
 Beide Seiten heute per WebFetch gelesen:
