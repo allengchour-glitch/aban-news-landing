@@ -53,6 +53,23 @@ BigBuy, nicht bei der Kontonummer und nicht am Klick.
    07.07. «pendiente de pago») blockiert die Auszahlung. Er darf nicht blind storniert werden —
    er könnte das Guthaben selbst tragen. Das muss BigBuy erklären.
 
+## ✅ Gesendet — 15.09.2026, 08:31:30 UTC
+
+Der Betreiber hat die Mail an `customers@bigbuy.eu` abgeschickt (Betreff «Customer 966388 –
+four confirmed payout requests, EUR 1,000.00 never paid; 5-working-day deadline expired today»,
+Thread `1a0a4047c72dd809`). Sie führt mit dem Befund oben: ein Antrag mit **richtiger** IBAN
+wurde nicht ausgeführt, die zugesagte Frist ist abgelaufen.
+
+⚠️ Die Mail läuft in einem **neuen Thread**, nicht im alten BigBuy-Verlauf — die Kundennummer
+966388 steht deshalb in der ersten Zeile.
+
+**Nachkontrolle liegt auf 16.09. 08:10 UTC** (`trig_01N9vbqe55Az7oTdvu6sh21m`): Guthaben messen,
+Antwort suchen. Sinkt `purse.json` unter 1'000.00, ist Geld geflossen. Nächster
+Auszahlungs-Dienstag: **22.09.**
+
+Wenn wieder nur der Ticket-Textbaustein zurückkommt, bleibt nur das Ticket in der Abteilung
+**Administration** — Inhalt siehe unten.
+
 ## Der Weg, den BigBuy selbst vorschreibt
 
 BigBuys Antwort vom 08.09. sagt es wörtlich: **Mail ist nicht der Weg, ein Ticket ist es.**
