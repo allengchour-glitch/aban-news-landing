@@ -43632,3 +43632,5 @@ gid://shopify/Product/15454002905473	ok
 gid://shopify/Product/15453922754945	bei-cj-weg	CJ-CJYD233279401AZ
 gid://shopify/Product/15453898768769	bei-cj-weg	CJ-2601160108251617500
 gid://shopify/Product/15453787521409	bei-cj-weg	CJ-2603100124411618700
+gid://shopify/Product/15453761667457	ok
+gid://shopify/Product/15453761601921	ok
