@@ -68,6 +68,59 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-14 (🔴 DIE MARGE VON GESTERN GALT FÜR EIN ACHTEL DES KATALOGS — 18 Produkte korrigiert):**
+- **Auftrag:** Dauerauftrag. Voller Bericht: **`dropship/LERNEN-PREISE-VARIANTEN-2026-09-14.md`**.
+- **🚨 EIGENE KORREKTUR, gemessen: die gestrigen „58,9 % Median-Rohmarge / 4 Verlustfälle von 231"
+  beschreiben einen Ausschnitt, nicht den Shop.** Zwei blinde Flecken: (1) **eine Zeile je Produkt
+  misst die BILLIGSTE Variante** — `unitCost` steigt mit der Grösse, Ballettschuhe gehen von 45 %
+  (erste Variante) auf 5 % (letzte, gleicher Preis); (2) **`grep -c '^CJ-[0-9]'` auf der gestrigen
+  CSV ergibt 0 von 250** — gemessen wurde ausschliesslich die alte Importgeneration (`CJYD…`),
+  **alle 18 heute gefundenen Verlustprodukte tragen das andere Schema `CJ-<pid>`**.
+- **📊 ZWEI NEUE STICHPROBEN, verschieden sortiert damit nicht die Sortierung das Ergebnis erklärt
+  (je 120 Produkte): Median-Rohmarge 20,6 % (alphabetisch) und 23,4 % (zuletzt geändert)** über die
+  schlechteste kaufbare Variante — gegen 31,4 %, wenn man je Produkt eine Zeile liest. **Verluste
+  6 von 82 bzw. 14 von 49 mit bekanntem Einkaufspreis; 53 von 82 (65 %) bleiben nach WELCOME10 unter
+  38 %.** Versand ist in `unitCost` nicht drin, die echten Zahlen liegen darunter. Die Preise stehen
+  auf 14.90/15.90/17.90/21.90 unabhängig vom Einkauf — sieht nach einem Import aus, der nach
+  Kategorie bepreist hat (BEHAUPTUNG, belegt ist nur das Muster).
+- **🛠️ GEBAUT `tools/varianten_preis.mjs`** (24 Selbsttests): rechnet `kosten_max` gegen `preis_min`.
+  Die Preisregel (Leiter `x4.90/x9.90`, nach WELCOME10 ≥ 38 %) steckt als `zielpreis()` drin und
+  **reproduziert alle sieben Preisentscheidungen vom 13.09. exakt** — kein neues Gefühl, die alte
+  Regel aufgeschrieben. Daten: `dropship/preise-varianten-2026-09-14{a-alphabetisch,b-neueste}.csv`.
+- **✅ GEÄNDERT (live): 13 Produkte / 45 Varianten hochgesetzt**, `userErrors` leer. Steel Tongue Drum
+  ×3 69.90→**164.90** (EK 91.13) · Camping-Gaskocher 41.90→**84.90** · Dokumenten-Organizer
+  32.90→**79.90** · Reinigungbürste 42.90→**79.90** · Yogamatte 8 Var. 21.90→**54.90–79.90** ·
+  Katzen-Trinkbrunnen 6 Var. →**24.90–64.90** · Silikon-Set 28.90→**54.90** · Ladeadapter→54.90 ·
+  Kabel-Tray 24.90→**49.90** · Nachttischlampe 18.90→**39.90** · Casual Damenschuhe 18 Var.
+  16.90→**34.90**. **Yogamatte und Trinkbrunnen bekamen Preise JE VARIANTE**, weil die Einkaufspreise
+  dort wirklich auseinanderliegen. **An der echten Seite gegengeprüft** (164.90/39.90/79.90/49.90,
+  alle HTTP 200), nicht der API-Antwort geglaubt.
+- **⛔ 5 PRODUKTE AUS DEM VERKAUF (DRAFT), Seiten liefern jetzt 404:** **zwei Halbhelme
+  (Kinder + Elektroroller) tragen nur die chinesische „3C"-Kennzeichnung, keinen CE-Nachweis nach
+  EN 1078** — ein Helm ist Schutzausrüstung, das ist kein Preisthema; beide waren zusätzlich
+  Verlustprodukte. Dazu Abtropfregal (20.90 bei EK 68.11, −226 %), Panda-Plüschkissen (17.90/35.58),
+  12-teiliges Edelstahl-Kochtopf-Set (59.90/87.69, schweres Sperrgut — dieselbe Klasse wie die
+  CHF 869.62 Rückerstattungen im Juli). **Lehre: bei Helmen, Schutzbrillen, Kindersitzen und
+  Elektrogeräten auf die Kennzeichnung sehen, nicht nur auf die Marge.**
+- **⚠️ NEUE MESSFALLE: `products(query:"status:active")` liefert auch ENTWÜRFE.** Gemessen:
+  `15447562486145` kam in der Stichprobe, ist aber DRAFT, in null Kanälen, Seite 404. Gegenprobe
+  direkt danach sauber (`id:… AND status:active` leer, `… AND status:draft` gefunden,
+  `status:zzzgibtesnicht` leer) → **der Suchindex hinkt hinterher**. Eine Stichprobe über
+  `status:active` ist nicht garantiert aktiv; Status der Produkte, über die man berichtet, einzeln
+  nachfragen. Von den 13 neu bepreisten sind **12 tatsächlich aktiv und live**.
+- **🔴 BEHOBEN SIND 18 PRODUKTE, NICHT DIE KLASSE.** Wenn das Muster hält, stehen hunderte Produkte
+  unter der Zielmarge. Nächste Runde: alle SKUs `CJ-<pid>` nach derselben Regel neu bepreisen —
+  **das braucht `SHOPIFY_CLIENT_ID`/`_SECRET`/`SHOPIFY_SHOP` als Env-Werte**, sonst sind es
+  Einzelmutationen von Hand.
+- **🔑 JUDGE.ME-TOKEN GEPRÜFT (User gab `zIFh_…` als „privat" an): Judge.me selbst sagt öffentlich.**
+  `GET /api/v1/reviews?api_token=…&shop_domain=…` → **403 „You are using a public token which does
+  not have enough permissions"**, ebenso `/reviews/count`. Gegenprobe mit erfundenem Token → **401**
+  („Failed to authenticate"), der Token ist also gültig, nur nicht berechtigt. Bearer-Header → 401.
+  **Der Reviews-Import bleibt blockiert**, und die versehentlich angelegte Test-Bewertung
+  („Probelauf") lässt sich damit nicht löschen. **BEHAUPTUNG, ungeprüft:** Judge.mes REST-API
+  könnte an einen Bezahlplan gebunden sein — das würde das 403 ebenfalls erklären.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-13, dritte Runde (💰 DREI VON NEUN VERKAUFTEN POSTEN GINGEN MIT VERLUST RAUS):**
 - **Auftrag:** „lerne weiter". Endlich **Hack 3 aus dem offiziellen Shopify-Video gemacht:
   Preisstrategie aus eigenem Katalog UND eigenen Bestelldaten** — der einzige offene Punkt, der

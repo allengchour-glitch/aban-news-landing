@@ -7,6 +7,7 @@ quelle: CLAUDE.md
 Erzeugt von `tools/vault.py bauen` aus den 📌-Bloecken in `CLAUDE.md`.
 **Nicht von Hand bearbeiten** — Aenderungen gehoeren in `CLAUDE.md`.
 
+- **2026-09-14** — 🔴 DIE MARGE VON GESTERN GALT FÜR EIN ACHTEL DES KATALOGS — 18 Produkte korrigiert
 - **2026-09-13** — 📚 NUR GELERNT — Shopify+Claude, Dropship-Szene, Profit; Theme-Sperre GEKNACKT
 - **2026-09-12** — 🏷️ VARIANTEN AUF DEUTSCH — 291 Werte live, Wächter fing 2 eigene Fehler
 - **2026-09-12** — 💰 VERKÄUFE — Gedächtnis dreifach widerlegt, Startseite als Hauptdefekt gefunden

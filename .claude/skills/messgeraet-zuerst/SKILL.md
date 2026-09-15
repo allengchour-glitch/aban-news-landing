@@ -80,6 +80,14 @@ lieferten**. Es filtern: `customerSegmentMembers { totalCount }` und die Listena
 `customers(query:)` / `products(query:)` — die geben auf den Unsinn-Filter korrekt eine leere
 Liste zurück.
 
+⚠️ **Die Listenabfrage filtert richtig, ist aber trotzdem nicht die Wahrheit.** Gemessen am
+2026-09-14: `products(query: "status:active")` lieferte ein Produkt zurück, dessen `status`
+**DRAFT** war, das in null Kanälen stand und dessen Seite 404 lieferte — der Suchindex hinkt
+hinterher. Die Gegenprobe unmittelbar danach war sauber (`id:… AND status:active` leer,
+`… AND status:draft` gefunden). **Eine Stichprobe über `status:active` ist also nicht garantiert
+aktiv.** Wer daraus einen Prozentsatz „der aktiven Produkte" bildet, misst etwas anderes, als er
+schreibt: den Status der Produkte, über die man berichtet, einzeln nachfragen.
+
 **Regel:** Jede gefilterte Zahl bekommt sofort einen zweiten Aufruf mit einem Filter, der **0**
 ergeben muss. Ändert sich die Zahl nicht, filtert das Feld nicht — und die erste Zahl ist
 wertlos.
