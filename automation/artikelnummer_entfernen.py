@@ -17,6 +17,41 @@ Code-Fragment ist schlimmer als der ganze Code (Lehre 21.08.).
   DRY=1  nur zeigen
 Ledger: dropship/_artikelnummer_entfernt.txt
 """
+# ⚠️ 15.09.2026: Diese Datei hatte KEINE einzige import-Zeile. Zeile 20 griff auf `os` zu,
+# also brach jeder Lauf sofort mit NameError ab — der Waechter lief nie. Gefunden beim
+# Durchsehen aller /tmp-Logs, nicht durch eine Meldung: der Aufseher startet ihn
+# abgekoppelt und sah das Ergebnis nie.
+import json, os, re, subprocess, sys, time, urllib.request
+
+TOK = open('/tmp/cj_shop_token.txt').read().strip()
+URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+
+
+def gql(q, v=None):
+    """Wortgleich zu wahlversprechen.py — auch der laute Abbruch am Ende (Lehre 05.09.):
+    ein leeres Dict koennte der Aufrufer nicht von einer geglueckten Mutation ohne
+    userErrors unterscheiden und wuerde Arbeit quittieren, die nie stattfand."""
+    gedrosselt, i = 0, 0
+    while i < 8:
+        r = subprocess.run(['curl', '-s', '--max-time', '60', URL,
+                            '-H', 'X-Shopify-Access-Token: ' + TOK,
+                            '-H', 'Content-Type: application/json',
+                            '-d', json.dumps({'query': q, 'variables': v or {}})],
+                           capture_output=True, text=True)
+        try:
+            d = json.loads(r.stdout)
+            if d.get('data'):
+                return d
+            if 'THROTTLED' in json.dumps(d.get('errors') or ''):
+                gedrosselt += 1; time.sleep(3)
+                if gedrosselt < 30:
+                    continue
+        except Exception:
+            pass
+        i += 1; time.sleep(2.5)
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
+
+
 DRY = os.environ.get('DRY')=='1'
 # BEHALTEN: echte Herstellernummern einer benannten Marke (BRUDER 02318 finden Sammler wirklich).
 BEHALTEN = re.compile(r'BRUDER', re.I)

@@ -15,3 +15,4 @@ gid://shopify/Product/15523851993473	Fitness-Resistance-Band für Boxen
 gid://shopify/Product/15523852943745	Rennband mit Trainingsstab
 gid://shopify/Product/15523908321665	Doppelnapf für Katzen
 gid://shopify/Product/15524873240961	FOCALLURE Dreiecks-Augenbrauenstift
+gid://shopify/Product/15525462835585	Windmühlen-Spieluhr aus Klemmbausteinen
