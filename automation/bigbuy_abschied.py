@@ -14,6 +14,18 @@ DRY=1 zeigt nur. Ledger: dropship/_bigbuy_abschied.txt
 import json, os, time, urllib.request
 
 STICHTAG = "2026-09-15"
+
+# ⚠️ 15.09.2026, am Stichtag selbst gemessen: Hier stand `query:"status:active tag:bigbuy"` —
+# obwohl der Kopf dieser Datei seit dem 16.08. verspricht, «alle aktiven Produkte mit BigBuy-SKU
+# (bb-*/BB-*) ODER Tag bigbuy» zu draften. Der Tag `bigbuy` deckt aber nur einen Teil des Bestands:
+# gemessen waren 138 Produkte so getaggt, **136 weitere trugen `bb-real` und/oder eine `bb-…`-SKU
+# ohne diesen Tag** (110 davon ganz ohne BigBuy-Tag). Die wären nach dem Abschied ACTIVE geblieben —
+# also bestellbar, ohne dass es noch einen Lieferanten-Zugang gibt: genau die Geisterverkaufs-Klasse
+# der Bestellungen #1006/#1008/#1009. Gegenprobe gegen Fehlalarme: `tag:bb-real AND -sku:bb-*` = 0,
+# der Tag und die SKU meinen dieselbe Ware. **Lehre: Ein Kopfkommentar ist kein Filter.** Was die
+# Datei verspricht, gehört in die Abfrage — sonst arbeitet ein Wächter jahrelang an einem Ausschnitt
+# und meldet «FERTIG» für den ganzen Bestand.
+AUSWAHL = "status:active AND (tag:bigbuy OR tag:bb-real OR sku:bb-*)"
 DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_bigbuy_abschied.txt"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
@@ -50,8 +62,8 @@ def main():
     f = open(LEDGER, "a")
     cur, n, gesehen = None, 0, 0
     while True:
-        d = gql('query($c:String){products(first:100,after:$c,query:"status:active tag:bigbuy"){'
-                'pageInfo{hasNextPage endCursor} nodes{id title}}}', {"c": cur})
+        d = gql('query($c:String,$q:String){products(first:100,after:$c,query:$q){'
+                'pageInfo{hasNextPage endCursor} nodes{id title}}}', {"c": cur, "q": AUSWAHL})
         pg = (d.get("data") or {}).get("products")
         if not pg:
             print("PAUSE (Shopify antwortet nicht — nächster Lauf macht weiter)")

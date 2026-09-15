@@ -5,6 +5,43 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🕳️ Der Abschied verabschiedete nur die Hälfte — ein Kopfkommentar ist kein Filter (15.09., 05:20 UTC)
+
+`automation/bigbuy_abschied.py` hat heute seinen Stichtag und draftet die BigBuy-Ware, weil das Abo
+ausläuft. Sein Kopf verspricht seit dem 16.08. wörtlich, er nehme «alle aktiven Produkte mit
+BigBuy-SKU (bb-*/BB-*) **oder** Tag bigbuy». Seine Abfrage lautete:
+
+```
+query:"status:active tag:bigbuy"
+```
+
+Nur der Tag. **GEMESSEN 15.09. 05:10 UTC**, während der Lauf schon arbeitete:
+
+| Menge | aktiv |
+|---|---|
+| Tag `bigbuy` (was das Skript sah) | 13 Rest, ~138 bereits gedraftet |
+| BigBuy-SKU `bb-…` ohne Tag `bigbuy` | **136** |
+| davon ganz ohne BigBuy-Tag (nur `bb-real`) | 110 |
+| Gegenprobe `tag:bb-real AND -sku:bb-*` | **0** |
+
+Die letzte Zeile ist die, die den Befund hart macht: Tag und SKU meinen dieselbe Ware, es gibt keine
+`bb-real`-Leiche ohne BigBuy-SKU. Die 136 sind also echte BigBuy-Produkte — Michael-Kors-Tasche,
+Police-Herrenuhr, Jimmy-Choo-Fassung, CHF 50 bis 195 — und sie wären nach dem «FERTIG» des Skripts
+**aktiv und bestellbar geblieben, ohne dass es noch einen Lieferanten-Zugang gibt.** Das ist Wort für
+Wort die Klasse, die die Bestellungen #1006, #1008 und #1009 zu Rückerstattungen gemacht hat.
+
+Behoben: die Auswahl steht jetzt als eine Zeile im Kopf der Datei und lautet
+`status:active AND (tag:bigbuy OR tag:bb-real OR sku:bb-*)`; Trockenlauf zeigte 136 Kandidaten, danach
+lief er scharf.
+
+**Die Lehre ist allgemeiner als BigBuy: Ein Wächter, dessen Beschreibung mehr abdeckt als seine
+Abfrage, meldet «FERTIG» für einen Bestand, den er nie angesehen hat.** Und er tut es überzeugend —
+das Ledger füllt sich, die Zahl der offenen Fälle fällt auf null, alles sieht erledigt aus. Aufgefallen
+ist es nur, weil ich nach dem Lauf **nicht das Ledger, sondern den Bestand** gezählt habe, und zwar mit
+einem anderen Merkmal als dem, nach dem das Skript sucht. **Gegenprobe-Regel für jeden Wächter: einmal
+mit einem zweiten, unabhängigen Merkmal nachzählen — Tag gegen SKU, Text gegen Metafeld, Ledger gegen
+Live-Bestand.** Zählt man mit demselben Merkmal, bestätigt man nur die eigene Blindstelle.
+
 ## 2026-09-15 · 📦 Der Tag der zugesagten Rückerstattung kam — und die Pakete fuhren doch (15.09., 04:40 UTC)
 
 Am 09.09. hatten #1017 und #1018 je **eine** Sendungsstation: ein Etikett, keine Übergabe. Beiden
