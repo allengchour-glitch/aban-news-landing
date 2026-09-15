@@ -24,6 +24,16 @@ Der Antwortentwurf lag danach **sechs Wochen unversendet** im Postfach — Betre
   Domain steht jetzt gar nicht mehr im Text, nur noch `info@luxestyle.ch` in der Signatur.
   **Lehre: eine nackte Domain im Mailtext wird beim Speichern linkifiziert und als hässliche
   Tracking-URL SICHTBAR — in Geschäftsmails Domain weglassen oder in die Signatur setzen.**
+- 🔎 **Zwei Registrierungen statt einer (gefunden 15.09. im Entwurf vom 04.07.):** Shopcom hat die
+  Bestätigung «bitte Formular im Anhang ausfüllen» ZWEIMAL geschickt — am **04.07.2026 23:09** an
+  `alleng0@hotmail.com` und am **05.08.2026 15:39** an `allengchour@gmail.com`. Beide Male ging
+  nichts zurück. Es können also zwei Händlerkonten unter zwei Adressen liegen. Dem Betreiber
+  einen Satz für die Mail gegeben: Konto unter `allengchour@gmail.com` weiterführen, Doppel-
+  registrierung löschen.
+- 📎 **Anhänge kann ich grundsätzlich nicht lesen.** Der Gmail-Konnektor liefert nur Text;
+  `get_message` auf eine Nachricht mit Anhangsteilen endet mit «caller does not have permission».
+  Ob ein Formular vollständig oder richtig ausgefüllt ist, kann hier NIE beurteilt werden —
+  das ist immer eine Betreiber-Prüfung. Nicht erneut versuchen.
 - ⚠️ **Senden muss der Betreiber selbst.** Der Gmail-Konnektor kann einen BESTEHENDEN Entwurf
   nicht abschicken (kein `send_draft`); `send_message` würde eine neue Mail **ohne Anhang**
   erzeugen — also genau den Fehler, den wir vermeiden wollen. Gleiches gilt künftig für jede

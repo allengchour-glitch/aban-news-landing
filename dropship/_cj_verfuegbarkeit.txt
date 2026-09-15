@@ -43524,3 +43524,5 @@ gid://shopify/Product/15492997153153	ok
 gid://shopify/Product/15492997120385	ok
 gid://shopify/Product/15492997054849	ok
 gid://shopify/Product/15492996956545	ok
+gid://shopify/Product/15492996923777	ok
+gid://shopify/Product/15492996891009	ok
