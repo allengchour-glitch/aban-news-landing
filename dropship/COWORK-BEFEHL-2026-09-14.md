@@ -10,13 +10,21 @@ Du arbeitest für den Shopify-Shop LuxeStyle (luxestyle.ch, Admin: admin.shopify
 Erledige die vier Punkte der Reihe nach im Browser. Melde nach jedem Punkt in EINER Zeile: erledigt / nicht möglich + warum.
 Erfinde keine Werte, bezahle nichts, lösche nichts, deinstalliere keine App.
 
-1. VERSANDSCHWELLE AUF CHF 50 (Betreiber-Entscheid 06.09.; live gemessen 14.09.: «Kostenloser Versand ab CHF 45»
-   AKTIV, «ab CHF 50» INAKTIV, und an der Zeile «Standard CHF 7» hängt eine alte Gratis-Bedingung «ab CHF 65» —
-   der Shop verspricht überall 50): Shopify-Admin → Einstellungen → Versand und Zustellung → Allgemeines Profil →
-   Zone Domestic (Schweiz): (a) «Kostenloser Versand ab CHF 50» aktivieren, (b) «Kostenloser Versand ab CHF 45»
-   deaktivieren, (c) bei «Standard CHF 7.00» die Bedingung «ab CHF 65» entfernen — die Zeile Standard CHF 7 selbst
-   MUSS bleiben. Speichern. Danach im Shop einen Warenkorb mit CHF 48 und einen mit CHF 52 bis zur Versandwahl
-   durchklicken und melden, was angezeigt wird (erwartet: 48 → CHF 7.00, 52 → gratis).
+1. ⛔ ZURÜCKGEZOGEN (15.09., nachgemessen) — BITTE NICHT AUSFÜHREN.
+   Hier stand die Anweisung, im Versandprofil «Gratis ab CHF 45» abzuschalten und «ab CHF 50» zu aktivieren,
+   weil der Shop überall 50 verspricht. **Das wäre ein Schaden gewesen.** GEMESSEN am 15.09. über die
+   Shopify-Rabatt-API: seit dem 01.06. läuft ein automatischer Rabatt «Bundle: 2+ Artikel -10%» (ACTIVE,
+   ohne Enddatum), dazu seit dem 06.08. «Mengenrabatt — 10% ab 3 Artikeln». Shopify misst die
+   Versand-Schwelle am Zwischentotal NACH Rabatt. Ein Warenkorb über CHF 50 mit zwei Artikeln kommt
+   also mit CHF 45 an der Kasse an — genau deshalb steht dort 45. Wer auf 50 umstellt, reisst eine
+   Totzone zwischen CHF 50 und CHF 55.55 auf: Die Kundin sieht «Gratis-Versand ab CHF 50», legt für
+   CHF 52 zwei Artikel in den Korb und bekommt an der Kasse trotzdem CHF 7 Versand aufgerechnet.
+   **Nichts anfassen.** Zusätzlich aktiv und korrekt: ein automatischer Gratis-Versand «ab CHF 49»,
+   nur für die Schweiz. Die alte Bedingung «ab CHF 65» an der Zeile «Standard CHF 7» ist ABGELAUFEN
+   (endsAt 10.08.2026) und damit wirkungslos — auch die braucht keinen Klick.
+   Offen bleibt nur eine Textfrage, die ich selbst erledige: Der Shop verspricht 50, gratis ist es ab 45
+   (bzw. 49 ohne Rabatt). Das ist günstiger für die Kundin als versprochen, also kein Vertrauensproblem;
+   ich gleiche die Aussagen an, sobald die Schwellen-Messung zwei Tage stabil ist.
 
 2. GOOGLE MERCHANT CENTER — LIEFERLAND NUR SCHWEIZ (~1'700 Produkte stehen auf «Missing shipping info», weil der
    Feed auf Deutschland zielt): merchants.google.com → Einstellungen → Versand & Rückgabe: jeden Versanddienst
