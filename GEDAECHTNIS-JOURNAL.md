@@ -5,6 +5,47 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🧷 «Needed a single revision» war kein kaputter Ref, sondern mein Befehl (15.09., 18:35 UTC)
+
+Beim Abschluss von «push überall» meldete
+
+```bash
+git rev-parse --short HEAD origin/claude/luxestyle-status-tztnn1
+# fatal: Needed a single revision
+```
+
+Ich habe das als den bekannten **verklemmten Tracking-Ref** gelesen (CLAUDE.md §Container-Snapshot,
+Punkt 5: «cannot lock ref … expected Y», Heilung über `update-ref -d` + Fetch-Retry) und wollte
+schon `repo_vorspulen.sh` darauf loslassen — also ein Reparaturwerkzeug auf einen gesunden Repo.
+
+**Gegenprobe zuerst, und sie war eindeutig:**
+
+```bash
+git show-ref | grep luxestyle-status-tztnn1
+# affcea06e… refs/heads/claude/luxestyle-status-tztnn1
+# affcea06e… refs/remotes/origin/claude/luxestyle-status-tztnn1
+git rev-parse --short refs/remotes/origin/claude/luxestyle-status-tztnn1   # ed59ebdd0  ✔
+git rev-parse --short origin/claude/luxestyle-status-tztnn1                # ed59ebdd0  ✔
+git rev-parse --short HEAD origin/claude/luxestyle-status-tztnn1           # fatal      ✘
+```
+
+Der Ref löst **einzeln** auf, beide Namensformen, sofort. Er scheitert nur, wenn ZWEI Revisionen
+im selben Aufruf stehen. Grund: `--short` kürzt **einen** Hash; es nimmt optional eine Länge
+(`--short=9`), und mit zwei Revisionen dahinter weigert sich git. Ohne `--short` geht derselbe
+Aufruf mit beliebig vielen Revisionen.
+
+**Die Lehre ist nicht die git-Option, sondern die Reihenfolge.** Ich hatte eine Fehlermeldung
+gesehen und sie einer Klasse zugeordnet, die im Gedächtnis steht — ohne zu prüfen, ob das
+Merkmal dieser Klasse (Ref lässt sich nicht auflösen) überhaupt zutrifft. Es traf nicht zu.
+Ein bekanntes Muster im Gedächtnis macht eine Fehlermeldung **wahrscheinlicher**, nicht wahr.
+Das ist dieselbe Klasse wie «Nicht prüfbar war eine Aussage über meine Suche» (15.09.) und wie
+der Cache-Fehlalarm (19.08.): **erst das Merkmal einzeln messen, dann die Klasse behaupten.**
+Der Preis wäre hier ein `git stash -u` auf ein sauberes Repo gewesen — genau der Griff, der
+heute Morgen schon `BIGBUY-1000-EURO-HEUTE.md` vernichtet hat.
+
+Merksatz für Statusprüfungen: `git rev-parse HEAD origin/<branch>` (ohne `--short`), oder
+`git rev-parse --short=9 HEAD` und den Remote getrennt.
+
 ## 2026-09-15 · 🔦 Fünf tote Wächter in einem Durchgang — gefunden, indem ich ALLE Logs gelesen habe (15.09., 18:00–19:00 UTC)
 
 Nach dem `wahlversprechen`-Fund (Wächter sechs Tage tot, Aufseher meldete täglich «geprüft»)
