@@ -45231,3 +45231,6 @@ gid://shopify/Product/15431536181633	bei-cj-weg	cj-CJMZ2903767
 gid://shopify/Product/15431536148865	bei-cj-weg	cj-CJMZ2903605
 gid://shopify/Product/15431536116097	bei-cj-weg	cj-CJBQ2918851
 gid://shopify/Product/15431536083329	bei-cj-weg	cj-CJMZ2920628
+gid://shopify/Product/15431536050561	bei-cj-weg	cj-CJMZ2922419
+gid://shopify/Product/15431536017793	bei-cj-weg	cj-CJMZ2924651
+gid://shopify/Product/15431535985025	bei-cj-weg	cj-CJMZ2930713
