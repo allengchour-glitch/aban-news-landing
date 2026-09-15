@@ -77,15 +77,32 @@ def main():
     if links is None:
         print("PAUSE (Menue nicht lesbar — kein Befund ableitbar)")
         return
-    import re
+    import re, urllib.parse
     handles = []
+    befund = []
+    # ⚠️ 15.09.2026, zwei Fehler dieses Werkzeugs am selben Morgen gefunden:
+    # (1) Der Handle kam PROZENT-KODIERT aus dem Menue («%F0%9F%92%8E-premium-ab-chf-80»),
+    #     Shopify kennt ihn aber nur dekodiert («💎-premium-ab-chf-80»). Ohne unquote() meldete
+    #     der Wächter JEDE Emoji-Kategorie als «existiert nicht» — zwei Fehlalarme, beide Seiten
+    #     liefern live HTTP 200 mit korrektem Titel. Ein Wächter, der falschen Alarm schlägt,
+    #     kostet dasselbe wie einer, der schweigt: man glaubt ihm nicht mehr.
+    # (2) Die Regex greift MITTEN im Pfad. «/en/collections/premium-schmuck» ergab den Handle
+    #     «premium-schmuck» — der existiert mit 124 Produkten, also kein Befund. Die Kundin
+    #     bekommt auf dem /en/-Pfad aber HTTP 404 (gemessen). Geprueft wird jetzt der PFAD,
+    #     den sie anklickt, nicht nur der Handle, den er enthaelt.
     for _t, u in links:
         mo = re.search(r"/collections/([^/?#]+)", u)
-        if mo and mo.group(1) not in handles and mo.group(1) != "all":
-            handles.append(mo.group(1))
+        if not mo:
+            continue
+        if not u.split("?")[0].startswith("/collections/"):
+            befund.append((u.split("?")[0], "Pfad-Praefix vor /collections/ — liefert 404 "
+                                            "(Sprachpfad wie /en/ existiert nicht)"))
+            continue
+        h = urllib.parse.unquote(mo.group(1))
+        if h not in handles and h != "all":
+            handles.append(h)
     print(f"Hauptmenue: {len(links)} Eintraege, {len(handles)} Kollektionen", flush=True)
 
-    befund = []
     offen = []          # (handle, id, productsCount) — Aktiv-Pruefung folgt
     for i in range(0, len(handles), 20):
         teil = handles[i:i + 20]
@@ -141,10 +158,12 @@ def main():
             f.write("Das Menü ist die Navigation, die jede Besucherin benutzt. Diese "
                     "Einträge führen ins Leere oder in eine leere Kategorie.\n\n")
             for h, w in befund:
-                f.write(f"- `/collections/{h}` — {w}\n")
+                # Pfad-Befunde tragen den ganzen Pfad, Handle-Befunde nur den Handle.
+                pfad = h if h.startswith("/") else f"/collections/{h}"
+                f.write(f"- `{pfad}` — {w}\n")
         print(f"⚠️ {len(befund)} Menuelinks mit Befund -> {BERICHT}")
         for h, w in befund:
-            print(f"   /collections/{h}: {w}")
+            print(f"   {h if h.startswith('/') else '/collections/' + h}: {w}")
     else:
         # Kein Befund -> alten Bericht wegraeumen, sonst listet er auf ewig Erledigtes.
         if os.path.exists(BERICHT):
