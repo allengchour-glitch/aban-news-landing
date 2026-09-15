@@ -30,7 +30,23 @@ misst auf Wunsch eine Stichprobe, damit die Schwelle belegt ist statt geraten.
 """
 import io, os, re, subprocess, sys
 
-import pytesseract
+# ⚠️ 15.09.2026: Hier stand ein nacktes `import pytesseract`. In DIESEM Container gibt es
+# weder das Modul noch das Programm `tesseract` selbst, und pip erreicht files.pythonhosted.org
+# nicht (Read timed out). Der Waechter hinterliess deshalb taeglich einen ModuleNotFoundError
+# im Log — ein Traceback, der wie ein reparierbarer Fehler aussieht, aber eine fehlende
+# Systemvoraussetzung ist. Jetzt sagt er das, statt abzustuerzen: wer die Logs nach echten
+# Fehlern durchsieht, soll nicht jedes Mal an dieser Stelle haengen bleiben.
+try:
+    import pytesseract
+    _OCR = subprocess.run(["which", "tesseract"], capture_output=True, text=True).returncode == 0
+except ImportError:
+    pytesseract, _OCR = None, False
+if not _OCR:
+    print("OCR steht in diesem Container nicht zur Verfuegung (pytesseract/tesseract fehlen, "
+          "pip erreicht den Index nicht) — Bildtext-Pruefung uebersprungen, nichts geaendert.",
+          flush=True)
+    sys.exit(0)
+
 from PIL import Image
 
 # Mindestens so viele echte Wörter, damit ein Bild als «Werbetext» gilt. Der Wert ist unten

@@ -71,7 +71,16 @@ def aus_live(seit):
 done = set()
 if os.path.exists(LEDGER):
     done = {l.split("\t")[0] for l in open(LEDGER) if l.strip()}
-quelle = aus_live(os.environ.get("SEIT", "2026-08-16")) if os.environ.get("QUELLE") == "live" else aus_export()
+# ⚠️ 15.09.2026: Hier stand nur die Weiche QUELLE=live ODER Export. Der Export liegt in
+# /tmp und ist nach jedem Container-Neustart weg — der Aufseher ruft das Skript aber ohne
+# QUELLE auf, also lief es in aus_export() und starb an FileNotFoundError. Es GIBT einen
+# gleichwertigen Live-Weg; fehlt der Export, wird er genommen statt abzustuerzen.
+if os.environ.get("QUELLE") == "live" or not os.path.exists(EXPORT):
+    if os.environ.get("QUELLE") != "live":
+        print(f"Export {EXPORT} fehlt (/tmp-Verlust) — lese stattdessen live.", flush=True)
+    quelle = aus_live(os.environ.get("SEIT", "2026-08-16"))
+else:
+    quelle = aus_export()
 MUT = '''mutation($m:[MetafieldsSetInput!]!){metafieldsSet(metafields:$m){userErrors{field message}}}'''
 batch, n, fehler = [], 0, 0
 def flush():

@@ -5,6 +5,53 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🔦 Fünf tote Wächter in einem Durchgang — gefunden, indem ich ALLE Logs gelesen habe (15.09., 18:00–19:00 UTC)
+
+Nach dem `wahlversprechen`-Fund (Wächter sechs Tage tot, Aufseher meldete täglich «geprüft»)
+war die naheliegende Frage: **wie viele noch?** Also einmal über alle Logs:
+
+```bash
+for f in /tmp/*.log; do tail -n 30 "$f" | grep -qE "Traceback|Error:" && echo "$f"; done
+```
+
+**Vier weitere Skripte waren nicht lauffähig — drei davon aus derselben Ursache.**
+
+| Skript | Fehler | Ursache |
+|---|---|---|
+| `wahlversprechen.py` | AttributeError | `m.start()` vor `if m` · `BESCHREIBEND` 90 Zeilen tiefer definiert |
+| `artikelnummer_entfernen.py` | NameError: `os` | Die Datei hatte **keine einzige import-Zeile** und keinen `gql`-Helfer |
+| `gfeed_score.py` | NameError: `lieferantenref` | Import in Zeile 50, Verwendung in Zeile 38 |
+| `handle_messversprechen.py` | KeyError: `data` | `gql` gab die Antwort roh zurück, ohne `errors` anzusehen |
+| `gfeed_restore.py` | FileNotFoundError | Eingabe liegt in /tmp, Erzeuger wird vom Aufseher nie gestartet |
+
+**Das gemeinsame Muster von drei der fünf: etwas wird benutzt, bevor es existiert.** Python
+liest von oben; ein Import oder eine Prüfung, die unter ihrer Verwendungsstelle steht, macht das
+ganze Skript unbrauchbar — nicht nur die eine Zeile. Alle drei Stellen tragen jetzt einen
+Kommentar, der sagt, warum sie oben stehen müssen.
+
+**Der teuerste Einzelfund ist aber die Kette.** `gfeed_score.py` erzeugt die Punkteliste, aus der
+`gfeed_restore.py` Produkte in den Google-Kanal zurückholt — und Google ist der **einzige Kanal
+mit belegten Verkäufen**. Der NameError in der ersten Stufe legte beide still, und die zweite
+Stufe meldete dafür einen FileNotFoundError, der nach einem /tmp-Problem aussah. **Der sichtbare
+Fehler stand eine Stufe unter der Ursache.** Wer ihn einzeln repariert hätte (Datei anlegen,
+Pfad ändern), hätte die echte Ursache nie gefunden.
+
+**Zwei Wächter sind jetzt selbstheilend statt abstürzend.** In dieser Umgebung ist der
+/tmp-Verlust der Normalfall, nicht die Ausnahme: `gfeed_restore` erzeugt seine Punkteliste selbst,
+`google_ads_kuration` liest live, wenn der Export fehlt (der Live-Weg war längst eingebaut, nur
+nie als Ausweichpfad verdrahtet).
+
+**Und einer sagt jetzt die Wahrheit über sich selbst:** `bildtext_pruefen.py` braucht OCR, aber in
+diesem Container fehlen `pytesseract` **und** das Programm `tesseract`, und pip erreicht den Index
+nicht (Read timed out). Das ist keine Panne, sondern eine fehlende Systemvoraussetzung — sie
+gehört als Satz ins Log, nicht als Traceback. Ein Traceback, der jeden Tag gleich aussieht und
+nie behoben werden kann, macht die anderen unsichtbar.
+
+**Die Regel, die alles zusammenhält:** Ein Fehler in einem abgekoppelten Lauf existiert nur im
+Log. Wer nie ins Log sieht, hat keine Wächter, sondern Platzhalter. Der Rundgang über alle
+`/tmp/*.log` gehört deshalb in den Werkzeugkasten — nicht als Skript, sondern als Gewohnheit,
+wenn jemand «fix alles» sagt.
+
 ## 2026-09-15 · 💀 Ein Wächter war sechs Tage tot — und der Aufseher meldete täglich «geprüft» (15.09., 17:40 UTC)
 
 Betreiber: «fix weiter bis kein fehler mehr». Der erste Fehler war der Fehlersucher selbst.
