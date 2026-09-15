@@ -8,7 +8,28 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 > `GEDAECHTNIS-JOURNAL.md`** — dort NEUE Lehren eintragen (oben), hier nur die Einzeile im Index unten.
 > Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`. Parallel-Sessions: `SHARED-MEMORY.md`.
 
-## 📌 Aktueller Stand (14.09.2026, 08:40 UTC) — was JETZT gilt
+## 📌 Aktueller Stand (15.09.2026, 07:45 UTC) — was JETZT gilt
+- **BigBuy ist zu Ende.** Abo «Pack Ecommerce» lief am 15.09. aus (gekündigt 16.08.). `bigbuy_abschied.py`
+  hat 274 Produkte gedraftet; **0 aktive mit BigBuy-Merkmal**. Seine Abfrage traf nur `tag:bigbuy` — 136
+  Produkte mit `bb-…`-SKU wären bestellbar geblieben; Auswahl ist jetzt Tag ODER SKU. Die PC-Routine
+  `trig_01Fks8G3…` (16.09. 05:00) ist ein Doppel und findet nichts mehr vor.
+- **Folgeschäden des Abschieds behoben:** «Premium & Marken» hatte die Regel `Tag=bigbuy` → jetzt
+  `Tag=premium` (41 aktiv); 27 Ratgeber-Links von leeren auf gefüllte Kategorien umgebogen.
+  **Offen und dokumentiert: 118 von 518 Kollektionen ohne kaufbare Ware** (`dropship/LEERE-KOLLEKTIONEN-2026-09-15.md`),
+  davon ~55 Markenregale. Vorschlag abmelden + weiterleiten, **nicht ausgeführt** (Betreiber: Katalog nicht verkleinern).
+- **Hauptmenü hatte sechs tote Links** (`/en/collections/…` = 404, u. a. «Schmuck & Uhren»). Repariert;
+  `menue_links.py` dekodiert jetzt Emoji-Handles und prüft den Pfad statt nur den Handle.
+- **⛔ Cowork-Punkt 1 ZURÜCKGEZOGEN:** «Versandschwelle 45 → 50» hätte rabattierten Körben den Gratisversand
+  nehmen können (automatischer 10-%-Rabatt ab 2 Artikeln seit 01.06.). Ersetzt durch zwei Testkörbe.
+- **Weihnachten 2026 gefüllt:** 4 → 166 Artikel, Text neu (er bewarb drei Adventskalender ohne Lieferant).
+- **Startseite mobil repariert:** die gestrige Kundenstimmen-Sektion machte die Seite 1488 px breit;
+  jetzt 390/390 gemessen. «verifizierte Bewertungen» gestrichen (Judge.me: 0 verifizierte Käufe).
+- **#1017/#1018 fahren** (7 Stationen seit 12.09., Schweizer Post) — die Rückerstattungs-Zusage vom 09.09.
+  ist damit gegenstandslos; der Betreiber hat Mails und Rückerstattungen am 11.09. ohnehin untersagt.
+- **Antwort auf «Was könnte man noch machen?»:** `dropship/WEBSITE-IDEEN-2026-09-15.md` (39 geprüfte
+  Massnahmen, 8 verworfene, Vollständigkeits-Kritik mit 8 Lücken).
+
+## 📌 Vorheriger Stand (14.09.2026, 08:40 UTC)
 - **Branch dieser Arbeit: `claude/luxestyle-status-tztnn1`**, offener Draft-PR #1608 nach `main`. Jeder Turn endet
   mit commit+push; der Auto-Committer bündelt Ledger-Drift in `dropship/` alle 90 s.
 - **Container startet ~stündlich neu** → zuerst `uptime`; unter 10 Minuten: `bash automation/engine_keepalive.sh`
