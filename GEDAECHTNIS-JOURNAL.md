@@ -5,6 +5,56 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 💀 Ein Wächter war sechs Tage tot — und der Aufseher meldete täglich «geprüft» (15.09., 17:40 UTC)
+
+Betreiber: «fix weiter bis kein fehler mehr». Der erste Fehler war der Fehlersucher selbst.
+
+Die Klassen-Kontrolle nennt drei offene Klassen (2'790 Produkte). Die kleinste — 17 Produkte mit
+doppeltem «Produktdetails»-Block — meldete beim Prüflauf **0**. Das kann «repariert» heissen oder
+«Werkzeug liest die Liste nicht», also am Objekt nachgezählt: **17 von 17 sauber**, die Null war
+ehrlich. Klasse zu.
+
+Die grösste Klasse — **1'740 Produkte, deren Text eine Auswahl verspricht, die es nicht gibt** —
+brachte `automation/wahlversprechen.py` zum Absturz:
+
+```
+File "automation/wahlversprechen.py", line 173, in <module>
+    _u = txt[max(0, m.start() - 90):m.end() + 40]
+AttributeError: 'NoneType' object has no attribute 'start'
+```
+
+Die Zeile stand **vor** der Prüfung `if m:`. Bei jedem Produkt ohne Treffer — also bei fast
+jedem — bricht der ganze Lauf ab, beim ersten Produkt.
+
+**Dahinter lag ein zweiter Fehler.** Nach dem Fix: `NameError: BESCHREIBEND is not defined`. Die
+beiden Gegenmuster `SETINHALT` und `BESCHREIBEND` sind **90 Zeilen weiter unten** definiert, die
+Scan-Schleife benutzt sie aber schon. Python liest von oben. Der Wächter war also an **zwei**
+Stellen nicht lauffähig — er hat seit dem Umbau vom 09.09. **keine einzige Sekunde durchlaufen**.
+
+**Und das ist der eigentliche Befund:** `fixer_keepalive.sh` startet ihn täglich mit `FIX=1` und
+druckt danach
+
+```bash
+echo "$(date -u +%H:%M) wahlversprechen geprüft"
+```
+
+— **unabhängig davon, was passiert ist.** Sechs Tage lang stand «geprüft» im Tick-Bericht,
+während `/tmp/wahlversprechen.log` sich mit Tracebacks füllte. Niemand hat gelogen; es hat
+einfach niemand hingesehen.
+
+**Der Lauf ist abgekoppelt (`setsid … &`), sein Ergebnis kann die Zeile gar nicht kennen.**
+Deshalb prüft sie jetzt das Log des VORIGEN Laufs und meldet «⚠️ letzter Lauf endete mit Fehler»
+statt Vollzug. Gegengeprüft am echten Log, das noch mit dem Traceback endete: die Prüfung greift.
+
+**Regel: Eine Erfolgsmeldung, die nicht vom Ergebnis abhängt, ist keine Meldung, sondern
+Dekoration.** Jede Zeile, die «geprüft/erledigt/ok» sagt, muss an etwas hängen, das falsch sein
+kann — sonst sagt sie dasselbe, ob der Motor läuft oder brennt. Das ist dieselbe Familie wie
+«SUP:ok für einen toten Aufseher» (16.08.) und «Wächter prüft nur seine eigene Liste» (heute
+Morgen und Nachmittag), nur an der Ausgabestelle statt an der Prüfstelle.
+
+Nach der Reparatur: 400 geprüft, **55 gemeldet** (~14 %) — die Grössenordnung passt zu den 1'740
+aus dem Vollscan. Der Bereinigungslauf mit `FIX=1` läuft.
+
 ## 2026-09-15 · 🦶 Der Footer stand in keiner Wächterliste — «Alle Kategorien» war seit unbekannt tot (15.09., 16:40 UTC)
 
 Betreiber: «verbessere weiter». Ich wollte die Lieferzusagen prüfen und fand etwas anderes.

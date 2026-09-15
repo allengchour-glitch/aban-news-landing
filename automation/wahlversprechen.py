@@ -157,6 +157,18 @@ if not SEIT and not LISTE and os.path.exists(CURSOR):
     cur = (open(CURSOR).read().strip() or None)
 gesehen, treffer = 0, []
 quelle = (seiten_aus_liste(LISTE) if LISTE else seiten_aus_katalog(cur))
+# ⚠️ 15.09.2026 VERSCHOBEN. Diese beiden Muster standen 90 Zeilen WEITER UNTEN, die
+# Scan-Schleife darunter benutzte sie aber schon — Python liest von oben, also war
+# `BESCHREIBEND` an der Gebrauchsstelle nicht definiert. Zusammen mit dem `m.start()`
+# vor dem `if m` war der Waechter seit dem 09.09. an ZWEI Stellen nicht lauffaehig.
+# Wer sie wieder nach unten schiebt, legt ihn erneut still.
+SETINHALT = re.compile(r'\b(?:Lieferumfang|im Set|Set enth[äa]lt|mitgeliefert|beiliegend)\b', re.I)
+
+BESCHREIBEND = re.compile(r'\bin\s+(?:verschiedenen|unterschiedlichen|mehreren)\s+[\wäöüß]+\s+'
+                          r'(?:besetzt|bedruckt|gemustert|gehalten|meliert|lackiert|gef[äa]rbt|'
+                          r'verziert|bemalt|schimmernd|changierend|gestreift|kariert)\b', re.I)
+
+
 for p in quelle:
     if gesehen >= CAP:
         break
@@ -170,10 +182,16 @@ for p in quelle:
         txt = re.sub(r'<[^>]+>', ' ', a.get('descriptionHtml') or '')
         txt = re.sub(r'\s+', ' ', txt)
         m = WAHL.search(txt)
+        if not m:
+            continue
+        # ⚠️ 15.09.2026: Diese Zeile stand VOR dem `if m` — bei jedem Produkt ohne Treffer,
+        # also bei fast jedem, warf sie AttributeError und der ganze Lauf brach ab. Eingebaut
+        # am 09.09., seither lief der Waechter SECHS TAGE lang keine einzige Sekunde durch,
+        # waehrend der Aufseher taeglich «wahlversprechen geprüft» meldete.
         _u = txt[max(0, m.start() - 90):m.end() + 40]
-        if m and (BESCHREIBEND.search(_u) or SETINHALT.search(_u)):
+        if BESCHREIBEND.search(_u) or SETINHALT.search(_u):
             continue          # beschreibt die Ware, kuendigt keine Wahl an
-        if m:
+        if True:
             # 01.09.: SET-Inhalt ist keine Auswahl. «4 Bambus-Boxen in zwei Grössen:
             # 2× gross (30×20×12 cm), 2× klein» — BEIDE Grössen sind im Set, die Kundin
             # waehlt nichts. Erkennungszeichen: eine Stueckzahl «N×» vor einem BUCHSTABEN
@@ -245,12 +263,6 @@ ANSCHLUSS = re.compile(r'[.;]|\b(dazu|zudem|ausserdem|au[sß]erdem|damit|sodass|
 # SET-INHALT — alle Groessen sind dabei, die Kundin waehlt nichts. SET_RE kannte nur die Form
 # «N× gross, N× klein»; hier steht der Marker VOR der Klausel. Zwei Fehlalarme unter zwoelf
 # Treffern — bei einem Melder liegt die Beweislast beim Alarm (Lehre 28.08.).
-SETINHALT = re.compile(r'\b(?:Lieferumfang|im Set|Set enth[äa]lt|mitgeliefert|beiliegend)\b', re.I)
-
-BESCHREIBEND = re.compile(r'\bin\s+(?:verschiedenen|unterschiedlichen|mehreren)\s+[\wäöüß]+\s+'
-                          r'(?:besetzt|bedruckt|gemustert|gehalten|meliert|lackiert|gef[äa]rbt|'
-                          r'verziert|bemalt|schimmernd|changierend|gestreift|kariert)\b', re.I)
-
 AUFZAEHLUNG = re.compile(r'^\s*(?:\w+\s*){0,2}[,:]\s*(?:darunter|z\.?\s?B\.?|etwa|wie|n[äa]mlich)\b', re.I)
 
 # ⚠️ 04.09.2026: DIE AUFZAEHLUNG BRAUCHT NICHT IMMER EIN MARKERWORT. Nach dem Rueckstandslauf

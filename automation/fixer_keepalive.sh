@@ -841,7 +841,17 @@ while true; do
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; exec >> \"$WV\" 2>&1; \
            CAP=6000 FIX=1 LISTE=\"$WVL\" exec python3 automation/wahlversprechen.py" 9>&- & )
-      echo "$(date -u +%H:%M) wahlversprechen geprüft"
+      # ⚠️ 15.09.2026: Hier stand nur «geprüft» — unabhaengig davon, was der Lauf tat.
+      # Der Waechter brach seit dem 09.09. bei JEDEM Lauf sofort mit AttributeError ab
+      # (m.start() vor dem `if m`, dazu BESCHREIBEND erst 90 Zeilen spaeter definiert), und
+      # sechs Tage lang meldete diese Zeile trotzdem Vollzug. Der Lauf ist abgekoppelt, sein
+      # Ergebnis ist hier also noch nicht bekannt — gepruef wird deshalb das Log des VORIGEN
+      # Laufs. Ein Absturz wird damit spaetestens im naechsten Zyklus sichtbar statt nie.
+      if [ -s "$WV" ] && tail -n 25 "$WV" | grep -q "Traceback\|Error:"; then
+        echo "$(date -u +%H:%M) ⚠️ wahlversprechen: letzter Lauf endete mit Fehler ($WV)"
+      else
+        echo "$(date -u +%H:%M) wahlversprechen gestartet"
+      fi
     fi
   fi
   # Messversprechen an Wearables (Blutdruck/EKG/Blutzucker). Der Waechter existierte seit dem
