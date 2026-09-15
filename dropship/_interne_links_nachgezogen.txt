@@ -37,3 +37,16 @@ page	697996837249	reise-essentials-sommerferien-2026	sonnenbrillen-set-retro-pol
 page	697998541185	wanderziele-schweiz-2026	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
 page	697998606721	maenner-style-investitionen-2026	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
 article	1001442902401	baby-schlaft-nicht-7-tipps-die-wirklich-helfen	sternenhimmel-projektor-baby-nachtlicht-mit-musik -> sternenhimmel-projektor-galaxy-led-nachtlicht-527681
+article	1001443033473	reise-gadgets-2026-7-must-haves-fur-jeden-trip	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001443066241	manner-geschenke-unter-50-chf-7-ideen-die-wirklich-ankommen	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001443099009	polarisierte-sonnenbrille-was-bedeutet-das-wirklich-komplettguide	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001443131777	9-geschenkideen-fur-frauen-unter-chf-60-muttertag-geburtstag-amp-mehr	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001443131777	9-geschenkideen-fur-frauen-unter-chf-60-muttertag-geburtstag-amp-mehr	sternenhimmel-projektor-baby-nachtlicht-mit-musik -> sternenhimmel-projektor-galaxy-led-nachtlicht-527681
+article	1001471771009	vatertag-2026-die-perfekten-geschenke	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001471836545	sommer-2026-must-haves-festival-strand-reise	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001472196993	ultimative-self-care-routine-wellness-hacks	sternenhimmel-projektor-baby-nachtlicht-mit-musik -> sternenhimmel-projektor-galaxy-led-nachtlicht-527681
+article	1001472229761	geschenk-guide-2026-fuer-jeden-typ	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001472229761	geschenk-guide-2026-fuer-jeden-typ	sternenhimmel-projektor-baby-nachtlicht-mit-musik -> sternenhimmel-projektor-galaxy-led-nachtlicht-527681
+article	1001473114497	sternenhimmel-projektor-baby-eltern-guide	sternenhimmel-projektor-baby-nachtlicht-mit-musik -> sternenhimmel-projektor-galaxy-led-nachtlicht-527681
+article	1001473147265	uv400-polarisiert-sonnenbrillen-guide	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1001546121601	bluetooth-speaker-wasserdicht-outdoor-guide	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
