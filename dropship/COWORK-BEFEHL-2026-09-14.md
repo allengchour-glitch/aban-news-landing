@@ -10,21 +10,36 @@ Du arbeitest für den Shopify-Shop LuxeStyle (luxestyle.ch, Admin: admin.shopify
 Erledige die vier Punkte der Reihe nach im Browser. Melde nach jedem Punkt in EINER Zeile: erledigt / nicht möglich + warum.
 Erfinde keine Werte, bezahle nichts, lösche nichts, deinstalliere keine App.
 
-1. ⛔ ZURÜCKGEZOGEN (15.09., nachgemessen) — BITTE NICHT AUSFÜHREN.
-   Hier stand die Anweisung, im Versandprofil «Gratis ab CHF 45» abzuschalten und «ab CHF 50» zu aktivieren,
-   weil der Shop überall 50 verspricht. **Das wäre ein Schaden gewesen.** GEMESSEN am 15.09. über die
-   Shopify-Rabatt-API: seit dem 01.06. läuft ein automatischer Rabatt «Bundle: 2+ Artikel -10%» (ACTIVE,
-   ohne Enddatum), dazu seit dem 06.08. «Mengenrabatt — 10% ab 3 Artikeln». Shopify misst die
-   Versand-Schwelle am Zwischentotal NACH Rabatt. Ein Warenkorb über CHF 50 mit zwei Artikeln kommt
-   also mit CHF 45 an der Kasse an — genau deshalb steht dort 45. Wer auf 50 umstellt, reisst eine
-   Totzone zwischen CHF 50 und CHF 55.55 auf: Die Kundin sieht «Gratis-Versand ab CHF 50», legt für
-   CHF 52 zwei Artikel in den Korb und bekommt an der Kasse trotzdem CHF 7 Versand aufgerechnet.
-   **Nichts anfassen.** Zusätzlich aktiv und korrekt: ein automatischer Gratis-Versand «ab CHF 49»,
-   nur für die Schweiz. Die alte Bedingung «ab CHF 65» an der Zeile «Standard CHF 7» ist ABGELAUFEN
-   (endsAt 10.08.2026) und damit wirkungslos — auch die braucht keinen Klick.
-   Offen bleibt nur eine Textfrage, die ich selbst erledige: Der Shop verspricht 50, gratis ist es ab 45
-   (bzw. 49 ohne Rabatt). Das ist günstiger für die Kundin als versprochen, also kein Vertrauensproblem;
-   ich gleiche die Aussagen an, sobald die Schwellen-Messung zwei Tage stabil ist.
+1. ⛔ VORERST NICHT AUSFÜHREN — stattdessen EINE Messung (15.09.).
+   Hier stand: «Gratis ab CHF 45» abschalten, «ab CHF 50» aktivieren, weil der Shop überall 50 verspricht.
+   Das könnte die Kundin schlechter stellen. Was ich GEMESSEN habe (Shopify-Admin-API, 15.09. 05:20 UTC):
+
+   Versandzone Domestic (CH), Profil «General profile»:
+   | Zustand | Tarif | Bedingung |
+   |---|---|---|
+   | AKTIV | Standard CHF 7.00 | ohne Bedingung |
+   | AKTIV | Standard CHF 0.00 | Gesamtpreis ≥ 65 |
+   | **inaktiv** | Kostenloser Versand | Gesamtpreis ≥ 50 |
+   | **AKTIV** | Kostenloser Versand | Gesamtpreis ≥ **45** |
+
+   Automatische Rabatte, ebenfalls gemessen: «Bundle: 2+ Artikel -10%» AKTIV seit 01.06. (ohne Enddatum),
+   «Mengenrabatt — 10% ab 3 Artikeln» AKTIV seit 06.08., dazu ein automatischer Gratis-Versand «ab CHF 49»
+   nur für die Schweiz. Die alte Bedingung «ab 65» ist nicht abgelaufen, sondern hängt aktiv an der
+   Zeile «Standard CHF 7» — sie ist aber harmlos, weil die 45er-Stufe früher greift.
+
+   **Was NICHT gemessen ist:** ob Shopifys Bedingung «Gesamtpreis» vor oder nach Rabatt rechnet. Rechnet
+   sie danach, ist die 45 genau richtig: Ein Korb über CHF 50 mit zwei Artikeln kommt nach dem
+   10-Prozent-Rabatt mit CHF 45 an. Wer dann auf 50 umstellt, reisst eine Totzone zwischen CHF 50 und
+   CHF 55.55 auf — die Kundin sieht «gratis ab 50», legt für CHF 52 zwei Artikel ein und zahlt trotzdem
+   CHF 7. Rechnet sie davor, ist die 45 nur grosszügiger als versprochen und schadet niemandem.
+   **In beiden Fällen ist Nichtstun die sichere Wahl.**
+
+   DEIN AUFTRAG IST DESHALB NUR EINE MESSUNG, KEINE ÄNDERUNG:
+   Lege im Shop zwei Testkörbe an und geh bis zur Versandwahl (nicht bezahlen):
+   (a) **zwei** Artikel, zusammen rund CHF 52 · (b) **ein** Artikel, rund CHF 52.
+   Melde für beide: Zwischentotal vor Rabatt, Zwischentotal nach Rabatt, angezeigte Versandkosten.
+   Zeigt (a) CHF 7.00 und (b) gratis, rechnet Shopify nach Rabatt — dann bleibt die 45 für immer stehen
+   und ich gleiche stattdessen die Texte an. Zeigen beide gratis, entscheidet der Betreiber neu.
 
 2. GOOGLE MERCHANT CENTER — LIEFERLAND NUR SCHWEIZ (~1'700 Produkte stehen auf «Missing shipping info», weil der
    Feed auf Deutschland zielt): merchants.google.com → Einstellungen → Versand & Rückgabe: jeden Versanddienst
