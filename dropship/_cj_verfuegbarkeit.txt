@@ -43598,3 +43598,4 @@ gid://shopify/Product/15480176148865	ok
 gid://shopify/Product/15480175952257	ok
 gid://shopify/Product/15479513219457	ok
 gid://shopify/Product/15479471145345	bei-cj-weg	CJ-1447125663747280896
+gid://shopify/Product/15479376871809	ok
