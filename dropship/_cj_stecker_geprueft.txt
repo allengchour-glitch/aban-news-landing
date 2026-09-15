@@ -367,3 +367,101 @@
 15493852889473	kein-stecker-merkmal	2026-09-15	Lockenstab mit negativen Ionen
 15493853053313	kein-stecker-merkmal	2026-09-15	3-in-1 Lockenstab-Kombination für grosse Wellen
 15493854134657	kein-stecker-merkmal	2026-09-15	Kabelloses USB-Ladegerät für Apple Watch
+15493854232961	kein-stecker-merkmal	2026-09-15	Tragbares Wireless Ladegerät für Apple Watch
+15493854462337	kein-stecker-merkmal	2026-09-15	QC3.0 Schnellladegerät für Mobiltelefone
+15493855281537	draft-kein-eu-stecker:JP/UK/US	2026-09-15	Kleine Tisch-Eismaschine für Zuhause
+15493861245313	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Keramik Haarglätter & Lockenstab
+15493861605761	kein-stecker-merkmal	2026-09-15	Haarschneider mit LCD-Display
+15493861736833	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Automatischer Lockenstab Rose Tube Spiral
+15493861966209	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Glätteisen & Lockenstab 2-in-1 mit Keramikplatten
+15493862097281	draft-kein-eu-stecker:UK	2026-09-15	Warmluftbürste für glattes & lockiges Haar
+15493862228353	unklar-eu-vorhanden:EU/US	2026-09-15	Lockenstab mit Farboptionen
+15493863899521	kein-stecker-merkmal	2026-09-15	Kabelloses Ladegerät mit Kühlfunktion
+15493865505153	kein-stecker-merkmal	2026-09-15	Fritteuse mit Sieb und Glasdeckel
+15493870190977	unklar-eu-vorhanden:EU/US	2026-09-15	Automatischer Lockenstab für nasse und trockene Haare
+15493870322049	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	2-in-1 Lockenstab & Glätteisen
+15493870682497	unklar-eu-vorhanden:EU/US	2026-09-15	LED Display Anion Glättbürste
+15493871042945	kein-stecker-merkmal	2026-09-15	Glättbürste Mini – konstanter Temperaturkontrolle
+15493872517505	kein-stecker-merkmal	2026-09-15	Manuelle Espresso-Kaffeemaschine
+15493874385281	kein-stecker-merkmal	2026-09-15	Deerma DEM-ZQ610 Multifunktions-Dampfreiniger
+15493916918145	unklar-eu-vorhanden:EU/US	2026-09-15	Lockenstab & Glätteisen mit Keramikheizung
+15493919408513	kein-stecker-merkmal	2026-09-15	Mini Glättbürste mit USB-Ladefunktion
+15493920162177	kein-stecker-merkmal	2026-09-15	Mini Corn Lockenstab für mehr Volumen
+15493929042305	unklar-eu-vorhanden:EU/UK	2026-09-15	Handdampfglätter, multifunktional
+15493929828737	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Tragbares Mini-Reisebügeleisen
+15493932614017	kein-stecker-merkmal	2026-09-15	Ablage für Lockenstab-Zubehör
+15493934776705	kein-stecker-merkmal	2026-09-15	Vintage Haarschneider für präzise Schnitte
+15493935038849	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Glätteisen und Lockenstab 2-in-1
+15493935333761	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Automatischer Lockenstab mit Goldkeramik
+15493935563137	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	2-in-1 Glätteisen mit Farb-Schutz
+15493935858049	nur-eu-version	2026-09-15	Crimp-Lockenstab für Wellen
+15494698860929	kein-stecker-merkmal	2026-09-15	Staubsauger-Adapter für V7/V8/V10/
+15495012548993	kein-stecker-merkmal	2026-09-15	Handy- & Tablet-Ladegerät
+15495012712833	kein-stecker-merkmal	2026-09-15	3-in-1 Kabelloses Ladegerät für Samsung
+15495025525121	kein-stecker-merkmal	2026-09-15	Ladegerät für Elektrowerkzeug-Akku
+15495025820033	kein-stecker-merkmal	2026-09-15	Multifunktionales kabelloses Ladegerät
+15495027097985	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	140W USB-C Laptop-Netzteil
+15495027687809	kein-stecker-merkmal	2026-09-15	3-Port USB-Schnellladegerät 30W
+15495048593793	kein-stecker-merkmal	2026-09-15	Universal Reise-Ladegerät 2x USB-A & 2x USB-C
+15495048987009	kein-stecker-merkmal	2026-09-15	Magnetisches Wireless-Ladegerät 15W
+15495064879489	kein-stecker-merkmal	2026-09-15	Magnetisches Multifunktions-Handy-Ladegerät
+15495066878337	kein-stecker-merkmal	2026-09-15	Vollautomatisches Auto- und Fahrzeugladegerät
+15495067009409	kein-stecker-merkmal	2026-09-15	Batterieladegerät und Reparaturgerät fürs Auto
+15495067140481	unklar-eu-vorhanden:EU/US	2026-09-15	Sky Innovation IMAX B6 V2 Ladegerät
+15495067730305	kein-stecker-merkmal	2026-09-15	Vollautomatisches Ladegerät für Motorrad & Auto
+15495068090753	kein-stecker-merkmal	2026-09-15	3-in-1 Kabelloses Ladegerät mit Geheimfach
+15495068320129	kein-stecker-merkmal	2026-09-15	GaN Laptop-Ladegerät 230W/330W
+15495081591169	kein-stecker-merkmal	2026-09-15	Faltbares 3-in-1 MagSafe-Ladegerät
+15495081689473	kein-stecker-merkmal	2026-09-15	PD20W GaN-Ladegerät für schnelles Aufladen
+15495081787777	draft-kein-eu-stecker:AU	2026-09-15	GaN-Schnellladegerät (100W)
+15495087260033	kein-stecker-merkmal	2026-09-15	Elektrischer Haarschneider
+15495087391105	kein-stecker-merkmal	2026-09-15	USB Baby-Haarschneider
+15495087522177	unklar-eu-vorhanden:EU/US	2026-09-15	Lockenstab mit Turmalin-Keramikbeschichtung
+15495087620481	kein-stecker-merkmal	2026-09-15	Elektrischer Haarschneider mit Edelstahlklinge
+15495088112001	draft-kein-eu-stecker:UK	2026-09-15	Glättbürste
+15495105773953	kein-stecker-merkmal	2026-09-15	Magnetische Schallzahnbürste mit USB-Ladung
+15495108624769	kein-stecker-merkmal	2026-09-15	GaN 30W Ladegerät mit Dual Port
+15495109280129	kein-stecker-merkmal	2026-09-15	Mini-Ladegerät für Sony NP-BX1 Akkus
+15495110263169	kein-stecker-merkmal	2026-09-15	67W GaN 3-Port Schnellladegerät
+15495110656385	kein-stecker-merkmal	2026-09-15	Mini PD20W Reise-Ladegerät mit USB-C
+15495120617857	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Glitzerndes Titanium-Glätteisen für trockenes Haar
+15495120945537	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Glättbürste mit Keramikheizplatte
+15495121174913	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Mestar Iron Pro Automatischer Lockenstab
+15495121535361	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Keramik-Glättbürste für glattes Haar
+15495121633665	unklar-eu-vorhanden:EU/UK/US	2026-09-15	2-in-1 Glätteisen & Lockenstab
+15495121731969	kein-stecker-merkmal	2026-09-15	Faltbares magnetisches kabelloses Ladegerät
+15495122125185	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	P20 Bleiakku-Ladegerät für Auto & Motorrad
+15495122780545	draft-kein-eu-stecker:UK	2026-09-15	Auto Motorrad Batterie-Ladegerät
+15495123468673	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	2-in-1 Glätteisen & Lockenstab mit LCD-Anzeige
+15495125336449	kein-stecker-merkmal	2026-09-15	Schnellladegerät Auto
+15495126155649	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	12V/6A Smart Batterieladegerät
+15495126516097	kein-stecker-merkmal	2026-09-15	Magnetisches 3-in-1 Wireless Ladegerät
+15495130120577	kein-stecker-merkmal	2026-09-15	Kompaktes Ladegerät für Nintendo Switch
+15495132348801	kein-stecker-merkmal	2026-09-15	OSTMARS Mini-Entsafter für frische Säfte
+15495136346497	unklar-eu-vorhanden:EU/US	2026-09-15	Ionen-Haartrockner mit Warmluft & Kaltstufe
+15495142375809	kein-stecker-merkmal	2026-09-15	S6 Magnetisches 3-in-1 Auto-Wireless-Ladegerät
+15495142637953	kein-stecker-merkmal	2026-09-15	2-in-1 Magnetisches Uhren-Ladegerät
+15495142998401	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Schnellladegerät für Elektrowerkzeuge
+15495143063937	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Vierfach-Schnellladegerät für Elektrowerkzeuge
+15495143522689	draft-kein-eu-stecker:US	2026-09-15	GaN PD-Ladegerät 65W/100W mit 2 oder 4 Ports
+15495148142977	nur-eu-version	2026-09-15	Heissluftfritteuse mit grossem Fassungsvermögen
+15495190282625	kein-stecker-merkmal	2026-09-15	Volumen-Glätteisen mit LCD-Anzeige
+15495190348161	kein-stecker-merkmal	2026-09-15	Elektrischer Glättbürste mit LED-Display
+15495190479233	nur-eu-version	2026-09-15	Profi 2-in-1 Glätteisen & Lockenstab mit Ionen-Technologie
+15495190839681	unklar-eu-vorhanden:EU/US	2026-09-15	4-in-1 Lockenstab & Haarglätter
+15495190970753	nur-eu-version	2026-09-15	Haartrockner mit Ionen-Technologie und Kaltluftstufe
+15495191265665	kein-stecker-merkmal	2026-09-15	Kabelloses 2-in-1 Glätteisen & Volumen-Clip
+15495214498177	kein-stecker-merkmal	2026-09-15	3-in-1 Magnetisches Wireless Ladegerät mit LED
+15495214858625	kein-stecker-merkmal	2026-09-15	USB-Ladegerät für Digitalkamera-Akkus
+15495215743361	kein-stecker-merkmal	2026-09-15	Mushroom GaN Schnellladegerät 20W
+15495221576065	kein-stecker-merkmal	2026-09-15	Multiplattform-Controller mit Vibrationsfunktion
+15495238320513	kein-stecker-merkmal	2026-09-15	Kabelloser Glätt- und Lockenstab-Kamm
+15495238484353	draft-kein-eu-stecker:US	2026-09-15	3-in-1 Warmluftbürste für Glätten & Locken
+15495238812033	kein-stecker-merkmal	2026-09-15	Kabelloses USB-Glätteisen für unterwegs
+15495239008641	kein-stecker-merkmal	2026-09-15	Kabelloser 2-in-1 Glätteisen und Lockenstab
+15495239664001	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	9mm Super Slim Lockenstab für Ringellöckchen
+15495239958913	kein-stecker-merkmal	2026-09-15	Automatischer Lockenstab für grosse Wellen (25mm)
+15495240286593	kein-stecker-merkmal	2026-09-15	3-in-1 Magnetisches Wireless Ladegerät
+15495240974721	kein-stecker-merkmal	2026-09-15	Faltbares 4-in-1 Wireless-Ladegerät, 18W
+15495319093633	kein-stecker-merkmal	2026-09-15	3-in-1 magnetisches Wireless-Ladegerät mit Nachtlicht
+15495319454081	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Digitales 3-Port USB-Ladegerät mit Display
