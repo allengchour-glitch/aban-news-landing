@@ -5,6 +5,56 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 👻 «118 leere Kategorien» — 116 davon konnte nie jemand öffnen (15.09., 09:30 UTC)
+
+Betreiber: «118 von 518 in entwurf? oder fix». Ich habe daraufhin eine Stunde lang die falsche
+Frage sehr gründlich beantwortet.
+
+**Was ich gemessen habe, der Reihe nach:**
+
+1. *Sind sie füllbar?* Mit Titelwörtern: 39. Mit dem Merkmal, das die Kollektion selbst definiert:
+   **18**. Der Unterschied sind Wörter wie «Herren» (4'711 Treffer) und «Damen» (2'487) — sie messen
+   nichts über eine Kategorie.
+2. *Trifft das Suchwort sauber?* Stichprobe je Kandidat: von 18 blieben **vier**. «maker» traf in
+   allen sechs Proben Waffel-, Sandwich- und Smoothie-Maker und kein einziges Elektronikteil; «Bar»
+   traf Ohrringe «Barque» und eine «Schoggi Bar»-Tasse; «velo» traf Velours. `title:Velo` ohne
+   Sternchen liefert 0, es gibt also keinen Ausweg über die Wortgrenze.
+3. Ich begann zu füllen und stoppte nach **143 Produkten**, weil beim Blick ins Menü auffiel:
+   «Ladegeräte & Powerbanks», «Beamer & Heimkino» und «Vasen & Deko» stehen dort längst — auf
+   **anderen Handles**. Ich füllte gerade Dubletten. Insgesamt sind **sechs** der leeren
+   Kollektionen Schatten-Zwillinge: dieselbe Kategorie einmal als `TAG EQUALS x`, einmal als
+   `TITLE CONTAINS x`. Die Titel-Variante füllt sich selbst, die Tag-Variante bleibt leer, weil
+   niemand taggt. Das ist die Dubletten-Lehre vom 10.09., beim zweiten Mal fast wiederholt.
+4. Dann erst die Frage, die an den Anfang gehört hätte: **Sind diese Seiten überhaupt
+   veröffentlicht?**
+
+| von 118 leeren Kollektionen | |
+|---|---|
+| im Onlineshop sichtbar | **2** |
+| nicht veröffentlicht, nur im Admin | **116** |
+
+**Die 55 Markenregale, deren Abmeldung ich morgens dem Betreiber zum Entscheid vorgelegt hatte,
+waren nie angemeldet.** Kein Verkehr, kein Menüeintrag, keine Kundin sieht sie. Der ganze
+Vorschlag war Arbeit an einem Problem, das es nicht gab.
+
+**Erledigt sind die zwei echten Fälle:** `tiktok-ads-ready` (7 Produkte, alle Entwurf, Text bewarb
+drei nicht mehr existierende Artikel) und `angebote` (Regel «Preis reduziert», 351 Mitglieder,
+0 aktiv). Beide aus dem Onlineshop genommen und per 301 auf `viral-hits` bzw. `bestseller`
+umgeleitet. Bei `angebote` wäre Füllen der falsche Weg gewesen: Die Kollektion ist richtig gebaut
+und leer, weil gerade nichts reduziert ist. Sie mit erfundenen Streichpreisen zu füllen wäre
+Schein-Rabatt.
+
+**Die Lehre: «leer» ist ein Zustand, «sichtbar» ist die Frage.** Ein Regal, das im Laden steht, und
+eines, das im Lager steht, sehen in der Datenbank gleich aus — für die Kundin sind es
+grundverschiedene Dinge. Ich habe `productsCount` gezählt, Regeln gelesen, Suchwörter geprüft,
+Zwillinge gefunden, einen Bericht geschrieben und 143 Produkte getaggt, **bevor** ich
+`resourcePublications` abgefragt habe. Das war eine Abfrage und zwei Minuten.
+**Bei jedem Befund über Seiten zuerst fragen: kann ein Mensch sie öffnen?** Erst danach lohnt sich
+die Frage, was darauf steht.
+
+Die 143 vergebenen Tags bleiben — «Ladegerät» auf einem Ladegerät ist sachlich richtig und schadet
+nicht. Der Bericht `dropship/LEERE-KOLLEKTIONEN-2026-09-15.md` ist entsprechend neu geschrieben.
+
 ## 2026-09-15 · ✉️ Vier Tage Funkstille, dann ein «??» — und die Frage, was eine Rückerstattung auf eine gemailte IBAN wäre (15.09., 08:20 UTC)
 
 Betreiber: «1017 antwort, das produkt ist unterwegs». Der Verlauf dazu, gelesen statt erinnert:

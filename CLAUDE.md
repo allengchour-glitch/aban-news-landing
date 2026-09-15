@@ -16,8 +16,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   `trig_01Fks8G3…` (16.09. 05:00) ist ein Doppel und findet nichts mehr vor.
 - **Folgeschäden des Abschieds behoben:** «Premium & Marken» hatte die Regel `Tag=bigbuy` → jetzt
   `Tag=premium` (41 aktiv); 27 Ratgeber-Links von leeren auf gefüllte Kategorien umgebogen.
-  **Offen und dokumentiert: 118 von 518 Kollektionen ohne kaufbare Ware** (`dropship/LEERE-KOLLEKTIONEN-2026-09-15.md`),
-  davon ~55 Markenregale. Vorschlag abmelden + weiterleiten, **nicht ausgeführt** (Betreiber: Katalog nicht verkleinern).
+  **118 von 518 Kollektionen ohne kaufbare Ware — aber nur 2 davon im Onlineshop sichtbar** (beide erledigt: abgemeldet + 301). Die übrigen 116 waren nie veröffentlicht, kosten nichts (`dropship/LEERE-KOLLEKTIONEN-2026-09-15.md`).
 - **Hauptmenü hatte sechs tote Links** (`/en/collections/…` = 404, u. a. «Schmuck & Uhren»). Repariert;
   `menue_links.py` dekodiert jetzt Emoji-Handles und prüft den Pfad statt nur den Handle.
 - **⛔ Cowork-Punkt 1 ZURÜCKGEZOGEN:** «Versandschwelle 45 → 50» hätte rabattierten Körben den Gratisversand
@@ -635,6 +634,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-15 · 👻 «118 leere Kategorien»: nur **2** sind im Onlineshop sichtbar, 116 waren nie veröffentlicht — mein Abmelde-Vorschlag für 55 Markenregale betraf Seiten, die niemand öffnen kann. Vorher: 39→18→4 füllbar (Titelwörter messen nichts, «maker» trifft nur Waffel-Maker), 6 Schatten-Zwillinge (Tag-Regel vs. Titel-Regel). **Bei Seiten-Befunden zuerst `resourcePublications` fragen.** Die zwei echten Fälle abgemeldet + 301
 - 2026-09-15 · ✉️ #1017: Kunde bat am 11.09. um Rückerstattung auf eine gemailte IBAN, bekam 4 Tage keine Antwort («??» am 15.09.); Paket fährt seit 12.09. Antwort als Gmail-Entwurf (Senden vom Filter blockiert). **Rückerstattung immer auf den Zahlweg zurück, nie auf ein per Mail genanntes Konto** — als Regel formulieren, nicht als Misstrauen
 - 2026-09-15 · 🏢 «B2B?»: Shopify-Mail «du hast begonnen» ist Werbung — gemessen 0 Firmen, 0 B2B-Kataloge, Plan Basic (kein Plus). Nichts halb gebaut. Der gangbare Weg steht seit 14.09. als Seite «Firmen & Vereine» mit Anfrageformular
 - 2026-09-15 · 🧭 «Was könnte man noch machen?»: 47 Vorschläge, 39 geprüft behalten, 8 verworfen + Vollständigkeits-Kritik → `dropship/WEBSITE-IDEEN-2026-09-15.md`; Cowork 1 (Versand 45→50) zurückgezogen, hätte rabattierten Körben den Gratisversand genommen
