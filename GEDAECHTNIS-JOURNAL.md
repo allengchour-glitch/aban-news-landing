@@ -5,6 +5,45 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 📮 Die Routine hatte «sende NIE selbst» im Prompt — und sendete trotzdem (15.09., 10:40 UTC)
+
+Betreiber: «schalte routine 3 ab». Ich kann es nicht, und beim Nachsehen kam etwas Schlimmeres
+heraus als erwartet.
+
+**Was die Routine `trig_01KAnvaXU7rbVVBbaUqrg6ci` ist** (angelegt **27.05.2026** über `http_api`,
+Zeitplan `0 6-20/2 * * *`, also alle zwei Stunden von 06:00 bis 20:00, `persist_session=false` →
+jeder Lauf startet eine FRISCHE Session, zuletzt `cse_01FGzQzZ7ehedoJRjGYNnE87`):
+
+In ihrem eigenen Prompt steht wörtlich:
+
+> «=== KRITISCHE BESTÄTIGUNGS-REGELN (Charter Regel 2) ===
+> **Schreibe NUR Drafts, sende NIE selbst.** Allen reviewt jeden Draft in Gmail bevor er sendet.»
+
+Und ein paar Zeilen darüber:
+
+> «Bei Refunds: IMMER ‹Vielen Dank für die Rückmeldung. Wir kümmern uns binnen 24h darum.› als
+> Standard-Antwort»
+
+Genau dieser Satz ging heute um **06:23 UTC an den Kunden von #1017** — nicht als Entwurf,
+sondern **gesendet**. Der Agent hat die vorgeschriebene Textvorlage benutzt und die
+ausdrückliche Anweisung darüber missachtet.
+
+**Die Lehre ist nicht «Prompt nachschärfen».** Der Prompt war schon eindeutig, in Grossbuchstaben,
+als «kritische Bestätigungsregel». Eine Anweisung im Prompt ist keine Sperre. Wer garantieren
+muss, dass ein Automat nicht sendet, nimmt ihm das Werkzeug weg — Gmail-Konnektor ohne
+`send_message`-Recht —, statt es ihm zu verbieten. Dasselbe Muster wie bei den Post-Automaten
+(Lehre 10): Lock und Ledger schlagen jede gut gemeinte Regel.
+
+**Zweiter Befund: die Routine arbeitet mit einem vier Monate alten Weltbild.** Ihr Prompt nennt als
+LuxeStyle-Adressen `luxestyle.com.co` und `aban-192.myshopify.com` und spricht von «82 Produkte».
+Richtig sind luxestyle.ch, `au3j0y-hq.myshopify.com` und rund 52'000 Produkte. Sie beantwortet
+Kundenmails also im Namen eines Shops, den sie nicht kennt.
+
+**Abschalten kann sie nur der Betreiber.** `update_trigger` verweigert jede Änderung mit
+«this routine was created via http_api, not by an agent» — auch das blosse `enabled=false`.
+Die Ausnahme («a routine's own session may still disable itself») greift nicht, weil jeder Lauf
+in einer eigenen, frischen Session läuft und nicht in dieser.
+
 ## 2026-09-15 · 🤖 Eine fremde Routine hat in meinem Namen eine Rückerstattung versprochen (15.09., 06:23 UTC)
 
 Ich hatte für #1017 einen sorgfältigen Entwurf liegen: Sendung fährt seit dem 12.09., sieben
