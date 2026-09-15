@@ -8,4 +8,5 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 
 | Sitzungen | Titel | Handle |
 |---:|---|---|
-| 2 | Cellulite-Reduzierende Leggings | `cellulite-reduzierende-leggings-578014` |
+| 2 | Gaming Tastatur & Maus Set RGB LED USB für PC & Konsole | `gaming-set-uk-943617` |
+| 2 | Hitzebeständiges PET-Schutzband Grün | `hitzebestandiges-pet-schutzband-grun-565824` |
