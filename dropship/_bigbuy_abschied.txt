@@ -51,3 +51,7 @@ gid://shopify/Product/15453468721537	Damenuhr Chronotech CT7017M-04
 gid://shopify/Product/15453468787073	Herrenhalsband Guess
 gid://shopify/Product/15453468950913	Aktentasche Bombata
 gid://shopify/Product/15453468983681	Damenuhr Chronotech FLAT Summer
+gid://shopify/Product/15453469049217	Damenring Cristian Lay 54616_Acero-10
+gid://shopify/Product/15453469081985	Brillenfassung Hackett
+gid://shopify/Product/15453469180289	Damenperlen Viceroy VMG0011-00 Silberfarben
+gid://shopify/Product/15453469311361	Damenperlen Viceroy VMF0011-10 Silberfarben
