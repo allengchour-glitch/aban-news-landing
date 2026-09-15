@@ -5,6 +5,49 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🧭 Sechs tote Links im Hauptmenü — der Wächter hatte sie nie gesehen (15.09., 06:00 UTC)
+
+Nach dem BigBuy-Abschied lief `automation/menue_links.py` zur Kontrolle. Er meldete drei Befunde.
+**Zwei davon waren erfunden, der dritte war echt — und die sechs wirklich toten Links standen nicht
+darin.**
+
+**Fehlalarm.** Gemeldet waren `/collections/%F0%9F%8E%81-geschenke-bis-chf-30` und
+`/collections/%F0%9F%92%8E-premium-ab-chf-80` als «existiert nicht». Live liefern beide **HTTP 200**
+mit korrektem Titel («Geschenke bis CHF 30 kaufen | LuxeStyle Schweiz»). Der Grund: Das Menü liefert
+den Handle **prozent-kodiert**, Shopify kennt ihn nur dekodiert. `collectionByHandle("%F0%9F%92%8E-…")`
+ergibt `null`, `collectionByHandle("💎-premium-ab-chf-80")` ergibt 7'648 Produkte. Ohne `unquote()`
+meldet der Wächter **jede** Emoji-Kategorie als tot.
+
+**Blindstelle.** Die Regex `/collections/([^/?#]+)` greift MITTEN im Pfad. `/en/collections/premium-schmuck`
+ergab den Handle `premium-schmuck` — der existiert mit 124 Produkten, also kein Befund. Gemessen:
+
+| Pfad | mit `/en/` | ohne `/en/` |
+|---|---|---|
+| schmuck-uhren · premium-schmuck · buro-home-office | **404** | 200 |
+| waerme-komfort · party-deko-ch · weihnachten-2026 | **404** | 200 |
+
+Sechs Menüeinträge, darunter der **Hauptpunkt «Schmuck & Uhren»**, führten auf 404. Der Wächter prüft
+jetzt den Pfad, den die Kundin anklickt, nicht nur den Handle, den er enthält.
+
+**Die Reparatur hatte eine eigene Falle.** `menuUpdate` mit korrigierter `url` meldete
+`userErrors: []` — und änderte nichts. Bei `type: COLLECTION` leitet Shopify die URL aus der
+`resourceId` ab und verwirft die mitgelieferte. Erst als Typ **HTTP** mit ausdrücklichem Link griff es:
+147 Einträge, 0 mit `/en/`. **Ein leeres Fehlerfeld ist keine Bestätigung, dass etwas passiert ist** —
+nachlesen, was der Server danach wirklich gespeichert hat.
+
+**Der echte dritte Befund war eine Folge des Vormittags.** Der Menüpunkt «Premium & Marken» zeigt auf
+die Kollektion `luxestyle-premium`, deren Regel wörtlich `Tag = bigbuy` lautete. Der BigBuy-Abschied
+hatte sie damit in derselben Stunde vollständig geleert. Neue Regel: `Tag = premium` → **41 aktive
+Produkte** (925er-Silber, Moissanite, Echtleder, CHF 40–199, alle mit Bild). Danach meldet der Wächter:
+«Alle Menuelinks fuehren auf veroeffentlichte, gefuellte Kollektionen.»
+
+**Lehre: Wer eine Warengruppe abschaltet, muss die Navigation mitdenken.** Eine Kollektionsregel kann
+auf genau das Merkmal zeigen, das man gerade entfernt — dann ist die Kategorie leer, bevor jemand es
+merkt, und der Menüpunkt bleibt stehen. Nach jeder Massen-Statusänderung gehört `menue_links.py`
+gelaufen. Und: **ein Wächter, der zwei Fehlalarme und sechs echte Fälle gleichzeitig hat, sieht aus
+wie ein funktionierender Wächter.** Beide Fehler fielen nur auf, weil ich seine Befunde live
+gegengeprüft habe, statt sie zu glauben.
+
 ## 2026-09-15 · 🕳️ Der Abschied verabschiedete nur die Hälfte — ein Kopfkommentar ist kein Filter (15.09., 05:20 UTC)
 
 `automation/bigbuy_abschied.py` hat heute seinen Stichtag und draftet die BigBuy-Ware, weil das Abo
