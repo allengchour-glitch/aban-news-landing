@@ -5,6 +5,70 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · ✉️ Vier Tage Funkstille, dann ein «??» — und die Frage, was eine Rückerstattung auf eine gemailte IBAN wäre (15.09., 08:20 UTC)
+
+Betreiber: «1017 antwort, das produkt ist unterwegs». Der Verlauf dazu, gelesen statt erinnert:
+
+| Wann | Was |
+|---|---|
+| 10.09. 07:04 + 18:30 | Wir schreiben zweimal von uns aus, ehrlicher Stand, Zusage: bewegt sich bis Montag 15.09. nichts, volle Rückerstattung |
+| 11.09. 08:24 | **Kunde: «Bitte senden Sie mir das Geld zurück»**, nennt eine IBAN |
+| 11.09. | Betreiber-Entscheid: keine Kundenmails mehr → die Bitte bleibt unbeantwortet |
+| 12.09. 20:17 | Das Paket wird abgeholt. Einen Tag nach seiner Bitte |
+| 15.09. 03:57 | Kunde leitet seine eigene Nachricht weiter, Betreff «Fwd», Text: **«??»** |
+
+Das «??» ist der ganze Vorwurf in zwei Zeichen. Er hat vier Tage auf eine Antwort gewartet, die
+wir wegen einer generellen Anweisung nicht geschrieben haben — und in genau diesen vier Tagen ist
+eingetreten, worauf er gewartet hatte.
+
+**Zwei Dinge in der Antwort waren Entscheidungen, keine Formulierungen.**
+
+Erstens: Ich habe die Zusage vom 10.09. nicht stillschweigend verfallen lassen, sondern
+ausdrücklich für überholt erklärt und ihm die Wahl zurückgegeben (behalten / trotzdem Geld zurück /
+30 Tage Rückgabe nach Ankunft). Eine Bedingung, die nicht eintritt, hebt die Zusage auf — das gehört
+dem Kunden gesagt, nicht nur ins eigene Protokoll.
+
+Zweitens, und das ist die eigentliche Lehre: **Eine Rückerstattung gehört auf den Weg zurück, auf
+dem bezahlt wurde.** Der Kunde hat eine IBAN per Mail nachgereicht und «Name und Adresse bleiben
+gleich» geschrieben. Das ist bei ihm mit grosser Wahrscheinlichkeit gutgemeint. Als **Regel** ist
+eine Überweisung auf ein per Mail genanntes Konto trotzdem falsch: Sie verlässt die Zahlungskette,
+sie ist für die Kundin nicht durch die Bank geschützt, und sie ist die Standardform des
+Rückerstattungs-Betrugs. Er hat bezahlt per Apple Pay/Visa; dorthin geht das Geld zurück. Der Satz
+in der Mail ist deshalb bewusst allgemein formuliert («machen wir grundsätzlich nicht, bei
+niemandem») — eine Regel beleidigt niemanden, ein Misstrauensvotum schon.
+⚠️ Die IBAN steht bewusst **nicht** in der Bestellnotiz und nicht in diesem Journal.
+
+**Der Versand scheiterte am Sicherheitsfilter** («Real-World Transactions»). Die Antwort liegt
+deshalb als **Gmail-Entwurf im Verlauf** (Thread `1a08a2160d8d6b56`); der Betreiber klickt Senden.
+Das ist der sichere Weg und kostet ihn fünf Sekunden. In der Bestellnotiz steht, was drinsteht.
+
+## 2026-09-15 · 🏢 «B2B?» — die Shopify-Mail wirbt, der Bestand ist leer (15.09., 08:30 UTC)
+
+Betreiber schickt eine Shopify-Mail vom 14.09. 22:47: «Du hast mit deinem B2B-Setup begonnen ·
+Dein Shop ist bereit für B2B». **GEMESSEN am selben Konto, Minuten später:**
+
+| Abfrage | Ergebnis |
+|---|---|
+| `companiesCount` | **0** |
+| `catalogs(type: COMPANY_LOCATION)` | **0** |
+| `markets` | genau einer, Switzerland |
+| `shop.plan` | **Basic**, `shopifyPlus: false` |
+
+Es ist also **nichts halb gebaut**, das man fertigstellen oder aufräumen müsste. «Du hast begonnen»
+ist eine Werbezeile, kein Zustand. Shopifys eigene Dokumentation nennt als Voraussetzung «a plan
+that supports B2B capabilities, with B2B enabled» (QUELLE, shopify.dev/docs) — unser Plan ist Basic,
+und ein Planwechsel widerspricht der Hausregel «alles kostenlos».
+
+**Die Antwort auf die Frage steht schon im Shop, seit gestern:** Die Seite «Firmen & Vereine»
+(`/pages/firmen-vereine`, publiziert 14.09.) mit Anfrageformular ist genau der B2B-Weg, der ohne
+Firmenkonten, ohne Preislisten und ohne Plan-Upgrade funktioniert. Verkehr bisher: 0 Sitzungen —
+die Seite ist einen Tag alt, das ist kein Befund, sondern eine Messung, die erst in zwei Wochen
+etwas sagt.
+
+**Lehre: Eine Werbemail des Anbieters ist eine Aufforderung, kein Statusbericht.** Bevor ein
+«Setup fortsetzen» in eine Aufgabe wird, zählt man nach, ob überhaupt etwas existiert. Hier waren
+es vier Abfragen und zwei Minuten.
+
 ## 2026-09-15 · 📱 Ich habe gestern selbst einen Layoutfehler eingebaut — und ihn heute zweimal falsch repariert (15.09., 07:40 UTC)
 
 Die Kundenstimmen-Sektion auf der Startseite ist von gestern. Ein Prüfagent hat gemessen, was sie auf

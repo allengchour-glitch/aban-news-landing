@@ -345,3 +345,25 @@
 15493807833473	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-14	Multi-Port USB-Ladegerät
 15493807964545	kein-stecker-merkmal	2026-09-14	3-in-1 Kabelloses Ladegerät
 15493808357761	nur-eu-version	2026-09-14	USB-Schnellladegerät mit 12 Anschlüssen
+15493808423297	kein-stecker-merkmal	2026-09-15	Kabelloses Ladegerät mit Verstärker
+15493810749825	kein-stecker-merkmal	2026-09-15	Haarschneider mit zwei Geschwindigkeiten
+15493811536257	kein-stecker-merkmal	2026-09-15	Kabelloses Ladegerät mit Uhr, Nacht- und Tischlampe
+15493811634561	kein-stecker-merkmal	2026-09-15	Mini USB Tisch-Staubsauger
+15493830574465	kein-stecker-merkmal	2026-09-15	Mini Tattoo Funknetzteil
+15493830705537	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Kabelloses USB-Ladegerät für Smartphones
+15493830771073	unklar-eu-vorhanden:EU/US	2026-09-15	Lithium-Akku-Ladegerät mit LCD-Anzeige
+15493835194753	kein-stecker-merkmal	2026-09-15	Heizkissen für Kinderstuhl
+15493845320065	kein-stecker-merkmal	2026-09-15	Tragbarer USB-Entsafter 500ml
+15493848007041	kein-stecker-merkmal	2026-09-15	Kabelloses Ladegerät für das Auto
+15493848334721	kein-stecker-merkmal	2026-09-15	V10 Universal-Ladegerät für Akkus
+15493848629633	kein-stecker-merkmal	2026-09-15	Tragbares Ladegerät für Smartphones
+15493851742593	kein-stecker-merkmal	2026-09-15	Kabelloser Lockenstab für zuhause
+15493851939201	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	Vollautomatischer Lockenstab für nasse & trockene Haare
+15493852168577	kein-stecker-merkmal	2026-09-15	3-in-1 Warmluftbürste für Locken und Glätten
+15493852299649	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-15	High-Speed Warmluftbürste 9-in-1
+15493852561793	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Haarglätter und Lockenstab
+15493852692865	kein-stecker-merkmal	2026-09-15	Automatischer Lockenstab mit Leopard-Print
+15493852791169	kein-stecker-merkmal	2026-09-15	Multifunktionaler 5-in-1 Lockenstab mit Geräuschminderung
+15493852889473	kein-stecker-merkmal	2026-09-15	Lockenstab mit negativen Ionen
+15493853053313	kein-stecker-merkmal	2026-09-15	3-in-1 Lockenstab-Kombination für grosse Wellen
+15493854134657	kein-stecker-merkmal	2026-09-15	Kabelloses USB-Ladegerät für Apple Watch
