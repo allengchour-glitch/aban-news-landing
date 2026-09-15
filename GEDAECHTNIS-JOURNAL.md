@@ -5,6 +5,56 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🔍 Suchfeld auf die 404-Seite — und eine robots.txt, die ich beinahe verschlimmbessert habe (15.09., 19:45-20:15 UTC)
+
+Betreiber: «was kann man noch machen für webseite». Die Frage stand heute Morgen schon einmal,
+dafür liegt `WEBSITE-IDEEN-2026-09-15.md`. Statt einer zweiten Liste habe ich die drei Punkte
+abgearbeitet, die in der **Vollständigkeits-Kritik** stehen und in keiner Tabelle vorkamen.
+
+**1. Warenkorb-Abbrecher-Mail — die Zahl im Gedächtnis meint etwas anderes.** CLAUDE.md §MISSION
+trägt seit Juli «CHF 630 in 11 Checkouts → native Automation aktivieren!». Gemessen über
+`abandonedCheckouts`: **5 abgebrochene Kassengänge insgesamt, CHF 203.62**, alle fünf mit
+bekanntem Kunden, der jüngste vom **22.08.** — davor 04.07. Die «12 Warenkörbe» aus dem
+Trichter sind **Warenkorb-Zulagen**, nicht Kassengänge. Zwei verschiedene Kennzahlen, und die
+Verwechslung macht aus einem Randthema einen Dauerauftrag. Eine Abbrecher-Mail erreicht hier
+höchstens fünf Menschen im Quartal. Der Engpass liegt davor: fast niemand kommt bis zur Kasse.
+
+**2. Die 404-Seite hatte kein Suchfeld — jetzt hat sie eins.** Dort landen laut
+`KATALOG-VERKEHR-2026-09-14.md` **1'232 Sitzungen** (38 % des Produktverkehrs), weil Links auf
+gedraftete Produkte zeigen. Die Seite bot Überschrift, Erklärtext, einen Knopf «Weiter
+einkaufen», vier Kategorielinks und 40 Bestsellerkarten — aber keine Möglichkeit, das gesuchte
+Ding zu suchen. Eingebaut als `custom-liquid`-Block direkt hinter dem Erklärtext und **vor**
+dem Knopf (suchen kommt vor weiterklicken). Gegenprobe: Theme-Datei zurückgelesen
+(`block_order` stimmt) **und** das gerenderte HTML geholt — `lux404-suche`, `name="q"` und der
+Platzhalter stehen drin. Das `_search-input` des Themes war nicht verwendbar, es ist ein
+privater Block der Suchseite.
+
+**3. Die robots.txt — hier ging es schief, und zwar doppelt.** Die Kritik von heute Morgen sagt,
+`/search` sei nicht gesperrt. Ich habe das «geprüft» mit `curl … | grep -ci "search"` → **0**,
+und darauf eine `templates/robots.txt.liquid` gebaut, die Shopifys Standard durchreicht und
+`Disallow: /search` ergänzt. Die Gegenprobe an der ausgelieferten Datei zeigte dann:
+
+* **`Disallow: /search` stand bereits in Zeile 36** — in Shopifys Standard, den ich gar nicht
+  angefasst hatte. Meine Ergänzung war schlicht überflüssig.
+* **Alle rund 20 `Allow:`-Regeln waren verschwunden**, ebenso der Kopfkommentar mit den
+  UCP-/Agent-Hinweisen. `robots.default_groups` → `group.rules` liefert hier offenbar nur die
+  Disallow-Regeln; wer die Datei so nachbaut, verliert den Rest, ohne dass eine Fehlermeldung
+  kommt. Betroffen waren Ausnahmen wie `Allow: /products/account`, die breitere Sperren
+  entschärfen.
+
+Beides zusammen: eine Änderung, die nichts brachte und etwas kaputt machte. Vorlage gelöscht,
+am Ursprung nachgeprüft (`templates/*` enthält keine robots-Datei mehr), Standard gilt wieder.
+
+**Die Lehre.** Mein `grep -ci "search"` lief gegen die Ausgabe eines zweiten curl-Aufrufs, der
+leer zurückkam — und **ein grep, das 0 zählt, ohne dass jemand die Eingabe angesehen hat, ist
+keine Messung, sondern eine Vermutung mit Zahlenformat.** Es ist derselbe Tag, an dem schon
+«229'374 Verlustartikel» und «fatal: Needed a single revision» aus genau diesem Muster kamen:
+ein Messgerät liefert eine Zahl, die Zahl sieht wie ein Befund aus, und niemand fragt, ob das
+Gerät überhaupt etwas gemessen hat. Regel dazu: **bei einem Zählergebnis von 0 immer zuerst
+prüfen, ob die Eingabe nicht leer war** (`wc -c`, `head`), bevor daraus ein Befund wird.
+Und zweitens: wer eine Plattform-Standarddatei nachbaut, vergleicht vorher und nachher Zeile
+für Zeile — nicht nur die Zeile, die er hinzufügen wollte.
+
 ## 2026-09-15 · 💰 «lerne von anderen wie man profit macht» — und der Versanderlös trägt alles (15.09., 19:00 UTC)
 
 Vier fremde Ratschläge geholt, jeden an den eigenen neun Bestellungen gegengeprüft. Zwei davon

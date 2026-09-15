@@ -121,3 +121,23 @@ Offen und gemessen dokumentiert: **118 von 518 Kollektionen führen keine kaufba
 (`dropship/LEERE-KOLLEKTIONEN-2026-09-15.md`), davon rund 55 Markenregale, die sich nie wieder füllen.
 Der Vorschlag dort lautet abmelden plus Weiterleitung — **nicht ausgeführt**, weil der Betreiber am
 14.09. gesagt hat, der Katalog solle nicht verkleinert werden.
+
+## 8. Nachtrag 15.09. abends — die drei Lücken aus Abschnitt 6 abgearbeitet
+
+| Lücke | Ergebnis | Gegenprobe |
+|---|---|---|
+| **Nr. 2 — die 404-Seite** | **Suchfeld eingebaut.** `custom-liquid`-Block hinter dem Erklärtext, vor dem Knopf «Weiter einkaufen». Die Seite bot vorher nur vier Kategorielinks und 40 Bestsellerkarten; wer ein bestimmtes Produkt suchte, hatte keinen Weg. | Theme-Datei zurückgelesen (`block_order`: text → text → **custom_liquid_suche** → button → kat-links) UND gerendertes HTML geholt: `lux404-suche`, `name="q"`, Platzhalter vorhanden |
+| **Nr. 3 — Warenkorb-Abbrecher-Mail** | **Kein Hebel, die Zahl im Gedächtnis meint etwas anderes.** Gemessen über `abandonedCheckouts`: **5 Kassengänge, CHF 203.62**, alle mit bekanntem Kunden, jüngster **22.08.**, davor 04.07. Die «12 Warenkörbe» aus dem Trichter sind Warenkorb-**Zulagen**, keine Kassengänge. Eine Abbrecher-Mail erreicht hier höchstens fünf Menschen im Quartal. | `abandonedCheckouts(first:30)` mit `completedAt`, `customer`, `totalPriceSet`; `marketingActivities`: 0 |
+| **Nr. 4 — Suchergebnisseite** | **Zwei Behauptungen der Kritik waren falsch, die dritte stimmt.** Der Titel ist **nicht** leer (`Suche: 1000 Ergebnisse gefunden für "kleid"`), ein **canonical ist vorhanden**. Ein `robots`-Meta fehlt wirklich. **Aber `/search` ist längst gesperrt** — `Disallow: /search` steht in Shopifys Standard-robots.txt. Kein Handlungsbedarf. | robots.txt Zeile 36 im ausgelieferten Stand; Titel und canonical per Regex am rohen HTML |
+
+### Ein Fehlgriff, offen protokolliert
+Bevor ich das nachgeprüft hatte, habe ich eine `templates/robots.txt.liquid` angelegt, um
+`/search` zu sperren. Zwei Fehler in einem:
+1. Die Regel **gab es schon** — mein `grep -ci "search"` lief gegen eine leere curl-Antwort und
+   zählte darum 0.
+2. Die Nachbau-Vorlage **verlor alle rund 20 `Allow:`-Regeln** und den Kopfkommentar, weil
+   `robots.default_groups → group.rules` hier nur die Disallow-Zeilen liefert.
+
+Vorlage gelöscht, am Ursprung nachgeprüft (`templates/*` führt keine robots-Datei mehr),
+Shopifys Standard gilt wieder. **Regel daraus: ein Zählergebnis von 0 ist erst dann ein Befund,
+wenn belegt ist, dass die Eingabe nicht leer war.**
