@@ -2,6 +2,10 @@
 
 Das Menü ist die Navigation, die jede Besucherin benutzt. Diese Einträge führen ins Leere oder in eine leere Kategorie.
 
-- `/collections/%F0%9F%8E%81-geschenke-bis-chf-30` — existiert nicht
-- `/collections/%F0%9F%92%8E-premium-ab-chf-80` — existiert nicht
+- `/en/collections/schmuck-uhren` — Pfad-Praefix vor /collections/ — liefert 404 (Sprachpfad wie /en/ existiert nicht)
+- `/en/collections/premium-schmuck` — Pfad-Praefix vor /collections/ — liefert 404 (Sprachpfad wie /en/ existiert nicht)
+- `/en/collections/buro-home-office` — Pfad-Praefix vor /collections/ — liefert 404 (Sprachpfad wie /en/ existiert nicht)
+- `/en/collections/waerme-komfort` — Pfad-Praefix vor /collections/ — liefert 404 (Sprachpfad wie /en/ existiert nicht)
+- `/en/collections/party-deko-ch` — Pfad-Praefix vor /collections/ — liefert 404 (Sprachpfad wie /en/ existiert nicht)
+- `/en/collections/weihnachten-2026` — Pfad-Praefix vor /collections/ — liefert 404 (Sprachpfad wie /en/ existiert nicht)
 - `/collections/luxestyle-premium` — veroeffentlicht, aber KEIN kaufbares Produkt (productsCount meldet 7889 — zaehlt Entwuerfe mit)
