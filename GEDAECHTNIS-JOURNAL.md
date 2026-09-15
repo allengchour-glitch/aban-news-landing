@@ -39,11 +39,28 @@ Offen bleibt: die Kundinnen wissen bis heute nichts von der Bewegung. Eine Nachr
 seit dem 12.09. unterwegs» wäre der natürliche Abschluss, ist aber genau die Mail, die der Betreiber
 untersagt hat. Das ist sein Entscheid, nicht mein Versäumnis — hier steht nur, dass die Lücke besteht.
 
-**Nebenbefund am selben Morgen:** die Routine «BigBuy-Ende» feuert am 16.09. um 05:00 UTC gegen
-«~160» Produkte. Gezählt sind es **260** (`sku:bb-* AND status:active`); der Ziel-Tag `bigbuy-ende-0926`
-trägt 0. Die Begründung «Pack gekündigt» ist von hier **nicht prüfbar** — `BIGBUY_API_KEY` steht in
-keiner Umgebungsvariable, und das Gedächtnis kennt keine Kündigung. Cowork-Punkt 6 trägt jetzt die
-gemessene Zahl statt der geschätzten.
+**Nebenbefund am selben Morgen — und eine Selbstkorrektur binnen zehn Minuten.** Die PC-Routine
+«BigBuy-Ende» feuert am 16.09. um 05:00 UTC gegen «~160» Produkte. Gezählt waren es **260**
+(`sku:bb-* AND status:active`). Zur Begründung «Pack gekündigt» schrieb ich zuerst in den
+Cowork-Auftrag, sie sei **von hier nicht prüfbar**: `BIGBUY_API_KEY` steht in keiner
+Umgebungsvariable, und `gedaechtnis.py "bigbuy gekündigt pack ende"` lieferte «nichts».
+
+Das war falsch, und der Beweis lief in diesem Moment auf derselben Maschine. `git status` zeigte
+`dropship/_bigbuy_abschied.txt` als verändert; `ps` nannte den Schreiber: **`automation/bigbuy_abschied.py`**,
+vom Aufseher gestartet. Sein erster Satz lautet: «Der Betreiber hat das BigBuy-Abo Pack Ecommerce am
+16.08.2026 gekündigt; es bleibt bis 15.09.2026 aktiv.» Das Journal hält dazu die Bestätigungsmail von
+BigBuy vom 16.08. 11:12 UTC fest. Heute ist der Stichtag, das Skript draftet seit dem Nachtlauf:
+**260 → 194 aktive** BigBuy-Produkte in zwanzig Minuten.
+
+**Die Lehre: «nicht auffindbar» ist eine Aussage über meine Suche, nicht über den Bestand.** Die
+Gedächtnis-Suche greift auf Journal-Prosa; sie liest keine Skript-Köpfe. Genau dort stand die Antwort,
+seit vier Wochen, in dem Programm, das die Sache erledigt. Drei Griffe hätten gereicht und kosten
+Sekunden: `grep -rn` über `automation/`, ein Blick auf `git status` (wer schreibt gerade?) und
+`ps -eo args` (wer läuft gerade?). **Bevor ich «unprüfbar» in einen Auftrag an den Betreiber schreibe,
+frage ich die laufenden Prozesse** — ein Automat, der eine Entscheidung schon umsetzt, ist der beste
+Beleg, dass die Entscheidung existiert. Cowork-Punkt 6 ist entsprechend von «Entscheid nötig» auf
+«erledigt, nichts zu klicken» umgeschrieben; die PC-Routine von morgen ist ein Doppel und findet
+voraussichtlich nichts mehr vor.
 
 ## Inhaltsverzeichnis
 

@@ -36,16 +36,16 @@ Erfinde keine Werte, bezahle nichts, lösche nichts, deinstalliere keine App.
    «LuxeStyle CH: Mode, Schmuck, Beauty & Gadgets. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Rechnung mit
    Klarna · TWINT. Aus der Schweiz.» (136 Zeichen). Speichern, Zeichenzahl melden.
 
-6. ⏰ ENTSCHEID BIS 16.09. 05:00 UTC (nur entscheiden, nicht klicken): Die Routine «LuxeStyle: BigBuy-Ende»
-   (aus der PC-Sitzung) setzt am 16.09. um 05:00 UTC alle noch aktiven BigBuy-Produkte auf Entwurf,
-   Begründung «BigBuy-Pack gekündigt, läuft 15.09. aus».
-   GEMESSEN 15.09. 04:40 UTC: es sind **260** aktive Produkte mit BigBuy-SKU, nicht ~160 (Shopify
-   productsCount query "sku:bb-* AND status:active"); der Ziel-Tag bigbuy-ende-0926 trägt heute 0 Produkte,
-   die Routine hat also noch nichts angefasst. Die Begründung selbst kann ich von hier NICHT prüfen:
-   BIGBUY_API_KEY liegt in keiner Umgebungsvariable dieser Sitzung, und im Gedächtnis steht keine Kündigung.
-   Wenn das Pack wirklich ausläuft → nichts tun (die 260 wären sonst Geisterverkäufe wie #1006/#1008/#1009).
-   Wenn NICHT → Routine trig_01Fks8G3zVunFbfaGjWtep6f im Routinen-Menü deaktivieren.
-   Rückgängig wäre: Produkte mit Tag bigbuy-ende-0926 wieder auf ACTIVE.
+6. ✅ ERLEDIGT, KEIN ENTSCHEID NÖTIG (Stand 15.09. 05:00 UTC): Die Frage «BigBuy-Pack wirklich gekündigt?»
+   ist beantwortet — JA, und zwar aus unserem eigenen Bestand: `automation/bigbuy_abschied.py` trägt seit
+   dem 16.08. im Kopf «Der Betreiber hat das BigBuy-Abo Pack Ecommerce am 16.08.2026 gekündigt; es bleibt
+   bis 15.09.2026 aktiv», und das Journal hält die Bestätigungsmail von BigBuy vom 16.08. 11:12 UTC fest.
+   Heute ist der Stichtag. Der Aufseher hat das Skript planmässig gestartet; GEMESSEN 15.09. 05:00 UTC:
+   aktive BigBuy-Produkte 260 → 194 und fallend, Ledger `dropship/_bigbuy_abschied.txt`.
+   Die PC-Routine «BigBuy-Ende» (16.09. 05:00 UTC) ist damit ein Doppel unserer eigenen Arbeit und findet
+   morgen voraussichtlich nichts mehr vor. Du musst nichts klicken. Rückgängig wäre: Produkte mit Tag
+   `bigbuy-abschied` wieder auf ACTIVE — aber ohne Paket gibt es keine Bestandsprüfung mehr, also wären
+   es Geisterverkäufe wie #1006/#1008/#1009.
 
 7. SHOPIFY-CHAT EINSCHALTEN (ersetzt Punkt 3, die App «Shopify Inbox/Messaging» ist schon installiert — gemessen 14.09.):
    Onlineshop → Themes → Anpassen (veröffentlichtes Theme) → linke Leiste, drittes Symbol «App-Embeds» → «Online store chat»

@@ -48,8 +48,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   Conversion 0,08 % vs 1,4 % QUELLE. Vor Theme-Reparaturen IMMER die Live-Datei holen — `theme_backup/` ist Vergangenheit.
 - **Katalog aus Verkehrssicht 14.09.** (`dropship/KATALOG-VERKEHR-2026-09-14.md`, `tools/verkehrsseiten_messen.py`): 957/1'357
   Sitzungen landen auf PRODUKTSEITEN — Landeseiten zuerst messen. **⚠️ PC-Routine «Produktzahl-Wächter» (`trig_019RPGRJ…`, alle
-  3 h) schaltete den Keepalive ab; Prompt am 14.09. 20:04 auf Nur-Lesen geändert.** **⚠️ `trig_01Fks8G3…` entwirft am
-  16.09. 05:00 UTC alle BigBuy-Produkte (Tag `bigbuy-ende-0926`, PC-Session: «Pack gekündigt») — Betreiber bestätigen oder abschalten.**
+  3 h) schaltete den Keepalive ab; Prompt am 14.09. 20:04 auf Nur-Lesen geändert.** **✅ BigBuy-Ende ist erledigt (15.09.): Abo «Pack Ecommerce» lief heute aus (gekündigt 16.08., belegt im Kopf von `automation/bigbuy_abschied.py`); der Aufseher draftet die 260 aktiven BigBuy-Produkte (Tag `bigbuy-abschied`). Die PC-Routine `trig_01Fks8G3…` am 16.09. ist ein Doppel.**
   Läufe > 1 h müssen hinter der letzten Quittung weitermachen (`versand_jenachland` rotiert jetzt).
 - **SEO/Optik 14.09.** (`dropship/LERNEN-SEO-OPTIK-2026-09-14.md`): Startseite Reihenfolge Hero → USP → Trend → Kollektionen →
   Bestseller → **Kundenstimmen** (`lux_kundenstimmen`, Judge.me-Metafeld, 4.88/4'349) → … ; JSON-LD im Head (`luxJsonLd`, nur index);
@@ -614,7 +613,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
-- 2026-09-15 · 📦 Zugesagte Rückerstattung für #1017/#1018 fällig — gemessen statt erstattet: beide Sendungen seit 12.09. unterwegs (7 Stationen, Schweizer Post); Betreiber-Entscheid 11.09. hatte die Zusage ohnehin überholt; BigBuy-Ende trifft 260 statt ~160 Produkte
+- 2026-09-15 · 📦 Zugesagte Rückerstattung für #1017/#1018 fällig — gemessen statt erstattet: beide Sendungen seit 12.09. unterwegs (7 Stationen, Schweizer Post); Betreiber-Entscheid 11.09. hatte die Zusage ohnehin überholt
+- 2026-09-15 · 🔎 «Nicht prüfbar» war eine Aussage über meine Suche: die BigBuy-Kündigung stand seit 16.08. im Kopf von `bigbuy_abschied.py`, und das Skript lief in dem Moment (260 → 194 aktive); vor «unprüfbar» erst `grep automation/`, `git status`, `ps -eo args`
 - 2026-09-14 · 🍬 «Essen von Fortura»: Kollektion `suesses-esswaren` bestand schon (29→31 CH-Lager-Süsswaren) — Menü nach vorne, in Startseiten-Rotation; vor dem Anlegen immer Bestand suchen
 - 2026-09-14 · 🤖 «chatgpt pushen»: 2,17 % Conversion; Agentic Storefront braucht US-Markt (nur CH) → Cowork 9; ChatGPT zitiert Fakten-Seiten (8/12 Influencer-Seite) → FAQPage-Schema auf /pages/faq, Bing-Sitemap Cowork 10
 - 2026-09-14 · 🔁 Keepalive zum 3. Mal von der PC-Session abgeschaltet («CJ lief weiter» — gemessen: 0 Produkte nach Pausenbeginn 15:57Z); Trigger umbenannt, Prompt trägt Messung + Prüfbefehl
