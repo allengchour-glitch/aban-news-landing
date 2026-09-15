@@ -33,6 +33,26 @@ die vier Bestätigungsmails beschreiben Vorgänge, die nicht stattgefunden haben
 Eine Schweizer IBAN hat **21 Zeichen**. Die 22-stellige Variante scheitert an der Prüfziffer
 (ISO 13616, mod 97 = 54 statt 1) — **keine Bank der Welt kann sie ausführen.**
 
+## ⚠️ Der Befund vom 15.09., der alles ändert
+
+Betreiber, wörtlich: **«nach auszahlen klick, passiert nichts nach mehrere tagen».**
+
+Das Kontrollpanel ist also **nicht kaputt** — der Antrag geht durch, die Bestätigung kommt,
+und danach passiert nichts. Genau wie viermal zuvor.
+
+**Damit fällt die IBAN-Erklärung als alleinige Ursache weg.** Der Antrag vom 08.09. 20:12 UTC
+trug die **geprüft richtige** Nummer (21 Zeichen, Prüfziffer korrekt). BigBuy sagt in jeder
+Bestätigungsmail «innerhalb von 5 Werktagen» zu. Diese fünf Werktage (9., 10., 11., 14., 15.09.)
+sind **heute abgelaufen** — und das Guthaben steht unverändert auf 1'000.00.
+
+**Ein richtiger Antrag mit richtiger Nummer wurde nicht ausgeführt.** Die Ursache liegt bei
+BigBuy, nicht bei der Kontonummer und nicht am Klick.
+
+→ **Ein fünftes Mal klicken bringt nichts.** Der Klick ist nicht das Problem.
+→ Verdacht Nummer eins: Vorgang **18138523** («Ingreso en monedero», EUR 1'000.00, seit
+   07.07. «pendiente de pago») blockiert die Auszahlung. Er darf nicht blind storniert werden —
+   er könnte das Guthaben selbst tragen. Das muss BigBuy erklären.
+
 ## Der Weg, den BigBuy selbst vorschreibt
 
 BigBuys Antwort vom 08.09. sagt es wörtlich: **Mail ist nicht der Weg, ein Ticket ist es.**
