@@ -5,6 +5,46 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 📦 Der Tag der zugesagten Rückerstattung kam — und die Pakete fuhren doch (15.09., 04:40 UTC)
+
+Am 09.09. hatten #1017 und #1018 je **eine** Sendungsstation: ein Etikett, keine Übergabe. Beiden
+Kundinnen wurde geschrieben, dass bis **Montag, 15.09.** zurückerstattet wird, falls sich nichts bewegt.
+Heute ist dieser Montag. **GEMESSEN** (CJ `logistic/getTrackInfo`, beide Nummern):
+
+| Bestellung | Nummer | Stationen | Status | letzte Station |
+|---|---|---|---|---|
+| #1017 | EQKPT8612701376YQ | 7 | En Route | 12.09. 21:57 «Departed from Equick operation center» |
+| #1018 | EQKPT8612702883YQ | 7 | En Route | 12.09. 21:57 |
+
+Beide wurden am **12.09. 20:17** beim Versender abgeholt — fünf Tage nach dem Etikett, drei Tage nach
+meiner Zusage. Letzte Meile: Schweizer Post. `versand_stillstand.py` meldet folgerichtig nichts mehr:
+sein Befund ist «≤1 Station», und der ist weg.
+
+Zwei Dinge daran sind die Lehre.
+
+**Erstens: eine Frist, die ich setze, muss ich selbst auch einhalten — in beide Richtungen.** Hätte ich
+heute stur erstattet, ohne vorher zu messen, wären zwei bezahlte, fahrende Sendungen gratis verschenkt
+worden. Die Zusage war richtig, das blinde Einlösen wäre falsch gewesen. **Eine Zusage mit Bedingung
+wird am Stichtag GEMESSEN, nicht abgearbeitet.**
+
+**Zweitens: die Zusage war zu dem Zeitpunkt schon überholt.** Der Betreiber hat am 11.09. entschieden:
+keine Mails mehr an Kunden, keine Rückerstattung (CLAUDE.md, Routine `trig_01Bw9814DapArUNYB5CXsdfs`
+ist AUS). Meine Frist stammt vom 09.09., also von davor. Es gab also zwei gültige Anweisungen mit
+entgegengesetzter Wirkung, und nur der Zufall, dass die Pakete fuhren, hat verhindert, dass das
+auffällt. **Wenn ein Betreiber-Entscheid eine frühere Kundenzusage überschreibt, gehört das am selben
+Tag an die Zusage geschrieben** — nicht in eine zweite Zeile im Gedächtnis, die man am Stichtag
+womöglich nicht liest.
+
+Offen bleibt: die Kundinnen wissen bis heute nichts von der Bewegung. Eine Nachricht «Ihr Paket ist
+seit dem 12.09. unterwegs» wäre der natürliche Abschluss, ist aber genau die Mail, die der Betreiber
+untersagt hat. Das ist sein Entscheid, nicht mein Versäumnis — hier steht nur, dass die Lücke besteht.
+
+**Nebenbefund am selben Morgen:** die Routine «BigBuy-Ende» feuert am 16.09. um 05:00 UTC gegen
+«~160» Produkte. Gezählt sind es **260** (`sku:bb-* AND status:active`); der Ziel-Tag `bigbuy-ende-0926`
+trägt 0. Die Begründung «Pack gekündigt» ist von hier **nicht prüfbar** — `BIGBUY_API_KEY` steht in
+keiner Umgebungsvariable, und das Gedächtnis kennt keine Kündigung. Cowork-Punkt 6 trägt jetzt die
+gemessene Zahl statt der geschätzten.
+
 ## Inhaltsverzeichnis
 
 - 2026-09-14 · 🍬 «Kategorie mit Essen von Fortura»: gab es schon (`suesses-esswaren`, 29 CH-Lager-Süsswaren, 6 Kanäle, SEO) — 2 nachgetaggt (31), Menü von Platz 13 auf 6 unter «Sport & Party», Startseiten-Rotation +1 Katalog (26)
