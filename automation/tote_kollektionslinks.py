@@ -30,11 +30,22 @@ def gql(q, v=None):
         f'https://{SHOP}/admin/api/2024-10/graphql.json',
         data=json.dumps({'query': q, 'variables': v or {}}).encode(),
         headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    for i in range(4):
-        try: return json.load(urllib.request.urlopen(req, timeout=45))
+    # ⚠️ 15.09.2026: gab die Antwort roh zurueck. Shopify meldet Abfragefehler mit HTTP 200,
+    # `data: null` und einem `errors`-Block — der Aufrufer starb dann an KeyError 'data', der
+    # nichts ueber die Ursache sagte. Gleiche Reparatur wie in handle_messversprechen.py.
+    for i in range(6):
+        try:
+            d = json.load(urllib.request.urlopen(req, timeout=45))
         except Exception:
-            if i == 3: raise
-            time.sleep(2 ** i)
+            if i == 5: raise
+            time.sleep(2 ** i); continue
+        if d.get('data'):
+            return d
+        fehler = json.dumps(d.get('errors') or d, ensure_ascii=False)
+        if 'THROTTLED' in fehler:
+            time.sleep(3 + 2 * i); continue
+        raise RuntimeError('Shopify-Antwort ohne data: ' + fehler[:300])
+    raise RuntimeError('Shopify antwortet nicht (alle Versuche erschoepft)')
 
 # 1) Verlinkte Handles aus veröffentlichten Seiten und Artikeln einsammeln
 links = {}

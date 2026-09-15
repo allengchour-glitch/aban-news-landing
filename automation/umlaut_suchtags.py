@@ -84,6 +84,14 @@ def main():
         erledigt = {l.split("\t")[0] for l in open(LEDGER)}
 
     aufgaben = []
+    # ⚠️ 15.09.2026: Hier stand `open(QUELLE)` ohne Pruefung. Die Quelle liegt in /tmp und
+    # ist nach jedem Container-Neustart weg; ein Erzeuger dafuer steht in KEINEM Aufseher-
+    # Lauf. Der Waechter hinterliess deshalb taeglich einen FileNotFoundError statt einer
+    # Aussage. Ein fehlender Rohstoff ist kein Absturzgrund — er ist eine Meldung.
+    if not os.path.exists(QUELLE):
+        print(f"Quelle {QUELLE} fehlt (/tmp-Verlust, kein Erzeuger im Aufseher) — "
+              f"Umlaut-Suchtags uebersprungen, nichts geaendert.", flush=True)
+        return
     for zeile in open(QUELLE):
         d = json.loads(zeile)
         if "options" not in d or d["id"] in erledigt:
