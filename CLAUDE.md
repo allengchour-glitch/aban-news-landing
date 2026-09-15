@@ -24,6 +24,12 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **Weihnachten 2026 gefüllt:** 4 → 166 Artikel, Text neu (er bewarb drei Adventskalender ohne Lieferant).
 - **Startseite mobil repariert:** die gestrige Kundenstimmen-Sektion machte die Seite 1488 px breit;
   jetzt 390/390 gemessen. «verifizierte Bewertungen» gestrichen (Judge.me: 0 verifizierte Käufe).
+- **⚠️ NUR-BETREIBER, DRINGEND: Routine `trig_01KAnvaXU7rbVVBbaUqrg6ci` («Email-Check alle 2h (Drafts schreiben)») SENDET Mails,
+  statt Entwürfe zu schreiben.** Sie hat #1017 heute 06:23 UTC eine Rückerstattung zugesagt (gegen den Entscheid vom 11.09.)
+  und die BigBuy-Mail vom 08.09. wortgleich erneut verschickt. `update_trigger` verweigert die Änderung (über `http_api`
+  angelegt) — **nur der Betreiber kann sie abschalten.** Bis dahin: jeden Kundenentwurf VOR dem Senden gegen den frischen Thread lesen.
+- **💶 BigBuy-Guthaben EUR 1'000.00 gemessen (seit 15.07. unverändert = nie ausgezahlt).** Kein Auszahlungs-Endpunkt in der
+  API. Klickweg + Mailentwurf: `dropship/BIGBUY-1000-EURO-HEUTE.md`. Abo endet heute, BigBuy zahlt nur dienstags.
 - **#1017/#1018 fahren** (7 Stationen seit 12.09., Schweizer Post) — die Rückerstattungs-Zusage vom 09.09.
   ist damit gegenstandslos; der Betreiber hat Mails und Rückerstattungen am 11.09. ohnehin untersagt.
 - **Antwort auf «Was könnte man noch machen?»:** `dropship/WEBSITE-IDEEN-2026-09-15.md` (39 geprüfte
@@ -634,6 +640,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-15 · 🤖 Eine fremde Routine (`trig_01KAnvaXU7rbVVBbaUqrg6ci`, heisst «Drafts schreiben») SENDET: sie versprach #1017 um 06:23 UTC eine Rückerstattung — gegen den Betreiber-Entscheid vom 11.09. — und schickte die BigBuy-Mail vom 08.09. wortgleich erneut («Today, 8 September 2026»). `update_trigger` verweigert sie (über `http_api` angelegt) → **nur der Betreiber kann sie stoppen.** Mein #1017-Entwurf war ab 06:23 falsch → umgeschrieben zur zugesagten Bestätigung. **Entwurf vor dem Senden immer gegen den frischen Thread lesen**
+- 2026-09-15 · 💶 «1000 Euro zurück»: keine neue BigBuy-Mail (die von 06:23 war unsere eigene Wiederholung); Guthaben gemessen `"1000.00"`, seit 15.07. unverändert = **es ist nie Geld geflossen**. Kein Auszahlungs-Endpunkt in der API (6 geprüft, alle HTTP 400) → Klickweg in `dropship/BIGBUY-1000-EURO-HEUTE.md`: Antrag 8.9. 20:00 hat eine 22-stellige IBAN (CH hat 21) und muss weg, 20:12 ist der richtige; Abo endet heute, Auszahlung nur dienstags
 - 2026-09-15 · 👻 «118 leere Kategorien»: nur **2** sind im Onlineshop sichtbar, 116 waren nie veröffentlicht — mein Abmelde-Vorschlag für 55 Markenregale betraf Seiten, die niemand öffnen kann. Vorher: 39→18→4 füllbar (Titelwörter messen nichts, «maker» trifft nur Waffel-Maker), 6 Schatten-Zwillinge (Tag-Regel vs. Titel-Regel). **Bei Seiten-Befunden zuerst `resourcePublications` fragen.** Die zwei echten Fälle abgemeldet + 301
 - 2026-09-15 · ✉️ #1017: Kunde bat am 11.09. um Rückerstattung auf eine gemailte IBAN, bekam 4 Tage keine Antwort («??» am 15.09.); Paket fährt seit 12.09. Antwort als Gmail-Entwurf (Senden vom Filter blockiert). **Rückerstattung immer auf den Zahlweg zurück, nie auf ein per Mail genanntes Konto** — als Regel formulieren, nicht als Misstrauen
 - 2026-09-15 · 🏢 «B2B?»: Shopify-Mail «du hast begonnen» ist Werbung — gemessen 0 Firmen, 0 B2B-Kataloge, Plan Basic (kein Plus). Nichts halb gebaut. Der gangbare Weg steht seit 14.09. als Seite «Firmen & Vereine» mit Anfrageformular
@@ -658,32 +666,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
 - 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
 - 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
-- 2026-09-14 · 🔌 «weiterfix mehr»: 64 Netzstecker-Fälle deterministisch aufgelöst (EU-SKU / stecker-unklar), Büro + Partydeko + Weihnachten ins Menü, 2 Kollektions-Leichen 301
-- 2026-09-14 · ✅ Textstufe am Erzeugnis belegt: «Dies…» 100 % → 0 % (n=18 über Gemini) — und CLAUDE.md 970 KB → 59 KB
-- 2026-09-14 · 🤖 «verbessere dein ki für shopyfi» (14.09., 07:45–08:20 UTC): die «KI» schrieb seit neun Tagen auf dem bezahlten Fallba…
-- 2026-09-14 · 🧭 «mal füllen, dann polieren» + «nicht immer das gleiche suchen» (14.09., 07:30–08:00 UTC): der Grind zog 159 von 578 C…
-- 2026-09-14 · 🔍 «50k Produkte, man findet alles nicht so schnell» + «B2B machen?» (14.09., 06:40–07:00 UTC)
-- 2026-09-14 · 💽 «Datenspeicher von Google nehmen oder Upgrade?» + «2tes Gehirn Obsidian installieren» (14.09., 06:50–07:05 UTC)
-- 2026-09-14 · 📱 «mach webseite besser» / «handyversion, bilder kleiner» (14.09., 05:40–06:40 UTC): 75 % Handy-Sitzungen sahen EINE Ri…
-- 2026-09-14 · 🔌 «fix alles weiter und verbessere dann» (14.09., 03:15–04:00 UTC): Text-Hash-Falle, frische Hype-Runde — und ein Netzg…
-- 2026-09-13 · 🕵️ «lerne weiter und fix alles» (13.09., 21:10–22:40 UTC): Boden-15 ohne Quittung, Index-blinde USA-Blöcke, 593 Doppelb…
-- 2026-09-13 · 🧟 Vier Wächter starteten seit dem 04.09. NIE — `env` kennt kein `exec` (2026-09-13, 20:30 UTC)
-- 2026-09-13 · 📦 #1017/#1018 bewegen sich — am letzten Tag des CJ-Fensters (2026-09-13, 20:15 UTC)
-- 2026-09-13 · 🧠 Zweites Gehirn der anderen Session geladen — und zwei ihrer Befunde am Objekt gegengeprüft (2026-09-13, 20:45 UTC)
-- 2026-09-10 · ⭐ Sieben tote Landeseiten hinter der Reihe «Unsere Bestseller» (2026-09-10, 19:00 UTC)
-- 2026-09-10 · 🪞 Ich habe eine Dublette REPARIERT statt sie aufzulösen — und es zweimal fast wiederholt (2026-09-10, 19:20 UTC)
-- 2026-09-10 · 📦 «Die Ware wird gerade erst BESCHAFFT» — CJs erste echte Antwort nach vier Tagen (2026-09-10, 18:35 UTC)
-- 2026-09-10 · 🔒 Die Installation war SUSPENDIERT — und ein Konnektor-Reconnect hebt das nicht auf (2026-09-10, 18:04 UTC)
-- 2026-09-10 · 🙋 Der Kunde wollte die Ware — und meine Zusage hätte sie ihm storniert (2026-09-10, 09:45 UTC)
-- 2026-09-10 · 📭 Vier Tage kein Scan, kein Wort von CJ — beide Kunden VOR der Beschwerde informiert (2026-09-10, 07:10 UTC)
-- 2026-09-09 · ⛔ Der Push ist gesperrt — Lesen geht, Schreiben nicht (2026-09-09, 13:40 UTC)
-- 2026-09-09 · 🧊 92 Kategorieseiten waren nach PREIS eingefroren — und die Begründung dafür war nie gemessen (2026-09-09, 12:30 UTC)
-- 2026-09-09 · 🪟 «Katalog verbessern»: 1'000 unerfüllbare Lieferzusagen — der eigene Ledger hatte sie zugedeckt (2026-09-09, 11:40 UTC)
-- 2026-09-09 · 💽 Dateispeicher gemessen statt geschaetzt — 77 GB, und der Deckel ist der KATALOG (2026-09-09, 08:45 UTC)
-- 2026-09-09 · 🛒 Die Kasse verschweigt den Endbetrag — 6 Kassengänge, 0 abgebrochene Checkouts (2026-09-09, 06:10 UTC)
-- 2026-09-09 · 📦 Zwei Sendungsnummern, null Übergaben — und die Bestell-Ampel war dafür blind (2026-09-09, 03:30 UTC)
-- 2026-09-09 · 💥 Der Grind stand 6,5 Stunden still — eine Zuweisung an ein `const`, unsichtbar für beide Prüfungen (2026-09-09, 01:15 …
-- 2026-09-08 · 🔑 «Ist gesetzt» ist keine Messung — die Zugangsdaten sind in KEINER Umgebungsvariable (2026-09-08, 22:12 UTC)
-- 2026-09-08 · 🛑 Die #1008-Klasse ist an der KASSE geschlossen — und `DENY` allein tut gar nichts (2026-09-08, 20:40 UTC)
 
-… und 350 ältere Abschnitte: `GEDAECHTNIS-JOURNAL.md` (Inhaltsverzeichnis oben).
+… und alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md` (Inhaltsverzeichnis oben).
