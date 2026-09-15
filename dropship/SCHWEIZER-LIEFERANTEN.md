@@ -23,6 +23,33 @@ Der Antwortentwurf lag danach **sechs Wochen unversendet** im Postfach — Betre
   API ist der Anhang eines Entwurfs nicht lesbar (`get_message` → «caller does not have
   permission»). Ein Neuschreiben des Entwurfstexts kann einen Anhang zudem verlieren.
   **Vor dem Senden im Gmail-Entwurf nachsehen — ohne Formular ist die Mail wertlos.**
+### Was kostet Shopcom? — gemessen am 15.09.2026: **nirgends veröffentlicht**
+
+Beide Seiten heute per WebFetch gelesen:
+- `shopcom.ch/trading-hub-handel` → **keine** Kosten, Gebühren, Abopreise, Mindestumsätze oder
+  Mindestbestellwerte. Einzige Volumenangabe: «Für Partner mit mehr als 10 Bestellungen pro Tag
+  bieten wir eine EDI Schnittstelle an» — ebenfalls ohne Preis.
+- `forms.shopcom.ch/dropshipping-de/` → **keine** Preisangaben. Das Formular fragt nur ab:
+  Rechnungsadresse, Gründungsdatum, HR-Nummer, Mitarbeiterzahl, Ansprechperson, Produkt-
+  kategorien, Vertriebskanäle, Shop-URL, **Besucher/Monat**, Shopsystem, Social-Follower,
+  Lieferantenanzahl, **Jahresumsatz**.
+
+**Also unbekannt — deshalb steht die Frage in der Mail.** Worauf bei der Antwort zu achten ist,
+weil BigBuy genau hier teuer war:
+
+| Kostenart | BigBuy zum Vergleich (belegt) | Shopcom |
+|---|---|---|
+| Einmalige Registrierung | **EUR 90** | unbekannt |
+| Monatsabo für Feed/Dropshipping | **EUR 69/Mt** (EUR 51.75 im Jahresabo) | unbekannt |
+| Gebühr je Bestellung | — | unbekannt |
+| Fracht je Paket | EUR 27.94 in die CH (SEUR) = jede Kleinbestellung Verlust | unbekannt, CH-Inland |
+| Mindestumsatz / Mindestbestellwert | — | unbekannt |
+
+**Regel aus dem BigBuy-Fall: kein Monatsabo vor dem ersten Verkauf.** Das Abo lief von Juli bis
+15.09., hat kein rentables Geschäft erzeugt, und EUR 1'000 hängen bis heute im System fest.
+Ein Lieferant, der nur an Umsatz mitverdient, ist risikofrei; einer mit Grundgebühr kostet auch
+in Monaten ohne Bestellung.
+
 - Danach: Feed-URL + Konditionen an mich → `automation/shopcom_import.mjs` fertigbauen
   (Muster `fortura_import.mjs`: Titel-Wache mit norm(), Bild-Wache, tracked+DENY, Ledger,
   Kanäle) plus Bestands-/Preis-Wächter.
