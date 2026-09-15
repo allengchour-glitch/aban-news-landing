@@ -147,3 +147,16 @@ gid://shopify/Product/15506174247297	Weihnachts-Maniküre im Cat's Eye-Stil
 gid://shopify/Product/15506222776705	DIY Weihnachtskissen-Stickset aus Wolle
 gid://shopify/Product/15506661638529	LED Kissenbezug mit Weihnachtsmotiv
 gid://shopify/Product/15508417380737	500 Teile Puzzle: Liebe Meer, Weihnachten, Planet
+gid://shopify/Product/15509380333953	Weihnachtsbaum-Spieluhr aus Bausteinen
+gid://shopify/Product/15519835226497	Weihnachts-Baustein-Set
+gid://shopify/Product/15519839322497	Weihnachts-Baumhaus-Schloss Bausteine
+gid://shopify/Product/15523850355073	12 Stück Weihnachts-Nagelaufkleber Cartoon-Design · 12 Stück
+gid://shopify/Product/15523905700225	Weihnachts-Nussknacker aus Holz, 12 cm
+gid://shopify/Product/15523905896833	Weihnachtsbaumdecke aus Leinen 98CM
+gid://shopify/Product/15523906847105	Weihnachtsbaum-Rock mit Druck
+gid://shopify/Product/15523962945921	Bausteine für Weihnachtsgeschenke
+gid://shopify/Product/15524893884801	Damen-Kapuzenpullover mit Weihnachtsmotiv
+gid://shopify/Product/15524895621505	Kapuzenpullover mit Weihnachtsmuster für Damen
+gid://shopify/Product/15525144396161	Armband für Apple Watch mit Weihnachtsmuster
+gid://shopify/Product/15525460803969	Weihnachts‑Schneehäuschen‑Kalender aus Papier
+gid://shopify/Product/15525493506433	Rote Weihnachts-Hundeleine

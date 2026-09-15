@@ -5,6 +5,38 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🎄 «Weihnachten» stand im Menü und führte auf vier Produkte (15.09., 06:30 UTC)
+
+Der reparierte Menü-Wächter meldet nur, ob eine Kategorie **mindestens ein** kaufbares Produkt hat.
+«Weihnachten 🎄» hatte eins — genauer: vier. Beim Nachzählen am Bestand:
+
+| Merkmal | aktiv |
+|---|---|
+| Tag `weihnachten` (Regel der Kollektion) | **4** |
+| Titel enthält «Weihnacht…» | **162** |
+
+158 fertige Weihnachtsartikel lagen im Katalog und waren über die Weihnachts-Kategorie nicht zu
+finden: Familien-Pyjamas, Baustein-Lebkuchenhäuser, Hundehalsbänder mit Schleife, Diamond-Painting-
+Sets, Nussknacker. Gegenprobe auf Fehlalarme: von den 162 enthielt **kein einziger** Titel das Wort
+nicht wirklich (Suche nach `weihnacht` über alle Treffer: 0 Ausreisser) — die Tag-Chirurgie-Regel vom
+06.07. verlangt das, weil «schleif» damals «Schleife» traf. Hier war der Wortstamm eindeutig.
+
+Alle 162 tragen jetzt `weihnachten`; die Kollektion füllt sich (140 beim Nachmessen, Shopify
+indexiert nach). Das trifft auf den Tag genau, an dem der Menüpunkt überhaupt erst wieder erreichbar
+wurde — er zeigte vorher auf `/en/collections/weihnachten-2026` und damit auf 404. Ab 15.10. zieht
+`homepage_katalog_rotation.py` die Saison-Reihe zusätzlich auf die Startseite.
+
+**Lehre: «nicht leer» ist eine viel schwächere Aussage als «vollständig».** Ein Wächter mit der
+Schwelle «mindestens eins» übersieht genau die Kategorien, die zu 97 % leer sind — und das sind die
+teuersten, weil sie im Menü stehen und Saison haben. Für Kategorien mit Stichtag gehört die Frage
+gestellt: *wie viele Artikel im Katalog gehören hier hinein, und wie viele finden den Weg?*
+
+**Nachtrag zum BigBuy-Abschied desselben Morgens:** nach dem erweiterten Lauf sind **0** aktive
+Produkte mit BigBuy-SKU übrig (vorher 260, davon 136 für die alte Abfrage unsichtbar). Die
+Geisterverkaufs-Klasse #1006/#1008/#1009 ist damit geschlossen. 114 der 400 Landeseiten mit Verkehr
+gehörten zu BigBuy-Ware; **alle 114 hatten bereits eine Weiterleitung** (45 aus der gestrigen Runde,
+69 aus früheren) — hier war nichts zu tun, und das war eine Messung wert, keine Vermutung.
+
 ## 2026-09-15 · 🧭 Sechs tote Links im Hauptmenü — der Wächter hatte sie nie gesehen (15.09., 06:00 UTC)
 
 Nach dem BigBuy-Abschied lief `automation/menue_links.py` zur Kontrolle. Er meldete drei Befunde.
