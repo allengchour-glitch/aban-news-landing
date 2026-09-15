@@ -5,6 +5,46 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 📱 Ich habe gestern selbst einen Layoutfehler eingebaut — und ihn heute zweimal falsch repariert (15.09., 07:40 UTC)
+
+Die Kundenstimmen-Sektion auf der Startseite ist von gestern. Ein Prüfagent hat gemessen, was sie auf
+dem Handy anrichtet: **`scrollWidth` 1488 px bei 390 px Fenster** — die Seite liess sich seitlich
+schieben, die Sektion selbst blieb leer. Drei Viertel unserer Sitzungen sind mobil.
+
+**Erster Reparaturversuch:** `max-width:100%; min-width:0; overflow-x:clip` auf den Karussell-Rahmen.
+Zurückgelesen, stand drin. Nachgemessen: **1488 px, unverändert.** Der Grund, sichtbar in der Liste
+der zu breiten Elemente: nicht das Karussell war zu breit, sondern mein **äusserer** Rahmen
+`.lx-kundenstimmen` mit 1472 px — alles darin folgte ihm.
+
+**Zweiter Versuch:** aussen `max-width:min(var(--page-width,1400px),100%)` plus `overflow-x:clip`,
+innen `overflow-x:auto`, damit das Karussell wischbar bleibt statt abgeschnitten zu werden.
+Nachgemessen: **wieder 1488 px.** An dieser Stelle hätte ich fast einen dritten Fix gebaut.
+
+**Es war der Cache.** Die Regel steht seit dem 19.08. im Gedächtnis und ich bin trotzdem
+hineingelaufen: *Unsere IP bekommt eine eigene, alte Kopie; ein Befund «kaputt» ist von hier aus
+nicht beweisbar.* Der Abruf des HTML zeigte den neuen Stil bereits korrekt — nur die gerenderte
+Messung hing hinterher. Beim nächsten Lauf, wenige Minuten später:
+
+```
+scrollWidth 390 · innerWidth 390 · zu breite Elemente: 2 (Hero-Bild 405 px, durch overflow:hidden geklippt)
+```
+
+**Die Lehre ist nicht «der Cache lügt» — die kannte ich.** Sie lautet: **wenn eine Messung nach einer
+Änderung exakt denselben Wert liefert wie vorher, ist das ein Cache-Verdacht, kein Befund.** Ein
+echter Fehlschlag verändert meist irgendetwas. Zwei identische Zahlen über zwei verschiedene
+Eingriffe hinweg heissen: dieselbe Seite wurde zweimal gemessen. Bevor der dritte Fix gebaut wird,
+gehört geprüft, ob das ausgelieferte HTML die zweite Änderung überhaupt trägt — das kostet einen
+`curl` und hätte mir den zweiten Umbau erspart.
+
+Beide Werkzeuge liegen jetzt im Repo: `tools/mobil_ueberlauf.mjs` (Breite und die zu breiten
+Elemente) und `tools/mobil_kette.mjs` (die ganze Kette vom tiefsten zu breiten Element nach oben,
+mit `overflow-x` und `max-width` je Ebene). Das zweite hat den Fall entschieden — die blosse Liste
+der zu breiten Elemente sagt nicht, **wer** wen breit macht.
+
+Gleichzeitig behoben: Die Sektion schrieb «verifizierte Bewertungen». Judge.me weist für die
+über 4'300 Bewertungen **null verifizierte Käufe** aus; sie stammen aus der Lieferantenplattform.
+Das Wort ist gestrichen. Die Bewertungen sind echt, «verifiziert» waren sie nie.
+
 ## 2026-09-15 · 🔇 Zweimal «erfolgreich» gemeldet, zweimal nichts geschrieben (15.09., 07:00 UTC)
 
 An einem Vormittag zwei Schreibvorgänge, die Erfolg meldeten und nichts taten. Verschiedene

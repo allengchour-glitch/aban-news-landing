@@ -613,6 +613,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-15 · 🧭 «Was könnte man noch machen?»: 47 Vorschläge, 39 geprüft behalten, 8 verworfen + Vollständigkeits-Kritik → `dropship/WEBSITE-IDEEN-2026-09-15.md`; Cowork 1 (Versand 45→50) zurückgezogen, hätte rabattierten Körben den Gratisversand genommen
+- 2026-09-15 · 📱 Kundenstimmen-Sektion von gestern machte die Startseite auf dem Handy 1488 px breit; zwei Fixes schienen wirkungslos — es war der IP-Cache. Gleiche Zahl nach zwei verschiedenen Eingriffen = Cache-Verdacht. Werkzeuge `tools/mobil_ueberlauf.mjs`, `tools/mobil_kette.mjs`; «verifizierte Bewertungen» gestrichen (0 verifizierte Käufe)
 - 2026-09-15 · 🔇 Zwei Schreibvorgänge meldeten Erfolg und taten nichts: `menuUpdate` verwirft `url` bei Typ COLLECTION; `articleUpdate` braucht `HTML!` statt `String!`, und die `or {}`-Kette verschluckte den GraphQL-Fehler. Nach jedem Schreiben zurücklesen, `r['errors']` prüfen
 - 2026-09-15 · 🎄 «Weihnachten» im Menü führte auf 4 Produkte, im Katalog lagen 162 (Tag fehlte); alle getaggt, Kollektion füllt sich. «Nicht leer» ist keine Aussage über Vollständigkeit — BigBuy danach 0 aktiv, alle 114 Landeseiten hatten schon Weiterleitungen
 - 2026-09-15 · 🧭 Hauptmenü: 6 Einträge zeigten auf `/en/collections/…` = 404 (auch «Schmuck & Uhren»); Wächter sah sie nicht (Regex greift mitten im Pfad) und meldete dafür 2 Emoji-Handles falsch (kein `unquote`); `menuUpdate` ignoriert `url` bei Typ COLLECTION → auf HTTP umgestellt; `luxestyle-premium` hiess `Tag=bigbuy` und war nach dem Abschied leer → `Tag=premium`, 41 aktiv

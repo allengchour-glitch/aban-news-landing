@@ -42687,3 +42687,5 @@ gid://shopify/Product/15493807145345	ok
 gid://shopify/Product/15493807112577	ok
 gid://shopify/Product/15493807079809	ok
 gid://shopify/Product/15493807047041	ok
+gid://shopify/Product/15493807014273	ok
+gid://shopify/Product/15493800395137	ok
