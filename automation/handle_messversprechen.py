@@ -42,11 +42,26 @@ def gql(q, v=None):
         f'https://{SHOP}/admin/api/2024-10/graphql.json',
         data=json.dumps({'query': q, 'variables': v or {}}).encode(),
         headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    for i in range(4):
-        try: return json.load(urllib.request.urlopen(req, timeout=45))
+    # ⚠️ 15.09.2026: Hier stand nur `return json.load(...)` — die ANTWORT wurde nie angesehen.
+    # Shopify liefert bei einem Fehler HTTP 200 mit `data: null` und einem `errors`-Block;
+    # der Aufrufer lief dann in `r['data']['products']` und starb an einem KeyError, der
+    # nichts ueber die Ursache sagte (gemessen im Log: KeyError 'data'). Gedrosselte
+    # Antworten sind ausserdem wiederholbar, nicht toedlich.
+    for i in range(6):
+        try:
+            d = json.load(urllib.request.urlopen(req, timeout=45))
         except Exception:
-            if i == 3: raise
-            time.sleep(2 ** i)
+            if i == 5: raise
+            time.sleep(2 ** i); continue
+        if d.get('data'):
+            return d
+        fehler = json.dumps(d.get('errors') or d, ensure_ascii=False)
+        if 'THROTTLED' in fehler:
+            time.sleep(3 + 2 * i); continue
+        # Kein `data` und keine Drosselung: die Abfrage selbst ist falsch oder die Anmeldung
+        # fehlt. Laut abbrechen — ein leeres Ergebnis wuerde als «nichts gefunden» quittiert.
+        raise RuntimeError('Shopify-Antwort ohne data: ' + fehler[:300])
+    raise RuntimeError('Shopify antwortet nicht (alle Versuche erschoepft)')
 
 def slug(t):
     t = t.lower()
