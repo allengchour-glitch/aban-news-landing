@@ -1,5 +1,43 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 📣 2026-09-15, 05:00 UTC · An die PC-Session: BigBuy ist heute wirklich zu Ende — und was das kaputt gemacht hat
+
+**Eure Routine «BigBuy-Ende» (16.09. 05:00 UTC) braucht ihr nicht mehr.** Unser eigenes
+`automation/bigbuy_abschied.py` hatte den Stichtag heute und ist durch. Gemessen 05:00 UTC:
+**0 aktive Produkte mit BigBuy-SKU** (vorher 260). Eure Routine findet morgen nichts mehr vor;
+sie schadet nicht, ist aber ein Doppel.
+
+**Zwei Dinge daran, die euch betreffen könnten:**
+
+1. **Das Skript hatte eine Lücke, die wir heute geschlossen haben.** Seine Abfrage lautete
+   `status:active tag:bigbuy` — sein eigener Kopfkommentar versprach seit dem 16.08. aber
+   SKU-Abdeckung. **136 aktive Produkte trugen `bb-real` bzw. eine `bb-…`-SKU ohne den Tag
+   `bigbuy`** und wären bestellbar geblieben, ohne Lieferanten dahinter: die Geisterverkaufs-Klasse
+   von #1006/#1008/#1009. Auswahl ist jetzt `status:active AND (tag:bigbuy OR tag:bb-real OR sku:bb-*)`.
+   Falls ihr eigene BigBuy-Wächter habt: dieselbe Prüfung dort einbauen.
+
+2. **Der Abschied hat Kategorien geleert.** `luxestyle-premium` (Menüpunkt «Premium & Marken»)
+   hatte die Regel `Tag = bigbuy` und stand danach auf null kaufbaren Produkten; neue Regel
+   `Tag = premium` → 41 aktiv. Insgesamt führen jetzt **118 von 518 Kollektionen** keine kaufbare
+   Ware, davon rund 55 Marken-Kollektionen (Michael Kors, Swatch, Adidas, Puma …), die sich nie
+   wieder füllen. Messung, Einteilung und Vorschlag: `dropship/LEERE-KOLLEKTIONEN-2026-09-15.md`.
+   **Bitte dort nichts im Alleingang löschen** — der Betreiber hat am 14.09. gesagt, der Katalog
+   soll nicht verkleinert werden; der Bericht schlägt Abmelden plus Weiterleitung vor und wartet
+   auf seinen Entscheid.
+
+**Ausserdem heute repariert:** sechs Einträge im Hauptmenü zeigten auf `/en/collections/…` und
+lieferten 404, darunter der Hauptpunkt «Schmuck & Uhren» (gemessen: mit `/en/` 404, ohne 200).
+`menue_links.py` hatte sie nie gemeldet, weil seine Regex mitten im Pfad greift; dafür meldete er
+zwei Emoji-Kategorien falsch als tot, weil er den Handle nicht dekodierte. Beides behoben.
+
+**Und die Kundenzusage von #1017/#1018 ist abgelaufen ohne Rückerstattung — zu Recht:** beide
+Sendungen bewegen sich seit dem 12.09. (7 Stationen, letzte Meile Schweizer Post). Vor dem Stichtag
+messen, nicht abarbeiten.
+
+**Der Aufseher-Keepalive `trig_01Uy3zVefXbzCZn9Dr2qvkwh` läuft und soll laufen.** Er startet keine
+CJ-Runner (Grind pausiert bis 13.03.2027), sondern die Kundenbetreuung. Einwände bitte hier eintragen,
+nicht durch Abschalten.
+
 ## 🛒 2026-09-13 · ÜBERGABE AN DIE NÄCHSTE SHOP-SESSION (LuxeStyle) — hier anfangen
 
 Der User hat am 13.09. ausdrücklich gesagt: **„lerne du nur und teile dann memory für andere
