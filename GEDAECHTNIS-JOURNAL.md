@@ -5,6 +5,56 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🧪 Der «nur im Browser prüfbare» Punkt war mit vier API-Warenkörben in zehn Minuten entschieden (15.09., 11:10 UTC)
+
+Betreiber: «co work machen». Die Cowork-Liste hatte zehn Punkte, von denen ich selbst geschrieben
+hatte, sie brauchten einen Browser. Vier davon brauchten keinen.
+
+**Punkt 1 — die Versandschwelle.** Seit dem 14.09. stand hier die Frage: Rechnet Shopifys
+Bedingung «Gesamtpreis ≥ 45» vor oder nach dem automatischen Rabatt? Ich hatte dafür zwei
+Testkörbe im Browser bestellt — beim PC-Claude, irgendwann.
+
+Es geht ohne. `storefrontAccessTokenCreate` liefert einen Storefront-Token, `cartCreate` mit
+`buyerIdentity.deliveryAddressPreferences` liefert echte Warenkörbe **mit den Versandoptionen,
+die die Kundin sehen würde** (`deliveryGroups.deliveryOptions.estimatedCost`). Werkzeug:
+`tools/versand_testkorb.py`.
+
+| Korb | vor Rabatt | nach Rabatt | Versand |
+|---|---|---|---|
+| 2 × 23.00 | 46.00 | 41.40 | **CHF 7.00** |
+| 2 × 23.50 | 47.00 | 42.30 | **CHF 7.00** |
+| 2 × 25.00 | 50.00 | 45.00 | gratis |
+| 1 × 51.00 | 51.00 | 51.00 | gratis |
+
+**Shopify rechnet NACH Rabatt.** Und damit kippt die Bewertung des angeblichen Fehlers: Mit dem
+10-%-Rabatt ab zwei Artikeln beginnt der Gratisversand bei **genau CHF 50 vor Rabatt** — exakt
+der Betrag, den der Shop verspricht. Die 45 ist keine schlampige Zahl, sie ist die Kompensation.
+Hätte ich den ursprünglichen Auftrag ausführen lassen («45 aus, 50 an»), läge die echte Schwelle
+für Zwei-Artikel-Körbe danach bei CHF 55.56 — aus einer eingehaltenen Zusage wäre ein gebrochenes
+Versprechen geworden.
+
+**Zwei Lehren, und die zweite ist die wichtigere:**
+
+1. *Ein Wert ist erst falsch, wenn man weiss, wogegen er rechnet.* «Shop verspricht 50, Einstellung
+   sagt 45» sah drei Tage lang nach einem Fehler aus. Es war eine Korrektur, die jemand bewusst
+   gesetzt hatte. **Bevor man eine Zahl geradezieht, misst man, was sie bewirkt.**
+2. *«Das geht nur im Browser» ist meistens eine Aussage über die eigene Suche.* Die Storefront-API
+   kann Warenkorb, Rabatt und Versandoption — also fast alles, was ein Testkauf zeigt, ausser der
+   Zahlung. Dasselbe Muster wie am selben Tag bei BigBuy («nicht prüfbar» — stand im eigenen Repo).
+   **Vor jedem «nur der Betreiber kann das»: prüfen, ob es einen API-Weg gibt.**
+
+**Drei weitere Punkte fielen nebenbei:**
+- *Punkt 8 war falsch begründet.* «Hextom lädt auf jeder Seite ein Skript» — gemessen: der Shop hat
+  **0 ScriptTags**, und weder Hextom noch SEOWILL stehen als App-Embed im Theme. Beide laden nichts.
+  Ich hätte den Betreiber für nichts klicken lassen.
+- *Punkt 5 war zu harmlos formuliert.* Die Meta-Beschreibung der Startseite hat 211 Zeichen — und
+  endet mit «schnellem Versand in die Schweiz **und nach Deutschland**». Der Shop liefert nur in die
+  Schweiz. Das steht unter jedem Google-Treffer. Kein `shopUpdate` in der API → bleibt Admin-Klick,
+  aber mit ganz anderer Dringlichkeit.
+- *Punkt 7:* **zwei** Chat-Apps installiert (Messaging und Chatty), auf der Seite **kein** Chat-Knopf
+  und kein Chat-Embed im Theme. Wer ihn einschaltet, muss danach sagen, welche App ihn liefert —
+  zwei Chat-Fenster wären schlimmer als keins.
+
 ## 2026-09-15 · 📮 Die Routine hatte «sende NIE selbst» im Prompt — und sendete trotzdem (15.09., 10:40 UTC)
 
 Betreiber: «schalte routine 3 ab». Ich kann es nicht, und beim Nachsehen kam etwas Schlimmeres
