@@ -1,4 +1,12 @@
-import json,subprocess,time,re,os
+import json,subprocess,time,re,os,sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# ⚠️ 15.09.2026 HIERHER VERSCHOBEN. Dieser Import stand in Zeile 50, benutzt wird
+# lieferantenref() aber schon in Zeile 38 — Python liest von oben, also starb jeder Lauf an
+# NameError, und mit ihm die ganze Kette Export → Punkte → gfeed_restore. Dritter Fall
+# derselben Bauart an einem Tag (wahlversprechen.py, artikelnummer_entfernen.py).
+# Eine Pruefung, eine Wahrheit: dieselbe Formpruefung wie gfeed_restore (Praefix ist tippbar,
+# die Form nicht) — sonst haelt der eine Lauf draussen, was der andere hereinlaesst.
+from gfeed_restore import lieferantenref
 TOK=open("/tmp/cj_shop_token.txt").read().strip()
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
@@ -45,8 +53,5 @@ while True:
 json.dump(rows,open("/tmp/gfeed_scores.json","w"))
 ok=[r for r in rows if r[1]>0]; ok.sort(key=lambda r:-r[1])
 from collections import Counter
-# Eine Prüfung, eine Wahrheit: dieselbe Formprüfung wie gfeed_restore (Präfix ist tippbar,
-# die Form nicht) — sonst hält der eine Lauf draussen, was der andere hereinlässt.
-from gfeed_restore import lieferantenref
 print("FERTIG gescannt:",tot,"| im Feed:",len(rows),"| qualifiziert:",len(ok))
 print(Counter(r[2] for r in rows).most_common())

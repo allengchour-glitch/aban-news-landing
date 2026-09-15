@@ -133,6 +133,21 @@ def gql(q, v=None):
 
 
 def main():
+    # ⚠️ 15.09.2026: Hier stand nur `json.load(open(SCORES))`. Die Punkteliste liegt in /tmp
+    # und ist nach jedem Container-Neustart weg — und der Aufseher startet den Erzeuger
+    # `gfeed_score.py` NICHT. Der Waechter starb deshalb bei jedem Lauf an einem
+    # FileNotFoundError. In dieser Umgebung ist der /tmp-Verlust der Normalfall, also
+    # erzeugt der Lauf seine Eingabe selbst, statt sie vorauszusetzen.
+    if not os.path.exists(SCORES):
+        print(f"Punkteliste {SCORES} fehlt (/tmp-Verlust) — erzeuge sie mit gfeed_score.py", flush=True)
+        r = subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                                         "gfeed_score.py")],
+                           capture_output=True, text=True, timeout=3600)
+        print((r.stdout or "")[-600:], flush=True)
+        if not os.path.exists(SCORES):
+            print("⚠️ gfeed_score.py hat keine Punkteliste hinterlassen — Lauf beendet, nichts geaendert.",
+                  flush=True)
+            return
     rows = json.load(open(SCORES))
     qualifiziert = [r[0] for r in rows if r[1] > 0]
     auch = {g.strip() for g in os.environ.get("AUCH", "").split(",") if g.strip()}
