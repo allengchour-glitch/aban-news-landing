@@ -8,6 +8,25 @@ Stand heute im Shop: **Fortura** (CH-Lager, 2'409 aktive Artikel, 1–2 Werktage
 Schweizer Lieferant — im Kern Fasnacht/Party/Kostüm/Spielzeug. Was fehlt: CH-Lager für
 Haushalt, Beauty, Technik, Outdoor.
 
+## 📌 Stand Shopcom (15.09.2026)
+
+Shopcom hat am **05.08.** geantwortet und um das ausgefüllte Dropshipping-Formular gebeten.
+Der Antwortentwurf lag danach **sechs Wochen unversendet** im Postfach — Betreiber fragte am
+15.09.: «shopcom entwurf senden?».
+
+- Entwurf am 15.09. neu geschrieben: Verzug benannt statt «Besten Dank für die schnelle
+  Rückmeldung», Interesse bekräftigt, und **drei Fragen** ergänzt, die die Sichtung offen
+  gelassen hatte: Feed-Format und Abrufrhythmus, **Gebühren/Mindestumsatz** (steht nicht
+  öffentlich auf der Website), Mindestbestellwert je Auftrag.
+- ⚠️ **Offen und nur vom Betreiber prüfbar: hängt das ausgefüllte, UNTERSCHRIEBENE PDF wirklich
+  am Entwurf?** Der Mailtext behauptet es. Die Unterschrift kann ich nicht leisten, und über die
+  API ist der Anhang eines Entwurfs nicht lesbar (`get_message` → «caller does not have
+  permission»). Ein Neuschreiben des Entwurfstexts kann einen Anhang zudem verlieren.
+  **Vor dem Senden im Gmail-Entwurf nachsehen — ohne Formular ist die Mail wertlos.**
+- Danach: Feed-URL + Konditionen an mich → `automation/shopcom_import.mjs` fertigbauen
+  (Muster `fortura_import.mjs`: Titel-Wache mit norm(), Bild-Wache, tracked+DENY, Ledger,
+  Kanäle) plus Bestands-/Preis-Wächter.
+
 ## Rangliste (nur belegte Angaben, alles ohne Konto geprüft)
 
 | # | Lieferant | Lager | Sortiment | Anbindung | Lieferzeit CH | Stand / offen |
