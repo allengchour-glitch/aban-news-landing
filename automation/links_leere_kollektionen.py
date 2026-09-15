@@ -26,10 +26,16 @@ for typ in ('page','article'):
             print(f"{typ}:{p['handle']}  {n} Link(s)")
             ges+=n
             if not DRY:
-                mut=('mutation($id:ID!,$b:String!){pageUpdate(id:$id,page:{body:$b}){userErrors{message}}}' if typ=='page'
-                     else 'mutation($id:ID!,$b:String!){articleUpdate(id:$id,article:{body:$b}){userErrors{message}}}')
+                mut=('mutation($id:ID!,$b:HTML!){pageUpdate(id:$id,page:{body:$b}){userErrors{message}}}' if typ=='page'
+                     else 'mutation($id:ID!,$b:HTML!){articleUpdate(id:$id,article:{body:$b}){userErrors{message}}}')
                 r=V.gql(mut,{'id':p['id'],'b':neu})
+                # ⚠️ 15.09.2026: Hier stand nur die userErrors-Pruefung. Ein Typfehler
+                # («$b String! / argument HTML») kommt aber als GraphQL-Fehler auf OBERSTER
+                # Ebene, data ist dann null — der Ausdruck lief ins Leere und das Skript
+                # meldete «GEAENDERT: 27», obwohl NICHTS geschrieben wurde. Beides pruefen.
+                if r.get('errors'):
+                    print("   GRAPHQL-FEHLER:", r['errors'][0].get('message')); continue
                 key='pageUpdate' if typ=='page' else 'articleUpdate'
                 ue=((r.get('data') or {}).get(key) or {}).get('userErrors')
-                if ue: print("   FEHLER:",ue)
+                if ue: print("   FEHLER:",ue); continue
 print(("DRY: " if DRY else "GEAENDERT: ")+str(ges)+" Links")

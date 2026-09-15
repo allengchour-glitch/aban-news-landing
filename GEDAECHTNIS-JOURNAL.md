@@ -5,6 +5,47 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🔇 Zweimal «erfolgreich» gemeldet, zweimal nichts geschrieben (15.09., 07:00 UTC)
+
+An einem Vormittag zwei Schreibvorgänge, die Erfolg meldeten und nichts taten. Verschiedene
+Ursachen, dasselbe Muster.
+
+**Erster Fall, `menuUpdate`.** Sechs Menüeinträge sollten von `/en/collections/…` auf
+`/collections/…` umgestellt werden. Die Mutation antwortete `userErrors: []`. Danach standen die
+sechs `/en/`-Links unverändert da. Grund: Bei `type: COLLECTION` leitet Shopify die URL aus der
+`resourceId` ab und verwirft die mitgeschickte. Erst als Typ `HTTP` mit ausdrücklichem Link griff es.
+
+**Zweiter Fall, `articleUpdate`.** 27 interne Ratgeber-Links zeigten auf Kollektionen, die seit
+dem BigBuy-Abschied leer sind (7× `premium-beauty`, 4× `naturkosmetik-beauty`, dazu Bar, Haustier,
+Puzzle, Wandkunst). Mein Skript meldete «GEAENDERT: 27». Der Trockenlauf danach fand **19**.
+Die Einzelprobe zeigte, warum:
+
+```
+Type mismatch on variable $b and argument body (String! / HTML)
+```
+
+Das Feld `body` ist vom Typ `HTML`, nicht `String!`. Solche Fehler kommen als GraphQL-Fehler auf
+**oberster** Ebene, `data` ist dann `null`. Meine Prüfung lautete
+`((r.get('data') or {}).get(key) or {}).get('userErrors')` — sie läuft bei `data: null` sauber ins
+Leere und liefert `None`, also «keine Fehler». Die acht Seiten (`pageUpdate`) gingen durch, die
+19 Artikel nicht; gezählt wurden trotzdem alle 27, weil der Zähler vor der Antwort hochlief.
+
+**Die Lehre hat zwei Hälften.**
+
+Erstens: **`userErrors: []` heisst nur, dass die Anwendung nichts zu meckern hatte — nicht, dass
+etwas geschrieben wurde.** Schemafehler, verworfene Felder und abgeleitete Werte liegen ausserhalb
+dieses Felds. Nach jedem Schreibvorgang gehört **zurückgelesen**, was der Server jetzt wirklich hat.
+Am besten so, wie es hier am Ende lief: derselbe Trockenlauf ein zweites Mal — er fand die Lücke
+in Sekunden.
+
+Zweitens: **eine defensive Kette aus `or {}` macht aus einem Fehler ein Schweigen.** Sie ist dafür
+gedacht, dass ein fehlendes Zwischenfeld nicht in einen Absturz läuft — und genau deshalb
+verschluckt sie den Fall, in dem das Zwischenfeld fehlt, WEIL etwas schiefging. Wer `data` mit
+`or {}` abfängt, muss vorher `r.get("errors")` prüfen und laut werden.
+
+Nach der Korrektur: 27 von 27 Links zeigen auf gefüllte Kategorien, der Trockenlauf meldet 0.
+Werkzeug committet als `automation/links_leere_kollektionen.py`.
+
 ## 2026-09-15 · 🎄 «Weihnachten» stand im Menü und führte auf vier Produkte (15.09., 06:30 UTC)
 
 Der reparierte Menü-Wächter meldet nur, ob eine Kategorie **mindestens ein** kaufbares Produkt hat.
