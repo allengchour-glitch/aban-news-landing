@@ -5,6 +5,75 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🦶 Der Footer stand in keiner Wächterliste — «Alle Kategorien» war seit unbekannt tot (15.09., 16:40 UTC)
+
+Betreiber: «verbessere weiter». Ich wollte die Lieferzusagen prüfen und fand etwas anderes.
+
+**Der Fund:** Der **erste Link im Footer**, «Alle Kategorien», zeigte auf
+`/en/pages/alle-kategorien`. Gemessen: `shopLocales` meldet `de` als einzige veröffentlichte
+Sprache; `en`, `fr`, `it` sind unpubliziert. WebFetch auf die Adresse: **HTTP 404.**
+
+Das ist exakt die Klasse, die ich am selben Morgen im Hauptmenü repariert hatte — sechs Links auf
+`/en/collections/…`. Warum sie trotzdem liegen blieb, steht in einer einzigen Zeile von
+`menue_links.py`:
+
+```python
+for m in d["data"]["menus"]["nodes"]:
+    if m["handle"] == "main-menu":      # ← der Footer wurde NIE gelesen
+```
+
+**Das ist der dritte Fall desselben Musters an einem Tag** (nach «Wächter prüft nur seine eigene
+Liste», Lehre 0c): Ein Wächter meldet zuverlässig grün für genau den Bereich, den er kennt.
+Sein Schweigen über alles andere sieht aus wie Abwesenheit von Fehlern.
+
+**Zwei Reparaturen, nicht eine:**
+1. Der Footer-Eintrag steht jetzt auf `HTTP` mit `/pages/alle-kategorien` (bei Typ `PAGE` verwirft
+   `menuUpdate` die `url` und leitet sie aus der `resourceId` ab — genau so entstand der
+   `/en/`-Präfix). Zurückgelesen: 15 Einträge unverändert, 0 `/en/`-Links.
+2. `menue_links.py` liest jetzt **alle** Menüs (164 statt ~140 Einträge) und prüft den
+   **Sprachpfad jedes Links**, nicht nur den von Kollektions-Links — die alte Prüfung griff über
+   eine `/collections/`-Regex und sah eine SEITE gar nicht an. Welche Sprachen leben, wird aus
+   `shopLocales` gemessen, nicht geraten.
+
+**Und die Gegenprobe hat sich selbst verdient:** Nach dem Patch meldete der Wächter am echten
+Menü «alles grün». Das beweist nichts — also habe ich ihm eine gefälschte Linkliste mit zwei
+toten Links untergeschoben. Er fand beide. Dabei fiel auf, dass er `/fr/collections/…` **zweimal**
+meldete (neue Sprachprüfung + alte Präfixprüfung); jetzt überspringt die zweite, was die erste
+schon hat. **Ein Wächter, der doppelt meldet, wird genauso ignoriert wie einer, der schweigt.**
+
+⚠️ Nebenbei korrigiert: Mein Prüfskript zählte das Wort «Sprachpfad» und meldete «3 statt 2 →
+WÄCHTER GREIFT NICHT». Der Wächter war richtig, mein Zähler traf auch den Erklärtext des zweiten
+Befunds. **Vor dem Urteil über ein Werkzeug prüft man das Urteil.**
+
+## 2026-09-15 · 🌍 «Versand auch nach Deutschland» — die Klasse ist zwei Fälle gross, nicht dreissig (15.09., 16:25 UTC)
+
+Weil die Meta-Beschreibung der Startseite Lieferung nach Deutschland verspricht, habe ich die
+Klasse über ALLE Kundenflächen gemessen: Produkte, Kollektionen, Seiten, Artikel, SEO-Texte,
+Shop-Beschreibung (`tools/lieferland_zusagen.py`, Selbsttest 15/15).
+
+**Der erste Entwurf meldete ~30 Treffer — fast alle falsch.** Er suchte ein Lieferwort und ein
+Land im selben Satz. Produktbeschreibungen haben aber keine Satzzeichen, sie sind Aufzählungen:
+
+> «Weltweite Spannungsanpassung (100-240V) … 🚚 Lieferung 10–20 Werktage»
+
+Das ist eine **Spannungsangabe** neben dem Standard-Versandhinweis. Weitere Fehltreffer:
+«UPS, einer der **weltweit führenden** Versand-Dienstleister» (Beschreibung eines Spielzeug-LKW),
+«Radsocken für Auto **Deutschland**» (der Produktname — eine Fahne), «Der Druck erfolgt in
+**Europa**, geliefert wird in die Schweiz» (korrekte Aussage).
+
+**Fix: eine RICHTUNG verlangen.** Das Land muss das Ziel sein — «nach Deutschland», «in die EU»,
+«europaweiter Versand» —, nicht bloss im selben Absatz stehen. Alle Fehltreffer stehen jetzt als
+NEIN-Fälle im Selbsttest, damit der nächste Umbau sie nicht wieder einschleppt.
+
+**Danach: 2 Befunde.** Die Shop-Meta-Beschreibung (nur im Admin änderbar, Cowork 5) und
+`/pages/internal-homepage-texts` — **nicht veröffentlicht**, also für niemanden sichtbar.
+Wieder die Lehre vom Morgen: erst fragen, ob eine Seite überhaupt erreichbar ist.
+
+**Was die Messung nebenbei ergab:** 104 von 222 Seiten sind unveröffentlicht, darunter `agb`,
+`datenschutz` und `widerruf` — das sah nach einem Rechtsloch aus. Ist keins: Der Footer verlinkt
+auf `/policies/terms-of-service` und `/policies/privacy-policy`, und die Shop-Policies tragen
+echten Text (AGB 4'008 Zeichen, Datenschutz 22'972). Die Seiten sind Altlasten, keine Lücke.
+
 ## 2026-09-15 · 🧪 Der «nur im Browser prüfbare» Punkt war mit vier API-Warenkörben in zehn Minuten entschieden (15.09., 11:10 UTC)
 
 Betreiber: «co work machen». Die Cowork-Liste hatte zehn Punkte, von denen ich selbst geschrieben

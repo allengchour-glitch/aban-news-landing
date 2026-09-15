@@ -55,7 +55,16 @@ def gql(q, v=None):
 
 
 def menue_links():
-    d = gql('{ menus(first:5){ nodes{ handle items{ title url items{ title url '
+    """Alle Menues, nicht nur das Hauptmenue.
+
+    ⚠️ 15.09.2026: Diese Funktion las `if m["handle"] == "main-menu"` — der FOOTER wurde nie
+    geprueft. Dort stand «Alle Kategorien» auf `/en/pages/alle-kategorien`, und weil die
+    englische Sprache NICHT veroeffentlicht ist (`shopLocales`: de primaer+publiziert, en/fr/it
+    unpubliziert), antwortete die Seite mit HTTP 404 — derselbe Befund wie bei den sechs
+    Hauptmenue-Links am selben Morgen, nur eine Etage tiefer. Ein Waechter, der nur seine
+    eigene Liste prueft, meldet sie zuverlaessig als gruen.
+    """
+    d = gql('{ menus(first:20){ nodes{ handle items{ title url items{ title url '
             'items{ title url } } } } } }')
     if d is None:
         return None
@@ -67,8 +76,7 @@ def menue_links():
             sammel(x.get("items") or [], pfad + x["title"] + " › ")
 
     for m in d["data"]["menus"]["nodes"]:
-        if m["handle"] == "main-menu":
-            sammel(m["items"])
+        sammel(m["items"], f"[{m['handle']}] ")
     return raus
 
 
@@ -90,7 +98,24 @@ def main():
     #     «premium-schmuck» — der existiert mit 124 Produkten, also kein Befund. Die Kundin
     #     bekommt auf dem /en/-Pfad aber HTTP 404 (gemessen). Geprueft wird jetzt der PFAD,
     #     den sie anklickt, nicht nur der Handle, den er enthaelt.
+    # (3) 15.09.2026 nachmittags: Punkt (2) prueft NUR Kollektions-Links. Im Footer stand
+    #     «Alle Kategorien» auf /en/pages/alle-kategorien — eine SEITE, also griff die Regex
+    #     gar nicht, und der tote Link blieb liegen. Der Sprachpfad-Test gehoert deshalb VOR
+    #     die Kollektions-Logik und gilt fuer jeden Link. Welche Sprachen es wirklich gibt,
+    #     wird gemessen, nicht geraten.
+    gl = gql("{ shopLocales { locale published } }")
+    lebend = {x["locale"] for x in (gl or {}).get("data", {}).get("shopLocales", []) if x["published"]}
+    tot_durch_sprache = set()
     for _t, u in links:
+        mo2 = re.match(r"/([a-z]{2})(?:-[A-Z]{2})?/", u or "")
+        if mo2 and mo2.group(1) not in lebend:
+            tot_durch_sprache.add(u)
+            befund.append((u.split("?")[0],
+                           f"Sprachpfad /{mo2.group(1)}/ ist nicht veroeffentlicht → HTTP 404"))
+
+    for _t, u in links:
+        if u in tot_durch_sprache:
+            continue          # schon gemeldet — sonst steht derselbe Link zweimal im Bericht
         mo = re.search(r"/collections/([^/?#]+)", u)
         if not mo:
             continue
