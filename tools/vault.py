@@ -98,11 +98,20 @@ def index_bauen() -> int:
              "Fallen": "🕳️ Fallen — teuer gelernt, gelten weiter",
              "Sackgassen": "⛔ Sackgassen — nicht erneut versuchen",
              "Blockiert": "🟡 Blockiert — wartet auf den User",
+             "Lehren": "🎓 Lehren",
+             "Betreiber-Entscheid": "⚖️ Betreiber-Entscheide",
              "Projekte": "📦 Projekte",
              "Stand": "🗓️ Stand",
              ".": "📄 Einzelnotizen"}
+    # ⚠️ 15.09.2026: Diese Liste war FEST VERDRAHTET und kannte "Lehren" und
+    # "Betreiber-Entscheid" nicht — drei Notizen fielen still aus dem Index (79 von 83).
+    # Ein erzeugter Index, der verschweigt was er nicht kennt, ist schlimmer als keiner.
+    # Jetzt: bekannte Ordner in fester Reihenfolge, ALLE uebrigen alphabetisch hinterher.
+    bekannt = ["Systeme", "Fallen", "Sackgassen", "Blockiert", "Lehren",
+               "Betreiber-Entscheid", "Projekte", "Stand", "."]
+    reihenfolge = bekannt + sorted(set(gruppen) - set(bekannt))
     zahl = 0
-    for ordner in ["Systeme", "Fallen", "Sackgassen", "Blockiert", "Projekte", "Stand", "."]:
+    for ordner in reihenfolge:
         eintraege = gruppen.get(ordner)
         if not eintraege:
             continue
@@ -115,6 +124,11 @@ def index_bauen() -> int:
         kopf += ["## 🗓️ Stand", "", "- [[Zeitleiste]] — alle Stand-Bloecke aus `CLAUDE.md`", ""]
         zahl += 1
     INDEX.write_text("\n".join(kopf), encoding="utf-8")
+    # Vollstaendigkeits-Wache: jede Notiz ausser den erzeugten muss im Index stehen.
+    soll = [p for p in notizen(VAULT) if p.name not in ERZEUGT]
+    fehlend = [p.stem for p in soll if f"[[{p.stem}]]" not in INDEX.read_text(encoding="utf-8")]
+    if fehlend:
+        print(f"  ⚠️ {len(fehlend)} Notizen fehlen im Index: " + ", ".join(sorted(fehlend)[:8]))
     return zahl
 
 

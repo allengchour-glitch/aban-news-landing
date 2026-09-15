@@ -1,0 +1,14 @@
+{
+  "attachmentFolderPath": "Anhaenge",
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "showUnsupportedFiles": false,
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "showLineNumber": false,
+  "spellcheck": false,
+  "defaultViewMode": "preview",
+  "livePreview": true,
+  "promptDelete": true
+}

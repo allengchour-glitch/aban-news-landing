@@ -1,0 +1,30 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    { "query": "path:Fallen",            "color": { "a": 1, "rgb": 14701138 } },
+    { "query": "path:Sackgassen",        "color": { "a": 1, "rgb": 14431557 } },
+    { "query": "path:Blockiert",         "color": { "a": 1, "rgb": 15900453 } },
+    { "query": "path:Systeme",           "color": { "a": 1, "rgb": 5025616  } },
+    { "query": "path:Projekte",          "color": { "a": 1, "rgb": 4428739  } },
+    { "query": "path:Lehren",            "color": { "a": 1, "rgb": 9737471  } },
+    { "query": "path:Betreiber-Entscheid","color": { "a": 1, "rgb": 16750848 } },
+    { "query": "path:Stand",             "color": { "a": 1, "rgb": 8421504  } }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": -0.6,
+  "nodeSizeMultiplier": 1.3,
+  "lineSizeMultiplier": 1.1,
+  "collapse-forces": false,
+  "centerStrength": 0.5,
+  "repelStrength": 11,
+  "linkStrength": 1,
+  "linkDistance": 180,
+  "scale": 1
+}

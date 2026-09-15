@@ -5,6 +5,53 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-15 · 🧠 «pimp obsidian» — der erzeugte Index verschwieg drei Notizen (15.09., 20:50-21:10 UTC)
+
+Der Vault war in bestem Zustand, wo man ihn schon misst: **77 Notizen, 229 Wikilinks, 0 kaputt,
+0 Waisen, 76/77 mit Frontmatter und Tags**, Selbsttest bestanden. «Aufhuebschen» hiess also
+nicht reparieren — ich habe ein zweites Messgeraet gebaut (`tools/vault_qualitaet.py`) fuer
+das, was `vault.py pruefen` **nicht** anschaut: Waisen, Sackgassen, Obsidian-Merkmale,
+Vernetzungsgrad, Abdeckung.
+
+**Drei Befunde, einer davon ein echter Fehler.**
+
+**1. Der Vault war einen ganzen Tag alt.** Letzte Aenderung im Git: 14.09. 20:10 — waehrend der
+15.09. elf Lehren erzeugt hat. Das Versprechen «wird jeden Tag besser» haengt genau an diesem
+Schritt. Sechs davon nachgetragen (`tools/lehre.py`), darunter «Eine Anweisung im Prompt ist
+keine Sperre», «Ein Zaehlergebnis von 0 ist erst ein Befund, wenn die Eingabe nicht leer war»
+und der Geschaeftsbefund «Der Versanderloes von CHF 7 traegt dieses Geschaeft». 77 → 83 Notizen,
+229 → 246 Links, weiterhin 0 kaputt.
+
+**2. `index_bauen()` hatte eine FEST VERDRAHTETE Ordnerliste** — `["Systeme", "Fallen",
+"Sackgassen", "Blockiert", "Projekte", "Stand", "."]`. Die Ordner `Lehren/` und
+`Betreiber-Entscheid/` standen nicht darin, also fielen **drei Notizen still aus dem Index**
+(82 vorhanden, 79 verlinkt). Niemand haette das je bemerkt: der Index wird erzeugt, sieht
+vollstaendig aus, und `pruefen` zaehlt nur kaputte Links — nicht fehlende Eintraege.
+Jeder kuenftige Ordner waere denselben Weg gegangen.
+
+Behoben zweifach: (a) bekannte Ordner in fester Reihenfolge, **alle uebrigen alphabetisch
+hinterher**, und (b) eine **Vollstaendigkeits-Wache**, die nach dem Schreiben nachzaehlt und
+meldet, wenn eine Notiz fehlt. Gegenprobe adversarisch gefahren: ein frisch angelegter Ordner
+`Zzz-Testordner/` landete beim naechsten `bauen` automatisch im Index (83 statt 82), danach
+wieder entfernt. Jetzt 82/82.
+
+**Die Regel dahinter:** *Ein erzeugter Index, der verschweigt was er nicht kennt, ist
+gefaehrlicher als gar keiner* — er sieht ja vollstaendig aus. Wer eine Uebersicht erzeugt, baut
+die Gegenzaehlung gleich mit ein: **Zahl der Quellen gegen Zahl der Eintraege.** Dasselbe Muster
+wie die Erfolgsmeldung, die nicht vom Ergebnis abhaengt (heute frueher), und wie der Waechter,
+der nur `tag:bigbuy` traf.
+
+**3. Keine `.obsidian`-Konfiguration** — der Vault oeffnete ueberall mit Werkseinstellungen.
+Angelegt: Kern-Plugins an (Graph, Backlinks, ausgehende Links, Tag-Leiste, Lesezeichen,
+Gliederung, Zufallsnotiz), Graph mit **acht Farbgruppen nach Ordner** (Fallen rot, Sackgassen
+dunkelrot, Blockiert gelb, Systeme gruen, Projekte blau …), Linkdistanz und Knotengroesse
+gesetzt, Leseansicht als Standard, vier Tastenkuerzel. Das ist reine Optik — aber es ist genau
+das, was «pimp» meinte, und es kostet nichts.
+
+**Offen und bewusst nicht gemacht:** die Abdeckung bleibt bei **20 %** (410 Journal-Abschnitte
+gegen 83 Notizen). Nicht jeder Abschnitt verdient eine atomare Notiz; einen Massen-Import aus
+dem Journal haette ich nicht pruefen koennen. Das bleibt Handarbeit pro Lehre.
+
 ## 2026-09-15 · 🔍 Suchfeld auf die 404-Seite — und eine robots.txt, die ich beinahe verschlimmbessert habe (15.09., 19:45-20:15 UTC)
 
 Betreiber: «was kann man noch machen für webseite». Die Frage stand heute Morgen schon einmal,
