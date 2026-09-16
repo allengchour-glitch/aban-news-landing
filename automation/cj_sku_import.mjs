@@ -6,7 +6,7 @@
  * ⚠️ CJ-QPS: Engine (cj_perpetual) vorher stoppen — 1 req/s kontoweit!
  */
 import fs from 'node:fs';
-import { istKlinge } from './klingenregel.mjs';
+import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
 import { catTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
@@ -256,6 +256,19 @@ for (const item of ITEMS) {
             fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
   // Regel seit 29.08.2026 EINMAL in klingenregel.json (vorher fuenf Kopien).
+  // 🔪 16.09.2026, Bestellung #1017: CJ schickte die Sendung aus Shanghai als VERBOTENEN
+  // ARTIKEL zurueck — es gibt keine Linie CN→CH fuer Klingen. Bis heute stand hier nur die
+  // WERBE-Regel (Klingen raus aus dem Google-Kanal); verkaufen durfte der Shop sie weiter.
+  // Eine Ware, die kein Lieferant ausliefern kann, gehoert in keinen Kanal und in keinen
+  // Warenkorb. Das Produkt ist hier schon angelegt, also: DRAFT, Tag, nicht publizieren —
+  // dasselbe Muster wie die Tierschutz-Wache darueber. Zubehoer ohne Klinge im Paket
+  // (Messerblock, -schaerfer, Schwertgurt) bleibt erlaubt; das trennt istHandklinge.
+  if (istHandklinge(title)) {
+    await sgql(t, `mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
+      { i: { id: spid, status: 'DRAFT', tags: [...tagsFinal, 'cj-nicht-versendbar-ch', 'handklinge-kein-ch-versand'] } });
+    console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) → DRAFT: ${title.slice(0,50)}`);
+    fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue;
+  }
   const klinge = istKlinge(title);
   // ⚠️ PUBLIZIEREN MIT QUITTUNG (22.08.2026, Ursache nachgewiesen). Frueher stand hier ein
   // reines `await sgql(...)`: Die Mutation fragte userErrors ab, aber niemand LAS die

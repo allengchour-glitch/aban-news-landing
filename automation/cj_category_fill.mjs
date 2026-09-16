@@ -11,7 +11,7 @@ const _plt=JSON.parse(fs.readFileSync(new URL('./pluesch_textil.json',import.met
 const PLUESCH_SPIELZEUG=new RegExp(_plt.spielzeug,'i');
 const PLUESCH_TEXTIL=new RegExp(_plt.textil,'i');
 const PLUESCH_TYP=_plt.typ_textil, PLUESCH_TAGS=_plt.tags_textil;
-import { istKlinge } from './klingenregel.mjs';
+import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
 import {googleKategorie} from './google_kategorie.mjs';
 import {materialKanonisch} from './material_kanonisch.mjs';
@@ -758,6 +758,18 @@ for(const [cat,label] of grp.cats){
    let title=titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), nm, 70);
    // Technik-Plausibilitaet (24.08.2026): 4K-Titel bei nativ 720p, 20'000-mAh-Titel bei
    // 10'000 im Text, 99-Mio-Lumen — Regeln und Belege in automation/technik_plausibel.mjs.
+   // 🔪 16.09.2026, Bestellung #1017: CJ hat die Sendung aus Shanghai als VERBOTENEN
+   // ARTIKEL zurueckgeschickt — fuer Klingen gibt es keine Linie CN→CH. Bis heute stand
+   // hier nur die WERBE-Regel (Klingen raus aus dem Google-Kanal), und weiter unten eine
+   // Umtaggung, die Kuechenmesser AUSDRUECKLICH ausnahm. Ergebnis: 95 Messer und Hackbeile
+   // im Verkauf, die kein Lieferant je ausliefern konnte, und zwei Bestellungen desselben
+   // Kunden, die beide erstattet werden mussten. Eine Ware, die nicht ankommen kann, darf
+   // gar nicht erst entstehen — deshalb steht die Sperre VOR dem Anlegen, nicht beim
+   // Publizieren. Zubehoer ohne Klinge im Paket bleibt erlaubt (istHandklinge trennt das).
+   if(istHandklinge(title)){
+     console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) uebersprungen: ${title.slice(0,60)}`);
+     fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+   }
    { const tw=technikWache(title, g.html||'');
      if(tw.verwerfen){ console.log('  skip(technik)', tw.grund, title.slice(0,40)); continue; }
      if(tw.grund) console.log('  technik-korrigiert', tw.grund);

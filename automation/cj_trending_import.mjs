@@ -5,7 +5,7 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
-import { istKlinge } from './klingenregel.mjs';
+import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { schonBeansprucht } from './cj_claim.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
@@ -289,6 +289,17 @@ for(const p of cand){
  // EINER CJ-Variante ein Objekt. Gefragt wird jetzt die VARIANTENZAHL selbst.
  if(variants.length===1) g=wahlSicher(g);
  const html=`${g.html}\n${produktdetails(d, title)}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS'); // Faktenblock: cj_specs.mjs (02.09.2026)
+ // 🔪 16.09.2026, Bestellung #1017: CJ schickte die Sendung aus Shanghai als VERBOTENEN
+ // ARTIKEL zurueck — es gibt keine Linie CN→CH fuer Klingen. Bis heute stand hier nur die
+ // WERBE-Regel (Klingen raus aus dem Google-Kanal); verkaufen durfte der Shop sie weiter.
+ // Ergebnis waren 95 Messer und Hackbeile im Katalog, die kein Lieferant je ausliefern
+ // konnte. Eine Ware, die nicht ankommen kann, darf gar nicht erst entstehen — deshalb
+ // steht die Sperre VOR dem Anlegen. Zubehoer ohne Klinge im Paket (Messerblock,
+ // -schaerfer, Schwertgurt) bleibt erlaubt; das trennt istHandklinge.
+ if(istHandklinge(title)){
+  console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) uebersprungen: ${title.slice(0,60)}`);
+  fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+ }
  const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
   tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neuheit','neu']:['trend','viral','video-hit','cj-real','dropship','neuheit','neu'],descriptionHtml:html,
   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},

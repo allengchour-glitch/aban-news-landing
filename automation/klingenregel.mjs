@@ -30,6 +30,10 @@ export const WAFFENWORT_VORNE = new RegExp(R.waffenwort_vorne, 'i');
 export const VORNE_AUSNAHME   = new RegExp(R.waffenwort_vorne_ausnahme, 'i');
 export const MESSGERAET       = new RegExp(R.messgeraet_ausnahme, 'i');
 export const KONTEXT_AUSNAHME = new RegExp(R.kontext_ausnahme, 'i');
+export const HANDKLINGE_STAMM      = new RegExp(R.handklinge_stamm, 'i');
+export const HANDKLINGE_KEIN_PAKET = new RegExp(R.handklinge_kein_paket, 'i');
+export const HANDKLINGE_GERAET     = new RegExp(R.handklinge_geraet, 'i');
+export const HANDKLINGE_SPIELZEUG  = new RegExp(R.handklinge_spielzeug, 'i');
 
 // Die Kontext-Ausnahme steht ZUERST: «Washed Machete Jeans» ist eine Waschung,
 // «Samurai mit Katana, 30 cm» eine Dekofigur. Ein Kleidungs- oder Deko-Wort
@@ -40,4 +44,21 @@ export function istKlinge(titel) {
   if (KLINGE_AM_ENDE.test(t) && !MESSGERAET.test(t)) return true;
   if (WAFFENWORT_VORNE.test(t) && !VORNE_AUSNAHME.test(t)) return true;
   return false;
+}
+
+// istHandklinge — die VERSANDFRAGE, nicht die Werbefrage (Lehre 16.09.2026, #1017).
+// CJ hat die Sendung aus Shanghai als VERBOTENEN ARTIKEL zurueckgeschickt; fuer die
+// Schweiz gibt es keine Linie fuer Klingen, egal was freightCalculate vorher sagte.
+// WEITER als istKlinge: «Edelstahl-Messerset» faellt dort durchs Fugen-s, hier nicht.
+// ENGER als istKlinge: Zubehoer ohne Klinge im Paket (Block, Halter, Schaerfer,
+// Schwertpflegeoel) und Geraete mit gekapselter Klinge (Mixer, Rasierer, Schere)
+// duerfen weiter in die Schweiz und bleiben im Verkauf.
+export function istHandklinge(titel) {
+  const t = titel || '';
+  if (KONTEXT_AUSNAHME.test(t)) return false;
+  if (HANDKLINGE_KEIN_PAKET.test(t) || HANDKLINGE_GERAET.test(t)) return false;
+  if (HANDKLINGE_SPIELZEUG.test(t)) return false;
+  if (MESSGERAET.test(t)) return false;
+  if (WAFFENWORT_VORNE.test(t) && VORNE_AUSNAHME.test(t)) return false;
+  return HANDKLINGE_STAMM.test(t);
 }

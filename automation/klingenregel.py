@@ -40,6 +40,10 @@ WAFFENWORT_VORNE = re.compile(_R['waffenwort_vorne'], re.I)
 VORNE_AUSNAHME   = re.compile(_R['waffenwort_vorne_ausnahme'], re.I)
 MESSGERAET       = re.compile(_R['messgeraet_ausnahme'], re.I)
 KONTEXT_AUSNAHME = re.compile(_R['kontext_ausnahme'], re.I)
+HANDKLINGE_STAMM = re.compile(_R['handklinge_stamm'], re.I)
+HANDKLINGE_KEIN_PAKET = re.compile(_R['handklinge_kein_paket'], re.I)
+HANDKLINGE_GERAET = re.compile(_R['handklinge_geraet'], re.I)
+HANDKLINGE_SPIELZEUG = re.compile(_R['handklinge_spielzeug'], re.I)
 
 
 def ist_klinge(titel):
@@ -57,3 +61,38 @@ def ist_klinge(titel):
     if WAFFENWORT_VORNE.search(t) and not VORNE_AUSNAHME.search(t):
         return True
     return False
+
+
+def ist_handklinge(titel):
+    """True, wenn im PAKET eine Handklinge liegt — die Versandfrage, nicht die Werbefrage.
+
+    Getrennt von `ist_klinge`, weil es eine andere Frage ist (Lehre 16.09.2026,
+    Bestellung #1017): CJ hat die Sendung aus Shanghai als VERBOTENEN ARTIKEL
+    zurueckgeschickt. Fuer die Schweiz gibt es keine Linie fuer Klingen — egal ob
+    Kuechenmesser oder Taschenmesser, und egal was `freightCalculate` vorher sagte.
+
+    Zwei Richtungen, in denen sich die Antwort von `ist_klinge` unterscheidet:
+
+    WEITER: «Edelstahl-Messerset» und «Keramikmesser-Set» sind fuer `ist_klinge`
+    FALSE — deren Endverankerung scheitert am Fugen-s bzw. am Plural-n. Fuer die
+    Versandfrage zaehlt der Wortstamm, denn im Karton liegen Klingen.
+
+    ENGER: Zubehoer ohne Klinge (Messerblock, -halter, -schaerfer, Schwertpflegeoel,
+    Schwertgurt) darf weiter in die Schweiz und bleibt im Verkauf. Ebenso Geraete
+    mit gekapselter Klinge (Standmixer, Rasierer, Schaeler, Schere) und die
+    Messgeraete-Ausnahme («Handkraft-Messer» ist ein Dynamometer).
+
+    Die Kontext-Ausnahme gilt wie bei `ist_klinge` zuerst: «Washed Machete Jeans».
+    """
+    t = titel or ''
+    if KONTEXT_AUSNAHME.search(t):
+        return False
+    if HANDKLINGE_KEIN_PAKET.search(t) or HANDKLINGE_GERAET.search(t):
+        return False
+    if HANDKLINGE_SPIELZEUG.search(t):
+        return False
+    if MESSGERAET.search(t):
+        return False
+    if WAFFENWORT_VORNE.search(t) and VORNE_AUSNAHME.search(t):
+        return False
+    return bool(HANDKLINGE_STAMM.search(t))

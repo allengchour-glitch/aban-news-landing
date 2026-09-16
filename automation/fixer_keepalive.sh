@@ -854,6 +854,36 @@ while true; do
       fi
     fi
   fi
+  # 🔪 KEINE KLINGE IM VERKAUF, DIE KEIN LIEFERANT LIEFERN KANN (16.09.2026, #1017).
+  # CJ schickte ein bezahltes Damast-Taschenmesser aus Shanghai zurueck: verbotener
+  # Artikel, keine Linie in die Schweiz. Derselbe Kunde hatte dieselbe Ware schon am
+  # 03.09. bestellt (#1016) — zweimal dieselbe Ursache, zweimal Geld zurueck.
+  # Der Befund, der diesen Waechter noetig macht: `cj_versand_ch_sichtbar.py` hatte
+  # bereits am 03./04.09. fuer 535 Handles «KEINE CH-Option → DRAFT» protokolliert, und
+  # am 16.09. standen 95 davon immer noch im Verkauf. Ein Urteil, das niemand
+  # vollstreckt, ist keine Sicherung — diese Zeile vollstreckt es taeglich.
+  # FIX=1 ist hier richtig: die Ware kann nicht ausgeliefert werden, jeder Tag im
+  # Verkauf ist eine Geisterbestellung in Wartestellung. Gedraftet wird, nie geloescht.
+  KLW=/tmp/klinge_ch_wache.log
+  if [ -f "$REPO/automation/klinge_ch_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KLW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      # Umleitung hinter dem Schloss und mit `>>` — siehe wahlversprechen oben.
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_klinge_ch.lock; flock -n 9 || exit 0; exec >> \"$KLW\" 2>&1; \
+           FIX=1 exec python3 automation/klinge_ch_wache.py" 9>&- & )
+      # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.). Die Wache
+      # meldet «unklar» statt Ruhe, wenn sie ihre Quelle nicht lesen kann — das ist
+      # der Zustand, der hier sichtbar werden MUSS.
+      if [ -s "$KLW" ] && tail -n 25 "$KLW" | grep -q "Traceback\|Error:\|unklar"; then
+        echo "$(date -u +%H:%M) ⚠️ Klingen-Wache: letzter Lauf unklar ($KLW)"
+      elif [ -s "$KLW" ]; then
+        echo "$(date -u +%H:%M) $(grep 'KLINGEN-WACHE' "$KLW" | tail -n 1)"
+      else
+        echo "$(date -u +%H:%M) Klingen-Wache gestartet (erster Lauf)"
+      fi
+    fi
+  fi
   # Messversprechen an Wearables (Blutdruck/EKG/Blutzucker). Der Waechter existierte seit dem
   # 21.08., stand aber in KEINER Startliste und ist nie gelaufen — waehrenddessen hat der Grind
   # 104 neue Produkte mit genau diesen Aussagen angelegt, drei davon mit BLUTZUCKER. Das ist die
