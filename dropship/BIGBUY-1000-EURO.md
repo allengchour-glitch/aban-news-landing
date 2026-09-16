@@ -28,7 +28,7 @@ die vier Bestätigungsmails beschreiben Vorgänge, die nicht stattgefunden haben
 | 15.07.2026 | EUR 750.00 | bestätigt · Geld nie angekommen · hinterlegte IBAN war ein fremdes Konto |
 | 16.08.2026 | EUR 1'000.00 | bestätigt · Geld nie angekommen · **IBAN mit 22 Zeichen** |
 | 08.09. 20:00 UTC | EUR 1'000.00 | bestätigt · dieselbe kaputte 22-Zeichen-Nummer |
-| 08.09. 20:12 UTC | EUR 1'000.00 | bestätigt · **richtige Nummer** `CH78 0630 0016 6038 0920 6` |
+| 08.09. 20:12 UTC | EUR 1'000.00 | bestätigt · **richtige Nummer** `CH78 … (21-stellig, im BigBuy-Konto hinterlegt — Nummer NICHT im Repo)` |
 
 Eine Schweizer IBAN hat **21 Zeichen**. Die 22-stellige Variante scheitert an der Prüfziffer
 (ISO 13616, mod 97 = 54 statt 1) — **keine Bank der Welt kann sie ausführen.**
@@ -95,7 +95,7 @@ Kundennummer 966388 — LuxeStyle CH, Schweiz
 2. Antrag vom 08.09.2026, 20:12 UTC AUSFÜHREN (oder neu anlegen) auf:
    Kontoinhaber: Allen Chour
    Bank:         Valiant Bank AG, 3001 Bern, Schweiz
-   IBAN:         CH78 0630 0016 6038 0920 6   (21 Zeichen, Prüfziffer korrekt)
+   IBAN:         CH78 … (21-stellig, im BigBuy-Konto hinterlegt — Nummer NICHT im Repo)   (21 Zeichen, Prüfziffer korrekt)
 
 3. SCHRIFTLICH BESTÄTIGEN, dass das Guthaben von EUR 1'000.00 nach dem
    Abo-Ende (15.09.2026) abrufbar bleibt und das Konto nicht mit dem
@@ -115,3 +115,100 @@ Kundennummer 966388 — LuxeStyle CH, Schweiz
   ausläuft. Das Guthaben verfällt nicht am Stichtag — aber genau deshalb braucht es Punkt 3
   schriftlich.
 - **Auszahlungen laufen dienstags.** Heute ist Dienstag; der nächste ist der 22.09.
+
+
+---
+
+# NACHTRAG 16.09.2026, 05:20 UTC — gemessen, nachdem das Abo ausgelaufen ist
+
+Betreiber: «schau das bigbuy auszahlt». Hier ist, was heute messbar ist.
+
+## 1. Der Postweg ist tot — und BigBuy sagt das selbst
+
+**Fünf Mails** sind an `customers@bigbuy.eu` gegangen (07.09., 08.09., 11.09., zweimal 15.09.).
+**Zwei Antworten** sind zurückgekommen — 08.09. 07:39 und 15.09. 07:18 UTC — und sie sind
+**wortgleich**. Es ist derselbe Textbaustein, beide Male:
+
+> «Please be reminded that the fastest and most efficient way to get a precise answer is by
+> submitting a ticket in the Contact Area. […] 💳 Administration → Invoices, refunds, tax
+> information»
+
+Auf die eigentliche Mail vom **15.09. 08:31 UTC** (eigener Thread, vier bestätigte Anträge,
+Frist abgelaufen) kam **gar keine Antwort**. Und es gibt **keine einzige Mail zum Abo-Ende**.
+
+**Das ist der Befund, der zählt:** Der Kanal, den BigBuy zweimal ausdrücklich nennt — das
+**Ticket-Formular im Contact Area, Abteilung Administration** —, ist **noch nie benutzt worden**.
+Wir klopfen seit neun Tagen an eine Tür, die mit Anrufbeantworter antwortet, während die Tür,
+die sie uns nennen, unberührt ist. Fünf Mails an dieselbe Adresse werden die sechste nicht
+beantworten.
+
+## 2. Die API antwortet nicht mehr
+
+| gemessen 16.09. 05:18 UTC | Ergebnis |
+|---|---|
+| `GET /rest/user/purse.json` | **HTTP 401 `{"message":"Invalid Token"}`** |
+| `GET /rest/user.json` | HTTP 400 |
+
+⚠️ **Ursache nicht isoliert.** Zwei Möglichkeiten, und ich kann sie nicht trennen:
+(a) das Abo lief am 15.09. aus und der Zugang wurde deaktiviert, oder (b) der Schlüssel, mit
+dem am 07./11./15.09. erfolgreich gemessen wurde, lag in `/tmp/bigbuy_key.txt` — **diese Datei
+existiert nach dem Container-Neustart nicht mehr**, und ich habe auf `/tmp/bigbuy.env` (07.09.)
+zurückgegriffen. Der Aufruf selbst war korrekt gebaut (`Authorization: Bearer`, gleicher Host
+wie die früher funktionierenden Skripte).
+
+**Folge so oder so: das Guthaben ist ab jetzt nicht mehr von hier aus prüfbar.** Die letzte
+belegte Messung bleibt `"1000.00"` vom 15.09. Ob seither etwas geflossen ist, sagt nur noch
+der Kontoauszug oder die BigBuy-Konsole.
+
+## 3. Was der Betreiber tun kann — der Ticket-Weg, kurz gehalten
+
+👉 **https://www.bigbuy.eu/en/contact** → Reiter **Administration** (💳 Invoices, refunds, tax)
+Am Rechner, nicht am Handy (sagt BigBuy selbst). Formularfelder sind kurz — deshalb dieser Text:
+
+```
+Subject: Customer 966388 – wallet balance EUR 1,000.00 – four confirmed payout
+requests, none executed
+
+Customer number: 966388 (LuxeStyle CH, Switzerland)
+Wallet balance: EUR 1,000.00 (unchanged since 15 July 2026)
+
+Four payout requests were confirmed by your system. None was ever paid:
+  15 Jul 2026  EUR   750.00
+  16 Aug 2026  EUR 1,000.00
+  08 Sep 2026  EUR 1,000.00  (20:00 UTC – invalid IBAN, 22 characters – please CANCEL)
+  08 Sep 2026  EUR 1,000.00  (20:12 UTC – corrected IBAN, 21 characters – please EXECUTE)
+
+I have sent five emails to customers@bigbuy.eu since 7 September. The only replies
+were the automated message asking me to open a ticket. This is that ticket.
+
+Please:
+1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, Valiant Bank
+   AG, Bern, account holder Allen Chour).
+2. Confirm in writing what happened to the requests of 15 July and 16 August.
+3. Explain record 18138523 ("Ingreso en monedero", EUR 1,000, 07/07/2026,
+   "Pendiente de pago"). I have not cancelled it.
+4. My subscription ended on 15 September 2026. Confirm that the wallet balance is
+   unaffected and tell me how it will be paid out now that the account is closed.
+5. Give me a ticket reference and an expected payment date.
+```
+
+**Die Frage 4 ist neu und wichtig:** Das Abo ist vorbei, und niemand hat uns gesagt, was mit
+dem Guthaben eines beendeten Kontos passiert. Das gehört schriftlich geklärt, bevor es
+jemandem einfällt, es als verfallen zu behandeln.
+
+## 4. Wenn auch das Ticket ins Leere läuft
+
+BigBuy S.L.U. sitzt in Valencia (Spanien). Nach ~14 Tagen ohne Reaktion auf ein Ticket sind
+zwei Wege üblich und kostengünstig: eine **förmliche Zahlungsaufforderung per Einschreiben**
+an die spanische Firmenadresse mit Frist, und die **ODR-/Verbraucherschlichtung der EU**.
+Das ist keine Rechtsberatung, sondern der übliche nächste Schritt — und ein Ticket mit
+Referenznummer ist die Voraussetzung dafür, dass man überhaupt etwas vorweisen kann.
+
+## 5. Was ich NICHT tun kann
+
+* Den Auszahlungsknopf drücken — es gibt **keinen** Auszahlungs-Endpunkt in der API
+  (sechs geprüft, alle HTTP 400), und die Konsole hat der Betreiber dreimal ohne Wirkung
+  angeklickt.
+* Das Ticketformular ausfüllen — das ist ein Browser-Klick, und Cloud-Sessions haben
+  keinen Browser.
+* Das Guthaben messen — siehe Punkt 2.
