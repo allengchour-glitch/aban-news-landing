@@ -570,3 +570,41 @@
 15497431351681	kein-stecker-merkmal	2026-09-16	Digitaler Haarschneider und Trimmer
 15497432334721	draft-kein-eu-stecker:UK	2026-09-16	Profi Keramik Glätteisen 2-in-1
 15497432531329	nur-eu-version	2026-09-16	Konischer Lockenstab mit Keramikbeschichtung
+15497432695169	kein-stecker-merkmal	2026-09-16	Glätteisen & Lockenstab 2-in-1 Turmalin-Keramik
+15497432793473	kein-stecker-merkmal	2026-09-16	Glätteisen für trockenes und nasses Haar
+15497432891777	kein-stecker-merkmal	2026-09-16	Automatischer kabelloser Lockenstab
+15497433055617	kein-stecker-merkmal	2026-09-16	Kabelloser Automatischer Lockenstab
+15497433219457	kein-stecker-merkmal	2026-09-16	Kabelloser Automatischer Lockenstab mit USB-Ladefunktion
+15497433317761	kein-stecker-merkmal	2026-09-16	USB Auto-Schnellladegerät mit Digitalanzeige
+15497433350529	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Multifunktionaler Lockenstab mit Keramikbeschichtung
+15497433448833	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Kabelloser Mini-Haartrockner mit 800W
+15497433743745	kein-stecker-merkmal	2026-09-16	Kabelloses 15W Smart-Ladegerät fürs Auto
+15497434071425	unklar-eu-vorhanden:EU/UK/US	2026-09-16	Universal-Laptop-Netzteil 75W mit USB-C PD
+15497434595713	kein-stecker-merkmal	2026-09-16	Kabelloses Controller-Ladegerät für Xbox Series X
+15497436332417	kein-stecker-merkmal	2026-09-16	Tragbarer Mini-Entsafter
+15497438167425	kein-stecker-merkmal	2026-09-16	Mini Handstaubsauger
+15497442460033	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	4-Port Reise-Ladegerät mit LED-Anzeige
+15497442853249	kein-stecker-merkmal	2026-09-16	3-in-1 Multifunktionales Kabelloses Ladegerät
+15497443017089	unklar-eu-vorhanden:EU/UK/US	2026-09-16	USB Smart Ladegerät mit 5 Anschlüssen
+15497446621569	kein-stecker-merkmal	2026-09-16	Kabelloser Haarglätter & Lockenstab
+15497447178625	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Lockenstab für Pony und feines Haar
+15497447309697	kein-stecker-merkmal	2026-09-16	T9 Bart- und Haarschneider
+15497447702913	unklar-eu-vorhanden:EU/US	2026-09-16	Lockenstab mit Nano-Titan-Keramikbeschichtung
+15497447801217	unklar-eu-vorhanden:EU/UK/US	2026-09-16	Glätteisen mit Warmluft und Lockenfunktion
+15497448030593	kein-stecker-merkmal	2026-09-16	Automatischer Lockenstab aus Metall
+15497448292737	kein-stecker-merkmal	2026-09-16	Haartrockner mit Windhaube
+15497448358273	kein-stecker-merkmal	2026-09-16	Kabelloser smarter Lockenstab
+15497452061057	kein-stecker-merkmal	2026-09-16	Kabelloser, tragbarer Multifunktions-Entsafter
+15497453535617	nur-eu-version	2026-09-16	Universelles Laptop-Netzteil
+15497453994369	kein-stecker-merkmal	2026-09-16	Kabelloses 10W Ultra-Slim Ladegerät
+15497454584193	draft-kein-eu-stecker:US	2026-09-16	Multifunktionaler Frühstücks-Toaster
+15497454682497	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Pinlo Toaster
+15497456910721	unklar-eu-vorhanden:EU/US	2026-09-16	Lötkolben-Set mit 26 Gravurköpfen
+15497470247297	draft-kein-eu-stecker:US	2026-09-16	Keramik-Haarglätter & Lockenstab
+15497471787393	kein-stecker-merkmal	2026-09-16	Kabelloses Aluminium-Ladegerät
+15497472246145	kein-stecker-merkmal	2026-09-16	Universal Notebook Netzteil 96W
+15497472672129	kein-stecker-merkmal	2026-09-16	Portables, schnelles, kabelloses Ladegerät
+15497472868737	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Nitecore D4 Digicharger LCD Ladegerät
+15497474277761	kein-stecker-merkmal	2026-09-16	Tragbarer Multifunktions-Entsafter
+15497474441601	kein-stecker-merkmal	2026-09-16	Tragbarer Mini-Entsafter für Zuhause
+15499055137153	kein-stecker-merkmal	2026-09-16	Ultradünnes kabelloses Ladegerät
