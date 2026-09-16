@@ -545,3 +545,28 @@
 15496539177345	kein-stecker-merkmal	2026-09-16	USB Glättbürste für Nass- und Trockenhaar
 15496540356993	kein-stecker-merkmal	2026-09-16	Golden Rice Glättungs- und Lockenstab
 15496541274497	kein-stecker-merkmal	2026-09-16	Kabelloser Keramik Mini-Lockenstab
+15496580661633	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Multifunktionaler Wasserkocher für 1 Person
+15496581611905	unklar-eu-vorhanden:EU/US	2026-09-16	Herzli-Waffeleisen für de schnälle Zmorge
+15496581939585	draft-kein-eu-stecker:US	2026-09-16	Elektrischer Mini-Dampfgarer & Reiskocher
+15496607236481	kein-stecker-merkmal	2026-09-16	Kabelloses Ladegerät Thin Disc Leder Optik
+15496608842113	kein-stecker-merkmal	2026-09-16	Kabelloses Einbau-Ladegerät für Smartphones
+15496610283905	unklar-eu-vorhanden:EU/UK/US	2026-09-16	Netzteil für Xbox 360 E
+15496702722433	kein-stecker-merkmal	2026-09-16	Duke Universal Reise-Ladegerät mit 3 USB
+15496702919041	kein-stecker-merkmal	2026-09-16	FDGAO 3-in-1 Ladegerät mit USB-A & USB-C
+15496704426369	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Netzteil für Video-Türklingel
+15496863023489	kein-stecker-merkmal	2026-09-16	Günstiges Switch-Controller-Ladegerät
+15497378201985	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Akku-Ladegerät für Ni-Cd/Ni-MH Zellen 7.2-18V
+15497420308865	unklar-eu-vorhanden:EU/UK	2026-09-16	Kabelloser Lockenstab mit LCD-Display
+15497420407169	kein-stecker-merkmal	2026-09-16	Mini Lockenstab mit USB-Ladefunktion
+15497420571009	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Automatischer Lockenstab mit Infrarot-Technologie
+15497420669313	unklar-eu-vorhanden:EU/UK/US	2026-09-16	2-in-1 Glätteisen & Lockenstab, Titan-Keramik
+15497421029761	kein-stecker-merkmal	2026-09-16	3-in-1 Warmluftbürste für Locken & Glätten
+15497421128065	unklar-eu-vorhanden:EU/UK/US	2026-09-16	Reisefreundliches Glätteisen
+15497421259137	kein-stecker-merkmal	2026-09-16	Kabelloser Mini Glätteisen mit Sprühfunktion
+15497421357441	unklar-eu-vorhanden:EU/US	2026-09-16	Keramik-Lockenstab-Set mit Wechselsystem
+15497421521281	unklar-eu-vorhanden:EU/US	2026-09-16	Keramik-Lockenstab für grosse Wellen
+15497421586817	draft-kein-eu-stecker:US	2026-09-16	Fluffy Lazy Fan Mini-Kamm-Glätteisen
+15497422930305	draft-kein-eu-stecker:CN/US	2026-09-16	Panda Heissluftfritteuse (4.5L oder 6L)
+15497431351681	kein-stecker-merkmal	2026-09-16	Digitaler Haarschneider und Trimmer
+15497432334721	draft-kein-eu-stecker:UK	2026-09-16	Profi Keramik Glätteisen 2-in-1
+15497432531329	nur-eu-version	2026-09-16	Konischer Lockenstab mit Keramikbeschichtung
