@@ -8,5 +8,6 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 
 | Sitzungen | Titel | Handle |
 |---:|---|---|
-| 2 | Gaming Tastatur & Maus Set RGB LED USB für PC & Konsole | `gaming-set-uk-943617` |
-| 2 | Hitzebeständiges PET-Schutzband Grün | `hitzebestandiges-pet-schutzband-grun-565824` |
+| 9 | Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach | `strand-sandalen-doree-metallic-riemchen-flach` |
+| 5 | Aromadiffusor Holzmaserung | `aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht` |
+| 2 | Cellulite-Reduzierende Leggings | `cellulite-reduzierende-leggings-578014` |
