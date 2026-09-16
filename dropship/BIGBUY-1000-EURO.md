@@ -212,3 +212,26 @@ Referenznummer ist die Voraussetzung dafür, dass man überhaupt etwas vorweisen
 * Das Ticketformular ausfüllen — das ist ein Browser-Klick, und Cloud-Sessions haben
   keinen Browser.
 * Das Guthaben messen — siehe Punkt 2.
+
+---
+
+## Nachtrag 16.09.2026, 08:15 UTC — Nachkontrolle
+
+**Keine Antwort.** Auf die Mail vom 15.09. 08:31 UTC (Thread `1a0a4047c72dd809`, «four confirmed
+payout requests») kam in 24 Stunden **nichts**. Letzte eingehende BigBuy-Nachricht bleibt der
+Textbaustein vom 15.09. 07:18 — das ist der dritte wortgleiche. Damit stehen **sechs ausgehende
+Mails gegen drei identische Bausteine und null inhaltliche Antworten.**
+
+**Guthaben nicht mehr messbar — aber die Ursache ist jetzt isoliert.** `GET /rest/user/purse.json`
+antwortet weiterhin `{"message":"Invalid Token"}`. Gestern war offen, ob das am beendeten Abo
+liegt oder daran, dass der Schlüssel beim Container-Neustart verloren ging. **Heute ist die Frage
+entschieden:** `/tmp/bigbuy.env` ist noch da, unverändert vom 07.09. (Modus 600) — derselbe
+Schlüssel, der am 15.09. noch `"1000.00"` lieferte, wird jetzt abgelehnt. Ein verlorener Schlüssel
+kann das nicht erklären. **Es ist das ausgelaufene Abo.**
+
+Folge: Von hier aus ist nicht mehr feststellbar, ob Geld geflossen ist. Die letzte belegte Zahl
+bleibt **EUR 1'000.00 vom 15.09.** Ab jetzt sagt das nur noch der Kontoauszug oder das
+BigBuy-Backoffice im Browser.
+
+Nächster Auszahlungs-Dienstag: **22.09.** Der Weg bleibt das Ticket in der Abteilung
+**Administration** (Text in §3 dieser Datei, Kurzfassung in `COWORK-BEFEHL.md` Punkt 1).

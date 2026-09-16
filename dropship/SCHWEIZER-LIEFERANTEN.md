@@ -8,11 +8,40 @@ Stand heute im Shop: **Fortura** (CH-Lager, 2'409 aktive Artikel, 1–2 Werktage
 Schweizer Lieferant — im Kern Fasnacht/Party/Kostüm/Spielzeug. Was fehlt: CH-Lager für
 Haushalt, Beauty, Technik, Outdoor.
 
-## 📌 Stand Shopcom (15.09.2026)
+## 📌 Stand Shopcom (16.09.2026) — Korrektur: die Anmeldung IST raus
+
+**⚠️ Der Stand vom 15.09. unten beruht auf einer falschen Annahme.** Gemessen am 16.09. über
+`to:info@shopcom.ch in:sent`:
+
+| Zeit (UTC) | Was |
+|---|---|
+| 05.08. 13:39 | Shopcom bittet um das ausgefüllte Dropshipping-Formular |
+| **05.08. 14:05** | **Antwort RAUS — mit ausgefülltem und unterschriebenem PDF (408 KB)** |
+| seither | **keine Antwort von Shopcom** (geprüft `shopcom newer_than:60d`: nur diese zwei Nachrichten) |
+
+Der Rückstand lag also **nie bei uns**: zwischen Aufforderung und Antwort lagen **26 Minuten**.
+Offen ist Shopcoms Schweigen — sechs Wochen.
+
+**Wie der Irrtum entstand:** Die Sichtung vom 15.09. hat den *Entwurf* gelesen und daraus
+geschlossen, dass nichts gesendet wurde. Ein Entwurf belegt aber nur, dass jemand etwas
+geschrieben hat — nicht, dass es fehlt. **Bevor man einen Verzug auf der eigenen Seite annimmt,
+fragt man den Postausgang.** Der Entwurf vom 15.09. hätte sich für eine Verspätung entschuldigt,
+die es nicht gab, und ein Dokument erneut geschickt, das dort längst liegt.
+
+**Entwurf `r-5801785141346616875` am 16.09. umgeschrieben** (nicht gesendet — Betreiber-Klick):
+aus «Entschuldigung für die späte Antwort, Formular im Anhang» wurde eine sachliche Nachfrage —
+Eingang bestätigen lassen, Formular auf Wunsch nochmals senden, dazu unverändert die **drei
+Fragen** (Feed-Format/Rhythmus, Gebühren/Mindestumsatz, Mindestbestellwert). Der Anhang ist
+bewusst nicht mehr dran: Shopcom hat ihn seit dem 05.08.
+
+---
+
+## 📌 Stand Shopcom (15.09.2026) — überholt, siehe oben
 
 Shopcom hat am **05.08.** geantwortet und um das ausgefüllte Dropshipping-Formular gebeten.
-Der Antwortentwurf lag danach **sechs Wochen unversendet** im Postfach — Betreiber fragte am
-15.09.: «shopcom entwurf senden?».
+~~Der Antwortentwurf lag danach sechs Wochen unversendet im Postfach~~ — **FALSCH, siehe
+Korrektur oben:** die Antwort samt PDF ging am 05.08. 14:05 raus. Betreiber fragte am 15.09.:
+«shopcom entwurf senden?».
 
 - Entwurf am 15.09. neu geschrieben: Verzug benannt statt «Besten Dank für die schnelle
   Rückmeldung», Interesse bekräftigt, und **drei Fragen** ergänzt, die die Sichtung offen
