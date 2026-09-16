@@ -532,3 +532,10 @@
 15523998695809	keine-linie	outdoor-klappmesser-d2-605900
 15524694589825	wiederbelebt	stainless-steel-messer-set-17-stuck-176064	35.87	14.70
 15524699406721	keine-linie	klappmesser-aus-d2-stahl-fur-outdoor-614500
+15448842764673	wiederbelebt	kochmesser-damaststahl-olivenholz-609400	13.27	3.56
+15448845058433	wiederbelebt	damast-kochmesser-set-602200	8.10	11.34
+15448845189505	wiederbelebt	damast-kuchenmesser-set-619600	13.99	14.73
+15448845353345	wiederbelebt	fuda-taschenmesser-aus-damaststahl-634100	6.57	25.37
+15454133092737	wiederbelebt	klingen-set-mit-metallgriff-604200	5.48	13.64
+15454650892673	wiederbelebt	luxus-messer-set-edelstahl-628600	8.34	3.56
+15458646983041	wiederbelebt	24-teiliges-edelstahl-gedeck-mit-western-messe-637200	16.62	1.28
