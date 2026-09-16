@@ -495,3 +495,28 @@
 15496330609025	unklar-eu-vorhanden:EU/US	2026-09-15	Infrarot Dampf-Glätteisen
 15496330805633	unklar-eu-vorhanden:EU/UK/US	2026-09-15	Ionen-Glättbürste mit Keramikbeschichtung
 15496331002241	kein-stecker-merkmal	2026-09-15	PRITECH Glätteisen mit Anti-Verbrühungsfunktion
+15496331133313	nur-eu-version	2026-09-16	Keramik-Glätteisen mit Anionen- & Infrarotfunktion
+15496331231617	kein-stecker-merkmal	2026-09-16	Kabelloser, smarter Lockenstab
+15496331362689	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Automatischer Lockenstab für einfache Wellen
+15496332804481	kein-stecker-merkmal	2026-09-16	Kabelloser Lockenstab mit Glättfunktion
+15496332935553	kein-stecker-merkmal	2026-09-16	Kabelloser 2-in-1 Lockenstab & Glätteisen
+15496333197697	nur-eu-version	2026-09-16	Multifunktionales Glätteisen
+15496333361537	kein-stecker-merkmal	2026-09-16	Föhn-Düse für schnelleres Trocknen
+15496333689217	draft-kein-eu-stecker:UK/US	2026-09-16	Glättbürste mit Lockenfunktion
+15496333951361	nur-eu-version	2026-09-16	Ionen-Glätteisen für nasses und trockenes Haar
+15496334180737	kein-stecker-merkmal	2026-09-16	Keramik-Dampfglätteisen für schnelles Styling
+15496360231297	kein-stecker-merkmal	2026-09-16	Antihaft-Sandwichmaker mit Holzgriff
+15496360919425	kein-stecker-merkmal	2026-09-16	Elektrische Schallzahnbürste für Erwachsene
+15496371929473	kein-stecker-merkmal	2026-09-16	Mini Roboter Staubsauger für Tastatur & Tisch
+15496381661569	unklar-eu-vorhanden:EU/UK/US	2026-09-16	Notebook-Netzteil 19.5V7.7A
+15496381890945	kein-stecker-merkmal	2026-09-16	4-in-1 Kabelloses Ladegerät für Uhr & Kopfhörer
+15496381989249	kein-stecker-merkmal	2026-09-16	Magnetisches Desktop Wireless Ladegerät
+15496382873985	kein-stecker-merkmal	2026-09-16	Schnellladegerät 10000mAh
+15496383103361	unklar-eu-vorhanden:EU/US	2026-09-16	USB-Ladegerät für Mobiltelefone (EU-Stecker)
+15496383234433	nur-eu-version	2026-09-16	Fromi Dual Port USB-Ladegerät EU
+15496383431041	kein-stecker-merkmal	2026-09-16	Kabelloses 3-in-1 Ladegerät für Smartphone, Watch, Earbuds
+15496383660417	kein-stecker-merkmal	2026-09-16	Kabelloser Mini-Staubsauger mit Gebläse
+15496384184705	kein-stecker-merkmal	2026-09-16	Kabelloses Mini-Ladegerät, magnetisch, 15W
+15496384807297	kein-stecker-merkmal	2026-09-16	Kabelloses 6-in-1 Multifunktions-Ladegerät
+15496399225217	unklar-eu-vorhanden:EU/US	2026-09-16	2-in-1 Glätteisen & Lockenstab · 27 cm
+15496399880577	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Ultradünnes Haarglätteisen mit Nano-Keramik
