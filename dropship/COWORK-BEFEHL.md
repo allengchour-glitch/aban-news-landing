@@ -1,11 +1,64 @@
 # COWORK-BEFEHL — Fassung 16.09.2026, 07:00 UTC
 
 > Betreiber 16.09.: «mach das mit cowork oder so… egal wie hauptsache erledigt.»
-> **Punkt 1 ist der einzige, der wirklich dringend ist — dort liegen EUR 1'000.**
+> **Punkt 1 ist der wichtigste — dort liegen EUR 1'000.** Punkt 0 ist neu (16.09.,
+> CJ-Messer-Rückerstattung USD 25.54) und in fünf Minuten erledigt.
 > Alles andere ist unverändert und kann warten.
 >
 > Nichts erfinden, nichts bezahlen, **keine App deinstallieren, keinen Token widerrufen**
 > (`autopilot2` trägt den ganzen Betrieb).
+
+---
+
+# 0. 🔪 CJ-ERSTATTUNG für die zurückgesandte Messer-Bestellung — USD 25.54
+
+**Neu am 16.09., 5 Minuten Arbeit.** CJs Agentin Iris hat gemeldet, dass Auftrag
+**DP2609071450210661800** zurückkam: verbotener Artikel (Messer), es gibt keine Linie in die
+Schweiz. Sie schlägt selbst vor, die Rückerstattung zu beantragen.
+
+**Gegengeprüft, nicht geglaubt:** Tracking `EQKPT8612701376YQ` steht auf
+*Unsuccessful Delivery*, letzte Station **15.09.2026 14:15 SHANGHAI «Returned to Original
+depot»**. Alle sieben Stationen lagen in China — das Paket hat das Land nie verlassen.
+
+**Von hier aus geht es nicht:** `POST /api2.0/v1/disputes/create` antwortet
+**Code 9009 «Order cannot be disputed»**, in allen vier geprüften Feld-Kombinationen. Die
+Felder stimmten (CJ hatte sie einzeln abgefragt und zuletzt angenommen); es liegt an der
+Bestellung selbst. Also Konsole.
+
+## Was zu tun ist
+
+1. **cjdropshipping.com** einloggen → **Orders** → Auftrag **DP2609071450210661800** suchen
+2. **Dispute** / **Aftersales** öffnen (Anleitung, die CJ selbst geschickt hat:
+   `https://cjdropshipping.com/article-details/172`)
+3. Grund: **Paket zurückgesandt / nicht zustellbar**, Erwartung: **Rückerstattung**
+4. Text unten einfügen, abschicken
+5. **Fall-Nummer in `dropship/_cj_dispute_1017_ref.txt` schreiben** — dann verschwindet die
+   Erinnerung aus der stündlichen Ampel von selbst
+
+## Text zum Einfügen
+
+```
+Order DP2609071450210661800 (SKU CJYD272994802BY, Damascus folding knife) was returned.
+Tracking EQKPT8612701376YQ shows "Unsuccessful Delivery"; the last scan on 2026-09-15
+14:15 in Shanghai reads "Returned to Original depot". Your agent confirmed by e-mail that
+the parcel was rejected because a knife is a prohibited item and there is no shipping line
+to Switzerland for it.
+
+The same product already failed for the same reason on our order #1016 (3 September).
+We have fully refunded the end customer both times.
+
+We request a refund of the order amount (USD 25.54) to our CJ balance.
+
+Please also note: we have removed all blades from our store, so no further knife orders
+will reach you from us.
+```
+
+## Was ich selbst schon erledigt habe
+
+- Kundin/Kunde ist **voll erstattet** (CHF 40.90, zurück auf die Karte) — nichts mehr offen
+- **207 Klingen aus dem Verkauf genommen**, darunter 95, für die CJ schon am 04.09.
+  «keine CH-Versandoption» gemeldet hatte und die trotzdem kaufbar waren
+- Die Importer legen Handklingen gar nicht mehr an, ein täglicher Wächter prüft es nach
 
 ---
 
