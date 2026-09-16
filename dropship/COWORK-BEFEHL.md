@@ -115,13 +115,26 @@ sowohl von unserer Server-IP als auch über den zweiten Ausgang (WebFetch, beide
 BigBuy blockt alles, was kein echter Browser ist. Das ist der Grund, warum das hier steht und
 nicht erledigt ist.
 
-## Was zu tun ist
+## Was zu tun ist — mit BigBuys eigenen Links (aus ihrer Mail vom 08.09. und 15.09.)
 
-1. Im Browser (eingeloggt als Kunde **966388**) auf **https://www.bigbuy.eu/en/contact**
-2. Reiter **Administration** (💳 Invoices, refunds, tax) — **am Rechner, nicht am Handy**
-   (steht so in BigBuys eigener Antwort)
-3. Formular ausfüllen mit dem Text unten, **abschicken**
-4. **Ticket-Referenznummer notieren** und zurückmelden — ohne Referenz gibt es keinen Nachweis
+**Am Rechner, nicht am Handy** — das schreibt BigBuy selbst zweimal:
+«the Contact Area is optimized for use via computer and not via mobile phone».
+
+1. Im Browser als Kunde **966388** einloggen (`allengchour@gmail.com`)
+2. **https://www.bigbuy.eu/en/contact** öffnen
+3. Reiter **💳 Administration** («Invoices, refunds, tax information»)
+
+   ⚠️ **Nach dem NAMEN klicken, nicht nach dem Anker.** BigBuys eigene Mail gibt für
+   *Administration* UND für *Technical Support* denselben Anker `#tabpanel3` an — einer
+   von beiden ist falsch. Der Reiter heisst **Administration** mit dem Kreditkarten-Symbol;
+   *Logistics and After-sales* ist `#tabpanel2`, *Customer service* `#tabpanel5`.
+4. Formular mit dem Text unten ausfüllen, **abschicken**
+5. **Ticket-Referenznummer notieren** und mir schicken → ich trage sie in
+   `dropship/_bigbuy_ticket_ref.txt` ein, dann verschwindet die Erinnerung aus der Ampel
+
+**Wenn der Reiter nicht auffindbar ist**, hat BigBuy zwei eigene Videos mitgeschickt:
+- Contact Area allgemein: https://www.loom.com/share/1ae26618819341bfabc4d87228c3fd7c
+- Ticket anlegen (Schritt für Schritt): https://www.loom.com/share/b5afba93c37d4b3791490b23a4cd00b8
 
 ## Text zum Einfügen
 
