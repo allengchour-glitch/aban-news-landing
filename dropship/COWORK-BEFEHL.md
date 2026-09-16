@@ -25,15 +25,49 @@ depot»**. Alle sieben Stationen lagen in China — das Paket hat das Land nie v
 Felder stimmten (CJ hatte sie einzeln abgefragt und zuletzt angenommen); es liegt an der
 Bestellung selbst. Also Konsole.
 
-## Was zu tun ist
+## Was zu tun ist — ZWEI Wege, beide ohne Formular (Stand 16.09. 16:30)
 
-1. **cjdropshipping.com** einloggen → **Orders** → Auftrag **DP2609071450210661800** suchen
-2. **Dispute** / **Aftersales** öffnen (Anleitung, die CJ selbst geschickt hat:
-   `https://cjdropshipping.com/article-details/172`)
-3. Grund: **Paket zurückgesandt / nicht zustellbar**, Erwartung: **Rückerstattung**
-4. Text unten einfügen, abschicken
-5. **Fall-Nummer in `dropship/_cj_dispute_1017_ref.txt` schreiben** — dann verschwindet die
-   Erinnerung aus der stündlichen Ampel von selbst
+**Die Dispute-Schaltfläche ist für diese Bestellung zu.** `POST /disputes/create` antwortet
+**Code 9009 «Order cannot be disputed»** — mit allen drei IDs, die CJ für denselben Auftrag führt
+(`DP2609071450210661800`, `2609071450210669900`, `CJ26090754529958107451`) und allen Pflichtfeldern.
+Es liegt an der Bestellung, nicht am Aufruf.
+
+**⛔ Iris' Mail ist ein No-Reply** — «Please do not reply to this automatically generated email».
+Antworten darauf verpufft.
+
+### Weg A — Mail, ist schon fertig (empfohlen, 1 Klick)
+
+Im Gmail liegt ein **fertiger Entwurf** an `support@cjdropshipping.com`, **im laufenden Thread**
+(«Shipping to Switzerland for a folding knife …»). Das ist der Kanal, der bei uns schon zweimal
+gewirkt hat — dort hat CJ am 04.09. die Messer-Linie überhaupt erst geöffnet.
+**Nur öffnen, lesen, senden.** Er nennt die Messung (Tracking, Rücksendung in Shanghai), den
+Betrag USD 25.54, den 9009-Fehler und bittet CJ, den Dispute selbst zu eröffnen oder direkt zu
+erstatten.
+
+### Weg B — Chat mit Iris (wenn es schneller gehen soll)
+
+cjdropshipping.com einloggen → **Chatfenster unten links** (oder
+`https://chat.cjdropshipping.com/#/chat/openChat`) → Iris Huang. Text:
+
+```
+Hi Iris, thanks for the notice about DP2609071450210661800 (knife, CJYD272994802BY).
+Tracking EQKPT8612701376YQ shows "Unsuccessful Delivery", returned to depot in
+Shanghai on 15 Sept. I tried to open a dispute but the API returns 9009
+"Order cannot be disputed" for all three order IDs. Could you please open the
+dispute for me or refund the USD 25.54 to my balance? I have already refunded my
+customer and removed all blades from my store.
+```
+
+**Danach: Fall-/Ticketnummer in `dropship/_cj_dispute_1017_ref.txt` schreiben** — dann verschwindet
+die Erinnerung von selbst aus der stündlichen Ampel.
+
+### ⚠️ Eine Zahlenverwechslung, damit niemand stolpert
+
+Iris schrieb am **10.09.**: «DP2609071450210661800 (#1018), DP2609071724090988900 (#1017)» —
+das ist **vertauscht**. CJs eigene `getOrderDetail` gibt für `DP2609071450210661800` den
+`orderNum` **#1017** zurück, mit der Messer-SKU, der Adresse in Pratteln und dem Tracking, das
+zurückkam. Die Bestellung ist also eindeutig **#1017**; die Rückerstattung an die Kundschaft ging
+an die richtige.
 
 ## Text zum Einfügen
 
