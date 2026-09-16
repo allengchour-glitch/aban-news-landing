@@ -149,7 +149,10 @@ def cj_dispute_1017():
     if os.path.exists(quittung) and open(quittung, encoding="utf-8").read().strip():
         return None
     return ("🔪 CJ-Rueckerstattung USD 25.54 offen (Auftrag DP2609071450210661800, Messer "
-            "zurueckgesandt) — Dispute in der CJ-Konsole oeffnen, Fallnummer nach "
+            "zurueckgesandt) — Mail an support@cjdropshipping.com ist am 16.09. raus "
+            "(Gmail-Thread 1a066a03bf2c8dd2). Ohne CJ-Antwort: Dispute in der KONSOLE "
+            "oeffnen, Grund 6 'Product Returned' — die API verweigert 9009, die Konsole "
+            "ist ein anderes System und ungeprueft. Fallnummer oder Gutschrift nach "
             "dropship/_cj_dispute_1017_ref.txt · Text: COWORK-BEFEHL.md Punkt 0")
 
 

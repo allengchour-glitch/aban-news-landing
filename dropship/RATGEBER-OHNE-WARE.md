@@ -7,10 +7,7 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | Ratgeber | Produktlinks (alle tot/keine) |
 |---|---:|
 | [Ätherische Öle für besseren Schlaf: Die Top 5 (2026)](/blogs/ratgeber/atherische-ole-fur-besseren-schlaf-die-top-5-2026) | 0 |
-| [Polarisierte Sonnenbrille — was bedeutet das wirklich? (Komp](/blogs/ratgeber/polarisierte-sonnenbrille-was-bedeutet-das-wirklich-komplettguide) | 1 |
 | [Echtleder vs. Kunstleder — Wie du beim Wallet-Kauf nicht rei](/blogs/ratgeber/echtleder-vs-kunstleder-wallet-kauf-guide) | 1 |
-| [Sternenhimmel Projektor — Mama-Hack oder Spielerei? Was Elte](/blogs/ratgeber/sternenhimmel-projektor-baby-eltern-guide) | 1 |
-| [UV400 vs. Polarisiert — Wie du echte Sonnenbrillen erkennst](/blogs/ratgeber/uv400-polarisiert-sonnenbrillen-guide) | 1 |
 | [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
 | [Wellness-Routine ab CHF 100 — So baust du dir dein Spa zuhau](/blogs/ratgeber/wellness-routine-100-chf) | 0 |
 | [Diffuser kaufen 2026 — Worauf du in der Schweiz unbedingt ac](/blogs/ratgeber/diffuser-kaufen-schweiz-2026) | 0 |

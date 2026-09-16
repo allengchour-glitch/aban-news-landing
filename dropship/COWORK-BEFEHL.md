@@ -87,6 +87,42 @@ Please also note: we have removed all blades from our store, so no further knife
 will reach you from us.
 ```
 
+## ✅ ERLEDIGT am 16.09. 21:30 UTC — die Mail ist RAUS
+
+**Weg A ist gegangen.** Die Mail liegt bei `support@cjdropshipping.com`, im laufenden Thread
+`1a066a03bf2c8dd2` («Shipping to Switzerland for a folding knife …») — also in genau dem
+Kanal, in dem CJ am 07.09. geantwortet und die Messer-Linie geöffnet hat.
+Nachricht-ID `1a0ac1cecc23a58d`.
+
+**Neu darin, und das stärkste Argument:** CJs eigene API widerspricht sich.
+
+| Aufruf | Antwort |
+|---|---|
+| `POST disputes/disputeConfirmInfo` (orderId = **cjOrderCode**) | **200** — mit `maxAmount 25.54`, dem Posten `2609071450210665200` und einer Gründe-Liste, die **Grund 6 «Product Returned»** enthält |
+| `POST disputes/create` mit exakt diesen Werten | **9009 «Order cannot be disputed»** |
+
+Geprüft wurden Grund 6 und 10, `expectType` 1 und 2, `refundType` 1 und 2 und alle drei
+Bestell-IDs — **jede Kombination 9009**. `getDisputeList` zeigt 0 Disputes, `getOrderDetail`
+zeigt `disputeId: null`; es blockiert also kein bestehender Fall.
+
+> **Lehre:** Der Vorschau-Endpunkt sagt «200» und nennt sogar den Grund, den man nehmen soll —
+> der Schreib-Endpunkt verweigert trotzdem. **Eine Vorschau, die «ok» sagt, ist keine Erlaubnis
+> zu handeln.** Erst der schreibende Aufruf entscheidet.
+>
+> Zweite Lehre aus demselben Lauf: Die Feldfehler (`disputeReasonId must be not null` usw.)
+> kommen **vor** der Zulässigkeitsprüfung. Dass sie erscheinen, beweist **nicht**, dass die
+> Bestellung reklamierbar ist — ich hatte genau das kurz geglaubt, und es war falsch.
+
+## Was für dich übrig bleibt — nur, falls CJ nicht antwortet
+
+Der **Konsolen-Weg ist ungeprüft** und damit weiterhin die Rückfallebene: cjdropshipping.com →
+Bestellung #1017 → Dispute, **Grund «Product Returned»**, Betrag USD 25.54. Dass die API 9009
+sagt, heisst nicht zwingend, dass die Konsole es auch tut — sie ist ein anderes System, und
+`disputeConfirmInfo` liefert die Maske ja vollständig. Alternativ Chat mit Iris (Text unten).
+
+**Fallnummer oder Gutschrift nach `dropship/_cj_dispute_1017_ref.txt`** — dann verschwindet
+die Zeile aus der stündlichen Ampel.
+
 ## Was ich selbst schon erledigt habe
 
 - Kundin/Kunde ist **voll erstattet** (CHF 40.90, zurück auf die Karte) — nichts mehr offen

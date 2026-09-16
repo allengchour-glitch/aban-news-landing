@@ -9,6 +9,70 @@
 
 
 
+## 2026-09-16 · 🎫 «cj co work erledigen»: eine Vorschau, die «ok» sagt, ist keine Erlaubnis zu handeln
+
+Auftrag: Punkt 0 der Cowork-Liste — die CJ-Rückerstattung von **USD 25.54** für das
+zurückgesandte Messer (Auftrag `DP2609071450210661800`, #1017).
+
+**Erst der Irrtum, den ich selbst produziert habe.** Heute Morgen antwortete
+`POST disputes/create` mit **9009 «Order cannot be disputed»**. Am Abend kamen auf dieselben
+Aufrufe plötzlich **Feldfehler** («disputeReasonId must be not null», «productInfoList must be
+not null», «businessDisputeId must be not empty»). Ich schloss daraus, die Rücksendung sei
+abgeschlossen und die Bestellung damit reklamierbar geworden — und sagte das dem Betreiber.
+**Falsch.** Die Feldprüfung läuft **vor** der Zulässigkeitsprüfung; sobald alle Pflichtfelder
+da waren, kam wieder 9009. Der Unterschied lag nur daran, dass ich morgens andere Felder
+mitgeschickt hatte. **Dass ein Fehler weiterrückt, heisst nicht, dass die Tür aufgeht — es
+heisst nur, dass man am nächsten Riegel steht.**
+
+**Dann der eigentliche Befund.** Die Gründe-Liste liefert kein `getDisputeReasonList` (gibt es
+nicht), sondern der Vorschau-Endpunkt `POST disputes/disputeConfirmInfo` — und der verlangt
+`orderId` = **`cjOrderCode`** (`DP26…`). Mit `orderId` (`2609071450210669900`) oder `cjOrderId`
+(`CJ26090…`) antwortet er **1005 «Please check it carefully.»**. *Drei IDs für eine Bestellung,
+und nur eine davon ist der Schlüssel; die Fehlermeldung sagt das nicht.*
+
+Mit dem richtigen Schlüssel antwortet er **200** und liefert die vollständige Maske:
+`maxAmount 25.54`, `expectResultOptionList ["1","2"]`, den Posten `2609071450210665200` und
+acht Gründe — darunter **Grund 6 «Product Returned»**, also exakt unseren Fall.
+
+**Und `disputes/create` verweigert genau diese Werte weiterhin mit 9009.** Geprüft: Grund 6
+und 10, `expectType` 1 und 2, `refundType` 1 und 2, alle drei Bestell-IDs — **jede Kombination
+9009**. `getDisputeList` zeigt 0 Disputes, `getOrderDetail` zeigt `disputeId: null`; es
+blockiert also kein bestehender Fall.
+
+> **Die Lehre: Ein Vorschau-Endpunkt, der «200» sagt und sogar den zu wählenden Grund nennt,
+> ist keine Zusage, dass der schreibende Aufruf durchgeht.** Wer eine Fähigkeit belegen will,
+> muss den SCHREIBENDEN Aufruf machen — Formular-, Vorschau-, Validierungs- und
+> Simulations-Antworten beschreiben eine Absicht, nicht eine Erlaubnis. Gleiche Familie wie
+> `freightCalculate` = «ok» am 16.09.: Es gab eine Versandoption, das Paket ging raus, und es
+> kam trotzdem zurück.
+
+**Was daraus folgte.** Der Widerspruch ist das beste Argument, das wir haben — er steht jetzt
+als Tabelle in der Mail an `support@cjdropshipping.com`, gesendet 21:30 UTC in den laufenden
+Thread `1a066a03bf2c8dd2` (Nachricht `1a0ac1cecc23a58d`), also in den Kanal, in dem CJ am
+07.09. geantwortet und die Messer-Linie geöffnet hat.
+
+**Eine Falle beim Senden, die fast unbemerkt geblieben wäre:** `update_draft` auf einen Entwurf
+IM Thread gibt eine **neue `threadId`** zurück — der aktualisierte Entwurf hängt nicht mehr an
+der Unterhaltung. Wäre er so rausgegangen, hätte CJ eine kontextlose Einzelmail bekommen.
+Deshalb: mit `send_message` + `replyThreadId` in den Original-Thread gesendet und den
+verwaisten Entwurf in den Papierkorb. **Nach jedem Schreibvorgang prüfen, ob das Objekt noch
+dort liegt, wo es hingehört — nicht nur, ob der Aufruf «ok» sagte.**
+
+**Ampel ehrlich gehalten statt stillgelegt.** Es wäre bequem gewesen, eine Quittung in
+`_cj_dispute_1017_ref.txt` zu schreiben und die stündliche Erinnerung verschwinden zu lassen.
+Aber das Geld ist nicht zurück. Die Zeile bleibt, sagt jetzt aber die Wahrheit: Mail ist raus,
+Konsolen-Weg ist **ungeprüft** (die Konsole ist ein anderes System als die API — dass die API
+9009 sagt, beweist über die Konsole nichts), Grund 6 nehmen. Sie verschwindet erst bei
+Fallnummer oder Gutschrift. Nachfass-Termin 18.09. 17:00 UTC gesetzt
+(`trig_01PpeVWZkNhHuCHJjFXqJKNK`).
+
+**Und noch einmal die Patch-Falle von heute Morgen, diesmal gefangen:** Mein erster
+`str.replace` auf `betreiber_ampel.py` traf nicht (ich hatte das Emoji als `\U0001F52A`
+escaped, in der Datei steht es literal). Der Syntax-Check danach meldete brav «ok» — an der
+**unveränderten** Datei. Gefangen hat es erst der Laufzeit-Aufruf von `cj_dispute_1017()`, der
+den alten Text zurückgab. **Ein Prüfschritt, der nicht das Ergebnis des Schreibens ansieht,
+prüft den Ausgangszustand.**
+
 ## 2026-09-16 · 🧰 «lerne mache das» (TikTok): prompts.chat — die Zahlen stimmen, die Bibliothek ist für uns leer
 
 Der Betreiber schickte ein TikTok. **Der Inhalt stand vollständig in der Caption**; die deutsche
