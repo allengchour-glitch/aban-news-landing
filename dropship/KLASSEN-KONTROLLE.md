@@ -1,11 +1,81 @@
-# Klassen-Kontrolle (VOLLSCAN, 52214 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 51583 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## «Produktdetails» doppelt — 17 (waehrend des Laufs 150 gezaehlt, seither repariert)
+## USA-Lieferzusage im Text — 890
+
+Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).
+
+Reparatur: `automation/versandaussagen_wahrheit.py  (QUELLE=live IGNORIERE_LEDGER=1)`
+
+Vollstaendige Liste: `dropship/_klassen/usa-lieferzusage-im-text.txt`
+
+- `15406765801857` Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
+- `15408457744769` Premium Bambus Aroma Diffuser 300ml
+- `15408457941377` Rosenquarz Gua Sha Set
+- `15408457974145` Jade Roller Premium Doppelseitig
+- `15408458006913` Kristall-Set 3-teilig
+- `15408458072449` Cellulite Massage Roller
+- `15408458170753` Bambus Aufbewahrungssystem Modular
+- `15408458236289` Bambus Kosmetik-Organizer Premium
+- `15408458563969` Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
+- `15411554320769` Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
+- `15411554910593` Aromadiffusor Holzmaserung
+- `15411555533185` Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
+- `15411556614529` Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
+- `15411563823489` Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
+- `15411564446081` Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
+- `15411565035905` LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
+- `15411565429121` Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
+- `15412297007489` LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten & Balkon
+- `15412297073025` Solar Camping-Laterne im Vintage-Look – wiederaufladbar, IP44 wetterfest
+- `15412299661697` Kühlmatte für Hunde & Katzen – Ice-Silk, selbstkühlend (waschbar)
+- `15412299760001` Vintage Sonnenbrille Oval – Metallrahmen, UV-Schutz (Damen)
+- `15412301922689` Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones
+- `15412302020993` Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)
+- `15412302414209` Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
+- `15412302512513` Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
+- … und 865 weitere
+
+## EU-Lieferzusage im Text — 890
+
+Gleiche Klasse wie USA: es gibt genau EINEN aktiven Markt (Schweiz).
+
+Reparatur: `automation/versandaussagen_wahrheit.py`
+
+Vollstaendige Liste: `dropship/_klassen/eu-lieferzusage-im-text.txt`
+
+- `15406765801857` Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wireless Charger
+- `15408457744769` Premium Bambus Aroma Diffuser 300ml
+- `15408457941377` Rosenquarz Gua Sha Set
+- `15408457974145` Jade Roller Premium Doppelseitig
+- `15408458006913` Kristall-Set 3-teilig
+- `15408458072449` Cellulite Massage Roller
+- `15408458170753` Bambus Aufbewahrungssystem Modular
+- `15408458236289` Bambus Kosmetik-Organizer Premium
+- `15408458563969` Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristal
+- `15411554320769` Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
+- `15411554910593` Aromadiffusor Holzmaserung
+- `15411555533185` Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth
+- `15411556614529` Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
+- `15411563823489` Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar
+- `15411564446081` Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf
+- `15411565035905` LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
+- `15411565429121` Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln
+- `15412297007489` LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten & Balkon
+- `15412297073025` Solar Camping-Laterne im Vintage-Look – wiederaufladbar, IP44 wetterfest
+- `15412299661697` Kühlmatte für Hunde & Katzen – Ice-Silk, selbstkühlend (waschbar)
+- `15412299760001` Vintage Sonnenbrille Oval – Metallrahmen, UV-Schutz (Damen)
+- `15412301922689` Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones
+- `15412302020993` Vintage Baseball-Cap mit Strass-Schneeflocke – verstellbar, Unisex (6 Farben)
+- `15412302414209` Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
+- `15412302512513` Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
+- … und 865 weitere
+
+## «Produktdetails» doppelt — 133
 
 Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
 
@@ -13,25 +83,44 @@ Reparatur: `automation/produktdetails_vereinen.py`
 
 Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 
-- `15427282141569` T-Shirt «Grüezi»
-- `15427282207105` T-Shirt «Hoi» · Modell 2
-- `15427282305409` T-Shirt «Merci» · Modell 2
-- `15427283157377` T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv
-- `15429997724033` King & Queen Partner-Shirts · Couple T-Shirts 👑
-- `15429997822337` Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍
-- `15429997855105` Her King & His Queen Partner-Shirts · Couple T-Shirts 👑
-- `15429997920641` Hubby & Wifey Partner-Shirts · Couple T-Shirts mit Herz ❤️
-- `15430344311169` Wide-Leg Midi-Rock «Studio» · fliessend, Freigrösse
-- `15430344409473` Polka-Dot Wickel-Rock «Dolce» · High-Waist, asymmetrisch
-- `15430344442241` Damen High-Heel-Sandalette «Capri» · offene Spitze
-- `15430344475009` Damen Sommer-Sandalen «Lido» · geschlossene Spitze
-- `15430344573313` Damen Komfort-Sandalen «Estate» · Elastik-Riemen
-- `15430344606081` Herren High-Top-Sneaker «Brooklyn» · Mesh, atmungsaktiv
-- `15430344638849` Herren Leder-Sandalen «Adriano» · Vollnarbenleder
-- `15430344671617` Herren Sport-Sneaker «Velocità» · Mesh, Wide-Toe
-- `15430444253569` Herren Sommer-Set «Riviera» · Hemd + Shorts
+- `15412751499649` Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
+- `15412751860097` Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
+- `15412752155009` Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+- `15412825063809` Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
+- `15412825194881` Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
+- `15412828733825` 2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+- `15412830634369` Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+- `15412830896513` Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
+- `15412902953345` 2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
+- `15412911964545` 2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose
+- `15412915110273` Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
+- `15412915339649` Strand-Maxikleid «Bali» – luftiges Stufenkleid
+- `15412915470721` Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
+- `15412916060545` Sommerkleid «Savanna» – Western-Style Midi
+- `15412918190465` Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
+- `15412919402881` Etuikleid «Lumea» – Cut-Out Sheath
+- `15412919533953` Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+- `15412919566721` Schnürkleid «Noir» – Schleifen-Detail
+- `15412919763329` Off-Shoulder-Kleid «Brise» – locker & ärmellos
+- `15412969144705` Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+- `15412969406849` T-Shirt-Kleid «Casa» – locker mit Print
+- `15413023015297` Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+- `15413023113601` Herren-Strickshirt «Riviera» – Cord-Kurzarm
+- `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+- `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
+- … und 108 weitere
 
-## Sie-Anrede im Produkttext — 1033
+## Floskel «hochwertiges Material» — 1 (waehrend des Laufs 118 gezaehlt, seither repariert)
+
+Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
+
+Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
+
+Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
+
+- `15421606953345` Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
+
+## Sie-Anrede im Produkttext — 1003
 
 Der ganze Shop duzt. Offene Klasse (03.09.), Massenlauf ist eine eigene Entscheidung.
 
@@ -41,7 +130,6 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 
 - `15445276197249` 3-Farben Ice Jelly Nude Gel Nagellack-Set
 - `15446023635329` Zitruspresse aus Metall
-- `15446023995777` Geruchsneutrale Fliegenfalle für Innen & Aussen
 - `15446268412289` Handheld Game TV Spielkonsole
 - `15446273917313` Rechteckiger Pool für Outdoor & Wildnis
 - `15447568744833` RC Fernsteuerung für Modellautos & Boote
@@ -49,7 +137,6 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15447630741889` Ionen Haarglätter-Bürste für Bart & Haar
 - `15447878041985` Smarter Vorhang-Controller
 - `15447905272193` Revival Gürtel im Mittelalter- und Wikinger-Stil
-- `15447907959169` Outdoor Sport-Bauchtasche
 - `15447936762241` Kuschelige Bären-Socken für Damen
 - `15448643600769` Polyester Damen-Shorts
 - `15448800723329` Contouring- und Concealer-Stick · natürlicher Farbton
@@ -58,15 +145,17 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15448836178305` Planet Diamond Star Press-On Nägel
 - `15448837390721` Manueller Pasta-Maker mit Kurbel
 - `15448846664065` Mirascreen 2.4G WiFi HDMI Adapter
-- `15448852758913` Mini Ventilator Lila – USB-aufladbar
 - `15448881627521` KM7 SE Android 11 TV Box
 - `15448884543873` Solar-Jalousien mit 15-Kanal-Fernbedienung
 - `15448887918977` 5 Core Akustikgitarrensaiten (6er-Set)
 - `15448891457921` Karaoke Bluetooth-Lautsprecher-Set K12 · tragbar
 - `15448898306433` Geometrisches Zirkon-Armband, 18K vergoldet
-- … und 1008 weitere
+- `15448899223937` Verstellbares Ring-Set mit geometrischem Design
+- `15448904565121` Retro Transparente Taschenuhr mit Klappdeckel
+- `15448922292609` Aufblasbares Outdoor-Sitzkissen, feuchtigkeitsbeständig
+- … und 978 weitere
 
-## Auswahl-Versprechen bei EINER Variante — 1740
+## Auswahl-Versprechen bei EINER Variante — 1720
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -87,7 +176,6 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448910659969` Multifunktionale Sportuhr im Tonneau-Design
 - `15448911020417` Bluetooth MP3-Player mit Touchscreen
 - `15448913871233` Lederrucksack für Herren
-- `15448914821505` Freizeit-Rucksack für Studierende
 - `15448916820353` Multifunktionaler wasserdichter Outdoor Rucksack
 - `15448918622593` Ma Pi Brusttasche aus Echtleder
 - `15448919212417` Grosse Retro Herren Schulter- und Reisetasche
@@ -99,5 +187,6 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448924684673` Luxuriöser Plüsch Kissenbezug
 - `15448926060929` Weinroter Kissenbezug aus Rex Kaninchenfell
 - `15448926257537` Langes Eisseiden-Kissen mit Sommer-Motiv
-- … und 1715 weitere
+- `15448927175041` Nackenstützkissen mit Massageperlen
+- … und 1695 weitere
 
