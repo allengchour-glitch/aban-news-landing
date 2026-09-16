@@ -6,6 +6,41 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+
+## 2026-09-16 · 📤 Ein Entwurf ist kein Beleg dafür, dass etwas fehlt (Shopcom)
+
+Die Nachkontrolle sollte den Betreiber «einmal kurz erinnern», die Shopcom-Anmeldung zu senden.
+Vor dem Erinnern gemessen — `to:info@shopcom.ch in:sent`:
+
+- **05.08. 13:39** Shopcom bittet um das ausgefüllte Dropshipping-Formular
+- **05.08. 14:05** unsere Antwort geht raus, **mit** ausgefülltem und unterschriebenem PDF (408 KB)
+- **seither nichts** von Shopcom (Gegenprobe `shopcom newer_than:60d`: nur diese zwei Nachrichten)
+
+**26 Minuten**, nicht sechs Wochen. Der Stand vom 15.09. hielt fest, der Entwurf habe «sechs
+Wochen unversendet im Postfach gelegen» — diese Sichtung hatte den **Entwurf** gelesen und daraus
+geschlossen, dass nichts raus ist. **Ein Entwurf belegt nur, dass jemand etwas geschrieben hat.
+Über den Postausgang sagt er nichts.** Die Frage «ist es raus?» beantwortet `in:sent`, sonst
+nichts.
+
+Hätte ich die Erinnerung wie beauftragt verschickt, wäre der Entwurf mitgegangen — und der
+entschuldigt sich wörtlich für «die späte Antwort, das Formular lag bei mir länger als geplant»
+und hängt ein Dokument an, das Shopcom seit sechs Wochen hat. Wir hätten ein Versäumnis
+eingeräumt, das uns nicht trifft, und dabei den einzigen Punkt verdeckt, der wirklich offen ist:
+**Shopcom schweigt seit sechs Wochen.** Entwurf `r-5801785141346616875` deshalb umgeschrieben zur
+sachlichen Nachfrage (Eingang bestätigen lassen, Formular auf Wunsch nochmals, dazu unverändert
+die drei Fragen zu Feed, Gebühren und Mindestbestellwert). Nicht gesendet — das bleibt ein Klick
+des Betreibers.
+
+**Zweitens, BigBuy — eine offene Frage von gestern ist entschieden.** `purse.json` antwortet
+weiter «Invalid Token». Gestern stand offen, ob das am ausgelaufenen Abo liegt oder daran, dass
+der Schlüssel beim Neustart verschwand. Heute ist `/tmp/bigbuy.env` **noch da und unverändert**
+(07.09., Modus 600) — derselbe Schlüssel, der am 15.09. noch `"1000.00"` lieferte, wird jetzt
+abgewiesen. Ein verlorener Schlüssel erklärt das nicht: **es ist das Abo-Ende.** Damit ist das
+Guthaben von hier aus nicht mehr messbar; letzte belegte Zahl bleibt EUR 1'000.00 vom 15.09.
+**Wenn zwei Ursachen im Raum stehen, schliesst man die eine aus, indem man ihre Voraussetzung
+prüft — nicht indem man auf ein deutlicheres Symptom wartet.** Auf die Mail vom 15.09. kam in
+24 Stunden nichts; sechs ausgehende Mails stehen jetzt gegen drei wortgleiche Bausteine.
+
 ## 2026-09-16 · 🔪 «kannst du messer zurück erstatten und alles» — die Rücksendung und was sie aufdeckte
 
 CJs Agentin meldete, Auftrag **DP2609071450210661800** (SKU `CJYD272994802BY`, Fuda
