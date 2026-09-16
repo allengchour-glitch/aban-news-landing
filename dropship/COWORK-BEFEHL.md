@@ -1,58 +1,102 @@
-# COWORK-BEFEHL — Fassung 15.09.2026, 11:10 UTC
+# COWORK-BEFEHL — Fassung 16.09.2026, 07:00 UTC
 
-> Ersetzt `COWORK-BEFEHL-2026-09-14.md`. Vier der zehn Punkte sind mit der Storefront- und der
-> Admin-API **selbst gemessen und erledigt bzw. geschlossen** worden. Übrig bleiben die Punkte,
-> für die es wirklich einen Browser oder ein fremdes Konto braucht.
+> Betreiber 16.09.: «mach das mit cowork oder so… egal wie hauptsache erledigt.»
+> **Punkt 1 ist der einzige, der wirklich dringend ist — dort liegen EUR 1'000.**
+> Alles andere ist unverändert und kann warten.
+>
 > Nichts erfinden, nichts bezahlen, **keine App deinstallieren, keinen Token widerrufen**
-> (`autopilot2` trägt den Betrieb).
+> (`autopilot2` trägt den ganzen Betrieb).
 
-## ✅ GESCHLOSSEN — nicht mehr anfassen
+---
 
-**1. Versandschwelle 45 → 50: ENDGÜLTIG NEIN. Die 45 ist kein Fehler, sie ist die Korrektur.**
-Am 15.09. mit vier echten Warenkörben über die Storefront-API gemessen
-(`tools/versand_testkorb.py`, Lieferadresse Belp BE):
+# 1. ⭐ BIGBUY-TICKET — EUR 1'000.00, seit zwei Monaten fällig
 
-| Korb | vor Rabatt | Rabatt | nach Rabatt | Versand |
-|---|---|---|---|---|
-| 2 × CHF 23.00 | 46.00 | 4.60 | 41.40 | **CHF 7.00 — kein Gratisversand** |
-| 2 × CHF 23.50 | 47.00 | 4.70 | 42.30 | **CHF 7.00 — kein Gratisversand** |
-| 2 × CHF 25.00 | 50.00 | 5.00 | 45.00 | **gratis** |
-| 2 × CHF 26.90 | 53.80 | 5.38 | 48.42 | gratis |
-| 1 × CHF 51.00 | 51.00 | 0.00 | 51.00 | gratis |
+## Warum das nicht per Mail geht (gemessen, nicht vermutet)
 
-**Shopify prüft die Bedingung «Gesamtpreis ≥ 45» auf dem Betrag NACH dem automatischen Rabatt.**
-Ein Korb über 45 Franken kann also trotzdem CHF 7 kosten — bewiesen an den ersten zwei Zeilen.
+Seit dem 07.09. sind **fünf Mails** an `customers@bigbuy.eu` gegangen. Zurückgekommen sind
+**zwei Antworten — wortgleich**, beide der identische Textbaustein:
 
-Daraus folgt die eigentliche Erkenntnis: Mit dem automatischen 10-%-Rabatt ab 2 Artikeln beginnt
-der Gratisversand bei **genau CHF 50 vor Rabatt** (Zeile 3). Das ist exakt das, was der Shop
-verspricht. Bei einem einzelnen Artikel greift er ab 45 — grosszügiger als versprochen, schadet
-niemandem. **Wer auf 50 umstellt, verschiebt die echte Schwelle für Zwei-Artikel-Körbe auf
-CHF 55.56** und macht aus einer eingehaltenen Zusage einen gebrochenen Versprechen. Punkt
-geschlossen, bitte nie wieder aufmachen.
+> «the fastest and most efficient way to get a precise answer is by submitting a ticket in the
+> Contact Area … 💳 **Administration** → Invoices, refunds, tax information»
 
-**6. BigBuy-Abschied** — erledigt, 0 aktive BigBuy-Produkte. Kein Klick nötig.
+Auf die eigentliche Mail vom 15.09. 08:31 UTC kam **gar keine Antwort**. Zum Abo-Ende hat
+BigBuy **nichts** geschickt. **Der Kanal, den sie selbst zweimal nennen, ist noch nie benutzt
+worden.** Eine sechste Mail ändert nichts.
 
-**8. «Ballast-Apps entfernen» — die Begründung war falsch, gemessen.**
-Behauptet war: «Hextom lädt auf jeder Seite ein Skript». Gemessen am 15.09.: der Shop hat
-**0 ScriptTags**, und weder Hextom noch SEOWILL stehen als App-Embed im Theme
-(`config/settings_data.json` kennt genau 6 Embeds: Judge.me, UpPromote, Clarity aktiv;
-Google/YouTube, Clarity-BrandAgents, SEOWILL deaktiviert). **Beide Apps laden nichts.**
-Deinstallieren ist Aufräumen, kein Geschwindigkeitsgewinn — also kein Vorrang und kein Risiko,
-es zu lassen.
+**Und ich komme dort nicht hin:** `https://www.bigbuy.eu/en/contact` antwortet **HTTP 403** —
+sowohl von unserer Server-IP als auch über den zweiten Ausgang (WebFetch, beide 16.09. 06:56).
+BigBuy blockt alles, was kein echter Browser ist. Das ist der Grund, warum das hier steht und
+nicht erledigt ist.
 
-## 🖱️ OFFEN — braucht Browser oder fremdes Konto
+## Was zu tun ist
 
-**2. GOOGLE MERCHANT: LIEFERLAND NUR SCHWEIZ.** ⭐ Der grösste freie Hebel, den wir haben.
+1. Im Browser (eingeloggt als Kunde **966388**) auf **https://www.bigbuy.eu/en/contact**
+2. Reiter **Administration** (💳 Invoices, refunds, tax) — **am Rechner, nicht am Handy**
+   (steht so in BigBuys eigener Antwort)
+3. Formular ausfüllen mit dem Text unten, **abschicken**
+4. **Ticket-Referenznummer notieren** und zurückmelden — ohne Referenz gibt es keinen Nachweis
+
+## Text zum Einfügen
+
+```
+Subject: Customer 966388 – wallet balance EUR 1,000.00 – four confirmed payout
+requests, none executed
+
+Customer number: 966388 (LuxeStyle CH, Switzerland)
+Wallet balance: EUR 1,000.00 (unchanged since 15 July 2026)
+
+Four payout requests were confirmed by your system. None was ever paid:
+  15 Jul 2026  EUR   750.00
+  16 Aug 2026  EUR 1,000.00
+  08 Sep 2026  EUR 1,000.00  (20:00 UTC – invalid IBAN, 22 characters – please CANCEL)
+  08 Sep 2026  EUR 1,000.00  (20:12 UTC – corrected IBAN, 21 characters – please EXECUTE)
+
+I have sent five emails to customers@bigbuy.eu since 7 September. The only replies were
+the automated message asking me to open a ticket. This is that ticket.
+
+Please:
+1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, Valiant Bank AG,
+   Bern, account holder Allen Chour). The bank details are already stored on the request
+   of 8 September, 20:12 UTC.
+2. Confirm in writing what happened to the requests of 15 July and 16 August — returned
+   to the wallet, still pending, or paid to another account.
+3. Explain record 18138523 ("Ingreso en monedero", EUR 1,000, 07/07/2026, "Pendiente de
+   pago"). I have not cancelled it and will not cancel it without your explanation.
+4. My subscription ended on 15 September 2026. Please confirm in writing that the wallet
+   balance is unaffected by the account closure, and how it will be paid out now.
+5. Please give me a ticket reference number and an expected payment date.
+```
+
+⚠️ **Die IBAN steht bewusst NICHT in dieser Datei** (das Repo ist öffentlich). Sie ist bei
+BigBuy schon hinterlegt — der Antrag vom 08.09. 20:12 UTC trägt die richtige, 21-stellige
+Nummer. Falls das Formular sie trotzdem verlangt: aus dem Online-Banking abschreiben.
+
+## Punkt 4 ist neu und wichtig
+
+Das Abo ist am 15.09. ausgelaufen, und **niemand hat uns je schriftlich gesagt, was mit dem
+Guthaben eines beendeten Kontos passiert**. Das gehört festgehalten, bevor es jemandem
+einfällt, es als verfallen zu behandeln.
+
+## Wenn nach 14 Tagen nichts kommt
+
+BigBuy S.L.U. sitzt in Valencia. Übliche nächste Schritte: **förmliche Zahlungsaufforderung
+per Einschreiben** an die spanische Firmenadresse mit Frist, und die **EU-Verbraucher-/
+ODR-Schlichtung**. Beides setzt voraus, dass ein Ticket mit Referenznummer existiert —
+deshalb ist Schritt 4 oben nicht optional.
+
+---
+
+# Die übrigen Punkte (unverändert, nicht dringend)
+
+**2. GOOGLE MERCHANT: LIEFERLAND NUR SCHWEIZ.** ⭐ Der grösste freie Hebel.
 merchants.google.com → Einstellungen → Versand & Rückgabe → jeden Versanddienst öffnen →
 Lieferland **nur Schweiz** (Deutschland und andere entfernen). Danach Produkte → Diagnose:
 Zahl «Missing shipping info» vorher/nachher melden (zuletzt ~1'700).
 Google-Gratis-Einträge sind der einzige Kanal mit belegten Verkäufen.
 
-**5. STARTSEITEN-META-BESCHREIBUNG — dringender als gedacht.**
-Gemessen am 15.09. über `shop { description }`: **211 Zeichen**, und sie endet mit
-«… mit schnellem Versand in die Schweiz **und nach Deutschland**». Der Shop liefert **nur in die
-Schweiz**. Dieser Satz steht unter jedem Google-Treffer der Startseite. Es gibt keine Mutation
-dafür (`shopUpdate` existiert nicht) — nur im Admin änderbar:
+**5. STARTSEITEN-META-BESCHREIBUNG.** Gemessen 15.09. über `shop { description }`: **211
+Zeichen**, endend mit «… und nach Deutschland». Der Shop liefert **nur in die Schweiz**.
+Keine Mutation vorhanden (`shopUpdate` existiert nicht) — nur im Admin:
 Onlineshop → Einstellungen → «Titel und Meta-Beschreibung» → ersetzen durch:
 
 ```
@@ -60,16 +104,10 @@ Mode, Schmuck, Beauty & Gadgets aus der Schweiz. Gratis-Versand ab CHF 50, 30 Ta
 ```
 (133 Zeichen, keine Deutschland-Zusage.) Speichern, Zeichenzahl melden.
 
-**7. CHAT EINSCHALTEN — Stand gemessen, damit niemand im Leeren sucht.**
-Installiert sind **zwei** Chat-Apps: «Messaging» (Shopify Inbox) und «Chatty» (avada-faqs).
-Auf luxestyle.ch ist **kein einziger Chat-Knopf sichtbar** (WebFetch, 15.09.), und im Theme steht
-**kein** Chat-App-Embed. Also: Onlineshop → Themes → Anpassen → App-Embeds → Chat einschalten →
-Speichern. Danach melden, **welche** der beiden Apps den Knopf liefert — die andere gehört weg,
-zwei Chat-Fenster auf einer Seite sind schlimmer als keins.
-
-**9. NUR ENTSCHEIDEN: US-Markt für ChatGPT?** Empfehlung unverändert **nein** (USD, US-Versand,
-englische Texte, CH-Lager nicht lieferbar). Nur wenn der Betreiber es ausdrücklich will:
-Einstellungen → Märkte → USA.
+**7. CHAT EINSCHALTEN.** Installiert sind **zwei** Chat-Apps («Messaging»/Shopify Inbox und
+«Chatty»/avada-faqs). Auf luxestyle.ch ist **kein Chat-Knopf sichtbar**, im Theme steht **kein**
+Chat-App-Embed. Onlineshop → Themes → Anpassen → App-Embeds → Chat einschalten → Speichern.
+Danach melden, **welche** der beiden den Knopf liefert — die andere gehört weg.
 
 **10. BING WEBMASTER TOOLS** (ChatGPT sucht über Bing): bing.com/webmasters → luxestyle.ch →
 Sitemaps → prüfen, ob `https://luxestyle.ch/sitemap.xml` eingereicht ist; sonst einreichen.
@@ -77,3 +115,22 @@ Zahl «indexierte Seiten» melden.
 
 **4. NUR PRÜFEN, NICHTS ÄNDERN:** Einstellungen → Apps → App entwickeln: Liste der eigenen Apps
 mit «letzte Aktivität» abschreiben. Nichts deinstallieren, keinen Token widerrufen.
+
+**9. NUR ENTSCHEIDEN: US-Markt für ChatGPT?** Empfehlung unverändert **nein** (USD, US-Versand,
+englische Texte, CH-Lager nicht lieferbar).
+
+---
+
+# ✅ Geschlossen — nicht mehr anfassen
+
+**1. Versandschwelle 45 → 50: ENDGÜLTIG NEIN.** Am 15.09. mit vier echten Warenkörben über die
+Storefront-API gemessen: Shopify prüft «≥ 45» auf dem Betrag **nach** dem automatischen
+10-%-Rabatt. Mit zwei Artikeln beginnt der Gratisversand deshalb bei **genau CHF 50 vor
+Rabatt** — exakt das, was der Shop verspricht. Wer auf 50 umstellt, schiebt die echte Schwelle
+auf CHF 55.56 und macht aus einer eingehaltenen Zusage ein gebrochenes Versprechen.
+
+**6. BigBuy-Abschied** — erledigt, 0 aktive BigBuy-Produkte. Kein Klick nötig.
+
+**8. «Ballast-Apps entfernen» — Begründung war falsch.** Gemessen 15.09.: **0 ScriptTags**,
+weder Hextom noch SEOWILL als App-Embed im Theme. Beide laden nichts. Deinstallieren ist
+Aufräumen, kein Geschwindigkeitsgewinn.

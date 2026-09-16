@@ -137,6 +137,29 @@ def ki_textstufe():
         return None
 
 
+def bigbuy_ticket():
+    """EUR 1'000.00 liegen seit dem 15.07. bei BigBuy. Das Geld ist real und faellig.
+
+    ⚠️ Anders als die uebrigen Punkte kann dieser sich NICHT selbst live messen: seit dem
+    Abo-Ende antwortet `/rest/user/purse.json` mit HTTP 401 (gemessen 16.09.). Deshalb haengt
+    er an einer Quittung — sobald die Ticket-Referenz in der Datei steht, verschwindet die
+    Zeile. Das erzwingt genau das Artefakt, das man spaeter braucht: eine Nummer, auf die man
+    sich berufen kann.
+
+    Warum ueberhaupt ein Ticket: fuenf Mails an customers@bigbuy.eu, zurueck kamen zwei
+    WORTGLEICHE Auto-Antworten, die beide auf das Formular verweisen. Der genannte Kanal war
+    nie benutzt. bigbuy.eu/en/contact gibt uns HTTP 403 (beide Ausgaenge) — es braucht einen
+    echten Browser. Anleitung: dropship/COWORK-BEFEHL.md Punkt 1.
+    """
+    quittung = os.path.join(REPO, "dropship", "_bigbuy_ticket_ref.txt")
+    if os.path.exists(quittung) and open(quittung, encoding="utf-8").read().strip():
+        return None
+    tage = (datetime.date.today() - datetime.date(2026, 7, 15)).days
+    return (f"⭐ BigBuy EUR 1'000.00 seit {tage} Tagen nicht ausgezahlt — Ticket "
+            f"bigbuy.eu/en/contact (Administration) oeffnen, Referenz nach "
+            f"dropship/_bigbuy_ticket_ref.txt · Text: COWORK-BEFEHL.md Punkt 1")
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -153,7 +176,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
+    teile = [t for t in (bigbuy_ticket(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

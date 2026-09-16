@@ -5,6 +5,38 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-16 · 🎫 «egal wie hauptsache erledigt» — diesmal war es wirklich der Browser (16.09., 06:55-07:15 UTC)
+
+Betreiber: «mach das mit cowork oder so… egal wie hauptsache erledigt.» Gemeint war das
+BigBuy-Ticket. Bevor ich delegiere, gilt die Lehre von gestern: **«geht nur im Browser» ist
+meist eine Aussage über die eigene Suche.** Also erst selbst probiert.
+
+**Diesmal stimmt die Ausrede.** `https://www.bigbuy.eu/en/contact` antwortet **HTTP 403** —
+von unserer Rechenzentrums-IP **und** über den zweiten Ausgang (WebFetch). Zwei verschiedene
+Absender, dieselbe Sperre: BigBuy lässt nichts durch, was kein echter Browser ist. Das ist der
+Unterschied zwischen «ich habe nicht gesucht» und «ich habe gesucht und bin gegen eine Wand
+gelaufen» — und den muss man messen, bevor man ihn behauptet.
+
+**Was daraus folgt: delegieren ist hier richtig, aber eine Datei zu schreiben ist zu wenig.**
+`dropship/COWORK-BEFEHL.md` neu gefasst, BigBuy als Punkt 1 mit fertigem Formulartext. Aber ein
+Auftragsdokument liest nur, wer danach fragt — genau die Kritik, die im Kopf von
+`betreiber_ampel.py` steht.
+
+**Deshalb hängt der Punkt jetzt in der stündlichen Keepalive-Meldung** (`bigbuy_ticket()`).
+Und er ist so gebaut, dass er **von selbst verschwindet**: sobald eine Ticket-Referenz in
+`dropship/_bigbuy_ticket_ref.txt` steht, ist die Zeile weg. Adversarisch geprüft — mit
+Testquittung verschwunden, ohne wieder da.
+
+Das ist der eigentliche Kniff: Das Guthaben selbst kann ich seit dem 401 **nicht mehr messen**,
+also kann sich dieser Punkt nicht wie die anderen live selbst erledigen. Statt ihn deshalb als
+ewige Behauptung stehen zu lassen, hängt er an einem **Artefakt, das man ohnehin braucht** —
+der Ticket-Nummer. **Wenn der Zustand nicht messbar ist, hänge die Erinnerung an den Beleg,
+den der nächste Schritt sowieso erzeugt.** So erzwingt die Erinnerung genau das, was fehlt,
+statt nur zu mahnen.
+
+Nachfass-Routine `trig_01N9vbqe55Az7oTdvu6sh21m` («BigBuy: Antwort + Guthaben nachprüfen»)
+existiert und feuert heute 08:10 UTC — geprüft, nicht angenommen.
+
 ## 2026-09-16 · 🏦 «schau das bigbuy auszahlt» — die Tür, die sie uns nennen, war nie benutzt (16.09., 05:15-05:35 UTC)
 
 **Der Befund, der alles erklärt.** Seit dem 07.09. sind **fünf Mails** an `customers@bigbuy.eu`
