@@ -7,6 +7,44 @@
 
 
 
+
+## 2026-09-16 · ❓ «faq in webshop?» — ja, aber vier Stück nebeneinander
+
+Gemessen statt geraten. Der Shop hatte **acht veröffentlichte FAQ-Seiten**, davon **vier
+allgemeine**, die einander Konkurrenz machten:
+
+| Seite | Zustand |
+|---|---|
+| `/faq` «Häufige Fragen (FAQ)» | 7'894 Zeichen, 8 Abschnitte, FAQPage-JSON-LD, 14.09. aktualisiert |
+| `/faq-luxestyle` | deutsche Dublette, 1'575 Zeichen |
+| `/faq-en` | **englisch** — der Shop hat nur `de` veröffentlicht |
+| `/avada-faqs` | **zeigt öffentlich nur «Loading…»** (App rendert nichts), englischer Titel |
+
+**Nur EIN Link im ganzen Shop führt zu einer FAQ:** Footer → `/pages/faq`. Die anderen drei
+waren Waisen — erreichbar nur über Suchmaschinen, wo sie der echten Seite Rang wegnehmen.
+`/avada-faqs` ist der schlimmere Fall: eine **öffentlich erreichbare Seite, die nichts zeigt**
+(per WebFetch gegengeprüft, also mit dem Ausgang, der die echte Seite sieht). Eine App, die
+verschwindet, nimmt ihre Seite nicht mit.
+
+Vor dem Abmelden geprüft, ob jemand darauf verlinkt — die Lehre vom 15.09., keine neuen toten
+Links zu bauen: `/faq-en` hing an zwei Seiten, **beide unveröffentlicht** (interne Dashboards);
+die anderen zwei an gar nichts, auch nicht im Theme. Also abgemeldet und alle drei per **301 auf
+`/pages/faq`** umgeleitet. Nichts gelöscht.
+
+**Bleibt:** eine Hauptseite plus vier Themen-FAQs (Versand, Zahlung, Rückgabe, Schmuckpflege) —
+alle vier sind von `/faq` aus verlinkt, gegengeprüft. Alles deutsch, keine Dubletten mehr.
+
+**Nebenbefund zum Verkehr:** In 90 Tagen taucht **keine** FAQ-Seite unter den 250
+meistbesuchten Einstiegsseiten auf (4'459 Sitzungen gesamt). Als Einstieg über Google bringt die
+FAQ hier nichts; ihr Wert liegt im Vertrauen kurz vor dem Kauf — dafür ist der Footer-Platz
+richtig. **Eine Seite, die niemand als Einstieg findet, ist nicht automatisch nutzlos — aber sie
+rechtfertigt auch keine vier Fassungen.**
+
+Inhaltlich ist `/faq` in Ordnung: Lieferzeiten nach Bezugsweg getrennt, Zollschwelle
+ausgerechnet (Einfuhrsteuer ab CHF 5 Steuerbetrag = rund CHF 60 Warenwert), und die
+Rückgabe ist ehrlich als **freiwillig** benannt — «ein gesetzliches Widerrufsrecht wie in der EU
+gibt es in der Schweiz nicht». Das ist die richtige Formulierung; sie verspricht nichts Falsches.
+
 ## 2026-09-16 · 📤 Ein Entwurf ist kein Beleg dafür, dass etwas fehlt (Shopcom)
 
 Die Nachkontrolle sollte den Betreiber «einmal kurz erinnern», die Shopcom-Anmeldung zu senden.
