@@ -5,6 +5,50 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+## 2026-09-16 · 🏦 «schau das bigbuy auszahlt» — die Tür, die sie uns nennen, war nie benutzt (16.09., 05:15-05:35 UTC)
+
+**Der Befund, der alles erklärt.** Seit dem 07.09. sind **fünf Mails** an `customers@bigbuy.eu`
+gegangen. Zurückgekommen sind **zwei Antworten — wortgleich**, 08.09. 07:39 und 15.09. 07:18 UTC.
+Derselbe Textbaustein, beide Male:
+
+> «the fastest and most efficient way to get a precise answer is by submitting a ticket in the
+> Contact Area […] 💳 Administration → Invoices, refunds, tax information»
+
+Auf die eigentliche Mail vom 15.09. 08:31 (vier bestätigte Anträge, Frist abgelaufen) kam
+**gar keine Antwort**, und zum Abo-Ende hat BigBuy **nichts** geschickt.
+
+**Der Kanal, den BigBuy zweimal ausdrücklich nennt, ist noch nie benutzt worden.** Wir klopfen
+seit neun Tagen an eine Tür, die mit Anrufbeantworter antwortet, während die Tür daneben, auf
+die der Anrufbeantworter zeigt, unberührt ist. Die sechste Mail an dieselbe Adresse wird nicht
+beantwortet werden — das ist keine Prognose, das sind zwei identische Maschinentexte.
+**Regel: Wenn eine Gegenstelle zweimal denselben Baustein schickt, ist die Antwort nicht
+ausstehend, sondern gegeben — sie lautet «falscher Kanal».** Fertiger Ticket-Text in
+`dropship/BIGBUY-1000-EURO.md` §3, inklusive der neuen Frage, was mit dem Guthaben eines
+**beendeten** Kontos passiert (das hat bisher niemand schriftlich).
+
+**Die API ist zu.** `GET /rest/user/purse.json` → **HTTP 401 «Invalid Token»**. Ursache **nicht
+isoliert**: entweder ist der Zugang mit dem Abo-Ende am 15.09. erloschen, oder der
+Produktions-Schlüssel lag in `/tmp/bigbuy_key.txt` und ist beim Container-Neustart verschwunden
+(ich habe auf `/tmp/bigbuy.env` vom 07.09. zurückgegriffen). Der Aufruf selbst war korrekt
+gebaut — gegen die funktionierenden Skripte geprüft. **Folge so oder so: das Guthaben ist ab
+jetzt nicht mehr von hier aus messbar.** Letzte belegte Zahl bleibt `"1000.00"` vom 15.09.
+
+**Und der Fund, der mich beim Nachschauen erwischt hat.** Ich wollte nur wissen, ob ich die
+IBAN in die Notiz schreiben darf — und habe dabei gemessen, dass das Repo
+`allengchour-glitch/aban-news-landing` **öffentlich** ist (`"private": false`,
+`"visibility": "public"`). Die vollständige IBAN des Betreibers stand an **drei Stellen** in
+zwei committeten Dateien, zusammen mit Name, Bank und Wohnort. Sofort geschwärzt (Gegenprobe:
+0 verbleibend). **Aber: in der Git-Historie steht sie weiter, und bei einem öffentlichen Repo
+heisst das abrufbar.** Das kann ich nicht allein beheben — Historie umschreiben ist ein
+Betreiber-Entscheid.
+
+**Die Lehre ist allgemeiner als die IBAN.** Im Gedächtnis steht seit dem 10.07. «NICHT ins
+public Repo — Lieferantendaten!» für die BigBuy-Frachtliste. Die Regel war also da; sie wurde
+nur nie auf **Bankdaten** angewendet, weil niemand sie als dieselbe Klasse gesehen hat.
+**Eine Regel, die für ein Beispiel formuliert ist, schützt nur dieses Beispiel.** Wer «keine
+Lieferantendaten» schreibt, meint «keine personenbezogenen und keine Zahlungsdaten» — und
+sollte das auch schreiben.
+
 ## 2026-09-15 · 🧠 «pimp obsidian» — der erzeugte Index verschwieg drei Notizen (15.09., 20:50-21:10 UTC)
 
 Der Vault war in bestem Zustand, wo man ihn schon misst: **77 Notizen, 229 Wikilinks, 0 kaputt,
@@ -482,7 +526,7 @@ Was die API **nicht** kann (jeder Endpunkt einzeln geprüft, alle HTTP 400): `pu
 **Die Auszahlung ist ein Klick im Kontrollpanel und nur dort** — der genaue Weg steht jetzt in
 `dropship/BIGBUY-1000-EURO-HEUTE.md`, inklusive des Kerns: der Antrag vom 8.9. 20:00 trägt eine
 **22-stellige IBAN** (eine Schweizer hat 21), er scheitert an der Prüfziffer und muss gelöscht
-werden; der Antrag von 20:12 mit `CH78 0630 0016 6038 0920 6` ist der richtige.
+werden; der Antrag von 20:12 mit `CH78 … (21-stellig, im BigBuy-Konto hinterlegt — Nummer NICHT im Repo)` ist der richtige.
 
 Und der Grund für die Eile: Das Abo «Pack Ecommerce» läuft **heute** aus, und BigBuy zahlt nur
 dienstags aus. Ein Entwurf an `customers@bigbuy.eu` liegt bereit; er bittet zusätzlich um die
