@@ -1048,3 +1048,6 @@ gid://shopify/Product/15531932287361	nicht-versendbar	Faltbarer Outdoor-Campingw
 gid://shopify/Product/15531931009409	ok	Fitness Widerstandsband für Zugtraining
 gid://shopify/Product/15531933106561	ok	Intelligentes Schnarch-Massagegerät
 gid://shopify/Product/15532141838721	ok	Edelstahl-Bratpfanne mit Antihaftbeschichtung
+gid://shopify/Product/15449004736897	ok	Steel Tongue Drum 12 Zoll · 13 Noten
+gid://shopify/Product/15449004802433	ok	12-Zoll 13-Ton Stahlzungentrommel, Shell-Stil
+gid://shopify/Product/15449005490561	ok	12-Zoll 13-Ton Lotus Heart Steel Tongue Drum
