@@ -158,9 +158,13 @@ Mode, Schmuck, Beauty & Gadgets aus der Schweiz. Gratis-Versand ab CHF 50, 30 Ta
 (133 Zeichen, keine Deutschland-Zusage.) Speichern, Zeichenzahl melden.
 
 **7. CHAT EINSCHALTEN.** Installiert sind **zwei** Chat-Apps («Messaging»/Shopify Inbox und
-«Chatty»/avada-faqs). Auf luxestyle.ch ist **kein Chat-Knopf sichtbar**, im Theme steht **kein**
+«Chatty»/Avada). Auf luxestyle.ch ist **kein Chat-Knopf sichtbar**, im Theme steht **kein**
 Chat-App-Embed. Onlineshop → Themes → Anpassen → App-Embeds → Chat einschalten → Speichern.
-Danach melden, **welche** der beiden den Knopf liefert — die andere gehört weg.
+⚠️ **Nachtrag 16.09.: Avada zuerst prüfen, nicht blind einschalten.** Die Avada-Seite
+`/pages/avada-faqs` war öffentlich erreichbar und zeigte nur «Loading…» — die App hat dort
+nichts gerendert. Sie ist entweder deinstalliert oder defekt. Seite ist abgemeldet und per 301
+auf `/pages/faq` umgeleitet. Wenn Avada nichts mehr rendert, ist **Shopify Inbox** die richtige
+Wahl und Avada gehört deinstalliert. Danach melden, **welche** der beiden den Knopf liefert.
 
 **10. BING WEBMASTER TOOLS** (ChatGPT sucht über Bing): bing.com/webmasters → luxestyle.ch →
 Sitemaps → prüfen, ob `https://luxestyle.ch/sitemap.xml` eingereicht ist; sonst einreichen.
