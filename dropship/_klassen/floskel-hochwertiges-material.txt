@@ -1,13 +1,11 @@
 15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben
 15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Far
-15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Far
 15412825063809	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
 15412825194881	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
 15412828733825	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
 15412830634369	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
 15412830896513	Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
 15412902953345	2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
-15412911964545	2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose
 15412915110273	Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
 15412915339649	Strand-Maxikleid «Bali» – luftiges Stufenkleid
 15412915470721	Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
@@ -20,25 +18,18 @@
 15412969144705	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
 15412969406849	T-Shirt-Kleid «Casa» – locker mit Print
 15413023015297	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
-15413023113601	Herren-Strickshirt «Riviera» – Cord-Kurzarm
 15413024915841	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
 15413025014145	Strandkleid «Playa» – Halter mit Schnür-Detail
-15413025145217	Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker
 15413074985345	Sommer-Top «Sole» – V-Neck mit Knopfleiste
-15413076853121	Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock
 15413083242881	Boho Resort-Set · 2-teilig (Top & Hose)
 15413083832705	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
 15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2
 15413084160385	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
-15413649998209	Spitzen-Bluse mit Schleife · Damen, Patchwork-Design
-15413724676481	Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch
 15413724873089	Wide-Leg-Hose · Damen, fliessend & locker (Elegant 2026)
 15413725102465	Cropped Blazer · Damen, mit Pailletten-Detail
 15413726282113	Jumpsuit mit Blazer-Kragen · Damen, chic & uni
-15413738996097	Bandeau-Top uni · Damen, schulterfrei & elastisch
 15413739684225	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
 15416026235265	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
-15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen,
 15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farbe
 15416343986561	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
 15416491704705	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
@@ -47,17 +38,11 @@
 15421165601153	Herren-Set «Resort» · Kurzarm-Hemd + Hose
 15421165666689	Long-Blazer «Milano» · uni, ohne Knöpfe (Damen)
 15421165764993	Kapuzen-Cardigan «Cosy» · uni, mit Knöpfen (Damen)
-15421364896129	Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Panel
-15421364928897	Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-lagig
 15421414113665	Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
 15421442261377	Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
-15421501211009	Jeans-Shorts «Cristal» · Strass-Besatz, Mid-Rise Stretch
 15421513630081	Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
 15421516218753	Blazer «Roma» · Tailliert mit Bindegürtel & Revers
-15421517889921	Herren-Henley «Waffle» · Waffelstrick, Langarm
-15421530603905	Strick-Cardigan «Bohème» · Pointelle, Leicht & Offen
 15421594501505	Strandkleid «Maré» · Boho-Midi mit Volants & Quasten
-15421604299137	Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Leinen-Look
 15421606953345	Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
 15421615473025	Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
 15421617537409	Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & Volant
@@ -65,18 +50,11 @@
 15422040277377	Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
 15422401479041	Sommer-Playsuit «Marigold» · Blüten-Print, Träger
 15422403051905	Plateau-Pumps «Wild» · Leoparden-Print, Knöchelriemen
-15422786535809	Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt
 15422787453313	Mary-Jane-Ballerina «Dolce» · Lack, mit Riemchen
-15422788272513	Mule-Sandalette «Nodo» · Drapiert, Spitze Form
-15422795088257	Herren-Sneaker «Marco» · Leder-Optik, Retro-Trainer
 15422811439489	Unisex T-Shirt – Selbst gestalten
 15422815699329	Unisex Hoodie – Selbst gestalten
 15422857642369	Klassisches Unisex T-Shirt – Selbst gestalten
-15422912332161	Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Kragen
 15422933500289	Herren-Set «Costa» · Kapuzen-Shirt + Jogger
-15422934647169	Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz
-15422934909313	Leinen-Set «Lino» · Weste + Weite Hose
-15422937563521	Tennis-Kleid «Match» · Plissee, integrierte Shorts
 15422937792897	Stiletto-Sandalette «Gala» · Violett, Knöchelriemen
 15422939267457	Boardshorts mit Allover-Druck – Selbst gestalten
 15422943822209	Einteiliger Allover-Badeanzug – Selbst gestalten
@@ -86,7 +64,6 @@
 15422956798337	Unisex Allover-Bomberjacke – Selbst gestalten
 15422958338433	Kleid mit Schlitz und Allover-Druck – Selbst gestalten
 15422959518081	Recycelte Allover-Jogginghosen – Selbst gestalten
-15422970167681	Strick-Cape «Aria» · Solid, Poncho-Optik
 15427278963073	T-Shirt «Alphorn»
 15427279028609	T-Shirt «1 August»
 15427279094145	T-Shirt «Alpaufzug»
@@ -131,3 +108,11 @@
 15427281879425	T-Shirt «Matterhorn» · Modell 2
 15427281912193	T-Shirt «Swiss Chocolate»
 15427282010497	T-Shirt «Swiss Cowbell»
+15429997724033	King & Queen Partner-Shirts · Couple T-Shirts 👑
+15429997822337	Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍
+15429997855105	Her King & His Queen Partner-Shirts · Couple T-Shirts 👑
+15429997920641	Hubby & Wifey Partner-Shirts · Couple T-Shirts mit Herz ❤️
+15430344311169	Wide-Leg Midi-Rock «Studio» · fliessend, Freigrösse
+15430344409473	Polka-Dot Wickel-Rock «Dolce» · High-Waist, asymmetrisch
+15430344573313	Damen Komfort-Sandalen «Estate» · Elastik-Riemen
+15430344671617	Herren Sport-Sneaker «Velocità» · Mesh, Wide-Toe
