@@ -884,6 +884,49 @@ while true; do
       fi
     fi
   fi
+  # Google-Kanal-Luecke. Google ist der EINZIGE Kanal mit belegten Verkaeufen
+  # (4 von 10 Bestellungen); Pinterest/TikTok/Meta tragen den Katalog zwar auch,
+  # haben aber nie verkauft. Gemessen 16.09.: 2'497 aktive Produkte lagen ausserhalb
+  # des Kanals — 1'667 davon zu Recht (Kostueme = Merchant-Kontosperre-Risiko,
+  # Klingen, Tabak, Heilversprechen), aber 830 grundlos. Das ist Gratis-Reichweite,
+  # die brachliegt. Der Schliesser hat ZWEI unabhaengige Pruefungen (Tags UND Titel)
+  # und laesst im Zweifel draussen: ein bisschen weniger Reichweite kostet fast
+  # nichts, eine Merchant-Sperre kostet den einzigen Kanal, der verkauft.
+  GKL=/tmp/google_kanal_luecke.log
+  if [ -f "$REPO/automation/google_kanal_luecke.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GKL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_google_kanal.lock; flock -n 9 || exit 0; exec >> \"$GKL\" 2>&1; \
+           WRITE=1 exec python3 automation/google_kanal_luecke.py" 9>&- & )
+      # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.).
+      if [ -s "$GKL" ] && tail -n 25 "$GKL" | grep -q "Traceback\|Error:"; then
+        echo "$(date -u +%H:%M) ⚠️ Google-Kanal-Schliesser: letzter Lauf mit Fehler ($GKL)"
+      elif [ -s "$GKL" ]; then
+        echo "$(date -u +%H:%M) Google-Kanal: $(grep 'FERTIG:' "$GKL" | tail -n 1)"
+      else
+        echo "$(date -u +%H:%M) Google-Kanal-Schliesser gestartet (erster Lauf)"
+      fi
+    fi
+  fi
+  # Pinterest-Warteschlange NUR MELDEN, nie automatisch schreiben: die Zeilen zu
+  # loeschen ist unumkehrbar, und ein Produkt kann zurueckkommen. Gemessen 16.09.:
+  # 202 von 202 Pins versprachen «weltweiter Versand» (wir liefern nur CH) und 85
+  # verlinkten auf Ware, die es nicht mehr gibt. Eine fertige Warteschlange ist
+  # keine gepruefte Warteschlange — zwischen Befuellen und Senden raeumen wir selbst
+  # den Katalog um.
+  PPP=/tmp/pinterest_pins_pruefen.log
+  if [ -f "$REPO/automation/pinterest_pins_pruefen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$PPP" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 604800 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_pin_pruef.lock; flock -n 9 || exit 0; exec >> \"$PPP\" 2>&1; \
+           exec python3 automation/pinterest_pins_pruefen.py" 9>&- & )
+      if [ -s "$PPP" ] && tail -n 30 "$PPP" | grep -q "entfernt (Ware weg"; then
+        echo "$(date -u +%H:%M) Pinterest-Queue: $(grep 'entfernt (Ware weg' "$PPP" | tail -n 1 | sed 's/^ *//')"
+      fi
+    fi
+  fi
   # Messversprechen an Wearables (Blutdruck/EKG/Blutzucker). Der Waechter existierte seit dem
   # 21.08., stand aber in KEINER Startliste und ist nie gelaufen — waehrenddessen hat der Grind
   # 104 neue Produkte mit genau diesen Aussagen angelegt, drei davon mit BLUTZUCKER. Das ist die

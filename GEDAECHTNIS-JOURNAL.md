@@ -9,6 +9,75 @@
 
 
 
+## 2026-09-16 · 📣 «mach gratis werbung überall mit bot» — die Bot-Arbeit war getan, die Versprechen waren falsch
+
+**Die Grenze zuerst:** Bots, die in fremde Foren, Kommentarspalten, Gruppen oder
+Bewertungsportale posten, baue ich nicht. Das ist Spam, verstösst gegen die
+Nutzungsbedingungen jeder dieser Plattformen, und das Ergebnis wäre keine Reichweite,
+sondern eine Kontosperre — bei Google hängt daran der einzige Kanal mit belegten
+Verkäufen. Gemacht wurden die Kanäle, die für Händler gedacht sind.
+
+**Messung zuerst — und sie hat die erwartete Antwort umgeworfen.** Die Vermutung war
+«wir sind zu wenig verbreitet». Gemessen: **51'366 aktive Produkte liegen in
+Onlineshop, Shop, TikTok, Meta und Pinterest zu 99,8–100 %.** Die Verteilung war
+längst erledigt. Genau **eine** Lücke: **2'497 fehlten im Google-Kanal**.
+
+**Zwei Messfallen auf dem Weg dorthin, beide selbst gebaut:**
+
+1. `productsCount` **kappt bei 10'000** — meine erste Tabelle meldete für jeden Kanal
+   «10'000 = 100 %». Erst `limit: 100000` gibt die echte Zahl.
+2. Danach meldeten alle sechs Kanäle **exakt dieselbe** Zahl (51'366). Das roch falsch,
+   also die Gegenprobe mit einer **erfundenen Publication-ID** — die lieferte ebenfalls
+   51'366. **`publication_id:` wird in `productsCount` stillschweigend ignoriert.**
+   Richtig ist `publication_ids:` (Plural): echt 48'869, erfunden 0.
+   **Regel: Ein Filter, der nie 0 liefern kann, filtert nicht.** Eine erfundene ID ist
+   die billigste Gegenprobe, die es gibt, und sie hätte mir eine komplett erfundene
+   Tabelle erspart.
+
+**Der Google-Befund:** Von den 2'497 sind **1'667 zu Recht draussen** — 1'590 Kostüme
+(Merchant-Kontosperre-Risiko, bewusster Altentscheid), 28 Tabak/Shisha/Grinder,
+18 Klingen, 3 «Lichttherapie». **830 lagen grundlos draussen** und sind jetzt drin
+(`automation/google_kanal_luecke.py`, täglich im Aufseher).
+
+**Beim Bau der Risiko-Regel dieselbe Falle wie heute früh, in beide Richtungen:**
+- Mein erster Entwurf ohne Wortgrenzen blockte «Randlose Sonnenbrille **Unisex**»
+  (enthält *sex*) und «Aroma**therapie**-Diffuser fürs Auto».
+- Mein zweiter Entwurf mit `\b` vorne fand «Hexen**kostüm**» nicht — **deutsche
+  Zusammensetzungen tragen das Grundwort hinten.** Dieselbe Erkenntnis wie beim
+  Klingen-Wächter am selben Tag, und ich bin trotzdem hineingelaufen.
+- Richtig ist: Buchstaben VOR dem Grundwort erlauben, harte Grenze DAHINTER
+  (das rettet «**Beil**agenschale» und «Hanf**seil**»), und für *sex* eine Sperre
+  nach vorne. 21 Testfälle, alle grün. Klingen nicht neu geschrieben, sondern
+  `klingenregel.ist_klinge` importiert — eine zweite Kopie liefe auseinander.
+
+**Der eigentliche Fund lag aber bei Pinterest.** 202 fertige Pins lagen seit Wochen
+bereit, **0 je gepostet** — es fehlt nur ein OAuth-Token. Bevor ich nach dem Token
+frage, habe ich die Warteschlange gegen den Shop geprüft:
+
+- **202 von 202 versprachen «weltweiter Versand». Wir liefern nur in die Schweiz.**
+- **85 von 202 (42 %) verlinkten auf Ware, die es nicht mehr gibt oder Entwurf ist** —
+  gedraftet durch unsere eigenen Aufräumarbeiten (Klingen, BigBuy-Abschied, Kostüme).
+- Preise dagegen 10/10 korrekt, Rabattcode WELCOME10 lebt.
+
+> **Eine fertige Warteschlange ist keine geprüfte Warteschlange.** Zwischen dem
+> Befüllen und dem Senden verändert sich der Katalog — und zwar genau durch die
+> Aufräumarbeiten, die wir selbst machen. Hätte der Betreiber den Token geschickt und
+> ich hätte losgelegt, wären 202 falsche Versandzusagen und 85 tote Links rausgegangen.
+> Das Gefährliche daran: Der Poster hätte «202 Pins veröffentlicht» gemeldet und
+> vollkommen recht gehabt.
+
+**Und beim Reparieren fast selbst Schaden angerichtet:** Meine erste Ersetzung
+`[^.·|]*\bweltweit\w*[^.·|]*` frass die halbe Produktbeschreibung mit —
+«Herren-Slides «Porto» · **Cross-Strap, Wildleder-Optik 👔** Schweizer Online-Shop,
+weltweiter Versand.» wurde zu «Herren-Slides «Porto» · Schweizer Online-Shop…».
+Gefangen hat das **nur der Trockenlauf mit Vorher/Nachher-Zeile**; die Zahl
+«117 korrigiert» sah in beiden Fassungen gleich gut aus. **Eine Ersetzung prüft man
+am Text, nicht an der Anzahl.** Jetzt chirurgisch (nur die Zusage), und alles andere,
+was nach Ausland klingt, wird gemeldet statt blind ersetzt. 117 gültige Pins bleiben.
+
+`automation/pinterest_pins_pruefen.py` läuft wöchentlich im Aufseher — **nur meldend**,
+nie schreibend: Zeilen löschen ist unumkehrbar und ein Produkt kann zurückkommen.
+
 ## 2026-09-16 · 🎫 «cj co work erledigen»: eine Vorschau, die «ok» sagt, ist keine Erlaubnis zu handeln
 
 Auftrag: Punkt 0 der Cowork-Liste — die CJ-Rückerstattung von **USD 25.54** für das
