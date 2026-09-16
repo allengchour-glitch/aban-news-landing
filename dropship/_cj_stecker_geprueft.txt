@@ -520,3 +520,28 @@
 15496384807297	kein-stecker-merkmal	2026-09-16	Kabelloses 6-in-1 Multifunktions-Ladegerät
 15496399225217	unklar-eu-vorhanden:EU/US	2026-09-16	2-in-1 Glätteisen & Lockenstab · 27 cm
 15496399880577	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Ultradünnes Haarglätteisen mit Nano-Keramik
+15496405451137	kein-stecker-merkmal	2026-09-16	Automatischer Lockenstab mit Keramik-Rollaufsatz
+15496405975425	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Automatischer Lockenstab mit LCD-Temperaturanzeige
+15496409383297	kein-stecker-merkmal	2026-09-16	Magnetisches kabelloses Ladegerät mit Halterung
+15496409842049	kein-stecker-merkmal	2026-09-16	Universal Notebook Netzteil 90W mit 20 DC-Anschlüssen
+15496409973121	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	30W Multi-Funktions Netzteil mit USB
+15496410333569	unklar-eu-vorhanden:EU/US	2026-09-16	Intelligentes 4-Schacht-Ladegerät für AAA/AA-Akkus
+15496510439809	unklar-eu-vorhanden:EU/US	2026-09-16	Multifunktionale Nagelpoliermaschine mit Staubsauger
+15496512962945	kein-stecker-merkmal	2026-09-16	Vertikales Leder Wireless Ladegerät
+15496514142593	kein-stecker-merkmal	2026-09-16	Kabelloses Qi-Ladegerät Engel Flügel
+15496514699649	nur-eu-version	2026-09-16	Ladegerät für Scooter und Balance Boards
+15496516141441	kein-stecker-merkmal	2026-09-16	Kabelloses Ladegerät aus Aluminium
+15496516239745	kein-stecker-merkmal	2026-09-16	Schnellladegerät 15W
+15496519483777	kein-stecker-merkmal	2026-09-16	Kabelloses Controller-Ladegerät
+15496530723201	kein-stecker-merkmal	2026-09-16	TYME 3-in-1 Spray-Glätteisen & Lockenstab
+15496531149185	kein-stecker-merkmal	2026-09-16	Kabelloser Handstaubsauger mit Blasfunktion
+15496531181953	kein-stecker-merkmal	2026-09-16	Induktions-Ladegerät mit Tassenwärmer
+15496533770625	nur-eu-version	2026-09-16	Keramik-Lockenstab für kurze Haare
+15496534294913	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	3-Rohr Lockenstab für grosse Wellen
+15496534983041	kein-stecker-merkmal	2026-09-16	Wandhalterung für Lockenstab & Föhn
+15496535703937	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Glätteisen für glattes oder lockiges Haar
+15496537145729	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-16	Fluffy Hair Straightener Styling Glätteisen
+15496538521985	kein-stecker-merkmal	2026-09-16	3-in-1 Warmluftbürste für vielfältige Styles
+15496539177345	kein-stecker-merkmal	2026-09-16	USB Glättbürste für Nass- und Trockenhaar
+15496540356993	kein-stecker-merkmal	2026-09-16	Golden Rice Glättungs- und Lockenstab
+15496541274497	kein-stecker-merkmal	2026-09-16	Kabelloser Keramik Mini-Lockenstab
