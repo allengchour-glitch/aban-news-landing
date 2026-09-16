@@ -137,6 +137,22 @@ def ki_textstufe():
         return None
 
 
+def cj_dispute_1017():
+    """CJ-Rueckerstattung fuer die zurueckgesandte Messer-Bestellung (16.09.2026).
+
+    Gleiches Muster wie bigbuy_ticket(): die Erinnerung haengt an der Quittung, die
+    der naechste Schritt ohnehin erzeugt, und verschwindet, sobald eine Fallnummer
+    darin steht. Ein Auftragsdokument liest nur, wer danach fragt — eine Zeile in
+    der stuendlichen Ampel sieht man.
+    """
+    quittung = os.path.join(REPO, "dropship", "_cj_dispute_1017_ref.txt")
+    if os.path.exists(quittung) and open(quittung, encoding="utf-8").read().strip():
+        return None
+    return ("🔪 CJ-Rueckerstattung USD 25.54 offen (Auftrag DP2609071450210661800, Messer "
+            "zurueckgesandt) — Dispute in der CJ-Konsole oeffnen, Fallnummer nach "
+            "dropship/_cj_dispute_1017_ref.txt · Text: COWORK-BEFEHL.md Punkt 0")
+
+
 def bigbuy_ticket():
     """EUR 1'000.00 liegen seit dem 15.07. bei BigBuy. Das Geld ist real und faellig.
 
@@ -176,7 +192,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bigbuy_ticket(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
+    teile = [t for t in (bigbuy_ticket(), cj_dispute_1017(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

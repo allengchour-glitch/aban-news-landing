@@ -5,6 +5,95 @@
 > in `CLAUDE.md` unter «📚 Jüngste Lehren» eine EINZEILE mit Datum. Suche: `python3 tools/gedaechtnis.py "stichwort"`.
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
+
+## 2026-09-16 · 🔪 «kannst du messer zurück erstatten und alles» — die Rücksendung und was sie aufdeckte
+
+CJs Agentin meldete, Auftrag **DP2609071450210661800** (SKU `CJYD272994802BY`, Fuda
+Damast-Taschenmesser) sei zurückgekommen: **verbotener Artikel, keine Linie in die Schweiz.**
+Gegengeprüft, bevor ich erstattet habe: Tracking `EQKPT8612701376YQ` steht auf
+**«Unsuccessful Delivery»**, letzte Station **15.09. 14:15 SHANGHAI «Returned to Original
+depot»**. Die Meldung stimmt.
+
+**Erster Befund — ein Irrtum im eigenen Gedächtnis.** Im Stand vom 15.09. steht «#1017/#1018
+fahren (7 Stationen seit 12.09., **Schweizer Post**)». Die sieben Stationen lagen **alle in
+China** (Shanghai, Equick-Zentrum). «Swiss Post» stand im Feld `lastMileCarrier` — das ist die
+**geplante** Zustellerin, keine Station. Das Paket hat China nie verlassen, und aus einem
+Planungsfeld wurde ein Tag lang eine Tatsache. **Ein Feld, das eine Absicht beschreibt, ist
+kein Ereignis.** Wer Fortschritt behaupten will, liest die Stationsliste, nicht die
+Begleitfelder.
+
+**Zweiter Befund — der teure.** Der Kunde hatte dieselbe Ware schon am 03.09. bestellt (#1016)
+und aus demselben Grund erstattet bekommen. Am 07.09. entstand #1017 als Ersatz — für ein
+Produkt, von dem wir seit vier Tagen wussten, dass der Lieferant es nicht liefern kann. Es war
+am 16.09. **immer noch aktiv und kaufbar**.
+
+Und es war kein Einzelfall: `cj_versand_ch_sichtbar.py` hatte am 03./04.09. für **535 Handles**
+das Urteil «KEINE CH-Option → DRAFT» ins Ledger geschrieben. Gemessen am 16.09.: **95 davon
+standen weiterhin im Verkauf.** Der Messlauf ohne `FIX=1` schreibt nur die Quittung; den
+zweiten Schritt hat nie jemand getan, und **nichts hat das gemeldet**.
+**Ein Urteil, das niemand vollstreckt, ist keine Sicherung — es ist eine Notiz.**
+Wer eine Prüfung baut, baut die Vollstreckung mit, oder mindestens den Wächter, der den
+ZUSTAND gegen das Urteil hält.
+
+**Dritter Befund — mein eigener Wächter meldete «0», während der Köder aktiv war.**
+Die erste Fassung von `klinge_ch_wache.py` suchte `title:messer*` und fand 0 Handklingen —
+während genau das Fuda-**Taschen**messer aktiv im Shop stand. Shopify sucht auf
+**Wortanfängen**: `messer*` findet «Messerset», niemals «Taschenmesser», «Kochmesser»,
+«Knochenhackmesser». Ein führendes Sternchen hilft nicht — `title:*messer*` liefert gemessen
+**exakt dasselbe** wie ohne. Deutsche Zusammensetzungen tragen das Grundwort hinten, also ist
+eine Token-Suche für diese Frage **grundsätzlich blind**, nicht nur ungenau. Über den
+Voll-Export fand dieselbe Regel **99**. Dieselbe Lehre wie 16c (10.07.) — und ich bin ihr
+trotzdem wieder in die Falle gegangen, weil die Suche beim ersten Versuch plausibel aussah.
+**Die Gegenprobe mit dem Köder hat es gefangen: ein Wächter, der «0» meldet, muss zeigen, dass
+er auch «1» kann.**
+
+**Vierter Befund — die Compound-Falle, zum wiederholten Mal.** Die Zubehör-Ausnahme der ersten
+Regelfassung war ein Teilstring-Test und liess zwei echte Klingen durch: «tasche» steckt in
+«**Taschen**messer» (dem zurückgesandten Artikel!), «schleif» in «leicht zu **schleif**en» —
+einer Eigenschaft des Messers, nicht einem Zubehörteil. Gleiche Klasse wie «schleif» traf
+«Schleife» und «rock» traf «GT Line ROCK». Zubehörwörter tragen jetzt eine Wortgrenze und
+stehen in voller Form (`schärfer`/`schleifer` statt `schärf`/`schleif`); «tasche» ist ganz
+raus: eine Messertasche falsch zu sperren kostet einen Artikel, ein durchgelassenes
+Taschenmesser kostet eine Bestellung.
+
+**Fünfter Befund — die Herkunft gehört nicht in die Regel.** Der erste saubere Lauf meldete
+vier Treffer, **alle vier falsch**: drei Halloween-Requisiten und ein Deko-Katana ab
+**Schweizer** Lager (`fortura-…`), dazu ein LED-Spielzeugschwert. Für die fährt kein Paket
+durch Shanghai. Die Klingenregel beantwortet «ist es eine Klinge?»; die Frage «kommt es aus
+China?» gehört in den **Aufrufer**. Sonst räumt eine Versandregel Ware aus einem Lager, das
+problemlos liefern kann.
+
+**Und eine Warnung an die Frachtabfrage selbst:** für #1017 hat CJ eine Versandoption
+angeboten, das Paket **angenommen, verschickt** — und es dann als verbotenen Artikel
+zurückgeholt. `freightCalculate` = «ok» widerlegt eine **Kategorie** also nicht. Darum sperrt
+die Hausregel unabhängig vom Frachturteil.
+
+**Getan:**
+- #1017 voll erstattet (CHF 40.90 zurück auf die Karte, Abrechnung PENDING), Notiz am Objekt.
+  Der Kunde hatte am 11.09. eine Erstattung auf eine **gemailte IBAN** vorgeschlagen — die
+  Hausregel gilt: zurück auf den Zahlweg, nie auf ein per Mail genanntes Konto.
+- **207 Klingen aus dem Verkauf** (95 mit vorhandenem Lieferanten-Urteil, 112 über die neue
+  Regel), alle als DRAFT mit Tag `klinge-verboten-ch-0916`, nichts gelöscht.
+- `klingenregel` hat eine **zweite Frage**: `ist_handklinge`/`istHandklinge` beantwortet den
+  VERSAND, `ist_klinge` weiter die WERBUNG. Die beiden unterscheiden sich in beide Richtungen —
+  weiter bei «Edelstahl-Messerset» (Fugen-s), enger bei «Messerblock». Eigener Selbsttest,
+  33 Fälle, beide Fassungen (py + mjs) gegengeprüft.
+- Die drei CJ-Importer legen Handklingen **gar nicht mehr an** (bzw. nur noch als DRAFT ohne
+  Publikation). Vorher stand dort nur die Werbe-Regel — und eine Umtaggung, die Küchenmesser
+  **ausdrücklich ausnahm**. Genau die 95.
+- Neuer täglicher Wächter `automation/klinge_ch_wache.py` im Aufseher, mit zwei unabhängigen
+  Quellen (Lieferanten-Ledger + Hausregel über den Voll-Export).
+- CJ-Rückerstattung USD 25.54: `disputes/create` antwortet **Code 9009 «Order cannot be
+  disputed»** in allen vier geprüften Feld-Kombinationen — das ist die Bestellung, nicht mein
+  Aufruf. Als Konsolen-Klick abgelegt (COWORK-BEFEHL Punkt 0) und an die stündliche Ampel
+  gehängt, selbstlöschend über `dropship/_cj_dispute_1017_ref.txt`.
+
+**Nebenbei, sechste Lehre — an mir selbst:** Mein Patch-Skript für `betreiber_ampel.py` brach
+an einer Assertion ab, **bevor** es schrieb; meine Syntaxprüfung lief danach auf der
+**unveränderten** Datei und meldete «ok». Sichtbar wurde es erst im Laufzeittest
+(`NameError`). **Eine Prüfung, die nicht auf dem Ergebnis des Schreibvorgangs läuft, prüft den
+Ausgangszustand.** Nach dem Schreiben zurücklesen — auch beim eigenen Werkzeug.
+
 ## 2026-09-16 · 🎫 «egal wie hauptsache erledigt» — diesmal war es wirklich der Browser (16.09., 06:55-07:15 UTC)
 
 Betreiber: «mach das mit cowork oder so… egal wie hauptsache erledigt.» Gemeint war das

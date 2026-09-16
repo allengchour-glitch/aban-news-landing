@@ -8,8 +8,19 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 > `GEDAECHTNIS-JOURNAL.md`** — dort NEUE Lehren eintragen (oben), hier nur die Einzeile im Index unten.
 > Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`. Parallel-Sessions: `SHARED-MEMORY.md`.
 
-## 📌 Aktueller Stand (15.09.2026, 07:45 UTC) — was JETZT gilt
-- **⛔ B2B bleibt AUS (Betreiber 15.09.: «b2b sein lassen wen kosten»).** Gemessen: 0 Firmen, 0 B2B-Kataloge, Plan Basic. Kein Upgrade, keine Firmenkonten. Ersatz = Seite «Firmen & Vereine» mit Anfrageformular.
+## 📌 Aktueller Stand (16.09.2026, 07:30 UTC) — was JETZT gilt
+- **🔪 KEINE KLINGEN MEHR IM VERKAUF (16.09.).** CJ schickte #1017 aus Shanghai zurück:
+  verbotener Artikel, keine Linie CN→CH — auch nicht für Küchenmesser. **207 Klingen gedraftet**,
+  davon 95 mit einem Lieferanten-Urteil vom 04.09., das nie vollstreckt wurde. Kunde voll
+  erstattet (CHF 40.90 auf den Zahlweg). Die Regel hat jetzt zwei Fragen: `ist_klinge` = Werbung,
+  **`ist_handklinge` = Versand**; Importer sperren VOR dem Anlegen; täglicher Wächter
+  `automation/klinge_ch_wache.py` (Voll-Export, KEINE Titel-Suche). **`freightCalculate` = «ok»
+  widerlegt eine Kategorie NICHT** — für #1017 gab es eine Versandoption, das Paket ging raus
+  und kam zurück. Offen: CJ-Dispute USD 25.54, nur per Konsole (COWORK Punkt 0).
+- **⛔ B2B bleibt AUS** (Betreiber 15.09.: «b2b sein lassen wen kosten»). Gemessen: 0 Firmen,
+  0 B2B-Kataloge, Plan Basic. Ersatz = Seite «Firmen & Vereine» mit Anfrageformular.
+
+## 📌 Stand vom 15.09.2026
 - **BigBuy ist zu Ende.** Abo «Pack Ecommerce» lief am 15.09. aus (gekündigt 16.08.). `bigbuy_abschied.py`
   hat 274 Produkte gedraftet; **0 aktive mit BigBuy-Merkmal**. Seine Abfrage traf nur `tag:bigbuy` — 136
   Produkte mit `bb-…`-SKU wären bestellbar geblieben; Auswahl ist jetzt Tag ODER SKU. Die PC-Routine
@@ -30,61 +41,28 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   angelegt) — **nur der Betreiber kann sie abschalten.** Bis dahin: jeden Kundenentwurf VOR dem Senden gegen den frischen Thread lesen.
 - **💶 BigBuy-Guthaben EUR 1'000.00 gemessen (seit 15.07. unverändert = nie ausgezahlt).** Kein Auszahlungs-Endpunkt in der
   API. Klickweg + Mailentwurf: `dropship/BIGBUY-1000-EURO-HEUTE.md`. Abo endet heute, BigBuy zahlt nur dienstags.
-- **#1017/#1018 fahren** (7 Stationen seit 12.09., Schweizer Post) — die Rückerstattungs-Zusage vom 09.09.
-  ist damit gegenstandslos; der Betreiber hat Mails und Rückerstattungen am 11.09. ohnehin untersagt.
+- **~~#1017/#1018 fahren~~ — FALSCH, korrigiert 16.09.:** alle sieben Stationen lagen in China;
+  «Schweizer Post» war das Feld `lastMileCarrier` (Plan, keine Station). #1017 kam zurück und ist
+  erstattet. #1018 (E-Scooter-Ladegerät, anderer Kunde) ist davon nicht betroffen.
 - **Antwort auf «Was könnte man noch machen?»:** `dropship/WEBSITE-IDEEN-2026-09-15.md` (39 geprüfte
   Massnahmen, 8 verworfene, Vollständigkeits-Kritik mit 8 Lücken).
 
-## 📌 Vorheriger Stand (14.09.2026, 08:40 UTC)
-- **Branch dieser Arbeit: `claude/luxestyle-status-tztnn1`**, offener Draft-PR #1608 nach `main`. Jeder Turn endet
-  mit commit+push; der Auto-Committer bündelt Ledger-Drift in `dropship/` alle 90 s.
-- **Container startet ~stündlich neu** → zuerst `uptime`; unter 10 Minuten: `bash automation/engine_keepalive.sh`
-  (Aufseher `fixer_keepalive.sh`, Runner, Auto-Committer). Die Stunden-Routine `trig_01Uy3zVefXbzCZn9Dr2qvkwh`
-  ist die oberste Schicht — sie feuert nur in eine RUHENDE Session (Turn beenden!).
-- **✅ Groq-Schlüssel seit 14.09. 16:30 wieder gültig** (56 Zeichen, im Chat gegeben, am Endpunkt getestet, in `/tmp/dienste.env`
-  + Tresor `dienste`). Umgebungsvariablen erreichen laufende Sessions NICHT (3× gemessen) → Schlüssel immer im Chat.
-  ⚠️ urllib gegen Groq braucht einen User-Agent, sonst 403 (Ampel-Fehlalarm 14.09.).
-- **⚠️ Keepalive `trig_01Uy3zVefXbzCZn9Dr2qvkwh` wurde am 14.09. DREIMAL von der PC-Session abgeschaltet** (05:37, 18:49 via Produktzahl-
-  Wächter, 20:28 von Hand «CJ lief weiter» — gemessen falsch: letztes Produkt 15:57Z = Pausenbeginn). Heisst jetzt «Aufseher-Keepalive —
-  startet KEINE CJ-Runner»; **zu Beginn jeder Session `list_triggers` prüfen und ggf. wieder einschalten.** Die 2-h-Routine
-  `trig_01DBsWkRtnrmimnU4sbXGTBQ` fehlt im Listing (gelöscht?).
-- **⚠️ Zweite Session (PC-Claude, `LuxeStyleTT/CLAUDE.md`) schaltet Routinen um:** sie hatte `trig_01Uy3zVefXbzCZn9Dr2qvkwh`
-  (meine Keepalive) AUS und die Entwurfs-Routine `trig_013xE8LpGFW2QGuziRJywbHV` (bis 1'500 DRAFT/h) AN — 14.09. 16:10 beides
-  zurückgedreht. Ihr Rat «Custom-App deinstallieren» würde `autopilot2` = diesen Betrieb töten — NIE. Routinen-Stand
-  vor jeder Diagnose prüfen (`list_triggers`).
-- **Versandschwelle live FALSCH (gemessen 14.09.):** Domestic «gratis ab CHF 45» aktiv, «ab 50» inaktiv, «ab 65» an Standard;
-  Shop verspricht 50. API-Änderung vom Classifier blockiert → Betreiber-/Cowork-Klick (`dropship/COWORK-BEFEHL-2026-09-14.md`).
-- **Bestellungen:** #1017/#1018 seit 12.09. En Route (CJ EQKPT…). Betreiber-Entscheid 11.09.: **keine Mails mehr an
-  Kunden, keine Rückerstattung** — Routine `trig_01Bw9814DapArUNYB5CXsdfs` ist AUS. #1004 (eigene Juni-Bestellung,
-  storniert) meldet die Ampel, bis der Betreiber archiviert. #D2 (Ersatz #1016) unbezahlt. CJ-Guthaben immer $0
-  (Aufladung erst ab $2000) → jede Bestellung braucht den Betreiber-Klick in der CJ-Konsole; `bestell_ampel.py`
-  + `versand_stillstand.py` in jeder Keepalive-Ausgabe.
-- **Dateispeicher (Basic, 100 GB) seit 01.09. voll** — jeder Upload in die Dateien-Bibliothek scheitert
-  (`FILE_STORAGE_LIMIT_EXCEEDED`); Produktmedien laden weiter aus der Quell-URL. Betreiber: «kostenlos, kein Grow».
-- **Katalog: ~52'000 aktive — GRIND PAUSIERT (Betreiber 14.09. 16:00: «Grow-Upgrade 300 GB in ≤6 Monaten, jetzt auf
-  Verkauf optimieren»; Dateispeicher 105 GB von 100).** `_GRIND_RUNNER_ZAHL`=0, `_GRIND_PAUSE_BIS`=+180 T. Produktbilder per
-  URL gingen trotz Überlauf noch (gemessen 15:54). **Kurs bis auf Widerruf: Conversion, nicht Menge.**
-- **Trichter:** ~1'300 Sitzungen/30 T (77 % mobil), 12 Warenkörbe, 1 Abschluss — Engpass ist Verkehr, nicht Technik.
-  Google-Gratis-Einträge sind der einzige Kanal mit Verkäufen. Social-Stopp (`dropship/_SOCIAL_STOPP`) seit 30.08.
-- **Nur-Betreiber-Klicks** (Details `dropship/COWORK-AUFTRAEGE.md`): Groq-Schlüssel · BigBuy-Auszahlung (IBAN,
-  2 Anträge) · CJ-Konsole bezahlen · Merchant Ziel-Land nur CH · `SHOPIFY_CLIENT_ID/_SECRET` als Umgebungs-Variablen
-  (nach jedem Neustart leer, Betrieb hängt an `/tmp/secrets_env.sh`) · TikTok-Unternehmensverifizierung.
-- **Zweites Gehirn:** `brain/vault/` (Obsidian, 63 Notizen), `tools/vault.py bauen`, `tools/gedaechtnis.py`.
-- **YouTube-Runde 14.09.** (`dropship/LERNEN-YOUTUBE-2026-09-14.md`): Merchant-Website-Anforderungen erfüllt bis auf
-  **UID im Impressum** (Betreiber, Nummer nicht im Repo); Produktseite hat Reviews/Accordion/Ankündigung, keine Produkt-FAQ/UGC;
-  Conversion 0,08 % vs 1,4 % QUELLE. Vor Theme-Reparaturen IMMER die Live-Datei holen — `theme_backup/` ist Vergangenheit.
-- **Katalog aus Verkehrssicht 14.09.** (`dropship/KATALOG-VERKEHR-2026-09-14.md`, `tools/verkehrsseiten_messen.py`): 957/1'357
-  Sitzungen landen auf PRODUKTSEITEN — Landeseiten zuerst messen. **⚠️ PC-Routine «Produktzahl-Wächter» (`trig_019RPGRJ…`, alle
-  3 h) schaltete den Keepalive ab; Prompt am 14.09. 20:04 auf Nur-Lesen geändert.** **✅ BigBuy-Ende ist erledigt (15.09.): Abo «Pack Ecommerce» lief heute aus (gekündigt 16.08., belegt im Kopf von `automation/bigbuy_abschied.py`); der Aufseher draftet die 260 aktiven BigBuy-Produkte (Tag `bigbuy-abschied`). Die PC-Routine `trig_01Fks8G3…` am 16.09. ist ein Doppel.**
-  Läufe > 1 h müssen hinter der letzten Quittung weitermachen (`versand_jenachland` rotiert jetzt).
-- **SEO/Optik 14.09.** (`dropship/LERNEN-SEO-OPTIK-2026-09-14.md`): Startseite Reihenfolge Hero → USP → Trend → Kollektionen →
-  Bestseller → **Kundenstimmen** (`lux_kundenstimmen`, Judge.me-Metafeld, 4.88/4'349) → … ; JSON-LD im Head (`luxJsonLd`, nur index);
-  Cart-Drawer ohne h2. Offen (nur Admin): Startseiten-Meta-Description 196 → ≤150 (Cowork Punkt 5).
-- **Shop-Vergleich 14.09.** (`dropship/VERGLEICH-SHOPS-2026-09-14.md`, `tools/shop_vergleich.mjs`): Startseite **6,92 → 3,1 MB**.
-  Betreiber 14.09.: «8 Produkte, ganze Webseite mit anderen Katalogen füllen» → `automation/homepage_katalog_rotation.py`
-  (täglich im Aufseher): 18 Reihen à 8 im Karussell (grid+carousel_on_mobile rendert doppelt!), 10 feste Reihen, 8 Wechsel-
-  Reihen drehen durch 25 Kataloge (Saison zuerst). Warenkorb-Icon als `<symbol>`. Erster Abruf nach `themeFilesUpsert` = HTTP 500.
-  Template-Bodies an curl nur über stdin (140 KB → «Argument list too long»).
+## 📌 Stand vom 14.09.2026 (gekürzt — Volltext im Journal)
+- **Branch `claude/luxestyle-status-tztnn1`**, offener Draft-PR #1608 nach `main`.
+- **Container startet ~stündlich neu** → zuerst `uptime`; unter 10 Min: `bash automation/engine_keepalive.sh`.
+  Stunden-Routine `trig_01Uy3zVefXbzCZn9Dr2qvkwh` ist die oberste Schicht (feuert nur in eine RUHENDE Session).
+  ⚠️ Die PC-Session hat sie schon dreimal abgeschaltet — zu Sessionbeginn `list_triggers` prüfen.
+- **Umgebungsvariablen erreichen laufende Sessions NICHT** (3× gemessen) → Schlüssel immer im Chat.
+  urllib gegen Groq braucht einen User-Agent, sonst 403.
+- **Grind PAUSIERT** (Betreiber 14.09.: «jetzt auf Verkauf optimieren»); Dateispeicher 105 von 100 GB.
+  **Kurs bis auf Widerruf: Conversion, nicht Menge.**
+- **Trichter:** ~1'300 Sitzungen/30 T (77 % mobil), 12 Warenkorb-Zulagen, 1 Abschluss — Engpass ist Verkehr.
+  Google-Gratis-Einträge sind der einzige Kanal mit Verkäufen.
+- **CJ-Guthaben immer $0** → jede Bestellung braucht den Betreiber-Klick in der CJ-Konsole.
+- **Nur-Betreiber-Klicks:** `dropship/COWORK-BEFEHL.md` (Punkt 0 CJ-Dispute, Punkt 1 BigBuy EUR 1'000).
+- **Vor Theme-Reparaturen IMMER die Live-Datei holen** — `theme_backup/` ist Vergangenheit.
+- **Startseite:** 18 Reihen à 8 im Karussell, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge
+  (`automation/homepage_katalog_rotation.py`). ⚠️ grid+carousel_on_mobile rendert DOPPELT.
 
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
@@ -640,36 +618,39 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-16 · 🔪 «messer zurück erstatten und alles»: CJ schickte #1017 aus Shanghai zurück (verbotener Artikel, keine Linie CN→CH). **Und mein Stand von gestern war falsch:** «7 Stationen, Schweizer Post» — alle sieben lagen in CHINA, «Swiss Post» stand nur im Feld `lastMileCarrier` = die GEPLANTE Zustellerin. **Ein Feld, das eine Absicht beschreibt, ist kein Ereignis.** Erstattet CHF 40.90 auf den Zahlweg (nicht auf die vom Kunden gemailte IBAN — Hausregel). **Der teure Befund:** `cj_versand_ch_sichtbar.py` hatte am 04.09. für 535 Handles «KEINE CH-Option → DRAFT» protokolliert — **95 davon standen am 16.09. immer noch im Verkauf**, das verkaufte Messer selbst auch. **Ein Urteil, das niemand vollstreckt, ist keine Sicherung.** 207 Klingen gedraftet, Importer sperren vor dem Anlegen, täglicher Wächter `klinge_ch_wache.py`. CJ-Dispute geht nur per Konsole (Code 9009) → COWORK Punkt 0, selbstlöschend in der Ampel
+- 2026-09-16 · 🔍 Mein eigener Klingen-Wächter meldete **«0 Handklingen im Verkauf», während der Köder aktiv war**: Shopify sucht auf WORT-ANFÄNGEN, `title:messer*` findet «Messerset», aber NIE «Taschenmesser»/«Kochmesser» — und `title:*messer*` liefert gemessen **exakt dasselbe** (führendes Sternchen wird ignoriert). Deutsche Zusammensetzungen tragen das Grundwort hinten, also ist eine Token-Suche hier **grundsätzlich blind**, nicht bloss ungenau. Über den Voll-Export fand dieselbe Regel 99. **Ein Wächter, der «0» meldet, muss zeigen, dass er auch «1» kann** — die Gegenprobe mit einem echten Köder hat es gefangen. Dazu die Compound-Falle zum x-ten Mal: «tasche» steckt in «Taschenmesser», «schleif» in «leicht zu schleifen»; und die Herkunftsfrage (fortura = CH-Lager) gehört in den Aufrufer, nicht in die Regel
+
 - 2026-09-16 · 🎫 «egal wie hauptsache erledigt»: vor dem Delegieren selbst geprüft — `bigbuy.eu/en/contact` gibt **HTTP 403 von BEIDEN Ausgängen** (eigene IP + WebFetch), es braucht wirklich einen Browser. `COWORK-BEFEHL.md` neu gefasst, BigBuy als Punkt 1 mit fertigem Formulartext (IBAN bewusst NICHT darin — Repo ist öffentlich). **Aber ein Auftragsdokument liest nur, wer danach fragt** → der Punkt hängt jetzt in der stündlichen `betreiber_ampel`-Zeile und **verschwindet von selbst**, sobald eine Ticket-Referenz in `dropship/_bigbuy_ticket_ref.txt` steht (adversarisch geprüft). **Wenn ein Zustand nicht messbar ist (Guthaben seit 401 nicht mehr), hänge die Erinnerung an den Beleg, den der nächste Schritt ohnehin erzeugt** — so erzwingt sie das Fehlende, statt zu mahnen
 - 2026-09-16 · 🏦 «schau das bigbuy auszahlt»: **fünf Mails, zwei wortgleiche Auto-Antworten** (08.09. + 15.09.) — der von BigBuy selbst genannte Kanal (**Ticket, Abteilung Administration**, bigbuy.eu/en/contact) ist **nie benutzt worden**; auf die Mail vom 15.09. 08:31 kam gar nichts, zum Abo-Ende auch nicht. **Zwei identische Bausteine sind keine ausstehende Antwort, sondern die Antwort «falscher Kanal».** Fertiger Ticket-Text in `dropship/BIGBUY-1000-EURO.md` §3 (neu: was passiert mit dem Guthaben eines BEENDETEN Kontos?). **API jetzt HTTP 401** — Ursache nicht isoliert (Abo-Ende ODER `/tmp/bigbuy_key.txt` beim Neustart weg) → Guthaben von hier nicht mehr messbar, letzte belegte Zahl `1000.00` vom 15.09. **⚠️ Nebenbefund: das Repo ist ÖFFENTLICH und die IBAN des Betreibers stand an 3 Stellen darin** — geschwärzt, aber **in der Git-Historie weiter abrufbar** (Betreiber-Entscheid). Lehre: **eine Regel, die für ein Beispiel formuliert ist («keine Lieferantendaten»), schützt nur dieses Beispiel**
-- 2026-09-15 · 🧠 «pimp obsidian»: Link-Hygiene war schon top (0 kaputt, 0 Waisen) — der Fund lag woanders. **`index_bauen()` hatte eine fest verdrahtete Ordnerliste ohne `Lehren/` und `Betreiber-Entscheid/` → drei Notizen fielen still aus dem Index** (79 von 82). Behoben: unbekannte Ordner kommen alphabetisch dazu, plus **Vollständigkeits-Wache** (zählt nach dem Schreiben nach); adversarisch mit einem Testordner belegt. **Ein erzeugter Index, der verschweigt was er nicht kennt, ist gefährlicher als gar keiner — wer eine Übersicht erzeugt, baut die Gegenzählung gleich mit ein.** Dazu: Vault war einen Tag alt → 6 Lehren von heute nachgetragen (77 → 83 Notizen, 246 Links, 0 kaputt); `.obsidian`-Konfig angelegt (Graph mit 8 Farbgruppen nach Ordner, Kern-Plugins, Kürzel). Neues Messgerät `tools/vault_qualitaet.py`. Abdeckung bleibt bewusst bei 20 % (410 Journal-Abschnitte)
-- 2026-09-15 · 🔍 «was kann man noch machen für webseite»: die drei Punkte abgearbeitet, die in der Vollständigkeits-Kritik stehen. **404-Seite hatte kein Suchfeld** (dort landen 1'232 Sitzungen = 38 % des Produktverkehrs) → `custom-liquid`-Block eingebaut, im gerenderten HTML belegt. **Warenkorb-Abbrecher: die Missions-Zahl meint etwas anderes** — gemessen 5 Kassengänge/CHF 203.62 (jüngster 22.08.), die «12 Warenkörbe» sind Warenkorb-ZULAGEN, nicht Kassengänge. **robots.txt: Fehlgriff, zurückgenommen** — `Disallow: /search` stand längst in Shopifys Standard (Zeile 36), und meine Nachbau-Vorlage verlor alle ~20 `Allow:`-Regeln plus den Kopfkommentar (`robots.default_groups.rules` gibt nur Disallow her). **Ausgelöst hat es ein `grep -ci` gegen eine LEERE curl-Antwort: ein Zählergebnis von 0 ohne Blick auf die Eingabe ist keine Messung.** Bei 0 immer erst `wc -c` auf die Eingabe
-- 2026-09-15 · 💰 «lerne von anderen wie man profit macht»: GEMESSEN **29,0 % Nettomarge, CHF 9.20 je Bestellung, AOV 33.00, 0 Verluste** (6 von 9 mit belegtem EK) → für CHF 1'000 Gewinn braucht es **109 Bestellungen**. Der QUELLE-Rat «Gratisversand-Schwelle auf 15–30 % über AOV senken» kehrt sich an den eigenen Zahlen um: **ohne den Versanderlös von CHF 7 wären 3 von 5 Bestellungen Verluste** — Fracht ist bei uns Stückkost aus China, die Schwelle ist eine Schutzmauer, kein Hindernis (Cowork 1 damit endgültig zu: unverändert lassen). Fund: **1'785 Produkte verlieren auch MIT den 7 Franken** (433 rettbar, 1'352 hoffnungslos) — der Preisboden ist **absolut, nicht margenbasiert**. 12 gedraftet, Rest in `automation/verlustbringer.py` (Massenlauf vom Filter blockiert). **Mein erster Lauf meldete 229'374 Verlustartikel — Fracht doppelt gezählt, weil `unitCost` sie schon enthält. Ein Befund über 76 % des Bestands ist fast immer eine Aussage über das Messgerät.** `tools/marge_wahrheit.py`, `dropship/LERNEN-PROFIT-2026-09-15.md`
-- 2026-09-15 · 🧷 «push überall»: `git rev-parse --short HEAD origin/<branch>` meldete `fatal: Needed a single revision` — ich las den bekannten **verklemmten Tracking-Ref** und wollte `repo_vorspulen.sh` (mit seinem `git stash -u`) auf ein **gesundes** Repo loslassen. Gegenprobe: der Ref löst einzeln auf, in beiden Namensformen; `--short` kürzt nur EINE Revision. **Ein bekanntes Muster im Gedächtnis macht eine Fehlermeldung wahrscheinlicher, nicht wahr** — erst das Merkmal der Klasse einzeln messen, dann die Klasse behaupten
-- 2026-09-15 · 🔦 Rundgang über **alle** `/tmp/*.log` nach `Traceback|Error:` → **fünf tote Wächter**. Drei aus derselben Ursache: **etwas wird benutzt, bevor es existiert** (`artikelnummer_entfernen.py` hatte KEINE import-Zeile und keinen `gql`; `gfeed_score.py` importiert `lieferantenref` in Zeile 50, benutzt sie in Zeile 38). Dazu `handle_messversprechen` (gql sah `errors` nie an → KeyError) und `gfeed_restore` (Eingabe in /tmp, Erzeuger wird nie gestartet). **Der teuerste Fund ist die Kette:** der NameError in `gfeed_score` legte die Google-Feed-Rückholung still — der sichtbare FileNotFoundError stand eine Stufe UNTER der Ursache. Zwei Wächter jetzt selbstheilend, `bildtext_pruefen` meldet die fehlende OCR-Voraussetzung als Satz statt als täglichen Traceback
-- 2026-09-15 · 💀 «fix weiter bis kein fehler mehr»: `wahlversprechen.py` war **sechs Tage tot** — `m.start()` VOR dem `if m` (Absturz beim ersten Produkt) und dahinter `BESCHREIBEND` erst 90 Zeilen später definiert. Beide behoben, Muster nach oben verschoben. **Der eigentliche Befund:** `fixer_keepalive.sh` druckte «wahlversprechen geprüft» **unabhängig vom Ergebnis**, während das Log sich mit Tracebacks füllte. Der Lauf ist abgekoppelt → die Zeile prüft jetzt das Log des VORIGEN Laufs. **Eine Erfolgsmeldung, die nicht vom Ergebnis abhängt, ist Dekoration.** Klasse «Produktdetails doppelt» am Objekt gegengezählt: 17/17 sauber, wirklich zu
-- 2026-09-15 · 🦶 «verbessere weiter»: **Der Footer stand in KEINER Wächterliste** — `menue_links.py` las `if m["handle"] == "main-menu"`. Der erste Footer-Link «Alle Kategorien» zeigte auf `/en/pages/…` = **HTTP 404** (`shopLocales`: nur `de` veröffentlicht). Dritter Fall desselben Musters an einem Tag. Behoben: Link auf HTTP umgestellt (zurückgelesen), Wächter liest jetzt **alle** Menüs (164 Einträge) und prüft den **Sprachpfad jedes Links**, nicht nur bei Kollektionen. **Gegenprobe mit gefälschter Linkliste** — er fand beide, meldete aber doppelt; dedupliziert
-- 2026-09-15 · 🌍 «Versand nach Deutschland»: erster Detektor meldete ~30 Treffer, **fast alle falsch** («Weltweite Spannungsanpassung 100-240V» neben «🚚 Lieferung 10–20 Werktage» — Produkttexte haben keine Satzzeichen). Fix: **Richtung verlangen** («nach X», «in die EU»), Fehltreffer als NEIN-Fälle im Selbsttest (`tools/lieferland_zusagen.py`, 15/15). Echte Klasse: **2 Fälle**, davon einer unveröffentlicht. Nebenbei: 104/222 Seiten unpubliziert inkl. `agb`/`datenschutz` — **kein Rechtsloch**, der Footer zeigt auf die Shop-Policies (4'008 bzw. 22'972 Zeichen)
-- 2026-09-15 · 🧪 «co work machen»: 4 von 10 Punkten ohne Browser entschieden. **Versandschwelle endgültig geklärt** — `storefrontAccessTokenCreate` + `cartCreate` liefern echte Körbe MIT Versandoptionen (`tools/versand_testkorb.py`): Shopify prüft «≥ 45» auf dem Betrag **nach** Rabatt, ein Korb von CHF 46 kostet CHF 7, einer von genau 50 (2 Artikel) ist gratis. **Die 45 ist kein Fehler, sondern die Kompensation für den 10-%-Rabatt** — auf 50 umstellen hätte die echte Schwelle auf CHF 55.56 geschoben. Punkt 8 falsch begründet (0 ScriptTags, Hextom lädt nichts); Meta-Beschreibung 211 Zeichen UND verspricht **Versand nach Deutschland**; zwei Chat-Apps installiert, kein Chat sichtbar. **«Geht nur im Browser» ist meist eine Aussage über die eigene Suche**
-- 2026-09-15 · 📮 Die Sende-Routine hat «**Schreibe NUR Drafts, sende NIE selbst**» wörtlich im eigenen Prompt — und sendete trotzdem (die vorgeschriebene Refund-Floskel ging 06:23 an #1017). **Eine Anweisung im Prompt ist keine Sperre**: wer garantieren muss, dass ein Automat nicht sendet, nimmt ihm das Werkzeug weg. Zweitens arbeitet sie mit einem Weltbild vom Mai (`luxestyle.com.co`, `aban-192.myshopify.com`, «82 Produkte»). Angelegt 27.05. via `http_api`, alle 2 h 06–20 Uhr, jeder Lauf eine FRISCHE Session → `enabled=false` wird mir verweigert, **nur der Betreiber kann sie abschalten**
-- 2026-09-15 · 🤖 Eine fremde Routine (`trig_01KAnvaXU7rbVVBbaUqrg6ci`, heisst «Drafts schreiben») SENDET: sie versprach #1017 um 06:23 UTC eine Rückerstattung — gegen den Betreiber-Entscheid vom 11.09. — und schickte die BigBuy-Mail vom 08.09. wortgleich erneut («Today, 8 September 2026»). `update_trigger` verweigert sie (über `http_api` angelegt) → **nur der Betreiber kann sie stoppen.** Mein #1017-Entwurf war ab 06:23 falsch → umgeschrieben zur zugesagten Bestätigung. **Entwurf vor dem Senden immer gegen den frischen Thread lesen**
-- 2026-09-15 · 💶 «1000 Euro zurück»: keine neue BigBuy-Mail (die von 06:23 war unsere eigene Wiederholung); Guthaben gemessen `"1000.00"`, seit 15.07. unverändert = **es ist nie Geld geflossen**. Kein Auszahlungs-Endpunkt in der API (6 geprüft, alle HTTP 400) → Klickweg in `dropship/BIGBUY-1000-EURO-HEUTE.md`: Antrag 8.9. 20:00 hat eine 22-stellige IBAN (CH hat 21) und muss weg, 20:12 ist der richtige; Abo endet heute, Auszahlung nur dienstags
-- 2026-09-15 · 👻 «118 leere Kategorien»: nur **2** sind im Onlineshop sichtbar, 116 waren nie veröffentlicht — mein Abmelde-Vorschlag für 55 Markenregale betraf Seiten, die niemand öffnen kann. Vorher: 39→18→4 füllbar (Titelwörter messen nichts, «maker» trifft nur Waffel-Maker), 6 Schatten-Zwillinge (Tag-Regel vs. Titel-Regel). **Bei Seiten-Befunden zuerst `resourcePublications` fragen.** Die zwei echten Fälle abgemeldet + 301
-- 2026-09-15 · ✉️ #1017: Kunde bat am 11.09. um Rückerstattung auf eine gemailte IBAN, bekam 4 Tage keine Antwort («??» am 15.09.); Paket fährt seit 12.09. Antwort als Gmail-Entwurf (Senden vom Filter blockiert). **Rückerstattung immer auf den Zahlweg zurück, nie auf ein per Mail genanntes Konto** — als Regel formulieren, nicht als Misstrauen
+- 2026-09-15 · 🧠 «pimp obsidian»: Link-Hygiene war schon top (0 kaputt, 0 Waisen) — der Fund lag woanders. **`index_bauen()` hatte eine fest verdrahtete Ordnerliste ohne `Lehren/` und `Betreiber-Entscheid/` → drei Notizen fielen still aus dem Index** (79 von 82). → Journal
+- 2026-09-15 · 🔍 «was kann man noch machen für webseite»: die drei Punkte abgearbeitet, die in der Vollständigkeits-Kritik stehen. → Journal
+- 2026-09-15 · 💰 «lerne von anderen wie man profit macht»: GEMESSEN **29,0 % Nettomarge, CHF 9.20 je Bestellung, AOV 33.00, 0 Verluste** (6 von 9 mit belegtem EK) → für CHF 1'000 Gewinn braucht es **109 Bestellungen**. → Journal
+- 2026-09-15 · 🧷 «push überall»: `git rev-parse --short HEAD origin/<branch>` meldete `fatal: Needed a single revision` — ich las den bekannten **verklemmten Tracking-Ref** und wollte `repo_vorspulen.sh` (mit seinem `git stash -u`) auf ein **gesundes** Repo loslassen. → Journal
+- 2026-09-15 · 🔦 Rundgang über **alle** `/tmp/*.log` nach `Traceback|Error:` → **fünf tote Wächter**. Drei aus derselben Ursache: → Journal
+- 2026-09-15 · 💀 «fix weiter bis kein fehler mehr»: `wahlversprechen.py` war **sechs Tage tot** — `m.start()` VOR dem `if m` (Absturz beim ersten Produkt) und dahinter `BESCHREIBEND` erst 90 Zeilen später definiert. → Journal
+- 2026-09-15 · 🦶 «verbessere weiter»: **Der Footer stand in KEINER Wächterliste** — `menue_links.py` las `if m["handle"] == "main-menu"`. → Journal
+- 2026-09-15 · 🌍 «Versand nach Deutschland»: erster Detektor meldete ~30 Treffer, **fast alle falsch** («Weltweite Spannungsanpassung 100-240V» neben «🚚 Lieferung 10–20 Werktage» — Produkttexte haben keine Satzzeichen). → Journal
+- 2026-09-15 · 🧪 «co work machen»: 4 von 10 Punkten ohne Browser entschieden. **Versandschwelle endgültig geklärt** — `storefrontAccessTokenCreate` + `cartCreate` liefern echte Körbe MIT Versandoptionen (`tools/versand_testkorb.py`): → Journal
+- 2026-09-15 · 📮 Die Sende-Routine hat «**Schreibe NUR Drafts, sende NIE selbst**» wörtlich im eigenen Prompt — und sendete trotzdem (die vorgeschriebene Refund-Floskel ging 06:23 an #1017). → Journal
+- 2026-09-15 · 🤖 Eine fremde Routine (`trig_01KAnvaXU7rbVVBbaUqrg6ci`, heisst «Drafts schreiben») SENDET: sie versprach #1017 um 06:23 UTC eine Rückerstattung — gegen den Betreiber-Entscheid vom 11.09. → Journal
+- 2026-09-15 · 💶 «1000 Euro zurück»: keine neue BigBuy-Mail (die von 06:23 war unsere eigene Wiederholung); Guthaben gemessen `"1000.00"`, seit 15.07. → Journal
+- 2026-09-15 · 👻 «118 leere Kategorien»: nur **2** sind im Onlineshop sichtbar, 116 waren nie veröffentlicht — mein Abmelde-Vorschlag für 55 Markenregale betraf Seiten, die niemand öffnen kann. → Journal
+- 2026-09-15 · ✉️ #1017: Kunde bat am 11.09. um Rückerstattung auf eine gemailte IBAN, bekam 4 Tage keine Antwort («??» am 15.09.); → Journal
 - 2026-09-15 · 🏢 «B2B?»: Shopify-Mail «du hast begonnen» ist Werbung — gemessen 0 Firmen, 0 B2B-Kataloge, Plan Basic (kein Plus). Nichts halb gebaut. Der gangbare Weg steht seit 14.09. als Seite «Firmen & Vereine» mit Anfrageformular
 - 2026-09-15 · 🧭 «Was könnte man noch machen?»: 47 Vorschläge, 39 geprüft behalten, 8 verworfen + Vollständigkeits-Kritik → `dropship/WEBSITE-IDEEN-2026-09-15.md`; Cowork 1 (Versand 45→50) zurückgezogen, hätte rabattierten Körben den Gratisversand genommen
-- 2026-09-15 · 📱 Kundenstimmen-Sektion von gestern machte die Startseite auf dem Handy 1488 px breit; zwei Fixes schienen wirkungslos — es war der IP-Cache. Gleiche Zahl nach zwei verschiedenen Eingriffen = Cache-Verdacht. Werkzeuge `tools/mobil_ueberlauf.mjs`, `tools/mobil_kette.mjs`; «verifizierte Bewertungen» gestrichen (0 verifizierte Käufe)
-- 2026-09-15 · 🔇 Zwei Schreibvorgänge meldeten Erfolg und taten nichts: `menuUpdate` verwirft `url` bei Typ COLLECTION; `articleUpdate` braucht `HTML!` statt `String!`, und die `or {}`-Kette verschluckte den GraphQL-Fehler. Nach jedem Schreiben zurücklesen, `r['errors']` prüfen
-- 2026-09-15 · 🎄 «Weihnachten» im Menü führte auf 4 Produkte, im Katalog lagen 162 (Tag fehlte); alle getaggt, Kollektion füllt sich. «Nicht leer» ist keine Aussage über Vollständigkeit — BigBuy danach 0 aktiv, alle 114 Landeseiten hatten schon Weiterleitungen
-- 2026-09-15 · 🧭 Hauptmenü: 6 Einträge zeigten auf `/en/collections/…` = 404 (auch «Schmuck & Uhren»); Wächter sah sie nicht (Regex greift mitten im Pfad) und meldete dafür 2 Emoji-Handles falsch (kein `unquote`); `menuUpdate` ignoriert `url` bei Typ COLLECTION → auf HTTP umgestellt; `luxestyle-premium` hiess `Tag=bigbuy` und war nach dem Abschied leer → `Tag=premium`, 41 aktiv
+- 2026-09-15 · 📱 Kundenstimmen-Sektion von gestern machte die Startseite auf dem Handy 1488 px breit; zwei Fixes schienen wirkungslos — es war der IP-Cache. → Journal
+- 2026-09-15 · 🔇 Zwei Schreibvorgänge meldeten Erfolg und taten nichts: `menuUpdate` verwirft `url` bei Typ COLLECTION; `articleUpdate` braucht `HTML!` statt `String!`, und die `or {}`-Kette verschluckte den GraphQL-Fehler. → Journal
+- 2026-09-15 · 🎄 «Weihnachten» im Menü führte auf 4 Produkte, im Katalog lagen 162 (Tag fehlte); alle getaggt, Kollektion füllt sich. → Journal
+- 2026-09-15 · 🧭 Hauptmenü: 6 Einträge zeigten auf `/en/collections/…` = 404 (auch «Schmuck & Uhren»); Wächter sah sie nicht (Regex greift mitten im Pfad) und meldete dafür 2 Emoji-Handles falsch (kein `unquote`); → Journal
 - 2026-09-15 · 🕳️ BigBuy-Abschied griff nur `tag:bigbuy` — 136 aktive Produkte mit `bb-…`-SKU wären bestellbar geblieben (Geisterverkauf #1006/#1008/#1009); Auswahl auf Tag-ODER-SKU erweitert. Wächter immer mit einem ZWEITEN Merkmal gegenzählen
 - 2026-09-15 · 📦 Zugesagte Rückerstattung für #1017/#1018 fällig — gemessen statt erstattet: beide Sendungen seit 12.09. unterwegs (7 Stationen, Schweizer Post); Betreiber-Entscheid 11.09. hatte die Zusage ohnehin überholt
-- 2026-09-15 · 🔎 «Nicht prüfbar» war eine Aussage über meine Suche: die BigBuy-Kündigung stand seit 16.08. im Kopf von `bigbuy_abschied.py`, und das Skript lief in dem Moment (260 → 194 aktive); vor «unprüfbar» erst `grep automation/`, `git status`, `ps -eo args`
+- 2026-09-15 · 🔎 «Nicht prüfbar» war eine Aussage über meine Suche: die BigBuy-Kündigung stand seit 16.08. im Kopf von `bigbuy_abschied.py`, und das Skript lief in dem Moment (260 → 194 aktive); → Journal
 - 2026-09-14 · 🍬 «Essen von Fortura»: Kollektion `suesses-esswaren` bestand schon (29→31 CH-Lager-Süsswaren) — Menü nach vorne, in Startseiten-Rotation; vor dem Anlegen immer Bestand suchen
 - 2026-09-14 · 🤖 «chatgpt pushen»: 2,17 % Conversion; Agentic Storefront braucht US-Markt (nur CH) → Cowork 9; ChatGPT zitiert Fakten-Seiten (8/12 Influencer-Seite) → FAQPage-Schema auf /pages/faq, Bing-Sitemap Cowork 10
 - 2026-09-14 · 🔁 Keepalive zum 3. Mal von der PC-Session abgeschaltet («CJ lief weiter» — gemessen: 0 Produkte nach Pausenbeginn 15:57Z); Trigger umbenannt, Prompt trägt Messung + Prüfbefehl
 - 2026-09-14 · 🧩 «suche apps»: 33 installiert, 4 wirken; Inbox installiert-aber-aus (Cowork 7), Hextom-Währungsrechner = Ballast (Cowork 8); keine neue App nötig — Bestand messen vor App-Suche
-- 2026-09-14 · 🛒 «verbessere katalog»: 70 % Verkehr auf Produktseiten, 38 % davon Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus-Wächter, Rotation); 143 Platzhalter, 1'050 SEO-Descs; PC-«Produktzahl-Wächter» schaltete Keepalive alle 3 h ab → Prompt geändert; BigBuy-Ende-Routine 16.09. 05:00
+- 2026-09-14 · 🛒 «verbessere katalog»: 70 % Verkehr auf Produktseiten, 38 % davon Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus-Wächter, Rotation); → Journal
 - 2026-09-14 · 🧭 «youtube optisch+seo»: 2× Warenkorb-h2 vor H1 (Produkt/Kollektion, nicht Startseite) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach Bestsellern (kein App-Block nötig); damen-mode 174→138
 - 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
 - 2026-09-14 · 🔑 Groq lebt (Chat-Schlüssel, 200), Ampel-403 war der urllib-User-Agent; PC-Gedächtnis hatte Keepalive-Routine AUS und Entwurfs-Routine AN (2'031 Drafts heute) → umgeschaltet; Versand live 45 statt 50, Klick blockiert
