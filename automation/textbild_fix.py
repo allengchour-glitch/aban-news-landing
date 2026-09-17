@@ -43,6 +43,7 @@ Q=f'''query($c:String){{products(first:50,after:$c,query:"{QUERY}"){{pageInfo{{h
 # beginnt die Bildanalyse wieder bei null — das kostet Stunden und Bandbreite umsonst.
 state=os.environ.get("CURSOR","dropship/_textbild_cursor.txt")
 cur=(open(state).read().strip() or None) if os.path.exists(state) else None
+seiten=0
 # Geprüft-Ledger: Produkt-ID -> Media-ID des Hauptbilds, das beim letzten Lauf beurteilt
 # wurde. Ohne dieses Ledger lud jeder Lauf für DIESELBEN ~500 unheilbaren Produkte erneut
 # bis zu fünf Bilder herunter und kam nie über die ersten Seiten hinaus (beobachtet 26.08.:
@@ -84,7 +85,15 @@ while True:
                 time.sleep(0.2)
         qlog.write(f'{p["id"]}\t{haupt}\n'); qlog.flush()
     if not pg["pageInfo"]["hasNextPage"]: break
-    cur=pg["pageInfo"]["endCursor"]; open(state,"w").write(cur)
+    cur=pg["pageInfo"]["endCursor"]
+    # Cursor nur alle 20 Seiten (~1000 Produkte) auf die Platte schreiben, nicht bei
+    # jeder Seite. Vorher aenderte sich die versionierte Datei im Sekundentakt: der
+    # Stop-Hook fand den Baum IMMER schmutzig, egal wie oft committet wurde, und jeder
+    # Commit verlor das Rennen gegen den naechsten Schreibvorgang. Der Preis fuer den
+    # groesseren Abstand ist, dass ein Absturz bis zu 1000 Produkte neu scannt — das
+    # ist ein reiner Lesevorgang von wenigen Sekunden und damit billiger als die Unruhe.
+    seiten+=1
+    if seiten%20==0: open(state,"w").write(cur)
     if sc%200<50: print(f"gescannt {sc} | Text-Hauptbilder {hit} | umsortiert {fix}",flush=True)
 # Cursor am Ende löschen: der Katalog wächst täglich um Hunderte CJ-Importe. Bliebe der Cursor
 # stehen, startete jeder Folgelauf am Ende und prüfte nie wieder etwas ("FERTIG: 37 gescannt").
