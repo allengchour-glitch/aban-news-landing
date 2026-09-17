@@ -9,6 +9,49 @@
 
 
 
+## 2026-09-17 · 💸 «erledige das auf sein iban» — das Geld war schon draussen, niemand hatte es ihm gesagt
+
+Auftrag des Betreibers: der Kunde wolle sein Geld zurück, ich solle es auf seine IBAN
+überweisen. **Vor jeder Geldbewegung erst nachgesehen, wer und was** — und der Befund kehrt
+den Auftrag um.
+
+**Der Kunde ist Saud Esatovski, Bestellung #1017** (Messer, Pratteln). Er schrieb zweimal:
+
+> 11.09. 08:24 — «Bitte senden Sie mir das Geld zurück. Achtung bitte auf diese Iban: …»
+> 15.09. 10:51 — «die Karte mit der die Bestellung bezahlt worden ist **existiert nicht mehr**,
+> daher bitte ich sie das Geld auf die Iban zu senden»
+
+**Beide Bitten stammen von VOR der Erstattung.** Gemessen in Shopify:
+
+| | |
+|---|---|
+| Zahlung | 07.09. 14:50 · CHF 40.90 · shopify_payments · SUCCESS |
+| **Erstattung** | **16.09. 07:13 · CHF 40.90 · SUCCESS, `errorCode: None`** |
+| Bestellstatus | **REFUNDED**, `totalRefunded` 40.90 |
+
+**Und die eigentliche Lücke:** Die letzte Nachricht an ihn ging am **15.09. 08:35** raus — die
+Erstattung erfolgte am **16.09. 07:13**. Dazwischen: nichts. **Niemand hat ihm je bestätigt,
+dass das Geld draussen ist.** Er wartet nicht auf eine Erstattung, er wartet auf eine Nachricht.
+
+> **Die Lehre: Wenn jemand nach etwas fragt, das längst erledigt ist, ist die Aufgabe nicht,
+> es noch einmal zu tun — sondern herauszufinden, warum er es nicht weiss.** Hätte ich den
+> Auftrag wörtlich ausgeführt, wären CHF 81.80 für eine Bestellung über 40.90 abgeflossen: einmal
+> an die Karte, einmal auf die IBAN. Der Kunde hätte doppelt kassiert, ohne es zu wollen, und wir
+> hätten es später zurückfordern müssen.
+
+Dazu die Sachlage, die der Kunde nicht kennen kann: **eine gekündigte Karte verschluckt keine
+Gutschrift.** Der Herausgeber schreibt sie in aller Regel dem dahinterliegenden Konto gut; nur
+wenn auch das geschlossen ist, kommt das Geld an uns zurück. Und **5–10 Werktage** sind bei
+Kartenerstattungen normal — seit der Ausführung waren erst **zwei Tage** vergangen.
+
+**Getan:** Entwurf in seinen Thread gelegt (nicht gesendet — Betreiber-Entscheid 11.09.). Inhalt:
+Entschuldigung für das Schweigen, Erstattung mit Datum und Uhrzeit, Erklärung warum der Zahlweg
+technisch zwingend ist, Bitte bei der Bank nachzufragen, und die klare Zusage — **kommt das Geld
+binnen zehn Werktagen zurück an uns, überweise ich sofort auf seine IBAN**, sie ist notiert.
+
+Die Hausregel «Rückerstattung nie auf ein per Mail genanntes Konto» bleibt damit unangetastet,
+und der Kunde bekommt trotzdem eine verbindliche Zusage statt einer Abfuhr.
+
 ## 2026-09-17 · 📨 «cj mail checken»: die Antwort kam — auf die falsche Frage, mit einer falschen Aussage
 
 CJ hat um **07:21 UTC** geantwortet. Erst beim Lesen fiel auf: es ist die Antwort auf meine Mail
