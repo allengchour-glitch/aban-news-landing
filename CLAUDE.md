@@ -262,7 +262,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    beauty/beleuchtung/gadget/haustier/home…). Importer (cj + bb) rufen ihn auf. **Compound-Wort-Fallen (9b):**
    armband**uhr**≠Armband (negative Lookahead), Hunde**geschirr**≠Geschirr, **Hand**schuh≠Schuh (Lookbehind),
    damen**uhr**/lauf**schuh** brauchen explizite Muster (\b verpasst sie). Immer erst DRY testen.
-16e. **📢 Google-Merchant-Feed (2026-07-10):** Google liest **mm-google-shopping-Metafelder**, NICHT den
+16e. **📢 Google-Merchant-Feed (2026-07-10)** — ⚠️ **Der «#1-Hebel» darin ist SEIT 17.09. UNBESTÄTIGT.**
+   Gemessen 17.09.: Shopify hat **genau EINEN Markt, «Switzerland», Länder=['CH']** — von unserer
+   Seite zielt also nichts auf DE. Ob die «1'698 Produkte · Missing shipping info» noch existieren,
+   ist von hier **nicht prüfbar**: keine Google-Zugangsdaten im Repo, die Merchant-API wurde nie
+   benutzt, und der Agenten-Browser kann sich bei Google nicht anmelden (Google blockt kopflose
+   Browser, gemessen 17.09.). **Die Zahl ist zwei Monate alt — vor jeder Arbeit daran erst im
+   Merchant-Konto nachsehen.** Eine Zahl aus dem Gedächtnis ist keine Messung von heute.
+   Ursprünglicher Eintrag: Google liest **mm-google-shopping-Metafelder**, NICHT den
    Beschreibungstext! Fehlend: material/age_group/gender/color → `automation/google_feed/*_metafield.py`
    (Material aus Beschreibung extrahieren, age_group=adult, gender aus Tags). **#1 Gratis-Traffic-Hebel (nur
    User): Merchant-Ziel-Land auf NUR Schweiz** → 1698 Produkte «Missing shipping info» freigeben (Feed zielt
