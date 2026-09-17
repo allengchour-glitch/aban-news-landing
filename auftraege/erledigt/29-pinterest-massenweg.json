@@ -3,6 +3,134 @@
   "typ": "skript",
   "skript": "pinterest_upload_weg_finden.mjs",
   "warum": "Zweite Runde mit zwei neuen Adressen. Auftrag 27 hat bewiesen, dass es auf /pin-builder/ KEINEN Massen-Upload gibt — die Seite heisst «Pin fuer ANZEIGE erstellen», und das Skript hat die 117-Zeilen-CSV ins Bildfeld eines EINZELNEN Pins gehaengt (der Klick scheiterte, sonst waere ein Pin mit einer CSV als Bild veroeffentlicht worden). Pinterests Massen-Editor lebt im Werbekonto. Diese Runde prueft ads.pinterest.com und /business/pins/. Rein lesend: nur Dateifelder zaehlen und Einstiege mit Adresse auflisten, nichts anhaengen, nichts absenden. Ergibt sie nichts, ist der CSV-Weg endgueltig tot — und das ist verkraftbar, weil der Shopify-Katalog ohnehin 431 Tsd. Artikel einpflegt (Auftrag 26).",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "zusammenfassung": "Dateifeld gefunden auf: https://ch.pinterest.com/pin-builder/, https://ch.pinterest.com/pin-creation-tool/",
+    "seiten_mit_dateifeld": [
+      "https://ch.pinterest.com/pin-builder/",
+      "https://ch.pinterest.com/pin-creation-tool/"
+    ],
+    "seiten_mit_einstieg": [
+      {
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ]
+      },
+      {
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ]
+      }
+    ],
+    "befunde": [
+      {
+        "url": "https://ch.pinterest.com/pin-builder/",
+        "ziel": "https://ch.pinterest.com/pin-builder/",
+        "umgeleitet": false,
+        "dateifelder": 1,
+        "einstiege": [],
+        "bild": "auftraege/ergebnis/29-pinterest-massenweg-pinterestcompinbuilder.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/business/hub/",
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "umgeleitet": false,
+        "dateifelder": 0,
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ],
+        "bild": "auftraege/ergebnis/29-pinterest-massenweg-interestcombusinesshub.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/business/create/",
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "umgeleitet": true,
+        "dateifelder": 0,
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ],
+        "bild": "auftraege/ergebnis/29-pinterest-massenweg-erestcombusinesscreate.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/bulk-create-pins/",
+        "ziel": "https://ch.pinterest.com/?show_error=true",
+        "umgeleitet": true,
+        "dateifelder": 0,
+        "einstiege": [],
+        "nicht_gefunden": true,
+        "bild": "auftraege/ergebnis/29-pinterest-massenweg-erestcombulkcreatepins.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/pin-creation-tool/",
+        "ziel": "https://ch.pinterest.com/pin-creation-tool/",
+        "umgeleitet": false,
+        "dateifelder": 1,
+        "einstiege": [],
+        "bild": "auftraege/ergebnis/29-pinterest-massenweg-restcompincreationtool.png"
+      },
+      {
+        "url": "https://ads.pinterest.com/",
+        "ziel": "https://ads.pinterest.com/advertiser/549770431724/reporting/campaigns/?redirectSource=NONE&campaignFilter=all&campaignFilterUpdated=false&adGroupFilter=all&adGroupFilterUpdated=false&adFilter=all&adFilterUpdated=false&adFormatFilter=all&adFormatFilterUpdated=false&productGroupFilter=all&productGroupFilterUpdated=false&objectiveTypesUpdated=false&objectiveTypes=[AWARENESS,CONSIDERATION,WEB_CONVERSION,VIDEO_VIEW,VIDEO_COMPLETION]&customFilters=none&deliveryFilter=true&end_date=2026-09-17&start_date=2026-09-10&granularity=daily&attributionWindow=30%2F30%2F30&attributionLevel=[INDIVIDUAL]&reportingViewId=-1&limit=10&bookmark=1&lineone=SPEND_IN_DOLLAR&linetwo=TOTAL_IMPRESSION&linethree=SPEND_IN_DOLLAR",
+        "umgeleitet": false,
+        "dateifelder": 0,
+        "einstiege": [],
+        "bild": "auftraege/ergebnis/29-pinterest-massenweg-httpsadspinterestcom.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/business/pins/",
+        "ziel": "https://ch.pinterest.com/?show_error=true",
+        "umgeleitet": true,
+        "dateifelder": 0,
+        "einstiege": [],
+        "nicht_gefunden": true,
+        "bild": "auftraege/ergebnis/29-pinterest-massenweg-nterestcombusinesspins.png"
+      }
+    ]
+  }
 }
