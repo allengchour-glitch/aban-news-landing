@@ -1,0 +1,8 @@
+{
+  "id": "23a-pinterest-board",
+  "typ": "skript",
+  "skript": "pinterest_boards_anlegen.mjs",
+  "warum": "EIN Board je Lauf. Die Faessung, die alle sechs in einem Durchgang wollte, starb zweimal mit Stand 'laufend' — der Agent laeuft im 5-Minuten-Takt, also muss die Arbeit in einen Takt passen. Idempotent: jeder Lauf liest vorher, was schon existiert, und legt nur das naechste Fehlende an. Sechs Auftraege, sechs kurze Laeufe.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
