@@ -56,6 +56,41 @@ aufraeumen() {
 }
 trap aufraeumen EXIT INT TERM
 
+# ⚠️ 17.09.2026, gemessen: Auf dem Server liefen ZWEI `ssh -L 9222:127.0.0.1:9222
+# root@46.225.75.125` — also Tunnel, die vom Server auf den Server selbst zeigen. Sie
+# hatten Port 9222 belegt, bevor Chromium ihn oeffnen konnte. Das Ergebnis war ein
+# besonders irrefuehrendes Bild: `curl` meldete «Empty reply from server» statt
+# «Connection refused» (da lauscht etwas und antwortet nichts), und im Browser blieb
+# «Remote Target» leer — obwohl scheinbar alles lief.
+# Der Tunnel wird IMMER vom eigenen Rechner aus gegraben, nie vom Server. Hier wird
+# der Fall deshalb beim Namen genannt, statt ihn als «Steuerport antwortet nicht»
+# zu tarnen.
+# ⚠️ Die verbindliche Antwort auf «ist der Port frei» ist der BINDEVERSUCH, nicht das
+# Befragen eines Hilfsprogramms. Erster Entwurf pruefte mit `ss` — und `ss` fehlt in
+# manchen Umgebungen ganz (im Cloud-Container dieses Projekts z. B.). Dort haette die
+# Pruefung still «frei» gemeldet und den irrefuehrenden Zustand durchgelassen, gegen den
+# sie gebaut ist. `ss` dient hier nur noch dazu, den Schuldigen zu BENENNEN.
+if ! node -e '
+  const net=require("net"), s=net.createServer();
+  s.once("error",e=>process.exit(e.code==="EADDRINUSE"?1:0));
+  s.once("listening",()=>s.close(()=>process.exit(0)));
+  s.listen(9222,"127.0.0.1");
+' 2>/dev/null; then
+  echo "✗ Port 9222 ist schon belegt."
+  command -v ss >/dev/null 2>&1 && ss -ltnp 2>/dev/null | grep "127.0.0.1:9222" | sed 's/^/    /'
+  if ps -eo pid,args --no-headers | grep -q "[s]sh -L 9222"; then
+    echo
+    echo "  Es läuft ein SSH-TUNNEL auf DIESEM Server, der auf DIESEN Server zeigt."
+    echo "  Das ist eine Schleife: sie hält den Port, Chromium kommt nicht mehr dran,"
+    echo "  und curl meldet «Empty reply from server» statt «Connection refused»."
+    echo "  Der Tunnel gehört auf DEINEN PC. Hier beenden mit:"
+    ps -eo pid,args --no-headers | grep "[s]sh -L 9222" | awk '{printf "      kill %s\n", $1}'
+  else
+    echo "  Läuft dieses Skript vielleicht schon in einem anderen Fenster?"
+  fi
+  exit 1
+fi
+
 CHROME="$(node -e "console.log(require('playwright').chromium.executablePath())" 2>/dev/null || true)"
 [ -x "$CHROME" ] || { echo "Chromium nicht gefunden — lief luxe-agent-setup.sh durch?"; exit 1; }
 
