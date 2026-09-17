@@ -96,3 +96,22 @@ prüfbar** — das Rechenzentrum bekommt eine stundenalte Bot-Cache-Kopie, und
 Seite so, wie eine Kundin sie sieht. Dazu kommen die Aufgaben, die eine **angemeldete**
 Sitzung brauchen (Google Merchant, BigBuy-Ticket, Pinterest-OAuth) — dafür muss der
 Betreiber das Browserprofil einmal anmelden.
+
+## Den Agenten-Browser anmelden (die Stolperstellen)
+
+Der Agenten-Browser ist ein **kopfloses Chromium auf dem Hetzner-Server** mit eigenem Profil
+(`/var/lib/luxe-agent/chrome-profil`). **Anmeldungen im eigenen Brave auf dem PC zählen dort
+nicht** — anderes Profil, anderer Rechner. Gemessen am 17.09.: nach dem ersten Versuch waren
+Shopify und BigBuy angemeldet (im getunnelten Fenster gemacht), Google und Pinterest nicht
+(die waren im privaten Brave).
+
+1. **Server:** `cd /opt/luxe-agent/repo && git pull -q && bash server/luxe-profil-anmelden.sh`
+2. **PC:** `ssh -L 9222:127.0.0.1:9222 root@46.225.75.125` — Fenster offen lassen, es *ist* der Tunnel
+3. **PC-Browser:** `chrome://inspect` → links **Devices** → `[Configure…]` → `localhost:9222` →
+   **Häkchen «Discover network targets» setzen**. Erst dann erscheint der Block
+   **Remote Target #localhost:9222** mit einer Zeile je Tab. *Eingetragen ist nicht aktiviert* —
+   daran ist es am 17.09. hängen geblieben.
+
+Bleibt der Block leer: `curl http://127.0.0.1:9222/json/version` auf dem PC. JSON mit «Chrome/…»
+heisst Tunnel steht (dann fehlt das Häkchen); «Connection refused» heisst SSH-Fenster zu oder das
+Anmelde-Skript auf dem Server beendet.

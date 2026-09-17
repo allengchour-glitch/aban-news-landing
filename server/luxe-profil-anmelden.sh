@@ -83,7 +83,18 @@ fi
 echo "✅ Browser läuft (PID $CHROME_PID). Steuerport antwortet."
 echo
 echo "   Jetzt BEI DIR:  ssh -L 9222:127.0.0.1:9222 root@46.225.75.125"
-echo "   dann Chrome:    chrome://inspect  →  Configure…  →  localhost:9222"
+echo "                   (dieses Fenster OFFEN lassen — es IST der Tunnel)"
+echo "   dann Chrome:    chrome://inspect  →  links «Devices»"
+echo "                   → [Configure…] → localhost:9222 eintragen"
+echo "                   → ⚠️ HÄKCHEN «Discover network targets» SETZEN"
+echo "                   Erst dann erscheint der Block «Remote Target #localhost:9222»."
+echo "                   Eingetragen ist nicht dasselbe wie aktiviert — genau daran"
+echo "                   ist es am 17.09. hängen geblieben."
+echo
+echo "   Bleibt der Block leer, erst den Tunnel pruefen (bei DIR, drittes Fenster):"
+echo "       curl http://127.0.0.1:9222/json/version"
+echo "   JSON mit «Chrome/…» = Tunnel steht, es liegt am Häkchen."
+echo "   «Connection refused» = SSH-Fenster zu oder dieses Skript hier beendet."
 echo
 echo "   Es sind FÜNF Tabs offen — in chrome://inspect steht jeder als eigene Zeile:"
 echo "     1) Google (für Merchant Center)   2) Pinterest   3) BigBuy"
