@@ -17,7 +17,18 @@ def gql(q,v=None):
             if "data" in d: return d
         except Exception: pass
         time.sleep(3)
-    return {}
+    # ⚠️ 17.09.2026: Hier stand `return {}`. Gemessen an zwei Aufrufern in dieser
+    # Klasse, was das anrichtet: `kollektion_leer.py` macht
+    # `gql(...).get("collections")` → None → `if not d: break`, und
+    # `tote_rabattcodes.py` bricht bei `hasNextPage` ab. Beide melden dann ein
+    # ordentliches Ergebnis über NULL Datensätze, obwohl Shopify nur gedrosselt hat.
+    # Eine Null, die wie eine Messung aussieht, ist der teuerste Befund dieses
+    # Projekts (95 Klingen blieben im Verkauf, weil ein Wächter «0» meldete).
+    # Darum: laut scheitern. Ein Traceback im Log ist ein Befund, eine falsche Null nicht.
+    raise RuntimeError(
+        "Shopify hat auf keinen Versuch mit Daten geantwortet. FRÜHER gab diese"
+        " Funktion hier ein leeres Ergebnis zurück und der Aufrufer meldete «0» —"
+        " das ist keine Messung, sondern ein Ausfall.")
 GOOG="gid://shopify/Publication/302872297857"
 RAUS=re.compile(r'kost[üu]m|verkleid|fasnacht|halloween|per[üu]cke|maske\b|tutu\b|hexe|vampir|zombie|clown|dessous|reizw|erotik|18\+|generalüberholt|restauriert|refurb|ersatzteil|ersatzkopf',re.I)
 CODE=re.compile(r'\b[A-Z]{2,}\d{3,}\b|\b[A-Z0-9]{8,}\b|\bUS Size\b|\bYards\b|Generation \d|About \d+mm|Surface-')

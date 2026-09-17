@@ -64,7 +64,15 @@ def gql(q, v=None, tries=10):
         except Exception as ex:
             sys.stderr.write(f'  ⚠️ {ex}\n')
         time.sleep(3)
-    return {}
+    # ⚠️ 17.09.2026: Hier stand `return {}` — dieselbe stille Null wie in 15
+    # Geschwister-Wächtern, nur ohne verschluckten except-Zweig. Der Aufrufer
+    # rechnet mit `.get(...)` weiter und meldet ein saubere Ergebnis über null
+    # Datensätze, obwohl Shopify nur gedrosselt hat. Gegenprobe an dup_scan.py:
+    # mit falschem Token Abbruch mit Exit 1 statt «0 Produkte».
+    raise RuntimeError(
+        "Shopify hat auf keinen Versuch mit Daten geantwortet. FRÜHER gab diese"
+        " Funktion hier ein leeres Ergebnis zurück und der Aufrufer meldete «0» —"
+        " das ist keine Messung, sondern ein Ausfall.")
 
 
 def dateiname(u):

@@ -24,7 +24,15 @@ def gql(q,v=None):
         if d.get('data'): return d
         if any('Throttled' in str(e) for e in d.get('errors',[])): time.sleep(4); continue
         refresh(); time.sleep(2)
-    return {}
+    # ⚠️ 17.09.2026: Hier stand `return {}` — dieselbe stille Null wie in 15
+    # Geschwister-Wächtern, nur ohne verschluckten except-Zweig. Der Aufrufer
+    # rechnet mit `.get(...)` weiter und meldet ein saubere Ergebnis über null
+    # Datensätze, obwohl Shopify nur gedrosselt hat. Gegenprobe an dup_scan.py:
+    # mit falschem Token Abbruch mit Exit 1 statt «0 Produkte».
+    raise RuntimeError(
+        "Shopify hat auf keinen Versuch mit Daten geantwortet. FRÜHER gab diese"
+        " Funktion hier ein leeres Ergebnis zurück und der Aufrufer meldete «0» —"
+        " das ist keine Messung, sondern ein Ausfall.")
 # ⚠️ DIESER EXTRAKTOR WAR DIE QUELLE DES MÜLLS (nachgewiesen 14.08.2026):
 # er nahm bis zu 60 Zeichen HINTER dem Wort «Material» — also den halben Fliesstext.
 # Live standen dadurch Werte wie «sorgt für ein angenehmes Tragegefühl und hält zuverlässig wa»
