@@ -9,6 +9,64 @@
 
 
 
+## 2026-09-17 · 🖥️ «hetzner server extra eingerichtet» — der Test, der nicht scheitern kann
+
+Der Betreiber nennt einen Hetzner-Server als Weg zu den Browser-Aufgaben. **Er ist nicht
+neu:** er steht seit dem 22.06.2026 im eigenen Repo beschrieben — `PROJEKT.md:57`,
+**46.225.75.125**, Ubuntu, Repo unter `/opt/abannews`, und ein systemd-Timer deployt von
+dort seit Monaten alle drei Minuten abannews.com. Ich hatte im selben Turn noch gefragt,
+welche Software darauf läuft; die Antwort lag die ganze Zeit in `server/README.md`.
+**Bevor man nach einer Auskunft fragt, sucht man sie im eigenen Gedächtnis.**
+
+**Die Messung, die fast als Befund durchgegangen wäre.** Drei Ports geprüft:
+
+| Port | Ergebnis | Was ich daraus las |
+|---|---|---|
+| 22 | Zeitüberschreitung | «SSH ist zu» |
+| 443 | Verbindung steht | «HTTPS geht — da ist ein Weg hinein» |
+| 9222 | zu | «gut, CDP steht nicht offen» |
+
+Zwei davon waren falsch gelesen. Die Gegenproben:
+
+- **`/dev/tcp/140.82.121.4/22` (github.com) läuft ebenfalls in die Zeitüberschreitung.**
+  Port 22 ist also von hier **generell** gesperrt — das ist die Ausgangsregel meines
+  Containers, nicht die Firewall des Servers. Ohne diese Gegenprobe hätte ich dem
+  Betreiber gemeldet, sein Server sei falsch konfiguriert.
+- **`/dev/tcp/203.0.113.1/443` gelingt genauso.** Diese Adresse gehört zum
+  Dokumentations-Testnetz; dahinter steht per Definition nichts. Der Ausgangs-Proxy nimmt
+  **jede** :443-Verbindung an, bevor er das Ziel überhaupt fragt. **Ein Test, der nicht
+  scheitern kann, misst nichts.** Erst `curl -k https://46.225.75.125/` zeigte, was wirklich
+  passiert: «Connection reset» — auf 443 lauscht dort gar nichts (ufw lässt nur SSH zu).
+
+Das ist dieselbe Familie wie der Klingen-Wächter, der «0 Handklingen» meldete, während der
+Köder im Verkauf stand, und wie `freightCalculate = ok` beim Messer, das trotzdem
+zurückkam. **Ein Werkzeug muss zeigen, dass es auch «nein» sagen kann, bevor sein «ja»
+etwas wert ist.**
+
+**Was daraus folgt — und warum es trotzdem gut ausgeht.** Von hier gibt es keinen Weg
+hinein, und daran ändert kein Zugangsdatum etwas. Also muss die Richtung umgekehrt sein:
+**der Server holt sich seine Aufträge.** Genau das kann er längst — sein Deploy-Timer
+pollt seit Juni. Dasselbe Muster trägt Browser-Aufträge: ich lege JSON nach
+`auftraege/offen/`, er führt es aus, pusht Quittung und Screenshot zurück
+(`server/luxe-agent-setup.sh`, `server/luxe_auftrag_runner.mjs`, `auftraege/README.md`).
+Kein offener Port, keine eingehende Verbindung.
+
+**Zwei Entscheidungen im Bau, die nicht verhandelbar sind.** Erstens: der Runner führt
+**nie** Code aus der Auftragsdatei aus, nur eine feste Liste von Arten mit geprüften
+Parametern; ein `skript`-Auftrag darf einzig einen Basename aus `automation/browser/`
+starten. Das Repo ist **öffentlich** — ein Runner, der Shell aus der Warteschlange läse,
+wäre eine Fernsteuerung für jeden, der je Schreibrechte auf den Branch bekommt. Zweitens:
+**CDP-Port 9222 nie offen im Internet**, die Anmeldung des Profils läuft über einen
+SSH-Tunnel. Wer 9222 erreicht, steuert den Browser mitsamt allen angemeldeten Sitzungen.
+
+**Und der ehrliche Rest:** nichts davon ist getestet, weil ich den Server nicht erreiche.
+Es läuft erst, wenn er `bash /opt/abannews/server/luxe-agent-setup.sh` einmal ausführt —
+und die Aufgaben mit Anmeldung (Merchant, BigBuy, Pinterest) brauchen zusätzlich, dass er
+das Browserprofil einmal einloggt. Ein frisches Chromium hat keine Sitzungen; 2FA kann
+kein Automat. Der erste Nutzen kommt aber ohne jede Anmeldung: der Server sitzt woanders
+im Netz und sieht die **echte** Storefront — das löst den Befund vom 19.08., dass von
+unserer IP aus nur eine stundenalte Bot-Cache-Kopie zurückkommt.
+
 ## 2026-09-17 · 💸 «erledige das auf sein iban» — das Geld war schon draussen, niemand hatte es ihm gesagt
 
 Auftrag des Betreibers: der Kunde wolle sein Geld zurück, ich solle es auf seine IBAN
