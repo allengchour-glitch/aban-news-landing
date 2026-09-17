@@ -60,7 +60,32 @@ const TOUR_ZAEHLER = /\b\d+\s*(von|of)\s*\d+\b/i;
 // Belegt, dass wir wirklich in einer Massen-/CSV-Oberflaeche stehen.
 const MASSEN_BELEG = /(massen|bulk|\.csv\b|csv[- ]?(datei|file|upload)|tabelle hochladen)/i;
 
+// ⛔ HARTER STOPP, gemessen am 17.09.2026 (Quittungen 25, 27, 29).
+// Sieben Adressen abgetastet — /pin-builder/, /pin-creation-tool/, /business/hub/,
+// /business/create/, /bulk-create-pins/, /business/pins/ und ads.pinterest.com:
+// NIRGENDS ein Massen-/CSV-Einstieg. /bulk-create-pins/ und /business/pins/ leiten
+// beide auf `?show_error=true`, die Werbeseite landet im Kampagnen-Bericht (0 Dateifelder).
+// Der CSV-Massen-Upload existiert auf diesem Konto nicht.
+//
+// UND ER WIRD AUCH NICHT GEBRAUCHT: der Shopify-Katalog pflegt 431,36 Tsd. Artikel ein
+// (99.99 %), und der Distributions-Reiter sagt **438,94 Tsd. genehmigt = 100 % des
+// Katalogs**, 7 nicht genehmigt (nicht vorrätig), 0 eingeschränkt. Die 117 handgemachten
+// Pins wären Beiwerk zu einem Kanal, der vollständig ausgeliefert wird.
+//
+// Dieser Stopp steht hier, weil die 117 Zeilen in dropship/pinterest_pins_upload.csv
+// verlockend herumliegen und die naechste Sitzung es sonst zum dritten Mal versucht —
+// ein Urteil, das niemand vollstreckt, ist keine Sicherung (Lehre 16.09., 95 Klingen).
+// Aufheben: dropship/_pinterest_massenweg_gefunden.txt anlegen und die Adresse
+// hineinschreiben, an der ein CSV-Feld GEMESSEN wurde.
+const STOPP = 'dropship/_pinterest_massenweg_gefunden.txt';
+
 export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
+  if (!fs.existsSync(path.join(REPO, STOPP)))
+    return { uebersprungen: true, grund:
+      'Kein Massen-/CSV-Upload auf diesem Pinterest-Konto (7 Adressen gemessen, Quittungen '
+      + '25/27/29). Wird auch nicht gebraucht: Katalog-Distribution 438,94 Tsd. genehmigt '
+      + '= 100 %, 7 nicht genehmigt, 0 eingeschraenkt. Aufheben nur mit einer GEMESSENEN '
+      + 'Adresse in ' + STOPP + '.' };
   const csv    = path.join(REPO, 'dropship', 'pinterest_pins_upload.csv');
   const ledger = path.join(REPO, 'dropship', '_pinterest_bulk_done.txt');
   const schritte = [];

@@ -6,6 +6,41 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-17 · 📌 Der Pinterest-Katalog ist zu 100 % ausgeliefert — und der CSV-Weg existiert nicht
+
+Der Distributions-Reiter, den ich beim ersten Lauf übersehen hatte (Auftrag 28), gibt die
+Antwort: **438,94 Tsd. genehmigt = 100 % des Katalogs, 7 nicht genehmigt, 0 eingeschränkt.**
+Die 7 sind «nicht vorrätige Produkte» — die einzige genannte Ursache. Auf der Einpflege-Seite:
+431,36 Tsd. erfolgreich (99.99 %), 24 Fehlschläge (Bilder unter 75 px).
+
+**Das ist genau die Frage, die bei Google Merchant seit dem 10.07. offen ist** («1'698 Produkte ·
+Missing shipping info»), und die wir dort nicht beantworten können, weil Google den
+Agenten-Browser nicht anmelden lässt. Pinterest lässt sich anmelden — und sagt: alles
+ausgeliefert. **Der Pinterest-Katalog ist kein Engpass.** Wer hier arbeitet, poliert einen Kanal,
+der vollständig läuft. Das ist ein wertvolles Nein: es nimmt einen Posten von der Liste, statt
+einen hinzuzufügen.
+
+Und die zweite Hälfte (Auftrag 29): **sieben Adressen abgetastet, nirgends ein Massen-/
+CSV-Einstieg.** `/bulk-create-pins/` und `/business/pins/` leiten beide auf `?show_error=true`,
+`ads.pinterest.com` landet im Kampagnen-Bericht (0 Dateifelder). Der CSV-Massen-Upload existiert
+auf diesem Konto nicht. Die 117 geprüften Pins wären ohnehin Beiwerk zu einem Kanal mit 100 %
+Distribution.
+
+Damit das nicht zum dritten Mal versucht wird, steht im Upload-Skript jetzt ein **harter
+Stopp**, aufhebbar nur mit einer GEMESSENEN Adresse in
+`dropship/_pinterest_massenweg_gefunden.txt`. Die 117 Zeilen liegen verlockend in der CSV, und
+die Lehre vom 16.09. war teuer: **ein Urteil, das niemand vollstreckt, ist keine Sicherung** — 95
+Klingen standen elf Tage nach ihrem Draft-Urteil noch im Verkauf. Gesamtstand mit allen Zahlen:
+`dropship/PINTEREST-STAND-2026-09-17.md`.
+
+Offen bleibt die falsche Zusage **«Gratis-Versand ab CHF 65»** in der Profilbeschreibung — eine
+Schwelle, die am 10.08. aus dem Theme entfernt wurde und fünf Wochen auf einem öffentlichen
+Profil überlebt hat. Dafür sind jetzt zwei Aufträge angelegt statt einem: erst das
+Bearbeitungsformular **messen** (Felder mit `name`/`data-test-id`/Wert, und in welchem Feld die
+65 wirklich steht), dann ändern. Genau diese Trennung hat heute gefehlt, als ein geratener
+Selektor beinahe eine CSV veröffentlicht hat.
+
+
 ## 2026-09-17 · 🔬 Viermal dieselbe Frage gestellt, dreimal falsch beantwortet — entschieden hat das Lesen
 
 Nach der Reparatur der 25 Wächter, die am Ende von `gql()` ein leeres Ergebnis zurückgaben, war
