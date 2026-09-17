@@ -96,19 +96,22 @@ CHROME="$(node -e "console.log(require('playwright').chromium.executablePath())"
 
 install -d -m 700 "$PROFIL"
 echo "▶ Chromium mit Profil $PROFIL, Steuerport nur auf 127.0.0.1:9222"
-# ⚠️ 17.09.2026: Vorher startete hier NUR Google Merchant, und man musste die
-# uebrigen Dienste von Hand nachtippen. Gemessen nach dem ersten Anmeldeversuch:
-# Shopify und BigBuy waren angemeldet, Pinterest und Google NICHT — vier von fuenf
-# Tabs fehlten schlicht. Deshalb kommen jetzt alle fuenf gleich als Tabs hoch; in
-# chrome://inspect steht dann pro Tab eine Zeile, und du klickst sie der Reihe nach ab.
+# ⚠️⚠️ ZWEIMAL KORRIGIERT am 17.09.2026, und der zweite Fehler war meiner:
+# Erst startete hier NUR Google Merchant, und die uebrigen vier Dienste musste man von
+# Hand nachtippen — gemessen waren danach zwei von fuenf angemeldet, weil die Tabs
+# schlicht fehlten. Also habe ich fuenf URLs an den Startbefehl gehaengt. Ergebnis auf
+# dem Server:
+#     [ERROR:chrome_main.cc] Multiple targets are not supported in headless mode.
+#     ✗ Der Steuerport antwortet nicht
+# Kopfloses Chromium nimmt GENAU EINE URL. Mit fuenf startet es gar nicht — aus einer
+# Unbequemlichkeit war ein Totalausfall geworden.
+# Richtig ist: mit EINER URL starten, die uebrigen Tabs danach ueber den Steuerport
+# nachlegen (`PUT /json/new?<url>`). Verifiziert an Chromium 141: 1 Tab beim Start,
+# 2 nach einem PUT.
 "$CHROME" --headless=new --no-sandbox \
   --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
   --user-data-dir="$PROFIL" --lang=de-CH \
-  "https://accounts.google.com/ServiceLogin?continue=https://merchants.google.com/mc/overview" \
-  "https://www.pinterest.ch/login/" \
-  "https://www.bigbuy.eu/en/login" \
-  "https://admin.shopify.com/store/au3j0y-hq" \
-  "https://www.tiktok.com/login" &
+  "https://accounts.google.com/ServiceLogin?continue=https://merchants.google.com/mc/overview" &
 CHROME_PID=$!
 sleep 3
 
@@ -116,6 +119,22 @@ if ! curl -s --max-time 5 http://127.0.0.1:9222/json/version >/dev/null; then
   echo "✗ Der Steuerport antwortet nicht — Browser vermutlich nicht gestartet."; exit 1
 fi
 echo "✅ Browser läuft (PID $CHROME_PID). Steuerport antwortet."
+
+# Die uebrigen vier Dienste als eigene Tabs nachlegen — einzeln, weil der Start nur
+# eine URL vertraegt (siehe oben). Schlaegt einer fehl, wird er benannt statt verschwiegen:
+# ein fehlender Tab heisst spaeter «Dienst nicht angemeldet», und dann sucht man am
+# falschen Ende.
+for U in "https://www.pinterest.ch/login/" \
+         "https://www.bigbuy.eu/en/login" \
+         "https://admin.shopify.com/store/au3j0y-hq" \
+         "https://www.tiktok.com/login"; do
+  E=$(node -e "console.log(encodeURIComponent(process.argv[1]))" "$U")
+  curl -s --max-time 10 -X PUT "http://127.0.0.1:9222/json/new?$E" >/dev/null \
+    && echo "   + Tab: $U" \
+    || echo "   ⚠️ Tab liess sich nicht oeffnen: $U (im Browser von Hand aufrufen)"
+done
+TABS=$(curl -s --max-time 5 http://127.0.0.1:9222/json/list | grep -c '"type": "page"')
+echo "   → $TABS Tabs offen (erwartet: 5)"
 echo
 echo "   Jetzt BEI DIR:  ssh -L 9222:127.0.0.1:9222 root@46.225.75.125"
 echo "                   (dieses Fenster OFFEN lassen — es IST der Tunnel)"
