@@ -2680,3 +2680,40 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15448586879361	Dieses elegante A-Linien-Kleid mit Puffärmeln und Rüschensaum ist die ideale Ergänzung für Ihre Garderobe.
 15448587075969	Dieses ärmellose Midikleid präsentiert sich im eleganten Zopfmuster und ist mit einem charmanten blau-weissen Blumenprint verziert.
 15448587141505	Luftiges Sommerkleid aus Leinen und Polyester. Gemustertes Design (G580 Print).
+15448587501953	Dieses ärmellose Midikleid mit V-Ausschnitt besticht durch sein elegantes Paisley-Muster und fliessende Spitze.
+15448587731329	Dieses einfarbige Neckholder-Kleid ist ein echter Hingucker.
+15448587862401	Dieses vielseitige, lang geschnittene A-Linien-Kleid ist perfekt für entspannte Tage und Freizeitaktivitäten.
+15448587993473	Dieses lässige Midikleid im japanisch-koreanischen Stil ist ein vielseitiges Basic für junge Erwachsene.
+15448588190081	Dieses ärmellose Trägerkleid mit Blumenprint und Kapuze ist ein echtes Statement-Piece.
+15448588583297	Dieses Damen-Top besticht durch sein elegantes Design mit V-Ausschnitt und Laternenärmeln, perfekt für einen stilvollen Pendler-Look.
+15448588616065	Dieses Damenkleid im Vintage-Stil besticht durch seine elegante A-Linie und den charmanten V-Ausschnitt. Grösse: S, M, L, XL, 2XL.
+15448588681601	Dieses elegante Midikleid mit Rundhalsausschnitt und Taillengürtel ist ein Muss für jede stilbewusste Frau.
+15448588812673	Dieses elegante, einteilige Damenkleid besticht durch seine seidenmatte Textur und den modernen Neckholder-Schnitt.
+15448588878209	Dieses Damenkleid überzeugt mit seinem eleganten europäisch-amerikanischen Design.
+15448589009281	Dieses stilvolle Hemdblusenkleid für Damen ist aus hochwertigem Leinen gefertigt und bietet optimalen Tragekomfort. Kurze Ärmel und Umlegekragen.
+15448589074817	Dieses ärmellose Etuikleid für Damen überzeugt durch sein elegantes Design und den sommerlichen Blumenprint. Sommerlicher Blumenprint in Senfgelb.
+15448589173121	Diese moderne, minimalistische Schürze ist ein praktisches und stilvolles Accessoire für diverse Tätigkeiten. Material: 100% Baumwolle.
+15448589271425	Dieses elegante Jacquard-Seidenkleid für Damen präsentiert sich im zeitlosen A-Linien-Stil und einer entspannten Taille.
+15448589304193	Dieses lange A-Linien-Kleid aus Chiffon präsentiert sich mit einem ansprechenden Blumenmuster und Kontrastfarben.
+15448589599105	Dieses figurbetonte Neckholder-Kleid im europäisch-amerikanischen Stil ist ein vielseitiges Einteiler-Kleidungsstück für modebewusste Frauen.
+15448589730177	Das figurbetonte Strickkleid im europäischen und amerikanischen Stil ist ein vielseitiges One-Piece für Damen.
+15448589894017	Dieses ärmellose Midikleid mit Rundhalsausschnitt ist ein echter Hingucker. Grösse: S, M, L, XL, XXL, 3XL.
+15448589992321	Dieses elegante Off-Shoulder-Kleid ist ein vielseitiges Essential für Ihre Garderobe.
+15448590057857	Dieser lässige Strickpullover im Mock-Two-Piece-Stil kombiniert den Komfort eines Cardigans mit der Optik eines Poloshirts.
+15448590123393	Dieser elegante Strick-Cardigan mit V-Ausschnitt ist ein vielseitiges Kleidungsstück für Damen. Material: Polyester (Hauptstoffzusammensetzung).
+15448590188929	Dieser gestreifte Strick-Cardigan ist ein vielseitiges Kleidungsstück im klassischen Design, das sich ideal für den Arbeitsalltag oder elegante Anlässe …
+15448590320001	Dieser extra-lange Strick-Cardigan ist ein vielseitiges Kleidungsstück für Damen. Verfügbare Längen: 100 cm, 110 cm, 120 cm.
+15448590352769	Dieser stilvolle Damenpullover ist die ideale Ergänzung für Ihre Herbst- und Wintergarderobe. Mittellange Ausführung (65cm < Länge ≤ 80cm).
+15448590385537	Dieser lässige Pullover im japanisch-koreanischen Stil ist ein vielseitiges Basic für Ihre Garderobe.
+15448590418305	Dieser lässige V-Neck Pullover im japanisch-koreanischen Stil ist ein vielseitiges Basic für Ihre Garderobe.
+15448590483841	Dieser modische Jacquard Strickpullover für Herren überzeugt durch sein stilvolles Design und einen hohen Tragekomfort. Grösse: S, M, L, XL, XXL, 3XL.
+15448590549377	Dieser lässige Strick-Pullover im Boho-Stil ist ideal für entspannte Tage oder Ferien. Lockere Fledermaus-Halbärmel.
+15448590713217	Diese elegante Strickjacke für Damen ist ein vielseitiges Basic für den Alltag. Grösse: M, L, XL, 2XL.
+15448590745985	Dieser gestrickte Kapuzenpullover für Damen vereint literarischen Retro-Stil mit modernem Komfort. Literarischer Retro-Stil.
+15448590844289	Dieser stilvolle Strick-Cardigan mit V-Ausschnitt ist ein vielseitiges Kleidungsstück für Damen. Grösse: S, M, L, XL, 2XL, 3XL.
+15448590909825	Dieser stilvolle Strickpullover mit Rundhalsausschnitt und Sieben-Viertel-Ärmeln ist eine vielseitige Ergänzung für jede Damengarderobe.
+15448590975361	Dieses vielseitige Strick-T-Shirt für Damen ist der ideale Begleiter für sommerliche Tage.
+15448591008129	Diese gestreifte Strickjacke für Damen ist aus einem Materialmix gefertigt, der die Vorteile dreier Fasern vereint.
+15448591139201	Dieses luftige Strick-Shirt im Oversized-Look ist der ideale Begleiter für warme Tage. Grösse: 1XL, 2XL, 3XL, 4XL, 5XL.
+15448591270273	Dieser luftige, lange Strick-Cardigan im Boho-Stil ist der ideale Begleiter für heisse Sommertage und Ferien. Leichtes, atmungsaktives 100% Polyester.
+15448591401345	Dieser stilvolle Pullover für Damen überzeugt mit seinem gehäkelten Design und den eleganten Dreiviertelärmeln. Länge: Regulär (50 cm < Länge ≤ 65 cm).
