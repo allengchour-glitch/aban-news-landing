@@ -16,7 +16,21 @@ name: Reel Auto-Post (alle 4 Stunden 1 Reel)
 on:
   # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
     # - cron: '0 13 * * *'   # 13:00 UTC — versetzt, damit der 09:00-Top-Slot dem Meta-Reel-Poster gehört
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur anzeigen, was gepostet wuerde (Vorgabe: ja)'
+        type: boolean
+        required: false
+        # ⚠️ 17.09.2026 von false auf true gedreht. Gemessen: auf origin/main liegen
+        # WEDER automation/post_guard.mjs NOCH dropship/_SOCIAL_STOPP
+        # (git ls-tree origin/main … → 0 Zeilen; Gegenprobe mit social-autopost-meta.mjs
+        # → Treffer, das Werkzeug kann also finden). Ein Klick auf «Run workflow» hat
+        # damit auf main OHNE jede der sechs Doppelpost-Wachen gepostet und ohne den
+        # Stopp zu sehen. Der Zeitplan ist zwar seit 13.06. auskommentiert — es ist keine
+        # tickende Bombe, sondern ein geladener Knopf. Ein Vorgabewert, der im
+        # Zweifel postet, ist die falsche Vorgabe.
+        default: true
 
 permissions:
   contents: write
@@ -41,6 +55,7 @@ jobs:
 
       - name: Post next ready reel
         env:
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
           PUBLISH_WEBHOOK_URL: ${{ secrets.PUBLISH_WEBHOOK_URL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

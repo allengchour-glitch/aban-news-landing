@@ -6,6 +6,72 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-17 · 🔫 Der Stopp gilt nur auf einem Zweig — auf `main` steht der Poster nackt
+
+Betreiber: «wen alles fix ist machen wir morgen instagram automation». Bevor irgendetwas
+gebaut wird, hat ein Prüflauf mit fünf Linsen den Stapel vermessen (Token, Wachen, Inhalt,
+Nutzen, Stopp), die Blocker-Befunde adversarisch gegengeprüft — 3 bestätigt, 3 widerlegt —
+und dabei etwas gefunden, wonach niemand gesucht hat.
+
+**`dropship/_SOCIAL_STOPP` und `automation/post_guard.mjs` existieren auf `origin/main`
+NICHT.** Selbst nachgemessen:
+
+```
+git ls-tree origin/main automation/post_guard.mjs dropship/_SOCIAL_STOPP   → 0 Zeilen
+git ls-tree origin/main automation/social-autopost-meta.mjs                → Treffer
+```
+
+Die zweite Zeile ist die Gegenprobe: das Werkzeug **kann** finden, es findet die Wachen nur
+nicht. Fünf GitHub-Workflows auf main (`social-`, `video-`, `story-meta-autopost`,
+`tiktok-autopost`, `reel-autopost`) rufen genau diese ungeschützten Fassungen auf.
+
+**Die sechste Schicht — die, die «einfach alles anhält» — hält nur diesen einen Zweig an.**
+Sie ist eine Datei, und eine Datei liegt auf einem Branch. Alle sechs Wachen sind gegen
+Wiederholung im selben Prozess gebaut; keine davon denkt an einen zweiten Ort, an dem
+derselbe Code liegt. **Ein Stopp ist so weit wirksam, wie die Datei reicht, auf der er
+steht** — und wer ihn auf einem Feature-Branch pflegt, hat den Hauptzweig nicht geschützt.
+
+**Wichtige Präzisierung, damit niemand in Panik das Falsche tut:** die Zeitpläne aller fünf
+Workflows sind seit dem 13.06. auskommentiert («Cron-Nulldiät»). Es ist **keine tickende
+Bombe, sondern ein geladener Knopf** — es braucht einen Klick auf «Run workflow». Genau das
+ist aber am 17.09. für den Betreiber ein realistischer Handgriff, wenn morgen «Instagram
+Automation» ansteht.
+
+Sofort gemacht, was von hier geht: `dry_run` steht in allen fünf auf **`default: true`**.
+`reel-autopost.yml` hatte **überhaupt keinen** Schalter (`workflow_dispatch: {}`) — ein Klick
+postete direkt; er hat jetzt einen. **Ein Vorgabewert, der im Zweifel postet, ist die falsche
+Vorgabe.** Das wirkt auf main erst mit dem nächsten Merge; der schnellere Weg ist der
+Betreiber, der die fünf Workflows in der GitHub-Oberfläche abschaltet (zwei Minuten).
+
+### Und die Zahl, die die ganze Frage anders stellt
+
+| Quelle (90 Tage) | Sitzungen | Abschlüsse |
+|---|---|---|
+| **Suche** | 617 | **4** |
+| Social gesamt | 6'986 | **0** |
+| davon Instagram | **20** | 0 |
+| Pinterest | 105 | 0 |
+
+Letzte 30 Tage: **Instagram 8 Sitzungen**, Pinterest 82, Google 93, Facebook 134. Das
+IG-Konto hat 164 Follower, der letzte Post ist vom 03.09.
+
+**Die Suche bringt mit 617 Sitzungen vier Abschlüsse; Social mit 6'986 keinen.** Instagram
+schickt acht Besucher im Monat. Pinterest schickt zehnmal so viele, **ohne dass je ein Pin
+gepostet wurde**. Wenn morgen eine Stunde in einen sozialen Kanal geht, ist Pinterest der
+belegbar grössere Hebel. Der Betreiber entscheidet — er soll die Acht kennen.
+
+Zwei Nebenbefunde, die eigene Gedächtniseinträge korrigieren: das Meta-Token ist **nicht**
+abgelaufen (`expires_at 0`, `is_valid true`), aber der **Datenzugang endet am 05.10.2026
+18:50 UTC** — 90 Tage nach der Betreiber-Freigabe vom 07.07., und das Neuziehen am 18.08. hat
+daran nichts geändert. Und der IG-Bio-Link, der in CLAUDE.md als offener Punkt steht, **ist
+gesetzt** (`website: http://luxestyle.ch`).
+
+Zuletzt der Grund, warum die Warteschlange VOR einer Entscheidung durchgesehen gehört: wird
+die Stopp-Datei gelöscht, startet der nächste `engine_keepalive`-Lauf den Autopiloten, dessen
+Schleife alle 900 s tickt. Die erste `ready`-Zeile ist **`meta-capri`, datiert 08.06.2026**.
+**Drei Monate alte Ware wäre das Erste, was das Konto sieht.**
+
+
 ## 2026-09-17 · 🧠 Zweites Gehirn: das Gedächtnis dafür, WAS LÄUFT — und drei Motoren, die es nicht taten
 
 Betreiber: «ki automation mit 2te gehirn für alles automation und selber wachsen verbessern».

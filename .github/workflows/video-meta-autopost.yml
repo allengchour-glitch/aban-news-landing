@@ -21,7 +21,15 @@ on:
       dry_run:
         description: 'Nur testen (nichts posten)'
         type: boolean
-        default: false
+        # ⚠️ 17.09.2026 von false auf true gedreht. Gemessen: auf origin/main liegen
+        # WEDER automation/post_guard.mjs NOCH dropship/_SOCIAL_STOPP
+        # (git ls-tree origin/main … → 0 Zeilen; Gegenprobe mit social-autopost-meta.mjs
+        # → Treffer, das Werkzeug kann also finden). Ein Klick auf «Run workflow» hat
+        # damit auf main OHNE jede der sechs Doppelpost-Wachen gepostet und ohne den
+        # Stopp zu sehen. Der Zeitplan ist zwar seit 13.06. auskommentiert — es ist keine
+        # tickende Bombe, sondern ein geladener Knopf. Ein Vorgabewert, der im
+        # Zweifel postet, ist die falsche Vorgabe.
+        default: true
 
 permissions:
   contents: write
