@@ -41,8 +41,23 @@ if pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1; then
   pkill -9 -f -- "--user-data-dir=$PROFIL" 2>/dev/null || true; sleep 2
 fi
 
-CHROME="$(node -e "console.log(require('playwright').chromium.executablePath())" 2>/dev/null || true)"
-[ -x "$CHROME" ] || { echo "✗ Chromium nicht gefunden — lief luxe-agent-setup.sh durch?"; exit 1; }
+# ⚠️ 17.09.2026: Hier stand nur der playwright-Aufruf — und der findet das Paket NUR,
+# wenn man im Repo-Verzeichnis steht. Als Einzeiler aus /root aufgerufen scheiterte er
+# mit «Chromium nicht gefunden», obwohl Chromium laengst installiert war. Die Meldung
+# zeigte damit auf die Installation statt auf das Arbeitsverzeichnis.
+# Regel daraus: Wer einen Pfad aufloest, darf sich nicht auf das Verzeichnis verlassen,
+# aus dem jemand den Befehl zufaellig getippt hat. Drei Wege, der erste der beste.
+CHROME="$( (cd "$REPO" && node -e "console.log(require('playwright').chromium.executablePath())") 2>/dev/null || true)"
+[ -x "$CHROME" ] || CHROME="$(ls -d /opt/pw-browsers/chromium*/chrome-linux/chrome 2>/dev/null | head -1)"
+[ -x "$CHROME" ] || CHROME="$(command -v chromium chromium-browser google-chrome-stable 2>/dev/null | head -1)"
+[ -x "$CHROME" ] || {
+  echo "✗ Chromium wirklich nicht gefunden. Gesucht wurde:"
+  echo "    1) playwright im Repo $REPO"
+  echo "    2) /opt/pw-browsers/chromium*/chrome-linux/chrome"
+  echo "    3) chromium / chromium-browser / google-chrome-stable im PATH"
+  echo "  Nachinstallieren:  cd $REPO && npx playwright install chromium"
+  exit 1; }
+echo "    Chromium: $CHROME"
 install -d -m 700 "$PROFIL"
 
 echo "▶ 4/5  Browser starten — losgeloest, er ueberlebt dieses Fenster"
