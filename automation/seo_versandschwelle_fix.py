@@ -57,7 +57,7 @@ def main():
     if os.path.exists(LEDGER):
         done = {l.split("\t")[0] for l in open(LEDGER)}
     f = open(LEDGER, "a")
-    n = geaendert = 0
+    n = geaendert = seiten = 0
     while True:
         d = gql('query($c:String){products(first:100,after:$c,query:"status:ACTIVE"){'
                 'pageInfo{hasNextPage endCursor} nodes{id title seo{title description}}}}',
@@ -98,7 +98,11 @@ def main():
         if not pg["pageInfo"]["hasNextPage"]:
             break
         cur = pg["pageInfo"]["endCursor"]
-        if not DRY:
+        seiten += 1
+        # Nur jede 20. Seite quittieren: der Cursor lag sonst im Sekundentakt als
+        # Aenderung im Baum und hielt den Stop-Hook dauerhaft schmutzig. Ein Absturz
+        # kostet hoechstens 20 Seiten Nacharbeit, und die ist ueber den Ledger idempotent.
+        if not DRY and seiten % 20 == 0:
             open(st, "w").write(cur)
     if not DRY and os.path.exists(st):
         os.remove(st)          # Cursor räumen, damit ein Folgelauf Neuzugänge erfasst
