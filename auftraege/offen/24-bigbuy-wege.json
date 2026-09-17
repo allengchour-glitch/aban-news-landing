@@ -1,6 +1,0 @@
-{
-  "id": "24-bigbuy-wege",
-  "typ": "skript",
-  "skript": "bigbuy_wege_abtasten.mjs",
-  "warum": "Wiederholung: 22 ist im Merge zwischen offen/ und erledigt/ verlorengegangen und nie gelaufen (Quittung ohne Stand). Tastet sieben BigBuy-Adressen ab und sammelt die Kontaktangaben aus Impressum und AGB. Rein lesend."
-}
