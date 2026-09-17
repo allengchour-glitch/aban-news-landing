@@ -61,11 +61,16 @@ echo "    Chromium: $CHROME"
 install -d -m 700 "$PROFIL"
 
 echo "▶ 4/6  Browser starten — losgeloest, er ueberlebt dieses Fenster"
+# ⚠️ --window-size ist kein Schoenheitswunsch: ohne Angabe nimmt kopfloses Chromium
+# 800x600. In chrome://inspect sieht man die Seite genau in dieser Groesse, und bei
+# Pinterest war dadurch die halbe rechte Seite abgeschnitten — anmelden und klicken
+# wird damit zur Qual. 1600x1000 entspricht einem normalen Bildschirm.
 # setsid + nohup: eigene Sitzung, kein HUP beim Schliessen des Terminals.
 setsid nohup "$CHROME" --headless=new --no-sandbox --disable-gpu \
   --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
   --user-data-dir="$PROFIL" --lang=de-CH \
   --no-first-run --no-default-browser-check --hide-crash-restore-bubble \
+  --window-size=1600,1000 \
   "https://accounts.google.com/ServiceLogin?continue=https://merchants.google.com/mc/overview" \
   >"$LOG" 2>&1 < /dev/null &
 sleep 4
