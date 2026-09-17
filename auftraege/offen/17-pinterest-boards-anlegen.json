@@ -1,6 +1,0 @@
-{
-  "id": "17-pinterest-boards-anlegen",
-  "typ": "skript",
-  "skript": "pinterest_boards_und_profil.mjs",
-  "warum": "Betreiber-Entscheid 17.09.: alle sechs Boards neu anlegen, auch wo aehnliche bestehen (wellness-self-care, wohnen-deko, geschenkideen-schweiz). Grund: Pinterests Massen-Upload trifft die Namen exakt — bei Abweichung verwirft er die Zeilen STILL. Gemessen in Auftrag 16: keines der sechs existiert, die acht vorhandenen heissen anders. Der Profilteil ueberspringt sich selbst, dort steht bereits CHF 50 (Auftrag 14 hat es vor dem Abbruch geschafft)."
-}
