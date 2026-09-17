@@ -1,0 +1,26 @@
+{
+  "id": "23e-pinterest-board",
+  "typ": "skript",
+  "skript": "pinterest_boards_anlegen.mjs",
+  "warum": "EIN Board je Lauf. Die Faessung, die alle sechs in einem Durchgang wollte, starb zweimal mit Stand 'laufend' — der Agent laeuft im 5-Minuten-Takt, also muss die Arbeit in einen Takt passen. Idempotent: jeder Lauf liest vorher, was schon existiert, und legt nur das naechste Fehlende an. Sechs Auftraege, sechs kurze Laeufe.",
+  "stand": "ok",
+  "ergebnis": {
+    "angelegt": [],
+    "vorhanden": [
+      "Herrenmode Schweiz",
+      "Schmuck & Accessoires",
+      "Sommerkleider & Damenmode 2026",
+      "Wellness & Beauty",
+      "Home & Geschenkideen",
+      "Schuhe & Sandalen"
+    ],
+    "offen": [],
+    "schritte": [
+      "vorhanden: schuhe-sandalen, home-geschenkideen, wellness-beauty, sommerkleider-damenmode-2026, schmuck-accessoires, herrenmode-schweiz, tech-gadgets, leder-accessoires, schlaf-aromatherapie, küche-genuss, wellness-self-care, wohnen-deko, geschenkideen-schweiz, beauty-pflege",
+      "alle sechs existieren schon"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/23e-pinterest-board-0-profil.png"
+    ]
+  }
+}
