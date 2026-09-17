@@ -3,6 +3,28 @@
   "typ": "wartung",
   "aktion": "speicher",
   "warum": "Beim Einloggen meldete der Server 81,5 % von 37,22 GB belegt. Erst messen, wo der Platz liegt — danach erst aufraeumen.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "aktion": "speicher",
+    "was": "Platte, Arbeitsspeicher und die groessten Verzeichnisse melden",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "df -h /",
+        "ausgabe": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        38G   31G  5.4G  86% /\n"
+      },
+      {
+        "befehl": "free -h",
+        "ausgabe": "               total        used        free      shared  buff/cache   available\nMem:           3.7Gi       751Mi       2.0Gi       8.7Mi       1.3Gi       3.0Gi\nSwap:             0B          0B          0B\n"
+      },
+      {
+        "befehl": "du -xh --max-depth=1 /var",
+        "ausgabe": "4.0K\t/var/mail\n4.0K\t/var/local\n197M\t/var/cache\n1.2G\t/var/log\n4.0K\t/var/opt\n4.0K\t/var/crash\n221M\t/var/lib\n2.0M\t/var/backups\n28K\t/var/tmp\n4.0K\t/var/snap\n32K\t/var/spool\n1.6G\t/var\n"
+      },
+      {
+        "befehl": "du -xh --max-depth=1 /opt",
+        "ausgabe": "11G\t/opt/abannews\n7.5G\t/opt/luxe-agent\n658M\t/opt/pw-browsers\n7.0G\t/opt/luxe\n26G\t/opt\n"
+      }
+    ]
+  }
 }

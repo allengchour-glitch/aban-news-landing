@@ -1,0 +1,8 @@
+{
+  "id": "11-wartung-dienste",
+  "typ": "wartung",
+  "aktion": "dienste",
+  "warum": "Erster Selbstbericht des Agenten ueber sich selbst: laeuft der Timer, und was steht im letzten Lauf?",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
