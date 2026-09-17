@@ -1,6 +1,0 @@
-{
-  "id": "14-pinterest-boards-profil",
-  "typ": "skript",
-  "skript": "pinterest_boards_und_profil.mjs",
-  "warum": "Betreiber 17.09.: 'mach du 1 und 2'. (1) Die sechs Boards der Warteschlange gibt es auf dem Konto nicht — ohne sie verwirft Pinterests Massen-Upload die Zeilen still. (2) Die Profilbeschreibung wirbt mit 'Gratis-Versand ab CHF 65', richtig sind 50; die 65 wurde am 10.08. aus dem Theme entfernt und hat auf dem Kanal fuenf Wochen ueberlebt. Pinterest ist seit 17.09. im Agenten-Profil angemeldet (gemessen in Auftrag anmeldungen-nach-login)."
-}
