@@ -1,6 +1,0 @@
-{
-  "id": "15-pinterest-stand",
-  "typ": "skript",
-  "skript": "pinterest_stand.mjs",
-  "warum": "Auftrag 14 endete mit Stand 'laufend' — das Anmelde-Skript hat den laufenden Dienst gestoppt und ihn dabei abgeschossen. Vor einem zweiten Lauf messen, welche Boards schon existieren und ob der Profiltext bereits korrigiert ist. Sonst Dubletten (Regel 2)."
-}
