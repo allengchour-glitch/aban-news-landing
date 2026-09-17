@@ -15765,3 +15765,6 @@ gid://shopify/Product/15500439159169	53->1	Carbon-Batterien für Spielzeug · 60
 gid://shopify/Product/15500454658433	136->2	Blumengarnitur
 gid://shopify/Product/15500484837761	67->0	Basilikum-Pflegemask
 gid://shopify/Product/15500928418177	46->0	Stahlarmband-Multifunktion-Uhr
+gid://shopify/Product/15500933202305	36->0	Blauer Kissenbezug
+gid://shopify/Product/15500935987585	91->3	Ankle Boots mit Seitenreissverschluss
+gid://shopify/Product/15500936774017	13->0	Nackenmassagegerät mit Bluetooth
