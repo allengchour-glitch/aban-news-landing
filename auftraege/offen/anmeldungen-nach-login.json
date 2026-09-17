@@ -1,6 +1,0 @@
-{
-  "id": "anmeldungen-nach-login",
-  "typ": "skript",
-  "skript": "anmeldungen_pruefen.mjs",
-  "warum": "Direkt nach dem Anmelden gemessen statt angenommen. Der Melder sagt jetzt null statt true, wo er es nicht weiss (Einwilligungswand, Bot-Pruefung)."
-}

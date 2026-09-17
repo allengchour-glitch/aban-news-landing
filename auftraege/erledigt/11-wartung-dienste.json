@@ -1,0 +1,27 @@
+{
+  "id": "11-wartung-dienste",
+  "typ": "wartung",
+  "aktion": "dienste",
+  "warum": "Erster Selbstbericht des Agenten ueber sich selbst: laeuft der Timer, und was steht im letzten Lauf?",
+  "stand": "ok",
+  "ergebnis": {
+    "aktion": "dienste",
+    "was": "Zustand des Agenten und seines Timers melden",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "systemctl is-active luxe-agent.timer",
+        "ausgabe": "active\n"
+      },
+      {
+        "befehl": "systemctl status luxe-agent.timer --no-pager -n 5",
+        "ausgabe": "● luxe-agent.timer - LuxeStyle Browser-Auftragsnehmer (alle 5min)\n     Loaded: loaded (/etc/systemd/system/luxe-agent.timer; enabled; preset: enabled)\n     Active: active (running) since Thu 2026-09-17 17:15:55 UTC; 2min 17s ago\n Invocation: 6378b35684b745d38d8ce63ba96b4835\n    Trigger: n/a\n   Triggers: ● luxe-agent.service\n\nSep 17 17:15:55 ubuntu-4gb-nbg1-1 systemd[1]: Started luxe-agent.timer - LuxeStyle Browser-Auftragsnehmer (alle 5min).\n"
+      },
+      {
+        "befehl": "systemctl status luxe-agent.service --no-pager -n 20",
+        "fehler": "Command failed: systemctl status luxe-agent.service --no-pager -n 20",
+        "ausgabe": "s-shell --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --disable-dev-shm-usage --use-angle=swiftshader-webgl --use-gl=angle --mute-audio --headless=old --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,10739063064484665271,16058555286054387906,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=7,i,6192625048055742822,8272120699597813661,4 --trace-process-track-uuid=3190708989122997041\"\n             ├─1785960 \"/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell --type=renderer --headless=old --no-sandbox --disable-dev-shm-usage --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --ozone-platform=headless --disable-gpu-compositing --lang=en-US --num-raster-threads=1 --renderer-client-id=4 --launch-time-ticks=7522783206056 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,10739063064484665271,16058555286054387906,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,\"\n             └─1786119 systemctl status luxe-agent.service --no-pager -n 20\n\nSep 17 17:18:06 ubuntu-4gb-nbg1-1 systemd[1]: Starting luxe-agent.service - LuxeStyle Browser-Auftragsnehmer...\nSep 17 17:18:11 ubuntu-4gb-nbg1-1 luxe-auftrag[1785919]: ✓ 10-wartung-speicher (wartung)\n"
+      }
+    ]
+  }
+}
