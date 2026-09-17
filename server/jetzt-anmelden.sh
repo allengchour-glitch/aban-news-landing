@@ -1,39 +1,102 @@
 #!/usr/bin/env bash
-# jetzt-anmelden.sh — EIN Befehl, der alles vorbereitet und den Anmelde-Browser startet.
+# jetzt-anmelden.sh — startet den Anmelde-Browser und LAESST IHN LAUFEN.
 #
-# WARUM ES DAS GIBT (17.09.2026, nach vier Fehlversuchen):
-# Die Hetzner-Web-Konsole verstuemmelt eingefuegte Befehle auf drei Arten, alle gemessen
-# am Bildschirm des Betreibers:
-#   1. sie frisst das ERSTE ZEICHEN jeder Zeile   (pkill -> kill, cd -> d, bash -> ash)
-#   2. sie verschluckt ZEILENUMBRUECHE            (drei Befehle werden zu einem)
-#   3. sie verwandelt Sonderzeichen               (&& wurde zu 77)
-# Jede mehrzeilige Anleitung scheitert daran zwangslaeufig. Diese Datei loest das, indem
-# es NICHTS mehr zu tippen gibt ausser einer Zeile aus Buchstaben, Schraegstrichen und
-# Bindestrichen — und einem fuehrenden Leerzeichen, das die Konsole gefahrlos fressen darf:
+# ⚠️ UMGEBAUT am 17.09.2026, nach dem ersten erfolgreichen Lauf. Die erste Fassung hing
+# den Browser an das Terminalfenster (`wait $CHROME_PID`, Strg-C zum Beenden). Gemessen:
+# der Browser startete, legte vier Tabs an — und war im selben Moment wieder weg, ohne
+# dass jemand Strg-C gedrueckt haette. Das ist die falsche Bauweise, egal warum sie
+# diesmal ausging: sich bei fuenf Diensten anzumelden dauert Minuten, und solange darf
+# nichts davon abhaengen, dass eine SSH-Sitzung durchhaelt.
+# Jetzt laeuft der Browser LOSGELOEST weiter (setsid). Das Fenster darf zu.
 #
+# ZU TIPPEN (eine Zeile, nur Buchstaben/Schraegstriche/Bindestriche — die Hetzner-Konsole
+# frisst erste Zeichen, Zeilenumbrueche und Sonderzeichen, siehe unten):
 #      bash /opt/luxe-agent/repo/server/jetzt-anmelden.sh
-#
-# (Mit SSH statt Web-Konsole braucht man das nicht — dort kommen Befehle unversehrt an.
-#  Aber es soll auch dann gehen, wenn gerade nur die Konsole da ist.)
+# und wenn du fertig angemeldet bist:
+#      bash /opt/luxe-agent/repo/server/anmeldung-fertig.sh
 set -uo pipefail
 REPO=/opt/luxe-agent/repo
+PROFIL="${PROFIL:-/var/lib/luxe-agent/chrome-profil}"
+LOG=/var/log/luxe-anmelden.log
+export PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
+[ "$(id -u)" -eq 0 ] || { echo "Bitte als root ausführen."; exit 1; }
 
-echo "▶ 1/3  Verirrte SSH-Tunnel auf diesem Server beenden"
-# ⚠️ Ein `ssh -L 9222:127.0.0.1:9222 root@46.225.75.125`, das AUF dem Server laeuft,
-# zeigt auf den Server selbst. Es belegt Port 9222, und Chromium kommt nicht mehr dran.
-# Das Verwirrende daran: curl meldet dann «Empty reply from server» statt «Connection
-# refused» — es lauscht ja etwas, es antwortet nur nie. Der Fehler zeigt dadurch auf den
-# Browser, obwohl er beim Tunnel liegt. Der Tunnel gehoert auf den eigenen Rechner.
+echo "▶ 1/5  Verirrte SSH-Tunnel auf diesem Server beenden"
+# Ein `ssh -L 9222:...` AUF dem Server zeigt auf den Server selbst und belegt den Port.
+# Das Verwirrende: curl meldet dann «Empty reply from server» statt «Connection refused»
+# — es lauscht ja etwas, es antwortet nur nie. Der Fehler zeigt dadurch auf den Browser,
+# obwohl er beim Tunnel liegt. Der Tunnel gehoert auf den eigenen Rechner.
 if pgrep -f "ssh -L 9222" >/dev/null 2>&1; then
-  pgrep -af "ssh -L 9222" | sed 's/^/    beende: /'
-  pkill -f "ssh -L 9222" || true
-  sleep 2
-else
-  echo "    keiner gefunden — gut"
-fi
+  pgrep -af "ssh -L 9222" | sed 's/^/    beende: /'; pkill -f "ssh -L 9222" || true; sleep 2
+else echo "    keiner gefunden — gut"; fi
 
-echo "▶ 2/3  Neuesten Stand holen"
+echo "▶ 2/5  Neuesten Stand holen"
 git -C "$REPO" pull -q --ff-only 2>&1 | sed 's/^/    /' || echo "    (pull übersprungen)"
 
-echo "▶ 3/3  Anmelde-Browser starten"
-exec bash "$REPO/server/luxe-profil-anmelden.sh"
+echo "▶ 3/5  Agent anhalten und Profil freiraeumen"
+systemctl stop luxe-agent.timer 2>/dev/null || true
+systemctl stop luxe-agent.service 2>/dev/null || true
+if pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1; then
+  pkill -f -- "--user-data-dir=$PROFIL" 2>/dev/null || true; sleep 3
+  pkill -9 -f -- "--user-data-dir=$PROFIL" 2>/dev/null || true; sleep 2
+fi
+
+CHROME="$(node -e "console.log(require('playwright').chromium.executablePath())" 2>/dev/null || true)"
+[ -x "$CHROME" ] || { echo "✗ Chromium nicht gefunden — lief luxe-agent-setup.sh durch?"; exit 1; }
+install -d -m 700 "$PROFIL"
+
+echo "▶ 4/5  Browser starten — losgeloest, er ueberlebt dieses Fenster"
+# setsid + nohup: eigene Sitzung, kein HUP beim Schliessen des Terminals.
+setsid nohup "$CHROME" --headless=new --no-sandbox --disable-gpu \
+  --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
+  --user-data-dir="$PROFIL" --lang=de-CH \
+  --no-first-run --no-default-browser-check --hide-crash-restore-bubble \
+  "https://accounts.google.com/ServiceLogin?continue=https://merchants.google.com/mc/overview" \
+  >"$LOG" 2>&1 < /dev/null &
+sleep 4
+for _ in $(seq 1 10); do
+  curl -s --max-time 3 http://127.0.0.1:9222/json/version >/dev/null && break; sleep 2
+done
+curl -s --max-time 5 http://127.0.0.1:9222/json/version >/dev/null || {
+  echo "✗ Der Steuerport antwortet nicht. Letzte Zeilen aus $LOG:"; tail -15 "$LOG"; exit 1; }
+echo "    ✅ Browser läuft, Steuerport antwortet."
+
+echo "▶ 5/5  Fehlende Tabs nachlegen"
+# ⚠️ Chromium stellt Tabs aus dem Profil wieder her — beim ersten Lauf waren es dadurch
+# 12 statt 5, und meine Meldung «erwartet: 5» sah nach Fehler aus, wo keiner war.
+# Deshalb wird jetzt geprueft, was SCHON offen ist, statt blind nachzulegen.
+OFFEN=$(curl -s --max-time 5 http://127.0.0.1:9222/json/list || echo "")
+for U in "https://www.pinterest.ch/login/" \
+         "https://www.bigbuy.eu/en/login" \
+         "https://admin.shopify.com/store/au3j0y-hq" \
+         "https://www.tiktok.com/login"; do
+  KURZ=$(echo "$U" | sed 's|https://||; s|/.*||')
+  if echo "$OFFEN" | grep -q "$KURZ"; then echo "    schon offen: $KURZ"; continue; fi
+  E=$(node -e "console.log(encodeURIComponent(process.argv[1]))" "$U")
+  curl -s --max-time 10 -X PUT "http://127.0.0.1:9222/json/new?$E" >/dev/null \
+    && echo "    + $KURZ" || echo "    ⚠️ Tab fehlgeschlagen: $U"
+done
+echo "    → $(curl -s --max-time 5 http://127.0.0.1:9222/json/list | grep -c '"type": "page"') Tabs offen"
+
+cat <<'ENDE'
+
+────────────────────────────────────────────────────────────────────
+Der Browser läuft jetzt WEITER. Dieses Fenster darfst du schliessen.
+
+  BEI DIR AM PC:   ssh -L 9222:127.0.0.1:9222 root@46.225.75.125
+                   (Fenster offen lassen — das IST der Tunnel)
+  dann im Browser: chrome://inspect  →  links «Devices»
+                   → [Configure…] → localhost:9222
+                   → HÄKCHEN «Discover network targets» setzen
+                     (eingetragen ist nicht aktiviert — daran hing es)
+
+  Unter «Remote Target» pro Tab eine Zeile → «inspect» → anmelden.
+  Anzumelden: Google (Merchant) · Pinterest · BigBuy · Shopify · TikTok
+
+  ⚠️ Anmeldungen in deinem eigenen Brave zählen hier NICHT — anderes
+     Profil, anderer Rechner. Nur was in DIESEN Tabs passiert, bleibt.
+
+WENN DU FERTIG BIST, hier auf dem Server:
+     bash /opt/luxe-agent/repo/server/anmeldung-fertig.sh
+────────────────────────────────────────────────────────────────────
+ENDE
