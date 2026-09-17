@@ -15764,3 +15764,4 @@ gid://shopify/Product/15500403212673	36->0	Keramik-Spatel- und Löffelbehälter
 gid://shopify/Product/15500439159169	53->1	Carbon-Batterien für Spielzeug · 60 Stück
 gid://shopify/Product/15500454658433	136->2	Blumengarnitur
 gid://shopify/Product/15500484837761	67->0	Basilikum-Pflegemask
+gid://shopify/Product/15500928418177	46->0	Stahlarmband-Multifunktion-Uhr
