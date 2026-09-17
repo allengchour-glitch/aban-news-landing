@@ -1,7 +1,0 @@
-{
-  "id": "01-startseite-echt",
-  "typ": "screenshot",
-  "url": "https://luxestyle.ch/",
-  "ganze_seite": true,
-  "zweck": "Erster Lauf: sieht der Server die Startseite ohne unseren Bot-Cache?"
-}

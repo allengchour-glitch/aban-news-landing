@@ -3,5 +3,7 @@
   "typ": "seite_text",
   "url": "https://au3j0y-hq.myshopify.com/admin/apps/pinterest-4",
   "zweck": "Shopify meldete am 08.07. «Es gibt ein Problem mit Pinterest» und verweist auf den Kanal selbst. Gemessen: der Kanal IST installiert (Publication 302994456961, App pinterest-4) — das Problem sitzt also in der Verbindung zum Pinterest-Konto. Dazu passt, dass 117 geprüfte Pins seit Wochen auf einen OAuth-Klick warten.",
-  "erwartung": "Ohne angemeldetes Profil kommt stand=nicht-angemeldet zurück."
+  "erwartung": "Ohne angemeldetes Profil kommt stand=nicht-angemeldet zurück.",
+  "stand": "nicht-angemeldet",
+  "fehler": "nicht angemeldet — umgeleitet auf https://admin.shopify.com/login?errorHint=no_cookie_session"
 }
