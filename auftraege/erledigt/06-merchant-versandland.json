@@ -1,0 +1,13 @@
+{
+  "id": "06-merchant-versandland",
+  "typ": "screenshot",
+  "url": "https://merchants.google.com/mc/products/diagnostics",
+  "ganze_seite": true,
+  "warum": "Groesster Gratis-Verkehrs-Hebel: 1698 Produkte 'Missing shipping info', weil das Feed-Zielland DE ist, der Shop aber nur CH liefert. Erst sehen, was Merchant meldet.",
+  "stand": "ok",
+  "ergebnis": {
+    "ziel": "https://consent.google.com/m?continue=https://www.google.com/retail/merchant-center/&gl=DE&m=0&pc=acm&cm=2&hl=en-US&src=1",
+    "mobil": false,
+    "datei": "auftraege/ergebnis/06-merchant-versandland.png"
+  }
+}

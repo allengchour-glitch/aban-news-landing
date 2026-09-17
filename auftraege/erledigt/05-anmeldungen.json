@@ -3,6 +3,40 @@
   "typ": "skript",
   "skript": "anmeldungen_pruefen.mjs",
   "warum": "Betreiber hat das Profil am 17.09. angemeldet (Pinterest belegt per Screenshot: Haendlerstatus genehmigt). Jetzt messen statt raten, welche Dienste wirklich offen sind.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "zusammenfassung": "angemeldet: Google Merchant, Shopify Admin, BigBuy, Pinterest · nicht angemeldet: TikTok Studio",
+    "befunde": [
+      {
+        "dienst": "Google Merchant",
+        "wofuer": "Lieferland auf NUR Schweiz stellen — groesster Gratis-Verkehrs-Hebel",
+        "ziel": "https://consent.google.com/m?continue=https://www.google.com/retail/merchant-center/&gl=DE&m=0&pc=acm&cm=2&hl=en-US&src=1",
+        "angemeldet": true
+      },
+      {
+        "dienst": "Shopify Admin",
+        "wofuer": "Rechnung, Dateispeicher",
+        "ziel": "https://admin.shopify.com/store/au3j0y-hq/settings/billing",
+        "angemeldet": true
+      },
+      {
+        "dienst": "BigBuy",
+        "wofuer": "Ticket fuer die EUR 1000 (von unserer IP HTTP 403)",
+        "ziel": "https://www.bigbuy.eu/en/contact",
+        "angemeldet": true
+      },
+      {
+        "dienst": "Pinterest",
+        "wofuer": "117 geprüfte Pins warten auf einen OAuth-Klick",
+        "ziel": "https://ch.pinterest.com/",
+        "angemeldet": true
+      },
+      {
+        "dienst": "TikTok Studio",
+        "wofuer": "Videos hochladen, solange die API in Review ist",
+        "ziel": "https://www.tiktok.com/login?redirect_url=https%3A%2F%2Fwww.tiktok.com%2Ftiktokstudio%2Fupload&enter_method=redirect&enter_from=tiktokstudio",
+        "angemeldet": false
+      }
+    ]
+  }
 }
