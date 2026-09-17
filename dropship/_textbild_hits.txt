@@ -15785,3 +15785,15 @@ gid://shopify/Product/15501848019329	78->0	Nagel-Piercing-Set
 gid://shopify/Product/15501942817153	100->0	Sand-Staubreiniger
 gid://shopify/Product/15501945176449	17->1	Männer-Tasche
 gid://shopify/Product/15502033944961	33->0	Personalisierbares French-Nagel-Set
+gid://shopify/Product/15502133428609	30->2	Backset mit Spritztüllen und Tortenwerkzeugen
+gid://shopify/Product/15502148469121	11->3	Direktzerstäubendes Locken-/Glätteisen
+gid://shopify/Product/15502250836353	14->0	Intelligentes Schlafhilfe-Gerät mit Pulsfunktion
+gid://shopify/Product/15502253490561	16->1	LED Lampe mit Bluetooth Speaker & Wireless Charger
+gid://shopify/Product/15502304248193	33->0	Fressnapf-Set Keramik mit Akryl-Ständer
+gid://shopify/Product/15502392426881	27->0	Elektrische Nagelfräse 45000 U/Min
+gid://shopify/Product/15502485324161	30->2	Kettensägen-Schärfset im Etui
+gid://shopify/Product/15502488535425	17->3	Stanzschablone 'Magic Organ Fantasy'
+gid://shopify/Product/15502586151297	27->3	Fitness Widerstandsband für Beintraining
+gid://shopify/Product/15502586446209	14->3	Diamond Pattern Boxbirne
+gid://shopify/Product/15502598766977	137->0	Faltbare Recyclingbox mit Aluminiumgriff
+gid://shopify/Product/15503087174017	18->0	Lordosenstütz-Kissen mit Massagefunktion
