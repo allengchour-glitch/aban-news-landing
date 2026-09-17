@@ -35,10 +35,13 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **Weihnachten 2026 gefüllt:** 4 → 166 Artikel, Text neu (er bewarb drei Adventskalender ohne Lieferant).
 - **Startseite mobil repariert:** die gestrige Kundenstimmen-Sektion machte die Seite 1488 px breit;
   jetzt 390/390 gemessen. «verifizierte Bewertungen» gestrichen (Judge.me: 0 verifizierte Käufe).
-- **⚠️ NUR-BETREIBER, DRINGEND: Routine `trig_01KAnvaXU7rbVVBbaUqrg6ci` («Email-Check alle 2h (Drafts schreiben)») SENDET Mails,
-  statt Entwürfe zu schreiben.** Sie hat #1017 heute 06:23 UTC eine Rückerstattung zugesagt (gegen den Entscheid vom 11.09.)
-  und die BigBuy-Mail vom 08.09. wortgleich erneut verschickt. `update_trigger` verweigert die Änderung (über `http_api`
-  angelegt) — **nur der Betreiber kann sie abschalten.** Bis dahin: jeden Kundenentwurf VOR dem Senden gegen den frischen Thread lesen.
+- **✅ ERLEDIGT 17.09.: die sendende Routine `trig_01KAnvaXU7rbVVBbaUqrg6ci` ist weg.** Sie hiess «Drafts schreiben»
+  und SENDETE (15.09. 06:23 eine Rückerstattungs-Zusage an #1017 gegen den Entscheid vom 11.09., dazu die BigBuy-Mail
+  vom 08.09. wortgleich erneut). Der Betreiber hat sie abgeschaltet. **Zwei unabhängige Belege am 17.09. 07:50:**
+  (1) `list_triggers` zeigt 11 Routinen, sie ist in keiner — auch nicht im Rohtext; (2) **wichtiger**, der Postausgang
+  der letzten 2 Tage enthält NUR eigene Mails, obwohl ihr 06:xx-Fenster längst durch war.
+  ⚠️ Die Lehre bleibt: **jeden Kundenentwurf VOR dem Senden gegen den frischen Thread lesen** — ein Automat kann
+  in der Zwischenzeit etwas zugesagt haben, und eine Zusage im Thread bindet uns.
 - **💶 BigBuy-Guthaben EUR 1'000.00 gemessen (seit 15.07. unverändert = nie ausgezahlt).** Kein Auszahlungs-Endpunkt in der
   API. Klickweg + Mailentwurf: `dropship/BIGBUY-1000-EURO-HEUTE.md`. Abo endet heute, BigBuy zahlt nur dienstags.
 - **~~#1017/#1018 fahren~~ — FALSCH, korrigiert 16.09.:** alle sieben Stationen lagen in China;
