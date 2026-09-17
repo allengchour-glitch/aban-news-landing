@@ -54556,3 +54556,4 @@ gid://shopify/Product/15453774938497	gid://shopify/MediaImage/70618530120065
 gid://shopify/Product/15453777691009	gid://shopify/MediaImage/70618550731137
 gid://shopify/Product/15453787554177	gid://shopify/MediaImage/70618867106177
 gid://shopify/Product/15495074873729	gid://shopify/MediaImage/70497921761665
+gid://shopify/Product/15496410595713	gid://shopify/MediaImage/70510996423041
