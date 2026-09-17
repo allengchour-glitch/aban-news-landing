@@ -1,0 +1,8 @@
+{
+  "id": "29-pinterest-massenweg",
+  "typ": "skript",
+  "skript": "pinterest_upload_weg_finden.mjs",
+  "warum": "Zweite Runde mit zwei neuen Adressen. Auftrag 27 hat bewiesen, dass es auf /pin-builder/ KEINEN Massen-Upload gibt — die Seite heisst «Pin fuer ANZEIGE erstellen», und das Skript hat die 117-Zeilen-CSV ins Bildfeld eines EINZELNEN Pins gehaengt (der Klick scheiterte, sonst waere ein Pin mit einer CSV als Bild veroeffentlicht worden). Pinterests Massen-Editor lebt im Werbekonto. Diese Runde prueft ads.pinterest.com und /business/pins/. Rein lesend: nur Dateifelder zaehlen und Einstiege mit Adresse auflisten, nichts anhaengen, nichts absenden. Ergibt sie nichts, ist der CSV-Weg endgueltig tot — und das ist verkraftbar, weil der Shopify-Katalog ohnehin 431 Tsd. Artikel einpflegt (Auftrag 26).",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}

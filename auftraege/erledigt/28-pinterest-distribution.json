@@ -3,6 +3,35 @@
   "typ": "skript",
   "skript": "pinterest_katalog_diagnose.mjs",
   "warum": "Auftrag 26 hat nur den ERSTEN Reiter gelesen: 431,36 Tsd. eingepflegt (99.99 %), 24 fehlgeschlagen, 202,41 Tsd. Warnmeldungen (46.92 %). Der zweite Reiter heisst «Probleme bei der DISTRIBUTION» — also nicht «angekommen», sondern «wird auch gezeigt». Das ist genau die Frage, die bei Google Merchant seit Monaten offen ist und die wir dort nicht beantworten koennen, weil Google den Agenten aussperrt. Hier koennen wir sie lesen. Rein lesend, nur ein Reiterwechsel auf derselben Seite.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "ziel": "https://ch.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/?subjectBusinessId=1111333782956748766",
+    "kennzahlen": {
+      "Erfolgreich": {
+        "wert": "431,36 Tsd.",
+        "anteil": "99.99%"
+      },
+      "Fehlgeschlagen": {
+        "wert": "24",
+        "anteil": "0.01%"
+      },
+      "Warnmeldungen": {
+        "wert": "202,41 Tsd.",
+        "anteil": "46.92%"
+      }
+    },
+    "begriffe": [
+      "Fehler",
+      "Warnung",
+      "Problem"
+    ],
+    "reiter_distribution": "gelesen",
+    "reiter_gefunden": 1,
+    "seitentext_einpflegen": "Zu Inhalten springen\nKataloge\nLuxeStyle CH\nLuxeStyle CH\nKataloge\nÜbersicht\nWerbeaktionen\nMärkte\nKataloge\nCatalog_Retail\nDiagnose\nProdukte\n,\nProduktgruppen\n,\nDatenquellen\n,\nSupport\nHelp Center\nMelde dich bei uns\nDiagnose\nSieh dir an, welche Probleme deinen Einzelhandel-Katalog beeinträchtigen, und erfahre, wie du sie behebst. Mehr dazu\nProbleme beim Einpflegen\nProbleme bei der Distribution\nÜbersicht\nEinpflegeprobleme beeinträchtigen den Produkt-Upload oder die Katalogqualität\nE-Mail-Empfänger bearbeiten\nErfolgreich\n431,36 Tsd.\n99.99% des gesamten Datenquelle\nFehlgeschlagen\n24\n0.01% des gesamten Datenquelle\nWarnmeldungen\n202,41 Tsd.\n46.92% des gesamten Datenquelle\n17. Sept. um 07:31 UTC\nProbleme beim letzten Einpflegen\nDetails exportieren\nListe mit Workflow-Fehlern\nProblem\n\t\nBeschreibung\n\t\nProblembehebung\n\t\nHäufigkeit\n\n\nFehler 1401\n\t\nDie Breite des Bilds ist zu klein.\n\t\nÄndere die betroffenen Werte für image_link in URLs für Bilder mit einer Breite von über 75 Pixel\n\t\n19\n\n\nWarnung 1406\n\t\nEinige weitere Bilder konnten nicht verwendet werden, weil ihre Breite für die Verarbeitung zu klein ist.\n\t\nÄndere die betroffenen Werte für additional_image_link in URLs für Bilder mit einer Breite von über 75 Pixel\n\t\n7\n\n\nFehler 1400\n\t\nDie Höhe des Bildes ist zu klein.\n\t\nÄndere die betroffenen Werte für image_link in URLs für Bilder mit einer Höhe von über 75 Pixel\n\t\n5\n\n\nWarnung 1405\n\t\nEinige weitere Bilder konnten nicht verwendet werden, weil ihre Höhe für die Verarbeitung zu klein ist.\n\t\nÄndere die betroffenen Werte für additional_image_link in URLs für Bilder mit einer Höhe von über 75 Pixel\n\t\n4",
+    "seitentext_distribution": "Zu Inhalten springen\nKataloge\nLuxeStyle CH\nLuxeStyle CH\nKataloge\nÜbersicht\nWerbeaktionen\nMärkte\nKataloge\nCatalog_Retail\nDiagnose\nProdukte\n,\nProduktgruppen\n,\nDatenquellen\n,\nSupport\nHelp Center\nMelde dich bei uns\nDiagnose\nSieh dir an, welche Probleme deinen Einzelhandel-Katalog beeinträchtigen, und erfahre, wie du sie behebst. Mehr dazu\nProbleme beim Einpflegen\nProbleme bei der Distribution\nÜbersicht\nBasierend auf Artikeln aus allen Datenquellen\nGenehmigt\n438,94 Tsd.\n100% des gesamten Katalog\nNicht genehmigt\n7\n0.01% des gesamten Katalog\nEingeschränkt (nur Anzeigen)\n0\n0% des gesamten Katalog\nDetails\nVerstöße gegen unsere Händlerrichtlinien führen dazu, dass Produkte nicht organisch oder in Anzeigen verbreitet oder auf Anzeigen beschränkt werden\nExport details\nDistributionsprobleme für diesen Katalog\nProblem\n\t\nBetrifft\n\t\nProblembehebung\n\t\nArtikel\n\n\nNicht vorrätige Produkte\n\t\nAnzeigen, Organisch\n\t\nDie Produkte müssen vorrätig sein, um verbreitet zu werden. Stelle sicher, dass der Verfügbarkeitsstatus deines Produkts aktuell ist.\n\t\n7",
+    "bilder": [
+      "auftraege/ergebnis/28-pinterest-distribution-1-einpflegen.png",
+      "auftraege/ergebnis/28-pinterest-distribution-2-distribution.png"
+    ]
+  }
 }
