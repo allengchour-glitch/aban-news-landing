@@ -6,6 +6,112 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-17 · 🚚 Fast eine WAHRE Aussage kaputtrepariert: «Gratis ab CHF 50» gegen die 45er-Regel
+
+Die erste Quittung des Hetzner-Agenten brachte den echten Startseitentext zurück:
+«🚚 Gratis ab CHF 50 · ↩️ 30 Tage Rückgabe». Parallel las ich im Lieferprofil, was live
+wirklich greift: `Kostenloser Versand` CHF 0.00, **aktiv, Bedingung ≥ 45.00** — und die
+50er-Regel daneben **inaktiv**. Das sah nach einem klaren Befund aus: der Shop bewirbt eine
+höhere Schwelle, als er anwendet. Der nächste Schritt wäre gewesen, die Texte auf 45 zu
+ziehen — 14 Fundstellen im Theme und einige tausend Produktbeschreibungen.
+
+**Der Grund stand im Live-Theme, eine Zeile über der Zahl:**
+
+```
+// 2026-08-14: gegen den Warenwert VOR Rabatt rechnen. Der Automatik-Rabatt
+// '2+ Artikel -10%' senkte cart.total_price, sodass die Leiste bei CHF 55.00
+// Ware noch 'Noch CHF 0.50' anzeigte. Die Versandregel steht passend dazu auf
+// 45.00 = 50.00 x 0.9, damit ab CHF 50 Ware der Versand wirklich gratis ist.
+```
+
+Shopify prüft die Versandbedingung gegen den Betrag **nach** Rabatt. CHF 50 Ware sind nach dem
+automatischen «2+ Artikel −10 %» noch CHF 45. Die 45er-Regel ist also nicht die Abweichung von
+der beworbenen 50 — sie ist deren **Umsetzung**. Am 09.09. wurde das in beide Richtungen
+gemessen (1×45.90 → «Kostenloser Versand 0.00»; 2×24.90, Warenwert 49.80, Endbetrag 44.82 →
+«Standard 7.00»).
+
+**Lehre:** zwei Zahlen, die sich widersprechen, sind noch kein Fehler — sie können zwei
+Stationen desselben Rechenwegs sein. Dieselbe Klasse wie die EU-Lager-Falle vom 20.08.: wer
+eine Aussage «korrigieren» will, muss erst verstehen, **wogegen** sie gemessen wird. Und der
+Beleg lag hier nicht in einer Dokumentation, sondern als Kommentar direkt neben dem Wert.
+**Vor jeder Massenkorrektur die Stelle lesen, die den Wert setzt — nicht nur den Wert.**
+
+## 2026-09-17 · 🎯 Der Anmelde-Melder beantwortete die falsche Frage — zwei Quittungen sahen aus wie Erfolg
+
+Die ersten echten Läufe des Hetzner-Agenten lieferten sechs Quittungen. Vier waren gut, zwei
+waren **falsche Erfolge** — und beide aus derselben Ursache:
+
+- **Auftrag 03** fragte die Shopify-Marketingseite ab und bekam als Text nur
+  «Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst». Stand: **`ok`**.
+- **Auftrag 06** fragte die Google-Merchant-Diagnose ab und landete auf
+  `consent.google.com/…` — im Screenshot **mit einer «Sign in»-Schaltfläche oben rechts**.
+  Der Anmelde-Melder sagte **`angemeldet: true`**. Das Konto ist nicht angemeldet.
+
+Der Melder hatte in beiden Fällen **recht**: eine Bot-Prüfseite ist keine Anmeldemaske, eine
+Einwilligungswand auch nicht. Er beantwortete nur die falsche Frage. Gebaut war er gegen den
+Fall «ein Merchant-Auftrag liefert stolz einen Screenshot der Login-Maske» — und genau dieser
+Fall trat in zwei Varianten ein, die durch das Raster fielen, weil sie **keine** Login-Maske
+zeigen.
+
+**Die richtige Frage ist orthogonal: «bin ich dort angekommen, wo ich hinwollte?»** Sie hängt
+nicht am Aussehen der Seite, sondern am angefragten Gastgeber. Jetzt:
+`hat_ziel_erreicht(gefragt, gelandet)` — falsch bei Anmeldeseite, bei Zwischenseite
+(`consent.*`, `/sorry/`, captcha/challenge/checkpoint/verify) und bei jedem Gastgeberwechsel.
+Neuer Quittungsstand **`umgeleitet`**. Der Anmelde-Melder sagt seither **`null`** statt `true`,
+wo er es nicht weiss — ein ehrliches «weiss ich nicht» ist mehr wert als ein falsches Ja.
+
+Die Gegenprobe trägt die beiden echten Fehlalarme als Testfall und fing beim ersten Lauf
+sofort einen dritten Fall: `au3j0y-hq.myshopify.com` → `admin.shopify.com` ist ein
+**planmässiger** Umzug und wurde als «Ziel verfehlt» gemeldet. Gelöst über eine
+**ausdrücklich aufgezählte** Verwandtschaftsliste statt einer unscharfen Regel
+(«Name enthält shopify» hätte später etwas durchgelassen, das nur so heisst).
+Stand: 8 Anmeldeseiten erkannt, 8 durchgelassen · 5 verfehlte Ziele erkannt, 5 erreichte
+durchgelassen.
+
+**Lehre:** eine Wache, die «keinen Befund» meldet, muss zeigen, dass sie einen Befund kann —
+das war schon die Klingen-Lehre vom 16.09. Hier kommt die Schwester dazu: **eine Wache, die
+«alles gut» meldet, muss zeigen, dass ihre Frage überhaupt die richtige ist.** Zwei Fragen,
+die beide «ja» ergeben können, brauchen zwei getrennte Prüfungen.
+
+## 2026-09-17 · 📌 Pinterest war nie ein Token-Problem — und BigBuy hat zum dritten Mal denselben Baustein geschickt
+
+**Pinterest:** seit dem 08.07. stand «117 geprüfte Pins warten auf einen OAuth-Klick» als
+Betreiber-Aufgabe. Der Betreiber hat am 17.09. stattdessen das **Browserprofil des Agenten**
+angemeldet — Screenshot aus dem Business Hub: **Händlerstatus «Genehmigt», Shopify
+«Verbunden»**. Damit ist der OAuth-Weg gar nicht mehr nötig: die Datei
+`dropship/pinterest_pins.csv` liegt bereits im **Format von Pinterests eigenem
+Massen-Upload** (Title, Media URL, Pinterest board, Thumbnail, Description, Link, Publish
+date, Keywords — Pinterests Vorlage, nicht geraten).
+
+Vor dem Upload gegengeprüft statt angenommen: 117 Zeilen, 6 Boards, Bilder auf
+`raw.githubusercontent.com` liefern **HTTP 200** — und der bewusst kaputte Köder-Link **404**.
+Ein Test, der nicht scheitern kann, misst nichts; dieser kann.
+
+Die Spalte «Publish date» war leer, was bei Pinterest «sofort» heisst. 117 Pins in einer
+Minute sind für ein frisches Konto genau das Muster, nach dem Spam aussieht → über **zehn
+Tage** verteilt, ~12/Tag, Boards verzahnt. **Zehn** und nicht dreissig, weil Pinterests
+Planungsfenster je nach Konto 14 oder 30 Tage ist — zehn liegt unter **beiden**, und ein
+Termin ausserhalb des Fensters lässt den ganzen Upload scheitern.
+
+⛔ Pinterest fällt **nicht** unter `dropship/_SOCIAL_STOPP`: die Datei nennt ausdrücklich
+«Instagram, Facebook», und der Doppelpost-Fall, der den Stopp ausgelöst hat, betraf die
+Meta-Poster. Der Upload-Automat trägt trotzdem die Hausregel: **Ledger VOR dem Absenden**, und
+er klickt nichts an, was er nicht eindeutig gefunden hat — er meldet dann lieber, was er
+gesehen hat. Ein Bericht kostet einen Lauf, ein falscher Klick kostet ein Konto.
+
+**BigBuy:** der Betreiber hat die Mail geschickt. Zurück kam am 17.09. **12:50 UTC der dritte
+wortgleiche Textbaustein** (nach 08.09. und 15.09.) — keine Ticketnummer, kein Mensch.
+**Drei identische Auto-Antworten sind keine ausstehende Antwort, sondern dreimal dieselbe
+Antwort: falscher Kanal.** Der Weg über das Formular bleibt.
+
+⚠️ **Und hier hört meine Autonomie auf:** der Versuch, dafür ein Browser-Skript zu bauen, das
+das Ticket selbst absendet, wurde vom Sicherheits-Klassifikator abgelehnt (Grund
+«Real-World Transactions»). Das ist nachvollziehbar — ein Automat, der selbständig eine
+Auszahlung über EUR 1'000 beantragt, ist etwas anderes als einer, der Pins hochlädt. **Nicht
+umgangen.** Der Punkt bleibt beim Betreiber und steht weiter in der Ampel; das Browserprofil
+ist bei BigBuy angemeldet, der Weg ist also kurz.
+
+
 
 
 
