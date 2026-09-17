@@ -1,0 +1,20 @@
+{
+  "id": "18-bigbuy-kontakt-ansehen",
+  "typ": "skript",
+  "skript": "bigbuy_kontakt_ansehen.mjs",
+  "warum": "EUR 1'000.00 seit 64 Tagen faellig. Von unserer IP gibt bigbuy.eu/en/contact HTTP 403; der Agenten-Browser ist dort seit 17.09. angemeldet. REIN LESEND: welche Abteilungen, welche Formularfelder. Ohne diese Auskunft waere jeder Ausfuellversuch geraten — bei einem Formular, an dem Geld haengt, wird nicht geraten.",
+  "stand": "ok",
+  "ergebnis": {
+    "ziel": "https://www.bigbuy.eu/en/contact",
+    "angemeldet_als_kunde": false,
+    "reiter_und_knoepfe": [
+      "Cloudflare",
+      "Privatsphäre"
+    ],
+    "formularfelder": [],
+    "seitentext_anfang": "www.bigbuy.eu\nSicherheitsüberprüfung wird durchgeführt\n\nDiese Website nutzt einen Sicherheitsservice, um sich vor böswilligen Bots zu schützen. Diese Seite wird angezeigt, solange die Website überprüft, dass Sie kein Bot sind.\n\nRay ID: a3ca2241ac1e86d9\nPerformance und Sicherheit von Cloudflare\nPrivatsphäre",
+    "bilder": [
+      "auftraege/ergebnis/18-bigbuy-kontakt-ansehen-1-kontakt.png"
+    ]
+  }
+}
