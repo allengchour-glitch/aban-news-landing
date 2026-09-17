@@ -15,14 +15,55 @@ Hintergrund und Messungen: `dropship/HETZNER-SERVER.md`.
 ## Auftragsarten (mehr gibt es nicht — Absicht)
 
 ```jsonc
-{ "id": "startseite-mobil", "typ": "screenshot",  "url": "https://luxestyle.ch/", "ganze_seite": true }
+{ "id": "startseite-mobil", "typ": "screenshot",  "url": "https://luxestyle.ch/", "mobil": true, "ganze_seite": true }
 { "id": "faq-text",         "typ": "seite_text",  "url": "https://luxestyle.ch/pages/faq" }
-{ "id": "merchant",         "typ": "skript",      "skript": "merchant_pruefen.mjs" }
+{ "id": "anmeldungen",      "typ": "skript",      "skript": "anmeldungen_pruefen.mjs" }
 ```
+
+`mobil: true` setzt die Fensterbreite auf 390 px — 77 % unserer Besucherinnen sind auf dem
+Handy. (Das ist die Breite, keine Geräte-Emulation: die Browser-Kennung bleibt Desktop.
+Horizon entscheidet über CSS, dafür genügt es.)
 
 `skript` startet ausschliesslich eine Datei aus `automation/browser/`, die im Repo steht
 (Basename, kein Pfad). **Aus der Auftragsdatei wird nie Code ausgeführt.** Das Repo ist
 öffentlich; ein Runner, der Shell aus der Warteschlange läse, wäre eine Fernsteuerung.
+Vorhanden: `anmeldungen_pruefen.mjs` (rein lesend — sagt, bei welchen Diensten das Profil
+angemeldet ist; der sinnvollste erste Auftrag nach dem einmaligen Einloggen).
+
+## Was in der Quittung stehen kann
+
+| `stand` | Bedeutung |
+|---|---|
+| `ok` | erledigt, `ergebnis` trägt Text/Datei und die **End-URL** (`ziel`) |
+| `nicht-angemeldet` | die Seite hat auf eine Anmeldung umgeleitet → Profil einloggen |
+| `fehler` | alles andere, mit Grund |
+| `laufend` | **mittendrin gestorben** — von Hand prüfen, NICHT einfach wiederholen |
+
+`nicht-angemeldet` ist ein eigener Stand, weil sonst der gefährlichste Fall still wäre: ein
+Merchant-Auftrag liefert sonst einen hübschen Screenshot **der Login-Maske**, und die
+Quittung sähe aus wie Erfolg.
+
+`laufend` entsteht durch den **Claim**: alles, was klicken oder absenden kann, wird vor der
+Ausführung als Quittung committet und gepusht. Ohne das käme die Auftragsdatei nach einem
+missglückten Push zurück und der Vorgang liefe ein zweites Mal — dieselbe Falle, die hier
+schon IG-Doppelposts erzeugt hat (CLAUDE.md Regel 10). Gelingt der Claim-Push nicht, wird
+**gar nicht ausgeführt**: unverrichtet ist harmlos, doppelt ausgeführt nicht.
+
+## Was geprüft ist — und was nicht
+
+Am 17.09. im Container durchgespielt (`server/luxe_auftrag_runner.mjs`): unbekannte Art,
+`http://` statt `https://`, kaputtes JSON, Pfad-Köder `../../etc/passwd`, fehlendes Skript —
+**alle fünf abgelehnt, jede mit Quittung, Warteschlange danach leer.** Der Anmelde-Melder hat
+eine eigene Gegenprobe (`/opt/node22/bin/node server/anmelde_erkennung.test.mjs`): 8 echte
+Anmeldeseiten erkannt, 8 normale Seiten durchgelassen, darunter der Köder
+`/collections/login-armband`.
+
+**Nicht bewiesen ist das eigentliche Laden einer Seite.** Chromium startet und navigiert hier
+nachweislich, bricht aber mit `ERR_CERT_AUTHORITY_INVALID` ab: der Ausgangs-Proxy dieses
+Containers fängt TLS mit einer CA ab, der der Browser nicht traut. Auf dem Hetzner-Server
+gibt es diesen Proxy nicht. Das zu übergehen wäre möglich und wäre falsch — ein angemeldeter
+Browser, der Zertifikatsfehler ignoriert, ist genau der Weg, auf dem Sitzungen gestohlen
+werden. Die beiden wartenden Aufträge sind deshalb der erste echte Test.
 
 ## Wofür das hier wirklich gebraucht wird
 
