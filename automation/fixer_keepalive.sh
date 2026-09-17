@@ -1201,6 +1201,24 @@ while true; do
       echo "$(date -u +%H:%M) ads_kuration Live-Nachzug gestartet"
     fi
   fi
+  # KANAL-ZUSAGEN, einmal taeglich (17.09.2026). Am 10.08. wurde «Gratis-Versand ab
+  # CHF 65» aus dem Theme entfernt — auf dem oeffentlichen Pinterest-Profil stand es am
+  # 17.09. immer noch, fuenf Wochen spaeter. Der Grund ist strukturell: die Korrektur
+  # durchsuchte den SHOP, und Kanaele sind kein Shop. Captions und Pin-Texte liegen in
+  # CSV-Warteschlangen, in die nie ein Waechter gesehen hat.
+  # Rein LESEND — er meldet, er aendert nichts. Deshalb braucht er kein Schloss.
+  # Stand 17.09.: 24 Fundstellen, davon 0 noch ausstehend (alle posted/skip). Meldet
+  # sich erst wieder, wenn eine Zeile mit falscher Zusage RAUSGEHEN koennte.
+  KZ=/tmp/kanal_zusagen.log
+  if [ -f "$REPO/tools/kanal_zusagen_pruefen.py" ]; then
+    if [ $(( $(date +%s) - $(stat -c %Y "$KZ" 2>/dev/null || echo 0) )) -gt 86400 ]; then
+      python3 "$REPO/tools/kanal_zusagen_pruefen.py" > "$KZ" 2>&1
+      OFFEN=$(grep -o "GEHT NOCH RAUS: [0-9]*" "$KZ" | head -1 | grep -o "[0-9]*")
+      # Nur melden, wenn wirklich etwas rausgehen koennte — sonst ist es Rauschen,
+      # und Rauschen macht eine Meldung unglaubwuerdig (Lehre Betreiber-Ampel).
+      [ "${OFFEN:-0}" -gt 0 ] && echo "$(date -u +%H:%M) ⚠️ KANAL-ZUSAGEN: $OFFEN wartende Zeile(n) mit veralteter Zusage — $KZ"
+    fi
+  fi
   # VERSANDAUSSAGEN-LIVE-KONTROLLE alle 3 Tage: Am 17.08. standen 4'356 Produkte WIEDER mit
   # dem alten EU/USA-Block da, obwohl sie im Ledger als erledigt geführt waren (Zombie-
   # Muster vom 15.08., Verursacher unbekannt). Der Live-Modus prüft nach INHALT, nicht nach
