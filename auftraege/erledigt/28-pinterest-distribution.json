@@ -1,0 +1,8 @@
+{
+  "id": "28-pinterest-distribution",
+  "typ": "skript",
+  "skript": "pinterest_katalog_diagnose.mjs",
+  "warum": "Auftrag 26 hat nur den ERSTEN Reiter gelesen: 431,36 Tsd. eingepflegt (99.99 %), 24 fehlgeschlagen, 202,41 Tsd. Warnmeldungen (46.92 %). Der zweite Reiter heisst «Probleme bei der DISTRIBUTION» — also nicht «angekommen», sondern «wird auch gezeigt». Das ist genau die Frage, die bei Google Merchant seit Monaten offen ist und die wir dort nicht beantworten koennen, weil Google den Agenten aussperrt. Hier koennen wir sie lesen. Rein lesend, nur ein Reiterwechsel auf derselben Seite.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
