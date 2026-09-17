@@ -3,6 +3,38 @@
   "typ": "skript",
   "skript": "pinterest_boards_anlegen.mjs",
   "warum": "EIN Board je Lauf. Die Faessung, die alle sechs in einem Durchgang wollte, starb zweimal mit Stand 'laufend' — der Agent laeuft im 5-Minuten-Takt, also muss die Arbeit in einen Takt passen. Idempotent: jeder Lauf liest vorher, was schon existiert, und legt nur das naechste Fehlende an. Sechs Auftraege, sechs kurze Laeufe.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "angelegt": [
+      "Schuhe & Sandalen"
+    ],
+    "vorhanden": [
+      "Herrenmode Schweiz",
+      "Schmuck & Accessoires",
+      "Sommerkleider & Damenmode 2026",
+      "Wellness & Beauty",
+      "Home & Geschenkideen"
+    ],
+    "offen": [],
+    "schritte": [
+      "vorhanden: home-geschenkideen, wellness-beauty, sommerkleider-damenmode-2026, schmuck-accessoires, herrenmode-schweiz, tech-gadgets, leder-accessoires, schlaf-aromatherapie, küche-genuss, wellness-self-care, wohnen-deko, geschenkideen-schweiz, beauty-pflege",
+      "Probe «Schuhe & Sandalen»: durchgelaufen → auf dem Konto: true",
+      "das war das letzte"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/23d-pinterest-board-0-profil.png",
+      "auftraege/ergebnis/23d-pinterest-board-probe-a-menu.png",
+      "auftraege/ergebnis/23d-pinterest-board-probe-c-gefuellt.png",
+      "auftraege/ergebnis/23d-pinterest-board-probe-d-nachher.png"
+    ],
+    "noch_fehlend": [],
+    "bestaetigt": [
+      "Herrenmode Schweiz",
+      "Schmuck & Accessoires",
+      "Sommerkleider & Damenmode 2026",
+      "Wellness & Beauty",
+      "Home & Geschenkideen",
+      "Schuhe & Sandalen"
+    ]
+  }
 }
