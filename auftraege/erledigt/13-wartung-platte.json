@@ -1,0 +1,8 @@
+{
+  "id": "13-wartung-platte",
+  "typ": "wartung",
+  "aktion": "aufraeumen",
+  "warum": "Gemessen in Auftrag 10: 86 % von 38 GB belegt, /var/log allein 1,2 GB und /var/cache 197 MB. aufraeumen leert Paket-Cache, verwaiste Pakete und Journale aelter als 7 Tage — das ist der risikoarme Teil. Die 26 GB in /opt (drei Projektklone) werden ERST gemessen, dann entschieden; nichts davon loescht dieser Auftrag.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
