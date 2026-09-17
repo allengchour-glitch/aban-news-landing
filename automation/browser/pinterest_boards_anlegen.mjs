@@ -9,6 +9,15 @@
  * nicht gemessen hat, ist eine Vermutung** — hier wird jetzt der Weg genommen, der im
  * Screenshot sichtbar ist.
  *
+ * ⚠️⚠️ EIN BOARD JE LAUF (17.09., nach zwei Abbruechen mit Stand «laufend»).
+ * Die erste Fassung wollte alle sechs in einem Durchgang anlegen: sechs Dialoge, sechs
+ * Wartezeiten, dazwischen Seitenladen. Beide Laeufe starben mittendrin, ohne Quittung.
+ * Der Agent laeuft im 5-Minuten-Takt — **eine Arbeit, die innerhalb eines Takts fertig
+ * werden MUSS, muss klein genug sein, um innerhalb eines Takts fertig zu werden.** Die
+ * Loesung ist nicht ein groesseres Zeitlimit, sondern eine kleinere Einheit: dieser Lauf
+ * legt GENAU EIN fehlendes Board an und hoert auf. Sechs Auftraege, sechs kurze Laeufe.
+ * Idempotent bleibt es ohnehin — jeder Lauf liest vorher, was schon da ist.
+ *
  * ⚠️ ERST EINE PROBE, DANN DER REST. Das erste Board wird angelegt und danach
  * NACHGELESEN, ob es wirklich auf dem Konto steht. Nur wenn das belegt ist, laufen die
  * uebrigen fuenf. Sonst waeren es sechs Fehlversuche — oder, schlimmer, sechs Dubletten,
@@ -132,12 +141,11 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
       return ergebnis;                             // NICHT fuenfmal denselben Fehler wiederholen
     }
     ergebnis.angelegt.push(erstes);
+    ergebnis.noch_fehlend = fehlt.slice(1);
+    schritte.push(fehlt.length > 1
+      ? `Schluss fuer diesen Lauf — noch offen: ${fehlt.slice(1).join(', ')}`
+      : 'das war das letzte');
 
-    for (const name of fehlt.slice(1)) {
-      const h = await anlegen(name, normen(name)[0].slice(0, 16));
-      if (h) { ergebnis.offen.push(`${name} (${h})`); continue; }
-      ergebnis.angelegt.push(name);
-    }
     // Schlusskontrolle am Konto, nicht am eigenen Zaehler.
     stand = await vorhandene();
     ergebnis.bestaetigt = SOLL.filter(n => normen(n).some(k => stand.alle.has(k)));
