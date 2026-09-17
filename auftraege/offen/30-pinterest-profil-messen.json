@@ -1,6 +1,0 @@
-{
-  "id": "30-pinterest-profil-messen",
-  "typ": "skript",
-  "skript": "pinterest_profil_messen.mjs",
-  "warum": "Die Pinterest-Profilbeschreibung verspricht «Gratis-Versand ab CHF 65». Diese Schwelle wurde am 10.08. aus dem Theme entfernt — live gilt 50 (bzw. 45 nach dem automatischen 2-Artikel-Rabatt). Die falsche Angabe hat fuenf Wochen auf einem oeffentlichen Profil ueberlebt, weil die Korrektur damals nur den Shop durchsucht hat. Dieser Auftrag AENDERT NICHTS: er oeffnet die Einstellungen und meldet jedes sichtbare Feld mit name/data-test-id/Wert/Zeichengrenze, plus in welchem Feld die 65 wirklich steht. Erst ein zweiter Auftrag aendert genau ein Feld. Grund fuer die Zweiteilung: heute hat ein geratener Selektor eine CSV ins Bildfeld eines Pins gehaengt (Quittung 27) — ein Selektor wird gegen das ECHTE Formular geschrieben."
-}

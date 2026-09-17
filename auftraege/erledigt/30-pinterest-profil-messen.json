@@ -1,0 +1,192 @@
+{
+  "id": "30-pinterest-profil-messen",
+  "typ": "skript",
+  "skript": "pinterest_profil_messen.mjs",
+  "warum": "Die Pinterest-Profilbeschreibung verspricht «Gratis-Versand ab CHF 65». Diese Schwelle wurde am 10.08. aus dem Theme entfernt — live gilt 50 (bzw. 45 nach dem automatischen 2-Artikel-Rabatt). Die falsche Angabe hat fuenf Wochen auf einem oeffentlichen Profil ueberlebt, weil die Korrektur damals nur den Shop durchsucht hat. Dieser Auftrag AENDERT NICHTS: er oeffnet die Einstellungen und meldet jedes sichtbare Feld mit name/data-test-id/Wert/Zeichengrenze, plus in welchem Feld die 65 wirklich steht. Erst ein zweiter Auftrag aendert genau ein Feld. Grund fuer die Zweiteilung: heute hat ein geratener Selektor eine CSV ins Bildfeld eines Pins gehaengt (Quittung 27) — ein Selektor wird gegen das ECHTE Formular geschrieben.",
+  "stand": "ok",
+  "ergebnis": {
+    "ziel": "https://ch.pinterest.com/settings/",
+    "felder": [
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "business_name",
+        "id": "business_name",
+        "testId": "",
+        "beschriftung": "Namen eingeben",
+        "wert": "LuxeStyle CH",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "textarea",
+        "typ": "",
+        "name": "about",
+        "id": "about",
+        "testId": "",
+        "beschriftung": "Erzähl deine Geschichte.",
+        "wert": "Premium-Looks us de Schwiiz 🇨🇭 Mode · Schmuck · Accessoires · Beauty. Gratis-Versand ab CHF 50 · –10% mit Code WELCOME10 👉 luxestyle.ch",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "",
+        "name": "",
+        "id": "combobox-pronouns",
+        "testId": "",
+        "beschriftung": "Pronomen hinzufügen",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "impressum_url",
+        "id": "impressum_url",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "username",
+        "id": "username",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "luxestyleCH",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "partner_contact_email",
+        "id": "partner_contact_email",
+        "testId": "",
+        "beschriftung": "nutzer@pinterest.com",
+        "wert": "info@luxestlye.ch",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "phoneNumber",
+        "id": "phoneNumber",
+        "testId": "",
+        "beschriftung": "01234 567890",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "checkbox",
+        "name": "enable_profile_address",
+        "id": "enable_profile_address",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "on",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "partner_address_line_1",
+        "id": "partner_address_line_1",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "partner_address_line_2",
+        "id": "partner_address_line_2",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "partner_city",
+        "id": "partner_city",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "partner_region",
+        "id": "partner_region",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      },
+      {
+        "tag": "input",
+        "typ": "text",
+        "name": "partner_postal_code",
+        "id": "partner_postal_code",
+        "testId": "",
+        "beschriftung": "",
+        "wert": "",
+        "maxlen": "",
+        "sichtbar": true
+      }
+    ],
+    "knoepfe": [
+      {
+        "text": "Einstellungen",
+        "testId": "",
+        "deaktiviert": false,
+        "sichtbar": true
+      },
+      {
+        "text": "LuxeStyle CH\nLuxeStyle CH",
+        "testId": "",
+        "deaktiviert": false,
+        "sichtbar": true
+      },
+      {
+        "text": "Ändern",
+        "testId": "",
+        "deaktiviert": false,
+        "sichtbar": true
+      },
+      {
+        "text": "Zurücksetzen",
+        "testId": "",
+        "deaktiviert": true,
+        "sichtbar": true
+      },
+      {
+        "text": "Speichern",
+        "testId": "",
+        "deaktiviert": true,
+        "sichtbar": true
+      }
+    ],
+    "feld_mit_chf65": [],
+    "hinweis": "CHF 65 steht in KEINEM sichtbaren Formularfeld. Vielleicht steht die Angabe woanders (Board-Beschreibung, Werbekonto) — dann erst dort messen.",
+    "bilder": [
+      "auftraege/ergebnis/30-pinterest-profil-messen.png"
+    ]
+  }
+}
