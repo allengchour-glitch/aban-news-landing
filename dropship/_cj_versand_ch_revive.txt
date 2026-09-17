@@ -539,3 +539,33 @@
 15454133092737	wiederbelebt	klingen-set-mit-metallgriff-604200	5.48	13.64
 15454650892673	wiederbelebt	luxus-messer-set-edelstahl-628600	8.34	3.56
 15458646983041	wiederbelebt	24-teiliges-edelstahl-gedeck-mit-western-messe-637200	16.62	1.28
+15493251826049	wiederbelebt	damastmesser-rohling-hohe-harte-605000	12.26	5.64
+15493848924545	lieferbar-aber-verlust	7-teiliges-kuchenmesser-set-aus-edelstahl-606400	-4.38
+15493929697665	lieferbar-aber-verlust	handgeschmiedetes-kochmesser-tang-dao-476736	-5.37
+15493929894273	lieferbar-aber-verlust	drachen-messer-gezackte-klinge-fur-holz-knoche-323392	-5.68
+15493930385793	lieferbar-aber-verlust	geschmiedetes-kuchenmesser-edelstahl-mangan-ko-342912	-7.41
+15493930713473	lieferbar-aber-verlust	handgeschmiedetes-ausbeinmesser-mit-hammerschl-250176	-1.76
+15493931041153	wiederbelebt	handgeschmiedetes-ausbeinmesser-382400	11.86	1.04
+15493931401601	lieferbar-aber-verlust	handgeschmiedetes-kuchenmesser-mit-holzgriff-965696	-4.88
+15495105347969	wiederbelebt	knochenbeil-mit-integriertem-kupfergriff-511808	25.08	8.82
+15495105479041	lieferbar-aber-verlust	geschmiedetes-edelstahl-hackmesser-mit-hammers-335488	-0.97
+15495105610113	lieferbar-aber-verlust	kuchenmesser-set-aus-keramik-und-edelstahl-321152	-2.36
+15495120650625	wiederbelebt	mongolisches-fleischmesser-604800	7.91	4.99
+15495230882177	wiederbelebt	handgeschmiedetes-holzfallermesser-740352	36.90	14.00
+15496130396545	wiederbelebt	kochmesser-edelstahl-gehammert-723200	10.38	26.79
+15496381759873	wiederbelebt	elektromagnetisches-wachsmesser-742528	10.88	20.86
+15496520335745	wiederbelebt	handgemachtes-kuchenmesser-bambusgriff-077120	12.17	15.05
+15499897635201	wiederbelebt	traditionelle-kuchenmesser-715008	13.07	7.84
+15500371198337	wiederbelebt	portugiesisches-steakmesser-set-aus-edelstahl-256064	11.21	7.54
+15503282962817	wiederbelebt	elektrisches-tranchiermesser-fur-grillfleisch-119552	26.44	39.53
+15520396280193	wiederbelebt	geschmiedetes-ausbeinmesser-mit-lederhulle-603900	9.50	7.48
+15520406929793	wiederbelebt	kuchenmesser-set-5-teilig-edelstahl-601600	28.29	5.73
+15523903668609	wiederbelebt	handgeschmiedetes-kuchenmesser-618400	16.97	6.41
+15524695867777	wiederbelebt	kuchenmesser-aus-edelstahl-24-m-lange-601700	11.93	7.42
+15524777886081	wiederbelebt	damaskes-messer-fur-obst-80-cm-stahlklinge-624300	7.58	21.50
+15524778115457	wiederbelebt	kuchenmesser-mit-holzgriff-handgefertigt-625001	26.88	6.40
+15524852662657	wiederbelebt	zweischneidiges-obstmesser-602000	8.25	12.26
+15524853088641	wiederbelebt	damaskstahl-santoku-kuchenmesser-617200	8.00	12.29
+15524871242113	wiederbelebt	sato-kochmesser-613600	9.38	7.50
+15524887134593	wiederbelebt	kuchenmesser-aus-chrom-carbon-edelstahl-621200	8.24	12.02
+15524887593345	wiederbelebt	damaststahl-kochmesser-614900	13.56	3.93
