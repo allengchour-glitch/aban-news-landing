@@ -1,0 +1,8 @@
+{
+  "id": "10-wartung-speicher",
+  "typ": "wartung",
+  "aktion": "speicher",
+  "warum": "Beim Einloggen meldete der Server 81,5 % von 37,22 GB belegt. Erst messen, wo der Platz liegt — danach erst aufraeumen.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
