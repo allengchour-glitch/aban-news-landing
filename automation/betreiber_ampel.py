@@ -181,6 +181,30 @@ def bigbuy_ticket():
             f"dropship/_bigbuy_ticket_ref.txt · Text: COWORK-BEFEHL.md Punkt 1")
 
 
+def shopify_rechnung():
+    """Unsere EIGENE Shopify-Rechnung ueber CHF 44.68 ist am 17.09. gescheitert.
+
+    Das ist NICHT die Kasse: alle vier Kundenzahlungen seit dem 18.08. stehen auf SUCCESS
+    mit errorCode None, und am 10.09. hat Shopify uns CHF 65.44 aufs Bankkonto ueberwiesen.
+    Gescheitert ist die Abbuchung von UNSERER hinterlegten Karte (Ablaufdatum oder Deckung).
+
+    Warum es eilt: Shopify versucht es am 19.09. erneut. Bleibt es dabei, friert Shopify den
+    Shop irgendwann ein — dann ist luxestyle.ch offline, und kein Wächter dieser Ampel kann
+    das verhindern.
+
+    ⚠️ Auch dieser Punkt kann sich nicht selbst live messen: die Admin-API kennt die
+    Organisations-Rechnungen des Shops nicht (nur die App-Abrechnungen). Deshalb haengt er
+    wie der BigBuy-Punkt an einer Quittung. Eine Zeile in die Datei, sobald bezahlt ist.
+    """
+    quittung = os.path.join(REPO, "dropship", "_shopify_rechnung_ref.txt")
+    if os.path.exists(quittung) and open(quittung, encoding="utf-8").read().strip():
+        return None
+    return ("💳 Shopify-Rechnung CHF 44.68 GESCHEITERT (17.09., Mail von billing@shopify.com) — "
+            "Karte pruefen/ersetzen unter Einstellungen → Abrechnung, sonst naechster Versuch "
+            "19.09. und bei erneutem Fehlschlag droht die Sperre des Shops. Nach dem Bezahlen "
+            "eine Zeile nach dropship/_shopify_rechnung_ref.txt")
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -197,7 +221,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bigbuy_ticket(), cj_dispute_1017(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
+    teile = [t for t in (shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
