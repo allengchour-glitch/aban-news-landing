@@ -569,3 +569,7 @@
 15524871242113	wiederbelebt	sato-kochmesser-613600	9.38	7.50
 15524887134593	wiederbelebt	kuchenmesser-aus-chrom-carbon-edelstahl-621200	8.24	12.02
 15524887593345	wiederbelebt	damaststahl-kochmesser-614900	13.56	3.93
+15524887757185	wiederbelebt	stahl-tranchiermesser-fur-die-kuche-620200	14.27	7.48
+15524888314241	wiederbelebt	japanisches-kochmesser-617300	11.66	14.87
+15524929896833	wiederbelebt	ausbeinmesser-mit-fingerschutz-619700	13.99	6.90
+15524930290049	wiederbelebt	grosses-ausbeinmesser-aus-geschmiedetem-stahl-613200	12.86	6.75

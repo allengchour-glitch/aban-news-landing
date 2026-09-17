@@ -380,3 +380,8 @@ gid://shopify/Product/15525507891585	kein-video-beim-lieferanten
 gid://shopify/Product/15525497733505	kein-video-beim-lieferanten
 gid://shopify/Product/15525497536897	kein-video-beim-lieferanten
 gid://shopify/Product/15525497176449	kein-video-beim-lieferanten
+gid://shopify/Product/15443495879041	kein-video-beim-lieferanten
+gid://shopify/Product/15443496108417	kein-video-beim-lieferanten
+gid://shopify/Product/15443496141185	kein-video-beim-lieferanten
+gid://shopify/Product/15443496173953	kein-video-beim-lieferanten
+gid://shopify/Product/15443496206721	kein-video-beim-lieferanten
