@@ -1,6 +1,0 @@
-{
-  "id": "21-pinterest-boards-anlegen3",
-  "typ": "skript",
-  "skript": "pinterest_boards_anlegen.mjs",
-  "warum": "Dritter Versuch. 19 kam bis zum gefuellten Namensfeld und lief dann im Klick auf 'Erstellen' in die Zeitgrenze — der Knopf wurde gefunden, war aber nicht klickbar (mehrere Treffer, erster verdeckt/inaktiv). Jetzt: nur sichtbare Knoepfe im Dialog, isEnabled vorher fragen, Eingabetaste als Rueckfallweg, und ein Fehlschlag bricht das Skript nicht mehr ab. Probe-vor-Rest bleibt."
-}

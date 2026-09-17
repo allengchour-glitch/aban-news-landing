@@ -1,0 +1,57 @@
+{
+  "id": "20-storefront-erstlauf",
+  "typ": "skript",
+  "skript": "storefront_wahrheit.mjs",
+  "warum": "Erstlauf des taeglichen Storefront-Waechters. Prueft Startseite, Kollektion und FAQ in Handy-Breite von einer ECHTEN Besucher-IP — von unserer eigenen ist die oeffentliche Seite nicht pruefbar (Bot-Cache, 19.08. gemessen). Danach legt fixer_keepalive.sh den Auftrag taeglich selbst an.",
+  "stand": "ok",
+  "ergebnis": {
+    "zusammenfassung": "✅ 3 Seiten sauber (von echter Besucher-IP gemessen)",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/",
+        "erreichbar": true,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 6653,
+        "bild": "auftraege/ergebnis/20-storefront-erstlauf-startseite.png"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen",
+        "erreichbar": true,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3772,
+        "bild": "auftraege/ergebnis/20-storefront-erstlauf-kollektion.png"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq",
+        "erreichbar": true,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3062,
+        "bild": "auftraege/ergebnis/20-storefront-erstlauf-faq.png"
+      }
+    ]
+  }
+}
