@@ -1,0 +1,6 @@
+{
+  "id": "20-storefront-erstlauf",
+  "typ": "skript",
+  "skript": "storefront_wahrheit.mjs",
+  "warum": "Erstlauf des taeglichen Storefront-Waechters. Prueft Startseite, Kollektion und FAQ in Handy-Breite von einer ECHTEN Besucher-IP — von unserer eigenen ist die oeffentliche Seite nicht pruefbar (Bot-Cache, 19.08. gemessen). Danach legt fixer_keepalive.sh den Auftrag taeglich selbst an."
+}

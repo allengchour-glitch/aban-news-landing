@@ -1201,6 +1201,35 @@ while true; do
       echo "$(date -u +%H:%M) ads_kuration Live-Nachzug gestartet"
     fi
   fi
+  # STOREFRONT VON AUSSEN, einmal taeglich (17.09.2026). Das ist der Auftrag, der «so oft
+  # wie es geht» wirklich verdient: seit dem 19.08. steht gemessen fest, dass unsere
+  # eigene IP eine stundenalte Bot-Cache-Kopie bekommt — 125 Abrufe ueber 50 Minuten
+  # lieferten ausnahmslos die alte Startseite. Von hier aus ist die oeffentliche Seite
+  # also GRUNDSAETZLICH nicht pruefbar, egal wie oft man es versucht.
+  # Der Hetzner-Agent sitzt woanders im Netz. Diese Zeile legt ihm den Auftrag hin; er
+  # holt ihn im 5-Minuten-Takt ab, voellig unabhaengig davon, ob ich wach bin.
+  # ⚠️ Idempotent ueber einen Zeitstempel — nicht stuendlich 24 Auftraege erzeugen.
+  SF=/tmp/storefront_auftrag.stamp
+  if [ $(( $(date +%s) - $(stat -c %Y "$SF" 2>/dev/null || echo 0) )) -gt 72000 ]; then
+    mkdir -p "$REPO/auftraege/offen"
+    TAG=$(date -u +%Y-%m-%d)
+    cat > "$REPO/auftraege/offen/storefront-$TAG.json" <<JSON
+{
+  "id": "storefront-$TAG",
+  "typ": "skript",
+  "skript": "storefront_wahrheit.mjs",
+  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist."
+}
+JSON
+    ( cd "$REPO" && git add auftraege >/dev/null 2>&1 \
+      && git -c user.name=luxe-keepalive -c user.email=keepalive@luxestyle.ch \
+           commit -q -m "Storefront-Pruefung $TAG fuer den Hetzner-Agenten [skip ci]" >/dev/null 2>&1 \
+      && ( git push -q origin HEAD:claude/luxestyle-status-tztnn1 >/dev/null 2>&1 \
+           || echo "$(date -u +%H:%M) Storefront-Auftrag liegt lokal, Autocommitter nimmt ihn mit" ) )
+    touch "$SF"
+    echo "$(date -u +%H:%M) Storefront-Auftrag $TAG an den Agenten uebergeben"
+  fi
+
   # KANAL-ZUSAGEN, einmal taeglich (17.09.2026). Am 10.08. wurde «Gratis-Versand ab
   # CHF 65» aus dem Theme entfernt — auf dem oeffentlichen Pinterest-Profil stand es am
   # 17.09. immer noch, fuenf Wochen spaeter. Der Grund ist strukturell: die Korrektur
