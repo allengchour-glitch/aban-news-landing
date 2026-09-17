@@ -14,7 +14,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { ist_anmeldeseite } from './anmelde_erkennung.mjs';
+import { ist_anmeldeseite, hat_ziel_erreicht } from './anmelde_erkennung.mjs';
 
 const REPO    = process.env.LUXE_REPO    || '/opt/abannews';
 const PROFIL  = process.env.LUXE_PROFIL  || '/var/lib/luxe-agent/chrome-profil';
@@ -71,6 +71,18 @@ async function fuehre_aus(auftrag, ctx) {
       if (ist_anmeldeseite(ziel)) {
         const e = new Error(`nicht angemeldet — umgeleitet auf ${ziel}`);
         e.nichtAngemeldet = true;
+        throw e;
+      }
+      // ⚠️ 17.09.2026, zweite Lehre aus den ersten echten Laeufen: die Frage
+      // «ist das eine Anmeldemaske?» genuegt NICHT. Auftrag 03 landete auf einer
+      // Bot-Pruefseite, Auftrag 06 auf Googles Einwilligungswand mit «Sign in» —
+      // beide sind keine Anmeldemasken, beide bekamen «ok», und beide Quittungen
+      // sahen aus wie Erfolg. Deshalb hier eine zweite, unabhaengige Frage:
+      // BIN ICH ANGEKOMMEN? Wechselt der Gastgeber oder steht eine Zwischenseite
+      // im Weg, ist das Ergebnis wertlos und muss als solches gemeldet werden.
+      if (!hat_ziel_erreicht(auftrag.url, ziel)) {
+        const e = new Error(`Ziel nicht erreicht — aus ${auftrag.url} wurde ${ziel}`);
+        e.umgeleitet = true;
         throw e;
       }
       if (art === 'seite_text') {
@@ -187,7 +199,9 @@ for (const datei of offen) {
   } catch (e) {
     // «nicht angemeldet» ist kein gewoehnlicher Fehler, sondern eine Aufgabe fuer
     // den Betreiber (Profil einmal einloggen) — deshalb ein eigener Stand.
-    const stand = e.nichtAngemeldet ? 'nicht-angemeldet' : 'fehler';
+    const stand = e.nichtAngemeldet ? 'nicht-angemeldet'
+                : e.umgeleitet      ? 'umgeleitet'
+                : 'fehler';
     quittung = { ...auftrag, stand, fehler: String(e.message || e) };
     console.log(`✗ ${auftrag.id}: ${quittung.fehler}`);
   }

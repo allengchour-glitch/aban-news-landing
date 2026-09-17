@@ -10,7 +10,7 @@
  * Aufruf als Auftrag:
  *   { "id": "anmeldungen", "typ": "skript", "skript": "anmeldungen_pruefen.mjs" }
  */
-import { ist_anmeldeseite } from '../../server/anmelde_erkennung.mjs';
+import { ist_anmeldeseite, ist_zwischenseite, hat_ziel_erreicht } from '../../server/anmelde_erkennung.mjs';
 
 const DIENSTE = [
   { name: 'Google Merchant', url: 'https://merchants.google.com/mc/overview',
@@ -35,9 +35,18 @@ export default async function ({ ctx }) {
       // und eine Weiterleitung, die man zu frueh misst, sieht aus wie Erfolg.
       await seite.waitForTimeout(3000);
       const ziel = seite.url();
+      // ⚠️ 17.09.: `!ist_anmeldeseite(ziel)` allein hat Google Merchant als
+      // «angemeldet» gemeldet, obwohl der Browser auf consent.google.com stand —
+      // mit einer «Sign in»-Schaltflaeche oben rechts. Eine Einwilligungswand ist
+      // keine Anmeldemaske und trotzdem kein Beweis fuer eine Anmeldung. Gefragt
+      // wird deshalb, ob das ZIEL erreicht ist; alles andere ist «unklar», nicht
+      // «ja». Ein ehrliches «weiss ich nicht» ist mehr wert als ein falsches Ja.
       befunde.push({
         dienst: d.name, wofuer: d.wofuer, ziel,
-        angemeldet: !ist_anmeldeseite(ziel),
+        angemeldet: ist_anmeldeseite(ziel) ? false
+                  : hat_ziel_erreicht(d.url, ziel) ? true
+                  : null,
+        haenger: ist_zwischenseite(ziel) ? 'Zwischenseite (Einwilligung/Bot-Pruefung)' : undefined,
       });
     } catch (e) {
       // Ein Fehler ist KEINE Aussage ueber die Anmeldung — sonst faenden wir
@@ -52,7 +61,7 @@ export default async function ({ ctx }) {
   const unklar = befunde.filter(b => b.angemeldet === null).map(b => b.dienst);
   return {
     zusammenfassung: `angemeldet: ${ja.join(', ') || '—'} · nicht angemeldet: ${nein.join(', ') || '—'}`
-                   + (unklar.length ? ` · unklar (Fehler): ${unklar.join(', ')}` : ''),
+                   + (unklar.length ? ` · UNKLAR (Ziel nicht erreicht/Fehler): ${unklar.join(', ')}` : ''),
     befunde,
   };
 }

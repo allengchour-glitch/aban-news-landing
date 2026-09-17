@@ -36,12 +36,23 @@ angemeldet ist; der sinnvollste erste Auftrag nach dem einmaligen Einloggen).
 |---|---|
 | `ok` | erledigt, `ergebnis` trägt Text/Datei und die **End-URL** (`ziel`) |
 | `nicht-angemeldet` | die Seite hat auf eine Anmeldung umgeleitet → Profil einloggen |
+| `umgeleitet` | **angekommen ist etwas anderes** — Einwilligungswand, Bot-Prüfung, fremder Gastgeber |
 | `fehler` | alles andere, mit Grund |
 | `laufend` | **mittendrin gestorben** — von Hand prüfen, NICHT einfach wiederholen |
 
 `nicht-angemeldet` ist ein eigener Stand, weil sonst der gefährlichste Fall still wäre: ein
 Merchant-Auftrag liefert sonst einen hübschen Screenshot **der Login-Maske**, und die
 Quittung sähe aus wie Erfolg.
+
+`umgeleitet` kam am 17.09. dazu, nachdem genau das trotzdem zweimal passiert ist. Auftrag 03
+landete auf einer Bot-Prüfseite («Deine Verbindung muss verifiziert werden»), Auftrag 06 auf
+Googles Einwilligungswand — **mit einer «Sign in»-Schaltfläche oben rechts**. Beide sind keine
+Anmeldemasken, beide bekamen `ok`. Der Melder beantwortete also die Frage *«ist das eine
+Anmeldemaske?»* völlig richtig — nur war es die falsche Frage. Die richtige lautet **«bin ich
+dort angekommen, wo ich hinwollte?»**, und sie wird jetzt getrennt gestellt
+(`hat_ziel_erreicht`, Gegenprobe in beide Richtungen mit den zwei echten Fehlalarmen als
+Testfall). Wo die Antwort unklar ist, steht seither `null` statt `true` — ein ehrliches
+«weiss ich nicht» ist mehr wert als ein falsches Ja.
 
 `laufend` entsteht durch den **Claim**: alles, was klicken oder absenden kann, wird vor der
 Ausführung als Quittung committet und gepusht. Ohne das käme die Auftragsdatei nach einem

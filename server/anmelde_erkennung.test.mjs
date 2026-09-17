@@ -5,7 +5,7 @@
  * Ein Melder, der «0» meldet, muss zeigen, dass er auch «1» kann — deshalb
  * werden beide Richtungen geprueft, mit einem bewussten Koeder auf jeder Seite.
  */
-import { ist_anmeldeseite } from './anmelde_erkennung.mjs';
+import { ist_anmeldeseite, hat_ziel_erreicht } from './anmelde_erkennung.mjs';
 
 const SOLL_JA = [
   'https://accounts.google.com/v3/signin/identifier?service=merchants',
@@ -33,7 +33,33 @@ let fehler = 0;
 for (const u of SOLL_JA)   if (!ist_anmeldeseite(u)) { console.log('VERPASST :', u); fehler++; }
 for (const u of SOLL_NEIN) if ( ist_anmeldeseite(u)) { console.log('FEHLALARM:', u); fehler++; }
 
+// ── Zweite Frage: «bin ich angekommen?» ────────────────────────────────────
+// Die beiden ersten Faelle sind die echten Fehlalarme vom 17.09. — sie standen
+// als «ok» bzw. «angemeldet: true» in einer Quittung, obwohl nichts erreicht war.
+const ZIEL_NEIN = [
+  ['https://merchants.google.com/mc/products/diagnostics',
+   'https://consent.google.com/m?continue=https://www.google.com/retail/merchant-center/'],
+  ['https://admin.shopify.com/store/au3j0y-hq/marketing',
+   'https://admin.shopify.com/challenge?verify=1'],
+  ['https://www.bigbuy.eu/en/contact', 'https://www.bigbuy.eu/en/login'],
+  ['https://merchants.google.com/mc/overview', 'https://www.google.com/sorry/index?continue=x'],
+  ['https://luxestyle.ch/', 'https://beispiel-parkdomain.com/'],
+];
+const ZIEL_JA = [
+  ['https://merchants.google.com/mc/overview', 'https://merchants.google.com/mc/overview'],
+  ['https://www.pinterest.com/', 'https://ch.pinterest.com/'],                 // Landesausgabe
+  ['https://au3j0y-hq.myshopify.com/admin/settings/billing',
+   'https://admin.shopify.com/store/au3j0y-hq/settings/billing'],              // Shopifys Umzug
+  ['https://luxestyle.ch/pages/faq', 'https://luxestyle.ch/pages/faq?x=1'],
+  ['https://www.bigbuy.eu/en/contact', 'https://www.bigbuy.eu/en/contact#tabpanel3'],
+];
+for (const [a, b] of ZIEL_NEIN)
+  if ( hat_ziel_erreicht(a, b)) { console.log('ZIEL-FEHLALARM:', b); fehler++; }
+for (const [a, b] of ZIEL_JA)
+  if (!hat_ziel_erreicht(a, b)) { console.log('ZIEL-VERPASST :', b); fehler++; }
+
 console.log(fehler === 0
-  ? `✅ ${SOLL_JA.length} Anmeldeseiten erkannt, ${SOLL_NEIN.length} echte Seiten durchgelassen`
+  ? `✅ ${SOLL_JA.length} Anmeldeseiten erkannt, ${SOLL_NEIN.length} echte Seiten durchgelassen · `
+    + `${ZIEL_NEIN.length} verfehlte Ziele erkannt, ${ZIEL_JA.length} erreichte durchgelassen`
   : `❌ ${fehler} Fehler`);
 process.exit(fehler === 0 ? 0 : 1);

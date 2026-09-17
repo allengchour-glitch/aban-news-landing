@@ -27,7 +27,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ist_anmeldeseite } from '../../server/anmelde_erkennung.mjs';
 
-const HOST = 'https://de.pinterest.com';
+const HOST = 'https://ch.pinterest.com';   // gemessen 17.09.: das Konto landet auf der CH-Ausgabe
 const PROFIL = 'luxestyleCH';
 
 export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
