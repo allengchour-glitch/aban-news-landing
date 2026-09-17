@@ -28,6 +28,7 @@ POD = re.compile(r'^(9000001|GLOBAL-|POD-|SHIRT-|TASSE-)', re.I)
 
 
 def gql(q, v=None):
+    grund = "kein Versuch ausgefuehrt"
     for _ in range(4):
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
@@ -35,19 +36,31 @@ def gql(q, v=None):
                             "-H", "Content-Type: application/json",
                             "-d", json.dumps({"query": q, "variables": v or {}})],
                            capture_output=True, text=True)
+        # ⚠️ 17.09.2026: Hier stand `except Exception: pass` — der GRUND wurde
+        # verschluckt. 15 Waechter meldeten «Shopify antwortet nicht», und keiner
+        # konnte sagen warum. Ein Fehler ohne Grund ist eine Sackgasse fuer den,
+        # der ihn als naechstes liest.
         try:
             d = json.loads(r.stdout)
             if "data" in d:
                 return d
-        except Exception:
-            pass
+            grund = str(d.get("errors") or d)[:300]
+            # THROTTLED ist kein Fehler, sondern eine Bitte um Geduld: der Eimer
+            # fuellt sich mit restoreRate pro Sekunde, eine teure Abfrage braucht
+            # laenger als der feste Kurzschlaf.
+            if "THROTTLED" in grund.upper():
+                time.sleep(12)
+                continue
+        except Exception as e:
+            roh = (r.stdout or "")[:200]
+            grund = "Antwort unlesbar (" + type(e).__name__ + "): " + roh
         time.sleep(3)
     # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
     # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation
     # ohne userErrors unterscheiden — er quittiert dann Arbeit, die nie stattfand.
     # Ein lauter Abbruch ist hier richtig: eine falsche Quittung ueberspringt den Fall
     # fuer immer, ein Absturz nur diesen Lauf.
-    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird. Letzter Grund: " + grund)
 
 
 def sammeln():

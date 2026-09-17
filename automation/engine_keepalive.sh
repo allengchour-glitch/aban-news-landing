@@ -33,6 +33,16 @@ REPO_AUTO=/home/user/aban-news-landing/automation
 # der Symlink zeigte ins Leere und die TikTok-Werkzeuge standen still. Beide werden deshalb
 # bei Bedarf NEU INSTALLIERT, nicht nur verlinkt.
 python3 -c "import PIL" 2>/dev/null || pip install -q pillow >/dev/null 2>&1
+# ⚠️ 17.09.: Derselbe Fall eine Etage tiefer. `hauptbild_ohne_text.py` liest Text AUS Bildern
+# (bildtext_pruefen -> pytesseract -> /usr/bin/tesseract). Beides fehlte, und der Waechter
+# ist deshalb **1230 Mal hintereinander** mit ModuleNotFoundError gestorben, ohne dass es
+# jemand sah. Das Python-Paket allein genuegt nicht — pytesseract ist nur die Huelle um das
+# BINAER, das apt liefert.
+python3 -c "import pytesseract" 2>/dev/null || pip install -q pytesseract >/dev/null 2>&1
+command -v tesseract >/dev/null 2>&1 || {
+  apt-get install -y -qq tesseract-ocr >/dev/null 2>&1 \
+    && echo "$(date -u +%H:%M) tesseract nachinstalliert"
+}
 FFMPEG_BEIGABE=$(python3 -c "import imageio_ffmpeg,sys;print(imageio_ffmpeg.get_ffmpeg_exe())" 2>/dev/null)
 if [ -z "$FFMPEG_BEIGABE" ]; then
   pip install -q imageio-ffmpeg >/dev/null 2>&1
