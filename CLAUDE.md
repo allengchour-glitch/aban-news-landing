@@ -454,7 +454,13 @@ Settings `product_card_carousel` + `show_second_image_on_hover` — **beide Defa
 **58% der Produkte haben nur 1 Bild** → ohne 2. Bild kein Karussell. Fix = Bilder nachfüllen, KEIN Theme-Toggle.
 - **Fortura:** Feed hat `Bild_1..Bild_5` (Spalten 57–61), Importer speicherte nur Bild_1. `automation/fortura_image_backfill.mjs`
   füllt Bild_2–5 nach (Join Varianten-Barcode=EAN → Feed-EAN Spalte 9; 7558 EANs haben Extras; HTTP-200-Validierung;
-  bis 4 Extrabilder; Ledger `dropship/_fortura_img_done.txt`). Runner `/tmp/fortura_img_runner.sh` (setsid, Loop 300er-Batches).
+  bis 4 Extrabilder; Ledger `dropship/_fortura_img_done.txt`). Runner **`automation/fortura_img_runner.sh`**
+  (17.09. wiederhergestellt — lag nur in /tmp und war weg; Lehre 2 zum dritten Mal).
+  **✅ GEMESSEN 17.09.: diese Arbeit ist FERTIG.** 2'408 aktive Fortura-Produkte, davon 1'552 mit
+  Karussell und 856 mit nur einem Bild — für diese 856 hat der Feed keine Zusatzbilder, alle im
+  Ledger. ⚠️ Die frühere Lesart «4'403 von 7'558 offen» war ein Vergleich zweier Grundgesamtheiten:
+  7'774 = EANs IM FEED mit Extras (Lieferant), 4'403 = geprüfte SHOP-Produkte. Es waren nie 3'100 offen.
+  🔑 Zugang in `/tmp/fortura_env.sh` (600) — stirbt bei jedem Neustart; Ampel meldet «FORTURA-ZUGANG WEG».
   ⚠️ Manche Feed-Zeilen haben NUR Bild_1 (z.B. Edelweisshemd) = echt keine Extras → korrekt übersprungen.
 - **CJ:** neuere cj-real haben schon 3–10 Bilder; die CJ-pid steckt in der SKU (`CJ-<pid>`) → künftiger CJ-Bild-Backfill
   über CJ-API-Bildliste möglich (143/694 Stichprobe noch 1-bildrig).

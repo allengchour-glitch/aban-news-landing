@@ -358,38 +358,32 @@ auf CHF 55.56 und macht aus einer eingehaltenen Zusage ein gebrochenes Versprech
 weder Hextom noch SEOWILL als App-Embed im Theme. Beide laden nichts. Deinstallieren ist
 Aufräumen, kein Geschwindigkeitsgewinn.
 
-## Punkt 3 — Fortura-Zugangsdaten sind WEG und müssen neu angefordert werden
+## Punkt 3 — Fortura-Zugang: ERLEDIGT (17.09.2026), eine Kleinigkeit bleibt
 
-**Gemessen 17.09.2026, an fünf Orten gesucht — sie existieren nirgends mehr:**
+Der Betreiber hat die Zugangsdaten am 17.09. geliefert (Kundennr. 544341,
+`webtransfer.fortura.ch`). Liegen in `/tmp/fortura_env.sh`, Modus 600 — **nicht im Repo**,
+das ist öffentlich. Gegengeprüft: das Passwort steht in keiner Repo-Datei und in keinem Commit.
 
-| Ort | Ergebnis |
-|---|---|
-| `/tmp/fortura_env.sh` | fehlt (Container-Neustart) |
-| Umgebung aller laufenden Prozesse | keine `FORTURA_*`-Variable |
-| `/tmp/dienste.env` (hat überlebt) | trägt 8 Schlüssel — **Fortura ist nicht dabei** |
-| Git-Historie (öffentliches Repo) | **nie eine Zuweisung mit Wert** — richtig so, aber damit auch nicht wiederherstellbar |
-| Postfach (alle Ordner, auch Papierkorb) | **keine Mail mit den Zugangsdaten** |
+**Gemessen, nicht angenommen:**
+- Anmeldung + Feed: **20'086 Zeilen, 10,1 MB** nach `/tmp/fortura_feed.csv` (Exit 0).
+- Bild-Nachschub: **gescannt 2'408, gefixt 0** — und das ist kein Fehler, sondern das Ende
+  der Arbeit. Von **2'408 aktiven Fortura-Produkten haben 1'552 ein Karussell, 856 nur ein
+  Bild** — und für diese 856 hat der Feed schlicht keine Zusatzbilder. Sie stehen alle
+  bereits als geprüft im Ledger.
 
-Im Postfach steht nur die Zusage von Roberto Papini, **23.07.2026 05:56**: «Ich werde Ihnen den
-Zugang heute einrichten und Ihnen die Zugangsdaten zustellen.» Danach kam an diesem Tag nur noch
-eine Rechnung (10:30). **Die Zugangsdaten sind also nie per Mail an `info@luxestyle.ch` gekommen** —
-sie wurden telefonisch oder auf einem anderen Weg übergeben. Deshalb lässt sich hier nichts
-wiederfinden; sie müssen neu angefordert werden.
+⚠️ **Korrektur einer eigenen Zahl von heute Nachmittag:** Ich hatte «4'403 von ~7'558»
+geschrieben und daraus ~3'100 offene Produkte abgeleitet. Das war ein Vergleich zweier
+verschiedener Grundgesamtheiten: **7'774 ist die Zahl der EANs IM FEED mit Zusatzbildern**
+(Lieferantenseite), 4'403 die Zahl der **von uns geprüften Shop-Produkte**. Der Shop hat in
+dieser Warengruppe überhaupt nur 2'408 aktive Artikel. Es waren nie 3'100 offen.
 
-**Entwurf liegt bereit** — im bestehenden Fortura-Thread, an `rpapini@fortura.ch` (Kopie
-`info@fortura.ch`), Betreff «Zugangsdaten Datenfeed erneut benötigt – LuxeStyle CH (Kundennr.
-544341)». ⚠️ **Bitte aus `info@luxestyle.ch` senden**, nicht aus dem privaten Gmail: Fortura hat
-diese Adresse hinterlegt, und die Antwort soll dorthin zurückkommen.
+### Was noch offen ist (2 Minuten, nur du)
 
-**Wenn die Daten da sind**, beide Werte in den **Claude-Umgebungseinstellungen** eintragen
-(`FORTURA_FTP_USER`, `FORTURA_FTP_PW`) — nicht im Chat, nicht ins Repo (öffentlich). Als
-Umgebungsvariablen überleben sie jeden Container-Neustart; das ist die Dauerlösung aus Regel 15,
-und genau deshalb ist dieser Punkt überhaupt entstanden.
+`/tmp` überlebt keinen Container-Neustart — am **14.08.** und am **17.09.** ist der Zugang
+genau so verschwunden, beide Male **unbemerkt**, weil die Fehlermeldung nur im Log des
+Feed-Holers stand. Dauerlösung: **`FORTURA_FTP_USER` und `FORTURA_FTP_PW` als
+Umgebungsvariablen in den Claude-Einstellungen** hinterlegen (nicht im Chat, nicht im Repo).
 
-**Warum es sich lohnt:** Der Bild-Nachschub steht bei **4'403 von ~7'558** still. 58 % der Produkte
-haben nur ein Bild — ohne zweites Bild kein Karussell auf der Kollektionsseite. Der Motor läuft
-wieder (`automation/fortura_img_runner.sh`, heute wiederhergestellt) und holt den Feed selbst,
-sobald er sich anmelden kann.
-
-**Erledigt ist es, wenn** `/tmp/fortura_img_runner.log` eine Zeile «Fortura-Bilder: N → M» zeigt
-statt «Feed-Download fehlgeschlagen».
+Bis dahin meldet sich die Lücke jetzt von selbst: die **Betreiber-Ampel** trägt eine Zeile
+«🔑 FORTURA-ZUGANG WEG», sobald die Datei fehlt — und sie verschwindet wieder, sobald der
+Zugang da ist (in beide Richtungen gegengeprüft).

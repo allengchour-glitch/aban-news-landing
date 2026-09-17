@@ -208,6 +208,28 @@ def shopify_rechnung():
             "Sperre. Danach eine Zeile nach dropship/_shopify_rechnung_ref.txt")
 
 
+def fortura_zugang():
+    """Der Fortura-Zugang liegt NUR in /tmp und stirbt mit jedem Container-Neustart.
+
+    Zweimal passiert (14.08. und 17.09.2026), beide Male unbemerkt: der Feed-Holer
+    steigt zwar mit einer klaren Meldung aus, aber die stand nur in seinem eigenen Log.
+    Beim zweiten Mal lag der Bild-Nachschub deshalb wochenlang still, ohne dass es
+    jemand sah. **Ein Automat, der still scheitert, ist fuer den Betrieb dasselbe wie
+    keiner** — also gehoert der Befund in die Ampel, nicht ins Log.
+
+    Die Zeile verschwindet von selbst, sobald die Datei wieder da ist. Dauerhaft weg ist
+    sie erst, wenn FORTURA_FTP_USER/PW als Umgebungsvariablen in den Claude-Einstellungen
+    stehen — die ueberleben den Neustart, /tmp nicht.
+    """
+    if os.path.exists("/tmp/fortura_env.sh"):
+        return ""
+    return ("🔑 FORTURA-ZUGANG WEG (/tmp/fortura_env.sh fehlt nach Container-Neustart) — "
+            "ohne ihn laedt der Artikel-Feed nicht und der Bild-Nachschub steht still. "
+            "Zugangsdaten neu in die Sitzung geben; Dauerloesung: FORTURA_FTP_USER und "
+            "FORTURA_FTP_PW als Umgebungsvariablen in den Claude-Einstellungen "
+            "(Kundennr. 544341, webtransfer.fortura.ch)")
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -224,7 +246,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
+    teile = [t for t in (shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
