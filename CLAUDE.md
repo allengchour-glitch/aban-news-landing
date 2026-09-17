@@ -401,9 +401,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   einen Weg BAUEN** statt nur zu delegieren: z. B. lokales Browser-Skript via CDP an Brave
   (`automation/social-profile-polish.mjs`, `puppeteer-core`, Port 9222), eigenes Tool, anderer Endpoint.
   Profil-Edit-APIs: FB = ja (Graph, `fb-profile-polish.mjs`); IG/TikTok = NEIN → Browser-Skript/PC-Claude.
-  **PC-FAKT (User 2026-06-12): der PC mit Brave-Agent (Port 9222, eingeloggt) LÄUFT IMMER** → Browser-Aufgaben
-  jederzeit an PC-Claude delegierbar; Skripte: `automation/local/profil-politur-browser.mjs` (Playwright, lädt
-  Profilbild automatisch) + `automation/social-profile-polish.mjs` (puppeteer).
+  **⚠️ PC-FAKT VON 2026-06-12 WIDERLEGT (gemessen 17.09.2026):** «der PC läuft immer» stimmt, aber das genügt NICHT.
+  Port 9222 ist **lokal** (steht so im Setup-Dokument) und von der Cloud aus grundsätzlich unerreichbar — geprüft
+  über `localhost`, `127.0.0.1` und `host.docker.internal`, alle drei ohne Antwort. `ListAgents` findet keine
+  erreichbare Session, und ALLE Bridge-Sessions (`environment_kind: bridge`) melden `computer_unreachable`,
+  die jüngste seit **15.09. 03:44**. **Damit ein Browser-Auftrag delegierbar ist, braucht es auf dem PC eine
+  LAUFENDE Claude-Code-Sitzung mit Remote-Control-Verbindung** — ein eingeschalteter PC allein reicht nicht.
+  Erst wenn `ListAgents` die PC-Session zeigt, geht `SendMessage`. Skripte für den PC liegen bereit:
+  `automation/local/profil-politur-browser.mjs` (Playwright) + `automation/social-profile-polish.mjs` (puppeteer).
+  **Ohne Bridge ist der Handy-Browser des Betreibers der schnellere Weg** — BigBuy-Ticket, CJ-Konsole,
+  Google Merchant und Shopify-Dateien laufen alle im mobilen Browser.
 - **🎬 Video-Präferenzen (User 2026-06-12, Musik-Update 2026-07-06):** ALLE Marketing-Videos
   **OHNE Voiceover** (on-screen Text statt Stimme). **MUSIK: ABWECHSLUNG PFLICHT** — beim Posten
   Standard = `-clean.mp4` + aktueller **TikTok-Trend-Sound** (Commercial Music Library), jedes Mal ein
