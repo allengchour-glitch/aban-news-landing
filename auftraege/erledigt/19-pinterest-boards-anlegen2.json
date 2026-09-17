@@ -1,0 +1,8 @@
+{
+  "id": "19-pinterest-boards-anlegen2",
+  "typ": "skript",
+  "skript": "pinterest_boards_anlegen.mjs",
+  "warum": "Zweiter Versuch auf dem RICHTIGEN Weg. Auftrag 17 rief /board-create/ auf — diese Adresse gibt es nicht, Pinterest leitete auf den Feed um ('Wir konnten diese Idee nicht finden!'). Jetzt: Profilseite → '+' → Pinnwand → Name. Erst EINE Probe, nachlesen, und nur bei Beleg die uebrigen fuenf.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
