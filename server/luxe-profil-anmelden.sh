@@ -30,8 +30,21 @@ export PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
 
 # Zwei Prozesse duerfen NIE gleichzeitig auf demselben Profil arbeiten — Chromium
 # sperrt das Verzeichnis, und der Agent wuerde mitten im Anmelden dazwischenfunken.
-echo "▶ Agent-Timer anhalten, solange du anmeldest"
+# ⚠️ Den TIMER anzuhalten genuegt nicht: laeuft gerade ein Auftrag, haelt dessen
+# Chromium das Profilverzeichnis gesperrt, und der Anmelde-Browser kaeme nicht hoch.
+# Deshalb auch den laufenden Dienst beenden — er holt seine Auftraege ohnehin beim
+# naechsten Tick wieder.
+echo "▶ Agent anhalten (Timer UND laufender Auftrag), solange du anmeldest"
 systemctl stop luxe-agent.timer 2>/dev/null || true
+systemctl stop luxe-agent.service 2>/dev/null || true
+for _ in $(seq 1 15); do
+  pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1 || break
+  sleep 1
+done
+if pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1; then
+  echo "✗ Es läuft noch ein Browser auf demselben Profil. Bitte kurz warten und erneut starten."
+  exit 1
+fi
 aufraeumen() {
   echo; echo "▶ Browser beenden, Timer wieder starten"
   kill "${CHROME_PID:-0}" 2>/dev/null || true
