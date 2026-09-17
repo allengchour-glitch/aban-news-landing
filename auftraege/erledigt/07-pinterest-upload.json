@@ -1,0 +1,8 @@
+{
+  "id": "07-pinterest-upload",
+  "typ": "skript",
+  "skript": "pinterest_bulk_upload.mjs",
+  "warum": "117 gepruefte Pins (16.09. bereinigt: 'weltweiter Versand' raus, tote Produktlinks raus) ueber Pinterests eigenen Massen-Upload einspielen. Betreiber-Freigabe 17.09.: 'Ja, alle 117 hochladen'. Termine ueber 10 Tage verteilt, ~12/Tag.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
