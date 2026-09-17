@@ -9,6 +9,69 @@
 
 
 
+## 2026-09-17 · 📉 «mach weiter»: der Trichter ist nicht kaputt — er ist leer. Vier Irrtümer ausgeräumt
+
+Vier Vermutungen geprüft, die alle im Gedächtnis oder in der Aufgabenliste standen.
+**Drei waren falsch, eine war ein blindes Messgerät.**
+
+**1. «19 Riesen-Kollektionen ohne Facetten» (Aufgabe #78) — halb wahr, und egal.**
+Gemessen: 518 Kollektionen, **83 mit ≥1000 Produkten**, die grösste `geschenke-unter-100-franken`
+mit **74'719**. Die Live-Seiten haben tatsächlich **keine echten Facetten** (kein Preis, keine
+Grösse, keine Farbe, keine Verfügbarkeit) — nur Kategorie-Chips. Aber:
+**In den 30 meistbesuchten Einstiegsseiten von 30 Tagen stehen genau ZWEI Kollektionen**
+(`camping-kueche` 6 Sitzungen, `uhren` 6). Keine einzige der Riesen-Kollektionen.
+**Facetten für Seiten zu bauen, die niemand aufruft, ist Arbeit ohne Publikum.**
+Die Preis-Regeln selbst sind übrigens korrekt (`VARIANT_PRICE LESS_THAN 100/50/25/20`) —
+aber `bestseller-unter-50` und `geschenke-unter-50-franken` sind **inhaltlich identisch**
+(gleiche Regel, beide 64'106).
+
+**2. «0 abgeschlossene Kassengänge in 30 Tagen» — ein Zuordnungsartefakt, keine kaputte Kasse.**
+`sessions_that_completed_checkout` meldete **0** bei 1'370 Sitzungen. Das sah nach einem
+Totalausfall an der Kasse aus. Die Gegenprobe über die Bestellungen zeigt vier Stück, und
+erst ihre Herkunft klärt es:
+
+| | Quelle | was es wirklich war |
+|---|---|---|
+| #1018 CHF 28.90 | `web` / Online Store | **echter Kauf, erste Sitzung über ChatGPT**, direkt auf der Produktseite, **1 Moment** |
+| #1017 CHF 40.90 | `shopify_draft_order` | unsere eigene Ersatzbestellung |
+| #1016 CHF 47.90 | Kanal «Shop» | über die Shop-App, erstattet |
+| #1015 CHF 22.90 | `web` / direkt | echter Kauf, 8 Momente, über die Startseite |
+
+**Zwei echte Käufe.** Eine Kennzahl, die «0» sagt, kann eine Lücke in der Zuordnung meinen
+statt ein Ereignis, das nicht stattfand — **bevor man aus einer Null eine Katastrophe macht,
+zählt man die Sache selbst nach.**
+
+**3. «Warenkorb-Abbrecher: CHF 630 in 11 Checkouts → Automation aktivieren!» — erledigt sich.**
+Das steht seit Juli als Auftrag im Gedächtnis. Gemessen seit 18.08.: **genau EIN**
+abgebrochener Kassengang, CHF 22.90. Und der ist keiner: gleiche Mailadresse, gleiches Produkt,
+gleicher Betrag, zehn Minuten Abstand zu **Bestellung #1015**. Dieselbe Person, die gekauft hat.
+**In 30 Tagen null echte Abbrüche.** Eine Rückgewinnungs-Automation hätte nichts zurückzugewinnen.
+Der Auftrag ist nicht «offen», er ist **gegenstandslos** — und hätte die nächste Session
+einen Tag gekostet.
+
+**4. «Kein Produkt-JSON-LD auf den Produktseiten» — mein Messgerät war blind.**
+`WebFetch` meldete auf der Produktseite, die tatsächlich verkauft hat, es gebe keine
+strukturierten Produktdaten. Bevor ich das glaubte, habe ich das **Gerät an einem bekannten
+Positiv getestet**: dieselbe Frage an die Startseite, wo seit dem 14.09. nachweislich
+Organization- und WebSite-JSON-LD im Quelltext steht. `WebFetch` meldete auch dort «keins».
+**Die Markdown-Umwandlung wirft `<script>`-Blöcke weg — das Werkzeug kann JSON-LD grundsätzlich
+nicht sehen.** Die Wahrheit steht im Theme: `sections/product-information.liquid` gibt
+`{{ closest.product | structured_data }}` aus, Produkt-JSON-LD ist also vorhanden.
+**Regel: Ein Werkzeug, das «nichts gefunden» meldet, muss an einem bekannten Treffer zeigen,
+dass es überhaupt finden kann.** Sonst ist «nichts» eine Aussage über das Werkzeug.
+
+**Was am Ende übrig bleibt — und es ist unbequem:** 1'370 Sitzungen → 12 Warenkorb-Zulagen →
+7 Kassengänge → 2 echte Käufe. Diese Quoten sind für die Menge nicht schlecht; **die Menge ist
+das Problem.** Die Startseite ist mit **206 von 414 Einstiegen die Hälfte des Verkehrs**, die
+Nummer 2 ist `/pages/influencer-partner` (31) — eine Seite, die im Inhalt keinen einzigen Weg
+zum Sortiment anbietet, nur «Schreib mir». Der Shop hat kein Conversion-Problem, das ich von
+hier aus beheben kann. Er hat ein Verkehrsproblem, und **jeder verbliebene Hebel ist ein
+Betreiber-Klick** (Google-Merchant-Lieferland, Pinterest-Token, Social-Stopp).
+
+**Das einzige Wachstumssignal im ganzen Datensatz:** #1018 kam über **ChatGPT**, landete direkt
+auf der Produktseite und kaufte **in einem einzigen Moment**. Kein Stöbern, kein Vergleichen.
+Das ist die kaufbereiteste Quelle, die gemessen wurde — und sie kostet nichts.
+
 ## 2026-09-16 · 📣 «mach gratis werbung überall mit bot» — die Bot-Arbeit war getan, die Versprechen waren falsch
 
 **Die Grenze zuerst:** Bots, die in fremde Foren, Kommentarspalten, Gruppen oder
