@@ -1,6 +1,6 @@
 /**
- * pinterest_bulk_upload.mjs — laedt die 117 geprueften Pins ueber Pinterests
- * eigenen Massen-Upload hoch (CSV, Konto @luxestyleCH, Haendlerstatus genehmigt).
+ * pinterest_bulk_upload.mjs — laedt gepruefte Pins ueber Pinterests eigenen
+ * MASSEN-Upload hoch (CSV, Konto @luxestyleCH, Haendlerstatus genehmigt).
  *
  * Warum ueber den Browser und nicht ueber die API: der OAuth-Klick fuer ein
  * Pinterest-Zugriffstoken steht seit dem 08.07. offen. Der Betreiber hat am
@@ -11,17 +11,39 @@
  *    ausdruecklich «Instagram, Facebook». Der Doppelpost-Fall, der den Stopp
  *    ausgeloest hat, betraf die Meta-Poster.
  *
- * ⚠️ DIE WICHTIGSTE REGEL DIESES SKRIPTS (CLAUDE.md Regel 10, teuer gelernt an
- *    den IG-Doppelposts): erst die Quittung schreiben, DANN die Nebenwirkung
- *    ausloesen. Der Container/Server kann jederzeit mitten im Upload sterben.
- *    Stirbt er NACH dem Klick und VOR der Quittung, laedt der naechste Lauf
- *    dieselben 117 Pins ein zweites Mal hoch. Deshalb steht der Ledger-Eintrag
- *    VOR dem Absenden — unverrichtet ist harmlos, doppelt hochgeladen nicht.
+ * ⚠️ REGEL 10 (teuer gelernt an den IG-Doppelposts): erst die Quittung, DANN die
+ *    Nebenwirkung. Stirbt der Server NACH dem Klick und VOR der Quittung, laedt
+ *    der naechste Lauf dieselben Pins ein zweites Mal hoch.
  *
- * ⚠️ Und es wird NICHT blind geklickt: findet das Skript die erwarteten
- *    Bedienelemente nicht eindeutig, macht es Screenshots und meldet, was es
- *    gesehen hat, statt irgendetwas anzuklicken. Ein Bericht kostet einen Lauf,
- *    ein falscher Klick kostet ein Konto.
+ * ═══ WAS DER ERSTE ECHTE VERSUCH GELEHRT HAT (Auftrag 27, 17.09.2026) ═══
+ *
+ * Der Lauf endete mit «locator.click: Timeout — element is not enabled». Ich
+ * hielt das zuerst fuer einen schlechten Selektor. Der Screenshot zeigt etwas
+ * anderes, und zwar dreierlei:
+ *
+ * 1. ⛔ ES GAB HIER GAR KEINEN MASSEN-UPLOAD. Die Seite war «Pin fuer Anzeige
+ *    erstellen» — das Formular fuer EINEN Pin. Das Skript hat trotzdem die CSV
+ *    an das erste `input[type=file]` gehaengt, also die 117-Zeilen-Tabelle in
+ *    das BILDFELD eines einzelnen Pins. Waere die Schaltflaeche anklickbar
+ *    gewesen, haette es einen Pin veroeffentlicht, dessen Bild eine CSV-Datei
+ *    ist. **Ein Dateifeld ist nicht «das Dateifeld».** Auftrag 25 hatte
+ *    gemessen, dass /pin-builder/ EIN Dateifeld hat — daraus habe ich
+ *    geschlossen, es sei das Massen-Feld. Gemessen war nur, DASS es eines gibt.
+ *    → Jetzt wird NICHTS angehaengt, solange nicht belegt ist, dass die Seite
+ *      wirklich eine Massen-/CSV-Oberflaeche ist.
+ *
+ * 2. 🧱 EINE EINFUEHRUNGSTOUR LAG UEBER ALLEM («Tolle Pins leicht gemacht ·
+ *    1 von 4 · Weiter»). Das ist eine Wand wie eine Bot-Pruefung, nur
+ *    hausgemacht — und sie war der Grund, dass nichts anklickbar war.
+ *    → Erst Tour wegklicken (erkannt an ihrem Schrittzaehler «N von M»),
+ *      dann messen.
+ *
+ * 3. ⚠️ «weiter» stand in meiner Absende-Regex. Der einzige anklickbare
+ *    «Weiter»-Knopf auf dem Bild gehoerte der TOUR. Hätte `.first()` ihn
+ *    getroffen, waere das Skript fröhlich durch ein Tutorial geklickt und
+ *    haette «hochgeladen: true» gemeldet. **Ein Wort wie «weiter» beschreibt
+ *    keine Absicht — es kommt in jedem Assistenten vor.** → raus aus der Regex;
+ *      abgesendet wird nur, was «veroeffentlichen/publish/hochladen/upload» heisst.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -29,6 +51,14 @@ import { ist_anmeldeseite } from '../../server/anmelde_erkennung.mjs';
 
 const HOST = 'https://ch.pinterest.com';   // gemessen 17.09.: das Konto landet auf der CH-Ausgabe
 const PROFIL = 'luxestyleCH';
+
+// Absicht, nicht Assistenten-Sprache. «weiter/next/erstellen/create» sind bewusst
+// NICHT dabei — sie stehen in Touren und Zwischenschritten (siehe Kopf, Punkt 3).
+const ABSENDEN = /^(hochladen|upload|veröffentlichen|veroeffentlichen|publish)$/i;
+// Der Schrittzaehler einer Einfuehrungstour: «1 von 4», «2 of 4».
+const TOUR_ZAEHLER = /\b\d+\s*(von|of)\s*\d+\b/i;
+// Belegt, dass wir wirklich in einer Massen-/CSV-Oberflaeche stehen.
+const MASSEN_BELEG = /(massen|bulk|\.csv\b|csv[- ]?(datei|file|upload)|tabelle hochladen)/i;
 
 export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
   const csv    = path.join(REPO, 'dropship', 'pinterest_pins_upload.csv');
@@ -41,99 +71,180 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     await seite.screenshot({ path: datei, fullPage: false });
     bilder.push(path.relative(REPO, datei));
   };
+  // Ein Fehler darf die Messungen nicht mitnehmen. Gefunden an Auftrag 27: die
+  // Quittung trug nur «Timeout» — alles, was der Lauf vorher gesehen hatte, war
+  // weg, und die Diagnose musste aus den Screenshots rekonstruiert werden.
+  const werfen = (nachricht, extra = {}) => {
+    const e = new Error(nachricht);
+    e.teilergebnis = { schritte, bilder, ...extra };
+    Object.assign(e, extra);
+    return e;
+  };
 
-  if (fs.existsSync(ledger) && fs.readFileSync(ledger, 'utf8').trim())
-    return { uebersprungen: true,
-             grund: 'Ledger vorhanden — diese Pins wurden schon hochgeladen',
-             ledger: fs.readFileSync(ledger, 'utf8').trim().slice(0, 300) };
-  if (!fs.existsSync(csv)) throw new Error(`CSV fehlt: ${csv}`);
+  // ── Ledger mit ZWEI Staenden ────────────────────────────────────────────────
+  // VORLAEUFIG = Anspruch angemeldet, Klick noch nicht bestaetigt.
+  // BESTAETIGT = abgesendet, nie wieder anfassen.
+  // Ein VORLAEUFIG-Eintrag blockiert NICHT fuer immer: wo Playwright beweist,
+  // dass gar kein Klick zugestellt wurde («element is not enabled/visible»),
+  // wird er wieder freigegeben. Ein Anspruch, den niemand zuruecknehmen kann,
+  // sperrt die Aufgabe fuer immer — genau das war heute passiert.
+  const ledgerText = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8') : '';
+  if (/BESTAETIGT/.test(ledgerText))
+    return { uebersprungen: true, grund: 'Ledger BESTAETIGT — diese Pins sind schon hochgeladen',
+             ledger: ledgerText.trim().slice(0, 300) };
+  if (/VORLAEUFIG/.test(ledgerText))
+    return { uebersprungen: true, grund:
+      'Ledger steht auf VORLAEUFIG: ein frueherer Lauf hat den Anspruch angemeldet, '
+      + 'aber nicht bestaetigt. Ob abgesendet wurde, ist von hier NICHT entscheidbar. '
+      + 'Erst auf Pinterest nachsehen (Profil → Erstellt), dann den Ledger von Hand '
+      + 'auf BESTAETIGT setzen oder loeschen. NICHTS angeklickt.',
+      ledger: ledgerText.trim().slice(0, 300) };
+  // Alt-Eintrag ohne Marke: das Skript schrieb bis 17.09. eine reine Zeitstempel-Zeile.
+  // Der EINE Fall, der davon existiert, ist beweisbar harmlos — Quittung 27 zeigt
+  // «element is not enabled» in allen Wiederholungen, es wurde also nie ein Klick
+  // zugestellt. Den geben wir frei; jeder ANDERE unmarkierte Eintrag ist unklar und
+  // wird nicht angetastet. (Eine Ausnahme braucht einen Beleg, sonst ist sie ein Loch.)
+  if (ledgerText.trim() && !/BESTAETIGT|VORLAEUFIG|NICHTS-ABGESENDET/.test(ledgerText)) {
+    if (/27-pinterest-upload/.test(ledgerText)) {
+      fs.writeFileSync(ledger,
+        'NICHTS-ABGESENDET (Alt-Eintrag freigegeben, 17.09.2026) · Quittung '
+        + '27-pinterest-upload belegt: «element is not enabled» in allen Wiederholungen, '
+        + 'der Klick wurde nie zugestellt. Der alte Eintrag stand VOR dem Klick.\n'
+        + 'Vorheriger Inhalt: ' + ledgerText.trim().replace(/\s+/g, ' ').slice(0, 200) + '\n', 'utf8');
+      schritte.push('Alt-Ledger ohne Marke freigegeben (Beleg: Quittung 27)');
+    } else {
+      return { uebersprungen: true, grund:
+        'Ledger ohne Marke und ohne Beleg, was daraus geworden ist. NICHTS angeklickt.',
+        ledger: ledgerText.trim().slice(0, 300) };
+    }
+  }
+  if (!fs.existsSync(csv)) throw werfen(`CSV fehlt: ${csv}`);
   const zeilen = fs.readFileSync(csv, 'utf8').trim().split('\n').length - 1;
 
   const seite = await ctx.newPage();
   try {
     // --- 1. Welche Boards hat das Konto wirklich? -----------------------------
-    // Die CSV nennt sechs Board-Namen. Existiert einer nicht, verwirft Pinterest
-    // die betroffenen Zeilen — und das faellt sonst niemandem auf, weil der
-    // Upload trotzdem «erfolgreich» meldet.
     await seite.goto(`${HOST}/${PROFIL}/`, { waitUntil: 'load', timeout: 60000 });
     await seite.waitForTimeout(3000);
-    if (ist_anmeldeseite(seite.url())) {
-      const e = new Error(`nicht angemeldet — umgeleitet auf ${seite.url()}`);
-      e.nichtAngemeldet = true; throw e;
-    }
+    if (ist_anmeldeseite(seite.url()))
+      throw werfen(`nicht angemeldet — umgeleitet auf ${seite.url()}`, { nichtAngemeldet: true });
     await schuss(seite, '1-profil');
     const boards = await seite.$$eval(`a[href^="/${PROFIL}/"]`,
       as => [...new Set(as.map(a => (a.getAttribute('href') || '')
         .split('/').filter(Boolean).slice(1).join('/')).filter(Boolean))]);
     schritte.push(`Profil offen, ${boards.length} Board-Links gesehen`);
 
-    // --- 2. Massen-Upload finden ---------------------------------------------
-    // ⚠️ KORREKTUR 17.09.: Beim ersten Versuch meldete dieses Skript «kein Dateifeld
-    // gefunden» und ich schrieb das einer geratenen Adresse zu. Auftrag 25 hat gemessen:
-    // /pin-creation-tool/ UND /pin-builder/ haben beide ein Dateifeld. Gescheitert war
-    // es daran, dass der Browser damals NICHT ANGEMELDET war — Pinterest leitete auf den
-    // Feed um. **Eine Fehlersuche, die bei der erstbesten Erklaerung stehenbleibt, findet
-    // die falsche.** Jetzt die gemessene Adresse, mit /pin-builder/ als Rueckfallweg.
+    // --- 2. Pin-Werkzeug oeffnen und die Tour wegraeumen ----------------------
     await seite.goto(`${HOST}/pin-builder/`, { waitUntil: 'load', timeout: 60000 });
     await seite.waitForTimeout(4000);
-    if (ist_anmeldeseite(seite.url())) {
-      const e = new Error(`nicht angemeldet — umgeleitet auf ${seite.url()}`);
-      e.nichtAngemeldet = true; throw e;
-    }
+    if (ist_anmeldeseite(seite.url()))
+      throw werfen(`nicht angemeldet — umgeleitet auf ${seite.url()}`, { nichtAngemeldet: true });
     await schuss(seite, '2-pin-werkzeug');
     schritte.push(`Pin-Werkzeug: ${seite.url()}`);
 
-    // Der Einstieg heisst je nach Sprache «Massenerstellung», «Bulk create»
-    // oder traegt nur das Wort CSV. Alle drei zulassen, aber NUR wenn es
-    // genau einen Treffer gibt — bei mehreren waere jede Wahl geraten.
-    const einstieg = seite.locator(
-      'a,button,[role="button"]').filter({ hasText: /massen|bulk|csv/i });
+    for (let runde = 0; runde < 6; runde++) {
+      const body = await seite.locator('body').innerText().catch(() => '');
+      if (!TOUR_ZAEHLER.test(body)) break;
+      const zaehler = (body.match(TOUR_ZAEHLER) || [''])[0];
+      await seite.keyboard.press('Escape').catch(() => {});
+      await seite.waitForTimeout(800);
+      const nachEsc = await seite.locator('body').innerText().catch(() => '');
+      if (!TOUR_ZAEHLER.test(nachEsc)) { schritte.push(`Tour «${zaehler}» mit Escape geschlossen`); break; }
+      const weiter = seite.locator('button,[role="button"]')
+        .filter({ hasText: /^(weiter|next|fertig|done|los geht.s|got it)$/i });
+      if (await weiter.count() === 0) { schritte.push(`Tour «${zaehler}» sichtbar, kein Weiter-Knopf`); break; }
+      await weiter.first().click({ timeout: 8000 }).catch(() => {});
+      await seite.waitForTimeout(1200);
+      schritte.push(`Tour-Schritt «${zaehler}» weitergeklickt`);
+    }
+    await schuss(seite, '3-nach-tour');
+
+    // --- 3. Steht hier ueberhaupt ein MASSEN-Upload? --------------------------
+    // ⛔ Der wichtigste Halt des Skripts. Ohne Beleg wird NICHTS angehaengt.
+    const einstieg = seite.locator('a,button,[role="button"]').filter({ hasText: /massen|bulk|csv/i });
     const n = await einstieg.count();
     schritte.push(`Einstiege mit «Massen/Bulk/CSV»: ${n}`);
     if (n >= 1) {
-      await einstieg.first().click({ timeout: 15000 }).catch(e =>
-        schritte.push(`Klick auf Einstieg fehlgeschlagen: ${e.message.slice(0, 120)}`));
+      await einstieg.first().click({ timeout: 15000 })
+        .catch(e => schritte.push(`Klick auf Einstieg fehlgeschlagen: ${e.message.slice(0, 120)}`));
       await seite.waitForTimeout(4000);
-      await schuss(seite, '3-nach-einstieg');
+      await schuss(seite, '4-nach-einstieg');
     }
 
-    // --- 3. Datei anhaengen ---------------------------------------------------
+    const seitentext = (await seite.locator('body').innerText().catch(() => '')).slice(0, 4000);
+    if (!MASSEN_BELEG.test(seitentext)) {
+      return { hochgeladen: false, grund:
+        'Diese Seite ist KEINE Massen-/CSV-Oberflaeche (kein Wort «Massen/Bulk/CSV» im '
+        + 'Seitentext). Am 17.09. hat genau hier ein Lauf die 117-Zeilen-CSV in das '
+        + 'BILDFELD eines einzelnen Pins gehaengt. Deshalb: NICHTS angehaengt, NICHTS '
+        + 'angeklickt. Naechster Schritt = messen, wo Pinterest den Massen-Upload heute '
+        + 'fuehrt (Ads-Manager? Katalog-Datenquelle?) — und ob er fuer uns noetig ist, '
+        + 'denn der Shopify-Katalog pflegt bereits 431 Tsd. Artikel ein (Auftrag 26).',
+        seitenkopf: seitentext.slice(0, 400), boards, schritte, bilder, pins: zeilen };
+    }
+
+    // --- 4. Datei anhaengen (nur mit Beleg aus Schritt 3) --------------------
     const felder = seite.locator('input[type="file"]');
     const anzahl = await felder.count();
-    schritte.push(`Dateifelder auf der Seite: ${anzahl}`);
-    if (anzahl === 0) {
-      return { hochgeladen: false, grund:
-        'kein Dateifeld gefunden — Pinterest hat die Oberflaeche geaendert oder der '
-        + 'Massen-Upload liegt woanders. NICHTS angeklickt.',
-        boards, schritte, bilder, pins: zeilen };
-    }
+    schritte.push(`Dateifelder auf der belegten Massen-Seite: ${anzahl}`);
+    if (anzahl === 0)
+      return { hochgeladen: false, grund: 'Massen-Oberflaeche belegt, aber kein Dateifeld. NICHTS angeklickt.',
+               boards, schritte, bilder, pins: zeilen };
     await felder.first().setInputFiles(csv);
     await seite.waitForTimeout(5000);
-    await schuss(seite, '4-datei-angehaengt');
+    await schuss(seite, '5-datei-angehaengt');
     schritte.push(`CSV angehaengt (${zeilen} Pins)`);
 
-    // --- 4. Absenden — erst Quittung, dann Klick ------------------------------
-    const senden = seite.locator('button,[role="button"]')
-      .filter({ hasText: /^(hochladen|upload|weiter|next|erstellen|create|veröffentlichen|publish)$/i });
+    // --- 5. Absenden: nur EINE anklickbare Absicht -----------------------------
+    const kandidaten = await seite.$$eval('button,[role="button"]', els => els.map(el => ({
+      text: (el.innerText || '').trim().slice(0, 40),
+      testId: el.getAttribute('data-test-id') || '',
+      deaktiviert: el.getAttribute('aria-disabled') === 'true' || el.disabled === true,
+      sichtbar: !!(el.offsetWidth || el.offsetHeight),
+    })));
+    schritte.push(`Schaltflaechen gesamt: ${kandidaten.length}`);
+    const senden = seite.locator('button:not([aria-disabled="true"]),[role="button"]:not([aria-disabled="true"])')
+      .filter({ hasText: ABSENDEN });
     const s = await senden.count();
-    schritte.push(`Absende-Schaltflaechen: ${s}`);
-    if (s === 0) {
+    schritte.push(`Anklickbare Absende-Schaltflaechen: ${s}`);
+    if (s !== 1)
       return { hochgeladen: false, grund:
-        'Datei haengt, aber keine eindeutige Absende-Schaltflaeche. NICHT abgesendet — '
-        + 'Screenshot 4 zeigt den Stand.', boards, schritte, bilder, pins: zeilen };
-    }
+        `Datei haengt, aber ${s} anklickbare Absende-Schaltflaechen — bei 0 gibt es nichts `
+        + 'zu klicken, bei mehreren waere jede Wahl geraten. NICHT abgesendet.',
+        schaltflaechen: kandidaten.filter(k => k.sichtbar && k.text).slice(0, 25),
+        boards, schritte, bilder, pins: zeilen };
 
-    // ⬇⬇ Der Ledger steht VOR dem Klick. Siehe Kopfkommentar.
+    // ⬇⬇ Anspruch VOR dem Klick (Regel 10) — vorlaeufig, siehe Kopf.
+    const stempel = new Date().toISOString();
     fs.writeFileSync(ledger,
-      `${new Date().toISOString()} · ${zeilen} Pins aus dropship/pinterest_pins_upload.csv `
+      `VORLAEUFIG ${stempel} · ${zeilen} Pins aus dropship/pinterest_pins_upload.csv `
+      + `an Pinterest @${PROFIL} (Auftrag ${auftrag.id}). Klick noch nicht bestaetigt.\n`, 'utf8');
+
+    try {
+      await senden.first().click({ timeout: 20000 });
+    } catch (e) {
+      // Playwright protokolliert, ob die Aktion ueberhaupt zugestellt wurde. Steht dort
+      // durchgehend «not enabled»/«not visible», ist bewiesen, dass NICHTS abgesendet
+      // wurde — dann wird der Anspruch zurueckgenommen, sonst bleibt er stehen.
+      const log = String(e.message || '');
+      const nichtsPassiert = /not enabled|not visible|not stable/i.test(log)
+                          && !/navigat|response/i.test(log);
+      fs.writeFileSync(ledger, nichtsPassiert
+        ? `NICHTS-ABGESENDET ${stempel} · Klick nie zugestellt (${log.slice(0, 120).replace(/\s+/g, ' ')}). `
+          + `Anspruch zurueckgenommen, ein neuer Lauf darf es erneut versuchen.\n`
+        : `VORLAEUFIG ${stempel} · Klick abgebrochen, Zustellung UNKLAR (${log.slice(0, 160).replace(/\s+/g, ' ')}). `
+          + `Erst auf Pinterest nachsehen, bevor jemand erneut hochlaedt.\n`, 'utf8');
+      throw werfen(`Absenden fehlgeschlagen — Ledger auf ${nichtsPassiert ? 'NICHTS-ABGESENDET' : 'VORLAEUFIG'} `
+                 + `gesetzt. ${log.slice(0, 200)}`, { schaltflaechen: kandidaten.filter(k => k.sichtbar && k.text).slice(0, 25) });
+    }
+    await seite.waitForTimeout(12000);
+    await schuss(seite, '6-nach-absenden');
+    const text = (await seite.locator('body').innerText().catch(() => '')).slice(0, 1500);
+    fs.writeFileSync(ledger,
+      `BESTAETIGT ${stempel} · ${zeilen} Pins aus dropship/pinterest_pins_upload.csv `
       + `an Pinterest @${PROFIL} abgesendet (Auftrag ${auftrag.id}).\n`
       + `Loeschen dieser Datei laedt die Pins ERNEUT hoch — nur tun, wenn belegt ist, `
       + `dass der Upload nicht angekommen ist.\n`, 'utf8');
-
-    await senden.first().click({ timeout: 20000 });
-    await seite.waitForTimeout(12000);
-    await schuss(seite, '5-nach-absenden');
-    const text = (await seite.locator('body').innerText().catch(() => '')).slice(0, 1500);
     return { hochgeladen: true, pins: zeilen, boards, schritte, bilder,
              seitentext_nach_absenden: text };
   } finally {

@@ -22,6 +22,15 @@ const KANDIDATEN = [
   `${HOST}/business/create/`,
   `${HOST}/bulk-create-pins/`,
   `${HOST}/pin-creation-tool/`,
+  // ── Nachtrag 17.09., nach Auftrag 27 ──────────────────────────────────────────
+  // Die erste Runde fand auf KEINER dieser Seiten einen Massen-/CSV-Einstieg — und
+  // ich habe daraus trotzdem einen Upload-Versuch gemacht, der die CSV ins Bildfeld
+  // eines einzelnen Pins gehaengt hat. Die Seite hiess «Pin fuer ANZEIGE erstellen»:
+  // das Konto steht im Werbe-Zusammenhang, und Pinterests Massen-Editor lebt dort,
+  // nicht im organischen Profil. Also die Werbe-Seite mitmessen, bevor wieder jemand
+  // einen Upload-Weg annimmt, den niemand gesehen hat.
+  'https://ads.pinterest.com/',
+  `${HOST}/business/pins/`,
 ];
 
 export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {

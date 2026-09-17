@@ -223,7 +223,14 @@ for (const datei of offen) {
     const stand = e.nichtAngemeldet ? 'nicht-angemeldet'
                 : e.umgeleitet      ? 'umgeleitet'
                 : 'fehler';
+    // ⚠️ 17.09.2026, gelernt an Auftrag 27: hier stand nur die Fehlermeldung. Alles,
+    // was der Lauf VORHER gemessen hatte (Boards, Schritte, Screenshots), war damit
+    // weg — die Diagnose musste aus den Bilddateien rekonstruiert werden, und die
+    // erste Erklaerung, auf die ich dabei kam, war die falsche. **Ein Fehlschlag
+    // darf die Messungen nicht mitnehmen: das Wenige, was ein gescheiterter Lauf
+    // gesehen hat, ist oft das Wertvollste, was er hinterlaesst.**
     quittung = { ...auftrag, stand, fehler: String(e.message || e) };
+    if (e.teilergebnis) quittung.teilergebnis = e.teilergebnis;
     console.log(`✗ ${auftrag.id}: ${quittung.fehler}`);
   }
   // Auch ein Fehlschlag bekommt eine Quittung — ein Automat, der still scheitert,
