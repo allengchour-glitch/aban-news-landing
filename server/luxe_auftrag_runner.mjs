@@ -15,6 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { ist_anmeldeseite, hat_ziel_erreicht, ist_wandtext } from './anmelde_erkennung.mjs';
+import { fuehre_wartung_aus, ist_erlaubt, AKTIONEN } from './wartung.mjs';
 
 const REPO    = process.env.LUXE_REPO    || '/opt/abannews';
 const PROFIL  = process.env.LUXE_PROFIL  || '/var/lib/luxe-agent/chrome-profil';
@@ -22,7 +23,7 @@ const OFFEN   = path.join(REPO, 'auftraege/offen');
 const FERTIG  = path.join(REPO, 'auftraege/erledigt');
 const ERGEBNIS= path.join(REPO, 'auftraege/ergebnis');
 
-const ARTEN = new Set(['screenshot', 'seite_text', 'skript']);
+const ARTEN = new Set(['screenshot', 'seite_text', 'skript', 'wartung']);
 
 function sicherer_name(s) {               // gegen ../../etc/passwd und Leerzeichen-Tricks
   return typeof s === 'string' && /^[A-Za-z0-9._-]{1,80}$/.test(s) && !s.startsWith('.');
@@ -42,6 +43,14 @@ function pruefe(auftrag) {
   if (!ARTEN.has(art)) throw new Error(`unbekannte Auftragsart: ${art}`);
   if (art === 'screenshot' || art === 'seite_text') {
     if (!/^https:\/\//.test(auftrag.url || '')) throw new Error('url fehlt oder ist nicht https');
+    return;
+  }
+  if (art === 'wartung') {
+    // Nur ein NAME aus der festen Liste — nie ein Befehl, nie ein Argument.
+    // Siehe server/wartung.mjs, Kopfkommentar: das Repo ist oeffentlich.
+    if (!ist_erlaubt(auftrag.aktion))
+      throw new Error(`Wartungsaktion nicht erlaubt: ${auftrag.aktion} — erlaubt: `
+                      + Object.keys(AKTIONEN).join(', '));
     return;
   }
   if (!sicherer_name(auftrag.skript) || !auftrag.skript.endsWith('.mjs'))
@@ -103,6 +112,9 @@ async function fuehre_aus(auftrag, ctx) {
       return { ziel, mobil: !!auftrag.mobil, datei: path.relative(REPO, datei) };
     } finally { await seite.close(); }
   }
+
+  // art === 'wartung': feste Liste in server/wartung.mjs, kein Browser noetig.
+  if (art === 'wartung') return fuehre_wartung_aus(auftrag.aktion);
 
   // art === 'skript': nur ein Modul aus automation/browser/, das im Repo steht (pruefe())
   const pfad = path.join(REPO, 'automation/browser', auftrag.skript);

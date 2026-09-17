@@ -1,0 +1,6 @@
+{
+  "id": "12-wartung-verboten",
+  "typ": "wartung",
+  "aktion": "reboot",
+  "warum": "KOEDER (Gegenprobe): diese Aktion steht NICHT in der Liste und MUSS abgelehnt werden, mit Quittung 'fehler'. Ein Torwaechter, der nie 'nein' sagt, bewacht nichts."
+}
