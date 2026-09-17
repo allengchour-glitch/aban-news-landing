@@ -41,8 +41,25 @@ for _ in $(seq 1 15); do
   pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1 || break
   sleep 1
 done
+# ⚠️ 17.09.2026: Hier stand vorher nur «bitte kurz warten und erneut starten» — und
+# genau das half nicht. In der Hetzner-Konsole lief ein VERWAISTES Chromium aus einem
+# frueheren Versuch und hielt das Profil fest; Warten aendert daran nichts, weil
+# niemand mehr da ist, der es beendet. Timer und Dienst sind an dieser Stelle schon
+# gestoppt — was das Profil jetzt noch haelt, gehoert zu keinem laufenden Auftrag mehr
+# und darf weg. Erst freundlich (TERM), dann bestimmt (KILL).
 if pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1; then
-  echo "✗ Es läuft noch ein Browser auf demselben Profil. Bitte kurz warten und erneut starten."
+  echo "▶ Verwaister Browser haelt das Profil — wird beendet"
+  pkill -f -- "--user-data-dir=$PROFIL" 2>/dev/null || true
+  for _ in $(seq 1 10); do
+    pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1 || break
+    sleep 1
+  done
+  pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1 && {
+    pkill -9 -f -- "--user-data-dir=$PROFIL" 2>/dev/null || true; sleep 2; }
+fi
+if pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1; then
+  echo "✗ Der Browser laesst sich nicht beenden. Von Hand:"
+  echo "    pkill -9 -f \"user-data-dir=$PROFIL\""
   exit 1
 fi
 aufraeumen() {
@@ -110,8 +127,14 @@ echo "▶ Chromium mit Profil $PROFIL, Steuerport nur auf 127.0.0.1:9222"
 # 2 nach einem PUT.
 "$CHROME" --headless=new --no-sandbox \
   --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
-  --user-data-dir="$PROFIL" --lang=de-CH \
-  "https://accounts.google.com/ServiceLogin?continue=https://merchants.google.com/mc/overview" &
+  --user-data-dir="$PROFIL" --lang=de-CH --disable-gpu \
+  "https://accounts.google.com/ServiceLogin?continue=https://merchants.google.com/mc/overview" \
+  >/var/log/luxe-anmelden.log 2>&1 &
+# ⚠️ Ohne die Umleitung schreibt Chromium seine GPU-/WebGL-Meldungen direkt ins
+# Terminal — in der Hetzner-Konsole war die Anzeige dadurch unbenutzbar, und die
+# eigentlichen Hinweise des Skripts gingen darin unter. `--disable-gpu` nimmt den
+# Grund weg (auf einem Server ohne Grafikkarte ist die Beschleunigung ohnehin nutzlos),
+# die Umleitung faengt den Rest.
 CHROME_PID=$!
 sleep 3
 
