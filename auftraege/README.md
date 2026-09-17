@@ -36,7 +36,7 @@ angemeldet ist; der sinnvollste erste Auftrag nach dem einmaligen Einloggen).
 |---|---|
 | `ok` | erledigt, `ergebnis` trägt Text/Datei und die **End-URL** (`ziel`) |
 | `nicht-angemeldet` | die Seite hat auf eine Anmeldung umgeleitet → Profil einloggen |
-| `umgeleitet` | **angekommen ist etwas anderes** — Einwilligungswand, Bot-Prüfung, fremder Gastgeber |
+| `umgeleitet` | **angekommen ist etwas anderes** — Einwilligungswand, Bot-Wand, fremder Gastgeber |
 | `fehler` | alles andere, mit Grund |
 | `laufend` | **mittendrin gestorben** — von Hand prüfen, NICHT einfach wiederholen |
 
@@ -53,6 +53,18 @@ dort angekommen, wo ich hinwollte?»**, und sie wird jetzt getrennt gestellt
 (`hat_ziel_erreicht`, Gegenprobe in beide Richtungen mit den zwei echten Fehlalarmen als
 Testfall). Wo die Antwort unklar ist, steht seither `null` statt `true` — ein ehrliches
 «weiss ich nicht» ist mehr wert als ein falsches Ja.
+
+Und dann kam **Auftrag 09**, die Gegenprobe zu 03 mit genau dieser neuen Prüfung. Er meldete
+wieder `ok` — nach seinen eigenen Massstäben zu Recht: Endadresse unverändert
+`admin.shopify.com/store/…/marketing`, kein Gastgeberwechsel, keine Anmeldemaske. Im Bild
+stand trotzdem nur eine Cloudflare-Wand. **Eine Adressprüfung kann das grundsätzlich nicht
+sehen — die Wand behält die Adresse.** Deshalb gibt es jetzt eine dritte Schicht mit einem
+anderen Sinnesorgan: dem Seitentext (`ist_wandtext`, nur bei kurzen Seiten, damit ein
+Blogartikel über Captchas nicht als Wand gilt — der Köder steht im Test).
+
+Drei Schichten, drei verschiedene Fragen: *Ist das eine Anmeldemaske? Bin ich angekommen?
+Steht eine Wand davor?* Jede einzelne hat hier schon einmal «alles gut» gesagt, während es
+nicht gut war.
 
 `laufend` entsteht durch den **Claim**: alles, was klicken oder absenden kann, wird vor der
 Ausführung als Quittung committet und gepusht. Ohne das käme die Auftragsdatei nach einem

@@ -14,7 +14,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { ist_anmeldeseite, hat_ziel_erreicht } from './anmelde_erkennung.mjs';
+import { ist_anmeldeseite, hat_ziel_erreicht, ist_wandtext } from './anmelde_erkennung.mjs';
 
 const REPO    = process.env.LUXE_REPO    || '/opt/abannews';
 const PROFIL  = process.env.LUXE_PROFIL  || '/var/lib/luxe-agent/chrome-profil';
@@ -85,10 +85,19 @@ async function fuehre_aus(auftrag, ctx) {
         e.umgeleitet = true;
         throw e;
       }
-      if (art === 'seite_text') {
-        const text = await seite.evaluate(() => document.body.innerText.slice(0, 20000));
-        return { ziel, text };
+      // ⚠️ Dritte Schicht (17.09., Auftrag 09): Cloudflare behaelt die URL. Auftrag 09
+      // war die Gegenprobe zu 03 — mit Ziel-Pruefung — und meldete wieder «ok», weil
+      // die Adresse stimmte. Im Bild stand nur «Deine Verbindung muss verifiziert
+      // werden». Eine Adresspruefung kann das nie sehen; deshalb wird hier der TEXT
+      // gefragt, und zwar fuer Bild-Auftraege genauso wie fuer Text-Auftraege.
+      const seitentext = await seite.evaluate(() => document.body.innerText.slice(0, 20000))
+                                    .catch(() => '');
+      if (ist_wandtext(seitentext)) {
+        const e = new Error(`Bot-Wand statt Inhalt auf ${ziel}: ${seitentext.trim().slice(0, 120)}`);
+        e.umgeleitet = true;
+        throw e;
       }
+      if (art === 'seite_text') return { ziel, text: seitentext };
       const datei = path.join(ERGEBNIS, `${auftrag.id}.png`);
       await seite.screenshot({ path: datei, fullPage: !!auftrag.ganze_seite });
       return { ziel, mobil: !!auftrag.mobil, datei: path.relative(REPO, datei) };

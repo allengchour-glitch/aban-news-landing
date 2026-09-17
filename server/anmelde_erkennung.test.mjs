@@ -5,7 +5,7 @@
  * Ein Melder, der «0» meldet, muss zeigen, dass er auch «1» kann — deshalb
  * werden beide Richtungen geprueft, mit einem bewussten Koeder auf jeder Seite.
  */
-import { ist_anmeldeseite, hat_ziel_erreicht } from './anmelde_erkennung.mjs';
+import { ist_anmeldeseite, hat_ziel_erreicht, ist_wandtext } from './anmelde_erkennung.mjs';
 
 const SOLL_JA = [
   'https://accounts.google.com/v3/signin/identifier?service=merchants',
@@ -58,8 +58,24 @@ for (const [a, b] of ZIEL_NEIN)
 for (const [a, b] of ZIEL_JA)
   if (!hat_ziel_erreicht(a, b)) { console.log('ZIEL-VERPASST :', b); fehler++; }
 
+// ── Dritte Frage: steht eine Wand vor der Seite, ohne dass die URL es sagt? ──
+const WAND_JA = [
+  'Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst\nBestätigen Sie, dass Sie ein Mensch sind',
+  'Just a moment...\nEnable JavaScript and cookies to continue',
+];
+const WAND_NEIN = [
+  '🇨🇭 2\'400 Artikel ab Schweizer Lager — in 1–2 Tagen bei dir · 🚚 Gratis ab CHF 50',
+  // Koeder: ein langer, ECHTER Text, der die Wortmarke zufaellig enthaelt.
+  'Ratgeber: Warum Shops eine Bot-Pruefung einsetzen. '.repeat(30)
+    + 'Dort steht dann «Bestätigen Sie, dass Sie ein Mensch sind».',
+  '',
+];
+for (const t of WAND_JA)   if (!ist_wandtext(t)) { console.log('WAND-VERPASST :', t.slice(0,40)); fehler++; }
+for (const t of WAND_NEIN) if ( ist_wandtext(t)) { console.log('WAND-FEHLALARM:', t.slice(0,40)); fehler++; }
+
 console.log(fehler === 0
   ? `✅ ${SOLL_JA.length} Anmeldeseiten erkannt, ${SOLL_NEIN.length} echte Seiten durchgelassen · `
-    + `${ZIEL_NEIN.length} verfehlte Ziele erkannt, ${ZIEL_JA.length} erreichte durchgelassen`
+    + `${ZIEL_NEIN.length} verfehlte Ziele erkannt, ${ZIEL_JA.length} erreichte durchgelassen · `
+    + `${WAND_JA.length} Bot-Wände erkannt, ${WAND_NEIN.length} echte Texte durchgelassen`
   : `❌ ${fehler} Fehler`);
 process.exit(fehler === 0 ? 0 : 1);

@@ -84,6 +84,9 @@ function grundhost(url) {
  */
 export const VERWANDTE = [
   new Set(['shopify.com', 'myshopify.com']),
+  // Pinterest leitet jedes Land auf <land>.pinterest.com um — gemessen 17.09.:
+  // aus www.pinterest.ch wurde ch.pinterest.com. Auch das ist der Weg, nicht das Abweichen.
+  new Set(['pinterest.com', 'pinterest.ch', 'pinterest.de', 'pinterest.at']),
 ];
 // (merchants.google.com braucht keinen Eintrag — grundhost() kuerzt es ohnehin auf
 //  google.com, genau wie consent.google.com. Der Unterschied wird dort ueber
@@ -96,5 +99,36 @@ export function hat_ziel_erreicht(gefragt, gelandet) {
   if (!a || !b) return false;
   if (a === b) return true;
   return VERWANDTE.some(g => g.has(a) && g.has(b));
+}
+
+/**
+ * ── Dritte Schicht: die Bot-Wand, die die URL NICHT verraet (17.09.2026) ────
+ *
+ * Auftrag 09 war die Gegenprobe zu Auftrag 03 — mit der neuen Ziel-Pruefung. Sie
+ * meldete wieder «ok», und diesmal zu Recht nach ihren eigenen Massstaeben: die
+ * Endadresse war unveraendert `admin.shopify.com/store/.../marketing`, kein
+ * Gastgeberwechsel, keine Anmeldemaske. Im Screenshot stand trotzdem nur eine
+ * Cloudflare-Wand: «Deine Verbindung muss verifiziert werden».
+ *
+ * Eine URL-Pruefung kann das GRUNDSAETZLICH nicht sehen — die Wand behaelt die
+ * Adresse. Wer nur die Adresse liest, wird sie nie finden, egal wie gut die Regel
+ * ist. Deshalb eine Pruefung mit einem anderen Sinnesorgan: dem Seitentext.
+ */
+export const WAND_TEXTE = [
+  /Verbindung muss verifiziert werden/i,
+  /Bestätigen Sie, dass Sie ein Mensch sind/i,
+  /(checking|verifying) (if )?you are (a )?human/i,
+  /just a moment/i,
+  /enable javascript and cookies to continue/i,
+  /unusual traffic from your computer network/i,
+];
+
+/** true = das ist eine Wand, kein Inhalt. Nur bei KURZEN Seiten pruefen. */
+export function ist_wandtext(text) {
+  const t = (text || '').trim();
+  // ⚠️ Nur kurze Seiten: sonst wuerde ein Blogartikel ueber Captchas als Wand gelten.
+  // Echte Wandseiten haben ein paar Hundert Zeichen, echte Seiten Tausende.
+  if (t.length > 1200) return false;
+  return WAND_TEXTE.some(r => r.test(t));
 }
 
