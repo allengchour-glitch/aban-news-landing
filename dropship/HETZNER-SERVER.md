@@ -40,15 +40,42 @@ gelaufen** — alles darin ist ungetestet, bis er es einmal ausführt.
 
 ## Was nur der Betreiber tun kann
 
-1. **Einmal installieren** (als root auf 46.225.75.125):
-   `bash /opt/abannews/server/luxe-agent-setup.sh` — nachdem `/opt/abannews` auf einen
-   Stand mit dieser Datei gezogen ist (der Deploy-Timer tut das von allein, sobald der
-   Branch in `main` gemergt ist; vorher: `git fetch origin claude/luxestyle-status-tztnn1`).
-2. **Den Browser einmal anmelden.** Ein frisch installiertes Chromium hat **keine**
-   Sitzungen. Google Merchant, Shopify-Admin, BigBuy, Pinterest, TikTok verlangen Login
-   und 2FA — das kann kein Automat. Ohne diesen einen Schritt kann der Server nur
-   Seiten ansehen, die auch ohne Anmeldung offen sind.
-   Profilpfad: `/var/lib/luxe-agent/chrome-profil` (bleibt erhalten, wird wiederverwendet).
+**1. Einmal installieren** — ein Befehl, als root auf 46.225.75.125:
+
+```bash
+cd /opt/abannews && git fetch origin claude/luxestyle-status-tztnn1 \
+  && git show FETCH_HEAD:server/luxe-agent-setup.sh > /tmp/luxe-agent-setup.sh \
+  && bash /tmp/luxe-agent-setup.sh
+```
+
+Das Skript legt sich seinen **eigenen Klon nach `/opt/luxe-agent/repo`** an, installiert
+Playwright + Chromium und richtet den Timer `luxe-agent.timer` ein (alle 5 Minuten).
+Es ist idempotent — zweimal ausführen schadet nicht.
+
+> ⚠️ **Warum ein eigener Klon und nicht `/opt/abannews`?** Dort läuft der Deploy-Poller und
+> macht **alle drei Minuten** `git reset --hard origin/main`. Ein Agent, der dort wohnte,
+> wäre samt jedem Ergebnis weggeräumt worden, bevor ihn jemand sieht — und seine eigenen
+> Commits hätten dem Deploy dazwischengefunkt. Die Remote-URL wird aus dem Deploy-Repo
+> übernommen (sie trägt den GitHub-Token bereits, root-only), es braucht also keine zweiten
+> Zugangsdaten.
+
+Prüfen: `systemctl status luxe-agent.timer` · `journalctl -u luxe-agent.service -n 50 --no-pager`
+
+**2. Den Browser einmal anmelden.** Ein frisch installiertes Chromium hat **keine**
+Sitzungen. Google Merchant, Shopify-Admin, BigBuy, Pinterest, TikTok verlangen Login und
+2FA — das kann kein Automat. Ohne diesen Schritt kann der Server nur Seiten ansehen, die
+auch ohne Anmeldung offen sind (das reicht bereits für den Storefront-Blick von aussen).
+
+```bash
+# auf DEINEM Rechner:
+ssh -L 9222:127.0.0.1:9222 root@46.225.75.125
+# auf dem SERVER, in derselben Sitzung:
+PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers npx playwright open --browser chromium \
+   --user-data-dir=/var/lib/luxe-agent/chrome-profil https://merchants.google.com
+```
+
+Das Profil unter `/var/lib/luxe-agent/chrome-profil` bleibt erhalten und wird von jedem
+Auftrag wiederverwendet.
 
 ## Sicherheitsregeln (nicht verhandelbar)
 

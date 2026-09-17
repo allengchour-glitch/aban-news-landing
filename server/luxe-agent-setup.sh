@@ -9,17 +9,33 @@
 # offenen Port: die Verbindung geht immer vom Server nach draussen.
 set -euo pipefail
 
-APP_DIR="${APP_DIR:-/opt/abannews}"
+# ⛔ NICHT /opt/abannews benutzen. Dort laeuft der Deploy-Poller und macht alle drei
+# Minuten `git reset --hard origin/main` — er wuerde den Agenten und jedes Ergebnis
+# wegraeumen, noch bevor jemand es sieht. Der Agent bekommt deshalb einen EIGENEN Klon.
+DEPLOY_DIR="${DEPLOY_DIR:-/opt/abannews}"      # nur als Quelle fuer die Remote-URL
+APP_DIR="${APP_DIR:-/opt/luxe-agent/repo}"
 BRANCH="${BRANCH:-claude/luxestyle-status-tztnn1}"
 PROFIL="${PROFIL:-/var/lib/luxe-agent/chrome-profil}"
 INTERVAL="${INTERVAL:-5min}"
 log() { printf '\033[1;36m▶ %s\033[0m\n' "$*"; }
 
 [ "$(id -u)" -eq 0 ] || { echo "Bitte als root ausführen."; exit 1; }
-[ -d "$APP_DIR/.git" ] || { echo "Repo fehlt unter $APP_DIR — erst server/abannews-server-setup.sh."; exit 1; }
+
+if [ ! -d "$APP_DIR/.git" ]; then
+  # Die Remote-URL des Deploy-Repos traegt schon den GitHub-Token (root-only). Sie wird
+  # wiederverwendet, damit keine zweiten Zugangsdaten noetig sind — und sie landet nur in
+  # der .git/config dieses Klons, die ebenfalls root-only ist.
+  [ -d "$DEPLOY_DIR/.git" ] || { echo "Weder $APP_DIR noch $DEPLOY_DIR ist ein Repo — erst server/abannews-server-setup.sh."; exit 1; }
+  URL="$(git -C "$DEPLOY_DIR" remote get-url origin)"
+  log "eigener Klon nach $APP_DIR (Branch $BRANCH)"
+  install -d -m 700 "$(dirname "$APP_DIR")"
+  git clone --quiet --branch "$BRANCH" "$URL" "$APP_DIR"
+  chmod 700 "$APP_DIR"
+fi
 
 log "Playwright + Chromium"
 cd "$APP_DIR"
+git fetch --quiet origin "$BRANCH" && git checkout --quiet -B "$BRANCH" "origin/$BRANCH"
 export PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
 npm ls playwright >/dev/null 2>&1 || npm install --no-save playwright@1
 npx --yes playwright install --with-deps chromium
