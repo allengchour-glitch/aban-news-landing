@@ -1,0 +1,6 @@
+{
+  "id": "26-pinterest-katalog-diagnose",
+  "typ": "skript",
+  "skript": "pinterest_katalog_diagnose.mjs",
+  "warum": "Auftrag 25 hat im Business Hub eine Katalog-Diagnoseseite gefunden — das Pinterest-Gegenstueck zu Google Merchant, aber ERREICHBAR (Google sperrt den Agenten aus, Pinterest nicht). Shopify-Katalog steht auf 'Abgeschlossen', letzte Einpflege 17.9.2026. Wenn Produkte abgelehnt werden, steht hier warum. Rein lesend."
+}

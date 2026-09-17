@@ -68,7 +68,13 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     schritte.push(`Profil offen, ${boards.length} Board-Links gesehen`);
 
     // --- 2. Massen-Upload finden ---------------------------------------------
-    await seite.goto(`${HOST}/pin-creation-tool/`, { waitUntil: 'load', timeout: 60000 });
+    // ⚠️ KORREKTUR 17.09.: Beim ersten Versuch meldete dieses Skript «kein Dateifeld
+    // gefunden» und ich schrieb das einer geratenen Adresse zu. Auftrag 25 hat gemessen:
+    // /pin-creation-tool/ UND /pin-builder/ haben beide ein Dateifeld. Gescheitert war
+    // es daran, dass der Browser damals NICHT ANGEMELDET war — Pinterest leitete auf den
+    // Feed um. **Eine Fehlersuche, die bei der erstbesten Erklaerung stehenbleibt, findet
+    // die falsche.** Jetzt die gemessene Adresse, mit /pin-builder/ als Rueckfallweg.
+    await seite.goto(`${HOST}/pin-builder/`, { waitUntil: 'load', timeout: 60000 });
     await seite.waitForTimeout(4000);
     if (ist_anmeldeseite(seite.url())) {
       const e = new Error(`nicht angemeldet — umgeleitet auf ${seite.url()}`);
