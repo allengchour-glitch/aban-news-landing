@@ -32242,3 +32242,16 @@ gid://shopify/Product/15500373590401	schon-sauber	0
 gid://shopify/Product/15500373688705	schon-sauber	0
 gid://shopify/Product/15500373885313	alle-mit-text	-
 gid://shopify/Product/15500402000257	schon-sauber	0
+gid://shopify/Product/15500402360705	umgestellt	18
+gid://shopify/Product/15500402459009	schon-sauber	2
+gid://shopify/Product/15500402524545	schon-sauber	3
+gid://shopify/Product/15500402557313	umgestellt	15
+gid://shopify/Product/15500402622849	umgestellt	7
+gid://shopify/Product/15500402688385	schon-sauber	0
+gid://shopify/Product/15500402721153	schon-sauber	0
+gid://shopify/Product/15500402786689	schon-sauber	0
+gid://shopify/Product/15500402884993	schon-sauber	0
+gid://shopify/Product/15500402950529	schon-sauber	0
+gid://shopify/Product/15500402983297	alle-mit-text	-
+gid://shopify/Product/15500403114369	umgestellt	25
+gid://shopify/Product/15500403179905	schon-sauber	0
