@@ -358,19 +358,38 @@ auf CHF 55.56 und macht aus einer eingehaltenen Zusage ein gebrochenes Versprech
 weder Hextom noch SEOWILL als App-Embed im Theme. Beide laden nichts. Deinstallieren ist
 Aufräumen, kein Geschwindigkeitsgewinn.
 
-## Punkt 3 — Fortura-Zugangsdaten als Umgebungsvariablen hinterlegen (2 Minuten)
+## Punkt 3 — Fortura-Zugangsdaten sind WEG und müssen neu angefordert werden
 
-**Warum:** Der Bild-Nachschub für die Produktkarten steht bei **4'403 von ~7'558** still. Der
-Motor läuft wieder (`automation/fortura_img_runner.sh`, 17.09. wiederhergestellt), kann den
-Feed aber nicht holen: `/tmp/fortura_env.sh` ist beim Container-Neustart verschwunden, und
-**geraten wird nichts**. 58 % der Produkte haben nur ein Bild — ohne zweites Bild kein
-Karussell auf der Kollektionsseite.
+**Gemessen 17.09.2026, an fünf Orten gesucht — sie existieren nirgends mehr:**
 
-**Was zu tun ist:** `FORTURA_FTP_USER` und `FORTURA_FTP_PW` (Kundennummer 544341) in den
-**Claude-Umgebungseinstellungen** eintragen — nicht im Chat, nicht ins Repo (öffentlich).
-Als Umgebungsvariablen überleben sie jeden Container-Neustart; `autostart.sh` liest sie
-selbst. Das ist die Dauerlösung aus Regel 15 («Env-Keys sterben mit dem letzten Prozess»).
+| Ort | Ergebnis |
+|---|---|
+| `/tmp/fortura_env.sh` | fehlt (Container-Neustart) |
+| Umgebung aller laufenden Prozesse | keine `FORTURA_*`-Variable |
+| `/tmp/dienste.env` (hat überlebt) | trägt 8 Schlüssel — **Fortura ist nicht dabei** |
+| Git-Historie (öffentliches Repo) | **nie eine Zuweisung mit Wert** — richtig so, aber damit auch nicht wiederherstellbar |
+| Postfach (alle Ordner, auch Papierkorb) | **keine Mail mit den Zugangsdaten** |
 
-**Erledigt ist es, wenn** der Runner in `/tmp/fortura_img_runner.log` eine Zeile
-«Fortura-Bilder: N → M» schreibt statt «Feed-Download fehlgeschlagen».
+Im Postfach steht nur die Zusage von Roberto Papini, **23.07.2026 05:56**: «Ich werde Ihnen den
+Zugang heute einrichten und Ihnen die Zugangsdaten zustellen.» Danach kam an diesem Tag nur noch
+eine Rechnung (10:30). **Die Zugangsdaten sind also nie per Mail an `info@luxestyle.ch` gekommen** —
+sie wurden telefonisch oder auf einem anderen Weg übergeben. Deshalb lässt sich hier nichts
+wiederfinden; sie müssen neu angefordert werden.
 
+**Entwurf liegt bereit** — im bestehenden Fortura-Thread, an `rpapini@fortura.ch` (Kopie
+`info@fortura.ch`), Betreff «Zugangsdaten Datenfeed erneut benötigt – LuxeStyle CH (Kundennr.
+544341)». ⚠️ **Bitte aus `info@luxestyle.ch` senden**, nicht aus dem privaten Gmail: Fortura hat
+diese Adresse hinterlegt, und die Antwort soll dorthin zurückkommen.
+
+**Wenn die Daten da sind**, beide Werte in den **Claude-Umgebungseinstellungen** eintragen
+(`FORTURA_FTP_USER`, `FORTURA_FTP_PW`) — nicht im Chat, nicht ins Repo (öffentlich). Als
+Umgebungsvariablen überleben sie jeden Container-Neustart; das ist die Dauerlösung aus Regel 15,
+und genau deshalb ist dieser Punkt überhaupt entstanden.
+
+**Warum es sich lohnt:** Der Bild-Nachschub steht bei **4'403 von ~7'558** still. 58 % der Produkte
+haben nur ein Bild — ohne zweites Bild kein Karussell auf der Kollektionsseite. Der Motor läuft
+wieder (`automation/fortura_img_runner.sh`, heute wiederhergestellt) und holt den Feed selbst,
+sobald er sich anmelden kann.
+
+**Erledigt ist es, wenn** `/tmp/fortura_img_runner.log` eine Zeile «Fortura-Bilder: N → M» zeigt
+statt «Feed-Download fehlgeschlagen».
