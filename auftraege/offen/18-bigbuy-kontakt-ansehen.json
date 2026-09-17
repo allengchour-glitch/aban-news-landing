@@ -1,6 +1,0 @@
-{
-  "id": "18-bigbuy-kontakt-ansehen",
-  "typ": "skript",
-  "skript": "bigbuy_kontakt_ansehen.mjs",
-  "warum": "EUR 1'000.00 seit 64 Tagen faellig. Von unserer IP gibt bigbuy.eu/en/contact HTTP 403; der Agenten-Browser ist dort seit 17.09. angemeldet. REIN LESEND: welche Abteilungen, welche Formularfelder. Ohne diese Auskunft waere jeder Ausfuellversuch geraten — bei einem Formular, an dem Geld haengt, wird nicht geraten."
-}
