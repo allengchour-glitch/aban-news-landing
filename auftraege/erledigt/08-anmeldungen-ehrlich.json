@@ -1,0 +1,8 @@
+{
+  "id": "08-anmeldungen-ehrlich",
+  "typ": "skript",
+  "skript": "anmeldungen_pruefen.mjs",
+  "warum": "Wiederholung von 05 mit der zweiten Frage (hat_ziel_erreicht). 05 meldete Google Merchant als angemeldet, obwohl der Browser auf consent.google.com mit 'Sign in' stand.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}

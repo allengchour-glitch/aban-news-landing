@@ -3,6 +3,21 @@
   "typ": "skript",
   "skript": "pinterest_bulk_upload.mjs",
   "warum": "117 gepruefte Pins (16.09. bereinigt: 'weltweiter Versand' raus, tote Produktlinks raus) ueber Pinterests eigenen Massen-Upload einspielen. Betreiber-Freigabe 17.09.: 'Ja, alle 117 hochladen'. Termine ueber 10 Tage verteilt, ~12/Tag.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "hochgeladen": false,
+    "grund": "kein Dateifeld gefunden — Pinterest hat die Oberflaeche geaendert oder der Massen-Upload liegt woanders. NICHTS angeklickt.",
+    "boards": [],
+    "schritte": [
+      "Profil offen, 0 Board-Links gesehen",
+      "Pin-Werkzeug: https://ch.pinterest.com/",
+      "Einstiege mit «Massen/Bulk/CSV»: 0",
+      "Dateifelder auf der Seite: 0"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/07-pinterest-upload-1-profil.png",
+      "auftraege/ergebnis/07-pinterest-upload-2-pin-werkzeug.png"
+    ],
+    "pins": 117
+  }
 }
