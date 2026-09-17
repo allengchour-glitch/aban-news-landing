@@ -3,6 +3,117 @@
   "typ": "skript",
   "skript": "pinterest_upload_weg_finden.mjs",
   "warum": "Vor dem Upload der 117 Pins den Weg MESSEN. Am 17.09. sind zwei geratene Adressen gescheitert (/pin-creation-tool/ leitete auf den Feed um, /board-create/ gibt es nicht) — und beide Fehlermeldungen sahen aus, als laege es an der Seite. Rein lesend: welche Kandidaten-Adresse hat ein Dateifeld, welche einen Einstieg 'Massen/Bulk/CSV'.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "zusammenfassung": "Dateifeld gefunden auf: https://ch.pinterest.com/pin-builder/, https://ch.pinterest.com/pin-creation-tool/",
+    "seiten_mit_dateifeld": [
+      "https://ch.pinterest.com/pin-builder/",
+      "https://ch.pinterest.com/pin-creation-tool/"
+    ],
+    "seiten_mit_einstieg": [
+      {
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ]
+      },
+      {
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ]
+      }
+    ],
+    "befunde": [
+      {
+        "url": "https://ch.pinterest.com/pin-builder/",
+        "ziel": "https://ch.pinterest.com/pin-builder/",
+        "umgeleitet": false,
+        "dateifelder": 1,
+        "einstiege": [],
+        "bild": "auftraege/ergebnis/25-pinterest-upload-weg-pinterestcompinbuilder.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/business/hub/",
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "umgeleitet": false,
+        "dateifelder": 0,
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ],
+        "bild": "auftraege/ergebnis/25-pinterest-upload-weg-interestcombusinesshub.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/business/create/",
+        "ziel": "https://ch.pinterest.com/business/hub/",
+        "umgeleitet": true,
+        "dateifelder": 0,
+        "einstiege": [
+          {
+            "text": "Diagnose anzeigen",
+            "href": "/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Shopify\nAbgeschlossen\nLetzte Einpflege\n17.9.2026\nProduktanza",
+            "href": "https://www.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/"
+          },
+          {
+            "text": "Produktkatalog hochladen\n20 Min.",
+            "href": "https://www.pinterestacademy.com/student/activity/1563685/?utm_source=Business_Hub&utm_medium=PINS_InProduct&utm_campaign=pina_Biz_Hub_Merchant_New&utm_term=Upload_Your_Catalog&utm_content=locale_En-US"
+          }
+        ],
+        "bild": "auftraege/ergebnis/25-pinterest-upload-weg-erestcombusinesscreate.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/bulk-create-pins/",
+        "ziel": "https://ch.pinterest.com/?show_error=true",
+        "umgeleitet": true,
+        "dateifelder": 0,
+        "einstiege": [],
+        "nicht_gefunden": true,
+        "bild": "auftraege/ergebnis/25-pinterest-upload-weg-erestcombulkcreatepins.png"
+      },
+      {
+        "url": "https://ch.pinterest.com/pin-creation-tool/",
+        "ziel": "https://ch.pinterest.com/pin-creation-tool/",
+        "umgeleitet": false,
+        "dateifelder": 1,
+        "einstiege": [],
+        "bild": "auftraege/ergebnis/25-pinterest-upload-weg-restcompincreationtool.png"
+      }
+    ]
+  }
 }
