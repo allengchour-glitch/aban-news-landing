@@ -15768,3 +15768,8 @@ gid://shopify/Product/15500928418177	46->0	Stahlarmband-Multifunktion-Uhr
 gid://shopify/Product/15500933202305	36->0	Blauer Kissenbezug
 gid://shopify/Product/15500935987585	91->3	Ankle Boots mit Seitenreissverschluss
 gid://shopify/Product/15500936774017	13->0	Nackenmassagegerät mit Bluetooth
+gid://shopify/Product/15500947095937	25->1	Fixierspray für langanhaltendes Make-up
+gid://shopify/Product/15500954534273	27->0	Polypeptid Straffende Anti-Falten Augencreme
+gid://shopify/Product/15500960170369	15->3	Aroma Diffuser mit Flammen-Simulation
+gid://shopify/Product/15500999197057	24->0	DIY Powerbank für 2x 18650 Akkus
+gid://shopify/Product/15500999459201	24->0	Kabellose UV/LED Nagellampe 108W
