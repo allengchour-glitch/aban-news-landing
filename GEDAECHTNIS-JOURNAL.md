@@ -6,6 +6,86 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-17 · 🔬 Viermal dieselbe Frage gestellt, dreimal falsch beantwortet — entschieden hat das Lesen
+
+Nach der Reparatur der 25 Wächter, die am Ende von `gql()` ein leeres Ergebnis zurückgaben, war
+die nächste Klasse dran: 18 Dateien, deren `gql()` auf `return None` endet. Die Frage war
+einfach — **stürzt der Aufrufer damit wirklich laut ab, oder fängt ihn ein `or {}` auf und macht
+daraus doch wieder eine stille Null?** Ich habe sie viermal gestellt:
+
+1. **Zeilenweise:** alle Zeilen mit `gql(` nach einem `or {}` durchsucht. Ergebnis: «laut» für
+   alle 18. **Blind** — in `menue_links.py` steht der Aufruf in Zeile 106 und der Auffang in 107.
+   Der Test konnte den Fall, für den er gebaut war, gar nicht sehen.
+2. **Über den Syntaxbaum, zu weit:** jedes `or {}` gezählt, dessen linke Seite die Variable
+   *enthält*. Ergebnis: «STILL» für 18 von 18 — ein rundes, alarmierendes Bild. Falsch:
+   `(d.get("data") or {})` ist normale Feld-Absicherung. Ist `d` None, wirft `d.get` von selbst.
+3. **Enger:** nur noch `(d or {})`, also das Ergebnis selbst. Ergebnis: 15 Dateien, 20 Stellen.
+   Immer noch falsch — der Test sah den Auffang, aber nicht die **Wache daneben**.
+4. **Umfeld mitgelesen** (`is None` innerhalb ±3 Zeilen): 3 Kandidaten von 20.
+
+Und dann das, was hätte am Anfang stehen müssen: **die drei Stellen gelesen.** Zwei waren
+Fehlalarme (die gemeinsame Wache stand acht Zeilen später, hinter beiden Zweigen eines
+if/else), eine war echt. Was in Wirklichkeit dort steht, ist sorgfältig gebaut:
+
+```python
+fe = (((r or {}).get("data") or {}).get("productVariantsBulkUpdate") or {}).get("userErrors")
+if r is None or fe is None or fe:
+    print("nicht zusammengelegt: keine Antwort"); continue      # kein Ledger-Eintrag
+```
+
+**Hätte ich nach Fassung 2 oder 3 gepatcht, hätte ich 17 korrekte Wachen umgebaut** — und zwar
+solche, die einen fehlgeschlagenen Schreibvorgang korrekt NICHT als Erfolg verbuchen. Das ist
+dieselbe Klasse wie die Versandschwelle von heute Morgen, nur 17-fach: eine wahre Aussage
+kaputtreparieren, weil das Muster überzeugend aussah.
+
+**Die Lehre ist nicht «bessere Regex».** Jede meiner vier Fassungen war präziser als die
+vorige, und drei waren falsch. Ein Muster kann nur zählen, was es kennt; die Frage «ist das
+hier ein Fehler?» ist eine Frage über **Absicht**, und die steht im Code, nicht im Muster.
+**Ein Muster taugt zum Eingrenzen — entschieden wird durch Lesen.** Bei 20 Stellen ist das eine
+Viertelstunde; bei 200 wäre die Konsequenz, die Stichprobe zu lesen und den Rest erst nach
+belegter Trefferquote anzufassen.
+
+**Der eine echte Befund war es wert** (`menue_links.py:107`): scheitert die
+`shopLocales`-Abfrage, wird `lebend` zur leeren Menge — und dann gilt **jeder** Sprachpfad als
+unveröffentlicht, also jeder Link mit `/de/`, `/en/` als 404. Der Bericht hätte nicht Lücken
+gehabt, sondern **frei erfundene Befunde**, und jemand hätte danach gesunde Links «reparieren»
+wollen. Jetzt wird die Prüfung übersprungen und das ausdrücklich gesagt. Gegenprobe: mit echtem
+Token «164 Einträge, 124 Kollektionen … FERTIG» (Exit 0), mit Köder-Token «PAUSE (Menü nicht
+lesbar — kein Befund ableitbar)». Der neue Zweig selbst ist damit **nicht** belegt — er greift
+nur, wenn die Menü-Abfrage gelingt und die Sprach-Abfrage scheitert, und diese Kombination
+lässt sich mit einem falschen Token nicht herstellen. Das gehört so gesagt und nicht als
+«getestet» verbucht.
+
+
+## 2026-09-17 · ` Backticks in einer Bash-Zeichenkette essen genau die Wörter, um die es geht
+
+Der Commit über die 25 reparierten Wächter ist mit einer Meldung im Repo gelandet, in der die
+entscheidenden Begriffe **fehlen**:
+
+```
+… und 25 endeten auf .
+… plus Pruefung, dass gql() danach wirklich auf ein  endet …
+Offen: 18 gql() enden auf  und 67 verschlucken den Grund …
+```
+
+Ich hatte die Meldung mit `git commit -m "…"` in doppelten Anführungszeichen geschrieben und
+darin Code in Backticks gesetzt — `` `return {}` ``, `` `raise` ``, `` `return None` ``. In
+einer doppelt gequoteten Bash-Zeichenkette ist ein Backtick-Paar eine **Befehlsersetzung**: die
+Shell hat `return {}` ausführen wollen, ist damit gescheitert («numeric argument required») und
+hat die leere Ausgabe an die Stelle gesetzt. Die Fehlermeldungen standen im Protokoll, nur eben
+zwischen einem erfolgreichen Push.
+
+Das Perfide: **die Meldung liest sich weiter fast flüssig.** «25 endeten auf .» sieht wie ein
+Tippfehler aus, nicht wie ein verlorener Sachverhalt — eine Commit-Nachricht über Code, aus der
+genau der Code herausgefallen ist. Die Historie ist schon gepusht und der Hetzner-Agent pusht
+auf denselben Zweig, ein Force-Push wäre also teurer als der Schaden; der Sachverhalt steht
+vollständig hier und im Code.
+
+**Regel: Meldungen mit Code kommen über `-F datei` oder ein Here-Dokument, nie über `-m "…"`.**
+Und allgemeiner: eine Ausgabe, die ich nicht lese, ist keine Prüfung — die Shell hat mir dreimal
+gesagt, dass sie etwas ausführen wollte, und ich habe nur auf das ✅ am Ende geschaut.
+
+
 ## 2026-09-17 · 📎 Ein Dateifeld ist nicht «das Dateifeld» — der Upload, der eine CSV zum Pin-Bild machte
 
 Auftrag 27 sollte die 117 geprüften Pins über Pinterests Massen-Upload hochladen. Die Quittung
