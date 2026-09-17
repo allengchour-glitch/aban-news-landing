@@ -630,3 +630,50 @@
 15499782521217	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Universal Ladegerät für MacBook
 15499806376321	kein-stecker-merkmal	2026-09-17	Netzteil für MacBook (45W, 60W, 85W)
 15499807555969	kein-stecker-merkmal	2026-09-17	3-in-1 Magnetisches Kabelloses Ladegerät
+15499808014721	kein-stecker-merkmal	2026-09-17	Mini-Ladegerät für schnelle Auto-Ladung
+15500001280385	kein-stecker-merkmal	2026-09-17	Faltbarer Sechs-in-Ein-Wireloser Ladegerät
+15500001968513	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-17	Laptop-Ladegerät
+15500071141761	kein-stecker-merkmal	2026-09-17	GaN-100W-Ladegerät
+15500071895425	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-17	USB-Ladegerät mit QC3.0
+15500203196801	kein-stecker-merkmal	2026-09-17	Haarroller und Glätteisen
+15500203655553	kein-stecker-merkmal	2026-09-17	Professioneller Glätteisen und Lockenstab
+15500204048769	unklar-eu-vorhanden:EU/US	2026-09-17	Doppelfunktionales Haarschneider
+15500253593985	kein-stecker-merkmal	2026-09-17	USB Mini Lockenstab
+15500254445953	unklar-eu-vorhanden:EU/US	2026-09-17	Automatischer Lockenstab 32mm mit Anionenpflege
+15500254773633	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Haartrockner mit Mehrfachfunktionen
+15500255691137	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Automatischer Lockenstab mit Warmluftbürste 3-in-1
+15500257657217	kein-stecker-merkmal	2026-09-17	3-in-1 Warmluftbürste zum Stylen
+15500280267137	draft-kein-eu-stecker:US	2026-09-17	Doppelter Ladegerät mit Nachtlicht
+15500281381249	kein-stecker-merkmal	2026-09-17	2-in-1 Magnetisches Wireless-Ladegerät für Apple Watch
+15500282659201	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät für Smartphone, vertikal
+15500283576705	draft-kein-eu-stecker:US	2026-09-17	Smart LCD Ladegerät für LIR Knopfzellen
+15500438176129	kein-stecker-merkmal	2026-09-17	Elektrischer Haarschneider Goldstahl
+15500438602113	unklar-eu-vorhanden:EU/US	2026-09-17	Netzteil mit Trafo für Game Konsole
+15500485362049	kein-stecker-merkmal	2026-09-17	Automatischer Staubsauger-Roboter
+15500486967681	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Haarroller und Haarschneider
+15500487459201	kein-stecker-merkmal	2026-09-17	Reisebeutel für Haartrockner
+15500487557505	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Haartrockner mit automatischer Staubsaugung
+15500487819649	draft-kein-eu-stecker:US	2026-09-17	Wellengel Lockenstab
+15500509741441	kein-stecker-merkmal	2026-09-17	Mirror Lake 3-fach USB-Reiseladegerät mit Display
+15500510396801	kein-stecker-merkmal	2026-09-17	Drahtloses 2-in-1 QI Ladegerät
+15500510429569	kein-stecker-merkmal	2026-09-17	Elektrischer Bohrstaubsauger mit Laser
+15500510560641	kein-stecker-merkmal	2026-09-17	Kabelloses Vertikal-Ladegerät für Smartphones
+15500511216001	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät für Smartphones
+15500904857985	kein-stecker-merkmal	2026-09-17	Kabelloses 10W/15W Ladegerät für iPhone
+15500905087361	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät für iPhone Modelle
+15500909379969	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Lockenstab für einfache Stylings
+15500909478273	kein-stecker-merkmal	2026-09-17	Glättbürste Anion Dual-Use
+15500909707649	draft-kein-eu-stecker:US	2026-09-17	Tragbarer Glätteisen für nasses und trockenes Haar
+15500909871489	kein-stecker-merkmal	2026-09-17	Mini-Elektro-Entsafter Glas
+15500910133633	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-17	3-in-1 Glätteisen & Lockenstab für trockenes/nasses Haar
+15500911411585	unklar-eu-vorhanden:EU/UK/US	2026-09-17	5-in-1 Friseur & Haartrockner
+15500911739265	draft-kein-eu-stecker:US	2026-09-17	Elektrischer Lockenstab für grosse Wellen
+15500912001409	nur-eu-version	2026-09-17	Wasserwellen-Lockenstab für nasse und trockene Haare
+15500912132481	kein-stecker-merkmal	2026-09-17	Kabelloser 2-in-1 USB Haarglätter & Lockenstab
+15500912656769	kein-stecker-merkmal	2026-09-17	Multifunktionaler 5-in-1 Keramik Lockenstab
+15500926878081	kein-stecker-merkmal	2026-09-17	Nähmaschinen-Zubehör-Set für diverse Anwendungen · 11-teilig
+15500928319873	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-17	Universal Ladegerät
+15500928385409	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Rapid Ladegerät
+15500928713089	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät mit Nachtlicht & Handyhalter
+15500929499521	kein-stecker-merkmal	2026-09-17	Gegensprechanlagen-Netzteil TA208K-D
+15500933824897	kein-stecker-merkmal	2026-09-17	Kaffeemaschine Klemmbausteine (924 Teile)

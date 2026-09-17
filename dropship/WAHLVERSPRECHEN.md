@@ -413,8 +413,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen klassischen Farben…»
 - `15493152604545` · Handgemachter Deko-Kissenbezug aus Samt
   - «…Erhältlich in zwei praktischen Grössen…»
-- `15493248909697` · Damast Küchenmesser – verschiedene Ausführungen
-  - «…Erhältlich in verschiedenen Ausführungen…»
 - `15493258379649` · Elektronische Teewaage aus Holz
   - «…Erhältlich in verschiedenen Farben…»
 - `15493276467585` · Regendichter Windschutz für E-Scooter & Töffli
@@ -1013,8 +1011,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Farben…»
 - `15497422307713` · Nordisch-marokkanischer Kissenbezug mit Quasten
   - «…Erhältlich in zwei Grössen…»
-- `15497422930305` · Panda Heissluftfritteuse (4.5L oder 6L)
-  - «…Wählen Sie zwischen…»
 - `15497426239873` · Sisal Flying Fish Kratzbaum für Katzen
   - «…Erhältlich in den Farben…»
 - `15497426600321` · Faltbarer Schnüffelball für Hunde
