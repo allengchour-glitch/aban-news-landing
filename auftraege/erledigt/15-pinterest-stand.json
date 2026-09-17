@@ -3,6 +3,21 @@
   "typ": "skript",
   "skript": "pinterest_stand.mjs",
   "warum": "Auftrag 14 endete mit Stand 'laufend' — das Anmelde-Skript hat den laufenden Dienst gestoppt und ihn dabei abgeschossen. Vor einem zweiten Lauf messen, welche Boards schon existieren und ob der Profiltext bereits korrigiert ist. Sonst Dubletten (Regel 2).",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "ziel": "https://ch.pinterest.com/luxestyleCH/",
+    "angemeldet": true,
+    "board_adressen": [],
+    "soll_vorhanden": [],
+    "soll_fehlt": [
+      "Herrenmode Schweiz",
+      "Schmuck & Accessoires",
+      "Sommerkleider & Damenmode 2026",
+      "Wellness & Beauty",
+      "Home & Geschenkideen",
+      "Schuhe & Sandalen"
+    ],
+    "versandzusage_im_profil": "CHF 50 — richtig",
+    "bild": "auftraege/ergebnis/15-pinterest-stand.png"
+  }
 }
