@@ -87,7 +87,7 @@ echo "▶ 5/6  Alte Tabs schliessen"
 # Tabs. In chrome://inspect steht pro Tab eine Zeile — bei 29 Zeilen findet niemand mehr
 # die richtige, und jeder Tab kostet Arbeitsspeicher auf einem 4-GB-Server.
 # Es bleiben nur die fuenf Dienste, die wir brauchen; alles andere wird geschlossen.
-BEHALTEN='accounts.google.com|merchants.google.com|pinterest|bigbuy|shopify|tiktok'
+BEHALTEN='accounts.google.com|merchants.google.com|pinterest|bigbuy|shopify|tiktok|cjdropshipping'
 node -e '
   const host = "http://127.0.0.1:9222";
   const behalten = new RegExp(process.argv[1], "i");
@@ -118,7 +118,8 @@ OFFEN=$(curl -s --max-time 5 http://127.0.0.1:9222/json/list || echo "")
 for U in "https://www.pinterest.ch/login/" \
          "https://www.bigbuy.eu/en/login" \
          "https://admin.shopify.com/store/au3j0y-hq" \
-         "https://www.tiktok.com/login"; do
+         "https://www.tiktok.com/login" \
+         "https://cjdropshipping.com/login"; do
   KURZ=$(echo "$U" | sed 's|https://||; s|/.*||')
   if echo "$OFFEN" | grep -q "$KURZ"; then echo "    schon offen: $KURZ"; continue; fi
   E=$(node -e "console.log(encodeURIComponent(process.argv[1]))" "$U")
@@ -140,7 +141,7 @@ Der Browser läuft jetzt WEITER. Dieses Fenster darfst du schliessen.
                      (eingetragen ist nicht aktiviert — daran hing es)
 
   Unter «Remote Target» pro Tab eine Zeile → «inspect» → anmelden.
-  Anzumelden: Google (Merchant) · Pinterest · BigBuy · Shopify · TikTok
+  Anzumelden: Google (Merchant) · Pinterest · BigBuy · Shopify · TikTok · CJ
 
   ⚠️ Anmeldungen in deinem eigenen Brave zählen hier NICHT — anderes
      Profil, anderer Rechner. Nur was in DIESEN Tabs passiert, bleibt.

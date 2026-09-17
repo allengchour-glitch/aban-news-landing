@@ -33,6 +33,11 @@ const DIENSTE = [
     wofuer: 'Ticket fuer die EUR 1000 (von unserer IP HTTP 403)' },
   { name: 'Pinterest',       url: 'https://www.pinterest.ch/',
     wofuer: '117 geprüfte Pins warten auf einen OAuth-Klick' },
+  // CJ dazu am 17.09.: die Erstattung ueber USD 25.54 (zurueckgesandtes Messer) laesst
+  // sich per API NICHT beantragen — `disputes/create` gibt hartnaeckig 9009, waehrend
+  // die Vorschau `disputeConfirmInfo` mit maxAmount 25.54 antwortet. Bleibt die Konsole.
+  { name: 'CJdropshipping', url: 'https://cjdropshipping.com/myCJ/orderList',
+    wofuer: 'Dispute USD 25.54 in der Konsole (API gibt 9009), Bestellstatus lesen' },
   { name: 'TikTok Studio',   url: 'https://www.tiktok.com/tiktokstudio/upload',
     wofuer: 'Videos hochladen, solange die API in Review ist' },
 ];
