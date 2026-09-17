@@ -1,0 +1,36 @@
+{
+  "id": "17-pinterest-boards-anlegen",
+  "typ": "skript",
+  "skript": "pinterest_boards_und_profil.mjs",
+  "warum": "Betreiber-Entscheid 17.09.: alle sechs Boards neu anlegen, auch wo aehnliche bestehen (wellness-self-care, wohnen-deko, geschenkideen-schweiz). Grund: Pinterests Massen-Upload trifft die Namen exakt — bei Abweichung verwirft er die Zeilen STILL. Gemessen in Auftrag 16: keines der sechs existiert, die acht vorhandenen heissen anders. Der Profilteil ueberspringt sich selbst, dort steht bereits CHF 50 (Auftrag 14 hat es vor dem Abbruch geschafft).",
+  "stand": "ok",
+  "ergebnis": {
+    "boards_angelegt": [],
+    "boards_vorhanden": [],
+    "boards_offen": [
+      "Herrenmode Schweiz (kein Namensfeld gefunden)",
+      "Schmuck & Accessoires (kein Namensfeld gefunden)",
+      "Sommerkleider & Damenmode 2026 (kein Namensfeld gefunden)",
+      "Wellness & Beauty (kein Namensfeld gefunden)",
+      "Home & Geschenkideen (kein Namensfeld gefunden)",
+      "Schuhe & Sandalen (kein Namensfeld gefunden)"
+    ],
+    "profil": {
+      "geaendert": false,
+      "grund": "kein Feld mit «CHF 65» gefunden (11 Felder geprueft) — entweder schon korrigiert oder die Beschreibung steht woanders. NICHTS geaendert."
+    },
+    "schritte": [
+      "vorhandene Board-Adressen: —"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-1-profil.png",
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-2-anlegen-herrenmodeschweiz.png",
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-2-anlegen-schmuckundaccessoi.png",
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-2-anlegen-sommerkleiderundda.png",
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-2-anlegen-wellnessundbeauty.png",
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-2-anlegen-homeundgeschenkide.png",
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-2-anlegen-schuheundsandalen.png",
+      "auftraege/ergebnis/17-pinterest-boards-anlegen-3-einstellungen.png"
+    ]
+  }
+}
