@@ -357,3 +357,20 @@ auf CHF 55.56 und macht aus einer eingehaltenen Zusage ein gebrochenes Versprech
 **8. «Ballast-Apps entfernen» — Begründung war falsch.** Gemessen 15.09.: **0 ScriptTags**,
 weder Hextom noch SEOWILL als App-Embed im Theme. Beide laden nichts. Deinstallieren ist
 Aufräumen, kein Geschwindigkeitsgewinn.
+
+## Punkt 3 — Fortura-Zugangsdaten als Umgebungsvariablen hinterlegen (2 Minuten)
+
+**Warum:** Der Bild-Nachschub für die Produktkarten steht bei **4'403 von ~7'558** still. Der
+Motor läuft wieder (`automation/fortura_img_runner.sh`, 17.09. wiederhergestellt), kann den
+Feed aber nicht holen: `/tmp/fortura_env.sh` ist beim Container-Neustart verschwunden, und
+**geraten wird nichts**. 58 % der Produkte haben nur ein Bild — ohne zweites Bild kein
+Karussell auf der Kollektionsseite.
+
+**Was zu tun ist:** `FORTURA_FTP_USER` und `FORTURA_FTP_PW` (Kundennummer 544341) in den
+**Claude-Umgebungseinstellungen** eintragen — nicht im Chat, nicht ins Repo (öffentlich).
+Als Umgebungsvariablen überleben sie jeden Container-Neustart; `autostart.sh` liest sie
+selbst. Das ist die Dauerlösung aus Regel 15 («Env-Keys sterben mit dem letzten Prozess»).
+
+**Erledigt ist es, wenn** der Runner in `/tmp/fortura_img_runner.log` eine Zeile
+«Fortura-Bilder: N → M» schreibt statt «Feed-Download fehlgeschlagen».
+

@@ -39,6 +39,18 @@ Node ist **`/opt/node22/bin/node`**. Jedes Werkzeug hier hat `--selbsttest` mit 
 | `tools/lehre.py` | neue Lehre idempotent in den Vault aufnehmen |
 | `tools/skills_pruefen.py` | findet verrottete Pfade in Skills und Notizen |
 
+## Automation (das zweite Gehirn)
+
+| Werkzeug | misst | Aufruf |
+|---|---|---|
+| `tools/zweites_gehirn.py` | **wer startet wen** (631 Skripte in `automation/`; verwaiste Wächter = Name sagt Wächter, niemand startet sie) und **die Lehren als ausführbare Regeln** (stille Null am Ende eines API-Helfers, verschluckter Grund, `pgrep -f`-Falle, Dauerläufer nur in /tmp, schweigend übersprungene Engine). `--wacht` läuft täglich im Aufseher und meldet **nur Neues gegen `dropship/_zweites_gehirn_basis.txt`** | `python3 tools/zweites_gehirn.py --selbsttest \| --inventar \| --regeln \| --wacht` |
+
+⚠️ **Neue Lehre = neue Regel.** Wer eine teuer gelernte Lektion ins Journal schreibt und sie
+mechanisch prüfen kann, trägt sie in `REGELN` ein — mit Köder UND echtem Fall. Eine Lehre, die
+nur im Journal steht, wird vergessen; eine Lehre als Regel meldet sich von selbst wieder.
+**Der Köder kommt aus dem echten Fall, nicht aus der Vorstellung** (17.09.: ein selbstgebauter
+Einzeiler-Köder liess die Regel dreimal «0» melden, während der Anlassfall im Repo stand).
+
 ## Recherche
 
 | Werkzeug | tut |
