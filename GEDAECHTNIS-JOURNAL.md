@@ -9,6 +9,46 @@
 
 
 
+## 2026-09-17 · ⏸️ Der Container «startet» nicht stündlich neu — er wird angehalten, sobald ich aufhöre
+
+Zwei Stunden-Ticks hintereinander meldete `uptime` **«up 0 min»**, jeweils auf die Minute des
+Routine-Starts (09:08:22 nach dem Tick 09:08:01, 10:08:02 nach 10:07:44). Das sah nach dem
+bekannten Muster «der Container startet etwa stündlich neu» aus. Die Messung sagt etwas
+anderes — und sie korrigiert eine Lehre vom 03.09.
+
+**Gemessen über die Schreibzeiten in `/tmp`** (`find -newermt … ! -newermt …`):
+
+| Fenster | Schreibvorgänge | letzte Schreibzeit |
+|---|---|---|
+| nach dem Tick 08:07 | 13 | **08:33** |
+| 08:34 – 09:07 | **0** | — |
+| nach dem Tick 09:08 | viele | **09:13** |
+| 09:14 – 10:05 | **0** (Gegenprobe: dasselbe Fenster eine Stunde früher hat 13) | — |
+
+Betroffen sind auch die Protokolle des Harness selbst (`claude-code`, `environment-manager`),
+die mit niemandem von uns zu tun haben und **in derselben Minute** verstummen. Eine Maschine,
+auf der eine Stunde lang buchstäblich nichts geschrieben wird, läuft nicht.
+
+**Der Unterschied zwischen den beiden Stunden ist der Schlüssel.** Um 08:33 arbeitete ich noch,
+um 09:13 hatte ich meinen Turn gerade beendet. Es gibt keine feste Lebensdauer: **der Container
+lebt, solange die Sitzung einen Turn laufen hat, und wird angehalten, sobald ich still werde.**
+Was wie ein Neustart aussieht, ist das Aufwecken durch die nächste Routine; «up 0 min» ist das
+Fortsetzen aus dem Ruhezustand, nicht ein Absturz.
+
+**Die teure Folge, die im Gedächtnis bisher falsch stand.** Der Eintrag vom 03.09. sagt: «Folge
+für jeden Dauerläufer: Er bekommt höchstens eine Stunde am Stück.» Richtig ist: **er bekommt
+meine Arbeitszeit.** In der Stunde nach 09:13 lief kein Wächter, kein Auto-Committer, keine
+Bild-Engine — 54 Minuten lang gar nichts. Die schöne Zahl «~450 Produkte/h netto» vom
+Trust-Schreiber stammt aus einer Nacht, in der ich durchgearbeitet habe; sie gilt nicht für eine
+Sitzung, die auf die Stunden-Routine wartet. **Ein Hintergrundmotor in diesem Container ist kein
+Dauerläufer, sondern ein Beifahrer.**
+
+Zwei praktische Schlüsse. Erstens: Arbeit, die wirklich laufen muss, gehört an eine Stelle, die
+nicht mit mir schläft — der Hetzner-Server von heute Morgen ist genau das und wird damit deutlich
+wichtiger, als er beim Bauen aussah. Zweitens: **eine Zahl «pro Stunde» aus diesem Container ist
+immer eine Zahl «pro Arbeitsstunde»** und muss so beschriftet werden, sonst plant die nächste
+Sitzung mit einem Durchsatz, den es an ruhigen Tagen nicht gibt.
+
 ## 2026-09-17 · 🖥️ «hetzner server extra eingerichtet» — der Test, der nicht scheitern kann
 
 Der Betreiber nennt einen Hetzner-Server als Weg zu den Browser-Aufgaben. **Er ist nicht
