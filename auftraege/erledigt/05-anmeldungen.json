@@ -1,0 +1,8 @@
+{
+  "id": "05-anmeldungen",
+  "typ": "skript",
+  "skript": "anmeldungen_pruefen.mjs",
+  "warum": "Betreiber hat das Profil am 17.09. angemeldet (Pinterest belegt per Screenshot: Haendlerstatus genehmigt). Jetzt messen statt raten, welche Dienste wirklich offen sind.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
