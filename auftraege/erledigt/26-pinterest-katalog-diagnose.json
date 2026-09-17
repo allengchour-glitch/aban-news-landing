@@ -3,6 +3,18 @@
   "typ": "skript",
   "skript": "pinterest_katalog_diagnose.mjs",
   "warum": "Auftrag 25 hat im Business Hub eine Katalog-Diagnoseseite gefunden — das Pinterest-Gegenstueck zu Google Merchant, aber ERREICHBAR (Google sperrt den Agenten aus, Pinterest nicht). Shopify-Katalog steht auf 'Abgeschlossen', letzte Einpflege 17.9.2026. Wenn Produkte abgelehnt werden, steht hier warum. Rein lesend.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "ziel": "https://ch.pinterest.com/business/catalogs/4844353693835/diagnosticsv2/?subjectBusinessId=1111333782956748766",
+    "zahlen": [
+      ",\nProdukt"
+    ],
+    "begriffe": [
+      "Fehler",
+      "Warnung",
+      "Problem"
+    ],
+    "seitentext": "Zu Inhalten springen\nKataloge\nLuxeStyle CH\nLuxeStyle CH\nKataloge\nÜbersicht\nWerbeaktionen\nMärkte\nKataloge\nCatalog_Retail\nDiagnose\nProdukte\n,\nProduktgruppen\n,\nDatenquellen\n,\nSupport\nHelp Center\nMelde dich bei uns\nDiagnose\nSieh dir an, welche Probleme deinen Einzelhandel-Katalog beeinträchtigen, und erfahre, wie du sie behebst. Mehr dazu\nProbleme beim Einpflegen\nProbleme bei der Distribution\nÜbersicht\nEinpflegeprobleme beeinträchtigen den Produkt-Upload oder die Katalogqualität\nE-Mail-Empfänger bearbeiten\nErfolgreich\n431,36 Tsd.\n99.99% des gesamten Datenquelle\nFehlgeschlagen\n24\n0.01% des gesamten Datenquelle\nWarnmeldungen\n202,41 Tsd.\n46.92% des gesamten Datenquelle\n17. Sept. um 07:31 UTC\nProbleme beim letzten Einpflegen\nDetails exportieren\nListe mit Workflow-Fehlern\nProblem\n\t\nBeschreibung\n\t\nProblembehebung\n\t\nHäufigkeit\n\n\nFehler 1401\n\t\nDie Breite des Bilds ist zu klein.\n\t\nÄndere die betroffenen Werte für image_link in URLs für Bilder mit einer Breite von über 75 Pixel\n\t\n19\n\n\nWarnung 1406\n\t\nEinige weitere Bilder konnten nicht verwendet werden, weil ihre Breite für die Verarbeitung zu klein ist.\n\t\nÄndere die betroffenen Werte für additional_image_link in URLs für Bilder mit einer Breite von über 75 Pixel\n\t\n7\n\n\nFehler 1400\n\t\nDie Höhe des Bildes ist zu klein.\n\t\nÄndere die betroffenen Werte für image_link in URLs für Bilder mit einer Höhe von über 75 Pixel\n\t\n5\n\n\nWarnung 1405\n\t\nEinige weitere Bilder konnten nicht verwendet werden, weil ihre Höhe für die Verarbeitung zu klein ist.\n\t\nÄndere die betroffenen Werte für additional_image_link in URLs für Bilder mit einer Höhe von über 75 Pixel\n\t\n4",
+    "bild": "auftraege/ergebnis/26-pinterest-katalog-diagnose.png"
+  }
 }

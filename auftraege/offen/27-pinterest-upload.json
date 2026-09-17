@@ -1,6 +1,0 @@
-{
-  "id": "27-pinterest-upload",
-  "typ": "skript",
-  "skript": "pinterest_bulk_upload.mjs",
-  "warum": "Alle sechs Boards stehen (23e/23f zweifach bestaetigt), und Auftrag 25 hat das Dateifeld auf /pin-builder/ gemessen. Damit sind beide Gruende weg, an denen der erste Versuch scheiterte. 117 gepruefte Pins, Termine ueber 10 Tage verteilt. Ledger VOR dem Absenden."
-}
