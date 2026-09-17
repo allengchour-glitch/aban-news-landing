@@ -1,0 +1,33 @@
+{
+  "id": "16-pinterest-boards-lesen",
+  "typ": "skript",
+  "skript": "pinterest_stand.mjs",
+  "warum": "Wiederholung von 15 an der RICHTIGEN Stelle. 15 las /luxestylech/ — das ist der Reiter 'Erstellt' und zeigt Pins, nicht Boards. Boards liegen unter /_saved/. Dazu Schreibweise egal (Konto heisst luxestyleCH) und eine Glaubwuerdigkeitspruefung: eine leere Liste gilt nur, wenn auf der Seite auch wirklich kein Board steht.",
+  "stand": "ok",
+  "ergebnis": {
+    "ziel": "https://ch.pinterest.com/luxestyleCH/_saved/",
+    "angemeldet": true,
+    "board_adressen": [
+      "tech-gadgets",
+      "leder-accessoires",
+      "schlaf-aromatherapie",
+      "k%C3%BCche-genuss",
+      "wellness-self-care",
+      "wohnen-deko",
+      "geschenkideen-schweiz",
+      "beauty-pflege"
+    ],
+    "messung_glaubwuerdig": true,
+    "soll_vorhanden": [],
+    "soll_fehlt": [
+      "Herrenmode Schweiz",
+      "Schmuck & Accessoires",
+      "Sommerkleider & Damenmode 2026",
+      "Wellness & Beauty",
+      "Home & Geschenkideen",
+      "Schuhe & Sandalen"
+    ],
+    "versandzusage_im_profil": "CHF 50 — richtig",
+    "bild": "auftraege/ergebnis/16-pinterest-boards-lesen.png"
+  }
+}
