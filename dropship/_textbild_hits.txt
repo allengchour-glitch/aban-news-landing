@@ -15780,3 +15780,5 @@ gid://shopify/Product/15501003981185	29->1	IMIEUX Aroma-Massageöl (10 ml)
 gid://shopify/Product/15501033996673	34->0	Kabelloser Kaktus Luftbefeuchter, wiederaufladbar
 gid://shopify/Product/15501744046465	33->3	Holz-Blumenhaus
 gid://shopify/Product/15501744472449	29->0	Holz-Bausteine mit 5 Funktionen
+gid://shopify/Product/15501847724417	13->3	Automatischer Staubsauger
+gid://shopify/Product/15501848019329	78->0	Nagel-Piercing-Set
