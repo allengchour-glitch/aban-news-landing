@@ -1,0 +1,8 @@
+{
+  "id": "31-pinterest-mail-tippfehler",
+  "typ": "skript",
+  "skript": "pinterest_mail_tippfehler.mjs",
+  "warum": "Auftrag 30 hat GEMESSEN: die Kontakt-E-Mail im Pinterest-Profil lautet «info@luxestlye.ch» — luxestlye statt luxestyle. Ueber dieses Feld laufen Kooperationsanfragen; sie gehen still ins Leere. Das Skript aendert GENAU DIESES EINE Feld und nur dann, wenn exakt der bekannte Tippfehler darin steht; jeder andere Wert bricht ohne Schreibvorgang ab. Selektoren stammen aus der Messung von Auftrag 30 (input#partner_contact_email, Knopf «Speichern», beim Laden deaktiviert) — nicht aus einer Vermutung. Nach dem Speichern wird die Seite neu geladen und das Feld erneut gelesen: ein Klick ist kein Beweis.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
