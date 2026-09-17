@@ -198,6 +198,25 @@ Shopify-Anbindung von sich aus Pins erzeugt. Der Kanal ist nicht tot.)
 
 # 1. ⭐ BIGBUY-TICKET — EUR 1'000.00, seit zwei Monaten fällig
 
+> ## ⚠️ FÜR COWORK: DAS GEHT NUR MIT DEINEM SICHTBAREN BROWSER
+> Gemessen am 17.09.2026 vom Hetzner-Agenten (kopfloses Chromium, bei BigBuy angemeldet):
+> **sieben BigBuy-Adressen, alle sieben Cloudflare-Wand.** `/en/contact` liefert
+> «Sicherheitsüberprüfung wird durchgeführt · um sich vor böswilligen Bots zu schützen»,
+> Ray ID a3ca2241ac1e86d9, **0 Formularfelder**. Dazu: REST-API tot (`purse.json` = 401,
+> gegengeprüft — der absichtlich FALSCHE Schlüssel gibt identische Antworten), Mail tot
+> (6 Mails, 3 wortgleiche Auto-Antworten: 08.09., 15.09., 17.09. 12:50).
+>
+> **Bitte nicht versuchen, die Bot-Erkennung zu umgehen** (Kennung fälschen, Automatisierungs-
+> Merkmale verstecken). Das ist der Weg, auf dem Konten gesperrt werden — und an diesem Konto
+> hängt eine offene Forderung. Ein normaler, sichtbarer Browser mit einem Menschen davor
+> bekommt die Seite ohne Wand; genau das ist Coworks Vorteil.
+>
+> **Reihenfolge:** einloggen als Kunde **966388** (`allengchour@gmail.com`) → `/en/contact`
+> → Reiter **💳 Administration** → Text unten einfügen → absenden → **Referenznummer notieren**
+> und nach `dropship/_bigbuy_ticket_ref.txt` schreiben (eine Zeile genügt). Dann verschwindet
+> die Mahnzeile aus der stündlichen Ampel von selbst.
+
+
 ## Warum das nicht per Mail geht (gemessen, nicht vermutet)
 
 Seit dem 07.09. sind **fünf Mails** an `customers@bigbuy.eu` gegangen. Zurückgekommen sind
