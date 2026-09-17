@@ -13,8 +13,20 @@
 import { ist_anmeldeseite, ist_zwischenseite, hat_ziel_erreicht } from '../../server/anmelde_erkennung.mjs';
 
 const DIENSTE = [
+  // ⛔ GEMESSEN 17.09.2026: Bei Google kann sich dieses Profil NICHT anmelden. Der
+  // Anmeldeversuch endet bei «Anmeldung nicht möglich — Dieser Browser oder diese App
+  // ist unter Umständen nicht sicher». Google erkennt den kopflosen Chromium mit
+  // angehaengtem Steuerport und laesst Passwort-Anmeldungen dort grundsaetzlich nicht zu.
+  // Das ist kein Fehler, den man behebt — es ist eine Entscheidung von Google.
+  // ⛔ UND ES WIRD NICHT UMGANGEN. Kennung faelschen und Automatisierungs-Merkmale
+  // verstecken waere technisch moeglich und ist genau der Weg, auf dem Konten gesperrt
+  // werden. An diesem Konto haengt der einzige Kanal mit belegten Verkaeufen.
+  // Der Merchant-Schalter ist ohnehin ein EINMALIGER Klick des Betreibers in seinem
+  // eigenen Browser. Der Eintrag bleibt hier nur, damit die Messung «unklar» meldet
+  // statt zu schweigen — und damit niemand den Versuch ein zweites Mal startet.
   { name: 'Google Merchant', url: 'https://merchants.google.com/mc/overview',
-    wofuer: 'Lieferland auf NUR Schweiz stellen — groesster Gratis-Verkehrs-Hebel' },
+    wofuer: 'NUR LESEND moeglich. Anmeldung sperrt Google in diesem Browser (17.09. gemessen) '
+          + '— Lieferland auf Schweiz ist ein Betreiber-Klick im eigenen Browser' },
   { name: 'Shopify Admin',   url: 'https://au3j0y-hq.myshopify.com/admin/settings/billing',
     wofuer: 'Rechnung, Dateispeicher' },
   { name: 'BigBuy',          url: 'https://www.bigbuy.eu/en/contact',
