@@ -1,0 +1,7 @@
+{
+  "id": "03-autopilot-probleme",
+  "typ": "seite_text",
+  "url": "https://au3j0y-hq.myshopify.com/admin/marketing",
+  "zweck": "Shopify meldet seit 07.09. dreimal «Autopilot-Kanäle benötigen Aufmerksamkeit — mehrere Probleme verhindern die Ausführung von Kampagnen». Die Admin-API kennt diese Meldungen nicht (resourceFeedback existiert nicht auf Shop in 2024-10) und zählt 0 Marketing-Aktivitäten. Der Text der Seite soll sagen, WELCHE Probleme gemeint sind.",
+  "erwartung": "Ohne angemeldetes Profil kommt stand=nicht-angemeldet zurück — das ist dann die Antwort, kein Fehler."
+}
