@@ -21,7 +21,7 @@ LOG=/var/log/luxe-anmelden.log
 export PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
 [ "$(id -u)" -eq 0 ] || { echo "Bitte als root ausführen."; exit 1; }
 
-echo "▶ 1/5  Verirrte SSH-Tunnel auf diesem Server beenden"
+echo "▶ 1/6  Verirrte SSH-Tunnel auf diesem Server beenden"
 # Ein `ssh -L 9222:...` AUF dem Server zeigt auf den Server selbst und belegt den Port.
 # Das Verwirrende: curl meldet dann «Empty reply from server» statt «Connection refused»
 # — es lauscht ja etwas, es antwortet nur nie. Der Fehler zeigt dadurch auf den Browser,
@@ -30,10 +30,10 @@ if pgrep -f "ssh -L 9222" >/dev/null 2>&1; then
   pgrep -af "ssh -L 9222" | sed 's/^/    beende: /'; pkill -f "ssh -L 9222" || true; sleep 2
 else echo "    keiner gefunden — gut"; fi
 
-echo "▶ 2/5  Neuesten Stand holen"
+echo "▶ 2/6  Neuesten Stand holen"
 git -C "$REPO" pull -q --ff-only 2>&1 | sed 's/^/    /' || echo "    (pull übersprungen)"
 
-echo "▶ 3/5  Agent anhalten und Profil freiraeumen"
+echo "▶ 3/6  Agent anhalten und Profil freiraeumen"
 systemctl stop luxe-agent.timer 2>/dev/null || true
 systemctl stop luxe-agent.service 2>/dev/null || true
 if pgrep -f -- "--user-data-dir=$PROFIL" >/dev/null 2>&1; then
@@ -60,7 +60,7 @@ CHROME="$( (cd "$REPO" && node -e "console.log(require('playwright').chromium.ex
 echo "    Chromium: $CHROME"
 install -d -m 700 "$PROFIL"
 
-echo "▶ 4/5  Browser starten — losgeloest, er ueberlebt dieses Fenster"
+echo "▶ 4/6  Browser starten — losgeloest, er ueberlebt dieses Fenster"
 # setsid + nohup: eigene Sitzung, kein HUP beim Schliessen des Terminals.
 setsid nohup "$CHROME" --headless=new --no-sandbox --disable-gpu \
   --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
@@ -76,7 +76,36 @@ curl -s --max-time 5 http://127.0.0.1:9222/json/version >/dev/null || {
   echo "✗ Der Steuerport antwortet nicht. Letzte Zeilen aus $LOG:"; tail -15 "$LOG"; exit 1; }
 echo "    ✅ Browser läuft, Steuerport antwortet."
 
-echo "▶ 5/5  Fehlende Tabs nachlegen"
+echo "▶ 5/6  Alte Tabs schliessen"
+# ⚠️ 17.09.2026: Chromium stellt bei jedem Start die Tabs aus dem Profil wieder her, und
+# das Skript legte oben drauf noch vier dazu. Gemessen ueber drei Laeufe: 5 → 12 → 29
+# Tabs. In chrome://inspect steht pro Tab eine Zeile — bei 29 Zeilen findet niemand mehr
+# die richtige, und jeder Tab kostet Arbeitsspeicher auf einem 4-GB-Server.
+# Es bleiben nur die fuenf Dienste, die wir brauchen; alles andere wird geschlossen.
+BEHALTEN='accounts.google.com|merchants.google.com|pinterest|bigbuy|shopify|tiktok'
+node -e '
+  const host = "http://127.0.0.1:9222";
+  const behalten = new RegExp(process.argv[1], "i");
+  (async () => {
+    const liste = await (await fetch(host + "/json/list")).json();
+    const seiten = liste.filter(t => t.type === "page");
+    const gesehen = new Set();
+    let zu = 0;
+    for (const t of seiten) {
+      // Nicht gebrauchte Adressen weg — und von jedem Dienst nur EINEN Tab behalten.
+      const treffer = (t.url || "").match(behalten);
+      const schluessel = treffer ? treffer[0].toLowerCase() : null;
+      if (!schluessel || gesehen.has(schluessel)) {
+        await fetch(host + "/json/close/" + t.id).catch(() => {});
+        zu++;
+      } else gesehen.add(schluessel);
+    }
+    console.log("    " + zu + " alte Tabs geschlossen, " + gesehen.size + " behalten");
+  })().catch(e => console.log("    (Aufraeumen uebersprungen: " + e.message + ")"));
+' "$BEHALTEN"
+sleep 2
+
+echo "▶ 6/6  Fehlende Tabs nachlegen"
 # ⚠️ Chromium stellt Tabs aus dem Profil wieder her — beim ersten Lauf waren es dadurch
 # 12 statt 5, und meine Meldung «erwartet: 5» sah nach Fehler aus, wo keiner war.
 # Deshalb wird jetzt geprueft, was SCHON offen ist, statt blind nachzulegen.
