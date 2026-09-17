@@ -164,6 +164,38 @@ die Zeile aus der stündlichen Ampel.
 
 ---
 
+# 0b. 📌 PINTEREST — drei Dinge, gemessen am 17.09. im Agenten-Browser
+
+Der Screenshot aus dem Business Hub zeigte «Händlerstatus genehmigt · Shopify verbunden» —
+das war **dein** Brave. Der **Agenten-Browser** auf dem Hetzner ist bei Pinterest **nicht**
+angemeldet: sein Screenshot der Profilseite zeigt «Anmelden / Registrieren» oben rechts
+(`auftraege/ergebnis/07-pinterest-upload-1-profil.png`). Shopify Admin und BigBuy sind dort
+angemeldet, Pinterest und Google Merchant nicht.
+
+**1. Im Agenten-Browser bei Pinterest anmelden** (gleicher Weg wie bei Shopify:
+`bash /opt/luxe-agent/repo/server/luxe-profil-anmelden.sh`, Tunnel, `chrome://inspect`).
+Danach lädt der Agent die 117 Pins selbst hoch — der Auftrag liegt fertig im Repo.
+
+**2. ⚠️ Die Profilbeschreibung ist falsch.** Dort steht wörtlich:
+
+> «Gratis-Versand ab CHF **65** · −10% mit Code WELCOME10»
+
+Richtig sind **CHF 50**. Die 65 war eine alte Angabe, die am **10.08.** aus dem Theme
+entfernt wurde (`automation/seo_versandschwelle_fix.py` dokumentiert genau das) — auf dem
+Pinterest-Profil hat sie **fünf Wochen überlebt**, weil die Korrektur nur den Shop
+durchsucht hat und keinen Kanal. Pinterest lässt die Beschreibung nicht über die API ändern;
+das ist ein Klick im Profil.
+
+**3. Die sechs Boards der Warteschlange gibt es nicht.** Auf dem Konto stehen *Soziales*
+(92 Pins), *Tech & Gadgets*, *Leder & Accessoires*, *Schlaf & Aromatherapie*,
+*Küche & Genuss*. Die CSV nennt *Herrenmode Schweiz, Schmuck & Accessoires, Sommerkleider &
+Damenmode 2026, Wellness & Beauty, Home & Geschenkideen, Schuhe & Sandalen*. Vor dem Upload
+müssen diese sechs Boards existieren — sonst verwirft Pinterest die Zeilen still.
+(Gute Nachricht nebenbei: die 92 Pins in *Soziales* der letzten Woche zeigen, dass die
+Shopify-Anbindung von sich aus Pins erzeugt. Der Kanal ist nicht tot.)
+
+---
+
 # 1. ⭐ BIGBUY-TICKET — EUR 1'000.00, seit zwei Monaten fällig
 
 ## Warum das nicht per Mail geht (gemessen, nicht vermutet)
