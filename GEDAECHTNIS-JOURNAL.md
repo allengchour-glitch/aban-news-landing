@@ -9,6 +9,54 @@
 
 
 
+## 2026-09-17 · 📨 «cj mail checken»: die Antwort kam — auf die falsche Frage, mit einer falschen Aussage
+
+CJ hat um **07:21 UTC** geantwortet. Erst beim Lesen fiel auf: es ist die Antwort auf meine Mail
+vom **9. September** (steckengebliebene Pakete), nicht auf die Rückerstattungs-Anfrage von
+gestern 21:26. **Eine Antwort im richtigen Thread ist nicht automatisch eine Antwort auf die
+letzte Frage** — der Betreff trug noch den alten Titel, und nur das Lesen zeigte es.
+
+Und der Inhalt ist für eine der beiden Bestellungen schlicht falsch:
+
+> «Both parcels completed inspection and were officially picked up and scanned by the carrier
+> on September 12 … Live tracking details and full route events are now actively updating»
+
+**Vor dem Antworten selbst gemessen** (`logistic/getTrackInfo`) — und das Ergebnis ist zweigeteilt:
+
+| | Stationen | letzter Stand |
+|---|---|---|
+| **#1017 Messer** | 8, **alle in China** | **«Returned to Original depot», SHANGHAI, 15.09. 14:15**, Status *Unsuccessful Delivery* |
+| **#1018 Ladegerät** | 10 | **«Departed from original airport», 17.09. 02:20** — hat China heute früh verlassen, *En Route* |
+
+Für #1018 stimmt CJ. Für #1017 nicht: es liegt zurück in ihrem eigenen Shanghaier Depot — was
+**ihre eigene Agentin Iris** uns am 16.09. geschrieben hat. Die rechte Hand weiss nicht, was die
+linke tut, und **wer die Antwort ungeprüft übernommen hätte, hätte einem Kunden ein Paket
+versprochen, das nie kommt.**
+
+**Nebenbei die gute Nachricht, die CJ selbst nicht hervorhob:** #1018 — der Kauf, der über
+ChatGPT kam — hat nach zehn Tagen China verlassen. Das ist der einzige laufende Kundenauftrag,
+und der Stand war vorher unklar. **Eine Nachricht, die an einer Stelle falsch ist, kann an
+anderer Stelle etwas Wahres enthalten, das man sonst übersehen hätte** — deshalb lohnt das
+Nachmessen beider Punkte, nicht nur des strittigen.
+
+Zwei Fallen im Messen selbst: `getTrackInfo` liefert die Stationen unter `data[0].routes`, nicht
+unter `trackInfo`/`routeInfo` — mein erster Aufruf meldete deshalb **«Stationen: 0»** für beide
+Sendungen. Das sah nach «keine Bewegung» aus und war in Wahrheit ein falscher Feldname.
+**Eine leere Liste ist erst dann eine Aussage, wenn man weiss, dass man am richtigen Feld
+gesucht hat.** Und `lastMileCarrier: "Swiss Post"` steht weiterhin bei BEIDEN Sendungen —
+auch bei der zurückgeschickten. Dieselbe Falle wie am 16.09.: **ein Feld, das eine Absicht
+beschreibt, ist kein Ereignis.**
+
+**Korrektur ist raus** (07:35, selber Thread): Messung, Forderung USD 25.54, der
+200-gegen-9009-Widerspruch aus ihrer eigenen API, die Bitte um ein realistisches Lieferfenster
+für #1018 und der Hinweis, dass die EQ-Sensitive-Linie Klingen für die Schweiz gar nicht erst
+annehmen sollte. **`disputes/create` heute erneut versucht: weiterhin 9009**, `disputeId` leer,
+`orderStatus` SHIPPED — der API-Weg bleibt zu.
+
+CJs Mail als gelesen markiert, damit die fremde Sende-Routine
+(`trig_01KAnvaXU7rbVVBbaUqrg6ci`, sendet statt zu entwerfen) sie nicht aufgreift und
+eigenmächtig antwortet.
+
 ## 2026-09-17 · 📉 «mach weiter»: der Trichter ist nicht kaputt — er ist leer. Vier Irrtümer ausgeräumt
 
 Vier Vermutungen geprüft, die alle im Gedächtnis oder in der Aufgabenliste standen.

@@ -608,3 +608,25 @@
 15497474277761	kein-stecker-merkmal	2026-09-16	Tragbarer Multifunktions-Entsafter
 15497474441601	kein-stecker-merkmal	2026-09-16	Tragbarer Mini-Entsafter für Zuhause
 15499055137153	kein-stecker-merkmal	2026-09-16	Ultradünnes kabelloses Ladegerät
+15499059495297	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät fürs Smartphone
+15499103338881	kein-stecker-merkmal	2026-09-17	Magnetisches kabelloses Ladegerät
+15499122835841	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät aus Holz
+15499155997057	unklar-eu-vorhanden:AU/EU/US	2026-09-17	Ladegerät für 72V20AH E-Fahrzeug Batterien
+15499157143937	kein-stecker-merkmal	2026-09-17	Kabelloses Schlüsselanhänger-Ladegerät für Apple Watch
+15499217011073	kein-stecker-merkmal	2026-09-17	Lithium-Akku-Ladegerät mit USB-Ausgang
+15499244339585	kein-stecker-merkmal	2026-09-17	Angel Wings Kabelloses Ladegerät
+15499245289857	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät für Smartwatches
+15499302666625	kein-stecker-merkmal	2026-09-17	Kabelloses Ladegerät mit Spiegel und Licht
+15499304468865	kein-stecker-merkmal	2026-09-17	Lithium-Ionen-Ladegerät mit vier Schächten
+15499446026625	kein-stecker-merkmal	2026-09-17	Keramik-Lockenstab für schonende Wellen
+15499446452609	kein-stecker-merkmal	2026-09-17	Kabelloser USB-Lockenstab mit Temperaturregelung
+15499446878593	draft-kein-eu-stecker:US	2026-09-17	Curling-Stick – umweltfreundlicher Heissluftstyler
+15499449598337	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-17	Rosen Lockenstab mit LCD-Anzeige
+15499491606913	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-17	Haartrockner mit Thermokeramik
+15499614814593	kein-stecker-merkmal	2026-09-17	EU-Ladegerät
+15499699290497	kein-stecker-merkmal	2026-09-17	Dreifach-Wireloser Ladegerät
+15499780587905	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Outdoor-Ladegerät für Camping
+15499781276033	kein-stecker-merkmal	2026-09-17	Multifunktionales Wireless-Ladegerät
+15499782521217	unklar-eu-vorhanden:EU/UK/US	2026-09-17	Universal Ladegerät für MacBook
+15499806376321	kein-stecker-merkmal	2026-09-17	Netzteil für MacBook (45W, 60W, 85W)
+15499807555969	kein-stecker-merkmal	2026-09-17	3-in-1 Magnetisches Kabelloses Ladegerät

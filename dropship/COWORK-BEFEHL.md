@@ -87,6 +87,38 @@ Please also note: we have removed all blades from our store, so no further knife
 will reach you from us.
 ```
 
+## 📨 NACHTRAG 17.09. 07:35 UTC — CJ hat geantwortet, aber am Thema vorbei
+
+**CJ antwortete heute 07:21 UTC** — auf meine Mail vom **9. September** (die steckengebliebenen
+Pakete), nicht auf die Rückerstattungs-Anfrage von gestern Abend. Und die Antwort enthält für
+#1017 eine Aussage, die nachweislich falsch ist:
+
+> «Both parcels completed inspection and were officially picked up and scanned by the carrier
+> on September 12 … Live tracking details and full route events are now actively updating»
+
+**Selbst gemessen (`logistic/getTrackInfo`, 17.09.):**
+
+| | Stationen | letzter Stand |
+|---|---|---|
+| **#1017 Messer** `EQKPT8612701376YQ` | 8, **alle in China** | **«Returned to Original depot», SHANGHAI, 15.09. 14:15** — Status *Unsuccessful Delivery* |
+| **#1018 Ladegerät** `EQKPT8612702883YQ` | 10 | **«Departed from original airport», 17.09. 02:20** — hat China heute früh verlassen, Status *En Route* |
+
+Für #1018 stimmt CJs Aussage also. Für #1017 nicht — es ist zurück in ihrem Shanghaier Depot,
+was ihre eigene Agentin Iris am 16.09. selbst geschrieben hat.
+
+**Korrektur ist raus** (17.09. 07:35, Thread `1a066a03bf2c8dd2`): Messung, Rückerstattungs-
+forderung USD 25.54, der 200-gegen-9009-Widerspruch, dazu die Bitte um ein realistisches
+Lieferfenster für #1018 und der Hinweis, dass die EQ-Sensitive-Linie Klingen für die CH gar
+nicht erst annehmen sollte.
+
+**Dispute heute erneut versucht — weiterhin `9009`**, `disputeId` und `disputeOpenedId` beide
+leer, `orderStatus` SHIPPED. Der API-Weg bleibt zu.
+
+⏱️ **Wenn CJ binnen 48 h nicht auf die Rückerstattung eingeht**, bleibt nur der Konsolen-Weg
+unten. Nachfass-Termin läuft (18.09. 17:00 UTC).
+
+---
+
 ## ✅ ERLEDIGT am 16.09. 21:30 UTC — die Mail ist RAUS
 
 **Weg A ist gegangen.** Die Mail liegt bei `support@cjdropshipping.com`, im laufenden Thread
