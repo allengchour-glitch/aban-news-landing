@@ -6,6 +6,71 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-17 · 🧠 Zweites Gehirn: das Gedächtnis dafür, WAS LÄUFT — und drei Motoren, die es nicht taten
+
+Betreiber: «ki automation mit 2te gehirn für alles automation und selber wachsen verbessern».
+
+**Erst gemessen, was fehlt.** Der Werkzeugkasten hat Messgeräte für den Shop, die Webseite und
+das Gedächtnis — aber keines für die **Automation selbst**. Gezählt: **631 Skripte in
+`automation/`**, davon nennt **101 keine andere Datei**, und das Journal hat rund 400
+Abschnitte. Beides zusammen passt in keinen Kopf und in kein Kontextfenster. Genau daran hängt
+der teuerste Befund dieses Projekts: Am 16.09. stand ein Lieferanten-Urteil über 535 Klingen
+**elf Tage** unvollstreckt, weil niemand mehr wusste, dass es existiert.
+
+Also `tools/zweites_gehirn.py` mit zwei Hälften. **`--inventar`** beantwortet für jedes Skript
+die Frage, die dieses Projekt sechsmal Geld gekostet hat (Lehre 1, Akt 1–6): *wer startet
+DICH?* — 530 angebunden, **10 verwaiste Wächter**, 91 vermutlich einmalige Werkzeuge.
+**`--regeln`** macht fünf datierte Lehren zu ausführbarem Code; **`--wacht`** läuft täglich im
+Aufseher und meldet **nur, was seit der Grundlinie neu ist** — die 143 Altbefunde jeden Tag zu
+wiederholen wäre genau das Dauerrauschen, das laut Lehre vom 29.08. echte Befunde übertönt.
+
+Die eiserne Regel des Werkzeugs steht im Kopf der Datei: **jede Regel muss ihren eigenen Köder
+fangen UND einen echten Fall durchlassen, sonst wird gar nichts gemeldet.** Das ist die
+Klingen-Lehre vom 16.09. als Bauvorschrift: ein Wächter, der «0» meldet, muss zeigen können,
+dass er auch «1» kann.
+
+### Drei echte Befunde, alle am selben Tag behoben
+
+**1. Ein Motor, den alle für laufend hielten, gab es nicht.** `fortura_img_runner` steht in der
+Startliste von `engine_keepalive.sh` und in CLAUDE.md als Dauerläufer — die Datei lag aber nur
+unter `/tmp` und ist mit einem Wipe verschwunden. Das ist **Lehre 2 vom 11.08. zum dritten
+Mal** («Ein Dauerläufer, der nicht committet ist, existiert nicht»). Gemessen: Bild-Nachschub
+bei **4'403 von ~7'558**, also nicht fertig, sondern stillstehend — und 58 % der Produkte
+haben nur ein Bild, ohne zweites kein Karussell auf der Kollektionsseite.
+
+**2. Der Starter hat darüber geschwiegen.** `engine_keepalive.sh:339` übersprang die fehlende
+Engine mit `[ -f "$QUELL" ] || continue`. Kein Name, keine Meldung — der Keepalive meldete
+weiter «alles läuft». **Ein Starter, der Fehlendes übergeht, ist eine Dauerentwarnung.**
+
+**3. Die Bestell-Ampel las einen dreieinhalb Wochen alten Stand.** `cj_order_watch.py` — der
+Wächter, den der Betreiber am 17.08. selbst bestellt hat («sage mir bescheid wen was änderet»)
+— stand in **keiner** Startliste. `dropship/_cj_order_watch_state.json` war vom **24.08.**, und
+genau diese Datei liefert der Ampel die Spalte «LX-Stand». Schaden bisher keiner, weil gerade
+0 Bestellungen offen sind; bei der nächsten hätte die Ampel einen drei Wochen alten Stand als
+aktuellen gemeldet. Der erste Lauf brachte sofort Nachrichten, die niemand hatte: **LX1013 und
+LX1014 DELIVERED, LX1015 von UNSHIPPED auf DELIVERED, LX1016 TRASH.**
+
+### Und die Lehre über mich selbst, dreimal in zwanzig Minuten
+
+Die Regel `nur-tmp-dauerlaeufer` meldete **0 für genau den Fall, der sie ausgelöst hatte** —
+dreimal hintereinander. Meine erste Erklärung: sie sucht nur ausgeschriebene Pfade, der echte
+Code baut ihn aus einer Schleifenvariablen. Gepatcht, Selbsttest grün, **immer noch 0**. Zweite
+Erklärung: der Schleifenkopf geht über zwei Zeilen und der gesuchte Name steht auf der
+Fortsetzung. Gepatcht, Selbsttest grün, **immer noch 0**.
+
+Der wirkliche Grund kam erst, als ich aufhörte nachzudenken und die Regel gegen die echte Datei
+laufen liess, mit Ausgabe: `re.search` liefert den **ersten** Treffer, und der war
+`/tmp/$Q.sh` aus einer ganz anderen Schleife. Die Regel suchte also nach `for Q in …`, während
+die gesuchte Liste unter `for S in …` steht. **Der erste Treffer eines Musters ist nicht «der»
+Treffer** — dieselbe Familie wie das Dateifeld von heute Morgen, wo `input[type=file]` das
+erste statt das richtige Feld war, und wie die vier Anläufe an der `or {}`-Frage.
+
+Der gemeinsame Nenner beider Fehlschläge: **mein Köder war beide Male einer, den ich mir
+ausgedacht hatte.** Ein selbstgebauter Köder prüft die eigene Vorstellung; nur ein Köder aus
+dem echten Fall prüft die Wirklichkeit. Im Selbsttest steht jetzt wörtlich der zweizeilige
+Schleifenkopf aus `engine_keepalive.sh`.
+
+
 ## 2026-09-17 · 📌 Der Pinterest-Katalog ist zu 100 % ausgeliefert — und der CSV-Weg existiert nicht
 
 Der Distributions-Reiter, den ich beim ersten Lauf übersehen hatte (Auftrag 28), gibt die
