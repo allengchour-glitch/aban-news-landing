@@ -104,9 +104,23 @@ def main():
     #     die Kollektions-Logik und gilt fuer jeden Link. Welche Sprachen es wirklich gibt,
     #     wird gemessen, nicht geraten.
     gl = gql("{ shopLocales { locale published } }")
-    lebend = {x["locale"] for x in (gl or {}).get("data", {}).get("shopLocales", []) if x["published"]}
+    # ⚠️ 17.09.2026: hier stand nur `(gl or {})`. Scheitert die Abfrage, ist `lebend`
+    # LEER — und dann gilt JEDER Sprachpfad als unveroeffentlicht, also jeder Link mit
+    # /de/, /en/ … als 404. Der Bericht waere nicht etwa unvollstaendig, sondern voll
+    # frei erfundener Befunde, und jemand haette danach Links «reparieren» wollen, die
+    # in Ordnung sind. Genau das ist mir heute Morgen an der Versandschwelle beinahe
+    # passiert. Ein Wert, der die Grundlage einer Aussage ist, darf nicht still zu
+    # einer leeren Menge werden: ohne Messung wird die Pruefung UEBERSPRUNGEN.
     tot_durch_sprache = set()
+    if gl is None:
+        print("HINWEIS: Sprachen nicht messbar (shopLocales ohne Antwort) — "
+              "Sprachpfad-Pruefung uebersprungen, KEIN Befund daraus.", flush=True)
+        lebend = None
+    else:
+        lebend = {x["locale"] for x in (gl.get("data") or {}).get("shopLocales", []) if x["published"]}
     for _t, u in links:
+        if lebend is None:
+            break
         mo2 = re.match(r"/([a-z]{2})(?:-[A-Z]{2})?/", u or "")
         if mo2 and mo2.group(1) not in lebend:
             tot_durch_sprache.add(u)
