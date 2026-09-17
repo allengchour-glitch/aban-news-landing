@@ -115,6 +115,15 @@ export function hat_ziel_erreicht(gefragt, gelandet) {
  * ist. Deshalb eine Pruefung mit einem anderen Sinnesorgan: dem Seitentext.
  */
 export const WAND_TEXTE = [
+  // ⚠️ 17.09.2026, zweiter Akt: Auftrag 18 lief gegen BigBuy und bekam Cloudflares
+  // DEUTSCHE Fassung — «Sicherheitsüberprüfung wird durchgeführt». Die stand hier nicht,
+  // also meldete die Quittung «ok» fuer eine Seite mit null Formularfeldern. Und schlimmer:
+  // dieselbe Wand hatte kurz vorher «BigBuy angemeldet: true» erzeugt, weil sie weder
+  // Anmeldemaske noch Gastgeberwechsel ist. **Eine Musterliste ist nur so gut wie ihre
+  // Sprachen** — wer sie in EINER Sprache pflegt, hat eine Wache fuer EINE Sprache.
+  /Sicherheits(überprüfung|prüfung|check)/i,
+  /vor böswilligen Bots/i,
+  /Ray ID:/i,
   /Verbindung muss verifiziert werden/i,
   /Bestätigen Sie, dass Sie ein Mensch sind/i,
   /(checking|verifying) (if )?you are (a )?human/i,

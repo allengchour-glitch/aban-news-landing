@@ -60,10 +60,15 @@ for (const [a, b] of ZIEL_JA)
 
 // ── Dritte Frage: steht eine Wand vor der Seite, ohne dass die URL es sagt? ──
 const WAND_JA = [
+  // Der echte BigBuy-Fall vom 17.09., wortgleich aus der Quittung von Auftrag 18:
+  'www.bigbuy.eu\nSicherheitsüberprüfung wird durchgeführt\n\nDiese Website nutzt einen '
+    + 'Sicherheitsservice, um sich vor böswilligen Bots zu schützen.\nRay ID: a3ca2241ac1e86d9',
   'Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst\nBestätigen Sie, dass Sie ein Mensch sind',
   'Just a moment...\nEnable JavaScript and cookies to continue',
 ];
 const WAND_NEIN = [
+  // Koeder: unser eigener Shop wirbt mit «sichere Zahlung» — darf nie als Wand gelten.
+  '🔒 Sichere Zahlung mit Klarna und TWINT · 30 Tage Rückgabe · Gratis ab CHF 50',
   '🇨🇭 2\'400 Artikel ab Schweizer Lager — in 1–2 Tagen bei dir · 🚚 Gratis ab CHF 50',
   // Koeder: ein langer, ECHTER Text, der die Wortmarke zufaellig enthaelt.
   'Ratgeber: Warum Shops eine Bot-Pruefung einsetzen. '.repeat(30)
