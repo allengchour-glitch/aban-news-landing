@@ -1,6 +1,0 @@
-{
-  "id": "25-pinterest-upload-weg",
-  "typ": "skript",
-  "skript": "pinterest_upload_weg_finden.mjs",
-  "warum": "Vor dem Upload der 117 Pins den Weg MESSEN. Am 17.09. sind zwei geratene Adressen gescheitert (/pin-creation-tool/ leitete auf den Feed um, /board-create/ gibt es nicht) — und beide Fehlermeldungen sahen aus, als laege es an der Seite. Rein lesend: welche Kandidaten-Adresse hat ein Dateifeld, welche einen Einstieg 'Massen/Bulk/CSV'."
-}
