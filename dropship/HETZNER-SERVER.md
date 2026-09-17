@@ -38,6 +38,29 @@ ich → lese das Ergebnis beim nächsten Turn
 Installation: `server/luxe-agent-setup.sh` (idempotent). **Noch nie auf dem Server
 gelaufen** — alles darin ist ungetestet, bis er es einmal ausführt.
 
+## Wie komme ich überhaupt auf den Server?
+
+**1. Normalweg:** `ssh root@46.225.75.125` — setzt voraus, dass der private Schlüssel auf dem
+Rechner liegt, von dem aus du dich verbindest.
+
+**2. Wenn SSH abweist:** `server/harden-ssh.sh` setzt `PasswordAuthentication no` und
+`PermitRootLogin prohibit-password`. **Ob es je ausgeführt wurde, ist nirgends festgehalten**
+— und von der Cloud-Session aus nicht prüfbar, weil Port 22 dort generell gesperrt ist.
+Deshalb im Zweifel gleich Weg 3.
+
+**3. Der Weg, der immer geht — die Web-Konsole von Hetzner.** Sie hängt am Bildschirm der
+Maschine und braucht weder SSH noch Schlüssel:
+- **Cloud-Server:** console.hetzner.cloud → Server öffnen → Symbol **`>_`** («Console»).
+  Root-Passwort neu setzen: dort unter **Rescue**.
+- **Dedicated / Robot:** robot.hetzner.com → Server → **LARA** bzw. Rescue-System.
+
+Welches Produkt es ist, steht im Repo nicht; `PROJEKT.md:57` nennt nur IP und «Ubuntu 26.04».
+Cloud ist das Wahrscheinlichere.
+
+⚠️ Das per Hetzner-Mail verschickte Root-Passwort gilt seit Juni als **kompromittiert**
+(`server/README.md`). Wer es zum Einsteigen benutzt, sollte danach `harden-ssh.sh` mit dem
+eigenen öffentlichen Schlüssel laufen lassen und das Passwort im Panel rotieren.
+
 ## Was nur der Betreiber tun kann
 
 **1. Einmal installieren** — ein Befehl, als root auf 46.225.75.125:
