@@ -63,3 +63,4 @@ gid://shopify/Product/15525462606209	2026-09-08	Spielzeug & Plüsch
 gid://shopify/Product/15525487739265	2026-09-08	Taschen & Rucksäcke
 gid://shopify/Product/15493857051009	2026-09-08	Auto & KFZ-Zubehör
 gid://shopify/Product/15518559207809	2026-09-08	Handy-Zubehör
+gid://shopify/Product/15524698816897	2026-09-17	Küche & Kochen
