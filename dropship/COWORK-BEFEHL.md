@@ -1,12 +1,74 @@
-# COWORK-BEFEHL — Fassung 16.09.2026, 07:00 UTC
+# COWORK-BEFEHL — Fassung 17.09.2026, 20:30 UTC
 
-> Betreiber 16.09.: «mach das mit cowork oder so… egal wie hauptsache erledigt.»
-> **Punkt 1 ist der wichtigste — dort liegen EUR 1'000.** Punkt 0 ist neu (16.09.,
-> CJ-Messer-Rückerstattung USD 25.54) und in fünf Minuten erledigt.
-> Alles andere ist unverändert und kann warten.
->
-> Nichts erfinden, nichts bezahlen, **keine App deinstallieren, keinen Token widerrufen**
-> (`autopilot2` trägt den ganzen Betrieb).
+> **Zum Kopieren: der Block unten ist der ganze Auftrag.** Darunter stehen die Einzelheiten
+> je Punkt (gewachsen über mehrere Tage, teils in unsortierter Reihenfolge — der Block ist
+> die Wahrheit über die Prioritäten, die Abschnitte liefern die fertigen Texte).
+
+```
+Du hilfst beim Shop LuxeStyle CH (luxestyle.ch). Die Cloud-Session hat alles gemessen,
+was von dort messbar war — du übernimmst genau das, was einen echten Browser oder SSH
+braucht. Reihenfolge ist Absicht. Details: dropship/COWORK-BEFEHL.md im Repo
+allengchour-glitch/aban-news-landing (Branch claude/luxestyle-status-tztnn1).
+
+1) HETZNER-AGENT INSTALLIEREN (höchster Wert, du bist schon dran)
+   Server 46.225.75.125. Ein Befehl als root:
+     bash /opt/luxe-agent/repo/server/luxe-agent-setup.sh
+   Falls der Klon fehlt, legt das Skript ihn an (eigener Klon /opt/luxe-agent/repo —
+   NICHT /opt/abannews, dort macht ein Deploy-Poller alle 3 Min git reset --hard).
+   Danach holt der Server alle 5 Minuten Aufträge aus auftraege/offen/*.json und pusht
+   Quittungen zurück. Melde, ob der systemd-Timer luxe-agent.timer läuft.
+
+2) ROOT-PASSWORT ROTIEREN
+   Es stand im Klartext in einem Chat. Neues setzen, danach Passwort-Login abschalten
+   (nur SSH-Key). Das neue Passwort NICHT in einen Chat schreiben.
+
+3) CJ-ERSTATTUNG USD 25.54 — Frist 19.09. ca. 07:30 UTC
+   Auftrag DP2609071450210661800 (Messer, aus Shanghai zurückgekommen, Tracking
+   EQKPT8612701376YQ "Returned to Original depot" 15.09.). Der API-Weg ist zu:
+   disputes/create gibt Code 9009 mit allen drei Bestell-IDs. Also: cjdropshipping.com
+   einloggen → Dispute in der Konsole öffnen, Grund 6 "Product Returned", ODER im
+   Chatfenster Iris Huang anschreiben. Fertiger Text in COWORK-BEFEHL.md Punkt 0.
+   Fallnummer/Gutschrift danach in dropship/_cj_dispute_1017_ref.txt eintragen —
+   dann verschwindet die Erinnerung aus der stündlichen Ampel von selbst.
+
+4) BIGBUY EUR 1'000 — Ticket eröffnen
+   Guthaben 1'000.00 gemessen, seit 15.07. unverändert, Abo ist ausgelaufen. Fünf Mails
+   gingen raus, zurück kamen nur zwei wortgleiche Auto-Antworten — der Mailkanal ist tot.
+   BigBuy nennt selbst das Ticket: bigbuy.eu/en/contact, Abteilung Administration.
+   ⚠️ Von hier aus unmöglich: Cloudflare sperrt automatisierte Browser aus (gemessen,
+   Ray ID a3ca2241ac1e86d9). Es braucht deinen echten Browser. Fertiger Formulartext in
+   COWORK-BEFEHL.md Punkt 1. Ticketnummer nach dropship/_bigbuy_ticket_ref.txt.
+   IBAN NICHT ins Repo schreiben — es ist öffentlich.
+
+5) GOOGLE MERCHANT — ERST MESSEN, DANN ÄNDERN
+   Im Gedächtnis steht "1'698 Produkte · Missing shipping info" — die Zahl ist vom 10.07.
+   und seither NIE nachgeprüft. Bitte zuerst im Merchant-Konto nachsehen, ob es sie
+   überhaupt noch gibt, und die heutige Zahl melden. Erst dann Lieferland auf NUR Schweiz
+   stellen. Google lässt den Agenten-Browser grundsätzlich nicht anmelden ("Dieser Browser
+   oder diese App ist unter Umständen nicht sicher") — deshalb dein Browser.
+
+6) FORTURA-ZUGANG DAUERHAFT (2 Minuten, Claude-Einstellungen)
+   FORTURA_FTP_USER und FORTURA_FTP_PW als Umgebungsvariablen eintragen. Sie liegen
+   aktuell nur in /tmp und sind schon zweimal bei einem Neustart verschwunden (14.08.,
+   17.09.), beide Male wochenlang unbemerkt.
+
+GRENZEN — bitte strikt:
+• KEINE Mails an Kunden senden. Entwürfe ja, senden nur nach Rückfrage beim Betreiber.
+• Die Custom-App "autopilot2" NIE deinstallieren und ihren Token NIE widerrufen — sie
+  trägt den ganzen Betrieb.
+• Die stündliche Routine trig_01Uy3zVefXbzCZn9Dr2qvkwh NICHT abschalten. Sie startet
+  keine CJ-Importe (der Grind ist im Repo aus), sondern die Kundenbetreuung. Sie wurde
+  schon dreimal irrtümlich deaktiviert.
+• Bot-Erkennung NICHT umgehen (keine gefälschte Kennung, keine versteckten
+  Automatisierungs-Merkmale). An diesen Konten hängen der einzige Kanal mit belegten
+  Verkäufen und eine offene Forderung.
+• Keine Zugangsdaten ins Repo — es ist öffentlich.
+• Nichts bezahlen ohne Rückfrage.
+
+Bei jedem Punkt: erst messen, dann handeln, und melden was du GESEHEN hast — nicht was
+du erwartet hast. Wenn etwas nicht geht, sag woran es lag; ein "erledigt" ohne Beleg ist
+hier teurer als ein offener Punkt.
+```
 
 ---
 
