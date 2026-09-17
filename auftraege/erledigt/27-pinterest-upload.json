@@ -3,6 +3,6 @@
   "typ": "skript",
   "skript": "pinterest_bulk_upload.mjs",
   "warum": "Alle sechs Boards stehen (23e/23f zweifach bestaetigt), und Auftrag 25 hat das Dateifeld auf /pin-builder/ gemessen. Damit sind beide Gruende weg, an denen der erste Versuch scheiterte. 117 gepruefte Pins, Termine ueber 10 Tage verteilt. Ledger VOR dem Absenden.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "fehler",
+  "fehler": "locator.click: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('button,[role=\"button\"]').filter({ hasText: /^(hochladen|upload|weiter|next|erstellen|create|veröffentlichen|publish)$/i }).first()\n    - locator resolved to <div role=\"button\" aria-disabled=\"true\" class=\"Q3hcOU DodKMr itw4K9 g0I6wi\" data-test-id=\"board-dropdown-save-button\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n      - waiting 100ms\n    37 × waiting for element to be visible, enabled and stable\n       - element is not enabled\n     - retrying click action\n       - waiting 500ms\n"
 }
