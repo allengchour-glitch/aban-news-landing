@@ -1,0 +1,57 @@
+{
+  "id": "storefront-2026-09-17",
+  "typ": "skript",
+  "skript": "storefront_wahrheit.mjs",
+  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
+  "stand": "ok",
+  "ergebnis": {
+    "zusammenfassung": "⚠️ 1 von 3 Seiten mit Befund: startseite",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/",
+        "erreichbar": false,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "keine gefunden",
+        "preis_sichtbar": false,
+        "fehlertexte": [],
+        "zeichen": 202,
+        "bild": "auftraege/ergebnis/storefront-2026-09-17-startseite.png"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen",
+        "erreichbar": true,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3772,
+        "bild": "auftraege/ergebnis/storefront-2026-09-17-kollektion.png"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq",
+        "erreichbar": true,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3062,
+        "bild": "auftraege/ergebnis/storefront-2026-09-17-faq.png"
+      }
+    ]
+  }
+}
