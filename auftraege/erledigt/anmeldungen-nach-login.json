@@ -1,0 +1,8 @@
+{
+  "id": "anmeldungen-nach-login",
+  "typ": "skript",
+  "skript": "anmeldungen_pruefen.mjs",
+  "warum": "Direkt nach dem Anmelden gemessen statt angenommen. Der Melder sagt jetzt null statt true, wo er es nicht weiss (Einwilligungswand, Bot-Pruefung).",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
