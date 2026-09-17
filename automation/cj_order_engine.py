@@ -74,20 +74,32 @@ def cj(path, body=None):
 
 def gql(q, v=None):
     p = json.dumps({"query": q, "variables": v or {}})
-    for _ in range(4):
+    for versuch in range(4):
         r = subprocess.run(["curl", "-s", "--max-time", "50",
                             f"https://{SHOP}/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + STOK,
                             "-H", "Content-Type: application/json", "-d", p],
                            capture_output=True, text=True)
+        grund = "unbekannt"
         try:
             d = json.loads(r.stdout)
             if "data" in d:
                 return d
-        except Exception:
-            pass
+            # ⚠️ 17.09.2026: Hier stand `except Exception: pass` und darunter `return {}`.
+            # Der Grund wurde verschluckt UND der Aufrufer bekam ein leeres Ergebnis — ein
+            # Waechter, der damit `.get(...)` weiterrechnet, meldet «0 Produkte». Eine Null,
+            # die wie eine Messung aussieht und ein Ausfall ist. Deshalb: Grund benennen
+            # und LAUT scheitern, statt still eine Null zu liefern.
+            grund = str(d.get("errors") or d)[:300]
+            if "THROTTLED" in grund.upper():
+                # Shopifys Eimer fuellt sich mit restoreRate — kurz warten hilft nicht.
+                time.sleep(12)
+                continue
+        except Exception as e:
+            grund = "Antwort unlesbar (" + type(e).__name__ + "): " + (r.stdout or "")[:200]
         time.sleep(3)
-    return {}
+    raise RuntimeError("Shopify antwortet nicht (" + str(versuch + 1)
+                       + " Versuche). Letzter Grund: " + grund)
 
 
 def offene_bestellungen():

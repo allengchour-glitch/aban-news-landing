@@ -29,20 +29,32 @@ LEDGER = "dropship/_interne_links_nachgezogen.txt"
 
 
 def gql(q, v=None):
-    for _ in range(5):
+    for versuch in range(5):
         r = subprocess.run(["curl", "-s", "--max-time", "60", BASE + "graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
                             "-H", "Content-Type: application/json",
                             "-d", json.dumps({"query": q, "variables": v or {}})],
                            capture_output=True, text=True)
+        grund = "unbekannt"
         try:
             d = json.loads(r.stdout)
             if "data" in d:
                 return d
-        except Exception:
-            pass
+            # ⚠️ 17.09.2026: Hier stand `except Exception: pass` und darunter `return {}`.
+            # Der Grund wurde verschluckt UND der Aufrufer bekam ein leeres Ergebnis — ein
+            # Waechter, der damit `.get(...)` weiterrechnet, meldet «0 Produkte». Eine Null,
+            # die wie eine Messung aussieht und ein Ausfall ist. Deshalb: Grund benennen
+            # und LAUT scheitern, statt still eine Null zu liefern.
+            grund = str(d.get("errors") or d)[:300]
+            if "THROTTLED" in grund.upper():
+                # Shopifys Eimer fuellt sich mit restoreRate — kurz warten hilft nicht.
+                time.sleep(12)
+                continue
+        except Exception as e:
+            grund = "Antwort unlesbar (" + type(e).__name__ + "): " + (r.stdout or "")[:200]
         time.sleep(3)
-    return {}
+    raise RuntimeError("Shopify antwortet nicht (" + str(versuch + 1)
+                       + " Versuche). Letzter Grund: " + grund)
 
 
 def rest(m, p, b=None):
