@@ -1248,6 +1248,36 @@ JSON
       [ "${OFFEN:-0}" -gt 0 ] && echo "$(date -u +%H:%M) ⚠️ KANAL-ZUSAGEN: $OFFEN wartende Zeile(n) mit veralteter Zusage — $KZ"
     fi
   fi
+  # ZWEITES GEHIRN, taeglich: prueft den eigenen Bestand gegen die teuer gelernten Lehren
+  # (tools/zweites_gehirn.py). Gemeldet wird NUR, was seit der Grundlinie NEU dazugekommen
+  # ist — der Altbestand von 143 Befunden wuerde sonst jeden Tag dieselbe Zeile erzeugen,
+  # und «eine Zeile, die sich in jedem Durchgang wiederholt, ist keine Meldung» (29.08.).
+  # Der Selbsttest laeuft im Werkzeug VOR jeder Meldung: faengt eine Regel ihren eigenen
+  # Koeder nicht, wird gar nichts gemeldet.
+  # CJ-BESTELLWACHE alle 2 h. Auftrag Betreiber 17.08.: «sage mir bescheid wen was änderet».
+  # ⚠️ GEFUNDEN 17.09. vom zweiten Gehirn: dieses Skript stand in KEINER Startliste, und
+  # dropship/_cj_order_watch_state.json wurde zuletzt am 24.08. geschrieben — dreieinhalb
+  # Wochen alt. Die Bestell-Ampel liest genau diese Datei fuer die Spalte «LX-Stand».
+  # Schaden bisher keiner (0 offene Bestellungen), aber bei der naechsten Bestellung haette
+  # die Ampel einen drei Wochen alten Stand als aktuellen gemeldet. Wieder die Frage aus
+  # Lehre 19.08.: «wer startet DICH?» — hier lautete die Antwort: niemand.
+  CJW=/tmp/cj_order_watch.log
+  if [ -f "$REPO/automation/cj_order_watch.py" ] && [ -f /tmp/cj_token.json ]; then
+    if [ $(( $(date +%s) - $(stat -c %Y "$CJW" 2>/dev/null || echo 0) )) -gt 7200 ]; then
+      ( cd "$REPO" && python3 automation/cj_order_watch.py > "$CJW" 2>&1 )
+      grep -q "AENDERUNG\|ÄNDERUNG" "$CJW" && { echo "$(date -u +%H:%M) 📦 CJ-BESTELLUNG geaendert:"; grep "AENDERUNG\|ÄNDERUNG" "$CJW" | head -5; }
+    fi
+  fi
+
+  ZG=/tmp/zweites_gehirn.log
+  if [ -f "$REPO/tools/zweites_gehirn.py" ]; then
+    if [ $(( $(date +%s) - $(stat -c %Y "$ZG" 2>/dev/null || echo 0) )) -gt 86400 ]; then
+      python3 "$REPO/tools/zweites_gehirn.py" --wacht > "$ZG" 2>&1
+      NEUE=$(grep -o "· [0-9]* NEU" "$ZG" | head -1 | grep -o "[0-9]*")
+      [ "${NEUE:-0}" -gt 0 ] && { echo "$(date -u +%H:%M) ⚠️ ZWEITES GEHIRN: $NEUE neue Regelverstoesse seit der Grundlinie"; grep "NEU \[" "$ZG" | head -5; }
+    fi
+  fi
+
   # VERSANDAUSSAGEN-LIVE-KONTROLLE alle 3 Tage: Am 17.08. standen 4'356 Produkte WIEDER mit
   # dem alten EU/USA-Block da, obwohl sie im Ledger als erledigt geführt waren (Zombie-
   # Muster vom 15.08., Verursacher unbekannt). Der Live-Modus prüft nach INHALT, nicht nach

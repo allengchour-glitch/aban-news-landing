@@ -336,7 +336,15 @@ for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
   # Repo holt, muss auch die Startliste umhaengen, sonst laeuft weiter die /tmp-Kopie.
   QUELL="/tmp/$S.sh"
   [ -f "$REPO_AUTO/$S.sh" ] && QUELL="$REPO_AUTO/$S.sh"
-  [ -f "$QUELL" ] || continue
+  # ⚠️ 17.09.2026: Hier stand nur `|| continue` — schweigend. Genau so ist
+  # `fortura_img_runner` monatelang durchgerutscht: er stand in der Liste oben und in
+  # CLAUDE.md als laufender Motor, die Datei gab es aber weder im Repo noch in /tmp
+  # (Bild-Nachschub bei 4'403 von ~7'558 stehengeblieben). Ein Starter, der Fehlendes
+  # uebergeht, meldet dauerhaft «alles laeuft». Fehlt etwas, faellt jetzt sein NAME.
+  if [ ! -f "$QUELL" ]; then
+    echo "⚠️ ENGINE FEHLT: $S — weder $REPO_AUTO/$S.sh noch /tmp/$S.sh. Sie laeuft NICHT."
+    continue
+  fi
   # Solange der Betreiber-Stopp steht, wird der Social-Autopilot gar nicht erst gestartet:
   # post_guard blockte ohnehin jeden Post, und der stuendliche «neu gestartet»-Eintrag
   # uebertoente als Dauerrauschen echte Befunde (31.08.).

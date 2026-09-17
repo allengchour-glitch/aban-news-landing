@@ -1,0 +1,143 @@
+grund-verschluckt	automation/artikelnummer_entfernen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bb_aktiv_marge.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bb_unrentabel_guard.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bestandsgroesse_wache.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bigbuy_abschied.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bild_klein_fix.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bilddubletten.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bilddubletten_draften.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/bildtext_entfernen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/blitzfront_kuratieren.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/blog_titelbild.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/cj_versand_ch_sichtbar.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/default_variant_fix.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/dup_scan.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbcode_bereinigen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbcode_clean.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbcode_optionswerte.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbcode_rein_melden.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbfeld_saeubern.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbwert_dubletten.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbwerte_uebersetzen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/farbwerte_zusammengesetzt.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/fortura_doppelbestand.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/gfeed_apply.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/gfeed_score.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/gmc_scan_fix.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/gmf_nachtragen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/google_feed_cull.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/google_identifier.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/google_kanal_luecke_schliessen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/google_kanal_nachziehen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/google_kanal_saeubern.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/google_kanal_saeubern2.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/google_kategorie_pruefen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/groesse_im_farbwert.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/groessencode_option.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/handle_dup_scan.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/handle_kuerzen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/hauptbild_gross.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/hauptbild_ohne_text.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/heilversprechen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/heilversprechen_seo.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/hoodies_shirts_kuratieren.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/hype_kuratieren.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/kaschmir_wahrheit.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/katalog_audit.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/kategorien_verzeichnis.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/kinder_sicherheit.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/koll_seo_fuellen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/kollektion_leer.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/kollektion_prompttext_fix.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/kollektion_versandschwelle.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/lieferzeit_widerspruch.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/markenanlehnung.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/mass_im_farbwert.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/medizinprodukte_guard.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/menue_links.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/merchant_sperre_durchsetzen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/multipack_titel.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/neuheit_tag_nachziehen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/newborn_altersgruppe.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/option_umbenennen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/orphan_scan.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/pod_druckdatei.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/pod_druckdatei_umhaengen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/preis_lager_scan.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/preisboden.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/qa_sweep8.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/reel_caption_wahrheit.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/schule_buero_fuellen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/seiko_fehluebersetzung.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/seiten_versandtext.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/selbstpruefung.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/social_queue_saeubern.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/ss_statt_scharf_s.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/sticker_druckdatei.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/sticker_groessenvorschau.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/sticker_kosten.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/sticker_stueckzahl.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/streichpreise.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/suchwort_mehrzahl.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/suchwort_tags.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/textbild_fix.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/titel_anreichern.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/titel_kappe70.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/titel_kollision.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/titelcode_entfernen.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/tote_links.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/tote_rabattcodes.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/ueberwachung_waffen_guard.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/umlaut_suchtags.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/variantenbild.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/variantenwerte_deutsch.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/versand_widerspruch_fix.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/versandschwelle_blog_kollektion.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/versandschwelle_text.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/versandschwelle_ueberall.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/voll_export.py	gql(): except-Zweig verschluckt den Grund
+grund-verschluckt	automation/wahlversprechen.py	gql(): except-Zweig verschluckt den Grund
+pgrep-falle	automation/autostart.sh	pgrep -f statt argv-Pruefung: log "fertig. Laufend: $(pgrep -fc 'cj_perpetual|bi
+pgrep-falle	automation/autostart.sh	pgrep -f statt argv-Pruefung: running(){ pgrep -f "$1" >/dev/null 2>&1; }
+pgrep-falle	automation/fixer_keepalive.sh	pgrep -f statt argv-Pruefung: [ -f /tmp/website_hygiene_runner.sh ] && { pgrep -
+pgrep-falle	automation/fixer_keepalive.sh	pgrep -f statt argv-Pruefung: pgrep -f "$p.py" >/dev/null && continue
+pgrep-falle	automation/fixer_keepalive.sh	pgrep -f statt argv-Pruefung: pgrep -f "automation/$S.sh" >/dev/null || { setsid
+pgrep-falle	automation/fixer_keepalive.sh	pgrep -f statt argv-Pruefung: pgrep -f "cj_fulfill_runner.sh" >/dev/null || { se
+pgrep-falle	automation/fixer_keepalive.sh	pgrep -f statt argv-Pruefung: pgrep -f "cj_runner_template.sh $R" >/dev/null && 
+stille-null	automation/alt_texte_nachziehen.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/bewertungen_quote_probe.py	cj() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/bewertungen_quote_probe.py	sh() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/bild_gross_nachladen.py	cj() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/cj_fulfill_engine.py	cj() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/cj_order_engine.py	cj() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/cj_stecker_pruefen.py	cj() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/cj_verfuegbarkeit.py	cj() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/farbwert_dubletten.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/gender_aus_titel.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/google_kanal_luecke_schliessen.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/groesse_im_farbwert.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/hauptbild_grossbild.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/hoodies_shirts_kuratieren.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/kategorien_verzeichnis.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/klassen_kontrolle.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/kollektionstexte_wahrheit.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/kosten_boden15_korrigieren.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/marken_nachahmung_bereinigen.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/mass_im_farbwert.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/material_metafeld_korrigieren.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/medizin_zweck_guard.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/menue_links.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/merchant_sperre_durchsetzen.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/optionen_export.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/pod_druckdatei.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/pod_druckdatei_umhaengen.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/sticker_druckdatei.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/sticker_groessenvorschau.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/sticker_kosten.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/sticker_stueckzahl.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/titel_kappe70.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/trust_baustein_wahrheit.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/ueberwachung_waffen_guard.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/variantenwerte_deutsch.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/versandaussagen_wahrheit.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
+stille-null	automation/versandschwelle_blog_kollektion.py	gql() endet mit einem leeren Ergebnis — der Aufrufer meldet daraus eine Null
