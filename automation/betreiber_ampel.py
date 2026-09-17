@@ -199,10 +199,13 @@ def shopify_rechnung():
     quittung = os.path.join(REPO, "dropship", "_shopify_rechnung_ref.txt")
     if os.path.exists(quittung) and open(quittung, encoding="utf-8").read().strip():
         return None
-    return ("💳 Shopify-Rechnung CHF 44.68 GESCHEITERT (17.09., Mail von billing@shopify.com) — "
-            "Karte pruefen/ersetzen unter Einstellungen → Abrechnung, sonst naechster Versuch "
-            "19.09. und bei erneutem Fehlschlag droht die Sperre des Shops. Nach dem Bezahlen "
-            "eine Zeile nach dropship/_shopify_rechnung_ref.txt")
+    return ("💳 Shopify-Rechnung CHF 44.68 GESCHEITERT (17.09.) — Ursache gemessen: seit dem "
+            "26.08. ist GAR KEINE gueltige Zahlungsmethode hinterlegt (Shopify-Mail fuer "
+            "LuxeStyle, FitForge CH, TechHub CH). Erst Methode hinterlegen: "
+            "/admin/settings/organization-billing/profile · DANN Rechnung 590825596 bezahlen: "
+            "/admin/settings/billing/invoice/590825596 · 'Erneut versuchen' allein scheitert "
+            "wieder. Naechster Automatik-Versuch 19.09., bei erneutem Fehlschlag droht die "
+            "Sperre. Danach eine Zeile nach dropship/_shopify_rechnung_ref.txt")
 
 
 def offene_punkte():
