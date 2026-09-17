@@ -6,6 +6,122 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-17 · 📎 Ein Dateifeld ist nicht «das Dateifeld» — der Upload, der eine CSV zum Pin-Bild machte
+
+Auftrag 27 sollte die 117 geprüften Pins über Pinterests Massen-Upload hochladen. Die Quittung
+sagte: `locator.click: Timeout — element is not enabled`, und der Selektor hatte
+`data-test-id="board-dropdown-save-button"` erwischt. Meine erste Erklärung lautete: schlechter
+Selektor, Textsuche greift den falschen Knopf. Die habe ich fast so aufgeschrieben.
+
+**Der Screenshot zeigte drei andere Dinge, und das erste ist das teure:**
+
+**1. Es gab auf dieser Seite gar keinen Massen-Upload.** Der Reiter hiess **«Pin für Anzeige
+erstellen»** — das Formular für EINEN Pin, mit Board-Auswahl «Schuhe & Sandalen» und einem
+roten «Veröffentlichen». Das Skript hat trotzdem die 117-Zeilen-CSV an das erste
+`input[type="file"]` gehängt, also **in das Bildfeld eines einzelnen Pins**. Wäre die
+Schaltfläche anklickbar gewesen, hätte es einen Pin veröffentlicht, dessen Bild eine
+CSV-Datei ist — öffentlich, auf einem Konto mit genehmigtem Händlerstatus.
+
+Der Denkfehler steht in der Quittung von Auftrag 25, und ich habe ihn selbst produziert: dort
+war gemessen «Dateifeld gefunden auf /pin-builder/ und /pin-creation-tool/». Gemessen war,
+**dass** es ein Dateifeld gibt. Ich habe daraus gelesen, **welches** es ist. Dieselbe Quittung
+trägt übrigens die Gegenprobe schon in sich: in ihrer Liste der Einstiege steht auf KEINER der
+fünf Seiten ein Wort «Massen/Bulk/CSV» — nur Katalog-Diagnose und ein Academy-Kurs. Die
+Auskunft «es gibt hier keinen CSV-Weg» lag vor, bevor ich es versuchte.
+
+→ Jetzt hält das Skript an, solange nicht im **Seitentext** belegt ist, dass es eine Massen-/
+CSV-Oberfläche ist (`massen|bulk|.csv|csv-datei|tabelle hochladen`). Ohne diesen Beleg wird
+nichts angehängt und nichts angeklickt.
+
+**2. Eine Einführungstour lag über allem** — «Tolle Pins leicht gemacht · **1 von 4** · Weiter»,
+als Modal über der ganzen Seite. Das ist der Grund, dass nichts anklickbar war: `aria-disabled`
+und verdeckt. Eine hauseigene Tour wirkt genau wie eine Bot-Wand, nur kommt sie vom Anbieter
+selbst. Sie wird jetzt an ihrem **Schrittzähler** erkannt (`\d+ von \d+` / `of`) — eine
+Signatur, die aus dem echten Bild stammt, nicht aus einer Vermutung — und mit Escape bzw. über
+ihren eigenen «Weiter» weggeräumt, danach wird neu gemessen.
+
+**3. «weiter» stand in meiner Absende-Regex.** Der einzige klickbare «Weiter» auf dem Bild
+gehörte der Tour. Hätte `.first()` ihn statt des deaktivierten Board-Knopfes getroffen, wäre
+das Skript fröhlich durch ein Tutorial geklickt und hätte `hochgeladen: true` gemeldet — ein
+Erfolgsbericht über ein Tutorial. **Ein Wort wie «weiter» beschreibt keine Absicht; es steht in
+jedem Assistenten.** Abgesendet wird jetzt nur, was «veröffentlichen/publish/hochladen/upload»
+heisst, und nur wenn genau EINE **anklickbare** Schaltfläche passt; bei 0 oder mehreren kommt
+die Kandidatenliste mit `data-test-id` zurück statt eines Klicks.
+
+**Die Lehre, die über Pinterest hinausgeht:** Bei den Prozess-Wachen habe ich sechsmal dasselbe
+gelernt (Lehre 1, Akt 1–6) — *erst `ps -eo args` ansehen, dann das Muster wählen.* Im Browser
+gilt Wort für Wort dasselbe für das DOM: **erst ansehen, was dasteht, dann den Selektor
+schreiben.** Ein Selektor aus Wörtern, die ich für plausibel halte, trifft irgendetwas — und
+«irgendetwas» ist bei einem Klick keine harmlose Fehlmessung, sondern eine Handlung.
+
+### Zwei Folgefehler, die daran hingen
+
+**Ein Anspruch, den niemand zurücknehmen kann, sperrt die Aufgabe für immer.** Das Skript
+schreibt seinen Ledger-Eintrag VOR dem Klick (Regel 10, richtig so). Der Klick kam nie
+zustande — der Eintrag stand trotzdem, ohne Marke, und ein neuer Lauf hätte auf «schon
+hochgeladen» geschlossen. Die 117 Pins wären für immer liegen geblieben, mit einer Quittung,
+die Erfolg suggeriert. Der Ledger hat jetzt zwei Stände (`VORLAEUFIG` / `BESTAETIGT`), und wo
+Playwright beweist, dass gar kein Klick zugestellt wurde («not enabled/not visible» in allen
+Wiederholungen, keine Navigation), wird der Anspruch als `NICHTS-ABGESENDET` freigegeben.
+Bleibt die Zustellung unklar, bleibt er stehen und verlangt eine Messung auf Pinterest —
+lieber eine Aufgabe, die wartet, als eine, die doppelt feuert.
+
+**Ein Fehlschlag darf die Messungen nicht mitnehmen.** Die Quittung trug nur die
+Timeout-Meldung. Boards, Schritte, die Namen der Screenshots — alles, was der Lauf vorher
+gesehen hatte, hat der Runner verworfen (`{...auftrag, stand, fehler}`), und die Diagnose musste
+ich aus den Bilddateien rekonstruieren. Dabei kam ich zuerst auf die falsche Erklärung. **Das
+Wenige, was ein gescheiterter Lauf gesehen hat, ist oft das Wertvollste, was er hinterlässt** —
+der Runner hängt es jetzt als `teilergebnis` an.
+
+
+## 2026-09-17 · 🚪 Wer nur den ersten Reiter liest, berichtet über die Tür und nicht über den Raum
+
+Auftrag 26 hat Pinterests Katalog-Diagnose gelesen — das Gegenstück zu Google Merchant, nur
+erreichbar (Google sperrt den Agenten aus, gemessen am selben Tag). Ergebnis, echt gemessen:
+**431,36 Tsd. Artikel eingepflegt (99.99 %), 24 fehlgeschlagen (0.01 %), 202,41 Tsd.
+Warnmeldungen (46.92 %)**; die Fehler sind Bilder unter 75 px, Häufigkeit 7/5/4.
+
+Nur: die Seite hat **zwei Reiter** — «Probleme beim Einpflegen» und «Probleme bei der
+**Distribution**». Gelesen wurde der erste. Einpflegen heisst «angekommen», Distribution heisst
+«wird auch gezeigt» — und das zweite ist genau die Frage, die bei Google Merchant seit Monaten
+offen ist («1'698 Produkte · Missing shipping info»). Ich hatte also die erreichbare Antwort
+vor mir und die falsche Hälfte davon abgeholt. Der Reiterwechsel ist jetzt im Skript (bleibt
+rein lesend, Auftrag 28).
+
+**Und die Zahlen fast falsch gemeldet:** meine Regex suchte «Zahl direkt vor dem Wort
+Produkte». Diese Seite schreibt Beschriftung und Zahl in **eigene Zeilen**:
+
+```
+Erfolgreich
+431,36 Tsd.
+99.99% des gesamten Datenquelle
+```
+
+Die Regex fand deshalb **nichts** — und lieferte als einzigen «Treffer» `",\nProdukt"` aus der
+Navigationsleiste. Eine leere Liste mit einem Komma darin sah aus wie «keine Zahlen auf der
+Seite», während drei Kennzahlen dastanden. Jetzt wird gegen den **echten** Aufbau gelesen
+(Beschriftung finden, nächste Zeilen prüfen), mit Gegenprobe am gespeicherten Seitentext von
+Auftrag 26 und in drei Gegenrichtungen: fehlende Zahl, leere Seite und ein Köder, bei dem die
+Zahl VOR der Beschriftung steht, geben alle `null` statt eines Nachbarwerts. **Ein fehlender
+Wert ist ein Ergebnis; ein falscher ist ein Schaden.**
+
+
+## 2026-09-17 · 🔢 «4 Versuche» in einer Meldung, die fünfmal probiert
+
+Beim Nachziehen der `gql()`-Reparatur auf drei weitere Wächter (dieselbe Klasse wie die 19 vom
+Morgen, aber mit dem gefährlicheren `return {}` am Ende) hat meine Vorlage den Satz
+«Shopify antwortet nicht (4 Versuche)» fest eingeschrieben. Zwei der Dateien schleifen
+`range(4)` — die dritte `range(5)`. Die Meldung hätte also in einem von drei Fällen eine Zahl
+behauptet, die nicht stimmt, und zwar in einer Fehlermeldung, die genau dann gelesen wird, wenn
+jemand herausfinden will, was passiert ist. Jetzt wird die Zahl **gezählt**
+(`str(versuch + 1)`), nicht behauptet. Gegenprobe mit absichtlich falschem Token:
+«Shopify antwortet nicht (5 Versuche). Letzter Grund: [API] Invalid API key or access token».
+
+Klein, aber es ist dieselbe Familie wie die «1'698 Produkte» aus dem Juli, die ich zwei Monate
+lang als Tatsache weitergetragen habe: **eine Zahl in einem Bericht muss aus der Sache kommen,
+nicht aus der Vorlage.**
+
+
 ## 2026-09-17 · 🚚 Fast eine WAHRE Aussage kaputtrepariert: «Gratis ab CHF 50» gegen die 45er-Regel
 
 Die erste Quittung des Hetzner-Agenten brachte den echten Startseitentext zurück:
