@@ -1,0 +1,7 @@
+2026-09-17 15:05 UTC — BEZAHLT, CHF 44.68.
+Beleg: Mail von billing@shopify.com, Betreff «Rechnung Sep 17, 2026 für LuxeStyle»,
+Wortlaut «Dein Rechnungsbetrag wurde abgebucht … wurde mit CHF 44.68 belastet».
+Der Fehlschlag von 10:00 UTC desselben Tages ist damit erledigt; der automatische
+Wiederholungsversuch am 19.09. wird nicht mehr gebraucht.
+Ursache war, dass seit dem 26.08. keine gueltige Zahlungsmethode hinterlegt war
+(Shopify-Meldung «Keine gueltigen Zahlungsmethoden», Billing).
