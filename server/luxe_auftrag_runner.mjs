@@ -60,7 +60,13 @@ async function fuehre_aus(auftrag, ctx) {
       // Handy-Breite moeglich sein. (Das ist die Breite, keine Geraete-Emulation:
       // die Kennung bleibt Desktop. Horizon entscheidet ueber CSS, das genuegt.)
       if (auftrag.mobil) await seite.setViewportSize({ width: 390, height: 844 });
-      await seite.goto(auftrag.url, { waitUntil: 'networkidle', timeout: 60000 });
+      // ⚠️ 17.09.2026, erster echter Lauf auf dem Server: mit `networkidle` lief der
+      // Startseiten-Screenshot in die Zeitgrenze. Ein Shop mit Tracking- und
+      // Chat-Skripten wird NIE netzwerkstill — `networkidle` wartet damit auf einen
+      // Zustand, der nicht eintritt. `load` plus kurzes Nachsetzen genügt für ein
+      // Bild und für den Text.
+      await seite.goto(auftrag.url, { waitUntil: 'load', timeout: 60000 });
+      await seite.waitForTimeout(2500);
       const ziel = seite.url();
       if (ist_anmeldeseite(ziel)) {
         const e = new Error(`nicht angemeldet — umgeleitet auf ${ziel}`);
