@@ -1,0 +1,6 @@
+{
+  "id": "16-pinterest-boards-lesen",
+  "typ": "skript",
+  "skript": "pinterest_stand.mjs",
+  "warum": "Wiederholung von 15 an der RICHTIGEN Stelle. 15 las /luxestylech/ — das ist der Reiter 'Erstellt' und zeigt Pins, nicht Boards. Boards liegen unter /_saved/. Dazu Schreibweise egal (Konto heisst luxestyleCH) und eine Glaubwuerdigkeitspruefung: eine leere Liste gilt nur, wenn auf der Seite auch wirklich kein Board steht."
+}
