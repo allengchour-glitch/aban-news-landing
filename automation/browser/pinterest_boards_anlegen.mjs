@@ -57,6 +57,7 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
 
   /** EIN Board anlegen. Gibt zurueck, wie weit es kam — nie stillschweigend. */
   async function anlegen(name, marke) {
+   try {
     const plus = seite.locator(
       '[aria-label*="erstell" i],[aria-label*="create" i],[aria-label*="hinzuf" i],'
       + 'button:has-text("Erstellen"),div[role="button"]:has-text("Erstellen")');
@@ -78,13 +79,36 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     await feld.first().fill(name);
     await seite.waitForTimeout(1200);
     await schuss(`${marke}-c-gefuellt`);
-    const knopf = seite.locator('button,div[role="button"]')
+    // ⚠️ 17.09., Auftrag 19: hier lief der Klick in die Zeitgrenze. Der Knopf WURDE
+    // gefunden, war aber nicht klickbar — in Pinterests Dialog liegen mehrere Treffer,
+    // und der erste ist verdeckt oder noch inaktiv. Drei Aenderungen daraus:
+    // (1) nur SICHTBARE Knoepfe INNERHALB des Dialogs, (2) vorher `isEnabled` fragen,
+    // (3) Eingabetaste als Rueckfallweg — Pinterests Dialog sendet auch damit ab.
+    // Und: ein fehlgeschlagener Klick darf das Skript nicht abbrechen, sonst fehlt die
+    // Auskunft, wie weit es kam (Auftrag 19 endete auf «fehler» statt mit Bericht).
+    const dialog = seite.locator('[role="dialog"]');
+    const imDialog = (await dialog.count()) ? dialog.first() : seite.locator('body');
+    const knopf = imDialog.locator('button:visible,div[role="button"]:visible')
       .filter({ hasText: /^\s*(Erstellen|Create|Fertig|Done|Weiter)\s*$/i });
-    if (!(await knopf.count())) return 'Name gesetzt, aber kein Erstellen-Knopf';
-    await knopf.first().click({ timeout: 20000 });
-    await seite.waitForTimeout(6000);
+    const n = await knopf.count();
+    let geklickt = false;
+    for (let i = 0; i < n && !geklickt; i++) {
+      const k = knopf.nth(i);
+      if (!(await k.isEnabled().catch(() => false))) continue;
+      geklickt = await k.click({ timeout: 8000 }).then(() => true).catch(() => false);
+    }
+    if (!geklickt) {
+      // Rueckfallweg: Eingabetaste im Namensfeld.
+      await feld.first().press('Enter').catch(() => {});
+      schritte.push(`${marke}: Erstellen-Knopf nicht klickbar (${n} Treffer) → Eingabetaste`);
+    }
+    await seite.waitForTimeout(7000);
     await schuss(`${marke}-d-nachher`);
     return null;                                   // null = kein Hinderungsgrund
+   } catch (e) {
+     if (e.nichtAngemeldet) throw e;
+     return `abgebrochen: ${String(e.message).slice(0, 120)}`;
+   }
   }
 
   const ergebnis = { angelegt: [], vorhanden: [], offen: [], schritte, bilder };
