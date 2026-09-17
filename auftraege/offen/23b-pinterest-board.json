@@ -1,6 +1,0 @@
-{
-  "id": "23b-pinterest-board",
-  "typ": "skript",
-  "skript": "pinterest_boards_anlegen.mjs",
-  "warum": "EIN Board je Lauf. Die Faessung, die alle sechs in einem Durchgang wollte, starb zweimal mit Stand 'laufend' — der Agent laeuft im 5-Minuten-Takt, also muss die Arbeit in einen Takt passen. Idempotent: jeder Lauf liest vorher, was schon existiert, und legt nur das naechste Fehlende an. Sechs Auftraege, sechs kurze Laeufe."
-}
