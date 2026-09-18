@@ -1,4 +1,4 @@
-# 🖥️ Hetzner-Server — der Weg zu Browser-Aufgaben (Stand 17.09.2026)
+# 🖥️ Hetzner-Server — der Weg zu Browser-Aufgaben (Stand 18.09.2026)
 
 Betreiber 17.09.: «hetzner server extra eingerichtet». Er ist **nicht neu** — er läuft
 seit dem 22.06.2026 und steht seither im Repo beschrieben.
@@ -19,6 +19,61 @@ TCP-Verbindungstest auf **443 gelingt IMMER** — auch gegen `203.0.113.1`, eine
 dem Testnetz, hinter der per Definition nichts steht. Der Ausgangs-Proxy nimmt jede
 :443-Verbindung an, bevor irgendein Ziel gefragt wird. **Ein Test, der nicht scheitern
 kann, misst nichts.** Erst `curl` gegen den echten Dienst zeigte die Wahrheit.
+
+## 🗺️ Was der Bot KANN — gemessen, nicht vermutet (18.09.2026)
+
+Diese Tabelle ist die Antwort auf «mach den Bot zu einem Superbot». Sie entsteht aus
+Auftrag 32 und ist bewusst auch dort ehrlich, wo sie ein Nein enthält: **ein
+begründetes Nein spart die Arbeit, die sonst dreimal gegen dieselbe Wand läuft.**
+
+| Dienst | Angemeldet? | Was daraus folgt |
+|---|---|---|
+| **Shopify Admin** | ✅ ja | Dateispeicher, Rechnung, alles im Admin lesbar |
+| **Pinterest** | ✅ ja | Profil messen und einzelne Felder schreiben (Auftrag 31 hat es getan) |
+| **BigBuy** | ⚠️ formal ja, praktisch **nein** | Cloudflare sperrt den Agenten aus (Ray ID gemessen). Das Ticket bleibt ein Betreiber-Klick — **die Bot-Erkennung wird nicht umgangen** |
+| **CJdropshipping** | ❓ **offen** | Auftrag 32 meldete «angemeldet» bei Endadresse `/404` — ein Fehlbefund. Auftrag 33 tastet sechs Adressen ab |
+| **TikTok Studio** | ❌ nein | Upload bräuchte eine Anmeldung im Agentenprofil (Betreiber). Social-Stopp gilt ohnehin |
+| **Google Merchant** | ⛔ **unmöglich** | Google lässt Passwort-Anmeldungen in diesem Browser grundsätzlich nicht zu. Nicht erneut versuchen |
+
+### Auftragsarten (vier, mehr ist Absicht)
+
+`screenshot` · `seite_text` · `skript` (nur eine Datei aus `automation/browser/`, die im
+Repo steht) · `wartung` (nur ein Name aus einer festen Liste). **Aus der Auftragsdatei
+wird nie Code ausgeführt** — das Repo ist öffentlich, ein Runner, der Shell aus der
+Warteschlange läse, wäre eine Fernsteuerung für jeden.
+
+### Vier Wahrnehmungsschichten — jede kam aus einem Fehlbefund
+
+Der Bot hat viermal «alles gut» gemeldet, wo nichts gut war. Jede Schicht ist die
+Antwort auf einen dieser Fälle, und **jede wurde von den anderen dreien nicht gesehen**:
+
+1. `ist_anmeldeseite` — «ist das eine Anmeldemaske?»
+2. `hat_ziel_erreicht` — «bin ich überhaupt angekommen?» (Auftrag 06: Googles
+   Einwilligungswand mit «Sign in» → gemeldet als *angemeldet: true*)
+3. `ist_wandtext` — «steht hier eine Bot-Wand?» (Auftrag 09: Cloudflare behält die
+   Adresse, eine Adressprüfung kann das nie sehen)
+4. `ist_fehlerseite` — «gibt es diese Seite?» (Auftrag 32: CJ mit Endadresse `/404`
+   → *angemeldet: true*. Prüft Status **und** Adressmuster, weil Einzelseiten-
+   Anwendungen auf `/404` umleiten und dabei **200** antworten)
+
+**Die Lehre gilt über den Bot hinaus: die Abwesenheit bekannter Fehler ist kein
+Beweis für Erfolg.** Drei Wachen, die je eine Art des Scheiterns kennen, melden
+gemeinsam «in Ordnung», sobald es auf eine vierte Art scheitert.
+
+### Der Puls — damit sein Tod auffällt
+
+`grep -rln luxe_auftrag_runner automation/ tools/` gab am 18.09. **0 Treffer**: der
+einzige Rechner mit einem echten Browser stand in keiner Wacht-Liste. Und weil der
+Runner bei leerer Warteschlange mit `exit 0` endete, hinterliess der **häufigste**
+Lauf gar keine Spur — «acht Stunden keine Quittung» war nicht von «tot» zu
+unterscheiden.
+
+Jetzt schreibt jeder Lauf `auftraege/_puls.json` (gepusht ~stündlich, lokal immer),
+und `automation/bot_puls.py` meldet in der stündlichen Ampel, wenn der letzte Lauf
+über zwei Stunden her ist. Sechs Gegenproben, darunter die zwei wichtigsten: ein
+**frischer** Puls muss schweigen (sonst wäre eine Regel, die immer alarmiert,
+«erfolgreich» und wertlos), und eine **fehlende** Datei heisst «noch kein Puls»,
+nicht «tot» — ein Fehlalarm, dem niemand mehr glaubt, ist schlimmer als keiner.
 
 ## Was daraus folgt
 
