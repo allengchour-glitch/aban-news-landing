@@ -1,0 +1,8 @@
+{
+  "id": "34-shopify-dateien-messen",
+  "typ": "skript",
+  "skript": "shopify_dateien_messen.mjs",
+  "warum": "Der Dateispeicher steht seit 14.09. in der Ampel (Upload-Probe FAILED) und blockiert jedes neue Produktbild. Von hier ist die Belegung NICHT messbar -- die Admin-API hat keinen Speicher-Endpunkt, die Zahl steht nur auf der Einstellungsseite, und dort ist der Agent angemeldet (Auftrag 32). Rein lesend: Belegung, Gesamtgroesse, die groessten Dateizeilen, Screenshot. Es wird NICHTS geloescht -- ob Grow-Upgrade oder Aufraeumen ist Betreiber-Entscheid (Aufgabe 33), und dafuer braucht er zuerst Zahlen.",
+  "stand": "umgeleitet",
+  "fehler": "HTTP 403 — Dateiseite nicht erreicht"
+}
