@@ -136,6 +136,60 @@ async function fuehre_aus(auftrag, ctx) {
   return await modul.default({ ctx, auftrag, REPO, ERGEBNIS });
 }
 
+/**
+ * WIEDERKEHRENDE AUFTRAEGE — der Agent legt sich selbst Arbeit an.
+ *
+ * ⚠️ Der Anlass, gemessen 18.09.2026: Der Agent wacht alle fuenf Minuten auf und hat
+ * fast immer nichts zu tun (`grep wiederkehr|intervall|cron` ueber diese Datei -> 0
+ * Treffer). Gleichzeitig ist er das EINZIGE ehrliche Fenster auf luxestyle.ch — unsere
+ * Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie
+ * (19.08., zweimal an einem Tag belegt). Was er sieht, kann sonst niemand sehen.
+ *
+ * Und genau das hat es gekostet: Am 17.09. meldete der einzige Storefront-Lauf die
+ * **Startseite als nicht erreichbar** (202 Zeichen, waehrend Kollektion und FAQ sauber
+ * luden). Diese Messung steht seither allein da. **Eine Momentaufnahme ohne Wiederholung
+ * beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand.**
+ *
+ * ⚠️ DIE FALLE, gegen die das hier gebaut ist: Der Runner laeuft 288-mal am Tag. Eine
+ * Faelligkeitspruefung, die sich irrt, legt 288 Auftraege an — dieselbe Klasse wie der
+ * IG-Doppelpost (Regel 10). Deshalb entscheidet NICHT eine Uhrzeit, sondern die
+ * ANWESENHEIT einer Datei mit Datum im Namen: `<id>-JJJJ-MM-TT.json`. Gesucht wird in
+ * `offen/` UND in `erledigt/` — sonst legt der naechste Lauf im Fenster zwischen
+ * Anlegen und Quittung ein zweites Mal an (TOCTOU, genau die Luecke vom 12.07.).
+ */
+const WIEDERKEHREND = path.join(REPO, 'auftraege/wiederkehrend');
+function faellige_anlegen() {
+  if (!fs.existsSync(WIEDERKEHREND)) return 0;
+  fs.mkdirSync(OFFEN, { recursive: true });
+  const heute = new Date().toISOString().slice(0, 10);
+  let gelegt = 0;
+  for (const datei of fs.readdirSync(WIEDERKEHREND).filter(f => f.endsWith('.json')).sort()) {
+    let v;
+    try { v = JSON.parse(fs.readFileSync(path.join(WIEDERKEHREND, datei), 'utf8')); }
+    catch (e) { console.log(`✗ wiederkehrend/${datei}: kein gueltiges JSON — ${e.message}`); continue; }
+    const id = sicherer_name(v.id) ? v.id : path.basename(datei, '.json');
+    const alle_tage = Number.isInteger(v.alle_tage) && v.alle_tage > 0 ? v.alle_tage : 1;
+
+    // Lief er in den letzten `alle_tage` Tagen schon? Entschieden an den Dateinamen,
+    // die im Repo liegen und jeden Neustart ueberleben — nicht an einer lokalen Uhr.
+    let schon = false;
+    for (let i = 0; i < alle_tage && !schon; i++) {
+      const tag = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10);
+      const name = `${id}-${tag}.json`;
+      if (fs.existsSync(path.join(FERTIG, name)) || fs.existsSync(path.join(OFFEN, name))) schon = true;
+    }
+    if (schon) continue;
+
+    const auftrag = { ...(v.vorlage || {}), id: `${id}-${heute}`,
+      warum: (v.warum || '') + ` [wiederkehrend, alle ${alle_tage} Tag(e)]` };
+    fs.writeFileSync(path.join(OFFEN, `${id}-${heute}.json`), JSON.stringify(auftrag, null, 2));
+    console.log(`+ faellig angelegt: ${id}-${heute}`);
+    gelegt++;
+  }
+  return gelegt;
+}
+const neu_gelegt = faellige_anlegen();
+
 const offen = fs.existsSync(OFFEN)
   ? fs.readdirSync(OFFEN).filter(f => f.endsWith('.json')).sort()
   : [];

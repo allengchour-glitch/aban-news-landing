@@ -30,6 +30,30 @@ Horizon entscheidet über CSS, dafür genügt es.)
 Vorhanden: `anmeldungen_pruefen.mjs` (rein lesend — sagt, bei welchen Diensten das Profil
 angemeldet ist; der sinnvollste erste Auftrag nach dem einmaligen Einloggen).
 
+## 🔁 Wiederkehrende Aufträge (seit 18.09.2026)
+
+`auftraege/wiederkehrend/<id>.json` — der Server legt sich die Arbeit **selbst** an:
+
+```jsonc
+{ "id": "storefront", "alle_tage": 1, "warum": "…",
+  "vorlage": { "typ": "skript", "skript": "storefront_wahrheit.mjs" } }
+```
+
+Bei jedem Lauf prüft er je Vorlage, ob in den letzten `alle_tage` Tagen schon eine Datei
+`<id>-JJJJ-MM-TT.json` existiert — **in `offen/` UND in `erledigt/`**. Wenn nicht, legt er
+den Auftrag an.
+
+⚠️ **Warum die Entscheidung an Dateinamen hängt und nicht an einer Uhrzeit:** Der Runner
+läuft **288-mal am Tag**. Eine Fälligkeitsprüfung, die sich irrt, legt 288 Aufträge an —
+dieselbe Klasse wie der IG-Doppelpost (CLAUDE.md Regel 10). Und `offen/` muss mitgeprüft
+werden, sonst legt der nächste Lauf im Fenster zwischen Anlegen und Quittung ein zweites
+Mal an (TOCTOU, die Lücke vom 12.07.). Beide Fälle stehen als Test in
+`server/faelligkeit.test.mjs`; der entscheidende ist «50 weitere Läufe am selben Tag → 0».
+
+Aktuell: **storefront** (täglich — der Agent ist das einzige Fenster, das nicht auf unsere
+Bot-Cache-Kopie schaut) und **anmeldungen** (wöchentlich — läuft die eine echte Anmeldung
+ab, wird jeder Browser-Auftrag still wertlos).
+
 ## Was in der Quittung stehen kann
 
 | `stand` | Bedeutung |
