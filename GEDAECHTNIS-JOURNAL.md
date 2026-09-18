@@ -6,6 +6,103 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · 🩹 «mach alles reibungslos»: 23 Agenten, 9 Befunde überlebten — und die 7 gefallenen waren die lehrreicheren
+
+Sechs Reibungsachsen (Bestellweg, Storefront, Kundenkommunikation, Automaten, Katalog, Konto),
+je ein messender Agent, danach je bis zu drei Skeptiker mit dem Auftrag, den Befund zu
+**widerlegen**. Ergebnis: 9 hielten stand, **7 fielen** — und in fast jedem gefallenen Fall
+stimmte der Mechanismus, während die Diagnose oder das Beispiel daneben lag. Das ist das
+eigentliche Ergebnis des Laufs: **ein richtig beobachteter Mechanismus verführt dazu, die
+falsche Folge daraus zu ziehen.**
+
+**Die Kernfrage, mit der der Lauf gestartet war, ist beantwortet: Aussetzer, nicht
+Normalzustand.** Der Bot hatte am 17.09. gemeldet, die Startseite sei nicht erreichbar (202
+Zeichen). Es gab an jenem Tag aber **zwei** Läufe, nicht einen: um 18:33 war dieselbe Seite
+grün (6'653 Zeichen), um 19:49 rot. Der Beweis liegt in den Bildern — `md5sum` über die
+Ergebnis-PNG zeigt, dass Kollektion und FAQ zwischen beiden Läufen **bytegleich** sind und
+nur die Startseite abweicht; im roten Bild steht Shopifys eigene Fehlerseite. Mein
+Auftragstext von heute («der bisher einzige Lauf») war also falsch, und **ich hätte aus einem
+einzigen Messpunkt eine Dauerstörung gemacht**, wenn der Agent nicht das Verzeichnis
+durchgesehen hätte statt nur die Datei, nach der ich fragte.
+
+Warum ausgerechnet die Startseite: `server-timing` sagt es. Startseite 718–899 ms Render,
+Kollektion 170–293 ms, FAQ 60–142 ms — sie ist drei- bis fünfmal teurer als jede andere Seite
+und kippt deshalb zuerst. 3'137'855 Bytes, über fünf Abrufe identisch; die 3,1 MB aus
+CLAUDE.md gelten heute noch.
+
+**Wie oft eine echte Schweizerin die Fehlerseite sieht, ist von hier grundsätzlich nicht
+messbar** — und das ist der wertvollere Teil der Antwort. Unser Ausgang läuft über die USA
+(`edge;desc="IAD"`), und von 25 Abrufen mit eindeutigem Query-Parameter waren nur 6 echte
+Renders; die übrigen 19 waren Cache-Treffer, **die gar nicht scheitern können**. Zwei
+Messpunkte, davon einer rot, tragen keine Prozentzahl. Belastbar wird das erst nach ein bis
+zwei Wochen täglicher Läufe des Hetzner-Agenten.
+
+**Und genau der lief heute nicht:** die Quittung `storefront-2026-09-18` steht seit 10:09:58
+auf «laufend», kein Bild, kein Ergebnis. Weil der Wrapper `set -euo pipefail` trägt, wurde der
+ganze Lauf nicht committet und vom nächsten `git checkout -B` verworfen — im Repo liegt
+nichts mehr, was man nachsehen könnte. Gemeldet hat es niemand, **weil der Puls lückenlos
+alle fünf Minuten «leer» schreibt**. Der Herzschlag, den ich gestern gebaut habe, beweist,
+dass der Runner lebt — er beweist nicht, dass ein Auftrag ankommt. Es sind sogar **drei**
+hängende Quittungen (dazu zwei Pinterest-Aufträge vom 17.09.).
+
+### Die sieben gefallenen Befunde — je ein Mechanismus, je eine falsche Folge
+
+- **«Die Bestell-Ampel ist blind für archivierte Bestellungen»**: `status:open` trifft im
+  ganzen Shop wirklich keine einzige Bestellung (alle 16 sind archiviert). «Blind» ist trotzdem
+  falsch — in den Logs steht «BESTELLUNGEN: 1 offen». Die Mechanik stimmte, die Diagnose nicht.
+- **«Der CJ-Wächter wirft die Kundenbestellungen weg»**: `cj_order_watch.py:20` überspringt
+  tatsächlich alle Aufträge in `#`-Form, und #1017/#1018 liegen bei CJ als SHIPPED. Die
+  behauptete **Folge** — die Ampel warne deshalb falsch — ist gemessen nicht eingetreten.
+- **«97,8 % der aktiven CJ-Ware wurde nie nach CH-Versand gefragt»**: die Quote überlebt, das
+  Beispiel nicht. Das verkaufte Messer **wurde** gefragt, sogar zweimal, mit widersprüchlichen
+  Antworten. Ein Beleg, der das Gegenteil belegt, hätte die ganze Erzählung gekippt.
+- **«Shopify sagt selbst, der Shop macht beim nächsten Fehlschlag zu»**: steht in keiner der
+  beiden Mails vom 17.09. Drei von vier Bausteinen der Dringlichkeit waren erfunden — und
+  ausgerechnet dieser Punkt stand bei mir als «das Dringendste überhaupt».
+
+### Der Befund, der die teuerste Klasse trifft
+
+Der Verfügbarkeits-Wächter `cj_verfuegbarkeit.py` steht **seit 16.09. 00:13 auf einem Cursor
+am alten Katalogende fest**: jeder der letzten 62 Läufe holt dieselben 47 längst geprüften
+Produkte und prüft **null**; mindestens 2'344 aktive cj-real-Produkte wurden nie gefragt. Der
+Skeptiker fand dabei den Fehler, den niemand gesucht hatte: der Befund misst mit
+`product/query?pid=`, das Skript ruft `product/variant/query?pid=` auf — und **dieselbe pid
+antwortet an den beiden Endpunkten verschieden**. Der Wächter fragt eine Quelle und glaubt
+ihr. Die Cursor-Reparatur allein wäre wertlos gewesen.
+
+### Was eine Kundin davon merkt (Lücken-Kritik)
+
+- **Die Versandbestätigung geht 6 Minuten nach der Bestellung raus, nicht bei Abgang.** #1017
+  bekam «versandt» für ein Paket, das China nie verliess. Und `trackingInfo.company` steht auf
+  **«Other»** — Shopify kann daraus keinen Verfolgungslink bauen.
+- **Jede Antwort an eine Kundin kommt von einem privaten Gmail**, während Impressum, AGB,
+  Versand- und Rückgabebedingungen alle `info@luxestyle.ch` nennen.
+- **Liechtenstein wird in fünf Texten zugesagt** — Markt und Versandzone kennen nur die Schweiz.
+- **Zoll und Einfuhrsteuer kommen in keinem der sechs Rechtstexte vor**, obwohl die
+  Versandbedingungen selbst sagen, der grösste Teil komme aus Übersee, und **3'116 aktive
+  Produkte über der Schweizer Freigrenze** liegen.
+- **Zwei parallele Sätze Rechtstexte** stehen nebeneinander im Footer, und die Theme-Seiten
+  beziffern die Rücksendekosten mit «CHF 7–15», während die Rückgabebedingungen sagen, die
+  Retourenadresse liege je nach Lager im Ausland.
+
+### Zwei eigene Fehlmessungen am selben Vormittag
+
+1. Ich zählte **drei Aufseher** (alle PPID=1) und hielt das für die Doppelstart-Falle. Mit der
+   Sitzungs-ID gemessen: `PID=4341 SID=4341` ist der echte, die anderen zwei sind **seine
+   eigenen Forks**. `engine_keepalive.sh` meldete «Aufseher=1» und hatte recht — meine
+   Ad-hoc-Prüfung war genau die naive Fassung, vor der der Kommentar in Zeile 76–84 warnt.
+2. Meine Prüfschleife über die Social-Workflows meldete für meinen Zweig **vier Dateien
+   weniger** als für `main` — das las sich wie «auf main liegen zusätzliche Poster». Tatsächlich
+   existieren alle fünf auf beiden Seiten; mein eigener Kommentarblock vom 17.09. schiebt die
+   `default:`-Zeile aus dem `grep -A3`-Fenster, also fand die Schleife nichts und **schwieg
+   darüber**. Ein Listenlauf, der eine Datei still überspringt, liest sich wie «diese Datei hat
+   die Einstellung nicht».
+
+**Die Lehre über den Lauf selbst:** Der Skeptiker war teurer als der Messende und hat mehr
+gebracht. Sieben von sechzehn ernsten Befunden wären ohne ihn als Tatsachen ins Gedächtnis
+gewandert — und drei davon hätten zu Reparaturen geführt, die etwas Funktionierendes kaputt
+gemacht hätten.
+
 ## 2026-09-18 · 🔁 «pimp bot»: Er wartete auf Zuruf — und verpasste dabei seine eigene Messung
 
 Gemessen, bevor gebaut: `grep -c "wiederkehr|intervall|taeglich|cron"` über den Runner →
