@@ -1,56 +1,114 @@
-# COWORK-BEFEHL — Fassung 17.09.2026, 20:30 UTC
+# COWORK-BEFEHL — Fassung 18.09.2026, 14:20 UTC
 
-> **Zum Kopieren: der Block unten ist der ganze Auftrag.** Darunter stehen die Einzelheiten
-> je Punkt (gewachsen über mehrere Tage, teils in unsortierter Reihenfolge — der Block ist
-> die Wahrheit über die Prioritäten, die Abschnitte liefern die fertigen Texte).
+> **Vier Schritte, in dieser Reihenfolge.** Jeder hat einen direkten Link, eine Anleitung und
+> eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
+> stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
+## ⛔ WEGGEFALLEN: Shopify-Rechnung CHF 44.68
+
+Stand bis heute in dieser Liste als «dringendster Punkt, Wiederholung 19.09.». **Gemessen
+18.09.: erledigt.** Die Fehlschlag-Mail kam am 17.09. um 10:00, die Bestätigung um **15:05**
+(«Dein Rechnungsbetrag wurde abgebucht … mit CHF 44.68 belastet», billing@shopify.com).
+Shopify hat noch am selben Tag nachgebucht. Nichts zu tun.
+
+---
+
+## 1️⃣ CJ — Dispute öffnen, USD 25.54 zurückholen  ·  ~5 Minuten
+
+**Link:** https://cjdropshipping.com — anmelden als `allengchour@gmail.com` (CJ ID 5452995)
+**Anleitung von CJ selbst:** https://cjdropshipping.com/article-details/172
+
+CJ hat es **heute, 18.09. um 08:44, schriftlich zugesagt** (Mail «Re: #1017 was RETURNED»):
+
+> «Please open a dispute manually on the CJ web portal … our support team will process your
+> full refund of $25.54 (product $18.24 + shipping $7.30) directly back to your CJ Wallet.»
+
+So geht es:
+1. Einloggen → **My Orders** → Auftrag **`DP2609071450210661800`** suchen
+   (Fuda-Klappmesser, Tracking `EQKPT8612701376YQ`, aus Shanghai zurückgekommen)
+2. Beim Auftrag **Dispute / Reklamation** öffnen
+3. Grund: **6 «Product Returned»** · Betrag: **USD 25.54**
+4. Absenden — CJ bestätigt schriftlich, dass der Betrag auf die CJ-Wallet zurückgeht
+
+**Warum nicht automatisch:** CJ hat den Grund am 18.09. endgültig erklärt. Die Bestellung kam
+über den **Shopify-Kanal**, nicht über die Open API; CJ verbietet API-Disputes für Aufträge,
+die nicht per API angelegt wurden (Fehler 9009). Kein Parameter ändert das — vier Versuche mit
+allen drei Bestell-IDs und allen Gründen sind gemessen gescheitert.
+
+**Quittung:** Fallnummer oder Gutschriftbeleg in `dropship/_cj_dispute_1017_ref.txt`.
+⚠️ Eine Frist hat CJ **nicht** genannt. In einer früheren Fassung dieser Datei stand «Frist
+19.09. ca. 07:30 UTC» — diese Zeit steht in keiner CJ-Nachricht und war nicht belegt. Bald ist
+trotzdem besser als spät, weil Reklamationsfenster üblicherweise auslaufen.
+
+---
+
+## 2️⃣ BigBuy — Ticket für EUR 1'000 eröffnen  ·  ~5 Minuten
+
+**Link:** https://www.bigbuy.eu/en/contact — Abteilung **Administration**
+
+Gemessen: Guthaben **EUR 1'000.00**, seit 15.07. unverändert, nie ausgezahlt. Das Abo ist am
+15.09. ausgelaufen. Fünf Mails gingen raus, zurück kamen **zwei wortgleiche Auto-Antworten**
+(08.09. und 15.09., im Volltext verglichen) — der Mailkanal ist dreifach belegt tot, und
+BigBuy nennt in diesen Antworten selbst das Ticket als richtigen Weg.
+
+**Warum nicht automatisch:** Cloudflare sperrt automatisierte Browser aus — gemessen 17.09.,
+HTTP 403 von beiden Ausgängen, Ray ID `a3ca2241ac1e86d9`, Seitentext «Sicherheitsüberprüfung
+wird durchgeführt … vor böswilligen Bots zu schützen». **Die Bot-Erkennung wird nicht
+umgangen**; genau so verliert man Konten.
+
+Fertiger Formulartext steht weiter unten in dieser Datei unter «Punkt 1».
+⚠️ **Die IBAN gehört NICHT ins Repo** — es ist öffentlich. Im Formular eintragen, nicht hier.
+
+**Quittung:** Ticketnummer in `dropship/_bigbuy_ticket_ref.txt`.
+
+---
+
+## 3️⃣ Google Merchant — ERST NACHSEHEN, dann ändern  ·  ~10 Minuten
+
+**Link:** https://merchants.google.com
+
+Google ist der **einzige Kanal mit belegten Verkäufen**: von 9 externen Bestellungen kamen
+**7 über Google**, 1 über ChatGPT, 1 direkt — Social hat in 180 Tagen **null** gebracht.
+
+1. **Zuerst nur lesen:** Gibt es unter «Produkte → Diagnose» noch Produkte mit dem Hinweis
+   **«Missing shipping info»**? Wie viele heute? Bitte die Zahl melden.
+2. **Erst danach ändern:** Lieferland/Zielland auf **nur Schweiz** stellen.
+
+⚠️ Die Zahl «1'698 Produkte» steht seit dem 10.07. im Gedächtnis und wurde **nie nachgeprüft**.
+Von unserer Seite zielt nichts auf DE (gemessen: genau ein Markt, «Switzerland», Länder `['CH']`).
+Ob es die 1'698 überhaupt noch gibt, ist von hier nicht feststellbar. **Erst messen, dann handeln.**
+
+**Warum nicht automatisch:** Google verweigert dem Agenten-Browser die Anmeldung grundsätzlich
+(«Dieser Browser oder diese App ist unter Umständen nicht sicher», gemessen 17.09.). Das wurde
+bewusst nicht umgangen — an diesem Konto hängt der einzige Kanal, der verkauft.
+
+---
+
+## 4️⃣ Agenten-Browser bei CJ und Shopify anmelden  ·  ~10 Minuten, wirkt dauerhaft
+
+Das ist der einzige Schritt, der **nicht einmalig** wirkt: danach kann die Session
+Lieferprobleme selbst klären — genau die Klasse, die **5 von 9 externen Bestellungen**
+gekostet hat (#1006/#1007/#1008 ausverkauft, #1016/#1017 keine CH-Linie).
+
+Auf **deinem** Rechner:
+```bash
+ssh -L 9222:127.0.0.1:9222 root@46.225.75.125
 ```
-Du hilfst beim Shop LuxeStyle CH (luxestyle.ch). Die Cloud-Session hat alles gemessen,
-was von dort messbar war — du übernimmst genau das, was einen echten Browser oder SSH
-braucht. Reihenfolge ist Absicht. Details: dropship/COWORK-BEFEHL.md im Repo
-allengchour-glitch/aban-news-landing (Branch claude/luxestyle-status-tztnn1).
+Auf dem **Server**, in derselben Sitzung:
+```bash
+PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers npx playwright open --browser chromium \
+   --user-data-dir=/var/lib/luxe-agent/chrome-profil https://cjdropshipping.com
+```
+Einloggen (CJ), dann im selben Fenster `https://admin.shopify.com/store/au3j0y-hq` aufrufen
+und auch dort einloggen. Fenster schliessen — das Profil behält beide Sitzungen.
 
-1) HETZNER-AGENT INSTALLIEREN (höchster Wert, du bist schon dran)
-   Server 46.225.75.125. Ein Befehl als root:
-     bash /opt/luxe-agent/repo/server/luxe-agent-setup.sh
-   Falls der Klon fehlt, legt das Skript ihn an (eigener Klon /opt/luxe-agent/repo —
-   NICHT /opt/abannews, dort macht ein Deploy-Poller alle 3 Min git reset --hard).
-   Danach holt der Server alle 5 Minuten Aufträge aus auftraege/offen/*.json und pusht
-   Quittungen zurück. Melde, ob der systemd-Timer luxe-agent.timer läuft.
+Gemessen 18.09., Stand des Profils: **Pinterest ✅ angemeldet** · Shopify Admin **403** ·
+CJ **404** · BigBuy **403 (Cloudflare)** · Google **unmöglich**. Von vier vermeintlich
+angemeldeten Diensten hielt genau einer der Nachmessung stand.
 
-2) ROOT-PASSWORT ROTIEREN
-   Es stand im Klartext in einem Chat. Neues setzen, danach Passwort-Login abschalten
-   (nur SSH-Key). Das neue Passwort NICHT in einen Chat schreiben.
+**Quittung:** keine Datei nötig — die Session misst es beim nächsten Anmelde-Auftrag selbst.
 
-3) CJ-ERSTATTUNG USD 25.54 — Frist 19.09. ca. 07:30 UTC
-   Auftrag DP2609071450210661800 (Messer, aus Shanghai zurückgekommen, Tracking
-   EQKPT8612701376YQ "Returned to Original depot" 15.09.). Der API-Weg ist zu:
-   disputes/create gibt Code 9009 mit allen drei Bestell-IDs. Also: cjdropshipping.com
-   einloggen → Dispute in der Konsole öffnen, Grund 6 "Product Returned", ODER im
-   Chatfenster Iris Huang anschreiben. Fertiger Text in COWORK-BEFEHL.md Punkt 0.
-   Fallnummer/Gutschrift danach in dropship/_cj_dispute_1017_ref.txt eintragen —
-   dann verschwindet die Erinnerung aus der stündlichen Ampel von selbst.
-
-4) BIGBUY EUR 1'000 — Ticket eröffnen
-   Guthaben 1'000.00 gemessen, seit 15.07. unverändert, Abo ist ausgelaufen. Fünf Mails
-   gingen raus, zurück kamen nur zwei wortgleiche Auto-Antworten — der Mailkanal ist tot.
-   BigBuy nennt selbst das Ticket: bigbuy.eu/en/contact, Abteilung Administration.
-   ⚠️ Von hier aus unmöglich: Cloudflare sperrt automatisierte Browser aus (gemessen,
-   Ray ID a3ca2241ac1e86d9). Es braucht deinen echten Browser. Fertiger Formulartext in
-   COWORK-BEFEHL.md Punkt 1. Ticketnummer nach dropship/_bigbuy_ticket_ref.txt.
-   IBAN NICHT ins Repo schreiben — es ist öffentlich.
-
-5) GOOGLE MERCHANT — ERST MESSEN, DANN ÄNDERN
-   Im Gedächtnis steht "1'698 Produkte · Missing shipping info" — die Zahl ist vom 10.07.
-   und seither NIE nachgeprüft. Bitte zuerst im Merchant-Konto nachsehen, ob es sie
-   überhaupt noch gibt, und die heutige Zahl melden. Erst dann Lieferland auf NUR Schweiz
-   stellen. Google lässt den Agenten-Browser grundsätzlich nicht anmelden ("Dieser Browser
-   oder diese App ist unter Umständen nicht sicher") — deshalb dein Browser.
-
-6) FORTURA-ZUGANG DAUERHAFT (2 Minuten, Claude-Einstellungen)
-   FORTURA_FTP_USER und FORTURA_FTP_PW als Umgebungsvariablen eintragen. Sie liegen
-   aktuell nur in /tmp und sind schon zweimal bei einem Neustart verschwunden (14.08.,
-   17.09.), beide Male wochenlang unbemerkt.
+---
 
 GRENZEN — bitte strikt:
 • KEINE Mails an Kunden senden. Entwürfe ja, senden nur nach Rückfrage beim Betreiber.
