@@ -42109,3 +42109,7 @@ gid://shopify/Product/15509402190209	schon-sauber	0
 gid://shopify/Product/15509402583425	schon-sauber	0
 gid://shopify/Product/15509402616193	schon-sauber	0
 gid://shopify/Product/15509402648961	schon-sauber	0
+gid://shopify/Product/15509402681729	schon-sauber	1
+gid://shopify/Product/15509402747265	schon-sauber	0
+gid://shopify/Product/15509402780033	umgestellt	12
+gid://shopify/Product/15509402812801	schon-sauber	0
