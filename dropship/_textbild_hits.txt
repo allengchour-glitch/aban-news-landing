@@ -15813,3 +15813,16 @@ gid://shopify/Product/15504111600001	23->0	Reflektierendes Hunde-Halsband mit Me
 gid://shopify/Product/15504112812417	40->0	Bauchroller mit Ellenbogenstütze
 gid://shopify/Product/15504118284673	10->2	Wäschekorb mit Netzabdeckung
 gid://shopify/Product/15504149578113	10->2	W8 Smart-Armband
+gid://shopify/Product/15504187228545	83->0	5D Diamond Painting "Zen Art"
+gid://shopify/Product/15504199385473	13->0	Smart Ring mit NFC-Funktion
+gid://shopify/Product/15506187420033	59->3	Kurzarmhemd für Herren – Sommerlich leicht
+gid://shopify/Product/15506187518337	11->0	Ctrs 5s UV/LED Lichthärtungsgerät
+gid://shopify/Product/15506289951105	42->0	Smartwatch mit Herzfrequenz- und Sport-Monitoring
+gid://shopify/Product/15506314199425	19->3	Pure Color Riemchensandalen mit runder Zehenpartie
+gid://shopify/Product/15506412044673	36->0	Bauchwärmegurt mit Mikrostrom & Rotlicht
+gid://shopify/Product/15506700239233	22->0	Kabelloser Hand-Barcode-Scanner
+gid://shopify/Product/15507718865281	32->2	Karierte Mid-Heel Sandalette mit eckiger Spitze
+gid://shopify/Product/15507829031297	83->3	Nagellack-Display aus Acryl – Mehrstöckig
+gid://shopify/Product/15508416725377	9->3	Shuixie Blossom Bausteine (632 Teile)
+gid://shopify/Product/15508420133249	16->0	Herren Seersucker Langarmhemd Schwarz
+gid://shopify/Product/15508422295937	17->3	Türreck für Klimmzüge
