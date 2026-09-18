@@ -1,6 +1,0 @@
-{
-  "id": "33-cj-konsole-abtasten",
-  "typ": "skript",
-  "skript": "cj_konsole_abtasten.mjs",
-  "warum": "Auftrag 32 meldete CJ als angemeldet -- bei der Endadresse cjdropshipping.com/404. Der Fehlbefund ist behoben (vierte Schicht liest jetzt den HTTP-Status), aber die Frage ist damit OFFEN: /myCJ/orderList gibt es nicht mehr. Sechs plausible Adressen abtasten, rein lesend, und je Adresse Status, Endadresse, Textanfang und Beschriftungen melden. Davon haengt ab, ob der Dispute ueber USD 25.54 (API gibt 9009) einen Rueckfallweg hat. Ein begruendetes Nein ist auch ein Ergebnis."
-}
