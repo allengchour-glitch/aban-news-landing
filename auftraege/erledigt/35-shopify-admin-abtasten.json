@@ -1,0 +1,80 @@
+{
+  "id": "35-shopify-admin-abtasten",
+  "typ": "skript",
+  "skript": "shopify_admin_abtasten.mjs",
+  "warum": "Auftrag 34 endete mit HTTP 403 auf /settings/files — gefangen von der vierten Wahrnehmungsschicht, die es am selben Tag erst dazugab. Ein gefangener Fehler ist aber keine Erklaerung: entweder darf der Agent die Seite nicht, ODER die 403 ist ein Artefakt der Einzelseiten-Anwendung und meine neue Wache ist zu streng. Eine strenge Wache kann genauso irren wie eine blinde, und dieser Fehlalarm waere selbstgebaut. Fuenf Adressen mit /settings/billing als Kontrolle (in 32 belegt erreichbar); entscheidende Gegenfrage je Seite: steht trotz 403 echter Inhalt da? Rein lesend, bricht nicht ab.",
+  "stand": "ok",
+  "ergebnis": {
+    "frage": "Ist die 403 auf /settings/files echt — oder ist meine neue Statuswache zu streng?",
+    "urteil": "ECHT: 5 Seite(n) mit 403 und ohne Inhalt. Der Agent darf sie nicht — Berechtigung im Agentenprofil pruefen.",
+    "befunde": [
+      {
+        "name": "Kontrolle: Rechnung (war 32 belegt erreichbar)",
+        "url": "https://admin.shopify.com/store/au3j0y-hq/settings/billing",
+        "status": 403,
+        "ziel": "https://admin.shopify.com/store/au3j0y-hq/settings/billing",
+        "urteil_wache": "HTTP 403",
+        "anmeldemaske": false,
+        "wand": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "textlaenge": 68,
+        "textanfang": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "inhalt_trotzdem_da": false
+      },
+      {
+        "name": "Dateien (gab 403 in Auftrag 34)",
+        "url": "https://admin.shopify.com/store/au3j0y-hq/settings/files",
+        "status": 403,
+        "ziel": "https://admin.shopify.com/store/au3j0y-hq/settings/files",
+        "urteil_wache": "HTTP 403",
+        "anmeldemaske": false,
+        "wand": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "textlaenge": 68,
+        "textanfang": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "inhalt_trotzdem_da": false
+      },
+      {
+        "name": "Admin-Start",
+        "url": "https://admin.shopify.com/store/au3j0y-hq",
+        "status": 403,
+        "ziel": "https://admin.shopify.com/store/au3j0y-hq",
+        "urteil_wache": "HTTP 403",
+        "anmeldemaske": false,
+        "wand": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "textlaenge": 68,
+        "textanfang": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "inhalt_trotzdem_da": false
+      },
+      {
+        "name": "Einstellungen allgemein",
+        "url": "https://admin.shopify.com/store/au3j0y-hq/settings/general",
+        "status": 403,
+        "ziel": "https://admin.shopify.com/store/au3j0y-hq/settings/general",
+        "urteil_wache": "HTTP 403",
+        "anmeldemaske": false,
+        "wand": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "textlaenge": 68,
+        "textanfang": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "inhalt_trotzdem_da": false
+      },
+      {
+        "name": "Dateien ueber die alte Shop-Domain",
+        "url": "https://au3j0y-hq.myshopify.com/admin/settings/files",
+        "status": 403,
+        "ziel": "https://admin.shopify.com/store/au3j0y-hq/settings/files",
+        "urteil_wache": "HTTP 403",
+        "anmeldemaske": false,
+        "wand": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "textlaenge": 68,
+        "textanfang": "Deine Verbindung muss verifiziert werden, bevor du fortfahren kannst",
+        "inhalt_trotzdem_da": false
+      }
+    ],
+    "bilder": [
+      "auftraege/ergebnis/35-shopify-admin-abtasten-1.png",
+      "auftraege/ergebnis/35-shopify-admin-abtasten-2.png",
+      "auftraege/ergebnis/35-shopify-admin-abtasten-3.png",
+      "auftraege/ergebnis/35-shopify-admin-abtasten-4.png",
+      "auftraege/ergebnis/35-shopify-admin-abtasten-5.png"
+    ]
+  }
+}
