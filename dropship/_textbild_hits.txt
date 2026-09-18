@@ -15807,3 +15807,9 @@ gid://shopify/Product/15503239774593	15->0	Memory Baumwollkissen
 gid://shopify/Product/15503259632001	53->0	Schmuck-Set für Reparaturen und Herstellung
 gid://shopify/Product/15503282766209	31->1	360° Panorama Überwachungskamera
 gid://shopify/Product/15503284863361	35->0	Eiswürfelform mit Deckel
+gid://shopify/Product/15503957819777	15->3	Einzelne Wimpernverlängerung, 0.20, leicht & flach
+gid://shopify/Product/15504082108801	22->0	Android 11.0 Dual-Band WiFi TV Box
+gid://shopify/Product/15504111600001	23->0	Reflektierendes Hunde-Halsband mit Metallschnalle
+gid://shopify/Product/15504112812417	40->0	Bauchroller mit Ellenbogenstütze
+gid://shopify/Product/15504118284673	10->2	Wäschekorb mit Netzabdeckung
+gid://shopify/Product/15504149578113	10->2	W8 Smart-Armband
