@@ -50,3 +50,4 @@ article	1001472229761	geschenk-guide-2026-fuer-jeden-typ	sternenhimmel-projektor
 article	1001473114497	sternenhimmel-projektor-baby-eltern-guide	sternenhimmel-projektor-baby-nachtlicht-mit-musik -> sternenhimmel-projektor-galaxy-led-nachtlicht-527681
 article	1001473147265	uv400-polarisiert-sonnenbrillen-guide	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
 article	1001546121601	bluetooth-speaker-wasserdicht-outdoor-guide	sonnenbrillen-set-retro-polarized -> retro-polarisierte-sonnenbrille-616000
+article	1002487841153	rizinusoel-wickel-anwendung-anleitung	rizinusol-wickel-set-mit-bio-ol-323457 -> tunmate-rizinusol-382081
