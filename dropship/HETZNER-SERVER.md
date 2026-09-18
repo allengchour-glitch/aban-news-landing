@@ -26,14 +26,22 @@ Diese Tabelle ist die Antwort auf «mach den Bot zu einem Superbot». Sie entste
 Auftrag 32 und ist bewusst auch dort ehrlich, wo sie ein Nein enthält: **ein
 begründetes Nein spart die Arbeit, die sonst dreimal gegen dieselbe Wand läuft.**
 
-| Dienst | Angemeldet? | Was daraus folgt |
-|---|---|---|
-| **Shopify Admin** | ✅ ja | Dateispeicher, Rechnung, alles im Admin lesbar |
-| **Pinterest** | ✅ ja | Profil messen und einzelne Felder schreiben (Auftrag 31 hat es getan) |
-| **BigBuy** | ⚠️ formal ja, praktisch **nein** | Cloudflare sperrt den Agenten aus (Ray ID gemessen). Das Ticket bleibt ein Betreiber-Klick — **die Bot-Erkennung wird nicht umgangen** |
-| **CJdropshipping** | ❓ **offen** | Auftrag 32 meldete «angemeldet» bei Endadresse `/404` — ein Fehlbefund. Auftrag 33 tastet sechs Adressen ab |
-| **TikTok Studio** | ❌ nein | Upload bräuchte eine Anmeldung im Agentenprofil (Betreiber). Social-Stopp gilt ohnehin |
-| **Google Merchant** | ⛔ **unmöglich** | Google lässt Passwort-Anmeldungen in diesem Browser grundsätzlich nicht zu. Nicht erneut versuchen |
+| Dienst | Status | Angemeldet? | Was daraus folgt |
+|---|---|---|---|
+| **Pinterest** | 200 | ✅ **ja** | Der EINZIGE echte. Profil messen und Felder schreiben — Auftrag 30/31 haben es getan, das ist ein Handlungsbeleg |
+| **Shopify Admin** | **403** | ❌ nein | ALLE fünf Admin-Seiten 403 mit 68 Zeichen Text, auch `/settings/billing`. Der Dateispeicher bleibt unmessbar, bis das Profil dort angemeldet ist |
+| **BigBuy** | **403** | ❌ nein | Cloudflare sperrt den Agenten (Ray ID gemessen 17.09.). **Die Bot-Erkennung wird nicht umgangen** — Ticket bleibt Betreiber-Klick |
+| **CJdropshipping** | **404** | ❌ nein | Startseite zeigt «anmelden»/«registrieren», nirgends «Abmelden»/«Balance»; alle vier Konsolenpfade 404. Für den Dispute USD 25.54: **einmal im Agentenprofil bei CJ einloggen** |
+| **TikTok Studio** | 200 | ❌ nein | Leitet auf die Anmeldung. Social-Stopp gilt ohnehin |
+| **Google Merchant** | 200 | ⛔ **unmöglich** | Einwilligungswand; Google lässt Passwort-Anmeldungen in diesem Browser grundsätzlich nicht zu. **Nicht erneut versuchen** |
+
+> ⚠️ **Diese Tabelle ist die KORRIGIERTE Fassung (Auftrag 36).** Die erste, ein paar Stunden
+> ältere, führte Shopify, BigBuy, Pinterest und CJ alle als «angemeldet ✅» — sie stammte aus
+> Auftrag 32, der noch **ohne Statusprüfung** lief. Von diesen vier hielt genau **einer** der
+> Nachmessung stand. Der Grund ist eine Regel, die harmlos klang: «Ziel erreicht → angemeldet».
+> **Eine erreichte Adresse belegt keine Anmeldung. Nur eine gelungene Handlung belegt sie** —
+> Pinterest hat so einen Beleg (Werte gelesen, ein Feld geschrieben), die anderen drei hatten
+> nie einen. `angemeldet: true` ist jetzt an Status 200 gebunden.
 
 ### Auftragsarten (vier, mehr ist Absicht)
 
