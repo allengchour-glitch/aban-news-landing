@@ -195,3 +195,51 @@ Beide werden jetzt getrennt ausgewiesen statt mitgezählt. Damit fällt „Textb
 (alle)" von 3687 auf **717** — nicht weil Arbeit geschehen wäre, sondern weil vorher
 Falsches mitgezählt wurde. Dieselbe Lehre wie bei „Kästen ≥ 14 px": ein Messgerät, das
 Bauteile als Fehler zählt, treibt die Arbeit in die falsche Richtung.
+
+## Nachtrag 2026-09-18 · Startseite: eine Frage, kein Blindfleck mehr — und ein 164-Link-Klumpen sortiert
+
+User: „die Seite optimieren, nicht so KI-Style." Frischer Blick auf die Startseite (15
+H2-Abschnitte, ~25 Bildschirme auf dem Handy). Erste Vermutung — vier redundante
+KI-Tools-Werbeblöcke — hielt der Prüfung NICHT stand: alle vier sind inhaltlich
+verschieden (B2B-Beratungsangebot, Live-Demo, bezahltes KI-Studio, Gratis-Tools-Kachel-
+Liste). **Gelernt: Titel-Ähnlichkeit ist kein Beweis für Redundanz — erst den Inhalt
+lesen.**
+
+Zwei echte, belegte Funde stattdessen:
+
+**1. Drei überlappende Kategorie-Reihen im selben Marktplatz-Block.** Eine „Beliebt:"-
+Pillen-Reihe (Wohnung/Auto/Velo/Handy/Sofa/Job) stand direkt über einer fast identischen
+Knopf-Reihe (Jobs/Auto/Immobilien/Angebote/Inserate) — dieselben Themen, zwei
+verschiedene Bauteile, in derselben Bildschirmbreite. Die Pillen-Reihe entfernt: kein
+Ziel verloren (dieselben Suchbegriffe funktionieren über das Suchfeld direkt darüber,
+die Themen bleiben über die Knopf-Reihe erreichbar).
+
+**2. Der Footer hatte eine Spalte „Mehr" mit 164 undifferenzierten Links** — Rechner,
+KI-Tools, Themenseiten, Meta-Seiten, alle in einer einzigen Spalte ohne jede
+Untergliederung. Das CSS-Grid war für 5 Spalten gebaut, nutzte aber nur 4 (eine
+„Mehr"-Wand statt einer fünften Spalte). Aufgeteilt in zwei klar benannte, thematisch
+saubere Spalten — **„KI, Geld & Themen"** (61 Links) und **„Rechner & Vorlagen"**
+(103 Links) — Grid auf 6 Spalten erweitert (`1fr` ergänzt, Mobil-Breakpoint bei 860 px
+bricht ohnehin auf 2 Spalten um, unverändert). Kein Link verloren: 164 → 61 + 103.
+
+**Das ist der stärkste „sieht generiert aus"-Befund der ganzen bisherigen Prüfung** —
+nicht Farbe, nicht Emoji, nicht Textbaustein, sondern eine über Monate gewachsene Liste,
+der niemand je eine Struktur gegeben hat. Genau das Muster aus der Spiel-Runde
+(„keine Entscheidung, nur Werkzeugkiste") — nur diesmal in einer Navigationsspalte statt
+in Knopf-Farben.
+
+**Bewusst nicht angefasst:** Die 15 Abschnitte selbst — nach vollständigem Lesen (nicht
+nur Titel) erfüllt jeder eine eigene, unterscheidbare Funktion (Navigation, Marktplatz,
+B2B-Leads, Live-Demo, Markt-News, bezahltes Produkt, Archiv, Gratis-Tools, Geld-Hub,
+Premium-Vergleich, Beispiel-Ausgabe, FAQ, Sitemap). Die Seitenlänge (~25 Bildschirme)
+ist damit keine Redundanz, sondern eine Reichweiten-Entscheidung über sechs verschiedene
+Geschäftsfelder auf einer Seite — das zu kürzen hiesse, eines davon weniger sichtbar zu
+machen. Blieb nach dieser Runde nahezu unverändert (25,0 statt 25,2 Bildschirme Handy) —
+die Fixes waren Struktur, nicht Kürzung.
+
+**Geprüft:** `html-validate index.html` ohne Befund (Exit 0) · `.footcols h4` per DOM-
+Abfrage ausgelesen — exakt 5 Spaltentitel, korrekt benannt · Link-Gesamtzahl in
+`.footcols` 188 (vorher 164 allein in „Mehr" + Rest) · Screenshot des Footers mit
+deaktiviertem Sticky-Header (der erste Versuch zeigte ein Kompositions-Artefakt — die
+fixierte Kopfleiste überlagerte den Screenshot, kein echter Seitenfehler, per
+DOM-Abfrage widerlegt, dann sauber neu fotografiert).
