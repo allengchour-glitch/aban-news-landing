@@ -1,0 +1,8 @@
+{
+  "id": "36-anmeldungen-mit-status",
+  "typ": "skript",
+  "skript": "anmeldungen_pruefen.mjs",
+  "warum": "Auftrag 32 lief OHNE Statuspruefung und meldete Shopify Admin, BigBuy, Pinterest und CJ als angemeldet. Auftrag 33 widerlegte CJ (nicht angemeldet, Konsolenpfade 404), Auftrag 35 widerlegte Shopify (ALLE fuenf Admin-Seiten HTTP 403, 68 Zeichen Text, auch die Kontrollseite aus 32). Die Landkarte im Gedaechtnis stimmt damit nicht mehr, und eine falsche Landkarte ist schlechter als keine. Diese Runde laeuft mit der vierten Schicht UND der neuen Regel 'angemeldet nur bei Status 200'. Rein lesend.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
