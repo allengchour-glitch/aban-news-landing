@@ -15894,3 +15894,19 @@ gid://shopify/Product/15523937550721	12->2	Futter- und Trinkbrunnen für Haustie
 gid://shopify/Product/15524003545473	164->0	Lippenstift-Geschenkset ohne Abfärben
 gid://shopify/Product/15524022059393	24->2	Silikon-Narbenpflaster
 gid://shopify/Product/15524696031617	33->3	Smartwatch mit 3D‑Kurvdisplay
+gid://shopify/Product/15524697309569	54->0	Zweifarbige Yogamatte mit Haltungslinien
+gid://shopify/Product/15524867703169	21->0	Hundeschuhe wasserdicht
+gid://shopify/Product/15524868555137	45->2	Mini Tattoo Pen mit USB-Ladekabel
+gid://shopify/Product/15524868620673	10->0	Reflektierende Hunde-Führleine
+gid://shopify/Product/15524881072513	8->0	Tragbarer Gaskocher mit Kartuschenofen
+gid://shopify/Product/15524886675841	8->0	Damen-Ring mit Rindenstruktur
+gid://shopify/Product/15524888347009	18->1	Digitale LED-Uhr
+gid://shopify/Product/15524926587265	45->0	Grosser Metallregalkorb für die Küche
+gid://shopify/Product/15525201871233	49->2	Abdeckstift
+gid://shopify/Product/15525205541249	25->3	Business-Quarz-Uhr mit 30 m Wasserdichtigkeit
+gid://shopify/Product/15525457330561	53->0	Twelve Constellation Augenstiftpalette
+gid://shopify/Product/15525458313601	43->0	Feuchtigkeitsspendender Lippen-Gloss
+gid://shopify/Product/15525458444673	15->0	Farbwechselndes Lippenlack mit Feuchtigkeit
+gid://shopify/Product/15525488951681	21->0	Kohlenmonoxidmelder für den Haushalt
+gid://shopify/Product/15525493834113	25->1	Hunde-Brustgeschirr mit Reflektor
+gid://shopify/Product/15525499044225	8->0	Elektrischer Gemüseschneider Morandi Grün
