@@ -1163,8 +1163,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Grössen…»
 - `15500344361345` · Vintage Reise-Sporttasche Leder faltbar
   - «…Erhältlich in den Farben…»
-- `15500371198337` · Portugiesisches Steakmesser-Set aus Edelstahl · 16-teilig
-  - «…Erhältlich in verschiedenen Farbvarianten…»
 - `15500402786689` · Keramik-Utensilienhalter im Japan-Stil
   - «…Erhältlich in zwei Grössen…»
 - `15500402983297` · Schmuck-Organizer Pfauenblau Samt
@@ -1295,8 +1293,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Ausführungen…»
 - `15501899137409` · Quarz-Herrenuhr mit eckigem Stahlgehäuse
   - «…Erhältlich in verschiedenen Farbvarianten…»
-- `15502064583041` · Mini-Reiskocher für 1–2 Personen
-  - «…Erhältlich in verschiedenen Farben und Grössen…»
 - `15502066483585` · Time Lidschatten-Palette – 12 Farben
   - «…Erhältlich in drei Ausführungen…»
 - `15502134444417` · Runde Silikon-Backform für Kuchen
