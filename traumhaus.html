@@ -473,9 +473,14 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> leben ihr eigenes Leben — sie kochen, angeln, tanzen und erkunden die Stadt. Alle 4 Tage kommt die <b>Bauabnahme</b>: besteh sie und steig von der Hütte bis zum Palast auf. Tag- und Nachtwechsel inklusive.</p>
   <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reisst ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
-  <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
-    <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
-  </label>
+  <!-- 💞 ROMANTIK-MODUS IST JETZT IMMER AN (User: „immer 18+ ohne die Haken").
+       Das Haekchen ist weg; wer das Spiel startet, spielt die vollstaendige Fassung.
+       ⚠️ DREI STELLEN, NICHT EINE — wer nur dieses Feld entfernt, hat es nur halb:
+       die Startbelegung von `romantik`, das Auslesen beim Start und das Laden eines
+       alten Spielstands (der `rom:false` mitbringt und den Modus wieder abschaltete). -->
+  <div style="display:flex;gap:8px;align-items:center;justify-content:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;padding:10px 14px;margin:8px auto;max-width:430px;font-size:.9rem">
+    💞 <span><b>Ab 18</b>: Max &amp; Mia flirten, küssen und turteln — frech, aber diskret (Ausblende wie im Original).</span>
+  </div>
   <button class="btn" id="soloBtn">Solo bauen ▶</button>
   <div style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.5);border-radius:14px;max-width:430px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop — zusammen bauen (2 Spieler)</div>
@@ -11894,7 +11899,7 @@ function skillXp(k,n){
 var floors={},walls={},furn=[]; // floors["x,y"]=idx · walls["x,y,0|1"]={type} (0=Nordkante,1=Ostkante)
 var floorMeshes={},wallMeshes={};
 var buildMode=false,curItem=null,curRot=0,delMode=false,running=false;
-var romantik=false;
+var romantik=true;   /* immer an — siehe Kommentar am Startbildschirm */
 function fkey(x,y){return x+","+y;}
 function inLot(x,y){return x>=0&&x<GW&&y>=0&&y<GH;}
 function inBau(x,y){return x>=BAUX0&&x<BAUX0+BAUW&&y>=BAUY0&&y<BAUY0+BAUH;}
@@ -12306,7 +12311,10 @@ function loadSnapshot(sn){
   immo=(sn.im||[]).slice();
   setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;missSerie=sn.sms|0;if(sn.lfT!==undefined){window._liefTag=sn.lfT;window._liefHeute=sn.lfH;}sprintFertig=!!sn.spf;
+  /* ⚠️ NICHT MEHR AUS DEM SPIELSTAND UEBERNEHMEN. Alte Staende tragen rom:false und
+     haetten den Modus nach jedem Laden wieder abgeschaltet — der sichtbare Haken waere
+     weg gewesen, die Wirkung auch. */
+  romantik=true;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;missSerie=sn.sms|0;if(sn.lfT!==undefined){window._liefTag=sn.lfT;window._liefHeute=sn.lfH;}sprintFertig=!!sn.spf;
   /* Basislinie und Tageslimits zurueckholen, sonst faengt der Endlos-Auftrag von vorne an
      und alle Limits sind wieder frei (Schwarm-Befunde). */
   if(sn.pqb){window._pqBasis={idx:sn.qi,b:sn.pqb};window._pq=null;}
@@ -15692,7 +15700,8 @@ function startGame(){
       setTimeout(function(){if(running)hint(txt8);},4500);}
   }catch(e){}}setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("Auftrag vom Stadtpräsidenten: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
-  romantik=document.getElementById("romChk").checked||romantik;
+  /* Das Haekchen gibt es nicht mehr; der Modus ist immer an. */
+  romantik=true;
   renderPalette();updHUD();MUS.play().catch(function(){});
   // Anfänger-Intro einmalig zeigen (für Einsteiger)
   try{if((!MPs||mpHost)&&!localStorage.getItem("th_intro_seen")){var _ic=document.getElementById("introCard");
