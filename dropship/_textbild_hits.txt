@@ -15884,3 +15884,6 @@ gid://shopify/Product/15523129098625	59->1	Vibrations-Wecker Smartwatch
 gid://shopify/Product/15523176841601	27->0	Primer & Sealer Set für Gelnägel
 gid://shopify/Product/15523183460737	29->3	Quilling Papier Malerei Bastelset
 gid://shopify/Product/15523201319297	38->3	Outdoor Sportuhr für Bergsteigen und Schwimmen
+gid://shopify/Product/15523829776769	110->1	Kreativer Küchenschäler «Chaplin»
+gid://shopify/Product/15523863888257	12->2	Mini-Portable CCD-Kamera-Insert-Tasche
+gid://shopify/Product/15523864871297	11->3	Ölfilterbehälter 304 Edelstahl – Grosser Filter
