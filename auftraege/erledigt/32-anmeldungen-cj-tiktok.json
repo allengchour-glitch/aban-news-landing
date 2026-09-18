@@ -1,0 +1,8 @@
+{
+  "id": "32-anmeldungen-cj-tiktok",
+  "typ": "skript",
+  "skript": "anmeldungen_pruefen.mjs",
+  "warum": "GEMESSEN 18.09.: die Liste in anmeldungen_pruefen.mjs nennt 6 Dienste, die letzte Quittung (08, 17.09. 16:15) traegt nur 5 Befunde — CJdropshipping kam erst um 18:18 dazu und ist DESHALB nie geprueft worden. Eine Faehigkeit, die im Repo liegt und nie aufgerufen wurde. Die Antwort entscheidet, ob der Dispute ueber USD 25.54 (API gibt hartnaeckig 9009) einen Rueckfallweg in der Konsole hat. Zweitens: TikTok stand am 17.09. auf 'nicht angemeldet' — die Queue ist inzwischen 18 Tage alt. Rein lesend, keine Klicks.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
