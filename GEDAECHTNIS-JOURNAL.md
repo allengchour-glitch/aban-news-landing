@@ -6,6 +6,89 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · 🤖 «Mach den Bot zu einem Superbot» — vier Messungen, drei echte Lücken
+
+Der Auftrag klang nach «mehr Funktionen». Die erste Frage war eine andere: **was kann er
+heute?** Vier Messungen, bevor eine Zeile Code entstand.
+
+**Lücke 1 — niemand überwachte ihn.** `grep -rln "luxe_auftrag_runner|auftraege/erledigt|
+luxe-agent" automation/ tools/` → **0 Treffer**. Der einzige Rechner mit einem echten,
+angemeldeten Browser — Shopify-Admin, Pinterest, die echte Storefront, die unsere eigene
+IP nie zu sehen bekommt — stand in keiner Wacht-Liste. Er konnte sterben, ohne dass
+irgendwo eine Zeile anders wird. Das ist Lehre 0c eine Ebene höher: nicht ein Wächter
+ohne Wächter, sondern ein ganzer Server ohne einen.
+
+**Lücke 2 — der häufigste Lauf hinterliess nichts.** Zeile 129 des Runners:
+`if (!offen.length) { process.exit(0); }`. Bei leerer Warteschlange also keine Spur. Die
+letzte Quittung war vom 17.09. 20:44, danach acht Stunden Stille — und diese Stille war
+nicht entscheidbar. **Die stille Null in Prozessform: die Abwesenheit einer Meldung sah
+aus wie Ruhe.** Behoben: jeder Lauf schreibt `auftraege/_puls.json`, und ausdrücklich
+BEVOR er über Arbeit entscheidet; `automation/bot_puls.py` meldet in der Ampel, wenn der
+letzte Lauf über zwei Stunden her ist. Gepusht wird stündlich, nicht alle fünf Minuten —
+288 Commits am Tag wären ein Signal, das im Lärm steht.
+
+Sechs Gegenproben, und die beiden wichtigsten sind die, die **nichts** melden: ein
+frischer Puls (30 min) muss schweigen, sonst wäre eine Regel, die immer alarmiert,
+«erfolgreich» und wertlos. Und eine **fehlende** Datei heisst «noch kein Puls», nicht
+«tot» — genau das galt beim Bauen, weil der neue Runner noch nicht gelaufen war. Ein
+Fehlalarm, dem nach drei Stunden niemand mehr glaubt, ist schlimmer als keine Wache.
+Beide Richtungen sind inzwischen am echten Fall belegt: 04:40 meldete die Ampel «noch
+kein Puls», um 05:05 schrieb und pushte der Server seinen ersten, seit 05:09 schweigt sie.
+
+**Lücke 3 — eine Fähigkeit, die im Repo lag und nie aufgerufen wurde.** Die
+Anmelde-Runde führt **sechs** Dienste, die letzte Quittung trug **fünf** Befunde. Der
+CJ-Eintrag wurde am 17.09. um **18:18** committet, der Prüflauf war um **16:15** — CJ ist
+nie geprüft worden. Im Repo sah es aus wie Können, in den Quittungen stand nichts.
+
+**Und der Lauf, der die Lücke schliessen sollte, brachte den wertvollsten Fund:**
+CJdropshipping meldete **`angemeldet: true`** — bei der Endadresse
+**`cjdropshipping.com/404`**. Jede der drei bestehenden Schichten hatte recht und keine
+war die richtige: `ist_anmeldeseite` sah keine Anmeldemaske (eine 404-Seite hat keine),
+`hat_ziel_erreicht` sah keinen Gastgeberwechsel (die 404 liegt *innerhalb* des Ziels),
+`ist_wandtext` sah keine Bot-Wand (war auch keine). Und das Eindeutigste, was der Server
+selbst mitschickt, las keine von ihnen: `grep -nE "status\(\)|\.status"` über Melder,
+Prüfskript und Runner → **0 Treffer**.
+
+**Die Lehre gilt weit über den Bot hinaus: die Abwesenheit bekannter Fehler ist kein
+Beweis für Erfolg.** Drei Wachen, die je eine Art des Scheiterns kennen, melden gemeinsam
+«alles gut», sobald es auf eine vierte Art scheitert. Das ist dieselbe Familie wie die
+Einwilligungswand (17.09., Auftrag 06) und Cloudflare (Auftrag 09) — jedes Mal hatte der
+Melder recht und beantwortete die falsche Frage.
+
+Neue vierte Schicht `ist_fehlerseite(status, url)` mit **zwei** Erkennungen, weil eine
+nicht genügt: der Statuscode *und* das Adressmuster — Einzelseiten-Anwendungen wie CJ
+leiten intern auf `/404` um und antworten dabei mit **200**. Wer nur den Status prüft,
+hält genau diesen Fall für gesund. Das Muster ist eng gehalten, weil es hier schon oft zu
+breit war («schleif» traf «Schleife», «rock» traf «GT Line ROCK»): `/404` gilt nur als
+eigenes Pfadsegment, `…/lampe-404-lumen` und `…/artikel-4040` gehen durch, belegt im Test.
+
+**⚠️ Und beim Testen die gefährlichere Hälfte gefunden:** in
+`anmelde_erkennung.test.mjs` stand `process.exit()` **mitten in der Datei**. Mein
+angehängter vierter Block wurde nie ausgeführt — und der Lauf meldete weiter fröhlich
+«✅ … durchgelassen». **Ein Test, der nicht läuft, meldet grün, und das ist schlimmer als
+kein Test, weil das Häkchen die Prüfung vortäuscht.** Gefangen nur, weil die Ausgabe
+meine neuen Zeilen nicht enthielt. Gegenprobe, dass das Häkchen jetzt etwas wert ist: mit
+sabotierter Adress-Erkennung meldet der Test «❌ 3 Fehler» und nennt als ersten «CJ-Fall:
+200 auf /404».
+
+**Was daraus für den «Superbot» folgt** — nicht mehr Funktionen, sondern eine Landkarte
+(`dropship/HETZNER-SERVER.md`), die auch die Neins trägt: Shopify ✅, Pinterest ✅, BigBuy
+formal ja / praktisch nein (Cloudflare), TikTok ❌, **Google ⛔ unmöglich, nicht erneut
+versuchen**, CJ ❓ offen. **Ein begründetes Nein ist der wertvollste Teil der Tabelle: es
+spart die Arbeit, die sonst dreimal gegen dieselbe Wand läuft.** Dazu zwei neue
+Fähigkeiten für offene Aufgaben, beide **rein lesend**: `cj_konsole_abtasten.mjs` (sechs
+Adressen, damit die Dispute-Frage eine Messung bekommt statt einer Vermutung) und
+`shopify_dateien_messen.mjs` (die Speicherzahl, die von hier nicht messbar ist — die
+Admin-API hat keinen Endpunkt dafür). Keines klickt, sendet oder löscht: Löschen ist
+unwiderruflich und ein Betreiber-Entscheid, und die Reihenfolge «erst lesen, was dasteht,
+dann den Selektor schreiben» ist die Lehre aus Auftrag 27, wo eine 117-Zeilen-CSV im
+Bildfeld eines einzelnen Werbe-Pins landete.
+
+Nebenbei eine eigene Fehlmessung: ich suchte 05:09 nach einem Ergebnis, das der Timer
+frühestens 05:10 liefern konnte, und hielt den Bot schon für von mir gebrochen — die
+Uhrzeit hatte ich falsch im Kopf. **Bevor man einen Automaten für tot erklärt, fragt man,
+wie alt er sein darf.** Genau dafür trägt der Puls seinen Zeitstempel.
+
 ## 2026-09-17 · 🔫 Der Stopp gilt nur auf einem Zweig — auf `main` steht der Poster nackt
 
 Betreiber: «wen alles fix ist machen wir morgen instagram automation». Bevor irgendetwas
