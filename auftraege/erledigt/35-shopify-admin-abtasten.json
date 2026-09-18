@@ -1,0 +1,8 @@
+{
+  "id": "35-shopify-admin-abtasten",
+  "typ": "skript",
+  "skript": "shopify_admin_abtasten.mjs",
+  "warum": "Auftrag 34 endete mit HTTP 403 auf /settings/files — gefangen von der vierten Wahrnehmungsschicht, die es am selben Tag erst dazugab. Ein gefangener Fehler ist aber keine Erklaerung: entweder darf der Agent die Seite nicht, ODER die 403 ist ein Artefakt der Einzelseiten-Anwendung und meine neue Wache ist zu streng. Eine strenge Wache kann genauso irren wie eine blinde, und dieser Fehlalarm waere selbstgebaut. Fuenf Adressen mit /settings/billing als Kontrolle (in 32 belegt erreichbar); entscheidende Gegenfrage je Seite: steht trotz 403 echter Inhalt da? Rein lesend, bricht nicht ab.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
