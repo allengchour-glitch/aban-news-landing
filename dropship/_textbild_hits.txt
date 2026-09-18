@@ -15860,3 +15860,27 @@ gid://shopify/Product/15518058283393	36->1	Wasserdichter, skalierbarer Reise-Ruc
 gid://shopify/Product/15518520312193	8->0	Elastische Hunde-Leine mit Ruckdämpfer
 gid://shopify/Product/15518558519681	9->3	Leichter Outdoor Wanderrucksack 20 Zoll
 gid://shopify/Product/15519826936193	43->2	Smartwatch mit Foto- und Schrittzähler
+gid://shopify/Product/15519839846785	11->2	Faltbare Drohne mit fester Flughöhe
+gid://shopify/Product/15520345653633	31->0	Staubdichter, faltbarer Reise-Backpack – wasserfest
+gid://shopify/Product/15520345751937	11->2	Reise-Rucksack, 50L, wasserabweisend
+gid://shopify/Product/15520377078145	55->1	Kurzarmhemd mit Reissverschlusstasche
+gid://shopify/Product/15520406143361	26->1	Outdoor Rucksack mit abnehmbarer Tasche
+gid://shopify/Product/15520410173825	43->0	Kultur-Shirt – Freizeit- und Businesshemd
+gid://shopify/Product/15521256898945	26->1	Tragbarer 720p Smart Projektor für Zuhause
+gid://shopify/Product/15521324106113	10->0	Photonische Silica Gel Gesichtsmaske
+gid://shopify/Product/15522098217345	11->0	Tageslicht-Massagegerät mit konstanter Temperatur
+gid://shopify/Product/15522140225921	36->0	Kinder Winterstiefel Extra-Dick
+gid://shopify/Product/15522141503873	16->0	Handtuchhalter Edelstahl, vertikal
+gid://shopify/Product/15522165916033	77->0	Dekorative Vase mit Tusche-Elementen
+gid://shopify/Product/15522166047105	67->3	Vintage-Vase aus Emaille-Glas
+gid://shopify/Product/15522210611585	32->2	Abnehmbare Kunstnägel mit UV-Schutz
+gid://shopify/Product/15522216345985	29->1	Verstellbarer Spiralschneider mit Behälter
+gid://shopify/Product/15522242363777	8->3	Elektronische Personenwaage
+gid://shopify/Product/15522243445121	16->3	Huancai Feuchtigkeitsgel fürs Gesicht
+gid://shopify/Product/15522243707265	19->0	Nano Hydrating Mist Sprayer für zuhause
+gid://shopify/Product/15522273886593	14->1	Kleiner Heizlüfter für Hände und Füsse
+gid://shopify/Product/15522296267137	18->1	Automatische Herrenuhr mit Skelett-Zifferblatt
+gid://shopify/Product/15523129098625	59->1	Vibrations-Wecker Smartwatch
+gid://shopify/Product/15523176841601	27->0	Primer & Sealer Set für Gelnägel
+gid://shopify/Product/15523183460737	29->3	Quilling Papier Malerei Bastelset
+gid://shopify/Product/15523201319297	38->3	Outdoor Sportuhr für Bergsteigen und Schwimmen
