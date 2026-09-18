@@ -6,6 +6,44 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · 🔁 «pimp bot»: Er wartete auf Zuruf — und verpasste dabei seine eigene Messung
+
+Gemessen, bevor gebaut: `grep -c "wiederkehr|intervall|taeglich|cron"` über den Runner →
+**0**. Der Agent wacht **alle fünf Minuten** auf, und sein Puls sagt fast immer «leer». 43
+Quittungen liegen vor, jede einzelne, weil ich ihm einen Auftrag hingelegt hatte.
+
+Das wäre für sich nur unelegant. Teuer wird es durch das, was **nur er** kann: Unsere
+Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08.
+zweimal belegt — 125 Abrufe über 50 Minuten lieferten ausnahmslos die alte Seite). Der
+Hetzner-Server sitzt woanders im Netz und ist unser **einziges ehrliches Fenster** auf
+luxestyle.ch.
+
+**Und in seiner eigenen Quittung stand ein Befund, den seither niemand nachgeprüft hat:** am
+17.09. meldete der bisher **einzige** Storefront-Lauf die **Startseite als nicht erreichbar**
+— `erreichbar: false`, 202 Zeichen, während Kollektion und FAQ mit 3'772 Zeichen sauber
+luden. Diese Messung steht seit einem Tag allein da. **Eine Momentaufnahme ohne Wiederholung
+beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand** — und genau deshalb
+konnte sie niemand ernst nehmen.
+
+Jetzt legt der Runner sich fällige Arbeit selbst an: `auftraege/wiederkehrend/<id>.json` mit
+`alle_tage` und einer `vorlage`. Erste zwei: **storefront täglich** und **anmeldungen
+wöchentlich** — letzteres, weil von sechs Diensten genau **einer** echt angemeldet ist
+(Pinterest); läuft diese eine Sitzung ab, wird jeder Browser-Auftrag still wertlos, denn eine
+abgelaufene Sitzung sieht aus wie eine normale Seite.
+
+**⚠️ Die Falle, gegen die das gebaut ist, und sie ist der ganze Punkt:** der Runner läuft
+**288-mal am Tag**. Eine Fälligkeitsprüfung, die sich irrt, legt 288 Aufträge an — dieselbe
+Klasse wie der IG-Doppelpost (Regel 10). Deshalb entscheidet **nicht eine Uhrzeit**, sondern
+die Anwesenheit einer Datei mit Datum im Namen, gesucht in **`offen/` UND `erledigt/`**. Ohne
+die `offen/`-Hälfte legt der nächste Lauf im Fenster zwischen Anlegen und Quittung ein zweites
+Mal an — das ist die TOCTOU-Lücke vom 12.07., nur an anderer Stelle.
+
+`server/faelligkeit.test.mjs` prüft das isoliert in einem Wegwerf-Verzeichnis, sechs Fälle
+grün. Der entscheidende ist nicht «legt sie an?», sondern **«50 weitere Läufe am selben Tag →
+0»**; dazu: nach der Quittung nicht neu anlegen, Tag 2 nur der tägliche, Tag 8 der
+wöchentliche wieder. **Eine Regel, die nur ihren Erfolgsfall kennt, ist keine Sicherung** —
+die Zahl, die zählt, ist die Null.
+
 ## 2026-09-18 · 📬 CJ hat geantwortet — und 9009 endlich erklärt: die Bestellung kam nicht über die API
 
 «cj mail check und machen». CJ antwortete heute **08:44 UTC**, und diesmal vollständig — auf
