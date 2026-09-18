@@ -6,6 +6,87 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · 🪞 Fremder Stand gegengeprüft: 0 bestätigt, 1 widerlegt, 4 teilweise — und ich hatte ihn schon gepusht
+
+Der Betreiber lud den Statusbericht der Cowork/Claude-in-Chrome-Session hoch. Fünf prüfbare
+Behauptungen, je ein Agent. **Keine hielt unverändert stand.**
+
+### Der eigene Fehler zuerst: ein 403 als Sichtbarkeitsbeweis — und ich habe es nicht geprüft
+
+Cowork schrieb: «GitHub-Repo … 403 aus der Cloud-Sandbox (**privates Repo**, nur über
+eingeloggten Browser erreichbar)» — und legte im Vertrauen darauf einen Ticketentwurf mit
+Bankinstitut, Kontoinhaber und vier Auszahlungsbeträgen hinein. **Ich habe die Datei
+übernommen und ins Repo gepusht, ohne diese Annahme zu prüfen.**
+
+Gemessen: GitHub meldet `"private": false`, `"visibility": "public"`; ein unangemeldeter Abruf
+über einen zweiten Ausgang zeigt das Abzeichen «Public» (Gegenprobe: erfundenes Repo → 404,
+das Werkzeug kann also unterscheiden). Der entscheidende Gegenbeweis ist schöner als jede
+Feldabfrage: **derselbe Ausgang gibt 403 für `anthropics/claude-code`** — unstrittig
+öffentlich — im Körper wörtlich «GitHub access to this repository is not enabled for this
+session». Das ist der Sitzungs-Proxy nach Erlaubnisliste, nicht GitHub. Dazu
+`X-Ratelimit-Limit: 15000` statt 60: der Ausgang hängt Anmeldedaten an und taugt für
+Sichtbarkeitsfragen grundsätzlich nicht.
+
+**Ein 403 misst die Wand vor dem Absender, nicht das Schloss am Ziel.** Dieselbe Klasse wie
+die Bot-Wand-Verwechslungen vom 17.09., diesmal mit Geldbezug: Bank und Kontoinhaber standen
+35 Minuten im öffentlichen Repo und bleiben in der Historie. Und die gefährlichere Richtung
+wäre die umgekehrte gewesen — wer der Behauptung glaubt, schreibt künftig Geheimnisse hinein.
+
+**Die Lehre über die Lehre:** Die Regel «das Repo ist ÖFFENTLICH» stand seit 16.09. fett im
+Gedächtnis. Eine fremde Behauptung hat sie nicht widerlegt, sondern nur **überschrieben, weil
+sie neuer war**. Frische schlägt hier nichts; nur eine Messung schlägt eine Messung.
+
+### Ein Alarm, der sich beim Messen auflöste
+
+Die Prüfung der Versandprofile fand: **54 Profile** (nicht 4), das Standard-Profil — an dem der
+ganze Katalog hängt — mit einer **aktiven** Zone «International, Rest of World, CHF 15.00
+pauschal, ohne Bedingung», und `shop { shipsToCountries }` = **237 Länder**. Das stand quer zu
+allem: am 16.09. wurden 202 Pinterest-Pins beanstandet, weil sie «weltweiten Versand»
+versprachen, und die CH-Wächter draften Ware, für die CJ keine CH-Linie hat. Ein Paket nach
+Übersee zu CHF 15 wäre die #1004-Klasse, nur schlimmer.
+
+Der Agent hat es ausdrücklich **nicht** getestet und das gesagt. Gemessen mit einem echten
+Warenkorb über die Storefront-API (`cartCreate`, keine Bestellung): **Schweiz 2
+Versandoptionen, Deutschland 0, USA 0, Korb leer.** Der einzige Markt («Switzerland», [CH])
+sperrt sie; die Zone ist totes Konfigurat. **Zwei Ebenen, die sich auf dem Papier
+widersprechen, und nur eine entscheidet — welche, sagt kein Feld, sondern der Versuch.**
+Werkzeug abgelegt als `tools/testkorb_ausland.py`, mit dem CH-Korb als Kanarienvogel davor:
+liefert ER nichts, sind die leeren DE/US-Antworten bedeutungslos.
+
+### Die dritte Klasse: ein zweiter Beleg, der das eigene Echo ist
+
+Der BigBuy-Ticketentwurf der fremden Session las sich wie unabhängige Bestätigung unserer
+Zahlen. `difflib` gegen `dropship/BIGBUY-1000-EURO.md §3`: **Ähnlichkeit 0.767**, alle vier
+Anträge wortgleich. Es ist eine leicht erweiterte **Kopie unseres eigenen Texts vom 16.09.**
+**Zwei Quellen, die dasselbe sagen, sind erst dann zwei Quellen, wenn die zweite nicht von der
+ersten abgeschrieben hat.** Dieselbe Familie wie der Wecker, der zur Tatsache wurde (heute
+früher): eigene Aussagen kommen als fremde Belege zurück.
+
+Nebenbei der Fund, der die Forderung stärker macht: `SHARED-MEMORY.md:264` dokumentiert, dass
+der Betreiber am **08.07.2026 EUR 1'000 per SEPA an BigBuys spanisches Konto** überwiesen hat,
+Verwendungszweck «18138327+966388». Der offene Datensatz **18138523** («Ingreso en monedero»,
+07.07., pendiente de pago) ist mit hoher Wahrscheinlichkeit genau diese Einzahlung. Damit ist
+das Guthaben **eigenes eingezahltes Geld**, kein Lieferantenkredit — und Frage 3 des Tickets
+keine Frage mehr, sondern eine Forderung mit Beleg. ⚠️ Die Referenz im Verwendungszweck
+(18138327) ist NICHT die Nummer des offenen Datensatzes (18138523); der Unterschied ist
+ungeklärt und gehört ins Ticket.
+
+### Und eine Vorbedingung, die keine ist
+
+Cowork verlangte, vor dem CJ-Dispute zuerst die Adresse «Hühnerhubelstrasse 37, 3123 Belp» im
+CJ-Profil zu verifizieren. Gemessen: `disputes/disputeConfirmInfo` antwortet 200 mit
+`maxAmount 25.54` und der Gründeliste und **fragt nie nach einer Adresse**. Schlimmer — der
+Auftrag #1017 trägt die Kundenadresse **Pratteln**; Belp gehört zur Eigenbestellung #1015 des
+Betreibers. **Wer im Portal die Auftragsadresse auf Belp «korrigiert», macht einen richtigen
+Datensatz kaputt.** Ob das Web-Portal eine Kontoadresse verlangt, bleibt von hier nicht
+entscheidbar — das ist «nicht messbar», nicht «nötig» und nicht «erledigt».
+
+⚠️ Der Prüfer fing dabei seine eigene Fehlmessung: `disputes/disputeProducts` meldet
+`canChoose: true`, `disputeConfirmInfo` für denselben Artikel `false` — das sah nach der
+technischen Erklärung für die 9009-Sperre aus. Gegenprobe an #1018: **dort genauso.** Das Feld
+kippt in JEDER Vorschau. **Ein Unterschied zwischen zwei Endpunkten ist erst ein Befund, wenn
+ein zweiter Fall zeigt, dass er nicht überall auftritt.**
+
 ## 2026-09-18 · ⏰ Der Wecker wurde zur Tatsache: eine «CJ-Frist», die ich mir selbst gestellt hatte
 
 In `dropship/COWORK-BEFEHL.md` stand seit gestern «CJ-ERSTATTUNG USD 25.54 — **Frist 19.09.
