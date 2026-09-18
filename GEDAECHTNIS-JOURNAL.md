@@ -6,6 +6,97 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · 🎯 «hole / suche kunden»: null von 15 Vorschlägen überlebte — der Fund lag darunter
+
+Sechs Kanal-Achsen gemessen (Trichter, Google, Suche/KI, Pinterest, Bestandskunden, neue
+Gratis-Kanäle), je ein Skeptiker pro Vorschlag. **15 Vorschläge, 0 hielten stand.** Teils ist das
+meine Schuld — ich hatte «im Zweifel widerlegt» vorgeschrieben, und ein Prüfer, der alles
+ablehnt, muss selbst geprüft werden. Mehrere Absagen sind aber hart und gemessen:
+
+- **Microsoft/Bing-Kanal: in der Schweiz nicht verfügbar.** Die App prüft die Firmenadresse des
+  Shops (`get-shop-info` → `country: Switzerland`); verfügbar ist sie in 10 Ländern, CH ist keines.
+- **Google Merchant: kein Zugangsweg von hier.** `grep -rIn -iE "shoppingcontent|merchantapi|content/v2"`
+  → 0 Treffer bei 20 gefundenen anderen googleapis-Endpunkten. Der Agent kommt bei Google
+  grundsätzlich nicht hinein.
+- **Der ChatGPT-Fix auf der Influencer-Seite war am 08.09. 17:05 bereits umgesetzt** (Commit
+  60db551d7). Der Vorschlag beschrieb erledigte Arbeit als offene Massnahme.
+- **Warenkorb-Abbrecher: `abandonedCheckouts` liefert 5 Zeilen, `hasNextPage` FALSE.** Vier echte
+  vom 28.06.–04.07., der fünfte ist der Betreiber. Der Juli-Auftrag «CHF 630 in 11 Checkouts» ist
+  endgültig gegenstandslos.
+
+### Die Zahlen, die die Lage anders erzählen als das Gedächtnis
+
+**58 % aller Sitzungen sind Bots** (90 T.: 18'335 Bot / 13'101 Mensch, Juli allein 13'889 Bot).
+Jede frühere «1'300 Sitzungen»-Zahl enthielt sie.
+
+**Es sind 4 externe Kunden, nicht 5 oder 6.** Alle 16 Bestellungen einzeln gelesen: sechs gehören
+dem Betreiber selbst (alleng0@hotmail.com, numberOfOrders 6). Extern haben 9 Menschen bezahlt,
+**5 davon wurden erstattet** — #1006/#1007/#1008 (ausverkauft beim Lieferanten), #1016/#1017
+(keine CH-Linie). Behalten haben vier: Raia (ChatGPT), Schnabel (Google), Herger (Google),
+Schutz (direkt/POD), zusammen CHF 135.60. Herkunft der neun: **Google 7, ChatGPT 1, direkt 1 —
+Social 0.**
+
+**Bei 56 % Erstattungsquote braucht es rund 180 Bestellungen für 100 behaltene Kunden.** Damit ist
+die Lieferfähigkeit keine Betriebssache, sondern die grösste Kundengewinnungs-Massnahme, die es
+hier gibt — sie halbiert die Zahl, die man überhaupt gewinnen muss.
+
+**Semrush db=ch:** Rang 990'937, 522 Keywords, **0 auf Position 1–10**, geschätzter organischer
+Verkehr 1/Monat. Bei 51'338 Produkten rankt der Shop faktisch nicht — der Google-Verkehr, der
+verkauft, ist NICHT klassisches SEO. Verteilung ist auch nicht der Engpass: 49'678 im
+Google-Kanal, 51'232 bei Pinterest.
+
+**Zwei Messfallen dabei gefunden:** `customersCount(query:…)` **ignoriert seinen Filter still** —
+der Köder `email_marketing_state:bananenstaat` lieferte dieselbe 1499 wie die echte Abfrage; erst
+`customerSegmentMembers` trennt sauber (3 mit Einwilligung + 1496 ohne = 1499). `productsCount`
+mit `publication_ids:` filtert dagegen korrekt (erfundene ID → 0).
+
+### Der eigentliche Fund: der Verkehr, den wir haben, landet auf Ware, die wir nicht liefern
+
+Die **meistbesuchte Suchseite des ganzen Shops** — Rizinusöl-Wickel-Set, 18 Sitzungen/30 T,
+55/90 T, 2 Warenkörbe, CHF 39.90 — stand auf ACTIVE und war kaufbar (`tracked:false`,
+`inventoryPolicy: CONTINUE`, `availableForSale: true`). Bestand: **nur US-Lager, 226 Stück**.
+`freightCalculate` CN→CH: **0 Optionen**. Gegenprobe mit dem Artikel aus #1018, der am 17.09.
+nachweislich in Zürich ankam: **16 Optionen, CJPacket ab USD 9.02**. Das Werkzeug kann also
+finden; die Null ist echt.
+
+Daraus ein Wächter, der die ANDERE Frage stellt als der Bestands-Wächter: nicht «alle 51'338»
+(dessen Cursor steht seit dem 16.09. fest), sondern **nur die ~40 Seiten, auf denen wirklich ein
+Mensch landet**. Mit einem **Kanarienvogel** davor: drosselt CJ oder ist der Token alt, liefert
+`freightCalculate` für jedes Produkt 0 — ein Lauf würde dann den gesamten Verkehr des Shops
+verurteilen. Antwortet der Kanarienvogel mit 0, bricht der Lauf ab und urteilt über gar nichts.
+
+Ergebnis über 35 besuchte Seiten: **30 lieferbar, 4 nicht, 1 unklar.** Drei aktive Seiten
+gedraftet und per 301 auf gleichartige, gemessen lieferbare Ware umgeleitet.
+
+### Drei eigene Fehler in einer Stunde
+
+1. **Mein erster Lauf hielt 33 von 35 Seiten für «keine CJ-SKU»** — `CJLY291609201AZ`,
+   `CJNS292524101AZ`, `CJSL291618301AZ` sind alle CJ-**Varianten**-SKUs. Mein
+   `sku.startswith("CJ-")` ist exakt die zu enge Prüfung, die am 11.08. schon 845 von 919
+   Fehlalarmen erzeugt hat, und die Lehre steht seither im Gedächtnis. Hätte ich das gemeldet,
+   hätte es nach Katastrophe ausgesehen. **Die Reparatur war nicht, den Parser zu flicken,
+   sondern ihn zu löschen** und `versandfaehig()` aus `cj_versand_ch_guard.py` zu benutzen —
+   die kennt alle drei SKU-Formen und trennt «ausgelistet» von «transient nicht abrufbar».
+   Wer eine Logik baut, sucht zuerst ihren Zwilling.
+2. **Ein Teillauf über vier Handles löschte die Befunde des Volllaufs.** Die Ergebnisdatei wurde
+   mit `open(…, "w")` geschrieben; drei echte Treffer verschwanden lautlos, weil sie in diesem
+   Lauf gar nicht gefragt worden waren. **Eine Ergebnisdatei, die bei jedem Lauf überschrieben
+   wird, ist kein Register, sondern die Meinung des letzten Aufrufs.**
+3. **Beim Draften die falsche Produkt-ID mitgeschleppt** (die des Dry-Bags aus einer Abfrage
+   weiter oben) — und dabei `productUpdate(tags:)` benutzt, das die Tag-Liste **ersetzt** statt
+   ergänzt. `keine-lieferanten-ref` war einen Moment lang weg. Sofort wiederhergestellt, danach
+   mit `tagsAdd` gearbeitet.
+
+### Die «82 Sitzungen», die es heute nicht mehr gibt
+
+Die ranghöchste Empfehlung des Laufs lautete «12 tote Landeseiten reparieren, 113 von 451
+Suchsitzungen», grösster Fall `/products/wasserdichter-packsack-dry-bag-20l` mit 82 Sitzungen in
+90 Tagen. Nachgemessen: **83 Sitzungen im Juli, 1 im Juni, seit dem 1. August exakt null.** Und
+der Entwurfs-Status war nicht die Ursache — gedraftet wurde am 10. August, der Verkehr endete
+zehn Tage vorher. In den letzten 30 Tagen sind es 78 Suchsitzungen insgesamt, und die toten
+Seiten tragen davon drei. **Ein 90-Tage-Fenster, in dem ein einmaliger Ausschlag steckt, liest
+sich wie eine laufende Rate.**
+
 ## 2026-09-18 · 🩹 «mach alles reibungslos»: 23 Agenten, 9 Befunde überlebten — und die 7 gefallenen waren die lehrreicheren
 
 Sechs Reibungsachsen (Bestellweg, Storefront, Kundenkommunikation, Automaten, Katalog, Konto),
