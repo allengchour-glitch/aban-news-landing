@@ -15797,3 +15797,7 @@ gid://shopify/Product/15502586151297	27->3	Fitness Widerstandsband für Beintrai
 gid://shopify/Product/15502586446209	14->3	Diamond Pattern Boxbirne
 gid://shopify/Product/15502598766977	137->0	Faltbare Recyclingbox mit Aluminiumgriff
 gid://shopify/Product/15503087174017	18->0	Lordosenstütz-Kissen mit Massagefunktion
+gid://shopify/Product/15447894458753	14->2	Seidene UV-Schutzmaske mit Katzenohren
+gid://shopify/Product/15448827199873	31->1	DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
+gid://shopify/Product/15449124209025	10->0	LED Silikonmaske zur Hautverjüngung
+gid://shopify/Product/15449151570305	47->3	Kapuzenpullover mit Augenmaske und Fleecefutter
