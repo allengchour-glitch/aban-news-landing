@@ -223,3 +223,5 @@
 15471253815681	du-form	Damen Casual Leinenkleid mit ausgestellten Ärmeln
 15472050504065	du-form	Boho-Minikleid mit Print und Volants
 15472058859905	du-form	Sommerdecke aus Baumwolle und Sojafasern
+15473048387969	du-form	Retro-Fransenkleid mit langen Ärmeln
+15473059856769	du-form	Besticktes Sommerkleid
