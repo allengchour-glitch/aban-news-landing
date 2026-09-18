@@ -62,6 +62,35 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-14 (Sechs-Punkte-Auftrag «COWORK-BEFEHL» in der Cloud-Session — gemessen statt geklickt):**
+- Cloud-Session hat **keinen eingeloggten Browser** (nur Shopify-MCP + GitHub-API). Die Datei
+  `dropship/COWORK-BEFEHL-2026-09-14.md` liegt auf **keinem** Remote-Branch (nur lokal beim User).
+- **Befund je Punkt (alles live per API gemessen, nichts erfunden):**
+  1. GROQ: `GROQ_API_KEY` in der Cloud-Umgebung **leer** → Schlüssel anlegen + eintragen geht nur im Browser (User/PC-Claude).
+  2. `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET`/`SHOPIFY_SHOP` **leer** (wie am 08.09.). App «autopilot2» (`autopilot-43`) ist installiert.
+  3. Merchant Center: kein API-Zugang aus der Cloud. Shopify-seitig ist nur Markt **Schweiz** aktiv; der Google-Feed läuft über
+     den nativen Kanal «Google & YouTube» (Publication 302872297857) → Zielland/Versanddienst nur in merchants.google.com.
+  4. Zefix (öffentliche `ZefixREST`-Suche `/api/v1/firm/search.json`): **kein Eintrag** für LuxeStyle/Luxestyle/«Luxe Style»
+     (261 «Luxe»-Treffer, keiner mit «style» oder Sitz Belp). Impressum (Page 697899417985) hat Adresse/Mail/Telefon, **keine UID**
+     → nichts eingetragen. Einzelfirmen unter CHF 100k Umsatz sind nicht HR-pflichtig; UID wäre nur via uid.admin.ch zu finden.
+  5. Bestellung #1004 (Order 13901622411649) war **schon archiviert** (`closedAt` 2026-09-14 10:50 UTC, nicht durch diese Session).
+     Sie ist nicht storniert, sondern PAID/UNFULFILLED mit storniertem Fulfillment (ShipRocket).
+  6. **Shopify Inbox ist bereits installiert** (App «Messaging» `shopify-messaging` von Shopify, Publication «Inbox» 305570283905).
+     Begrüssungstext + Mail-Benachrichtigung sind nur in der Inbox-UI setzbar (kein Admin-API-Feld) → Browser.
+- **Lehre:** Vor «installieren/archivieren» erst per API messen — 2 von 6 Punkten waren bereits erledigt.
+- **🟢 GitHub Actions LÄUFT WIEDER (gemessen 14.09. 15:59 UTC):** der Push auf den PR-Branch startete sofort
+  `voice-linter.yml`, `deploy-check.yml` und den Cloudflare-Pages-Deploy (Run-IDs 34865774778/-782/-765). Die Sperre aus
+  dem Stand 06-13/08-30 ist also vorbei. **Cron-Nulldiät-Regel bleibt** (nicht massenhaft reaktivieren, max. 1×/Tag).
+- **🔴 Cloudflare «Workers Builds» (aban-news-landing / aban-a / ki-verzeichnis) sind auf JEDEM Push rot** — nachweislich
+  schon auf den gemergten PRs #2512 (11.09.) und #2513 (12.09.), also auf `main`. Ursache Cloudflare-seitig (kein
+  `wrangler.*` im Repo-Root, Check-Ausgabe ohne Fehlertext). **Nicht als PR-Fehler jagen**; reparieren/abhängen kann
+  nur der User im Cloudflare-Dashboard (Workers → Builds). Die repo-eigenen Checks sind davon unabhängig.
+- **🟡 «Pre-deploy validation» (`deploy-check.yml`) endet auf JEDEM Lauf mit `cancelled`** — eigener `timeout-minutes: 8`,
+  aber der Schritt startet `npx html-validate` einzeln für **2702** HTML-Dateien; Log bricht mitten in der Schleife mit
+  «The operation was canceled» ab. Ebenso auf #2512/#2513 → kein PR-Fehler, die Folgeschritte (Links/Sitemap/JSON-LD)
+  laufen nie. Fix als eigener PR: ein einziger html-validate-Aufruf per `xargs` oder nur geänderte Dateien prüfen
+  (Patch-Vorschlag im Kommentar an PR #2515).
+
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
   Desktop 1440 **4 Spalten / Bild 205 px / 24 Produkte = 1905 px**; **Mobil 390 nur 1 Spalte / Bild 356 px /
