@@ -38,7 +38,7 @@ Four payout requests were confirmed by your system. None was ever paid:
 I have sent five emails to customers@bigbuy.eu since 7 September. The only replies were the automated message asking me to open a ticket. This is that ticket.
 
 Please:
-1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, Valiant Bank AG, Bern, account holder Allen Chour). The bank details are already stored on the request of 8 September, 20:12 UTC.
+1. Pay out EUR 1,000.00 to the corrected IBAN on record. [BANKANGABEN HIER ENTFERNT — sie stehen bereits im BigBuy-Konto, hinterlegt mit dem Antrag vom 8. September, 20:12 UTC. Im Ticketformular selbst eintragen, nicht in dieser Datei.]
 2. Confirm in writing what happened to the requests of 15 July and 16 August - returned to the wallet, still pending, or paid to another account.
 3. Explain record 18138523 (Ingreso en monedero, EUR 1,000, 07/07/2026, Pendiente de pago). I have not cancelled it and will not cancel it without your explanation.
 4. My subscription ended on 15 September 2026. Please confirm in writing that the wallet balance is unaffected by the account closure, and how it will be paid out now.
@@ -66,3 +66,30 @@ Nachfass-Termin 18.09, 17:00 UTC ist während der Blockade verstrichen. Adresse 
 2. BigBuy-Ticket absenden → Referenznummer sichern
 3. Google-Merchant-Zahl frisch prüfen, nur bei Abweichung handeln
 4. Diese Datei mit Ergebnissen aktualisieren und, sofern GitHub-Zugriff via Browser klappt, Inhalt nach `dropship/_status_cowork.md` im Repo übertragen
+
+---
+
+## ⚠️ NACHTRAG DIESER SESSION, 18.09.2026 — DAS REPO IST ÖFFENTLICH
+
+Die Cowork-Session hat diesen Text in der Annahme verfasst, das Repo sei privat («403 aus der
+Cloud-Sandbox → privates Repo»). **Diese Annahme ist gemessen falsch.** GitHub meldet für
+`allengchour-glitch/aban-news-landing` `"private": false`, `"visibility": "public"`; ein
+unangemeldeter Abruf über einen zweiten Ausgang zeigt das Abzeichen «Public» (Gegenprobe:
+erfundenes Repo → HTTP 404, das Werkzeug kann also unterscheiden).
+
+**Der 403 der Cowork-Sandbox beweist nichts über die Sichtbarkeit.** Derselbe Ausgang gibt
+403 für `anthropics/claude-code` — ein unstrittig öffentliches Repo — mit dem Text «GitHub
+access to this repository is not enabled for this session». Das ist der Sitzungs-Proxy nach
+Erlaubnisliste, nicht GitHub. **Ein 403 misst die Wand vor dem Absender, nicht das Schloss am
+Ziel.**
+
+Folge: Bankinstitut und Kontoinhaber sind oben **entfernt** worden. ⚠️ Sie standen von
+19:40 bis 20:15 UTC im öffentlichen Repo und **bleiben in der Git-Historie abrufbar** — das
+Entfernen im Arbeitsbaum stoppt nur die weitere Verbreitung. Ein Bereinigen der Historie wäre
+ein Force-Push auf einen Zweig, auf den auch der Hetzner-Agent schreibt; das ist ein
+Betreiber-Entscheid, kein Alleingang dieser Session.
+
+**Regel für jede weitere Bearbeitung dieser Datei: keine Bankangaben, keine IBAN, keine
+Zugangsdaten, keine personenbezogenen Daten Dritter.** Die Kundennummer 966388 steht bereits
+seit Wochen in fünf anderen Repo-Dateien und ist damit nicht neu — sie bleibt hier stehen,
+damit das Ticket auffindbar bleibt.
