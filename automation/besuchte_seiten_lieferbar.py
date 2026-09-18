@@ -91,10 +91,48 @@ def shopify(query):
     raise RuntimeError(f"Shopify antwortet nicht ({i + 1} Versuche). Letzter Grund: {letzte}")
 
 
-def main():
-    handles = [h.strip() for h in sys.stdin if h.strip()]
+TAGE = int(os.environ.get("TAGE", "60"))
+MAX_SEITEN = int(os.environ.get("MAX_SEITEN", "45"))
+
+
+def besuchte_produkt_handles():
+    """Holt die Liste selbst — ein Waechter, der auf eine Handreichung wartet, laeuft nie.
+
+    GEMESSEN 18.09.2026: die Admin-API kann ShopifyQL (`shopifyqlQuery`), Felder heissen
+    `tableData { rows columns { name } }` — NICHT `rowData`/`unformattedData`, die gibt es in
+    2024-10 nicht. Erst das Schema fragen, dann die Abfrage schreiben; geraten kostete hier
+    vier Fehlversuche.
+    """
+    q = ('{ shopifyqlQuery(query: "FROM sessions SHOW sessions GROUP BY landing_page_path '
+         "WHERE human_or_bot_session = 'human' SINCE -%dd ORDER BY sessions DESC LIMIT 250\") "
+         '{ parseErrors tableData { rows } } }' % TAGE)
+    d = shopify(q)["data"]["shopifyqlQuery"]
+    if d.get("parseErrors"):
+        raise RuntimeError(f"ShopifyQL abgelehnt: {d['parseErrors']}")
+    rows = (d.get("tableData") or {}).get("rows") or []
+    handles = []
+    for r in rows:
+        pfad = (r.get("landing_page_path") or "").split("?")[0]
+        if "/products/" not in pfad:
+            continue
+        h = pfad.rsplit("/products/", 1)[1].strip("/")
+        if h and h not in handles:
+            handles.append(h)
     if not handles:
-        sys.exit("Keine Handles auf stdin. Aufruf: … | python3 automation/besuchte_seiten_lieferbar.py")
+        # Eine leere Liste ist hier NIE ein Ergebnis: es gibt immer besuchte Produktseiten.
+        # Sie waere das Zeichen, dass die Abfrage oder die Berechtigung kaputt ist — und ein
+        # Waechter, der dann "0 Befunde" meldet, ist die stille Null aus Lehre 18.09.
+        raise RuntimeError(f"ShopifyQL lieferte {len(rows)} Zeilen, aber KEINE Produktseite — "
+                           "Abfrage oder Berechtigung pruefen, es wird nichts geurteilt.")
+    return handles[:MAX_SEITEN]
+
+
+def main():
+    handles = [] if sys.stdin.isatty() else [h.strip() for h in sys.stdin if h.strip()]
+    if not handles:
+        handles = besuchte_produkt_handles()
+        print(f"{len(handles)} besuchte Produktseiten der letzten {TAGE} Tage (selbst geholt)\n",
+              flush=True)
 
     # ── Kanarienvogel ────────────────────────────────────────────────────────
     n, grund = ch_optionen_vid(KANARIENVOGEL_VID)

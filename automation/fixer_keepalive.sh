@@ -884,6 +884,43 @@ while true; do
       fi
     fi
   fi
+  # 🛒 VERKAUFEN WIR AUF UNSEREN MEISTBESUCHTEN SEITEN WARE, DIE NIE ANKOMMT? (18.09.2026)
+  # Anlass: Die meistbesuchte SUCHSEITE des ganzen Shops (Rizinusoel-Wickel-Set, 18 Sitzungen
+  # in 30 Tagen, 2 Warenkoerbe) stand ACTIVE und kaufbar — tracked:false, inventoryPolicy
+  # CONTINUE — mit Bestand NUR im US-Lager und 0 Versandoptionen CN->CH. Wer dort gekauft
+  # haette, waere die sechste Erstattung geworden: 5 von 9 externen Bestellungen wurden bereits
+  # erstattet, weil der Lieferant nicht liefern konnte.
+  # WARUM NEBEN cj_verfuegbarkeit.py: der laeuft ueber alle 51'338 Produkte, braucht dafuer Tage
+  # und stand am 16.09. auf einem Cursor fest. Dieser hier fragt NUR die ~45 Seiten, auf denen in
+  # 60 Tagen wirklich ein Mensch gelandet ist — die Liste holt er sich selbst per ShopifyQL.
+  # Das sind die einzigen Seiten, bei denen ein Fehlurteil heute Geld kostet.
+  # ⚠️ ER DRAFTET NICHT von sich aus. Bei der Klingen-Wache ist FIX=1 richtig, weil die Kategorie
+  # kategorisch verboten ist. Hier haengt das Urteil an einer Einzelmessung je Produkt — und eine
+  # CJ-Drosselung duerfte niemals die bestbesuchten Seiten des Shops draften. Vollstreckt wird
+  # ueber die Sichtbarkeit: die Befundzahl steht in dieser stuendlichen Ausgabe, die Liste in
+  # dropship/_besuchte_seiten_nicht_lieferbar.txt. (Der Kanarienvogel im Skript bricht ohnehin
+  # ab, falls CJ fuer ALLES 0 Optionen meldet.)
+  BSL=/tmp/besuchte_seiten_lieferbar.log
+  if [ -f "$REPO/automation/besuchte_seiten_lieferbar.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BSL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_besuchte_lieferbar.lock; flock -n 9 || exit 0; exec >> \"$BSL\" 2>&1; \
+           exec python3 automation/besuchte_seiten_lieferbar.py < /dev/null" 9>&- & )
+    fi
+    # Ergebnis des VORIGEN Laufs melden, nie den Start (Lehre 15.09.).
+    if [ -s "$BSL" ] && tail -n 40 "$BSL" | grep -q "^ABBRUCH\|Traceback"; then
+      echo "$(date -u +%H:%M) ⚠️ Besuchte-Seiten-Wache: letzter Lauf abgebrochen ($BSL)"
+    elif [ -s "$BSL" ]; then
+      echo "$(date -u +%H:%M) $(grep '^LIEFERBAR:' "$BSL" | tail -n 1)"
+    else
+      echo "$(date -u +%H:%M) Besuchte-Seiten-Wache gestartet (erster Lauf)"
+    fi
+  else
+    # Kein stilles `continue` (Lehre 17.09.: engine_keepalive uebersprang fortura_img_runner
+    # schweigend und meldete weiter «alles laeuft»).
+    echo "$(date -u +%H:%M) ⚠️ automation/besuchte_seiten_lieferbar.py FEHLT"
+  fi
   # Google-Kanal-Luecke. Google ist der EINZIGE Kanal mit belegten Verkaeufen
   # (4 von 10 Bestellungen); Pinterest/TikTok/Meta tragen den Katalog zwar auch,
   # haben aber nie verkauft. Gemessen 16.09.: 2'497 aktive Produkte lagen ausserhalb
