@@ -67,24 +67,37 @@ Fertiger Formulartext steht weiter unten in dieser Datei unter «Punkt 1».
 
 ---
 
-## 3️⃣ Google Merchant — ERST NACHSEHEN, dann ändern  ·  ~10 Minuten
+## 3️⃣ Google Merchant — nachsehen, ob die «56» stimmt  ·  ~10 Minuten
 
 **Link:** https://merchants.google.com
 
 Google ist der **einzige Kanal mit belegten Verkäufen**: von 9 externen Bestellungen kamen
 **7 über Google**, 1 über ChatGPT, 1 direkt — Social hat in 180 Tagen **null** gebracht.
 
-1. **Zuerst nur lesen:** Gibt es unter «Produkte → Diagnose» noch Produkte mit dem Hinweis
-   **«Missing shipping info»**? Wie viele heute? Bitte die Zahl melden.
-2. **Erst danach ändern:** Lieferland/Zielland auf **nur Schweiz** stellen.
+**⚠️ DIESER SCHRITT HAT SICH AM 18.09. ABEND GEÄNDERT.** Die Cowork/Chrome-Session war im
+Merchant-Konto und meldet: «Missing shipping info in some countries» = **56** offene Fälle,
+nicht 1'698 — und das Lieferland sei **bereits in allen 4 Versandrichtlinien** auf Schweiz
+gesetzt, es sei nichts zu tun. Gegengeprüft, soweit von hier möglich:
 
-⚠️ Die Zahl «1'698 Produkte» steht seit dem 10.07. im Gedächtnis und wurde **nie nachgeprüft**.
-Von unserer Seite zielt nichts auf DE (gemessen: genau ein Markt, «Switzerland», Länder `['CH']`).
-Ob es die 1'698 überhaupt noch gibt, ist von hier nicht feststellbar. **Erst messen, dann handeln.**
+- **Die 56 ist von hier NICHT prüfbar** (keine Merchant-Zugangsdaten, Google sperrt den
+  Agenten-Browser grundsätzlich aus). Sie ersetzt die 1'698 nicht — **sie ist eine zweite
+  unbestätigte Zahl**, und sie stammt laut dem Dokument selbst aus der Zeit «vor
+  Verbindungsabbruch». Bitte im Konto ablesen und die heutige Zahl melden.
+- **«4 Versandrichtlinien» stimmt auf unserer Seite nicht:** gemessen **54 Versandprofile**
+  (6 mit Produkten, 48 leere Gelato-Profile mit je 16 aktiven Weltraten).
+- **«Nur Schweiz in allen Profilen» stimmt auf unserer Seite ebenfalls nicht:** das
+  Standard-Profil, an dem der ganze Katalog hängt, führt eine **aktive** Zone «International —
+  Rest of World, CHF 15.00 pauschal»; `shop { shipsToCountries }` meldet **237 Länder**.
+- **ABER: kaufen kann trotzdem niemand aus dem Ausland.** Gemessen mit
+  `tools/testkorb_ausland.py` (echter Warenkorb über die Storefront-API, keine Bestellung):
+  Schweiz → 2 Versandoptionen, **Deutschland → 0, USA → 0**, Korb leer. Der einzige Markt
+  («Switzerland», Länder [CH]) sperrt sie. **Die International-Zone ist totes Konfigurat,
+  keine offene Tür.**
 
-**Warum nicht automatisch:** Google verweigert dem Agenten-Browser die Anmeldung grundsätzlich
-(«Dieser Browser oder diese App ist unter Umständen nicht sicher», gemessen 17.09.). Das wurde
-bewusst nicht umgangen — an diesem Konto hängt der einzige Kanal, der verkauft.
+**Was also zu tun ist:** im Merchant-Konto die heutige Zahl unter «Missing shipping info»
+ablesen und melden. Nur wenn sie deutlich über 56 liegt, lohnt weitere Arbeit. Das Aufräumen
+der 48 leeren Gelato-Profile und der International-Zone ist Kosmetik — es kostet keinen Verkauf
+und hat Zeit.
 
 ---
 
