@@ -148,14 +148,17 @@ def cj_dispute_1017():
     quittung = os.path.join(REPO, "dropship", "_cj_dispute_1017_ref.txt")
     if os.path.exists(quittung) and open(quittung, encoding="utf-8").read().strip():
         return None
-    return ("🔪 CJ-Rueckerstattung USD 25.54 offen (Auftrag DP2609071450210661800, Messer "
-            "zurueckgesandt) — CJ hat am 17.09. 07:21 geantwortet, aber auf die ALTE Anfrage vom "
-            "09.09. und mit der falschen Aussage, beide Pakete seien unterwegs. Korrektur "
-            "mit Messung ist am 17.09. 07:35 raus (Gmail-Thread 1a066a03bf2c8dd2). "
-            "disputes/create gibt weiterhin 9009, disputeId ist leer — der API-Weg bleibt "
-            "zu. Ohne Antwort binnen 48 h: Dispute in der KONSOLE oeffnen, Grund 6 "
-            "'Product Returned'. Fallnummer oder Gutschrift nach "
-            "dropship/_cj_dispute_1017_ref.txt · Text: COWORK-BEFEHL.md Punkt 0")
+    # ⚠️ Stand 18.09.2026 08:44 UTC: CJ hat geantwortet, und zwar vollstaendig. Die Zeile
+    # sagt jetzt nicht mehr «nachfassen», sondern nennt den EINEN Schritt, der noch fehlt.
+    return ("🔪 CJ-Rueckerstattung USD 25.54 — CJ hat am 18.09. 08:44 SCHRIFTLICH ZUGESAGT: "
+            "Dispute im WEB-PORTAL oeffnen (cjdropshipping.com/article-details/172), danach "
+            "zahlen sie 25.54 (Ware 18.24 + Fracht 7.30) auf die CJ-Wallet. Sie bestaetigen "
+            "auch: der Rueckversand geschah wegen des verbotenen Artikels, es gibt KEINE "
+            "Linie fuer Klingen in die CH. Der Grund fuer 9009 ist jetzt bekannt und "
+            "endgueltig: die Bestellung kam ueber den SHOPIFY-KANAL, nicht ueber die Open "
+            "API — CJ verbietet API-Disputes fuer nicht per API angelegte Auftraege, kein "
+            "Parameter aendert das. Also: Formular im Portal, 2 Minuten. Fallnummer oder "
+            "Gutschrift nach dropship/_cj_dispute_1017_ref.txt · Text: COWORK-BEFEHL.md Punkt 0")
 
 
 def bigbuy_ticket():

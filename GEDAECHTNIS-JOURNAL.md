@@ -6,6 +6,61 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · 📬 CJ hat geantwortet — und 9009 endlich erklärt: die Bestellung kam nicht über die API
+
+«cj mail check und machen». CJ antwortete heute **08:44 UTC**, und diesmal vollständig — auf
+alle drei Punkte meiner Korrektur vom 17.09.
+
+**1. Die Erstattung ist zugesagt.** CJ bestätigt den Rückläufer wörtlich («you are completely
+correct»), bestätigt **keine Linie für Klingen in die Schweiz**, und sagt zu: Dispute im
+**Web-Portal** öffnen, dann zahlen sie die vollen **USD 25.54** (Ware 18.24 + Fracht 7.30) auf
+die CJ-Wallet. Damit ist der Punkt kein Streitfall mehr, sondern ein Formular.
+
+**2. Der Grund für 9009 — und er ist die eigentliche Lehre.** Seit dem 16.09. stand hier die
+Messung: `disputeConfirmInfo` antwortet **200** mit `maxAmount 25.54` und nennt sogar den
+richtigen Grund, `disputes/create` verweigert dieselben Werte mit **9009**, in jeder
+Kombination. Ich hatte das als Widerspruch gemeldet. CJs Erklärung löst ihn auf:
+
+> Die Bestellung wurde über den **Shopify-Kanal** und den Web-Warenkorb angelegt, **nicht über
+> die Open API**. CJs Sicherheitsregel verbietet API-Disputes für Aufträge, die nicht per API
+> entstanden sind. `disputeConfirmInfo` rechnet nur den Erstattungsdeckel aus und prüft die
+> Herkunft gar nicht; `disputes/create` läuft durch die Schreibprüfung und fällt dort über das
+> fehlende «Created via API»-Merkmal. Kein Grund, keine ID, kein Erstattungstyp umgeht das.
+
+Das bestätigt die Lehre vom 16.09. («eine Vorschau, die ok sagt, ist keine Erlaubnis zu
+handeln») und schärft sie: **die beiden Aufrufe prüfen nicht dasselbe.** Der lesende prüft den
+Betrag, der schreibende die Berechtigung. Dass beide zum selben Vorgang gehören, heisst nicht,
+dass sie dieselbe Frage beantworten.
+
+**Praktische Folge, die bleibt:** Bestellungen, die über den Shopify-Kanal laufen, sind später
+**nicht per API reklamierbar**. Wer eine Bestellung anlegt, bei der eine Reklamation
+wahrscheinlich ist, legt sie über die Open API an — sonst ist der Rückweg ein Betreiber-Klick.
+
+**3. #1018 ist in der Schweiz — selbst nachgemessen, und CJ hat diesmal recht.** Weil CJ in
+genau diesem Thread schon einmal Falsches behauptet hatte («beide Pakete unterwegs», während
+#1017 in Shanghai zurücklag), habe ich nicht übernommen, sondern `getTrackInfo` selbst
+abgefragt: **16 Stationen, `En Route`** — ZRH 17.09. 06:42 «Arrived at International airport»,
+09:00 «Released from customs», 15:35 von der Schweizerischen Post übernommen, 16:05 «Item has
+left OE for domestic channels». Das Paket ist im Inlandkanal.
+
+⚠️ Messfalle beim Nachmessen, dritte Variante derselben Familie: die Stationen stehen unter
+`data[0].routes` (Lehre 17.09.), aber die Felder darin heissen **`acceptTime` /
+`acceptAddress` / `remark`** — meine Namen aus dem Gedächtnis (`routeOccurTime`,
+`routeDetails`) ergaben 16 Zeilen mit lauter `None`. **Das richtige Feld zu finden ist zwei
+Schritte weit: erst der Zweig, dann die Blätter.** Ein Blick auf `sorted(rt[0].keys())` statt
+zu raten.
+
+**Der Befund, den niemand gesucht hat, steht im Kundenthread.** Am 10.09. habe ich Herrn Raia
+**zweimal** zugesagt, mich am Freitag, 12.09. von selbst zu melden — wörtlich «Sie müssen nicht
+nachfragen und nicht nachhaken». Das ist nicht passiert; er hat **sechs Tage** nichts gehört,
+nachdem er am 10.09. geschrieben hatte «Ich will die bestellung wann kommt sie». Dieselbe
+Klasse wie bei Esatovski am 17.09.: **die Ware war nie das Problem, die Nachricht war es.** Der
+Entwurf beginnt deshalb mit der Entschuldigung für die gebrochene Zusage, nicht mit der guten
+Nachricht — und er nennt wieder ein Datum (23.09.), diesmal eines, das eingehalten wird.
+
+Entwurf liegt im Thread, **nicht gesendet** (Betreiber-Entscheid 11.09.). Die Ampel-Zeile für
+den Dispute sagt jetzt nicht mehr «nachfassen», sondern nennt den einen Schritt, der fehlt.
+
 ## 2026-09-18 · 🧹 «Mach alles sauber» — und drei von vier Befunden waren meine eigenen Fehlmessungen
 
 Aufräumen heisst zuerst messen, was schmutzig ist. Vier Spuren, **drei davon widerlegt** — und
