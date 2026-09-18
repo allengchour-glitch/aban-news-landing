@@ -69,9 +69,16 @@ export default async function ({ ctx }) {
       befunde.push({
         dienst: d.name, wofuer: d.wofuer, ziel,
         status: antwort ? antwort.status() : null,
+        // ⚠️ VERSCHAERFT 18.09. nach Auftrag 35, und es betrifft die Zeile darunter:
+        // «Ziel erreicht» hiess hier `true`. Auftrag 32 meldete damit **Shopify Admin
+        // als angemeldet** — Auftrag 35 hat dieselbe Seite danach mit **HTTP 403 und
+        // 68 Zeichen Text** gemessen, samt Kontrollseite. Die Adresse stimmte, die
+        // Anmeldung gab es nicht. **Eine erreichte Adresse belegt keine Anmeldung; nur
+        // eine gelungene Handlung belegt sie.** Darum ist `true` jetzt an Status 200
+        // gebunden, und ohne Status gibt es ein ehrliches `null`.
         angemeldet: kaputt                        ? null     // eine Fehlerseite sagt NICHTS ueber die Anmeldung
                   : ist_anmeldeseite(ziel)        ? false
-                  : hat_ziel_erreicht(d.url, ziel) ? true
+                  : (antwort && antwort.status() === 200 && hat_ziel_erreicht(d.url, ziel)) ? true
                   : null,
         haenger: kaputt ? kaputt
                : ist_zwischenseite(ziel) ? 'Zwischenseite (Einwilligung/Bot-Pruefung)' : undefined,
