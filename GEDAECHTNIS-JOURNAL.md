@@ -6,6 +6,64 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · 🧹 «Mach alles sauber» — und drei von vier Befunden waren meine eigenen Fehlmessungen
+
+Aufräumen heisst zuerst messen, was schmutzig ist. Vier Spuren, **drei davon widerlegt** — und
+das war der wertvolle Teil.
+
+**1. Die Landkarte von heute Morgen war zu drei Vierteln falsch.** Auftrag 35 sollte klären, ob
+die 403 auf Shopifys Dateiseite echt ist oder ob meine neue Statuswache zu streng ist. Die
+Kontrollseite `/settings/billing` — die in Auftrag 32 als «angemeldet ✅» galt — gab **ebenfalls
+403**, wie alle fünf Admin-Seiten, je mit 68 Zeichen Text. Also nicht die Wache irrt, sondern
+der ältere Befund. Auftrag 36 zog die Runde mit Statusprüfung neu: **von vier «angemeldeten»
+Diensten hält genau EINER stand.** Pinterest 200 ✅, Shopify 403, BigBuy 403, CJ 404, Google
+Einwilligungswand, TikTok nicht angemeldet.
+
+Der Grund war eine Regel, die harmlos klang: «Ziel erreicht → angemeldet». Sie stimmt genau
+dann nicht, wenn der Server die richtige Adresse mit einem Fehler beantwortet — und das war
+bei drei von vier so. **Eine erreichte Adresse belegt keine Anmeldung; nur eine gelungene
+Handlung belegt sie.** Pinterest hat so einen Beleg (Werte gelesen, ein Feld geschrieben, danach
+neu geladen), die anderen drei hatten nie einen. `angemeldet: true` hängt jetzt an Status 200.
+
+**2. «Zwölf Wächter kaputt» — waren zwölf gesunde Wächter.** Der Rundgang über `/tmp/*.log`
+fand in zwölf Tails einen Traceback. Shopify antwortete aber im selben Moment mit **200** und
+einem Eimer von 1989/2000. Der Blick in einen ganzen Tail erklärte es: `textbild_fix` hatte
+**8000 Produkte gescannt** und brach dann an einer Drosselung ab — mit Cursor in
+`dropship/_textbild_cursor.txt`, also macht der nächste Lauf weiter. Das ist genau die
+Bauweise, die hier am 03.09. vorgeschrieben wurde: idempotent über ein Ledger, darf ohne
+Schlusszeile sterben. **Ein Traceback am Ende eines Logs kann die Signatur eines gesunden
+Automaten sein.** Und die Lehre von gestern («der Tail entscheidet, nicht die Summe») greift zu
+kurz: **der Tail sagt, WIE der letzte Lauf endete, nicht WANN er war.** Ohne Zeitstempel ist
+auch er nur eine Aussage über irgendwann.
+
+**3. Ein zehn Tage totes Wächter-Log gehörte keinem Wächter.** `tztnn1_jenachland.log` vom
+08.09. sah nach einem seit zehn Tagen stillstehenden Motor aus — bis der echte
+`versand_jenachland.log` auftauchte, von **heute 04:16, mit 227 geänderten Produkten**. Das
+`tztnn1_`-Log war mein eigener Einmallauf aus einer früheren Session; das Präfix ist mein
+Branchname. **Ich hatte die Datei am Namen erkannt statt am Aufrufer** — dieselbe Lehre wie
+bei den Prozessprüfungen (20.08.), nur mit Logdateien statt Kommandozeilen. Folge fürs
+Aufräumen: Diagnose-Ausgaben gehören in den Kladde-Ordner der Sitzung, nicht nach `/tmp` mit
+einem Namen, der wie ein Motor klingt.
+
+**4. `ls <glob> | wc -l` ist keine Dateizählung.** Ich meldete «11'818 Dateien mit meinem
+Präfix» — `find -maxdepth 1` fand **1208**. Der Unterschied: unter dem Glob lagen **19
+Verzeichnisse**, und `ls` listet deren *Inhalt* statt sie selbst. Die Zahl war um das
+Zehnfache falsch, in der Richtung, die Dringlichkeit erzeugt. **Wer Dateien zählt, fragt
+`find`, nicht die Anzeige.**
+
+**Was wirklich sauber wurde:** die 1208 Einträge (275 MB, alles über sieben Tage alt) sind weg
+— vorher gegengeprüft, dass kein Repo-Skript sie nennt (`grep -rl` über `automation/ tools/
+server/` → 0) und kein laufender Prozess sie offen hält (`/proc/*/fd` → 0). `/tmp` 2,8 → 2,5 GB,
+Motoren laufen weiter, Puls frisch. Dazu die korrigierte Landkarte und drei Aufgaben, die
+erledigt waren und noch als offen standen.
+
+**Nicht angefasst:** `.git` ist 6,8 GB. Das zu verkleinern heisst History umschreiben und
+force-pushen — auf einem Zweig, auf den auch der Hetzner-Agent pusht, ist das kein Aufräumen,
+sondern ein Datenverlust mit Ansage. Und die 31 MB Diagnose-Screenshots in
+`auftraege/ergebnis/` bleiben: die Historie behält sie sowieso, das Löschen spart also nichts
+und nimmt die Belege (Cloudflare-Wand, Pinterest-Tippfehler) mit. **Kosmetik mit
+Informationsverlust ist keine Sauberkeit.**
+
 ## 2026-09-18 · 🤖 «Mach den Bot zu einem Superbot» — vier Messungen, drei echte Lücken
 
 Der Auftrag klang nach «mehr Funktionen». Die erste Frage war eine andere: **was kann er
