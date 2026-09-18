@@ -36,9 +36,13 @@ die nicht per API angelegt wurden (Fehler 9009). Kein Parameter ändert das — 
 allen drei Bestell-IDs und allen Gründen sind gemessen gescheitert.
 
 **Quittung:** Fallnummer oder Gutschriftbeleg in `dropship/_cj_dispute_1017_ref.txt`.
-⚠️ Eine Frist hat CJ **nicht** genannt. In einer früheren Fassung dieser Datei stand «Frist
-19.09. ca. 07:30 UTC» — diese Zeit steht in keiner CJ-Nachricht und war nicht belegt. Bald ist
-trotzdem besser als spät, weil Reklamationsfenster üblicherweise auslaufen.
+⚠️ **Eine Frist hat CJ NICHT genannt — und die Herkunft der alten Angabe ist belegt.** In der
+Fassung bis heute stand «Frist 19.09. ca. 07:30 UTC». Diese Zeit kommt aus **meiner eigenen
+Erinnerung** `trig_0183HCG94NNMXrSRWc1HmvGJ`, die bis 18.09. «CJ-Erstattung USD 25.54 —
+48h-Frist abgelaufen» hiess und auf **19.09. 07:30 UTC** gestellt war. Aus dem Namen und der
+Weckzeit meines eigenen Auslösers ist eine Tatsache über CJ geworden. **Das war der Wecker,
+nicht die Sache.** Der Auslöser ist umgeschrieben; bald ist trotzdem besser als spät, weil
+Reklamationsfenster üblicherweise auslaufen.
 
 ---
 

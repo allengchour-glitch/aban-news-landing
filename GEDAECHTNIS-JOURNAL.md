@@ -6,6 +6,40 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-18 · ⏰ Der Wecker wurde zur Tatsache: eine «CJ-Frist», die ich mir selbst gestellt hatte
+
+In `dropship/COWORK-BEFEHL.md` stand seit gestern «CJ-ERSTATTUNG USD 25.54 — **Frist 19.09.
+ca. 07:30 UTC**». Beim Nachmessen für die Vier-Schritte-Anleitung fiel auf: diese Zeit steht in
+**keiner** CJ-Nachricht. Gesucht, woher sie kommt — und sie ist meine eigene: der Auslöser
+`trig_0183HCG94NNMXrSRWc1HmvGJ` hiess «CJ-Erstattung USD 25.54 — **48h-Frist abgelaufen**» und
+war auf **19.09. 07:30 UTC** gestellt. Aus dem Namen und der Weckzeit meiner eigenen Erinnerung
+ist eine Aussage über den Lieferanten geworden.
+
+**Die Klasse ist neu und unangenehm sauber:** Eine Erinnerung ist keine Quelle. Sie trägt ein
+Datum, weil ich eines gewählt habe, und einen Namen, weil ich einen geschrieben habe. Beides
+sieht in einem Auftragsdokument aus wie eine Angabe von aussen — besonders nach ein paar Tagen,
+wenn niemand mehr weiss, wer sie gesetzt hat. **Was ich mir selbst zurufe, darf nie als Beleg
+zurückkommen.**
+
+⚠️ Beim Aufräumen fast derselbe Fehler nochmal: Ich suchte den Auslöser im Rohtext der Liste
+(`s.find(...)` → **-1**) und gab trotzdem die Felder aus dem Umfeld aus — die gehörten zu
+«Re-check PR #2515». Ein `enabled: true` und ein `next_run_at` hätte ich beinahe als seine
+gemeldet. Erst `json.loads` und die Felder **aus dem richtigen Datensatz** gaben das Bild:
+11 Auslöser, davon 7 aktiv; der von 17:00 war ein Einmaliger, der bereits gefeuert hatte und
+deshalb gar nicht mehr in der Liste steht. **Wer im Fliesstext nach Struktur greift, bekommt
+die Nachbarn.**
+
+Der Auslöser ist jetzt **umgeschrieben statt gelöscht** (die Laufhistorie bleibt): neuer Name
+«steht der Dispute im Portal?», und im Text steht die Fristgeschichte ausdrücklich drin, damit
+die nächste Session sie nicht ein zweites Mal für einen CJ-Termin hält. Dazu ein hartes
+**disputes/create NICHT erneut versuchen** — CJ hat den Mechanismus am 18.09. erklärt (die
+Bestellung kam über den Shopify-Kanal, kein Parameter umgeht das), und ein widerlegtes
+Experiment zu wiederholen ist keine Messung.
+
+Gemessen zum Sachstand, 18.09. 17:00 UTC: Guthaben **0.00**, `disputeId` **null**,
+`getDisputeList` leer, keine CJ-Mail neuer als die Zusage von 08:44. Es bewegt sich nichts,
+bis der Dispute im Portal steht — genau ein Betreiber-Klick, Schritt 1 der Anleitung.
+
 ## 2026-09-18 · 🎯 «hole / suche kunden»: null von 15 Vorschlägen überlebte — der Fund lag darunter
 
 Sechs Kanal-Achsen gemessen (Trichter, Google, Suche/KI, Pinterest, Bestandskunden, neue
