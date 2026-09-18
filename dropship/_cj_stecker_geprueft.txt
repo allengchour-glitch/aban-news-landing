@@ -783,3 +783,28 @@
 15504120545665	kein-stecker-merkmal	2026-09-18	Hitzebeständige Silikonform für Heissluftfritteusen
 15504148038017	kein-stecker-merkmal	2026-09-18	Glide Ionen-Glättbürste für geschmeidiges Haar
 15504149184897	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-18	Big Wave Lockenstab mit Anionen-Technologie
+15504149348737	kein-stecker-merkmal	2026-09-18	Elektrischer Lockenstab mit 360°-Drehgriff
+15504149643649	unklar-eu-vorhanden:EU/US	2026-09-18	Infrarot Glätteisen für glattes & lockiges Haar
+15504150692225	kein-stecker-merkmal	2026-09-18	Multifunktionaler 3-in-1 Lockenstab
+15504150921601	kein-stecker-merkmal	2026-09-18	Kabelloser Mini-Lockenstab für unterwegs
+15504173760897	nur-eu-version	2026-09-18	Smarter 5L Reiskocher mit grossem Fassungsvermögen
+15504176939393	kein-stecker-merkmal	2026-09-18	Tragbarer Mini-Entsafter mit USB-Ladefunktion
+15504187097473	kein-stecker-merkmal	2026-09-18	Heissluftballon-Leinwandbild für Kinderzimmer
+15505118364033	kein-stecker-merkmal	2026-09-18	3‑in‑1 kabelloses Ladegerät
+15505483727233	kein-stecker-merkmal	2026-09-18	Kabelloser Mini-Lockenstab
+15505484415361	kein-stecker-merkmal	2026-09-18	Kabelloser Lockenstab mit LCD-Anzeige
+15505601233281	kein-stecker-merkmal	2026-09-18	Morandi Fritteuse mit Temperaturkontrolle
+15505602216321	kein-stecker-merkmal	2026-09-18	Mini Waffeleisen für Zuhause
+15506188042625	kein-stecker-merkmal	2026-09-18	Kabelloser Mini-Entsafter für zuhause
+15506241749377	kein-stecker-merkmal	2026-09-18	Kabelloser Lockenstab für unterwegs
+15506242208129	kein-stecker-merkmal	2026-09-18	Automatischer Lockenstab mit Keramikbeschichtung
+15506242437505	kein-stecker-merkmal	2026-09-18	Kabelloser Automatik-Lockenstab
+15506242601345	unklar-eu-vorhanden:AU/CN/EU/UK/US	2026-09-18	Elektrischer Lockenstab mit Rotation
+15506243027329	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-18	Professioneller Lockenstab mit Anionenpflege
+15506243256705	kein-stecker-merkmal	2026-09-18	Lockenstab für trockene und nasse Haare 9mm
+15506243715457	kein-stecker-merkmal	2026-09-18	Automatischer Lockenstab mit Drehfunktion
+15506258297217	unklar-eu-vorhanden:EU/US	2026-09-18	Rotierender Lockenstab für nasse und trockene Haare
+15506274648449	unklar-eu-vorhanden:EU/US	2026-09-18	Mini Waffeleisen für vielfältige Snacks
+15506281267585	nur-eu-version	2026-09-18	Elektrische Fritteuse für Poulet und Pommes
+15506287493505	nur-eu-version	2026-09-18	Lithium-Batterieladegerät
+15506299748737	kein-stecker-merkmal	2026-09-18	Vibrations-Heizkissen für Büro und Zuhause
