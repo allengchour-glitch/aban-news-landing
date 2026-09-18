@@ -808,3 +808,78 @@
 15506281267585	nur-eu-version	2026-09-18	Elektrische Fritteuse für Poulet und Pommes
 15506287493505	nur-eu-version	2026-09-18	Lithium-Batterieladegerät
 15506299748737	kein-stecker-merkmal	2026-09-18	Vibrations-Heizkissen für Büro und Zuhause
+15506302304641	kein-stecker-merkmal	2026-09-18	Kabelloser USB-Staubsauger für Auto & Haushalt
+15506323538305	kein-stecker-merkmal	2026-09-18	Retro Elektro-Haarschneider für präzise Styles
+15506527289729	unklar-eu-vorhanden:AU/EU/US	2026-09-18	Lockenstab mit Negativ-Ionen-Haarpflege
+15506540724609	kein-stecker-merkmal	2026-09-18	Heissluftfriteusen Zubehör-Set (7-teilig)
+15506658394497	kein-stecker-merkmal	2026-09-18	Mutian Schleifmaschinen-Gummiplatte
+15506890326401	kein-stecker-merkmal	2026-09-18	Nähmaschinenmotor für Haushalt Nähmaschinen
+15508361347457	kein-stecker-merkmal	2026-09-18	Kabelloser Mini-Glätteisen
+15508399718785	kein-stecker-merkmal	2026-09-18	Wmark Power Haarschneider 6500 U/Min
+15508417085825	kein-stecker-merkmal	2026-09-18	Kaffeemaschinen-Modell aus Bausteinen
+15508422328705	kein-stecker-merkmal	2026-09-18	Pressfuss für Nähmaschine
+15508465189249	kein-stecker-merkmal	2026-09-18	Manueller Entsafter für Zitrusfrüchte
+15508468400513	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-18	Heizkissen für Rücken und Körper, 12x24"
+15508732248449	kein-stecker-merkmal	2026-09-18	Nähfuss-Set für Nähmaschinen (48-teilig)
+15509315092865	kein-stecker-merkmal	2026-09-18	Fritteuse mit Temperaturkontrolle
+15509338161537	nur-eu-version	2026-09-18	Elektrischer Mini-Reiskocher
+15509340029313	kein-stecker-merkmal	2026-09-18	Kabelloser Mini-Entsafter für unterwegs
+15509347664257	kein-stecker-merkmal	2026-09-18	Abgerundete Schleifscheibe für Nähmaschinen
+15509365948801	unklar-eu-vorhanden:EU/US	2026-09-18	Mini Heizlüfter mit Flammeneffekt
+15509366047105	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-18	30W Vertikales USB-Ladegerät mit 6 Ports
+15509366309249	kein-stecker-merkmal	2026-09-18	Elektrische Schallzahnbürste mit Aluminiumgriff
+15509371060609	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-18	Mini-Nähmaschine, elektrisch
+15509371388289	kein-stecker-merkmal	2026-09-18	Handnähmaschine
+15509379711361	nur-eu-version	2026-09-18	Natur Jade Heizkissen für Nacken & Wirbelsäule
+15509380596097	kein-stecker-merkmal	2026-09-18	Silikon-Topf für Heissluftfritteusen
+15509382791553	kein-stecker-merkmal	2026-09-18	Duales USB Desktop Wireless-Ladegerät
+15509382955393	kein-stecker-merkmal	2026-09-18	Elektrischer Entsafter-Becher
+15509383283073	unklar-eu-vorhanden:EU/US	2026-09-18	Blattloser Haartrockner
+15509662007681	kein-stecker-merkmal	2026-09-18	Gusseisen-Waffeleisen für Eiswaffeln
+15509662892417	nur-eu-version	2026-09-18	Elektrische Popcornmaschine
+15509748023681	kein-stecker-merkmal	2026-09-18	Faltbare Kulturtasche für Haartrockner
+15509748318593	kein-stecker-merkmal	2026-09-18	Reise-Haartrockner-Aufbewahrungstasche
+15509966586241	nur-eu-version	2026-09-18	Elektrischer Entsafter 800W
+15509968617857	kein-stecker-merkmal	2026-09-18	Föhn-Aufbewahrungstasche
+15509985460609	kein-stecker-merkmal	2026-09-18	Heissluftkolben-Griff für YaXun Lötstationen
+15510313894273	unklar-eu-vorhanden:EU/US	2026-09-18	Popcornmaschine
+15510317990273	kein-stecker-merkmal	2026-09-18	Kabelloses Reisebügeleisen
+15510320513409	kein-stecker-merkmal	2026-09-18	Outline 12er-Set matter Lipliner
+15510321234305	kein-stecker-merkmal	2026-09-18	Heissluftballon Patchwork-Stoff für Babykleidung
+15510322282881	unklar-eu-vorhanden:EU/US	2026-09-18	2-in-1 Glätteisen & Lockenstab mit Anionen
+15510323069313	kein-stecker-merkmal	2026-09-18	Haarschneider USB wiederaufladbar
+15510326313345	kein-stecker-merkmal	2026-09-18	Manueller Zitronenentsafter
+15510330343809	kein-stecker-merkmal	2026-09-18	Tragbarer Entsafter
+15510330704257	kein-stecker-merkmal	2026-09-18	Mikrowellen-Toaster für Sandwichbrot
+15510330999169	unklar-eu-vorhanden:EU/UK/US	2026-09-18	Faltbarer Reise-Wasserkocher mit 0.6 L
+15510643474817	nur-eu-version	2026-09-18	Multifunktionaler Standmixer für den Haushalt
+15510701080961	kein-stecker-merkmal	2026-09-18	Portabler Gaslötkolben Stift-Typ
+15510911943041	unklar-eu-vorhanden:EU/US	2026-09-18	Handdampfglätter
+15510919119233	kein-stecker-merkmal	2026-09-18	Sandwich-Toaster für leichtes Frühstück
+15510928064897	nur-eu-version	2026-09-18	Kemei km3381 Haarschneider
+15510928228737	kein-stecker-merkmal	2026-09-18	Eismaschine für Zuhause
+15510928327041	kein-stecker-merkmal	2026-09-18	Reiskocher 2L
+15510956900737	kein-stecker-merkmal	2026-09-18	25W All-in-One Faltbares Magnetisches Ladegerät
+15510957785473	unklar-eu-vorhanden:EU/US	2026-09-18	PS2 Konsolen-Netzteil (Modell 70000)
+15511685431681	kein-stecker-merkmal	2026-09-18	Kabelloses Ladegerät – kompakt & schnell
+15512270963073	kein-stecker-merkmal	2026-09-18	4er-Set Silikon-Backformen für Heissluftfritteusen
+15515289813377	kein-stecker-merkmal	2026-09-18	Kompakte, tragbare Mini-Kaffeemaschine
+15516219638145	kein-stecker-merkmal	2026-09-18	USB-Heizkissen mit Graphen-Technologie
+15517576495489	kein-stecker-merkmal	2026-09-18	Elektrischer Essenswärmer und Reiskocher
+15518194041217	kein-stecker-merkmal	2026-09-18	Ölfilter aus Edelstahl für Fritteusen
+15518700044673	kein-stecker-merkmal	2026-09-18	Magnetisches kabelloses Ladegerät für Handy
+15519834964353	kein-stecker-merkmal	2026-09-18	Mini Retro Kaffeemaschine Bausteine
+15520384385409	kein-stecker-merkmal	2026-09-18	Manueller Entsafter aus Edelstahl
+15520388252033	kein-stecker-merkmal	2026-09-18	2-in-1 Glätteisen & Lockenstab mit Display
+15520398541185	kein-stecker-merkmal	2026-09-18	Tragbarer Entsafter 500ml
+15520407978369	unklar-eu-vorhanden:EU/UK	2026-09-18	Multifunktionaler Mixer, Entsafter & Grinder
+15521233207681	kein-stecker-merkmal	2026-09-18	Gusseisen-Fritteuse mit Antihaftbeschichtung
+15521252213121	kein-stecker-merkmal	2026-09-18	Silikon-Topfuntersetzer für Heissluftfritteusen
+15521692811649	kein-stecker-merkmal	2026-09-18	Kabelloser Lockenstab mit Keramikheizung
+15521993752961	kein-stecker-merkmal	2026-09-18	Elektrische Schallzahnbürste für Sie & Ihn
+15522038940033	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-18	Vollautomatischer Lockenstab
+15522098250113	kein-stecker-merkmal	2026-09-18	Kabelloses Ladegerät mit Uhr und Thermometer
+15522109260161	kein-stecker-merkmal	2026-09-18	Lockenstab «Power Rod»
+15522116501889	unklar-eu-vorhanden:EU/UK/US	2026-09-18	Automatischer Lockenstab Lazy – Rotierender Big Wave
+15522116993409	kein-stecker-merkmal	2026-09-18	Magnetisches 2-in-1 Wireless-Ladegerät
+15522128691585	unklar-eu-vorhanden:EU/UK	2026-09-18	Wandmontierter Badheizlüfter
