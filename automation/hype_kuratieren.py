@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 13.09.2026 (eprolo/bebolddigital/sellthetrend Sept.–Okt.: Retro-OTG-Goggles/Motorradbrillen NEU; Doppelseitige Paar-Hoodies, Creator-Handyhalter/Ringlicht, Blush-Balms, Lifting-Tape, Ordnung/aesthetic living erneut bestaetigt; Supplements/Olivenoel ausgeschlossen: Lebensmittel; Halloween-Kostueme bewusst NICHT hier; Snail-Essence/Seren NICHT: topische Kosmetik, Betreiber 30.08.) — davor 03.09.2026 (bebolddigital/eprolo/sellthetrend September: smarte Haustier-Spielzeuge und Handy-Umhaengetaschen neu; Blush-Balms, Lifting-Tape, Ordnung/aesthetic living und Kerzenwaermer erneut bestaetigt; Halloween-Kostueme bewusst NICHT in der Hype-Reihe (eigene Reihe seit 31.08.); Snail-Essence/Seren weiterhin NICHT: topische Kosmetik, Betreiber-Entscheid 30.08.)"
+QUELLE = "Web-Recherche 18.09.2026 (eprolo/sellthetrend/cjdropshipping September: Hygiene-Gadgets NEU (UV-Sterilisation, beruehrungslose Spender); Blush-Balms, Lifting-Tape, Doppelseitige Paar-Hoodies und Ordnung/aesthetic living erneut bestaetigt. ABGELEHNT trotz Trendlisten: Wellness-/Magnet-Armband (15 im Bestand) = Heilversprechen, gehoert in dieselbe Klasse wie die aus den Werbekanaelen ausgeschlossenen 1667; Supplements/Olivenoel = Lebensmittel; Snail-Essence/Seren = topische Kosmetik, Betreiber-Entscheid 30.08.) — davor 13.09.2026 (Retro-OTG-Goggles/Motorradbrillen NEU; Creator-Handyhalter/Ringlicht; Halloween-Kostueme bewusst NICHT hier) — davor 03.09.2026 (smarte Haustier-Spielzeuge, Handy-Umhaengetaschen, Kerzenwaermer)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -51,6 +51,19 @@ THEMEN = {
     # «Hautpflege-Serum» ENTFERNT am 30.08.: topische Kosmetik (Creme/Serum aus China) wird
     # nicht mehr prominent beworben — Betreiber-Entscheid. Fuehren im Katalog bleibt.
     "Mini-Beamer": re.compile(r'Mini-?\s?(?:Beamer|Projektor)|Smart Mini Beamer', re.I),
+    # Neu 18.09.2026: Hygiene-Gadgets (UV-Sterilisation, berührungslose Spender) stehen in
+    # den September-Trendlisten weit oben. Der Bestand trägt sie (gemessen).
+    # ⚠️ «UV» ALLEIN IST UNBRAUCHBAR — im Trockentest gegen 120 echte Titel traf es
+    # **109 davon**: «Sonnenbrille … UV-Schutz», «Sonnenhut … UV-Schutz», «UV400»,
+    # «Regenschirm UV-beschichtet». Dieselbe Falle wie \bIPL\b in «L-IPL-iner», nur
+    # noch breiter. Mit dem Anker unten bleiben aus derselben Stichprobe 4 echte übrig
+    # (UV-Desinfektionstasche, Zahnbürstenhalter mit UV-Sterilisator, zwei Sterilisatoren).
+    # Beim Seifenspender zählt nur die BERÜHRUNGSLOSE Bauart — «Retro Keramik
+    # Seifenspender» und «Küchenbürste mit Seifenspender» sind der Trend NICHT.
+    "Hygiene-Gadget": re.compile(
+        r'UV[- ]?(?:Sterilisator|Sterilisier|Desinfekt|Reiniger)|UVC\b|'
+        r'Sterilisator|Desinfektionsbox|Desinfektionstasche|'
+        r'(?:Ber[üu]hrungslos|Sensor|Automatisch)\w*[- ]?(?:Seifenspender|Spender)', re.I),
     "Ordnung & Aesthetic": re.compile(
         r'Organizer|Aufbewahrungskorb|Aufbewahrungsbox|Ordnungssystem', re.I),
     "Shapewear": re.compile(r'Shapewear|Body Shaper|Figurformend|Taillenformer', re.I),
