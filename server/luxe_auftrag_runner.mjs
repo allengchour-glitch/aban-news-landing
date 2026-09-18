@@ -14,7 +14,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { ist_anmeldeseite, hat_ziel_erreicht, ist_wandtext } from './anmelde_erkennung.mjs';
+import { ist_anmeldeseite, hat_ziel_erreicht, ist_wandtext, ist_fehlerseite } from './anmelde_erkennung.mjs';
 import { fuehre_wartung_aus, ist_erlaubt, AKTIONEN } from './wartung.mjs';
 
 const REPO    = process.env.LUXE_REPO    || '/opt/abannews';
@@ -74,9 +74,21 @@ async function fuehre_aus(auftrag, ctx) {
       // Chat-Skripten wird NIE netzwerkstill — `networkidle` wartet damit auf einen
       // Zustand, der nicht eintritt. `load` plus kurzes Nachsetzen genügt für ein
       // Bild und für den Text.
-      await seite.goto(auftrag.url, { waitUntil: 'load', timeout: 60000 });
+      const antwort = await seite.goto(auftrag.url, { waitUntil: 'load', timeout: 60000 });
       await seite.waitForTimeout(2500);
       const ziel = seite.url();
+      // ⚠️ VIERTE Schicht (18.09.2026, aus dem CJ-Fehlbefund in Auftrag 32): keine der
+      // drei Fragen oben liest den HTTP-Status. Eine 404 hat keine Anmeldemaske, liegt
+      // auf demselben Gastgeber und ist keine Bot-Wand — sie kam hier also als «ok»
+      // durch, und ein Screenshot einer Fehlerseite sieht in der Quittung aus wie ein
+      // Screenshot der Seite. Manche Anwendungen (CJ) antworten dabei sogar mit 200 und
+      // leiten nur die ADRESSE auf /404; deshalb pruefen wir beides.
+      const kaputt = ist_fehlerseite(antwort ? antwort.status() : null, ziel);
+      if (kaputt) {
+        const e = new Error(`${kaputt} — es gibt dort keine Seite, ein Bild davon beweist nichts`);
+        e.umgeleitet = true;
+        throw e;
+      }
       if (ist_anmeldeseite(ziel)) {
         const e = new Error(`nicht angemeldet — umgeleitet auf ${ziel}`);
         e.nichtAngemeldet = true;
@@ -106,10 +118,11 @@ async function fuehre_aus(auftrag, ctx) {
         e.umgeleitet = true;
         throw e;
       }
-      if (art === 'seite_text') return { ziel, text: seitentext };
+      const status = antwort ? antwort.status() : null;
+      if (art === 'seite_text') return { ziel, status, text: seitentext };
       const datei = path.join(ERGEBNIS, `${auftrag.id}.png`);
       await seite.screenshot({ path: datei, fullPage: !!auftrag.ganze_seite });
-      return { ziel, mobil: !!auftrag.mobil, datei: path.relative(REPO, datei) };
+      return { ziel, status, mobil: !!auftrag.mobil, datei: path.relative(REPO, datei) };
     } finally { await seite.close(); }
   }
 

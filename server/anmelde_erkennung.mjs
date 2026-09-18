@@ -141,3 +141,61 @@ export function ist_wandtext(text) {
   return WAND_TEXTE.some(r => r.test(t));
 }
 
+
+/* ───────────────────────────────────────────────────────────────────────────────
+ * VIERTE SCHICHT: der HTTP-Status — und die Fehlerseite, die 200 liefert.
+ *
+ * ⚠️ GEMESSEN 18.09.2026 an Auftrag 32, und es ist genau dieselbe Familie wie die
+ * Einwilligungswand vom 17.09.: Der Befund fuer CJdropshipping lautete
+ * **`angemeldet: true`** — bei der Endadresse **`https://cjdropshipping.com/404`**.
+ *
+ * Jede der drei bestehenden Schichten hatte recht und war nutzlos:
+ *   - `ist_anmeldeseite` sah keine Anmeldemaske. Eine 404-Seite hat naemlich keine.
+ *   - `hat_ziel_erreicht` sah keinen Gastgeberwechsel. cjdropshipping.com ->
+ *     cjdropshipping.com ist derselbe Gastgeber; die 404 liegt INNERHALB des Ziels.
+ *   - `ist_wandtext` sah keine Bot-Wand. War auch keine.
+ * Und die eindeutigste Aussage von allen — die, die der Server selbst mitschickt —
+ * wurde von keiner gelesen: `grep -nE "status\(\)|\.status" ` ueber Melder, Pruefskript
+ * und Runner gab **0 Treffer**.
+ *
+ * **Die Abwesenheit eines bekannten Fehlers ist kein Beweis fuer Erfolg.** Drei
+ * Schichten, die je eine Art des Scheiterns kennen, melden gemeinsam «alles gut»,
+ * sobald es auf eine vierte Art scheitert.
+ *
+ * Zwei Erkennungen, weil eine nicht genuegt:
+ *  (1) der Statuscode — 404/403/410/5xx sind unmissverstaendlich;
+ *  (2) das ADRESSMUSTER — moderne Einzelseiten-Anwendungen (CJ ist eine) leiten
+ *      intern auf `/404` um und antworten dabei mit **200**. Wer nur den Status
+ *      prueft, haelt genau diesen Fall fuer eine gesunde Seite.
+ *
+ * Und weil Muster in diesem Projekt schon mehrfach zu breit waren («schleif» traf
+ * «Schleife», «rock» traf «GT Line ROCK», «IPL» traf «L-IPL-iner»): `/404` wird nur
+ * als eigenes Pfadsegment erkannt. Ein Produkt `…/lampe-404-lumen` oder eine
+ * Kollektion `…/artikel-4040` ist eine gesunde Seite und muss durchgehen.
+ */
+export const FEHLER_STATUS = new Set([400, 401, 403, 404, 405, 408, 410, 429,
+                                      500, 502, 503, 504]);
+
+/** `/404` (oder /500, /403 …) als eigenes Pfadsegment — nicht mitten in einem Wort. */
+export function ist_fehler_adresse(url) {
+  if (typeof url !== 'string' || !url) return false;
+  let pfad;
+  try { pfad = new URL(url).pathname; } catch { return false; }
+  // Segmente einzeln pruefen: "404" ja, "lampe-404-lumen" nein, "4040" nein.
+  return pfad.split('/').some(s => /^(40[0-9]|41[0-9]|429|50[0-9])$/.test(s))
+      || /^\/(error|not-?found|fehler)$/i.test(pfad);
+}
+
+/**
+ * Sagt, ob die Seite ueberhaupt eine Seite ist.
+ * Rueckgabe: null = unauffaellig · sonst ein Grund als Text.
+ * `status` darf fehlen (Playwright gibt bei manchen Navigationen keine Antwort) —
+ * dann wird das GESAGT und nicht als in Ordnung verbucht.
+ */
+export function ist_fehlerseite(status, url) {
+  if (ist_fehler_adresse(url)) return `Fehlerseite (Adresse endet auf ein Fehler-Segment: ${url})`;
+  if (status === null || status === undefined) return null;   // unbekannt ist kein Befund, aber auch kein Freispruch
+  if (typeof status !== 'number') return null;
+  if (FEHLER_STATUS.has(status) || status >= 500) return `HTTP ${status}`;
+  return null;
+}

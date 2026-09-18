@@ -10,7 +10,7 @@
  * Aufruf als Auftrag:
  *   { "id": "anmeldungen", "typ": "skript", "skript": "anmeldungen_pruefen.mjs" }
  */
-import { ist_anmeldeseite, ist_zwischenseite, hat_ziel_erreicht } from '../../server/anmelde_erkennung.mjs';
+import { ist_anmeldeseite, ist_zwischenseite, hat_ziel_erreicht, ist_fehlerseite } from '../../server/anmelde_erkennung.mjs';
 
 const DIENSTE = [
   // ⛔ GEMESSEN 17.09.2026: Bei Google kann sich dieses Profil NICHT anmelden. Der
@@ -47,7 +47,7 @@ export default async function ({ ctx }) {
   for (const d of DIENSTE) {
     const seite = await ctx.newPage();
     try {
-      await seite.goto(d.url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      const antwort = await seite.goto(d.url, { waitUntil: 'domcontentloaded', timeout: 45000 });
       // Kurz warten: mehrere dieser Seiten leiten erst per JavaScript weiter,
       // und eine Weiterleitung, die man zu frueh misst, sieht aus wie Erfolg.
       await seite.waitForTimeout(3000);
@@ -58,12 +58,23 @@ export default async function ({ ctx }) {
       // keine Anmeldemaske und trotzdem kein Beweis fuer eine Anmeldung. Gefragt
       // wird deshalb, ob das ZIEL erreicht ist; alles andere ist «unklar», nicht
       // «ja». Ein ehrliches «weiss ich nicht» ist mehr wert als ein falsches Ja.
+      // ⚠️ 18.09.: die VIERTE Schicht, und sie kam aus einem Fehlbefund dieses
+      // Skripts. Auftrag 32 meldete CJdropshipping als **angemeldet: true** — bei
+      // der Endadresse `cjdropshipping.com/404`. Alle drei Fragen oben hatten recht
+      // und keine war die richtige: eine 404-Seite hat keine Anmeldemaske, sie liegt
+      // auf DEMSELBEN Gastgeber wie das Ziel, und eine Bot-Wand ist sie auch nicht.
+      // Gelesen wurde nie das Eindeutigste, was der Server mitschickt: der Status.
+      // **Die Abwesenheit dreier bekannter Fehler ist kein Beweis fuer Erfolg.**
+      const kaputt = ist_fehlerseite(antwort ? antwort.status() : null, ziel);
       befunde.push({
         dienst: d.name, wofuer: d.wofuer, ziel,
-        angemeldet: ist_anmeldeseite(ziel) ? false
+        status: antwort ? antwort.status() : null,
+        angemeldet: kaputt                        ? null     // eine Fehlerseite sagt NICHTS ueber die Anmeldung
+                  : ist_anmeldeseite(ziel)        ? false
                   : hat_ziel_erreicht(d.url, ziel) ? true
                   : null,
-        haenger: ist_zwischenseite(ziel) ? 'Zwischenseite (Einwilligung/Bot-Pruefung)' : undefined,
+        haenger: kaputt ? kaputt
+               : ist_zwischenseite(ziel) ? 'Zwischenseite (Einwilligung/Bot-Pruefung)' : undefined,
       });
     } catch (e) {
       // Ein Fehler ist KEINE Aussage ueber die Anmeldung — sonst faenden wir

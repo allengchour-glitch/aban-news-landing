@@ -78,9 +78,72 @@ const WAND_NEIN = [
 for (const t of WAND_JA)   if (!ist_wandtext(t)) { console.log('WAND-VERPASST :', t.slice(0,40)); fehler++; }
 for (const t of WAND_NEIN) if ( ist_wandtext(t)) { console.log('WAND-FEHLALARM:', t.slice(0,40)); fehler++; }
 
+let STATUS_JA = 0, STATUS_NEIN = 0;
+
+/* ── Vierte Schicht: Statuscode und Fehler-Adresse (18.09.2026) ──────────────
+ * Anlass ist der echte Fehlbefund aus Auftrag 32: CJ meldete `angemeldet: true`
+ * bei Endadresse `cjdropshipping.com/404`. Der Koeder ist also nicht erfunden,
+ * sondern der Fall selbst — und daneben stehen die gesunden Adressen, die
+ * durchgehen MUESSEN, weil ein zu breites Muster hier schon oft teuer war.
+ */
+{
+  const { ist_fehlerseite, ist_fehler_adresse } = await import('./anmelde_erkennung.mjs');
+  const vorher = fehler;
+
+  const faengt = [
+    // der echte Fall, wortwoertlich aus der Quittung
+    [200, 'https://cjdropshipping.com/404',                'CJ-Fall: 200 auf /404'],
+    [404, 'https://cjdropshipping.com/myCJ/orderList',     'ehrliche 404'],
+    [403, 'https://www.bigbuy.eu/en/contact',              'HTTP 403'],
+    [503, 'https://luxestyle.ch/',                         'HTTP 503'],
+    [429, 'https://luxestyle.ch/',                         'Drosselung'],
+    [200, 'https://example.com/error',                     '/error'],
+    [200, 'https://example.com/not-found',                 '/not-found'],
+  ];
+  const laesst_durch = [
+    // ⚠️ Die Gegenrichtung ist die wichtigere Haelfte: eine Regel, die alles faengt,
+    // meldet fuer JEDE Seite einen Fehler und ist damit wertlos.
+    [200, 'https://luxestyle.ch/',                                  'Startseite'],
+    [200, 'https://luxestyle.ch/products/lampe-404-lumen',          '404 IM Wort (Produkt)'],
+    [200, 'https://luxestyle.ch/collections/artikel-4040',          '4040 ist keine 404'],
+    [200, 'https://admin.shopify.com/store/au3j0y-hq/settings/files','Shopify-Dateien'],
+    [200, 'https://ch.pinterest.com/business/hub/',                 'Pinterest-Hub'],
+    [301, 'https://luxestyle.ch/pages/faq',                         'Weiterleitung ist kein Fehler'],
+    [304, 'https://luxestyle.ch/',                                  'unveraendert'],
+    [null,'https://luxestyle.ch/',                                  'Status unbekannt -> kein Befund'],
+  ];
+
+  for (const [s, u, was] of faengt) {
+    const r = ist_fehlerseite(s, u);
+    const gut = r !== null;
+    if (!gut) fehler++;
+    if (!gut) console.log('STATUS-VERPASST :', was);
+  }
+  for (const [s, u, was] of laesst_durch) {
+    const r = ist_fehlerseite(s, u);
+    const gut = r === null;
+    if (!gut) fehler++;
+    if (!gut) console.log('STATUS-FEHLALARM:', was, '->', r);
+  }
+  // Und die Trennung der beiden Erkennungen einzeln belegen:
+  const a = ist_fehler_adresse('https://cjdropshipping.com/404') === true;
+  const b = ist_fehler_adresse('https://luxestyle.ch/products/lampe-404-lumen') === false;
+  if (!a || !b) fehler++;
+  if (!(a && b)) console.log('ADRESSMUSTER trennt Segment und Wortteil nicht');
+  STATUS_JA = faengt.length; STATUS_NEIN = laesst_durch.length;
+  if (fehler === vorher) { /* alle vier Schichten still = in Ordnung */ }
+}
+
+/* ⚠️ 18.09.2026: Hier stand `process.exit()` — MITTEN in der Datei. Der neu
+ * angehaengte vierte Block wurde deshalb nie ausgefuehrt, und der Lauf meldete
+ * weiter fröhlich «✅ ... durchgelassen». Ein Test, der nicht laeuft, meldet gruen:
+ * das ist gefaehrlicher als ein fehlender Test, weil das Haekchen die Pruefung
+ * vortaeuscht. Der Abbruch steht jetzt am ECHTEN Dateiende, und wer weitere Faelle
+ * anhaengt, haengt sie DAVOR. */
 console.log(fehler === 0
   ? `✅ ${SOLL_JA.length} Anmeldeseiten erkannt, ${SOLL_NEIN.length} echte Seiten durchgelassen · `
     + `${ZIEL_NEIN.length} verfehlte Ziele erkannt, ${ZIEL_JA.length} erreichte durchgelassen · `
-    + `${WAND_JA.length} Bot-Wände erkannt, ${WAND_NEIN.length} echte Texte durchgelassen`
+    + `${WAND_JA.length} Bot-Wände erkannt, ${WAND_NEIN.length} echte Texte durchgelassen · `
+    + `${STATUS_JA} Fehlerseiten erkannt, ${STATUS_NEIN} gesunde durchgelassen`
   : `❌ ${fehler} Fehler`);
 process.exit(fehler === 0 ? 0 : 1);
