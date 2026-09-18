@@ -883,3 +883,25 @@
 15522116501889	unklar-eu-vorhanden:EU/UK/US	2026-09-18	Automatischer Lockenstab Lazy – Rotierender Big Wave
 15522116993409	kein-stecker-merkmal	2026-09-18	Magnetisches 2-in-1 Wireless-Ladegerät
 15522128691585	unklar-eu-vorhanden:EU/UK	2026-09-18	Wandmontierter Badheizlüfter
+15522141045121	kein-stecker-merkmal	2026-09-18	Fritteuse mit Sieb aus 304 Edelstahl
+15522216870273	kein-stecker-merkmal	2026-09-18	Japanische Tempura Fritteuse
+15522273853825	kein-stecker-merkmal	2026-09-18	Dual‑Use Lockenstab & Glätteisen – Black Gold
+15522273886593	kein-stecker-merkmal	2026-09-18	Kleiner Heizlüfter für Hände und Füsse
+15522274541953	kein-stecker-merkmal	2026-09-18	Kabelloses Ladegerät im Sessel-Design
+15522625094017	kein-stecker-merkmal	2026-09-18	E-Scooter Ladegerät 42 V / 2 A · EU-Stecker, Xiaomi-Anschlus
+15523115729281	kein-stecker-merkmal	2026-09-18	Smartwatch-Gehäuse mit kabellosem Ladegerät
+15523439935873	nur-eu-version	2026-09-18	Profi Digital Haarschneider
+15523539583361	kein-stecker-merkmal	2026-09-18	Ultradünne LED-Deckenleuchte, rund
+15523541811585	unklar-eu-vorhanden:AU/EU/UK/US	2026-09-18	Smart Multi-Port Ladegerät
+15523985654145	nur-eu-version	2026-09-18	Grosser Wasserkocher mit Abschaltautomatik
+15523995386241	kein-stecker-merkmal	2026-09-18	Intelligente elektrische Fritteuse
+15524096737665	kein-stecker-merkmal	2026-09-18	3‑in‑1 Magnetischer kabelloser Ladegerät
+15524257235329	kein-stecker-merkmal	2026-09-18	Smartwatch mit Bluetooth‑Anruf und NFC‑Ladegerät
+15524700225921	kein-stecker-merkmal	2026-09-18	Universal-Netzteil-Adapter für Notebooks
+15524778246529	unklar-eu-vorhanden:EU/UK/US	2026-09-18	Dampfreiniger 1600W für Dunstabzugshaube
+15524886086017	kein-stecker-merkmal	2026-09-18	Tragbarer Entsafter für Früchte
+15524927144321	unklar-eu-vorhanden:EU/US	2026-09-18	Automatischer Multifunktions-Toaster
+15525490721153	kein-stecker-merkmal	2026-09-18	Fritteuse mit Sieb
+15525493637505	kein-stecker-merkmal	2026-09-18	Multifunktions-Entsaftermixer
+15525498782081	kein-stecker-merkmal	2026-09-18	Mini-Eismaschine
+15525498913153	kein-stecker-merkmal	2026-09-18	Mobiler Entsafter mit 460 ml Kapazität

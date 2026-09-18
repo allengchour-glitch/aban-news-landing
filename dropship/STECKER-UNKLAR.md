@@ -1,3 +1,32 @@
+# Netzstecker unklar — Stand 2026-09-18
+
+CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Variante, deren SKU nicht die EU-Version ist. Welche Version CJ schickt, ist damit nicht belegt. Entscheidung: Variante auf die EU-SKU umstellen (Betreiber) oder DRAFT.
+
+- `15504149643649` Infrarot Glätteisen für glattes & lockiges Haar — CJ EU/US · unsere SKU `CJ-1435968022027309056` · EU-SKU `CJJF128114901AZ`
+- `15506242601345` Elektrischer Lockenstab mit Rotation — CJ AU/CN/EU/UK/US · unsere SKU `CJ-A34C89A8-85E6-4EA7-B9F5-C482553A9249` · EU-SKU `CJBJMRJF00115-Pink-EU`
+- `15506243027329` Professioneller Lockenstab mit Anionenpflege — CJ AU/EU/UK/US · unsere SKU `CJ-DDF9C392-9C91-4544-9C2E-2F60F40FC59C` · EU-SKU `CJBJMRJF00114-Red-EU`
+- `15506258297217` Rotierender Lockenstab für nasse und trockene Haare — CJ EU/US · unsere SKU `CJ-097FF89D-4655-44F8-A702-92B93B9D8D6A` · EU-SKU `CJBJMRJF00050-With box-EU`
+- `15506274648449` Mini Waffeleisen für vielfältige Snacks — CJ EU/US · unsere SKU `CJ-1380020674722140160` · EU-SKU `CJCJ107041001AZ`
+- `15506527289729` Lockenstab mit Negativ-Ionen-Haarpflege — CJ AU/EU/US · unsere SKU `CJ-1507351475574550528` · EU-SKU `CJJF144910504DW`
+- `15508468400513` Heizkissen für Rücken und Körper, 12x24" — CJ AU/EU/UK/US · unsere SKU `CJ-4454F970-7D3A-451E-93AB-E18FD7EBB212` · EU-SKU `CJJJYSFZ00110-1 style EU plug`
+- `15509365948801` Mini Heizlüfter mit Flammeneffekt — CJ EU/US · unsere SKU `CJ-344811C1-ECAE-4D5A-8041-1513FF4768D2` · EU-SKU `CJXFZNZN01936-Black-EU`
+- `15509366047105` 30W Vertikales USB-Ladegerät mit 6 Ports — CJ AU/EU/UK/US · unsere SKU `CJ-F4DCA680-267A-4A79-9006-1578525CD362` · EU-SKU `CJXFZNZN01935-Blue-EU`
+- `15509371060609` Mini-Nähmaschine, elektrisch — CJ AU/EU/UK/US · unsere SKU `CJ-458552B1-94D4-4769-A336-41650D100D15` · EU-SKU `CJJJYSFZ00013-EU`
+- `15509383283073` Blattloser Haartrockner — CJ EU/US · unsere SKU `CJ-E16817BB-3089-4F78-835F-82371E5A8E65` · EU-SKU `CJXFZNZN01657-EU`
+- `15510313894273` Popcornmaschine — CJ EU/US · unsere SKU `CJ-68913D50-CBE9-4800-B701-BA4F5B659174` · EU-SKU `CJJJCFCJ01735-Black-EU`
+- `15510322282881` 2-in-1 Glätteisen & Lockenstab mit Anionen — CJ EU/US · unsere SKU `CJ-1606952460197834752` · EU-SKU `CJJF164896102BY`
+- `15510330999169` Faltbarer Reise-Wasserkocher mit 0.6 L — CJ EU/UK/US · unsere SKU `CJ-2601300908201623600` · EU-SKU `CJYD274948607GT`
+- `15510911943041` Handdampfglätter — CJ EU/US · unsere SKU `CJ-25F78951-C161-417E-A769-41FD21A1AB31` · EU-SKU `CJXFZNZN00977-White-EU`
+- `15510957785473` PS2 Konsolen-Netzteil (Modell 70000) — CJ EU/US · unsere SKU `CJ-2608090138471632100` · EU-SKU `CJYD304645901AZ`
+- `15520407978369` Multifunktionaler Mixer, Entsafter & Grinder — CJ EU/UK · unsere SKU `CJ-2510021038021603500` · EU-SKU `CJYD254788901AZ`
+- `15522038940033` Vollautomatischer Lockenstab — CJ AU/EU/UK/US · unsere SKU `CJ-1687026957193588736` · EU-SKU `CJJF181406313MN`
+- `15522116501889` Automatischer Lockenstab Lazy – Rotierender Big Wave — CJ EU/UK/US · unsere SKU `CJ-1430793570977189888` · EU-SKU `CJJF126465607GT`
+- `15522128691585` Wandmontierter Badheizlüfter — CJ EU/UK · unsere SKU `CJ-1782355186820845568` · EU-SKU `CJYD201743807GT`
+- `15523541811585` Smart Multi-Port Ladegerät — CJ AU/EU/UK/US · unsere SKU `CJ-1367706803101634560` · EU-SKU `CJJY103022502BY`
+- `15524778246529` Dampfreiniger 1600W für Dunstabzugshaube — CJ EU/UK/US · unsere SKU `CJ-2412301105011615100` · EU-SKU `CJYD225732005EV`
+- `15524927144321` Automatischer Multifunktions-Toaster — CJ EU/US · unsere SKU `CJ-45EF05D2-EC9B-41DD-8A44-2BA55B516E0E` · EU-SKU `CJJJCFCJ02337-White-EU`
+
+---
 # Netzstecker unklar — Stand 2026-09-15
 
 CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Variante, deren SKU nicht die EU-Version ist. Welche Version CJ schickt, ist damit nicht belegt. Entscheidung: Variante auf die EU-SKU umstellen (Betreiber) oder DRAFT.
@@ -115,4 +144,5 @@ CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Varian
 - `15473383113089` Ionen-Glättbürste mit Touchscreen — nur US
 - `15479338500481` Schnellladegerät 3-Port — nur US
 - `15493706613121` Keramik-Lockenstab für Birnenblüten-Locken — nur US
+
 
