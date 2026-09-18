@@ -230,6 +230,34 @@ def fortura_zugang():
             "(Kundennr. 544341, webtransfer.fortura.ch)")
 
 
+def bot_puls():
+    """Lebt der Hetzner-Browser-Agent? Er ist der EINZIGE mit einem echten Browser.
+
+    GEMESSEN 18.09.2026: `grep -rln luxe_auftrag_runner automation/ tools/` gab **0
+    Treffer**. Der Agent stand in keiner Wacht-Liste — er konnte sterben, ohne dass
+    irgendwo eine Zeile anders wird. Und weil sein Runner bei leerer Warteschlange
+    mit `exit 0` endete, hinterliess der haeufigste Lauf gar keine Spur: «acht
+    Stunden keine Quittung» war nicht von «tot» zu unterscheiden.
+
+    Steht er, ist ALLES unerreichbar, was einen angemeldeten Browser braucht —
+    Shopify-Admin, Pinterest, die echte Storefront (unsere eigene IP sieht nur eine
+    stundenalte Bot-Cache-Kopie). Die Regel und ihre sechs Gegenproben stehen in
+    automation/bot_puls.py.
+    """
+    try:
+        from bot_puls import puls_zeile
+    except Exception:
+        import importlib.util
+        spur = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bot_puls.py")
+        spec = importlib.util.spec_from_file_location("bot_puls", spur)
+        if not spec or not spec.loader:
+            return ""
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        puls_zeile = modul.puls_zeile
+    return puls_zeile() or ""
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -246,7 +274,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

@@ -126,7 +126,69 @@ async function fuehre_aus(auftrag, ctx) {
 const offen = fs.existsSync(OFFEN)
   ? fs.readdirSync(OFFEN).filter(f => f.endsWith('.json')).sort()
   : [];
-if (!offen.length) { console.log('· keine offenen Aufträge'); process.exit(0); }
+
+/**
+ * Puls: ein Lebenszeichen, das NICHT davon abhaengt, dass Arbeit da war.
+ *
+ * ⚠️ GEMESSEN 18.09.2026: Die letzte Quittung war vom 17.09. 20:44, danach acht
+ * Stunden Stille — und es war nicht entscheidbar, ob der Agent nichts zu tun hatte
+ * oder nicht mehr laeuft. Denn genau hier stand `process.exit(0)`, sobald die
+ * Warteschlange leer war: der haeufigste Lauf hinterliess gar nichts. Dazu kam
+ * (grep ueber automation/ und tools/, 0 Treffer): dieser Agent stand in KEINER
+ * Wacht-Liste. Das ist Lehre 0c wortwoertlich — wer bewacht DICH? — nur eine Ebene
+ * hoeher: nicht ein Wächter ohne Wächter, sondern ein ganzer Server ohne einen.
+ *
+ * Deshalb schreibt jeder Lauf den Puls, BEVOR er ueber Arbeit entscheidet. Ein Lauf
+ * ohne Arbeit ist die Regel, nicht die Ausnahme — und gerade dann ist der Puls die
+ * einzige Information, die es gibt.
+ *
+ * Gepusht wird er nur stuendlich: alle 5 Minuten ein Commit waeren 288 am Tag, und
+ * ein Signal, das im Laerm steht, liest niemand. Lokal wird er immer geschrieben,
+ * damit `letzter_lauf` auf dem Server auch zwischen zwei Pushes stimmt.
+ */
+const PULS = path.join(REPO, 'auftraege/_puls.json');
+function schreibe_puls(zustand) {
+  let vorher = {};
+  try { vorher = JSON.parse(fs.readFileSync(PULS, 'utf8')); } catch {}
+  const jetzt = new Date().toISOString();
+  const puls = {
+    letzter_lauf: jetzt,
+    zustand,                                  // 'leer' | 'arbeitet' | 'fertig'
+    offene_auftraege: offen.length,
+    laeufe_seit_push: (vorher.laeufe_seit_push || 0) + 1,
+    hinweis: 'Geschrieben von server/luxe_auftrag_runner.mjs bei JEDEM Lauf, auch ohne '
+           + 'Arbeit. Gepusht ~stuendlich. Ist letzter_lauf aelter als 2 h, steht der '
+           + 'Hetzner-Agent — dann kann kein Browser-Auftrag mehr erledigt werden. '
+           + 'Die Ampel (automation/bot_puls.py) meldet das.',
+  };
+  fs.mkdirSync(path.dirname(PULS), { recursive: true });
+  // Der zuletzt GEPUSHTE Stand ist der, den die Ampel im Repo sieht. Nur an ihm darf
+  // sich die Stundenfrage entscheiden — nicht am lokalen Schreiben, das jedes Mal passiert.
+  const letzterPush = vorher.zuletzt_gepusht ? Date.parse(vorher.zuletzt_gepusht) : 0;
+  const faellig = !letzterPush || (Date.now() - letzterPush) > 55 * 60 * 1000;
+  if (faellig) { puls.zuletzt_gepusht = jetzt; puls.laeufe_seit_push = 0; }
+  else         { puls.zuletzt_gepusht = vorher.zuletzt_gepusht; }
+  fs.writeFileSync(PULS, JSON.stringify(puls, null, 2) + '\n');
+  if (!faellig) return;
+  const git = (...a) => execFileSync('git', ['-C', REPO, ...a], { stdio: 'pipe' });
+  try {
+    git('add', 'auftraege/_puls.json');
+    git('-c', 'user.name=luxe-agent', '-c', 'user.email=agent@luxestyle.ch',
+        'commit', '-q', '-m', 'Bot-Puls [skip ci]');
+    git('push', '-q', 'origin', `HEAD:${process.env.LUXE_BRANCH || 'claude/luxestyle-status-tztnn1'}`);
+  } catch (e) {
+    // Ein Puls, der nicht gepusht werden kann, darf den Lauf nicht abbrechen — die
+    // Arbeit ist wichtiger als ihr Protokoll. Beim naechsten Lauf ist er wieder faellig.
+    console.log(`· Puls nicht gepusht (${String(e.message||e).slice(0,100)})`);
+  }
+}
+
+if (!offen.length) {
+  schreibe_puls('leer');
+  console.log('· keine offenen Aufträge (Puls geschrieben)');
+  process.exit(0);
+}
+schreibe_puls('arbeitet');
 
 fs.mkdirSync(FERTIG, { recursive: true });
 fs.mkdirSync(ERGEBNIS, { recursive: true });
