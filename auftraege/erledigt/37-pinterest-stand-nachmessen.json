@@ -3,5 +3,7 @@
   "typ": "skript",
   "skript": "pinterest_stand.mjs",
   "warum": "Die Auftraege 14 und 21 sind MITTENDRIN gestorben — ihre Quittungen standen seit dem 17.09. auf «laufend» (37 h bzw. 36 h), ohne Teilergebnis. Was bis dahin geschah, weiss niemand: vielleicht null Boards, vielleicht drei. Ihr eigener Hinweis sagt es: NICHT blind wiederholen, sondern von Hand pruefen. Genau dafuer ist dieses Skript da — es liest den Reiter «Gemerkt» (/_saved/, NICHT /luxestylech/, das listet Pins) und sagt, welche der sechs Soll-Boards wirklich existieren. Rein lesend, legt nichts an. Erst mit dieser Messung darf entschieden werden, ob ein Anlege-Lauf wiederholt wird — ein zweiter Lauf ueber schon angelegte Boards erzeugt Dubletten (CLAUDE.md Regel 2).",
-  "angelegt": "2026-09-19T07:05:00Z"
+  "angelegt": "2026-09-19T07:05:00Z",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
 }
