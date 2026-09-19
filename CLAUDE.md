@@ -68,6 +68,44 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-19 (⛑️ ES SIND NICHT ZWEI HELME, ES SIND 32 — und ich habe sie bewusst NICHT gesperrt):**
+- **Auftrag:** Dauerauftrag, offener Punkt vom 14.09. Voller Bericht:
+  **`dropship/LERNEN-SCHUTZAUSRUESTUNG-2026-09-19.md`**.
+- **GEMESSEN: mindestens 40 Treffer auf `title:*helm*`, davon 32 echte Helme**, dazu Schwimmweste,
+  Velo-Kindersitz und mehrere Auto-Kindersitze. Das Gedächtnis führte **zwei**. ⚠️ **32 ist eine
+  Untergrenze** — die Abfrage war auf 40 begrenzt und die Wortsuche findet „Velohelm"/„Fahrradhelm"
+  nicht zuverlässig.
+- **🛠️ GEBAUT `tools/schutzausruestung.mjs` (19 Selbsttests).** Es trennt **drei** Fälle statt zwei:
+  **europäisch** (EN 1078/1077/1385, EN ISO 12402, CE) · **chinesisch** (3C/CCC/GB = **Befund**) ·
+  **unbekannt** (= **kein Befund**, nur eine Lücke in der Beschreibung). Benutzt `sichtbarerText()`
+  aus `shop_conversion.mjs`, baut die Säuberung also nicht zum zweiten Mal.
+- **🔴 ERGEBNIS: 0 von 32 Seiten nennen eine Norm — weder eine europäische noch eine chinesische.**
+  Wer für sein Kind einen Velohelm kauft, erfährt auf der Seite nicht, wonach er geprüft ist.
+  **Gegenprobe, ohne die die Null wertlos wäre:** der gemessene Text enthält nachweislich die
+  Variantennamen (`Black Graffiti-M55 To 59cm`, 10 184 Zeichen) — genau dort stand am 14.09. das
+  `3C Helmet`. Hätte einer der 32 es getragen, wäre es gefunden worden.
+- **⛔ BEWUSST NICHT GETAN: die 32 aus dem Verkauf nehmen.** Am 14.09. sagte die Seite etwas, und
+  was sie sagte, war ein Problem. Heute sagen die Seiten **nichts** — und **Schweigen ist kein
+  Beweis**. 32 Produkte auf ein fehlendes Wort hin zu sperren hiesse, eine Vermutung wie eine
+  Messung zu behandeln. **🟡 NUR DER USER:** bei CJ nachfragen, ob ein Prüfbericht nach **EN 1078**
+  (bzw. EN 1077 Ski, EN 1385 Wassersport) vorliegt. Ja → Norm in die Beschreibungen. Nein → dann
+  ist es die Lage vom 14.09. und sie gehören aus dem Verkauf.
+- **✅ GEÄNDERT (live): 12 Produkte / 89 Varianten**, `userErrors` leer, **alle zwölf an der echten
+  Seite nachgemessen**. Drei standen **unter dem Einkaufspreis**: Wassersport-Helm „Kajak und
+  Rettung" 20.90→**44.90** (EK 23.67) · Vielseitiger Helm 18 Var. 15.90→**39.90** (20.25) ·
+  **Kinder** Kart Helm 43.90→**84.90** (45.35). Neun weitere lagen nach WELCOME10 unter 38 %:
+  Short Track 49.90→69.90 · Sport/Outdoor 32.90→54.90 · Motorradtasche 50.90→89.90 · MTB-LED
+  29.90→49.90 · Hip-Hop 19 Var. 15.90→29.90 · Velo/Skates 10 Var. 24.90→29.90 · Plum Scooter
+  21 Var. 15.90→24.90 · Pendler 18.90→24.90 · Kinder-Helm mit Schutz 15.90→19.90.
+- **⚠️ EIGENER FEHLER, von der Gegenprobe gefangen: zwölf Produkte geplant, nur zehn in die
+  Mutation geschrieben.** Shopify meldete `userErrors: []` — korrekt, das Gesendete war gültig.
+  Aufgefallen allein daran, dass die **Kundensicht** bei einem Produkt noch 15.90 zeigte.
+  **REGEL AB JETZT: die Gegenprobe an der echten Seite muss JEDES geänderte Produkt abdecken,
+  nicht eine Auswahl.** Eine leere Fehlerliste sagt nichts über das, was nie gesendet wurde.
+- **Noch nicht gemessen, gleiche Klasse:** Schwimmweste, Velo-Kindersitz, Auto-Kindersitze,
+  Schutzbrillen.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-14 (🔴 DIE MARGE VON GESTERN GALT FÜR EIN ACHTEL DES KATALOGS — 18 Produkte korrigiert):**
 - **Auftrag:** Dauerauftrag. Voller Bericht: **`dropship/LERNEN-PREISE-VARIANTEN-2026-09-14.md`**.
 - **🚨 EIGENE KORREKTUR, gemessen: die gestrigen „58,9 % Median-Rohmarge / 4 Verlustfälle von 231"

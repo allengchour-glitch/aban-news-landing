@@ -80,6 +80,19 @@ lieferten**. Es filtern: `customerSegmentMembers { totalCount }` und die Listena
 `customers(query:)` / `products(query:)` — die geben auf den Unsinn-Filter korrekt eine leere
 Liste zurück.
 
+**Schweigen ist kein Befund.** Ein Messgerät, das auf ein Merkmal prüft, braucht **drei**
+Ausgänge, nicht zwei: vorhanden · gegenteilig vorhanden · **nichts gesagt**. Gemessen am
+2026-09-19: keine von 32 Helmseiten nennt eine Sicherheitsnorm. Daraus „nicht zertifiziert" zu
+lesen hätte 32 Produkte aus dem Verkauf genommen — belegt war nur, dass die Seite nichts sagt.
+Die Gegenprobe gehört dazu: ist das Gerät überhaupt sehend? (Hier: steht der Variantenname
+nachweislich im gemessenen Text? Ja, 10 184 Zeichen, `Black Graffiti-M55 To 59cm` gefunden.)
+
+**Eine leere Fehlerliste ist keine Erfolgsmeldung.** Am 2026-09-19 waren zwölf Produkte zur
+Preisänderung geplant, zehn landeten in der Mutation; Shopify meldete `userErrors: []` — korrekt,
+denn das Gesendete war gültig. Aufgefallen ist die Lücke nur, weil die **Kundensicht** bei einem
+Produkt noch den alten Preis zeigte. **Die Gegenprobe an der echten Seite muss jedes geänderte
+Objekt abdecken, nicht eine Auswahl.**
+
 ⚠️ **Die Listenabfrage filtert richtig, ist aber trotzdem nicht die Wahrheit.** Gemessen am
 2026-09-14: `products(query: "status:active")` lieferte ein Produkt zurück, dessen `status`
 **DRAFT** war, das in null Kanälen stand und dessen Seite 404 lieferte — der Suchindex hinkt
