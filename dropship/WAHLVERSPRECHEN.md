@@ -1561,8 +1561,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in drei ansprechenden Varianten…»
 - `15504011067777` · Kubanische Zirkonia-Kette aus Titanstahl
   - «…Erhältlich in verschiedenen Farben…»
-- `15504082633089` · Kleiner Heizlüfter “Little Sun”
-  - «…Erhältlich in zwei Grössen (4 Zoll und 6 Zoll) und jeweils in den Farb…»
 - `15504082928001` · Marokkanischer Kissenbezug im nordischen Stil
   - «…Erhältlich in verschiedenen Mustern…»
 - `15504088465793` · Schmuck-Organizer im Buchformat
