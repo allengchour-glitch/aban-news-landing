@@ -225,3 +225,4 @@
 15472058859905	du-form	Sommerdecke aus Baumwolle und Sojafasern
 15473048387969	du-form	Retro-Fransenkleid mit langen Ärmeln
 15473059856769	du-form	Besticktes Sommerkleid
+15474485297537	du-form	Daunenkissen
