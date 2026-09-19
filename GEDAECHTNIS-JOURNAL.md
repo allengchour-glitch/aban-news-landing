@@ -6,6 +6,39 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-19 · 📭 Ein Schweigen kann heissen, dass die Frage nie angekommen ist
+
+Die Erinnerung «CJ-Erstattung nachmessen» brachte vier saubere Neins: Guthaben `amount 0.0`,
+`disputeId` **null**, Dispute-Liste **0**, keine Mail neuer als CJs Zusage vom 18.09. 08:44.
+Nichts bewegt, nur der Konsolen-Weg bleibt — das war zu erwarten.
+
+**Gefunden wurde etwas anderes.** Im selben Thread liegen zwei Gmail-Fehlermeldungen (17.09.
+22:58 und 19.09. 01:33) mit derselben Frist `Will-Retry-Until: Sat, 19 Sep 2026 14:26:12 -0700`
+= **19.09. 21:26:12 UTC**. Dieselbe Frist heisst: **eine** festhängende Nachricht. Welche, sagt
+die Sekunde — die einzige gesendete Mail im Thread mit Minute **und** Sekunde `21:26:12` ist die
+vom **16.09.**, «Refund request – returned knife order DP2609071450210661800» (72 h
+Zustellfenster). CJs Mailserver nimmt keine Verbindung an: zuerst
+`mail.cjdropshipping.com 60.191.67.234: timed out`, zwei Tage später vier Cloudflare-Adressen,
+alle `timed out`.
+
+Praktisch ist es belanglos — dieselbe Forderung ging am 17.09. über eine zweite Mail raus, die
+CJ am 18.09. schriftlich beantwortet hat. Grundsätzlich ist es die Lehre: **am 17.09. stand hier
+«eine Antwort im richtigen Thread ist keine Antwort auf die letzte Frage». Für mindestens eine
+dieser Lücken ist der Grund banaler und schlimmer — die Frage lag im Postausgang fest.** Und der
+Postausgang meldet es erst **25 Stunden später**; bis dahin sieht ein nicht zugestellter Brief
+genauso aus wie ein ignorierter. Wer aus Schweigen auf Ignoranz schliesst, hat eine von zwei
+Erklärungen geprüft.
+
+Folge für die Praxis: Wo eine Aussage vom Lieferanten wirklich zählt, ist der **Kanal mit
+Quittung** (Portal, Ticket, Formular) nicht bloss bequemer, sondern der einzige, der beweist,
+dass die Frage angekommen ist. Genau deshalb steht CJs Dispute im Portal und nicht in einer Mail.
+
+⚠️ Messfalle nebenbei: `getOrderDetail` und `getDisputeList` sind **GET**. Der gemeinsame
+`cj()`-Helfer postet und bekam zweimal `16900202 Request method 'POST' not supported` — wer das
+für «Endpunkt existiert nicht» oder «kein Dispute vorhanden» liest, meldet ein falsches Nein.
+**Eine Fehlermeldung über die METHODE ist keine Aussage über die SACHE.**
+
+
 ## 2026-09-19 · 🇱🇮 «mach bot besser und seite» — der Bot sah nur die halbe Frage, und der Shop verspricht ein Land, das nicht bestellen kann
 
 ### Bot: ein Puls beweist Leben, nicht Ankunft

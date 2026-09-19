@@ -1,4 +1,4 @@
-# COWORK-BEFEHL — Fassung 19.09.2026, 07:00 UTC
+# COWORK-BEFEHL — Fassung 19.09.2026, 07:40 UTC
 
 > **Fünf Schritte, in dieser Reihenfolge.** Jeder hat einen direkten Link, eine Anleitung und
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
@@ -45,6 +45,41 @@ nicht die Sache.** Der Auslöser ist umgeschrieben; bald ist trotzdem besser als
 Reklamationsfenster üblicherweise auslaufen.
 
 ---
+
+### 📉 NACHMESSUNG 19.09.2026, 07:35 UTC — nichts bewegt, und ein Nebenbefund
+
+Rein lesend geprüft, alle vier Punkte:
+
+| Frage | Gemessen |
+|---|---|
+| CJ-Guthaben | `amount 0.0`, `freezeAmount 0.0` — die 25.54 sind **nicht** da |
+| `disputeId` am Auftrag | **null** · `orderStatus` SHIPPED |
+| `disputes/getDisputeList` | **0 Einträge** |
+| `dropship/_cj_dispute_1017_ref.txt` | existiert nicht |
+| Gmail-Thread `1a066a03bf2c8dd2` | nichts Neues von CJ seit 18.09. 08:44 |
+
+⚠️ Messfalle notiert: `getOrderDetail` und `getDisputeList` sind **GET**, nicht POST — der
+gemeinsame `cj()`-Helfer postet und bekam zweimal `16900202 Request method 'POST' not supported`.
+Wer das für «Endpunkt gibt es nicht» hält, meldet ein falsches Nein.
+
+**Der Nebenbefund, den niemand gesucht hat: eine unserer Mails an CJ wurde NIE zugestellt.**
+Zwei Gmail-Fehlermeldungen (17.09. 22:58 und 19.09. 01:33) tragen dieselbe Frist
+`Will-Retry-Until: Sat, 19 Sep 2026 14:26:12 -0700` = **19.09. 21:26:12 UTC**, betreffen also
+eine einzige Nachricht. Die einzige gesendete Mail im Thread mit exakt dieser Minute **und
+Sekunde** ist die vom **16.09. 21:26:12 — «Refund request – returned knife order
+DP2609071450210661800»** (72 h Zustellversuch). CJs Mailserver nimmt keine Verbindung an:
+erst `mail.cjdropshipping.com 60.191.67.234: timed out`, zwei Tage später vier
+Cloudflare-Adressen, alle `timed out`.
+
+**Praktisch belanglos, grundsätzlich wichtig.** Belanglos, weil CJ dieselbe Forderung über die
+Mail vom 17.09. erhalten und am 18.09. schriftlich zugesagt hat. Wichtig, weil es zeigt: **ein
+Schweigen kann bedeuten, dass die Frage nie angekommen ist.** Am 17.09. stand hier die Lehre
+«eine Antwort im richtigen Thread ist keine Antwort auf die letzte Frage» — für mindestens eine
+dieser Lücken ist der Grund banaler und schlimmer: die Frage lag im Postausgang fest, und der
+Postausgang meldet das erst 25 Stunden später.
+
+**Nichts zu tun ausser Schritt 1 unten.** Nicht drängen — CJ hat zugesagt, eine Frist gibt es
+nicht (die früher hier genannte «Frist 19.09. 07:30 UTC» war mein eigener Wecker, siehe unten).
 
 ## 2️⃣ BigBuy — Ticket für EUR 1'000 eröffnen  ·  ~5 Minuten
 
