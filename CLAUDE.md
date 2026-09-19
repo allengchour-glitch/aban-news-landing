@@ -68,6 +68,44 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-19, zweite Runde (🛠️ DAS PREIS-SKRIPT STEHT — zwei Gedächtnis-Pläne sind gefallen):**
+- **Auftrag:** „nutze sachen und hilf zu entwickeln für luxestyle". Voller Bericht:
+  **`dropship/LERNEN-PREIS-SKRIPT-2026-09-19.md`**.
+- **❌ PLAN 1 GEFALLEN — „die 105 Reels auf die Produktseiten" trägt nicht.** GEMESSEN:
+  `dropship/ads/auto_render.sh` baut jedes `auto-*.mp4` aus **mehreren** Produkten der
+  Allow-Liste und bricht unter zwei Bildern ab (`[ "$k" -ge 2 ] || exit 0`). Es sind
+  Marketing-Montagen; auf einer Produktseite zeigen sie **fremde Produkte** — das Gegenteil
+  dessen, wofür die +10–25 % ATC gelten. Wer Produktvideos will, muss je Produkt rendern.
+- **❌ PLAN 2 GEFALLEN — es gibt keinen Weg, gezielt nach Preis zu suchen.** GEMESSEN mit
+  Gegenprobe in derselben Abfrage: `productVariants(query:"price:<=22.90")` liefert **199.90**,
+  `price:>=9000` **dieselbe Liste**, `price:zzzgibtesnicht` **Treffer statt leer** — und
+  `products(query:"variants.price:…")` genauso. **Der Preisfilter wird von allen drei Abfragen
+  still ignoriert**, nicht nur von `productsCount`. Folge: jede Suche nach Verlustfällen muss
+  den ganzen Katalog blättern. Ohne die Gegenprobe hätte ich „Risikoband durchsucht" gemeldet.
+- **✅ GEÄNDERT (live): 7 Produkte / 21 Varianten**, **alle sieben an der echten Seite
+  nachgemessen** (Regel von der Vorrunde eingehalten). Smart-Anzuchtset 21.90→**39.90**
+  (EK 20.29 — **machte nach WELCOME10 Verlust**) · XXL-Leselupe 16.90→**29.90** (14.87) ·
+  Trinkflasche «Hydro» 3 Var. 24.90→**39.90** (21.28) · 3D-Nachttischlampe 16.90→**24.90**
+  (13.24) · Monitor-Lichtleiste 29.90→**44.90** (23.41) · Flötenkessel 44.90→**64.90** (34.71) ·
+  Sommerkleid A-Linie 15 Var. 44.90→**64.90** (34.04).
+- **🛠️ GEBAUT `automation/preis_korrektur.mjs` (15 Selbsttests) — der Katalog in EINEM Lauf.**
+  Von Hand sind es ein Dutzend Produkte je Sitzung; bei Median 20–23 % Rohmarge ist das kein Weg.
+  **Sechs Sicherheitsregeln, jede einzeln geprüft:** nie senken · kein Einkaufspreis =
+  überspringen (auch EK 0) · **Faktor-Deckel 3** (Zielpreis über dem Dreifachen wird *gemeldet,
+  nicht gesetzt* — der Fall Abtropfregal, Faktor 6, gehört einem Menschen) · **idempotent**
+  (der Selbsttest läuft zweimal) · ohne Zugangsdaten **No-op mit Exit 0** (nachgewiesen) ·
+  **`DRY_RUN` ist Standard**. Dazu die Währungsprüfung: nicht-CHF-`unitCost` wird übersprungen
+  und gezählt statt falsch gerechnet. Zwei Tests sichern die Regel gegen Abdriften: die sieben
+  Preise dieser Runde und die Grenze (genau auf dem Ziel → nichts, ein Rappen darunter → Änderung).
+- **🟡 NUR DER USER, und es löst ZWEI Baustellen auf einmal:** `SHOPIFY_SHOP` (=
+  `au3j0y-hq.myshopify.com`), `SHOPIFY_CLIENT_ID`, `SHOPIFY_CLIENT_SECRET` als Env-Werte.
+  Damit läuft das Preis-Skript über den ganzen Katalog **und** `automation/homepage_slim.mjs`
+  (schlanke Startseite, seit 12.09. fertig und wartend).
+- **⚠️ Ehrliche Grenze: das Skript ist selbstgetestet, aber nie gegen den echten Shop gelaufen.**
+  Die Tests prüfen die Entscheidungslogik, nicht die Shopify-Antworten. Erster Lauf mit
+  `DRY_RUN=1`, CSV lesen, dann erst scharf.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-19 (⛑️ ES SIND NICHT ZWEI HELME, ES SIND 32 — und ich habe sie bewusst NICHT gesperrt):**
 - **Auftrag:** Dauerauftrag, offener Punkt vom 14.09. Voller Bericht:
   **`dropship/LERNEN-SCHUTZAUSRUESTUNG-2026-09-19.md`**.

@@ -72,6 +72,7 @@ Shopifys Zählfelder **ignorieren ihr `query`-Argument stillschweigend**. Gemess
 Stellen:
 
 - `productsCount(query: "variants.price:>99999")` → **10000** (deckelt zusätzlich bei 10000).
+- **Der Preisfilter wird auch von den LISTEN ignoriert** (gemessen 2026-09-19): `productVariants(query:"price:<=22.90")` liefert 199.90, `price:>=9000` dieselbe Liste, `price:zzzgibtesnicht` Treffer statt leer — dasselbe bei `products(query:"variants.price:…")`. Es gibt also **keinen serverseitigen Weg zu billigen oder teuren Produkten**; wer sie sucht, blättert den Katalog.
 - `customersCount` mit `email_marketing_state:subscribed`, mit `orders_count:>0` und mit
   `email:zzzgibtesnicht@example.invalid` → **jedes Mal 1498**.
 
