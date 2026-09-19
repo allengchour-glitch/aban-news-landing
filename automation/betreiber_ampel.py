@@ -248,7 +248,7 @@ def bot_puls():
     automation/bot_puls.py.
     """
     try:
-        from bot_puls import puls_zeile
+        from bot_puls import puls_zeile, haengende_auftraege
     except Exception:
         import importlib.util
         spur = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bot_puls.py")
@@ -258,7 +258,17 @@ def bot_puls():
         modul = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(modul)
         puls_zeile = modul.puls_zeile
-    return puls_zeile() or ""
+        haengende_auftraege = modul.haengende_auftraege
+    else:
+        from bot_puls import haengende_auftraege
+
+    # ⚠️ ZWEI FRAGEN, NICHT EINE (19.09.2026). Der Puls beweist, dass der Runner LEBT —
+    # er beweist nicht, dass ein Auftrag ANKOMMT. Am 18.09. starb der Storefront-Lauf beim
+    # ersten Seitenaufruf, die Quittung stand seit 10:09 auf «laufend», und gemeldet hat es
+    # niemand, weil der Puls daneben lueckenlos alle fuenf Minuten «leer» schrieb. Gemessen
+    # am 19.09.: ZWEI Quittungen hingen seit dem 17.09. — 37 Stunden unbemerkt.
+    zeilen = [puls_zeile(), haengende_auftraege()]
+    return " · ".join(z for z in zeilen if z)
 
 
 def offene_punkte():
