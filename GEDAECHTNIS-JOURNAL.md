@@ -6,6 +6,42 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-19 · 🔎 Der Klammer-Trick schützt den grep — nicht die Zeile, die ihn trägt
+
+Der 08:08-Keepalive endete mit **`STAND: … Aufseher=0`**. Zur Gegenprobe zwei Prüfungen in
+EINER Befehlszeile:
+
+* `ps -eo etimes,args | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/'` → **nichts**
+* `ps -eo args | grep -c "[f]ixer_keepalive"` → **1**
+
+Zwei Messungen desselben Prozesses, zwei Antworten. Geglaubt habe ich beinahe der bequemen:
+«1 = läuft ja». Die Wahrheit steht in der Prozessliste selbst — dort lag neben dem `ps` nur
+**meine eigene `/bin/bash -c …`-Hülle**, und deren Kommandozeile enthält den Namen **im
+Klartext**: nicht im grep (der ist brav `[f]ixer…`), sondern **im awk-Regex derselben Zeile**.
+Der Klammer-Trick verhindert, dass ein `grep` sich selbst findet. Er verhindert nicht, dass die
+umgebende Hülle den Namen an einer anderen Stelle ungeschützt trägt — und die Hülle steht
+genauso in `ps`.
+
+Gegenprobe sauber nachgezogen: dieselbe bracketed-Zählung in einer Zeile, die den Namen
+**nirgends** ungeschützt führt, gibt jetzt `1` und zeigt beim Auflisten **PID 2565
+`bash automation/fixer_keepalive.sh`** — den echten Aufseher. Und das awk-Muster funktioniert
+(`awk findet: 81s automation/fixer_keepalive.sh`), war also um 08:09 **richtig**: der Aufseher
+war wirklich tot, die «1» war ich selbst.
+
+**Regel, Lehre 1 präzisiert: Der Klammer-Trick gilt pro Zeile, nicht pro Wort.** Wer in einem
+Compound gleichzeitig nach einem Prozessnamen sucht und ihn anderswo ausschreibt, misst seine
+eigene Shell. Sicher ist nur die argv-Prüfung über `ps -eo args` mit einem Muster, das im
+selben Aufruf **nirgends** im Klartext vorkommt — oder ein Blick auf die **PID**: ein Treffer
+ohne plausible PID und Laufzeit ist kein Prozess, sondern ein Echo.
+
+Sachlage nebenbei: Der 08:08-Lauf hat den Aufseher **nicht** hochbekommen (der Container wird
+zwischen meinen Turns angehalten, Lehre 17.09.), der unmittelbar folgende Lauf schon —
+`AUFSEHER neu gestartet`, `Aufseher=1`. Das Skript hat für genau diesen Fall eine
+Wiederholung und räumt eine vererbte Sperre ab (`fuser -k`, Kommentar ab Zeile 101). Gemeldet
+hat den Fehlversuch allerdings nur die STAND-Zeile — **ein `Aufseher=0` am Zeilenende ist die
+einzige Stelle, an der ein missglückter Start sichtbar wird.**
+
+
 ## 2026-09-19 · 📭 Ein Schweigen kann heissen, dass die Frage nie angekommen ist
 
 Die Erinnerung «CJ-Erstattung nachmessen» brachte vier saubere Neins: Guthaben `amount 0.0`,
