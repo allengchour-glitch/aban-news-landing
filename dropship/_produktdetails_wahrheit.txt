@@ -53369,3 +53369,19 @@
 15448040571265	live-schon-sauber	Langarmbluse mit Rundhals und 3D-Print
 15448040735105	live-schon-sauber	Kurz geschnittene Langarmbluse im Retro-Karo
 15448041062785	live-schon-sauber	Sommerliches Langarmshirt mit 3D-Print
+15448041783681	farbe-floskel-entfernt,material-floskel-entfernt	Fransen-Weste aus Chenille
+15448041914753	material-floskel-entfernt	Kurzarm-Cardigan-Bluse mit kleinem Revers
+15448042307969	material-floskel-entfernt	Langarm-Top mit Bambusstruktur und UV-Schutz
+15448042406273	farbe-floskel-entfernt,material-floskel-entfernt	Elegantes Kurzarm-Shirt mit Holzohr-Rüschen
+15448042570113	material-floskel-entfernt	Elegante Bluse mit Puffärmeln und Raffung
+15448042701185	groesse-ohne-deckung-entfernt,material-floskel-entfernt	Kurzarm-Kleid mit Schleife und Schnürung
+15448042865025	material-floskel-entfernt	Ärmellose Bluse mit doppelten Rüschen
+15448042963329	farbe-floskel-entfernt,material-floskel-entfernt	Gestreifte Bluse mit Peter-Pan-Kragen
+15448043028865	material-floskel-entfernt	Bluse mit Blütenprint, Rüschen und Schleife
+15448043061633	material-floskel-entfernt	Kurzarm-T-Shirt mit gebürsteter Textur
+15448043127169	farbe-floskel-entfernt,material-floskel-entfernt	Mock-Two-Piece T-Shirt mit Rundhals und Print
+15448043225473	material-floskel-entfernt	Einfarbige Damen-Tunika-Bluse
+15448043389313	farbe-floskel-entfernt,material-floskel-entfernt	Langarmbluse mit Gürtel und 3D-Effekt
+15448043422081	farbe-floskel-entfernt,material-floskel-entfernt	Sommer Bluse mit Print
+15448043487617	material-floskel-entfernt	V-Neck Langarmshirt mit Print
+15448043520385	material-floskel-entfernt	Ärmelloses Off-Shoulder Top mit U-Boot-Ausschnitt

@@ -1,6 +1,6 @@
-15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
-15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
-15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben
+15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Far
+15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Far
 15412825063809	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
 15412825194881	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
 15412828733825	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
@@ -28,7 +28,7 @@
 15413076853121	Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock
 15413083242881	Boho Resort-Set · 2-teilig (Top & Hose)
 15413083832705	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
-15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2026)
+15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2
 15413084160385	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
 15413649998209	Spitzen-Bluse mit Schleife · Damen, Patchwork-Design
 15413724676481	Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch
@@ -38,8 +38,8 @@
 15413738996097	Bandeau-Top uni · Damen, schulterfrei & elastisch
 15413739684225	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
 15416026235265	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
-15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen, 4 Farben)
-15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farben)
+15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen,
+15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farbe
 15416343986561	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
 15416491704705	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
 15416493506945	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)
@@ -575,3 +575,148 @@
 15448040735105	Kurz geschnittene Langarmbluse im Retro-Karo
 15448040898945	Chiffon-Bluse mit 3D-Blumen und Perlen
 15448041062785	Sommerliches Langarmshirt mit 3D-Print
+15448041423233	Graues Strick-T-Shirt mit Bindedetail
+15448041783681	Fransen-Weste aus Chenille
+15448041914753	Kurzarm-Cardigan-Bluse mit kleinem Revers
+15448042209665	Colorblock Strickpullover mit Prinzessinnenärmeln
+15448042307969	Langarm-Top mit Bambusstruktur und UV-Schutz
+15448042406273	Elegantes Kurzarm-Shirt mit Holzohr-Rüschen
+15448042570113	Elegante Bluse mit Puffärmeln und Raffung
+15448042701185	Kurzarm-Kleid mit Schleife und Schnürung
+15448042865025	Ärmellose Bluse mit doppelten Rüschen
+15448042963329	Gestreifte Bluse mit Peter-Pan-Kragen
+15448043028865	Bluse mit Blütenprint, Rüschen und Schleife
+15448043061633	Kurzarm-T-Shirt mit gebürsteter Textur
+15448043094401	Stretch-Rollkragen-Shirt für Damen
+15448043127169	Mock-Two-Piece T-Shirt mit Rundhals und Print
+15448043225473	Einfarbige Damen-Tunika-Bluse
+15448043291009	Langarmshirt mit Spitzenbesatz und ausgestellten Ärmeln
+15448043389313	Langarmbluse mit Gürtel und 3D-Effekt
+15448043422081	Sommer Bluse mit Print
+15448043487617	V-Neck Langarmshirt mit Print
+15448043520385	Ärmelloses Off-Shoulder Top mit U-Boot-Ausschnitt
+15448043553153	Leinen-Weste mit Revers, ärmellos, atmungsaktiv
+15448043618689	Chiffon-Bluse im Boyfriend-Stil
+15448043749761	Damen T-Shirt mit ausgestellten Ärmeln
+15448043782529	Weisse Bluse mit flatterndem Kragen
+15448043815297	Besticktes Jacquard-Top mit Rüschen und V-Ausschnitt
+15448043848065	V-Ausschnitt Bluse mit Rüschen und ausgestellten Ärmeln
+15448043913601	Ärmelloses Shirt mit Kordelzug
+15448043946369	Chiffonbluse mit Rüschensaum
+15448043979137	Damen Rollkragen Off-Shoulder Langarm-Top
+15448044011905	Bauchfreundliches Langarmshirt mit Rüschen
+15448044110209	Elegante Chiffonbluse mit One-Shoulder-Design
+15448044142977	Freizeit-Langarmshirt für Damen
+15448044208513	V-Ausschnitt Baumwoll-Leinen Bluse
+15448044241281	Peplum-Bluse mit Froschknöpfen und Puffärmeln
+15448044339585	3D Blumen Print Kurzarm-Top
+15448044372353	Gestreifte V-Neck Bluse mit 3/4-Ärmeln
+15448075829633	Weihnachts-T-Shirt für Damen mit Aufdruck
+15448075862401	Bowknot Camisole V-Neck Top
+15448075895169	V-Neck Ärmelloses Slim Fit Top
+15448075927937	Gepunktetes Bandeau-Top
+15448076059009	Elegantes Neckholder-Top mit Perlenknöpfen
+15448076124545	Casual Bademode · Damen
+15448076190081	Elegantes Bikini-Set mit hohem Kragen
+15448076222849	Eleganter Tankini mit hohem Kragen und Bikinihose · Modell 2
+15448076288385	Casual Damen-Badebekleidung
+15448076321153	Lässiger Badeanzug · sportlich geschnitten
+15448076386689	Lässiger Badeanzug · klassisch
+15448076517761	Bikini-Set · Modell 2
+15448076550529	Badeanzug-Set für Damen
+15448076583297	Bikini-Set · Damen
+15448076648833	Badeanzug-Set · Damen
+15448076681601	Elfenbeinfarbenes Camisole-Top mit Spitze
+15448076714369	Damen-Bikini-Set
+15448076845441	Damen Bikini-Set · Modell 2
+15448076910977	Elegantes ärmelloses Slimming Top
+15448076943745	Ärmelloses V-Neck Top für Damen
+15448077009281	Rückenfreies Ultra-Kurzes Neckholder-Top
+15448077042049	Korsett-Top mit Rosenprint und Schleife
+15448077173121	Keel Slim Fit Print-Top
+15448077205889	Besticktes, asymmetrisches Rüschen-Top für Damen
+15448077304193	Neckholder-Top mit Schnürung und Quasten
+15448077402497	Gepunktetes Chiffon Halterneck Top
+15448077435265	Neckholder Top mit Retro-Leopardenprint
+15448077500801	Body Chain Top mit Perlen – Rosarot
+15448077697409	Perlen-Bodychain Neckholder-Top
+15448077730177	Punk Geometric Gemstone Suspender Top
+15448077795713	Pailletten Body Chain Top
+15448078123393	Schwarzes Neckholder-Top mit Knopfdetails
+15448078254465	Spitzenbesetzte Bluse mit Blumenmuster
+15448078287233	Yoga Top mit Reissverschluss, Langarm
+15448078352769	Kurzes Yoga Sport Top mit Rundhals
+15448078418305	Atmungsaktives Taillenbetontes Top für Frauen
+15448078483841	Off-Shoulder Kurzarmshirt
+15448078516609	Slim Fit Rundhals-Shirt mit kurzen Ärmeln
+15448078549377	Geripptes Slim Fit T-Shirt mit eckigem Ausschnitt
+15448078582145	Lässiges Kurzarm-Top im Loose-Fit
+15448078647681	Gestreiftes Langarmshirt im Loose Fit
+15448078680449	Kapuzen-Sweatshirt mit Polka-Dot-Print
+15448078713217	Figurbetontes Langarmshirt mit Spitze
+15448078745985	Lässiger Kapuzenpullover im Zweiteiler-Look
+15448078778753	Rundhals-Top mit ausgestellten Ärmeln
+15448078811521	Loose-fit Sweatshirt mit Reissverschluss
+15448078844289	Gestreifter Mock-Zweiteiler Hoodie
+15448078909825	Kapuzen-Sweatshirt für Damen, lockere Passform
+15448080613761	Chiffon-Top mit Puffärmeln und Rundhals
+15448080646529	Chiffon-Bluse mit Polka Dots und Mesh
+15448080679297	Elegantes Spitzen-Langarmshirt mit Puffärmeln
+15448080712065	Gestreifter Fluffy Woll-Cardigan (Slim-Fit)
+15448080744833	Off-Shoulder Langarmshirt mit Spitze
+15448080810369	Langarm-Shirt mit Rundhalsausschnitt
+15448080843137	Locker geschnittenes Langarmshirt für Damen
+15448080908673	Gemustertes Langarmshirt mit Rundhalsausschnitt
+15448080941441	Glitzer-Mesh Langarmshirt
+15448080974209	Elegantes Strickkleid mit A-Linie
+15448081006977	Elegantes V-Neck Pullover-Shirt mit Rüschenärmeln
+15448081039745	Herz-Strass Langarmshirt mit Mesh-Ärmeln
+15448081072513	Rundhals Langarm-Pullover für Damen
+15448081105281	Strick-Cardigan für Herbst und Winter
+15448081138049	Damen-Top mit Rundhals und Polka-Dots
+15448081170817	Elegantes Langarm-Top mit Tweed-Ärmeln
+15448081203585	Strick-Cardigan mit Lochmuster · Modell 2
+15448081269121	Chiffonbluse mit Schriftzug-Print
+15448081334657	Retro-Print Langarmbluse
+15448088281473	V-Neck Sport-Shirt Kurzarm – Peach
+15448088347009	Sport-Top mit starkem Halt und Polsterung
+15448092279169	Elegante V-Neck Bluse mit Rüschen & Laternenärmeln
+15448092311937	Bedrucktes Langarmshirt mit Reverskragen
+15448092344705	Langarmshirt mit Polka Dots
+15448092377473	Retro V-Neck Besticktes Langarm-Top
+15448092443009	Patchwork Hoodie Pullover für Damen
+15448092475777	Langarmshirt im Post-Apokalypse-Stil
+15448092508545	Mesh-Cardigan mit Laternenärmeln
+15448092541313	Elegantes Spitzen-Top mit langen Ärmeln
+15448092574081	Lyocell Off-Shoulder Langarmshirt
+15448092606849	Gestreiftes Langarmshirt im Color-Blocking-Stil
+15448092672385	Milchseide Langarmshirt mit eckigem Ausschnitt
+15448092705153	Rotes Langarmshirt mit Spitze
+15448092737921	Langarm-Baselayer Top für Damen Slim-Fit
+15448092770689	Langarmshirt mit Blumenprint für Damen
+15448092803457	Grünes Polka-Dot V-Neck Langarmshirt
+15448092836225	Loose Langarmshirt im Retro-Look
+15448092934529	Besticktes V-Neck Shirt aus Baumwoll-Leinen
+15448093000065	Gestreiftes Langarmshirt für vielseitige Looks
+15448093032833	Retro Sweatshirt mit geometrischem Muster
+15448093131137	Chiffon Halter Top mit Laternenärmeln
+15448093196673	Lässiges Langarmshirt mit Print für Damen
+15448101945729	Elegante Bluse mit Spitzen-Einsätzen
+15448101978497	Lässiges Denim-Langarmshirt mit V-Ausschnitt
+15448102011265	Strukturierte Bluse mit Rüschenmanschetten
+15448102044033	Vintage Bluse aus Doppel-Baumwollgarn
+15448102109569	Kurze Jeansbluse mit Waschung
+15448102207873	Gestreifte Langarmbluse mit Schnürung
+15448102306177	Casual Halter Top für Damen
+15448102371713	Elegante Damenbluse mit Rüschen und Spitze
+15448102404481	Uni-Damenbluse mit genähtem Kragen
+15448102601089	Baumwoll-Leinen Top mit Rundhals und 3/4-Ärmeln
+15448102633857	Elegante Satinbluse mit Schleife
+15448102666625	Schwarz-weiss gemusterte Bluse mit Leopardenprint
+15448102764929	Damen Bluse mit Rüschen und Puffärmeln
+15448102797697	Damen Puffärmel-Top mit Rüschensaum
+15448102896001	Damen Bluse mit Blumenmuster und kurzen Ärmeln
+15448102961537	Bohemian Cardigan mit Langarm und Geometermuster
+15448103027073	Gestreifte Kurzarmbluse mit Schleife
+15448103092609	Elegante Bluse mit figurschmeichelnder Passform
+15448103125377	V-Ausschnitt Bluse mit Knöpfen
