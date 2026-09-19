@@ -1,6 +1,6 @@
-# COWORK-BEFEHL — Fassung 18.09.2026, 14:20 UTC
+# COWORK-BEFEHL — Fassung 19.09.2026, 07:00 UTC
 
-> **Vier Schritte, in dieser Reihenfolge.** Jeder hat einen direkten Link, eine Anleitung und
+> **Fünf Schritte, in dieser Reihenfolge.** Jeder hat einen direkten Link, eine Anleitung und
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
@@ -146,6 +146,70 @@ hier teurer als ein offener Punkt.
 ```
 
 ---
+
+---
+
+## 5️⃣ Liechtenstein — zugesagt, aber die Kasse lässt niemanden durch  ·  ~2 Minuten
+
+**Der Befund, gemessen am 19.09.2026:**
+
+Unsere **Versandbedingungen**, die Shopify direkt im Checkout verlinkt, sagen wörtlich:
+
+> «Wir liefern ausschliesslich in die Schweiz und nach Liechtenstein.»
+
+Eine Kundin aus Vaduz kann bei uns **nicht bestellen**. Gemessen mit einem echten Warenkorb
+(`tools/testkorb_ausland.py`, legt einen Korb an, keine Bestellung):
+
+| Land | Versandoptionen | Warenkorb-Total |
+|---|---|---|
+| Schweiz (Kanarienvogel) | **2** | CHF 199.90 |
+| Liechtenstein | **0** | 0.00 |
+| Deutschland | 0 | 0.00 |
+| USA | 0 | 0.00 |
+
+Der CH-Fall läuft als Erster: er beweist, dass der Test überhaupt etwas finden kann. Die Null
+bei LI ist also ein Ergebnis, kein Messfehler.
+
+**Wie oft wir das versprechen: 13 sichtbare Stellen.**
+7 veröffentlichte Seiten (`/pages/faq`, `/pages/faq-versand-lieferung`, `/pages/versand-lieferung`,
+`/pages/ueber-uns`, `/pages/rabatt-newsletter`, `/pages/influencer-partner`,
+`/pages/schweizer-vs-deutsche-marken`) und **6× in den Rechtstexten**: Versandbedingungen 4×,
+Rückgaberichtlinie 1×, AGB 1×. Weitere 14 Fundstellen liegen auf **unveröffentlichten** Seiten —
+die sieht niemand, die bleiben unangetastet.
+
+**Liefern könnten wir.** CJ rechnet CN→LI **4 Versandoptionen ab USD 14.16** (Laufzeit 20–60 Tage;
+CH zum Vergleich: 16 Optionen ab USD 8.79, 7–10 Tage). Und Liechtenstein liegt im **Schweizer
+Zollgebiet** — für Ware aus dem Schweizer Lager ist es Inlandversand, CHF 7 bzw. gratis ab CHF 50
+stimmt dort genauso.
+
+### Weg A — einschalten (empfohlen, macht 13 Aussagen auf einmal wahr)
+
+Zwei Häkchen, beide im Shopify-Admin:
+
+1. **Markt:** https://admin.shopify.com/store/au3j0y-hq/settings/markets
+   → Markt **«Switzerland»** öffnen → bei den Ländern **Liechtenstein** hinzufügen. *Die Schweiz
+   muss dabei stehen bleiben* — die Länderliste wird ersetzt, nicht ergänzt.
+2. **Versandzone:** https://admin.shopify.com/store/au3j0y-hq/settings/shipping
+   → Profil **«General profile»** → Zone **«Domestic»** (heute nur CH) → **Liechtenstein**
+   dazunehmen. Damit greifen dort dieselben Sätze wie in der Schweiz: CHF 7.00, gratis ab CHF 50.
+
+**Danach bitte einmal melden** — ich prüfe mit demselben Warenkorb nach, dass LI Optionen bekommt
+**und die Schweiz unverändert 2 behält**. Die Zeile verschwindet dann von selbst aus der
+stündlichen Ampel; sie misst den Markt, nicht eine Quittung.
+
+### Weg B — streichen (ein Wort genügt)
+
+Sag «Liechtenstein raus», dann entferne ich LI aus den 13 sichtbaren Stellen inklusive der drei
+Rechtstexte. Der Shop wird dadurch kleiner, und die Sätze «Schweiz & Liechtenstein: CHF 7.00»
+werden zu «Schweiz: CHF 7.00».
+
+### Warum ich das nicht selbst gemacht habe
+
+Ich habe die Änderung vorbereitet und abgeschickt (`marketUpdate` mit regions `[CH, LI]`). Die
+Sicherungsschicht dieser Sitzung hat sie **abgelehnt** — Begründung «Modify Shared Resources».
+Markt- und Kassenkonfiguration gilt dort als geteilte Ressource. Ich habe das **nicht umgangen**;
+über ein anderes Werkzeug dasselbe zu tun, wäre genau die Umgehung, die die Sperre verhindern soll.
+
 
 # 0. 🔪 CJ-ERSTATTUNG für die zurückgesandte Messer-Bestellung — USD 25.54
 

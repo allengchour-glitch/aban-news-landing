@@ -61,6 +61,11 @@ FAELLE = [
     ("KANARIENVOGEL Schweiz", "CH", {"address1":"Dorfstrasse 1","city":"Belp","zip":"3123","country":"Switzerland","province":"BE"}),
     ("Deutschland",           "DE", {"address1":"Hauptstrasse 1","city":"Muenchen","zip":"80331","country":"Germany"}),
     ("USA",                   "US", {"address1":"1 Main St","city":"Austin","zip":"78701","country":"United States","province":"TX"}),
+    # 19.09.2026 dazu: Liechtenstein ist an 13 SICHTBAREN Stellen zugesagt (7 veroeffentlichte
+    # Seiten + 6x in den Rechtstexten, die im Checkout verlinkt sind) — und bekommt trotzdem
+    # keine Versandoption. Der Fall gehoert dauerhaft in diesen Test, damit die Zusage und die
+    # Wirklichkeit im selben Lauf nebeneinander stehen.
+    ("Liechtenstein",         "LI", {"address1":"Staedtle 1","city":"Vaduz","zip":"9490","country":"Liechtenstein"}),
 ]
 
 ergebnis = {}
@@ -83,9 +88,13 @@ if ergebnis.get("CH") in (0, None):
     print("⛔ KANARIENVOGEL STUMM — der CH-Korb liefert keine Optionen. Der Test misst nichts;")
     print("   die DE/US-Ergebnisse sind BEDEUTUNGSLOS und duerfen nicht als 'kein Auslandsversand' gelten.")
 else:
-    aus = [l for l in ("DE","US") if ergebnis.get(l)]
+    aus = [l for l in ("DE","US","LI") if ergebnis.get(l)]
     if aus:
         print(f"⚠️ AUSLANDSVERSAND IST BESTELLBAR: {', '.join(aus)} bekommen echte Versandoptionen.")
     else:
         print("✅ Nur die Schweiz bekommt Versandoptionen — DE und US werden im Korb abgewiesen,")
         print("   obwohl die 'International'-Zone im Versandprofil aktiv ist. Der Markt sperrt sie.")
+    if not ergebnis.get("LI") and ergebnis.get("CH"):
+        print("⚠️ LIECHTENSTEIN: zugesagt, aber nicht bestellbar — 0 Versandoptionen.")
+        print("   13 sichtbare Stellen nennen LI, 6 davon in den Rechtstexten im Checkout.")
+        print("   Entscheid steht aus: einschalten oder aus den Texten streichen (COWORK-BEFEHL Punkt 5).")

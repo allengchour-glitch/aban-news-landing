@@ -6,6 +6,66 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-19 · 🇱🇮 «mach bot besser und seite» — der Bot sah nur die halbe Frage, und der Shop verspricht ein Land, das nicht bestellen kann
+
+### Bot: ein Puls beweist Leben, nicht Ankunft
+
+`auftraege/_puls.json` war frisch (`letzter_lauf 2026-09-19T06:19:45Z`, `zustand "leer"`) — und
+**zwei Quittungen standen seit dem 17.09. auf `stand: laufend`**, 37 h und 36 h. Die Gegenprobe
+war eine Zeile: `grep -c "laufend" automation/bot_puls.py` → **0**. Der Puls konnte einen
+mittendrin gestorbenen Lauf **strukturell nicht sehen**; er beantwortet «lebt der Runner?», nicht
+«kommt ein Auftrag an». Das sind zwei Fragen, und gestellt wurde nur die erste.
+
+`haengende_auftraege()` stellt jetzt die zweite (Schwelle 30 Min). Zwei Dinge daran sind die
+eigentliche Arbeit: Die **Zeitquelle** bevorzugt das Feld `begonnen` im JSON und **sagt dazu**,
+wenn sie auf die Dateizeit ausweichen musste — nach einem frischen Klon trägt jede Datei die
+Klon-Zeit, eine Altersangabe daraus wäre erfunden und sähe genauso aus wie eine echte. Und
+**unlesbare Quittungen werden laut gemeldet** statt übersprungen; ein stiller Übersprung ist die
+Klasse, die am 17.09. `engine_keepalive.sh:339` einen fehlenden Runner acht Stunden verschweigen
+liess. Sechs Gegenproben in beide Richtungen, 12 Selbsttests grün.
+
+### Seite: 13 sichtbare Zusagen, ein leerer Warenkorb
+
+Die Versandbedingungen — die Shopify **im Checkout verlinkt** — sagen wörtlich «Wir liefern
+ausschliesslich in die Schweiz und nach Liechtenstein». Gemessen mit einem echten Korb
+(`cartCreate @inContext(country: LI)`): **CH 2 Versandoptionen, LI 0, Total 0.00**. Der
+CH-Kanarienvogel lief als Erster — die Null bei LI ist ein Ergebnis, kein stummes Werkzeug.
+
+**Und hier habe ich meine eigene Zahl korrigiert.** Vor der Messung trug ich «18 Fundstellen,
+darunter AGB und Widerrufsbedingungen» im Kopf. Gezählt sind es **27** — aber **14 davon liegen
+auf unveröffentlichten Seiten**, genau die AGB- und Widerrufs-*Seiten*, die ich als schwerstes
+Argument angeführt hatte. Sichtbar sind **13**: 7 Seiten und 6× in den Rechtstexten. Dieselbe
+Lehre wie bei den 118 leeren Kollektionen am 15.09.: **eine Fundstelle auf einer Seite, die
+niemand öffnen kann, kostet nichts und darf nicht mitgezählt werden.** Die Sache wird dadurch
+nicht kleiner — die sechs Treffer in den Rechtstexten sind die verbindlichsten Sätze des ganzen
+Shops —, aber die Zahl wird wahr.
+
+**Liefern könnten wir**: CJ rechnet CN→LI 4 Optionen ab USD 14.16 (20–60 Tage; CH 16 ab 8.79,
+7–10 Tage), und LI liegt im Schweizer Zollgebiet, für CH-Lagerware also Inlandversand.
+
+**Ein Verdacht löste sich beim Messen auf:** Ich hielt die Versandseiten für widersprüchlich —
+`/pages/versand-lieferung` nennt 1-3 Tage, 1–2, 2-7 und 10-20 Werktage nebeneinander. Gelesen
+sind sie sauber **nach Lager getrennt** (CH-Lager 1–2, EU 2–7, Print-on-Demand 7–14, Direktversand
+10–20), und die drei sichtbaren Texte stimmen untereinander überein. Von 8 Versand-Seiten sind
+ohnehin nur **2 veröffentlicht**. Es gab nichts zu reparieren, und das gehört genauso berichtet
+wie ein Fund.
+
+### Die Änderung ist nicht durchgegangen — und das ist richtig so
+
+`marketUpdate` mit `regions [CH, LI]` hat die Sicherungsschicht dieser Sitzung **abgelehnt**
+(«Modify Shared Resources»). Markt- und Kassenkonfiguration zählt dort als geteilte Ressource.
+Dasselbe über ein anderes Werkzeug zu tun wäre genau die Umgehung, die die Sperre verhindern
+soll — **nicht gemacht**. Stattdessen: Punkt 5 in `COWORK-BEFEHL.md` mit beiden Admin-Links, der
+Warnung, dass die Länderliste **ersetzt** wird (die `productUpdate(tags:)`-Klasse vom 18.09., nur
+an der Kasse), und dem Gegenvorschlag «LI streichen» in einem Wort.
+
+Die Wache dazu prüft den **Zustand**, nicht eine Quittung: `liechtenstein_gesperrt()` fragt die
+Marktregionen ab und verstummt, sobald LI darin steht. Eine Quittungsdatei hätte die Schwäche
+jeder Behauptung — sie kann gesetzt sein, ohne dass es stimmt. Fünf Gegenproben:
+meldet bei `[CH]`, schweigt bei `[CH,LI]` und `[LI]`, schweigt bei kaputter Abfrage **und** bei
+leerer Marktliste — denn *nichts gemessen* heisst nicht *alles gut*.
+
+
 ## 2026-09-18 · 🪞 Fremder Stand gegengeprüft: 0 bestätigt, 1 widerlegt, 4 teilweise — und ich hatte ihn schon gepusht
 
 Der Betreiber lud den Statusbericht der Cowork/Claude-in-Chrome-Session hoch. Fünf prüfbare

@@ -271,6 +271,41 @@ def bot_puls():
     return " · ".join(z for z in zeilen if z)
 
 
+def liechtenstein_gesperrt():
+    """13 sichtbare Zusagen nennen Liechtenstein — der LI-Korb bleibt leer. Selbstklaerend.
+
+    GEMESSEN 19.09.2026:
+      · Markt «Switzerland» (gid://shopify/Market/99383214465) fuehrt regions = [CH].
+      · cartCreate @inContext(country: LI) → 0 Versandoptionen, Warenkorb-Total 0.00,
+        waehrend der CH-Kanarienvogel im selben Lauf 2 Optionen bekommt (tools/testkorb_ausland.py).
+      · Sichtbar versprochen wird LI an 13 Stellen: 7 veroeffentlichte Seiten und
+        6× in den Rechtstexten, die Shopify IM CHECKOUT verlinkt
+        (SHIPPING_POLICY 4×, REFUND_POLICY 1×, TERMS_OF_SERVICE 1×). Wortlaut der
+        Versandbedingungen: «Wir liefern ausschliesslich in die Schweiz und nach Liechtenstein.»
+      · CJ liefert nach LI (4 Optionen ab USD 14.16, 20–60 Tage) — die Zusage ist also
+        machbar, nur nicht eingeschaltet.
+
+    ⚠️ Diese Wache prueft den ZUSTAND, nicht eine Quittung. Sobald LI im Markt steht,
+    verschwindet die Zeile von selbst — niemand muss etwas abhaken. Eine Quittungsdatei
+    haette dieselbe Schwaeche wie jede Behauptung: sie kann gesetzt sein, ohne dass es stimmt.
+    """
+    try:
+        d = gql('{ markets(first:10){ nodes{ id regions(first:50){ nodes{ '
+                '... on MarketRegionCountry { code } } } } } }')
+        knoten = ((d.get("data") or {}).get("markets") or {}).get("nodes") or []
+    except Exception:
+        return None                      # kein Befund aus einer kaputten Abfrage
+    if not knoten:
+        return None                      # nichts gemessen heisst nicht «alles gut»
+    laender = {r.get("code") for m in knoten for r in (m.get("regions") or {}).get("nodes") or []}
+    if "LI" in laender:
+        return None                      # eingeschaltet → Zeile faellt weg
+    return ("🇱🇮 Liechtenstein ist an 13 sichtbaren Stellen zugesagt (davon 6× in den "
+            "Rechtstexten im Checkout) — kann aber NICHT bestellen: LI-Korb 0 Versandoptionen. "
+            "Entweder einschalten (Markt + Zone «Domestic», 2 Minuten) oder LI aus den Texten "
+            "streichen. Anleitung: COWORK-BEFEHL.md Punkt 5")
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -287,7 +322,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
