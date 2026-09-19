@@ -27,6 +27,15 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 
 const HIER = dirname(fileURLToPath(import.meta.url))
 const SCHNELL = process.argv.includes('--schnell')
+/* ⚠️ WIEDERAUFNAHME. Ein voller Lauf dauert gut zwei Stunden, und der Container
+   dieser Sitzung startet dazwischen neu — zweimal hintereinander hat das einen Lauf
+   bei 46 bzw. 13 von 48 zerrissen, jedes Mal ueber eine Stunde Arbeit fuer nichts.
+   `--ab <Nummer>` setzt hinter der zuletzt fertigen Pruefung wieder an. Die Nummer
+   ist die Zaehlung der Zeilen im Protokoll, also: so viele ueberspringen.
+   ⚠️ Das Ergebnis eines Laufs mit --ab ist KEIN vollstaendiges Tor. Die Schlusszeile
+   sagt das ausdruecklich, damit niemand ein halbes Tor fuer ein ganzes haelt. */
+const ABi = process.argv.indexOf('--ab')
+const AB = ABi >= 0 ? (parseInt(process.argv[ABi + 1], 10) || 0) : 0
 
 /* wert: aus der Ausgabe die eine Zahl ziehen, die zaehlt.
    gut:  wann die Pruefung haelt. kern: laeuft auch bei --schnell. */
@@ -229,8 +238,9 @@ const lauf = (datei) => new Promise((res) => {
   p.on('close', (code) => res({ out, code, ms: Date.now() - t0 }))
 })
 
-const liste = PRUEFUNGEN.filter((p) => !SCHNELL || p.kern)
-console.log(`${liste.length} Pruefungen${SCHNELL ? ' (Kernreihe)' : ''} — jede startet einen eigenen Browser, das dauert.\n`)
+const alle = PRUEFUNGEN.filter((p) => !SCHNELL || p.kern)
+const liste = AB > 0 ? alle.slice(AB) : alle
+console.log(`${liste.length} Pruefungen${SCHNELL ? ' (Kernreihe)' : ''}` + (AB > 0 ? ` (die ersten ${AB} uebersprungen, --ab)` : '') + ` — jede startet einen eigenen Browser, das dauert.\n`)
 
 const zeilen = []
 let schlecht = 0
@@ -268,7 +278,7 @@ for (const p of liste) {
 }
 
 const dauer = zeilen.reduce((a, z) => a + z.s, 0)
-console.log(`\n${liste.length - schlecht} von ${liste.length} halten · ${Math.round(dauer / 60)} min gesamt`)
+console.log(`\n${liste.length - schlecht} von ${liste.length} halten · ${Math.round(dauer / 60)} min gesamt` + (AB > 0 ? `\n⚠️ TEILLAUF — die ersten ${AB} von ${alle.length} Pruefungen wurden uebersprungen (--ab).` + ` Das ist KEIN vollstaendiges Tor.` : ''))
 if (schlecht) {
   console.log(`\nNicht gehalten — die volle Ausgabe liegt in ${LOGS}/ :`)
   zeilen.filter((z) => !z.ok).forEach((z) => console.log(`   ${z.name}  (Rueckgabe ${z.code})`))
