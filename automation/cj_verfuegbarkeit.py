@@ -16,7 +16,37 @@ Fortschritt steht im LEDGER dropship/_cj_verfuegbarkeit.txt (kein Cursor auf Pla
 siehe main(): ein Cursor hat den Waechter vom 16.-19.09. blind gemacht).
 DRY=1 meldet nur.
 """
-import json, subprocess, time, os, re
+import json, subprocess, time, os, re, fcntl
+
+
+def _nur_einmal():
+    """Verhindert, dass zwei Laeufe gleichzeitig dasselbe Ledger fuellen.
+
+    ANLASS 19.09.2026, eigener Fehler: Der Aufseher startet diesen Waechter taeglich als
+    `python3 /tmp/cj_verfuegbarkeit.py` (engine_keepalive spiegelt automation/*.py nach /tmp).
+    Ich habe daneben von Hand `python3 automation/cj_verfuegbarkeit.py` gestartet — zwei
+    verschiedene PFADE, dieselbe Arbeit. Beide liefen 20 Minuten nebeneinander, bauten ihr
+    `done`-Set beim eigenen Start und prueften deshalb gegenseitig nach: **415 doppelte IDs**
+    im Ledger (46'702 Zeilen, 46'287 eindeutig). Kein Datenschaden — das Ledger ist
+    anhaengend, das Draften idempotent —, aber doppelte CJ-Punkte und doppelte Zeit.
+
+    Die Sperre haengt deshalb an einem FESTEN Pfad, nicht an `__file__`: sie muss die
+    /tmp-Kopie und die Repo-Fassung als DENSELBEN Waechter erkennen. Der Deskriptor bleibt
+    absichtlich offen (Modul-global), damit die Sperre bis zum Prozessende haelt; stirbt der
+    Prozess (Container-Pause), gibt der Kernel sie von selbst frei — eine Datei mit PID darin
+    waere nach jedem harten Tod eine Ruine.
+    """
+    global _sperre
+    _sperre = open("/tmp/cj_verfuegbarkeit.lock", "w")
+    try:
+        fcntl.flock(_sperre, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        print("Ein anderer Lauf haelt die Sperre (/tmp/cj_verfuegbarkeit.lock) — "
+              "dieser Aufruf macht nichts. Das ist kein Fehler.", flush=True)
+        raise SystemExit(0)
+
+
+_sperre = None
 
 def _cj_token():
     """Crash-frei an den CJ-Token kommen (01.09.): /tmp/_cjtok schreibt der Fulfill-Runner —
@@ -159,6 +189,7 @@ def cj_kennt(sku):
 
 
 def main():
+    _nur_einmal()                      # zwei Laeufe fuellen sonst dasselbe Ledger doppelt
     # ⚠️ 19.09.2026: DER CURSOR IST ERSATZLOS RAUS — er hat den Waechter blind gemacht.
     #
     # GEMESSEN: `/tmp/cj_verf_cursor.txt` stand seit dem 16.09. 00:13 auf einem Produkt vom

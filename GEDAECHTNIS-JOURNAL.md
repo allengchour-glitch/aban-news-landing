@@ -6,6 +6,46 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-19 · 🔁 Zwei Pfade, ein Wächter — der Doppelstart war meiner
+
+Nach der Cursor-Reparatur habe ich den Nachhol-Lauf von Hand angestossen. **Vorher geprüft, ob
+schon einer läuft** — die Prüfung war leer, und sie war trotzdem wertlos: Der Aufseher startet
+denselben Wächter **eine Minute später** als tägliche Aufgabe. Gemessen in `ps`:
+
+```
+1080  12:16:11  bash automation/fixer_keepalive.sh
+4984  12:20:48  python3 /tmp/cj_verfuegbarkeit.py      ← der Aufseher
+(meiner)        python3 automation/cj_verfuegbarkeit.py ← von Hand
+```
+
+**Zwei verschiedene PFADE, dieselbe Arbeit.** Beide bauen ihr `done`-Set beim eigenen Start und
+prüfen deshalb gegenseitig nach: **415 doppelte IDs** im Ledger (46'702 Zeilen, 46'287
+eindeutig). Kein Datenschaden — das Ledger ist anhängend, das Draften idempotent —, aber
+doppelte CJ-Punkte und doppelte Zeit. Und die Keepalive-Anweisung sagt seit dem 20.08. genau
+das: *nichts von Hand starten, was der Aufseher startet.*
+
+**Eine Prozessprüfung VOR dem Start beantwortet nur, was in dieser Sekunde läuft.** Sie kann
+nicht wissen, was eine Minute später anläuft. Gegen ein Rennen hilft keine Vorabfrage, sondern
+nur eine Sperre, die **beide** Starter durchlaufen.
+
+Deshalb hat `cj_verfuegbarkeit.py` jetzt `_nur_einmal()`: `flock(LOCK_EX|LOCK_NB)` auf einem
+**festen** Pfad `/tmp/cj_verfuegbarkeit.lock` — fest, weil die Sperre die **/tmp-Kopie** (die
+der Aufseher startet, `engine_keepalive` spiegelt `automation/*.py` dorthin) und die
+**Repo-Fassung** als denselben Wächter erkennen muss. Ein aus `__file__` abgeleiteter Pfad
+hätte genau diesen Fall wieder durchgelassen. Der Deskriptor bleibt offen; stirbt der Prozess
+(Container-Pause), gibt der Kernel die Sperre von selbst frei — eine Datei mit PID darin wäre
+nach jedem harten Tod eine Ruine (die Klasse der stehengebliebenen `fixer_keepalive.lock`).
+
+Gegenprobe in beide Richtungen (`automation/test_cj_verfuegbarkeit_sperre.py`): der zweite Lauf
+wird abgewiesen **und** nach dem Tod des Halters kommt der nächste wieder durch. Ein «zweiter
+wird abgewiesen» allein wäre keine Sicherung, sondern eine Blockade mit Ablaufdatum.
+
+**Ertrag der Reparatur trotz des Umwegs:** seit dem Cursor-Fix **1'166 neu geprüfte Produkte,
+alle `ok`**, 5 «unklar» (bewusst nicht ins Ledger, nächster Lauf fragt erneut), **0 fälschlich
+gedraftet**. Von den 600 neuesten aktiven CJ-Produkten fehlt jetzt **keines** mehr — die
+Startseiten-Ware ist wieder unter Beobachtung.
+
+
 ## 2026-09-19 · 🕳️ Ein Cursor, der «neueste zuerst» sortiert, sperrt genau die Neuzugänge aus
 
 `automation/cj_verfuegbarkeit.py` sucht aktive CJ-Produkte, die es bei CJ nicht mehr gibt —
