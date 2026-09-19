@@ -10686,11 +10686,23 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
      solange der Startbildschirm steht, will jemand tippen (eng); sobald gespielt
      wird, soll die Welt schnell fertig werden (weit). */
   function grenze(){ var st=document.getElementById("start");
-    return (st && !st.classList.contains("hide")) ? 4 : 16; }
+    return (st && !st.classList.contains("hide")) ? 4 : 1e9; }
   window._ladeStand={gefordert:0,fertig:0};
   function vorrang(url){return /th_(mann|frau|kind|baby)/.test(url);}
   function weiter(){ var m=grenze(); while(aktiv<m&&schlange.length){ aktiv++; schlange.shift()(); } }
-  function fertig(){ aktiv--; window._ladeStand.fertig++; setTimeout(weiter,0); }
+  /* ⚠️ NACH DEM START NICHT MEHR NACHGEBEN — TEUER GELERNT. Jedes setTimeout(...,0)
+     gibt dem Browser Gelegenheit, ein Bild der 3D-Szene zu zeichnen. Solange der
+     Startbildschirm steht, ist genau das gewollt: dort will jemand tippen. Danach
+     kostet es nur noch, und zwar mehr als gedacht — die ganze Kette NACH dem Laden
+     (freiRaeumen, entwirren, _spaetEinfrieren) haengt am LETZTEN Modell und rutscht
+     mit. Zwei Torpruefungen haben das gezeigt: th-club fand den Club nach 30 s nicht
+     (er kam bei 46 s statt 25,8 s), und die echten Durchdringungen stiegen bei
+     DERSELBEN Spieldatei von 9 auf 19 — entwirren() war schlicht noch nicht gelaufen.
+     Darum: eng und höflich, solange der Startbildschirm steht; ungebremst danach. */
+  function fertig(){ aktiv--; window._ladeStand.fertig++;
+    var st=document.getElementById("start");
+    if(st && !st.classList.contains("hide")) setTimeout(weiter,0); else weiter();
+  }
   GL.load=function(url,ok,fort,fehl){
     window._ladeStand.gefordert++;
     var auftrag=function(){ echt(url,
