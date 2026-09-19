@@ -12,7 +12,8 @@ andere Antwort (Drossel, Timeout, Fehlercode) gilt als 'unklar' und laesst das P
 Punkte-sparsam: CJ deckelt die Abfragen taeglich (`pointsInfo.remaining`), und der Import-Grind
 braucht sie auch. Der Audit stoppt selbst, wenn das Restbudget unter PUNKTE_RESERVE faellt.
 
-Resumable ueber /tmp/cj_verf_cursor.txt, Ergebnisse in dropship/_cj_verfuegbarkeit.txt.
+Fortschritt steht im LEDGER dropship/_cj_verfuegbarkeit.txt (kein Cursor auf Platte —
+siehe main(): ein Cursor hat den Waechter vom 16.-19.09. blind gemacht).
 DRY=1 meldet nur.
 """
 import json, subprocess, time, os, re
@@ -158,8 +159,32 @@ def cj_kennt(sku):
 
 
 def main():
-    st = "/tmp/cj_verf_cursor.txt"
-    cur = open(st).read().strip() or None if os.path.exists(st) else None
+    # ⚠️ 19.09.2026: DER CURSOR IST ERSATZLOS RAUS — er hat den Waechter blind gemacht.
+    #
+    # GEMESSEN: `/tmp/cj_verf_cursor.txt` stand seit dem 16.09. 00:13 auf einem Produkt vom
+    # Juni; seither meldete JEDER Lauf «FERTIG: 0 geprueft, 0 ok, 0 weg, 0 unklar». Ledger
+    # 45'522 Eintraege, aktive cj-real 47'522 — und von den 600 NEUESTEN aktiven Produkten
+    # fehlten ALLE 600 im Ledger, darunter die Mini-Beamer vom 05.09., die auf der Startseite
+    # in der Hype-Reihe stehen.
+    #
+    # Der Grund ist die Sortierung: `CREATED_AT, reverse:true` heisst NEUESTE ZUERST, und
+    # `after:<cursor>` liefert deshalb nur das, was ALTER ist als der Cursor. Alles Neuere
+    # liegt VOR dem Cursor und war nie wieder erreichbar. Dazu wurde der Cursor beim Ende
+    # eines Durchgangs nie geloescht — ein Waechter, der einmal durch ist, war fuer immer fertig.
+    #
+    # Ein Cursor ist hier ueberfluessig: Das LEDGER macht den Lauf schon idempotent. Wer oben
+    # anfaengt, trifft die ungeprueften Neuzugaenge sofort (sie sind die neuesten), und was
+    # geprueft wurde, ueberspringt der Ledger-Abgleich ohne einen einzigen CJ-Aufruf. Stirbt
+    # der Lauf mittendrin (der Container wird zwischen Turns angehalten), ist der Fortschritt
+    # im Ledger — nicht in einer Cursor-Datei, die ihn danach blockiert.
+    veraltet = "/tmp/cj_verf_cursor.txt"
+    if os.path.exists(veraltet):
+        try:
+            os.remove(veraltet)
+            print("alten Cursor entfernt (blockierte seit 16.09. alle Neuzugaenge)", flush=True)
+        except OSError:
+            pass
+    cur = None
     done = set()
     if os.path.exists(LEDGER):
         done = {l.split("\t")[0] for l in open(LEDGER)}
@@ -208,7 +233,7 @@ def main():
             print(f"  {n} geprüft | ok {ok} | weg {weg} | unklar {unklar} | Punkte {_punkte['rest']}", flush=True)
         if not pg["pageInfo"]["hasNextPage"]:
             break
-        cur = pg["pageInfo"]["endCursor"]; open(st, "w").write(cur)
+        cur = pg["pageInfo"]["endCursor"]        # nur INNERHALB dieses Laufs, nichts auf Platte
     print(f"FERTIG: {n} geprüft, {ok} ok, {weg} nicht mehr verfügbar, {unklar} unklar")
 
 

@@ -49890,3 +49890,4 @@ gid://shopify/Product/15525513986433	schon-sauber	0
 gid://shopify/Product/15525514117505	schon-sauber	0
 gid://shopify/Product/15525514314113	schon-sauber	0
 gid://shopify/Product/15525514477953	schon-sauber	0
+gid://shopify/Product/15506443665793	schon-sauber	0

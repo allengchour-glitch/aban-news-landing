@@ -6,6 +6,47 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-19 · 🕳️ Ein Cursor, der «neueste zuerst» sortiert, sperrt genau die Neuzugänge aus
+
+`automation/cj_verfuegbarkeit.py` sucht aktive CJ-Produkte, die es bei CJ nicht mehr gibt —
+die Ghost-Sale-Klasse, die uns #1006/#1008/#1009 gekostet hat. Am 18.09. stand als Befund
+notiert, er stehe «seit 16.09. auf einem Cursor am alten Katalogende». Heute nachgemessen,
+und es ist schlimmer, als der Satz klingt.
+
+**Gemessen:** `/tmp/cj_verf_cursor.txt` vom **16.09. 00:13**, Ledger **45'522** Einträge,
+aktive `cj-real` **47'522** → **2'000 Produkte nie gefragt**. Und die entscheidende Probe:
+von den **600 NEUESTEN** aktiven cj-real-Produkten fehlten **alle 600** im Ledger — darunter
+die Mini-Beamer vom 05.09., die auf der Startseite in der **Hype-Reihe** stehen. Jeder Lauf
+seit dem 16.09. meldete «FERTIG: 0 geprüft, 0 ok, 0 weg, 0 unklar».
+
+**Der Mechanismus ist die Sortierung.** Die Abfrage läuft mit `CREATED_AT, reverse:true` =
+**neueste zuerst**; `after:<cursor>` liefert deshalb nur, was **älter** ist als der Cursor.
+Alles Neuere liegt **vor** ihm und ist nie wieder erreichbar. Dazu wurde der Cursor am Ende
+eines Durchgangs **nie gelöscht** — ein Wächter, der einmal durch war, war für immer fertig.
+Zwei Fehler, die einander decken: Der eine sperrt die Zukunft aus, der andere sorgt dafür,
+dass es niemandem auffällt, weil «0 geprüft» wie «nichts zu tun» aussieht.
+
+**Die Reparatur ist eine Löschung, kein Flicken.** Der Cursor war hier von Anfang an
+überflüssig: Das **Ledger** macht den Lauf schon idempotent. Wer oben anfängt, trifft die
+ungeprüften Neuzugänge sofort — sie *sind* die neuesten —, und alles Geprüfte überspringt der
+Ledger-Abgleich ohne einen einzigen CJ-Aufruf. Stirbt der Lauf mittendrin (der Container wird
+zwischen den Turns angehalten), steht der Fortschritt im Ledger statt in einer Datei, die ihn
+danach blockiert. Die Cursor-Datei wird beim Start entfernt.
+
+**Gegenprobe am echten Fall, nicht am Gedanken:** 100 Sekunden Lauf → Ledger **45'522 → 45'573**,
+also **51 Prüfungen**, alle mit Ergebnis `ok`, **0 fälschlich gedraftet**. Vorher waren es in
+drei Tagen null.
+
+**Die Lehre über die Lehre:** Der Befund stand seit gestern im Journal und war trotzdem noch da.
+Ein notierter Fehler ist nicht behoben. Und: **«0 geprüft» ist die gefährlichste Zahl, die ein
+Wächter melden kann** — sie liest sich wie Ruhe und bedeutet Blindheit. Ein Wächter sollte den
+Unterschied selbst kennen und «0 zu prüfen, weil alle N im Ledger» anders melden als «0 gesehen».
+
+⚠️ Offen und bewusst NICHT angefasst: Das Ledger ist append-only — ein im August als `ok`
+geprüftes Produkt wird nie wieder gefragt, obwohl CJ jederzeit auslisten kann. Das ist eine
+zweite Lücke derselben Familie (ein Urteil ohne Verfallsdatum), aber ein eigener Umbau.
+
+
 ## 2026-09-19 · 🔎 Der Klammer-Trick schützt den grep — nicht die Zeile, die ihn trägt
 
 Der 08:08-Keepalive endete mit **`STAND: … Aufseher=0`**. Zur Gegenprobe zwei Prüfungen in
