@@ -1,4 +1,4 @@
-# COWORK-BEFEHL — Fassung 19.09.2026, 07:40 UTC
+# COWORK-BEFEHL — Fassung 19.09.2026, 13:00 UTC
 
 > **Fünf Schritte, in dieser Reihenfolge.** Jeder hat einen direkten Link, eine Anleitung und
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
@@ -45,6 +45,32 @@ nicht die Sache.** Der Auslöser ist umgeschrieben; bald ist trotzdem besser als
 Reklamationsfenster üblicherweise auslaufen.
 
 ---
+
+### 📱 AUS DEINEM APP-SCREENSHOT (19.09.2026) — zwei Dinge, die du wissen musst
+
+**Die Bestellung auf dem Bild ist die richtige:** `DP2609071450210661800`, Klappmesser,
+**Subtotal $25.54** — genau der Betrag, den CJ zugesagt hat. Daneben steht eine Nummer, die wir
+bisher nie benutzt haben: **Bulk CJ Order Number `CJ26090754529958107451`**. Gegengeprüft
+(rein lesend, `disputes/disputeConfirmInfo`): sie verhält sich **exakt gleich** wie die
+DP-Nummer — kein Vorteil, kein Nachteil. Wenn das Formular nach einer Bestellnummer fragt,
+geht jede von beiden.
+
+**⚠️ Die Falle: Der Status in der App sagt «Dispatched».** Nicht «returned», nicht «refunded».
+Lass dich davon nicht beirren und lass dich damit auch nicht abwimmeln — **CJ hat den
+Rückläufer selbst schriftlich bestätigt**, am 18.09. um 08:44 UTC:
+
+> «This order was returned because it contains a prohibited item … our support team will
+> process your full refund of $25.54 (product $18.24 + shipping $7.30) directly back to your
+> CJ Wallet.»
+
+Dazu die Sendungsverfolgung `EQKPT8612701376YQ`: **«Returned to Original depot», Shanghai,
+15.09.** Die App zeigt also einen Stand, den CJ selbst überholt hat.
+
+**Wo der Dispute steckt:** Auf der Listenkarte gibt es nur «Invoice». Tippe auf den **Pfeil `>`
+rechts neben dem Produktbild** → Bestelldetail. Dort liegt der Reklamationsweg (je nach
+Sprache «Dispute», «After-sales», «Apply for refund»). Grund: **6 «Product Returned»**,
+Betrag **USD 25.54**.
+
 
 ### 📉 NACHMESSUNG 19.09.2026, 07:35 UTC — nichts bewegt, und ein Nebenbefund
 
