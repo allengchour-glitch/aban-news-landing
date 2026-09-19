@@ -3,6 +3,10 @@
   "typ": "skript",
   "skript": "pinterest_boards_anlegen.mjs",
   "warum": "Dritter Versuch. 19 kam bis zum gefuellten Namensfeld und lief dann im Klick auf 'Erstellen' in die Zeitgrenze — der Knopf wurde gefunden, war aber nicht klickbar (mehrere Treffer, erster verdeckt/inaktiv). Jetzt: nur sichtbare Knoepfe im Dialog, isEnabled vorher fragen, Eingabetaste als Rueckfallweg, und ein Fehlschlag bricht das Skript nicht mehr ab. Probe-vor-Rest bleibt.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "abgebrochen",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen.",
+  "abgebrochen_am": "2026-09-19T07:05:00Z",
+  "warum_abgebrochen": "Lauf mittendrin gestorben; die Quittung stand 36-37 h auf «laufend». Entdeckt erst am 19.09., als automation/bot_puls.py die Frage «kommt ein Auftrag an?» dazubekam — der Puls allein konnte das strukturell nicht sehen. Nicht auf «ok» gesetzt: belegt ist nichts.",
+  "wirkung_unbekannt": true,
+  "nachmessung": "37-pinterest-stand-nachmessen"
 }
