@@ -1,6 +1,0 @@
-{
-  "id": "storefront-2026-09-19",
-  "typ": "skript",
-  "skript": "storefront_wahrheit.mjs",
-  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist."
-}
