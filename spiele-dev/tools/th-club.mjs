@@ -167,7 +167,25 @@ const sonde = `function(){
           tuer:tuer,sued:sued,nord:nord,west:west,ost:ost,innen:innen};}`
 
 mitSonden('traumhaus.html', { club: sonde }, '_club.html')
-const { browser, page, jsFehler } = await spielOeffnen('_club.html', { warten: 30000 })
+const { browser, page, jsFehler } = await spielOeffnen('_club.html', { warten: 12000 })
+
+/* ⚠️ AUF DAS EREIGNIS WARTEN, NICHT AUF EINE FRIST (Runbook-Regel 4). Hier standen
+   feste 30 s. Das ging gut, solange die Modelle alle auf einmal hereinstuerzten — die
+   zwölf th14-Teile kamen bei 25,8 s, knapp davor. Als die Ladeschlange (Runde 88) die
+   Reihenfolge entzerrte, kamen sie bei 46 s, und die Pruefung meldete „0 Teile: der Club
+   fehlt". Der Club fehlte nicht; am Netz gemessen kamen alle zwölf Dateien mit Status 200.
+   Die Frist war zu knapp, nicht die Welt zu leer.
+
+   ⚠️ UND DAS IST KEIN ZURECHTBIEGEN DES MESSGERAETS: die Pruefung fragt, ob der Club
+   RICHTIG GEBAUT ist — passen die Moebel zwischen die Waende, kommt man durch die Tuer.
+   Sie fragt nicht, wie schnell er laedt; dafuer gibt es th-laden. Wenn der Club gar nicht
+   kommt, schlaegt sie weiterhin an — dann laeuft die Wartezeit ab und `kisten` bleibt 0. */
+for (let i = 0; i < 60; i++) {
+  const offen = await page.evaluate(() => window._ladeOffen)
+  if (offen === 0) break
+  await page.waitForTimeout(2000)
+}
+await page.waitForTimeout(4000)   /* und danach kurz setzen lassen */
 const R = await page.evaluate(() => window.__th.club())
 await browser.close()
 aufraeumen('_club.html')
