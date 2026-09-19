@@ -53451,3 +53451,16 @@
 15448077500801	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Body Chain Top mit Perlen – Rosarot
 15448077697409	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Perlen-Bodychain Neckholder-Top
 15448077730177	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Punk Geometric Gemstone Suspender Top
+15448077795713	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Pailletten Body Chain Top
+15448078123393	farbe-floskel-entfernt,material-floskel-entfernt	Schwarzes Neckholder-Top mit Knopfdetails
+15448078287233	farbe-floskel-entfernt,material-floskel-entfernt	Yoga Top mit Reissverschluss, Langarm
+15448078352769	material-floskel-entfernt	Kurzes Yoga Sport Top mit Rundhals
+15448078418305	material-floskel-entfernt	Atmungsaktives Taillenbetontes Top für Frauen
+15448078483841	material-floskel-entfernt	Off-Shoulder Kurzarmshirt
+15448078516609	material-floskel-entfernt	Slim Fit Rundhals-Shirt mit kurzen Ärmeln
+15448078549377	material-floskel-entfernt	Geripptes Slim Fit T-Shirt mit eckigem Ausschnitt
+15448078582145	material-floskel-entfernt	Lässiges Kurzarm-Top im Loose-Fit
+15448078647681	material-floskel-entfernt	Gestreiftes Langarmshirt im Loose Fit
+15448078680449	material-floskel-entfernt	Kapuzen-Sweatshirt mit Polka-Dot-Print
+15448078745985	material-floskel-entfernt	Lässiger Kapuzenpullover im Zweiteiler-Look
+15448078778753	material-floskel-entfernt	Rundhals-Top mit ausgestellten Ärmeln
