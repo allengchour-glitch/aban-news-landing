@@ -53464,3 +53464,21 @@
 15448078680449	material-floskel-entfernt	Kapuzen-Sweatshirt mit Polka-Dot-Print
 15448078745985	material-floskel-entfernt	Lässiger Kapuzenpullover im Zweiteiler-Look
 15448078778753	material-floskel-entfernt	Rundhals-Top mit ausgestellten Ärmeln
+15448078811521	material-floskel-entfernt	Loose-fit Sweatshirt mit Reissverschluss
+15448078844289	material-floskel-entfernt	Gestreifter Mock-Zweiteiler Hoodie
+15448078909825	material-floskel-entfernt	Kapuzen-Sweatshirt für Damen, lockere Passform
+15448080712065	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Gestreifter Fluffy Woll-Cardigan (Slim-Fit)
+15448080810369	material-floskel-entfernt	Langarm-Shirt mit Rundhalsausschnitt
+15448080843137	material-floskel-entfernt	Locker geschnittenes Langarmshirt für Damen
+15448080908673	farbe-floskel-entfernt,material-floskel-entfernt	Gemustertes Langarmshirt mit Rundhalsausschnitt
+15448080941441	material-floskel-entfernt	Glitzer-Mesh Langarmshirt
+15448081006977	farbe-floskel-entfernt,material-floskel-entfernt	Elegantes V-Neck Pullover-Shirt mit Rüschenärmeln
+15448081039745	material-floskel-entfernt	Herz-Strass Langarmshirt mit Mesh-Ärmeln
+15448081072513	material-floskel-entfernt	Rundhals Langarm-Pullover für Damen
+15448081138049	material-floskel-entfernt	Damen-Top mit Rundhals und Polka-Dots
+15448081170817	farbe-floskel-entfernt,material-floskel-entfernt	Elegantes Langarm-Top mit Tweed-Ärmeln
+15448081334657	farbe-floskel-entfernt,material-floskel-entfernt	Retro-Print Langarmbluse
+15448088281473	material-floskel-entfernt	V-Neck Sport-Shirt Kurzarm – Peach
+15448088347009	material-floskel-entfernt	Sport-Top mit starkem Halt und Polsterung
+15448092279169	material-floskel-entfernt	Elegante V-Neck Bluse mit Rüschen & Laternenärmeln
+15448092311937	farbe-floskel-entfernt,material-floskel-entfernt	Bedrucktes Langarmshirt mit Reverskragen
