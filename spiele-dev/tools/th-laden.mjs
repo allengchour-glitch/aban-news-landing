@@ -65,10 +65,13 @@ const tippWartet = Date.now() - tTippAb
 
 /* ---- 2. Ladeanzeige: gibt es ueberhaupt eine, und bewegt sie sich? ---- */
 const anzeige = await page.evaluate(() => {
-  const el = document.getElementById('ladeBalken') || document.getElementById('ladeAnzeige')
+  /* ⚠️ Der Balken trägt keinen Text — der steht in der Zeile darunter. Wer den
+     Balken fragt, bekommt immer "" zurück und hält die Anzeige für stumm. */
+  const el = document.getElementById('ladeAnzeige') || document.getElementById('ladeBalken')
   if (!el) return { da: false }
+  const txtEl = document.getElementById('ladeText') || el
   const s = getComputedStyle(el)
-  return { da: true, sichtbar: s.display !== 'none' && s.visibility !== 'hidden', text: (el.innerText || '').slice(0, 60) }
+  return { da: true, sichtbar: s.display !== 'none' && s.visibility !== 'hidden', text: (txtEl.textContent || '').trim().slice(0, 60) }
 })
 
 /* ---- 3. Jetzt wirklich starten und schauen, wann es ruhig wird ---- */

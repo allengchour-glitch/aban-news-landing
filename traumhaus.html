@@ -481,6 +481,16 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <div style="display:flex;gap:8px;align-items:center;justify-content:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;padding:10px 14px;margin:8px auto;max-width:430px;font-size:.9rem">
     💞 <span><b>Ab 18</b>: Max &amp; Mia flirten, küssen und turteln — frech, aber diskret (Ausblende wie im Original).</span>
   </div>
+  <!-- 🌍 LADEANZEIGE. Vorher gab es KEINE: die Seite stand da, 157 MB kamen
+       unsichtbar herein, und der Startknopf reagierte minutenlang nicht. Jetzt sieht
+       man, was passiert. Der Balken geht nie rueckwaerts — `gefordert` waechst
+       waehrend des Ladens weiter, sonst spraenge der Prozentwert zurueck. -->
+  <div id="ladeAnzeige" style="max-width:430px;width:100%;margin:10px auto 0">
+    <div id="ladeBalken" style="height:10px;border-radius:999px;background:rgba(255,255,255,.55);overflow:hidden;border:1px solid #b8cee0">
+      <div id="ladeFuell" style="height:100%;width:0%;background:var(--bern);transition:width .4s ease"></div>
+    </div>
+    <div id="ladeText" style="font-size:.85rem;color:#4a6a88;margin-top:6px">🌍 Welt wird geladen …</div>
+  </div>
   <button class="btn" id="soloBtn">Solo bauen ▶</button>
   <div style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.5);border-radius:14px;max-width:430px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop — zusammen bauen (2 Spieler)</div>
@@ -10647,6 +10657,61 @@ function tor(seite){
 }
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
+/* 🚦 LADESCHLANGE — WARUM, GEMESSEN.
+   Am NETZ gezaehlt (nicht im Spiel, das erste Messgeraet log): das Spiel fordert
+   340 Modelle mit 157 MB an, davon 220 allein im Fenster 10–20 s. GLTFLoader parst
+   jede Datei im HAUPTFADEN — 220 Parsevorgaenge hintereinander ergeben EINEN Block,
+   in dem der Browser keine Eingabe verarbeitet. Gemessen: ein Tipp auf „Solo bauen"
+   kam erst nach 34 Sekunden an. Der Knopf war nicht kaputt, er war begraben.
+
+   Zwei Regeln loesen das, und beide werden gebraucht:
+     1. hoechstens VIER gleichzeitig — begrenzt, wie viel auf einmal hereinkommt;
+     2. nach jedem fertigen Modell ein `setTimeout(…,0)`. Das beendet die laufende
+        Aufgabe; ZWISCHEN zwei Aufgaben verarbeitet der Browser Klicks und Tipps.
+        Ohne Punkt 2 hilft Punkt 1 nichts: auf einem schnellen Server laufen auch vier
+        Parsevorgaenge lueckenlos hintereinander weg.
+
+   ⚠️ VORRANG FUER DIE FIGUREN. `attachRealChar` laedt th_mann/th_frau. Stehen sie
+   hinten in einer Schlange von 340 Gebaeuden, laeuft der Spieler minutenlang ohne
+   Koerper herum. Sie duerfen darum vor. */
+(function(){ if(!GL)return;
+  var echt=GL.load.bind(GL), schlange=[], aktiv=0;
+  /* ⚠️ DIE GRENZE IST NICHT KONSTANT, UND DAS IST DER GANZE WITZ. GEMESSEN an drei
+     Punkten (Klick auf „Solo bauen" | Welt fertig geladen):
+         ohne Schlange   9,7 s | 68,8 s
+         höchstens 10    8,6 s | 81,6 s   ← auf BEIDEN Achsen schlechter, wertlos
+         höchstens 4     0,0 s | 108,8 s
+     Eng macht den Knopf sofort bedienbar und das Laden langsamer; weit umgekehrt.
+     Es gibt keine Zahl, die beides kann — also hängt sie davon ab, was gerade zählt:
+     solange der Startbildschirm steht, will jemand tippen (eng); sobald gespielt
+     wird, soll die Welt schnell fertig werden (weit). */
+  function grenze(){ var st=document.getElementById("start");
+    return (st && !st.classList.contains("hide")) ? 4 : 1e9; }
+  window._ladeStand={gefordert:0,fertig:0};
+  function vorrang(url){return /th_(mann|frau|kind|baby)/.test(url);}
+  function weiter(){ var m=grenze(); while(aktiv<m&&schlange.length){ aktiv++; schlange.shift()(); } }
+  /* ⚠️ NACH DEM START NICHT MEHR NACHGEBEN — TEUER GELERNT. Jedes setTimeout(...,0)
+     gibt dem Browser Gelegenheit, ein Bild der 3D-Szene zu zeichnen. Solange der
+     Startbildschirm steht, ist genau das gewollt: dort will jemand tippen. Danach
+     kostet es nur noch, und zwar mehr als gedacht — die ganze Kette NACH dem Laden
+     (freiRaeumen, entwirren, _spaetEinfrieren) haengt am LETZTEN Modell und rutscht
+     mit. Zwei Torpruefungen haben das gezeigt: th-club fand den Club nach 30 s nicht
+     (er kam bei 46 s statt 25,8 s), und die echten Durchdringungen stiegen bei
+     DERSELBEN Spieldatei von 9 auf 19 — entwirren() war schlicht noch nicht gelaufen.
+     Darum: eng und höflich, solange der Startbildschirm steht; ungebremst danach. */
+  function fertig(){ aktiv--; window._ladeStand.fertig++;
+    var st=document.getElementById("start");
+    if(st && !st.classList.contains("hide")) setTimeout(weiter,0); else weiter();
+  }
+  GL.load=function(url,ok,fort,fehl){
+    window._ladeStand.gefordert++;
+    var auftrag=function(){ echt(url,
+      function(g){ try{ if(ok)ok(g); } finally { fertig(); } }, fort,
+      function(e){ try{ if(fehl)fehl(e); } finally { fertig(); } }); };
+    if(vorrang(url))schlange.unshift(auftrag); else schlange.push(auftrag);
+    setTimeout(weiter,0);
+  };
+})();
 /* 🧠 EIN GLB WIRD EINMAL GEPARST — vorher bei JEDEM Aufruf neu.
    GLTFLoader hat keinen Cache. `GL.load("/models/th33_parklaterne.glb", …)` liest
    die Datei zwar aus dem Browser-Cache, PARST sie aber jedes Mal komplett neu und
@@ -16792,5 +16857,30 @@ window.__th={
 </script>
 <div id="aban-recht" style="position:fixed;left:50%;transform:translateX(-50%);bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:8px"><a href="/suchmaschine.html">Suche</a>
 <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
+<script>
+/* Fuettert die Ladeanzeige aus der Schlange. Laeuft nur, solange der Startbildschirm
+   zu sehen ist — danach hat die Zahl keinen Adressaten mehr. */
+(function(){
+  var fuell=document.getElementById("ladeFuell"),
+      text=document.getElementById("ladeText"),
+      anz=document.getElementById("ladeAnzeige"), hoch=0;
+  if(!fuell||!text)return;
+  var t=setInterval(function(){
+    var st=window._ladeStand;
+    if(!st||!st.gefordert)return;
+    var p=Math.min(100,Math.round(st.fertig/st.gefordert*100));
+    if(p>hoch)hoch=p;
+    fuell.style.width=hoch+"%";
+    if(st.fertig>=st.gefordert&&hoch>=100){
+      text.textContent="\u2705 Welt steht bereit \u2014 "+st.fertig+" Modelle";
+      clearInterval(t);
+      setTimeout(function(){ if(anz)anz.style.opacity="0"; },1500);
+      if(anz)anz.style.transition="opacity 1s ease";
+    } else {
+      text.textContent="\ud83c\udf0d Welt wird geladen \u2026 "+st.fertig+" von "+st.gefordert+" Modellen";
+    }
+  },250);
+})();
+</script>
 </body>
 </html>
