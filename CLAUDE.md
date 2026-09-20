@@ -68,6 +68,28 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-20 (📵 INSTAGRAM IST AUS DEM CONTAINER NICHT LESBAR — Werkzeug für den PC gebaut):**
+- **Auftrag:** ein Instagram-Reel-Link „für luxestyle".
+- **❌ SACKGASSE, mit Gegenprobe belegt:** Instagram liefert an diesen Container nur eine leere
+  JS-Hülle — **628 KB, `<title>Instagram</title>`, 0 og-Tags**, keine Video-URL, kein Nutzername,
+  `"caption":null`. Vier Wege geprüft: Browser-Kennung + `stkn`-Share-Parameter → dieselbe Hülle ·
+  `?__a=1&__d=dis` → **404 „not-logged-in"** · `api.instagram.com/oembed` → **302** (abgeschafft,
+  braucht FB-App-Token). **Die Gegenprobe entscheidet: ein ANDERER öffentlicher Beitrag liefert
+  identische 628 KB mit 0 og-Tags** — es liegt an Instagram, nicht am einzelnen Reel.
+  ⚠️ **Unterschied zu TikTok:** dort steckt die ASR-Untertitelspur in den Metadaten
+  (`subtitleInfos`) — daher kam das Transkript vom 12.09. Bei Instagram gibt es das Feld nicht.
+- **🛠️ GEBAUT `automation/local/ig-reel-lesen.mjs` (20 Selbsttests).** Läuft **auf dem PC**, nicht
+  in der Cloud: `connectOverCDP` ans eingeloggte Brave (Port 9222, Muster von
+  `ch-follower-growth.mjs`), klappt „mehr" auf und schreibt Urheber, Text, Datum, Zahlen und
+  Video-Adresse als JSON zum Zurückkopieren. Geprüft sind die reinen Helfer: Kennung aus der
+  Adresse (auch mit `stkn`), deutsche Kurzzahlen (`12,3 Tsd.` → 12300, `1.234` → 1234),
+  **fehlende Zahl ergibt `null`, nicht 0**, und „mehr" **mitten im Satz** bleibt stehen.
+  **Das Skript liest nur** — es liked, folgt, kommentiert und postet nicht.
+- **🟡 NUR DER USER:** den Reel-Inhalt liefern — entweder das Skript auf dem PC laufen lassen
+  (`node automation/local/ig-reel-lesen.mjs "<url>"`) und das JSON hierher kopieren, oder den
+  Text kurz abtippen. Ohne Inhalt lässt sich daraus nichts für den Shop ableiten.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-19, zweite Runde (🛠️ DAS PREIS-SKRIPT STEHT — zwei Gedächtnis-Pläne sind gefallen):**
 - **Auftrag:** „nutze sachen und hilf zu entwickeln für luxestyle". Voller Bericht:
   **`dropship/LERNEN-PREIS-SKRIPT-2026-09-19.md`**.

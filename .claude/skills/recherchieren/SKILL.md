@@ -110,3 +110,20 @@ Wahrheit.** Notieren, dass sie sich widersprechen, und am eigenen Bestand entsch
 Bericht nach `dropship/LERNEN-*.md` (dort greift weder der Voice-Linter noch `build-pages.sh`),
 Kurzfassung in den Stand-Block von `CLAUDE.md`, die einzelnen Lehren per
 `python3 tools/lehre.py` in den Vault. Siehe Skill `gedaechtnis`.
+
+## Instagram liefert an diesen Container gar nichts
+
+**GEMESSEN 2026-09-20:** eine Reel-Adresse ergibt 628 KB reine JS-Hülle — `<title>Instagram</title>`,
+**0 og-Tags**, keine Video-URL, kein Nutzername, `"caption":null`. Auch nicht mit Browser-Kennung,
+auch nicht mit dem `stkn`-Share-Parameter. `?__a=1&__d=dis` → 404 „not-logged-in",
+`api.instagram.com/oembed` → 302 (abgeschafft).
+
+**Die Gegenprobe ist der Punkt:** ein *anderer* öffentlicher Beitrag liefert identische 628 KB mit
+0 og-Tags. Es liegt an Instagram, nicht am einzelnen Reel — also nicht weitersuchen.
+
+**Unterschied zu TikTok:** dort steckt die ASR-Untertitelspur in den Metadaten (`subtitleInfos`),
+darüber kam das Transkript vom 12.09. Bei Instagram gibt es dieses Feld nicht.
+
+**Der Weg, der bleibt:** `automation/local/ig-reel-lesen.mjs` auf dem PC gegen das eingeloggte
+Brave (Port 9222) — schreibt Text, Urheber und Zahlen als JSON zum Zurückkopieren.
+
