@@ -158,6 +158,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   ⚠️ **Einen Cloudflare-Build neu starten geht nur per Dashboard** — Cloud-Sessions können das nicht.
   Kommentar an PR #2514 mit allen Messungen. Die drei `Workers Builds` sind unverändert der Fall
   vom 12.09. (keiner der fünf Worker im Repo heisst so, nachgemessen).
+- **✅ VIERTER BLOCK, die `helm*`-Gruppe: 14 Produkte / 19 Varianten**, 14/14 nachgemessen.
+  **30 von 44 waren bereits in Ordnung — darunter ALLE ELF, die am 19.09. und heute gesetzt wurden**
+  (sie kamen als `ueberspringen` zurück). **Damit ist die Idempotenz der Regel gegen den ECHTEN Shop
+  belegt, nicht nur im Selbsttest** — genau die Eigenschaft, auf die es ankommt, wenn
+  `preis_korrektur.mjs` einmal über den ganzen Katalog läuft. Drei Verluste: Einfacher
+  Feldfahrer-Helm 14.90 bei EK 21.41 (**−59,7 %**) · Vier-Seasons-Helm 49.90/50.08 · MTB-Helm
+  Outdoor 24.90/24.79.
+- **📊 BILANZ DER VIER BLÖCKE: 131 Schutzprodukte gemessen, 23 Verlustfälle, 68 unter dem Ziel,
+  59 in Ordnung → 65 Produkte / 262 Varianten live geändert**, jedes einzelne an der Kundenseite
+  nachgemessen (22/22 · 10/10 · 19/19 · 14/14, null Abweichungen).
 - **📦 ALTER POSTEN GESCHLOSSEN: die BigBuy-Klasse ist AUS DEM VERKAUF, „279 aktiv" ist veraltet.**
   Drei unabhängige Wege, jeder mit Gegenprobe: `sku:bb-* AND status:active` → **0**
   (`sku:CJ-*` → Treffer, `sku:zzzgibtesnicht-*` → leer) · `tag:bigbuy AND status:active` → **0**

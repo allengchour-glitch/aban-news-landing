@@ -309,6 +309,47 @@ Gegenprobe mit absichtlich falschem Sollwert.
 
 ---
 
+## Vierter Block: die `helm*`-Gruppe — und die Idempotenz beweist sich am echten Shop
+
+44 Produkte mit bekanntem Einkaufspreis. **30 davon waren bereits in Ordnung** — und das ist kein
+Zufall: darunter sind **alle elf, die am 19.09. und heute schon gesetzt wurden** (Vielseitiger
+Helm 39.90, Wassersport-Helm 44.90, Short Track 69.90, Hip-Hop 29.90, Sport/Outdoor 54.90, Plum
+Scooter 24.90, Velo/Skates 29.90, Pendler 24.90, Kinder Kart 84.90, Kinder-Helm mit Schutz 19.90,
+Retro Motorradtasche 89.90). Alle elf kamen als `ueberspringen` zurück.
+
+**Damit ist die Idempotenz der Regel nicht nur im Selbsttest belegt, sondern gegen den echten
+Shop.** Das ist die Eigenschaft, auf die es ankommt, wenn `preis_korrektur.mjs` einmal über den
+ganzen Katalog läuft: ein zweiter Lauf darf nichts mehr anfassen.
+
+### ✅ Geändert (live) — 14 Produkte / 19 Varianten
+
+Drei Verlustfälle: **Einfacher Feldfahrer-Helm 14.90 bei EK 21.41 (−59,7 %)** · Vier-Seasons-Helm
+49.90/50.08 · MTB-Helm Outdoor-Fahrten 24.90/24.79. Dazu elf unter der Zielmarge: Mountainbike-Helm
+(5 Var.) 15.90→24.90 · Kinder Balance Bike Helm 23.90→34.90 · Riding Helm 40.90→54.90 · Blauer
+Helm Rucksack 65.90→79.90 · Falt-Helm 70.90→84.90 · Virtueller Helm 15.90→19.90 · Smart Bluetooth
+Helm 58.90→64.90 · Downhill Helm 55.90→59.90 · Balanciere Helm 25.90→29.90 · Helmhalterung
+(2 Var.) 15.90→19.90 · Kinder-Helm Balance-Bikes 48.90→49.90.
+
+**Alle 14 an der echten Seite nachgemessen: 14 von 14 bestätigt**, plus Gegenprobe.
+
+---
+
+## Bilanz der vier Blöcke
+
+| Block | gemessen | Verluste | unter 38 % | schon ok | geändert |
+|---|---|---|---|---|---|
+| Velohelme + Kindersitze + Westen | 32 | **11** | 25 | 7 | 22 Prod. / 175 Var. |
+| Fahrradhelme | 33 | **1** | 10 | **19** | 10 / 25 |
+| Reit/Ski/Motorrad | 22 | **8** | 19 | 3 | 19 / 43 |
+| `helm*`-Gruppe | 44 | **3** | 14 | **30** | 14 / 19 |
+| **Summe** | **131** | **23** | **68** | **59** | **65 Prod. / 262 Var.** |
+
+**23 von 131 Schutzprodukten gingen nach dem Gutschein mit Verlust raus, 68 lagen unter dem
+Ziel.** Die Streuung zwischen den Blöcken (1 von 33 gegen 8 von 22) bleibt der wichtigste Befund:
+**eine Stichprobe aus einer Gruppe sagt nichts über den Katalog.**
+
+---
+
 ## 📦 Nebenbefund, der einen alten Posten schliesst: die BigBuy-Klasse ist aus dem Verkauf
 
 Das Gedächtnis führt seit dem 12.09. als grössten offenen Punkt: *„279 aktive BigBuy-Produkte,
