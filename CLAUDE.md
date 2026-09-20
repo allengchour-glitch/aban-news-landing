@@ -68,6 +68,71 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-20, zweite Runde (⭐ DER FÜHRENDE STERN WIRD WEGGEWORFEN — es sind 123 Helme, nicht 32):**
+- **Auftrag:** Dauerauftrag („weiter"). Voller Bericht: **`dropship/LERNEN-STERNCHEN-FALLE-2026-09-20.md`**.
+- **🔴 HAUPTFUND, mit einer einzigen Abfrage belegt: `title:*wort*` sucht nur WORTANFÄNGE — der
+  führende `*` wird stillschweigend verworfen.** Aufgefallen, weil die Zahlen sich widersprachen:
+  `title:*helm*` = **77**, die Einzelteile zusammen **92**. Eine Teilmenge kann nicht grösser sein.
+  **Die Entscheidung:** `id:15448951587201` allein → „Velohelm für Kinder und Erwachsene" ·
+  `title:*velohelm* AND id:…` → gefunden · **`title:*helm* AND id:…` → LEER**. Mechanismus gemessen:
+  `*helm*` ≡ `helm*` ≡ 77, `*velohelm*` ≡ `velohelm*` ≡ 29, `velohelmzzz*` → 0 (Filter wird gelesen).
+  **Dieselbe Klasse wie der ignorierte Preisfilter: sieht aus wie ein Filter, tut etwas anderes,
+  ohne Fehlermeldung.** ⚠️ Jede frühere `title:*wort*`-Messung von mir ist eine Wortanfang-Messung.
+- **⛑️ FOLGE: 123 echte Schutzhelme statt 32** (Vereinigung aus `helm*`/`velohelm*`/`fahrradhelm*`/
+  `radhelm*`/`reithelm*`/`skihelm*`/`motorradhelm*`/`kinderhelm*`/`schutzhelm*`: 173 roh, davon
+  **16 Kostümhelme** des Party-Lieferanten und **34 Zubehör** aussortiert). **91 waren nie geprüft.**
+  Auch 123 ist eine Untergrenze — eine Wortanfang-Suche findet nur, woran man gedacht hat.
+- **🟢 ERSTMALS EIN POSITIVER BEFUND: 3 von 123 Seiten nennen die Norm** (19.09.: 0 von 32) —
+  „Zertifizierung nach **CE EN 1078** und CPSC" (`falt-helm-fur-scooter-fahrrad`), „**CE EN 1078**
+  zertifiziert" (`faltbarer-fahrradhelm`), „CPSC- und **CE**-Sicherheitsstandards"
+  (`smarter-velohelm-mit-led-beleuchtung`). **Das beweist: die Beschreibungen KÖNNEN eine Norm
+  tragen** — das Schweigen der 119 ist eine Lücke in den Lieferantendaten, kein technisches Limit.
+  **Regel vom 19.09. gilt weiter: Schweigen ist kein Beweis** → kein Produkt deswegen ausgelistet.
+- **⚠️ DEFEKT IM EIGENEN MESSGERÄT, der ein Drittel der Klasse verschluckt hat:** der erste Lauf
+  meldete **43 „unerreichbare" Seiten — alle 43 waren HTTP 429, also Drosselung.** Mit 400 ms Pause
+  und Wiederholung: **122 × 200, 1 × 429**. `tools/schutzausruestung.mjs` behoben (**19 → 29
+  Selbsttests**): `GEDROSSELT={429,430,503}` wird wiederholt und getrennt ausgewiesen
+  (`gedrosselt` ≠ `fehlt`). **Lehre: ein Gerät, das die eigene Abruffrequenz als „Seite existiert
+  nicht" meldet, erzählt eine falsche Geschichte über den Shop.**
+- **✅ WERKZEUG ERWEITERT um Kinderrückhaltesysteme:** **UN ECE R44**, **R129**, **i-Size** zählen
+  jetzt als europäisch. Vier Gegenproben gegen Fehlalarm: „Grösse 44", „Länge 129 cm" und
+  „Modell R129 schwarz" bleiben **unbekannt** — eine blosse Zahl ist keine Norm.
+- **💰 11 VON 32 GEMESSENEN SCHUTZPRODUKTEN GINGEN NACH WELCOME10 MIT VERLUST RAUS** — die
+  schlechteste Quote überhaupt (13.09.: 4/231 · 14.09.: 6/82 bzw. 14/49). 25 von 32 unter 38 %.
+- **✅ GEÄNDERT (live): 22 Produkte / 175 Varianten**, `userErrors` leer, **alle 22 an der echten
+  Seite nachgemessen (22/22 bestätigt)**. Sieben standen unter dem Einkaufspreis, darunter **drei
+  Kinderartikel und eine Schwimmweste**: Heizkissen Autositz 15.90→**44.90** (EK 23.90) ·
+  Memory-Foam-Sitzkissen 14.90→**39.90** (21.49) · Winter-Velohelm 16 Var. 15.90→**44.90** (22.81) ·
+  Velohelm integr. Licht 30 Var. **zwei Preise 29.90/54.90** (EK 16.87/29.17) · Velohelm Warnlicht
+  16 Var. 23.90→**44.90** (23.91) · Velohelm Bluetooth 43.90→**74.90** (40.81) · Velohelm Kinder+
+  Erwachsene 25 Var. 15.90→**29.90** (14.68) · Velohelm E-Bike 15.90→**29.90** (14.51) ·
+  **Schwimmweste Herren 33.90→54.90** (29.08) · Hunde-Schwimmweste 23.90→**39.90** (20.16) ·
+  Fahrradhelm+Schutzbrille 17.90→**29.90** · Autositzkissen 24.90 · **Tragbarer Kindersitz** 10 Var.
+  15.90→**24.90** · Velohelm City 24.90 · Radhelm 39.90 · Autositzschutz 34.90 · Kinder-Velohelm
+  Cartoon 28 Var. 29.90 · Velohelm UV 44.90 · Smarter Velohelm 99.90 · Velohelm Kinder-Cartoon
+  39.90 · Kinder-Velohelm Skate 19.90 · Kinder-Velohelm Magnetbrille 24.90.
+- **⛔ 3 BEWUSST NUR GEMELDET, NICHT GESETZT (Faktor > 3 = falsch importiert, nicht falsch
+  bepreist):** Sommer-EisSilk Autositzpolster 14.90 bei EK 33.23 (**−147,8 %**) · Autositzkissen
+  mit Lendenwirbelstütze 17.90/38.51 (−139,0 %) · **Kinder-Autositz Portabel 3-12 J. 14.90/25.07
+  (−87,0 %)**. Letzterer ist der Fall für den User: ein **Kinderrückhaltesystem für CHF 14.90,
+  dessen Seite weder ECE R44 noch R129 nennt.**
+- **⚠️ DAS PRÜFGERÄT SCHLUG ZUERST FALSCHEN ALARM: „22 von 22 abweichend".** Ursache: Python
+  schreibt `44.9`, verglichen wurde gegen die Zeichenkette `44.90`. Der Shop war nie falsch.
+  **Jetzt wird in Rappen ganzzahlig verglichen, und ein absichtlich falscher Sollwert muss
+  ausschlagen.** Die Mutation selbst wurde **aus Daten erzeugt statt von Hand geschrieben** —
+  genau der Fehler vom 19.09. („zwölf geplant, zehn gesendet") kann so nicht mehr passieren.
+- **📦 ALTER POSTEN GESCHLOSSEN: die BigBuy-Klasse ist AUS DEM VERKAUF, „279 aktiv" ist veraltet.**
+  Drei unabhängige Wege, jeder mit Gegenprobe: `sku:bb-* AND status:active` → **0**
+  (`sku:CJ-*` → Treffer, `sku:zzzgibtesnicht-*` → leer) · `tag:bigbuy AND status:active` → **0**
+  (`tag:bigbuy` ohne Status → Treffer) · `productsCount(tag:bigbuy AND status:active)` → **0**.
+  Dazu **ohne Suchindex** via `nodes(ids:)`: `DRAFT`, `publishedAt:null`; über 500 geblättert, alle
+  DRAFT. **Kundensicht:** zwei Adressen **404**, eine **301 auf eine Collection** — nichts kaufbar.
+- **⚠️ ZÄHL-REGEL PRÄZISIERT: `productsCount` ignoriert NUR den Preisfilter.** `tag:`, `sku:`,
+  `status:` und `title:` werden gelesen und liefern echte Zahlen (77 / 29 / 38 / 0). Die Regel heisst
+  also **nicht** „traue keinem `…Count`", sondern **„traue keinem Preisfilter"** — und prüfe jeden
+  Filter mit einem Unsinn-Wert gegen.
+- **Branch:** `claude/selbststaendiges-lernen-h48e6m`, Draft-PR #2514 nach `main`.
+
 **📌 2026-09-20 (📵 INSTAGRAM IST AUS DEM CONTAINER NICHT LESBAR — Werkzeug für den PC gebaut):**
 - **Auftrag:** ein Instagram-Reel-Link „für luxestyle".
 - **❌ SACKGASSE, mit Gegenprobe belegt:** Instagram liefert an diesen Container nur eine leere

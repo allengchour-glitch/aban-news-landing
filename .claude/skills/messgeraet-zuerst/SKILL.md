@@ -136,3 +136,48 @@ Eine leere oder winzige Antwort ist **kein Messergebnis** — Grösse prüfen, s
   `playwright install` aufrufen.
 - Seiten in **Bildschirmhöhen** ansehen (`tools/seiten_blick.mjs`), nicht als 21 000-px-Bild.
 - Messgeräte gehören nach `tools/`, Berichte nach `reports/`.
+
+## ⭐ Der führende Stern wird weggeworfen (gemessen 2026-09-20)
+
+`title:*wort*` in Shopify sucht **nur Wortanfänge**. Der führende `*` wird stillschweigend
+verworfen — ohne Fehlermeldung, wie beim Preisfilter.
+
+```
+title:*helm*      ≡ title:helm*      = 77      # findet „Helm für …"
+title:*velohelm*  ≡ title:velohelm*  = 29      # findet NICHT über *helm*
+title:velohelmzzz*                   = 0       # Gegenprobe: der Filter WIRD gelesen
+```
+
+**Der Beweis in einer Abfrage** — wenn zwei Zahlen sich widersprechen, frage nach EINEM Produkt:
+
+```graphql
+{ id:  products(first:3, query:"id:15448951587201"){nodes{title}}            # gefunden
+  eng: products(first:3, query:"title:*velohelm* AND id:15448951587201"){nodes{title}}  # gefunden
+  weit:products(first:3, query:"title:*helm* AND id:15448951587201"){nodes{title}} }    # LEER
+```
+
+**Folgen für jede Messung:**
+- Eine deutsche Zusammensetzung (`Velohelm`, `Fahrradhelm`, `Autositzkissen`) fällt durch eine
+  Suche nach dem Grundwort. **Immer die Zusammensetzungen einzeln abfragen und vereinigen.**
+- **Wenn Teilmengen zusammen mehr ergeben als die Obermenge, ist die Obermenge falsch** — nicht
+  die Teile. Genau so fiel es auf (77 gegen 92).
+- Auch die Vereinigung bleibt eine **Untergrenze**: sie findet nur, woran man gedacht hat.
+
+## Drosselung ist kein Messergebnis (gemessen 2026-09-20)
+
+123 Produktseiten mit 150 ms Pause ergaben **43 „unerreichbare" Seiten — alle 43 waren HTTP 429**.
+Mit 400 ms und Wiederholung: 122 × 200. **`429`, `430` und `503` heissen „später nochmal", nicht
+„gibt es nicht".** Wer beides in einen Topf wirft, meldet ein Drittel der Klasse als tot.
+
+## Auch das Prüfgerät braucht eine Gegenprobe (gemessen 2026-09-20)
+
+Die Kundensicht-Prüfung meldete **22 von 22 Produkten als abweichend** — der Shop war korrekt,
+der Vergleich war es nicht (`44.9` gegen die Zeichenkette `44.90`). **Preise in Rappen
+ganzzahlig vergleichen**, und einen absichtlich falschen Sollwert mitlaufen lassen, der
+ausschlagen MUSS.
+
+## Die Mutation aus Daten erzeugen, nicht von Hand schreiben
+
+Am 19.09. waren zwölf Produkte geplant und zehn gesendet; `userErrors: []` war korrekt und sagte
+nichts. **Die Liste als Daten hinschreiben, die Mutation daraus generieren, die Variantenzahl je
+Produkt vorab gegen die Live-Abfrage prüfen** — dann kann nichts stillschweigend herausfallen.
