@@ -6,6 +6,80 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-20 · 🎯 Vierzig von vierzig Treffern — und kein einziger war ein Fund
+
+Die Ampel meldete einen hängenden Bot-Auftrag; dahinter lag der eigentliche Befund. Die Quittung
+des Hetzner-Agenten vom **20.09. 00:08** zeigt die Startseite als **nicht erreichbar, 202 Zeichen**,
+mit dem Screenshot von Shopifys eigener Fehlerseite («Beim Laden dieser Website ist ein Fehler
+aufgetreten · Seite neu laden») — während **Kollektion (3'772 Zeichen) und FAQ (3'062) im selben
+Lauf sauber luden**. Zum zweiten Mal nach dem 17.09. 19:49.
+
+**Die Bildgrössen erzählen es ohne jede Deutung:**
+
+| Tag | Startseite | Kollektion | FAQ |
+|---|---|---|---|
+| 18.09. | 240'751 B | 86'096 B | 76'243 B |
+| 19.09. | 240'874 B | 86'096 B | 76'243 B |
+| **20.09.** | **17'568 B** | 86'096 B | 76'243 B |
+
+Also bin ich losgezogen, das von hier nachzumessen, und baute mir ein Messgerät aus dem Text der
+Fehlerseite: 40 Abrufe mit Cache-Bust, `grep "Fehler aufgetreten"`. Ergebnis:
+
+```
+ok=0 fehlerseite=40 unklar=0
+```
+
+**Vierzig von vierzig.** Ein Katastrophenbefund — und komplett falsch. Der Kanarienvogel hat ihn
+gefangen: dieselbe Suche auf der **Kollektion**, die nachweislich gesund ist, schlug genauso an.
+Die Fundstelle steht in Zeile 384 des **gesunden** 3,14-MB-HTML:
+
+```js
+recipient_form_error: `Beim Absenden des Formulars ist ein Fehler aufgetreten.`,
+```
+
+Ein Übersetzungsstring für das Geschenkkarten-Formular. Mein Suchwort stand auf **jeder** Seite des
+Shops, gesund wie kaputt. **Ein Muster, das auf der gesunden Seite genauso anschlägt, misst nichts —
+es zählt nur, wie oft man gefragt hat.** Die Verwandtschaft zur stillen Null ist exakt spiegelbildlich:
+dort meldet ein blinder Wächter «0» und liest sich wie Ruhe, hier meldet er «40/40» und liest sich
+wie Gewissheit. Beide Male ist die Zahl eine Aussage über das Messgerät, nicht über die Sache.
+
+Mit dem richtigen Signal — **Grösse statt Textsuche**, denn die Fehlerseite ist winzig — steht es
+sauber: **15 von 15** vollen Abrufen liefern 3'140'914–3'142'083 Bytes, der Kanarienvogel Kollektion
+konstant 1'029'289. Von hier ist die Startseite gesund.
+
+**Was von hier NICHT messbar ist, und das ist der Punkt:** unser Ausgang bekommt vom Shopify-Edge
+eine eigene Kopie (19.08. zweimal belegt), und ein Cache-Treffer **kann gar nicht scheitern**. Eine
+Fehlerrate lässt sich hier also grundsätzlich nicht bestimmen, egal wie oft ich frage. Der
+Hetzner-Agent ist das einzige ehrliche Fenster — und er fragte die Startseite **einmal pro Tag**.
+Genau diese Schwäche hatte ich am 18.09. schon notiert («zwei Messpunkte tragen keine Prozentzahl»)
+und nicht behoben; ein notierter Fehler ist kein behobener.
+
+**Reparatur in `automation/browser/storefront_wahrheit.mjs`:** die Startseite wird jetzt **fünfmal**
+je Lauf geladen, Kollektion und FAQ zweimal. Versuch 1 läuft **ohne** Cache-Bust (das ruft eine
+Kundin wirklich ab, evtl. eine Edge-Kopie), Versuche 2–5 **mit** (erzwungener Kalt-Render, der
+scheitern kann) — beide Zahlen stehen getrennt in der Quittung, weil sie verschiedene Fragen
+beantworten. Jeder Fehlversuch bekommt ein eigenes Bild, sonst ist ein Befund am nächsten Tag nicht
+mehr nachprüfbar. Die Inhaltsprüfungen (Versandzusage, Preise) laufen am **geladenen** Versuch;
+an der Fehlerseite gemessen hätten sie «keine Versandzusage gefunden» gemeldet und einen zweiten,
+erfundenen Befund erzeugt.
+
+Die Auswertung ist eine reine Funktion `bewerte_versuche()` mit 13 Gegenproben
+(`storefront_wahrheit.test.mjs`), darunter der echte 20.09.-Fall (warm grün, kalt gescheitert),
+«leere Messung → `null`, nicht `false`» (nichts gemessen heisst nicht kaputt) und **«ein einziger
+Fehlschlag von dreien ist ein Befund»** — eine Mehrheitsregel würde genau die Kundin wegmitteln, die
+ihn erwischt. Sabotage-Gegenprobe: die Regel auf Mehrheit verbogen → 2 Tests rot, zurückgedreht →
+alle grün. **Ein Test, der nicht läuft, meldet grün** (18.09.), darum wird er sabotiert, nicht nur
+ausgeführt.
+
+**Nebenbei die hängende Quittung geklärt:** `storefront-2026-09-19.json` stand seit 15 h auf
+«laufend», die drei Bilder von 00:13 lagen aber vollständig vor. Der Lauf ist also **nach** den
+Screenshots gestorben. Stand jetzt `abgebrochen-nachgetragen` — bewusst **nicht** «ok»: was das
+Skript gemessen hätte, ist nicht rekonstruierbar, belegbar ist nur, was die Bilder zeigen (240'874 B
+= geladen, der 19.09. war grün). Warum der Lauf starb, steht nirgends; der Runner hinterlässt beim
+Sterben keine Spur. Dieselbe Lücke wie am 18.09.: **der Puls beweist, dass der Runner lebt, nicht
+dass ein Auftrag ankommt.**
+
+
 ## 2026-09-19 · 🔁 Zwei Pfade, ein Wächter — der Doppelstart war meiner
 
 Nach der Cursor-Reparatur habe ich den Nachhol-Lauf von Hand angestossen. **Vorher geprüft, ob

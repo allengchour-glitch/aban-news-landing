@@ -3,6 +3,17 @@
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
   "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "abgebrochen-nachgetragen",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen.",
+  "nachtrag": {
+    "wann": "2026-09-20, von Hand (wie der Hinweis es verlangt)",
+    "was_passiert_ist": "Der Lauf hat alle drei Screenshots geschrieben (19.09. 00:13) und ist danach gestorben, bevor er die Quittung fuellen konnte. Deshalb stand hier 15 h lang «laufend». NICHT auf «ok» gesetzt: was das Skript gemessen haette, ist nicht mehr rekonstruierbar.",
+    "was_die_bilder_belegen": {
+      "startseite": 240874,
+      "kollektion": 86096,
+      "faq": 76243,
+      "deutung": "Startseite 240'874 B — dieselbe Groessenordnung wie am 18.09. (240'751 B) und damit eine geladene Seite. Die Shopify-Fehlerseite ist winzig: am 20.09. waren es 17'568 B. Am 19.09. war die Startseite also GRUEN."
+    },
+    "offen": "Warum der Lauf starb, steht nirgends — der Runner schreibt beim Sterben keine Spur. Das ist dieselbe Luecke wie am 18.09.: der Puls beweist, dass der Runner lebt, nicht dass ein Auftrag ankommt."
+  }
 }
