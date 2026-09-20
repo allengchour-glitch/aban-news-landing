@@ -3,6 +3,55 @@
   "skript": "storefront_wahrheit.mjs",
   "id": "storefront-2026-09-20",
   "warum": "Der Agent ist das EINZIGE ehrliche Fenster auf luxestyle.ch: unsere Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08. zweimal belegt, 125 Abrufe ueber 50 Minuten lieferten ausnahmslos die alte Seite). Am 17.09. meldete der bisher EINZIGE Lauf die Startseite als nicht erreichbar (202 Zeichen, waehrend Kollektion und FAQ sauber luden) — und diese Messung steht seither allein da. Eine Momentaufnahme ohne Wiederholung beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand. Taeglich, rein lesend, in Handy-Breite (77 % des Verkehrs). [wiederkehrend, alle 1 Tag(e)]",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "ergebnis": {
+    "zusammenfassung": "⚠️ 1 von 3 Seiten mit Befund: startseite",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/",
+        "erreichbar": false,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "keine gefunden",
+        "preis_sichtbar": false,
+        "fehlertexte": [],
+        "zeichen": 202,
+        "bild": "auftraege/ergebnis/storefront-2026-09-20-startseite.png"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen",
+        "erreichbar": true,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3772,
+        "bild": "auftraege/ergebnis/storefront-2026-09-20-kollektion.png"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq",
+        "erreichbar": true,
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3062,
+        "bild": "auftraege/ergebnis/storefront-2026-09-20-faq.png"
+      }
+    ]
+  }
 }
