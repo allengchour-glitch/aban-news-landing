@@ -42,6 +42,17 @@ const API = '2026-07';
 /* ------------------------------ Die Entscheidung ------------------------------ */
 
 /**
+ * Rohmarge in Prozent, NACHDEM der WELCOME10-Gutschein den Erlös gesenkt hat.
+ * `null`, wenn Preis oder Einkaufspreis unbekannt sind — unbekannt ist nicht 0.
+ */
+export function margeNachGutschein(preis, kosten) {
+  if (!Number.isFinite(preis) || preis <= 0) return null;
+  if (kosten === null || !Number.isFinite(kosten)) return null;
+  const erloes = preis * (1 - GUTSCHEIN);
+  return ((erloes - kosten) / erloes) * 100;
+}
+
+/**
  * Was mit einem Produkt geschehen soll. Reine Funktion — der ganze Selbsttest haengt hier.
  * @param {{preis_min:number, kosten_max:number|null, faktorMax?:number}} d
  * @returns {{tun:'anheben'|'ueberspringen'|'melden', neuerPreis:number|null, grund:string}}
@@ -59,7 +70,17 @@ export function entscheide(d) {
   if (ziel === null)
     return { tun: 'ueberspringen', neuerPreis: null, grund: 'kein Zielpreis berechenbar' };
 
-  // Regel 1 + 4: nie senken, und wer schon dort ist, bleibt — das macht den Lauf idempotent.
+  // Regel 1 + 4: nie senken, und wer das Ziel schon erfuellt, bleibt — das macht den Lauf idempotent.
+  //
+  // ⚠️ GEMESSEN 2026-09-20, und es war vorher falsch herum: entscheidend ist die
+  // ERREICHTE MARGE, nicht die Sprossenlage. `zielpreis()` gibt die kleinste Sprosse der
+  // Leiter; ein Preis DAZWISCHEN kann das Ziel trotzdem erfuellen. Beispiel aus dem Katalog:
+  // 45.90 bei EK 25.50 ergibt 38,3 % nach dem Gutschein — Ziel erfuellt —, `zielpreis()`
+  // sagt aber 49.90. Nach dem alten Kriterium waeren vier Fahrradhelme fuer 0,3 bis 5
+  // Prozentpunkte angehoben worden: Unruhe im Laden ohne Gegenwert.
+  if (margeNachGutschein(d.preis_min, d.kosten_max) >= ZIEL_NACH_GUTSCHEIN * 100)
+    return { tun: 'ueberspringen', neuerPreis: null, grund: 'Zielmarge bereits erreicht' };
+
   if (d.preis_min >= ziel)
     return { tun: 'ueberspringen', neuerPreis: null, grund: 'liegt bereits auf oder ueber dem Ziel' };
 
@@ -193,6 +214,37 @@ function selbsttest() {
   let ok = 0; const fehler = [];
   const pruefe = (name, b) => { if (b) ok++; else fehler.push(name); };
 
+  // --- Die Schaerfung vom 20.09.: Marge entscheidet, nicht die Sprossenlage.
+  //     Alle vier Faelle sind echte Produkte aus dem Katalog dieses Tages.
+  pruefe('45.90 bei EK 25.50 erfuellt das Ziel trotz zielpreis 49.90',
+    entscheide({ preis_min: 45.90, kosten_max: 25.50 }).tun === 'ueberspringen');
+  pruefe('66.90 bei EK 36.57 bleibt unberuehrt',
+    entscheide({ preis_min: 66.90, kosten_max: 36.57 }).tun === 'ueberspringen');
+  pruefe('38.90 bei EK 20.66 bleibt unberuehrt',
+    entscheide({ preis_min: 38.90, kosten_max: 20.66 }).tun === 'ueberspringen');
+  pruefe('23.90 bei EK 12.23 bleibt unberuehrt',
+    entscheide({ preis_min: 23.90, kosten_max: 12.23 }).tun === 'ueberspringen');
+  pruefe('und die Begruendung nennt die Marge, nicht die Sprosse',
+    entscheide({ preis_min: 45.90, kosten_max: 25.50 }).grund === 'Zielmarge bereits erreicht');
+
+  // --- Die Gegenprobe: knapp UNTER dem Ziel muss weiterhin angehoben werden.
+  pruefe('15.90 bei EK 15.40 (−7,6 %) wird angehoben',
+    entscheide({ preis_min: 15.90, kosten_max: 15.40 }).tun === 'anheben');
+  pruefe('18.90 bei EK 14.14 (16,9 %) wird angehoben',
+    entscheide({ preis_min: 18.90, kosten_max: 14.14 }).tun === 'anheben');
+  pruefe('46.90 bei EK 31.35 (25,7 %) wird angehoben',
+    entscheide({ preis_min: 46.90, kosten_max: 31.35 }).tun === 'anheben');
+
+  // --- margeNachGutschein selbst
+  pruefe('EK gleich Erloes ergibt genau 0 %',
+    Math.abs(margeNachGutschein(10, 9) - 0) < 1e-9);
+  pruefe('unbekannter Einkaufspreis ergibt null, NICHT 0',
+    margeNachGutschein(20, null) === null);
+  pruefe('Preis 0 ergibt null statt Division durch null',
+    margeNachGutschein(0, 5) === null);
+  pruefe('Verlust wird negativ, nicht auf 0 geklemmt',
+    margeNachGutschein(15.90, 15.40) < 0);
+
   // Regel 2 — unbekannt bleibt unbekannt
   pruefe('ohne Einkaufspreis wird uebersprungen',
     entscheide({ preis_min: 15.9, kosten_max: null }).tun === 'ueberspringen');
@@ -230,12 +282,23 @@ function selbsttest() {
   pruefe('alle sieben Preise vom 2026-09-19 werden reproduziert',
     runde.every(([vk, ek, soll]) => entscheide({ preis_min: vk, kosten_max: ek }).neuerPreis === soll));
 
-  // Gegenprobe: ein Produkt genau auf der Zielmarge wird nicht angefasst
-  const grenze = zielpreis(10);
-  pruefe('genau auf dem Ziel = keine Aenderung',
-    entscheide({ preis_min: grenze, kosten_max: 10 }).tun === 'ueberspringen');
-  pruefe('einen Rappen darunter = Aenderung',
-    entscheide({ preis_min: grenze - 0.01, kosten_max: 10 }).tun === 'anheben');
+  // Gegenprobe an der GRENZE — und zwar an der Marge, nicht an der Sprosse.
+  //
+  // ⚠️ Hier stand bis zum 20.09. die falsche Grenze: geprueft wurde gegen `zielpreis(10)`
+  // = 19.90 und verlangt, dass 19.89 angehoben wird. Bei EK 10.00 ergibt 19.89 aber
+  // **44,1 %** nach dem Gutschein — sechs Punkte ueber dem Ziel. Der Test schrieb damit
+  // fest, dass gesunde Produkte angefasst werden. Die echte Grenze ist die Zielmarge.
+  const aufDemZiel = Math.ceil((10 / (1 - ZIEL_NACH_GUTSCHEIN) / (1 - GUTSCHEIN)) * 100) / 100;
+  pruefe('genau auf der Zielmarge = keine Aenderung',
+    entscheide({ preis_min: aufDemZiel, kosten_max: 10 }).tun === 'ueberspringen');
+  pruefe('und dort sind es tatsaechlich mindestens 38 %',
+    margeNachGutschein(aufDemZiel, 10) >= ZIEL_NACH_GUTSCHEIN * 100);
+  pruefe('zwei Rappen darunter = Aenderung',
+    entscheide({ preis_min: aufDemZiel - 0.02, kosten_max: 10 }).tun === 'anheben');
+  pruefe('und dort sind es tatsaechlich weniger als 38 %',
+    margeNachGutschein(aufDemZiel - 0.02, 10) < ZIEL_NACH_GUTSCHEIN * 100);
+  pruefe('die alte Sprossen-Grenze wird NICHT mehr angefasst (19.89 bei EK 10 = 44 %)',
+    entscheide({ preis_min: zielpreis(10) - 0.01, kosten_max: 10 }).tun === 'ueberspringen');
 
   console.log(`${ok} Pruefungen bestanden, ${fehler.length} gescheitert`);
   for (const f of fehler) console.log('  ✗ ' + f);

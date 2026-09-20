@@ -121,6 +121,27 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **Jetzt wird in Rappen ganzzahlig verglichen, und ein absichtlich falscher Sollwert muss
   ausschlagen.** Die Mutation selbst wurde **aus Daten erzeugt statt von Hand geschrieben** —
   genau der Fehler vom 19.09. („zwölf geplant, zehn gesendet") kann so nicht mehr passieren.
+- **✅ ZWEITER BLOCK, die 38 Fahrradhelme: 10 Produkte / 25 Varianten angehoben**, alle zehn an der
+  echten Seite nachgemessen (10/10). **Nur 1 Verlustfall von 33** gegen 11 von 32 bei den Velohelmen —
+  **19 von 33 waren schon in Ordnung.** Dass die Gruppen so weit auseinanderliegen, stützt die
+  Vermutung vom 14.09.: bepreist wurde nach Importcharge, nicht nach Einkauf. Grösster Fall:
+  Fahrradhelm für Herren 15.90 bei EK 15.40 (**−7,6 %**) → 29.90.
+- **⚠️ UNSCHÄRFE IN DER EIGENEN PREISREGEL, hier zum ersten Mal aufgefallen:** `zielpreis() > Preis`
+  ist **nicht** dasselbe wie „Marge unter Ziel". Vier Fahrradhelme (45.90/38,3 % · 66.90/39,3 % ·
+  38.90/41,0 % · 23.90/43,1 %) erfüllen das Ziel bereits — ihr Preis steht nur **zwischen zwei
+  Sprossen** der Leiter. Ein naives Sprossen-Kriterium hätte sie für 0,3–5 Prozentpunkte angefasst.
+  **Entscheidend ist die gemessene Marge, nicht die Sprossenlage.** **`automation/preis_korrektur.mjs`
+  ist nachgezogen (15 → 30 Selbsttests)** — der billigste Zeitpunkt, denn das Skript wartet auf
+  Zugangsdaten und ist nie gelaufen; sein erster Katalog-Lauf hätte sonst hunderte gesunde Produkte
+  angefasst. ⚠️ **Dabei fiel ein Selbsttest um — und er hatte unrecht, nicht der neue Code:** die
+  Grenze vom 19.09. prüfte gegen die Sprosse (EK 10.00 → `zielpreis()` 19.90, also „19.89 anheben"),
+  **19.89 ergibt dort aber 44,1 %.** Ersetzt durch eine Grenze an der Marge, beide Seiten mit der
+  tatsächlichen Marge belegt, plus ein Test, dass die alte Sprossen-Grenze nicht mehr anfasst.
+- **⚠️ Der Suchindex servierte einen veralteten TITEL:** `title:fahrradhelm*` lieferte
+  „Unisex-Fahrradhelm für **Erwussse**", `nodes(ids:)` für dasselbe Produkt „für **Erwachsene**".
+  Der Titel ist längst korrigiert, der Index hinkt nach. **Wer über Titel berichtet, fragt das
+  Produkt direkt.** Die Adresse trägt den Tippfehler weiter — bewusst gelassen, ein Handle-Wechsel
+  bricht Verweise für einen kosmetischen Gewinn.
 - **📦 ALTER POSTEN GESCHLOSSEN: die BigBuy-Klasse ist AUS DEM VERKAUF, „279 aktiv" ist veraltet.**
   Drei unabhängige Wege, jeder mit Gegenprobe: `sku:bb-* AND status:active` → **0**
   (`sku:CJ-*` → Treffer, `sku:zzzgibtesnicht-*` → leer) · `tag:bigbuy AND status:active` → **0**

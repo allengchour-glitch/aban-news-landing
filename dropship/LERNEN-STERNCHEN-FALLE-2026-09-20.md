@@ -186,6 +186,84 @@ Rappen (ganzzahlig) verglichen und ein absichtlich falscher Sollwert muss aussch
 
 ---
 
+## Zweiter Block: die 38 Fahrradhelme — und eine Unschärfe in meiner eigenen Regel
+
+Nach den Velohelmen der nächstgrösste ungemessene Block. **GEMESSEN (33 mit bekanntem
+Einkaufspreis, 4 ohne):**
+
+| | |
+|---|---|
+| Verlust nach WELCOME10 | **1 von 33** |
+| unter 38 % nach WELCOME10 | 10 von 33 |
+| bereits in Ordnung | **19 von 33** |
+| Faktor über 3 | 0 |
+
+**Dieser Block ist deutlich gesünder als die Velohelme** (dort 11 Verluste bei 32). Dass die
+beiden Gruppen so weit auseinanderliegen, stützt die Vermutung vom 14.09.: bepreist wurde nach
+Importcharge, nicht nach Einkauf.
+
+### ⚠️ Unschärfe in der eigenen Regel, hier zum ersten Mal aufgefallen
+
+`zielpreis()` liefert die kleinste Sprosse der Leiter (`x4.90/x9.90`), bei der nach WELCOME10
+38 % bleiben. Daraus folgt aber **nicht**, dass jeder Preis unterhalb dieser Sprosse zu tief ist:
+
+| Produkt | Preis | EK | Marge nach WELCOME10 | `zielpreis()` |
+|---|---|---|---|---|
+| Fahrradhelm aus PC+EPS | 45.90 | 25.50 | **38,3 %** | 49.90 |
+| Fahrradhelm LED-Rücklicht | 66.90 | 36.57 | **39,3 %** | 69.90 |
+| Ultralight Fahrradhelm | 38.90 | 20.66 | **41,0 %** | 39.90 |
+| Fahrradhelm Stadt | 23.90 | 12.23 | **43,1 %** | 24.90 |
+
+Diese vier **erfüllen das Ziel bereits** — ihr Preis steht nur zwischen zwei Sprossen. Ein
+naives „`zielpreis` > Preis → anheben" hätte sie angefasst: vier Preiserhöhungen für 0,3 bis
+5 Prozentpunkte, also Unruhe im Laden ohne Gegenwert.
+
+**Regel geschärft: entscheidend ist die gemessene Marge, nicht die Sprossenlage.** Angehoben
+wird, was **unter** dem Ziel liegt.
+
+**`automation/preis_korrektur.mjs` ist nachgezogen (15 → 30 Selbsttests).** Das war der
+billigste mögliche Zeitpunkt: das Skript wartet auf Zugangsdaten und ist noch nie gelaufen —
+mit dem alten Kriterium hätte sein erster Lauf über den **ganzen Katalog** hunderte gesunde
+Produkte angefasst.
+
+⚠️ **Dabei fiel ein Selbsttest um, und er hatte unrecht, nicht der neue Code.** Der Test vom
+19.09. lautete „genau auf dem Ziel → nichts, ein Rappen darunter → Änderung" und prüfte gegen
+die **Sprosse**: bei EK 10.00 ist `zielpreis()` = 19.90, verlangt war also eine Anhebung bei
+19.89. **Gemessen ergibt 19.89 bei EK 10.00 aber 44,1 % nach dem Gutschein** — sechs Punkte
+über dem Ziel. Der Test schrieb fest, dass gesunde Produkte angefasst werden. Ersetzt durch
+eine Grenze an der **Marge**: genau auf 38 % → nichts, zwei Rappen darunter → Änderung, und
+beide Seiten belegen zusätzlich die tatsächliche Marge. Ein eigener Test hält fest, dass die
+alte Sprossen-Grenze **nicht mehr** anfasst.
+
+### ✅ Geändert (live) — 10 Produkte / 25 Varianten
+
+| Produkt | vorher | nachher | EK max | Marge vorher |
+|---|---|---|---|---|
+| Fahrradhelm für Herren | 15.90 | **29.90** | 15.40 | **−7,6 %** |
+| Integrierte Fahrradhelm-Brille | 19.90 | **34.90** | 17.84 | 0,4 % |
+| Einheitliches Fahrradhelm (4 Var.) | 14.90 | **24.90** | 13.35 | 0,4 % |
+| Fahrradhelm für Mountainbiken | 14.90 | **24.90** | 12.92 | 3,7 % |
+| Fahrradhelm mit integriertem Licht | 15.90 | **24.90** | 13.34 | 6,8 % |
+| Integrierte Fahrradhelme | 17.90 | **29.90** | 14.67 | 8,9 % |
+| Vielseitiger Outdoor-Fahrradhelm (7 Var.) | 14.90 | **24.90** | 12.03 | 10,3 % |
+| Gradient-Fahrradhelm | 18.90 | **29.90** | 14.14 | 16,9 % |
+| Fahrradhelm Polsterung für Pendler | 46.90 | **59.90** | 31.35 | 25,7 % |
+| Vielseitiger Outdoor-Fahrradhelm verst. (7 Var.) | 15.90 | **19.90** | 10.57 | 26,1 % |
+
+**Alle zehn an der echten Seite nachgemessen: 10 von 10 bestätigt, 0 abweichend**, plus
+Gegenprobe mit absichtlich falschem Sollwert.
+
+### ⚠️ Der Suchindex servierte einen veralteten Titel
+
+`products(query:"title:fahrradhelm*")` lieferte **„Unisex-Fahrradhelm für Erwussse"**,
+`nodes(ids:)` für dasselbe Produkt **„Unisex-Fahrradhelm für Erwachsene"**. Der Titel ist also
+längst korrigiert, nur der Index hinkt nach — dieselbe Verzögerung wie am 14.09., nur in der
+anderen Richtung. **Wer über Titel berichtet, fragt das Produkt direkt.** Die Adresse trägt den
+Tippfehler weiterhin (`…-fur-erwussse-…`); **bewusst nicht geändert**, ein Handle-Wechsel bricht
+bestehende Verweise für einen kosmetischen Gewinn.
+
+---
+
 ## 📦 Nebenbefund, der einen alten Posten schliesst: die BigBuy-Klasse ist aus dem Verkauf
 
 Das Gedächtnis führt seit dem 12.09. als grössten offenen Punkt: *„279 aktive BigBuy-Produkte,
