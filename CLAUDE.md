@@ -142,6 +142,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Der Titel ist längst korrigiert, der Index hinkt nach. **Wer über Titel berichtet, fragt das
   Produkt direkt.** Die Adresse trägt den Tippfehler weiter — bewusst gelassen, ein Handle-Wechsel
   bricht Verweise für einen kosmetischen Gewinn.
+- **✅ DRITTER BLOCK, Reit-/Ski-/Motorradhelme: 19 Produkte / 43 Varianten**, alle 19 an der echten
+  Seite nachgemessen (19/19). **Der schlechteste Block: 8 Verluste von 22, 19 von 22 unter dem Ziel,
+  nur 3 in Ordnung.** Acht standen unter dem Einkaufspreis, darunter erneut ein **Kinder-Schutzhelm**
+  (18.90 bei EK 21.11) und ein Ganzjahres-E-Motorradhelm (15.90/18.74, **−31,0 %**).
+- **🔑 DREI GRUPPEN, DREI VÖLLIG VERSCHIEDENE BILDER — der bisher stärkste Beleg für „bepreist nach
+  Importcharge, nicht nach Einkauf":** Velohelme 11 Verluste von 32 · Fahrradhelme **1 von 33** ·
+  Reit/Ski/Motorrad **8 von 22**. **Wer eine Gruppe misst und daraus auf den Katalog schliesst, liegt
+  in beide Richtungen falsch** — genau der Fehler der 58,9 % vom 13.09.
+- **🟢 CI: ein NEUER roter Check geprüft statt zitiert.** `Cloudflare Pages: dropshipping-radar` war
+  auf `b3ed2df` grün und auf `24c1195` rot. **Gemessen: der Diff fasst `dropshipping-radar/` mit
+  0 Dateien an** (Verzeichnis unverändert, 6 Dateien, 160 K), und **13 andere Pages-Projekte haben
+  DENSELBEN Commit erfolgreich gebaut**. Auch die Pages-Grenzen sind es nicht (9469 Dateien von
+  20 000; die einzigen >25 MiB liegen in `video-prototypes/`, das `build-pages.sh` ausschliesst).
+  ⚠️ **Einen Cloudflare-Build neu starten geht nur per Dashboard** — Cloud-Sessions können das nicht.
+  Kommentar an PR #2514 mit allen Messungen. Die drei `Workers Builds` sind unverändert der Fall
+  vom 12.09. (keiner der fünf Worker im Repo heisst so, nachgemessen).
 - **📦 ALTER POSTEN GESCHLOSSEN: die BigBuy-Klasse ist AUS DEM VERKAUF, „279 aktiv" ist veraltet.**
   Drei unabhängige Wege, jeder mit Gegenprobe: `sku:bb-* AND status:active` → **0**
   (`sku:CJ-*` → Treffer, `sku:zzzgibtesnicht-*` → leer) · `tag:bigbuy AND status:active` → **0**

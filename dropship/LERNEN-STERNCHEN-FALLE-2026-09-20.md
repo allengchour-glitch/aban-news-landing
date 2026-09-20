@@ -264,6 +264,51 @@ bestehende Verweise für einen kosmetischen Gewinn.
 
 ---
 
+## Dritter Block: Reit-, Ski- und Motorradhelme — der schlechteste von allen
+
+22 Produkte mit bekanntem Einkaufspreis. **GEMESSEN:**
+
+| | Velohelme | Fahrradhelme | Reit/Ski/Motorrad |
+|---|---|---|---|
+| Verlust nach WELCOME10 | 11 von 32 | **1 von 33** | **8 von 22** |
+| unter 38 % | 25 von 32 | 10 von 33 | **19 von 22** |
+| bereits in Ordnung | 7 | **19** | **3** |
+
+**Drei Gruppen derselben Produktklasse, drei völlig verschiedene Bilder.** Das ist der bisher
+stärkste Beleg für die Vermutung vom 14.09.: bepreist wurde nach **Importcharge**, nicht nach
+Einkauf. Wer eine Gruppe misst und daraus auf den Katalog schliesst, liegt in beide Richtungen
+falsch — genau der Fehler, den die 58,9 % vom 13.09. gemacht haben.
+
+### ✅ Geändert (live) — 19 Produkte / 43 Varianten
+
+| Produkt | vorher | nachher | EK max | Marge vorher |
+|---|---|---|---|---|
+| Ganzjahres E-Motorradhelm (4 Var.) | 15.90 | **34.90** | 18.74 | **−31,0 %** |
+| Motorradhelm-Tasche | 26.90 | **59.90** | 31.50 | **−30,1 %** |
+| **Kinder-Schutzhelm** | 18.90 | **39.90** | 21.11 | **−24,1 %** |
+| Leichter Reithelm | 18.90 | **39.90** | 21.00 | **−23,5 %** |
+| Motorradhelm mit Doppelscheibe | 46.90 | **89.90** | 47.84 | **−13,3 %** |
+| Skihelm Indoor/Outdoor (8 Var.) | 32.90 | **59.90** | 32.31 | **−9,1 %** |
+| Motorradhelm-Rucksack Carbon | 50.90 | **89.90** | 47.80 | **−4,3 %** |
+| Reithelm Outdoor-Reitsport (3 Var.) | 25.90 | **44.90** | 23.44 | **−0,6 %** |
+| Reithelm F-659 M/L | 30.90 | **49.90** | 27.46 | 1,3 % |
+| Aluminium-Schutzhelm Ingenieure | 42.90 | **69.90** | 37.37 | 3,2 % |
+| Kühlwind-Reithelm | 41.90 | **64.90** | 35.86 | 4,9 % |
+| Skihelm-Überzug mit Visier | 46.90 | **69.90** | 37.40 | 11,4 % |
+| Motorradhelm-Wandhalter | 15.90 | **24.90** | 12.30 | 14,0 % |
+| Reithelm Sommer | 48.90 | **69.90** | 36.50 | 17,1 % |
+| Skihelm mit Visier (2 Var.) | 63.90 | **84.90** | 47.24 | 17,9 % |
+| Reithelm Erwachsene/Kinder (9 Var.) | 40.90 | **54.90** | 30.21 | 17,9 % |
+| Reithelm verstellbar (3 Var.) | 58.90 | **74.90** | 40.08 | 24,4 % |
+| Reithelm-Visier (2 Var.) | 25.90 | **34.90** | 16.91 | 27,5 % |
+| Kühl-Luft Reithelmpolsterung | 25.90 | **34.90** | 16.74 | 28,2 % |
+
+**Acht standen unter dem Einkaufspreis**, darunter erneut ein **Kinder-Schutzhelm** (18.90 bei
+EK 21.11). **Alle 19 an der echten Seite nachgemessen: 19 von 19 bestätigt, 0 abweichend**, plus
+Gegenprobe mit absichtlich falschem Sollwert.
+
+---
+
 ## 📦 Nebenbefund, der einen alten Posten schliesst: die BigBuy-Klasse ist aus dem Verkauf
 
 Das Gedächtnis führt seit dem 12.09. als grössten offenen Punkt: *„279 aktive BigBuy-Produkte,
