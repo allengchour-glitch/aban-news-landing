@@ -1,8 +1,8 @@
 {
-  "letzter_lauf": "2026-09-20T01:08:58.722Z",
+  "letzter_lauf": "2026-09-20T01:14:07.483Z",
   "zustand": "leer",
   "offene_auftraege": 0,
-  "laeufe_seit_push": 8,
+  "laeufe_seit_push": 9,
   "hinweis": "Geschrieben von server/luxe_auftrag_runner.mjs bei JEDEM Lauf, auch ohne Arbeit. Gepusht ~stuendlich. Ist letzter_lauf aelter als 2 h, steht der Hetzner-Agent — dann kann kein Browser-Auftrag mehr erledigt werden. Die Ampel (automation/bot_puls.py) meldet das.",
   "zuletzt_gepusht": "2026-09-20T00:27:27.932Z"
 }
