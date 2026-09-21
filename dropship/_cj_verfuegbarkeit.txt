@@ -49248,3 +49248,4 @@ gid://shopify/Product/15450839777665	ok	CJ-CJSY1589450-Short pink-One Size	zurue
 gid://shopify/Product/15450858520961	ok	CJ-CJDK1733856-Electric Blue-S	zurueckgeholt-2026-09-21 (productSku=CJDK1733856 -> 200, 51 Varianten)
 gid://shopify/Product/15447875912065	ok	CJ-CJXFJTDS00043-Filter element	zurueckgeholt-2026-09-21 (productSku=CJXFJTDS00043 -> 200, 2 Varianten)
 gid://shopify/Product/15448019665281	ok	CJ-CJWL296071401AZ	varianten-weg-DENY-2026-09-21 (8 Varianten bei CJ weg → DENY)
+gid://shopify/Product/15413025014145	bei-cj-weg	CJLY291596601AZ	via-varianten-wache-2026-09-21
