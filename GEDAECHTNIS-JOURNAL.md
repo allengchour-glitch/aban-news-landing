@@ -6,6 +6,66 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🪣 Acht Wächter, ein Eimer — die Drossel war hausgemacht
+
+«alles machen bin ned zuhause». Also die Befunde abarbeiten, die die Wächter melden und
+niemand liest. Genau daran lag es.
+
+**`menue_links.log`: 15 PAUSE-Zeilen bei 16 Läufen.** Der Wächter, der am 15.09. sechs tote
+Menülinks fand (darunter «Schmuck & Uhren»), hatte **fünfzehnmal hintereinander nichts
+geprüft**. Er ist vorbildlich gebaut — er sagt «Rest ungeprüft, kein Befund» statt zu
+schweigen oder «alles gut» zu melden. Nur liest das niemand, und ein Log, das niemand liest,
+ist eine stille Null mit Extraschritt.
+
+**Gemessen statt vermutet**, die echte Abfrage nachgebaut:
+
+```
+errors : [{"message":"Throttled","extensions":{"code":"THROTTLED"}}]
+KOSTEN : angefordert 240 · EIMER: 35 von 2000, restoreRate 100/s
+```
+
+`gql()` meldet GraphQL-Fehler brav — **ausser THROTTLED**, und das aus gutem Grund: sonst sähe
+jede Drossel wie ein Befund aus. Also lief die Wache stumm durch ihre sechs Versuche.
+
+**Mein erster Fix war falsch, und der nächste Lauf hat es sofort gesagt.** Ich verkleinerte die
+Häppchen von 20 auf 6 Kollektionen (240 → ~72 Punkte) — und bekam wieder «PAUSE». Erst der
+Blick auf die Prozessliste zeigte die Wirklichkeit:
+
+```
+262s python3 /tmp/cj_verfuegbarkeit.py        131s python3 automation/google_size_metafeld.py
+191s python3 /tmp/seo_versandschwelle_fix.py  131s python3 automation/bilddubletten.py
+141s python3 automation/pod_druckdatei.py     131s python3 automation/versandaussagen_wahrheit.py
+                                              101s python3 automation/besuchte_seiten_lieferbar.py
+EIMER: 23 von 2000
+```
+
+**Der Aufseher startet acht Wächter gleichzeitig und erzeugt die Drossel selbst.** Keine
+Abfrage ist klein genug, wenn sieben andere schneller nachsaugen, als 100/s nachfüllen. Das ist
+strukturell dieselbe Lehre wie beim CJ-Grind am 29.07. («der echte Grund ist Gleichzeitigkeit
+beim Restart»), nur eine Etage höher — und ich hatte sie mit meinen zwei eigenen
+Hintergrundläufen gerade noch verschärft.
+
+**Die Reparatur ist Geduld statt Sparsamkeit:** `gql()` rechnet die Wartezeit jetzt aus
+Shopifys *eigener Auskunft* — `(requestedQueryCost − currentlyAvailable) / restoreRate`,
+gedeckelt auf 30 s — statt blind `2**i` zu schlafen. **Shopify sagt, wie lange es dauert; man
+muss nur fragen statt raten.** Dazu 12 statt 6 Versuche: der Wächter läuft einmal täglich und
+darf ein paar Minuten warten, statt 15 von 16 Läufen blind zu bleiben.
+
+**Die allgemeine Lehre ist nicht die Wartezeit, sondern das Log.** Ein Wächter, der seine
+eigene Blindheit korrekt meldet, ist nur die halbe Sicherung — die andere Hälfte ist jemand,
+der die Meldung liest. «PAUSE» stand fünfzehnmal da und hat nie jemanden erreicht. Eine
+Meldung, die niemanden erreicht, unterscheidet sich im Ergebnis nicht von Schweigen.
+
+⚠️ Nebenbefund, bewusst **nicht** gleich repariert: der Lieferfähigkeits-Wächter meldet zwei
+Produkte als «unklar» mit CJ-Code **1602003 «Variant has been removed from shelves»** und
+**1602001 «Product not found»**. `cj_verfuegbarkeit.py` kennt als eindeutige Absage nur
+1602002. 1602003 betrifft aber die **Variante**, nicht das Produkt — ein Artikel mit einer
+ausgelisteten Variante kann sehr wohl lieferbar sein. Das einfach als «Produkt weg» zu werten
+wäre genau der Fehler, vor dem die Datei im eigenen Kommentar warnt. Und «shirt-eidgenoss» ist
+Fortura-Ware (CH-Lager) — dass CJ sie nicht kennt, ist kein Befund, sondern erwartbar.
+Braucht eine eigene Messung, keine schnelle Regel.
+
+
 ## 2026-09-21 · 🩹 Der Wächter fragte nach der Werbung, nicht nach der Ware
 
 «weiter» — also die Lücke, die ich am 19.09. selbst als offen notiert hatte. Unterwegs kam
