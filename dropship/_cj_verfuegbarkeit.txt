@@ -49052,3 +49052,5 @@ gid://shopify/Product/15508417380737	bei-cj-weg	CJ-1732246928873758720
 gid://shopify/Product/15508417347969	ok
 gid://shopify/Product/15508417315201	ok
 gid://shopify/Product/15508412367233	ok
+gid://shopify/Product/15508412334465	ok
+gid://shopify/Product/15508412301697	ok
