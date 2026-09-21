@@ -35,7 +35,12 @@ BERICHT = "dropship/MENUE-TOTE-LINKS.md"
 
 def gql(q, v=None):
     p = json.dumps({"query": q, "variables": v or {}})
-    for i in range(6):
+    # 12 statt 6 Versuche: GEMESSEN 21.09., der Aufseher startet acht Waechter
+    # GLEICHZEITIG, und der Shopify-Eimer stand dabei auf 23 von 2000. Sechs Versuche
+    # reichen dann nicht, egal wie klein die Abfrage ist — die anderen saugen schneller
+    # nach, als 100/s nachfuellen. Dieser Waechter laeuft einmal taeglich; er darf ein
+    # paar Minuten geduldig sein, statt 15 von 16 Laeufen blind zu bleiben.
+    for i in range(12):
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
@@ -49,8 +54,25 @@ def gql(q, v=None):
                 print("  GraphQL-Fehler:", json.dumps(d["errors"])[:180], flush=True)
                 return None
         except Exception:
+            d = None
+        # ⚠️ 21.09.2026: DIESER WAECHTER WAR 15 VON 16 LAEUFEN BLIND.
+        # Gemessen: die Abfrage (20 Kollektionen à productsCount + 10 Publications) kostet
+        # 240 Punkte; im Eimer waren 35 bei restoreRate 100/s. Shopify antwortet dann
+        # «THROTTLED» — und weil die Wache THROTTLED absichtlich NICHT als Fehler meldet
+        # (sonst wuerde jede Drossel wie ein Befund aussehen), lief sie stumm in die
+        # 6 Versuche und gab auf. Im Log stand nur «PAUSE», 15×, und niemand las es.
+        # Blindes 2**i wartet zufaellig; Shopify SAGT, wie lange es dauert. Also fragen:
+        wartezeit = 2 ** i
+        try:
+            t = (d or {}).get("extensions", {}).get("cost", {}).get("throttleStatus") or {}
+            fehlt = float((d or {}).get("extensions", {}).get("cost", {})
+                          .get("requestedQueryCost", 0)) - float(t.get("currentlyAvailable", 0))
+            rate = float(t.get("restoreRate") or 0)
+            if fehlt > 0 and rate > 0:
+                wartezeit = min(30.0, fehlt / rate + 0.5)   # +0.5 s Sicherheit
+        except Exception:
             pass
-        time.sleep(2 ** i)
+        time.sleep(wartezeit)
     return None
 
 
@@ -143,8 +165,10 @@ def main():
     print(f"Hauptmenue: {len(links)} Eintraege, {len(handles)} Kollektionen", flush=True)
 
     offen = []          # (handle, id, productsCount) — Aktiv-Pruefung folgt
-    for i in range(0, len(handles), 20):
-        teil = handles[i:i + 20]
+    # 6 statt 20 Kollektionen je Abfrage: 240 Punkte auf einmal sind zu viel, wenn die
+    # anderen Waechter denselben Eimer teilen (gemessen 21.09.: 35 von 2000 frei).
+    for i in range(0, len(handles), 6):
+        teil = handles[i:i + 6]
         felder = " ".join(
             f'k{j}: collectionByHandle(handle:"{h}"){{ id handle productsCount{{count}} '
             f'resourcePublications(first:10){{ nodes{{ isPublished publication{{ name }} }} }} }}'
