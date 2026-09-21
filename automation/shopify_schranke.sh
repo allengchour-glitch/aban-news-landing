@@ -18,8 +18,15 @@
 # Deskriptoren 21/22 — NICHT 7/8: die vier Produkttext-Werkzeuge halten ihr gemeinsames
 # Schloss auf Deskriptor 8 (TXTLOCK im Aufseher), und `exec 8>` haette es hier stillschweigend
 # ersetzt = freigegeben (gemessen 21.09. beim Nachlesen, nicht im Betrieb).
-for _s in 1 2; do
-  eval "exec $((20+_s))>/tmp/shopify_slot_${_s}.lock"
+# Zwei Reihen (21.09., 16:40 gemessen): mit EINER Reihe hielten zwei Katalog-Scanner
+# (textbild_fix, cj_verfuegbarkeit, je 20–40 min) beide Plaetze, und 25 leichte
+# Tages-Waechter warteten dahinter — bei stuendlichem Container-Neustart waeren sie nie
+# drangekommen. Darum: SCHRANKE_NAME=reiniger_slot SCHRANKE_PLAETZE=1 fuer die schweren
+# Reiniger (EIN Scanner zugleich, ~100 Punkte/s = Nachlauf des Eimers), Standard
+# shopify_slot mit 2 Plaetzen fuer die Tages-Waechter. Hoechstens drei Prozesse am Eimer.
+_NAME="${SCHRANKE_NAME:-shopify_slot}"; _N="${SCHRANKE_PLAETZE:-2}"
+for _s in $(seq 1 "$_N"); do
+  eval "exec $((20+_s))>/tmp/${_NAME}_${_s}.lock"
   if flock -n $((20+_s)); then _SLOT=$_s; break; fi
 done
 if [ -z "${_SLOT:-}" ]; then
@@ -27,7 +34,7 @@ if [ -z "${_SLOT:-}" ]; then
   # die meisten mit exit 0 entlassen und der Aufseher haette sie zwei Minuten spaeter erneut
   # gestartet (Zaehler-/Anspruchs-Rauschen). Ein Wartender haelt nichts; die Reihe rueckt
   # nach, sobald ein Platz frei wird; der stuendliche Container-Neustart ist die Obergrenze.
-  exec 21>/tmp/shopify_slot_1.lock
+  exec 21>"/tmp/${_NAME}_1.lock"
   flock 21
 fi
 exec "$@"

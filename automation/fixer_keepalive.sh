@@ -282,7 +282,7 @@ while true; do
     # Prozessende vom Kernel freigegeben. ⚠️ NICHT inline in den bash -c-String schreiben —
     # 10:11–16:20 stand sie dort und startete SECHS STUNDEN keinen Waechter (Quoting-Ebenen,
     # siehe Kopf von shopify_schranke.sh).
-    setsid bash "$REPO/automation/shopify_schranke.sh" python3 /tmp/$p.py >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
+    SCHRANKE_NAME=reiniger_slot SCHRANKE_PLAETZE=1 setsid bash "$REPO/automation/shopify_schranke.sh" python3 /tmp/$p.py >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
     sleep 10
   done
   # Bestell-/Fulfill-Runner (Shell) mitlaufen lassen
