@@ -100,6 +100,7 @@ if os.path.exists(LEDGER) and not OHNE_LEDGER:
 
 buf, wartend, cursor = [], [], None
 prods = seen = fixed = fehler = hauptbild = 0
+abgebrochen = False   # 21.09.: ein Abbruch darf keine Fertig-Zeile mit Nullen hinterlassen
 lf = open(LEDGER, 'a')
 
 def quittieren():
@@ -133,7 +134,7 @@ print(f'Fenster: {query} · {"RUECKWAERTS" if REVERSE else "vorwaerts"} · DRY={
 while prods < LIMIT:
     d = gql(Q, {'c': cursor, 'q': query})
     if not d or not d.get('products'):
-        print('Abbruch: keine Antwort von Shopify.', flush=True); break
+        print('Abbruch: keine Antwort von Shopify.', flush=True); abgebrochen = True; break
     page = d['products']
     for n in page['nodes']:
         if prods >= LIMIT: break
@@ -165,5 +166,12 @@ while prods < LIMIT:
 
 flush()
 lf.close()
+if abgebrochen:
+    # ⚠️ 21.09.2026: Hier stand auch nach «Abbruch: keine Antwort» die Zeile «FENSTER DURCH: 0
+    # Produkte geprüft …» — eine Fertigmeldung mit Nullen, die wie ein leeres Fenster aussieht.
+    # Ein Abbruch ist kein Ergebnis. Sagen, was war.
+    print(f'ABGEBROCHEN (keine Antwort von Shopify) nach {prods} Produkten · {fixed} Alt-Texte gesetzt · '
+          f'Fenster NICHT durch', flush=True)
+    sys.exit(1)
 print(f'FENSTER DURCH: {prods} Produkte geprüft · {seen} hatten Lücken · '
       f'{fixed} Alt-Texte gesetzt · {hauptbild} davon Hauptbilder · {fehler} Fehler', flush=True)

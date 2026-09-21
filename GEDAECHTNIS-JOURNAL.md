@@ -24,7 +24,11 @@ Jetzt: Exit **3** = Abweichung, der Aufseher druckt den Fachbefund nur bei 3, so
 
 `kosten_export_bauen.py` meldete «FERTIG: 17'719'296 Bytes, 58'905 Zeilen» — die Datei war exakt so
 gross, und die **letzte Zeile 16 Bytes**: `{"id":"gid:\/\/s`. Der Download brach ab, der Schreiber
-zählte Zeilen, und der Verbraucher starb seither jede Nacht an einem `JSONDecodeError`. Jetzt: letzte
+zählte Zeilen, und der Verbraucher starb seither jede Nacht an einem `JSONDecodeError`.
+⚠️ **Meine erste Lesart «nur die letzte Zeile fehlt» war um den Faktor 400'000 zu klein:** die beiden
+Exporte davor hatten **141 MB / 482'923 Zeilen**. Die Datei war bei **12 %** abgerissen — 424'000
+Zeilen fehlten, und «FERTIG» stand trotzdem im Log. Wer nur das Ende einer Datei prüft, sieht einen
+sauberen Abriss als kleinen Fehler; erst der Vergleich mit dem Vorlauf zeigt die Grösse. Jetzt: letzte
 Zeile muss JSON sein und die Zeilenzahl zu Shopifys `objectCount` passen, sonst PAUSE + Datei nach
 `.kaputt`. Die korrupte Datei liegt beiseite, der nächste Lauf holt neu.
 
