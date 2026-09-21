@@ -167,6 +167,8 @@ def main():
         for l in open(LEDGER):
             t = l.rstrip("\n").split("\t")
             if len(t) >= 2:
+                if len(t) > 3 and "PRODUKT-WEG" in t[3] and t[2] == "unklar":
+                    continue                     # erste Fassung liess das liegen → jetzt draften
                 try: done[t[0]] = float(t[1])
                 except ValueError: pass
     jetzt = time.time()
@@ -188,9 +190,26 @@ def main():
         if len(vs) < 2:
             fl.write(f"{pid}\t{jetzt:.0f}\tkeine-cj-mehrvarianten\n"); fl.flush(); continue
         live, grund = cj_varianten(vs[0]["sku"])
+        if grund.startswith("PRODUKT-WEG"):
+            # Gemessen 21.09.: 1602002 nennt die pid des einst existierenden Produkts, Garbage-SKUs
+            # geben 1602001 — die Absage ist also eine Aussage ueber DIESES Produkt. Ein Produkt,
+            # das CJ nicht mehr fuehrt und ACTIVE ist, ist ein Ghost-Sale (Klasse #1006/#1008/#1009);
+            # cj_verfuegbarkeit fragt einmal geprueft nie wieder (Ledger anhaengend, datumslos),
+            # deshalb wird hier gedraftet — gleiche Tag- und Ledger-Konvention, damit er nicht
+            # erneut fragt.
+            weg += 1
+            if not DRY:
+                r1 = gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}', {"i": {"id": pid, "status": "DRAFT"}})
+                r2 = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": pid, "t": ["cj-nicht-mehr-verfuegbar"]})
+                e = ((r1.get("data") or {}).get("productUpdate") or {}).get("userErrors") or ((r2.get("data") or {}).get("tagsAdd") or {}).get("userErrors")
+                if e:
+                    print(f"  FEHLER Draft {pid}: {e}", flush=True); unklar += 1
+                    fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tDraft-Fehler {str(e)[:60]}\n"); fl.flush(); continue
+                open("dropship/_cj_verfuegbarkeit.txt", "a").write(f"{pid}\tbei-cj-weg\t{vs[0]['sku']}\tvia-varianten-wache-{time.strftime('%Y-%m-%d')}\n")
+            fl.write(f"{pid}\t{jetzt:.0f}\tprodukt-weg\t{'wuerde-draften' if DRY else 'gedraftet'} ({vs[0]['sku']})\n"); fl.flush()
+            print(f"  {'DRY ' if DRY else ''}⛔ PRODUKT WEG: {p.get('title','')[:45]} [{vs[0]['sku']}] → {'wuerde draften' if DRY else 'DRAFT'}", flush=True); continue
         if grund:
-            if grund.startswith("PRODUKT-WEG"): weg += 1
-            else: unklar += 1
+            unklar += 1
             fl.write(f"{pid}\t{jetzt:.0f}\tunklar\t{grund}\n"); fl.flush()
             print(f"  ❔ {p.get('title','')[:45]} — {grund}", flush=True); continue
         fehlend = [v for v in vs if re.sub(r'^CJ-', '', v["sku"], flags=re.I) not in live]
