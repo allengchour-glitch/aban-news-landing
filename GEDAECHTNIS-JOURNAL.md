@@ -66,6 +66,33 @@ Fortura-Ware (CH-Lager) — dass CJ sie nicht kennt, ist kein Befund, sondern er
 Braucht eine eigene Messung, keine schnelle Regel.
 
 
+**Nachtrag, beide Läufe durch — und beide Urteile vollstreckt.** Das ist der Punkt, an dem die
+Klingen-Lehre vom 16.09. sonst gerissen wäre («ein Urteil, das niemand vollstreckt, ist keine
+Sicherung»):
+
+```
+Medizin-Waechter:  28'754 aktive Produkte geprueft  →  medizinische Zweckbestimmung: 1
+                   ⛔ DRAFT: Hydrokolloid-Verband, zwei Groessen  [wundauflage-warenart]
+```
+
+**Ein Treffer über fast 29'000 Produkte, und es ist der richtige.** Die neue Warenart-Regel hat
+in der Breite keinen einzigen Fehlalarm erzeugt — der Unterschied zum ersten, weiten Wurf
+(40 Treffer, ~85 % Unsinn) liegt allein an der Verengung nach dem Trockenlauf.
+
+Der zweite Fund musste ich **von Hand** vollstrecken: `besuchte_seiten_lieferbar.py` **meldet
+nur, er draftet nicht** (`grep productUpdate|DRAFT|tagsAdd` → 0 Treffer). Seine Zeile
+«selbstklebende-3d-wimpern… ACTIVE — KEINE Versandoption» stand seit gestern 20:19 im Log,
+und das Produkt stand die ganze Zeit im Verkauf. Jetzt DRAFT + Tag `cj-nicht-versendbar-ch`
+(erst `tagsAdd`, dann `productUpdate(status:)` — `productUpdate(tags:)` **ersetzt** die Liste,
+Lehre 18.09.).
+
+⚠️ Beim Suchen fast eine stille Null erzeugt: der Log **kürzt Handles auf 58 Zeichen**, ich las
+den abgeschnittenen als vollständig und bekam «Produkt nicht gefunden» — das hätte sich als
+«gibt es nicht mehr, alles gut» gelesen. Der echte Handle endet auf `-naturlicher-look`, und
+es gibt ein **zweites**, sehr ähnliches Wimpern-Produkt (`-941570`), das lieferbar ist. **Wer
+aus einer gekürzten Anzeige weitersucht, sucht nach etwas, das es nicht gibt.**
+
+
 ## 2026-09-21 · 🩹 Der Wächter fragte nach der Werbung, nicht nach der Ware
 
 «weiter» — also die Lücke, die ich am 19.09. selbst als offen notiert hatte. Unterwegs kam
