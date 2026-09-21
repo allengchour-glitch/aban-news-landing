@@ -184,10 +184,11 @@ def main():
     nk = len(((k.get("data") or {}).get("variants") or []))
     if str(k.get("code")) != "200" or nk < KANARIE[1]:
         print(f"KANARIENVOGEL ROT: {KANARIE[0]} → {k.get('code')} / {nk} Varianten — Abbruch, kein Urteil"); sys.exit(2)
-    done = {}
+    done = {}; weg_pids = set()
     if os.path.exists(LEDGER):
         for l in open(LEDGER):
             t = l.rstrip("\n").split("\t")
+            if len(t) > 2 and t[2] == "produkt-weg": weg_pids.add(t[0])   # schon gedraftet: nicht erneut
             if len(t) >= 2:
                 if len(t) > 2 and (t[2] == "unklar" or (len(t) > 3 and "wuerde-" in t[3])):
                     continue                     # unklar = offen: jeder Lauf fragt neu (wenige Faelle, 2 s je Produkt)
@@ -197,7 +198,7 @@ def main():
     # Fassungswechsel 21.09. 16:10 UTC: Doppel-SKU-Erkennung und roh-oder-Kern-Vergleich sind neu —
     # alles, was davor «ok» war, wurde ohne diese Fragen geprueft und ist wieder faellig.
     FASSUNG_TS = 1790003397
-    frisch = {p for p, ts in done.items() if jetzt - ts < RECHECK_S and ts >= FASSUNG_TS}
+    frisch = {p for p, ts in done.items() if jetzt - ts < RECHECK_S and (ts >= FASSUNG_TS or p in weg_pids)}
     kand = kandidaten(frisch)
     if os.environ.get("NUR_PID"):          # Gegenprobe: ein bekannter Fall muss ein «1» ergeben
         kand = [os.environ["NUR_PID"]]
@@ -211,7 +212,7 @@ def main():
     # Shopify in 50er-Buendeln (nodes(ids:)) statt einer Abfrage je Produkt: 0,5 s → ~0,01 s je Produkt
     for i in range(0, len(arbeit), 50):
         try:
-            d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title variants(first:100){nodes{id sku title inventoryPolicy}}}}}', {"ids": arbeit[i:i+50]})
+            d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status variants(first:100){nodes{id sku title inventoryPolicy}}}}}', {"ids": arbeit[i:i+50]})
         except RuntimeError as e:
             print("ABBRUCH (Shopify):", e); break
         for p in (d.get("data") or {}).get("nodes") or []:
@@ -219,6 +220,8 @@ def main():
     for pid in arbeit:
         n += 1
         p = produkte.get(pid) or {}
+        if p and p.get("status") != "ACTIVE":
+            fl.write(f"{pid}\t{jetzt:.0f}\tnicht-aktiv\t{p.get('status')}\n"); fl.flush(); continue   # Export war aelter als der Draft
         vs = [v for v in ((p.get("variants") or {}).get("nodes") or []) if re.match(r'CJ-?', v.get("sku") or "", re.I)]
         if len(vs) < 2:
             fl.write(f"{pid}\t{jetzt:.0f}\tkeine-cj-mehrvarianten\n"); fl.flush(); continue
