@@ -259,7 +259,13 @@ while true; do
     # grundlos drosseln. Erst wenn das Log COOLDOWN Sekunden alt ist, gibt es einen neuen Lauf.
     if [ -f /tmp/$p.log ]; then
       ALTER=$(( $(date +%s) - $(stat -c %Y /tmp/$p.log 2>/dev/null || echo 0) ))
-      [ "$ALTER" -lt "${COOLDOWN:-1800}" ] && continue
+      # ⚠️ 21.09.2026: 1800 s → 14400 s. Der Container startet ETWA STUENDLICH neu (gemessen
+      # 07:10, 08:09, 09:08, 09:14 je «up 0 min»); mit 30 min Abkuehlzeit begann jeder dieser
+      # Katalog-Scanner (sku_dup_scan sammelt alle 51'000, textbild_fix, farbe_metafeld …)
+      # nach JEDEM Neustart von vorn und kam nie durch — bei 60-100 Punkten je Seite gegen
+      # einen Eimer von 2'000. Es sind Tagesreiniger, keine Bestellwaechter: vier Stunden
+      # Abstand kosten nichts und lassen den Eimer den uebrigen Waechtern.
+      [ "$ALTER" -lt "${COOLDOWN:-14400}" ] && continue
     fi
     # GESTAFFELT STARTEN (11.08.2026): Werden alle dreizehn Reiniger in derselben Schleifen-
     # runde geweckt, scannen sie gemeinsam 29'000 Produkte und leeren Shopifys Abfragebudget
@@ -267,7 +273,14 @@ while true; do
     # nach Bauart, als «keine Daten». Genau so wurde eben eine Auswertung mit «0 Produkte ab
     # CHF 300» beendet, obwohl es Hunderte sind. Zehn Sekunden Abstand kosten nichts und
     # halten das Budget flach. (Dieselbe Lehre wie beim gestaffelten CJ-Runner-Start.)
-    setsid python3 /tmp/$p.py >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
+    # ⚠️ 21.09.2026 — SCHRANKE: hoechstens ZWEI Shopify-Waechter zugleich. Gemessen um 09:44:
+    # drei laufende Reiniger hielten den Eimer bei 15/2000, und ein vierter starb trotz
+    # gerechneter Wartezeit mit «12x gedrosselt (Eimer dauerhaft leer)». Geduld je Waechter
+    # reicht nicht, wenn sich alle gleichzeitig den Nachlauf von 100 Punkten/s teilen — nur
+    # eine Schranke von aussen (zwei flock-Plaetze, die anderen warten bis 15 min) laesst
+    # jeden Lauf durchkommen. Der Platz wird per exec-Deskriptor an python vererbt und beim
+    # Prozessende vom Kernel freigegeben.
+    setsid bash -c "for _s in 1 2; do eval "exec $((6+_s))>/tmp/shopify_slot_${_s}.lock"; flock -n $((6+_s)) && { _SLOT=$_s; break; }; done; [ -n "${_SLOT:-}" ] || { exec 7>/tmp/shopify_slot_1.lock; flock -w 900 7 || exit 0; }; exec python3 /tmp/$p.py" >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
     sleep 10
   done
   # Bestell-/Fulfill-Runner (Shell) mitlaufen lassen
@@ -397,7 +410,7 @@ while true; do
     esac
     date +%s > "/tmp/_start_$L"
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $TXTLOCK $EXP exec python3 automation/$L.py" \
+        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; for _s in 1 2; do eval "exec $((6+_s))>/tmp/shopify_slot_${_s}.lock"; flock -n $((6+_s)) && { _SLOT=$_s; break; }; done; [ -n "${_SLOT:-}" ] || { exec 7>/tmp/shopify_slot_1.lock; flock -w 900 7 || exit 0; }; $TXTLOCK $EXP exec python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
     echo "$(date -u +%H:%M) restart $L"
     sleep 5
