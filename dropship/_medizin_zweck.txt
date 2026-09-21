@@ -11,3 +11,4 @@ gid://shopify/Product/15493861998977	fieberueberwachung	2026-08-11	Baby-Pflegese
 gid://shopify/Product/15497360769409	endoskop-koerperoeffnung	2026-08-13	Kabelloses WiFi Otoskop
 gid://shopify/Product/15493851971969	zahnsteinentfernung	2026-08-11	Elektrisches Zahnpflege-Set gegen Zahnstein
 gid://shopify/Product/15504149217665	vitalmessung-medizinisch	2026-08-19	Blasenfreies Tiermonitor-Manschette
+gid://shopify/Product/15499217961345	wundauflage-warenart	2026-08-14	Hydrokolloid-Verband, zwei Grössen
