@@ -83,6 +83,17 @@ abgeschnitten (Probe: 3 von 6 ok statt 1 von 5). «unklar» trägt jetzt einen G
 has been removed from shelves`) und wandert in ein eigenes Ledger mit Zeit — Wiedervorlage nach 24 h, nicht
 in jedem Lauf. **Eine Null ohne Grund ist keine Messung; ein «unklar» ohne Grund ist eine Endlosschleife.**
 
+**Nachtrag, eine Stunde später — die Klasse ist entschieden, und der Weg dahin war fast ein Fehler:**
+Für `1602003` brauchte es die Nachfrage auf Produktebene. Meine erste Ableitung der `productSku` (Varianten-SKU
+minus zwei Buchstaben) gab für beide Probefälle «Product not found» — hätte ich das geglaubt, wären 15 Produkte
+gedraftet worden. **Der Kanarienvogel fing es:** dieselbe Ableitung gab «not found» auch für `CJLY291603001AZ`,
+das CJ per `variantSku` mit 200 kennt — und dessen Antwort die echte Form verrät: `productSku = 'CJLY2916030'`,
+also Varianten-SKU minus **vier** Zeichen (zwei Ziffern Variantenindex + zwei Buchstaben). Ein «not found» aus
+einer falschen Anfrage beweist nichts — die Lehre vom 09.08., ein drittes Mal. Mit der richtigen Form: **3 von 4
+«Variante weg» sind auf Produktebene `1602002` (Produkt weg → sichere Absage), 1 von 4 lebt mit 32 Varianten**,
+nur die Shop-Variante fehlt. `cj_kennt` fragt jetzt bei `1602003` nach: Produkt weg → draften, Produkt da →
+Klasse «PRODUKT-DA-VARIANTE-WEG» mit Grund im Ledger (Menschenentscheid, nicht draften). Fünf Gegenproben grün.
+
 Bewusst offen: `1602003` heisst «diese Variante ist weg», nicht «das Produkt ist weg». Die erste Variante ist
 aber die, die der Shop verkauft — das ist ein Geisterverkaufs-Risiko eigener Klasse, das ein Mensch
 beurteilen sollte, kein Regex. Die Gründe stehen jetzt im Ledger, damit man sie zählen kann.

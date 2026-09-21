@@ -222,6 +222,29 @@ def cj_kennt(sku):
     # jedes ausgelistete Produkt hier als «unklar» und der Waechter hat in Wochen 0 gedraftet.
     if code == "1602002":
         return False
+    # ⚠️ 21.09.2026: 1602003 «Variant has been removed from shelves» sagt nur, dass DIESE Variante
+    # weg ist. Nachfrage auf PRODUKTEBENE — mit der RICHTIGEN productSku-Form: CJs productSku ist
+    # die Varianten-SKU ohne die letzten VIER Zeichen (2 Ziffern Variantenindex + 2 Buchstaben),
+    # gemessen am Kanarienvogel CJLY291603001AZ → productSku 'CJLY2916030'. Meine erste Ableitung
+    # (nur zwei Buchstaben weg) gab «Product not found» auch fuer Produkte, die CJ sicher hat —
+    # ein «not found» aus einer falschen Anfrage beweist nichts (Lehre 09.08.). Gemessen an 4
+    # Faellen: 3x ist das Produkt weg (1602002 → sichere Absage), 1x lebt es mit 32 Varianten
+    # und nur die Shop-Variante fehlt — eigene Klasse, Menschenentscheid, nicht draften.
+    if code == "1602003" and re.search(r'\d{2}[A-Za-z]{2}$', kern):
+        psku = kern[:-4]
+        p = cj(f"/api2.0/v1/product/query?productSku={psku}")
+        pcode = str((p or {}).get("code"))
+        if pcode == "1602002":
+            _unklar_grund["g"] = f"Variante 1602003, Produkt {psku} 1602002 (weg)"
+            return False
+        pdata = (p or {}).get("data")
+        if pcode == "200" and isinstance(pdata, dict) and pdata.get("variants"):
+            vs = [v.get("variantSku") for v in pdata.get("variants") or []]
+            _unklar_grund["g"] = (f"PRODUKT-DA-VARIANTE-WEG: Produkt {psku} lebt ({len(vs)} Varianten), "
+                                  f"Shop-Variante {kern} fehlt")
+            return None
+        _unklar_grund["g"] = f"Variante 1602003, Produktnachfrage {psku} → Code {pcode}"
+        return None
     txt = (d.get("message") or "").lower()
     if "not exist" in txt or "not found" in txt or "no data" in txt:
         return False
