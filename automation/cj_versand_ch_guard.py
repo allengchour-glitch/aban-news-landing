@@ -96,6 +96,11 @@ def gql(q, v=None):
     raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird. Letzter Grund: " + grund)
 
 
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from cj_takt import takt, frei   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+
+
 def cj(pfad, body=None):
     """Gibt (code, data) zurück. Der Code MUSS ausgewertet werden — siehe Modulkommentar."""
     basis = "https://developers.cjdropshipping.com/api2.0/v1"
@@ -108,12 +113,14 @@ def cj(pfad, body=None):
     # 01.09.: 3 Versuche verlieren gegen 4 Grind-Runner (geteiltes 1-req/s-Limit) zu oft
     # das Rennen — 8 Versuche wie in der Fulfill-Engine (Lehre 22.08.).
     for _ in range(8):
+        takt()                                   # prozessuebergreifend 1 Anfrage/s
         r = subprocess.run(cmd, capture_output=True, text=True)
+        frei()
         try:
             d = json.loads(r.stdout)
             code = int(d.get("code") or 0)
-            if code == 1600200:            # QPS-Drossel: 1 Anfrage/Sekunde
-                time.sleep(3); continue
+            if code == 1600200:            # QPS-Drossel — mit Takt selten
+                time.sleep(1.2); continue
             return code, d.get("data"), str(d.get("message") or "")
         except Exception:
             time.sleep(3)

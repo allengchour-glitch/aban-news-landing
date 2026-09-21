@@ -225,3 +225,18 @@ gid://shopify/Product/15445268726145	1789992988	ok	8 Shop / 8 CJ / 0 fehlend / 0
 gid://shopify/Product/15445269348737	1789992988	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15445270233473	1789992988	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15428300112257	1789994264	ok	2 Shop / 2 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15413025014145	1790001828	produkt-weg	wuerde-draften (CJLY291596601AZ)
+gid://shopify/Product/15445270921601	1790001828	ok	44 Shop / 44 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445272428929	1790001828	ok	2 Shop / 2 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445273379201	1790001828	ok	20 Shop / 20 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445274919297	1790001828	ok	15 Shop / 15 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445275771265	1790001828	ok	2 Shop / 2 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445276197249	1790001828	ok	49 Shop / 49 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445279474049	1790001828	ok	2 Shop / 2 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445282750849	1790001828	unklar	CJ-Code 1602001: Product not found
+gid://shopify/Product/15445283602817	1790001828	unklar	CJ-Code 1602001: Product not found
+gid://shopify/Product/15445285863809	1790001828	unklar	CJ-Code 1602001: Product not found
+gid://shopify/Product/15445300674945	1790001828	ok	3 Shop / 3 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445301428609	1790001828	ok	3 Shop / 3 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445798814081	1790001828	ok	2 Shop / 2 CJ / 0 fehlend / 0 wuerde-DENY
+gid://shopify/Product/15445799240065	1790001828	ok	2 Shop / 2 CJ / 0 fehlend / 0 wuerde-DENY

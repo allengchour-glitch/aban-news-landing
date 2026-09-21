@@ -21,6 +21,8 @@ Ledger: dropship/_cj_varianten_wache.txt (pid, ts, ergebnis) — Wiedervorlage n
 Env: LIMIT (Produkte je Lauf, Std. 300), DRY=1 (nur messen), RECHECK_TAGE (Std. 30).
 """
 import os, sys, re, json, time, fcntl, subprocess
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from cj_takt import takt, frei   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
 
 # ⚠️ Der Aufseher startet die /tmp-KOPIE (`python3 /tmp/cj_varianten_wache.py`); ein aus
 # __file__ abgeleitetes REPO waere dann «/» — gemessen beim ersten Lauf: FileNotFoundError auf
@@ -69,13 +71,15 @@ CJTOK = _cj_token()
 def cj(path):
     a = ["curl", "-s", "--max-time", "40", "-H", "CJ-Access-Token: " + CJTOK,
          "https://developers.cjdropshipping.com" + path]
-    for att in range(3):
+    for att in range(5):
+        takt()                                   # prozessuebergreifend 1 Anfrage/s
         out = subprocess.run(a, capture_output=True, text=True).stdout
+        frei()
         try: d = json.loads(out)
         except Exception:
-            time.sleep(4); continue
+            time.sleep(2); continue
         if str(d.get("code")) in ("1600200", "1600201"):
-            time.sleep(8 * (att + 1)); continue
+            time.sleep(1.2); continue            # mit Takt selten; kurz statt 8/16/24 s
         return d
     return None
 
@@ -179,13 +183,18 @@ def main():
     print(f"Start | Ledger {len(done)} (frisch {len(frisch)}) | Kandidaten {len(kand)} | LIMIT {LIMIT} | DRY={DRY}", flush=True)
     fl = open(LEDGER, "a")
     n = deny = unklar = weg = 0
-    for pid in kand[:LIMIT]:
-        n += 1
+    arbeit = kand[:LIMIT]; produkte = {}
+    # Shopify in 50er-Buendeln (nodes(ids:)) statt einer Abfrage je Produkt: 0,5 s → ~0,01 s je Produkt
+    for i in range(0, len(arbeit), 50):
         try:
-            d = gql('query($id:ID!){product(id:$id){title variants(first:100){nodes{id sku title inventoryPolicy}}}}', {"id": pid})
+            d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title variants(first:100){nodes{id sku title inventoryPolicy}}}}}', {"ids": arbeit[i:i+50]})
         except RuntimeError as e:
-            print("ABBRUCH:", e); break
-        p = (d.get("data") or {}).get("product") or {}
+            print("ABBRUCH (Shopify):", e); break
+        for p in (d.get("data") or {}).get("nodes") or []:
+            if p and p.get("id"): produkte[p["id"]] = p
+    for pid in arbeit:
+        n += 1
+        p = produkte.get(pid) or {}
         vs = [v for v in ((p.get("variants") or {}).get("nodes") or []) if re.match(r'CJ-?', v.get("sku") or "", re.I)]
         if len(vs) < 2:
             fl.write(f"{pid}\t{jetzt:.0f}\tkeine-cj-mehrvarianten\n"); fl.flush(); continue

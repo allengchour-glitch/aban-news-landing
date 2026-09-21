@@ -116,6 +116,7 @@ function pidMerken(sku, pid) {
   try { fs.writeFileSync(PID_CACHE, JSON.stringify(pidCache, null, 0)); } catch {}
 }
 
+import { takt as cjTakt, frei as cjFrei } from './cj_takt.mjs';   // EIN Takt fuer alle CJ-Verbraucher (21.09.)
 async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
   let j = {};
@@ -124,8 +125,10 @@ async function cjGet(tok, path, params) {
   // Ohne Warten galt jede gedrosselte Antwort als «keine pid» (Geschwister der
   // Fulfill-Engine-Lehre vom 22.08.). Aussitzen, nicht aufgeben.
   for (let v = 0; v < 8; v++) {
+    await cjTakt();                                   // prozessuebergreifend 1 Anfrage/s
     const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
     j = await r.json().catch(() => ({}));
+    await cjFrei();
     if (j?.code !== 1600200 && !/Too Many Requests/i.test(j?.message || '')) break;
     await new Promise(res => setTimeout(res, 1500 + v * 500));
   }

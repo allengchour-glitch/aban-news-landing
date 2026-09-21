@@ -16,7 +16,7 @@ Fortschritt steht im LEDGER dropship/_cj_verfuegbarkeit.txt (kein Cursor auf Pla
 siehe main(): ein Cursor hat den Waechter vom 16.-19.09. blind gemacht).
 DRY=1 meldet nur.
 """
-import json, subprocess, time, os, re, fcntl
+import json, subprocess, time, os, re, fcntl, sys
 
 
 def _nur_einmal():
@@ -87,22 +87,28 @@ PAUSE = float(os.environ.get("PAUSE", "1.2"))
 _punkte = {"rest": None}
 
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from cj_takt import takt, frei   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+
+
 def cj(path, body=None):
     a = ["curl", "-s", "--max-time", "40", "-H", "CJ-Access-Token: " + CJTOK]
     if body is not None:
         a += ["-X", "POST", "-H", "Content-Type: application/json", "-d", json.dumps(body)]
     a.append("https://developers.cjdropshipping.com" + path)
-    for att in range(3):
+    for att in range(5):
+        takt()                                   # prozessuebergreifend 1 Anfrage/s
         out = subprocess.run(a, capture_output=True, text=True).stdout
+        frei()
         try:
             d = json.loads(out)
         except Exception:
-            time.sleep(4); continue
+            time.sleep(2); continue
         pi = d.get("pointsInfo") or {}
         if pi.get("remaining") is not None:
             _punkte["rest"] = pi["remaining"]
-        if str(d.get("code")) in ("1600200", "1600201"):   # Drossel
-            time.sleep(8 * (att + 1)); continue
+        if str(d.get("code")) in ("1600200", "1600201"):   # Drossel — mit Takt selten
+            time.sleep(1.2); continue
         return d
     return None
 
