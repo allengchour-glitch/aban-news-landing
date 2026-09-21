@@ -168,6 +168,20 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **📊 BILANZ DER VIER BLÖCKE: 131 Schutzprodukte gemessen, 23 Verlustfälle, 68 unter dem Ziel,
   59 in Ordnung → 65 Produkte / 262 Varianten live geändert**, jedes einzelne an der Kundenseite
   nachgemessen (22/22 · 10/10 · 19/19 · 14/14, null Abweichungen).
+- **🔎 FÜNFTER BLOCK — die Sternchen-Lehre findet eine GANZ NEUE KLASSE: 101 Schutzausrüstungs-
+  Produkte jenseits der Helme**, nie angesehen. Mit Wortanfängen einzeln gesucht statt Sammelbegriff:
+  **Arbeitsschutz 71** (Sicherheits-/Arbeitsschuhe, Schutzhandschuhe, Warnwesten) · Kindersitze 11 ·
+  Protektoren/Knieschoner 7 · Atemschutz 5 · Schutzbrillen 4 · Klettergurte 2 · Gehörschutz 1.
+  Gegenprobe `title:zzzgibtesnichtwort*` → 0.
+- **✅ GEÄNDERT (live): 10 Produkte / 10 Varianten**, 10/10 nachgemessen. Von 12 mit bekanntem EK waren
+  **11 unter dem Ziel, 4 im Verlust**: Sofa-Schonertuch 31.90/44.17 (**−53,8 %**) · **Halbgesichts-
+  Atemschutzmaske PRO 24.90 bei EK 24.90** (−11,1 %) → 44.90 · Nackenkissen Kindersitz 27.90/26.71 →
+  49.90 · Atemschutzmaske 16in1 28.90→49.90 · vier Knieschoner 5–20 % → 24.90–49.90 · Sofa-Schoner
+  3er 16.90→24.90.
+- **⛔ VIERTER FAKTOR-ÜBER-3-FALL, und der schlimmste der Sitzung: Atemschutzmasken-Set mit Filtern,
+  CHF 16.90 bei EK 49.32 = −224,3 %.** Faktor 5,3 → gemeldet, nicht gesetzt. Es ist **Atemschutz**
+  und damit ein Importfehler, über den ein Mensch entscheidet.
+- **⚠️ DIE 71 ARBEITSSCHUTZ-PRODUKTE SIND NOCH NICHT GEMESSEN** — grösster offener Einzelblock.
 - **📦 ALTER POSTEN GESCHLOSSEN: die BigBuy-Klasse ist AUS DEM VERKAUF, „279 aktiv" ist veraltet.**
   Drei unabhängige Wege, jeder mit Gegenprobe: `sku:bb-* AND status:active` → **0**
   (`sku:CJ-*` → Treffer, `sku:zzzgibtesnicht-*` → leer) · `tag:bigbuy AND status:active` → **0**

@@ -28,6 +28,7 @@ python3 tools/vault.py bauen               # diese Datei neu bauen, Links pruefe
 
 ## 🕳️ Fallen — teuer gelernt, gelten weiter
 
+- [[101-Schutzausruestungs-Produkte-jenseits-der-Helme]] — GEMESSEN 2026-09-20 mit der korrigierten Suchmethode (Wortanfaenge einzeln statt Sammelbeg…
 - [[Actions-Sperre-gilt-nicht-mehr-fuer-push-und-pull-request]] — Das Gedaechtnis sagt seit 2026-06-13 in Grossbuchstaben: „GITHUB ACTIONS IST ACCOUNT-WEIT
 - [[Auch-das-Pruefgeraet-braucht-eine-Gegenprobe]] — GEMESSEN 2026-09-20: die Kundensicht-Pruefung meldete 22 von 22 Produkten als abweichend. …
 - [[Background-image-Falle]] — Einen Verlauf in background-image durch eine Farbe zu ersetzen erzeugt eine ungültige

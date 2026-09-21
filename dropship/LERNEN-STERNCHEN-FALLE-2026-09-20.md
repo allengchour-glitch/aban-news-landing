@@ -350,6 +350,52 @@ Ziel.** Die Streuung zwischen den Blöcken (1 von 33 gegen 8 von 22) bleibt der 
 
 ---
 
+## Fünfter Block: die Sternchen-Lehre findet eine ganz neue Klasse
+
+Die korrigierte Suchmethode auf Schutzausrüstung jenseits der Helme angewandt — Wortanfänge
+einzeln statt eines Sammelbegriffs:
+
+| Klasse | aktive Produkte |
+|---|---|
+| Arbeitsschutz (Sicherheits-/Arbeitsschuhe, Schutzhandschuhe, Warnwesten) | **71** |
+| Kindersitze / Babyschalen / Sitzerhöhungen | 11 |
+| Protektoren, Knie- und Ellbogenschoner | 7 |
+| Atemschutz, Staub- und Atemmasken | 5 |
+| Schutz- und Sicherheitsbrillen | 4 |
+| Klettergurte, Auffanggurte | 2 |
+| Gehörschutz | 1 |
+| **Summe** | **101** |
+
+**101 Produkte derselben Familie, die nie jemand angesehen hat.** Gegenprobe
+(`title:zzzgibtesnichtwort*`) → 0.
+
+### ✅ Geändert (live) — 10 Produkte / 10 Varianten
+
+Von 12 mit bekanntem Einkaufspreis waren **11 unter dem Ziel und 4 im Verlust**:
+
+| Produkt | vorher | nachher | EK | Marge vorher |
+|---|---|---|---|---|
+| Nordisches Sofa-Schonertuch | 31.90 | **79.90** | 44.17 | **−53,8 %** |
+| **Halbgesichts-Atemschutzmaske PRO** | 24.90 | **44.90** | 24.90 | **−11,1 %** |
+| Nackenkissen für Kindersitz | 27.90 | **49.90** | 26.71 | **−6,4 %** |
+| **Atemschutzmaske 16in1 mit Filter** | 28.90 | **49.90** | 25.51 | 1,9 % |
+| Knieschoner harte Schale (Arbeit) | 29.90 | **49.90** | 25.50 | 5,2 % |
+| Knieschoner zur Patella-Fixation | 23.90 | **39.90** | 20.36 | 5,3 % |
+| Sport-Knieschoner rutschfest | 20.90 | **34.90** | 17.70 | 5,9 % |
+| Knieschoner für Sport und Fitness | 22.90 | **34.90** | 19.34 | 6,2 % |
+| Knieschoner Sport-Stützbandage | 17.90 | **24.90** | 12.93 | 19,7 % |
+| Sofa-Schoner 3er-Set | 16.90 | **24.90** | 11.89 | 21,8 % |
+
+**Alle zehn nachgemessen: 10 von 10 bestätigt.**
+
+### ⛔ Der schlimmste Einzelfall der ganzen Sitzung — gemeldet, nicht gesetzt
+
+**Atemschutzmasken-Set mit Filtern: CHF 16.90 bei Einkauf 49.32 — −224,3 % nach dem Gutschein.**
+Faktor 5,3, also über dem Deckel: das ist kein Preisfehler, sondern ein Importfehler, und es ist
+**Atemschutz**. Gehört einem Menschen, nicht einer Regel.
+
+---
+
 ## 📦 Nebenbefund, der einen alten Posten schliesst: die BigBuy-Klasse ist aus dem Verkauf
 
 Das Gedächtnis führt seit dem 12.09. als grössten offenen Punkt: *„279 aktive BigBuy-Produkte,
