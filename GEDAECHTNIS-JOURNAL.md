@@ -35,6 +35,18 @@ Quoting-Ebenen); beide Startstellen rufen die Datei. Einbau-Probe am ECHTEN Lauf
 Aufsehers seit dem letzten Tick (Lesezeichen = Zeilenzahl) und meldet sie laut; 4 Gegenproben (Altbestand
 einmal, dann still, Köder gefangen, Rotation erkannt).
 
+**Nachtrag 16:50 — drei Dinge, die erst der Einbau zeigte:** (1) Platz 2 lag auf Deskriptor **8**, und die vier
+Produkttext-Werkzeuge halten ihr gemeinsames Schloss (TXTLOCK) genau dort — `exec 8>` im Helfer hätte es still
+ersetzt = freigegeben. Jetzt 21/22; Gegenprobe: fd 8 zeigt nach dem Helfer weiter auf das Text-Schloss. (2) Der
+15-Minuten-Timeout hätte 25 Wartende mit `exit 0` entlassen und der Aufseher hätte sie zwei Minuten später neu
+gestartet — Warten ohne Frist, der stündliche Neustart ist die Obergrenze. (3) **Eine Reihe war die falsche
+Form:** zwei Katalog-Scanner (20–40 min) hielten beide Plätze, 25 leichte Tages-Wächter standen dahinter und
+wären bei stündlichem Neustart nie drangekommen → **zwei Reihen**: Reiniger EIN Platz (`reiniger_slot`), Tages-
+Wächter zwei; höchstens drei Prozesse am Eimer, davon ein schwerer. Probe: R seriell, T zu zweit, unabhängig.
+Und ein eigener Fehlalarm dazwischen: «die Wartenden sind verschwunden» — mein `awk '$3 ~ /schranke/'` las das
+falsche Feld (`$3` ist `bash`, der Pfad steht in `$4`). 25 Prozesse standen da. **Prozessprüfung gegen die
+echte Kommandozeile schreiben** (Lehre 20.08.), auch wenn sie nur für eine Antwort im Chat gilt.
+
 **Regeln:** ein Einbau wird am echten Aufruf geprüft (nach «restart X» muss ein Prozess mit diesem Namen
 da sein — `ps`, nicht das Log). Wer «erst claimen» baut, muss den Anspruch bei gescheitertem Start
 zurücknehmen oder den Start beweisen. Und: **Nebenfund** — Semrush meldet `API UNITS BALANCE IS ZERO`
