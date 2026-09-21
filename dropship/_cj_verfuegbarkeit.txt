@@ -49081,3 +49081,14 @@ gid://shopify/Product/15450836664705	bei-cj-weg	CJ-CJSN1676231-Human body induct
 gid://shopify/Product/15450839777665	bei-cj-weg	CJ-CJSY1589450-Short pink-One Size
 gid://shopify/Product/15450858389889	bei-cj-weg	CJ-CJDD1672430-Black and gray camo-S
 gid://shopify/Product/15450858520961	bei-cj-weg	CJ-CJDK1733856-Electric Blue-S
+gid://shopify/Product/15493619810689	ok
+gid://shopify/Product/15493800362369	ok
+gid://shopify/Product/15493807210881	ok
+gid://shopify/Product/15493809766785	ok
+gid://shopify/Product/15493909643649	ok
+gid://shopify/Product/15493918589313	ok
+gid://shopify/Product/15494578241921	ok
+gid://shopify/Product/15494602359169	ok
+gid://shopify/Product/15495087554945	ok
+gid://shopify/Product/15495088046465	ok
+gid://shopify/Product/15495216660865	ok

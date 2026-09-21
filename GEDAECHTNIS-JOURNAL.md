@@ -6,6 +6,23 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🧭 Drei tote Landeseiten und ein Kollektionstext — «Mensch entscheidet», also entschieden
+
+`TOTE-LANDESEITEN.md` (täglich): drei Seiten mit Besuchern (9 / 5 / 2 Sitzungen), nicht mehr kaufbar,
+ohne Weiterleitung, «ohne eindeutigen Ersatz». `KOLLEKTIONSTEXTE-WAHRHEIT.md`: «Wasserfester Schmuck»
+bewirbt vier Namen («Amore», «Cœur», «Goutte», «Trésor»), deren Produkte alle DRAFT sind. **Gemessen:
+alle drei Seiten tragen `cj-nicht-mehr-verfuegbar`** — der CJ-Wächter hat sie gedraftet, zurückholen
+geht nicht. Also Weiterleitung auf die Kategorie: Sandalen → `sub-sandalen`, Diffusor → `sub-aroma-diffuser`,
+Armband «Amore» → `wasserfester-schmuck`; der Kollektionstext nennt jetzt Warengruppen statt toter Namen.
+Jede Schreibung zurückgelesen (15.09.: «Erfolg» ohne Wirkung).
+
+**Zwei Messfallen dabei:** (1) `publishedOnCurrentPublication` kennt diese Custom-App nicht («no
+publication») und **kippt die ganze Antwort** — meine Kollektionssuche gab «0» für alles, auch für einen
+bekannten Handle. Erst ohne das Feld kam der Katalog. (2) Das naheliegende Ziel `schuhe-sandalen`
+(«Sandalen & Espadrilles», 1'611 Produkte) ist **nicht veröffentlicht** — eine Weiterleitung dorthin wäre
+ein 404 gewesen (Klasse Menülinks 15.09.). Geprüft mit `published_status:published` und einem Köder-Handle,
+der False liefert; `sub-sandalen` (1'604) ist veröffentlicht.
+
 ## 2026-09-21 · 🚧 Geduld reicht nicht, wenn alle gleichzeitig warten — die Schranke
 
 Nach den Geduld-Patches die Gegenprobe am echten Fall: die vier heute früh gestorbenen Reiniger
