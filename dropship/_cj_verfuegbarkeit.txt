@@ -49044,3 +49044,11 @@ gid://shopify/Product/15508420166017	ok
 gid://shopify/Product/15508420133249	ok
 gid://shopify/Product/15508420100481	ok
 gid://shopify/Product/15508420067713	ok
+gid://shopify/Product/15508418036097	bei-cj-weg	CJ-1380064147152179200
+gid://shopify/Product/15508417479041	bei-cj-weg	CJ-1383973286001643520
+gid://shopify/Product/15508417446273	bei-cj-weg	CJ-C9DAADA8-49DB-4D97-AC75-2C973FB3B505
+gid://shopify/Product/15508417413505	ok
+gid://shopify/Product/15508417380737	bei-cj-weg	CJ-1732246928873758720
+gid://shopify/Product/15508417347969	ok
+gid://shopify/Product/15508417315201	ok
+gid://shopify/Product/15508412367233	ok

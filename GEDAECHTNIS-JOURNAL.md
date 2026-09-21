@@ -6,6 +6,96 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🫀 Ein Herzschlag, der sich als Arbeit ausgab — 273 von 274 Commits
+
+«email sachen machen». Der Posteingang war in drei Tagen genau **ein** Vorgang; der Befund
+kam aus dem, was daneben lag.
+
+### Die Post selbst: ein endgültiges Nein, und es ist ein wertvolles
+
+Gmail hat die Nachricht vom **16.09. 21:26 UTC** nach 72 Stunden Zustellversuchen am
+**19.09. 21:44 UTC hart abgewiesen**: `support@cjdropshipping.com`, Status **4.4.1**, vier
+Cloudflare-Adressen «timed out». Damit ist die Lehre vom 19.09. («ein Schweigen kann heissen,
+dass die Frage nie angekommen ist») kein Verdacht mehr, sondern Befund: **der Mailweg zu CJ
+ist tot.**
+
+Praktisch folgenlos — dieselbe Forderung ging am 17.09. durch, CJ hat am 18.09. 08:44
+zugesagt. Wichtig ist die Folge für den **nächsten** Schritt: der naheliegende Gedanke bei
+einer offenen Forderung ist «dann schreibe ich nochmal». Der geht ins Leere, und man merkt es
+erst 25 Stunden später. Die Ampelzeile sagt das jetzt ausdrücklich.
+
+Gemessen dazu (GET, nicht POST — Lehre 19.09.): CJ-Wallet `amount 0.0`,
+`disputes/getDisputeList` **total 0**. Die Reklamation ist **nicht** eröffnet, das Geld steht aus.
+
+### Die Ampel fragt jetzt CJ, statt einer Quittung zu glauben
+
+`cj_dispute_1017()` hing allein an einer Datei, die ein Mensch schreiben muss. Jetzt fragt sie
+CJ selbst (`cj_dispute_stand()`, GET, 15 s, ein Versuch) — dieselbe Umstellung wie bei
+`liechtenstein_gesperrt()` am 19.09. Sobald dort eine Reklamation liegt, verschwindet die
+Zeile von selbst.
+
+**Bewusst kein stilles `return None` bei einem Messfehler.** Hier geht es um ausstehendes
+Geld; eine Wache, die bei totem Token schweigt, liest sich wie «erledigt». Die Zeile bleibt
+stehen und sagt dazu, dass sie den Stand nicht kennt. Fünf Gegenproben in beide Richtungen
+grün (total 0 → Zeile ohne Zusatz · total 1 → Zeile weg · Token kaputt → Zeile **mit**
+«nicht messbar» · Quittung gesetzt → weg · Quittung wieder weg → wieder da).
+
+### Der eigentliche Fund: eine Regel, die eine Schicht höher aufgehoben wird
+
+Beim Nachsehen, warum der Storefront-Lauf vom 20.09. hängt, fiel die Commit-Historie auf.
+**Gemessen über 24 Stunden: 274 Commits von `luxe-agent`, davon 273 mit genau einer
+geänderten Datei — `auftraege/_puls.json`. 248 davon unter der Meldung «Auftrag erledigt
+(Hetzner-Agent)». Aufträge liefen in diesen 24 Stunden: einer.**
+
+Die Stundenbremse im Runner war nie kaputt. Sie steht im Kommentar sogar wörtlich — «alle 5
+Minuten ein Commit wären 288 am Tag, und ein Signal, das im Lärm steht, liest niemand» — und
+hat ihre 24 sauberen «Bot-Puls»-Commits erzeugt. Ausgehebelt hat sie der **Starter**
+`/usr/local/bin/luxe-auftrag`: der committet und pusht alles, was unter `auftraege/` schmutzig
+ist. Der Puls war nach jedem Lauf schmutzig, weil er lokal immer geschrieben wurde.
+
+**Eine Regel, die an EINER Stelle durchgesetzt wird, hebt die nächste Schicht auf, die nichts
+von ihr weiss.** Wortgleich der Social-Stopp, der nur auf einem Zweig lag (17.09.) — und die
+Kosten sind hier dieselben wie dort: die Historie behauptete 248 Mal Arbeit, die es nicht gab.
+Wer morgen `git log` liest, um zu sehen, was der Agent tut, liest Rauschen.
+
+Repariert **im Runner**, nicht im Setup-Skript: der Runner wird bei jedem Lauf frisch aus dem
+Repo geholt, das Setup läuft nur, wenn jemand es ausführt. Die Repo-Fassung von `_puls.json`
+wird nur noch angefasst, wenn sie auch gepusht wird; dazwischen hält
+`/tmp/luxe_puls_lokal.json` den Stand — **ausserhalb von `auftraege/`, wo der Starter nicht
+hinsieht**. Scheitert der Push, wird die Repo-Datei zurückgesetzt, sonst bliebe genau die
+Lücke offen, die der Umbau schliesst.
+
+Gegenprobe `server/puls_kadenz.test.mjs`, 5 Fälle grün. Sie prüft den **echten** Quelltext
+(herausgeschnitten, nicht nachgebaut) und meldet **rot**, wenn sie den Block nicht findet —
+ein Test, der seinen Prüfling nicht findet, darf nicht grün melden. Der entscheidende Fall ist
+der Anlassfall: elf Läufe binnen einer Stunde müssen **null** git-Aufrufe auslösen.
+
+⚠️ **Und der Test mass zuerst sich selbst.** Vier Proben meldeten rot, obwohl der geprüfte
+Code stimmte: die Attrappe las den git-Unterbefehl an fester Stelle (`indexOf('-C') + 2`) und
+bekam beim Commit «-c», weil dort `-c user.name=…` davorsteht. Hätte ich der roten Meldung
+geglaubt, hätte ich funktionierenden Code «repariert».
+
+### Zwei Abbrüche in drei Tagen — messbar gemacht statt erklärt
+
+Der Storefront-Lauf vom 20.09. blieb auf «laufend» (der 19.09. ebenso). Die naheliegende
+Erklärung: `luxe-agent.service` ist `Type=oneshot` mit `TimeoutStartSec=900`, und der Auftrag
+macht seit meiner Änderung vom 20.09. **neun** Seitenabrufe statt drei. Das ist eine
+**Vermutung**, und es gab nichts, woran sie zu prüfen wäre — der Lauf vom 21.09. 00:09 schaffte
+es ja (5/5 · 2/2 · 2/2, kein Befund). Also keine Zahl geraten, sondern die Messung nachgerüstet:
+jede Quittung trägt ab jetzt `begonnen`/`dauer_s`. Die Quittung vom 20.09. ist als
+`abgebrochen-nachgetragen` geschlossen, **nicht** als «ok» — es fehlt keine Erkenntnis, aber
+eine Quittung über ungesehene Arbeit wäre eine Lüge.
+
+### Beinahe-Fehlbefund, zum dritten Mal derselbe Prozess
+
+`ps ... | awk '$1=="bash" && $2 ~ /fixer_keepalive\.sh$/'` zeigte **drei** Aufseher, während
+der Keepalive «Aufseher=1» meldete. Fast hätte ich Doppelstarts gemeldet und abgeräumt. Mit
+der **Sitzungs-Spalte** gemessen: PID 513 ist Sitzungsführer (`pid == sid`), 3176 und 3295
+tragen dieselbe SID — es sind **Forks des einen**, die die Kommandozeile des Elternprozesses
+erben. Genau die Falle, die seit dem 27.08. in `engine_keepalive.sh` dokumentiert ist und
+deretwegen der Zähler dort `$1==$2` prüft. Der Keepalive hatte recht, mein Handgriff war der
+falsche. **Wer einen Prozess zählt, muss dieselbe Frage stellen wie der, der ihn tötet.**
+
 ## 2026-09-21 · 🪣 Acht Wächter, ein Eimer — die Drossel war hausgemacht
 
 «alles machen bin ned zuhause». Also die Befunde abarbeiten, die die Wächter melden und
