@@ -64,7 +64,7 @@ def gql(q, v=None):
     p = "/tmp/_row.json"
     with open(p, "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
-    for _ in range(8):
+    for _ in range(16):             # 21.09.: 8 → 16 — nach jedem Stunden-Neustart teilen sich ~25 Waechter den Eimer
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,

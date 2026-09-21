@@ -174,6 +174,13 @@ Code stimmte: die Attrappe las den git-Unterbefehl an fester Stelle (`indexOf('-
 bekam beim Commit «-c», weil dort `-c user.name=…` davorsteht. Hätte ich der roten Meldung
 geglaubt, hätte ich funktionierenden Code «repariert».
 
+### Nachmessung 09:40 UTC: der Puls-Fix wirkt
+
+`git log --author=luxe-agent` nach Zeitfenster: **07:00–07:35** noch 3× «Auftrag erledigt» + 1× «Bot-Puls»
+(alte Fassung); **07:35–09:40** nur noch 2× «Bot-Puls» (08:17, 09:14) und **0×** «Auftrag erledigt».
+Die Stundenbremse hält, die Historie sagt wieder, was war. Der Runner wird bei jedem Lauf frisch aus dem
+Repo geholt — deshalb griff der Fix ohne Betreiber-Klick.
+
 ### Zwei Abbrüche in drei Tagen — messbar gemacht statt erklärt
 
 Der Storefront-Lauf vom 20.09. blieb auf «laufend» (der 19.09. ebenso). Die naheliegende
