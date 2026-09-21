@@ -49178,3 +49178,4 @@ gid://shopify/Product/15448078713217	bei-cj-weg	CJ-CJQB296676201AZ
 gid://shopify/Product/15448110629249	bei-cj-weg	CJ-CJYD275281501AZ
 gid://shopify/Product/15448111055233	bei-cj-weg	CJ-CJYD271551501AZ
 gid://shopify/Product/15448526717313	bei-cj-weg	CJ-CJYD243897902BY
+gid://shopify/Product/15448547393921	bei-cj-weg	CJ-CJYD292526502BY
