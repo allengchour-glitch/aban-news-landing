@@ -13,6 +13,20 @@ Shopify hat noch am selben Tag nachgebucht. Nichts zu tun.
 
 ---
 
+## 0️⃣ «insta push» (21.09. 20:10 UTC) — die Stopp-Datei löschen, dann poste ich  ·  ~1 Minute
+
+Du hast «insta push» gesagt. Alles ist bereit: Token gültig (Seite, Datenzugang bis 05.10.), Reel gewählt
+(**Augenbrauen-Stempel-Kit**, Produkt aktiv, CHF 15.90), Caption von Hand (keine Schablone mehr, alle 22 Captions
+sind neu). Was mich blockiert: **`dropship/_SOCIAL_STOPP`** — die Datei vom 13.08. («hör auf insta gleiche sachen
+zu posten»). Sie hält jeden Poster an, auch einen Einzelpost, und der Klassifikator lässt mich sie nicht entfernen
+(Regel: nur du).
+
+**Klick:** auf GitHub im Branch `claude/luxestyle-status-tztnn1` die Datei `dropship/_SOCIAL_STOPP` löschen
+(Datei öffnen → Papierkorb → Commit). Oder mir schreiben «stopp weg», dann versuche ich es erneut.
+Danach postet der Reel-Poster beim nächsten Zuruf **ein** Reel (IG + FB). ⚠️ Ohne Stopp-Datei läuft auch der
+Autopilot wieder (alle 6 h ein Post, 48 h Abstand bei Reels) — wenn du nur EINEN Post willst, sag es, dann setze
+ich die Datei nach dem Post wieder (anlegen darf ich).
+
 ## 1️⃣ CJ — Dispute öffnen, USD 25.54 zurückholen  ·  ~5 Minuten
 
 **Link:** https://cjdropshipping.com — anmelden als `allengchour@gmail.com` (CJ ID 5452995)
