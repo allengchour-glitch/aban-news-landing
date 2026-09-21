@@ -74,7 +74,8 @@ def gql(q, v=None):
     with open("/tmp/_or.json", "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
     grund = "kein Versuch ausgefuehrt"
-    for _ in range(4):
+    drossel = 0; versuche = 0       # Drosselungen zaehlen nicht als Fehlversuch
+    while versuche < 4:
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
@@ -93,11 +94,33 @@ def gql(q, v=None):
             # fuellt sich mit restoreRate pro Sekunde, eine teure Abfrage braucht
             # laenger als der feste Kurzschlaf.
             if "THROTTLED" in grund.upper():
-                time.sleep(12)
-                continue
+                # ⚠️ 21.09.2026: der feste 12-s-Schlaf reichte nicht. Nach JEDEM stuendlichen
+                # Container-Neustart startet der Aufseher ~25 Waechter auf EINEN 2000-Punkte-
+                # Eimer (100/s Nachlauf); wer hier nach 4 Versuchen aufgab, schrieb einen
+                # Traceback ins Log und wartete auf den naechsten Aufseher-Zyklus — 30 min fuer
+                # die 13 Reiniger, 24 h fuer die Tageswaechter (Start nach Log-ALTER). Gemessen
+                # 09:08-Runde: 4 von 21 Waechtern so gestorben. Shopify sagt
+                # in throttleStatus, wie lange es dauert — fragen statt raten (menue_links, frueh).
+                drossel += 1
+                wartezeit = 12.0
+                try:
+                    _k = (d.get("extensions") or {}).get("cost") or {}
+                    _t = _k.get("throttleStatus") or {}
+                    _fehlt = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                    _rate = float(_t.get("restoreRate") or 0)
+                    if _fehlt > 0 and _rate > 0:
+                        wartezeit = min(30.0, _fehlt / _rate + 0.5)
+                except Exception:
+                    pass
+                time.sleep(wartezeit)
+                if drossel < 12:
+                    continue
+                grund = "12x gedrosselt (Eimer dauerhaft leer): " + grund
+                break
         except Exception as e:
             roh = (r.stdout or "")[:200]
             grund = "Antwort unlesbar (" + type(e).__name__ + "): " + roh
+        versuche += 1
         time.sleep(3)
     # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
     # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation

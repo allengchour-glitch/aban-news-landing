@@ -47,17 +47,29 @@ def gql(q, v=None):
     # der Aufrufer lief dann in `r['data']['products']` und starb an einem KeyError, der
     # nichts ueber die Ursache sagte (gemessen im Log: KeyError 'data'). Gedrosselte
     # Antworten sind ausserdem wiederholbar, nicht toedlich.
-    for i in range(6):
+    for i in range(16):              # 21.09.: Drosseln brauchen Geduld, nicht 6 Runden
         try:
             d = json.load(urllib.request.urlopen(req, timeout=45))
         except Exception:
-            if i == 5: raise
+            if i == 15: raise
             time.sleep(2 ** i); continue
         if d.get('data'):
             return d
         fehler = json.dumps(d.get('errors') or d, ensure_ascii=False)
         if 'THROTTLED' in fehler:
-            time.sleep(3 + 2 * i); continue
+            # ⚠️ 21.09.2026: Shopify sagt in throttleStatus, wie lange der Eimer braucht —
+            # fragen statt raten. Nach jedem stuendlichen Neustart teilen sich ~25 Waechter
+            # EINEN 2000-Punkte-Eimer; ein fester Kurzschlaf reichte messbar nicht.
+            _w = 3 + 2 * i
+            try:
+                _k = (d.get('extensions') or {}).get('cost') or {}
+                _t = _k.get('throttleStatus') or {}
+                _f = float(_k.get('requestedQueryCost') or 0) - float(_t.get('currentlyAvailable') or 0)
+                _r = float(_t.get('restoreRate') or 0)
+                if _f > 0 and _r > 0: _w = min(30.0, _f / _r + 0.5)
+            except Exception:
+                pass
+            time.sleep(_w); continue
         # Kein `data` und keine Drosselung: die Abfrage selbst ist falsch oder die Anmeldung
         # fehlt. Laut abbrechen — ein leeres Ergebnis wuerde als «nichts gefunden» quittiert.
         raise RuntimeError('Shopify-Antwort ohne data: ' + fehler[:300])

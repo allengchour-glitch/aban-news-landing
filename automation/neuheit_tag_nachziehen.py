@@ -21,22 +21,37 @@ def gql(q, v=None):
     req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
         data=json.dumps({"query": q, "variables": v or {}}).encode(),
         headers={"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"})
-    for i in range(6):
+    grund = "kein Versuch ausgefuehrt"
+    for i in range(16):              # 21.09.: Drosseln brauchen Geduld, nicht 6 Runden
         try:
             d = json.load(urllib.request.urlopen(req, timeout=45))
             if "data" in d and d["data"]:
                 return d
-            if "THROTTLED" in json.dumps(d.get("errors") or ""):
-                time.sleep(3); continue
-        except Exception:
-            pass
-        time.sleep(2 ** i)
+            grund = json.dumps(d.get("errors") or d, ensure_ascii=False)[:300]
+            if "THROTTLED" in grund:
+                # ⚠️ 21.09.2026: Shopify sagt in throttleStatus, wie lange der Eimer braucht —
+                # fragen statt raten. Nach jedem stuendlichen Neustart teilen sich ~25 Waechter
+                # EINEN 2000-Punkte-Eimer; ein fester 3-s-Schlaf reichte messbar nicht.
+                _w = 12.0
+                try:
+                    _k = (d.get("extensions") or {}).get("cost") or {}
+                    _t = _k.get("throttleStatus") or {}
+                    _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                    _r = float(_t.get("restoreRate") or 0)
+                    if _f > 0 and _r > 0: _w = min(30.0, _f / _r + 0.5)
+                except Exception:
+                    pass
+                time.sleep(_w); continue
+        except Exception as e:
+            # ⚠️ Hier stand `pass` — der GRUND wurde verschluckt (Klasse 17.09.).
+            grund = type(e).__name__ + ": " + str(e)[:200]
+        time.sleep(min(30, 2 ** i))
     # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App
     # war weg), kann der Aufrufer ein leeres Dict nicht von einer geglueckten Mutation
     # ohne userErrors unterscheiden — er quittiert dann Arbeit, die nie stattfand.
     # Ein lauter Abbruch ist hier richtig: eine falsche Quittung ueberspringt den Fall
     # fuer immer, ein Absturz nur diesen Lauf.
-    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird")
+    raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird. Letzter Grund: " + grund)
 
 cur, n = None, 0
 while n < CAP:
