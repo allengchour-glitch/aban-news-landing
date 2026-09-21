@@ -61,6 +61,7 @@
  */
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { takt as cjTakt } from './cj_takt.mjs';
 
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json')
@@ -95,6 +96,7 @@ let punkteWeg = false, planDeckel = '';
 async function cj(path, body) {
   for (let i = 0; i < 5; i++) {
     try {
+      await cjTakt();   // prozessuebergreifend 1 Anfrage/s (cj_takt)
       const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1' + path,
         { method: body ? 'POST' : 'GET',
           headers: body ? { 'CJ-Access-Token': CJT, 'Content-Type': 'application/json' }

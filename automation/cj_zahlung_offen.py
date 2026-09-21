@@ -21,6 +21,10 @@ werden duerfen — etwa Schatten zu rueckerstatteten Bestellungen. Sie werden ge
 ausgewiesen, nicht verschwiegen.
 """
 import json, os, sys, time, urllib.request, urllib.error
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.dirname(_os_takt.path.abspath(__file__)))
+from cj_takt import takt   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BERICHT = os.path.join(REPO, "dropship", "CJ-ZAHLUNG-OFFEN.md")
@@ -49,6 +53,7 @@ def cj(pfad, tok, versuche=6):
     for i in range(versuche):
         req = urllib.request.Request(url, headers={"CJ-Access-Token": tok,
                                                    "Content-Type": "application/json"})
+        takt()                                   # prozessuebergreifend 1 Anfrage/s (cj_takt)
         try:
             with urllib.request.urlopen(req, timeout=90) as r:
                 d = json.loads(r.read().decode())

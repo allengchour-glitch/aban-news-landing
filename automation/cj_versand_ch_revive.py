@@ -27,6 +27,10 @@ WAS ES PRUEFT, in dieser Reihenfolge:
 Ledger: dropship/_cj_versand_ch_revive.txt
 """
 import json, os, re, ssl, sys, time, urllib.request
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.dirname(_os_takt.path.abspath(__file__)))
+from cj_takt import takt   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(REPO, "dropship", "_cj_versand_ch_revive.txt")
@@ -110,6 +114,7 @@ def cj(pfad, pl):
                                  headers={"CJ-Access-Token": cjtok(), "Content-Type": "application/json"})
     leer = 0
     for i in range(10):
+        takt()                                   # prozessuebergreifend 1 Anfrage/s (cj_takt)
         try:
             r = json.loads(urllib.request.urlopen(req, timeout=45, context=CTX).read())
         except Exception:

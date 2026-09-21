@@ -10,6 +10,7 @@
 // CJ-Budget leer (16900500) → Lauf endet OHNE Quittung; «unklar» wird nie quittiert.
 import fs from 'node:fs';
 import { produktdetails } from './cj_specs.mjs';
+import { takt as cjTakt } from './cj_takt.mjs';
 
 const SHOP = 'au3j0y-hq.myshopify.com';
 const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
@@ -40,6 +41,7 @@ async function sgql(q, v) {
 async function cj(pfad) {
   for (let v = 0; v < 8; v++) {
     let t;
+    await cjTakt();   // prozessuebergreifend 1 Anfrage/s (cj_takt)
     try { const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1/' + pfad, { headers: { 'CJ-Access-Token': CJT }, signal: AbortSignal.timeout(45000) }); t = await r.text(); }
     catch { await sleep(Math.min(20000, 1500 * (v + 1))); continue; }
     let j; try { j = JSON.parse(t); } catch { await sleep(Math.min(20000, 1500 * (v + 1))); continue; }

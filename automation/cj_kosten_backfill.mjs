@@ -18,6 +18,7 @@
  */
 import fs from 'node:fs';
 import { kosten, gewicht } from './cj_preis.mjs';
+import { takt as cjTakt } from './cj_takt.mjs';
 
 const SHOP = 'au3j0y-hq.myshopify.com';
 const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
@@ -112,6 +113,7 @@ async function cj(pfad) {
   for (let versuch = 0; versuch < 8; versuch++) {
     let t;
     try {
+      await cjTakt();   // prozessuebergreifend 1 Anfrage/s (cj_takt)
       const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1/' + pfad,
         { headers: { 'CJ-Access-Token': CJT }, signal: AbortSignal.timeout(45000) });
       t = await r.text();

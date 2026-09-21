@@ -14,6 +14,10 @@ Ledger dropship/_cj_versand_ch_pruef.txt: handle · vid · Optionen · billigste
 import json, os, re, subprocess, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from klingenregel import ist_klinge
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.dirname(_os_takt.path.abspath(__file__)))
+from cj_takt import takt   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 CJT = open("/tmp/cj_token_shared.txt").read().strip()
 FIX = os.environ.get("FIX") == "1"
@@ -45,6 +49,7 @@ def cj(pfad, body=None):
     if body is not None:
         open("/tmp/_cvsb.json", "w").write(json.dumps(body)); cmd += ["-X", "POST", "-H", "Content-Type: application/json", "--data-binary", "@/tmp/_cvsb.json"]
     for _ in range(8):
+        takt()                                   # prozessuebergreifend 1 Anfrage/s (cj_takt)
         try:
             d = json.loads(subprocess.run(cmd, capture_output=True, text=True).stdout or "{}")
         except Exception:

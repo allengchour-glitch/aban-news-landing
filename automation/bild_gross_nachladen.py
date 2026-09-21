@@ -17,6 +17,10 @@ ENV: CAP (Standard 60) · DRY=1
 Ledger: dropship/_bild_gross_cj.txt (pid<TAB>ergebnis)
 """
 import json, os, re, struct, subprocess, time, urllib.request
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.dirname(_os_takt.path.abspath(__file__)))
+from cj_takt import takt   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 CJT = json.load(open("/tmp/cj_token.json"))["accessToken"]
@@ -42,6 +46,7 @@ def sgql(q, v=None):
 
 def cj(path):
     for v in range(8):
+        takt()                                   # prozessuebergreifend 1 Anfrage/s (cj_takt)
         try:
             rq = urllib.request.Request("https://developers.cjdropshipping.com/api2.0/v1/" + path,
                 headers={"CJ-Access-Token": CJT})

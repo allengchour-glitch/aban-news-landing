@@ -25,6 +25,10 @@ Lauf mit PAUSE. Ledger: dropship/_cj_stecker_geprueft.txt.
 Nutzung: DRY=1 CAP=40 python3 automation/cj_stecker_pruefen.py
 """
 import json, os, re, ssl, sys, time, urllib.request, urllib.error
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.dirname(_os_takt.path.abspath(__file__)))
+from cj_takt import takt   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+
 
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_cj_stecker_geprueft.txt"
@@ -74,6 +78,7 @@ def cj(url):
     """None = nicht erreicht (KEINE Quittung). dict = Antwort. SystemExit bei Tagesbudget."""
     tk = cj_token()
     for i in range(8):
+        takt()                                   # prozessuebergreifend 1 Anfrage/s (cj_takt)
         try:
             d = json.loads(urllib.request.urlopen(
                 urllib.request.Request(url, headers={"CJ-Access-Token": tk}), context=CTX, timeout=40).read())
