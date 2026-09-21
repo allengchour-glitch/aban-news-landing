@@ -6,6 +6,40 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🚧 Sechs Stunden ohne einen einzigen Tages-Wächter — die Schranke von heute Morgen hatte sich selbst ausgesperrt
+
+**Fund (16:13, nach dem Container-Neustart):** im Aufseher-Log stand nach jedem «restart X» eine Zeile
+`fixer_keepalive.sh: line 412: /tmp/shopify_slot_.lock; flock -n 6 && { _SLOT=; break; }; …: No such file
+or directory`. Gezählt: **89 solche Zeilen seit 10:11**, der Minute, in der die Schranke (zwei flock-Plätze
+für Shopify-Wächter) eingebaut wurde. **Betroffen: 26 Tages-Wächter und alle 13 Reiniger** — darunter
+`cj_verfuegbarkeit`, `cj_versand_ch_guard`, `google_kanal_luecke`, `sku_dup_scan`, `textbild_fix`.
+Keiner davon ist zwischen 10:11 und 16:20 gestartet.
+
+**Mechanik:** die Schranke stand INLINE in zwei `bash -c "…"`-Strings. Darin `eval "exec $((6+_s))>/tmp/
+shopify_slot_${_s}.lock"` — die inneren Anführungszeichen **schliessen den äusseren String**, `$_s` und
+`$((6+_s))` werden von der ÄUSSEREN Shell expandiert (leer bzw. 6), und der Rest der Zeile wird als
+Dateiname ausgeführt. Der Aufseher meldete trotzdem brav «restart X» — die Meldung steht VOR dem Start.
+
+**Warum das sechs Stunden hielt:** (1) die Sandbox-Probe des Bausteins (3 Prozesse / 2 Plätze) war grün —
+sie testete die Logik in einer Datei, nicht den Einbau im String. **Ein Test des Bausteins ist kein Test
+des Einbaus.** (2) Die Fehler standen 89× im Aufseher-Log, und niemand las es — dieselbe Klasse wie
+`menue_links` mit 15 PAUSE-Zeilen (heute früh). (3) Der `touch`-Anspruch von heute früh (Regel 10, «erst
+claimen») hätte die 26 Namen bis morgen als «gelaufen» geführt: **Anspruch plus gescheiterter Start =
+24 Stunden Blindheit mit gutem Gewissen.**
+
+**Reparatur:** Logik in `automation/shopify_schranke.sh` (`exec "$@"`, Platz am Deskriptor vererbt, keine
+Quoting-Ebenen); beide Startstellen rufen die Datei. Einbau-Probe am ECHTEN Lauf: 0 neue Shell-Fehler,
+`textbild_fix` + `cj_verfuegbarkeit` laufen, `coll_live_check`/`sku_dup_scan`/`promo_aus_beschreibung`/
+`gfeed_restore` warten als `bash shopify_schranke.sh …` in der Reihe. Ansprüche der 26 Namen zurückgesetzt
+(Log-mtime −25 h, Kreis-Zähler weg). `engine_keepalive.sh` zählt ab jetzt **neue** Shell-Fehler des
+Aufsehers seit dem letzten Tick (Lesezeichen = Zeilenzahl) und meldet sie laut; 4 Gegenproben (Altbestand
+einmal, dann still, Köder gefangen, Rotation erkannt).
+
+**Regeln:** ein Einbau wird am echten Aufruf geprüft (nach «restart X» muss ein Prozess mit diesem Namen
+da sein — `ps`, nicht das Log). Wer «erst claimen» baut, muss den Anspruch bei gescheitertem Start
+zurücknehmen oder den Start beweisen. Und: **Nebenfund** — Semrush meldet `API UNITS BALANCE IS ZERO`
+(403), Rankings sind von hier nicht messbar; nicht erneut versuchen.
+
 ## 2026-09-21 · ⏱️ «schneller automation»: die Automation war nicht langsam, sie stand sich selbst im Weg
 
 **Ausgangsmessung:** Der Varianten-Wächter brauchte ~12 s je Produkt, obwohl CJ in 0,4–0,9 s

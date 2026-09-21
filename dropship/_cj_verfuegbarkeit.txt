@@ -49250,3 +49250,28 @@ gid://shopify/Product/15447875912065	ok	CJ-CJXFJTDS00043-Filter element	zurueckg
 gid://shopify/Product/15448019665281	ok	CJ-CJWL296071401AZ	varianten-weg-DENY-2026-09-21 (8 Varianten bei CJ weg → DENY)
 gid://shopify/Product/15413025014145	bei-cj-weg	CJLY291596601AZ	via-varianten-wache-2026-09-21
 gid://shopify/Product/15413025014145	bei-cj-weg	CJLY291596601AZ	via-varianten-wache-2026-09-21
+gid://shopify/Product/15448667947393	bei-cj-weg	CJ-CJQB276479901AZ
+gid://shopify/Product/15449425740161	ok
+gid://shopify/Product/15449427902849	ok
+gid://shopify/Product/15449428066689	ok
+gid://shopify/Product/15449428427137	ok
+gid://shopify/Product/15449428525441	ok
+gid://shopify/Product/15449428558209	ok
+gid://shopify/Product/15449429115265	ok
+gid://shopify/Product/15449429246337	ok
+gid://shopify/Product/15449429311873	ok
+gid://shopify/Product/15449429377409	ok
+gid://shopify/Product/15449429639553	ok
+gid://shopify/Product/15449429705089	ok
+gid://shopify/Product/15449430098305	ok
+gid://shopify/Product/15449430131073	ok
+gid://shopify/Product/15449430196609	ok
+gid://shopify/Product/15449430360449	ok
+gid://shopify/Product/15449430720897	ok
+gid://shopify/Product/15449430753665	ok
+gid://shopify/Product/15449431638401	ok
+gid://shopify/Product/15449432162689	ok
+gid://shopify/Product/15449432457601	ok
+gid://shopify/Product/15449433145729	ok
+gid://shopify/Product/15449433211265	ok
+gid://shopify/Product/15449433571713	ok
