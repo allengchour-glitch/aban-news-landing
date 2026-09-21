@@ -840,3 +840,10 @@ gid://shopify/Product/15447926931841	1790001932	ok	30 Shop / 30 CJ / 0 fehlend /
 gid://shopify/Product/15447927390593	1790001932	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15447927521665	1790001932	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15447927849345	1790001932	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15428300112257	1790003318	ok	SKU-korrigiert 1: English PackagingGray→CJYD292660002BY
+gid://shopify/Product/15445282750849	1790003322	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15445283602817	1790003325	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15445285863809	1790003329	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15446275129729	1790003332	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15447570416001	1790003336	ok	3 Shop / 2 CJ / 1 fehlend / 1 DENY
+gid://shopify/Product/15447875715457	1790003341	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY

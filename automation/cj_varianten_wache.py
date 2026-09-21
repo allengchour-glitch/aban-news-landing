@@ -114,6 +114,13 @@ def gql(q, v=None):
     raise RuntimeError(f"Shopify antwortet nicht ({versuche} Versuche). Letzter Grund: {grund}")
 
 
+_CJ_NAMEN = {}
+
+
+def _norm(x):
+    return re.sub(r'[^a-z0-9]', '', (x or '').lower())
+
+
 def cj_varianten(sku):
     """-> (set lebender CJ-Varianten-SKUs, grund) — grund gesetzt = unklar/weg, Set leer."""
     s = (sku or "").strip(); kern = re.sub(r'^CJ-', '', s, flags=re.I)
@@ -126,16 +133,27 @@ def cj_varianten(sku):
     m = re.match(r'([A-Za-z]{2,8}\d{5,}[A-Za-z]{0,3})', kern)
     if not m: return set(), f"SKU-Form nicht pruefbar: {s[:30]!r}"
     kern = m.group(1)
-    psku = kern[:-4] if re.search(r'\d{2}[A-Za-z]{2}$', kern) else kern
-    d = cj(f"/api2.0/v1/product/query?productSku={psku}")
-    if d is None: return set(), "keine CJ-Antwort"
-    code = str(d.get("code"))
-    if code == "1602001" and psku != kern:
-        d = cj(f"/api2.0/v1/product/query?productSku={kern}") or {}; code = str(d.get("code"))
+    # 21.09. (2. Lauf): Formen OHNE Buchstaben-Suffix («CJZJ25718660001») fielen als 1602001 durch —
+    # gemessen ist die Produkt-SKU dort ebenfalls «minus vier Zeichen» (CJZJ2571866 → 200, 8 Varianten),
+    # und variantSku=<voll> liefert dasselbe Produkt. Reihenfolge: variantSku, dann productSku-Formen.
+    if re.search(r'\d{2}[A-Za-z]{2}$', kern):
+        versuche = [("productSku", kern[:-4]), ("variantSku", kern)]
+    else:
+        versuche = [("variantSku", kern), ("productSku", kern[:-4] if len(re.sub(r'\D', '', kern)) >= 11 else kern), ("productSku", kern)]
+    d = None; code = ""
+    for art, wert in versuche:
+        d = cj(f"/api2.0/v1/product/query?{art}={wert}")
+        if d is None: return set(), "keine CJ-Antwort"
+        code = str(d.get("code"))
+        if code != "1602001": break
     if code == "1602002": return set(), "PRODUKT-WEG (1602002) — cj_verfuegbarkeit zustaendig"
     if code != "200": return set(), f"CJ-Code {code}: {str(d.get('message'))[:50]}"
     vs = ((d.get("data") or {}).get("variants") or [])
     if not vs: return set(), "200 ohne Varianten"
+    global _CJ_NAMEN
+    # variantKey ist der reine Variantenname («English PackagingGray»), variantNameEn traegt den
+    # Produktnamen davor — gemessen am Handsauger; beide Formen werden zum Abgleich angeboten.
+    _CJ_NAMEN = {v.get("variantSku"): [v.get("variantKey") or "", v.get("variantNameEn") or ""] for v in vs if v.get("variantSku")}
     return {v.get("variantSku") for v in vs if v.get("variantSku")}, ""
 
 
@@ -171,8 +189,8 @@ def main():
         for l in open(LEDGER):
             t = l.rstrip("\n").split("\t")
             if len(t) >= 2:
-                if len(t) > 3 and ((t[2] == "unklar" and ("PRODUKT-WEG" in t[3] or "Ableitung" in t[3])) or "wuerde-" in t[3]):
-                    continue                     # erste Fassung / DRY-Zeilen: nicht erledigt → neu pruefen
+                if len(t) > 2 and (t[2] == "unklar" or (len(t) > 3 and "wuerde-" in t[3])):
+                    continue                     # unklar = offen: jeder Lauf fragt neu (wenige Faelle, 2 s je Produkt)
                 try: done[t[0]] = float(t[1])
                 except ValueError: pass
     jetzt = time.time()
@@ -227,11 +245,47 @@ def main():
         # Shop-SKUs tragen teils den Variantennamen angehaengt («CJ-CJYD292660001AZ-English
         # PackagingGray», gemessen 21.09. am Akku-Handsauger) — verglichen wird der fuehrende
         # SKU-Block, sonst «fehlen» alle und der Verdachts-Zweig unten greift zu Unrecht.
+        def _roh(sku): return re.sub(r'^CJ-', '', sku or '', flags=re.I)
         def _kern(sku):
-            k = re.sub(r'^CJ-', '', sku or '', flags=re.I)
-            m = re.match(r'([A-Za-z]{2,8}\d{5,}[A-Za-z]{0,3})', k)
+            k = _roh(sku); m = re.match(r'([A-Za-z]{2,8}\d{5,}[A-Za-z]{0,3})', k)
             return m.group(1) if m else k
-        fehlend = [v for v in vs if _kern(v["sku"]) not in live]
+        # 2. Lauf: CJs eigene variantSku traegt teils den Namen («CJXFJTDS00043-Filter element») —
+        # dann stimmt die ROHE Shop-SKU, nicht der Kern. Vorhanden = roh ODER Kern trifft.
+        live_kern = {_kern(x) for x in live}
+        fehlend = [v for v in vs if _roh(v["sku"]) not in live and _kern(v["sku"]) not in live_kern]
+        # DOPPELTER KERN (Handsauger, 21.09.): zwei Shop-Varianten tragen dieselbe CJ-SKU «…01AZ»,
+        # CJ fuehrt 01AZ und 02BY. Die zweite bestellt beim Lieferanten die FALSCHE Farbe — ein
+        # Ghost-Sale mit Lieferung. Reparatur nur bei eindeutigem Namens-Treffer bei CJ, sonst unklar.
+        from collections import Counter
+        kerne = Counter(_kern(v["sku"]) for v in vs)
+        # nur echte Doppel: gleicher Kern UND die rohe Shop-SKU ist selbst keine lebende CJ-SKU
+        # (Wasserhahnfilter: «…00043-Filter element» / «…00043-Sliver» teilen den Kern und sind beide echt)
+        doppelt = [v for v in vs if kerne[_kern(v["sku"])] > 1 and _roh(v["sku"]) not in live]
+        if doppelt:
+            namen = {}
+            for sku, nms in _CJ_NAMEN.items():
+                for nm in nms:
+                    if nm: namen.setdefault(_norm(nm), sku)
+            korr = []; offen = []
+            for v in doppelt:
+                such = [_norm(v["title"]), _norm(_roh(v["sku"])[len(_kern(v["sku"])):])]
+                ziel = next((namen[x] for x in such if x and x in namen), None)
+                if ziel and _roh(v["sku"]) != ziel and _kern(v["sku"]) != ziel: korr.append((v, ziel))
+                elif not ziel: offen.append(v)
+            if offen or not korr:
+                unklar += 1
+                fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tSKU-DOPPELT: {len(doppelt)} Shop-Varianten teilen einen CJ-Kern, {len(offen)} ohne Namens-Treffer bei CJ\n"); fl.flush()
+                print(f"  ❔ {p.get('title','')[:45]} — SKU-DOPPELT ({len(doppelt)}), {len(offen)} ohne Namens-Treffer", flush=True); continue
+            if not DRY:
+                r = gql('mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}',
+                        {"p": pid, "v": [{"id": v["id"], "inventoryItem": {"sku": "CJ-" + ziel}} for v, ziel in korr]})
+                e = ((r.get("data") or {}).get("productVariantsBulkUpdate") or {}).get("userErrors")
+                if e:
+                    print(f"  FEHLER SKU-Korrektur {pid}: {e}", flush=True); unklar += 1
+                    fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tSKU-Korrektur-Fehler {str(e)[:60]}\n"); fl.flush(); continue
+            fl.write(f"{pid}\t{jetzt:.0f}\tok\tSKU-korrigiert {len(korr)}: " + "; ".join(f"{v['title']}→{z}" for v, z in korr) + ("" if not DRY else " (DRY)") + "\n"); fl.flush()
+            print(f"  {'DRY ' if DRY else ''}🔧 {p.get('title','')[:45]}: {len(korr)} Varianten-SKU per CJ-Name korrigiert: " + "; ".join(f"{v['title']}→{z}" for v, z in korr), flush=True)
+            continue
         if len(fehlend) == len(vs):
             unklar += 1
             fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tALLE {len(vs)} Shop-SKUs fehlen bei CJ ({len(live)} lebend) — Ableitung pruefen\n"); fl.flush()
