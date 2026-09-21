@@ -3,6 +3,16 @@
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
   "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "abgebrochen-nachgetragen",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen.",
+  "nachtrag": {
+    "geschlossen_am": "2026-09-21",
+    "warum_nicht_ok": "Der Lauf hat nie eine Messung hinterlassen. «ok» waere eine Quittung ueber Arbeit, die niemand gesehen hat.",
+    "was_bekannt_ist": [
+      "Quittung am 20.09. 20:13 UTC auf «laufend» gesetzt (Claim), danach nichts mehr.",
+      "Der Lauf vom 21.09. 00:09 UTC lief vollstaendig durch: 5/5 · 2/2 · 2/2 geladen, Startseite 5362 Zeichen, kein Befund. Es fehlt also keine Erkenntnis.",
+      "Zweiter Abbruch in drei Tagen (19.09. ebenso)."
+    ],
+    "was_NICHT_bekannt_ist": "Die Ursache. Naheliegend waere «systemd hat den Dienst erlegt» — luxe-agent.service ist Type=oneshot mit TimeoutStartSec=900, und der Storefront-Auftrag macht seit dem 20.09. neun Seitenabrufe statt drei. Das ist aber eine VERMUTUNG: es gab keine Laufzeit in der Quittung, an der sie sich haette pruefen lassen, und der Lauf vom 21.09. schaffte es. Deshalb traegt jede Quittung ab jetzt begonnen/dauer_s (server/luxe_auftrag_runner.mjs) — beim naechsten Abbruch ist die Frage eine Messung."
+  }
 }

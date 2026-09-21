@@ -210,42 +210,72 @@ const offen = fs.existsSync(OFFEN)
  * einzige Information, die es gibt.
  *
  * Gepusht wird er nur stuendlich: alle 5 Minuten ein Commit waeren 288 am Tag, und
- * ein Signal, das im Laerm steht, liest niemand. Lokal wird er immer geschrieben,
- * damit `letzter_lauf` auf dem Server auch zwischen zwei Pushes stimmt.
+ * ein Signal, das im Laerm steht, liest niemand.
+ *
+ * ⚠️ GEMESSEN 21.09.2026 — genau das ist trotzdem passiert, und zwar 288 Mal am Tag:
+ * 274 Agenten-Commits in 24 Stunden, **273 davon fassen NUR diese Datei an**, 248
+ * unter der Meldung «Auftrag erledigt (Hetzner-Agent)» — bei genau EINEM Auftrag.
+ * Der Grund lag nicht hier, sondern eine Schicht hoeher: der Starter
+ * /usr/local/bin/luxe-auftrag (aus server/luxe-agent-setup.sh) committet und pusht
+ * ALLES, was unter `auftraege/` schmutzig ist. Der Puls war nach jedem Lauf
+ * schmutzig, also pushte der Starter ihn — die Stundenbremse hier lief ins Leere,
+ * und die Historie behauptete 248 Mal Arbeit, die es nicht gab.
+ *
+ * **Eine Regel, die nur an EINER Stelle durchgesetzt wird, hebt die naechste Schicht
+ * auf, die nichts von ihr weiss** (gleiche Klasse wie der Social-Stopp, der nur auf
+ * einem Zweig lag, 17.09.). Deshalb wird die REPO-Datei jetzt nur noch angefasst,
+ * wenn sie auch gepusht wird: dazwischen bleibt der Arbeitsbaum sauber, und der
+ * Starter findet nichts zu committen. Den Stand zwischen zwei Pushes haelt eine
+ * server-lokale Datei ausserhalb von `auftraege/` — dort sieht der Starter sie nicht.
+ * Scheitert der Push, wird die Repo-Datei zurueckgesetzt: eine schmutzige Datei
+ * waere sonst genau die Luecke, die wir gerade schliessen.
  */
 const PULS = path.join(REPO, 'auftraege/_puls.json');
+// Ausserhalb des Repos — der Starter prueft nur `git status auftraege` und sieht das hier nie.
+const PULS_LOKAL = process.env.LUXE_PULS_LOKAL || '/tmp/luxe_puls_lokal.json';
+const PUSH_ABSTAND_MS = 55 * 60 * 1000;
+
 function schreibe_puls(zustand) {
-  let vorher = {};
-  try { vorher = JSON.parse(fs.readFileSync(PULS, 'utf8')); } catch {}
+  let gepusht = {};                      // Stand, den die Ampel im Repo sieht
+  try { gepusht = JSON.parse(fs.readFileSync(PULS, 'utf8')); } catch {}
+  let lokal = {};                        // Stand zwischen zwei Pushes
+  try { lokal = JSON.parse(fs.readFileSync(PULS_LOKAL, 'utf8')); } catch {}
   const jetzt = new Date().toISOString();
   const puls = {
     letzter_lauf: jetzt,
     zustand,                                  // 'leer' | 'arbeitet' | 'fertig'
     offene_auftraege: offen.length,
-    laeufe_seit_push: (vorher.laeufe_seit_push || 0) + 1,
-    hinweis: 'Geschrieben von server/luxe_auftrag_runner.mjs bei JEDEM Lauf, auch ohne '
-           + 'Arbeit. Gepusht ~stuendlich. Ist letzter_lauf aelter als 2 h, steht der '
-           + 'Hetzner-Agent — dann kann kein Browser-Auftrag mehr erledigt werden. '
-           + 'Die Ampel (automation/bot_puls.py) meldet das.',
+    laeufe_seit_push: (lokal.laeufe_seit_push || 0) + 1,
+    zuletzt_gepusht: gepusht.zuletzt_gepusht || null,
+    hinweis: 'Geschrieben von server/luxe_auftrag_runner.mjs. Die REPO-Fassung wird nur '
+           + 'beim stuendlichen Push angefasst (sonst committet der Starter sie alle 5 '
+           + 'Minuten unter falschem Namen, gemessen 21.09.2026). Ist letzter_lauf aelter '
+           + 'als 2 h, steht der Hetzner-Agent — die Ampel (automation/bot_puls.py) meldet das.',
   };
-  fs.mkdirSync(path.dirname(PULS), { recursive: true });
-  // Der zuletzt GEPUSHTE Stand ist der, den die Ampel im Repo sieht. Nur an ihm darf
-  // sich die Stundenfrage entscheiden — nicht am lokalen Schreiben, das jedes Mal passiert.
-  const letzterPush = vorher.zuletzt_gepusht ? Date.parse(vorher.zuletzt_gepusht) : 0;
-  const faellig = !letzterPush || (Date.now() - letzterPush) > 55 * 60 * 1000;
-  if (faellig) { puls.zuletzt_gepusht = jetzt; puls.laeufe_seit_push = 0; }
-  else         { puls.zuletzt_gepusht = vorher.zuletzt_gepusht; }
-  fs.writeFileSync(PULS, JSON.stringify(puls, null, 2) + '\n');
-  if (!faellig) return;
+  // Der lokale Stand wird IMMER geschrieben: er ist auf dem Server die Wahrheit.
+  try { fs.writeFileSync(PULS_LOKAL, JSON.stringify(puls, null, 2) + '\n'); } catch {}
+
+  // Die Stundenfrage entscheidet sich am zuletzt GEPUSHTEN Stand, nie am lokalen.
+  const letzterPush = gepusht.zuletzt_gepusht ? Date.parse(gepusht.zuletzt_gepusht) : 0;
+  if (letzterPush && (Date.now() - letzterPush) <= PUSH_ABSTAND_MS) return;
+
+  puls.zuletzt_gepusht = jetzt;
+  puls.laeufe_seit_push = 0;
   const git = (...a) => execFileSync('git', ['-C', REPO, ...a], { stdio: 'pipe' });
   try {
+    fs.mkdirSync(path.dirname(PULS), { recursive: true });
+    fs.writeFileSync(PULS, JSON.stringify(puls, null, 2) + '\n');
     git('add', 'auftraege/_puls.json');
     git('-c', 'user.name=luxe-agent', '-c', 'user.email=agent@luxestyle.ch',
         'commit', '-q', '-m', 'Bot-Puls [skip ci]');
     git('push', '-q', 'origin', `HEAD:${process.env.LUXE_BRANCH || 'claude/luxestyle-status-tztnn1'}`);
+    try { fs.writeFileSync(PULS_LOKAL, JSON.stringify(puls, null, 2) + '\n'); } catch {}
   } catch (e) {
     // Ein Puls, der nicht gepusht werden kann, darf den Lauf nicht abbrechen — die
     // Arbeit ist wichtiger als ihr Protokoll. Beim naechsten Lauf ist er wieder faellig.
+    // Wichtig: die Repo-Datei zuruecksetzen, sonst findet der Starter sie schmutzig
+    // und pusht sie doch — genau die Luecke, die dieser Umbau schliesst.
+    try { git('checkout', '--', 'auftraege/_puls.json'); } catch {}
     console.log(`· Puls nicht gepusht (${String(e.message||e).slice(0,100)})`);
   }
 }
@@ -341,10 +371,19 @@ for (const datei of offen) {
     geclaimt = true;
   }
 
+  // ⚠️ Zwei von drei Storefront-Laeufen (19./20.09.) blieben auf «laufend» stehen, und
+  // es gab NICHTS, woran sich das Warum haette festmachen lassen — der Dienst ist
+  // `Type=oneshot` mit `TimeoutStartSec=900`, also koennte systemd ihn erlegt haben,
+  // aber das war Vermutung. Seit dem 20.09. macht der Storefront-Auftrag 9 Seitenabrufe
+  // statt 3. Deshalb traegt jede Quittung jetzt ihre Dauer: beim naechsten Abbruch ist
+  // die Frage «zu langsam oder woanders gestorben?» eine Messung statt einer Meinung.
+  const begonnen = Date.now();
+  const dauer = () => ({ begonnen: new Date(begonnen).toISOString(),
+                         dauer_s: Math.round((Date.now() - begonnen) / 100) / 10 });
   let quittung;
   try {
     const ergebnis = await fuehre_aus(auftrag, ctx);
-    quittung = { ...auftrag, stand: 'ok', ergebnis };
+    quittung = { ...auftrag, stand: 'ok', ...dauer(), ergebnis };
     console.log(`✓ ${auftrag.id} (${auftrag.typ})`);
   } catch (e) {
     // «nicht angemeldet» ist kein gewoehnlicher Fehler, sondern eine Aufgabe fuer
@@ -358,7 +397,7 @@ for (const datei of offen) {
     // erste Erklaerung, auf die ich dabei kam, war die falsche. **Ein Fehlschlag
     // darf die Messungen nicht mitnehmen: das Wenige, was ein gescheiterter Lauf
     // gesehen hat, ist oft das Wertvollste, was er hinterlaesst.**
-    quittung = { ...auftrag, stand, fehler: String(e.message || e) };
+    quittung = { ...auftrag, stand, ...dauer(), fehler: String(e.message || e) };
     if (e.teilergebnis) quittung.teilergebnis = e.teilergebnis;
     console.log(`✗ ${auftrag.id}: ${quittung.fehler}`);
   }
