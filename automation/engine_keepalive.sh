@@ -418,6 +418,22 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 # gelesen hat ihn niemand, weil der Grind «laeuft» und die stehende CJ-Zahl eine bequeme
 # Erklaerung hatte. Meldet nur, was seit dem letzten Lauf NEU ist; schweigt sonst.
 [ -f "$REPO_AUTO/motor_ampel.py" ] && python3 "$REPO_AUTO/motor_ampel.py" 2>/dev/null
+# ⚠️ AUFSEHER-STARTFEHLER (21.09.2026): sechs Stunden lang startete der Aufseher KEINEN
+# Tages-Waechter — eine Schranke im bash -c-String war falsch gequotet, und die aeussere
+# Shell schrieb 89x «fixer_keepalive.sh: line 412: …: No such file or directory» ins
+# Aufseher-Log. Gelesen hat es niemand; jede Runde meldete brav «restart X». Deshalb zaehlt
+# der Keepalive jetzt NUR die neuen Zeilen seit dem letzten Tick (Lesezeichen = Zeilenzahl)
+# und meldet Shell-Fehler des Aufsehers laut. Ein Log, das niemand liest, ist eine stille Null.
+if [ -f /tmp/fixer_keepalive.log ]; then
+  _fl_jetzt=$(wc -l < /tmp/fixer_keepalive.log)
+  _fl_mark=$(cat /tmp/_aufseher_fehler_mark 2>/dev/null || echo 0)
+  [ "$_fl_mark" -gt "$_fl_jetzt" ] && _fl_mark=0     # Log wurde geleert/rotiert
+  _fl_neu=$(tail -n +"$((_fl_mark+1))" /tmp/fixer_keepalive.log | grep -c "fixer_keepalive.sh: line [0-9]*:")
+  echo "$_fl_jetzt" > /tmp/_aufseher_fehler_mark
+  if [ "${_fl_neu:-0}" -gt 0 ]; then
+    echo "⚠️ AUFSEHER-STARTFEHLER: $_fl_neu Shell-Fehler im Aufseher-Log seit dem letzten Tick — Waechter starten NICHT. Beispiel: $(tail -n +"$((_fl_mark+1))" /tmp/fixer_keepalive.log | grep -m1 "fixer_keepalive.sh: line" | cut -c1-120)"
+  fi
+fi
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim

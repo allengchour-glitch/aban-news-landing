@@ -279,8 +279,10 @@ while true; do
     # reicht nicht, wenn sich alle gleichzeitig den Nachlauf von 100 Punkten/s teilen — nur
     # eine Schranke von aussen (zwei flock-Plaetze, die anderen warten bis 15 min) laesst
     # jeden Lauf durchkommen. Der Platz wird per exec-Deskriptor an python vererbt und beim
-    # Prozessende vom Kernel freigegeben.
-    setsid bash -c "for _s in 1 2; do eval "exec $((6+_s))>/tmp/shopify_slot_${_s}.lock"; flock -n $((6+_s)) && { _SLOT=$_s; break; }; done; [ -n "${_SLOT:-}" ] || { exec 7>/tmp/shopify_slot_1.lock; flock -w 900 7 || exit 0; }; exec python3 /tmp/$p.py" >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
+    # Prozessende vom Kernel freigegeben. ⚠️ NICHT inline in den bash -c-String schreiben —
+    # 10:11–16:20 stand sie dort und startete SECHS STUNDEN keinen Waechter (Quoting-Ebenen,
+    # siehe Kopf von shopify_schranke.sh).
+    setsid bash "$REPO/automation/shopify_schranke.sh" python3 /tmp/$p.py >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
     sleep 10
   done
   # Bestell-/Fulfill-Runner (Shell) mitlaufen lassen
@@ -410,7 +412,7 @@ while true; do
     esac
     date +%s > "/tmp/_start_$L"
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; for _s in 1 2; do eval "exec $((6+_s))>/tmp/shopify_slot_${_s}.lock"; flock -n $((6+_s)) && { _SLOT=$_s; break; }; done; [ -n "${_SLOT:-}" ] || { exec 7>/tmp/shopify_slot_1.lock; flock -w 900 7 || exit 0; }; $TXTLOCK $EXP exec python3 automation/$L.py" \
+        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $TXTLOCK $EXP exec bash automation/shopify_schranke.sh python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
     echo "$(date -u +%H:%M) restart $L"
     sleep 5
