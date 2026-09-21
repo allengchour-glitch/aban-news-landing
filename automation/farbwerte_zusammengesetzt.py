@@ -181,6 +181,11 @@ def main():
           f"Werte: {sum(statistik.values())}", flush=True)
     for (a, b), n in statistik.most_common(24):
         print(f"   {n:>4}  {a[:30]:<32} → {b}", flush=True)
+    if not kandidaten and not DRY:
+        # 21.09.2026: siehe preisboden.py — «0 Kandidaten» ohne FERTIG = Endlos-Neustart
+        # durch den Aufseher (1'829 Laeufe). Ein Lauf, der nichts findet, ist fertig.
+        print("FERTIG: 0 Produkte mit uebersetzbaren Farbwerten — nichts zu tun", flush=True)
+        return
     if DRY or not kandidaten:
         return
 

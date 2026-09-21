@@ -83,6 +83,13 @@ def main():
           f"davon komplett darunter: {len(ganz)}", flush=True)
     for _, t, lo, hi in sorted(kandidaten, key=lambda x: x[2])[:10]:
         print(f"   CHF {lo:>5.2f} – {hi:>6.2f}   {t[:56]}", flush=True)
+    if not kandidaten and not DRY:
+        # 21.09.2026: Ohne diese Zeile stieg der Lauf bei «0 Kandidaten» OHNE FERTIG aus —
+        # fuer den Aufseher sah das wie ein Abbruch aus, und er startete ihn alle 2 Minuten
+        # neu (1'850 Laeufe in 13 Tagen, je 3 Shopify-Abfragen, fuer nichts). Ein Lauf,
+        # der nichts zu tun findet, IST fertig.
+        print(f"FERTIG: 0 Produkte unter dem Boden CHF {BODEN:.2f} — nichts zu tun", flush=True)
+        return
     if DRY or not kandidaten:
         return
 

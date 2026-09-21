@@ -306,7 +306,13 @@ while true; do
   # /tmp-Wipe hat ihn geloescht — und alle drei meldeten fuenf Tage PAUSE, ohne dass es
   # auffiel. Ein Werkzeug, dessen Eingabe niemand herstellt, ist ein Einmal-Lauf, kein
   # Waechter. Der Export ist fortsetzbar (Container-Neustart) und laeuft unter Sperre.
-  if [ -f "$REPO/automation/optionen_export.py" ] && [ ! -f /tmp/opts_frisch.jsonl ]; then
+  # ⚠️ 21.09.2026: Hier stand nur `[ ! -f /tmp/opts_frisch.jsonl ]` — der Export wurde
+  # gebaut, wenn die Datei FEHLTE, und danach nie wieder: gemessen war sie vom 04.09.,
+  # 17 Tage alt, und drei Waechter (umlaut_suchtags, farbwert_dubletten, mass_im_farbwert)
+  # lasen sie als «frisch». Jetzt zusaetzlich: aelter als 7 Tage → neu bauen (der Exporter
+  # schreibt nach .teil und ersetzt atomar, die alte Datei bleibt bis dahin gueltig).
+  OPTS_ALTER=$(( $(date +%s) - $(stat -c %Y /tmp/opts_frisch.jsonl 2>/dev/null || echo 0) ))
+  if [ -f "$REPO/automation/optionen_export.py" ] && { [ ! -f /tmp/opts_frisch.jsonl ] || [ "$OPTS_ALTER" -gt 604800 ]; }; then
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2 ~ /optionen_export\.py$/ {n++} END {exit(n?0:1)}'; then
       ( cd "$REPO" && setsid flock -n /tmp/lock_optionen_export.lock \
           python3 automation/optionen_export.py >> /tmp/optionen_export.log 2>&1 9>&- & )

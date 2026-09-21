@@ -35,7 +35,19 @@ import json, os, re, subprocess, time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
-QUELLE = os.environ.get("QUELLE", "/tmp/opts.jsonl")
+# ⚠️ 21.09.2026: Default war /tmp/opts.jsonl — eine Datei, die NIEMAND erzeugt. Der Aufseher
+# baut /tmp/opts_frisch.jsonl (optionen_export.py) und reicht opts_keep.jsonl nur durch, wenn
+# es existiert. Gemessen: 615 Laeufe «Quelle fehlt … uebersprungen» bei vorhandener
+# opts_frisch.jsonl (11.6 MB). Der Waechter hat seit dem 04.09. nie gearbeitet.
+def _quelle():
+    q = os.environ.get("QUELLE")
+    if q:
+        return q
+    for k in ("/tmp/opts_keep.jsonl", "/tmp/opts_frisch.jsonl", "/tmp/opts.jsonl"):
+        if os.path.exists(k):
+            return k
+    return "/tmp/opts_frisch.jsonl"
+QUELLE = _quelle()
 LEDGER = "dropship/_umlaut_suchtags.txt"
 MAXNEU = 5
 
@@ -115,6 +127,10 @@ def main():
         print(f"   {n:>5}× «{w}»", flush=True)
     for _, t, ns in aufgaben[:6]:
         print(f"      {t[:50]:<52} + {','.join(ns)}", flush=True)
+    if not aufgaben and not DRY:
+        # 21.09.2026: ohne FERTIG startet der Aufseher den Lauf alle 2 Minuten neu (Klasse preisboden).
+        print("FERTIG: 0 Produkte — alle Umlaut-Titel tragen ihre Suchtags schon.", flush=True)
+        return
     if DRY or not aufgaben:
         return
 
