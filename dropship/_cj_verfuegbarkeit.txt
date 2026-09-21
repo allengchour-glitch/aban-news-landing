@@ -49074,3 +49074,10 @@ gid://shopify/Product/15448834146689	ok
 gid://shopify/Product/15449056903553	bei-cj-weg	CJ-CJWY278630501AZ
 gid://shopify/Product/15449401885057	bei-cj-weg	CJ-CJJT1626220-Horizontal rectangle
 gid://shopify/Product/15449432981889	bei-cj-weg	CJ-CJCZ1533149-Same as Photos
+gid://shopify/Product/15450830864769	bei-cj-weg	CJ-CJNS1559897-Wine red
+gid://shopify/Product/15450831290753	bei-cj-weg	CJ-CJTZ1672577-Army green-S
+gid://shopify/Product/15450835943809	bei-cj-weg	CJ-CJNS1569674-Distant mountain grey-36to37
+gid://shopify/Product/15450836664705	bei-cj-weg	CJ-CJSN1676231-Human body induction
+gid://shopify/Product/15450839777665	bei-cj-weg	CJ-CJSY1589450-Short pink-One Size
+gid://shopify/Product/15450858389889	bei-cj-weg	CJ-CJDD1672430-Black and gray camo-S
+gid://shopify/Product/15450858520961	bei-cj-weg	CJ-CJDK1733856-Electric Blue-S
