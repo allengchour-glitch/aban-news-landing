@@ -6,6 +6,22 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🧾 Kosten-Kette: der Wächter starb jede Nacht am selben JSON — weil sein Vorgänger «PAUSE» mit Exit 0 meldete
+
+`kosten_boden15_korrigieren.py` endete seit Tagen mit `JSONDecodeError: Unterminated string` (Log 02:13). Ursache
+in zwei Schichten: (1) der Bulk-Download brach ab (stündlicher Container-Neustart), und `kosten_export_bauen.py`
+erkannte das seit heute früh korrekt («Export UNVOLLSTÄNDIG», Datei nach `.kaputt`) — gab aber **`return` = Exit 0**
+zurück; (2) die Aufseher-Kette lautete `python3 export; python3 korrigieren` ohne `&&`, also lief der Verbraucher
+auf jeden Fall — auf der abgeschnittenen oder der verschobenen Datei. **Eine Prüfung, die «PAUSE» druckt und 0
+zurückgibt, ist für die nächste Schicht unsichtbar; und eine Kette ohne `&&` fragt gar nicht erst.** Fix: Exit 3
+auf beiden PAUSE-Pfaden, Kette mit `&&`. Der manuelle Nachlauf zeigte dann die echte Grösse: Backfill-Ledger
+28'228, schon korrigiert 10'473, **zu korrigieren 2'011, davon 9 per Signatur** — die 400 pro Tageslauf hätten
+fünf Tage gebraucht, darum ein detached Restlauf (LIMIT 2100): 177 von 177 Signatur-Produkten quittiert, Midikleid
+mit gewichtsabhängigen Kosten (13.99/14.15/14.31 für 320/330/340 g). Aufgabe 73 geschlossen.
+Nebenbei zweimal fast gestolpert: ein «Hintergrund»-Lauf aus dem Werkzeug-Aufruf lebte weiter (7843) und
+hätte mit dem zweiten Bauer um dieselbe Bulk-Operation gerungen — gesehen, weil `ps` vor dem zweiten Start
+gelesen wurde; und `bulkOperationCancel` des laufenden Vorgängers ist im Bauer Absicht, nicht Unfall.
+
 ## 2026-09-21 · 🧭 Menü und Kollektions-Dubletten: vier Warengruppen verlinkt, sechs Doppelseiten abgemeldet — und eine 301, die schon da war
 
 **Aufgabe 78 (Menü):** 185 veröffentlichte Kollektionen mit ≥30 Produkten stehen in keinem Menü — klingt nach
