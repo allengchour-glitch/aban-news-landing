@@ -167,8 +167,8 @@ def main():
         for l in open(LEDGER):
             t = l.rstrip("\n").split("\t")
             if len(t) >= 2:
-                if len(t) > 3 and "PRODUKT-WEG" in t[3] and t[2] == "unklar":
-                    continue                     # erste Fassung liess das liegen → jetzt draften
+                if len(t) > 3 and t[2] == "unklar" and ("PRODUKT-WEG" in t[3] or "Ableitung" in t[3]):
+                    continue                     # erste Fassung: liegen gelassen bzw. SKU-Anhaengsel → neu pruefen
                 try: done[t[0]] = float(t[1])
                 except ValueError: pass
     jetzt = time.time()
@@ -212,7 +212,14 @@ def main():
             unklar += 1
             fl.write(f"{pid}\t{jetzt:.0f}\tunklar\t{grund}\n"); fl.flush()
             print(f"  ❔ {p.get('title','')[:45]} — {grund}", flush=True); continue
-        fehlend = [v for v in vs if re.sub(r'^CJ-', '', v["sku"], flags=re.I) not in live]
+        # Shop-SKUs tragen teils den Variantennamen angehaengt («CJ-CJYD292660001AZ-English
+        # PackagingGray», gemessen 21.09. am Akku-Handsauger) — verglichen wird der fuehrende
+        # SKU-Block, sonst «fehlen» alle und der Verdachts-Zweig unten greift zu Unrecht.
+        def _kern(sku):
+            k = re.sub(r'^CJ-', '', sku or '', flags=re.I)
+            m = re.match(r'([A-Za-z]{2,8}\d{5,}[A-Za-z]{0,3})', k)
+            return m.group(1) if m else k
+        fehlend = [v for v in vs if _kern(v["sku"]) not in live]
         if len(fehlend) == len(vs):
             unklar += 1
             fl.write(f"{pid}\t{jetzt:.0f}\tunklar\tALLE {len(vs)} Shop-SKUs fehlen bei CJ ({len(live)} lebend) — Ableitung pruefen\n"); fl.flush()
