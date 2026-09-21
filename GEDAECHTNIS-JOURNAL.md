@@ -6,6 +6,36 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 📚 «9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde
+
+Beim Nachsehen, warum `cj_verfuegbarkeit` dieselbe Zeile **104-mal** ins Log schrieb («9 geprüft | ok 0 |
+weg 0 | unklar 9»), kam die wahrscheinlich grösste Einzelquelle des Eimer-Sturms zum Vorschein.
+
+**Gemessen:** Seit der Cursor-Löschung vom 19.09. blätterte der Wächter bei **jedem Lauf den ganzen
+Katalog** — ~810 Shopify-Seiten à 60 Produkte, 60–100 Punkte je Seite, also **50'000–80'000 Punkte**
+aus einem Eimer von 2'000 — nur um die ~450 noch nicht geprüften Produkte zu finden. Und das nach jedem
+stündlichen Container-Neustart. Die Zwischenausgabe stand in der Seitenschleife (`n % 300 < 60` ist bei
+n=9 immer wahr), deshalb die 104 gleichen Zeilen: **104 Seiten, kein einziges neues Produkt.** «9 geprüft»
+liest sich wie Arbeit; es war Blättern. Dieselbe Klasse wie «0 geprüft» vom 19.09., nur mit einer Zahl,
+die beruhigt statt alarmiert.
+
+**Umbau:** Kandidaten kommen aus dem lokalen Tages-Export (`/tmp/export.jsonl`, id + status + tags) minus
+Ledger, die SKUs in 50er-Bündeln per `nodes(ids:)`, Neuzugänge seit Export-Zeit gezielt per `created_at`.
+Probelauf: **452 Kandidaten, ~10 Abfragen statt 810.** Rückfall auf Voll-Paging nur, wenn der Export fehlt
+oder älter als 36 h ist — laut angesagt, nicht still.
+
+**Und die neun Dauer-Unklaren hatten einen Grund, den niemand sah:** SKUs wie
+`CJ-CJYD292034601AZ-Extended Length 4Piece Set` — ein Importer hatte den Variantennamen angehängt. Das
+Format-Regex lehnte sie ab, **bevor** ein Grund gesetzt wurde; sie waren in jedem Lauf «unklar» und konnten
+nie geprüft werden. Der führende Buchstaben+Ziffern-Block ist die CJ-Varianten-SKU; er wird jetzt
+abgeschnitten (Probe: 3 von 6 ok statt 1 von 5). «unklar» trägt jetzt einen Grund (z. B. `1602003 Variant
+has been removed from shelves`) und wandert in ein eigenes Ledger mit Zeit — Wiedervorlage nach 24 h, nicht
+in jedem Lauf. **Eine Null ohne Grund ist keine Messung; ein «unklar» ohne Grund ist eine Endlosschleife.**
+
+Bewusst offen: `1602003` heisst «diese Variante ist weg», nicht «das Produkt ist weg». Die erste Variante ist
+aber die, die der Shop verkauft — das ist ein Geisterverkaufs-Risiko eigener Klasse, das ein Mensch
+beurteilen sollte, kein Regex. Die Gründe stehen jetzt im Ledger, damit man sie zählen kann.
+
 ## 2026-09-21 · 🔁 Fünf sinnlose Läufe pro Stunde, für immer — und ein Wrapper, der Befunde erfindet
 
 Fortsetzung des Rundgangs («alles fixen und verbessern»). Vier Klassen, alle gemessen.

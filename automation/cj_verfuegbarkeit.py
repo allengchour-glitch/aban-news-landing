@@ -197,7 +197,7 @@ def cj_kennt(sku):
         # BEVOR ein Grund gesetzt wurde — diese Produkte waren in jedem Lauf «unklar/unbekannt»
         # und konnten nie geprueft werden (gemessen: 9 Dauer-Unklare, 104 Wiederholungen).
         # Die CJ-Varianten-SKU ist der fuehrende Block aus Buchstaben+Ziffern; der Rest ist Deko.
-        m = re.match(r'([A-Za-z]{2,4}\d{6,}[A-Za-z]{0,3})', kern)
+        m = re.match(r'([A-Za-z]{2,8}\d{5,}[A-Za-z]{0,3})', kern)   # auch CJXFJTDS00043-…
         if m and m.group(1) != kern:
             kern = m.group(1)
         if not re.fullmatch(r'[A-Za-z0-9._-]{6,40}', kern):
