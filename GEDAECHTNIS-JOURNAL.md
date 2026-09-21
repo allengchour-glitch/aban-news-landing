@@ -6,6 +6,52 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🔁 Mein Regex von heute früh hat 68 kaufbare Produkte aus dem Verkauf genommen — und die alte Fassung tat es seit Wochen
+
+**Der Fund kam aus dem Nachlesen, nicht aus einer Meldung.** Der Nachhol-Lauf über die 20
+«unklar»-Produkte meldete «⛔ nicht mehr bei CJ: 3D-Druckstift … [CJ-CJJSBGSD00009-Blue
+package-US]». Ich wollte nur wissen, was der neue Regex daraus macht: aus dem Anhängsel
+«-Blue package-US» befreit bleibt `CJJSBGSD00009` — acht Buchstaben, fünf Ziffern, **kein
+Variantensuffix** wie `01AZ`. Das ist eine PRODUKT-SKU. Der Code fragte sie am
+**Varianten**-Endpunkt, bekam `1602001 Product not found`, und der Text «not found» galt als
+Absage → gedraftet. **Kanarienvogel, dieselbe SKU am productSku-Endpunkt: 200, 40 Varianten.**
+Genau die Lehre vom 09.08. («ein ‹not found› aus der falschen Anfrage beweist nichts»), in
+derselben Datei, drei Absätze unter dem Kommentar, der sie beschreibt.
+
+**Lauf sofort gestoppt** (pkill in eigenem Aufruf), dann die Klasse gemessen statt vermutet:
+im Ledger 371 `bei-cj-weg`, davon **82** mit Kern-SKU ohne Variantensuffix — und die
+meisten stammen NICHT von heute: `CJ-CJYD2423125`, `CJ-CJSJ1526877-Red` gingen auch am alten
+Regex durch (er lehnte nur Formen mit Leerzeichen ab) und landeten am Varianten-Endpunkt.
+**Die alte Fassung hatte denselben Fehler; mein Regex hat ihn nur auf mehr Formen ausgedehnt.**
+Trockenlauf mit Kanarienvogel davor, drei Anfrageformen je Produkt (productSku, bei 11+
+Ziffern ohne die letzten vier, dann variantSku), Absage nur bei `1602002`:
+**68 leben bei CJ, 13 sind wirklich weg, 1 unklar.** Die 68 zurück auf ACTIVE, Tag
+`cj-nicht-mehr-verfuegbar` entfernt, Ledger-Zeile `ok … zurueckgeholt-2026-09-21` mit dem
+Beweis; Gegenprobe am ersten: ACTIVE, Tag weg. Nur eigene Drafts angefasst (Status DRAFT +
+unser Tag, kein Risiko-Tag).
+
+**Der zweite Schnitt: zwei der drei 301-Weiterleitungen von heute früh** («Mensch entscheidet,
+also entschieden») zeigten von genau solchen Produkten weg — Aroma-Diffuser und Amore-Armband,
+beide jetzt kaufbar, beide hinter einer Weiterleitung auf die Kategorie unerreichbar. Beide
+Weiterleitungen gelöscht, Gegenprobe leer, in der TSV vermerkt. **Ein Urteil («nicht
+zurückholbar») war so gut wie das Tag, auf dem es stand — und das Tag stammte aus der
+falschen Anfrage.** Die heutige Entscheidung war folgerichtig und trotzdem falsch, weil die
+Prämisse eine Messung mit falschem Messgerät war.
+
+**Reparatur im Wächter:** Kern-SKU ohne Variantensuffix → productSku-Endpunkt (11+ Ziffern:
+erst ohne die letzten vier, Rückfall ganze SKU); `1602001` von dort ist «unklar», nie Absage.
+Und der Text-Zweig (`not found`/`no data` → False) ist gestrichen — **sichere Absage ist allein
+`1602002`.** Formprobe ohne Netz an fünf SKU-Formen: jede landet am richtigen Endpunkt.
+
+**Lehren:** (1) Ein Muster, das eine Form «rettet», schickt sie an denselben Endpunkt wie
+vorher — die Frage «welche Anfrage ist für DIESE Form die richtige?» gehört vor das Muster.
+(2) Ein Wächter, der draftet, braucht für JEDE Absage einen Kanarienvogel: ein Produkt, das
+sicher existiert, muss mit derselben Anfrage «existiert» ergeben — sonst misst man das
+Messgerät. (3) Wer heute eine Entscheidung auf ein Tag stützt, das ein Automat gesetzt hat,
+muss wissen, mit welcher Anfrage der Automat das Tag gesetzt hat.
+Offen: die 13 wirklich weg (bleiben Draft), 1 unklar (Wiedervorlage 24 h), und die Klasse
+«PRODUKT-DA-VARIANTE-WEG» (Produkt lebt, unsere Variante fehlt — 2 Fälle) bleibt Menschenentscheid.
+
 ## 2026-09-21 · 🚪 Das Tor fragt nach dem Log-Alter — und der Lauf schreibt minutenlang nichts
 
 **Was auffiel:** Beim Blick auf die CJ-Verbraucher (der Rückhol-Trockenlauf kam nur alle 30 s
