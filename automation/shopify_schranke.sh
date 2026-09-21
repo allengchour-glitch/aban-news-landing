@@ -15,12 +15,19 @@
 # Reiniger startete — 89 Fehlermeldungen im Aufseher-Log, die niemand las, waehrend die
 # Sandbox-Probe des Bausteins (3 Prozesse / 2 Plaetze) gruen war. Ein Test des Bausteins
 # ist kein Test des Einbaus. Eine Datei hat keine Quoting-Ebenen.
+# Deskriptoren 21/22 — NICHT 7/8: die vier Produkttext-Werkzeuge halten ihr gemeinsames
+# Schloss auf Deskriptor 8 (TXTLOCK im Aufseher), und `exec 8>` haette es hier stillschweigend
+# ersetzt = freigegeben (gemessen 21.09. beim Nachlesen, nicht im Betrieb).
 for _s in 1 2; do
-  eval "exec $((6+_s))>/tmp/shopify_slot_${_s}.lock"
-  if flock -n $((6+_s)); then _SLOT=$_s; break; fi
+  eval "exec $((20+_s))>/tmp/shopify_slot_${_s}.lock"
+  if flock -n $((20+_s)); then _SLOT=$_s; break; fi
 done
 if [ -z "${_SLOT:-}" ]; then
-  exec 7>/tmp/shopify_slot_1.lock
-  flock -w 900 7 || exit 0
+  # Warten OHNE Frist: 25 Waechter standen um 16:22 in der Reihe, ein 15-min-Timeout haette
+  # die meisten mit exit 0 entlassen und der Aufseher haette sie zwei Minuten spaeter erneut
+  # gestartet (Zaehler-/Anspruchs-Rauschen). Ein Wartender haelt nichts; die Reihe rueckt
+  # nach, sobald ein Platz frei wird; der stuendliche Container-Neustart ist die Obergrenze.
+  exec 21>/tmp/shopify_slot_1.lock
+  flock 21
 fi
 exec "$@"
