@@ -6,6 +6,41 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · ⏱️ «schneller automation»: die Automation war nicht langsam, sie stand sich selbst im Weg
+
+**Ausgangsmessung:** Der Varianten-Wächter brauchte ~12 s je Produkt, obwohl CJ in 0,4–0,9 s
+antwortet und Shopify in 0,5 s. Acht CJ-Aufrufe hintereinander, **ohne** Nachbarprozess: jeder
+zweite `1600200` (QPS) — und jeder Helfer antwortet darauf mit 8/16/24 s Strafschlaf. Drei
+CJ-Verbraucher (Bewertungs-Importer, Verfügbarkeit, Varianten) teilen sich CJs 1 Anfrage/s, keiner
+weiss vom anderen, jeder verliert das Rennen und schläft lange. Die Klasse der 12 Runner vom 20.08.,
+nur ohne Doppelstart: **Gleichzeitigkeit ohne Absprache ist langsamer als Reihenfolge.**
+
+**Drei Messrunden bis zur richtigen Uhr — jede vorige Fassung war plausibel und falsch:**
+1. Start-zu-Start 1,05 s, ein einzelner Prozess: **noch 1 von 6 gedrosselt**; 2,1 s: 0 von 6. CJ
+   zählt offenbar ab Antwort-Ende, nicht ab Anfrage-Start.
+2. Ende-zu-Start-Stempel (`takt()` vor, `frei()` nach dem Aufruf): Python 0/8 — **Node 8/8**. Wer
+   sich am Start-Stempel des anderen einreiht, kommt 0,4 s nach dessen Antwort-Ende dran. Ein
+   Stempel, der erst nach dem Aufruf geschrieben wird, ist für den Wartenden unsichtbar.
+3. **Reservierte Startzeiten:** unter der Sperre den nächsten freien Startpunkt (letzter + 1,8 s)
+   eintragen, Sperre freigeben, bis dahin schlafen. Start-zu-Start, unabhängig von der Antwortdauer.
+   Zwei Prozesse gleichzeitig (Python + Node), 16 Aufrufe: **0 gedrosselt.**
+
+**Die Sperre:** atomares `mkdir` mit 5-s-Leichenregel, gemeinsame Stempeldatei — bewusst nicht
+`flock`, weil Node keins hat und Python und Node **dieselbe** Uhr teilen müssen (die erste Fassung
+hatte zwei Sperren für eine Uhr — Python `flock`, Node `mkdir` — und war deshalb keine).
+Eingehängt in `cj_varianten_wache`, `cj_verfuegbarkeit`, `cj_versand_ch_guard`,
+`cj_reviews_import.mjs`; 26 weitere CJ-Verbraucher tragen noch ihre eigenen Schlafzeiten.
+
+**Zweiter Hebel, Shopify:** eine Abfrage je Produkt (0,5 s) → `nodes(ids:)` in 50er-Bündeln.
+
+**Ergebnis:** 15 Produkte in 32 s = **2,1 s je Produkt statt ~12** (5,7×). Die volle Runde über
+18'787 mehrvariantige Produkte dauert damit ~11 Arbeitsstunden statt ~60.
+
+⚠️ **Nebenfund beim Zeit-Test:** ein Trockenlauf schrieb «produkt-weg / wuerde-draften» ins Ledger —
+und der nächste echte Lauf hätte das als erledigt gelesen und das Produkt 30 Tage nicht gedraftet.
+**Eine Messung ist kein Fortschritt**: DRY schreibt jetzt nichts ins Ledger, und «wuerde-»-Zeilen
+gelten beim Laden als offen.
+
 ## 2026-09-21 · 🧩 Das Produkt lebt, die Farbe ist tot — und die Wache fragte nur nach dem Produkt
 
 **Der Fall:** Der einzige «PRODUKT-DA-VARIANTE-WEG»-Eintrag im Unklar-Ledger, ein zweiteiliger

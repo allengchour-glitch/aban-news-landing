@@ -171,8 +171,8 @@ def main():
         for l in open(LEDGER):
             t = l.rstrip("\n").split("\t")
             if len(t) >= 2:
-                if len(t) > 3 and t[2] == "unklar" and ("PRODUKT-WEG" in t[3] or "Ableitung" in t[3]):
-                    continue                     # erste Fassung: liegen gelassen bzw. SKU-Anhaengsel → neu pruefen
+                if len(t) > 3 and ((t[2] == "unklar" and ("PRODUKT-WEG" in t[3] or "Ableitung" in t[3])) or "wuerde-" in t[3]):
+                    continue                     # erste Fassung / DRY-Zeilen: nicht erledigt → neu pruefen
                 try: done[t[0]] = float(t[1])
                 except ValueError: pass
     jetzt = time.time()
@@ -181,7 +181,10 @@ def main():
     if os.environ.get("NUR_PID"):          # Gegenprobe: ein bekannter Fall muss ein «1» ergeben
         kand = [os.environ["NUR_PID"]]
     print(f"Start | Ledger {len(done)} (frisch {len(frisch)}) | Kandidaten {len(kand)} | LIMIT {LIMIT} | DRY={DRY}", flush=True)
-    fl = open(LEDGER, "a")
+    class _Nix:
+        def write(self, *_): pass
+        def flush(self): pass
+    fl = _Nix() if DRY else open(LEDGER, "a")   # DRY = Messung, kein Fortschritt: nichts ins Ledger
     n = deny = unklar = weg = 0
     arbeit = kand[:LIMIT]; produkte = {}
     # Shopify in 50er-Buendeln (nodes(ids:)) statt einer Abfrage je Produkt: 0,5 s → ~0,01 s je Produkt
