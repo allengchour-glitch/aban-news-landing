@@ -6,6 +6,56 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🚪 Das Tor fragt nach dem Log-Alter — und der Lauf schreibt minutenlang nichts
+
+**Was auffiel:** Beim Blick auf die CJ-Verbraucher (der Rückhol-Trockenlauf kam nur alle 30 s
+einen Schritt voran) standen **zwei** `cj_reviews_import.mjs` in der Prozessliste, 822 s und
+696 s alt, beide vom Aufseher gestartet — die Sitzungs-Spalte zeigte es (`sid 456` = Forks des
+Aufsehers, keine zwei Aufseher). Im Log dieselben Produkte zweimal («jj-stunt-saugnapf… skip»
+×2): doppelte Arbeit, doppelte CJ-Punkte.
+
+**Mechanismus:** Die Tor-Frage lautet «ist das Log älter als 24 h?». Der Lauf beginnt mit
+`bewertungen_prio.py`, das minutenlang Shopify befragt, bevor es eine Zeile schreibt. Nach
+dem 120-s-Schlaf des Aufsehers war das Log also immer noch alt, das Tor noch offen, und der
+Lauf startete ein zweites Mal. Gezählt: **49 Tages-Tore**, **keines** beansprucht sein Log vor
+dem Start. Dass es bisher selten biss, liegt daran, dass die meisten Wächter sofort drucken —
+und genau das hat die Zwei-Platz-Schranke von heute früh geändert: ein Lauf, der am Shopify-
+Platz wartet, schreibt ebenfalls nichts. Die Schranke gegen Gleichzeitigkeit erzeugt so
+selbst Doppelstarts. **Eine Reparatur an einer Stelle verändert die Annahmen der Nachbarn**
+(Klasse der stillen Schicht vom 17.09.).
+
+**Reparatur:** `touch "$LOG"` unmittelbar nach jedem `-gt 86400 ]; then` — Anspruch VOR der
+Nebenwirkung, wortgleich Regel 10 (IG-Doppelpost): erst claimen, dann handeln. Eingefügt per
+Skript an allen 49 Toren, Variable jeweils aus der `stat`-Zeile davor gelesen, `bash -n` grün.
+Das Duplikat (3121/3371) beendet; der Importer ist ledger-gestützt, es geht nichts verloren.
+
+**Meta:** Ein Doppelstart, der vom Schlafrhythmus des Aufsehers abhängt (120 s) und von der
+Startlatenz des Kindes, ist ein Rennen — und ein Rennen gewinnt man nicht mit einer besseren
+Prüfung, sondern damit, dass der Prüfer selbst den Zustand setzt, den er prüft.
+
+## 2026-09-21 · 🗓️ Die API-Version, die wir nannten, war seit Monaten nicht die, die antwortete
+
+**Gemessen (Antwortkopf):** Anfragen an `2024-10`, `2025-01` und `2025-07` beantwortet Shopify
+alle mit `x-shopify-api-version: 2025-10` plus Warnkopf — die genannte Version existiert nicht
+mehr, Shopify bedient stillschweigend die älteste gestützte. **350 Aufrufstellen liefen also
+seit Monaten auf einer Version, die in keiner Datei steht.** Und 2025-10 fällt am
+**01.10.2026** aus dem Support — in zehn Tagen wären alle 350 ohne Ankündigung auf 2026-01
+gesprungen, mit Fehlern, die niemand einer Ursache zugeordnet hätte.
+
+**Messen statt raten:** `tools/api_version_probe.py` holt per Introspektion die Felder und
+Argumente von 57 Typen, die unsere Skripte nutzen, für 2025-10 und 2026-01 und vergleicht.
+Ergebnis: **zwei Entfernungen** — `InventoryItem.variant` und `bulkOperationRunMutation(groupObjects)`
+— und beide kommen im Code **0×** vor (`productUpdate(input:)` bleibt). Danach alle Stellen auf
+`2026-01` gesetzt (276× im Pfad, 74× als Literal; jedes Literal im Kontext geprüft — keins war
+ein Datum), `ast.parse`/`node --check` grün, lesende Probe (`bestell_ampel`, `betreiber_ampel`)
+grün, Kopf meldet jetzt `2026-01` ohne Warnung. Schreibende Wächter als Probe hat der
+Klassifikator abgelehnt — sie laufen ohnehin stündlich, und die `gql()`-Helfer nennen seit
+heute früh jeden Grund.
+
+**Lehre:** Eine Versionsangabe im Code ist eine Bitte, keine Tatsache; die Tatsache steht im
+Antwortkopf. Nächste Klippe: **01.01.2027** (Ende 2026-01). Der Prober ist wiederverwendbar:
+zwei Versionen eintragen, Entfernungen gegen den Code zählen.
+
 ## 2026-09-21 · 🧭 Drei tote Landeseiten und ein Kollektionstext — «Mensch entscheidet», also entschieden
 
 `TOTE-LANDESEITEN.md` (täglich): drei Seiten mit Besuchern (9 / 5 / 2 Sitzungen), nicht mehr kaufbar,
