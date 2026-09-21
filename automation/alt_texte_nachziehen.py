@@ -73,18 +73,28 @@ if not TOK:
     print('no-op: kein Shopify-Token.'); sys.exit(0)
 
 def gql(q, v=None, tries=5):
-    """Fehlt 'data', wird kurz gewartet und erneut versucht — Shopify drosselt nach Kosten."""
-    for a in range(tries):
+    """Fehlt 'data', wird gewartet und erneut versucht — Shopify drosselt nach Kosten.
+    21.09.2026: Drossel wird jetzt ERKANNT und die Wartezeit aus throttleStatus gerechnet;
+    Drosselungen zaehlen nicht als Fehlversuch (bis 12), blinde 3+2a-Schlaefe nur fuer echte Fehler."""
+    a = 0; drossel = 0
+    while a < tries:
         try:
             req = urllib.request.Request(f'https://{SHOP}/admin/api/{API}/graphql.json',
                 data=json.dumps({'query':q,'variables':v or {}}).encode(),
                 headers={'X-Shopify-Access-Token':TOK,'Content-Type':'application/json'})
             j = json.load(urllib.request.urlopen(req, timeout=60))
         except Exception as e:
-            time.sleep(3 + 2*a); continue
+            a += 1; time.sleep(3 + 2*a); continue
         if j.get('data') is not None:
             return j['data']
-        time.sleep(3 + 2*a)
+        if 'THROTTLED' in json.dumps(j.get('errors') or '').upper() and drossel < 12:
+            drossel += 1
+            _k = (j.get('extensions') or {}).get('cost') or {}; _t = _k.get('throttleStatus') or {}
+            _f = float(_k.get('requestedQueryCost') or 0) - float(_t.get('currentlyAvailable') or 0)
+            _r = float(_t.get('restoreRate') or 0)
+            time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
+            continue
+        a += 1; time.sleep(3 + 2*a)
     return None
 
 Q = '''query($c:String,$q:String){ products(first:40, after:$c, query:$q, sortKey:CREATED_AT, reverse:REV){

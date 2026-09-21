@@ -347,8 +347,24 @@ def main():
         print("  ✅ geschrieben")
 
     if unbekannt:
-        print(f"\n⚠️ {len(unbekannt)} gesperrte Adressen kamen in keinem Widget vor "
-              f"(bereits entfernt oder Tippfehler): {sorted(unbekannt)}")
+        # ⚠️ 21.09.2026: Diese Zeile stand 297-mal wortgleich im Log — dieselben 12 Adressen,
+        # jeden Lauf. «Bereits entfernt» ist nach einer Saeuberung der NORMALZUSTAND, kein
+        # Befund. Ein Warnzeichen, das jeden Tag gleich aussieht, liest nach dem dritten Mal
+        # niemand mehr (Lehre 29.08.). Gemeldet wird deshalb nur, was NEU dazukommt; die
+        # Grundlinie liegt im Repo und wird beim ersten Lauf angelegt.
+        grundlinie = "dropship/_bewertungsfotos_unbekannt.txt"
+        alt_bekannt = set()
+        if os.path.exists(grundlinie):
+            alt_bekannt = {l.strip() for l in open(grundlinie, encoding="utf-8") if l.strip()}
+        neu_unbekannt = sorted(set(unbekannt) - alt_bekannt)
+        if neu_unbekannt:
+            print(f"\n⚠️ {len(neu_unbekannt)} NEUE gesperrte Adressen kamen in keinem Widget vor "
+                  f"(bereits entfernt oder Tippfehler): {neu_unbekannt}")
+        else:
+            print(f"\n· {len(unbekannt)} gesperrte Adressen ohne Fundstelle — alle bekannt (Grundlinie), nichts Neues.")
+        if scharf or not os.path.exists(grundlinie):
+            with open(grundlinie, "w", encoding="utf-8") as g:
+                g.write("\n".join(sorted(set(unbekannt) | alt_bekannt)) + "\n")
     print(f"\n{'GESCHRIEBEN' if scharf else 'PROBELAUF'}: "
           f"{gesamt_html} sichtbare Bildelemente im widget-HTML, "
           f"{gesamt_json} Bildeintraege im review_widget_data-JSON.")
