@@ -49073,3 +49073,4 @@ gid://shopify/Product/15447911760257	ok
 gid://shopify/Product/15448834146689	ok
 gid://shopify/Product/15449056903553	bei-cj-weg	CJ-CJWY278630501AZ
 gid://shopify/Product/15449401885057	bei-cj-weg	CJ-CJJT1626220-Horizontal rectangle
+gid://shopify/Product/15449432981889	bei-cj-weg	CJ-CJCZ1533149-Same as Photos

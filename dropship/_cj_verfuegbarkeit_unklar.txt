@@ -17,3 +17,4 @@ gid://shopify/Product/15448876581249	1789984082	CJ-Code 1602003: Variant has bee
 gid://shopify/Product/15448892080513	1789984083	SKU-Form nicht pruefbar: 'CJ-CJJSBGSD00009-Blue package-US'	CJ-CJJSBGSD00009-Blue package-US
 gid://shopify/Product/15449424953729	1789984098	SKU-Form nicht pruefbar: 'CJ-CJJJJTJT09042-Cotton swab-10pc'	CJ-CJJJJTJT09042-Cotton swab-10pc
 gid://shopify/Product/15449425215873	1789984099	SKU-Form nicht pruefbar: 'CJ-CJNSFJST00440-Sky blue-S'	CJ-CJNSFJST00440-Sky blue-S
+gid://shopify/Product/15449425412481	1789984100	SKU-Form nicht pruefbar: 'CJ-CJXFLPJY00674-Black 2PCS'	CJ-CJXFLPJY00674-Black 2PCS

@@ -30,7 +30,15 @@ Zwei Hebel im Aufseher, beide von aussen (Lehre 0f — Selbstprüfung ist nie di
 
 Zusammen mit dem Umbau von `cj_verfuegbarkeit` (810 Seiten → ~10 Abfragen) sind das drei Schichten
 gegen denselben Sturm: weniger Abfragen, weniger Gleichzeitigkeit, mehr Geduld — in dieser Reihenfolge
-der Wirkung. Verifikation nach dem Neustart des Aufsehers steht unten nach.
+der Wirkung. **Verifikation 09:48, vier Minuten nach dem Neustart:** Eimer **1999 / 1999 / 1999 von 2'000**; `sku_dup_scan`,
+`farbe_metafeld`, `seo_versandschwelle_fix` sind mit FERTIG durch, `textbild_fix` starb um 09:44 noch im Sturm
+(vor der Schranke) und kommt nach dem Cooldown wieder. Der umgebaute `cj_verfuegbarkeit` lief als einziger
+und fand zwei Produkte, die bei CJ wirklich weg sind — gedraftet.
+
+⚠️ **Und zum dritten Mal heute das eigene Echo:** `ps | grep "[s]hopify_slot"` meldete **einen** wartenden
+Prozess — es war meine eigene Shell, weil `shopify_slot_$s.lock` im `fuser`-Teil **derselben Zeile** im
+Klartext stand. Der Klammer-Trick schützt den grep, nicht die Zeile, die ihn trägt (Lehre 19.09., wortgleich).
+Ein Treffer ohne plausible PID und Laufzeit ist kein Prozess.
 
 ## 2026-09-21 · 📚 «9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde
 
