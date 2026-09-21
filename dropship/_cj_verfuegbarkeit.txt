@@ -49054,3 +49054,5 @@ gid://shopify/Product/15508417315201	ok
 gid://shopify/Product/15508412367233	ok
 gid://shopify/Product/15508412334465	ok
 gid://shopify/Product/15508412301697	ok
+gid://shopify/Product/15508412268929	ok
+gid://shopify/Product/15508412236161	ok
