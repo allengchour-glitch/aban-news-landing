@@ -6,6 +6,55 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · ⏳ Der Kommentar sagte «restoreRate», der Code schlief 12 Sekunden — und mein Patch hatte denselben Fehler
+
+«weiter machen … bis dann alles fixen und verbessern.» Rundgang über alle `/tmp/*.log`: **rund 15
+Wächter enden mit «Shopify antwortet nicht (alle Versuche erschöpft)».** Dieselbe Eimer-Drossel wie
+heute früh bei `menue_links.py` — dort hatte ich sie repariert, und nur dort.
+
+### Gemessen statt vermutet
+
+- Der Container startet **jede Stunde neu** (07:10, 08:09, 09:08 je «up 0 min», dazu 09:14 beim
+  Fortsetzen nach dem Betreiber-Zuruf). Danach weckt der Aufseher binnen fünf Minuten **~25
+  Wächter** auf **einen** 2000-Punkte-Eimer mit 100 Punkten/s Nachlauf.
+- 09:08-Runde: **4 von 21** Wächtern so gestorben (farbe_metafeld, lagerstand_hygiene,
+  sku_dup_scan, textbild_fix).
+- **102 Skripte** tragen denselben kopierten `gql()`-Helfer. **23 nennen `restoreRate` — 19 davon
+  NUR IM KOMMENTAR** («füllt sich mit restoreRate pro Sekunde») und schlafen darunter fest 12 s,
+  viermal, dann Traceback. Der Kommentar vom 17.09. hatte recht; der Code tat etwas anderes.
+  **Ein Kommentar ist eine Absicht, kein Verhalten — gemessen wird der Code.**
+- Und meine erste Diagnose war zu grob: «Traceback im Log = 24 h tot» stimmt für die ~49
+  Tageswächter (Start nach Log-Alter > 86400 s), **nicht** für die 13 Reiniger in Zeile 254 —
+  die haben 30 min Cooldown und 10 s Stagger, alle vier Toten gehörten dazu. Erst gelesen, dann
+  in den Kommentar geschrieben, nicht umgekehrt.
+
+### Die Reparatur — und wie die Gegenprobe sie fing
+
+22 Helfer (19 curl, 3 urllib), je **innerhalb von `def gql`** per `ast` eingegrenzt, `ast.parse`-Tor
+vor jedem Schreiben: Wartezeit = `(requestedQueryCost − currentlyAvailable) / restoreRate + 0.5`,
+Deckel 30 s, Rückfall 12 s ohne `throttleStatus`; Drosselungen verbrauchen **keinen** Fehlversuch,
+nach 12 Drosseln lauter Abbruch «12x gedrosselt».
+
+⚠️ **Der erste Patch tat genau das nicht.** Ich hatte `drossel += 1 … continue` in die bestehende
+`for _ in range(4)` gesetzt — aber `continue` verbraucht die Runde trotzdem. Nach vier Drosseln war
+Schluss; «Drosseln zählen nicht als Fehlversuch» stand **nur in meinem Kommentar**. Dieselbe Klasse,
+die ich gerade reparierte, in meiner eigenen Reparatur. Gefangen von der Gegenprobe am **echten,
+herausgeschnittenen** Quelltext (Probe 2: «genau 12 Drossel-Wartezeiten» → ist=4). Umbau auf
+`while versuche < 4` mit eigenem Zähler; 8 Proben curl-Variante, 1 Probe urllib (8 Drosseln → Erfolg,
+die alte `range(6)` wäre gestorben), Live-Probe mit echtem curl/Token 0.7 s, Eimer 1999/2000.
+**Heute früh mass sich der Test selbst und der Code war richtig; jetzt war der Test richtig und der
+Code falsch. Beides sieht in der Ausgabe gleich aus — nur wer die rote Zeile liest, weiss welches.**
+
+Zwei Dateien wiesen die Tore ab (18/19, 2/3) und wurden von Hand nachgezogen; `neuheit_tag_nachziehen`
+hatte dazu `except Exception: pass` — der Grund wurde verschluckt (Klasse 17.09.), jetzt genannt.
+
+### Eigener Fehler am Rand
+
+`uptime` um 09:14: «up 0 min». Die Regel sagt: unter 10 Minuten **zuerst** `engine_keepalive.sh`.
+Ich habe stattdessen acht Minuten Logs gelesen — acht Minuten ohne Aufseher, also ohne einen einzigen
+Tageswächter. `Aufseher=0` am Ende meines `OHNE_AUFSEHER=1`-Laufs war deshalb kein Echo, sondern
+wahr. **Die Reihenfolge «erst Motoren, dann Diagnose» gilt auch, wenn die Diagnose spannend ist.**
+
 ## 2026-09-21 · 🫀 Ein Herzschlag, der sich als Arbeit ausgab — 273 von 274 Commits
 
 «email sachen machen». Der Posteingang war in drei Tagen genau **ein** Vorgang; der Befund
