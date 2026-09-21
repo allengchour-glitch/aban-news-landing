@@ -37,7 +37,8 @@ BLOCK = 25
 def gql(q, v=None):
     with open("/tmp/_gi.json", "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
-    for _ in range(6):
+    drossel = 0; versuche = 0   # 21.09.: Drosseln zaehlen nicht als Fehlversuch
+    while versuche < 6:
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
@@ -47,8 +48,19 @@ def gql(q, v=None):
             d = json.loads(r.stdout)
             if d.get("data") is not None:
                 return d
+            # ⚠️ 21.09.2026: sechs blinde 6-s-Schlaefe, Drossel nie erkannt. Shopify sagt in
+            # throttleStatus, wie lange der Eimer braucht — fragen statt raten.
+            if "THROTTLED" in str(d.get("errors") or "").upper():
+                drossel += 1
+                _k = (d.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
+                _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                _r = float(_t.get("restoreRate") or 0)
+                time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
+                if drossel < 12:
+                    continue
         except Exception:
             pass
+        versuche += 1
         time.sleep(6)
     # ⚠️ 05.09.2026: Hier stand `return {}`. Der Aufrufer kann ein leeres Dict nicht von
     # einer geglueckten Mutation ohne userErrors unterscheiden und quittiert dann Arbeit,

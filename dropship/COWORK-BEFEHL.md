@@ -1,4 +1,4 @@
-# COWORK-BEFEHL — Fassung 19.09.2026, 13:00 UTC
+# COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
 > **Fünf Schritte, in dieser Reihenfolge.** Jeder hat einen direkten Link, eine Anleitung und
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
@@ -35,7 +35,14 @@ So geht es:
 die nicht per API angelegt wurden (Fehler 9009). Kein Parameter ändert das — vier Versuche mit
 allen drei Bestell-IDs und allen Gründen sind gemessen gescheitert.
 
-**Quittung:** Fallnummer oder Gutschriftbeleg in `dropship/_cj_dispute_1017_ref.txt`.
+**Quittung: keine mehr nötig.** Seit 21.09. fragt die Ampel CJ selbst (`disputes/getDisputeList`)
+und verstummt von allein, sobald dort eine Reklamation liegt. Die Datei
+`dropship/_cj_dispute_1017_ref.txt` bleibt als freiwilliger Schlussstrich.
+
+**Stand 21.09. 07:15 UTC, gemessen:** Wallet `0.00`, Reklamationsliste **leer** — noch nicht
+eröffnet. 📭 **Nachfassen per Mail geht nicht mehr:** Gmail hat unsere Nachricht vom 16.09. nach
+72 Stunden Zustellversuchen am 19.09. 21:44 UTC **hart abgewiesen** (`support@cjdropshipping.com`,
+vier Cloudflare-Adressen «timed out»). Der einzige Weg ist das Portal.
 ⚠️ **Eine Frist hat CJ NICHT genannt — und die Herkunft der alten Angabe ist belegt.** In der
 Fassung bis heute stand «Frist 19.09. ca. 07:30 UTC». Diese Zeit kommt aus **meiner eigenen
 Erinnerung** `trig_0183HCG94NNMXrSRWc1HmvGJ`, die bis 18.09. «CJ-Erstattung USD 25.54 —
@@ -207,6 +214,26 @@ hier teurer als ein offener Punkt.
 ```
 
 ---
+
+---
+
+## 6️⃣ Shopify-Dateispeicher voll — Entscheid, kein Klick-Rätsel  ·  ~2 Minuten
+
+**Gemessen:** Plan Basic hat 100 GB Dateispeicher, belegt sind ~105 GB (Probe-Upload am 14.09.
+`FAILED`). Die Ampel meldet es stündlich als «Shopify-Datei-Speicher voll». Folge: neue
+Produktbilder, Videos und Theme-Dateien scheitern still — jeder Importer, der ein Bild hochlädt,
+bekommt ein FAILED.
+
+**Zwei Wege, beide brauchen dich:**
+- **A — Plan Grow** (300 GB): https://admin.shopify.com/store/au3j0y-hq/settings/plan
+  Kostet mehr im Monat; löst es dauerhaft. Du hattest am 14.09. «Grow in ≤6 Monaten» gesagt.
+- **B — Entwürfe löschen**: https://admin.shopify.com/store/au3j0y-hq/settings/files
+  Die ~27'000 gedrafteten Produkte tragen ihre Bilder weiter. Löschen ist endgültig (Hausregel:
+  nie löschen ohne deinen Entscheid) — deshalb steht es hier und wurde nicht automatisiert.
+  Google Drive hilft nicht (Shopify liest von dort keine Bilder).
+
+**Quittung:** eine Zeile nach `dropship/_dateispeicher_entscheid.txt` («grow» oder «loeschen»);
+bis dahin bleibt die Zeile in der Ampel.
 
 ---
 
