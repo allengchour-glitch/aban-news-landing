@@ -6,6 +6,97 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🩹 Der Wächter fragte nach der Werbung, nicht nach der Ware
+
+«weiter» — also die Lücke, die ich am 19.09. selbst als offen notiert hatte. Unterwegs kam
+etwas anderes heraus.
+
+**Die Hype-Recherche (stehender Dauerauftrag) bestätigte die Liste vom 18.09. fast vollständig:**
+Hygiene-Gadgets, Ordnung/aesthetic living, Creator-Zubehör und Retro-Goggles stehen alle längst
+in den THEMEN. Wirklich neu waren drei Vorschläge, und die **Gegenprobe am eigenen Bestand**
+(Voll-Export von heute 01:11, 51'331 aktive) entscheidet sie alle drei gegen die Übernahme:
+
+| Trendvorschlag | im eigenen Bestand |
+|---|---|
+| «Pimple Patches» — angeblich der profitabelste Artikel für Ende 2026 | **2 Produkte** |
+| «Travel-Hoodie mit Rucksack» | **0** |
+| «Selfie-Monitor» | **0** |
+| *Gegenprobe Hygiene-Gadget (kann die Messung finden?)* | *23* |
+
+**Zwei von drei wären folgenlos geblieben** — die Themenliste bleibt unverändert, und genau das
+ist das Ergebnis. Der dritte aber führte zum eigentlichen Fund.
+
+**Die zwei «Pimple Patches» sind: ein «Hydrokolloid-Verband» und «Nacht-Akne-Patches».** Beide
+ACTIVE, beide im Google-Kanal. Und der Verband ist der Warenart nach eine **Wundauflage**, also
+ein Medizinprodukt — während sein Text ihn rein kosmetisch bewirbt: «ein vielseitiges Produkt
+für die Hautpflege und Gesichtspflege», keine einzige Heilaussage.
+
+**Damit hat der Medizinprodukte-Wächter völlig korrekt gearbeitet und trotzdem nichts gesehen.**
+Alle zwölf Regeln prüfen die **Zweckbestimmung im Text** («Behandlung von Dekubitus …»). Ein
+Produkt, dessen **Warenart** medizinisch ist, das aber kosmetisch beschrieben wird, geht durch.
+Das ist wortgleich die Klingen-Lücke vom 16.09., wo es auch zwei Fragen brauchte:
+`ist_klinge` = Werbung, `ist_handklinge` = Versand. Hier fehlte die zweite Frage.
+
+**Beim Bauen wäre ich fast in dieselbe Grube gefallen wie am 11.08.** Mein erster Wurf nahm die
+Warenart weit (`Spritze|Kanüle|Schiene|Bandage|Kompresse|Vernebler`) und traf **40 Produkte**:
+
+```
+Amazone Anhängefeldspritze UX      ← Landwirtschaft
+Bier Kanüle grün / pink            ← Zapfanlage
+Linearführungsschiene MGN-Serie    ← Maschinenbau
+Scheinwerfer-Vernebler-Becher      ← Bühnentechnik
+Kniebandage für Hunde              ← Tier
+Halbfinger Boxhandschuhe …bandage  ← Sport
+```
+
+Rund **85 % Fehlalarm** — dieselbe Klasse wie die 845 von 919 am 11.08. Und mein Köder fing
+davon **genau einen** (Vorhangschiene), weil ich mir die Fehlalarme **ausgedacht** hatte statt
+sie zu messen; die Lehre vom 17.09. wörtlich. Erst der Trockenlauf gegen die echten 51'331
+Titel zeigte, was wirklich drohte. Eng gefasst auf Begriffe, die ausserhalb der Wundversorgung
+praktisch nicht vorkommen, bleibt **1 Treffer über den ganzen Bestand** — der Anlassfall.
+
+**Und ein Ausschluss, den ich eingebaut hatte, schadete.** `Schuhe?\b` sollte «Weite Damen-Schuhe
+für Hallux-Valgus» abfangen — fing aber **«Blasenpflaster für Wanderschuhe»**, einen echten
+Treffer. Beim Nachrechnen war er ohnehin wirkungslos: der Hallux-Schuh enthält gar kein Wort aus
+der Warenart-Liste, die Regel fängt ihn nie. **Ein Ausschluss, der nur Richtiges wegnimmt, ist
+nicht neutral — er schadet.** Gefunden hat ihn die Gegenprobe, nicht das Nachdenken.
+
+11 Gegenproben, beide Richtungen, alle Fehlalarm-Fälle aus dem **echten** Lauf. Die Regel liegt
+in `automation/medizin_zweck.json` und wird von **zwei** Seiten gelesen — dem Bestands-Wächter
+und der Importer-Wache. Sie wirkt damit auch **vor** dem Anlegen neuer Ware, genau wie bei den
+Klingen.
+
+⚠️ **Zwei Fälle bewusst NICHT gefangen**, weil sie Rechtseinschätzung und nicht Messung wären:
+der «Hallux Valgus Korrektor» (Text sagt «stützen», «entlasten» — keine Heilaussage) und die
+«Nacht-Akne-Patches» (Teebaumöl, kosmetisch). Beide stehen im Bericht, nicht in der Regel.
+
+
+**Und die Frage, mit der der Turn begann, ist beantwortet — mit einem wertvollen Nein.**
+Das Verfügbarkeits-Ledger ist anhängend und trägt kein Datum; ein im August geprüftes Produkt
+wird nie wieder gefragt (am 19.09. als offene Lücke notiert). Bevor ich eine Datumsspalte und
+eine Wiedervorlage über 48'919 Zeilen baue, die Frage davor: **kippt ein «ok» überhaupt?**
+
+```
+KANARIENVOGEL — zuletzt geprueft (n=25): 25 ok, 0 weg  -> Messung gilt
+AELTESTE Pruefungen  (n=40): 38 ok, 2 nicht mehr aktiv
+ZUFALLSSTICHPROBE    (n=40): 39 ok, 1 nicht mehr aktiv
+ERGEBNIS: 0 von 77 aktiven, einst als ok gefuehrten Produkten sind bei CJ heute WEG (0,0 %)
+```
+
+Der Kanarienvogel lief zuerst (Lehre 18.09.): kämen schon bei den frisch geprüften massenhaft
+«weg», drosselte CJ, und jede Aussage über die alten wäre erfunden gewesen — der Lauf hätte
+abgebrochen statt ein Massenurteil zu fällen. Er war sauber, also gilt die Zahl.
+
+**Die Wiedervorlage wäre Arbeit ohne Ertrag gewesen.** Ehrlich bleibt: n=77 kann eine seltene
+Rate nicht ausschliessen — nach der Dreierregel liegt die Obergrenze bei rund 4 %. Aber sie
+schliesst aus, dass hier ein stiller Dauerschaden läuft, und mehr sollte die Messung nicht
+leisten. Die drei «nicht mehr aktiv» zeigen nebenbei, dass die anderen Wächter arbeiten.
+
+⚠️ Beim Start ein eigener Fehler, klein aber lehrreich: den Hintergrundlauf durch `| tail -30`
+gepipet. **Eine Pipe durch `tail` puffert bis zum Prozessende** — 15 Minuten lang sah die
+Ausgabedatei aus wie ein toter Lauf, obwohl jede Zeile brav mit `flush=True` geschrieben wurde.
+Für Hintergrundläufe nie durch `tail` pipen.
+
 ## 2026-09-20 · 🎯 Vierzig von vierzig Treffern — und kein einziger war ein Fund
 
 Die Ampel meldete einen hängenden Bot-Auftrag; dahinter lag der eigentliche Befund. Die Quittung
