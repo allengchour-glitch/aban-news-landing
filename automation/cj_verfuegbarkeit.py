@@ -166,6 +166,12 @@ def gql(q, v=None):
     raise RuntimeError("Shopify antwortet nicht (alle Versuche erschoepft) — Lauf abgebrochen, damit nichts falsch quittiert wird. Letzter Grund: " + grund)
 
 
+_unklar_grund = {"g": ""}
+UNKLAR_LEDGER = "dropship/_cj_verfuegbarkeit_unklar.txt"
+UNKLAR_WIEDERVORLAGE_S = 24 * 3600
+EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
+EXPORT_MAX_ALTER_S = 36 * 3600
+LIMIT = int(os.environ.get("LIMIT", "0"))
 UUID = re.compile(r'^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$', re.I)
 
 
@@ -186,10 +192,20 @@ def cj_kennt(sku):
     if re.fullmatch(r'[0-9]{10,}', kern) or UUID.fullmatch(kern):
         d = cj(f"/api2.0/v1/product/variant/query?pid={kern}")
     else:
+        # ⚠️ 21.09.2026: Manche Importe haengen den VARIANTENNAMEN an die SKU
+        # («CJ-CJYD292034601AZ-Extended Length 4Piece Set»). Das Format-Regex lehnte das ab,
+        # BEVOR ein Grund gesetzt wurde — diese Produkte waren in jedem Lauf «unklar/unbekannt»
+        # und konnten nie geprueft werden (gemessen: 9 Dauer-Unklare, 104 Wiederholungen).
+        # Die CJ-Varianten-SKU ist der fuehrende Block aus Buchstaben+Ziffern; der Rest ist Deko.
+        m = re.match(r'([A-Za-z]{2,4}\d{6,}[A-Za-z]{0,3})', kern)
+        if m and m.group(1) != kern:
+            kern = m.group(1)
         if not re.fullmatch(r'[A-Za-z0-9._-]{6,40}', kern):
+            _unklar_grund["g"] = f"SKU-Form nicht pruefbar: {s[:40]!r}"
             return None
         d = cj(f"/api2.0/v1/product/query?variantSku={kern}")
     if d is None:
+        _unklar_grund["g"] = "keine CJ-Antwort (Netz/Drossel)"
         return None                      # Netz/Drossel -> unklar
     code = str(d.get("code"))
     if code == "200":
@@ -198,6 +214,7 @@ def cj_kennt(sku):
             return bool(data.get("variants") or data.get("pid"))
         if isinstance(data, list):
             return bool(data)
+        _unklar_grund["g"] = "Code 200 ohne verwertbare data"
         return None
     # CJ meldet Nichtgefunden mit eigenem Code; alles andere ist ein Fehler, kein Beweis
     # 14.09.: Code 1602002 «Product has been removed from shelves» ist die EINDEUTIGE Absage
@@ -208,6 +225,7 @@ def cj_kennt(sku):
     txt = (d.get("message") or "").lower()
     if "not exist" in txt or "not found" in txt or "no data" in txt:
         return False
+    _unklar_grund["g"] = f"CJ-Code {code}: {str(d.get('message') or '')[:60]}"
     return None
 
 
@@ -238,56 +256,132 @@ def main():
             print("alten Cursor entfernt (blockierte seit 16.09. alle Neuzugaenge)", flush=True)
         except OSError:
             pass
-    cur = None
     done = set()
     if os.path.exists(LEDGER):
         done = {l.split("\t")[0] for l in open(LEDGER)}
+    # ⚠️ 21.09.2026 — DER VOLL-DURCHLAUF WAR DIE HAUPTQUELLE DES EIMER-STURMS. Gemessen: jeder
+    # Lauf blaetterte den GANZEN Katalog (~810 Shopify-Seiten a 60 Produkte, ~60-100 Punkte je
+    # Seite = 50'000-80'000 Punkte), nur um die ~250 noch nicht geprueften zu finden — und das
+    # nach JEDEM stuendlichen Container-Neustart. Im Log stand 104-mal dieselbe Zeile
+    # «9 geprueft | unklar 9», weil die Zwischenausgabe je Seite feuerte und n bei 9 stand.
+    # Jetzt: Kandidaten = lokaler Export (taeglich, /tmp/export.jsonl) minus Ledger, SKUs in
+    # 50er-Buendeln (nodes(ids:)), plus Neuzugaenge seit Export-Zeit gezielt per created_at.
+    # Faellt der Export aus, bleibt das Voll-Paging als Rueckfall — laut angesagt.
+    # Dazu: «unklar» wandert in ein eigenes Ledger mit Zeit und Grund und wird hoechstens
+    # einmal am Tag wiederholt — dieselben 9 Produkte wurden sonst in jedem Lauf neu gefragt.
+    unklar_alt = {}
+    if os.path.exists(UNKLAR_LEDGER):
+        for l in open(UNKLAR_LEDGER):
+            t = l.rstrip("\n").split("\t")
+            if len(t) >= 2:
+                try: unklar_alt[t[0]] = float(t[1])
+                except ValueError: pass
+    jetzt = time.time()
+    frisch_unklar = {k for k, ts in unklar_alt.items() if jetzt - ts < UNKLAR_WIEDERVORLAGE_S}
     f = open(LEDGER, "a")
+    fu = open(UNKLAR_LEDGER, "a")
     n = weg = unklar = ok = 0
-    print(f"Start | schon geprüft {len(done)} | DRY={DRY}", flush=True)
+    naechster_druck = 300
+    print(f"Start | schon geprüft {len(done)} | unklar in Wiedervorlage {len(frisch_unklar)} | DRY={DRY}", flush=True)
 
-    while True:
-        d = gql('''query($c:String){ products(first:60,after:$c,
-                 query:"status:ACTIVE AND tag:cj-real", sortKey:CREATED_AT, reverse:true){
-                 pageInfo{hasNextPage endCursor}
-                 nodes{ id title variants(first:1){nodes{sku}} }}}''', {"c": cur})
-        pg = (d.get("data") or {}).get("products")
-        if not pg:
-            print("keine Shopify-Daten", flush=True); break
-        for p in pg["nodes"]:
-            if p["id"] in done:
-                continue
-            if _punkte["rest"] is not None and _punkte["rest"] < PUNKTE_RESERVE:
-                print(f"⏸️ Punkte-Restbudget {_punkte['rest']} < {PUNKTE_RESERVE} — "
-                      f"Audit pausiert, damit der Import weiterläuft.", flush=True)
-                print(f"Zwischenstand: {n} geprüft, {ok} ok, {weg} weg, {unklar} unklar")
-                return
-            v = p["variants"]["nodes"]
-            sku = v[0]["sku"] if v else ""
-            n += 1
-            res = cj_kennt(sku)
-            time.sleep(PAUSE)
-            if res is None:
-                unklar += 1
-                continue                 # bewusst NICHT ins Ledger: nächster Lauf prüft erneut
-            if res:
-                ok += 1
-                f.write(f"{p['id']}\tok\n")
-            else:
-                weg += 1
-                f.write(f"{p['id']}\tbei-cj-weg\t{sku}\n")
-                print(f"  ⛔ nicht mehr bei CJ: {p['title'][:55]} [{sku}]", flush=True)
-                if not DRY:
-                    gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
-                        {"i": {"id": p["id"], "status": "DRAFT"}})
-                    gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
-                        {"id": p["id"], "t": ["cj-nicht-mehr-verfuegbar"]})
-            f.flush()
-        if n and n % 300 < 60:
+    def _quelle_export():
+        """(id, title, sku) fuer aktive cj-real Produkte, die weder im Ledger noch in der
+        Unklar-Wiedervorlage stehen. None, wenn der Export fehlt oder zu alt ist."""
+        if not os.path.exists(EXPORT):
+            print(f"⚠️ Export {EXPORT} fehlt — Rueckfall auf Voll-Paging (teuer)", flush=True); return None
+        alter = jetzt - os.path.getmtime(EXPORT)
+        if alter > EXPORT_MAX_ALTER_S:
+            print(f"⚠️ Export {EXPORT} ist {alter/3600:.0f} h alt — Rueckfall auf Voll-Paging (teuer)", flush=True); return None
+        ids = []
+        with open(EXPORT, encoding="utf-8") as fh:
+            for zeile in fh:
+                try: d = json.loads(zeile)
+                except Exception: continue
+                if d.get("status") != "ACTIVE": continue
+                tags = d.get("tags") or []
+                if isinstance(tags, str): tags = [t.strip() for t in tags.split(",")]
+                if "cj-real" not in tags: continue
+                pid = d.get("id")
+                if not pid or pid in done or pid in frisch_unklar: continue
+                ids.append(pid)
+        export_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(os.path.getmtime(EXPORT)))
+        # Neuzugaenge seit dem Export — gezielt, wenige Seiten.
+        cur = None; neu = 0
+        while True:
+            d = gql('''query($c:String,$q:String){ products(first:60,after:$c,query:$q,
+                     sortKey:CREATED_AT, reverse:true){ pageInfo{hasNextPage endCursor} nodes{ id } }}''',
+                    {"c": cur, "q": f"status:ACTIVE AND tag:cj-real AND created_at:>={export_iso}"})
+            pg = (d.get("data") or {}).get("products") or {}
+            for p in pg.get("nodes") or []:
+                if p["id"] not in done and p["id"] not in frisch_unklar and p["id"] not in ids:
+                    ids.append(p["id"]); neu += 1
+            if not pg.get("pageInfo", {}).get("hasNextPage"): break
+            cur = pg["pageInfo"]["endCursor"]
+        print(f"Kandidaten: {len(ids)} (Export {alter/3600:.1f} h alt, davon {neu} Neuzugaenge seit Export)", flush=True)
+        # SKUs in 50er-Buendeln — statt 810 Seiten sind das len(ids)/50 Abfragen.
+        for k in range(0, len(ids), 50):
+            d = gql('''query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product {
+                     id title status variants(first:1){nodes{sku}} } } }''', {"ids": ids[k:k+50]})
+            for p in (d.get("data") or {}).get("nodes") or []:
+                if not p or p.get("status") != "ACTIVE": continue
+                v = (p.get("variants") or {}).get("nodes") or []
+                yield p["id"], p.get("title") or "", (v[0].get("sku") if v else "") or ""
+
+    def _quelle_paging():
+        cur = None
+        while True:
+            d = gql('''query($c:String){ products(first:60,after:$c,
+                     query:"status:ACTIVE AND tag:cj-real", sortKey:CREATED_AT, reverse:true){
+                     pageInfo{hasNextPage endCursor}
+                     nodes{ id title variants(first:1){nodes{sku}} }}}''', {"c": cur})
+            pg = (d.get("data") or {}).get("products")
+            if not pg:
+                print("keine Shopify-Daten", flush=True); return
+            for p in pg["nodes"]:
+                if p["id"] in done or p["id"] in frisch_unklar: continue
+                v = p["variants"]["nodes"]
+                yield p["id"], p["title"], (v[0]["sku"] if v else "")
+            if not pg["pageInfo"]["hasNextPage"]: return
+            cur = pg["pageInfo"]["endCursor"]
+
+    quelle = _quelle_export()
+    if quelle is None:
+        quelle = _quelle_paging()
+
+    for pid, title, sku in quelle:
+        if LIMIT and n >= LIMIT:
+            print(f"LIMIT {LIMIT} erreicht — Probelauf beendet", flush=True); break
+        if _punkte["rest"] is not None and _punkte["rest"] < PUNKTE_RESERVE:
+            print(f"⏸️ Punkte-Restbudget {_punkte['rest']} < {PUNKTE_RESERVE} — "
+                  f"Audit pausiert, damit der Import weiterläuft.", flush=True)
+            print(f"Zwischenstand: {n} geprüft, {ok} ok, {weg} weg, {unklar} unklar")
+            return
+        n += 1
+        _unklar_grund["g"] = ""
+        res = cj_kennt(sku)
+        time.sleep(PAUSE)
+        if res is None:
+            unklar += 1
+            fu.write(f"{pid}\t{time.time():.0f}\t{_unklar_grund['g'] or 'unbekannt'}\t{sku}\n"); fu.flush()
+            if unklar <= 12:
+                print(f"  ❔ unklar: {title[:50]} [{sku}] — {_unklar_grund['g'] or 'unbekannt'}", flush=True)
+            continue                 # bewusst NICHT ins Haupt-Ledger: Wiedervorlage in 24 h
+        if res:
+            ok += 1
+            f.write(f"{pid}\tok\n")
+        else:
+            weg += 1
+            f.write(f"{pid}\tbei-cj-weg\t{sku}\n")
+            print(f"  ⛔ nicht mehr bei CJ: {title[:55]} [{sku}]", flush=True)
+            if not DRY:
+                gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
+                    {"i": {"id": pid, "status": "DRAFT"}})
+                gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
+                    {"id": pid, "t": ["cj-nicht-mehr-verfuegbar"]})
+        f.flush()
+        if n >= naechster_druck:
+            naechster_druck += 300
             print(f"  {n} geprüft | ok {ok} | weg {weg} | unklar {unklar} | Punkte {_punkte['rest']}", flush=True)
-        if not pg["pageInfo"]["hasNextPage"]:
-            break
-        cur = pg["pageInfo"]["endCursor"]        # nur INNERHALB dieses Laufs, nichts auf Platte
     print(f"FERTIG: {n} geprüft, {ok} ok, {weg} nicht mehr verfügbar, {unklar} unklar")
 
 
