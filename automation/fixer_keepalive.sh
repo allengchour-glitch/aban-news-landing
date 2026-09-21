@@ -718,8 +718,10 @@ while true; do
     if [ "$ALTER" -gt 86400 ]; then
       touch "$KOS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c '
-          python3 automation/kosten_export_bauen.py
+          python3 automation/kosten_export_bauen.py &&
           SIGNATUR=1 LIMIT=400 python3 automation/kosten_boden15_korrigieren.py' >> "$KOS" 2>&1 9>&- & )
+      # 21.09.: && — der Export-Bauer gibt bei unvollstaendigem Download Exit 3; vorher lief der
+      # Verbraucher trotzdem und starb jede Nacht an einem JSONDecodeError (Log 02:13).
       echo "$(date -u +%H:%M) kostenwahrheit nachgezogen"
     fi
   fi

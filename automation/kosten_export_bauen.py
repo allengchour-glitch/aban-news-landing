@@ -84,7 +84,7 @@ def main():
         if o.get("status") == "COMPLETED":
             if not o.get("url"):
                 print("PAUSE: fertig, aber ohne URL")
-                return
+                return 3   # 21.09.: Exit ≠ 0, damit die Aufseher-Kette (&&) den Verbraucher NICHT startet
             subprocess.run(["curl", "-sL", "--max-time", "600", "-o", ZIEL, o["url"]])
             # ⚠️ 21.09.2026: Hier wurden nur Zeilen GEZAEHLT. Gemessen: /tmp/kost28.jsonl war
             # exakt so gross wie gemeldet (17'719'296 Bytes, 58'905 Zeilen) — und die letzte
@@ -111,7 +111,7 @@ def main():
                 print(f"PAUSE: Export UNVOLLSTAENDIG — letzte Zeile {'lesbar' if ende_ok else 'ABGESCHNITTEN'}, "
                       f"{n} Zeilen gegen objectCount {soll}. Datei nach {kaputt} verschoben, "
                       f"naechster Lauf holt neu.")
-                return
+                return 3   # 21.09.: Exit ≠ 0 — vorher lief kosten_boden15_korrigieren trotzdem und starb am JSON
             print(f"FERTIG: {ZIEL} — {os.path.getsize(ZIEL)} Bytes, {n} Zeilen (objectCount {soll}, letzte Zeile geprueft)")
             return
         if o.get("status") in ("FAILED", "CANCELED"):
