@@ -68,7 +68,7 @@ Aufruf:  DRY_RUN=1 python3 automation/pod_designzwang.py   (nur zeigen)
          python3 automation/pod_designzwang.py             (schreiben)
 Token:   /tmp/cj_shop_token.txt
 """
-import json, os, re, subprocess, sys, tempfile
+import json, os, re, subprocess, sys, tempfile, time
 
 SHOP = "au3j0y-hq.myshopify.com"
 API = "2024-10"
@@ -78,7 +78,7 @@ DRY = os.environ.get("DRY_RUN") == "1"
 MARK = "LSPOD-DESIGNZWANG"
 
 
-def gql(query, variables=None):
+def gql(query, variables=None, _drossel=0):
     payload = json.dumps({"query": query, "variables": variables or {}})
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
         f.write(payload)
@@ -94,6 +94,13 @@ def gql(query, variables=None):
     except Exception:
         raise SystemExit("Keine Antwort von Shopify (Regel 6: das ist kein Ergebnis): " + out[:300])
     if "errors" in d:
+        # 21.09.2026: Eine Drossel ist kein Fehler, sondern eine Wartezeit — Shopify nennt sie.
+        if "THROTTLED" in json.dumps(d["errors"]).upper() and _drossel < 12:
+            _k = (d.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
+            _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+            _r = float(_t.get("restoreRate") or 0)
+            time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
+            return gql(query, variables, _drossel + 1)
         raise SystemExit("GraphQL-Fehler: " + json.dumps(d["errors"])[:500])
     return d["data"]
 

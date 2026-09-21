@@ -122,7 +122,7 @@ ENTSCHEIDUNG
 Aufruf:  python3 automation/versandprofil_poster.py            # Probelauf (nur zeigen)
          python3 automation/versandprofil_poster.py --scharf   # schreiben
 """
-import json
+import json, time
 import os
 import sys
 import urllib.request
@@ -144,14 +144,21 @@ def gql(query, variables=None):
     body = json.dumps({"query": query, "variables": variables or {}}).encode()
     req = urllib.request.Request(SHOP, data=body, headers={
         "X-Shopify-Access-Token": token, "Content-Type": "application/json"})
-    for versuch in range(4):
+    for versuch in range(12):        # 21.09.: 4 → 12, Drosseln brauchen Geduld
         try:
             antwort = json.loads(urllib.request.urlopen(req, timeout=60).read())
         except Exception as e:
-            if versuch == 3:
+            if versuch == 11:
                 raise RuntimeError("Shopify nicht erreichbar: %s" % e)
             continue
         if antwort.get("errors"):
+            # 21.09.2026: Drossel ≠ Fehler — Wartezeit aus throttleStatus, dann neuer Versuch.
+            if "THROTTLED" in json.dumps(antwort["errors"]).upper():
+                _k = (antwort.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
+                _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                _r = float(_t.get("restoreRate") or 0)
+                time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
+                continue
             raise RuntimeError("GraphQL-Fehler: %s" % json.dumps(antwort["errors"])[:400])
         return antwort["data"]
     raise RuntimeError("unerreichbar")

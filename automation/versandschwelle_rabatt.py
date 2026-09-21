@@ -90,10 +90,10 @@ AUFRUFE
 -------
     python3 automation/versandschwelle_rabatt.py              # DRY, zeigt alles
     python3 automation/versandschwelle_rabatt.py --scharf     # setzt Tarif + Leiste
-    python3 automation/versandschwelle_rabatt.py --pruefen    # nur Wache (exit 1 bei Drift)
+    python3 automation/versandschwelle_rabatt.py --pruefen    # nur Wache (exit 3 bei Drift, 1 bei Absturz)
 """
 
-import json
+import json, time
 import os
 import sys
 import urllib.request
@@ -133,11 +133,22 @@ def gql(query, variables=None):
     req = urllib.request.Request(
         SHOP, data=body,
         headers={"X-Shopify-Access-Token": token(), "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        d = json.loads(r.read())
-    if "errors" in d:
-        raise RuntimeError(json.dumps(d["errors"], ensure_ascii=False))
-    return d["data"]
+    # ⚠️ 21.09.2026: Ohne Wiederholung — jede Drossel war ein Traceback, und der Aufseher
+    # machte daraus einen Fachbefund. Shopify sagt in throttleStatus, wie lange zu warten ist.
+    grund = "kein Versuch ausgefuehrt"
+    for drossel in range(12):
+        with urllib.request.urlopen(req, timeout=60) as r:
+            d = json.loads(r.read())
+        if "errors" not in d:
+            return d["data"]
+        grund = json.dumps(d["errors"], ensure_ascii=False)
+        if "THROTTLED" not in grund.upper():
+            raise RuntimeError(grund)
+        _k = (d.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
+        _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+        _r = float(_t.get("restoreRate") or 0)
+        time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
+    raise RuntimeError("12x gedrosselt: " + grund)
 
 
 def notiere(zeile):
@@ -297,7 +308,7 @@ def main():
 
     if nur_wache:
         print("WACHE: Abweichung gefunden.")
-        return 1
+        return 3          # 21.09.: eigener Code — der Aufseher unterscheidet Befund (3) von Absturz (1)
     if not scharf:
         print("\nDRY — nichts geschrieben. Mit --scharf ausfuehren.")
         return 0

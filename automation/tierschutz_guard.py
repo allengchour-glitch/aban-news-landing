@@ -41,7 +41,7 @@ def token():
 TOK = token()
 
 
-def gql(query, variables=None, tries=4):
+def gql(query, variables=None, tries=12):   # 21.09.: 4 → 12, Drosseln brauchen Geduld
     body = json.dumps({'query': query, 'variables': variables or {}}).encode()
     last = None
     for i in range(tries):
@@ -53,6 +53,13 @@ def gql(query, variables=None, tries=4):
             if d.get('data'):
                 return d
             last = d
+            # 21.09.2026: Drossel erkannt → Wartezeit aus Shopifys throttleStatus statt blind.
+            if 'THROTTLED' in json.dumps(d.get('errors') or '').upper():
+                _k = (d.get('extensions') or {}).get('cost') or {}; _t = _k.get('throttleStatus') or {}
+                _f = float(_k.get('requestedQueryCost') or 0) - float(_t.get('currentlyAvailable') or 0)
+                _r = float(_t.get('restoreRate') or 0)
+                time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
+                continue
         except Exception as e:                      # noqa: BLE001
             last = {'exc': str(e)}
         time.sleep(2 + i * 2)

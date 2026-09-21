@@ -95,11 +95,15 @@ def gql(q, v=None, tok=None):
     r = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json", data=d,
                                headers={"X-Shopify-Access-Token": tok,
                                         "Content-Type": "application/json"})
-    for _ in range(6):
+    for _ in range(16):              # 21.09.: 6 → 16, Drosseln brauchen Geduld
         try:
             j = json.loads(urllib.request.urlopen(r, timeout=60).read())
             if any("THROTTL" in str(e.get("extensions", {})) for e in j.get("errors") or []):
-                time.sleep(3); continue
+                # 21.09.2026: Wartezeit aus Shopifys throttleStatus statt fester 3 s.
+                _k = (j.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
+                _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                _r = float(_t.get("restoreRate") or 0)
+                time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0); continue
             return j
         except urllib.error.HTTPError as e:
             if e.code == 429:

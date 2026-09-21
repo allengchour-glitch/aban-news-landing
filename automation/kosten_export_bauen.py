@@ -86,8 +86,33 @@ def main():
                 print("PAUSE: fertig, aber ohne URL")
                 return
             subprocess.run(["curl", "-sL", "--max-time", "600", "-o", ZIEL, o["url"]])
+            # ⚠️ 21.09.2026: Hier wurden nur Zeilen GEZAEHLT. Gemessen: /tmp/kost28.jsonl war
+            # exakt so gross wie gemeldet (17'719'296 Bytes, 58'905 Zeilen) — und die letzte
+            # Zeile 16 Bytes lang: `{"id":"gid:\/\/s`. Der Download brach ab, «FERTIG» stand
+            # trotzdem im Log, und der Verbraucher (kosten_boden15_korrigieren) starb seither
+            # jede Nacht an einem JSONDecodeError. Eine Zeilenzahl ist keine Vollstaendigkeit.
+            # Pruefung: letzte Zeile muss JSON sein, und die Zeilenzahl muss zu Shopifys
+            # objectCount passen (objectCount zaehlt jedes Objekt = jede Zeile).
             n = sum(1 for _ in open(ZIEL))
-            print(f"FERTIG: {ZIEL} — {os.path.getsize(ZIEL)} Bytes, {n} Zeilen")
+            letzte = ""
+            with open(ZIEL, "rb") as fh:
+                fh.seek(max(0, os.path.getsize(ZIEL) - 65536)); letzte = fh.read().split(b"\n")
+                letzte = [z for z in letzte if z.strip()][-1] if any(z.strip() for z in letzte) else b""
+            try:
+                json.loads(letzte); ende_ok = True
+            except Exception:
+                ende_ok = False
+            soll = o.get("objectCount")
+            try: soll = int(soll) if soll not in (None, "") else None
+            except Exception: soll = None
+            if not ende_ok or (soll is not None and n != soll):
+                kaputt = ZIEL + ".kaputt"
+                os.replace(ZIEL, kaputt)
+                print(f"PAUSE: Export UNVOLLSTAENDIG — letzte Zeile {'lesbar' if ende_ok else 'ABGESCHNITTEN'}, "
+                      f"{n} Zeilen gegen objectCount {soll}. Datei nach {kaputt} verschoben, "
+                      f"naechster Lauf holt neu.")
+                return
+            print(f"FERTIG: {ZIEL} — {os.path.getsize(ZIEL)} Bytes, {n} Zeilen (objectCount {soll}, letzte Zeile geprueft)")
             return
         if o.get("status") in ("FAILED", "CANCELED"):
             print(f"PAUSE: Export {o.get('status')} {o.get('errorCode') or ''}")

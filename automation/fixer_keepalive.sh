@@ -1621,8 +1621,17 @@ JSON
   if [ -f "$REPO/automation/versandschwelle_rabatt.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$VR" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && python3 automation/versandschwelle_rabatt.py --pruefen >> "$VR" 2>&1 \
-        || echo "$(date -u +%F\ %H:%M) ⚠️ Versandschwelle passt nicht mehr zum höchsten Automatik-Rabatt" >> "$VR" )
+      # ⚠️ 21.09.2026: Hier stand `|| echo "⚠️ Versandschwelle passt nicht …"` — bei JEDEM Exit≠0.
+      # Ein Absturz (Drossel, Token, Netz) und der echte Fachbefund lieferten beide Code 1, und
+      # das Log meldete seit dem 10.09. TAEGLICH eine Abweichung, die es nie gab (jeder
+      # gelungene Lauf sagt «OK — nichts zu tun»). Ein Wrapper, der aus jedem Fehler den
+      # Fachbefund macht, erfindet Befunde. Jetzt: Exit 3 = Abweichung, sonst «nicht messbar».
+      ( cd "$REPO" && python3 automation/versandschwelle_rabatt.py --pruefen >> "$VR" 2>&1; rc=$?
+        case $rc in
+          0) ;;
+          3) echo "$(date -u +%F\ %H:%M) ⚠️ Versandschwelle passt nicht mehr zum höchsten Automatik-Rabatt" >> "$VR" ;;
+          *) echo "$(date -u +%F\ %H:%M) ⚠️ versandschwelle_rabatt NICHT MESSBAR (Exit $rc, meist Drossel) — kein Fachbefund" >> "$VR" ;;
+        esac )
       echo "$(date -u +%H:%M) versandschwelle_rabatt geprüft"
     fi
   fi

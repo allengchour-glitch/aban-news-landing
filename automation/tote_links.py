@@ -14,7 +14,7 @@ Links erzeugen.
 
 Meldet nur. Das Umhängen braucht eine Entscheidung: passender Ersatzartikel oder Kategorie?
 """
-import json, os, re, subprocess, sys, collections
+import json, os, re, subprocess, sys, collections, time
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read().strip()
@@ -23,7 +23,8 @@ TOK = os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").re
 def gql(q, v=None):
     with open("/tmp/_tl.json", "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
-    for _ in range(4):
+    drossel = 0; versuche = 0   # 21.09.: Drosseln zaehlen nicht als Fehlversuch
+    while versuche < 4:
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2024-10/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
@@ -33,8 +34,20 @@ def gql(q, v=None):
             d = json.loads(r.stdout)
             if d.get("data"):
                 return d
+            # ⚠️ 21.09.2026: hier wurde weder gewartet noch die Drossel erkannt — vier Anfragen
+            # in zwei Sekunden, dann Traceback. Shopify sagt in throttleStatus, wie lange.
+            if "THROTTLED" in str(d.get("errors") or "").upper():
+                drossel += 1
+                _k = (d.get("extensions") or {}).get("cost") or {}; _t = _k.get("throttleStatus") or {}
+                _f = float(_k.get("requestedQueryCost") or 0) - float(_t.get("currentlyAvailable") or 0)
+                _r = float(_t.get("restoreRate") or 0)
+                time.sleep(min(30.0, _f / _r + 0.5) if (_f > 0 and _r > 0) else 12.0)
+                if drossel < 12:
+                    continue
         except Exception:
             pass
+        versuche += 1
+        time.sleep(3)
     # ⚠️ 17.09.2026: Hier stand `return {}`. Gemessen an zwei Aufrufern in dieser
     # Klasse, was das anrichtet: `kollektion_leer.py` macht
     # `gql(...).get("collections")` → None → `if not d: break`, und
