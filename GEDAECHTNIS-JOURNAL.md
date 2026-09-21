@@ -43,6 +43,12 @@ erst ohne die letzten vier, Rückfall ganze SKU); `1602001` von dort ist «unkla
 Und der Text-Zweig (`not found`/`no data` → False) ist gestrichen — **sichere Absage ist allein
 `1602002`.** Formprobe ohne Netz an fünf SKU-Formen: jede landet am richtigen Endpunkt.
 
+**Nachtrag 11:20 — die Gegenprobe, die noch fehlte:** ist 1602002 auch für eine SKU zu haben, die es
+nie gab? Gemessen: `CJXX9999999`/`CJQQ1234567`/`CJXX999999901AZ` → alle **1602001** «not found»;
+`CJSJ1526877`/`CJMY2844437` → **1602002** «removed from shelves, pid:1548491 / pid:2046134» — die
+Absage nennt die pid des einst existierenden Produkts. **1602002 ist damit belegt eine Aussage über
+ein bekanntes Produkt, nicht über eine unbekannte Eingabe**; die 13 «wirklich weg» halten.
+
 **Lehren:** (1) Ein Muster, das eine Form «rettet», schickt sie an denselben Endpunkt wie
 vorher — die Frage «welche Anfrage ist für DIESE Form die richtige?» gehört vor das Muster.
 (2) Ein Wächter, der draftet, braucht für JEDE Absage einen Kanarienvogel: ein Produkt, das
