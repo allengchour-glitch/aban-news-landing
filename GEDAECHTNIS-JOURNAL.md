@@ -6,6 +6,30 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🔌 «mach alles selber und fix»: 29 Geräte mit unklarem Netzstecker — die Auswahl statt der Rate
+
+**Ausgang:** `cj_stecker_eu_setzen.py` hatte am 18.09. 32 Geräte eindeutig auf die EU-SKU gesetzt und 30 als
+«Farbe unbekannt» dem Betreiber gelassen (`STECKER-UNKLAR.md`). Der Betreiber sagte heute: selber machen. Eine
+Farbe zu raten wäre die #1018-Klasse in Grün — also bekommt jedes Gerät seine CJ-EU-Varianten als **echte Auswahl**
+(Option «Farbe», deutsch übersetzt), jede Variante mit ihrer EU-SKU. Das ist deterministisch und ehrlich.
+
+**Der Trockenlauf hat drei Fallen gezeigt, die eine blinde Regel gerissen hätte:** (1) der 2000-W-Haartrockner
+hätte ein Bündel «Buy 1 Get 8-Household 150CM Line» für **CHF 180.90** bekommen (CJ USD 44.78 gegen 3.69, 12×) —
+das sind keine Farben, das sind Sets, deren Inhalt niemand belegen kann → Entwurf; (2) beim «Anion-Lockenstab
+**mit Ionen**» wäre die günstigste EU-Variante die **ohne** Ionen gewesen — der Titel entscheidet, nicht der Preis;
+(3) «White 50W strip 4A and 6C» besteht den Farbwort-Test («White»), ist aber ein anderes Produkt. Darum: **nur
+reine Farbwerte** (jedes Token ein Farbwort) automatisch, Preisspreizung ≤ 2×, alles andere ausdrücklich im Code
+entschieden (`MANUELL`, sechs Fälle: Bündel → Entwurf, Ionen-Modell, «1 Akku / 2 Akkus + Ladegerät», «Modell 113/116»).
+
+**Und das Rücklesen hat gefangen, was der Code vergass:** der Ein-Varianten-Zweig setzte die SKU, nicht den Preis
+— «soll 24.90, ist 19.90 — NICHT quittiert». Ohne Rücklesen hätte das Ledger ein Produkt als fertig geführt, das
+zu billig verkauft. **Ein Schreibvorgang ist erst fertig, wenn das Objekt zurücksagt, was man wollte.**
+
+Ergebnis: 23 Farbauswahl (2–7 Werte), 4 Ausführungsauswahl, 1 eindeutige SKU, 1 Entwurf; Kanarienvogel im
+Schreibmodus zuerst; Storefront per WebFetch bestätigt («Farbe: Schwarz / Weiss», «Netzstecker: EU-Version»).
+Bilder je Farbe fehlen (Dateispeicher voll bis ~21.10.). `productOptionsCreate` mit `variantStrategy: CREATE`
+ersetzt bei Nur-Standardvariante die implizite «Title»-Option (Doku gelesen, nicht vermutet).
+
 ## 2026-09-21 · 🚧 Sechs Stunden ohne einen einzigen Tages-Wächter — die Schranke von heute Morgen hatte sich selbst ausgesperrt
 
 **Fund (16:13, nach dem Container-Neustart):** im Aufseher-Log stand nach jedem «restart X» eine Zeile

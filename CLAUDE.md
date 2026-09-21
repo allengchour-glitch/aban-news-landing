@@ -488,6 +488,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-21 · 🔌 **«mach alles selber und fix»: 29 Geräte mit unklarem Netzstecker — die Auswahl statt der Rate.** Jedes Gerät bekam seine CJ-EU-Varianten als echte Farb-/Ausführungsauswahl mit EU-SKU; der Trockenlauf zeigte drei Fallen (Bündel für CHF 180.90, günstigste Variante = OHNE Ionen, «White 50W strip» ist keine Farbe) → nur reine Farbwerte automatisch, sechs Fälle ausdrücklich im Code; das Rücklesen fing einen fehlenden Preis → Journal
 - 2026-09-21 · 🚧 **Sechs Stunden ohne einen Tages-Wächter — die Schranke von heute Morgen hatte sich selbst ausgesperrt.** Inline im `bash -c`-String schlossen die inneren Anführungszeichen den äusseren, `$_s` expandierte leer, der Rest lief als Dateiname: 89× «line 412: … No such file» im Aufseher-Log, **26… → Journal
 - 2026-09-21 · 🖥️ **Der grosse Hebel für «schneller automation» liegt nicht im Code, sondern im Schlaf des Containers.** Alle Tages-Wächter laufen nur in Session-Arbeitszeit. → Journal
 - 2026-09-21 · 🎨 **Zwei Shop-Varianten, eine CJ-SKU — «Grau» hätte Silber bestellt.** Zweiter Varianten-Lauf: Handsauger trägt an beiden Farben `…01AZ`, CJ führt `01AZ`+`02BY` → Fehlversand statt Ghost-Sale. → Journal
