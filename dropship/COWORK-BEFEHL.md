@@ -252,6 +252,25 @@ Liechtenstein-Wache).
 
 </details>
 
+## 7️⃣ Wächter auf den Hetzner-Server — «schneller automation», der grosse Hebel  ·  ~5 Minuten
+
+**Gemessen:** der Cloud-Container wird angehalten, sobald die Session nicht arbeitet (17.09.); alle
+Tages-Wächter (Ghost-Sale, Varianten, Versand, Bewertungen, Ampel …) laufen nur in meiner Arbeitszeit.
+Der Server schläft nicht. Das Setup-Skript ist fertig und idempotent: `server/luxe-waechter-setup.sh`
+(eigener Klon, feste Pfade nachgebildet, systemd-Timer alle 10 Minuten).
+
+**Was nur du kannst (Geheimnisse gehören nicht ins öffentliche Repo):**
+1. Auf dem Server als root: `bash /opt/luxe-agent/repo/server/luxe-waechter-setup.sh` — beim ersten
+   Lauf legt es `/etc/luxe/secrets.env.VORLAGE` an und bricht ab.
+2. Vorlage ausfüllen (Shopify Client-ID/Secret der Custom-App `autopilot2`, CJ E-Mail + API-Key,
+   Judge.me-Token), nach `/etc/luxe/secrets.env` umbenennen, `chmod 600`.
+3. Skript nochmal ausführen. Prüfen: `systemctl status luxe-waechter.timer` und
+   `tail /tmp/fixer_keepalive.log` auf dem Server.
+
+**Quittung:** keine Datei nötig — sobald der Server pusht, tragen die Ledger-Commits den Autor
+`luxe-waechter`; `git log --author=luxe-waechter` zeigt es, und die Ampel meldet «Wächter laufen auf
+dem Server», sobald ein solcher Commit jünger als 2 h ist.
+
 ## 5️⃣ Liechtenstein — zugesagt, aber die Kasse lässt niemanden durch  ·  ~2 Minuten
 
 **Der Befund, gemessen am 19.09.2026:**

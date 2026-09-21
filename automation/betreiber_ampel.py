@@ -12,7 +12,7 @@ sobald es behoben ist. Nur der unmessbare Rest wird gezählt, nicht behauptet.
 
 Gibt genau eine Zeile aus (oder nichts, wenn nichts blockiert). MELDET NUR.
 """
-import json, os, re, subprocess, sys, urllib.request, datetime
+import subprocess, json, os, re, subprocess, sys, urllib.request, datetime
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOP = "au3j0y-hq.myshopify.com"
@@ -368,6 +368,21 @@ def liechtenstein_gesperrt():
             "streichen. Anleitung: COWORK-BEFEHL.md Punkt 5")
 
 
+def server_waechter():
+    """Laufen die Waechter schon auf dem Hetzner-Server? Zustand statt Quittung: ein Commit des
+    Autors «luxe-waechter», juenger als 2 h, belegt es (der Server-Aufseher committet seine Ledger
+    selbst). Fehlt er, bleibt der Ruf — COWORK Punkt 7 (21.09.2026, «schneller automation»)."""
+    try:
+        out = subprocess.run(["git", "-C", REPO, "log", "--since=2 hours ago", "--author=luxe-waechter",
+                              "-1", "--format=%cI"], capture_output=True, text=True, timeout=20).stdout.strip()
+    except Exception:
+        return None                      # nicht messbar → kein erfundener Befund
+    if out:
+        return None                      # Server pusht → Zeile verschwindet von selbst
+    return ("🖥️ Waechter laufen nur in Session-Arbeitszeit — Setup auf dem Hetzner-Server "
+            "(5 Min, server/luxe-waechter-setup.sh, COWORK Punkt 7)")
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -384,7 +399,7 @@ def offene_punkte():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

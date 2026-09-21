@@ -176,3 +176,20 @@ Auftrag wiederverwendet.
   (`server/harden-ssh.sh`, Schlüssel-Login erzwingen).
 - Die IP steht bereits öffentlich im Repo (`PROJEKT.md`). Das ist kein Geheimnis, aber
   ein Grund mehr für Schlüssel-Login, `fail2ban` und eine enge ufw-Regel.
+
+
+## Wächter auf dem Server (21.09.2026, «schneller automation»)
+
+Der Cloud-Container schläft, sobald die Session nicht arbeitet — alle Tages-Wächter bekommen nur
+Arbeitsstunden. `server/luxe-waechter-setup.sh` lässt den Aufseher (`fixer_keepalive.sh`) dauerhaft
+auf dem Server laufen: eigener Klon `/opt/luxe-waechter/repo` (nicht der Agenten-Klon — dessen
+`checkout -B` würde Ledger-Schreibvorgänge verwerfen), feste Pfade nachgebildet
+(`/home/user/aban-news-landing` → Klon, `/opt/node22` → Node; 26 bzw. 33 Skripte tragen sie fest),
+Geheimnisse aus `/etc/luxe/secrets.env` (root, 600) werden bei jedem Lauf nach `/tmp` gelegt, wie
+260 Skripte sie lesen; Shopify-Token per Client-Credentials alle 6 h, CJ-Token alle 10 Tage.
+systemd-Timer alle 10 Minuten ruft `engine_keepalive.sh`. Betreiber-Schritte: COWORK-BEFEHL Punkt 7.
+Ampel-Zeile «🖥️ Wächter laufen nur in Session-Arbeitszeit» verschwindet, sobald ein Commit von
+`luxe-waechter` jünger als 2 h im Log steht. ⚠️ Beide Aufseher (Cloud + Server) gleichzeitig sind
+unschädlich: alle Wächter sind ledger-idempotent, die Autocommitter mergen; doppelte CJ-Punkte
+bleiben — nach gelungenem Server-Start die Cloud-Routine `trig_01Uy3zVefXbzCZn9Dr2qvkwh` auf
+2 h strecken.
