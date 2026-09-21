@@ -22,7 +22,10 @@ Env: LIMIT (Produkte je Lauf, Std. 300), DRY=1 (nur messen), RECHECK_TAGE (Std. 
 """
 import os, sys, re, json, time, fcntl, subprocess
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# ⚠️ Der Aufseher startet die /tmp-KOPIE (`python3 /tmp/cj_varianten_wache.py`); ein aus
+# __file__ abgeleitetes REPO waere dann «/» — gemessen beim ersten Lauf: FileNotFoundError auf
+# das Ledger. Fester Pfad, wie bei den anderen Reinigern.
+REPO = os.environ.get("REPO", "/home/user/aban-news-landing")
 os.chdir(REPO)
 LEDGER = "dropship/_cj_varianten_wache.txt"
 EXPORT = "/tmp/export.jsonl"
