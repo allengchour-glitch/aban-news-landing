@@ -6,6 +6,32 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🚧 Geduld reicht nicht, wenn alle gleichzeitig warten — die Schranke
+
+Nach den Geduld-Patches die Gegenprobe am echten Fall: die vier heute früh gestorbenen Reiniger
+liefen um 09:42 mit neuem Code wieder an — und **`lagerstand_hygiene` starb erneut**, diesmal mit
+dem Grund, den der Helfer jetzt nennt: «12x gedrosselt (Eimer dauerhaft leer)».
+
+**Gemessen 09:44: Eimer 15 / 19 / 18 von 2'000 über zehn Sekunden.** Drei laufende Scanner
+(`sku_dup_scan` sammelt alle 51'000 Produkte, `farbe_metafeld`, `seo_versandschwelle_fix`) hielten ihn
+dauerhaft leer. Rechnung: jede gerechnete Wartezeit setzt voraus, dass in der Zwischenzeit niemand
+sonst zieht — wachen drei zugleich auf, leeren sie ihn zugleich wieder. **Geduld je Wächter ist eine
+Aussage über einen Wächter; der Eimer ist eine Aussage über alle.** Dieselbe Klasse wie die zwölf
+CJ-Runner in drei Generationen (20.08.), nur mit korrektem Code.
+
+Zwei Hebel im Aufseher, beide von aussen (Lehre 0f — Selbstprüfung ist nie die einzige):
+1. **Schranke:** an beiden Startstellen bekommt jeder Lauf einen von **zwei** `flock`-Plätzen oder
+   wartet bis 15 min. Der Platz hängt am `exec`-Deskriptor, wird an `python` vererbt und vom Kernel
+   beim Prozessende freigegeben — keine PID-Datei, die nach einer Container-Pause lügt. Sandbox-Probe:
+   drei Prozesse, zwei Plätze → 1 und 3 sofort, 2 «wartet» und läuft, sobald einer frei ist.
+2. **Cooldown der 13 Reiniger 30 min → 4 h.** Der Container startet etwa stündlich neu; mit 30 min
+   Abkühlzeit begann jeder Katalog-Scanner nach jedem Neustart von vorn (`seo_versandschwelle_fix`:
+   19'324 Produkte geprüft, **0** korrigiert — alle halbe Stunde). Tagesreiniger, keine Bestellwächter.
+
+Zusammen mit dem Umbau von `cj_verfuegbarkeit` (810 Seiten → ~10 Abfragen) sind das drei Schichten
+gegen denselben Sturm: weniger Abfragen, weniger Gleichzeitigkeit, mehr Geduld — in dieser Reihenfolge
+der Wirkung. Verifikation nach dem Neustart des Aufsehers steht unten nach.
+
 ## 2026-09-21 · 📚 «9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde
 
 Beim Nachsehen, warum `cj_verfuegbarkeit` dieselbe Zeile **104-mal** ins Log schrieb («9 geprüft | ok 0 |

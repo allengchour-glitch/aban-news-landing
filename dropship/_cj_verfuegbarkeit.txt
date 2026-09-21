@@ -49070,3 +49070,6 @@ gid://shopify/Product/15428299194753	ok
 gid://shopify/Product/15428300112257	ok
 gid://shopify/Product/15447901831553	ok
 gid://shopify/Product/15447911760257	ok
+gid://shopify/Product/15448834146689	ok
+gid://shopify/Product/15449056903553	bei-cj-weg	CJ-CJWY278630501AZ
+gid://shopify/Product/15449401885057	bei-cj-weg	CJ-CJJT1626220-Horizontal rectangle
