@@ -85,6 +85,23 @@ Die Klasse ist also **seltener als befürchtet** (0 von 200 mehrvariantigen), ab
 gefundene Fall hatte acht kaufbare Geister. ~12 s je Produkt (CJ-Takt geteilt mit dem
 Bewertungs-Importer) → volle Runde ~2–3 Wochen im 4-h-Takt.
 
+**Nachtrag 16:10 — der zweite Lauf brachte drei Klassen, die der erste nicht sehen konnte:**
+(1) **Falsche Farbe, die geliefert würde:** Akku-Handsauger, zwei Shop-Varianten tragen dieselbe
+CJ-SKU `…01AZ` (Silber und Grau), CJ führt `01AZ` und `02BY`. Ein Kauf von «Grau» hätte beim
+Lieferanten Silber bestellt — kein Ghost-Sale, sondern ein Fehlversand mit Retoure. Erkannt als
+«doppelter Kern», repariert über CJs **`variantKey`** («English PackagingGray» — `variantNameEn`
+trägt den Produktnamen davor und trifft nie); nur bei eindeutigem Namens-Treffer, sonst unklar.
+Gegenprobe: `CJ-CJYD292660002BY` steht jetzt am Grau. (2) **CJs eigene variantSku trägt teils
+den Namen** («CJXFJTDS00043-Filter element») — mein Kern-Vergleich stempelte beide Wasserhahn-
+Varianten als «fehlend»; vorhanden ist, was **roh oder als Kern** trifft, und «doppelt» ist nur,
+wessen rohe SKU nicht selbst bei CJ lebt. (3) **SKU-Formen ohne Buchstaben-Suffix**
+(`CJZJ25718660001`) gaben 1602001, weil die Produkt-SKU auch dort «minus vier Zeichen» ist —
+gemessen: `CJZJ2571866` → 200, 8 Varianten, und `variantSku=<voll>` liefert dasselbe Produkt;
+fünf Nagellampen/Taschen/Plektren waren so «unklar», die Plektren hatten eine tote Variante (Blau
+→ DENY). Folge: `unklar` gilt in jedem Lauf als offen, und alle 830 vor dem Fassungswechsel
+geprüften Produkte sind wieder fällig — **eine Prüfung ohne die Frage ist keine Prüfung.**
+
+
 ## 2026-09-21 · 🔁 Mein Regex von heute früh hat 68 kaufbare Produkte aus dem Verkauf genommen — und die alte Fassung tat es seit Wochen
 
 **Der Fund kam aus dem Nachlesen, nicht aus einer Meldung.** Der Nachhol-Lauf über die 20

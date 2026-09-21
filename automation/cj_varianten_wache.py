@@ -194,7 +194,10 @@ def main():
                 try: done[t[0]] = float(t[1])
                 except ValueError: pass
     jetzt = time.time()
-    frisch = {p for p, ts in done.items() if jetzt - ts < RECHECK_S}
+    # Fassungswechsel 21.09. 16:10 UTC: Doppel-SKU-Erkennung und roh-oder-Kern-Vergleich sind neu —
+    # alles, was davor «ok» war, wurde ohne diese Fragen geprueft und ist wieder faellig.
+    FASSUNG_TS = 1790003397
+    frisch = {p for p, ts in done.items() if jetzt - ts < RECHECK_S and ts >= FASSUNG_TS}
     kand = kandidaten(frisch)
     if os.environ.get("NUR_PID"):          # Gegenprobe: ein bekannter Fall muss ein «1» ergeben
         kand = [os.environ["NUR_PID"]]
