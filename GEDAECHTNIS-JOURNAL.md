@@ -6,6 +6,38 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🧩 Das Produkt lebt, die Farbe ist tot — und die Wache fragte nur nach dem Produkt
+
+**Der Fall:** Der einzige «PRODUKT-DA-VARIANTE-WEG»-Eintrag im Unklar-Ledger, ein zweiteiliger
+Trainingsanzug. CJ antwortet für die Produkt-SKU `CJWL2960714` mit 200 und 32 Varianten — Braun,
+Schwarz, Khaki, Grün. Im Shop stehen 40 Varianten, davon **8 in Blau, die CJ nicht mehr führt**,
+alle mit Menge 0 und `inventoryPolicy CONTINUE`: kaufbar, nicht lieferbar. Genau die Ghost-Sale-
+Klasse der Bestellungen #1006/#1008/#1009, nur eine Ebene tiefer.
+
+**Warum keine Wache es sah:** `cj_verfuegbarkeit.py` stellt je Produkt EINE Frage («gibt es die
+erste SKU noch?»). Fällt die erste Variante, meldet er «Variante weg, Produkt da» und stoppt;
+fällt eine andere, meldet er «ok». **Eine Ja/Nein-Frage auf Produktebene kann eine Teilmenge
+nicht sehen.** Gemessen über Export + Optionen-Export: **18'787 aktive CJ-Produkte sind
+mehrvariantig, geschätzt ~420'000 Varianten** — jedes davon kann diese Klasse tragen.
+
+**Sofort:** die 8 blauen auf DENY (`productVariantsBulkUpdate`), Gegenprobe 8 DENY / 32 CONTINUE,
+Ledger-Zeile mit Grund. Nichts gelöscht — DENY ist umkehrbar und zeigt der Kundin «ausverkauft»
+statt eines Kaufs, der nie ankommt.
+
+**Dauerhaft: `automation/cj_varianten_wache.py`**, neuer Tages-Reiniger im Aufseher (4-h-Takt,
+zwei Shopify-Plätze, flock auf festem Pfad). Je mehrvariantigem Produkt EINE CJ-Anfrage, die alle
+lebenden Varianten liefert; Shop-Varianten, die fehlen und CONTINUE sind → DENY. Drei Wachen
+gegen die eigene Geschichte: (1) **Kanarienvogel** vor jedem Lauf — `CJWL2960714` muss ≥30
+Varianten liefern, sonst kein Urteil (eine gedrosselte Antwort sähe sonst wie «alles weg» aus);
+(2) **fehlen ALLE Shop-Varianten, ist das kein Befund, sondern ein Verdacht auf falsche
+SKU-Ableitung** → unklar, nichts anfassen (die Lehre von heute Vormittag, 68 Produkte);
+(3) 1602002 bleibt dem Produkt-Wächter — zwei Wächter, die dasselbe draften, sind die
+Doppelstart-Klasse. Positiv-Gegenprobe per `NUR_PID` am echten Fall: «8 von 40 Varianten bei
+CJ weg» — **ein Wächter, der 0 meldet, muss vorher gezeigt haben, dass er 8 kann.** Der erste
+Trockenlauf über 25 Produkte ergab 0 — ohne die Gegenprobe wäre das eine stille Null gewesen.
+Ledger mit 30-Tage-Wiedervorlage, `LIMIT` 300 je Lauf (~18'787 in gut zwei Wochen, danach nur
+Wiedervorlage).
+
 ## 2026-09-21 · 🔁 Mein Regex von heute früh hat 68 kaufbare Produkte aus dem Verkauf genommen — und die alte Fassung tat es seit Wochen
 
 **Der Fund kam aus dem Nachlesen, nicht aus einer Meldung.** Der Nachhol-Lauf über die 20
