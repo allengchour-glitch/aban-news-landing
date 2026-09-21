@@ -1,11 +1,11 @@
-# Klassen-Kontrolle (VOLLSCAN, 51335 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 51331 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
 > Nach dem Lauf wird jede Arbeitsliste am OBJEKT nachgezaehlt: waehrend eines
 > Vollscans reparieren die Waechter weiter, die Zahl von vorhin ist nicht der Stand jetzt.
 
-## USA-Lieferzusage im Text — 996
+## USA-Lieferzusage im Text — 849 (waehrend des Laufs 987 gezaehlt, seither repariert)
 
 Der Shop liefert NUR in die Schweiz — eine USA-Zusage ist unerfuellbar (Lehre 14.08.).
 
@@ -38,9 +38,9 @@ Vollstaendige Liste: `dropship/_klassen/usa-lieferzusage-im-text.txt`
 - `15412302512513` Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
 - `15412304707969` Übersetzer-Kopfhörer – 144 Sprachen, Echtzeit, Bluetooth 5.3
 - `15412304773505` Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser
-- … und 971 weitere
+- … und 824 weitere
 
-## EU-Lieferzusage im Text — 996
+## EU-Lieferzusage im Text — 849 (waehrend des Laufs 987 gezaehlt, seither repariert)
 
 Gleiche Klasse wie USA: es gibt genau EINEN aktiven Markt (Schweiz).
 
@@ -73,9 +73,9 @@ Vollstaendige Liste: `dropship/_klassen/eu-lieferzusage-im-text.txt`
 - `15412302512513` Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichtet
 - `15412304707969` Übersetzer-Kopfhörer – 144 Sprachen, Echtzeit, Bluetooth 5.3
 - `15412304773505` Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser
-- … und 971 weitere
+- … und 824 weitere
 
-## «Produktdetails» doppelt — 494 (waehrend des Laufs 722 gezaehlt, seither repariert)
+## «Produktdetails» doppelt — 150
 
 Zwei Faktenbloecke mit widersprechendem Inhalt (Lehre 12.08.).
 
@@ -83,32 +83,67 @@ Reparatur: `automation/produktdetails_vereinen.py`
 
 Vollstaendige Liste: `dropship/_klassen/produktdetails-doppelt.txt`
 
-- `15447951606145` Tie-Dye Hoodie für Haustiere & Besitzer
-- `15447951835521` Weihnachts-Hoodie für die ganze Familie
-- `15447951999361` Partnerlook Sweatshirts für Familien
-- `15447952195969` Kürbisfarbener Kapuzenpullover für Eltern & Kind
-- `15447952425345` Premium Half-Zip Hoodie für Damen
-- `15447952556417` Familien-Sweatshirts und Baby-Onesies
-- `15447952753025` Lässiges Damen Sweatshirt mit Tiermotiv
-- `15447953179009` Kinder-Sweatshirt-Set mit Buchstaben-Print
-- `15447953473921` Unisex Kapuzenpullover mit Doppelreissverschluss
-- `15447953572225` Hip Hop Retro Plaid Freizeit-Pullover
-- `15447953736065` Hoodie Kirschblüte Street Hip Hop Retro
-- `15447953932673` Partnerlook Letter Printed Pullover
-- `15447954030977` Reflektierende Partnerlook Windjacke für Mensch & Haustier
-- `15447954227585` Mountain EKG Kurzarm-Shirt für Paare
-- `15447954456961` Schnelltrocknendes Crewneck T-Shirt für Damen
-- `15447954620801` Hiphop Chic Y2K Baumwoll-T-Shirt mit Harajuku-Print
-- `15447954817409` NIO Workwear Kurzarm-Shirt aus Eisseide
-- `15447954981249` Loose-fit T-Shirt für Paare & Familie
-- `15447955177857` Loose-fit T-Shirt mit Cartoon-Print
-- `15447955341697` Loose Fit Baumwoll-T-Shirt mit kurzen Ärmeln
-- `15447955505537` Polo-Shirt aus merzerisierter Baumwolle
-- `15447955636609` Kurzarm-Shirt mit trendigem Katzenprint
-- `15447955800449` Personalisierbare Baumwoll-T-Shirts für Damen
-- `15447956324737` Herren Basic T-Shirt Kurzarm
-- `15447956521345` Doppelgarn Kurzarm Baumwoll-T-Shirt
-- … und 469 weitere
+- `15412751499649` Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
+- `15412751860097` Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
+- `15412752155009` Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+- `15412825063809` Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
+- `15412825194881` Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
+- `15412828733825` 2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+- `15412830634369` Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+- `15412830896513` Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
+- `15412902953345` 2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
+- `15412911964545` 2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose
+- `15412915110273` Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
+- `15412915339649` Strand-Maxikleid «Bali» – luftiges Stufenkleid
+- `15412915470721` Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
+- `15412916060545` Sommerkleid «Savanna» – Western-Style Midi
+- `15412918190465` Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
+- `15412919402881` Etuikleid «Lumea» – Cut-Out Sheath
+- `15412919533953` Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+- `15412919566721` Schnürkleid «Noir» – Schleifen-Detail
+- `15412919763329` Off-Shoulder-Kleid «Brise» – locker & ärmellos
+- `15412969144705` Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+- `15412969406849` T-Shirt-Kleid «Casa» – locker mit Print
+- `15413023015297` Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+- `15413023113601` Herren-Strickshirt «Riviera» – Cord-Kurzarm
+- `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+- `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
+- … und 125 weitere
+
+## Floskel «hochwertiges Material» — 124
+
+Werbewort in einem Faktenfeld — ein leeres Feld ist besser (Lehre 23.08.).
+
+Reparatur: `automation/produktdetails_wahrheit.py  (IGNORIERE_LEDGER=1)`
+
+Vollstaendige Liste: `dropship/_klassen/floskel-hochwertiges-material.txt`
+
+- `15412751499649` Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
+- `15412751860097` Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
+- `15412825063809` Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
+- `15412825194881` Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
+- `15412828733825` 2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+- `15412830634369` Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+- `15412830896513` Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
+- `15412902953345` 2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
+- `15412915110273` Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
+- `15412915339649` Strand-Maxikleid «Bali» – luftiges Stufenkleid
+- `15412915470721` Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
+- `15412916060545` Sommerkleid «Savanna» – Western-Style Midi
+- `15412918190465` Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
+- `15412919402881` Etuikleid «Lumea» – Cut-Out Sheath
+- `15412919533953` Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+- `15412919566721` Schnürkleid «Noir» – Schleifen-Detail
+- `15412919763329` Off-Shoulder-Kleid «Brise» – locker & ärmellos
+- `15412969144705` Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+- `15412969406849` T-Shirt-Kleid «Casa» – locker mit Print
+- `15413023015297` Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+- `15413024915841` Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+- `15413025014145` Strandkleid «Playa» – Halter mit Schnür-Detail
+- `15413074985345` Sommer-Top «Sole» – V-Neck mit Knopfleiste
+- `15413083242881` Boho Resort-Set · 2-teilig (Top & Hose)
+- `15413083832705` Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
+- … und 99 weitere
 
 ## Sie-Anrede im Produkttext — 992
 
