@@ -203,7 +203,23 @@ def cj_kennt(sku):
         if not re.fullmatch(r'[A-Za-z0-9._-]{6,40}', kern):
             _unklar_grund["g"] = f"SKU-Form nicht pruefbar: {s[:40]!r}"
             return None
-        d = cj(f"/api2.0/v1/product/query?variantSku={kern}")
+        # ⚠️ 21.09.2026 10:40 — TEUER: der Regex oben machte aus «CJ-CJJSBGSD00009-Blue package-US»
+        # die PRODUKT-SKU «CJJSBGSD00009» (kein Variantensuffix «01AZ»), fragte sie am VARIANTEN-
+        # Endpunkt, bekam 1602001 «Product not found» — und «not found» galt als weg. CJ hat das
+        # Produkt mit 40 Varianten (Kanarienvogel productSku → 200). Genau die Klasse der Lehre
+        # vom 09.08.: ein «not found» aus der falschen Anfrage beweist nichts. Regel: eine Kern-SKU
+        # OHNE Variantensuffix (\d{2}[A-Za-z]{2}$) ist eine Produkt-SKU und wird am productSku-
+        # Endpunkt gefragt; 1602001 von dort ist «unklar», nur 1602002 ist die Absage.
+        if re.search(r'\d{2}[A-Za-z]{2}$', kern):
+            d = cj(f"/api2.0/v1/product/query?variantSku={kern}")
+        else:
+            psku = kern[:-4] if (re.search(r'\d{4}$', kern) and len(re.sub(r'\D', '', kern)) >= 11) else kern
+            d = cj(f"/api2.0/v1/product/query?productSku={psku}")
+            if d is not None and str(d.get("code")) == "1602001" and psku != kern:
+                d = cj(f"/api2.0/v1/product/query?productSku={kern}")
+            if d is not None and str(d.get("code")) == "1602001":
+                _unklar_grund["g"] = f"Produkt-SKU {psku}: 1602001 not found (kein Beweis, unklar)"
+                return None
     if d is None:
         _unklar_grund["g"] = "keine CJ-Antwort (Netz/Drossel)"
         return None                      # Netz/Drossel -> unklar
@@ -245,9 +261,12 @@ def cj_kennt(sku):
             return None
         _unklar_grund["g"] = f"Variante 1602003, Produktnachfrage {psku} → Code {pcode}"
         return None
+    # 21.09.2026: «not found»/«no data» als Text ist KEINE sichere Absage mehr (1602001 kam fuer
+    # existierende Ware aus der falschen Anfrageform). Sichere Absage bleibt allein 1602002.
     txt = (d.get("message") or "").lower()
     if "not exist" in txt or "not found" in txt or "no data" in txt:
-        return False
+        _unklar_grund["g"] = f"CJ-Code {code}: {txt[:50]} (Text-Absage ohne 1602002 → unklar)"
+        return None
     _unklar_grund["g"] = f"CJ-Code {code}: {str(d.get('message') or '')[:60]}"
     return None
 
