@@ -54,6 +54,19 @@ def datei_speicher_voll():
         except Exception:
             continue
         if wann > grenze:
+            # 21.09.2026 Betreiber-Entscheid: «grow plan, in einer monat machen, brauche zuerst
+            # kunde» → dropship/_dateispeicher_entscheid.txt (art, datum, zitat). Bis zum Datum
+            # ist der volle Speicher ein GEWOLLTER Zustand: die Zeile bleibt (Messung), wird aber
+            # zur Information statt zum Ruf. Nach dem Datum ruft sie wieder — Quittung mit Ablauf,
+            # nicht Quittung für immer (Klasse der 95 Klingen: ein Urteil ohne Vollstreckung).
+            try:
+                z = open("dropship/_dateispeicher_entscheid.txt").read().split("\t")
+                bis = datetime.date.fromisoformat(z[1].strip())
+                if datetime.date.today() <= bis:
+                    return (f"Datei-Speicher voll — Entscheid Betreiber 21.09.: {z[0].strip()}-Plan bis "
+                            f"{bis:%d.%m.}, bis dahin scheitern neue Bild-Uploads (gewollt)")
+            except Exception:
+                pass
             return "Shopify-Datei-Speicher voll (Einstellungen → Dateien)"
     return None
 

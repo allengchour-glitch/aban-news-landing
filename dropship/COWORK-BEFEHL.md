@@ -217,7 +217,17 @@ hier teurer als ein offener Punkt.
 
 ---
 
-## 6️⃣ Shopify-Dateispeicher voll — Entscheid, kein Klick-Rätsel  ·  ~2 Minuten
+## 6️⃣ Shopify-Dateispeicher voll — ✅ ENTSCHIEDEN 21.09.: Grow-Plan am ~21.10.2026, zuerst Kunden
+
+**Betreiber 21.09.2026:** «grow plan, in einer monat machen, brauche zuerst kunde». Eingetragen in
+`dropship/_dateispeicher_entscheid.txt` (grow · 2026-10-21); die Ampel meldet den vollen Speicher bis
+dahin als gewollten Zustand und ruft ab 22.10. wieder. Erinnerung als Routine gesetzt.
+**Was bis dahin still scheitert (gemessen an den Startlisten):** neue Bild-Uploads aus
+`bild_gross_nachladen`, `bild_quadrat_auffuellen`, `cj_video_backfill`, `cj_category_fill`/`cj_sku_import`
+(Grind ohnehin pausiert) — bestehende Bilder und der Verkauf sind nicht betroffen.
+
+<details><summary>Ursprünglicher Punkt (bis 21.09.)</summary>
+
 
 **Gemessen:** Plan Basic hat 100 GB Dateispeicher, belegt sind ~105 GB (Probe-Upload am 14.09.
 `FAILED`). Die Ampel meldet es stündlich als «Shopify-Datei-Speicher voll». Folge: neue
@@ -239,6 +249,8 @@ Quittungsdatei gäbe es hier zu früh: ein Entscheid ist noch kein freier Speich
 Liechtenstein-Wache).
 
 ---
+
+</details>
 
 ## 5️⃣ Liechtenstein — zugesagt, aber die Kasse lässt niemanden durch  ·  ~2 Minuten
 
