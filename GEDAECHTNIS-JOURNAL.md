@@ -6,6 +6,52 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🔁 Fünf sinnlose Läufe pro Stunde, für immer — und ein Wrapper, der Befunde erfindet
+
+Fortsetzung des Rundgangs («alles fixen und verbessern»). Vier Klassen, alle gemessen.
+
+### 1) Der Wrapper macht aus jedem Fehler den Fachbefund
+
+`versandschwelle_rabatt.log` trug seit dem **10.09. täglich** «⚠️ Versandschwelle passt nicht mehr
+zum höchsten Automatik-Rabatt». Gelesen: **jeder gelungene Lauf sagt «OK — nichts zu tun»**, die
+⚠️-Zeile steht ausschliesslich hinter Tracebacks. Sie kommt aus `fixer_keepalive.sh:1625` —
+`|| echo "⚠️ …"` bei **jedem** Exit≠0. Absturz (Drossel) und echte Abweichung liefern beide Code 1.
+Live nachgemessen: rc=0, Tarif 45.00 = Soll 45.00. **Ein Wrapper, der aus jedem Fehler den
+Fachbefund macht, erfindet Befunde** — und zwar genau die, vor denen der Wächter warnen soll.
+Jetzt: Exit **3** = Abweichung, der Aufseher druckt den Fachbefund nur bei 3, sonst «NICHT MESSBAR».
+
+### 2) Eine Zeilenzahl ist keine Vollständigkeit
+
+`kosten_export_bauen.py` meldete «FERTIG: 17'719'296 Bytes, 58'905 Zeilen» — die Datei war exakt so
+gross, und die **letzte Zeile 16 Bytes**: `{"id":"gid:\/\/s`. Der Download brach ab, der Schreiber
+zählte Zeilen, und der Verbraucher starb seither jede Nacht an einem `JSONDecodeError`. Jetzt: letzte
+Zeile muss JSON sein und die Zeilenzahl zu Shopifys `objectCount` passen, sonst PAUSE + Datei nach
+`.kaputt`. Die korrupte Datei liegt beiseite, der nächste Lauf holt neu.
+
+### 3) «Nichts zu tun» ist FERTIG, nicht Abbruch
+
+Im Aufseher-Log: `preisboden`, `farbwerte_zusammengesetzt`, `umlaut_suchtags` alle 2–3 Minuten neu
+gestartet — gezählt **1'850 / 1'829 / 615 Läufe**. Die Wache `dreht_sich_im_kreis` greift sogar: nach
+fünf Schnellenden eine Stunde Pause, dann Reset — **fünf sinnlose Läufe pro Stunde, für immer**
+(≈142/Tag, passt auf 1'850 in 13 Tagen). Ursache in den Skripten: bei «0 Kandidaten» `return` **ohne
+`FERTIG`**, und nur `FERTIG` schaltet die 20-h-Regel scharf. Für den Aufseher sah jeder Lauf wie ein
+Abbruch aus. Alle drei drucken jetzt bei nichts-zu-tun ein FERTIG (Probe live). Dazu `umlaut_suchtags`:
+Default-Quelle `/tmp/opts.jsonl`, **die niemand erzeugt** — der Aufseher baut `opts_frisch.jsonl`.
+615 Läufe «Quelle fehlt, übersprungen» bei vorhandener Datei. Quellen-Kette eingebaut; DRY-Lauf über
+52'837 Produkte: **0 Aufgaben**, Ledger 9'689 — die Arbeit war vor dem 04.09. getan. Nichts verpasst,
+nur Rauschen. Und die Datei selbst war **17 Tage alt** und wäre nie wieder frisch geworden (Export nur
+«wenn fehlt») → jetzt auch bei Alter > 7 Tage.
+
+### 4) Neun weitere Helfer ohne Geduld
+
+`versandschwelle_rabatt`, `pod_designzwang` (EIN Versuch), `versandprofil_poster` (raise bei jedem
+`errors`), `tierschutz_guard` (blinder Schlaf), `tote_rabattcodes`/`tote_links` (vier Anfragen in zwei
+Sekunden, ohne `import time`), `google_kanal_luecke`/`pinterest_pins_pruefen` (fester 3-s-Schlaf).
+Alle mit Wartezeit aus `throttleStatus`, Gegenproben am echten Quelltext (8 Drosseln → Erfolg; 20 →
+Abbruch nach 12). **Nebenbefund:** `automation/shop_gql.py` ist der gemeinsame Helfer, der längst
+existiert — 12 Versuche, gerechnete Wartezeit — und von **vier** Skripten benutzt wird, während ~100
+Kopien ihr eigenes Leben führen. Der dauerhafte Weg ist bekannt und heute nicht gegangen.
+
 ## 2026-09-21 · ⏳ Der Kommentar sagte «restoreRate», der Code schlief 12 Sekunden — und mein Patch hatte denselben Fehler
 
 «weiter machen … bis dann alles fixen und verbessern.» Rundgang über alle `/tmp/*.log`: **rund 15
