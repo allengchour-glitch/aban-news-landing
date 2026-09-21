@@ -137,19 +137,67 @@ def ki_textstufe():
         return None
 
 
+def cj_dispute_stand():
+    """Fragt CJ selbst: gibt es fuer die zurueckgesandte Messer-Bestellung eine Reklamation?
+
+    Rueckgabe: (offen, hinweis)
+      offen=True   → keine Reklamation vorhanden (gemessen)
+      offen=False  → mindestens eine Reklamation liegt bei CJ (gemessen)
+      offen=None   → nicht messbar; hinweis nennt den Grund
+
+    ⚠️ Bewusst KEIN `return None` bei einem Messfehler: hier geht es um Geld, das noch
+    aussteht. Eine Wache, die bei kaputtem Token schweigt, sieht aus wie «erledigt».
+    Deshalb bleibt die Zeile stehen und sagt dazu, dass sie den Stand nicht kennt.
+    Timeout kurz (15 s, EIN Versuch) — die Ampel laeuft stuendlich und darf nicht haengen.
+    """
+    try:
+        tok = json.load(open("/tmp/cj_token.json")).get("accessToken")
+    except Exception as e:
+        return None, f"kein CJ-Token ({type(e).__name__})"
+    if not tok:
+        return None, "/tmp/cj_token.json ohne accessToken"
+    url = ("https://developers.cjdropshipping.com/api2.0/v1/"
+           "disputes/getDisputeList?pageNum=1&pageSize=20")
+    req = urllib.request.Request(url, headers={"CJ-Access-Token": tok,
+                                               "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            d = json.loads(r.read().decode())
+    except Exception as e:
+        return None, f"CJ antwortet nicht ({type(e).__name__})"
+    if d.get("code") != 200:
+        return None, f"CJ-Code {d.get('code')}: {str(d.get('message'))[:60]}"
+    gesamt = ((d.get("data") or {}).get("total"))
+    if gesamt is None:
+        return None, "CJ-Antwort ohne Feld total"
+    return (int(gesamt) == 0), f"{gesamt} Reklamation(en) bei CJ"
+
+
 def cj_dispute_1017():
     """CJ-Rueckerstattung fuer die zurueckgesandte Messer-Bestellung (16.09.2026).
 
-    Gleiches Muster wie bigbuy_ticket(): die Erinnerung haengt an der Quittung, die
-    der naechste Schritt ohnehin erzeugt, und verschwindet, sobald eine Fallnummer
-    darin steht. Ein Auftragsdokument liest nur, wer danach fragt — eine Zeile in
-    der stuendlichen Ampel sieht man.
+    ⚠️ Seit 21.09.2026 prueft diese Wache den ZUSTAND bei CJ, nicht mehr nur eine
+    Quittungsdatei (gleiche Umstellung wie bei `liechtenstein_gesperrt`): sobald im
+    CJ-Konto eine Reklamation liegt, verschwindet die Zeile von selbst. Eine Quittung
+    hat die Schwaeche jeder Behauptung — sie kann gesetzt sein, ohne dass es stimmt,
+    und sie kann fehlen, obwohl laengst gehandelt wurde. Die Datei bleibt als
+    ausdruecklicher Schlussstrich des Betreibers erhalten.
+
+    GEMESSEN 21.09.2026 07:1x UTC: Wallet `amount 0.0`, `getDisputeList` total 0 —
+    die Reklamation ist noch NICHT eroeffnet.
+
+    📭 Und der Mailweg ist seit heute endgueltig als tot belegt: Gmail hat die Nachricht
+    vom 16.09. 21:26 UTC nach 72 Stunden Zustellversuchen am 19.09. 21:44 UTC hart
+    abgewiesen — `support@cjdropshipping.com`, Status 4.4.1, vier Cloudflare-Adressen
+    «timed out». Ein weiterer Brief ist also kein Ersatz fuer den Klick im Portal.
     """
     quittung = os.path.join(REPO, "dropship", "_cj_dispute_1017_ref.txt")
     if os.path.exists(quittung) and open(quittung, encoding="utf-8").read().strip():
         return None
-    # ⚠️ Stand 18.09.2026 08:44 UTC: CJ hat geantwortet, und zwar vollstaendig. Die Zeile
-    # sagt jetzt nicht mehr «nachfassen», sondern nennt den EINEN Schritt, der noch fehlt.
+    offen, hinweis = cj_dispute_stand()
+    if offen is False:
+        return None                      # bei CJ liegt eine Reklamation → Zeile faellt weg
+    stand = "" if offen else f" ⚠️ Stand bei CJ nicht messbar: {hinweis}."
     return ("🔪 CJ-Rueckerstattung USD 25.54 — CJ hat am 18.09. 08:44 SCHRIFTLICH ZUGESAGT: "
             "Dispute im WEB-PORTAL oeffnen (cjdropshipping.com/article-details/172), danach "
             "zahlen sie 25.54 (Ware 18.24 + Fracht 7.30) auf die CJ-Wallet. Sie bestaetigen "
@@ -157,8 +205,9 @@ def cj_dispute_1017():
             "Linie fuer Klingen in die CH. Der Grund fuer 9009 ist jetzt bekannt und "
             "endgueltig: die Bestellung kam ueber den SHOPIFY-KANAL, nicht ueber die Open "
             "API — CJ verbietet API-Disputes fuer nicht per API angelegte Auftraege, kein "
-            "Parameter aendert das. Also: Formular im Portal, 2 Minuten. Fallnummer oder "
-            "Gutschrift nach dropship/_cj_dispute_1017_ref.txt · Text: COWORK-BEFEHL.md Punkt 0")
+            "Parameter aendert das. 📭 Nachfassen per Mail geht NICHT: CJs Mailserver nimmt "
+            "keine Verbindung an (harte Abweisung 19.09. 21:44 nach 72 h). Also: Formular im "
+            "Portal, 2 Minuten. Text: COWORK-BEFEHL.md Punkt 0" + stand)
 
 
 def bigbuy_ticket():
