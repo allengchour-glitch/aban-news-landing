@@ -6,6 +6,28 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-21 · 🧭 Menü und Kollektions-Dubletten: vier Warengruppen verlinkt, sechs Doppelseiten abgemeldet — und eine 301, die schon da war
+
+**Aufgabe 78 (Menü):** 185 veröffentlichte Kollektionen mit ≥30 Produkten stehen in keinem Menü — klingt nach
+Lücke, ist zu 97 % Alias-Ware: `gaming-zubehor` = `gaming` (725 = 725), `wohnen-aufbewahrung` = `ordnung-aufbewahrung`
+(557), `auto-zubehoer` ≈ `auto-kfz-zubehoer`, `haustier-hund`/`hundewelt`/`haustier-hunde` … Vier fehlten wirklich:
+Parfum & Düfte (1'282), Kabel & Adapter (644), Westen & Gilets (514), Haushaltsgeräte (474). `menuUpdate` ersetzt den
+ganzen Baum → Sicherung `_menu_main_backup_2026-09-21.json`, 147 → 151 Einträge zurückgelesen. **Falle:** Einträge vom
+Typ `COLLECTION` (mit `resourceId`) zeigt die API als `/en/collections/…`, der Menü-Wächter meldete vier 404 — die
+Storefront rendert sie richtig (`/collections/parfum-duefte`, WebFetch). Die 124 Alt-Einträge sind Typ `HTTP` mit
+`/collections/…`; auf dieselbe Form umgestellt, Wächter 0 Befunde. **Ein Wächter, der die API liest, sieht nicht die
+Seite** — wenn beide sich widersprechen, entscheidet die Seite, aber die Form sollte trotzdem einheitlich sein.
+
+**Dubletten:** exakt gleiche Regel + gleiche Produktzahl: 5 Paare (yoga/yoga-pilates, garten/garten-balkon,
+beleuchtung-lampen/sub-beleuchtung, pool/pool-schwimmen, strand/strand-wasserspass) + bestseller-unter-50 =
+geschenke-unter-50-franken (Regel «< 50» vs «< 50.00», 64'080 = 64'080). Gewinner nach Sitzungen (90 T.), sonst Menü;
+Verlierer von allen 8 Kanälen abgemeldet + 301. **Drei Verlierer hatten die 301 längst** (garten, beleuchtung-lampen,
+bestseller-unter-50 → «Path has already been taken») — sie waren also seit einer früheren Session unerreichbar, aber
+noch in acht Kanälen publiziert. Und beim Yoga-Paar sagte Shopify «Target can't redirect to another redirect»:
+`/collections/yoga` WAR schon eine 301 auf `yoga-pilates`, ich hatte den Gewinner abgemeldet. Sofort gedreht
+(yoga-pilates wieder in allen 8 Kanälen, yoga abgemeldet), Ledger korrigiert. **Vor dem Abmelden die Weiterleitungen
+lesen — eine frühere Session kann die Richtung schon entschieden haben.**
+
 ## 2026-09-21 · 🔌 «mach alles selber und fix»: 29 Geräte mit unklarem Netzstecker — die Auswahl statt der Rate
 
 **Ausgang:** `cj_stecker_eu_setzen.py` hatte am 18.09. 32 Geräte eindeutig auf die EU-SKU gesetzt und 30 als
