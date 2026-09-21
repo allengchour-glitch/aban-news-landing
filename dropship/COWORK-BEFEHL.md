@@ -232,8 +232,11 @@ bekommt ein FAILED.
   nie löschen ohne deinen Entscheid) — deshalb steht es hier und wurde nicht automatisiert.
   Google Drive hilft nicht (Shopify liest von dort keine Bilder).
 
-**Quittung:** eine Zeile nach `dropship/_dateispeicher_entscheid.txt` («grow» oder «loeschen»);
-bis dahin bleibt die Zeile in der Ampel.
+**Quittung: keine nötig.** Die Ampel misst den ZUSTAND (gescheiterte Uploads mit
+`FILE_STORAGE_LIMIT_EXCEEDED` in den letzten 24 h, `betreiber_ampel.py`) — sobald nach Weg A
+oder B wieder Platz ist, verschwindet die Zeile von selbst innert eines Tages. Eine
+Quittungsdatei gäbe es hier zu früh: ein Entscheid ist noch kein freier Speicher (Lehre 19.09.,
+Liechtenstein-Wache).
 
 ---
 
