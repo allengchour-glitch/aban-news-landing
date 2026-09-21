@@ -34,7 +34,7 @@ EXPORT = "/tmp/export.jsonl"
 OPTS = "/tmp/opts_frisch.jsonl"
 KANARIE = ("CJWL2960714", 30)
 DRY = os.environ.get("DRY") == "1"
-LIMIT = int(os.environ.get("LIMIT", "600"))   # 21.09.: mit CJ-Takt 2 s je Produkt → 600 = 20 min
+LIMIT = int(os.environ.get("LIMIT", "1500"))  # 21.09.: mit CJ-Takt ~1.8 s je Produkt → 600 = 18 min gemessen; 1500 ≈ 45 min, Punkte reichlich (63k frei)
 RECHECK_S = int(os.environ.get("RECHECK_TAGE", "30")) * 86400
 SHOP = "au3j0y-hq.myshopify.com"
 TOKPFAD = "/tmp/cj_shop_token.txt"
