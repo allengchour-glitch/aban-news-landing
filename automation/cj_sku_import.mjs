@@ -18,6 +18,7 @@ import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './
 import { textErzeugen } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
+import { takt as cjTakt } from './cj_takt.mjs';  // 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 let CJT = (process.env.CJ_TOKEN || '').trim();
@@ -44,6 +45,7 @@ import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE 
 
 async function cj(path) {
   for (let a = 0; a < 6; a++) {
+    await cjTakt();
     const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1' + path, { headers: { 'CJ-Access-Token': CJT } });
     const j = await r.json().catch(() => ({}));
     if (j.code === 1600200) { await sleep(2500); continue; } // QPS

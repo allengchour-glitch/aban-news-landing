@@ -5,6 +5,7 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+import { takt as cjTakt } from './cj_takt.mjs';  // 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 // ── Plüsch: Spielzeug oder Heimtextil? EINE Regelquelle (09.09.2026) ──────────
 const _plt=JSON.parse(fs.readFileSync(new URL('./pluesch_textil.json',import.meta.url),'utf8'));
@@ -418,6 +419,7 @@ const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||
 async function cj(path){
  for(let i=0;i<5;i++){
   try{
+   await cjTakt();
    const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,
      {headers:{'CJ-Access-Token':CJT},signal:AbortSignal.timeout(45000)});
    const t=await r.text();

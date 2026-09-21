@@ -17,6 +17,9 @@ bewegt. Nie eine Nummer raten oder aus einer stornierten Bestellung uebernehmen.
 DRY=1 meldet nur, was passieren wuerde.
 """
 import json, subprocess, time, os, sys
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
+from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 CJTOK = open("/tmp/_cjtok").read().strip()
 STOK  = open("/tmp/cj_shop_token.txt").read().strip()
@@ -42,6 +45,7 @@ def cj(path, body=None):
     # Versandbenachrichtigung. Eine Drosselung ist kein Fehler, sie sagt nur, wie lange
     # zu warten ist (dieselbe Lehre wie bei cj_category_fill und variant_value_clean).
     for att in range(8):
+        takt()
         out = subprocess.run(a, capture_output=True, text=True).stdout
         try:
             j = json.loads(out)

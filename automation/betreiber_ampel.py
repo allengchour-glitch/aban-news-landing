@@ -13,6 +13,9 @@ sobald es behoben ist. Nur der unmessbare Rest wird gezählt, nicht behauptet.
 Gibt genau eine Zeile aus (oder nichts, wenn nichts blockiert). MELDET NUR.
 """
 import subprocess, json, os, re, subprocess, sys, urllib.request, datetime
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
+from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOP = "au3j0y-hq.myshopify.com"
@@ -174,6 +177,7 @@ def cj_dispute_stand():
     req = urllib.request.Request(url, headers={"CJ-Access-Token": tok,
                                                "Content-Type": "application/json"})
     try:
+        takt()
         with urllib.request.urlopen(req, timeout=15) as r:
             d = json.loads(r.read().decode())
     except Exception as e:

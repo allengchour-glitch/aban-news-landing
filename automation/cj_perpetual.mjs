@@ -12,6 +12,7 @@
  */
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
+import { takt as cjTakt } from './cj_takt.mjs';  // 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 let CJT = (process.env.CJ_TOKEN || '').trim();
 if (!CJT && fs.existsSync('/tmp/cj_token.json')) {
@@ -39,6 +40,7 @@ const PROBE_CAT = 'D2432903-0D4E-4787-886F-D3D9DA7890D9'; // Lady Dresses (Kleid
 
 async function points() {
   try {
+    await cjTakt();
     const r = await fetch(`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageSize=1&pageNum=1&categoryId=${PROBE_CAT}`, { headers: { 'CJ-Access-Token': CJT } });
     const j = await r.json();
     return { code: j.code, remaining: j.pointsInfo?.remaining ?? null, used: j.pointsInfo?.usedToday ?? null };

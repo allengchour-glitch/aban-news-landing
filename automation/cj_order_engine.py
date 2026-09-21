@@ -22,6 +22,9 @@ DRY=1 rechnet nur durch, ohne bei CJ anzulegen.
 """
 import json, subprocess, time, os, re, sys
 import urllib.parse
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
+from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 CJTOK = open("/tmp/_cjtok").read().strip()
 STOK  = open("/tmp/cj_shop_token.txt").read().strip()
@@ -60,6 +63,7 @@ def cj(path, body=None):
         a += ["-X", "POST", "-H", "Content-Type: application/json", "-d", json.dumps(body)]
     a.append("https://developers.cjdropshipping.com" + path)
     for att in range(4):
+        takt()
         out = subprocess.run(a, capture_output=True, text=True).stdout
         try:
             d = json.loads(out)

@@ -9,6 +9,7 @@
  * ⚠️ CJ-QPS ist konto-weit 1/s — GAP nicht unter 1200 stellen, Retry bei 429/1600200 eingebaut.
  */
 import fs from 'node:fs';
+import { takt as cjTakt } from './cj_takt.mjs';  // 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 let CJT = (process.env.CJ_TOKEN || '').trim();
@@ -43,6 +44,7 @@ async function gql(t, q, v) {
 async function cjStock(sku) {
   for (let a = 0; a < 6; a++) {
     try {
+      await cjTakt();
       const r = await fetch(`https://developers.cjdropshipping.com/api2.0/v1/product/stock/queryBySku?sku=${encodeURIComponent(sku)}`,
         { headers: { 'CJ-Access-Token': CJT } });
       const j = await r.json();

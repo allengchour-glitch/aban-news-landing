@@ -4,6 +4,9 @@ Vergleicht die CJ-Order-Liste mit dem letzten Stand (dropship/_cj_order_watch_st
 und druckt nur ÄNDERUNG-Zeilen. Auftrag User 17.08.2026: «sage mir bescheid wen was änderet»
 (LX1013/LX1014 standen auf Ausstehend/UNSHIPPED)."""
 import json, urllib.request, os
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
+from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 STATE = "dropship/_cj_order_watch_state.json"
 FERTIG = {"DELIVERED", "CLOSED", "CANCELLED"}
@@ -12,6 +15,7 @@ tok = json.load(open("/tmp/cj_token.json"))["accessToken"]
 req = urllib.request.Request(
     "https://developers.cjdropshipping.com/api2.0/v1/shopping/order/list?pageNum=1&pageSize=50",
     headers={"CJ-Access-Token": tok})
+takt()
 d = json.loads(urllib.request.urlopen(req, timeout=45).read())
 alt = json.load(open(STATE)) if os.path.exists(STATE) else {}
 neu, aenderungen = {}, []

@@ -18,6 +18,9 @@ MELDET NUR — schreibt nichts, storniert nichts. Eine Zeile in der Keepalive-Au
 wenn es etwas zu melden gibt. Ein Ausfall meldet «unklar», nie Schweigen.
 """
 import json, os, sys, time, urllib.request, datetime as dt
+import os as _os_takt, sys as _sys_takt
+_sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
+from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 SHOP = "au3j0y-hq.myshopify.com"
 STILL_H = int(os.environ.get("STILL_H", "48"))   # so lange darf eine Nummer ohne Scan bleiben
@@ -53,6 +56,7 @@ def cj_token():
 def cj(url, tok, tries=6):
     for i in range(tries):
         try:
+            takt()
             r = urllib.request.Request(url, headers={"CJ-Access-Token": tok})
             return json.load(urllib.request.urlopen(r, timeout=30)), ""
         except Exception as e:
