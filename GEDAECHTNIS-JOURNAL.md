@@ -38,6 +38,18 @@ Trockenlauf über 25 Produkte ergab 0 — ohne die Gegenprobe wäre das eine sti
 Ledger mit 30-Tage-Wiedervorlage, `LIMIT` 300 je Lauf (~18'787 in gut zwei Wochen, danach nur
 Wiedervorlage).
 
+**Erster echter Lauf (200 Produkte, 12:05–12:40 UTC):** **0 fehlende Einzelvarianten, 1 Produkt bei
+CJ ganz weg** (Strandkleid, seit einem August-«ok» nie wieder gefragt — wird jetzt gedraftet, der
+Wächter übernimmt 1602002 selbst, weil `cj_verfuegbarkeit` einmal Geprüftes nie wieder fragt),
+**1 Verdachtsfall**, der die Verdachts-Wache bestätigt: Akku-Handsauger, Shop-SKUs
+`CJ-CJYD292660001AZ-EnglishPackagingSilverPurple` — der Variantenname hängt am SKU, und **beide**
+Shop-Varianten tragen dieselbe CJ-SKU `01AZ`, während CJ `01AZ`+`02BY` führt. Verglichen wird
+jetzt der SKU-Kern (Gegenprobe: 0 fehlend statt «alle»); dass die zweite Variante die falsche
+SKU trägt, ist eine Importer-Klasse, die dieser Wächter nicht heilt — notiert, nicht geraten.
+Die Klasse ist also **seltener als befürchtet** (0 von 200 mehrvariantigen), aber der eine
+gefundene Fall hatte acht kaufbare Geister. ~12 s je Produkt (CJ-Takt geteilt mit dem
+Bewertungs-Importer) → volle Runde ~2–3 Wochen im 4-h-Takt.
+
 ## 2026-09-21 · 🔁 Mein Regex von heute früh hat 68 kaufbare Produkte aus dem Verkauf genommen — und die alte Fassung tat es seit Wochen
 
 **Der Fund kam aus dem Nachlesen, nicht aus einer Meldung.** Der Nachhol-Lauf über die 20
