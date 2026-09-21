@@ -1955,3 +1955,8 @@ gid://shopify/Product/15447990206849	1790018951	ok	3 Shop / 3 CJ / 0 fehlend / 0
 gid://shopify/Product/15447990403457	1790018951	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15447990632833	1790018951	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15447990763905	1790018951	ok	25 Shop / 25 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15447990960513	1790018951	ok	42 Shop / 42 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15447991026049	1790018951	ok	18 Shop / 18 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15447991189889	1790018951	ok	12 Shop / 15 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15447991320961	1790018951	ok	42 Shop / 42 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15447991484801	1790018951	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
