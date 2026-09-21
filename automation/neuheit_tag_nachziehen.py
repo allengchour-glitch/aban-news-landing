@@ -18,7 +18,7 @@ CAP  = int(os.environ.get("CAP", "5000"))
 TOK  = open("/tmp/cj_shop_token.txt").read().strip()
 
 def gql(q, v=None):
-    req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
+    req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json",
         data=json.dumps({"query": q, "variables": v or {}}).encode(),
         headers={"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"})
     grund = "kein Versuch ausgefuehrt"

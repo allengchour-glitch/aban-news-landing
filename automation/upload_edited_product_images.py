@@ -31,7 +31,7 @@ import gen_post_image as G          # render_product_clean, _excludes
 from PIL import Image
 import requests
 
-API = os.environ.get("SHOPIFY_API_VERSION", "2025-01")
+API = os.environ.get("SHOPIFY_API_VERSION", "2026-01")
 SHOP = os.environ.get("SHOPIFY_SHOP", "").strip()
 CID = os.environ.get("SHOPIFY_CLIENT_ID", "").strip()
 CSECRET = os.environ.get("SHOPIFY_CLIENT_SECRET", "").strip()

@@ -4,7 +4,7 @@
 # orientiert (Trust-Signale: Gratis-Versand, Rückgabe, Klarna/TWINT). Resümierbar via Ledger.
 # Quelle: /tmp/audit_ids.json['noseo']. Token: /tmp/shopify_tok.txt (bei 401 frisch via env).
 import json,urllib.request,os,time
-SHOP="au3j0y-hq.myshopify.com"; URL=f"https://{SHOP}/admin/api/2025-01/graphql.json"
+SHOP="au3j0y-hq.myshopify.com"; URL=f"https://{SHOP}/admin/api/2026-01/graphql.json"
 LEDGER="/tmp/seo_fill_done.txt"
 def tok(): return open('/tmp/shopify_tok.txt').read().strip()
 def refresh():

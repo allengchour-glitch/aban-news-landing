@@ -20,7 +20,7 @@ const MIN_MARGE=parseFloat(process.env.MIN_MARGE||'12')||12;
 const TAG=process.env.TAG||'printful_personalized_product';
 const MAXP=Math.max(1,parseInt(process.env.MAX||'300',10)||300);
 const DRY=process.env.DRY_RUN==='1';
-const API='2025-01';
+const API='2026-01';
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim();
 if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
 if(!PF_KEY){ console.log('Kein PRINTFUL_API_KEY → No-op.'); process.exit(0); }

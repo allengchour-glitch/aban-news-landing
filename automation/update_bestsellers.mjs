@@ -42,7 +42,7 @@ const SEED_IDS = (process.env.SEED_IDS ? process.env.SEED_IDS.split(',') : [
   '15396249960833','15396249502081','15412915339649','15397247385985','15413025145217','15403009704321'
 ]).map(x=>x.trim().startsWith('gid://')?x.trim():`gid://shopify/Product/${x.trim()}`);
 const MIN_COUNT   = parseInt(process.env.MIN_COUNT || '3', 10);
-const API = '2025-01';
+const API = '2026-01';
 
 const __dir = path.dirname(fileURLToPath(import.meta.url));
 

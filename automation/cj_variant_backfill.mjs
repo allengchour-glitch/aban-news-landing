@@ -57,7 +57,7 @@ function chf(usd, weightG){ const landed = usd*0.9 + Math.max(0,( (weightG>500?1
   let p = Math.max(landed*1.4, landed+5, 14.90); return Math.floor(p)+0.90; }
 
 async function shTok(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})}); return (await r.json()).access_token; }
-async function gql(tok,q,v){ const r=await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query:q,variables:v||{}})}); return r.json(); }
+async function gql(tok,q,v){ const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query:q,variables:v||{}})}); return r.json(); }
 async function cjToken(){ try{ if(fs.existsSync(TOKEN_FILE)){ const t=JSON.parse(fs.readFileSync(TOKEN_FILE,'utf8')); if(t.exp>Date.now()+60000) return t.accessToken; } }catch{}
   const r=await fetch(`${CJ_BASE}/authentication/getAccessToken`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:CJ_EMAIL,apiKey:CJ_API_KEY})});
   const j=await r.json().catch(()=>({})); if(!j?.data?.accessToken) return null;

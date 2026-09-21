@@ -7,7 +7,7 @@ DRY=os.environ.get('DRY')=='1'
 LEDGER='dropship/_faser_wahrheit.txt'
 def gql(q,v=None):
     open('/tmp/_f2.json','w').write(json.dumps({"query":q,"variables":v or {}}))
-    r=subprocess.run(["curl","-s","--max-time","60","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+    r=subprocess.run(["curl","-s","--max-time","60","https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
       "-H","X-Shopify-Access-Token: "+TOK,"-H","Content-Type: application/json","--data-binary","@/tmp/_f2.json"],capture_output=True,text=True)
     return json.loads(r.stdout)
 GEGEN=re.compile(r'\b(Polyester|Acryl|Polyacryl|Viskose|Nylon|Spandex)\b',re.I)

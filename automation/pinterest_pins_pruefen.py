@@ -46,7 +46,7 @@ VERDACHT_REST = re.compile(r"\b(weltweit\w*|worldwide|international\w*|europawei
 
 def gql(q, v=None, tok=None):
     d = json.dumps({"query": q, "variables": v or {}}).encode()
-    r = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json", data=d,
+    r = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json", data=d,
                                headers={"X-Shopify-Access-Token": tok,
                                         "Content-Type": "application/json"})
     for _ in range(16):              # 21.09.: 6 → 16, Drosseln brauchen Geduld

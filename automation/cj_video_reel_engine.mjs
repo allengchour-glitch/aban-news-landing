@@ -14,7 +14,7 @@ const MUSIC=['luxe-cinematic-house.wav','luxe-lounge-sax.wav','luxe-house1.wav',
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function scc(){for(let a=0;a<5;a++){try{const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});const t=JSON.parse(await r.text()).access_token;if(t)return t;}catch{}await sleep(2000);}throw new Error('scc');}
 let TOK=await scc();
-const gql=async(q,v)=>{for(let a=0;a<5;a++){try{const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('hrottl')){await sleep(4000);continue;}}catch{await sleep(2000);}TOK=await scc();}return null;};
+const gql=async(q,v)=>{for(let a=0;a<5;a++){try{const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('hrottl')){await sleep(4000);continue;}}catch{await sleep(2000);}TOK=await scc();}return null;};
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').filter(Boolean):[]);
 const esc=x=>/[",\n]/.test(x)?'"'+String(x).replace(/"/g,'""')+'"':x;
 function appendReel(id,url,cap,tags,platforms){

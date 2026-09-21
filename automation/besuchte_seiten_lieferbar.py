@@ -70,7 +70,7 @@ def shopify(query):
     letzte = "unbekannt"
     for i in range(6):
         req = urllib.request.Request(
-            f"https://{SHOP}/admin/api/2024-10/graphql.json",
+            f"https://{SHOP}/admin/api/2026-01/graphql.json",
             data=json.dumps({"query": query}).encode(),
             headers={"X-Shopify-Access-Token": open("/tmp/cj_shop_token.txt").read().strip(),
                      "Content-Type": "application/json"})

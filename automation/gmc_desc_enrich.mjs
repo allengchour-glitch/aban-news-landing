@@ -8,7 +8,7 @@
  * ENV: SHOPIFY_CLIENT_ID/SECRET · [LIMIT=2500] · [DRY=1]. Cursor: dropship/_gmc_enrich_pos.txt
  */
 import fs from 'node:fs';
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const LIMIT = parseInt(process.env.LIMIT || '2500', 10);
 const DRY = process.env.DRY === '1';

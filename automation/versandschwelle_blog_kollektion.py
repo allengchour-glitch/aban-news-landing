@@ -74,7 +74,7 @@ DRY=1 meldet nur. Ledger wird nach JEDER Zeile geflusht.
 import json, os, re, subprocess, sys, time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-API = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+API = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_versandschwelle_blog_kollektion.txt"
 

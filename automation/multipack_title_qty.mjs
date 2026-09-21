@@ -3,7 +3,7 @@ const DRY=process.env.DRY==='1';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function scc(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return JSON.parse(await r.text()).access_token;}
 const TOK=await scc();
-const gql=async(q,v)=>{for(let a=0;a<5;a++){const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;await sleep(3000);}return null;};
+const gql=async(q,v)=>{for(let a=0;a<5;a++){const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;await sleep(3000);}return null;};
 let after=null, all=[];
 for(let p=0;p<6;p++){
   const r=await gql(`query($c:String){products(first:50,query:"(title:*Luftballon* OR title:*Ballon* OR title:*Ballons*) AND status:active",after:$c){pageInfo{hasNextPage endCursor}edges{node{id title descriptionHtml}}}}`,{c:after});

@@ -42,7 +42,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 
 const SHOP = 'au3j0y-hq.myshopify.com';
-const API = `https://${SHOP}/admin/api/2024-10/graphql.json`;
+const API = `https://${SHOP}/admin/api/2026-01/graphql.json`;
 const LOC = 'gid://shopify/Location/109350125953';
 const CSVPATH = process.env.FORTURA_CSV || '/tmp/fortura_feed.csv';
 const TOKFILE = process.env.SHOPIFY_TOKEN_FILE || '/tmp/cj_shop_token.txt';

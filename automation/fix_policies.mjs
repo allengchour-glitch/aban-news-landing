@@ -16,7 +16,7 @@
  * Lauf:  node automation/fix_policies.mjs        ·   DRY=1 …  (nur anzeigen)
  */
 const SHOP = process.env.SHOPIFY_SHOP, CID = process.env.SHOPIFY_CLIENT_ID, SEC = process.env.SHOPIFY_CLIENT_SECRET;
-const DRY = process.env.DRY === '1', API = '2025-01';
+const DRY = process.env.DRY === '1', API = '2026-01';
 const REPLACE = [
   [/info@luxestyle\.com/gi, 'info@luxestyle.ch'],
   [/allengchour@gmail\.com/gi, 'info@luxestyle.ch'],

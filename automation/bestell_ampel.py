@@ -25,7 +25,7 @@ def main():
          'totalPriceSet{shopMoney{amount}} '
          'refunds(first:3){id totalRefundedSet{shopMoney{amount}}} '
          'lineItems(first:3){nodes{title sku}}}}}')
-    req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
+    req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json",
         data=json.dumps({"query": q}).encode(),
         headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
     # ⚠️ Shopifys Drosselung ist KEIN Ausfall. Am 03.09. meldete die Ampel «unklar

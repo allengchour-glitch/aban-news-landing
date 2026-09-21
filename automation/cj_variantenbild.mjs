@@ -39,7 +39,7 @@
 import fs from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2024-10';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json')
   ? (JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken || '') : '')).trim();
 const DRY = process.env.DRY === '1';

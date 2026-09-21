@@ -33,7 +33,7 @@ source /tmp/secrets_env.sh 2>/dev/null
 if [ -s "$DATEI" ]; then
   ALTER=$(( $(date +%s) - $(stat -c %Y "$DATEI" 2>/dev/null || echo 0) ))
   if [ "$ALTER" -lt "$MAXALTER" ]; then
-    ANTWORT=$(curl -s --max-time 20 "https://$SHOP/admin/api/2024-10/graphql.json" \
+    ANTWORT=$(curl -s --max-time 20 "https://$SHOP/admin/api/2026-01/graphql.json" \
               -H "X-Shopify-Access-Token: $(cat "$DATEI")" -H "Content-Type: application/json" \
               -d '{"query":"query{shop{id}}"}')
     case "$ANTWORT" in *'"shop"'*) exit 0 ;; esac
@@ -49,7 +49,7 @@ NEU=$(curl -s --max-time 30 -X POST "https://$SHOP/admin/oauth/access_token" \
 if [ -n "$NEU" ]; then
   # Erst prüfen, dann ersetzen: ein kaputtes Token wäre schlimmer als ein altes.
   PRUEF=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 \
-          "https://$SHOP/admin/api/2024-10/shop.json" -H "X-Shopify-Access-Token: $NEU")
+          "https://$SHOP/admin/api/2026-01/shop.json" -H "X-Shopify-Access-Token: $NEU")
   if [ "$PRUEF" = "200" ]; then
     umask 077; printf '%s' "$NEU" > "$DATEI"; chmod 600 "$DATEI"
     echo "$(date -u +%H:%M) Shopify-Token erneuert"

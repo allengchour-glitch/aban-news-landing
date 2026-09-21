@@ -3,7 +3,7 @@
  * aus dropship/designs/page_body.html. Auth: Client-Credentials. No-op ohne Creds. */
 import fs from 'node:fs';
 const SHOPraw=process.env.SHOPIFY_SHOP||'', CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(), SEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
-const ADMIN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim(); const API='2025-01';
+const ADMIN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim(); const API='2026-01';
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
 if(!ADMIN && !(CID&&SEC)){ console.log('Keine Creds → No-op.'); process.exit(0); }
 const body=fs.readFileSync('dropship/designs/page_body.html','utf8');

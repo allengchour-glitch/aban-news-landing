@@ -23,7 +23,7 @@ def gql(q, v=None):
     drossel = 0; versuche = 0   # 21.09.: Drosseln zaehlen nicht als Fehlversuch
     while versuche < 4:
         r = subprocess.run(["curl", "-s", "--max-time", "60",
-                            f"https://{SHOP}/admin/api/2024-10/graphql.json",
+                            f"https://{SHOP}/admin/api/2026-01/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
                             "-H", "Content-Type: application/json",
                             "--data-binary", "@/tmp/_trc.json"], capture_output=True, text=True)

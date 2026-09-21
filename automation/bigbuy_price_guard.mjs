@@ -9,7 +9,7 @@
  * Report: dropship/price_guard_report.md (angehängt pro Lauf).
  */
 import fs from 'node:fs';
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const BB_KEY = (process.env.BIGBUY_API_KEY || '').trim();
 const LIMIT = parseInt(process.env.LIMIT || '300', 10);

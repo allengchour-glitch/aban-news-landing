@@ -16,7 +16,7 @@
 const SHOP = process.env.SHOPIFY_SHOP || "";
 const CID = process.env.SHOPIFY_CLIENT_ID || "";
 const SECRET = process.env.SHOPIFY_CLIENT_SECRET || "";
-const API = process.env.SHOPIFY_API_VERSION || "2025-01";
+const API = process.env.SHOPIFY_API_VERSION || "2026-01";
 const LIMIT = parseInt(process.env.SCAN_LIMIT || "50", 10);
 const DRY = process.env.DRY === "1";
 const COL_MAX = parseInt(process.env.COLLECTION_COVER_MAX || "30", 10); // max Cover-Fixes pro Lauf

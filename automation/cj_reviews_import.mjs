@@ -43,7 +43,7 @@ const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '1',
 const DRY = process.env.DRY_RUN === '1';
 
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
-const SHOP_API = '2025-01';
+const SHOP_API = '2026-01';
 const JM_API = 'https://judge.me/api/v1/reviews';
 const TOKEN_FILE = '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_reviews_done.txt';

@@ -10,7 +10,7 @@
  */
 import fs from 'node:fs';
 const SHOP=(process.env.SHOPIFY_SHOP||'').trim(); const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
-const API='2025-01';
+const API='2026-01';
 const LOGO=(process.env.LOGO_REF||'shopify://shop_images/luxestyle-ch-logo.png').trim();
 const HEIGHT=parseInt(process.env.LOGO_HEIGHT||'44',10)||44;
 const DRY=process.env.DRY_RUN==='1'; const REMOVE=process.env.REMOVE==='1';

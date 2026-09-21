@@ -60,7 +60,7 @@ NICHT_TITEL = re.compile(
 def gql(q, v=None, versuche=10):
     for i in range(versuche):
         req = urllib.request.Request(
-            f"https://{SHOP}/admin/api/2024-10/graphql.json",
+            f"https://{SHOP}/admin/api/2026-01/graphql.json",
             data=json.dumps({"query": q, "variables": v or {}}).encode(),
             headers={"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"})
         try:

@@ -20,7 +20,7 @@ DRY = os.environ.get('DRY') == '1'
 CAP = int(os.environ.get('CAP', '800'))
 LEDGER = os.path.join(os.path.dirname(__file__), '..', 'dropship', '_trust_baustein_wahrheit.txt')
 SHOP = 'au3j0y-hq.myshopify.com'
-API = f'https://{SHOP}/admin/api/2024-10/graphql.json'
+API = f'https://{SHOP}/admin/api/2026-01/graphql.json'
 
 def token():
     return open('/tmp/cj_shop_token.txt').read().strip()

@@ -17,7 +17,7 @@ def bb(path,body=None):
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
     for _ in range(3):
-        r=subprocess.run(["curl","-s","--max-time","40","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json","-H","X-Shopify-Access-Token: "+STOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
+        r=subprocess.run(["curl","-s","--max-time","40","https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json","-H","X-Shopify-Access-Token: "+STOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
         try: return json.loads(r.stdout)
         except Exception: time.sleep(2)
     # ⚠️ 05.09.2026: Hier stand `return {}`. Faellt die Anmeldung aus (die Custom-App

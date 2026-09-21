@@ -80,7 +80,7 @@ QUELLE (Regel 7): Die toten Links entstehen nicht laufend neu - sie stammen
 """
 import json, os, re, sys, time, subprocess, urllib.request, urllib.parse
 
-SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 TOK  = open('/tmp/cj_shop_token.txt').read().strip()
 LEDGER = os.path.join(os.path.dirname(__file__), '..', 'dropship', '_blog_tote_links.txt')
 ONLINE_STORE = "gid://shopify/Publication/301970915713"

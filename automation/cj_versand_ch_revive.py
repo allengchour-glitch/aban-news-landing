@@ -71,7 +71,7 @@ def ist_klinge(titel, tags):
     return _ist_klinge(titel or "") or any(
         t.startswith("google-kanal-klinge") or t in KLINGE_TAG for t in (tags or []))
 
-SHOPAPI = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+SHOPAPI = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 
 
 def shoptok():

@@ -9,7 +9,7 @@
  *      [PAGES=400] · [DRY=1] · [GAP=1800]
  */
 import fs from 'node:fs';
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const BB = (process.env.BIGBUY_API_KEY || '').trim();
 const CAP = parseInt(process.env.CAP || '50', 10);

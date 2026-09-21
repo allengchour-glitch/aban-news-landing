@@ -42,7 +42,7 @@ def gql(q, v=None, versuche=6):
     body=json.dumps({"query":q,"variables":v or {}}).encode()
     for i in range(versuche):
         try:
-            req=urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json", data=body,
+            req=urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json", data=body,
                 headers={"X-Shopify-Access-Token":token(),"Content-Type":"application/json"})
             d=json.load(urllib.request.urlopen(req, timeout=30))
         except Exception: time.sleep(2*(i+1)); continue

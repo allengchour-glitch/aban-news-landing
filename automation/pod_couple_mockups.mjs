@@ -20,7 +20,7 @@ const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const CSEC = process.env.SHOPIFY_CLIENT_SECRET || '';
 const ADMIN_TOKEN = process.env.SHOPIFY_ADMIN_TOKEN || '';
-const API = '2025-01';
+const API = '2026-01';
 const DRY = process.env.DRY_RUN === '1';
 const FORCE = process.env.FORCE === '1';
 const BG = '#f3f0e9';

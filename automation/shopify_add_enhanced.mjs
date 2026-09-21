@@ -61,7 +61,7 @@ async function getToken(){
   return '';
 }
 async function gql(token, query, variables){
-  const r = await fetchRetry(`https://${SHOP}/admin/api/2025-01/graphql.json`, { method:'POST',
+  const r = await fetchRetry(`https://${SHOP}/admin/api/2026-01/graphql.json`, { method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token}, body: JSON.stringify({ query, variables }) });
   return r.json().catch(()=>({}));
 }

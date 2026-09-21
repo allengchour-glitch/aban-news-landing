@@ -27,7 +27,7 @@ const TG_TOKEN=(process.env.TELEGRAM_BOT_TOKEN||'').trim();
 const TG_CHAT=(process.env.TELEGRAM_CHAT_ID||'').trim();
 const MAX=Math.max(1,parseInt(process.env.MAX||'20',10)||20);
 const DRY=process.env.DRY_RUN==='1';
-const API='2025-01';
+const API='2026-01';
 
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim();
 if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';

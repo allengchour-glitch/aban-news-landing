@@ -68,7 +68,7 @@ BENUTZUNG:  DRY=1 python3 automation/material_metafeld_korrigieren.py [GRUPPEN]
 """
 import json, os, re, subprocess, sys, time, html
 
-SHOP  = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+SHOP  = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
 TOKF  = '/tmp/cj_shop_token.txt'
 EXPORT= '/tmp/export.jsonl'
 LEDGER= 'dropship/_material_korrigiert.txt'

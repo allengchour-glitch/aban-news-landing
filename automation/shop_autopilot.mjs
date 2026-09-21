@@ -25,7 +25,7 @@ const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
 const LIVE    = process.env.LIVE === '1';
 const TASK    = (process.env.TASK || 'all').toLowerCase();
 const SCAN    = Math.min(parseInt(process.env.SCAN || '250', 10), 2000);
-const API     = '2025-01';
+const API     = '2026-01';
 
 async function getToken(){
   if(!(CID && CSECRET) && TOK_ST) return TOK_ST;

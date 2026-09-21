@@ -48,7 +48,7 @@ IMMER_FALSCH = re.compile(r"(link in (der )?bio|#fyp\b|#foryou\b|#viral\b)", re.
 
 
 def gql(q, v=None):
-    req = urllib.request.Request("https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+    req = urllib.request.Request("https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
                                  data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                  headers={"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"})
     for i in range(6):

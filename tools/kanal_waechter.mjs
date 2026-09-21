@@ -21,7 +21,7 @@
  *
  * ENV: SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET + SHOPIFY_SHOP (oder SHOPIFY_ADMIN_TOKEN)
  */
-const API = process.env.SHOPIFY_API_VERSION || '2025-07';
+const API = process.env.SHOPIFY_API_VERSION || '2026-01';
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 
 /** Collections, deren Produkte NUR in Onlineshop + Shop gehoeren. */

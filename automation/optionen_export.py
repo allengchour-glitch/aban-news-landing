@@ -36,7 +36,7 @@ def gql(q, v):
     for i in range(8):
         r = subprocess.run(
             ["curl", "-sS", "-X", "POST",
-             f"https://{SHOP}/admin/api/2024-10/graphql.json",
+             f"https://{SHOP}/admin/api/2026-01/graphql.json",
              "-H", f"X-Shopify-Access-Token: {tok}",
              "-H", "Content-Type: application/json",
              "-d", json.dumps({"query": q, "variables": v})],

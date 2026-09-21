@@ -25,7 +25,7 @@ PRIO_DATEI = os.environ.get("PRIO_DATEI")
 def gql(q, v=None):
     open("/tmp/_cvs.json", "w").write(json.dumps({"query": q, "variables": v or {}}))
     for _ in range(6):
-        r = subprocess.run(["curl", "-s", "--max-time", "60", "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+        r = subprocess.run(["curl", "-s", "--max-time", "60", "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK, "-H", "Content-Type: application/json", "--data-binary", "@/tmp/_cvs.json"],
                            capture_output=True, text=True)
         try:

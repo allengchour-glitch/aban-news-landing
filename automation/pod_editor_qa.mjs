@@ -8,7 +8,7 @@
  * REGEL (2026-07-06, teuer gelernt): Editor-Canvas-Bilder IMMER zuerst auf die Shopify-CDN
  * hochladen (upload_to_shopify_cdn.mjs) und die URL aus der Antwort nehmen — nie URLs raten!
  */
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 

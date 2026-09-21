@@ -16,7 +16,7 @@ const LEDGER='dropship/_purged_count.txt';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function scc(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
 let TOK=await scc();
-async function gql(q,v){for(let a=0;a<5;a++){const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('Throttled')){await sleep(3000);continue;}TOK=await scc();await sleep(1000);}return{};}
+async function gql(q,v){for(let a=0;a<5;a++){const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('Throttled')){await sleep(3000);continue;}TOK=await scc();await sleep(1000);}return{};}
 const LIST=`query($q:String!){products(first:50,query:$q){edges{node{id title}}}}`;
 const DEL=`mutation($id:ID!){productDelete(input:{id:$id}){deletedProductId userErrors{message}}}`;
 let total=fs.existsSync(LEDGER)?parseInt(fs.readFileSync(LEDGER,'utf8').trim()||'0',10):0;

@@ -94,7 +94,7 @@ import time
 
 THEME_ID = "gid://shopify/OnlineStoreTheme/187533001089"
 SHOP = "au3j0y-hq.myshopify.com"
-API = f"https://{SHOP}/admin/api/2024-10/graphql.json"
+API = f"https://{SHOP}/admin/api/2026-01/graphql.json"
 TOKEN_DATEI = "/tmp/cj_shop_token.txt"
 SICHERUNG = "/tmp/theme_backup"
 

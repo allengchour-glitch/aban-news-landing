@@ -21,7 +21,7 @@ DRY=os.environ.get('DRY')=='1'
 AUSNAHME={'15431914783105'}
 LEDGER='dropship/_streichpreis_entfernt.txt'
 def gql(q,v=None):
-    r=urllib.request.Request(f'https://{SHOP}/admin/api/2024-10/graphql.json',
+    r=urllib.request.Request(f'https://{SHOP}/admin/api/2026-01/graphql.json',
       data=json.dumps({'query':q,'variables':v or {}}).encode(),
       headers={'X-Shopify-Access-Token':TOKEN,'Content-Type':'application/json'})
     for i in range(8):

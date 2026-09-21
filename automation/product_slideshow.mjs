@@ -8,7 +8,7 @@
  */
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const QUERY = process.env.QUERY || 'tag:viral status:active';
 const LIMIT = parseInt(process.env.LIMIT || '30', 10);

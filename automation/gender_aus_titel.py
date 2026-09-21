@@ -61,7 +61,7 @@ AUFRUF:  python3 automation/gender_aus_titel.py --dry      (zeigt nur)
 import json, os, re, subprocess, sys, time
 
 SHOP = 'au3j0y-hq.myshopify.com'
-URL = f'https://{SHOP}/admin/api/2024-10/graphql.json'
+URL = f'https://{SHOP}/admin/api/2026-01/graphql.json'
 TOK = open('/tmp/cj_shop_token.txt').read().strip()
 NS, KEY = 'mm-google-shopping', 'gender'
 LEDGER = os.path.join(os.path.dirname(__file__), '..', 'dropship', '_gender_aus_titel.txt')

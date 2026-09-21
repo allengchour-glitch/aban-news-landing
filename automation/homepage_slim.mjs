@@ -24,7 +24,7 @@
  * ENV: SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET + SHOPIFY_SHOP (oder SHOPIFY_ADMIN_TOKEN)
  *      optional ZIEL_THEME_ID (gid oder Zahl) · DRY_RUN (Default 1)
  */
-const API = process.env.SHOPIFY_API_VERSION || '2025-07';
+const API = process.env.SHOPIFY_API_VERSION || '2026-01';
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const DRY = process.env.DRY_RUN !== '0';
 

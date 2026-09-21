@@ -121,7 +121,7 @@ import time
 import urllib.request
 
 SHOP = "au3j0y-hq.myshopify.com"
-API = f"https://{SHOP}/admin/api/2024-10/graphql.json"
+API = f"https://{SHOP}/admin/api/2026-01/graphql.json"
 LEDGER = "dropship/_bewertungsfotos_entfernt.txt"
 SICHERUNG = "dropship/_bewertungsfotos_backup"
 

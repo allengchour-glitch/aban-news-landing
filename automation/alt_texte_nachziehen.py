@@ -24,7 +24,7 @@ ENV: SEIT=2026-08-17 · [LIMIT=99999 Produkte] · [DRY=1] · [STATUS=active]
 import json, os, sys, time, urllib.request
 
 SHOP = 'au3j0y-hq.myshopify.com'
-API  = '2025-01'
+API  = '2026-01'
 import datetime as _dt
 # Ohne SEIT: die letzten 4 Tage. Der tägliche Lauf im Aufseher deckt sich damit
 # vierfach selbst ab — fällt er ein paar Tage aus, holt der nächste Lauf die Lücke

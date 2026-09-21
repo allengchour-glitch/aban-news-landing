@@ -120,7 +120,7 @@ DRY=1 meldet nur. NUR=A|B|C|D|E beschränkt auf einzelne Klassen (Standard: alle
 import json, os, re, subprocess, sys, time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-API = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+API = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 DRY = os.environ.get("DRY") == "1"
 NUR = os.environ.get("NUR", "ABCDE").upper()
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")

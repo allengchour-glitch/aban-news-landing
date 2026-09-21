@@ -4,7 +4,7 @@
 # schlecht = weniger Gratis-Shopping-Traffic. Ableitung: gender aus Tags, age_group=adult (kids wenn Baby/Kinder).
 # Resümierbar via Ledger. Quelle: /tmp/gaps2.json + /tmp/tags2.json + /tmp/titles2.json.
 import json,urllib.request,os,time,re
-SHOP="au3j0y-hq.myshopify.com"; URL=f"https://{SHOP}/admin/api/2025-01/graphql.json"
+SHOP="au3j0y-hq.myshopify.com"; URL=f"https://{SHOP}/admin/api/2026-01/graphql.json"
 LED="/tmp/gfeed_done.txt"
 def refresh():
     b=json.dumps({"client_id":os.environ['SHOPIFY_CLIENT_ID'],"client_secret":os.environ['SHOPIFY_CLIENT_SECRET'],"grant_type":"client_credentials"}).encode()

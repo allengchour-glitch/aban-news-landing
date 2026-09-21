@@ -37,7 +37,7 @@ async function getToken(){
 }
 async function setSort(id, order, token){
   const q = `mutation($input:CollectionInput!){collectionUpdate(input:$input){collection{id sortOrder} userErrors{message}}}`;
-  const r = await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
+  const r = await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},
     body:JSON.stringify({query:q, variables:{input:{id, sortOrder:order}}})});
   const j = await r.json();

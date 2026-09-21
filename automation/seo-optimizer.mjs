@@ -34,7 +34,7 @@ async function getToken(){
   }
   return TOK_STATIC;
 }
-const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
+const API = `https://${SHOP}/admin/api/2026-01/graphql.json`;
 let TOKEN = '';
 async function gql(query, variables){
   const r = await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOKEN},

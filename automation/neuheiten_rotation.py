@@ -27,7 +27,7 @@ from querbeet_kuratieren import WELTEN, RISIKO_TAG, NICHT_TITEL, gleiche_warenar
 
 def gql(q, v=None):
     for i in range(10):
-        req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
+        req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json",
                                      data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                      headers={"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"})
         try:

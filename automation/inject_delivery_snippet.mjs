@@ -9,7 +9,7 @@
  */
 import fs from 'node:fs';
 const SHOP=(process.env.SHOPIFY_SHOP||'').trim(); const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
-const API='2025-01';
+const API='2026-01';
 const SECTION=(process.env.SECTION||'sections/main-product.liquid').trim();
 const SNIPPET='snippets/ls-lieferzeit.liquid';
 const DRY=process.env.DRY_RUN==='1'; const REMOVE=process.env.REMOVE==='1';

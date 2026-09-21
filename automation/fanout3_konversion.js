@@ -30,7 +30,7 @@ Betreiber: Einzelfirma in Belp BE. Sprache aller Befunde: DEUTSCH.
 ZUGRIFF:
   Shopify Admin (lesend):
     TOK=$(cat /tmp/cj_shop_token.txt)
-    curl -s --max-time 60 https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json \\
+    curl -s --max-time 60 https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json \\
       -H "X-Shopify-Access-Token: $TOK" -H "Content-Type: application/json" -d '{"query":"..."}'
     ⚠️ Bei "Throttled" 5 s warten und wiederholen — eine Drosselung ist eine Warteanweisung,
        kein Abbruchgrund.

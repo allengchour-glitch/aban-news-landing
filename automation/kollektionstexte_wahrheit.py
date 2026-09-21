@@ -55,7 +55,7 @@ def gql(q, v=None):
     for versuch in range(8):
         try:
             r = urllib.request.Request(
-                "https://%s/admin/api/2024-10/graphql.json" % SHOP,
+                "https://%s/admin/api/2026-01/graphql.json" % SHOP,
                 data=json.dumps({"query": q, "variables": v or {}}).encode(),
                 headers={"X-Shopify-Access-Token": T, "Content-Type": "application/json"})
             d = json.loads(urllib.request.urlopen(r, timeout=60).read())

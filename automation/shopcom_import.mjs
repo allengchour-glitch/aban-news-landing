@@ -99,7 +99,7 @@ async function shTok() {
   return (await r.json()).access_token;
 }
 async function gql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, { method:'POST',
+  const r = await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`, { method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok}, body: JSON.stringify({ query:q, variables:v||{} }) });
   return r.json();
 }

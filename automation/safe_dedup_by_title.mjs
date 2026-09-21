@@ -3,7 +3,7 @@ const CID=process.env.SHOPIFY_CLIENT_ID, CSEC=process.env.SHOPIFY_CLIENT_SECRET,
 const DRY=process.env.DRY==='1';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function scc(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return JSON.parse(await r.text()).access_token;}
-let TOK; const gql=async(q,v)=>{for(let a=0;a<6;a++){try{const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('hrottl')){await sleep(4000);continue;}}catch(e){await sleep(3000);}TOK=await scc();}return null;};
+let TOK; const gql=async(q,v)=>{for(let a=0;a<6;a++){try{const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('hrottl')){await sleep(4000);continue;}}catch(e){await sleep(3000);}TOK=await scc();}return null;};
 const specific=t=>{const x=(t||'').trim();
   if(/(·|Gr\.|Grösse|Größe|\bcm\b|«|»|\bModell\b|\d{2,})/.test(x)) return true;   // Grösse/Modell/Name-Marker
   const words=x.split(/\s+/).filter(Boolean);

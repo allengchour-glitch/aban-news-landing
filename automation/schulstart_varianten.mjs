@@ -12,7 +12,7 @@
  */
 import fs from 'node:fs';
 
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2024-10';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json')
   ? (JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken || '') : '')).trim();
 const sleep = ms => new Promise(r => setTimeout(r, ms));

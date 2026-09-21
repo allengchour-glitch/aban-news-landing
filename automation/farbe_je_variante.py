@@ -101,7 +101,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from farblexikon import farbe_von                                    # noqa: E402
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-URL = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+URL = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 DRY = os.environ.get("DRY") == "1"
 LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                       "..", "dropship", "_farbe_je_variante.txt")

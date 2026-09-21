@@ -82,7 +82,7 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 DRY = os.environ.get("DRY") == "1"
 PHASE = os.environ.get("PHASE", "alle")
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
@@ -652,7 +652,7 @@ SEITEN = {
 
 def seiten():
     import urllib.request as _u
-    basis = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/pages"
+    basis = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/pages"
     kopf = {"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"}
     geaendert = fehler = schon = 0
     for pid, paare in SEITEN.items():

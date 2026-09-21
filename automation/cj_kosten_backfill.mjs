@@ -75,7 +75,7 @@ async function sgql(q, v) {
   let gedrosseltFolge = 0;
   for (let i = 0; i < 8; i++) {
     try {
-      const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, {
+      const r = await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`, {
         method: 'POST',
         headers: { 'X-Shopify-Access-Token': TOK, 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: q, variables: v || {} }),

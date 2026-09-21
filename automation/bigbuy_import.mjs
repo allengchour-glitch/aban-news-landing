@@ -30,7 +30,7 @@ const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
 let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
-const API = '2025-01';
+const API = '2026-01';
 const LEDGER = 'dropship/bigbuy_done.txt';
 const IMG_LEDGER = 'dropship/bigbuy_img_seen.txt'; // Foto-Datei → schon importiert (gleiche Ware, andere Ref)
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));

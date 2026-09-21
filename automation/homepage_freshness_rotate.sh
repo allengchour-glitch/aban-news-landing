@@ -24,7 +24,7 @@ while true; do
     for CID in "${COLLS[@]}"; do
       # Versetzter Offset: Reihe i bekommt Sortierung (STEP + i) % NS → nie zwei Reihen gleich
       S=${SORTS[$(( (STEP + I) % NS ))]}
-      curl -s "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json" -H "X-Shopify-Access-Token: $TOK" -H 'Content-Type: application/json' \
+      curl -s "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json" -H "X-Shopify-Access-Token: $TOK" -H 'Content-Type: application/json' \
         -d "{\"query\":\"mutation{ collectionUpdate(input:{id:\\\"gid://shopify/Collection/$CID\\\", sortOrder:$S}){ userErrors{message} }}\"}" > /dev/null
       I=$((I+1)); sleep 2
     done

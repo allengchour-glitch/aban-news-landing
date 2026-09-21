@@ -9,7 +9,7 @@
 import fs from 'node:fs';
 const SHOPraw=process.env.SHOPIFY_SHOP||''; const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
-const DRY=process.env.DRY_RUN==='1'; const API='2025-01'; const PREFIX='9000001';
+const DRY=process.env.DRY_RUN==='1'; const API='2026-01'; const PREFIX='9000001';
 const TYPE=(process.env.TYPE||'mug').trim().toLowerCase();
 const SOURCE=(process.env.SOURCE||'schweiz').trim().toLowerCase();
 const ONLY=(process.env.ONLY||'').split(',').map(s=>s.trim()).filter(Boolean);

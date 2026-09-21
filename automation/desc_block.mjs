@@ -16,7 +16,7 @@ const CSEC = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
 const COLLECTION = process.env.COLLECTION || 'damen-mode';
 const MAX = Math.max(1, parseInt(process.env.MAX || '60', 10) || 60);
 const DRY = process.env.DRY_RUN === '1';
-const API = '2025-01';
+const API = '2026-01';
 
 let SHOP = SHOPraw.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';

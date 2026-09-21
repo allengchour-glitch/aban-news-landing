@@ -85,7 +85,7 @@ import fs from 'fs';
 import path from 'path';
 
 const TOKEN_FILE = '/tmp/cj_shop_token.txt';
-const ENDPOINT = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json';
+const ENDPOINT = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json';
 const LEDGER = path.join(process.cwd(), 'dropship/_dubletten_gedraftet.txt');
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));

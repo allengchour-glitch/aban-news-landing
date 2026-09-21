@@ -3,7 +3,7 @@ import json,subprocess,time
 TOK=open("/tmp/cj_shop_token.txt").read().strip()
 def gql(q,v=None):
     for i in range(10):
-        r=subprocess.run(["curl","-s","--max-time","90","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+        r=subprocess.run(["curl","-s","--max-time","90","https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
          "-H","X-Shopify-Access-Token: "+TOK,"-H","Content-Type: application/json","-d",json.dumps({"query":q,"variables":v or {}})],capture_output=True,text=True)
         try:
             d=json.loads(r.stdout)

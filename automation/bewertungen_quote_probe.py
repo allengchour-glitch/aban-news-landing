@@ -5,7 +5,7 @@ done=set(l.strip() for l in open('dropship/cj_reviews_done.txt') if l.strip())
 cache=json.load(open('dropship/_cj_pid_cache.json')) if os.path.exists('dropship/_cj_pid_cache.json') else {}
 def sh(q,v=None):
     for i in range(8):
-        p=subprocess.run(['curl','-s','-X','POST',f'https://{SHOP}/admin/api/2024-10/graphql.json',
+        p=subprocess.run(['curl','-s','-X','POST',f'https://{SHOP}/admin/api/2026-01/graphql.json',
             '-H',f'X-Shopify-Access-Token: {TOK}','-H','Content-Type: application/json',
             '--data-binary',json.dumps({'query':q,'variables':v or {}})],capture_output=True,text=True)
         try: j=json.loads(p.stdout)

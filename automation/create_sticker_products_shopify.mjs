@@ -10,7 +10,7 @@ const SHOPraw=process.env.SHOPIFY_SHOP||''; const ADMIN_TOKEN=(process.env.SHOPI
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
 const LIMIT=Math.max(1,parseInt(process.env.LIMIT||'20',10)||20);
 const ONLY=(process.env.ONLY||'').split(',').map(s=>s.trim()).filter(Boolean);
-const DRY=process.env.DRY_RUN==='1'; const API='2025-01';
+const DRY=process.env.DRY_RUN==='1'; const API='2026-01';
 const RAW='https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/social/designs/';
 import fs from 'node:fs'; import path from 'node:path';
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';

@@ -20,7 +20,7 @@ import { balanceByCategory } from './lib/reel-category.mjs';
 
 const { SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET } = process.env;
 const QUEUE_MAX = Number(process.env.QUEUE_MAX || 3);
-const API_VER = '2024-10';
+const API_VER = '2026-01';
 const CSV = 'social/posts_image.csv';
 let SHOP_TOKEN = SHOPIFY_ADMIN_TOKEN || '';
 

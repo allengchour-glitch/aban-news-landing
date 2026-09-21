@@ -63,7 +63,7 @@ async function getToken(){
 }
 async function orders(token,sinceDate){
   const query=`{ orders(first:250, query:"created_at:>=${sinceDate}") { edges { node { totalPriceSet { shopMoney { amount currencyCode } } } } } }`;
-  const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
+  const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query})});
   const j=await r.json(); const edges=j?.data?.orders?.edges||[];
   let sum=0,cur='CHF'; edges.forEach(e=>{const m=e.node.totalPriceSet.shopMoney;sum+=parseFloat(m.amount||0);cur=m.currencyCode||cur;});

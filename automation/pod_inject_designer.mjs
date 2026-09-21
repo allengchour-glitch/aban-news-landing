@@ -6,7 +6,7 @@
  * ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET, [DRY_RUN]
  */
 const SHOP=process.env.SHOPIFY_SHOP||'', CID=process.env.SHOPIFY_CLIENT_ID||'', SECRET=process.env.SHOPIFY_CLIENT_SECRET||'';
-const DRY=process.env.DRY_RUN==='1', API='2024-10', JS='https://abannews.com/pod/designer.js';
+const DRY=process.env.DRY_RUN==='1', API='2026-01', JS='https://abannews.com/pod/designer.js';
 if(!SHOP||!CID||!SECRET){ console.log('Shopify-Creds fehlen → No-op.'); process.exit(0); }
 
 async function token(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:SECRET,grant_type:'client_credentials'})}); const j=await r.json().catch(()=>({})); if(!j.access_token){ console.error('Token-Fehler',r.status,JSON.stringify(j).slice(0,200)); process.exit(1);} return j.access_token; }

@@ -115,7 +115,7 @@ import time
 import urllib.request
 
 TOKEN = open('/tmp/cj_shop_token.txt').read().strip()
-API = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+API = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
 LEDGER = os.path.join(os.path.dirname(__file__), '..', 'dropship',
                       '_rueckgabe_vereinheitlicht.txt')
 

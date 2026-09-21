@@ -97,7 +97,7 @@ import sys
 import time
 import urllib.request
 
-SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 TOKEN_DATEI = "/tmp/cj_shop_token.txt"
 LEDGER = os.path.join(os.path.dirname(__file__), "..", "dropship", "_alttext_code_bereinigt.txt")
 

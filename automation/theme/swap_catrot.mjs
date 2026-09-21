@@ -4,7 +4,7 @@ const SHOP='au3j0y-hq.myshopify.com';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function scc(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return JSON.parse(await r.text()).access_token;}
 const TOK=await scc();
-const gql=async(q,v)=>{for(let a=0;a<6;a++){const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;await sleep(3000);}return null;};
+const gql=async(q,v)=>{for(let a=0;a<6;a++){const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;await sleep(3000);}return null;};
 const th=await gql(`{themes(first:20){edges{node{id role}}}}`);
 const id=th.data.themes.edges.find(e=>e.node.role==='MAIN').node.id;
 const fk=await gql(`query($id:ID!){theme(id:$id){files(filenames:["templates/index.json"]){edges{node{body{...on OnlineStoreThemeFileBodyText{content}}}}}}}`,{id});

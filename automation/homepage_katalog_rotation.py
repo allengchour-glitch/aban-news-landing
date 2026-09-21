@@ -20,7 +20,7 @@ Was es tut (idempotent, täglich aus fixer_keepalive.sh):
 import copy, datetime, json, os, re, subprocess, sys
 
 SHOP = "au3j0y-hq.myshopify.com"
-API = f"https://{SHOP}/admin/api/2024-10/graphql.json"
+API = f"https://{SHOP}/admin/api/2026-01/graphql.json"
 THEME = "gid://shopify/OnlineStoreTheme/187533001089"
 TOKENDATEI = "/tmp/cj_shop_token.txt"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

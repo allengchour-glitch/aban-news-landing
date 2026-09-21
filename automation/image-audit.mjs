@@ -25,7 +25,7 @@ const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
 const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta';
-const API_VER = process.env.SHOPIFY_API_VERSION || '2025-01';
+const API_VER = process.env.SHOPIFY_API_VERSION || '2026-01';
 const BATCH = Math.max(1, parseInt(process.env.BATCH || '40', 10) || 40);
 const MIN_PX = Math.max(200, parseInt(process.env.MIN_PX || '800', 10) || 800);
 const APPLY = process.env.APPLY !== '0'; // Default: Umsortieren AN

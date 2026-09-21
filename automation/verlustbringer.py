@@ -27,7 +27,7 @@ CAP = int(os.environ.get("CAP", "400"))
 EXPORT = os.environ.get("EXPORT", "/tmp/marge_export.jsonl")
 LEDGER = "dropship/_verlustbringer_done.txt"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-URL = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+URL = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 GRENZE = 1.6          # bis hierhin Preiskorrektur, darueber aus dem Verkauf
 PUFFER = 3.00         # gewuenschter Gewinn je Verkauf im Gratisversand
 

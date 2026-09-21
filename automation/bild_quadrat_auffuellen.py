@@ -33,7 +33,7 @@ DRY = os.environ.get("DRY") == "1"
 CAP = int(os.environ.get("CAP", "40"))
 NUR = os.environ.get("NUR")
 LEDGER = "dropship/_bild_quadrat.txt"
-API = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+API = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 
 
 def sgql(q, v=None):

@@ -13,7 +13,7 @@ const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const SECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
 const PAGE_ID = process.env.POD_PAGE_ID || 'gid://shopify/Page/698444710273';
 const BODY_FILE = process.env.POD_BODY_FILE || 'dropship/pod/page_body.html';
-const API = '2024-10';
+const API = '2026-01';
 
 if(!SHOP || !CID || !SECRET){ console.log('Shopify-Creds fehlen (SHOPIFY_SHOP/CLIENT_ID/CLIENT_SECRET) → No-op.'); process.exit(0); }
 if(!fs.existsSync(BODY_FILE)){ console.error('Body-Datei fehlt:', BODY_FILE); process.exit(1); }

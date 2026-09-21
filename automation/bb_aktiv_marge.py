@@ -30,7 +30,7 @@ def bb(path,body=None):
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
     for _ in range(4):
-        r=subprocess.run(["curl","-s","--max-time","50","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json","-H","X-Shopify-Access-Token: "+STOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
+        r=subprocess.run(["curl","-s","--max-time","50","https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json","-H","X-Shopify-Access-Token: "+STOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
         try:
             d=json.loads(r.stdout)
             if "data" in d: return d

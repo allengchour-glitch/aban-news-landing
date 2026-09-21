@@ -3,7 +3,7 @@ const CID=process.env.SHOPIFY_CLIENT_ID, CSEC=process.env.SHOPIFY_CLIENT_SECRET,
 const DRY=process.env.DRY==='1';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function scc(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return JSON.parse(await r.text()).access_token;}
-let TOK; const gql=async(q,v)=>{for(let a=0;a<6;a++){try{const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('hrottl')){await sleep(4000);continue;}}catch(e){await sleep(3000);}TOK=await scc();}return null;};
+let TOK; const gql=async(q,v)=>{for(let a=0;a<6;a++){try{const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('hrottl')){await sleep(4000);continue;}}catch(e){await sleep(3000);}TOK=await scc();}return null;};
 const round90=pStr=>{const p=parseFloat(pStr);const e=Math.floor(p);const c=p-e; const np=(c<=0.9001)?e+0.90:e+1.90; return np.toFixed(2);};
 const lines=fs.readFileSync('/tmp/prices.jsonl','utf8').split('\n').filter(Boolean).map(l=>{try{return JSON.parse(l)}catch{return null}}).filter(Boolean);
 const status=new Map(); for(const o of lines){ if((o.id||'').includes('/Product/')) status.set(o.id,o.status); }

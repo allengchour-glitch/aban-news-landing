@@ -51,7 +51,7 @@ def gql(q, v=None):
     with open("/tmp/_tca.json", "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
     r = subprocess.run(["curl", "-s", "--max-time", "60",
-                        f"https://{SHOP}/admin/api/2024-10/graphql.json",
+                        f"https://{SHOP}/admin/api/2026-01/graphql.json",
                         "-H", "X-Shopify-Access-Token: " + token(),
                         "-H", "Content-Type: application/json",
                         "--data-binary", "@/tmp/_tca.json"], capture_output=True, text=True)

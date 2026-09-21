@@ -9,7 +9,7 @@ TOK=open("/tmp/cj_shop_token.txt").read().strip()
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
     for _ in range(5):
-        r=subprocess.run(["curl","-s","--max-time","60","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json","-H","X-Shopify-Access-Token: "+TOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
+        r=subprocess.run(["curl","-s","--max-time","60","https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json","-H","X-Shopify-Access-Token: "+TOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
         try:
             d=json.loads(r.stdout)
             if "data" in d: return d

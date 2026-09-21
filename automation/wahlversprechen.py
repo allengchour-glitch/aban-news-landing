@@ -23,7 +23,7 @@ ENV: SEIT=JJJJ-MM-TT · CAP=... · FIX=1
 import json, os, re, subprocess, sys, time
 
 TOK = open('/tmp/cj_shop_token.txt').read().strip()
-URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+URL = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
 BERICHT = 'dropship/WAHLVERSPRECHEN.md'
 LEDGER = 'dropship/_wahlversprechen.txt'
 CAP = int(os.environ.get('CAP', '4000'))

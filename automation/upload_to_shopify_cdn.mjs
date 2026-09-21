@@ -26,7 +26,7 @@ const SHOP = process.env.SHOPIFY_SHOP || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
-const API = process.env.SHOPIFY_API_VERSION || '2025-01';
+const API = process.env.SHOPIFY_API_VERSION || '2026-01';
 
 const file = process.argv[2];
 const alt = process.argv[3] || path.basename(file || '');

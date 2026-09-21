@@ -85,7 +85,7 @@ def gql(q, v=None):
         f.write(json.dumps({"query": q, "variables": v or {}}))
     for _ in range(5):
         r = subprocess.run(["curl", "-s", "--max-time", "60",
-                            "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+                            "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
                             "-H", "Content-Type: application/json",
                             "--data-binary", "@/tmp/_vb.json"], capture_output=True, text=True)

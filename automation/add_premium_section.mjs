@@ -21,7 +21,7 @@ const CID  = process.env.SHOPIFY_CLIENT_ID;
 const SEC  = process.env.SHOPIFY_CLIENT_SECRET;
 const HANDLE = process.env.PREMIUM_COLLECTION_HANDLE || 'luxestyle-premium';
 const DRY = process.env.DRY === '1';
-const API = '2025-01';
+const API = '2026-01';
 if (!SHOP || !CID || !SEC) { console.error('❌ ENV fehlt: SHOPIFY_SHOP / SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET'); process.exit(1); }
 
 async function token() {

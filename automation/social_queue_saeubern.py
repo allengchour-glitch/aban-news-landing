@@ -39,7 +39,7 @@ def produkt_key(cap, zid):
 
 def gql(q, v=None):
     tok = open("/tmp/cj_shop_token.txt").read().strip()
-    req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
+    req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json",
         data=json.dumps({"query": q, "variables": v or {}}).encode(),
         headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
     for i in range(5):

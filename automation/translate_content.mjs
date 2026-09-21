@@ -16,7 +16,7 @@ const GEMINI=(process.env.GEMINI_API_KEY||'').trim();
 const SCOPE=(process.env.SCOPE||'hero').trim().toLowerCase();
 const TARGETS=(process.env.TARGETS||'fr,it,en').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean);
 const MAX=Math.max(1,parseInt(process.env.MAX||'1000',10)||1000);
-const DRY=process.env.DRY_RUN==='1'; const API='2025-01';
+const DRY=process.env.DRY_RUN==='1'; const API='2026-01';
 const LANGNAME={fr:'French',it:'Italian',en:'English',de:'German'};
 const LEDGER='dropship/_translated.txt';
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';

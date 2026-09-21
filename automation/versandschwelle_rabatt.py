@@ -98,7 +98,7 @@ import os
 import sys
 import urllib.request
 
-SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 TOKEN_DATEI = "/tmp/cj_shop_token.txt"
 THEME = "gid://shopify/OnlineStoreTheme/187533001089"
 

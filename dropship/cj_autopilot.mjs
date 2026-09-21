@@ -30,7 +30,7 @@ let SHOP_TOKEN = SHOPIFY_ADMIN_TOKEN || '';  // wird ggf. per Client-Credentials
 const MAX = Number(process.env.AUTOPILOT_MAX || 6);
 const TARGET_STATUS = (process.env.AUTOPILOT_STATUS || 'ACTIVE').toUpperCase() === 'DRAFT' ? 'DRAFT' : 'ACTIVE';
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
-const API_VER = '2024-10';
+const API_VER = '2026-01';
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 

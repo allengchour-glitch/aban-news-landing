@@ -57,7 +57,7 @@ Ledger:  dropship/_groesse_aus_farbe.txt  (eine Zeile je Produkt, sofort geflush
 import concurrent.futures as cf
 import json, os, re, sys, threading, time, urllib.request
 
-SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 TOKEN = open("/tmp/cj_shop_token.txt").read().strip()
 EXPORT = "/tmp/export.jsonl"
 LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dropship", "_groesse_aus_farbe.txt")

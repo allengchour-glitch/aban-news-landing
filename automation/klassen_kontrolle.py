@@ -40,7 +40,7 @@ BERICHT = os.path.join(REPO, 'dropship', 'KLASSEN-KONTROLLE.md')
 CAP = int(os.environ.get('CAP', '0')) or None
 DRY = os.environ.get('DRY') == '1'
 SHOP = 'au3j0y-hq.myshopify.com'
-API = f'https://{SHOP}/admin/api/2024-10/graphql.json'
+API = f'https://{SHOP}/admin/api/2026-01/graphql.json'
 STAND = '/tmp/_klassen_stand.json'      # Cursor + Zaehler; /tmp ueberlebt den Neustart
 NEU = os.environ.get('NEU') == '1'
 CTX = ssl.create_default_context(cafile='/root/.ccr/ca-bundle.crt') if os.path.exists('/root/.ccr/ca-bundle.crt') else None

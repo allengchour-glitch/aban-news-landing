@@ -20,7 +20,7 @@ DRY=1 meldet nur.
 import json, os, re, time, urllib.request
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-URL = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+URL = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 DRY = os.environ.get("DRY") == "1"
 QUELLE = os.environ.get("QUELLE", "export")
 EXPORT = os.environ.get("EXPORT", "/tmp/optvals_raw.jsonl")

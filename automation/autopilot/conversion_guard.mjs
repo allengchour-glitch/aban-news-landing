@@ -15,7 +15,7 @@ import path from 'node:path';
 const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
 const OUT = path.join(ROOT, 'automation', 'autopilot', 'CONVERSION-GUARD.md');
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
-const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
+const API = `https://${SHOP}/admin/api/2026-01/graphql.json`;
 const KEY_COLLECTIONS = (process.env.GUARD_COLLECTIONS || 'sommer,damen-mode').split(',').map(s => s.trim()).filter(Boolean);
 
 async function getToken() {

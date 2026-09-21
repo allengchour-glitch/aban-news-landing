@@ -18,7 +18,7 @@ MUSTER = re.compile(r"\s*<li>\s*<strong>\s*Material:?\s*</strong>\s*:?\s*hochwer
 def gql(q, v=None):
     tok = open("/tmp/cj_shop_token.txt").read().strip()
     for i in range(6):
-        r = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json", data=json.dumps({"query": q, "variables": v or {}}).encode(),
+        r = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json", data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                    headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
         try:
             d = json.load(urllib.request.urlopen(r, timeout=90))

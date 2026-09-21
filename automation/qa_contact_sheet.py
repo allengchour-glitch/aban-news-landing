@@ -11,7 +11,7 @@ def token():
     r=urllib.request.Request(f'https://{SHOP}/admin/oauth/access_token',d,{'Content-Type':'application/json'})
     return json.load(urllib.request.urlopen(r))['access_token']
 def gql(q,tok):
-    r=urllib.request.Request(f'https://{SHOP}/admin/api/2025-01/graphql.json',
+    r=urllib.request.Request(f'https://{SHOP}/admin/api/2026-01/graphql.json',
         json.dumps({'query':q}).encode(),{'Content-Type':'application/json','X-Shopify-Access-Token':tok})
     return json.load(urllib.request.urlopen(r))
 tok=token()

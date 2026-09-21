@@ -43,7 +43,7 @@ def _token():
         pass
     if t:
         r = subprocess.run(['curl', '-s', '--max-time', '30',
-                            'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json',
+                            'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json',
                             '-H', 'X-Shopify-Access-Token: ' + t, '-H', 'Content-Type: application/json',
                             '-d', '{"query":"query{shop{id}}"}'], capture_output=True, text=True)
         if '"shop"' in r.stdout:
@@ -88,7 +88,7 @@ except OSError:
     sys.exit(0)
 
 TOK = _token()
-URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+URL = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
 LEDGER = 'dropship/_bildhash.txt'
 BERICHT = 'dropship/BILD-DUBLETTEN.md'
 GETAN = 'dropship/_bilddubletten_gedraftet.txt'

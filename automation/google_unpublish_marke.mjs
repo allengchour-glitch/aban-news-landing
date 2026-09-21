@@ -16,7 +16,7 @@ async function token() {
 }
 async function gql(tok, query) {
   for (let a = 0; a < 5; a++) {
-    const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, { method: 'POST',
+    const r = await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`, { method: 'POST',
       headers: { 'X-Shopify-Access-Token': tok, 'Content-Type': 'application/json' },
       body: JSON.stringify({ query }) });
     const j = await r.json();

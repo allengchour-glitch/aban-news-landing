@@ -11,7 +11,7 @@
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
   CID=process.env.SHOPIFY_CLIENT_ID||'', CS=process.env.SHOPIFY_CLIENT_SECRET||'',
   LIVE=process.env.LIVE==='1', CODE=process.env.DISCOUNT_CODE||'WELCOME10',
-  EXTEND_DAYS=parseInt(process.env.EXTEND_DAYS||'30',10), EXTEND_MONTHS=parseInt(process.env.EXTEND_MONTHS||'12',10), API='2025-01';
+  EXTEND_DAYS=parseInt(process.env.EXTEND_DAYS||'30',10), EXTEND_MONTHS=parseInt(process.env.EXTEND_MONTHS||'12',10), API='2026-01';
 
 async function getToken(){
   if(!(CID&&CS)&&TOK_ST) return TOK_ST;

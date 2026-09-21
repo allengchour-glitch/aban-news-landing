@@ -11,7 +11,7 @@
  * Report: dropship/dup_image_report.md
  */
 import fs from 'node:fs';
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const DRY = process.env.DRY === '1';
 const SRC = process.env.SRC || '/tmp/img_dups.json';

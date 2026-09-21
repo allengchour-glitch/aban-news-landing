@@ -16,7 +16,7 @@ CAT = os.environ.get('CAT', '')
 def gql(q, v=None):
     for a in range(6):
         try:
-            r = urllib.request.Request(f'https://{SHOP}/admin/api/2025-01/graphql.json',
+            r = urllib.request.Request(f'https://{SHOP}/admin/api/2026-01/graphql.json',
                 data=json.dumps({'query': q, 'variables': v or {}}).encode(),
                 headers={'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOK})
             j = json.load(urllib.request.urlopen(r, timeout=45))

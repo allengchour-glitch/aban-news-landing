@@ -18,7 +18,7 @@ import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './
 import { textErzeugen } from './groq_text.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
-const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
+const SHOP = 'au3j0y-hq.myshopify.com', API = '2026-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 let CJT = (process.env.CJ_TOKEN || '').trim();
 if (!CJT && fs.existsSync('/tmp/cj_token.json')) CJT = JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken;

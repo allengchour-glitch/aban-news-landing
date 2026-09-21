@@ -16,7 +16,7 @@ aktiv — es traegt Bewertungen, interne Links und Verkaufshistorie.
 import json, os, re, subprocess, sys, time
 
 TOK = open('/tmp/cj_shop_token.txt').read().strip()
-URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+URL = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
 BERICHT = 'dropship/BILD-DUBLETTEN.md'
 LEDGER = 'dropship/_bilddubletten_gedraftet.txt'
 DRY = os.environ.get('DRY') == '1'

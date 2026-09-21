@@ -85,7 +85,7 @@ import time
 import unicodedata
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-URL = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+URL = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 GO = os.environ.get("GO") == "1"
 LEDGER = "dropship/_marken_nachahmung.txt"
 

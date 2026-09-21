@@ -13,7 +13,7 @@
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
   CID=process.env.SHOPIFY_CLIENT_ID||'', CS=process.env.SHOPIFY_CLIENT_SECRET||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'300',10),3000),
-  MAXFIX=Math.min(parseInt(process.env.MAXFIX||'150',10),1000), API='2025-01';
+  MAXFIX=Math.min(parseInt(process.env.MAXFIX||'150',10),1000), API='2026-01';
 
 async function getToken(){
   if(!(CID&&CS)&&TOK_ST) return TOK_ST;

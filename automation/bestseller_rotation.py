@@ -22,7 +22,7 @@ def gql(q, v=None, versuche=6):
     for i in range(versuche):
         try:
             req = urllib.request.Request(
-                f"https://{SHOP}/admin/api/2024-10/graphql.json", data=body,
+                f"https://{SHOP}/admin/api/2026-01/graphql.json", data=body,
                 headers={"X-Shopify-Access-Token": token(), "Content-Type": "application/json"})
             d = json.load(urllib.request.urlopen(req, timeout=30))
         except Exception as e:

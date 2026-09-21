@@ -68,7 +68,7 @@ DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = os.path.join(HIER, "..", "dropship", "_medizin_zweck.txt")
 TAG = "medizinprodukt-pruefen"
-URL = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+URL = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 
 M = json.load(open(os.path.join(HIER, "medizin_zweck.json"), encoding="utf-8"))
 SPERRE = [(x["n"], re.compile(x["re"], re.I)) for x in M["sperre"]]

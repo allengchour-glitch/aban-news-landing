@@ -24,7 +24,7 @@ QUEUE_CDN = ("https://cdn.shopify.com/s/files/1/0943/6856/3585/files/"
 def gql(q, v=None):
     tok = open(TOKPFAD).read().strip()
     req = urllib.request.Request(
-        f"https://{SHOP}/admin/api/2024-10/graphql.json",
+        f"https://{SHOP}/admin/api/2026-01/graphql.json",
         data=json.dumps({"query": q, "variables": v or {}}).encode(),
         headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=40) as r:

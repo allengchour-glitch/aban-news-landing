@@ -4,7 +4,7 @@ SCHREIB=os.environ.get('WRITE')=='1'
 def gql(q,v=None,n=8):
     for i in range(n):
         try:
-            r=urllib.request.Request("https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+            r=urllib.request.Request("https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
                 data=json.dumps({"query":q,"variables":v or {}}).encode(),
                 headers={"X-Shopify-Access-Token":T,"Content-Type":"application/json"})
             d=json.load(urllib.request.urlopen(r,timeout=60))

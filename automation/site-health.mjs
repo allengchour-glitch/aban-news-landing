@@ -48,7 +48,7 @@ async function getToken(){
 }
 async function publish(gid, token){
   const q = `mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
-  const r = await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',
+  const r = await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',
     headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},
     body:JSON.stringify({query:q, variables:{id:gid, p:[{publicationId:ONLINESHOP_PUB}]}})});
   const j = await r.json();

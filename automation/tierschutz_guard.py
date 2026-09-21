@@ -23,7 +23,7 @@ import json, os, re, sys, time, urllib.request
 from datetime import date, timedelta
 
 HIER = os.path.dirname(os.path.abspath(__file__))
-SHOP = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+SHOP = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
 GOOGLE_PUB = 'gid://shopify/Publication/302872297857'
 TAG = 'tierschutz-tschv76'
 

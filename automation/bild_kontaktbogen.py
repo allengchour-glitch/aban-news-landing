@@ -40,7 +40,7 @@ ANZAHL = int(sys.argv[2]) if len(sys.argv) > 2 else 36
 
 def gql(q, v=None):
     req = urllib.request.Request(
-        f'https://{SHOP}/admin/api/2024-10/graphql.json',
+        f'https://{SHOP}/admin/api/2026-01/graphql.json',
         data=json.dumps({'query': q, 'variables': v or {}}).encode(),
         headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
     return json.load(urllib.request.urlopen(req, timeout=45))

@@ -8,7 +8,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 const AT=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(), CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
-const GO=process.env.GO==='1'; const API='2025-01'; const MAX=parseInt(process.env.MAX||'0',10);
+const GO=process.env.GO==='1'; const API='2026-01'; const MAX=parseInt(process.env.MAX||'0',10);
 let SHOP=(process.env.SHOPIFY_SHOP||'').replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
 mkdirSync('reports',{recursive:true});
 const out=[]; const W=m=>{ out.push(m); console.log(m); try{ writeFileSync('reports/soften-claims.txt', out.join('\n')+'\n'); }catch{} };

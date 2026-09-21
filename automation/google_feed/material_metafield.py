@@ -17,7 +17,7 @@ def refresh():
     if t: open(tokf,'w').write(t)
 def gql(q,v=None):
     for _ in range(5):
-        r=subprocess.run(['curl','-s','-X','POST','https://au3j0y-hq.myshopify.com/admin/api/2025-01/graphql.json',
+        r=subprocess.run(['curl','-s','-X','POST','https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json',
           '-H','X-Shopify-Access-Token: '+tok(),'-H','Content-Type: application/json','-d',json.dumps({'query':q,'variables':v or {}})],capture_output=True,text=True)
         try: d=json.loads(r.stdout)
         except: time.sleep(2); continue

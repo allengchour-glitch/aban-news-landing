@@ -18,7 +18,7 @@ const existTitles=new Set();
 try{for(const l of fs.readFileSync('/tmp/products.jsonl','utf8').split('\n')){if(!l)continue;try{existTitles.add(normT(JSON.parse(l).title||''));}catch{}}}catch{}
 async function scc(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
 let TOK=await scc();
-async function sgql(q,v){for(let a=0;a<4;a++){const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('Throttled')){await sleep(3000);continue;}TOK=await scc();await sleep(1000);}return{};}
+async function sgql(q,v){for(let a=0;a<4;a++){const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('Throttled')){await sleep(3000);continue;}TOK=await scc();await sleep(1000);}return{};}
 async function img200(u){try{const r=await fetch(u,{method:'HEAD'});return r.ok;}catch{return false;}}
 const clean=n=>n.replace(/\s*\((Restauriert|Refurbished)[^)]*\)/gi,'').replace(/ß/g,'ss').replace(/\s{2,}/g,' ').trim().slice(0,70);
 const SET=`mutation($input:ProductSetInput!){productSet(synchronous:true,input:$input){product{id} userErrors{message}}}`;

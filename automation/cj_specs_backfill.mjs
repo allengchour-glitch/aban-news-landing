@@ -24,7 +24,7 @@ async function sgql(q, v) {
   for (let i = 0; i < 8; i++) {
     let j;
     try {
-      const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, { method: 'POST',
+      const r = await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`, { method: 'POST',
         headers: { 'X-Shopify-Access-Token': TOK, 'Content-Type': 'application/json' }, body: JSON.stringify({ query: q, variables: v || {} }) });
       j = await r.json();
     } catch { await sleep(2000 * (i + 1)); continue; }

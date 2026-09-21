@@ -25,7 +25,7 @@ OUT = "dropship/_coll_live_check.txt"
 
 def gql(q, v=None):
     r = subprocess.run(["curl", "-s", "--max-time", "50",
-                        "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+                        "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
                         "-H", "X-Shopify-Access-Token: " + TOK,
                         "-H", "Content-Type: application/json",
                         "-d", json.dumps({"query": q, "variables": v or {}})],

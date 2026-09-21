@@ -17,7 +17,7 @@ import path from 'node:path';
 const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
 const OUT = path.join(ROOT, 'automation', 'autopilot', 'CONVERSION-RADAR.md');
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
-const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
+const API = `https://${SHOP}/admin/api/2026-01/graphql.json`;
 
 async function getToken() {
   if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;

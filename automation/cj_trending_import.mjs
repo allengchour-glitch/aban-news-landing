@@ -14,7 +14,7 @@ import { produktdetails } from './cj_specs.mjs';
 import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren } from './cj_copy_prompt.mjs';
 import { textErzeugen } from './groq_text.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
-const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
+const SHOP='au3j0y-hq.myshopify.com',API='2026-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();

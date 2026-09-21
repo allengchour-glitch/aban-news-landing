@@ -71,7 +71,7 @@ Token:   /tmp/cj_shop_token.txt
 import json, os, re, subprocess, sys, tempfile, time
 
 SHOP = "au3j0y-hq.myshopify.com"
-API = "2024-10"
+API = "2026-01"
 THEME = "gid://shopify/OnlineStoreTheme/187533001089"
 TOKEN = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY_RUN") == "1"

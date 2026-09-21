@@ -24,7 +24,7 @@ Ledger: dropship/_artikelnummer_entfernt.txt
 import json, os, re, subprocess, sys, time, urllib.request
 
 TOK = open('/tmp/cj_shop_token.txt').read().strip()
-URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+URL = 'https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json'
 
 
 def gql(q, v=None):

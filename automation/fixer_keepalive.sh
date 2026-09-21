@@ -202,7 +202,7 @@ while true; do
   # ueberhaupt antwortet, und laesst die Waechter sonst gar nicht erst los.
   if [ -s /tmp/cj_shop_token.txt ]; then
     _api=$(curl -s -o /dev/null -w '%{http_code}' --max-time 25 \
-      -X POST "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json" \
+      -X POST "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json" \
       -H "X-Shopify-Access-Token: $(cat /tmp/cj_shop_token.txt)" \
       -H 'Content-Type: application/json' --data-binary '{"query":"{shop{id}}"}' 2>/dev/null)
   else

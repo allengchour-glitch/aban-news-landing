@@ -71,7 +71,7 @@ import sys
 import time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
-URL = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
+URL = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 SCHARF = os.environ.get("SCHARF") == "1"
 LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                       "..", "dropship", "_kollektion_prompttext_fix.txt")

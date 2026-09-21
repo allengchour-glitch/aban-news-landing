@@ -76,7 +76,7 @@ def gql(query, variables=None):
     fehler = 0
     while fehler < 8:
         r = subprocess.run(
-            ["curl", "-s", f"https://{SHOP}/admin/api/2024-10/graphql.json",
+            ["curl", "-s", f"https://{SHOP}/admin/api/2026-01/graphql.json",
              "-H", f"X-Shopify-Access-Token: {tok()}",
              "-H", "Content-Type: application/json", "-d", body],
             capture_output=True, text=True, timeout=120)

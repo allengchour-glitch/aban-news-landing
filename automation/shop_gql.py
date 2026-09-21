@@ -3,7 +3,7 @@ TOK=open("/tmp/cj_shop_token.txt").read().strip()
 CTX=ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt")
 def gql(q, v=None, versuche=12):
     for i in range(versuche):
-        req=urllib.request.Request("https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json",
+        req=urllib.request.Request("https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json",
             data=json.dumps({"query":q,"variables":v or {}}).encode(),
             headers={"X-Shopify-Access-Token":TOK,"Content-Type":"application/json"})
         d=json.loads(urllib.request.urlopen(req,context=CTX).read())

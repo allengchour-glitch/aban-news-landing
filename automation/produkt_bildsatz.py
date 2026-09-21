@@ -12,7 +12,7 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip()
 HIER = os.path.dirname(os.path.abspath(__file__))
 pid = sys.argv[1]
 gid = pid if pid.startswith("gid://") else f"gid://shopify/Product/{pid}"
-req = urllib.request.Request(f"https://{SHOP}/admin/api/2024-10/graphql.json",
+req = urllib.request.Request(f"https://{SHOP}/admin/api/2026-01/graphql.json",
     data=json.dumps({"query": 'query($id:ID!){product(id:$id){id title media(first:30){nodes{mediaContentType ... on MediaImage{status image{url}}}}}}', "variables": {"id": gid}}).encode(),
     headers={"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"})
 d = json.load(urllib.request.urlopen(req, timeout=60))

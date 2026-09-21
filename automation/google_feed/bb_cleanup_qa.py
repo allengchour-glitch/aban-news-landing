@@ -7,7 +7,7 @@ def refresh():
 def gql(q,v=None):
     global tok
     for _ in range(4):
-        r=subprocess.run(['curl','-s','https://au3j0y-hq.myshopify.com/admin/api/2025-01/graphql.json','-H','X-Shopify-Access-Token: '+tok,'-H','Content-Type: application/json','-d',json.dumps({'query':q,'variables':v or {}})],capture_output=True,text=True)
+        r=subprocess.run(['curl','-s','https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json','-H','X-Shopify-Access-Token: '+tok,'-H','Content-Type: application/json','-d',json.dumps({'query':q,'variables':v or {}})],capture_output=True,text=True)
         try: d=json.loads(r.stdout)
         except: time.sleep(2); continue
         if d.get('data'): return d

@@ -67,7 +67,7 @@ def gql(q, v=None, tries=25):
     for i in range(tries):
         try:
             r = urllib.request.Request(
-                f'https://{SHOP}/admin/api/2024-10/graphql.json',
+                f'https://{SHOP}/admin/api/2026-01/graphql.json',
                 data=json.dumps({'query': q, 'variables': v or {}}).encode(),
                 headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
             j = json.load(urllib.request.urlopen(r, timeout=90))

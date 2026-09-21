@@ -8,7 +8,7 @@
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET · [DRY_RUN=1]
  */
 const SHOP=(process.env.SHOPIFY_SHOP||'').trim(); const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
-const DRY=process.env.DRY_RUN==='1'; const API='2025-01';
+const DRY=process.env.DRY_RUN==='1'; const API='2026-01';
 if(!SHOP||!CID||!CSEC){ console.log('Kein Shopify-Cred → No-op.'); process.exit(0); }
 
 async function token(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})}); const j=await r.json().catch(()=>({})); if(!j.access_token) throw new Error('kein Token'); return j.access_token; }

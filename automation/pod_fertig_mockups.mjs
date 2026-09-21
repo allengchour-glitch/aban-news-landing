@@ -32,7 +32,7 @@ const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
 let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
-const API = '2025-01';
+const API = '2026-01';
 
 const ROOT = path.dirname(path.dirname(new URL(import.meta.url).pathname));
 const DESIGN_BASE = 'https://abannews.com/social/designs/';
