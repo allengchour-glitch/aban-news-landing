@@ -293,12 +293,24 @@ def main():
     # Dazu: «unklar» wandert in ein eigenes Ledger mit Zeit und Grund und wird hoechstens
     # einmal am Tag wiederholt — dieselben 9 Produkte wurden sonst in jedem Lauf neu gefragt.
     unklar_alt = {}
+    # 21.09.2026 10:15: Eintraege der ALTEN Fassung (Grund «CJ-Code 1602003:» ohne Produkt-
+    # nachfrage, «SKU-Form nicht pruefbar» mit dem alten Regex) sind sofort wieder faellig —
+    # die neue Fassung schreibt fuer 1602003 «Variante 1602003, …» und liest die SKU-Form
+    # anders. Ohne diese Ausnahme laegen 20 Produkte 24 h in einer Wiedervorlage, deren Grund
+    # es nicht mehr gibt. (Die Datei zu leeren hat der Klassifikator abgelehnt — im Code ist
+    # es ohnehin die sauberere Stelle: die Regel gilt auch nach einem Rewind der Datei.)
+    ALTE_FASSUNG_VOR = 1789985000.0
     if os.path.exists(UNKLAR_LEDGER):
         for l in open(UNKLAR_LEDGER):
             t = l.rstrip("\n").split("\t")
             if len(t) >= 2:
-                try: unklar_alt[t[0]] = float(t[1])
-                except ValueError: pass
+                try: ts = float(t[1])
+                except ValueError: continue
+                grund = t[2] if len(t) > 2 else ""
+                if grund.startswith("CJ-Code 1602003:") or (
+                        grund.startswith("SKU-Form nicht pruefbar") and ts < ALTE_FASSUNG_VOR):
+                    continue         # alte Fassung → nicht in Wiedervorlage, sofort neu fragen
+                unklar_alt[t[0]] = ts
     jetzt = time.time()
     frisch_unklar = {k for k, ts in unklar_alt.items() if jetzt - ts < UNKLAR_WIEDERVORLAGE_S}
     f = open(LEDGER, "a")
