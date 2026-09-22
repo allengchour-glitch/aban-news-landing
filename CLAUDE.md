@@ -18,6 +18,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   widerlegt eine Kategorie NICHT** — für #1017 gab es eine Versandoption, das Paket ging raus
   und kam zurück. Offen: CJ-Dispute USD 25.54, nur per Konsole (COWORK Punkt 0).
 - **💾 Dateispeicher: Betreiber-Entscheid 21.09. «grow plan, in einer monat machen, brauche zuerst kunde»** → Grow-Plan ~21.10.2026, bis dahin bleibt der Speicher voll (gewollt); Ampel informiert statt ruft, Routine erinnert am 21.10. Kurs bestätigt: **zuerst Kunden.**
+- **🤖 Seit 22.09. 07:02 UTC: Routine «Autonome Verbesserungsrunde» `trig_01XDyghjogoXy7aZ5MvJri1m` (alle 4 h, :25) feuert in die Cloud-Session** — misst, behebt EINE Klasse, pusht, meldet 3 Zeilen. Betreiber: «automation ki selbstständig starten». Daneben nur Wächter (Keepalive stündlich `trig_01Uy3z…`, Bestellwächter 2 h, Lagebeurteilung 2×/Tag). ⚠️ Nicht abschalten; Einwände in SHARED-MEMORY.md.
 - **⛔ B2B bleibt AUS** (Betreiber 15.09.: «b2b sein lassen wen kosten»). Gemessen: 0 Firmen,
   0 B2B-Kataloge, Plan Basic. Ersatz = Seite «Firmen & Vereine» mit Anfrageformular.
 
@@ -488,6 +489,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-22 · 🤖 **«automation ki selbstständig starten»: 11 Routinen, alle aktiven nur Wächter, keine verbessert → Routine «Autonome Verbesserungsrunde» (alle 4 h, in diese Session; messen → EINE Klasse beheben → Lehre → Push → 3 Zeilen).** Grenze: läuft nur in Session-Arbeitszeit; Tages-Wächter ohne Sitzung brauchen den Hetzner-Server (Geheimnisse = Betreiber) → Journal
 - 2026-09-22 · 📥 **«promt holen und lernen»: prompts.chat = 2 brauchbare von 40 Treffern — der Wert war die Checkliste, gemessen am Shop: 1'541 bewertete Produkte (8'066 Bewertungen) ohne `aggregateRating` → Product-Schema im Theme ergänzt (replace_first auf Shopifys `structured_data`), live bestätigt; og:image-Ersatz (Logo) für 28 bildlose Ratgeber + FAQ.** 0 Dringlichkeitsfloskeln im Theme. Widersprüchliche Quellen (Keyword-Stuffing ja/nein) entscheidet der eigene Bestand → Journal
 - 2026-09-22 · 🧠 **«lern session memory»: der Vault war 6 Tage tot (89 Notizen, 18 %), 62 Journal-Kapitel ohne Regel-Notiz → 51 Lehren aufgenommen (140 Notizen, 29 %), Ampel-Zeile `VAULT: Rückstand N T`.** Zweites Gehirn meldete 23 gesunde Helfer krank (except:pass um die Wartezeit-Rechnung) → Regel verfeinert, 1 echter Fund behoben. Beinahe: Ledger per `mv` ersetzt, während der Prozess es hielt (Timeout ≠ Ende) → Journal
 - 2026-09-22 · 🩺 **Heilversprechen: 95 Zusagen in 51'341 Produkten entschärft — und der Fund vom 04.09. war durch einen Rückholer zurückgekommen.** Kein Wächter für die Klasse → `heilversprechen_wache.py` (täglich, Ersatztabelle, Bericht); `um()` machte «denen Sie» zu «denst du»; 831 CJ-Produkte mit einem Bild → NICHT neu bauen: `cj_bild_backfill.mjs` (OCR-Wache) stand seit 30.08. an der FERTIG-Sperre; mein Doppel ohne OCR hängte 77 Werbeplakate an (46 %), alle wieder weg. **Fix = Wächter + Tabelle + Bericht, sonst ist es keiner** → Journal

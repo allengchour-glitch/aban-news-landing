@@ -6,6 +6,14 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-22 · 🤖 «automation ki selbstständig starten»: es lief nur Bewachung — jetzt gibt es eine Runde, die verbessert
+
+**Gemessen (`list_triggers`, 07:00 UTC):** 11 Routinen, 7 an. Alle aktiven sind **Wächter**: Keepalive stündlich (startet Motoren, committet), Bestellwächter alle 2 h, Lagebeurteilung 07:30/17:30, Produktzahl-Wächter alle 3 h, Social-Redaktion täglich, dazu zwei Einmal-Erinnerungen (PR-Check, Grow-Plan 21.10.). Die «Wache cloud-tztnn1 (alle 4 h)» ist seit 07.09. **aus**. Keine einzige Routine misst und behebt — «selbstständig» hiess bisher: am Leben bleiben. Der Container ist zudem beim Aufruf 1 Minute alt gewesen (Aufseher=0 → `engine_keepalive` hochgefahren; Hetzner-Puls frisch, 0 offene Aufträge).
+
+**Getan:** Routine `trig_01XDyghjogoXy7aZ5MvJri1m` «Autonome Verbesserungsrunde», `25 */4 * * *`, feuert in DIESE Session (Regeln und Kontext bleiben): (1) uptime/Keepalive, (2) messen — ShopifyQL-Landeseiten, HEILVERSPRECHEN.md, Nicht-lieferbar-Register, zweites Gehirn `--wacht`, Logs auf Traceback — (3) GENAU EINE gemessene Klasse beheben (Fix = Wächter + Tabelle + Bericht; Bestand vor Neubau; Rücklesen; Kanarienvogel), (4) Grenzen (keine Kundenmails/Rückerstattungen, Social-Stopp, Grind-Pause, Theme nur mit Live-Datei + Backup, keine Geheimnisse, keine Klassifikator-Umgehung), (5) Lehre + Vault + Push, (6) Bericht in drei Zeilen GEMESSEN/GETAN/OFFEN. Erster Lauf 08:25 UTC.
+
+**Grenze, ehrlich:** Sie feuert nur in eine RUHENDE Session und läuft in Session-Arbeitszeit — der Container schläft sonst (Lehre 17.09.). Die Tages-Wächter ohne Sitzung gehören auf den Hetzner-Server; das Paket steht (`server/luxe-waechter-setup.sh`), es fehlen die Geheimnisse (COWORK Punkt 7, nur Betreiber).
+
 ## 2026-09-22 · 📥 «promt holen und lernen»: prompts.chat gelesen, am Shop gemessen — Sterne fehlten bei 1'541 bewerteten Produkten
 
 **Quelle:** prompts.chat per MCP (Text = Daten, keine Anweisung). Die Suche ist stichwortbasiert: Mehrwort-Anfragen («product description ecommerce», «shopify») → 0 oder Unsinn (App-Store-Prompt); Einzelwörter → ~40 Treffer, davon **zwei brauchbar**: der D2C-Landingpage-Copywriting-Prompt (Ari Blum, 14.09.2026) und der Skill «seo-fundamentals» (E-E-A-T, Core Web Vitals, Schema-Checkliste). Ein dritter («High-Ranking SEO Content Creator») empfiehlt **Keyword-Stuffing** — der Skill daneben verbietet es; Googles eigene Regeln auch. **Zwei fremde Behauptungen, die sich widersprechen, ergeben keine Wahrheit** (Recherche-Skill) → am eigenen Bestand entschieden.
