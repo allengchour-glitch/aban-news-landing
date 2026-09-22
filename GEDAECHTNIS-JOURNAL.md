@@ -176,6 +176,34 @@ bleibt in der Warteschlange). **Dann die ersten 10 Verdachtsfälle des Reparatur
 
 **Nachtrag 16 (21:45 UTC) — «pure automation … mehrmals täglich überall»: die Social-Pipeline war an drei Stellen tot, und keine davon stand in einem Log.** Betreiber-Entscheide heute Abend, wörtlich: «bis dann pushe überall sozail accounts», «alle die verbunden sind», «täglich mehrmals überall», «pure automation mit verbesserung und analyse und lernen mehrmals täglich», «wen du alles sauber machst mache ich später in 1 monate ads», «nutze sonst auch google speicherplatz». Gemessen, bevor gebaut wurde: (1) der Reel-Motor meldete seit Wochen «neue Reels: 0 | gescannt: 1115» — der Tag `video-hit` steht an JEDEM Import, echte Videos haben 144 von 34'824 Produkten; (2) der Shopify-Dateispeicher ist voll, ein CDN-Upload endet mit «Verarbeitung FAILED» — der Reel-Motor hätte auch mit Videos nichts ablegen können; (3) die statische ffmpeg-Fassung im Container hat KEIN `drawtext` — die alte `make_reel.sh` konnte hier gar nicht rendern (die 83 Reels stammen aus einer früheren Umgebung). Gebaut: Videos direkt von CJ (`queryVideosByProductId`, Download nur mit Referer; Quote gemessen 1 von 25), Text als PNG-Ebenen aus PIL (`reel/overlay.py`: Wortmarke, Hook 3 s, Titel zweizeilig, Preis, Fusszeile), Ablage im Repo `social/reels/` — Instagram nimmt `raw.githubusercontent.com` an (Container FINISHED, ohne zu veröffentlichen gemessen; Content-Type ist `application/octet-stream`, stört Meta nicht). Google Drive über den Konnektor taugt NICHT als Ablage: kein «jeder mit Link», nur E-Mail-Freigaben, und 2 MB Base64 je Aufruf. Übergang bis zum Grow-Plan (~21.10.), dann zurück auf den CDN. Lernschleife `social_lernen.mjs` (IG-Insights, Score = Reichweite + 3·Likes + 5·Kommentare/Speichern/Teilen): 40 Posts, Median 18 (!), die vier besten sind Reels, Themen haustier 2.1 / beauty 2.1 / schmuck 1.05 / home 0.8 — der Reel-Motor gewichtet seine Hooks daraus. Kadenz: Bild 6 h, Reel 8 h, TikTok 12 h (Metricool, Token kommt mit dem nächsten Neustart), Lernen 6 h, Nachschub 12 h; Runner 2 Reels alle 6 h. **Ein Motor, der «0 neue» meldet, ist kein Motor, der nichts findet — bis man drei Ebenen tiefer gemessen hat: Quelle, Ablage, Werkzeug.**
 
+**Nachtrag 17 (22:30 UTC) — «fokusiere tiktok und insta dann fb»: der Engpass war die Reel-Versorgung, und die Queue log über ihren Bestand.**
+Betreiber 21:57 UTC. Gemessen statt losgepostet: (1) **14 von 22 «ready»-Reels antworteten 404** — die Shopify-CDN-Dateien
+der alten Reihen (`revid-*`, `sie-ihn-*`) sind weg, kein Poster prüfte die Adresse vor dem Post → `archived-deadurl`, 8 bleiben
+(7 alte `cjreel-154494…` auf dem CDN + 1 neues im Repo). Beide Reel-Poster (`meta_reel_post`, `metricool_tiktok_post`) holen jetzt
+vor dem Post 1 KB der Adresse: 4xx → `archived-deadurl` und nächster Kandidat, 5xx/Timeout → nur überspringen.
+(2) **Der Reel-Motor fand 1 Video je 80 CJ-Anfragen** (`queryVideosByProductId` je Produkt blind). GEMESSEN: `product/list`
+trägt je Produkt **`isVideo`** — aber NUR in der nach `categoryId` (oder `pid`) gefilterten Liste; ungefiltert steht dort `null`
+(null = nicht berechnet, nicht «nein»). `pageSize` max 200, `isVideo=1` als Parameter filtert nicht (gleiche total 1'382'474),
+mehrere pids in einem Aufruf: 0 Treffer, `productVideo` in `product/query` ist selbst beim Video-Produkt null, Offset-Deckel
+«the max offset is 6000» = 30 Seiten je Kategorie. Neu `automation/cj_video_index.mjs`: blättert die 578 Kategorien mit
+persistentem Cursor (150 Aufrufe je Lauf), Schnittmenge mit dem Shop-Ledger → `dropship/_cj_video_index.json`. Die CJ-Reihenfolge
+war nutzlos (erste zwei Kategorien: 7'690 Produkte, 34 Videos, **0 im Shop**) → einmalige Stichprobe von 120 eigenen aktiven
+Produkten (`product/list?pid=`) ordnet die Kategorien um: Fitness 17, Smart Watches 13, Pet Feeding 12, Pillows 11 … Ergebnis des
+ersten Laufs: 80 Aufrufe, 15'646 Produkte, 216 mit Video, **70 davon im Shop**; Motor DRY: 33 Kandidaten, **3 von 3 gefragten
+hatten ein Video** (vorher 1 von 80). Runner baut den Index vor jedem Lauf und rendert BATCH 3 (Bedarf ~5–6 Reels/Tag, weil
+jede Plattform ein EIGENES Reel bekommt — Doppelpost-Verbot gilt plattformübergreifend).
+(3) Beim ersten Index-Kandidaten mit **UUID-pid** (`F5BA858E-…`) stand «Hook: undefined»: `Number(pid.slice(-3))` ist für Buchstaben
+NaN → Hook, Hashtag-Pool UND Musik (`automation/music/undefined`) wären leer gewesen; jetzt `num(pid)` (31er-Hash) an allen vier Stellen.
+(4) **Metricool-Token ist nicht in der Session**: `METRICOOL_USER_TOKEN` leer, kein `/tmp/metricool.env`, kein Prozess trägt ihn
+(gemessen über /proc) — der Betreiber hat ihn in die Umgebungs-Einstellungen eingetragen, die erreichen eine laufende Session
+nicht (vierte Messung dieser Klasse). TikTok bleibt bis zum Token im Chat stumm; alles andere steht bereit (Poster mit DRY,
+Adressprüfung, Kadenz 12 h im Autopilot).
+**Lehren:** (a) «ready» ist eine Aussage über den Eintragszeitpunkt, nicht über heute — ein Poster prüft die Adresse, bevor er sie
+einer Plattform gibt. (b) Ein Feld, das eine API nur in EINER Aufrufform füllt, sieht in der anderen wie «nein» aus; erst mit
+gefiltertem und ungefiltertem Aufruf vergleichen, bevor man ein Merkmal für tot erklärt. (c) Wer nach Katalog-Reihenfolge sucht,
+sucht im falschen Regal — die eigenen Produkte sagen, welche Regale zählen. (d) Jede Zahl aus einer pid muss auch für
+Buchstaben-pids funktionieren; `Number()` schweigt bei NaN, das Ergebnis heisst «undefined» und landet im Dateipfad.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

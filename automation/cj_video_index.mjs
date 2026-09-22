@@ -79,6 +79,7 @@ console.log(`Shop-Ledger: ${shop.size} CJ-pids · Index bisher: ${Object.keys(st
 let calls = 0, neu = 0, produkte = 0, videos = 0, stopp = '';
 while (calls < CALLS) {
   const kat = st.kats[st.cursor.k];
+  if (st.cursor.page > 30) { st.cursor.k = (st.cursor.k + 1) % st.kats.length; st.cursor.page = 1; continue; }  // GEMESSEN: «the max offset is 6000» → 30 Seiten je Kategorie
   const r = await cj(`product/list?pageNum=${st.cursor.page}&pageSize=200&categoryId=${kat.id}&productType=ORDINARY_PRODUCT`);
   calls++;
   if (r.code === 16900500) { stopp = 'CJ-Tagesbudget erschoepft'; break; }

@@ -18,6 +18,18 @@
  */
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+// 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
+import { execFileSync as _exf } from 'node:child_process';
+const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
+function ersterErreichbare(liste, urlVon, statusSetzen) {
+  for (const r of liste) {
+    const e = erreichbar(urlVon(r)); if (e === true) return r;
+    if (/^4\d\d$/.test(String(e))) { statusSetzen(r, 'archived-deadurl'); console.log(`   Adresse tot (${e}) → archived-deadurl: ${urlVon(r).slice(-50)}`); }
+    else console.log(`   Adresse antwortet ${e} → uebersprungen: ${urlVon(r).slice(-50)}`);
+  }
+  return null;
+}
+
 
 const CSV = 'automation/reels_seed.csv';
 const DRY = process.env.DRY === '1';
@@ -57,7 +69,9 @@ const get = (r, k) => (r[idx[k]] || '').trim();
 // stumme Marken-Videos bekommen den Trend-Sound in der TikTok-App, nicht ueber Metricool). Produkt-Reels
 // (cjreel-*, mit Musik aus der ffmpeg-Pipeline) zuerst, Marken-Videos danach.
 const passt = r => get(r, 'status') === 'ready' && get(r, 'video_url') && !postSeen(get(r, 'video_url')) && !/stumm/i.test(get(r, 'video_url'));
-const cand = rows.slice(1).find(r => passt(r) && /raw\.githubusercontent/.test(get(r, 'video_url'))) || rows.slice(1).find(r => passt(r) && /^cjreel-/.test(get(r, 'id'))) || rows.slice(1).find(passt);
+const _alle = rows.slice(1).filter(passt);
+const _reihe = [..._alle.filter(r => /raw\.githubusercontent/.test(get(r, 'video_url'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && /^cjreel-/.test(get(r, 'id'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && !/^cjreel-/.test(get(r, 'id')))];
+const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { r[idx.status] = st; writeLedger(); });
 if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde.'); process.exit(0); }
 
 // Produkt noch kaufbar? (gleiche Regel wie meta_reel_post.mjs)

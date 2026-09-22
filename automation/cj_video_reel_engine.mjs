@@ -35,6 +35,9 @@ const BRANCH = 'claude/luxestyle-status-tztnn1';
 const RAW = `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/${BRANCH}/${MEDIEN}/`;
 const MUSIC = ['luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-house1.wav', 'luxe-hype-pro.mp3', 'luxe-liquid-dnb.wav', 'luxe-orchestra.wav'];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+// pid → stabile Zahl (auch fuer UUID-pids wie F5BA858E-…; GEMESSEN 22.09.: Number(...) gab NaN → Hook «undefined», Musik «undefined»)
+const num = p => { let h = 0; for (const c of String(p)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
+
 
 const TOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
 const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json') ? (JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken || '') : '')).trim();
@@ -97,13 +100,17 @@ const HOOKS = {
   allgemein: ['Neu bei LuxeStyle', 'Genau das hat gefehlt', 'Wusstest du das schon?'],
 };
 function lernen() { try { return JSON.parse(fs.readFileSync('social/_lernen.json', 'utf8')); } catch { return {}; } }
-function hookFuer(th, pid) {
-  const L = lernen(); const list = HOOKS[th] || HOOKS.allgemein;
+function hookFuer(th, pid, title = '') {
+  const L = lernen(); let list = HOOKS[th] || HOOKS.allgemein;
+  // Tierart beachten (22.09.: «Für die Katze, die alles darf» stand auf dem Futterspender für Hunde)
+  if (/hund|welpe|gassi/i.test(title)) list = list.filter(h => !/katze/i.test(h));
+  else if (/katze|kater|kitten/i.test(title)) list = list.filter(h => !/hund|gassi/i.test(h));
+  if (!list.length) list = HOOKS.allgemein;
   const gew = (L.hooks || {});                                   // {hookText: score}
   const best = [...list].sort((a, b) => (gew[b] || 0) - (gew[a] || 0));
   const top = best.slice(0, 2);                                   // die zwei besten rotieren, Rest bleibt im Spiel
-  const n = Number(String(pid).slice(-3)) % 3;
-  return n === 2 ? list[Number(String(pid).slice(-2)) % list.length] : top[n % top.length];
+  const n = num(pid) % 3;
+  return n === 2 ? list[num(pid) % list.length] : top[n % top.length];
 }
 function kurzTitel(title) {
   let t = title.replace(/\s*[·•|]\s*.*$/, '').replace(/\s+[–—-]\s+.*$/, '').replace(/:.*$/, '').trim();
@@ -126,7 +133,7 @@ function nutzen(desc) {
 const POOL = ['#trending', '#viral', '#fyp', '#ootd', '#style', '#shopping'];
 function hashtags(title, pid) {
   const base = tagsFor(title).split(/\s+/);
-  const k = Number(String(pid).slice(-2)) % POOL.length;
+  const k = num(pid) % POOL.length;
   const extra = [POOL[k], POOL[(k + 1) % POOL.length]];
   return [...new Set([...base, '#reels', ...extra])].slice(0, 9).join(' ');
 }
@@ -202,7 +209,7 @@ for (const k of reihe) {
   let vurl = '';
   try { vurl = await cjVideo(k.pid); } catch (e) { console.log('  ✗ ' + e.message + ' — Lauf endet'); break; }
   if (!vurl) { if (!DRY) fs.appendFileSync(KEINVIDEO, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\n`); continue; }
-  const th = thema(k.title), hook = hookFuer(th, k.pid), [z1, z2] = zeilen(k.title);
+  const th = thema(k.title), hook = hookFuer(th, k.pid, k.title), [z1, z2] = zeilen(k.title);
   const benefit = nutzen(k.desc);
   const cap = `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\nCHF ${k.price.toFixed(2)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
   const tags = hashtags(k.title, k.pid);
@@ -214,7 +221,7 @@ for (const k of reihe) {
     if (!fs.existsSync(src) || fs.statSync(src).size < 200000) { console.log('   Video zu klein/leer'); fs.rmSync(src, { force: true }); continue; }
     let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
     if (dur && dur < 3) { console.log('   Video kuerzer als 3 s'); continue; }
-    let musik = MUSIC[Number(k.pid.slice(-4)) % MUSIC.length]; if (musik === letzteMusik) musik = MUSIC[(MUSIC.indexOf(musik) + 1) % MUSIC.length];
+    let musik = MUSIC[num(k.pid) % MUSIC.length]; if (musik === letzteMusik) musik = MUSIC[(MUSIC.indexOf(musik) + 1) % MUSIC.length];
     execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)) } });
     if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log('   Render fehlgeschlagen'); continue; }
     const datei = `reel_${k.pid}.mp4`; fs.copyFileSync(out, `${MEDIEN}/${datei}`);

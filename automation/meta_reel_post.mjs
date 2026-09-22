@@ -12,6 +12,18 @@
  */
 import fs from 'node:fs';
 import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
+// 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
+import { execFileSync as _exf } from 'node:child_process';
+const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
+function ersterErreichbare(liste, urlVon, statusSetzen) {
+  for (const r of liste) {
+    const e = erreichbar(urlVon(r)); if (e === true) return r;
+    if (/^4\d\d$/.test(String(e))) { statusSetzen(r, 'archived-deadurl'); console.log(`   Adresse tot (${e}) → archived-deadurl: ${urlVon(r).slice(-50)}`); }
+    else console.log(`   Adresse antwortet ${e} → uebersprungen: ${urlVon(r).slice(-50)}`);
+  }
+  return null;
+}
+
 const CSV = 'automation/reels_seed.csv';
 const V = 'v21.0';
 const DRY = process.env.DRY === '1';
@@ -102,11 +114,9 @@ const _passt = r => (r[idx.status] || '').trim() === 'ready'
   && !postedVideos.has(vkey(r[idx.video_url]))
   && !postSeen(r[idx.video_url]);
 // 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
-const cand = rows.slice(1).find(r => _passt(r) && /raw\.githubusercontent/.test(r[idx.video_url] || '')) || rows.slice(1).find(r => (r[idx.status] || '').trim() === 'ready'
-  && /instagram/i.test(r[idx.platforms] || '')
-  && (r[idx.scheduled_date] || '9999') <= today
-  && !postedVideos.has(vkey(r[idx.video_url]))
-  && !postSeen(r[idx.video_url]));                    // gemeinsamer Ledger (script-übergreifend)
+const _alle = rows.slice(1).filter(_passt);
+const _reihe = [..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))];
+const cand = ersterErreichbare(_reihe, r => r[idx.video_url] || '', (r, st) => { r[idx.status] = st; writeLedger(); });
 if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
 // Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger + gemeinsamer Ledger)
 if (postedVideos.has(vkey(cand[idx.video_url])) || postSeen(cand[idx.video_url])) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
