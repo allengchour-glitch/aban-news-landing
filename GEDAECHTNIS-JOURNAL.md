@@ -55,6 +55,20 @@ niemand liest** → Aufseher repariert bei Exit 3 jetzt selbst (`--scharf`), wei
 deterministisch und die Entscheidung vom Betreiber (14.08./15.09.) ist. ⚠️ Falls der Betreiber die 50
 heute bewusst gesetzt hat: bitte sagen — dann muss der 10-%-Rabatt weg oder die Zusage auf 55 hoch.
 
+**Nachtrag 2 (11:15 UTC) — erster Katalog-Lauf durch, Ratgeber gemessen.** `produkttexte_du_form.py` Lauf 1
+(1'500): **1'032 auf du, 231 teilweise** (Rest = «Sie ist/verfügt» als Produkt-Subjekt), **38 Verdacht
+(2.5 %) nicht geschrieben**, 199 ohne Wirkung, 0 Fehler, ~35 Min. Lauf 2 gestartet; der Aufseher nimmt ab
+morgen 1'500/Tag (offen 24'612). Faktenblock-Prio: 175 von 249 heute gesetzt, 88 offen (täglich 30).
+**Ratgeber/Seiten gemessen:** 207 von 309 Artikeln und 18 von 115 Seiten mit «Sie» — davon 101 Artikel
+nur mit «Sie» als Subjekt («Düfte … Sie sind eng mit Erinnerung verknüpft»), also kein Befund; **~106
+Artikel siezen wirklich**, aber `um()` schafft bei langen Texten selten alles → `ratgeber_du_form.py`
+schreibt nur VOLLSTÄNDIGE Wandlungen (ein halb geduzter Ratgeber ist schlechter als ein gesiezter):
+3 geschrieben, 119 im Bericht. Das ist die nächste Klasse: Ratgeber brauchen eine Satz-für-Satz-Regel
+oder eine geprüfte Neufassung, nicht das Kollektions-Regelwerk. Rechtstexte bleiben gesiezt.
+**CJ hat keinen versendbaren Ersatz für das Rizinusöl-Wickel-Set** (18 Sitzungen, 2 Kassen-Starts in
+30 T, gedraftet wegen «keine Versandoption 450 g»): drei Suchen, 0 passende Treffer — die Weiterleitung
+auf das Tunmate-Öl bleibt.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

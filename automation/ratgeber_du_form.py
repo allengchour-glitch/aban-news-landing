@@ -22,7 +22,7 @@ FIX = os.environ.get("FIX") == "1"
 NUR = os.environ.get("NUR", "")
 LEDGER = os.path.join(REPO, "dropship", "_ratgeber_du_form_done.txt")
 VERDACHT = os.path.join(REPO, "dropship", "DU-FORM-VERDACHT.md")
-RECHT = re.compile(r"agb|datenschutz|impressum|widerruf|cookie|rechtlich|privacy|terms|refund|shipping-policy|versandbedingungen|zahlungsbedingungen")
+RECHT = re.compile(r"agb|datenschutz|impressum|widerruf|cookie|data-sharing|opt-out|rechtlich|privacy|terms|refund|shipping-policy|versandbedingungen|zahlungsbedingungen")
 
 
 def alle(typ):
