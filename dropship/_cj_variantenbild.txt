@@ -2493,3 +2493,5 @@ gid://shopify/Product/15448877859201	zugeordnet	5	Smart-Armband E58 mit Herzfreq
 gid://shopify/Product/15448877924737	zugeordnet	4	Smartes Sport-Armband mit Farbdisplay
 gid://shopify/Product/15448877990273	zugeordnet	4	Smartwatch mit Bluetooth-Anruf- und Musikfunktion
 gid://shopify/Product/15448878023041	zugeordnet	10	Smartwatch mit Herzfrequenzmessung · schlicht, 4 Farben
+gid://shopify/Product/15448878121345	zugeordnet	11	Sportuhr mit Silikonarmband
+gid://shopify/Product/15448878285185	zugeordnet	2	Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk
