@@ -825,3 +825,8 @@ herren-board-schuhe-aus-rindsleder-602600	gesetzt-3
 herren-clutch-aus-vollleder-634000	gesetzt-3
 herren-crossbody-bag-mit-totenkopf-muster-612300	gesetzt-1
 herren-freizeit-sneaker-mit-dezenter-erhohung-614600	gesetzt-6
+herren-hemd-mit-blumenprint-und-kurzarm-632200	gesetzt-6
+herren-langarmhemd-mit-stehkragen-und-streifen-616000	gesetzt-2
+herren-mechanische-armbanduhr-mit-kalender-und-607700	gesetzt-3
+herren-outdoor-lederpantoletten-mit-klettversc-630400	gesetzt-1
+herren-sakko-aus-azetatfaser-diverse-farben-35f236	keine-cj-sku
