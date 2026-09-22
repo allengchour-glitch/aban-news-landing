@@ -2488,3 +2488,8 @@ gid://shopify/Product/15448877531521	zugeordnet	11	Harz-Metall-Denim-Ketten-Armb
 gid://shopify/Product/15448877597057	zugeordnet	4	Smart-Armband mit Schritt- & Schlafüberwachung
 gid://shopify/Product/15448877629825	zugeordnet	8	P10 Smart Health Armband
 gid://shopify/Product/15448877662593	zugeordnet	4	Kinder Smartwatch mit GPS und Videoanruf
+gid://shopify/Product/15448877760897	zugeordnet	3	Smartwatch ZX18 – Fitness-Tracker für Damen und Herren
+gid://shopify/Product/15448877859201	zugeordnet	5	Smart-Armband E58 mit Herzfrequenz-Messung
+gid://shopify/Product/15448877924737	zugeordnet	4	Smartes Sport-Armband mit Farbdisplay
+gid://shopify/Product/15448877990273	zugeordnet	4	Smartwatch mit Bluetooth-Anruf- und Musikfunktion
+gid://shopify/Product/15448878023041	zugeordnet	10	Smartwatch mit Herzfrequenzmessung · schlicht, 4 Farben
