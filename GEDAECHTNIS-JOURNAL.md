@@ -6,6 +6,19 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-22 · 🩺 «mach alles besser» Runde 3: die Woche der Landeseiten — ein Fix ohne Wächter war ein Fix für eine Woche
+
+**Gemessen (ShopifyQL, 7 Tage, human):** Startseite 32 Sitzungen, dann je 5: `shirt-zum-selbstgestalten`, `/search`, `ueber-uns`, `collections/halloween`, **`tunmate-rizinusol`** — und 3 auf dem gedrafteten `rizinusol-wickel-set` (Redirect aufs lebende Produkt stand schon). 62 besuchte Produktseiten in einem Zug geprüft: Status, Bilder, Anrede, Faktenblock, Heil-Muster.
+
+**Drei Funde, drei Klassen:**
+1. **Rizinusöl versprach «Förderung eines gesunden Haarwachstums».** Aufgabe 34 (04.09.) hatte 13 solche Zusagen entschärft — das Skript lag in /tmp, und dieses Produkt kam am **07.09. aus dem Draft zurück** (`rueckhol-0907`), also NACH dem Lauf. Gegenprobe über 2'569 Beauty-/Kissen-/Fitness-Produkte: 137 Muster-Treffer, davon 96× «therapie» = Kategorienamen (Aromatherapie, Lichttherapie) und 35× «abnehmen» = «Bezug abnehmen» — **17 echte** (Schmerzen lindern, Haarausfall, Heilungsprozess, Schnarchen verhindern, Gewichtsverlust). Es gab **keinen Wächter** für diese Klasse. Jetzt `automation/heilversprechen_wache.py` (täglich im Aufseher, Textlock): Ersatztabelle mit ~95 von Hand gelesenen Phrasen + Regex nur für die drei Formen, bei denen jede Lesart sauber bleibt (Fettverbrennung→Ausdauer, Gewichtsverlust→Körperformung, «fördert die Durchblutung»→«massiert sanft»), Fehlalarm-Wachen (Ratgeber-Titel, Wundkragen-«Heilung», Fellbürsten-«Haarausfall», Smartwatch-«Blutdruck messen»), Bericht `dropship/HEILVERSPRECHEN.md`, `updated_at`-Cursor. **Volllauf: 51'341 Produkte, 95 entschärft, 5 offen** (Anti-Schnarch-Gerät = Produktzweck, Smart-Ring = Messfunktion; drei Titel mit «Fettverbrennung» von Hand umbenannt). Rechtlicher Grund im Kopf der Datei: Kosmetik ohne Heilwirkung, Gegenstände ohne medizinische Zweckbestimmung, UWG.
+2. **`um()` machte aus «bei denen Sie … möchten» ein «bei denst du … möchten».** Der generische «-en Sie → -st du»-Schritt nahm das Relativpronomen «denen» für ein Verb. Jetzt 2b (Relativ-/Konjunktionalsätze, feste Liste) und 2c (3.-Person-Verb + Sie als Objekt: «weckt Sie» → «weckt dich», feste Liste), und der Stamm-Schritt gibt «möchtest» statt «möchtst». 16 besuchte Texte auf du (die «Reste» waren alle das Pronomen «Sie ist 40 cm» — keine Anrede).
+3. **831 aktive CJ-Produkte haben EIN Bild** (Export 22.09.: 51'342 aktiv, 1'927 mit einem Bild; die 856 Fortura haben keine Zusatzbilder im Feed). Ohne zweites Bild kein Karten-Karussell. `automation/cj_bild_nachtrag.py` (täglich, 150/Lauf): CJ-Bildliste, HTTP-200, Dublette zum Hauptbild überspringen, bis 6 anlegen, Medienzahl rücklesen. **Falle beim ersten Lauf: 39 von 40 «kein-cj-pid»** — ältere Importe tragen `CJ-CJYD2867018` (Produktcode), nicht `CJ-<pid>`; `product/query?productSku=` antwortet genauso (17 bzw. 5 Bilder). Ledger-Zeilen der Fehlklasse gelöscht, Lauf neu; danach 22 von 22 mit +4…6 Bildern.
+
+**Nebenbei:** 15 Faktenblöcke (Prio-Liste), Schwangerschaftskissen («Schmerzen lindern»), Morgenstern (Text war ein Satz), Ratgeber-Anker «Rizinusöl-Wickel-Set» zeigte auf ein Draft-Produkt (Link war schon richtig, nur der Ankertext nicht), Futterspielzeug 1→5 Bilder, Twisting-Disk-Titel.
+
+**Lehre:** Eine Klasse, die man einmal von Hand repariert, kommt durch jeden Rückholer, Importer und Neuimport wieder. **Fix = Wächter + Ersatztabelle + Bericht, sonst ist es keiner.** Und: von 137 Mustertreffern waren 120 Fehlalarme — die Fehlalarm-Wache gehört in den ersten Entwurf, nicht in den dritten.
+
 ## 2026-09-22 · 🔧 «mach alles besser»: erst messen, wo Menschen landen — dann genau dort reparieren
 
 **Messung (ShopifyQL, human, 7 Tage):** 166 Sitzungen auf 101 Landeseiten, davon 97 auf Produktseiten, 31 auf der

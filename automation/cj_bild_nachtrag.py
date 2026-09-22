@@ -102,11 +102,16 @@ def main():
         n += 1
         erg = 'kein-cj-pid'
         sku = (p['variants']['nodes'] or [{}])[0].get('sku') or ''
-        m = re.match(r'CJ-(\d{12,})', sku)
+        # SKU-Formen (22.09. gemessen): `CJ-<pid 18–19 Ziffern>` (neuere Importe) ODER
+        # `CJ-CJYD2867018` / `cj-CJMZ2930713` = CJ-PRODUKTCODE (aeltere) -> productSku= statt pid=
+        # (beide Endpunkte antworten 200 mit productImageSet; Test 22.09.: 17 bzw. 5 Bilder).
+        m = re.match(r'(?i)cj-(\d{12,})', sku)
+        mc = re.match(r'(?i)cj-(CJ[A-Z0-9]{6,})', sku)
         if p['status'] != 'ACTIVE': erg = 'nicht-aktiv'
         elif len(p['media']['nodes']) > 1: erg = 'hat-schon'
-        elif m:
-            d = cj('/api2.0/v1/product/query?pid=' + m.group(1)) or {}
+        elif m or mc:
+            frage = ('/api2.0/v1/product/query?pid=' + m.group(1)) if m else ('/api2.0/v1/product/query?productSku=' + mc.group(1))
+            d = cj(frage) or {}
             if str(d.get('code')) != '200':
                 erg = f'cj-{d.get("code")}'
             else:

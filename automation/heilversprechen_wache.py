@@ -65,6 +65,87 @@ ERSATZ = [
     ("und ist eine effektive Unterstützung beim Abnehmen", "und bringt Abwechslung ins Training"),
     ("Für Fitness und Abnehmen geeignet", "Für Fitness und Krafttraining geeignet"),
     ("Hilft, Schmerzen während der Schwangerschaft zu lindern", "Entlastet Rücken und Hüfte in der Seitenlage"),
+    # Runde 2 (22.09., aus den 114 Offenen des ersten Volllaufs gelesen)
+    ("Der Gurt bietet eine zuverlässige Unterstützung und trägt dazu bei, Beschwerden zu lindern und die Haltung zu verbessern.", "Der Gurt stützt den unteren Rücken und unterstützt eine aufrechte Haltung."),
+    ("Sie ist ideal zur Linderung von Beschwerden oder zur Unterstützung bei der Regeneration, da sie sowohl für Wärme- als auch für Kältetherapieanwendungen geeignet ist.", "Sie lässt sich warm oder kalt anwenden und fühlt sich angenehm am Handgelenk an."),
+    ("Durch die gezielte Temperaturbehandlung kann sie Schwellungen reduzieren und die Durchblutung fördern.", "Warm oder kalt: die Gel-Einlage hält die Temperatur mehrere Minuten."),
+    ("Fördert Linderung und Regeneration.", "Warm- und Kaltanwendung möglich."),
+    ("Dies hilft, die natürliche therapeutische Reaktion zu aktivieren und die Blutzirkulation zu verbessern, um Rücken-, Wirbelsäulen- und Muskelsschmerzen zu lindern.", "So dehnst du Rücken und Muskulatur in deinem Tempo."),
+    ("und kann Rückenbeschwerden lindern", "und entlastet den unteren Rücken beim Sitzen"),
+    ("um Nackenbeschwerden zu lindern und die Halswirbelsäule zu stützen", "um den Nacken beim Sitzen und Reisen zu stützen"),
+    ("Ideal zur Linderung von Nacken- und Kopfschmerzen", "Stützt den Nacken unterwegs"),
+    ("stützen die Halswirbelsäule und lindern Ermüdung", "stützen den Nacken bequem"),
+    ("um Beschwerden zu lindern und die Erholung zu fördern", "und angenehm kühlt oder wärmt"),
+    ("um den Steissbereich zu entlasten und Beschwerden zu lindern", "um den Steissbereich beim Sitzen zu entlasten"),
+    ("lindert Schmerzen im Nacken, an den Schultern und am Rücken durch", "massiert Nacken, Schultern und Rücken durch"),
+    ("Die negativen Ionen können den Stoffwechsel fördern, Zellen aktivieren und Reisekrankheit lindern.", "Der kleine Ionisator arbeitet lautlos und ohne Filter."),
+    ("<li>Kann Stoffwechsel fördern und Zellen aktivieren</li>", "<li>Lautlos, ohne Filterwechsel</li>"),
+    ("<li>Linderung von Reisekrankheit</li>", "<li>Leicht und tragbar</li>"),
+    ("um Beschwerden zu lindern und eine gesunde Sitzhaltung zu fördern", "um den Sitz zu entlasten und eine gesunde Sitzhaltung zu fördern"),
+    ("Es ist ideal, um Nacken- und Schulterschmerzen zu lindern, den Schädel zu fixieren und die Wahrscheinlichkeit eines steifen Nackens zu reduzieren.", "Es bettet den Kopf weich und stützt den Nacken in Rückenlage."),
+    ("lindert Nackenschmerzen effektiv", "massiert den Nacken mit sanften Impulsen"),
+    ("Linderung von Nackenschmerzen durch Niederfrequenz-Pulstechnologie", "Nackenmassage durch Niederfrequenz-Pulstechnologie"),
+    ("<li>Hilft, Schulter- und Rückenschmerzen zu lindern</li>", "<li>Entlastet Schultern und Rücken beim Laufen</li>"),
+    ("und Nackenbeschwerden lindern möchten", "und den Nacken beim Schlafen stützen möchten"),
+    ("um die Durchblutung zu fördern und Müdigkeit zu lindern, während", "um die Muskulatur zu stimulieren, während"),
+    ("Fördert die Durchblutung und lindert Müdigkeit", "Stimuliert die Muskulatur mit sanften Impulsen"),
+    ("lindert Stress, Schmerzen und Muskelverspannungen", "hilft beim Entspannen nach einem langen Tag"),
+    ("Linderung von Stress, Schmerzen und Muskelverspannungen", "Zum Entspannen nach einem langen Tag"),
+    ("Sie hilft, Zahnfleischschwund vorzubeugen, fördert die Durchblutung des Zahnfleischs und reduziert das Risiko von Parodontalerkrankungen.", "Sie reinigt Zähne und Zahnfleischrand in einem Durchgang."),
+    ("Fördert die Durchblutung und beugt Zahnfleischschwund vor", "Reinigt Zähne und Zahnfleischrand in einem Durchgang"),
+    ("kann es die Gelenkschmerzen lindern, die Entzündung reduzieren, das Knorpelgewebe wiederherstellen und die Beweglichkeit verbessern", "unterstützt es die Beweglichkeit des Hundes"),
+    ("und Verspannungen sowie Steifheit effektiv zu lindern", "und die Kopfhaut angenehm zu massieren"),
+    ("Reduziert schnell Muskelkater und Steifheit", "Angenehme Kopfhautmassage"),
+    ("um Schwellungen zu reduzieren oder die Durchblutung zu fördern und sorgt", "zum Kühlen oder Wärmen und sorgt"),
+    ("ihre Zahnungsbeschwerden zu lindern", "beim Zahnen darauf herumzukauen"),
+    ("Diese Inhaltsstoffe lindern Beschwerden, die durch empfindliche oder fettige Kopfhaut verursacht werden können, und fördern die allgemeine Gesundheit der Kopfhaut.", "Diese Inhaltsstoffe sind auf empfindliche und fettige Kopfhaut abgestimmt."),
+    ("Extrakt aus Basilikumblättern hat entzündungshemmende Eigenschaften.", "Extrakt aus Basilikumblättern beruhigt die Haut."),
+    ("<li>Kann gegen Schnarchen wirken</li>", "<li>Sitzt auch nachts bequem</li>"),
+    ("was das Haarwachstum unterstützen kann", "was sich angenehm anfühlt"),
+    ("Zudem hilft sie, Haarausfall zu mindern.", "Zudem schont sie das Haar im Schlaf."),
+    ("hilft die doppellagige Konstruktion, Haarausfall zu reduzieren und die Vitalität Ihres Haares zu bewahren", "schont die doppellagige Konstruktion dein Haar im Schlaf"),
+    ("Doppellagiges Design reduziert Haarausfall", "Doppellagiges Design schont das Haar"),
+    ("Fördert die Haargesundheit und beugt Haarausfall vor", "Pflegt Haar und Kopfhaut"),
+    ("und reduziert Haarausfall. ", "und schont das Haar. "),
+    ("Reduziert Haarausfall und sorgt für langanhaltende Form", "Schont das Haar und sorgt für langanhaltende Form"),
+    ("Wirkt Haarausfall entgegen", "Macht das Haar geschmeidig"),
+    ("und spiritueller Heilung", "und innerer Ruhe"),
+    ("Fördert Zen und meditative Heilung", "Für Meditation und Entspannung"),
+    ("Ideal für Meditation, Heilung und musikalische Erkundung", "Ideal für Meditation, Entspannung und musikalische Erkundung"),
+    ("sind auf Gewichtsverlust und Schlankheit ausgelegt", "sind auf eine schlanke Silhouette ausgelegt"),
+    ("Die Kompressionsunterstützung fördert die Durchblutung und stabilisiert die Muskulatur.", "Die Kompression stützt die Muskulatur beim Training."),
+    ("Die Formulierung zielt darauf ab, Beschwerden zu lindern und das Wohlbefinden der Gelenke zu unterstützen.", "Die Formulierung pflegt die Haut rund um die Gelenke."),
+    ("und somit die Verdauung zu fördern", "und das Fressen zu entschleunigen"),
+    ("und so die Verdauung zu fördern", "und das Fressen zu entschleunigen"),
+    ("Fördert Durchblutung, lockert Verspannungen und unterstützt Fettverbrennung", "Massiert die Haut und lockert die Muskulatur"),
+    ("Fördert die Durchblutung und bietet eine massageähnliche Wirkung", "Bietet eine massageähnliche Wirkung"),
+    ("Es dient als Fettverbrennungsgerät.", "Es dient als Massagegerät."),
+    # Runde 3 (22.09., die letzten Offenen)
+    ("Lindert Beschwerden bei empfindlicher und fettiger Kopfhaut.", "Für empfindliche und fettige Kopfhaut geeignet."),
+    ("<li>Lindert Beschwerden wie Verspannungen und Schmerzen</li>", "<li>Stützt den Nacken in geneigter Haltung</li>"),
+    ("Die sanfte Massagestimulation fördert die Durchblutung, was zur Straffung und Geschmeidigkeit der Haut beitragen kann.", "Die sanfte Massage fühlt sich auf der Kopfhaut angenehm an."),
+    ("<li>Fördert die Durchblutung für straffere und weichere Haut</li>", "<li>Sanfte Massage für die Kopfhaut</li>"),
+    ("und fördert die Durchblutung sowie die Entspannung der Gesichtsmuskulatur", "und entspannt die Gesichtsmuskulatur"),
+    ("nährt es die Kopfhaut und fördert die Durchblutung.", "pflegt es die Kopfhaut beim Einmassieren."),
+    ("und reduziert Haarausfall.", "und schont das Haar."),
+    ("und verhindern Haarausfall, was", "und verlieren keine Härchen, was"),
+    ("was die Verdauung fördern kann", "was das Fressen entschleunigt"),
+    ("fördert eine gesunde Darmflora und staerkt das Immunsystem", "ergänzt das tägliche Futter"),
+    ("<li>Unterstützt die Verdauungsgesundheit und das Immunsystem</li>", "<li>Ergänzung zum täglichen Futter</li>"),
+    ("wird das Immunsystem unterstützt und die Herzgesundheit gefördert", "ergänzen sie das tägliche Futter"),
+    ("<li>Fördert das Immunsystem und die Herzgesundheit</li>", "<li>Ergänzung zum täglichen Futter</li>"),
+    ("die den Heilungsprozess fördert, ohne", "die das Lecken verhindert, ohne"),
+]
+
+# Regex-Ersatz fuer wiederkehrende Formen (nur wo jede Lesart des Satzes sauber bleibt; 22.09.).
+ERSATZ_RE = [
+    (re.compile(r"Fettverbrennung"), "Ausdauer"),                       # «Ganzkörpertraining und Ausdauer», «deine Ausdauer zu steigern»
+    (re.compile(r"Gewichtsabnahme"), "Beweglichkeit"),
+    (re.compile(r"Gewichtsverlust"), "Körperformung"),
+    (re.compile(r"[Ff]ördert die Durchblutung(?: der Haut| der Kopfhaut)?(?= und)"), "Massiert sanft"),
+    (re.compile(r"<li>Fördert die Durchblutung(?: der Haut| der Kopfhaut)?</li>"), "<li>Sanfte Massagewirkung</li>"),
+    (re.compile(r"(?:kann |könnte )?die Durchblutung (?:zu )?fördern"), "die Haut sanft massieren"),
+    (re.compile(r"die Haut sanft massieren und (?=die Feuchtigkeitsversorgung)"), "die Haut sanft massieren und "),
 ]
 ERSATZ.sort(key=lambda p: -len(p[0]))
 
@@ -72,10 +153,18 @@ MUSTER = re.compile(
     r"Schmerz\w* (?:zu )?lindern|lindert \w*[Ss]chmerz|schmerzlindernd|Heilungsprozess|\bheilt\b|\bHeilung\b"
     r"|Haarausfall|Haarwachstum|Schnarchen|entzündungshemmend|Gewichtsverlust|Fettverbrennung|Fett verbrenn"
     r"|Cellulite (?:reduz|bekämpf|entfern)|(?:beim|das) Abnehmen|Blutdruck|Migräne|Arthr(?:ose|itis)|Rheuma"
-    r"|Diabetes|Immunsystem|Entgift|\bDetox\b|Krankheit|Beschwerden (?:zu )?lindern|lindert Beschwerden"
+    r"|Diabetes|Immunsystem|Entgift|\bDetox\b|Beschwerden (?:zu )?lindern|lindert Beschwerden"
     r"|Verdauung (?:zu )?fördern|Durchblutung (?:zu )?fördern|fördert die Durchblutung|Schmerztherapie"
     r"|medizinisch(?:e|er|es)? (?:Wirkung|Behandlung|Zweck)|gegen \w*schmerzen", re.I)
-FEHLALARM = re.compile(r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen", re.I)
+FEHLALARM = re.compile(
+    r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
+    r"|Ratgeber:|nicht für medizinische|selbst heilt|Digital Detox|Geräusche wie|schnarchende"
+    # Tiere: Wundkragen (Heilung nach OP ist der Zweck), Fellbuersten/Plueschtiere/Pinsel (Haarausfall = Haare im Haus/Borsten),
+    # Naepfe (Tiere mit Arthritis), Ergaenzungsfutter (Verdauung/Immunsystem beim Tier)
+    r"|leck|Wunde|Operation|Halskrause|Kragen|Halsring|Genesung|Borsten|Pinsel|Plüsch|haarausfallfrei|Fell|Katze|Hund|Haustier|Tier|Vierbeiner|Zuhause|Wohnung|im Haus"
+    # Smartwatch-Funktion, keine Heilzusage
+    r"|Messung|misst|Überwachung|erfassen|Monitoring|Blutsauerstoff"
+    r"|Erste-Hilfe|Insekten", re.I)
 
 
 def gql(q, v=None):
@@ -106,14 +195,24 @@ def main():
     if os.path.exists(LEDGER):
         for l in open(LEDGER):
             t = l.rstrip("\n").split("\t")
-            if len(t) >= 2: ledger[t[0]] = t[1]
+            if len(t) >= 2: ledger[t[0]] = t[1] if (len(t) < 4 or "offen" not in t[3]) else "offen"  # offene erneut pruefen
     q = "status:active" + (f" updated_at:>{seit}" if seit else "")
     cur = None; seiten = 0; geprueft = 0; fixe = 0; meld = []; fehler = 0
+    NUR_OFFEN = os.environ.get("NUR_OFFEN") == "1"
+    offene = [i for i, v in ledger.items() if v == "offen"] if NUR_OFFEN else []
+    if NUR_OFFEN: q = f"NUR_OFFEN ({len(offene)})"
     while seiten < CAP:
-        d = gql('query($q:String!,$c:String){products(first:250,query:$q,after:$c){pageInfo{hasNextPage endCursor} nodes{id handle title descriptionHtml}}}', {"q": q, "c": cur})
-        if "data" not in d:
-            raise RuntimeError(f"Antwort ohne data: {str(d)[:300]}")
-        pg = d["data"]["products"]; seiten += 1
+        if NUR_OFFEN:
+            if seiten: break
+            ids = offene[:250 * 4]
+            d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id handle title descriptionHtml status}}}', {"ids": ids})
+            pg = {"nodes": [n for n in (d.get("data") or {}).get("nodes") or [] if n and n.get("status") == "ACTIVE"], "pageInfo": {"hasNextPage": False}}
+        else:
+            d = gql('query($q:String!,$c:String){products(first:250,query:$q,after:$c){pageInfo{hasNextPage endCursor} nodes{id handle title descriptionHtml}}}', {"q": q, "c": cur})
+            if "data" not in d:
+                raise RuntimeError(f"Antwort ohne data: {str(d)[:300]}")
+            pg = d["data"]["products"]
+        seiten += 1
         for p in pg["nodes"]:
             html = p["descriptionHtml"] or ""
             geprueft += 1
@@ -122,6 +221,9 @@ def main():
             neu = html
             for a, b in ERSATZ:
                 if a in neu: neu = neu.replace(a, b)
+            for rx, b in ERSATZ_RE:
+                neu = rx.sub(b, neu)
+            neu = neu.replace("massieren zu ", "zu massieren ")
             aktion = "sauber"
             if neu != html and FIX:
                 r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{descriptionHtml} userErrors{message}}}', {"i": {"id": p["id"], "descriptionHtml": neu}})
