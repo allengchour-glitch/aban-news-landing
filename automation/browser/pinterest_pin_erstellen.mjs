@@ -92,8 +92,10 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     await seite.waitForTimeout(6000);
     for (let i = 0; i < 3; i++) { await seite.mouse.wheel(0, 1500).catch(() => {}); await seite.waitForTimeout(1200); }
     const text = await seite.locator('body').innerText().catch(() => '');
-    if (text.length < 200) await schuss('pinnwand-unlesbar');
-    return { da: norm(text).includes(norm(titel).slice(0, 40)), url: seite.url(), zeichen: text.length };
+    // Lauf 3 (22.09.): eine LEERE Pinnwand hat nur 183 Zeichen — lesbar heisst: der Pinnwand-Name steht auf der Seite.
+    const lesbar = norm(text).includes(norm(boardName.replace(/&/g, '')).slice(0, 10)) || text.length >= 200;
+    if (!lesbar) await schuss('pinnwand-unlesbar');
+    return { da: norm(text).includes(norm(titel).slice(0, 40)), url: seite.url(), zeichen: text.length, lesbar };
   }
 
   try {
@@ -109,7 +111,7 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     schritte.push(`Pinnwand «${k.board}» (${vorher.url}, ${vorher.zeichen} Z.): Titel ${vorher.da ? 'SCHON DA' : 'nicht da'}`);
     if (vorher.da) { ergebnis.gepinnt.push(k.handle); ergebnis.uebersprungen.push(`${k.handle}: schon auf der Pinnwand`); return ergebnis; }
     if (!vorher.url) { schritte.push(`Pinnwand «${k.board}» nicht auf dem Profil gefunden — kein Pin`); return ergebnis; }
-    if (vorher.zeichen < 200) { schritte.push('Pinnwand nicht lesbar — kein Pin ohne Gegenprobe'); return ergebnis; }
+    if (!vorher.lesbar) { schritte.push('Pinnwand nicht lesbar (Name fehlt auf der Seite) — kein Pin ohne Gegenprobe'); return ergebnis; }
 
     // 2) Bild holen (eigener Download, kein Raten)
     const antwort = await fetch(k.bild);
