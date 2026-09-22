@@ -1,58 +1,95 @@
-# ratgeber_du_form.py — Ratgeber elementweise von Sie auf du (Groq gpt-oss-20b). NUR MIT GEGENLESEN (Lehre 02.09.):
-# das Modell duzt auch die dritte Person («Sie strahlt» → «du strahlst») und macht aus Imperativen Fragen
-# («Legen Sie sich» → «Legst du dich»). Ohne WRITE=1 landet das Ergebnis in /tmp/du_form_<handle>.html; von dort
-# werden die Fehler per exakter Ersetzung korrigiert und der ganze Text einmal GELESEN, bevor geschrieben wird.
-import sys,re,json,os,urllib.request,difflib,time
-sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); from shop_gql import gql
-KEY=re.search(r'GROQ_API_KEY=["\']?([^"\'\s]+)',open('/tmp/dienste.env').read()).group(1)
-SIE=re.compile(r'\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b')
-def groq(txt):
-    prompt=("Ändere in diesem deutschen HTML-Fragment NUR die Anrede von «Sie» auf «du» (du/dich/dir/dein…), inklusive der zugehörigen Verbformen "
-            "(sollten→solltest, stellen Sie→stellst du, achten Sie→achte). Alles andere bleibt WÖRTLICH gleich: Fakten, Zahlen, Preise, Links, HTML-Tags, "
-            "Reihenfolge, Schweizer ss. Kein Satz hinzu, keiner weg. «Sie» als Personalpronomen für eine dritte Person (sie/die Lampe) bleibt unverändert. "
-            "Gib NUR das geänderte Fragment zurück, ohne Erklärung, ohne Code-Fences.\n\n"+txt)
-    for i in range(3):
-        try:
-            req=urllib.request.Request('https://api.groq.com/openai/v1/chat/completions',data=json.dumps({'model':'openai/gpt-oss-20b','temperature':0.1,'reasoning_effort':'low','max_tokens':2500,'messages':[{'role':'user','content':prompt}]}).encode(),headers={'Authorization':'Bearer '+KEY,'Content-Type':'application/json','User-Agent':'luxestyle-du-form/1.0'})
-            j=json.loads(urllib.request.urlopen(req,timeout=60).read())
-            c=(j.get('choices') or [{}])[0].get('message',{}).get('content','') or ''
-            c=re.sub(r'^```\w*\n?|```$','',c.strip()).strip()
-            if c: return c
-        except Exception as e: time.sleep(2)
-    return None
-def norm(s): return re.sub(r'\s+',' ',s).strip()
-def ok(alt,neu):
-    if not neu: return 'leer'
-    if re.findall(r'<[^>]+>',alt)!=re.findall(r'<[^>]+>',neu): return 'tags'
-    if re.findall(r'\d+[.,]?\d*',alt)!=re.findall(r'\d+[.,]?\d*',neu): return 'zahlen'
-    if re.findall(r'href="[^"]*"',alt)!=re.findall(r'href="[^"]*"',neu): return 'links'
-    r=len(neu)/max(1,len(alt))
-    if r<0.85 or r>1.18: return f'laenge {r:.2f}'
-    if 'ß' in neu and 'ß' not in alt: return 'ß'
-    return None
-handle=sys.argv[1]; WRITE=os.environ.get('WRITE')=='1'
-r=gql('query($q:String!){ articles(first:1, query:$q){ nodes{ id body summary } } }',{'q':'handle:'+handle})
-a=r['data']['articles']['nodes'][0]; b=a['body']
-# Elemente: <p>…</p>, <li>…</li>, <h2>…</h2>, <h3>…</h3> (ohne Verschachtelung von Blöcken)
-parts=re.split(r'(<(?:p|li|h2|h3)\b[^>]*>.*?</(?:p|li|h2|h3)>)',b,flags=re.S)
-out=[]; n_ge=0; n_ab=0; n_sie=0
-for seg in parts:
-    if seg.startswith('<') and re.match(r'<(p|li|h2|h3)\b',seg) and SIE.search(re.sub(r'<[^>]+>','',seg)):
-        n_sie+=1
-        neu=groq(seg); grund=ok(seg,neu)
-        rest=len(SIE.findall(re.sub(r'<[^>]+>','',neu or '')))
-        if grund or rest>1:
-            n_ab+=1; print(f'  ⛔ behalten ({grund or "Sie-Rest "+str(rest)}): {norm(re.sub(r"<[^>]+>","",seg))[:90]}'); out.append(seg); continue
-        n_ge+=1; out.append(neu)
-        if not WRITE:
-            for d in difflib.unified_diff(norm(re.sub(r'<[^>]+>','',seg)).split(' '),norm(re.sub(r'<[^>]+>','',neu)).split(' '),lineterm='',n=0):
-                if d.startswith(('-','+')) and not d.startswith(('---','+++')): print('     ',d,end=' | ')
-            print()
-    else: out.append(seg)
-neu_body=''.join(out)
-print(f'{handle}: Elemente mit Sie {n_sie} · umgestellt {n_ge} · behalten {n_ab} · Sie-Rest im Text {len(SIE.findall(re.sub(r"<[^>]+>","",neu_body)))}')
-if WRITE and n_ge:
-    m=gql('mutation($id:ID!,$a:ArticleUpdateInput!){ articleUpdate(id:$id, article:$a){ article{ body } userErrors{ message } } }',{'id':a['id'],'a':{'body':neu_body}})
-    print('WRITE', m['data']['articleUpdate']['userErrors'])
-else:
-    open('/tmp/du_form_'+handle+'.html','w').write(neu_body)
+#!/usr/bin/env python3
+"""Ratgeber (Blog-Artikel) und Seiten Sie → du — mit demselben Sicherheitsnetz wie die Produkttexte.
+
+ANLASS (22.09.2026): 207 von 309 veröffentlichten Artikeln und 18 von 115 Seiten siezen noch
+(Messung über articles/pages). Aufgabe 18 hatte nur zwei Ratgeber von Hand gewandelt.
+
+Regeln: LIVE-Text holen, `um()` wandeln, Warnmuster prüfen (WARN/WARN2/warn3 aus
+produkttexte_du_form) — ein Treffer → NICHT schreiben, Bericht `dropship/DU-FORM-VERDACHT.md`
+(Abschnitt Ratgeber). Rechtstexte (AGB, Datenschutz, Impressum, Widerruf, Cookie) bleiben unberührt.
+`articleUpdate` verlangt `HTML!` (Lehre 15.09.), `pageUpdate` `String`.
+
+  DRY=1 (Standard) zeigen · FIX=1 schreiben · NUR=artikel|seiten
+"""
+import html as H, json, os, re, subprocess, sys, time
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(REPO, "automation"))
+from kollektionstexte_du_form import um            # noqa: E402
+from produkttexte_du_form import WARN, WARN2, warn3, gql, SIE, text  # noqa: E402
+
+FIX = os.environ.get("FIX") == "1"
+NUR = os.environ.get("NUR", "")
+LEDGER = os.path.join(REPO, "dropship", "_ratgeber_du_form_done.txt")
+VERDACHT = os.path.join(REPO, "dropship", "DU-FORM-VERDACHT.md")
+RECHT = re.compile(r"agb|datenschutz|impressum|widerruf|cookie|rechtlich|privacy|terms|refund|shipping-policy|versandbedingungen|zahlungsbedingungen")
+
+
+def alle(typ):
+    cur, out = None, []
+    while True:
+        d = gql('query($c:String){%s(first:50,after:$c){pageInfo{hasNextPage endCursor} nodes{id handle title body isPublished}}}' % typ, {"c": cur})
+        t = d["data"][typ]; out += t["nodes"]
+        if not t["pageInfo"]["hasNextPage"]:
+            return out
+        cur = t["pageInfo"]["endCursor"]
+
+
+def main():
+    done = set()
+    if os.path.exists(LEDGER):
+        done = {z.split("\t")[0] for z in open(LEDGER) if z.strip()}
+    heute = time.strftime("%Y-%m-%d")
+    verdacht, n_du, n_warn, n_skip, n_fehler = [], 0, 0, 0, 0
+    for typ, mut, feld in (("articles", "articleUpdate", "article"), ("pages", "pageUpdate", "page")):
+        if NUR and not typ.startswith(NUR[:4]):
+            continue
+        for o in alle(typ):
+            key = f"{typ}:{o['handle']}"
+            if key in done or not o["isPublished"] or RECHT.search(o["handle"]):
+                continue
+            alt = o["body"] or ""
+            if not SIE.search(text(alt)):
+                continue
+            neu = um(alt); tn = text(neu)
+            m = WARN.search(tn) or WARN2.search(tn) or warn3(tn)
+            if m:
+                n_warn += 1; i = max(0, m.start() - 60)
+                verdacht.append((key, m.group(0), tn[i:m.end() + 60])); continue
+            if neu == alt:
+                n_skip += 1; continue
+            rest = len(SIE.findall(tn))
+            # Ratgeber sind lang: ein halb geduzter Artikel ist schlechter als ein gesiezter → nur schreiben,
+            # wenn KEIN «Sie» mehr übrig ist (VOLL=1, Standard). Die halben landen im Bericht.
+            if os.environ.get("VOLL", "1") == "1" and rest:
+                n_warn += 1; verdacht.append((key, f"Rest {rest}× Sie", tn[:120])); continue
+            if not FIX:
+                print(f"  [DRY] {key[:60]:62s} Sie {len(SIE.findall(text(alt)))} → {rest}"); n_du += 1; continue
+            try:
+                typname = "HTML!" if typ == "articles" else "String!"
+                r = gql('mutation($id:ID!,$b:%s){%s(id:$id,%s:{body:$b}){%s{id} userErrors{message}}}' % (typname, mut, feld, feld),
+                        {"id": o["id"], "b": neu})
+                pu = (r.get("data") or {}).get(mut) or {}
+                if pu.get("userErrors") or not pu.get(feld):
+                    n_fehler += 1; print(f"  FEHLER {key}: {pu.get('userErrors') or r.get('errors')}"); continue
+                # Rücklesen
+                q = 'query($id:ID!){node(id:$id){... on Article{body} ... on Page{body}}}'
+                back = ((gql(q, {"id": o["id"]}).get("data") or {}).get("node") or {}).get("body")
+                if back != neu:
+                    n_fehler += 1; print(f"  FEHLER {key}: Rücklesen weicht ab"); continue
+                n_du += 1
+                with open(LEDGER, "a") as f:
+                    f.write(f"{key}\t{heute}\t{'teilweise' if rest else 'du'}\n")
+            except Exception as e:  # noqa: BLE001
+                n_fehler += 1; print(f"  FEHLER {key}: {type(e).__name__}: {str(e)[:100]}")
+            time.sleep(0.3)
+    if verdacht:
+        with open(VERDACHT, "a") as f:
+            f.write(f"\n## Ratgeber/Seiten {heute} ({'DRY' if not FIX else 'FIX'}) — nicht geschrieben\n\n| Handle | Muster | Kontext |\n|---|---|---|\n")
+            for k, mu, ctx in verdacht:
+                f.write(f"| `{k}` | {mu} | …{ctx.replace('|', '/')}… |\n")
+    print(f"RATGEBER-DU: {n_du} {'setzbar' if not FIX else 'geschrieben'} · {n_warn} Verdacht · {n_skip} ohne Wirkung · {n_fehler} Fehler")
+
+
+if __name__ == "__main__":
+    main()

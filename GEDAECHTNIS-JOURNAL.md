@@ -42,7 +42,7 @@ finden können» bleibt Plural) und Modal + Infinitiv («du kannst sie haben» b
 auch für Konjunktionen am Satzanfang («Wenn Sie», «Egal, ob Sie») und 2c um 20 Objekt-Verben
 («informiert Sie» → «informiert dich»). Kanarienvögel: 10 Sätze, alle richtig.
 
-**Nachtrag 1 (12:10 UTC) — die Gratisversand-Schwelle war wieder auf 50, still.** Trichter 30 T gemessen:
+**Nachtrag 1 (10:50 UTC) — die Gratisversand-Schwelle war wieder auf 50, still.** Trichter 30 T gemessen:
 1'077 Sitzungen, 15 Warenkorb-Zulagen, **6 Kassen-Starts, 0 Abschlüsse**; keine abgebrochene Kasse mit
 E-Mail seit 22.08. → die 6 gingen auf der ersten Kassenseite (Adresse/Versand) wieder. Versandprofil live
 gelesen: **«Kostenloser Versand ≥45» AUS, «≥50» AN** — genau die Umstellung, die am 15.09. als Cowork-Punkt 1
