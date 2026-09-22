@@ -15916,3 +15916,10 @@ gid://shopify/Product/15499947573633	37->3	Katzenkissen mit Katzenminze
 gid://shopify/Product/15500253757825	70->2	Aufblasbarer Schutzring für Haustiere
 gid://shopify/Product/15500438176129	15->1	Elektrischer Haarschneider Goldstahl
 gid://shopify/Product/15500438602113	83->0	Netzteil mit Trafo für Game Konsole
+gid://shopify/Product/15500657131905	10->0	Fischbead-Lanyard
+gid://shopify/Product/15500948439425	15->0	USB-A Stecker mit schwarzer Kunststoffabdeckung · 10 Stück
+gid://shopify/Product/15501005160833	45->1	Personalisiertes Vintage-Stahl-Armband
+gid://shopify/Product/15501005291905	89->0	Nixie-Röhrenuhr mit Wecker aus Walnussholz
+gid://shopify/Product/15501006078337	26->0	Kubanisches Solitär-Armband
+gid://shopify/Product/15501006209409	21->0	Elektrisches Lichttherapiegerät zur Hautverjüngung
+gid://shopify/Product/15501879148929	41->0	Zitronenarmband
