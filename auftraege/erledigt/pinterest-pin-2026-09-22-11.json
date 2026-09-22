@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-09-22-11",
   "warum": "Sechster Pin des Tages (5 verifiziert, Auftrag 8 gestorben). Genau EIN Pin aus dropship/_pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). Tageslimit ~6 bleibt eingehalten.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-22T18:16:07.483Z",
+  "dauer_s": 61.2,
+  "ergebnis": {
+    "gepinnt": [
+      "verstellbare-teleskop-faszienrolle-aus-schaums-877824"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 110, quittiert 5, offen 105",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-self-care/, /luxestyleCH/wohnen-deko/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Wellness & Beauty» (https://ch.pinterest.com/luxestyleCH/wellness-beauty/, 180 Z.): Titel nicht da",
+      "Bild 101916 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (265 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-11-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-11-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-11-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "verstellbare-teleskop-faszienrolle-aus-schaums-877824",
+      "board": "Wellness & Beauty",
+      "title": "Verstellbare Teleskop-Faszienrolle aus Schaumstoff"
+    }
+  }
 }
