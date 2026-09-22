@@ -928,3 +928,7 @@ retro-brusttasche-fur-herren-606500	gesetzt-2
 retro-cordhose-fur-damen-620700	gesetzt-1
 retro-kordelanzug-607600	gesetzt-3
 retro-ohrringe-ring-aus-edelstahl-616100	gesetzt-1
+retro-sandalen-mit-knochelriemen-615500	gesetzt-3
+retro-streifen-hoodie-mit-zipper-615100	gesetzt-4
+robuste-outdoor-sportuhr-fur-herren-620800	gesetzt-4
+rollkragenpullover-mit-langen-armeln-630800	gesetzt-7
