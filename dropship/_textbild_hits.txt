@@ -15931,3 +15931,10 @@ gid://shopify/Product/15502661616001	46->0	Magnetischer Futter- und Wassernapf f
 gid://shopify/Product/15503089992065	16->3	Tragbares Notfallradio mit Solarfunktion
 gid://shopify/Product/15503150186881	156->0	Klimmzugstange für Türrahmen
 gid://shopify/Product/15521230520705	16->0	Futterspielzeug "Karotte" mit Saugnapf
+gid://shopify/Product/15433463398785	38->1	In-Ear Gaming Headset mit Geräuschunterdrückung
+gid://shopify/Product/15433463824769	14->0	Gaming-Tastatur und -Maus Set RGB LED USB
+gid://shopify/Product/15433464054145	18->0	Gaming Mauspad aus gehärtetem Glas, rutschfest, Schwarz
+gid://shopify/Product/15433464316289	61->0	Wandhalterung für Gamecontroller & Headset
+gid://shopify/Product/15433464381825	15->0	Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads
+gid://shopify/Product/15433464545665	11->0	Anime Celebrities Figur (18 cm)
+gid://shopify/Product/15448957976961	8->0	Intelligentes Bremslicht für Velos
