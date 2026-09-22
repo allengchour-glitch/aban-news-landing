@@ -15910,3 +15910,9 @@ gid://shopify/Product/15525458444673	15->0	Farbwechselndes Lippenlack mit Feucht
 gid://shopify/Product/15525488951681	21->0	Kohlenmonoxidmelder für den Haushalt
 gid://shopify/Product/15525493834113	25->1	Hunde-Brustgeschirr mit Reflektor
 gid://shopify/Product/15525499044225	8->0	Elektrischer Gemüseschneider Morandi Grün
+gid://shopify/Product/15496704000385	140->0	Faltbarer Reise-Napf für Hunde & Katzen
+gid://shopify/Product/15499594334593	29->0	Dreifach-Ladestation für Handy und Armband
+gid://shopify/Product/15499947573633	37->3	Katzenkissen mit Katzenminze
+gid://shopify/Product/15500253757825	70->2	Aufblasbarer Schutzring für Haustiere
+gid://shopify/Product/15500438176129	15->1	Elektrischer Haarschneider Goldstahl
+gid://shopify/Product/15500438602113	83->0	Netzteil mit Trafo für Game Konsole
