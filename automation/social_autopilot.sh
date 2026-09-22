@@ -24,8 +24,12 @@ set -u
 cd "$(dirname "$0")/.." || exit 1
 NODE=/opt/node22/bin/node
 BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
-REEL_ABSTAND=${REEL_ABSTAND:-172800}     # 48 h zwischen zwei Reels (Kadenz-Wache)
-TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-86400}   # 24 h zwischen zwei TikTok-Posts (Metricool, eigenes Reel je Post)
+REEL_ABSTAND=${REEL_ABSTAND:-28800}      # 8 h zwischen zwei Reels (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
+TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-43200}   # 12 h zwischen zwei TikTok-Posts (Metricool, eigenes Reel je Post)
+LERN_ABSTAND=${LERN_ABSTAND:-21600}       # alle 6 h: Instagram-Zahlen lesen, Gewichte fuer Hooks/Themen schreiben
+NACHSCHUB_ABSTAND=${NACHSCHUB_ABSTAND:-43200}  # alle 12 h: Bild-Queue mit neuen Produkten auffuellen, wenn < 12 ready
+MARKE_LERN=/tmp/_autopilot_letztes_lernen
+MARKE_NACHSCHUB=/tmp/_autopilot_letzter_nachschub
 MARKE_TIKTOK=/tmp/_autopilot_letztes_tiktok
 MARKE_BILD=/tmp/_autopilot_letztes_bild
 MARKE_REEL=/tmp/_autopilot_letztes_reel
@@ -68,6 +72,18 @@ while true; do
   export FB_PAGE_ACCESS_TOKEN="$TOKEN"
   export SKIP_THREADS=1                  # Threads bleibt aus, bis dort Publikum da ist.
 
+  # LERNEN (22.09.): Zahlen der letzten Posts lesen → social/_lernen.json (Hook-/Themen-Gewichte) + Bericht
+  if faellig "$MARKE_LERN" "$LERN_ABSTAND"; then
+    $NODE automation/social_lernen.mjs && touch "$MARKE_LERN" || echo "$(date -u +%H:%M) Lernen fehlgeschlagen"
+  fi
+  # NACHSCHUB (22.09.): Bild-Queue aus neuen Produkten (nie gepostet), damit «mehrmals taeglich» Stoff hat
+  if faellig "$MARKE_NACHSCHUB" "$NACHSCHUB_ABSTAND"; then
+    READY=$(awk -F',' 'NR>1 && $0 ~ /,ready,/' social/posts_image.csv | wc -l)
+    if [ "$READY" -lt 12 ]; then
+      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" QUEUE_MAX=6 $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Nachschub fehlgeschlagen"
+    fi
+    touch "$MARKE_NACHSCHUB"
+  fi
   if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
     echo "$(date -u +%H:%M) Bildpost fällig"
     if MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then
