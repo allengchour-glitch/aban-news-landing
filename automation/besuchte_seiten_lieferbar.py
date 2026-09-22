@@ -205,6 +205,7 @@ def main():
             teile = z.rstrip("\n").split("\t")
             if teile and teile[0]:
                 alt_zeilen[teile[0]] = teile
+    vorher = set(alt_zeilen)               # Urteile frueherer Laeufe (fuer die Zwei-Laeufe-Regel der Vollstreckung)
     gefragt = {h for h in handles}
     for h in gefragt:                      # dieser Lauf hat geurteilt: alter Eintrag faellt
         alt_zeilen.pop(h, None)
@@ -215,7 +216,56 @@ def main():
             f.write("\t".join(teile) + "\n")
     print(f"\n→ dropship/_besuchte_seiten_nicht_lieferbar.txt "
           f"({len(alt_zeilen)} Zeilen gesamt, davon {len(befunde)} aus diesem Lauf)")
+    vollstrecken(befunde, vorher)
     politur(handles)
+
+
+TAG_KEINE_CH = "cj-keine-ch-versandoption"
+BERICHT = os.path.join(REPO, "dropship", "BESUCHTE-SEITEN-NICHT-LIEFERBAR.md")
+
+
+def vollstrecken(befunde, vorher):
+    """22.09.2026 (Verbesserungsrunde): der Wächter meldete «KEINE Versandoption» nur — der Gesundheits-Tracker-Ring
+    stand seit dem 18.09. ACTIVE im Register, wurde besucht und kommt nicht in die Schweiz (die #1016/#1017-Klasse).
+    Ein Urteil, das niemand vollstreckt, ist keine Sicherung. Regel: ein ACTIVES Produkt wird auf DRAFT gesetzt,
+    wenn ZWEI unabhängige Läufe NEIN sagen (heute UND schon im Register vom letzten Lauf) — ein einzelnes NEIN kann
+    ein CJ-Aussetzer sein; der Kanarienvogel (#1018) schützt nur vor dem globalen Ausfall. Tag `cj-keine-ch-versandoption`,
+    Notiz mit Grund, Rücklesen; Bericht in dropship/BESUCHTE-SEITEN-NICHT-LIEFERBAR.md. Rückholbar: Tag entfernen + ACTIVE."""
+    heute = time.strftime("%Y-%m-%d")
+    zeilen, n_draft, n_warte = [], 0, 0
+    for h, st, g, sku in befunde:
+        if st != "ACTIVE":
+            continue
+        if h not in vorher:
+            n_warte += 1
+            zeilen.append(f"| `{h}` | ⏳ erstes NEIN ({heute}) — Draft beim nächsten NEIN | {g} | `{sku}` |")
+            continue
+        q = '{products(first:1, query:"handle:%s"){nodes{id status tags}}}' % h
+        try:
+            p = shopify(q)["data"]["products"]["nodes"][0]
+            tags = sorted(set((p.get("tags") or []) + [TAG_KEINE_CH]))
+            r = shopify('mutation($i:ProductInput!){productUpdate(input:$i){product{status tags} userErrors{message}}}',
+                        {"i": {"id": p["id"], "status": "DRAFT", "tags": tags}})
+            pu = (r.get("data") or {}).get("productUpdate") or {}
+            back = pu.get("product") or {}
+            if pu.get("userErrors") or back.get("status") != "DRAFT" or TAG_KEINE_CH not in (back.get("tags") or []):
+                zeilen.append(f"| `{h}` | ❌ Draft FEHLGESCHLAGEN: {pu.get('userErrors')} | {g} | `{sku}` |")
+                continue
+            n_draft += 1
+            zeilen.append(f"| `{h}` | ✅ DRAFT gesetzt {heute} (zweites NEIN) | {g} | `{sku}` |")
+            print(f"   → DRAFT: /products/{h} ({g})", flush=True)
+        except Exception as e:  # noqa: BLE001
+            zeilen.append(f"| `{h}` | ❌ Fehler {type(e).__name__}: {str(e)[:80]} | {g} | `{sku}` |")
+    if befunde:
+        neu = not os.path.exists(BERICHT)
+        with open(BERICHT, "a") as f:
+            if neu:
+                f.write("# Besuchte Seiten ohne CH-Versandoption — Vollstreckung\n\nQuelle: `automation/besuchte_seiten_lieferbar.py`. "
+                        "DRAFT erst nach zwei unabhängigen NEIN (zwei Läufe). Rückholen: Tag `cj-keine-ch-versandoption` entfernen, ACTIVE setzen.\n\n"
+                        "| Handle | Stand | Grund | SKU |\n|---|---|---|---|\n")
+            for z in zeilen:
+                f.write(z + "\n")
+    print(f"VOLLSTRECKUNG: {n_draft} auf DRAFT · {n_warte} warten auf das zweite NEIN")
 
 
 SIE = re.compile(r"\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b")
