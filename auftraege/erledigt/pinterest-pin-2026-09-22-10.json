@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-09-22-10",
   "warum": "Lauf 5 hat den ersten Pin veröffentlicht und auf der Pinnwand nachgelesen. Genau EIN weiterer Pin aus der Warteschlange (Lauf 10 von 10 heute), Quittung vor Nebenwirkung.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-22T13:01:49.108Z",
+  "dauer_s": 61,
+  "ergebnis": {
+    "gepinnt": [
+      "futterspender-fur-hunde-bc09f6"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 42, quittiert 1, offen 41",
+      "Boards auf dem Profil: /luxestyleCH/home-geschenkideen/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/wellness-beauty/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-self-care/, /luxestyleCH/wohnen-deko/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 290 Z.): Titel nicht da",
+      "Bild 166032 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (333 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-10-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-10-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-10-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "futterspender-fur-hunde-bc09f6",
+      "board": "Home & Geschenkideen",
+      "title": "Futterspender für Hunde"
+    }
+  }
 }
