@@ -31,6 +31,10 @@ fi
 
 while true; do
   # Kadenz 22.09.: 2 Reels alle 6 h (= 8/Tag; Verbrauch IG 3/Tag + TikTok 2/Tag). Ablage bis zum Grow-Plan im Repo (~1,5 MB je Reel).
-  BATCH=${BATCH:-2} /opt/node22/bin/node automation/cj_video_reel_engine.mjs
+  # Video-Index zuerst (22.09.): 150 CJ-Listen-Aufrufe je Lauf fuellen dropship/_cj_video_index.json,
+  # der Motor nimmt daraus fast sichere Treffer. BATCH 3 (Betreiber 22.09.: TikTok + Instagram im Fokus,
+  # jede Plattform bekommt ein EIGENES Reel → Bedarf ~5–6 je Tag).
+  INDEX_CALLS=${INDEX_CALLS:-150} flock -n /tmp/cj_video_index.lock /opt/node22/bin/node automation/cj_video_index.mjs 9>&- || true
+  BATCH=${BATCH:-3} /opt/node22/bin/node automation/cj_video_reel_engine.mjs
   sleep "${TAKT:-21600}" 9>&-
 done

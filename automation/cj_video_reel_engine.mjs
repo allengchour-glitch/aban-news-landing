@@ -151,13 +151,33 @@ const gebaut = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').s
 const keinVideo = new Set(fs.existsSync(KEINVIDEO) ? fs.readFileSync(KEINVIDEO, 'utf8').split('\n').map(s => s.split('\t')[0].trim()).filter(Boolean) : []);
 const inCsv = new Set((fs.readFileSync(CSV, 'utf8').match(/^cjreel-(\d+)/gm) || []).map(s => s.replace('cjreel-', '')));
 const kand = []; let cursor = null, gescannt = 0;
-while (gescannt < SCAN) {
+// Index-Kandidaten zuerst (cj_video_index.mjs, 22.09.): Produkte, die laut CJ-Kategorieliste ein Video
+// haben — der Motor fragt dann fast nur noch Treffer statt 1 von 80. Nachschlag im Shop per SKU-OR-Suche
+// (20 je Aufruf, gemessen 22.09.), gleiche Schwellen wie der Scan.
+const INDEX = 'dropship/_cj_video_index.json';
+const idx = fs.existsSync(INDEX) ? JSON.parse(fs.readFileSync(INDEX, 'utf8')) : null;
+const idxPids = idx ? Object.keys(idx.shop_video || {}).filter(p => !gebaut.has(p) && !keinVideo.has(p) && !inCsv.has(p)) : [];
+let idxKand = 0;
+for (let i = 0; i < Math.min(idxPids.length, 200); i += 20) {
+  const q = idxPids.slice(i, i + 20).map(p => `sku:CJ-${p}`).join(' OR ');
+  const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q });
+  if (!r) break;
+  for (const n of r.data.products.nodes) {
+    const sku = n.variants.nodes[0]?.sku || ''; const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(sku); if (!m || !idxPids.includes(m[1])) continue;
+    const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0');
+    if (n.status !== 'ACTIVE' || price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title)) continue;
+    if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) continue;
+    kand.push({ pid, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [], idx: true }); idxKand++;
+  }
+}
+if (idx) console.log(`Video-Index: ${idxPids.length} offene Treffer → ${idxKand} Kandidaten (Index-Stand ${(idx.stand || '').slice(0, 16)})`);
+while (gescannt < SCAN && idxKand < BATCH * 3) {
   const r = await gql(`query($c:String){ products(first:50, after:$c, sortKey:CREATED_AT, reverse:true, query:"status:active tag:cj-real"){ pageInfo{hasNextPage endCursor} nodes{ id title handle tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { c: cursor });
   if (!r) break;
   const pg = r.data.products;
   for (const n of pg.nodes) {
     gescannt++;
-    const sku = n.variants.nodes[0]?.sku || ''; const m = /^CJ-(\d{10,})/.exec(sku); if (!m) continue;
+    const sku = n.variants.nodes[0]?.sku || ''; const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(sku); if (!m) continue;
     const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0');
     if (gebaut.has(pid) || keinVideo.has(pid) || inCsv.has(pid)) continue;
     if (price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title)) continue;
@@ -169,7 +189,7 @@ while (gescannt < SCAN) {
 }
 // Hype/neu zuerst, dann bunt nach Kategorie
 const prio = x => (x.tags.includes('hype-jetzt') ? 0 : x.tags.includes('neuheit') || x.tags.includes('neu') ? 1 : 2);
-const reihe = balanceByCategory(kand.sort((a, b) => prio(a) - prio(b)), x => x.title);
+const reihe = [...balanceByCategory(kand.filter(x => x.idx).sort((a, b) => prio(a) - prio(b)), x => x.title), ...balanceByCategory(kand.filter(x => !x.idx).sort((a, b) => prio(a) - prio(b)), x => x.title)];
 console.log(`Kandidaten: ${kand.length} von ${gescannt} gescannt (Schwelle: ACTIVE, ≥CHF 14.90, ≥2 Bilder, nie gepostet)${DRY ? ' · DRY' : ''}`);
 
 // ---------------------------------------------------------------- Bauen
