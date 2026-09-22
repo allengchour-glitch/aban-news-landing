@@ -35,7 +35,7 @@ SIE = re.compile(r"\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b")
 WARN = re.compile(r"\bdu (können|möchten|haben|sind|wollen|sollten|müssen|erhalten|finden|profitieren|"
                   r"geniessen|genießen|sparen|bekommen|brauchen|suchen|lieben|werden|sehen|setzen|wählen|"
                   r"kaufen|bestellen|schätzen|verwöhnen|entdecken|erleben|fühlen|tragen|nutzen|behalten)\b"
-                  r"|\bdenst\b|\bdu du\b|\bdich dich\b|\bdir dir\b|\bdeine?[mnrs]? (Sie|Ihre?)\b")
+                  r"|\bdenst\b|\bdu du\b|\bdich dich\b|\bdir dir\b|\bdu sich\b|\b[a-zäöüß]+(?:st|est) (?:musst|kannst|willst|sollst|wirst|hast|bist|solltest|könntest)\b|\bdeine?[mnrs]? (Sie|Ihre?)\b")
 # Pluralverb SPÄTER im selben Satzteil («wenn du es eilig haben», «du … sorgen möchten») — Regel 2b tauscht nur das
 # Pronomen. Absichtlich grob (fängt auch «du kannst … haben»): ein Fehlalarm landet im Bericht, ein Fehler im Shop nicht.
 WARN2 = re.compile(r"\bdu\b[^.,;!?:]{0,60}?\b(haben|können|möchten|wollen|sind|müssen|sollten|werden|brauchen|benötigen|"

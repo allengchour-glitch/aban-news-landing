@@ -61,7 +61,7 @@ def um(t):
            'Werfen':'Wirf','Treffen':'Triff','Brechen':'Brich','Fahren':'Fahr','Halten':'Halt','Laufen':'Lauf','Lassen':'Lass','Waschen':'Wasch',
            'Tragen':'Trag','Schlafen':'Schlaf','Messen':'Miss','Stossen':'Stoss','Stoßen':'Stoß','Empfehlen':'Empfiehl','Erhalten':'Erhalte',
            'Behalten':'Behalte','Beachten':'Beachte','Wählen':'Wähle','Stellen':'Stelle','Legen':'Lege','Achten':'Achte','Prüfen':'Prüfe',
-           'Gönnen':'Gönn','Entspannen':'Entspann','Setzen':'Setz','Sichern':'Sichere','Bestellen':'Bestelle','Kombinieren':'Kombiniere'}
+           'Gönnen':'Gönn','Entspannen':'Entspann','Setzen':'Setz','Sichern':'Sichere','Bestellen':'Bestelle','Kombinieren':'Kombiniere','Schauen':'Schau','Probieren':'Probier','Testen':'Teste','Stöbern':'Stöbere','Greifen':'Greif'}
     def _imp(m):
         v, refl = m.group(1), m.group(2)
         rest = ''

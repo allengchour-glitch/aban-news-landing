@@ -105,6 +105,21 @@ Sensor-Seifenspender, figurformendes Kleid — vier Pinnwände), der sechste lä
 reihum über die Pinnwände erweitert. Betreiber 13:05: «erledige alles selber. sehr schön weiter machen».
 Lehre: **Ein Schwellwert aus dem Kopf (200 Zeichen) ist keine Messung — die leere Seite war die Wahrheit.**
 
+**Nachtrag 5 (13:45 UTC) — Ratgeber-Klasse: von 3 auf 95 geduzte Texte, weil die Reste gemessen wurden.**
+Über alle 205 Artikel mit «Sie» die Reste NACH `um()` gezählt: 2'312 Treffer vorher, 635 nachher — davon 475 am
+Satzanfang («Sie ist wasserdicht», «Sie sollten breit sein» = Produkt/Plural, kein Befund). Die echten Reste hatten
+vier Formen: Konjunktionen ohne Listenverb («wie Sie», «worauf Sie», «und Sie haben»), Imperative ausserhalb der
+Tabelle («Wechseln Sie», «Nehmen Sie sich Zeit»), Modalketten («Sie tragen müssen»), Objekt-«Sie» («lässt Sie
+strahlen»). Neue Regeln: 2e (grosses «Sie» mitten im Satz ist immer Anrede, Ausnahme «für Sie und Ihn»), 2f
+(generischer Imperativ + Tabelle starker Verben, «sich» → dir/dich nach Folgewort), 2g (Verb direkt nach «du»),
+2d generisch (Stamm+st/est/t, starke Verben, auch vor «und/oder»), Regel 1 nur noch am Satzteil-Ende (vorher stoppte
+sie beim ersten Listenverb → «du sparst kannst»), die alte Ersatzkette «du <Verb>» mit Blick nach rechts.
+**Reihenfolge ist eine Regel:** 2c (Objekt-Verben) muss VOR 2e laufen, sonst «lässt du strahlst». Vier Kanarien-
+Runden, jede fand einen echten Fehler; **zwei bereits geschriebene Artikel hatten vier Doppel-Konjugationen
+(«anpasst kannst», «liebst wirst») — repariert, und der Defekt-Scan läuft jetzt über alle geschriebenen Texte.**
+Die Vollständigkeits-Regel zählt nur noch Anrede (Satzmitte), nicht jedes «Sie»: 78 weitere Artikel/Seiten geduzt
+(95 gesamt), 38 im Bericht, 90 ohne Anrede-Rest. 82 Produkt-Verdachte zur Neuprüfung freigegeben.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
