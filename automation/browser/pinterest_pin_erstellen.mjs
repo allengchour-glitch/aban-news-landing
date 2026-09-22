@@ -127,6 +127,13 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     await seite.goto(`${HOST}/pin-creation-tool/`, { waitUntil: 'load', timeout: 60000 });
     await seite.waitForTimeout(5000);
     if (ist_anmeldeseite(seite.url())) { const e = new Error(`nicht angemeldet — ${seite.url()}`); e.nichtAngemeldet = true; throw e; }
+    // Lauf 5 (22.09.): nach dem Veröffentlichen lag ein Werbe-Dialog («Ideen finden. Gefällt mir. Merken. — Jetzt
+    // installieren») über der Seite. So ein Dialog kann auch beim nächsten Öffnen liegen → erst Escape, dann Schliessen-Knöpfe.
+    await seite.keyboard.press('Escape').catch(() => {});
+    for (const sel of ['[aria-label="Schliessen"]', '[aria-label="Schließen"]', '[aria-label="Close"]', 'button:has-text("Nicht jetzt")', 'button:has-text("Später")']) {
+      const x = seite.locator(sel).first();
+      if (await x.count()) { await x.click({ timeout: 3000 }).catch(() => {}); await seite.waitForTimeout(800); }
+    }
     const neu = seite.getByRole('button', { name: /^Neu erstellen$/ }).first();
     if ((await neu.count()) && (await neu.isEnabled().catch(() => false))) { await neu.click({ timeout: 5000 }).catch(() => {}); await seite.waitForTimeout(2000); schritte.push('«Neu erstellen» geklickt (alte Entwürfe liegen in der Seitenleiste)'); }
     const datei = seite.locator('#storyboard-upload-input');
