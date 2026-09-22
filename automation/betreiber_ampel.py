@@ -403,10 +403,43 @@ def offene_punkte():
     return len(re.findall(r"(?m)^##\s+(?:🆕|\d+[a-z]?\.)", schnitt))
 
 
+def iban_grep():
+    """Das Repo ist OEFFENTLICH (gemessen 18.09.). Am 18.09. standen Bankinstitut + Kontoinhaber 17 Minuten auf
+    diesem Zweig und seit 20:46 UTC LIVE auf main (Gegenpruefung 22.09.). Diese Zeile sucht taeglich nach
+    IBAN-NUMMERN (CH/LI/DE-Muster) und Bank-/Kontoinhaber-Feldern in den Textdateien, die Sessions schreiben.
+    Das Wort «IBAN» allein ist kein Fund (Journal beschreibt Vorgaenge) — nur Nummern und ausgefuellte Felder."""
+    # Volle IBAN-Laengen (CH/LI 21, DE 22, AT 20 Zeichen) mit Wortgrenze — ein kurzes Muster traf Hex-Hashes
+    # («de2776694760» in _bildhash.txt, gemessen 22.09.). Feldnamen zaehlen nur mit ausgefuelltem Wert.
+    muster = re.compile(r"\b(?:CH|LI)\d{2}(?:\s?\d{4}){4}\s?\d\b|\bDE\d{2}(?:\s?\d{4}){4}\s?\d{2}\b|\bAT\d{2}(?:\s?\d{4}){4}\b|(?:Kontoinhaber|Account holder|Bankinstitut|Bank name)\s*[:=]\s*[A-Za-zÄÖÜäöü]{2,}", re.I)
+    treffer = []
+    for wurzel in ("dropship", "brain", "auftraege", "social", "."):
+        basis = os.path.join(REPO, wurzel)
+        for dp, dn, fn in os.walk(basis):
+            if "/.git" in dp or "node_modules" in dp:
+                continue
+            if wurzel == "." and dp != basis:
+                continue          # im Wurzelordner nur die Dateien direkt dort (CLAUDE.md, SHARED-MEMORY.md, Journal)
+            for f in fn:
+                if not f.endswith((".md", ".txt", ".json", ".csv")):
+                    continue
+                pf = os.path.join(dp, f)
+                try:
+                    if os.path.getsize(pf) > 20_000_000:
+                        continue
+                    text = open(pf, encoding="utf-8", errors="ignore").read()
+                except OSError:
+                    continue
+                if muster.search(text):
+                    treffer.append(os.path.relpath(pf, REPO))
+    if not treffer:
+        return ""
+    return f"🏦 BANKANGABE im Repo ({len(treffer)}): " + ", ".join(sorted(treffer)[:5]) + " — sofort entfernen (Repo ist oeffentlich)"
+
+
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
