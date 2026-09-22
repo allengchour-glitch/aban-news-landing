@@ -1492,7 +1492,9 @@ JSON
   # sind die Zombie-Klasse vom 15.08.
   PDL="$REPO/dropship/_klassen/produktdetails-doppelt.txt"
   PDV=/tmp/pd_vereinen.log
-  if [ -f "$REPO/automation/produktdetails_vereinen.py" ] && [ -s "$PDL" ]; then
+  # 22.09.2026: nur starten, wenn der geteilte Text-Lock FREI ist — sonst meldete der Block alle 2 Min
+  # «gestartet», waehrend `flock -n` im Kind sofort mit exit 0 endete (Reparaturlauf hielt den Lock stundenlang).
+  if [ -f "$REPO/automation/produktdetails_vereinen.py" ] && [ -s "$PDL" ] && flock -n /tmp/lock_produkttext.lock true 2>/dev/null; then
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/produktdetails_vereinen.py"{n++} END{exit(n?0:1)}'; then
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; LISTE=dropship/_klassen/produktdetails-doppelt.txt LEDGER=dropship/_produktdetails_vereint4.txt exec python3 automation/produktdetails_vereinen.py" \
