@@ -2455,3 +2455,10 @@ gid://shopify/Product/15448873402753	zugeordnet	2	Helmhalterung für Action-Kame
 gid://shopify/Product/15448873468289	zugeordnet	5	Leuchtbrille für sicheres Fahren bei Nacht
 gid://shopify/Product/15448873533825	zugeordnet	6	Smarter Retro Ring für Herzfrequenz
 gid://shopify/Product/15448873566593	zugeordnet	4	E-Sports In-Ear Bluetooth Headset (Kabellos)
+gid://shopify/Product/15448873632129	zugeordnet	24	Armband-Gehäuse 44/45mm für Smartwatches
+gid://shopify/Product/15448873730433	bild-urls-tot
+gid://shopify/Product/15448873763201	zugeordnet	5	Töpfchentrainer mit Funk-Alarm
+gid://shopify/Product/15448874320257	zugeordnet	6	LED Nackenleuchte für Joggen und Lesen
+gid://shopify/Product/15448874615169	zugeordnet	17	Ohr-Accessoires aus Edelstahl (18mm)
+gid://shopify/Product/15448874779009	zugeordnet	5	Gebogene Uhrenarmband-Federstege aus Edelstahl
+gid://shopify/Product/15448875172225	bild-urls-tot

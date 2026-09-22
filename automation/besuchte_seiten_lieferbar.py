@@ -60,7 +60,7 @@ def ch_optionen_vid(vid):
 SHOP = "au3j0y-hq.myshopify.com"
 
 
-def shopify(query):
+def shopify(query, variables=None):
     """Dieselbe Bauart wie in den uebrigen Waechtern (klinge_ch_wache.py:67).
 
     ⚠️ Kein stilles `except: pass` — am 17.09. verschluckten 102 Kopien dieses Helfers
@@ -71,7 +71,7 @@ def shopify(query):
     for i in range(6):
         req = urllib.request.Request(
             f"https://{SHOP}/admin/api/2026-01/graphql.json",
-            data=json.dumps({"query": query}).encode(),
+            data=json.dumps({"query": query, "variables": variables or {}}).encode(),
             headers={"X-Shopify-Access-Token": open("/tmp/cj_shop_token.txt").read().strip(),
                      "Content-Type": "application/json"})
         try:
@@ -215,6 +215,68 @@ def main():
             f.write("\t".join(teile) + "\n")
     print(f"\n→ dropship/_besuchte_seiten_nicht_lieferbar.txt "
           f"({len(alt_zeilen)} Zeilen gesamt, davon {len(befunde)} aus diesem Lauf)")
+    politur(handles)
+
+
+SIE = re.compile(r"\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b")
+FAKT = re.compile(r'class="(ls-produktdetails|ls-feed-details|gmc-details)"|<h4>Details</h4>')
+
+
+def politur(handles):
+    """Was eine besuchte Seite sonst noch braucht — ohne dass eine Session es von Hand tut.
+
+    22.09.2026: Drei Runden «mach alles besser» haben dieselben zwei Handgriffe an besuchten
+    Seiten wiederholt: Faktenblock nachtragen (Prio-Liste fuer cj_specs_backfill.mjs, laeuft
+    taeglich) und Sie-Form auf du (Regelwerk `um()` aus kollektionstexte_du_form). Beides
+    ist deterministisch — also gehoert es in DIESEN Waechter, der die besuchten Seiten ohnehin
+    jeden Tag holt. Schreiben nur unter /tmp/lock_produkttext.lock, Ruecklesen, nie still.
+    """
+    try:
+        sys.path.insert(0, os.path.join(REPO, "automation"))
+        from kollektionstexte_du_form import um
+    except Exception as e:                                        # noqa: BLE001
+        print(f"\nPolitur uebersprungen — um() nicht ladbar: {e}"); return
+    prio = os.path.join(REPO, "dropship", "_cj_specs_prio.txt")
+    done = os.path.join(REPO, "dropship", "_cj_specs_done.txt")
+    bekannt = set()
+    for pf in (prio, done):
+        if os.path.exists(pf):
+            bekannt |= {z.split("\t")[0] for z in open(pf) if z.strip()}
+    heute = time.strftime("%Y-%m-%d")
+    fakt_neu, du_neu, fehler = 0, 0, 0
+    import fcntl
+    with open("/tmp/lock_produkttext.lock", "w") as lk:
+        try:
+            fcntl.flock(lk, fcntl.LOCK_EX)
+        except Exception as e:                                    # noqa: BLE001
+            print(f"\nPolitur uebersprungen — Textlock nicht zu bekommen: {e}"); return
+        for h in handles:
+            try:
+                q = ('{products(first:1, query:"handle:%s"){nodes{id status descriptionHtml '
+                     'variants(first:1){nodes{sku}}}}}' % h)
+                nodes = shopify(q)["data"]["products"]["nodes"]
+                if not nodes or nodes[0]["status"] != "ACTIVE":
+                    continue
+                p = nodes[0]; html = p["descriptionHtml"] or ""
+                sku = (p["variants"]["nodes"] or [{}])[0].get("sku") or ""
+                if sku.upper().startswith("CJ") and h not in bekannt and not FAKT.search(html):
+                    with open(prio, "a") as f:
+                        f.write(f"{h}\tbesucht-{heute}\n")
+                    bekannt.add(h); fakt_neu += 1
+                if SIE.search(re.sub(r"<[^>]+>", " ", html)):
+                    neu = um(html)
+                    if neu != html:
+                        r = shopify('mutation($i:ProductInput!){productUpdate(input:$i){product{descriptionHtml} userErrors{message}}}',
+                                    {"i": {"id": p["id"], "descriptionHtml": neu}})
+                        pu = (r.get("data") or {}).get("productUpdate") or {}
+                        if pu.get("userErrors") or (pu.get("product") or {}).get("descriptionHtml") != neu:
+                            fehler += 1; print(f"   Politur {h}: du-Form NICHT geschrieben {pu.get('userErrors')}")
+                        else:
+                            du_neu += 1
+            except Exception as e:                                # noqa: BLE001
+                fehler += 1; print(f"   Politur {h}: {type(e).__name__}: {str(e)[:80]}")
+            time.sleep(0.3)
+    print(f"\nPOLITUR: {fakt_neu} in die Faktenblock-Prio, {du_neu} auf du, {fehler} Fehler")
 
 
 if __name__ == "__main__":
