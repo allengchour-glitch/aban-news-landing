@@ -664,6 +664,18 @@ while true; do
       echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
     fi
   fi
+  # PINTEREST-PINS, einmal taeglich (22.09.2026, Betreiber «push mehr» Besucher): legt N Auftraege fuer den
+  # Hetzner-Agenten an (je Auftrag EIN Pin, Quittung ueber auftraege/erledigt + Pinnwand). Pinterest steht nicht
+  # unter dropship/_SOCIAL_STOPP. Idempotent: gibt es heute schon Auftraege, passiert nichts.
+  PP=/tmp/pinterest_pins_planen.log
+  if [ -f "$REPO/automation/pinterest_pins_planen.sh" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$PP" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$PP"
+      ( cd "$REPO" && bash automation/pinterest_pins_planen.sh >> "$PP" 2>&1 )
+      echo "$(date -u +%H:%M) pinterest_pins_planen: $(tail -1 "$PP")"
+    fi
+  fi
   # RANKENDE SEITEN, einmal taeglich. Zwei Dinge, die nur dort zaehlen, wo Google uns
   # schon zeigt — dem einzigen Kanal mit belegten Verkaeufen:
   # (1) tote_rankings.py: rankt eine Adresse, die es nicht mehr zu kaufen gibt und die

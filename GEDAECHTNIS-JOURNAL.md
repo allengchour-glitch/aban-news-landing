@@ -88,6 +88,20 @@ search 129 (Google 25/7 T, ChatGPT 6/7 T). Was ich anschieben kann und was nicht
   ⚠️ Beinahe verschenkt: der Auftrag lag 20 Minuten im Ordnerstamm `auftraege/` — der Eingang ist `auftraege/offen/`
   (README Zeile 9; der Ordner ist leer und darum lokal unsichtbar). Der Agent lief derweil brav seinen Tages-Job.
 
+**Nachtrag 4 (13:05 UTC) — der erste eigene Pinterest-Pin steht.** Weg: Mess-Auftrag (rein lesend) → der
+Pin-Editor `/pin-creation-tool/` hat feste IDs (`#storyboard-upload-input`, `#storyboard-selector-title`,
+`#WebsiteField`, `[data-test-id="board-dropdown-select-button"]`), keine Tour. Dann `pinterest_pin_erstellen.mjs`:
+ein Pin je Lauf, Bild selbst geladen, Pinnwand vorher/nachher gelesen, Klick nur nach Formular-Gegenprobe.
+**Fünf Läufe bis zum ersten Pin, jeder ein Befund:** (1+2) Auftrag lag im Ordnerstamm statt `auftraege/offen/`;
+geratener Board-Slug → 183 Zeichen; (3) echte Board-Adressen von der Profilseite — dieselben 183 Zeichen: die
+Pinnwand war schlicht LEER («Auf dieser Pinnwand befinden sich noch keine Pins»), mein Lesbarkeits-Test
+(≥200 Zeichen) hielt leer für unlesbar → lesbar = Pinnwand-Name steht auf der Seite; (4) Formular komplett,
+aber «das letzte sichtbare Textfeld» war das Themen-Feld (Name landete als Tag) und der gemessene Knopf
+«Veröffentlichen» fiel durch `:visible` + Anker-Regex → per Rolle; (5) **Pin veröffentlicht, auf der Pinnwand
+nachgelesen** (Katzenspielzeug, Home & Geschenkideen). Aufträge 6–10 laufen; täglich 6 über
+`pinterest_pins_planen.sh` (Aufseher), Warteschlange 42 aus `pinterest_pins_queue_bauen.py`.
+Lehre: **Ein Schwellwert aus dem Kopf (200 Zeichen) ist keine Messung — die leere Seite war die Wahrheit.**
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
