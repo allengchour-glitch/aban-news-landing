@@ -61,6 +61,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (aktiv ≥65 UND ≥45, deaktiviert ≥50). **Behoben via `deliveryProfileUpdate`:** ≥50-Regel aktiviert, ≥45-Regel
   deaktiviert. **REGEL für alle Sessions:** überall CHF 50 — Versandregel, AGB, Trust-Blöcke, SEO-Texte,
   Announcement-Bar. Keine 45/60/65 mehr. Wer eine andere Zahl sieht, korrigiert auf **50**.
+- **✅ QA-Verifizierungen 2026-09-22 (mehrere alte Warnungen erledigt/veraltet):**
+  - **Fulfillment gesund:** alle **echten** Kundenbestellungen FULFILLED (Loris Raia #1018 E-Scooter-Ladegerät,
+    Marijana Schnabel #1014 Leinen-Set, Markus Herger #1011 Hängematte, Alain Schutz #1005 WM-Trikot). Die alte
+    „#1005 unfulfilled"-Warnung ist **erledigt**. Nur **#1004** (LED-Laterne, BigBuy `bb-S3414715`) unfulfilled —
+    aber das ist die **eigene Test-Bestellung des Users** („alleng chour", 25.6.), kein wartender Kunde.
+  - **WELCOME10 = ACTIVE bis 2027-12-31** (10 %, Code funktioniert). Alte „bis 31.08.2026"-Notiz veraltet, längst verlängert.
+  - **Bild-QA sauber:** 0 FAILED-Dateien. **Preis-QA sauber:** 0 aktive Produkte mit Preis 0.
+  - Echte externe Käufer bisher: **4** (Raia, Schnabel, Herger, Schutz) — Rest sind User-Tests. Engpass bleibt **Traffic**.
 - **Katalog:** 10'000 aktiv. Viele Neu-Importe ohne `seo.title` → systematischer Fix = **Shop-Brain deployen**
   (`cd workers/shop-brain && npx wrangler deploy`, nur User/PC); manuell nur Einzelfälle sinnvoll.
 
