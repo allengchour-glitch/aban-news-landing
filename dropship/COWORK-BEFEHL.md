@@ -27,7 +27,11 @@ Danach postet der Reel-Poster beim nächsten Zuruf **ein** Reel (IG + FB). ⚠�
 Autopilot wieder (alle 6 h ein Post, 48 h Abstand bei Reels) — wenn du nur EINEN Post willst, sag es, dann setze
 ich die Datei nach dem Post wieder (anlegen darf ich).
 
-## 1️⃣ CJ — Dispute öffnen, USD 25.54 zurückholen  ·  ~5 Minuten
+## 1️⃣ ✅ ERLEDIGT 22.09. ~16:45 UTC — CJ-Dispute eröffnet: **SH2609221642351280900** (Status Pending, USD 25.54)
+
+Vom Betreiber im Portal eingereicht. Korrektur zur Anleitung unten: im Dropdown ist «Product Returned» **Position 7**, Position 6 heisst dort «Falsche Sendungsverfolgungsinformationen» (die «6» stammte aus CJs API-Grundcode, nicht aus dem Formular). In der Streitfallliste zeigt «Price» nur den Produktpreis (18.24); der Dispute läuft auf Bestellebene über 25.54, wie das Formular vor dem Absenden auswies. Quittung: `dropship/_cj_dispute_1017_ref.txt`. Nächster Schritt liegt bei CJ (Wallet-Gutschrift); die Ampel misst die Wallet.
+
+### (Archiv) CJ — Dispute öffnen, USD 25.54 zurückholen  ·  ~5 Minuten
 
 **Link:** https://cjdropshipping.com — anmelden als `allengchour@gmail.com` (CJ ID 5452995)
 **Anleitung von CJ selbst:** https://cjdropshipping.com/article-details/172
@@ -130,7 +134,7 @@ nicht (die früher hier genannte «Frist 19.09. 07:30 UTC» war mein eigener Wec
 
 ## 2️⃣ BigBuy — Ticket für EUR 1'000 eröffnen  ·  ~5 Minuten
 
-**Link:** https://www.bigbuy.eu/en/contact — Abteilung **Administration**
+**Link:** https://www.bigbuy.eu/en/contact — Abteilung **Administration** → Betreff **«Enquiry about Topping up/Withdrawing from your Moneybox»** (das Guthaben ist die Moneybox, die vier Anträge waren Withdrawals; «Refund Enquiry» meint Kundenerstattungen einzelner Bestellungen, «Billing» die Abo-Rechnung). IBAN-Feld leer lassen — die richtige Nummer liegt beim Antrag vom 08.09. 20:12 UTC.
 
 Gemessen: Guthaben **EUR 1'000.00**, seit 15.07. unverändert, nie ausgezahlt. Das Abo ist am
 15.09. ausgelaufen. Fünf Mails gingen raus, zurück kamen **zwei wortgleiche Auto-Antworten**
