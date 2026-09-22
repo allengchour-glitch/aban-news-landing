@@ -24,7 +24,7 @@ einen Treffer findet.
 ist keine Sicherung (16.09.) — aber ein Urteil, das ein Automat ungeprüft vollstreckt, ist
 schlimmer. Das Draften entscheidet die Session nach dem Lesen des Berichts.
 """
-import json, os, sys, time, urllib.request, urllib.error
+import json, re, os, sys, time, urllib.request, urllib.error
 
 # #1018: E-Scooter-Ladegeraet, am 17.09.2026 in der Schweiz zugestellt. 6018 Stueck CN-Lager.
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -161,6 +161,14 @@ def main():
             continue
         p = nodes[0]
         sku = (p["variants"]["nodes"] or [{}])[0].get("sku") or ""
+        # 22.09.2026: Nicht-CJ-Ware (Printful-POD «9000001_4011», Fortura CH-Lager, eigene
+        # Buendel LX-) hat keine CJ-Frage zu beantworten — vorher landete «shirt-eidgenoss»
+        # als «unklar (1602001 Product not found)» im Bericht: eine Absage von der falschen
+        # Adresse (Lehre 09.08./21.09.). Diese Ware gilt hier als lieferbar (CH-Lager/POD).
+        if re.fullmatch(r"\d{6,8}_\d{4}", sku) or sku.startswith(("fortura-", "LX-", "lx-")):
+            print(f"{h[:58]:58} {p['status']:7} {'ja':>11}  kein CJ-Artikel (POD/CH-Lager), nicht bei CJ gefragt", flush=True)
+            ok += 1
+            continue
         urteil, grund = versandfaehig(sku)
         zeichen = {True: "ja", False: "NEIN", None: "unklar"}[urteil]
         print(f"{h[:58]:58} {p['status']:7} {zeichen:>11}  {grund}", flush=True)
