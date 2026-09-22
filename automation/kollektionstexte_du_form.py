@@ -15,10 +15,15 @@ def um(t):
     # 2) «damit Sie … können» / «Ob Sie … suchen» / «wo Sie … entdecken» / «während Sie …» → du + Verbendung
     def dusatz(m):
         k,rest=m.group(1),m.group(2)
-        rest=re.sub(r'\b(\w+?)en\b(?=[.,;!?]|\s*$)',lambda x:x.group(1)+('st' if not x.group(1).endswith(('s','ß','z','x')) else 't'),rest,count=1)
+        rest=re.sub(r'\b(\w+?)en\b(?=[.,;!?]|\s*$)',lambda x:x.group(1)+('est' if x.group(1).endswith(('t','d')) else 'st' if not x.group(1).endswith(('s','ß','z','x')) else 't'),rest,count=1)
         return k+' du'+rest
-    t=re.sub(r'\b(damit|Ob|ob|wo|während|wenn|bevor|falls|sobald|bis) Sie(\s[^.,;!?]*?(?:können|möchten|wollen|suchen|benötigen|bevorzugen|wünschen|shoppen|entdecken|investieren|auswählen|überwachen|halten|tragen|feiern|planen|kochen|reisen|sparen|geniessen|genießen|erleben|brauchen|lieben|schätzen|setzen|verschenken))(?=[.,;!?]|\s|$)',dusatz,t)
+    t=re.sub(r'\b(damit|Ob|ob|wo|während|wenn|bevor|falls|sobald|bis|denen|deren|welchen|welche|welcher|wobei|womit|wofür) Sie(\s[^.,;!?]*?(?:können|möchten|wollen|suchen|benötigen|bevorzugen|wünschen|shoppen|entdecken|investieren|auswählen|überwachen|halten|tragen|feiern|planen|kochen|reisen|sparen|geniessen|genießen|erleben|brauchen|lieben|schätzen|setzen|verschenken))(?=[.,;!?]|\s|$)',dusatz,t)
     t=t.replace(' du können',' du kannst').replace(' du möchten',' du möchtest').replace(' du wollen',' du willst').replace(' du suchen',' du suchst').replace(' du benötigen',' du benötigst').replace(' du bevorzugen',' du bevorzugst').replace(' du wünschen',' du wünschst').replace(' du shoppen',' du shoppst').replace(' du entdecken',' du entdeckst').replace(' du investieren',' du investierst').replace(' du auswählen',' du auswählst').replace(' du überwachen',' du überwachst').replace(' du halten',' du hältst').replace(' du tragen',' du trägst').replace(' du planen',' du planst').replace(' du reisen',' du reist').replace(' du sparen',' du sparst').replace(' du geniessen',' du geniesst').replace(' du erleben',' du erlebst').replace(' du brauchen',' du brauchst').replace(' du lieben',' du liebst').replace(' du schätzen',' du schätzt').replace(' du verschenken',' du verschenkst').replace(' du feiern',' du feierst').replace(' du kochen',' du kochst').replace(' du setzen',' du setzt')
+    # 2b) Relativ-/Konjunktionalsätze, deren Verb nicht in der Liste steht: «bei denen Sie …» → «bei denen du …»
+    #     (22.09.: «denen Sie» lief in den generischen -en-Schritt und wurde «denst du»)
+    t=re.sub(r'\b(denen|deren|dessen|welchen|welche|welcher|wobei|womit|wofür|dass|weil|sodass) Sie\b',r'\1 du',t)
+    # 2c) 3.-Person-Verb + Sie als Objekt: «weckt Sie diskret» → «weckt dich diskret» (feste Liste, kein Raten)
+    t=re.sub(r'\b(weckt|begleitet|unterstützt|schützt|hält|bringt|erreicht|führt|erwartet|überzeugt|verwöhnt|inspiriert|entführt|versorgt|erinnert|motiviert|wärmt|kühlt|trägt|lässt|befreit|entlastet|verbindet) Sie\b',r'\1 dich',t)
     # 3) Verb + Sie mitten im Satz: «finden Sie» → «findest du», «erhalten Sie» → «erhältst du»
     t=re.sub(r'\bfinden Sie\b','findest du',t); t=re.sub(r'\berhalten Sie\b','erhältst du',t); t=re.sub(r'\bkönnen Sie\b','kannst du',t)
     t=re.sub(r'\bsind Sie\b','bist du',t); t=re.sub(r'\bhaben Sie\b','hast du',t); t=re.sub(r'\bmöchten Sie\b','möchtest du',t); t=re.sub(r'\bwollen Sie\b','willst du',t)
