@@ -182,8 +182,7 @@ I have sent five emails to customers@bigbuy.eu since 7 September. The only repli
 were the automated message asking me to open a ticket. This is that ticket.
 
 Please:
-1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, bank on record
-   AG, Bern, account holder Allen Chour).
+1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, bank and account holder on record).
 2. Confirm in writing what happened to the requests of 15 July and 16 August.
 3. Explain record 18138523 ("Ingreso en monedero", EUR 1,000, 07/07/2026,
    "Pendiente de pago"). I have not cancelled it.
