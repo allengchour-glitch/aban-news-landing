@@ -9,4 +9,3 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 | Sitzungen | Titel | Handle |
 |---:|---|---|
 | 2 | Hitzebeständiges PET-Schutzband Grün | `hitzebestandiges-pet-schutzband-grun-565824` |
-| 1 | Sprühmatte für Kinder mit Meerestieren | `spruhmatte-fur-kinder-mit-meerestieren-9f50c5` |
