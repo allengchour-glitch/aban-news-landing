@@ -26,7 +26,7 @@ const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const BATCH = parseInt(process.env.BATCH || '3', 10);
 const SCAN = parseInt(process.env.SCAN || '240', 10);
 const DRY = process.env.DRY === '1';
-const FRAGEN = parseInt(process.env.FRAGEN || '80', 10);   // CJ-Anfragen je Lauf (Video-Quote gemessen 22.09.: 1 von 25)
+const FRAGEN = parseInt(process.env.FRAGEN || '200', 10);  // CJ-Anfragen je Lauf (Video-Quote gemessen 22.09.: 1 von 80 — die Importer haengten Videos nur bei cj_category_fill an)
 const CSV = 'automation/reels_seed.csv';
 const LEDGER = 'dropship/_cj_reel_gebaut.txt';            // pid → nur nach Erfolg
 const KEINVIDEO = 'dropship/_cj_reel_kein_video.txt';      // pid → CJ hat kein Video (nicht nochmal fragen)
