@@ -1,0 +1,6 @@
+{
+  "id": "server-inventar-2026-09-22",
+  "typ": "skript",
+  "skript": "server_inventar.mjs",
+  "warum": "Betreiber 22.09.: «wenn du externe browser öffnest kann ich einloggen» — vor dem Bau eines sichtbaren Anmelde-Fensters (Xvfb/VNC/noVNC/Tunnel) messen, was der Server hat und wer der Agent dort ist. Rein lesend, keine Geheimniswerte."
+}
