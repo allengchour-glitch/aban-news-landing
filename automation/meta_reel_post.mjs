@@ -96,7 +96,13 @@ for (const r of rows.slice(1)) {
   if (st.startsWith('posted') || st === 'posting') { const k = vkey(r[idx.video_url]); if (k) postedVideos.add(k); }
 }
 // Nächste fällige Zeile: ready + instagram + fällig + Video noch NIE gepostet
-const cand = rows.slice(1).find(r => (r[idx.status] || '').trim() === 'ready'
+const _passt = r => (r[idx.status] || '').trim() === 'ready'
+  && /instagram/i.test(r[idx.platforms] || '')
+  && (r[idx.scheduled_date] || '9999') <= today
+  && !postedVideos.has(vkey(r[idx.video_url]))
+  && !postSeen(r[idx.video_url]);
+// 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
+const cand = rows.slice(1).find(r => _passt(r) && /raw\.githubusercontent/.test(r[idx.video_url] || '')) || rows.slice(1).find(r => (r[idx.status] || '').trim() === 'ready'
   && /instagram/i.test(r[idx.platforms] || '')
   && (r[idx.scheduled_date] || '9999') <= today
   && !postedVideos.has(vkey(r[idx.video_url]))

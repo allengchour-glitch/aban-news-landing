@@ -1,4 +1,4 @@
-# Social-Lernen — Stand 2026-09-22 21:38 UTC
+# Social-Lernen — Stand 2026-09-22 21:39 UTC
 
 Gelesen: 40 Instagram-Posts (6 Reels) · Score = Reichweite + 3·Likes + 5·Kommentare + 5·Speichern + 5·Teilen + 0,2·Views · Median 18
 

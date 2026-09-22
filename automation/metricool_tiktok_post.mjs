@@ -57,7 +57,7 @@ const get = (r, k) => (r[idx[k]] || '').trim();
 // stumme Marken-Videos bekommen den Trend-Sound in der TikTok-App, nicht ueber Metricool). Produkt-Reels
 // (cjreel-*, mit Musik aus der ffmpeg-Pipeline) zuerst, Marken-Videos danach.
 const passt = r => get(r, 'status') === 'ready' && get(r, 'video_url') && !postSeen(get(r, 'video_url')) && !/stumm/i.test(get(r, 'video_url'));
-const cand = rows.slice(1).find(r => passt(r) && /^cjreel-/.test(get(r, 'id'))) || rows.slice(1).find(passt);
+const cand = rows.slice(1).find(r => passt(r) && /raw\.githubusercontent/.test(get(r, 'video_url'))) || rows.slice(1).find(r => passt(r) && /^cjreel-/.test(get(r, 'id'))) || rows.slice(1).find(passt);
 if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde.'); process.exit(0); }
 
 // Produkt noch kaufbar? (gleiche Regel wie meta_reel_post.mjs)
