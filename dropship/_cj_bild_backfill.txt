@@ -701,3 +701,5 @@ gid://shopify/Product/15433464021377	nichts-brauchbar	CJ-CJSJ2788082
 gid://shopify/Product/15433464054145	nichts-brauchbar	CJ-CJYD2785504
 gid://shopify/Product/15433464086913	nichts-brauchbar	CJ-CJYD2893672
 gid://shopify/Product/15433464152449	nichts-brauchbar	CJ-CJYD2860222
+gid://shopify/Product/15433464217985	+2	CJ-CJYD2542267
+gid://shopify/Product/15433464250753	+4	CJ-CJJT2477118
