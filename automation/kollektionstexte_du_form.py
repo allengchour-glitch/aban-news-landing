@@ -32,6 +32,8 @@ def um(t):
     # 1) Imperative: grossgeschrieben (Satzanfang) immer; kleingeschrieben nur nach «und/oder/,»
     for v,i in IMP.items():
         # 22.09.: «sich» → «dir» vor Nomen/Artikel/Mengenwort («Gönn dir eine Pause», «Nimm dir Zeit»), sonst «dich»
+        if v.lower() in ('schauen','nehmen','gönnen','merken','vorstellen','holen','sichern','aussuchen','leisten','überlegen','anhören','ansehen','anschauen','kaufen','besorgen','bestellen','notieren','wünschen','suchen','vornehmen'):
+            t=re.sub(r'\b'+v+r' Sie sich\b',(i+' dir'),t)
         t=re.sub(r'\b'+v+r' Sie sich\b(?=\s+(ein|eine|einen|einem|einer|etwas|mehr|genug|die|das|den|dem|der|Zeit|Ruhe|[A-ZÄÖÜ]))',(i+' dir'),t)
         t=re.sub(r'\b'+v+r' Sie sich\b',(i+' dich'),t); t=re.sub(r'\b'+v+r' Sie\b',i,t)
         vl=v[0].lower()+v[1:]; il=i[0].lower()+i[1:]
@@ -76,7 +78,8 @@ def um(t):
         if not gross: i=i[0].lower()+i[1:]
         if refl:
             naechstes = nach.strip().split(' ')[0] if nach.strip() else ''
-            dativ = bool(re.match(r'^(ein|eine|einen|einem|einer|etwas|mehr|genug|die|das|den|dem|der|Zeit|Ruhe|[A-ZÄÖÜ])', naechstes))
+            _DATIV_REFL=('schauen','nehmen','gönnen','merken','vorstellen','holen','sichern','aussuchen','leisten','überlegen','anhören','ansehen','anschauen','kaufen','besorgen','bestellen','notieren','wünschen','suchen','vornehmen')
+            dativ = V.lower() in _DATIV_REFL or bool(re.match(r'^(ein|eine|einen|einem|einer|etwas|mehr|genug|die|das|den|dem|der|Zeit|Ruhe|[A-ZÄÖÜ])', naechstes))
             return i+(' dir' if dativ else ' dich')
         return i
     class _M:  # verschobene Gruppen (Kleinbuchstaben-Imperativ nach «und/oder/,»)
