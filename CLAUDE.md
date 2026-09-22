@@ -56,11 +56,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   MediaImages). Betroffene Produkte (Powerbank, Karaoke, Selfie-Stick, Futterball, Lockenstab, Seifenspender u.a.)
   haben je 6–19 READY-Bilder → **kein Produkt verlor sein Bild.** `files(query:"status:FAILED")` ist jetzt leer.
 - **📝 5 fehlende SEO-Titel** bei aktiven Produkten ergänzt (Aroma-Diffuser ×2, 2 Bluetooth-Speaker, Gemüseschneider).
-- **⚠️ VERSAND-WIDERSPRUCH (User-Entscheidung nötig, Marge!):** Domestic-CH hat **drei** Gratis-Regeln — aktiv
-  **≥65 CHF** UND aktiv **≥45 CHF** (+ deaktiviert ≥50). Da die niedrigste aktive gewinnt, bekommt der Kunde
-  **faktisch schon ab CHF 45 Gratis-Versand**, während AGB „65" sagt und Produkttexte teils „50"/„65". Muss auf EINE
-  Zahl vereinheitlicht werden (deliveryProfile-Mutation gilt lt. Memory als riskant → erst mit User klären, dann
-  Regeln + AGB + SEO-Texte angleichen).
+- **🔒 GRATIS-VERSAND = CHF 50 (FESTE USER-ENTSCHEIDUNG 2026-09-22 — NIE WIEDER ÄNDERN):** Der User hat sich
+  endgültig auf **Gratis-Versand ab CHF 50** festgelegt („ich dachte 50"). Vorher lag ein Widerspruch vor
+  (aktiv ≥65 UND ≥45, deaktiviert ≥50). **Behoben via `deliveryProfileUpdate`:** ≥50-Regel aktiviert, ≥45-Regel
+  deaktiviert. **REGEL für alle Sessions:** überall CHF 50 — Versandregel, AGB, Trust-Blöcke, SEO-Texte,
+  Announcement-Bar. Keine 45/60/65 mehr. Wer eine andere Zahl sieht, korrigiert auf **50**.
 - **Katalog:** 10'000 aktiv. Viele Neu-Importe ohne `seo.title` → systematischer Fix = **Shop-Brain deployen**
   (`cd workers/shop-brain && npx wrangler deploy`, nur User/PC); manuell nur Einzelfälle sinnvoll.
 
