@@ -127,6 +127,8 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     await seite.goto(`${HOST}/pin-creation-tool/`, { waitUntil: 'load', timeout: 60000 });
     await seite.waitForTimeout(5000);
     if (ist_anmeldeseite(seite.url())) { const e = new Error(`nicht angemeldet — ${seite.url()}`); e.nichtAngemeldet = true; throw e; }
+    const neu = seite.getByRole('button', { name: /^Neu erstellen$/ }).first();
+    if ((await neu.count()) && (await neu.isEnabled().catch(() => false))) { await neu.click({ timeout: 5000 }).catch(() => {}); await seite.waitForTimeout(2000); schritte.push('«Neu erstellen» geklickt (alte Entwürfe liegen in der Seitenleiste)'); }
     const datei = seite.locator('#storyboard-upload-input');
     if (!(await datei.count())) { schritte.push('Bildfeld #storyboard-upload-input fehlt'); ergebnis.knoepfe = await knoepfe(); await schuss('kein-bildfeld'); return ergebnis; }
     await datei.setInputFiles(tmp);
@@ -154,17 +156,29 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     const boardKnopf = seite.locator('[data-test-id="board-dropdown-select-button"]');
     await boardKnopf.click({ timeout: 10000 });
     await seite.waitForTimeout(1500);
-    const suche = seite.locator('input[type="text"]:visible, input[type="search"]:visible').last();
-    if (await suche.count()) { await suche.fill(k.board.slice(0, 20)).catch(() => {}); await seite.waitForTimeout(1500); }
-    const eintrag = seite.locator('[role="option"],[role="menuitem"],div[role="button"],button').filter({ hasText: new RegExp(k.board.replace(/[&]/g, '.').slice(0, 14), 'i') }).first();
+    // Lauf 4 (22.09.): das «letzte sichtbare Textfeld» war das Themen-Feld («Markierte Themen»), nicht die Board-Suche —
+    // der Name landete als Tag. Nichts tippen: der Eintrag steht in der aufgeklappten Liste.
+    const liste = seite.locator('[role="listbox"],[role="menu"],[role="dialog"]').last();
+    const eintrag = ((await liste.count()) ? liste : seite).locator('[role="option"],[role="menuitem"],div[role="button"],button')
+      .filter({ hasText: new RegExp(k.board.replace(/[&]/g, '.').slice(0, 14), 'i') }).first();
     if (!(await eintrag.count())) { schritte.push(`Pinnwand «${k.board}» in der Auswahl nicht gefunden`); ergebnis.knoepfe = await knoepfe(); await schuss('keine-pinnwand'); return ergebnis; }
     await eintrag.click({ timeout: 8000 });
     await seite.waitForTimeout(1500);
     await schuss('2-ausgefuellt');
 
     // Veröffentlichen — Knopf muss gemessen sichtbar sein, sonst KEIN Klick
-    const publ = seite.locator('button:visible,div[role="button"]:visible').filter({ hasText: /^(Veröffentlichen|Pin veröffentlichen|Publish)$/i }).first();
-    if (!(await publ.count())) { schritte.push('kein Veröffentlichen-Knopf gemessen — nicht geklickt'); ergebnis.knoepfe = await knoepfe(); return ergebnis; }
+    // Lauf 4: der Knopf «Veröffentlichen» war da (gemessen, enabled), aber `:visible` + Anker-Regex fanden ihn nicht.
+    let publ = seite.getByRole('button', { name: /^Veröffentlichen$/ }).first();
+    if (!(await publ.count())) publ = seite.locator('button,div[role="button"]').filter({ hasText: /Veröffentlichen/ }).first();
+    if (!(await publ.count()) || !(await publ.isEnabled().catch(() => false))) { schritte.push('kein aktiver Veröffentlichen-Knopf gemessen — nicht geklickt'); ergebnis.knoepfe = await knoepfe(); return ergebnis; }
+    // Gegenprobe vor dem Klick: Titel, Link und Pinnwand stehen wirklich im Formular
+    const titelJetzt = await seite.locator('#storyboard-selector-title').inputValue().catch(() => '');
+    const linkJetzt = await seite.locator('#WebsiteField').inputValue().catch(() => '');
+    const boardJetzt = await boardKnopf.innerText().catch(() => '');
+    if (!titelJetzt.startsWith(k.title.slice(0, 30)) || !linkJetzt.includes(k.handle) || !norm(boardJetzt).includes(norm(k.board.replace(/&/g, '')).slice(0, 10))) {
+      schritte.push(`Formular stimmt nicht: Titel «${titelJetzt.slice(0, 40)}», Link «${linkJetzt.slice(0, 50)}», Pinnwand «${boardJetzt.replace(/\n/g, ' ').slice(0, 40)}» — nicht geklickt`);
+      return ergebnis;
+    }
     ergebnis.unklar.push(k.handle);                      // ab hier gilt: Klick passiert, Quittung offen
     await publ.click({ timeout: 10000 });
     await seite.waitForTimeout(9000);
