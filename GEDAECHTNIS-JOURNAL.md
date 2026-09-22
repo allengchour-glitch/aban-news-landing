@@ -6,6 +6,29 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-22 · 🔧 «mach alles besser»: erst messen, wo Menschen landen — dann genau dort reparieren
+
+**Messung (ShopifyQL, human, 7 Tage):** 166 Sitzungen auf 101 Landeseiten, davon 97 auf Produktseiten, 31 auf der
+Startseite, 20 auf Kollektionen; 8 Warenkorb-Zulagen, 0 Käufe. Die 30 meistbesuchten Produktseiten wurden auf
+Status, Bilder, Textlänge, Faktenblock, Anrede, Lieferanten-Leak, Kaufbarkeit und Bewertungen geprüft:
+**13 ohne Faktenblock, 4 mit Sie-Anrede, 3 mit nur einem Bild, alle 30 ohne Bewertung.** Kollektionen: drei ohne
+Bild, drei mit Schablonentext unter 160 Zeichen («… bei LuxeStyle Schweiz – grosse Auswahl, faire Preise …»).
+
+**Repariert, jeweils zurückgelesen:** 14 Faktenblöcke (Gewicht/Masse/Material aus CJ-Daten, `cj_specs_backfill`
+über die Prio-Liste); 4 Texte auf du-Form — ⚠️ `produkttexte_du_form.py` schrieb im WRITE-Modus **0**, weil es
+«Ihr-Form, dritte Person nicht ausschliessbar» als Befund zurückhält (richtig so für 1'170 Texte; hier waren es
+vier, die ich gelesen hatte: «Ihre Garderobe», «Ihr Haustier») → die Regel `um()` auf den LIVE-Text angewandt,
+weil der Faktenblock inzwischen angehängt war; wer den ALT-Text des Trockenlaufs zurückschreibt, löscht den
+Faktenblock wieder. Drei Kollektionstexte von Hand, drei Kollektionsbilder aus dem bestverkauften Produkt gesetzt
+(ging trotz vollem Dateispeicher). Wächter `besuchte_seiten_lieferbar` fragt Printful/Fortura/LX-Ware nicht mehr
+bei CJ nach.
+
+**Was sich als Nicht-Befund erwies:** «0 Bewertungen» auf allen 30 Seiten sah nach einem Loch aus — das Ledger
+des Bewertungs-Importers ist aber nach **Produkt-ID** geführt, nicht nach Handle; mein Handle-grep fand deshalb
+nichts, während alle drei Stichproben drin standen. CJ hat für diese Produkte schlicht keine ≥4★-Kommentare.
+**Ein Ledger muss man mit dem Schlüssel lesen, mit dem es geschrieben wird.** Und die `ONLY=`-Handle-Liste des
+Importers verliert bei 24 Handles Treffer (3 gefunden) — in Fünfer-Bündeln 0, weil alle im Ledger waren.
+
 ## 2026-09-21 · 🧾 Kosten-Kette: der Wächter starb jede Nacht am selben JSON — weil sein Vorgänger «PAUSE» mit Exit 0 meldete
 
 `kosten_boden15_korrigieren.py` endete seit Tagen mit `JSONDecodeError: Unterminated string` (Log 02:13). Ursache
