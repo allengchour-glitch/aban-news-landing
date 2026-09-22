@@ -3,6 +3,9 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-09-22-8",
   "warum": "Lauf 5 hat den ersten Pin veröffentlicht und auf der Pinnwand nachgelesen. Genau EIN weiterer Pin aus der Warteschlange (Lauf 8 von 10 heute), Quittung vor Nebenwirkung.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "fehler",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen.",
+  "ergebnis": {
+    "fehler": "Lauf mittendrin gestorben (Quittung stand >1 h auf «laufend», Puls «leer», keine Folge-Quittung). Von der Cloud-Session am 22.09. 14:50 UTC als Fehler geschlossen; Produkt bleibt in der Warteschlange und wird beim naechsten Lauf erneut geprueft (schonGepinnt liest die Pinnwand)."
+  }
 }

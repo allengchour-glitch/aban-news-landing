@@ -38,6 +38,13 @@ def um(t):
     # 0) Indikativ ZUERST (hier finden Sie → hier findest du) — sonst frisst der Imperativ-Schritt das «finden»
     for v,i in [("finden","findest"),("erhalten","erhältst"),("können","kannst"),("sind","bist"),("haben","hast"),("möchten","möchtest"),("wollen","willst"),("suchen","suchst"),("brauchen","brauchst"),("sehen","siehst"),("wissen","weisst"),("benötigen","benötigst"),("bekommen","bekommst"),("werden","wirst")]:
         t=re.sub(r'(?<![.!?] )(?<!^)\b'+v+r' Sie\b',i+' du',t)
+    # 0b) 22.09.2026 (Stichprobe 60 «teilweise»-Texte): Satzanfang-«Sie» ist meist das PRODUKT («Sie sind wiederverwendbar»)
+    # und bleibt stehen — ausser bei Verben, die nur eine Anrede haben kann: «Sie haben die Wahl», «Sie erhalten drei …»,
+    # «Sie möchten/brauchen/benötigen/suchen/wünschen/bekommen/profitieren», «Sie können zwischen/sich/wählen …»
+    def _anrede_anfang(m):
+        v = m.group(2)
+        return m.group(1) + 'Du ' + (_zweite(v) or v)   # Satzanfang → gross
+    t=re.sub(r'(^|[.!?>]\s*|[•·]\s*)Sie (haben(?= die Wahl\b)|erhalten(?= (?:\d|ein|eine|einen|zwei|drei|vier|fünf|sechs|acht|zehn|alle|das komplette|so)\b)|bekommen|möchten|wünschen|suchen|brauchen|benötigen|profitieren|können(?= (?:sich|zwischen|wählen|also|so|es|damit|jetzt|ganz|einfach|bequem|frei|beruhigt|sicher|selbst|sogar|auch|natürlich|problemlos|mühelos|dein\w*|die|das|den|ihn|sie|alles)\b))\b', _anrede_anfang, t)
     # 1) Imperative: grossgeschrieben (Satzanfang) immer; kleingeschrieben nur nach «und/oder/,»
     for v,i in IMP.items():
         # 22.09.: «sich» → «dir» vor Nomen/Artikel/Mengenwort («Gönn dir eine Pause», «Nimm dir Zeit»), sonst «dich»

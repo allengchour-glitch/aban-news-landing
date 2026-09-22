@@ -147,6 +147,17 @@ standen nicht in den Kanarien. (2) Ein Lauf, dessen Ledger nach 10 Minuten nicht
 `wchan`/`fuser`, nicht für Geduld. (3) Wer flock-Wächter startet, schliesst geerbte fds — ein geerbter Lock-fd
 sperrt den Erben gegen sich selbst.
 
+**Nachtrag 7 (14:50 UTC) — «teilweise» ist meist richtig: das Satzanfang-«Sie» ist das Produkt.** Stichprobe 60
+der 477 «teilweise»-Texte: 16 Reste mitten im Satz (alle durch die heutigen Regeln erledigt, der Reparaturlauf
+zieht sie nach), **44 am Satzanfang — davon 42 das Produkt** («Sie sind wiederverwendbar», «Sie eignen sich»,
+«Sie wurde entwickelt») und nur 2 Anrede («Sie haben die Wahl», «Sie erhalten drei …»). Regel 0b nimmt jetzt
+genau die Verben, die nur eine Anrede haben kann (haben die Wahl, erhalten + Zahl/Artikel, bekommen, möchten,
+brauchen, benötigen, suchen, wünschen, profitieren, können + sich/zwischen/wählen …) → «Du hast die Wahl»;
+«Sie sparen Platz» bleibt (kann das Regal sein). Beinahe-Falle: `\b` in einem Heredoc-String wurde zum
+Backspace-Zeichen — die Regel griff still nicht; Test-Sätze zeigten es. Reparaturlauf bei 557 angehalten und mit
+den neuen Regeln neu gestartet (2'850 offen); Pin-Auftrag 8 als «fehler» geschlossen (Lauf gestorben, Produkt
+bleibt in der Warteschlange).
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
