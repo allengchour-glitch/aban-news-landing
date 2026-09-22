@@ -95,7 +95,8 @@ while true; do
 
   if faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
     echo "$(date -u +%H:%M) Reel fällig"
-    if $NODE automation/meta_reel_post.mjs; then
+    # MIN_GAP_H: der Poster hat intern 48 h Abstand (Juli, «weniger aber besser»); seit 22.09. gilt die Kadenz hier (REEL_ABSTAND)
+    if MIN_GAP_H=6 $NODE automation/meta_reel_post.mjs; then
       touch "$MARKE_REEL"
     else
       echo "$(date -u +%H:%M) Reel-Post fehlgeschlagen"
