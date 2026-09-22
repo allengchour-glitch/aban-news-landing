@@ -96,7 +96,7 @@ das Skript laufen lassen. Aufbau:
 
 ## 🎯 MISSION (User 2026-07-08, wörtlich): «hole dir 100 kunden, vertiefe alles, merke alles»
 **Ziel: 100 zahlende Kunden** (Stand 08.07.: 5). Jede Session arbeitet dahin: Traffic-Qualität
-(TikTok-Ads läuft, Google-Gratis-Listings erster Klick, Pinterest im Aufbau), Conversion
+(TikTok-Ads seit 09/2026 AUS — alle 4 Kampagnen deaktiviert, gemessen 22.09.; Google-Gratis-Listings erster Klick, Pinterest bringt 71 Sitzungen/30 T), Conversion
 (Warenkorb-Abbrecher: CHF 630 in 11 Checkouts entdeckt → native Shopify-Automation aktivieren!),
 Sortiment (CJ-EU-Lager + Editor), Vertrauen (UID/Einzelfirma GEGRÜNDET 08.07., HR pendent →
 Zefix-PDF für TikTok-Verifizierung, CHE-Nr. für Pinterest-Steuerfeld).

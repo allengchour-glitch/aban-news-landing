@@ -69,6 +69,23 @@ oder eine geprüfte Neufassung, nicht das Kollektions-Regelwerk. Rechtstexte ble
 30 T, gedraftet wegen «keine Versandoption 450 g»): drei Suchen, 0 passende Treffer — die Weiterleitung
 auf das Tunmate-Öl bleibt.
 
+**Nachtrag 3 (12:10 UTC) — «heute zu wenig auf seite besuchen, push mehr».** GEMESSEN: 20–25 Sitzungen/Tag
+(Ausreisser 13.09.: 113, breit über Dutzende Produktseiten mit je 1–2 Sitzungen — keine wiederholbare Quelle),
+heute bis 11:20 UTC 8. Quellen 30 T: direct 759 (70 %), social 167 (Facebook 92 · Pinterest 71 · Instagram 4),
+search 129 (Google 25/7 T, ChatGPT 6/7 T). Was ich anschieben kann und was nicht:
+- **TikTok Ads: alle 4 Kampagnen AUS, 0 Ausgaben seit 01.09.** (zwei Konten, «LuxeStyle CH Ads» + Shopify-Konto;
+  «Wasserfest CH Juni» hatte 30/Tag). «TikTok-Ads läuft» in CLAUDE.md ist veraltet. Einschalten = Geld = Betreiber.
+- **Instagram/Facebook: `dropship/_SOCIAL_STOPP` (16.09., «hör auf insta gleiche sachen zu posten»)** — Poster
+  bereit: Meta-Token gültig (läuft nie ab, 36 Scopes), 22 Reels `ready`, Doppelpost-Wachen (Ledger + Live-Abgleich).
+  Facebook war mit 92 Sitzungen der grösste Social-Kanal. Nur der Betreiber löscht die Datei.
+- **Google: Feed vollständig** (49'681 von 51'342 aktiven im Kanal, die 1'661 fehlenden sind die absichtlich
+  ausgeschlossenen Klassen). Der einzige Kanal mit Verkäufen — heute schon mit aggregateRating, SEO-Titeln,
+  Weiterleitungen bedient.
+- **Pinterest = der einzige organische Hebel, den ich selbst ziehen darf** (steht ausdrücklich nicht unter dem
+  Stopp): 71 Sitzungen/30 T nur aus Katalog-Pins, 2 Warenkorb-Zulagen. Eigene Pins auf die sechs Boards →
+  zuerst den Pin-Editor MESSEN (Auftrag `pinterest-pin-builder-messen`, rein lesend, Hetzner-Agent), dann ein
+  Pin-Skript mit gemessenen Selektoren, ein Pin je Lauf, Quittung vor Nebenwirkung (Lehren 17.09.).
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
