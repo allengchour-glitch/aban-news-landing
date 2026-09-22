@@ -54,9 +54,18 @@ def imp_aus_zweiter(w):
 def _satzanfang(m):
     w, refl = m.group(2), m.group(3)
     if not w[0].isupper() and not m.group(1).rstrip().lower().endswith(('bitte', 'und', 'oder')): return m.group(0)
+    # Konditional-Inversion «Trägst du es täglich, freut sich die Haut» (= wenn du …): nach dem Komma folgt ein
+    # finites Verb an erster Stelle → kein Imperativ-Artefakt, nicht anfassen
+    if w[0].isupper() and re.search(r',\s*(?:dann |so |und )?(?!damit|dass|sodass|sobald|bevor|nachdem|während|solange|obwohl|weil|wenn|falls|statt|seit|mit|nicht|bereit|jetzt|erst|fast|meist|selbst|sonst|oft|direkt|sofort|heute)(?:[a-zäöüß]{3,}(?:t|st|en)|sind|ist|hat|kann|wird|muss|soll|darf)\s', re.split(r'[.!?]|</p>|<br|</li>|</h', m.string[m.end():], 1)[0]): return m.group(0)
     i = imp_aus_zweiter(w)
     if not i: return m.group(0)
-    if refl: return m.group(1) + i + (' dir' if refl in ('dir',) else ' dich')
+    if refl:
+        # Dativ wie in um()._imp: dative Verben oder Nomen/Artikel/Mengenwort danach («Nimm dir Zeit», «Gönn dir eine Pause»)
+        nach = m.string[m.end():m.end() + 30].strip().split(' ')[0] if m.string[m.end():m.end() + 30].strip() else ''
+        _DATIV = ('schau', 'nimm', 'gönn', 'merk', 'stell', 'hol', 'sicher', 'such', 'leist', 'überleg', 'hör', 'sieh', 'kauf', 'besorg', 'bestell', 'notier', 'wünsch', 'spar', 'erspar', 'verdien', 'erlaub')
+        dativ = refl == 'dir' or any(i.lower().startswith(d) or i.lower().endswith(d) for d in _DATIV) \
+            or bool(re.match(r'^(ein|eine|einen|einem|einer|etwas|mehr|genug|die|das|den|dem|der|Zeit|Ruhe|[A-ZÄÖÜ])', nach))
+        return m.group(1) + i + (' dir' if dativ else ' dich')
     return m.group(1) + i
 
 
@@ -67,16 +76,46 @@ def _satz(ms):
     if '?' in satz: return satz
     if True:
         satz = re.sub(r'^((?:<[^>]+>|\s|[–—•·])*(?:[Bb]itte )?)([A-Za-zÄÖÜäöü][a-zäöüß]{2,}(?:st|[sßzx]t)) du(?: (sich|dich|dir))?\b(?! (?:und|oder)\b)', _satzanfang, satz)
+        # «Dann schaust du dir doch gleich unser Angebot an.» (alt: «schauen Sie sich») → «schau dir»; Inversion
+        # schaust/siehst + du + dir gibt es in Aussagesätzen nur als Imperativ-Artefakt
+        satz = re.sub(r'\b([Ss])(?:chaust|iehst) du (?:dir|dich)\b', lambda m: (m.group(1) + ('chau' if m.group(0)[1] == 'c' else 'ieh')) + ' dir', satz)   # anschauen/ansehen = Dativ
         # «… und stellst du dir vor» (alt: «und stellen Sie sich vor») → «und stell dir vor»
-        return re.sub(r'((?:\bund|\boder) )([a-zäöüß]{2,}(?:st|[sßzx]t)) du(?: (sich|dich|dir))?\b(?! (?:und|oder)\b)', _satzanfang, satz)
+        satz = re.sub(r'((?:\bund|\boder) )([a-zäöüß]{2,}(?:st|[sßzx]t)) du(?: (sich|dich|dir))?\b(?! (?:und|oder)\b)', _satzanfang, satz)
+        return re.sub(r'\b(finde|wähle|suche|entdecke|sichere|hol|hole|kaufe|bestelle|reserviere|gönne|nimm)((?:\s|<[^>]+>)+)für sich\b', r'\1\2für dich', satz)
+
+
+_BLOCK = re.compile(r'</?(?:p|li|h[1-6]|div|br|ul|ol|td|th|table|tr|blockquote|section)\b', re.I)
+
+
+def saetze(html_, fn):
+    """Satzweise anwenden. Ein Satz endet an Satzzeichen + Leerraum oder an einem Blockelement-Tag; Inline-Tags
+    (<a>, <strong>) bleiben Teil des Satzes — sonst trennt ein </a> mitten im Satz «findest du <a>für dich</a>»
+    vom Rest, und das «?» am Satzende steht in einem anderen Knoten (22.09.)."""
+    out, cur = [], []
+    def flush():
+        if cur:
+            satz = ''.join(cur); cur.clear()
+            out.append(fn(re.match(r'[\s\S]*', satz)))
+    for tok in re.split(r'(<[^>]+>)', html_):
+        if not tok: continue
+        if tok.startswith('<'):
+            if _BLOCK.match(tok): flush(); out.append(tok)
+            else: cur.append(tok)
+            continue
+        teile = re.split(r'((?<=[.!?])\s+)', tok)
+        for k, tl in enumerate(teile):
+            if k % 2 == 1: cur.append(tl); flush()
+            elif tl: cur.append(tl)
+    flush()
+    return ''.join(out)
 
 
 def repariere(html_):
-    t = re.sub(r'(?:^|(?<=[.!?>] )|(?<=[.!?]))[^.!?]*[.!?]?', _satz, html_)
+    t = saetze(html_, _satz)
     t = re.sub(r'(?<=[–—:\-] )([a-zäöüß]{3,}(?:en|ern|eln)) du (dich|dir)\b', lambda m: imp(m.group(1)) + ' ' + m.group(2), t)
     t = re.sub(r'(?<=[–—:\-] )([a-zäöüß]{3,}(?:en|ern|eln)) du\b', lambda m: imp(m.group(1)), t)
     # nach um(): «bestelle heute und erhältst du es morgen» (Regel 0 sah Indikativ, der Satz ist Imperativ) → «und erhalte es»
-    return re.sub(r'(?:^|(?<=[.!?>] )|(?<=[.!?]))[^.!?]*[.!?]?', _satz, um(t))
+    return saetze(um(t), _satz)
 
 
 def quitt(h, was):

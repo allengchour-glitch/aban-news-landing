@@ -3,10 +3,11 @@ import sys,re,json,os; sys.path.insert(0,os.path.dirname(__file__)); from shop_g
 SIE=re.compile(r'\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b')
 IMP={"Entdecken":"Entdecke","Profitieren":"Profitiere","Geniessen":"Geniesse","Genießen":"Geniesse","Tauchen":"Tauche","Erleben":"Erlebe","Kreieren":"Kreiere","Optimieren":"Optimiere","Vertrauen":"Vertraue","Finden":"Finde","Verwöhnen":"Verwöhne","Gönnen":"Gönn","Lassen":"Lass","Machen":"Mach","Bringen":"Bring","Stellen":"Stell","Sichern":"Sichere","Wählen":"Wähle","Holen":"Hol","Kombinieren":"Kombiniere","Stöbern":"Stöbere","Freuen":"Freu","Bestellen":"Bestelle","Sparen":"Spare","Verwandeln":"Verwandle","Nutzen":"Nutze","Erweitern":"Erweitere","Schenken":"Schenke","Überraschen":"Überrasche","Setzen":"Setze","Starten":"Starte","Feiern":"Feiere","Rüsten":"Rüste","Bereiten":"Bereite","Gestalten":"Gestalte","Schaffen":"Schaffe","Geben":"Gib","Werden":"Werde","Bleiben":"Bleib","Sorgen":"Sorge","Zeigen":"Zeig","Halten":"Halte","Verleihen":"Verleih","Ergänzen":"Ergänze","Verlassen":"Verlass","Suchen":"Suche","Fügen":"Füge","Erfüllen":"Erfülle","Runden":"Runde","Legen":"Leg","Wärmen":"Wärme","Schützen":"Schütze","Pflegen":"Pflege","Trainieren":"Trainiere","Verbessern":"Verbessere","Sammeln":"Sammle","Wünschen":"Wünsch"}
 POSS={"Ihr":"dein","Ihre":"deine","Ihren":"deinen","Ihrem":"deinem","Ihrer":"deiner","Ihres":"deines"}
-_KEINVERB={'einzeln','dunkeln','zusammen','drinnen','mitten','indessen','zwischendurch','gelegen','vorhanden','offen','eigen','golden','seiden','zwischen','gegen','wegen','neben','oben','unten','ohne','innen','aussen','außen','einen','keinen','meinen','deinen','seinen','ihren','unseren','diesen','jeden','allen','vielen','wenigen','denen','welchen','ihnen','sachen','morgen','wochen','tagen','jahren','stunden','minuten','zeiten','farben','massen','kissen','wegen','draussen','draußen','dagegen','dazwischen','wenn','denn','dann','schon','eben'}
+_KEINVERB={'anderen','anderem','andern','ansonsten','selten','übrigen','wenigsten','mindesten','meisten','vorigen','folgenden','letzten','nächsten','heutigen','gestrigen','morgigen','bisherigen','jeweiligen','eigentlichen','wesentlichen','allgemeinen','übrigens','draussen','draußen','drinnen','hinten','vorn','vornen','entgegen','hingegen','dagegen','dazwischen','innen','aussen','außen','einigermassen','gewissermassen','massen','einzeln','dunkeln','zusammen','drinnen','mitten','indessen','zwischendurch','gelegen','vorhanden','offen','eigen','golden','seiden','zwischen','gegen','wegen','neben','oben','unten','ohne','innen','aussen','außen','einen','keinen','meinen','deinen','seinen','ihren','unseren','diesen','jeden','allen','vielen','wenigen','denen','welchen','ihnen','sachen','morgen','wochen','tagen','jahren','stunden','minuten','zeiten','farben','massen','kissen','wegen','draussen','draußen','dagegen','dazwischen','wenn','denn','dann','schon','eben'}
 _KEIN_ZWEITE={'ist','fast','erst','meist','selbst','herbst','frost','kunst','rest','test','gast','last','lust','ost','west','post','most','obst','durst','ernst','sonst','höchst','längst','zumindest','mindest','dienst','geist','dunst','wust','trost','brust','frist','list','mist','nest','fest','best','angst','gerüst','protest','kontrast','ballast','palast','august','kost','rost','wurst','bist','hast','musst','kannst','willst','sollst','darfst','wirst','möchtest','solltest','könntest','würdest'}
-_SATZSTART=r'dass|damit|wenn|ob|weil|während|bevor|nachdem|sodass|so dass|falls|sobald|wo|was|wie|um|denn|aber|doch|dann|so|es|er|wir|ihr|sie|man|du|(?:der|die|das|dies\w*)\s+(?:du|sie|es|er|wir|ihr|man|dir|dich|ihnen|ein\w*)|mit|für|bei|in|an|auf|ohne|dank|egal|und du|oder du'
-_DETERMINATIV={'einen','einem','den','dem','diesen','diesem','dieser','keinen','keinem','jeden','jedem','ihren','ihrem','deinen','deinem','seinen','seinem','unseren','unserem','meinen','meinem','welchen','welchem','allen','vielen','manchen','solchen','beiden','anderen','eigenen','ganzen','ersten','zweiten','neuen','kleinen','grossen','großen','schönen','weichen','warmen','kalten','hellen','dunklen','roten','blauen','einer','ihrer','deiner','seiner','unserer','jeder','dieser','keiner','aller','vieler','mancher'}
+_SATZSTART=r'dass|damit|wenn|ob|weil|während|bevor|nachdem|sodass|so dass|falls|sobald|wo|was|wie|um|denn|aber|doch|dann|so|es|er|wir|ihr|sie|man|du|der|die|das|dies\w*|welche\w*|als|mit|für|bei|in|an|auf|ohne|dank|egal|und du|oder du'
+_PRAEP={'zu','mit','in','an','auf','aus','bei','von','für','nach','über','unter','vor','zwischen','durch','gegen','ohne','um','mittels','trotz','wegen','samt','zur','zum','im','am','beim','vom','ins','ans','als','wie','statt'}
+_DETERMINATIV={'einen','einem','den','dem','diesen','diesem','dieser','keinen','keinem','jeden','jedem','ihren','ihrem','deinen','deinem','seinen','seinem','unseren','unserem','meinen','meinem','welchen','welchem','allen','vielen','manchen','solchen','beiden','eigenen','ganzen','ersten','zweiten','neuen','kleinen','grossen','großen','schönen','weichen','warmen','kalten','hellen','dunklen','roten','blauen','einer','ihrer','deiner','seiner','unserer','jeder','dieser','keiner','aller','vieler','mancher'}
 
 
 def um(t):
@@ -38,13 +39,14 @@ def um(t):
     # 0) Indikativ ZUERST (hier finden Sie → hier findest du) — sonst frisst der Imperativ-Schritt das «finden»
     for v,i in [("finden","findest"),("erhalten","erhältst"),("können","kannst"),("sind","bist"),("haben","hast"),("möchten","möchtest"),("wollen","willst"),("suchen","suchst"),("brauchen","brauchst"),("sehen","siehst"),("wissen","weisst"),("benötigen","benötigst"),("bekommen","bekommst"),("werden","wirst")]:
         t=re.sub(r'(?<![.!?] )(?<!^)\b'+v+r' Sie\b',i+' du',t)
+    t=re.sub(r'\bStellen Sie sich (?=vor\b)', 'Stell dir ', t); t=re.sub(r'((?:\bund|\boder|,) )stellen Sie sich (?=vor\b)', r'\1stell dir ', t)
     # 0b) 22.09.2026 (Stichprobe 60 «teilweise»-Texte): Satzanfang-«Sie» ist meist das PRODUKT («Sie sind wiederverwendbar»)
     # und bleibt stehen — ausser bei Verben, die nur eine Anrede haben kann: «Sie haben die Wahl», «Sie erhalten drei …»,
     # «Sie möchten/brauchen/benötigen/suchen/wünschen/bekommen/profitieren», «Sie können zwischen/sich/wählen …»
     def _anrede_anfang(m):
         v = m.group(2)
         return m.group(1) + 'Du ' + (_zweite(v) or v)   # Satzanfang → gross
-    t=re.sub(r'(^|[.!?>]\s*|[•·]\s*)Sie (haben(?= die Wahl\b)|erhalten(?= (?:\d|ein|eine|einen|zwei|drei|vier|fünf|sechs|acht|zehn|alle|das komplette|so)\b)|bekommen|möchten|wünschen|suchen|brauchen|benötigen|profitieren|können(?= (?:sich|zwischen|wählen|also|so|es|damit|jetzt|ganz|einfach|bequem|frei|beruhigt|sicher|selbst|sogar|auch|natürlich|problemlos|mühelos|dein\w*|die|das|den|ihn|sie|alles)\b))\b', _anrede_anfang, t)
+    t=re.sub(r'(^|[.!?>]\s*|[•·]\s*)Sie (haben(?= die Wahl\b)|erhalten(?= (?:\d|ein|eine|einen|zwei|drei|vier|fünf|sechs|acht|zehn|alle|das komplette|so)\b)|bekommen|möchten|wünschen|suchen|brauchen|benötigen|profitieren|können(?= (?:sich|zwischen|wählen|also|so|damit|jetzt|ganz|einfach|bequem|frei|beruhigt|sicher|selbst|problemlos|mühelos|dein\w*)\b))\b', _anrede_anfang, t)
     # 1) Imperative: grossgeschrieben (Satzanfang) immer; kleingeschrieben nur nach «und/oder/,»
     for v,i in IMP.items():
         # 22.09.: «sich» → «dir» vor Nomen/Artikel/Mengenwort («Gönn dir eine Pause», «Nimm dir Zeit»), sonst «dich»
@@ -53,7 +55,9 @@ def um(t):
         t=re.sub(r'\b'+v+r' Sie sich\b(?=\s+(ein|eine|einen|einem|einer|etwas|mehr|genug|die|das|den|dem|der|Zeit|Ruhe|[A-ZÄÖÜ]))',(i+' dir'),t)
         t=re.sub(r'\b'+v+r' Sie sich\b',(i+' dich'),t); t=re.sub(r'\b'+v+r' Sie\b',i,t)
         vl=v[0].lower()+v[1:]; il=i[0].lower()+i[1:]
-        t=re.sub(r'((?:\bund|\boder|,|[–—:]|\b[Bb]itte)\s+)'+vl+r' Sie sich\b',lambda m:m.group(1)+il+' dich',t); t=re.sub(r'((?:\bund|\boder|,|[–—:]|\b[Bb]itte)\s+)'+vl+r' Sie\b',lambda m:m.group(1)+il,t)
+        _dat = v.lower() in ('schauen','nehmen','gönnen','merken','vorstellen','holen','sichern','aussuchen','leisten','überlegen','anhören','ansehen','anschauen','kaufen','besorgen','bestellen','notieren','wünschen','suchen','vornehmen')
+        t=re.sub(r'((?:\bund|\boder|,|[–—:]|\b[Bb]itte)\s+)'+vl+r' Sie sich\b(?=\s+(ein|eine|einen|einem|einer|etwas|mehr|genug|die|das|den|dem|der|Zeit|Ruhe|[A-ZÄÖÜ]))',lambda m:m.group(1)+il+' dir',t)
+        t=re.sub(r'((?:\bund|\boder|,|[–—:]|\b[Bb]itte)\s+)'+vl+r' Sie sich\b',lambda m:m.group(1)+il+(' dir' if _dat else ' dich'),t); t=re.sub(r'((?:\bund|\boder|,|[–—:]|\b[Bb]itte)\s+)'+vl+r' Sie\b',lambda m:m.group(1)+il,t)
     # 2) «damit Sie … können» / «Ob Sie … suchen» / «wo Sie … entdecken» / «während Sie …» → du + Verbendung
     def dusatz(m):
         k,rest=m.group(1),m.group(2)
@@ -87,6 +91,9 @@ def um(t):
         v, refl = m.group(1), m.group(2)
         rest = ''
         nach = m.string[m.end():m.end()+30]
+        # Konditional-Inversion «Bevorzugen Sie natürliche Optik und sind bereit, …, sind Teakholzmöbel …» (= wenn Sie …):
+        # nach einem Komma folgt ein finites Verb an erster Stelle → kein Imperativ, Regel 3 macht «Bevorzugst du»
+        if v[0].isupper() and re.search(r',\s*(?:dann |so |und )?(?!damit|dass|sodass|sobald|bevor|nachdem|während|solange|obwohl|weil|wenn|falls|statt|seit|mit|nicht|bereit|jetzt|erst|fast|meist|selbst|sonst|oft|direkt|sofort|heute)(?:[a-zäöüß]{3,}(?:t|st|en)|sind|ist|hat|kann|wird|muss|soll|darf)\s', re.split(r'[.!?]|</p>|<br|</li>|</h', m.string[m.end():m.end()+220], 1)[0]): return m.group(0)
         if v in IMP or v[0].upper()+v[1:] in IMP: return m.group(0)
         gross = v[0].isupper(); V = v[0].upper()+v[1:]
         if V in _IMP2: i=_IMP2[V]
@@ -111,8 +118,9 @@ def um(t):
     # 22.09. (Kollektions-Diffs): «die Kollektion rüstet Sie perfekt aus» → «rüstet dich». Ein Verb auf -t (nicht -st) vor
     # «Sie» kann kein Subjekt-«Sie» haben (das hiesse «rüsten Sie») → Objekt. Ausnahmen: Wörter auf -t, die keine Verben sind.
     _KEIN_VERB_T={'damit','mit','seit','statt','trotz','oft','jetzt','fast','erst','meist','selbst','sonst','nicht','bereit','direkt','perfekt','komplett','sofort','heute','gut','laut','samt','sobald','soweit','weit','breit','hart','zart','glatt','satt','matt','bunt','echt','leicht','recht','schlecht','dicht','licht','nett','fett','alt','kalt','bald','geld','welt','stadt','zeit','sogar','vorbereitet'}
-    t=re.sub(r'\b([a-zäöüß]{3,}(?<!s)t) Sie\b(?! (?:und|oder|sich)\b)', lambda m: m.group(0) if m.group(1) in _KEIN_VERB_T or m.group(1).endswith(('heit','keit','schaft','tät')) else m.group(1)+' dich', t)
-    t=re.sub(r'\b(für|an|auf|über|ohne|gegen|um|durch) Sie\b', r'\1 dich', t)
+    t=re.sub(r'\b([a-zäöüß]{3,}(?<!s)t) Sie\b(?! (?:und|oder|sich)\b)(?! (?:und|oder|&) Ihn\b)', lambda m: m.group(0) if m.group(1) in _KEIN_VERB_T or m.group(1).endswith(('heit','keit','schaft','tät')) else m.group(1)+' dich', t)
+    if not re.search(r'\bIhn\b', t):   # Geschenkseiten: «für Sie» = für die Frau, «für Ihn» = für den Mann → nicht anfassen
+        t=re.sub(r'\b(für|an|auf|über|ohne|gegen|um|durch) Sie\b(?! (?:und|oder|&) Ihn\b)', r'\1 dich', t)
     # 22.09. (Reparatur-Trockenlauf): «unterstützt es Sie dabei» → «es dich» — nach «es»/«er» ist «Sie» nie Subjekt
     t=re.sub(r'\b(es|er) Sie\b', r'\1 dich', t)
     t=re.sub(r'\b(es|er) Ihnen\b', r'\1 dir', t)
@@ -159,6 +167,7 @@ def um(t):
         # 22.09. (Reparatur-Trockenlauf): «du einzelne Nägel hervorheben oder … gestalten möchtest» — der Infinitiv
         # gehört zum Modalverb am Satzteil-Ende → Modalverb im REST des Satzteils = nicht anfassen
         rest = re.split(r'[.,;!?:<]', m.string[m.end():], 1)[0]
+        rest = re.split(r'\s(?:und|oder|sowie)\s+(?:welche\w*|wie|was|wo|ob|dass|wenn|damit|du|dein\w*)\b', rest, 1)[0]   # neuer Teilsatz = eigenes Verb
         if verb != 'sind' and re.search(_zp_rest, rest):   # «sind» ist nie ein Infinitiv zum Modalverb dahinter
             return m.group(0)
         # (b) Inversion «bleiben du stets verbunden» (2h zieht «bleiben» erst später nach): finites Verb steht VOR du →
@@ -167,16 +176,19 @@ def um(t):
             return m.group(0)
         # «du einen matten, schimmernden Look bevorzugst»: nach Artikel/Determinativ steht ein Adjektiv, kein Verb
         vor = kopf.strip().split(' ')[-1].lower() if kopf.strip() else ''
-        if vor in _DETERMINATIV or verb in _KEINVERB:
+        if vor in _DETERMINATIV or verb in _KEINVERB or vor in _PRAEP:   # «zu haben» = Infinitiv mit zu; «mit wenigen», «zur festen» = Adjektiv
+            return m.group(0)
+        # «… die du nutzt und die gut für deine Haut sind»: nach «und die/der/das» beginnt ein Relativsatz mit eigenem Subjekt
+        if re.search(r'\b(?:und|oder)\s+(?:die|der|das|welche\w*)\b', kopf):
             return m.group(0)
         k = _zweite(verb)
         return kopf + k if k else m.group(0)
     for _ in range(2):
         # A) das LETZTE Verb vor dem Satzteil-Ende (greedy) — ein übersprungener Kandidat («kreieren oder …») darf den
         #    Blick auf «möchten –» am Ende nicht verstellen (22.09.: lazy fand nur den ersten und brach ab)
-        t=re.sub(r'(\bdu\b[^.,;!?:<]{0,160}\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind)(?=\s*[.,;!?:<–—]|\s*$)', _nachziehen, t)
+        t=re.sub(r'(\bdu\b(?:(?!\bdu\b)[^.,;!?:<]){0,160}\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind)(?=\s*[.,;!?:<–—]|\s*$)', _nachziehen, t)   # ab dem LETZTEN du im Satzteil
         # B) Verb vor «und/oder/sowie» (lazy) — mit Modalverb-Blick in den Rest des Satzteils
-        t=re.sub(r'(\bdu\b[^.,;!?:<]{0,120}?\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind)(?=\s(?:und|oder|sowie)(?:\s|$))', _nachziehen, t)
+        t=re.sub(r'(\bdu\b(?:(?!\bdu\b)[^.,;!?:<]){0,120}?\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind)(?=\s(?:und|oder|sowie)(?:\s|$))', _nachziehen, t)
     # 2g) Verb DIREKT nach «du» im Hauptsatz («und du haben 30 Tage», «du zahlen per TWINT») → 2. Person.
     # Nur Kleinwörter auf -en/-ern/-eln, nie «dein…», nie wenn schon 2. Person (kannst/hast …).
     def _direkt(m):
@@ -204,7 +216,7 @@ def um(t):
         # Fall B: erstes Segment schon 2. Person («ob du kochst») und die Folgesegmente sind blosse Infinitive
         # («backen», «oder grillen») → alle konjugieren
         w0 = re.findall(r'[a-zäöüß]+', segs[0].lower())
-        zweite0 = bool(w0) and w0[-1].endswith('st') and w0[-1] not in _KEIN_ZWEITE
+        zweite0 = bool(w0) and w0[-1].endswith(('st', 'zt', 'sst', 'xt')) and w0[-1] not in _KEIN_ZWEITE
         for i, seg in enumerate(segs[1:], 1):
             if re.match(r'\s*(?:' + _SATZSTART + r')\b', seg): break
             mm = re.search(r'\b(können|möchten|wollen|müssen|sollen|dürfen|werden|haben)(?=\s*$)', seg)
@@ -214,12 +226,23 @@ def um(t):
                 if zweite0:
                     segs[i] = re.sub(r'\b([a-zäöüß]{3,}(?:en|ern|eln))\b', lambda x: (_zweite(x.group(1)) or x.group(1)) if x.group(1) not in _KEINVERB else x.group(1), seg)
                 continue   # blosse Infinitive («würfeln», «backen oder grillen») → weiter zum Modalverb am Ende
+            # Fall D: Segment BEGINNT mit einem Plural-Verb («, pendeln viel in der Schweiz oder nutzen dein Smartphone»)
+            # nach einem Segment mit du + 2.-Person-Verb → Verb am Anfang (und bekannte Verben nach und/oder) konjugieren
+            md = re.match(r'(\s*)([a-zäöüß]{3,}(?:en|ern|eln))\b(?=\s)(?!\s+(?:wir|sie|es|er|man|ihr|Sie)\b)(?!\s+(?:dir|dich|ihnen)\s+(?:unser\w*|dies\w*|beide|alle|viele|die|der|das|ein\w*)\b)(?!\s+(?:unser\w*|dies\w*|beide|alle|viele)\b)(?!\s+[A-ZÄÖÜ])', seg)
+            if md and (md.group(2) in _konj or md.group(2) in _stark or re.match(r'\s+(?:dein\w*|ein\w*|den|die|das|es|sie|ihn|nichts|alles|viel|gern|gerne|oft|täglich|regelmässig|immer|bequem|einfach|schnell|sanft|nur|auch|lieber|sich)\b', seg[md.end():])) \
+                    and (zweite0 or re.search(r'\b(?:bist|hast|kannst|willst|musst|möchtest|solltest|darfst|wirst)\b', segs[0] + ' ' + m.string[max(0, m.start() - 24):m.start()], re.I)) \
+                    and md.group(2) not in _KEINVERB and md.group(2) not in _DETERMINATIV and _zweite(md.group(2)) \
+                    and not re.search(r'\b(können|möchten|wollen|müssen|sollen|dürfen|werden|kannst|möchtest|willst|musst|sollst|darfst|wirst)\b', seg):
+                seg2 = md.group(1) + _zweite(md.group(2)) + seg[md.end():]
+                seg2 = re.sub(r'\b(oder|und)\s+([a-zäöüß]{3,}(?:en|ern|eln))\b(?=\s)', lambda x: x.group(1) + ' ' + (_zweite(x.group(2)) if (x.group(2) in _konj or x.group(2) in _stark) else x.group(2)), seg2)
+                segs[i] = seg2; continue
             # Fall C: «die du für dein Make-up, zum Konturieren sowie für die Brauen benötigen» — Segment 0 hat KEIN
             # finites Verb, das Satzteil-Ende trägt es → konjugieren (nur wenn kein Modalverb in Segment 0)
             _vor = m.string[max(0, m.start() - 24):m.start()]   # «So kannst du deine Daten, …» — Modalverb steht VOR du
             _fin0 = zweite0 or re.search(r'\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|hast|bist|können|möchten|wollen|müssen|sollen|dürfen|werden|haben|sind)\b', segs[0] + ' ' + _vor, re.I) \
                     or re.search(r'\b[a-zäöüß]{3,}(?:en|ern|eln)\s*$', segs[0]) or re.search(r'\b[a-zäöüß]{3,}(?:en|ern|eln|st)\s+$', _vor)
             me = re.search(r'\b([a-zäöüß]{3,}(?:en|ern|eln))(\s*)$', seg)
+            if me and re.search(r'\bzu\s+$', seg[:me.start()]): break   # «zu haben» = Infinitiv
             if me and not _fin0 and me.group(1) not in _KEINVERB and _zweite(me.group(1)) \
                     and not re.search(r'\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|können|möchten|wollen|müssen|sollen|dürfen|werden|hast|bist)\b', seg) \
                     and (seg.strip().split(' ')[-2].lower() if len(seg.strip().split(' ')) > 1 else '') not in _DETERMINATIV:
@@ -232,9 +255,9 @@ def um(t):
     # «findest du … griffbereit und sparen Zeit») → 2. Person; nicht bei Modalverb im Satzteil (Infinitiv-Reihe)
     def _zweites(m):
         kopf, v = m.group(1), m.group(2)
-        if v in _KEINVERB or v.startswith('dein'): return m.group(0)
+        if v in _KEINVERB or v.startswith('dein') or kopf.rstrip().endswith(' zu'): return m.group(0)
         # «und effizienten Arbeitsalltag», «und unkomplizierten 30 Tagen»: Adjektiv vor Nomen/Zahl, kein Verb
-        if re.match(r'\s+(?:[A-ZÄÖÜ]|\d)', m.string[m.end():m.end() + 3]): return m.group(0)
+        if v not in _konj and v not in _stark and v not in ('sind', 'haben') and re.match(r'\s+(?!Ihr|Sie)(?:[A-ZÄÖÜ]|\d)', m.string[m.end():m.end() + 5]): return m.group(0)   # Adjektiv vor Nomen — bekannte Verben («und haben Handtücher») ausgenommen
         _mod = r'\b(können|möchten|wollen|müssen|sollen|dürfen|werden|kannst|möchtest|willst|musst|sollst|darfst|wirst|solltest|könntest|würdest|lässt|lassen)\b'
         if re.search(_mod, kopf, re.I): return m.group(0)
         segs = re.split(r',', re.split(r'[.;!?:<]', m.string[m.end():], 1)[0])
@@ -250,22 +273,43 @@ def um(t):
         if re.match(r'\s+(?:wir|man|ihr)\b', m.string[m.end():m.end() + 8]): return m.group(0)
         k = _zweite(v)
         return kopf + k if k else m.group(0)
-    for _ in range(3):   # «und haben … und können …» — jede Runde ein koordiniertes Verb
-        t=re.sub(r'(\bdu\b[^.,;!?:<]{0,120}?\s(?:und|oder)\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind|haben)\b', _zweites, t)
-    t=re.sub(r'\bdu sich\b', 'du dich', t)
+    def _lauf_2j(t):
+        for _ in range(3):   # «und haben … und können …» — jede Runde ein koordiniertes Verb
+            t=re.sub(r'(\bdu\b(?:(?!\bdu\b)[^.,;!?:<]){0,120}?\s(?:und|oder)\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind|haben)\b', _zweites, t)
+        return t
+    def _reflexiv(t):
+        t=re.sub(r'\bdu sich\b', 'du dich', t)
+        t=re.sub(r'\bdu ([a-zäöüß]+(?:st|zt|sst)) sich\b', r'du \1 dich', t)            # «du schleppst sich»
+        t=re.sub(r'(\b[Dd]u\b[^.;!?]*?\b(?:und|oder)) sich\b', r'\1 dich', t)          # «kannst … wählen und sich freuen»
+        t=re.sub(r'\b(findest|wählst|suchst|entdeckst|sicherst|holst|kaufst|bestellst|gönnst|nimmst|reservierst) du für sich\b', r'\1 du für dich', t)
+        # Dativ-Reflexiv: «du dich … gönnen/sparen/vorstellen» → «du dir …» (Verb im selben Satzteil)
+        t=re.sub(r'\bdu dich\b(?=[^.,;!?]{0,80}\b(?:gönn|spar|nimm|nehm|hol|leist|vorstell|stell\w* vor|merk|überleg|wünsch|sicher|kauf|bestell|besorg|notier|erlaub|verdien|erspar|anseh|anschau|ansieh|anhör)\w*\b)', 'du dir', t)
+        t=re.sub(r'\b(sparst|gönnst|nimmst|holst|sicherst|merkst|leistest|überlegst|suchst|kaufst|bestellst|besorgst|notierst|wünschst|schaust|siehst|vorstellst|stellst|ersparst|verdienst|erlaubst) du dich\b', r'\1 du dir', t)
+        return t
+    t=_lauf_2j(t)
+    t=_reflexiv(t)
+    # «Du möchtest einen Ring kaufen, sind sich aber unsicher» → «bist dir aber unsicher» (koordiniert ohne Subjekt)
+    t=re.sub(r'(\b[Dd]u\b[^.;!?]*?), sind sich (aber |jedoch |dabei |noch |vielleicht )?(unsicher|nicht sicher|sicher|bewusst|einig|uneinig|im Klaren)', r'\1, bist dir \2\3', t)
     # 2h) 22.09.2026 — Verb DIREKT VOR «du» (Inversion: «dann tragen Sie es» → «dann trägst du es», «so haben Sie» → «so hast du»).
     # Nur Kleinwörter auf -en/-ern/-eln bzw. sind/haben, keine Präpositionen/Artikel («zwischen du», «einen du» gibt es nicht als Verb).
     def _vor_du(m):
-        v=m.group(1)
+        v=m.group(1); gross=v[0].isupper(); v=v.lower()
         if v in _KEINVERB or v.startswith('dein'): return m.group(0)
         k=_zweite(v)
+        if k and gross: k=k[0].upper()+k[1:]   # «Sind du bereit?» (Alt-Defekt) → «Bist du bereit?»
         return (k+' du') if k else m.group(0)
     t=re.sub(r'\b([a-zäöüß]{3,}(?:en|ern|eln)|sind|haben) du\b(?! (?:und|oder)\b)', _vor_du, t)
+    # gross geschrieben NUR echte Verben (Alt-Defekt «Sind du bereit?») — nie Nomen («Erlebnissen Sie» ist kein Verb)
+    t=re.sub(r'\b(Sind|Haben|Können|Möchten|Wollen|Müssen|Sollten|Dürfen|Werden|Finden|Brauchen|Suchen|Erhalten|Bekommen|Wünschen|Kennen|Wissen|Sehen|Nutzen|Tragen|Lieben|Sparen|Geniessen|Planen|Bevorzugen|Benötigen) du\b(?! (?:und|oder)\b)', _vor_du, t)
     # 3) Verb + Sie mitten im Satz: «finden Sie» → «findest du», «erhalten Sie» → «erhältst du»
     t=re.sub(r'\bfinden Sie\b','findest du',t); t=re.sub(r'\berhalten Sie\b','erhältst du',t); t=re.sub(r'\bkönnen Sie\b','kannst du',t)
     t=re.sub(r'\bsind Sie\b','bist du',t); t=re.sub(r'\bhaben Sie\b','hast du',t); t=re.sub(r'\bmöchten Sie\b','möchtest du',t); t=re.sub(r'\bwollen Sie\b','willst du',t)
     t=re.sub(r'\bsuchen Sie\b','suchst du',t); t=re.sub(r'\bbrauchen Sie\b','brauchst du',t); t=re.sub(r'\bsehen Sie\b','siehst du',t); t=re.sub(r'\bwissen Sie\b','weisst du',t)
     t=re.sub(r'\b(\w+?)en Sie\b',lambda m:(m.group(1)+('st' if not m.group(1).endswith(('s','ß','z','x','ss')) else 't'))+' du',t)   # Rest: «genießen Sie»→«geniesst du» (Schweizer ss unten)
+    # 22.09.: Regel 3 hat gerade «sparen Sie sich … und behalten» zu «sparst du sich … und behalten» gemacht →
+    # koordiniertes Verb (2j) und Reflexiv erst JETZT nachziehen; «finde für sich» nach Imperativ → «für dich»
+    t=_lauf_2j(t); t=_reflexiv(t)
+    t=re.sub(r'\b(finde|wähle|suche|entdecke|sichere|hol|hole|kaufe|bestelle|reserviere|gönne|nimm) für sich\b', r'\1 für dich', t)
     # 4) Possessiv/Objekt
     t=re.sub(r'\bIhnen\b','dir',t); t=re.sub(r'\bIhr(e|en|em|er|es)?\b',lambda m:'dein'+(m.group(1) or ''),t)
     t=re.sub(r'\bsich selbst\b','dich selbst',t); t=t.replace('ß','ss')

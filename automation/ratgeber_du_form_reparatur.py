@@ -9,6 +9,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "automation"))
 from kollektionstexte_du_form import um  # noqa: E402
 from produkttexte_du_form import WARN, WARN4, warn2, warn3, gql, text  # noqa: E402
+from produkttexte_du_form_reparatur import saetze, _satz  # noqa: E402  (Satzanfang «Xst du» → Imperativ, «und Xst du» → «und X-e»)
 DRY = os.environ.get("DRY") == "1"
 LEDGER = os.path.join(REPO, "dropship", "_ratgeber_du_form_done.txt")
 IMP = {'hören': 'hör', 'schauen': 'schau', 'nehmen': 'nimm', 'lassen': 'lass', 'geben': 'gib', 'lesen': 'lies', 'sehen': 'sieh', 'halten': 'halt', 'gönnen': 'gönn', 'werfen': 'wirf'}
@@ -25,7 +26,7 @@ def repariere(html_):
     # Imperativ nach Gedankenstrich/Doppelpunkt/Bindestrich: «– hören du auf dich» → «– hör auf dich»
     t = re.sub(r'(?<=[–—:\-] )([a-zäöüß]{3,}(?:en|ern|eln)) du (dich|dir)\b', lambda m: imp(m.group(1)) + ' ' + m.group(2), html_)
     t = re.sub(r'(?<=[–—:\-] )([a-zäöüß]{3,}(?:en|ern|eln)) du\b', lambda m: imp(m.group(1)), t)
-    return um(t)
+    return saetze(um(saetze(t, _satz)), _satz)
 
 
 def main():
