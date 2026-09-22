@@ -1723,7 +1723,14 @@ JSON
       ( cd "$REPO" && python3 automation/versandschwelle_rabatt.py --pruefen >> "$VR" 2>&1; rc=$?
         case $rc in
           0) ;;
-          3) echo "$(date -u +%F\ %H:%M) ⚠️ Versandschwelle passt nicht mehr zum höchsten Automatik-Rabatt" >> "$VR" ;;
+          3) echo "$(date -u +%F\ %H:%M) ⚠️ Versandschwelle passt nicht mehr zum höchsten Automatik-Rabatt — repariere (--scharf)" >> "$VR"
+             # 22.09.2026: Der Befund stand nur hier im Log, und niemand las ihn. Gemessen 22.09.: Tarif ≥45 AUS,
+             # ≥50 AN (nach dem 21.09. 22:13 umgestellt, kein Eintrag) → Totzone Warenwert 50.00–55.55 zahlte
+             # CHF 7 trotz Zusage «Gratis ab 50». Die Rechnung ist deterministisch (beworben × (1 − Rabatt)) und
+             # vom Betreiber am 14.08./15.09. so entschieden → der Wächter darf sie selbst wiederherstellen.
+             python3 automation/versandschwelle_rabatt.py --scharf >> "$VR" 2>&1 \
+               && echo "$(date -u +%F\ %H:%M) ✅ Versandschwelle wiederhergestellt" >> "$VR" \
+               || echo "$(date -u +%F\ %H:%M) ⚠️ Versandschwelle NICHT repariert (Exit $?)" >> "$VR" ;;
           *) echo "$(date -u +%F\ %H:%M) ⚠️ versandschwelle_rabatt NICHT MESSBAR (Exit $rc, meist Drossel) — kein Fachbefund" >> "$VR" ;;
         esac )
       echo "$(date -u +%H:%M) versandschwelle_rabatt geprüft"

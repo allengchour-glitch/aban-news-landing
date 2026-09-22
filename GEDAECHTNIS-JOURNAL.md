@@ -42,6 +42,19 @@ finden können» bleibt Plural) und Modal + Infinitiv («du kannst sie haben» b
 auch für Konjunktionen am Satzanfang («Wenn Sie», «Egal, ob Sie») und 2c um 20 Objekt-Verben
 («informiert Sie» → «informiert dich»). Kanarienvögel: 10 Sätze, alle richtig.
 
+**Nachtrag 1 (12:10 UTC) — die Gratisversand-Schwelle war wieder auf 50, still.** Trichter 30 T gemessen:
+1'077 Sitzungen, 15 Warenkorb-Zulagen, **6 Kassen-Starts, 0 Abschlüsse**; keine abgebrochene Kasse mit
+E-Mail seit 22.08. → die 6 gingen auf der ersten Kassenseite (Adresse/Versand) wieder. Versandprofil live
+gelesen: **«Kostenloser Versand ≥45» AUS, «≥50» AN** — genau die Umstellung, die am 15.09. als Cowork-Punkt 1
+ZURÜCKGEZOGEN wurde (Shopify rechnet NACH Rabatt; 45 = 50 × 0.9 ist die Kompensation des 10-%-Bündel-
+Rabatts). Der Wächter `versandschwelle_rabatt.py` hatte am 21.09. 22:13 noch «45 — OK» gemessen; danach
+stellte jemand um, ohne Eintrag (Ledger kennt nur «von Hand gesetzt» von früher). Totzone: Warenwert
+50.00–55.55 zahlte CHF 7 trotz Zusage «Gratis ab 50». `--pruefen` bestätigt, `--scharf` ausgeführt, live
+nachgelesen: 45 aktiv. **Der Wächter meldete die Abweichung nur in sein eigenes Log (Exit 3), das
+niemand liest** → Aufseher repariert bei Exit 3 jetzt selbst (`--scharf`), weil die Rechnung
+deterministisch und die Entscheidung vom Betreiber (14.08./15.09.) ist. ⚠️ Falls der Betreiber die 50
+heute bewusst gesetzt hat: bitte sagen — dann muss der 10-%-Rabatt weg oder die Zusage auf 55 hoch.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
