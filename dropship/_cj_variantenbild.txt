@@ -2462,3 +2462,14 @@ gid://shopify/Product/15448874320257	zugeordnet	6	LED Nackenleuchte für Joggen 
 gid://shopify/Product/15448874615169	zugeordnet	17	Ohr-Accessoires aus Edelstahl (18mm)
 gid://shopify/Product/15448874779009	zugeordnet	5	Gebogene Uhrenarmband-Federstege aus Edelstahl
 gid://shopify/Product/15448875172225	bild-urls-tot
+gid://shopify/Product/15448875532673	zugeordnet	2	Smart-Armband M16 zur Schlafunterstützung
+gid://shopify/Product/15448875630977	zugeordnet	3	Smartes Sportarmband mit Herzfrequenzmessung · schlankes Dam
+gid://shopify/Product/15448875663745	zugeordnet	6	Love Bracelet Uhrenarmband mit Perlenkette
+gid://shopify/Product/15448875696513	zugeordnet	3	Smartes Gesundheits-Armband mit Fernpflege
+gid://shopify/Product/15448875827585	zugeordnet	12	Titan-Armband für Apple Watch
+gid://shopify/Product/15448875860353	zugeordnet	3	Smartes Sportarmband mit Herzfrequenzmessung · 1,44-Zoll-IPS
+gid://shopify/Product/15448875991425	zugeordnet	4	Smartes Sportarmband mit Herzmessung
+gid://shopify/Product/15448876056961	zugeordnet	8	Vintage Metall-Leder Armband für Apple Watch
+gid://shopify/Product/15448876122497	zugeordnet	3	Smart Reminder Armband mit Bluetooth
+gid://shopify/Product/15448876220801	zugeordnet	16	Pinkycolor Silikonarmband für Apple Watch
+gid://shopify/Product/15448876253569	zugeordnet	5	Y68 Smartwatch mit Bluetooth
