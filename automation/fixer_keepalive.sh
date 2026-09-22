@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -406,7 +406,7 @@ while true; do
     # Startblock mit LISTE= (Arbeitsliste des Klassen-Scans). In dieser Schleife lief es
     # OHNE LISTE, las den Export vom 30.08. und meldete «0 doppelte Bloecke» — und sein
     # laufender Prozess liess den richtigen Lauf per ps-Pruefung aussetzen (08.09.2026).
-    case " versand_jenachland lieferblock_doppelt ss_statt_scharf_s fremdzeichen_guard heilversprechen_wache " in
+    case " versand_jenachland lieferblock_doppelt ss_statt_scharf_s fremdzeichen_guard heilversprechen_wache produkttexte_du_form " in
       *" $L "*) TXTLOCK="exec 8>/tmp/lock_produkttext.lock; flock -w 240 8 || exit 0;" ;;
       *)        TXTLOCK="" ;;
     esac
@@ -1546,14 +1546,19 @@ JSON
   SB=/tmp/cj_specs_backfill.log
   if [ -f "$REPO/automation/cj_specs_backfill.mjs" ] && [ -f "$REPO/dropship/_cj_specs_prio.txt" ]; then
     SB_ALTER=$(( $(date +%s) - $(stat -c %Y "$SB" 2>/dev/null || echo 0) ))
-    if ! grep -q "^FERTIG:" "$SB" 2>/dev/null && [ "$SB_ALTER" -gt 43200 ]; then
+    # ⚠️ 22.09.2026: Hier stand `! grep -q "^FERTIG:" "$SB"` — und NIEMAND setzt das Log je zurueck.
+    # Sobald der Lauf einmal «FERTIG» schrieb, war das Tor fuer immer zu: 249 neue Prio-Eintraege
+    # der Politur (besuchte Seiten) haetten nie einen Faktenblock bekommen. Die Frage ist nicht
+    # «stand da mal FERTIG», sondern «gibt es Prio-Handles ohne Quittung» (prio minus done).
+    SB_OFFEN=$(comm -23 <(cut -f1 "$REPO/dropship/_cj_specs_prio.txt" | sort -u) <(cut -f1 "$REPO/dropship/_cj_specs_done.txt" 2>/dev/null | sort -u) | wc -l)
+    if [ "$SB_OFFEN" -gt 0 ] && [ "$SB_ALTER" -gt 43200 ]; then
       # ⚠️ Umleitung HINTER dem Schloss: `>` leert das Log schon beim Einrichten. Ein Lauf, der
       # am `flock -n` scheitert, haette hier gleich zwei Tore zurueckgesetzt — die «FERTIG:»-Zeile
       # waere weg (der Lauf finge von vorn an) und die mtime waere frisch (12-Stunden-Tor).
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_cj_specs_backfill.lock; flock -n 9 || exit 0; exec > \"$SB\" 2>&1; \
            LIMIT=30 exec /opt/node22/bin/node automation/cj_specs_backfill.mjs" 9>&- & )
-      echo "$(date -u +%H:%M) cj_specs_backfill gestartet"
+      echo "$(date -u +%H:%M) cj_specs_backfill gestartet ($SB_OFFEN offen)"
     fi
   fi
   # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die

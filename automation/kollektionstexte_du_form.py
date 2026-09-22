@@ -17,13 +17,45 @@ def um(t):
         k,rest=m.group(1),m.group(2)
         rest=re.sub(r'\b(\w+?)en\b(?=[.,;!?]|\s*$)',lambda x:x.group(1)+('est' if x.group(1).endswith(('t','d')) else 'st' if not x.group(1).endswith(('s','ß','z','x')) else 't'),rest,count=1)
         return k+' du'+rest
-    t=re.sub(r'\b(damit|Ob|ob|wo|während|wenn|bevor|falls|sobald|bis|denen|deren|welchen|welche|welcher|wobei|womit|wofür) Sie(\s[^.,;!?]*?(?:können|möchten|wollen|suchen|benötigen|bevorzugen|wünschen|shoppen|entdecken|investieren|auswählen|überwachen|halten|tragen|feiern|planen|kochen|reisen|sparen|geniessen|genießen|erleben|brauchen|lieben|schätzen|setzen|verschenken))(?=[.,;!?]|\s|$)',dusatz,t)
+    t=re.sub(r'\b((?i:damit|ob|wo|während|wenn|bevor|falls|sobald|bis)|denen|deren|welchen|welche|welcher|wobei|womit|wofür) Sie(\s[^.,;!?]*?(?:können|möchten|wollen|suchen|benötigen|bevorzugen|wünschen|shoppen|entdecken|investieren|auswählen|überwachen|halten|tragen|feiern|planen|kochen|reisen|sparen|geniessen|genießen|erleben|brauchen|lieben|schätzen|setzen|verschenken))(?=[.,;!?]|\s|$)',dusatz,t)
     t=t.replace(' du können',' du kannst').replace(' du möchten',' du möchtest').replace(' du wollen',' du willst').replace(' du suchen',' du suchst').replace(' du benötigen',' du benötigst').replace(' du bevorzugen',' du bevorzugst').replace(' du wünschen',' du wünschst').replace(' du shoppen',' du shoppst').replace(' du entdecken',' du entdeckst').replace(' du investieren',' du investierst').replace(' du auswählen',' du auswählst').replace(' du überwachen',' du überwachst').replace(' du halten',' du hältst').replace(' du tragen',' du trägst').replace(' du planen',' du planst').replace(' du reisen',' du reist').replace(' du sparen',' du sparst').replace(' du geniessen',' du geniesst').replace(' du erleben',' du erlebst').replace(' du brauchen',' du brauchst').replace(' du lieben',' du liebst').replace(' du schätzen',' du schätzt').replace(' du verschenken',' du verschenkst').replace(' du feiern',' du feierst').replace(' du kochen',' du kochst').replace(' du setzen',' du setzt')
     # 2b) Relativ-/Konjunktionalsätze, deren Verb nicht in der Liste steht: «bei denen Sie …» → «bei denen du …»
     #     (22.09.: «denen Sie» lief in den generischen -en-Schritt und wurde «denst du»)
-    t=re.sub(r'\b(denen|deren|dessen|welchen|welche|welcher|wobei|womit|wofür|dass|weil|sodass) Sie\b',r'\1 du',t)
+    # 22.09.2026 (Katalog-Vollmessung, Stichprobe 200): «Egal, ob Sie ein Finish …» blieb stehen — Konjunktionen ohne
+    # Verb aus der Liste in Regel 1 gehören ebenfalls hierher (ob/wenn/falls/damit/während/bevor/nachdem/sobald/wo).
+    t=re.sub(r'\b(denen|deren|dessen|welchen|welche|welcher|wobei|womit|wofür|dass|weil|sodass|(?i:ob|wenn|falls|damit|während|bevor|nachdem|sobald|wo)) Sie\b',r'\1 du',t)
+    # 2d) 22.09.2026 (Katalog-Vollmessung, 10 von 120 Wandlungen wären falsch gewesen): Regel 2b tauscht nur das
+    # Pronomen — das Verb am Satzteil-Ende blieb Plural («dass du immer einen Vorrat haben», «sodass du … zugreifen
+    # können», «du sich frei bewegen»). Hier wird das Verb am Ende des Satzteils nachgezogen (feste Tabelle) und
+    # «du sich» → «du dich». Bei zusammengesetztem Subjekt («du oder deine Liebsten … finden können») bleibt der
+    # Plural richtig → kein Eingriff, wenn zwischen «du» und dem Verb ein «oder»/«und» steht.
+    _konj={'haben':'hast','sind':'bist','können':'kannst','möchten':'möchtest','wollen':'willst','müssen':'musst',
+           'sollten':'solltest','sollen':'sollst','dürfen':'darfst','werden':'wirst','finden':'findest','brauchen':'brauchst',
+           'benötigen':'benötigst','suchen':'suchst','erhalten':'erhältst','bekommen':'bekommst','wünschen':'wünschst',
+           'sparen':'sparst','geniessen':'geniesst','genießen':'genießt','profitieren':'profitierst','lieben':'liebst',
+           'schätzen':'schätzt','sehen':'siehst','wissen':'weisst','kennen':'kennst','bleiben':'bleibst','fühlen':'fühlst',
+           'tragen':'trägst','nutzen':'nutzt','verwenden':'verwendest','behalten':'behältst','erleben':'erlebst',
+           'entdecken':'entdeckst','geben':'gibst','nehmen':'nimmst','wählen':'wählst','kaufen':'kaufst','bestellen':'bestellst',
+           'setzen':'setzt','planen':'planst','feiern':'feierst','kochen':'kochst','reisen':'reist','arbeiten':'arbeitest'}
+    def _nachziehen(m):
+        kopf, verb = m.group(1), m.group(2)
+        # zusammengesetztes Subjekt («du oder deine Liebsten») → Plural bleibt; «ob du Anfängerin oder Profi sind»
+        # ist KEIN zusammengesetztes Subjekt (oder verbindet Prädikatsnomen) → wird konjugiert
+        # (zu diesem Zeitpunkt heisst es noch «Ihre Liebsten»/«Ihr Partner» — Possessive werden erst später gewandelt → (?i))
+        if re.search(r'\b(oder|und)\s+(?i:du|dein\w*|ihr\w*)\b', kopf):
+            return m.group(0)
+        # schon ein 2.-Person-Verb im Satzteil («du kannst sie haben») ODER direkt davor («kannst du es haben»)
+        # → «haben» ist Infinitiv, nicht anfassen
+        _zp = r'\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|hast|bist|solltest|könntest|würdest|wolltest|müsstest)\b'
+        if re.search(_zp, kopf) or re.search(_zp + r'\s*$', m.string[max(0, m.start() - 16):m.start()]):
+            return m.group(0)
+        return kopf + _konj[verb]
+    for _ in range(2):
+        t=re.sub(r'(\bdu\b[^.,;!?:<]{0,80}?\s)(' + '|'.join(_konj) + r')(?=[.,;!?<]|\s*$)', _nachziehen, t)
+    t=re.sub(r'\bdu sich\b', 'du dich', t)
     # 2c) 3.-Person-Verb + Sie als Objekt: «weckt Sie diskret» → «weckt dich diskret» (feste Liste, kein Raten)
-    t=re.sub(r'\b(weckt|begleitet|unterstützt|schützt|hält|bringt|erreicht|führt|erwartet|überzeugt|verwöhnt|inspiriert|entführt|versorgt|erinnert|motiviert|wärmt|kühlt|trägt|lässt|befreit|entlastet|verbindet) Sie\b',r'\1 dich',t)
+    # 22.09.2026: «informiert Sie jederzeit» blieb stehen → Liste erweitert (nur 3.-Person-Verben, bei denen «Sie» nie Subjekt ist).
+    t=re.sub(r'\b(weckt|begleitet|unterstützt|schützt|hält|bringt|erreicht|führt|erwartet|überzeugt|verwöhnt|inspiriert|entführt|versorgt|erinnert|motiviert|wärmt|kühlt|trägt|lässt|befreit|entlastet|verbindet|informiert|beruhigt|entspannt|unterhält|belohnt|überrascht|begeistert|fasziniert|erfrischt|pflegt|stärkt|kleidet|schmückt|beschützt|erfreut|verführt|beeindruckt|umgibt|umhüllt|begleiten|bringen|halten|unterstützen|schützen|erinnern|informieren) Sie\b',r'\1 dich',t)
     # 3) Verb + Sie mitten im Satz: «finden Sie» → «findest du», «erhalten Sie» → «erhältst du»
     t=re.sub(r'\bfinden Sie\b','findest du',t); t=re.sub(r'\berhalten Sie\b','erhältst du',t); t=re.sub(r'\bkönnen Sie\b','kannst du',t)
     t=re.sub(r'\bsind Sie\b','bist du',t); t=re.sub(r'\bhaben Sie\b','hast du',t); t=re.sub(r'\bmöchten Sie\b','möchtest du',t); t=re.sub(r'\bwollen Sie\b','willst du',t)

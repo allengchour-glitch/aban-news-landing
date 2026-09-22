@@ -6,6 +6,48 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-22 · 🌐 «webseite ist a und o, optimiere alles und produkten auch» — erst die 953 besuchten Seiten, dann der ganze Katalog
+
+**Messung 1 — wo Menschen ankommen (60 Tage, 845 aktive Produktseiten, 1'510 Sitzungen):** Sie-Form 222 ·
+kein Faktenblock 253 (250 davon CJ) · nur 1 Bild 55 (49 davon Editor-Ware: T-Shirts, Tassen, Kissen — ohne
+zweite Quelle) · Titel >70 Zeichen 24 · SEO-Beschreibung leer 0 · Alt-Text fehlt 0 · Lieferanten-Leak 0 ·
+nicht kaufbar 0. 86 besuchte Kollektionen: 6 ohne Bild, 1 in Sie-Form, 1 ohne SEO-Text, 0 leer.
+
+**Getan (besucht):** `politur()` aus `besuchte_seiten_lieferbar.py` über 352 Handles: 127 auf du, 249 in die
+Faktenblock-Prio; `cj_specs_backfill.mjs` LIMIT=80 → 75 Faktenblöcke. Nachmessung: Sie-Form 222 → 131
+(Rest überwiegend «Sie ist/verfügt/bietet» = das Produkt als Subjekt, kein Kunde — der Detektor zählt zu
+viel), ohne Faktenblock 253 → 178 (176 in der Prio, laufen täglich). 24 lange Titel: 14 hatten schon einen
+SEO-Titel (Messung am Produkttitel statt `seo.title` — Klasse war kleiner), 10 gesetzt. 6 Kollektionsbilder
+aus dem bestverkauften Produkt, `sub-beleuchtung` geduzt, `viral-hits` SEO-Text.
+
+**⚠️ Ein totes Tor:** Der Aufseher startete `cj_specs_backfill` nur, wenn im Log KEIN «FERTIG:» stand —
+und niemand setzt das Log je zurück. Nach dem ersten FERTIG war das Tor für immer zu; die 249 neuen
+Prio-Einträge hätten nie einen Faktenblock bekommen. Tor jetzt = «prio minus done > 0» (gemessen 254 offen).
+
+**Messung 2 — der ganze Katalog (Bulk-Export, 51'336 aktive):** **Sie-Form 26'189 (51 %)** · CJ ohne
+Faktenblock 40'087 (78 %, ~20 CJ-Punkte je Stück → nur wo Menschen ankommen) · nur 1 Bild 1'840 · Text
+<300 Zeichen 933 · Titel >70 ohne SEO-Titel 46 (gesetzt) · SEO-Beschreibung leer 10 (gesetzt) ·
+Lieferanten-Leak 4 (Textstellen «SKU-abhängig», «SKU 90530», Farbcodes «CJ-02» — bereinigt) ·
+Alt-Text 20 (Backfill läuft).
+
+**Der neue Läufer `automation/produkttexte_du_form.py`** (täglich im Aufseher, TXTLOCK, CAP 1500/Tag,
+Kandidaten `dropship/_du_form_kandidaten.txt`, Ledger `_du_form_done.txt`, Bericht `DU-FORM-VERDACHT.md`):
+holt den LIVE-Text, wandelt mit `um()`, und schreibt NUR, wenn zwei Warnmuster nichts finden. **Das
+Sicherheitsnetz hat sich sofort bezahlt gemacht:** Probe 200 → 0 Verdacht; Probe 120 → **10 Verdacht** =
+«dass du immer einen Vorrat **haben**», «sodass du … zugreifen **können**», «du **sich** frei bewegen» —
+Regel 2b tauschte nur das Pronomen, das Verb am Satzteil-Ende blieb Plural. 8 % der Wandlungen wären
+falsch in den Shop gegangen. → Regel 2d in `um()`: Verb am Satzteil-Ende nachziehen (feste Tabelle,
+40 Verben), «du sich» → «du dich»; Ausnahmen: zusammengesetztes Subjekt («du oder deine Liebsten …
+finden können» bleibt Plural) und Modal + Infinitiv («du kannst sie haben» bleibt). Dazu Regel 1/2b
+auch für Konjunktionen am Satzanfang («Wenn Sie», «Egal, ob Sie») und 2c um 20 Objekt-Verben
+(«informiert Sie» → «informiert dich»). Kanarienvögel: 10 Sätze, alle richtig.
+
+**Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
+(2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
+misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
+Unterscheidung Subjekt/Anrede, sonst bleibt eine Restzahl stehen, die keine ist. (4) Titel-Klassen am
+`seo.title` messen, nicht am Produkttitel.
+
 ## 2026-09-22 · 🕳️ Autonome Verbesserungsrunde 1: der Wächter für tote Landeseiten sah 221 von 953 Seiten — und meldete täglich «FERTIG»
 
 **Anlass:** erste Runde der neuen Routine «Autonome Verbesserungsrunde» (08:25 UTC). Messung statt
