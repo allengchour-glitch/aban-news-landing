@@ -15923,3 +15923,11 @@ gid://shopify/Product/15501005291905	89->0	Nixie-Röhrenuhr mit Wecker aus Walnu
 gid://shopify/Product/15501006078337	26->0	Kubanisches Solitär-Armband
 gid://shopify/Product/15501006209409	21->0	Elektrisches Lichttherapiegerät zur Hautverjüngung
 gid://shopify/Product/15501879148929	41->0	Zitronenarmband
+gid://shopify/Product/15502379614593	22->0	Automatische Rollleine für mittelgrosse bis grosse Hunde
+gid://shopify/Product/15502385185153	69->0	Taktischer Outdoor-Rucksack für Herren
+gid://shopify/Product/15502471266689	11->0	Nagelfräser-Bit aus Wolframstahl
+gid://shopify/Product/15502473855361	62->1	Weinregal aus Massivholz zur Selbstmontage
+gid://shopify/Product/15502661616001	46->0	Magnetischer Futter- und Wassernapf für Haustiere
+gid://shopify/Product/15503089992065	16->3	Tragbares Notfallradio mit Solarfunktion
+gid://shopify/Product/15503150186881	156->0	Klimmzugstange für Türrahmen
+gid://shopify/Product/15521230520705	16->0	Futterspielzeug "Karotte" mit Saugnapf
