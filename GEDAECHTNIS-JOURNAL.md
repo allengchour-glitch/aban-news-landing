@@ -100,6 +100,9 @@ aber «das letzte sichtbare Textfeld» war das Themen-Feld (Name landete als Tag
 «Veröffentlichen» fiel durch `:visible` + Anker-Regex → per Rolle; (5) **Pin veröffentlicht, auf der Pinnwand
 nachgelesen** (Katzenspielzeug, Home & Geschenkideen). Aufträge 6–10 laufen; täglich 6 über
 `pinterest_pins_planen.sh` (Aufseher), Warteschlange 42 aus `pinterest_pins_queue_bauen.py`.
+**Stand 13:10 UTC: 5 Pins veröffentlicht und nachgelesen** (Katzenspielzeug, beheizbare Hausschuhe, Futterspender,
+Sensor-Seifenspender, figurformendes Kleid — vier Pinnwände), der sechste läuft; Warteschlange auf 110 Produkte
+reihum über die Pinnwände erweitert. Betreiber 13:05: «erledige alles selber. sehr schön weiter machen».
 Lehre: **Ein Schwellwert aus dem Kopf (200 Zeichen) ist keine Messung — die leere Seite war die Wahrheit.**
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
