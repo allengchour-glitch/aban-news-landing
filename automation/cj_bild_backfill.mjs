@@ -143,14 +143,23 @@ async function main() {
     if (p.status !== 'ACTIVE' || !p.g) continue;
     const mc = typeof p.mediaCount === 'object' ? (p.mediaCount?.count || 0) : (p.mediaCount || 0);
     if (mc > 1) continue;
-    const vs = Array.isArray(p.variants) ? p.variants : (p.variants?.nodes || []);
-    const sku = (vs[0]?.sku || '');
-    const m = sku.match(/^CJ-(\d{6,})$/);
-    if (!m) continue;                       // nur Ware mit CJ-Produkt-ID in der SKU
+    // ⚠️ 22.09.2026: Der Export traegt seit dem Umbau KEINE Varianten mehr (Felder: id, title,
+    // status, tags, productType, g, mediaCount, priceRangeV2) — `sku` war immer '', der Lauf
+    // meldete «0 Kandidaten» und schrieb FERTIG, und die FERTIG-Sperre hielt ihn seit 30.08.
+    // fest, waehrend 831 aktive CJ-Produkte mit einem Bild dastanden. Kandidat ist jetzt jedes
+    // aktive `cj-real` mit <= 1 Bild; die SKU wird beim Lauf je Produkt bei Shopify geholt.
+    if (!(p.tags || []).includes('cj-real')) continue;
     if (done.has(p.id)) continue;
-    offen.push({ id: p.id, pid: m[1], titel: p.title });
+    offen.push({ id: p.id, pid: null, titel: p.title });
   }
   console.log(`CJ-Produkte mit nur einem Bild: ${offen.length}`);
+  // SKU-Formen: `CJ-<pid>` (neuere Importe) → pid=  ·  `CJ-CJYD2867018` / `cj-CJMZ…` (aeltere)
+  // → productSku=  (beide antworten 200 mit productImageSet; gemessen 22.09.: 17 bzw. 5 Bilder).
+  const cjFrage = sku => {
+    const a = sku.match(/^cj-(\d{6,})/i); if (a) return `/product/query?pid=${a[1]}`;
+    const b = sku.match(/^cj-(CJ[A-Z0-9]{6,})/i); if (b) return `/product/query?productSku=${b[1]}`;
+    return null;
+  };
   if (DRY) {
     for (const o of offen.slice(0, 8)) console.log(`   ${o.pid}  ${o.titel.slice(0, 50)}`);
     return;
@@ -160,7 +169,13 @@ async function main() {
   let ergaenzt = 0, ohne = 0, tot = 0, unklar = 0, werbetext = 0, unlesbar = 0;
   const led = fs.createWriteStream(LEDGER, { flags: 'a' });
   for (const o of offen.slice(0, CAP)) {
-    const dj = await cj(`/product/query?pid=${o.pid}`);
+    const sq = await sgql(tok, 'query($id:ID!){product(id:$id){status variants(first:1){nodes{sku}}}}', { id: o.id });
+    const sku = sq.data?.product?.variants?.nodes?.[0]?.sku || '';
+    if (sq.data?.product?.status !== 'ACTIVE') { led.write(`${o.id}\tnicht-aktiv\t${sku}\n`); continue; }
+    const frage = cjFrage(sku);
+    if (!frage) { led.write(`${o.id}\tkeine-cj-ref\t${sku}\n`); continue; }
+    o.pid = sku;
+    const dj = await cj(frage);
     await sleep(CJSLEEP);
     // ⚠️ EINE FEHLGESCHLAGENE ANFRAGE IST KEIN «HAT KEINE BILDER». Der erste Lauf schrieb
     // beides in dasselbe Ledger und übersprang das Produkt damit für immer: 530 von 752

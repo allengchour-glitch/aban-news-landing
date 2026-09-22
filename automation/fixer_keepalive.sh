@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache cj_bild_nachtrag; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -434,7 +434,14 @@ while true; do
       case "$N" in cj_bild_backfill|cj_variantenbild) continue ;; esac
     fi
     fehlt "$REPO/automation/$N.mjs" && continue
-    grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue
+    # ⚠️ 22.09.2026: «FERTIG» hielt cj_bild_backfill seit 30.08. fest (es hatte «0 Kandidaten»
+    # gemeldet, weil der Export keine SKUs mehr traegt) — waehrend 831 CJ-Produkte mit EINEM
+    # Bild dastanden. Fuer Backfills gilt dieselbe 20-h-Regel wie in der Python-Schleife;
+    # nur die Einmal-Importe (schulstart, frosch_maske) bleiben nach FERTIG aus.
+    case "$N" in
+      schulstart_import|frosch_maske_import) grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue ;;
+      *) if grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
+    esac
     pause_kuehlt "$N" && continue
     dreht_sich_im_kreis "$N" && continue
     ps -eo args --no-headers | awk -v s="automation/$N.mjs" \
@@ -451,6 +458,16 @@ while true; do
   # und meldet SCHULSTART FERTIG, sobald das Ledger beide trägt.
   if ! grep -q "^SCHULSTART FERTIG" /tmp/schulstart_lauf.log 2>/dev/null; then
     ps -eo args --no-headers | grep -v grep | grep -q "automation/schulstart_lauf.sh" ||       ( cd "$REPO" && setsid bash -c           "exec 9>/tmp/lock_schulstart.lock; flock -n 9 || exit 0; exec bash automation/schulstart_lauf.sh"           >> /tmp/schulstart_lauf.log 2>&1 9>&- & )
+  fi
+  # 🧵 POD-EDITOR-QA (22.09.2026): `pod_editor_qa.mjs` stand in KEINER Startliste und hatte kein
+  # Log — Regel 4 verlangt 0 Befunde nach jeder POD-Aenderung. Einmal am Tag, 30 Editor-Produkte,
+  # ~20 s. Bei Befunden steht die Zeile im Log UND hier im Aufseher-Log (engine_keepalive greift ⚠️).
+  if [ ! -f /tmp/pod_qa_$(date -u +%F) ] && [ -f "$REPO/automation/pod_editor_qa.mjs" ]; then
+    touch "/tmp/pod_qa_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_pod_editor_qa.lock; flock -n 9 || exit 0; /opt/node22/bin/node automation/pod_editor_qa.mjs; rc=\$?; [ \$rc -ne 0 ] && echo \"\$(date -u +%H:%M) ⚠️ POD-EDITOR-QA: Befunde (exit \$rc) — siehe /tmp/pod_editor_qa.log\"; exit 0" \
+        >> /tmp/pod_editor_qa.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start pod_editor_qa (täglich)"
   fi
   # 🎬 LIEFERANTENVIDEOS NACHHOLEN — bewusst in kleinen Schlucken. Von 34'824 aktiven
   # Produkten zeigen nur 144 ein Video, und CJ hat für die allermeisten auch keines: von 15

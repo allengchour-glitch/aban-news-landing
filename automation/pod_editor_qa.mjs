@@ -13,6 +13,8 @@ const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SEC
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function tok() {
+  // 22.09.2026: Client-Secret erreicht laufende Sessions nicht (Env leer) → Token-Datei wie alle Waechter
+  try { const t = (await import('node:fs')).readFileSync('/tmp/cj_shop_token.txt', 'utf8').trim(); if (t) return t; } catch {}
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
   return (await r.json()).access_token;
