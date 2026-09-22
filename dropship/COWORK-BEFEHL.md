@@ -195,17 +195,38 @@ Das ist der einzige Schritt, der **nicht einmalig** wirkt: danach kann die Sessi
 Lieferprobleme selbst klären — genau die Klasse, die **5 von 9 externen Bestellungen**
 gekostet hat (#1006/#1007/#1008 ausverkauft, #1016/#1017 keine CH-Linie).
 
-Auf **deinem** Rechner:
+⚠️ **Korrigiert 22.09.:** hier stand bis heute `npx playwright open` + Tunnel — das geht auf einem
+Server ohne Bildschirm nicht (Lehre 17.09.). Der Weg, der am 17.09. bei Pinterest funktioniert hat:
+
+**Am PC, Fenster 1** (SSH statt Hetzner-Konsole — die Konsole frisst erste Zeichen):
+```bash
+ssh root@46.225.75.125
+bash /opt/luxe-agent/repo/server/jetzt-anmelden.sh
+```
+Das Skript hält den Agenten an, startet den Browser losgelöst (er überlebt das Fenster) und legt je
+einen Tab für CJ, Shopify, Pinterest, BigBuy, TikTok, Google an. Fenster darf danach zu.
+
+**Am PC, Fenster 2** (Tunnel — IMMER vom PC aus, nie auf dem Server tippen; offen lassen):
 ```bash
 ssh -L 9222:127.0.0.1:9222 root@46.225.75.125
 ```
-Auf dem **Server**, in derselben Sitzung:
+
+**Am PC, Chrome (Desktop, nicht Handy):**
+1. Adresszeile: `chrome://inspect` → Reiter **Devices** → **Configure…** → `localhost:9222` eintragen → Done.
+2. Unter **Remote Target** erscheinen die Tabs des Server-Browsers. Beim Tab **cjdropshipping.com** auf
+   **inspect** klicken → es öffnet sich ein Fenster mit dem Bildschirm des Server-Browsers. Dort ganz
+   normal einloggen (E-Mail, Passwort, 2FA tippen wie sonst auch).
+3. Zurück zu `chrome://inspect`, beim Tab **admin.shopify.com** auf **inspect** → dort einloggen.
+   ⚠️ Shopify kann dem Server-Browser trotz Login ein **403** zeigen (Bot-Wand, 18.09. gemessen) — das ist
+   dann kein Fehler von dir; wir messen es danach.
+
+**Am PC, Fenster 1 (wieder auf dem Server):**
 ```bash
-PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers npx playwright open --browser chromium \
-   --user-data-dir=/var/lib/luxe-agent/chrome-profil https://cjdropshipping.com
+bash /opt/luxe-agent/repo/server/anmeldung-fertig.sh
 ```
-Einloggen (CJ), dann im selben Fenster `https://admin.shopify.com/store/au3j0y-hq` aufrufen
-und auch dort einloggen. Fenster schliessen — das Profil behält beide Sitzungen.
+Beendet den Browser (Anmeldungen bleiben im Profil), startet den Agenten und lässt ihn sofort
+**nachmessen**, wo das Profil wirklich angemeldet ist. Ergebnis landet als
+`auftraege/erledigt/anmeldungen-nach-login.json` im Repo — ich lese es und melde, was er GESEHEN hat.
 
 Gemessen 18.09., Stand des Profils: **Pinterest ✅ angemeldet** · Shopify Admin **403** ·
 CJ **404** · BigBuy **403 (Cloudflare)** · Google **unmöglich**. Von vier vermeintlich
