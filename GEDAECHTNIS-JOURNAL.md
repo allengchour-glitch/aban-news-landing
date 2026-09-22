@@ -156,7 +156,7 @@ brauchen, benötigen, suchen, wünschen, profitieren, können + sich/zwischen/w�
 «Sie sparen Platz» bleibt (kann das Regal sein). Beinahe-Falle: `\b` in einem Heredoc-String wurde zum
 Backspace-Zeichen — die Regel griff still nicht; Test-Sätze zeigten es. Reparaturlauf bei 557 angehalten und mit
 den neuen Regeln neu gestartet (2'850 offen); Pin-Auftrag 8 als «fehler» geschlossen (Lauf gestorben, Produkt
-bleibt in der Warteschlange).
+bleibt in der Warteschlange). **Dann die ersten 10 Verdachtsfälle des Reparaturlaufs gelesen: 8 waren Fehlalarme der Warnnetze** (Adjektiv nach Artikel, Aufzählung mit Modalverb am Ende, Modalverb VOR du, Partizip nach 2.-Person-Verb) — der Text war richtig, wurde aber nicht geschrieben; **2 echte Lücken** («aus und haben … und können sie» — der Modal-Blick von 2j sah das Modalverb hinter dem NÄCHSTEN «und» als Zugehörigkeit; «wenn du unterwegs sind und … möchtest» — «sind» ist nie Infinitiv). Beides behoben, Netze verfeinert, Verdacht-Zeilen aus dem Reparatur-Ledger genommen (12), Lauf neu gestartet (2'422 offen). **Ein Warnnetz, das richtige Texte zurückhält, kostet leise — man sieht es nur, wenn man die Verdachtsfälle liest.**
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
