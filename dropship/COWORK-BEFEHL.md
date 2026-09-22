@@ -13,7 +13,9 @@ Shopify hat noch am selben Tag nachgebucht. Nichts zu tun.
 
 ---
 
-## 0️⃣ «insta push» (21.09. 20:10 UTC) — die Stopp-Datei löschen, dann poste ich  ·  ~1 Minute
+## 0️⃣ ✅ ERLEDIGT 22.09. ~20:10 UTC — Stopp-Datei vom Betreiber gelöscht (Commit 84799cb8b); erster Reel sofort live: Instagram https://www.instagram.com/reel/DdmhRxtjUIZ/ + Facebook-Video 2235749107209202 (Augenbrauen-Stempel-Kit, Produkt vorher als ACTIVE/kaufbar geprüft). Social-Autopilot läuft wieder (IG+FB, Reel-Abstand 48 h).
+
+### (Archiv) «insta push» (21.09. 20:10 UTC) — die Stopp-Datei löschen, dann poste ich  ·  ~1 Minute
 
 Du hast «insta push» gesagt. Alles ist bereit: Token gültig (Seite, Datenzugang bis 05.10.), Reel gewählt
 (**Augenbrauen-Stempel-Kit**, Produkt aktiv, CHF 15.90), Caption von Hand (keine Schablone mehr, alle 22 Captions
