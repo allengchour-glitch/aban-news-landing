@@ -14,6 +14,7 @@
  *      [MIN_SCORE=1] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { nachlauf } from './eimer_etikette.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -69,7 +70,7 @@ async function sgql(tok, q, v) {
       j = await r.json();
     } catch { await sleep(2000); continue; }
     const gedrosselt = (j?.errors || []).some(e => e?.extensions?.code === 'THROTTLED');
-    if (!gedrosselt) return j;
+    if (!gedrosselt) { await nachlauf(j); return j; }   // 22.09.: Eimer-Boden (eimer_etikette.mjs)
     const kosten = j?.extensions?.cost || {};
     const ts = kosten.throttleStatus || {};
     const fehlt = (kosten.requestedQueryCost || 100) - (ts.currentlyAvailable || 0);

@@ -116,6 +116,12 @@ def tok():
 TOK = tok()
 
 
+try:
+    from eimer_etikette import nachlauf as _etikette
+except Exception:              # Helfer fehlt (alter Snapshot) → ohne Etikette weiter, nie stehenbleiben
+    def _etikette(d): return 0.0
+
+
 def gql(q, v=None):
     grund = ""
     for i in range(8):
@@ -134,6 +140,7 @@ def gql(q, v=None):
             grund = "gedrosselt"; continue
         if errs:
             grund = str(errs)[:120]; time.sleep(2); continue
+        _etikette(d)                       # 22.09.: dem Eimer einen Boden lassen (eimer_etikette.py)
         return d
     raise RuntimeError(f"Shopify antwortet nicht (8 Versuche) — letzter Grund: {grund}")
 

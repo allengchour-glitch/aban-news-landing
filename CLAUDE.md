@@ -490,6 +490,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-22 · 🪣 **Verbesserungsrunde 4: Eimer 95/2'000 bei vier laufenden Massen-Schreibern, zwei Tages-Wächter starben gedrosselt (cj_versand_ch_guard, lagerstand_hygiene). Die Schranke begrenzt Starts, nicht den Durst.** `eimer_etikette.py/.mjs` (unter 600 warten bis 1'000) in alle vier Schreiber; Liechtenstein-Lauf FERTIG (1'075 + 119) → Journal
 - 2026-09-22 · 📣 **Social-Stopp vom Betreiber gelöscht («stopp datei gelöscht, weiter machen»): Token gültig (Seiten-Token, kein Ablauf), Kandidat vorher als ACTIVE + kaufbar (CONTINUE/untracked) + Video 206 geprüft — der Poster prüft das NICHT selbst; erster Reel live (IG DdmhRxtjUIZ + FB).** `social_autopilot.sh` lag nur im Repo, nicht in /tmp → Keepalive startet ihn wieder → Journal
 - 2026-09-22 · 🇱🇮 **Liechtenstein raus (Weg B, Betreiber): 13 sichtbare Stellen → 0, rückgelesen — und 1'190 Produkt-Lieferblöcke trugen die Phrase, geschrieben von `versand_jenachland` seit 05.09. (19.09. nicht gemessen).** Quelle umgedreht, `liechtenstein_raus.py` täglich, Ampel misst Markt UND Texte. **Vor dem Streichen den Schreiber finden** → Journal
 - 2026-09-22 · 🔒 **Reparierer wartete blockierend auf den Text-Lock des Stundenlaufs — in einem Container, der stündlich stirbt, ist Warten ein Nie.** `LOCK_NB` mit kurzem Probieren + Aufseher-Tor `flock -n lock_produkttext.lock true` vor dem Start → Journal
