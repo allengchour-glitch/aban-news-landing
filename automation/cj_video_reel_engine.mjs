@@ -144,13 +144,19 @@ function appendReel(id, url, cap, tags, platforms) {
   fs.writeFileSync(CSV, csv);
 }
 function gitPush(dateien, msg) {
+  // Repo-Sperre /tmp/git_repo.lock (22.09.): Motor und Autocommitter arbeiten im selben Arbeitsbaum; ein paralleler
+  // Merge/Rebase hinterliess .git/rebase-merge/autostash, danach scheiterte jeder Push des Motors und fuenf fertige
+  // Reels wurden verworfen. Ein verwaister Rebase-Zustand wird vor dem Versuch aufgeraeumt (--quit laesst HEAD stehen).
+  const cmd = `if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then git rebase --quit 2>/dev/null || true; fi; ` +
+    `git add ${dateien.map(f => `'${f}'`).join(' ')} && git commit -q -m '${msg} [skip ci]' ; git fetch -q origin ${BRANCH} && git -c rebase.autoStash=true rebase -q FETCH_HEAD && timeout 60 git push -q origin ${BRANCH}`;
   for (let a = 0; a < 3; a++) {
-    try {
-      execSync(`git add ${dateien.map(f => `'${f}'`).join(' ')} && git commit -q -m '${msg} [skip ci]' ; git fetch -q origin ${BRANCH} && git -c rebase.autoStash=true rebase -q FETCH_HEAD && timeout 60 git push -q origin ${BRANCH}`, { stdio: 'pipe' });
-      return true;
-    } catch (e) { execSync('git rebase --abort 2>/dev/null; true', { stdio: 'pipe' }); }
+    try { execFileSync('flock', ['-w', '180', '/tmp/git_repo.lock', 'bash', '-c', cmd], { stdio: 'pipe' }); return true; }
+    catch (e) { execSync('git rebase --abort 2>/dev/null; true', { stdio: 'pipe' }); }
   }
   return false;
+}
+function caption(hook, k, benefit) {
+  return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\nCHF ${k.price.toFixed(2)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
 }
 
 // ---------------------------------------------------------------- Kandidaten
@@ -201,6 +207,30 @@ console.log(`Kandidaten: ${kand.length} von ${gescannt} gescannt (Schwelle: ACTI
 
 // ---------------------------------------------------------------- Bauen
 fs.mkdirSync('/tmp/reelbuild', { recursive: true }); fs.mkdirSync(MEDIEN, { recursive: true });
+// Nachtrag (22.09.): Reel-Dateien im Repo OHNE Queue-Zeile — sie entstehen, wenn der Commit gelang, aber Push oder
+// Rebase scheiterte (gemessen 22.09.: sieben Dateien nach einem verklemmten Rebase). Die Datei liegt in der Historie,
+// also Zeile und Ledger nachtragen statt neu rendern. Bedingung: Adresse antwortet (= gepusht) und Produkt ACTIVE.
+let nachgetragen = 0;
+if (!DRY) {
+  const waisen = fs.readdirSync(MEDIEN).map(f => /^reel_(.+)\.mp4$/.exec(f)?.[1]).filter(p => p && !gebaut.has(p) && !inCsv.has(p));
+  for (let i = 0; i < waisen.length; i += 20) {
+    const teil = waisen.slice(i, i + 20);
+    const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q: teil.map(p => `sku:CJ-${p}`).join(' OR ') });
+    if (!r) break;
+    for (const n of r.data.products.nodes) {
+      const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(n.variants.nodes[0]?.sku || ''); if (!m || !teil.includes(m[1])) continue;
+      const pid = m[1], k = { pid, title: n.title.trim(), handle: n.handle, price: parseFloat(n.variants.nodes[0]?.price || '0') }, url = RAW + `reel_${pid}.mp4`;
+      let code = ''; try { code = execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', url], { encoding: 'utf8' }); } catch {}
+      if (!/^20[06]$/.test(code)) { console.log(`   Nachtrag ${pid}: Adresse antwortet ${code} — Datei noch nicht gepusht`); continue; }
+      if (n.status !== 'ACTIVE') { console.log(`   Nachtrag ${pid}: Produkt ${n.status} — keine Zeile`); continue; }
+      const th = thema(k.title), hook = hookFuer(th, pid, k.title);
+      appendReel(`cjreel-${pid}`, url, caption(hook, k, nutzen(n.description || '')), hashtags(k.title, pid), 'instagram,facebook');
+      fs.appendFileSync(LEDGER, pid + '\n'); gebaut.add(pid); inCsv.add(pid); nachgetragen++;
+      console.log(`   ✅ Nachtrag: ${pid} [${th}] ${k.title.slice(0, 50)} → queue`);
+    }
+  }
+  if (nachgetragen) gitPush([CSV, LEDGER], `Reel-Queue: ${nachgetragen} Zeilen nachgetragen`);
+}
 let made = 0, gefragt = 0;
 const letzteMusik = fs.existsSync('/tmp/_reel_last_music') ? fs.readFileSync('/tmp/_reel_last_music', 'utf8').trim() : '';
 for (const k of reihe) {
@@ -211,7 +241,7 @@ for (const k of reihe) {
   if (!vurl) { if (!DRY) fs.appendFileSync(KEINVIDEO, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\n`); continue; }
   const th = thema(k.title), hook = hookFuer(th, k.pid, k.title), [z1, z2] = zeilen(k.title);
   const benefit = nutzen(k.desc);
-  const cap = `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\nCHF ${k.price.toFixed(2)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
+  const cap = caption(hook, k, benefit);
   const tags = hashtags(k.title, k.pid);
   console.log(`→ ${k.pid} [${th}] ${k.title.slice(0, 60)} · CHF ${k.price}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${vurl.slice(0, 70)}`);
   if (DRY) { made++; continue; }
@@ -239,4 +269,4 @@ for (const k of reihe) {
   finally { fs.rmSync(src, { force: true }); fs.rmSync(out, { force: true }); }
 }
 if (!DRY && fs.existsSync(KEINVIDEO)) gitPush([KEINVIDEO], 'Reel-Motor: kein-Video-Ledger');
-console.log(`FERTIG. neue Reels: ${made} | CJ gefragt: ${gefragt} | Kandidaten: ${kand.length}`);
+console.log(`FERTIG. neue Reels: ${made} | nachgetragen: ${nachgetragen} | CJ gefragt: ${gefragt} | Kandidaten: ${kand.length}`);

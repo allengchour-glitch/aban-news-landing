@@ -204,6 +204,26 @@ gefiltertem und ungefiltertem Aufruf vergleichen, bevor man ein Merkmal für tot
 sucht im falschen Regal — die eigenen Produkte sagen, welche Regale zählen. (d) Jede Zahl aus einer pid muss auch für
 Buchstaben-pids funktionieren; `Number()` schweigt bei NaN, das Ergebnis heisst «undefined» und landet im Dateipfad.
 
+**Nachtrag 18 (23:05 UTC) — Der erste Index-Lauf des Motors baute sechs Reels und verwarf fünf: zwei git-Prozesse im selben Arbeitsbaum.**
+Runner-Lauf 22:19: Index 150 Aufrufe → **285 Shop-Produkte mit Video** (Cursor 8/578), Motor rendert Reel um Reel — ab dem dritten
+«Push fehlgeschlagen — Reel verworfen» bei JEDEM weiteren, fünf gerenderte Reels weg. Gemessen: `.git/rebase-merge/` mit nur
+einer `autostash`-Datei (22:28), `git status` «You are currently rebasing», HEAD 3 Commits vor origin, sieben Reel-Dateien als
+gelöscht (der Motor löscht die Datei nach «Push fehlgeschlagen», der Commit war aber längst da). Um 22:28 hat der **Autocommitter**
+(Merge-basiert, alle 5 Min, ohne Sperre, mit `rm -f .git/index.lock`) parallel zum **Rebase des Motors** gearbeitet; der
+verklemmte Zustand liess danach jeden Rebase scheitern, und der `--abort` des Motors setzte drei Ledger auf den Commit-Stand
+zurück — **119 Zeilen `_du_form_done.txt` und der frischere Index (285 statt 70) lagen nur noch im Autostash**.
+Reparatur: `git rebase --quit` (HEAD bleibt, Autostash → Stash-Liste), Ledger-Union aus dem Stash (119 Zeilen ergänzt, Index
+neuere Fassung), Reel-Dateien aus HEAD zurück, drei Commits gepusht, dann der neue **Nachtrag-Modus des Motors** (Datei im Repo ohne
+Zeile → Adresse prüfen, Produkt ACTIVE, Caption bauen, Zeile + Ledger): **7 Zeilen nachgetragen**, Queue jetzt 18 ready.
+Dauerhaft: **eine Repo-Sperre `/tmp/git_repo.lock`** um jede git-Folge — Motor (`flock -w 180`, räumt einen verwaisten
+Rebase-Zustand mit `--quit` selbst) und Autocommitter (`flock -w 120`, wartet bei Rebase-Zustand, löscht `index.lock` nur ohne
+Halter). Meine eigenen Push-Folgen laufen ab jetzt ebenfalls unter dieser Sperre.
+**Lehren:** (a) Zwei Automaten, die im selben Arbeitsbaum committen, brauchen EINE Sperre — sonst ist der zweite Push nicht «manchmal
+langsam», sondern der Zustand des Repos kaputt, und alle Folgeläufe scheitern mit einer Meldung, die nach Netz klingt. (b) Ein
+`--abort` nach dem Fehler ist keine Reparatur: er setzt Dateien zurück, die andere Prozesse inzwischen weitergeschrieben haben; die
+Wahrheit lag im Stash. (c) «Reel verworfen» darf keine Datei löschen, die schon committet ist — der Nachtrag-Modus macht aus einem
+verwaisten Commit wieder eine Queue-Zeile, statt CJ-Download und Render zu wiederholen.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

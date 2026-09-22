@@ -18,16 +18,24 @@
 # jedem Neustart lag die Drift also fünf Minuten unbeachtet herum, und Neustarts sind hier
 # häufig.
 cd /home/user/aban-news-landing || exit 1
-BRANCH=claude/luxestyle-status-tztnn1
+export BRANCH=claude/luxestyle-status-tztnn1
 
+# ⚠️ REPO-SPERRE (22.09.2026). Motor (cj_video_reel_engine, Rebase) und dieser Committer (Merge) arbeiten
+# im selben Arbeitsbaum. Gemessen 22:28 UTC: der parallele Merge liess .git/rebase-merge/autostash zurueck,
+# danach scheiterte JEDER Push des Motors («rebase in progress»), fuenf fertige Reels wurden verworfen und
+# der Abbruch setzte drei Ledger auf den Commit-Stand zurueck (119 Zeilen lagen nur noch im Stash).
+# Jede git-Folge laeuft deshalb unter flock /tmp/git_repo.lock; ein verwaister Rebase-Zustand wird nicht
+# ueberfahren, sondern gemeldet (der Motor raeumt ihn selbst mit --quit).
 while true; do
-  rm -f .git/index.lock
-  git add -A dropship/ 2>/dev/null
-  if ! git diff --cached --quiet 2>/dev/null; then
-    git commit -q -m "CJ-Ledger auto [skip ci]" 2>/dev/null
-    git fetch -q origin "$BRANCH" 2>/dev/null
-    git merge -q "origin/$BRANCH" 2>/dev/null
-    timeout 40 git push origin "$BRANCH" 2>/dev/null
-  fi
+  flock -w 120 /tmp/git_repo.lock bash -c '
+    if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then echo "$(date -u +%H:%M) Rebase-Zustand vorhanden — Committer wartet"; exit 0; fi
+    [ -f .git/index.lock ] && [ -z "$(fuser .git/index.lock 2>/dev/null)" ] && rm -f .git/index.lock
+    git add -A dropship/ 2>/dev/null
+    if ! git diff --cached --quiet 2>/dev/null; then
+      git commit -q -m "CJ-Ledger auto [skip ci]" 2>/dev/null
+      git fetch -q origin "$BRANCH" 2>/dev/null
+      git merge -q "origin/$BRANCH" 2>/dev/null
+      timeout 40 git push origin "$BRANCH" 2>/dev/null
+    fi' || echo "$(date -u +%H:%M) Repo-Sperre nicht bekommen"
   sleep 300
 done
