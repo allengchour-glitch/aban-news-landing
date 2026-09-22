@@ -122,6 +122,31 @@ Die Vollständigkeits-Regel zählt nur noch Anrede (Satzmitte), nicht jedes «Si
 richtig: «brauchen kannst», «suchen solltest»; Gedankenstrich als Satzteil-Ende) → **107 Ratgeber/Seiten geduzt**,
 Rest im Bericht. 82 Produkt-Verdachte zur Neuprüfung freigegeben, sobald der Läufer ruht.
 
+**Nachtrag 6 (14:35 UTC) — Reparatur des Geschriebenen: der Trockenlauf war der bessere Regeltest, und der
+Du-Form-Lauf hatte sich selbst ausgesperrt.** GEMESSEN: In den 107 geduzten Ratgebern/Seiten standen **86
+Inversionen** («So tragen du», «– hören du auf dich») — Texte, die VOR Regel 2h geschrieben wurden. Reparatur:
+45 Texte, Nachscan 107/107 ohne Befund. Bei den Produkten zeigte eine 150er-Stichprobe **3 Alt-Defekte (2 %)**
+(«entscheidst du sich», «Verabschiedst du sich») → Reparatur-Werkzeug `produkttexte_du_form_reparatur.py`
+über alle 3'407 Ledger-Einträge, Trockenlauf 400 → die Diffs lesen war entscheidend: **drei der ersten fünf
+Kandidaten waren REGRESSIONEN der neuen Regeln**, nicht Reparaturen — «du einzelne Nägel hervorhebst oder …
+gestalten möchtest» (Infinitiv gehört zum Modalverb), «du einen mattest, schimmernden Look» (Adjektiv nach
+Artikel als Verb), «unterstützt es du dabei» (Objekt-Sie). Dazu «bleibst du stets verbundest» (Partizip),
+«Tragst du es einzelst» (Adverb auf -eln), «Kannst du es kaum erwartest» (Modalverb VOR du, gross geschrieben,
+case-sensitiv geprüft), «du schneidest, würfeln, raspeln oder Eier trennen möchten» (Aufzählung über Kommas).
+Neun Klassen in `um()` nachgebessert (2i Aufzählung, 2j zweites finites Verb nach und/oder, Imperativ nach
+Gedankenstrich/«Bitte», Präfix-Starkverben in `_zweite`), Kanarien alle grün, Trockenlauf 27 → 55 → 66
+reparierbar bei 4 Verdacht — dann erst der scharfe Lauf. **Die Kanarien-Sätze prüfen, was ich mir vorstellen
+kann; die Diffs echter Texte prüfen, was es gibt.**
+Und der Du-Form-Lauf 3 (CAP 1500, 13:37 gestartet) hatte nach **52 Minuten 0 Zeilen** ins Ledger geschrieben:
+`/proc/5153/wchan` = `locks_lock_inode_wait`, fd 8 UND fd 3 auf `/tmp/lock_produkttext.lock` — **fd 8 war vom
+Starter geerbt** (Aufseher-Muster `exec 8>lock; flock 8`), die eigene `flock(LOCK_EX)` auf fd 3 wartete auf den
+Lock, den der eigene Prozess über die geerbte Dateibeschreibung schon hielt. Selbst-Deadlock, kein Fehler im
+Log, kein Timeout. Beendet, Reparaturlauf mit `exec 8>&- 9>&-` gestartet (14:31), läuft. **Nachgemessen: der Erblasser war der Aufseher selbst** — `fixer_keepalive.sh` führte `produkttexte_du_form` in der TXTLOCK-Liste (`exec 8>lock; flock -w 240 8; exec python3 …`), und ein zweiter, älterer Startblock hielt denselben Lock auf fd 9 (mit einem `WRITE=1`, das das Skript nicht mehr kennt). **Jeder automatische Start seit dem 21.09. stand im Selbst-Deadlock; die 3'407 Ledger-Zeilen stammen ausnahmslos von Handstarts.** Beide Stellen repariert, der Reparaturlauf hat im Aufseher einen eigenen Block (Tor = offene Einträge, fds geschlossen).
+**Lehren:** (1) Nach jeder Regeländerung den Trockenlauf über ECHTE Texte als Diff lesen — die Regressionen
+standen nicht in den Kanarien. (2) Ein Lauf, dessen Ledger nach 10 Minuten nicht wächst, ist ein Fall für
+`wchan`/`fuser`, nicht für Geduld. (3) Wer flock-Wächter startet, schliesst geerbte fds — ein geerbter Lock-fd
+sperrt den Erben gegen sich selbst.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

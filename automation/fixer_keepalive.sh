@@ -406,7 +406,10 @@ while true; do
     # Startblock mit LISTE= (Arbeitsliste des Klassen-Scans). In dieser Schleife lief es
     # OHNE LISTE, las den Export vom 30.08. und meldete «0 doppelte Bloecke» — und sein
     # laufender Prozess liess den richtigen Lauf per ps-Pruefung aussetzen (08.09.2026).
-    case " versand_jenachland lieferblock_doppelt ss_statt_scharf_s fremdzeichen_guard heilversprechen_wache produkttexte_du_form " in
+    # ⚠️ produkttexte_du_form steht NICHT in dieser Liste: das Skript nimmt den Text-Lock SELBST (flock LOCK_EX).
+    # Mit TXTLOCK erbte es fd 8 samt gehaltenem Lock und wartete dann auf sich selbst (22.09.2026: 52 Min
+    # locks_lock_inode_wait, 0 Zeilen im Ledger — jeder automatische Start seit dem 21.09. stand so).
+    case " versand_jenachland lieferblock_doppelt ss_statt_scharf_s fremdzeichen_guard heilversprechen_wache " in
       *" $L "*) TXTLOCK="exec 8>/tmp/lock_produkttext.lock; flock -w 240 8 || exit 0;" ;;
       *)        TXTLOCK="" ;;
     esac
@@ -1159,16 +1162,22 @@ while true; do
   #      noch den naechsten Sammellauf, der die Arbeitsdatei ueberschreibt),
   #   3. das Tageskontingent ist klein. Ohne den Rueckweg waere ein systematischer Fehler
   #      unumkehrbar — dann gehoerte das Schreiben in eine gelesene Entscheidung.
-  DU=/tmp/produkt_du_lauf.log
-  if [ -f "$REPO/automation/produkttexte_du_form.py" ]; then
-    ALTER=$(( $(date +%s) - $(stat -c %Y "$DU" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
-      touch "$DU"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
+  # 22.09.2026: der alte Startblock hier ist WEG — er hielt den Text-Lock auf fd 9 und vererbte ihn an das Skript,
+  # das denselben Lock selbst nimmt (Selbst-Deadlock, s. o.); ausserdem kannte das Skript kein WRITE= mehr.
+  # produkttexte_du_form laeuft jetzt NUR ueber die Tages-Schleife oben (eigener Lock, ohne TXTLOCK).
+  # ── Reparatur der schon geduzten Produkttexte (22.09.2026) ────────────────────────────────
+  # Regeln in um() sind gewachsen; Alt-Texte tragen «entscheidst du sich»/«Tragst du es». Idempotent ueber
+  # dropship/_du_form_reparatur_done.txt; laeuft, bis alle Ledger-Eintraege geprueft sind, dann nie mehr.
+  if [ -f "$REPO/automation/produkttexte_du_form_reparatur.py" ]; then
+    R_OFFEN=$(comm -23 <(awk -F'\t' '$3=="du"||$3=="teilweise"||$3=="um-ohne-wirkung"||$3~/^verdacht:/{print $1}' "$REPO/dropship/_du_form_done.txt" 2>/dev/null | sort -u) \
+                       <(cut -f1 "$REPO/dropship/_du_form_reparatur_done.txt" 2>/dev/null | sort -u) | wc -l)
+    if [ "$R_OFFEN" -gt 0 ] && ! flock -n /tmp/lock_du_form_reparatur.lock true 2>/dev/null; then
+      echo "$(date -u +%H:%M) du_form_reparatur laeuft ($R_OFFEN offen)"
+    elif [ "$R_OFFEN" -gt 0 ]; then
       ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_produkttext.lock; flock -w 2400 9 || exit 0; exec > \"$DU\" 2>&1; \
-           CAP=150 python3 automation/produkttexte_du_form.py && \
-           WRITE=1 exec python3 automation/produkttexte_du_form.py" 9>&- & )
-      echo "$(date -u +%H:%M) produkttexte_du_form gestartet"
+          "exec 8>&- 9>&-; exec 7>/tmp/lock_du_form_reparatur.lock; flock -n 7 || exit 0; exec python3 automation/produkttexte_du_form_reparatur.py" \
+          >> /tmp/produkttexte_du_form_reparatur.log 2>&1 8>&- 9>&- & )
+      echo "$(date -u +%H:%M) du_form_reparatur gestartet ($R_OFFEN offen)"
     fi
   fi
 
