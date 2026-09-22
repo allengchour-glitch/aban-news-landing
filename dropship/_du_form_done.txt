@@ -3489,3 +3489,14 @@ canvas-computer-rucksack-aa4c9d	2026-09-22	du
 canvas-fussstutzenkissen-605900	2026-09-22	du
 canvas-laptop-schutzhulle-629200	2026-09-22	du
 canvas-messenger-tasche-34-8-26-cm-881600	2026-09-22	um-ohne-wirkung
+canvas-plateau-sneaker-fur-damen-634200	2026-09-22	du
+canvas-retro-umhangetasche-254336	2026-09-22	um-ohne-wirkung
+canvas-rucksack-39b2dc	2026-09-22	verdacht:du dein Smartphone oder andere Geraete unterwegs aufladen
+canvas-rucksack-be25f3	2026-09-22	du
+canvas-rucksack-fur-freizeit-und-reisen-919360	2026-09-22	du
+canvas-rucksack-fur-laptop-15-zoll-a48925	2026-09-22	du
+canvas-rucksack-grossraumtasche-612900	2026-09-22	du
+canvas-rucksack-mit-crazy-horse-leder-614500	2026-09-22	du
+canvas-rucksack-mit-totenkopf-print-068416	2026-09-22	du
+canvas-rucksack-mit-usb-anschluss-960832	2026-09-22	du
+canvas-rucksack-mit-usb-ladefunktion-624400	2026-09-22	du
