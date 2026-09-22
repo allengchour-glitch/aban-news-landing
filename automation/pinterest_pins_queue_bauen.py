@@ -19,8 +19,9 @@ OUT = os.path.join(REPO, "dropship", "_pinterest_pins_queue.tsv")
 MAX = int(os.environ.get("MAX", "8"))
 TOK = open('/tmp/cj_shop_token.txt').read().strip()
 KOLL = ['hype-jetzt', 'bestseller', 'neu-eingetroffen', 'trends-gadgets', 'wohnen-dekoration', 'schmuck-uhren',
-        'beauty-pflege', 'damen-mode', 'fur-ihn', 'schuhe-sneaker', 'sub-haustier', 'sub-kueche', 'lampen-leuchten',
-        'sub-ohrringe', 'sub-halsketten', 'uhren', 'wellness-massage', 'sommer', 'weihnachten-2026']
+        'beauty-pflege', 'damen-mode', 'fur-ihn', 'herrenuhren-schmuck', 'herren-schuhe', 'schuhe-sneaker', 'sub-haustier',
+        'sub-kueche', 'lampen-leuchten', 'sub-ohrringe', 'sub-halsketten', 'sub-ringe', 'uhren', 'wellness-massage',
+        'sommer', 'weihnachten-2026', 'premium-schmuck', 'wasserfester-schmuck']
 BOARDS = {'herren': 'Herrenmode Schweiz', 'schmuck': 'Schmuck & Accessoires', 'damen': 'Sommerkleider & Damenmode 2026',
           'wellness': 'Wellness & Beauty', 'home': 'Home & Geschenkideen', 'schuhe': 'Schuhe & Sandalen'}
 RISK = re.compile(r'kost|18plus|erotik|medizinprodukt|nicht-bewerben|klinge|waffen|raucher|kiffer|duplikat|heilversprechen|verdeckte|abhoer', re.I)
@@ -73,9 +74,16 @@ def main():
                                  img.split('?')[0] + '?width=1200', beschr.replace('\t', ' ').replace('\n', ' ')]
             n += 1
             if n >= MAX: break
+    # Reihum über die Pinnwände, damit nicht 18 Home-Pins vor dem ersten Schmuck-Pin kommen
+    je_board = {}
+    for k in kand.values(): je_board.setdefault(k[1], []).append(k)
+    reihe = []
+    while any(je_board.values()):
+        for b in list(je_board):
+            if je_board[b]: reihe.append(je_board[b].pop(0))
     with open(OUT, 'w') as f:
         f.write("handle\tboard\ttitle\turl\tbild\ttext\n")
-        for k in kand.values(): f.write('\t'.join(k) + '\n')
+        for k in reihe: f.write('\t'.join(k) + '\n')
     print("Warteschlange:", len(kand), dict(Counter(k[1] for k in kand.values())))
 
 
