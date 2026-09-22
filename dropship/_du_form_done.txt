@@ -1677,3 +1677,11 @@ aufblasbare-wasserrutsche-matte-628700	2026-09-22	um-ohne-wirkung
 aufblasbarer-box-standboxsack-d8ac96	2026-09-22	du
 aufblasbarer-kindersitz-fur-das-auto-efa7e4	2026-09-22	du
 aufblasbarer-schutzkragen-fur-haustiere-6b25ef	2026-09-22	du
+aufblasbarer-schutzkragen-fur-hunde-607400	2026-09-22	du
+aufblasbarer-schutzring-fur-haustiere-336000	2026-09-22	du
+aufblasbarer-wurfball-fur-hunde-und-katzen-615100	2026-09-22	du
+aufblasbares-auto-bett-63bf55	2026-09-22	du
+aufblasbares-auto-bett-fur-suv-und-mpv-539456	2026-09-22	du
+aufblasbares-beinkissen-beflockt-264704	2026-09-22	du
+aufblasbares-lendenkissen-fur-unterwegs-634300	2026-09-22	du
+aufblasbares-outdoor-sitzkissen-feuchtigkeitsb-619000	2026-09-22	teilweise
