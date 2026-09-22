@@ -35,6 +35,7 @@ SIE = re.compile(r"\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b")
 WARN = re.compile(r"\bdu (können|möchten|haben|sind|wollen|sollten|müssen|erhalten|finden|profitieren|"
                   r"geniessen|genießen|sparen|bekommen|brauchen|suchen|lieben|werden|sehen|setzen|wählen|"
                   r"kaufen|bestellen|schätzen|verwöhnen|entdecken|erleben|fühlen|tragen|nutzen|behalten)\b"
+                  r"(?! (?:kannst|musst|willst|sollst|darfst|wirst|möchtest|solltest|könntest|müsstest|wolltest|würdest|lässt)\b)"
                   r"|\bdenst\b|\bdu du\b|\bdich dich\b|\bdir dir\b|\bdu sich\b|\b[a-zäöüß]+(?:st|est) (?:musst|kannst|willst|sollst|wirst|hast|bist|solltest|könntest)\b|\bdeine?[mnrs]? (Sie|Ihre?)\b")
 # Pluralverb SPÄTER im selben Satzteil («wenn du es eilig haben», «du … sorgen möchten») — Regel 2b tauscht nur das
 # Pronomen. Absichtlich grob (fängt auch «du kannst … haben»): ein Fehlalarm landet im Bericht, ein Fehler im Shop nicht.
@@ -46,12 +47,25 @@ WARN3 = re.compile(r"\bdu\b[^.,;!?:]{0,80}?\b[a-zäöüß]{3,}en\b(?=[.,;!?]|\s*
 ZWEITE = re.compile(r"\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|hast|bist|solltest|könntest|würdest|wolltest|müsstest)\b")
 
 
+def _folgt_zweite(tn, ende):
+    """Steht nach dem Treffer ein 2.-Person-Verb («brauchen kannst», «suchen solltest»)? Dann ist der Infinitiv richtig."""
+    return bool(re.match(r"\s+(kannst|musst|willst|sollst|darfst|wirst|hast|bist|möchtest|solltest|könntest|müsstest|wolltest|würdest|lässt)\b", tn[ende:ende + 14]))
+
+
+def warn2(tn):
+    for m in WARN2.finditer(tn):
+        if _folgt_zweite(tn, m.end()):
+            continue
+        return m
+    return None
+
+
 def warn3(tn):
     """Satzteil nach «du» endet auf «-en» (Infinitiv/Plural: «ob du Videos schauen oder Anrufe tätigen») — ausser
     ein 2.-Person-Modal steht im Satzteil oder direkt davor («kannst du … haben»). Fängt auch Nomen auf -en
     («… dein Kissen.») — Fehlalarm landet im Bericht, nicht im Shop."""
     for m in WARN3.finditer(tn):
-        if ZWEITE.search(m.group(0)) or ZWEITE.search(tn[max(0, m.start() - 16):m.start()] + " "):
+        if ZWEITE.search(m.group(0)) or ZWEITE.search(tn[max(0, m.start() - 16):m.start()] + " ") or _folgt_zweite(tn, m.end()):
             continue
         if re.search(r"\b(oder|und)\s+(du|dein\w*)\b", m.group(0)):
             continue
@@ -136,7 +150,7 @@ def main():
                     n_skip += 1; quitt(h, heute, "schon-du"); continue
                 neu = um(alt)
                 tn = text(neu)
-                m = WARN.search(tn) or WARN2.search(tn) or warn3(tn)
+                m = WARN.search(tn) or warn2(tn) or warn3(tn)
                 if m:
                     n_warn += 1
                     i = max(0, m.start() - 60)

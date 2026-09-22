@@ -115,7 +115,7 @@ def um(t):
         k = _zweite(verb)
         return kopf + k if k else m.group(0)
     for _ in range(2):
-        t=re.sub(r'(\bdu\b[^.,;!?:<]{0,120}?\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind)(?=[.,;!?:<]|\s*$|\s(?:und|oder|sowie)\b)', _nachziehen, t)
+        t=re.sub(r'(\bdu\b[^.,;!?:<]{0,120}?\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind)(?=[.,;!?:<–—]|\s*$|\s(?:und|oder|sowie|–|—)(?:\s|$))', _nachziehen, t)
     # 2g) Verb DIREKT nach «du» im Hauptsatz («und du haben 30 Tage», «du zahlen per TWINT») → 2. Person.
     # Nur Kleinwörter auf -en/-ern/-eln, nie «dein…», nie wenn schon 2. Person (kannst/hast …).
     def _direkt(m):

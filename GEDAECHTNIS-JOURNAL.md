@@ -118,7 +118,9 @@ sie beim ersten Listenverb → «du sparst kannst»), die alte Ersatzkette «du 
 Runden, jede fand einen echten Fehler; **zwei bereits geschriebene Artikel hatten vier Doppel-Konjugationen
 («anpasst kannst», «liebst wirst») — repariert, und der Defekt-Scan läuft jetzt über alle geschriebenen Texte.**
 Die Vollständigkeits-Regel zählt nur noch Anrede (Satzmitte), nicht jedes «Sie»: 78 weitere Artikel/Seiten geduzt
-(95 gesamt), 38 im Bericht, 90 ohne Anrede-Rest. 82 Produkt-Verdachte zur Neuprüfung freigegeben.
+(95 gesamt), 38 im Bericht, 90 ohne Anrede-Rest. Danach die Warnmuster entschärft (Infinitiv vor 2.-Person-Modal ist
+richtig: «brauchen kannst», «suchen solltest»; Gedankenstrich als Satzteil-Ende) → **107 Ratgeber/Seiten geduzt**,
+Rest im Bericht. 82 Produkt-Verdachte zur Neuprüfung freigegeben, sobald der Läufer ruht.
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor

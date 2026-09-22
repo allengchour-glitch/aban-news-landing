@@ -16,7 +16,7 @@ import html as H, json, os, re, subprocess, sys, time
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "automation"))
 from kollektionstexte_du_form import um            # noqa: E402
-from produkttexte_du_form import WARN, WARN2, warn3, gql, SIE, text  # noqa: E402
+from produkttexte_du_form import WARN, warn2, warn3, gql, SIE, text  # noqa: E402
 
 FIX = os.environ.get("FIX") == "1"
 NUR = os.environ.get("NUR", "")
@@ -52,7 +52,7 @@ def main():
             if not SIE.search(text(alt)):
                 continue
             neu = um(alt); tn = text(neu)
-            m = WARN.search(tn) or WARN2.search(tn) or warn3(tn)
+            m = WARN.search(tn) or warn2(tn) or warn3(tn)
             if m:
                 n_warn += 1; i = max(0, m.start() - 60)
                 verdacht.append((key, m.group(0), tn[i:m.end() + 60])); continue
@@ -63,7 +63,7 @@ def main():
             rest = sum(1 for r in SIE.finditer(tn)
                        if r.start() > 0 and not re.search(r"[.!?:„»«\"]\s?$", tn[max(0, r.start() - 3):r.start()])
                        and not re.match(r"Sie (?:und|&|oder) Ihn\b", tn[r.start():r.start() + 14])
-                       and not re.search(r"\b[Ff]ür $", tn[max(0, r.start() - 5):r.start()]))
+                       and not re.search(r"\b[Ff]ür[ -]$", tn[max(0, r.start() - 5):r.start()]))
             # Ratgeber sind lang: ein halb geduzter Artikel ist schlechter als ein gesiezter → nur schreiben,
             # wenn keine ANREDE mehr übrig ist (VOLL=1, Standard). Die halben landen im Bericht.
             if os.environ.get("VOLL", "1") == "1" and rest:
