@@ -3,6 +3,32 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-09-22-6",
   "warum": "Lauf 5 hat den ersten Pin veröffentlicht und auf der Pinnwand nachgelesen. Genau EIN weiterer Pin aus der Warteschlange (Lauf 6 von 10 heute), Quittung vor Nebenwirkung.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-22T13:02:52.207Z",
+  "dauer_s": 60.1,
+  "ergebnis": {
+    "gepinnt": [
+      "beheizbare-hausschuhe-mit-temperaturregelung-615500"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 42, quittiert 2, offen 40",
+      "Boards auf dem Profil: /luxestyleCH/home-geschenkideen/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/wellness-beauty/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-self-care/, /luxestyleCH/wohnen-deko/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Schuhe & Sandalen» (https://ch.pinterest.com/luxestyleCH/schuhe-sandalen/, 180 Z.): Titel nicht da",
+      "Bild 50411 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (259 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-6-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-6-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-6-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "beheizbare-hausschuhe-mit-temperaturregelung-615500",
+      "board": "Schuhe & Sandalen",
+      "title": "Beheizbare Hausschuhe mit Temperaturregelung"
+    }
+  }
 }
