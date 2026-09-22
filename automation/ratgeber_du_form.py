@@ -16,7 +16,7 @@ import html as H, json, os, re, subprocess, sys, time
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "automation"))
 from kollektionstexte_du_form import um            # noqa: E402
-from produkttexte_du_form import WARN, warn2, warn3, gql, SIE, text  # noqa: E402
+from produkttexte_du_form import WARN, WARN4, warn2, warn3, gql, SIE, text  # noqa: E402
 
 FIX = os.environ.get("FIX") == "1"
 NUR = os.environ.get("NUR", "")
@@ -52,7 +52,7 @@ def main():
             if not SIE.search(text(alt)):
                 continue
             neu = um(alt); tn = text(neu)
-            m = WARN.search(tn) or warn2(tn) or warn3(tn)
+            m = WARN.search(tn) or warn2(tn) or warn3(tn) or WARN4.search(tn)
             if m:
                 n_warn += 1; i = max(0, m.start() - 60)
                 verdacht.append((key, m.group(0), tn[i:m.end() + 60])); continue

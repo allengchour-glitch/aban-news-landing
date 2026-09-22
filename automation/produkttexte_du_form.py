@@ -56,8 +56,13 @@ def warn2(tn):
     for m in WARN2.finditer(tn):
         if _folgt_zweite(tn, m.end()):
             continue
+        if re.search(r"\b(oder|und)\s+(du|dein\w*)\b", m.group(0)):   # zusammengesetztes Subjekt → Plural richtig
+            continue
         return m
     return None
+
+
+WARN4 = re.compile(r"\b(?!zwischen|gegen|wegen|neben|oben|unten|ohne|innen|einen|keinen|meinen|deinen|seinen|ihren|unseren|diesen|jeden|allen|vielen|wenigen|denen|welchen|ihnen|sachen|morgen|wochen|tagen|jahren|stunden|minuten|zeiten|farben|massen|kissen|draussen|dagegen|dazwischen|wenn|denn|dann|schon|eben)[a-zäöüß]{3,}(?:en|ern|eln) du\b")
 
 
 def warn3(tn):
@@ -150,7 +155,7 @@ def main():
                     n_skip += 1; quitt(h, heute, "schon-du"); continue
                 neu = um(alt)
                 tn = text(neu)
-                m = WARN.search(tn) or warn2(tn) or warn3(tn)
+                m = WARN.search(tn) or warn2(tn) or warn3(tn) or WARN4.search(tn)
                 if m:
                     n_warn += 1
                     i = max(0, m.start() - 60)
