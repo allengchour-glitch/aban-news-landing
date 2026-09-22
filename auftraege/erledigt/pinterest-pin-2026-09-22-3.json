@@ -1,0 +1,8 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-09-22-3",
+  "warum": "Lauf 1 fand die Pinnwand nicht (geratener Slug, 183 Zeichen). Jetzt echte Board-Adressen von der Profilseite. Genau EIN Pin, Quittung vor Nebenwirkung.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
