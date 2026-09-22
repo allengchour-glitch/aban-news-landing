@@ -1,17 +1,6 @@
-# Heilversprechen in Produkttexten — Stand 2026-09-22T05:43:19Z
+# Heilversprechen in Produkttexten — Stand 2026-09-22T18:12:31Z
 
-Geprüft: 16 (Filter: `NUR_OFFEN (16)`) · entschärft: 11 · offen: 5 · Schreibfehler: 0
+Geprüft: 4 (Filter: `NUR_OFFEN (5)`) · entschärft: 1 · offen: 0 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
-- **Smarter Gesundheits-Tracker Ring mit Ladecase** (`smarter-gesundheits-tracker-ring-mit-ladecase-488065`)
-  - …en, Schwimmen, Yoga und Basketball Manuelle Erfassung von Blutdruck, Menstruationszyklus möglich Bis zu 7 Tage Akkulaufzeit u…
-- **Anti-Schnarch-Gerät für ruhigen Schlaf** (`anti-schnarch-gerat-fur-ruhigen-schlaf-889217`)
-  - …r Menschen mit leichtem Schlaf entwickelt, die häufig durch Schnarchen gestört werden. Es bietet eine komfortable und diskrete Lös…
-  - …tig zu verbessern Physische Wirkweise zur Reduzierung von Schnarchen 🛡️ Sorglos shoppen: ✅ Geprüfte Angaben · 🚚 Lieferung…
-- **Vakuum-Cupping-Massage mit Fettverbrennung & Anti-Cellulite** (`vakuum-cupping-massage-mit-fettverbrennung-ant-364736`)
-  - …TITEL: Vakuum-Cupping-Massage mit Fettverbrennung & Anti-Cellulite…
-- **Körperformungsgerät zur Fettverbrennung** (`korperformungsgerat-zur-fettverbrennung-637100`)
-  - …TITEL: Körperformungsgerät zur Fettverbrennung…
-- **Smartes Springseil für Fitness & Fettverbrennung** (`smartes-springseil-fur-fitness-fettverbrennung-148864`)
-  - …TITEL: Smartes Springseil für Fitness & Fettverbrennung…

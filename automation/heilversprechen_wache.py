@@ -147,6 +147,26 @@ ERSATZ_RE = [
     (re.compile(r"(?:kann |könnte )?die Durchblutung (?:zu )?fördern"), "die Haut sanft massieren"),
     (re.compile(r"die Haut sanft massieren und (?=die Feuchtigkeitsversorgung)"), "die Haut sanft massieren und "),
 ]
+# 22.09.2026 (Verbesserungsrunde): TITEL wurden bisher nur GEMELDET, nie geschrieben — drei «Fettverbrennung»-Titel standen
+# seit dem Morgen offen. Titel brauchen eigene Ersätze (ERSATZ_RE «Fettverbrennung→Ausdauer» ergibt im Titel Unsinn:
+# «Massage mit Ausdauer»). Feste Paare zuerst, danach vorsichtige Muster; passt nichts, bleibt der Titel offen im Bericht.
+TITEL_ERSATZ = [
+    ("Vakuum-Cupping-Massage mit Fettverbrennung & Anti-Cellulite", "Vakuum-Cupping-Massagegerät für Körper & Haut"),
+    ("Körperformungsgerät zur Fettverbrennung", "Körperformungsgerät für das Training zuhause"),
+    ("Smartes Springseil für Fitness & Fettverbrennung", "Smartes Springseil für Fitness & Ausdauer"),
+]
+TITEL_ERSATZ_RE = [
+    (re.compile(r" für Fitness & Fettverbrennung$"), " für Fitness & Ausdauer"),
+    (re.compile(r" zur Fettverbrennung$"), " für das Training"),
+    (re.compile(r" (?:mit|&|und) Fettverbrennung$"), ""),
+    (re.compile(r" (?:gegen|bei) Haarausfall$"), " für die Kopfhaut"),
+    (re.compile(r" (?:für|zur) Gewichtsabnahme$"), " für das Training"),
+]
+ERSATZ += [
+    # Anti-Schnarch-Gerät (22.09.): «gestört werden» beschreibt die Nutzerinnen, keine Wirkung → FEHLALARM;
+    # «Physische Wirkweise zur Reduzierung von Schnarchen» ist eine Wirkzusage → Bauweise ohne Wirkung
+    ("Physische Wirkweise zur Reduzierung von Schnarchen", "Mechanische Bauweise, die die Kiefer- und Kopfposition in der Nacht unterstützt"),
+]
 ERSATZ.sort(key=lambda p: -len(p[0]))
 
 MUSTER = re.compile(
@@ -158,7 +178,7 @@ MUSTER = re.compile(
     r"|medizinisch(?:e|er|es)? (?:Wirkung|Behandlung|Zweck)|gegen \w*schmerzen", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
-    r"|Ratgeber:|nicht für medizinische|selbst heilt|Digital Detox|Geräusche wie|schnarchende"
+    r"|Ratgeber:|nicht für medizinische|selbst heilt|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
     # Tiere: Wundkragen (Heilung nach OP ist der Zweck), Fellbuersten/Plueschtiere/Pinsel (Haarausfall = Haare im Haus/Borsten),
     # Naepfe (Tiere mit Arthritis), Ergaenzungsfutter (Verdauung/Immunsystem beim Tier)
     r"|leck|Wunde|Operation|Halskrause|Kragen|Halsring|Genesung|Borsten|Pinsel|Plüsch|haarausfallfrei|Fell|Katze|Hund|Haustier|Tier|Vierbeiner|Zuhause|Wohnung|im Haus"
@@ -241,7 +261,22 @@ def main():
                 if re.search(r"(?i)(aroma|licht|photon|farb|rotlicht|ems|wärme|kälte|puls)-?therap", m.group(0)): continue
                 rest.append(re.sub(r"\s+", " ", umfeld).strip())
             tm = MUSTER.search(p["title"] or "")
-            if tm and not FEHLALARM.search(p["title"]): rest.append("TITEL: " + p["title"])
+            if tm and not FEHLALARM.search(p["title"]):
+                titel_neu = p["title"]
+                for a, b in TITEL_ERSATZ:
+                    if a == titel_neu: titel_neu = b
+                if titel_neu == p["title"]:
+                    for rx, b in TITEL_ERSATZ_RE:
+                        titel_neu = rx.sub(b, titel_neu)
+                if titel_neu != p["title"] and not MUSTER.search(titel_neu) and FIX:
+                    r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{title} userErrors{message}}}', {"i": {"id": p["id"], "title": titel_neu}})
+                    pu = (r.get("data") or {}).get("productUpdate") or {}
+                    if pu.get("userErrors") or (pu.get("product") or {}).get("title") != titel_neu:
+                        fehler += 1; print("⛔ Titel nicht geschrieben", p["handle"], pu.get("userErrors")); rest.append("TITEL: " + p["title"])
+                    else:
+                        fixe += 1; aktion = "entschaerft"; print("✔ Titel", p["handle"], "→", titel_neu)
+                else:
+                    rest.append("TITEL: " + p["title"])
             if rest:
                 meld.append((p["handle"], p["title"], rest[:3])); aktion += "+offen"
             with open(LEDGER, "a") as f:
