@@ -23,3 +23,7 @@ gid://shopify/Product/15433464217985	plus-6-medien-7	rgb-headset-600300
 gid://shopify/Product/15433464250753	plus-6-medien-7	falt-joystick-601000
 gid://shopify/Product/15433464316289	plus-5-medien-6	gamepad-halter-617700
 gid://shopify/Product/15433464349057	plus-4-medien-5	bluetooth-gamepad-612300
+gid://shopify/Product/15433464381825	plus-6-medien-7	ps5-gamepad-618700
+gid://shopify/Product/15433464447361	plus-6-medien-7	rgb-gamepad-622100
+gid://shopify/Product/15433464545665	plus-4-medien-5	anime-figur-27bb4e
+gid://shopify/Product/15448594088321	cj-1602001	v-neck-color-block-strickpullover-fur-damen-638500
