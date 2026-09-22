@@ -85,6 +85,8 @@ search 129 (Google 25/7 T, ChatGPT 6/7 T). Was ich anschieben kann und was nicht
   Stopp): 71 Sitzungen/30 T nur aus Katalog-Pins, 2 Warenkorb-Zulagen. Eigene Pins auf die sechs Boards →
   zuerst den Pin-Editor MESSEN (Auftrag `pinterest-pin-builder-messen`, rein lesend, Hetzner-Agent), dann ein
   Pin-Skript mit gemessenen Selektoren, ein Pin je Lauf, Quittung vor Nebenwirkung (Lehren 17.09.).
+  ⚠️ Beinahe verschenkt: der Auftrag lag 20 Minuten im Ordnerstamm `auftraege/` — der Eingang ist `auftraege/offen/`
+  (README Zeile 9; der Ordner ist leer und darum lokal unsichtbar). Der Agent lief derweil brav seinen Tages-Job.
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
