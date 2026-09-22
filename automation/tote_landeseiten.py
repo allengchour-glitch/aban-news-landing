@@ -25,7 +25,7 @@ erlebt einen Köderwechsel. Markenanfragen bleiben dem Menschen überlassen.
 
   DRY=1  nur zeigen (Standard)   FIX=1  Weiterleitungen anlegen
 """
-import json, os, re, subprocess, sys, time
+import json, os, re, subprocess, sys, time, urllib.parse
 
 SHOP = "au3j0y-hq.myshopify.com"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,20 +83,47 @@ def worte(t):
     return {w for w in re.findall(r"[a-zäöüß0-9]{4,}", (t or "").lower()) if w not in STOPP}
 
 
+# ⚠️ 22.09.2026 — DER STILLE DECKEL. Hier stand `LIMIT 250`. Gemessen an diesem Tag:
+# 60 Tage haben 1'094 Landeseiten, davon 953 Produktseiten; die obersten 250 enden bei
+# 2 Sitzungen. Der Wächter sah also 221 von 953 Produktseiten (23 %) und meldete täglich
+# «FERTIG». Neun besuchte Seiten mit je 1–2 Sitzungen lagen gedraftet ohne Weiterleitung
+# darunter — jede ein 404 für einen Menschen, den Google geschickt hat. Ein Deckel, der
+# nicht gemeldet wird, ist ein Blindfleck, der wie Vollständigkeit aussieht.
+DECKEL = int(os.environ.get("DECKEL", "2000"))
+
+
 def landeseiten():
     q = (f"FROM sessions SHOW sessions GROUP BY landing_page_path "
-         f"SINCE -{TAGE}d UNTIL today ORDER BY sessions DESC LIMIT 250")
+         f"SINCE -{TAGE}d UNTIL today ORDER BY sessions DESC LIMIT {DECKEL}")
     d = gql('query($q:String!){shopifyqlQuery(query:$q){tableData{rows} parseErrors}}', {"q": q})
     t = (d.get("data") or {}).get("shopifyqlQuery") or {}
     if t.get("parseErrors"):
         print("ShopifyQL:", str(t["parseErrors"])[:180]); return None
     rows = (t.get("tableData") or {}).get("rows") or []
+    if len(rows) >= DECKEL:
+        print(f"⚠️ DECKEL {DECKEL} erreicht — Landeseiten mit wenigen Sitzungen bleiben UNGESEHEN "
+              f"(DECKEL=… erhöhen). Letzte Zeile hat {rows[-1].get('sessions')} Sitzungen.")
+    else:
+        print(f"Landeseiten gesamt ({TAGE} T): {len(rows)} — unter dem Deckel {DECKEL}, vollständig gelesen")
     aus = []
     for r in rows:
         p = r.get("landing_page_path") or ""
         if p.startswith("/products/"):
-            aus.append((p.split("/")[-1].split("?")[0], int(r.get("sessions") or 0)))
+            # ⚠️ 22.09.2026: ShopifyQL liefert den Pfad URL-KODIERT («…-%E2%98%80%EF%B8%8F»).
+            # Mit dem kodierten Handle fand `handle:` nichts, und SIEBEN aktive Produkte
+            # (Emoji-/®-Handles der Editor-Ware) standen als «(gelöscht)» im Bericht —
+            # dieselbe Falle wie `menue_links.py` am 15.09. Erst entschlüsseln, dann fragen.
+            aus.append((urllib.parse.unquote(p.split("/")[-1].split("?")[0]), int(r.get("sessions") or 0)))
     return aus
+
+
+def handle_kern(handle):
+    """«kiss-cut-aufkleber-selbst-gestalten–10»: der Besucher kam mit einem Anhängsel
+    (Gedankenstrich + Zahl, oder Zeichenmüll am Ende) — das Produkt ohne Anhängsel lebt.
+    Gibt den bereinigten Handle zurück, wenn er sich unterscheidet, sonst None."""
+    k = re.sub(r"[–—]\d+$", "", handle)   # nur Gedanken-/Geviertstrich — «-382081» ist ein echter CJ-Suffix
+    k = re.sub(r"[^a-z0-9äöüß]+$", "", k)
+    return k if k and k != handle else None
 
 
 def produkt(handle):
@@ -107,8 +134,14 @@ def produkt(handle):
 
 
 def hat_weiterleitung(pfad):
-    d = gql('query($q:String!){urlRedirects(first:2,query:$q){nodes{target}}}', {"q": "path:" + pfad})
-    return bool(((d.get("data") or {}).get("urlRedirects") or {}).get("nodes"))
+    """⚠️ 22.09.2026: Shopify speichert Pfade mit Emoji/®/Gedankenstrich KODIERT. Mit dem
+    entschlüsselten Pfad fand die Suche nichts, `urlRedirectCreate` antwortete dann
+    «Path has already been taken» (3× am ersten vollen Lauf). Beide Formen fragen."""
+    for q in {pfad, urllib.parse.quote(pfad, safe="/-_.~")}:
+        d = gql('query($q:String!){urlRedirects(first:2,query:$q){nodes{target}}}', {"q": "path:" + q})
+        if ((d.get("data") or {}).get("urlRedirects") or {}).get("nodes"):
+            return True
+    return False
 
 
 def ersatz(titel, typ):
@@ -185,6 +218,18 @@ def ersatz(titel, typ):
 # `haushalt`) — beides nicht falsch, aber unnoetig grob. Ein eindeutiges Warenwort im Titel
 # entscheidet deshalb zuerst; die Woerter sind bewusst lang und gebunden (Substring-Familie).
 TITEL_ZIEL = [
+    # 22.09.2026 — aus den 27 «Mensch entscheidet» des ersten vollständigen Laufs (Deckel weg):
+    # Reihenfolge zählt (erster Treffer gewinnt): «Ohrringe» vor «ring», «Damenuhr» vor «damen».
+    ("ohrstecker", "sub-ohrringe"), ("creolen", "sub-ohrringe"), ("ohrringe", "sub-ohrringe"),
+    ("halskette", "sub-halsketten"), ("stacking-ring", "sub-ringe"), ("ring ·", "sub-ringe"),
+    ("damenuhr", "uhren"), ("herrenuhr", "uhren"), ("armbanduhr", "uhren"),
+    ("augenbrauenstift", "beauty-pflege"), ("lipgloss", "beauty-pflege"), ("eyeliner", "beauty-pflege"),
+    ("lidschatten", "beauty-pflege"), ("mascara", "beauty-pflege"), ("massagegerät", "wellness-massage"),
+    ("gaming-tastatur", "gaming"), ("tastatur", "gaming"), ("mauspad", "gaming"), ("maus-pad", "gaming"),
+    ("sprühmatte", "spielzeug"), ("planschbecken", "spielzeug"),
+    ("kuschelkissen", "kissen-wohntextilien"), ("strandtuch", "sommer"),
+    ("wandlampe", "lampen-leuchten"), ("nachtlicht", "lampen-leuchten"), ("tischlampe", "lampen-leuchten"),
+    ("hunde", "sub-haustier"), ("katzen", "sub-haustier"), ("leggings", "damen-mode"),
     ("klemmbaustein", "klemmbausteine-bausaetze"), ("bausteine-set", "klemmbausteine-bausaetze"),
     ("diffuser", "sub-aroma-diffuser"), ("luftbefeuchter", "haushaltsgeraete"),
     ("luftreiniger", "haushaltsgeraete"), ("ventilator", "haushaltsgeraete"),
@@ -192,6 +237,8 @@ TITEL_ZIEL = [
     ("dashcam", "auto-kfz-zubehoer"), ("powerbank", "ladegeraete-powerbanks"),
     ("kulturbeutel", "sub-reise"), ("koffer", "sub-reise"),
     ("wolldecke", "kissen-wohntextilien"), ("kuscheldecke", "kissen-wohntextilien"),
+    # ganz zuletzt, weil grob: Geschlechtswort im Titel → Modekategorie
+    ("damen", "damen-mode"), ("herren", "fur-ihn"),
 ]
 TAG_ZIEL = [
     ("klemmbaustein", "klemmbausteine-bausaetze"), ("bausteine", "klemmbausteine-bausaetze"),
@@ -199,16 +246,19 @@ TAG_ZIEL = [
     ("aroma", "sub-aroma-diffuser"), ("diffuser", "sub-aroma-diffuser"),
     ("kueche", "sub-kueche"), ("haushalt", "haushaltsgeraete"),
     ("reise", "sub-reise"), ("outdoor", "sub-reise"), ("camping", "sub-reise"),
-    ("auto", "auto-kfz-zubehoer"), ("kinder", "kinderspielzeug"), ("spielzeug", "kinderspielzeug"),
+    ("auto", "auto-kfz-zubehoer"), ("kinder", "spielzeug"), ("spielzeug", "spielzeug"),
     ("schmuck", "schmuck"), ("uhren", "uhren"), ("beauty", "beauty-pflege"),
     ("elektronik", "elektronik-technik"), ("gadget", "trends-gadgets"),
     ("wohnen", "wohnen-dekoration"), ("deko", "wohnen-dekoration"),
     ("sport", "sub-yoga-fitness"), ("fitness", "sub-yoga-fitness"),
     ("taschen", "sub-taschen"), ("schuhe", "schuhe-sneaker"),
 ]
+# ⚠️ 22.09.2026: `kinderspielzeug` ist selbst eine 301 auf `spielzeug` — kollektion_taugt() lehnte
+# das Ziel darum still ab, und JEDES Kinder-/Spielzeug-Produkt fiel auf «Mensch entscheidet»
+# (Sprühmatte, 1 Sitzung). Ein Ziel in der Tabelle muss die ENDADRESSE sein, nicht ein Alias.
 TYP_ZIEL = {
     "elektronik": "elektronik-technik", "küche & haushalt": "sub-kueche",
-    "baby & kinder": "kinderspielzeug", "reise & outdoor": "sub-reise",
+    "baby & kinder": "spielzeug", "reise & outdoor": "sub-reise",
     "haustier": "sub-haustier", "wellness": "wellness-massage",
     "wellness & haushalt": "haushaltsgeraete", "wohnen": "wohnen-dekoration",
     # productType heisst «Damenmode»/«Herrenmode» (ohne Bindestrich) — die alten Schluessel
@@ -287,6 +337,11 @@ def main():
         grund = ",".join(t for t in (p["tags"] if p else []) if t in RISIKO or t.startswith("google-kanal")) or "kein Grund-Tag"
         tot.append((handle, sitzungen, (p or {}).get("title", "(gelöscht)"), (p or {}).get("status", "WEG"), grund))
         z = ersatz((p or {}).get("title", ""), (p or {}).get("productType")) if p else None
+        if not p and not z:
+            kern = handle_kern(handle)
+            pk = produkt(kern) if kern else None
+            if pk and pk["status"] == "ACTIVE":
+                z = ({"handle": kern}, 9.99)   # 9.99 = «Handle-Kern», kein Ähnlichkeitsmass
         kat = None if z else kategorie_ziel(p, handle)
         if (z or kat) and FIX:
             ziel = ("/products/" + z[0]["handle"]) if z else kat
@@ -299,7 +354,7 @@ def main():
                 gesetzt += 1
                 with open(LEDGER, "a") as f:
                     f.write(handle + "\n")
-                wie = f"Ähnlichkeit {z[1]:.2f}" if z else "Kategorie"
+                wie = ("Handle-Kern" if z and z[1] == 9.99 else f"Ähnlichkeit {z[1]:.2f}") if z else "Kategorie"
                 print(f"  → {handle[:44]:46s} → {ziel[:44]} ({wie})")
         elif z or kat:
             ziel = ("/products/" + z[0]["handle"]) if z else kat

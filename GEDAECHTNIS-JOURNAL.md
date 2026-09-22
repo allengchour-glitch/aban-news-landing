@@ -6,6 +6,47 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-22 · 🕳️ Autonome Verbesserungsrunde 1: der Wächter für tote Landeseiten sah 221 von 953 Seiten — und meldete täglich «FERTIG»
+
+**Anlass:** erste Runde der neuen Routine «Autonome Verbesserungsrunde» (08:25 UTC). Messung statt
+Vermutung: ShopifyQL-Landeseiten der letzten 30 Tage (human) → 346 Produktseiten, 552 Sitzungen;
+**23 davon gedraftet, 9 ohne Weiterleitung** (dazu 1 «gelöscht») — jede ein 404 für einen Menschen,
+den Google geschickt hat. Der Wächter dafür existiert seit 28.08. (`tote_landeseiten.py`, täglich,
+FIX=1) und hatte um 02:10 «218 Landeseiten mit Verkehr, 3 ohne Weiterleitung, 2 gesetzt» gemeldet.
+
+**Ursache 1 — der stille Deckel.** `LIMIT 250` in der ShopifyQL-Abfrage. GEMESSEN: 60 Tage haben
+**1'094 Landeseiten, davon 953 Produktseiten**; die obersten 250 enden bei 2 Sitzungen. Der Wächter
+prüfte also **23 %** der Seiten und hielt das für alle. Fix: `DECKEL` (Standard 2000) und eine
+Ausgabezeile, wenn er erreicht wird — **ein Deckel, der nicht gemeldet wird, ist ein Blindfleck, der
+wie Vollständigkeit aussieht.** Erster voller Lauf: **51 tote Seiten** unter dem Deckel, 24 sofort
+umgeleitet, 27 «Mensch entscheidet».
+
+**Ursache 2 — kodierte Handles (die Falle von `menue_links.py`, 15.09., zum zweiten Mal).** Von
+den 27 standen **9 als «(gelöscht)»** — ShopifyQL liefert Pfade URL-kodiert
+(`…-%E2%98%80%EF%B8%8F`), `handle:` fand mit dem kodierten Wert nichts. Entschlüsselt: **7 sind
+ACTIVE** (Editor-Ware mit Emoji/®-Handle), 2 waren Besucher mit Anhängsel
+(`…gestalten–10` → Produkt ohne Anhängsel lebt) → neue Stufe «Handle-Kern» (nur Gedankenstrich +
+Zahl; `-382081` ist ein echter CJ-Suffix, Kanarienvogel geprüft).
+
+**Ursache 3 — Shopify speichert Weiterleitungspfade KODIERT** (`/products/%f0%9f%8c%bf-…`). Die
+Suche mit dem entschlüsselten Pfad fand nichts, `urlRedirectCreate` antwortete «Path has already
+been taken» (3×). `hat_weiterleitung()` fragt jetzt beide Formen.
+
+**Ursache 4 — ein Ziel, das selbst eine 301 ist.** `kinderspielzeug` (in allen drei Zieltabellen)
+leitet auf `spielzeug`; `kollektion_taugt()` lehnt Weiterleitungsziele zu Recht ab — nur still, und
+damit fiel jedes Kinder-/Spielzeugprodukt auf «Mensch entscheidet». Tabellen auf die Endadresse.
+
+**Ergebnis:** Zieltabelle um 28 Warenwörter erweitert (Ohrringe/Halskette/Ringe/Uhren/Beauty/
+Gaming/Lampen/Haustier/Sommer, zuletzt grob damen→damen-mode, herren→fur-ihn). Zweiter Lauf:
+18 weitere Weiterleitungen → **42 an einem Tag** (Vortage: 2–3), live geprüft per curl:
+`kiss-cut-…–10` → 301 auf das Produkt, `sport-maus-pad` → 301 `/collections/gaming`,
+`damenuhr-bellevue` → 301 `/collections/uhren`. Offen für den Menschen: 1–2 (PET-Schutzband).
+
+**Lehren:** (1) Vor «FERTIG» die Grundgesamtheit zählen — `LIMIT` ohne Meldung ist ein Deckel.
+(2) Handles aus Analytics/Menüs IMMER `unquote`n, bevor man sie an `handle:` gibt — dritter Fund
+dieser Klasse (Menü 15.09., Emoji-Handles 14.09., heute). (3) Zieltabellen gegen die
+Weiterleitungsliste prüfen: ein Alias als Ziel ist ein stiller Ausfall.
+
 ## 2026-09-22 · 🤖 «automation ki selbstständig starten»: es lief nur Bewachung — jetzt gibt es eine Runde, die verbessert
 
 **Gemessen (`list_triggers`, 07:00 UTC):** 11 Routinen, 7 an. Alle aktiven sind **Wächter**: Keepalive stündlich (startet Motoren, committet), Bestellwächter alle 2 h, Lagebeurteilung 07:30/17:30, Produktzahl-Wächter alle 3 h, Social-Redaktion täglich, dazu zwei Einmal-Erinnerungen (PR-Check, Grow-Plan 21.10.). Die «Wache cloud-tztnn1 (alle 4 h)» ist seit 07.09. **aus**. Keine einzige Routine misst und behebt — «selbstständig» hiess bisher: am Leben bleiben. Der Container ist zudem beim Aufruf 1 Minute alt gewesen (Aufseher=0 → `engine_keepalive` hochgefahren; Hetzner-Puls frisch, 0 offene Aufträge).
