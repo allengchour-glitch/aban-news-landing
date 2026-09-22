@@ -25,6 +25,8 @@ cd "$(dirname "$0")/.." || exit 1
 NODE=/opt/node22/bin/node
 BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
 REEL_ABSTAND=${REEL_ABSTAND:-172800}     # 48 h zwischen zwei Reels (Kadenz-Wache)
+TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-86400}   # 24 h zwischen zwei TikTok-Posts (Metricool, eigenes Reel je Post)
+MARKE_TIKTOK=/tmp/_autopilot_letztes_tiktok
 MARKE_BILD=/tmp/_autopilot_letztes_bild
 MARKE_REEL=/tmp/_autopilot_letztes_reel
 
@@ -84,5 +86,15 @@ while true; do
     fi
   fi
 
+  # TikTok ueber Metricool (22.09.2026): nur wenn ein Token da ist (Env oder /tmp/metricool.env);
+  # ein eigenes, nie gepostetes Reel je Tag; Guards im Poster (Lock, Ledger, ACTIVE).
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_TIKTOK" "$TIKTOK_ABSTAND"; then
+    echo "$(date -u +%H:%M) TikTok-Post faellig (Metricool)"
+    if $NODE automation/metricool_tiktok_post.mjs; then
+      touch "$MARKE_TIKTOK"
+    else
+      echo "$(date -u +%H:%M) TikTok-Post fehlgeschlagen (Marke bleibt alt)"
+    fi
+  fi
   sleep 900 9>&-
 done
