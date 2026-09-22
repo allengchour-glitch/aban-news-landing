@@ -243,3 +243,64 @@ Abfrage ausgelesen — exakt 5 Spaltentitel, korrekt benannt · Link-Gesamtzahl 
 deaktiviertem Sticky-Header (der erste Versuch zeigte ein Kompositions-Artefakt — die
 fixierte Kopfleiste überlagerte den Screenshot, kein echter Seitenfehler, per
 DOM-Abfrage widerlegt, dann sauber neu fotografiert).
+
+**Nachtrag (gleicher Tag):** „Rechner & Vorlagen" (103 Links) war selbst noch eine
+undifferenzierte Spalte. In 5 benannte Unter-Gruppen aufgeteilt (`.footcols .sub`-
+Überschriften): Finanz & Business (36) · Schweiz-Rechner (10) · Entwickler & Text (32) ·
+YouTube & Social (8) · Alltag & Gesundheit (17) — Summe 103, kein Link verloren.
+Kategorisierung per Slug-Abgleich (Skript nicht committet, Einmal-Werkzeug); erste
+Fassung verglich volle Hrefs (`x.html`) gegen nackte Slugs (`x`) und traf 0/103 — Fehler
+lag am fehlenden `.html`-Suffix im Vergleich, nach Fix korrekt verteilt. `html-validate`
+fand 4 `no-raw-characters`-Fehler (unescapte `&` in den neuen Zwischenüberschriften wie
+„Finanz & Business") — auf `&amp;` korrigiert, danach 0 Fehler.
+
+## Nachtrag 2026-09-22 · Zwei weitere Klumpen + ein handfester Beleg für „liest sich wie KI"
+
+User: „die Seite mit Prompt verbessern" — auf Nachfrage („was genau?") kam „1 und 2":
+sowohl eine echte Text-Qualitäts-Überarbeitung EINER Seite als auch die Struktur-
+Aufräum-Methode (wie beim Footer) auf einer weiteren Seite fortsetzen.
+
+**1. `ki-tool-vergleich.html`: 197 „X vs Y"-Links in einem einzigen `.hubgrid`, 0
+Zwischenüberschriften.** Derselbe Fund wie beim Footer, nur diesmal in einer Produkt-
+Vergleichsseite statt einer Navigationsspalte — alphabetisch nach erstem Tool-Namen
+sortiert, keine thematische Gruppierung. Nach Thema in 16 benannte Gruppen aufgeteilt
+(`<h2 class="hubcat">` + eigenes `.hubgrid` je Gruppe): Chatbots & Assistenten (25),
+Coding- & Dev-Agenten (26), Bild-KI (26), Video- & Meeting-KI (26), Automation &
+Workflows (19), KI-Infrastruktur & Modelle (19), Suchmaschinen-KI (10), Notiz- &
+Wissens-Apps (12), Recherche & Wissenschaft (7), Sales/CRM & Support-KI (5), SEO- &
+Content-Tools (4), Schreiben & Text-Korrektur (4), No-Code App-Builder (6), Sprach- &
+Audio-KI (3), Präsentationen (2), KI-Sichtbarkeit & GEO-Tracking (3) — Summe 197,
+gegengeprüft (kein Link verloren). Kategorisierung per Keyword-Zuordnung (Einmal-
+Skript, nicht committet), 0 unmatched nach zwei Iterationen (erste Runde hatte eine
+Substring-Kollision: „otter" traf auch „otterly" und ordnete die GEO-Tracking-Tools
+AthenaHQ/Otterly/Profound fälschlich der Meeting-Notiz-Kategorie zu — mit
+`otter.ai`/`otter-vs` statt nacktem `otter` behoben).
+
+**2. `ki-fuer-steuerberater.html` (stellvertretend für 368 Seiten): der
+`data-aban-deep`-Abschnitt ist unbearbeiteter Gemini-Rohtext — und der Bruch ist
+messbar, nicht nur gefühlt.** Der Rest der Seite spricht durchgehend informell per „du"
+(„In der Kanzlei zählt Haftung. Deshalb hier kein Versprechen …"). Der von
+`automation/deepen_hubs_gemini.py` erzeugte Block wechselt mitten auf derselben Seite
+unvermittelt zu förmlichem „Sie" und in den typischen KI-Textbaustein-Stil: „Stellen Sie
+sich vor, ein KI-System liest …", „Ein weiteres Beispiel ist …", und FAQ-Antworten, die
+nur die Frage umformulieren, statt sie zu beantworten. **368 Seiten** (`ki-fuer-*.html`)
+tragen denselben `data-aban-deep`-Block. Auf `ki-fuer-steuerberater.html` konkret neu
+geschrieben — gleiche Struktur (H2 + 2 Absätze, H2 „Häufige Fragen" + 3 Details), aber
+konkrete Fakten statt Blabla (Beleg-OCR mit Abacus/Bexio/Banana, Halluzinations-Warnung
+bei Rechtsrecherche, FAQ-Antworten, die tatsächlich etwas behaupten) und „du" statt
+„Sie", passend zum Rest der Seite.
+
+**Bewusst NICHT auf alle 368 Seiten ausgerollt** — das wäre eine Serien-Textänderung
+ohne Einzelprüfung, genau das Risiko, das diese Session aus der „Massenersetzung ohne
+Diff-Kontrolle"-Lehre (3.9.) kennt. Eine spätere Session kann `ki-fuer-steuerberater.html`
+als Vorlage für Ton & Struktur nehmen und branchenweise von Hand oder gezielt per Prompt
+nachziehen — nicht als Bulk-Replace.
+
+**Geprüft:** `html-validate` auf beiden Seiten — alle verbleibenden Fehler per Diff
+gegen die vorherige `git show HEAD:<datei>`-Fassung als bereits vorher vorhanden
+verifiziert (`unique-landmark` auf beiden Seiten, `no-inline-style`/`long-title` auf
+`ki-fuer-steuerberater.html` — keine neuen Fehler durch diese Änderung). Playwright-
+DOM-Abfrage: `ki-tool-vergleich.html` zeigt 16 `.hubcat`-Überschriften und genau 197
+`.hubgrid a`-Links; Screenshot der obersten und einer mittleren Gruppen-Grenze zeigt
+sauberen Umbruch. `ki-fuer-steuerberater.html`: Screenshot des neuen Abschnitts zeigt
+die 2 Absätze + 3 FAQ-Fragen wie erwartet gerendert.
