@@ -150,7 +150,19 @@ def main():
         offen_fakt = {z.split("\t")[0].strip() for z in open(prio) if z.strip()}
         if os.path.exists(pdone): offen_fakt -= {z.split("\t")[0].strip() for z in open(pdone) if z.strip()}
     lk = open("/tmp/lock_produkttext.lock", "w")
-    if not DRY: fcntl.flock(lk, fcntl.LOCK_EX)   # ERST den Text-Lock (der laufende Du-Form-Lauf schreibt mit alten Regeln), DANN das Ledger lesen
+    if not DRY:
+        # ERST den Text-Lock (der laufende Du-Form-Lauf schreibt mit alten Regeln), DANN das Ledger lesen.
+        # NICHT blockierend warten (22.09.: der Reparierer stand 8 Min in locks_lock_inode_wait hinter dem
+        # Stundenlauf, der bis zum Container-Neustart schreibt — er wäre nie drangekommen). Kurz probieren, sonst
+        # mit Meldung gehen; der Aufseher startet ihn wieder, sobald der Text-Lock frei ist.
+        import time as _t
+        for _i in range(6):
+            try:
+                fcntl.flock(lk, fcntl.LOCK_EX | fcntl.LOCK_NB); break
+            except OSError:
+                _t.sleep(10)
+        else:
+            print("Text-Lock belegt (Du-Form-Lauf schreibt) — Reparatur wartet auf den nächsten Aufseher-Lauf"); return 0
     arbeit = []
     for z in open(LEDGER):
         t = z.rstrip("\n").split("\t")

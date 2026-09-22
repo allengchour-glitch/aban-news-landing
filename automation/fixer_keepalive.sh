@@ -1173,6 +1173,8 @@ while true; do
                        <(cut -f1 "$REPO/dropship/_du_form_reparatur_done.txt" 2>/dev/null | sort -u) | wc -l)
     if [ "$R_OFFEN" -gt 0 ] && ! flock -n /tmp/lock_du_form_reparatur.lock true 2>/dev/null; then
       echo "$(date -u +%H:%M) du_form_reparatur laeuft ($R_OFFEN offen)"
+    elif [ "$R_OFFEN" -gt 0 ] && ! flock -n /tmp/lock_produkttext.lock true 2>/dev/null; then
+      echo "$(date -u +%H:%M) du_form_reparatur wartet: Text-Lock belegt ($R_OFFEN offen)"   # 22.09.: nie hinter dem Stundenlauf anstellen
     elif [ "$R_OFFEN" -gt 0 ]; then
       ( cd "$REPO" && setsid bash -c \
           "exec 8>&- 9>&-; exec 7>/tmp/lock_du_form_reparatur.lock; flock -n 7 || exit 0; exec python3 automation/produkttexte_du_form_reparatur.py" \
