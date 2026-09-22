@@ -338,38 +338,41 @@ def bot_puls():
 
 
 def liechtenstein_gesperrt():
-    """13 sichtbare Zusagen nennen Liechtenstein — der LI-Korb bleibt leer. Selbstklaerend.
+    """Liechtenstein: Zustand in BEIDE Richtungen — Markt UND sichtbare Zusagen.
 
-    GEMESSEN 19.09.2026:
-      · Markt «Switzerland» (gid://shopify/Market/99383214465) fuehrt regions = [CH].
-      · cartCreate @inContext(country: LI) → 0 Versandoptionen, Warenkorb-Total 0.00,
-        waehrend der CH-Kanarienvogel im selben Lauf 2 Optionen bekommt (tools/testkorb_ausland.py).
-      · Sichtbar versprochen wird LI an 13 Stellen: 7 veroeffentlichte Seiten und
-        6× in den Rechtstexten, die Shopify IM CHECKOUT verlinkt
-        (SHIPPING_POLICY 4×, REFUND_POLICY 1×, TERMS_OF_SERVICE 1×). Wortlaut der
-        Versandbedingungen: «Wir liefern ausschliesslich in die Schweiz und nach Liechtenstein.»
-      · CJ liefert nach LI (4 Optionen ab USD 14.16, 20–60 Tage) — die Zusage ist also
-        machbar, nur nicht eingeschaltet.
+    GEMESSEN 19.09.2026: Markt «Switzerland» (gid://shopify/Market/99383214465) fuehrt regions = [CH];
+    cartCreate @inContext(country: LI) → 0 Versandoptionen, waehrend der CH-Kanarienvogel 2 bekommt
+    (tools/testkorb_ausland.py). Versprochen war LI an 13 sichtbaren Stellen (7 Seiten, 6x Rechtstexte)
+    und — erst am 22.09. gemessen — in 1'190 Produkt-Lieferbloecken (versand_jenachland schrieb die Phrase).
 
-    ⚠️ Diese Wache prueft den ZUSTAND, nicht eine Quittung. Sobald LI im Markt steht,
-    verschwindet die Zeile von selbst — niemand muss etwas abhaken. Eine Quittungsdatei
-    haette dieselbe Schwaeche wie jede Behauptung: sie kann gesetzt sein, ohne dass es stimmt.
+    ENTSCHIEDEN 22.09.2026 (Betreiber, Weg B): LI aus den Texten gestrichen — `automation/liechtenstein_raus.py`
+    (taeglich im Aufseher, Phrasentabelle, Ruecklesen, Bericht dropship/LIECHTENSTEIN-RAUS.md).
+    Die Wache fragt deshalb jetzt: steht LI im Markt? → still. Sonst: nennt eine VEROEFFENTLICHTE Seite
+    oder ein Rechtstext LI wieder? → melden, mit Zahl. Nichts davon → still (Zusage und Kasse stimmen ueberein).
+    Ein Fehler der Abfrage ist kein Befund (still, kein Fehlalarm).
     """
     try:
         d = gql('{ markets(first:10){ nodes{ id regions(first:50){ nodes{ '
                 '... on MarketRegionCountry { code } } } } } }')
         knoten = ((d.get("data") or {}).get("markets") or {}).get("nodes") or []
     except Exception:
-        return None                      # kein Befund aus einer kaputten Abfrage
-    if not knoten:
-        return None                      # nichts gemessen heisst nicht «alles gut»
-    laender = {r.get("code") for m in knoten for r in (m.get("regions") or {}).get("nodes") or []}
-    if "LI" in laender:
-        return None                      # eingeschaltet → Zeile faellt weg
-    return ("🇱🇮 Liechtenstein ist an 13 sichtbaren Stellen zugesagt (davon 6× in den "
-            "Rechtstexten im Checkout) — kann aber NICHT bestellen: LI-Korb 0 Versandoptionen. "
-            "Entweder einschalten (Markt + Zone «Domestic», 2 Minuten) oder LI aus den Texten "
-            "streichen. Anleitung: COWORK-BEFEHL.md Punkt 5")
+        return None
+    laender = {r.get("code") for m in knoten for r in ((m.get("regions") or {}).get("nodes") or [])}
+    if not laender or "LI" in laender:
+        return None                      # nichts gemessen / eingeschaltet → Zeile faellt weg
+    try:
+        d = gql('{ shop { shopPolicies { body } } pages(first:250){ nodes{ isPublished body } } }')
+        dd = d.get("data") or {}
+        texte = [p.get("body") or "" for p in ((dd.get("shop") or {}).get("shopPolicies") or [])]
+        texte += [p.get("body") or "" for p in ((dd.get("pages") or {}).get("nodes") or []) if p.get("isPublished")]
+    except Exception:
+        return None
+    n = sum(t.count("Liechtenstein") for t in texte)
+    if n == 0:
+        return None
+    return (f"🇱🇮 Liechtenstein steht wieder an {n} sichtbaren Stellen (Seiten/Rechtstexte) — aber der Markt "
+            "ist nur CH, LI kann nicht bestellen. Betreiber-Entscheid 22.09. war Weg B (streichen): "
+            "automation/liechtenstein_raus.py laeuft taeglich; wer die Phrase schreibt, steht im Journal 22.09.")
 
 
 def server_waechter():

@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -373,6 +373,10 @@ while true; do
     # Dazu CAP hoch: die Klasse ist am 08.09. mit 996 gemessen worden, der Standard-CAP haette
     # sie in Tagesscheiben zerlegt.
     if [ "$L" = versand_jenachland ]; then EXP="QUELLE=live CAP=1200"; fi
+    # liechtenstein_raus (22.09.2026, Weg B): Seiten + Rechtstexte jeden Lauf (Wache gegen Rueckkehr der
+    # Phrase), Produkte in Tagesscheiben; steht VOR produkttexte_du_form, damit es nach einem Neustart den
+    # Text-Lock zuerst bekommt — der Du-Form-Lauf haelt ihn sonst die ganze Stunde.
+    if [ "$L" = liechtenstein_raus ]; then EXP="CAP=1500"; fi
     # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
     # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf
     # uebersprungen, im ganzen Container gab es nicht einmal ein Log. Er liest jetzt die
@@ -409,7 +413,7 @@ while true; do
     # ⚠️ produkttexte_du_form steht NICHT in dieser Liste: das Skript nimmt den Text-Lock SELBST (flock LOCK_EX).
     # Mit TXTLOCK erbte es fd 8 samt gehaltenem Lock und wartete dann auf sich selbst (22.09.2026: 52 Min
     # locks_lock_inode_wait, 0 Zeilen im Ledger — jeder automatische Start seit dem 21.09. stand so).
-    case " versand_jenachland lieferblock_doppelt ss_statt_scharf_s fremdzeichen_guard heilversprechen_wache " in
+    case " versand_jenachland lieferblock_doppelt ss_statt_scharf_s fremdzeichen_guard heilversprechen_wache liechtenstein_raus " in
       *" $L "*) TXTLOCK="exec 8>/tmp/lock_produkttext.lock; flock -w 240 8 || exit 0;" ;;
       *)        TXTLOCK="" ;;
     esac

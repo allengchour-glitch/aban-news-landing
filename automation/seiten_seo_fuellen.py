@@ -117,7 +117,7 @@ HAND = {
     '698000015745': 'LuxeStyle CH ist online: der Schweizer Shop für kuratierte Lifestyle-, Schmuck- und Beauty-Produkte. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.',
     '698000048513': 'Presseinformation zum Start von LuxeStyle CH — ein Schweizer Onlineshop aus Belp für Lifestyle- und Geschenkideen.',
     '698000114049': 'Die Geschichte hinter LuxeStyle CH: warum aus Belp ein Schweizer Onlineshop für kuratierte Lifestyle-Produkte wurde.',
-    '698000867713': 'Versand und Lieferung: Wir liefern innerhalb der Schweiz (inkl. Liechtenstein). Kosten, Lieferzeiten und Gratis-Versand ab CHF 50.',
+    '698000867713': 'Versand und Lieferung: Wir liefern innerhalb der Schweiz. Kosten, Lieferzeiten und Gratis-Versand ab CHF 50.',
     '698000998785': 'Widerrufsbelehrung für Verbraucher: 14 Tage gesetzliches Widerrufsrecht, dazu freiwillig 30 Tage Rückgaberecht bei LuxeStyle CH.',
     '698006405505': 'Die häufigsten Fragen an LuxeStyle CH: Lieferzeit, Versandkosten, Zahlungsarten, Rückgabe und Garantie — kurz beantwortet.',
     '698018300289': 'Bezahlen bei LuxeStyle CH: TWINT, Klarna Rechnungskauf, Visa, Mastercard, PayPal und Apple Pay — sicher über Shopify Payments.',

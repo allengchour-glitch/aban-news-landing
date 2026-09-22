@@ -19,6 +19,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   und kam zurück. Offen: CJ-Dispute USD 25.54, nur per Konsole (COWORK Punkt 0).
 - **💾 Dateispeicher: Betreiber-Entscheid 21.09. «grow plan, in einer monat machen, brauche zuerst kunde»** → Grow-Plan ~21.10.2026, bis dahin bleibt der Speicher voll (gewollt); Ampel informiert statt ruft, Routine erinnert am 21.10. Kurs bestätigt: **zuerst Kunden.**
 - **🤖 Seit 22.09. 07:02 UTC: Routine «Autonome Verbesserungsrunde» `trig_01XDyghjogoXy7aZ5MvJri1m` (alle 4 h, :25) feuert in die Cloud-Session** — misst, behebt EINE Klasse, pusht, meldet 3 Zeilen. Betreiber: «automation ki selbstständig starten». Daneben nur Wächter (Keepalive stündlich `trig_01Uy3z…`, Bestellwächter 2 h, Lagebeurteilung 2×/Tag). ⚠️ Nicht abschalten; Einwände in SHARED-MEMORY.md.
+- **🇱🇮 Liechtenstein GESTRICHEN (22.09., Weg B):** Markt = nur CH, Texte sagen nur Schweiz; `liechtenstein_raus.py` hält das täglich. Weg A (LI einschalten) = 2 Betreiber-Häkchen, dann Texte zurück.
 - **⛔ B2B bleibt AUS** (Betreiber 15.09.: «b2b sein lassen wen kosten»). Gemessen: 0 Firmen,
   0 B2B-Kataloge, Plan Basic. Ersatz = Seite «Firmen & Vereine» mit Anfrageformular.
 
@@ -489,6 +490,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-22 · 🇱🇮 **Liechtenstein raus (Weg B, Betreiber): 13 sichtbare Stellen → 0, rückgelesen — und 1'190 Produkt-Lieferblöcke trugen die Phrase, geschrieben von `versand_jenachland` seit 05.09. (19.09. nicht gemessen).** Quelle umgedreht, `liechtenstein_raus.py` täglich, Ampel misst Markt UND Texte. **Vor dem Streichen den Schreiber finden** → Journal
 - 2026-09-22 · 🔒 **Reparierer wartete blockierend auf den Text-Lock des Stundenlaufs — in einem Container, der stündlich stirbt, ist Warten ein Nie.** `LOCK_NB` mit kurzem Probieren + Aufseher-Tor `flock -n lock_produkttext.lock true` vor dem Start → Journal
 - 2026-09-22 · 🩺 **Heilversprechen-Wächter schrieb nur Beschreibungen — drei «Fettverbrennung»-TITEL standen als «offen» und warteten auf einen Menschen; jetzt Titel-Ersatztabelle mit Rücklesen (0 offen).** Anti-Schnarch: Nutzerbeschreibung ≠ Wirkzusage → Journal
 - 2026-09-22 · 🚚 **Verbesserungsrunde 3: der Wächter für besuchte Seiten ohne CH-Versand meldete nur — seit 18.09. vollstreckte allein ein Mensch; sein Register zeigte «ACTIVE» für ein seit 06:01 gedraftetes Produkt (Meinung des letzten Laufs je Handle, kein Live-Stand).** Jetzt `vollstrecken()`: DRAFT nach zwei unabhängigen NEIN, Tag `cj-keine-ch-versandoption`, Bericht → Journal

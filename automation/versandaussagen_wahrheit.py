@@ -20,7 +20,7 @@ DIE WAHRHEIT, HERGELEITET (nicht erfunden)
 Liefergebiet — aus dem Versandprofil und den Markets, nicht aus dem Text:
   * Shopify-Markets: EIN aktiver Markt «Switzerland», Regionen exakt ['CH'].
     Es kann ueberhaupt niemand ausserhalb der Schweiz auschecken.
-  * Versandrichtlinie: «Wir liefern ausschliesslich in die Schweiz und nach Liechtenstein.
+  * Versandrichtlinie (bis 22.09.2026; seitdem Weg B, nur Schweiz): «Wir liefern ausschliesslich in die Schweiz und nach Liechtenstein.
     Ein Versand in andere Laender (z. B. in die EU oder in die USA) ist derzeit nicht moeglich.»
   * Das Standardprofil hat zwar noch eine Zone «International / Rest of World» (CHF 15,
     aktiv) — sie ist wirkungslos, weil kein Markt sie freischaltet. Sie wurde NICHT
@@ -560,17 +560,17 @@ SEITEN = {
         '<p>Die Lieferung erfolgt direkt vom Hersteller (Versand ab Werk). Die Lieferzeit '
         'beträgt 10–20 Werktage. Bei Lieferungen ins Ausland können Zölle und Einfuhrabgaben '
         'anfallen, die vom Kunden zu tragen sind.</p>',
-        '<p>Wir liefern ausschliesslich in die Schweiz und nach Liechtenstein; ein Versand in '
+        '<p>Wir liefern ausschliesslich in die Schweiz; ein Versand in '
         'andere Länder ist nicht möglich. Ein grosser Teil der Ware wird direkt ab dem Lager '
         'des Herstellers versendet. Die Lieferzeit hängt vom Bezugsweg ab: ab Schweizer Lager '
         '1–2 Werktage, ab EU-Lager 2–7 Werktage, bei Druck auf Bestellung 7–14 Werktage, im '
         'Direktversand ab Herstellerlager 10–20 Werktage. Massgeblich ist die Angabe auf der '
         'jeweiligen Produktseite. Zoll- oder Einfuhrabgaben fallen für Lieferungen in die '
-        'Schweiz und nach Liechtenstein nicht zusätzlich an.</p>')],
+        'Schweiz nicht zusätzlich an.</p>')],
     698055360897: [(  # agb-luxestyle — rechtlich bindend
         '<p>Lieferzeit: <strong>7-14 Werktage</strong> ab Zahlungseingang, innerhalb der '
-        'Schweiz (inkl. Liechtenstein).</p>',
-        '<p>Lieferzeit ab Zahlungseingang, innerhalb der Schweiz (inkl. Liechtenstein): ab '
+        'Schweiz.</p>',
+        '<p>Lieferzeit ab Zahlungseingang, innerhalb der Schweiz: ab '
         'Schweizer Lager <strong>1–2 Werktage</strong>, ab EU-Lager <strong>2–7 Werktage</strong>, '
         'bei Druck auf Bestellung <strong>7–14 Werktage</strong>, im Direktversand ab '
         'Herstellerlager <strong>10–20 Werktage</strong>. Massgeblich ist die Angabe auf der '
@@ -581,7 +581,7 @@ SEITEN = {
          '🇨🇭 Blitzversand-Artikel kommen in 1–2 Werktagen aus dem Schweizer Lager, Ware ab '
          'EU-Lager in 2–7 Werktagen, Druck-auf-Bestellung-Artikel in 7–14 Werktagen und Ware '
          'im Direktversand ab Herstellerlager in 10–20 Werktagen. Geliefert wird ausschliesslich '
-         'in die Schweiz und nach Liechtenstein.'),
+         'in die Schweiz.'),
         ('Lieferzeit je nach Produkt in der Regel ca. 10–20 Werktage '
          '(personalisierte/Print-on-Demand- und Übersee-Artikel ca. 7–14 Werktage).',
          'Lieferzeit je nach Bezugsweg: ab Schweizer Lager 1–2 Werktage, ab EU-Lager 2–7 '
@@ -589,7 +589,7 @@ SEITEN = {
          '10–20 Werktage.')],
     698006208897: [(  # schweizer-vs-deutsche-marken — bewarb Lieferung nach Deutschland
         '<li>🇩🇪 Versand auch nach DE (8-14 Tage)</li>',
-        '<li>🇨🇭 Versand in die ganze Schweiz und nach Liechtenstein</li>')],
+        '<li>🇨🇭 Versand in die ganze Schweiz</li>')],
     698444710273: [(  # selbst-gestalten — Einheit angleichen (Tage → Werktage)
         'in der Regel <strong>ca. 7–14 Tage</strong>',
         'in der Regel <strong>ca. 7–14 Werktage</strong>')],

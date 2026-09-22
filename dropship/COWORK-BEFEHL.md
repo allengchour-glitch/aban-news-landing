@@ -289,7 +289,20 @@ Der Server schläft nicht. Das Setup-Skript ist fertig und idempotent: `server/l
 `luxe-waechter`; `git log --author=luxe-waechter` zeigt es, und die Ampel meldet «Wächter laufen auf
 dem Server», sobald ein solcher Commit jünger als 2 h ist.
 
-## 5️⃣ Liechtenstein — zugesagt, aber die Kasse lässt niemanden durch  ·  ~2 Minuten
+## 5️⃣ ✅ ERLEDIGT 22.09. ~19:40 UTC — Liechtenstein gestrichen (Weg B, Betreiber-Entscheid)
+
+**Was passiert ist:** Der Betreiber hat Weg B gewählt (die andere Sitzung hatte die Gelato-EFTA-Zonen
+bereinigt und die «13 Stellen» für Repo-Dateien gehalten — sie liegen im Shop). Gemessen und bereinigt,
+jede Stelle rückgelesen: **7 veröffentlichte Seiten** (versand-lieferung, faq, ueber-uns, rabatt-newsletter,
+schweizer-vs-deutsche-marken, influencer-partner, faq-versand-lieferung) und **3 Rechtstexte** (Versand 4×,
+Rückgabe 1×, AGB 1×) → 0 Fundstellen. Dazu ein Befund, der am 19.09. fehlte: **1'190 Produkt-Lieferblöcke**
+trugen «Versand nur in die Schweiz und nach Liechtenstein», geschrieben von `versand_jenachland.py` seit dem
+05.09. — Quelle umgestellt, Reparaturlauf `automation/liechtenstein_raus.py` (täglich im Aufseher, Bericht
+`dropship/LIECHTENSTEIN-RAUS.md`). Die Ampel-Zeile misst jetzt Markt UND sichtbare Texte und schweigt,
+solange beides «nur Schweiz» sagt. **Nichts mehr zu klicken.** Weg A bleibt jederzeit möglich (2 Häkchen
+unten) — dann melden, und ich schreibe die Zusage wieder in die Texte.
+
+### (Archiv) Liechtenstein — zugesagt, aber die Kasse lässt niemanden durch  ·  ~2 Minuten
 
 **Der Befund, gemessen am 19.09.2026:**
 
