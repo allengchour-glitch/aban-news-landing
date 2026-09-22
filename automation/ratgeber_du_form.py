@@ -58,9 +58,14 @@ def main():
                 verdacht.append((key, m.group(0), tn[i:m.end() + 60])); continue
             if neu == alt:
                 n_skip += 1; continue
-            rest = len(SIE.findall(tn))
+            # Nur ANREDE zählt: ein grosses «Sie» mitten im Satz. Am Satzanfang («Sie ist wasserdicht», «Sie sollten
+            # breit sein») ist es das Produkt/der Plural — 475 von 489 Resten am 22.09. waren genau das.
+            rest = sum(1 for r in SIE.finditer(tn)
+                       if r.start() > 0 and not re.search(r"[.!?:„»«\"]\s?$", tn[max(0, r.start() - 3):r.start()])
+                       and not re.match(r"Sie (?:und|&|oder) Ihn\b", tn[r.start():r.start() + 14])
+                       and not re.search(r"\b[Ff]ür $", tn[max(0, r.start() - 5):r.start()]))
             # Ratgeber sind lang: ein halb geduzter Artikel ist schlechter als ein gesiezter → nur schreiben,
-            # wenn KEIN «Sie» mehr übrig ist (VOLL=1, Standard). Die halben landen im Bericht.
+            # wenn keine ANREDE mehr übrig ist (VOLL=1, Standard). Die halben landen im Bericht.
             if os.environ.get("VOLL", "1") == "1" and rest:
                 n_warn += 1; verdacht.append((key, f"Rest {rest}× Sie", tn[:120])); continue
             if not FIX:
