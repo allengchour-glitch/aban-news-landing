@@ -2446,3 +2446,12 @@ gid://shopify/Product/15448872714625	bild-urls-tot
 gid://shopify/Product/15448872747393	bild-urls-tot
 gid://shopify/Product/15448872878465	bild-urls-tot
 gid://shopify/Product/15448872976769	bild-urls-tot
+gid://shopify/Product/15448647860609	zugeordnet	12	High-Waist Hose mit weitem Bein und Kordelzug
+gid://shopify/Product/15448800166273	zugeordnet	6	Farbverlauf Lidschatten-Stift
+gid://shopify/Product/15448803312001	zugeordnet	2	Multicolor Make-up Palette für Damen
+gid://shopify/Product/15448812388737	zugeordnet	2	Sportmaske mit Aktivkohlefilter
+gid://shopify/Product/15448816583041	bild-urls-tot
+gid://shopify/Product/15448873402753	zugeordnet	2	Helmhalterung für Action-Kameras
+gid://shopify/Product/15448873468289	zugeordnet	5	Leuchtbrille für sicheres Fahren bei Nacht
+gid://shopify/Product/15448873533825	zugeordnet	6	Smarter Retro Ring für Herzfrequenz
+gid://shopify/Product/15448873566593	zugeordnet	4	E-Sports In-Ear Bluetooth Headset (Kabellos)
