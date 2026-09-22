@@ -2495,3 +2495,5 @@ gid://shopify/Product/15448877990273	zugeordnet	4	Smartwatch mit Bluetooth-Anruf
 gid://shopify/Product/15448878023041	zugeordnet	10	Smartwatch mit Herzfrequenzmessung · schlicht, 4 Farben
 gid://shopify/Product/15448878121345	zugeordnet	11	Sportuhr mit Silikonarmband
 gid://shopify/Product/15448878285185	zugeordnet	2	Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk
+gid://shopify/Product/15448878317953	zugeordnet	4	Pedometer Sport-Armbanduhr
+gid://shopify/Product/15448878383489	zugeordnet	3	Smartes Fitness Armband mit Pulsmesser
