@@ -6,6 +6,18 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-22 · 🧠 «lern session memory abrufen und dazulernen» — der Vault war sechs Tage tot, und das zweite Gehirn meldete 23 gesunde Helfer krank
+
+**Gemessen:** `tools/lehre.py --liste` → jüngste Notiz **16.09.**; das Journal hatte seither **62 Kapitel** (17.–22.09.). `vault_qualitaet.py`: 89 Notizen, Abdeckung **18 %**, letzte Vault-Änderung im Git 16.09. Die Suche (`gedaechtnis.py`) findet zwar auch im Journal — aber die destillierten Regeln (Fallen/Sackgassen/Blockiert/Systeme), die eine neue Session in Sekunden lesen soll, fehlten für sechs Tage. **Eine Aufnahme, die nur von Hand passiert, passiert nicht** (dieselbe Lehre wie heute früh bei den Heilversprechen — diesmal am Gedächtnis selbst).
+
+**Getan:** drei Leser parallel über je zwei Tage → **51 Lehren** destilliert (10 + 21 + 20), alle per `lehre.py` aufgenommen: Vault **89 → 140 Notizen, Abdeckung 29 %, 360 Wikilinks, 0 kaputt**. Neu in der Keepalive-Ampel: **`VAULT: Journal <Datum> · Vault <Datum> · Rückstand N T`** — ab 2 Tagen ⚠️ mit dem Befehl. Gegenprobe des Messgeräts: erste Fassung las `datum:`/`date:` und meldete «Vault 2026-09-14 · 8 T» — falsch, `lehre.py` schreibt **`gelernt:`**; nach dem Fix 0 T. (Ein Messgerät, das sein Feld rät, misst den Zufall.)
+
+**Zweites Gehirn (`zweites_gehirn.py --wacht`): 166 Befunde, 23 NEU «grund-verschluckt» — alle Fehlalarme.** Die Geduld-Patches vom 21.09. setzten in ~23 Helfern ein `try/except: pass` um die restoreRate-Rechnung (Vorgabe 12 s steht davor); die Regel sah nur «except: pass im API-Helfer». Verfeinert: ein Helfer, der `grund/letzte/reason/fehler` zuweist, hält den Grund fest und ist gesund; der ECHT-Köder trägt jetzt genau dieses Muster. Danach 143 Befunde, **1 NEU, echt**: `cj_varianten_wache.cj()` gab nach 5 Versuchen ein stilles `None` zurück → jetzt `{"code":"netz","message":…}`, die beiden Aufrufer prüfen darauf. Und mein eigener Wächter von heute (`heilversprechen_wache.gql()`) verschluckte den Grund ebenfalls — repariert; die Regel hätte ihn nicht gefangen (kein `pass`, sondern `continue`) → Nachschärfung offen.
+
+**`skills_pruefen.py`: 12 Befunde** — Skills und Vault-Notizen nennen Werkzeuge, die es nicht gibt (`tools/produktdichte.mjs`, `tools/seiten_blick.mjs`, `tools/kopfleiste.mjs`, `spiele-dev/…`). Offen, nicht heute: erst `git log --all -- <pfad>` fragen, ob sie je existierten oder auf einem anderen Zweig liegen.
+
+**Nebenfund, teuer beinahe:** mein Wartebefehl auf den Bild-Nachholer lief in sein 580-s-Timeout und die Aufgabe hiess «completed» — ich las das als «fertig», bereinigte das Ledger per `grep -v > tmp && mv` (neuer Inode) **während der Prozess noch lief** (30 Min, CAP 150): sein Ledger-Handle zeigte ab da auf eine gelöschte Datei. Gerettet über `/proc/<pid>/fd/23` (0 Zeilen verloren, Merger wartet auf das Ende). **Ein Timeout ist kein Ende; und ein Ledger, das ein laufender Prozess hält, wird angehängt, nie ersetzt** (`>>` in dieselbe Datei, oder erst nach `ps`).
+
 ## 2026-09-22 · 🩺 «mach alles besser» Runde 3: die Woche der Landeseiten — ein Fix ohne Wächter war ein Fix für eine Woche
 
 **Gemessen (ShopifyQL, 7 Tage, human):** Startseite 32 Sitzungen, dann je 5: `shirt-zum-selbstgestalten`, `/search`, `ueber-uns`, `collections/halloween`, **`tunmate-rizinusol`** — und 3 auf dem gedrafteten `rizinusol-wickel-set` (Redirect aufs lebende Produkt stand schon). 62 besuchte Produktseiten in einem Zug geprüft: Status, Bilder, Anrede, Faktenblock, Heil-Muster.

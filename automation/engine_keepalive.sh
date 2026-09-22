@@ -434,6 +434,27 @@ if [ -f /tmp/fixer_keepalive.log ]; then
     echo "⚠️ AUFSEHER-STARTFEHLER: $_fl_neu Shell-Fehler im Aufseher-Log seit dem letzten Tick — Waechter starten NICHT. Beispiel: $(tail -n +"$((_fl_mark+1))" /tmp/fixer_keepalive.log | grep -m1 "fixer_keepalive.sh: line" | cut -c1-120)"
   fi
 fi
+# 🧠 VAULT-RUECKSTAND (22.09.2026): Der Vault (zweites Gehirn, durchsuchbar) endete am 16.09.,
+# das Journal lief sechs Tage weiter — 62 Kapitel, 51 Lehren, die keine Session finden konnte.
+# Eine Aufnahme, die nur von Hand passiert, passiert nicht. Diese Zeile misst den Abstand
+# (juengste Journal-Ueberschrift vs. juengste datierte Vault-Notiz) und ruft ab 2 Tagen.
+VR=$(cd "$REPO" && python3 - <<'PY' 2>/dev/null
+import re,glob,os,datetime
+j=open("GEDAECHTNIS-JOURNAL.md",encoding="utf-8",errors="replace").read()
+jd=max(re.findall(r"^## (\d{4}-\d{2}-\d{2}) ",j,re.M) or ["0000-00-00"])
+vd="0000-00-00"
+for f in glob.glob("brain/vault/*/*.md"):
+    t=open(f,encoding="utf-8",errors="replace").read(600)
+    m=re.search(r"^gelernt:\s*(\d{4}-\d{2}-\d{2})",t,re.M) or re.search(r"^(?:datum|date):\s*(\d{4}-\d{2}-\d{2})",t,re.M)   # lehre.py schreibt `gelernt:`
+    if m and m.group(1)>vd: vd=m.group(1)
+try:
+    d=(datetime.date.fromisoformat(jd)-datetime.date.fromisoformat(vd)).days
+except Exception:
+    d=-1
+print(f"VAULT: Journal {jd} · Vault {vd} · Rueckstand {d} T" + (" ⚠️ Lehren aufnehmen: python3 tools/lehre.py" if d>=2 else "") if d>=0 else "VAULT: unklar (Datum nicht lesbar)")
+PY
+)
+echo "${VR:-VAULT: unklar (Skript-Fehler)}"
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim

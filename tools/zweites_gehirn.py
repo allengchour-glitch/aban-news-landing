@@ -27,7 +27,7 @@ DIE EISERNE REGEL DIESES WERKZEUGS:
   python3 tools/zweites_gehirn.py --regeln       # nur Befunde, Exit 1 wenn welche
   python3 tools/zweites_gehirn.py --inventar     # Ueberblick
 """
-import ast
+import ast, re
 import os
 import pathlib
 import re
@@ -118,6 +118,17 @@ def r_grund_verschluckt(dateien):
         except SyntaxError:
             continue
         for fn in _api_helfer(baum):
+            # 22.09.2026: Ein Helfer, der den Grund IRGENDWO festhaelt (grund/letzte/reason/fehler
+            # als Ziel einer Zuweisung), verschluckt ihn nicht — auch wenn er daneben ein
+            # `except: pass` um eine Nebenrechnung hat (Wartezeit aus restoreRate, Vorgabe 12 s
+            # steht davor). Ohne diese Ausnahme meldete die Regel nach den Geduld-Patches vom
+            # 21.09. 23 gesunde Helfer krank; die Koeder-Regel «einen echten Fall durchlassen»
+            # war damit verletzt.
+            haelt_grund = any(isinstance(k, ast.Name) and re.match(r"(grund|letzte|reason|fehler)", k.id)
+                              for n in ast.walk(fn) if isinstance(n, (ast.Assign, ast.AugAssign, ast.AnnAssign))
+                              for k in (n.targets if isinstance(n, ast.Assign) else [n.target]))
+            if haelt_grund:
+                continue
             for knoten in ast.walk(fn):
                 if not isinstance(knoten, ast.Try):
                     continue
@@ -256,7 +267,8 @@ KOEDER = {
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
     "stille-null": ("koeder.py", "def gql(q):\n    for _ in range(3):\n        pass\n    raise RuntimeError('Grund')\n"),
-    "grund-verschluckt": ("koeder.py", "def gql(q):\n    try:\n        x = 1\n    except Exception as e:\n        grund = str(e)\n    return x\n"),
+    # Echt: der Grund wird festgehalten — UND daneben darf ein `except: pass` um eine Nebenrechnung stehen (21.09.-Muster).
+    "grund-verschluckt": ("koeder.py", "def gql(q):\n    grund = ''\n    wartezeit = 12.0\n    try:\n        wartezeit = 1 / 0\n    except Exception:\n        pass\n    try:\n        x = 1\n    except Exception as e:\n        grund = str(e)\n    return x\n"),
     "pgrep-falle": ("automation/koeder.sh", '# pgrep -f ist eine Falle, siehe Lehre 1\nps -eo args | awk \'$2 ~ /x\\.sh$/\'\n'),
     # Echt: beide Namen liegen im Repo, der Env-Pfad gehoert mit Absicht nur nach /tmp.
     "nur-tmp-dauerlaeufer": ("automation/koeder.sh",

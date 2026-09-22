@@ -81,7 +81,8 @@ def cj(path):
         if str(d.get("code")) in ("1600200", "1600201"):
             time.sleep(1.2); continue            # mit Takt selten; kurz statt 8/16/24 s
         return d
-    return None
+    # 22.09.: kein stilles None — der Aufrufer bekommt den Grund als Antwort (Regel «stille-null»)
+    return {"code": "netz", "message": "keine lesbare CJ-Antwort nach 5 Versuchen (Netz/Drossel)", "data": None}
 
 
 def gql(q, v=None):
@@ -126,7 +127,7 @@ def cj_varianten(sku):
     s = (sku or "").strip(); kern = re.sub(r'^CJ-', '', s, flags=re.I)
     if re.fullmatch(r'[0-9]{10,}', kern):
         d = cj(f"/api2.0/v1/product/variant/query?pid={kern}")
-        if d is None: return set(), "keine CJ-Antwort"
+        if d is None or str(d.get("code")) == "netz": return set(), "keine CJ-Antwort"
         if str(d.get("code")) == "200" and isinstance(d.get("data"), list):
             return {v.get("variantSku") for v in d["data"] if v.get("variantSku")}, ""
         return set(), f"pid-Abfrage Code {d.get('code')}"
@@ -143,7 +144,7 @@ def cj_varianten(sku):
     d = None; code = ""
     for art, wert in versuche:
         d = cj(f"/api2.0/v1/product/query?{art}={wert}")
-        if d is None: return set(), "keine CJ-Antwort"
+        if d is None or str(d.get("code")) == "netz": return set(), "keine CJ-Antwort"
         code = str(d.get("code"))
         if code != "1602001": break
     if code == "1602002": return set(), "PRODUKT-WEG (1602002) — cj_verfuegbarkeit zustaendig"
