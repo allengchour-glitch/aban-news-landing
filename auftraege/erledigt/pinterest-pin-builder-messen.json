@@ -1,0 +1,8 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_builder_messen.mjs",
+  "id": "pinterest-pin-builder-messen",
+  "warum": "Betreiber 22.09.: «push mehr» Besucher. Pinterest ist der einzige organische Kanal, den wir selbst anschieben dürfen (Meta unter _SOCIAL_STOPP, TikTok ohne API). Bevor ein Pin-Skript gebaut wird, muss der Pin-Editor GEMESSEN werden (Auftrag 27 hing eine CSV ins Bildfeld, weil nie gemessen wurde). Rein lesend: Adresse, Tour, alle Felder und Knöpfe mit Beschriftung, Screenshot. Erzeugt keinen Pin.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
