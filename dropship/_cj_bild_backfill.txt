@@ -682,3 +682,13 @@ gid://shopify/Product/15453792567681	+4	2510020600331612700
 gid://shopify/Product/15453792960897	+4	2508270218261600500
 gid://shopify/Product/15453792993665	+4	2602181724181635500
 gid://shopify/Product/15431535985025	nichts-brauchbar	cj-CJMZ2930713
+gid://shopify/Product/15433463103873	+4	CJ-CJYD2867018
+gid://shopify/Product/15433463398785	+2	CJ-CJYP2842168
+gid://shopify/Product/15433463431553	nichts-brauchbar	CJ-CJCP2838931
+gid://shopify/Product/15433463464321	+4	CJ-CJCP2838954
+gid://shopify/Product/15433463497089	+2	CJ-CJCP2838940
+gid://shopify/Product/15433463562625	+2	CJ-CJYD2852650
+gid://shopify/Product/15433463595393	nichts-brauchbar	CJ-CJYD2842000
+gid://shopify/Product/15433463628161	+2	CJ-CJCP2825975
+gid://shopify/Product/15433463660929	nichts-brauchbar	CJ-CJYD2822858
+gid://shopify/Product/15433463726465	nichts-brauchbar	CJ-CJFU2804946
