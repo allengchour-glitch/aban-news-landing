@@ -67,11 +67,32 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     .filter(k => k.text || k.testid).slice(0, 40));
 
   /** Steht ein Pin mit diesem Titel schon auf der Pinnwand? (Plattform-Wahrheit) */
+  let boardAdressen = null;
+  /** Echte Board-Adressen von der Profilseite (Lauf 1 am 22.09.: geratener Slug lieferte 183 Zeichen = nichts). */
+  async function boardAdresse(boardName) {
+    if (!boardAdressen) {
+      await seite.goto(`${HOST}/${NUTZER}/_saved/`, { waitUntil: 'load', timeout: 60000 }).catch(() => {});
+      await seite.waitForTimeout(5000);
+      boardAdressen = await seite.$$eval('a[href]', (as, n) => [...new Set(as
+        .map(a => a.getAttribute('href') || '')
+        .filter(h => h.toLowerCase().startsWith('/' + n + '/'))
+        .map(h => h.split('?')[0])
+        .filter(h => { const t = h.split('/').filter(Boolean); return t.length === 2 && !t[1].startsWith('_'); }))], NUTZER.toLowerCase());
+      schritte.push(`Boards auf dem Profil: ${boardAdressen.join(', ') || '—'}`);
+    }
+    const ziel = norm(boardName.replace(/&/g, ''));
+    const treffer = boardAdressen.find(h => norm(decodeURIComponent(h.split('/')[2])) === ziel)
+      || boardAdressen.find(h => norm(decodeURIComponent(h.split('/')[2])).includes(ziel.slice(0, 8)));
+    return treffer ? HOST + treffer : null;
+  }
   async function aufPinnwand(boardName, titel) {
-    const slug = boardName.toLowerCase().replace(/&/g, '').replace(/[^a-z0-9äöü]+/g, '-').replace(/^-|-$/g, '');
-    await seite.goto(`${HOST}/${NUTZER}/${encodeURIComponent(slug)}/`, { waitUntil: 'load', timeout: 60000 }).catch(() => {});
-    await seite.waitForTimeout(4000);
+    const adr = await boardAdresse(boardName);
+    if (!adr) return { da: false, url: null, zeichen: 0 };
+    await seite.goto(adr, { waitUntil: 'load', timeout: 60000 }).catch(() => {});
+    await seite.waitForTimeout(6000);
+    for (let i = 0; i < 3; i++) { await seite.mouse.wheel(0, 1500).catch(() => {}); await seite.waitForTimeout(1200); }
     const text = await seite.locator('body').innerText().catch(() => '');
+    if (text.length < 200) await schuss('pinnwand-unlesbar');
     return { da: norm(text).includes(norm(titel).slice(0, 40)), url: seite.url(), zeichen: text.length };
   }
 
@@ -87,6 +108,7 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
     const vorher = await aufPinnwand(k.board, k.title);
     schritte.push(`Pinnwand «${k.board}» (${vorher.url}, ${vorher.zeichen} Z.): Titel ${vorher.da ? 'SCHON DA' : 'nicht da'}`);
     if (vorher.da) { ergebnis.gepinnt.push(k.handle); ergebnis.uebersprungen.push(`${k.handle}: schon auf der Pinnwand`); return ergebnis; }
+    if (!vorher.url) { schritte.push(`Pinnwand «${k.board}» nicht auf dem Profil gefunden — kein Pin`); return ergebnis; }
     if (vorher.zeichen < 200) { schritte.push('Pinnwand nicht lesbar — kein Pin ohne Gegenprobe'); return ergebnis; }
 
     // 2) Bild holen (eigener Download, kein Raten)
