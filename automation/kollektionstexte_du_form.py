@@ -133,8 +133,11 @@ def um(t):
         _zp_rest = (r'\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|solltest|könntest|würdest|wolltest|müsstest|'
                     r'können|möchten|wollen|müssen|sollen|dürfen|werden|sollten|könnten|würden|wollten|müssten|dürften)\b')
         _hat_zweite = lambda k: any(w.endswith('st') and w not in _KEIN_ZWEITE and len(w) > 3 for w in re.findall(r'[a-zäöüß]+', k.lower()))
-        if re.search(_zp, kopf, re.I) or re.search(_zp + r'\s*$', m.string[max(0, m.start() - 16):m.start()], re.I) or _hat_zweite(kopf) \
-                or _hat_zweite(m.string[max(0, m.start() - 16):m.start()]):
+        # 2.-Person-Form schon im Satzteil: ohne «und/oder» dazwischen ist das Wort am Ende Partizip/Infinitiv
+        # («du bleibst stets verbunden»); MIT «und/oder» ist es das zweite finite Verb («du behältst … und nichts vergessen»)
+        if re.search(_zp, kopf, re.I) or re.search(_zp + r'\s*$', m.string[max(0, m.start() - 16):m.start()], re.I) \
+                or (_hat_zweite(kopf) and not re.search(r'\b(und|oder|sowie)\b', kopf)) \
+                or (_hat_zweite(m.string[max(0, m.start() - 16):m.start()]) and not re.search(r'\b(und|oder|sowie)\b', kopf)):
             return m.group(0)
         # Aufzählung mit Modalverb am Ende («du schneiden, würfeln, raspeln oder Eier trennen möchten,»): die Komma-
         # Segmente NACH dem Kandidaten gehören zum selben Satzteil, solange keins mit Konjunktion/Pronomen beginnt
@@ -201,8 +204,9 @@ def um(t):
                 continue   # blosse Infinitive («würfeln», «backen oder grillen») → weiter zum Modalverb am Ende
             # Fall C: «die du für dein Make-up, zum Konturieren sowie für die Brauen benötigen» — Segment 0 hat KEIN
             # finites Verb, das Satzteil-Ende trägt es → konjugieren (nur wenn kein Modalverb in Segment 0)
-            _fin0 = zweite0 or re.search(r'\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|hast|bist|können|möchten|wollen|müssen|sollen|dürfen|werden|haben|sind)\b', segs[0]) \
-                    or re.search(r'\b[a-zäöüß]{3,}(?:en|ern|eln)\s*$', segs[0])
+            _vor = m.string[max(0, m.start() - 24):m.start()]   # «So kannst du deine Daten, …» — Modalverb steht VOR du
+            _fin0 = zweite0 or re.search(r'\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|hast|bist|können|möchten|wollen|müssen|sollen|dürfen|werden|haben|sind)\b', segs[0] + ' ' + _vor, re.I) \
+                    or re.search(r'\b[a-zäöüß]{3,}(?:en|ern|eln)\s*$', segs[0]) or re.search(r'\b[a-zäöüß]{3,}(?:en|ern|eln|st)\s+$', _vor)
             me = re.search(r'\b([a-zäöüß]{3,}(?:en|ern|eln))(\s*)$', seg)
             if me and not _fin0 and me.group(1) not in _KEINVERB and _zweite(me.group(1)) \
                     and not re.search(r'\b(kannst|möchtest|willst|musst|sollst|darfst|wirst|können|möchten|wollen|müssen|sollen|dürfen|werden|hast|bist)\b', seg) \
