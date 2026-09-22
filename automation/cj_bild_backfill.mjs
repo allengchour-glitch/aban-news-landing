@@ -155,9 +155,16 @@ async function main() {
   console.log(`CJ-Produkte mit nur einem Bild: ${offen.length}`);
   // SKU-Formen: `CJ-<pid>` (neuere Importe) → pid=  ·  `CJ-CJYD2867018` / `cj-CJMZ…` (aeltere)
   // → productSku=  (beide antworten 200 mit productImageSet; gemessen 22.09.: 17 bzw. 5 Bilder).
+  // Dritte Form (22.09., 7 von 40 im ersten Lauf): `CJ-01638FF0-D4AA-…` (UUID) ist eine CJ-PRODUKT-ID
+  // alter Form — `product/query?pid=<UUID>` antwortet 200 mit Bildern (gemessen: 8 und 6). ⚠️ Fast
+  // falsch beurteilt: `variant/queryByVid` gab 20/20 «Variant not found», und 4'564 aktive Produkte
+  // tragen diese Form — ein «not found» vom falschen Endpunkt beweist nichts (Lehre 09.08., steht
+  // in cj_verfuegbarkeit.cj_kennt(): Form c = pid). Erst den Bestand lesen, dann messen.
   const cjFrage = sku => {
     const a = sku.match(/^cj-(\d{6,})/i); if (a) return `/product/query?pid=${a[1]}`;
     const b = sku.match(/^cj-(CJ[A-Z0-9]{6,})/i); if (b) return `/product/query?productSku=${b[1]}`;
+    const c = sku.match(/^cj-([0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12})/i);
+    if (c) return `/product/query?pid=${c[1]}`;
     return null;
   };
   if (DRY) {

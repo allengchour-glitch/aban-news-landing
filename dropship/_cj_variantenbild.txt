@@ -2473,3 +2473,18 @@ gid://shopify/Product/15448876056961	zugeordnet	8	Vintage Metall-Leder Armband f
 gid://shopify/Product/15448876122497	zugeordnet	3	Smart Reminder Armband mit Bluetooth
 gid://shopify/Product/15448876220801	zugeordnet	16	Pinkycolor Silikonarmband für Apple Watch
 gid://shopify/Product/15448876253569	zugeordnet	5	Y68 Smartwatch mit Bluetooth
+gid://shopify/Product/15448876286337	zugeordnet	8	Smart Bluetooth Armband mit Herzfrequenzmessung
+gid://shopify/Product/15448876351873	zugeordnet	2	Antistatik-Armband für Herren und Damen
+gid://shopify/Product/15448876548481	zugeordnet	4	Smartwatch mit Farb-Touchscreen & Blutsauerstoffmessung
+gid://shopify/Product/15448876679553	zugeordnet	6	Smartes Gesundheits-Armband mit Farbdisplay
+gid://shopify/Product/15448876810625	zugeordnet	3	Smart-Armband mit HD-Farbdisplay
+gid://shopify/Product/15448876876161	zugeordnet	10	Uhrenarmband aus Edelstahl, dreireihig
+gid://shopify/Product/15448877105537	zugeordnet	2	Dual-Screen Smart Armband
+gid://shopify/Product/15448877171073	zugeordnet	25	Zweifarbiges Silikonarmband für Apple Watch
+gid://shopify/Product/15448877269377	zugeordnet	12	Smartwatch-Armband aus Leder-Nylon
+gid://shopify/Product/15448877433217	zugeordnet	3	C114 Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15448877465985	zugeordnet	28	Smart Slim Resin Armband für Apple Watch
+gid://shopify/Product/15448877531521	zugeordnet	11	Harz-Metall-Denim-Ketten-Armband für Smartwatches
+gid://shopify/Product/15448877597057	zugeordnet	4	Smart-Armband mit Schritt- & Schlafüberwachung
+gid://shopify/Product/15448877629825	zugeordnet	8	P10 Smart Health Armband
+gid://shopify/Product/15448877662593	zugeordnet	4	Kinder Smartwatch mit GPS und Videoanruf
