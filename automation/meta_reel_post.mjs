@@ -126,6 +126,42 @@ async function igLiveHas(caption) {
   return false;                            // Nie erreichbar → nicht das Posten blockieren (lokale Wachen greifen)
 }
 if (await igLiveHas(cand[idx.caption])) process.exit(0);
+
+// ── PRODUKT NOCH KAUFBAR? (GEHIRN 10 «vor Post prüfen, dass das Produkt noch ACTIVE ist» — bis 22.09.2026
+//    lebte diese Regel nur im Kopf; der Autopilot postet ohne Menschen, also gehört sie hierher.)
+//    Die Reel-ID traegt die Produkt-ID (cjreel-<pid>). Status ueber die Admin-API mit dem Shop-Token aus
+//    /tmp/cj_shop_token.txt. Nicht ACTIVE → Zeile wird 'produkt-nicht-aktiv' und der Lauf endet ohne Post
+//    (der naechste Lauf nimmt den naechsten Kandidaten). Ist die Pruefung selbst nicht moeglich
+//    (kein Token, Netz), wird NICHT gepostet: ein Reel fuer ein gedraftetes Produkt ist ein toter Link in
+//    der Bio, und «nicht pruefbar» ist kein «aktiv».
+async function produktAktiv(postId) {
+  const m = /^cjreel-(\d{6,})$/.exec(postId || '');
+  if (!m) return { ok: true, grund: 'keine Produkt-ID im Reel-Namen' };
+  const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
+  const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
+  if (!tok) return { ok: false, grund: 'kein Shop-Token' };
+  for (let a = 0; a < 3; a++) {
+    try {
+      const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method: 'POST',
+        headers: { 'X-Shopify-Access-Token': tok, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }` }) });
+      const d = await r.json(); const p = d && d.data && d.data.product;
+      if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
+      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}` };
+    } catch (e) { /* retry */ }
+    await sleep(2000 * (a + 1));
+  }
+  return { ok: false, grund: 'Shopify nicht erreichbar' };
+}
+{
+  const pa = await produktAktiv(cand[idx.id]);
+  if (!pa.ok) {
+    console.error(`⛔ Kein Post — Produkt nicht kaufbar/pruefbar (${pa.grund}): ${cand[idx.id]}`);
+    if (!DRY && /nicht mehr|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pa.grund)) { cand[idx.status] = 'produkt-nicht-aktiv'; writeLedger(); }
+    process.exit(0);
+  }
+  console.log(`  Produkt: ${pa.grund}`);
+}
 const [id, , url, caption, tags] = [cand[idx.id], 0, cand[idx.video_url], cand[idx.caption], cand[idx.hashtags]];
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 12).join(' ')}`;
 console.log(`Post: ${id}\n  Video: ${url.slice(0, 90)}\n  Caption: ${text.slice(0, 100)}…`);
