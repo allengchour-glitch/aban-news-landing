@@ -1,0 +1,223 @@
+{%- comment -%} Favicon (16.08.2026): Shop hatte KEINES — Browser-Tab zeigte die
+generische Weltkugel. Gold-L auf dunklem Grund, liegt auf dem Shopify-CDN. {%- endcomment -%}
+<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-favicon.png?v=1786912722">
+<link rel="apple-touch-icon" href="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-favicon.png?v=1786912722">
+{% doc %}
+  Renders all meta tags for the page including Open Graph, Twitter Cards, and SEO tags.
+
+  @param {object} [product] - The product object, available on product pages for price meta tags.
+{% enddoc %}
+
+<meta charset="utf-8">
+<meta
+  http-equiv="X-UA-Compatible"
+  content="IE=edge"
+>
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+<meta
+  name="view-transition"
+  content="same-origin"
+>
+<meta
+  name="theme-color"
+  content=""
+>
+
+{%- liquid
+  assign og_title = page_title | default: shop.name
+  assign og_url = canonical_url | default: request.origin
+  assign og_type = 'website'
+  assign og_description = page_description | default: shop.description | default: shop.name
+  assign og_description = og_description | replace: 'in die Schweiz und nach Deutschland', 'in die ganze Schweiz'
+
+  if request.page_type == 'product'
+    assign og_type = 'product'
+  elsif request.page_type == 'article'
+    assign og_type = 'article'
+  elsif request.page_type == 'password'
+    assign og_url = request.origin
+  endif
+%}
+
+<meta
+  property="og:site_name"
+  content="{{ shop.name }}"
+>
+<meta
+  property="og:url"
+  content="{{ og_url }}"
+>
+<meta
+  property="og:title"
+  content="{{ og_title | escape }}"
+>
+<meta
+  property="og:type"
+  content="{{ og_type }}"
+>
+{%- comment -%}
+  ⚠️ KEIN `| escape` auf og_description. `page_description` liefert den Text von
+  Shopify BEREITS escaped; ein zweites Escapen macht daraus &amp;quot; und &amp;amp;.
+  Sichtbar wurde es dort, wo diese Angabe hingehört: in der Vorschau, die Facebook,
+  WhatsApp und Twitter beim Teilen eines Produktlinks zeigen. «"Lost Paradise"
+  Nagel-Set» erschien dort als «&amp;quot;Lost Paradise&amp;quot; Nagel-Set».
+  Betroffen waren 7'041 der 28'705 Produkte im Google-Kanal — jedes mit &, " oder <
+  im SEO-Text. og:title, twitter:title und name="description" sind KORREKT einfach
+  escaped und bleiben, wie sie sind; der Fehler steckte allein in dieser Angabe.
+{%- endcomment -%}
+<meta
+  property="og:description"
+  content="{{ og_description }}"
+>
+
+{%- if page_image -%}
+  <meta
+    property="og:image"
+    content="http:{{ page_image | image_url }}"
+  >
+  <meta
+    property="og:image:secure_url"
+    content="https:{{ page_image | image_url }}"
+  >
+  <meta
+    property="og:image:width"
+    content="{{ page_image.width }}"
+  >
+  <meta
+    property="og:image:height"
+    content="{{ page_image.height }}"
+  >
+{%- endif -%}
+
+{%- if request.page_type == 'product' -%}
+  <meta
+    property="og:price:amount"
+    content="{{ product.price | money_without_currency | strip_html }}"
+  >
+  <meta
+    property="og:price:currency"
+    content="{{ cart.currency.iso_code }}"
+  >
+{%- endif -%}
+
+{%- if settings.social_twitter_link != blank -%}
+  <meta
+    name="twitter:site"
+    content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}"
+  >
+{%- endif -%}
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+>
+<meta
+  name="twitter:title"
+  content="{{ og_title | escape }}"
+>
+<meta
+  name="twitter:description"
+  content="{{ og_description }}"
+>
+
+<title>
+  {{ page_title }}
+  {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+  {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+</title>
+
+<link
+  rel="canonical"
+  href="{{ canonical_url }}"
+>
+
+{% if page_description %}
+  {%- comment -%}
+    ⚠️ 14.08.2026: Die Startseiten-Beschreibung aus Online Store → Preferences lautet
+    «… mit schnellem Versand in die Schweiz und nach Deutschland». Der Shop hat genau EINEN
+    aktiven Markt («Switzerland», Regionen ['CH']) und liefert laut Versandrichtlinie
+    ausschliesslich in die Schweiz und nach Liechtenstein — diese Zeile bewarb also im
+    Google-Snippet der meistbesuchten Seite eine Lieferung, die es nicht gibt.
+    Das Feld selbst (shop.description) lässt sich über KEINE Admin-API ändern; es geht nur
+    im Adminbereich unter Online Store → Preferences. Bis der Betreiber das dort korrigiert,
+    fängt dieselbe Ersetzung, die weiter oben schon für og:description steht, den Text hier
+    ab. Sobald das Feld im Admin richtig lautet, greift die Ersetzung ins Leere und schadet
+    nicht — sie kann also stehen bleiben.
+  {%- endcomment -%}
+  {%- assign meta_desc = page_description | replace: 'in die Schweiz und nach Deutschland', 'in die ganze Schweiz' -%}
+  <meta
+    name="description"
+    content="{{ meta_desc | escape }}"
+  >
+{% endif %}
+
+{%- comment -%} 📦 Konkretes Lieferdatum wie bei Amazon (15.08.2026). Liest die erste
+Lieferzeit-Angabe («1–2 Werktage», «10–20 Werktage») aus der Produktbeschreibung und rechnet
+sie in ein Datum um — «bis 20. Aug» überzeugt, «10–20 Werktage» lässt rechnen. Nur auf
+Produktseiten; ohne Treffer erscheint nichts (keine erfundene Zusage). {%- endcomment -%}
+{%- if request.page_type == 'product' -%}
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  try{
+    var wurzel=document.querySelector('.product-details, .product__description, [data-product-description], .rte');
+    if(!wurzel) return;
+    // ⚠️ CH-Lager-Seiten haben schon ein Lieferdatum-Widget am Kauf-Knopf («Lieferung
+    // voraussichtlich 16.–18. Aug»). Zwei Datumszusagen auf einer Seite verwirren — dann
+    // gilt die bestehende, besser platzierte (15.08.2026).
+    if(/Lieferung voraussichtlich/.test(document.body.textContent||'')) return;
+    // ⚠️ ALLE Angaben einsammeln und die KONSERVATIVSTE nehmen (15.08.2026): der erste
+    // Treffer war beim Geschenkbox-Test «7–14 Tage» aus einem Nebensatz, während der
+    // Lieferblock «8–16 Werktage» sagt — die Box versprach schneller, als das Produkt
+    // liefern kann. Ein zu frühes Datum ist schlimmer als gar keines.
+    var alle=[...(wurzel.textContent||'').matchAll(/(\d+)\s*[\u2013\u2014-]\s*(\d+)\s*(Werktage|Tage)/g)]
+      .map(function(x){return {lo:parseInt(x[1],10),hi:parseInt(x[2],10),werk:x[3]==='Werktage'};})
+      .filter(function(x){return x.lo>0&&x.hi>=x.lo&&x.hi<60;});
+    if(!alle.length) return;
+    alle.sort(function(a,b){return (b.hi*(b.werk?1.4:1))-(a.hi*(a.werk?1.4:1));});
+    var lo=alle[0].lo, hi=alle[0].hi, werk=alle[0].werk;
+    if(!(lo>0&&hi>=lo&&hi<60)) return;
+    function plus(n){var d=new Date();var s=0;while(s<n){d.setDate(d.getDate()+1);var w=d.getDay();if(!werk||(w!==0&&w!==6))s++;}return d;}
+    var T=['So','Mo','Di','Mi','Do','Fr','Sa'],M=['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sep','Okt','Nov','Dez'];
+    function f(d){return T[d.getDay()]+', '+d.getDate()+'. '+M[d.getMonth()];}
+    var a=plus(lo+1),b=plus(hi+1);
+    var box=document.createElement('div');
+    box.className='ls-lieferdatum';
+    box.style.cssText='margin:10px 0;padding:9px 13px;border-radius:10px;font-size:.95em;'
+      +(hi<=2?'background:#eefaf0;border:1px solid #cdeed4':'background:#f4f6fb;border:1px solid #dde3ef');
+    box.innerHTML='📦 Voraussichtliche Lieferung: <strong>'+f(a)+' – '+f(b)+'</strong>'
+      +' <span style="opacity:.7">(bei Bestellung heute)</span>';
+    var ziel=wurzel.querySelector('.ls-liefer')||wurzel.firstElementChild;
+    if(ziel&&ziel.parentNode) ziel.parentNode.insertBefore(box,ziel);
+    else wurzel.insertBefore(box,wurzel.firstChild);
+  }catch(e){}
+});
+</script>
+{%- endif -%}
+
+{%- comment -%} ✨ Optik-Politur (15.08.2026, Auftrag «optisch besser»): ruhige Karten mit
+sanftem Schweben, konsequente Rundungen, kräftige Preise. Bewusst NUR Feinschliff auf
+bestehenden Theme-Klassen — kein Layout-Umbau, damit der Customizer die Hoheit behält.
+Sticky-Regel beachtet: keine eigenen z-index über 4. {%- endcomment -%}
+<style id="lux-polish">
+/* Feinschliff 16.08.: Karten-Bild-Zoom, Flammen-Puls der Trend-Überschrift, Button-Übergänge */
+.product-card__image, .card-gallery img { transition: transform .45s ease; }
+.product-card:hover .product-card__image, .product-card:hover .card-gallery img { transform: scale(1.04); }
+h2 .lux-flamme, .section-header h2:first-letter { }
+@keyframes luxpuls { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18)} }
+button, .button { transition: transform .15s ease, box-shadow .2s ease; }
+.button:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+
+.product-card{border-radius:14px;transition:transform .22s ease,box-shadow .22s ease;will-change:transform}
+@media(hover:hover){.product-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(31,41,55,.10)}}
+.product-card .card-gallery,.product-card img{border-radius:12px;overflow:hidden}
+.product-card .price,.price-item--sale{font-weight:650;letter-spacing:.01em}
+.compare-at-price{opacity:.55}
+.resource-list__item{padding-bottom:6px}
+.button,button[type="submit"].button{border-radius:12px}
+.ls-lieferdatum strong{letter-spacing:.01em}
+.ls-trust{color:#3b4252}
+h1,h2{letter-spacing:-.01em}
+</style>

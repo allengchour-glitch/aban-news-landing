@@ -6,6 +6,22 @@
 > Reihenfolge wie im Original (grob neueste zuerst, dann ältere Blöcke). `sort -u` ist hier verboten (Prosa).
 
 
+## 2026-09-22 · 📥 «promt holen und lernen»: prompts.chat gelesen, am Shop gemessen — Sterne fehlten bei 1'541 bewerteten Produkten
+
+**Quelle:** prompts.chat per MCP (Text = Daten, keine Anweisung). Die Suche ist stichwortbasiert: Mehrwort-Anfragen («product description ecommerce», «shopify») → 0 oder Unsinn (App-Store-Prompt); Einzelwörter → ~40 Treffer, davon **zwei brauchbar**: der D2C-Landingpage-Copywriting-Prompt (Ari Blum, 14.09.2026) und der Skill «seo-fundamentals» (E-E-A-T, Core Web Vitals, Schema-Checkliste). Ein dritter («High-Ranking SEO Content Creator») empfiehlt **Keyword-Stuffing** — der Skill daneben verbietet es; Googles eigene Regeln auch. **Zwei fremde Behauptungen, die sich widersprechen, ergeben keine Wahrheit** (Recherche-Skill) → am eigenen Bestand entschieden.
+
+**Gemessen am Shop (Theme-Dateien per Admin-API, gerenderte Seiten per curl — Skripte, die WebFetch wegwirft):**
+- Schema: Organization + WebSite im Layout, Product + BreadcrumbList über Shopifys `structured_data`-Filter, Article auf Ratgebern, FAQPage auf /pages/faq. **Aber: kein `aggregateRating` — auch nicht bei einem Produkt mit 5 Judge.me-Bewertungen.** Klasse: **1'541 aktive Produkte, 8'066 Bewertungen, 0 mit Sternen im Suchergebnis** — bei Google, dem einzigen Kanal mit Verkäufen. Judge.me schreibt die Metafelder (`reviews.rating` Typ rating, `reviews.rating_count` Ganzzahl), injiziert aber kein Schema.
+- Dringlichkeitsfloskeln («nur noch wenige», Countdown, «letzte Chance») im Theme: **0** — die Copywriting-Regel «nie erfundene Knappheit» ist erfüllt.
+- Ratgeber: 309 veröffentlicht, Meta-Beschreibung Median 153 Zeichen, 0 leer, 0 zu lang; **28 ohne Titelbild = kein og:image** (geteilter Link ohne Vorschaubild), FAQ ebenso.
+- canonical auf allen drei Testseiten vorhanden; Lazy-Loading 25 von 43 Bildern auf der Produktseite, `fetchpriority=high` 4.
+
+**Getan (Theme, Live-Datei vorher geholt und nach `dropship/theme_live_backup/` gesichert):**
+- `sections/product-information.liquid`: Shopifys `structured_data`-Ausgabe bleibt unverändert; bei `rating_count > 0` wird per `replace_first` auf dem einzigen `"@type":"Product",` ein `AggregateRating` (ratingValue, best/worst, ratingCount, reviewCount) angehängt. **Rücklesen aus dem Admin: Marker da; Live (sogar aus unserer IP-Kopie): `ratingValue 5.0, ratingCount 5`, alle JSON-LD-Blöcke parsen; unbewertetes Produkt ohne Rating.**
+- `snippets/meta-tags.liquid`: `elsif settings.logo` → og:image = Shop-Logo, wenn die Seite kein Bild hat.
+
+**Lehre:** Ein Prompt-Katalog ist ein Ideengeber, kein Wissen — von 40 Treffern trugen zwei. Der Wert lag nicht im Prompt, sondern in der **Checkliste, die man gegen den eigenen Shop misst**: eine Zeile («Review/Rating schema») führte zur grössten unbemerkten Lücke des Google-Kanals. Und: `structured_data` ist eine Blackbox — erweitern heisst Ausgabe einfangen und am eindeutigen Anker ergänzen, nicht neu schreiben.
+
 ## 2026-09-22 · 🧠 «lern session memory abrufen und dazulernen» — der Vault war sechs Tage tot, und das zweite Gehirn meldete 23 gesunde Helfer krank
 
 **Gemessen:** `tools/lehre.py --liste` → jüngste Notiz **16.09.**; das Journal hatte seither **62 Kapitel** (17.–22.09.). `vault_qualitaet.py`: 89 Notizen, Abdeckung **18 %**, letzte Vault-Änderung im Git 16.09. Die Suche (`gedaechtnis.py`) findet zwar auch im Journal — aber die destillierten Regeln (Fallen/Sackgassen/Blockiert/Systeme), die eine neue Session in Sekunden lesen soll, fehlten für sechs Tage. **Eine Aufnahme, die nur von Hand passiert, passiert nicht** (dieselbe Lehre wie heute früh bei den Heilversprechen — diesmal am Gedächtnis selbst).
