@@ -3,6 +3,18 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-09-22-1",
   "warum": "Betreiber 22.09.: «push mehr» Besucher. Pinterest steht nicht unter dem Social-Stopp; Editor am 22.09. gemessen. Genau EIN Pin aus dropship/_pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher gelesen). Lauf 1 von 2 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-22T12:41:09.726Z",
+  "dauer_s": 5.7,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 42, quittiert 0, offen 42",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 183 Z.): Titel nicht da",
+      "Pinnwand nicht lesbar — kein Pin ohne Gegenprobe"
+    ],
+    "bilder": []
+  }
 }
