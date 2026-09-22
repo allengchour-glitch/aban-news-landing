@@ -23,6 +23,13 @@ Faktenblock wieder. Drei Kollektionstexte von Hand, drei Kollektionsbilder aus d
 (ging trotz vollem Dateispeicher). Wächter `besuchte_seiten_lieferbar` fragt Printful/Fortura/LX-Ware nicht mehr
 bei CJ nach.
 
+**Runde 2 (Startseite, 31 von 166 Sitzungen):** die Hype-Reihe «🔥 Gerade im Trend» — 11 von 12 sichtbaren Karten
+ohne Faktenblock, 6 mit Sie-Anrede. Alle 32 Produkte der Kollektion durch dieselbe Pipeline: 13 Faktenblöcke, 10
+Texte auf du-Form (Regel `um()` auf den Live-Text; zwei Sätze, die die Regel nicht kennt, von Hand: «auch wenn Sie
+mal nicht zu Hause sind» → «du … bist», «egal wo Sie sind» → «egal wo du bist» — die Rest-Gegenprobe hat beide
+gefangen, bevor sie geschrieben wurden). «Über uns» und «Influencer-Partner» tragen keine falschen Zahlen;
+offen bleibt dort nur Liechtenstein (Betreiber-Entscheid, COWORK Punkt 5).
+
 **Was sich als Nicht-Befund erwies:** «0 Bewertungen» auf allen 30 Seiten sah nach einem Loch aus — das Ledger
 des Bewertungs-Importers ist aber nach **Produkt-ID** geführt, nicht nach Handle; mein Handle-grep fand deshalb
 nichts, während alle drei Stichproben drin standen. CJ hat für diese Produkte schlicht keine ≥4★-Kommentare.
