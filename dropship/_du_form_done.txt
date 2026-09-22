@@ -4561,3 +4561,6 @@ diy-diamant-mal-untertasse-mit-halterung-479425	2026-09-22	du
 diy-diamant-malerei-grusskarten-set-914304	2026-09-22	du
 diy-diamant-malerei-karte-geburtstag-fest-hand-389185	2026-09-22	du
 diy-diamant-malerei-untersetzer-valentinstag-f-115905	2026-09-22	du
+diy-diamant-malerei-weihnachtskarte-27cca8	2026-09-22	du
+diy-diamant-malerei-weihnachtskarten-set-adf74a	2026-09-22	du
+diy-diamant-painting-wohnzimmer-deko-793728	2026-09-22	du
