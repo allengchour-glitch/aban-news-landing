@@ -754,7 +754,9 @@ verschiedener Grundgesamtheiten: **7'774 ist die Zahl der EANs IM FEED mit Zusat
 (Lieferantenseite), 4'403 die Zahl der **von uns geprüften Shop-Produkte**. Der Shop hat in
 dieser Warengruppe überhaupt nur 2'408 aktive Artikel. Es waren nie 3'100 offen.
 
-### Was noch offen ist (2 Minuten, nur du)
+### ✅ ERLEDIGT 22.09. (gemessen): die Zugangsdaten stehen als Umgebungsvariablen (2× FORTURA_* im Container nach dem Neustart 20:08 UTC), `/tmp/fortura_env.sh` ist da, der Bild-Nachschub läuft. Nichts mehr zu tun.
+
+### (Archiv) Was noch offen war (2 Minuten, nur du)
 
 `/tmp` überlebt keinen Container-Neustart — am **14.08.** und am **17.09.** ist der Zugang
 genau so verschwunden, beide Male **unbemerkt**, weil die Fehlermeldung nur im Log des
