@@ -108,6 +108,11 @@ def um(t):
     def _imp2(m): return _imp(_M(m))
     t=re.sub(r'(?<![A-Za-zäöüÄÖÜ] )\b([A-ZÄÖÜ][a-zäöüß]{2,}n) Sie( sich)?(?=[ .,;!?])', _imp, t)
     t=re.sub(r'((?:\bund|\boder|,|[–—:]|\b[Bb]itte) )([a-zäöü][a-zäöüß]{2,}n) Sie( sich)?(?=[ .,;!?])', lambda m: m.group(1)+_imp2(m), t)
+    # 22.09. (Kollektions-Diffs): «die Kollektion rüstet Sie perfekt aus» → «rüstet dich». Ein Verb auf -t (nicht -st) vor
+    # «Sie» kann kein Subjekt-«Sie» haben (das hiesse «rüsten Sie») → Objekt. Ausnahmen: Wörter auf -t, die keine Verben sind.
+    _KEIN_VERB_T={'damit','mit','seit','statt','trotz','oft','jetzt','fast','erst','meist','selbst','sonst','nicht','bereit','direkt','perfekt','komplett','sofort','heute','gut','laut','samt','sobald','soweit','weit','breit','hart','zart','glatt','satt','matt','bunt','echt','leicht','recht','schlecht','dicht','licht','nett','fett','alt','kalt','bald','geld','welt','stadt','zeit','sogar','vorbereitet'}
+    t=re.sub(r'\b([a-zäöüß]{3,}(?<!s)t) Sie\b(?! (?:und|oder|sich)\b)', lambda m: m.group(0) if m.group(1) in _KEIN_VERB_T or m.group(1).endswith(('heit','keit','schaft','tät')) else m.group(1)+' dich', t)
+    t=re.sub(r'\b(für|an|auf|über|ohne|gegen|um|durch) Sie\b', r'\1 dich', t)
     # 22.09. (Reparatur-Trockenlauf): «unterstützt es Sie dabei» → «es dich» — nach «es»/«er» ist «Sie» nie Subjekt
     t=re.sub(r'\b(es|er) Sie\b', r'\1 dich', t)
     t=re.sub(r'\b(es|er) Ihnen\b', r'\1 dir', t)
@@ -228,6 +233,8 @@ def um(t):
     def _zweites(m):
         kopf, v = m.group(1), m.group(2)
         if v in _KEINVERB or v.startswith('dein'): return m.group(0)
+        # «und effizienten Arbeitsalltag», «und unkomplizierten 30 Tagen»: Adjektiv vor Nomen/Zahl, kein Verb
+        if re.match(r'\s+(?:[A-ZÄÖÜ]|\d)', m.string[m.end():m.end() + 3]): return m.group(0)
         _mod = r'\b(können|möchten|wollen|müssen|sollen|dürfen|werden|kannst|möchtest|willst|musst|sollst|darfst|wirst|solltest|könntest|würdest|lässt|lassen)\b'
         if re.search(_mod, kopf, re.I): return m.group(0)
         segs = re.split(r',', re.split(r'[.;!?:<]', m.string[m.end():], 1)[0])
