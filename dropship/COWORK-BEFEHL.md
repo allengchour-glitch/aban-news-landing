@@ -4,6 +4,22 @@
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
+## 🆕 22.09. 23:20 UTC — zwei kurze Dinge für TikTok und den Server-Bot
+
+**A · Metricool-Token im Chat (TikTok, 1 Minute).** Du hast `METRICOOL_USER_TOKEN` in die Umgebungs-Einstellungen
+eingetragen — gemessen 22:00 und 22:58 UTC: er erreicht die laufende Session nicht (Env leer, keine lokale Datei).
+Bitte den Token **einmal hier im Chat einfügen**; ich lege ihn nur unter `/tmp/metricool.env` (600) ab, prüfe die
+TikTok-Verbindung und setze den ersten Post ab. Bis dahin postet nur Instagram + Facebook.
+
+**B · Hetzner-Agent still seit 22.09. 21:03 UTC (2 Minuten auf dem Server).** Sein Puls kam 19:09, 20:07, 21:03 —
+danach nichts mehr (zwei Stundenläufe fehlen), kein Browser-Auftrag wird erledigt (Pinterest-Pins ab morgen betroffen).
+Von hier nicht prüfbar (kein SSH). Als root:
+`systemctl status luxe-agent.timer luxe-agent.service --no-pager` · `journalctl -u luxe-agent -n 50 --no-pager` ·
+hängt ein Lauf: `systemctl restart luxe-agent.service`. Der Auftrag `server-inventar-2026-09-22b` liegt in
+`auftraege/offen/` und berichtet beim nächsten Lauf von selbst.
+
+---
+
 ## ⛔ WEGGEFALLEN: Shopify-Rechnung CHF 44.68
 
 Stand bis heute in dieser Liste als «dringendster Punkt, Wiederholung 19.09.». **Gemessen
