@@ -1,6 +1,6 @@
-15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)
-15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)
-15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+15412751499649	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben
+15412751860097	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Far
+15412752155009	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Far
 15412825063809	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere Farben)
 15412825194881	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Damen)
 15412828733825	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
@@ -22,13 +22,12 @@
 15413023015297	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
 15413023113601	Herren-Strickshirt «Riviera» – Cord-Kurzarm
 15413024915841	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
-15413025014145	Strandkleid «Playa» – Halter mit Schnür-Detail
 15413025145217	Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker
 15413074985345	Sommer-Top «Sole» – V-Neck mit Knopfleiste
 15413076853121	Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock
 15413083242881	Boho Resort-Set · 2-teilig (Top & Hose)
 15413083832705	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle
-15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2026)
+15413084062081	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet (Elegant 2
 15413084160385	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
 15413649998209	Spitzen-Bluse mit Schleife · Damen, Patchwork-Design
 15413724676481	Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch
@@ -38,8 +37,8 @@
 15413738996097	Bandeau-Top uni · Damen, schulterfrei & elastisch
 15413739684225	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
 15416026235265	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbetont
-15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen, 4 Farben)
-15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farben)
+15416342675841	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei & fliessend (Damen,
+15416343757185	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3XL, 6 Farbe
 15416343986561	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (Damen)
 15416491704705	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
 15416493506945	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)
@@ -148,3 +147,157 @@
 15430344671617	Herren Sport-Sneaker «Velocità» · Mesh, Wide-Toe
 15430444253569	Herren Sommer-Set «Riviera» · Hemd + Shorts
 15430444286337	Herren Chino-Shorts «Cruise» · Loose-Fit
+15430444319105	Herren Tanktop «Court» · Colorblock
+15430462636417	Herren Leinen-Hose «Lino» · Straight-Leg
+15430462669185	Herren Cargo-Hose «Trail» · Multi-Pocket Outdoor
+15430462701953	Herren Strickpullover «Nico» · Half-Neck, Baumwolle
+15430464012673	Damen Bikini «Maui» · Neckholder, Floral
+15430488326529	Damen Bikini «Sunset» · Front-Zip, Farbverlauf
+15430488883585	Damen Bikini «Solé» · One-Shoulder, Cut-out
+15430489211265	Damen Strand-Cover-up «Brisa» · Crochet-Strick
+15430491275649	Damen Chiffon-Kleid «Capri» · Resort, fliessend
+15430491308417	Damen Maxikleid «Sirena» · Seitenschlitz, einfarbig
+15430491373953	Damen A-Linien-Kleid «Fiorella» · Neckholder, bestickt
+15430491439489	Damen Sommerkleid «Bloom» · Träger, Print
+15430491668865	Damen Kleid «Aria» · Cut-out, einfarbig
+15430498353537	Damen Loungewear-Set «Cozy» · Hoodie + Hose
+15431384269185	Streifen-Bluse «Marbella» · Colorblock, Kurzarm
+15431384498561	Spitzen-Bluse «Dentelle» · V-Ausschnitt, Loose-Fit
+15431384859009	Strick-Bluse «Maglia» · Hollow-out, Loose Langarm
+15431385121153	Chiffon-Set «Solare» · Bluse + Weite Hose
+15447594172801	Elegantes Strickkleid mit Stehkragen
+15447594467713	Elegantes Bodycon Halterneck-Kleid mit Schnürung
+15447594697089	Minikleid mit Cut-Out und Rückenausschnitt
+15447594893697	Boho Maxi-Kleid mit V-Ausschnitt und Fledermausärmeln
+15447595090305	Enges ärmelloses Minikleid mit Spaghettiträgern
+15447595254145	Damen Langarm-Rollkragenkleid mit Rüschensaum
+15447595549057	Figurbetontes schulterfreies Kleid mit Rosenmuster
+15447595811201	Elegantes Spitzenkleid mit langen Ärmeln
+15447595975041	Elegantes A-Linien Plisseekleid mit hoher Taille
+15447596499329	Abendkleid mit Perlen & Rüschen
+15447596663169	Chiffonkleid mit Blumenprint und Rüschen
+15447596859777	Elegantes Midikleid mit Blumenprint
+15447597089153	Florales Etuikleid mit Ballonärmeln
+15447597252993	Glänzendes Twill Patchwork Maxikleid
+15447597482369	Einfarbiges Oversize-Kleid mit One-Shoulder-Schnitt
+15447597711745	Asymmetrisches Maxi-Kleid mit figurbetontem Schnitt
+15447597908353	Elegantes blaues Etuikleid
+15447598072193	Gestreiftes Langarm-Hemdblusenkleid
+15447598268801	Damen Kleid mit Puffärmeln und Taillengürtel
+15447598498177	Ärmelloses Casual-Kleid im Vintage-Stil
+15447598825857	Polka-Dot Halterneck-Kleid mit fliessenden Bändern
+15447599153537	Gestreiftes Langarm-Kleid mit Reverskragen
+15447599350145	Elegantes trägerloses A-Linien-Kleid
+15447599546753	Patchwork Off-Shoulder Maxi-Kleid aus Baumwolle
+15447599972737	Voluminöses Mini-Kleid mit Puffärmeln
+15447600103809	Sommerliches Neckholder-Kleid mit tiefem V-Ausschnitt
+15447600628097	Locker sitzendes Kapuzen-Sweatshirt mit Spitze
+15447600791937	Elegantes Samt-Top mit Stehkragen für Damen
+15447601021313	Puffärmel-Kleid mit Schnürung
+15447601217921	Einfarbiger Sommer-Cardigan mit UV-Schutz
+15447601381761	Sportliches Halb-Zip Polo-Shirt mit U-Boot-Ausschnitt
+15447603216769	Y2K Loose Fit Kurzarm-Top für Herren
+15447603937665	Herren Jacquard Polo-Shirt mit Reissverschluss
+15447604658561	Polo-Shirt Kurzarm Slim-Fit Piqué-Baumwolle
+15447604855169	Herren Windbreaker Laufjacke mit Stehkragen
+15447606198657	Jacquard Polo-Shirt mit Reverskragen
+15447606821249	Lederjacke mit abnehmbarem Futter
+15447607148929	Outdoor Shell Jacke für Herren
+15447607443841	Leichte Leinenjacke für Herren
+15447607673217	Outdoor Sportshirt mit UV-Schutz
+15447607968129	UV-Schutz Shirt für Outdoor-Sport
+15447608066433	Cord-Mantel für Herren · wattiert, Casual
+15447608590721	Herren Plus-Size Fleece-Jacke mit Revers
+15447884661121	Cape-Jacke im Retro-Ethno-Stil
+15447888265601	Top Perspective Häkel-Schultertuch
+15447889084801	Kurzer Cardigan aus Chiffon mit UV-Schutz
+15447899603329	Damen Ledergürtel für Jeans und Hosen
+15447907041665	Latex Sport Shapewear Weste für definierte Mitte
+15447907500417	Stylischer Jeans-Gürtel für Damen
+15447907828097	Stylisher Jeansgürtel aus PU-Leder
+15447921230209	Lederhandschuhe mit Fleecefutter
+15447921656193	Damen Fleece-gefütterte 5-Finger-Handschuhe
+15447921754497	Warme Touchscreen-Handschuhe mit Fleecefutter
+15447922082177	Warme Fleece-gefütterte Handschuhe mit Schleife
+15447922803073	Warme Lederhandschuhe mit Fleecefutter
+15447925522817	Winter Fleece-gefütterte Ski-Handschuhe
+15447927390593	Winddichte Fleece-Handschuhe für Touchscreens
+15447929389441	Elegante Damenbluse mit Rüschen und Knopfleiste
+15447931060609	Fleece-gefütterte Kinder-Handschuhe
+15447935385985	3 Paar 20D Ultra-Sheer Strumpfhosen mit Shaping-Top
+15447935648129	6 Paar Plus Size Strumpfhosen für Damen
+15447935779201	3 Paar Shiny Strumpfhosen für Damen (Plus Size)
+15447951311233	Unisex Baumwoll-Pullover für Herbst & Winter
+15447951507841	Retro Zip-Up Hoodie mit 3D-Digitalprint
+15447951606145	Tie-Dye Hoodie für Haustiere & Besitzer
+15447951835521	Weihnachts-Hoodie für die ganze Familie
+15447951999361	Partnerlook Sweatshirts für Familien
+15447952195969	Kürbisfarbener Kapuzenpullover für Eltern & Kind
+15447952425345	Premium Half-Zip Hoodie für Damen
+15447952556417	Familien-Sweatshirts und Baby-Onesies
+15447952753025	Lässiges Damen Sweatshirt mit Tiermotiv
+15447953179009	Kinder-Sweatshirt-Set mit Buchstaben-Print
+15447953473921	Unisex Kapuzenpullover mit Doppelreissverschluss
+15447953572225	Hip Hop Retro Plaid Freizeit-Pullover
+15447953736065	Hoodie Kirschblüte Street Hip Hop Retro
+15447953932673	Partnerlook Letter Printed Pullover
+15447954030977	Reflektierende Partnerlook Windjacke für Mensch & Haustier
+15447954227585	Mountain EKG Kurzarm-Shirt für Paare
+15447954456961	Schnelltrocknendes Crewneck T-Shirt für Damen
+15447954620801	Hiphop Chic Y2K Baumwoll-T-Shirt mit Harajuku-Print
+15447954817409	NIO Workwear Kurzarm-Shirt aus Eisseide
+15447954981249	Loose-fit T-Shirt für Paare & Familie
+15447955177857	Loose-fit T-Shirt mit Cartoon-Print
+15447955341697	Loose Fit Baumwoll-T-Shirt mit kurzen Ärmeln
+15447955505537	Polo-Shirt aus merzerisierter Baumwolle
+15447955636609	Kurzarm-Shirt mit trendigem Katzenprint
+15447955800449	Personalisierbare Baumwoll-T-Shirts für Damen
+15447956324737	Herren Basic T-Shirt Kurzarm
+15447956521345	Doppelgarn Kurzarm Baumwoll-T-Shirt
+15447956685185	Mesh T-Shirt mit Schlangenhaut-Design
+15447956816257	Schwarz-weiss bedrucktes Rundhals-T-Shirt
+15447957012865	Kurzarmshirt mit Plüsch-Welpen Stickerei
+15447957143937	Leuchtendes Hai-T-Shirt für Kinder
+15447957340545	Partnerlook T-Shirt "Just A Dad Who Loves His Girl"
+15447957504385	Partnerlook Langarmkleid mit Print
+15447957864833	Partnerlook T-Shirt für die ganze Familie
+15447957963137	Cartoon Mutter-Tochter T-Shirt
+15447958192513	Langer Daunenmantel für Herren mit Kapuze
+15447958323585	Wind- & wasserdichte Outdoor-Jacke, Herren
+15447958487425	Smarte Heizjacke mit konstanter Temperatur
+15447959241089	Baumwoll-Sweatshirt mit Rundhals und langen Ärmeln
+15447959404929	Chenille-Baumwolljacke mit Reissverschluss
+15447959568769	Partnerlook Bikini blau-weiss gestreift
+15447959699841	Weihnachts-Pullover für Damen
+15447959863681	Freizeit-Hoodie-Set für Damen
+15447959994753	Sportliches Fleece-Set mit Schriftzug-Print
+15447961010561	Weihnachts-Pyjama für die ganze Familie
+15447961502081	Weihnachts Pyjama-Sets für die ganze Familie
+15447961764225	Loungewear Pyjama-Set für die ganze Familie
+15447962091905	Partnerlook Herbst Sweatshirts für Eltern & Kinder
+15447962648961	Kinder Patchwork Rollkragenpullover
+15447962812801	Dopamine Seaside Tyndall-Effekt Rock mit Blumenprint
+15447963271553	Baumwoll-Unterwäsche-Set für Mädchen
+15447963500929	Gefütterter Hoodie und Trainerhosen Set im American Style
+15447964025217	Baby Hoodie-Set mit Bären-Print
+15447964254593	Slim-Fit Hoodie Set Urban Casual
+15447964516737	Hoodie & Jogginghose Set im Partnerlook
+15447964746113	Dinosaurier Pyjama Partnerlook für die ganze Familie
+15447964975489	Sport-T-Shirt Kurzarm – Schnelltrocknend
+15447965172097	Leopard Print Langarm Bademode für Mutter & Kind
+15447965401473	Kurzarm-Shirt & weite Hose Set für Kinder
+15447965663617	Bambus-Baumwoll-Pyjama für Eltern & Kind
+15447966056833	Kariertes Pyjama-Set für die ganze Familie
+15447966515585	Weihnachts-Pyjama-Set für die ganze Familie
+15447966679425	Kariertes Familien-Pyjama-Set mit Hirschgeweih
+15447966908801	Weihnachts-Pyjama für Mutter & Tochter
+15447967433089	Elastischer Pyjama für Kinder & Erwachsene
+15447967596929	Elch-Pyjama für die ganze Familie
+15447968383361	Partnerlook Pyjama-Set mit Augen-Print
+15447968547201	Pyjama-Set für die ganze Familie
+15447969005953	Weihnachts Pyjama-Set mit Elch-Muster für die Familie
+15447969235329	Camo Tie-Dye Pullover für Mutter & Kind
+15447969399169	Dino-Weihnachtsbaum-Pyjama für die ganze Familie
+15447969956225	Familien-Pyjama-Set mit Tiermotiven
+15447970349441	Herz-Print Pyjama-Set für Eltern & Kind
+15447970546049	Niedliches Pyjama-Set aus Baumwollgaze für Kinder
