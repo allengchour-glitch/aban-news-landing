@@ -4687,3 +4687,7 @@ diy-spieluhr-werk-mit-papierstreifen-447808	2026-09-22	du
 diy-stickerei-set-c65b92	2026-09-22	du
 diy-stickkissen-aus-wolle-materialpaket-e2f36a	2026-09-22	du
 diy-stickkissenbezug-pflanzen-blumen-607500	2026-09-22	du
+diy-sticknadel-set-mit-holzgriff-704320	2026-09-22	du
+diy-stickset-blumen-im-europaischen-stil-998784	2026-09-22	du
+diy-stickset-mit-50-garnfarben-cb3e23	2026-09-22	du
+diy-stoffgarn-set-fur-handtaschen-794112	2026-09-22	du
