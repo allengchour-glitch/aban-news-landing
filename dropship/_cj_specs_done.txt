@@ -924,3 +924,7 @@ radfahrer-schuhe-197504	gesetzt-1
 reed-diffuser-aroma-duftstabchen-ohne-flamme	gesetzt-2
 retro-arbeitsschuhe-624900	gesetzt-2
 retro-booties-mit-lederriemen-und-falten-631300	gesetzt-4
+retro-brusttasche-fur-herren-606500	gesetzt-2
+retro-cordhose-fur-damen-620700	gesetzt-1
+retro-kordelanzug-607600	gesetzt-3
+retro-ohrringe-ring-aus-edelstahl-616100	gesetzt-1
