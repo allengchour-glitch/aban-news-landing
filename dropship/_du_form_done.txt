@@ -2671,3 +2671,96 @@ blue-mini-hautpflege-set-608300	2026-09-22	du
 bluetooth-2-in-1-audio-sender-empfanger-346752	2026-09-22	du
 bluetooth-anruf-sportuhr-mit-zwei-armbandern-639200	2026-09-22	teilweise
 bluetooth-ant-herzfrequenz-armband-655100	2026-09-22	du
+bluetooth-anti-verlust-tracker-d8f12a	2026-09-22	teilweise
+bluetooth-aroma-diffuser-mit-musik-nachtlicht-541440	2026-09-22	du
+bluetooth-audio-2-in-1-adapter-629000	2026-09-22	du
+bluetooth-audio-adapter-cf1c1b	2026-09-22	du
+bluetooth-audio-empfanger-fur-game-controller-603000	2026-09-22	du
+bluetooth-audio-empfanger-furs-auto-a0dc61	2026-09-22	du
+bluetooth-audio-outdoor-ladestation-606500	2026-09-22	teilweise
+bluetooth-auto-clicker-fur-live-streams-612600	2026-09-22	teilweise
+bluetooth-beistelltisch-mit-wireless-charging-027072	2026-09-22	du
+bluetooth-blutsauerstoff-tracker-furs-handgele-993152	2026-09-22	du
+bluetooth-brille-mit-stereo-headset-330304	2026-09-22	du
+bluetooth-controller-fur-android-iphone-880832	2026-09-22	du
+bluetooth-controller-fur-mobile-tablet-d96c17	2026-09-22	du
+bluetooth-controller-fur-smartphones-split-614400	2026-09-22	du
+bluetooth-controller-mit-kuhlfunktion-fur-ipho-3509dd	2026-09-22	du
+bluetooth-couchtisch-mit-wireless-charging-983360	2026-09-22	du
+bluetooth-dampf-augenmaske-mit-massagefunktion-839232	2026-09-22	du
+bluetooth-ear-hook-kopfhorer-mit-langer-akkula-619800	2026-09-22	du
+bluetooth-earphone-mit-led-anzeige-143094	2026-09-22	verdacht:du auch unterwegs verbunden und können
+bluetooth-earphones-sport-non-in-ear-612700	2026-09-22	du
+bluetooth-fernbedienung-empfanger-fb1765	2026-09-22	du
+bluetooth-game-controller-84609b	2026-09-22	du
+bluetooth-gamecontroller-fur-android-smartphon-634800	2026-09-22	du
+bluetooth-gamecontroller-fur-pc-switch-android-427264	2026-09-22	du
+bluetooth-gamecontroller-fur-smartphone-tablet-738d37	2026-09-22	du
+bluetooth-gamepad-fur-diverse-gerate-a8b390	2026-09-22	um-ohne-wirkung
+bluetooth-gamepad-fur-ios-metall-buttons-558976	2026-09-22	du
+bluetooth-gamepad-mit-ein-tasten-funktion-374976	2026-09-22	du
+bluetooth-grip-ring-handtrainer-128322	2026-09-22	du
+bluetooth-in-ear-kopfhorer-mit-digitalanzeige-632000	2026-09-22	du
+bluetooth-intercom-headset-fur-velohelme-618400	2026-09-22	du
+bluetooth-kopfhorer-etui-aus-nussholz-623400	2026-09-22	du
+bluetooth-kopfhorer-ladestation-fa41cd	2026-09-22	um-ohne-wirkung
+bluetooth-kopfhorer-mit-enc-gerauschunterdruck-621900	2026-09-22	du
+bluetooth-lautsprecher-bausatz-zum-selberbauen-925376	2026-09-22	verdacht:du deine Lieblingsmusik kabellos über Bluetooth geniessen
+bluetooth-lautsprecher-mit-handyhalterung-613500	2026-09-22	du
+bluetooth-lautsprecher-mit-led-uhr-83e14f	2026-09-22	du
+bluetooth-lautsprecher-mit-nachtlicht-uhr-dd0272	2026-09-22	du
+bluetooth-lautsprecher-mit-subwoofer-und-later-767104	2026-09-22	du
+bluetooth-lautsprecher-mit-wecker-und-ladefunk-625200	2026-09-22	verdacht:du deine Lieblingsmusik geniesst oder sich vom integrierten Wecker sanft wecken lassen
+bluetooth-lautsprecher-mit-wecker-und-radio-979264	2026-09-22	du
+bluetooth-lautsprecher-tasche-616100	2026-09-22	um-ohne-wirkung
+bluetooth-lenkrad-controller-250368	2026-09-22	teilweise
+bluetooth-maske-mit-integrierten-kopfhorern-466880	2026-09-22	teilweise
+bluetooth-mikrofon-set-fur-familie-626100	2026-09-22	du
+bluetooth-mini-controller-fur-smartphone-table-389824	2026-09-22	du
+bluetooth-mobile-gaming-controller-fur-iphone-7c1838	2026-09-22	teilweise
+bluetooth-mp3-decoder-fm-radio-modul-170688	2026-09-22	du
+bluetooth-mp3-fm-transmitter-mit-dual-usb-439040	2026-09-22	du
+bluetooth-mp3-player-mit-touchscreen-623500	2026-09-22	verdacht:du stets den Überblick über deine Musik und können
+bluetooth-musik-player-sportuhr-625200	2026-09-22	teilweise
+bluetooth-ohrhorer-tasche-624200	2026-09-22	du
+bluetooth-one-hand-gaming-controller-d78536	2026-09-22	du
+bluetooth-over-ear-kopfhorer-mit-langer-akkula-636900	2026-09-22	teilweise
+bluetooth-pedometer-uhr-a6a3f1	2026-09-22	um-ohne-wirkung
+bluetooth-ring-fernbedienung-863296	2026-09-22	teilweise
+bluetooth-saulenlautsprecher-mit-led-licht-26a744	2026-09-22	du
+bluetooth-schlaf-stirnband-mit-musik-614700	2026-09-22	du
+bluetooth-schlafmaske-fur-lange-wimpern-626400	2026-09-22	teilweise
+bluetooth-smartwatch-fur-damen-ultradunn-622100	2026-09-22	um-ohne-wirkung
+bluetooth-smartwatch-international-636400	2026-09-22	verdacht:du stets verbunden und können
+bluetooth-smartwatch-mit-gesundheitsfunktionen-961472	2026-09-22	um-ohne-wirkung
+bluetooth-smartwatch-mit-offline-zahlung-096448	2026-09-22	um-ohne-wirkung
+bluetooth-smartwatch-mit-touchscreen-609100	2026-09-22	du
+bluetooth-sonnenbrille-mit-stereo-headset-898304	2026-09-22	du
+bluetooth-speaker-kopfhorer-combo-283776	2026-09-22	du
+bluetooth-speaker-mit-mikrofon-stage-lights-610300	2026-09-22	du
+bluetooth-speaker-mit-rgb-lampe-tws-641200	2026-09-22	du
+bluetooth-speaker-mit-subwoofer-und-licht-aca210	2026-09-22	teilweise
+bluetooth-sport-armband-210112	2026-09-22	du
+bluetooth-sport-kopfhorer-klappbar-625400	2026-09-22	du
+bluetooth-sport-smartwatch-mit-schrittzahler-729856	2026-09-22	um-ohne-wirkung
+bluetooth-sports-watch-herzfrequenz-schlaf-mon-224192	2026-09-22	um-ohne-wirkung
+bluetooth-sportuhr-mit-runddisplay-193216	2026-09-22	um-ohne-wirkung
+bluetooth-sportuhr-mit-schlafuberwachung-644544	2026-09-22	du
+bluetooth-sprach-fernbedienung-infrarot-607200	2026-09-22	teilweise
+bluetooth-stativ-fur-iphone-live-selfies-771456	2026-09-22	du
+bluetooth-stativ-mit-fernbedienung-fur-smartph-619000	2026-09-22	teilweise
+bluetooth-stereo-lautsprecher-634900	2026-09-22	du
+bluetooth-steuermodul-635300	2026-09-22	verdacht:du deine Gerate kabellos steuern und debuggen
+bluetooth-stirnband-fur-fitness-yoga-18f098	2026-09-22	verdacht:du auch unterwegs verbunden
+bluetooth-tastatur-047425	2026-09-22	teilweise
+bluetooth-tastatur-927234	2026-09-22	teilweise
+bluetooth-tastatur-fur-controller-264384	2026-09-22	verdacht:du schnell auf Nachrichten antworten
+bluetooth-tastatur-fur-ps4-controller-0fc67a	2026-09-22	um-ohne-wirkung
+bluetooth-tastatur-maus-konverter-fur-tablets-e8f48e	2026-09-22	du
+bluetooth-transmitter-5a5ede	2026-09-22	du
+bluetooth-transmitter-receiver-mit-dual-usb-441600	2026-09-22	verdacht:du gleichzeitig deine Geräte aufladen
+bluetooth-ubersetzungs-kopfhorer-625536	2026-09-22	teilweise
+bluetooth-verlustobjektfinder-14e1e3	2026-09-22	du
+bluetooth-verstarker-fur-zuhause-auto-mit-aufn-853504	2026-09-22	du
+bluetooth-vr-brille-mit-integriertem-headset-072320	2026-09-22	du
+bluetooth-wecker-mit-lautsprecher-5cd296	2026-09-22	du
