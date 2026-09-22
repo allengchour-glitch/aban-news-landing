@@ -3,6 +3,81 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-09-22-4",
   "warum": "Lauf 3: Pinnwand gefunden, aber leer (183 Zeichen) — Lesbarkeit jetzt am Pinnwand-Namen gemessen. Genau EIN Pin, Quittung vor Nebenwirkung.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-22T12:51:21.107Z",
+  "dauer_s": 48.1,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 42, quittiert 0, offen 42",
+      "Boards auf dem Profil: /luxestyleCH/schuhe-sandalen/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/wellness-beauty/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/wellness-self-care/, /luxestyleCH/wohnen-deko/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 183 Z.): Titel nicht da",
+      "Bild 34208 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "kein Veröffentlichen-Knopf gemessen — nicht geklickt"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-4-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-09-22-4-2-ausgefuellt.png"
+    ],
+    "knoepfe": [
+      {
+        "text": "Pin erstellen",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "L\nProfil von LuxeStyle CH",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "",
+        "testid": "header-accounts-options-button",
+        "disabled": false
+      },
+      {
+        "text": "",
+        "testid": "collapse-drafts-sidebar-button",
+        "disabled": false
+      },
+      {
+        "text": "Neu erstellen",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "Interaktives Katzenspielzeug mit rotiere",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "Veröffentlichen",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "Beschreibung\nDieses multifunktionale ele",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "Pinnwand\nHome & Geschenkideen",
+        "testid": "board-dropdown-select-button",
+        "disabled": false
+      },
+      {
+        "text": "Produkte hinzufügen",
+        "testid": "add-product-tags-button",
+        "disabled": false
+      },
+      {
+        "text": "Weitere Optionen",
+        "testid": "storyboard-show-more-options-button",
+        "disabled": false
+      }
+    ]
+  }
 }
