@@ -3,6 +3,181 @@
   "skript": "pinterest_pin_builder_messen.mjs",
   "id": "pinterest-pin-builder-messen",
   "warum": "Betreiber 22.09.: «push mehr» Besucher. Pinterest ist der einzige organische Kanal, den wir selbst anschieben dürfen (Meta unter _SOCIAL_STOPP, TikTok ohne API). Bevor ein Pin-Skript gebaut wird, muss der Pin-Editor GEMESSEN werden (Auftrag 27 hing eine CSV ins Bildfeld, weil nie gemessen wurde). Rein lesend: Adresse, Tour, alle Felder und Knöpfe mit Beschriftung, Screenshot. Erzeugt keinen Pin.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-22T12:35:56.196Z",
+  "dauer_s": 8.1,
+  "ergebnis": {
+    "editor": "https://ch.pinterest.com/pin-creation-tool/",
+    "felder": [
+      {
+        "tag": "input",
+        "type": "file",
+        "name": null,
+        "id": "storyboard-upload-input",
+        "placeholder": null,
+        "aria": "Datei-Upload",
+        "labelledby": null,
+        "accept": "image/bmp,image/gif,image/jpeg,image/png,image/tiff,image/webp,video/mp4,video/x-m4v,video/quicktime",
+        "editable": null,
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": null,
+        "id": "storyboard-selector-title",
+        "placeholder": "Erzähle allen, worum es bei deinem Pin geht.",
+        "aria": null,
+        "labelledby": null,
+        "accept": null,
+        "editable": null,
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "type": "url",
+        "name": null,
+        "id": "WebsiteField",
+        "placeholder": "Link hinzufügen",
+        "aria": null,
+        "labelledby": null,
+        "accept": null,
+        "editable": null,
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "name": null,
+        "id": "combobox-storyboard-interest-tags",
+        "placeholder": "Nach einem Tag suchen",
+        "aria": null,
+        "labelledby": null,
+        "accept": null,
+        "editable": null,
+        "text": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "name": null,
+        "id": "pin-draft-switch-group",
+        "placeholder": null,
+        "aria": null,
+        "labelledby": null,
+        "accept": null,
+        "editable": null,
+        "text": "on"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "name": null,
+        "id": "pin-draft-ai-disclosure-ab545b49-9b70-4865-af89-dfa8c906ed29",
+        "placeholder": null,
+        "aria": null,
+        "labelledby": null,
+        "accept": null,
+        "editable": null,
+        "text": "on"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "name": "pin-draft-ai-disclosure-ab545b49-9b70-4865-af89-dfa8c906ed29-synthetic-performer",
+        "id": "pin-draft-ai-disclosure-ab545b49-9b70-4865-af89-dfa8c906ed29-synthetic-performer",
+        "placeholder": null,
+        "aria": null,
+        "labelledby": null,
+        "accept": null,
+        "editable": null,
+        "text": "on"
+      }
+    ],
+    "knoepfe": [
+      {
+        "text": "Pin erstellen",
+        "aria": null,
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "L\nProfil von LuxeStyle CH",
+        "aria": null,
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "",
+        "aria": "Suchsymbol",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "",
+        "aria": "Konten und andere Optionen",
+        "testid": "header-accounts-options-button",
+        "disabled": false
+      },
+      {
+        "text": "",
+        "aria": "Mehr",
+        "testid": null,
+        "disabled": false
+      },
+      {
+        "text": "",
+        "aria": "Seitenleiste für Entwürfe schließen",
+        "testid": "collapse-drafts-sidebar-button",
+        "disabled": false
+      },
+      {
+        "text": "Neu erstellen",
+        "aria": null,
+        "testid": null,
+        "disabled": true
+      },
+      {
+        "text": "Beschreibung\nBeschreibe deinen Pin",
+        "aria": null,
+        "testid": null,
+        "disabled": true
+      },
+      {
+        "text": "Pinnwand\nPinnwand auswählen",
+        "aria": null,
+        "testid": "board-dropdown-select-button",
+        "disabled": true
+      },
+      {
+        "text": "Produkte hinzufügen",
+        "aria": null,
+        "testid": "add-product-tags-button",
+        "disabled": true
+      },
+      {
+        "text": "Weitere Optionen",
+        "aria": null,
+        "testid": "storyboard-show-more-options-button",
+        "disabled": true
+      }
+    ],
+    "dateifelder": 1,
+    "tour": [],
+    "schritte": [
+      "/pin-creation-tool/ → https://ch.pinterest.com/pin-creation-tool/ · geladen · 599 Zeichen",
+      "Felder 7 (davon Datei 1) · Knöpfe 11 · Tour 0 Schritte"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-builder-messen-1-roh.png"
+    ],
+    "board_wahl": [
+      {
+        "text": "Pinnwand\nPinnwand auswählen",
+        "aria": null,
+        "testid": "board-dropdown-select-button",
+        "disabled": true
+      }
+    ]
+  }
 }
