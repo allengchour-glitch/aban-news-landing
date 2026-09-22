@@ -47,7 +47,24 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-11 (NEUESTER STAND — POD-Editor mit echten Fotos + 98 Mockups + Shop-Audit A–Z):**
+**📌 2026-09-22 (NEUESTER STAND — Klaviyo VERIFIZIERT ok · QA-Aufräumung · Versand-Widerspruch — Session `luxstyle-ads-search-5i68xa`):**
+- **✅ Klaviyo-Sync LÄUFT (alte „kaputt/0 Orders"-Notiz WIDERLEGT):** direkt via Klaviyo-MCP gemessen — Metric
+  **„Placed Order" (`W7XTVD`)** empfängt echte Bestellungen: zuletzt **7.9. (2×), 3.9., 22.8., 15.8., 14.8., 9.8.,
+  3.8., 11.7., 10.7.** Shopify→Klaviyo synct sauber. **Kein Reconnect nötig.** Letzte Order 7.9. → seither nur kein
+  neuer Kauf (kein Sync-Fehler). Nicht erneut Zeit mit „Klaviyo reparieren" verlieren.
+- **🧹 Bild-QA:** **72 FAILED-Dateien gelöscht** (61 GenericFile-Upload-Leichen „Slide 0X"/„TikTok" + 11 kaputte
+  MediaImages). Betroffene Produkte (Powerbank, Karaoke, Selfie-Stick, Futterball, Lockenstab, Seifenspender u.a.)
+  haben je 6–19 READY-Bilder → **kein Produkt verlor sein Bild.** `files(query:"status:FAILED")` ist jetzt leer.
+- **📝 5 fehlende SEO-Titel** bei aktiven Produkten ergänzt (Aroma-Diffuser ×2, 2 Bluetooth-Speaker, Gemüseschneider).
+- **⚠️ VERSAND-WIDERSPRUCH (User-Entscheidung nötig, Marge!):** Domestic-CH hat **drei** Gratis-Regeln — aktiv
+  **≥65 CHF** UND aktiv **≥45 CHF** (+ deaktiviert ≥50). Da die niedrigste aktive gewinnt, bekommt der Kunde
+  **faktisch schon ab CHF 45 Gratis-Versand**, während AGB „65" sagt und Produkttexte teils „50"/„65". Muss auf EINE
+  Zahl vereinheitlicht werden (deliveryProfile-Mutation gilt lt. Memory als riskant → erst mit User klären, dann
+  Regeln + AGB + SEO-Texte angleichen).
+- **Katalog:** 10'000 aktiv. Viele Neu-Importe ohne `seo.title` → systematischer Fix = **Shop-Brain deployen**
+  (`cd workers/shop-brain && npx wrangler deploy`, nur User/PC); manuell nur Einzelfälle sinnvoll.
+
+**📌 2026-06-11 (POD-Editor mit echten Fotos + 98 Mockups + Shop-Audit A–Z):**
 - **🎨 Selbst-gestalten-Editor (`pod/designer.js`, live):** echte Produktfotos statt Zeichnungen bei ALLEN
   Editor-Produkten (Shirt/Tasse/Tote/Kissen/Magnet/Poster/Bügeltransfer); Live-Farbvorschau Shirt
   Weiss/Schwarz/Navy (echte Gemini-Fotos `pod/tees/`); Grössen-Regler, freie Farbwahl, Ebenen, Duplizieren,
