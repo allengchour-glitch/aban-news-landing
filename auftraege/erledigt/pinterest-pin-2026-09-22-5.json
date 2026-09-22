@@ -1,0 +1,8 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-09-22-5",
+  "warum": "Lauf 4: Formular vollständig (Bild, Titel, Beschreibung, Link, Pinnwand), Veröffentlichen-Knopf gemessen, aber vom Locator nicht getroffen. Jetzt per Rolle, mit Formular-Gegenprobe vor dem Klick. Genau EIN Pin, Nachlesen auf der Pinnwand.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
