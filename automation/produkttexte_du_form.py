@@ -52,9 +52,28 @@ def _folgt_zweite(tn, ende):
     return bool(re.match(r"\s+(kannst|musst|willst|sollst|darfst|wirst|hast|bist|möchtest|solltest|könntest|müsstest|wolltest|würdest|lässt)\b", tn[ende:ende + 14]))
 
 
+def _modal_spaeter(tn, ende):
+    """Aufzählung «du schneiden, würfeln oder Eier trennen möchtest»: 2.-Person-Modal später im Satz (bis .;!?), ohne
+    dass ein Komma-Segment mit Konjunktion/Pronomen beginnt → der Infinitiv gehört zum Modalverb."""
+    rest = re.split(r"[.;!?]", tn[ende:], 1)[0]
+    for seg in re.split(r",", rest):
+        if re.match(r"\s*(?:dass|damit|wenn|ob|weil|während|bevor|nachdem|sodass|falls|sobald|wo|was|wie|um|denn|aber|doch|dann|so|es|er|wir|ihr|sie|man|du|mit|für|bei|in|an|auf|ohne|egal)\b", seg):
+            return False
+        if ZWEITE.search(seg):
+            return True
+    return False
+
+
+_DET = {'einen','einem','den','dem','diesen','diesem','keinen','keinem','jeden','jedem','ihren','ihrem','deinen','deinem','seinen','seinem','unseren','unserem','meinen','meinem','welchen','welchem','allen','vielen','manchen','solchen','beiden','anderen','eigenen','ganzen','ersten','zweiten','neuen','kleinen','grossen','großen','schönen','weichen','warmen','kalten','hellen','dunklen','roten','blauen','einer','ihrer','deiner','seiner','unserer','jeder','dieser','keiner','aller','vieler','mancher'}
+
+
 def warn2(tn):
     for m in WARN2.finditer(tn):
         if _folgt_zweite(tn, m.end()):
+            continue
+        if ZWEITE.search(tn[max(0, m.start() - 16):m.start()] + " "):   # «kannst du … finden» — Modal steht VOR du
+            continue
+        if _modal_spaeter(tn, m.end()):
             continue
         if re.search(r"\b(oder|und)\s+(du|dein\w*)\b", m.group(0)):   # zusammengesetztes Subjekt → Plural richtig
             continue
@@ -73,6 +92,15 @@ def warn3(tn):
         if ZWEITE.search(m.group(0)) or ZWEITE.search(tn[max(0, m.start() - 16):m.start()] + " ") or _folgt_zweite(tn, m.end()):
             continue
         if re.search(r"\b(oder|und)\s+(du|dein\w*)\b", m.group(0)):
+            continue
+        w = m.group(0).rstrip().split(" ")
+        if len(w) >= 2 and w[-2].lower() in _DET:      # «du einen matten,» — Adjektiv nach Artikel, kein Verb
+            continue
+        if _modal_spaeter(tn, m.end()):                 # «ob du schneiden, würfeln … möchtest» — Aufzählung
+            continue
+        _vor = tn[max(0, m.start() - 16):m.start()]
+        if re.search(r"\b[a-zäöüß]{3,}st\s*$", _vor) and re.match(r"(?:ge|ver|be|er|ent|zer)[a-zäöüß]+en$", w[-1]) \
+                and not re.search(r"\b(und|oder)\b", m.group(0)):   # «bleibst du stets verbunden» — Partizip nach 2.-Person-Verb
             continue
         return m
     return None

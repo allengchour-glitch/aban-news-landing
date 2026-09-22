@@ -154,7 +154,7 @@ def um(t):
         # 22.09. (Reparatur-Trockenlauf): «du einzelne Nägel hervorheben oder … gestalten möchtest» — der Infinitiv
         # gehört zum Modalverb am Satzteil-Ende → Modalverb im REST des Satzteils = nicht anfassen
         rest = re.split(r'[.,;!?:<]', m.string[m.end():], 1)[0]
-        if re.search(_zp_rest, rest):
+        if verb != 'sind' and re.search(_zp_rest, rest):   # «sind» ist nie ein Infinitiv zum Modalverb dahinter
             return m.group(0)
         # (b) Inversion «bleiben du stets verbunden» (2h zieht «bleiben» erst später nach): finites Verb steht VOR du →
         # das Wort am Satzteil-Ende ist Partizip/Infinitiv, nicht anfassen
@@ -231,15 +231,20 @@ def um(t):
         _mod = r'\b(können|möchten|wollen|müssen|sollen|dürfen|werden|kannst|möchtest|willst|musst|sollst|darfst|wirst|solltest|könntest|würdest|lässt|lassen)\b'
         if re.search(_mod, kopf, re.I): return m.group(0)
         segs = re.split(r',', re.split(r'[.;!?:<]', m.string[m.end():], 1)[0])
-        if re.search(_mod, segs[0]): return m.group(0)
+        # 22.09. (Reparaturlauf): «… aus und haben Handtücher griffbereit und können sie …» — das Modalverb hinter dem
+        # NAECHSTEN «und» ist ein weiteres koordiniertes Verb, kein Modalverb zu diesem Infinitiv → nur bis dorthin schauen
+        _phrase0 = re.split(r'\s(?:und|oder)\s', segs[0], 1)[0]
+        if re.search(_mod, _phrase0): return m.group(0)
         for seg in segs[1:]:
             if re.match(r'\s*(?:' + _SATZSTART + r')\b', seg): break
-            if re.search(_mod, seg): return m.group(0)
+            if re.search(_mod, re.split(r'\s(?:und|oder)\s', seg, 1)[0]): return m.group(0)
         # Subjekt nach dem Verb («und haben wir», «und sind sie») → anderer Satz
-        if re.match(r'\s+(?:wir|sie|es|er|ihr|man|die|das|der)\b', m.string[m.end():m.end() + 8]): return m.group(0)
+        # («und können sie jederzeit erreichen» — «sie/es» sind hier fast immer OBJEKT; nur wir/man/ihr sind eindeutig Subjekt)
+        if re.match(r'\s+(?:wir|man|ihr)\b', m.string[m.end():m.end() + 8]): return m.group(0)
         k = _zweite(v)
         return kopf + k if k else m.group(0)
-    t=re.sub(r'(\bdu\b[^.,;!?:<]{0,120}?\s(?:und|oder)\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind|haben)\b', _zweites, t)
+    for _ in range(3):   # «und haben … und können …» — jede Runde ein koordiniertes Verb
+        t=re.sub(r'(\bdu\b[^.,;!?:<]{0,120}?\s(?:und|oder)\s)([a-zäöüß]{3,}(?:en|ern|eln)|sind|haben)\b', _zweites, t)
     t=re.sub(r'\bdu sich\b', 'du dich', t)
     # 2h) 22.09.2026 — Verb DIREKT VOR «du» (Inversion: «dann tragen Sie es» → «dann trägst du es», «so haben Sie» → «so hast du»).
     # Nur Kleinwörter auf -en/-ern/-eln bzw. sind/haben, keine Präpositionen/Artikel («zwischen du», «einen du» gibt es nicht als Verb).
