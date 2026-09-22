@@ -1,0 +1,8 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-09-22-4",
+  "warum": "Lauf 3: Pinnwand gefunden, aber leer (183 Zeichen) — Lesbarkeit jetzt am Pinnwand-Namen gemessen. Genau EIN Pin, Quittung vor Nebenwirkung.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
