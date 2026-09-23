@@ -390,3 +390,9 @@ gid://shopify/Product/15449407783297	ok	Selbstreinigende Haarbürste
 gid://shopify/Product/15449425052033	ok	Anti-Gravitations-Duftbefeuchter mit schwebenden Tropfen
 gid://shopify/Product/15450852163969	ok	Herzliches Liebespaar-Statue – Kunstharz Deko
 gid://shopify/Product/15450851836289	ok	Press Lock Schnürsenkel – Elastisch & Bindefrei
+gid://shopify/Product/15449407521153	ok	Intelligente LED-Lampe
+gid://shopify/Product/15449424789889	ok	Heizjacke mit USB-Anschluss
+gid://shopify/Product/15450851967361	kein-video-beim-lieferanten
+gid://shopify/Product/15450836566401	ok	LED Wasserwellen Projektionsleuchte
+gid://shopify/Product/15524945691009	kein-video-beim-lieferanten
+gid://shopify/Product/15524945592705	kein-video-beim-lieferanten
