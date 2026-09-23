@@ -251,23 +251,27 @@ fi
 # 41'150-ste Produkt nachweislich nichts; die Kostenwahrheit entscheidet über jede Marge.
 # Deshalb bekommt der Kosten-Backfill die erste Stunde nach dem Punkte-Reset (~16:00 UTC)
 # allein — das kostet den Grind 1,5 von 24 Stunden.
-VORRANG=0
+VORRANG=0; VORRANG_ZEIT=0
 STD=$(date -u +%H); MIN=$(date -u +%M)
-if [ "$STD" = "16" ] || { [ "$STD" = "17" ] && [ "$MIN" -lt 30 ]; }; then VORRANG=1; fi
+if [ "$STD" = "16" ] || { [ "$STD" = "17" ] && [ "$MIN" -lt 30 ]; }; then VORRANG=1; VORRANG_ZEIT=1; fi
 # 03.09.2026: Vorrang auch auf Zuruf — dropship/_GRIND_PAUSE_BIS trägt eine UTC-Epoche; bis dahin ruht der
 # Grind, damit ein Prüflauf (z. B. CH-Versendbarkeit, Klasse #1016) den geteilten CJ-Eimer bekommt.
 # Vier Runner halten den Eimer sonst dauerhaft bei ~0 (gemessen: remaining 11 → 1 → 16900500 in 20 s).
 PB="${REPO_AUTO%/automation}/dropship/_GRIND_PAUSE_BIS"
 if [ -f "$PB" ] && [ "$(cat "$PB" 2>/dev/null | tr -dc 0-9)" -gt "$(date -u +%s)" ] 2>/dev/null; then
-  VORRANG=1; echo "GRIND-PAUSE auf Zuruf bis $(date -u -d @"$(cat "$PB" | tr -dc 0-9)" +%H:%M) UTC ($PB)"
+  VORRANG=1; echo "GRIND-PAUSE auf Zuruf bis $(date -u -d @"$(cat "$PB" | tr -dc 0-9)" +'%d.%m.%Y %H:%M') UTC ($PB)"
 fi
 
+# ⚠️ 23.09.2026 (Audit): Die Grind-Pause (Zuruf bis 13.03.2027) setzte VORRANG=1 — und damit liefen die
+# beiden «touch -d …»-Zeilen unten bei JEDEM Tick: das 24-h-Tor des Bewertungs-Imports stand dauernd offen,
+# er startete 47× am 22.09. und verbrauchte die CJ-Punkte (Varianten-Wache: 324× «Insufficient API points»).
+# Jetzt: Grind-Runner ruhen bei beidem, die Kühlungen laufen nur im ECHTEN Zeitfenster (VORRANG_ZEIT).
 if [ "$VORRANG" = "1" ]; then
-  echo "VORRANG-FENSTER (16:00-17:30 UTC): CJ-Punkte gehoeren Kosten-Backfill + Bewertungen"
+  [ "$VORRANG_ZEIT" = "1" ] && echo "VORRANG-FENSTER (16:00-17:30 UTC): CJ-Punkte gehoeren Kosten-Backfill + Bewertungen"
   # Der Aufseher überspringt einen Lauf, dessen Log seit weniger als einer Stunde auf PAUSE
   # steht. Hat der Backfill kurz vor 16:00 wegen leerer Punkte pausiert, verlöre er dadurch
   # das halbe Vorrang-Fenster — also die Kühlung hier gezielt ablaufen lassen.
-  [ -f /tmp/cj_kosten_backfill.log ] && touch -d '2 hours ago' /tmp/cj_kosten_backfill.log
+  [ "$VORRANG_ZEIT" = "1" ] && [ -f /tmp/cj_kosten_backfill.log ] && touch -d '2 hours ago' /tmp/cj_kosten_backfill.log
   # ⚠️ 28.08.2026: Der Bewertungs-Import teilt sich das Fenster. Begründung nach der Regel
   # «erst fragen, WEM eine neue CJ-Engine das Budget wegnimmt» — es ist der Grind, und der
   # steht messbar auf dem Plateau: Die Runner melden seit Tagen «total 0» und
@@ -276,7 +280,8 @@ if [ "$VORRANG" = "1" ]; then
   # nachweislich nichts; Punkte für Sozialbeweis auf Seiten mit Verkehr können etwas bringen.
   # ⚠️ Der pid-Nachschlag kostet 10 Punkte, der Kommentar-Abruf NICHTS — jede einmal
   # aufgelöste pid steht dauerhaft im Cache. Das Fenster zahlt sich also über die Zeit aus.
-  [ -f /tmp/cj_reviews_import.log ] && touch -d '25 hours ago' /tmp/cj_reviews_import.log
+  [ "$VORRANG_ZEIT" = "1" ] && [ -f /tmp/cj_reviews_import.log ] && [ ! -f /tmp/_cj_reviews_vorrang_$(date -u +%F) ] \
+    && touch /tmp/_cj_reviews_vorrang_$(date -u +%F) && touch -d '25 hours ago' /tmp/cj_reviews_import.log
   ps -eo pid,args --no-headers | grep "[c]j_runner_template" | awk '{print $1}' | xargs -r kill 2>/dev/null
 else
 

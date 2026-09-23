@@ -317,3 +317,21 @@
 2026-09-23	gid://shopify/Product/15496392049025	finken	Gefütterte Anti-Rutsch Winter-Hausschuhe für Herren
 2026-09-23	gid://shopify/Product/15500256084353	finken	Dinosaurier-Hausschuhe für Kinder
 2026-09-23	gid://shopify/Product/15501846020481	finken	Romantische Hausschuhe
+2026-09-23	gid://shopify/Product/15502691565953	finken	Kinder Hausschuhe Socken – Atmungsaktiv & Rutschfest
+2026-09-23	gid://shopify/Product/15503126495617	finken	Kindergarten-Hausschuhe für Babys und Kinder
+2026-09-23	gid://shopify/Product/15503284896129	finken	Warme Cartoon-Hausschuhe mit runder Kappe
+2026-09-23	gid://shopify/Product/15503844082049	finken	Warme Nylon-Samt Hausschuhe
+2026-09-23	gid://shopify/Product/15504012771713	finken	Prinzessinnen-Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15504150430081	finken	DIY-Hausschuhe zum Selbermachen
+2026-09-23	gid://shopify/Product/15504150659457	finken	Gepolsterte Kinder-Hausschuhe mit Tiermotiven
+2026-09-23	gid://shopify/Product/15506527650177	finken	Warme Winter Hausschuhe für Damen
+2026-09-23	gid://shopify/Product/15508462862721	finken	Cartoon Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15509346091393	finken	Warme Kinder-Hausschuhe aus Baumwolle
+2026-09-23	gid://shopify/Product/15509347434881	finken	Warme Winter-Hausschuhe
+2026-09-23	gid://shopify/Product/15510316188033	finken	Damen Plattform‑Pantoffeln, rutschfest, atmungsaktiv
+2026-09-23	gid://shopify/Product/15521219772801	finken	Bequeme Herren-Hausschuhe zum Hineinschlüpfen
+2026-09-23	gid://shopify/Product/15521231044993	finken	Kinder Sandalen & Hausschuhe mit Lochmuster
+2026-09-23	gid://shopify/Product/15523905372545	finken	Wasserdichte Kinder-Hausschuhe mit dicker Sohle
+2026-09-23	gid://shopify/Product/15524700782977	finken	Beheizbare Hausschuhe mit Temperaturregelung
+2026-09-23	gid://shopify/Product/15525142266241	finken	Plüsch Hausschuh für Herren – flache Sohle
+2026-09-23	gid://shopify/Product/15525224415617	finken	Hasen-Hausschuhe für Kinder, Winter

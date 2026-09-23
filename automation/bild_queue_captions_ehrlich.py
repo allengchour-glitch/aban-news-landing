@@ -97,7 +97,8 @@ def laden_zeile(tags):
 
 def hashtags(alt_cap):
     alte = [h.lower() for h in re.findall(r"#[\wäöüß]+", alt_cap)]
-    extra = [h for h in alte if h not in GENERISCH][:3]
+    # 23.09.2026 (Audit): abgeschnittene Tags «#kü», «#p» aus alten Captions — unter 4 Zeichen verwerfen.
+    extra = [h for h in alte if h not in GENERISCH and len(h) >= 5][:3]
     return " ".join(["#schweiz", "#luxestyle"] + extra)
 
 

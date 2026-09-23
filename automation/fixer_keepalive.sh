@@ -251,7 +251,7 @@ while true; do
     echo "$(date -u +%H:%M) Motoren nachgezogen (durch den Aufseher)"
   fi
 
-  for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit cj_varianten_wache coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix versandschwelle_blog_kollektion google_sperrtags_durchsetzen unpublizierte_finden lagerstand_hygiene; do
+  for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit cj_varianten_wache coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix versandschwelle_blog_kollektion google_sperrtags_durchsetzen helvetismen_tags unpublizierte_finden lagerstand_hygiene; do
     [ -f /tmp/$p.py ] || continue
     pgrep -f "$p.py" >/dev/null && continue
     # ABKÜHLZEIT: Reiniger, die durchlaufen und fertig werden, dürfen nicht alle 2 Minuten
