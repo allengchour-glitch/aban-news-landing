@@ -2542,3 +2542,8 @@ gid://shopify/Product/15448891163009	zugeordnet	2	Candy Soft Case für AirPods
 gid://shopify/Product/15448891261313	zugeordnet	1	Retro Music Tastenkappen, Pink-Lila
 gid://shopify/Product/15448891392385	zugeordnet	2	Vogelbad-Heizer mit Thermostat
 gid://shopify/Product/15448891916673	zugeordnet	4	Kabelloser 3D-Stift für Kinder
+gid://shopify/Product/15448891982209	bild-urls-tot
+gid://shopify/Product/15448892080513	bild-urls-tot
+gid://shopify/Product/15448892113281	bild-urls-tot
+gid://shopify/Product/15448892178817	bild-urls-tot
+gid://shopify/Product/15448892408193	bild-urls-tot
