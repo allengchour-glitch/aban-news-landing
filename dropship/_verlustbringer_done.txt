@@ -441,3 +441,4 @@ gid://shopify/Product/15448940872065	2026-09-23T05:42Z	draft	14.90	39.69	Gestrei
 gid://shopify/Product/15450115441025	2026-09-23T05:42Z	draft	15.90	40.58	Botanisches Sofakissen
 gid://shopify/Product/15450303299969	2026-09-23T05:42Z	draft	18.90	43.57	Multifunktionaler Massage-Teppich für Auto
 gid://shopify/Product/15448925929857	2026-09-23T05:42Z	draft	30.90	55.54	Sofaüberzug Vintage – Katzenfreundlich & Elastisch
+gid://shopify/Product/15496384905601	2026-09-23T05:42Z	draft	48.90	73.36	Retro Blumenmuster Sofaüberwurf
