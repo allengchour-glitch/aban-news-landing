@@ -151,5 +151,11 @@ while true; do
       if $NODE automation/metricool_pinterest_pin.mjs; then touch "$MARKE_PINTEREST"; else echo "$(date -u +%H:%M) Pin fehlgeschlagen (Marke bleibt alt)"; fi
     fi
   fi
+  # 23.09.2026 (Betreiber «direktlinks kommentieren bei jedem post»): Facebook-Posts/Reels der letzten 2 Tage
+  # bekommen einen Seiten-Kommentar mit dem Produkt-Direktlink (nur Facebook ist klickbar; IG/TikTok/Shorts nicht).
+  if faellig /tmp/_autopilot_letzter_fb_link 1800; then
+    $NODE automation/fb_link_kommentar.mjs 2>&1 | grep -E "FERTIG|✗|⛔" || true
+    touch /tmp/_autopilot_letzter_fb_link
+  fi
   sleep 900 9>&-
 done
