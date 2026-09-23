@@ -522,6 +522,16 @@ per `taxonomy.categories(search:)` gemessen und beim Start per `nodes(ids:)` ver
 **Lehre:** Ein Kanal-Befund («nicht auffindbar») ist eine Frage an die Daten, nicht an den Kanal: erst die Gruppen
 mit/ohne Meldung über ALLE Felder vergleichen — die Antwort war ein einziges leeres Feld.
 
+**Nachtrag 33 (23.09. 12:50 UTC) — Der Kategorie-Lauf schaffte 100 je Minute bei fast vollem Eimer: 25 aliasierte productUpdate laufen bei Shopify SERIELL, Batching kauft dort keine Zeit — Parallelität schon.**
+
+Nach dem Neustart des Containers (10:30 UTC) lief `kategorie_wache.py` mit CAP 45000 wieder an. Messung über 60 s: Ledger 275 → 375, also 100 Produkte je Minute — bei 42'034 zuweisbaren wären das 7 Stunden, und der Container stirbt stündlich. Der naheliegende Verdacht «Eimer leer» war falsch: `throttleStatus` stand bei 1999 von 2000, restoreRate 100/s. Eine einzelne productUpdate-Mutation gegen eine ungültige ID kostete 0,37 s und 10 Punkte; der Batch aus 25 Aliassen brauchte ~15 s. Shopify führt aliasierte Mutationen in EINER Anfrage nacheinander aus — ein Batch spart Anfragen, keine Zeit. Der Eimer hätte 10 Produkte je Sekunde erlaubt, der Lauf holte eines je 0,6 s.
+
+**Fix:** `WORKER` (Standard 3) parallele Batches über `ThreadPoolExecutor`, Ledger-Schreiben unter Lock; die Eimer-Etikette bremst jeden Arbeiter selbst. Gemessen nach dem Neustart: 550 → 900 in 60 s = 350/min bei Eimer 1701/2000 — die anderen Schreiber des Shops behalten Luft. 45'435 zuweisbare → ~130 min. Dazu: (1) Laufsperre `/tmp/kategorie_wache.lock` (der tägliche Aufseher-Lauf mit CAP 3000 und der Nachlauf hätten dieselben Produkte doppelt geschrieben — harmlos, aber Eimer-Verschwendung); (2) `engine_keepalive.sh` Abschnitt 3c startet den Nachlauf nach JEDEM Neustart neu, solange `_kategorie_stand.json` mehr als 300 Offene zeigt — ohne diesen Starter wäre nach dem nächsten Neustart wieder nur der Tages-Lauf übrig (Frage von Lehre 0c: *wer startet DICH?*); (3) beim Bauen fiel auf, dass `$REPO` in der Keepalive-Datei nie gesetzt war (Zeile 454 nutzte es seit dem 22.09.; `cd ""` ist in bash ein No-op, es lief nur, weil die Routine ohnehin im Repo steht) → definiert.
+
+Die erweiterte Tabelle (14 Typen aus Nachtrag 32) wirkt: unbekannte Typen 4'181 → 280, zuweisbar 42'034 → 45'435. Der Neustart des Laufs war gefahrlos: das Skript liest die Wahrheit (`category` leer) vor jedem Schreiben, das Ledger ist nur Quittung.
+
+**Lehren:** (1) **Ein voller Eimer bei langsamem Lauf heisst: die Zeit geht in der Latenz verloren, nicht im Limit** — Batching hilft gegen Anfragen-Zahl, Parallelität gegen Latenz; erst messen, welches von beiden bremst (`throttleStatus` + Zeit je Einzelaufruf). (2) **Ein Nachlauf, der länger dauert als der Container lebt, braucht einen Starter im Keepalive**, nicht nur ein Ledger — sonst ist er nach dem nächsten Neustart ein Tages-Wächter mit Deckel. (3) **Zwei Starter für dasselbe Skript brauchen eine Sperre IM Skript**, nicht in den Startern.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16193,3 +16203,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-21 · 🧩 **Das Produkt lebt, die Farbe ist tot — die Wache fragte nur nach dem Produkt.** Trainingsanzug: CJ führt 32 Varianten, der Shop 40, **8 Blau mit Menge 0 + CONTINUE kaufbar** — Ghost-Sale eine Ebene tiefer. → Journal
 - 2026-09-21 · ⏱️ **«schneller automation»: die Automation stand sich selbst im Weg.** Ohne Absprache drosselt CJ jeden zweiten Aufruf (1600200), die Helfer schlafen 8/16/24 s → ~12 s je Produkt bei 0,6 s Latenz. → Journal
 - 2026-09-21 · 🎨 **Zwei Shop-Varianten, eine CJ-SKU — «Grau» hätte Silber bestellt.** Zweiter Varianten-Lauf: Handsauger trägt an beiden Farben `…01AZ`, CJ führt `01AZ`+`02BY` → Fehlversand statt Ghost-Sale. → Journal
+- 2026-09-21 · 🚧 **Sechs Stunden ohne einen Tages-Wächter — die Schranke von heute Morgen hatte sich selbst ausgesperrt.** Inline im `bash -c`-String schlossen die inneren Anführungszeichen den äusseren, `$_s` expandierte leer, der Rest lief als Dateiname: 89× «line 412: … No such file» im Aufseher-Log, **26… → Journal
+- 2026-09-21 · 🖥️ **Der grosse Hebel für «schneller automation» liegt nicht im Code, sondern im Schlaf des Containers.** Alle Tages-Wächter laufen nur in Session-Arbeitszeit. → Journal
