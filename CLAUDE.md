@@ -501,6 +501,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-23 · 📐 **Betreiber-Screenshot: Titel/Preis der Reels lagen unter TikToks Caption, Marke unter der Suchleiste — die Textebene kannte die Plattform-Oberfläche nicht.** `overlay.py` sichere Zone (200–1440, Fusstexte links der Knopfleiste), Video bei y=600, UI-Schablone als Prüfbild, `NEU_RENDERN=1` baut die 23 wartenden Reels neu. «CHF 50» war richtig (Warenwert; 45 = intern nach Rabatt) → Journal Nachtrag 24
 - 2026-09-23 · 📲 **Erster TikTok-Post via Metricool LIVE (7688585316826877216, Projektor P62) — aber «posted-tiktok» hiess nur «geplant»; Ampel mass die tote PC-Queue.** Jetzt `PRUEFEN=1 metricool_tiktok_post.mjs` (Planer lesen → `tiktok:<url>` oder `tiktok-fehler`), Autopilot prüft alle 2 h, Ampel misst das Ledger. **Gepostet ist erst, was die Plattform bestätigt** → Journal Nachtrag 23
 - 2026-09-23 · 🎵 **Metricool-Token kam mit dem fünften Container-Neustart an (04:18 UTC) — «Umgebungsvariablen erreichen die Session nicht» gilt nur bis zum nächsten Neustart, danach `env | grep -c NAME` messen.** Marke per API gemessen (6227837, TikTok luxestyle.ch; 6394001 war Altnotiz); erster TikTok-Post 380476730 auf 06:37 CH geplant. Groq-Schlüssel steht als Variablen-NAME (leer) → Betreiber → Journal
 - 2026-09-23 · 🚪 **Reel-Poster-Tor las die CJ-pid als Shopify-ID: aktiver Projektor «existiert nicht mehr» (Zeile produkt-nicht-aktiv), UUID-pids ohne Prüfung durchgelassen.** Form-Erkennung: 12–15-stellig = Shopify-ID, sonst SKU-Suche; in beiden Reel-Postern. Futterspender-Reel live (DdnatlxD0nV) → Journal
@@ -548,8 +549,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-09-21 · 🫀 **Ein Herzschlag, der sich als Arbeit ausgab — und die Post brachte ein endgültiges Nein.** «email sachen machen»: Posteingang in drei Tagen **ein** Vorgang, der Befund lag daneben. → Journal
 - 2026-09-21 · 🪣 **Acht Wächter, ein Eimer — die Drossel war hausgemacht, und mein erster Fix war falsch.** `menue_links.log`: **15 PAUSE-Zeilen bei 16 Läufen** — der Wächter, der am 15.09. → Journal
 - 2026-09-21 · 🩹 **Der Wächter fragte nach der Werbung, nicht nach der Ware — und die Lücke, die ich reparieren wollte, gibt es nicht.** Zwei Ergebnisse, beide durch Messen statt Vermuten. → Journal
-- 2026-09-20 · 🎯 **Vierzig von vierzig Treffern — und kein einziger war ein Fund.** Die Startseite lieferte dem Hetzner-Agenten am 20.09. → Journal
 
-… Einzeilen vom 14.–19.09.2026 (84) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
+… Einzeilen vom 14.–20.09.2026 (85) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
 Dateiende — CLAUDE.md muss unter ~70 KB bleiben); alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md`
 (Inhaltsverzeichnis oben). Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`.

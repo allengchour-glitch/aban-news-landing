@@ -344,3 +344,71 @@ gid://shopify/Product/15502266827137	2026-09-23T05:09Z	draft	35.90	66.00	Handy-A
 gid://shopify/Product/15448922390913	2026-09-23T05:09Z	draft	28.90	58.83	Wasserfester Sofa-Schutz für alle Jahreszeiten
 gid://shopify/Product/15451912044929	2026-09-23T05:10Z	draft	18.90	48.77	Küchenmatten 2er-Set, rutschfest & wasserdicht
 gid://shopify/Product/15501743096193	2026-09-23T05:10Z	draft	20.90	50.75	Papiersegel Puzzle
+gid://shopify/Product/15448845549953	2026-09-23T05:10Z	draft	23.90	53.70	Magnetischer Messerhalter aus Kunstharz
+gid://shopify/Product/15449468633473	2026-09-23T05:10Z	draft	21.90	51.53	Katzenfutter-Schüssel mit Nackenstütze
+gid://shopify/Product/15497435971969	2026-09-23T05:10Z	draft	15.90	45.48	Yoga Pilates Set · 13-teilig
+gid://shopify/Product/15449123258753	2026-09-23T05:10Z	draft	32.90	62.48	Infrarot-Wärmelampe für Haut- & Haarpflege
+gid://shopify/Product/15453810131329	2026-09-23T05:10Z	draft	18.90	48.44	Elektrischer Porenreiniger mit Saugkraft & Blackhead-Entfern
+gid://shopify/Product/15449168019841	2026-09-23T05:10Z	draft	49.90	79.43	Trolley-Transportbox für Haustiere
+gid://shopify/Product/15500484510081	2026-09-23T05:10Z	draft	17.90	47.42	Almost Bio Collagen Gesichtsmaske über Nacht
+gid://shopify/Product/15448922653057	2026-09-23T05:10Z	draft	15.90	45.37	Warmer Plüsch-Sofabezug – rutschfest und einfarbig
+gid://shopify/Product/15506707415425	2026-09-23T05:10Z	draft	30.90	60.29	Brotbrett aus massivem Nussbaumholz
+gid://shopify/Product/15502302019969	2026-09-23T05:10Z	draft	14.90	44.13	Halbfinger Boxhandschuhe mit Handgelenkbandage
+gid://shopify/Product/15498672013697	2026-09-23T05:10Z	draft	16.90	45.28	X52 Drohne mit Kamera und Live-Übertragung
+gid://shopify/Product/15500930089345	2026-09-23T05:10Z	draft	46.90	75.79	Hundehalskette mit Strass-Schnalle
+gid://shopify/Product/15496704590209	2026-09-23T05:10Z	draft	29.90	58.68	3-in-1 Wireless Ladestation für Smartphone, Watch, Headset
+gid://shopify/Product/15496497398145	2026-09-23T05:10Z	draft	18.90	47.66	Solare Tierabwehr
+gid://shopify/Product/15506271207809	2026-09-23T05:10Z	draft	19.90	48.60	Kopfteil-Schutzhülle aus Baumwoll-Leinen
+gid://shopify/Product/15500908233089	2026-09-23T05:10Z	draft	34.90	63.57	Hals-Schönheitsinstrument mit Infrarotlicht
+gid://shopify/Product/15503091335553	2026-09-23T05:10Z	draft	15.90	44.49	Uhrenbox aus Leder mit Sichtfenster
+gid://shopify/Product/15449168740737	2026-09-23T05:10Z	draft	54.90	83.44	20-Zoll Handgepäck-Trolley
+gid://shopify/Product/15449127879041	2026-09-23T05:10Z	draft	42.90	71.41	Leichter Hunderollstuhl für Hinterbeine
+gid://shopify/Product/15501001589121	2026-09-23T05:10Z	draft	35.90	64.39	Wok "Honeycomb" für alle Herdarten
+gid://shopify/Product/15448921964929	2026-09-23T05:11Z	draft	36.90	65.39	Chenille Sofaüberwurf für alle Jahreszeiten
+gid://shopify/Product/15452602368385	2026-09-23T05:11Z	draft	14.90	43.38	Schnell-Auftau-Tablett für Fleisch
+gid://shopify/Product/15499244077441	2026-09-23T05:11Z	draft	34.90	63.37	Kuschelige Double-Layer Plüschdecke
+gid://shopify/Product/15448839553409	2026-09-23T05:11Z	draft	15.90	44.28	Antihaft-Bratpfanne aus Karbonstahl
+gid://shopify/Product/15454108221825	2026-09-23T05:11Z	draft	16.90	45.22	Natürliche grosse Muschel für Aquarien & Dekoration
+gid://shopify/Product/15503931277697	2026-09-23T05:11Z	draft	27.90	56.21	Stapelbarer Eisen-Aufbewahrungskorb – chinesischer Stil
+gid://shopify/Product/15503286239617	2026-09-23T05:11Z	draft	17.90	46.17	Silikon-Leckmatte für Hunde & Katzen
+gid://shopify/Product/15496269332865	2026-09-23T05:11Z	draft	19.90	48.06	Halbrunde Fussmatte Nordic Seidenkreis
+gid://shopify/Product/15496395063681	2026-09-23T05:11Z	draft	15.90	44.05	Kofferraum-Organizer mit Faltfunktion
+gid://shopify/Product/15454110450049	2026-09-23T05:11Z	draft	21.90	50.01	Kabelloser Heizkörper
+gid://shopify/Product/15453795090817	2026-09-23T05:11Z	draft	17.90	45.94	Universelle Hundebett-Matte
+gid://shopify/Product/15504173531521	2026-09-23T05:11Z	draft	26.90	54.92	Solarpanel-Set für Fahrzeuge
+gid://shopify/Product/15453921706369	2026-09-23T05:11Z	draft	18.90	46.90	Aquarium-Dekoration
+gid://shopify/Product/15504189817217	2026-09-23T05:11Z	draft	50.90	78.88	GPS-Haustierhalsband mit Ortungsfunktion
+gid://shopify/Product/15448946573697	2026-09-23T05:11Z	draft	15.90	43.84	Kratzbaum aus Wellpappe für Hunde & Katzen
+gid://shopify/Product/15495590248833	2026-09-23T05:11Z	draft	28.90	56.78	Tatami Bodenmatten für Zuhause
+gid://shopify/Product/15453744431489	2026-09-23T05:11Z	draft	23.90	51.73	Aerial Photography Drone 8K HD
+gid://shopify/Product/15448913084801	2026-09-23T05:11Z	draft	29.90	57.72	Multifunktionale Angel-Umhängetasche, gross
+gid://shopify/Product/15495902101889	2026-09-23T05:11Z	draft	22.90	50.67	Herzschlag Plüschtier für Haustiere
+gid://shopify/Product/15453786997121	2026-09-23T05:11Z	draft	23.90	51.61	Katzenkratz-Turm mit Hängekapsel
+gid://shopify/Product/15496385003905	2026-09-23T05:12Z	draft	16.90	44.60	Sofa-Kissenbezug, rutschfest, Chenille
+gid://shopify/Product/15503122661761	2026-09-23T05:12Z	draft	27.90	55.23	Elektrisches Gesichtsreinigungsgerät
+gid://shopify/Product/15496410530177	2026-09-23T05:12Z	draft	15.90	43.56	Multifunktionales U-förmiges Schwangerschaftskissen
+gid://shopify/Product/15449130664321	2026-09-23T05:12Z	draft	15.90	43.48	PBT Tastenkappen mit Cuaicai Hasen Design
+gid://shopify/Product/15503287648641	2026-09-23T05:12Z	draft	50.90	78.31	Kurier-Rucksack mit Isolation
+gid://shopify/Product/15496329331073	2026-09-23T05:12Z	draft	32.90	60.27	Anti-Rutsch Sofa Kissen aus Kristallplüsch
+gid://shopify/Product/15454108877185	2026-09-23T05:12Z	draft	24.90	52.27	Extra-weiche Herzgestreifter Bettbezug-Set (4-teilig)
+gid://shopify/Product/15504142401921	2026-09-23T05:12Z	draft	50.90	78.21	Edelstahl-Hundeleine mit sandgestrahltem Griff
+gid://shopify/Product/15449098912129	2026-09-23T05:12Z	draft	14.90	42.08	Zen-Aschenbecher & Kiesel-Vase
+gid://shopify/Product/15454109106561	2026-09-23T05:12Z	draft	14.90	41.95	Kupfertuchhalter mit Einzel- und Doppelstange
+gid://shopify/Product/15501003555201	2026-09-23T05:12Z	draft	34.90	61.90	Herren Sneaker mit durchgehender Luftpolsterung
+gid://shopify/Product/15496382153089	2026-09-23T05:12Z	draft	25.90	52.80	Winter Plüsch Sofaüberzug Stretch
+gid://shopify/Product/15496016986497	2026-09-23T05:12Z	draft	25.90	52.79	Runder Kinderteppich mit Cartoon-Motiv
+gid://shopify/Product/15502149910913	2026-09-23T05:12Z	draft	23.90	50.78	Magnetische Puzzle-Rennbahn Bausteine
+gid://shopify/Product/15450114457985	2026-09-23T05:12Z	draft	15.90	42.68	Chenille Sofakissenbezug
+gid://shopify/Product/15506662654337	2026-09-23T05:12Z	draft	20.90	47.67	Wald Baumhaus Bausteine
+gid://shopify/Product/15499301552513	2026-09-23T05:12Z	draft	36.90	63.66	Wasserfeste Sofahülle
+gid://shopify/Product/15499869553025	2026-09-23T05:12Z	draft	43.90	70.66	Bequemes Bettüberwurfset
+gid://shopify/Product/15449480757633	2026-09-23T05:12Z	draft	41.90	68.66	Seiden-Bettwäsche-Set, doppelseitig
+gid://shopify/Product/15452599484801	2026-09-23T05:12Z	draft	14.90	41.65	Slushy Cup 500ml
+gid://shopify/Product/15502182777217	2026-09-23T05:12Z	draft	25.90	52.61	Wedo2.0 Programmierbarer Roboter Baukasten
+gid://shopify/Product/15454092165505	2026-09-23T05:13Z	draft	15.90	42.38	Schneestern-Muster Vorhang
+gid://shopify/Product/15450849771905	2026-09-23T05:13Z	draft	18.90	45.37	Leichter 4-Jahreszeiten-Schlafsack für Outdoor-Abenteuer
+gid://shopify/Product/15497534013825	2026-09-23T05:13Z	draft	15.90	42.36	Lazy Bean Bag aufblasbares Faltsofa
+gid://shopify/Product/15496852603265	2026-09-23T05:13Z	draft	17.90	44.31	Halsband mit Fliege für Hunde
+gid://shopify/Product/15452685107585	2026-09-23T05:13Z	draft	15.90	42.18	Kuschel-Couchhülle aus Baumwollflanell
+gid://shopify/Product/15502134641025	2026-09-23T05:13Z	draft	19.90	46.15	Gewichts-Armband für Krafttraining
+gid://shopify/Product/15500934545793	2026-09-23T05:13Z	draft	34.90	61.12	Halskette für Haustiere aus Edelstahl

@@ -371,6 +371,22 @@ ist weg. Autopilot neu gestartet (Skript geändert, während es lief — Rezept:
 erschienen — und nur der dritte zählt für die Kadenz «täglich mehrmals überall». Jeder Kanal-Poster braucht die
 Nachmessung im selben Werkzeug, nicht in einer Erinnerung, die ein Mensch liest.
 
+**Nachtrag 24 (23.09. 05:40 UTC) — Betreiber-Screenshot des TikTok-Posts: Titel und Preis lagen unter TikToks Caption — die Textebene kannte die Oberfläche der Plattform nicht.**
+GEMESSEN am Screenshot (127 Aufrufe nach 49 Min): das Fussfeld der Reels (y 1530–1920) liegt exakt unter Nutzername,
+Caption, Fortschrittsbalken und Werbebanner von TikTok; «Tragbarer Smart-Projektor P62» und «CHF 86.90» waren nur
+noch als Schemen lesbar. Die Kopfleiste «LUXESTYLE» (0–190) sass unter der Suchleiste. Beides hätte eine
+Sichtprüfung mit Schablone vor dem ersten Post gezeigt — es gab keine. Die Zeile «Gratis Versand ab CHF 50» ist
+RICHTIG (beworben wird Warenwert 50; 45 ist die interne Schwelle nach dem 10-%-Rabatt, `versandschwelle_rabatt.py`).
+GETAN: (1) `reel/overlay.py`: sichere Zone — Kopf 200–330, Hook ab 350, Fussfeld 1170–1440, Fusstexte auf x=470
+zentriert (links der Knopfleiste x>930); (2) `make_reel.sh`: Querformat-Video bei y=600 statt Bildmitte, Hochformat
+bleibt zentriert; (3) Probe mit roter UI-Schablone (oben 200, unten 480, rechts 150 px) über zwei Frames gelesen,
+Fusszeile um 30 px nachgerückt; (4) Reel-Motor `NEU_RENDERN=1` (NUR_PID, OHNE_PUSH): rendert alle «ready»-Reels
+mit der neuen Ebene neu — gleiche Datei, gleiche Adresse, keine neue Zeile. Läuft im Hintergrund über die 23
+wartenden Reels.
+**Lehre:** Ein Video für eine Plattform wird auf der Plattform beurteilt, nicht im Player. Jede Textebene braucht
+die UI-Schablone der Zielplattform als Prüfbild (`f_*_ui.jpg`-Rezept: rote Flächen oben/unten/rechts), BEVOR der
+erste Post rausgeht. Und: nicht jede Abweichung ist ein Fehler — die 50 stand richtig da, weil ich die Quelle las.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16026,3 +16042,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-19 · 🔎 **Der Klammer-Trick schützt den grep — nicht die Zeile, die ihn trägt.** Der 08:08-Keepalive endete mit `Aufseher=0`; zwei Prüfungen in EINER Zeile widersprachen sich: `awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/'` → **nichts**, `grep -c "[f]ixer_keepalive"` → **1**. → Journal
 - 2026-09-19 · 📭 **Ein Schweigen kann heissen, dass die Frage nie angekommen ist.** Die CJ-Nachmessung brachte vier saubere Neins (Guthaben `amount 0.0`, `disputeId` null, Dispute-Liste 0, keine Mail neuer als CJs Zusage vom 18.09. → Journal
 - 2026-09-19 · 🇱🇮 **«mach bot besser und seite»: der Puls beweist Leben, nicht Ankunft — und der Shop verspricht ein Land, das nicht bestellen kann.** `_puls.json` war frisch, **zwei Quittungen standen seit 17.09. → Journal
+- 2026-09-20 · 🎯 **Vierzig von vierzig Treffern — und kein einziger war ein Fund.** Die Startseite lieferte dem Hetzner-Agenten am 20.09. → Journal

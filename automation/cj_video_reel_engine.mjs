@@ -159,6 +159,56 @@ function caption(hook, k, benefit) {
   return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\nCHF ${k.price.toFixed(2)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
 }
 
+// ---------------------------------------------------------------- Neu rendern (23.09.2026)
+// NEU_RENDERN=1: Reels, die noch «ready» in der Queue stehen, mit der aktuellen Textebene neu bauen (Anlass:
+// Betreiber-Screenshot — Titel/Preis lagen unter TikToks Caption). Gleiche Datei, gleiche Adresse, keine neue
+// Zeile, kein Ledger-Eintrag. NUR_PID=<pid> begrenzt; OHNE_PUSH=1 laesst die Datei in /tmp/reelbuild (Sichtpruefung).
+if (process.env.NEU_RENDERN === '1') {
+  fs.mkdirSync('/tmp/reelbuild', { recursive: true });
+  // Zeilen der Queue tragen mehrzeilige Captions in Anfuehrungszeichen — deshalb ein echter CSV-Leser, kein split('\\n').
+  const parseCsv = text => { const rows = []; let row = [], cur = '', q = false;
+    for (let i = 0; i < text.length; i++) { const c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += c; }
+      else if (c === '"') q = true; else if (c === ',') { row.push(cur); cur = ''; }
+      else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; } else if (c !== '\r') cur += c; }
+    if (cur.length || row.length) { row.push(cur); rows.push(row); } return rows.filter(r => r.length > 1); };
+  const csvRows = parseCsv(fs.readFileSync(CSV, 'utf8')); const ci = Object.fromEntries(csvRows[0].map((h, i) => [h.trim(), i]));
+  const ziel = csvRows.slice(1).map(r => ({ pid: (/^cjreel-([0-9A-Za-z-]{6,})$/.exec(r[ci.id] || '') || [])[1], status: (r[ci.status] || '').trim() }))
+    .filter(x => x.pid && (process.env.NUR_PID ? x.pid === process.env.NUR_PID : x.status === 'ready'))
+    .map(x => x.pid).filter(p => process.env.OHNE_PUSH === '1' || fs.existsSync(`${MEDIEN}/reel_${p}.mp4`));
+  console.log(`Neu rendern: ${ziel.length} ready-Reels`);
+  let neu = 0; const dateien = [];
+  for (let i = 0; i < ziel.length; i += 20) {
+    const teil = ziel.slice(i, i + 20);
+    const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status variants(first:1){nodes{price sku}} } } }`, { q: teil.map(p => `sku:CJ-${p}`).join(' OR ') });
+    if (!r) break;
+    for (const n of r.data.products.nodes) {
+      const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(n.variants.nodes[0]?.sku || ''); if (!m || !teil.includes(m[1])) continue;
+      const pid = m[1], k = { pid, title: n.title.trim(), price: parseFloat(n.variants.nodes[0]?.price || '0') };
+      if (n.status !== 'ACTIVE') { console.log(`   ${pid}: Produkt ${n.status} — nicht neu gerendert`); continue; }
+      let vurl = ''; try { vurl = await cjVideo(pid); } catch (e) { console.log('  ✗ ' + e.message); break; }
+      if (!vurl) { console.log(`   ${pid}: CJ hat kein Video mehr`); continue; }
+      const th = thema(k.title), hook = hookFuer(th, pid, k.title), [z1, z2] = zeilen(k.title);
+      const src = `/tmp/reelbuild/src_${pid}.mp4`, out = `/tmp/reelbuild/reel_${pid}.mp4`;
+      try {
+        execFileSync('curl', ['-s', '-L', '--max-time', '180', '-H', 'Referer: https://developers.cjdropshipping.com/', '-o', src, vurl], { stdio: 'ignore' });
+        if (!fs.existsSync(src) || fs.statSync(src).size < 200000) { console.log(`   ${pid}: Video zu klein`); continue; }
+        let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
+        const musik = MUSIC[num(pid) % MUSIC.length];
+        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)) } });
+        if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log(`   ${pid}: Render fehlgeschlagen`); continue; }
+        if (process.env.OHNE_PUSH === '1') { console.log(`   ✅ ${pid} gerendert → ${out} (kein Push)`); neu++; continue; }
+        fs.copyFileSync(out, `${MEDIEN}/reel_${pid}.mp4`); dateien.push(`${MEDIEN}/reel_${pid}.mp4`); neu++;
+        console.log(`   ✅ ${pid} neu gerendert: ${z1} / ${z2}`);
+      } catch (e) { console.log(`   ${pid}: Fehler ${String(e.message || e).slice(0, 100)}`); }
+      finally { fs.rmSync(src, { force: true }); if (process.env.OHNE_PUSH !== '1') fs.rmSync(out, { force: true }); }
+    }
+  }
+  if (dateien.length) { if (!gitPush(dateien, `Reels neu gerendert (sichere Zone): ${dateien.length}`)) console.log('   Push fehlgeschlagen'); }
+  console.log(`FERTIG neu rendern: ${neu}`);
+  process.exit(0);
+}
+
 // ---------------------------------------------------------------- Kandidaten
 const gebaut = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
 const keinVideo = new Set(fs.existsSync(KEINVIDEO) ? fs.readFileSync(KEINVIDEO, 'utf8').split('\n').map(s => s.split('\t')[0].trim()).filter(Boolean) : []);
