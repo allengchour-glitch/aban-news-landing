@@ -17948,3 +17948,30 @@ gid://shopify/Product/15447912415617	Farbe	gid://shopify/ProductOptionValue/1230
 gid://shopify/Product/15447912907137	Farbe	gid://shopify/ProductOptionValue/12309958066561	Schwarz Rahmen Grau Stück	Black Frame Gray Piece	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
 gid://shopify/Product/15447913234817	Farbe	gid://shopify/ProductOptionValue/12309958525313	Schwarz Rahmen Schwarz-Grau	Black Frame Black Gray	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
 gid://shopify/Product/15447913234817	Farbe	gid://shopify/ProductOptionValue/12309958590849	Grün Rahmen Grün Stück	Green Frame Green Piece	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15447916609921	Farbe	gid://shopify/ProductOptionValue/12295595360641	Schwarz Rahmen Transparent-Grau	Black Frame Transparent Gray	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15447916609921	Farbe	gid://shopify/ProductOptionValue/12295595426177	Schwarz Rahmen Grau Stück	Black Frame Gray Piece	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15447916609921	Farbe	gid://shopify/ProductOptionValue/12295595491713	Transparent Rahmen Grün-Gelb	Transparent Frame Green Yellow	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15447916609921	Farbe	gid://shopify/ProductOptionValue/12295595590017	Transparent Rahmen Pink	Transparent Frame Pink	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15447916609921	Farbe	gid://shopify/ProductOptionValue/12295595622785	Schwarz Rahmen Farbverlauf Blau	Black Frame Gradient Blue	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15447917494657	Farbe	gid://shopify/ProductOptionValue/12295597982081	Leuchtendschwarz Rahmen	Bright Black Frame	2026-09-23T20:33Z/reparatur-original:satzbau:gebeugte-farbe-vor-nomen
+gid://shopify/Product/15447917625729	Farbe	gid://shopify/ProductOptionValue/12309962097025	C1 Schwarz Rahmen Grau Stück	C1 Black Frame Gray Piece	2026-09-23T20:33Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15447921230209	Farbe	gid://shopify/ProductOptionValue/12309963276673	Klassisch dünn Fleece	Classic Thin Fleece	2026-09-23T20:34Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15447921230209	Farbe	gid://shopify/ProductOptionValue/12309963538817	Schwarz einzeln gestreift	Black Single Stripe	2026-09-23T20:34Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15447926243713	Farbe	gid://shopify/ProductOptionValue/12309965767041	Lila Samt Camel-Einheitsgrösse	Purple Velvet Camel-Average Size	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15447926931841	Ausführung	gid://shopify/ProductOptionValue/12376003346817	Wolle Futter	Wool lining	2026-09-23T20:34Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15447941251457	Farbe	gid://shopify/ProductOptionValue/12451121496449	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:34Z/reparatur-konsistenz
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045617537	7 Leder Pink	7 Leather Pink	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918130049	Kurz Länge S-Aprikose	Short length S-Apricot	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918162817	Kurz Länge S-Grau	Short length S-Gray	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918195585	Kurz Länge M-Aprikose	Short length M-Apricot	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918228353	Kurz Länge M-Grau	Short length M-Gray	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918261121	Kurz Länge L-Aprikose	Short length L-Apricot	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918293889	Kurz Länge L-Grau	Short length L-Gray	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448006689153	Farbe	gid://shopify/ProductOptionValue/12019141640577	Seide Karbongrau	Silk Carbon Gray	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448026579329	Farbe	gid://shopify/ProductOptionValue/12019202163073	Leder Pink	Leather Pink	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448026743169	Farbe	gid://shopify/ProductOptionValue/12019202687361	Leder Pink	Leather Pink	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448027169153	Farbe	gid://shopify/ProductOptionValue/12019203932545	Leder Pink	Leather Pink	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448043028865	Farbe	gid://shopify/ProductOptionValue/12019245154689	Rund gepunktet	Round Dots	2026-09-23T20:34Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15448104239489	Farbe	gid://shopify/ProductOptionValue/12020403765633	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:34Z/reparatur-konsistenz
+gid://shopify/Product/15448112333185	Farbe	gid://shopify/ProductOptionValue/12020554826113	Klassisch Leopardenmuster	Classic leopard print	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448509153665	Farbe	gid://shopify/ProductOptionValue/12022285894017	Q18A Leuchtendrot	Q18A Leuchtendes Rot	2026-09-23T20:34Z/reparatur-korrigiert
