@@ -2153,3 +2153,15 @@ eelhoe-hand-und-fusspflegespray-548930	DRAFT:arzneimittel-ohne-zulassung	2026-09
 kopfhaut-beruhigungscreme-842882	DRAFT:arzneimittel-ohne-zulassung	2026-09-23T12:16Z
 nagelentferner-creme-495552	DRAFT:arzneimittel-ohne-zulassung	2026-09-23T12:16Z
 northmoon-pflegecreme-fur-manner-463362	DRAFT:arzneimittel-ohne-zulassung	2026-09-23T12:16Z
+18-make-up-pinsel-set-im-drehbaren-kocher-243392	sauber	2026-09-23T12:17Z
+southmoon-mugwort-bein-patches-581634	GETAUSCHT:itching,rash	2026-09-23T12:17Z
+rosmarin-minze-kopfhautfluid-mit-massage-59-ml-616700	sauber	2026-09-23T12:17Z
+farbige-silikon-lichttherapie-maske-fur-gesich-610100	sauber	2026-09-23T12:17Z
+wasserfeste-manikure-806080	GETAUSCHT:infection	2026-09-23T12:17Z
+aroma-duschkopf-mit-filter-632400	sauber	2026-09-23T12:17Z
+manicure-photogel-transparent-c9062e	sauber	2026-09-23T12:17Z
+haltungskorrektur-fur-den-rucken-607000	GETAUSCHT:before/after	2026-09-23T12:17Z
+hautregenerationscreme-50g-gegen-narben-625900	sauber	2026-09-23T12:17Z
+breylee-teebaum-gel-30g-620800	GETAUSCHT:getridof	2026-09-23T12:17Z
+akne-hautpflege-set-609800	sauber	2026-09-23T12:17Z
+silikon-narbenpflaster-606600	sauber	2026-09-23T12:17Z

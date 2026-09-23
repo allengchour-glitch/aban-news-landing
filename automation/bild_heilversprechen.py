@@ -39,9 +39,11 @@ WORTGRENZE = 10   # Ersatzbild: etwas Beschriftung ist erlaubt, kein Medizinwort
 SUCHE = "status:active AND (Nagel OR Nagelpilz OR Fusspflege OR Warze OR Hornhaut OR Akne OR Ekzem OR Schuppenflechte OR Narbe OR Zehennagel OR Hautpflege OR Pilz)"
 # Medizinwörter (englisch, wie sie in CJ-Bildern stehen). Wortgrenzen: «pain» allein ist KEIN Treffer
 # («Remove Without Pain» an Wimpern ist Komfort, keine Heilung); «wart» nicht in «Stewart».
-MEDIZIN = re.compile(r"\b(psoriasis|fungal|fungus|fungi|infections?|eczema|warts?|acne|cure[sd]?|disease|onycho\w*|"
-                     r"hematoma|syndrome|inflammation|itch(?:ing|y)?|bacteri\w*|virus|dermatitis|rash|mycosis|"
-                     r"athlete'?s|heal(?:s|ing)?|treatment|therapy|scars?|melasma|vitiligo|rosacea)\b", re.I)
+# 23.09. Trockenlauf über 2'145: «cure» (UV-Gel härtet aus), «antibacterial» (Pinsel, Duschkopf), «therapy»
+# (Lichtmaske = Produktname), «treatment» (Haarkur), «acne»/«scar» (Kosmetik-Zweck) waren Fehlalarme → raus.
+MEDIZIN = re.compile(r"\b(psoriasis|fungal|fungus|fungi|infections?|eczema|warts?|disease|onycho\w*|"
+                     r"hematoma|syndrome|inflammation|itch(?:ing|y)?|dermatitis|rash|mycosis|"
+                     r"athlete'?s|heal(?:s|ing)?|melasma|vitiligo|rosacea)\b", re.I)
 
 
 def gql(q, v=None):
@@ -94,7 +96,7 @@ def lies(url):
 # 1600 px und --psm 11 (Streutext) kommt «HELPAYOU/GETIRID OF ESORIASIS … BEFORE» — verklebt und mit Fehlern.
 # Darum hier nur lange, eindeutige Stämme ohne Wortgrenzen im Buchstabenbrei; kurze Wörter bleiben Pass 1.
 STAEMME = re.compile(r"(soriasis|fungal|fungus|infection|eczema|onycho|hematoma|syndrome|inflammat|dermatit|mycosis|"
-                     r"bacteri|vitiligo|rosacea|melasma|getridof|ringworm|tinea|nailfungus|symptoms)", re.I)
+                     r"vitiligo|rosacea|melasma|getridof|ringworm|tinea|nailfungus|symptoms)", re.I)
 
 
 def lies_roh(url):
