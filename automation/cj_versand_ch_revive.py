@@ -64,7 +64,10 @@ RISIKO = {"medizinprodukt-pruefen", "waffengesetz-verboten", "duplikat-auto-draf
           "abhoergeraet-pruefen", "waffe-pruefen", "tierschutz-geraet",
           "bb-versand-unrentabel", "lager-unbekannt-draft",
           # 22.09.: Urteil der Klingen-Wache — ein Rueckholer hebt es nicht auf.
-          "handklinge-kein-ch-versand"}
+          "handklinge-kein-ch-versand",
+          # 23.09.: Fetisch-/Sexartikel unter falschem Typ (Knebel als «Werkzeug») und Arzneimittel-Anpreisung
+          # ohne Swissmedic-Zulassung (Nagelpilz-/Psoriasis-«Treatment») — Urteil, kein Lieferproblem.
+          "adult-auto-draft", "arzneimittel-ohne-zulassung", "heilversprechen-draft"}
 
 ONLINE = "gid://shopify/Publication/301970915713"
 SHOP = "gid://shopify/Publication/301971014017"
