@@ -264,6 +264,8 @@ TERM_PHRASES = {
     "guard comb": "Aufsteckkamm",
     "arch shape": "Bogenform", "curved shape": "geschwungene Form", "straight shape": "gerade Form",
     "round shape": "runde Form", "square shape": "eckige Form", "heart shape": "Herzform",
+    "arch shape stamp": "Stempel Bogenform", "curved shape stamp": "Stempel geschwungen",
+    "straight shape stamp": "Stempel gerade",
     "polka dot": "gepunktet", "polka dots": "gepunktet",
     "leopard print": "Leopardenmuster", "floral print": "Blumenmuster", "flower print": "Blumenmuster",
     "single layer": "einlagig", "double layer": "doppellagig",
@@ -305,7 +307,8 @@ TERM = {
     "heel": "Absatz", "sole": "Sohle", "collar": "Kragen", "sleeve": "Ärmel", "sleeveless": "ärmellos",
     "hood": "Kapuze", "hooded": "mit Kapuze", "lining": "Futter", "lined": "gefüttert",
     "stamp": "Stempel", "shape": "Form", "blade": "Klinge", "brush": "Bürste", "comb": "Kamm",
-    "head": "Kopf", "heads": "Köpfe",
+    "head": "Kopf", "heads": "Köpfe", "bronze": "Bronze", "birthstone": "Geburtsstein",
+    "birthstones": "Geburtssteine",
 }
 # Kleidungsstuecke — NIE uebersetzen, nur melden, wenn sie sich in einer Option widersprechen.
 GARMENT = {
@@ -386,6 +389,11 @@ def _vorbereiten(s):
     s = re.sub(r"(?i)\bno\.?\s*(\d+)\b", r"nr\1", s)                           # «No 7» → Nr. 7
     s = re.sub(r"(?i)\b(?:increased?|heightening)(?:\s+by)?\s+(\d+)\s*cm\b", r"erhöht \1cm", s)
     s = re.sub(r"(?i)\b(\d+)\s*styles?\s+set\b", r"stilset\1", s)             # «3style Set»
+    # Farbwoerter, die ihr Grundwort schon enthalten: navy = marineBLAU, wine = weinROT,
+    # coffee = kaffeeBRAUN. «Dark Navy Blue» wurde sonst «Dunkelmarineblau Blau».
+    s = re.sub(r"(?i)\bnavy\s+blue\b", "navy", s)
+    s = re.sub(r"(?i)\bwine\s+red\b", "wine", s)
+    s = re.sub(r"(?i)\bcoffee\s+brown\b", "coffee", s)
     return s
 
 
@@ -407,8 +415,15 @@ def _token_de(t):
         return w(kern)
     if k in PASS:
         return w(kern)
-    if re.fullmatch(r"\d+(?:[.,/]\d+)?", k) or re.fullmatch(r"#\d+", k):
+    if re.fullmatch(r"\d+(?:[.,/]\d+)?", k) or re.fullmatch(r"#\d+", k) or re.fullmatch(r"gr\.?\d+", k):
         return w(kern)
+    # Lieferantencode mit fuehrender Null («0236L») ist kein Liter.
+    if re.fullmatch(r"0\d+[A-Za-z]{1,3}", kern):
+        return w(kern)
+    x = re.fullmatch(r"(\d+(?:[.,]\d+)?)[x×*](\d+(?:[.,]\d+)?)(?:[x×*](\d+(?:[.,]\d+)?))?(cm|mm|m)?", k)
+    if x:
+        mass = "x".join(g for g in x.groups()[:3] if g)
+        return w(mass + (" " + x.group(4) if x.group(4) else ""))
     if re.fullmatch(r"(?:\d?x{0,5}[sl]|m|x{1,5}l|\d{1,2}xl|\d?xs|xxs)", k):
         return w(kern.upper())
     x = re.fullmatch(r"(\d+(?:[.,]\d+)?)(cm|mm|m|ml|l|g|kg|oz|w|v|mah|gb|tb|inch|inches)", k)
@@ -453,12 +468,28 @@ def _stueck_de(seg):
     out, unbekannt, i = [], [], 0
     while i < len(toks):
         treffer = None
-        for j in range(min(len(toks), i + 5), i, -1):
+        # «Light Rose Red» → Hellrosarot: Bestimmungswort + bekannte Farbphrase = ein Kompositum.
+        mod = MODIF.get(toks[i].lower())
+        if mod and i + 1 < len(toks):
+            for j in range(min(len(toks), i + 4), i + 1, -1):
+                span = " ".join(toks[i + 1:j]); key = span.lower()
+                f = FD.get(key) or (_fz.phrase_de(span) if re.fullmatch(r"[A-Za-z ]+", span) else None)
+                if f and " " not in f and "-" not in f and not f.lower().startswith(("hell", "dunkel")):
+                    treffer = (j, (mod + _doppel_weg(f).lower()).capitalize(), "farbe"); break
+        for j in (range(min(len(toks), i + 5), i, -1) if treffer is None else ()):
             span = " ".join(toks[i:j])
             key = span.lower().strip("()[]")
             if j - i > 1 and key in TERM_PHRASES:
                 treffer = (j, TERM_PHRASES[key], "tok"); break
             if key in FD:
+                # Einschritt-Vorschau: «Black Rose Gold» ist Schwarz + Roségold, nicht
+                # Schwarz-Rosé + Gold. Bildet das letzte Wort mit dem naechsten eine eigene
+                # Farbphrase und bleibt der Rest uebersetzbar, wird kuerzer geschnitten.
+                if j - i >= 2 and j < len(toks):
+                    nach = " ".join(toks[j - 1:j + 1]).lower()
+                    rest = " ".join(toks[i:j - 1]).lower()
+                    if nach in FD and (rest in FD or _fz.phrase_de(" ".join(toks[i:j - 1]))):
+                        continue
                 treffer = (j, _doppel_weg(FD[key]), "farbe"); break
             if j - i <= 3 and re.fullmatch(r"[A-Za-z ]+", span):
                 d = _fz.phrase_de(span)
@@ -479,6 +510,7 @@ def _stueck_de(seg):
     return " ".join(out), []
 
 
+MODIF = {"light": "hell", "dark": "dunkel", "deep": "dunkel", "pale": "blass", "bright": "leuchtend"}
 TRENNER = re.compile(r"(\s*-\s*|\s*\+\s*|\s*,\s*|\s*/\s*|\s*&\s*)")
 SCHUTZ = [("t-shirt", "tshirt"), ("type-c", "typec"), ("v-neck", "v neck"), ("wi-fi", "wifi")]
 
@@ -501,13 +533,16 @@ def wert_de(v):
         d, u = _stueck_de(t.strip())
         if d is None:
             unbekannt += u; continue
+        # Jedes Stueck ist ein eigenes Merkmal («Schwarz-Klein», «Keilabsatz-Weiss»): gross
+        # beginnen — aber nur, wenn das erste Wort UEBERSETZT wurde («iPhone» bleibt «iPhone»).
+        erstes_alt = t.strip().split()[0] if t.strip() else ""
+        if d and d[0].islower() and d.split()[0] != erstes_alt:
+            d = d[0].upper() + d[1:]
         out.append(d)
     if unbekannt:
         return None, unbekannt
     neu = _doppel_weg("".join(out)).strip()
     neu = re.sub(r"\s{2,}", " ", neu)
-    if neu and neu[0].islower():
-        neu = neu[0].upper() + neu[1:]
     if not neu or neu == (v or "").strip():
         return None, []
     return neu[:60], []
