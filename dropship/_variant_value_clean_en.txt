@@ -18260,3 +18260,35 @@ gid://shopify/Product/15450709262721	Farbe	gid://shopify/ProductOptionValue/1204
 gid://shopify/Product/15450709262721	Farbe	gid://shopify/ProductOptionValue/12045216055681	Schwarz glänzend plus	Glossy Black plus	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15450728137089	Farbe	gid://shopify/ProductOptionValue/12045422395777	Weiss-Verpackung Stil	White-Package style	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
 gid://shopify/Product/15450728137089	Farbe	gid://shopify/ProductOptionValue/12045422461313	Blau-Verpackung Stil	Blue-Package style	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450828865921	Farbe	gid://shopify/ProductOptionValue/12046491124097	Blueorange Farbverlauf	Blueorange gradient	2026-09-23T20:38Z/reparatur-original:Blueorange
+gid://shopify/Product/15450828865921	Farbe	gid://shopify/ProductOptionValue/12046491255169	Blueorange Farbverlauf · 3 Stück	Blueorange gradient3pcs	2026-09-23T20:38Z/reparatur-original:Blueorange
+gid://shopify/Product/15450828964225	Farbe	gid://shopify/ProductOptionValue/12046494630273	Blau us	Blau US	2026-09-23T20:38Z/reparatur-korrigiert
+gid://shopify/Product/15450829095297	Farbe	gid://shopify/ProductOptionValue/12046497415553	Schwarz plus Rot-1 Stück	Black plus red-1pc	2026-09-23T20:38Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15450829226369	Farbe	gid://shopify/ProductOptionValue/12046499447169	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:38Z/reparatur-konsistenz
+gid://shopify/Product/15450829226369	Farbe	gid://shopify/ProductOptionValue/12046499578241	Gross Rot	Big red	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450829226369	Farbe	gid://shopify/ProductOptionValue/12046499611009	Leuchtendorange	Leuchtendes Orange	2026-09-23T20:38Z/reparatur-konsistenz
+gid://shopify/Product/15450829750657	Farbe	gid://shopify/ProductOptionValue/12046506426753	Rechts Silber	Right Silver	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450829750657	Farbe	gid://shopify/ProductOptionValue/12046506459521	Links Silber	Left Silver	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450829750657	Farbe	gid://shopify/ProductOptionValue/12046506492289	Links Gold	Left Gold	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450829750657	Farbe	gid://shopify/ProductOptionValue/12046506525057	Rechts Gold	Right Gold	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450830012801	Farbe	gid://shopify/ProductOptionValue/12046510096769	Leder Braun	Leather brown	2026-09-23T20:38Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450830012801	Farbe	gid://shopify/ProductOptionValue/12046510129537	Leder Schwarz	Leather black	2026-09-23T20:38Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450830012801	Farbe	gid://shopify/ProductOptionValue/12046510162305	Leder Kaffeebraun	Leather coffee	2026-09-23T20:38Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450830012801	Farbe	gid://shopify/ProductOptionValue/12046510227841	Leder Blau	Leather blue	2026-09-23T20:38Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450830471553	Farbe	gid://shopify/ProductOptionValue/12046515863937	Kabellos Schwarz-800x300 mm	Wireless black-800X300mm	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450830799233	Farbe	gid://shopify/ProductOptionValue/12046520156545	Nylon Bürste Kopf	Nylon brush head	2026-09-23T20:38Z/reparatur-original:satzbau:lehnwort-vor-nomen
+gid://shopify/Product/15450830799233	Farbe	gid://shopify/ProductOptionValue/12046520254849	Nylon Bürste Kopf · 3 Stück	Nylon brush head 3pcs	2026-09-23T20:38Z/reparatur-original:satzbau:lehnwort-vor-nomen
+gid://shopify/Product/15450830864769	Farbe	gid://shopify/ProductOptionValue/12046520549761	Gummi Pink	Rubber pink	2026-09-23T20:38Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450830995841	Farbe	gid://shopify/ProductOptionValue/12046521237889	11 Stück max	11pcs max	2026-09-23T20:38Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450831815041	Farbe	gid://shopify/ProductOptionValue/12046528971137	4 Farben Set	Set mit 4 Farben	2026-09-23T20:38Z/reparatur-korrigiert
+gid://shopify/Product/15450832077185	Farbe	gid://shopify/ProductOptionValue/12046530937217	USB Stecker in	USB plug in	2026-09-23T20:38Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450832109953	Farbe	gid://shopify/ProductOptionValue/12046531363201	L2-Doppelt Batterie	L2-Double battery	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450832109953	Farbe	gid://shopify/ProductOptionValue/12046531395969	L2-Einzeln Batterie	L2-Single battery	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450832109953	Farbe	gid://shopify/ProductOptionValue/12046531461505	P70-Doppelt Batterie	P70-Double battery	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450832109953	Farbe	gid://shopify/ProductOptionValue/12046531494273	P70-Einzeln Batterie	P70-Single battery	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450833158529	Farbe	gid://shopify/ProductOptionValue/12046544535937	3 Farben Set	Set mit 3 Farben	2026-09-23T20:38Z/reparatur-korrigiert
+gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046564491649	2 Stück Kopf	2pcs Head	2026-09-23T20:38Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046565114241	Schwarz Kopf Box Set	Black head box set	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046565245313	Weiss Kopf Box Set	White head box set	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046565278081	Blau Kopf Box Set	Blue head box set	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046565310849	Pink Kopf Box Set	Pink head box set	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
