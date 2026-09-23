@@ -640,3 +640,4 @@ gid://shopify/Product/15496335917441	2026-09-23T08:09Z	schon-DRAFT	16.90	34.99	D
 gid://shopify/Product/15501661208961	2026-09-23T08:09Z	schon-DRAFT	30.90	48.98	Boxing-Target für Fitness
 gid://shopify/Product/15448941134209	2026-09-23T08:09Z	schon-DRAFT	18.90	38.37	Boho Hängematte für Katzen
 gid://shopify/Product/15453794140545	2026-09-23T08:09Z	schon-DRAFT	39.90	57.92	Holz Obstkorb, naturbelassen
+gid://shopify/Product/15506296275329	2026-09-23T08:09Z	schon-DRAFT	20.90	38.88	Schaumstoff-Faszienrolle mit Massagestab
