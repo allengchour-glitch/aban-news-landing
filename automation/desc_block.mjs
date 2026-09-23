@@ -83,12 +83,12 @@ async function resolveToken() {
   process.exit(0);
 }
 function shortName(title) { return String(title).split(/\s[·–|]\s/)[0].trim(); }
-function matchLink(handles) { for (const [h, label] of PRIO) if (handles.includes(h)) return { handle: h, label }; return { handle: 'sommer', label: 'Mehr Sommer-Looks entdecken' }; }
+function matchLink(handles) { for (const [h, label] of PRIO) if (handles.includes(h)) return { handle: h, label }; return { handle: 'neu-eingetroffen', label: 'Mehr Neuheiten entdecken' }; }
 function block(name, link) {
-  return `<h4>✨ Styling &amp; Bemerkung</h4>`
-    + `<p>${name} ist ein vielseitiger Premium-Liebling für deinen Sommer 2026 – mühelos kombinierbar und zu einem fairen Preis.</p>`
-    + `<p><strong>Bemerkung:</strong> Beliebte Modelle &amp; Farben sind oft schnell vergriffen – sichere dir deinen Look rechtzeitig.</p>`
-    + `<p>👉 <strong><a href="https://luxestyle.ch/collections/${link.handle}">${link.label} →</a></strong></p>`;
+  // 23.09.2026: «Premium-Liebling für deinen Sommer 2026» + «oft schnell vergriffen» entfernt —
+  // Saisonfloskel und unbelegte Knappheit (UWG). Nur noch der Kollektionslink; Reiniger für den
+  // Bestand: automation/styling_floskel_wache.py.
+  return `<p>👉 <strong><a href="https://luxestyle.ch/collections/${link.handle}">${link.label} →</a></strong></p>`;
 }
 
 const Q = `query($handle:String!,$after:String){ collectionByHandle(handle:$handle){ products(first:25, after:$after){ pageInfo{hasNextPage endCursor} nodes{ id title descriptionHtml collections(first:25){ nodes{ handle } } } } } }`;
@@ -103,7 +103,7 @@ const M = `mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ userErro
     if (!conn) { console.error('Kollektion nicht gefunden:', COLLECTION, JSON.stringify(res).slice(0,300)); break; }
     for (const p of conn.nodes) {
       done++;
-      if ((p.descriptionHtml || '').includes(MARKER)) { skipped++; continue; }
+      if ((p.descriptionHtml || '').includes(MARKER) || (p.descriptionHtml || '').includes('<p>👉 <strong><a href="https://luxestyle.ch/collections/')) { skipped++; continue; }
       const handles = (p.collections?.nodes || []).map(c => c.handle);
       const link = matchLink(handles);
       const html = (p.descriptionHtml || '') + block(shortName(p.title), link);

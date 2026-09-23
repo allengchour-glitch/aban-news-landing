@@ -186,6 +186,24 @@ def kandidaten():
             if pid.isdigit():
                 out.append(pid)
         return out
+    if QUELLE == 'live':
+        # 23.09.2026 (Audit): Die Arbeitsliste hatte 93 Zeilen, live standen 228 Floskeln
+        # («Material: hochwertiges Material») — 5 von 9 besuchten Floskel-Seiten fehlten.
+        # Jetzt Phrasensuche am Objekt, Kanarienvogel gegen stilles Ignorieren.
+        kan = gql('query($q:String){productsCount(query:$q,limit:null){count}}',
+                  {'q': 'status:active AND "zzz kanarienvogel floskel xyz"'})
+        if ((kan.get('data') or {}).get('productsCount') or {}).get('count') != 0:
+            raise SystemExit('ABBRUCH: Phrasensuche wird ignoriert (Kanarienvogel)')
+        nach = None
+        while True:
+            j = gql('query($q:String,$n:String){products(first:250,after:$n,query:$q){'
+                    'pageInfo{hasNextPage endCursor} nodes{id}}}',
+                    {'q': 'status:active AND "hochwertiges Material"', 'n': nach})
+            pr = j['data']['products']
+            out += [n['id'].rsplit('/', 1)[-1] for n in pr['nodes']]
+            if not pr['pageInfo']['hasNextPage']:
+                return out
+            nach = pr['pageInfo']['endCursor']
     for ln in open(QUELLE):
         try: o = json.loads(ln)
         except Exception: continue

@@ -251,7 +251,7 @@ while true; do
     echo "$(date -u +%H:%M) Motoren nachgezogen (durch den Aufseher)"
   fi
 
-  for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit cj_varianten_wache coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix unpublizierte_finden lagerstand_hygiene; do
+  for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit cj_varianten_wache coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix versandschwelle_blog_kollektion google_sperrtags_durchsetzen unpublizierte_finden lagerstand_hygiene; do
     [ -f /tmp/$p.py ] || continue
     pgrep -f "$p.py" >/dev/null && continue
     # ABKÜHLZEIT: Reiniger, die durchlaufen und fertig werden, dürfen nicht alle 2 Minuten
@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -1527,12 +1527,23 @@ JSON
   # die Floskel trotzdem live. Eine Quittung sagt, was einmal geschrieben wurde, nicht was gilt.
   PDF="$REPO/dropship/_klassen/floskel-hochwertiges-material.txt"
   PDW=/tmp/pd_wahrheit.log
-  if [ -f "$REPO/automation/produktdetails_wahrheit.py" ] && [ -s "$PDF" ]; then
+  # ⚠️ 23.09.2026 (Audit): Hier stand «flock -n 9 || exit 0» — bei belegter Text-Sperre endete der
+  # Start still, und das Log zählte trotzdem 1'091× «gestartet» (letzter echter Lauf 22.09. 02:09).
+  # Jetzt: Sperre VORHER prüfen und ehrlich «wartet» loggen; Kandidaten LIVE (QUELLE=live) statt der
+  # veralteten Arbeitsliste (93 Zeilen, live 228); höchstens alle 4 h ein Lauf.
+  PDST=/tmp/_pd_wahrheit_start
+  if [ -f "$REPO/automation/produktdetails_wahrheit.py" ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$PDST" 2>/dev/null || echo 0) )) -gt 14400 ]; then
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/produktdetails_wahrheit.py"{n++} END{exit(n?0:1)}'; then
-      ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; MODUS=floskel CAP=200 LISTE=dropship/_klassen/floskel-hochwertiges-material.txt exec python3 automation/produktdetails_wahrheit.py" \
-          >> "$PDW" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) produktdetails_wahrheit (Floskel) gestartet"
+      if flock -n /tmp/lock_produkttext.lock true; then
+        touch "$PDST"
+        ( cd "$REPO" && setsid bash -c \
+            "exec 8>&-; exec 9>/tmp/lock_produkttext.lock; flock -w 60 9 || exit 0; MODUS=floskel CAP=300 QUELLE=live exec python3 automation/produktdetails_wahrheit.py" \
+            >> "$PDW" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) produktdetails_wahrheit (Floskel, live) gestartet"
+      else
+        echo "$(date -u +%H:%M) produktdetails_wahrheit wartet: Text-Lock belegt"
+      fi
     fi
   fi
   # PRODUKTDETAILS NACHMESSEN (08.09.2026): MELDET NUR — und laeuft bewusst VOR der

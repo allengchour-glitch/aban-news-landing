@@ -14,7 +14,7 @@ Links erzeugen.
 
 Meldet nur. Das Umhängen braucht eine Entscheidung: passender Ersatzartikel oder Kategorie?
 """
-import json, os, re, subprocess, sys, collections, time
+import json, os, re, subprocess, sys, collections, time, urllib.parse
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read().strip()
@@ -62,25 +62,60 @@ def gql(q, v=None):
         " das ist keine Messung, sondern ein Ausfall.")
 
 
+# 23.09.2026 (Audit): Der Wächter las pages/articles(first:100) ohne Weiterblättern, erkannte nur
+# relative Links ohne Kodierung und meldete 5 statt 27 tote Produktlinks. Jetzt: alle Seiten,
+# absolute + relative + /en/-Links, %-kodierte Handles, Kollektionen dazu, und ein Ziel mit
+# 301-Weiterleitung gilt nicht als tot.
+LINK = re.compile(r'href="(?:https?://(?:www\.)?luxestyle\.ch)?(?:/en)?/(products|collections)/([^"?#/]+)', re.I)
+
+
+def alle(typ):
+    nach = None
+    while True:
+        d = gql("query($n:String){ %s(first:100, after:$n){ pageInfo{hasNextPage endCursor}"
+                " nodes{ handle isPublished body } } }" % typ, {"n": nach})
+        c = d["data"][typ]
+        yield from c["nodes"]
+        if not c["pageInfo"]["hasNextPage"]:
+            return
+        nach = c["pageInfo"]["endCursor"]
+
+
+def weitergeleitet(pfad):
+    d = gql("query($q:String){ urlRedirects(first:5, query:$q){ nodes{ path target } } }",
+            {"q": f"path:{pfad}"})
+    return any(n["path"].lower() == pfad.lower() for n in d["data"]["urlRedirects"]["nodes"])
+
+
 def main():
-    prod = collections.defaultdict(list)
-    for typ, feld in (("pages", "pages"), ("articles", "articles")):
-        d = gql("query{ %s(first:100){ nodes{ handle isPublished body } } }" % typ)
-        for n in d.get("data", {}).get(feld, {}).get("nodes", []):
+    ziel = collections.defaultdict(list)
+    seiten = 0
+    for typ in ("pages", "articles"):
+        for n in alle(typ):
             if not n.get("isPublished"):
                 continue
-            for m in re.finditer(r'href="/products/([a-z0-9\-]+)"', n.get("body") or ""):
-                prod[m.group(1)].append(f"{typ[:-1]}/{n['handle']}")
+            seiten += 1
+            for m in LINK.finditer(n.get("body") or ""):
+                h = urllib.parse.unquote(m.group(2)).strip().lower()
+                if h and h != "all":
+                    ziel[(m.group(1).lower(), h)].append(f"{typ[:-1]}/{n['handle']}")
     tot = []
-    for h in prod:
-        d = gql("query($h:String!){ productByHandle(handle:$h){ status } }", {"h": h})
-        p = (d.get("data") or {}).get("productByHandle")
-        # Ein DRAFT ist für Besucherinnen dasselbe wie gelöscht: 404.
-        if not p or p.get("status") != "ACTIVE":
-            tot.append((h, p["status"] if p else "GELÖSCHT", sorted(set(prod[h]))))
-    for h, s, wo in tot:
-        print(f"  ⚠️ /products/{h} [{s}] ← {', '.join(wo)}")
-    print(f"FERTIG: {len(prod)} verlinkte Produkte geprüft, {len(tot)} tot.")
+    for (art, h), wo in ziel.items():
+        if art == "products":
+            d = gql("query($h:String!){ productByHandle(handle:$h){ status } }", {"h": h})
+            p = (d.get("data") or {}).get("productByHandle")
+            # Ein DRAFT ist für Besucherinnen dasselbe wie gelöscht: 404.
+            status = None if (p and p.get("status") == "ACTIVE") else (p["status"] if p else "GELÖSCHT")
+        else:
+            d = gql("query($h:String!){ collectionByHandle(handle:$h){ id } }", {"h": h})
+            status = None if (d.get("data") or {}).get("collectionByHandle") else "GELÖSCHT"
+        if status and weitergeleitet(f"/{art}/{h}"):
+            continue
+        if status:
+            tot.append((art, h, status, sorted(set(wo))))
+    for art, h, s_, wo in tot:
+        print(f"  ⚠️ /{art}/{h} [{s_}] ← {', '.join(wo)}")
+    print(f"FERTIG: {seiten} veröffentlichte Seiten/Artikel, {len(ziel)} verlinkte Ziele geprüft, {len(tot)} tot.")
     return 0
 
 
