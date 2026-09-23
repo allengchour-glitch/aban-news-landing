@@ -19358,3 +19358,19 @@ gid://shopify/Product/15523818373505	Farbe	gid://shopify/ProductOptionValue/1252
 gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501274497	2333 sand mesh 6KV	2333 Sand Mesh 6KV	2026-09-23T20:50Z/reparatur-konsistenz
 gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501307265	2333 Grau mesh 6KV	2333 Grau Mesh 6KV	2026-09-23T20:50Z/reparatur-korrigiert
 gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501372801	8865 sand mesh 10KV	8865 Sand Mesh 10KV	2026-09-23T20:50Z/reparatur-konsistenz
+gid://shopify/Product/15523863232897	Farbe	gid://shopify/ProductOptionValue/12529502355841	8865 mesh Grau	8865 Mesh Grau	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15523863232897	Farbe	gid://shopify/ProductOptionValue/12529502388609	8865 mesh Schwarz	8865 Mesh Schwarz	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524694917505	Farbe	gid://shopify/ProductOptionValue/12536217600385	Blau dick gestreift	Blue Thick Stripes	2026-09-23T20:50Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15524695933313	Farbe	gid://shopify/ProductOptionValue/12536226021761	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524859019649	Farbe	gid://shopify/ProductOptionValue/12539697201537	Weiss mit bedruckt Muster	White With Printed Pattern	2026-09-23T20:50Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540261958017	2128 1 Farbe	2128 Farbton 1	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540261990785	2128 2 Farben	2128 Farbton 2	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262023553	2128 3 Farben	2128 Farbton 3	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262056321	2128 4 Farben	2128 Farbton 4	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262089089	2128 5 Farben	2128 Farbton 5	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262121857	2128 6 Farben	2128 Farbton 6	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262154625	2128 7 Farben	2128 Farbton 7	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262187393	2128 8 Farben	2128 Farbton 8	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262220161	2128 9 Farben	2128 Farbton 9	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262252929	2128 11 Farben	2128 Farbton 11	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262285697	2128 13 Farben	2128 Farbton 13	2026-09-23T20:50Z/reparatur-korrigiert
