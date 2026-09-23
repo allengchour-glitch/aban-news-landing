@@ -178,7 +178,8 @@ const FAMILIEN = [
   ['diffuser', /diffuser|duftzerstäuber|luftbefeuchter/i],
   ['uhr', /(?<![a-zäöü])(?:armband|damen|herren|quarz|smart)?uhr\b|\bwatch\b/i],
   ['massagegeraet', /massage(?:gerät|geraet|pistole|kissen)|mikrostrom|\bems\b/i],
-  ['projektor', /projektor|beamer|sternenhimmel/i],
+  // 23.09.: nacktes «sternenhimmel» traf den «Hoodie mit Sternenhimmel-Muster» (Motiv, keine Ware) → nur als Lampe/Licht.
+  ['projektor', /projektor|beamer|sternenhimmel[\s-]*(?:lampe|licht|nachtlicht)/i],
   ['futter-haustier', /futterspender|futternapf|schnüffel|leckmatte/i],
   ['lautsprecher', /lautsprecher|speaker|soundbox/i],
   ['bikini', /bikini|badeanzug/i],

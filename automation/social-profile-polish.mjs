@@ -27,7 +27,7 @@ const ONLY = (process.argv[2] || '').toLowerCase();
 
 const TEXTS = {
   name_ig: 'LuxeStyle · Schweizer Online-Shop',
-  bio_ig: '🇨🇭 Schweizer Online-Shop\nMode · Schmuck · Uhren · dein eigenes Design 🎨\n📦 Weltweiter Versand · 30 Tage Rückgabe\n🎁 –10 % mit Code WELCOME10 👇',
+  bio_ig: '🇨🇭 Schweizer Online-Shop\nMode · Schmuck · Uhren · dein eigenes Design 🎨\n📦 Lieferung in die ganze Schweiz · 30 Tage Rückgabe\n🎁 –10 % mit Code WELCOME10 👇',
   link_ig: 'https://f.mtr.cool/XRISHONHRA',
   name_tt: 'LuxeStyle · Schweizer Shop',
   bio_tt: '🇨🇭 Schweizer Shop · Mode·Schmuck·Uhren\n–10 % Code WELCOME10 · luxestyle.ch',
