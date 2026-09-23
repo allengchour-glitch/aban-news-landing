@@ -209,8 +209,28 @@ for(const next of ready.slice(0, MAX)){
   console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
   if(DRY){ console.log(`   DRY_RUN: würde senden.`); postedCount++; continue; }
 
+  // 23.09.2026: Instagram ZUERST und mit einem Wiederholungsversuch — am 23.09. 02:08 scheiterte der IG-Container
+  // voruebergehend (9004/2207052 «Only photo or video…», dasselbe Bild 20 Min spaeter angenommen), FB wurde gepostet,
+  // die Zeile stand als «posted», Instagram bekam den Post nie. Betreiber-Reihenfolge: TikTok, Instagram, dann FB.
+  // Faellt IG zweimal, wird FB NICHT gepostet (kein Auseinanderlaufen der Kanaele); die Zeile bleibt «ready» und
+  // zaehlt die Fehlversuche in post_url («ig-fehler:N»); ab 3 Fehlversuchen → Status «ig-fehler» (Mensch entscheidet).
+  let igRes = wantIG ? await postIG(imageUrl, caption) : null;
+  if (wantIG && igRes === false) {
+    console.error('   IG-Fehler → ein Wiederholungsversuch in 20 s');
+    await new Promise(x => setTimeout(x, 20000));
+    igRes = await postIG(imageUrl, caption);
+  }
+  if (wantIG && igRes === false) {
+    const n = (parseInt((/^ig-fehler:(\d+)/.exec(next[idx.post_url] || '') || [])[1] || '0', 10)) + 1;
+    next[idx.post_url] = `ig-fehler:${n}`;
+    if (n >= 3) next[idx.status] = 'ig-fehler';
+    fs.writeFileSync(CSV, serialize(rows));
+    anyFail = true;
+    console.error(`   ❌ Instagram zweimal gescheitert (Versuch ${n}) — FB NICHT gepostet, Zeile bleibt ${next[idx.status]}.`);
+    continue;
+  }
   const results = await Promise.all([
-    wantIG?postIG(imageUrl,caption):Promise.resolve(null),
+    Promise.resolve(igRes),
     wantFB?postFB(imageUrl,caption):Promise.resolve(null),
     wantTH?postThreads(imageUrl,caption):Promise.resolve(null),
   ]);

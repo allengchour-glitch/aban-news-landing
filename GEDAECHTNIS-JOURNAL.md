@@ -309,6 +309,20 @@ NICHT übernehmen: «FESTE USER-ENTSCHEIDUNG … NIE WIEDER ÄNDERN» ohne prüf
 Gegenprüfung» mit PII-Regel. Alle vier — `wie_pruefen` neben jeder Behauptung: jede Index-Einzeile trägt ab jetzt den
 Ein-Zeilen-Prüfbefehl.
 
+**Nachtrag 20 (23.09. 02:30 UTC) — Bild-Post: Facebook ja, Instagram nein, Zeile «posted» — ein halber Post, der wie ein ganzer aussah.**
+Um 02:08 UTC (direkt nach dem stündlichen Container-Neustart) scheiterte der Instagram-Container des Bild-Posters mit
+9004/2207052 «Only photo or video can be accepted as media type»; Facebook nahm dasselbe Bild an, und weil EIN Kanal gelang,
+schrieb der Poster `posted` in die Zeile — Instagram hätte den Post nie bekommen. GEMESSEN: die Adresse antwortet 200
+image/jpeg (800×800, RGB, progressive), ein neuer Container 20 Minuten später wurde angenommen → vorübergehender Fehler beim
+Abruf durch Meta, kein Dateiproblem. Nachgeholt: Live-Abgleich (0 von 25 Captions), Container → FINISHED → publish
+`18144314986582937` (instagram.com/p/DdnNSHEDMja), Ledger `_posted_media.txt` + CSV `post_url` ergänzt.
+Fix in `social-autopost-meta.mjs`: Instagram ZUERST, bei Fehler ein Wiederholungsversuch nach 20 s; scheitert IG zweimal, wird
+FB NICHT gepostet (die Kanäle laufen sonst auseinander), die Zeile bleibt `ready`, `post_url` zählt «ig-fehler:N», ab 3 →
+Status `ig-fehler`. Reihenfolge = Betreiber-Prioriät (TikTok, Instagram, dann FB).
+**Lehren:** (a) «ein Kanal gelang» ist kein Erfolg für den anderen — ein Status je Zeile muss je Kanal wahr sein, sonst
+verschwindet der wichtigste Kanal still. (b) Direkt nach einem Container-Neustart sind Netzfehler wahrscheinlicher; ein
+einziger Versuch ist dort keine Messung. (c) Nachholen NUR nach Live-Abgleich, nie aus dem Ledger heraus.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
