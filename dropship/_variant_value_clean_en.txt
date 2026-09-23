@@ -17096,3 +17096,29 @@ gid://shopify/Product/15521231044993	Farbe	gid://shopify/ProductOptionValue/1250
 gid://shopify/Product/15521235992961	Farbe	gid://shopify/ProductOptionValue/12505373999489	Big Red Flower	Gross Rot geblümt	2026-09-23T19:43Z
 gid://shopify/Product/15521249067393	Farbe	gid://shopify/ProductOptionValue/12505482002817	White Long Style	Weiss lange Ausführung	2026-09-23T19:43Z
 gid://shopify/Product/15521249067393	Farbe	gid://shopify/ProductOptionValue/12505482035585	White Short	Weiss kurz	2026-09-23T19:43Z
+gid://shopify/Product/15521249624449	Farbe	gid://shopify/ProductOptionValue/12505484820865	Sky Blue-1X	Himmelblau-1X	2026-09-23T19:43Z
+gid://shopify/Product/15521249624449	Farbe	gid://shopify/ProductOptionValue/12505484853633	Sky Blue-2X	Himmelblau-2X	2026-09-23T19:43Z
+gid://shopify/Product/15521249624449	Farbe	gid://shopify/ProductOptionValue/12505484886401	Sky Blue-3X	Himmelblau-3X	2026-09-23T19:43Z
+gid://shopify/Product/15521249624449	Farbe	gid://shopify/ProductOptionValue/12505484919169	Sky Blue-4X	Himmelblau-4X	2026-09-23T19:43Z
+gid://shopify/Product/15521250443649	Farbe	gid://shopify/ProductOptionValue/12505489441153	Green Flowers	Grün geblümt	2026-09-23T19:43Z
+gid://shopify/Product/15521252835713	Farbe	gid://shopify/ProductOptionValue/12505502351745	Emerald Green	Smaragdgrün	2026-09-23T19:43Z
+gid://shopify/Product/15521255883137	Farbe	gid://shopify/ProductOptionValue/12505520537985	Grass Yellow	Grasgelb	2026-09-23T19:43Z
+gid://shopify/Product/15521255883137	Farbe	gid://shopify/ProductOptionValue/12505520701825	Caramel	Karamell	2026-09-23T19:43Z
+gid://shopify/Product/15521256866177	Farbe	gid://shopify/ProductOptionValue/12505525813633	Apricot Gray	Aprikose-Grau	2026-09-23T19:43Z
+gid://shopify/Product/15521256997249	Farbe	gid://shopify/ProductOptionValue/12505527648641	Apricot Gray	Aprikose-Grau	2026-09-23T19:43Z
+gid://shopify/Product/15521257095553	Farbe	gid://shopify/ProductOptionValue/12505528304001	Green Gray	Grün-Grau	2026-09-23T19:43Z
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295599489	Linen White	Leinen Weiss	2026-09-23T19:44Z
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295665025	Linen Blue	Leinen Blau	2026-09-23T19:44Z
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295697793	Linen Black	Leinen Schwarz	2026-09-23T19:44Z
+gid://shopify/Product/15521415233921	Farbe	gid://shopify/ProductOptionValue/12506554892673	5Color Set	5 Farben Set	2026-09-23T19:44Z
+gid://shopify/Product/15521417855361	Farbe	gid://shopify/ProductOptionValue/12506598080897	White-XXXXL	Weiss-XXXXL	2026-09-23T19:44Z
+gid://shopify/Product/15521417855361	Farbe	gid://shopify/ProductOptionValue/12506598146433	Black-XXXXL	Schwarz-XXXXL	2026-09-23T19:44Z
+gid://shopify/Product/15521696121217	Farbe	gid://shopify/ProductOptionValue/12508587753857	Bright black	Leuchtendschwarz	2026-09-23T19:44Z
+gid://shopify/Product/15521696121217	Farbe	gid://shopify/ProductOptionValue/12508587819393	Brown plaid	Braun kariert	2026-09-23T19:44Z
+gid://shopify/Product/15521696121217	Farbe	gid://shopify/ProductOptionValue/12508587852161	Bright apricot	Leuchtendaprikose	2026-09-23T19:44Z
+gid://shopify/Product/15521821229441	Farbe	gid://shopify/ProductOptionValue/12509410918785	Leopard Print	Leopardenmuster	2026-09-23T19:44Z
+gid://shopify/Product/15521822114177	Farbe	gid://shopify/ProductOptionValue/12509415342465	Caramel	Karamell	2026-09-23T19:44Z
+gid://shopify/Product/15521957413249	Farbe	gid://shopify/ProductOptionValue/12510446256513	Purple 12CM	Lila 12 cm	2026-09-23T19:44Z
+gid://shopify/Product/15521957413249	Farbe	gid://shopify/ProductOptionValue/12510446289281	Purple 10CM	Lila 10 cm	2026-09-23T19:44Z
+gid://shopify/Product/15521957413249	Farbe	gid://shopify/ProductOptionValue/12510446322049	Purple 8CM	Lila 8 cm	2026-09-23T19:44Z
+gid://shopify/Product/15521994015105	Farbe	gid://shopify/ProductOptionValue/12510691262849	Apricot White	Aprikose-Weiss	2026-09-23T19:44Z
