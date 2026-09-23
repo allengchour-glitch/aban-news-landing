@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:37 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:42 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **42'630**
-- Optionen mit englischen Werten (Kandidaten): 4'321
-- Optionen übersetzt: **2'435** · Werte übersetzt: **15'773**
+- Produkte gesehen: **45'622**
+- Optionen mit englischen Werten (Kandidaten): 4'496
+- Optionen übersetzt: **2'559** · Werte übersetzt: **16'288**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'864
+- Werte mit unbekanntem Wort (unverändert): 14'197
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 66
-- übersprungen «kollision-nach-uebersetzung»: 40
+- übersprungen «kleidungsstueck-im-wert»: 68
+- übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -93,6 +93,7 @@
 - `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
 - `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
 - `15506325275009` [Farbe] ethno-sandalen-mit-klettverschluss-und-dicker-624200: Brown And Pink → Braun-Pink; Red Color → Rot; Blue Color → Blau; Red Flower → Rot geblümt; Green Flower → Grün geblümt
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -151,5 +152,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 650, `light` 446, `color` 388, `shell` 162, `degrees` 159, `size` 145, `core` 137, `surface` 130, `powder` 123, `no` 111, `shoes` 109, `diamond` 108, `skin` 103, `to` 102, `high` 101, `three` 97, `belt` 93, `bag` 93, `code` 91, `french` 89, `rain` 88, `case` 87, `four` 87, `dark` 82, `opp` 81, `yards` 79, `buckle` 77, `rope` 75, `spring` 72, `bottom` 72, `dual` 71, `cloth` 71, `base` 70, `chain` 68, `petal` 68, `half` 67, `autumn` 66, `dinosaur` 66, `little` 65, `net` 63, `feet` 62, `strap` 62, `tea` 61, `mother` 61, `cherry` 60, `of` 60, `one` 57, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `rice` 51, `person` 51, `fold` 51, `lens` 50, `rainbow` 50, `background` 49, `ice` 49
+`inner` 650, `light` 446, `color` 397, `shell` 162, `degrees` 159, `size` 145, `core` 137, `surface` 130, `powder` 124, `no` 111, `diamond` 109, `shoes` 109, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 96, `bag` 93, `code` 91, `four` 90, `french` 89, `rain` 88, `case` 87, `dark` 82, `opp` 81, `yards` 79, `buckle` 77, `dinosaur` 76, `rope` 75, `bottom` 75, `spring` 72, `cloth` 72, `dual` 71, `chain` 70, `base` 70, `petal` 68, `half` 67, `autumn` 66, `little` 65, `net` 63, `feet` 62, `strap` 62, `tea` 61, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `one` 57, `plush` 56, `electric` 55, `night` 54, `face` 52, `line` 52, `rice` 52, `yarn` 52, `person` 51, `fold` 51, `background` 50, `lens` 50
 
