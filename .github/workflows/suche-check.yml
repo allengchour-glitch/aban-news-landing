@@ -18,6 +18,9 @@ on:
       - 'tools/build_search_index.py'
       - 'tools/build_suche_sprachen.py'
       - 'tools/such_*'
+      - 'js/angebote-plus.js'
+      - 'tools/angebote_*'
+      - 'tools/fixtures/angebote_*'
       - '.github/workflows/suche-check.yml'
   pull_request:
     paths:
@@ -28,6 +31,9 @@ on:
       - 'tools/build_search_index.py'
       - 'tools/build_suche_sprachen.py'
       - 'tools/such_*'
+      - 'js/angebote-plus.js'
+      - 'tools/angebote_*'
+      - 'tools/fixtures/angebote_*'
       - '.github/workflows/suche-check.yml'
   workflow_dispatch:
 
@@ -60,3 +66,6 @@ jobs:
 
       - name: Such-Qualitaet (Kontroll-Set)
         run: node tools/such_qualitaet.mjs --datei tools/such_fragen_kontrolle.json
+
+      - name: Angebote-Suche (Zubehoer nach hinten, typischer Preis nur wenn verlaesslich)
+        run: node tools/angebote_qualitaet.mjs
