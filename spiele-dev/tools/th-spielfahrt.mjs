@@ -55,17 +55,23 @@ console.log(`Fahrtmodell: vor=${modellA ? '(sin,cos)' : '-(sin,cos)'}  Lenken +1
 async function fahre(name, wps, alle = 40) {
   let L = await P('lage'), seit = 0, k = 0, schritte = 0
   for (const [tx, tz] of wps) {
-    let versuche = 0
-    while (versuche++ < 4000) {
+    let versuche = 0, still = 0
+    while (versuche++ < 1500) {
       const dx = tx - L.x, dz = tz - L.z, d = Math.hypot(dx, dz)
       if (d < 7) break
+      /* ⚠️ STECKT FEST (erster Lauf: 13 min an der Flughafenstrasse hinter einem
+         Verkehrswagen). Bewegt sich der Wagen 80 Takte lang kaum, wird der Wegpunkt
+         uebersprungen — das Bild davon ist ohnehin schon gemacht. */
+      if (still > 80) { console.log(`   steckt fest bei (${L.x.toFixed(0)}|${L.z.toFixed(0)}) — Wegpunkt uebersprungen`); break }
       const ziel = modellA ? Math.atan2(dx, dz) : Math.atan2(-dx, -dz)
       const e = wrap(ziel - L.rot)
       const lenk = Math.max(-1, Math.min(1, e * 2.2)) * lenkVz
       const gas = Math.abs(e) > 1.2 ? -0.35 : -1
       const vorher = L
       L = await P('fahr', [lenk, gas, 6]); schritte += 6
-      seit += Math.hypot(L.x - vorher.x, L.z - vorher.z)
+      const weg = Math.hypot(L.x - vorher.x, L.z - vorher.z)
+      still = weg < 0.05 ? still + 1 : 0
+      seit += weg
       if (seit >= alle) { seit = 0; await foto(`${name}-${++k}`); console.log(`   bei (${L.x.toFixed(0)}|${L.z.toFixed(0)}) ${L.kmh.toFixed(0)} km/h`) }
     }
   }

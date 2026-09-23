@@ -6939,7 +6939,13 @@ setTimeout(function baueGebaeude(){
        waeren es bei 22 Feldern mit je 9 Streifen fast 200 Zeichenaufrufe; so ist
        es EINER. Die Streifen sind zugleich die Pflugfurchen: jeder zweite ist
        um 6 % dunkler. */
-    (function felder(){
+    /* ⚠️ VERZOEGERT (Runde 92): Als sofortige IIFE liefen die Felder VOR dem Bauernhof-Viertel
+       (weiter unten in derselben Funktion) — `frei()` fragte `_viertelBaender()`, aber die
+       Farmstrasse stand noch nicht darin. Ein Feld lag darum ueber ihrem Westende, dann ein
+       anderes ueber dem Ostteil (Spielbild + th-autoboden 7/40). Mit Verzoegerung 0 laufen die
+       Felder nach ALLEN synchron gesetzten Vierteln und vor dem Waldsaum (1400 ms), der
+       `window._felder` liest. */
+    setTimeout(function felder(){
       var pos=[],col=[],idx=[],vb=0,rects=[];
       /* ⚠️ VERTEXFARBEN SIND LINEAR. Beim ersten Versuch standen hier die Werte,
          die ich als sRGB gemeint hatte — und alle 22 Felder rendeten cremeweiss.
@@ -7034,7 +7040,7 @@ setTimeout(function baueGebaeude(){
       fmesh.receiveShadow=true; fmesh.frustumCulled=false;
       fmesh.userData.nieAusblenden=1; scene.add(fmesh);
       window._felder=rects;      // der Waldsaum weicht ihnen aus
-    })();
+    },0);
     setTimeout(function waldsaum(){
       var kand=[];
       for(var i=0;i<2600;i++){
