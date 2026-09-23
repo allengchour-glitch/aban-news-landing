@@ -56,7 +56,17 @@ const SHOPTOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop
 if (!TOKEN && !DRY) { console.log('Kein METRICOOL_USER_TOKEN → No-op.'); process.exit(0); }
 if (!SHOPTOK) { console.log('Kein Shop-Token → No-op.'); process.exit(0); }
 
-const QUELLEN = ['hype-jetzt', 'bestseller', 'neu-eingetroffen', 'weihnachten-2026', 'halloween', 'geschenke-unter-50-franken'];
+// 23.09.2026 (Halloween-Auftritt): NUR_QUELLE=<handle> beschraenkt auf EINE Kollektion; dropship/_pinterest_vorrang.txt
+// (Zeilen «handle<TAB>JJJJ-MM-TT») stellt Saison-Kollektionen bis zum Datum NACH VORN — sonst kaeme Halloween erst dran,
+// wenn hype-jetzt/bestseller/neu erschoepft sind (5. Stelle), also nie vor dem 31.10. Die Datei ist eine Queue, kein Post.
+const VORRANG = 'dropship/_pinterest_vorrang.txt';
+const STANDARD_QUELLEN = ['hype-jetzt', 'bestseller', 'neu-eingetroffen', 'weihnachten-2026', 'halloween', 'geschenke-unter-50-franken'];
+const heute = new Date().toISOString().slice(0, 10);
+const vorrang = fs.existsSync(VORRANG) ? fs.readFileSync(VORRANG, 'utf8').split('\n').map(z => z.split('\t')).filter(([h, bis]) => h && (!bis || bis.trim() >= heute)).map(([h]) => h.trim()) : [];
+const QUELLEN = process.env.NUR_QUELLE ? [process.env.NUR_QUELLE] : [...vorrang, ...STANDARD_QUELLEN.filter(q => !vorrang.includes(q))];
+// Ein Produkt, das schon als IG-/TikTok-Karussell laeuft, wird nicht zusaetzlich gepinnt (Regel 10: nie dasselbe Produkt
+// zweimal, auch nicht plattformuebergreifend). Beide Ledger tragen «handle<TAB>slug<TAB>modus».
+const karussellHandles = new Set(['dropship/_ig_karussell.txt', 'dropship/_tiktok_karussell.txt'].flatMap(f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').map(z => z.split('\t')[0].trim()).filter(Boolean) : []));
 const SPERR = new Set(['nicht-bewerben', 'nur-onlineshop', '18plus', 'raucher', 'erotik', 'kostuem', 'kostüm', 'refurbished',
   'medizinprodukt-pruefen', 'marken-pruefen', 'lizenz-risiko', 'lizenz-nicht-bewerben', 'adult-nicht-bewerben', 'gmc-adult-pull',
   'messer-nicht-bewerben', 'smoke-zubehoer', 'waffe-pruefen', 'verdeckte-ueberwachung', 'google-policy-flag', 'arzneimittel-ohne-zulassung']);
@@ -172,7 +182,7 @@ for (const quelle of QUELLEN) {
     const grund = p.status !== 'ACTIVE' ? 'nicht aktiv' : !p.onlineStoreUrl ? 'nicht im Onlineshop' : !p.publishedOnPublication ? 'nicht im Pinterest-Kanal'
       : p.images.nodes.length < 2 ? '<2 Bilder' : parseFloat(p.priceRangeV2.minVariantPrice.amount) < 19 ? 'unter CHF 19'
       : tags.some(t => SPERR.has(t)) ? 'Sperr-Tag' : HEIL.test(p.title) ? 'Heilwort im Titel'
-      : gepinnt.has(p.handle) ? 'schon gepinnt' : postSeen(bild.url) ? 'Bild schon gepostet'
+      : gepinnt.has(p.handle) ? 'schon gepinnt' : karussellHandles.has(p.handle) ? 'schon als Karussell beworben' : postSeen(bild.url) ? 'Bild schon gepostet'
       : (bild.width && Math.min(bild.width, bild.height || bild.width) < 600) ? 'Bild zu klein'
       : kandidaten.some(k => k.handle === p.handle) ? 'doppelt in Quellen' : '';
     if (!grund) { kandidaten.push({ ...p, bild, quelle }); if (kandidaten.length >= ZIEL) break; }
@@ -180,6 +190,7 @@ for (const quelle of QUELLEN) {
   if (kandidaten.length >= ZIEL) break;
 }
 if (NUR_LISTE) { for (const k of kandidaten) console.log(k.handle); process.exit(0); }
+if (vorrang.length) log(`Vorrang-Quellen (${VORRANG}): ${vorrang.join(', ')}`);
 const kandidat = kandidaten[0];
 if (!kandidat) { console.log('Kein Pin-Kandidat (alle Quellen erschöpft oder gesperrt).'); process.exit(0); }
 

@@ -329,7 +329,34 @@ const prio = x => (x.tags.includes('hype-jetzt') ? 0 : x.tags.includes('neuheit'
 const _themen = lernen().themen || {};
 const tw = x => { const e = _themen[thema(x.title)]; return e && e.belastbar && typeof e.gewicht === 'number' ? e.gewicht : 1; };
 const ordnen = l => l.sort((a, b) => prio(a) - prio(b) || tw(b) - tw(a));
-const reihe = [...balanceByCategory(ordnen(kand.filter(x => x.idx)), x => x.title), ...balanceByCategory(ordnen(kand.filter(x => !x.idx)), x => x.title)];
+let reihe = [...balanceByCategory(ordnen(kand.filter(x => x.idx)), x => x.title), ...balanceByCategory(ordnen(kand.filter(x => !x.idx)), x => x.title)];
+// 23.09.2026 (Halloween-Auftritt): NUR_PID=<pid> auch im Normalmodus — bisher galt es nur fuer NEU_RENDERN. Das Produkt muss
+// dieselben Schwellen passieren wie jeder Kandidat (ACTIVE, ≥ CHF 14.90, ≥ 2 Bilder, kein Verbots-Titel, nie gepostet, nicht
+// im Ledger/CSV); steht es nicht im Index-/Scan-Fenster, wird es per SKU nachgeschlagen. Nichts wird erzwungen.
+// dropship/_reel_vorrang.txt (23.09.2026): Zeilen «pid<TAB>JJJJ-MM-TT» — diese pids kommen bis zum Datum ZUERST dran
+// (Saison, z. B. Halloween-Lampe bis 31.10.). Eine Queue fuer den Runner, kein Zwang: die Schwellen gelten weiter, und
+// steht die pid nicht unter den Kandidaten, passiert nichts. Anlass: der Download-Host war aus der Sitzung gesperrt (Proxy
+// 403), der Runner kommt alle 30 Min — er soll die vorgemerkte pid nicht unter 100 Kandidaten verlieren.
+try {
+  const heute = new Date().toISOString().slice(0, 10);
+  const vor = fs.readFileSync('dropship/_reel_vorrang.txt', 'utf8').split('\n').map(z => z.split('\t')).filter(([p, bis]) => p && (!bis || bis.trim() >= heute)).map(([p]) => p.trim());
+  if (vor.length) { const rang = p => { const i = vor.indexOf(p); return i < 0 ? 1e9 : i; }; reihe = [...reihe].sort((a, b) => rang(a.pid) - rang(b.pid)); console.log(`Reel-Vorrang: ${vor.join(', ')} → ${reihe.filter(x => vor.includes(x.pid)).length} unter den Kandidaten`); }
+} catch {}
+if (process.env.NUR_PID && process.env.NEU_RENDERN !== '1') {
+  const pid = process.env.NUR_PID;
+  reihe = reihe.filter(x => x.pid === pid);
+  if (!reihe.length && !gebaut.has(pid) && !keinVideo.has(pid) && !inCsv.has(pid)) {
+    const r = await gql(`query($q:String){ products(first:5, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q: `sku:CJ-${pid}` });
+    for (const n of r?.data?.products?.nodes || []) {
+      const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(n.variants.nodes[0]?.sku || ''); if (!m || m[1] !== pid) continue;
+      const price = parseFloat(n.variants.nodes[0]?.price || '0');
+      if (n.status !== 'ACTIVE' || price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title)) { console.log(`NUR_PID ${pid}: faellt an der Schwelle (${n.status}, CHF ${price}, ${n.mediaCount?.count} Bilder)`); continue; }
+      if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) { console.log(`NUR_PID ${pid}: Produkt schon gepostet`); continue; }
+      reihe.push({ pid, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [] });
+    }
+  }
+  console.log(`NUR_PID ${pid}: ${reihe.length ? 'Kandidat' : 'KEIN Kandidat (Ledger/CSV/Schwelle)'}`);
+}
 if (Object.keys(_themen).length) console.log(`Themen-Gewichte (Lernschleife): ${Object.entries(_themen).filter(([, e]) => e.belastbar).map(([k, e]) => `${k} ${e.gewicht}`).join(' · ')}`);
 console.log(`Kandidaten: ${kand.length} von ${gescannt} gescannt (Schwelle: ACTIVE, ≥CHF 14.90, ≥2 Bilder, nie gepostet)${DRY ? ' · DRY' : ''}`);
 
@@ -367,7 +394,9 @@ for (const k of reihe) {
   let vurl = '';
   try { vurl = await cjVideo(k.pid); } catch (e) { console.log('  ✗ ' + e.message + ' — Lauf endet'); break; }
   if (!vurl) { if (!DRY) fs.appendFileSync(KEINVIDEO, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\n`); continue; }
-  const th = thema(k.title), hook = hookFuer(th, k.pid, k.title), [z1, z2] = zeilen(k.title);
+  // HOOK=<Text> (23.09.2026, nur sinnvoll mit NUR_PID): Hook vorgeben, wenn die Themenliste nicht passt («Dein Zuhause,
+  // gemütlicher» auf einer Halloween-Lampe). Kein Lernwert — die Lernschleife kennt nur ihre eigenen Hooks.
+  const th = thema(k.title), hook = (process.env.NUR_PID && process.env.HOOK) || hookFuer(th, k.pid, k.title), [z1, z2] = zeilen(k.title);
   const benefit = nutzen(k.desc);
   const cap = caption(hook, k, benefit);
   const tags = hashtags(k.title, k.pid);

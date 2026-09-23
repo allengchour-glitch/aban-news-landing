@@ -185,6 +185,9 @@ const FAMILIEN = [
   ['bikini', /bikini|badeanzug/i],
   ['kerzenlicht', /kerzen(?:licht|wärmer|waermer)|flammen(?:lampe|licht)/i],
   ['augenbrauen', /augenbrauen|brow/i],
+  // 23.09. Halloween: Kürbis-LED-Lampe (Reel) und Leuchtende Kürbis-Laterne (Karussell) sind zwei Produkte, fuer die
+  // Betrachterin zweimal «leuchtender Kürbis» → eine Gruppe. Kissen/Korb/Schale in Kürbisform bleiben frei.
+  ['kuerbis-licht', /k[uü]rbis[\s-]*(?:led[\s-]*)?(?:laterne|lampe|licht)|pumpkin[\s-]*(?:lantern|lamp)/i],
   ['schmuck-ring', /\bringe?\b(?![\s-]*licht)/i],
   ['ohrringe', /ohrring|ohrstecker|creolen/i],
 ];
