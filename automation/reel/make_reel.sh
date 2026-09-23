@@ -3,8 +3,9 @@
 # Rueckwaerts-kompatibel: 5 Argumente = alte Form <src> <out> "<Titel>" "<Preis>" <musik>.
 #
 # ⚠️ Die statische ffmpeg-Fassung im Container hat KEIN drawtext (gemessen 22.09.). Text kommt deshalb
-# 23.09.: Querformat-Videos sitzen bei y=600 (unter Kopf+Hook, ueber dem Fussfeld 1180-1470) — TikToks Caption
-# deckt die unteren ~480 px, die Suchleiste die oberen ~200 px (Betreiber-Screenshot). Hochformat bleibt zentriert.
+# 23.09.: Das scharfe Video sitzt im Band 600-1180 (unter Kopf+Hook, ueber dem Fussfeld 1170-1440): Querformat
+# 1000 breit, quadratische/hochformatige Quellen auf 580 px Hoehe eingepasst (Probe: ein quadratisches CJ-Video
+# blieb zentriert und ragte ins Fussfeld). TikToks Caption deckt die unteren ~480 px, die Suchleiste die oberen ~200.
 # als PNG-Ebenen aus overlay.py (PIL) und wird per `overlay` eingeblendet: eine statische Ebene (Marke,
 # Titel auf zwei Zeilen, Preis, Fusszeile) und die HOOK-Ebene fuer die ersten 3,2 s.
 set -e
@@ -16,8 +17,8 @@ TMP="$(mktemp -d /tmp/reelov.XXXXXX)"; trap 'rm -rf "$TMP"' EXIT
 python3 "$HERE/overlay.py" "$TMP/static.png" "$TMP/hook.png" "$T1" "$T2" "$PRICE" "$HOOK"
 ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -i "$SRC" -i "$MUSIC" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "
 [0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.06[bg];
-[0:v]scale=1000:-2[fg];
-[bg][fg]overlay=(W-w)/2:if(lt(h\,1000)\,600\,(H-h)/2)[base];
+[0:v]scale=w='if(gt(ih/iw\,0.58)\,-2\,1000)':h='if(gt(ih/iw\,0.58)\,580\,-2)'[fg];
+[bg][fg]overlay=(W-w)/2:600+(580-h)/2[base];
 [base][2:v]overlay=0:0[v1];
 [v1][3:v]overlay=0:0:enable='lt(t,3.2)'[v]
 " -map "[v]" -map 1:a -af "afade=t=in:d=0.5,afade=t=out:st=$((DUR-1)):d=1,volume=0.8" \
