@@ -167,6 +167,33 @@ ERSATZ += [
     # «Physische Wirkweise zur Reduzierung von Schnarchen» ist eine Wirkzusage → Bauweise ohne Wirkung
     ("Physische Wirkweise zur Reduzierung von Schnarchen", "Mechanische Bauweise, die die Kiefer- und Kopfposition in der Nacht unterstützt"),
 ]
+# 23.09.2026 Vollscan (50'007 aktive): Substantiv-Formen «Linderung von …», «Schmerzlinderung», Schlaf/Angst — jede Zeile
+# von Hand am ganzen Satz gelesen (dropship/HEILVERSPRECHEN-NEUE-KLASSEN.md); Ersatz beschreibt Bauweise/Anwendung, keine Wirkung.
+ERSATZ += [
+    ("wurde speziell zur Linderung von Schmerzen im Bereich der Taille und des Uterus entwickelt", "wurde speziell für wohlige Wärme im Bereich von Taille und Unterleib entwickelt"),
+    ("Gezielte Schmerzlinderung durch Infrarot- und Rotlichttherapie", "Gezielte Wärme durch Infrarot- und Rotlicht"),
+    ("wurde speziell für die Linderung von Beschwerden im unteren Rückenbereich sowie zur Erwärmung des Unterleibs entwickelt", "wurde speziell zur Erwärmung des unteren Rückens und des Unterleibs entwickelt"),
+    ("das speziell für die Linderung von Beschwerden im Nacken- und Schulterbereich entwickelt wurde", "das speziell für die Massage im Nacken- und Schulterbereich entwickelt wurde"),
+    ("bietet portable Schmerzlinderung und Wärme", "bietet portable Wärme"),
+    ("Es ist ideal zur Entspannung und Linderung von Verspannungen im Nacken- und Rückenbereich", "Es ist ideal zur Entspannung im Nacken- und Rückenbereich"),
+    ("Es fördert eine bessere Haltung und kann präventiv sowie zur Linderung bestehender Beschwerden eingesetzt werden.", "Es unterstützt eine aufrechte Haltung im Alltag."),
+    ("Es ist ideal zur Verbesserung und Linderung von Schmerzen und Ermüdung in Schultern und Nacken sowie bei einem sogenannten Witwenbuckel.", "Es eignet sich für entspannende Massagen an Schultern und Nacken."),
+    ("zur Linderung von Beschwerden oder zur Steigerung des Wohlbefindens", "für kühlende oder wärmende Anwendungen und mehr Wohlbefinden"),
+    ("Niederfrequenz-Pulstechnologie zur Schmerzlinderung", "Niederfrequenz-Pulstechnologie für die Massage"),
+    ("Integrierte Wärmekompresse zur Linderung von Verspannungen", "Integrierte Wärmekompresse für mehr Entspannung"),
+    ("Ideal zur Linderung von Beschwerden oder einfach für zusätzlichen Komfort an kühleren Tagen.", "Ideal für zusätzlichen Komfort und Wärme an kühleren Tagen."),
+    ("Diese Smartwatch wurde speziell zur Verbesserung der Schlafqualität entwickelt und hilft dir, Schlaflosigkeit zu überwinden.", "Diese Smartwatch zeichnet deinen Schlaf auf und hilft dir, deine Schlafgewohnheiten im Blick zu behalten."),
+    ("Lindert Nacken- und Schulterschmerzen", "Stützt Nacken und Schultern"),
+    ("Ideal zur Linderung von Beschwerden nach dem Sport oder bei alltäglichen Belastungen.", "Ideal zum Kühlen oder Wärmen nach dem Sport oder bei alltäglichen Belastungen."),
+    ("Vibrationsmassage zur Linderung von Schmerzen und Muskelentspannung", "Vibrationsmassage für entspannte Muskeln"),
+    (", zur Förderung der Regeneration oder einfach zur Linderung von Verspannungen im Alltag.", " oder einfach für eine entspannte Pause im Alltag."),
+    ("Es ist ideal für den Einsatz nach dem Sport oder zur Linderung von Verspannungen im Alltag.", "Es ist ideal für den Einsatz nach dem Sport oder für eine entspannte Pause im Alltag."),
+    ("Lindert Angstzustände", "Sorgt für Abwechslung"),
+    ("Ideal zur Förderung der Durchblutung, Lymphdrainage und zur Linderung von Verspannungen.", "Ideal für eine wohltuende Massage von Körper und Haut."),
+    ("Ob zur Linderung kleinerer Beschwerden, zur Stärkung des Geistes oder zur Unterstützung der Raumluftreinigung – diese Öle sind eine Bereicherung für jede Hausapotheke.", "Ob im Diffusor, im Bad oder für ein angenehmes Raumklima – diese Duftöle sind eine schöne Ergänzung für dein Zuhause."),
+    ("Es ist ideal für entspannende Momente zu Hause oder zur Linderung von Verspannungen.", "Es ist ideal für entspannende Momente zu Hause."),
+    ("kann er zur Linderung von Beschwerden im Lendenbereich beitragen und unterstützt gleichzeitig", "sorgt er für wohlige Wärme im Lendenbereich und unterstützt gleichzeitig"),
+]
 ERSATZ.sort(key=lambda p: -len(p[0]))
 
 MUSTER = re.compile(
@@ -175,7 +202,13 @@ MUSTER = re.compile(
     r"|Cellulite (?:reduz|bekämpf|entfern)|(?:beim|das) Abnehmen|Blutdruck|Migräne|Arthr(?:ose|itis)|Rheuma"
     r"|Diabetes|Immunsystem|Entgift|\bDetox\b|Beschwerden (?:zu )?lindern|lindert Beschwerden"
     r"|Verdauung (?:zu )?fördern|Durchblutung (?:zu )?fördern|fördert die Durchblutung|Schmerztherapie"
-    r"|medizinisch(?:e|er|es)? (?:Wirkung|Behandlung|Zweck)|gegen \w*schmerzen", re.I)
+    r"|medizinisch(?:e|er|es)? (?:Wirkung|Behandlung|Zweck)|gegen \w*schmerzen"
+    # 23.09.2026 (Herbst-Pruefung + Vollscan 50'007): Substantiv-Formen und Atemwege/Schlaf fehlten — ein Diffusor
+    # «erleichtert das Atmen bei Erkältungen … lindert Husten und Nebenhöhlenverstopfung» lief am Waechter vorbei.
+    r"|Schmerzlinderung|Linderung (?:von |der )?(?:\w+ )?(?:Schmerz|Beschwerd|Verspannung)|lindert (?:Nacken|Rücken|Kopf|Muskel|Gelenk)\w*"
+    r"|erleichtert (?:das|die) Atm|Nebenhöhle|Nasennebenhöhle|lindert \w*[Hh]usten|\bbei (?:Erkältung|Grippe|Husten|Asthma)"
+    r"|Schlaflosigkeit (?:zu )?(?:überwinden|bekämpfen|lindern)|bei Schlafstörungen (?:zu )?helfen|gegen Schlafstörungen"
+    r"|beugt Kopfverformung|Depression|Angstzuständ", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
     r"|Ratgeber:|nicht für medizinische|selbst heilt|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
