@@ -242,3 +242,9 @@ grosses-ausbeinmesser-aus-geschmiedetem-stahl-613200	DRAFT	Handklinge — kein C
 vintage-kochmesser-set-605300	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017)
 samurai-schwert-deko-089216	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017)
 samurai-schwert-deko-089216	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017)
+robustes-tragbares-kochmesser-mit-scheide-395264	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017) · reaktiviert von Shopify Claude Connector App 2026-09-07T17:12:20Z
+alloy-outdoor-a-folding-knife-blade-removable-623400	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017) · reaktiviert von unbekannt (kein draft→active-Ereignis in den letzten 20)
+teeknife-aus-edelstahl-859584	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017) · reaktiviert von unbekannt (kein draft→active-Ereignis in den letzten 20)
+damast-boning-knife-aus-aus10-stahl-633216	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017) · reaktiviert von unbekannt (kein draft→active-Ereignis in den letzten 20)
+hackmesser-aus-edelstahl-mit-schutzhulle-046208	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017) · reaktiviert von unbekannt (kein draft→active-Ereignis in den letzten 20)
+geschmiedetes-kuchenmesser-mit-lederscheide-361024	DRAFT	Handklinge — kein CH-Versand (Hausregel, Klasse #1017) · reaktiviert von unbekannt (kein draft→active-Ereignis in den letzten 20)
