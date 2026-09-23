@@ -303,19 +303,50 @@ def f(pfad, groesse):
     return ImageFont.truetype(pfad, groesse)
 
 
+def _teile(w):
+    """«Kürbis-Süssigkeitenschale» → ['Kürbis-', 'Süssigkeitenschale']: der Bindestrich bleibt am Zeilenende."""
+    kern = w.strip("-")
+    if "-" not in kern:
+        return [w]
+    st = w.split("-")
+    return [s + "-" for s in st[:-1] if s] + [st[-1]]
+
+
 def umbrechen(d, text, schrift, breite):
-    worte, zeilen, zeile = text.split(), [], ""
-    for w in worte:
+    """Greedy-Umbruch an Leerzeichen; ein Wort, das allein nicht in die Breite passt, wird am Bindestrich
+    gebrochen (Prüfer 23.09.: «Kürbis-Süssigkeitenschale» lief auf dem CTA-Slide von x=0 bis x=1079 über den
+    Goldrahmen hinaus, weil nur an Leerzeichen gebrochen wurde). Passt auch ein Teil nicht, bleibt die Zeile
+    breiter als `breite` — der Aufrufer prüft das mit passt_breite() und verkleinert die Schrift, nie abschneiden."""
+    zeilen, zeile = [], ""
+    passt = lambda s: d.textlength(s, font=schrift) <= breite
+    for w in text.split():
         probe = (zeile + " " + w).strip()
-        if d.textlength(probe, font=schrift) <= breite:
+        if passt(probe):
             zeile = probe
-        else:
+            continue
+        teile = _teile(w)
+        if len(teile) == 1 or passt(w):            # ganzes Wort auf die naechste Zeile, wenn es dort Platz hat
             if zeile:
                 zeilen.append(zeile)
             zeile = w
+            continue
+        klebt = False                              # nach einem «Kürbis-» folgt der Rest ohne Leerzeichen
+        for t in teile:
+            probe = (zeile + t) if klebt else (zeile + " " + t).strip()
+            if passt(probe):
+                zeile = probe
+            else:
+                if zeile:
+                    zeilen.append(zeile)
+                zeile = t
+            klebt = True
     if zeile:
         zeilen.append(zeile)
     return zeilen
+
+
+def passt_breite(d, zeilen, schrift, breite):
+    return all(d.textlength(z, font=schrift) <= breite for z in zeilen)
 
 
 def grund(bildpfad, oben=0.20, hoehe=0.60):
@@ -405,8 +436,13 @@ def slide_produkt(bildpfad, titel, preis, nummer, gesamt, zeile=None):
     img = scrim(grund(bildpfad, oben=PROD_OBEN, hoehe=PROD_HOEHE))
     d = ImageDraw.Draw(img)
     marke(d, nummer, gesamt)
-    schrift = f(SERIF, 60)
-    zeilen = umbrechen(d, titel, schrift, B - 130)[:3]
+    groesse = 60
+    while True:                                    # Prüfer 23.09.: dieselbe Breiten-Wache wie auf dem CTA-Slide
+        schrift = f(SERIF, groesse)
+        zeilen = umbrechen(d, titel, schrift, B - 130)[:3]
+        if passt_breite(d, zeilen, schrift, B - 130) or groesse <= 36:
+            break
+        groesse -= 4
     y = H - PROD_UNTEN - len(zeilen) * 74
     for z in zeilen:
         d.text((66, y + 3), z, font=schrift, fill=(0, 0, 0))
@@ -434,7 +470,11 @@ def slide_cta(titelzeile):
     while True:
         schrift = f(SERIF, groesse)
         zeilen = umbrechen(d, titelzeile, schrift, B - 220)
-        if y0 + len(zeilen) * (groesse + 18) + 330 + 60 <= H or groesse <= 48:
+        hoehe_ok = y0 + len(zeilen) * (groesse + 18) + 330 + 60 <= H
+        # Prüfer 23.09. 22:58: BREITE zuerst — kein Wortteil darf ueber den Goldrahmen (x 55/1025) laufen. Passt ein Teil
+        # auch nach dem Bindestrich-Umbruch nicht in B-220, schrumpft die Schrift weiter (bis 30 px) statt abzuschneiden.
+        breite_ok = passt_breite(d, zeilen, schrift, B - 220)
+        if (breite_ok and (hoehe_ok or groesse <= 48)) or groesse <= 30:
             break
         groesse -= 6
     y = y0

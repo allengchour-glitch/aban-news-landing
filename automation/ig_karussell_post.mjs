@@ -21,7 +21,7 @@
  */
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie } from './post_guard.mjs';
 
 const V = 'v21.0';
 const IG_ID = process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id', 'utf8').trim() : '');
@@ -86,6 +86,19 @@ const writeLedger = () => fs.writeFileSync(CSV, rows.map(r => r.map(esc).join(',
 
 // ---------------------------------------------------------------- Kandidat
 const capSig = s => (s || '').toLowerCase().replace(/[#@].*/s, '').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim().slice(0, 45);
+// 23.09. 22:58 (Prüfer): familieKuerzlich()/familieMerken() liefen NUR bei modus=produkt — das Halloween-Top-Set (Slide
+// «Leuchtende Kürbis-Laterne» = Familie kuerbis-licht) hielt deshalb keinen 72-h-Abstand zum Reel der Kürbis-LED-Lampe und
+// merkte sich keine Familie. Jetzt je WARE: Produkt-Set → Caption; Top-Set → jede nummerierte Caption-Zeile
+// («4. Leuchtende Kürbis-Laterne · CHF 15.90») plus jedes Handle, gelesen wie post_guard.warenFamilie() Text liest.
+// EINE Familie mit Post in den letzten 72 h haelt das ganze Set (bleibt ready) — die Betrachterin sieht das Karussell als
+// Ganzes, ein leuchtender Kürbis auf Slide 5 nach dem Kürbis-Reel ist die Klasse «pinke Steine 2mal».
+function familienDesSets(r, caption, handles) {   // Map familie → Text, der sie ergab (fuer familieKuerzlich/familieMerken)
+  const texte = get(r, 'modus') === 'produkt' ? [caption]
+    : [...caption.split('\n').filter(z => /^\s*\d+\.\s/.test(z)), ...handles];
+  const m = new Map();
+  for (const t of texte) { const f = warenFamilie(t); if (f && !m.has(f)) m.set(f, t); }
+  return m;
+}
 const bereit = rows.slice(1).filter(r => get(r, 'status') === 'ready' && (!process.env.NUR_SLUG || get(r, 'slug') === process.env.NUR_SLUG));
 // Produkt-Sets zuerst (ein Produkt, klare Wache), Top-Sets danach
 bereit.sort((a, b) => (get(a, 'modus') === 'produkt' ? 0 : 1) - (get(b, 'modus') === 'produkt' ? 0 : 1));
@@ -135,8 +148,9 @@ for (const r of bereit) {
   // Produkt-Sperre (plattformuebergreifend, nach WARE)
   const schon = handles.filter(h => produktGepostet(caption, h));
   if (get(r, 'modus') === 'produkt' ? schon.length : schon.length * 2 > handles.length) { console.log(`   ⛔ Ware schon beworben (${schon.join(',')}) → posted-dup-produkt: ${slug}`); if (!DRY) { setzen(r, 'status', 'posted-dup-produkt'); writeLedger(); } continue; }
-  // 23.09. Neunte Schicht: Produkt-Set derselben Warengruppe wie ein Post der letzten 72 h → warten (bleibt ready)
-  if (get(r, 'modus') === 'produkt') { const fk = familieKuerzlich(caption); if (fk) { console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${slug}`); continue; } }
+  // 23.09. Neunte Schicht: Set (Produkt UND Top, je Ware) derselben Warengruppe wie ein Post der letzten 72 h → warten (bleibt ready)
+  { const fk = [...familienDesSets(r, caption, handles).values()].map(t => familieKuerzlich(t)).find(Boolean);
+    if (fk) { console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${slug}`); continue; } }
   // Produkt live? (Produkt-Sets: der Slug ist das Handle)
   shopUrl = '';                                  // Top-Sets (mehrere Produkte): FB verlinkt die Startseite
   if (get(r, 'modus') === 'produkt') {
@@ -181,7 +195,7 @@ try {
   if (!igId) throw new Error('IG-Karussell nicht veroeffentlicht (12 Versuche)');
   for (const b of bilder) postMark(b);                       // Ledger SOFORT nach IG
   for (const h of handles) produktMerken(caption, h);
-  if (get(cand, 'modus') === 'produkt') familieMerken(caption, 'karussell');
+  for (const t of familienDesSets(cand, caption, handles).values()) familieMerken(t, 'karussell');   // auch Top-Sets, je Familie einmal
   setzen(cand, 'status', 'posted-ig'); setzen(cand, 'post_url', `ig:${igId}`); writeLedger();
   console.log(`✅ IG-Karussell veroeffentlicht ${igId}`);
 } catch (e) {

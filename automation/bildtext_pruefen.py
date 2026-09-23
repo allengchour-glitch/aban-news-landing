@@ -58,6 +58,27 @@ SICHERHEIT = 60
 WORT = re.compile(r'^[A-Za-zÄÖÜäöüß]{3,}$')
 
 
+# 23.09.2026 22:58 (Prüfer, Pinterest): das Quellbild «LIGHT-UP AIRBLOWN INFLATABLES INDOOR & OUTDOOR USE» (1441×1575) liest die
+# 1×-Lesart mit nur 3 sicheren Wörtern — UNTER der Schwelle 4 — die 2×-Lesart mit 4; alle zehn sauberen Pin-Quellbilder lesen
+# 0 bei 1× UND 2×. ZWEILESARTEN=1 nimmt das Maximum aus 1× und 2× (längste Kante ≤ 3200 px). Opt-in, damit die anderen
+# Wächter (Queue-Reiniger, Bild-Backfill) ihre geeichte 1×-Lesart behalten. Nutzer: bild_formate.py, metricool_pinterest_pin.mjs.
+ZWEILESARTEN = os.environ.get("ZWEILESARTEN") == "1"
+
+
+def _lese(g):
+    d = pytesseract.image_to_data(g, output_type=pytesseract.Output.DICT)
+    raus = []
+    for wort, konf in zip(d["text"], d["conf"]):
+        try:
+            k = float(konf)
+        except (TypeError, ValueError):
+            continue
+        w = (wort or "").strip()
+        if k >= SICHERHEIT and WORT.match(w):
+            raus.append(w)
+    return raus
+
+
 def woerter(bild):
     """Gibt die sicher gelesenen Wörter zurück (mind. 3 Buchstaben)."""
     if isinstance(bild, (bytes, bytearray)):
@@ -69,16 +90,13 @@ def woerter(bild):
     if max(bild.size) < 900:
         f = 900 / max(bild.size)
         bild = bild.resize((int(bild.width * f), int(bild.height * f)))
-    d = pytesseract.image_to_data(bild, output_type=pytesseract.Output.DICT)
-    raus = []
-    for wort, konf in zip(d["text"], d["conf"]):
-        try:
-            k = float(konf)
-        except (TypeError, ValueError):
-            continue
-        w = (wort or "").strip()
-        if k >= SICHERHEIT and WORT.match(w):
-            raus.append(w)
+    raus = _lese(bild)
+    if ZWEILESARTEN:
+        s = min(2.0, 3200 / max(bild.size))
+        if s > 1.05:
+            zwei = _lese(bild.resize((int(bild.width * s), int(bild.height * s)), Image.LANCZOS))
+            if len(zwei) > len(raus):
+                raus = zwei
     return raus
 
 
