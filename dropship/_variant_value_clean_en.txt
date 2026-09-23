@@ -2489,3 +2489,36 @@ gid://shopify/Product/15448873402753	Farbe	gid://shopify/ProductOptionValue/1229
 gid://shopify/Product/15448873402753	Farbe	gid://shopify/ProductOptionValue/12296571519361	Classic	Klassisch	2026-09-23T18:08Z
 gid://shopify/Product/15448873468289	Farbe	gid://shopify/ProductOptionValue/12310057025921	Rechargeable White	Wiederaufladbar Weiss	2026-09-23T18:08Z
 gid://shopify/Product/15448873468289	Farbe	gid://shopify/ProductOptionValue/12310057058689	Rechargeable Black	Wiederaufladbar Schwarz	2026-09-23T18:08Z
+gid://shopify/Product/15448873533825	Farbe	gid://shopify/ProductOptionValue/12310057156993	Black-8	Schwarz-8	2026-09-23T18:08Z
+gid://shopify/Product/15448873533825	Farbe	gid://shopify/ProductOptionValue/12310057189761	Black-9	Schwarz-9	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573419905	1.8x11mm-1000pcs	1.8x11 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573452673	1.8x12mm-1000pcs	1.8x12 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573485441	1.8x13mm-1000pcs	1.8x13 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573518209	1.8x14mm-1000pcs	1.8x14 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573550977	1.8x15mm-1000pcs	1.8x15 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573583745	1.8x16mm-1000pcs	1.8x16 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573616513	1.8x17mm-1000pcs	1.8x17 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573649281	1.8x18mm-1000pcs	1.8x18 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573682049	1.8x19mm-1000pcs	1.8x19 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573714817	1.8x20mm-1000pcs	1.8x20 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573747585	1.8x21mm-1000pcs	1.8x21 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573780353	1.8x22mm-1000pcs	1.8x22 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573813121	1.8x23mm-1000pcs	1.8x23 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573845889	1.8x24mm-1000pcs	1.8x24 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573878657	1.8x25mm-1000pcs	1.8x25 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573911425	1.8x26mm-1000pcs	1.8x26 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874615169	Farbe	gid://shopify/ProductOptionValue/12296573944193	1.8x8mm-1000pcs	1.8x8 mm-1000 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874779009	Farbe	gid://shopify/ProductOptionValue/12296573976961	16mm-100pcs	16 mm-100 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874779009	Farbe	gid://shopify/ProductOptionValue/12296574009729	18mm-100pcs	18 mm-100 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874779009	Farbe	gid://shopify/ProductOptionValue/12296574042497	20mm-100pcs	20 mm-100 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874779009	Farbe	gid://shopify/ProductOptionValue/12296574075265	22mm-100pcs	22 mm-100 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448874779009	Farbe	gid://shopify/ProductOptionValue/12296574108033	24mm-100pcs	24 mm-100 Stück	2026-09-23T18:08Z
+gid://shopify/Product/15448875663745	Farbe	gid://shopify/ProductOptionValue/12296578236801	38 Or 40 Or 41mm Gold	38 oder 40 oder 41 mm Gold	2026-09-23T18:08Z
+gid://shopify/Product/15448875663745	Farbe	gid://shopify/ProductOptionValue/12296578269569	38 Or 40 Or 41mm Silver	38 oder 40 oder 41 mm Silber	2026-09-23T18:08Z
+gid://shopify/Product/15448875663745	Farbe	gid://shopify/ProductOptionValue/12296578335105	42 Or 44 Or 45 Or 49mm Gold	42 oder 44 oder 45 oder 49 mm Gold	2026-09-23T18:08Z
+gid://shopify/Product/15448875663745	Farbe	gid://shopify/ProductOptionValue/12296578367873	42 Or 44 Or 45 Or 49mm Silver	42 oder 44 oder 45 oder 49 mm Silber	2026-09-23T18:08Z
+gid://shopify/Product/15448875827585	Farbe	gid://shopify/ProductOptionValue/12296578728321	Silver-38 40 41MM	Silber-38 40 41 mm	2026-09-23T18:08Z
+gid://shopify/Product/15448875827585	Farbe	gid://shopify/ProductOptionValue/12296578761089	Silver-42 44 45 49mm	Silber-42 44 45 49 mm	2026-09-23T18:08Z
+gid://shopify/Product/15448875827585	Farbe	gid://shopify/ProductOptionValue/12296578826625	Black-38 40 41MM	Schwarz-38 40 41 mm	2026-09-23T18:08Z
+gid://shopify/Product/15448875827585	Farbe	gid://shopify/ProductOptionValue/12296578859393	Black-42 44 45 49mm	Schwarz-42 44 45 49 mm	2026-09-23T18:08Z
+gid://shopify/Product/15448876876161	Farbe	gid://shopify/ProductOptionValue/12296582660481	Silver rose gold	Silber-Roségold	2026-09-23T18:08Z
