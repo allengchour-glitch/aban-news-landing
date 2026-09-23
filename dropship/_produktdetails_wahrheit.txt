@@ -68129,3 +68129,4 @@
 15427280404865	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Fondue»
 15427280470401	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gaell»
 15427280568705	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gopfertami»
+15427280634241	farbe-floskel-entfernt,material-floskel-entfernt	T-Shirt «Gruezi»
