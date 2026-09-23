@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -388,6 +388,9 @@ while true; do
     # Phrase), Produkte in Tagesscheiben; steht VOR produkttexte_du_form, damit es nach einem Neustart den
     # Text-Lock zuerst bekommt — der Du-Form-Lauf haelt ihn sonst die ganze Stunde.
     if [ "$L" = liechtenstein_raus ]; then EXP="CAP=1500"; fi
+    # 23.09. abends: google_titel_reparatur ist ohne SCHARF=1 ein Trockenlauf (schreibt nichts, meldet nur) — als
+    # Tageswächter braucht er den Schalter; die Text-Sperre holt er sich selbst je Produkt (kurze Wartezeit statt Nie).
+    if [ "$L" = google_titel_reparatur ]; then EXP="SCHARF=1 TEXT_WARTE=30 TEXT_WARTE_NACH=10"; fi
     # verlustbringer (23.09.2026, Gegenpruefung 22.09.): draftet Ware, bei der JEDE Variante auch mit CHF 7
     # Versanderloes verliert (Kinder-Autositz 14.90/EK 25.07 und Maskenset 16.90/EK 49.32 standen in 6 Kanaelen).
     # Standard des Skripts ist Trockenlauf — scharf NUR ueber SCHARF=1. Liest /tmp/kost28.jsonl der Kosten-Kette
