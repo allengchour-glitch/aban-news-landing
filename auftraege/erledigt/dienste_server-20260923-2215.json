@@ -1,0 +1,8 @@
+{
+  "id": "dienste_server-20260923-2215",
+  "typ": "wartung",
+  "aktion": "dienste_server",
+  "warum": "Betreiber 23.09. «für volle automation»: feste Wartungsaktion nach Pruefer-Runde (19 Befunde eingearbeitet, 13 Gegenproben gruen) — Server-Platte/Dienste/Crontab messen, ohne dass der Betreiber tippt",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}

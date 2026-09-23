@@ -3,6 +3,18 @@
   "typ": "wartung",
   "aktion": "crontab_luxe",
   "warum": "Betreiber 23.09. «für volle automation»: feste Wartungsaktion nach Pruefer-Runde (19 Befunde eingearbeitet, 13 Gegenproben gruen) — Server-Platte/Dienste/Crontab messen, ohne dass der Betreiber tippt",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-23T22:02:43.191Z",
+  "dauer_s": 0,
+  "ergebnis": {
+    "aktion": "crontab_luxe",
+    "was": "root-crontab lesen — nur Zeitfelder und Pfade der Zeilen zu /opt, luxe, abannews, jarvis",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "crontab -l",
+        "ausgabe": "0 4 * * * /opt/luxe/repo/automation/vps/run-api-jobs.sh … /opt/luxe/api-jobs.log …\n*/10 * * * * … /opt/luxe/repo … /opt/luxe/vps-poll.log …"
+      }
+    ]
+  }
 }
