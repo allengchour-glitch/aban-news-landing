@@ -1,0 +1,7 @@
+{
+  "id": "tiktok-statistik-erstlauf",
+  "typ": "skript",
+  "skript": "tiktok_statistik_lesen.mjs",
+  "anzahl": 10,
+  "warum": "ENTWURF (23.09.2026, Paket tiktok-agent) — der Hauptagent entscheidet, ob er nach auftraege/offen/ kommt. Rein lesend, KEIN Klick: liest @luxestyle.ch oeffentlich (Profil, Creator-Einbettung, 10 Videoseiten) und schreibt nur auftraege/ergebnis/tiktok-statistik-erstlauf.json. Zweck: (1) dieselbe Messung aus einem zweiten Netz als Gegenprobe zur Cloud-Messung vom 23.09. 18:25 UTC (10 Videos, 5'005 Aufrufe, Median 429, 25 Likes, 1 Kommentar; Befunde: 3x Link-in-Bio ohne Bio-Link, 4x Versand ab CHF 65 in Juni/Juli-Posts, 7x Upload 720x1280); (2) Anmeldestand des Agenten-Profils bei TikTok aus zwei Signalen (Server-HTML app-context.user + Anmelden-Knopf) — drei Laeufe 17./18.09. und der Politur-Screenshot vom 23.09. sagen NICHT angemeldet. Im Container durchgespielt: Agentenpfad 43.8 s, 12 Dokumentabrufe, 0 Probleme; --selbsttest 26/26. Erwartete Dauer auf dem Server unter 2 Minuten (TimeoutStartSec 900)."
+}
