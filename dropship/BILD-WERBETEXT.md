@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:56:08Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:58:42Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **1337** in 382 Produkten
-- Treffer (≥ 4 Wörter): **55** in 52 Produkten
+- Medien geprüft: **1424** in 407 Produkten
+- Treffer (≥ 4 Wörter): **62** in 59 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -14,8 +14,10 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Smart Detector Kamera-Finder `15477388476801` | [70319928377729](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2650e5c6-8afb-4031-ab0a-28cf15e78253_trans.jpg) | 60 | Upgraded Camera Intelligent Detector Pinhole Camera Infrared Night | offen |
 | Velo-Scheinwerfer mit Welleninduktion `15448957223297` | [69862628753793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ec0a3dc-5ff7-4919-9833-ca59f27106b0_trans.jpg) | 34 | Smart gesture sensing Wave sensor lighting switch When | offen |
 | Multifunktionaler Freihand-Reinigungshelfer `15477130985857` | [70317322109313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7dc5f0e-a74d-4c52-9acd-04c9cb1a7001_trans.jpg) | 25 | tension adjustment button upgraded panel with scraper upgrad | offen |
+| Magnetische Camellien-Wimpern `15453769761153` | [69926690062721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/686ded11-da93-44d1-89b2-a78890225659_trans.jpg) | 24 | The arc upgraded and the magnetic strip widened | offen |
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
 | Pinguin-Tuch zum Abwischen `15453791093121` | [69926763987329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2591efa5-f7fd-4ddc-a6e2-fb67637ca6b7_trans.jpg) | 21 | Not easy shed hair Caring for the quality | offen |
+| Magnetische falsche Wimpern mit Seifenhalter `15453769138561` | [69926689341825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/139c7f2f-5dd6-4bde-8996-51550972abd7_fine.jpg) | 19 | Added magnetic groove Adsorbed eyelashes Upward curved clip | offen |
 | Kamera-Drohne mit Hindernis-Vermeidung `15453744562561` | [69926295339393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20c126ef-1fd7-47ba-87da-dfe5ce978467.jpg) | 17 | Upgrade brushless motor for more Brushless power stable | offen |
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
 | Plüschspielzeug mit Flattergeräusch `15453792174465` | [69926765461889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4b69f4b4-890b-47aa-89a2-7f70b5e1dd60_trans.jpg) | 15 | Cats are born hunters Highly simulated appearance suitable | offen |
@@ -29,6 +31,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Intelligentes Bremslicht für Velos `15448957976961` | [69862641762689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2fb4a32-5161-4001-9089-69587e78a7ab_trans.jpg) | 12 | waterproof Good waterproof level for daily need worry | offen |
 | Bauchstützgürtel für Schwangere `15453760717185` | [69926628524417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9f9382e0-2080-4051-b7a5-441a700d8875_fine.jpg) | 12 | Ergonomic curve design Ring design fits better Soft | offen |
 | Smart-Armbanduhr mit Herzfrequenz- und Blutsauer `15453778411905` | [69926716244353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a7c63c5-36db-464a-a086-26ad34f0f8c8_trans.jpg) | 11 | GPS Outdoor sports smart watch Smart Watch Fearless | offen |
+| Smarte Helmleuchte fürs Radfahren `15453769466241` | [69926689702273](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fdfc0dfa-7ab7-41f0-b10e-03b749c90bea.jpg) | 11 | Breathable DESIGN and ventilated and comfortable summer The | offen |
 | Grillabdeckung aus Oxford-Gewebe `15448959910273` | [69862680527233](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/09436e7d-1a60-47bf-8225-e236c3f372d9.jpg) | 10 | Suitable for most machines with width Please ensure | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [69926292881793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c946bda-8782-4759-9d82-90a6b13f1808.jpg) | 10 | Intelligent perception obstacle avoidance Four way detection and | offen |
 | Intelligenter Futtermanger `15453764714881` | [69926639731073](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30ca7178-06d7-4015-809a-de4d4490f015_fine.jpg) | 10 | Fully Automatic Feeding Remote Mobile Control Full Machine | offen |
@@ -39,6 +42,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Grossvolumige Katzenklo-Box mit Hochwänden `15453764354433` | [69926638911873](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2c53760d-54a6-405f-936c-e0433e0bee8a_trans.jpg) | 9 | Stainless steel cat litter box Heightened baffle deepened | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
+| Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | offen |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | offen |
 | Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | offen |
@@ -48,6 +52,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
+| Integrierte Fahrradhelm-Brille `15453769695617` | [69926689997185](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a09141-2e5f-46ec-a9ff-9fae95b110ae.jpg) | 6 | red silver One size fits all | offen |
 | 15453774086529 `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
@@ -58,6 +63,8 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Kamera-Drohne mit Hindernis-Erkennung `15453744071041` | [69926294126977](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/61651cf6-67b3-4f62-830e-cf9f25cc6c1c.jpg) | 5 | apture the moment lagship came | offen |
 | TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [69926633734529](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans.jpg) | 5 | Foldable yoga mat available complete | offen |
 | TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [70519184818561](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans_6c0240cc-d11e-466b-8558-4cce46170c2b.jpg) | 5 | Foldable yoga mat available complete | offen |
+| Intelligentes Katzen Spielgerät `15453763568001` | [69926634553729](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1baa639f-bcce-4c7d-b212-3af84f3cc456_trans.jpg) | 5 | Stimulate hunting instinct random teasing | offen |
+| Bissfeste Elektro-Jump-Ball für Katzen & Hunde `15453763600769` | [69926634586497](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8f18ab6f-9391-4eea-95bb-31d929e1fa27_trans.jpg) | 5 | Agile without rules Directional scrolling | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
