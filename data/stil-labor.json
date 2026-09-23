@@ -1,0 +1,972 @@
+{
+ "stand": "2026-09-23",
+ "kosten": 0.001,
+ "zufall_n": 200,
+ "gegenprobe": [
+  {
+   "markt": "S&P 500",
+   "wissend": 1.0,
+   "muenze": 0.42
+  },
+  {
+   "markt": "SMI",
+   "wissend": 1.0,
+   "muenze": 0.975
+  },
+  {
+   "markt": "Nestlé",
+   "wissend": 1.0,
+   "muenze": 0.39
+  },
+  {
+   "markt": "Bitcoin",
+   "wissend": 1.0,
+   "muenze": 0.54
+  },
+  {
+   "markt": "EUR/CHF",
+   "wissend": 1.0,
+   "muenze": 0.89
+  },
+  {
+   "markt": "Gold",
+   "wissend": 1.0,
+   "muenze": 0.265
+  },
+  {
+   "markt": "Silber",
+   "wissend": 1.0,
+   "muenze": 0.19
+  },
+  {
+   "markt": "Öl (WTI)",
+   "wissend": 1.0,
+   "muenze": 0.27
+  }
+ ],
+ "skill_schnitt": {
+  "Trendfolge": 0.72,
+  "Momentum": 0.57625,
+  "Ausbruch (Turtle)": 0.341875,
+  "Mean Reversion": 0.62875,
+  "Buy the Dip": 0.666875,
+  "Swing": 0.8006249999999999,
+  "Saison: Sell in May": 0.7131249999999999,
+  "Monatswechsel": 0.7925,
+  "Ruhige Phasen": 0.38999999999999996
+ },
+ "maerkte": {
+  "S&P 500": {
+   "von": "2000-01-03",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.975,
+     "rendite_jahr": 0.06750566830555038,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.33924960002653304,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.6913690476190476,
+     "trefferquote": 0.75,
+     "trades": 12
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 0.975,
+     "rendite_jahr": 0.06200826497397571,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.2586323019670872,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.7254464285714286,
+     "trefferquote": 0.3023255813953488,
+     "trades": 43
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.2,
+     "rendite_jahr": 0.009039232755061022,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.28014497299816876,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.45907738095238093,
+     "trefferquote": 0.425,
+     "trades": 80
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 1.0,
+     "rendite_jahr": 0.015055572273787066,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.22232151503365472,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.11711309523809524,
+     "trefferquote": 0.7318435754189944,
+     "trades": 179
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 0.48,
+     "rendite_jahr": -0.001477979621720693,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.4559326108737314,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.10699404761904761,
+     "trefferquote": 0.4791666666666667,
+     "trades": 48
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 1.0,
+     "rendite_jahr": 0.029021302199948584,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.19215434599534376,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.08571428571428572,
+     "trefferquote": 0.6494252873563219,
+     "trades": 348
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.73,
+     "rendite_jahr": 0.04270546052644186,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.35243182584135424,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.48973214285714284,
+     "trefferquote": 0.7407407407407407,
+     "trades": 27
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.865,
+     "rendite_jahr": 0.002021637826310485,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.257930910616162,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.19047619047619047,
+     "trefferquote": 0.51875,
+     "trades": 320
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.505,
+     "rendite_jahr": 0.029202438589530644,
+     "halten_jahr": 0.06446998445810537,
+     "einbruch": -0.5262598020222977,
+     "halten_einbruch": -0.5677538774277286,
+     "im_markt": 0.6376488095238095,
+     "trefferquote": 0.4782608695652174,
+     "trades": 92
+    }
+   ]
+  },
+  "SMI": {
+   "von": "2000-01-04",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.87,
+     "rendite_jahr": 0.030217958003690093,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.2905304195335948,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.6061419200954085,
+     "trefferquote": 0.5625,
+     "trades": 16
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 0.655,
+     "rendite_jahr": 0.014217566622877431,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.352268161666644,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.6037567084078712,
+     "trefferquote": 0.37362637362637363,
+     "trades": 91
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.05,
+     "rendite_jahr": -0.011118094439837911,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.503451983947975,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.3974358974358974,
+     "trefferquote": 0.4,
+     "trades": 85
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 0.87,
+     "rendite_jahr": 0.002038528510439397,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.23798365937481059,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.09958258795468097,
+     "trefferquote": 0.6419753086419753,
+     "trades": 162
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 0.715,
+     "rendite_jahr": 0.00560303010368246,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.33460823123423955,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.11702444841979726,
+     "trefferquote": 0.5636363636363636,
+     "trades": 55
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 0.95,
+     "rendite_jahr": -0.011524841228972349,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.33686677137924625,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.1009242695289207,
+     "trefferquote": 0.5778364116094987,
+     "trades": 379
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.815,
+     "rendite_jahr": 0.02474822157500256,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.4088907657228945,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.48896839594514013,
+     "trefferquote": 0.7037037037037037,
+     "trades": 27
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.91,
+     "rendite_jahr": 0.001513397449322662,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.34090337207184296,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.19081693500298152,
+     "trefferquote": 0.55,
+     "trades": 320
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.235,
+     "rendite_jahr": -0.000608264726608021,
+     "halten_jahr": 0.024682202969654954,
+     "einbruch": -0.3971635728553172,
+     "halten_einbruch": -0.5612510561843435,
+     "im_markt": 0.6487775790101371,
+     "trefferquote": 0.5132743362831859,
+     "trades": 113
+    }
+   ]
+  },
+  "Nestlé": {
+   "von": "2000-01-03",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.005,
+     "rendite_jahr": -0.013616717914618826,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.5134468191324226,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.5811587793011942,
+     "trefferquote": 0.3684210526315789,
+     "trades": 19
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 0.115,
+     "rendite_jahr": -0.0025319955422681284,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.5070355882884958,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.586171310629515,
+     "trefferquote": 0.28431372549019607,
+     "trades": 102
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.01,
+     "rendite_jahr": -0.018124388227809707,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.48885879488673545,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.3598702638950317,
+     "trefferquote": 0.36363636363636365,
+     "trades": 77
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 0.915,
+     "rendite_jahr": 0.003400939878969611,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.25482688319890556,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.10688485920684063,
+     "trefferquote": 0.6545454545454545,
+     "trades": 165
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 0.99,
+     "rendite_jahr": 0.03796231136573014,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.21346747929612453,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.1163202122954445,
+     "trefferquote": 0.7166666666666667,
+     "trades": 60
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 0.975,
+     "rendite_jahr": -0.002486723931181878,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.2724731167054899,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.1021671826625387,
+     "trefferquote": 0.6066481994459834,
+     "trades": 361
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.57,
+     "rendite_jahr": 0.01984959717250434,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.3044442566254819,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.49063836060740085,
+     "trefferquote": 0.6296296296296297,
+     "trades": 27
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.94,
+     "rendite_jahr": 0.005052935558248928,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.3156679169245352,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.18870706177207724,
+     "trefferquote": 0.515625,
+     "trades": 320
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.0,
+     "rendite_jahr": -0.028897668143124777,
+     "halten_jahr": 0.03673531476720959,
+     "einbruch": -0.6055066996314351,
+     "halten_einbruch": -0.4517374517374485,
+     "im_markt": 0.6109391124871001,
+     "trefferquote": 0.4580152671755725,
+     "trades": 131
+    }
+   ]
+  },
+  "Bitcoin": {
+   "von": "2014-09-17",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.91,
+     "rendite_jahr": 0.3319467391213311,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.6927533158813388,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.5781321184510251,
+     "trefferquote": 0.6,
+     "trades": 10
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 1.0,
+     "rendite_jahr": 0.42521913299453873,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.7078820179801736,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.6758542141230068,
+     "trefferquote": 0.47619047619047616,
+     "trades": 21
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.99,
+     "rendite_jahr": 0.31272624640130675,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.5713898575477309,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.37084282460136675,
+     "trefferquote": 0.6052631578947368,
+     "trades": 38
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 0.6,
+     "rendite_jahr": 0.024408388728184738,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.5201588202035332,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.1152619589977221,
+     "trefferquote": 0.68,
+     "trades": 100
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 0.265,
+     "rendite_jahr": 0.09957536756826113,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.7244644044227924,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.5289293849658314,
+     "trefferquote": 0.5948275862068966,
+     "trades": 116
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 0.925,
+     "rendite_jahr": 0.059309172668203125,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.5363743700010513,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.09658314350797266,
+     "trefferquote": 0.6707317073170732,
+     "trades": 246
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.505,
+     "rendite_jahr": 0.15409869287600708,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.7881930569031941,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.49544419134396356,
+     "trefferquote": 0.5833333333333334,
+     "trades": 12
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.945,
+     "rendite_jahr": 0.09465303050627294,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.47157412690387,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.13120728929384967,
+     "trefferquote": 0.5625,
+     "trades": 144
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.235,
+     "rendite_jahr": 0.13048963526227442,
+     "halten_jahr": 0.3490720675461616,
+     "einbruch": -0.7282253406183241,
+     "halten_einbruch": -0.8339900882218974,
+     "im_markt": 0.6111617312072893,
+     "trefferquote": 0.5675675675675675,
+     "trades": 74
+    }
+   ]
+  },
+  "EUR/CHF": {
+   "von": "2003-01-23",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.87,
+     "rendite_jahr": -0.0006912864123010953,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.11987309738502205,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.3926420315806609,
+     "trefferquote": 0.21428571428571427,
+     "trades": 14
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 0.16,
+     "rendite_jahr": -0.010784633517464948,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.24217504827299607,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.3231320201855771,
+     "trefferquote": 0.12359550561797752,
+     "trades": 89
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.035,
+     "rendite_jahr": -0.012428711979707296,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.30572092011563257,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.28601660426501707,
+     "trefferquote": 0.25,
+     "trades": 52
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 0.335,
+     "rendite_jahr": -0.007115150416791338,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.16570862463082792,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.061207878886537524,
+     "trefferquote": 0.4457831325301205,
+     "trades": 83
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 1.0,
+     "rendite_jahr": 0.011734869224609756,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.07512459961295004,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.009767214715936839,
+     "trefferquote": 1.0,
+     "trades": 5
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 0.995,
+     "rendite_jahr": -0.019241078577003523,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.37774655486809516,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.11476477291225785,
+     "trefferquote": 0.27586206896551724,
+     "trades": 377
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.575,
+     "rendite_jahr": -0.010803147062335205,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.33398300501093203,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.4971512290411851,
+     "trefferquote": 0.4166666666666667,
+     "trades": 24
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.09,
+     "rendite_jahr": -0.029728658080473203,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.5271771000909464,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.18492593195507082,
+     "trefferquote": 0.2852112676056338,
+     "trades": 284
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.02,
+     "rendite_jahr": -0.0282664148744175,
+     "halten_jahr": -0.018091466181281657,
+     "einbruch": -0.5130602341055037,
+     "halten_einbruch": -0.4640547611779028,
+     "im_markt": 0.5997069835585219,
+     "trefferquote": 0.35514018691588783,
+     "trades": 107
+    }
+   ]
+  },
+  "Gold": {
+   "von": "2000-08-30",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.575,
+     "rendite_jahr": 0.08184133172010055,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.3585303965593567,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.7046323192172451,
+     "trefferquote": 0.5625,
+     "trades": 16
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 0.455,
+     "rendite_jahr": 0.07353459362584092,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.4036839750995893,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.7238954288335117,
+     "trefferquote": 0.2714285714285714,
+     "trades": 70
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.415,
+     "rendite_jahr": 0.03453626484772143,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.2516099467393128,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.3757835193395505,
+     "trefferquote": 0.4852941176470588,
+     "trades": 68
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 0.615,
+     "rendite_jahr": 0.004462438100402144,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.29319770213763663,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.12444580339397646,
+     "trefferquote": 0.6060606060606061,
+     "trades": 165
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 0.86,
+     "rendite_jahr": 0.025608300483513924,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.2101649794307937,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.0975386026601437,
+     "trefferquote": 0.6346153846153846,
+     "trades": 52
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 0.39,
+     "rendite_jahr": -0.01890588828012807,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.3971677326042231,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.09341079345665801,
+     "trefferquote": 0.5606060606060606,
+     "trades": 330
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.88,
+     "rendite_jahr": 0.07269929218391225,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.2977944968762395,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.4887631860571778,
+     "trefferquote": 0.7692307692307693,
+     "trades": 26
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.92,
+     "rendite_jahr": 0.016163869347030735,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.28977155963819046,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.1914080415838557,
+     "trefferquote": 0.536741214057508,
+     "trades": 313
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.575,
+     "rendite_jahr": 0.048077458945603224,
+     "halten_jahr": 0.11211903552994751,
+     "einbruch": -0.45301697854766243,
+     "halten_einbruch": -0.44363844125895147,
+     "im_markt": 0.5853844977832136,
+     "trefferquote": 0.5323741007194245,
+     "trades": 139
+    }
+   ]
+  },
+  "Silber": {
+   "von": "2000-08-30",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.785,
+     "rendite_jahr": 0.08700259449741976,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.6109598509051501,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.5687863038826048,
+     "trefferquote": 0.4444444444444444,
+     "trades": 18
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 0.735,
+     "rendite_jahr": 0.08854355476377607,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.6148510370002617,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.6040966065423418,
+     "trefferquote": 0.29411764705882354,
+     "trades": 68
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.495,
+     "rendite_jahr": 0.03347531764417977,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.5108253093926347,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.3362885967594008,
+     "trefferquote": 0.3114754098360656,
+     "trades": 61
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 0.21,
+     "rendite_jahr": -0.013120184653898415,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.41881448229516416,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.09079792112503822,
+     "trefferquote": 0.5882352941176471,
+     "trades": 136
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 0.53,
+     "rendite_jahr": 0.025013492256401593,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.6110502812085921,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.342402934882299,
+     "trefferquote": 0.5886524822695035,
+     "trades": 141
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 0.44,
+     "rendite_jahr": -0.020295977078615635,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.5291186161793184,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.09263222256190767,
+     "trefferquote": 0.6049382716049383,
+     "trades": 324
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.87,
+     "rendite_jahr": 0.08413667277757853,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.6744392373380482,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.48853561601956585,
+     "trefferquote": 0.5384615384615384,
+     "trades": 26
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.78,
+     "rendite_jahr": 0.013736005208307978,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.47396909564499123,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.19137878324671354,
+     "trefferquote": 0.5143769968051118,
+     "trades": 313
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.59,
+     "rendite_jahr": 0.05567353353029336,
+     "halten_jahr": 0.10437712263901022,
+     "einbruch": -0.7406406254538567,
+     "halten_einbruch": -0.7584595804147048,
+     "im_markt": 0.5811678385814736,
+     "trefferquote": 0.5467625899280576,
+     "trades": 139
+    }
+   ]
+  },
+  "Öl (WTI)": {
+   "von": "2000-08-23",
+   "bis": "2026-09-23",
+   "stile": [
+    {
+     "stil": "Trendfolge",
+     "regel": "Gleitende Durchschnitte 50/200",
+     "skill": 0.77,
+     "rendite_jahr": 0.0523035775031333,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.6317399384104321,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.5638362858888211,
+     "trefferquote": 0.4444444444444444,
+     "trades": 18
+    },
+    {
+     "stil": "Momentum",
+     "regel": "Kurs über dem Vorjahr",
+     "skill": 0.515,
+     "rendite_jahr": 0.024777124358894786,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.5386585851203377,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.5520769700671961,
+     "trefferquote": 0.3225806451612903,
+     "trades": 93
+    },
+    {
+     "stil": "Ausbruch (Turtle)",
+     "regel": "55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen",
+     "skill": 0.54,
+     "rendite_jahr": 0.013073282683726317,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.4913340580009876,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.3526267562614539,
+     "trefferquote": 0.4411764705882353,
+     "trades": 68
+    },
+    {
+     "stil": "Mean Reversion",
+     "regel": "RSI(2) unter 10 kaufen, über 70 verkaufen",
+     "skill": 0.485,
+     "rendite_jahr": -0.005211670003198443,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.42220681481903,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.09193646915088577,
+     "trefferquote": 0.5748031496062992,
+     "trades": 127
+    },
+    {
+     "stil": "Buy the Dip",
+     "regel": "nach −5 % in 5 Tagen kaufen, 10 Tage halten",
+     "skill": 0.495,
+     "rendite_jahr": -0.0019581657002734065,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.9249090879216733,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.44853390348197925,
+     "trefferquote": 0.6172839506172839,
+     "trades": 162
+    },
+    {
+     "stil": "Swing",
+     "regel": "nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus",
+     "skill": 0.73,
+     "rendite_jahr": -0.02352489204745445,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.7548455890873149,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.10262675626145389,
+     "trefferquote": 0.6283422459893048,
+     "trades": 374
+    },
+    {
+     "stil": "Saison: Sell in May",
+     "regel": "November bis April investiert",
+     "skill": 0.76,
+     "rendite_jahr": 0.04512283393837446,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.8427264846025484,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.48839340256566893,
+     "trefferquote": 0.6153846153846154,
+     "trades": 26
+    },
+    {
+     "stil": "Monatswechsel",
+     "regel": "letzter bis 3. Handelstag investiert",
+     "skill": 0.89,
+     "rendite_jahr": 0.020377690455946063,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.626956060460399,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.1912034208918754,
+     "trefferquote": 0.4952076677316294,
+     "trades": 313
+    },
+    {
+     "stil": "Ruhige Phasen",
+     "regel": "investiert, wenn die Schwankung unter dem Jahresmittel liegt",
+     "skill": 0.96,
+     "rendite_jahr": 0.07235119963808345,
+     "halten_jahr": 0.04169086340198436,
+     "einbruch": -0.7303937135234966,
+     "halten_einbruch": -0.9311033058610703,
+     "im_markt": 0.6311850946854001,
+     "trefferquote": 0.5403225806451613,
+     "trades": 124
+    }
+   ]
+  }
+ }
+}
