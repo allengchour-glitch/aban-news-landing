@@ -23922,3 +23922,17 @@ usb-gaming-maus-mit-rgb-beleuchtung-d40fcb	2026-09-23	du
 usb-gewitterwolken-licht-mit-app-musik-sync-105984	2026-09-23	du
 usb-glattburste-fur-nass-und-trockenhaar-506688	2026-09-23	du
 usb-halsbandleuchte-banane-fur-hunde-615200	2026-09-23	du
+usb-hand-dampfgerat-fur-feuchtigkeit-611800	2026-09-23	du
+usb-handwarmer-powerbank-5b76d0	2026-09-23	du
+usb-handwarmer-warm-treasure-e4ef6a	2026-09-23	du
+usb-heizbox-aus-edelstahl-fur-unterwegs-797120	2026-09-23	du
+usb-heizkissen-mit-graphen-technologie-acad9f	2026-09-23	du
+usb-heizmatte-fur-haustiere-639100	2026-09-23	teilweise
+usb-heizschal-fur-auto-buro-e6f347	2026-09-23	du
+usb-heizuntersetzer-dfe6cf	2026-09-23	du
+usb-hub-mit-4-ports-und-verlangerungskabel-603776	2026-09-23	du
+usb-kaffeemuhle-fur-unterwegs-926592	2026-09-23	teilweise
+usb-kamera-mit-mikrofon-fur-desktop-666944	2026-09-23	teilweise
+usb-kartenleser-fur-mobiltelefone-051b30	2026-09-23	du
+usb-karussell-musiklicht-a07e9a	2026-09-23	du
+usb-klimaanlagen-ventilator-mit-spruhnebel-led-355136	2026-09-23	du
