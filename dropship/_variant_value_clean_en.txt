@@ -19395,3 +19395,4 @@ gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/1203
 gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395373953	1 4 6 Farben	1 4 6color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge
 gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395406721	1 5 6 Farben	1 5 6color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge
 gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395439489	1 3 5 Farben	1 3 5color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge
+gid://shopify/Product/15448952537473	Farbe	gid://shopify/ProductOptionValue/12451288908161	Leuchtendrosé-Pink	Bright Rose Pink	2026-09-23T20:58Z/reparatur-original:Bright Rose
