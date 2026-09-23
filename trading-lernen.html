@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trading lernen — ehrlich, mit echten Zahlen · aban news</title>
-<meta name="description" content="Trading lernen ohne Versprechen: die besten Gratis-Kurse, ein Übungsdepot ohne Geld, die Steuer-Regeln der Schweiz, ein Lern-Bot über 26 Jahre Kurse und ein Daytrading-Test mit Gold, Silber und Öl — mit ehrlichem Ergebnis.">
+<meta name="description" content="Trading lernen ohne Versprechen: die besten Gratis-Kurse, ein Übungsdepot ohne Geld, die Steuer-Regeln der Schweiz, ein Lern-Bot über 26 Jahre Kurse, neun Trading-Stile mit Skill in Prozent und ein Daytrading-Test mit Gold, Silber und Öl.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/trading-lernen.html">
 <meta property="og:title" content="Trading lernen — ehrlich, mit echten Zahlen">
@@ -22,6 +22,8 @@
 {"@type":"Question","name":"Wann gilt Trading in der Schweiz als gewerbsmässig?","acceptedAnswer":{"@type":"Answer","text":"Die Steuerverwaltung nennt fünf Kriterien (Kreisschreiben Nr. 36). Sind alle erfüllt, gilt der Handel als private Vermögensverwaltung, unter anderem: Haltedauer mindestens sechs Monate, Transaktionsvolumen höchstens das Fünffache des Anfangsbestands, Kapitalgewinne unter 50 Prozent des Reineinkommens. Gewerbsmässige Gewinne werden als Einkommen besteuert."}}
 ,
 {"@type":"Question","name":"Lohnt sich Daytrading mit Gold oder Silber?","acceptedAnswer":{"@type":"Answer","text":"In unserem Test auf zwei Jahren Stundenkerzen nicht belastbar. Bei Gold machte der Bot ohne Kosten +19 %, mit 0.05 % Kosten pro Trade −7 %. Silber kam auf +20.8 %, aber ein Münzwurf schaffte dasselbe in 14 von 100 Fällen, bei einem Einbruch von −55 %. Die Kosten fallen bei jedem Trade an und fressen den Vorsprung."}}
+,
+{"@type":"Question","name":"Welcher Trading-Stil ist der beste?","acceptedAnswer":{"@type":"Answer","text":"Keiner schlägt einfaches Halten verlässlich. In unserem Stil-Labor mit neun Stilen auf acht Märkten seit 2000 hatte Swing (nach drei Minus-Tagen kaufen) den höchsten Skill: im Schnitt besser als 80 % der Zufallsstrategien mit gleicher Marktzeit. Mehr Geld als Halten verdiente Swing trotzdem auf keinem Markt, weil das Geld nur 10 % der Zeit investiert war. Ausbruch-Strategien (Turtle) lagen mit 34 % unter dem Zufall."}}
 ]}
 </script>
 <style>
@@ -54,6 +56,15 @@ th{font-size:.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;l
 .tab table{min-width:600px}
 td{white-space:nowrap}td:first-child{white-space:normal}
 .nein{color:var(--rot);font-weight:800}
+.stil{margin:12px 0 16px}.stil:first-child{margin-top:0}
+.stil-kopf{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pz{font-weight:800;font-variant-numeric:tabular-nums;color:var(--amber-dk)}
+.balken{position:relative;height:10px;border-radius:999px;background:var(--cream);overflow:hidden;margin:6px 0}
+.balken i{display:block;height:100%;background:var(--amber)}
+.balken s{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--ink2);text-decoration:none}
+.skills{list-style:none;margin:10px 0 0}.skills li{margin:8px 0}
+.skills label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.skills input{margin-top:6px;width:18px;height:18px;flex:0 0 18px;accent-color:var(--amber-dk)}
 .stufe{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
 .stufe b.n{flex:0 0 32px;height:32px;border-radius:999px;background:var(--cream);color:var(--amber-dk);display:flex;align-items:center;justify-content:center;font-weight:800}
 .klein{font-size:.86rem;color:var(--muted)}
@@ -166,6 +177,43 @@ footer a{color:var(--muted)}
 })();
 </script>
 
+<h2 id="stile">Stil-Labor: neun Trading-Stile mit Skill in Prozent</h2>
+<p>Trendfolge, Momentum, Ausbruch, Mean Reversion, Buy the Dip, Swing, Saison-Effekte: jeder Stil hat seine Anhänger. Wir haben neun bekannte Lehrbuch-Regeln unverändert auf acht Märkten seit 2000 laufen lassen (Bitcoin seit 2014), mit 0.1 % Kosten pro Wechsel und Handel erst am Folgetag.</p>
+<p><b>Die Prozentzahl ist der Skill:</b> Wie viele von 200 Zufallsstrategien schlägt der Stil nach Kosten? Die Zufallsstrategien sind gleich lang investiert und wechseln gleich oft, so zählt nur das Timing. <b>50 % heisst kein Können</b> (Strich in der Mitte), 100 % heisst: besser als jeder Zufall.</p>
+<div class="kasten">
+<div class="stil"><div class="stil-kopf"><b>Swing</b><span class="pz">80 %</span></div>
+<div class="balken" role="img" aria-label="Skill 80 Prozent"><i style="width:80%"></i><s></s></div>
+<p class="klein">nach 3 Minus-Tagen kaufen, am ersten Plus-Tag raus · im Markt 10 % der Zeit · mehr Geld als Halten in 0 von 8 Märkten<br>S&amp;P 500 100 % · SMI 95 % · Nestlé 98 % · Bitcoin 92 % · EUR/CHF 100 % · Gold 39 % · Silber 44 % · Öl (WTI) 73 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Monatswechsel</b><span class="pz">79 %</span></div>
+<div class="balken" role="img" aria-label="Skill 79 Prozent"><i style="width:79%"></i><s></s></div>
+<p class="klein">letzter bis 3. Handelstag investiert · im Markt 18 % der Zeit · mehr Geld als Halten in 0 von 8 Märkten<br>S&amp;P 500 86 % · SMI 91 % · Nestlé 94 % · Bitcoin 94 % · EUR/CHF 9 % · Gold 92 % · Silber 78 % · Öl (WTI) 89 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Trendfolge</b><span class="pz">72 %</span></div>
+<div class="balken" role="img" aria-label="Skill 72 Prozent"><i style="width:72%"></i><s></s></div>
+<p class="klein">Gleitende Durchschnitte 50/200 · im Markt 59 % der Zeit · mehr Geld als Halten in 4 von 8 Märkten<br>S&amp;P 500 98 % · SMI 87 % · Nestlé 0 % · Bitcoin 91 % · EUR/CHF 87 % · Gold 57 % · Silber 78 % · Öl (WTI) 77 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Saison: Sell in May</b><span class="pz">71 %</span></div>
+<div class="balken" role="img" aria-label="Skill 71 Prozent"><i style="width:71%"></i><s></s></div>
+<p class="klein">November bis April investiert · im Markt 49 % der Zeit · mehr Geld als Halten in 3 von 8 Märkten<br>S&amp;P 500 73 % · SMI 82 % · Nestlé 57 % · Bitcoin 50 % · EUR/CHF 57 % · Gold 88 % · Silber 87 % · Öl (WTI) 76 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Buy the Dip</b><span class="pz">67 %</span></div>
+<div class="balken" role="img" aria-label="Skill 67 Prozent"><i style="width:67%"></i><s></s></div>
+<p class="klein">nach −5 % in 5 Tagen kaufen, 10 Tage halten · im Markt 22 % der Zeit · mehr Geld als Halten in 2 von 8 Märkten<br>S&amp;P 500 48 % · SMI 72 % · Nestlé 99 % · Bitcoin 26 % · EUR/CHF 100 % · Gold 86 % · Silber 53 % · Öl (WTI) 50 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Mean Reversion</b><span class="pz">63 %</span></div>
+<div class="balken" role="img" aria-label="Skill 63 Prozent"><i style="width:63%"></i><s></s></div>
+<p class="klein">RSI(2) unter 10 kaufen, über 70 verkaufen · im Markt 10 % der Zeit · mehr Geld als Halten in 1 von 8 Märkten<br>S&amp;P 500 100 % · SMI 87 % · Nestlé 92 % · Bitcoin 60 % · EUR/CHF 34 % · Gold 62 % · Silber 21 % · Öl (WTI) 48 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Momentum</b><span class="pz">58 %</span></div>
+<div class="balken" role="img" aria-label="Skill 58 Prozent"><i style="width:58%"></i><s></s></div>
+<p class="klein">Kurs über dem Vorjahr · im Markt 60 % der Zeit · mehr Geld als Halten in 2 von 8 Märkten<br>S&amp;P 500 98 % · SMI 66 % · Nestlé 12 % · Bitcoin 100 % · EUR/CHF 16 % · Gold 46 % · Silber 74 % · Öl (WTI) 52 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Ruhige Phasen</b><span class="pz">39 %</span></div>
+<div class="balken" role="img" aria-label="Skill 39 Prozent"><i style="width:39%"></i><s></s></div>
+<p class="klein">investiert, wenn die Schwankung unter dem Jahresmittel liegt · im Markt 61 % der Zeit · mehr Geld als Halten in 1 von 8 Märkten<br>S&amp;P 500 50 % · SMI 24 % · Nestlé 0 % · Bitcoin 24 % · EUR/CHF 2 % · Gold 57 % · Silber 59 % · Öl (WTI) 96 %</p></div>
+<div class="stil"><div class="stil-kopf"><b>Ausbruch (Turtle)</b><span class="pz">34 %</span></div>
+<div class="balken" role="img" aria-label="Skill 34 Prozent"><i style="width:34%"></i><s></s></div>
+<p class="klein">55-Tage-Hoch kaufen, 20-Tage-Tief verkaufen · im Markt 37 % der Zeit · mehr Geld als Halten in 1 von 8 Märkten<br>S&amp;P 500 20 % · SMI 5 % · Nestlé 1 % · Bitcoin 99 % · EUR/CHF 4 % · Gold 42 % · Silber 50 % · Öl (WTI) 54 %</p></div>
+</div>
+<div class="kasten warn">
+  <p><b>Skill ist nicht gleich Geld.</b> Swing hat den höchsten Skill (80 %, auf S&amp;P 500, SMI, Nestlé und EUR/CHF über 95 %). Kurzfristige Rücksetzer erholen sich dort also tatsächlich öfter als zufällig. Trotzdem verdient Swing auf keinem der acht Märkte mehr als einfaches Halten, weil das Geld nur 10 % der Zeit investiert ist. Umgekehrt ist Ausbruch (Turtle) mit 34 % schlechter als Zufall.</p>
+  <p class="klein">Und Vorsicht mit einzelnen hohen Werten: neun Stile auf acht Märkten sind 72 Versuche. Rein zufällig landen davon einige über 95 %. Gegenprobe: ein Stil, der den nächsten Tag kennt, kommt überall auf 100 %, Münzwürfe liegen im Schnitt bei 47–53 %. Gemessen am 23.09.2026, Code: <code>tools/trading/stil_labor.py</code>, Daten: <a href="/data/stil-labor.json">stil-labor.json</a>.</p>
+</div>
+
 <h2>Lernpfad: von null bis zur eigenen, ehrlich getesteten Strategie</h2>
 <div class="stufe"><b class="n">1</b><div><b>Grundlagen: Was ist eine Aktie, ein Index, ein Fonds?</b><br>
 <a href="https://www.investor.gov/introduction-investing" target="_blank" rel="noopener">Investor.gov — Introduction to Investing</a> (US-Börsenaufsicht, englisch, gratis) und
@@ -178,6 +226,39 @@ Ein Verlust von 50 % braucht danach +100 %, um wieder bei null zu sein. Lerne zu
 Ein Übungsdepot mit Spielgeld, z. B. <a href="https://www.tradingview.com/support/solutions/43000516466/" target="_blank" rel="noopener">Paper Trading bei TradingView</a>. Führe jeden Trade in einer Liste: Grund, Einstieg, Ausstieg, Ergebnis. Nach drei Monaten weisst du mehr über dich als über den Markt.</div></div>
 <div class="stufe"><b class="n">5</b><div><b>Eine Strategie ehrlich prüfen</b><br>
 Die Regeln aus unserem Bot-Test: Signal erst am nächsten Tag handeln. Kosten einrechnen. Nur Jahre zählen, die beim Entwickeln nicht angeschaut wurden. Und immer mit dem einfachsten Vergleich messen: kaufen und halten. Schlägt die Strategie das nicht klar, ist sie kein Vorteil.</div></div>
+
+<h2 id="skills">Deine Trading-Skills — Fortschritt in Prozent</h2>
+<p>Hake ab, was du wirklich kannst. Der Fortschritt bleibt nur in deinem Browser gespeichert, niemand sonst sieht ihn.</p>
+<div class="kasten" id="skillbox">
+  <div class="stil-kopf"><b>Dein Fortschritt</b><span class="pz" id="skillpz">0 %</span></div>
+  <div class="balken"><i id="skillbar" style="width:0%"></i></div>
+  <ul class="skills">
+    <li><label><input type="checkbox" value="basis"> Ich kann erklären, was Aktie, Index, ETF und Future unterscheidet.</label></li>
+    <li><label><input type="checkbox" value="risiko"> Ich weiss, warum −50 % danach +100 % brauchen.</label></li>
+    <li><label><input type="checkbox" value="positionsgroesse"> Ich lege vor jedem Trade fest, wie viel ich höchstens verliere (z. B. 1 % vom Konto).</label></li>
+    <li><label><input type="checkbox" value="kosten"> Ich rechne Spread, Kommission und Steuern ein, bevor ich einen Gewinn feiere.</label></li>
+    <li><label><input type="checkbox" value="stile"> Ich kann Trendfolge, Mean Reversion und Ausbruch auseinanderhalten.</label></li>
+    <li><label><input type="checkbox" value="tagebuch"> Ich führe ein Trading-Tagebuch: Grund, Einstieg, Ausstieg, Ergebnis.</label></li>
+    <li><label><input type="checkbox" value="uebung"> Ich habe mindestens 3 Monate im Übungsdepot gehandelt.</label></li>
+    <li><label><input type="checkbox" value="vergleich"> Ich vergleiche mein Übungsdepot ehrlich mit „einfach halten".</label></li>
+    <li><label><input type="checkbox" value="test"> Ich teste eine Regel nur auf Daten, die ich beim Entwickeln nicht angeschaut habe.</label></li>
+    <li><label><input type="checkbox" value="zufall"> Ich prüfe, ob mein Ergebnis auch per Münzwurf möglich wäre.</label></li>
+    <li><label><input type="checkbox" value="steuer"> Ich kenne die fünf Kriterien für gewerbsmässigen Wertschriftenhandel.</label></li>
+    <li><label><input type="checkbox" value="betrug"> Ich prüfe jeden Anbieter auf der FINMA-Warnliste.</label></li>
+  </ul>
+</div>
+<script>
+(function(){
+  var box=document.getElementById('skillbox');if(!box)return;
+  var cb=box.querySelectorAll('input[type=checkbox]'),K='aban-trading-skills',st={};
+  try{st=JSON.parse(localStorage.getItem(K)||'{}')||{}}catch(e){st={}}
+  function zeigen(){var n=0;for(var i=0;i<cb.length;i++)if(cb[i].checked)n++;
+    var p=Math.round(n/cb.length*100);document.getElementById('skillpz').textContent=p+' %';document.getElementById('skillbar').style.width=p+'%'}
+  for(var i=0;i<cb.length;i++){cb[i].checked=!!st[cb[i].value];cb[i].addEventListener('change',function(){
+    st[this.value]=this.checked;try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}zeigen()})}
+  zeigen();
+})();
+</script>
 
 <h2>Schweiz: Wann wird Trading zum Beruf — auch für die Steuer?</h2>
 <p>Private Kapitalgewinne sind in der Schweiz grundsätzlich steuerfrei. Wer zu viel handelt, gilt aber als <b>gewerbsmässiger Wertschriftenhändler</b> — dann sind die Gewinne Einkommen aus selbstständiger Erwerbstätigkeit. Die Eidgenössische Steuerverwaltung nennt fünf Kriterien (Kreisschreiben Nr. 36). Sind <b>alle</b> erfüllt, gilt der Handel als private Vermögensverwaltung:</p>
@@ -198,6 +279,7 @@ Die Regeln aus unserem Bot-Test: Signal erst am nächsten Tag handeln. Kosten ei
 <details><summary>Kann ein Trading-Bot immer richtig liegen?</summary><p>Auf vergangenen Kursen ja — unser Auswendiglerner lag auf den Lern-Daten zu 100 % richtig. Auf ungesehenen Jahren fiel er auf rund 50 % zurück, genau so oft wie jemand, der einfach immer investiert bleibt. Wer dir einen Bot mit 90 % Trefferquote verkauft, zeigt dir fast immer die Vergangenheit.</p></details>
 <details><summary>Wie viel Geld brauche ich zum Anfangen?</summary><p>Zum Lernen: keins. Das Übungsdepot kostet nichts. Mit echtem Geld nur einen Betrag, dessen vollständigen Verlust du verkraftest — und erst, wenn deine Strategie im Übungsdepot über Monate besser war als kaufen und halten.</p></details>
 <details><summary>Lohnt sich Daytrading mit Gold oder Silber?</summary><p>In unserem Test auf zwei Jahren Stundenkerzen nicht belastbar. Bei Gold machte der Bot ohne Kosten +19 %, mit 0.05 % Kosten pro Trade −7 %. Silber kam auf +20.8 %, aber ein Münzwurf schaffte dasselbe in 14 von 100 Fällen, bei einem Einbruch von −55 %. Die Kosten fallen bei jedem Trade an und fressen den Vorsprung.</p></details>
+<details><summary>Welcher Trading-Stil ist der beste?</summary><p>Keiner schlägt einfaches Halten verlässlich. In unserem Stil-Labor mit neun Stilen auf acht Märkten seit 2000 hatte Swing (nach drei Minus-Tagen kaufen) den höchsten Skill: im Schnitt besser als 80 % der Zufallsstrategien mit gleicher Marktzeit. Mehr Geld als Halten verdiente Swing trotzdem auf keinem Markt, weil das Geld nur 10 % der Zeit investiert war. Ausbruch-Strategien (Turtle) lagen mit 34 % unter dem Zufall.</p></details>
 <details><summary>Ist das eine Anlageempfehlung?</summary><p>Nein. Diese Seite erklärt, wie man lernt und wie man ehrlich prüft. Sie empfiehlt keine Wertpapiere, keinen Broker und keine Strategie.</p></details>
 
 <div class="kasten">
