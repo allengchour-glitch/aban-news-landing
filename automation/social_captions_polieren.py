@@ -142,7 +142,7 @@ def main():
     if DRY:
         print("DRY — nichts geschrieben"); return 0
     with open(CSV, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=felder); w.writeheader(); w.writerows(rows)
+        w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(rows)
     print("geschrieben:", CSV)
     return 0
 

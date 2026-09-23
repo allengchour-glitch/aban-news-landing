@@ -18582,3 +18582,219 @@ gid://shopify/Product/15455656444289	Farbe	gid://shopify/ProductOptionValue/1209
 gid://shopify/Product/15455656444289	Farbe	gid://shopify/ProductOptionValue/12092605858177	Washed Grau 1	Washed Gray 1	2026-09-23T20:41Z/reparatur-original:Washed
 gid://shopify/Product/15455657034113	Farbe	gid://shopify/ProductOptionValue/12377072468353	Schwarz washed 2	Washed Black 2	2026-09-23T20:41Z/reparatur-original:Washed
 gid://shopify/Product/15455657034113	Farbe	gid://shopify/ProductOptionValue/12377072501121	Schwarz washed 1	Washed Black 1	2026-09-23T20:41Z/reparatur-original:Washed
+gid://shopify/Product/15455682822529	Farbe	gid://shopify/ProductOptionValue/12092968632705	Gross Braun Baumwolle	Big brown cotton	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395209089	1 Farbe	Farbton 1	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395274625	2 Farben	Farbton 2	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395340161	3 Farben	Farbton 3	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395405697	4 Farben	Farbton 4	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395471233	5 Farben	Farbton 5	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395536769	6 Farben	Farbton 6	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395602305	7 Farben	Farbton 7	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395700609	8 Farben	Farbton 8	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395766145	9 Farben	Farbton 9	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395831681	10 Farben	Farbton 10	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395897217	11 Farben	Farbton 11	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395962753	12 Farben	Farbton 12	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316395995521	13 Farben-2XL	Farbton 13-2XL	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396028289	13 Farben	Farbton 13	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396061057	14 Farben-2XL	Farbton 14-2XL	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396093825	14 Farben	Farbton 14	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396126593	15 Farben-2XL	Farbton 15-2XL	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396159361	15 Farben	Farbton 15	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396192129	16 Farben-2XL	Farbton 16-2XL	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396224897	16 Farben	Farbton 16	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396257665	17 Farben-2XL	Farbton 17-2XL	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396290433	17 Farben	Farbton 17	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396323201	18 Farben-2XL	Farbton 18-2XL	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396355969	18 Farben	Farbton 18	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396388737	19 Farben-2XL	Farbton 19-2XL	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455729385857	Farbe	gid://shopify/ProductOptionValue/12316396421505	19 Farben	Farbton 19	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15455745180033	Farbe	gid://shopify/ProductOptionValue/12316400615809	Eckig rund	Square round	2026-09-23T20:41Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15455745180033	Farbe	gid://shopify/ProductOptionValue/12316400648577	Klein eckig	Small square	2026-09-23T20:41Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15455825723777	Farbe	gid://shopify/ProductOptionValue/12094752489857	Leuchtendrot-165	Leuchtendes Rot-165	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15455825723777	Farbe	gid://shopify/ProductOptionValue/12094752522625	Leuchtendrot-170	Leuchtendes Rot-170	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15455825723777	Farbe	gid://shopify/ProductOptionValue/12094752555393	Leuchtendrot-175	Leuchtendes Rot-175	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15455825723777	Farbe	gid://shopify/ProductOptionValue/12094752588161	Leuchtendrot-180	Leuchtendes Rot-180	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15455825723777	Farbe	gid://shopify/ProductOptionValue/12094752620929	Leuchtendrot-185	Leuchtendes Rot-185	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15455825723777	Farbe	gid://shopify/ProductOptionValue/12094752653697	Leuchtendrot-190	Leuchtendes Rot-190	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15455891292545	Farbe	gid://shopify/ProductOptionValue/12316416377217	45x45 cm Braun eckig Kissen-Kissenbezug	45x45cm Brown Square Pillow-Pillowcase	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455891292545	Farbe	gid://shopify/ProductOptionValue/12316416639361	45x45 cm Grau eckig Kissen-Kissenbezug	45x45cm Gray Square Pillow-Pillowcase	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455891292545	Farbe	gid://shopify/ProductOptionValue/12316416901505	45x45 cm Beige eckig Kissen-Kissenbezug	45x45cm Beige Square Pillow-Pillowcase	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455891292545	Farbe	gid://shopify/ProductOptionValue/12316417032577	45x45 cm Gelb eckig Kissen-Kissenbezug	45x45cm Yellow Square Pillow-Pillowcase	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455892603265	Farbe	gid://shopify/ProductOptionValue/12316418965889	Leuchtendblau-Doppelt	Leuchtendes Blau-Doppelt	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864537473	B6 doppelt Mesh Pink · Gr. 27	B6 Double Mesh Pink · Gr. 27	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864570241	B6 doppelt Mesh Pink · Gr. 28	B6 Double Mesh Pink · Gr. 28	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864603009	B6 doppelt Mesh Pink · Gr. 29	B6 Double Mesh Pink · Gr. 29	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864635777	B6 doppelt Mesh Pink · Gr. 30	B6 Double Mesh Pink · Gr. 30	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864668545	B6 doppelt Mesh Pink · Gr. 31	B6 Double Mesh Pink · Gr. 31	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864701313	B6 doppelt Mesh Pink · Gr. 32	B6 Double Mesh Pink · Gr. 32	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864734081	B6 doppelt Mesh Pink · Gr. 33	B6 Double Mesh Pink · Gr. 33	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864766849	B6 doppelt Mesh Pink · Gr. 34	B6 Double Mesh Pink · Gr. 34	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864799617	B6 doppelt Mesh Pink · Gr. 35	B6 Double Mesh Pink · Gr. 35	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864832385	B6 doppelt Mesh Pink · Gr. 36	B6 Double Mesh Pink · Gr. 36	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095864865153	B6 doppelt Mesh Pink · Gr. 37	B6 Double Mesh Pink · Gr. 37	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865291137	Einzeln Mesh Pink	Single Mesh Pink	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865323905	B6 einzeln Mesh Pink · Gr. 27	B6 Single Mesh Pink · Gr. 27	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865356673	B6 einzeln Mesh Pink · Gr. 28	B6 Single Mesh Pink · Gr. 28	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865389441	B6 einzeln Mesh Pink · Gr. 29	B6 Single Mesh Pink · Gr. 29	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865422209	B6 einzeln Mesh Pink · Gr. 30	B6 Single Mesh Pink · Gr. 30	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865454977	B6 einzeln Mesh Pink · Gr. 31	B6 Single Mesh Pink · Gr. 31	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865487745	B6 einzeln Mesh Pink · Gr. 32	B6 Single Mesh Pink · Gr. 32	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865520513	B6 einzeln Mesh Pink · Gr. 33	B6 Single Mesh Pink · Gr. 33	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865553281	B6 einzeln Mesh Pink · Gr. 34	B6 Single Mesh Pink · Gr. 34	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865586049	B6 einzeln Mesh Pink · Gr. 35	B6 Single Mesh Pink · Gr. 35	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865618817	B6 einzeln Mesh Pink · Gr. 36	B6 Single Mesh Pink · Gr. 36	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865651585	B6 einzeln Mesh Pink · Gr. 37	B6 Single Mesh Pink · Gr. 37	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865684353	Einzeln Mesh Lila	Single Mesh Lila	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865717121	B6 einzeln Mesh Lila · Gr. 27	B6 Single Mesh Purple · Gr. 27	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865749889	B6 einzeln Mesh Lila · Gr. 28	B6 Single Mesh Purple · Gr. 28	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865782657	B6 einzeln Mesh Lila · Gr. 29	B6 Single Mesh Purple · Gr. 29	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865815425	B6 einzeln Mesh Lila · Gr. 30	B6 Single Mesh Purple · Gr. 30	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865848193	B6 einzeln Mesh Lila · Gr. 31	B6 Single Mesh Purple · Gr. 31	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865880961	B6 einzeln Mesh Lila · Gr. 32	B6 Single Mesh Purple · Gr. 32	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865913729	B6 einzeln Mesh Lila · Gr. 33	B6 Single Mesh Purple · Gr. 33	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865946497	B6 einzeln Mesh Lila · Gr. 34	B6 Single Mesh Purple · Gr. 34	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095865979265	B6 einzeln Mesh Lila · Gr. 35	B6 Single Mesh Purple · Gr. 35	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095866012033	B6 einzeln Mesh Lila · Gr. 36	B6 Single Mesh Purple · Gr. 36	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455957025153	Farbe	gid://shopify/ProductOptionValue/12095866044801	B6 einzeln Mesh Lila · Gr. 37	B6 Single Mesh Purple · Gr. 37	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967511937	Leder Weiss · Gr. 27	Leather White · Gr. 27	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967544705	Leder Weiss · Gr. 28	Leather White · Gr. 28	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967577473	Leder Weiss · Gr. 29	Leather White · Gr. 29	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967610241	Leder Weiss · Gr. 30	Leather White · Gr. 30	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967643009	Leder Weiss · Gr. 31	Leather White · Gr. 31	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967675777	Leder Weiss · Gr. 32	Leather White · Gr. 32	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967708545	Leder Weiss · Gr. 33	Leather White · Gr. 33	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967741313	Leder Weiss · Gr. 34	Leather White · Gr. 34	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967774081	Leder Weiss · Gr. 35	Leather White · Gr. 35	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967806849	Leder Weiss · Gr. 36	Leather White · Gr. 36	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967839617	Leder Weiss · Gr. 37	Leather White · Gr. 37	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967905153	Leder Schwarz · Gr. 27	Leather Black · Gr. 27	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967937921	Leder Schwarz · Gr. 28	Leather Black · Gr. 28	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101967970689	Leder Schwarz · Gr. 29	Leather Black · Gr. 29	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968003457	Leder Schwarz · Gr. 30	Leather Black · Gr. 30	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968036225	Leder Schwarz · Gr. 31	Leather Black · Gr. 31	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968068993	Leder Schwarz · Gr. 32	Leather Black · Gr. 32	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968101761	Leder Schwarz · Gr. 33	Leather Black · Gr. 33	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968134529	Leder Schwarz · Gr. 34	Leather Black · Gr. 34	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968167297	Leder Schwarz · Gr. 35	Leather Black · Gr. 35	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968200065	Leder Schwarz · Gr. 36	Leather Black · Gr. 36	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15458640691585	Farbe	gid://shopify/ProductOptionValue/12101968232833	Leder Schwarz · Gr. 37	Leather Black · Gr. 37	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15459837575553	Farbe	gid://shopify/ProductOptionValue/12316533850497	Kragen Schwarz HT1	Collar Black HT1	2026-09-23T20:42Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15459847799169	Farbe	gid://shopify/ProductOptionValue/12110020477313	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:42Z/reparatur-konsistenz
+gid://shopify/Product/15459912024449	Farbe	gid://shopify/ProductOptionValue/12110442987905	Leuchtendrot A	Leuchtendes Rot A	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15459914154369	Farbe	gid://shopify/ProductOptionValue/12110476214657	Marineblau mit gepunktet	Navy Blue With Polka Dots	2026-09-23T20:42Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15460672930177	Farbe	gid://shopify/ProductOptionValue/12115700941185	Leinen Weiss	Linen White	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15460709695873	Farbe	gid://shopify/ProductOptionValue/12116711047553	Neu Blau	New Blue	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980045697	Farbe	gid://shopify/ProductOptionValue/12377081020801	Weiss bestickt Spitze	White Embroidered Lace	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124280979841	Milchweiss doppelt Mesh 8812 · Gr. 14	Milky White Double Mesh 8812 · Gr. 14	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281012609	Milchweiss doppelt Mesh 8812 · Gr. 15	Milky White Double Mesh 8812 · Gr. 15	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281045377	Milchweiss doppelt Mesh 8812 · Gr. 16	Milky White Double Mesh 8812 · Gr. 16	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281078145	Milchweiss doppelt Mesh 8812 · Gr. 17	Milky White Double Mesh 8812 · Gr. 17	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281110913	Milchweiss doppelt Mesh 8812 · Gr. 18	Milky White Double Mesh 8812 · Gr. 18	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281143681	Milchweiss doppelt Mesh 8812 · Gr. 19	Milky White Double Mesh 8812 · Gr. 19	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281176449	Milchweiss doppelt Mesh 8812 · Gr. 20	Milky White Double Mesh 8812 · Gr. 20	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281209217	Milchweiss doppelt Mesh 8812 · Gr. 21	Milky White Double Mesh 8812 · Gr. 21	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281241985	Milchweiss doppelt Mesh 8812 · Gr. 22	Milky White Double Mesh 8812 · Gr. 22	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281307521	Grau doppelt Mesh 8812 · Gr. 14	Gray Double Mesh 8812 · Gr. 14	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281340289	Grau doppelt Mesh 8812 · Gr. 15	Gray Double Mesh 8812 · Gr. 15	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281373057	Grau doppelt Mesh 8812 · Gr. 16	Gray Double Mesh 8812 · Gr. 16	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281405825	Grau doppelt Mesh 8812 · Gr. 17	Gray Double Mesh 8812 · Gr. 17	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281438593	Grau doppelt Mesh 8812 · Gr. 18	Gray Double Mesh 8812 · Gr. 18	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281471361	Grau doppelt Mesh 8812 · Gr. 19	Gray Double Mesh 8812 · Gr. 19	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281504129	Grau doppelt Mesh 8812 · Gr. 20	Gray Double Mesh 8812 · Gr. 20	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281536897	Grau doppelt Mesh 8812 · Gr. 21	Gray Double Mesh 8812 · Gr. 21	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281569665	Grau doppelt Mesh 8812 · Gr. 22	Gray Double Mesh 8812 · Gr. 22	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281635201	Pink doppelt Mesh 8812 · Gr. 14	Pink Double Mesh 8812 · Gr. 14	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281667969	Pink doppelt Mesh 8812 · Gr. 15	Pink Double Mesh 8812 · Gr. 15	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281700737	Pink doppelt Mesh 8812 · Gr. 16	Pink Double Mesh 8812 · Gr. 16	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281733505	Pink doppelt Mesh 8812 · Gr. 17	Pink Double Mesh 8812 · Gr. 17	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281766273	Pink doppelt Mesh 8812 · Gr. 18	Pink Double Mesh 8812 · Gr. 18	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281799041	Pink doppelt Mesh 8812 · Gr. 19	Pink Double Mesh 8812 · Gr. 19	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281831809	Pink doppelt Mesh 8812 · Gr. 20	Pink Double Mesh 8812 · Gr. 20	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281864577	Pink doppelt Mesh 8812 · Gr. 21	Pink Double Mesh 8812 · Gr. 21	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281897345	Pink doppelt Mesh 8812 · Gr. 22	Pink Double Mesh 8812 · Gr. 22	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281962881	Milchweiss einzeln Mesh 8823 · Gr. 14	Milky White Single Mesh 8823 · Gr. 14	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124281995649	Milchweiss einzeln Mesh 8823 · Gr. 15	Milky White Single Mesh 8823 · Gr. 15	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282028417	Milchweiss einzeln Mesh 8823 · Gr. 17	Milky White Single Mesh 8823 · Gr. 17	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282061185	Milchweiss einzeln Mesh 8823 · Gr. 18	Milky White Single Mesh 8823 · Gr. 18	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282093953	Milchweiss einzeln Mesh 8823 · Gr. 19	Milky White Single Mesh 8823 · Gr. 19	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282126721	Milchweiss einzeln Mesh 8823 · Gr. 20	Milky White Single Mesh 8823 · Gr. 20	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282159489	Milchweiss einzeln Mesh 8823 · Gr. 21	Milky White Single Mesh 8823 · Gr. 21	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282192257	Milchweiss einzeln Mesh 8823 · Gr. 22	Milky White Single Mesh 8823 · Gr. 22	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282225025	Grau einzeln Mesh	Grau Single Mesh	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282257793	Grau einzeln Mesh 8823 · Gr. 14	Gray Single Mesh 8823 · Gr. 14	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282290561	Grau einzeln Mesh 8823 · Gr. 15	Gray Single Mesh 8823 · Gr. 15	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282323329	Grau einzeln Mesh 8823 · Gr. 16	Gray Single Mesh 8823 · Gr. 16	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282356097	Grau einzeln Mesh 8823 · Gr. 17	Gray Single Mesh 8823 · Gr. 17	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282388865	Grau einzeln Mesh 8823 · Gr. 18	Gray Single Mesh 8823 · Gr. 18	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282421633	Grau einzeln Mesh 8823 · Gr. 19	Gray Single Mesh 8823 · Gr. 19	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282454401	Grau einzeln Mesh 8823 · Gr. 20	Gray Single Mesh 8823 · Gr. 20	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282487169	Grau einzeln Mesh 8823 · Gr. 21	Gray Single Mesh 8823 · Gr. 21	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282519937	Grau einzeln Mesh 8823 · Gr. 22	Gray Single Mesh 8823 · Gr. 22	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282552705	Pink einzeln Mesh	Pink Single Mesh	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282585473	Pink einzeln Mesh 8823 · Gr. 14	Pink Single Mesh 8823 · Gr. 14	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282618241	Pink einzeln Mesh 8823 · Gr. 15	Pink Single Mesh 8823 · Gr. 15	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282651009	Pink einzeln Mesh 8823 · Gr. 18	Pink Single Mesh 8823 · Gr. 18	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282683777	Pink einzeln Mesh 8823 · Gr. 19	Pink Single Mesh 8823 · Gr. 19	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282716545	Pink einzeln Mesh 8823 · Gr. 20	Pink Single Mesh 8823 · Gr. 20	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282749313	Pink einzeln Mesh 8823 · Gr. 21	Pink Single Mesh 8823 · Gr. 21	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980209537	Farbe	gid://shopify/ProductOptionValue/12124282782081	Pink einzeln Mesh 8823 · Gr. 22	Pink Single Mesh 8823 · Gr. 22	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124287861121	Neu Rot-12.5 cm	New Red-12.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124287893889	Neu Rot-13.5 cm	New Red-13.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124287926657	Neu Rot-14.5 cm	New Red-14.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124287959425	Neu Rot-15.5 cm	New Red-15.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124287992193	Neu Rot-16.5 cm	New Red-16.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124288024961	Neu Rot-17.5 cm	New Red-17.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124288057729	Neu Apfelgrün-12.5 cm	New Apple Green-12.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124288090497	Neu Apfelgrün-13.5 cm	New Apple Green-13.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124288123265	Neu Apfelgrün-14.5 cm	New Apple Green-14.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124288156033	Neu Apfelgrün-15.5 cm	New Apple Green-15.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124288188801	Neu Apfelgrün-16.5 cm	New Apple Green-16.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15461980471681	Farbe	gid://shopify/ProductOptionValue/12124288221569	Neu Apfelgrün-17.5 cm	New Apple Green-17.5CM	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15463691321729	Farbe	gid://shopify/ProductOptionValue/12133758697857	M63 Weiss gross wie abgebildet	M63 White Big Picture	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15463691321729	Farbe	gid://shopify/ProductOptionValue/12133758730625	M63 Schwarz gross wie abgebildet	M63 Black Big Picture	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15463691321729	Farbe	gid://shopify/ProductOptionValue/12133758796161	M63 Schwarz klein wie abgebildet	M63 Black Small Picture	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15465835364737	Farbe	gid://shopify/ProductOptionValue/12149988819329	Leinen Weiss	Linen White	2026-09-23T20:42Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15466918773121	Farbe	gid://shopify/ProductOptionValue/12158493065601	Gelb kariert gefüttert	Yellow Plaid With Velvet	2026-09-23T20:42Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15466918773121	Farbe	gid://shopify/ProductOptionValue/12158493098369	Grün kariert Fleece	Green Plaid Fleece	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690514305	Stahl-Nr. 7	Steel Color-No 7	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690547073	Stahl-Nr. 8	Steel Color-No 8	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690579841	Stahl-Nr. 9	Steel Color-No 9	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690612609	Stahl-Nr. 10	Steel Color-No 10	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690645377	Stahl-Nr. 11	Steel Color-No 11	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690678145	Stahl-Nr. 12	Steel Color-No 12	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690710913	Stahl-Nr. 13	Steel Color-No 13	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690743681	Stahl-Nr. 14	Steel Color-No 14	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467017372033	Farbe	gid://shopify/ProductOptionValue/12316690776449	Stahl-Nr. 15	Steel Color-No 15	2026-09-23T20:42Z/reparatur-original:Steel Color
+gid://shopify/Product/15467075928449	Farbe	gid://shopify/ProductOptionValue/12316693135745	17 Stück Set	17 piece Set	2026-09-23T20:42Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15467075928449	Farbe	gid://shopify/ProductOptionValue/12316693168513	16 Stück Set	16 piece Set	2026-09-23T20:42Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15467075928449	Farbe	gid://shopify/ProductOptionValue/12316693201281	15 Stück Set	15 piece Set	2026-09-23T20:42Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15467075928449	Farbe	gid://shopify/ProductOptionValue/12316693234049	13 Stück Set	13 piece Set	2026-09-23T20:42Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15467075928449	Farbe	gid://shopify/ProductOptionValue/12316693266817	10 Stück Set	10 piece Set	2026-09-23T20:42Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15467099586945	Farbe	gid://shopify/ProductOptionValue/12159926763905	Uni Oliv	Solid Olive	2026-09-23T20:42Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15467103519105	Farbe	gid://shopify/ProductOptionValue/12316695396737	Schwarz-4 Bürste Köpfe	Black-4 brush heads	2026-09-23T20:42Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15467103519105	Farbe	gid://shopify/ProductOptionValue/12316695429505	Schwarz-8 Bürste Köpfe	Black-8 brush heads	2026-09-23T20:42Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15467103519105	Farbe	gid://shopify/ProductOptionValue/12316695527809	Weiss-4 Bürste Köpfe	White-4 brush heads	2026-09-23T20:42Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15467103519105	Farbe	gid://shopify/ProductOptionValue/12316695560577	Weiss-8 Bürste Köpfe	White-8 brush heads	2026-09-23T20:42Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173548781953	Weiss-Sohle Länge 11 CM	Weiss-Sohlenlänge 11 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173548814721	Weiss-Sohle Länge 12 CM	Weiss-Sohlenlänge 12 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173548847489	Weiss-Sohle Länge 13 CM	Weiss-Sohlenlänge 13 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173548880257	Rot-Sohle Länge 11 CM	Rot-Sohlenlänge 11 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173548913025	Rot-Sohle Länge 12 CM	Rot-Sohlenlänge 12 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173548945793	Rot-Sohle Länge 13 CM	Rot-Sohlenlänge 13 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173548978561	Schwarz-Sohle Länge 11 CM	Schwarz-Sohlenlänge 11 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549011329	Schwarz-Sohle Länge 12 CM	Schwarz-Sohlenlänge 12 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549044097	Schwarz-Sohle Länge 13 CM	Schwarz-Sohlenlänge 13 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549076865	Pink-Sohle Länge 11 CM	Pink-Sohlenlänge 11 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549109633	Pink-Sohle Länge 12 CM	Pink-Sohlenlänge 12 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549142401	Pink-Sohle Länge 13 CM	Pink-Sohlenlänge 13 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549175169	Dunkelbraun-Sohle Länge 11 CM	Dunkelbraun-Sohlenlänge 11 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549207937	Dunkelbraun-Sohle Länge 12 CM	Dunkelbraun-Sohlenlänge 12 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549240705	Dunkelbraun-Sohle Länge 13 CM	Dunkelbraun-Sohlenlänge 13 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549273473	Grau-Sohle Länge 11 CM	Grau-Sohlenlänge 11 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549306241	Grau-Sohle Länge 12 CM	Grau-Sohlenlänge 12 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549339009	Grau-Sohle Länge 13 CM	Grau-Sohlenlänge 13 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549371777	Khaki-Sohle Länge 11 CM	Khaki-Sohlenlänge 11 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549404545	Khaki-Sohle Länge 12 CM	Khaki-Sohlenlänge 12 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15468698173825	Farbe	gid://shopify/ProductOptionValue/12173549437313	Khaki-Sohle Länge 13 CM	Khaki-Sohlenlänge 13 cm	2026-09-23T20:42Z/reparatur-korrigiert
+gid://shopify/Product/15469437682049	Farbe	gid://shopify/ProductOptionValue/12178314658177	Leopard Muster	Leopard Pattern	2026-09-23T20:42Z/reparatur-original:satzbau:muster-vor-nomen

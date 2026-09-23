@@ -144,7 +144,7 @@ for datei in DATEIEN:
             if k: gesehen.add(k)
     if not DRY and n:
         with open(datei, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=felder); w.writeheader(); w.writerows(rows)
+            w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(rows)
     print(f"{datei:32s} ready {len(ready):4d} → " + " · ".join(f"{k} {v}" for k, v in n.most_common()))
     gesamt.update(n)
 print(("DRY — " if DRY else "") + "GESAMT: " + " · ".join(f"{k} {v}" for k, v in gesamt.most_common()))
