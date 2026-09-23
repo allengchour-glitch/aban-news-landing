@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:47 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:48 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **49'206**
-- Optionen mit englischen Werten (Kandidaten): 4'702
-- Optionen übersetzt: **2'698** · Werte übersetzt: **17'052**
+- Produkte gesehen: **50'009**
+- Optionen mit englischen Werten (Kandidaten): 4'738
+- Optionen übersetzt: **2'725** · Werte übersetzt: **17'191**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'531
+- Werte mit unbekanntem Wort (unverändert): 14'559
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 71
+- übersprungen «kleidungsstueck-im-wert»: 72
 - übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -153,5 +153,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 651, `light` 451, `color` 406, `shell` 162, `degrees` 159, `size` 155, `core` 137, `surface` 130, `powder` 126, `shoes` 113, `no` 112, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 96, `four` 95, `bag` 93, `code` 91, `french` 89, `rain` 88, `yards` 88, `case` 87, `dark` 83, `dinosaur` 82, `opp` 81, `bottom` 79, `cloth` 78, `buckle` 78, `rope` 75, `spring` 72, `dual` 71, `chain` 70, `base` 70, `petal` 68, `half` 67, `autumn` 66, `little` 66, `net` 64, `tea` 62, `feet` 62, `strap` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `plush` 59, `one` 57, `electric` 56, `rice` 55, `rainbow` 55, `night` 54, `bear` 54, `background` 52, `face` 52, `line` 52, `yarn` 52, `person` 51
+`inner` 651, `light` 452, `color` 407, `shell` 162, `degrees` 159, `size` 155, `core` 137, `surface` 130, `powder` 126, `shoes` 113, `no` 112, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `to` 102, `three` 97, `belt` 96, `four` 95, `bag` 93, `code` 91, `french` 89, `rain` 88, `yards` 88, `case` 87, `dark` 83, `dinosaur` 82, `opp` 81, `bottom` 79, `cloth` 78, `buckle` 78, `spring` 75, `rope` 75, `dual` 71, `chain` 70, `base` 70, `autumn` 69, `petal` 68, `half` 67, `little` 66, `net` 64, `tea` 62, `feet` 62, `strap` 62, `mother` 61, `insole` 61, `cherry` 60, `of` 60, `bear` 60, `plush` 59, `one` 57, `electric` 56, `rice` 55, `rainbow` 55, `night` 54, `background` 52, `face` 52, `star` 52, `line` 52, `yarn` 52
 
