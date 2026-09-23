@@ -2500,3 +2500,31 @@ gid://shopify/Product/15448878383489	zugeordnet	3	Smartes Fitness Armband mit Pu
 gid://shopify/Product/15448878416257	zugeordnet	6	Smartwatch mit Fitness-Tracking & Bluetooth-Anrufen
 gid://shopify/Product/15448878449025	zugeordnet	8	Smartwatch mit Anruf- & Musiksteuerung
 gid://shopify/Product/15448875499905	zugeordnet	9	S5 Fitness-Armband mit Temperaturmessung
+gid://shopify/Product/15448878580097	bild-urls-tot
+gid://shopify/Product/15448878645633	zugeordnet	2	Smartwatch mit Bluetooth-Telefonie & Fitness-Tracker
+gid://shopify/Product/15448878711169	zugeordnet	3	Smartwatch & Bluetooth Earbuds Set mit Dual-Armband
+gid://shopify/Product/15448878743937	zugeordnet	2	Smartwatch mit Bluetooth-Anrufen und Fitness-Tracker
+gid://shopify/Product/15448878907777	zugeordnet	6	Smartwatch mit Schrittzähler und Nachrichten
+gid://shopify/Product/15448879202689	zugeordnet	2	Smartwatch Multi-Armband-Kit
+gid://shopify/Product/15448879464833	bild-urls-tot
+gid://shopify/Product/15448879595905	zugeordnet	5	SKMEI Multifunktions-Studentenuhr für Herren
+gid://shopify/Product/15448879825281	bild-urls-tot
+gid://shopify/Product/15448880054657	zugeordnet	2	4G Smartwatch für Kinder mit Bluetooth
+gid://shopify/Product/15448880251265	zugeordnet	3	Coole leuchtende, wasserdichte Digitaluhr
+gid://shopify/Product/15448880644481	zugeordnet	2	Fitness-Smartwatch mit Herzfrequenz-Tracking · Business, 4 F
+gid://shopify/Product/15448880742785	zugeordnet	4	Smart Armband für Herzfrequenz & Schlaf
+gid://shopify/Product/15448880841089	zugeordnet	24	Leder-Uhrenarmband im Vintage-Stil
+gid://shopify/Product/15448880939393	bild-urls-tot
+gid://shopify/Product/15448881037697	zugeordnet	3	Magnetisches Uhrenarmband aus Titan
+gid://shopify/Product/15448881267073	zugeordnet	2	Strobe Licht-Set mit Fernbedienung
+gid://shopify/Product/15448881365377	zugeordnet	2	Anti-Verlust Locator für iPhone
+gid://shopify/Product/15448881693057	zugeordnet	2	6-in-1 Kabel-Controller mit Makro-Programmierung
+gid://shopify/Product/15448881791361	zugeordnet	4	Strobe Light Set mit Fernbedienung
+gid://shopify/Product/15448881987969	zugeordnet	4	LED Nachttischlampe Musiknote
+gid://shopify/Product/15448882151809	zugeordnet	3	Bluetooth Lenkrad-Controller
+gid://shopify/Product/15448882315649	zugeordnet	4	iTag Bluetooth-Itemfinder
+gid://shopify/Product/15448882643329	zugeordnet	3	Universal-Funkfernbedienung · RF433
+gid://shopify/Product/15448883462529	zugeordnet	2	Full Color Dual Output Controller
+gid://shopify/Product/15448883757441	zugeordnet	2	Küchen-Thermometer für Food, BBQ & Ofen
+gid://shopify/Product/15448883822977	zugeordnet	10	Nackenventilator mit Digitalanzeige
+gid://shopify/Product/15448883888513	zugeordnet	2	Universal-Kopierfernbedienung 433 MHz
