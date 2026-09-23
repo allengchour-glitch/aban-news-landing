@@ -1,4 +1,4 @@
-# Kollektionen mit gleicher Regel — Stand 2026-09-23T23:44:52Z
+# Kollektionen mit gleicher Regel — Stand 2026-09-23T23:56:15Z
 
 OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 0 · Gruppen: 0 · DRY
 

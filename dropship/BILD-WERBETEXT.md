@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:53:22Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:56:08Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **1245** in 357 Produkten
-- Treffer (≥ 4 Wörter): **47** in 45 Produkten
+- Medien geprüft: **1337** in 382 Produkten
+- Treffer (≥ 4 Wörter): **55** in 52 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -20,8 +20,11 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
 | Plüschspielzeug mit Flattergeräusch `15453792174465` | [69926765461889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4b69f4b4-890b-47aa-89a2-7f70b5e1dd60_trans.jpg) | 15 | Cats are born hunters Highly simulated appearance suitable | offen |
 | Multifunktionale wasserdichte Steckdose für Wohn `15493873860993` | [70479330279809](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6dd5f853-90c4-4899-9887-bc425efbe683_trans.jpg) | 15 | Flexible fits sealing ring Protection level reaches Wind | offen |
+| Velvet-Matte Lippenstift-Linierer `15453767074177` | [69926686130561](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c08c8d05-8ba3-41b6-a369-2e2983da3f17.jpg) | 15 | BARVENA Comfortable weightless formula that flake feather Glides | offen |
 | Kamera-Drohne mit Hinderniserkennung `15453744628097` | [69926295536001](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc914a48-36f7-4072-b53a-203bf305c567.jpg) | 14 | Powerful brushless power Equipped with four and brushless | offen |
 | Drohnenfernsteuerung mit 3 Kameras, langer Akku `15453743743361` | [69926293471617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a23f731e-f5bd-4c47-b047-72f2cbe17a1c.jpg) | 14 | Max Drone flagship light and shadow triple camera | offen |
+| Natürlicher Gummispielzeug Lebensmittel-Verteile `15453763502465` | [69926634488193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c34aa6a5-2ee1-492c-8bd0-64631702cb5a_trans.jpg) | 14 | Super Strong Interactive Throwing Puzzle Food Dispensing jistant | offen |
+| Grosses Trinkschüssel für Haustiere `15453764911489` | [69926640091521](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e8706c5-2053-4556-b96a-09d5a383114a_trans.jpg) | 14 | Use exquisite The cat bowl Start Daily Food | offen |
 | Öle für Duftdiffuser `15453771661697` | [69926697304449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68ea0afb-6a45-4d84-8ebc-123850f919a2.jpg) | 13 | LAVENDER ESSENTIAL ESSENTIAL OIL THERAPEUTIC GRADE Essential oils | offen |
 | Intelligentes Bremslicht für Velos `15448957976961` | [69862641762689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2fb4a32-5161-4001-9089-69587e78a7ab_trans.jpg) | 12 | waterproof Good waterproof level for daily need worry | offen |
 | Bauchstützgürtel für Schwangere `15453760717185` | [69926628524417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9f9382e0-2080-4051-b7a5-441a700d8875_fine.jpg) | 12 | Ergonomic curve design Ring design fits better Soft | offen |
@@ -29,8 +32,11 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Grillabdeckung aus Oxford-Gewebe `15448959910273` | [69862680527233](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/09436e7d-1a60-47bf-8225-e236c3f372d9.jpg) | 10 | Suitable for most machines with width Please ensure | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [69926292881793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c946bda-8782-4759-9d82-90a6b13f1808.jpg) | 10 | Intelligent perception obstacle avoidance Four way detection and | offen |
 | Intelligenter Futtermanger `15453764714881` | [69926639731073](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30ca7178-06d7-4015-809a-de4d4490f015_fine.jpg) | 10 | Fully Automatic Feeding Remote Mobile Control Full Machine | offen |
+| Kratzbrett für Katzen · schont Möbel und Krallen `15453763731841` | [69926634914177](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05847a99-5b79-432c-af45-69f17ee95c61_trans.jpg) | 10 | ZiHaiWan INCREASE AND DEEPEN Durablejute sway left and | offen |
 | Aerial Photography Drone 8K HD `15453744431489` | [69926294815105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fd59f6e3-77ce-4e6d-876f-c97bfb20df80.jpg) | 9 | Long battery life Bidirectional electric optical flow obstacle | offen |
 | 8K-Luftbild-Drohne `15453744300417` | [69926294487425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c22c3423-4f47-4372-8567-aef18a6d44c5_trans.jpg) | 9 | player the aerial photography industry Easy fly and | offen |
+| Interaktiver Ball mit 3 Modi & USB-Ladekugel für `15453763699073` | [69926634881409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/82ba7971-236d-432c-88d8-73283cb00286.jpg) | 9 | AUTOMATIC PET JUMPING BALL Thickened and Extended battery | offen |
+| Grossvolumige Katzenklo-Box mit Hochwänden `15453764354433` | [69926638911873](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2c53760d-54a6-405f-936c-e0433e0bee8a_trans.jpg) | 9 | Stainless steel cat litter box Heightened baffle deepened | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | offen |
@@ -58,5 +64,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Gänse-Jagd-Spielzeug für Katzen `15453790536065` | [69926763266433](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6f49f688-f0ae-4e7b-b31a-43f8d80c3eac_trans.jpg) | 4 | wings sound accompanying lon | offen |
 | Tragbarer FPV-Farbregler `15453742924161` | [69926291833217](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa9ea343-d559-42cd-87eb-aac84abce14a.jpg) | 4 | SLATE GREY CHERRY RED | offen |
 | Katzen-Spielball mit Spasseffekt `15453763240321` | [69926634258817](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4d77259-7e07-41e9-ac68-d1ecda4e62bb.jpg) | 4 | Master entertainment All day | offen |
+| Mandala-Vorlage für Wandmalerei `15453767631233` | [70519571939713](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1719537628329676800.jpg) | 4 | mandala templates Size ALN | offen |
+| Mandala-Vorlage für Wandmalerei `15453767631233` | [70519572005249](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cdebef6b-cc7b-46c2-8422-6a6641b9f35c_trans.jpg) | 4 | mandala templates Size ALN | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
