@@ -10138,7 +10138,7 @@ herren-ubergangsjacke-aus-kunstleder-600100	2026-09-22	um-ohne-wirkung
 herren-ubergangsjacke-mit-reissverschluss-622500	2026-09-22	um-ohne-wirkung
 herren-ubergangsjacke-mit-revers-und-blumenpri-612000	2026-09-22	du
 herren-ubergangsjacke-mit-revers-und-taschen-635100	2026-09-22	du
-herren-ubergangsjacke-mit-reverskragen-622300	2026-09-22	um-ohne-wirkung
+herren-ubergangsjacke-mit-reverskragen-622300	2026-09-23	teilweise
 herren-ubergangsjacke-mit-rundsaum-626500	2026-09-22	um-ohne-wirkung
 herren-ubergangsjacke-mit-stehkragen-600900	2026-09-22	um-ohne-wirkung
 herren-ubergangsjacke-mit-stehkragen-637100	2026-09-22	um-ohne-wirkung
