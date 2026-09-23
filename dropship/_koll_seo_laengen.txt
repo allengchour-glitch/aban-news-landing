@@ -95,3 +95,14 @@
 2026-09-23T17:38:39Z	ft-ballone	titel		Ballone & Deko kaufen | LuxeStyle Schweiz
 2026-09-23T17:38:40Z	haustier-napf-futter	titel		Näpfe & Futter-Zubehör kaufen | LuxeStyle Schweiz
 2026-09-23T17:38:41Z	licht-led-strip	titel		LED-Strips & Lichterketten kaufen | LuxeStyle Schweiz
+2026-09-23T17:38:42Z	licht-tischlampe	titel		Tisch- & Schreibtischlampen kaufen | LuxeStyle Schweiz
+2026-09-23T17:38:43Z	licht-decken-steh	titel		Steh- & Deckenlampen kaufen | LuxeStyle Schweiz
+2026-09-23T17:38:45Z	licht-nachtlicht-projektor	titel		Nachtlichter & Sternenhimmel-Projektoren kaufen | LuxeStyle
+2026-09-23T17:38:46Z	halloween	titel		Halloween-Kostüme, Masken & Deko kaufen | LuxeStyle Schweiz
+2026-09-23T17:38:47Z	haustier-hunde	titel		Hundezubehör kaufen – Geschirre, Näpfe & Pflege | LuxeStyle
+2026-09-23T17:38:48Z	haustier-katzen	titel		Katzenzubehör kaufen – Kratzbäume & Katzentoiletten | LuxeStyle
+2026-09-23T17:38:50Z	spielzeug-ch-lager	titel		Spielzeug ab Schweizer Lager kaufen | LuxeStyle
+2026-09-23T17:38:52Z	spielzeug-neuheiten	titel		Spielzeug-Neuheiten kaufen | LuxeStyle Schweiz
+2026-09-23T17:38:54Z	kostueme-ch-lager	titel		Kostüme ab Schweizer Lager kaufen | LuxeStyle
+2026-09-23T17:38:56Z	elektronik-kleinteile	titel		Elektronik-Zubehör & Kleinteile kaufen | LuxeStyle Schweiz
+2026-09-23T17:38:58Z	querbeet	titel		Aus allen Welten – Mode, Wohnen & Technik | LuxeStyle Schweiz

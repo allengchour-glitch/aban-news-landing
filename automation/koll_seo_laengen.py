@@ -95,10 +95,11 @@ NICHT_KAUFBAR = {w.lower() for w in """
 PRAEPOSITION = re.compile(r"^(für|fürs|aus|ab|unter|bis|mit|von|zum|zur|im|in|am|an|auf|bei|nach)\b", re.I)
 
 EMOJI = re.compile("[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF"
-                   "\U00002B00-\U00002BFF️‍⃣]")
+                   "\U00002B00-\U00002BFF\uFE0F\u200D\u20E3]")
 MONATE = r"(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)"
-ABK = re.compile(r"(?:\b(?:Mio|Mrd|Stk|ca|bzw|inkl|exkl|evtl|usw|etc|Nr|Tel|Std|Min|max|min|vgl|z\.\s?B|"
-                 r"u\.\s?a|d\.\s?h|o\.\s?ä|St)|\b[A-Za-zÄÖÜäöü])$")
+# Abkürzungen und Einzelbuchstaben («z. B.») vor dem Punkt — aber «Rain-X.» IST ein Satzende.
+ABK = re.compile(r"(?:^|\s)(?:Mio|Mrd|Stk|ca|bzw|inkl|exkl|evtl|usw|etc|Nr|Tel|Std|Min|max|min|vgl|St|"
+                 r"[A-Za-zÄÖÜäöü])$")
 
 # Teilaussagen der Beschreibung und ihr Gewicht (höher = bleibt länger stehen).
 AUSSAGEN = [
@@ -109,7 +110,8 @@ AUSSAGEN = [
     (re.compile(r"in 1[–-]2 Werktagen", re.I), 55),
     (re.compile(r"Lieferung in die (ganze )?Schweiz|Schweizer (Online-?)?Shop|Schweizer Onlineshop|"
                 r"Versand in die Schweiz", re.I), 35),
-    (re.compile(r"geprüfte (Ware|Qualität)|Marken-Qualität|EU-Versand|Blitzversand", re.I), 30),
+    # unbelegte Sammelversprechen (für CJ-Ware aus China ist «EU-Versand»/«Blitzversand» falsch) → Rauschen
+    (re.compile(r"geprüfte (Ware|Qualität)|Marken-Qualität|EU-Versand|Blitzversand", re.I), 24),
     (re.compile(r"(^|\s)jetzt\b.*\b(entdecken|bestellen|kaufen|shoppen)\b", re.I), 25),
     (re.compile(r"nach Preis sortiert", re.I), 20),
 ]
@@ -201,39 +203,54 @@ def _bauen(saetze, weg):
     return " ".join(out)
 
 
-def _gierig(saetze):
-    """Streicht Teilaussagen nach Gewicht (schwächste, bei Gleichstand späteste zuerst), bis ≤ ZIEL."""
+RAUSCHEN = 25  # «Jetzt … entdecken», «Nach Preis sortiert»: fällt beim Kürzen immer
+
+
+def _auswahl(saetze, usp_schuetzen):
+    """Beste Teilmenge der Teilaussagen, die ≤ ZIEL passt: grösste Gewichtssumme, dann längster Text.
+    Kern bleibt immer; die Versand-Aussage bleibt, wenn usp_schuetzen. Rauschen fällt immer.
+    Gibt (text, usp_da) zurück oder (None, False), wenn nichts passt."""
     alle = [e for s in saetze for t in s["teile"] for e in t["einheiten"]]
-    weg = set()
-    text = _bauen(saetze, weg)
-    while len(text) > DESC_ZIEL:
-        kand = [e for e in alle if e["pos"] not in weg and not e["kern"]]
-        if not kand:
-            break
-        e = min(kand, key=lambda e: (e["w"], -e["pos"]))
-        weg.add(e["pos"])
+    fest = {e["pos"] for e in alle if e["kern"] or (usp_schuetzen and e["w"] == 90)}
+    rauschen = {e["pos"] for e in alle if e["w"] <= RAUSCHEN and e["pos"] not in fest}
+    frei = [e for e in alle if e["pos"] not in fest and e["pos"] not in rauschen]
+    if len(frei) > 14:  # Sicherung gegen Kombinatorik — kommt bei Kollektionstexten nicht vor
+        frei, rauschen = frei[:14], rauschen | {e["pos"] for e in frei[14:]}
+    bestes = None
+    for maske in range(1 << len(frei)):
+        weg = set(rauschen)
+        summe = 0
+        for i, e in enumerate(frei):
+            if maske >> i & 1:
+                summe += e["w"]
+            else:
+                weg.add(e["pos"])
         text = _bauen(saetze, weg)
-    usp_da = any(e["w"] == 90 and e["pos"] not in weg for e in alle)
-    return text, usp_da
+        if len(text) > DESC_ZIEL:
+            continue
+        schluessel = (summe, len(text))
+        if bestes is None or schluessel > bestes[0]:
+            usp_da = any(e["w"] == 90 and e["pos"] not in weg for e in alle)
+            bestes = (schluessel, text, usp_da)
+    return (bestes[1], bestes[2]) if bestes else (None, False)
 
 
 def _komma_schnitte(kern):
     """Kürzere Fassungen des ersten Satzteils, an Komma-Grenzen, längste zuerst (≥ 70 Zeichen).
-    Nie nach einem Ergänzungsstrich («Stand-, Tisch-»), nie in einer Markenliste («von A, B»)."""
+    Nie nach einem Ergänzungsstrich («Stand-, Tisch-»), nie in einer Marken- oder Materialliste
+    («von Sonax, Turtle Wax», «Marken wie Casio, …», «Näpfe aus Edelstahl, Keramik»)."""
     out = []
     stellen = [m.start() for m in re.finditer(r", ", kern)]
     for p in reversed(stellen):
         if p < 70 or kern[p - 1] == "-":
             continue
-        vorher = max(kern.rfind(", ", 0, p), kern.rfind(": ", 0, p))
-        segment = kern[vorher + 1:p]
-        if re.search(r"\s(von|wie)\s", segment):
+        bereich_ab = kern.rfind(": ", 0, p) + 2 if kern.rfind(": ", 0, p) >= 0 else 0
+        if re.search(r"\s(von|wie|aus)\s", kern[bereich_ab:p]):
             continue
         v = kern[:p]
         # Letztes Komma der Aufzählung zu «&», wenn die Aufzählung noch keine Konjunktion hat
-        bereich_ab = v.rfind(": ") + 2 if ": " in v else 0
         bereich = v[bereich_ab:]
-        oben_konj = re.search(r"(?<!-) (&|und) ", bereich)
+        oben_konj = re.search(r"(?<!-) (&|und|sowie|oder) ", bereich)
         letzte = [m.start() for m in re.finditer(r"(?<!-), ", bereich)]
         if letzte and not oben_konj:
             k = bereich_ab + letzte[-1]
@@ -252,16 +269,27 @@ def kuerzen_beschreibung(s):
     hatte_usp = any(e["w"] == 90 for x in saetze for t in x["teile"] for e in t["einheiten"])
     kern = saetze[0]["teile"][0]["einheiten"][0]
     original = kern["text"]
+    varianten = [original] + _komma_schnitte(original)
     bestes = None
-    for variante in [original] + _komma_schnitte(original):
-        kern["text"] = variante
-        text, usp_da = _gierig(saetze)
-        if len(text) <= DESC_ZIEL and (usp_da or not hatte_usp):
-            bestes = text
-            break
-        if bestes is None and len(text) <= DESC_ZIEL:
-            bestes = text
-    kern["text"] = original
+    try:
+        # 1. Versand-Aussage halten: längster Kern, mit dem sie noch Platz hat
+        if hatte_usp:
+            for v in varianten:
+                kern["text"] = v
+                text, _ = _auswahl(saetze, True)
+                if text:
+                    bestes = text
+                    break
+        # 2. sonst: längster Kern, der überhaupt passt (Versand-Aussage darf fallen)
+        if bestes is None:
+            for v in varianten:
+                kern["text"] = v
+                text, _ = _auswahl(saetze, False)
+                if text:
+                    bestes = text
+                    break
+    finally:
+        kern["text"] = original
     if bestes is None:
         return kuerzen_notfall(s)
     if not re.search(r"CHF\s*50", bestes) and len(bestes) + 1 + len(USP) <= DESC_ZIEL:
@@ -307,8 +335,9 @@ def kuerzen_titel(t, ziel=TITEL_ZIEL):
     else:
         kopf, sep, items = kern.strip(), "", []
     for k in range(len(items), 0, -1):
+        liste_k = liste if k == len(items) else _liste(items[:k])  # volle Liste im Originalwortlaut
         for mk in marken:
-            c = f"{kopf}{sep}{_liste(items[:k])}{mk}"
+            c = f"{kopf}{sep}{liste_k}{mk}"
             if len(c) <= ziel:
                 return c
     for mk in marken:
@@ -552,7 +581,21 @@ def selbsttest():
     e = ("Clevere Küchenhelfer: elektrische Zerkleinerer, Gemüseschneider, Milchaufschäumer & praktische Gadgets. "
          "Geprüfte Ware, EU-Versand, 30 Tage Rückgabe. −10% mit WELCOME10.")
     k = kuerzen_beschreibung(e)
-    t.append(("WELCOME10 fällt vor Rückgabe", "WELCOME10" not in k and "Rückgabe" in k))
+    t.append(("Floskeln («Geprüfte Ware», «EU-Versand») fallen zuerst, Rückgabe bleibt",
+              "Geprüfte Ware" not in k and "EU-Versand" not in k and "Rückgabe" in k and len(k) <= 155))
+    g = ("Wasserfester Edelstahl-Schmuck: läuft nicht an beim Duschen, Schwimmen & am See. Ketten, Ohrringe, "
+         "Armbänder. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. –10% mit Code WELCOME10.")
+    k = kuerzen_beschreibung(g)
+    t.append(("WELCOME10 fällt vor Rückgabe", "WELCOME10" not in k and "Rückgabe" in k and len(k) <= 155))
+    h = ("Futter & Näpfe bei LuxeStyle: Futterautomaten, Futterspender, Trinkbrunnen sowie Näpfe aus Edelstahl, "
+         "Keramik & Silikon für Hund und Katze. Nach Preis sortiert. Gratis-Versand ab CHF 50.")
+    k = kuerzen_beschreibung(h)
+    t.append(("Materialliste «aus Edelstahl, Keramik» wird nicht zerschnitten, Rauschen fällt",
+              "Keramik & Silikon" in k and "Nach Preis" not in k and len(k) <= 155))
+    i2 = ("Gesichtssaunen, Poren-Tools, Gesichtsroller & Gua Sha online kaufen bei LuxeStyle. Gesichtspflege-Geräte "
+          "für einen frischen Teint. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.")
+    k = kuerzen_beschreibung(i2)
+    t.append(("Auswahl nutzt den Platz (Rückgabe passt noch dazu)", "Rückgabe" in k and len(k) <= 155))
     t.append(("≤160 bleibt unverändert", kuerzen_beschreibung("Kurz. Gratis-Versand ab CHF 50.") == "Kurz. Gratis-Versand ab CHF 50."))
     t.append(("idempotent", kuerzen_beschreibung(kuerzen_beschreibung(b)) == kuerzen_beschreibung(b)))
     f = "Ab dem 1. August gibt es Fahnen, Lampions und Deko in grosser Auswahl für den Nationalfeiertag bei uns im Shop. " * 2
@@ -567,6 +610,9 @@ def selbsttest():
     tt = "Make-up online kaufen – Lippenstift, Mascara, Foundation & Sets | LuxeStyle CH"
     k = kuerzen_titel(tt)
     t.append(("Inhalt vor Marke", k == "Make-up online kaufen – Lippenstift, Mascara, Foundation & Sets"))
+    t.append(("volle Liste bleibt im Wortlaut", kuerzen_titel(
+        "Portemonnaie & Geldbörse kaufen – Damen & Herren, RFID-Schutz | LuxeStyle CH")
+        == "Portemonnaie & Geldbörse kaufen – Damen & Herren, RFID-Schutz"))
     t.append(("Titel ≤70 unverändert", kuerzen_titel("Schuhe online kaufen | LuxeStyle CH") == "Schuhe online kaufen | LuxeStyle CH"))
     # Füllen
     t.append(("Emoji + Schweiz-Doppelung", titel_fuellen("x", "Kostüme ab Schweizer Lager 🇨🇭")[0] == "Kostüme ab Schweizer Lager kaufen | LuxeStyle"))
@@ -576,7 +622,9 @@ def selbsttest():
     t.append(("Kanarienvogel «Für Ihn» wird nicht geraten", titel_fuellen("neu-x", "Für Ihn")[0] is None))
     t.append(("Kanarienvogel «Sale» wird nicht geraten", titel_fuellen("neu-x", "Sale")[0] is None))
     t.append(("«Kinderschuhe» ist kein Kind", titel_fuellen("x", "Kinderschuhe")[0] == "Kinderschuhe kaufen | LuxeStyle Schweiz"))
-    t.append(("«Damen-Mode» ist erlaubt", titel_fuellen("x", "Damen-Mode")[0] is None or True))
+    t.append(("«Damen-Mode» ist erlaubt", titel_fuellen("x", "Damen-Mode")[0] == "Damen-Mode kaufen | LuxeStyle Schweiz"))
+    t.append(("«Rain-X.» ist ein Satzende", len(_saetze("Politur von Rain-X. Gratis-Versand ab CHF 50.")) == 2))
+    t.append(("«z. B.» ist keines", len(_saetze("Deko, z. B. Kerzen. Gratis-Versand ab CHF 50.")) == 2))
     t.append(("«Handschuhe» bleibt Handschuhe", titel_fuellen("x", "Handschuhe")[0] == "Handschuhe kaufen | LuxeStyle Schweiz"))
     t.append(("alle Übersteuerungen ≤65 ohne Emoji",
               all(len(v) <= 65 and not EMOJI.search(v) for v in UEBERSTEUERT.values())))

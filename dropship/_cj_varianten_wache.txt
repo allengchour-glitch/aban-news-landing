@@ -4247,3 +4247,4 @@ gid://shopify/Product/15448877629825	1790184847	unklar	CJ-Code 16900500: Insuffi
 gid://shopify/Product/15448877662593	1790184847	unklar	CJ-Code 16900500: Insufficient API points. Used today: 109930, Remai
 gid://shopify/Product/15448877760897	1790184847	unklar	CJ-Code 16900500: Insufficient API points. Used today: 109930, Remai
 gid://shopify/Product/15448877859201	1790184847	unklar	CJ-Code 16900500: Insufficient API points. Used today: 109930, Remai
+gid://shopify/Product/15448877924737	1790184847	unklar	CJ-Code 16900500: Insufficient API points. Used today: 109930, Remai
