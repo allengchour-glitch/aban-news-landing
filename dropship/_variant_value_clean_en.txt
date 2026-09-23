@@ -18842,3 +18842,149 @@ gid://shopify/Product/15472044933505	Farbe	gid://shopify/ProductOptionValue/1231
 gid://shopify/Product/15472044933505	Farbe	gid://shopify/ProductOptionValue/12316886204801	Grün camouflage	Grün Camouflage	2026-09-23T20:43Z/reparatur-korrigiert
 gid://shopify/Product/15472044933505	Farbe	gid://shopify/ProductOptionValue/12316886270337	Dunkelblau camouflage	Dunkelblau Camouflage	2026-09-23T20:43Z/reparatur-korrigiert
 gid://shopify/Product/15472044933505	Farbe	gid://shopify/ProductOptionValue/12316886303105	Himmelblau camouflage	Himmelblau Camouflage	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15472059318657	Farbe	gid://shopify/ProductOptionValue/12189830119809	9988 Stil Weiss	9988 Style White	2026-09-23T20:43Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15472059318657	Farbe	gid://shopify/ProductOptionValue/12189830152577	9988 Stil Blau	9988 Style Blue	2026-09-23T20:43Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15472059318657	Farbe	gid://shopify/ProductOptionValue/12189830349185	9928 Stil Grün	9928 Style Green	2026-09-23T20:43Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15472335552897	Farbe	gid://shopify/ProductOptionValue/12316938371457	Rot gestreift Upgrade	Red Stripe Upgrade	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972745089	Intergold-2 Geburtssteine-Nr. 5	Intergold-2 birthstones-No 5	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972777857	Intergold-2 Geburtssteine-Nr. 6	Intergold-2 birthstones-No 6	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972810625	Intergold-2 Geburtssteine-Nr. 7	Intergold-2 birthstones-No 7	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972843393	Intergold-2 Geburtssteine-Nr. 8	Intergold-2 birthstones-No 8	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972876161	Intergold-2 Geburtssteine-Nr. 9	Intergold-2 birthstones-No 9	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972908929	Intergold-2 Geburtssteine-Nr. 10	Intergold-2 birthstones-No 10	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972941697	Intergold-2 Geburtssteine-Nr. 11	Intergold-2 birthstones-No 11	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316972974465	Intergold-3 Geburtssteine-Nr. 5	Intergold-3 birthstones-No 5	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973007233	Intergold-3 Geburtssteine-Nr. 6	Intergold-3 birthstones-No 6	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973040001	Intergold-3 Geburtssteine-Nr. 7	Intergold-3 birthstones-No 7	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973072769	Intergold-3 Geburtssteine-Nr. 8	Intergold-3 birthstones-No 8	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973105537	Intergold-3 Geburtssteine-Nr. 9	Intergold-3 birthstones-No 9	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973138305	Intergold-3 Geburtssteine-Nr. 10	Intergold-3 birthstones-No 10	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973171073	Intergold-3 Geburtssteine-Nr. 11	Intergold-3 birthstones-No 11	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973203841	Intergold-4 Geburtssteine-Nr. 5	Intergold-4 birthstones-No 5	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973236609	Intergold-4 Geburtssteine-Nr. 6	Intergold-4 birthstones-No 6	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973269377	Intergold-4 Geburtssteine-Nr. 7	Intergold-4 birthstones-No 7	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973302145	Intergold-4 Geburtssteine-Nr. 8	Intergold-4 birthstones-No 8	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973334913	Intergold-4 Geburtssteine-Nr. 9	Intergold-4 birthstones-No 9	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973367681	Intergold-4 Geburtssteine-Nr. 10	Intergold-4 birthstones-No 10	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973400449	Intergold-4 Geburtssteine-Nr. 11	Intergold-4 birthstones-No 11	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973433217	Intergold-5 Geburtssteine-Nr. 5	Intergold-5 birthstones-No 5	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973465985	Intergold-5 Geburtssteine-Nr. 6	Intergold-5 birthstones-No 6	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973498753	Intergold-5 Geburtssteine-Nr. 7	Intergold-5 birthstones-No 7	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973531521	Intergold-5 Geburtssteine-Nr. 8	Intergold-5 birthstones-No 8	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973564289	Intergold-5 Geburtssteine-Nr. 9	Intergold-5 birthstones-No 9	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973597057	Intergold-5 Geburtssteine-Nr. 10	Intergold-5 birthstones-No 10	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084334465	Farbe	gid://shopify/ProductOptionValue/12316973629825	Intergold-5 Geburtssteine-Nr. 11	Intergold-5 birthstones-No 11	2026-09-23T20:43Z/reparatur-original:Intergold
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195913400705	Klassischgrau-Einheitsgrösse	Klassisches Grau-Einheitsgrösse	2026-09-23T20:43Z/reparatur-konsistenz
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195913433473	Klassischgrau	Klassisches Grau	2026-09-23T20:43Z/reparatur-konsistenz
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195913859457	Klassischschwarz 02-Einheitsgrösse	Klassisches Schwarz 02-Einheitsgrösse	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195913892225	Klassischschwarz 02	Klassisches Schwarz 02	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195914056065	Klassischgrau 02-Einheitsgrösse	Klassisches Grau 02-Einheitsgrösse	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195914088833	Klassischgrau 02	Klassisches Grau 02	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195914514817	Klassischschwarz 03-Einheitsgrösse	Klassisches Schwarz 03-Einheitsgrösse	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473084596609	Farbe	gid://shopify/ProductOptionValue/12195914547585	Klassischschwarz 03	Klassisches Schwarz 03	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473085383041	Farbe	gid://shopify/ProductOptionValue/12195928506753	Mittel Hellblau	Medium Light Blue	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15473355129217	Farbe	gid://shopify/ProductOptionValue/12316976611713	Flach Weiss-80x45x10 cm	Flat White-80x45x10cm	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15473433870721	Farbe	gid://shopify/ProductOptionValue/12316981133697	Klassischgrau-1.5 m Bettlaken	Klassisches Grau-1.5 m Bettlaken	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473433870721	Farbe	gid://shopify/ProductOptionValue/12316981166465	Klassischgrau-1.8 m Bettlaken	Klassisches Grau-1.8 m Bettlaken	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15473433870721	Farbe	gid://shopify/ProductOptionValue/12316981199233	Klassischgrau-2.0 m Bettlaken	Klassisches Grau-2.0 m Bettlaken	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15474479890817	Farbe	gid://shopify/ProductOptionValue/12316990374273	Klein Blau-Rot	Small Blue And Red	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474479890817	Farbe	gid://shopify/ProductOptionValue/12316990439809	Klein Rosé-Grün	Small Rose Green	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474479890817	Farbe	gid://shopify/ProductOptionValue/12316990505345	Gross Blau-Rot	Big Blue Red	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474485297537	Farbe	gid://shopify/ProductOptionValue/12316992373121	Edelgrau-Mittel Kissen	High Grade Gray-Medium Pillow	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474485297537	Farbe	gid://shopify/ProductOptionValue/12316992471425	Champagner-Gold-Mittel Kissen	Champagne Gold-Medium Pillow	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474791317889	Farbe	gid://shopify/ProductOptionValue/12317214638465	Gold-Schmal Version	Gold-Narrow Version	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474791317889	Farbe	gid://shopify/ProductOptionValue/12317214671233	Gold-Breit Version	Gold-Wide Version	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474791317889	Farbe	gid://shopify/ProductOptionValue/12317214704001	Silber-Schmal Version	Silver-Narrow Version	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15474816844161	Farbe	gid://shopify/ProductOptionValue/12317215883649	Pink-5 Stück Set	Pink-5 piece set	2026-09-23T20:43Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15474816844161	Farbe	gid://shopify/ProductOptionValue/12317215949185	Pink-6 Stück Set	Pink-6 piece set	2026-09-23T20:43Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15474816844161	Farbe	gid://shopify/ProductOptionValue/12317215981953	Weiss-5 Stück Set	White-5 piece set	2026-09-23T20:43Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15474816844161	Farbe	gid://shopify/ProductOptionValue/12317216047489	Weiss-6 Stück Set	White-6 piece set	2026-09-23T20:43Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15475022397825	Farbe	gid://shopify/ProductOptionValue/12317221945729	50x50 cm eckig Kissen-Kissenbezug	50x50cm Square Pillow-Pillowcase	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15475023380865	Ausführung	gid://shopify/ProductOptionValue/12317223256449	45x45 cm Vintagerot-Kissenbezug	45x45 cm Vintage-Rot-Kissenbezug	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15475055952257	Farbe	gid://shopify/ProductOptionValue/12317226107265	B Schwarz-Armee	B Black Army Color	2026-09-23T20:43Z/reparatur-original:Army Color
+gid://shopify/Product/15475225657729	Farbe	gid://shopify/ProductOptionValue/12317245931905	Bambus Weiss-12 Zoll	Bamboo White-12 Inch	2026-09-23T20:43Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15475518210433	Farbe	gid://shopify/ProductOptionValue/12317248749953	Breit kariert Muster Schwarz	Wide Plaid Pattern Black	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15475625001345	Farbe	gid://shopify/ProductOptionValue/12317249634689	Gross rund geblümt-70x140	Big Round Flower-70x140	2026-09-23T20:43Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15475625001345	Farbe	gid://shopify/ProductOptionValue/12317249929601	Klinge Blau-70x140	Blade Blue-70x140	2026-09-23T20:43Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15475625001345	Farbe	gid://shopify/ProductOptionValue/12317250158977	Klein Dunkelgrün geblümt-70x140	Small Flower Dark Green-70x140	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15475867648385	Farbe	gid://shopify/ProductOptionValue/12451047047553	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15475981386113	Farbe	gid://shopify/ProductOptionValue/12317257761153	Klein-Apple 38/41 Mm	Klein-Apple 38/41 mm	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15475981386113	Farbe	gid://shopify/ProductOptionValue/12317257826689	Übergrösse-Apple 38/41 Mm	Übergrösse-Apple 38/41 mm	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15476185072001	Farbe	gid://shopify/ProductOptionValue/12214029025665	Mittel dick Dunkelblau	Medium Thick Dark Blue	2026-09-23T20:43Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15476185072001	Farbe	gid://shopify/ProductOptionValue/12214029058433	Mittel dick Mittelblau	Medium Thick Medium Blue	2026-09-23T20:43Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15476185072001	Farbe	gid://shopify/ProductOptionValue/12214029156737	Mittel dick Hellblau	Medium Thick Light Blue	2026-09-23T20:43Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15476185072001	Farbe	gid://shopify/ProductOptionValue/12214029189505	Gefüttert Dunkelblau	Fleece lined Dark Blue	2026-09-23T20:43Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15476189200769	Farbe	gid://shopify/ProductOptionValue/12214037578113	Leder Pink	Leather Pink	2026-09-23T20:43Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382571905	1 Farbe-US 0	Farbton 1-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382604673	1 Farbe-US 2	Farbton 1-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382637441	1 Farbe-US 4	Farbton 1-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382670209	1 Farbe-US 6	Farbton 1-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382702977	1 Farbe-US 8	Farbton 1-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382735745	1 Farbe	Farbton 1	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382768513	1 Farbe-US 16 W	Farbton 1-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382801281	1 Farbe-US 18 W	Farbton 1-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382834049	2 Farben-US 0	Farbton 2-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382866817	2 Farben-US 2	Farbton 2-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382899585	2 Farben-US 4	Farbton 2-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382932353	2 Farben-US 6	Farbton 2-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382965121	2 Farben-US 8	Farbton 2-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382997889	2 Farben	Farbton 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383030657	2 Farben-US 16 W	Farbton 2-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383063425	2 Farben-US 18 W	Farbton 2-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383096193	3 Farben-US 0	Farbton 3-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383128961	3 Farben-US 2	Farbton 3-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383161729	3 Farben-US 4	Farbton 3-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383194497	3 Farben-US 6	Farbton 3-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383227265	3 Farben-US 8	Farbton 3-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383260033	3 Farben	Farbton 3	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383292801	3 Farben-US 16 W	Farbton 3-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383325569	3 Farben-US 18 W	Farbton 3-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383358337	4 Farben-US 0	Farbton 4-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383391105	4 Farben-US 2	Farbton 4-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383423873	4 Farben-US 4	Farbton 4-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383456641	4 Farben-US 6	Farbton 4-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383489409	4 Farben-US 8	Farbton 4-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383522177	4 Farben	Farbton 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383554945	4 Farben-US 16 W	Farbton 4-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383587713	4 Farben-US 18 W	Farbton 4-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383620481	5 Farben-US 0	Farbton 5-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383653249	5 Farben-US 2	Farbton 5-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383686017	5 Farben-US 4	Farbton 5-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383718785	5 Farben-US 6	Farbton 5-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383751553	5 Farben-US 8	Farbton 5-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383784321	5 Farben	Farbton 5	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383817089	5 Farben-US 16 W	Farbton 5-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383849857	5 Farben-US 18 W	Farbton 5-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383882625	6 Farben-US 0	Farbton 6-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383915393	6 Farben-US 2	Farbton 6-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383948161	6 Farben-US 4	Farbton 6-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383980929	6 Farben-US 6	Farbton 6-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384013697	6 Farben-US 8	Farbton 6-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384046465	6 Farben	Farbton 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384079233	6 Farben-US 16 W	Farbton 6-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384112001	6 Farben-US 18 W	Farbton 6-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384144769	7 Farben-US 0	Farbton 7-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384177537	7 Farben-US 2	Farbton 7-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384210305	7 Farben-US 4	Farbton 7-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384243073	7 Farben-US 6	Farbton 7-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384275841	7 Farben-US 8	Farbton 7-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384308609	7 Farben	Farbton 7	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384341377	7 Farben-US 16 W	Farbton 7-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384374145	7 Farben-US 18 W	Farbton 7-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384406913	8 Farben-US 0	Farbton 8-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384439681	8 Farben-US 2	Farbton 8-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384472449	8 Farben-US 4	Farbton 8-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384505217	8 Farben-US 6	Farbton 8-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384537985	8 Farben-US 8	Farbton 8-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384570753	8 Farben	Farbton 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384603521	8 Farben-US 16 W	Farbton 8-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384636289	8 Farben-US 18 W	Farbton 8-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384669057	9 Farben-US 0	Farbton 9-US 0	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384701825	9 Farben-US 2	Farbton 9-US 2	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384734593	9 Farben-US 4	Farbton 9-US 4	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384767361	9 Farben-US 6	Farbton 9-US 6	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384800129	9 Farben-US 8	Farbton 9-US 8	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384832897	9 Farben	Farbton 9	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384865665	9 Farben-US 16 W	Farbton 9-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384898433	9 Farben-US 18 W	Farbton 9-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
+gid://shopify/Product/15477535015297	Farbe	gid://shopify/ProductOptionValue/12222405509505	Spitze Schwarz	Lace black	2026-09-23T20:43Z/reparatur-original:satzbau:material-vor-farbe
