@@ -8,6 +8,8 @@ on:
     # - cron: '0 6 * * 1-5'      # Mo–Fr 06:00 UTC
     # - cron: '0 16 * * 1-5'     # Mo–Fr 16:00 UTC (nach US-Open)
   workflow_dispatch:
+  # Wird taeglich von tages-update.yml aufgerufen (ein einziger Cron fuer News + Maerkte).
+  workflow_call:
 
 permissions:
   contents: write
