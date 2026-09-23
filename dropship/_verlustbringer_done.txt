@@ -325,3 +325,17 @@ gid://shopify/Product/15453790601601	2026-09-23T05:04Z	draft	15.90	47.48	Käseka
 gid://shopify/Product/15500955877761	2026-09-23T05:04Z	draft	14.90	46.42	PVC U-förmige Clip-Rohrschelle
 gid://shopify/Product/15496320811393	2026-09-23T05:04Z	draft	17.90	49.37	Handgelenk-Trainingsball mit Zähler und Leuchteffekt
 gid://shopify/Product/15500743770497	2026-09-23T05:04Z	draft	26.90	58.26	Schlaf-Helfer
+gid://shopify/Product/15506285658497	2026-09-23T05:09Z	schon-DRAFT	17.90	48.87	Automatischer Edelstahl-Wasserspender für Katzen
+gid://shopify/Product/15503259140481	2026-09-23T05:09Z	draft	31.90	62.83	Kopfteil-Kissen aus Technologie-Stoff
+gid://shopify/Product/15497435939201	2026-09-23T05:09Z	draft	21.90	52.72	UAV 8K HD Quadrocopter mit intelligenter Hindernisvermeidung
+gid://shopify/Product/15502611841409	2026-09-23T05:09Z	draft	17.90	48.53	Retro 26-Rippen-Kordstoff mit Digitaldruck
+gid://shopify/Product/15502612070785	2026-09-23T05:09Z	draft	17.90	48.53	Bedruckter Baumwoll-Cordstoff mit feiner Rippung
+gid://shopify/Product/15497641722241	2026-09-23T05:09Z	draft	31.90	62.46	Leder-Schmuckkasten
+gid://shopify/Product/15503259828609	2026-09-23T05:09Z	draft	23.90	54.39	Handgemachter Quasten-Kissenbezug
+gid://shopify/Product/15500938772865	2026-09-23T05:09Z	draft	18.90	49.37	Reise Vakuum-Kompressionsbeutel fürs Gepäck
+gid://shopify/Product/15499988173185	2026-09-23T05:09Z	draft	18.90	49.32	Weihnachtstraum
+gid://shopify/Product/15506300600705	2026-09-23T05:09Z	draft	16.90	47.31	Elastischer Sofaüberzug für alle Jahreszeiten
+gid://shopify/Product/15497360114049	2026-09-23T05:09Z	draft	17.90	48.19	Smarter Tür-/Fenster-Alarm mit WLAN
+gid://shopify/Product/15454198792577	2026-09-23T05:09Z	draft	15.90	46.17	Lithium-Akkupack für Sprayer-Trolley
+gid://shopify/Product/15496614969729	2026-09-23T05:09Z	draft	20.90	51.10	Rutschfeste, saugfähige Küchenmatte
+gid://shopify/Product/15449168707969	2026-09-23T05:09Z	draft	56.90	87.06	Universal Rollkoffer mit grosser Kapazität
