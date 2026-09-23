@@ -10,7 +10,14 @@
 import fs from 'node:fs';
 const LOCK = '/tmp/ig_post.lock';
 const LEDGER = 'dropship/_posted_media.txt';
-export const mediaKey = u => (u || '').split('?')[0].split('/').pop().toLowerCase().trim();
+// 23.09.2026: Karussell-Slides heissen in JEDEM Set 01.jpg … 06.jpg — nur der Dateiname als Schluessel
+// machte nach dem ersten Karussell jedes weitere Set zum «Doppelpost» (Ledger-Zeilen «01.jpg» … «06.jpg»).
+// Nackte Nummern-Namen tragen darum den Ordner mit: «<set>/01.jpg». Alle anderen Medien unveraendert.
+export const mediaKey = u => {
+  const teile = (u || '').split('?')[0].split('/').map(t => t.toLowerCase().trim());
+  const name = teile.pop() || '';
+  return /^\d{1,3}\.(?:jpe?g|png|webp|mp4)$/.test(name) && teile.length ? `${teile.pop()}/${name}` : name;
+};
 
 // ⛔ SECHSTE SCHICHT — DER RIEGEL (Betreiber 13.08.2026: «hör auf insta gleiche sachen zu
 // posten»). Fünf Wachen gab es schon: gemeinsamer Lock, Claim-vor-Post, Inhalts-Sperre über

@@ -34,6 +34,8 @@ export const HANDKLINGE_STAMM      = new RegExp(R.handklinge_stamm, 'i');
 export const HANDKLINGE_KEIN_PAKET = new RegExp(R.handklinge_kein_paket, 'i');
 export const HANDKLINGE_GERAET     = new RegExp(R.handklinge_geraet, 'i');
 export const HANDKLINGE_SPIELZEUG  = new RegExp(R.handklinge_spielzeug, 'i');
+export const HANDKLINGE_MIT_ZUBEHOER = new RegExp(R.handklinge_mit_zubehoer, 'i');
+const KLINGEN_NOMEN = new Set(['messer', 'messern', 'knife', 'knives']);
 
 // Die Kontext-Ausnahme steht ZUERST: «Washed Machete Jeans» ist eine Waschung,
 // «Samurai mit Katana, 30 cm» eine Dekofigur. Ein Kleidungs- oder Deko-Wort
@@ -56,9 +58,17 @@ export function istKlinge(titel) {
 export function istHandklinge(titel) {
   const t = titel || '';
   if (KONTEXT_AUSNAHME.test(t)) return false;
-  if (HANDKLINGE_KEIN_PAKET.test(t) || HANDKLINGE_GERAET.test(t)) return false;
   if (HANDKLINGE_SPIELZEUG.test(t)) return false;
   if (MESSGERAET.test(t)) return false;
   if (WAFFENWORT_VORNE.test(t) && VORNE_AUSNAHME.test(t)) return false;
+  // 23.09.2026: Paket MIT Klinge — «Hackmesser mit Schutzhülle», «Messerblock mit 6 Messern».
+  // Steht VOR der Zubehör-Ausnahme, weil «schutzhülle»/«scheide» dort als reines Zubehör gelten.
+  const m = HANDKLINGE_MIT_ZUBEHOER.exec(t);
+  if (m && !HANDKLINGE_GERAET.test(t)) {
+    const vor = t.slice(0, m.index);
+    if (KLINGEN_NOMEN.has(m[1].toLowerCase())) return true;
+    if (HANDKLINGE_STAMM.test(vor) && !HANDKLINGE_KEIN_PAKET.test(vor)) return true;
+  }
+  if (HANDKLINGE_KEIN_PAKET.test(t) || HANDKLINGE_GERAET.test(t)) return false;
   return HANDKLINGE_STAMM.test(t);
 }
