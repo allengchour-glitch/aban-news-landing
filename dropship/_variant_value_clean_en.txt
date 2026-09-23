@@ -19414,3 +19414,146 @@ gid://shopify/Product/15447567040897	Farbe	gid://shopify/ProductOptionValue/1230
 gid://shopify/Product/15447567040897	Farbe	gid://shopify/ProductOptionValue/12309798257025	4pcs charger	4 Stück Ladegerät	2026-09-23T21:17Z
 gid://shopify/Product/15447568744833	Farbe	gid://shopify/ProductOptionValue/12309800550785	Gray Remote Control Battery	Grau Fernbedienung Batterie	2026-09-23T21:17Z
 gid://shopify/Product/15447568744833	Farbe	gid://shopify/ProductOptionValue/12309800583553	Black Remote Control Battery	Schwarz Fernbedienung Batterie	2026-09-23T21:17Z
+gid://shopify/Product/15454200791425	Farbe	gid://shopify/ProductOptionValue/12077985890689	Hellblau-US 14 W	Hellblau-US 14W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15454200791425	Farbe	gid://shopify/ProductOptionValue/12077985923457	Hellblau-US 16 W	Hellblau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15454200791425	Farbe	gid://shopify/ProductOptionValue/12077985956225	Hellblau-US 18 W	Hellblau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15454200791425	Farbe	gid://shopify/ProductOptionValue/12077986087297	Hellblau-US 26 W	Hellblau-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131630350721	Fruchtgrün-US 14 W	Fruchtgrün-US 14W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131630383489	Fruchtgrün-US 16 W	Fruchtgrün-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131630416257	Fruchtgrün-US 18 W	Fruchtgrün-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131630743937	Pink-US 14 W	Pink-US 14W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131630776705	Pink-US 16 W	Pink-US 16W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131630809473	Pink-US 18 W	Pink-US 18W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631137153	Weinrot-US 14 W	Weinrot-US 14W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631169921	Weinrot-US 16 W	Weinrot-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631202689	Weinrot-US 18 W	Weinrot-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631530369	Hellgrün-US 14 W	Hellgrün-US 14W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631563137	Hellgrün-US 16 W	Hellgrün-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631595905	Hellgrün-US 18 W	Hellgrün-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631923585	Champagner-US 14 W	Champagner-US 14W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631956353	Champagner-US 16 W	Champagner-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131631989121	Champagner-US 18 W	Champagner-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632316801	Gelb-US 14 W	Gelb-US 14W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632349569	Gelb-US 16 W	Gelb-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632382337	Gelb-US 18 W	Gelb-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632710017	Smaragdgrün-US 14 W	Smaragdgrün-US 14W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632742785	Smaragdgrün-US 16 W	Smaragdgrün-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632775553	Smaragdgrün-US 18 W	Smaragdgrün-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382768513	Farbton 1-US 16 W	Farbton 1-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222382801281	Farbton 1-US 18 W	Farbton 1-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383030657	Farbton 2-US 16 W	Farbton 2-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383063425	Farbton 2-US 18 W	Farbton 2-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383292801	Farbton 3-US 16 W	Farbton 3-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383325569	Farbton 3-US 18 W	Farbton 3-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383554945	Farbton 4-US 16 W	Farbton 4-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383587713	Farbton 4-US 18 W	Farbton 4-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383817089	Farbton 5-US 16 W	Farbton 5-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222383849857	Farbton 5-US 18 W	Farbton 5-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384079233	Farbton 6-US 16 W	Farbton 6-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384112001	Farbton 6-US 18 W	Farbton 6-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384341377	Farbton 7-US 16 W	Farbton 7-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384374145	Farbton 7-US 18 W	Farbton 7-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384603521	Farbton 8-US 16 W	Farbton 8-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384636289	Farbton 8-US 18 W	Farbton 8-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384865665	Farbton 9-US 16 W	Farbton 9-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384898433	Farbton 9-US 18 W	Farbton 9-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478566785	Pink-US 16 W	Pink-US 16W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478599553	Pink-US 18 W	Pink-US 18W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478632321	Pink-US 20 W	Pink-US 20W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478665089	Pink-US 22 W	Pink-US 22W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478697857	Pink-US 24 W	Pink-US 24W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478730625	Pink-US 26 W	Pink-US 26W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478960001	Rosarot-US 16 W	Rosarot-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228478992769	Rosarot-US 18 W	Rosarot-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479025537	Rosarot-US 20 W	Rosarot-US 20W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479058305	Rosarot-US 22 W	Rosarot-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479091073	Rosarot-US 24 W	Rosarot-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479123841	Rosarot-US 26 W	Rosarot-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479353217	Pfirsich-US 16 W	Pfirsich-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479385985	Pfirsich-US 18 W	Pfirsich-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479418753	Pfirsich-US 20 W	Pfirsich-US 20W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479451521	Pfirsich-US 22 W	Pfirsich-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479484289	Pfirsich-US 24 W	Pfirsich-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15478583198081	Farbe	gid://shopify/ProductOptionValue/12228479517057	Pfirsich-US 26 W	Pfirsich-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442395521	Pfirsichrosa-US 16 W	Pfirsichrosa-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442428289	Pfirsichrosa-US 18 W	Pfirsichrosa-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442690433	Himmelblau-US 16 W	Himmelblau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442723201	Himmelblau-US 18 W	Himmelblau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442985345	Schwarz-US 16 W	Schwarz-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443018113	Schwarz-US 18 W	Schwarz-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443280257	Pink-US 16 W	Pink-US 16W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443313025	Pink-US 18 W	Pink-US 18W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443575169	Rot-US 16 W	Rot-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443607937	Rot-US 18 W	Rot-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443870081	Dunkelviolett-US 16 W	Dunkelviolett-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443902849	Dunkelviolett-US 18 W	Dunkelviolett-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444164993	Grün-US 16 W	Grün-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444197761	Grün-US 18 W	Grün-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444459905	Lila-US 16 W	Lila-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444492673	Lila-US 18 W	Lila-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413344252289	Marineblau-US 16 W	Marineblau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413344285057	Marineblau-US 18 W	Marineblau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413344416129	Marineblau-US 26 W	Marineblau-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413344612737	Pfauenblau-US 16 W	Pfauenblau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413344645505	Pfauenblau-US 18 W	Pfauenblau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413344776577	Pfauenblau-US 26 W	Pfauenblau-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413344973185	Blau-US 16 W	Blau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345005953	Blau-US 18 W	Blau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345137025	Blau-US 26 W	Blau-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345333633	Dunstblau-US 16 W	Dunstblau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345366401	Dunstblau-US 18 W	Dunstblau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345497473	Dunstblau-US 26 W	Dunstblau-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345694081	Grün-US 16 W	Grün-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345726849	Grün-US 18 W	Grün-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413345857921	Grün-US 26 W	Grün-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413346054529	Grau-US 16 W	Grau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413346087297	Grau-US 18 W	Grau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413346218369	Grau-US 26 W	Grau-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413346414977	Schwarz-US 16 W	Schwarz-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413346447745	Schwarz-US 18 W	Schwarz-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15504098591105	Farbe	gid://shopify/ProductOptionValue/12413346578817	Schwarz-US 26 W	Schwarz-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438081438081	Schwarz-US 16 W	Schwarz-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438081470849	Schwarz-US 18 W	Schwarz-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438081503617	Schwarz-US 26 W	Schwarz-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438081798529	Gold-US 16 W	Gold-US 16W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438081831297	Gold-US 18 W	Gold-US 18W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438081864065	Gold-US 26 W	Gold-US 26W	2026-09-23T21:52Z/reparatur-original:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438082158977	Rot-US 16 W	Rot-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438082191745	Rot-US 18 W	Rot-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15508610154881	Farbe	gid://shopify/ProductOptionValue/12438082224513	Rot-US 26 W	Rot-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449450951041	Blau-US 16 W	Blau-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449450983809	Blau-US 18 W	Blau-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451049345	Blau-US 22 W	Blau-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451082113	Blau-US 24 W	Blau-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451114881	Blau-US 26 W	Blau-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451311489	Schwarz-US 16 W	Schwarz-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451344257	Schwarz-US 18 W	Schwarz-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451409793	Schwarz-US 22 W	Schwarz-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451442561	Schwarz-US 24 W	Schwarz-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451475329	Schwarz-US 26 W	Schwarz-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451671937	Grün-US 16 W	Grün-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451704705	Grün-US 18 W	Grün-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451770241	Grün-US 22 W	Grün-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451803009	Grün-US 24 W	Grün-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449451835777	Grün-US 26 W	Grün-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452032385	Rosarot-US 16 W	Rosarot-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452065153	Rosarot-US 18 W	Rosarot-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452130689	Rosarot-US 22 W	Rosarot-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452163457	Rosarot-US 24 W	Rosarot-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452196225	Rosarot-US 26 W	Rosarot-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452392833	Dunkellila-US 16 W	Dunkellila-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452425601	Dunkellila-US 18 W	Dunkellila-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452491137	Dunkellila-US 22 W	Dunkellila-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452523905	Dunkellila-US 24 W	Dunkellila-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452556673	Dunkellila-US 26 W	Dunkellila-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452753281	Weinrot-US 16 W	Weinrot-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452786049	Weinrot-US 18 W	Weinrot-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452851585	Weinrot-US 22 W	Weinrot-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452884353	Weinrot-US 24 W	Weinrot-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449452917121	Weinrot-US 26 W	Weinrot-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449453113729	Rot-US 16 W	Rot-US 16W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449453146497	Rot-US 18 W	Rot-US 18W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449453212033	Rot-US 22 W	Rot-US 22W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449453244801	Rot-US 24 W	Rot-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449453277569	Rot-US 26 W	Rot-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
+gid://shopify/Product/15446066954625	Farbe	gid://shopify/ProductOptionValue/12309729870209	Rote Rosé-Einheitsgrösse	Rote Rose-Einheitsgrösse	2026-09-23T21:53Z/reparatur-korrigiert:server-rueckfall
