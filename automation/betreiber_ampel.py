@@ -477,6 +477,24 @@ def kategorie_offen():
     return None if (n == 0 and not unbek) else f"KATEGORIE: ~{n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, Ledger heute {ledger_heute}){u}"
 
 
+def grow_zaehler():
+    """GROW (23.09.2026, Betreiber: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»): zaehlt bezahlte,
+    nicht erstattete Bestellungen FREMDER Kunden seit dem Start in dropship/_grow_bedingung.txt. Eigenbestellungen des
+    Betreibers (eine feste Kunden-ID) zaehlen nicht. Meldet immer den Stand; ab Ziel als Ruf an den Betreiber."""
+    try:
+        cfg = dict(l.rstrip("\n").split("\t", 1) for l in open(os.path.join(REPO, "dropship", "_grow_bedingung.txt"), encoding="utf-8") if "\t" in l)
+        start, ziel, eigen = cfg["start"], int(cfg.get("ziel", "3")), cfg.get("eigene_kunden_id", "")
+        d = gql('query($q:String!){ orders(first:50, query:$q){ nodes{ name displayFinancialStatus customer{ id } } } }',
+                {"q": f"created_at:>='{start}'"})
+        n = [o["name"] for o in (((d.get("data") or {}).get("orders") or {}).get("nodes") or [])
+             if o.get("displayFinancialStatus") in ("PAID", "PARTIALLY_PAID") and ((o.get("customer") or {}).get("id") or "") != eigen]
+    except Exception:
+        return "GROW: Zähler unklar (Abfrage fehlgeschlagen)"
+    if len(n) >= ziel:
+        return f"⭐ GROW FÄLLIG: {len(n)} Verkäufe seit 23.09. ({', '.join(n)}) — Betreiber-Zusage: jetzt Shopify Grow (300 GB)"
+    return f"GROW: {len(n)}/{ziel} Verkäufe seit 23.09. ({', '.join(n) or 'noch keiner'})"
+
+
 def drafts_ohne_quittung():
     """DRAFT-OHNE-QUITTUNG: Produkte mit Tag `cj-nicht-mehr-verfuegbar`, die in
     dropship/_cj_verfuegbarkeit.txt KEINE Zeile haben.
@@ -612,7 +630,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
