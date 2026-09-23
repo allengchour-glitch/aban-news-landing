@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -384,7 +384,7 @@ while true; do
     # «heben» (Preis) wird nur gemeldet (Preisschreiber-Absprache offen). Live lesen vor, ruecklesen nach jeder
     # Mutation; Tags verlust-auto-draft + marge-verlust-draft (letzteren kennen die Rueckholer). Kein FERTIG,
     # solange «raus» offen ist → die Schleife setzt beim naechsten Tick fort (CAP 300 je Lauf, ~1'315 offen).
-    if [ "$L" = bild_queue_captions_ehrlich ]; then EXP="SCHARF=1"; fi
+    if [ "$L" = bild_queue_captions_ehrlich ] || [ "$L" = kategorie_wache ]; then EXP="SCHARF=1"; fi
     if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
     # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
     # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf

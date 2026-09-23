@@ -1,0 +1,30 @@
+{
+ "stand": "2026-09-23T10:38Z",
+ "gescannt": 50462,
+ "ohne_kategorie_vorher": 46215,
+ "gesetzt": 0,
+ "ohne_kategorie_nachher": 46215,
+ "fehler": 0,
+ "unbekannte_typen": {
+  "Kostüme & Verkleidung": 1668,
+  "Werkzeug & Heimwerken": 844,
+  "Trend-Gadget": 825,
+  "Gaming-Zubehör": 321,
+  "Trend-Produkt": 264,
+  "Partydeko & Ballone": 110,
+  "Raucherzubehör": 58,
+  "3D-Druck": 29,
+  "Süsswaren & Esswaren": 29,
+  "Haushalt & Wohnen": 9,
+  "Kinder": 6,
+  "Schweizer Editionen": 5,
+  "Selbst gestalten": 4,
+  "Geschenkset": 4,
+  "Home & Living": 1,
+  "Bügeltransfer": 1,
+  "Anime": 1,
+  "Wohnen & Dekoration": 1,
+  "Aufbewahrung & Ordnung": 1
+ },
+ "scharf": false
+}

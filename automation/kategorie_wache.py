@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""kategorie_wache.py — setzt die Shopify-Produktkategorie (Standard-Taxonomie) für aktive Produkte, die keine haben.
+
+GEMESSEN 23.09.2026 (Task #101): die App «Shop» (Shop-Kanal) meldete 33'863 aktive Produkte «Dieses Produkt ist in
+Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal». Vergleich 250 Produkte mit/ohne Meldung: EINZIGES
+Unterscheidungsmerkmal `category` — 222/222 mit Meldung OHNE Kategorie, 0/28 ohne Meldung. Neueste 3'000 aktive:
+2'923 ohne Kategorie, alle `cj-real` (die Importer setzen `productType`, aber keine Taxonomie-Kategorie). Der alte
+Zuweiser (google_category_assign.py, 30.08.) kannte die neuen Typen nicht (Haustierbedarf, Make-up, Küche & Bar,
+Aufbewahrung & Organizer, Kinderschuhe, Nageldesign, Spass-Elektronik, Basteln & DIY …) und lief nur von Hand.
+
+REGEL: productType → Taxonomie-ID (Tabelle unten, IDs am 23.09. per `taxonomy.categories(search:)` gemessen und beim
+Start per `nodes(ids:)` verifiziert — eine unbekannte ID bricht den Lauf ab, bevor etwas geschrieben wird). Unbekannte
+Typen werden NICHT geraten, sondern im Bericht gezählt. Schreiben in 25er-Mutationen (aliasiert), Eimer-Etikette nach
+jeder Antwort, Rücklesen aus der Mutationsantwort (category.id == Ziel), Ledger je Handle. CAP begrenzt je Lauf
+(Standard 3000); täglich im Aufseher, bis 0 offen. DRY (Standard) misst nur; SCHARF=1 schreibt.
+Stand: dropship/_kategorie_stand.json (Ampel «KATEGORIE: N aktive ohne Kategorie»), Bericht dropship/KATEGORIE-WACHE.md.
+"""
+import datetime, json, os, sys, time, subprocess, collections
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from eimer_etikette import nachlauf, bilanz
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STAND = os.path.join(ROOT, "dropship", "_kategorie_stand.json")
+BERICHT = os.path.join(ROOT, "dropship", "KATEGORIE-WACHE.md")
+LEDGER = os.path.join(ROOT, "dropship", "_kategorie_gesetzt.txt")
+SHOP = "au3j0y-hq.myshopify.com"
+TOK = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or (open("/tmp/cj_shop_token.txt").read() if os.path.exists("/tmp/cj_shop_token.txt") else "")).strip()
+SCHARF = os.environ.get("SCHARF") == "1"
+CAP = int(os.environ.get("CAP", "3000"))
+TC = "gid://shopify/TaxonomyCategory/"
+
+# productType → Taxonomie-ID. Oberklassen reichen dem Shop-Kanal; feiner ist besser, aber nie geraten.
+TABELLE = {
+    # Tiere
+    "Haustierbedarf": "ap-2", "Haustier": "ap-2", "Haustier & Sommer": "ap-2",
+    # Taschen
+    "Taschen": "lb", "Tasche": "lb", "Rucksack": "lb", "Taschen & Reise": "lb", "Taschen & Accessoires": "lb",
+    # Bekleidung
+    "Damenmode": "aa-1", "Herrenmode": "aa-1", "Mode": "aa-1", "Damen-Mode": "aa-1", "Herren-Mode": "aa-1",
+    "Kleid": "aa-1-4", "Damen-Kleid": "aa-1-4", "Shirt": "aa-1", "Damen-Top": "aa-1", "Damen-Set": "aa-1",
+    "Blazer": "aa-1", "Cardigan": "aa-1", "Jacke": "aa-1", "Bluse": "aa-1", "Rock": "aa-1", "Shorts": "aa-1",
+    "Damen-Hose": "aa-1", "Weste": "aa-1", "Jumpsuit": "aa-1", "Jeans": "aa-1", "Set": "aa-1", "Sport-Set": "aa-1",
+    "Herren-Set": "aa-1", "Kindermode": "aa-1", "Unterwäsche": "aa-1", "Bademode": "aa-1",
+    # Schuhe
+    "Kinderschuhe": "aa-8", "Herrenschuhe": "aa-8", "Damenschuhe": "aa-8", "Sportschuhe": "aa-8", "Schuhe": "aa-8",
+    "Sneaker": "aa-8", "Sandalen": "aa-8", "Sandalette": "aa-8", "Pumps": "aa-8", "Ballerina": "aa-8", "Slip-on": "aa-8",
+    "Slides": "aa-8", "Herren-Schuhe": "aa-8", "Damen-Schuhe": "aa-8", "Damen-Sandalen": "aa-8", "Stiefel": "aa-8",
+    # Schmuck & Uhren & Accessoires
+    "Schmuck": "aa-6", "Damen-Schmuck": "aa-6", "Halskette": "aa-6-8", "Ohrringe": "aa-6", "Armband": "aa-6", "Ring": "aa-6",
+    "Uhren": "aa-6-11", "Uhr": "aa-6-11", "Smartwatch": "aa-6-12",
+    "Sonnenbrille": "aa-2-27", "Hut": "aa-2-17", "Sonnenhut": "aa-2-17", "Mütze": "aa-2-17", "Accessoires": "aa-2",
+    "Kostüm": "aa-3-3", "Kostüme": "aa-3-3",
+    # Beauty
+    "Make-up": "hb-3-2-6", "Beauty": "hb-3-2-6", "Beauty & Pflege": "hb-3-2-6", "Nageldesign": "hb-3-2-7",
+    "Beauty-Tools": "hb-3-2-5", "Beauty-Tool": "hb-3-2-5", "Hautpflege": "hb-3-2-9", "Haarpflege": "hb-3-10",
+    "Wellness & Spa": "hb-3-11-9", "Wellness": "hb-3-11-9", "Aroma-Diffuser": "hb-3-11-9",
+    # Wohnen
+    "Wohnen & Deko": "hg-3", "Wohnen": "hg-3", "Deko": "hg-3", "Wohnaccessoire": "hg-3", "Schlafen & Wohnen": "hg-3",
+    "Deko & Wohnaccessoires": "hg-3", "Vase": "hg-3-67", "Heimtextilien": "hg-15",
+    "Aufbewahrung & Organizer": "hg-10-16", "Aufbewahrung": "hg-10-16", "Haushalt": "hg-10", "Haushalt & Hobby": "hg-10",
+    "Wellness & Haushalt": "hg-10", "Beleuchtung": "hg-13", "Garten & Beleuchtung": "hg-13",
+    "Küche & Bar": "hg-11", "Küche": "hg-11", "Küche & Haushalt": "hg-11", "Küchenhelfer": "hg-11-8",
+    "Trinkflasche": "hg-11", "Trinkflaschen": "hg-11", "Bad": "hg-1", "Bad & Wellness": "hg-1",
+    "Sommer & Kühlung": "hg-9", "Ventilator": "hg-9", "Gartenwerkzeug": "hg-12-1", "Garten & Pflanzen": "hg-12-1",
+    "Outdoor": "sg", "Outdoor & Sommer": "sg", "Sport & Outdoor": "sg", "Reise & Outdoor": "lb", "Reise-Zubehör": "lb",
+    "Grill-Zubehör": "hg-11", "Fitness": "sg",
+    # Elektronik
+    "Elektronik": "el", "Spass-Elektronik": "el", "Gadget": "el", "Gadgets": "el", "Tech": "el", "Tech-Gadget": "el",
+    "Sommer-Gadget": "el", "Outdoor & Gadget": "el", "Handy-Zubehör": "el", "Audio": "el-2",
+    # Sonstiges
+    "Basteln & DIY": "ae-2-1", "Musikinstrumente": "ae-2-8", "Spielzeug & Spiele": "tg-5", "Spielzeug": "tg-5",
+    "Auto-Zubehör": "vp-1", "Büro": "os", "Baby": "bt", "Partydeko": "ae-3-2",
+}
+
+
+def gql(q, v=None):
+    grund = "kein Versuch"; drossel = 0
+    for versuch in range(8):
+        r = subprocess.run(["curl", "-s", "--max-time", "90", f"https://{SHOP}/admin/api/2026-01/graphql.json",
+                            "-H", "X-Shopify-Access-Token: " + TOK, "-H", "Content-Type: application/json",
+                            "--data-binary", json.dumps({"query": q, "variables": v or {}})], capture_output=True, text=True)
+        try:
+            d = json.loads(r.stdout)
+        except Exception:
+            grund = "kein JSON"; time.sleep(5); continue
+        if d.get("data") is not None:
+            nachlauf(d); return d
+        grund = str(d.get("errors") or d)[:300]
+        if "THROTTLED" in grund.upper():
+            drossel += 1; time.sleep(min(30, 6 * drossel)); continue
+        time.sleep(5)
+    raise RuntimeError("Shopify hat auf keinen Versuch mit Daten geantwortet — Lauf abgebrochen. Letzter Grund: " + grund)
+
+
+def ids_pruefen():
+    """Kanarienvogel: jede Tabellen-ID muss als TaxonomyCategory existieren, sonst kein einziger Schreibvorgang."""
+    ids = sorted(set(TABELLE.values()))
+    d = gql("query($ids:[ID!]!){ nodes(ids:$ids){ ... on TaxonomyCategory { id fullName } } }", {"ids": [TC + i for i in ids]})
+    namen = {}
+    for i, n in zip(ids, d["data"]["nodes"]):
+        if not n:
+            raise RuntimeError(f"Taxonomie-ID unbekannt: {i} — Tabelle korrigieren, nichts geschrieben.")
+        namen[i] = n["fullName"]
+    return namen
+
+
+def main():
+    if not TOK:
+        print("kein Shop-Token → No-op"); return
+    namen = ids_pruefen()
+    print(f"Taxonomie-IDs verifiziert: {len(namen)}")
+    ledger = set()
+    if os.path.exists(LEDGER):
+        ledger = {l.split("\t")[0] for l in open(LEDGER, encoding="utf-8") if l.strip()}
+    cursor, gescannt, ohne = None, 0, 0
+    offen = []                      # (id, handle, typ, ziel)
+    unbekannt = collections.Counter()
+    while True:
+        d = gql("query($c:String){ products(first:250, after:$c, query:\"status:active\"){ pageInfo{hasNextPage endCursor} nodes{ id handle productType category{id} } } }", {"c": cursor})
+        pg = d["data"]["products"]
+        for p in pg["nodes"]:
+            gescannt += 1
+            if p.get("category"):
+                continue
+            ohne += 1
+            typ = (p.get("productType") or "").strip()
+            ziel = TABELLE.get(typ)
+            if not ziel:
+                unbekannt[typ or "-"] += 1; continue
+            offen.append((p["id"], p["handle"], typ, ziel))
+        if not pg["pageInfo"]["hasNextPage"]:
+            break
+        cursor = pg["pageInfo"]["endCursor"]
+    print(f"gescannt {gescannt} · ohne Kategorie {ohne} · zuweisbar {len(offen)} · unbekannte Typen {sum(unbekannt.values())}")
+    gesetzt, fehler, beispiele = 0, [], []
+    if SCHARF:
+        arbeit = offen[:CAP]
+        for i in range(0, len(arbeit), 25):
+            chunk = arbeit[i:i + 25]
+            teile = []
+            for j, (pid, handle, typ, ziel) in enumerate(chunk):
+                teile.append(f'm{j}: productUpdate(product:{{id:"{pid}", category:"{TC}{ziel}"}}){{ product{{ id category{{id}} }} userErrors{{ field message }} }}')
+            d = gql("mutation { " + " ".join(teile) + " }")
+            with open(LEDGER, "a", encoding="utf-8") as lf:
+                for j, (pid, handle, typ, ziel) in enumerate(chunk):
+                    r = (d.get("data") or {}).get(f"m{j}") or {}
+                    ue = r.get("userErrors") or []
+                    ist = ((r.get("product") or {}).get("category") or {}).get("id", "")
+                    if ue or ist != TC + ziel:
+                        fehler.append((handle, ue[0]["message"] if ue else f"rueckgelesen {ist!r}"))
+                        continue
+                    gesetzt += 1
+                    lf.write(f"{handle}\t{ziel}\t{typ}\t{datetime.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n")
+                    if len(beispiele) < 5:
+                        beispiele.append((handle, typ, namen[ziel]))
+                lf.flush()
+            time.sleep(0.3)
+    rest = ohne - gesetzt
+    stand = {"stand": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "gescannt": gescannt, "ohne_kategorie_vorher": ohne,
+             "gesetzt": gesetzt, "ohne_kategorie_nachher": rest, "fehler": len(fehler), "unbekannte_typen": dict(unbekannt.most_common()),
+             "scharf": SCHARF}
+    json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    with open(BERICHT, "w", encoding="utf-8") as f:
+        f.write(f"# Produktkategorie (Taxonomie) — Stand {stand['stand']}\n\n")
+        f.write(f"Aktive gescannt: {gescannt} · ohne Kategorie: {ohne} · heute gesetzt: {gesetzt} ({'SCHARF' if SCHARF else 'DRY'}, CAP {CAP}) · "
+                f"danach offen: {rest} · Fehler: {len(fehler)}\n\n")
+        f.write("Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen\n"
+                "productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).\n\n")
+        if unbekannt:
+            f.write("## Unbekannte Typen (nicht geraten — Tabelle ergänzen)\n\n" + "\n".join(f"- {k}: {v}" for k, v in unbekannt.most_common()) + "\n\n")
+        if beispiele:
+            f.write("## Beispiele (heute gesetzt)\n\n" + "\n".join(f"- {h} · {t} → {n}" for h, t, n in beispiele) + "\n\n")
+        if fehler:
+            f.write("## Fehler\n\n" + "\n".join(f"- {h}: {m}" for h, m in fehler[:30]) + "\n")
+    print(f"FERTIG: gesetzt {gesetzt} · offen {rest} · Fehler {len(fehler)} · unbekannte Typen {dict(unbekannt.most_common(6))} · {bilanz()}")
+
+
+if __name__ == "__main__":
+    main()

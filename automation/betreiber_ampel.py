@@ -453,6 +453,20 @@ def google_feedback():
     return f"GOOGLE: {s.get('blocker')} Free-Listings-Blocker ({top}){alt}{voll}{shopz}"
 
 
+def kategorie_offen():
+    """KATEGORIE: N aktive ohne Taxonomie-Kategorie — Stand von automation/kategorie_wache.py (23.09.2026, Task #101).
+    Der Shop-Kanal zeigt nur Produkte MIT Kategorie (33'863 «nicht auffindbar» gemessen). Liest den STAND (Datei)."""
+    p = os.path.join(REPO, "dropship", "_kategorie_stand.json")
+    try:
+        s = json.load(open(p, encoding="utf-8"))
+    except Exception:
+        return "KATEGORIE: unklar (kein Stand — automation/kategorie_wache.py nie gelaufen?)"
+    unbek = s.get("unbekannte_typen") or {}
+    u = f" · unbekannte Typen {sum(unbek.values())} ({', '.join(list(unbek)[:3])})" if unbek else ""
+    n = s.get("ohne_kategorie_nachher", s.get("ohne_kategorie_vorher"))
+    return None if (n == 0 and not unbek) else f"KATEGORIE: {n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, heute gesetzt {s.get('gesetzt')}){u}"
+
+
 def drafts_ohne_quittung():
     """DRAFT-OHNE-QUITTUNG: Produkte mit Tag `cj-nicht-mehr-verfuegbar`, die in
     dropship/_cj_verfuegbarkeit.txt KEINE Zeile haben.
@@ -588,7 +602,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
