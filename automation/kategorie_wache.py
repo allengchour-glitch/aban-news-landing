@@ -70,6 +70,12 @@ TABELLE = {
     # Sonstiges
     "Basteln & DIY": "ae-2-1", "Musikinstrumente": "ae-2-8", "Spielzeug & Spiele": "tg-5", "Spielzeug": "tg-5",
     "Auto-Zubehör": "vp-1", "Büro": "os", "Baby": "bt", "Partydeko": "ae-3-2",
+    # Nachtrag 23.09. nach dem ersten Vollscan (4'181 unbekannt): IDs per taxonomy.categories(search:) gemessen.
+    "Kostüme & Verkleidung": "aa-3-3", "Werkzeug & Heimwerken": "ha-15", "Trend-Gadget": "el", "Gaming-Zubehör": "el-18",
+    "Partydeko & Ballone": "ae-3-2", "Raucherzubehör": "hg-19", "3D-Druck": "el-13-2", "Süsswaren & Esswaren": "fb-2-3-1",
+    "Haushalt & Wohnen": "hg-10", "Home & Living": "hg-3", "Wohnen & Dekoration": "hg-3", "Aufbewahrung & Ordnung": "hg-10-16",
+    "Bügeltransfer": "ae-2-1", "Geschenkset": "hg-3",
+    # bewusst NICHT geraten: "Trend-Produkt", "Kinder", "Schweizer Editionen", "Selbst gestalten", "Anime" → Bericht.
 }
 
 

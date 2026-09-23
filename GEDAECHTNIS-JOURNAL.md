@@ -505,6 +505,23 @@ IG-Website-Link sind Betreiber-Klicks.
 **Lehre:** «Skript liegt bereit» ist eine Behauptung — `wc -l` und die letzte Zeile sind die Messung. Und Profiltexte
 gehören in EINE Quelle (TEXTE im Agenten-Skript), sonst sagt jedes Profil ein anderes Sortiment.
 
+**Nachtrag 32 (23.09. 12:10 UTC) — Task #101: der Shop-Kanal zeigt zwei Drittel des Sortiments nicht, weil 46'215 aktive Produkte KEINE Produktkategorie haben.**
+GEMESSEN: 250 neueste Produkte, mit/ohne Shop-Meldung «nicht auffindbar» verglichen (Typ, Barcode, Bilder, Beschreibung,
+Gewicht, Preis, Varianten, Publikationen, Datum): EINZIGES Unterscheidungsmerkmal `category` — 222/222 mit Meldung
+OHNE Taxonomie-Kategorie, 0/28 ohne Meldung. Neueste 3'000: 2'923 ohne (alle cj-real); nach ID sortiert (alt): 995/1'000
+mit. Vollscan: **46'215 von 50'462 ohne** — die Importer setzen `productType`, nie die Shopify-Taxonomie. Der alte
+Zuweiser `google_category_assign.py` (30.08.) las fünf /tmp-Dateien, kannte die neuen Typen nicht, hatte keinen Starter.
+Google «Product page unavailable» (369): alle Seiten laden extern 200, alle Lager 0/CONTINUE, alle aus Rückholung
+18.–20.08./07.09. → veralteter Google-Stand, wartet auf Recrawl (14 Tage beobachten).
+GETAN: `kategorie_wache.py` (täglich, SCHARF=1 im Aufseher, CAP 3'000): productType → Taxonomie-ID (54 Typen, IDs
+per `taxonomy.categories(search:)` gemessen und beim Start per `nodes(ids:)` verifiziert — unbekannte ID bricht ab),
+25er-Mutationen `productUpdate(product:{id,category})`, Rücklesen `category.id` aus der Antwort, Ledger, Bericht
+`dropship/KATEGORIE-WACHE.md`, Ampel «KATEGORIE: N aktive ohne Kategorie». DRY: 42'034 zuweisbar, 4'181 unbekannt
+(Kostüme 1'668, Werkzeug 844, Trend-Gadget 825, Gaming 321 …) → Tabelle um 14 Typen ergänzt; «Trend-Produkt»,
+«Kinder», «Selbst gestalten», «Anime» bewusst nicht geraten. Scharfer Lauf CAP 45'000 im Hintergrund gestartet.
+**Lehre:** Ein Kanal-Befund («nicht auffindbar») ist eine Frage an die Daten, nicht an den Kanal: erst die Gruppen
+mit/ohne Meldung über ALLE Felder vergleichen — die Antwort war ein einziges leeres Feld.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16174,3 +16191,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-21 · 💾 **Betreiber-Entscheid: Grow-Plan in einem Monat, zuerst Kunden.** Quittung MIT Ablaufdatum (`_dateispeicher_entscheid.txt`, 21.10.): die Ampel zeigt den vollen Speicher weiter als Messung, aber als gewollten Zustand, und ruft nach dem Datum von selbst wieder. → Journal
 - 2026-09-21 · 🔁 **68 kaufbare Produkte falsch gedraftet — mein Regex von heute früh, und die alte Fassung seit Wochen.** «CJ-CJJSBGSD00009-Blue package-US» → Kern `CJJSBGSD00009` = PRODUKT-SKU (kein `01AZ`), am **Varianten**-Endpunkt gefragt, `1602001 not found` als Absage gewertet — Kanarienvogel productSku: **200,… → Journal
 - 2026-09-21 · 🧩 **Das Produkt lebt, die Farbe ist tot — die Wache fragte nur nach dem Produkt.** Trainingsanzug: CJ führt 32 Varianten, der Shop 40, **8 Blau mit Menge 0 + CONTINUE kaufbar** — Ghost-Sale eine Ebene tiefer. → Journal
+- 2026-09-21 · ⏱️ **«schneller automation»: die Automation stand sich selbst im Weg.** Ohne Absprache drosselt CJ jeden zweiten Aufruf (1600200), die Helfer schlafen 8/16/24 s → ~12 s je Produkt bei 0,6 s Latenz. → Journal
+- 2026-09-21 · 🎨 **Zwei Shop-Varianten, eine CJ-SKU — «Grau» hätte Silber bestellt.** Zweiter Varianten-Lauf: Handsauger trägt an beiden Farben `…01AZ`, CJ führt `01AZ`+`02BY` → Fehlversand statt Ghost-Sale. → Journal
