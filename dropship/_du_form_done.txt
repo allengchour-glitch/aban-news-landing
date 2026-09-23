@@ -21819,3 +21819,7 @@ solar-horn-light-af6d17	2026-09-23	du
 solar-jalousien-mit-15-kanal-fernbedienung-324481	2026-09-23	teilweise
 solar-klemmlampe-626300	2026-09-23	um-ohne-wirkung
 solar-kurbelradio-488512	2026-09-23	du
+solar-kurbelradio-mit-powerbank-16ac75	2026-09-23	du
+solar-kurbelradio-mit-taschenlampe-9c521b	2026-09-23	du
+solar-ladegerat-fur-den-campingausflug-685312	2026-09-23	du
+solar-ladegerat-fur-handy-tablet-b87bc3	2026-09-23	du

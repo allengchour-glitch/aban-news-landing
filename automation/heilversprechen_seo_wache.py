@@ -8,8 +8,8 @@ ist dieselbe Aussage an anderer Stelle.
 
 Vorgehen je aktivem Produkt (Massenexport, eine Bulk-Operation):
   • seo.title trifft das Muster → durch den (bereits entschärften) Produkttitel ersetzen, sofern der sauber ist.
-  • seo.description trifft das Muster → Ersatztabelle der Hauptwache anwenden; bleibt ein Treffer, wird
-    das Feld geleert (Google nimmt dann den Anfang des bereinigten Beschreibungstexts).
+  • seo.description trifft das Muster → Feld leeren (Google nimmt dann den Anfang des bereinigten
+    Beschreibungstexts; die Ersatztabelle ergab im SEO-Satz Unsinn).
   • Handle mit Krankheitswort → nur Bericht (Umbenennen braucht 301 und ändert die Adresse bei Google).
 Rücklesen je Schreibvorgang. DRY=1 zeigt nur. Bericht: dropship/HEILVERSPRECHEN-SEO.md.
 """
@@ -81,12 +81,10 @@ def main():
                 offen.append((p["handle"], "SEO-Titel", seo["title"]))
         d = seo.get("description") or ""
         if treffer(d):
-            d2 = d
-            for a, b in hw.ERSATZ:
-                d2 = d2.replace(a, b)
-            for rx, b in hw.ERSATZ_RE:
-                d2 = rx.sub(b, d2)
-            neu["description"] = d2 if not treffer(d2) else ""
+            # Leeren statt flicken: die Ersatztabelle ist für Fliesstext gebaut und ergab im SEO-Satz
+            # Unsinn («Cupping-Massage mit Ausdauer & Anti-Cellulite», Testlauf 23.09.). Leer = Google nimmt
+            # den Anfang des (von der Hauptwache bereinigten) Beschreibungstexts.
+            neu["description"] = ""
         if not neu:
             continue
         print(f"  {p['handle'][:55]:55} {json.dumps(neu, ensure_ascii=False)[:110]}")
@@ -97,7 +95,12 @@ def main():
                    {"p": {"id": p["id"], "seo": neu}})
         pu = (r.get("data") or {}).get("productUpdate") or {}
         got = (pu.get("product") or {}).get("seo") or {}
-        if pu.get("userErrors") or any((got.get(k) or "") != v for k, v in neu.items()):
+        # Shopify speichert einen SEO-Titel gleich dem Produkttitel (und ein leeres Feld) als null —
+        # null heisst «Produkttitel/Beschreibung gelten», ist also Erfolg.
+        def ok(k, v):
+            g = got.get(k)
+            return (g or "") == v or (g is None and k == "title" and v == p["title"][:70])
+        if pu.get("userErrors") or not all(ok(k, v) for k, v in neu.items()):
             fehl += 1
             print("    ⛔", pu.get("userErrors"), got)
             continue
