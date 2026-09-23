@@ -4509,3 +4509,56 @@ gid://shopify/Product/15448903385473	1790202575	unklar	CJ-Code 16900500: Insuffi
 gid://shopify/Product/15448907776385	1790202575	ok	12 Shop / 12 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448907972993	1790202575	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448908038529	1790202575	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448908136833	1790202575	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448908366209	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448908628353	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448908693889	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448908792193	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448908988801	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448909152641	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448909218177	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448909283713	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448909414785	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448909545857	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448909906305	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448910856577	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448910889345	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448913707393	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448913805697	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448916197761	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448920359297	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448925307265	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448925471105	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448927797633	1790202575	nicht-aktiv	DRAFT
+gid://shopify/Product/15448930746753	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448930812289	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448931598721	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448931729793	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448931795329	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448931828097	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448931893633	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448931926401	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448932745601	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123220, Remai
+gid://shopify/Product/15448933237121	1790202575	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448936710529	1790202575	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448936743297	1790202575	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448941134209	1790202575	nicht-aktiv	DRAFT
+gid://shopify/Product/15448941199745	1790202575	nicht-aktiv	DRAFT
+gid://shopify/Product/15448946999681	1790202575	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448951587201	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448951619969	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448951685505	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448951718273	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448951783809	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448951849345	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448951914881	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448952471937	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448952537473	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448952635777	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448952766849	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448952996225	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448953061761	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448953127297	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448953225601	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448953291137	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
+gid://shopify/Product/15448953356673	1790202575	unklar	CJ-Code 16900500: Insufficient API points. Used today: 123270, Remai
