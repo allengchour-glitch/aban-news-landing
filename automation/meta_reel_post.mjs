@@ -121,7 +121,7 @@ for (const r of rows.slice(1)) {
 }
 if (lastPosted && (Date.now() - lastPosted) < MIN_GAP_H * 3600000) {
   console.log(`Kadenz-Wache: letzter Post vor ${((Date.now() - lastPosted) / 3600000).toFixed(1)}h (<${MIN_GAP_H}h) → kein Post.`);
-  process.exit(0);
+  process.exit(3);   // 23.09.: nicht gepostet → Autopilot setzt seine 8-h-Marke NICHT (sonst wurden aus 6 h fast 12 h)
 }
 
 // ⛔ INHALTS-SPERRE (GEHIRN 10, «darf kein Doppelpost mehr passieren»): jedes je gepostete Video
