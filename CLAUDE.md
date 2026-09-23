@@ -300,8 +300,8 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   erreichbare Session, und ALLE Bridge-Sessions (`environment_kind: bridge`) melden `computer_unreachable`,
   die jüngste seit **15.09. 03:44**. **Damit ein Browser-Auftrag delegierbar ist, braucht es auf dem PC eine
   LAUFENDE Claude-Code-Sitzung mit Remote-Control-Verbindung** — ein eingeschalteter PC allein reicht nicht.
-  Erst wenn `ListAgents` die PC-Session zeigt, geht `SendMessage`. Skripte für den PC liegen bereit:
-  `automation/local/profil-politur-browser.mjs` (Playwright) + `automation/social-profile-polish.mjs` (puppeteer).
+  Erst wenn `ListAgents` die PC-Session zeigt, geht `SendMessage`. Skripte für den PC: `automation/local/profil-politur-browser.mjs` (seit 23.09. ein CDP-Wrapper um
+  `automation/browser/social_profil_politur.mjs`; die Juni-Fassung war ein Torso) + `automation/social-profile-polish.mjs` (puppeteer).
   **Ohne Bridge ist der Handy-Browser des Betreibers der schnellere Weg** — BigBuy-Ticket, CJ-Konsole,
   Google Merchant und Shopify-Dateien laufen alle im mobilen Browser.
 - **🎬 Video-Präferenzen (User 2026-06-12, Musik-Update 2026-07-06):** ALLE Marketing-Videos
@@ -502,6 +502,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-23 · 🪞 **«jede sozail profile verschönern»: FB per API fertig (Info/Beschreibung/https/Profilbild/neues Titelbild im Slide-Stil, Cover via Foto `published=false` + `cover=<id>`); IG/TikTok/Pinterest als Agenten-Auftrag `social_profil_politur.mjs` (liest vorher, schreibt bei Abweichung, liest zurück) — das PC-Skript war seit Juni ein 70-Zeilen-Torso.** Betreiber: Agent-Neustart (COWORK J), TikTok-Bio-Link, IG-Website https → Journal Nachtrag 31
 - 2026-09-23 · 🔎 **Google-Feedback-Wächter (Task #100): Lauf 1 zählte 33'863 Meldungen der App «Shop» als Google-Blocker — `product.feedback` trägt ALLE Kanal-Apps, erst nach App trennen.** Google Free-Listings-Blocker 1'957 (Title under review 836, Inappropriate image 445, Product page unavailable 369 — alle mit onlineStoreUrl, Ursache offen); Shop-Kanal 33'863 «nicht auffindbar» = neuer Befund. Bestandszähler: created_at-Partition statt Preisbänder (54'214 waren +7 % Überzählung), `updated_at:>-2d` ist keine Shopify-Syntax → Journal Nachtrag 29
 - 2026-09-23 · 🗣️ **Bildkanal sprach noch die Scam-Sprache vom Sommer: 70 wartende Kimi-Captions ohne Preis mit Klarna-Filler, der v2-Nachschub hätte «Designer-Preis»/«WELCOME10»/Threads geschrieben.** `bild_queue_captions_ehrlich.py` (Preis live, Laden-Zeile, Sach-Tags; täglich), Nachschub auf dieselben Bausteine. **Tonalitäts-Regel gilt für jeden Schreiber eines Kanals** → Journal Nachtrag 28
 - 2026-09-23 · 🖼️ **Verbesserungsrunde 5: Bild-Poster fragte nie, ob die Ware kaufbar ist — 3 von 73 August-Zeilen bewarben DRAFTs (Link = 404); `social_queue_saeubern.py` hatte seit 03.09. keinen Starter.** Jetzt `produktAktiv()` im Bild-Poster (ACTIVE+onlineStoreUrl), Reiniger täglich im Aufseher, prüft auch «ohne Onlineshop». Alte Throttle-Tracebacks in /tmp-Logs sind Vergangenheit (nur letzte Zeilen zählen) → Journal Nachtrag 27
@@ -541,9 +542,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-09-21 · 🖥️ **Der grosse Hebel für «schneller automation» liegt nicht im Code, sondern im Schlaf des Containers.** Alle Tages-Wächter laufen nur in Session-Arbeitszeit. → Journal
 - 2026-09-21 · 🎨 **Zwei Shop-Varianten, eine CJ-SKU — «Grau» hätte Silber bestellt.** Zweiter Varianten-Lauf: Handsauger trägt an beiden Farben `…01AZ`, CJ führt `01AZ`+`02BY` → Fehlversand statt Ghost-Sale. → Journal
 - 2026-09-21 · ⏱️ **«schneller automation»: die Automation stand sich selbst im Weg.** Ohne Absprache drosselt CJ jeden zweiten Aufruf (1600200), die Helfer schlafen 8/16/24 s → ~12 s je Produkt bei 0,6 s Latenz. → Journal
-- 2026-09-21 · 🧩 **Das Produkt lebt, die Farbe ist tot — die Wache fragte nur nach dem Produkt.** Trainingsanzug: CJ führt 32 Varianten, der Shop 40, **8 Blau mit Menge 0 + CONTINUE kaufbar** — Ghost-Sale eine Ebene tiefer. → Journal
-- 2026-09-21 · 🔁 **68 kaufbare Produkte falsch gedraftet — mein Regex von heute früh, und die alte Fassung seit Wochen.** «CJ-CJJSBGSD00009-Blue package-US» → Kern `CJJSBGSD00009` = PRODUKT-SKU (kein `01AZ`), am **Varianten**-Endpunkt gefragt, `1602001 not found` als Absage gewertet — Kanarienvogel productSku: **200,… → Journal
 
-… Einzeilen vom 14.–21.09.2026 (96, elf vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
+… Einzeilen vom 14.–21.09.2026 (98, dreizehn vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
 Dateiende — CLAUDE.md muss unter ~70 KB bleiben); alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md`
 (Inhaltsverzeichnis oben). Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`.

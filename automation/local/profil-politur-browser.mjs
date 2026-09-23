@@ -1,54 +1,26 @@
 #!/usr/bin/env node
-/* LuxeStyle — profil-politur-browser.mjs (LOKAL auf dem PC ausführen!)
+/* LuxeStyle — profil-politur-browser.mjs (LOKAL auf dem PC ausführen!)  · Fassung 23.09.2026
  * ---------------------------------------------------------------------
- * Poliert Instagram + TikTok-Profil OHNE API: steuert dein bereits EINGELOGGTES
+ * Poliert Instagram-, TikTok- und Pinterest-Profil OHNE API: steuert dein bereits EINGELOGGTES
  * Brave über den Debug-Port 9222 (Browser-Automation, kein Passwort nötig).
  *
- * VORAUSSETZUNG (hast du schon):
- *   Brave läuft mit:  --remote-debugging-port=9222 --user-data-dir="%USERPROFILE%\brave-agent"
- *   und du bist dort bei instagram.com + tiktok.com eingeloggt.
+ * ⚠️ Die Fassung vom Juni war ABGEBROCHEN (Datei endete mitten im Instagram-Block, 70 Zeilen) — sie
+ * hätte nie laufen können. Diese Fassung nutzt dieselbe Logik wie der Hetzner-Agent
+ * (automation/browser/social_profil_politur.mjs) — Texte kommen von dort, damit alle Profile gleich sprechen.
  *
- * AUSFÜHREN (PowerShell, im Repo-Ordner oder Datei einzeln herunterladen):
- *   npm install playwright-core
- *   node automation/local/profil-politur-browser.mjs
- *
- * Was es tut: IG-Bio/Name setzen · TikTok-Name/Bio setzen · Profilbild hochladen (beide) ·
- * Screenshots nach ./politur-screenshots/ (Beweis). Jeder Schritt einzeln abgesichert —
- * was nicht klappt, wird klar gemeldet (Selektoren können sich ändern).
+ * VORAUSSETZUNG: Brave läuft mit  --remote-debugging-port=9222 --user-data-dir="%USERPROFILE%\brave-agent"
+ * und ist bei instagram.com, tiktok.com, pinterest.com eingeloggt.
+ * AUSFÜHREN (PowerShell im Repo-Ordner):  npm install playwright-core ; node automation/local/profil-politur-browser.mjs
+ * DRY=1 liest nur. Screenshots + Ergebnis-JSON nach ./politur-screenshots/.
  */
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
-import https from 'node:https';
+import politur from '../browser/social_profil_politur.mjs';
 
-const BIO_IG = '🇨🇭 Schweizer Online-Shop\nMode · Schmuck · Uhren · dein eigenes Design 🎨\n📦 Weltweiter Versand · 30 Tage Rückgabe\n🎁 –10 % mit Code WELCOME10 👇';
-const NAME_IG = 'LuxeStyle · Schweizer Online-Shop';
-const BIO_TT = '🇨🇭 Schweizer Shop · Mode·Schmuck·Uhren\n–10 % Code WELCOME10 · Link 👇';
-const NAME_TT = 'LuxeStyle · Schweizer Shop';
-const PIC_URL = 'https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/main/social/brand/profil-rund-dunkel.jpg';
-
-const SHOTS = path.resolve('./politur-screenshots'); fs.mkdirSync(SHOTS, { recursive: true });
-const log = (...a) => console.log(new Date().toISOString().slice(11,19), ...a);
-
-function download(url, dest){
-  return new Promise((res, rej) => {
-    const f = fs.createWriteStream(dest);
-    https.get(url, r => { if(r.statusCode!==200) return rej(new Error('HTTP '+r.statusCode));
-      r.pipe(f); f.on('finish', ()=>f.close(()=>res(dest))); }).on('error', rej);
-  });
-}
-
-async function shot(page, name){ try{ await page.screenshot({ path: path.join(SHOTS, name), fullPage:false }); log('📸', name);}catch{} }
-
-async function firstVisible(page, selectors){
-  for (const s of selectors) {
-    try { const el = page.locator(s).first(); if (await el.isVisible({ timeout: 1500 })) return el; } catch {}
-  }
-  return null;
-}
-
-const PIC = path.join(SHOTS, 'profilbild.jpg');
-await download(PIC_URL, PIC).then(()=>log('Profilbild geladen.')).catch(e=>log('⚠️ Bild-Download:', e.message));
+const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
+const ERGEBNIS = path.resolve('./politur-screenshots'); fs.mkdirSync(ERGEBNIS, { recursive: true });
+const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
 log('Verbinde mit Brave (localhost:9222)…');
 const browser = await chromium.connectOverCDP('http://localhost:9222').catch(e => {
@@ -56,16 +28,15 @@ const browser = await chromium.connectOverCDP('http://localhost:9222').catch(e =
   process.exit(1);
 });
 const ctx = browser.contexts()[0] || await browser.newContext();
-const page = await ctx.newPage();
-const results = [];
-
-/* ---------------- INSTAGRAM ---------------- */
+const auftrag = { id: 'profil-politur-lokal-' + new Date().toISOString().slice(0, 10), dry: process.env.DRY === '1' };
 try {
-  log('— INSTAGRAM —');
-  await page.goto('https://www.instagram.com/accounts/edit/', { waitUntil: 'domcontentloaded', timeout: 45000 });
-  await page.waitForTimeout(3500);
-  if (page.url().includes('login')) throw new Error('Nicht eingeloggt (Login-Seite).');
-
-  // Bio (textarea) + Name/Website-Felder
-  const bio = await firstVisible(page, ['textarea#pepBio','textarea[aria-label*="Bio" i]','textarea[aria-label*="Steckbrief" i]','form textarea']);
-  if (bio) { await bio
+  const ergebnis = await politur({ ctx, REPO, ERGEBNIS, auftrag });
+  fs.writeFileSync(path.join(ERGEBNIS, auftrag.id + '.json'), JSON.stringify(ergebnis, null, 2));
+  for (const [dienst, r] of Object.entries(ergebnis.dienste)) {
+    log(`— ${dienst.toUpperCase()} —`, r.fehler ? '❌ ' + r.fehler : `gesetzt: ${r.gesetzt.join(', ') || '–'}`, r.offen.length ? '· offen: ' + r.offen.join(' | ') : '');
+  }
+  log('Ergebnis:', path.join(ERGEBNIS, auftrag.id + '.json'));
+} catch (e) {
+  console.error('❌', e.message, e.nichtAngemeldet ? '(nicht angemeldet — in Brave einloggen und erneut starten)' : '');
+  process.exit(1);
+} finally { await browser.close().catch(() => {}); }

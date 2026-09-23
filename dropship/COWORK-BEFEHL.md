@@ -4,6 +4,19 @@
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
+## 🆕 23.09. 11:40 UTC — Social-Profile («jede sozail profile verschönern»)
+
+**J — Hetzner-Agent neu starten, dann läuft die Profil-Politur von selbst (2 Min):** Der Auftrag
+`auftraege/offen/social-profil-politur-2026-09-23.json` (Skript `automation/browser/social_profil_politur.mjs`)
+setzt Instagram (Name «LuxeStyle · Schweizer Shop», Bio in Laden-Sprache, Profilbild), TikTok (Name, Bio, Profilbild)
+und Pinterest (Name, Info, Website) — nur, wenn der Agent läuft (still seit 22.09. 21:03 UTC, Punkt B:
+`systemctl restart luxe-agent.service`). Ergebnis + Screenshots kommen nach `auftraege/erledigt/` und `auftraege/ergebnis/`.
+Alternative ohne Server: auf dem PC `node automation/local/profil-politur-browser.mjs` (Brave mit Port 9222, eingeloggt).
+✅ Facebook ist schon fertig (per API, 23.09. 11:35 UTC): Info, Beschreibung, Website https://luxestyle.ch, Profilbild
+(dunkle Wortmarke), neues Titelbild (`social/brand/cover-fb-2026-09.jpg`).
+**Nur du kannst:** TikTok-Bio-Link (Business-Konto → «Website» eintragen: luxestyle.ch) und bei Instagram unter
+«Links bearbeiten» die Website auf https://luxestyle.ch (steht auf http).
+
 ## 🆕 22.09. 23:20 UTC — zwei kurze Dinge für TikTok und den Server-Bot
 
 **A · ✅ ERLEDIGT 23.09. 04:25 UTC — der Token kam mit dem Container-Neustart an; erster TikTok-Post geplant (Metricool 380476730, 06:37 CH).** ~~Metricool-Token im Chat (TikTok, 1 Minute).~~ Du hast `METRICOOL_USER_TOKEN` in die Umgebungs-Einstellungen

@@ -483,6 +483,28 @@ Trockenlauf: «Sternenhimmel» allein wählte eine **Quarzuhr mit Sternenhimmel-
 Kanarienvögel grün, zweiter Trockenlauf sauber, scharfer Lauf: 18 neu in der Reihe (32 → 50), 0 abgelaufen.
 **Lehre (zum dritten Mal, IPL/UV/Sternenhimmel):** ein Trendwort ist nie der Anker — die Warenart ist es.
 
+**Nachtrag 31 (23.09. 11:45 UTC) — «jede sozail profile verschönern»: Facebook per API fertig, IG/TikTok/Pinterest als Agenten-Auftrag — und das alte PC-Skript war ein Torso.**
+GEMESSEN: FB-Seite «LuxeStyle CH» (7 Follower): Info mit «Premium Accessoires & Mode», Website doppelt («http://Luxestyle.ch/,
+http://luxestyle.ch/»), keine Beschreibung, cremefarbenes Titelbild «Est. 2026 · Premium Accessoires & Mode · WELCOME10».
+IG @luxestyle.ch (165 Follower, 168 Posts): Name «Luxestyle.ch», Bio «Schweizer Shop 🇨🇭 Mode · Schmuck · Uhren / –10% mit
+Code WELCOME10», Website http. TikTok @luxestyle.ch (553 Follower, 67 Videos): Name «Luxestyle.ch», Bio «Mode · Beauty ·
+Wohnen · Technik 🇨🇭 / luxestyle.ch · -10% mit WELCOME10», KEIN Bio-Link. Pinterest: Profil-Formular nie gemessen (beide
+Aufträge «abgebrochen»). WELCOME10 ist ACTIVE (2 Einlösungen, bis 31.12.2027) — bleibt in den Bios, nicht in Grafiken.
+Sortiment-Beschreibung stimmte nirgends mehr (Schmuck/Uhren vs. heute Mode, Beauty, Wohnen, Technik).
+GETAN: (1) Titelbild neu im Slide-Stil (dunkel/Gold/Creme, 1640×624, Texte in der mobilen Sicherheitszone geprüft):
+«LUXESTYLE · Kleiner Schweizer Shop aus Belp · Mode · Beauty · Wohnen · Technik · TWINT & Kauf auf Rechnung · 30 Tage
+Rückgabe · luxestyle.ch». (2) FB per Graph-API: about, description (Laden-Sprache), website https, Profilbild
+`profil-rund-dunkel.jpg` (POST /picture), Titelbild (Foto `published=false` hochladen → POST /{page} cover=<id>) — alles
+`success:true`, Cover-ID rückgelesen. (3) IG/TikTok/Pinterest: kein Edit-API → `automation/browser/social_profil_politur.mjs`
+(liest jedes Feld vorher, schreibt nur bei Abweichung, liest zurück, Screenshots vorher/nachher, nicht-angemeldet =
+Kennzeichen) + Auftrag `auftraege/offen/social-profil-politur-2026-09-23.json`; Texte: Name «LuxeStyle · Schweizer Shop»,
+IG-Bio 130/150 Z., TikTok-Bio 79/80 Z. (4) `automation/local/profil-politur-browser.mjs` war seit Juni ein Torso (70 Zeilen,
+endete mitten im Instagram-Block «if (bio) { await bio») — im Gedächtnis stand er als «liegt bereit»; jetzt ein dünner
+CDP-Wrapper um das Agenten-Skript. Der Agent steht seit 22.09. 21:03 UTC → COWORK Punkt J (Neustart), TikTok-Bio-Link und
+IG-Website-Link sind Betreiber-Klicks.
+**Lehre:** «Skript liegt bereit» ist eine Behauptung — `wc -l` und die letzte Zeile sind die Messung. Und Profiltexte
+gehören in EINE Quelle (TEXTE im Agenten-Skript), sonst sagt jedes Profil ein anderes Sortiment.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16150,3 +16172,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-21 · 🚪 **49 Tages-Tore, keines beanspruchte sein Log — der Bewertungs-Importer lief doppelt.** Tor-Frage «Log älter als 24 h?», der Lauf schreibt minutenlang nichts (Prio-Liste zuerst), nach dem 120-s-Schlaf war das Tor noch offen → zwei Instanzen (822 s / 696 s, `sid` = Forks EINES Aufsehers). → Journal
 - 2026-09-21 · 🗓️ **Die API-Version im Code war seit Monaten nicht die, die antwortete.** Kopf gemessen: 2024-10/2025-01/2025-07 → alle still auf **2025-10** bedient, die am **01.10.2026** ausläuft — 350 Stellen wären in zehn Tagen unangekündigt auf 2026-01 gesprungen. → Journal
 - 2026-09-21 · 💾 **Betreiber-Entscheid: Grow-Plan in einem Monat, zuerst Kunden.** Quittung MIT Ablaufdatum (`_dateispeicher_entscheid.txt`, 21.10.): die Ampel zeigt den vollen Speicher weiter als Messung, aber als gewollten Zustand, und ruft nach dem Datum von selbst wieder. → Journal
+- 2026-09-21 · 🔁 **68 kaufbare Produkte falsch gedraftet — mein Regex von heute früh, und die alte Fassung seit Wochen.** «CJ-CJJSBGSD00009-Blue package-US» → Kern `CJJSBGSD00009` = PRODUKT-SKU (kein `01AZ`), am **Varianten**-Endpunkt gefragt, `1602001 not found` als Absage gewertet — Kanarienvogel productSku: **200,… → Journal
+- 2026-09-21 · 🧩 **Das Produkt lebt, die Farbe ist tot — die Wache fragte nur nach dem Produkt.** Trainingsanzug: CJ führt 32 Varianten, der Shop 40, **8 Blau mit Menge 0 + CONTINUE kaufbar** — Ghost-Sale eine Ebene tiefer. → Journal
