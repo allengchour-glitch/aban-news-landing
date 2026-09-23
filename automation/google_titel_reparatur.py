@@ -45,7 +45,12 @@ Live-Feedback der Stand-Handles → Plan → DRY-Diff (Standard) bzw. SCHARF=1 s
 Ledger `dropship/_google_titel_reparatur.txt` → Nachmessung (Ledger-Einträge ≥ 20 h: Google-Klassen live) →
 Bericht `dropship/GOOGLE-TITEL-REPARATUR.md`.
 
-Aufruf:  python3 automation/google_titel_reparatur.py            (DRY, zeigt jede Änderung)
+Nachzug (23.09. abends): Produkte, deren Titel dieses Skript umbenannt hat, ziehen in JEDEM Lauf nach (idempotent):
+SEO-Titel/-Beschreibung (wörtlich ODER über den Titel-Kern der Shop-Vorlage), Bild-Alt-Texte mit altem Titel
+(fileUpdate), Beschreibungstext der Regel (Used-Look/-Optik → Vintage-…). Kein Ersatz, der einen Sie-Marker bringt.
+
+Aufruf:  python3 automation/google_titel_reparatur.py            (DRY: zeigt jede Änderung als Diff, schreibt NICHTS —
+                                                                  weder Shop noch Ledger noch Bericht)
          SCHARF=1 python3 automation/google_titel_reparatur.py   (schreibt)
          NUR=15512293572993,15471974973825 …                      (nur diese Produkt-IDs)
 Täglich NACH google_feedback_wache.py (braucht deren frischen Stand) und VOR google_sperrtags_durchsetzen.py.
@@ -82,6 +87,13 @@ PERSON = re.compile(rf"(?i)(?<![{BUCHST}])({PERSONEN})(?![{BUCHST}])")
 # nur entfernen, wenn ein Wort folgt («BIDEN Herrenuhr», «Biden-Uhr»); am Titelende wäre es Raten
 PERSON_VOR_WORT = re.compile(rf"(?i)(?<![{BUCHST}])(?:{PERSONEN})(?:\s+|-)(?=[{BUCHST}0-9])")
 USED = re.compile(rf"(?i)(?<![{BUCHST}])used[- ]look(?![{BUCHST}])")
+# Im TEXT (nicht im Titel) dieselbe Klasse in allen Formen, die der Bestand trägt («dezente Used-Optik», «Used-Finish»;
+# gemessen 23.09. im Export vom 22.09.: look 72, optik 14, effekt 3, finish 3, design 1). Nur für Produkte, deren Titel
+# diese Regel umbenannt hat — Titel sagt «Vintage-Look», der Text soll nicht «Used-Optik» sagen.
+# Gebeugte Formen mit (Pruefer 23.09.: «Design mit Used-Effekten» blieb stehen, weil der Lookahead die Endung sperrte).
+USED_TEXT = re.compile(rf"(?i)(?<![{BUCHST}])used[- ]?(look|optik|effekt|finish|design|style)(s|en|e|es)?(?![{BUCHST}])")
+# Sie-Marker wie in produkttexte_du_form.py (SIE) — ein Ersatz darf keinen hinzufügen (sonst Ping-Pong mit dem Du-Lauf)
+SIE_MARKER = re.compile(r"\b(Sie|Ihnen|Ihr|Ihre|Ihrem|Ihren|Ihrer|Ihres)\b")
 PROMO = re.compile(r"(?i)\s*«(?:new style|new|neu|hot|trend|bestseller|sale)»")
 RAUCH = re.compile(
     rf"(?i)(aschenbecher|spiral[- ]?pipe|pipe[- ]atomizer|kräuter-?pfeife|tabak-?pfeife|wasserpfeife"
@@ -113,6 +125,9 @@ KANARIEN = {
     "USED": (["Used-Look Jeans mit leicht ausgestelltem Bein", "Twill Umhängetasche im Used-Look",
               "Used-Look-Jeans, gewaschen", "Hoodie im Used Look"],
              ["Unused Look Spiegel", "Fused-Look Glasvase", "Focused Look Brille"]),
+    "USED_TEXT": (["Jeansjacke mit dezenter Used-Optik", "Boots mit Used-Finish", "im used-Look gewaschen", "Used Look Jeans",
+                   "Das Design mit Used-Effekten, Waschung und Rissen", "zwei Used-Looks", "Used-Optiken"],
+                  ["Unused Optik", "Fused-Look Glasvase", "Focused Look Brille", "used to be", "wird oft genutzt (used)"]),
     "PROMO": (["Strandtuch-Kleid «New Style»", "Tasche «Neu»"],
               ["Flauschige Hausschuhe «Kürbis»", "Kissenbezug «New Chinese Style»", "Neue X9 HD-Heimspielkonsole"]),
     "RAUCH": (["Spiral Pipe Atomizer für trockene Kräuter", "Runder Aschenbecher aus Keramik",
@@ -133,15 +148,17 @@ KANARIEN = {
                  ["Slim Fit Jeans in Lila-Schwarz", "Reflektierendes Hundehalsband mit Cartoon-Muster",
                   "Stahlarmband mit Fallschirmschliesse"]),
 }
-_RX = {"PERSON": PERSON, "USED": USED, "PROMO": PROMO, "RAUCH": RAUCH, "INTIM": INTIM, "SENSIBEL": SENSIBEL}
+_RX = {"PERSON": PERSON, "USED": USED, "USED_TEXT": USED_TEXT, "PROMO": PROMO, "RAUCH": RAUCH, "INTIM": INTIM,
+       "SENSIBEL": SENSIBEL}
 
 # ─────────── EINZEL: von Hand gelesen (Titel, Typ, Tags, Beschreibung am 23.09. live geprüft) ───────────
 EINZEL = {
     "15512293572993": dict(handle="biden-herrenuhr-ultraflach-mit-kalender-611776",
         alt="BIDEN Herrenuhr ultraflach mit Kalender", neu="Ultraflache Herrenuhr mit Kalender",
         text=[("Diese ultraflache BIDEN Herrenuhr", "Diese ultraflache Herrenuhr"),
-              # Sie→du-Wandlung hatte das Possessiv der UHR («Ihr Design») zu «dein» gemacht
-              ("Mann. dein stilvolles Design", "Mann. Ihr stilvolles Design")],
+              # Sie→du-Wandlung hatte das Possessiv der UHR («Ihr Design») zu «dein» gemacht. NICHT «Ihr» zurückschreiben:
+              # «Ihr» steht in der SIE-Regex von produkttexte_du_form.py → der nächste Du-Lauf wandelt es wieder (Ping-Pong).
+              ("Mann. dein stilvolles Design", "Mann. Das stilvolle Design")],
         grund="Politiker-Name als Marke (Google: Inappropriate title)"),
     "15516198764929": dict(handle="biden-herren-quarzuhr-hohl-leger-052544",
         alt="Biden Herren-Quarzuhr, hohl, leger", neu="Legere Herren-Quarzuhr mit Kalender",
@@ -157,15 +174,28 @@ EINZEL = {
     "15446275817857": dict(handle="zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100",
         typ="Küche & Bar", kat="hg-11-10-5-2", tags_weg={"aufbewahrung", "organizer"},
         grund="Teetasse im Sammeltyp «Aufbewahrung & Organizer» (Google: Inappropriate title, beständig)"),
+    # 23.09. abends: 1. Umbenennung «Laser-Silber-Rippband, 75mm, 50 Yards» → «Ripsband in Silber mit Glanzeffekt …»
+    # (Ledger). Nachgemessen: CJ führt EINE Variante «Yarn Model-gold» (product/query, pid 1673897607762026496), alle
+    # 6 Bilder zeigen goldenes Hologramm-Band — «Silber» war falsch. «Laser» (镭射) = Hologramm-Folie, keine Laserware.
     "15502303756673": dict(handle="laser-silber-rippband-75mm-50-yards-026496",
-        alt="Laser-Silber-Rippband, 75mm, 50 Yards", neu="Ripsband in Silber mit Glanzeffekt, 75 mm, 50 Yards",
-        grund="Bastelband; «Laser» las Google als Waffenteil (Guns and Parts), «Rippband» ist Ripsband"),
+        alt="Ripsband in Silber mit Glanzeffekt, 75 mm, 50 Yards", neu="Ripsband in Gold mit Hologramm-Glanz, 75 mm, 50 Yards",
+        text=[("Dieses hochwertige Laser-Silber-Rippband aus Polyester", "Dieses goldene Ripsband mit Hologramm-Glanz aus Polyester"),
+              ("den auffälligen Laser-Silber-Glanz aus", "den auffälligen holografischen Goldglanz aus"),
+              ("Gerippte Struktur mit Laser-Silber-Effekt", "Gerippte Struktur mit holografischem Gold-Effekt")],
+        grund="Bastelband; «Laser» las Google als Waffenteil (Guns and Parts), «Rippband» ist Ripsband; Farbe laut CJ und "
+              "Bildern Gold"),
     "15510929506689": dict(handle="1-zoll-zapfpistole-fur-diesel-und-benzin-257024",
         alt="1-Zoll-Zapfpistole für Diesel und Benzin", neu="1-Zoll-Zapfventil für Diesel und Benzin",
+        text=[("Diese selbstversiegelnde 1-Zoll-Zapfpistole ist ein", "Dieses selbstversiegelnde 1-Zoll-Zapfventil ist ein"),
+              # «Sie» meinte die Pistole — mit dem Neutrum «Zapfventil» wird es «Es» (und kein Sie-Marker mehr)
+              ("Sie eignet sich hervorragend für das Betanken", "Es eignet sich hervorragend für das Betanken"),
+              ("Die Pistole ist aus robustem Metall gefertigt", "Das Zapfventil ist aus robustem Metall gefertigt")],
         grund="Tankzubehör; «Pistole» las Google als Waffe (Guns and Parts)"),
     "15504006873473": dict(handle="baustein-luxuslimousine-auf-raedern-334528",
         alt="Luxus-Limousine · Baustein-Auto auf Rädern", neu="Baustein-Set Luxus-Limousine – Spielzeugauto zum Bauen",
         typ="Spielzeug", kat="tg-5-7", tags_weg={"rc"},
+        # Bild-Alt-Texte tragen einen noch älteren Titel MIT Automarke (gemessen 23.09.: 5 von 5)
+        bild_alt=["Rolls-Royce Baustein-Auto auf Rädern"],
         grund="Bauset las Google als Fahrzeug (Vehicles); Typ «Spass-Elektronik» + Tag rc waren falsch"),
     "15450856423809": dict(handle="strandtuch-kleid-new-style-f6bb03",
         alt="Strandtuch-Kleid «New Style»", neu="Strandtuch-Kleid – Badetuch zum Anziehen",
@@ -194,6 +224,28 @@ def selbsttest():
         fehler.append("html_text_ersetzen() verändert Attribute")
     if not gs.ausschluss_tag(["google-policy-flag"]):
         fehler.append("google-policy-flag steht nicht mehr in AUSSCHLUSS_TAGS — Sperre würde nicht durchgesetzt")
+    if text_used("Jeansjacke mit dezenter Used-Optik, im used-Look") != "Jeansjacke mit dezenter Vintage-Optik, im Vintage-Look":
+        fehler.append("text_used() ersetzt Used-Optik/used-Look nicht sauber")
+    # SEO-Nachzug über den Titel-Kern (Baustein-Fall 23.09.: SEO trug eine ältere Titelform, kein wörtlicher Treffer)
+    t, d = seo_neu({"title": "Baustein-Luxuslimousine auf Rädern | LuxeStyle CH",
+                    "description": "Baustein-Luxuslimousine auf Rädern – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50."},
+                   ["Luxus-Limousine · Baustein-Auto auf Rädern"], "Baustein-Set Luxus-Limousine – Spielzeugauto zum Bauen", [])
+    if t != "Baustein-Set Luxus-Limousine – Spielzeugauto zum Bauen | LuxeStyle CH" or not (d or "").startswith(
+            "Baustein-Set Luxus-Limousine: Spielzeugauto zum Bauen – bei LuxeStyle Schweiz."):
+        fehler.append(f"seo_neu() zieht den Titel-Kern nicht nach: {t!r} / {d!r}")
+    # Gegenprobe: eigener SEO-Titel (andere Wörter) bleibt; schon neuer Titel bleibt (idempotent)
+    if seo_neu({"title": "Sassy Distressed Hoodie | LuxeStyle CH"}, ["Hoodie im Used-Look"], "Hoodie im Vintage-Look", [])[0]:
+        fehler.append("seo_neu() überschreibt einen handgeschriebenen SEO-Titel")
+    if seo_neu({"title": "Tasche aus Leder | LuxeStyle CH"}, ["Tasche"], "Tasche aus Leder", [])[0]:
+        fehler.append("seo_neu() ist nicht idempotent, wenn der alte Titel im neuen steckt")
+    if bild_alt_neu([{"id": "x", "alt": "Rolls-Royce Baustein-Auto auf Rädern – Bild 2 | LuxeStyle", "mediaContentType": "IMAGE"}],
+                    ["Rolls-Royce Baustein-Auto auf Rädern"], "Baustein-Set Luxus-Limousine", []) != [
+            ("x", "Rolls-Royce Baustein-Auto auf Rädern – Bild 2 | LuxeStyle", "Baustein-Set Luxus-Limousine – Bild 2 | LuxeStyle")]:
+        fehler.append("bild_alt_neu() ersetzt den alten Titel im Alt-Text nicht")
+    for pid, e in EINZEL.items():
+        for a, b in e.get("text", []):
+            if len(SIE_MARKER.findall(b)) > len(SIE_MARKER.findall(a)):
+                fehler.append(f"EINZEL {pid}: Textersatz «{b}» bringt einen Sie-Marker")
     if fehler:
         raise SystemExit("ABBRUCH Selbsttest:\n  " + "\n  ".join(fehler))
 
@@ -209,7 +261,8 @@ def gql(q, v=None):
         try:
             d = json.loads(r.stdout)
         except Exception:
-            grund = "kein JSON"; versuche += 1; time.sleep(5); continue
+            grund = f"kein JSON (curl rc={r.returncode} {r.stderr.strip()[:120]!r} stdout={r.stdout[:80]!r})"
+            versuche += 1; time.sleep(5 * versuche); continue
         if d.get("data") is not None:
             nachlauf(d); return d
         grund = str(d.get("errors") or d)[:300]
@@ -235,7 +288,7 @@ def text_person(t):
 
 
 def text_used(t):
-    return USED.sub("Vintage-Look", t)
+    return USED_TEXT.sub(lambda m: "Vintage-" + m.group(1)[:1].upper() + m.group(1)[1:].lower() + (m.group(2) or "").lower(), t)
 
 
 def html_text_ersetzen(html, fn):
@@ -272,6 +325,8 @@ def ledger_lesen():
 
 
 def ledger_schreiben(zeilen):
+    if not zeilen:
+        return
     neu = not os.path.exists(LEDGER)
     with open(LEDGER, "a", encoding="utf-8") as f:
         if neu:
@@ -294,6 +349,21 @@ def zuletzt_umbenannt(ledger):
             except ValueError:
                 continue
             out[z[2]] = max(out.get(z[2], t), t)
+    return out
+
+
+def titel_historie(ledger):
+    """Produkt-ID → {alte: [frühere Titel], neu: zuletzt geschriebener Titel, regeln: {…}} aus rückgelesenen Titel-Zeilen.
+    Grundlage für den Nachzug: SEO-Felder, Bild-Alt-Texte und Beschreibung folgen dem Titel auch in späteren Läufen,
+    wenn die Titel-Regel selbst nicht mehr trifft (Titel schon repariert)."""
+    out = {}
+    for z in ledger:
+        if len(z) >= 9 and z[1] == "SCHREIB" and z[5] == "titel" and z[8] == "ok":
+            h = out.setdefault(z[2], {"alte": [], "neu": None, "regeln": set()})
+            if z[6] and z[6] not in h["alte"]:
+                h["alte"].append(z[6])
+            h["neu"] = z[7]
+            h["regeln"] |= set(z[4].split("+"))
     return out
 
 
@@ -353,21 +423,30 @@ def stand_lesen():
 
 def details(pid):
     d = gql("query($id:ID!){ product(id:$id){ id handle status title productType tags category{id} "
-            "seo{title description} descriptionHtml feedback{ details{ app{title} messages{message} } } } }", {"id": pid})
+            "seo{title description} descriptionHtml media(first:50){ nodes{ id alt mediaContentType } } "
+            "feedback{ details{ app{title} messages{message} } } } }", {"id": pid})
     return d["data"]["product"]
 
 
 # ─────────────────────────────── Planen ───────────────────────────────
-def planen(p, live_klassen, stand_klassen, umbenannt, offen_text=frozenset()):
+def planen(p, live_klassen, stand_klassen, umbenannt, offen_text=frozenset(), hist=None):
     """Liefert den Änderungsplan für ein Produkt (dict) oder None. Liest nur, schreibt nichts."""
     num = p["id"].rsplit("/", 1)[-1]
     titel = p["title"]
     tags = {t.lower() for t in p["tags"]}
-    plan = dict(titel=None, typ=None, kat=None, dazu=set(), weg=set(), text=[], text_fn=[], regeln=[], notiz=[])
+    plan = dict(titel=None, typ=None, kat=None, dazu=set(), weg=set(), text=[], text_fn=[], regeln=[], notiz=[],
+                nachzug=False, bild_alt=[], bild_alt_extra=[], vorschau=None)
     # Beschreibungs-Nachholer aus dem Ledger (Titel schon repariert, Text war gesperrt)
     for regel, fn in (("USED", "used"), ("PERSON", "person")):
         if regel in offen_text:
             plan["text_fn"].append(fn); plan["regeln"].append(regel + "-TEXT")
+    # Nachzug: Titel wurde von diesem Skript umbenannt und steht noch so → Text/SEO/Bild-Alt folgen ihm (idempotent;
+    # main() verwirft den Plan, wenn sich nichts ändert)
+    if hist and titel == hist["neu"]:
+        plan["nachzug"] = True
+        for regel, fn in (("USED", "used"), ("PERSON", "person")):
+            if regel in hist["regeln"] and fn not in plan["text_fn"]:
+                plan["text_fn"].append(fn); plan["regeln"].append(regel + "-TEXT")
     e = EINZEL.get(num)
     if e:
         if e.get("alt") and titel == e["alt"]:
@@ -380,6 +459,7 @@ def planen(p, live_klassen, stand_klassen, umbenannt, offen_text=frozenset()):
             plan["kat"] = e["kat"]
         plan["dazu"] |= set(e.get("tags_dazu", set())) - tags
         plan["weg"] |= set(e.get("tags_weg", set())) & tags
+        plan["bild_alt_extra"] = list(e.get("bild_alt", []))
         plan["regeln"].append("EINZEL")
     t = plan["titel"] or titel
     if PERSON.search(t):
@@ -436,21 +516,75 @@ def planen(p, live_klassen, stand_klassen, umbenannt, offen_text=frozenset()):
         plan["notiz"].append(f"neuer Titel hätte {len(plan['titel'])} Zeichen (> {MAX_TITEL}) — nicht geschrieben")
         plan["titel"] = None
     leer = not (plan["titel"] or plan["typ"] or plan["kat"] or plan["dazu"] or plan["weg"] or plan["text"] or plan["text_fn"])
-    if leer and not plan["notiz"]:
+    if leer and not plan["notiz"] and not plan["nachzug"]:
         return None
     return plan
 
 
-def seo_neu(seo, alt_titel, neu_titel, fns):
-    """SEO-Titel/-Beschreibung nachziehen: alten Titel ersetzen, dieselben Regel-Ersetzungen anwenden."""
+SEO_T_RX = re.compile(r"^(?P<kern>.+?)(?P<rest>\s*[|–—-]\s*LuxeStyle\b.*)$", re.S)
+SEO_D_RX = re.compile(r"^(?P<kern>.+?)(?P<rest>\s+[–—-]\s+(?:jetzt\s+)?bei\s+LuxeStyle\b.*)$", re.S)
+MAX_SEO_D = 160
+
+
+def _norm(s):
+    s = (s or "").lower()
+    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss"), ("é", "e"), ("è", "e")):
+        s = s.replace(a, b)
+    return s
+
+
+def kern_aus(kern, titel_liste):
+    """True, wenn der SEO-Kern aus einem dieser Titel stammt: jedes Wort (≥ 3 Zeichen) steckt in der Buchstabenfolge
+    des Titels («Baustein-Luxuslimousine auf Rädern» ⊂ «Luxus-Limousine · Baustein-Auto auf Rädern») und der Kern deckt
+    mindestens die Hälfte davon ab. Ein handgeschriebener SEO-Titel mit eigenen Wörtern trifft NICHT."""
+    kt = [t for t in re.split(r"[^a-z0-9]+", _norm(kern)) if len(t) >= 3]
+    if len(kt) < 2:
+        return False
+    for a in titel_liste:
+        al = re.sub(r"[^a-z0-9]", "", _norm(a))
+        if al and all(t in al for t in kt) and sum(map(len, kt)) >= 0.5 * len(al):
+            return True
+    return False
+
+
+def _alt_ersetzen(feld, alte, neu):
+    """Wörtlichen alten Titel (längster zuerst) durch den neuen ersetzen. Steckt der alte im neuen, nie ersetzen
+    (sonst wüchse das Feld bei jedem Lauf)."""
+    for a in sorted(alte, key=len, reverse=True):
+        if a and a in feld and a not in neu:
+            return feld.replace(a, neu), True
+    return feld, False
+
+
+def seo_neu(seo, alte, neu_titel, fns):
+    """SEO-Titel/-Beschreibung nachziehen: alten Titel ersetzen — wörtlich, sonst über den Titel-Kern der
+    Shop-Vorlage («<Kern> | LuxeStyle CH», «<Kern> – bei LuxeStyle Schweiz. …») —, dann dieselben Regel-Ersetzungen.
+    `alte` = frühere Titel (Kette aus dem Ledger + heutiger), `neu_titel` = Titel, der danach live steht."""
+    if isinstance(alte, str):
+        alte = [alte]
+    alte = [a for a in (alte or []) if a and a != neu_titel]
     st, sd = (seo or {}).get("title"), (seo or {}).get("description")
     nst, nsd = st, sd
-    if neu_titel:
-        if nst and alt_titel in nst:
-            kand = nst.replace(alt_titel, neu_titel)
-            nst = kand if len(kand) <= MAX_TITEL else neu_titel
-        if nsd and alt_titel in nsd:
-            nsd = nsd.replace(alt_titel, neu_titel)
+    if neu_titel and alte:
+        if nst:
+            kand, ok = _alt_ersetzen(nst, alte, neu_titel)
+            if not ok:
+                m = SEO_T_RX.match(nst)
+                if m and kern_aus(m["kern"], alte) and not kern_aus(m["kern"], [neu_titel]):
+                    kand, ok = neu_titel + m["rest"], True
+            if ok:
+                nst = kand if len(kand) <= MAX_TITEL else neu_titel
+        if nsd:
+            kand, ok = _alt_ersetzen(nsd, alte, neu_titel)
+            if not ok:
+                m = SEO_D_RX.match(nsd)
+                if m and kern_aus(m["kern"], alte) and not kern_aus(m["kern"], [neu_titel]):
+                    # «Titel – Zusatz – bei LuxeStyle» liest sich doppelt → Doppelpunkt im Titelteil
+                    kern_neu = neu_titel.replace(" – ", ": ") if re.match(r"\s+[–—-]\s", m["rest"]) else neu_titel
+                    kand = kern_neu + m["rest"]
+                    ok = len(kand) <= MAX_SEO_D
+            if ok:
+                nsd = kand
     for fn in fns:
         if nst:
             nst = fn(nst)
@@ -461,6 +595,41 @@ def seo_neu(seo, alt_titel, neu_titel, fns):
     if nsd:
         nsd = PROMO.sub("", nsd)
     return (nst if nst != st else None), (nsd if nsd != sd else None)
+
+
+def bild_alt_neu(media, alte, neu_titel, fns):
+    """Bild-Alt-Texte, die einen alten Titel tragen («<alter Titel> – Bild 2 | LuxeStyle»), auf den neuen Titel ziehen.
+    Nur Bilder, nur wörtliche Treffer (plus dieselben Regel-Ersetzungen). → [(media_id, alt, neu)]"""
+    out = []
+    alte = [a for a in (alte or []) if a and a != neu_titel]
+    for m in media or []:
+        a = m.get("alt") or ""
+        if not a or m.get("mediaContentType") != "IMAGE":
+            continue
+        n, _ = _alt_ersetzen(a, alte, neu_titel) if (alte and neu_titel) else (a, False)
+        for fn in fns:
+            n = fn(n)
+        if n != a:
+            out.append((m["id"], a, n))
+    return out
+
+
+def text_aenderungen(alt_html, neu_html, ctx=0):
+    """Wortweise Änderungen im sichtbaren Text → [(alt_fragment, neu_fragment, kontext_vorher, kontext_nachher)]."""
+    import difflib
+    wa = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", alt_html or "")).split()
+    wn = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", neu_html or "")).split()
+    out = []
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, wa, wn, autojunk=False).get_opcodes():
+        if op != "equal":
+            out.append((" ".join(wa[i1:i2]), " ".join(wn[j1:j2]),
+                        " ".join(wa[max(0, i1 - ctx):i1]), " ".join(wa[i2:i2 + ctx])))
+    return out
+
+
+def sie_zunahme(alt_html, neu_html):
+    ta = re.sub(r"<[^>]+>", " ", alt_html or ""); tn = re.sub(r"<[^>]+>", " ", neu_html or "")
+    return len(SIE_MARKER.findall(tn)) > len(SIE_MARKER.findall(ta))
 
 
 FNS = {"person": text_person, "used": text_used}
@@ -478,13 +647,16 @@ def text_neu(html, plan):
 
 # ─────────────────────────────── Schreiben ───────────────────────────────
 _TEXTSPERRE_BELEGT = {"ja": False}
+TEXT_WARTE = float(os.environ.get("TEXT_WARTE", "90"))            # erste Wartezeit je Produkt (s)
+TEXT_WARTE_NACH = float(os.environ.get("TEXT_WARTE_NACH", "20"))  # nachdem die Sperre in diesem Lauf einmal belegt war
 
 
-def textsperre_holen(warte=60):
-    """Nicht blockierend probieren (Lehre 22.09.: Warten ist in einem stündlich sterbenden Container ein Nie).
-    War die Sperre in diesem Lauf schon einmal belegt, nur noch kurz probieren — sonst kosten 20 Texte 20 Minuten."""
-    if _TEXTSPERRE_BELEGT["ja"]:
-        warte = 2
+def textsperre_holen(warte=None):
+    """Nicht blockierend probieren (Lehre 22.09.: Warten ist in einem stündlich sterbenden Container ein Nie), alle
+    0.1 s — produkttexte_du_form.py gibt die Sperre je Produkt für 0.25 s frei, ein 1-s-Takt verpasst diese Lücke.
+    Die Sperre wird NUR um Lesen-Ersetzen-Schreiben-Rücklesen EINES Produkts gehalten (Deadlock 23.09.)."""
+    if warte is None:
+        warte = TEXT_WARTE_NACH if _TEXTSPERRE_BELEGT["ja"] else TEXT_WARTE
     fd = open(TEXTSPERRE, "w")
     t0 = time.time()
     while True:
@@ -495,7 +667,7 @@ def textsperre_holen(warte=60):
             if time.time() - t0 > warte:
                 _TEXTSPERRE_BELEGT["ja"] = True
                 fd.close(); return None
-            time.sleep(1)
+            time.sleep(0.1)
 
 
 def fehler_aus(d, feld):
@@ -503,8 +675,14 @@ def fehler_aus(d, feld):
     return x.get("userErrors") or d.get("errors") or []
 
 
+def _ok(b, fe):
+    if fe:
+        return "fehler:" + json.dumps(fe, ensure_ascii=False)[:160]
+    return "ok" if b else "fehler:rueckgelesen-anders"
+
+
 def schreiben(p, plan, seo_t, seo_d):
-    """Schreibt nacheinander, liest zurück. Gibt Ledger-Zeilen zurück."""
+    """Schreibt nacheinander, liest zurück. Gibt Ledger-Zeilen zurück (eine je Schreibung)."""
     pid, h, z = p["id"], p["handle"], []
     regel = "+".join(plan["regeln"]) or "-"
     eingabe = {"id": pid}
@@ -521,65 +699,104 @@ def schreiben(p, plan, seo_t, seo_d):
         seo["description"] = seo_d
     if seo:
         eingabe["seo"] = seo
-    fe = []
+    fe_p, fe_ta, fe_tw, fe_txt, fe_alt = [], [], [], [], []
+    # Vorläufige Ledger-Zeilen: sobald eine Mutation ohne userErrors durch ist, steht sie hier. Stirbt der Lauf
+    # danach (RuntimeError aus gql: Netz/403), schreibt `except` sie mit Status «gesendet-ruecklesen-offen» ins
+    # Ledger — sonst passt beim nächsten Lauf EINZEL.alt nicht mehr zum Live-Titel und die Historie reisst ab.
+    vorl, ts0 = [], jetzt()
+    def vormerken(feld, alt, neu):
+        vorl.append([ts0, "SCHREIB", pid, h, regel, feld, alt, neu, "gesendet-ruecklesen-offen"])
+    try:
+        return _schreiben_innen(p, plan, seo_t, seo_d, pid, h, z, regel, eingabe, fe_p, fe_ta, fe_tw, fe_txt, fe_alt, vormerken)
+    except RuntimeError:
+        if vorl:
+            ledger_schreiben(vorl)
+            print(f"   ⚠️ {len(vorl)} Schreibung(en) ohne Rücklesen ins Ledger vorgemerkt")
+        raise
+
+
+def _schreiben_innen(p, plan, seo_t, seo_d, pid, h, z, regel, eingabe, fe_p, fe_ta, fe_tw, fe_txt, fe_alt, vormerken):
     if len(eingabe) > 1:
         d = gql("mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{id} userErrors{field message} } }", {"p": eingabe})
-        fe += fehler_aus(d, "productUpdate")
+        fe_p += fehler_aus(d, "productUpdate")
+        if not fe_p:
+            if plan["titel"]: vormerken("titel", p["title"], plan["titel"])
+            if plan["typ"]: vormerken("typ", p["productType"], plan["typ"])
+            if "category" in eingabe: vormerken("kategorie", (p.get("category") or {}).get("id", ""), eingabe["category"])
+            if seo_t: vormerken("seo_titel", (p.get("seo") or {}).get("title"), seo_t)
+            if seo_d: vormerken("seo_beschreibung", (p.get("seo") or {}).get("description"), seo_d)
     if plan["dazu"]:
         d = gql("mutation($id:ID!,$t:[String!]!){ tagsAdd(id:$id, tags:$t){ userErrors{message} } }", {"id": pid, "t": sorted(plan["dazu"])})
-        fe += fehler_aus(d, "tagsAdd")
+        fe_ta += fehler_aus(d, "tagsAdd")
     if plan["weg"]:
         weg_echt = [t for t in p["tags"] if t.lower() in plan["weg"]]     # Originalschreibweise entfernen
         d = gql("mutation($id:ID!,$t:[String!]!){ tagsRemove(id:$id, tags:$t){ userErrors{message} } }", {"id": pid, "t": weg_echt})
-        fe += fehler_aus(d, "tagsRemove")
-    text_status, text_alt, text_ziel = None, None, None
+        fe_tw += fehler_aus(d, "tagsRemove")
+    if plan["bild_alt"]:
+        d = gql("mutation($f:[FileUpdateInput!]!){ fileUpdate(files:$f){ files{id alt} userErrors{field message code} } }",
+                {"f": [{"id": i, "alt": n} for i, _, n in plan["bild_alt"]]})
+        fe_alt += fehler_aus(d, "fileUpdate")
+        if not fe_alt:
+            for _, a, n in plan["bild_alt"]: vormerken("bild_alt", a, n)
+    text_status, text_alt, text_ziel, text_rueck = None, None, None, None
     if plan["text"] or plan["text_fn"]:
         fd = textsperre_holen()
         if fd is None:
             text_status = "text-sperre-belegt"
         else:
-            try:
+            try:   # Sperre NUR für dieses eine Produkt: frisch lesen → ersetzen → schreiben → zurücklesen
                 frisch = gql("query($id:ID!){ product(id:$id){ descriptionHtml } }", {"id": pid})["data"]["product"]["descriptionHtml"]
                 text_ziel = text_neu(frisch, plan)
-                if text_ziel:
+                if text_ziel and sie_zunahme(frisch, text_ziel):
+                    text_status, text_ziel = "sie-marker-nicht-geschrieben", None
+                elif text_ziel:
                     text_alt = frisch
                     d = gql("mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{id} userErrors{field message} } }",
                             {"p": {"id": pid, "descriptionHtml": text_ziel}})
-                    fe += fehler_aus(d, "productUpdate")
+                    fe_txt += fehler_aus(d, "productUpdate")
+                    if not fe_txt: vormerken("beschreibung", "", "(Text gesendet)")
+                    text_rueck = gql("query($id:ID!){ product(id:$id){ descriptionHtml } }", {"id": pid})["data"]["product"]["descriptionHtml"]
             finally:
                 fcntl.flock(fd, fcntl.LOCK_UN); fd.close()
     # ZURÜCKLESEN
     r = details(pid)
     rtags = {t.lower() for t in r["tags"]}
-    ok = lambda b: "ok" if b and not fe else ("fehler:" + json.dumps(fe, ensure_ascii=False)[:160] if fe else "fehler:rueckgelesen-anders")
     ts = jetzt()
     if plan["titel"]:
-        z.append([ts, "SCHREIB", pid, h, regel, "titel", p["title"], plan["titel"], ok(r["title"] == plan["titel"])])
+        z.append([ts, "SCHREIB", pid, h, regel, "titel", p["title"], plan["titel"], _ok(r["title"] == plan["titel"], fe_p)])
     if plan["typ"]:
-        z.append([ts, "SCHREIB", pid, h, regel, "typ", p["productType"], plan["typ"], ok(r["productType"] == plan["typ"])])
+        z.append([ts, "SCHREIB", pid, h, regel, "typ", p["productType"], plan["typ"], _ok(r["productType"] == plan["typ"], fe_p)])
     if "category" in eingabe:
         z.append([ts, "SCHREIB", pid, h, regel, "kategorie", (p.get("category") or {}).get("id", ""), eingabe["category"],
-                  ok(((r.get("category") or {}).get("id")) == eingabe["category"])])
+                  _ok(((r.get("category") or {}).get("id")) == eingabe["category"], fe_p)])
     if seo_t:
-        z.append([ts, "SCHREIB", pid, h, regel, "seo_titel", (p.get("seo") or {}).get("title"), seo_t, ok((r["seo"] or {}).get("title") == seo_t)])
+        z.append([ts, "SCHREIB", pid, h, regel, "seo_titel", (p.get("seo") or {}).get("title"), seo_t,
+                  _ok((r["seo"] or {}).get("title") == seo_t, fe_p)])
     if seo_d:
         z.append([ts, "SCHREIB", pid, h, regel, "seo_beschreibung", (p.get("seo") or {}).get("description"), seo_d,
-                  ok((r["seo"] or {}).get("description") == seo_d)])
+                  _ok((r["seo"] or {}).get("description") == seo_d, fe_p)])
     if plan["dazu"]:
-        z.append([ts, "SCHREIB", pid, h, regel, "tags_dazu", "", ",".join(sorted(plan["dazu"])), ok(plan["dazu"] <= rtags)])
+        z.append([ts, "SCHREIB", pid, h, regel, "tags_dazu", "", ",".join(sorted(plan["dazu"])), _ok(plan["dazu"] <= rtags, fe_ta)])
     if plan["weg"]:
-        z.append([ts, "SCHREIB", pid, h, regel, "tags_weg", ",".join(sorted(plan["weg"])), "", ok(not (plan["weg"] & rtags))])
+        z.append([ts, "SCHREIB", pid, h, regel, "tags_weg", ",".join(sorted(plan["weg"])), "", _ok(not (plan["weg"] & rtags), fe_tw)])
+    if plan["bild_alt"]:
+        ralt = {m["id"]: (m.get("alt") or "") for m in ((r.get("media") or {}).get("nodes") or [])}
+        for i, a, n in plan["bild_alt"]:
+            z.append([ts, "SCHREIB", pid, h, regel, "bild_alt", a, n, _ok(ralt.get(i) == n, fe_alt)])
     if text_status:
         z.append([ts, "UEBERSPRUNGEN", pid, h, regel, "beschreibung", "", "", text_status])
     elif text_ziel:
-        rtext = re.sub(r"<[^>]+>", " ", r["descriptionHtml"] or "")
-        rest = [a for a, _ in plan["text"] if a in (r["descriptionHtml"] or "")]
+        rtext = re.sub(r"<[^>]+>", " ", text_rueck or "")
+        rest = [a for a, _ in plan["text"] if a in (text_rueck or "")]
         if "person" in plan["text_fn"] and PERSON_VOR_WORT.search(rtext):
             rest.append("person")
-        if "used" in plan["text_fn"] and USED.search(rtext):
+        if "used" in plan["text_fn"] and USED_TEXT.search(rtext):
             rest.append("used-look")
-        z.append([ts, "SCHREIB", pid, h, regel, "beschreibung", f"{len(text_alt)} Zeichen", f"{len(text_ziel)} Zeichen",
-                  ok(r["descriptionHtml"] == text_ziel and not rest)])
+        # alt→neu nachvollziehbar: die geänderten Wortfolgen, nicht nur die Länge
+        aend = text_aenderungen(text_alt, text_ziel)
+        z.append([ts, "SCHREIB", pid, h, regel, "beschreibung",
+                  " | ".join(a for a, *_ in aend)[:400], " | ".join(n for _, n, *_ in aend)[:400],
+                  _ok(text_rueck == text_ziel and not rest, fe_txt)])
     return z
 
 
@@ -655,6 +872,8 @@ def bericht(modus, gescannt, soll, stand_alter, plaene, zeilen, nachmessung, liv
                 teile.append("Beschreibung")
             if seo_t or seo_d:
                 teile.append("SEO")
+            if plan["bild_alt"]:
+                teile.append(f"{len(plan['bild_alt'])} Bild-Alt-Texte")
             teile += [f"⚠️ {n}" for n in plan["notiz"]]
             st = [z[-1] for z in zeilen if z[2] == p["id"]]
             status = ("ok" if st and all(s == "ok" for s in st) else "; ".join(sorted(set(st)))) if st else ("DRY" if modus == "DRY" else "nur Notiz")
@@ -717,29 +936,48 @@ def main():
     for h, kl in stand.items():
         if kl & relevant and h in je_handle:
             live[h] = google_klassen(details(je_handle[h]["id"]).get("feedback"))
+    historie = titel_historie(ledger)
     plaene = []
     for p in produkte:
         num = p["id"].rsplit("/", 1)[-1]
         if NUR and num not in NUR and p["handle"] not in NUR:
             continue
+        hist = historie.get(p["id"])
         plan = planen(p, live.get(p["handle"], set()), stand.get(p["handle"], set()), umbenannt,
-                      offen.get(p["id"], frozenset()))
+                      offen.get(p["id"], frozenset()), hist)
         if not plan:
             continue
         voll = details(p["id"])
         p = dict(p, category=voll.get("category"), seo=voll.get("seo"))
         fns = [FNS[n] for n in plan["text_fn"]]
-        seo_t, seo_d = seo_neu(p["seo"], p["title"], plan["titel"], fns)
+        # Titel-Kette: frühere Titel aus dem Ledger (wenn der zuletzt geschriebene noch live steht) + heutiger Titel,
+        # falls heute umbenannt wird. SEO und Bild-Alt ziehen auf den Titel nach, der danach live steht.
+        alte = list(hist["alte"]) if (hist and p["title"] == hist["neu"]) else []
+        neu_t = None
+        if plan["titel"]:
+            alte.append(p["title"]); neu_t = plan["titel"]
+        elif alte:
+            neu_t = p["title"]
+        seo_t, seo_d = seo_neu(p["seo"], alte, neu_t, fns)
+        if neu_t and alte:
+            plan["bild_alt"] = bild_alt_neu((voll.get("media") or {}).get("nodes"), alte + plan["bild_alt_extra"], neu_t, fns)
         # Beschreibung nur einplanen, wenn sie sich wirklich ändert (sonst kein Lock, kein Schreiben)
-        if (plan["text"] or plan["text_fn"]) and not text_neu(voll.get("descriptionHtml"), plan):
-            plan["text"], plan["text_fn"] = [], []
+        if plan["text"] or plan["text_fn"]:
+            tn = text_neu(voll.get("descriptionHtml"), plan)
+            if not tn:
+                plan["text"], plan["text_fn"] = [], []
+            elif sie_zunahme(voll.get("descriptionHtml"), tn):
+                plan["notiz"].append("Textersatz brächte einen Sie-Marker (Ping-Pong mit dem Du-Lauf) — nicht geschrieben")
+                plan["text"], plan["text_fn"] = [], []
+            else:
+                plan["vorschau"] = (voll.get("descriptionHtml"), tn)
         if not (plan["titel"] or plan["typ"] or plan["dazu"] or plan["weg"] or plan["text"] or plan["text_fn"] or seo_t or seo_d
-                or (plan["kat"] and (p.get("category") or {}).get("id") != TC + plan["kat"]) or plan["notiz"]):
+                or plan["bild_alt"] or (plan["kat"] and (p.get("category") or {}).get("id") != TC + plan["kat"]) or plan["notiz"]):
             continue
         if plan["kat"] and (p.get("category") or {}).get("id") == TC + plan["kat"]:
             plan["kat"] = None
         plaene.append((p, plan, seo_t, seo_d))
-    zeilen = []
+    zeilen, abbruch = [], None
     for p, plan, seo_t, seo_d in plaene:
         print(f"\n== {p['handle']}  [{'+'.join(plan['regeln']) or '—'}]")
         if plan["titel"]:
@@ -753,26 +991,43 @@ def main():
         if plan["weg"]:
             print(f"   −Tags: {sorted(plan['weg'])}")
         if seo_t:
-            print(f"   SEO-T: «{(p.get('seo') or {}).get('title')}» → «{seo_t}»")
+            print(f"   SEO-T: «{(p.get('seo') or {}).get('title')}»\n       → «{seo_t}» ({len(seo_t)} Z.)")
         if seo_d:
-            print(f"   SEO-B: «{(p.get('seo') or {}).get('description')}» → «{seo_d}»")
-        if plan["text"] or plan["text_fn"]:
-            print(f"   Text:  {plan['text'] or ''} {plan['text_fn'] or ''}")
+            print(f"   SEO-B: «{(p.get('seo') or {}).get('description')}»\n       → «{seo_d}» ({len(seo_d)} Z.)")
+        if plan["bild_alt"]:
+            print(f"   Bild-Alt: {len(plan['bild_alt'])} Texte")
+            for _, a, n in plan["bild_alt"]:
+                print(f"      «{a}» → «{n}»")
+        if plan["vorschau"]:
+            for a, n, vor, nach in text_aenderungen(*plan["vorschau"], ctx=7):
+                print(f"   Text:  …{vor} [-{a}-] {{+{n}+}} {nach}…")
         for n in plan["notiz"]:
             print(f"   ⚠️ {n}")
         if SCHARF and (plan["titel"] or plan["typ"] or plan["kat"] or plan["dazu"] or plan["weg"] or plan["text"]
-                       or plan["text_fn"] or seo_t or seo_d):
-            z = schreiben(p, plan, seo_t, seo_d)
+                       or plan["text_fn"] or seo_t or seo_d or plan["bild_alt"]):
+            try:
+                z = schreiben(p, plan, seo_t, seo_d)
+            except RuntimeError as ex:   # Shopify/Netz weg: was geschrieben ist, steht schon im Ledger — sauber aufhören
+                print(f"   ABBRUCH bei {p['handle']}: {ex}")
+                abbruch = str(ex)
+                break
             for zz in z:
                 print(f"   → {zz[5]}: {zz[-1]}")
+            ledger_schreiben(z)          # SOFORT je Produkt (ein Absturz später verliert sonst die Quittung)
             zeilen += z
-    nm = nachmessen(ledger) if SCHARF else []
+    nm = nachmessen(ledger) if (SCHARF and not abbruch) else []
     if SCHARF:
-        ledger_schreiben(zeilen + nm)
-    bericht(modus, len(produkte), soll, stand_alter, plaene, zeilen, nm, live, stand)
+        # NUR scharf: Ledger und Bericht. DRY schreibt NICHTS (Prüferbefund 23.09.: bericht() lief auch im DRY und
+        # überschrieb dropship/GOOGLE-TITEL-REPARATUR.md — ein «nur lesen»-Aufruf veränderte das Repo).
+        ledger_schreiben(nm)
+        bericht(modus, len(produkte), soll, stand_alter, plaene, zeilen, nm, live, stand)
     ok = sum(1 for z in zeilen if z[-1] == "ok")
     print(f"\nFERTIG ({modus}): {len(produkte)} gescannt · {len(plaene)} Produkte im Plan · {ok}/{len(zeilen)} Felder "
-          f"geschrieben+rückgelesen · {len(nm)} nachgemessen · {bilanz()}")
+          f"geschrieben+rückgelesen · {len(nm)} nachgemessen · {bilanz()}"
+          + ("" if SCHARF else " · DRY: nichts geschrieben (kein Shop, kein Ledger, kein Bericht)")
+          + (f" · ABGEBROCHEN: {abbruch[:120]}" if abbruch else ""))
+    if abbruch:
+        sys.exit(2)
 
 
 if __name__ == "__main__":
