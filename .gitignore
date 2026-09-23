@@ -18,6 +18,9 @@ downloads/vorlagen-pack.pdf
 downloads/vorlagen-set-en.pdf
 downloads/vorlagen-set.pdf
 node_modules/
+# Lokale Werkzeug-Verknuepfungen (z. B. node_modules_pw -> /opt/…/playwright). Am 04.09. versehentlich
+# eingecheckt: auf dem GitHub-Runner zeigt sie ins Leere, und wrangler brach JEDEN Deploy damit ab.
+node_modules*
 reports/*
 # ⚠️ Negations MÜSSEN nach "reports/*" stehen — git wertet .gitignore zeilenweise in
 # Reihenfolge aus, eine "!"-Ausnahme VOR der Sperre, die sie aufheben soll, wirkt nicht.
@@ -27,6 +30,9 @@ reports/*
 # (Git verwirft kein bereits im Index stehendes File wegen späterer Ignore-Regeln) — der
 # Fehler ist erst bei NEUEN Report-Dateien sichtbar geworden.
 !reports/ABAN-DIRECTOR.md
+!reports/TRADING-BOT.md
+!reports/DAYTRADING.md
+!reports/STIL-LABOR.md
 !reports/ABAN-STATS.md
 !reports/IMPROVEMENT-REPORT.md
 !reports/RADAR-DATEN-AUDIT.md
@@ -102,3 +108,9 @@ buero/*
 !reports/design/
 !reports/design/*.md
 _fehlprotokolle/
+# Stundenkerzen (je ~0.6 MB, holt daytrading.py selbst, wenn sie fehlen)
+tools/trading/daten/h_*.json
+
+# Bezahlte Kit-ZIPs baut der Deploy (build-pages.sh -> build_kit_zips.py). Nie ins Repo:
+# es ist oeffentlich, der gehashte Name schuetzt dort nichts.
+downloads/kits/
