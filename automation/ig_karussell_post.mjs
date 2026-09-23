@@ -110,8 +110,8 @@ async function produktLive(handle) {
 }
 const http = u => { try { return execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', u], { encoding: 'utf8' }).trim(); } catch { return 'curl'; } };
 function pushen(pfade, msg) {
-  const cmd = `if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then git rebase --quit 2>/dev/null || rm -rf .git/rebase-merge .git/rebase-apply; fi; git add ${pfade.map(p => `'${p}'`).join(' ')} && (git diff --cached --quiet || git commit -q -m '${msg.replace(/'/g, '')}'); git fetch -q origin ${BRANCH} && git -c rebase.autoStash=true rebase -q FETCH_HEAD && timeout 90 git push -q origin ${BRANCH}`;
-  try { execFileSync('flock', ['-w', '180', '/tmp/git_repo.lock', 'bash', '-c', cmd], { stdio: 'ignore' }); return true; } catch { return false; }
+  // 23.09.2026: über git_sichern.sh (Merge statt Rebase+Autostash — Autostash verschluckte Quittungen laufender Poster).
+  try { execFileSync('bash', ['automation/git_sichern.sh', msg.replace(/'/g, ''), ...pfade], { stdio: 'ignore', timeout: 300000 }); return true; } catch { return false; }
 }
 async function g(pfad, params) {
   const body = new URLSearchParams({ ...params, access_token: TOK });

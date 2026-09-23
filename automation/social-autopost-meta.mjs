@@ -56,7 +56,8 @@ function parse(text){
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
-function isJpg(u){ return /\.jpe?g($|\?)/i.test(u); }
+function isJpg(u){ return /\.jpe?g($|\?)/i.test(u) || /^https:\/\/cdn\.shopify\.com\/.*[?&]format=p?jpg\b/i.test(u); }
+function jpgVomCdn(u){ return /^https:\/\/cdn\.shopify\.com\//i.test(u) && !/\.jpe?g($|\?)/i.test(u) && !/[?&]format=/i.test(u) ? `${u}${u.includes('?') ? '&' : '?'}format=jpg` : u; }
 
 // 23.09.2026 (Audit-Befund 18): Facebook hat keine Bio — «Link in Bio» zeigte dort ins Leere, waehrend ein Link im
 // FB-Text direkt klickbar ist (facebook 131 Sitzungen/30 T, Absprungrate 1.0, 0 Warenkoerbe). Instagram behaelt seine
@@ -223,7 +224,8 @@ async function produktAktiv(zeilenId){
 }
 
 for(const next of ready.slice(0, MAX)){
-  const imageUrl = next[idx.image_url].trim();
+  // 23.09.2026: PNG vom Shopify-CDN ist kein Grund zum Ueberspringen — `format=jpg` liefert echtes image/jpeg (gemessen).
+  const imageUrl = jpgVomCdn(next[idx.image_url].trim());
   const caption = next[idx.caption] || '';
   if(!DRY && postSeen(imageUrl)){           // ⛔ Bild schon je gepostet → nie zweimal
     console.log(`   ⛔ Bild schon gepostet (gemeinsamer Ledger) → skip: ${imageUrl}`);
@@ -252,7 +254,7 @@ for(const next of ready.slice(0, MAX)){
   }
   if(!isJpg(imageUrl)){
     console.error(`⏭️  Übersprungen (keine JPG-URL, Meta-Pflicht): ${imageUrl}`);
-    next[idx.status] = 'skipped-nonjpg'; anyFail = true; continue;
+    next[idx.status] = 'skipped-nonjpg'; if(!DRY) fs.writeFileSync(CSV, serialize(rows)); continue;   // gespeichert, sonst blockiert die Zeile jeden Lauf
   }
   // Optionale Kanal-Auswahl pro Zeile über die Spalte 'platforms' (leer = alle konfigurierten).
   // 23.09.2026 ACHTE SCHICHT — ist die WARE noch kaufbar? Gemessen: 3 von 73 «ready»-Zeilen (August-Queue)

@@ -18,6 +18,10 @@ _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/
 from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 23.09.2026: Dieselbe Ampel laeuft auch auf dem Hetzner-Server (luxe-waechter, /opt/…). Dort gibt es
+# weder den Meta-Token noch den Fortura-Zugang in /tmp — die Zeilen «IG: unklar (FileNotFoundError)» und
+# «FORTURA-ZUGANG WEG» meldeten alle 10 Minuten einen Cloud-Zustand, den es auf dem Server nie gab.
+AUF_SERVER = REPO.startswith("/opt/")
 SHOP = "au3j0y-hq.myshopify.com"
 TOKPFAD = "/tmp/cj_shop_token.txt"
 QUEUE_CDN = ("https://cdn.shopify.com/s/files/1/0943/6856/3585/files/"
@@ -307,13 +311,23 @@ def fortura_zugang():
     sie erst, wenn FORTURA_FTP_USER/PW als Umgebungsvariablen in den Claude-Einstellungen
     stehen — die ueberleben den Neustart, /tmp nicht.
     """
-    if os.path.exists("/tmp/fortura_env.sh"):
+    if os.path.exists("/tmp/fortura_env.sh") or AUF_SERVER:   # Fortura laeuft nur in der Cloud-Sitzung
         return ""
     return ("🔑 FORTURA-ZUGANG WEG (/tmp/fortura_env.sh fehlt nach Container-Neustart) — "
             "ohne ihn laedt der Artikel-Feed nicht und der Bild-Nachschub steht still. "
             "Zugangsdaten neu in die Sitzung geben; Dauerloesung: FORTURA_FTP_USER und "
             "FORTURA_FTP_PW als Umgebungsvariablen in den Claude-Einstellungen "
             "(Kundennr. 544341, webtransfer.fortura.ch)")
+
+
+def azure_stimme():
+    """23.09.2026: Die Sprecherstimme der Reels laeuft NUR ueber Azure (Werbelizenz). Der Schluessel liegt in
+    /tmp/azure_speech.env und stirbt wie der Fortura-Zugang mit einem Wipe — dann entstehen die Reels still
+    ohne Stimme. Dauerloesung: AZURE_SPEECH_KEY + AZURE_SPEECH_REGION als Umgebungsvariablen."""
+    if AUF_SERVER or os.environ.get("AZURE_SPEECH_KEY") or os.path.exists("/tmp/azure_speech.env"):
+        return ""
+    return ("🔑 AZURE-STIMME WEG (/tmp/azure_speech.env fehlt) — Reels entstehen ohne Stimme. Schluessel neu in die "
+            "Sitzung geben; Dauerloesung: AZURE_SPEECH_KEY + AZURE_SPEECH_REGION=switzerlandnorth als Umgebungsvariablen")
 
 
 def bot_puls():
@@ -515,6 +529,8 @@ def social_meta_live():
     verschlucken (Kristall 14:39). Dazu die Tage bis zum Ende des Meta-Datenzugangs (debug_token,
     05.10.2026 gemessen) und neue Autostashes (= zwei Schreiber kollidierten im Arbeitsbaum)."""
     teile = []
+    if AUF_SERVER and not os.path.exists("/tmp/meta_page_token"):
+        return ""   # Meta-Posting laeuft in der Cloud-Sitzung; die Server-Ampel misst es nicht (kein Token dort)
     try:
         tok = open("/tmp/meta_page_token").read().strip()
         ig = open("/tmp/meta_ig_id").read().strip()
@@ -706,7 +722,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), azure_stimme(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

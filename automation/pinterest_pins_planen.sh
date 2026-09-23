@@ -34,6 +34,5 @@ for i in $(seq 1 "$N"); do
 {"typ":"skript","skript":"pinterest_pin_erstellen.mjs","id":"pinterest-pin-$TAG-$i","warum":"Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus dropship/_pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). $i von $N heute."}
 J
 done
-git add auftraege/offen/ && git commit -q -m "Pinterest: $N Pin-Aufträge für $TAG [skip ci]" \
-  && git fetch -q origin claude/luxestyle-status-tztnn1 && git -c rebase.autoStash=true rebase -q FETCH_HEAD \
-  && timeout 60 git push -q origin claude/luxestyle-status-tztnn1 && echo "$N Aufträge für $TAG gepusht ($OFFEN offen in der Warteschlange)"
+# 23.09.2026: git_sichern.sh (Merge, kein Autostash — Autostash verschluckte Quittungen laufender Poster)
+bash automation/git_sichern.sh "Pinterest: $N Pin-Aufträge für $TAG [skip ci]" auftraege/offen/ >/dev/null && echo "$N Aufträge für $TAG gepusht ($OFFEN offen in der Warteschlange)"

@@ -1,3 +1,6 @@
 2026-09-23T19:25:40.779Z	luxe-house2.wav	0.25	kueche	cjreel-1609358641688227840	stimme:nein	anteil
 2026-09-23T19:27:19.156Z	luxe-hype-pro.mp3	1	fitness	cjreel-2407240552151625800	stimme:nein	anteil
 2026-09-23T19:27:53.486Z	luxe-liquid-dnb-electronic.wav	4.75	gadget	cjreel-1661261861666426880	stimme:nein	anteil
+2026-09-23T20:34:39.343Z	luxe-premium.wav	42.5	allgemein	cjreel-1586604104162488320	stimme:nein	anteil
+2026-09-23T20:35:17.755Z	luxe-liquid-dnb.wav	55.25	allgemein	cjreel-56A53647-8323-499B-BC8B-47CF698F92CC	stimme:nein	anteil
+2026-09-23T20:35:43.219Z	luxe-house2.wav	0.25	haustier	cjreel-1439900559028129792	stimme:nein	anteil
