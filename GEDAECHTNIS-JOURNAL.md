@@ -748,6 +748,48 @@ Medien werden zurückgelesen, Ledger je Zeile über den Pfad; **blockiert**, bis
 wieder erlaubt und der CJ-Eimer voll ist. Node-`fetch` läuft OHNE Proxy direkt (undici liest HTTPS_PROXY nicht) — der
 Motor stützt sich deshalb bewusst auf die curl-Vorprüfung und pausiert, statt die Sperre über Node zu umgehen.
 
+**Nachtrag 53 (23.09.2026, 23:40 UTC — Halloween-Social nachgebessert, Doppelkollektion zusammengelegt):**
+(1) **Zwei Halloween-Kollektionen mit derselben Regel:** `halloween` (Tag halloween, 6 Kanäle, im Menü) und `halloween-2026`
+(Tag halloween ODER spooky, 2 Kanäle, Startseiten-Rotation) — beide 230 Produkte, zwei Adressen für dieselbe Ware.
+`homepage_katalog_rotation.py` SAISON → `halloween` (DRY: 1 Änderung `pl_kinder`; geschrieben, Ursprung bestätigt — das erste
+Rücklesen zählte noch 1× `halloween-2026`, das zweite 0: die Verzögerung aus dem Skriptkopf, nicht die Datei). 2026er von Online
+Store + Inbox abgemeldet (0 Publikationen), 301 `/collections/halloween-2026` → `/collections/halloween` per ID rückgelesen.
+Falle: `urlRedirects(query:"path:halloween-2026")` fand ihn NICHT, `path:/collections/halloween-2026` schon — der Filter will den
+ganzen Pfad. `weihnachten-2026`/`fortura-weihnachten` sind dieselbe Klasse, die zweite ist aber unpubliziert → kein Doppel sichtbar.
+(2) **Agent-B-Befunde (Prüfer 22:58) behoben:** CTA-Slide lief über den Rahmen → `umbrechen()` bricht am Bindestrich, Breite VOR
+Höhe schrumpfen; Familienwache galt nur für `modus==='produkt'` → jetzt jede Caption-Zeile + jedes Handle eines Top-Sets (eine
+Familie <72 h hält das ganze Set); Pinterest-Bauer nahm blind das Hauptbild → OCR-Tor über bis 6 Bilder, Ledger `_bildtext.tsv` /
+`_uebersprungen.tsv`; `execFileSync` fehlte im Import (ReferenceError still im catch — `node --check` sieht das nicht).
+**Sichtprüfung schlug OCR:** das «textfreie» Ersatzbild war der Verpackungskarton («Light-Up Airblown Inflatable Grim Reaper»,
+Widmann-Logo) — Tesseract liest Schmuckschrift mit 0/1 Wörtern. Pin-Zeile raus, Sichtbefund im Ledger. ⚠️ Die Text-Fassung war
+3 Min vor dem Befund schon LIVE (Metricool 381043847, PUBLISHED 01:05 CH) → Betreiber löscht/pinnt neu. Ersatz gerendert:
+Kissenbezug Kürbis-Stickerei 2:3 (OCR 0, Bogen gesehen). Slide 3 «Unterseite» bleibt (nur 6 Bilder ≥700 px, drei Duplikat-Paare).
+(3) IG-Karussell-Queue umgereiht: Halloween-Sets (Süssigkeitenschale, Top-4-unter-20) vor die drei Alltags-Sets — der Poster
+nimmt das erste `ready`; Rundlauf-Probe (Zeilenmenge gleich) vor dem Schreiben.
+**Lehre: Ein OCR-Tor ist kein Sichttor — Packungsschrift, Logos und Schmuckschrift liest Tesseract als «leer», der Kontaktbogen
+bleibt Pflicht vor jedem Pin; und zwei Kollektionen mit einer Regel sind eine Kollektion mit zwei Adressen.**
+
+**Nachtrag 54 (24.09.2026, 00:00 UTC — Kollektionen mit gleicher Regel: 13 Paare, ein Wächter, zwei Fallen im ersten scharfen Lauf):**
+(1) Nach Halloween und Geschenke-bis-30 die Klasse gemessen: 520 Kollektionen, 20 Regel-Signaturen mit >1 Kollektion, 12 Gruppen
+mit ≥2 publizierten Adressen (fitness/fitness-sub/fitness-training, schuhe-stiefel/sub-stiefel-boots, fortura-halloween,
+bar-tools/bar-wein, puma/adidas/reebok/under-armour/gant je mit `marke-…`, tauchen, anime, metalldetektor).
+`automation/kollektion_doppel.py` (DRY-Standard, `SCHARF=1` täglich im Aufseher, Ledger `_kollektion_doppel.txt`, Bericht
+`KOLLEKTION-DOPPEL.md`, Ampel «KOLL-DOPPEL»): Bleiberin nach Menü > Startseite > Rotation > Kanäle > Text, die andere abgemeldet + 301.
+(2) **Falle A — «publiziert» ≠ «im Web»:** `resourcePublicationsCount` zählt Inbox und POS mit. Die «Bleiberinnen» puma, adidas,
+tauchen, metalldetektor … lagen NUR auf Inbox/POS; keines der neun Markenpaare hatte je eine Online-Store-Adresse (Gegenprobe:
+Export des Keyword-Agenten 23:25, `publishedOnPublication` beider Seiten False, plus Live-Lesung). Das Skript legte trotzdem
+zusammen — für das Web folgenlos, aber blind. **Falle B — dormante Redirects:** 9 von 13 Verlierern trugen SCHON einen
+Redirect (fitness-sub→fitness, marke-puma→puma, bar-tools→trinken-barware, anime-manga→trends-gadgets …), der schlief, solange
+die Kollektion publiziert war; «already taken» habe ich als «vorhanden = ok» gewertet, ohne das Ziel zu lesen — fitness-sub zeigte
+auf das soeben abgemeldete `fitness` (Kette; per `urlRedirectUpdate` auf fitness-training gedreht). Bei tauchen/metalldetektor war
+die Bleiberin SELBST ein Redirect-Pfad («Target can't redirect to another redirect») — und die Abmeldung war da schon geschehen.
+(3) Gehärtet: Online Store = Pflicht (+200; Gruppe ohne Online-Mitglied wird übersprungen), Redirect-Pfad nie Bleiberin, bestehende
+Redirects werden gelesen (Ziel = Bleiberin oder andere Online-Kollektion: ok, sonst gedreht), ERST Redirect DANN Abmelden,
+Selbsttest 9/9; zweiter DRY: 0 offene Gruppen. Netto im Web: fitness-sub → fitness-training (einzige Web-Adresse unter den 13),
+halloween-2026 → halloween, geschenke-unter-30 → 🎁-geschenke-bis-chf-30.
+**Lehre: «Publiziert» ist erst eine Web-Adresse, wenn der Kanal Online Store heisst; ein bestehender Redirect ist eine Aussage
+über sein Ziel, kein «ok»; und wer abmeldet, bevor der Redirect steht, öffnet ein 404-Fenster — auch wenn es diesmal leer blieb.**
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16442,3 +16484,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-22 · 📣 **Social-Stopp vom Betreiber gelöscht («stopp datei gelöscht, weiter machen»): Token gültig (Seiten-Token, kein Ablauf), Kandidat vorher als ACTIVE + kaufbar (CONTINUE/untracked) + Video 206 geprüft — der Poster prüft das NICHT selbst; erster Reel live (IG DdmhRxtjUIZ + FB).** `social_autopilot.sh` lag nur im Repo, nicht in /tmp → Keepalive startet ihn wieder → Journal
 - 2026-09-22 · 🇱🇮 **Liechtenstein raus (Weg B, Betreiber): 13 sichtbare Stellen → 0, rückgelesen — und 1'190 Produkt-Lieferblöcke trugen die Phrase, geschrieben von `versand_jenachland` seit 05.09. (19.09. nicht gemessen).** Quelle umgedreht, `liechtenstein_raus.py` täglich, Ampel misst Markt UND Texte. **Vor dem Streichen den Schreiber finden** → Journal
 - 2026-09-22 · 🔒 **Reparierer wartete blockierend auf den Text-Lock des Stundenlaufs — in einem Container, der stündlich stirbt, ist Warten ein Nie.** `LOCK_NB` mit kurzem Probieren + Aufseher-Tor `flock -n lock_produkttext.lock true` vor dem Start → Journal
+- 2026-09-22 · 🪣 **Verbesserungsrunde 4: Eimer 95/2'000 bei vier laufenden Massen-Schreibern, zwei Tages-Wächter starben gedrosselt (cj_versand_ch_guard, lagerstand_hygiene). Die Schranke begrenzt Starts, nicht den Durst.** `eimer_etikette.py/.mjs` (unter 600 warten bis 1'000) in alle vier Schreiber; Liechtenstein-Lauf FERTIG (1'075 + 119) → Journal
+- 2026-09-22 · 🎬 **Social v2 («täglich mehrmals überall», Ads in 1 Monat): Reel-Motor war dreifach tot — Tag `video-hit` ohne Video, Dateispeicher voll (CDN FAILED), ffmpeg ohne drawtext.** Jetzt CJ-Videos direkt, PIL-Textebenen, Ablage `social/reels/` im Repo (IG nimmt raw.githubusercontent), Lernschleife aus IG-Insights, Kadenz Bild 6 h / Reel 8 h / TikTok 12 h → Journal

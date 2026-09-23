@@ -497,6 +497,20 @@ def kategorie_offen():
     return None if (n == 0 and not unbek) else f"KATEGORIE: ~{n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, Ledger heute {ledger_heute}){u}"
 
 
+def kollektion_doppel_offen():
+    """KOLL-DOPPEL: n offene Gruppen mit gleicher Regel und zwei Web-Adressen — Stand von automation/kollektion_doppel.py
+    (23.09.2026, täglich scharf im Aufseher). Liest die Kopfzeile «OFFEN: n» des Berichts; 0 → keine Zeile."""
+    try:
+        sys.path.insert(0, os.path.join(REPO, "automation"))
+        import kollektion_doppel
+        n = kollektion_doppel.zaehlen()
+    except Exception:
+        return "KOLL-DOPPEL: unklar (automation/kollektion_doppel.py nicht lesbar)"
+    if n < 0:
+        return "KOLL-DOPPEL: unklar (kein Bericht — kollektion_doppel.py nie gelaufen?)"
+    return None if n == 0 else f"KOLL-DOPPEL: {n} Kollektionen mit gleicher Regel offen (dropship/KOLLEKTION-DOPPEL.md)"
+
+
 def metricool_kanaele():
     """23.09.2026 «metricool maximal nutzen»: je Metricool-Kanal, wie viel in 24 h geplant wurde, und Fehler.
     Ein Kanal mit 0 in 24 h ist ein Befund (Autopilot: TikTok/YouTube 12 h, Pinterest 6 h)."""
@@ -726,7 +740,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), azure_stimme(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), kollektion_doppel_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), azure_stimme(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
