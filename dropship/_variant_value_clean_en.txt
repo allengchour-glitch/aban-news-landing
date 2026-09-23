@@ -18026,3 +18026,7 @@ gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607474049	Braun klein Herren	Brown Small Man	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607637889	Schwarz und lang	Black And Long	2026-09-23T20:35Z/reparatur-original:satzbau:funktionswort
 gid://shopify/Product/15448659034497	Farbe	gid://shopify/ProductOptionValue/12024630018433	Aprikose-Plus Gr. 3XL	Aprikose-Übergrösse 3XL	2026-09-23T20:35Z/reparatur-korrigiert
+gid://shopify/Product/15448672993665	Farbe	gid://shopify/ProductOptionValue/12024712102273	Stil Lila	Style Purple	2026-09-23T20:35Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15448672993665	Farbe	gid://shopify/ProductOptionValue/12024712167809	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448674861441	Farbe	gid://shopify/ProductOptionValue/12024722293121	Grün kariert verstärkt	Green Plaid Thickened	2026-09-23T20:35Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15448704549249	Farbe	gid://shopify/ProductOptionValue/12024919720321	Leder Rot-Schwarz	Leather Red And Black	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
