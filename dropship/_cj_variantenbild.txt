@@ -2500,3 +2500,10 @@ gid://shopify/Product/15448878383489	zugeordnet	3	Smartes Fitness Armband mit Pu
 gid://shopify/Product/15448878416257	zugeordnet	6	Smartwatch mit Fitness-Tracking & Bluetooth-Anrufen
 gid://shopify/Product/15448878449025	zugeordnet	8	Smartwatch mit Anruf- & Musiksteuerung
 gid://shopify/Product/15448875499905	zugeordnet	9	S5 Fitness-Armband mit Temperaturmessung
+gid://shopify/Product/15448878580097	bild-urls-tot
+gid://shopify/Product/15448878645633	zugeordnet	2	Smartwatch mit Bluetooth-Telefonie & Fitness-Tracker
+gid://shopify/Product/15448878711169	zugeordnet	3	Smartwatch & Bluetooth Earbuds Set mit Dual-Armband
+gid://shopify/Product/15448878743937	zugeordnet	2	Smartwatch mit Bluetooth-Anrufen und Fitness-Tracker
+gid://shopify/Product/15448878907777	zugeordnet	6	Smartwatch mit Schrittzähler und Nachrichten
+gid://shopify/Product/15448879202689	zugeordnet	2	Smartwatch Multi-Armband-Kit
+gid://shopify/Product/15448879464833	bild-urls-tot
