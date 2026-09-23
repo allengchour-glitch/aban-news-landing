@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:40:04Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:45:11Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **810** in 234 Produkten
-- Treffer (≥ 4 Wörter): **27** in 27 Produkten
+- Medien geprüft: **980** in 282 Produkten
+- Treffer (≥ 4 Wörter): **32** in 32 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -19,6 +19,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Plüschspielzeug mit Flattergeräusch `15453792174465` | [69926765461889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4b69f4b4-890b-47aa-89a2-7f70b5e1dd60_trans.jpg) | 15 | Cats are born hunters Highly simulated appearance suitable | offen |
 | Multifunktionale wasserdichte Steckdose für Wohn `15493873860993` | [70479330279809](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6dd5f853-90c4-4899-9887-bc425efbe683_trans.jpg) | 15 | Flexible fits sealing ring Protection level reaches Wind | offen |
 | Kamera-Drohne mit Hinderniserkennung `15453744628097` | [69926295536001](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc914a48-36f7-4072-b53a-203bf305c567.jpg) | 14 | Powerful brushless power Equipped with four and brushless | offen |
+| Drohnenfernsteuerung mit 3 Kameras, langer Akku `15453743743361` | [69926293471617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a23f731e-f5bd-4c47-b047-72f2cbe17a1c.jpg) | 14 | Max Drone flagship light and shadow triple camera | offen |
 | Öle für Duftdiffuser `15453771661697` | [69926697304449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68ea0afb-6a45-4d84-8ebc-123850f919a2.jpg) | 13 | LAVENDER ESSENTIAL ESSENTIAL OIL THERAPEUTIC GRADE Essential oils | offen |
 | Intelligentes Bremslicht für Velos `15448957976961` | [69862641762689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2fb4a32-5161-4001-9089-69587e78a7ab_trans.jpg) | 12 | waterproof Good waterproof level for daily need worry | offen |
 | Bauchstützgürtel für Schwangere `15453760717185` | [69926628524417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9f9382e0-2080-4051-b7a5-441a700d8875_fine.jpg) | 12 | Ergonomic curve design Ring design fits better Soft | offen |
@@ -28,7 +29,10 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | offen |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | offen |
+| Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | offen |
+| Faltbares UAV-Mesh-Drohne für Luftaufnahmen `15453744202113` | [69926294389121](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f3680452-7b35-4ba0-ad37-f85402e2671e_trans.jpg) | 7 | flow positioning hover Novice seconds get started | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
+| Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | 15453774086529 `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
@@ -38,5 +42,6 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
 | Gänse-Jagd-Spielzeug für Katzen `15453790536065` | [69926763266433](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6f49f688-f0ae-4e7b-b31a-43f8d80c3eac_trans.jpg) | 4 | wings sound accompanying lon | offen |
+| Tragbarer FPV-Farbregler `15453742924161` | [69926291833217](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa9ea343-d559-42cd-87eb-aac84abce14a.jpg) | 4 | SLATE GREY CHERRY RED | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
