@@ -18992,3 +18992,406 @@ gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/1222
 gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384865665	9 Farben-US 16 W	Farbton 9-US 16 W	2026-09-23T20:43Z/reparatur-korrigiert
 gid://shopify/Product/15477531902337	Farbe	gid://shopify/ProductOptionValue/12222384898433	9 Farben-US 18 W	Farbton 9-US 18 W	2026-09-23T20:43Z/reparatur-korrigiert
 gid://shopify/Product/15477535015297	Farbe	gid://shopify/ProductOptionValue/12222405509505	Spitze Schwarz	Lace black	2026-09-23T20:43Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15477966340481	Farbe	gid://shopify/ProductOptionValue/12317297803649	Gold Seide Pink-10x10x5 cm	Golden Silk Pink-10x10x5cm	2026-09-23T20:44Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15478611771777	Farbe	gid://shopify/ProductOptionValue/12317324214657	Leuchtendblau-1 Stück	Leuchtendes Blau-1 Stück	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15478611771777	Farbe	gid://shopify/ProductOptionValue/12317324247425	Leuchtendblau-4 Stück	Leuchtendes Blau-4 Stück	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15478611771777	Farbe	gid://shopify/ProductOptionValue/12317324280193	Leuchtendpink-1 Stück	Leuchtendes Pink-1 Stück	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15478611771777	Farbe	gid://shopify/ProductOptionValue/12317324312961	Leuchtendpink-4 Stück	Leuchtendes Pink-4 Stück	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15478696280449	Farbe	gid://shopify/ProductOptionValue/12451139780993	Vintagebraun	Vintage-Braun	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15478782591361	Farbe	gid://shopify/ProductOptionValue/12317333717377	Schwarz-Typ A einzeln Kopf-Warmweiss	Black-Type A single head-Warm white	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15478787539329	Farbe	gid://shopify/ProductOptionValue/12377113887105	Gross Weiss	Big White	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15479379001729	Farbe	gid://shopify/ProductOptionValue/12233352708481	Beige einzeln Futter 9 cm	Beige Single Lining 9cm	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15479397515649	Farbe	gid://shopify/ProductOptionValue/12233427288449	Echtleder Khaki	Genuine Leather Khaki	2026-09-23T20:44Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15479402004865	Farbe	gid://shopify/ProductOptionValue/12233447899521	Weiss Höhe erhöht 6 cm	White Height Increased By 6CM	2026-09-23T20:44Z/reparatur-original:satzbau:mass-ohne-zahl
+gid://shopify/Product/15479402004865	Farbe	gid://shopify/ProductOptionValue/12233447932289	Weiss Höhe erhöht 8 cm	White Height Increased By 8CM	2026-09-23T20:44Z/reparatur-original:satzbau:mass-ohne-zahl
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450193281	Klassisch Rot Herren	Klassisches Rot Herren	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450226049	Klassischrot-Herren US Gr. 8	Klassisches Rot-Herren US Gr. 8	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450258817	Klassischrot-Herren US Gr. 9	Klassisches Rot-Herren US Gr. 9	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450291585	Klassischrot-Herren US Gr. 10	Klassisches Rot-Herren US Gr. 10	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450324353	Klassischrot-Herren US Gr. 11	Klassisches Rot-Herren US Gr. 11	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450357121	Klassischrot-Herren US Gr. 12	Klassisches Rot-Herren US Gr. 12	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450389889	Klassischorange Herren	Klassisches Orange Herren	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450422657	Klassischorange-Herren US Gr. 8	Klassisches Orange-Herren US Gr. 8	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450455425	Klassischorange-Herren US Gr. 9	Klassisches Orange-Herren US Gr. 9	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450488193	Klassischorange-Herren US Gr. 10	Klassisches Orange-Herren US Gr. 10	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450520961	Klassischorange-Herren US Gr. 11	Klassisches Orange-Herren US Gr. 11	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450553729	Klassischorange-Herren US Gr. 12	Klassisches Orange-Herren US Gr. 12	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450586497	Klassisch Gelb Herren	Klassisches Gelb Herren	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450619265	Klassischgelb-Herren US Gr. 8	Klassisches Gelb-Herren US Gr. 8	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450652033	Klassischgelb-Herren US Gr. 9	Klassisches Gelb-Herren US Gr. 9	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450684801	Klassischgelb-Herren US Gr. 10	Klassisches Gelb-Herren US Gr. 10	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450717569	Klassischgelb-Herren US Gr. 11	Klassisches Gelb-Herren US Gr. 11	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450750337	Klassischgelb-Herren US Gr. 12	Klassisches Gelb-Herren US Gr. 12	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233450979713	Klassisch Hell Denim Herren	Classic Hell Denim Men's	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233451176321	Klassischbeige Herren	Klassisches Beige Herren	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233451209089	Klassischbeige-Herren US Gr. 8	Klassisches Beige-Herren US Gr. 8	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233451241857	Klassischbeige-Herren US Gr. 9	Klassisches Beige-Herren US Gr. 9	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233451274625	Klassischbeige-Herren US Gr. 10	Klassisches Beige-Herren US Gr. 10	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233451307393	Klassischbeige-Herren US Gr. 11	Klassisches Beige-Herren US Gr. 11	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479402430849	Farbe	gid://shopify/ProductOptionValue/12233451340161	Klassischbeige-Herren US Gr. 12	Klassisches Beige-Herren US Gr. 12	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15479435428225	Farbe	gid://shopify/ProductOptionValue/12233593880961	Wildleder Braun	Suede Brown	2026-09-23T20:44Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15479437558145	Farbe	gid://shopify/ProductOptionValue/12233612460417	Schwarz Absatz Höhe 5 cm	Black Heel Height 5cm	2026-09-23T20:44Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15479437558145	Farbe	gid://shopify/ProductOptionValue/12233612493185	Schwarz Absatz Höhe 6 cm	Black Heel Height 6cm	2026-09-23T20:44Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15480166252929	Farbe	gid://shopify/ProductOptionValue/12237233881473	2333 mesh Grau	2333 Mesh Grau	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15480166252929	Farbe	gid://shopify/ProductOptionValue/12237233914241	2333 mesh Schwarz	2333 Mesh Schwarz	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15480166252929	Farbe	gid://shopify/ProductOptionValue/12237233947009	2326 mesh Sandfarben	2326 Mesh Sandfarben	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15480277729665	Farbe	gid://shopify/ProductOptionValue/12237677166977	Samt Khaki	Velvet Khaki	2026-09-23T20:44Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15480483938689	Ausführung	gid://shopify/ProductOptionValue/12377108480385	Kurz eckig	Short Square	2026-09-23T20:44Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15480488100225	Farbe	gid://shopify/ProductOptionValue/12317381460353	Rot gross Set	Red large size set	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15480488100225	Farbe	gid://shopify/ProductOptionValue/12317381493121	Rot klein Set	Red small size set	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15480490066305	Farbe	gid://shopify/ProductOptionValue/12317386572161	16Mint Grün	16Mint Green	2026-09-23T20:44Z/reparatur-original:16Mint
+gid://shopify/Product/15480630378881	Farbe	gid://shopify/ProductOptionValue/12377113362817	Kurz eckig Grün geblümt	Short Square Flower Green	2026-09-23T20:44Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15480826200449	Farbe	gid://shopify/ProductOptionValue/12240531030401	C8008M Khaki lang Samt	C8008M Khaki Long Velvet	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15480826200449	Farbe	gid://shopify/ProductOptionValue/12240531063169	C8008M Grau lang Samt	C8008M Gray Long Velvet	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15480826200449	Farbe	gid://shopify/ProductOptionValue/12240531128705	F8008M Weiss lang Samt	F8008M White Long Velvet	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15480826200449	Farbe	gid://shopify/ProductOptionValue/12240531161473	F8008M Hellbraun lang Samt	F8008M Light Brown Long Velvet	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793703297	Farbe	gid://shopify/ProductOptionValue/12262333645185	Schwarz-Ohne kabellos aufladbar	Black-Without wireless charging	2026-09-23T20:44Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15483793703297	Farbe	gid://shopify/ProductOptionValue/12262333710721	Weiss-Ohne kabellos aufladbar	White-Without wireless charging	2026-09-23T20:44Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334005633	Leuchtendpink-Bunt Verpackung	Bright pink-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334071169	Leuchtendschwarz-Bunt Verpackung	Bright black-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334202241	Silber glänzend-Bunt Verpackung	Shiny silver-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334267777	Gold glänzend-Bunt Verpackung	Shiny gold-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334333313	Leuchtendblau-Bunt Verpackung	Bright blue-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334398849	Weiss matt-Bunt Verpackung	Matt white-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334464385	Lila matt-Bunt Verpackung	Matt purple-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334529921	Silber matt-Bunt Verpackung	Matt silver-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334595457	Schwarz matt-Bunt Verpackung	Matt black-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334726529	2 Stück Lila matt-Bunt Verpackung	2pcs Matt purple-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334759297	3 Stück Lila matt-Bunt Verpackung	3pcs Matt purple-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334857601	2 Stück Weiss matt-Bunt Verpackung	2pcs Matt white-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334890369	3 Stück Weiss matt-Bunt Verpackung	3pcs Matt white-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334923137	2 Stück Leuchtendschwarz-Bunt Verpackung	2pcs Bright black-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262334988673	3 Stück Leuchtendschwarz-Bunt Verpackung	3pcs Bright black-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335054209	2 Stück Leuchtendblau-Bunt Verpackung	2pcs Bright blue-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335119745	3 Stück Leuchtendblau-Bunt Verpackung	3pcs Bright blue-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335316353	2 Stück Leuchtendpink-Bunt Verpackung	2pcs Bright pink-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335381889	3 Stück Leuchtendpink-Bunt Verpackung	3pcs Bright pink-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335447425	2 Stück Schwarz matt-Bunt Verpackung	2pcs Matt black-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335512961	3 Stück Schwarz matt-Bunt Verpackung	3pcs Matt black-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335578497	2 Stück Silber matt-Bunt Verpackung	2pcs Matt silver-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335644033	3 Stück Silber matt-Bunt Verpackung	3pcs Matt silver-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335709569	2 Stück Gold glänzend-Bunt Verpackung	2pcs Shiny gold-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335775105	3 Stück Gold glänzend-Bunt Verpackung	3pcs Shiny gold-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335840641	2 Stück Silber glänzend-Bunt Verpackung	2pcs Shiny silver-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335906177	3 Stück Silber glänzend-Bunt Verpackung	3pcs Shiny silver-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262335971713	Rosa-Flach Weiss Glas	Light Pink-Flat white glass	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336004481	Set 1-Bunt Verpackung	Set1-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336037249	Set 2-Bunt Verpackung	Set2-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336070017	Set 3-Bunt Verpackung	Set3-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336102785	Set 4-Bunt Verpackung	Set4-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336135553	Set 5-Bunt Verpackung	Set5-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336168321	Set 6-Bunt Verpackung	Set6-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336201089	Set 7-Bunt Verpackung	Set7-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336233857	Set 8-Bunt Verpackung	Set8-Colorful package	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336266625	Rosa · 2 Stück-Flach Weiss Glas	Light Pink 2PC-Flat white glass	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483793768833	Farbe	gid://shopify/ProductOptionValue/12262336299393	Rosa · 3 Stück-Flach Weiss Glas	Light Pink 3PC-Flat white glass	2026-09-23T20:44Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15483890172289	Farbe	gid://shopify/ProductOptionValue/12262885654913	Abs Pink	ABS Pink	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15483890172289	Farbe	gid://shopify/ProductOptionValue/12262885851521	Abs Blau	ABS Blau	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15483933819265	Farbe	gid://shopify/ProductOptionValue/12263013450113	4 Stück Set	4pcs set	2026-09-23T20:44Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15483934343553	Farbe	gid://shopify/ProductOptionValue/12263021871489	Schwarz Box · 10 Stück Set	Black box 10PCS SET	2026-09-23T20:44Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15483934343553	Farbe	gid://shopify/ProductOptionValue/12263021937025	46 Stück Set	46PCS SET	2026-09-23T20:44Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15483934343553	Farbe	gid://shopify/ProductOptionValue/12263022002561	53 Stück Set	53PCS SET	2026-09-23T20:44Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15484592521601	Farbe	gid://shopify/ProductOptionValue/12268097143169	Marineblau Gelb bedruckt	Marineblau-Gelb bedruckt	2026-09-23T20:44Z/reparatur-korrigiert
+gid://shopify/Product/15484593930625	Farbe	gid://shopify/ProductOptionValue/12268101730689	Dunkelblau Sohle Silber	Dark Blue Sole Silver	2026-09-23T20:44Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15486082580865	Farbe	gid://shopify/ProductOptionValue/12277564277121	Pink geblümt Rundhals	Floral Pink Round Neck	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15486307631489	Farbe	gid://shopify/ProductOptionValue/12278957769089	Leder Pink	Leather Pink	2026-09-23T20:45Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15486447681921	Farbe	gid://shopify/ProductOptionValue/12279540941185	Braun gefüttert Stil	Brown With Velvet Style	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15489629061505	Farbe	gid://shopify/ProductOptionValue/12296568799617	Leder Pink	Leather Pink	2026-09-23T20:45Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15491388703105	Farbe	gid://shopify/ProductOptionValue/12309792817537	Klein Blau geblümt	Small Blue Flowers	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15491404431745	Farbe	gid://shopify/ProductOptionValue/12309986410881	Leder Pink	Leather Pink	2026-09-23T20:45Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15492035346817	Farbe	gid://shopify/ProductOptionValue/12316677636481	Marineblau mit gepunktet	Navy Blue With Polka Dots	2026-09-23T20:45Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15492129653121	Farbe	gid://shopify/ProductOptionValue/12317272408449	Washed Weiss	Washed White	2026-09-23T20:45Z/reparatur-original:Washed
+gid://shopify/Product/15492129653121	Farbe	gid://shopify/ProductOptionValue/12317272441217	Washed Gelb	Washed Yellow	2026-09-23T20:45Z/reparatur-original:Washed
+gid://shopify/Product/15492996759937	Farbe	gid://shopify/ProductOptionValue/12323060679041	Eckig Aprikose	Square Apricot	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15493248319873	Farbe	gid://shopify/ProductOptionValue/12325070307713	Schwarz-6 cm mesh	Schwarz-6 cm Mesh	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493248319873	Farbe	gid://shopify/ProductOptionValue/12325070373249	Schwarz-8 cm mesh	Schwarz-8 cm Mesh	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493705466241	Farbe	gid://shopify/ProductOptionValue/12329946775937	Leuchtendrot-Einheitsgrösse	Leuchtendes Rot-Einheitsgrösse	2026-09-23T20:45Z/reparatur-konsistenz
+gid://shopify/Product/15493705466241	Farbe	gid://shopify/ProductOptionValue/12329946808705	Leuchtendrot-Übergrösse	Leuchtendes Rot-Übergrösse	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493705466241	Farbe	gid://shopify/ProductOptionValue/12329946841473	Leuchtendrot-S Einheitsgrösse	Leuchtendes Rot-S Einheitsgrösse	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493716869505	Farbe	gid://shopify/ProductOptionValue/12330248339841	Muster 1 Retroschwarz	Muster 1 Retro-Schwarz	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493716869505	Farbe	gid://shopify/ProductOptionValue/12330248372609	Muster 2 Retroschwarz	Muster 2 Retro-Schwarz	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493716869505	Farbe	gid://shopify/ProductOptionValue/12330248405377	Muster 3 Retroschwarz	Muster 3 Retro-Schwarz	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493716869505	Farbe	gid://shopify/ProductOptionValue/12330248438145	Muster 4 Retroschwarz	Muster 4 Retro-Schwarz	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493716869505	Farbe	gid://shopify/ProductOptionValue/12330248470913	Muster 5 Retroschwarz	Muster 5 Retro-Schwarz	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493795742081	Farbe	gid://shopify/ProductOptionValue/12330842423681	Vintageweiss Samt	Vintage-Weiss Samt	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493797544321	Farbe	gid://shopify/ProductOptionValue/12330866573697	Grau 1.5 Cm	Grau 1.5 cm	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493797544321	Farbe	gid://shopify/ProductOptionValue/12330866606465	Schwarz 1.5 Cm	Schwarz 1.5 cm	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493797544321	Farbe	gid://shopify/ProductOptionValue/12330866639233	Bordeaux-Rot 1.5 Cm	Bordeaux-Rot 1.5 cm	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927260033	38-Schwarz, Baumwolle Futter	38-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927292801	38-Khaki, Baumwolle Futter	38-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927456641	39-Schwarz, Baumwolle Futter	39-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927489409	39-Khaki, Baumwolle Futter	39-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927653249	40-Schwarz, Baumwolle Futter	40-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927686017	40-Khaki, Baumwolle Futter	40-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927849857	41-Schwarz, Baumwolle Futter	41-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330927882625	41-Khaki, Baumwolle Futter	41-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928046465	42-Schwarz, Baumwolle Futter	42-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928079233	42-Khaki, Baumwolle Futter	42-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928243073	43-Schwarz, Baumwolle Futter	43-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928275841	43-Khaki, Baumwolle Futter	43-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928439681	44-Schwarz, Baumwolle Futter	44-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928472449	44-Khaki, Baumwolle Futter	44-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928636289	45-Schwarz, Baumwolle Futter	45-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928669057	45-Khaki, Baumwolle Futter	45-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928832897	46-Schwarz, Baumwolle Futter	46-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330928865665	46-Khaki, Baumwolle Futter	46-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330929029505	47-Schwarz, Baumwolle Futter	47-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330929062273	47-Khaki, Baumwolle Futter	47-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330929226113	48-Schwarz, Baumwolle Futter	48-Black, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493807735169	Farbe	gid://shopify/ProductOptionValue/12330929258881	48-Khaki, Baumwolle Futter	48-Khaki, Cotton Lining	2026-09-23T20:45Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15493846598017	Farbe	gid://shopify/ProductOptionValue/12331331256705	Wildleder Kaffeebraun	Suede Coffee	2026-09-23T20:45Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15493846598017	Farbe	gid://shopify/ProductOptionValue/12331331289473	Wildleder Schwarz	Suede Black	2026-09-23T20:45Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15493854331265	Farbe	gid://shopify/ProductOptionValue/12331445682561	Retroblau	Retro-Blau	2026-09-23T20:45Z/reparatur-konsistenz
+gid://shopify/Product/15493856362881	Farbe	gid://shopify/ProductOptionValue/12331467669889	Beige einzeln Futter	Beige Single Lining	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15493872877953	Farbe	gid://shopify/ProductOptionValue/12331888312705	Leder Pink	Leather Pink	2026-09-23T20:45Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15493897847169	Farbe	gid://shopify/ProductOptionValue/12332173263233	Schwarz-Leuchtendpink	Schwarz-Leuchtendes Pink	2026-09-23T20:45Z/reparatur-korrigiert
+gid://shopify/Product/15495114097025	Ausführung	gid://shopify/ProductOptionValue/12377141215617	Baumwolle gefüttert Stil	Cotton lined Style	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15495121830273	Farbe	gid://shopify/ProductOptionValue/12339761447297	Camel gross Baumwolle	Camel large cotton	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15495122026881	Farbe	gid://shopify/ProductOptionValue/12339762790785	Schwarz dick Samt	Black thick velvet	2026-09-23T20:45Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15495137919361	Farbe	gid://shopify/ProductOptionValue/12339883475329	9028 Vintageblau	9028 Vintage-Blau	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15495187399041	Farbe	gid://shopify/ProductOptionValue/12340109181313	Neongrün doppelt Mesh	Fluorescent Green Double Mesh	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496229486977	Farbe	gid://shopify/ProductOptionValue/12352246710657	Lang Wolle Gelb	Long Wool Yellow	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496229486977	Farbe	gid://shopify/ProductOptionValue/12352246743425	Lang Wolle Blau	Long Wool Blue	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496389394817	Farbe	gid://shopify/ProductOptionValue/12353302200705	Schwarz Pu	Schwarz PU	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496394506625	Farbe	gid://shopify/ProductOptionValue/12353328611713	Gefüttert Schwarz	Plus velvet black	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496511750529	Farbe	gid://shopify/ProductOptionValue/12353863483777	1 Farbe	Farbton 1	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496511750529	Farbe	gid://shopify/ProductOptionValue/12353863516545	2 Farben	Farbton 2	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496511750529	Farbe	gid://shopify/ProductOptionValue/12353863549313	3 Farben	Farbton 3	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496515715457	Farbe	gid://shopify/ProductOptionValue/12353913782657	Khaki einzeln Futter	Khaki Single Lining	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496515715457	Farbe	gid://shopify/ProductOptionValue/12353913815425	Aprikose einzeln Futter	Apricot Single Lining	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496515715457	Farbe	gid://shopify/ProductOptionValue/12353913848193	Schwarz einzeln Futter	Black Single Lining	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496515715457	Farbe	gid://shopify/ProductOptionValue/12353913880961	Khaki doppelt Baumwolle	Khaki Double Cotton	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496515715457	Farbe	gid://shopify/ProductOptionValue/12353913913729	Aprikose doppelt Baumwolle	Apricot Double Cotton	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496515715457	Farbe	gid://shopify/ProductOptionValue/12353913946497	Schwarz doppelt Baumwolle	Black Double Cotton	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496515715457	Farbe	gid://shopify/ProductOptionValue/12353913979265	Khaki gross Baumwolle	Khaki Large Cotton	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15496518861185	Farbe	gid://shopify/ProductOptionValue/12353946190209	Schwarz-Leuchtendorange	Schwarz-Leuchtendes Orange	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496518861185	Farbe	gid://shopify/ProductOptionValue/12353946222977	Schwarz-Leuchtendorange-50 cm	Schwarz-Leuchtendes Orange-50 cm	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080309633	Dunkelblau-Plus Gr. L	Dunkelblau-Übergrösse L	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080342401	Dunkelblau-Plus Gr. XL	Dunkelblau-Übergrösse XL	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080375169	Dunkelblau-Plus Gr. 2XL	Dunkelblau-Übergrösse 2XL	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080407937	Dunkelblau-Plus Gr. M	Dunkelblau-Übergrösse M	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080440705	Weinrot-Plus Gr. L	Weinrot-Übergrösse L	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080473473	Weinrot-Plus Gr. XL	Weinrot-Übergrösse XL	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080506241	Weinrot-Plus Gr. 2XL	Weinrot-Übergrösse 2XL	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15496543469953	Farbe	gid://shopify/ProductOptionValue/12354080539009	Weinrot-Plus Gr. M	Weinrot-Übergrösse M	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15497428894081	Farbe	gid://shopify/ProductOptionValue/12366700315009	Plus Baumwolle Khaki	Plus cotton khaki	2026-09-23T20:46Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15497428894081	Farbe	gid://shopify/ProductOptionValue/12366700347777	Plus Baumwolle Schwarz	Plus cotton black	2026-09-23T20:46Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15497428894081	Farbe	gid://shopify/ProductOptionValue/12366700380545	Plus Baumwolle Grau	Plus cotton gray	2026-09-23T20:46Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15497428894081	Farbe	gid://shopify/ProductOptionValue/12366700413313	Einzeln Khaki	Single khaki	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497428894081	Farbe	gid://shopify/ProductOptionValue/12366700446081	Einzeln Schwarz	Single black	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497428894081	Farbe	gid://shopify/ProductOptionValue/12366700478849	Einzeln Grau	Single gray	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497439740289	Farbe	gid://shopify/ProductOptionValue/12366742880641	Leuchtendweiss	Leuchtendes Weiss	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15497441083777	Farbe	gid://shopify/ProductOptionValue/12366750220673	Rot Gummi Sohle	Red Rubber sole	2026-09-23T20:46Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15497441083777	Farbe	gid://shopify/ProductOptionValue/12366750253441	Schwarz Gummi Sohle	Black Rubber sole	2026-09-23T20:46Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15497441706369	Farbe	gid://shopify/ProductOptionValue/12366752219521	2 Farben Set	Set mit 2 Farben	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15497441706369	Farbe	gid://shopify/ProductOptionValue/12366752252289	3 Farben Set	Set mit 3 Farben	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15497451176321	Farbe	gid://shopify/ProductOptionValue/12366783578497	Breit Schwarz 7 cm	Wide Black 7cm	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497451176321	Farbe	gid://shopify/ProductOptionValue/12366783611265	Breit Nude-Pink 7 cm	Wide Nude Pink 7cm	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497451471233	Farbe	gid://shopify/ProductOptionValue/12366786396545	7 cm breit Schwarz	7 cm wide black	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497451471233	Farbe	gid://shopify/ProductOptionValue/12366786429313	7 cm breit Aprikose	7 cm wide Apricot	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497496494465	Farbe	gid://shopify/ProductOptionValue/12366988476801	Echtleder Weiss	Genuine Leather White	2026-09-23T20:46Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15497524150657	Farbe	gid://shopify/ProductOptionValue/12367345516929	Einzeln Futter	Single Lining	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15497524150657	Farbe	gid://shopify/ProductOptionValue/12367345549697	Warm Futter	Warm Lining	2026-09-23T20:46Z/reparatur-original:satzbau:lehnwort-vor-nomen
+gid://shopify/Product/15497524871553	Farbe	gid://shopify/ProductOptionValue/12367349219713	Gummi Sohle	Rubber sole	2026-09-23T20:46Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15497525494145	Farbe	gid://shopify/ProductOptionValue/12367365570945	Gefüttert Grau	Plus Velvet Gray	2026-09-23T20:46Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15498946904449	Farbe	gid://shopify/ProductOptionValue/12378325156225	Leder Gold	Leather Gold	2026-09-23T20:46Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15499060412801	Farbe	gid://shopify/ProductOptionValue/12378735870337	Retroschwarz	Retro-Schwarz	2026-09-23T20:46Z/reparatur-korrigiert
+gid://shopify/Product/15499985060225	Farbe	gid://shopify/ProductOptionValue/12382025548161	Retro	Retro Color	2026-09-23T20:47Z/reparatur-original:Retro Color
+gid://shopify/Product/15500111053185	Farbe	gid://shopify/ProductOptionValue/12382663344513	Aprikose Absatz Höhe 6 cm	Apricot Heel Height 6cm	2026-09-23T20:47Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15500111053185	Farbe	gid://shopify/ProductOptionValue/12382663377281	Weiss Absatz Höhe 6 cm	White Heel Height 6cm	2026-09-23T20:47Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15500111053185	Farbe	gid://shopify/ProductOptionValue/12382663410049	Schwarz Absatz Höhe 6 cm	Black Heel Height 6cm	2026-09-23T20:47Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15500453872001	Farbe	gid://shopify/ProductOptionValue/12384974012801	Kühlschwarz	Cool Black	2026-09-23T20:47Z/reparatur-original:Cool Black
+gid://shopify/Product/15500571509121	Farbe	gid://shopify/ProductOptionValue/12386498314625	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:47Z/reparatur-konsistenz
+gid://shopify/Product/15500998803841	Farbe	gid://shopify/ProductOptionValue/12390607847809	Gemischt Farbton 2	Mixed color 2	2026-09-23T20:47Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15501902840193	Farbe	gid://shopify/ProductOptionValue/12396435014017	Gummi Schwarz	Rubber black	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15501902840193	Farbe	gid://shopify/ProductOptionValue/12396435046785	Gummi Grau	Rubber grey	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15502062453121	Farbe	gid://shopify/ProductOptionValue/12396941607297	Dunkelblau mit kariert	Dark Blue With Plaid	2026-09-23T20:47Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15502257357185	Farbe	gid://shopify/ProductOptionValue/12397565936001	Schwarz Pu	Schwarz PU	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15502612726145	Farbe	gid://shopify/ProductOptionValue/12400495329665	Pu Braun gestreift	PU Braun gestreift	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15502612726145	Farbe	gid://shopify/ProductOptionValue/12400495362433	Pu Gold + Schwarz	PU Gold + Schwarz	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15502612726145	Farbe	gid://shopify/ProductOptionValue/12400495395201	Pu Gold gestreift	PU Gold gestreift	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15502612726145	Farbe	gid://shopify/ProductOptionValue/12400495526273	Pu Schwarz-Weiss gestreift	PU Schwarz-Weiss gestreift	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15502612726145	Farbe	gid://shopify/ProductOptionValue/12400495624577	Pu Gold + Weiss	PU Gold + Weiss	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15502612726145	Farbe	gid://shopify/ProductOptionValue/12400495657345	Pu Grau-Weiss gestreift	PU Grau-Weiss gestreift	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15502959772033	Farbe	gid://shopify/ProductOptionValue/12403315245441	Gross Rot	Big red	2026-09-23T20:47Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15503043297665	Farbe	gid://shopify/ProductOptionValue/12404547486081	Gold sand	Gold-Sand	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15503043559809	Farbe	gid://shopify/ProductOptionValue/12404548829569	Schwarz dünn Herren	Black Thin Mens	2026-09-23T20:47Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15503043559809	Farbe	gid://shopify/ProductOptionValue/12404548862337	Dunkelblau dünn Herren	Dark blue thin mens	2026-09-23T20:47Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882014593	Schwarz plus Baumwolle	Black plus cotton	2026-09-23T20:47Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882047361	Grün plus Baumwolle	Green plus cotton	2026-09-23T20:47Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882080129	Grau plus Baumwolle	Gray plus cotton	2026-09-23T20:47Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882112897	Blau plus Baumwolle	Blue plus cotton	2026-09-23T20:47Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15503089926529	Farbe	gid://shopify/ProductOptionValue/12404953940353	Seide Version	Silk Version	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15503258583425	Farbe	gid://shopify/ProductOptionValue/12406057238913	Baumwolle Schwarz	Cotton Black	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15503258583425	Farbe	gid://shopify/ProductOptionValue/12406057271681	Baumwolle Gelb	Cotton Yellow	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15503258583425	Farbe	gid://shopify/ProductOptionValue/12406057304449	Baumwolle Grau	Cotton Grey	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15503258780033	Farbe	gid://shopify/ProductOptionValue/12406058058113	361 bunt Grün	361 Colorful Green	2026-09-23T20:47Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15503258780033	Farbe	gid://shopify/ProductOptionValue/12406058090881	361 bunt Gelb	361 Colorful Yellow	2026-09-23T20:47Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15503431762305	Farbe	gid://shopify/ProductOptionValue/12407575413121	Leder Pink	Leather Pink	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15503956672897	Farbe	gid://shopify/ProductOptionValue/12412305441153	Leuchtendschwarz	Leuchtendes Schwarz	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15504099541377	Farbe	gid://shopify/ProductOptionValue/12413352378753	Leuchtendgold	Leuchtendes Gold	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15504099541377	Farbe	gid://shopify/ProductOptionValue/12413352444289	Leuchtendblau	Leuchtendes Blau	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15504137453953	Farbe	gid://shopify/ProductOptionValue/12413652861313	M018 Retroschwarz	M018 Retro-Schwarz	2026-09-23T20:47Z/reparatur-korrigiert
+gid://shopify/Product/15504142369153	Farbe	gid://shopify/ProductOptionValue/12413700604289	Samt Rot	Velvet red	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15504142369153	Farbe	gid://shopify/ProductOptionValue/12413700637057	Samt Rot-Gr. 29	Velvet red-Size 29	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15504142369153	Farbe	gid://shopify/ProductOptionValue/12413700669825	Samt Rot-Gr. 30	Velvet red-Size 30	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15504142369153	Farbe	gid://shopify/ProductOptionValue/12413700702593	Samt Rot-Gr. 33	Velvet red-Size 33	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15504142369153	Farbe	gid://shopify/ProductOptionValue/12413700735361	Samt Rot-Gr. 37	Velvet red-Size 37	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793632641	Sharkorange-22/23	Sharkorange-22to23	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793665409	Sharkorange-24/25	Sharkorange-24to25	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793698177	Sharkorange-26/27	Sharkorange-26to27	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793730945	Sharkorange-28/29	Sharkorange-28to29	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793763713	Sharkorange-30/31	Sharkorange-30to31	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793796481	Sharkorange-32/33	Sharkorange-32to33	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793829249	Sharkorange-34/35	Sharkorange-34to35	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793862017	Sharkorange-36/37	Sharkorange-36to37	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504150659457	Farbe	gid://shopify/ProductOptionValue/12413793894785	Sharkorange-35/36	Sharkorange-35to36	2026-09-23T20:47Z/reparatur-original:Sharkorange
+gid://shopify/Product/15504187720065	Farbe	gid://shopify/ProductOptionValue/12414007837057	Hell	Light Color	2026-09-23T20:47Z/reparatur-original:Light Color
+gid://shopify/Product/15506188337537	Farbe	gid://shopify/ProductOptionValue/12424460272001	8800 Samt Grau	8800 Velvet Gray	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15506188337537	Farbe	gid://shopify/ProductOptionValue/12424460337537	9931 gefüttert Pink	9931 Plus Velvet Pink	2026-09-23T20:47Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15506188337537	Farbe	gid://shopify/ProductOptionValue/12424460403073	8005 Samt Rot	8005 Velvet Red	2026-09-23T20:47Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15506243912065	Farbe	gid://shopify/ProductOptionValue/12424616051073	Wildleder Schwarz	Suede black	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15506243912065	Farbe	gid://shopify/ProductOptionValue/12424616083841	Wildleder Grün	Suede green	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15506243912065	Farbe	gid://shopify/ProductOptionValue/12424616116609	Wildleder Braun	Suede brown	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15508404830593	Farbe	gid://shopify/ProductOptionValue/12435648577921	Bunt Gold	Colorful Gold	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15508671136129	Farbe	gid://shopify/ProductOptionValue/12438687777153	Retroaprikose	Retro-Aprikose	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15509310439809	Farbe	gid://shopify/ProductOptionValue/12443375468929	Seide Weiss	Silk White	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15509310439809	Farbe	gid://shopify/ProductOptionValue/12443375501697	Seide Blau	Silk Blue	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15509310439809	Farbe	gid://shopify/ProductOptionValue/12443375534465	Seide Pink	Silk Pink	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15509363949953	Farbe	gid://shopify/ProductOptionValue/12443641971073	Geblümt Farbton 2	Flower Color 2	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15509388657025	Farbe	gid://shopify/ProductOptionValue/12443789066625	Leuchtendblau-165	Leuchtendes Blau-165	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15509388657025	Farbe	gid://shopify/ProductOptionValue/12443789099393	Leuchtendblau-170	Leuchtendes Blau-170	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15509388657025	Farbe	gid://shopify/ProductOptionValue/12443789132161	Leuchtendblau-175	Leuchtendes Blau-175	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15509388657025	Farbe	gid://shopify/ProductOptionValue/12443789164929	Leuchtendblau-180	Leuchtendes Blau-180	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15509388657025	Farbe	gid://shopify/ProductOptionValue/12443789197697	Leuchtendblau-185	Leuchtendes Blau-185	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15509388657025	Farbe	gid://shopify/ProductOptionValue/12443789230465	Leuchtendblau-190	Leuchtendes Blau-190	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15509394325889	Farbe	gid://shopify/ProductOptionValue/12443887632769	Schwarz glänzend Stil	Black Glossy Style	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15509395112321	Farbe	gid://shopify/ProductOptionValue/12443890811265	Schwarz flach Stil	Black Flat Style	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15509395112321	Farbe	gid://shopify/ProductOptionValue/12443890942337	Weiss flach Stil	White Flat Style	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510312518017	Farbe	gid://shopify/ProductOptionValue/12449396720001	Gemischt Farbton 8	Mixed Color 8	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510312518017	Farbe	gid://shopify/ProductOptionValue/12449396752769	Gemischt Farbton 9	Mixed Color 9	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510317465985	Farbe	gid://shopify/ProductOptionValue/12449413136769	Leder Gold	Leather Gold	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15510317465985	Farbe	gid://shopify/ProductOptionValue/12449413169537	Leder Silber	Leather Silver	2026-09-23T20:48Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15510318907777	Farbe	gid://shopify/ProductOptionValue/12449418019201	Schwarz Baumwolle Futter	Black Cotton Lining	2026-09-23T20:48Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15510318907777	Farbe	gid://shopify/ProductOptionValue/12449418051969	Braun Baumwolle Futter	Brown Cotton Lining	2026-09-23T20:48Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15510321594753	Farbe	gid://shopify/ProductOptionValue/12449427161473	Schwarz-11.5 cm in	Black-11.5cm in	2026-09-23T20:48Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15510321594753	Farbe	gid://shopify/ProductOptionValue/12449427194241	Schwarz-11 cm in	Black-11cm in	2026-09-23T20:48Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15510321594753	Farbe	gid://shopify/ProductOptionValue/12449427227009	Schwarz-13 cm in	Black-13cm in	2026-09-23T20:48Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15510321594753	Farbe	gid://shopify/ProductOptionValue/12449427325313	Rot-11.5 cm in	Red-11.5cm in	2026-09-23T20:48Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15510321594753	Farbe	gid://shopify/ProductOptionValue/12449427358081	Rot-11 cm in	Red-11cm in	2026-09-23T20:48Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15510321594753	Farbe	gid://shopify/ProductOptionValue/12449427390849	Rot-13 cm in	Red-13cm in	2026-09-23T20:48Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15510329098625	Farbe	gid://shopify/ProductOptionValue/12449468154241	Retroschwarz	Retro-Schwarz	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510336864641	Farbe	gid://shopify/ProductOptionValue/12449556234625	Schwarz einzeln Futter	Black Single Lining	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510336864641	Farbe	gid://shopify/ProductOptionValue/12449556300161	Beige einzeln Futter	Beige Single Lining	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510337126785	Farbe	gid://shopify/ProductOptionValue/12449557676417	Braun-Einzeln Futter	Brown-Single Lining	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510337126785	Farbe	gid://shopify/ProductOptionValue/12449557741953	Schwarz-Einzeln Futter	Black-Single Lining	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510339125633	Farbe	gid://shopify/ProductOptionValue/12449654768001	917 sand gefüttert	917 Sand gefüttert	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510339223937	Farbe	gid://shopify/ProductOptionValue/12449655619969	702 gefüttert Schwarz	702 Fleece Lined Black	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510339223937	Farbe	gid://shopify/ProductOptionValue/12449655652737	702 gefüttert Sand	702 Fleece Lined Sand	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510339846529	Farbe	gid://shopify/ProductOptionValue/12449682719105	Leuchtendrot-36/37	Leuchtendes Rot-36/37	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510339846529	Farbe	gid://shopify/ProductOptionValue/12449682751873	Leuchtendrot-38/39	Leuchtendes Rot-38/39	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510339846529	Farbe	gid://shopify/ProductOptionValue/12449682784641	Leuchtendrot-40/41	Leuchtendes Rot-40/41	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510711599489	Farbe	gid://shopify/ProductOptionValue/12453138727297	Braun gefüttert Stil	Brown With Velvet Style	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510807380353	Farbe	gid://shopify/ProductOptionValue/12456165835137	Ärmellos Schwarz	Sleeveless Black	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510807380353	Farbe	gid://shopify/ProductOptionValue/12456165867905	Ärmellos Weiss	Sleeveless White	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510858301825	Farbe	gid://shopify/ProductOptionValue/12456506392961	Kaffeebraun leopard	Kaffeebraun Leopard	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510858301825	Farbe	gid://shopify/ProductOptionValue/12456506425729	Weiss leopard	Weiss Leopard	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510916727169	Farbe	gid://shopify/ProductOptionValue/12457174892929	Klein Blau geblümt	Small Blue Flowers	2026-09-23T20:48Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15510918070657	Farbe	gid://shopify/ProductOptionValue/12457184297345	Schwarz-Weiss Silber geblümt 8 cm	Schwarz-Weiss-Silber geblümt 8 cm	2026-09-23T20:48Z/reparatur-korrigiert
+gid://shopify/Product/15510919086465	Farbe	gid://shopify/ProductOptionValue/12457191702913	888 Braun ohne Stahl Kopf	888 brown without steel head	2026-09-23T20:48Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15510924329345	Farbe	gid://shopify/ProductOptionValue/12457216835969	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:48Z/reparatur-konsistenz
+gid://shopify/Product/15510924460417	Farbe	gid://shopify/ProductOptionValue/12457217589633	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:49Z/reparatur-konsistenz
+gid://shopify/Product/15510925410689	Farbe	gid://shopify/ProductOptionValue/12457222439297	Leder Pink	Leather Pink	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15510925541761	Farbe	gid://shopify/ProductOptionValue/12457223258497	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:49Z/reparatur-konsistenz
+gid://shopify/Product/15511015850369	Farbe	gid://shopify/ProductOptionValue/12458383442305	Bunt Muster 1	Colorful 1Style	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15511015850369	Farbe	gid://shopify/ProductOptionValue/12458383475073	Bunt Muster 2	Colorful 2Style	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15511015850369	Farbe	gid://shopify/ProductOptionValue/12458383507841	Bunt Muster 3	Colorful 3Style	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15511015850369	Farbe	gid://shopify/ProductOptionValue/12458383540609	Bunt Muster 4	Colorful 4Style	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15511015850369	Farbe	gid://shopify/ProductOptionValue/12458383573377	Bunt Muster 5	Colorful 5Style	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15511015850369	Farbe	gid://shopify/ProductOptionValue/12458383606145	Bunt Muster 6	Colorful 6Style	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15511015850369	Farbe	gid://shopify/ProductOptionValue/12458383638913	Bunt Muster 7	Colorful 7Style	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15512315167105	Farbe	gid://shopify/ProductOptionValue/12466411667841	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:49Z/reparatur-konsistenz
+gid://shopify/Product/15512364024193	Farbe	gid://shopify/ProductOptionValue/12466479956353	17 Farben	17color	2026-09-23T20:49Z/reparatur-original:17color
+gid://shopify/Product/15512718344577	Farbe	gid://shopify/ProductOptionValue/12467136201089	Geblümt Farbton 2	Flower Color 2	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15513787662721	Farbe	gid://shopify/ProductOptionValue/12469660582273	Aprikose klein Grün geblümt	Apricot Small Green Flowers	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15516062220673	Farbe	gid://shopify/ProductOptionValue/12475862221185	Weiss mit bedruckt Muster	White With Printed Pattern	2026-09-23T20:49Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475862974849	3 Stück Set	3pcs set	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863007617	3 Stück Set 1	3pcs set1	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863040385	3 Stück Set 2	3pcs set2	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863073153	3 Stück Set 3	3pcs set3	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863105921	3 Stück Set 4	3pcs set4	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863138689	3 Stück Set 5	3pcs set5	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863171457	3 Stück Set 6	3pcs set6	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863204225	3 Stück Set 7	3pcs set7	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863236993	3 Stück Set 8	3pcs set8	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863269761	3 Stück Set 9	3pcs set9	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863302529	3 Stück Set 10	3pcs set10	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/12475863335297	3 Stück Set 11	3pcs set11	2026-09-23T20:49Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15516234023297	Farbe	gid://shopify/ProductOptionValue/12476191375745	Leder Pink	Leather Pink	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15516304441729	Farbe	gid://shopify/ProductOptionValue/12476508373377	Leuchtendgrün	Leuchtendes Grün	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15517369106817	Farbe	gid://shopify/ProductOptionValue/12481043726721	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:49Z/reparatur-konsistenz
+gid://shopify/Product/15517551919489	Farbe	gid://shopify/ProductOptionValue/12482002256257	Gross Weiss	Big White	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15520245940609	Farbe	gid://shopify/ProductOptionValue/12497551589761	M082 Klassischschwarz	M082 Klassisches Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15520302334337	Farbe	gid://shopify/ProductOptionValue/12497781981569	Schwarz und geblümt	Black And Floral	2026-09-23T20:49Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15520377012609	Farbe	gid://shopify/ProductOptionValue/12498309874049	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15520377274753	Farbe	gid://shopify/ProductOptionValue/12498312593793	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374295937	Weiss Baumwolle Futter	White Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374328705	Schwarz Baumwolle Futter	Black Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374361473	Pink Baumwolle Futter	Pink Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15521235992961	Farbe	gid://shopify/ProductOptionValue/12505373999489	Gross Rot geblümt	Big Red Flower	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295599489	Leinen Weiss	Linen White	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295665025	Leinen Blau	Linen Blue	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295697793	Leinen Schwarz	Linen Black	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15521415233921	Farbe	gid://shopify/ProductOptionValue/12506554892673	5 Farben Set	Set mit 5 Farben	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15521696121217	Farbe	gid://shopify/ProductOptionValue/12508587753857	Leuchtendschwarz	Leuchtendes Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15521696121217	Farbe	gid://shopify/ProductOptionValue/12508587852161	Leuchtendaprikose	Bright apricot	2026-09-23T20:49Z/reparatur-original:Bright apricot
+gid://shopify/Product/15521995981185	Farbe	gid://shopify/ProductOptionValue/12510695457153	Vintagebraun	Vintage-Braun	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15522282668417	Farbe	gid://shopify/ProductOptionValue/12513821163905	Aprikose ohne geblümt	Apricot without flower	2026-09-23T20:49Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437604225	2 Farben	2 Colors	2026-09-23T20:49Z/reparatur-original:2Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437636993	3 Farben	3 Colors	2026-09-23T20:49Z/reparatur-original:3Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437669761	4 Farben	4 Colors	2026-09-23T20:49Z/reparatur-original:4Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437702529	5 Farben	5 Colors	2026-09-23T20:49Z/reparatur-original:5Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437735297	6 Farben	6 Colors	2026-09-23T20:49Z/reparatur-original:6Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437768065	7 Farben	7 Colors	2026-09-23T20:49Z/reparatur-original:7Colors
+gid://shopify/Product/15522669265281	Farbe	gid://shopify/ProductOptionValue/12517595906433	2 Farben	2 Colors	2026-09-23T20:50Z/reparatur-original:2Colors
+gid://shopify/Product/15523818373505	Farbe	gid://shopify/ProductOptionValue/12529100652929	Leder Pink	Leather Pink	2026-09-23T20:50Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501274497	2333 sand mesh 6KV	2333 Sand Mesh 6KV	2026-09-23T20:50Z/reparatur-konsistenz
+gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501307265	2333 Grau mesh 6KV	2333 Grau Mesh 6KV	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501372801	8865 sand mesh 10KV	8865 Sand Mesh 10KV	2026-09-23T20:50Z/reparatur-konsistenz
+gid://shopify/Product/15523863232897	Farbe	gid://shopify/ProductOptionValue/12529502355841	8865 mesh Grau	8865 Mesh Grau	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15523863232897	Farbe	gid://shopify/ProductOptionValue/12529502388609	8865 mesh Schwarz	8865 Mesh Schwarz	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524694917505	Farbe	gid://shopify/ProductOptionValue/12536217600385	Blau dick gestreift	Blue Thick Stripes	2026-09-23T20:50Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15524695933313	Farbe	gid://shopify/ProductOptionValue/12536226021761	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524859019649	Farbe	gid://shopify/ProductOptionValue/12539697201537	Weiss mit bedruckt Muster	White With Printed Pattern	2026-09-23T20:50Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540261958017	2128 1 Farbe	2128 Farbton 1	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540261990785	2128 2 Farben	2128 Farbton 2	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262023553	2128 3 Farben	2128 Farbton 3	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262056321	2128 4 Farben	2128 Farbton 4	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262089089	2128 5 Farben	2128 Farbton 5	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262121857	2128 6 Farben	2128 Farbton 6	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262154625	2128 7 Farben	2128 Farbton 7	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262187393	2128 8 Farben	2128 Farbton 8	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262220161	2128 9 Farben	2128 Farbton 9	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262252929	2128 11 Farben	2128 Farbton 11	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15524930191745	Farbe	gid://shopify/ProductOptionValue/12540262285697	2128 13 Farben	2128 Farbton 13	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394456449	1 Farbe	Farbton 1	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394489217	2 Farben	Farbton 2	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394521985	3 Farben	Farbton 3	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394554753	4 Farben	Farbton 4	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394587521	5 Farben	Farbton 5	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394620289	6 Farben	Farbton 6	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394653057	1 Farbe · 3 Stück	Farbton 1 · 3 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394685825	1 Farbe · 5 Stück	Farbton 1 · 5 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394718593	2 Farben · 3 Stück	Farbton 2 · 3 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394751361	2 Farben · 5 Stück	Farbton 2 · 5 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394784129	4 Farben · 3 Stück	Farbton 4 · 3 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394816897	4 Farben · 5 Stück	Farbton 4 · 5 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394849665	5 Farben · 3 Stück	Farbton 5 · 3 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394882433	5 Farben · 5 Stück	Farbton 5 · 5 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394915201	6 Farben · 3 Stück	Farbton 6 · 3 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394947969	6 Farben · 5 Stück	Farbton 6 · 5 Stück	2026-09-23T20:52Z/reparatur-korrigiert
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395308417	1 3 6 Farben	1 3 6color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395341185	1 4 5 Farben	1 4 5color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395373953	1 4 6 Farben	1 4 6color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395406721	1 5 6 Farben	1 5 6color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395439489	1 3 5 Farben	1 3 5color	2026-09-23T20:52Z/reparatur-original:farbnummern-folge

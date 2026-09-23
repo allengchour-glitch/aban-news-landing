@@ -18,7 +18,10 @@ if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then git rebase --quit 
 if [ -f .git/MERGE_HEAD ] || [ -n "$(git ls-files -u)" ]; then aufloesen || exit 1; fi
 [ $# -gt 0 ] && git add -- "$@"
 git add -A dropship/ 2>/dev/null
-git diff --cached --quiet || git commit -q -m "$MSG"
+# Zuschreibung (Vorgabe der Sitzung, 23.09.2026) — als Trailer, damit die erste Zeile die Nachricht bleibt.
+ZU="${GIT_ZUSCHREIBUNG:-Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MCYpvsTg9cwVa1SwQZ39f3}"
+git diff --cached --quiet || git commit -q -m "$MSG" -m "$ZU"
 for i in 1 2 3; do
   git fetch -q origin "$BRANCH" || { sleep $((i * 3)); continue; }
   if ! git merge -q --no-edit "origin/$BRANCH" 2>/dev/null; then
