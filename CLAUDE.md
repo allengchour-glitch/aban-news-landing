@@ -68,6 +68,76 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-23 (🎬 BILDER → WERBEVIDEO: die ersten 3 Sekunden gehörten bisher dem Logo):**
+- **Auftrag:** „lerne noch wie man bilder in video macht für super werbung video und teile memory."
+  Voller Bericht: **`dropship/LERNEN-BILD-ZU-VIDEO-2026-09-23.md`**. Neuer Skill: **`.claude/skills/werbevideo/`**.
+- **🔴 HAUPTFUND, gemessen statt vermutet: unsere Reels verbrennen das gesamte 3-Sekunden-Fenster
+  auf eine Marken-Karte.** `tools/video_hook.mjs` (17 Selbsttests) tastet das Video im 0,1-s-Raster
+  ab und zählt je Einzelbild den Anteil der Marken-Hintergrundfarbe. **Ergebnis: das Produkt
+  erscheint erst bei 2,5 / 2,7 / 2,8 s — bei allen gemessenen Reels.** Ursache ist das 3,0-s-Intro
+  in `render_premium_reel.sh`. **QUELLE (Recherche 2026, mehrere unabhängige Texte):** die ersten
+  3 Sekunden entscheiden (*Hook Rate*), und man soll ausdrücklich **mit dem Produkt öffnen, nicht
+  mit einer Logo-Animation**; **85 PROZENT der Meta-Aufrufe laufen ohne Ton**; gute kurze vertikale
+  Anzeigen sind **7–15 s** (unsere: 17,3 s).
+- **✅ GEBAUT `automation/produkt_werbevideo.mjs` (64 Selbsttests)** — macht aus den Bildern **EINES**
+  Produkts ein Werbevideo. Das schliesst die Lücke vom 19.09.: `auto_render.sh` baut Montagen aus
+  **mehreren** Produkten und darf deshalb nie auf eine Produktseite. **Nachgemessen mit demselben
+  Gerät: Produkt ab 0,0 s statt 2,5 s**, 12,0 s statt 17,3 s, Preis auf jedem Segment, Marke 2,0 s
+  am **Ende**, vier Kamerafahrten im Wechsel, dazu `-clean.mp4` (Trend-Sound wird nie eingebrannt)
+  und ein Deckblatt-JPG. Echtes Beispiel live gerendert: `reels/produkt-taktische-outdoor-warnweste-fur-herren-623500.mp4`.
+- **🔑 KEINE ZUGANGSDATEN NÖTIG, gemessen:** `https://luxestyle.ch/products/<handle>.js` liefert
+  Titel, alle Bild-Adressen und die Variantenpreise in Rappen **ohne Token**. Das Werkzeug läuft
+  also sofort in jeder Session — anders als `preis_korrektur.mjs` und `homepage_slim.mjs`.
+  ⚠️ Der Endpunkt **drosselt** (429) nach vielen Abrufen — das heisst „warte", nicht „Produkt fehlt".
+- **🔴 EIGENER FEHLER, und der lehrreichste dieser Runde: das Messgerät mass das Falsche.** Der Haken
+  war auf **34 Zeichen** gedeckelt, alle Selbsttests grün — **und der Text lief trotzdem links und
+  rechts aus dem Bild.** Gefunden **nur, weil ich das Deckblatt angesehen habe.** GEMESSEN:
+  „Taktische Outdoor Warnweste für" sind 31 Zeichen und bei 60 px **über 1080 px breit**, breiter
+  als das ganze Bild. **Zeichenzahl ist nicht Pixelbreite.** Behoben: `textBreite()` misst **mit
+  ffmpeg selbst**, also mit genau dem Zeichner, der den Text später malt; darauf setzen Wortumbruch
+  und automatische Verkleinerung auf. Gegenprobe: doppelte Schriftgrösse = **2,00-fache** Breite.
+  **Lehre: ein grüner Selbsttest beweist nur, dass der Code tut, was der Test prüft.** Dieselbe
+  Klasse wie „Kundensicht statt API-Antwort" (13.09.) und „Diff lesen, nicht die Zahl" (07.09.).
+- **⚠️ Ein Selbsttest fiel um — und er hatte recht, nicht der Code:** ein Produkt mit **einem** Bild
+  kam auf 4,85 s, unter die 7-s-Grenze. Statt den Test zu lockern, lässt `segmentFolge()` dasselbe
+  Foto **dreimal** laufen, aber mit **verschiedener** Kamerafahrt (die Gegenprobe prüft genau das —
+  dreimal dieselbe wäre eine Diaschau).
+- **⛔ Bewusst NICHT getan: die 105 bestehenden Reels neu rendern.** Sie sind Feed-Montagen und dort
+  nicht falsch; bei 3 Abonnenten und 1248 Sessions/30 T wäre das Rechenzeit, keine belegte Besserung.
+- **🟡 NUR DER USER:** Video an die Produktseite hängen braucht **keinen** Theme-Zugriff (Weg vom
+  13.09. vorgeprüft: `stagedUploadsCreate` → `PUT` → `productUpdate`), aber **`SHOPIFY_SHOP` /
+  `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`. Dieselben drei Werte lösen zusätzlich
+  `preis_korrektur.mjs` und `homepage_slim.mjs`** — ein Handgriff, drei Baustellen.
+
+**📌 2026-09-22 (🦺 DER ARBEITSSCHUTZ-BLOCK: eine ganze Importcharge stand bei HALBEM Einkaufspreis):**
+- **Auftrag:** Dauerauftrag / `/loop` — der grösste offene Einzelblock vom 20.09.
+- **🔴 DIE SCHLECHTESTE GRUPPE, DIE JE GEMESSEN WURDE: 29 von 30 Produkten mit bekanntem Einkaufs-
+  preis gingen nach WELCOME10 mit VERLUST raus, 30 von 30 lagen unter dem Ziel, KEINES war in
+  Ordnung.** Zum Vergleich: Velohelme 11 von 32, Fahrradhelme 1 von 33, Reit/Ski/Motorrad 8 von 22.
+  Es sind durchweg **Sicherheitsschuhe mit Stahlkappe**, bepreist bei rund der **Hälfte** des
+  Einkaufs: 27.90 bei EK 43.85 (**−74,6 PROZENT**) · 29.90 bei EK 44.62 (−65,8) · 28.90/41.08.
+  **Das stützt die Vermutung vom 14.09. so deutlich wie nichts zuvor: bepreist wurde nach
+  Importcharge, nicht nach Einkauf.**
+- **✅ GEÄNDERT (live): 27 Produkte / 510 Varianten**, `userErrors` in allen vier Teilen leer,
+  **alle 27 an der echten Kundenseite nachgemessen (27/27, null Abweichungen)** — und die Gegenprobe
+  mit absichtlich falschem Sollwert schlug bei keinem einzigen fälschlich an.
+- **⛔ 2 BEWUSST NUR GEMELDET (Faktor > 3 = falsch importiert, nicht falsch bepreist):**
+  Sicherheitsschuhe High-Top mit Stahlkappe 18.90 bei EK 36.65 (−115,5 PROZENT) · Damen
+  Arbeitsschuhe mit Stahlkappe 18.90 bei EK 30.85 (−81,4). **Damit sind es sechs Faktor-über-3-Fälle
+  für den User** (dazu Atemschutz-Set 16.90/49.32, Kinder-Autositz 14.90/25.07, EisSilk-Polster
+  14.90/33.23, Lendenwirbel-Kissen 17.90/38.51).
+- **⚠️ EIN PRODUKT BEWUSST ZURÜCKGEHALTEN:** `retro-arbeitsschuhe` (15450036765057) hat mehr als
+  50 Varianten und lief damit in die Abfragegrenze — sein `kosten_max` ist **zu niedrig gemessen**,
+  also wäre jeder daraus gerechnete Preis zu tief. **Eine Zahl, die an einer Abfragegrenze entsteht,
+  ist kein Messwert.** Offen für die nächste Runde.
+- **🔑 Die Mutation wurde wieder AUS DATEN ERZEUGT, nicht von Hand geschrieben**, und der Generator
+  belegt vorher die **Lückenlosigkeit** der Variantennummern (`erste + (n-1)*32768 === letzte`,
+  25 Produkte bestätigt) — so kann der Fehler vom 19.09. („zwölf geplant, zehn gesendet") nicht
+  wiederkehren.
+- **📊 BILANZ ALLER SECHS BLÖCKE: 161 Schutzprodukte gemessen → 92 Produkte / 772 Varianten live
+  korrigiert**, jedes einzelne an der Kundenseite nachgemessen (22/22 · 10/10 · 19/19 · 14/14 ·
+  10/10 · 27/27).
+
 **📌 2026-09-20, zweite Runde (⭐ DER FÜHRENDE STERN WIRD WEGGEWORFEN — es sind 123 Helme, nicht 32):**
 - **Auftrag:** Dauerauftrag („weiter"). Voller Bericht: **`dropship/LERNEN-STERNCHEN-FALLE-2026-09-20.md`**.
 - **🔴 HAUPTFUND, mit einer einzigen Abfrage belegt: `title:*wort*` sucht nur WORTANFÄNGE — der
