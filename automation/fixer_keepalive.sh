@@ -508,6 +508,16 @@ while true; do
         >> /tmp/pod_editor_qa.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start pod_editor_qa (täglich)"
   fi
+  # 🔎 SOCIAL-QUALITAET (23.09.2026): Der Waechter las am 23.09. 143 FB-Beitraege und fand 120 Loeschfaelle — aber
+  # er stand in keiner Startliste. Einmal am Tag, NUR LESEN (Bericht dropship/SOCIAL-QUALITAET.md); Loeschen bleibt
+  # ein Betreiber-Ja je Runde (automation/fb_qualitaet_loeschen.mjs). Medien-Cache in /tmp, ~10 min.
+  if [ ! -f /tmp/social_qualitaet_$(date -u +%F) ] && [ -f "$REPO/automation/social_qualitaet_wache.mjs" ]; then
+    touch "/tmp/social_qualitaet_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_social_qualitaet.lock; flock -n 9 || exit 0; timeout 2400 /opt/node22/bin/node automation/social_qualitaet_wache.mjs | tail -3" \
+        >> /tmp/social_qualitaet.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start social_qualitaet_wache (täglich, nur lesen)"
+  fi
   # 🎬 LIEFERANTENVIDEOS NACHHOLEN — bewusst in kleinen Schlucken. Von 34'824 aktiven
   # Produkten zeigen nur 144 ein Video, und CJ hat für die allermeisten auch keines: von 15
   # geprüften Kandidaten kam bei allen 15 `productVideo: null` zurück. Ein Lauf über den
