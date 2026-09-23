@@ -48,6 +48,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 # automation/tiktok_biolink.py. Faellt die Abfrage aus, greift die
 # vorsichtige Fassung ohne die Zusage.
 from tiktok_biolink import cta_zeile, cta_slide
+from eimer_etikette import nachlauf
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HIER)
@@ -111,7 +112,13 @@ def gql(q, v=None):
     p = "/tmp/_ttk.json"
     with open(p, "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
-    for versuch in range(8):
+    # ⚠️ 23.09.2026 (Verbesserungsrunde 6): Hier zaehlte jede Drosselung als Fehlversuch mit festen 6 s —
+    # 8 × 6 s = 48 s. Um 02:11 starten die Tages-Waechter gleichzeitig, der Eimer war laenger leer, und der
+    # Bauer starb im Top-Modus (die Abfrage selbst kostet 99 Punkte). Derselbe Baustein speist tiktok_meisterwerk
+    # und seit heute die Instagram-Karussells. Jetzt wie google_kanal_saeubern (21.09.): Drosseln zaehlen nicht,
+    # gewartet wird so lange, wie throttleStatus sagt; nach jeder Antwort die Eimer-Etikette.
+    versuche, drossel, grund = 0, 0, "kein Versuch"
+    while versuche < 8:
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2026-01/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
@@ -120,13 +127,19 @@ def gql(q, v=None):
         try:
             d = json.loads(r.stdout)
         except Exception:
-            time.sleep(5); continue
-        # Eine Drosselung ist kein Abbruchgrund — sie sagt nur, wie lange zu warten ist.
+            versuche += 1; grund = "kein JSON"; time.sleep(5); continue
         fehler = json.dumps(d.get("errors") or "")
-        if "Throttled" in fehler or "THROTTLED" in fehler:
-            time.sleep(6); continue
+        if ("Throttled" in fehler or "THROTTLED" in fehler) and drossel < 40:
+            drossel += 1
+            k = (d.get("extensions") or {}).get("cost") or {}; t = k.get("throttleStatus") or {}
+            fehlt = float(k.get("requestedQueryCost") or 100) - float(t.get("currentlyAvailable") or 0)
+            rate = float(t.get("restoreRate") or 0)
+            time.sleep(min(30.0, fehlt / rate + 1.0) if (fehlt > 0 and rate > 0) else 12.0)
+            continue
         if d.get("data") is not None:
+            nachlauf(d)
             return d
+        versuche += 1; grund = fehler[:200]
         time.sleep(5)
     # ⚠️ 17.09.2026: Hier stand `return {}` — dieselbe stille Null wie in 15
     # Geschwister-Wächtern, nur ohne verschluckten except-Zweig. Der Aufrufer
@@ -136,7 +149,7 @@ def gql(q, v=None):
     raise RuntimeError(
         "Shopify hat auf keinen Versuch mit Daten geantwortet. FRÜHER gab diese"
         " Funktion hier ein leeres Ergebnis zurück und der Aufrufer meldete «0» —"
-        " das ist keine Messung, sondern ein Ausfall.")
+        " das ist keine Messung, sondern ein Ausfall. Letzter Grund: " + grund)
 
 
 def hole(handle):
