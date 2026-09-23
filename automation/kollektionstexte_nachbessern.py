@@ -243,6 +243,9 @@ PLAN = [
     ("camping-licht-outdoor", "html", "teil",
      "praktische Stirnlampen wie die Varta Sports H30R Pro und",
      "praktische Stirnlampen mit USB-Ladung und"),
+    ("spielzeug-pluesch", "html", "teil",
+     "<p>Entdecke hier knuddelige Plüsch- und Kuscheltiere, die dein Herz höherschlagen lassen! Von Famosa Thready Bären über Bandai Plüschtiere bis hin zu musikalischen Baby-Flaschen und Fisher-Price Laugh and Learn Puppys findest du hier den perfekten Begleiter. Auch Monchhichis warten darauf, von dir adoptiert zu werden.</p>",
+     "<p>Entdecke hier knuddelige Plüsch- und Kuscheltiere: Bären, Hunde und Katzen, Plüschtier-Kissen, Plüsch-Rucksäcke für Kinder und waschbare Kuscheltiere – hier findest du den perfekten Begleiter.</p>"),
 ]
 
 PRODUKT_HERREN_WEG = [("gid://shopify/Product/15453601890689", "Silberarmband")]
