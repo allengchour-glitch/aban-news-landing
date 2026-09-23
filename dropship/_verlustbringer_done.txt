@@ -555,3 +555,4 @@ gid://shopify/Product/15452683927937	2026-09-23T07:09Z	schon-DRAFT	17.90	38.51	A
 gid://shopify/Product/15453779952001	2026-09-23T07:09Z	schon-DRAFT	29.90	50.48	Mehrstöckiger Bambus-Blumenständer
 gid://shopify/Product/15448924946817	2026-09-23T07:09Z	schon-DRAFT	15.90	36.46	Samt-Sofakissenbezug für Herbst und Winter
 gid://shopify/Product/15505605886337	2026-09-23T07:09Z	schon-DRAFT	37.90	58.43	Japanischer Tischgrill mit Alkoholkocher
+gid://shopify/Product/15448939168129	2026-09-23T07:09Z	schon-DRAFT	15.90	36.41	Kratzbrett und Katzenhöhle – TV-Design
