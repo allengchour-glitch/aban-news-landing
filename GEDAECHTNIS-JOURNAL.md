@@ -807,6 +807,13 @@ Semrush-Zeile hatte keine Rohdatei (Aufruf aus der Hauptsession, nie abgelegt). 
 gedrafteten Google-Landeseiten (Dry Bag 82, Rizinus-Wickel 55 Sitzungen) für 404 — beide tragen einen 301 auf ein aktives Ersatzprodukt.
 **Lehre: Jede fremde Zahl braucht Marke UND Rohdatei — der Prüfer konnte alles nachmessen, was eine Rohdatei hatte, und musste die eine ohne
 (Semrush) als unbelegt streichen; eine Negativliste für die Schweiz beginnt bei ricardo und tutti; und DRAFT ist erst 404, wenn kein Redirect steht.**
+(4) Nachtrag 00:05 UTC — C3 umgesetzt: `automation/keyword_kollektionen.py` (DRY-Standard, Textprüfungen Eszett/Sie/CH-Lager/65/155/USP,
+Kanäle zur Laufzeit von `katzenwelt` gelesen) legte sechs Smart-Collections an und publizierte sie in 6 Kanälen: midikleider 142 aktiv,
+vorhaenge 138 (CONTAINS Vorhang ODER Gardine — der tokenweise Titelzähler sagte 58, der Substring-Treffer ist mehr als doppelt so gross),
+wanddeko 75, kratzbaeume 47, hundebetten 24, haengematten 18 (NOT_CONTAINS Katze/Yoga nach Sichtprobe: Katzen-Hängematte und
+Yoga-Hängemattenstoff standen neben Garten-Hängematten). Sichtprobe je Kollektion: 0 Titel ohne Stichwort. `kollektion_doppel.py` DRY: 0 Doppel
+bei 526 Kollektionen. Offen: Menü-Platz und interne Links aus den C2-Ratgebern.
+
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor

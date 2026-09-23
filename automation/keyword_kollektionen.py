@@ -59,7 +59,9 @@ PLAN = [
          seo_t="Wanddeko kaufen | LuxeStyle Schweiz",
          seo_d="Wanddeko online kaufen: Wandbilder, Wandtattoos und Wandbehänge für Wohnzimmer, Flur und Schlafzimmer bei "
                "LuxeStyle Schweiz. Gratis-Versand ab CHF 50."),
-    dict(handle="haengematten", titel="Hängematten", regeln=["Hängematte"],
+    # nicht=[…]: TITLE NOT_CONTAINS, nur bei EINER Einschluss-Regel (UND-Menge) — Katzen-Hängematte und Yoga-Hängemattenstoff
+    # standen in der ersten Lesung (24.09.) neben Garten-Hängematten.
+    dict(handle="haengematten", titel="Hängematten", regeln=["Hängematte"], nicht=["Katze", "Yoga"],
          text="<p>Hängematten für Garten, Balkon und Reise: leichte Reise-Hängematten zum Aufhängen zwischen zwei Bäumen und "
               "Hängematten mit Gestell. Belastbarkeit und Masse stehen auf jeder Produktseite.</p>",
          seo_t="Hängematte kaufen | LuxeStyle Schweiz",
@@ -101,9 +103,12 @@ def kanaele():
 
 
 def anlegen(k, pubs):
-    c = gql('query($h:String!){ collectionByHandle(handle:$h){ id title descriptionHtml seo{title description} } }', {"h": k["handle"]})["collectionByHandle"]
+    c = gql('query($h:String!){ collectionByHandle(handle:$h){ id title descriptionHtml seo{title description} ruleSet{appliedDisjunctively rules{column relation condition}} } }', {"h": k["handle"]})["collectionByHandle"]
+    nicht = k.get("nicht") or []
+    assert not (nicht and len(k["regeln"]) > 1), f"{k['handle']}: NOT_CONTAINS geht nur mit einer Einschluss-Regel (UND)"
     ruleset = {"appliedDisjunctively": len(k["regeln"]) > 1,
-               "rules": [{"column": "TITLE", "relation": "CONTAINS", "condition": w} for w in k["regeln"]]}
+               "rules": [{"column": "TITLE", "relation": "CONTAINS", "condition": w} for w in k["regeln"]]
+                        + [{"column": "TITLE", "relation": "NOT_CONTAINS", "condition": w} for w in nicht]}
     if not c:
         r = gql('mutation($i:CollectionInput!){ collectionCreate(input:$i){ collection{id} userErrors{field message} } }',
                 {"i": {"title": k["titel"], "handle": k["handle"], "descriptionHtml": k["text"] + FUSS, "sortOrder": "BEST_SELLING",
@@ -121,6 +126,10 @@ def anlegen(k, pubs):
             upd["seo"] = {"title": k["seo_t"], "description": k["seo_d"]}
         if (c.get("descriptionHtml") or "") != k["text"] + FUSS:
             upd["descriptionHtml"] = k["text"] + FUSS
+        live = c.get("ruleSet") or {}
+        if bool(live.get("appliedDisjunctively")) != ruleset["appliedDisjunctively"] or \
+           [(r["column"], r["relation"], r["condition"]) for r in live.get("rules", [])] != [(r["column"], r["relation"], r["condition"]) for r in ruleset["rules"]]:
+            upd["ruleSet"] = ruleset
         if upd:
             r = gql('mutation($i:CollectionInput!){ collectionUpdate(input:$i){ userErrors{field message} } }', {"i": dict(upd, id=cid)})["collectionUpdate"]
             if r["userErrors"]:
