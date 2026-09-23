@@ -343,7 +343,18 @@ while true; do
     # `handle_messversprechen` — waehrend der Grind taeglich hunderte Produkte anlegte.
     # FERTIG heisst «zu DIESEM Zeitpunkt nichts zu tun», nicht «fuer immer erledigt».
     # Es gilt deshalb nur noch 20 Stunden; danach ist der Waechter wieder faellig.
-    if grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null; then
+    # ⚠️ 23.09.2026 (Verbesserungs-Audit): Hier stand `grep -q "^FERTIG"` über das GANZE kumulative Log. Ein Lauf,
+    # der abbrach (ohne Schlusszeile), blieb dann bis zu 20 h gesperrt, weil irgendein FERTIG von vorgestern im Log
+    # stand — gemessen: versand_jenachland 894 von 994 offen, ohne_lieferantenref_guard ab Produkt 20'000 ungeprüft.
+    # Massgeblich ist nur, womit der LETZTE Lauf endete.
+    # ZOMBIE-NACHLAUF: Der Lieferblock «je nach Land … USA» kommt täglich um ~04:07 UTC zurück (Schreiber unbenannt,
+    # Journal Nachtrag 38). versand_jenachland läuft deshalb zusätzlich einmal täglich nach 04:25 UTC, egal ob FERTIG.
+    ZN=0
+    if [ "$L" = versand_jenachland ]; then
+      HM=$(date -u +%H%M); ZS=$(cat /tmp/_start_versand_jenachland 2>/dev/null || echo 0)
+      [ "$HM" -ge 425 ] 2>/dev/null && [ "$HM" -lt 700 ] 2>/dev/null && [ "$ZS" -lt "$(date -u -d 'today 04:25' +%s)" ] && ZN=1
+    fi
+    if [ "$ZN" = 0 ] && tail -n 3 "/tmp/$L.log" 2>/dev/null | grep -q "^FERTIG"; then
       F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
       [ "$F_ALTER" -lt 72000 ] && continue
     fi
@@ -456,7 +467,7 @@ while true; do
     # nur die Einmal-Importe (schulstart, frosch_maske) bleiben nach FERTIG aus.
     case "$N" in
       schulstart_import|frosch_maske_import) grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue ;;
-      *) if grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
+      *) if tail -n 3 "/tmp/$N.log" 2>/dev/null | grep -q "^FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
     esac
     pause_kuehlt "$N" && continue
     dreht_sich_im_kreis "$N" && continue

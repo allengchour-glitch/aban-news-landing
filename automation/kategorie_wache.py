@@ -78,12 +78,64 @@ TABELLE = {
     "Basteln & DIY": "ae-2-1", "Musikinstrumente": "ae-2-8", "Spielzeug & Spiele": "tg-5", "Spielzeug": "tg-5",
     "Auto-Zubehör": "vp-1", "Büro": "os", "Baby": "bt", "Partydeko": "ae-3-2",
     # Nachtrag 23.09. nach dem ersten Vollscan (4'181 unbekannt): IDs per taxonomy.categories(search:) gemessen.
-    "Kostüme & Verkleidung": "aa-3-3", "Werkzeug & Heimwerken": "ha-15", "Trend-Gadget": "el", "Gaming-Zubehör": "el-18",
+    "Kostüme & Verkleidung": "aa-3-3", "Werkzeug & Heimwerken": "ha-15", "Gaming-Zubehör": "el-18",
     "Partydeko & Ballone": "ae-3-2", "Raucherzubehör": "hg-19", "3D-Druck": "el-13-2", "Süsswaren & Esswaren": "fb-2-3-1",
     "Haushalt & Wohnen": "hg-10", "Home & Living": "hg-3", "Wohnen & Dekoration": "hg-3", "Aufbewahrung & Ordnung": "hg-10-16",
     "Bügeltransfer": "ae-2-1", "Geschenkset": "hg-3",
     # bewusst NICHT geraten: "Trend-Produkt", "Kinder", "Schweizer Editionen", "Selbst gestalten", "Anime" → Bericht.
 }
+
+# 23.09. Verbesserungs-Audit (Gegenpruefung bestaetigt): SAMMEL-Typen sind kein Warenbegriff. «Trend-Gadget» stand
+# pauschal auf Electronics (818 Stueck, darunter Pluesch-Elefant, Yogamatte, Kinderkleid, Hundeleine), «Spass-Elektronik»
+# auf Electronics (554 davon Klemmbausteine/3D-Holzpuzzles), «Aufbewahrung & Organizer» auf Storage (1'271 ohne
+# Ordnungswort: Wasserkocher, Saugroboter, Barhocker). Fuer diese Typen entscheidet jetzt der TITEL; passt keine
+# Regel, wird NICHT geraten (Produkt bleibt ohne Kategorie und steht im Bericht).
+SAMMELTYPEN = {"Trend-Gadget", "Spass-Elektronik", "Gadget", "Gadgets", "Aufbewahrung & Organizer", "Aufbewahrung",
+               "Aufbewahrung & Ordnung", "Geschenkset", "Haushalt & Wohnen", "Home & Living", "Wohnen & Dekoration",
+               "Sommer-Gadget", "Outdoor & Gadget", "Tech-Gadget", "Haushalt", "Haushalt & Hobby"}
+import re as _re
+TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ Schuh, Armbanduhr ≠ Armband, Schale ≠ Schal
+    (r"\b(rc|ferngesteuert\w*|drohne\w*|quadcopter)\b", "el"),
+    (r"baustein|bausatz|baukasten|bauklötz|klemmbaustein|modellbau", "tg-5-7"),
+    (r"puzzle", "tg-4"),
+    (r"plüsch|kuscheltier|stofftier", "tg-5-8-11"),
+    (r"aufbewahrung|organizer|\bboxen?\b|box\b|kästchen|(?<!bau)(?<!werkzeug)kasten\b|bügel\b|\bkorb|körbe|schublade|behälter|kiste|\bdosen?\b|staufach|\btray\b|beutel", "hg-10-16"),
+    (r"(?<![a-zäöü])(?:armband|damen|herren|quarz|smart|taschen|kinder)?uhr\b|armbanduhr", "aa-6-11"),
+    (r"perücke", "aa-2-14-12"),
+    (r"kostüm|verkleidung", "aa-3-3"),
+    (r"(?<!hand)(schuh|sandale|stiefel|sneaker|slipper|pantoffel)", "aa-8"),
+    (r"\b(kleid|shirt|t-shirt|hose|pullover|hoodie|jacke|bluse|rock|bikini|badeanzug|socken|leggings|jumpsuit|strickjacke|mantel|weste|pyjama)\b|kleid\b|hemd\b", "aa-1"),
+    (r"halskette|ohrring|ohrstecker|(?<!uhr)armband(?!uhr)|\bring\b|schmuck|anhänger\b|brosche", "aa-6"),
+    (r"rucksack", "lb-1"),
+    (r"(hand|umhänge|reise|sport|kosmetik|kultur)tasche", "lb"),
+    (r"\b(hund|katze|haustier|welpe)\w*|hundeleine|katzen|futternapf|kratzbaum", "ap-2"),
+    (r"yoga|fitness|hantel|widerstandsband|springseil|trainingsgerät|gymnastik", "sg-2"),
+    (r"lippenstift|lidschatten|mascara|blush|make-?up|puder|eyeliner|nagellack", "hb-3-2-6"),
+    (r"vase\b|vasen\b", "hg-3-67"),
+    (r"handtuch|badetuch", "hg-15-4-1"),
+    (r"wasserkocher|pfanne|kochtopf|\btopf\b|messbecher|schneidebrett|küchen\w*", "hg-11"),
+    (r"lampe|leuchte|nachtlicht|lichterkette|led-licht|\bled\b", "hg-13"),
+    (r"\b(usb|akku|bluetooth|kopfhörer|lautsprecher|powerbank|ladegerät|ladekabel|kabel|smart\w*|kamera|projektor|beamer|mikrofon|adapter)\b", "el"),
+    (r"aufbewahrung|organizer|\bbox\b|korb|regal|halter\b|ablage|behälter|kiste|schublade|dose\b|haken\b|ordnung", "hg-10-16"),
+]
+_TR = [(_re.compile(m, _re.I), z) for m, z in TITELREGELN]
+
+
+# Ohne passende Titelregel: bisheriger Typ-Wert, AUSSER bei «Trend-Gadget» — dort gibt es keinen Warenbegriff (None =
+# nicht raten). Gemessen 23.09.: Spass-Elektronik ohne Bau-/Puzzlewort ist tatsaechlich Elektronik-Spielkram,
+# Aufbewahrung ohne Regeltreffer ist meist doch Ordnung (Kabel-Tray, Kompressionsbeutel, Auto-Staufach).
+SAMMEL_FALLBACK = {t: TABELLE.get(t) for t in SAMMELTYPEN}
+SAMMEL_FALLBACK["Trend-Gadget"] = None
+
+
+def ziel_fuer(typ, titel):
+    """Taxonomie-ID fuer ein Produkt: Sammeltyp → Titelregel, sonst Fallback; fester Typ → TABELLE."""
+    if typ in SAMMELTYPEN:
+        for rx, z in _TR:
+            if rx.search(titel or ""):
+                return z
+        return SAMMEL_FALLBACK.get(typ)
+    return TABELLE.get(typ)
 
 
 def gql(q, v=None):
@@ -107,7 +159,7 @@ def gql(q, v=None):
 
 def ids_pruefen():
     """Kanarienvogel: jede Tabellen-ID muss als TaxonomyCategory existieren, sonst kein einziger Schreibvorgang."""
-    ids = sorted(set(TABELLE.values()))
+    ids = sorted(set(TABELLE.values()) | {z for _, z in TITELREGELN})
     d = gql("query($ids:[ID!]!){ nodes(ids:$ids){ ... on TaxonomyCategory { id fullName } } }", {"ids": [TC + i for i in ids]})
     namen = {}
     for i, n in zip(ids, d["data"]["nodes"]):
@@ -137,7 +189,7 @@ def main():
     offen = []                      # (id, handle, typ, ziel)
     unbekannt = collections.Counter()
     while True:
-        d = gql("query($c:String){ products(first:250, after:$c, query:\"status:active AND -category_id:*\"){ pageInfo{hasNextPage endCursor} nodes{ id handle productType category{id} } } }", {"c": cursor})
+        d = gql("query($c:String){ products(first:250, after:$c, query:\"status:active AND -category_id:*\"){ pageInfo{hasNextPage endCursor} nodes{ id handle title productType category{id} } } }", {"c": cursor})
         pg = d["data"]["products"]
         for p in pg["nodes"]:
             gescannt += 1
@@ -145,7 +197,7 @@ def main():
                 continue
             ohne += 1
             typ = (p.get("productType") or "").strip()
-            ziel = TABELLE.get(typ)
+            ziel = ziel_fuer(typ, p.get("title"))
             if not ziel:
                 unbekannt[typ or "-"] += 1; continue
             offen.append((p["id"], p["handle"], typ, ziel))
@@ -206,5 +258,54 @@ def main():
     print(f"FERTIG: gesetzt {gesetzt} · offen {rest} · Fehler {len(fehler)} · unbekannte Typen {dict(unbekannt.most_common(6))} · {bilanz()}")
 
 
+
+
+
+def korrektur():
+    """KORREKTUR=1 (23.09.): alle aktiven Produkte der SAMMELTYPEN neu nach Titel einordnen. Weicht die gesetzte
+    Kategorie vom Titel-Ziel ab → Ziel setzen; gibt es kein Ziel, aber eine Kategorie aus dem alten Pauschal-Mapping
+    (el / hg-10-16 / hg-10 / hg-3) → leeren (falsch ist schlimmer als leer: Google liest die Kategorie).
+    DRY (ohne SCHARF=1) zeigt nur Zählung und Beispiele. Ledger: dropship/_kategorie_korrektur.txt."""
+    namen = ids_pruefen()
+    PAUSCHAL = {"el", "hg-10-16", "hg-10", "hg-3"}
+    zu_tun = []
+    for typ in sorted(SAMMELTYPEN):
+        cur = None
+        while True:
+            d = gql("query($c:String,$q:String){ products(first:250, after:$c, query:$q){ pageInfo{hasNextPage endCursor} "
+                    "nodes{ id handle title category{id} } } }", {"c": cur, "q": f'status:active AND product_type:"{typ}"'})
+            pg = d["data"]["products"]
+            for p in pg["nodes"]:
+                ist = ((p.get("category") or {}).get("id") or "").replace(TC, "")
+                if ist and ist not in PAUSCHAL:
+                    continue          # eine spezifische Kategorie stammt nicht aus dem Pauschal-Mapping → nie anfassen
+                neu = ziel_fuer(typ, p["title"])
+                if (neu or "") != ist and (neu or ist):
+                    zu_tun.append((p["id"], p["handle"], typ, ist, neu, p["title"]))
+            if not pg["pageInfo"]["hasNextPage"]:
+                break
+            cur = pg["pageInfo"]["endCursor"]
+    zc = collections.Counter((z[3] or "-") + "→" + (z[4] or "LEER") for z in zu_tun)
+    print(f"KORREKTUR: {len(zu_tun)} Produkte · {dict(zc.most_common(12))}")
+    for z in zu_tun[:25]:
+        print(f"   {z[2][:18]:18s} {z[3] or '-':>9s} → {z[4] or 'LEER':9s} | {z[5][:60]}")
+    if not SCHARF:
+        return
+    ok = 0
+    with open(os.path.join(ROOT, "dropship", "_kategorie_korrektur.txt"), "a", encoding="utf-8") as lf:
+        for i in range(0, len(zu_tun), 25):
+            chunk = zu_tun[i:i + 25]
+            teile = [f'm{j}: productUpdate(product:{{id:"{z[0]}", category:' + (f'"{TC}{z[4]}"' if z[4] else "null") +
+                     '}){ product{ category{id} } userErrors{ message } }' for j, z in enumerate(chunk)]
+            d = gql("mutation { " + " ".join(teile) + " }")
+            for j, z in enumerate(chunk):
+                r = (d.get("data") or {}).get(f"m{j}") or {}
+                ist = ((r.get("product") or {}).get("category") or {}).get("id") or ""
+                if not r.get("userErrors") and ist == (TC + z[4] if z[4] else ""):
+                    ok += 1
+                    lf.write(f"{z[1]}\t{z[3]}\t{z[4] or 'LEER'}\t{z[2]}\t{datetime.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n")
+    print(f"KORREKTUR FERTIG: {ok} von {len(zu_tun)} rückgelesen · {bilanz()}")
+
+
 if __name__ == "__main__":
-    main()
+    korrektur() if os.environ.get("KORREKTUR") == "1" else main()
