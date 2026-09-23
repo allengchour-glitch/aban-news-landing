@@ -14,3 +14,17 @@ gid://shopify/Product/15450303136129	2026-09-23T00:14Z	hand-draft	14.90	25.07	Ki
 gid://shopify/Product/15496330150273	2026-09-23T00:14Z	hand-draft	16.90	49.32	Atemschutzmasken-Set mit Filtern
 gid://shopify/Product/15452677210497	2026-09-23T00:15Z	draft	77.90	332.73	Faltbarer Aufbewahrungs-Schrank
 gid://shopify/Product/15503086223745	2026-09-23T00:15Z	draft	53.90	307.33	Deckenventilator mit Beleuchtung
+gid://shopify/Product/15496325235073	2026-09-23T01:09Z	draft	46.90	288.19	Photon Rejuvenation Lichttherapie Gerät
+gid://shopify/Product/15450147127681	2026-09-23T01:09Z	draft	55.90	276.72	Holzfiguren Lotus Buddha
+gid://shopify/Product/15502258045313	2026-09-23T01:09Z	draft	129.90	346.39	ET432 Handheld LCR Digitalmessbrücke
+gid://shopify/Product/15495717290369	2026-09-23T01:09Z	draft	51.90	265.42	Crossing Machine Ferngesteuertes Spielzeug
+gid://shopify/Product/15502471496065	2026-09-23T01:09Z	draft	56.90	266.91	Handlicher Einkaufskorb mit Rollen
+gid://shopify/Product/15448939266433	2026-09-23T01:09Z	draft	41.90	250.41	Mehrstufiger minimalistischer Katzenbaum
+gid://shopify/Product/15448939200897	2026-09-23T01:09Z	draft	40.90	241.81	Stilvoller All-in-One Kratzbaum für Katzen
+gid://shopify/Product/15448938676609	2026-09-23T01:09Z	draft	35.90	229.63	Kratzbaum mit robusten Liegeflächen
+gid://shopify/Product/15453811310977	2026-09-23T01:09Z	draft	37.90	217.72	Aufklappbarer Schminktischspiegel mit Licht
+gid://shopify/Product/15503947727233	2026-09-23T01:09Z	draft	15.90	189.60	Nähfaden für Nähmaschinen, 3000 m
+gid://shopify/Product/15500972458369	2026-09-23T01:09Z	draft	44.90	217.27	Hexagonale Kurzhanteln für Zuhause
+gid://shopify/Product/15500402983297	2026-09-23T01:09Z	draft	16.90	188.80	Schmuck-Organizer Pfauenblau Samt
+gid://shopify/Product/15500542476673	2026-09-23T01:09Z	draft	17.90	186.09	Hundeball-Werfer
+gid://shopify/Product/15502250836353	2026-09-23T01:09Z	draft	16.90	179.64	Intelligentes Schlafhilfe-Gerät mit Pulsfunktion
