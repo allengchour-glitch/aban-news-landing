@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **27'009**
-- Optionen mit englischen Werten (Kandidaten): 3'524
-- Optionen übersetzt: **1'904** · Werte übersetzt: **12'488**
+- Produkte gesehen: **27'608**
+- Optionen mit englischen Werten (Kandidaten): 3'546
+- Optionen übersetzt: **1'919** · Werte übersetzt: **12'572**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 12'050
+- Werte mit unbekanntem Wort (unverändert): 12'091
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 55
 - übersprungen «kollision-nach-uebersetzung»: 35
@@ -140,5 +140,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`light` 435, `inner` 369, `color` 309, `shell` 162, `degrees` 159, `core` 137, `surface` 124, `powder` 111, `no` 110, `diamond` 108, `high` 101, `skin` 98, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `belt` 79, `four` 78, `rope` 70, `dark` 69, `base` 69, `dual` 69, `petal` 68, `chain` 67, `half` 63, `feet` 62, `size` 62, `mother` 61, `tea` 60, `of` 60, `code` 59, `buckle` 58, `net` 57, `plush` 56, `one` 55, `electric` 55, `little` 54, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `night` 48, `ice` 48, `suit` 48, `space` 48, `hat` 47, `cloud` 47, `star` 46, `cat` 46, `sheet` 46, `for` 46, `about` 46, `lamb` 46, `warped` 46
+`light` 435, `inner` 369, `color` 310, `shell` 162, `degrees` 159, `core` 137, `surface` 124, `powder` 111, `no` 110, `diamond` 108, `high` 101, `skin` 98, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `french` 84, `belt` 81, `opp` 81, `four` 78, `rope` 70, `dark` 69, `base` 69, `dual` 69, `petal` 68, `chain` 67, `half` 63, `feet` 62, `size` 62, `mother` 61, `tea` 60, `of` 60, `code` 59, `buckle` 58, `net` 57, `plush` 56, `one` 55, `electric` 55, `little` 54, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `night` 48, `ice` 48, `suit` 48, `space` 48, `hat` 47, `cloud` 47, `star` 46, `cat` 46, `sheet` 46, `for` 46, `about` 46, `lamb` 46, `warped` 46
 
