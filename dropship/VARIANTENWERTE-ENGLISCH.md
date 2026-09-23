@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:27 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:28 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **36'052**
-- Optionen mit englischen Werten (Kandidaten): 3'967
-- Optionen übersetzt: **2'199** · Werte übersetzt: **14'249**
+- Produkte gesehen: **36'649**
+- Optionen mit englischen Werten (Kandidaten): 3'998
+- Optionen übersetzt: **2'219** · Werte übersetzt: **14'374**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'218
+- Werte mit unbekanntem Wort (unverändert): 13'285
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 60
 - übersprungen «kollision-nach-uebersetzung»: 37
@@ -146,5 +146,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 546, `light` 442, `color` 342, `shell` 162, `degrees` 159, `size` 140, `core` 137, `surface` 126, `powder` 116, `no` 111, `diamond` 108, `to` 102, `skin` 101, `high` 101, `three` 97, `bag` 93, `shoes` 93, `belt` 92, `rain` 88, `case` 87, `french` 84, `four` 82, `opp` 81, `code` 79, `yards` 79, `rope` 75, `spring` 72, `dual` 71, `base` 70, `dark` 69, `petal` 68, `chain` 67, `autumn` 66, `dinosaur` 66, `half` 66, `buckle` 63, `net` 63, `feet` 62, `mother` 61, `tea` 60, `of` 60, `cherry` 59, `little` 59, `bottom` 58, `one` 56, `plush` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49, `for` 49, `suit` 48, `space` 48
+`inner` 546, `light` 443, `color` 344, `shell` 162, `degrees` 159, `size` 142, `core` 137, `surface` 126, `powder` 121, `no` 111, `diamond` 108, `to` 102, `skin` 101, `high` 101, `three` 97, `bag` 93, `shoes` 93, `belt` 92, `rain` 88, `case` 87, `four` 84, `french` 84, `opp` 81, `dark` 80, `code` 79, `yards` 79, `rope` 75, `spring` 72, `dual` 71, `base` 70, `petal` 68, `chain` 67, `autumn` 66, `dinosaur` 66, `half` 66, `little` 64, `cloth` 63, `buckle` 63, `net` 63, `feet` 62, `mother` 61, `tea` 60, `cherry` 60, `of` 60, `bottom` 60, `one` 56, `plush` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49, `for` 49, `suit` 48
 

@@ -2487,3 +2487,14 @@ gid://shopify/Product/15502600667521	Farbe	1
 gid://shopify/Product/15502605910401	Farbe	26
 gid://shopify/Product/15502612726145	Farbe	6
 gid://shopify/Product/15502691565953	Farbe	40
+gid://shopify/Product/15502692188545	Farbe	1
+gid://shopify/Product/15502907539841	Farbe	2
+gid://shopify/Product/15502959772033	Farbe	1
+gid://shopify/Product/15503043297665	Farbe	1
+gid://shopify/Product/15503043559809	Farbe	6
+gid://shopify/Product/15503083405697	Farbe	5
+gid://shopify/Product/15503084421505	Farbe	1
+gid://shopify/Product/15503089926529	Farbe	1
+gid://shopify/Product/15503090221441	Farbe	2
+gid://shopify/Product/15503113126273	Farbe	1
+gid://shopify/Product/15503113879937	Farbe	1
