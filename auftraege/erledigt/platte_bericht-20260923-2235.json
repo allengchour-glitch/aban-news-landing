@@ -1,0 +1,29 @@
+{
+  "id": "platte_bericht-20260923-2235",
+  "typ": "wartung",
+  "aktion": "platte_bericht",
+  "warum": "Ausgabe des Aufraeumlaufs luxe-platte (gestartet 22:07:50 UTC) lesen: Timer wieder an? gc-Ergebnis je Klon? Platte nachher?",
+  "stand": "ok",
+  "begonnen": "2026-09-23T22:13:08.678Z",
+  "dauer_s": 0,
+  "ergebnis": {
+    "aktion": "platte_bericht",
+    "was": "Ausgabe des letzten Aufraeumlaufs (luxe-platte) lesen",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "systemctl is-active luxe-platte.service",
+        "fehler": "Command failed: systemctl is-active luxe-platte.service",
+        "ausgabe": "inactive\n"
+      },
+      {
+        "befehl": "journalctl -u luxe-platte.service --no-pager -n 80 -o cat",
+        "ausgabe": "Started luxe-platte.service - [systemd-run] /bin/bash /opt/luxe-agent/repo/server/platte-schlank.sh.\n\u001b[1;36m▶ 1) Bericht\u001b[0m\n/dev/sda1        38G   25G   11G  70% /\n   abannews-deploy.service inactive dead\n   luxe-agent.service activating start\n   luxe-platte.service active running\n   luxe-waechter.service activating start\n   abannews-deploy.timer active waiting\n   luxe-agent.timer active running\n   luxe-waechter.timer active running\n   /opt/luxe/repo WIRD benutzt von:\n     /var/spool/cron/crontabs/root\n\u001b[1;36m▶ 2) Timer anhalten, laufende Durchläufe ausklingen lassen (max. 10 min)\u001b[0m\n   warte auf: luxe-waechter\n\u001b[1;36m▶ 2b) Halbfertige Packdateien löschen (tmp_pack_*/tmp_idx_* — Reste abgebrochener fetch/gc bei voller Platte)\u001b[0m\n/dev/sda1        38G   25G   11G  70% /\n\u001b[1;36m▶ 3) Fremde Zweige aus den Klonen, gc\u001b[0m\n   /opt/abannews/.git: 2.4G → 2.4G\n   /opt/luxe-waechter/repo/.git: 3.1G → 3.1G\n\u001b[1;36m▶ 4) Agent-Klon schlank (depth 1 + sparse)\u001b[0m\n   übersprungen (vom Agenten gestartet — er läuft in diesem Klon)\n\u001b[1;36m▶ 5) Timer wieder an (nur die vorher aktiven)\u001b[0m\n   Wed 2026-09-23 22:12:45 UTC      3min 14s Wed 2026-09-23 22:07:45 UTC 1min 45s ago luxe-agent.timer               luxe-agent.service\n   Wed 2026-09-23 22:17:45 UTC          8min Wed 2026-09-23 22:07:45 UTC 1min 45s ago luxe-waechter.timer            luxe-waechter.service\n   -                                       - Wed 2026-09-23 22:09:31 UTC     21ms ago abannews-deploy.timer          abannews-deploy.service\n\u001b[1;36m▶ 6) Platte nachher\u001b[0m\n/dev/sda1        38G   25G   11G  70% /\n   6.9G\t/opt/luxe\n   6.7G\t/opt/abannews\n   5.8G\t/opt/luxe-waechter\n   658M\t/opt/pw-browsers\n   369M\t/opt/luxe-agent\n   20M\t/opt/jarvis\n   8.0K\t/opt/node22\n   Hinweis: /opt/luxe/repo (≈7 GB) wird benutzt — bleibt.\nluxe-platte.service: Deactivated successfully.\nluxe-platte.service: Consumed 35.834s CPU time over 1min 42.204s wall clock time, 2.7G memory peak.\n"
+      },
+      {
+        "befehl": "df -h /",
+        "ausgabe": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        38G   25G   11G  70% /\n"
+      }
+    ]
+  }
+}
