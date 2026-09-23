@@ -13,6 +13,12 @@ Was es tut (idempotent, täglich aus fixer_keepalive.sh):
      Ankuendigungsband) wird EINMAL in eine Wechsel-Reihe umgebaut (Klon von pl_querbeet) — Startseite ist am
      25-Sektionen-Limit, neue Reihen gehen nur durch Umwidmen.
 
+  5. SAISON-FESTE Reihe (23.09.2026, Betreiber «webseite auch herbstsachen und toller machen»): die alte
+     Wechsel-Reihe budget_unter25 (Rest der Aktion «unter CHF 25») heisst jetzt pl_herbst, steht EINMALIG
+     direkt nach den Bestsellern und zeigt vom 22.09. bis 30.11. fest «🍂 Herbst-Favoriten»
+     (automation/herbst_kuratieren.py). In diesem Fenster dreht die Rotation sie NICHT; danach kehrt sie
+     von selbst in die Wechsel-Rotation zurueck (Weihnachten laeuft ab 15.10. ueber SAISON im Pool).
+
   python3 automation/homepage_katalog_rotation.py --selbsttest     Gegenprobe auf einer Kopie (kein Netz)
   DRY=1 python3 automation/homepage_katalog_rotation.py            zeigt nur
   python3 automation/homepage_katalog_rotation.py                  schreibt (Backup theme_backup/index.json.rot-<datum>)
@@ -28,8 +34,11 @@ MAX = 8
 
 FEST = {"pl_trends", "product_list_topseller", "product_list_wm2026", "product_list_blitz", "mode_row",
         "pl_wohnen", "product_list_schweiz", "schmuck_row", "pl_beauty", "elektronik_row"}
-WECHSEL = ["pl_kinder", "pl_tech_gadgets", "pl_senioren", "pl_spass_gadgets", "budget_unter25",
+WECHSEL = ["pl_kinder", "pl_tech_gadgets", "pl_senioren", "pl_spass_gadgets", "pl_herbst",
            "product_list_L3EDnA", "pl_querbeet", "pl_wechsel_taschen"]
+# Saison-feste Reihen: (Sektion, Kollektion, von, bis). Im Fenster fest, sonst normale Wechsel-Reihe.
+SAISON_FEST = [("pl_herbst", "herbst-favoriten", (9, 22), (11, 30))]
+UMBENENNEN = ("budget_unter25", "pl_herbst", "product_list_topseller")   # alt, neu, einmalig danach einreihen
 # Pool: veroeffentlichte Kataloge mit >= ~300 Produkten, die NICHT in einer festen Reihe stehen (gemessen 14.09.).
 POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "werkzeug-maschinen", "sub-uhren",
         "aufbewahrung-sub", "hundewelt", "buero-schreibwaren", "parfum-duefte", "outdoor-garten",
@@ -38,6 +47,11 @@ POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "w
         "geschenke-unter-50-franken", "sub-haustier", "suesses-esswaren"]   # 14.09.: Betreiber «Kategorie mit Essen von Fortura» — 31 Süsswaren ab CH-Lager
 # Reihenfolge bewusst: Hunde(8)/Katzen(16)/Haustier(24) liegen >= 8 auseinander -> nie zwei Tier-Reihen an einem Tag
 SAISON = [("halloween-2026", (9, 1), (10, 31)), ("weihnachten-2026", (10, 15), (12, 26))]
+
+
+def saison_fest_heute(tag):
+    md = (tag.month, tag.day)
+    return {k: h for k, h, von, bis in SAISON_FEST if von <= md <= bis}
 
 
 def pool_heute(tag):
@@ -67,6 +81,15 @@ def umbauen(t, tag):
         t["order"] = order = [("pl_wechsel_taschen" if k == "banner_trust" else k) for k in order]
         del secs["banner_trust"]
         notizen.append("banner_trust -> pl_wechsel_taschen (Klon von pl_querbeet)")
+    # 5. Umbenennen + einmalig nach oben (budget_unter25 -> pl_herbst direkt nach den Bestsellern)
+    alt, neu, nach = UMBENENNEN
+    if alt in secs and neu not in secs:
+        secs[neu] = secs.pop(alt)
+        order = [k for k in t["order"] if k != alt]
+        pos = order.index(nach) + 1 if nach in order else len(order)
+        order.insert(pos, neu)
+        t["order"] = order
+        notizen.append(f"{alt} -> {neu} (Position {pos + 1}, nach {nach})")
     # 1. 8 Produkte, Karussell
     for k, s in secs.items():
         if s.get("type") == "product-list":
@@ -75,10 +98,16 @@ def umbauen(t, tag):
                 st["max_products"] = MAX; notizen.append(f"{k}: max_products -> {MAX}")
             if st.get("layout_type") != "carousel":
                 st["layout_type"] = "carousel"; notizen.append(f"{k}: layout_type -> carousel")
+    # 5b. Saison-feste Reihen setzen (im Fenster nie von der Rotation ueberschrieben)
+    sf = saison_fest_heute(tag)
+    for k, h in sf.items():
+        if k in secs and secs[k]["settings"].get("collection") != h:
+            notizen.append(f"{k}: {secs[k]['settings'].get('collection')} -> {h} (Saison fest)")
+            secs[k]["settings"]["collection"] = h
     # 3. Wechsel-Reihen
-    fest_colls = {secs[k]["settings"].get("collection") for k in FEST if k in secs}
+    fest_colls = {secs[k]["settings"].get("collection") for k in list(FEST) + list(sf) if k in secs}
     heute = [h for h in pool_heute(tag) if h not in fest_colls]
-    for k, h in zip([w for w in WECHSEL if w in secs], heute):
+    for k, h in zip([w for w in WECHSEL if w in secs and w not in sf], heute):
         if secs[k]["settings"].get("collection") != h:
             notizen.append(f"{k}: {secs[k]['settings'].get('collection')} -> {h}")
             secs[k]["settings"]["collection"] = h
@@ -100,7 +129,8 @@ def selbsttest():
         nonlocal fehler; print(("  ✔ " if ok else "  ✘ ") + was); fehler += (not ok)
     basis = {"type": "product-list", "settings": {"collection": "x", "layout_type": "grid", "carousel_on_mobile": True,
              "max_products": 12}, "blocks": {"static-header": {"type": "_product-list-content"}}}
-    secs = {k: copy.deepcopy(basis) for k in list(FEST) + WECHSEL[:-1]}
+    secs = {k: copy.deepcopy(basis) for k in list(FEST) + [w for w in WECHSEL if w not in ("pl_wechsel_taschen", "pl_herbst")]
+            + ["budget_unter25"]}
     for k, c in zip(FEST, ["hype-jetzt", "bestseller", "neu-eingetroffen", "blitzversand-highlights", "damen-mode",
                           "wohnen-dekoration", "fur-ihn", "premium-schmuck", "schuhe-sneaker", "elektronik-technik"]):
         secs[k]["settings"]["collection"] = c
@@ -108,22 +138,31 @@ def selbsttest():
     secs["lux_usp"] = {"type": "custom-liquid", "settings": {"custom_liquid": "x"}}
     t = {"sections": secs, "order": list(secs.keys())}
     n_vor = len(t["order"])
-    tag = datetime.date(2026, 9, 14)
+    tag = datetime.date(2026, 9, 23)   # im Herbstfenster (22.09.–30.11.) und in der Halloween-Saison
     ge, notizen = umbauen(t, tag)
     pruefe(ge and len(notizen) > 10, f"erster Lauf aendert ({len(notizen)} Notizen)")
     pruefe("pl_wechsel_taschen" in t["sections"] and "banner_trust" not in t["sections"], "banner_trust wurde zur Wechsel-Reihe")
     pruefe(len(t["order"]) == n_vor and "banner_trust" not in t["order"] and "pl_wechsel_taschen" in t["order"], "order: gleiche Laenge, Schluessel getauscht")
+    pruefe("budget_unter25" not in t["sections"] and "budget_unter25" not in t["order"]
+           and t["order"].index("pl_herbst") == t["order"].index("product_list_topseller") + 1,
+           "budget_unter25 -> pl_herbst, direkt nach den Bestsellern")
+    pruefe(len(t["order"]) == len(t["sections"]) == n_vor, f"Sektionszahl gleich ({n_vor})")
     pl = [s for s in t["sections"].values() if s["type"] == "product-list"]
     pruefe(all(s["settings"]["max_products"] == MAX and s["settings"]["layout_type"] == "carousel" for s in pl), f"alle {len(pl)} Reihen: 8 Produkte, Karussell")
-    wc = [t["sections"][k]["settings"]["collection"] for k in WECHSEL]
+    pruefe(t["sections"]["pl_herbst"]["settings"]["collection"] == "herbst-favoriten", "Herbstfenster: pl_herbst zeigt herbst-favoriten")
+    WR = [w for w in WECHSEL if w != "pl_herbst"]
+    wc = [t["sections"][k]["settings"]["collection"] for k in WR]
     fc = {t["sections"][k]["settings"]["collection"] for k in FEST}
-    pruefe(len(set(wc)) == len(WECHSEL) and not (set(wc) & fc), f"8 verschiedene Wechsel-Kataloge, keiner doppelt zu festen: {wc}")
+    pruefe(len(set(wc)) == len(WR) and not (set(wc) & fc), f"{len(WR)} verschiedene Wechsel-Kataloge, keiner doppelt zu festen: {wc}")
     pruefe("halloween-2026" in wc, "Saison: Halloween steht im September vorne")
     ge2, n2 = umbauen(t, tag)
     pruefe(not ge2 and not n2, "Gegenprobe: zweiter Lauf am selben Tag aendert nichts (idempotent)")
     ge3, n3 = umbauen(t, tag + datetime.timedelta(days=1))
-    wc3 = [t["sections"][k]["settings"]["collection"] for k in WECHSEL]
-    pruefe(ge3 and wc3 != wc and len(set(wc3)) == len(WECHSEL), "naechster Tag: andere Kataloge, wieder 8 verschiedene")
+    wc3 = [t["sections"][k]["settings"]["collection"] for k in WR]
+    pruefe(ge3 and wc3 != wc and len(set(wc3)) == len(WR), "naechster Tag: andere Kataloge, wieder alle verschieden")
+    pruefe(t["sections"]["pl_herbst"]["settings"]["collection"] == "herbst-favoriten", "Herbstfenster: pl_herbst bleibt fest auf herbst-favoriten")
+    t_dez = copy.deepcopy(t); umbauen(t_dez, datetime.date(2026, 12, 2))
+    pruefe(t_dez["sections"]["pl_herbst"]["settings"]["collection"] != "herbst-favoriten", "nach dem 30.11.: pl_herbst dreht wieder mit")
     dez = umbauen(copy.deepcopy(t), datetime.date(2026, 12, 1))
     pruefe("halloween-2026" not in pool_heute(datetime.date(2026, 12, 1)) and "weihnachten-2026" in pool_heute(datetime.date(2026, 12, 1)), "Saison: im Dezember Weihnachten statt Halloween")
     alle = set()
@@ -158,8 +197,15 @@ def main():
     ue = r.get("data", {}).get("themeFilesUpsert", {}).get("userErrors")
     if ue:
         print("FEHLER", ue); sys.exit(1)
-    back = gql('{theme(id:"%s"){files(filenames:["templates/index.json"]){nodes{body{... on OnlineStoreThemeFileBodyText{content}}}}}}' % THEME)["data"]["theme"]["files"]["nodes"][0]["body"]["content"]
-    ok = back.count('"max_products": 8') >= 17 and '"pl_wechsel_taschen"' in back
+    # ⚠️ 23.09.2026: Direkt nach themeFilesUpsert lieferte das Rücklesen noch die ALTE Datei (pl_herbst fehlte,
+    # 5 s später war sie da). Deshalb: kurz warten und bis zu 5x lesen, bevor «nicht bestätigt» gemeldet wird.
+    import time
+    for _ in range(5):
+        time.sleep(4)
+        back = gql('{theme(id:"%s"){files(filenames:["templates/index.json"]){nodes{body{... on OnlineStoreThemeFileBodyText{content}}}}}}' % THEME)["data"]["theme"]["files"]["nodes"][0]["body"]["content"]
+        ok = back.count('"max_products": 8') >= 17 and '"pl_wechsel_taschen"' in back and '"pl_herbst"' in back
+        if ok:
+            break
     print(f"{tag} geschrieben: {len(notizen)} Aenderungen · Ursprung bestaetigt={ok} · Wechsel-Reihen heute: {[t['sections'][k]['settings']['collection'] for k in WECHSEL if k in t['sections']]}")
 
 

@@ -1,14 +1,14 @@
-# Produktkategorie (Taxonomie) — Stand 2026-09-23T18:15Z
+# Produktkategorie (Taxonomie) — Stand 2026-09-23T19:12Z
 
-Aktive gescannt: 650 · ohne Kategorie: 650 · heute gesetzt: 0 (SCHARF, CAP 45000) · danach offen: 650 · Fehler: 0
+Aktive gescannt: 648 · ohne Kategorie: 648 · heute gesetzt: 0 (SCHARF, CAP 45000) · danach offen: 648 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
 
-- Trend-Gadget: 373
-- Trend-Produkt: 261
+- Trend-Gadget: 372
+- Trend-Produkt: 260
 - Kinder: 6
 - Schweizer Editionen: 5
 - Selbst gestalten: 4

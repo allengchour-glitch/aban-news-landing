@@ -35,6 +35,31 @@ const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const STOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
 
+// 23.09.2026 (Audit-Befund 18): Facebook hat keine Bio, ein Link im FB-Text ist direkt klickbar. Das FB-Album bekommt
+// die Produktseite (onlineStoreUrl, Top-Sets: Startseite) mit UTM; Instagram behaelt seine Caption. Gleiche Funktion
+// wie in social-autopost-meta.mjs und meta_reel_post.mjs.
+const FB_UTM = 'utm_source=facebook&utm_medium=social&utm_campaign=autopilot';
+function fbLink(shopUrl, inhalt) {
+  const basis = /^https:\/\/(www\.)?luxestyle\.ch\//i.test(shopUrl || '') ? shopUrl : 'https://luxestyle.ch/';
+  return `${basis}${basis.includes('?') ? '&' : '?'}${FB_UTM}${inhalt ? `&utm_content=${inhalt}` : ''}`;
+}
+function fbText(caption, shopUrl, inhalt) {
+  const link = fbLink(shopUrl, inhalt);
+  const BIO = /\s*[–—·|-]?\s*\(?\s*link\s+in\s+(?:der\s+)?bio\b(?:\s*\))?/gi;   // Leerzeichen danach bleiben (sonst klebt ein #Hashtag an der URL)
+  const DOM = /(?<![@#\w.\/-])(?:https?:\/\/)?(?:www\.)?luxestyle\.ch(?:\/[^\s)]*)?/i;
+  const zeilen = String(caption || '').split('\n');
+  let i = zeilen.findIndex(z => /link\s+in\s+(?:der\s+)?bio/i.test(z));
+  if (i < 0) i = zeilen.findIndex(z => DOM.test(z) && !/^\s*#/.test(z));
+  if (i < 0) {                                  // keine Shop-Zeile: Link vor die Hashtags setzen
+    const h = zeilen.findIndex(z => /^\s*#\S/.test(z));
+    if (h < 0) zeilen.push(`👉 ${link}`); else zeilen.splice(h, 0, `👉 ${link}`, '');
+    return zeilen.join('\n');
+  }
+  const z = zeilen[i].replace(BIO, '');
+  zeilen[i] = (DOM.test(z) ? z.replace(DOM, link) : z.trim() ? `${z.trimEnd()} 👉 ${link}` : `👉 ${link}`).trimEnd();
+  return zeilen.join('\n');
+}
+
 if (!fs.existsSync(CSV)) { console.log('Keine Queue (social/ig_karussell.csv) → No-op.'); process.exit(0); }
 
 // ---------------------------------------------------------------- CSV (mehrzeilige Captions in Anfuehrungszeichen)
@@ -81,7 +106,7 @@ async function produktLive(handle) {
   const d = await gql(`query($h:String!){ productByHandle(handle:$h){ status onlineStoreUrl title } }`, { h: handle });
   if (!d) return { ok: false, grund: 'Shopify nicht erreichbar' };
   const p = d.productByHandle; if (!p) return { ok: false, grund: 'Produkt existiert nicht mehr' };
-  return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, title: p.title };
+  return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, title: p.title, url: p.onlineStoreUrl || '' };
 }
 const http = u => { try { return execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', u], { encoding: 'utf8' }).trim(); } catch { return 'curl'; } };
 function pushen(pfade, msg) {
@@ -102,7 +127,7 @@ async function igLiveHas(caption) {
   console.error('⚠️ IG-Live-Abgleich nicht erreichbar → nur lokale Wachen.'); return false;
 }
 
-let cand = null, bilder = [], caption = '', handles = [];
+let cand = null, bilder = [], caption = '', handles = [], shopUrl = '';
 for (const r of bereit) {
   const slug = get(r, 'slug'), ordner = get(r, 'ordner'), n = parseInt(get(r, 'slides') || '0', 10);
   handles = get(r, 'produkte').split(/\s+/).filter(Boolean);
@@ -113,8 +138,10 @@ for (const r of bereit) {
   // 23.09. Neunte Schicht: Produkt-Set derselben Warengruppe wie ein Post der letzten 72 h → warten (bleibt ready)
   if (get(r, 'modus') === 'produkt') { const fk = familieKuerzlich(caption); if (fk) { console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${slug}`); continue; } }
   // Produkt live? (Produkt-Sets: der Slug ist das Handle)
+  shopUrl = '';                                  // Top-Sets (mehrere Produkte): FB verlinkt die Startseite
   if (get(r, 'modus') === 'produkt') {
     const pl = await produktLive(slug);
+    shopUrl = pl.url || '';
     if (!pl.ok) { console.log(`   ⛔ ${slug}: ${pl.grund}`); if (!DRY && /existiert nicht|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pl.grund)) { setzen(r, 'status', 'produkt-nicht-aktiv'); writeLedger(); } continue; }
   }
   // Bilder erreichbar? sonst pushen und erneut pruefen
@@ -130,7 +157,12 @@ for (const r of bereit) {
 }
 if (!cand) { console.log('Kein postbares Karussell.'); process.exit(0); }
 console.log(`Karussell: ${get(cand, 'slug')} (${get(cand, 'modus')}, ${bilder.length} Slides)\n${caption.slice(0, 200)}…`);
-if (DRY) { console.log('[DRY] wuerde jetzt IG-Karussell + FB-Album posten.'); process.exit(0); }
+const fbCaption = fbText(caption, shopUrl, 'karussell');
+if (DRY) {
+  console.log('[DRY] wuerde jetzt IG-Karussell + FB-Album posten (nichts gepostet, nichts geschrieben).');
+  console.log(`── Instagram-Caption ──\n${caption}\n── Facebook-Text ──\n${fbCaption}`);
+  process.exit(0);
+}
 if (!IG_ID || !TOK) { console.error('⛔ IG_USER_ID / META_ACCESS_TOKEN fehlen.'); process.exit(1); }
 if (await igLiveHas(caption)) { console.log('⛔ Auf IG bereits live (Caption-Signatur) → posted-dup-live'); setzen(cand, 'status', 'posted-dup-live'); writeLedger(); process.exit(0); }
 
@@ -162,7 +194,7 @@ try {
   const fbIds = [];
   for (const b of bilder) { const f = await g(`${FB_ID}/photos`, { url: b, published: 'false' }); fbIds.push(f.id); await schlaf(800); }
   const feld = {}; fbIds.forEach((id, i) => { feld[`attached_media[${i}]`] = JSON.stringify({ media_fbid: id }); });
-  const fb = await g(`${FB_ID}/feed`, { message: caption, ...feld });
+  const fb = await g(`${FB_ID}/feed`, { message: fbCaption, ...feld });   // FB: klickbarer Produktlink
   setzen(cand, 'status', 'posted-ig-fb'); setzen(cand, 'post_url', `ig:${igId} fb:${fb.id}`); writeLedger();
   console.log(`✅ FB-Album veroeffentlicht ${fb.id}`);
 } catch (e) { console.error(`⚠️ FB fehlgeschlagen (IG ist raus): ${e.message}`); }

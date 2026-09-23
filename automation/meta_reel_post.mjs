@@ -34,6 +34,31 @@ const FB = (process.env.FB_PAGE_ID || '1049840534888592').trim();
 if (!TOK || !IG) { console.error('Kein Token/IG-ID (META_ACCESS_TOKEN + IG_USER_ID oder /tmp/meta_page_token + /tmp/meta_ig_id).'); process.exit(1); }
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+// 23.09.2026 (Audit-Befund 18): Facebook hat keine Bio, ein Link im FB-Text ist direkt klickbar. Das FB-Video bekommt
+// statt «luxestyle.ch/products/… (Link in Bio)» die Produktseite (onlineStoreUrl) mit UTM; Instagram behaelt seine
+// Caption. Gleiche Funktion wie in social-autopost-meta.mjs und ig_karussell_post.mjs.
+const FB_UTM = 'utm_source=facebook&utm_medium=social&utm_campaign=autopilot';
+function fbLink(shopUrl, inhalt) {
+  const basis = /^https:\/\/(www\.)?luxestyle\.ch\//i.test(shopUrl || '') ? shopUrl : 'https://luxestyle.ch/';
+  return `${basis}${basis.includes('?') ? '&' : '?'}${FB_UTM}${inhalt ? `&utm_content=${inhalt}` : ''}`;
+}
+function fbText(caption, shopUrl, inhalt) {
+  const link = fbLink(shopUrl, inhalt);
+  const BIO = /\s*[–—·|-]?\s*\(?\s*link\s+in\s+(?:der\s+)?bio\b(?:\s*\))?/gi;   // Leerzeichen danach bleiben (sonst klebt ein #Hashtag an der URL)
+  const DOM = /(?<![@#\w.\/-])(?:https?:\/\/)?(?:www\.)?luxestyle\.ch(?:\/[^\s)]*)?/i;
+  const zeilen = String(caption || '').split('\n');
+  let i = zeilen.findIndex(z => /link\s+in\s+(?:der\s+)?bio/i.test(z));
+  if (i < 0) i = zeilen.findIndex(z => DOM.test(z) && !/^\s*#/.test(z));
+  if (i < 0) {                                  // keine Shop-Zeile: Link vor die Hashtags setzen
+    const h = zeilen.findIndex(z => /^\s*#\S/.test(z));
+    if (h < 0) zeilen.push(`👉 ${link}`); else zeilen.splice(h, 0, `👉 ${link}`, '');
+    return zeilen.join('\n');
+  }
+  const z = zeilen[i].replace(BIO, '');
+  zeilen[i] = (DOM.test(z) ? z.replace(DOM, link) : z.trim() ? `${z.trimEnd()} 👉 ${link}` : `👉 ${link}`).trimEnd();
+  return zeilen.join('\n');
+}
+
 async function api(path, params, method = 'POST') {
   const body = new URLSearchParams({ ...params, access_token: TOK });
   // Retry gegen transiente Netz-/DNS-Fehler (Container-Poll darf nicht crashen)
@@ -117,7 +142,7 @@ const _passt = r => (r[idx.status] || '').trim() === 'ready'
 // 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
 const _alle = rows.slice(1).filter(_passt);
 const _reihe = [..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))];
-const cand = ersterErreichbare(_reihe, r => r[idx.video_url] || '', (r, st) => { r[idx.status] = st; writeLedger(); });
+const cand = ersterErreichbare(_reihe, r => r[idx.video_url] || '', (r, st) => { r[idx.status] = st; if (!DRY) writeLedger(); });   // DRY schreibt nichts
 if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
 // Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger + gemeinsamer Ledger)
 if (postedVideos.has(vkey(cand[idx.video_url])) || postSeen(cand[idx.video_url])) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
@@ -173,14 +198,16 @@ async function produktAktiv(postId) {
       const d = await r.json();
       const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
-      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}` };
+      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '' };
     } catch (e) { /* retry */ }
     await sleep(2000 * (a + 1));
   }
   return { ok: false, grund: 'Shopify nicht erreichbar' };
 }
+let shopUrl = '';
 {
   const pa = await produktAktiv(cand[idx.id]);
+  shopUrl = pa.url || '';
   if (!pa.ok) {
     console.error(`⛔ Kein Post — Produkt nicht kaufbar/pruefbar (${pa.grund}): ${cand[idx.id]}`);
     if (!DRY && /nicht mehr|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pa.grund)) { cand[idx.status] = 'produkt-nicht-aktiv'; writeLedger(); }
@@ -190,8 +217,13 @@ async function produktAktiv(postId) {
 }
 const [id, , url, caption, tags] = [cand[idx.id], 0, cand[idx.video_url], cand[idx.caption], cand[idx.hashtags]];
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 12).join(' ')}`;
+const fbTextReel = fbText(text, shopUrl, 'reel');   // FB: klickbarer Produktlink statt «(Link in Bio)»
 console.log(`Post: ${id}\n  Video: ${url.slice(0, 90)}\n  Caption: ${text.slice(0, 100)}…`);
-if (DRY) { console.log('[DRY] würde jetzt IG-Reel + FB-Video posten.'); process.exit(0); }
+if (DRY) {
+  console.log('[DRY] würde jetzt IG-Reel + FB-Video posten (nichts gepostet, nichts geschrieben).');
+  console.log(`── Instagram-Caption ──\n${text}\n── Facebook-Text ──\n${fbTextReel}`);
+  process.exit(0);
+}
 
 // ── CLAIM: Zeile SOFORT als 'posting' markieren + Ledger schreiben, BEVOR gepostet wird.
 //    Schließt das «Post-vor-Commit»-Fenster: stirbt der Prozess jetzt, steht die Zeile auf
@@ -234,6 +266,6 @@ if (pub.id) {
 // 2) Facebook-Seitenvideo (best effort — Ledger ist bereits committet, FB-Fehler löst KEINEN Re-Post aus)
 const fbIdent = await fbSeitenIdentitaet(TOK, FB);
 if (!fbIdent.ok) { console.error('⛔ FB-Seitenwache:', fbIdent.grund); }
-const fb = fbIdent.ok ? await api(`${FB}/videos`, { file_url: url, description: text }) : { error: 'FB-Seitenwache: ' + fbIdent.grund };
+const fb = fbIdent.ok ? await api(`${FB}/videos`, { file_url: url, description: fbTextReel }) : { error: 'FB-Seitenwache: ' + fbIdent.grund };
 console.log(fb.id ? `✅ Facebook-Video live: ${fb.id}` : `FB-Fehler (IG war ok, Ledger committet): ${JSON.stringify(fb).slice(0, 200)}`);
 console.log('Ledger aktualisiert →', id, 'posted-ig-fb');
