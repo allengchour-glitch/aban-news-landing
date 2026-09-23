@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:36 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:42 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **11'414**
-- Optionen mit englischen Werten (Kandidaten): 1'987
-- Optionen übersetzt: **1'100** · Werte übersetzt: **6'843**
+- Produkte gesehen: **12'654**
+- Optionen mit englischen Werten (Kandidaten): 2'117
+- Optionen übersetzt: **1'172** · Werte übersetzt: **7'354**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 6'357
+- Werte mit unbekanntem Wort (unverändert): 6'686
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 34
+- übersprungen «kleidungsstueck-im-wert»: 36
 - übersprungen «kollision-nach-uebersetzung»: 24
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -124,5 +124,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`light` 234, `color` 182, `degrees` 159, `shell` 81, `skin` 78, `high` 68, `rope` 66, `feet` 62, `to` 61, `mother` 61, `three` 59, `no` 56, `size` 54, `core` 53, `surface` 49, `electric` 48, `line` 48, `hat` 47, `powder` 47, `dark` 47, `for` 45, `case` 43, `of` 43, `bag` 42, `buckle` 42, `perforated` 42, `years` 40, `acupuncture` 40, `opp` 39, `lens` 38, `father` 38, `tea` 37, `generation` 37, `adjustable` 37, `belt` 36, `magnetic` 36, `suit` 35, `old` 35, `person` 35, `carbon` 34, `fiber` 32, `plush` 30, `bear` 30, `eyelets` 30, `button` 30, `iphone13` 29, `ice` 28, `batteries` 28, `mom` 28, `lamp` 28, `mushroom` 27, `full` 26, `simple` 26, `insert` 26, `number` 26, `flame` 26, `crotch` 26, `cocoa` 26, `face` 25, `one` 25
+`light` 239, `color` 192, `degrees` 159, `shell` 81, `skin` 78, `to` 70, `high` 69, `rope` 66, `feet` 62, `mother` 61, `three` 59, `no` 56, `size` 55, `surface` 53, `core` 53, `dark` 49, `electric` 48, `line` 48, `hat` 47, `powder` 47, `inner` 47, `for` 45, `of` 44, `case` 43, `bag` 43, `buckle` 42, `perforated` 42, `years` 40, `acupuncture` 40, `belt` 39, `opp` 39, `tea` 38, `lens` 38, `bear` 38, `father` 38, `generation` 37, `cup` 37, `adjustable` 37, `magnetic` 36, `suit` 35, `old` 35, `person` 35, `carbon` 34, `fiber` 32, `plush` 30, `eyelets` 30, `button` 30, `winding` 30, `iphone13` 29, `ice` 28, `batteries` 28, `little` 28, `mom` 28, `lamp` 28, `mushroom` 27, `regular` 27, `full` 26, `simple` 26, `insert` 26, `number` 26
 
