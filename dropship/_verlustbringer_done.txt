@@ -109,3 +109,16 @@ gid://shopify/Product/15502135361921	2026-09-23T04:10Z	schon-DRAFT	16.90	84.65	A
 gid://shopify/Product/15499079188865	2026-09-23T04:10Z	schon-DRAFT	17.90	85.41	Sofaüberwurf Baumwolle – Geometrische Abstraktion
 gid://shopify/Product/15450114687361	2026-09-23T04:10Z	schon-DRAFT	14.90	81.89	Vollständige Sofa-Abdeckung
 gid://shopify/Product/15497494561153	2026-09-23T04:10Z	schon-DRAFT	26.90	93.61	Einweg-Badetücher, fusselfrei & saugstark
+gid://shopify/Product/15453794075009	2026-09-23T04:11Z	schon-DRAFT	14.90	81.01	Dickere Plüsch-Sofakissen für Herbst/Winter
+gid://shopify/Product/15448922096001	2026-09-23T04:11Z	schon-DRAFT	16.90	82.89	Mid-Century Modern Luxe Winter Plüsch-Sofadecke
+gid://shopify/Product/15496129937793	2026-09-23T04:11Z	schon-DRAFT	16.90	82.63	Mehrstufiger Kosmetik-Organizer für den Schreibtisch
+gid://shopify/Product/15450856882561	2026-09-23T04:11Z	schon-DRAFT	22.90	121.35	Verstellbarer Futter- und Wassernapf für Hunde
+gid://shopify/Product/15454094426497	2026-09-23T04:11Z	schon-DRAFT	110.90	175.06	Katzenhängematte mit Fensterhalter für Balkon
+gid://shopify/Product/15449123062145	2026-09-23T04:11Z	schon-DRAFT	21.90	85.66	Verdickter Matratzenbezug für Zuhause
+gid://shopify/Product/15501747356033	2026-09-23T04:11Z	schon-DRAFT	16.90	80.35	Holz-Puzzle-Spielzeug
+gid://shopify/Product/15453767336321	2026-09-23T04:12Z	schon-DRAFT	30.90	94.33	Farbenfrohes Muscheldekor
+gid://shopify/Product/15497435611521	2026-09-23T04:12Z	schon-DRAFT	25.90	88.40	Kabelloser Kapsel-Reiniger für Obst & Gemüse
+gid://shopify/Product/15501006373249	2026-09-23T04:12Z	schon-DRAFT	15.90	78.28	Tragbarer Wasserfilter für Zuhause
+gid://shopify/Product/15449492357505	2026-09-23T04:12Z	schon-DRAFT	28.90	91.28	Gartengeräte-Halter
+gid://shopify/Product/15446273393025	2026-09-23T04:12Z	schon-DRAFT	34.90	96.99	Verstellbarer Mini-Stepper für Hände und Füsse
+gid://shopify/Product/15496435761537	2026-09-23T04:12Z	schon-DRAFT	24.90	86.78	Faltbare Mini-Drohne mit Dual-Kamera
