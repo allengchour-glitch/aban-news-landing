@@ -2528,3 +2528,16 @@ gid://shopify/Product/15448883462529	zugeordnet	2	Full Color Dual Output Control
 gid://shopify/Product/15448883757441	zugeordnet	2	Küchen-Thermometer für Food, BBQ & Ofen
 gid://shopify/Product/15448883822977	zugeordnet	10	Nackenventilator mit Digitalanzeige
 gid://shopify/Product/15448883888513	zugeordnet	2	Universal-Kopierfernbedienung 433 MHz
+gid://shopify/Product/15448884052353	zugeordnet	28	Zero Fire Universal WLAN Touch-Wandschalter
+gid://shopify/Product/15448884117889	zugeordnet	6	Wanduhr im schlichten, nordischen Design
+gid://shopify/Product/15448884248961	zugeordnet	10	Solar-Strassenleuchte für Hof und Garten
+gid://shopify/Product/15448884347265	zugeordnet	12	Tragbarer Luftentfeuchter – Leise & Kompakt
+gid://shopify/Product/15448884380033	zugeordnet	2	Ouliyuan Lugx Nagelpoliermaschine
+gid://shopify/Product/15448884543873	zugeordnet	5	Solar-Jalousien mit 15-Kanal-Fernbedienung
+gid://shopify/Product/15448884609409	zugeordnet	12	Elektrisches Verdunkelungsrollo mit Solarpanel
+gid://shopify/Product/15448884806017	zugeordnet	2	Oszillierender Clip-Ventilator, 2 Stufen
+gid://shopify/Product/15448890245505	zugeordnet	4	Digitaler Kalenderwecker mit Medikamenten-Erinnerung
+gid://shopify/Product/15448890769793	zugeordnet	5	Walkie-Talkie mit Frequenz-Scanning
+gid://shopify/Product/15448891163009	zugeordnet	2	Candy Soft Case für AirPods
+gid://shopify/Product/15448891261313	zugeordnet	1	Retro Music Tastenkappen, Pink-Lila
+gid://shopify/Product/15448891392385	zugeordnet	2	Vogelbad-Heizer mit Thermostat
