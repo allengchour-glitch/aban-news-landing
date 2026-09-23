@@ -2880,6 +2880,25 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
 /* 🛣️ Hauptstrassen 10 -> 16 m: die Querstrassen koennen nicht breiter werden (bei x=±78
    liegt 6 m daneben schon die Grundstuecksgrenze bei 72), aber Nord- und Suedstrasse haben
    Luft. Die gewonnenen 3 m je Seite tragen jetzt Parkstreifen und Bushaltebucht. */
+/* 🧱 BORDSTEIN-HELFER (Runde 93, User: „schoene verbindung strasse und trottoir, auch schoene
+   uebergaenge"). Vorher hatten nur Haupt- und Querstrassen einen Bordstein (bord()), und der lief
+   ohne Unterbruch durch jeden Zebrastreifen; Ring, Viertelstrassen und Anschluesse hatten zwischen
+   Asphalt und Gehwegplatte 0,2 m Wiese/Viertelboden und keine Kante (th-kante). Jetzt EIN Helfer:
+     a:"z"  Band laengs x auf der Kante z=kante · a:"x" laengs z auf x=kante
+     seite  +1/-1 = Richtung zum Gehweg (der Stein steht AUSSEN an der Fahrbahnkante)
+     luecken [[von,bis,"frei"|"ab"]]: frei = kein Stein (Einmuendung), ab = abgesenkt (3 cm, Zebra) */
+var _bordM=null;
+function bordsteinKante(a,kante,seite,von,bis,luecken){
+  if(!_bordM)_bordM=betMat(0xbfbcb2,0.85);
+  var L=[[von,bis]],G=(luecken||[]).slice();
+  G.forEach(function(g){var N=[];L.forEach(function(t){
+    if(t[1]<=g[0]||t[0]>=g[1]){N.push(t);return;}
+    if(t[0]<g[0])N.push([t[0],g[0]]);if(t[1]>g[1])N.push([g[1],t[1]]);});L=N;});
+  function box(t0,t1,h){if(t1-t0<0.3)return;var len=t1-t0,m=(t0+t1)/2,q=kante+seite*0.13;
+    var b=new THREE.Mesh(new THREE.BoxGeometry(a==="z"?len:0.26,h,a==="z"?0.26:len),_bordM);
+    b.position.set(a==="z"?m:q,h/2,a==="z"?q:m);b.receiveShadow=true;scene.add(b);}
+  L.forEach(function(t){box(t[0],t[1],0.12);});
+  G.forEach(function(g){if(g[2]!=="ab")return;var g0=Math.max(g[0],von),g1=Math.min(g[1],bis);if(g1>g0)box(g0,g1,0.03);});}
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,16),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 /* ⚠️ HIER LAGEN 16 STRICHE EINER LEITLINIE AUF z = 58 — mitten zwischen den beiden
@@ -2942,17 +2961,20 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
   var bordM=betMat(0xbfbcb2,0.85);
   if(!_texErde)_texErde=_strukTex("erde");
   var erdM=new THREE.MeshStandardMaterial({color:0x9a8a68,roughness:1,map:_texErde});
-  function bord(w,d,x,z){var b=new THREE.Mesh(new THREE.BoxGeometry(w,0.12,d),bordM);
-    b.position.set(x,0.06,z);b.receiveShadow=true;scene.add(b);}
+  /* bord() ist durch bordsteinKante() ersetzt (Absenkungen an den Zebrastreifen, Runde 93) */
   function erd(w,d,x,z){var e=new THREE.Mesh(new THREE.PlaneGeometry(w,d),erdM);
     e.rotation.x=-Math.PI/2;e.position.set(x,0.005,z);e.receiveShadow=true;scene.add(e);}
   /* 🐛 5.05 -> 8.05: Der Bordstein stammt aus der Zeit, als die Hauptstrassen 10 m
      breit waren (Halbbreite 5). Nach der Verbreiterung auf 16 m blieb er stehen —
      seither lief eine Betonkante 3 m INNERHALB der Fahrbahn, mitten durch den
      Parkstreifen. Jetzt sitzt er auf der echten Kante (Halbbreite 8). */
+  /* Zebras der Hauptstrasse liegen bei x = ±RX ± 16 (zebra() unten); dort ist der Bordstein
+     abgesenkt — vorher endete jeder Uebergang an einer 12-cm-Kante. */
+  var _zebX=[-RX-16,-RX+16,RX-16,RX+16].map(function(x){return [x-2.7,x+2.7,"ab"];});
   [SZ9+12,-(SZ9+12)].forEach(function(zc){
-    [zc>0?zc-8.05:zc+8.05,zc>0?zc+8.05:zc-8.05].forEach(function(zb){ // Bordstein beidseitig
-      bord(2*(RX-5),0.26,0,zb);bord(LR,0.26,-(RB+LR/2),zb);bord(LR,0.26,(RB+LR/2),zb);});
+    [-1,1].forEach(function(sg){var kante=zc+sg*7.92;                  // Bordstein beidseitig, Kante bei ±7,92 (Stein 7,92…8,18)
+      bordsteinKante("z",kante,sg,-(RX-5),RX-5,_zebX);
+      bordsteinKante("z",kante,sg,-RL/2,-RB,_zebX);bordsteinKante("z",kante,sg,RB,RL/2,_zebX);});
     [zc>0?zc-10.6:zc+10.6,zc>0?zc+10.6:zc-10.6].forEach(function(ze){ // Erdstreifen AUSSEN neben dem Gehweg (8.0..10.2)
       erd(2*(RX-5),0.7,0,ze);erd(LR,0.7,-(RB+LR/2),ze);erd(LR,0.7,(RB+LR/2),ze);});});
   /* ⚠️ DIESELBE LAENGE WIE DER GEHWEG — und dieselbe Falle. Weiter oben wurde der
@@ -2965,7 +2987,8 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
      Mittelpunkt eines 106 m langen Bordsteins liegt bei z = 0, im freien Feld.
      Dafuer gibt es jetzt th-belag.mjs, das die AUSDEHNUNG prueft. */
   [RX,-RX].forEach(function(xc){
-    [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*(SZ9+12)-16,xb,0);});
+    [-1,1].forEach(function(sg){bordsteinKante("x",xc+sg*4.92,sg,-(SZ9+12)+8,(SZ9+12)-8,
+      [[-(SZ9+12)+16-2.7,-(SZ9+12)+16+2.7,"ab"],[(SZ9+12)-16-2.7,(SZ9+12)-16+2.7,"ab"]]);});   /* Zebras bei z = ±(58-16) */
     [xc-7.8,xc+7.8].forEach(function(xe){erd(0.7,2*(SZ9+12)-16,xe,0);});});   /* aussen neben dem Gehweg (bis 7.4) */
   /* 🅿️ Parkstreifen entlang beider Hauptstrassen + Bushaltebucht (User: „genuegend
      Parkplaetze, dass Auto und Bushaltestelle parkieren koennen"). Liegen auf den 3 m,
@@ -3032,22 +3055,29 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     var HB=4.8;                                          // halbe Fahrbahn Zubringer/Zufahrt
     function stueck(a0,a1,laengs,fest,y){                // ein Gehwegstueck, wenn lang genug
       if(a1-a0<0.6)return;
-      if(laengs)tr(a1-a0,2.0,(a0+a1)/2,fest,y); else tr(2.0,a1-a0,fest,(a0+a1)/2,y);}
+      if(laengs)tr(a1-a0,2.0,(a0+a1)/2,fest,y); else tr(2.0,a1-a0,fest,(a0+a1)/2,y);
+      /* Bordstein an der Fahrbahnkante (Ring-Halbbreite 4,5): die Kante liegt 1,1 m vom
+         Gehwegmittelpunkt Richtung Strassenmitte; die naehere Ringmitte entscheidet die Seite. */
+      var mitten=laengs?[RGZ_N,RGZ_S]:[-RGX,RGX],c9=Math.abs(mitten[0]-fest)<Math.abs(mitten[1]-fest)?mitten[0]:mitten[1];
+      var sg=fest>c9?1:-1;bordsteinKante(laengs?"z":"x",c9+sg*4.5,sg,a0,a1,[]);}
     function mitLuecken(von,bis,luecken,laengs,fest,y){
       var g=von;
       luecken.slice().sort(function(p,q){return p-q;}).forEach(function(c){
         stueck(g,Math.min(bis,c-HB),laengs,fest,y); g=Math.max(g,c+HB);});
       stueck(g,bis,laengs,fest,y);}
     tr(2*AUS,2.0,0,-105.6,0.052);                                   // Ring Nord aussen
+    bordsteinKante("z",RGZ_N-4.5,-1,-(RGX-4.5),RGX-4.5,[]);          /* Bordstein aussen (Runde 93), bis zu den Eckboegen */
     mitLuecken(-INN,INN,[-RX,RX],true,-94.4,0.052);                 // Ring Nord innen
     mitLuecken(-INN,INN,[-RX,RX],true,112.4,0.052);                 // Ring Sued innen
     tr(2*AUS,2.0,0,123.6,0.052);                                    // Ring Sued aussen
+    bordsteinKante("z",RGZ_S+4.5,1,-(RGX-4.5),RGX-4.5,[[11-3.4,11+3.4,"frei"],[25-3.4,25+3.4,"frei"]]);   /* offen an Ein-/Ausfahrt des Bahnhofs-Parkplatzes */
     var zA0=RGZ_N-5.6, zA1=RGZ_S+5.6, zI0=RGZ_N+5.6, zI1=RGZ_S-5.6;
     /* Die Strandzufahrt (z = -30) quert den West-Ring — beide West-Gehwege
        brauchen dort ebenfalls eine Luecke, sonst endet auch sie an einer Kante. */
     mitLuecken(zA0,zA1,[-30],false,-117.6,0.054);                   // Ring West aussen
     mitLuecken(zI0,zI1,[-30],false,-106.4,0.054);                   // Ring West innen
     tr(2.0,zI1-zI0,106.4,(zI0+zI1)/2,0.054);  tr(2.0,zA1-zA0,117.6,(zA0+zA1)/2,0.054);  // Ring Ost
+    bordsteinKante("x",RGX-4.5,-1,RGZ_N+4.5,RGZ_S-4.5,[]);bordsteinKante("x",RGX+4.5,1,RGZ_N+4.5,RGZ_S-4.5,[]);
     [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
       [xc-5.6,xc+5.6].forEach(function(xe){
         /* Fruehere Laenge |RGZ_N+SZ9+23|-6 endete bei z = -97 und damit 1,1 m
@@ -3058,7 +3088,19 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
   })();
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
+  /* Allgemeiner Streifen fuer jede Fahrbahnbreite (Runde 93): n Streifen a 1,15 m ueber die Breite.
+     Registriert sich in window._uebergaenge, damit th-kante die Absenkung an beiden Enden prueft. */
+  window._zebraAllg=function(x,z,quer,breite){
+    var n=Math.max(4,Math.round(breite/1.15)-1);
+    for(var st9=0;st9<n;st9++){
+      var w9=quer?4.8:0.62,d9=quer?0.62:4.8;
+      var p=new THREE.Mesh(new THREE.PlaneGeometry(w9,d9),zMat);
+      p.rotation.x=-Math.PI/2;var off9=(st9-(n-1)/2)*1.15;
+      p.position.set(x+(quer?0:off9),0.008,z+(quer?off9:0));
+      p.receiveShadow=true;scene.add(p);}
+    (window._uebergaenge=window._uebergaenge||[]).push([x,z,quer,4.8,breite/2+0.05]);};
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
+    window._zebraAllg(x,z,quer,quer?16:10);return;
     /* ⚠️ GEMESSEN (User-Screenshot „strasse hier schoener machen"): die Funktion war
        fuer die 10-m-Querstrasse geschrieben (8 Streifen x 1,15 = 9,2 m) und wurde
        unveraendert fuer die 16-m-Hauptstrasse benutzt — dort endete der Zebrastreifen
@@ -3959,8 +4001,12 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
   // Downtown-Cluster jenseits des Flusses: dichte Skyline statt verstreuter Einzeltuerme
   [[-64,-116,18,8,0x9aa8bc],[-50,-108,13,7,0x88a0b8],[-38,-120,21,9,0xa0b0c0],[-26,-107,11,6,0x94a4b8],
    [-14,-118,16,8,0x9caabe],[-2,-106,9,6,0x8ea6ba],[10,-119,19,8,0x98a6ba],[22,-108,12,7,0x8ea2b4],
-   [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[58,-115,17,8,0x9caebe],[64,-100,12,7,0x8ca0b2],
-   [-65,-98,14,7,0x96a6b8],[62,-134,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+   /* ⚠️ DREI TUERME STANDEN AUF STRASSEN (Runde 93, th-strassen + Weltfahrt „steckt fest bei
+      (57|-139)"): (58|-115) und (62|-134) auf dem Bauernhof-Anschluss (x 60, Fahrbahn 55,5…64,5),
+      (64|-100) auf dem Nord-Ring (z -100 ± 4,5). Der Anschluss kam nach den Tuermen dazu, und
+      turm() prueft keine Fahrbahn. Jetzt westlich bzw. oestlich davon, nicht am Fluss. */
+   [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[50,-123,17,8,0x9caebe],[72,-112,12,7,0x8ca0b2],
+   [-65,-98,14,7,0x96a6b8],[44,-135,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   [[-98,44,14,8,0xa0b0c0],[100,76,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
   // ---- Villen-Viertel: grosse Parzellen mit richtigen Haeusern an den Querstrassen ----
@@ -5894,7 +5940,7 @@ setTimeout(function baueGebaeude(){
        (Bilder welt-047/049: helle Baender ueber dem Asphalt). Die Einmuendung liegt dort, wo
        der Anschluss senkrecht auf die Strassenlinie trifft: bei ax (L-Weg) bzw. VX (gerader
        Weg). TRIM = halbe Fahrbahn + Gehweg + Luft. Striche ebenso. */
-    var TRIM=SW/2+TW+0.3,J9=[];
+    var TRIM=SW/2+TW+0.2,J9=[];   /* 6,9 = Aussenkante des Anschluss-Gehwegs (TO+TW/2): dort stossen die Platten zusammen */
     if(cfg.anschluss){var ja=cfg.anschluss,jq=laengs?ja[0]:ja[1],jm=laengs?VX:VZ,jo=laengs?ja[1]:ja[0],jn=laengs?VZ:VX;
       if(Math.abs(jq-jm)<=2&&Math.abs(jo-jn)>2)J9.push(jm);                 /* gerade in die Strassenmitte */
       else if(Math.abs(jq-jm)>2&&Math.abs(jo-jn)>2&&Math.abs(jq-jm)<=laenge/2+1)J9.push(jq);}   /* L-Weg trifft die Strasse bei ax/az */
@@ -5906,6 +5952,21 @@ setTimeout(function baueGebaeude(){
       stuecke(_mitte-laenge/2,_mitte+laenge/2).forEach(function(t9){var tl=t9[1]-t9[0],tm=(t9[0]+t9[1])/2;if(tl<1)return;
         var t=new THREE.Mesh(new THREE.BoxGeometry(laengs?tl:TW,0.06,laengs?TW:tl),twM);
         t.position.set(laengs?tm:VX+o,0.03,laengs?VZ+o:tm);t.receiveShadow=true;scene.add(t);});});
+    /* 🧱 Bordstein beidseits, offen an der Einmuendung (Fahrbahn des Anschlusses + sein Bordstein),
+       abgesenkt am Zebrastreifen; dazu die Uebergaenge selbst: einer ueber den Anschluss direkt
+       hinter der Gehweglinie, einer ueber die Viertelstrasse neben der Einmuendung. */
+    var _quer=laengs?VZ:VX,_zebV=[];
+    J9.forEach(function(j){
+      var ja9=cfg.anschluss,jo9=laengs?ja9[1]:ja9[0],sA=(jo9-_quer)>0?1:-1;          /* Seite, von der der Anschluss kommt */
+      window._zebraAllg(laengs?j:_quer+sA*7.4,laengs?_quer+sA*7.4:j,!laengs,SW);     /* ueber den Anschluss (laeuft quer zur Strasse) */
+      var zj=(j+TRIM+2.9<=_mitte+laenge/2-2)?j+TRIM+2.9:j-TRIM-2.9;                   /* ueber die Viertelstrasse, neben der Einmuendung */
+      window._zebraAllg(laengs?zj:_quer,laengs?_quer:zj,laengs,SW);
+      _zebV.push([zj-2.7,zj+2.7,"ab"]);});
+    [-1,1].forEach(function(sg){
+      var lk=J9.map(function(j){return [j-SW/2-0.26,j+SW/2+0.26,"frei"];}).concat(_zebV);
+      /* auf der Anschluss-Seite ist die Einmuendung offen; auf der Gegenseite bleibt der Stein */
+      var lk2=lk.filter(function(g){if(g[2]!=="frei")return true;var ja8=cfg.anschluss,jo8=laengs?ja8[1]:ja8[0];return ((jo8-_quer)>0?1:-1)===sg;});
+      bordsteinKante(laengs?"z":"x",_quer+sg*SW/2,sg,_mitte-laenge/2,_mitte+laenge/2,lk2);});
     /* Mittelstreifen */
     var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
     (window._markMats=window._markMats||[]).push(mM);
@@ -5922,13 +5983,16 @@ setTimeout(function baueGebaeude(){
          beide mit Trottoir und Mittelstreifen — befahrbar wie die uebrigen Strassen. */
       (function anbindung(){
         var a=cfg.anschluss,ax=a[0],az=a[1];
-        function segment(x1,z1,x2,z2,trimA,trimB){
-          /* trimA/trimB (Runde 93): an diesem Ende trifft das Stueck auf eine andere Fahrbahn
-             (aeussere Strasse, Ecke des L-Wegs, Viertelstrasse) — Gehwege und Striche enden
-             TRIM davor, statt quer ueber den Asphalt zu laufen. */
+        function segment(x1,z1,x2,z2,trimA,trimB,istT){
+          /* trimA/trimB (Runde 93): Meter, um die Gehweg und Bordstein an diesem Ende zurueckbleiben,
+             weil dort eine andere Fahrbahn liegt (aeussere Strasse 7, Ecke des L-Wegs 4,5,
+             Viertelstrasse 4,7 = bis an deren Gehwegkante). istT: das B-Ende muendet senkrecht in die
+             Viertelstrasse — dort liegt der Zebrastreifen (7,4 m), der Bordstein ist bis 10 m abgesenkt. */
           var waag=Math.abs(x2-x1)>Math.abs(z2-z1);
           var len=Math.max(SW,waag?Math.abs(x2-x1):Math.abs(z2-z1));
           var mx=(x1+x2)/2,mz=(z1+z2)/2;
+          (window._anschluesse=window._anschluesse||[]).push({n:cfg.name,a:waag?"z":"x",c:waag?mz:mx,
+            von:(waag?Math.min(x1,x2):Math.min(z1,z2)),bis:(waag?Math.max(x1,x2):Math.max(z1,z2))});   /* fuer th-kante */
           var st=new THREE.Mesh(new THREE.PlaneGeometry(waag?len:SW,waag?SW:len),
                                 waag?strMatH.clone():strMatV.clone());
           st.rotation.x=-Math.PI/2;st.position.set(mx,-0.004,mz);st.receiveShadow=true;scene.add(st);
@@ -5940,9 +6004,16 @@ setTimeout(function baueGebaeude(){
           if(kr!==null){var kx=waag?kr:mx,kz=waag?mz:kr;
             if(window._ringStrichLuecke)window._ringStrichLuecke(kx,kz);else (window._ringLueckeWunsch=window._ringLueckeWunsch||[]).push([kx,kz]);}
           var teile=kr===null?[[a0,a1]]:[[a0,kr-5.7],[kr+5.7,a1]];
-          var tA=(waag?(x1<x2):(z1<z2))?trimA:trimB, tB=(waag?(x1<x2):(z1<z2))?trimB:trimA;   /* welches Ende ist a0? */
-          if(tA)teile=teile.map(function(t){return [Math.max(t[0],a0+TRIM),t[1]];});
-          if(tB)teile=teile.map(function(t){return [t[0],Math.min(t[1],a1-TRIM)];});
+          var vorw=waag?(x1<x2):(z1<z2), tA=vorw?trimA:trimB, tB=vorw?trimB:trimA;   /* welches Ende ist a0? */
+          var tTa=(!vorw&&istT), tTb=(vorw&&istT);                                  /* liegt das T-Ende bei a0 oder a1? */
+          if(tA)teile=teile.map(function(t){return [Math.max(t[0],a0+tA),t[1]];});
+          if(tB)teile=teile.map(function(t){return [t[0],Math.min(t[1],a1-tB)];});
+          /* Bordstein beidseits: frei an der Landstrassen-Kreuzung und an den getrimmten Enden,
+             abgesenkt ueber die Breite des Zebrastreifens am T-Ende (4,5…10 m ab Strassenmitte) */
+          var lkB=[];if(kr!==null)lkB.push([kr-5.7,kr+5.7,"frei"]);
+          if(tA)lkB.push([a0,a0+(tTa?4.5:tA),"frei"]);if(tB)lkB.push([a1-(tTb?4.5:tB),a1,"frei"]);
+          if(tTa)lkB.push([a0+4.5,a0+10,"ab"]);if(tTb)lkB.push([a1-10,a1-4.5,"ab"]);
+          [-1,1].forEach(function(sg){bordsteinKante(waag?"z":"x",(waag?mz:mx)+sg*SW/2,sg,a0,a1,lkB);});
           [-TO,TO].forEach(function(o){                       // Trottoir beidseits
             teile.forEach(function(t9){if(t9[1]-t9[0]<1)return;var tl=t9[1]-t9[0],tm=(t9[0]+t9[1])/2;
               var t=new THREE.Mesh(new THREE.BoxGeometry(waag?tl:TW,0.06,waag?TW:tl),twM);
@@ -5953,7 +6024,7 @@ setTimeout(function baueGebaeude(){
                Landstrasse (r 200), die Striche liefen mitten ueber die Kreuzung. */
             var sx9=mx+(waag?off:0),sz9=mz+(waag?0:off),rr9=Math.hypot(sx9,sz9);
             if(Math.abs(rr9-200)<9)continue;
-            var q9=waag?sx9:sz9;if((tA&&q9<a0+TRIM+1.5)||(tB&&q9>a1-TRIM-1.5))continue;   /* Einmuendung frei */   /* 9 statt 7,5: die Strichspitze (1,5 m) lag im Kies-Bankett, Z-Kampf als Spritzer sichtbar */
+            var q9=waag?sx9:sz9;if((tA&&q9<a0+Math.max(tA,tTa?11:0)+1.5)||(tB&&q9>a1-Math.max(tB,tTb?11:0)-1.5))continue;   /* Einmuendung + Zebra frei */   /* 9 statt 7,5: die Strichspitze (1,5 m) lag im Kies-Bankett, Z-Kampf als Spritzer sichtbar */
             var str=new THREE.Mesh(new THREE.PlaneGeometry(waag?3:0.15,waag?0.15:3),mM);
             str.rotation.x=-Math.PI/2;
             str.position.set(mx+(waag?off:0),0.005,mz+(waag?0:off));scene.add(str);}}
@@ -5971,13 +6042,15 @@ setTimeout(function baueGebaeude(){
            sonst liegt sein Gehweg deckungsgleich ueber dem der Strasse (Z-Kampf). Liegt der
            Knick schon innerhalb der Strasse, entfaellt er. */
         if(Math.abs(VX-ax)>2&&Math.abs(VZ-az)>2){
-          if(laengs){segment(ax,az,ax,VZ,true,true);var ex9=VX-Math.sign(VX-ax)*(laenge/2-0.5);
-            if(Math.abs(ex9-ax)>2&&Math.sign(ex9-ax)===Math.sign(VX-ax))segment(ax,VZ,ex9,VZ,true,false);}   /* Strasse laeuft in x */
-          else      {segment(ax,az,VX,az,true,true);var ez9=VZ-Math.sign(VZ-az)*(laenge/2-0.5);
-            if(Math.abs(ez9-az)>2&&Math.sign(ez9-az)===Math.sign(VZ-az))segment(VX,az,VX,ez9,true,false);}}  /* Strasse laeuft in z */
-        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,true,false);}   /* gerade, auf der Strassenlinie */
-        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,true,false);}
-        else segment(ax,az,VX,VZ,true,true);   /* gerade, senkrecht in die Strasse */
+          if(laengs){var ex9=VX-Math.sign(VX-ax)*(laenge/2-0.5),ecke9=Math.abs(ex9-ax)>2&&Math.sign(ex9-ax)===Math.sign(VX-ax);
+            segment(ax,az,ax,VZ,7,ecke9?4.5:4.7,!ecke9);                           /* Strasse laeuft in x */
+            if(ecke9)segment(ax,VZ,ex9,VZ,6.9,0,false);}
+          else      {var ez9=VZ-Math.sign(VZ-az)*(laenge/2-0.5),ecke8=Math.abs(ez9-az)>2&&Math.sign(ez9-az)===Math.sign(VZ-az);
+            segment(ax,az,VX,az,7,ecke8?4.5:4.7,!ecke8);                           /* Strasse laeuft in z */
+            if(ecke8)segment(VX,az,VX,ez9,6.9,0,false);}}
+        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,7,0,false);}   /* gerade, auf der Strassenlinie */
+        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,7,0,false);}
+        else segment(ax,az,VX,VZ,7,4.7,true);   /* gerade, senkrecht in die Strasse */
       })();}
     /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
        damit stimmt der Abstand zum Nachbarn auch bei unterschiedlich breiten Gebaeuden. */
