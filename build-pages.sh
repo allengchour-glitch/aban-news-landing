@@ -86,7 +86,7 @@ tar -cf - \
   --exclude='./_site' \
   --exclude='./node_modules' \
   --exclude='./game' \
-  --exclude='./video-prototypes' \
+  --exclude='./video-prototypes' --exclude='./spiele-dev' \
   --exclude='./reels' \
   --exclude='./social' \
   --exclude='./dropship' \

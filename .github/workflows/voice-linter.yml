@@ -36,7 +36,7 @@ jobs:
         run: |
           # Engineering/project docs are not newsletter content — exclude them
           # from the brand-voice linter (research reports, READMEs, technical docs).
-          EXCLUDES=(":(exclude)ki-geld-projekt/**" ":(exclude)aban-studio/**" ":(exclude)ki-tools-radar/**" ":(exclude)foerder-radar/**" ":(exclude)jobs-radar/**" ":(exclude)kurse-radar/**" ":(exclude)prompts-bibliothek/**" ":(exclude)agenturen-radar/**" ":(exclude)dropshipping-radar/**" ":(exclude)dropship/**" ":(exclude)video-prototypes/**" ":(exclude)portal/**" ":(exclude)social/**" ":(exclude)docs/**" ":(exclude)downloads/**" ":(exclude)reports/**" ":(exclude)**/README.md" ":(exclude)automation/WERKBANK.md" ":(exclude)automation/README.md" ":(exclude)automation/brand-voice-make-integration.md" ":(exclude)automation/linkedin-auto-post-SETUP.md" ":(exclude)automation/newsletter-teaser.md" ":(exclude)automation/news-roh-aktuell.md" ":(exclude)automation/news-roh-*.md" ":(exclude)automation/entwurf-gemini-*.md" ":(exclude)automation/erste-ausgabe-willkommen.md" ":(exclude)automation/erste-inhaltsausgabe-vorlage.md" ":(exclude)PROJEKT.md" ":(exclude)START-HIER.md" ":(exclude)3-KLICKS.md" ":(exclude)CLAUDE.md")
+          EXCLUDES=(":(exclude)ki-geld-projekt/**" ":(exclude)aban-studio/**" ":(exclude)ki-tools-radar/**" ":(exclude)foerder-radar/**" ":(exclude)jobs-radar/**" ":(exclude)kurse-radar/**" ":(exclude)prompts-bibliothek/**" ":(exclude)agenturen-radar/**" ":(exclude)dropshipping-radar/**" ":(exclude)dropship/**" ":(exclude)video-prototypes/**" ":(exclude)spiele-dev/**" ":(exclude)portal/**" ":(exclude)social/**" ":(exclude)docs/**" ":(exclude)downloads/**" ":(exclude)reports/**" ":(exclude)**/README.md" ":(exclude)automation/WERKBANK.md" ":(exclude)automation/README.md" ":(exclude)automation/brand-voice-make-integration.md" ":(exclude)automation/linkedin-auto-post-SETUP.md" ":(exclude)automation/newsletter-teaser.md" ":(exclude)automation/news-roh-aktuell.md" ":(exclude)automation/news-roh-*.md" ":(exclude)automation/entwurf-gemini-*.md" ":(exclude)automation/erste-ausgabe-willkommen.md" ":(exclude)automation/erste-inhaltsausgabe-vorlage.md" ":(exclude)PROJEKT.md" ":(exclude)START-HIER.md" ":(exclude)3-KLICKS.md" ":(exclude)CLAUDE.md")
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE="${{ github.event.pull_request.base.sha }}"
             HEAD="${{ github.event.pull_request.head.sha }}"
@@ -49,6 +49,13 @@ jobs:
           # fuer Projekt-Memory (CLAUDE.md), Entwickler-Doku (docs/, README) und
           # die KI-Schriftsteller-Romane (ki-schriftsteller/: literarische Prosa
           # in dritter Person mit formellem 'Sie' im Dialog) nicht gelten.
+          # Ebenso ausgenommen (2026-09-23): spiele-dev/ — 27 Runbooks, Audit-Plaene und
+          # Backlogs fuer die Spiele-Entwicklung. GEMESSEN an RUNBOOK-TRAUMHAUS.md: der
+          # Linter meldet dort ausschliesslich Newsletter-Regeln, die fuer eine Karte durch
+          # eine 600-kB-Datei nicht gelten koennen — 379 020 Zeichen gegen die Grenze von
+          # 5000, 124 Hashtags (das sind Markdown-Ueberschriften), 409 Emoji (Wegmarken im
+          # Text) und 'Sie-Drift' bei normalem deutschem Satzanfang. Dieselbe Begruendung
+          # wie bei docs/ und .claude/ eine Zeile weiter unten.
           # Ebenso ausgenommen (2026-09-12): .claude/ (Skills = Arbeitsanweisungen an
           # Claude), brain/ (Obsidian-Vault = Projekt-Memory, die Zeitleiste wird aus dem
           # ohnehin ausgenommenen CLAUDE.md erzeugt) und LERNEN-*.md (technische Berichte).
