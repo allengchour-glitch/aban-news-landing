@@ -104,8 +104,15 @@ mitSonden('traumhaus.html', {
       var U=window._uebergaenge||[],res=[];
       U.forEach(function(u){var x=u[0],z=u[1],quer=u[2],br=u[3]||4.8,hb=u[4]||8.05;
         /* quer=true: Streifen liegt ueber eine Strasse in x (Nord/Sued) → Bordsteine bei z ± hb */
-        var enden=quer?[[x,z-hb+0.15],[x,z+hb-0.15]]:[[x-hb+0.15,z],[x+hb-0.15,z]];
-        var hs=enden.map(function(e){var mx=0;for(var d=-br/2+0.4;d<=br/2-0.4;d+=0.8){var px=quer?e[0]+d:e[0],pz=quer?e[1]:e[1]+d;var t=unten(px,pz);mx=Math.max(mx,t.y||0);}return +mx.toFixed(3);});
+        /* ⚠️ ERSTER LAUF MELDETE "16 Uebergaenge, 0 nicht abgesenkt" AUF DEM ALTEN STAND — dort
+           lief der 12-cm-Stein durch jeden Zebra. Der Probepunkt lag bei hb-0,15 = 7,90, der
+           Stein beginnt bei 7,92: zwei Zentimeter daneben, und die Pruefung war blind. Jetzt
+           drei Abstaende ueber die Steinbreite (hb-0,1 / hb+0,05 / hb+0,2). */
+        var enden=quer?[[x,z-hb],[x,z+hb]]:[[x-hb,z],[x+hb,z]];
+        var hs=enden.map(function(e,ei){var mx=0,sg=ei?1:-1;
+          for(var d=-br/2+0.4;d<=br/2-0.4;d+=0.8)[-0.1,0.05,0.2].forEach(function(o){
+            var px=quer?e[0]+d:e[0]+sg*o,pz=quer?e[1]+sg*o:e[1]+d;var t=unten(px,pz);mx=Math.max(mx,t.y||0);});
+          return +mx.toFixed(3);});
         res.push({x:x,z:z,quer:quer,bord:hs,abgesenkt:hs.every(function(h){return h<=0.05;})});});
       return res;}
     return null;}`,
