@@ -66,7 +66,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **Container startet ~stündlich neu** → zuerst `uptime`; unter 10 Min: `bash automation/engine_keepalive.sh`.
   Stunden-Routine `trig_01Uy3zVefXbzCZn9Dr2qvkwh` ist die oberste Schicht (feuert nur in eine RUHENDE Session).
   ⚠️ Die PC-Session hat sie schon dreimal abgeschaltet — zu Sessionbeginn `list_triggers` prüfen.
-- **Umgebungsvariablen erreichen laufende Sessions NICHT** (3× gemessen) → Schlüssel immer im Chat.
+- **Umgebungsvariablen erreichen die laufende Session erst mit einem späteren Container-Neustart** (gemessen 23.09.: Metricool-Token nach dem 5. Neustart) → nach jedem Neustart `env | grep -c NAME` messen; bis dahin Schlüssel im Chat.
   urllib gegen Groq braucht einen User-Agent, sonst 403.
 - **Grind PAUSIERT** (Betreiber 14.09.: «jetzt auf Verkauf optimieren»); Dateispeicher 105 von 100 GB.
   **Kurs bis auf Widerruf: Conversion, nicht Menge.**
@@ -501,6 +501,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-23 · 🎵 **Metricool-Token kam mit dem fünften Container-Neustart an (04:18 UTC) — «Umgebungsvariablen erreichen die Session nicht» gilt nur bis zum nächsten Neustart, danach `env | grep -c NAME` messen.** Marke per API gemessen (6227837, TikTok luxestyle.ch; 6394001 war Altnotiz); erster TikTok-Post 380476730 auf 06:37 CH geplant. Groq-Schlüssel steht als Variablen-NAME (leer) → Betreiber → Journal
 - 2026-09-23 · 🚪 **Reel-Poster-Tor las die CJ-pid als Shopify-ID: aktiver Projektor «existiert nicht mehr» (Zeile produkt-nicht-aktiv), UUID-pids ohne Prüfung durchgelassen.** Form-Erkennung: 12–15-stellig = Shopify-ID, sonst SKU-Suche; in beiden Reel-Postern. Futterspender-Reel live (DdnatlxD0nV) → Journal
 - 2026-09-23 · 📸 **Bild-Post 02:08: Facebook ja, Instagram nein (vorübergehender Meta-Abruffehler 9004), Zeile trotzdem «posted» — der wichtigste Kanal verlor den Post still.** IG nachgeholt (DdnNSHEDMja, nach Live-Abgleich); Poster postet jetzt IG zuerst mit Wiederholung, FB nur nach IG-Erfolg, «ig-fehler:N» in post_url → Journal
 - 2026-09-22 · 🪞 **Gegenprüfung fremder Sessions (ads-search, lernen, ritchie, lage, cowork): 46 Behauptungen — 14 bestätigt, 29 teilweise, 3 widerlegt; dazu 20 EIGENE Irrtümer korrigiert (4 statt 5 Kunden, CJ-Dispute erledigt, Merchant-Hebel tot, keine UID, IG-Bio gesetzt, Actions seit 10.09., Bankangaben LIVE auf main).** Drei Lehren: (1) `productsCount(limit:null)` + `precision` lesen — ohne `limit` ist jede Menge >10'000 ein Deckel (AT_LEAST), `title:x` ohne Stern ist ein Ganz-Titel-Vergleich, unbekannte Suchfelder werden STILL ignoriert (Kanarienvogel `foo:bar`); (2) Shopify-Systemmails liegen im Gmail-Papierkorb (`from:shopify` braucht `in:anywhere`) und Google-Diagnosen stehen in `product.feedback` — «nicht lesbar» war eine Aussage über die Suche; (3) ein Diff auf dem Zweig sagt nichts über main (raw-Abruf auf JEDEM Zweig), ein Draft ohne Grund-Tag ist für jeden Rückholer unbegründet, ein Wächter ohne Starter ist ein Bericht. Prüfbefehl: `grep -n "Nachtrag 19" GEDAECHTNIS-JOURNAL.md` → Journal 2026-09-22 Nachtrag 19

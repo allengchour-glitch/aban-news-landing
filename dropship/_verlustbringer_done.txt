@@ -122,3 +122,32 @@ gid://shopify/Product/15501006373249	2026-09-23T04:12Z	schon-DRAFT	15.90	78.28	T
 gid://shopify/Product/15449492357505	2026-09-23T04:12Z	schon-DRAFT	28.90	91.28	Gartengeräte-Halter
 gid://shopify/Product/15446273393025	2026-09-23T04:12Z	schon-DRAFT	34.90	96.99	Verstellbarer Mini-Stepper für Hände und Füsse
 gid://shopify/Product/15496435761537	2026-09-23T04:12Z	schon-DRAFT	24.90	86.78	Faltbare Mini-Drohne mit Dual-Kamera
+gid://shopify/Product/15501743325569	2026-09-23T04:13Z	schon-DRAFT	19.90	81.73	Krafttraining-Set
+gid://shopify/Product/15448938971521	2026-09-23T04:13Z	schon-DRAFT	39.90	101.17	Wandmontierter Katzenbaum aus Massivholz
+gid://shopify/Product/15453772054913	2026-09-23T04:13Z	schon-DRAFT	27.90	89.15	Aromadiffuser mit Bluetooth-Lautsprecher
+gid://shopify/Product/15501745881473	2026-09-23T04:13Z	schon-DRAFT	100.90	161.96	Doppelseitiger Zeltbau
+gid://shopify/Product/15506295259521	2026-09-23T04:13Z	schon-DRAFT	30.90	91.86	DIY Rosen-Blumenbox Bausatz
+gid://shopify/Product/15504089612673	2026-09-23T04:13Z	schon-DRAFT	17.90	77.63	Sofaüberwurf «Pflanzen & Blumen» Chenille
+gid://shopify/Product/15448938873217	2026-09-23T04:14Z	schon-DRAFT	55.90	115.52	Katzenbett "Camp Cot" – Herausnehmbar & Waschbar
+gid://shopify/Product/15499701354881	2026-09-23T04:14Z	schon-DRAFT	27.90	87.27	Wolldecke Sofaüberzug
+gid://shopify/Product/15448922063233	2026-09-23T04:14Z	schon-DRAFT	16.90	76.14	Winter Plüsch Chenille Sofaüberwurf mit Blumenmuster
+gid://shopify/Product/15496497365377	2026-09-23T04:14Z	schon-DRAFT	16.90	75.97	Geometrisches Baumwoll-Plaid Sucre
+gid://shopify/Product/15500896633217	2026-09-23T04:14Z	schon-DRAFT	16.90	75.75	Lichtbaum-Beleuchtungsschalter
+gid://shopify/Product/15503258976641	2026-09-23T04:14Z	schon-DRAFT	36.90	95.64	Sofa-Decke aus Baumwolle mit Sternenmuster
+gid://shopify/Product/15505595990401	2026-09-23T04:14Z	schon-DRAFT	44.90	102.99	Bettseitenkissen mit integriertem Doppelkissen
+gid://shopify/Product/15496529871233	2026-09-23T04:14Z	schon-DRAFT	36.90	94.86	Frühstücks- und Barbecue-Maschine, Weiss
+gid://shopify/Product/15453794992513	2026-09-23T04:14Z	schon-DRAFT	92.90	150.10	Hundebett mit entfernbarer, waschbarer wasserdichter Randumr
+gid://shopify/Product/15450114195841	2026-09-23T04:14Z	schon-DRAFT	15.90	73.09	Modernes Sofabezugs-Set
+gid://shopify/Product/15503087042945	2026-09-23T04:14Z	schon-DRAFT	33.90	91.08	Pillow Soft Dreieckiges Rückenkissen für Sofas
+gid://shopify/Product/15496578826625	2026-09-23T04:14Z	schon-DRAFT	18.90	75.95	Kreative Cartoon Kabelbox
+gid://shopify/Product/15500698812801	2026-09-23T04:14Z	schon-DRAFT	67.90	124.49	Rücken- und Lendenstütze
+gid://shopify/Product/15503086584193	2026-09-23T04:14Z	schon-DRAFT	68.90	125.49	Nordic Hall Deckenventilator mit Lampe
+gid://shopify/Product/15453760815489	2026-09-23T04:14Z	schon-DRAFT	14.90	71.41	Dickes, doppelseitiges Fuchsfell-Deckenimitat
+gid://shopify/Product/15502254145921	2026-09-23T04:14Z	schon-DRAFT	23.90	80.09	30Ah LiFePO4 Akku für E-Fahrzeuge
+gid://shopify/Product/15500458819969	2026-09-23T04:14Z	schon-DRAFT	26.90	83.07	Raumfahrts-Bausteine
+gid://shopify/Product/15499447697793	2026-09-23T04:14Z	schon-DRAFT	21.90	78.05	Geometrische Baumwolldecke
+gid://shopify/Product/15448940085633	2026-09-23T04:14Z	schon-DRAFT	15.90	71.78	Kokosnussbaum Kratz- und Kletterturm
+gid://shopify/Product/15503113322881	2026-09-23T04:14Z	schon-DRAFT	91.90	146.88	Faltbarer Rollschrank für Kleidung & Haushalt
+gid://shopify/Product/15450834403713	2026-09-23T04:14Z	schon-DRAFT	14.90	120.38	Luxuriöses Katzensofa für Sphinx- und kleine Katzen
+gid://shopify/Product/15449468010881	2026-09-23T04:14Z	draft	15.90	70.23	Mini-Wasserfilter für den Notfall
+gid://shopify/Product/15452685402497	2026-09-23T04:15Z	draft	32.90	87.10	Individuell verpacktes Outdoor-Bänkchenkissen, wasserdicht

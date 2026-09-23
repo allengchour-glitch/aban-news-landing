@@ -335,6 +335,22 @@ SKU-Suche `sku:CJ-<pid>`; Zeile zurück auf `ready`. **Lehre:** ein Bezeichner-S
 unlesbare durch. Nebenbefund: Shopify-Eimer stand um 04:10 bei 77/2'000 (alle Tages-Wächter starten nach dem Neustart
 gleichzeitig) — die Etikette hielt, kein Wächter starb.
 
+**Nachtrag 22 (23.09. 04:35 UTC) — Der Metricool-Token ist angekommen, und der erste TikTok-Post ist geplant: Umgebungsvariablen erreichen die Session doch — nach einem Container-Neustart.**
+Bis 04:07 UTC war `METRICOOL_USER_TOKEN` in fünf Messungen leer; um 04:25 (Container «up 7 min», Neustart 04:18) stand er im
+Prozess-Env. Die Lehre «Umgebungsvariablen erreichen laufende Sessions NICHT» (3× gemessen 14.09.) ist damit präzisiert: sie
+erreichen die Session mit dem nächsten Container-Neustart, nicht sofort — der Betreiber trug den Token am 22.09. ~21:00 ein,
+vier Neustarts (22:xx, 01:07, 02:07, 03:07) brachten ihn nicht, der fünfte (04:18) schon; warum, ist nicht messbar. Regel:
+nach jedem Neustart `env | grep -c <NAME>` messen, statt aus dem Gedächtnis «kommt nicht an» zu schliessen. Nebenbefund: ein
+zweiter Eintrag trägt den **Groq-Schlüssel als Variablen-NAME** mit leerem Wert (Betreiber-Tippfehler) → in den Umgebungs-
+Einstellungen als `GROQ_API_KEY=<wert>` neu anlegen (Punkt I in COWORK-BEFEHL).
+GEMESSEN Metricool: `simpleProfiles?userId=4801419` → Marke **6227837** «allengchour» mit facebook, instagram, youtube,
+pinterest, **tiktok (luxestyle.ch)**, threads. Der Poster trug 6394001 (Altnotiz August, nie belegt); beide IDs antworten
+dem Planer 200 mit leerer Liste — nicht unterscheidbar, massgeblich ist die Probe. Token zusätzlich in `/tmp/metricool.env`
+(600), Poster-Standard 6227837. DRY sauber (Projektor P62, ACTIVE), scharf: Metricool-Post **380476730**, TikTok, autoPublish
+06:37 Europe/Zurich, Planer bestätigt den Eintrag; Zeile `posted-tiktok`. Nachmessung 04:50 UTC per Erinnerung.
+**Lehren:** (a) «kommt nicht an» ist eine Aussage über den Zeitpunkt der Messung — nach jedem Neustart neu messen.
+(b) Eine ID aus einer Notiz ist keine gemessene ID; die API nennt ihre Marke selbst.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

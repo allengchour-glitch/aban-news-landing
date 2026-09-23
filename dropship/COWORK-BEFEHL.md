@@ -6,10 +6,12 @@
 
 ## 🆕 22.09. 23:20 UTC — zwei kurze Dinge für TikTok und den Server-Bot
 
-**A · Metricool-Token im Chat (TikTok, 1 Minute).** Du hast `METRICOOL_USER_TOKEN` in die Umgebungs-Einstellungen
+**A · ✅ ERLEDIGT 23.09. 04:25 UTC — der Token kam mit dem Container-Neustart an; erster TikTok-Post geplant (Metricool 380476730, 06:37 CH).** ~~Metricool-Token im Chat (TikTok, 1 Minute).~~ Du hast `METRICOOL_USER_TOKEN` in die Umgebungs-Einstellungen
 eingetragen — gemessen 22:00 und 22:58 UTC: er erreicht die laufende Session nicht (Env leer, keine lokale Datei).
 Bitte den Token **einmal hier im Chat einfügen**; ich lege ihn nur unter `/tmp/metricool.env` (600) ab, prüfe die
 TikTok-Verbindung und setze den ersten Post ab. Bis dahin postet nur Instagram + Facebook.
+
+**I · Groq-Schlüssel in den Umgebungs-Einstellungen falsch eingetragen (1 Minute):** der Schlüssel steht als Variablen-NAME mit leerem Wert. Bitte den Eintrag löschen und neu anlegen als Name `GROQ_API_KEY`, Wert = der Schlüssel. Wirkt nach dem nächsten Container-Neustart.
 
 **B · Hetzner-Agent still seit 22.09. 21:03 UTC (2 Minuten auf dem Server).** Sein Puls kam 19:09, 20:07, 21:03 —
 danach nichts mehr (zwei Stundenläufe fehlen), kein Browser-Auftrag wird erledigt (Pinterest-Pins ab morgen betroffen).

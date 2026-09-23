@@ -13,7 +13,7 @@
  *  · Metricool bekommt NUR das Netzwerk tiktok. IG/FB bleiben beim Meta-Poster.
  *
  * ENV: METRICOOL_USER_TOKEN (oder /tmp/metricool.env mit METRICOOL_USER_TOKEN=…) ·
- *      METRICOOL_USER_ID (4801419) · METRICOOL_BLOG_ID (6394001) · MC_TZ (Europe/Zurich) ·
+ *      METRICOOL_USER_ID (4801419) · METRICOOL_BLOG_ID (6227837, gemessen 23.09.) · MC_TZ (Europe/Zurich) ·
  *      VORLAUF_MIN (Default 10: Veroeffentlichung in N Minuten) · DRY=1
  */
 import fs from 'node:fs';
@@ -40,7 +40,7 @@ function tokenLesen() {
 }
 const TOKEN = tokenLesen();
 const USER = process.env.METRICOOL_USER_ID || '4801419';
-const BLOG = process.env.METRICOOL_BLOG_ID || '6394001';
+const BLOG = process.env.METRICOOL_BLOG_ID || '6227837';   // 23.09.: simpleProfiles liefert Marke 6227837 (TikTok luxestyle.ch); 6394001 war eine unbelegte Altnotiz
 const TZ = process.env.MC_TZ || 'Europe/Zurich';
 const VORLAUF = parseInt(process.env.VORLAUF_MIN || '10', 10);
 const BASE = 'https://app.metricool.com/api';
