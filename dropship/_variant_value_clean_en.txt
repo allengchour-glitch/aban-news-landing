@@ -18292,3 +18292,293 @@ gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/1204
 gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046565245313	Weiss Kopf Box Set	White head box set	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
 gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046565278081	Blau Kopf Box Set	Blue head box set	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
 gid://shopify/Product/15450834993537	Farbe	gid://shopify/ProductOptionValue/12046565310849	Pink Kopf Box Set	Pink head box set	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450835255681	Farbe	gid://shopify/ProductOptionValue/12046569439617	Blau-Mit · 3 Stück Kopf-1M	Blue-With 3pcs head-1M	2026-09-23T20:38Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450835255681	Farbe	gid://shopify/ProductOptionValue/12046569472385	Grün-Mit · 3 Stück Kopf-1M	Green-With 3pcs head-1M	2026-09-23T20:38Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450835255681	Farbe	gid://shopify/ProductOptionValue/12046569505153	Grün-Mit · 3 Stück Kopf-2M	Green-With 3pcs head-2M	2026-09-23T20:38Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450835255681	Farbe	gid://shopify/ProductOptionValue/12046569537921	Rot-Mit · 3 Stück Kopf-1M	Red-With 3pcs head-1M	2026-09-23T20:38Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450835255681	Farbe	gid://shopify/ProductOptionValue/12046569570689	Rot-Mit · 3 Stück Kopf-2M	Red-With 3pcs head-2M	2026-09-23T20:38Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046571635073	S-1 Stück-Rechts Orange	S-1pc-Right orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046571667841	L-1 Stück-Links Blau	L-1pc-Left blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046571766145	L-1 Stück-Rechts Blau	L-1pc-Right blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572093825	S-1 Stück-Links Orange	S-1pc-Left orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572126593	S-1 Stück-Rechts Rot	S-1pc-Right red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572159361	Schwarz S-Set-Links rechts	Black S-Set-Left Right	2026-09-23T20:39Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572192129	Schwarz-Set-Links rechts	Black-Set-Left Right	2026-09-23T20:39Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572323201	XL-1 Stück-Links Orange	XL-1pc-Left orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572355969	XL-1 Stück-Links Grün	XL-1pc-Left green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572388737	L-1 Stück-Links Rot	L-1pc-Left red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572519809	XL-1 Stück-Links Rot	XL-1pc-Left red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572552577	XL-1 Stück-Rechts Rot	XL-1pc-Right red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572585345	S-1 Stück-Links Blau	S-1pc-Left blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572683649	S-1 Stück-Links Grün	S-1pc-Left green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572716417	Schwarz XL-Set-Links rechts	Black XL-Set-Left Right	2026-09-23T20:39Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572781953	XL-1 Stück-Rechts Blau	XL-1pc-Right blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572847489	M-1 Stück-Links Blau	M-1pc-Left blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572945793	M-1 Stück-Links Rot	M-1pc-Left red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046572978561	L-1 Stück-Rechts Grün	L-1pc-Right green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573044097	Schwarz M-Set-Links rechts	Black M-Set-Left Right	2026-09-23T20:39Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573207937	M-1 Stück-Links Grün	M-1pc-Left green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573273473	S-1 Stück-Rechts Grün	S-1pc-Right green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573306241	M-1 Stück-Rechts Orange	M-1pc-Right orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573404545	L-1 Stück-Rechts Orange	L-1pc-Right orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573437313	M-1 Stück-Rechts Grün	M-1pc-Right green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573470081	M-1 Stück-Rechts Rot	M-1pc-Right red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573502849	S-1 Stück-Links Rot	S-1pc-Left red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573535617	L-1 Stück-Links Orange	L-1pc-Left orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573568385	S-1 Stück-Rechts Blau	S-1pc-Right blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573699457	M-1 Stück-Rechts Blau	M-1pc-Right blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573732225	L-1 Stück-Links Grün	L-1pc-Left green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573797761	Schwarz L-Set-Links rechts	Black L-Set-Left Right	2026-09-23T20:39Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573830529	XL-1 Stück-Rechts Orange	XL-1pc-Right orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573896065	M-1 Stück-Links Orange	M-1pc-Left orange	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573928833	L-1 Stück-Rechts Rot	L-1pc-Right red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573961601	XL-1 Stück-Rechts Grün	XL-1pc-Right green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835485057	Ausführung	gid://shopify/ProductOptionValue/12046573994369	XL-1 Stück-Links Blau	XL-1pc-Left blue	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450835550593	Farbe	gid://shopify/ProductOptionValue/12046575206785	Schwarz Leder Blau	Black leather blue	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450836500865	Farbe	gid://shopify/ProductOptionValue/12046587822465	Stahl Wolle	Steel Wool	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450836566401	Ausführung	gid://shopify/ProductOptionValue/12046588051841	3 W-16 Farben Stecker in eckig-1 Stück	3W-16color plug in square-1PC	2026-09-23T20:39Z/reparatur-original:16color
+gid://shopify/Product/15450836566401	Ausführung	gid://shopify/ProductOptionValue/12046588150145	3 W-16 Farben Stecker in eckig-2 Stück	3W-16color plug in square-2PCS	2026-09-23T20:39Z/reparatur-original:16color
+gid://shopify/Product/15450836566401	Ausführung	gid://shopify/ProductOptionValue/12046588215681	3 W-16 Farben Stecker in eckig-3 Stück	3W-16color plug in square-3PCS	2026-09-23T20:39Z/reparatur-original:16color
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046588707201	5 Stück Muster 015	5PC 015 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046588903809	3 Stück Muster 019	3PC 019 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046588936577	3 Stück Muster 014	3PC 014 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589133185	5 Stück Muster 019	5PC 019 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589493633	3 Stück Muster 018	3PC 018 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589657473	3 Stück Muster 013	3PC 013 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589755777	3 Stück Muster 015	3PC 015 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589788545	5 Stück Muster 014	5PC 014 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589886849	5 Stück Muster 016	5PC 016 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589919617	3 Stück Muster 020	3PC 020 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046589952385	5 Stück Muster 013	5PC 013 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046590411137	5 Stück Muster 017	5PC 017 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046590706049	3 Stück Muster 012	3PC 012 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046590738817	5 Stück Muster 012	5PC 012 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046590804353	3 Stück Muster 011	3PC 011 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046590837121	5 Stück Muster 011	5PC 011 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046591000961	3 Stück Muster 016	3PC 016 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046591066497	3 Stück Muster 017	3PC 017 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046591164801	5 Stück Muster 018	5PC 018 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836599169	Farbe	gid://shopify/ProductOptionValue/12046591230337	5 Stück Muster 020	5PC 020 style	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450836861313	Farbe	gid://shopify/ProductOptionValue/12046592999809	Schwarz EU-Stecker Set	Schwarz EU plug Set	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450836861313	Farbe	gid://shopify/ProductOptionValue/12046593032577	Weiss EU-Stecker Set	Weiss EU plug Set	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450836861313	Farbe	gid://shopify/ProductOptionValue/12046593130881	Schwarz UK-Stecker Set	Schwarz UK plug Set	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450836861313	Farbe	gid://shopify/ProductOptionValue/12046593163649	Weiss UK-Stecker Set	Weiss UK plug Set	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450837254529	Farbe	gid://shopify/ProductOptionValue/12451131064705	Bunt und bunt	Colorful and colorful	2026-09-23T20:39Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15450837287297	Farbe	gid://shopify/ProductOptionValue/12046602502529	Weiss-Kabellos aufladbar	White-Wireless charging	2026-09-23T20:39Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15450837287297	Farbe	gid://shopify/ProductOptionValue/12046602535297	Schwarz-Kabellos aufladbar	Black-Wireless charging	2026-09-23T20:39Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046605287809	Silber-Iphone 11 pro	Silber-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046606172545	Weiss-Iphone 11 pro	Weiss-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046606238081	Marineblau-Iphone 11 pro	Marineblau-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046606336385	Grau-Iphone 11 pro	Grau-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046606401921	Rot-Iphone 11 pro	Rot-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046606565761	Schwarz-Iphone 11 pro	Schwarz-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046607483265	Roségold-Iphone 11 pro	Roségold-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450837582209	Farbe	gid://shopify/ProductOptionValue/12046607843713	Gold-Iphone 11 pro	Gold-Iphone 11 Pro	2026-09-23T20:39Z/reparatur-konsistenz
+gid://shopify/Product/15450838532481	Farbe	gid://shopify/ProductOptionValue/12046619312513	Usb Kabel	USB Kabel	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450838630785	Farbe	gid://shopify/ProductOptionValue/12046620066177	Neu Verpackung	New packaging	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046622720385	Schwarz-USB Stecker in version	Black-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046622753153	Weiss-USB Stecker in version	White-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046622785921	Set-USB Stecker in version	Set-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046622818689	Set 1-USB Stecker in version	Set1-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046622851457	Schwarz · 2 Stück-USB Stecker in version	Black 2PC-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046622884225	Weiss · 2 Stück-USB Stecker in version	White 2PC-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046622916993	Schwarz-Weiss-USB Stecker in version	Black and white-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046623080833	7 Farben Schwarz-USB Stecker in version	7Colors Black-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046623113601	7 Farben Weiss-USB Stecker in version	7Colors white-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046623146369	Set 2-USB Stecker in version	Set2-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046623179137	Set 3-USB Stecker in version	Set3-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450838892929	Farbe	gid://shopify/ProductOptionValue/12046623211905	7 Farben Set-USB Stecker in version	7Colors set-USB plug in version	2026-09-23T20:39Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15450840301953	Farbe	gid://shopify/ProductOptionValue/12046643495297	Pink · 8 Stück Set	Pink 8 piece set	2026-09-23T20:39Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15450840498561	Farbe	gid://shopify/ProductOptionValue/12046646903169	Weiss Set Geschenkbox-USB	White set gift box-USB	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450840498561	Farbe	gid://shopify/ProductOptionValue/12046646935937	Schwarz Set Geschenkbox-USB	Black set gift box-USB	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450840498561	Farbe	gid://shopify/ProductOptionValue/12046646968705	A Schwarz Set Geschenkbox-USB	A Black set gift box-USB	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450840498561	Farbe	gid://shopify/ProductOptionValue/12046647001473	A Weiss Set Geschenkbox-USB	A White set gift box-USB	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450848035201	Farbe	gid://shopify/ProductOptionValue/12046683308417	Klein Grün	Small green	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848035201	Farbe	gid://shopify/ProductOptionValue/12046683341185	Klein Pink	Small pink	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689534337	Doppelt Weiss und Box	Double white and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689567105	Doppelt Schwarz und Box	Double black and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689599873	Einzeln Weiss und Box	Single white and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689632641	Einzeln Schwarz und Box	Single black and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689665409	Doppelt Schwarz-Weiss und Box	Double black white and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689698177	Einzeln Transparent-Weiss und Box	Single clear white and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689730945	Einzeln Transparent-Pink	Single clear pink	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689927553	Einzeln Transparent und Box	Single transparent and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046689960321	Doppelt Transparent und Box	Double transparent and box	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046690058625	Doppelt Transparent und Box · 2 Stück	Double transparent and box2pcs	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848526721	Farbe	gid://shopify/ProductOptionValue/12046690156929	Doppelt Transparent und Box · 3 Stück	Double transparent and box3pcs	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691205505	Pink set-USB	Pink Set-USB	2026-09-23T20:39Z/reparatur-konsistenz
+gid://shopify/Product/15450849673601	Farbe	gid://shopify/ProductOptionValue/12046700740993	Pink mit Kopf Set-1 Stück	Pink with head set-1pc	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450849673601	Farbe	gid://shopify/ProductOptionValue/12046700970369	Pink Bürste Kopf-1 Stück	Pink Brush head-1pc	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450849673601	Farbe	gid://shopify/ProductOptionValue/12046701003137	Blau mit Kopf Set-1 Stück	Blue with head set-1pc	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450849673601	Farbe	gid://shopify/ProductOptionValue/12046701035905	Blau Bürste Kopf-1 Stück	Blue Brush head-1pc	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450849673601	Farbe	gid://shopify/ProductOptionValue/12046701199745	Blau Bürste Kopf-2 Stück	Blue Brush head-2pcs	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450849673601	Farbe	gid://shopify/ProductOptionValue/12046701429121	Pink Bürste Kopf-2 Stück	Pink Brush head-2pcs	2026-09-23T20:39Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450850591105	Farbe	gid://shopify/ProductOptionValue/12046710571393	4k 3	4K 3	2026-09-23T20:39Z/reparatur-konsistenz
+gid://shopify/Product/15450850591105	Farbe	gid://shopify/ProductOptionValue/12046710669697	4k 2	4K 2	2026-09-23T20:39Z/reparatur-konsistenz
+gid://shopify/Product/15450850591105	Farbe	gid://shopify/ProductOptionValue/12046710768001	4k 1	4K 1	2026-09-23T20:39Z/reparatur-konsistenz
+gid://shopify/Product/15450850591105	Farbe	gid://shopify/ProductOptionValue/12046710800769	4k 1 mit 1 Batterie	4K 1 mit 1 Batterie	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046720532865	30 cm-Leder Pink	30cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046720565633	40 cm-Leder Pink	40cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046720598401	50 cm-Leder Pink	50cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046720631169	60 cm-Leder Pink	60cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046720663937	70 cm-Leder Pink	70cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046720696705	80 cm-Leder Pink	80cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046720729473	90 cm-Leder Pink	90cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851672449	Farbe	gid://shopify/ProductOptionValue/12046721089921	100 cm-Leder Pink	100cm-Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450851836289	Farbe	gid://shopify/ProductOptionValue/12046722105729	Gross Rot	Big red	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723318145	Rot usb aufladbar	Rot USB aufladbar	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723645825	Pink usb aufladbar	Pink USB aufladbar	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723678593	Pink usb aufladbar · 2 Stück	Pink USB aufladbar · 2 Stück	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723711361	Champagner-Gold usb aufladbar	Champagner-Gold USB aufladbar	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723744129	Champagner-Gold usb aufladbar · 2 Stück	Champagner-Gold USB aufladbar · 2 Stück	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723875201	Schwarz usb aufladbar	Schwarz USB aufladbar	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723907969	Blau usb aufladbar	Blau USB aufladbar	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046723973505	Weiss usb aufladbar	Weiss USB aufladbar	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450851967361	Farbe	gid://shopify/ProductOptionValue/12046724006273	Roségold usb aufladbar	Roségold USB aufladbar	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450854621569	Farbe	gid://shopify/ProductOptionValue/12046747697537	Leder Pink	Leather Pink	2026-09-23T20:39Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450857374081	Farbe	gid://shopify/ProductOptionValue/12046778728833	Neu Weiss 60 W	New White 60W	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450857374081	Farbe	gid://shopify/ProductOptionValue/12046778827137	Neu Blau 60 W	New Blue 60W	2026-09-23T20:39Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450858193281	Ausführung	gid://shopify/ProductOptionValue/12046786560385	36RGB Fernbedienung 17 Farben-Klassischschwarz	36RGB Fernbedienung 17 Farben-Klassisches Schwarz	2026-09-23T20:39Z/reparatur-korrigiert
+gid://shopify/Product/15450858553729	Farbe	gid://shopify/ProductOptionValue/12046789181825	3086 Upgrade Stil Gelb	3086 Upgraded Style Yellow	2026-09-23T20:40Z/reparatur-original:satzbau:lehnwort-vor-nomen
+gid://shopify/Product/15450858553729	Farbe	gid://shopify/ProductOptionValue/12046789280129	3086 Upgrade Stil Pink	3086 Upgraded Style Pink	2026-09-23T20:40Z/reparatur-original:satzbau:lehnwort-vor-nomen
+gid://shopify/Product/15450858553729	Farbe	gid://shopify/ProductOptionValue/12046789378433	3086 Upgrade Stil Braun	3086 Upgraded Style Brown	2026-09-23T20:40Z/reparatur-original:satzbau:lehnwort-vor-nomen
+gid://shopify/Product/15450858684801	Farbe	gid://shopify/ProductOptionValue/12046790328705	Rechts Silber	Right silver	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450858684801	Farbe	gid://shopify/ProductOptionValue/12046790394241	Links Silber	Left silver	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450858684801	Farbe	gid://shopify/ProductOptionValue/12046790427009	Rechts Gold	Right gold	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450858684801	Farbe	gid://shopify/ProductOptionValue/12046790459777	Links Gold	Left gold	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15452679602561	Ausführung	gid://shopify/ProductOptionValue/12314157449601	007-Blackorange-1.8 m	007-Blackorange-1.8m	2026-09-23T20:40Z/reparatur-original:Blackorange
+gid://shopify/Product/15452679602561	Ausführung	gid://shopify/ProductOptionValue/12314157482369	007-Blackorange-2.0 m	007-Blackorange-2.0m	2026-09-23T20:40Z/reparatur-original:Blackorange
+gid://shopify/Product/15452679602561	Ausführung	gid://shopify/ProductOptionValue/12314157515137	007-Blackorange-2.2 m	007-Blackorange-2.2m	2026-09-23T20:40Z/reparatur-original:Blackorange
+gid://shopify/Product/15452679602561	Ausführung	gid://shopify/ProductOptionValue/12314157547905	007-Blackorange-2.4 m	007-Blackorange-2.4m	2026-09-23T20:40Z/reparatur-original:Blackorange
+gid://shopify/Product/15452679602561	Ausführung	gid://shopify/ProductOptionValue/12314157580673	007-Blackorange-2.6 m	007-Blackorange-2.6m	2026-09-23T20:40Z/reparatur-original:Blackorange
+gid://shopify/Product/15452683075969	Farbe	gid://shopify/ProductOptionValue/12314165346689	Weiss-Einzeln Batterie	White-Single Battery	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15452685271425	Ausführung	gid://shopify/ProductOptionValue/12314173178241	Einzeln Grau-M-1 Stück	Single Gray-M-1pc	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15452685271425	Ausführung	gid://shopify/ProductOptionValue/12314173211009	Einzeln Grau-M-4 Stück	Single Gray-M-4pcs	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15452685271425	Ausführung	gid://shopify/ProductOptionValue/12314173243777	Einzeln Grün-M-1 Stück	Single Green-M-1pc	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15452685271425	Ausführung	gid://shopify/ProductOptionValue/12314173276545	Einzeln Pink-M-1 Stück	Single Pink-M-1pc	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15452685566337	Farbe	gid://shopify/ProductOptionValue/12314174456193	Klassischblau-60x50x18 cm	Klassisches Blau-60x50x18 cm	2026-09-23T20:40Z/reparatur-korrigiert
+gid://shopify/Product/15452685566337	Farbe	gid://shopify/ProductOptionValue/12314174488961	Klassischblau-70x50x18 cm	Klassisches Blau-70x50x18 cm	2026-09-23T20:40Z/reparatur-korrigiert
+gid://shopify/Product/15452685566337	Farbe	gid://shopify/ProductOptionValue/12314174521729	Klassischblau-80x50x18 cm	Klassisches Blau-80x50x18 cm	2026-09-23T20:40Z/reparatur-korrigiert
+gid://shopify/Product/15452685566337	Farbe	gid://shopify/ProductOptionValue/12314174554497	Klassischblau-90x50x18 cm	Klassisches Blau-90x50x18 cm	2026-09-23T20:40Z/reparatur-korrigiert
+gid://shopify/Product/15453531767169	Farbe	gid://shopify/ProductOptionValue/12314453475713	Leder Pink	Leather Pink	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453531799937	Ausführung	gid://shopify/ProductOptionValue/12314454131073	022-Weiss-Stecker in 3 Farbton 32	022-White-Plug in 3 color 32	2026-09-23T20:40Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15453531799937	Ausführung	gid://shopify/ProductOptionValue/12314454163841	022-Weiss-Stecker in 7 Farbton 64	022-White-Plug in 7 color 64	2026-09-23T20:40Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15453531799937	Ausführung	gid://shopify/ProductOptionValue/12314454229377	022-Pink-Stecker in 3 Farbton 32	022-Pink-Plug in 3 color 32	2026-09-23T20:40Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15453531799937	Ausführung	gid://shopify/ProductOptionValue/12314454262145	022-Pink-Stecker in 7 Farbton 64	022-Pink-Plug in 7 color 64	2026-09-23T20:40Z/reparatur-original:satzbau:praeposition
+gid://shopify/Product/15453775856001	Farbe	gid://shopify/ProductOptionValue/12314896761217	Hellgrau-Einzeln Kissenbezug	Light Gray-Single Pillowcase	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453775856001	Farbe	gid://shopify/ProductOptionValue/12314896826753	Dunkelgrau-Einzeln Kissenbezug	Dark Gray-Single Pillowcase	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453775856001	Farbe	gid://shopify/ProductOptionValue/12314896892289	Blau-Grau-Einzeln Kissenbezug	Blue Gray-Single Pillowcase	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453776019841	Grösse	gid://shopify/ProductOptionValue/12314898334081	Extra klein Gr. 23 X 34 Cm	Extra Small Size 23 X 34 Cm	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453776019841	Grösse	gid://shopify/ProductOptionValue/12314898399617	Mittel Gr. 35 X 43 Cm	Medium Size 35 X 43 Cm	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453776019841	Grösse	gid://shopify/ProductOptionValue/12314898432385	Gross Gr. 40 X 58 Cm	Large Size 40 X 58 Cm	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453892870529	Farbe	gid://shopify/ProductOptionValue/12073030975873	Schwarz-Orange einzeln Mesh	Black Orange Single Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453892870529	Farbe	gid://shopify/ProductOptionValue/12073031008641	Schwarz-Gelb einzeln Mesh	Black And Yellow Single Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453892870529	Farbe	gid://shopify/ProductOptionValue/12073031041409	Dunkelblau einzeln Mesh	Dark Blue Single Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453892870529	Farbe	gid://shopify/ProductOptionValue/12073031074177	Grau dünn Mesh	Gray Thin Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453892870529	Farbe	gid://shopify/ProductOptionValue/12073031139713	Doppelt Mesh Schwarz-Orange	Double Mesh Black Orange	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453892870529	Farbe	gid://shopify/ProductOptionValue/12073031172481	Doppelt Mesh Schwarz-Gelb	Double Mesh Black And Yellow	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453893558657	Farbe	gid://shopify/ProductOptionValue/12073035956609	Pink mit Samtfutter Stil	Pink With Velvet Lining Style	2026-09-23T20:40Z/reparatur-original:satzbau:wendung-vor-nomen
+gid://shopify/Product/15453893558657	Farbe	gid://shopify/ProductOptionValue/12073035989377	Weiss mit Fleecefutter Stil	White With Fleece Lining Style	2026-09-23T20:40Z/reparatur-original:satzbau:wendung-vor-nomen
+gid://shopify/Product/15453922492801	Farbe	gid://shopify/ProductOptionValue/12073885532545	Dick Orange	Thick Orange	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453922492801	Farbe	gid://shopify/ProductOptionValue/12073885565313	Dick Leuchtendblau	Thick Bright Blue	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453922492801	Farbe	gid://shopify/ProductOptionValue/12073885598081	Dick Dunkelblau	Thick Dark Blue	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453922492801	Farbe	gid://shopify/ProductOptionValue/12073885729153	8020 mit Kapuze Violettblau	8020 Hooded Purplish Blue	2026-09-23T20:40Z/reparatur-original:satzbau:wendung-vor-nomen
+gid://shopify/Product/15453922492801	Farbe	gid://shopify/ProductOptionValue/12073885761921	8020 mit Kapuze Leuchtendblau	8020 Hooded Bright Blue	2026-09-23T20:40Z/reparatur-original:satzbau:wendung-vor-nomen
+gid://shopify/Product/15453922492801	Farbe	gid://shopify/ProductOptionValue/12073885794689	8020 mit Kapuze Orange	8020 Hooded Orange	2026-09-23T20:40Z/reparatur-original:satzbau:wendung-vor-nomen
+gid://shopify/Product/15453999006081	Farbe	gid://shopify/ProductOptionValue/12074723049857	Samt Grau	Velvet Gray	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999006081	Farbe	gid://shopify/ProductOptionValue/12074723082625	Samt Khaki	Velvet Khaki	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999006081	Farbe	gid://shopify/ProductOptionValue/12074723115393	Samt Armeegrün	Velvet Army Green	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999006081	Farbe	gid://shopify/ProductOptionValue/12074723246465	Samt Camouflage	Velvet Camouflage	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999038849	Farbe	gid://shopify/ProductOptionValue/12074723574145	Dunkelblau einzeln Mesh	Dark Blue Single Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453999038849	Farbe	gid://shopify/ProductOptionValue/12074723606913	Jeansblau einzeln Mesh	Denim Blue Single Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453999038849	Farbe	gid://shopify/ProductOptionValue/12074723639681	Puderweiss einzeln Mesh	White Powder Single Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453999038849	Farbe	gid://shopify/ProductOptionValue/12074723705217	Jeansblau doppelt Mesh	Denim Blue Double Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453999038849	Farbe	gid://shopify/ProductOptionValue/12074723737985	Puderweiss doppelt Mesh	White Powder Double Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453999497601	Farbe	gid://shopify/ProductOptionValue/12074730127745	6168 Schwarz doppelt Mesh	6168 Black Double Mesh	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731045249	Baumwolle Schwarz	Cotton Schwarz	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731078017	F6012 Baumwolle Schwarz · Gr. 27	F6012 Cotton Black · Gr. 27	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731110785	F6012 Baumwolle Schwarz · Gr. 28	F6012 Cotton Black · Gr. 28	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731143553	F6012 Baumwolle Schwarz · Gr. 29	F6012 Cotton Black · Gr. 29	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731176321	F6012 Baumwolle Schwarz · Gr. 30	F6012 Cotton Black · Gr. 30	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731209089	F6012 Baumwolle Schwarz · Gr. 31	F6012 Cotton Black · Gr. 31	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731241857	F6012 Baumwolle Schwarz · Gr. 32	F6012 Cotton Black · Gr. 32	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731274625	F6012 Baumwolle Schwarz · Gr. 33	F6012 Cotton Black · Gr. 33	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731307393	F6012 Baumwolle Schwarz · Gr. 34	F6012 Cotton Black · Gr. 34	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731340161	F6012 Baumwolle Schwarz · Gr. 35	F6012 Cotton Black · Gr. 35	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15453999661441	Farbe	gid://shopify/ProductOptionValue/12074731372929	F6012 Baumwolle Schwarz · Gr. 36	F6012 Cotton Black · Gr. 36	2026-09-23T20:40Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15454001955201	Farbe	gid://shopify/ProductOptionValue/12314997064065	200x150 klein Rot kariert	200x150 Small Red Plaid	2026-09-23T20:40Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454003364225	Farbe	gid://shopify/ProductOptionValue/12074779836801	Khaki Kragen Weiss	Khaki Collar White	2026-09-23T20:40Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15454003364225	Farbe	gid://shopify/ProductOptionValue/12074779869569	Khaki Kragen Schwarz	Khaki Collar Black	2026-09-23T20:40Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15454003364225	Farbe	gid://shopify/ProductOptionValue/12074779902337	Khaki Kragen Marineblau	Khaki Collar Navy Blue	2026-09-23T20:40Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15454003364225	Farbe	gid://shopify/ProductOptionValue/12074779935105	Grün Kragen Weiss	Green Collar White	2026-09-23T20:40Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15454003364225	Farbe	gid://shopify/ProductOptionValue/12074779967873	Grün Kragen Schwarz	Green Collar Black	2026-09-23T20:40Z/reparatur-original:satzbau:nomen-vor-farbe
+gid://shopify/Product/15454039015809	Farbe	gid://shopify/ProductOptionValue/12075539923329	Schwarz und lang	Black And Long	2026-09-23T20:40Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15454090756481	Farbe	gid://shopify/ProductOptionValue/12315208778113	Komplett Weiss-45x75 mittel Kissen	Pure White-45x75 Medium Pillow	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454105371009	Farbe	gid://shopify/ProductOptionValue/12377052283265	Leuchtendgelb	Leuchtendes Gelb	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15454105469313	Farbe	gid://shopify/ProductOptionValue/12076894749057	Leder Pink	Leather Pink	2026-09-23T20:41Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15454105600385	Farbe	gid://shopify/ProductOptionValue/12076895699329	Washed Blau	Washed Blue	2026-09-23T20:41Z/reparatur-original:Washed
+gid://shopify/Product/15454116381057	Farbe	gid://shopify/ProductOptionValue/12315263861121	Lila sand	Lila-Sand	2026-09-23T20:41Z/reparatur-korrigiert
+gid://shopify/Product/15454117527937	Farbe	gid://shopify/ProductOptionValue/12315264811393	2210 klein Schwarz	2210 Small Black	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454117527937	Farbe	gid://shopify/ProductOptionValue/12315264844161	2210 klein Grau	2210 Small Gray	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454117527937	Farbe	gid://shopify/ProductOptionValue/12315264876929	2210 klein Armeegrün	2210 Small Army Green	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454117527937	Farbe	gid://shopify/ProductOptionValue/12315264909697	2210 klein Pfauenblau	2210 Small Peacock Blue	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454117527937	Farbe	gid://shopify/ProductOptionValue/12315264942465	2210 klein Beige	2210 Small Beige	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454117527937	Farbe	gid://shopify/ProductOptionValue/12315265008001	2210 klein Hellblau	2210 Small Light Blue	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454117527937	Farbe	gid://shopify/ProductOptionValue/12315265040769	2210 klein Helllila	2210 Small Light Purple	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454125064577	Farbe	gid://shopify/ProductOptionValue/12077099286913	Baumwolle Gelb	Cotton yellow	2026-09-23T20:41Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15454125064577	Farbe	gid://shopify/ProductOptionValue/12077099319681	Baumwolle Schwarz	Cotton black	2026-09-23T20:41Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15454125064577	Farbe	gid://shopify/ProductOptionValue/12077099352449	Baumwolle Khaki	Cotton khaki	2026-09-23T20:41Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15454162289025	Farbe	gid://shopify/ProductOptionValue/12077459374465	Washed Blau	Washed Blue	2026-09-23T20:41Z/reparatur-original:Washed
+gid://shopify/Product/15454180540801	Farbe	gid://shopify/ProductOptionValue/12315320549761	Schwarz-USB zufällig Kabel-USB	Black-USB random cable-USB	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454180540801	Farbe	gid://shopify/ProductOptionValue/12315320582529	Grün-USB zufällig Kabel-USB	Green-USB random cable-USB	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454180540801	Farbe	gid://shopify/ProductOptionValue/12315320615297	Weiss-USB zufällig Kabel-USB	White-USB random cable-USB	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454180737409	Farbe	gid://shopify/ProductOptionValue/12315323859329	Eckig gross	Square Large	2026-09-23T20:41Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15454180737409	Farbe	gid://shopify/ProductOptionValue/12315323990401	H eckig gross	H Square Large	2026-09-23T20:41Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15454180737409	Farbe	gid://shopify/ProductOptionValue/12315324055937	H eckig gross 2	H Square Large 2	2026-09-23T20:41Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15454192664961	Farbe	gid://shopify/ProductOptionValue/12315328348545	Weiss Keramik Stil-USB-C	White Ceramic Style-Type C	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454218453377	Farbe	gid://shopify/ProductOptionValue/12078654062977	T28 Schwarz Gummi Typ	T28 Black Rubber Type	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454218453377	Farbe	gid://shopify/ProductOptionValue/12078654095745	T28 Rot Gummi Typ	T28 Red Rubber Type	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454218453377	Farbe	gid://shopify/ProductOptionValue/12078654128513	T28 Weiss Gummi Typ	T28 White Rubber Type	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454500225409	Farbe	gid://shopify/ProductOptionValue/12315719106945	Rot-Batterie Typ	Red-Battery Type	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454500225409	Farbe	gid://shopify/ProductOptionValue/12315719139713	Blau-Batterie Typ	Blue-Battery Type	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454500225409	Farbe	gid://shopify/ProductOptionValue/12315719172481	Weiss-Batterie Typ	White-Battery Type	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454500225409	Farbe	gid://shopify/ProductOptionValue/12315719205249	Neongrün-Batterie Typ	Fluorescent Green-Battery Type	2026-09-23T20:41Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15454782325121	Farbe	gid://shopify/ProductOptionValue/12085988065665	Beige Grün	Beige-Grün	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15454782325121	Farbe	gid://shopify/ProductOptionValue/12085988491649	Beige Blau	Beige-Blau	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15454852120961	Farbe	gid://shopify/ProductOptionValue/12086231400833	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:41Z/reparatur-konsistenz
+gid://shopify/Product/15454915461505	Farbe	gid://shopify/ProductOptionValue/12316090728833	Mittel Gr. 30 Cm	Medium Size 30 Cm	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15454915461505	Farbe	gid://shopify/ProductOptionValue/12316090794369	3 Stück Set	3pcs set	2026-09-23T20:41Z/reparatur-original:satzbau:menge-vor-nomen
+gid://shopify/Product/15455004688769	Farbe	gid://shopify/ProductOptionValue/12316092072321	Mattschwarz-Einzeln Batterie	Matte Black-Single Battery	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455426675073	Farbe	gid://shopify/ProductOptionValue/12316131787137	Bestickt Futter-21x14x8 cm	Embroidered lining-21x14x8cm	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455426675073	Farbe	gid://shopify/ProductOptionValue/12316131819905	Bestickt Futter-23x14x8 cm	Embroidered lining-23x14x8cm	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455426675073	Farbe	gid://shopify/ProductOptionValue/12316131852673	Bestickt Futter-19.5x19.5x8.5 cm	Embroidered lining-19.5x19.5x8.5cm	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455426675073	Farbe	gid://shopify/ProductOptionValue/12316131885441	Bestickt Futter-23x14.5x15 cm	Embroidered lining-23x14.5x15cm	2026-09-23T20:41Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760429953	Pink plus Baumwolle-24/25	Pink plus cotton-24or25	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760462721	Pink plus Baumwolle-26/27	Pink plus cotton-26or27	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760495489	Pink plus Baumwolle-28/29	Pink plus cotton-28or29	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760528257	Pink plus Baumwolle-30/31	Pink plus cotton-30or31	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760561025	Pink plus Baumwolle-32/33	Pink plus cotton-32or33	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760593793	Pink plus Baumwolle-34/35	Pink plus cotton-34or35	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760626561	Blau plus Baumwolle-24/25	Blue plus cotton-24or25	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760659329	Blau plus Baumwolle-26/27	Blue plus cotton-26or27	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760692097	Blau plus Baumwolle-28/29	Blue plus cotton-28or29	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760724865	Blau plus Baumwolle-30/31	Blue plus cotton-30or31	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760757633	Blau plus Baumwolle-32/33	Blue plus cotton-32or33	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760790401	Blau plus Baumwolle-34/35	Blue plus cotton-34or35	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760823169	Lila plus Baumwolle-24/25	Purple plus cotton-24or25	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760855937	Lila plus Baumwolle-26/27	Purple plus cotton-26or27	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760888705	Lila plus Baumwolle-28/29	Purple plus cotton-28or29	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760921473	Lila plus Baumwolle-30/31	Purple plus cotton-30or31	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760954241	Lila plus Baumwolle-32/33	Purple plus cotton-32or33	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760987009	Lila plus Baumwolle-34/35	Purple plus cotton-34or35	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761019777	Schwarz plus Baumwolle-24/25	Black plus cotton-24or25	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761052545	Schwarz plus Baumwolle-26/27	Black plus cotton-26or27	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761085313	Schwarz plus Baumwolle-28/29	Black plus cotton-28or29	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761118081	Schwarz plus Baumwolle-30/31	Black plus cotton-30or31	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761150849	Schwarz plus Baumwolle-32/33	Black plus cotton-32or33	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761183617	Schwarz plus Baumwolle-34/35	Black plus cotton-34or35	2026-09-23T20:41Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15455656444289	Farbe	gid://shopify/ProductOptionValue/12092605792641	Schwarz washed 1	Washed Black 1	2026-09-23T20:41Z/reparatur-original:Washed
+gid://shopify/Product/15455656444289	Farbe	gid://shopify/ProductOptionValue/12092605825409	Schwarz washed 2	Washed Black 2	2026-09-23T20:41Z/reparatur-original:Washed
+gid://shopify/Product/15455656444289	Farbe	gid://shopify/ProductOptionValue/12092605858177	Washed Grau 1	Washed Gray 1	2026-09-23T20:41Z/reparatur-original:Washed
+gid://shopify/Product/15455657034113	Farbe	gid://shopify/ProductOptionValue/12377072468353	Schwarz washed 2	Washed Black 2	2026-09-23T20:41Z/reparatur-original:Washed
+gid://shopify/Product/15455657034113	Farbe	gid://shopify/ProductOptionValue/12377072501121	Schwarz washed 1	Washed Black 1	2026-09-23T20:41Z/reparatur-original:Washed
