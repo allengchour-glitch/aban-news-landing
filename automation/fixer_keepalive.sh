@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -396,6 +396,8 @@ while true; do
     # Mutation; Tags verlust-auto-draft + marge-verlust-draft (letzteren kennen die Rueckholer). Kein FERTIG,
     # solange «raus» offen ist → die Schleife setzt beim naechsten Tick fort (CAP 300 je Lauf, ~1'315 offen).
     if [ "$L" = bild_queue_captions_ehrlich ] || [ "$L" = kategorie_wache ] || [ "$L" = bild_heilversprechen ]; then EXP="SCHARF=1"; fi
+    # 23.09.: herbst_kuratieren nur RAEUMEN (Sperr-Tags raus, nach 30.11. Tag weg) — Neuaufnahmen nur in betreuten Laeufen.
+    [ "$L" = herbst_kuratieren ] && EXP="NUR_RAEUMEN=1"
     if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
     # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
     # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf
@@ -433,13 +435,23 @@ while true; do
     # ⚠️ produkttexte_du_form steht NICHT in dieser Liste: das Skript nimmt den Text-Lock SELBST (flock LOCK_EX).
     # Mit TXTLOCK erbte es fd 8 samt gehaltenem Lock und wartete dann auf sich selbst (22.09.2026: 52 Min
     # locks_lock_inode_wait, 0 Zeilen im Ledger — jeder automatische Start seit dem 21.09. stand so).
+    # ⚠️ 23.09.2026 DEADLOCK: hier stand «$TXTLOCK … exec shopify_schranke» — erst Text-Sperre, dann Platz. Mit
+    # produkttexte_du_form (haelt einen Platz, nimmt die Text-Sperre je Produkt) war das ein Kreis: liechtenstein_raus
+    # hielt fd 8 und wartete auf einen Platz, du_form hielt den Platz und wartete auf fd 8; sechs Tages-Waechter
+    # standen bis zu 3 h dahinter. Jetzt IMMER erst Platz (Schranke), dann Text-Sperre (mit_textsperre.sh, 240 s Frist).
     case " versand_jenachland lieferblock_doppelt ss_statt_scharf_s fremdzeichen_guard heilversprechen_wache liechtenstein_raus " in
-      *" $L "*) TXTLOCK="exec 8>/tmp/lock_produkttext.lock; flock -w 240 8 || exit 0;" ;;
+      *" $L "*) TXTLOCK="bash automation/mit_textsperre.sh" ;;
       *)        TXTLOCK="" ;;
+    esac
+    # Massen-Schreiber (Stunden je Lauf) in eine EIGENE Spur mit 1 Platz — auf der Tages-Spur belegten
+    # produkttexte_du_form und variant_value_clean am 23.09. beide Plaetze ueber Stunden.
+    SPUR=""
+    case " produkttexte_du_form variant_value_clean kategorie_wache " in
+      *" $L "*) SPUR="SCHRANKE_NAME=massen_slot SCHRANKE_PLAETZE=1" ;;
     esac
     date +%s > "/tmp/_start_$L"
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $TXTLOCK $EXP exec bash automation/shopify_schranke.sh python3 automation/$L.py" \
+        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP $SPUR exec bash automation/shopify_schranke.sh $TXTLOCK python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- 8>&- & )
     echo "$(date -u +%H:%M) restart $L"
     sleep 5
