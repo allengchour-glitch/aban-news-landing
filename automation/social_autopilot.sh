@@ -109,11 +109,11 @@ while true; do
     if faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
       echo "$(date -u +%H:%M) Reel fällig"
       # MIN_GAP_H: der Poster hat intern 48 h Abstand (Juli, «weniger aber besser»); seit 22.09. gilt die Kadenz hier (REEL_ABSTAND)
-      if MIN_GAP_H=6 $NODE automation/meta_reel_post.mjs; then
-        touch "$MARKE_REEL"
-      else
-        echo "$(date -u +%H:%M) Reel-Post fehlgeschlagen"
-      fi
+      MIN_GAP_H=6 $NODE automation/meta_reel_post.mjs; RC=$?
+      # 23.09.: Exit 3 = Kandidat quittiert/uebersprungen, KEIN Post → Marke bleibt alt, naechster Durchlauf (15 min) versucht den naechsten.
+      if [ "$RC" = 0 ]; then touch "$MARKE_REEL"
+      elif [ "$RC" = 3 ]; then echo "$(date -u +%H:%M) Reel: Kandidat uebersprungen — naechster Versuch im naechsten Durchlauf"
+      else echo "$(date -u +%H:%M) Reel-Post fehlgeschlagen (Exit $RC)"; fi
     fi
 
     # Instagram-Karussell (23.09.2026): ein Slide-Set (4:5) aus social/ig_karussell.csv als IG-Karussell + FB-Album.

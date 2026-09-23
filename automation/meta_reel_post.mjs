@@ -9,6 +9,7 @@
  *
  * ENV: META_ACCESS_TOKEN (oder /tmp/meta_page_token) · IG_USER_ID (oder /tmp/meta_ig_id) ·
  *      FB_PAGE_ID (Default 1049840534888592) · [DRY=1] · [MIN_GAP_H=48]
+ * EXIT: 0 = gepostet oder nichts faellig · 1 = Fehler · 3 = Kandidat uebersprungen/quittiert, kein Post (naechster Lauf bald)
  */
 import fs from 'node:fs';
 import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
@@ -167,7 +168,9 @@ async function igLiveHas(caption) {
   console.error('⚠️ IG-Live-Abgleich nicht erreichbar (3× Fehler) → verlasse mich auf lokale Wachen.');
   return false;                            // Nie erreichbar → nicht das Posten blockieren (lokale Wachen greifen)
 }
-if (await igLiveHas(cand[idx.caption])) process.exit(0);
+// 23.09.2026: Treffer QUITTIEREN — vorher blieb die Zeile «ready», wurde jeden Lauf wieder gewaehlt und blockierte die Reel-Queue.
+// Exit 3 = «kein Post in diesem Lauf, ohne Fehler» → der Autopilot setzt seine Kadenz-Marke NICHT und versucht es im naechsten Durchlauf.
+if (await igLiveHas(cand[idx.caption])) { if (!DRY) { cand[idx.status] = 'posted-dup-live'; postMark(cand[idx.video_url]); writeLedger(); } process.exit(3); }
 
 // ── PRODUKT NOCH KAUFBAR? (GEHIRN 10 «vor Post prüfen, dass das Produkt noch ACTIVE ist» — bis 22.09.2026
 //    lebte diese Regel nur im Kopf; der Autopilot postet ohne Menschen, also gehört sie hierher.)
@@ -224,12 +227,12 @@ async function promoPruefen(postId, videoUrl, caption) {
   const pa = /^promo-/.test(cand[idx.id] || '')
     ? await promoPruefen(cand[idx.id], cand[idx.video_url], cand[idx.caption])
     : await produktAktiv(cand[idx.id]);
-  if (!pa.ok && pa.veraltet && !DRY) { cand[idx.status] = 'promo-veraltet'; writeLedger(); console.error(`⛔ Kein Post — ${pa.grund}`); process.exit(0); }
+  if (!pa.ok && pa.veraltet && !DRY) { cand[idx.status] = 'promo-veraltet'; writeLedger(); console.error(`⛔ Kein Post — ${pa.grund}`); process.exit(3); }
   shopUrl = pa.url || '';
   if (!pa.ok) {
     console.error(`⛔ Kein Post — Produkt nicht kaufbar/pruefbar (${pa.grund}): ${cand[idx.id]}`);
     if (!DRY && /nicht mehr|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pa.grund)) { cand[idx.status] = 'produkt-nicht-aktiv'; writeLedger(); }
-    process.exit(0);
+    process.exit(3);
   }
   console.log(`  Produkt: ${pa.grund}`);
 }
@@ -254,7 +257,7 @@ let igPermalink = '';
 // 1) Instagram Reel
 { // Einwilligungs-Bedingung der Kundin: ihr Material nur MIT Markierung (04.09.2026).
   const fehlt = markierungFehlt(url, text, cand[idx.id]);
-  if (fehlt) { console.error('⛔', fehlt); process.exit(0); } }
+  if (fehlt) { console.error('⛔', fehlt); cand[idx.status] = 'markierung-fehlt'; writeLedger(); process.exit(3); } }
 const c = await api(`${IG}/media`, { media_type: 'REELS', video_url: url, caption: text, share_to_feed: 'true' });
 if (!c.id) { console.error('IG-Container-Fehler:', JSON.stringify(c).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
 for (let a = 0; a < 30; a++) {
