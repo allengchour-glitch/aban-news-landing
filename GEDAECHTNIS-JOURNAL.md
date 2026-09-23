@@ -679,6 +679,43 @@ Mutation wird SOFORT als Ledger-Zeile vorgemerkt («gesendet-ruecklesen-offen»)
 den geschriebenen Titel nicht aus der Historie reisst; der Wächter hatte KEINEN Starter → jetzt Tageswächter im Aufseher
 mit SCHARF=1 (Standard ist trocken). Scharf-Lauf: Ripsband zuerst (Gold statt Silber, 6 Alt-Texte), dann Vollauf.
 
+**Nachtrag 50 (23.09.2026, 22:55 UTC — CJ-Punkte-Eimer, Netz-Politik, Semrush, TikTok-Link, Bild-Ledger-Verlust):**
+(1) **Der CJ-Punkte-Eimer ist um 16:36 UTC leer** («Used today: 123'710, Remaining: 0») — und `cj_varianten_wache.py`
+fragte trotzdem weiter: 2'095 Fehlversuche (16900500) in 21 Minuten, jeder auf dem gemeinsamen Takt, den auch der
+Bestell-Runner braucht. Der Helfer `cj()` kannte nur die Drossel (1600200) als Wartegrund; 16900500 war eine «normale»
+Antwort und wurde je Produkt als «unklar» durchgereicht. Jetzt: `PUNKTE-LEER` → Lauf endet mit Exit 3, nichts im Ledger.
+Verbraucher heute (Logs, «Used today»-Verlauf): Varianten-Wache 87'580 → 123'750 (LIMIT 1'500 × 10 P), Bewertungs-Import
+(pid-Nachschlag 10 P je Produkt, stand um 16:36 mit 0 Punkten), Bild-Nachfüller (593 × 10 P), dazu die Messungen der
+Workflow-Agenten. **Ein Tagesbudget ohne Verteilung frisst der erste Läufer** — die Wächter, die es kennen
+(`cj_verfuegbarkeit` PUNKTE_RESERVE 400, `cj_kosten_backfill` PAUSE), sind die Ausnahme. Folge: alles, was CJ braucht
+(Reels aus CJ-Videos, Halloween-Angebot messen, Bild-Nachfüller), wartet auf den Reset; ein Bestell-Runner mit 0 Punkten
+könnte eine Bestellung nicht anlegen. → Offen: EIN `cj_etikette` wie `eimer_etikette` (Rest lesen, unter Reserve nur
+Bestellungen), Tageslimits je Wächter.
+(2) **Netz-Politik der Umgebung (seit 21:02 UTC):** der Ausgangs-Proxy lehnt CONNECT zu `cf.cjdropshipping.com`,
+`oss-cf.cjdropshipping.com`, `download-only-api.cjdropshipping.com`, `cc-west-usa.oss-us-west-1.aliyuncs.com`,
+`vm.tiktok.com`, `www.tiktok.com` ab (403) — `developers.cjdropshipping.com` und Shopify gehen. Damit ist der
+Bild-Nachfüller blind (HEAD/OCR über den Proxy): v1 hätte jede URL als «tot» gezählt und das Produkt FÜR IMMER als
+«nichts-brauchbar» ins Ledger geschrieben — ein Netzfehler wäre zur Aussage über die Ware geworden. Der Bau-Agent hat
+die Wache eingebaut (PAUSE «Bildhost gesperrt», 0 Punkte verbraucht). **Vor jedem Massenlauf, der Fremdhosts liest,
+einen Kanarienvogel-Abruf machen — und ein 403 vom Proxy nie als Eigenschaft der Ware lesen.** `WebFetch` hat einen
+anderen Ausgang (Google-Suggest, TikTok-Embed gehen), der Hetzner-Agent liest Seiten mit echtem Browser.
+(3) **Semrush** liefert nach einer Abfrage «no_api_units» (luxestyle.ch: Rang 1'157'996, 536 organische Keywords,
+Traffic-Schätzung 0) — Volumen/CPC sind heute nicht messbar; der Keywordplan läuft über Google-Suggest (Rang statt
+Zahl), Shopify-Landeseiten (Google 90 T.: 410 Sitzungen, oben Dry Bag 82, Startseite 78, Faszienrollen-Ratgeber 76,
+Rizinusöl-Wickel 55) und SERP-Lesung per DuckDuckGo/Bing.
+(4) **Betreiber-Link ohne Kommentar** (`vm.tiktok.com/ZN8MqnGwH` → @ecomfabio 7675095305976646944, «Keywords ziehen.
+Konkurrenz analysieren. Fertigen Keywordplan bauen», #googleads): Kurzlink über WebFetch auflösen (301 → Ziel), Caption
+über `www.tiktok.com/oembed?url=…` und `www.tiktok.com/embed/v2/<id>` (beide liefern Titel, Autor, Zahlen), der
+Server-Agent (`seite_text`) liefert den sichtbaren Text — kein Transkript. Ein Link ohne Worte ist ein Auftrag:
+«mach das für uns» — hier: Keywordplan-Workflow.
+(5) **Bild-Ledger verlor 50 «+N»-Zeilen:** der Node-`WriteStream` hielt den Inode von `_cj_bild_backfill.txt`, ein
+Rebase eines anderen Schreibers (18:33) tauschte die Datei — der Stream schrieb 14 Minuten ins Leere. Regel für jeden
+Ledger-Schreiber: **`appendFileSync` je Zeile über den PFAD, nie ein offener Stream** (überlebt Rebase, Checkout, Rewind).
+(6) Halloween gemessen (Agent): 173 aktive, 1-Bild-Klasse ist Fortura (53 von 135, Feed ohne Extras), CJ-Ware hat 4–17
+Bilder; **40 Produkte mit «Halloween»/«Kürbis» im Titel tragen den Tag nicht**; Menü verlinkt `/collections/halloween`,
+Startseite zeigt `halloween-2026` (Position 17) — zwei Kollektionen, gleiche 196 Produkte; 0 Social-Posts je; 11 Sitzungen
+in 30 Tagen, 0 Bestellungen. Die «2–3-Bilder-Welle» bringt nichts: CJ bietet dort exakt die vorhandenen Bilder.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16368,3 +16405,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-22 · 📚 **52 Kollektionstexte siezten noch — der Diff-Trockenlauf zeigte drei weitere Regressionen (Objekt-Sie nach -t-Verb → «rüstet du», «für Sie» → «für du», Adjektiv nach «und» als Verb); Regeln ergänzt, 52 geschrieben.** Reparaturlauf Produkte: 8 von 10 Verdacht waren Fehlalarme der Warnnetze → Netze verfeinert, Verdacht neu geprüft → Journal
 - 2026-09-22 · 📝 **Ratgeber-Reparatur: drei Diff-Runden bis «neu gegenüber Vorlauf» leer war — elf Regressionsklassen (Objekt-«Sie» der Cremes, «für Sie und Ihn» auf Geschenkseiten, Nomen/Adjektive/Adverbien als Verben, «zu haben», Relativsatz, Konditional-Inversion, `</a>` als Satzgrenze), 26 Texte geschrieben, Nachscan 107/107 sauber.** Zwei stille Werkzeugfallen: `\\s` im Heredoc, Lookbehind variabler Breite → Journal
 - 2026-09-22 · ✍️ **Reparatur des Geschriebenen: 86 Inversionen in 107 Ratgebern (45 repariert, Nachscan 0), Produkte 2 % Alt-Defekte → Reparaturlauf über 3'407; der 400er-Trockenlauf zeigte 3 REGRESSIONEN der neuen Regeln (Infinitiv vor Modalverb, Adjektiv als Verb, Objekt-Sie) → neun Klassen nachgebessert, erst dann scharf.** Du-Form-Lauf 3 stand 52 Min im Selbst-Deadlock (geerbter Lock-fd 8, `locks_lock_inode_wait`, 0 geschrieben) → Erblasser war der Aufseher (TXTLOCK + alter Startblock): jeder Automatik-Start seit 21.09. hing, alle 3'407 Zeilen kamen von Hand; beide Stellen repariert, Starter schliessen fds; Ledger ohne Wachstum nach 10 Min = `wchan` lesen → Journal
+- 2026-09-22 · 🚚 **Verbesserungsrunde 3: der Wächter für besuchte Seiten ohne CH-Versand meldete nur — seit 18.09. vollstreckte allein ein Mensch; sein Register zeigte «ACTIVE» für ein seit 06:01 gedraftetes Produkt (Meinung des letzten Laufs je Handle, kein Live-Stand).** Jetzt `vollstrecken()`: DRAFT nach zwei unabhängigen NEIN, Tag `cj-keine-ch-versandoption`, Bericht → Journal
