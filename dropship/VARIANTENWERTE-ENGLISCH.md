@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 17:50 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 17:54 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'220**
-- Optionen mit englischen Werten (Kandidaten): 58
-- Optionen übersetzt: **7** · Werte übersetzt: **45**
+- Produkte gesehen: **1'814**
+- Optionen mit englischen Werten (Kandidaten): 238
+- Optionen übersetzt: **62** · Werte übersetzt: **380**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 327
+- Werte mit unbekanntem Wort (unverändert): 957
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 1
+- übersprungen «kollision-nach-uebersetzung»: 11
 - übersprungen «kleidungsstueck-im-wert»: 1
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -26,6 +26,16 @@
 > Die Übersetzung ergäbe zwei gleichlautende Werte (meist «Blue» neben «Blau»). Zusammenlegen ist Sache von `farbwert_dubletten.py` bzw. eines Menschen.
 
 - `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Red battery → Rot Batterie; Red battery set → Rot Batterie Set; Set2 → Set 2
+- `15447596302721` [Farbe] glanzendes-mini-kleid-mit-raffung-634500: Marineblaublau → Marineblau
+- `15447598268801` [Farbe] damen-kleid-mit-puffarmeln-und-taillengurtel-613900: Marineblaublau → Marineblau
+- `15447603413377` [Farbe] leinenhemd-kurzarm-loose-fit-fur-herren-613900: Marineblaublau → Marineblau
+- `15447603806593` [Farbe] casual-loose-fit-t-shirt-mit-zwei-taschen-628400: Marineblaublau → Marineblau
+- `15447603937665` [Farbe] herren-jacquard-polo-shirt-mit-reissverschluss-614101: Marineblaublau → Marineblau
+- `15447604658561` [Farbe] polo-shirt-kurzarm-slim-fit-pique-baumwolle-615000: Marineblaublau → Marineblau
+- `15447605510529` [Farbe] leinenhemd-langarmlig-fur-herren-624700: Marineblaublau → Marineblau
+- `15447606198657` [Farbe] jacquard-polo-shirt-mit-reverskragen-602400: Marineblaublau → Marineblau
+- `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
+- `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -84,5 +94,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`skin` 61, `feet` 52, `generation` 31, `light` 20, `220grams` 18, `stone` 14, `spring` 13, `80grams` 12, `high` 12, `carbon` 12, `45se6` 12, `belt` 11, `suit` 11, `to9mm` 11, `shell` 10, `autumn` 10, `foot` 9, `platinum` 9, `case` 8, `footstep` 8, `stepping` 8, `plush` 8, `chain` 8, `baby1` 7, `baby2` 7, `translucent` 7, `moissanite` 7, `no` 6, `alternative` 5, `gel` 5, `2black` 5, `2blue` 5, `2red` 5, `blossom` 4, `code` 4, `boxes` 4, `color` 3, `alluvial` 3, `spot` 3, `full` 3, `cherry` 3, `ck` 3, `ash` 3, `walnut` 3, `unpredictable` 3, `stars` 3, `road` 3, `mountain` 3, `imitating` 2, `antique` 2, `arms` 2, `plum` 2, `background` 2, `ice` 2, `3black` 2, `3blue` 2, `3red` 2, `skull` 2, `ghost` 2, `pumpkin` 2
+`skin` 62, `light` 53, `feet` 52, `core` 52, `shell` 31, `generation` 31, `insert` 26, `case` 24, `batteries` 24, `bag` 21, `surface` 21, `color` 20, `of` 20, `high` 19, `hat` 18, `220grams` 18, `stone` 16, `no` 16, `face` 16, `electric` 16, `gallium` 16, `nitride` 16, `belt` 15, `suit` 15, `handle` 15, `spring` 14, `carbon` 13, `80grams` 12, `45se6` 12, `noodles` 12, `to9mm` 11, `three` 11, `storage` 11, `autumn` 10, `one` 9, `foot` 9, `platinum` 9, `monolever` 9, `watch` 9, `cup` 9, `lens` 9, `ports` 9, `background` 8, `footstep` 8, `stepping` 8, `plush` 8, `chain` 8, `line` 8, `two` 8, `tea` 7, `full` 7, `baby1` 7, `baby2` 7, `translucent` 7, `moissanite` 7, `strap` 7, `regular` 7, `milk` 6, `laser` 6, `rows` 6
 
