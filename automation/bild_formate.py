@@ -61,6 +61,85 @@ F_FALLBACK = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 UA = {"User-Agent": "Mozilla/5.0 (LuxeStyle bild_formate)"}
 
 
+# ---------------------------------------------------------------- Bildtext (OCR) — Prüfer 23.09.2026 22:58
+# social/pins/aufblasbarer-leuchtender-fga975036.jpg trug «LIGHT-UP AIRBLOWN INFLATABLES INDOOR & OUTDOOR USE»: englischer
+# Lieferantentext im Pin. GEMESSEN an allen 11 Pin-Quellbildern des Manifests: das Aufblas-Bild liest bildtext_pruefen.woerter()
+# bei 1× mit 3 Wörtern (UNTER der Schwelle 4), bei 2× mit 4; alle zehn sauberen Bilder lesen 0 bei 1× UND 2×. Darum ZWEI
+# Lesarten (1× und 2×, längste Kante ≤ 3200 px) und das Maximum — ab WORTGRENZE (4) wird das Bild verworfen und das nächste
+# Produktbild versucht; trägt jedes Bild Text, wird das Produkt übersprungen (Vermerk social/pins/_uebersprungen.tsv).
+# Jede Messung steht in social/pins/_bildtext.tsv (name, url ohne ?v=, woerter, geprueft); der Pinner liest sie, damit er für
+# ein Text-Hauptbild NICHT aufs Rohbild zurückfällt. Ohne tesseract (bildtext_pruefen beendet sich beim Import mit exit 0)
+# wird nichts verworfen und nichts als «sauber» eingetragen — −1 heisst unbekannt, nicht sauber.
+def _ocr_laden():
+    try:
+        import bildtext_pruefen as bp
+        return bp.woerter, int(bp.WORTGRENZE)
+    except (ImportError, SystemExit, Exception):
+        return None, 4
+
+
+_OCR_WOERTER, WORTGRENZE = _ocr_laden()
+BILDTEXT_NAME, UEBERSPRUNGEN_NAME = "_bildtext.tsv", "_uebersprungen.tsv"
+BT_SPALTEN = ["name", "url", "woerter", "geprueft"]
+_jetzt = lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def bildtext_lesen():
+    p = os.path.join(OUT, BILDTEXT_NAME)
+    if not os.path.exists(p):
+        return {}
+    with open(p, newline="", encoding="utf-8") as fh:
+        return {r["url"]: r for r in csv.DictReader(fh, delimiter="\t")}
+
+
+def bildtext_schreiben(bt):
+    p = os.path.join(OUT, BILDTEXT_NAME)
+    os.makedirs(OUT, exist_ok=True)
+    tmp = p + ".tmp"
+    with open(tmp, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=BT_SPALTEN, delimiter="\t", lineterminator="\n")
+        w.writeheader()
+        for k in sorted(bt):
+            w.writerow({c: bt[k].get(c, "") for c in BT_SPALTEN})
+    os.replace(tmp, p)
+
+
+def bildtext_woerter(im, url, name, bt):
+    """Grösste Wortzahl aus zwei Lesarten (1×, 2×); −1 = nicht messbar. Ergebnis je URL (ohne ?v=) gemerkt."""
+    key = url.split("?")[0]
+    if key in bt:
+        try:
+            return int(bt[key]["woerter"])
+        except (TypeError, ValueError):
+            pass
+    if _OCR_WOERTER is None:
+        return -1
+    try:
+        g = im.convert("L")
+        n = len(_OCR_WOERTER(g))
+        s = min(2.0, 3200 / max(g.size))
+        if s > 1.05:
+            n = max(n, len(_OCR_WOERTER(g.resize((int(g.width * s), int(g.height * s)), Image.LANCZOS))))
+    except Exception:
+        return -1
+    bt[key] = {"name": name, "url": key, "woerter": str(n), "geprueft": _jetzt()}
+    if not DRY:
+        bildtext_schreiben(bt)
+    return n
+
+
+def uebersprungen_merken(name, grund):
+    if DRY:
+        return
+    p = os.path.join(OUT, UEBERSPRUNGEN_NAME)
+    os.makedirs(OUT, exist_ok=True)
+    neu = not os.path.exists(p)
+    with open(p, "a", encoding="utf-8") as fh:
+        if neu:
+            fh.write("name\tgrund\tgeprueft\n")
+        fh.write(f"{name}\t{grund}\t{_jetzt()}\n")
+
+
 def font(pfad, px):
     try:
         return ImageFont.truetype(pfad, px)
@@ -105,7 +184,7 @@ def produkte(handles):
         teil = handles[i:i + 20]
         felder = " ".join(
             f'p{j}: productByIdentifier(identifier:{{handle:{json.dumps(h)}}}){{ handle title status onlineStoreUrl '
-            f'priceRangeV2{{ minVariantPrice{{amount}} maxVariantPrice{{amount}} }} images(first:1){{ nodes{{ url width height }} }} }}'
+            f'priceRangeV2{{ minVariantPrice{{amount}} maxVariantPrice{{amount}} }} images(first:6){{ nodes{{ url width height }} }} }}'
             for j, h in enumerate(teil))
         d = gql("query{ " + felder + " }")
         for j, h in enumerate(teil):
@@ -116,7 +195,7 @@ def produkte(handles):
             aus[h] = {"title": p["title"], "status": p["status"], "url": p["onlineStoreUrl"],
                       "min": float(p["priceRangeV2"]["minVariantPrice"]["amount"]),
                       "max": float(p["priceRangeV2"]["maxVariantPrice"]["amount"]),
-                      "bild": n[0] if n else None}
+                      "bild": n[0] if n else None, "bilder": n}   # bilder: Hauptbild zuerst, bis 5 Ersatzbilder (OCR-Tor)
     return aus
 
 
@@ -352,7 +431,9 @@ def index_lesen():
         return {(r["name"], r["format"]): r for r in csv.DictReader(fh, delimiter="\t")}
 
 
-SPALTEN = ["name", "format", "datei", "preis_min", "preis_max", "preis_text", "bild", "quelle_px", "modus", "kb", "sha1", "erstellt"]
+# hauptbild (23.09. abends): das Hauptbild des Shops zur Renderzeit — `bild` ist die tatsächlich genutzte Quelle (kann nach dem
+# OCR-Tor ein Ersatzbild sein). Der Pinner prüft «Hauptbild getauscht?» gegen hauptbild, sonst gälte jede Ersatz-Fassung als alt.
+SPALTEN = ["name", "format", "datei", "preis_min", "preis_max", "preis_text", "bild", "hauptbild", "quelle_px", "modus", "kb", "sha1", "erstellt"]
 
 
 def index_schreiben(idx):
@@ -377,19 +458,40 @@ def schreiben(daten, rel):
 
 
 # ---------------------------------------------------------------- Ablauf
-def verarbeiten(name, bild_url, titel, pmin, pmax, formate, idx, ergebnisse, bekannte_px=None):
+def verarbeiten(name, bilder, titel, pmin, pmax, formate, idx, ergebnisse, bt=None):
+    """`bilder`: Liste {url[,width,height]} — Hauptbild zuerst. Das erste Bild, das gross genug ist UND kein Lieferantentext
+    trägt (OCR-Tor, Prüfer 23.09.), wird gerendert; die Gründe der verworfenen stehen im Log."""
     name = re.sub(r"[^a-z0-9-]+", "-", name.lower()).strip("-")[:120]
-    if bekannte_px and min(bekannte_px) < MIN_PX:
-        print(f"  ✗ {name}: Quelle {bekannte_px[0]}×{bekannte_px[1]} < {MIN_PX} px → abgelehnt")
-        ergebnisse.append({"name": name, "status": "abgelehnt", "px": bekannte_px}); return
-    try:
-        im = vorbereiten(laden(bild_url))
-    except Exception as e:
-        print(f"  ✗ {name}: Bild nicht ladbar ({str(e)[:80]})")
-        ergebnisse.append({"name": name, "status": "fehler"}); return
-    if min(im.size) < MIN_PX:
-        print(f"  ✗ {name}: Quelle {im.size[0]}×{im.size[1]} < {MIN_PX} px → abgelehnt")
-        ergebnisse.append({"name": name, "status": "abgelehnt", "px": im.size}); return
+    bt = {} if bt is None else bt
+    hauptbild = (bilder[0]["url"] if bilder else "").split("?")[0]
+    im, quelle, gruende = None, None, []
+    for k, b in enumerate(bilder, 1):
+        u = b["url"]
+        px = (b.get("width"), b.get("height")) if b.get("width") and b.get("height") else None
+        if px and min(px) < MIN_PX:
+            gruende.append(f"Bild {k} {px[0]}×{px[1]} < {MIN_PX} px"); continue
+        try:
+            kand = vorbereiten(laden(u))
+        except Exception as e:
+            gruende.append(f"Bild {k} nicht ladbar ({str(e)[:60]})"); continue
+        if min(kand.size) < MIN_PX:
+            gruende.append(f"Bild {k} {kand.size[0]}×{kand.size[1]} < {MIN_PX} px"); continue
+        n = bildtext_woerter(kand, u, name, bt)
+        if n >= WORTGRENZE:
+            print(f"  ✗ {name}: Bild {k} trägt Text ({n} Wörter, OCR) → nächstes Bild")
+            gruende.append(f"Bild {k} Text ({n} Wörter)"); continue
+        im, quelle = kand, u
+        if k > 1:
+            print(f"  ↷ {name}: Bild {k} statt Hauptbild ({'; '.join(gruende)})")
+        break
+    if im is None:
+        grund = "; ".join(gruende) or "kein Bild"
+        status = ("bildtext" if any("Text" in g for g in gruende) else
+                  "abgelehnt" if any(" px" in g for g in gruende) else "fehler")
+        print(f"  ✗ {name}: übersprungen — {grund}")
+        if status == "bildtext":
+            uebersprungen_merken(name, grund)
+        ergebnisse.append({"name": name, "status": status}); return
     im = rahmen_weg(im)  # nach der Grössenprüfung: 1–3 px Rahmen dürfen ein 600er-Bild nicht durchfallen lassen
     for fmt in formate:
         if fmt == "pin":
@@ -412,7 +514,7 @@ def verarbeiten(name, bild_url, titel, pmin, pmax, formate, idx, ergebnisse, bek
             schreiben(daten, rel)
             idx[(name, fmt)] = {"name": name, "format": fmt, "datei": rel, "preis_min": f"{pmin:.2f}" if pmin is not None else "",
                                 "preis_max": f"{pmax:.2f}" if pmax is not None else "", "preis_text": pt,
-                                "bild": bild_url.split("?")[0], "quelle_px": f"{im.size[0]}x{im.size[1]}", "modus": log["modus"],
+                                "bild": quelle.split("?")[0], "hauptbild": hauptbild, "quelle_px": f"{im.size[0]}x{im.size[1]}", "modus": log["modus"],
                                 "kb": str(kb), "sha1": sha, "erstellt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
         else:
             zeile += " [DRY, nicht geschrieben]"
@@ -455,18 +557,19 @@ def main():
     a = ap.parse_args()
     formate = [f for f in a.formate.split(",") if f in FORMATE]
     idx = index_lesen()
+    bt = bildtext_lesen()
     erg = []
-    print(f"bild_formate {'DRY ' if DRY else ''}→ {OUT} · Formate {','.join(formate)}")
+    print(f"bild_formate {'DRY ' if DRY else ''}→ {OUT} · Formate {','.join(formate)} · OCR-Tor {'aktiv' if _OCR_WOERTER else 'NICHT messbar'}")
     if a.url:
         if not a.name:
             ap.error("--url braucht --name")
-        verarbeiten(a.name, a.url, a.titel, a.preis, a.preis, formate, idx, erg)
+        verarbeiten(a.name, [{"url": a.url}], a.titel, a.preis, a.preis, formate, idx, erg, bt)
     if a.posts_ready:
         pfad = os.path.join(REPO, "social", "posts_image.csv")
         with open(pfad, newline="", encoding="utf-8") as fh:
             zeilen = [r for r in csv.DictReader(fh) if r.get("status") == "ready"][: a.posts_ready]
         for r in zeilen:
-            verarbeiten(r["id"], r["image_url"], None, None, None, ["ig45"], idx, erg)
+            verarbeiten(r["id"], [{"url": r["image_url"]}], None, None, None, ["ig45"], idx, erg, bt)
     if a.handles:
         info = produkte(a.handles)
         for h in a.handles:
@@ -477,9 +580,7 @@ def main():
                 print(f"  ✗ {h}: {p['status']}, {'ohne' if not p['url'] else 'mit'} Onlineshop → übersprungen"); erg.append({"name": h, "status": "nicht-aktiv"}); continue
             if not p["bild"]:
                 print(f"  ✗ {h}: kein Bild"); erg.append({"name": h, "status": "kein-bild"}); continue
-            b = p["bild"]
-            px = (b["width"], b["height"]) if b.get("width") and b.get("height") else None
-            verarbeiten(h, b["url"], p["title"], p["min"], p["max"], formate, idx, erg, px)
+            verarbeiten(h, p["bilder"], p["title"], p["min"], p["max"], formate, idx, erg, bt)
     if not DRY and any(e["status"] == "ok" for e in erg):
         os.makedirs(OUT, exist_ok=True)
         index_schreiben(idx)

@@ -152,13 +152,22 @@ const pinIndex = (() => {
   } catch {}
   return m;
 })();
+// 23.09. 22:58 (Prüfer): social/pins/aufblasbarer-leuchtender-fga975036.jpg trug «LIGHT-UP AIRBLOWN INFLATABLES INDOOR & OUTDOOR
+// USE». bild_formate.py misst jetzt jedes Quellbild per OCR (social/pins/_bildtext.tsv: url ohne ?v= → Wörter, Maximum aus zwei
+// Lesarten) und rendert notfalls ein Ersatzbild (Manifest: `bild` = genutzte Quelle, `hauptbild` = Shop-Hauptbild damals).
+// Produkte, deren Bilder ALLE Text tragen, stehen in social/pins/_uebersprungen.tsv. Hier gilt: ein Hauptbild mit ≥4 Wörtern
+// wird NIE als Rohbild gepinnt — ohne nutzbare 2:3-Fassung kommt der nächste Kandidat.
+const tsv = (pfad) => { try { const [kopf, ...zeilen] = fs.readFileSync(pfad, 'utf8').split('\n').filter(Boolean); const sp = kopf.split('\t'); return zeilen.map(z => { const w = z.split('\t'); return Object.fromEntries(sp.map((k, i) => [k, w[i] || ''])); }); } catch { return []; } };
+const bildtext = new Map(tsv('social/pins/_bildtext.tsv').map(r => [r.url, parseInt(r.woerter, 10)]));
+const textImBild = u => (bildtext.get(String(u || '').split('?')[0]) ?? -1) >= 4;
+const bildtextAlle = new Set(tsv('social/pins/_uebersprungen.tsv').map(r => r.name));
 async function pinFassung(k) {
   const roh = { url: k.bild.url, art: 'Rohbild' };
   const m = pinIndex.get(`${k.handle}\tpin`);
   if (!m) return { ...roh, grund: 'keine 2:3-Fassung im Manifest' };
   const min = parseFloat(k.priceRangeV2.minVariantPrice.amount).toFixed(2), max = parseFloat(k.priceRangeV2.maxVariantPrice.amount).toFixed(2);
   if (m.preis_min !== min || m.preis_max !== max) return { ...roh, grund: `Preis im Bild ${m.preis_text} ≠ Shop ${min}/${max} → neu rendern` };
-  if (m.bild !== k.bild.url.split('?')[0]) return { ...roh, grund: 'Hauptbild seit dem Rendern getauscht → neu rendern' };
+  if ((m.hauptbild || m.bild) !== k.bild.url.split('?')[0]) return { ...roh, grund: 'Hauptbild seit dem Rendern getauscht → neu rendern' };
   const url = `${RAW_PINS}${m.datei}?v=${m.sha1}`;
   try {
     const r = await fetch(url);
@@ -170,7 +179,7 @@ async function pinFassung(k) {
 }
 
 const kandidaten = [];
-const ZIEL = Math.max(1, NUR_LISTE);
+const ZIEL = NUR_LISTE || 5;   // 23.09. 22:58: bis zu 5, damit ein Text-Hauptbild ohne 2:3-Fassung uebersprungen werden kann
 for (const quelle of QUELLEN) {
   const d = await gql(`query($h:String!,$p:ID!){ collectionByHandle(handle:$h){ products(first:100, sortKey:BEST_SELLING){ nodes{
     id handle title productType tags status onlineStoreUrl descriptionHtml publishedOnPublication(publicationId:$p)
@@ -184,6 +193,7 @@ for (const quelle of QUELLEN) {
       : tags.some(t => SPERR.has(t)) ? 'Sperr-Tag' : HEIL.test(p.title) ? 'Heilwort im Titel'
       : gepinnt.has(p.handle) ? 'schon gepinnt' : karussellHandles.has(p.handle) ? 'schon als Karussell beworben' : postSeen(bild.url) ? 'Bild schon gepostet'
       : (bild.width && Math.min(bild.width, bild.height || bild.width) < 600) ? 'Bild zu klein'
+      : bildtextAlle.has(p.handle) ? 'Lieferantentext in allen Bildern (OCR, _uebersprungen.tsv)'
       : kandidaten.some(k => k.handle === p.handle) ? 'doppelt in Quellen' : '';
     if (!grund) { kandidaten.push({ ...p, bild, quelle }); if (kandidaten.length >= ZIEL) break; }
   }
@@ -191,8 +201,13 @@ for (const quelle of QUELLEN) {
 }
 if (NUR_LISTE) { for (const k of kandidaten) console.log(k.handle); process.exit(0); }
 if (vorrang.length) log(`Vorrang-Quellen (${VORRANG}): ${vorrang.join(', ')}`);
-const kandidat = kandidaten[0];
-if (!kandidat) { console.log('Kein Pin-Kandidat (alle Quellen erschöpft oder gesperrt).'); process.exit(0); }
+let kandidat = null, fassung = null;
+for (const k of kandidaten) {   // 23.09. 22:58: Text-Hauptbild nie als Rohbild — ohne nutzbare 2:3-Fassung der naechste
+  const f = await pinFassung(k);
+  if (f.art === 'Rohbild' && textImBild(k.bild.url)) { log(`   ⛔ ${k.handle}: Hauptbild trägt Lieferantentext (OCR ${bildtext.get(k.bild.url.split('?')[0])} Wörter), 2:3-Fassung nicht nutzbar (${f.grund}) → übersprungen`); continue; }
+  kandidat = k; fassung = f; break;
+}
+if (!kandidat) { console.log('Kein Pin-Kandidat (alle Quellen erschöpft, gesperrt oder Text im Bild).'); process.exit(0); }
 
 const suchtext = `${kandidat.title} ${kandidat.productType}`;
 const boardName = (BOARDS.find(([rx]) => rx.test(suchtext)) || [null, 'Geschenkideen Schweiz'])[1];
@@ -203,7 +218,6 @@ const saetze = text(kandidat.descriptionHtml).split(/(?<=[.!?])\s+/).filter(s =>
 const beschreibung = `${(saetze.slice(0, 2).join(' ') || kandidat.title).slice(0, 330)}\n\n${preis} · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kleiner Schweizer Shop 🇨🇭`.slice(0, 480);
 const link = `${kandidat.onlineStoreUrl}?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin`;
 const titel = kandidat.title.slice(0, 100);
-const fassung = await pinFassung(kandidat);
 console.log(`Pin: ${titel}\n  Quelle: ${kandidat.quelle} · Board: ${board ? board.name : boardName + ' (?)'}${board && board.name !== boardName ? ` (gewünscht «${boardName}», fehlt → Fallback)` : ''} · ${preis}\n  Link: ${link}\n  Bild: ${fassung.art} ${fassung.url.slice(0, 110)}\n        (${fassung.grund})\n  Text: ${beschreibung.slice(0, 140)}…`);
 if (DRY) { console.log('[DRY] würde jetzt pinnen.'); process.exit(0); }
 if (!board) { console.error('⛔ Kein Pinterest-Board lesbar'); process.exit(1); }
