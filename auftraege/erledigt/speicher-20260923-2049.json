@@ -1,0 +1,32 @@
+{
+  "id": "speicher-20260923-2049",
+  "typ": "wartung",
+  "aktion": "speicher",
+  "warum": "Betreiber 23.09. «für volle automation»: Plattenstand nach platte-schlank.sh messen, ohne dass der Betreiber tippt",
+  "stand": "ok",
+  "begonnen": "2026-09-23T20:59:32.057Z",
+  "dauer_s": 0.4,
+  "ergebnis": {
+    "aktion": "speicher",
+    "was": "Platte, Arbeitsspeicher und die groessten Verzeichnisse melden",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "df -h /",
+        "ausgabe": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        38G   25G   11G  70% /\n"
+      },
+      {
+        "befehl": "free -h",
+        "ausgabe": "               total        used        free      shared  buff/cache   available\nMem:           3.7Gi       924Mi       204Mi       101Mi       3.0Gi       2.8Gi\nSwap:             0B          0B          0B\n"
+      },
+      {
+        "befehl": "du -xh --max-depth=1 /var",
+        "ausgabe": "4.0K\t/var/mail\n4.0K\t/var/local\n13M\t/var/cache\n260M\t/var/log\n4.0K\t/var/opt\n6.4M\t/var/crash\n228M\t/var/lib\n2.1M\t/var/backups\n28K\t/var/tmp\n4.0K\t/var/snap\n32K\t/var/spool\n509M\t/var\n"
+      },
+      {
+        "befehl": "du -xh --max-depth=1 /opt",
+        "ausgabe": "6.7G\t/opt/abannews\n20M\t/opt/jarvis\n367M\t/opt/luxe-agent\n5.8G\t/opt/luxe-waechter\n658M\t/opt/pw-browsers\n8.0K\t/opt/node22\n6.9G\t/opt/luxe\n21G\t/opt\n"
+      }
+    ]
+  }
+}

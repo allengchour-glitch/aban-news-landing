@@ -2541,3 +2541,4 @@ gid://shopify/Product/15448890769793	zugeordnet	5	Walkie-Talkie mit Frequenz-Sca
 gid://shopify/Product/15448891163009	zugeordnet	2	Candy Soft Case für AirPods
 gid://shopify/Product/15448891261313	zugeordnet	1	Retro Music Tastenkappen, Pink-Lila
 gid://shopify/Product/15448891392385	zugeordnet	2	Vogelbad-Heizer mit Thermostat
+gid://shopify/Product/15448891916673	zugeordnet	4	Kabelloser 3D-Stift für Kinder
