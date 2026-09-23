@@ -60,6 +60,22 @@ wird die Option ZURUECKGELESEN; weicht der Stand ab, zaehlt das als Fehler.
 Reihenfolge: zuerst die Produkte mit Besuchen (ShopifyQL, 30 Tage), dann der ganze Katalog.
 Bericht: dropship/VARIANTENWERTE-ENGLISCH.md (Stand des aktuellen Durchgangs).
 
+═══ 23.09.2026 abends — NACHBESSERUNG nach dem Vollscan (Pruefer-Befund) ════════════════════
+«Nur uebersetzen, wenn jedes Wort bekannt ist» war zu schwach: 17'191 Werte geschrieben, darunter
+Wort-fuer-Wort-Salat («USB Stecker in version», «Braun einzeln Futter», «4 cm dick Sohle Grün»),
+geklebte Adjektive («Klassischschwarz», «Leuchtendrot»), Farbnamen als Material («Leder Pink» fuer
+den Farbton «Leather Pink») und Farbnummern als Anzahl («1color … 19color» → «1 Farbe … 19 Farben»).
+Jetzt: (1) jede Einheit traegt eine Wortklasse, _satzbau() verwirft Folgen, die im Deutschen nicht
+stehen koennen (ungebeugtes Adjektiv vor Nomen, «in» als Praeposition ohne Farbe, Nomen+Nomen,
+Material+Farbe, Menge+Nomen …) — verworfen heisst UNVERAENDERT; (2) Farbadjektive werden gebeugt
+statt geklebt («Klassisches Schwarz», nur bei Farbneutra) oder mit Bindestrich («Vintage-Grün»);
+(3) NColor entscheidet der Optionskontext (option_kontext: dichte Reihe = Farbton N; Einzahl/Mehrzahl
+passend und Reihe = mehrdeutig → unveraendert); (4) Selbsttest mit jedem Fehlbeispiel:
+python3 automation/variant_value_clean.py --selbsttest. Die am 23.09. geschriebenen Werte wurden aus
+dem Ledger neu berechnet und repariert (Ledger-Zeilen «/reparatur-original|korrigiert|konsistenz»).
+⚠️ Der Tageslauf heilt solche Fehler NICHT selbst: «1 Farbe», «Klassischschwarz», «Stecker in version»
+tragen kein englisches Wort und passieren das Tor englisch(). Reparatur geht nur ueber das Ledger.
+
 ENV: DRY=1 (nur melden) · NUR_BESUCHT=1 (nur die besuchten Seiten) · NUR_ID=<id,id>
      (nur diese Produkte — fuer Stichproben) · KEIN_EN=1 (alte Codereinigung ohne Uebersetzung)
 """
@@ -279,6 +295,8 @@ TERM_PHRASES = {
     "chinese version": "chinesische Version", "english version": "englische Version",
     "thin style": "dünne Ausführung", "thick style": "dicke Ausführung",
     "short style": "kurze Ausführung", "long style": "lange Ausführung",
+    # 23.09.: «Sole Length 11 CM» wurde «Sohle Länge 11 CM» (Nomen-Salat) — als Wendung gelesen.
+    "sole length": "Sohlenlänge", "foot length": "Fusslänge",
     "fitted sheet": "Spannbettlaken", "flat sheet": "Bettlaken", "duvet cover": "Bettbezug",
     "quilt cover": "Bettbezug",
     "wood color": "Holzfarben", "wood colour": "Holzfarben", "flesh color": "Hautfarben",
@@ -315,7 +333,7 @@ TERM = {
     "diameter": "Durchmesser", "frame": "Rahmen", "pack": "Packung",
     "package": "Verpackung", "packaging": "Verpackung", "pillow": "Kissen",
     "pillowcase": "Kissenbezug", "pillowcases": "Kissenbezüge", "logo": "Logo",
-    "typec": "USB-C",
+    "typec": "USB-C", "plussize": "Übergrösse",
     "pattern": "Muster", "print": "bedruckt", "printed": "bedruckt", "printing": "bedruckt",
     "stripe": "gestreift", "stripes": "gestreift", "striped": "gestreift", "plaid": "kariert",
     "checked": "kariert", "checkered": "kariert", "floral": "geblümt", "flower": "geblümt",
@@ -405,6 +423,11 @@ def _doppel_weg(s):
 def _vorbereiten(s):
     """Geklebte Lieferantenformen trennen, bevor Woerter gelesen werden."""
     s = s.replace('\xa0', ' ').replace('’', "'")
+    # «Plus Size 3XL»: VOR den Groessenregeln, sonst wird daraus «Plus Gr. 3XL» (23.09., 5 Werte).
+    s = re.sub(r"(?i)\bplus[\s-]*size\b", "plussize", s)
+    # «US 14W … US 26W» sind US-Damengroessen (plus size), keine Watt (Pruefer 23.09.: 142 Werte in
+    # 8 Produkten standen als «Hellblau-US 14 W»). Mit «US» davor ist die Lesart eindeutig → Marke.
+    s = re.sub(r"(?i)\bus\s*(\d{1,2})\s*w\b", r"usgr\1w", s)
     s = re.sub(r"(?i)\bsize\s*(\d{2})\s*or\s*size\s*(\d{2})\b", r"\1or\2", s)   # «Size38 or Size39»
     # «44 or 45» → 44/45 — aber nur ein PAAR; «38 Or 40 Or 41mm» ist eine Aufzaehlung.
     if len(re.findall(r"(?i)\bor\b", s)) < 2:
@@ -416,6 +439,10 @@ def _vorbereiten(s):
     s = re.sub(r"(?i)\bno\.?\s*(\d{1,3})\s+colou?r\b", r"farbton\1", s)          # «No 2 Color»
     s = re.sub(r"(?i)\bcolou?r\s+(\d{1,3})\b", r"farbton\1", s)                  # «Color 11»
     s = re.sub(r"(?i)\b(c\d{1,3})\s+colou?r\b", r"farbton\1", s)                  # «C5 Color»
+    # «4color set», «3Colors set» = ein Set aus N Farben (Anzahl, keine Nummer).
+    s = re.sub(r"(?i)\b(\d{1,2})\s*colou?rs?\s+set\b", r"farbset\1", s)
+    # «6 Colors» → «6Colors»: dieselbe Kontextregel wie die geklebte Form (Nummer oder Anzahl).
+    s = re.sub(r"(?i)\b(\d{1,3})\s+(colou?rs?)\b", r"\1\2", s)
     s = re.sub(r"(?i)\bno\.?\s*(\d+)\b", r"nr\1", s)                           # «No 7» → Nr. 7
     # «Style 1», «Style A», «26 Style», «Q Style» = Ausfuehrungsnummer → wie STYLENR «Muster N».
     s = re.sub(r"(?i)\bstyles?\s*(\d{1,3})\b", r"musternr\1", s)
@@ -433,101 +460,360 @@ def _vorbereiten(s):
     return s
 
 
-def _token_de(t):
-    """Ein Wort → (Deutsch, art) oder (None, None). art: 'menge' bekommt ein « · » davor."""
+# ══ WORTKLASSEN UND SATZBAU-WACHE (23.09.2026, Nachbesserung) ══════════════════════════════
+# DER BEFUND (Pruefer 23.09., nach dem Vollscan über 50'009 Produkte): «nur wenn JEDES Wort
+# bekannt ist» genuegte nicht. Jedes Wort war bekannt — und heraus kam Wort-fuer-Wort-Salat:
+#   «USB plug in version» → «USB Stecker in version»      (Praeposition + englischer Rest)
+#   «Brown Single Lining» → «Braun einzeln Futter»         (ungebeugtes Adjektiv vor Nomen)
+#   «4CM Thick Sole Green» → «4 cm dick Sohle Grün»,  «Short Length S» → «Kurz Länge S»
+#   «Colorful Packaging» → «Bunt Verpackung»,  «Square Pillow» → «Eckig Kissen»
+#   «Leather Pink» (ein FARBNAME, UV-Shirt) → «Leder Pink» (liest sich als Material)
+#   «Bamboo Green» → «Bambus Grün»,  «Classic Black» → «Klassischschwarz» (geklebt)
+# Deutsch beugt Adjektive vor Nomen («einfaches Futter», «dicke Sohle») — ein Uebersetzer ohne
+# Genus kann das nicht. Deshalb liest jetzt jede Uebersetzung eine WORTKLASSE je Einheit mit, und
+# eine Satzbau-Wache verwirft Folgen, die im Deutschen nicht stehen koennen. Verworfen heisst:
+# der Wert bleibt, wie er war (englisch) — lieber Englisch als falsches Deutsch.
+#
+# Klassen: C Farbe · CN farbartiges Nomen (Farbverlauf, Glitzer, Muster) · Z neutral (Zahl, Code,
+# Groesse, Mass, Technik, Marke) · ZL Etikett+Nummer (Gr. 35, Set 1, Muster A) · ZG Zielgruppe/
+# Sprache (Damen, Englisch) · Q Menge (2 Stück) · A Adjektiv · AS Groessen-Adj. (klein/gross)
+# · AM Muster-Adj. (geblümt, matt) · N Nomen · NF kuratierte Wendung (Langarm, Rundhals, mit Box)
+# · NS Set · NM Massnomen (Länge — braucht eine Zahl) · MAT Material · P Lehnwort (Mesh, PU)
+# · PM Modellzusatz (Pro, Max, Plus — nur hinter einem Modell) · F und/oder/mit/ohne · FP «mit X»
+# · IN Praeposition «in» (nur in «2 in 1») · «·» Mengentrenner.
+A_KL = ("A", "AS", "AM")
+KL_MAT = {"leder", "samt", "baumwolle", "leinen", "seide", "wolle", "wildleder", "kunststoff", "metall",
+          "stahl", "holz", "bambus", "glas", "keramik", "silikon", "gummi", "acryl", "kristall", "spitze",
+          "lackleder", "kunstleder", "echtleder", "edelstahl"}
+KL_NM = {"länge", "breite", "höhe", "durchmesser", "sohlenlänge", "fusslänge"}
+KL_NS = {"set", "sets"}
+KL_ZG = {"damen", "herren", "kinder", "mädchen", "jungen", "erwachsene", "englisch", "deutsch", "baby", "unisex"}
+KL_CN = {"farbverlauf", "glitzer", "pailletten", "leopardenmuster", "blumenmuster", "camouflage", "leopard"}
+KL_AS = {"klein", "gross", "mittel", "extra gross"}
+KL_AM = set(MUSTER_ADJ) | {"uni"}
+KL_P = {"mesh", "pu", "transparent", "premium", "deluxe", "standard", "version", "fleece", "denim", "nylon",
+        "canvas", "metallic", "neon", "retro", "vintage", "upgrade", "top", "warm"}
+KL_PM = {"pro", "max", "plus", "mini", "ultra", "lite", "se"}
+KL_C = {"wie abgebildet", "farben gemischt", "farbe zufällig", "holzfarben", "hautfarben",
+        "titanfarben", "rote rose", "bronze", "gold", "karamell", "oliv", "rose", "camel", "nude", "taupe",
+        "jade", "mint", "sand", "khaki", "beige", "orange", "pink", "bordeaux"}
+KL_Z_TECH = {"usb", "led", "lcd", "eu", "uk", "us", "au", "ch", "uv", "hd", "rgb", "ios", "android", "apple",
+             "iphone", "ipad", "samsung", "airpods", "bluetooth", "wifi", "gps", "nfc", "ac", "dc", "abs",
+             "pvc", "tpu", "oled", "3d", "4k", "2k", "diy", "xxl", "x", "usb-c", "übergrösse",
+             "einheitsgrösse", "standardgrösse", "zoll"}
+# Kurzwoerter, die in Grossbuchstaben gehoeren («usb charging» → «USB aufladbar»).
+AKRONYM = {"usb", "led", "lcd", "eu", "uk", "us", "au", "ch", "uv", "hd", "rgb", "gps", "nfc", "ac", "dc",
+           "abs", "pvc", "pu", "tpu", "oled", "diy", "3d", "4k", "2k"}
+# Lehnwoerter sind im Deutschen Nomen → gross («Schwarz mesh» → «Schwarz Mesh»).
+LEHN_GROSS = {"mesh", "fleece", "denim", "nylon", "canvas", "version", "premium", "deluxe", "standard",
+              "upgrade", "camouflage", "leopard", "metallic", "neon", "retro", "vintage", "pro", "max",
+              "plus", "mini", "ultra", "lite"}
+# Bestimmungswoerter, die ALLEIN als Farbname taugen (phrase_de gibt sonst z. B. «Armee» aus).
+EINZELFARBE_OK = {"karamell", "oliv", "pfirsich", "sand", "anthrazit", "mint", "jade", "flieder", "creme",
+                  "jeans", "honig", "senf", "koralle", "champagner", "camel"}
+_BESTIMMUNG_WERTE = {v.lower() for v in _fz.BESTIMMUNG.values()} - {v.lower() for v in _fz.GRUND.values()}
+# farben_de.json-Eintraege mit englischem Rest («washed black» → «Schwarz washed»): nicht verwenden.
+NEUTRUM_FARBE = re.compile(r"(?i)(schwarz|weiss|rot|blau|grün|gelb|grau|braun|lila|violett|rosa|pink|orange"
+                           r"|beige|khaki|gold|silber|türkis|bordeaux|oliv)$")
+# Vorderteile, die ein Wort mit deutscher Farbwurzel wirklich deutsch machen. «andKhaki» (Lieferant
+# vergass ein Leerzeichen) und «16Mint» endeten auf «khaki»/«mint» und wurden als Deutsch
+# durchgereicht (23.09.: «Blau andKhaki Rosarot Set-USB» stand im Shop).
+DE_PRAEFIX = ({v.lower() for v in _fz.BESTIMMUNG.values()} | {v.lower() for v in _fz.GRUND.values()}
+              | {"rosé", "purpur", "petrol", "pastell", "zart", "tief", "knall", "perl",
+                                     "eis", "nacht", "tannen", "moos", "himmel", "marine", "alt", "hell", "dunkel"})
+
+
+def _de_farbwort(k):
+    m = _DE_WURZEL.search(k)
+    if not m or k in KEINE_DE_WURZEL:
+        return False
+    vorn = k[:m.start()]
+    return vorn == "" or vorn in DE_PRAEFIX or vorn in DE_OK
+
+
+FD_UNBRAUCHBAR = {k for k, v in FD.items() if re.search(r"\b(washed|color|colour)\b", v, re.I)}
+DE_OK.discard("washed")                              # stand nur wegen «Schwarz washed» in DE_OK
+
+
+def _klasse_de(text):
+    """Wortklasse eines deutschen Ergebnisses aus den Tabellen (TERM, TERM_PHRASES, Durchreiche)."""
+    k = text.lower().strip()
+    if k in ("mit", "ohne", "und", "oder"):
+        return "F"
+    if k in ("in", "an", "so"):
+        return "IN"
+    if k.startswith(("mit ", "ohne ")):
+        return "FP"
+    if k in KL_C:
+        return "C"
+    if k in KL_CN:
+        return "CN"
+    if k in KL_MAT:
+        return "MAT"
+    if k in KL_NM:
+        return "NM"
+    if k in KL_NS:
+        return "NS"
+    if k in KL_ZG:
+        return "ZG"
+    if k in KL_Z_TECH:
+        return "Z"
+    if k in KL_P:
+        return "P"
+    if k in KL_PM:
+        return "PM"
+    if k in KL_AS:
+        return "AS"
+    if k in KL_AM:
+        return "AM"
+    if _DE_WURZEL.search(k) and k not in KEINE_DE_WURZEL and " " not in k:
+        return "C"
+    if text[:1].islower():
+        return "A"
+    return "N"
+
+
+def _farbe_fein(t):
+    """Nachbehandlung einer Farbeinheit. → Text oder None (dann gilt die Einheit als unbekannt).
+    «Klassischschwarz» (phrase_de klebt classic+black) war falsch: Farbnamen sind im Deutschen
+    Neutra, ein Adjektiv davor wird gebeugt → «Klassisches Schwarz», «Leuchtendes Rot».
+    Lehnwoerter bleiben ungebeugt und bekommen den Bindestrich wie in farben_de.json («Retro-Blau»)."""
+    m = re.fullmatch(r"(Klassisch|Leuchtend)([a-zäöüé]+)", t)
+    if m:
+        # «das Schwarz», «das Rot» — Farbadjektive als Nomen sind Neutra. «die Aprikose» nicht:
+        # «Leuchtendes Aprikose» waere falsch → unbekannt, der Wert bleibt englisch.
+        if not NEUTRUM_FARBE.search(m.group(2)):
+            return None
+        return f"{m.group(1)}es {m.group(2).capitalize()}"
+    m = re.fullmatch(r"(Retro|Vintage)([a-zäöüé]+)", t)
+    if m:
+        return f"{m.group(1)}-{m.group(2).capitalize()}"
+    if re.match(r"(?i)kühl", t):                     # «cool white» ist «Kaltweiss», nicht «Kühlweiss»
+        return None
+    if re.match(r"(Klassisch|Leuchtend|Retro|Vintage)[a-zäöüé]", t):
+        return None                                  # geklebt und nicht aufloesbar («Leuchtendrosé-Pink»)
+    if t.lower() in _BESTIMMUNG_WERTE and t.lower() not in EINZELFARBE_OK:
+        return None                                  # «Army Color» → «Armee» ist kein Farbname
+    return t
+
+
+def _satzbau(units):
+    """Prueft die Klassenfolge eines Stuecks. → None (gut) oder der Grund der Ablehnung."""
+    ks = [k for _, k in units]
+    n = len(ks)
+    for i, k in enumerate(ks):
+        if k == "·":
+            continue
+        prev = ks[i - 1] if i > 0 and ks[i - 1] != "·" else None
+        nxt = ks[i + 1] if i + 1 < n and ks[i + 1] != "·" else None
+        if prev in A_KL:
+            if k in A_KL:
+                # «klein kariert», «breit gestreift» ja — «einzeln gestreift», «rund gepunktet» nein
+                if not (k == "AM" and units[i - 1][0].lower() in ("klein", "gross", "breit", "schmal", "fein")):
+                    return "adjektivfolge"
+            elif k not in ("Z", "Q", "F", "FP"):
+                return "adjektiv-vor-nomen"                   # «Eckig Kissen», «Gross Weiss», «dick Sohle»
+        if k == "IN":
+            zwei_in_eins = (prev == "Z" and nxt == "Z" and re.fullmatch(r"\d+", units[i - 1][0])
+                            and re.fullmatch(r"\d+", units[i + 1][0]))
+            in_farbe = units[i][0].lower() == "in" and prev is not None and nxt == "C"   # «Rundhals in Schwarz»
+            if not (zwei_in_eins or in_farbe):
+                return "praeposition"                         # «Stecker in version», «11 cm in»
+        if prev == "Q" and k in ("N", "NM", "NS", "MAT", "NF", "CN", "P", "ZL", "PM"):
+            return "menge-vor-nomen"                          # «2 Stück Ladegerät», «3 Stück Set»
+        if prev in ("N", "NS", "MAT", "NF", "NM") and k in ("N", "NM", "NS", "MAT", "NF"):
+            return "nomen-nomen"                              # «Sohle Länge», «Box Set»
+        if prev == "MAT" and k in ("C", "CN", "P"):
+            return "material-vor-farbe"                       # «Leder Pink» (Farbname), «Bambus Grün»
+        if prev == "N" and k in ("C", "CN", "P"):
+            return "nomen-vor-farbe"                          # «Rahmen Silber»
+        if prev in ("NF", "NS", "NM") and k == "P":
+            return "nomen-lehnwort"                           # «Fernbedienung Version»
+        if prev == "P" and k in ("N", "MAT", "NM", "CN", "P", "NF"):
+            return "lehnwort-vor-nomen"                       # «Transparent Stil», «Leopard Rahmen»
+        if prev == "CN" and k in ("N", "MAT", "CN", "NF", "P", "NM"):
+            return "muster-vor-nomen"
+        if prev == "C" and units[i - 1][0].startswith(("Klassisches ", "Leuchtendes ")) \
+                and k in ("N", "MAT", "NS", "NF", "CN", "P"):
+            return "gebeugte-farbe-vor-nomen"                 # «Leuchtendes Schwarz Rahmen»
+        if prev == "FP" and k not in ("Z", "Q", "ZL", "F"):
+            return "wendung-vor-nomen"                        # «mit Kapuze Leuchtendes Blau»
+        if k == "PM" and prev not in ("Z", "PM", "ZL") and not (prev is None and nxt in (None, "Z")):
+            return "modellzusatz"                             # «Pink plus Baumwolle» (aber «Schwarz-Plus», «SE 2020»)
+        if k == "NM" and nxt not in ("Z", "Q"):
+            return "mass-ohne-zahl"                           # «Kurz Länge S»
+        if k == "F":
+            if units[i][0].lower() in ("und", "oder") and prev is None:
+                return "konjunktion-am-anfang"
+            if nxt is None or nxt in A_KL or nxt in ("F", "IN"):
+                return "funktionswort"
+    return None
+
+
+def option_kontext(namen):
+    """Kontext EINER Option fuer die Uebersetzung. Heute: sind «NColor»-Werte FARBNUMMERN?
+    ⚠️ 23.09.: «1color … 12color» (Sommeroben, 26 Werte) wurde «1 Farbe … 12 Farben» — es sind
+    Farbnummern. Die erste Korrektur kannte nur die fuehrende Null («018Color»). Jetzt entscheidet
+    die Option: tragen mindestens zwei Werte eine NColor-Angabe und liegen die Nummern dicht
+    (1..12, 10..17 — nicht 8/16), ist es eine NUMMERIERUNG → «Farbton N». Sonst gilt nur die
+    Mehrzahl als Anzahl («16colors» = 16 Farben); eine Einzahl ohne Reihe bleibt, wie sie ist."""
+    nr, stimmig = set(), True
+    for v in namen:
+        for m in re.finditer(r"(?i)(?<![\d.])(\d{1,2})(\s*)colou?r(s?)\b(?!\s+set)", v or ""):
+            if not m.group(1).startswith("0"):
+                nr.add(int(m.group(1)))
+                # «1 Color» / «2 Colors» mit Leerzeichen und passender Einzahl/Mehrzahl kann ebenso
+                # «einfarbig / zweifarbig» heissen — dann ist die Reihe KEIN Beleg fuer eine Nummer.
+                if not (m.group(2) and (m.group(3) == "s") == (int(m.group(1)) != 1)):
+                    stimmig = False
+    reihe = len(nr) >= 2 and (max(nr) - min(nr) + 1) <= 2 * len(nr)
+    # 23.09. abends: nacktes «14W/16W/18W» (US-Damengroessen ohne «US») nur dann als Groesse lesen,
+    # wenn die Option eine Reihe GERADER Zahlen 12–34 mit grossem W zeigt und kein Wattwort traegt
+    # (Ladegeraet «18W/20W/30W» bleibt Watt). Mit «US» davor entscheidet _vorbereiten allein.
+    wn, watt = set(), False
+    for v in namen:
+        for m in re.finditer(r"(?<![\d.])(\d{2})W\b", v or ""):
+            wn.add(int(m.group(1)))
+        if re.search(r"(?i)charg|plug|led\b|lamp|bulb|power|light|adapter|solar|speaker|motor|watt", v or ""):
+            watt = True
+    gerade = {n for n in range(12, 35, 2)}
+    groesse_w = len(wn) >= 2 and wn <= gerade and not watt
+    return {"farbnummer": reihe and not stimmig, "mehrdeutig": reihe and stimmig, "groesse_w": groesse_w}
+
+
+def _token_de(t, kx=None):
+    """Ein Wort → (Deutsch, Klasse) oder (None, None). Klasse 'Q' (Menge) bekommt ein « · » davor."""
+    kx = kx or {}
     m = re.match(r"^([(\[]*)(.*?)([)\].:;!]*)$", t)
     vor, kern, nach = m.group(1), m.group(2), m.group(3)
     if not kern:
-        return t, "tok"
+        return t, "Z"
     k = kern.lower()
 
-    def w(x, art="tok"):
-        return vor + x + nach, art
+    def w(x, kl):
+        return vor + x + nach, kl
     if k in TERM:
-        return w(TERM[k])
+        return w(TERM[k], TERM_KLASSE.get(k) or _klasse_de(TERM[k]))
     if DOPPEL.fullmatch(kern):                       # «Marineblaublau» → «Marineblau»
-        return w(_doppel_weg(kern))
-    if k in DE_OK or (_DE_WURZEL.search(k) and k not in KEINE_DE_WURZEL) or re.search(r"[äöüÄÖÜ]", kern):
-        return w(kern)
+        return w(_doppel_weg(kern), "C")
+    if k in AKRONYM:                                 # vor DE_OK: «usb» steht dort (aus «USB-C»)
+        return w(kern.upper(), "Z")
+    if re.fullmatch(r"[A-Za-z]", kern):              # «C Set», «Typ A»: Buchstabe = Code, kein Nomen
+        return w(kern, "Z")
+    if k in DE_OK or _de_farbwort(k) or re.search(r"[äöüÄÖÜ]", kern):
+        if k == "·":
+            return w(kern, "·")
+        if k in ("gr.", "gr", "nr."):
+            return w(kern, "Z")
+        kl = _klasse_de(kern)
+        if (kl == "C" or k in LEHN_GROSS) and kern.islower():   # «bordeaux beige» → «Bordeaux-Beige»
+            kern = kern.capitalize()
+        return w(kern, kl)
     if k in PASS or k in DE_GLEICH:
-        return w(kern)
+        kl = _klasse_de(kern)
+        if kl in ("N", "A"):                         # durchgereichtes Fachwort («iPhone», «cm», «x»)
+            kl = "Z"
+        if kl == "C" and kern.islower():             # «Purple sand» → «Lila-Sand»
+            kern = kern.capitalize()
+        if k in LEHN_GROSS and kern.islower():
+            kern = kern.capitalize()
+        return w(kern, kl)
     if re.fullmatch(r"\d+(?:[.,/]\d+)?", k) or re.fullmatch(r"#\d+", k) or re.fullmatch(r"gr\.?\d+", k):
-        return w(kern)
+        return w(kern, "Z")
     # Lieferantencode mit fuehrender Null («0236L») ist kein Liter.
     if re.fullmatch(r"0\d+[A-Za-z]{1,3}", kern):
-        return w(kern)
+        return w(kern, "Z")
     x = re.fullmatch(r"(\d+(?:[.,]\d+)?)[x×*](\d+(?:[.,]\d+)?)(?:[x×*](\d+(?:[.,]\d+)?))?(cm|mm|m)?", k)
     if x:
         mass = "x".join(g for g in x.groups()[:3] if g)
-        return w(mass + (" " + x.group(4) if x.group(4) else ""))
+        return w(mass + (" " + x.group(4) if x.group(4) else ""), "Z")
     if re.fullmatch(r"(?:\d?x{0,5}[sl]|m|x{1,5}l|\d{1,2}xl|\d?xs|xxs)", k):
-        return w(kern.upper())
+        return w(kern.upper(), "Z")
+    x = re.fullmatch(r"usgr(\d{1,2})w", k)                      # Marke aus _vorbereiten: «US 14W»
+    if x:
+        return w(f"US {x.group(1)}W", "Z")
     x = re.fullmatch(r"(\d+(?:[.,]\d+)?)(cm|mm|m|ml|l|g|kg|oz|w|v|mah|gb|tb|inch|inches|in)", k)
     if x:
         # «37M», «42L» mit GROSSEM Buchstaben sind eher Groessen als Meter/Liter → stehen lassen.
+        # «16W» ohne «US» ist eine Groesse, wenn die OPTION eine Groessenreihe zeigt (option_kontext).
+        if x.group(2) == "w" and kern[-1] == "W" and kx.get("groesse_w") and x.group(1).isdigit():
+            return w(kern, "Z")
         if x.group(2) in ("m", "l") and kern[-1].isupper() and "." not in kern and "," not in kern:
-            return w(kern)
+            return w(kern, "Z")
         # «2.4G», «5G» = Funkstandard; «64g», «128g» = Speicher (Zweierpotenz) — keine Gramm.
         # (23.09.: «X2 Blue 128g charging model» stand kurz als «128 g» im Auswahlfeld, repariert.)
         if x.group(2) == "g" and (kern[-1] == "G" or x.group(1) in ("16", "32", "64", "128", "256", "512", "1024")):
-            return w(kern)
-        return w(f"{x.group(1)} {UNIT.get(x.group(2), 'Zoll')}")
+            return w(kern, "Z")
+        return w(f"{x.group(1)} {UNIT.get(x.group(2), 'Zoll')}", "Z")
     x = re.fullmatch(r"(\d+)(?:pcs|pc|cps|pieces|piece)", k)
     if x:
-        return w(f"{x.group(1)} Stück", "menge")
+        return w(f"{x.group(1)} Stück", "Q")
     x = re.fullmatch(r"(\d+)erpack", k)
     if x:
-        return w(f"{x.group(1)}er-Pack", "menge")
+        return w(f"{x.group(1)}er-Pack", "Q")
     x = re.fullmatch(r"(\d+)pairs?", k)
     if x:
-        return w(f"{x.group(1)} Paar", "menge")
+        return w(f"{x.group(1)} Paar", "Q")
     x = re.fullmatch(r"set(\d+)", k)
     if x:
-        return w(f"Set {x.group(1)}")
+        return w(f"Set {x.group(1)}", "ZL")
     x = re.fullmatch(r"stilset(\d+)", k)
     if x:
-        return w(f"Set mit {x.group(1)} Varianten")
+        return w(f"Set mit {x.group(1)} Varianten", "NF")
+    x = re.fullmatch(r"farbset(\d+)", k)
+    if x and int(x.group(1)) >= 2:
+        return w(f"Set mit {x.group(1)} Farben", "NF")
     x = re.fullmatch(r"size(\d{1,3}(?:[.,]\d)?)", k)
     if x:
-        return w(f"Gr. {x.group(1)}")
+        return w(f"Gr. {x.group(1)}", "ZL")
     x = re.fullmatch(r"(\d{2})(?:to|or)(\d{2})", k)
     if x:
-        return w(f"{x.group(1)}/{x.group(2)}")
+        return w(f"{x.group(1)}/{x.group(2)}", "Z")
     # ⚠️ 23.09.: «018Color» mit FUEHRENDER NULL ist die Farbnummer des Lieferanten, keine Anzahl —
-    # im ersten scharfen Lauf stand «018 Farben» im Auswahlfeld (repariert). Ohne fuehrende Null
-    # («2Color», «1color3pcs») ist das Englisch selbst mehrdeutig (Anzahl? Nummer?) — dann bleibt
-    # es bei der woertlichen Uebersetzung, die dieselbe Mehrdeutigkeit traegt, nicht mehr.
+    # im ersten scharfen Lauf stand «018 Farben» im Auswahlfeld (repariert).
+    # ⚠️ 23.09. (Nachbesserung): auch OHNE Null ist «NColor» meist eine Nummer — «1color … 12color»
+    # stand als «1 Farbe … 12 Farben» im Shop. Entschieden wird am Optionskontext (option_kontext):
+    # dichte Reihe → «Farbton N»; sonst nur die MEHRZAHL als Anzahl; Einzahl allein → unveraendert.
+    # Drei- und mehrstellig («122930color») ist ein Lieferantencode → unveraendert.
     x = re.fullmatch(r"(0\d+)colou?rs?", k)
     if x:
-        return w(f"Farbton {x.group(1)}")
-    x = re.fullmatch(r"(\d+)colou?rs?", k)
+        return w(f"Farbton {x.group(1)}", "ZL")
+    x = re.fullmatch(r"(\d+)(colou?rs?)", k)
     if x:
-        return w(f"{x.group(1)} Farbe{'n' if x.group(1) != '1' else ''}")
+        zahl, mehrzahl = x.group(1), x.group(2).endswith("s")
+        if len(zahl) >= 3 or kx.get("mehrdeutig"):
+            return None, None
+        if kx.get("farbnummer"):
+            return w(f"Farbton {zahl}", "ZL")
+        if mehrzahl and int(zahl) >= 2:
+            return w(f"{zahl} Farben", "Q")
+        return None, None
     x = re.fullmatch(r"(\d+)speeds?", k)
     if x:
-        return w(f"{x.group(1)} Stufen")
+        return w(f"{x.group(1)} Stufen", "Z")
     x = re.fullmatch(r"nr(\d+)", k)
     if x:
-        return w(f"Nr. {x.group(1)}")
+        return w(f"Nr. {x.group(1)}", "ZL")
     x = re.fullmatch(r"farbton(c?\d{1,3})", k)
     if x:
-        return w(f"Farbton {x.group(1).upper()}")
+        return w(f"Farbton {x.group(1).upper()}", "ZL")
     x = re.fullmatch(r"musternr(\w{1,3})", k)
     if x:
-        return w(f"Muster {x.group(1).upper()}")
+        return w(f"Muster {x.group(1).upper()}", "ZL")
     x = re.fullmatch(r"gr\.(xxs|xs|s|m|l|xl|xxl|xxxl|\dxl)", k)
     if x:
-        return w(f"Gr. {x.group(1).upper()}")
+        return w(f"Gr. {x.group(1).upper()}", "ZL")
     # Modell-/Artikelcodes des Lieferanten («A026», «L01S», «0236L», «2513»): bleiben stehen.
     if re.fullmatch(r"[A-Z]{0,3}\d{1,6}[A-Z]{0,3}", kern) or re.fullmatch(r"[A-Z]", kern):
-        return w(kern)
+        return w(kern, "Z")
     return None, None
 
 
-def _stueck_de(seg):
-    """Ein Stueck ohne Trenner → (Deutsch|None, unbekannte Woerter)."""
+def _stueck_de(seg, kx=None):
+    """Ein Stueck ohne Trenner → (Deutsch|None, unbekannte Woerter).
+    Jede Einheit traegt ihre Wortklasse; am Ende prueft _satzbau() die Folge (siehe oben)."""
     toks = seg.split()
-    out, arten, unbekannt, i = [], [], [], 0
+    units, unbekannt, i = [], [], 0      # units: [text, klasse]
     while i < len(toks):
         treffer = None
         # «Light Rose Red» → Hellrosarot: Bestimmungswort + bekannte Farbphrase = ein Kompositum.
@@ -541,15 +827,19 @@ def _stueck_de(seg):
                 span = " ".join(toks[i + 1:j]); key = span.lower()
                 # Mehrwortige Phrasen nur aus farben_de.json — «Deep Coffee Purple» wurde sonst
                 # «Dunkelkaffeelila» (phrase_de klebt coffee+purple, der Modifikator davor).
-                f = FD.get(key) or (_fz.phrase_de(span) if j == i + 2 and re.fullmatch(r"[A-Za-z]+", span) else None)
+                f = (FD.get(key) if key not in FD_UNBRAUCHBAR else None) or \
+                    (_fz.phrase_de(span) if j == i + 2 and re.fullmatch(r"[A-Za-z]+", span) else None)
                 if f and " " not in f and "-" not in f and not f.lower().startswith(("hell", "dunkel")):
-                    treffer = (j, (mod + _doppel_weg(f).lower()).capitalize(), "farbe"); break
+                    treffer = (j, (mod + _doppel_weg(f).lower()).capitalize(), "C"); break
         for j in (range(min(len(toks), i + 5), i, -1) if treffer is None else ()):
             span = " ".join(toks[i:j])
             key = span.lower().strip("()[]")
             if j - i > 1 and key in TERM_PHRASES:
-                treffer = (j, TERM_PHRASES[key], "tok"); break
-            if key in FD:
+                kl = PHRASE_KLASSE.get(key) or _klasse_de(TERM_PHRASES[key])
+                if kl == "N" or (kl == "A" and " " in TERM_PHRASES[key]):
+                    kl = "NF"                        # kuratierte Wendung («Langarm», «hoher Absatz»)
+                treffer = (j, TERM_PHRASES[key], kl); break
+            if key in FD and key not in FD_UNBRAUCHBAR:
                 # Einschritt-Vorschau: «Black Rose Gold» ist Schwarz + Roségold, nicht
                 # Schwarz-Rosé + Gold. Bildet das letzte Wort mit dem naechsten eine eigene
                 # Farbphrase und bleibt der Rest uebersetzbar, wird kuerzer geschnitten.
@@ -558,7 +848,7 @@ def _stueck_de(seg):
                     rest = " ".join(toks[i:j - 1]).lower()
                     if nach in FD and (rest in FD or _fz.phrase_de(" ".join(toks[i:j - 1]))):
                         continue
-                treffer = (j, _doppel_weg(FD[key]), "farbe"); break
+                treffer = (j, _doppel_weg(FD[key]), "C"); break
             if j - i <= 3 and re.fullmatch(r"[A-Za-z ]+", span):
                 # Zwei GRUNDwoerter ohne Eintrag in farben_de.json («Navy White», «Blue Pink»):
                 # phrase_de klebt sie zusammen («Marineblauweiss»). farben_de.json schreibt solche
@@ -568,47 +858,78 @@ def _stueck_de(seg):
                     continue
                 d = _fz.phrase_de(span)
                 if d:
-                    treffer = (j, _doppel_weg(d), "farbe"); break
+                    treffer = (j, _doppel_weg(d), "C"); break
         if treffer is None:
             k0 = toks[i].lower()
             # «Mocha Color» ist unbekannt, aber «Sand Color» nach einer Farbe ist nur Fuellwort.
-            if k0 in ("color", "colour") and arten and arten[-1] == "farbe":
+            if k0 in ("color", "colour") and units and units[-1][1] == "C":
                 i += 1; continue
-            r, art = _token_de(toks[i])
+            r, kl = _token_de(toks[i], kx)
             if r is None:
                 unbekannt.append(toks[i]); i += 1; continue
             if k0 in FARB_TERM:
-                art = "farbe"
-            treffer = (i + 1, r, art)
-        j, r, art = treffer
-        if art == "menge" and out:
-            out.append("·"); arten.append("sep")
-        if art == "farbe" and arten and arten[-1] == "farbe":
-            if out[-1].split("-")[-1].lower() != r.lower():   # «Blue blue» → nicht «Blau-Blau»
-                out[-1] = out[-1] + "-" + r      # «Senfgrün-Grau», «Schwarz-Roségold»
-        elif art == "farbe" and arten and arten[-1] == "tok" and out[-1].lower() in MUSTER_ADJ:
-            adj = out.pop(); arten.pop()          # «Flower Blue» → «Blau geblümt»
-            out.append(r); arten.append("farbe")
-            out.append(adj.lower()); arten.append("tok")
+                kl = "C"
+            # «11 CM» → «11 cm» — aber nur HINTER einer Zahl («Weiss-ML», «MM» sind Groessen, 23.09.).
+            if k0 in ("cm", "mm", "ml", "kg", "mah") and units and re.fullmatch(r"[\d.,/x]+", units[-1][0]):
+                r = {"mah": "mAh"}.get(k0, k0)
+            treffer = (i + 1, r, kl)
+        j, r, kl = treffer
+        if kl == "C":
+            r = _farbe_fein(r)
+            if r is None:
+                unbekannt.append(" ".join(toks[i:j])); i = j; continue
+        # «·» nur vor Stueckzahlen («Schwarz · 2 Stück»), nicht vor «17 Farben» und nicht nach «und».
+        if kl == "Q" and units and units[-1][1] != "F" and not r.endswith("Farben"):
+            units.append(["·", "·"])
+        if kl == "C" and units and units[-1][1] == "C":
+            if units[-1][0].split("-")[-1].lower() != r.lower():   # «Blue blue» → nicht «Blau-Blau»
+                units[-1][0] = units[-1][0] + "-" + r      # «Senfgrün-Grau», «Schwarz-Roségold»
+        elif kl == "C" and units and units[-1][1] == "A" and units[-1][0].lower() in ("klassisch", "leuchtend"):
+            units[-1] = [units[-1][0].capitalize() + "es " + r, "C"]   # «Classic Dark Blue» → «Klassisches Dunkelblau»
+        elif kl == "C" and units and units[-1][1] in A_KL and units[-1][0].lower() in MUSTER_ADJ:
+            adj = units.pop()                                 # «Flower Blue» → «Blau geblümt»
+            if units and units[-1][1] == "C":                 # «Navy Printed Yellow» → «Marineblau-Gelb bedruckt»
+                units[-1][0] = units[-1][0] + "-" + r         # (sonst verbindet erst der naechste Lauf → Ping-Pong)
+            else:
+                units.append([r, "C"])
+            units.append([adj[0].lower(), "AM"])
+        elif kl == "C" and units and units[-1][1] == "P" and units[-1][0].lower() in ("retro", "vintage"):
+            units[-1] = [units[-1][0].capitalize() + "-" + r, "C"]    # wie farben_de.json «Retro-Blau»
         else:
-            out.append(r); arten.append(art)
+            units.append([r, kl])
         i = j
     if unbekannt:
         return None, unbekannt
-    return " ".join(out), []
+    grund = _satzbau(units)
+    if grund:
+        return None, ["⟨satzbau:" + grund + "⟩"]
+    return " ".join(u[0] for u in units), []
 
 
 MODIF = {"light": "hell", "dark": "dunkel", "deep": "dunkel", "pale": "blass", "bright": "leuchtend",
          "middle": "mittel"}
 TRENNER = re.compile(r"(\s*-\s*|\s*\+\s*|\s*,\s*|\s*/\s*|\s*&\s*)")
 SCHUTZ = [("t-shirt", "tshirt"), ("type-c", "typec"), ("v-neck", "v neck"), ("wi-fi", "wifi")]
+# Klassen, die sich nicht aus der Schreibweise ergeben (Rest: _klasse_de).
+# «bunt» ist ein ADJEKTIV: allein ein guter Farbwert («Bunt»), vor einem Nomen falsch («Bunt Verpackung»).
+TERM_KLASSE = {"picture": "C", "colorful": "A", "colourful": "A", "multicolor": "A", "multicolour": "A",
+               "gradient": "CN", "plussize": "Z", "golden": "C", "bronze": "C", "caramel": "C", "olive": "C",
+               "default": "Z", "typec": "Z", "in": "IN", "colors": "N", "colours": "N"}
+PHRASE_KLASSE = {"gradient color": "CN", "wood color": "C", "wood colour": "C", "flesh color": "C",
+                 "skin color": "C", "titanium color": "C", "red rose": "C",
+                 "polka dot": "AM", "polka dots": "AM", "leopard print": "CN", "floral print": "CN",
+                 "flower print": "CN"}
 
 
-def wert_de(v):
+def wert_de(v, kx=None):
     """Uebersetzt einen ganzen Optionswert. → (neu|None, unbekannte Woerter).
-    None heisst: unveraendert lassen (unbekanntes Wort oder nichts zu tun)."""
+    None heisst: unveraendert lassen (unbekanntes Wort, verworfener Satzbau oder nichts zu tun).
+    kx: Kontext der Option (option_kontext) — ohne ihn gilt eine NColor-Einzahl als unklar."""
     if (v or "").strip().lower() in ARTEFAKTE:
         return ARTEFAKTE[(v or "").strip().lower()], []
+    # «1 3 6color» = Farben Nr. 1, 3 und 6 (Lippenstift-Kombi) — keine Anzahl, nicht raten.
+    if re.search(r"(?i)(?<![\d.])\d{1,2}\s+\d{1,2}\s*colou?rs?\b", v or ""):
+        return None, ["⟨farbnummern-folge⟩"]
     s = _vorbereiten(v or "")
     for a, b in SCHUTZ:
         s = re.sub(re.escape(a), b, s, flags=re.I)
@@ -619,7 +940,7 @@ def wert_de(v):
             out.append(t); continue
         if not t.strip():
             out.append(t); continue
-        d, u = _stueck_de(t.strip())
+        d, u = _stueck_de(t.strip(), kx)
         if d is None:
             unbekannt += u; continue
         # Jedes Stueck ist ein eigenes Merkmal («Schwarz-Klein», «Keilabsatz-Weiss»): gross
@@ -694,6 +1015,101 @@ def rueck_lesen(pid, oid, erwartet):
     return False
 
 
+def option_plan(p, o, st, besuche=0, pod=False, form_a=False):
+    """Plant EINE Option: → (final, stufe1, offen_hier) oder None (nichts zu tun / unberuehrt).
+    Schreibt nichts. Von produkt_bearbeiten() und vom Reparaturlauf genutzt — damit Reparatur und
+    Tageslauf dieselbe Rechnung machen (23.09.: eine zweite Kopie der Regeln waere die naechste
+    Quelle fuer Ping-Pong)."""
+    pid_kurz = p["id"].split("/")[-1]
+    vals = o["optionValues"]
+    code_noetig = any(BAD.search(v["name"] or "") for v in vals)
+    en_noetig = (not KEIN_EN) and any(englisch(v["name"] or "") for v in vals)
+    if not code_noetig and not en_noetig:
+        return None
+    if o.get("linkedMetafield"):
+        _skip(st, "linkedMetafield"); return None
+
+    # Stufe 1 (alt): Codereinigung
+    stufe1 = {}
+    for v in vals:
+        n = clean(v["name"] or "") if code_noetig else None
+        stufe1[v["id"]] = n if n else (v["name"] or "")
+
+    # Stufe 2 (neu): englisch → deutsch, nur wenn nichts dagegen spricht
+    stufe2 = dict(stufe1)
+    en_aktiv = en_noetig
+    if en_aktiv:
+        st["en_kandidaten"] += 1
+        gruppen = set()
+        for v in vals:
+            gruppen |= kleidung(v["name"] or "")
+        if gruppen:
+            en_aktiv = False
+            titel_l = (p.get("title") or "").lower()
+            im_titel = {g for g, rx in TITEL_GRUPPE.items() if re.search(rx, titel_l)}
+            # «top» steckt auch in Farbnamen («Mountain Top Ash») — es sperrt die
+            # Uebersetzung, zaehlt aber nicht als Widerspruch.
+            g_melden = set()
+            for v in vals:
+                g_melden |= {GARMENT[w] for w in re.findall(r"t-shirt|[a-z]+", (v["name"] or "").lower())
+                             if w in GARMENT and w not in ("top", "tops")}
+            konflikt = len(g_melden) >= 2 or bool(g_melden and im_titel and not (g_melden & im_titel))
+            if konflikt:
+                st["kleidung"].append({"id": pid_kurz, "handle": p.get("handle"),
+                                       "titel": p.get("title"), "option": o["name"],
+                                       "werte": [v["name"] for v in vals][:12],
+                                       "gruppen": sorted(gruppen), "titel_set": bool(TITEL_SET.search(p.get("title") or "")),
+                                       "besuche": besuche})
+            _skip(st, "kleidungsstueck-im-wert")
+        elif pod:
+            en_aktiv = False; _skip(st, "pod-editor")
+        elif form_a:
+            en_aktiv = False; _skip(st, "cj-pid-sku-bestellung-ueber-titel")
+    offen_hier = []
+    if en_aktiv:
+        # Ist die Option einmal als englisch erkannt, laufen ALLE ihre Werte durch dieselbe
+        # Uebersetzung — sonst stand «Pink set-USB» (kein englisches Wort) neben «Pink Set 1-USB».
+        # Der Kontext der Option entscheidet, ob «NColor» eine Nummer oder eine Anzahl ist.
+        kx = option_kontext([stufe1[v["id"]] for v in vals])
+        for v in vals:
+            alt = stufe1[v["id"]]
+            neu, unb = wert_de(alt, kx)
+            if neu:
+                stufe2[v["id"]] = neu
+            elif unb and englisch(alt):
+                offen_hier.append(alt)
+                st["en_werte_offen"] += 1
+                for u in unb:
+                    k = u.lower()
+                    st["unbekannt"][k] = st["unbekannt"].get(k, 0) + 1
+
+    def kollidiert(namen):
+        e = [x.strip().lower() for x in namen.values()]
+        return len(set(e)) != len(e)
+
+    # ⚠️ KOLLISIONS-WACHE. Der alte Code liess bei zwei gleichen Ergebnissen einfach
+    # das zweite aus — die Option waere dann halb bereinigt und halb roh gewesen,
+    # und Shopify beantwortet ein doppeltes Ergebnis ohnehin mit «Option value
+    # already exists» (dieselbe Falle wie bei den Farbwerten). Kollidiert etwas,
+    # bleibt die GANZE Option unberuehrt: lieber ein Lieferantencode als eine
+    # Auswahl, in der zwei Zeilen dasselbe heissen.
+    # 23.09.: Kollidiert erst die Uebersetzung, wird auf die reine Codereinigung
+    # zurueckgefallen — und die Kollision gemeldet, nicht geschrieben.
+    final = stufe2
+    if kollidiert(stufe2):
+        # Gemeldet wird nur, was die UEBERSETZUNG verursacht; kollidiert schon die
+        # Codereinigung, ist das die alte Klasse (Option bleibt wie bisher unberuehrt).
+        if stufe2 != stufe1 and not kollidiert(stufe1):
+            paare = [(v["name"], stufe2[v["id"]]) for v in vals if stufe2[v["id"]] != (v["name"] or "")]
+            st["kollision"].append({"id": pid_kurz, "handle": p.get("handle"), "option": o["name"],
+                                    "paare": paare[:8], "besuche": besuche})
+            _skip(st, "kollision-nach-uebersetzung")
+        final = stufe1
+        if kollidiert(stufe1):
+            return None
+    return final, stufe1, offen_hier
+
+
 def produkt_bearbeiten(p, st, besuche=0):
     st["gescannt"] += 1
     pid_kurz = p["id"].split("/")[-1]
@@ -721,90 +1137,11 @@ def produkt_bearbeiten(p, st, besuche=0):
     for o in p["options"]:
         if (o["name"] or "") == "Title":
             continue
-        vals = o["optionValues"]
-        code_noetig = any(BAD.search(v["name"] or "") for v in vals)
-        en_noetig = (not KEIN_EN) and any(englisch(v["name"] or "") for v in vals)
-        if not code_noetig and not en_noetig:
+        plan = option_plan(p, o, st, besuche, pod, form_a)
+        if plan is None:
             continue
-        if o.get("linkedMetafield"):
-            _skip(st, "linkedMetafield"); continue
-
-        # Stufe 1 (alt): Codereinigung
-        stufe1 = {}
-        for v in vals:
-            n = clean(v["name"] or "") if code_noetig else None
-            stufe1[v["id"]] = n if n else (v["name"] or "")
-
-        # Stufe 2 (neu): englisch → deutsch, nur wenn nichts dagegen spricht
-        stufe2 = dict(stufe1)
-        en_aktiv = en_noetig
-        if en_aktiv:
-            st["en_kandidaten"] += 1
-            gruppen = set()
-            for v in vals:
-                gruppen |= kleidung(v["name"] or "")
-            if gruppen:
-                en_aktiv = False
-                titel_l = (p.get("title") or "").lower()
-                im_titel = {g for g, rx in TITEL_GRUPPE.items() if re.search(rx, titel_l)}
-                # «top» steckt auch in Farbnamen («Mountain Top Ash») — es sperrt die
-                # Uebersetzung, zaehlt aber nicht als Widerspruch.
-                g_melden = set()
-                for v in vals:
-                    g_melden |= {GARMENT[w] for w in re.findall(r"t-shirt|[a-z]+", (v["name"] or "").lower())
-                                 if w in GARMENT and w not in ("top", "tops")}
-                konflikt = len(g_melden) >= 2 or bool(g_melden and im_titel and not (g_melden & im_titel))
-                if konflikt:
-                    st["kleidung"].append({"id": pid_kurz, "handle": p.get("handle"),
-                                           "titel": p.get("title"), "option": o["name"],
-                                           "werte": [v["name"] for v in vals][:12],
-                                           "gruppen": sorted(gruppen), "titel_set": bool(TITEL_SET.search(p.get("title") or "")),
-                                           "besuche": besuche})
-                _skip(st, "kleidungsstueck-im-wert")
-            elif pod:
-                en_aktiv = False; _skip(st, "pod-editor")
-            elif form_a:
-                en_aktiv = False; _skip(st, "cj-pid-sku-bestellung-ueber-titel")
-        offen_hier = []
-        if en_aktiv:
-            # Ist die Option einmal als englisch erkannt, laufen ALLE ihre Werte durch dieselbe
-            # Uebersetzung — sonst stand «Pink set-USB» (kein englisches Wort) neben «Pink Set 1-USB».
-            for v in vals:
-                alt = stufe1[v["id"]]
-                neu, unb = wert_de(alt)
-                if neu:
-                    stufe2[v["id"]] = neu
-                elif unb and englisch(alt):
-                    offen_hier.append(alt)
-                    st["en_werte_offen"] += 1
-                    for u in unb:
-                        k = u.lower()
-                        st["unbekannt"][k] = st["unbekannt"].get(k, 0) + 1
-
-        def kollidiert(namen):
-            e = [x.strip().lower() for x in namen.values()]
-            return len(set(e)) != len(e)
-
-        # ⚠️ KOLLISIONS-WACHE. Der alte Code liess bei zwei gleichen Ergebnissen einfach
-        # das zweite aus — die Option waere dann halb bereinigt und halb roh gewesen,
-        # und Shopify beantwortet ein doppeltes Ergebnis ohnehin mit «Option value
-        # already exists» (dieselbe Falle wie bei den Farbwerten). Kollidiert etwas,
-        # bleibt die GANZE Option unberuehrt: lieber ein Lieferantencode als eine
-        # Auswahl, in der zwei Zeilen dasselbe heissen.
-        # 23.09.: Kollidiert erst die Uebersetzung, wird auf die reine Codereinigung
-        # zurueckgefallen — und die Kollision gemeldet, nicht geschrieben.
-        final = stufe2
-        if kollidiert(stufe2):
-            # Gemeldet wird nur, was die UEBERSETZUNG verursacht; kollidiert schon die
-            # Codereinigung, ist das die alte Klasse (Option bleibt wie bisher unberuehrt).
-            if stufe2 != stufe1 and not kollidiert(stufe1):
-                paare = [(v["name"], stufe2[v["id"]]) for v in vals if stufe2[v["id"]] != (v["name"] or "")]
-                st["kollision"].append({"id": pid_kurz, "handle": p.get("handle"), "option": o["name"],
-                                        "paare": paare[:8], "besuche": besuche})
-                _skip(st, "kollision-nach-uebersetzung")
-            final = stufe1
-            if kollidiert(stufe1):
-                continue
+        final, stufe1, offen_hier = plan
+        vals = o["optionValues"]
         # «Set 1 / Set 2 / Set 3» sagt der Kundin nicht, WAS im Paket ist — das weiss nur der
         # Lieferant (Bild/Preis). Fuer besuchte Seiten melden, nicht raten.
         if besuche and sum(1 for x in final.values() if re.search(r"(?i)\bset ?\d+\b", x)) >= 2:
@@ -1055,5 +1392,90 @@ def main():
           f"{st['fehler']} Fehler, {st['rueck_fehler']} Rücklese-Abweichungen · {bilanz()}")
 
 
+# ══ SELBSTTEST (23.09.2026, Nachbesserung) ═══════════════════════════════════════════════
+# Jedes Fehlbeispiel des Pruefers steht hier mit dem erwarteten Ergebnis. None = unveraendert
+# lassen (lieber Englisch als falsches Deutsch). Aufruf: python3 automation/variant_value_clean.py --selbsttest
+SELBSTTEST_FAELLE = [
+    # (Optionswerte als Kontext, Wert, erwartet)
+    ([], "Classic Black", "Klassisches Schwarz"),               # nie «Klassischschwarz»
+    ([], "Classic Blue-60x50x18cm", "Klassisches Blau-60x50x18 cm"),
+    ([], "36RGB Remote Control 17 Colors-Classic Black", "36RGB Fernbedienung 17 Farben-Klassisches Schwarz"),
+    ([], "Bright Red", "Leuchtendes Rot"),                      # nie «Leuchtendrot»
+    ([], "Bright apricot", None),                               # «Leuchtendes Aprikose» waere falsch
+    ([], "Vintage Green", "Vintage-Grün"),                      # wie farben_de.json «Retro-Blau»
+    ([], "Cool Black", None),                                   # nie «Kühlschwarz»
+    ([], "Bright Rose Pink", None),                             # nie «Leuchtendrosé-Pink»
+    ([], "USB plug in version", None),                          # nie «USB Stecker in version»
+    ([], "Black-USB plug in version", None),
+    ([], "3W-16color plug in square-1PC", None),                # «Stecker in eckig»
+    ([], "Brown Single Lining", None),                          # nie «Braun einzeln Futter»
+    ([], "Black Single Stripe", None),                          # nie «Schwarz einzeln gestreift»
+    ([], "Short length S-Gray", None),                          # nie «Kurz Länge S»
+    ([], "4CM Thick Sole Green-36or37", None),                  # nie «4 cm dick Sohle Grün»
+    ([], "White Matte-Colorful Packaging", None),               # nie «Bunt Verpackung»
+    ([], "Bamboo Green", None),                                 # nie «Bambus Grün»
+    ([], "Leather Pink", None),                                 # Farbname, kein Leder
+    ([], "Square Pillow", None),                                # nie «Eckig Kissen»
+    ([], "2pcs charger", None),                                 # nie «2 Stück Ladegerät»
+    ([], "Pink plus cotton-24or25", None),                      # «plus» ist hier kein Modellzusatz
+    ([], "Washed Black 1", None),                               # «Schwarz washed» aus farben_de.json
+    ([], "Blue andKhaki Rose Red set-USB", None),               # «andKhaki» ist kein deutsches Wort
+    ([], "B Black Army Color", None),                           # «Armee» ist kein Farbname
+    ([], "Pink set-USB", "Pink Set-USB"),                       # gleiche Schreibung wie «Pink Set 1-USB»
+    ([], "Pink set1-USB", "Pink Set 1-USB"),
+    ([], "Dark Blue-Plus Size XL", "Dunkelblau-Übergrösse XL"),   # nie «Plus Gr. XL»
+    ([], "White-Sole Length 11 CM", "Weiss-Sohlenlänge 11 cm"),  # nie «Sohle Länge 11 CM»
+    ([], "Round Collar In Black", "Rundhals in Schwarz"),
+    ([], "Navy Blue Printed Yellow", "Marineblau-Gelb bedruckt"),
+    ([], "Blue Wide Stripe", "Blau breit gestreift"),
+    ([], "White-ML", "Weiss-ML"),                               # ML ist eine Groesse, keine Milliliter
+    ([], "Black 1.5 Cm", "Schwarz 1.5 cm"),
+    ([], "Red usb charging", "Rot USB aufladbar"),
+    ([], "018Color", "Farbton 018"),
+    ([], "X2 Blue 128g charging model-USB", "X2 Blau 128g Akku-Version-USB"),
+    ([], "Red Rose", "Rote Rose"),
+    ([], "Brown-Arch Shape Stamp 2PCS", "Braun-Stempel Bogenform · 2 Stück"),
+    ([], "Silver-1 Birthstone", "Silber-1 Geburtsstein"),
+    # NColor: Nummer oder Anzahl entscheidet die Option
+    ([f"{i}color" for i in range(1, 13)], "5color", "Farbton 5"),          # Sommeroben: Nummern
+    ([f"{i}Color-US 0" for i in range(1, 10)], "5Color-US 0", "Farbton 5-US 0"),
+    ([], "5Color-US 0", None),                                  # ohne Reihe: unklar → unveraendert
+    ([f"{i}color-1pcs" for i in range(1, 21)], "10color-1pcs", "Farbton 10-1 Stück"),
+    (["1color", "2Color", "6 Colors", "6Colors3pcs"], "6 Colors", "Farbton 6"),
+    (["1color", "2Color", "6 Colors", "6Colors3pcs"], "2Color3pcs", "Farbton 2 · 3 Stück"),
+    ([], "122930color", None),                                  # Lieferantencode, keine Anzahl
+    ([], "1 3 6color", None),                                   # Farben Nr. 1, 3 und 6
+    (["1 Color", "2 Colors", "3 Colors"], "2 Colors", None),    # einfarbig/zweifarbig ODER Nr. 2
+    (["16colors and 8colors", "8colors 2PCS", "16colors"], "16colors", "16 Farben"),
+    (["16colors and 8colors", "8colors 2PCS", "16colors"], "16colors and 8colors", "16 Farben und 8 Farben"),
+    ([], "39 colors", "39 Farben"),
+    ([], "4color set", "Set mit 4 Farben"),
+    (["2128 1color", "2128 2color", "2128 3color"], "2128 2color", "2128 Farbton 2"),
+    # US-Damengroessen «14W…26W» sind keine Watt (Pruefer 23.09.: 142 Werte «Hellblau-US 14 W»)
+    ([], "Light Blue-US 14W", "Hellblau-US 14W"),
+    ([], "Wine Red-US16W", "Weinrot-US 16W"),
+    ([], "2Color-US 16W", None),                                 # ohne Reihe: NColor unklar → unveraendert
+    ([f"{i}Color-US 16W" for i in range(1, 6)], "2Color-US 16W", "Farbton 2-US 16W"),
+    (["Black-14W", "Black-16W", "Black-18W", "Black-20W"], "Black-16W", "Schwarz-16W"),
+    (["Black 18W", "Black 20W", "White 30W charger"], "Black 18W", "Schwarz 18 W"),   # Ladegeraet = Watt
+    ([], "Black 18W", "Schwarz 18 W"),                          # ohne Reihe: Watt
+    ([], "White 100W", "Weiss 100 W"),
+]
+
+
+def selbsttest():
+    fehler = 0
+    for kontext, wert, erwartet in SELBSTTEST_FAELLE:
+        kx = option_kontext(kontext or [wert])
+        ist = wert_de(wert, kx)[0]
+        if ist != erwartet:
+            fehler += 1
+            print(f"FEHLER {wert!r}: erwartet {erwartet!r}, ist {ist!r}")
+    print(f"SELBSTTEST: {len(SELBSTTEST_FAELLE) - fehler}/{len(SELBSTTEST_FAELLE)} richtig")
+    return 1 if fehler else 0
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        raise SystemExit(selbsttest())
     main()

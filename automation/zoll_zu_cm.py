@@ -16,9 +16,20 @@ gemessen 2'604 «x.y cm» gegen 1'287 «x,y cm»; hatte die Quelle ein Dezimalko
   2. ERGÄNZEN — alles andere, das kein Branchenmass ist, behält die Angabe und bekommt die Umrechnung dazu:
      «Erhältlich in 15 und 17 Zoll (ca. 38 und 43 cm)», «10-Zoll-Format (ca. 25 cm)». So bleibt eine
      Grössenbezeichnung (Trommel, Perücke, Koffer) erhalten und die Kundin versteht sie trotzdem.
-  3. BLEIBT — Branchen-Kontext im selben Satz (Display/Bildschirm/Laptop/Gewinde/SATA/Rad …), Brüche («1/4"»),
-     Werte, neben denen schon cm/mm stehen («3,54″ (9 cm)»), Beträge («CHF 5 Zoll»), Titel (Bezeichnung).
+  3. BLEIBT — Branchen-Kontext im selben Satz (Display/Bildschirm/Laptop/Computer/Rechner/Geräte/Gewinde/SATA/Rad/
+     Nennweite …), Brüche («1/4"»), Werte, neben denen oder im selben Satz schon cm stehen («3,54″ (9 cm)»),
+     Beträge («CHF 5 Zoll»), Titel (Bezeichnung).
+     Nachbesserung 23.09. (Prüfer + Diff über 1'413 Live-Texte), Grund steht in der Bleibt-Zählung:
+       fpv-drohne      FPV-/Drohnen-/Propeller-Ware: jede Zoll-Angabe ist Propeller-/Rahmenklasse, auch mit Masswort
+       geraet-titel    Titel nennt ein Gerät (Laptop-Rucksack, SSD-Gehäuse, Player …): Einzelwerte bleiben, Ketten nicht
+       laptopklasse    Tasche/Rucksack mit 15.6/13.3/…-Diagonale, oder 13–17 Zoll bei Laptop/Computer/Business im Text
+       klammer-offen   Treffer steht schon in einer offenen Klammer → kein «(bis 14 Zoll (ca. 36 cm))»
+       anfuehrung      das " schliesst ein Zitat («Modul "xunfuo 3"»), kein Zollzeichen
+       kein-mass       Volumen/Fassungsvermögen/Kapazität/Auflösung in «Zoll» — keine Länge
+       unplausibel     Geschirr > 24 Zoll, Tasche/Rucksack > 30 Zoll (Quellfehler würde als cm-Zahl konkret)
+       groessentabelle XS/S/M-Tabelle mit Zollzeichen (CJ trägt dort oft cm-Werte mit falschem Zeichen)
   «Zoll» im Sinn von Zollgebühren wird nie berührt: gesucht wird nur eine Zahl DIREKT vor der Einheit.
+  Rundung dezimal (ROUND_HALF_UP): 2.5 Zoll = 6.35 → «6.4 cm». Nach «über/unter/mindestens/maximal» kein «ca.».
 
 Kandidaten LIVE (Phrasensuche «Zoll» und «inch», Unsinnswort-Gegenprobe muss 0 ergeben — sonst PAUSE);
 geschrieben wird gegen den frisch gelesenen Text, je Produkt unter /tmp/lock_produkttext.lock; nach dem Schreiben
@@ -28,6 +39,7 @@ Standard ist TROCKEN (zeigt Diffs); SCHARF=1 schreibt. CAP (Standard 400) begren
 Test ohne Shopify:  python3 automation/zoll_zu_cm.py --selbsttest
 """
 import fcntl, html as H, json, os, re, sys, time, urllib.request
+from decimal import Decimal, ROUND_HALF_UP
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
@@ -56,7 +68,7 @@ BUCHST = rf"(?:{WS}?(?:[BHLTW]|Breite|Höhe|Länge|Tiefe)\b(?!-))"
 REST = rf"(?:{U})?{BUCHST}?"
 # «x» nur beidseitig frei («52 Zoll B x 63») oder beidseitig eng («25x20») — «2x 12x18 Zoll» ist eine STÜCKZAHL.
 SEP = rf"(?:{WS}*[×*]{WS}*|{WS}+[xX]{WS}+|(?<=\d)[xX](?=\d))"
-LSEP = rf"(?:{WS}*,{WS}*|{WS}+(?:und|oder|bis){WS}+|{WS}*[-–]{WS}*|-{WS}+(?:und|oder){WS}+|{WS}*/{WS}*)"
+LSEP = rf"(?:{WS}*,{WS}*|{WS}+(?:und|oder|bis|bzw\.){WS}+|{WS}*[-–]{WS}*|-{WS}+(?:und|oder){WS}+|{WS}*/{WS}*)"
 # Kette/Liste endet IMMER mit einer Einheit; «8 Zoll, 500 g» bleibt «8 Zoll» (Rückverfolgung statt Nachprüfung).
 GRUPPE = re.compile(rf"(?:{NUM}{REST}(?:{SEP}|{LSEP})(?:{NUM_L}{REST}(?:{SEP}|{LSEP}))*{NUM_L}{U}{BUCHST}?"
                     rf"|{NUM}{U}{BUCHST}?)")
@@ -74,8 +86,50 @@ BRANCHE = re.compile(
     r"reifen|\brollen?\b|lenkrolle|laufrolle|lautsprecher|subwoofer|woofer|treiber|propeller|\bschaft|spannzange|"
     r"\bbits?\b|stecknuss|ratsche|vierkant|\bbspt?\b|\bnpt\b|mainboard|objektiv|modellflug|drohne|zoll-bereich|"
     r"anzeige|smartwatch|e-reader|kindle|kompatibel|-geräte?n?\b|zoll-geräte?n?\b|kettensäge|sägekette|\bschwert|"
-    r"\bvelos?\b|bereifung|\brad(?:konfig|grösse|durchmesser)",
+    r"\bvelos?\b|bereifung|\brad(?:konfig|grösse|durchmesser)|"
+    # Nachbesserung 23.09. (Prüfer-Befunde + eigener Diff über 1'413 Live-Texte):
+    # Gerätediagonalen ohne «Laptop» im Satz («Computerfach bis 14 Zoll», «Geräte bis zu 15 Zoll», «10-Zoll-Computer»,
+    # «Rechnergrösse: 15-17 Zoll») — Laptop-/Tablet-Klassen sind Branchenmass;
+    r"computer|rechner|\bgeräte?n?\b|zoll-klasse|grössenklasse|\bplayer\b|transmitter|\bmp[345]\b|"
+    # FPV/Drohne: «10 Zoll FPV» = Propellerklasse, «Kohlefaser-Rahmen»; Foto-Klassen («Fotorahmen 6 Zoll»,
+    # «Innenrahmengrösse: 6 Zoll»). NICHT das blanke «rahmen»: «Koffer mit Aluminiumrahmen 22 Zoll» und
+    # «11 Noten in einem 7-Zoll-Rahmen» (Trommel) sind echte Grössen (Diff 23.09.). FPV-Rahmen fängt FPV_* unten.
+    r"\bfpv\b|\bquad\b|quadcopter|multicopter|copter\b|fotorahmen|bilderrahmen|innenrahmen|rahmen-?kit|"
+    r"rahmengrösse|carbon|kohlefaser|"
+    # Nennweiten («1-Zoll-Zapfpistole», «1.5 Zoll Einlass») und Felgenklassen («Radsocken 13-16 Zoll»);
+    r"zapf|einlass|auslass|\bventile?\b|radsocke|radkappe|radzier|autorad|"
+    # keine Länge: «Auflösung von 11-11,5 Zoll» (Teleskop).
+    r"auflösung",
     re.I)
+# Produkt ist FPV-/Drohnen-Hardware → JEDE Zoll-Angabe ist Branchenmass, auch mit Masswort («Durchmesser 4.7 Zoll und
+# Steigung 3.0 Zoll» beim Propeller war halb umgerechnet — Prüfer 23.09.).
+FPV_TITEL = re.compile(r"\bfpv\b|drohne|propeller|quadcopter|multicopter|toothpick|cinewhoop|\bquad\b", re.I)
+FPV_TEXT = re.compile(r"\bfpv\b|propeller|quadcopter|multicopter|toothpick|cinewhoop", re.I)
+# Geräte-Titel (Laptop-Rucksack, SSD-Gehäuse, Notebook-Tasche …): ein EINZELWERT bleibt, auch mit Masswort
+# («Laptop-Rucksack · Masse: 16,1 Zoll» war die Laptopklasse — Prüfer 23.09.). Massketten werden weiter umgerechnet.
+GERAET_TITEL = re.compile(
+    r"laptop|notebook|macbook|computer|\btablets?\b|\bipad|\bssd\b|\bhdd\b|\bsata\b|festplatte|monitor|bildschirm|"
+    r"display|\btv\b|fernseh|smartphone|\bhandy|iphone|beamer|projektor|smartwatch|\bplayer\b", re.I)
+# Tasche/Rucksack: kanonische Laptop-/Tablet-Diagonalen sind Geräteklassen («Grösse: 15.6 Zoll» im Rucksack);
+# ganze 13–17 nur, wenn der Text Laptop/Notebook/Computer/Tablet erwähnt (sonst oft Taschenhöhe, z. B. 19 Zoll).
+TASCHE_TITEL = re.compile(r"rucksack|tasche|\bbag\b|backpack|sleeve|hülle|ranzen|messenger", re.I)
+# «Business»-Rucksack/-Tasche: 15/16/17 Zoll ist dort die Laptopklasse («Large-Capacity 16-Inch Business Backpack»).
+GERAET_ERWAEHNT = re.compile(r"laptop|notebook|macbook|computer|\btablets?\b|\bipad|rechner|business", re.I)
+LAPTOP_DEZIMAL = {"10.1", "10.2", "10.5", "10.9", "11.6", "12.3", "12.9", "13.3", "13.5", "13.6", "14.1", "15.4",
+                  "15.6", "16.1", "17.3", "18.4"}
+# Zoll als Volumen/Leistung («Fassungsvermögen von 20 Zoll», «Volumen: 20 Zoll») — kein Längenmass, nicht umrechnen.
+KEIN_MASS_DAVOR = re.compile(r"(?:volumen|fassungsvermögen|kapazität|auflösung|leistung)\W{0,3}(?:von|:)?\s*"
+                             r"(?:(?:bis|über)\s+(?:zu\s+)?)?$", re.I)
+# «über ca. 20 cm» liest sich schief → nach Vergleichswörtern kein «ca.».
+# Unplausible Quellwerte NICHT umrechnen — die Umrechnung machte den Fehler erst sichtbar konkret (Diff 23.09.:
+# «Instant-Noodle-Schale · Durchmesser von 65 Zoll» → «ca. 165 cm»; «Tagesrucksack … ist 32 Zoll gross» → 81 cm).
+PLAUSI = [(re.compile(r"schale|schüssel|teller|\bbowl|tasse|becher|servierplatte", re.I), 24.0),
+          (TASCHE_TITEL, 30.0)]
+# Grössentabelle mit Zollzeichen («XS (Hals 21", Brust 25", Rücken 18")» beim Haustiermantel): CJ-Tabellen tragen oft
+# cm-Werte mit falschem Zeichen — 53 cm Halsumfang für XS wäre falsch. Nicht umrechnen, melden.
+GROESSENTABELLE = re.compile(r"\b(?:X{0,3}S|M|X{0,3}L|[2-6]XL)\s*\(")
+CM_SATZ = re.compile(r"\d\s?cm\b")
+VERGLEICH_DAVOR = re.compile(r"(?:\büber|mehr als|\bunter|weniger als|mindestens|höchstens|maximal|max\.)\s*$", re.I)
 MASSWORT = re.compile(
     # «Grösse» fehlt hier absichtlich: «Grösse von 16 Zoll» ist oft eine Grössenklasse (Laptopfach, Trommel,
     # Teller) → ERGÄNZEN statt ersetzen, die Bezeichnung bleibt stehen.
@@ -86,20 +140,23 @@ MASSWORT = re.compile(
 CA_DAVOR = re.compile(r"(?:\bca\.?|circa|etwa|ungefähr|rund|~|approx\.?)\s*$", re.I)
 BETRAG_DAVOR = re.compile(r"(?:CHF|EUR|Fr\.|€|\$|USD)\s*$")
 CM_NAH = re.compile(r"\d\s?(?:cm|mm)\b")
-SATZENDE = re.compile(r"(?:[.!?;]\s|\|)")
+# Abkürzungen sind kein Satzende (Diff 23.09.: «7 Zoll bzw. 8 Zoll» → «ca. 18 cm bzw. 8 Zoll (ca. 20 cm)»).
+SATZENDE = re.compile(r"(?<!\bbzw)(?<!\bca)(?<!\binkl)(?<!\bmax)(?<!\bmin)(?<!\bNr)(?<!\bevtl)(?<!\bggf)"
+                      r"(?<!\busw)(?<!\bStk)(?<!\bz\.B)(?<!\bu\.a)(?<!\bd\.h)(?:[.!?;]\s|\|)")
 
 BLOCK = re.compile(r"^</?(?:p|li|ul|ol|tr|table|tbody|thead|br|div|h[1-6]|section|article|blockquote|dd|dt|dl)\b", re.I)
 ZELLE = re.compile(r"^</?(?:td|th)\b", re.I)
 
 
 def cm_text(wert, komma):
-    cm = float(wert.replace(",", ".")) * 2.54
+    # Dezimal statt Float (Prüfer 23.09.: 2.5 Zoll = 6.35 cm wurde per Float zu «6.3» abgerundet → jetzt 6.4).
+    cm = Decimal(wert.replace(",", ".")) * Decimal("2.54")
     if cm < 10:
-        s = f"{cm:.1f}"
+        s = str(cm.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP))
         if s.endswith(".0"):
             s = s[:-2]
     else:
-        s = str(int(cm + 0.5))
+        s = str(cm.quantize(Decimal("1"), rounding=ROUND_HALF_UP))
     return s.replace(".", ",") if komma else s
 
 
@@ -161,6 +218,11 @@ def bearbeite(htm, titel=""):
     Einzelwerte ohne Masswort in Zoll («Grösse von 16 Zoll» im Laptop-Rucksack = Laptopklasse)."""
     titel_branche = bool(BRANCHE.search(titel or ""))
     st = segmente(htm)
+    voll = klartext(st)
+    fpv = bool(FPV_TITEL.search(titel or "") or FPV_TEXT.search(voll))
+    geraet_titel = bool(GERAET_TITEL.search(titel or ""))
+    tasche = bool(TASCHE_TITEL.search(titel or ""))
+    geraet_erwaehnt = bool(GERAET_ERWAEHNT.search((titel or "") + " " + voll))
     aend, bleibt = [], []
     neu_st = []
     for i, (tag, t) in enumerate(st):
@@ -178,15 +240,23 @@ def bearbeite(htm, titel=""):
             nach = H.unescape(rest_roh) + nachher_txt
             v_satz, n_satz = satz_vor(vor), satz_nach(nach)
             ctx = (v_satz[-45:] + "⟦" + H.unescape(g) + "⟧" + n_satz[:35]).replace("\n", " ")
+            block_vor = vor[vor.rfind("|") + 1:]          # Text seit dem letzten Block-Tag (Absatz/Listenpunkt)
             grund = None
             if re.search(r"\d\s*/\s*$", vor[-4:]) or re.match(r"\s*/\s*\d", nach):
                 grund = "bruch"
             elif BETRAG_DAVOR.search(vor[-12:]):
                 grund = "betrag"
+            elif fpv:
+                grund = "fpv-drohne"                  # Propeller-/Rahmenklassen: nie umrechnen, auch nicht mit Masswort
+            elif re.search(r"(?:\"|&quot;)", g) and len(re.findall(r"(?<![\d\"])\"", block_vor)) % 2 == 1:
+                grund = "anfuehrung"                  # «Wi-Fi-Modul "xunfuo 3"» — das " schliesst ein Zitat, kein Zoll
+            elif KEIN_MASS_DAVOR.search(v_satz[-40:]):
+                grund = "kein-mass"                   # «Fassungsvermögen von 20 Zoll», «Auflösung von 11 Zoll»
             elif BRANCHE.search(v_satz[-60:]) or BRANCHE.search(schwanz) or BRANCHE.search(n_satz):
                 grund = "branche"
-            elif CM_NAH.search(vor[-22:]) or CM_NAH.search(nach[:28]):
-                grund = "cm-schon-da"
+            elif CM_NAH.search(vor[-22:]) or CM_NAH.search(nach[:28]) or CM_SATZ.search(v_satz) \
+                    or CM_SATZ.search(n_satz):
+                grund = "cm-schon-da"                # auch: cm im selben Satz («Massen von 21x11x35 cm und … 10 Zoll»)
             elif not re.search(SEP, g) and _nicht_steigend(g):
                 grund = "liste-unklar"               # «(45, 52, 58, 20-22 Zoll)»: Modellnummern + Zoll gemischt
             elif (rest_roh.startswith("-") and not schwanz) or re.search(r"(?:Zoll|[Ii]nch)-,?\s*(?:und|oder)?\s*$", vor):
@@ -198,12 +268,22 @@ def bearbeite(htm, titel=""):
             in_klammer = vor.rstrip().endswith("(") and nach.lstrip().startswith(")")
             label = (MASSWORT.search(v_satz[-45:]) is not None
                      or re.match(r"\s*(?:breit|lang|hoch|tief|dick|gross|groß)\b", n_satz) is not None)
+            werte = [x.replace(",", ".") for x in TEIL_NUM.findall(g)]
+            if any(rx.search(titel or "") and any(float(w) > mx for w in werte) for rx, mx in PLAUSI):
+                bleibt.append(("unplausibel", H.unescape(g), ctx)); continue
+            if zeichen and GROESSENTABELLE.search(block_vor):
+                bleibt.append(("groessentabelle", H.unescape(g), ctx)); continue
+            if geraet_titel and not kette:
+                bleibt.append(("geraet-titel", H.unescape(g), ctx)); continue
+            if tasche and not kette and (any(w in LAPTOP_DEZIMAL for w in werte)
+                                         or (geraet_erwaehnt and any(re.fullmatch(r"1[3-7]", w) for w in werte))):
+                bleibt.append(("laptopklasse", H.unescape(g), ctx)); continue
             if titel_branche and not (kette or label or zeichen):
                 bleibt.append(("branche-titel", H.unescape(g), ctx)); continue
             ersetzen = (kette or label or in_klammer or zeichen) and not schwanz
             umg = umrechnen_gruppe(g)
             if ersetzen:
-                ca = "" if CA_DAVOR.search(vor[-10:]) else "ca. "
+                ca = "" if (CA_DAVOR.search(vor[-10:]) or VERGLEICH_DAVOR.search(vor[-14:])) else "ca. "
                 neu = ca + umg
                 out.append(t[pos:m.start()]); out.append(neu); pos = m.end()
                 aend.append(("ersetzt", H.unescape(g), neu, ctx))
@@ -212,6 +292,9 @@ def bearbeite(htm, titel=""):
                 folgt = t[ende:]
                 if folgt.lstrip().startswith("(") or (in_klammer and schwanz):
                     bleibt.append(("klammer-folgt", H.unescape(g), ctx)); continue
+                # Treffer steht schon IN einer offenen Klammer → ein Zusatz ergäbe «(bis 14 Zoll (ca. 36 cm))».
+                if block_vor.count("(") > block_vor.count(")"):
+                    bleibt.append(("klammer-offen", H.unescape(g), ctx)); continue
                 zusatz = f" (ca. {umg})"
                 out.append(t[pos:ende]); out.append(zusatz); pos = ende
                 aend.append(("ergaenzt", H.unescape(g + schwanz), H.unescape(g + schwanz) + zusatz, ctx))
@@ -484,6 +567,71 @@ FAELLE = [
 ]
 
 
+# Titel-Kontext + Nachbesserung 23.09.: JEDER Fehltreffer aus Prüfer-Befund und eigenem Diff als Kanarienvogel
+# (erwartet None = Text bleibt unverändert), dazu Gegenproben, die weiter umgerechnet werden MÜSSEN.
+FAELLE_TITEL = [
+    # ── Kanarienvögel: Fehltreffer, die nicht mehr passieren dürfen ──
+    ("<p>Mit einer Grösse von 16 Zoll bietet er Platz</p>", "Business Laptop Rucksack", None),
+    ("<p>Sie haben einen Durchmesser von 4.7 Zoll und eine Steigung von 3.0 Zoll.</p>", "Drohnenpropeller", None),
+    ("<p>Die 10 Zoll FPV Traverse Maschine ist ein cooles Gadget.</p>", "10-Zoll-FPV-Rahmen-Kit aus Carbon", None),
+    ("<p>Mit ihrem 25-Zoll-Rahmen und 3-Zoll-Paddle ist sie ideal fuer FPV-Crossing.</p>", "Ultra-Leicht-Toothpick-Maschine", None),
+    ("<li>3-Zoll-Modell für 20- und 14-Kamera-Systeme</li>", "Velociraptor 110x 3-Zoll-Modell TPU-Kohlefaser-Rahmen", None),
+    ("<li>Sandwich-Reissverschlusstasche, Computerfach (bis 14 Zoll), Kamerafach</li>",
+     "Grosser Computer-Rucksack für Alltag und Reise", None),
+    ("<li>Sandwich-Reissverschlusstasche, Computerfach (bis 14 Zoll), Kamerafach</li>", "Rucksack für Alltag", None),
+    ("<p>Passend für Computer bis 14 Zoll</p>", "Anti-Strahlung Signal Abschirmtasche", None),
+    ("<li>Platz für Geräte bis zu 15 Zoll</li>", "Vintage Canvas Rucksack", None),
+    ("<li>Grösse: Mittel (passend für 10-Zoll-Computer)</li>", "Japanische Crossbody-Freizeittasche", None),
+    ("<li>Grösse: 12 Zoll, passend für 10-Zoll-Computer</li>", "Umhängetasche Leisure Messenger", None),
+    ("<li>Rechnergrösse: 15-17 Zoll</li>", "Grossräumiger Business-Rucksack", None),
+    ("<li>Grösse: 15.6 Zoll</li>", "Business Travel Rucksack – Elegant Schwarz", None),
+    ("<p>Mit seiner Grösse von 16 Zoll bietet der Rucksack Platz</p>", "Grosser Computer-Rucksack für Herren", None),
+    ("<li>Masse: 16 Zoll</li>", "Multifunktionaler Computer\u2011Rucksack Outdoor\u2011Sport", None),
+    ("<li>Masse: 16,1 Zoll</li>", "Laptop-Rucksack", None),
+    ("<p>Der Rucksack ist 16,1 Zoll gross und wasserdicht</p>", "Laptop-Rucksack", None),
+    ("<li>Masse: 1.8 Zoll</li>", "M2 SSD-Gehäuse USB-C", None),
+    ("<li>Kompakte Grösse: 1.1 Zoll</li>", "Bluetooth-Player fürs Auto", None),
+    ("<li>Seitenfach (bis 14 Zoll) für Flaschen</li>", "Wanderrucksack", None),              # offene Klammer
+    ("<li>Erhältlich in Gold und Silber (jeweils 7 Zoll)</li>", "Zirkon-Armband", None),
+    ("<li>Grössen (6.5, 8.5, 10.5 Zoll Höhe; 8, 10, 12 Zoll Kurz)</li>", "Keramikteller", None),
+    ("<li>3 Modelle in schwarz (6-Zoll-K-A, K-B, K-C)</li>", "Fransen- und Dünnschneider Set", None),
+    ("<li>Wi-Fi-Modul \"xunfuo 3\" mit 3D-Simulationsantenne</li>", "Wi-Fi-Fernbediener", None),
+    ("<li>Volumen: 20 Zoll</li>", "Grosse Herren Umhängetasche", None),
+    ("<p>Mit einem Fassungsvermögen von 20 Zoll ist sie ideal</p>", "Grosse Herren Umhängetasche", None),
+    ("<p>Es bietet eine hohe Auflösung von 11-11,5 Zoll</p>", "Vogelbeobachtungsteleskop", None),
+    ("<p>Diese selbstversiegelnde 1-Zoll-Zapfpistole ist praktisch</p>", "1-Zoll-Zapfventil für Diesel", None),
+    ("<li>1.5 Zoll Einlass für optimale Leistung</li>", "Reinigungsgerät für Pools", None),
+    ("<li>13-16 Zoll</li>", "Radsocken für Auto Deutschland", None),
+    ("<li>Innenrahmengrösse: 6 Zoll</li>", "Pastoraler Bilderrahmen für Diamond Paintings", None),
+    ("<p>Mit einem Durchmesser von 65 Zoll bietet sie Platz</p>", "Instant Noodle Schale, 65-inch", None),
+    ("<p>Der Rucksack ist 32 Zoll gross</p>", "Wasserdichter Tagesrucksack", None),
+    ("<li>Grössen: XS (Hals 21\", Brust 25\", Rücken 18\")</li>", "Haustiermantel mit Leine", None),
+    ("<p>Mit Massen von 21x11x35 cm und einer Grösse von 10 Zoll ist sie gross genug</p>", "Umhängetasche", None),
+    ("<li>Grösse: 15.6 Zoll</li>", "Oxford-Taschenrucksack", None),
+    # ── Gegenproben: echte Umrechnungen, die bleiben müssen ──
+    ("<p>Masse: 12 x 4 x 16 Zoll</p>", "Business Laptop Rucksack", "ca. 30 x 10 x 41 cm"),
+    ("<p>Dieser 20-Zoll-Aluminiumkoffer mit stabilem Rahmen ist ideal</p>", "Aluminium-Koffer mit Rahmen",
+     "20-Zoll-Aluminiumkoffer (ca. 51 cm)"),
+    ("<p>11 Noten in einem 7-Zoll-Rahmen</p>", "Stahlzungen-Trommel", "7-Zoll-Rahmen (ca. 18 cm)"),
+    ("<p>Der Rucksack ist 19 Zoll gross</p>", "Radsport-Rucksack", "ist ca. 48 cm gross"),
+    ("<p>Der Rucksack ist 18 Zoll gross. Mit Laptopfach.</p>", "Lederrucksack", "ist ca. 46 cm gross"),
+    ("<li>Grösse: 8 Zoll</li>", "Umhängetasche für Herren", "8 Zoll (ca. 20 cm)"),
+    ("<li>Masse: 52\" B x 84\" L</li>", "Thermo-Vorhänge", "ca. 132 cm B x 213 cm L"),
+    ("<li>30\" Breite x 60\" Länge</li>", "Retro-Schädel-Tuch", "ca. 76 cm Breite x 152 cm Länge"),
+    ("<li>Er misst 18\" und besteht aus Nylon</li>", "Retro-Schulranzen 18\" Nylon", "misst ca. 46 cm"),
+    ("<p>Die Kette ist in Längen von 16 bis 26 Zoll verfügbar</p>", "Halskette für Hunde", "ca. 41 bis 66 cm"),
+    ("<p>Mit einem Durchmesser von 12 Zoll klingt sie voll</p>", "Ethereal Drum 12-Zoll Zungentrommel", "ca. 30 cm"),
+    ("<li>Durchmesser: 12 Zoll</li>", "Porzellan-Servierplatte", "ca. 30 cm"),
+    ("<li>Verfügbar in zwei Längen: 7 Zoll bzw. 8 Zoll</li>", "Hip-Hop Tennisarmband", "ca. 18 cm bzw. 20 cm"),
+    ("<p>hat einen Durchmesser von über 8 Zoll</p>", "Keramikschale", "von über 20 cm"),
+    ("<li>Masse: 2.5 Zoll</li>", "Spachtel", "ca. 6.4 cm"),
+    ("<li>Masse: 9.1 × 3.7 × 6.2 Zoll</li>", "Spülbecken-Organizer", "ca. 23 × 9.4 × 16 cm"),
+    ("<p>Grösse S enthält 2x 8x12 Zoll und 1x 8x20 Zoll</p>", "Pferde-Wandbilder", "2x ca. 20x30 cm und 1x ca. 20x51 cm"),
+]
+# Rundung (Prüfer 23.09.: 2.5 Zoll = 6.35 cm war per Float «6.3»).
+RUNDUNG = [("2.5", "6.4"), ("6.2", "16"), ("1.97", "5"), ("3.7", "9.4"), ("5.9", "15"), ("0.25", "0.6"), ("7,5", "19")]
+
+
 def selbsttest():
     fehler = 0
     for eingabe, erwartet in FAELLE:
@@ -493,17 +641,25 @@ def selbsttest():
             fehler += 1
         print(f"{'OK ' if ok else 'XX '} {H.unescape(re.sub('<[^>]+>', '', neu))[:90]}"
               + ("" if ok else f"   ← erwartet {erwartet!r} · {aend} · {bleibt}"))
-    # Titel-Kontext: im Laptop-Rucksack bleibt die Grössenklasse, die Masskette wird trotzdem umgerechnet.
-    for eingabe, titel, erwartet in [
-            ("<p>Mit einer Grösse von 16 Zoll bietet er Platz</p>", "Business Laptop Rucksack", None),
-            ("<p>Masse: 12 x 4 x 16 Zoll</p>", "Business Laptop Rucksack", "ca. 30 x 10 x 41 cm")]:
+    for eingabe, titel, erwartet in FAELLE_TITEL:
         neu, aend, bleibt = bearbeite(eingabe, titel)
-        ok = (neu == eingabe) if erwartet is None else (erwartet in neu)
+        ok = (neu == eingabe) if erwartet is None else (erwartet in neu and "über ca." not in neu)
+        # Idempotenz: ein zweiter Lauf über das Ergebnis ändert nichts mehr.
+        neu2, aend2, _ = bearbeite(neu, titel)
+        ok = ok and neu2 == neu and not aend2
         if not ok:
             fehler += 1
-        print(f"{'OK ' if ok else 'XX '} {H.unescape(re.sub('<[^>]+>', '', neu))[:90]}"
+        grund = ",".join(sorted({b[0] for b in bleibt})) if erwartet is None else "umgerechnet"
+        print(f"{'OK ' if ok else 'XX '} [{titel[:28]}] {H.unescape(re.sub('<[^>]+>', '', neu))[:80]}  · {grund}"
               + ("" if ok else f"   ← erwartet {erwartet!r} · {aend} · {bleibt}"))
-    print(f"Selbsttest: {len(FAELLE) + 2 - fehler}/{len(FAELLE) + 2} OK")
+    for wert, erwartet in RUNDUNG:
+        ist = cm_text(wert, "," in wert).replace(",", ".")
+        ok = ist == erwartet
+        if not ok:
+            fehler += 1
+        print(f"{'OK ' if ok else 'XX '} Rundung {wert} Zoll → {ist} cm" + ("" if ok else f"   ← erwartet {erwartet}"))
+    n = len(FAELLE) + len(FAELLE_TITEL) + len(RUNDUNG)
+    print(f"Selbsttest: {n - fehler}/{n} OK")
     return 1 if fehler else 0
 
 
