@@ -81,6 +81,25 @@ VARIANTEN = {
     },
 }
 
+VARIANTEN["kuscheltiere"] = {
+    # 23.09.2026, Betreiber «probiere mal mit stimme video zu machen für fortura spielsachen»: Fortura-Plüschtiere ab CH-Lager
+    # (Tags ch-lager/schweiz-versand; Produktseite sagt «Versand aus der Schweiz – Lieferung in nur 1–2 Werktagen»).
+    "datei": "promo_kuscheltiere_a.mp4",
+    "musik": "luxe-orchestra.wav", "einstieg": 0,
+    "hook": ("Kuschelzeit für", "Klein & Gross"), "emoji": "\U0001F9F8", "gattung": "Plüschtiere", "deko": "sterne",
+    "titel": "LuxeStyle Kuscheltiere",
+    "stimme": {"text": "Kuschelzeit! Berner Sennenhund, Hochlandrind, Waschbär, Alpaka und Adler – ab einundzwanzig Franken, "
+                       "aus dem Schweizer Lager in ein bis zwei Werktagen bei dir. Jetzt bei LuxeStyle.",
+               "stimme": "de-CH-JanNeural", "start": 0.7},
+    "produkte": [
+        {"handle": "liegender-plusch-berner-sennenhund-fga88255", "name": "Liegender Plüsch Berner Sennenhund", "bilder": [0, 1]},
+        {"handle": "plusch-hochlandrind-fga59641", "name": "Plüsch Hochlandrind", "bilder": [0, 1]},
+        {"handle": "plusch-waschbar-fga41332", "name": "Plüsch Waschbär", "bilder": [0, 2]},
+        {"handle": "plusch-alpaka-fga41331", "name": "Plüsch Alpaka", "bilder": [0]},
+        {"handle": "plusch-adler-fga85734", "name": "Plüsch Adler", "bilder": [0]},
+    ],
+}
+
 MARKE = re.compile(r"\b(nike|adidas|puma|supreme|gucci|louis ?vuitton|chanel|dior|balenciaga|off[- ]?white|st[uü]ssy|carhartt|"
                    r"north face|champion|jordan|disney|marvel|anime|naruto|one piece|pok[eé]mon|hello kitty|star wars|harry potter|"
                    r"batman|spider-?man|mickey|sanrio|kuromi|barbie|nasa|bape|fear of god|palm angels|chrome hearts|hellstar|"
@@ -297,12 +316,16 @@ def tint(im, faktor):
 class Laub:
     """Fallende Herbstblaetter, durchgehend ueber alle Schnitte (globale Zeit) — Kontinuitaet statt Diashow."""
 
-    def __init__(self, seed):
+    def __init__(self, seed, art="laub"):
         rnd = random.Random(seed)
-        ahorn = emoji_bild("\U0001F341", 100)
-        sprites = [ahorn, tint(ahorn, (0.85, 0.62, 0.5)), tint(ahorn, (1.0, 1.05, 0.7)),
-                   blatt_gezeichnet(64, 96, (214, 92, 32)), blatt_gezeichnet(64, 96, (186, 58, 28)),
-                   blatt_gezeichnet(64, 96, (232, 150, 40)), blatt_gezeichnet(64, 96, (150, 70, 30))]
+        if art == "sterne":   # 23.09.: Kuscheltiere — Funkeln statt Herbstlaub
+            stern, funkel = emoji_bild("\u2B50", 100), emoji_bild("\u2728", 100)
+            sprites = [stern, funkel, tint(funkel, (1.0, 0.95, 0.75)), tint(stern, (1.0, 0.9, 0.8))]
+        else:
+            ahorn = emoji_bild("\U0001F341", 100)
+            sprites = [ahorn, tint(ahorn, (0.85, 0.62, 0.5)), tint(ahorn, (1.0, 1.05, 0.7)),
+                       blatt_gezeichnet(64, 96, (214, 92, 32)), blatt_gezeichnet(64, 96, (186, 58, 28)),
+                       blatt_gezeichnet(64, 96, (232, 150, 40)), blatt_gezeichnet(64, 96, (150, 70, 30))]
         self.blaetter = []
         for i in range(17):
             vorne = i >= 13
@@ -429,7 +452,7 @@ def intro_ebene(var, produkte, grund):
     im.alpha_composite(em, (int(x + d.textlength(z2, font=f2) + 18), 505 + (gr - em_h) // 2 + 8))
     # «ab» statt Spanne: die Obergrenze kaeme aus Uebergroessen (POD 2XL+ CHF 105.90) und wirkte wie der Normalpreis
     lo = min(p["preis_min"] for p in produkte)
-    unter = f"{len(produkte)} Hoodies ab CHF {lo:.2f}"
+    unter = f"{len(produkte)} {var.get('gattung', 'Hoodies')} ab CHF {lo:.2f}"
     ov.text_c(d, 682, unter, font(ov.F_REG, 40), CREME + (255,))
     return im
 
@@ -460,6 +483,36 @@ def outro_ebenen(produkte, bilder0):
         k = kenburns(b, t, 0.5, 0).convert("RGBA"); k.putalpha(m)
         kacheln.append((x0 + i * (t + gap), 1040, k))
     return zeilen, kacheln, t
+
+
+# ---------------------------------------------------------------- Stimme (23.09.2026)
+def stimme_rendern(var, tmp):
+    """Sprecherstimme nur ueber Azure (Werbelizenz) via reel/voiceover.py. Kein Schluessel → Video ohne Stimme,
+    laut gemeldet. Die Stimme muss VOR dem Videoende enden (DAUER - start - 0.6), sonst Abbruch statt Abschneiden."""
+    s = var.get("stimme")
+    if not s:
+        return None
+    if not os.environ.get("AZURE_SPEECH_KEY") and os.path.exists("/tmp/azure_speech.env"):
+        for z in open("/tmp/azure_speech.env"):
+            if "=" in z and not z.startswith("#"):
+                k, v = z.strip().split("=", 1); os.environ.setdefault(k, v)
+    if not os.environ.get("AZURE_SPEECH_KEY"):
+        print("   ⚠️ Stimme gewuenscht, aber kein AZURE_SPEECH_KEY → ohne Stimme"); return None
+    wav = os.path.join(tmp, "stimme.wav")
+    env = {**os.environ, "STIMME_MOTOR": "azure", "STIMME_PIP": "0"}
+    r = subprocess.run([sys.executable, os.path.join(HIER, "voiceover.py"), "--out", wav, "--text", s["text"], "--motor", "azure",
+                        "--stimme", s.get("stimme", "de-CH-JanNeural"), "--max", str(DAUER)], capture_output=True, text=True, env=env)
+    try:
+        j = json.loads(r.stdout.strip().split("\n")[-1])
+    except Exception:
+        j = {"ok": False, "fehler": (r.stdout + r.stderr)[-300:]}
+    if not j.get("ok"):
+        print(f"   ⚠️ Stimme fehlgeschlagen ({str(j.get('fehler'))[:120]}) → ohne Stimme"); return None
+    dauer = float(j.get("dauer") or 0)
+    if dauer + float(s.get("start", 0.9)) > DAUER - 0.6:
+        sys.exit(f"   ⛔ Stimme zu lang: {dauer:.1f} s + Start {s.get('start', 0.9)} s > {DAUER - 0.6:.1f} s — Text kuerzen")
+    print(f"   🎙 Stimme {j.get('stimme')} {dauer:.1f} s, {j.get('lufs')} LUFS")
+    return wav
 
 
 # ---------------------------------------------------------------- Renderer
@@ -499,7 +552,7 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
         s2, p2 = schatten(430, 430, 26, 18, 160); s2.alpha_composite(k, (p2, p2))
         fan.append((s2.rotate(rot, expand=True, resample=Image.BICUBIC), cx, cy, rot))
     oz, okacheln, okt = outro_ebenen(produkte, [q[0] for q in quellen])
-    laub = Laub(var_name)
+    laub = Laub(var_name, var.get("deko", "laub"))
 
     def frame(t):
         typ, t0, t1, info = next(s for s in szenen if s[1] <= t < s[2] or s is szenen[-1])
@@ -571,9 +624,21 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
     tmp = tempfile.mkdtemp(prefix="promo_")
     # Ton: Anschnitt auf Beat, Ein-/Ausblenden, zweistufig auf -14 LUFS (TP -1.5), 48 kHz Stereo
     roh, norm_wav = os.path.join(tmp, "mix.wav"), os.path.join(tmp, "mixn.wav")
-    subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-ss", f"{mu['start']:.3f}", "-i", mu["datei"],
-                    "-af", f"aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=0.04,afade=t=out:st={DAUER - 1.4:.2f}:d=1.4,apad",
-                    "-t", f"{DAUER}", "-ar", "48000", "-ac", "2", roh], check=True)
+    musik_af = f"aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=0.04,afade=t=out:st={DAUER - 1.4:.2f}:d=1.4,apad"
+    stimme_wav = stimme_rendern(var, tmp)
+    if stimme_wav:
+        # Musik unter der Stimme absenken (Sidechain-Kompressor, gesteuert von der Stimme), dann beide mischen.
+        # Die Stimme wird zweimal gebraucht (Steuersignal + Mischung) → asplit. Erst danach die gewohnte -14-LUFS-Stufe.
+        st = max(0.0, float(var["stimme"].get("start", 0.9)))
+        fc = (f"[0:a]{musik_af}[m];"
+              f"[1:a]aresample=48000,aformat=channel_layouts=stereo,adelay={int(st * 1000)}|{int(st * 1000)},apad,volume=1.6,asplit=2[v1][v2];"
+              f"[m][v1]sidechaincompress=threshold=0.035:ratio=7:attack=12:release=420:makeup=1:level_sc=1[md];"
+              f"[md][v2]amix=inputs=2:duration=first:normalize=0[out]")
+        subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-ss", f"{mu['start']:.3f}", "-t", f"{DAUER}", "-i", mu["datei"],
+                        "-i", stimme_wav, "-filter_complex", fc, "-map", "[out]", "-t", f"{DAUER}", "-ar", "48000", "-ac", "2", roh], check=True)
+    else:
+        subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-ss", f"{mu['start']:.3f}", "-i", mu["datei"],
+                        "-af", musik_af, "-t", f"{DAUER}", "-ar", "48000", "-ac", "2", roh], check=True)
     e = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", roh, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                        capture_output=True, text=True).stderr
     m = json.loads(e[e.rindex("{"): e.rindex("}") + 1])
@@ -585,7 +650,7 @@ def render(var_name, var, out_dir, dry=False, probe_dir=None):
                             "-r", str(FPS), "-i", "-", "-i", norm_wav, "-map", "0:v", "-map", "1:a",
                             "-c:v", "libx264", "-preset", "slow", "-crf", "21", "-pix_fmt", "yuv420p", "-profile:v", "high",
                             "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-ac", "2", "-movflags", "+faststart",
-                            "-metadata", "comment=" + json.dumps(manifest, ensure_ascii=False), "-metadata", "title=LuxeStyle Hoodie-Promo " + var_name.upper(),
+                            "-metadata", "comment=" + json.dumps(manifest, ensure_ascii=False), "-metadata", "title=" + var.get("titel", "LuxeStyle Hoodie-Promo " + var_name.upper()),
                             "-t", f"{DAUER}", "-shortest", teil], stdin=subprocess.PIPE)
     n = int(round(DAUER * FPS)); t_start = time.time()
     for i in range(n):

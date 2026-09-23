@@ -81,19 +81,26 @@ Vorrang bei Widerspruch: GEMESSEN vor QUELLE vor BEHAUPTUNG.
    - Ein Zoom-Sprung (p3r, Drift auf Hook und Ende) ergab 23,5, das lag noch unter dem globalen p95 von 24,8.
    - **Lösung:** Referenz sind die Bildwechsel direkt um die Naht. Das nahtlose Ende bekommt nie einen Zoom.
    - p3r danach: Naht 0,39 bei Referenz 3,73.
+9. **Intro-Zone.** Mit getrimmter Bewegung landete der automatische p3-Hook auf dem Auspacken (Karton auf Bild 0).
+   Belege für schwache Quellanfänge: p3 Karton 0–4 s; aus der Kritik die Luftbefeuchter-Titelkarte 0–4,9 s, der
+   Milchschäumer-Karton 0–3,4 s und das Hotpot-Standbild 0–3,1 s; aus der Inventur der Projektor, der schwarz beginnt.
+   - **Regel:** Hook-Fenster in den ersten min(4 s, 12 %) der Quelle werden abgewertet.
+   - Ergebnis p3: Hook auf der Montage.
+   - Preis dafür in p2: Die starke Einstiegseinstellung (Deckel in der Hand, 1,05 s) fällt weg; der neue Hook zeigt
+     auf Bild 0 erst Glas und Tisch.
 
 ### 3.2 Proben: neu gegen alt (gleiche Quelle, gleiche Musik und gleicher Einstieg, gleicher Titel, Preis live aus Shopify)
 
 | Probe | Quelle (CJ, Shop ACTIVE) | alt: make_reel.sh | neu: schnitt.py |
 |---|---|---|---|
 | p1 | Hundegeschirr-Set, 720×960 (3:4), 26,0 s, 22 Einst., CHF 19.90, hype2 | Band 435×580 (12 % Fläche), ab 0 s, erster Schnitt 1,96 s, 6 Schnitte, 96 kHz mono, −15,1 LUFS, **TP −0,81** | volle Breite 1080×1440 (75 %), Hook bei Quelle 17,0 s, 11 Stücke, Median 1,23 s, Schnitte 10/10 exakt, −14,4 LUFS/−1,93 TP, nahtlos (0,47) |
-| p2 | Abtropfkorb mit Deckel, 960×960, 22,0 s, 22 Einst., CHF 19.90, lounge-sax | Band 580×580 (16 %), 11 Schnitte aus der Quelle, zeigt die chinesischen Spülmittel-Etiketten | 4:5-Ausschnitt 1080×1350 (70 %), Einstellungen 7/8 (Etiketten) automatisch raus, 12 Stücke à 0,98 s, 11/11 exakt, −14,0/−2,87, Überblendung |
-| p3 | Trinkbrunnen 1,5 L, 960×540, 57,1 s, 15 Einst., CHF 44.90, cinematic-house | Band 1000×562 (27 %), **beginnt mit dem Karton**, 8 Schnitte | automatisch: 1:1 1080×1080 (56 %), Hook = Montage bei 19,2 s, 9 Stücke, 8/8 exakt; **nach Sichtprüfung (p3r):** `--hook-ab 44 --sperren 0-4.6` → Hund am Brunnen zuerst, kein Karton, nahtlos (0,39) |
+| p2 | Abtropfkorb mit Deckel, 960×960, 22,0 s, 22 Einst., CHF 19.90, lounge-sax | Band 580×580 (16 %), 11 Schnitte aus der Quelle, zeigt die chinesischen Spülmittel-Etiketten | 4:5-Ausschnitt 1080×1350 (70 %), Einstellungen 7/8 (Etiketten) automatisch raus, Hook bei Quelle 9,65 s (Intro-Zone gemieden; Bild 0 zeigt erst Glas/Tisch, die Schalen kommen nach 0,2 s), 12 Stücke (Median 0,98 s), 11/11 exakt, −14,0/−2,87, Überblendung |
+| p3 | Trinkbrunnen 1,5 L, 960×540, 57,1 s, 15 Einst., CHF 44.90, cinematic-house | Band 1000×562 (27 %), **beginnt mit dem Karton**, 8 Schnitte | automatisch: 1:1 1080×1080 (56 %), Hook = Montage bei 19,3 s (Hände am Brunnen), 9 Stücke, 8/8 exakt, nahtlos (0,45); Auspacken nur als 2. Stück, der Hund fehlt; **nach Sichtprüfung (p3r):** `--hook-ab 44 --sperren 0-4.6` → Hund am Brunnen zuerst, kein Karton, nahtlos (0,39) |
 | p4 | Katzenklettergerüst, 552×960, **6,96 s, eine Kamerafahrt**, CHF 20.90, house1 | 11 s mit `-stream_loop` (Quelle läuft 1,6× durch), **0 Schnitte**, TP −1,4 | Vollbild 9:16 (100 %), 5,8 s ohne Wiederholung, 4 umgestellte Stücke (jeder Schnitt springt ≥ 0,4 s), 3/3 exakt, nahtlos (16,2 bei Referenz 17,4 = LED-Blinken) |
 
 Sonderfälle (nur Plan):
 - **x1:** Abtropfkorb-Clip _0, 53,7 s, mit englischen Untertiteln. Diesen Clip wählt der Motor heute («grösster Clip»).
-  - 9 Einstellungen werden über einen textfreien Ausschnitt gerettet (Zoom 1,25–1,39×), jeweils per OCR und Heuristik
+  - 10 Einstellungen werden über einen textfreien Ausschnitt gerettet (Zoom 1,25–1,39×), jeweils per OCR und Heuristik
     auf dem Ausschnitt nachgewiesen.
   - 2 Einstellungen werden verworfen (Heuristik im Fenster), 38 s bleiben nutzbar.
 - **x3:** Akupressurmatte mit Heilzusage im Bild → Exit 3: `UNGEEIGNET: kein sauberes Material (Fremdtext: 18
@@ -145,8 +152,9 @@ Die Zone wird geprüft (organisch y 200–1440, Fusstexte x ≤ 940; Meta 269–
 2. **Sichtprüfung bleibt Pflicht.** Szenentext in fremder Schrift wird nur teilweise erkannt (2 von 3 Stellen in p2).
    Ohne Bild-Modell geht es nicht automatisch; Kandidat ist ein Vision-Check des Kontaktbogens vor dem Posten.
 3. **Hook = Anwendung** statt stärkster Bewegung: automatisch nicht lösbar (p3: Montage schlägt «Hund trinkt»).
-   Heute greift `--hook-ab` nach Sichtprüfung. Offen ist, ob «letztes Drittel der Quelle» als Vorrang taugt; das ist
-   eine BEHAUPTUNG und braucht Messung an mehr Quellen.
+   Heute greift `--hook-ab` nach Sichtprüfung. Die Intro-Zone (Abschnitt 3.1 Nr. 9) ist nur ein grober Filter; sie
+   kostete in p2 einen guten Einstieg. Offen sind eine Produkt-Wiedererkennung auf Bild 0 (die Farbsignatur, die in den
+   meisten Einstellungen wiederkehrt) oder ein Vision-Check des Hook-Bildes.
 4. **Kick gegen Beat:** Bei hype1/2/3 liegt die Tiefton-Energie auf dem Halbraster, librosa und der Motor schneiden auf
    das andere Raster. Welche Phase die Sehdauer hebt, ist offen (A/B).
 5. **Eigenleistung (Meta 03/2026)**: Der Schnitt allein ist keine Originalität. Eine Fakten-Ebene (Masse, Material aus dem
