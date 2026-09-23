@@ -18030,3 +18030,7 @@ gid://shopify/Product/15448672993665	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448672993665	Farbe	gid://shopify/ProductOptionValue/12024712167809	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
 gid://shopify/Product/15448674861441	Farbe	gid://shopify/ProductOptionValue/12024722293121	Grün kariert verstärkt	Green Plaid Thickened	2026-09-23T20:35Z/reparatur-original:satzbau:adjektivfolge
 gid://shopify/Product/15448704549249	Farbe	gid://shopify/ProductOptionValue/12024919720321	Leder Rot-Schwarz	Leather Red And Black	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394620289	6 Colors	6 Farben	2026-09-23T20:36Z
+gid://shopify/Product/15450857931137	Farbe	gid://shopify/ProductOptionValue/12046784332161	Pink-USB-Default	Pink-USB-Standard	2026-09-23T20:36Z
+gid://shopify/Product/15450857931137	Farbe	gid://shopify/ProductOptionValue/12046784364929	White-USB-Default	Weiss-USB-Standard	2026-09-23T20:36Z
+gid://shopify/Product/15421167075713	Farbe	gid://shopify/ProductOptionValue/11849436561793	Middle Blue	Mittelblau	2026-09-23T20:36Z
