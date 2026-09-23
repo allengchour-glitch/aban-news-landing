@@ -160,6 +160,22 @@ const pinIndex = (() => {
 const tsv = (pfad) => { try { const [kopf, ...zeilen] = fs.readFileSync(pfad, 'utf8').split('\n').filter(Boolean); const sp = kopf.split('\t'); return zeilen.map(z => { const w = z.split('\t'); return Object.fromEntries(sp.map((k, i) => [k, w[i] || ''])); }); } catch { return []; } };
 const bildtext = new Map(tsv('social/pins/_bildtext.tsv').map(r => [r.url, parseInt(r.woerter, 10)]));
 const textImBild = u => (bildtext.get(String(u || '').split('?')[0]) ?? -1) >= 4;
+// Rohbild-Kandidat, den bild_formate.py nie gemessen hat (kein Manifest, kein Ledger): JETZT messen, sonst ginge ein Text-Bild
+// als Rohbild durch — genau der Weg, auf dem der Aufblas-Pin am 23.09. 22:55 rausging. bildtext_pruefen.py --url liefert die
+// Wortzahl (ZWEILESARTEN=1: Maximum aus 1× und 2×); keine Zahl = nicht messbar (kein tesseract) → nicht blockieren, melden.
+function ocrJetzt(handle, url) {
+  const key = String(url || '').split('?')[0];
+  if (bildtext.has(key)) return bildtext.get(key);
+  let n = -1;
+  try {
+    const out = execFileSync('python3', ['automation/bildtext_pruefen.py', '--url', url], { encoding: 'utf8', timeout: 120000, env: { ...process.env, ZWEILESARTEN: '1' } }).trim().split('\n').pop();
+    if (/^-?\d+$/.test(out)) n = parseInt(out, 10);
+  } catch {}
+  if (n < 0) { log(`   ⚠ ${handle}: Bildtext nicht messbar (OCR) — Rohbild ungeprüft`); return n; }
+  bildtext.set(key, n);
+  if (!DRY) { const p = 'social/pins/_bildtext.tsv'; if (!fs.existsSync(p)) fs.writeFileSync(p, 'name\turl\twoerter\tgeprueft\n'); fs.appendFileSync(p, `${handle}\t${key}\t${n}\t${new Date().toISOString().slice(0, 19)}Z\n`); }
+  return n;
+}
 const bildtextAlle = new Set(tsv('social/pins/_uebersprungen.tsv').map(r => r.name));
 async function pinFassung(k) {
   const roh = { url: k.bild.url, art: 'Rohbild' };
@@ -204,6 +220,7 @@ if (vorrang.length) log(`Vorrang-Quellen (${VORRANG}): ${vorrang.join(', ')}`);
 let kandidat = null, fassung = null;
 for (const k of kandidaten) {   // 23.09. 22:58: Text-Hauptbild nie als Rohbild — ohne nutzbare 2:3-Fassung der naechste
   const f = await pinFassung(k);
+  if (f.art === 'Rohbild') ocrJetzt(k.handle, k.bild.url);
   if (f.art === 'Rohbild' && textImBild(k.bild.url)) { log(`   ⛔ ${k.handle}: Hauptbild trägt Lieferantentext (OCR ${bildtext.get(k.bild.url.split('?')[0])} Wörter), 2:3-Fassung nicht nutzbar (${f.grund}) → übersprungen`); continue; }
   kandidat = k; fassung = f; break;
 }

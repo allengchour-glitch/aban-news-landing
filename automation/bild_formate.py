@@ -72,6 +72,7 @@ UA = {"User-Agent": "Mozilla/5.0 (LuxeStyle bild_formate)"}
 # wird nichts verworfen und nichts als «sauber» eingetragen — −1 heisst unbekannt, nicht sauber.
 def _ocr_laden():
     try:
+        os.environ.setdefault("ZWEILESARTEN", "1")     # Maximum aus 1× und 2× — die Lesart steht in bildtext_pruefen.woerter()
         import bildtext_pruefen as bp
         return bp.woerter, int(bp.WORTGRENZE)
     except (ImportError, SystemExit, Exception):
@@ -115,11 +116,7 @@ def bildtext_woerter(im, url, name, bt):
     if _OCR_WOERTER is None:
         return -1
     try:
-        g = im.convert("L")
-        n = len(_OCR_WOERTER(g))
-        s = min(2.0, 3200 / max(g.size))
-        if s > 1.05:
-            n = max(n, len(_OCR_WOERTER(g.resize((int(g.width * s), int(g.height * s)), Image.LANCZOS))))
+        n = len(_OCR_WOERTER(im))
     except Exception:
         return -1
     bt[key] = {"name": name, "url": key, "woerter": str(n), "geprueft": _jetzt()}
