@@ -13,7 +13,7 @@
  *     Caption Hook + Nutzen + Preis + CTA, Hashtags Kategorie + Konsens-Pool (SECOND-BRAIN).
  *   · Quittung NUR nach erfolgreichem Push (die Adresse muss erreichbar sein, bevor der Poster sie sieht).
  * ENV: BATCH=3 · SCAN=240 · DRY=1 (nur zeigen) · SHOPIFY_ADMIN_TOKEN oder /tmp/cj_shop_token.txt ·
- *      CJ_TOKEN oder /tmp/cj_token.json · STIMME_ANTEIL=0.5 (Anteil Reels mit Sprecherstimme, 0 = aus, A/B)
+ *      CJ_TOKEN oder /tmp/cj_token.json · STIMME_ANTEIL=0 (Anteil Reels mit Sprecherstimme; Vorgabe 0 = aus bis Betreiber-Entscheid, A/B)
  *   · Stimme (23.09.2026, Betreiber «Stimme auf hoechstem Niveau»; bisher Hausregel «ohne Voiceover»): je pid
  *     stabil per Hash entschieden, Sprechtext Hook + Name + (kurzer Nutzen) + Preis, automation/reel/voiceover.py
  *     (Schweizer edge-Stimme, piper als Notnagel), make_reel.sh duckt die Musik darunter. Merkmal im Verlauf
@@ -70,7 +70,10 @@ function musikMerken(id, m, th, st = { ja: false, grund: 'anteil' }) {
   try { fs.appendFileSync(VERLAUF, `${new Date().toISOString()}\t${m.datei}\t${m.start}\t${th}\t${id}\tstimme:${st.ja ? 'ja' : 'nein'}\t${st.ja ? st.stimme : st.grund || ''}\n`); } catch {}
 }
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const STIMME_ANTEIL = Math.max(0, Math.min(1, parseFloat(process.env.STIMME_ANTEIL ?? '0.5') || 0));
+// 23.09.2026 19:40: Vorgabe 0 (opt-in). Die Stimme ist gebaut und gemessen, aber (a) der beste Klang (edge-tts) ist ein
+// inoffizieller Microsoft-Dienst ohne Werbelizenz, (b) nutzen() sprach abgeschnittene Beschreibungen («… u..»). Live erst nach
+// Betreiber-Entscheid: Azure-Schluessel (gleiche Schweizer Stimme, lizenzsauber) oder ausdrueckliches Ja zu piper (CC0).
+const STIMME_ANTEIL = Math.max(0, Math.min(1, parseFloat(process.env.STIMME_ANTEIL ?? '0') || 0));
 // pid → stabile Zahl (auch fuer UUID-pids wie F5BA858E-…; GEMESSEN 22.09.: Number(...) gab NaN → Hook «undefined», Musik «undefined»)
 const num = p => { let h = 0; for (const c of String(p)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
 
@@ -163,15 +166,17 @@ function zeilen(title) {
 }
 function nutzen(desc) {
   const s = (desc || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  const satz = s.split(/(?<=[.!?])\s+/).find(x => x.length >= 30 && x.length <= 150 && !/\bSie\b|\bIhr[e]?\b|Lieferzeit|Werktag|Versand|CHF/.test(x));
+  // 23.09.: nur VOLLSTAENDIGE Saetze (enden auf . ! ?) — die Beschreibung kommt mit truncateAt:260, das letzte Stueck ist oft
+  // ein Fetzen («…eine einfache Handhabung u..»); dazu keine Umschrift (fuer/ueber/Kuechenloeffel) und keine Auslassungspunkte.
+  const satz = s.split(/(?<=[.!?])\s+/).find(x => x.length >= 30 && x.length <= 150 && /[.!?]$/.test(x) && !/\.\.|…/.test(x)
+    && !/\b(fuer|ueber|waehrend|koennen|moechten|muessen|natuerlich|zuverlaessig|gemuetlich)\b|oeffel|uech/i.test(x)
+    && !/\bSie\b|\bIhr[e]?\b|Lieferzeit|Werktag|Versand|CHF/.test(x));
   return satz ? satz.replace(/[.!?]$/, '') : '';
 }
-const POOL = ['#trending', '#viral', '#fyp', '#ootd', '#style', '#shopping'];
+// 23.09.2026 (Social-Messung, Queue-Regel): nur Sach-Tags, hoechstens 5 — keine #trending/#viral/#fyp/#foryou-Beigaben
+// (51 von 58 wartenden Reels trugen sie). tagsFor() liefert #schweiz, #luxestyle und 2–3 Warengruppen-Tags.
 function hashtags(title, pid) {
-  const base = tagsFor(title).split(/\s+/);
-  const k = num(pid) % POOL.length;
-  const extra = [POOL[k], POOL[(k + 1) % POOL.length]];
-  return [...new Set([...base, '#reels', ...extra])].slice(0, 9).join(' ');
+  return [...new Set(tagsFor(title).split(/\s+/).filter(t => t && !/^#(trending|viral|fyp|foryou|foryoupage|reels)$/i.test(t)))].slice(0, 5).join(' ');
 }
 const esc = x => /[",\n]/.test(x) ? '"' + String(x).replace(/"/g, '""') + '"' : x;
 function appendReel(id, url, cap, tags, platforms) {
