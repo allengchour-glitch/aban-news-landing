@@ -1289,3 +1289,41 @@ gid://shopify/Product/15500901187969	2026-09-23T12:06Z	draft	14.90	21.67	Edelste
 gid://shopify/Product/15503285387649	2026-09-23T12:06Z	kein-verlust-live	15.90	21.50	Kissenbezug Baumwolle, bestickt, 45x45cm
 gid://shopify/Product/15452676227457	2026-09-23T12:06Z	draft	16.90	23.66	Elegante Tiefplatte
 gid://shopify/Product/15502613447041	2026-09-23T12:07Z	draft	15.90	22.65	Riesiger Tennisball für Hunde
+gid://shopify/Product/15495119339905	2026-09-23T12:07Z	draft	14.90	21.60	5D Diamond Painting Set «Hase»
+gid://shopify/Product/15506222481793	2026-09-23T12:07Z	draft	14.90	21.60	Halloween Katze Diamond Painting Set
+gid://shopify/Product/15452314239361	2026-09-23T12:07Z	draft	17.90	24.50	Freizeit-Sneaker mit Blumenmuster
+gid://shopify/Product/15499783045505	2026-09-23T12:07Z	draft	17.90	24.49	Stretch-Softpads für Sofa
+gid://shopify/Product/15449918603649	2026-09-23T12:07Z	draft	17.90	24.45	Winter Mid-Calf Stiefel aus Faux Fell
+gid://shopify/Product/15448921440641	2026-09-23T12:07Z	draft	15.90	22.45	Sitzkissen für Relax- und Schaukelstuhl
+gid://shopify/Product/15448921473409	2026-09-23T12:07Z	draft	15.90	22.44	Chenille-Sofakissen, rutschfest & universell
+gid://shopify/Product/15446271689089	2026-09-23T12:07Z	draft	14.90	21.38	Kratzbox aus Holz für Katzen
+gid://shopify/Product/15501661733249	2026-09-23T12:07Z	draft	15.90	22.38	Futterstation Holz mit Edelstahl- oder Keramiknäpfen
+gid://shopify/Product/15449466503553	2026-09-23T12:07Z	draft	16.90	23.35	Balance-Board für Yoga und Fitness
+gid://shopify/Product/15449496977793	2026-09-23T12:07Z	draft	14.90	21.34	Stabile Futter- und Wasserschüssel
+gid://shopify/Product/15500459114881	2026-09-23T12:07Z	kein-verlust-live	16.90	21.51	Magnetische Bauklotze
+gid://shopify/Product/15453924360577	2026-09-23T12:07Z	draft	17.90	24.33	Dünne Aufbewahrung fürs Badezimmer
+gid://shopify/Product/15496330641793	2026-09-23T12:07Z	draft	17.90	24.31	Unisex Camping & Fischerstiefel
+gid://shopify/Product/15453894214017	2026-09-23T12:07Z	kein-verlust-live	15.90	21.33	Dauerhafte Kauwurst für Hunde
+gid://shopify/Product/15449167528321	2026-09-23T12:07Z	draft	15.90	22.16	Organizer Umhängetasche für Herren
+gid://shopify/Product/15449463816577	2026-09-23T12:07Z	draft	14.90	21.07	Isolierte Edelstahl-Wasserflasche
+gid://shopify/Product/15504105341313	2026-09-23T12:08Z	draft	16.90	23.02	Keramik-Futternapf gegen Kinnakne
+gid://shopify/Product/15504138273153	2026-09-23T12:08Z	draft	16.90	23.02	Unregelmässiger Gold Diamant Filz Teppich
+gid://shopify/Product/15450855178625	2026-09-23T12:08Z	draft	14.90	21.01	Hundebett Kennel mit Decke und Sommermatte
+gid://shopify/Product/15453999858049	2026-09-23T12:08Z	kein-verlust-live	15.90	20.52	Holzdekoration mit Mini-Büchern
+gid://shopify/Product/15454039540097	2026-09-23T12:08Z	kein-verlust-live	14.90	19.01	Verlustsicherer Hundehalsband
+gid://shopify/Product/15496380121473	2026-09-23T12:08Z	draft	15.90	21.98	Diamond Painting Kit mit Rundsteinen
+gid://shopify/Product/15496329953665	2026-09-23T12:08Z	draft	15.90	21.97	Horror Totenkopf Maske
+gid://shopify/Product/15503132557697	2026-09-23T12:08Z	draft	15.90	21.90	Keramik-Futternapf im japanischen Stil · flach, 15,5 cm
+gid://shopify/Product/15454091936129	2026-09-23T12:08Z	draft	15.90	21.71	Pflanzlicher Vorhang mit Fransen
+gid://shopify/Product/15498838278529	2026-09-23T12:08Z	draft	14.90	20.86	Rückfluss-Räuchergefäss 'Bergwasserfall'
+gid://shopify/Product/15449601606017	2026-09-23T12:08Z	draft	15.90	21.86	Sofakissenbezug 45x45 cm
+gid://shopify/Product/15506274058625	2026-09-23T12:08Z	kein-verlust-live	15.90	20.26	Handgewobener Korb aus karbonisiertem Holz
+gid://shopify/Product/15503114273153	2026-09-23T12:08Z	draft	15.90	21.79	Bilderrahmen aus Naturholz
+gid://shopify/Product/15449175261569	2026-09-23T12:08Z	draft	15.90	21.78	Geometrisches Tufted Kissen
+gid://shopify/Product/15449462931841	2026-09-23T12:08Z	draft	14.90	20.78	Isolierter Edelstahlbecher
+gid://shopify/Product/15502303396225	2026-09-23T12:08Z	draft	16.90	22.77	Plaid Laser Silber Thermotransferband 25mm
+gid://shopify/Product/15454198727041	2026-09-23T12:08Z	draft	15.90	21.77	Dickes, hochabsorbierendes Badetuch aus Baumwolle
+gid://shopify/Product/15502558658945	2026-09-23T12:08Z	kein-verlust-live	15.90	19.87	Fussgelenk-Manschette für Beintraining
+gid://shopify/Product/15500403212673	2026-09-23T12:08Z	draft	14.90	20.66	Keramik-Spatel- und Löffelbehälter
+gid://shopify/Product/15448925962625	2026-09-23T12:08Z	draft	15.90	21.65	Chenille Kissenhülle oder Kissen mit Füllung
+gid://shopify/Product/15448929403265	2026-09-23T12:08Z	draft	15.90	21.63	Mini Haarglättungsbürste kabellos
