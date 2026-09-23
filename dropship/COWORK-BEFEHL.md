@@ -4,6 +4,18 @@
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
+## 🆕 23.09. 16:40 UTC — Judge.me: doppeltes Produkt-Schema ohne Preis abschalten  ·  ~2 Minuten
+Merchant Center meldet «Missing product price» für 1'220 Produkte. In Shopify hat **jede** aktive Variante einen
+Preis (426'000 geprüft). Die Produktseiten bewerteter Artikel tragen aber zwei Produkt-Datensätze für Google:
+Shopifys (mit Preis und Sternen) und einen von **Judge.me ohne Preis**. Die Einstellung heisst bei Judge.me
+`disable_json_ld` (steht auf «aus»); über die API lässt sie sich nur lesen, nicht ändern.
+**Klickweg:** Shopify-Admin → Apps → Judge.me → Settings → (Search «rich snippet» / «JSON-LD» / «SEO») →
+«Google rich snippets / JSON-LD» für Produktseiten **ausschalten**. Die Sterne bei Google bleiben, weil unser
+Theme sie selbst in Shopifys Datensatz schreibt.
+**Gegenprobe:** Merchant → «Missing product price» → «View products»: sind es bewertete Artikel? Ein Screenshot
+der ersten Zeilen genügt. «Sexual interests» (292) und «Over capacity CSS» betreffen nur **bezahlte** Shopping-Ads
+(die aus sind) — keine Aktion nötig.
+
 ## 🆕 23.09. 11:40 UTC — Social-Profile («jede sozail profile verschönern»)
 
 **J — Hetzner-Agent neu starten, dann läuft die Profil-Politur von selbst (2 Min):** Der Auftrag
