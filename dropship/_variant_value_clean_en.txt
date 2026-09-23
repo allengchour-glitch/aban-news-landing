@@ -18000,3 +18000,8 @@ gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448606343553	Farbe	gid://shopify/ProductOptionValue/12022983328129	Leuchtendpink	Leuchtendes Pink	2026-09-23T20:35Z/reparatur-konsistenz
 gid://shopify/Product/15448606343553	Farbe	gid://shopify/ProductOptionValue/12022983393665	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
 gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023020978561	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448610636161	Farbe	gid://shopify/ProductOptionValue/12023021633921	Dunkelblau mit kariert	Dark Blue With Plaid	2026-09-23T20:35Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100539265	Leinen Pink	Linen Pink	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100572033	Leinen Blau	Linen Blue	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100604801	Leinen Grün	Linen Green	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100670337	Leinen Schwarz	Linen Black	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
