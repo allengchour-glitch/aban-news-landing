@@ -3072,6 +3072,9 @@ gid://shopify/Product/15448659034497	Farbe	1
 gid://shopify/Product/15448672993665	Farbe	2
 gid://shopify/Product/15448674861441	Farbe	1
 gid://shopify/Product/15448704549249	Farbe	1
+gid://shopify/Product/15449428033921	Farbe	1
+gid://shopify/Product/15450857931137	Farbe	2
+gid://shopify/Product/15421167075713	Farbe	1
 gid://shopify/Product/15448710545793	Farbe	2
 gid://shopify/Product/15448720441729	Farbe	1
 gid://shopify/Product/15448755995009	Farbe	1
