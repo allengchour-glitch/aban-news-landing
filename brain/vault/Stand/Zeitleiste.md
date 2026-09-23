@@ -7,6 +7,9 @@ quelle: CLAUDE.md
 Erzeugt von `tools/vault.py bauen` aus den 📌-Bloecken in `CLAUDE.md`.
 **Nicht von Hand bearbeiten** — Aenderungen gehoeren in `CLAUDE.md`.
 
+- **2026-09-23** — 🎬 BILDER → WERBEVIDEO: die ersten 3 Sekunden gehörten bisher dem Logo
+- **2026-09-23** — 🔓 LIVE-DEPLOY: echte Ursache gefunden — ein eingecheckter Symlink
+- **2026-09-22** — 🦺 DER ARBEITSSCHUTZ-BLOCK: eine ganze Importcharge stand bei HALBEM Einkaufspreis
 - **2026-09-20** — 📵 INSTAGRAM IST AUS DEM CONTAINER NICHT LESBAR — Werkzeug für den PC gebaut
 - **2026-09-19** — ⛑️ ES SIND NICHT ZWEI HELME, ES SIND 32 — und ich habe sie bewusst NICHT gesperrt
 - **2026-09-14** — 🔴 DIE MARGE VON GESTERN GALT FÜR EIN ACHTEL DES KATALOGS — 18 Produkte korrigiert

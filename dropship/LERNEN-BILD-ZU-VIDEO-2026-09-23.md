@@ -39,8 +39,42 @@ Produkt. Der erste Zeitpunkt darunter ist der **Produkt-Einstieg**.
 - ein **späterer Rückfall** auf die Karte (das Outro) darf den Einstieg nicht verschieben;
 - **kein Bild ergibt UNBEKANNT, nicht 0** — dieselbe Regel wie beim SEO-Feld am 12.09.
 
-**GEMESSEN (Teilmessung 21 von 105 Reels, Rest lief nach):** der Produkt-Einstieg liegt bei
-**2,5 s / 2,7 s / 2,8 s — bei 21 von 21 also jenseits von 2,5 Sekunden.**
+**Und eine Gegenprobe des Geräts gegen sich selbst:** es misst auf zwei Wegen — einzelne Sprünge
+(`-ss`) und ein Durchlauf mit fester Bildrate. **GEMESSEN: bei einem von drei Videos wichen sie um
+0,1 s ab** (2,7 gegen 2,8), weil `-ss` auf das nächste dekodierte Bild springt. **Die Auflösung des
+Geräts ist damit ein Rasterschritt.** Aussagen auf die Zehntelsekunde sind nicht gedeckt, Aussagen
+über „vor oder nach 3 Sekunden" sehr wohl. Der Durchlauf-Weg ist zugleich **16× schneller**
+(2,5 min statt über eine Stunde für 107 Videos) — die erste Fassung startete ffmpeg für jede
+einzelne Probe neu.
+
+**⚠️ ZUERST EINE KORREKTUR AN MIR SELBST.** Nach 21 von 107 Videos meldete ich „bei 21 von 21".
+Das war ein **Stichproben-Artefakt**: alphabetisch stehen `accessoires-*` und `auto-*` vorn, und
+die stammen alle aus derselben Renderer-Linie. **Die Vollmessung sagt etwas anderes — und etwas
+Genaueres.**
+
+**GEMESSEN (alle 107 Videos in `reels/`):**
+
+| Produkt sichtbar ab | Anzahl |
+|---|---|
+| **0,0 s** | **49** |
+| 1,1 s | 1 |
+| 2,5 s | 8 |
+| 2,7 s | 49 |
+
+**57 von 107 (53 PROZENT) zeigen das Produkt erst ab 2,5–2,7 s — und 48 davon heissen `auto-*`.**
+Zählt man die neun handgerenderten Geschwister dazu (`sommer`, `premium`, `eleganz`, `damen`,
+`herren`, `men`, `accessoires`, `hero`, `allmix`), sind es **genau die Videos aus der
+`render_premium_reel.sh`-Linie und keine anderen.** Die 49 bei 0,0 s sind Marken-Videos,
+`veo-hero-*`, `werbung-*` und `clip-*` aus anderen Renderern.
+
+**Der Befund ist damit schärfer, nicht schwächer:** es ist kein diffuses „unsere Videos sind zu
+langsam", sondern **ein Konstruktionsfehler an einer benannten Stelle** — dem 3,0-s-Intro in
+`render_premium_reel.sh`, das `auto_render.sh` bei jedem automatischen Reel mitnimmt.
+
+**Die Lehre dazu:** eine alphabetisch sortierte Teilmessung ist keine Stichprobe. Dateinamen
+tragen die Herkunft, also bündeln die ersten N Einträge oft **eine einzige Produktionslinie** —
+genau der Fehler, vor dem die Runde vom 20.09. schon einmal stand („wer eine Gruppe misst und
+daraus auf den Katalog schliesst, liegt in beide Richtungen falsch").
 
 ---
 
@@ -54,8 +88,9 @@ Produkt. Der erste Zeitpunkt darunter ist der **Produkt-Einstieg**.
 - Gut laufende kurze vertikale Anzeigen sind **7–15 s** lang.
 - TikTok selbst: der Haken muss in den ersten 6 s sitzen, die Aussage in den ersten 3 s.
 
-**Der Widerspruch, und er ist gemessen, nicht geglaubt:** unsere Reels verbrennen das gesamte
-3-Sekunden-Fenster auf die Marken-Karte und sind mit 17,3 s länger als das empfohlene Fenster.
+**Der Widerspruch, und er ist gemessen, nicht geglaubt:** die 57 Videos aus der
+`render_premium_reel.sh`-Linie verbrennen das gesamte 3-Sekunden-Fenster auf die Marken-Karte und
+sind mit 17,3 s länger als das empfohlene Fenster.
 
 **Einordnung, damit niemand die fremden Zahlen für gesichert hält:** „85 PROZENT ohne Ton" und
 „+10–25 PROZENT ATC durch Produktvideo" (letzteres aus der Runde vom 13.09.) sind **QUELLE**, nicht
@@ -79,7 +114,7 @@ einer Produktseite zeigt so ein Video fremde Ware. Für die Produktseite braucht
 
 | | bestehende Reels | `produkt_werbevideo.mjs` |
 |---|---|---|
-| Produkt sichtbar ab | **2,5–2,8 s** (gemessen) | **0,0 s** (gemessen) |
+| Produkt sichtbar ab | **2,5–2,7 s** (gemessen, 57 Videos) | **0,0 s** (gemessen) |
 | Marke | 3,0 s am **Anfang** | 2,0 s am **Ende** |
 | Länge | 17,3 s | **12,0 s** (Fenster 7–15 s) |
 | Inhalt | mehrere Produkte | **ein** Produkt |

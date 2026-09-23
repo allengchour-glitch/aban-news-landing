@@ -71,18 +71,24 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 **📌 2026-09-23 (🎬 BILDER → WERBEVIDEO: die ersten 3 Sekunden gehörten bisher dem Logo):**
 - **Auftrag:** „lerne noch wie man bilder in video macht für super werbung video und teile memory."
   Voller Bericht: **`dropship/LERNEN-BILD-ZU-VIDEO-2026-09-23.md`**. Neuer Skill: **`.claude/skills/werbevideo/`**.
-- **🔴 HAUPTFUND, gemessen statt vermutet: unsere Reels verbrennen das gesamte 3-Sekunden-Fenster
-  auf eine Marken-Karte.** `tools/video_hook.mjs` (17 Selbsttests) tastet das Video im 0,1-s-Raster
-  ab und zählt je Einzelbild den Anteil der Marken-Hintergrundfarbe. **Ergebnis: das Produkt
-  erscheint erst bei 2,5 / 2,7 / 2,8 s — bei allen gemessenen Reels.** Ursache ist das 3,0-s-Intro
-  in `render_premium_reel.sh`. **QUELLE (Recherche 2026, mehrere unabhängige Texte):** die ersten
+- **🔴 HAUPTFUND, gemessen statt vermutet: 57 von 107 Reels verbrennen das 3-Sekunden-Fenster auf
+  eine Marken-Karte.** `tools/video_hook.mjs` (17 Selbsttests) tastet das Video im 0,1-s-Raster ab
+  und zählt je Einzelbild den Anteil der Marken-Hintergrundfarbe. **Verteilung über alle 107:
+  49× bei 0,0 s · 1× 1,1 s · 8× 2,5 s · 49× 2,7 s.** Die 57 späten sind **zu 48 `auto-*`** und mit
+  den neun handgerenderten Geschwistern **genau die `render_premium_reel.sh`-Linie** — Ursache ist
+  deren 3,0-s-Intro. Kein diffuser Mangel, sondern ein Konstruktionsfehler an einer benannten Stelle.
+- **⚠️ EIGENE KORREKTUR, noch in derselben Runde:** nach 21 von 107 Videos meldete ich „bei 21 von
+  21". Das war ein **Stichproben-Artefakt** — alphabetisch stehen `accessoires-*` und `auto-*` vorn,
+  und die stammen alle aus derselben Linie. **Eine alphabetisch sortierte Teilmessung ist keine
+  Stichprobe**, weil Dateinamen die Herkunft tragen und die ersten N Einträge eine einzige
+  Produktionslinie bündeln. **QUELLE (Recherche 2026, mehrere unabhängige Texte):** die ersten
   3 Sekunden entscheiden (*Hook Rate*), und man soll ausdrücklich **mit dem Produkt öffnen, nicht
   mit einer Logo-Animation**; **85 PROZENT der Meta-Aufrufe laufen ohne Ton**; gute kurze vertikale
   Anzeigen sind **7–15 s** (unsere: 17,3 s).
 - **✅ GEBAUT `automation/produkt_werbevideo.mjs` (64 Selbsttests)** — macht aus den Bildern **EINES**
   Produkts ein Werbevideo. Das schliesst die Lücke vom 19.09.: `auto_render.sh` baut Montagen aus
   **mehreren** Produkten und darf deshalb nie auf eine Produktseite. **Nachgemessen mit demselben
-  Gerät: Produkt ab 0,0 s statt 2,5 s**, 12,0 s statt 17,3 s, Preis auf jedem Segment, Marke 2,0 s
+  Gerät: Produkt ab 0,0 s statt 2,7 s**, 12,0 s statt 17,3 s, Preis auf jedem Segment, Marke 2,0 s
   am **Ende**, vier Kamerafahrten im Wechsel, dazu `-clean.mp4` (Trend-Sound wird nie eingebrannt)
   und ein Deckblatt-JPG. Echtes Beispiel live gerendert: `reels/produkt-taktische-outdoor-warnweste-fur-herren-623500.mp4`.
 - **🔑 KEINE ZUGANGSDATEN NÖTIG, gemessen:** `https://luxestyle.ch/products/<handle>.js` liefert

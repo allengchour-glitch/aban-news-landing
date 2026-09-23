@@ -14,6 +14,7 @@
  *          node tools/video_hook.mjs --selbsttest
  */
 import { execFileSync } from 'node:child_process';
+import path from 'node:path';
 
 /** Marken-Hintergrund der Intro-/Outro-Karten (render_premium_reel.sh: BG=0xf4f3f1). */
 export const MARKENFARBE = { r: 0xf4, g: 0xf3, b: 0xf1 };
@@ -51,7 +52,28 @@ export function einstieg(proben) {
   return null;
 }
 
-function rgbAusVideo(datei, t, kante = 32) {
+/**
+ * Alle Proben in EINEM ffmpeg-Durchlauf holen statt je Probe neu zu starten.
+ * Die erste Fassung suchte je Zeitpunkt einzeln (`-ss`) und brauchte rund 40 s je Video —
+ * bei 105 Reels ueber eine Stunde. Ein Durchlauf mit fester Bildrate liefert dieselben
+ * Einzelbilder in Sekunden. Gegenprobe: beide Wege muessen denselben Einstieg melden.
+ */
+function probenAusVideo(datei, { bis = 8, schritt = 0.1, kante = 32 } = {}) {
+  const rate = Math.round(1 / schritt);
+  const roh = execFileSync('ffmpeg', ['-nostdin', '-v', 'error', '-i', datei, '-t', String(bis),
+    '-vf', `fps=${rate},scale=${kante}:${kante}`, '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'],
+    { maxBuffer: 1 << 28 });
+  const proBild = kante * kante * 3;
+  const out = [];
+  for (let i = 0; i * proBild + proBild <= roh.length; i++) {
+    out.push({ t: Math.round((i / rate) * 100) / 100,
+               rgb: Array.from(roh.subarray(i * proBild, (i + 1) * proBild)) });
+  }
+  return out;
+}
+
+/** Einzelnes Bild an einer Stelle — nur noch fuer die Gegenprobe gegen den schnellen Weg. */
+export function rgbAusVideo(datei, t, kante = 32) {
   const roh = execFileSync('ffmpeg', ['-nostdin', '-v', 'error', '-ss', String(t), '-i', datei,
     '-frames:v', '1', '-vf', `scale=${kante}:${kante}`, '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'],
     { maxBuffer: 1 << 24 });
@@ -64,13 +86,18 @@ export function dauer(datei) {
   return Number(s) || null;
 }
 
-export function messen(datei, { bis = 8, schritt = 0.1 } = {}) {
+export function messen(datei, { bis = 8, schritt = 0.1, langsam = false } = {}) {
   const d = dauer(datei);
   const ende = Math.min(bis, d ?? bis);
-  const proben = [];
-  for (let t = 0; t < ende; t = Math.round((t + schritt) * 100) / 100) {
-    const rgb = rgbAusVideo(datei, t);
-    proben.push({ t, karte: istMarkenkarte(rgb) });
+  let proben;
+  if (langsam) {
+    proben = [];
+    for (let t = 0; t < ende; t = Math.round((t + schritt) * 100) / 100) {
+      proben.push({ t, karte: istMarkenkarte(rgbAusVideo(datei, t)) });
+    }
+  } else {
+    proben = probenAusVideo(datei, { bis: ende, schritt })
+      .map((p) => ({ t: p.t, karte: istMarkenkarte(p.rgb) }));
   }
   return { datei, dauer: d, einstieg: einstieg(proben), proben };
 }
@@ -126,8 +153,11 @@ function selbsttest() {
     einstieg([{ t: 0, karte: null }, { t: 1, karte: false }]) === 1);
 }
 
-const args = process.argv.slice(2);
-if (args[0] === '--selbsttest') { selbsttest(); }
+// Nur ausfuehren, wenn direkt aufgerufen — sonst laeuft die Befehlszeile beim Importieren mit.
+const direkt = process.argv[1] && import.meta.url === `file://${path.resolve(process.argv[1])}`;
+const args = direkt ? process.argv.slice(2) : ['--modul'];
+if (args[0] === '--modul') { /* als Baustein eingebunden: nichts tun */ }
+else if (args[0] === '--selbsttest') { selbsttest(); }
 else if (args.length === 0) { console.error('Aufruf: node tools/video_hook.mjs <datei.mp4> [...] | --selbsttest'); process.exit(2); }
 else {
   for (const f of args) {

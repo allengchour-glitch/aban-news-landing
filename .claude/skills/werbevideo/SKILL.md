@@ -23,8 +23,11 @@ Produktseite ist `produkt_werbevideo.mjs` da.
 
 ## Die ersten drei Sekunden gehören dem Produkt
 
-**GEMESSEN (23.09., `tools/video_hook.mjs`):** die bestehenden Reels zeigen das Produkt erst ab
-**2,5–2,8 s** — davor steht die Marken-Karte. **QUELLE (2026):** die ersten 3 Sekunden entscheiden
+**GEMESSEN (23.09., `tools/video_hook.mjs`, alle 107 Videos in `reels/`):** **57 zeigen das Produkt
+erst ab 2,5–2,7 s**, 49 ab 0,0 s. Die 57 späten sind **genau die `render_premium_reel.sh`-Linie**
+(48 davon `auto-*`) — davor steht deren 3,0-s-Marken-Karte.
+⚠️ Nicht aus den ersten Dateien schliessen: **alphabetisch sortiert bündeln die ersten Einträge
+eine einzige Produktionslinie.** Immer alle messen. **QUELLE (2026):** die ersten 3 Sekunden entscheiden
 (Kennzahl *Hook Rate*), und man soll ausdrücklich **mit dem Produkt öffnen, nicht mit einer
 Logo-Animation**. Die Marke gehört ans **Ende**.
 
