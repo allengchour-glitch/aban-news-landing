@@ -1,0 +1,19 @@
+Strategie-Prüfstand 1.0 — aban news
+
+Inhalt
+  ANLEITUNG.md        Start in 5 Minuten, Bericht lesen, die sieben Fallen (zuerst lesen)
+  pruefstand.py       Hauptwerkzeug: 9 Stile + deine Regel, Skill in Prozent, HTML-Bericht
+  meine_regel.py      Vorlage für deine eigene Regel, mit drei Beispielen
+  daytrading_test.py  Daytrading-Test auf Stundenkerzen (Gold, Silber, Öl, S&P-Future, Bitcoin)
+
+Schnellstart
+  python3 pruefstand.py --demo
+
+Voraussetzung: Python 3.9 oder neuer, keine Zusatzpakete.
+
+Nutzung privat und geschäftlich erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+Keine Anlageberatung. Vergangene Kurse sagen die Zukunft nicht voraus.
+Kursdaten stammen von der Quelle, die du wählst (Yahoo Finance oder deine eigene Datei);
+beachte deren Nutzungsbedingungen.
+
+© aban news, abannews.com · hallo@abannews.com

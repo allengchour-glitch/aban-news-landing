@@ -214,6 +214,30 @@ footer a{color:var(--muted)}
   <p class="klein">Und Vorsicht mit einzelnen hohen Werten: neun Stile auf acht Märkten sind 72 Versuche. Rein zufällig landen davon einige über 95 %. Gegenprobe: ein Stil, der den nächsten Tag kennt, kommt überall auf 100 %, Münzwürfe liegen im Schnitt bei 47–53 %. Gemessen am 23.09.2026, Code: <code>tools/trading/stil_labor.py</code>, Daten: <a href="/data/stil-labor.json">stil-labor.json</a>.</p>
 </div>
 
+<div class="kasten gut" id="pruefstand">
+  <p><b>Teste deine eigene Idee mit denselben Werkzeugen: der Strategie-Prüfstand.</b></p>
+  <ul>
+    <li>Deine Regel gegen neun bekannte Stile und 200 Zufallsstrategien, mit <b>Skill in Prozent</b></li>
+    <li><b>Zukunfts-Schutz:</b> Greift deine Regel auf einen Kurs zu, den es noch nicht gab, bricht der Test ab. Das ist der häufigste Fehler in selbstgebauten Backtests</li>
+    <li><b>Auswahl-Falle</b> und Mehrfach-Test: zeigt, ob der „beste“ Stil nur der glücklichste war</li>
+    <li>Daytrading-Test für Gold, Silber, Öl, S&amp;P-Future und Bitcoin</li>
+    <li>Eigene Kursdaten als CSV, auch im Schweizer Format, oder Kurse direkt von Yahoo Finance</li>
+    <li>Anleitung: in 5 Minuten starten, Bericht lesen, die sieben Fallen</li>
+  </ul>
+  <p class="klein">Python-Kit zum Herunterladen, läuft auf Windows, Mac und Linux mit Python 3.9+, keine Zusatzpakete. Keine Anlageberatung, kein Signaldienst: Der Prüfstand sagt nicht, was du kaufen sollst. Er sagt, ob ein gutes Ergebnis einem ernsthaften Test standhält.</p>
+  <a class="cta" id="pruefstand-kauf" href="/shop.html">Strategie-Prüfstand — CHF 29</a>
+  <p class="klein">Sofort-Download nach der Zahlung (Karte, über Stripe). <a href="/agb.html">AGB &amp; Widerruf</a></p>
+</div>
+<script>
+(function(){
+  var a=document.getElementById('pruefstand-kauf');if(!a)return;
+  fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[]}).then(function(l){
+    var p=(l||[]).filter(function(x){return x.slug==='strategie-pruefstand'})[0];
+    if(p&&p.buy){a.href=p.buy;a.rel='noopener';a.textContent='Strategie-Prüfstand kaufen — '+p.price;}
+  }).catch(function(){});
+})();
+</script>
+
 <h2>Lernpfad: von null bis zur eigenen, ehrlich getesteten Strategie</h2>
 <div class="stufe"><b class="n">1</b><div><b>Grundlagen: Was ist eine Aktie, ein Index, ein Fonds?</b><br>
 <a href="https://www.investor.gov/introduction-investing" target="_blank" rel="noopener">Investor.gov — Introduction to Investing</a> (US-Börsenaufsicht, englisch, gratis) und
