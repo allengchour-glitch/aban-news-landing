@@ -434,6 +434,22 @@ Befunde). Kanarienvogel: die drei DRAFTs vor dem Patch gemessen, nach dem Patch 
 **Lehre:** Jeder Poster braucht dieselbe Frage vor dem Post — «ist die Ware kaufbar?» — im selben Werkzeug; eine
 Queue aus dem August ist eine Momentaufnahme, keine Wahrheit. Und wieder: ein Reiniger ohne Starter ist ein Bericht.
 
+**Nachtrag 28 (23.09. 09:35 UTC) — «schön weiter machen»: der Bildkanal sprach noch die Scam-Sprache vom Sommer — 70 Captions umgebaut, der Nachschub gleich mit.**
+GEMESSEN: alle 70 wartenden Bildposts stammen vom 01.08. (Kimi): kein Preis, Emoji-Kette, in jeder Zeile «Bezahl bequem
+auf Rechnung mit Klarna ✨» — die Klasse hinter dem Kundenfeedback vom 05.09. («zu fest KI, wie Scam»); die letzten
+drei Bildposts (22./23.09.) gingen genau so raus. Der Nachschub `queue_new_products.mjs` (v2, alle 12 h) hätte es
+schlimmer gemacht: «Spar dir den Designer-Preis», «Schreib LINK 👇», «–10% WELCOME10» (offener Betreiber-Entscheid),
+Plattform «threads» trotz Threads-Stopp, «#sommerkleid» im September — und er hatte noch nie eine Zeile geschrieben.
+Der Karussell-Bauer spricht seit dem 05.09. ehrlich (Laden-Zeile aus Belp, belegte Lieferzeit, Kommentar-Frage).
+GETAN: (1) `bild_queue_captions_ehrlich.py`: baut jede ready-Caption mit Scam-Marker um — erster sachlicher Kimi-Satz
+(nur ohne Klarna/Rabatt/%, ≤140 Zeichen, ein Emoji), Kurztitel · CHF-Preis LIVE aus Shopify, Laden-Zeile je Tag
+`ch-lager`, Kommentar-Frage, «Jetzt im Shop 🇨🇭 luxestyle.ch – Link in Bio», #schweiz #luxestyle + bis 3 Sach-Tags
+(ohne #fyp/#onlineshopping). DRY gelesen (3 Beispiele), SCHARF: 70 umgebaut, Rücklesen 0 Scam-Marker, Bericht
+`dropship/BILD-QUEUE-CAPTIONS.md`, täglich im Aufseher (SCHARF=1). (2) `queue_new_products.mjs`: dieselben Bausteine
+(holt jetzt `tags` für die Lieferzeit), Plattformen instagram,facebook, #kleid statt #sommerkleid.
+**Lehre:** Eine Tonalitäts-Regel gilt für JEDEN Schreiber eines Kanals — Karussell, Reel, Bild, Nachschub. Wer sie an
+einer Stelle einführt und die anderen Queues stehen lässt, postet den Sommer-Ton weiter, nur seltener.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16094,3 +16110,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-21 · 🪣 **Acht Wächter, ein Eimer — die Drossel war hausgemacht, und mein erster Fix war falsch.** `menue_links.log`: **15 PAUSE-Zeilen bei 16 Läufen** — der Wächter, der am 15.09. → Journal
 - 2026-09-21 · 🫀 **Ein Herzschlag, der sich als Arbeit ausgab — und die Post brachte ein endgültiges Nein.** «email sachen machen»: Posteingang in drei Tagen **ein** Vorgang, der Befund lag daneben. → Journal
 - 2026-09-21 · ⏳ **Der Kommentar sagte `restoreRate`, der Code schlief 12 s — und mein Patch hatte denselben Fehler.** «alles fixen»: ~15 Wächter enden mit «Shopify antwortet nicht». → Journal
+- 2026-09-21 · 🔁 **Fünf sinnlose Läufe pro Stunde, für immer — und ein Wrapper, der Befunde erfindet.** (1) `versandschwelle_rabatt.log` meldete seit 10.09. → Journal
+- 2026-09-21 · 📚 **«9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde.** `cj_verfuegbarkeit` schrieb 104× dieselbe Zeile; gemessen blätterte er seit der Cursor-Löschung (19.09.) bei JEDEM Lauf den ganzen Katalog (~810 Seiten, **50–80k Punkte** aus einem 2'000er-Eimer),… → Journal

@@ -501,6 +501,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-23 · 🗣️ **Bildkanal sprach noch die Scam-Sprache vom Sommer: 70 wartende Kimi-Captions ohne Preis mit Klarna-Filler, der v2-Nachschub hätte «Designer-Preis»/«WELCOME10»/Threads geschrieben.** `bild_queue_captions_ehrlich.py` (Preis live, Laden-Zeile, Sach-Tags; täglich), Nachschub auf dieselben Bausteine. **Tonalitäts-Regel gilt für jeden Schreiber eines Kanals** → Journal Nachtrag 28
 - 2026-09-23 · 🖼️ **Verbesserungsrunde 5: Bild-Poster fragte nie, ob die Ware kaufbar ist — 3 von 73 August-Zeilen bewarben DRAFTs (Link = 404); `social_queue_saeubern.py` hatte seit 03.09. keinen Starter.** Jetzt `produktAktiv()` im Bild-Poster (ACTIVE+onlineStoreUrl), Reiniger täglich im Aufseher, prüft auch «ohne Onlineshop». Alte Throttle-Tracebacks in /tmp-Logs sind Vergangenheit (nur letzte Zeilen zählen) → Journal Nachtrag 27
 - 2026-09-23 · 🎠 **«insta karusell brauchen»: erstes IG-Karussell live (DdnlCi-jkth + FB-Album) — der Slide-Bauer hatte 31 Sets für den toten PC-Poster gelagert, IG verlangt 4:5.** `tiktok_karussell.py FORMAT=ig` (1080×1350, eigene Bildfenster), `ig_karussell_post.mjs` (Wachen wie die Reel-Poster, pusht fehlende Slides selbst), Autopilot 24 h, Aufseher baut täglich 2 + montags Top. **Ein Bauer ohne Poster ist ein Lager** → Journal Nachtrag 25
 - 2026-09-23 · 📐 **Betreiber-Screenshot: Titel/Preis der Reels lagen unter TikToks Caption, Marke unter der Suchleiste — die Textebene kannte die Plattform-Oberfläche nicht.** `overlay.py` sichere Zone (200–1440, Fusstexte links der Knopfleiste), Video bei y=600, UI-Schablone als Prüfbild, `NEU_RENDERN=1` baut die 23 wartenden Reels neu. «CHF 50» war richtig (Warenwert; 45 = intern nach Rabatt) → Journal Nachtrag 24
@@ -545,9 +546,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-09-21 · 🗓️ **Die API-Version im Code war seit Monaten nicht die, die antwortete.** Kopf gemessen: 2024-10/2025-01/2025-07 → alle still auf **2025-10** bedient, die am **01.10.2026** ausläuft — 350 Stellen wären in zehn Tagen unangekündigt auf 2026-01 gesprungen. → Journal
 - 2026-09-21 · 🧭 **Drei tote Landeseiten + ein Kollektionstext entschieden.** Alle drei Seiten (9/5/2 Sitzungen) tragen `cj-nicht-mehr-verfuegbar` → nicht zurückholbar → 301 auf die Kategorie (`sub-sandalen`, `sub-aroma-diffuser`, `wasserfester-schmuck`); «Wasserfester… → Journal
 - 2026-09-21 · 🚧 **Geduld reicht nicht, wenn alle gleichzeitig warten — die Schranke.** Nach den Geduld-Patches starb `lagerstand_hygiene` erneut, jetzt mit Grund: «12x gedrosselt (Eimer dauerhaft leer)». → Journal
-- 2026-09-21 · 📚 **«9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde.** `cj_verfuegbarkeit` schrieb 104× dieselbe Zeile; gemessen blätterte er seit der Cursor-Löschung (19.09.) bei JEDEM Lauf den ganzen Katalog (~810 Seiten, **50–80k Punkte** aus einem 2'000er-Eimer),… → Journal
-- 2026-09-21 · 🔁 **Fünf sinnlose Läufe pro Stunde, für immer — und ein Wrapper, der Befunde erfindet.** (1) `versandschwelle_rabatt.log` meldete seit 10.09. → Journal
 
-… Einzeilen vom 14.–21.09.2026 (89, vier vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
+… Einzeilen vom 14.–21.09.2026 (91, sechs vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
 Dateiende — CLAUDE.md muss unter ~70 KB bleiben); alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md`
 (Inhaltsverzeichnis oben). Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`.
