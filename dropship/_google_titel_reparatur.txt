@@ -144,3 +144,4 @@
 2026-09-23T18:54:15Z	SCHREIB	gid://shopify/Product/15524929175937	runder-aschenbecher-aus-keramik-2cef8b	RAUCH	kategorie	gid://shopify/TaxonomyCategory/hg-11	gid://shopify/TaxonomyCategory/hg-19-1	ok
 2026-09-23T18:54:15Z	SCHREIB	gid://shopify/Product/15524929175937	runder-aschenbecher-aus-keramik-2cef8b	RAUCH	tags_dazu		raucher,smoke-zubehoer	ok
 2026-09-23T18:54:15Z	SCHREIB	gid://shopify/Product/15524929175937	runder-aschenbecher-aus-keramik-2cef8b	RAUCH	tags_weg	becher,kochen,kueche		ok
+2026-09-23T22:18:05Z	SCHREIB	gid://shopify/Product/15510929506689	1-zoll-zapfpistole-fur-diesel-und-benzin-257024	EINZEL	hauptbild	70640740761985 (aufrecht, Griff+Abzug = «Pistole»)	70640741745025 (Seitenansicht liegend)	ok — Google «Inappropriate image» zielt aufs Hauptbild, nicht auf den Text; Bilder 3/4 sind Bytekopien von 1/2
