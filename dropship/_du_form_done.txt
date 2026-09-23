@@ -17792,3 +17792,7 @@ outdoor-stream-tracking-rucksack-mit-ipx7-wass-613400	2026-09-23	du
 outdoor-stream-trekking-schuhe-412736	2026-09-23	du
 outdoor-tactical-bauchtasche-mit-holster-630200	2026-09-23	du
 outdoor-tactics-rucksack-900672	2026-09-23	du
+outdoor-taktik-5-teiliges-hundegeschirr-set-626700	2026-09-23	du
+outdoor-taktik-aufbewahrungstasche-438976	2026-09-23	du
+outdoor-taktik-stiefel-622800	2026-09-23	teilweise
+outdoor-taktik-weste-fur-herren-635200	2026-09-23	du
