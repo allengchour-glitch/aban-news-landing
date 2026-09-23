@@ -13632,7 +13632,9 @@ function polizeiStart(){
   var sp=spielerPos(),K=[];
   for(var i=0;i<24;i++){var a=i/24*6.283;
     for(var r=28;r<=46;r+=6){var x=sp.x+Math.cos(a)*r,z=sp.z+Math.sin(a)*r;
-      if(gpsStrasse(x,z)&&!gpsGesperrt(x,z))K.push([x,z]);}}
+      /* nur Zellen, deren Nachbarn (1,2 m) auch Strasse sind: gpsStrasse ist an der Landstrasse
+         0,8 m breiter als der Asphalt — am Rand stand der Wagen sonst im Bankett (5/24 Proben) */
+      if(gpsStrasse(x,z)&&!gpsGesperrt(x,z)&&gpsStrasse(x+1.2,z)&&gpsStrasse(x-1.2,z)&&gpsStrasse(x,z+1.2)&&gpsStrasse(x,z-1.2))K.push([x,z]);}}
   if(K.length)return K[Math.floor(Math.random()*K.length)];
   /* Kein Asphalt im Kreis: die naechste Strassenzelle ab 20 m nach aussen suchen */
   for(var r2=20;r2<=120;r2+=4){var n2=Math.round(r2*1.2);
