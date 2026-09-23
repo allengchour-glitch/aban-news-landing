@@ -19376,3 +19376,15 @@ retro-lederrucksack-mit-farbkontrast-760064	2026-09-23	du
 retro-lederuhr-607500	2026-09-23	um-ohne-wirkung
 retro-leinenhemd-fur-herren-620200	2026-09-23	du
 retro-leopard-hose-cropped-614100	2026-09-23	um-ohne-wirkung
+retro-loafer-mit-schnalle-631100	2026-09-23	um-ohne-wirkung
+retro-loafers-mit-zierfalten-602400	2026-09-23	du
+retro-loose-fit-hose-628600	2026-09-23	teilweise
+retro-loose-fit-straight-leg-herrenhosen-605100	2026-09-23	um-ohne-wirkung
+retro-loose-fit-wide-leg-denim-jeans-fur-damen-631600	2026-09-23	du
+retro-loose-straight-denimhosen-615300	2026-09-23	teilweise
+retro-loose-straight-leg-jeans-fur-herren-638400	2026-09-23	um-ohne-wirkung
+retro-loose-wide-leg-hose-fur-herren-608600	2026-09-23	um-ohne-wirkung
+retro-mahagoni-herz-patch-12x15mm-981568	2026-09-23	du
+retro-mantel-mit-reissverschluss-und-hahnentri-636800	2026-09-23	du
+retro-martin-boots-fur-herren-604600	2026-09-23	du
+retro-mary-jane-mit-blumenstickerei-239170	2026-09-23	teilweise
