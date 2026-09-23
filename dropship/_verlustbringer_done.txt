@@ -1152,3 +1152,140 @@ gid://shopify/Product/15506286051713	2026-09-23T12:02Z	schon-DRAFT	17.90	26.55	K
 gid://shopify/Product/15448926224769	2026-09-23T12:02Z	schon-DRAFT	15.90	24.55	Langes Kissen aus Eisseide, kühlend
 gid://shopify/Product/15499698766209	2026-09-23T12:02Z	schon-DRAFT	21.90	30.52	Silberfuchs-Sofacover
 gid://shopify/Product/15504155279745	2026-09-23T12:02Z	schon-DRAFT	16.90	25.52	Elastischer Sofa-Überzug mit Rundumschutz
+gid://shopify/Product/15503120302465	2026-09-23T12:02Z	schon-DRAFT	17.90	26.50	Holzkohle-Anzündkamin für 3-5 Personen
+gid://shopify/Product/15497420964225	2026-09-23T12:02Z	schon-DRAFT	15.90	24.48	Stoff-Organizer für Wohnmobil-Tür
+gid://shopify/Product/15450045251969	2026-09-23T12:02Z	schon-DRAFT	15.90	24.48	Herren-Stiefel
+gid://shopify/Product/15496578761089	2026-09-23T12:02Z	schon-DRAFT	18.90	27.46	Bezug für Gewichtsdecke
+gid://shopify/Product/15450555416961	2026-09-23T12:02Z	schon-DRAFT	17.90	26.46	Retro Plateau-Sneaker für Herren
+gid://shopify/Product/15500988612993	2026-09-23T12:02Z	schon-DRAFT	19.90	28.45	Sicherheitsstiefel mit Stahlkappe
+gid://shopify/Product/15505710383489	2026-09-23T12:02Z	schon-DRAFT	17.90	26.45	Hitzebeständige Feuerdecke für Outdoor & BBQ
+gid://shopify/Product/15506040586625	2026-09-23T12:02Z	schon-DRAFT	16.90	25.45	Taktische, wasserdichte Bauchtasche
+gid://shopify/Product/15449065488769	2026-09-23T12:02Z	schon-DRAFT	14.90	23.44	Strick-Cardigan für Herren
+gid://shopify/Product/15449851920769	2026-09-23T12:02Z	schon-DRAFT	17.90	26.42	Spitzschuh Totemverzierte Kurzstiefel
+gid://shopify/Product/15449849921921	2026-09-23T12:02Z	schon-DRAFT	14.90	23.42	Perlenbogen-Hochhackerschuhe
+gid://shopify/Product/15495901151617	2026-09-23T12:02Z	schon-DRAFT	17.90	26.41	Biskuit Stuhlkissen – dick & bequem
+gid://shopify/Product/15501685195137	2026-09-23T12:02Z	schon-DRAFT	16.90	25.41	Wandbarbell-Ständer
+gid://shopify/Product/15450557120897	2026-09-23T12:02Z	schon-DRAFT	17.90	26.41	Freizeit-Sneaker für Herren
+gid://shopify/Product/15448951325057	2026-09-23T12:02Z	schon-DRAFT	15.90	24.41	Futter- und Trinkstation für Haustiere
+gid://shopify/Product/15500939788673	2026-09-23T12:02Z	schon-DRAFT	15.90	24.39	Schneidebrett aus Buchenholz im japanischen Stil
+gid://shopify/Product/15447931388289	2026-09-23T12:02Z	schon-DRAFT	15.90	24.37	Warme Lederhandschuhe für Damen
+gid://shopify/Product/15448927076737	2026-09-23T12:02Z	schon-DRAFT	15.90	24.35	Memory Foam Sitz- und Rückenkissen
+gid://shopify/Product/15504177987969	2026-09-23T12:02Z	schon-DRAFT	18.90	27.34	Abtropfgestell mit Staubschutz für Baby-Geschirr
+gid://shopify/Product/15448961024385	2026-09-23T12:02Z	schon-DRAFT	15.90	24.33	Erweiterbarer Schubladen-Organizer
+gid://shopify/Product/15454049534337	2026-09-23T12:02Z	schon-DRAFT	15.90	24.31	Kürbis-Tafelgeschirr Set
+gid://shopify/Product/15450051215745	2026-09-23T12:02Z	schon-DRAFT	18.90	27.27	Retro-Sneaker Sommer
+gid://shopify/Product/15452718530945	2026-09-23T12:02Z	schon-DRAFT	17.90	26.27	Kleiner Strandzelt für die Kleinen
+gid://shopify/Product/15447613768065	2026-09-23T12:02Z	schon-DRAFT	17.90	26.24	Taktischer 511 Outdoor Rucksack 45L
+gid://shopify/Product/15497496297857	2026-09-23T12:02Z	schon-DRAFT	20.90	29.24	Kissenhülle im marokkanischen Stil
+gid://shopify/Product/15451641086337	2026-09-23T12:02Z	schon-DRAFT	15.90	24.23	Wolldecke mit Digitaldruck
+gid://shopify/Product/15504149741953	2026-09-23T12:02Z	schon-DRAFT	17.90	27.21	Mädchen Wildleder-Boots mit weicher Sohle
+gid://shopify/Product/15503285649793	2026-09-23T12:02Z	schon-DRAFT	15.90	24.18	Edelstahl-Tablett mit Siebeinsatz, rechteckig
+gid://shopify/Product/15495585694081	2026-09-23T12:02Z	schon-DRAFT	15.90	24.16	Sprechender Plüsch-Papagei mit Aufnahmefunktion
+gid://shopify/Product/15497469952385	2026-09-23T12:02Z	schon-DRAFT	17.90	26.15	DIY Digitales Ölgemälde – Individuell anpassbar
+gid://shopify/Product/15448671453569	2026-09-23T12:02Z	schon-DRAFT	14.90	23.13	Gefütterter Baumwollmantel mit Blumenprint
+gid://shopify/Product/15448938709377	2026-09-23T12:02Z	schon-DRAFT	15.90	24.13	Katzenbaum mit Liegeflächen und Höhle
+gid://shopify/Product/15449467879809	2026-09-23T12:02Z	schon-DRAFT	15.90	24.13	Fitness-Armband mit Gewichten
+gid://shopify/Product/15496528789889	2026-09-23T12:02Z	schon-DRAFT	16.90	25.12	Japanische Keramik-Suppenschale
+gid://shopify/Product/15450852458881	2026-09-23T12:02Z	schon-DRAFT	18.90	27.12	Multifunktionaler Mini-Eierkocher
+gid://shopify/Product/15500899287425	2026-09-23T12:02Z	schon-DRAFT	18.90	27.10	Minimaleimer aus Metall
+gid://shopify/Product/15503113224577	2026-09-23T12:02Z	schon-DRAFT	18.90	27.08	Handgemachter Bambuskorb
+gid://shopify/Product/15450610106753	2026-09-23T12:02Z	schon-DRAFT	15.90	24.08	Chunky Ankle Boots im British Style
+gid://shopify/Product/15454094033281	2026-09-23T12:02Z	schon-DRAFT	15.90	24.08	Zecken- und Flohhalsband
+gid://shopify/Product/15496229159297	2026-09-23T12:02Z	schon-DRAFT	17.90	26.07	Wandhakenleiste im Antik-Stil
+gid://shopify/Product/15504138076545	2026-09-23T12:02Z	schon-DRAFT	18.90	27.07	DIY Malen nach Zahlen: Schmetterlingsfrau
+gid://shopify/Product/15448925372801	2026-09-23T12:02Z	schon-DRAFT	15.90	24.07	Corduroy Sofa-Kissen, rutschfest
+gid://shopify/Product/15502267056513	2026-09-23T12:02Z	schon-DRAFT	15.90	24.03	Kissenbezug Ethno-Stil Baumwolle getuftet
+gid://shopify/Product/15504187097473	2026-09-23T12:02Z	schon-DRAFT	15.90	24.03	Heissluftballon-Leinwandbild für Kinderzimmer
+gid://shopify/Product/15452307784065	2026-09-23T12:02Z	schon-DRAFT	16.90	25.01	Outdoor-Freizeitschuh
+gid://shopify/Product/15447609246081	2026-09-23T12:02Z	schon-DRAFT	18.90	26.98	Outdoor Wander- und Kletterrucksack
+gid://shopify/Product/15448887918977	2026-09-23T12:02Z	schon-DRAFT	17.90	25.95	5 Core Akustikgitarrensaiten (6er-Set)
+gid://shopify/Product/15501915652481	2026-09-23T12:02Z	schon-DRAFT	15.90	23.94	Fleecetücher mit Gummi
+gid://shopify/Product/15450610565505	2026-09-23T12:02Z	schon-DRAFT	14.90	22.93	Modische Casual Boots für Damen
+gid://shopify/Product/15448888803713	2026-09-23T12:02Z	schon-DRAFT	19.90	27.91	5 Core Akustikgitarrensaiten, Medium
+gid://shopify/Product/15498840179073	2026-09-23T12:02Z	schon-DRAFT	15.90	23.82	Profi-Zangenset (3-teilig)
+gid://shopify/Product/15450709131649	2026-09-23T12:02Z	schon-DRAFT	17.90	25.81	Stylische Casual Plateau-Sneaker
+gid://shopify/Product/15446272115073	2026-09-23T12:02Z	schon-DRAFT	14.90	22.81	Futterspendendes Schnüffelspielzeug mit Sound
+gid://shopify/Product/15454092067201	2026-09-23T12:02Z	draft	16.90	24.80	Weihnachtsvorhänge mit 3D-Digitaldruck
+gid://shopify/Product/15450764607873	2026-09-23T12:02Z	draft	19.90	27.79	Mini Kaffeetasse aus Glas mit Holzgriff
+gid://shopify/Product/15505601331585	2026-09-23T12:02Z	draft	15.90	23.79	Niedliches Kopfteil-Kissen in Creme
+gid://shopify/Product/15449906348417	2026-09-23T12:02Z	draft	15.90	23.75	Damen Stiefel mit Schnürung und Plateau
+gid://shopify/Product/15505602347393	2026-09-23T12:02Z	draft	17.90	25.73	Niedliches Panda-Kinderkissen-Set im nordischen Stil
+gid://shopify/Product/15448668340609	2026-09-23T12:02Z	draft	15.90	23.73	Eleganter Mid-length Wollmantel mit Kunstpelzkragen
+gid://shopify/Product/15453894312321	2026-09-23T12:02Z	draft	16.90	24.72	Luftdurchlässige Tanzschuhe mit Mesh
+gid://shopify/Product/15448672895361	2026-09-23T12:02Z	draft	15.90	23.70	Kurze Kapuzenjacke mit Polyester-Füllung
+gid://shopify/Product/15503114502529	2026-09-23T12:03Z	draft	15.90	23.68	5D Diamond Painting: Pfau mit Spezialsteinen
+gid://shopify/Product/15449912803713	2026-09-23T12:03Z	draft	15.90	23.67	Wärmende Schneestiefel für Damen
+gid://shopify/Product/15450709852545	2026-09-23T12:03Z	draft	15.90	23.67	Atmungsaktive Mesh Sportschuhe mit Plateau
+gid://shopify/Product/15448939692417	2026-09-23T12:03Z	draft	15.90	23.63	Warme Katzen-Tragetasche für unterwegs
+gid://shopify/Product/15500282560897	2026-09-23T12:03Z	kein-verlust-live	14.90	20.62	Gelber Kissenbezug, verschiedene Muster
+gid://shopify/Product/15450539557249	2026-09-23T12:03Z	draft	15.90	23.59	Herren Mid-High Top Korean Style Boots
+gid://shopify/Product/15448635081089	2026-09-23T12:03Z	draft	18.90	26.58	Straight-Leg Jeans mit Waschung und Taschen
+gid://shopify/Product/15449840910721	2026-09-23T12:03Z	draft	14.90	22.58	Platform Wedge Sandalen
+gid://shopify/Product/15450253164929	2026-09-23T12:03Z	draft	15.90	23.58	Sitzkissen-Zubehör
+gid://shopify/Product/15500345704833	2026-09-23T12:03Z	draft	15.90	23.53	Drone mit vier Achsen
+gid://shopify/Product/15500281282945	2026-09-23T12:03Z	draft	15.90	23.50	Seidenstrahlfloor Matze
+gid://shopify/Product/15502042923393	2026-09-23T12:03Z	draft	15.90	23.50	Backpapier-Einlagen für Heissluftfritteusen, rund · 200 Stüc
+gid://shopify/Product/15497431515521	2026-09-23T12:03Z	draft	19.90	27.48	Aromatherapie Holz-Diffusor
+gid://shopify/Product/15506285625729	2026-09-23T12:03Z	kein-verlust-live	18.90	19.77	Faltbares Multifunktionslineal
+gid://shopify/Product/15495119634817	2026-09-23T12:03Z	draft	15.90	23.46	Tier-Diamant-Malerei mit Vögel-Motiv
+gid://shopify/Product/15498671227265	2026-09-23T12:03Z	draft	17.90	25.45	Japanische Keramik Reisschale
+gid://shopify/Product/15504173138305	2026-09-23T12:04Z	draft	16.90	24.42	Wujin Moyu Geschirrset
+gid://shopify/Product/15450659914113	2026-09-23T12:04Z	draft	14.90	22.42	Chunky-Heel Peep-Toe Pumps im neuen China-Stil
+gid://shopify/Product/15448949621121	2026-09-23T12:04Z	draft	17.90	25.39	Keramik-Doppelnapf für Katzen
+gid://shopify/Product/15501053100417	2026-09-23T12:04Z	draft	18.90	26.38	Kleiderständer
+gid://shopify/Product/15454038393217	2026-09-23T12:04Z	draft	18.90	27.02	Low-Top Mesh Sneakers, atmungsaktiv
+gid://shopify/Product/15497435709825	2026-09-23T12:04Z	draft	17.90	25.37	Silikon-Gewichtsarmband für Yoga & Fitness
+gid://shopify/Product/15497446097281	2026-09-23T12:04Z	draft	19.90	27.37	Schutzhülle für Ecksofa (links V-förmig)
+gid://shopify/Product/15499993121153	2026-09-23T12:04Z	draft	15.90	23.15	Bunter Blumenstrauss
+gid://shopify/Product/15501382779265	2026-09-23T12:04Z	draft	15.90	23.33	Trauriger Engel
+gid://shopify/Product/15501383008641	2026-09-23T12:04Z	draft	15.90	23.33	XXL 5D Diamond Painting: Engel am Weihnachtsbaum
+gid://shopify/Product/15453764813185	2026-09-23T12:04Z	draft	15.90	23.33	Anti-Kippschale Edelstahl für Hunde & Katzen
+gid://shopify/Product/15453893362049	2026-09-23T12:04Z	draft	15.90	23.33	Laufschuhe Damen
+gid://shopify/Product/15448667586945	2026-09-23T12:04Z	draft	18.90	26.32	Eleganter Damen-Kurzmantel mit Schal
+gid://shopify/Product/15501054804353	2026-09-23T12:04Z	draft	15.90	23.12	Jacquard-Kissenhülle Weihnachten, Elch & Tanne
+gid://shopify/Product/15500934414721	2026-09-23T12:04Z	draft	18.90	26.30	Art Texture Stretch-Sofabezug, rutschfest
+gid://shopify/Product/15452299526529	2026-09-23T12:04Z	draft	17.90	25.30	Flache Sandalen mit Riemchen und eckiger Zehenpartie
+gid://shopify/Product/15448924684673	2026-09-23T12:04Z	draft	15.90	23.29	Luxuriöser Plüsch Kissenbezug
+gid://shopify/Product/15450615939457	2026-09-23T12:04Z	draft	14.90	22.29	Sneakers mit Höhen-Effekt für Damen
+gid://shopify/Product/15500075336065	2026-09-23T12:04Z	draft	14.90	22.28	Handgeführter Kartonverschluss
+gid://shopify/Product/15449488130433	2026-09-23T12:05Z	draft	15.90	23.28	Gaming-Tastatur- und Maus-Set
+gid://shopify/Product/15499867718017	2026-09-23T12:05Z	kein-verlust-live	15.90	21.12	Kratzfester Sofaüberzug mit Streifenmuster
+gid://shopify/Product/15497451700609	2026-09-23T12:05Z	draft	16.90	24.26	Malen nach Zahlen: Gelbe Blume, Blauer Vogel
+gid://shopify/Product/15497451962753	2026-09-23T12:05Z	draft	16.90	24.26	Acrylmalerei mit Blumen und Vögeln
+gid://shopify/Product/15497452093825	2026-09-23T12:05Z	draft	16.90	24.26	Digitales Acrylbild auf Leinwand
+gid://shopify/Product/15496359903617	2026-09-23T12:05Z	draft	18.90	26.05	Retro-Kissenbezug mit französischem Flair
+gid://shopify/Product/15496329822593	2026-09-23T12:05Z	draft	16.90	24.22	Periodensystem der Elemente 3D-Decke
+gid://shopify/Product/15506239488385	2026-09-23T12:05Z	kein-verlust-live	15.90	16.98	Halsband oder Leine mit grünem Karomuster
+gid://shopify/Product/15453998678401	2026-09-23T12:05Z	draft	14.90	20.74	Hundejacke
+gid://shopify/Product/15450057507201	2026-09-23T12:05Z	draft	16.90	24.19	Casual Wanderschuhe
+gid://shopify/Product/15504288678273	2026-09-23T12:05Z	draft	16.90	24.16	Leinen Kissenhülle quadratisch
+gid://shopify/Product/15450111902081	2026-09-23T12:05Z	draft	15.90	23.15	Universal Bettwäsche Schutz
+gid://shopify/Product/15506878595457	2026-09-23T12:05Z	draft	16.90	24.14	DIY Digital Ölmalerei: Blumen- &amp; Landschaftsmotive
+gid://shopify/Product/15449480823169	2026-09-23T12:05Z	draft	15.90	23.12	Cartoon-Decken
+gid://shopify/Product/15496402239873	2026-09-23T12:05Z	draft	16.90	23.41	Salatschüssel aus Bambusholz
+gid://shopify/Product/15453794599297	2026-09-23T12:05Z	draft	17.90	25.05	Wärmendes Sofa-Bett für den Winter
+gid://shopify/Product/15497428664705	2026-09-23T12:05Z	draft	16.90	24.03	Superhydrophobe 9H Keramik-Lackversiegelung
+gid://shopify/Product/15500506661249	2026-09-23T12:05Z	draft	16.90	24.03	Diamantmalerei-Set
+gid://shopify/Product/15496511455617	2026-09-23T12:05Z	draft	15.90	23.03	Diamond Painting Löwe Multicolor 40x50cm
+gid://shopify/Product/15497044427137	2026-09-23T12:05Z	draft	17.90	25.02	Halsband-Kamera für Haustiere
+gid://shopify/Product/15500492538241	2026-09-23T12:06Z	draft	15.90	23.00	Viersaisonales Sofa-Schutzhusse
+gid://shopify/Product/15450751631745	2026-09-23T12:06Z	draft	17.90	24.97	Leichte, atmungsaktive Laufschuhe
+gid://shopify/Product/15447577461121	2026-09-23T12:06Z	draft	14.90	21.97	Mattschwarze PVC-Etiketten A4, selbstklebend · 50 Blatt
+gid://shopify/Product/15449600983425	2026-09-23T12:06Z	draft	14.90	21.97	Lendenstütze für Auto-Sitz
+gid://shopify/Product/15496304066945	2026-09-23T12:06Z	draft	18.90	25.95	Doppelt verdickte Decke für die Mittagspause
+gid://shopify/Product/15454109663617	2026-09-23T12:06Z	draft	15.90	22.94	Edelstahl Salatschüssel
+gid://shopify/Product/15502592442753	2026-09-23T12:06Z	kein-verlust-live	15.90	21.53	Gestreifter Flanell-Kissenbezug
+gid://shopify/Product/15497422012801	2026-09-23T12:06Z	draft	15.90	22.91	Panda Flanelldecke
+gid://shopify/Product/15454058119553	2026-09-23T12:06Z	draft	15.90	22.91	Winterwarm & wasserdichter Streunerkatzen-Platz
+gid://shopify/Product/15454015259009	2026-09-23T12:06Z	draft	14.90	21.88	Poolreinigungsset
+gid://shopify/Product/15450838860161	2026-09-23T12:06Z	draft	14.90	21.87	Multifunktionaler Fitness-Ring
+gid://shopify/Product/15449486983553	2026-09-23T12:06Z	draft	18.90	25.86	Verlängerungskabel 3-polig 10ft
+gid://shopify/Product/15448946966913	2026-09-23T12:06Z	draft	15.90	22.81	Plüschtier mit Sound zum Kauen & Zähneputzen
+gid://shopify/Product/15449603637633	2026-09-23T12:06Z	draft	18.90	25.75	Tierisches Bettwäsche-Set
+gid://shopify/Product/15450749829505	2026-09-23T12:06Z	draft	17.90	24.73	Atmungsaktive & vielseitige Sportschuhe für Herren
+gid://shopify/Product/15502266892673	2026-09-23T12:06Z	draft	15.90	22.69	Bohemian Pentagram Kissen mit Quasten
+gid://shopify/Product/15499305877889	2026-09-23T12:06Z	draft	17.90	24.67	Saugfähige Baumwoll-Fussmatte mit PVC-Boden
+gid://shopify/Product/15500901187969	2026-09-23T12:06Z	draft	14.90	21.67	Edelsteinmalerei
+gid://shopify/Product/15503285387649	2026-09-23T12:06Z	kein-verlust-live	15.90	21.50	Kissenbezug Baumwolle, bestickt, 45x45cm
+gid://shopify/Product/15452676227457	2026-09-23T12:06Z	draft	16.90	23.66	Elegante Tiefplatte
+gid://shopify/Product/15502613447041	2026-09-23T12:07Z	draft	15.90	22.65	Riesiger Tennisball für Hunde
