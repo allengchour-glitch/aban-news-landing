@@ -19557,3 +19557,4 @@ gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/1244
 gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449453244801	Rot-US 24 W	Rot-US 24W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
 gid://shopify/Product/15510324806017	Farbe	gid://shopify/ProductOptionValue/12449453277569	Rot-US 26 W	Rot-US 26W	2026-09-23T21:52Z/reparatur-korrigiert:W-Groesse
 gid://shopify/Product/15446066954625	Farbe	gid://shopify/ProductOptionValue/12309729870209	Rote Rosé-Einheitsgrösse	Rote Rose-Einheitsgrösse	2026-09-23T21:53Z/reparatur-korrigiert:server-rueckfall
+gid://shopify/Product/15447891902849	Farbe	gid://shopify/ProductOptionValue/12309921890689	Leuchtendrot	Leuchtendes Rot	2026-09-23T22:48Z
