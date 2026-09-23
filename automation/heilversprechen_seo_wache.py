@@ -25,7 +25,7 @@ LEDGER = os.path.join(hw.REPO, "dropship/_heilversprechen_seo_wache.txt")
 # Krankheitswörter, die im Fliesstext-Muster fehlen, weil sie dort meist in Fehlalarm-Sätzen stehen.
 ZUSATZ = re.compile(r"Krampfader|Besenreiser|Hämorrhoid|Haemorrhoid|\bWarzen?\b|Migräne|Neurodermitis|"
                     r"Schuppenflechte|Psoriasis|Ekzem|Nagelpilz|Fusspilz|Tinnitus|Inkontinenz|Depression", re.I)
-HANDLE = re.compile(r"krampfader|besenreiser|hamorrhoid|haemorrhoid|warze|migrane|migraene|nagelpilz|"
+HANDLE = re.compile(r"krampfader|besenreiser|hamorrhoid|haemorrhoid|(?<!sch)warze|migrane|migraene|nagelpilz|"
                     r"psoriasis|ekzem|tinnitus|inkontinenz|arthrose|rheuma|diabetes", re.I)
 BULK = """{ products(query: "status:active") { edges { node { id handle title seo { title description } } } } }"""
 
