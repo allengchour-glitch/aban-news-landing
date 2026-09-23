@@ -436,3 +436,8 @@ gid://shopify/Product/15499949638017	2026-09-23T05:41Z	draft	17.90	42.88	Kompres
 gid://shopify/Product/15496130036097	2026-09-23T05:41Z	draft	16.90	41.87	Buchstütze Bär aus Schwarznussbaumholz
 gid://shopify/Product/15502612595073	2026-09-23T05:41Z	draft	17.90	42.87	Reine Ramie-Stoff mit Rosenmuster
 gid://shopify/Product/15446020686209	2026-09-23T05:41Z	draft	17.90	42.78	3er-Set Bambus-Schneidebretter
+gid://shopify/Product/15502588019073	2026-09-23T05:42Z	draft	15.90	40.75	Explosionsgeschützte Outdoor-Campingmatte
+gid://shopify/Product/15448940872065	2026-09-23T05:42Z	draft	14.90	39.69	Gestreiftes Katzensofa – Plüsch & Rutschfest
+gid://shopify/Product/15450115441025	2026-09-23T05:42Z	draft	15.90	40.58	Botanisches Sofakissen
+gid://shopify/Product/15450303299969	2026-09-23T05:42Z	draft	18.90	43.57	Multifunktionaler Massage-Teppich für Auto
+gid://shopify/Product/15448925929857	2026-09-23T05:42Z	draft	30.90	55.54	Sofaüberzug Vintage – Katzenfreundlich & Elastisch
