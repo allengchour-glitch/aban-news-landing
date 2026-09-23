@@ -21,7 +21,11 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 23.09.2026: Dieselbe Ampel laeuft auch auf dem Hetzner-Server (luxe-waechter, /opt/…). Dort gibt es
 # weder den Meta-Token noch den Fortura-Zugang in /tmp — die Zeilen «IG: unklar (FileNotFoundError)» und
 # «FORTURA-ZUGANG WEG» meldeten alle 10 Minuten einen Cloud-Zustand, den es auf dem Server nie gab.
-AUF_SERVER = REPO.startswith("/opt/")
+# 23.09. 22:15: der Server-Aufseher startet die Ampel aus der /tmp-Spiegelkopie (engine_keepalive 3b) — dort ist
+# REPO «/» und die Cloud-Zeilen (AZURE-STIMME WEG, FORTURA-ZUGANG WEG) standen doch wieder im Journal. Deshalb
+# zaehlen auch die systemd-Umgebung (REPO=/opt/…) und das Server-Verzeichnis selbst.
+AUF_SERVER = (REPO.startswith("/opt/") or os.environ.get("REPO", "").startswith("/opt/")
+              or os.path.isdir("/opt/luxe-waechter"))
 SHOP = "au3j0y-hq.myshopify.com"
 TOKPFAD = "/tmp/cj_shop_token.txt"
 QUEUE_CDN = ("https://cdn.shopify.com/s/files/1/0943/6856/3585/files/"
