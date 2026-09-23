@@ -4,6 +4,55 @@
   "skript": "social_profil_politur.mjs",
   "dry": false,
   "warum": "Betreiber 23.09.2026: «jede sozail profile verschönern». Facebook ist per Graph-API schon poliert (Info, Beschreibung, Website https, Profilbild profil-rund-dunkel, neues Titelbild cover-fb-2026-09). Instagram, TikTok und Pinterest haben keine Profil-Edit-API: Name «LuxeStyle · Schweizer Shop», Bio in Laden-Sprache (IG 130 Zeichen, TikTok 79), Pinterest-Info + Website, Profilbild überall gleich. Jedes Feld wird vorher gelesen, nur bei Abweichung geschrieben, zurückgelesen; Screenshots vorher/nachher. TikTok-Bio-Link bleibt Betreiber-Klick (Business-Feld).",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-09-23T17:18:33.069Z",
+  "dauer_s": 35.9,
+  "ergebnis": {
+    "dry": false,
+    "dienste": {
+      "instagram": {
+        "ist": {},
+        "gesetzt": [],
+        "offen": [
+          "bio-Feld nicht gefunden",
+          "name-Feld nicht gefunden",
+          "Profilbild: kein Datei-Feld sichtbar (Knopf «Foto ändern» öffnet es erst)"
+        ],
+        "rueckgelesen": {
+          "bio": null
+        },
+        "bio_stimmt": false
+      },
+      "tiktok": {
+        "ist": {},
+        "gesetzt": [],
+        "offen": [
+          "«Profil bearbeiten» nicht sichtbar — angemeldet als anderes Konto?"
+        ],
+        "fehler": "Edit-Knopf fehlt",
+        "nichtAngemeldet": false
+      },
+      "pinterest": {
+        "ist": {
+          "about": "Premium-Looks us de Schwiiz 🇨🇭 Mode · Schmuck · Accessoires · Beauty. Gratis-Versand ab CHF 50 · –10% mit Code WELCOME10 👉 luxestyle.ch"
+        },
+        "gesetzt": [
+          "about"
+        ],
+        "offen": [],
+        "rueckgelesen": {
+          "about": "Kleiner Schweizer Shop aus Belp – Mode, Beauty, Wohnen, Technik. TWINT & Kauf auf Rechnung · 30 Tage Rückgabe · luxestyle.ch"
+        },
+        "about_stimmt": true
+      }
+    },
+    "bilder": [
+      "auftraege/ergebnis/social-profil-politur-2026-09-23-ig-vorher.png",
+      "auftraege/ergebnis/social-profil-politur-2026-09-23-ig-nachher.png",
+      "auftraege/ergebnis/social-profil-politur-2026-09-23-tt-vorher.png",
+      "auftraege/ergebnis/social-profil-politur-2026-09-23-tt-fehler.png",
+      "auftraege/ergebnis/social-profil-politur-2026-09-23-pin-vorher.png",
+      "auftraege/ergebnis/social-profil-politur-2026-09-23-pin-nachher.png"
+    ]
+  }
 }
