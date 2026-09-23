@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:36 UTC, Stand 2026-09-23 20:36 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-23 20:46 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **573**
-- Optionen mit englischen Werten (Kandidaten): 42
-- Optionen übersetzt: **3** · Werte übersetzt: **4**
+- Produkte gesehen: **649**
+- Optionen mit englischen Werten (Kandidaten): 40
+- Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 245
+- Werte mit unbekanntem Wort (unverändert): 249
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 1
 - übersprungen «kleidungsstueck-im-wert»: 1
@@ -72,13 +72,11 @@
 > Die Nummer unterscheidet die Pakete, sagt aber nicht, was drin ist. Das steht nur beim Lieferanten (Variantenbild/Preis) — umbenennen z. B. in «Set 1: Rasierer + 2 Köpfe».
 
 - 1 Sitzungen · `15449432555905` ems-bauch-und-muskel-trainer-b08b29 [Farbe]: Pink | Rot | Full and Arms | A Set1 | A Set2 | Yellow1 | Pink1 | Full and Pull out packaging
-- 1 Sitzungen · `15449428033921` lippenglanzstift-341696 [Farbe]: 1 Farbe | 2 Farben | 3 Farben | 4 Farben | 5 Farben | 6 Farben | 1 Farbe · 3 Stück | 1 Farbe · 5 Stück
-- 1 Sitzungen · `15450857931137` mikrostrom-gesichtsmassagegerat-mit-doppelroll-903488 [Farbe]: Pink-USB-Standard | Weiss-USB-Standard | Pink-USB-Box | Weiss-USB-Box | Pink Set 1-USB-Box | Weiss Set 1-USB-Box
 - 1 Sitzungen · `15449427280257` magnetische-led-wandlampe-mit-bewegungssensor-169776 [Farbe]: Ash 2pcs | Ash 4pcs | Walnut 2pcs | Walnut 4pcs | Set 1 | Set 2 | Set 3 | Set 4
 - 1 Sitzungen · `15450829914497` kabellose-2-in-1-glattburste-fur-schnelles-sty-599296 [Farbe]: LCD Schwarz Englisch | LCD Weiss Englisch | Set | LCD Blau Englisch | LCD unpredictable blue | LCD Taro-Violett | Set 1 | Set 2
 - 1 Sitzungen · `15450828898689` thermo-strumpfhose-mit-fleece-futter-065536 [Farbe]: Black skin with feet-80g spring and autumn style | Black skin with feet-80grams plus size | Black skin with feet-220g fleece and thickened | Black skin with feet-220grams plus size | Black skin with feet-300g fleece thickened | Black and translucent footstep-80g spring and autumn style | Black and translucent footstep-220g fleece and thickened | Black and translucent footstep-220grams plus size
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`skin` 61, `feet` 52, `light` 20, `220grams` 18, `spring` 13, `80grams` 12, `autumn` 10, `foot` 9, `shell` 8, `footstep` 8, `stepping` 8, `plush` 8, `baby1` 7, `baby2` 7, `translucent` 7, `case` 6, `alternative` 5, `gel` 5, `2black` 5, `2blue` 5, `2red` 5, `belt` 4, `blossom` 4, `color` 3, `alluvial` 3, `spot` 3, `full` 3, `cherry` 3, `ck` 3, `ash` 3, `walnut` 3, `unpredictable` 3, `stars` 3, `road` 3, `mountain` 3, `imitating` 2, `stone` 2, `antique` 2, `arms` 2, `plum` 2, `background` 2, `ice` 2, `3black` 2, `3blue` 2, `3red` 2, `skull` 2, `ghost` 2, `pumpkin` 2, `powder` 2, `2pcsblack` 2, `ribbon` 1, `tea` 1, `–` 1, `ocean` 1, `spotted` 1, `pull` 1, `out` 1, `sixbelly` 1, `modelfull` 1, `shaver` 1
+`skin` 61, `feet` 52, `light` 20, `220grams` 18, `spring` 13, `80grams` 12, `autumn` 10, `foot` 9, `shell` 8, `footstep` 8, `stepping` 8, `plush` 8, `baby1` 7, `baby2` 7, `translucent` 7, `case` 6, `alternative` 5, `gel` 5, `2black` 5, `2blue` 5, `2red` 5, `belt` 4, `blossom` 4, `color` 3, `alluvial` 3, `spot` 3, `full` 3, `cherry` 3, `ck` 3, `ash` 3, `walnut` 3, `unpredictable` 3, `stars` 3, `road` 3, `mountain` 3, `imitating` 2, `stone` 2, `antique` 2, `arms` 2, `plum` 2, `background` 2, `ice` 2, `3black` 2, `3blue` 2, `3red` 2, `skull` 2, `ghost` 2, `pumpkin` 2, `powder` 2, `2pcsblack` 2, `replenishment` 2, `ribbon` 1, `tea` 1, `–` 1, `ocean` 1, `spotted` 1, `pull` 1, `out` 1, `sixbelly` 1, `modelfull` 1
 
