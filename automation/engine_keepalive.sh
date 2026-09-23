@@ -449,6 +449,7 @@ for f in glob.glob("brain/vault/*/*.md"):
     if m and m.group(1)>vd: vd=m.group(1)
 try:
     d=(datetime.date.fromisoformat(jd)-datetime.date.fromisoformat(vd)).days
+    d=max(0,d)   # 23.09.: Vault-Notiz nach Mitternacht UTC zum Journal-Kapitel vom Vortag → Vault VOR dem Journal ist kein Rueckstand (stand als «unklar»)
 except Exception:
     d=-1
 print(f"VAULT: Journal {jd} · Vault {vd} · Rueckstand {d} T" + (" ⚠️ Lehren aufnehmen: python3 tools/lehre.py" if d>=2 else "") if d>=0 else "VAULT: unklar (Datum nicht lesbar)")
