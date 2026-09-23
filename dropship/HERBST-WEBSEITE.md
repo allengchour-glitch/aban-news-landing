@@ -23,7 +23,7 @@ Werkzeug: `automation/herbst_kuratieren.py` (neu), `automation/homepage_katalog_
 - Bedingungen: aktiv, im Onlineshop UND im Google-Kanal, ≥ 2 Bilder, ab CHF 19, Hauptbild ≥ 600 px, bei Lagerführung
   Bestand > 0, kein Sperr-Tag (`google_sperrliste.AUSSCHLUSS_TAGS` + Werbe-Sperren + Präfixe), keine heikle Warengruppe,
   kein Wirkversprechen, keine Lizenzfigur, keine Tier-/Kinderware, Netzgeräte nur mit USB/Akku.
-- **Vision-QA (Projektregel 5): 4 Kontaktbogen-Runden, 98 Bilder angesehen, 23 aussortiert** (englische/chinesische
+- **Vision-QA (Projektregel 5): 4 Kontaktbogen-Runden, 98 Bilder angesehen, 33 aussortiert** (31 per ID, 2 per neuer Regel) (englische/chinesische
   Bildtexte, «3PCS»-Overlay, Schaufensterpuppe, Sommerszene, Jeanskleid als «Rockjacke», Sport-Trinkflasche als
   «Isolierkanne», Räucherspiralen-Halter als «Kerzenhalter», Fuchsfell-Manschette). Sie stehen mit Grund in
   `AUSGESCHLOSSEN` und kommen nie wieder.
@@ -68,15 +68,17 @@ Werkzeug: `automation/herbst_kuratieren.py` (neu), `automation/homepage_katalog_
   (`herren-pullover`, 95 aktiv). «Strick & Pullover» heisst jetzt «Damen-Strick & Pullover» (zeigt auf die Damen-Kollektion).
 - Sonnenbrillen und Ventilatoren bleiben erreichbar (Schmuck & Uhren › Sonnenbrillen, Highlights › Ventilatoren & Kühlung).
 - Zählung rückgelesen: Einträge gesamt 151 → 151, Herbst 11 → 11, Top-Level 13 → 13, alle übrigen Zweige unverändert.
-  Alle drei neuen Ziele im Onlineshop veröffentlicht.
+  Alle drei neuen Ziele im Onlineshop veröffentlicht. Öffentlich (WebFetch): die Navigation zeigt genau die 11 neuen
+  Einträge in dieser Reihenfolge, keiner der drei Sommer-Einträge mehr.
 
 ## Offen / Vorschläge (nicht in diesem Paket)
 
 - Ankündigungsband (`sections/header-group.json`): Halloween-Text ohne Link → auf `/collections/halloween-2026` (196)
   verlinken; ein Herbst-Text mit Link auf `/collections/herbst-favoriten` wäre der zweite Einstieg.
 - Menü «Highlights › Ventilatoren & Kühlung» ist Sommerware.
-- `herbst_kuratieren.py` einmal täglich laufen lassen (räumt gedraftete/gesperrte Produkte ab, füllt bis zur Quote nach,
-  Nachrücker aber nur nach Kontaktbogen — siehe Kopf des Skripts). Nach dem 30.11. nimmt es den Tag überall weg.
+- `NUR_RAEUMEN=1 python3 automation/herbst_kuratieren.py` einmal täglich (räumt gedraftete/gesperrte Produkte ab, nimmt
+  NICHTS Neues auf — Nachrücker nur in betreuten Läufen nach Kontaktbogen, Lehre der Hype-Reihe vom 15.08.). Nach dem
+  30.11. nimmt derselbe Lauf den Tag überall weg (Saisonende greift vor NUR_RAEUMEN).
 
 ## Prüfbefehle
 

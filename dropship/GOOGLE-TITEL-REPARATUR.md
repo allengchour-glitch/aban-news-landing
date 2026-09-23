@@ -16,23 +16,106 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-23T18:47:14Z — SCHARF
+## Letzter Lauf 2026-09-23T19:01:11Z — DRY
 
 Gescannt 50010 aktive von 50010 (EXACT); Wächter-Stand 9 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| menstruationscup-fur-frauen-625600 | HYGIENE+POLICY | Typ Aufbewahrung & Organizer → Wellness & Gesundheit; Kategorie → hb-3-8-5; +google-policy-flag,google-policy-titel,intimpflege; −aufbewahrung,haushalt,organizer,wohnen | ok |
-| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Titel «BIDEN Herrenuhr ultraflach mit Kalender» → «Ultraflache Herrenuhr mit Kalender»; Beschreibung; SEO | ok; text-sperre-belegt |
+| used-look-jeans-mit-leicht-ausgestelltem-bein-621700 | USED-TEXT | Beschreibung | DRY |
+| erhohende-board-schuhe-im-used-look-605300 | USED-TEXT | Beschreibung | DRY |
+| ombre-t-shirt-mit-used-look-602800 | USED-TEXT | Beschreibung | DRY |
+| herren-hoodie-im-used-look-633500 | USED-TEXT | Beschreibung | DRY |
+| patchwork-wide-leg-jeans-im-used-look-612400 | USED-TEXT | Beschreibung | DRY |
+| rebellious-washed-distressed-short-sleeve-top-633300 | USED-TEXT | Beschreibung | DRY |
+| herren-jeans-im-used-look-636600 | USED-TEXT | Beschreibung | DRY |
+| used-look-patchwork-jeans-fur-herren-625300 | USED-TEXT | Beschreibung | DRY |
+| retro-straight-jeans-mit-used-look-628400 | USED-TEXT | Beschreibung | DRY |
+| slim-fit-used-look-jeans-fur-herren-616600 | USED-TEXT | Beschreibung | DRY |
+| heavyweight-kapuzenjacke-im-used-look-631300 | USED-TEXT | Beschreibung | DRY |
+| used-look-jeans-fur-herren-600800 | USED-TEXT | Beschreibung | DRY |
+| herren-langarmhemd-im-used-look-620200 | USED-TEXT | Beschreibung | DRY |
+| retro-ohrringe-im-used-look-mit-kettendetail-626900 | USED-TEXT | Beschreibung | DRY |
+| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Beschreibung | DRY |
+| twill-umhangetasche-im-used-look-676544 | USED-TEXT | Beschreibung | DRY |
 
 ## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)
 
-- 1-zoll-zapfpistole-fur-diesel-und-benzin-257024: Guns and Parts
-- baustein-luxuslimousine-auf-raedern-334528: Vehicles
 - eleganter-wollmantel-fur-damen-601200: Title under review
-- intelligenter-intimreiniger-fur-die-frau-723136: Inappropriate title
-- k68-signal-detektor-46ae1c: Hacking
-- laser-silber-rippband-75mm-50-yards-026496: Guns and Parts
-- spiral-pipe-atomizer-fur-trockene-krauter-467392: Illegal drugs
-- taktisches-outdoor-stativ-faltbar-ausziehbar-519234: Guns and Parts
-- zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: Inappropriate title, Title under review
+
+## Ledger gesamt
+
+44 Produkte mit rückgelesenen Änderungen; 16 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+
+Geschriebene Titel (rückgelesen):
+
+- 2026-09-23 EINZEL: «BIDEN Herrenuhr ultraflach mit Kalender» → «Ultraflache Herrenuhr mit Kalender»
+- 2026-09-23 USED: «Used-Look Jeans mit leicht ausgestelltem Bein» → «Vintage-Look Jeans mit leicht ausgestelltem Bein»
+- 2026-09-23 USED: «Herren Jeansjacke im Used-Look» → «Herren Jeansjacke im Vintage-Look»
+- 2026-09-23 USED: «Erhöhende Board-Schuhe im Used-Look» → «Erhöhende Board-Schuhe im Vintage-Look»
+- 2026-09-23 EINZEL: «Strandtuch-Kleid «New Style»» → «Strandtuch-Kleid – Badetuch zum Anziehen»
+- 2026-09-23 USED: «Ombre T-Shirt mit Used-Look» → «Ombre T-Shirt mit Vintage-Look»
+- 2026-09-23 EINZEL: «Schockresistenter Schutz» → «Stossfeste iPhone-Hülle aus Silikon, transparent»
+- 2026-09-23 USED: «Herren Hoodie im Used-Look» → «Herren Hoodie im Vintage-Look»
+- 2026-09-23 USED: «Used-Look-Jeans, gewaschen» → «Vintage-Look-Jeans, gewaschen»
+- 2026-09-23 USED: «Patchwork Wide-leg Jeans im Used-Look» → «Patchwork Wide-leg Jeans im Vintage-Look»
+- 2026-09-23 USED: «Hoodie im Used-Look» → «Hoodie im Vintage-Look»
+- 2026-09-23 USED: «Loose-Fit Wide-Leg Hose im Used-Look» → «Loose-Fit Wide-Leg Hose im Vintage-Look»
+- 2026-09-23 USED: «Kurzarm-Top im Used-Look, gewaschen» → «Kurzarm-Top im Vintage-Look, gewaschen»
+- 2026-09-23 USED: «Herren Jeans im Used-Look» → «Herren Jeans im Vintage-Look»
+- 2026-09-23 USED: «Used-Look Patchwork Jeans für Herren» → «Vintage-Look Patchwork Jeans für Herren»
+- 2026-09-23 USED: «Zip-Hoodie im Used-Look mit St.-Michael-Print» → «Zip-Hoodie im Vintage-Look mit St.-Michael-Print»
+- 2026-09-23 USED: «Retro Straight Jeans mit Used-Look» → «Retro Straight Jeans mit Vintage-Look»
+- 2026-09-23 USED: «Slim Fit Used-Look Jeans für Herren» → «Slim Fit Vintage-Look Jeans für Herren»
+- 2026-09-23 USED: «Heavyweight Kapuzenjacke im Used-Look» → «Heavyweight Kapuzenjacke im Vintage-Look»
+- 2026-09-23 USED: «Used-Look Jeans für Herren» → «Vintage-Look Jeans für Herren»
+- 2026-09-23 EINZEL: «Eisige Meeresoberfläche» → «Press-on-Nägel «Eisige Meeresoberfläche», 10 Stück»
+- 2026-09-23 EINZEL: «Laser-Silber-Rippband, 75mm, 50 Yards» → «Ripsband in Silber mit Glanzeffekt, 75 mm, 50 Yards»
+- 2026-09-23 USED: «Herren Langarmhemd im Used-Look» → «Herren Langarmhemd im Vintage-Look»
+- 2026-09-23 EINZEL: «Luxus-Limousine · Baustein-Auto auf Rädern» → «Baustein-Set Luxus-Limousine – Spielzeugauto zum Bauen»
+- 2026-09-23 USED: «Retro-Ohrringe im Used-Look mit Kettendetail» → «Retro-Ohrringe im Vintage-Look mit Kettendetail»
+- 2026-09-23 EINZEL: «1-Zoll-Zapfpistole für Diesel und Benzin» → «1-Zoll-Zapfventil für Diesel und Benzin»
+- 2026-09-23 EINZEL: «Biden Herren-Quarzuhr, hohl, leger» → «Legere Herren-Quarzuhr mit Kalender»
+- 2026-09-23 USED: «Twill Umhängetasche im Used-Look» → «Twill Umhängetasche im Vintage-Look»
+
+Typ-/Tag-Korrekturen (rückgelesen):
+
+- aschenbecher-mit-deckel-602700: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- auberginen-zigarrenanzunder-mit-doppelflamme-947328: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- baustein-luxuslimousine-auf-raedern-334528: typ Spielzeug
+- biden-herren-quarzuhr-hohl-leger-052544: typ Uhren; tags_dazu uhren
+- elektronischer-auto-aschenbecher-mit-ladefunkt-629500: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- elektronisches-zigarren-hygrometer-619800: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- intelligenter-intimreiniger-fur-die-frau-723136: typ Wellness & Gesundheit; tags_dazu google-policy-flag,google-policy-titel,intimpflege
+- k68-signal-detektor-46ae1c: tags_dazu google-policy-flag,google-policy-hacking
+- keramik-aschenbecher-mit-spiral-muster-629100: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- kompakter-zigarrenkasten-627900: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- menstruationscup-fur-frauen-625600: typ Wellness & Gesundheit; tags_dazu google-policy-flag,google-policy-titel,intimpflege
+- multifunktionaler-aschenbecher-mit-luftreinige-617900: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- portabler-luftreiniger-aschenbecher-437952: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- runder-aschenbecher-aus-keramik-2cef8b: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
+- schockresistenter-schutz-625600: typ Handy-Zubehör
+- smarter-aschenbecher-mit-luftreiniger-fur-auto-042304: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
+- spiral-pipe-atomizer-fur-trockene-krauter-467392: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
+- strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
+- taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
+- zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
+
+Noch offene Beschreibungen:
+
+- used-look-jeans-mit-leicht-ausgestelltem-bein-621700: USED
+- erhohende-board-schuhe-im-used-look-605300: USED
+- ombre-t-shirt-mit-used-look-602800: USED
+- herren-hoodie-im-used-look-633500: USED
+- patchwork-wide-leg-jeans-im-used-look-612400: USED
+- rebellious-washed-distressed-short-sleeve-top-633300: USED
+- herren-jeans-im-used-look-636600: USED
+- used-look-patchwork-jeans-fur-herren-625300: USED
+- retro-straight-jeans-mit-used-look-628400: USED
+- slim-fit-used-look-jeans-fur-herren-616600: USED
+- heavyweight-kapuzenjacke-im-used-look-631300: USED
+- used-look-jeans-fur-herren-600800: USED
+- herren-langarmhemd-im-used-look-620200: USED
+- retro-ohrringe-im-used-look-mit-kettendetail-626900: USED
+- biden-herrenuhr-ultraflach-mit-kalender-611776: EINZEL
+- twill-umhangetasche-im-used-look-676544: USED

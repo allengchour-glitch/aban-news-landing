@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:53 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:13 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **18'634**
-- Optionen mit englischen Werten (Kandidaten): 2'696
-- Optionen übersetzt: **1'450** · Werte übersetzt: **9'267**
+- Produkte gesehen: **27'009**
+- Optionen mit englischen Werten (Kandidaten): 3'524
+- Optionen übersetzt: **1'904** · Werte übersetzt: **12'488**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 9'124
+- Werte mit unbekanntem Wort (unverändert): 12'050
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 43
-- übersprungen «kollision-nach-uebersetzung»: 31
+- übersprungen «kleidungsstueck-im-wert»: 55
+- übersprungen «kollision-nach-uebersetzung»: 35
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -38,6 +38,10 @@
 - `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 - `15453570728321` [Farbe] **Japanischer Segler-Anzug** — kleid, rock · Titel nennt Set: Short Sleeves Bow Tie | Long Sleeves Bow Tie | Short Sleeves Skirt Bow Tie | Long Sleeve With Dress Bow Tie | Skirt
 - `15459786752385` [Farbe] **Haltbare Einheitsjacke mit mehreren Taschen** — hose, oberteil: Black Suspender Pants | Dark Gray Suspender Pants | Dark Gray Split Suit | Dark Gray Trousers | Dark Gray Single Blouse
+- `15489629618561` [Ausführung] **Herren Kapuzen-Mantel, dick wattiert** — weste: Conventional | Hooded | Vest
+- `15491406987649` [Farbe] **Hoodie und Hose im Set** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers
+- `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
+- `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -74,6 +78,10 @@
 - `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 - `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
+- `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: Black-US9 → Schwarz-US9; Black → Schwarz; White-US9 → Weiss-US9; White → Weiss
+- `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
+- `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
+- `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -132,5 +140,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`light` 357, `inner` 325, `color` 241, `degrees` 159, `surface` 108, `shell` 103, `skin` 98, `core` 92, `powder` 91, `three` 85, `to` 74, `high` 73, `case` 71, `rope` 69, `no` 63, `feet` 62, `bag` 62, `mother` 61, `belt` 60, `dual` 60, `dark` 59, `size` 59, `net` 57, `electric` 54, `code` 54, `of` 53, `chain` 50, `lens` 50, `line` 49, `bear` 49, `hat` 47, `about` 46, `for` 45, `clock` 45, `buckle` 44, `acupuncture` 43, `four` 42, `perforated` 42, `face` 41, `little` 41, `button` 41, `years` 40, `camera` 40, `tea` 39, `star` 39, `carbon` 39, `cat` 39, `opp` 39, `spring` 38, `ice` 38, `father` 38, `cherry` 37, `generation` 37, `autumn` 37, `suit` 37, `handle` 37, `cup` 37, `adjustable` 37, `magnetic` 36, `old` 36
+`light` 435, `inner` 369, `color` 309, `shell` 162, `degrees` 159, `core` 137, `surface` 124, `powder` 111, `no` 110, `diamond` 108, `high` 101, `skin` 98, `three` 97, `to` 96, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `belt` 79, `four` 78, `rope` 70, `dark` 69, `base` 69, `dual` 69, `petal` 68, `chain` 67, `half` 63, `feet` 62, `size` 62, `mother` 61, `tea` 60, `of` 60, `code` 59, `buckle` 58, `net` 57, `plush` 56, `one` 55, `electric` 55, `little` 54, `strap` 53, `face` 52, `line` 52, `person` 51, `fold` 51, `lens` 50, `bear` 49, `night` 48, `ice` 48, `suit` 48, `space` 48, `hat` 47, `cloud` 47, `star` 46, `cat` 46, `sheet` 46, `for` 46, `about` 46, `lamb` 46, `warped` 46
 

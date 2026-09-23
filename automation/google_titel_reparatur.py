@@ -297,6 +297,16 @@ def zuletzt_umbenannt(ledger):
     return out
 
 
+def offene_texte(ledger):
+    """Produkt-ID → Regeln, deren Beschreibungs-Teil noch offen ist (Sperre belegt/Fehler). Der Titel ist dann schon
+    repariert, die Titel-Regel trifft nicht mehr — ohne dieses Gedächtnis bliebe «Used-Look» im Text für immer stehen."""
+    letzte = {}
+    for z in ledger:
+        if len(z) >= 9 and z[5] == "beschreibung" and z[1] in ("SCHREIB", "UEBERSPRUNGEN"):
+            letzte[z[2]] = (z[8] == "ok", {r.replace("-TEXT", "") for r in z[4].split("+")})
+    return {pid: regeln for pid, (ok, regeln) in letzte.items() if not ok}
+
+
 def ids_pruefen(ids):
     ids = sorted(ids)
     if not ids:
@@ -348,12 +358,16 @@ def details(pid):
 
 
 # ─────────────────────────────── Planen ───────────────────────────────
-def planen(p, live_klassen, stand_klassen, umbenannt):
+def planen(p, live_klassen, stand_klassen, umbenannt, offen_text=frozenset()):
     """Liefert den Änderungsplan für ein Produkt (dict) oder None. Liest nur, schreibt nichts."""
     num = p["id"].rsplit("/", 1)[-1]
     titel = p["title"]
     tags = {t.lower() for t in p["tags"]}
     plan = dict(titel=None, typ=None, kat=None, dazu=set(), weg=set(), text=[], text_fn=[], regeln=[], notiz=[])
+    # Beschreibungs-Nachholer aus dem Ledger (Titel schon repariert, Text war gesperrt)
+    for regel, fn in (("USED", "used"), ("PERSON", "person")):
+        if regel in offen_text:
+            plan["text_fn"].append(fn); plan["regeln"].append(regel + "-TEXT")
     e = EINZEL.get(num)
     if e:
         if e.get("alt") and titel == e["alt"]:
@@ -371,12 +385,16 @@ def planen(p, live_klassen, stand_klassen, umbenannt):
     if PERSON.search(t):
         neu = titel_person(t)
         if neu:
-            plan["titel"] = neu; plan["regeln"].append("PERSON"); plan["text_fn"].append("person")
+            plan["titel"] = neu; plan["regeln"].append("PERSON")
+            if "person" not in plan["text_fn"]:
+                plan["text_fn"].append("person")
         else:
             plan["notiz"].append("PERSON: Name steht nicht vor einem Wort — von Hand prüfen")
     t = plan["titel"] or titel
     if USED.search(t):
-        plan["titel"] = USED.sub("Vintage-Look", t); plan["regeln"].append("USED"); plan["text_fn"].append("used")
+        plan["titel"] = USED.sub("Vintage-Look", t); plan["regeln"].append("USED")
+        if "used" not in plan["text_fn"]:
+            plan["text_fn"].append("used")
     t = plan["titel"] or titel
     if PROMO.search(t):
         plan["titel"] = PROMO.sub("", t).strip(); plan["regeln"].append("PROMO")
@@ -459,7 +477,14 @@ def text_neu(html, plan):
 
 
 # ─────────────────────────────── Schreiben ───────────────────────────────
+_TEXTSPERRE_BELEGT = {"ja": False}
+
+
 def textsperre_holen(warte=60):
+    """Nicht blockierend probieren (Lehre 22.09.: Warten ist in einem stündlich sterbenden Container ein Nie).
+    War die Sperre in diesem Lauf schon einmal belegt, nur noch kurz probieren — sonst kosten 20 Texte 20 Minuten."""
+    if _TEXTSPERRE_BELEGT["ja"]:
+        warte = 2
     fd = open(TEXTSPERRE, "w")
     t0 = time.time()
     while True:
@@ -468,6 +493,7 @@ def textsperre_holen(warte=60):
             return fd
         except BlockingIOError:
             if time.time() - t0 > warte:
+                _TEXTSPERRE_BELEGT["ja"] = True
                 fd.close(); return None
             time.sleep(1)
 
@@ -641,6 +667,26 @@ def bericht(modus, gescannt, soll, stand_alter, plaene, zeilen, nachmessung, liv
                 rest.append(f"- {h}: {', '.join(sorted(b))}")
         if rest:
             f.write("\n## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)\n\n" + "\n".join(rest) + "\n")
+        alle = ledger_lesen()
+        ok_prod = {z[3] for z in alle if len(z) >= 9 and z[1] == "SCHREIB" and z[8] == "ok"}
+        offen = offene_texte(alle)
+        f.write(f"\n## Ledger gesamt\n\n{len(ok_prod)} Produkte mit rückgelesenen Änderungen; "
+                f"{len(offen)} Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).\n")
+        titel = [z for z in alle if len(z) >= 9 and z[1] == "SCHREIB" and z[5] == "titel" and z[8] == "ok"]
+        if titel:
+            f.write("\nGeschriebene Titel (rückgelesen):\n\n" + "\n".join(
+                f"- {z[0][:10]} {z[4]}: «{z[6]}» → «{z[7]}»" for z in titel) + "\n")
+        andere = {}
+        for z in alle:
+            if len(z) >= 9 and z[1] == "SCHREIB" and z[8] == "ok" and z[5] in ("tags_dazu", "typ"):
+                andere.setdefault(z[3], []).append(f"{z[5]} {z[7]}")
+        if andere:
+            f.write("\nTyp-/Tag-Korrekturen (rückgelesen):\n\n" + "\n".join(
+                f"- {h}: {'; '.join(v)}" for h, v in sorted(andere.items())) + "\n")
+        if offen:
+            f.write("\nNoch offene Beschreibungen:\n\n")
+            hs = {z[2]: z[3] for z in alle if len(z) >= 4}
+            f.write("\n".join(f"- {hs.get(pid, pid)}: {'+'.join(sorted(r))}" for pid, r in sorted(offen.items())) + "\n")
         if nachmessung:
             f.write("\n## Nachmessung (≥ %d h nach dem Schreiben, Google live)\n\n" % NACHMESS_H)
             f.write("\n".join(f"- {z[3]}: {z[7]}" for z in nachmessung) + "\n")
@@ -656,6 +702,7 @@ def main():
     kat_namen = ids_pruefen(alle_kat)
     ledger = ledger_lesen()
     umbenannt = zuletzt_umbenannt(ledger)
+    offen = offene_texte(ledger)
     produkte, soll = vollscan()
     if soll["precision"] == "EXACT" and len(produkte) < soll["count"] * 0.98:
         raise SystemExit(f"ABBRUCH: Vollscan unvollständig ({len(produkte)} von {soll['count']})")
@@ -675,7 +722,8 @@ def main():
         num = p["id"].rsplit("/", 1)[-1]
         if NUR and num not in NUR and p["handle"] not in NUR:
             continue
-        plan = planen(p, live.get(p["handle"], set()), stand.get(p["handle"], set()), umbenannt)
+        plan = planen(p, live.get(p["handle"], set()), stand.get(p["handle"], set()), umbenannt,
+                      offen.get(p["id"], frozenset()))
         if not plan:
             continue
         voll = details(p["id"])

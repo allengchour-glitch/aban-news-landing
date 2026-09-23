@@ -7,10 +7,10 @@ Block «kollektionen-menue». Alle Zahlen: Admin-API, `productsCount(limit:null)
 
 | Menüpunkt / Kollektion | aktiv vorher | aktiv nachher | Fremdware vorher → nachher |
 |---|---:|---:|---|
-| Wohnen & Garten › Beleuchtung (`sub-beleuchtung`, TAG beleuchtung) | 31 | __BEL__ | 9 → 0 |
-| Damen › Accessoires: Schals, Mützen & Gürtel (`accessoires`, TAG accessoires) | 34 | __ACC__ | 0 Schals/Gürtel/Socken → __ACC_NEU__ neu |
-| Beauty › Parfum & Düfte (`parfum-duefte`) | 31 | 34 | 4 aktive Nicht-Düfte → 0 |
-| Geschenke › Geschenke für Ihn (`geschenke-fuer-ihn`, TAG herren UND geschenk) | 14 | __IHN__ | Menüpunkt fehlte → __MENU__ |
+| Wohnen & Garten › Beleuchtung (`sub-beleuchtung`, TAG beleuchtung) | 31 | 189 | 9 → 0 |
+| Damen › Accessoires: Schals, Mützen & Gürtel (`accessoires`, TAG accessoires) | 34 | 219 | 0 Schals/Gürtel/Socken → 187 neu, −1 Handyhalter |
+| Beauty › Parfum & Düfte (`parfum-duefte`) | 31 | 34 | 4 aktive Nicht-Düfte → 0 (+7 echte Düfte) |
+| Geschenke › Geschenke für Ihn (`geschenke-fuer-ihn`, TAG herren UND geschenk) | 14 | 823 | Menüpunkt fehlte → drin (151 → 152 Einträge) |
 
 ## Befund 2 — Beleuchtung
 
@@ -30,7 +30,8 @@ Richtungen): `node automation/cat_tags.mjs --test` → OK.
 **Bestand** (`automation/beleuchtung_tags_fix.py`, zwei Läufe): +168 echte Lampen, −39 Fremdware (9 aktiv:
 Gamepad, Hai-T-Shirt, Rundumleuchte, Kindermütze, Aroma-Diffuser, Wellness-Bundle, Duft-Teelichter,
 aufblasbare Partydeko, Glitzer-Kronleuchter-Partyset; 30 Entwürfe: Monitor, Epilierer, Taschenlampen,
-Camping-Laternen, Diffuser …). Alle Schreibvorgänge zurückgelesen (Lauf 2: 12/12). WebFetch luxestyle.ch/collections/sub-beleuchtung: **185 Artikel**, Platz 1–20 nur Lampen.
+Camping-Laternen, Diffuser …). Alle Schreibvorgänge zurückgelesen (Lauf 2: 12/12). WebFetch luxestyle.ch/collections/sub-beleuchtung nach Lauf 1: **185 Artikel**, Platz 1–20 nur Lampen;
+nach Lauf 2 API: **189 aktiv, 0 Nicht-Beleuchtung** (alle 189 Titel gegen `istBeleuchtung` geprüft).
 
 **Zwei teure Lehren aus dem ersten Lauf:**
 1. **`tagsRemove` ist gross/klein-GENAU, Regeln und Suche sind gross/klein-BLIND.** Sechs Fremdprodukte trugen
@@ -49,7 +50,8 @@ Schals/Tücher (~67), Mützen (16), Damen-Gürtel (48), Socken/Strümpfe (16), H
 geschrieben, 187/187 zurückgelesen. Ausgeschlossen: Kostüme, Kinder, Herren,
 Sport-/Heiz-/Massage-/Shapewear-Gürtel, Box-/Arbeits-/Spülhandschuhe, Socken-Schuhe, Uhr-/Akku-/Lautsprecher-Gürtel.
 Entfernt: `accessoires` am Panda-Handyhalter. **POD («Selbst gestalten»: Sticker, Bügeltransfer, iPhone-Hülle)
-bewusst nicht angefasst** (Regel 4).
+bewusst nicht angefasst** (Regel 4) — sie stehen ohnehin nicht in der aktiven Kollektionsliste.
+WebFetch luxestyle.ch/collections/accessoires: **219 Artikel**, Platz 1–12 Schals, Gürtel, Mützen.
 
 **Kompositum-Fallen, die der Trockenlauf gefangen hat** (vor dem Schreiben behoben):
 - `sticker` traf «Baseball-Cap … **Sticker**ei» → 2 Caps wären rausgeflogen → `\bsticker\b`.
@@ -80,11 +82,29 @@ Geschenkset (1) — alle ab CHF 19. Ausgeschlossen: Klingen/Rasierhobel/Messer, 
 Pheromon-«Seduce Him», Uhrenarmbänder 16–26 mm, Spliss-Trimmer.
 Leck-Schutz: `herren` wird nicht gesetzt, wenn der Titel Shirt/Hemd/Hose enthält oder das Produkt `schuhe`
 trägt (Titel-CONTAINS-Regeln von herren-shirts/-hemden/-hosen, herren-schuhe).
-__IHN_DETAIL__
+809 Produkte geschrieben, 809/809 zurückgelesen; Kollektion **14 → 823 aktiv**.
+Nebenwirkungen gemessen (aktiv vorher → nachher): herren-shirts 642 → 642, herren-hemden 812 → 812,
+herren-hosen 173 → 173, herren-schuhe 1'640 → 1'640 (Leck-Schutz hält); premium-geschenke 4'126 → 4'278 und
+geschenke-unter-30 3'031 → 3'095 (gewollt: dieselben Geschenke). **Ein Leck: herren-sets-sub («Herren-Sets»,
+Kleider-Sets, TAG herren UND Titel enthält «Set») 18 → 38** — 20 Uhren-/Bart-/Geschenksets. Vorgeschlagene
+Regelergänzung (konjunktiv, zusätzlich zu den drei bestehenden): TITLE NOT_CONTAINS «Uhr», «uhr», «Geschenkset»,
+«Bartpflege», «Haarschneider», «Ring-Set». Alte Regel: TAG=herren · TITLE CONTAINS Set · TITLE NOT_CONTAINS
+aufgesetzt. **Nicht ausgeführt** — die Sitzungssperre verweigerte die Änderung an einer Kollektion ausserhalb
+dieses Blocks → Hauptagent.
+Hinweis Sortierung: die Kollektion steht auf CREATED_DESC, vorne stehen deshalb 20 Uhren in Folge — BEST_SELLING
+oder eine gemischte Handauswahl oben wäre abwechslungsreicher (nicht geändert).
 
 ## Menü «🎁 Geschenke & Mehr»
 
-__MENU_DETAIL__
+«Geschenke für Ihn» → `/collections/geschenke-fuer-ihn` direkt hinter «Geschenke für Sie» eingefügt
+(`MODUS=menue python3 automation/kollektion_accessoires_fix.py`). Ablauf: Menü LIVE gelesen (151 Einträge,
+3 Ebenen), Sicherung `dropship/menu_backup_2026-09-23_1853_vor_geschenke_ihn.json`, `menuUpdate` mit ALLEN
+Einträgen samt IDs, zurückgelesen: **152 Einträge, 0 IDs verloren, 0 Titel/Links geändert**, neuer Eintrag
+`gid://shopify/MenuItem/1471765807495`. Reihenfolge jetzt: Mitbringsel · Preis-Hits · bis 30 · unter 50 ·
+unter 100 · für Kinder · für Sie · **für Ihn** · Sets & Bundles · Premium ab 80 · Kiffer-Zubehör · Selbst
+gestalten · Ratgeber · Alle Kategorien. WebFetch bestätigt den Eintrag im öffentlichen Menü.
+Der Menü-Modus weigert sich, solange die Kollektion unter 40 aktiven Artikeln liegt, und tut nichts, wenn der
+Punkt schon drin steht.
 
 ## Täglich (Tagesliste für fixer_keepalive.sh — nicht selbst eingetragen)
 - `beleuchtung_tags_fix` — hält «Beleuchtung» in beiden Richtungen sauber (MAX 400, Kanarien-Pflicht).
@@ -103,3 +123,13 @@ Beide enden mit «FERTIG …» (Konvention des Aufsehers), bei Fehlern ohne.
   Plüschmützen, Kochmützen aus Papier, «Mantel mit Schalkragen», «Huhn mit Schal» — eigener Befund.
 - Produkttyp falsch: Fortura-Parfums als «Kostüme & Verkleidung», LED-Streifen als «Basteln & DIY»,
   Pendelleuchte als «Sport & Outdoor».
+
+## Prüfbefehle (nur lesend)
+- `node automation/cat_tags.mjs --test` → «OK — alle Kanarienvögel richtig»
+- `DRY=1 python3 automation/beleuchtung_tags_fix.py` → Plan nahe 0 (18:55 UTC: +2 = Entwürfe aus altem Export, −0)
+- `DRY=1 python3 automation/kollektion_accessoires_fix.py` → zeigt nur noch Export-Altlasten; schreibt nichts
+- `productsCount(query:"status:active AND collection_id:<id>", limit:null)` für sub-beleuchtung, accessoires,
+  parfum-duefte, geschenke-fuer-ihn, herren-sets-sub
+- Sicherungen der alten Tags: `/tmp/beleuchtung_tags_sicherung_20260923_1815.json`, `…_1830.json`,
+  `/tmp/accessoires_tags_sicherung_20260923_1823.json`, `/tmp/parfum_tags_sicherung_20260923_1828.json`,
+  `/tmp/ihn_tags_sicherung_20260923_1828.json` (je id/titel/tags/add/remove — für eine Rücknahme)

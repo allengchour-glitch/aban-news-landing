@@ -26,16 +26,53 @@ export BRANCH=claude/luxestyle-status-tztnn1
 # der Abbruch setzte drei Ledger auf den Commit-Stand zurueck (119 Zeilen lagen nur noch im Stash).
 # Jede git-Folge laeuft deshalb unter flock /tmp/git_repo.lock; ein verwaister Rebase-Zustand wird nicht
 # ueberfahren, sondern gemeldet (der Motor raeumt ihn selbst mit --quit).
+# ⚠️ KONFLIKT-MARKER (23.09.2026, gemessen). `git merge` scheiterte an einem Konflikt in einer Zustandsdatei
+# (dropship/_kategorie_stand.json — Server-Waechter und Cloud schreiben sie beide). Der Merge blieb OFFEN; der
+# NAECHSTE Durchlauf machte `git add -A dropship/` + `commit` und schloss ihn MIT den Markern ab (3 Commits am
+# 23.09. 18:12–18:32, Autor luxe-waechter). Die Ampel las die Datei nicht mehr («KATEGORIE: unklar»).
+# Jetzt: (1) ein offener Merge wird zuerst aufgeloest, nie blind committet; (2) Ledger (.txt/.tsv/.jsonl) werden
+# vereinigt, Zustandsdateien (Cursor, .json, .md, .csv) behalten die eigene Fassung, alles ausserhalb dropship/
+# bricht den Merge ab; (3) vor jedem Push: kein Marker in dropship/, sonst kein Push.
+# Ein Durchlauf ist `bash autocommit.sh --einmal` — die Schleife liest das Skript also bei JEDEM Durchlauf neu
+# (auch der Server-Waechter bekommt Reparaturen ohne Neustart).
+if [ "${1:-}" = "--einmal" ]; then
+  aufloesen() {
+    local f b o t
+    for f in $(git diff --name-only --diff-filter=U); do
+      case "$f" in
+        dropship/*cursor*|dropship/*.json|dropship/*.md|dropship/*.csv|dropship/*/*.json)
+          git checkout --ours -- "$f" 2>/dev/null || git checkout --theirs -- "$f" ;;
+        dropship/*.txt|dropship/*.tsv|dropship/*.jsonl|dropship/*/*.txt)
+          b=$(mktemp); o=$(mktemp); t=$(mktemp)
+          git show ":1:$f" > "$b" 2>/dev/null || : > "$b"
+          git show ":2:$f" > "$o" 2>/dev/null || : > "$o"
+          git show ":3:$f" > "$t" 2>/dev/null || : > "$t"
+          git merge-file --union "$o" "$b" "$t"; cp "$o" "$f"; rm -f "$b" "$o" "$t" ;;
+        *)
+          echo "$(date -u +%H:%M) Konflikt ausserhalb der Ledger ($f) — Merge abgebrochen"; git merge --abort; return 1 ;;
+      esac
+      git add -- "$f"
+    done
+    git commit -q --no-edit 2>/dev/null
+  }
+  marker() { git grep -l -E "^(<<<<<<< |>>>>>>> )" HEAD -- dropship/ 2>/dev/null | head -5; }
+  if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then echo "$(date -u +%H:%M) Rebase-Zustand vorhanden — Committer wartet"; exit 0; fi
+  [ -f .git/index.lock ] && [ -z "$(fuser .git/index.lock 2>/dev/null)" ] && rm -f .git/index.lock
+  if [ -f .git/MERGE_HEAD ]; then aufloesen || exit 0; fi
+  git add -A dropship/ 2>/dev/null
+  if ! git diff --cached --quiet 2>/dev/null; then
+    git commit -q -m "CJ-Ledger auto [skip ci]" 2>/dev/null
+    git fetch -q origin "$BRANCH" 2>/dev/null
+    if ! git merge -q "origin/$BRANCH" 2>/dev/null && [ -f .git/MERGE_HEAD ]; then aufloesen || exit 0; fi
+    M=$(marker)
+    if [ -n "$M" ]; then echo "$(date -u +%H:%M) ⛔ Konflikt-Marker in: $M — KEIN Push"; exit 0; fi
+    timeout 40 git push origin "$BRANCH" 2>/dev/null
+  fi
+  exit 0
+fi
+
+SELBST="$(readlink -f "$0")"
 while true; do
-  flock -w 120 /tmp/git_repo.lock bash -c '
-    if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then echo "$(date -u +%H:%M) Rebase-Zustand vorhanden — Committer wartet"; exit 0; fi
-    [ -f .git/index.lock ] && [ -z "$(fuser .git/index.lock 2>/dev/null)" ] && rm -f .git/index.lock
-    git add -A dropship/ 2>/dev/null
-    if ! git diff --cached --quiet 2>/dev/null; then
-      git commit -q -m "CJ-Ledger auto [skip ci]" 2>/dev/null
-      git fetch -q origin "$BRANCH" 2>/dev/null
-      git merge -q "origin/$BRANCH" 2>/dev/null
-      timeout 40 git push origin "$BRANCH" 2>/dev/null
-    fi' || echo "$(date -u +%H:%M) Repo-Sperre nicht bekommen"
+  flock -w 120 /tmp/git_repo.lock bash "$SELBST" --einmal || echo "$(date -u +%H:%M) Repo-Sperre nicht bekommen"
   sleep 300
 done

@@ -1,57 +1,300 @@
 {
-  "stand": "2026-09-23T17:16:22.275Z",
-  "posts": 40,
-  "median_score": 17,
-  "hooks": {
-    "Kristall-Set 3-teilig · CHF 29.90": 0.76,
-    "Alltag, aber glänzender": 0.49,
-    "Verwöhne deine Haut mit dem Jade Roller Premium – für einen ": 0.71,
-    "EMS Mikrostrom Massagegerät · CHF 22.90": 0.29,
-    "Endlich Ruhe beim Gassi?": 13.88,
-    "Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für nat": 0.41,
-    "Verwandle dein Zuhause in eine pure Wohlfühloase mit unserem": 0.35,
-    "Augenbrauen in einer Minute: Schablone anlegen, Stempel drüc": 0.26,
-    "Von allem etwas – 8 Lieblinge aus 8 Welten \udf0d Wisch dich durc": 1.24,
-    "Dein Sound für jedes Abenteuer – solarbetrieben, wasserdicht": 1.18,
-    "Kerzenlicht-Aromadiffuser  Jetzt bei LuxeStyle — CHF 14.90. ": 1.22,
-    "Lueg mau das aa \ude0d Statement-Ohrringe Onyx": 1.47,
-    "Hesch das scho gseh?  Blazer Roma": 1.12,
-    "Luftreiniger mit Feuchtigkeitsspender  Jetzt bei LuxeStyle —": 4.92,
-    "Für di oder zum Verschänke? \udf81 Sonnenbrille Riviera": 1.12,
-    "Dein stylisher Sommer-Begleiter: Die vegane Crossbody-Bag mi": 1.29,
-    "Gepflegter Bart in Perfektion – mit Öl, Balsam, Bürste und S": 1.47,
-    "Sonne, See und ganz viel Platz – dein XL Strandtuch aus Bio-": 0.94,
-    "Stilvoll verreisen mit dem Travel-Set Premium – Reisepass-Hü": 0.71,
-    "Drei traumhafte Ohrring-Paare, hypoallergen und sanft zu dei": 1.24,
-    "Ruhe auf Knopfdruck: Diese Bluetooth-Kopfhörer mit Active No": 1.18,
-    "Dein Fitness-Upgrade ist da: AMOLED-Display, über 100 Sportm": 1.06,
-    "Verwöhnzeit für dich: Die Selfcare-Box mit Jade Roller, Seid": 1.47,
-    "Genau das hat mir gefehlt \ude4c Moissanite-Herzkette Coeur": 1.12,
-    "Zeitlos elegant und hautfreundlich – dieses Edelstahl-Armban": 0.71,
-    "Dein stylishes XL-Portemonnaie aus Echtleder mit 12 Kartenfä": 1.06,
-    "Maritimer Style für echte Männer – dieses Lederarmband mit E": 1.06,
-    "Schlank, sicher und richtig edel: Unser Unisex Slim Wallet a": 0.88,
-    "Verwandle das Kinderzimmer in einen magischen Sternenhimmel ": 0.88,
-    "Dein Ganzkörper-Workout, wann und wo du willst \udcaa Fünf Widers": 0.88,
-    "Zeitlos elegant am Handgelenk – Saphirglas, Edelstahl und 50": 0.94,
-    "Essenszeit ohne Chaos – diese weichen Silikon-Lätzchen fange": 0.41,
-    "Wimpernlift-Kit  Jetzt bei LuxeStyle — CHF 24.90. Blitzversa": 2.21,
-    "Vintage-Look trifft modernen Schutz \ude0e Polarisierte Gläser mi": 1,
-    "Stilvoll schlank, maximal sicher – unser Echtleder-Wallet mi": 0.76,
-    "Sanftes Licht für müde Augen – diese dimmbare LED-Lampe mit ": 0.35,
-    "Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend  Je": 2.26,
-    "Statement am Handgelenk  Cuban-Link-Armband, Edelstahl & was": 0.71,
-    "Für ihn: maritimer Style 🤎 Leder-Armband Anker mit Edelstah": 0.47,
-    "Zarte Eleganz fürs Handgelenk  Damenuhr Petite mit Perlmutt-": 0.88
+  "stand": "2026-09-23T19:08:59.399Z",
+  "methode": "Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+5)/(Median+5), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + 3)) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ 3. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter 24 h zählen nicht.",
+  "fenster_tage": 90,
+  "k_glaettung": 3,
+  "min_n": 3,
+  "beobachtungen": {
+    "instagram": 51,
+    "tiktok": 21,
+    "pinterest": 65,
+    "zu_jung": 8
+  },
+  "inhalte": 87,
+  "posts": 137,
+  "musik_verlauf": {
+    "zeilen": 0,
+    "verknuepfte_inhalte": 0
+  },
+  "quellen_fehler": [],
+  "hooks": {},
+  "hooks_detail": {
+    "Das Beste von LuxeStyle in 21 Sekunden Mode · Schmuck · Gadg": {
+      "n": 1,
+      "gewicht": 1.22,
+      "vorsprung": 0.196,
+      "median_rel": 2.19,
+      "belastbar": false
+    },
+    "Luftreiniger mit Feuchtigkeitsspender Jetzt bei LuxeStyle —": {
+      "n": 1,
+      "gewicht": 1.1,
+      "vorsprung": 0.094,
+      "median_rel": 1.46,
+      "belastbar": false
+    },
+    "Sommer-Looks wo uffalle Premium-Mode us de Schwiz ab CHF 34.": {
+      "n": 1,
+      "gewicht": 1.09,
+      "vorsprung": 0.082,
+      "median_rel": 1.39,
+      "belastbar": false
+    },
+    "Wimpernlift-Kit Jetzt bei LuxeStyle — CHF 24.90. Blitzversan": {
+      "n": 1,
+      "gewicht": 1.07,
+      "vorsprung": 0.064,
+      "median_rel": 1.29,
+      "belastbar": false
+    },
+    "Wasserfescht & edel: 1 oder 2? Welä passt zu dir? Schrib's!": {
+      "n": 1,
+      "gewicht": 1.06,
+      "vorsprung": 0.059,
+      "median_rel": 1.27,
+      "belastbar": false
+    },
+    "Dini Tasse, din Spruch — sälber gestaltet, perfekts Geschänk": {
+      "n": 1,
+      "gewicht": 1.04,
+      "vorsprung": 0.04,
+      "median_rel": 1.18,
+      "belastbar": false
+    },
+    "Dinosaurier-Hundespielzeug für grosse Hunde Jetzt bei LuxeSt": {
+      "n": 1,
+      "gewicht": 1,
+      "vorsprung": 0.002,
+      "median_rel": 1.01,
+      "belastbar": false
+    },
+    "Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend Jet": {
+      "n": 1,
+      "gewicht": 1,
+      "vorsprung": -0.004,
+      "median_rel": 0.98,
+      "belastbar": false
+    },
+    "Welä Ohrring nimmsch — 1 oder 2? Schrib's i d Kommentär! Spe": {
+      "n": 1,
+      "gewicht": 0.99,
+      "vorsprung": -0.013,
+      "median_rel": 0.95,
+      "belastbar": false
+    },
+    "Kerzenlicht-Aromadiffuser Jetzt bei LuxeStyle — CHF 14.90. S": {
+      "n": 1,
+      "gewicht": 0.96,
+      "vorsprung": -0.039,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "LuxeStyle in 43 Sekunden Mode, Schmuck, Sonnenbrillen & mehr": {
+      "n": 1,
+      "gewicht": 0.87,
+      "vorsprung": -0.141,
+      "median_rel": 0.57,
+      "belastbar": false
+    }
   },
   "themen": {
-    "allgemein": 1.34,
-    "schmuck": 0.98,
-    "beauty": 0.91,
-    "haustier": 8.07,
-    "home": 0.88,
-    "gadget": 1.06,
-    "fitness": 1.06,
-    "kinder": 0.65
-  }
+    "beauty": {
+      "n": 6,
+      "gewicht": 1.33,
+      "vorsprung": 0.284,
+      "median_rel": 1.53,
+      "belastbar": true
+    },
+    "schmuck": {
+      "n": 15,
+      "gewicht": 1.2,
+      "vorsprung": 0.179,
+      "median_rel": 1.13,
+      "belastbar": true
+    },
+    "allgemein": {
+      "n": 30,
+      "gewicht": 1.13,
+      "vorsprung": 0.123,
+      "median_rel": 1.06,
+      "belastbar": true
+    },
+    "gadget": {
+      "n": 4,
+      "gewicht": 1.12,
+      "vorsprung": 0.111,
+      "median_rel": 1.08,
+      "belastbar": true
+    },
+    "home": {
+      "n": 12,
+      "gewicht": 1.07,
+      "vorsprung": 0.071,
+      "median_rel": 0.99,
+      "belastbar": true
+    },
+    "fitness": {
+      "n": 4,
+      "gewicht": 1.01,
+      "vorsprung": 0.015,
+      "median_rel": 0.99,
+      "belastbar": true
+    },
+    "haustier": {
+      "n": 4,
+      "gewicht": 1,
+      "vorsprung": -0.001,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "kinder": {
+      "n": 1,
+      "gewicht": 0.96,
+      "vorsprung": -0.038,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "mode": {
+      "n": 11,
+      "gewicht": 0.91,
+      "vorsprung": -0.098,
+      "median_rel": 1,
+      "belastbar": true
+    }
+  },
+  "zeitfenster": {
+    "pinterest 09–12": {
+      "n": 2,
+      "gewicht": 1.68,
+      "vorsprung": 0.522,
+      "median_rel": 3.68,
+      "belastbar": false
+    },
+    "pinterest 06–09": {
+      "n": 56,
+      "gewicht": 1.3,
+      "vorsprung": 0.264,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "tiktok 09–12": {
+      "n": 9,
+      "gewicht": 1.22,
+      "vorsprung": 0.202,
+      "median_rel": 1.03,
+      "belastbar": true
+    },
+    "instagram 18–21": {
+      "n": 9,
+      "gewicht": 1.19,
+      "vorsprung": 0.171,
+      "median_rel": 1.14,
+      "belastbar": true
+    },
+    "instagram 12–15": {
+      "n": 5,
+      "gewicht": 1.15,
+      "vorsprung": 0.137,
+      "median_rel": 1.05,
+      "belastbar": true
+    },
+    "instagram 21–24": {
+      "n": 6,
+      "gewicht": 1.06,
+      "vorsprung": 0.063,
+      "median_rel": 1.16,
+      "belastbar": true
+    },
+    "instagram 06–09": {
+      "n": 3,
+      "gewicht": 1.03,
+      "vorsprung": 0.03,
+      "median_rel": 1.05,
+      "belastbar": true
+    },
+    "instagram 00–03": {
+      "n": 8,
+      "gewicht": 1.02,
+      "vorsprung": 0.024,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "tiktok 15–18": {
+      "n": 1,
+      "gewicht": 1,
+      "vorsprung": 0.002,
+      "median_rel": 1.01,
+      "belastbar": false
+    },
+    "pinterest 18–21": {
+      "n": 1,
+      "gewicht": 1,
+      "vorsprung": 0,
+      "median_rel": 1,
+      "belastbar": false
+    },
+    "pinterest 15–18": {
+      "n": 5,
+      "gewicht": 1,
+      "vorsprung": 0,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "pinterest 12–15": {
+      "n": 1,
+      "gewicht": 1,
+      "vorsprung": 0,
+      "median_rel": 1,
+      "belastbar": false
+    },
+    "instagram 15–18": {
+      "n": 4,
+      "gewicht": 0.91,
+      "vorsprung": -0.093,
+      "median_rel": 0.95,
+      "belastbar": true
+    },
+    "instagram 09–12": {
+      "n": 16,
+      "gewicht": 0.86,
+      "vorsprung": -0.152,
+      "median_rel": 0.9,
+      "belastbar": true
+    },
+    "tiktok 18–21": {
+      "n": 11,
+      "gewicht": 0.77,
+      "vorsprung": -0.259,
+      "median_rel": 0.98,
+      "belastbar": true
+    }
+  },
+  "formate": {
+    "instagram karussell": {
+      "n": 1,
+      "median_score": 21
+    },
+    "instagram bild": {
+      "n": 40,
+      "median_score": 16
+    },
+    "instagram reel": {
+      "n": 10,
+      "median_score": 38
+    },
+    "tiktok reel": {
+      "n": 21,
+      "median_score": 304
+    },
+    "pinterest pin": {
+      "n": 48,
+      "median_score": 3.5
+    },
+    "pinterest pin-video": {
+      "n": 17,
+      "median_score": 11
+    }
+  },
+  "musik": {},
+  "stimme": {}
 }

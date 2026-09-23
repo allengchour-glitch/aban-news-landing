@@ -1,25 +1,13 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- "stand": "2026-09-23T17:52Z",
-=======
- "stand": "2026-09-23T17:54Z",
->>>>>>> origin/claude/luxestyle-status-tztnn1
-=======
- "stand": "2026-09-23T18:07Z",
->>>>>>> origin/claude/luxestyle-status-tztnn1
-=======
- "stand": "2026-09-23T18:15Z",
->>>>>>> origin/claude/luxestyle-status-tztnn1
- "gescannt": 650,
- "ohne_kategorie_vorher": 650,
+ "stand": "2026-09-23T19:12Z",
+ "gescannt": 648,
+ "ohne_kategorie_vorher": 648,
  "gesetzt": 0,
- "ohne_kategorie_nachher": 650,
+ "ohne_kategorie_nachher": 648,
  "fehler": 0,
  "unbekannte_typen": {
-  "Trend-Gadget": 373,
-  "Trend-Produkt": 261,
+  "Trend-Gadget": 372,
+  "Trend-Produkt": 260,
   "Kinder": 6,
   "Schweizer Editionen": 5,
   "Selbst gestalten": 4,

@@ -57,6 +57,32 @@ function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
 function isJpg(u){ return /\.jpe?g($|\?)/i.test(u); }
+
+// 23.09.2026 (Audit-Befund 18): Facebook hat keine Bio — «Link in Bio» zeigte dort ins Leere, waehrend ein Link im
+// FB-Text direkt klickbar ist (facebook 131 Sitzungen/30 T, Absprungrate 1.0, 0 Warenkoerbe). Instagram behaelt seine
+// Caption («Link in Bio», dort sind Links im Text nicht klickbar); Facebook bekommt die Produktseite (onlineStoreUrl
+// aus Shopify, sonst die Startseite) mit UTM. Gleiche Funktion in ig_karussell_post.mjs und meta_reel_post.mjs.
+const FB_UTM = 'utm_source=facebook&utm_medium=social&utm_campaign=autopilot';
+function fbLink(shopUrl, inhalt){
+  const basis = /^https:\/\/(www\.)?luxestyle\.ch\//i.test(shopUrl||'') ? shopUrl : 'https://luxestyle.ch/';
+  return `${basis}${basis.includes('?')?'&':'?'}${FB_UTM}${inhalt?`&utm_content=${inhalt}`:''}`;
+}
+function fbText(caption, shopUrl, inhalt){
+  const link = fbLink(shopUrl, inhalt);
+  const BIO = /\s*[–—·|-]?\s*\(?\s*link\s+in\s+(?:der\s+)?bio\b(?:\s*\))?/gi;   // Leerzeichen danach bleiben (sonst klebt ein #Hashtag an der URL)
+  const DOM = /(?<![@#\w.\/-])(?:https?:\/\/)?(?:www\.)?luxestyle\.ch(?:\/[^\s)]*)?/i;
+  const zeilen = String(caption||'').split('\n');
+  let i = zeilen.findIndex(z => /link\s+in\s+(?:der\s+)?bio/i.test(z));
+  if(i < 0) i = zeilen.findIndex(z => DOM.test(z) && !/^\s*#/.test(z));
+  if(i < 0){                                   // keine Shop-Zeile: Link vor die Hashtags setzen
+    const h = zeilen.findIndex(z => /^\s*#\S/.test(z));
+    if(h < 0) zeilen.push(`👉 ${link}`); else zeilen.splice(h, 0, `👉 ${link}`, '');
+    return zeilen.join('\n');
+  }
+  const z = zeilen[i].replace(BIO, '');
+  zeilen[i] = (DOM.test(z) ? z.replace(DOM, link) : z.trim() ? `${z.trimEnd()} 👉 ${link}` : `👉 ${link}`).trimEnd();
+  return zeilen.join('\n');
+}
 async function gpost(url, params){
   const body = new URLSearchParams(params);
   const r = await fetch(url, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body});
@@ -188,7 +214,7 @@ async function produktAktiv(zeilenId){
       if(d && d.data){
         const p = d.data.product;
         if(p === null) return { ok:false, grund:'Produkt existiert nicht mehr' };
-        return { ok: p.status==='ACTIVE' && !!p.onlineStoreUrl, grund:`status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl?'ja':'nein'}` };
+        return { ok: p.status==='ACTIVE' && !!p.onlineStoreUrl, grund:`status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl?'ja':'nein'}`, url: p.onlineStoreUrl||'' };
       }
     }catch{}
     await new Promise(x=>setTimeout(x, 2000*(a+1)));
@@ -233,20 +259,26 @@ for(const next of ready.slice(0, MAX)){
   // bewarben Produkte, die Waechter seit dem Bau der Queue gedraftet hatten (kein onlineStoreUrl → Link = 404).
   // Reel- und Karussell-Poster fragen Shopify vor jedem Post; dieser Poster fragte nie. Zeilen-ID traegt die
   // Shopify-Produkt-ID am Ende (…-15408457941377); ohne ID (Markenposts) gilt: erlaubt.
-  if(!DRY){
-    const pa = await produktAktiv(next[idx.id]);
-    if(pa.ok === false){
-      console.log(`   ⛔ Produkt nicht kaufbar (${pa.grund}) → produkt-nicht-aktiv: ${next[idx.id]}`);
-      next[idx.status] = 'produkt-nicht-aktiv'; fs.writeFileSync(CSV, serialize(rows)); continue;
-    }
-    if(pa.ok === null){ console.log(`   ⚠️ Produkt nicht pruefbar (${pa.grund}) → Zeile bleibt ready, naechster Lauf`); continue; }
+  // Die Pruefung liest nur (auch im DRY): sie liefert zugleich die Produktseite fuer den Facebook-Text (Befund 18).
+  const pa = await produktAktiv(next[idx.id]);
+  if(pa.ok === false){
+    console.log(`   ⛔ Produkt nicht kaufbar (${pa.grund}) → produkt-nicht-aktiv: ${next[idx.id]}`);
+    if(!DRY){ next[idx.status] = 'produkt-nicht-aktiv'; fs.writeFileSync(CSV, serialize(rows)); }
+    continue;
   }
+  if(pa.ok === null){ console.log(`   ⚠️ Produkt nicht pruefbar (${pa.grund}) → Zeile bleibt ready, naechster Lauf`); continue; }
+  const fbCaption = fbText(caption, pa.url, 'bild');
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
   const wantTH = !SKIP_THREADS && (!plat.trim() || /threads/.test(plat));
   console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
-  if(DRY){ console.log(`   DRY_RUN: würde senden.`); postedCount++; continue; }
+  if(DRY){
+    console.log(`   DRY_RUN: würde senden (nichts gepostet, nichts geschrieben).`);
+    if(wantIG) console.log(`   ── Instagram-Caption ──\n${caption}`);
+    if(wantFB) console.log(`   ── Facebook-Text ──\n${fbCaption}`);
+    postedCount++; continue;
+  }
 
   // 23.09.2026: Instagram ZUERST und mit einem Wiederholungsversuch — am 23.09. 02:08 scheiterte der IG-Container
   // voruebergehend (9004/2207052 «Only photo or video…», dasselbe Bild 20 Min spaeter angenommen), FB wurde gepostet,
@@ -270,7 +302,7 @@ for(const next of ready.slice(0, MAX)){
   }
   const results = await Promise.all([
     Promise.resolve(igRes),
-    wantFB?postFB(imageUrl,caption):Promise.resolve(null),
+    wantFB?postFB(imageUrl,fbCaption):Promise.resolve(null),     // FB: klickbarer Produktlink statt «Link in Bio»
     wantTH?postThreads(imageUrl,caption):Promise.resolve(null),
   ]);
   const got = results.filter(x => x && x!==false);

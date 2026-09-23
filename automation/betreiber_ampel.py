@@ -471,7 +471,9 @@ def kategorie_offen():
     try:
         led = [l for l in open(os.path.join(REPO, "dropship", "_kategorie_gesetzt.txt"), encoding="utf-8") if l.strip()]
         ledger_heute = sum(1 for l in led if l.rstrip("\n").split("\t")[-1].startswith(heute))
-        n = max(0, int(s.get("ohne_kategorie_vorher", n) or 0) - sum(1 for l in led if l.rstrip("\n").split("\t")[-1] >= s.get("stand", "")[:10]))
+        # 23.09. 19:15: nur Zuweisungen NACH dem Stand abziehen (Zeitstempel, nicht Tag) — mit «>= Tag» zog die Zeile die
+        # 45'114 Zuweisungen des ganzen Tages von 650 Restposten ab und meldete «~0», gemessen waren 650.
+        n = max(0, int(s.get("ohne_kategorie_vorher", n) or 0) - sum(1 for l in led if l.rstrip("\n").split("\t")[-1] > s.get("stand", "")))
     except Exception:
         ledger_heute = s.get("gesetzt")
     return None if (n == 0 and not unbek) else f"KATEGORIE: ~{n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, Ledger heute {ledger_heute}){u}"
