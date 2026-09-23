@@ -107,3 +107,5 @@ gid://shopify/Product/15452678029697	2026-09-23T04:09Z	schon-DRAFT	15.90	83.92	D
 gid://shopify/Product/15500999131521	2026-09-23T04:10Z	schon-DRAFT	46.90	114.77	Retro Outdoor Rucksack aus gewachstem Canvas
 gid://shopify/Product/15502135361921	2026-09-23T04:10Z	schon-DRAFT	16.90	84.65	Automatischer Vorhangroboter für Roman- und Rundstangen
 gid://shopify/Product/15499079188865	2026-09-23T04:10Z	schon-DRAFT	17.90	85.41	Sofaüberwurf Baumwolle – Geometrische Abstraktion
+gid://shopify/Product/15450114687361	2026-09-23T04:10Z	schon-DRAFT	14.90	81.89	Vollständige Sofa-Abdeckung
+gid://shopify/Product/15497494561153	2026-09-23T04:10Z	schon-DRAFT	26.90	93.61	Einweg-Badetücher, fusselfrei & saugstark
