@@ -49585,3 +49585,4 @@ gid://shopify/Product/15448944968065	bei-cj-weg	CJ-CJYD287449802BY	via-varianten
 gid://shopify/Product/15449122668929	bei-cj-weg	CJ-CJCL261241601AZ	via-varianten-wache-2026-09-23
 gid://shopify/Product/15449123029377	bei-cj-weg	CJ-CJCL261221701AZ	via-varianten-wache-2026-09-23
 gid://shopify/Product/15449162580353	bei-cj-weg	CJ-CJXZ285860801AZ	via-varianten-wache-2026-09-23
+gid://shopify/Product/15449424986497	bei-cj-weg	CJ-CJPF1532465-Purple	via-varianten-wache-2026-09-23

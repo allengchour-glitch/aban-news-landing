@@ -1,11 +1,20 @@
 {
- "wartet_auf_export": true,
- "export": null,
- "export_alter_h": null,
- "kaufbar": null,
- "heben": null,
- "raus": null,
+ "wartet_auf_export": false,
+ "export": "/tmp/kost28.jsonl",
+ "export_alter_h": 29.3,
+ "produkte_im_export": 51344,
+ "varianten_mit_ek": 302712,
+ "heben": 416,
+ "raus": 1317,
+ "rueckkehrer": 0,
+ "kaufbar": 1731,
+ "gedraftet_lauf": 2,
+ "schon_draft": 0,
+ "kein_verlust_live": 0,
+ "unklar": 0,
+ "erledigt_gesamt": 16,
+ "rest_raus": 1315,
  "stand": "2026-09-23",
  "zeit": "2026-09-23T00:15Z",
- "modus": "dry"
+ "modus": "scharf"
 }
