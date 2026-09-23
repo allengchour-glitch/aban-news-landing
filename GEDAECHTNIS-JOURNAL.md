@@ -652,6 +652,33 @@ vor gc, tmp_pack-Reste nach gescheitertem gc. 13 Gegenproben grün; Aufträge pl
 (4) Kuscheltiere-Promo mit Azure-Stimme (de-CH-JanNeural, Musik per Sidechain −7:1) gerendert, −13.8 LUFS, Stimme ab
 0.70 s per Kreuzkorrelation belegt — wartet auf das Betreiber-Urteil, bevor sie in die Queue geht.
 
+**Nachtrag 49 (23.09.2026, 22:20 UTC — Kollektionen nach Prüferbefund, Server-Aufräumlauf, Zapfventil-Bild, Geschenke-Regel):**
+(1) **«0 (vorher 11)» war ein falsches Grün:** die Prüf-Regex `(sortiert|geordnet) nach Preis` sah die umgedrehte Wortfolge
+«Nach Preis sortiert» / «nach Preis aufsteigend sortiert» nicht — 5 veröffentlichte Kollektionen (alle CREATED_DESC) trugen
+den Satz weiter, bei haustier-katze im SEO-Feld, während das HTML derselben Kollektion repariert war. Dazu 6 Kollektionen mit
+Marken ohne aktive Ware ausserhalb der festen 19er-Liste (Chicco, Bright Starts, Kinderkraft, Philips/Braun/Remington/Wahl,
+Oral-B/Sonicare, Ravensburger, Intex/Bandai/Hasbro, Varta — je vendor+Titel EXACT 0 gemessen), in baby-kids dazu der
+Modellcode «Kinderkraft KLJOY02BEG000AC» (SKU-Leck). **Vor dem Schreiben die echte Ware gemessen:** baby-kids hat 14 aktive
+(Plüsch-Babytiere, Folienballone, Schwimmring, Kostüme) — keine Babytragen/Hochstühle mehr; herren-grooming 18 (Rasierer,
+Haarschneider, Bartöl); spielzeug-pluesch 61 (Plüschtier-Kissen, -Rucksäcke). 12 Bausteine geschrieben + zurückgelesen,
+Vollscan über alle 353 veröffentlichten: 0 Preis-Sätze, 0 Marken (der letzte, «Bandai» in spielzeug-pluesch, kam erst im
+Vollscan — **eine Prüfung über die Planliste findet nur, was im Plan steht**). «Braun»/«Wahl» nur im Marken-Kontext
+(Farbe/Wort: `title:*Braun*` = 86 aktive), sonst hätte die Wache jede braune Ware gemeldet.
+(2) **Server-Aufräumlauf `platte_schlank` (Einheit luxe-platte, 1:42 min):** gc ohne Gewinn — abannews 2.4 GB und Wächter-Klon
+3.1 GB sind die echte Historie (der Betreiber hatte schon gepackt); Timer sauber wieder an (nur die vorher aktiven), Platte
+70 % / 11 GB frei. **`/opt/luxe/repo` (6.9 GB) WIRD benutzt** — root-crontab: `run-api-jobs.sh` 04:00 und ein `*/10`-Poller
+(die Allowlist-Ausgabe zeigt genau das: Zeitfelder + Pfade, sonst «…»). Nächste Stufe wäre ein flacher Neuklon der beiden
+grossen Klone (je ~3 GB) — eigener Auftrag, nicht heute.
+(3) **Zapfventil 15510929506689:** Google meldet «Inappropriate image» aufs Hauptbild (aufrechte Zapfpistole mit Abzug), nicht
+auf den Text — Textkorrekturen lösen das nicht. Seitenansicht liegend als Hauptbild (`productReorderMedia`, zurückgelesen);
+Bilder 3/4 waren Bytekopien von 1/2. Ob Googles Klassifikator das reicht, zeigt der Feedback-Wächter in 7 Tagen.
+(4) **«Geschenke bis CHF 30» hatte als einzige Regel VARIANT_PRICE < 30 = 50'291 Produkte, der ganze günstige Katalog.** Jetzt
+UND `TAG = geschenk` (3'098 aktive unter 30 gemessen). Ein Geschenkführer, der alles zeigt, führt nirgendwohin.
+(5) `google_titel_reparatur.py`: gebeugte Used-Formen («Used-Effekten», «Used-Looks») werden mit Endung ersetzt; jede
+Mutation wird SOFORT als Ledger-Zeile vorgemerkt («gesendet-ruecklesen-offen»), damit ein RuntimeError mitten im Produkt
+den geschriebenen Titel nicht aus der Historie reisst; der Wächter hatte KEINEN Starter → jetzt Tageswächter im Aufseher
+mit SCHARF=1 (Standard ist trocken). Scharf-Lauf: Ripsband zuerst (Gold statt Silber, 6 Alt-Texte), dann Vollauf.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16340,3 +16367,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-22 · ✍️ **Ratgeber-Du-Form: Reste gemessen statt geraten (2'312 → 635, davon 475 Satzanfang = kein Befund) → sechs neue Regeln in `um()`, Reihenfolge 2c→2f→2e→2d→2g; 95 Artikel/Seiten geduzt.** Zwei geschriebene Artikel trugen Doppel-Konjugationen («liebst wirst») → repariert; **jede Regeländerung braucht Kanarienvögel UND einen Defekt-Scan über das Geschriebene** → Journal
 - 2026-09-22 · 📚 **52 Kollektionstexte siezten noch — der Diff-Trockenlauf zeigte drei weitere Regressionen (Objekt-Sie nach -t-Verb → «rüstet du», «für Sie» → «für du», Adjektiv nach «und» als Verb); Regeln ergänzt, 52 geschrieben.** Reparaturlauf Produkte: 8 von 10 Verdacht waren Fehlalarme der Warnnetze → Netze verfeinert, Verdacht neu geprüft → Journal
 - 2026-09-22 · 📝 **Ratgeber-Reparatur: drei Diff-Runden bis «neu gegenüber Vorlauf» leer war — elf Regressionsklassen (Objekt-«Sie» der Cremes, «für Sie und Ihn» auf Geschenkseiten, Nomen/Adjektive/Adverbien als Verben, «zu haben», Relativsatz, Konditional-Inversion, `</a>` als Satzgrenze), 26 Texte geschrieben, Nachscan 107/107 sauber.** Zwei stille Werkzeugfallen: `\\s` im Heredoc, Lookbehind variabler Breite → Journal
+- 2026-09-22 · ✍️ **Reparatur des Geschriebenen: 86 Inversionen in 107 Ratgebern (45 repariert, Nachscan 0), Produkte 2 % Alt-Defekte → Reparaturlauf über 3'407; der 400er-Trockenlauf zeigte 3 REGRESSIONEN der neuen Regeln (Infinitiv vor Modalverb, Adjektiv als Verb, Objekt-Sie) → neun Klassen nachgebessert, erst dann scharf.** Du-Form-Lauf 3 stand 52 Min im Selbst-Deadlock (geerbter Lock-fd 8, `locks_lock_inode_wait`, 0 geschrieben) → Erblasser war der Aufseher (TXTLOCK + alter Startblock): jeder Automatik-Start seit 21.09. hing, alle 3'407 Zeilen kamen von Hand; beide Stellen repariert, Starter schliessen fds; Ledger ohne Wachstum nach 10 Min = `wchan` lesen → Journal
