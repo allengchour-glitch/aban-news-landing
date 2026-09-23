@@ -14750,3 +14750,10 @@ lidschatten-palette-mit-neun-farben-304192	2026-09-23	du
 lidschatten-palette-red-fox-plate-613000	2026-09-23	du
 lidschatten-palette-schimmer-puder-wasserdicht-883712	2026-09-23	teilweise
 lidschatten-palette-schmetterling-501568	2026-09-23	teilweise
+lidschatten-palette-schmetterling-6-farben-758784	2026-09-23	du
+lidschatten-palette-solid-nail-polish-902208	2026-09-23	du
+lidschatten-palette-star-necklace-1edcd0	2026-09-23	du
+lidschatten-palette-student-pearly-earth-color-437312	2026-09-23	du
+lidschatten-palette-time-matt-glitzer-mehr-110656	2026-09-23	du
+lidschatten-palette-tulpen-sequins-247936	2026-09-23	teilweise
+lidschatten-pinsel-mit-zwei-enden-143490	2026-09-23	teilweise
