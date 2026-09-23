@@ -387,6 +387,25 @@ wartenden Reels.
 die UI-Schablone der Zielplattform als Prüfbild (`f_*_ui.jpg`-Rezept: rote Flächen oben/unten/rechts), BEVOR der
 erste Post rausgeht. Und: nicht jede Abweichung ist ein Fehler — die 50 stand richtig da, weil ich die Quelle las.
 
+**Nachtrag 25 (23.09. 05:45 UTC) — «insta karusell brauchen»: erstes Instagram-Karussell live — aus einem Bauer, der 31 fertige Sets für einen toten Weg gebaut hatte.**
+GEMESSEN: `tiktok_karussell.py` baute seit Wochen täglich Slide-Sets (6 Slides, 9:16, gestaltet: Preis-Anker,
+Produktbilder, CTA-Slide) in `social/tiktok/` — 31 Sets «ready» in einer Queue, die nur der PC-Poster las, der seit
+dem 31.08. steht. Der IG-Karussell-Poster `social_karussell.mjs` (03.09., mehrere Produkte aus `_karussell.json`)
+lief genau einmal, Planer gab es keinen. Instagram nimmt in Karussells nur 4:5 bis 1.91:1 — 9:16 wird abgelehnt.
+Der Traceback in `tiktok_karussell.log` («Shopify hat auf keinen Versuch mit Daten geantwortet») war die
+Eimer-Drossel eines einzelnen Laufs (8 Versuche, 5–6 s), kein Dauerfehler; der folgende Lauf baute wieder.
+GETAN: (1) `tiktok_karussell.py FORMAT=ig`: 1080×1350 nach `social/instagram/<slug>/`, Queue `social/ig_karussell.csv`,
+Ledger `_ig_karussell.txt`, eigene Bildfenster je Format — der Kontaktbogen der ersten 4:5-Probe zeigte den Titel im
+Produktbild (das 9:16-Fenster 20–80 % passte nicht), Werte nachgemessen (Hook 10–50 %, Produkt 12–58 %).
+(2) `ig_karussell_post.mjs`: ein Set je Lauf, IG-Karussell (Kinder via raw.githubusercontent, wie die Reels) → FB-Album
+nur nach IG-Erfolg; Wachen: Lock, Produkt-Sperre nach Ware, Live-Abgleich der letzten 25 Posts, ACTIVE+onlineStoreUrl,
+Bildadressen 200 (sonst eigener Push unter der Repo-Sperre), Claim vor dem Post, gemeinsames Bild-Ledger, jede Ware
+gemerkt. (3) Autopilot: Karussell alle 24 h; Aufseher baut täglich 2 Produkt-Sets, montags ein Top-Set, und pusht
+(der Autocommitter nimmt nur `dropship/` mit). (4) Erster Post live: IG CAROUSEL_ALBUM DdnlCi-jkth (6 Slides, EMS
+Mikrostrom Massagegerät CHF 22.90) + FB-Album 122140105137350792, an der Graph-API rückgelesen; zwei weitere Sets gebaut.
+**Lehre:** Ein Bauer ohne lebenden Poster ist ein Lager, kein Kanal — 31 fertige Sets, 0 Posts. Vor «neu bauen» die
+Kette messen: wer baut, wer postet, wer liest die Queue? Hier fehlte nur das Format und der Poster; der Rest stand.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16043,3 +16062,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-19 · 📭 **Ein Schweigen kann heissen, dass die Frage nie angekommen ist.** Die CJ-Nachmessung brachte vier saubere Neins (Guthaben `amount 0.0`, `disputeId` null, Dispute-Liste 0, keine Mail neuer als CJs Zusage vom 18.09. → Journal
 - 2026-09-19 · 🇱🇮 **«mach bot besser und seite»: der Puls beweist Leben, nicht Ankunft — und der Shop verspricht ein Land, das nicht bestellen kann.** `_puls.json` war frisch, **zwei Quittungen standen seit 17.09. → Journal
 - 2026-09-20 · 🎯 **Vierzig von vierzig Treffern — und kein einziger war ein Fund.** Die Startseite lieferte dem Hetzner-Agenten am 20.09. → Journal
+- 2026-09-21 · 🩹 **Der Wächter fragte nach der Werbung, nicht nach der Ware — und die Lücke, die ich reparieren wollte, gibt es nicht.** Zwei Ergebnisse, beide durch Messen statt Vermuten. → Journal
+- 2026-09-21 · 🪣 **Acht Wächter, ein Eimer — die Drossel war hausgemacht, und mein erster Fix war falsch.** `menue_links.log`: **15 PAUSE-Zeilen bei 16 Läufen** — der Wächter, der am 15.09. → Journal
