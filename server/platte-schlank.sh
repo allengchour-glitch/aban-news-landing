@@ -9,7 +9,8 @@
 #
 # WAS DAS SKRIPT TUT (idempotent, nur Wiederherstellbares):
 #   1. Bericht: Platte, Dienste, wer auf /opt/luxe/repo verweist (systemd, cron, /usr/local/bin).
-#   2. Timer anhalten und laufende Durchläufe ausklingen lassen (kein Abbruch mitten im Push).
+#   2. Timer anhalten und laufende Durchläufe ausklingen lassen (kein Abbruch mitten im Push); danach die Reste
+#      abgebrochener fetch/gc-Läufe (tmp_pack_*) löschen — bei 100 % Platte der erste Platzgewinn.
 #   3. /opt/abannews (Deploy-Poller, nur main) und /opt/luxe-waechter/repo (nur Arbeitszweig): fremde Zweige
 #      aus dem Klon entfernen (der Erst-Klon holte ALLE claude/*-Zweige), Reflog leeren, git gc. Arbeitsbaum,
 #      ungepushte Commits und Stashes bleiben unangetastet.
@@ -36,6 +37,21 @@ for i in $(seq 1 60); do
   [ -z "$AKTIV" ] && break; [ "$i" = 1 ] && echo "   warte auf:$AKTIV"; sleep 10
 done
 [ -n "${AKTIV:-}" ] && echo "   ⚠️ läuft noch nach 10 min:$AKTIV — gc läuft trotzdem (git sperrt selbst)"
+
+log "2b) Halbfertige Packdateien löschen (tmp_pack_*/tmp_idx_* — Reste abgebrochener fetch/gc bei voller Platte)"
+# Gemessen 23.09.: /opt/abannews 3.00 GiB «size-garbage», dazu die abgebrochenen gc-Läufe des Betreibers (Platte 100 %).
+# Nur löschen, wenn KEIN git-Prozess läuft — ein laufender fetch schreibt genau in diese Dateien.
+for i in $(seq 1 30); do pgrep -x git >/dev/null || break; sleep 10; done
+if pgrep -x git >/dev/null; then echo "   ⚠️ git läuft noch: $(pgrep -ax git | head -3 | tr '\n' ' ') — Reste bleiben"
+else
+  for D in /opt/abannews /opt/luxe-waechter/repo /opt/luxe-agent/repo /opt/luxe/repo; do
+    [ -d "$D/.git/objects" ] || continue
+    N=$(find "$D/.git/objects" -maxdepth 2 -type f \( -name 'tmp_pack_*' -o -name 'tmp_idx_*' -o -name 'tmp_obj_*' \) | wc -l)
+    [ "$N" -gt 0 ] && { find "$D/.git/objects" -maxdepth 2 -type f \( -name 'tmp_pack_*' -o -name 'tmp_idx_*' -o -name 'tmp_obj_*' \) -delete; echo "   $D: $N Reste gelöscht"; }
+    rm -f "$D/.git/gc.log" "$D/.git/gc.pid"
+  done
+fi
+df -h / | tail -1
 
 schlank() {   # $1 = Klon, $2 = einziger Zweig, der bleiben soll
   local D="$1" Z="$2"
@@ -73,4 +89,7 @@ systemctl list-timers --all --no-pager 2>/dev/null | grep -E 'abannews|luxe' | a
 log "6) Platte nachher"
 df -h / | tail -1
 du -xsh /opt/* 2>/dev/null | sort -rh | head -8 | sed 's/^/   /'
-[ -d /opt/luxe/repo ] && [ "${ALT_LOESCHEN:-0}" != 1 ] && echo "   Hinweis: /opt/luxe/repo (≈7 GB) steht noch. ${VERWEIS:+Wird benutzt — nicht löschen.}${VERWEIS:-Kein Verweis gefunden → nochmal mit ALT_LOESCHEN=1 ausführen.}"
+if [ -d /opt/luxe/repo ]; then
+  if [ -n "$VERWEIS" ]; then echo "   Hinweis: /opt/luxe/repo (≈7 GB) wird benutzt — bleibt."
+  else echo "   Hinweis: /opt/luxe/repo (≈7 GB) steht noch, kein Verweis gefunden → nochmal mit ALT_LOESCHEN=1 ausführen."; fi
+fi
