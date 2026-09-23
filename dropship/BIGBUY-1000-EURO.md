@@ -234,3 +234,17 @@ BigBuy-Backoffice im Browser.
 
 Nächster Auszahlungs-Dienstag: **22.09.** Der Weg bleibt das Ticket in der Abteilung
 **Administration** (Text in §3 dieser Datei, Kurzfassung in `COWORK-BEFEHL.md` Punkt 1).
+
+---
+
+## Nachtrag 22.09.2026 (Gegenprüfung, Gmail `in:anywhere` + git)
+
+- **5 gesendete Mails, nicht 6; 3 wortgleiche Auto-Antworten (08., 15., 17.09.), nicht 2.** Die Antwort vom 17.09. 12:50
+  ist derselbe Baustein. Kein Ticket gesendet (`_bigbuy_ticket_ref.txt` fehlt).
+- **Bestellnr. 18138327 = die bezahlte SEPA-Aufladung vom 07.07.** (Betreiber-Mail 17:56). **18138523 ist ein zweiter,
+  unbezahlter Datensatz vom selben Tag** — vermutlich Doppel, NICHT stornieren, sondern im Ticket fragen (Frage 3 in §3:
+  «18138327 geschlossen/ausgezahlt? 18138523 Doppel?»).
+- **Purse-API seit 16.09. HTTP 401** (Abo-Ende) — die letzte belegte Zahl bleibt EUR 1'000.00 vom **15.09.** («seit 15.07.
+  unverändert» heisst: zuletzt 15.09. gemessen, nicht «bis heute»).
+- Die BigBuy-Bestätigung vom 16.08. liegt als Thread `1a00a46178541bba` im Gmail-**Papierkorb** — vor dem Ticket
+  wiederherstellen (Betreiber-Klick, COWORK-BEFEHL Punkt G).

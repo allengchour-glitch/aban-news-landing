@@ -5,7 +5,10 @@
 
 # LuxeStyle — Stand aus Cowork/Claude-in-Chrome-Session
 Stand: 2026-09-18, ca. 18:00 UTC
-Für: Claude Code auf Hetzner (Session "Luxestyle status") + Allen
+Für: die Anthropic-Cloud-Session «Luxestyle status» (`claude/luxestyle-status-tztnn1`) + Allen
+⚠️ Korrigiert 22.09.: die Session läuft NICHT auf Hetzner (hostname `vm`, kein `/opt/abannews`, HTTPS_PROXY); der
+SSH-Key `claude-cowork-luxestyle-20260917` ist nirgends auffindbar ausser im Selbstbeleg unten; «Port 22 nicht
+erreichbar» ist die Container-Ausgangsregel (github.com:22 ebenso), nicht der Server.
 
 ## Blocker (aktuell, ungelöst)
 
@@ -85,11 +88,15 @@ Ziel.**
 
 Folge: Bankinstitut und Kontoinhaber sind oben **entfernt** worden. ⚠️ Sie standen von
 19:40 bis 20:15 UTC im öffentlichen Repo und **bleiben in der Git-Historie abrufbar** — das
-Entfernen im Arbeitsbaum stoppt nur die weitere Verbreitung. Ein Bereinigen der Historie wäre
+Entfernen im Arbeitsbaum stoppt nur die weitere Verbreitung.
+⚠️ **Nachtrag 22.09. (gemessen, raw-Abruf HTTP 200): auf `main` stehen sie LIVE seit 18.09. 20:46 UTC** (Squash
+178ddbf4e, PR #2521, anderer Zweig) — nicht «nur in der Historie». Auf diesem Zweig: Einbau 07a5b8c59 (19:33 UTC),
+Entfernung 5521d6ca8 (19:50 UTC). Entfernen auf main = PR #1608 mergen oder Zeile direkt löschen (COWORK-BEFEHL Punkt C). Ein Bereinigen der Historie wäre
 ein Force-Push auf einen Zweig, auf den auch der Hetzner-Agent schreibt; das ist ein
 Betreiber-Entscheid, kein Alleingang dieser Session.
 
 **Regel für jede weitere Bearbeitung dieser Datei: keine Bankangaben, keine IBAN, keine
 Zugangsdaten, keine personenbezogenen Daten Dritter.** Die Kundennummer 966388 steht bereits
-seit Wochen in fünf anderen Repo-Dateien und ist damit nicht neu — sie bleibt hier stehen,
+seit Wochen in sieben anderen Repo-Dateien (gemessen 22.09.; eine neunte, `_textbild_geprueft.txt`, ist ein
+Zufalls-Teilstring einer MediaImage-ID) und ist damit nicht neu — sie bleibt hier stehen,
 damit das Ticket auffindbar bleibt.

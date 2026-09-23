@@ -23,7 +23,9 @@
 7. **Fortura-FTP-Zugangsdaten** neu liefern (Bild-2–5-Backfill-Quelle versiegt sonst).
 8. **E-Mail-Popup** verdeckt mobil den Kaufknopf (Shopify Forms → Trigger/Position anpassen; Marketing-Entscheid).
 9. **GitHub-Token «gitlab» erneuert (30.08.)** — neuer Fine-grained-PAT ist push-verifiziert und im Tresor (`tresor.py holen github`). **1 Klick offen:** GitLab-Projekt → Settings → CI/CD → Variables → `GH_PUSH_TOKEN` auf den neuen `github_pat_…`-Wert setzen (Masked). Danach BEIDE PATs gelten als chat-exponiert → nach Einrichtung rotieren. (Rest-Müll: Branch `_pat-test` auf GitHub — Proxy blockt Löschung aus der Session; 1 Klick im GitHub-UI: Branches → 🗑.)
-10. **Meta-Token** nur falls Social wieder aktiviert werden soll (⛔ Social-Stopp bleibt bis dahin).
+10. **Meta-Token** — ⚠️ veraltet seit 84799cb8b (22.09.): der Betreiber hat `dropship/_SOCIAL_STOPP` selbst gelöscht,
+    IG+FB posten wieder (erster Reel 22.09. 19:47 UTC). Seiten-Token ohne Ablauf, aber **Datenzugang endet
+    05.10.2026 18:50 UTC** → vorher erneuern (COWORK-BEFEHL Punkt D). ~~(⛔ Social-Stopp bleibt bis dahin)~~
 
 ### 📌 Vereinbarte Regel (User 16.08.2026):
 **CJ-Banküberweisung hat CHF/USD 2'000 MINDESTBETRAG** (CJ-Vorgabe). Plan des Users: sobald der
