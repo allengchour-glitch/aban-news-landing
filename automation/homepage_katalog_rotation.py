@@ -46,7 +46,9 @@ POOL = ["sub-kueche", "sub-taschen", "spielzeug", "sport-outdoor", "make-up", "w
         "handy-zubehoer", "sub-baby-kids", "auto-kfz-zubehoer", "beauty-pflege", "kostueme-ch-lager",
         "geschenke-unter-50-franken", "sub-haustier", "suesses-esswaren"]   # 14.09.: Betreiber «Kategorie mit Essen von Fortura» — 31 Süsswaren ab CH-Lager
 # Reihenfolge bewusst: Hunde(8)/Katzen(16)/Haustier(24) liegen >= 8 auseinander -> nie zwei Tier-Reihen an einem Tag
-SAISON = [("halloween-2026", (9, 1), (10, 31)), ("weihnachten-2026", (10, 15), (12, 26))]
+# 23.09. 23:30: «halloween» statt «halloween-2026» — beide Kollektionen trugen dieselbe Regel (Tag halloween, 230 Produkte);
+# das Menü zeigt auf /collections/halloween (6 Kanäle, längerer Text), die 2026er ist abgemeldet + 301.
+SAISON = [("halloween", (9, 1), (10, 31)), ("weihnachten-2026", (10, 15), (12, 26))]
 
 
 def saison_fest_heute(tag):
@@ -154,7 +156,7 @@ def selbsttest():
     wc = [t["sections"][k]["settings"]["collection"] for k in WR]
     fc = {t["sections"][k]["settings"]["collection"] for k in FEST}
     pruefe(len(set(wc)) == len(WR) and not (set(wc) & fc), f"{len(WR)} verschiedene Wechsel-Kataloge, keiner doppelt zu festen: {wc}")
-    pruefe("halloween-2026" in wc, "Saison: Halloween steht im September vorne")
+    pruefe("halloween" in wc, "Saison: Halloween steht im September vorne")
     ge2, n2 = umbauen(t, tag)
     pruefe(not ge2 and not n2, "Gegenprobe: zweiter Lauf am selben Tag aendert nichts (idempotent)")
     ge3, n3 = umbauen(t, tag + datetime.timedelta(days=1))
@@ -164,7 +166,7 @@ def selbsttest():
     t_dez = copy.deepcopy(t); umbauen(t_dez, datetime.date(2026, 12, 2))
     pruefe(t_dez["sections"]["pl_herbst"]["settings"]["collection"] != "herbst-favoriten", "nach dem 30.11.: pl_herbst dreht wieder mit")
     dez = umbauen(copy.deepcopy(t), datetime.date(2026, 12, 1))
-    pruefe("halloween-2026" not in pool_heute(datetime.date(2026, 12, 1)) and "weihnachten-2026" in pool_heute(datetime.date(2026, 12, 1)), "Saison: im Dezember Weihnachten statt Halloween")
+    pruefe("halloween" not in pool_heute(datetime.date(2026, 12, 1)) and "weihnachten-2026" in pool_heute(datetime.date(2026, 12, 1)), "Saison: im Dezember Weihnachten statt Halloween")
     alle = set()
     for d in range(len(POOL)):
         alle |= set(pool_heute(tag + datetime.timedelta(days=d)))
