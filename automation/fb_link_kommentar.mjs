@@ -68,6 +68,12 @@ try {
     else if (c === '"') q = true; else if (c === ',') { row.push(cur); cur = ''; } else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; } else if (c !== '\r') cur += c; }
   for (const r of rows.slice(1)) { const m = /-(\d{12,15})$/.exec(r[0] || ''); if (m && r[3]) captionMap.push([norm(r[3]).slice(0, 60), m[1]]); }
 } catch {}
+// Karussell-Queue (social/ig_karussell.csv): post_url «ig:… fb:<seite>_<post>» → erster Handle in «produkte».
+const karussellMap = new Map();
+try {
+  const t = fs.readFileSync('social/ig_karussell.csv', 'utf8');
+  for (const m of t.matchAll(/^([^,\n]+),[^\n]*?fb:(\d+_\d+)/gm)) karussellMap.set(m[2], m[1]);
+} catch {}
 function norm(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9äöü]+/g, ' ').trim(); }
 function ausCaption(text) { const k = norm(text).slice(0, 60); if (k.length < 20) return null; const f = captionMap.find(([c]) => c.startsWith(k.slice(0, 40)) || k.startsWith(c.slice(0, 40))); return f ? f[1] : null; }
 const gesehen = [];   // [handle, zeit] — ein FB-Reel erscheint als Post UND als Reel: nur einmal kommentieren
@@ -90,11 +96,14 @@ let n = 0, ohne = 0, schon = 0, inaktiv = 0;
 for (const p of posts) {
   if (n >= MAX) break;
   if (erledigt.has(p.id)) { schon++; continue; }
+  // 23.09. (Audit Befund 18): der Poster schreibt den Direktlink jetzt selbst in den FB-Text — dann KEIN zweiter Link als Kommentar.
+  if (/https?:\/\/(?:www\.)?luxestyle\.ch\/products\//.test(p.text)) { schon++; continue; }
   let prod = null, quelle = '';
   const h = /luxestyle\.ch\/products\/([\w%-]+)/.exec(p.text);
   if (h) { prod = await produktVonHandle(decodeURIComponent(h[1])); quelle = 'Text'; }
   if (!prod) { const pid = bildMap.get(p.id) || bildMap.get(p.id.split('_').pop()); if (pid) { prod = await produktVonId(pid); quelle = 'Bild-Queue'; } }
   if (!prod) { const pid = ausCaption(p.text); if (pid) { prod = await produktVonId(pid); quelle = 'Caption-Abgleich'; } }
+  if (!prod && karussellMap.has(p.id)) { prod = await produktVonHandle(karussellMap.get(p.id)); quelle = 'Karussell-Queue'; }
   if (!prod) { ohne++; console.log(`   ? kein Produkt zuordenbar: ${p.id} «${p.text.slice(0, 50).replace(/\n/g, ' ')}»`); continue; }
   const t0 = Date.parse(p.zeit);
   if (gesehen.some(([u, t]) => u === prod.onlineStoreUrl && Math.abs(t - t0) < 20 * 60000)) { schon++; console.log(`   = Doppel (Reel als Post und als Reel): ${p.id}`); continue; }
