@@ -4,7 +4,7 @@
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
-## 🆕 23.09. 16:40 UTC — Judge.me: doppeltes Produkt-Schema ohne Preis abschalten  ·  ~2 Minuten
+## ✅ ERLEDIGT 23.09. ~16:55 UTC (Betreiber) — Judge.me: doppeltes Produkt-Schema ohne Preis abgeschaltet · an der API bestätigt `disable_json_ld: true`; Merchant «Missing product price» in ~3–7 Tagen nachmessen
 Merchant Center meldet «Missing product price» für 1'220 Produkte. In Shopify hat **jede** aktive Variante einen
 Preis (426'000 geprüft). Die Produktseiten bewerteter Artikel tragen aber zwei Produkt-Datensätze für Google:
 Shopifys (mit Preis und Sternen) und einen von **Judge.me ohne Preis**. Die Einstellung heisst bei Judge.me
