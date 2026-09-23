@@ -30,6 +30,7 @@ reports/*
 # (Git verwirft kein bereits im Index stehendes File wegen späterer Ignore-Regeln) — der
 # Fehler ist erst bei NEUEN Report-Dateien sichtbar geworden.
 !reports/ABAN-DIRECTOR.md
+!reports/TRADING-BOT.md
 !reports/ABAN-STATS.md
 !reports/IMPROVEMENT-REPORT.md
 !reports/RADAR-DATEN-AUDIT.md

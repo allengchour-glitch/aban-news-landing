@@ -91,6 +91,28 @@ jobs:
       - name: Deploy (Direct Upload)
         run: npx --yes wrangler@3 pages deploy _site --project-name="${{ env.PROJECT }}" --branch=main
 
+      # ⚠️ GEMESSEN 2026-09-23: interne .md-Dateien (CLAUDE.md, SHARED-MEMORY.md …) sind seit #2531
+      # nicht mehr im Deploy (mit ?cache-buster: 404) — aber bereits abgerufene URLs hielt der
+      # Cloudflare-Cache weiter (s-maxage=604800 = 7 Tage). Dieser Schritt wirft sie aus dem Cache.
+      # Braucht am Token „Zone: Cache Purge" + „Zone: Read"; fehlt das, nur ein Hinweis, kein Fehler.
+      - name: Cache der internen Notizen leeren
+        continue-on-error: true
+        run: |
+          ZONE=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/zones?name=abannews.com" | python3 -c "import json,sys;r=json.load(sys.stdin).get('result') or [];print(r[0]['id'] if r else '')")
+          if [ -z "$ZONE" ]; then echo "::warning::Zone abannews.com nicht lesbar (Token ohne Zone:Read) — Cache nicht geleert."; exit 0; fi
+          git ls-files '*.md' | grep -v '^downloads/' | python3 -c "
+          import json,sys
+          urls=['https://abannews.com/'+l.strip() for l in sys.stdin if l.strip()]
+          for i in range(0,len(urls),30): print(json.dumps({'files':urls[i:i+30]}))" > /tmp/purge.jsonl
+          ok=0; n=0
+          while read -r body; do
+            n=$((n+1))
+            r=$(curl -s -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
+              --data "$body" "https://api.cloudflare.com/client/v4/zones/$ZONE/purge_cache")
+            echo "$r" | grep -q '"success":true' && ok=$((ok+1)) || echo "::warning::Purge-Antwort: $(echo "$r" | head -c 300)"
+          done < /tmp/purge.jsonl
+          echo "Cache-Purge: $ok von $n Paketen ok ($(git ls-files '*.md' | grep -vc '^downloads/') interne .md-URLs, je 30 pro Paket)"
       - name: Hinweis
         run: |
           echo "Fertig. Öffne https://${{ env.PROJECT }}.pages.dev/"
