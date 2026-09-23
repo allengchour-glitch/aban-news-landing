@@ -1,0 +1,128 @@
+{
+ "digital-lemonade.mp3": {
+  "dauer": 180.1,
+  "lufs": -14.0,
+  "einstiege": [
+   143.25,
+   62.75,
+   46.25
+  ]
+ },
+ "electrodoodle.mp3": {
+  "dauer": 166.1,
+  "lufs": -9.2,
+  "einstiege": [
+   154.5,
+   151.5,
+   146.25
+  ]
+ },
+ "luxe-cinematic-house.wav": {
+  "dauer": 75.1,
+  "lufs": -13.1,
+  "einstiege": [
+   31.5,
+   38.75,
+   46.75
+  ]
+ },
+ "luxe-house1.wav": {
+  "dauer": 16.5,
+  "lufs": -11.2,
+  "einstiege": [
+   0.25,
+   3.25
+  ]
+ },
+ "luxe-house2.wav": {
+  "dauer": 16.2,
+  "lufs": -11.1,
+  "einstiege": [
+   0.25,
+   4.25
+  ]
+ },
+ "luxe-hype-pro.mp3": {
+  "dauer": 17.7,
+  "lufs": -13.4,
+  "einstiege": [
+   4.25,
+   1.0
+  ]
+ },
+ "luxe-hype1.wav": {
+  "dauer": 13.8,
+  "lufs": -11.7,
+  "einstiege": [
+   2.0
+  ]
+ },
+ "luxe-hype2.wav": {
+  "dauer": 14.2,
+  "lufs": -13.4,
+  "einstiege": [
+   2.25
+  ]
+ },
+ "luxe-hype3.wav": {
+  "dauer": 13.6,
+  "lufs": -11.0,
+  "einstiege": [
+   1.75
+  ]
+ },
+ "luxe-liquid-dnb-electronic.wav": {
+  "dauer": 71.2,
+  "lufs": -12.7,
+  "einstiege": [
+   0.75,
+   4.75,
+   7.75
+  ]
+ },
+ "luxe-liquid-dnb.wav": {
+  "dauer": 71.2,
+  "lufs": -14.8,
+  "einstiege": [
+   55.25,
+   49.75,
+   58.75
+  ]
+ },
+ "luxe-lounge-sax.wav": {
+  "dauer": 65.4,
+  "lufs": -12.2,
+  "einstiege": [
+   8.0,
+   15.75,
+   31.5
+  ]
+ },
+ "luxe-orchestra.wav": {
+  "dauer": 75.6,
+  "lufs": -11.3,
+  "einstiege": [
+   11.25,
+   15.0,
+   18.0
+  ]
+ },
+ "luxe-premium.wav": {
+  "dauer": 64.3,
+  "lufs": -13.2,
+  "einstiege": [
+   37.5,
+   47.5,
+   42.5
+  ]
+ },
+ "voltaic.mp3": {
+  "dauer": 196.1,
+  "lufs": -15.1,
+  "einstiege": [
+   162.75,
+   159.75,
+   79.75
+  ]
+ }
+}

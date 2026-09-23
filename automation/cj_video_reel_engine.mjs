@@ -34,6 +34,34 @@ const MEDIEN = 'social/reels';
 const BRANCH = 'claude/luxestyle-status-tztnn1';
 const RAW = `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/${BRANCH}/${MEDIEN}/`;
 const MUSIC = ['luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-house1.wav', 'luxe-hype-pro.mp3', 'luxe-liquid-dnb.wav', 'luxe-orchestra.wav'];
+// Musik v2 (23.09.2026, Betreiber «verbessere musik»): Stück nach Warengruppe statt pid % 6, alle 12 eigenen Stücke
+// (die drei Kevin-MacLeod-Stücke bleiben draussen — CC BY verlangt eine Quellenangabe in jeder Caption), Einstieg am
+// gemessenen Energie-Fenster (automation/music/_einstiege.json, automation/music/einstiege.py) statt beim Intro,
+// keine Wiederholung unter den letzten drei Reels. Verlauf in social/_musik_verlauf.txt (auch für die Lernschleife).
+const STIMMUNG = {
+  beauty:   ['luxe-lounge-sax.wav', 'luxe-premium.wav', 'luxe-cinematic-house.wav', 'luxe-house2.wav'],
+  schmuck:  ['luxe-premium.wav', 'luxe-lounge-sax.wav', 'luxe-cinematic-house.wav', 'luxe-orchestra.wav'],
+  mode:     ['luxe-house1.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-lounge-sax.wav', 'luxe-hype-pro.mp3'],
+  gadget:   ['luxe-hype-pro.mp3', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb.wav', 'luxe-hype1.wav'],
+  fitness:  ['luxe-hype1.wav', 'luxe-hype3.wav', 'luxe-liquid-dnb-electronic.wav', 'luxe-hype-pro.mp3'],
+  home:     ['luxe-house1.wav', 'luxe-lounge-sax.wav', 'luxe-premium.wav', 'luxe-cinematic-house.wav'],
+  kueche:   ['luxe-house2.wav', 'luxe-house1.wav', 'luxe-lounge-sax.wav', 'luxe-hype2.wav'],
+  haustier: ['luxe-hype2.wav', 'luxe-house2.wav', 'luxe-cinematic-house.wav', 'luxe-house1.wav'],
+  kinder:   ['luxe-hype2.wav', 'luxe-house2.wav', 'luxe-orchestra.wav', 'luxe-cinematic-house.wav'],
+};
+const ALLE_EIGENEN = [...new Set(Object.values(STIMMUNG).flat())];
+const VERLAUF = 'social/_musik_verlauf.txt';
+function musikWahl(th, pid) {
+  let ein = {}; try { ein = JSON.parse(fs.readFileSync('automation/music/_einstiege.json', 'utf8')); } catch {}
+  const letzte = (fs.existsSync(VERLAUF) ? fs.readFileSync(VERLAUF, 'utf8').trim().split('\n') : []).slice(-3).map(z => z.split('\t')[1]);
+  const pool = (STIMMUNG[th] || ALLE_EIGENEN).filter(m => fs.existsSync('automation/music/' + m));
+  const frei = pool.filter(m => !letzte.includes(m));
+  const wahl = (frei.length ? frei : pool.length ? pool : MUSIC)[num(pid) % (frei.length || pool.length || MUSIC.length)];
+  const st = (ein[wahl] && ein[wahl].einstiege) || [0];
+  const start = st[Math.floor(num(pid) / 7) % st.length] || 0;
+  return { datei: wahl, start };
+}
+function musikMerken(id, m, th) { try { fs.appendFileSync(VERLAUF, `${new Date().toISOString()}\t${m.datei}\t${m.start}\t${th}\t${id}\n`); } catch {} }
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // pid → stabile Zahl (auch fuer UUID-pids wie F5BA858E-…; GEMESSEN 22.09.: Number(...) gab NaN → Hook «undefined», Musik «undefined»)
 const num = p => { let h = 0; for (const c of String(p)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
@@ -194,8 +222,9 @@ if (process.env.NEU_RENDERN === '1') {
         execFileSync('curl', ['-s', '-L', '--max-time', '180', '-H', 'Referer: https://developers.cjdropshipping.com/', '-o', src, vurl], { stdio: 'ignore' });
         if (!fs.existsSync(src) || fs.statSync(src).size < 200000) { console.log(`   ${pid}: Video zu klein`); continue; }
         let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
-        const musik = MUSIC[num(pid) % MUSIC.length];
-        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)) } });
+        const mw = musikWahl(thema(k.title), pid), musik = mw.datei;
+        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start) } });
+        musikMerken(`cjreel-${pid}`, mw, thema(k.title));
         if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log(`   ${pid}: Render fehlgeschlagen`); continue; }
         if (process.env.OHNE_PUSH === '1') { console.log(`   ✅ ${pid} gerendert → ${out} (kein Push)`); neu++; continue; }
         fs.copyFileSync(out, `${MEDIEN}/reel_${pid}.mp4`); dateien.push(`${MEDIEN}/reel_${pid}.mp4`); neu++;
@@ -301,8 +330,9 @@ for (const k of reihe) {
     if (!fs.existsSync(src) || fs.statSync(src).size < 200000) { console.log('   Video zu klein/leer'); fs.rmSync(src, { force: true }); continue; }
     let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
     if (dur && dur < 3) { console.log('   Video kuerzer als 3 s'); continue; }
-    let musik = MUSIC[num(k.pid) % MUSIC.length]; if (musik === letzteMusik) musik = MUSIC[(MUSIC.indexOf(musik) + 1) % MUSIC.length];
-    execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)) } });
+    const mw = musikWahl(th, k.pid), musik = mw.datei;
+    console.log(`   Musik: ${musik} ab ${mw.start}s [${th}]`);
+    execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start) } });
     if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log('   Render fehlgeschlagen'); continue; }
     const datei = `reel_${k.pid}.mp4`; fs.copyFileSync(out, `${MEDIEN}/${datei}`);
     const url = RAW + datei;
@@ -312,8 +342,8 @@ for (const k of reihe) {
     try { code = execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', url], { encoding: 'utf8' }); } catch {}
     if (!/^20[06]$/.test(code)) { console.log(`   Adresse antwortet ${code} — Reel bleibt im Repo, Zeile folgt beim naechsten Lauf`); continue; }
     appendReel(`cjreel-${k.pid}`, url, cap, tags, 'instagram,facebook');
-    fs.appendFileSync(LEDGER, k.pid + '\n'); fs.writeFileSync('/tmp/_reel_last_music', musik);
-    gitPush([CSV, LEDGER, KEINVIDEO], `Reel-Queue: ${k.pid} ready`);
+    fs.appendFileSync(LEDGER, k.pid + '\n'); fs.writeFileSync('/tmp/_reel_last_music', musik); musikMerken(`cjreel-${k.pid}`, mw, th);
+    gitPush([CSV, LEDGER, KEINVIDEO, VERLAUF], `Reel-Queue: ${k.pid} ready`);
     made++; console.log(`   ✅ Reel ${made}/${BATCH} → queue (${url.slice(-40)})`);
   } catch (e) { console.log('   Fehler:', String(e.message || e).slice(0, 120)); }
   finally { fs.rmSync(src, { force: true }); fs.rmSync(out, { force: true }); }

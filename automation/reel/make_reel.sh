@@ -15,11 +15,15 @@ DUR="${DUR:-11}"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 TMP="$(mktemp -d /tmp/reelov.XXXXXX)"; trap 'rm -rf "$TMP"' EXIT
 python3 "$HERE/overlay.py" "$TMP/static.png" "$TMP/hook.png" "$T1" "$T2" "$PRICE" "$HOOK"
-ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -i "$SRC" -i "$MUSIC" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "
+# Musik v2 (23.09.2026): MUSIK_START = gemessener Energie-Einstieg (automation/music/_einstiege.json) statt immer
+# Sekunde 0 — bei 11 s kam der Drop sonst oft gar nicht vor. Lautheit per loudnorm auf -14 LUFS (Plattform-Norm)
+# statt «volume=0.8» (Stücke lagen zwischen -9 und -15 LUFS).
+MUSIK_START="${MUSIK_START:-0}"
+ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -i "$SRC" -ss "$MUSIK_START" -i "$MUSIC" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "
 [0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.06[bg];
 [0:v]scale=w='if(gt(ih/iw\,0.58)\,-2\,1000)':h='if(gt(ih/iw\,0.58)\,580\,-2)'[fg];
 [bg][fg]overlay=(W-w)/2:600+(580-h)/2[base];
 [base][2:v]overlay=0:0[v1];
 [v1][3:v]overlay=0:0:enable='lt(t,3.2)'[v]
-" -map "[v]" -map 1:a -af "afade=t=in:d=0.5,afade=t=out:st=$((DUR-1)):d=1,volume=0.8" \
+" -map "[v]" -map 1:a -af "afade=t=in:d=0.3,afade=t=out:st=$((DUR-1)):d=1,loudnorm=I=-14:TP=-1.5:LRA=11" \
   -c:v libx264 -preset medium -crf 24 -pix_fmt yuv420p -c:a aac -b:a 128k -shortest "$OUT"
