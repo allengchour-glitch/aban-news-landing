@@ -73,3 +73,27 @@ gid://shopify/Product/15448946278785	2026-09-23T03:09Z	schon-DRAFT	17.90	102.59	
 gid://shopify/Product/15446272606593	2026-09-23T03:09Z	schon-DRAFT	34.90	128.74	Faltbarer Handwagen
 gid://shopify/Product/15447636771201	2026-09-23T03:09Z	schon-DRAFT	28.90	112.99	Miao Xianer Katzenbaum aus Holz
 gid://shopify/Product/15450853507457	2026-09-23T03:09Z	schon-DRAFT	22.90	117.59	Daunen-Winterdecke
+gid://shopify/Product/15448920916353	2026-09-23T03:09Z	schon-DRAFT	15.90	99.22	Runder Teppich im Ethno-Stil
+gid://shopify/Product/15453730308481	2026-09-23T03:09Z	schon-DRAFT	15.90	98.58	Alphabet Wandbild für Schlaf- & Esszimmer
+gid://shopify/Product/15430245515649	2026-09-23T03:09Z	schon-DRAFT	32.90	122.33	Transportbox «PetGo» · für Hund & Katze, belüftet, flugtaugl
+gid://shopify/Product/15449491865985	2026-09-23T03:09Z	schon-DRAFT	31.90	114.24	Holzkohle-Ofen für Zuhause
+gid://shopify/Product/15504172581249	2026-09-23T03:09Z	schon-DRAFT	31.90	113.88	Nordische Keramikschale für Frühstück und Salat
+gid://shopify/Product/15447634903425	2026-09-23T03:09Z	schon-DRAFT	72.90	154.80	Doppellagiges Katzenbett aus Rattan
+gid://shopify/Product/15496383201665	2026-09-23T03:10Z	schon-DRAFT	15.90	95.91	Baumwolldecke für Sofa – verschiedene Grössen
+gid://shopify/Product/15447635984769	2026-09-23T03:10Z	schon-DRAFT	75.90	164.42	Sternenhimmel Katzenbett – Geborgenheit für jede Jahreszeit
+gid://shopify/Product/15503281127809	2026-09-23T03:10Z	schon-DRAFT	16.90	96.32	Amerikanische Staubschutzdecke Baumwolle
+gid://shopify/Product/15501060702593	2026-09-23T03:10Z	schon-DRAFT	15.90	95.11	Fluffy Dreieckiges Lesekissen für Bett & Sofa
+gid://shopify/Product/15497448456577	2026-09-23T03:10Z	schon-DRAFT	15.90	95.00	LED-Anhänger für Haustiere mit Ladefunktion
+gid://shopify/Product/15496529969537	2026-09-23T03:10Z	schon-DRAFT	36.90	115.79	Anti-Schuppen & Nährendes Shampoo
+gid://shopify/Product/15495585628545	2026-09-23T03:10Z	schon-DRAFT	46.90	125.07	Dicker Teppich für Schlafzimmer, japanisch-koreanisch
+gid://shopify/Product/15453743513985	2026-09-23T03:11Z	schon-DRAFT	52.90	130.78	Drohne mit Dual-Kamera und GPS
+gid://shopify/Product/15447635329409	2026-09-23T03:11Z	schon-DRAFT	18.90	101.36	Wolken-Kratzbaum mit U-förmiger Liegefläche
+gid://shopify/Product/15504088400257	2026-09-23T03:11Z	schon-DRAFT	20.90	98.23	Samt-Sofaüberzug, einfarbig
+gid://shopify/Product/15506273665409	2026-09-23T03:11Z	schon-DRAFT	37.90	115.07	Lingzha 2pro Kabelgebundenes Gamepad für Tablets
+gid://shopify/Product/15451932590465	2026-09-23T03:11Z	schon-DRAFT	27.90	100.69	Professionelles 33-teiliges Pinselset
+gid://shopify/Product/15449492291969	2026-09-23T03:11Z	schon-DRAFT	14.90	94.27	Aufbewahrungsschrank mit mehreren Ebenen
+gid://shopify/Product/15497437708673	2026-09-23T03:12Z	schon-DRAFT	19.90	92.26	Solar-Warnleuchte "Hufeisen-Schmetterling"
+gid://shopify/Product/15495090897281	2026-09-23T03:12Z	schon-DRAFT	17.90	89.73	Aerial Drohne mit HD-Kamera
+gid://shopify/Product/15453791912321	2026-09-23T03:12Z	schon-DRAFT	15.90	87.27	Teddysweater für Hunde
+gid://shopify/Product/15500899352961	2026-09-23T03:12Z	schon-DRAFT	16.90	88.19	Kuscheliges Katzenbett «Shell Nest»
+gid://shopify/Product/15452675899777	2026-09-23T03:12Z	schon-DRAFT	57.90	128.99	Keramik Obstschaale
