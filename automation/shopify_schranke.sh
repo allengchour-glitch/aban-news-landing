@@ -34,7 +34,20 @@ if [ -z "${_SLOT:-}" ]; then
   # die meisten mit exit 0 entlassen und der Aufseher haette sie zwei Minuten spaeter erneut
   # gestartet (Zaehler-/Anspruchs-Rauschen). Ein Wartender haelt nichts; die Reihe rueckt
   # nach, sobald ein Platz frei wird; der stuendliche Container-Neustart ist die Obergrenze.
+  # ⚠️ DEADLOCK 23.09.2026 (gemessen 19:40–20:10): «Ein Wartender haelt nichts» stimmt NICHT, wenn der Aufrufer die
+  # Produkttext-Sperre (Deskriptor 8, TXTLOCK des Aufsehers) schon genommen hat. liechtenstein_raus hielt fd 8 und
+  # wartete hier auf einen Platz; produkttexte_du_form hielt Platz 1 und wartete je Produkt auf fd 8 → beide standen,
+  # dahinter sechs Tages-Waechter bis zu 3 h. Und «der stuendliche Neustart ist die Obergrenze» galt an diesem Tag
+  # nicht (Container 3 h durchgelaufen). Darum: (1) wer fd 8 haelt, wartet NIE auf einen Platz (naechster Aufseher-
+  # Lauf versucht es wieder); (2) alle anderen warten hoechstens 45 Minuten.
+  if [ -e "/proc/$$/fd/8" ]; then
+    echo "$(date -u +%H:%M) Schranke voll, Aufrufer haelt die Text-Sperre — kein Warten (Deadlock-Schutz): $*"
+    exit 0
+  fi
   exec 21>"/tmp/${_NAME}_1.lock"
-  flock 21
+  if ! flock -w 2700 21; then
+    echo "$(date -u +%H:%M) Schranke 45 min voll — naechster Lauf: $*"
+    exit 0
+  fi
 fi
 exec "$@"
