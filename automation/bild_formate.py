@@ -125,6 +125,19 @@ def bildtext_woerter(im, url, name, bt):
     return n
 
 
+# ⚠️ BLINDER FLECK (gemessen 23.09. 23:30): Das Ersatzbild 975036_2.jpg (Verpackungskarton mit «Light-Up Airblown Inflatable
+# Grim Reaper», «SUITABLE FOR OUTDOOR USE», Widmann-Logo in Schmuckschrift) liest Tesseract mit 0 Wörtern an der Quelle, 1 auf
+# dem Pin. Das Tor erkennt gesetzte Textzeilen, NICHT stilisierte Packungsschrift — der Kontaktbogen (--bogen) bleibt Pflicht,
+# und ein Sichtbefund gehört als Zeile in _uebersprungen.tsv (name, grund, geprueft): Produkte darin werden hier NICHT mehr
+# gerendert (sonst käme der Karton beim nächsten Lauf wieder) und vom Pinner nicht gepinnt. FORCE=1 hebt das für einen Lauf auf.
+def uebersprungen_lesen():
+    p = os.path.join(OUT, UEBERSPRUNGEN_NAME)
+    if not os.path.exists(p):
+        return {}
+    with open(p, newline="", encoding="utf-8") as fh:
+        return {r["name"]: r for r in csv.DictReader(fh, delimiter="\t")}
+
+
 def uebersprungen_merken(name, grund):
     if DRY:
         return
@@ -569,7 +582,11 @@ def main():
             verarbeiten(r["id"], [{"url": r["image_url"]}], None, None, None, ["ig45"], idx, erg, bt)
     if a.handles:
         info = produkte(a.handles)
+        ueb = {} if os.environ.get("FORCE") == "1" else uebersprungen_lesen()
         for h in a.handles:
+            if h in ueb:
+                print(f"  – {h}: übersprungen laut {UEBERSPRUNGEN_NAME} ({ueb[h].get('grund', '')[:90]}) — FORCE=1 hebt das auf")
+                erg.append({"name": h, "status": "uebersprungen"}); continue
             p = info.get(h)
             if not p:
                 print(f"  ✗ {h}: Produkt nicht gefunden"); erg.append({"name": h, "status": "fehlt"}); continue
