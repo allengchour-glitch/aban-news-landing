@@ -2047,7 +2047,13 @@ def schnitt_versatz(p, grenzen, y0=500, y1=1150):
         lo, hi = max(1, b - 3), min(len(d), b + 4)
         if lo >= hi:
             out.append(None); staerke.append(None); continue
-        out.append(int(np.argmax(d[lo:hi])) + lo - b)
+        # Gleichstand zaehlt fuer den Plan: ist der Sprung AM Soll-Bild fast so gross wie das Maximum (>= 80 %), liegt der
+        # Schnitt dort. GEMESSEN 23.09. (Stativ-Einzelfahrt, Handbewegung): Soll-Bild 42,9, Bild +3 43,3 -> argmax
+        # meldete +3, obwohl der Schnitt exakt sass; ein echter Versatz zeigt am Soll-Bild nur Inhalts-Wechsel.
+        v = int(np.argmax(d[lo:hi])) + lo - b
+        if b < len(d) and d[b] >= 0.8 * float(d[lo:hi].max()):
+            v = 0
+        out.append(v)
         pk = float(d[max(1, b - 1):min(len(d), b + 2)].max())
         idx = [j for j in range(max(1, b - 15), min(len(d), b + 16)) if maske[j]]
         loc = float(np.median(d[idx])) if idx else (float(np.median(innen)) if len(innen) else 0.0)
@@ -2198,6 +2204,8 @@ def main(argv=None):
         ao = a.arbeitsordner
         if ao:
             os.makedirs(ao, exist_ok=True)
+        if a.musik and not a.analyse:
+            musik_pfad(a.musik)                  # Musikfehler vor der teuren Analyse melden (Technik-Pruefung: 17 s umsonst)
         A = analyse(quelle, cache=not a.kein_cache, cache_pfad=_cache_pfad(quelle, ao) if ao else None)
         if a.analyse:
             kurz = {k: v for k, v in A.items() if k != 'profil'}

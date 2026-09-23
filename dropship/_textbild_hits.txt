@@ -15977,3 +15977,7 @@ gid://shopify/Product/15453793976705	49->0	Lesekissen mit Armlehne und Getränke
 gid://shopify/Product/15453794042241	19->0	Edelstahl-Lunchbox mit Fächern
 gid://shopify/Product/15453794107777	34->1	Kauenset für Hunde
 gid://shopify/Product/15453794238849	71->3	Grosse Ramen-Schüssel
+gid://shopify/Product/15502049902977	17->0	Make-up Bürsten Set
+gid://shopify/Product/15503090286977	30->0	Personalisiertes DIY Haustierhalsband
+gid://shopify/Product/15503113912705	101->0	Augenbrauen-Schablonen-Set mit Halteband
+gid://shopify/Product/15503147630977	26->0	GPS-Halsband für Haustiere mit Sender
