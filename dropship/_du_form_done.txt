@@ -14044,3 +14044,24 @@ led-rotlicht-haarpflegekappe-603000	2026-09-23	du
 led-rucksack-display-429440	2026-09-23	du
 led-rucksack-mit-display-und-musik-098368	2026-09-23	du
 led-rucksack-mit-text-animation-244480	2026-09-23	du
+led-sattelgeschirr-fur-hunde-939712	2026-09-23	du
+led-scharnierleuchte-fur-schranke-328640	2026-09-23	du
+led-schminkbox-mit-lichtspiegel-885504	2026-09-23	verdacht:du deine Kosmetikartikel stets griffbereit haben
+led-schminkspiegel-doppelseitig-mit-licht-169920	2026-09-23	du
+led-schminkspiegel-faltbar-mit-licht-635900	2026-09-23	du
+led-schminkspiegel-mit-10x-vergrosserung-068544	2026-09-23	du
+led-schminkspiegel-wiederaufladbar-tragbar-639500	2026-09-23	du
+led-schmuck-geschenkbox-608700	2026-09-23	du
+led-schonheitsgerat-fur-die-halspflege-626800	2026-09-23	du
+led-schuhclip-sicherheitslicht-76e559	2026-09-23	du
+led-selfie-ringlicht-mit-handyhalterung-286fe0	2026-09-23	du
+led-sensor-lichtleiste-5e2d3d	2026-09-23	teilweise
+led-sicherheitslicht-fur-hunde-623400	2026-09-23	du
+led-sicherheitsweste-fur-e-scooter-0c8840	2026-09-23	teilweise
+led-silikon-7-farben-maske-zur-hautverjungung-606800	2026-09-23	du
+led-silikon-photon-gesichtsmaske-623400	2026-09-23	teilweise
+led-silikonmaske-zur-hautverjungung-613700	2026-09-23	um-ohne-wirkung
+led-smart-bluetooth-speaker-e27-lampe-d1e334	2026-09-23	du
+led-spiegel-mit-licht-fur-badezimmer-make-up-628700	2026-09-23	du
+led-sport-brusttasche-fur-herren-219712	2026-09-23	um-ohne-wirkung
+led-sportweste-fur-outdoor-aktivitaten-476929	2026-09-23	teilweise
