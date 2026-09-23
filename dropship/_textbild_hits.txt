@@ -15943,3 +15943,5 @@ gid://shopify/Product/15500982747521	135->2	Katzen Diamond Painting Set
 gid://shopify/Product/15500984058241	14->0	Luftstromladegerät
 gid://shopify/Product/15523863462273	34->0	Mushroom Silikon-Trichter
 gid://shopify/Product/15523963339137	31->0	Fressnapf aus Keramik für Haustiere
+gid://shopify/Product/15525265932673	19->0	Wasserdichte Business‑Armbanduhr aus Stahl
+gid://shopify/Product/15525499601281	23->0	Futterspielzeug für Hunde
