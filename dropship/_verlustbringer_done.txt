@@ -339,3 +339,8 @@ gid://shopify/Product/15497360114049	2026-09-23T05:09Z	draft	17.90	48.19	Smarter
 gid://shopify/Product/15454198792577	2026-09-23T05:09Z	draft	15.90	46.17	Lithium-Akkupack für Sprayer-Trolley
 gid://shopify/Product/15496614969729	2026-09-23T05:09Z	draft	20.90	51.10	Rutschfeste, saugfähige Küchenmatte
 gid://shopify/Product/15449168707969	2026-09-23T05:09Z	draft	56.90	87.06	Universal Rollkoffer mit grosser Kapazität
+gid://shopify/Product/15452599386497	2026-09-23T05:09Z	draft	33.90	64.05	Knie-Massager
+gid://shopify/Product/15502266827137	2026-09-23T05:09Z	draft	35.90	66.00	Handy-Aufbewahrungsbox aus Aluminium
+gid://shopify/Product/15448922390913	2026-09-23T05:09Z	draft	28.90	58.83	Wasserfester Sofa-Schutz für alle Jahreszeiten
+gid://shopify/Product/15451912044929	2026-09-23T05:10Z	draft	18.90	48.77	Küchenmatten 2er-Set, rutschfest & wasserdicht
+gid://shopify/Product/15501743096193	2026-09-23T05:10Z	draft	20.90	50.75	Papiersegel Puzzle
