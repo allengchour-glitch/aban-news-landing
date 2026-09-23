@@ -16,23 +16,49 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-23T18:47:14Z — SCHARF
+## Letzter Lauf 2026-09-23T18:57:53Z — DRY
 
 Gescannt 50010 aktive von 50010 (EXACT); Wächter-Stand 9 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| menstruationscup-fur-frauen-625600 | HYGIENE+POLICY | Typ Aufbewahrung & Organizer → Wellness & Gesundheit; Kategorie → hb-3-8-5; +google-policy-flag,google-policy-titel,intimpflege; −aufbewahrung,haushalt,organizer,wohnen | ok |
-| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Titel «BIDEN Herrenuhr ultraflach mit Kalender» → «Ultraflache Herrenuhr mit Kalender»; Beschreibung; SEO | ok; text-sperre-belegt |
+| used-look-jeans-mit-leicht-ausgestelltem-bein-621700 | USED-TEXT | Beschreibung | DRY |
+| erhohende-board-schuhe-im-used-look-605300 | USED-TEXT | Beschreibung | DRY |
+| ombre-t-shirt-mit-used-look-602800 | USED-TEXT | Beschreibung | DRY |
+| herren-hoodie-im-used-look-633500 | USED-TEXT | Beschreibung | DRY |
+| patchwork-wide-leg-jeans-im-used-look-612400 | USED-TEXT | Beschreibung | DRY |
+| rebellious-washed-distressed-short-sleeve-top-633300 | USED-TEXT | Beschreibung | DRY |
+| herren-jeans-im-used-look-636600 | USED-TEXT | Beschreibung | DRY |
+| used-look-patchwork-jeans-fur-herren-625300 | USED-TEXT | Beschreibung | DRY |
+| retro-straight-jeans-mit-used-look-628400 | USED-TEXT | Beschreibung | DRY |
+| slim-fit-used-look-jeans-fur-herren-616600 | USED-TEXT | Beschreibung | DRY |
+| heavyweight-kapuzenjacke-im-used-look-631300 | USED-TEXT | Beschreibung | DRY |
+| used-look-jeans-fur-herren-600800 | USED-TEXT | Beschreibung | DRY |
+| herren-langarmhemd-im-used-look-620200 | USED-TEXT | Beschreibung | DRY |
+| retro-ohrringe-im-used-look-mit-kettendetail-626900 | USED-TEXT | Beschreibung | DRY |
+| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Beschreibung | DRY |
+| twill-umhangetasche-im-used-look-676544 | USED-TEXT | Beschreibung | DRY |
 
 ## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)
 
-- 1-zoll-zapfpistole-fur-diesel-und-benzin-257024: Guns and Parts
-- baustein-luxuslimousine-auf-raedern-334528: Vehicles
 - eleganter-wollmantel-fur-damen-601200: Title under review
-- intelligenter-intimreiniger-fur-die-frau-723136: Inappropriate title
-- k68-signal-detektor-46ae1c: Hacking
-- laser-silber-rippband-75mm-50-yards-026496: Guns and Parts
-- spiral-pipe-atomizer-fur-trockene-krauter-467392: Illegal drugs
-- taktisches-outdoor-stativ-faltbar-ausziehbar-519234: Guns and Parts
-- zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: Inappropriate title, Title under review
+
+## Ledger gesamt
+
+44 Produkte mit rückgelesenen Änderungen; 16 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+- used-look-jeans-mit-leicht-ausgestelltem-bein-621700: USED
+- erhohende-board-schuhe-im-used-look-605300: USED
+- ombre-t-shirt-mit-used-look-602800: USED
+- herren-hoodie-im-used-look-633500: USED
+- patchwork-wide-leg-jeans-im-used-look-612400: USED
+- rebellious-washed-distressed-short-sleeve-top-633300: USED
+- herren-jeans-im-used-look-636600: USED
+- used-look-patchwork-jeans-fur-herren-625300: USED
+- retro-straight-jeans-mit-used-look-628400: USED
+- slim-fit-used-look-jeans-fur-herren-616600: USED
+- heavyweight-kapuzenjacke-im-used-look-631300: USED
+- used-look-jeans-fur-herren-600800: USED
+- herren-langarmhemd-im-used-look-620200: USED
+- retro-ohrringe-im-used-look-mit-kettendetail-626900: USED
+- biden-herrenuhr-ultraflach-mit-kalender-611776: EINZEL
+- twill-umhangetasche-im-used-look-676544: USED
