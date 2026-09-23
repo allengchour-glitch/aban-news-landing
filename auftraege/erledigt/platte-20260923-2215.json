@@ -1,0 +1,44 @@
+{
+  "id": "platte-20260923-2215",
+  "typ": "wartung",
+  "aktion": "platte",
+  "warum": "Betreiber 23.09. «für volle automation»: feste Wartungsaktion nach Pruefer-Runde (19 Befunde eingearbeitet, 13 Gegenproben gruen) — Server-Platte/Dienste/Crontab messen, ohne dass der Betreiber tippt",
+  "stand": "ok",
+  "begonnen": "2026-09-23T22:02:46.639Z",
+  "dauer_s": 0.4,
+  "ergebnis": {
+    "aktion": "platte",
+    "was": "Platte, /opt (2 Ebenen), Git-Objektgroessen der Klone und halbfertige Packdateien melden",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "df -h /",
+        "ausgabe": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        38G   25G   11G  70% /\n"
+      },
+      {
+        "befehl": "du -xh --max-depth=2 /opt",
+        "ausgabe": "312K\t/opt/abannews/minispiele\n7.5M\t/opt/abannews/it\n84K\t/opt/abannews/video-radar\n32K\t/opt/abannews/server\n16K\t/opt/abannews/assistant\n18M\t/opt/abannews/downloads\n20K\t/opt/abannews/daten-produkt\n130M\t/opt/abannews/pod\n92K\t/opt/abannews/mediakit\n361M\t/opt/abannews/social\n1.5M\t/opt/abannews/maerkte\n765M\t/opt/abannews/models\n80K\t/opt/abannews/webbaukasten-radar\n16K\t/opt/abannews/blender\n7.7M\t/opt/abannews/fr\n76K\t/opt/abannews/ki-geld-projekt\n8.5M\t/opt/abannews/audio\n8.0K\t/opt/abannews/db\n8.0K\t/opt/abannews/.well-known\n40K\t/opt/abannews/compliance\n88K\t/opt/abannews/newsletter-radar\n48K\t/opt/abannews/content\n76K\t/opt/abannews/lifestyle-radar\n716K\t/opt/abannews/.github\n11M\t/opt/abannews/en\n82M\t/opt/abannews/spiele-dev\n136K\t/opt/abannews/kurs_content\n556K\t/opt/abannews/archive\n44K\t/opt/abannews/video-pipeline\n108K\t/opt/abannews/handwerk-radar\n32K\t/opt/abannews/_manuscripts\n36M\t/opt/abannews/textures\n112K\t/opt/abannews/workers\n244K\t/opt/abannews/game\n8.0K\t/opt/abannews/buero\n1.4M\t/opt/abannews/data\n44K\t/opt/abannews/pod-shop\n104K\t/opt/abannews/prompts-bibliothek\n494M\t/opt/abannews/reels\n76K\t/opt/abannews/kurse-radar\n388K\t/opt/abannews/themen\n352K\t/opt/abannews/functions\n20K\t/opt/abannews/portal\n8.0K\t/opt/abannews/.wrangler\n212K\t/opt/abannews/reports\n8.0K\t/opt/abannews/schnellstart\n124K\t/opt/abannews/foerder-radar\n16K\t/opt/abannews/heygen\n3.1M\t/opt/abannews/ki-schriftsteller\n36K\t/opt/abannews/monitor\n76K\t/opt/abannews/css\n268K\t/opt/abannews/linkedin\n65M\t/opt/abannews/dropship\n1019M\t/opt/abannews/video-prototypes\n40K\t/opt/abannews/ki-verzeichnis\n92K\t/opt/abannews/chatbot-radar\n72K\t/opt/abannews/produkt-imperium\n21M\t/opt/abannews/media\n192K\t/opt/abannews/icons\n88K\t/opt/abannews/dropshipping-radar\n56K\t/opt/abannews/freegen\n4.6M\t/opt/abannews/tools\n8.0K\t/opt/abannews/.claude\n46M\t/opt/abannews/img\n52K\t/opt/abannews/jobs-radar\n1.2G\t/opt/abannews/_site\n9.5M\t/opt/abannews/design-preview\n2.4G\t/opt/abannews/.git\n124K\t/opt/abannews/brand\n64K\t/opt/abannews/agenturen-radar\n3.1M\t/opt/abannews/vergleich\n64K\t/opt/abannews/hype-watch\n80K\t/opt/abannews/musik-radar\n84K\t/opt/abannews/aban-studio\n4.3M\t/opt/abannews/og\n928K\t/opt/abannews/ki-tools-radar\n1.2M\t/opt/abannews/js\n39M\t/opt/abannews/automation\n8.0K\t/opt/abannews/marketing\n92K\t/opt/abannews/buchhaltung-radar\n536K\t/opt/abannews/docs\n8.0K\t/opt/abannews/snippets\n12K\t/opt/abannews/audit\n196K\t/opt/abannews/dossier\n176K\t/opt/abannews/automatisierung-radar\n88K\t/opt/abannews/voice-radar\n6.7G\t/opt/abannews\n19M\t/opt/jarvis/venv\n20M\t/opt/jarvis\n369M\t/opt/luxe-agent/repo\n369M\t/opt/luxe-agent\n5.8G\t/opt/luxe-waechter/repo\n5.8G\t/opt/luxe-waechter\n8.0K\t/opt/pw-browsers/.links\n4.9M\t/opt/pw-browsers/ffmpeg-1011\n261M\t/opt/pw-browsers/chromium_headless_shell-1243\n393M\t/opt/pw-browsers/chromium-1243\n658M\t/opt/pw-browsers\n4.0K\t/opt/node22/bin\n8.0K\t/opt/node22\n6.9G\t/opt/luxe/repo\n6.9G\t/opt/luxe\n21G\t/opt\n"
+      },
+      {
+        "befehl": "git -C /opt/abannews count-objects -vH",
+        "ausgabe": "count: 282\nsize: 3.67 MiB\nin-pack: 31364\npacks: 1\nsize-pack: 2.35 GiB\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0 bytes\n"
+      },
+      {
+        "befehl": "git -C /opt/luxe-waechter/repo count-objects -vH",
+        "ausgabe": "count: 358\nsize: 25.75 MiB\nin-pack: 111565\npacks: 2\nsize-pack: 3.01 GiB\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0 bytes\n"
+      },
+      {
+        "befehl": "git -C /opt/luxe-agent/repo count-objects -vH",
+        "ausgabe": "count: 19\nsize: 196.00 KiB\nin-pack: 2669\npacks: 25\nsize-pack: 52.56 MiB\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0 bytes\n"
+      },
+      {
+        "befehl": "git -C /opt/luxe/repo count-objects -vH",
+        "ausgabe": "count: 0\nsize: 0 bytes\nin-pack: 73077\npacks: 1\nsize-pack: 3.91 GiB\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0 bytes\n"
+      },
+      {
+        "befehl": "find /opt/abannews/.git/objects/pack /opt/luxe-waechter/repo/.git/objects/pack /opt/luxe-agent/repo/.git/objects/pack /opt/luxe/repo/.git/objects/pack -maxdepth 1 -name tmp_* -printf %s %p\n",
+        "ausgabe": ""
+      }
+    ]
+  }
+}
