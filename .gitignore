@@ -31,6 +31,7 @@ reports/*
 # Fehler ist erst bei NEUEN Report-Dateien sichtbar geworden.
 !reports/ABAN-DIRECTOR.md
 !reports/TRADING-BOT.md
+!reports/DAYTRADING.md
 !reports/ABAN-STATS.md
 !reports/IMPROVEMENT-REPORT.md
 !reports/RADAR-DATEN-AUDIT.md
@@ -106,3 +107,5 @@ buero/*
 !reports/design/
 !reports/design/*.md
 _fehlprotokolle/
+# Stundenkerzen (je ~0.6 MB, holt daytrading.py selbst, wenn sie fehlen)
+tools/trading/daten/h_*.json

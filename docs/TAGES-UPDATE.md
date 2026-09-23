@@ -23,7 +23,17 @@ Block „KI-News aus N Quellen".
 Der Lern-Bot entscheidet jeden Morgen pro Markt (investiert oder Cash) und wird mit dem nächsten
 Schlusskurs abgerechnet. Nichts wird rückwirkend eingetragen. Vorher läuft `--pruefen`: im Rückblick
 muss er rund 50 % treffen, eine Variante mit Blick in die Zukunft 100 %, sonst schreibt der Lauf nichts.
-Kein echtes Geld, keine Broker-Anbindung.
+Kein echtes Geld, keine Broker-Anbindung. Märkte: S&P 500, SMI, Nestlé, Bitcoin, EUR/CHF, Gold,
+Silber, Öl (WTI).
+
+**Daytrading-Buch** (`daten["daytrading"]`, Gold/Silber/Öl/S&P-Future/Bitcoin, Stundenkerzen):
+jeden Morgen wird pro Markt eine Tagesregel eingefroren (`einfrierungen`, `ab` = morgen). Jede
+abgeschlossene Sitzung wird mit der jüngsten Einfrierung gehandelt, deren `ab` nicht nach ihr liegt.
+Einfrierungen werden nur angehängt, nie überschrieben. (Erste Fassung überschrieb `gilt_ab` bei jedem
+Lauf — damit rückte die Regel jedes Mal hinter die Sitzung, die sie handeln sollte, und es wurde nie
+gebucht. Die Gegenprobe fand es: 0 Trades.) Stundenkerzen liegen nicht im Repo (`h_*.json`, ~3 MB),
+das Skript holt fehlende Caches selbst. Rückblick-Test: `python3 tools/trading/daytrading.py`
+→ `reports/DAYTRADING.md`.
 
 ## Märkte
 

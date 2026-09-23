@@ -117,13 +117,187 @@
     "max_einbruch": 0.0,
     "wechsel": 1
    }
+  },
+  "GC=F": {
+   "name": "Gold",
+   "konto": 10000.0,
+   "halten": 9990.0,
+   "wechsel": 0,
+   "entscheid": {
+    "basis_datum": "2026-09-23",
+    "kurs": 4322.7001953125,
+    "position": 0,
+    "regel": "Gleitende Durchschnitte 50/100",
+    "zeit": "2026-09-23T21:26:50Z"
+   },
+   "prognosen": [],
+   "verlauf": [],
+   "statistik": {
+    "tage": 0,
+    "treffer": null,
+    "rendite": 0.0,
+    "halten_rendite": -0.0010000000000000009,
+    "max_einbruch": 0.0,
+    "wechsel": 0
+   }
+  },
+  "SI=F": {
+   "name": "Silber",
+   "konto": 10000.0,
+   "halten": 9990.0,
+   "wechsel": 0,
+   "entscheid": {
+    "basis_datum": "2026-09-23",
+    "kurs": 64.93000030517578,
+    "position": 0,
+    "regel": "Gleitende Durchschnitte 50/150",
+    "zeit": "2026-09-23T21:26:51Z"
+   },
+   "prognosen": [],
+   "verlauf": [],
+   "statistik": {
+    "tage": 0,
+    "treffer": null,
+    "rendite": 0.0,
+    "halten_rendite": -0.0010000000000000009,
+    "max_einbruch": 0.0,
+    "wechsel": 0
+   }
+  },
+  "CL=F": {
+   "name": "Öl (WTI)",
+   "konto": 9990.0,
+   "halten": 9990.0,
+   "wechsel": 1,
+   "entscheid": {
+    "basis_datum": "2026-09-23",
+    "kurs": 92.70999908447266,
+    "position": 1,
+    "regel": "Momentum 20 Tage",
+    "zeit": "2026-09-23T21:26:51Z"
+   },
+   "prognosen": [],
+   "verlauf": [],
+   "statistik": {
+    "tage": 0,
+    "treffer": null,
+    "rendite": -0.0010000000000000009,
+    "halten_rendite": -0.0010000000000000009,
+    "max_einbruch": 0.0,
+    "wechsel": 1
+   }
   }
  },
  "gesamt": {
   "tage": 0,
   "treffer": null,
-  "depot_chf": 49960.0,
-  "halten_chf": 49950.0
+  "depot_chf": 79950.0,
+  "halten_chf": 79920.0
  },
- "stand": "2026-09-23T21:16:26Z"
+ "stand": "2026-09-23T21:26:58Z",
+ "daytrading": {
+  "hinweis": "Regel wird morgens eingefroren und gilt erst ab der nächsten Sitzung. Kosten 0.05 % pro Trade.",
+  "maerkte": {
+   "GC=F": {
+    "name": "Gold",
+    "konto": 10000.0,
+    "regel": "Ausbruch aus 3-Std.-Spanne",
+    "gilt_ab": "2026-09-24",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-24",
+      "regel": "Ausbruch aus 3-Std.-Spanne"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "SI=F": {
+    "name": "Silber",
+    "konto": 10000.0,
+    "regel": "Erste 1 Std. umkehren",
+    "gilt_ab": "2026-09-24",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-24",
+      "regel": "Erste 1 Std. umkehren"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "CL=F": {
+    "name": "Öl (WTI)",
+    "konto": 10000.0,
+    "regel": "Ausbruch aus 3-Std.-Spanne",
+    "gilt_ab": "2026-09-24",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-24",
+      "regel": "Ausbruch aus 3-Std.-Spanne"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "ES=F": {
+    "name": "S&P 500 (Future)",
+    "konto": 10000.0,
+    "regel": "Ausbruch aus 2-Std.-Spanne",
+    "gilt_ab": "2026-09-24",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-24",
+      "regel": "Ausbruch aus 2-Std.-Spanne"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   },
+   "BTC-USD": {
+    "name": "Bitcoin",
+    "konto": 10000.0,
+    "regel": "Ausbruch aus 3-Std.-Spanne",
+    "gilt_ab": "2026-09-24",
+    "einfrierungen": [
+     {
+      "ab": "2026-09-24",
+      "regel": "Ausbruch aus 3-Std.-Spanne"
+     }
+    ],
+    "trades": [],
+    "gebucht_bis": null,
+    "statistik": {
+     "trades": 0,
+     "treffer": null,
+     "rendite": 0.0
+    }
+   }
+  },
+  "gesamt": {
+   "trades": 0,
+   "treffer": null,
+   "depot_chf": 50000.0
+  }
+ }
 }

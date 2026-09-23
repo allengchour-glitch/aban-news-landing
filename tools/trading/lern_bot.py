@@ -37,7 +37,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATEN = Path(__file__).resolve().parent / "daten"
 BERICHT = ROOT / "reports" / "TRADING-BOT.md"
-MAERKTE = {"^GSPC": "S&P 500", "^SSMI": "SMI", "NESN.SW": "Nestlé", "BTC-USD": "Bitcoin", "EURCHF=X": "EUR/CHF"}
+MAERKTE = {"^GSPC": "S&P 500", "^SSMI": "SMI", "NESN.SW": "Nestlé", "BTC-USD": "Bitcoin", "EURCHF=X": "EUR/CHF",
+           "GC=F": "Gold", "SI=F": "Silber", "CL=F": "Öl (WTI)"}
 KOSTEN = 0.001
 LERN_JAHRE = 5
 TAGE_JAHR = 252
@@ -47,14 +48,16 @@ TAGE_JAHR = 252
 def kurse(sym: str, offline: bool) -> list[tuple[str, float]]:
     DATEN.mkdir(exist_ok=True)
     datei = DATEN / (sym.replace("^", "_").replace("=", "_") + ".json")
-    if not offline:
+    if not offline or not datei.exists():  # fehlender Cache (frischer Runner) wird geholt
         url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.request.quote(sym)}"
                f"?period1=946684800&period2={int(datetime.now().timestamp())}&interval=1d")
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=30) as r:
             d = json.load(r)["chart"]["result"][0]
         reihe = [(datetime.fromtimestamp(t, timezone.utc).date().isoformat(), c)
-                 for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
+                 for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c and c > 0]
+        # ⚠️ Öl (CL=F) notierte am 20.04.2020 bei -37 USD. Ein Kurs <= 0 macht jede Rendite
+        # sinnlos (Division, Vorzeichen) — solche Tage fallen raus.
         datei.write_text(json.dumps(reihe))
     return [tuple(x) for x in json.loads(datei.read_text())]
 

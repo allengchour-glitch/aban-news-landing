@@ -22,11 +22,12 @@ import argparse
 import json
 import math
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lern_bot import KOSTEN, LERN_JAHRE, MAERKTE, TAGE_JAHR, handel, kennzahlen, kurse, raum  # noqa: E402
+import daytrading as DT  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 DEPOT = ROOT / "data" / "papierdepot.json"
@@ -106,6 +107,75 @@ def statistik(m):
             "max_einbruch": dd, "wechsel": m["wechsel"]}
 
 
+# ───────────── Daytrading: Regel morgens einfrieren, erst ab der NÄCHSTEN Sitzung handeln ─────────────
+def dt_neu(name):
+    return {"name": name, "konto": START, "regel": None, "gilt_ab": None, "einfrierungen": [], "trades": [],
+            "gebucht_bis": None}
+
+
+def dt_verbuche(m, tage, heute_sitzung, leck=False):
+    """tage = abgeschlossene Sitzungen [(datum, kerzen)]. Jede Sitzung wird mit der jüngsten Regel gehandelt,
+    die VOR ihrem Beginn eingefroren wurde (Einfrierung `ab` <= Sitzungsdatum). Einfrierungen werden nie
+    überschrieben, nur angehängt. leck=True: Gegenprobe (kennt den Tagesschluss)."""
+    regeln = dict(DT.REGELN)
+    fr = m.setdefault("einfrierungen", [])
+    for datum, t in tage:
+        d = datum.isoformat()
+        if m["gebucht_bis"] and d <= m["gebucht_bis"]:
+            continue
+        gueltig = [f for f in fr if f["ab"] <= d]
+        if not gueltig:
+            continue
+        name = gueltig[-1]["regel"]
+        regel = (lambda k: ((1 if k[-1][1] > k[0][1] else -1), k[0][1])) if leck else regeln[name]
+        r, ok = DT.ergebnis(t, regel, 0.0 if leck else DT.KOSTEN)  # Gegenprobe misst nur die Richtung
+        m["konto"] *= 1 + r
+        if ok is not None:
+            m["trades"].append({"tag": d, "regel": name, "rendite": round(r, 6), "richtig": ok})
+        m["gebucht_bis"] = d
+    # Alte Einfrierungen, die von einer jüngeren schon abgelöst und abgerechnet sind, braucht es nicht mehr
+    while len(fr) > 1 and m["gebucht_bis"] and fr[1]["ab"] <= m["gebucht_bis"]:
+        fr.pop(0)
+    lern = tage[-DT.LERN:]
+    if len(lern) < DT.LERN:
+        return
+    beste = max(DT.REGELN, key=lambda rg: DT.sharpe([DT.ergebnis(t, rg[1], DT.KOSTEN)[0] for _, t in lern]))
+    neu_ab = (heute_sitzung + timedelta(days=1)).isoformat()
+    if not fr or neu_ab > fr[-1]["ab"]:
+        fr.append({"ab": neu_ab, "regel": beste[0]})
+        m["regel"], m["gilt_ab"] = beste[0], neu_ab
+
+
+def dt_statistik(m):
+    t = m["trades"]
+    return {"trades": len(t), "treffer": (sum(x["richtig"] for x in t) / len(t)) if t else None,
+            "rendite": m["konto"] / START - 1}
+
+
+def dt_heute():
+    return (datetime.now(timezone.utc) + timedelta(hours=2)).date()
+
+
+def dt_gegenprobe(tage_n=60):
+    """Rückblick: ehrlich ~50 % richtig, mit Kenntnis des Tagesschlusses ~100 %."""
+    ok = True
+    for sym, name in DT.MAERKTE.items():
+        alle = DT.sitzungen(DT.stunden(sym, offline=True))
+        ehrlich, leck = dt_neu(name), dt_neu(name)
+        for k in range(len(alle) - tage_n, len(alle)):
+            fertig, heute = alle[:k], alle[k][0]
+            dt_verbuche(ehrlich, fertig, heute)
+            dt_verbuche(leck, fertig, heute, leck=True)
+        se, sl = dt_statistik(ehrlich), dt_statistik(leck)
+        gut = (se["trades"] > 10 and sl["treffer"] is not None and 0.30 < se["treffer"] < 0.70
+               and sl["treffer"] > 0.97)
+        ok &= gut
+        pz = lambda x: "—" if x is None else f"{x:.1%}"
+        print(f"{'✅' if gut else '❌'} Daytrading {name:17} ehrlich {pz(se['treffer'])} ({se['trades']} Trades, "
+              f"Depot {se['rendite']:+.1%}) · mit Blick auf den Tagesschluss {pz(sl['treffer'])}")
+    return ok
+
+
 def gegenprobe(tage=250):
     """Rückblick über die letzten `tage` Handelstage, als wäre der Bot täglich gelaufen.
     Ehrlich: ~50 % Treffer. Mit Blick in die Zukunft: ~100 %. Sonst stimmt die Buchführung nicht."""
@@ -132,7 +202,7 @@ def main() -> int:
     ap.add_argument("--offline", action="store_true")
     args = ap.parse_args()
     if args.pruefen:
-        return 0 if gegenprobe() else 1
+        return 0 if (gegenprobe() & dt_gegenprobe()) else 1
     daten = json.loads(DEPOT.read_text()) if DEPOT.exists() else {
         "start": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "startkapital_chf": START,
         "hinweis": "Spielgeld, kein echter Handel. Statistik zählt erst ab Start, nichts rückwirkend.",
@@ -149,6 +219,23 @@ def main() -> int:
         e, s = m["entscheid"], m["statistik"]
         print(f"  {name:13} {'investiert' if e['position'] else 'Cash':10} ({e['regel']}) · Basis {e['basis_datum']} · "
               f"{s['tage']} Tage abgerechnet · Depot CHF {m['konto']:,.0f} vs. Halten CHF {m['halten']:,.0f}")
+    dt = daten.setdefault("daytrading", {"hinweis": "Regel wird morgens eingefroren und gilt erst ab der nächsten Sitzung. Kosten 0.05 % pro Trade.", "maerkte": {}})
+    heute = dt_heute()
+    for sym, name in DT.MAERKTE.items():
+        try:
+            alle_s = DT.sitzungen(DT.stunden(sym, args.offline))
+        except Exception as ex:
+            print(f"  Daytrading {name}: keine Stundenkurse ({ex}) — heute übersprungen")
+            continue
+        fertig = [(d, t) for d, t in alle_s if d < heute]
+        m = dt["maerkte"].setdefault(sym, dt_neu(name))
+        dt_verbuche(m, fertig, heute)
+        m["statistik"] = dt_statistik(m)
+        print(f"  Daytrading {name:17} Regel ab {m['gilt_ab']}: {m['regel']} · {m['statistik']['trades']} Trades · "
+              f"Depot CHF {m['konto']:,.0f}")
+    dtt = [x for m in dt["maerkte"].values() for x in m["trades"]]
+    dt["gesamt"] = {"trades": len(dtt), "treffer": (sum(x["richtig"] for x in dtt) / len(dtt)) if dtt else None,
+                    "depot_chf": round(sum(m["konto"] for m in dt["maerkte"].values()), 2)}
     alle = [x for m in daten["maerkte"].values() for x in m["prognosen"]]
     daten["gesamt"] = {"tage": len(alle), "treffer": (sum(x["richtig"] for x in alle) / len(alle)) if alle else None,
                        "depot_chf": round(sum(m["konto"] for m in daten["maerkte"].values()), 2),
