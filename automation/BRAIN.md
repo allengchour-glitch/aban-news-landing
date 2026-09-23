@@ -87,25 +87,6 @@ Newsletter-Link & Hub-Rücklink.
 
 ---
 
-## 🔎 Such-Wächter — findet die Suche, was Leute tippen? (`tools/such_qualitaet.mjs`)
-Misst die eigene Seitensuche (`suchmaschine.html`) an **echten Alltags-Anfragen** statt an
-Seitentiteln: „zügeln", „natel", „was bleibt vom lohn", „kündigungsschreiben". Führt das
-**unveränderte** Such-Skript der Seite in Node aus (kein Browser) — getestet wird der Live-Code.
-
-- Anfragen: `tools/such_fragen.json` (116, daran wurde getunt) + `tools/such_fragen_kontrolle.json`
-  (32, zu Zufallsseiten geschrieben, bevor die Treffer bekannt waren — misst Verallgemeinerung).
-- Lauf: `node tools/such_qualitaet.mjs` · `--datei <set>` · `--seite <alte-version.html>` (Vorher/Nachher).
-- **Automatisch:** `.github/workflows/suche-check.yml` bei jeder Änderung an Suche/Index/Generator
-  (kein Cron). Prüft auch, dass `build_suche_sprachen.py` durchläuft und en/fr/it aktuell sind.
-- Stand 2026-09-23: alt 80 % / 69 % (Haupt/Kontrolle) → neu 100 % / **84 % beim ersten
-  ungesehenen Lauf** (danach 97 %, aber dann nicht mehr ungesehen). Bekannte Lücke: „japan aktien"
-  — die Nikkei-Seite nennt Japan nirgends; das ist eine Inhalts-, keine Such-Lücke.
-- **Erweitern:** neue Zeile `["so tippt man", ["/erwartete-seite.html"]]`. Das Skript bricht ab,
-  wenn die erwartete Seite nicht im Index steht. Erst die Anfrage aufschreiben, DANN nachsehen,
-  was kommt — sonst testet man nur, was man schon weiss.
-
----
-
 ## 🧠 Lern-Sammler — Tool-Ideen (`tools/learn_tool_ideas.py`)
 Kopiert das „Wissenssammler"-Muster (wie `learn_from_youtube.mjs`) für den Tool-/App-Loop:
 kennt den Bestand, hält kuratierte, gefragte DE/CH-Ideen, dedupliziert gegen vorhandene Slugs
