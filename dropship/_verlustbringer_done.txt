@@ -48,3 +48,28 @@ gid://shopify/Product/15506301223297	2026-09-23T01:10Z	draft	47.90	162.84	Vibrat
 gid://shopify/Product/15500105449857	2026-09-23T01:10Z	draft	58.90	171.55	Kettlebell für Frauen
 gid://shopify/Product/15453774119297	2026-09-23T01:10Z	draft	23.90	134.55	Keramik Futternapf für Hunde
 gid://shopify/Product/15500939002241	2026-09-23T01:10Z	draft	73.90	179.95	Schönheitsbeutel
+gid://shopify/Product/15454049370497	2026-09-23T03:08Z	schon-DRAFT	14.90	120.89	Dicke transparente Schuhbox mit Magnetverschluss
+gid://shopify/Product/15503236989313	2026-09-23T03:08Z	schon-DRAFT	49.90	154.06	Japanisches Weinglas aus Kristallglas
+gid://shopify/Product/15447634706817	2026-09-23T03:08Z	schon-DRAFT	15.90	118.98	Weihnachtsbaum Katzen-Kratzbaum mit Sisal
+gid://shopify/Product/15449494389121	2026-09-23T03:08Z	schon-DRAFT	72.90	174.35	Portabler Waschplatz mit Seifen Spender
+gid://shopify/Product/15454039277953	2026-09-23T03:08Z	schon-DRAFT	41.90	140.69	Tassel-Perlen-Spitze
+gid://shopify/Product/15454049763713	2026-09-23T03:08Z	schon-DRAFT	51.90	150.60	Faltbarer Schuhschrank mit 3-9 Lagen, transparent, 6-18 Paar
+gid://shopify/Product/15448938774913	2026-09-23T03:08Z	schon-DRAFT	62.90	161.19	Katzenbaum mit Haus und Sprungplattform
+gid://shopify/Product/15449168576897	2026-09-23T03:08Z	schon-DRAFT	32.90	130.09	Trolley Koffer mit universellen Rollen
+gid://shopify/Product/15448928780673	2026-09-23T03:08Z	schon-DRAFT	52.90	149.79	Hotel Daunenkissen Gänse- und Entenfedern
+gid://shopify/Product/15504104882561	2026-09-23T03:08Z	schon-DRAFT	49.90	143.36	Keramik-Futternapf mit erhöhtem Ständer
+gid://shopify/Product/15497647358337	2026-09-23T03:08Z	schon-DRAFT	47.90	140.49	Stapelbare Acryl-Aufbewahrungsbox
+gid://shopify/Product/15453898080641	2026-09-23T03:08Z	schon-DRAFT	33.90	126.28	Dampfeinsatz für Gasherde
+gid://shopify/Product/15497458647425	2026-09-23T03:08Z	schon-DRAFT	15.90	107.83	Moissanit Armband mit verdecktem Verschluss
+gid://shopify/Product/15453920166273	2026-09-23T03:08Z	schon-DRAFT	79.90	169.74	7-Zoll HD-Auto-MP5 mit Bluetooth
+gid://shopify/Product/15496392475009	2026-09-23T03:08Z	schon-DRAFT	16.90	106.41	Puder- & Lidschattenpinsel
+gid://shopify/Product/15453897687425	2026-09-23T03:08Z	schon-DRAFT	45.90	134.12	Vertikale Kleiderstange aus Eisen
+gid://shopify/Product/15505674764673	2026-09-23T03:09Z	schon-DRAFT	19.90	107.81	Katzen-Kissen im Nordic-Stil
+gid://shopify/Product/15446271230337	2026-09-23T03:09Z	schon-DRAFT	44.90	132.80	Hund Agility Wippe aus Holz, Gelb
+gid://shopify/Product/15496370225537	2026-09-23T03:09Z	schon-DRAFT	23.90	109.42	Huangdongshi Dekotablett aus Naturstein
+gid://shopify/Product/15496129708417	2026-09-23T03:09Z	schon-DRAFT	20.90	106.34	Mehrschichtiger Aufbewahrungs-Schrank
+gid://shopify/Product/15496254030209	2026-09-23T03:09Z	schon-DRAFT	14.90	100.33	Holztür-Einbauwerkzeug
+gid://shopify/Product/15448946278785	2026-09-23T03:09Z	schon-DRAFT	17.90	102.59	Katzenbaum Weltraum-Kapsel Villa
+gid://shopify/Product/15446272606593	2026-09-23T03:09Z	schon-DRAFT	34.90	128.74	Faltbarer Handwagen
+gid://shopify/Product/15447636771201	2026-09-23T03:09Z	schon-DRAFT	28.90	112.99	Miao Xianer Katzenbaum aus Holz
+gid://shopify/Product/15450853507457	2026-09-23T03:09Z	schon-DRAFT	22.90	117.59	Daunen-Winterdecke
