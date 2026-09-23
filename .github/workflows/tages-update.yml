@@ -5,7 +5,8 @@ name: Tages-Update (KI-News + Maerkte)
 # Actions-Sperre, s. CLAUDE.md) — seither zeigte die Startseite Kurse vom 12.06. unter „Live".
 # Regel aus CLAUDE.md: Crons nur einzeln und hoechstens 1x taeglich. Das ist dieser eine.
 #  1. automation/ki_news_heute.py -> data/ki-news.json (echte Quellen, nichts umgeschrieben)
-#  2. markets-build.yml (Kurse, Finanz-News, optional KI-Sentiment) — aufgerufen, nicht kopiert
+#  2. Übungsdepot: Lern-Bot handelt mit Spielgeld, eigene Statistik (tools/trading/papier_depot.py)
+#  3. markets-build.yml (Kurse, Finanz-News, optional KI-Sentiment) — aufgerufen, nicht kopiert
 # Beides committet nur bei Aenderung, mit [skip ci]. Die Seite geht mit dem naechsten Deploy live.
 on:
   schedule:
@@ -42,8 +43,39 @@ jobs:
             echo "Keine Aenderung."
           fi
 
-  maerkte:
+  # Übungsdepot: der Lern-Bot handelt täglich mit Spielgeld und führt Buch über sich selbst
+  # (tools/trading/papier_depot.py -> data/papierdepot.json). Zuerst die Gegenprobe: stimmt die
+  # Buchführung nicht (ehrlich ~50 %, mit Blick in die Zukunft ~100 %), wird NICHTS geschrieben.
+  uebungsdepot:
     needs: ki-news
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Gegenprobe der Buchführung (Rückblick 250 Tage)
+        run: python tools/trading/papier_depot.py --pruefen
+      - name: Heute abrechnen und neu entscheiden
+        run: python tools/trading/papier_depot.py
+      - name: data/papierdepot.json committen (falls geaendert)
+        run: |
+          git add data/papierdepot.json
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-news-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore(uebungsdepot): Entscheidungen + eigene Statistik des Tages [skip ci]"
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
+          else
+            echo "Keine Aenderung."
+          fi
+
+  maerkte:
+    needs: [ki-news, uebungsdepot]
     if: always()
     uses: ./.github/workflows/markets-build.yml
     secrets: inherit
