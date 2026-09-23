@@ -6861,3 +6861,90 @@ Absetzen, Aussteigen beendet die Schicht) + Bilder `gta-4-taxi-halt-*.png`.
 2. **Die Fahrkamera folgt dem Auto.** Wer den wartenden Gast fotografieren will, steht zu Fuß
    daneben; ein Auto näher als 8 m löst schon das Einsteigen aus.
 3. **Nie ein zufälliges Element per `sort(Math.random)`** — per Index ziehen (Runbook-Regel).
+
+## Runde 92 · 🚗 Autos vom Rasen, Striche in Ordnung (User: „die platzierung passen überall nicht so, auto gehören nicht auf rasen, striche auf strassen sind komisch")
+
+Zwei Beschwerden, beide zuerst **gemessen**, dann geändert, dann gegengeprüft.
+
+**Neues Messgerät `th-autoboden.mjs`** — worauf steht und fährt jedes Auto? Fünf Strahlen je Wagen
+(Mitte + vier Ecken im Eigensystem, senkrecht nach unten), die erste nach oben zeigende Fläche wird
+nach ihrer **sichtbaren Farbe** (Materialfarbe × Texturmittel) in grün / erde / asphalt / hell / wasser
+eingeteilt. Sammelt Autos auf drei Wegen (Lackmaterial `^(Sd|Nf)Lack`, `bau()`-Gruppen mit
+Fahrzeugdatei, die bewegten Listen `verkehr`/`polizei`/Landbus), **simuliert 40 s Verkehr** und
+fragt den Polizei-Einsatzort ab. **Gegenprobe eingebaut** (Regel 1): ein Wagen wird auf das
+`rasen`-Objekt gestellt und muss grün melden, einer auf die Hauptstrasse asphalt — sonst Abbruch.
+Dazu **`th-umfeld.mjs`** (Gebäude, Kollider-/Strassenkarte im Meterraster, Böden eines
+Ausschnitts, mehrere Ausschnitte je Lauf): „Ort gesucht, nicht geraten" in einem Werkzeug.
+
+**Befund vorher:** 5 stehende Fahrzeuge im Grünen — Tank- und Gepäckwagen des Flughafens (der hatte
+Bahn und Bauten, aber **kein Vorfeld**), das Taxi am Bahnhof auf dem **Behindertenstellplatz**
+(„wasser #436ebd" = die blaue Fläche), ein Lieferwagen, den `wegVonStrasse` von der Fahrbahn in
+den **Vorgarten** geschoben hatte, und der Werkstatt-Kunde halb **in einer überdachten Bude**.
+Polizei-Einsatzort: **53 von 120** Proben im Grünen, Zuhause 20/24 (Formel: 34 m in zufälligem
+Winkel). Verkehr: 0,7 % — der Verkehr war nie das Problem.
+
+**Nachher (gemessen, `th-autoboden`):** stehend im Grünen **0**, in Objekt 0, Verkehr 0,8 %,
+Polizei-Einsatzort **0 von 120** (nach der Verschärfung auf Zellen mit Strassen-Nachbarn; davor 5, ganz zu Beginn 53),
+`JS-Fehler 0`. `th-alle --schnell` **11 von 11**, `th-strassen` 144 Stellen (Parkstreifen-Wagen
+zählt nicht mehr, Bushalte-Kante weg), html-validate 0 Fehler / 56 Warnungen, th-hud 0 Befunde.
+Bilder: `spiele-dev/screenshots/platz-*.png` (von oben) und `spielfahrt-*.png` (aus dem Spiel).
+
+**Behoben:**
+- Flughafen: **Vorfeld** aus Beton (64 × 36 m) mit Standlinie, Haltebalken, weisser Kante zur Bahn.
+- Taxi → **Taxistand** auf den freien Plätzen 9/10 der Südreihe (gelb, „TAXI" in der Gasse);
+  beide Lieferwagen → Parkstreifen (14,9 | 51,2) bzw. Platz 5 der Südreihe — alle drei Orte
+  vorher mit `th-umfeld` als frei bestätigt.
+- Polizei: `polizeiStart()` wählt eine **Strassenzelle** (gpsStrasse, 28–46 m, sonst Spirale),
+  `polizeiKurs()` **folgt der Strasse**, solange sie näher bringt (Blick 7 m voraus, Ausweichen bis
+  60°), und verlässt sie erst für den Zugriff (< 18 m).
+
+**Striche — der Hauptstrassen-Querschnitt war an fünf Stellen fünfmal anders:** Spuren ±2/±5,
+Leitlinie ±4, Parklinie ±5,3, Randlinie ±7,5. Die äussere Spur war damit 1,3 m breit; die Wagen
+fuhren AUF der Parklinie, die Randlinie lief quer durch die Parkfelder, die Haltelinien deckten
+eine Spur, und jede Zufahrt hatte **zwei** Haltelinien (vor und hinter dem Zebra), die Wagen
+hielten auf keiner. Jetzt **eine Tabelle** `HS_INNEN/HS_AUSSEN/HS_LEIT/HS_PARK/HS_BORD`
+(1,8 / 4,4 / 3,1 / 5,75 / 7,9), aus der Verkehr, Pfeile, Halte-, Leit- und Randlinien und die
+Parkfelder lesen. Dazu: Bushaltebucht ans Wartehäuschen (die Betonkante lag **in der Fahrspur**,
+die Bucht 38 m weiter, der Bus fuhr auf der anderen Seite) — der Bus biegt jetzt weich ein und aus;
+alle Striche 0,15 m breit; Landstrassen-Mittelstriche als **InstancedMesh mit Lücken**
+(`_ringStrichLuecke`) an Zubringern und dort, wo eine Viertel-Anbindung kreuzt; Anbindungs-Gehwege
+enden vor der Landstrasse; Zubringer-Streifen enden vor der Haltelinie; Ring-Schenkel-Routen
+halten nicht mehr bei „Rot" mitten auf dem Ring.
+
+**Regeln, die hier Zeit gekostet haben:**
+1. **Der Wolkenschatten liegt über allem.** Der erste Lauf meldete unter jedem Wagen „wasser
+   #162234" — die Gegenprobe hat es gefangen: durchsichtige Auflagen ohne `depthWrite` sind Licht,
+   kein Belag. Ohne Gegenprobe hätte ich „alle Autos im Wasser" gemeldet.
+2. **`/lack/i` trifft „B-lack".** Die Windmühle galt als Auto. Materialnamen genau anfangen lassen.
+3. **Ein 170 m hoher Hügel ist kein Objekt.** Hoch UND klein = Hindernis; hoch und weit = Gelände.
+4. **`node --check` sieht keinen ReferenceError.** Beim Umbau der Ring-Striche blieben zwei
+   `quadOben(dpos,…)`-Aufrufe für die Zubringer stehen — Syntax sauber, Weltbau tot. Die
+   Prüfläufe massen eine kaputte Welt, bis ich die Verwendungen gegrept habe. Nach jedem Umbenennen:
+   alle Vorkommen zählen, und `JS-Fehler: 0` am Ende der Werkzeuge ist Pflichtlektüre.
+5. **Backtick im Sonden-Kommentar** — zum vierzehnten Mal. `th-lint` vor dem Browserlauf.
+6. **Screenshots „HUD aus" per `visibility:hidden` auf `body>*:not(canvas)`** versteckt auch den
+   Canvas-Container: leerer Himmel. Das HUD bleibt drauf.
+7. **Der grosse Berg hatte einen flachen Saum auf y = 0 — über den Strassen.** Sein Netz reicht
+   als Ellipse bis 1,32 rad (541 m breit); ausserhalb der Kuppen liefert `gelaendeH` 0, und diese
+   Scheitel lagen in Almwiesen-Grün (#213816) über den Viertelstrassen (−0,003) und -böden
+   (−0,012) von Bauernhof und Flughafen. Das Postauto fuhr 40/40 Proben „auf Grün", im Bild
+   fehlte der Asphalt zwischen den Gehwegen. Gefunden mit einer **Strahl-Probe, die ALLE Treffer
+   von oben nach unten listet** (`spiele-dev/tools/th-strahl.mjs`, Sprites auslassen — `Raycaster` ohne
+   `camera` stürzt an ihnen). Saum jetzt auf −0,02.
+8. **`ohneSchutz` schaltet nur `wegVonStrasse` ab.** Der Entwirrer schob den Parkstreifen-Wagen
+   trotzdem 10 m in den Vorgarten; nur `userData.fest` hält ihn. Geparkte Wagen bekommen beides.
+9. **Ein Werkzeug, das nur den Mittelpunkt prüft, übersieht die Spitze** (Landstrassen-Striche:
+   Nachbarstriche ragten in die Kreuzung). Lücken nach Ausdehnung rechnen, nicht nach Mitte.
+10. **Modellachse messen, nicht annehmen.** `th7_taxi`/`th7_lieferwagen` sind längs **z**
+    (GLB-Box 1,9 × 4,3 / 2,2 × 4,8), `th_auto_*` längs **x**. Mit „Front auf +x" (gilt für th43)
+    standen Taxi und Lieferwagen quer über 1,5 Stellplätze — auf Asphalt, also für die
+    Bodenmessung unsichtbar. Erst das Spielbild zeigte es (User: „spiele es selber, dann
+    siehst du alles"). Kommando: GLB-JSON lesen, POSITION-Accessor min/max, längere Achse.
+11. **Der Feld-Platzierer kannte die Viertelstrassen nicht.** `frei()` prüfte die Viertel an
+    ihrer Wunschposition mit 8 m Rand; die Bauernhofstrasse liegt am Viertelrand, 5 m
+    ausserhalb. Ein Feld (y 0,02) lag über dem Westende, das Postauto fuhr 9/40 „auf Grün".
+    Jetzt meidet `frei()` die tatsächlichen Bänder aus `_viertelBaender()` (mit Gehweg).
+12. **Selbst spielen ist ein Werkzeug**: `spiele-dev/tools/th-spielfahrt.mjs` fährt Wegpunkte mit dem
+    echten Fahrmodell (`fahrStart`/`fahr` wie th-fahrgefuehl, Lenkvorzeichen und
+    Fahrtrichtung werden gemessen, nicht angenommen) und fotografiert alle 45 m aus der
+    Folgekamera im Handy-Format; dazu Stationen zu Fuss. Die Bilder werden angeschaut.
