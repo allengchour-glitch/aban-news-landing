@@ -19338,3 +19338,23 @@ gid://shopify/Product/15520377274753	Farbe	gid://shopify/ProductOptionValue/1249
 gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374295937	Weiss Baumwolle Futter	White Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
 gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374328705	Schwarz Baumwolle Futter	Black Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
 gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374361473	Pink Baumwolle Futter	Pink Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15521235992961	Farbe	gid://shopify/ProductOptionValue/12505373999489	Gross Rot geblümt	Big Red Flower	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295599489	Leinen Weiss	Linen White	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295665025	Leinen Blau	Linen Blue	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15521389937025	Farbe	gid://shopify/ProductOptionValue/12506295697793	Leinen Schwarz	Linen Black	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15521415233921	Farbe	gid://shopify/ProductOptionValue/12506554892673	5 Farben Set	Set mit 5 Farben	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15521696121217	Farbe	gid://shopify/ProductOptionValue/12508587753857	Leuchtendschwarz	Leuchtendes Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15521696121217	Farbe	gid://shopify/ProductOptionValue/12508587852161	Leuchtendaprikose	Bright apricot	2026-09-23T20:49Z/reparatur-original:Bright apricot
+gid://shopify/Product/15521995981185	Farbe	gid://shopify/ProductOptionValue/12510695457153	Vintagebraun	Vintage-Braun	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15522282668417	Farbe	gid://shopify/ProductOptionValue/12513821163905	Aprikose ohne geblümt	Apricot without flower	2026-09-23T20:49Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437604225	2 Farben	2 Colors	2026-09-23T20:49Z/reparatur-original:2Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437636993	3 Farben	3 Colors	2026-09-23T20:49Z/reparatur-original:3Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437669761	4 Farben	4 Colors	2026-09-23T20:49Z/reparatur-original:4Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437702529	5 Farben	5 Colors	2026-09-23T20:49Z/reparatur-original:5Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437735297	6 Farben	6 Colors	2026-09-23T20:49Z/reparatur-original:6Colors
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437768065	7 Farben	7 Colors	2026-09-23T20:49Z/reparatur-original:7Colors
+gid://shopify/Product/15522669265281	Farbe	gid://shopify/ProductOptionValue/12517595906433	2 Farben	2 Colors	2026-09-23T20:50Z/reparatur-original:2Colors
+gid://shopify/Product/15523818373505	Farbe	gid://shopify/ProductOptionValue/12529100652929	Leder Pink	Leather Pink	2026-09-23T20:50Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501274497	2333 sand mesh 6KV	2333 Sand Mesh 6KV	2026-09-23T20:50Z/reparatur-konsistenz
+gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501307265	2333 Grau mesh 6KV	2333 Grau Mesh 6KV	2026-09-23T20:50Z/reparatur-korrigiert
+gid://shopify/Product/15523863036289	Farbe	gid://shopify/ProductOptionValue/12529501372801	8865 sand mesh 10KV	8865 Sand Mesh 10KV	2026-09-23T20:50Z/reparatur-konsistenz
