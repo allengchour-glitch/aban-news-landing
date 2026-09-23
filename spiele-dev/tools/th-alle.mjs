@@ -228,6 +228,10 @@ const PRUEFUNGEN = [
   { name: 'Bauen (Ziehen, Zimmer, Rueckgaengig, Kasse)', datei: 'th-bauen.mjs', kern: true,
     wert: (s) => (s.match(/(\d+)\/(\d+) bestanden/) || [, '?', '?']).slice(1).join('/'),
     gut: (s) => { const m = s.match(/(\d+)\/(\d+) bestanden/); return !!m && m[1] === m[2] } },
+  /* Runde 90: Streifenwagen, Verkehr mit Charge 50, Radio, Einblendungen. */
+  { name: 'GTA (Polizei, Radio, Einblendungen)', datei: 'th-gta.mjs', kern: false,
+    wert: (s) => (s.match(/(\d+)\/(\d+) bestanden/) || [, '?', '?']).slice(1).join('/'),
+    gut: (s) => { const m = s.match(/(\d+)\/(\d+) bestanden/); return !!m && m[1] === m[2] } },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },

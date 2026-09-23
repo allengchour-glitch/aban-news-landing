@@ -6787,3 +6787,51 @@ angefasst, weil Sitz- und Liegepunkte (`arrive`: `s.x=cx(f.gx)`), die Villa-Vorl
 jeder gespeicherte Stand an genau dieser Lage hängen. Wer es angeht: zuerst messen, wie
 weit die Modelle tatsächlich über ihre Belegung hinausragen (Hüllbox je Katalog-Eintrag
 gegen `furnCells`), dann Modell UND Sitzpunkt gemeinsam verschieben.
+
+## 2026-09-23 · 🎬 Runde 90: GTA-Stil + Gratis-Autos, in Blender selbst bearbeitet
+
+User: „traumhaus mit gta 5 style wie das spiel kombinieren … hole gratis stl und bearbeite
+selber". Fahren, Klauen, Polizeijagd, Stunts und Aufträge gab es schon. Gefehlt hat, woran
+man GTA sofort erkennt — und die Polizei bestand aus zwei Kästen, die SEITWÄRTS fuhren
+(Korpus der Länge nach auf x, gefahren wurde entlang +z).
+
+**Gratis-Modelle → selbst bearbeitet (Charge 50):** Quaternius „Cars Pack" (CC0, 7 Wagen
+als .blend) über den öffentlichen Drive-Ordner. `tools/assets/mk_th50_gta_wagen.py` holt die
+Dateien selbst und baut in Blender reproduzierbar GLB + STL:
+- **Streifenwagen** Schweizer Art: weiss, blau/leuchtgelbes Karomuster (Punkte per Strahl
+  auf die Flanke gelegt), 3D-Schriftzug „POLIZEI" (auf der Flankennormale — senkrecht
+  gestellt tauchte er oben in die Tür ein), Lichtbalken → `BlaulichtL`/`BlaulichtR`.
+- **Taxi, Limousine, Kompakt, Coupé, GT, Geländewagen:** neue PBR-Materialien mit Spielnamen,
+  eigene Lackfarben, Hinterräder getrennt (EIN Netz → `_raederAnlegen` fand 3 statt 4).
+- Im Spiel: sechs neue Wagen im Verkehr (je 4 drehende Räder), Kaufautos „Geländewagen"
+  und „⭐ GT-Sportwagen" (ab Wohnstufe 1), Streifenwagen mit blinkendem Blaulicht +
+  Lichtschein (Sprite, KEIN Punktlicht) + Zweiklang-Sirene.
+
+**GTA-Präsentation** (Grep-Anker in Klammern):
+- Einsteigen zeigt **Wagen + Gegend** unten rechts, Gegendwechsel zeigt den Namen (`gtaOrt`,
+  `gegendVon` — liest `WORLD_POIS`, keine zweite Namensliste).
+- **Autoradio** mit drei Sendern, „live" an der Uhr (`RADIO`, `radioSpielen`); Taste **R** oder
+  Tipp auf den Tacho. Spielmusik pausiert im Auto.
+- **VERHAFTET** (Bild grau + Zeitlupe), **AUFTRAG ERLEDIGT**, **STUNT-SPRUNG** (`gtaBanner`).
+- **Fahndungssterne** als fünf Plätze statt Emoji (`sterneHtml`).
+
+Prüfwerkzeug: **`spiele-dev/tools/th-gta.mjs`** (15 Prüfungen, in `th-alle` volle Reihe).
+
+**Regeln, die hier Zeit gekostet hätten:**
+1. **Blender gibt es nicht mehr als Programm** (`/usr/bin/blender` fehlt im Container). Es geht
+   als Python-Modul: `pip download bpy==4.2.0 --no-deps` (520 MB, passt zu Python 3.11) →
+   `pip install --target /tmp/bpyenv <whl>` → `PYTHONPATH=/tmp/bpyenv python3 skript.py`.
+   Rendern geht mit Cycles auf der CPU; der Prozess stürzt beim BEENDEN ab (Segfault) —
+   das Bild ist dann schon geschrieben. Nicht als Fehler deuten.
+2. **Quaternius liegt auf Google Drive**, nicht nur auf itch.io: `tools/assets/drive_liste.py
+   <ordner-id>` listet einen öffentlichen Ordner, geladen wird mit `uc?export=download&id=…`.
+3. **Zeitlupe nur solo.** `_zeitFaktor` bremst die ganze Welt — im Koop rechnet der Host für
+   beide. `zeitlupe()` tut deshalb bei `MPs` nichts.
+4. **Einblendung und Gegend-Takt schreiben dasselbe Feld.** `gtaOrt` setzt `_gegend` selbst,
+   sonst ersetzt der nächste Takt den Wagennamen durch die Gegend (im Bild gesehen).
+5. **Ein Bildschirmfoto dauert länger als eine Einblendung steht** (SwiftShader: >3 s). Für
+   Bilder die Einblendung festhalten (`bannerHalten` in th-gta), für Prüfungen den Takt
+   direkt auslösen (`ortTakt`) statt zu warten.
+6. **Namensnennung CC BY:** Die drei Kevin-MacLeod-Stücke zeigt das Radio mit Titel, Künstler
+   und Lizenz, sobald sie laufen (wie GTA Lied und Künstler einblendet). premium/hype sind
+   Eigenproduktionen (automation/music/produce).

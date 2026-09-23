@@ -237,6 +237,29 @@ canvas{display:block}
 .pitem.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.25)}
 .pitem .pe{font-size:1.4rem}.pitem .pn{font-size:.66rem;font-weight:700;color:#5a4a30}.pitem .pp{font-size:.66rem;color:#b8860b;font-weight:800}
 #tools{position:fixed;right:calc(10px + env(safe-area-inset-right));bottom:calc(252px + env(safe-area-inset-bottom));display:none;flex-direction:column;gap:8px;z-index:13}
+/* 🎬 GTA-Einblendungen (Runde 90): nicht antippbar, liegen nur kurz ueber dem Bild */
+#gtaBanner{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;pointer-events:none}
+#gtaBanner.an{display:flex}
+#gtaBanner .gb-band{width:100%;background:rgba(18,14,10,.62);padding:14px 12px 16px;text-align:center;animation:gbRein .45s cubic-bezier(.2,1.4,.4,1) both}
+#gtaBanner .gb-titel{font-size:clamp(2rem,7vw,4.4rem);font-weight:900;font-style:italic;letter-spacing:.03em;text-transform:uppercase;line-height:1;text-shadow:0 3px 0 rgba(0,0,0,.45)}
+#gtaBanner .gb-unter{margin-top:6px;font-size:clamp(.85rem,2.4vw,1.15rem);font-weight:800;color:#f4efe4}
+#gtaBanner.gut .gb-titel{color:var(--bern)}
+#gtaBanner.schlecht .gb-titel{color:#e0473c}
+#gtaBanner.stunt .gb-titel{color:#fff}
+#gtaBanner.stunt .gb-band{background:rgba(18,14,10,.4);padding:8px 12px 10px}
+@keyframes gbRein{from{opacity:0;transform:scale(1.25)}to{opacity:1;transform:none}}
+#gtaOrt{position:fixed;right:calc(72px + env(safe-area-inset-right));bottom:calc(128px + env(safe-area-inset-bottom));z-index:15;text-align:right;pointer-events:none;opacity:0;transition:opacity .6s}
+#gtaOrt.an{opacity:1}
+#gtaOrt .go-wagen{font-size:1.5rem;font-weight:900;font-style:italic;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.7),0 0 1px #000}
+#gtaOrt .go-ort{font-size:1.05rem;font-weight:800;color:#f4efe4;text-shadow:0 2px 6px rgba(0,0,0,.7),0 0 1px #000}
+/* top 142: darueber (65…135) sitzt die Erfolgs-Meldung — bei 568x320 lag der Sendername
+   darunter (th-hud, Fahrmodus). */
+#gtaRadio{position:fixed;top:calc(142px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;text-align:center;pointer-events:none;opacity:0;transition:opacity .5s;white-space:nowrap}
+#gtaRadio.an{opacity:1}
+#gtaRadio .gr-sender{font-size:1.2rem;font-weight:900;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.75)}
+#gtaRadio .gr-lied{font-size:.8rem;font-weight:700;color:#f4efe4;text-shadow:0 2px 5px rgba(0,0,0,.75)}
+#wanted .st{width:1.05em;height:1.05em;fill:none;stroke:#fff;stroke-width:1.7;stroke-linejoin:round;vertical-align:-2px;margin:0 1px;opacity:.55}
+#wanted .st.voll{fill:#fff;opacity:1}
 #bauMass{position:fixed;z-index:17;display:none;pointer-events:none;background:var(--tinte);color:var(--creme);border-radius:8px;padding:5px 10px;font-weight:800;font-size:.85rem;white-space:nowrap;box-shadow:0 4px 14px rgba(36,28,18,.3)}
 .tbtn:disabled{cursor:default}
 .tbtn{width:48px;height:48px;border-radius:14px;border:0;background:rgba(255,253,248,.95);font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)}
@@ -391,6 +414,9 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <div style="margin-top:6px;opacity:.8;font-size:.9rem">Im Querformat spielt sich Traumhaus am besten 🏡</div>
 </div>
 <div id="hint"></div>
+<div id="gtaBanner"><div class="gb-band"><div class="gb-titel"></div><div class="gb-unter"></div></div></div>
+<div id="gtaOrt"></div>
+<div id="gtaRadio"></div>
 <div id="wanted" style="position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:15;display:none;background:rgba(20,15,20,.82);border:2px solid #ff5a3a;border-radius:14px;padding:6px 14px;font-size:1.3rem;letter-spacing:3px;box-shadow:0 4px 16px rgba(255,90,40,.5)"></div>
 <div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:14px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
   <span id="editName" style="align-self:center;font-weight:800;font-size:.85rem;color:#5a4a30;margin-right:4px"></span>
@@ -454,6 +480,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <div id="speedo" style="position:fixed;left:calc(50% + 170px);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:14px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
   <div style="font-size:1.15rem;font-weight:900;line-height:1"><svg class="ik ik-s" aria-hidden="true"><use href="#i-gauge"/></svg> <span id="spNum">0</span> <span style="font-size:.7rem;opacity:.7">km/h</span></div>
   <div style="height:5px;background:rgba(255,255,255,.15);border-radius:8px;margin-top:4px;overflow:hidden"><div id="spBar" style="height:100%;width:0;background:#3ad0ff;border-radius:8px"></div></div>
+  <div id="spRadio" title="Radio wechseln (R)" style="font-size:.62rem;font-weight:800;opacity:.8;margin-top:3px;white-space:nowrap">Radio</div>
 </div>
 <div id="achPanel" style="position:fixed;inset:0;z-index:27;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.6)">
   <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:14px;padding:16px;max-width:420px;width:92vw;max-height:80vh;overflow-y:auto">
@@ -4312,7 +4339,7 @@ function ladeWagen(datei,cb){
   window._glbVorlage(datei,function(sz){
     if(!sz){cb(null);return;}
     sz.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;}});
-    if(/^th(37|40)_/.test(datei))_raederAnlegen(sz);
+    if(/^th(37|40|50)_/.test(datei))_raederAnlegen(sz);
     MODELS[datei]=sz;cb(sz);});}
 /* 🛞 RAEDER ROLLEN LASSEN. Die th37-Wagen fuhren mit stehenden Raedern — nur der
    prozedurale Bus drehte seine (busRec.raeder). Die Modelle haben keine benannten
@@ -4443,7 +4470,10 @@ setTimeout(function baueVerkehr(){
      laenger als die Pkw (8,7 / 5,9 / 8,5 m) — die alte Normierung „4,4 m fuer alle"
      haette ein Postauto auf Pkw-Laenge gestaucht. Darum je Modell eine Ziellaenge. */
   var WAGEN=[{d:"th37_limousine.glb",l:4.4},{d:"th37_kombi.glb",l:4.4},{d:"th37_sportwagen.glb",l:4.4},{d:"th37_lieferwagen.glb",l:4.4},
-             {d:"th40_postauto.glb",l:7.4},{d:"th40_kleinbus.glb",l:5.4},{d:"th40_muellwagen.glb",l:7.2}];
+             {d:"th40_postauto.glb",l:7.4},{d:"th40_kleinbus.glb",l:5.4},{d:"th40_muellwagen.glb",l:7.2},
+             /* 🚕 Charge 50 (Runde 90): Gratis-Modelle, in Blender selbst bearbeitet */
+             {d:"th50_taxi.glb",l:4.5},{d:"th50_limousine2.glb",l:4.4},{d:"th50_kompakt.glb",l:3.9},
+             {d:"th50_coupe.glb",l:4.3},{d:"th50_gt.glb",l:4.3},{d:"th50_suv.glb",l:4.6}];
   var _IDS=[];for(var _q=0;_q<_AN;_q++)_IDS.push(WAGEN[_q%WAGEN.length]);
   /* ⚡ Der Verkehr zog frueher alle drei Auto-Modelle (~7 MB) in den kritischen Ladepfad —
      zusammen mit den Bewohner-Modellen die groessten Dateien der Seite. Jetzt nur noch der
@@ -4482,7 +4512,7 @@ setTimeout(function baueVerkehr(){
       m.userData.nieAusblenden=true; /* 🩹 Schwarm-7: LOD registrierte Kleinteile der FAHRENDEN Wagen an ihrer Ladeposition — unterwegs verschwanden Raeder/Anbauteile */
       (function(){var s9=m.scale.x||1,sz9=new THREE.Vector3();b2.getSize(sz9);      /* Kontaktschatten, Modell-Einheiten */
         _blob(m,(sz9.x*0.52)/s9,(sz9.z*0.56)/s9,(b2.min.y+0.012)/s9);})();
-      var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045),
+      var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045),datei:id,
                raeder:_raederVon(m),radMass:m.scale.x};   /* Radius der Raeder steht in Modell-Metern */
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
       scene.add(m);verkehr.push(rec);});});
@@ -11344,6 +11374,8 @@ var KATALOG={
   {id:"auto_kombi",n:"Limousine",e:"🚗",cost:2400,size:[1,2],car:1,datei:"th37_limousine.glb",lack:0xf2b21c}, /* id bleibt (Spielstaende); Modell: die viertuerige Limousine zeigt von allen vier Charge-37-Wagen das breiteste Fensterband — Vergleichsrender 2026-09-03 */
   {id:"auto_flitzer",n:"Flitzer",e:"🏎️",cost:4800,size:[1,2],car:1,datei:"th37_sportwagen.glb",lack:0xf0731a},
   {id:"auto_van",n:"Van",e:"🚐",cost:3200,size:[1,2],car:1,datei:"th37_lieferwagen.glb",lack:0x2aa39c},
+  {id:"auto_suv",n:"Geländewagen",e:"🚙",cost:5600,size:[1,2],car:1,datei:"th50_suv.glb",lack:0x2e4a36},
+  {id:"auto_gt",n:"⭐ GT-Sportwagen",e:"🏁",cost:12000,stufe:1,size:[1,2],car:1,datei:"th50_gt.glb",lack:0x17191d},
   {id:"beet",n:"Gemüsebeet",e:"🥕",cost:120,size:[1,1],beet:1},
   {id:"growbox",n:"Growbox (zwielichtig)",e:"🌿",cost:600,size:[1,1],grow:1},
   {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
@@ -11804,7 +11836,7 @@ function missCheck(){
     try{ wert9=MISS_POOL[m.i][3](); }
     catch(em){ if(!_achLaut["m"+m.i]){_achLaut["m"+m.i]=1;console.warn("Missions-Zaehler wirft:",m.i,em);} }
     if(wert9!==null&&wert9-m.basis>=m.ziel){m.done=true;neu=true;
-      verdiene(180);hint("Mission erledigt: "+m.e+" "+m.tx+"  +180 $");
+      verdiene(180);gtaBanner("Auftrag erledigt",m.tx+" · +180 $","gut");
       if(typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);
       beep(700,.1,"triangle",.05);}
     if(!m.done)alle=false;});
@@ -12061,7 +12093,7 @@ function applyFurn(id,gx,gy,rot,fid){
          Sie zeigen mit der Front auf +x, das Fahrmodell erwartet +z: darum ein Traeger, der um
          -90 Grad dreht. Der Lack bekommt je Kaufwagen eine eigene Farbe (Katalog `lack`), damit
          das eigene Auto im Verkehr (gruen/blau/rot/weiss) nicht untergeht. */
-      if(def.datei&&/^th37_/.test(def.datei)){
+      if(def.datei&&/^th(37|50)_/.test(def.datei)){
         var tr9=new THREE.Group();m.rotation.y=-Math.PI/2;tr9.add(m);
         /* Scheiben dunkel und spiegelnd: das Modell-Glas (0.36/0.48/0.55) lag farblich neben
            dem blauen Lack — aus der Spielkamera (steil, Auto ~55 px lang) war kein Fenster zu
@@ -13219,6 +13251,7 @@ function einsteigen(rec,geklaut){
   if(!MPs||mpHost)document.getElementById("lieferBtn").style.display="block";
   document.getElementById("hornBtn").style.display="block";
   document.getElementById("speedo").style.display="block";
+  gtaEinstieg(a);                                          /* 🎬 Wagen + Gegend, Radio an */
   var kn9=document.getElementById("joyKnob");if(kn9){kn9.dataset.alt=kn9.innerHTML;kn9.innerHTML='<svg class="ik" aria-hidden="true"><use href="#i-car"/></svg>';} /* der Stick lenkt jetzt ein Auto */
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("Auto geklaut. Die Polizei ist schon unterwegs.");
@@ -13256,6 +13289,7 @@ function aussteigen(){
   document.getElementById("lieferBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
   document.getElementById("speedo").style.display="none";
+  gtaAusstieg();                                           /* 🎬 Radio aus, Spielmusik zurueck */
   var kn8=document.getElementById("joyKnob");if(kn8&&kn8.dataset.alt){kn8.innerHTML=kn8.dataset.alt;}
   var bf2=sims[1];
   if(bf2&&bf2._bf){bf2._bf=false;bf2.mesh.visible=true;bf2.pose="stand";bf2.state="idle";
@@ -13343,12 +13377,13 @@ function autoFahr(dt){
     if(carAirY<=0&&RP.cd<=0&&(window._carKmh||0)>20&&Math.hypot(m.position.x-RP.x,m.position.z-RP.z)<3.6){
       carVY=(window._carKmh||0)/4*0.62;carAirT=0;RP.cd=2;beep(300,.12,"square",.05);break;}}
   if(carVY>0||carAirY>0){carVY-=24*dt;carAirY=Math.max(0,carAirY+carVY*dt);carAirT+=dt;
+    if(carAirT>0.3&&window._zeitFaktor===1&&!window._stuntZL){window._stuntZL=1;zeitlupe(0.4,1.1);}
     m.position.y=(a.homeY||0.01)+carAirY;
     if(carAirY<=0&&carVY<0){carVY=0;
       if(carAirT>0.3){var pkt=(carAirT*80)|0;verdiene(pkt);stats.stunts=(stats.stunts||0)+1;
         beep(760,.09,"square",.05);setTimeout(function(){beep(1020,.1,"square",.05);},80);
-        hint("AIRTIME "+carAirT.toFixed(1)+"s. +"+pkt+" $");}
-      carAirT=0;}}
+        gtaBanner("Stunt-Sprung",carAirT.toFixed(1)+" s in der Luft · +"+pkt+" $","stunt");}
+      carAirT=0;window._stuntZL=0;}}
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
   var _sn=document.getElementById("spNum"),_sb=document.getElementById("spBar");
   if(_sn){var kmh=window._carKmh||0;_sn.textContent=kmh;_sb.style.width=Math.min(100,kmh)+"%";_sb.style.background=nitro>0?"#ff9a2a":"#3ad0ff";}
@@ -13453,20 +13488,49 @@ var polizei=[],wanted=0,wantedEntkomm=0;
 function spielerPos(){
   if(fahren&&driveCar)return {x:driveCar.mesh.position.x,z:driveCar.mesh.position.z};
   var _s=sims[meinSi()]||sims[0];return {x:_s.x,z:_s.z};}
+/* 🚓 STREIFENWAGEN (Runde 90). Vorher zwei Kaesten mit zwei Lichtwuerfeln — und der
+   Korpus lag der Laenge nach auf x, gefahren wurde aber entlang +z: die Polizei fuhr
+   SEITWAERTS. Jetzt das in Blender bearbeitete Quaternius-Modell (Charge 50,
+   tools/assets/mk_th50_gta_wagen.py): Schweizer Lackierung, Blaulichter links/rechts
+   als eigene Materialien, dazu je ein weicher Lichtschein (Sprite, KEIN Punktlicht —
+   die Zahl der Punktlichter muss konstant bleiben, siehe LAMP_MAX).
+   Die Gruppe entsteht sofort (die Jagd rechnet mit ihr), das Modell kommt nach.
+   Faellt das Laden aus (kein WebGL), bleiben die alten Kaesten — jetzt der Laenge nach. */
+var _blauTex=null;
+function _polizeiKaesten(gg,rec,schnell){
+  var korpus=new THREE.Mesh(new THREE.BoxGeometry(1.7,1,3.6),stdMat(schnell?0x1a1a22:0x2a3a6a,0.5));korpus.position.y=0.7;korpus.castShadow=true;gg.add(korpus);
+  var dach=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.7,2),stdMat(schnell?0x2a2a30:0xf4f4f8,0.4));dach.position.y=1.5;gg.add(dach);
+  var bl=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));bl.position.set(0.3,1.95,0);gg.add(bl);
+  var br=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));br.position.set(-0.3,1.95,0);gg.add(br);
+  rec.bl=bl;rec.br=br;rec.glowL.position.set(0.3,2.1,0);rec.glowR.position.set(-0.3,2.1,0);}
 function mkPolizeiAuto(schnell){
-  var gg=new THREE.Group();
-  var korpus=new THREE.Mesh(new THREE.BoxGeometry(3.6,1,1.7),stdMat(schnell?0x1a1a22:0x2a3a6a,0.5));korpus.position.y=0.7;korpus.castShadow=true;gg.add(korpus);
-  var dach=new THREE.Mesh(new THREE.BoxGeometry(2,0.7,1.5),stdMat(schnell?0x2a2a30:0xf4f4f8,0.4));dach.position.y=1.5;gg.add(dach);
-  var bl=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.18,0.5),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));bl.position.set(-0.3,1.95,0);gg.add(bl);
-  var br=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.18,0.5),new THREE.MeshStandardMaterial({color:0xff3a3a,emissive:0xff3a3a,emissiveIntensity:1.6}));br.position.set(0.3,1.95,0);gg.add(br);
-  for(var w=0;w<2;w++)[-1,1].forEach(function(sn){var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.35,0.35,0.25,10),stdMat(0x1a1a20,0.5));rad.rotation.z=Math.PI/2;rad.position.set(-1+w*2,0.35,sn*0.85);gg.add(rad);});
+  var gg=new THREE.Group();gg._bewegt=true;
   var sp=spielerPos(),ang=Math.random()*6.283;
   gg.position.set(sp.x+Math.cos(ang)*34,0.01,sp.z+Math.sin(ang)*34);scene.add(gg);
-  return {mesh:gg,bl:bl,br:br,rot:0,t:0,speed:schnell?18:14};}
+  if(!_blauTex)_blauTex=_glowTex("#bcd4ff","rgba(60,120,255,0)");
+  var mkGlow=function(){var g=new THREE.Sprite(new THREE.SpriteMaterial({map:_blauTex,transparent:true,depthWrite:false,opacity:0,blending:THREE.AdditiveBlending}));
+    g.scale.set(2.4,2.4,1);gg.add(g);return g;};
+  var rec={mesh:gg,bl:{material:{}},br:{material:{}},glowL:mkGlow(),glowR:mkGlow(),rot:0,t:0,speed:schnell?18:14,phase:Math.random()*400};
+  ladeWagen("th50_streife.glb",function(tpl){
+    if(!gg.parent)return;                                   /* schon wieder abgezogen */
+    if(!tpl){_polizeiKaesten(gg,rec,schnell);return;}
+    var m=tpl.clone(true);
+    var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
+    m.scale.setScalar(4.6/(Math.max(sz.x,sz.z)||1));
+    m.rotation.y=-Math.PI/2;                                /* Front +x → +z: die Jagd faehrt entlang (sin rot, cos rot) */
+    var b2=new THREE.Box3().setFromObject(m);m.position.y=-b2.min.y;
+    m.traverse(function(n){if(!n.isMesh||!n.material)return;
+      var nm=n.material.name||"";
+      if(/^BlaulichtL/.test(nm)){n.material=n.material.clone();rec.bl=n;}
+      else if(/^BlaulichtR/.test(nm)){n.material=n.material.clone();rec.br=n;}});
+    gg.add(m);rec.modell=m;
+    var hoch=b2.max.y-b2.min.y+0.15;
+    rec.glowL.position.set(0.35,hoch,0.1);rec.glowR.position.set(-0.35,hoch,0.1);});
+  return rec;}
 function updWantedHUD(){
   var el=document.getElementById("wanted");
   if(wanted<=0){el.style.display="none";return;}
-  el.style.display="block";el.textContent="🚔 "+"⭐".repeat(wanted);}
+  el.style.display="block";el.innerHTML=sterneHtml(wanted);}   /* GTA: fuenf Plaetze, volle Sterne = Fahndung */
 function setWanted(n){
   n=Math.max(0,Math.min(5,n));
   if(n===wanted&&polizei.length===n)return;
@@ -13483,19 +13547,22 @@ function wantedPlus(n){
   if(wanted>vor)hint("Fahndung: "+"⭐".repeat(wanted)+" — häng sie ab.");}
 function updPolizei(dt,now){
   if(MPs&&!mpHost)return; /* 🩹 Schwarm-4: der Gast hat nie Polizei-Autos — dieser Zweig setzte sein vom Host geschicktes wanted im naechsten Frame wieder auf 0 (Sterne-HUD blitzte nur 1 Frame) */
-  if(!polizei.length){if(wanted!==0){wanted=0;updWantedHUD();if(MPs&&mpHost)netSend({t:"wanted",w:0});}return;} /* 🩹 Entwarnung auch an den Gast */
-  var sp=spielerPos(),f=(Math.floor(now*0.006)%2)===0,minDist=1e9;
+  if(!polizei.length){sireneTakt(0,false);if(wanted!==0){wanted=0;updWantedHUD();if(MPs&&mpHost)netSend({t:"wanted",w:0});}return;} /* 🩹 Entwarnung auch an den Gast */
+  var sp=spielerPos(),minDist=1e9;
   for(var i=polizei.length-1;i>=0;i--){var pj=polizei[i],m=pj.mesh;
     var dx=sp.x-m.position.x,dz=sp.z-m.position.z,dist=Math.hypot(dx,dz);minDist=Math.min(minDist,dist);
+    var f=(Math.floor((now+pj.phase)*0.006)%2)===0;         /* je Wagen eigener Takt — fuenf Wagen blitzen nicht im Gleichschritt */
     pj.bl.material.emissiveIntensity=f?1.8:0.2;pj.br.material.emissiveIntensity=f?0.2:1.8;
+    if(pj.glowL){pj.glowL.material.opacity=f?0.85:0;pj.glowR.material.opacity=f?0:0.85;}
     if(dist>1){var ziel=Math.atan2(dx,dz);var d=((ziel-pj.rot+Math.PI*3)%(Math.PI*2))-Math.PI;pj.rot+=d*Math.min(1,dt*3);
       var sp2=Math.min(dist,pj.speed)*dt;m.position.x+=Math.sin(pj.rot)*sp2;m.position.z+=Math.cos(pj.rot)*sp2;m.rotation.set(0,pj.rot,0);}
     // Gefasst wenn EIN Auto nah genug + Spieler nicht mit Vollgas
     if(dist<3.2){pj.t+=dt;if(pj.t>1.2){
       var busse=Math.min(geld,200+wanted*150+(skills.krimi.lv||0)*60);geld-=busse;geldSend();updHUD();
       if(fahren)aussteigen();
-      hint("Geschnappt. Busse −"+busse+" $ (Fahndung "+wanted+"⭐)");
-      polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];wanted=0;updWantedHUD();return;}}else pj.t=0;}
+      gtaBanner("Verhaftet","Busse −"+busse+" $ · Fahndung "+wanted+" Stern"+(wanted>1?"e":""),"schlecht");
+      polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];wanted=0;updWantedHUD();sireneTakt(0,false);return;}}else pj.t=0;}
+  sireneTakt(minDist,true);
   // Entkommen: alle weit weg für 8 s → Fahndung sinkt um 1 Stern
   if(minDist>55){wantedEntkomm+=dt;if(wantedEntkomm>8){
     stats.entkommen=(stats.entkommen||0)+1;wantedEntkomm=0;
@@ -16207,6 +16274,149 @@ function updHUD(){
 var actx=null,muted=false;
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;var t0=actx.currentTime;g.gain.setValueAtTime(0.0001,t0);g.gain.linearRampToValueAtTime(v||.05,t0+0.008);/* Anstiegsrampe statt hartem Einsatz: nimmt das Klicken raus */o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,t0+(d||.1));o.stop(t0+(d||.1));}catch(e){}}
 var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0.22;MUS.preload="none";
+/* ═══════ 🎬 GTA-V-STIL (Runde 90) ═══════════════════════════════════════════════
+   User 2026-09-23: „traumhaus mit gta 5 style wie das spiel kombinieren".
+   Fahren, klauen, Polizeijagd, Stunts und Auftraege gab es schon — es fehlte das, woran
+   man GTA sofort erkennt: die Einblendungen und das Radio. Uebernommen sind Muster,
+   keine Inhalte (keine Namen, Marken oder Schriften aus dem Spiel):
+   * Einsteigen zeigt Wagen und Gegend unten rechts; wer die Gegend wechselt, sieht
+     ihren Namen.
+   * Autoradio mit drei Sendern, die „live" weiterlaufen (die Stelle im Lied haengt an
+     der Uhr, nicht daran, wann man einsteigt) — Taste R oder Tipp auf den Tacho.
+   * Grosse Einblendung mit Zeitlupe: VERHAFTET (Bild wird grau), AUFTRAG ERLEDIGT,
+     STUNT-SPRUNG.
+   * Sirene (Zweiklang) und Fahndungssterne als Sternreihe statt Emoji. */
+
+/* ── Zeitlupe: die Schleife multipliziert dt mit diesem Faktor ─────────────────── */
+window._zeitFaktor=1;
+function zeitlupe(f,sek){
+  if(MPs)return;   /* Koop: der Gastgeber rechnet die Welt fuer beide — Zeitlupe bei einem wuerde beide bremsen */
+  window._zeitFaktor=f;clearTimeout(window._zlT);
+  window._zlT=setTimeout(function(){window._zeitFaktor=1;},sek*1000);}
+
+/* ── Grosse Einblendung ───────────────────────────────────────────────────────── */
+function gtaBanner(titel,unter,art){
+  var el=document.getElementById("gtaBanner");if(!el)return;
+  el.querySelector(".gb-titel").textContent=titel;
+  el.querySelector(".gb-unter").textContent=unter||"";
+  el.className="";void el.offsetWidth;el.className="an "+(art||"gut");
+  var cv=renderer.domElement;
+  if(art==="schlecht"){cv.style.filter="grayscale(1) contrast(1.08) brightness(.92)";zeitlupe(0.3,1.8);
+    [392,330,262].forEach(function(f,i){setTimeout(function(){beep(f,.28,"sawtooth",.045);},i*230);});}
+  else if(art==="stunt"){zeitlupe(0.45,0.9);beep(880,.12,"triangle",.05);}
+  else{zeitlupe(0.6,0.8);
+    [523,659,784,1046].forEach(function(f,i){setTimeout(function(){beep(f,.18,"triangle",.05);},i*110);});}
+  clearTimeout(window._gbT);
+  window._gbT=setTimeout(function(){el.className="";cv.style.filter="";},art==="stunt"?1800:3200);}
+
+/* ── Gegend und Wagen unten rechts ────────────────────────────────────────────── */
+var WAGEN_NAMEN={th37_limousine:"Limousine",th37_kombi:"Kombi",th37_sportwagen:"Sportwagen",
+  th37_lieferwagen:"Lieferwagen",th40_postauto:"Postauto",th40_kleinbus:"Kleinbus",th40_muellwagen:"Müllwagen",
+  th50_taxi:"Taxi",th50_limousine2:"Limousine",th50_kompakt:"Kompakt",th50_coupe:"Coupé",th50_gt:"GT",
+  th50_suv:"Geländewagen",th50_streife:"Streifenwagen"};
+function wagenName(rec){
+  if(!rec)return "";
+  if(rec===window.autoRec){var d9=defOf(rec.id);return d9?d9.n.replace(/^⭐\s*/,""):"Eigenes Auto";}
+  var k=(rec.datei||"").replace(/\.glb$/,"");return WAGEN_NAMEN[k]||"Auto";}
+function gegendVon(x,z){
+  /* Die naechste Marke der Weltkarte — dieselbe Liste, die Radar und grosse Karte lesen,
+     keine zweite Namensliste. Weiter als 110 m von jeder Marke: offenes Land. */
+  var best=null,bd=1e9;
+  for(var i=0;i<WORLD_POIS.length;i++){var p=WORLD_POIS[i],d=Math.hypot(p[0]-x,p[1]-z);if(d<bd){bd=d;best=p;}}
+  if(Math.hypot(x,z)<60)return "Zuhause";
+  return bd<110&&best?best[3]:"Offenes Land";}
+function gtaOrt(wagen){
+  var el=document.getElementById("gtaOrt");if(!el||!running)return;
+  var p=spielerPos(),g=gegendVon(p.x,p.z);
+  /* Die Gegend gilt damit als gezeigt — sonst meldet gtaOrtTakt eine Sekunde spaeter
+     „neue Gegend" und ersetzt den Wagennamen (im Bild gesehen: nur noch „Zuhause"). */
+  _gegend=g;_gegendZeig=performance.now();
+  el.innerHTML=(wagen?"<div class='go-wagen'>"+txt(wagen)+"</div>":"")+"<div class='go-ort'>"+txt(g)+"</div>";
+  el.className="";void el.offsetWidth;el.className="an";
+  clearTimeout(window._goT);window._goT=setTimeout(function(){el.className="";},4200);}
+var _gegend=null,_gegendT=0,_gegendZeig=0;
+function gtaOrtTakt(dt){
+  _gegendT-=dt;if(_gegendT>0||!running||buildMode)return;_gegendT=1;
+  var p=spielerPos(),g=gegendVon(p.x,p.z);
+  if(g!==_gegend){var neu=_gegend!==null;_gegend=g;
+    if(neu&&performance.now()-_gegendZeig>6000){_gegendZeig=performance.now();gtaOrt(null);}}}
+
+/* ── Autoradio ────────────────────────────────────────────────────────────────────
+   Drei Sender aus den Liedern, die schon im Repo liegen. Kevin-MacLeod-Stuecke stehen
+   unter CC BY 4.0 — die Namensnennung steht in der Sender-Einblendung, genau dort, wo
+   GTA Lied und Kuenstler zeigt, und damit jedes Mal, wenn das Stueck laeuft. */
+var RADIO=[
+  {n:"Radio Brunnmatt",s:"Pop & Lounge",l:[["premium.mp3","Brunnmatt Morgen","aban",""],["lemonade.mp3","Digital Lemonade","Kevin MacLeod","CC BY 4.0"]]},
+  {n:"Chilbi FM",s:"Elektro",l:[["hype.mp3","Chilbi Nacht","aban",""],["electrodoodle.mp3","Electrodoodle","Kevin MacLeod","CC BY 4.0"]]},
+  {n:"Voltaic 101",s:"Drive",l:[["voltaic.mp3","Voltaic","Kevin MacLeod","CC BY 4.0"]]}];
+var radioSender=0,radioAn=true,radioAud=null,_radioTitel=-1;
+try{var _rs=localStorage.getItem("th_radio");if(_rs==="aus")radioAn=false;else if(_rs!==null)radioSender=Math.max(0,Math.min(RADIO.length-1,+_rs||0));}catch(e){}
+function radioTitel(){/* „live": Stelle im Programm aus der Uhr — wer umschaltet, faellt mitten ins Lied */
+  var S=RADIO[radioSender],t=(Date.now()/1000+radioSender*97)%(S.l.length*150);
+  return {i:Math.floor(t/150),off:t%150};}
+function radioSpielen(naechstes){
+  if(!fahren||!radioAn){if(radioAud)radioAud.pause();return;}
+  var S=RADIO[radioSender],i,off;
+  if(naechstes&&radioAud){i=((radioAud._i||0)+1)%S.l.length;off=0;}   /* Lied zu Ende: das naechste im Programm */
+  else{var rt=radioTitel();i=rt.i;off=rt.off;}
+  var T=S.l[i];
+  if(!radioAud){radioAud=new Audio();radioAud.preload="none";radioAud.volume=0.3;
+    radioAud.addEventListener("ended",function(){radioSpielen(true);});}
+  var src="/audio/"+T[0];
+  if(radioAud._src!==src||naechstes){radioAud._src=src;radioAud._i=i;radioAud.src=src;
+    if(off>0)radioAud.addEventListener("loadedmetadata",function lm(){radioAud.removeEventListener("loadedmetadata",lm);
+      try{if(radioAud.duration)radioAud.currentTime=off%radioAud.duration;}catch(e){}},false);}
+  radioAud.play().catch(function(){});
+  try{MUS.pause();}catch(e){}
+  var key=radioSender*10+i;
+  if(_radioTitel!==key){_radioTitel=key;radioAnzeige(S,T);}}
+function radioAnzeige(S,T){
+  var el=document.getElementById("gtaRadio");if(!el)return;
+  el.innerHTML=S?"<div class='gr-sender'>"+txt(S.n)+"</div><div class='gr-lied'>"+txt(T[1])+" · "+txt(T[2])+(T[3]?" ("+T[3]+")":"")+"</div>":
+    "<div class='gr-sender'>Radio aus</div>";
+  el.className="";void el.offsetWidth;el.className="an";
+  var sp=document.getElementById("spRadio");if(sp)sp.textContent=S?S.n:"Radio aus";
+  clearTimeout(window._grT);window._grT=setTimeout(function(){el.className="";},3600);}
+function radioWeiter(){
+  if(!fahren)return;
+  if(!radioAn){radioAn=true;radioSender=0;}
+  else if(radioSender<RADIO.length-1)radioSender++;
+  else radioAn=false;
+  try{localStorage.setItem("th_radio",radioAn?String(radioSender):"aus");}catch(e){}
+  _radioTitel=-1;
+  if(radioAn)radioSpielen();else{if(radioAud)radioAud.pause();radioAnzeige(null);}
+  beep(1200,.03,"square",.02);}
+function radioAus(){if(radioAud)radioAud.pause();_radioTitel=-1;
+  try{if(running)MUS.play().catch(function(){});}catch(e){}}
+addEventListener("keydown",function(e){
+  if(!fahren||buildMode||!e.key||e.ctrlKey||e.metaKey)return;
+  if(e.target&&/^(INPUT|TEXTAREA)$/.test(e.target.tagName))return;
+  if(e.key.toLowerCase()==="r")radioWeiter();});
+(function(){var sp=document.getElementById("speedo");if(sp){sp.style.cursor="pointer";sp.addEventListener("click",radioWeiter);}})();
+
+/* ── Einsteigen / Aussteigen ─────────────────────────────────────────────────── */
+function gtaEinstieg(a){gtaOrt(wagenName(a));_radioTitel=-1;
+  if(radioAn)radioSpielen();else{var sp=document.getElementById("spRadio");if(sp)sp.textContent="Radio aus";}}
+function gtaAusstieg(){radioAus();window._stuntZL=0;}
+
+/* ── Fahndungssterne: fuenf Plaetze, volle und leere Sterne ───────────────────── */
+function sterneHtml(n){var s="";for(var i=0;i<5;i++)s+="<svg class='st"+(i<n?" voll":"")+"' viewBox='0 0 24 24' aria-hidden='true'><path d='M12 2.8l2.7 5.9 6.4.7-4.8 4.3 1.4 6.3L12 16.9 6.3 20l1.4-6.3L2.9 9.4l6.4-.7z'/></svg>";return s;}
+
+/* ── Sirene: Zweiklang, lauter je naeher der naechste Streifenwagen ──────────── */
+var _sirene=null;
+function sireneTakt(minDist,an){
+  if(!an||muted){if(_sirene){try{_sirene.o.stop();}catch(e){}_sirene=null;}return;}
+  try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return;}
+  if(!_sirene){var o=actx.createOscillator(),g=actx.createGain();o.type="triangle";g.gain.value=0;
+    o.connect(g);g.connect(actx.destination);o.start();_sirene={o:o,g:g};}
+  var t=actx.currentTime,hoch=(Math.floor(t/0.55)%2)===0;
+  _sirene.o.frequency.setTargetAtTime(hoch?622:466,t,0.02);
+  var v=Math.max(0,Math.min(1,1-(minDist-6)/70))*0.035;
+  _sirene.g.gain.setTargetAtTime(v,t,0.1);_sirene.zuletzt=performance.now();}
+/* Waechter: ruft niemand mehr sireneTakt (Menue, Pause, Spielende), verstummt sie —
+   sonst hielte der Oszillator den letzten Ton, bis die Seite zugeht. */
+setInterval(function(){if(_sirene&&performance.now()-(_sirene.zuletzt||0)>1500)sireneTakt(0,false);},1000);
+
 
 // ===================== Start / Netz-Lobby =====================
 var SAVE="th_save1";
@@ -16501,7 +16711,7 @@ function stampVilla(){
 function loop(now){
   requestAnimationFrame(loop);
   var _roh=(now-last)/1000;                 /* echte Bildzeit — dt ist gedeckelt */
-  var dt=Math.min(0.05,_roh);last=now;
+  var dt=Math.min(0.05,_roh)*(window._zeitFaktor||1);last=now;   /* 🎬 Zeitlupe (GTA-Einblendungen, Stunt) */
   _rrRegel(_roh);
   if(running){
     for(var _li=0;_li<nachtLampen.length;_li++){var _L=nachtLampen[_li];var _t=_L._ti||0; /* 💡 weiches Ein-/Ausfaden der Strassenbeleuchtung */
@@ -16806,7 +17016,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updBauPlopps(dt);updBauKamera(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updClub(dt);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
+    updHearts(dt);updPlopps(dt);updBauPlopps(dt);updBauKamera(dt);gtaOrtTakt(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updClub(dt);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
