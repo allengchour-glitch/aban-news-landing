@@ -62,6 +62,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-24 (🛒 neues Produkt „Strategie-Prüfstand" CHF 29 + Shop-Lecks):**
+- **Produkt:** `content/packs/de/strategie-pruefstand/` (Python-Kit, Katalog `data/kit-catalog.json`,
+  standalone). Verkaufskasten auf `trading-lernen.html` holt den Kauf-Link aus `data/shop-products.json`.
+- **🟡 KAUF-LINK FEHLT NOCH — nur User:** GitHub-Secret `STRIPE_API_KEY` ist KEIN Secret Key
+  (Stripe 403 `secret_key_required`, vermutlich `pk_…`). Richtiger Key: `sk_live_…` oder eingeschränkt
+  `rk_live_…` mit Schreibrecht auf Products, Prices, Payment Links. Danach `stripe-shop.yml` starten →
+  Link wird angelegt, committet, deployt (kein `[skip ci]` mehr). Cloudflare hat den richtigen Key
+  (`/api/kit-download` antwortet „Zahlung nicht gefunden" statt 503).
+- **🔒 Kit-ZIPs nie ins Repo:** `downloads/kits/` ist gitignored; der Deploy baut sie
+  (`build_kit_zips.py`, Salt mit `.strip()`). Der Stripe-Workflow hatte mit ungestripptem Salt 45 ZIPs
+  unter falschen Namen committet (404, aber Inhalt öffentlich). Gegenprobe: 34/34 alte Namen live 200.
+- **💰 eBay:** 16 Kaufberater-Seiten liefen ohne/mit fremder campid → über `/go/ebay`; Quality Check wird
+  rot bei direkten eBay-Links. Money-Guard (`automation/money_seo_guard.py`) läuft nur über GitLab = steht;
+  seine „Founding €69"-Kästen bewusst NICHT übernommen (Verlauf + „kein Hype").
+
 **📌 2026-09-23 (🔓 LIVE-DEPLOY: echte Ursache gefunden — ein eingecheckter Symlink):**
 - **abannews.com stand seit Ende August still.** Die Memory-Annahme „nur der Hetzner-Server (PAT fehlt)"
   war nur die halbe Wahrheit: der **GitHub-Weg** `.github/workflows/cf-deploy-mainsite.yml` (Direct Upload,
