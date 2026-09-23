@@ -686,3 +686,4 @@ gid://shopify/Product/15448840995201	2026-09-23T08:28Z	schon-DRAFT	15.90	32.76	B
 gid://shopify/Product/15453767762305	2026-09-23T08:28Z	schon-DRAFT	14.90	31.76	Ölmalerei zum Selbermachen
 gid://shopify/Product/15501921223041	2026-09-23T08:28Z	schon-DRAFT	15.90	32.74	Katzen-Trinkgefäss
 gid://shopify/Product/15504103997825	2026-09-23T08:28Z	schon-DRAFT	17.90	34.74	Keramik Futternapf-Set für Hunde und Katzen
+gid://shopify/Product/15454069162369	2026-09-23T11:14Z	schon-DRAFT	15.90	32.68	Retro-Plattformschuhe für Herren
