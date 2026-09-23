@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:17 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:22 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **30'605**
-- Optionen mit englischen Werten (Kandidaten): 3'665
-- Optionen übersetzt: **1'997** · Werte übersetzt: **13'006**
+- Produkte gesehen: **32'405**
+- Optionen mit englischen Werten (Kandidaten): 3'797
+- Optionen übersetzt: **2'083** · Werte übersetzt: **13'646**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 12'607
+- Werte mit unbekanntem Wort (unverändert): 12'953
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 56
-- übersprungen «kollision-nach-uebersetzung»: 35
+- übersprungen «kleidungsstueck-im-wert»: 58
+- übersprungen «kollision-nach-uebersetzung»: 37
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -43,6 +43,7 @@
 - `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
 - `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
 - `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
+- `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -83,6 +84,8 @@
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
 - `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
 - `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
+- `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 2 White → 2 Weiss; 2 Apricot → 2 Aprikose; 3 White → 3 Weiss; 3 Apricot → 3 Aprikose; 4 White → 4 Weiss
+- `15499303190913` [Farbe] blade-sports-mesh-laufschuhe-614000: All Black-39-Heel height 10cm → Komplett Schwarz-39-Absatz Höhe 10 cm; All Black-40-Heel height 10cm → Komplett Schwarz-40-Absatz Höhe 10 cm; All Black-41-Heel height 10cm → Komplett Schwarz-41-Absatz Höhe 10 cm; All Black-42-Heel height 10cm → Komplett Schwarz-42-Absatz Höhe 10 cm; All Black-43-Heel height 10cm → Komplett Schwarz-43-Absatz Höhe 10 cm
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -141,5 +144,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 475, `light` 437, `color` 317, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `size` 114, `powder` 111, `no` 110, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `bag` 91, `belt` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 78, `spring` 71, `dual` 71, `rope` 70, `dark` 69, `base` 69, `petal` 68, `chain` 67, `autumn` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `tea` 60, `of` 60, `code` 59, `buckle` 58, `yards` 57, `plush` 56, `one` 55, `electric` 55, `night` 54, `little` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `hat` 47, `cloud` 47, `star` 46, `cat` 46, `sheet` 46
+`inner` 507, `light` 440, `color` 326, `shell` 162, `degrees` 159, `core` 137, `size` 129, `surface` 126, `powder` 112, `no` 110, `diamond` 108, `high` 101, `skin` 100, `three` 97, `to` 96, `belt` 92, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 80, `code` 79, `yards` 77, `rope` 75, `spring` 71, `dual` 71, `base` 70, `dark` 69, `petal` 68, `chain` 67, `autumn` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `tea` 60, `of` 60, `buckle` 60, `cherry` 59, `one` 56, `plush` 56, `little` 56, `bottom` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49, `suit` 48, `space` 48, `hat` 47, `cloud` 47, `star` 46
 
