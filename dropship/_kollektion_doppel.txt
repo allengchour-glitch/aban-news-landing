@@ -1,0 +1,16 @@
+2026-09-23T23:41:04Z	fitness-sub	fitness-training	UND TAG EQUALS «fitness»	fitness-training 111 P. (menü, 8 kanäle, text 2) vs 10 P. (8 kanäle, text 1)	ok
+2026-09-23T23:41:06Z	fitness	fitness-training	UND TAG EQUALS «fitness»	fitness-training 111 P. (menü, 8 kanäle, text 2) vs 4 P. (2 kanäle, text 1)	ok
+2026-09-23T23:41:08Z	schuhe-stiefel	sub-stiefel-boots	ODER TITLE CONTAINS «boots» · TITLE CONTAINS «chelsea» · TITLE CONTAINS «stiefel» · TITLE CONTAINS «stiefelette»	sub-stiefel-boots 107 P. (menü, 6 kanäle, text 0) vs 5 P. (2 kanäle, text 2)	ok
+2026-09-23T23:41:11Z	fortura-halloween	halloween	UND TAG EQUALS «halloween»	halloween 208 P. (menü, startseite, rotation, 6 kanäle, text 1) vs 6 P. (5 kanäle, text 0)	ok
+2026-09-23T23:41:13Z	bar-tools	bar-wein	UND TAG EQUALS «bar»	bar-wein 4 P. (1 kanäle, text 2) vs 4 P. (1 kanäle, text 2)	ok
+2026-09-23T23:41:15Z	marke-puma	puma	UND VENDOR EQUALS «puma»	puma 5 P. (2 kanäle, text 2) vs 5 P. (2 kanäle, text 2)	ok
+2026-09-23T23:41:18Z	marke-adidas	adidas	UND VENDOR EQUALS «adidas»	adidas 5 P. (2 kanäle, text 2) vs 5 P. (2 kanäle, text 2)	ok
+2026-09-23T23:41:20Z	tauchen-schnorcheln	tauchen	UND TAG EQUALS «tauchen»	tauchen 5 P. (2 kanäle, text 2) vs 5 P. (2 kanäle, text 2)	fehler: redirect tauchen-schnorcheln: [{'field': ['urlRedirect', 'target'], 'message': "Target can't redirect to another redirect"}]
+2026-09-23T23:41:22Z	marke-reebok	reebok	UND VENDOR EQUALS «reebok»	reebok 5 P. (2 kanäle, text 2) vs 5 P. (2 kanäle, text 2)	ok
+2026-09-23T23:41:24Z	anime-manga	anime	UND TAG EQUALS «anime»	anime 5 P. (2 kanäle, text 2) vs 4 P. (1 kanäle, text 2)	ok
+2026-09-23T23:41:26Z	marke-under-armour	under-armour	UND VENDOR EQUALS «under armour»	under-armour 5 P. (2 kanäle, text 2) vs 4 P. (2 kanäle, text 1)	ok
+2026-09-23T23:41:28Z	marke-gant	gant	UND VENDOR EQUALS «gant»	gant 5 P. (2 kanäle, text 2) vs 4 P. (2 kanäle, text 1)	ok
+2026-09-23T23:41:30Z	metalldetektoren-schatzsuche	metalldetektor	UND TAG EQUALS «metalldetektor»	metalldetektor 4 P. (2 kanäle, text 1) vs 3 P. (2 kanäle, text 0)	fehler: redirect metalldetektoren-schatzsuche: [{'field': ['urlRedirect', 'target'], 'message': "Target can't redirect to another redirect"}]
+2026-09-23T23:45:01Z	tauchen-schnorcheln	tauchen	UND TAG EQUALS	Korrektur 23.09.: beide Seiten waren NIE im Online Store (Agent-Export 23:25 + Live-Lesung), Bleiberin ist selbst Redirect-Pfad → keine Web-Adresse verloren; Verlierer bleibt von Inbox/POS abgemeldet	korrigiert
+2026-09-23T23:45:01Z	metalldetektoren-schatzsuche	metalldetektor	UND TAG EQUALS	Korrektur 23.09.: beide Seiten waren NIE im Online Store (Agent-Export 23:25 + Live-Lesung), Bleiberin ist selbst Redirect-Pfad → keine Web-Adresse verloren; Verlierer bleibt von Inbox/POS abgemeldet	korrigiert
+2026-09-23T23:45:01Z	fitness-sub	fitness-training	UND TAG EQUALS «fitness»	Redirect-Kette fitness-sub→fitness(abgemeldet) per urlRedirectUpdate auf fitness-training gedreht	ok
