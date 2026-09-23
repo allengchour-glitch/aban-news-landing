@@ -434,6 +434,25 @@ def verlust_kaufbar():
             f"Stand {s['stand']})")
 
 
+def google_feedback():
+    """GOOGLE: N Free-Listings-Blocker — Stand von automation/google_feedback_wache.py (Task #100, 23.09.2026).
+    Google-Diagnosen stehen als product.feedback der App «Google & YouTube» an jedem Produkt; Meldungen mit
+    [Shopping_ads] betreffen nur bezahlte Anzeigen und zaehlen nicht. Liest den STAND (Datei); kein Stand = «unklar»,
+    alter Stand = Befund (Waechter laeuft nicht)."""
+    p = os.path.join(REPO, "dropship", "_google_feedback_stand.json")
+    try:
+        s = json.load(open(p, encoding="utf-8"))
+        alter_h = (datetime.datetime.utcnow() - datetime.datetime.strptime(s["stand"], "%Y-%m-%dT%H:%MZ")).total_seconds() / 3600
+    except Exception:
+        return "GOOGLE: unklar (kein Stand — automation/google_feedback_wache.py nie gelaufen?)"
+    top = " · ".join(f"{k} {v}" for k, v in list(s.get("klassen", {}).items())[:3])
+    alt = f" · ⚠️ Stand {alter_h/24:.1f} T alt" if alter_h > 48 else ""
+    voll = "" if s.get("vollstaendig", True) else " · ⚠️ Scan unvollstaendig"
+    shop = sum(v for k, v in (s.get("andere_apps") or {}).items() if k.startswith("[Shop]"))
+    shopz = f" · Shop-Kanal: {shop} Meldungen" if shop else ""
+    return f"GOOGLE: {s.get('blocker')} Free-Listings-Blocker ({top}){alt}{voll}{shopz}"
+
+
 def drafts_ohne_quittung():
     """DRAFT-OHNE-QUITTUNG: Produkte mit Tag `cj-nicht-mehr-verfuegbar`, die in
     dropship/_cj_verfuegbarkeit.txt KEINE Zeile haben.
@@ -569,7 +588,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

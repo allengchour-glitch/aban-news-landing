@@ -25,7 +25,7 @@ vorkommen — damit steht der URHEBER im Bericht und nicht nur der Schaden.
 ⚠️ Bei fehlender API-Antwort endet der Lauf mit PAUSE, nie mit FERTIG (Lehre 21.08.):
 Ein Wächter, der bei toter Quelle Vollzug meldet, ist tagelang unsichtbar.
 """
-import json, os, subprocess, sys, time
+import datetime, json, os, subprocess, sys, time
 
 SHOP = "au3j0y-hq.myshopify.com"
 STAND = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dropship", "_bestandsgroesse.json")
@@ -95,27 +95,30 @@ def gql(q, v=None):
 
 
 def zaehle(bedingung):
-    """Exakte Zahl über Preisbänder. None, wenn die API nicht antwortet."""
+    """Exakte Zahl über eine ECHTE Partition: created_at-Fenster. 23.09.2026 (Task #100): Preisbänder waren keine
+    Partition — ein Produkt mit Varianten in zwei Bändern zählte doppelt (+5,6 % gemessen 22.09.). Ein Produkt hat genau
+    EIN created_at. Fenster, die den 10'000er-Deckel treffen (precision != EXACT), werden halbiert; None, wenn die API
+    nicht antwortet oder ein Fenster nicht mehr teilbar ist (lieber keine Zahl als eine falsche)."""
     summe = 0
-    offen = list(BAENDER)
+    start = datetime.date(2025, 1, 1)
+    ende = datetime.date.today() + datetime.timedelta(days=2)
+    offen = []
+    d0 = start
+    while d0 < ende:
+        d1 = min(ende, (d0.replace(day=1) + datetime.timedelta(days=32)).replace(day=1))
+        offen.append((d0, d1)); d0 = d1
     while offen:
         lo, hi = offen.pop(0)
-        q = bedingung + f" AND price:>={lo}" + (f" AND price:<{hi}" if hi is not None else "")
+        q = bedingung + f" AND created_at:>={lo.isoformat()} AND created_at:<{hi.isoformat()}"
         d = gql("query($q:String!){ productsCount(query:$q){count precision} }", {"q": q})
         pc = (d or {}).get("productsCount")
         if not pc:
             return None
         if pc.get("precision") != "EXACT":
-            # Band zu voll → in der Mitte teilen. Ohne Obergrenze in Zehnerschritten weiter.
-            if hi is None:
-                offen.insert(0, (lo + 100, None))
-                offen.insert(0, (lo, lo + 100))
-            else:
-                m = round((lo + hi) / 2, 2)
-                if m <= lo or m >= hi:
-                    return None            # nicht weiter teilbar — lieber keine Zahl als eine falsche
-                offen.insert(0, (m, hi))
-                offen.insert(0, (lo, m))
+            if (hi - lo).days <= 1:
+                return None            # ein Tag mit >10'000 Anlagen — nicht weiter teilbar
+            m = lo + (hi - lo) / 2
+            offen.insert(0, (m, hi)); offen.insert(0, (lo, m))
             continue
         summe += pc["count"]
         time.sleep(0.15)
@@ -124,7 +127,8 @@ def zaehle(bedingung):
 
 def frisch_gedraftet_tags(seit_tage=2, limit=250):
     """Welche Tags tragen die zuletzt gedrafteten Produkte? Nennt den Urheber, nicht nur die Zahl."""
-    q = f"status:draft AND updated_at:>-{seit_tage}d"
+    seit = (datetime.date.today() - datetime.timedelta(days=seit_tage)).isoformat()
+    q = f"status:draft AND updated_at:>={seit}"   # 23.09.: Shopify-Suche kennt kein relatives «-2d» → «Invalid timestamp»
     d = gql("query($q:String!){ products(first:50, query:$q){ nodes{ tags } } }", {"q": q})
     haeufig = {}
     for n in ((d or {}).get("products") or {}).get("nodes", []):
@@ -172,7 +176,7 @@ def main():
     with open(BERICHT, "w", encoding="utf-8") as f:
         f.write(f"# Bestandsgrösse — Einbruch gemeldet ({heute} UTC)\n\n")
         f.write(f"**Aktive Produkte: {aktiv}** — vorher {letzte} ({diff:+d}, {proz:+.1f} %).\n\n")
-        f.write("Gezählt in Preisbändern, weil `productsCount` bei 10'000 deckelt.\n\n")
+        f.write("Gezählt in created_at-Fenstern (echte Partition), weil `productsCount` bei 10'000 deckelt.\n\n")
         if tags:
             f.write("## Häufigste Tags bei der zuletzt gedrafteten Ware\n\n")
             f.write("Wer einen Massen-Draft fährt, hinterlässt fast immer eine Marke. "

@@ -247,7 +247,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    371 «Product page unavailable», 26 «Image too small», 18 «Unable to show image», 7 «Promotional overlay»,
    3 «Guns and Parts» (Klingen-/Waffen-Klasse prüfen). Zielland = **Shopify Markets** (1 Markt CH), Versand = Kanal-
    Einstellung «Automatically import shipping settings» aus dem General-Profil (Shopify Help) — der Ort der Einstellung
-   ist Shopify, nicht das GMC. Wächter: Task #100 `google_feedback_wache.py`. Weiter gültig: Google liest
+   ist Shopify, nicht das GMC. Wächter seit 23.09.: `google_feedback_wache.py` (täglich, Ampel «GOOGLE: …», Bericht `dropship/GOOGLE-FEEDBACK.md`; nach App trennen — die App «Shop» schreibt 33'863 eigene Meldungen). Weiter gültig: Google liest
    **mm-google-shopping-Metafelder**, nicht den Beschreibungstext (`automation/google_feed/*_metafield.py`).
    ⚠️ `reprice_to_benchmark.py` ist ein SCHLAFENDER Preissenker ohne EK-Boden (`max(cur·0,6, 14.90)`) — nicht starten.
 
@@ -501,6 +501,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-23 · 🔎 **Google-Feedback-Wächter (Task #100): Lauf 1 zählte 33'863 Meldungen der App «Shop» als Google-Blocker — `product.feedback` trägt ALLE Kanal-Apps, erst nach App trennen.** Google Free-Listings-Blocker 1'957 (Title under review 836, Inappropriate image 445, Product page unavailable 369 — alle mit onlineStoreUrl, Ursache offen); Shop-Kanal 33'863 «nicht auffindbar» = neuer Befund. Bestandszähler: created_at-Partition statt Preisbänder (54'214 waren +7 % Überzählung), `updated_at:>-2d` ist keine Shopify-Syntax → Journal Nachtrag 29
 - 2026-09-23 · 🗣️ **Bildkanal sprach noch die Scam-Sprache vom Sommer: 70 wartende Kimi-Captions ohne Preis mit Klarna-Filler, der v2-Nachschub hätte «Designer-Preis»/«WELCOME10»/Threads geschrieben.** `bild_queue_captions_ehrlich.py` (Preis live, Laden-Zeile, Sach-Tags; täglich), Nachschub auf dieselben Bausteine. **Tonalitäts-Regel gilt für jeden Schreiber eines Kanals** → Journal Nachtrag 28
 - 2026-09-23 · 🖼️ **Verbesserungsrunde 5: Bild-Poster fragte nie, ob die Ware kaufbar ist — 3 von 73 August-Zeilen bewarben DRAFTs (Link = 404); `social_queue_saeubern.py` hatte seit 03.09. keinen Starter.** Jetzt `produktAktiv()` im Bild-Poster (ACTIVE+onlineStoreUrl), Reiniger täglich im Aufseher, prüft auch «ohne Onlineshop». Alte Throttle-Tracebacks in /tmp-Logs sind Vergangenheit (nur letzte Zeilen zählen) → Journal Nachtrag 27
 - 2026-09-23 · 🎠 **«insta karusell brauchen»: erstes IG-Karussell live (DdnlCi-jkth + FB-Album) — der Slide-Bauer hatte 31 Sets für den toten PC-Poster gelagert, IG verlangt 4:5.** `tiktok_karussell.py FORMAT=ig` (1080×1350, eigene Bildfenster), `ig_karussell_post.mjs` (Wachen wie die Reel-Poster, pusht fehlende Slides selbst), Autopilot 24 h, Aufseher baut täglich 2 + montags Top. **Ein Bauer ohne Poster ist ein Lager** → Journal Nachtrag 25
@@ -544,9 +545,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-09-21 · 🔁 **68 kaufbare Produkte falsch gedraftet — mein Regex von heute früh, und die alte Fassung seit Wochen.** «CJ-CJJSBGSD00009-Blue package-US» → Kern `CJJSBGSD00009` = PRODUKT-SKU (kein `01AZ`), am **Varianten**-Endpunkt gefragt, `1602001 not found` als Absage gewertet — Kanarienvogel productSku: **200,… → Journal
 - 2026-09-21 · 🚪 **49 Tages-Tore, keines beanspruchte sein Log — der Bewertungs-Importer lief doppelt.** Tor-Frage «Log älter als 24 h?», der Lauf schreibt minutenlang nichts (Prio-Liste zuerst), nach dem 120-s-Schlaf war das Tor noch offen → zwei Instanzen (822 s / 696 s, `sid` = Forks EINES Aufsehers). → Journal
 - 2026-09-21 · 🗓️ **Die API-Version im Code war seit Monaten nicht die, die antwortete.** Kopf gemessen: 2024-10/2025-01/2025-07 → alle still auf **2025-10** bedient, die am **01.10.2026** ausläuft — 350 Stellen wären in zehn Tagen unangekündigt auf 2026-01 gesprungen. → Journal
-- 2026-09-21 · 🧭 **Drei tote Landeseiten + ein Kollektionstext entschieden.** Alle drei Seiten (9/5/2 Sitzungen) tragen `cj-nicht-mehr-verfuegbar` → nicht zurückholbar → 301 auf die Kategorie (`sub-sandalen`, `sub-aroma-diffuser`, `wasserfester-schmuck`); «Wasserfester… → Journal
-- 2026-09-21 · 🚧 **Geduld reicht nicht, wenn alle gleichzeitig warten — die Schranke.** Nach den Geduld-Patches starb `lagerstand_hygiene` erneut, jetzt mit Grund: «12x gedrosselt (Eimer dauerhaft leer)». → Journal
 
-… Einzeilen vom 14.–21.09.2026 (91, sechs vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
+… Einzeilen vom 14.–21.09.2026 (93, acht vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
 Dateiende — CLAUDE.md muss unter ~70 KB bleiben); alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md`
 (Inhaltsverzeichnis oben). Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`.

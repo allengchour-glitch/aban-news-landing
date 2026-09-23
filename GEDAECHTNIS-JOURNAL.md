@@ -450,6 +450,29 @@ GETAN: (1) `bild_queue_captions_ehrlich.py`: baut jede ready-Caption mit Scam-Ma
 **Lehre:** Eine Tonalitäts-Regel gilt für JEDEN Schreiber eines Kanals — Karussell, Reel, Bild, Nachschub. Wer sie an
 einer Stelle einführt und die anderen Queues stehen lässt, postet den Sommer-Ton weiter, nur seltener.
 
+**Nachtrag 29 (23.09. 10:20 UTC) — Task #100: Google-Feedback-Wächter gebaut — und der erste Lauf zählte 33'863 Meldungen der falschen App als Google-Blocker.**
+GEMESSEN: `product.feedback{details{app{title} messages{message}}}` kostet 47 Punkte je 250 Produkte (206 Seiten für
+50'462 aktive, ~4 Min, Eimer nie unter den Boden). Lauf 1: 35'820 «Blocker», davon 33'863 «Dieses Produkt ist in Shop
+nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal» — Stichprobe zweier Handles: beide ACTIVE, im Onlineshop,
+in allen 6 Kanälen publiziert; die Meldung kommt von der App **«Shop»** (Shop-Kanal), nicht von «Google & YouTube».
+`product.feedback` trägt die Diagnosen ALLER Kanal-Apps; wer nicht nach App trennt, mischt Kanäle. Lauf 2 (nach App):
+**Google Free-Listings-Blocker 1'957** — «Title under review» 836 (Google prüft, vergeht), «Inappropriate image» 445,
+«Product page unavailable» 369 (alle 369 HABEN eine onlineStoreUrl → meine 404-These war falsch; Ursache offen),
+«Personalized advertising: personal hardships» 75, «Sexual interests» 60, «Restricted adult content» 60, «Unable to
+show image» 32, «Image too small» 27, «Guns and Parts» 3, «Explosives» 1, «Illegal drugs» 1. Nur Shopping-Ads-
+Meldungen (ignoriert): «Over capacity … [Shopping_ads]». Dazu Shop-Kanal: 33'863 Produkte «nicht auffindbar» — ein
+eigener, bisher unbekannter Befund (Shop-App zeigt zwei Drittel des Sortiments nicht), heute nur gemessen.
+Nebenbei `bestandsgroesse_wache.py`: Preisbänder waren keine Partition (Mehr-Varianten doppelt) → created_at-Fenster
+mit Halbierung am 10'000er-Deckel; erster Lauf meldete «-6.9 % EINBRUCH» — das war die Korrektur der Überzählung
+(54'214 → 50'462), kein Einbruch; zweiter Lauf +0,0 %. Und `updated_at:>-2d` ist keine Shopify-Syntax («Invalid
+timestamp») → ISO-Datum; der Nebenzähler «frisch gedraftet» lief seit seinem Bau ins Leere.
+GETAN: `google_feedback_wache.py` (täglich im Aufseher; Stand `_google_feedback_stand.json`, Bericht
+`dropship/GOOGLE-FEEDBACK.md` mit Handles je Klasse, Shop-App getrennt), Ampel-Zeile «GOOGLE: N Free-Listings-Blocker
+(…) · Shop-Kanal: M Meldungen», Zähler-Partition + Datumsfilter repariert.
+**Lehre:** Ein Feedback-Feld ohne Absender ist keine Diagnose — erst nach App trennen, dann zählen. Und ein Zähler,
+dessen Bänder sich überlappen, meldet beim ersten sauberen Lauf einen Einbruch, der keiner ist: Baseline mitdenken.
+OFFEN: Ursache «Product page unavailable» (369) und der Shop-Kanal-Befund (33'863) — zwei Messungen, noch keine Fixes.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16112,3 +16135,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-21 · ⏳ **Der Kommentar sagte `restoreRate`, der Code schlief 12 s — und mein Patch hatte denselben Fehler.** «alles fixen»: ~15 Wächter enden mit «Shopify antwortet nicht». → Journal
 - 2026-09-21 · 🔁 **Fünf sinnlose Läufe pro Stunde, für immer — und ein Wrapper, der Befunde erfindet.** (1) `versandschwelle_rabatt.log` meldete seit 10.09. → Journal
 - 2026-09-21 · 📚 **«9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde.** `cj_verfuegbarkeit` schrieb 104× dieselbe Zeile; gemessen blätterte er seit der Cursor-Löschung (19.09.) bei JEDEM Lauf den ganzen Katalog (~810 Seiten, **50–80k Punkte** aus einem 2'000er-Eimer),… → Journal
+- 2026-09-21 · 🚧 **Geduld reicht nicht, wenn alle gleichzeitig warten — die Schranke.** Nach den Geduld-Patches starb `lagerstand_hygiene` erneut, jetzt mit Grund: «12x gedrosselt (Eimer dauerhaft leer)». → Journal
+- 2026-09-21 · 🧭 **Drei tote Landeseiten + ein Kollektionstext entschieden.** Alle drei Seiten (9/5/2 Sitzungen) tragen `cj-nicht-mehr-verfuegbar` → nicht zurückholbar → 301 auf die Kategorie (`sub-sandalen`, `sub-aroma-diffuser`, `wasserfester-schmuck`); «Wasserfester… → Journal
