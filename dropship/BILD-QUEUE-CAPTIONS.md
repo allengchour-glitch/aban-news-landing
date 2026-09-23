@@ -1,4 +1,4 @@
-# Bild-Queue-Captions — ehrliche Laden-Sprache · Stand 2026-09-23 15:48 UTC
+# Bild-Queue-Captions — ehrliche Laden-Sprache · Stand 2026-09-23 16:08 UTC
 
 Werkzeug `automation/bild_queue_captions_ehrlich.py` (täglich im Aufseher). ready: 0 · heute umgebaut: 0
 

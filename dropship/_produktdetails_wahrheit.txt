@@ -68042,3 +68042,14 @@
 15447969956225	live-schon-sauber	Familien-Pyjama-Set mit Tiermotiven
 15447970349441	live-schon-sauber	Herz-Print Pyjama-Set für Eltern & Kind
 15447970546049	live-schon-sauber	Niedliches Pyjama-Set aus Baumwollgaze für Kinder
+15412751499649	material-floskel-entfernt	Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen
+15412751860097	material-floskel-entfernt	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Da
+15412825063809	material-floskel-entfernt	Bikini-Set Damen – einteilig, schmeichelhaft (S–3XL, mehrere
+15412825194881	farbe-floskel-entfernt,material-floskel-entfernt	Neckholder-Sommerkleid mit Blumen-Print – V-Ausschnitt (Dame
+15412828733825	material-floskel-entfernt	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+15412830634369	material-floskel-entfernt	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+15412830896513	material-floskel-entfernt	Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
+15412902953345	material-floskel-entfernt	2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out
+15412915110273	material-floskel-entfernt	Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe
+15412915339649	material-floskel-entfernt	Strand-Maxikleid «Bali» – luftiges Stufenkleid
+15412915470721	material-floskel-entfernt	Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schleife
