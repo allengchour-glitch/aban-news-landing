@@ -5906,7 +5906,7 @@ setTimeout(function baueGebaeude(){
             /* ⚠️ Nicht durch fremde Kreuzungen: der Anschluss von Gewerbe Ost kreuzt die
                Landstrasse (r 200), die Striche liefen mitten ueber die Kreuzung. */
             var sx9=mx+(waag?off:0),sz9=mz+(waag?0:off),rr9=Math.hypot(sx9,sz9);
-            if(Math.abs(rr9-200)<7.5)continue;
+            if(Math.abs(rr9-200)<9)continue;   /* 9 statt 7,5: die Strichspitze (1,5 m) lag im Kies-Bankett, Z-Kampf als Spritzer sichtbar */
             var str=new THREE.Mesh(new THREE.PlaneGeometry(waag?3:0.15,waag?0.15:3),mM);
             str.rotation.x=-Math.PI/2;
             str.position.set(mx+(waag?off:0),0.005,mz+(waag?0:off));scene.add(str);}}
@@ -6980,8 +6980,18 @@ setTimeout(function baueGebaeude(){
         var BB=window._berge||[];
         for(var m=0;m<BB.length;m++)
           if(Math.hypot(x-BB[m].x,z-BB[m].z)<BB[m].r*0.80+rad2)return false;
+        /* ⚠️ DIE VIERTELSTRASSEN FEHLTEN HIER (Runde 92) — dieselbe Falle wie bei den Zubringern
+           oben. Die Strasse eines Viertels liegt an dessen RAND (Bauernhof: z -253…-239 bei
+           Viertelrand -241), also ausserhalb der 8 m Zugabe; ein Feld lag darum ueber dem
+           Westende der Bauernhofstrasse, das Postauto fuhr "auf Gruen" (th-autoboden 9/40,
+           Strahl-Probe: Treffer y 0,02 aus dem 457-m-Feldernetz). Jetzt zusaetzlich die
+           TATSAECHLICHEN Fahrbahnbaender (mit Gehweg) der bis dahin gesetzten Viertel. */
+        var VB9=window._viertelBaender?window._viertelBaender():[];
+        for(var b9=0;b9<VB9.length;b9++){var bd9=VB9[b9];
+          var q9=bd9.a==="z"?z:x, l9=bd9.a==="z"?x:z;
+          if(Math.abs(q9-bd9.c)<bd9.h+rad2+2&&l9>bd9.von-rad2&&l9<bd9.bis+rad2)return false;}
         for(var q=0;q<VIERTEL.length;q++){var v=VIERTEL[q];
-          if(Math.abs(x-v.x)<v.w/2+rad2+8&&Math.abs(z-v.z)<v.d/2+rad2+8)return false;
+          if(Math.abs(x-v.x)<v.w/2+rad2+16&&Math.abs(z-v.z)<v.d/2+rad2+16)return false;
           var L=Math.hypot(v.x,v.z); if(L<1)continue;
           var t=(x*v.x+z*v.z)/(L*L);
           if(t>0&&t<1.25&&Math.hypot(x-v.x*t,z-v.z*t)<12+rad2)return false;}
@@ -7413,8 +7423,9 @@ setTimeout(function baueGebaeude(){
          reicht von -17 bis 13 — also je einen Meter im Gras, und QUER zu den Stellplatzstrichen
          (Striche alle 3 m in x, Wagen 5,1 m lang in z). Jetzt laengs in den Stellplaetzen
          (-17…-14, -11…-8, 10…13), Nase zur Platzseite, ganz auf dem Belag. */
-      [["th_auto_kombi.glb",-15.5],["th7_taxi.glb",-9.5],["th_auto_van.glb",11.5]].forEach(function(a){
-        bau(a[0],1.6,WX-5.3,0,a[1],0,false,function(w){w.userData.fest=1;},true);});
+      [["th_auto_kombi.glb",-15.5,0],["th7_taxi.glb",-9.5,Math.PI/2],["th_auto_van.glb",11.5,0]].forEach(function(a){
+        /* Drehung je Modellachse: th_auto_* laengs x (0), th7_taxi laengs z (pi/2) — siehe Bahnhof */
+        bau(a[0],1.6,WX-5.3,0,a[1],a[2],false,function(w){w.userData.fest=1;},true);});
       bau("th4_laterne_modern.glb",5.2,WX,0,20,0,false,null);
       bau("th4_laterne_modern.glb",5.2,WX,0,-20,0,false,null);
     })();
@@ -8971,14 +8982,17 @@ setTimeout(function baueGebaeude(){
         new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true}));
       tm.rotation.x=-Math.PI/2;tm.position.set(37.6,0.006,95.2);   /* ohne z-Drehung: lesbar aus der Gasse (Bild nach-bahnhof stand kopf) */scene.add(tm);
     })();
-    bau("th7_taxi.glb",1.7,36.2,0,91.6,Math.PI/2,false,function(w){w.userData.fest=1;},true);   /* Taxistand, Platz 9 (s. o.) */
+    /* ⚠️ MODELLACHSE GEMESSEN (GLB-Boxen): th7_taxi und th7_lieferwagen sind LAENGS Z (4,3 / 4,8 m),
+       th_auto_* laengs x. Mit pi/2 lagen Taxi und Lieferwagen quer ueber 1,5 Stellplaetze (Bild
+       nach-bahnhof) — die Bodenmessung sah das nicht, weil alles darunter Asphalt war. */
+    bau("th7_taxi.glb",1.7,36.2,0,91.6,0,false,function(w){w.userData.fest=1;},true);   /* Taxistand, Platz 9, Nase in z wie die Stellplaetze */
     /* ⚠️ (12|55) war FAHRBAHN der Suedstrasse; `wegVonStrasse` schob den Wagen daraufhin bis
        (10|44,5) — in den Vorgarten. Jetzt im Parkstreifen (Platz 7,2…12,3 des Segments 20),
        laengs, Nase nach Westen wie die Spur daneben; ohneSchutz, damit ihn nichts wegschiebt. */
     /* ⚠️ ohneSchutz schaltet nur wegVonStrasse ab. Der ENTWIRRER (userData.fest respektiert er)
        schob den Wagen trotzdem nach (20,3|42,5) in den Vorgarten — gemessen mit th-autoboden.
        Dazu weg vom Ahorn bei (15|45): Platz 22,6…27,7 statt 12,3…17,4. */
-    bau("th7_lieferwagen.glb",2.5,25.1,0,GH*CS/2+12-(HS_PARK+HS_BORD)/2,Math.PI,false,function(w){w.userData.fest=1;},true);
+    bau("th7_lieferwagen.glb",2.5,25.1,0,GH*CS/2+12-(HS_PARK+HS_BORD)/2,Math.PI/2,false,function(w){w.userData.fest=1;},true);   /* pi/2: Modell laengs z -> laengs zur Strasse */
     /* ⚠️ (90|-78) steckte mit 5,2 m in der Lagerhalle (Kasten z -91,4…-78,5)
        UND im Vordach der Tankstelle aus Charge 43. Die Tasche zwischen beiden
        ist 0,5 m breit, der LKW 2,6 — hier gibt es keinen Stand mehr, seit die
@@ -9005,7 +9019,7 @@ setTimeout(function baueGebaeude(){
        Bude davor (th-umfeld: Kollider x 3…8 / z 75…80,6, Pfosten (4,3|78,8) im Wagenkasten).
        Oestlich der Werkstatt liegen nur 3 m Rasen bis zum Gehweg — kein Platz fuer einen Hof.
        Jetzt Platz 5 der Suedreihe des Bahnhofs-Parkplatzes (frei, gemessen wie beim Taxi). */
-    bau("th7_lieferwagen.glb",2.5,25,0,91.6,Math.PI/2,false,function(w){w.userData.fest=1;},true);
+    bau("th7_lieferwagen.glb",2.5,25,0,91.6,0,false,function(w){w.userData.fest=1;},true);      /* Platz 5, laengs z */
     bau("th6_papierkorb.glb",0.9,2,0,90,0,false);
     /* ⚠️ -35 statt -33: die Westkante des Wirtshauses liegt auf x -32,9, die
        Laterne stand also 10 cm davor. Der Entzerrer schob sie daraufhin 1,5 m
