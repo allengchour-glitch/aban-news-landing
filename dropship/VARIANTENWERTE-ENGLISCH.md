@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-23 22:48 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-23 22:59 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **2'410**
-- Optionen mit englischen Werten (Kandidaten): 385
+- Produkte gesehen: **3'005**
+- Optionen mit englischen Werten (Kandidaten): 431
 - Optionen übersetzt: **8** · Werte übersetzt: **19**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'165
+- Werte mit unbekanntem Wort (unverändert): 2'245
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 15
+- übersprungen «kleidungsstueck-im-wert»: 17
 - übersprungen «kollision-nach-uebersetzung»: 12
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -25,6 +25,7 @@
 - `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
 - `15447964516737` [Farbe] **Hoodie & Jogginghose Set im Partnerlook** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers | Grey Suit | Set1
 - `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil, rock · Titel nennt Set: Men's top | Men's Shorts | Women's Shirt | Female Style Skirt | Green Cheongsam Suit
+- `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Yellow Letters | Three Rows Lettered Rabbit
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -94,5 +95,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 101, `light` 77, `color` 66, `skin` 65, `mother` 61, `feet` 59, `core` 52, `hat` 47, `rope` 44, `to` 44, `lens` 38, `father` 38, `⟨satzbau:adjektiv-vor-nomen⟩` 37, `for` 35, `generation` 34, `shell` 31, `no` 30, `years` 30, `old` 30, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 22, `tea` 21, `surface` 21, `bear` 21, `⟨satzbau:nomen-vor-farbe⟩` 20, `high` 19, `number` 19, `deer` 19, `220grams` 18, `clothing` 18, `pumpkin` 17, `belt` 16, `stone` 16, `face` 16, `electric` 16, `foot` 16, `suit` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `full` 15, `handle` 15, `waist` 15, `blocking` 15, `spring` 14, `powder` 14, `chain` 14, `simple` 14, `mirror` 14, `mother's` 14, `translucent` 13
+`degrees` 101, `light` 78, `color` 66, `skin` 66, `mother` 61, `feet` 59, `core` 52, `hat` 47, `rope` 44, `to` 44, `lens` 38, `father` 38, `⟨satzbau:adjektiv-vor-nomen⟩` 37, `for` 35, `generation` 34, `shell` 31, `no` 30, `years` 30, `old` 30, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 22, `tea` 21, `surface` 21, `bear` 21, `⟨satzbau:nomen-vor-farbe⟩` 20, `high` 19, `number` 19, `deer` 19, `220grams` 18, `clothing` 18, `pumpkin` 17, `powder` 17, `belt` 16, `stone` 16, `face` 16, `electric` 16, `foot` 16, `suit` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `full` 15, `handle` 15, `waist` 15, `blocking` 15, `spring` 14, `chain` 14, `carbon` 14, `simple` 14, `mirror` 14, `mother's` 14
 
