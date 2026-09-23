@@ -151,11 +151,11 @@ mitSonden('traumhaus.html', {
         if(!n.geometry.boundingBox)n.geometry.computeBoundingBox();
         M.multiplyMatrices(inv,n.matrixWorld);t.copy(n.geometry.boundingBox).applyMatrix4(M);box.union(t);});
       if(box.isEmpty())return null;
-      var ax=box.max.x-box.min.x,az=box.max.z-box.min.z,y0=box.min.y,P=[];
+      var ax=box.max.x-box.min.x,az=box.max.z-box.min.z,y0=box.min.y,P=[],laengsX=ax>=az;
       [[0.5,0.5],[0.2,0.2],[0.8,0.2],[0.2,0.8],[0.8,0.8]].forEach(function(f){
         var v=new THREE.Vector3(box.min.x+ax*f[0],y0,box.min.z+az*f[1]).applyMatrix4(o.matrixWorld);P.push(v);});
       var s=new THREE.Vector3();new THREE.Box3().setFromObject(o).getSize(s);
-      return {P:P,laenge:+Math.max(s.x,s.z).toFixed(1)};}
+      return {P:P,laenge:+Math.max(s.x,s.z).toFixed(1),laengsX:laengsX};}
     function pruefe(B,e){
       var pk=punkte(e.o);if(!pk)return null;
       var S=pk.P.map(function(v){return unten(B,v.x,v.z,v.y);});
@@ -214,6 +214,37 @@ mitSonden('traumhaus.html', {
         res[o[0]]=z;});
       s0.x=ax;s0.z=az;
       return res;}
+    if(was==="parkplatz"){
+      /* Runde 93 (User: "parkplaetze muessen auch schoenen ausweg haben und auch schoen
+         parkieren"). Je Parkplatz aus window._parkplaetze: (1) ZUFAHRT — von der Platzkante
+         bis zur naechsten Strassenzelle muss der Boden durchgehend Belag sein (asphalt/hell),
+         geprueft in 24 Richtungen; (2) WAGEN — jedes Fahrzeug im Rechteck steht ganz drin
+         und seine Laengsachse liegt auf der Stallachse. */
+      var B5=W.B||boden(sammeln()),F5=sammeln(),out5=[];
+      (window._parkplaetze||[]).forEach(function(pp){
+        var r={n:pp.n,zufahrt:null,fehlt:null,wagen:0,schief:0,raus:0};
+        function imRect(x,z,luft){return Math.abs(x-pp.x)<=pp.w/2+(luft||0)&&Math.abs(z-pp.z)<=pp.d/2+(luft||0);}
+        var kand=[];
+        for(var rr=4;rr<=70;rr+=3)for(var i=0;i<24;i++){var a=i/24*6.283,x=pp.x+Math.cos(a)*rr,z=pp.z+Math.sin(a)*rr;
+          if(imRect(x,z,1))continue;if(gpsStrasse(x,z)&&!gpsGesperrt(x,z))kand.push([x,z,rr,a]);}
+        kand.sort(function(a,b){return a[2]-b[2];});
+        var bestFehl=null;
+        for(var k=0;k<kand.length&&!r.zufahrt;k++){var K=kand[k];
+          /* vom Rand des Rechtecks (entlang der Richtung) bis zum Strassenpunkt, alle 1 m */
+          var dx=Math.cos(K[3]),dz=Math.sin(K[3]),t0=0;
+          for(var t=0;t<K[2];t+=0.5){if(!imRect(pp.x+dx*t,pp.z+dz*t,0.2)){t0=t;break;}}
+          var ok=true,fehl=null;
+          for(var t2=t0;t2<=K[2];t2+=1){var u=unten(B5,pp.x+dx*t2,pp.z+dz*t2,0.05);
+            if(u.k!=="asphalt"&&u.k!=="hell"){ok=false;fehl={x:+(pp.x+dx*t2).toFixed(1),z:+(pp.z+dz*t2).toFixed(1),k:u.k,hex:u.hex};break;}}
+          if(ok)r.zufahrt={x:+K[0].toFixed(1),z:+K[1].toFixed(1),m:+K[2].toFixed(0)};else if(!bestFehl)bestFehl=fehl;}
+        if(!r.zufahrt)r.fehlt=bestFehl||{k:"keine Strasse in 70 m"};
+        F5.forEach(function(e){var pk=punkte(e.o);if(!pk)return;var c=pk.P[0];if(!imRect(c.x,c.z,0))return;
+          r.wagen++;
+          if(!pk.P.every(function(v){return imRect(v.x,v.z,0.4);}))r.raus++;
+          var ax=new THREE.Vector3(pk.laengsX?1:0,0,pk.laengsX?0:1).transformDirection(e.o.matrixWorld);
+          var welt=Math.abs(ax.x)>=Math.abs(ax.z)?"x":"z";if(welt!==pp.achse)r.schief++;});
+        out5.push(r);});
+      return out5;}
     return null;}`,
 }, TMP)
 
@@ -259,7 +290,13 @@ console.log('\n🚓 STREIFENWAGEN-EINSATZORT (34 m um den Spieler, 24 Winkel):')
 let pg = 0, pn = 0
 for (const [ort, z] of Object.entries(P)) { pg += z.gruen; pn += 24; console.log(`   ${ort.padEnd(12)} gruen ${z.gruen}  asphalt ${z.asphalt}  hell ${z.hell}  erde ${z.erde}  objekt ${z.objekt}  wasser ${z.wasser || 0}  · auf GPS-Strasse ${z.strasse}/24`) }
 
-console.log(`\nKENNZAHLEN: stehend im Gruenen ${schlecht.length} · auf Erde ${erde.length} · in Objekt ${objekt.length} · Verkehr gruen ${(100 * gruen / Math.max(1, summe)).toFixed(1)} % · Polizei-Einsatz gruen ${pg}/${pn}`)
+/* 5. Parkplaetze */
+const PK = await A('parkplatz')
+let pkOhne = 0, pkSchief = 0, pkRaus = 0
+console.log('\n🅿️ PARKPLAETZE (Zufahrt auf Belag, Wagen im Stall und in Stallrichtung):')
+for (const r of PK) { if (!r.zufahrt) pkOhne++; pkSchief += r.schief; pkRaus += r.raus
+  console.log(`   ${r.n.padEnd(16)} Zufahrt ${r.zufahrt ? `ok (${r.zufahrt.m} m zu (${r.zufahrt.x}|${r.zufahrt.z}))` : 'FEHLT — ' + JSON.stringify(r.fehlt)}  · Wagen ${r.wagen}, schief ${r.schief}, ragt heraus ${r.raus}`) }
+console.log(`\nKENNZAHLEN: stehend im Gruenen ${schlecht.length} · auf Erde ${erde.length} · in Objekt ${objekt.length} · Verkehr gruen ${(100 * gruen / Math.max(1, summe)).toFixed(1)} % · Polizei-Einsatz gruen ${pg}/${pn} · Parkplaetze ohne Zufahrt ${pkOhne} · schief ${pkSchief} · ragt heraus ${pkRaus}`)
 console.log('JS-Fehler:', jsFehler.length, jsFehler.slice(0, 3).join(' | '))
 if (JSON_AUS) console.log(JSON.stringify({ S, F, P }, null, 0))
 await browser.close()

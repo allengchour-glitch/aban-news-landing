@@ -21,7 +21,11 @@ def liste(fid):
     m = re.search(r"window\['_DRIVE_ivd'\]\s*=\s*'(.*?)';", h, re.S)
     if not m:
         return []
-    roh = m.group(1).encode().decode("unicode_escape")   # \x22 → " und \x5b → [
+    # \x22 → " und \x5b → [ — nur die Escapes aufloesen, NICHT ueber unicode_escape
+    # (das liest UTF-8-Bytes als Latin-1: „Straße" wuerde „StraÃŸe", Code-Review)
+    roh = re.sub(r"\\x([0-9a-fA-F]{2})|\\u([0-9a-fA-F]{4})",
+                 lambda mm: chr(int(mm.group(1) or mm.group(2), 16)), m.group(1))
+    roh = roh.replace("\\/", "/").replace("\\\\", "\\")
     daten = json.loads(roh)
     return [(e[0], e[2], e[3]) for e in (daten[0] or [])]
 

@@ -238,7 +238,9 @@ const PRUEFUNGEN = [
   { name: 'Autoboden (kein Auto im Gruenen)', datei: 'th-autoboden.mjs', kern: false,
     wert: (s) => { const m = s.match(/stehend im Gruenen (\d+) .*Verkehr gruen ([\d.]+) % .*Polizei-Einsatz gruen (\d+)\/(\d+)/); return m ? `${m[1]} / ${m[2]} % / ${m[3]}:${m[4]}` : '?' },
     gut: (s) => { const m = s.match(/stehend im Gruenen (\d+) .*Verkehr gruen ([\d.]+) % .*Polizei-Einsatz gruen (\d+)\/(\d+)/)
-      return !!m && !/GEGENPROBE FEHLGESCHLAGEN/.test(s) && +m[1] === 0 && +m[2] < 2 && +m[3] / +m[4] < 0.15 } },
+      const q = s.match(/Parkplaetze ohne Zufahrt (\d+) . schief (\d+) . ragt heraus (\d+)/)
+      return !!m && !/GEGENPROBE FEHLGESCHLAGEN/.test(s) && +m[1] === 0 && +m[2] < 2 && +m[3] / +m[4] < 0.15
+        && (!q || (+q[1] === 0 && +q[2] === 0 && +q[3] === 0)) } },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },
