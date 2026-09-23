@@ -205,8 +205,26 @@ async function produktAktiv(postId) {
   return { ok: false, grund: 'Shopify nicht erreichbar' };
 }
 let shopUrl = '';
+// 23.09.2026: Sammel-Reels (promo-…) werben fuer MEHRERE Produkte mit Preisen im Bild. Das Video traegt ein
+// Manifest (MP4-Kommentar); `promo_montage.py --pruefen` vergleicht jedes Produkt live (ACTIVE + Preis). Exit 3 =
+// veraltet → Zeile 'promo-veraltet', kein Post. FB-Link = die Kollektion aus der Caption.
+async function promoPruefen(postId, videoUrl, caption) {
+  const datei = (String(videoUrl || '').match(/\/(social\/reels\/[\w.-]+\.mp4)(?:\?|$)/) || [])[1];
+  if (!datei || !fs.existsSync(datei)) return { ok: false, grund: 'Promo-Datei nicht im Repo — Manifest nicht pruefbar' };
+  const koll = (String(caption || '').match(/luxestyle\.ch\/collections\/[\w-]+/) || [])[0];
+  try {
+    const aus = _exf('python3', ['automation/reel/promo_montage.py', '--pruefen', datei], { encoding: 'utf8', timeout: 180000 });
+    return { ok: true, grund: aus.trim().split('\n').pop(), url: koll ? `https://${koll}` : '' };
+  } catch (e) {
+    const aus = `${e.stdout || ''}${e.stderr || ''}`.trim().split('\n').slice(-4).join(' | ');
+    return { ok: false, veraltet: e.status === 3, grund: `Promo-Pruefung Exit ${e.status}: ${aus.slice(0, 300)}` };
+  }
+}
 {
-  const pa = await produktAktiv(cand[idx.id]);
+  const pa = /^promo-/.test(cand[idx.id] || '')
+    ? await promoPruefen(cand[idx.id], cand[idx.video_url], cand[idx.caption])
+    : await produktAktiv(cand[idx.id]);
+  if (!pa.ok && pa.veraltet && !DRY) { cand[idx.status] = 'promo-veraltet'; writeLedger(); console.error(`⛔ Kein Post — ${pa.grund}`); process.exit(0); }
   shopUrl = pa.url || '';
   if (!pa.ok) {
     console.error(`⛔ Kein Post — Produkt nicht kaufbar/pruefbar (${pa.grund}): ${cand[idx.id]}`);
