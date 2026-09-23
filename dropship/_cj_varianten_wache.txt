@@ -4124,3 +4124,12 @@ gid://shopify/Product/15448832606593	1790154505	ok	3 Shop / 3 CJ / 0 fehlend / 0
 gid://shopify/Product/15448832672129	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448832704897	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15448832803201	1790154505	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448832868737	1790169767	ok	12 Shop / 12 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448832999809	1790169767	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448833196417	1790169767	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448833917313	1790169767	unklar	CJ-Code 16900500: Insufficient API points. Used today: 98710, Remain
+gid://shopify/Product/15448834048385	1790169767	unklar	CJ-Code 16900500: Insufficient API points. Used today: 98710, Remain
+gid://shopify/Product/15448834146689	1790169767	unklar	CJ-Code 16900500: Insufficient API points. Used today: 98710, Remain
+gid://shopify/Product/15448834507137	1790169767	unklar	CJ-Code 16900500: Insufficient API points. Used today: 98710, Remain
+gid://shopify/Product/15448834539905	1790169767	unklar	CJ-Code 16900500: Insufficient API points. Used today: 98710, Remain
+gid://shopify/Product/15448834605441	1790169767	unklar	CJ-Code 16900500: Insufficient API points. Used today: 98710, Remain

@@ -21,7 +21,7 @@
  */
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
 
 const V = 'v21.0';
 const IG_ID = process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id', 'utf8').trim() : '');
@@ -110,6 +110,8 @@ for (const r of bereit) {
   // Produkt-Sperre (plattformuebergreifend, nach WARE)
   const schon = handles.filter(h => produktGepostet(caption, h));
   if (get(r, 'modus') === 'produkt' ? schon.length : schon.length * 2 > handles.length) { console.log(`   ⛔ Ware schon beworben (${schon.join(',')}) → posted-dup-produkt: ${slug}`); if (!DRY) { setzen(r, 'status', 'posted-dup-produkt'); writeLedger(); } continue; }
+  // 23.09. Neunte Schicht: Produkt-Set derselben Warengruppe wie ein Post der letzten 72 h → warten (bleibt ready)
+  if (get(r, 'modus') === 'produkt') { const fk = familieKuerzlich(caption); if (fk) { console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${slug}`); continue; } }
   // Produkt live? (Produkt-Sets: der Slug ist das Handle)
   if (get(r, 'modus') === 'produkt') {
     const pl = await produktLive(slug);
@@ -147,6 +149,7 @@ try {
   if (!igId) throw new Error('IG-Karussell nicht veroeffentlicht (12 Versuche)');
   for (const b of bilder) postMark(b);                       // Ledger SOFORT nach IG
   for (const h of handles) produktMerken(caption, h);
+  if (get(cand, 'modus') === 'produkt') familieMerken(caption, 'karussell');
   setzen(cand, 'status', 'posted-ig'); setzen(cand, 'post_url', `ig:${igId}`); writeLedger();
   console.log(`✅ IG-Karussell veroeffentlicht ${igId}`);
 } catch (e) {

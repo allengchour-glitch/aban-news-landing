@@ -11,7 +11,7 @@
  *      FB_PAGE_ID (Default 1049840534888592) · [DRY=1] · [MIN_GAP_H=48]
  */
 import fs from 'node:fs';
-import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
+import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -112,7 +112,8 @@ const _passt = r => (r[idx.status] || '').trim() === 'ready'
   && /instagram/i.test(r[idx.platforms] || '')
   && (r[idx.scheduled_date] || '9999') <= today
   && !postedVideos.has(vkey(r[idx.video_url]))
-  && !postSeen(r[idx.video_url]);
+  && !postSeen(r[idx.video_url])
+  && !familieKuerzlich(r[idx.caption]);   // 23.09. Neunte Schicht: Warengruppe nicht zweimal in 72 h (alle Kanaele)
 // 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
 const _alle = rows.slice(1).filter(_passt);
 const _reihe = [..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))];
@@ -219,6 +220,7 @@ if (pub.id) {
   cand[idx.posted_at] = new Date().toISOString();
   cand[idx.post_url] = pub.id;
   postMark(url);                    // gemeinsamer Ledger: kein anderer Poster wiederholt dieses Video
+  familieMerken(cand[idx.caption], 'reel');
   writeLedger();
   const perma = await api(`${pub.id}`, { fields: 'permalink' }, 'GET');
   igPermalink = perma.permalink || pub.id;

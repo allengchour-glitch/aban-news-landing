@@ -22,7 +22,7 @@
 import fs from 'node:fs';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet } from './post_guard.mjs';
+         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -216,6 +216,10 @@ for(const next of ready.slice(0, MAX)){
     console.log(`   ⛔ Produkt schon gepostet (Produkt-Sperre) → skip: ${produktKey(caption, next[idx.id])}`);
     next[idx.status] = 'posted-dup-produkt'; fs.writeFileSync(CSV, serialize(rows)); continue;
   }
+  // ⛔ NEUNTE SCHICHT (23.09.2026, «pinke steine 2mal?»): dieselbe Warengruppe innerhalb FAMILIEN_STUNDEN auf
+  // irgendeinem Kanal → Zeile bleibt ready und wartet, die naechste Zeile kommt dran.
+  const fk = DRY ? null : familieKuerzlich(caption);
+  if(fk){ console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${next[idx.id]}`); continue; }
   if(!DRY && await igLiveHas(caption)){      // ⛔ auf IG bereits live (Wahrheit schlägt Ledger)
     console.log(`   ⛔ Auf IG bereits live (Live-Abgleich) → skip: ${sig}`);
     next[idx.status] = 'posted-dup-live'; postMark(imageUrl); fs.writeFileSync(CSV, serialize(rows)); continue;
@@ -272,7 +276,7 @@ for(const next of ready.slice(0, MAX)){
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
     if(results[0] && results[0]!==false){ postMark(imageUrl);   // IG ok → sofort in gemeinsamen Ledger
-      produktMerken(caption, next[idx.id]); }                  // …und die WARE merken (7. Schicht)
+      produktMerken(caption, next[idx.id]); familieMerken(caption, 'bild'); }   // …WARE (7.) und Warengruppe (9.) merken
     if(sig) postedCaps.add(sig);                               // Inhalts-Sperre für Folge-Zeilen im selben Lauf
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();

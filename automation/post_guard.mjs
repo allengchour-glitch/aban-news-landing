@@ -158,3 +158,50 @@ export function markierungFehlt(medium = '', caption = '', zeilenId = '') {
   return `Model-Markierung fehlt: ${MODEL_HANDLE} muss in der Caption stehen `
        + `(Bedingung der Einwilligung, 04.09.2026) — Post gesperrt.`;
 }
+
+// ── NEUNTE SCHICHT: dieselbe WARENGRUPPE kurz hintereinander (Betreiber-Screenshot 23.09.2026, «pinke steine 2mal?»).
+// «Rosenquarz Gua Sha Set» (02:11) und «Jade Roller Premium» (08:26) sind zwei Shop-Produkte mit zwei IDs, zwei Namen
+// und zwei Bildern — jede Produkt-Sperre sagte zu Recht «kenne ich nicht». Im Raster standen trotzdem zweimal rosa
+// Steine übereinander. Gruppen werden am TEXT erkannt (Caption/Titel); unbekannt = keine Gruppe = keine Sperre.
+// Kanalübergreifend (Bild, Reel, Karussell) über EIN Ledger: dropship/_posted_familien.txt (iso \t familie \t kanal).
+const F_LEDGER = 'dropship/_posted_familien.txt';
+export const FAMILIEN_STUNDEN = Number(process.env.FAMILIEN_STUNDEN || 72);
+const FAMILIEN = [
+  ['gesichtsroller', /gua[\s-]?sha|jade[\s-]?roller|rosenquarz|gesichtsroller|face[\s-]?roller|ice[\s-]?roller/i],
+  ['diffuser', /diffuser|duftzerstäuber|luftbefeuchter/i],
+  ['uhr', /(?<![a-zäöü])(?:armband|damen|herren|quarz|smart)?uhr\b|\bwatch\b/i],
+  ['massagegeraet', /massage(?:gerät|geraet|pistole|kissen)|mikrostrom|\bems\b/i],
+  ['projektor', /projektor|beamer|sternenhimmel/i],
+  ['futter-haustier', /futterspender|futternapf|schnüffel|leckmatte/i],
+  ['lautsprecher', /lautsprecher|speaker|soundbox/i],
+  ['bikini', /bikini|badeanzug/i],
+  ['kerzenlicht', /kerzen(?:licht|wärmer|waermer)|flammen(?:lampe|licht)/i],
+  ['augenbrauen', /augenbrauen|brow/i],
+  ['schmuck-ring', /\bringe?\b(?![\s-]*licht)/i],
+  ['ohrringe', /ohrring|ohrstecker|creolen/i],
+];
+export function warenFamilie(text = '') {
+  const t = String(text);
+  for (const [name, re] of FAMILIEN) if (re.test(t)) return name;
+  return '';
+}
+function ladeFamilien() {
+  try {
+    return fs.readFileSync(F_LEDGER, 'utf8').split('\n').filter(Boolean).map(z => z.split('\t'));
+  } catch { return []; }
+}
+/** Liefert {familie, vorStunden} wenn dieselbe Warengruppe innerhalb FAMILIEN_STUNDEN gepostet wurde, sonst null. */
+export function familieKuerzlich(text, stunden = FAMILIEN_STUNDEN) {
+  const f = warenFamilie(text); if (!f) return null;
+  const grenze = Date.now() - stunden * 3600e3;
+  for (const [iso, fam] of ladeFamilien().reverse()) {
+    if (fam !== f) continue;
+    const t = Date.parse(iso);
+    if (t >= grenze) return { familie: f, vorStunden: Math.round((Date.now() - t) / 3600e3) };
+  }
+  return null;
+}
+export function familieMerken(text, kanal = '') {
+  const f = warenFamilie(text); if (!f) return;
+  fs.appendFileSync(F_LEDGER, `${new Date().toISOString()}\t${f}\t${kanal}\n`);
+}

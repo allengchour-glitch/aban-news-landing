@@ -130,11 +130,14 @@ def main():
     ledger = set()
     if os.path.exists(LEDGER):
         ledger = {l.split("\t")[0] for l in open(LEDGER, encoding="utf-8") if l.strip()}
+    # 23.09. GEMESSEN: `category_id:*` wirkt (22'397 mit + 27'619 ohne = 50'016 aktive; der Kanarienvogel `foo:bar`
+    # und `product_category_id:*` werden still ignoriert). Vorher scannte jeder Neustart alle 50'000 (5 Min von 60);
+    # jetzt nur die Offenen — der Scan schrumpft mit jedem Lauf. `gescannt` zaehlt damit die Offenen.
     cursor, gescannt, ohne = None, 0, 0
     offen = []                      # (id, handle, typ, ziel)
     unbekannt = collections.Counter()
     while True:
-        d = gql("query($c:String){ products(first:250, after:$c, query:\"status:active\"){ pageInfo{hasNextPage endCursor} nodes{ id handle productType category{id} } } }", {"c": cursor})
+        d = gql("query($c:String){ products(first:250, after:$c, query:\"status:active AND -category_id:*\"){ pageInfo{hasNextPage endCursor} nodes{ id handle productType category{id} } } }", {"c": cursor})
         pg = d["data"]["products"]
         for p in pg["nodes"]:
             gescannt += 1
