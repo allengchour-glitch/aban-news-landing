@@ -2499,3 +2499,4 @@ gid://shopify/Product/15448878317953	zugeordnet	4	Pedometer Sport-Armbanduhr
 gid://shopify/Product/15448878383489	zugeordnet	3	Smartes Fitness Armband mit Pulsmesser
 gid://shopify/Product/15448878416257	zugeordnet	6	Smartwatch mit Fitness-Tracking & Bluetooth-Anrufen
 gid://shopify/Product/15448878449025	zugeordnet	8	Smartwatch mit Anruf- & Musiksteuerung
+gid://shopify/Product/15448875499905	zugeordnet	9	S5 Fitness-Armband mit Temperaturmessung

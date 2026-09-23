@@ -1,0 +1,7 @@
+2026-09-23T17:36:59Z	fur-ihn	titel		Herren-Mode kaufen | LuxeStyle Schweiz
+2026-09-23T17:37:00Z	damen-mode	titel		Damen-Mode kaufen | LuxeStyle Schweiz
+2026-09-23T17:37:02Z	reise-gadgets	beschreibung	Praktische Reise-Gadgets & Organizer: Packwürfel, Reiseadapter, Nackenkissen, Kulturbeutel, Kompressions-Rucksäcke & Weekender-Taschen. Clever packen, entspannt reisen. Schweizer Onlineshop, Versand ab CHF 50 gratis.	Praktische Reise-Gadgets & Organizer: Packwürfel, Reiseadapter, Nackenkissen & Kulturbeutel. Clever packen, entspannt reisen. Versand ab CHF 50 gratis.
+2026-09-23T17:37:03Z	neu-eingetroffen	titel		Neuheiten 2026 kaufen | LuxeStyle Schweiz
+2026-09-23T17:37:04Z	damen-schuhe	titel	Damen-Schuhe kaufen – Sneaker, Sandalen, Pumps & Stiefel | LuxeStyle CH	Damen-Schuhe kaufen – Sneaker, Sandalen, Pumps & Stiefel
+2026-09-23T17:37:04Z	damen-schuhe	beschreibung	Damen-Schuhe bei LuxeStyle Schweiz: Sneaker, Sandalen, Pumps & Stiefel von Adidas, Nike, Puma & Hi-Tec. Stil & Komfort. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.	Damen-Schuhe bei LuxeStyle Schweiz: Sneaker, Sandalen, Pumps & Stiefel von Adidas, Nike, Puma & Hi-Tec. Stil & Komfort. Gratis-Versand ab CHF 50.
+2026-09-23T17:37:05Z	herren-schuhe	beschreibung	Herren-Schuhe bei LuxeStyle Schweiz: Sneaker, Sportschuhe, Loafer & Stiefel von Adidas, Puma & Rip Curl. Bequem & robust. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.	Herren-Schuhe bei LuxeStyle Schweiz: Sneaker, Sportschuhe, Loafer & Stiefel von Adidas, Puma & Rip Curl. Bequem & robust. Gratis-Versand ab CHF 50.
