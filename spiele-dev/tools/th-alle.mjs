@@ -241,6 +241,12 @@ const PRUEFUNGEN = [
       const q = s.match(/Parkplaetze ohne Zufahrt (\d+) . schief (\d+) . ragt heraus (\d+)/)
       return !!m && !/GEGENPROBE FEHLGESCHLAGEN/.test(s) && +m[1] === 0 && +m[2] < 2 && +m[3] / +m[4] < 0.15
         && (!q || (+q[1] === 0 && +q[2] === 0 && +q[3] === 0)) } },
+  /* Runde 93: Bordstein an jeder Fahrbahnkante, keine Luecke zwischen Asphalt und Platte,
+     jeder Uebergang mit abgesenktem Bordstein. Gegenprobe im Werkzeug (Suedstrassen-Bordstein). */
+  { name: 'Kante (Bordstein, Luecke, Uebergang)', datei: 'th-kante.mjs', kern: false,
+    wert: (s) => { const m = s.match(/ohne Bordstein (\d+) . Luecke (\d+) . ohne Gehweg (\d+) . Uebergaenge (\d+), nicht abgesenkt (\d+)/); return m ? `${m[1]}/${m[2]}/${m[3]} · ${m[5]}:${m[4]}` : '?' },
+    gut: (s) => { const m = s.match(/ohne Bordstein (\d+) . Luecke (\d+) . ohne Gehweg (\d+) . Uebergaenge (\d+), nicht abgesenkt (\d+)/)
+      return !!m && !/GEGENPROBE FEHLGESCHLAGEN/.test(s) && +m[1] === 0 && +m[2] === 0 && +m[5] === 0 } },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },
