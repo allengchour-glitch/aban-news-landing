@@ -28,7 +28,8 @@ export function catKey(s){
 
 // Kategorie-passende Hashtags (Reach-Tags vorne + Nischen-Tags).
 export function tagsFor(s){
-  const reach = '#schweiz #foryou #luxestyle';
+  // 23.09.2026: ohne #foryou (Queue-Regel: nur Sach-Tags; #foryou/#fyp/#viral sind Reichweiten-Bettelei ohne Wirkung).
+  const reach = '#schweiz #luxestyle';
   switch (catKey(s)) {
     case 'haustier':   return reach + ' #hund #haustier';
     case 'fitness':    return reach + ' #fitness #homeworkout';

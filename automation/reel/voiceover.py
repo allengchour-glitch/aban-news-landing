@@ -248,8 +248,9 @@ def stimme_fuer(thema):
 
 def sprich(text, out, motor, stimme, tmpdir, tempo=1.0):
     """-> (motor, stimme) oder Exception. Roh-Datei nach tmpdir, Endfassung nach out."""
-    # auto: Azure nur wenn Schluessel da (gleiche Stimme, lizenzsauber), sonst edge (inoffizieller Vorlese-Dienst), dann piper
-    reihe = (['azure'] if os.environ.get('AZURE_SPEECH_KEY') else []) + ['edge', 'piper'] if motor == 'auto' else [motor]
+    # auto: Azure nur wenn Schluessel da (gleiche Stimme, lizenzsauber), sonst piper (CC0); edge nur ausdruecklich
+    # 23.09. 19:40: edge NIE automatisch (inoffizieller Dienst, keine Werbelizenz) — nur mit --motor edge ausdruecklich.
+    reihe = (['azure'] if os.environ.get('AZURE_SPEECH_KEY') else []) + ['piper'] if motor == 'auto' else [motor]
     fehler = []
     for mo in reihe:
         try:
