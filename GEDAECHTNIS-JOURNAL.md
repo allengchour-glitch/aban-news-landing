@@ -406,6 +406,18 @@ Mikrostrom Massagegerät CHF 22.90) + FB-Album 122140105137350792, an der Graph-
 **Lehre:** Ein Bauer ohne lebenden Poster ist ein Lager, kein Kanal — 31 fertige Sets, 0 Posts. Vor «neu bauen» die
 Kette messen: wer baut, wer postet, wer liest die Queue? Hier fehlte nur das Format und der Poster; der Rest stand.
 
+**Nachtrag 26 (23.09. 07:15 UTC) — Verwaister Autostash beim Keepalive-Push, und mein Aufräumen hätte drei Ledger-Zeilen gekostet.**
+GEMESSEN: `rebase.autoStash` legte den Stash an, dann «cannot rebase: You have unstaged changes» — ein Motor schrieb
+zwischen Stash-Anlage und Prüfung weiter ins Ledger (Container 07:08 frisch gestartet, alle Schreiber gleichzeitig).
+`git rebase --abort` in der Schleife räumt so einen Rest NICHT; `.git/rebase-merge/autostash` blieb, zwei weitere
+Versuche scheiterten daran. Beim Aufräumen prüfte ich den Stash-Inhalt mit `git stash show --name-only` — das ist
+keine gültige Option, gab leer zurück, und mein «nur Ledger → verwerfen» feuerte blind. Der Stash-Commit war noch
+im Objektspeicher: Vergleich `git diff $S^ $S` zeigte drei Ledger, Zeilenvergleich gegen den Arbeitsbaum fand
+3 fehlende Zeilen (2× du-Form, 1× Verlustbringer) → nachgetragen, gepusht (40cd8686e).
+**Lehre:** (1) Ein Stash wird erst verworfen, wenn ein Werkzeug seinen Inhalt gezeigt hat — ein leeres Ergebnis
+ist kein «nichts drin». (2) Nach jedem gescheiterten Rebase: `--quit`, dann `git stash list` auf «autostash» prüfen
+und per Zeilen-Union zurückspielen, nie per `pop` in ein Ledger, das inzwischen weitergewachsen ist.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
