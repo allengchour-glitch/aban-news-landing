@@ -55,70 +55,78 @@ faellig() {                              # $1 = Markendatei, $2 = Mindestabstand
 }
 
 while true; do
+  # 23.09.2026: Ein kaputter Meta-Token stoppt NUR Instagram/Facebook. Vorher beendete er mit `continue` den ganzen
+  # Durchlauf — TikTok, YouTube und Pinterest (Metricool, eigener Zugang) waeren mit dem Meta-Datenzugang (05.10.) still mitgestorben.
+  META_OK=1
   TOKEN=$(cat /tmp/meta_page_token 2>/dev/null)
   if [ -z "$TOKEN" ]; then
     echo "kein-token" > /tmp/meta_token_status
-    echo "$(date -u +%H:%M) ⚠️ /tmp/meta_page_token fehlt — es wird nichts gepostet."
-    sleep 1800 9>&-; continue
-  fi
-  ANTWORT=$(curl -s --max-time 20 \
-    "https://graph.facebook.com/v21.0/me?fields=id&access_token=$TOKEN")
-  if printf '%s' "$ANTWORT" | grep -q '"error"'; then
-    echo "abgelaufen" > /tmp/meta_token_status
-    # Laut und mit Grund — ein stiller Abbruch wäre von «nichts zu posten» nicht zu unterscheiden.
-    echo "$(date -u +%H:%M) ⚠️ Meta-Token ungültig: $(printf '%s' "$ANTWORT" | head -c 160)"
-    echo "$(date -u +%H:%M)    → neues Nutzer-Token nötig; ohne App-Secret ist keine Verlängerung möglich."
-    sleep 1800 9>&-; continue
-  fi
-  echo "gueltig $(date -u +%FT%TZ)" > /tmp/meta_token_status
-
-  export IG_USER_ID="$(cat /tmp/meta_ig_id 2>/dev/null)"
-  export FB_PAGE_ID="${FB_PAGE_ID:-1049840534888592}"
-  export META_ACCESS_TOKEN="$TOKEN"
-  export IG_ACCESS_TOKEN="$TOKEN"
-  export FB_PAGE_ACCESS_TOKEN="$TOKEN"
-  export SKIP_THREADS=1                  # Threads bleibt aus, bis dort Publikum da ist.
-
-  # LERNEN (22.09.): Zahlen der letzten Posts lesen → social/_lernen.json (Hook-/Themen-Gewichte) + Bericht
-  if faellig "$MARKE_LERN" "$LERN_ABSTAND"; then
-    $NODE automation/social_lernen.mjs && touch "$MARKE_LERN" || echo "$(date -u +%H:%M) Lernen fehlgeschlagen"
-  fi
-  # NACHSCHUB (22.09.): Bild-Queue aus neuen Produkten (nie gepostet), damit «mehrmals taeglich» Stoff hat
-  if faellig "$MARKE_NACHSCHUB" "$NACHSCHUB_ABSTAND"; then
-    READY=$(awk -F',' 'NR>1 && $0 ~ /,ready,/' social/posts_image.csv | wc -l)
-    if [ "$READY" -lt 12 ]; then
-      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" QUEUE_MAX=6 $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Nachschub fehlgeschlagen"
-    fi
-    touch "$MARKE_NACHSCHUB"
-  fi
-  if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
-    echo "$(date -u +%H:%M) Bildpost fällig"
-    if MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then
-      touch "$MARKE_BILD"
+    echo "$(date -u +%H:%M) ⚠️ /tmp/meta_page_token fehlt — Instagram/Facebook pausieren (Metricool-Kanäle laufen weiter)."
+    META_OK=0
+  else
+    ANTWORT=$(curl -s --max-time 20 \
+      "https://graph.facebook.com/v21.0/me?fields=id&access_token=$TOKEN")
+    if printf '%s' "$ANTWORT" | grep -q '"error"'; then
+      echo "abgelaufen" > /tmp/meta_token_status
+      # Laut und mit Grund — ein stiller Abbruch wäre von «nichts zu posten» nicht zu unterscheiden.
+      echo "$(date -u +%H:%M) ⚠️ Meta-Token ungültig: $(printf '%s' "$ANTWORT" | head -c 160)"
+      echo "$(date -u +%H:%M)    → neues Nutzer-Token nötig; Instagram/Facebook pausieren, Metricool-Kanäle laufen weiter."
+      META_OK=0
     else
-      echo "$(date -u +%H:%M) Bildpost fehlgeschlagen (Marke bleibt alt, nächster Lauf versucht erneut)"
+      echo "gueltig $(date -u +%FT%TZ)" > /tmp/meta_token_status
     fi
   fi
 
-  if faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
-    echo "$(date -u +%H:%M) Reel fällig"
-    # MIN_GAP_H: der Poster hat intern 48 h Abstand (Juli, «weniger aber besser»); seit 22.09. gilt die Kadenz hier (REEL_ABSTAND)
-    if MIN_GAP_H=6 $NODE automation/meta_reel_post.mjs; then
-      touch "$MARKE_REEL"
-    else
-      echo "$(date -u +%H:%M) Reel-Post fehlgeschlagen"
-    fi
-  fi
+  if [ "$META_OK" = 1 ]; then
+    export IG_USER_ID="$(cat /tmp/meta_ig_id 2>/dev/null)"
+    export FB_PAGE_ID="${FB_PAGE_ID:-1049840534888592}"
+    export META_ACCESS_TOKEN="$TOKEN"
+    export IG_ACCESS_TOKEN="$TOKEN"
+    export FB_PAGE_ACCESS_TOKEN="$TOKEN"
+    export SKIP_THREADS=1                  # Threads bleibt aus, bis dort Publikum da ist.
 
-  # Instagram-Karussell (23.09.2026): ein Slide-Set (4:5) aus social/ig_karussell.csv als IG-Karussell + FB-Album.
-  if faellig "$MARKE_KARUSSELL" "$KARUSSELL_ABSTAND"; then
-    echo "$(date -u +%H:%M) Karussell faellig (Instagram)"
-    if $NODE automation/ig_karussell_post.mjs; then
-      touch "$MARKE_KARUSSELL"
-    else
-      echo "$(date -u +%H:%M) Karussell-Post fehlgeschlagen (Marke bleibt alt)"
+    # LERNEN (22.09.): Zahlen der letzten Posts lesen → social/_lernen.json (Hook-/Themen-Gewichte) + Bericht
+    if faellig "$MARKE_LERN" "$LERN_ABSTAND"; then
+      $NODE automation/social_lernen.mjs && touch "$MARKE_LERN" || echo "$(date -u +%H:%M) Lernen fehlgeschlagen"
     fi
-  fi
+    # NACHSCHUB (22.09.): Bild-Queue aus neuen Produkten (nie gepostet), damit «mehrmals taeglich» Stoff hat
+    if faellig "$MARKE_NACHSCHUB" "$NACHSCHUB_ABSTAND"; then
+      READY=$(awk -F',' 'NR>1 && $0 ~ /,ready,/' social/posts_image.csv | wc -l)
+      if [ "$READY" -lt 12 ]; then
+        SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" QUEUE_MAX=6 $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Nachschub fehlgeschlagen"
+      fi
+      touch "$MARKE_NACHSCHUB"
+    fi
+    if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
+      echo "$(date -u +%H:%M) Bildpost fällig"
+      if MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then
+        touch "$MARKE_BILD"
+      else
+        echo "$(date -u +%H:%M) Bildpost fehlgeschlagen (Marke bleibt alt, nächster Lauf versucht erneut)"
+      fi
+    fi
+
+    if faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
+      echo "$(date -u +%H:%M) Reel fällig"
+      # MIN_GAP_H: der Poster hat intern 48 h Abstand (Juli, «weniger aber besser»); seit 22.09. gilt die Kadenz hier (REEL_ABSTAND)
+      if MIN_GAP_H=6 $NODE automation/meta_reel_post.mjs; then
+        touch "$MARKE_REEL"
+      else
+        echo "$(date -u +%H:%M) Reel-Post fehlgeschlagen"
+      fi
+    fi
+
+    # Instagram-Karussell (23.09.2026): ein Slide-Set (4:5) aus social/ig_karussell.csv als IG-Karussell + FB-Album.
+    if faellig "$MARKE_KARUSSELL" "$KARUSSELL_ABSTAND"; then
+      echo "$(date -u +%H:%M) Karussell faellig (Instagram)"
+      if $NODE automation/ig_karussell_post.mjs; then
+        touch "$MARKE_KARUSSELL"
+      else
+        echo "$(date -u +%H:%M) Karussell-Post fehlgeschlagen (Marke bleibt alt)"
+      fi
+    fi
+
+  fi   # META_OK
 
   # 23.09.: Nachmessen — «posted-tiktok» heisst nur GEPLANT; der Planer sagt, ob es veroeffentlicht wurde.
   if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig /tmp/_autopilot_letztes_tiktok_pruefen 7200; then
@@ -154,7 +162,7 @@ while true; do
   fi
   # 23.09.2026 (Betreiber «direktlinks kommentieren bei jedem post»): Facebook-Posts/Reels der letzten 2 Tage
   # bekommen einen Seiten-Kommentar mit dem Produkt-Direktlink (nur Facebook ist klickbar; IG/TikTok/Shorts nicht).
-  if faellig /tmp/_autopilot_letzter_fb_link 1800; then
+  if [ "$META_OK" = 1 ] && faellig /tmp/_autopilot_letzter_fb_link 1800; then
     $NODE automation/fb_link_kommentar.mjs 2>&1 | grep -E "FERTIG|✗|⛔" || true
     touch /tmp/_autopilot_letzter_fb_link
   fi
