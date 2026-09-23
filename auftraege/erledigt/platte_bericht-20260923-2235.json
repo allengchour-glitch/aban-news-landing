@@ -1,0 +1,8 @@
+{
+  "id": "platte_bericht-20260923-2235",
+  "typ": "wartung",
+  "aktion": "platte_bericht",
+  "warum": "Ausgabe des Aufraeumlaufs luxe-platte (gestartet 22:07:50 UTC) lesen: Timer wieder an? gc-Ergebnis je Klon? Platte nachher?",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
