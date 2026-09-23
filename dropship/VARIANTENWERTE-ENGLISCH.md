@@ -1,25 +1,35 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 17:54 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:11 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'814**
-- Optionen mit englischen Werten (Kandidaten): 238
-- Optionen übersetzt: **62** · Werte übersetzt: **380**
+- Produkte gesehen: **5'430**
+- Optionen mit englischen Werten (Kandidaten): 1'019
+- Optionen übersetzt: **496** · Werte übersetzt: **2'272**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 957
+- Werte mit unbekanntem Wort (unverändert): 3'258
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 11
-- übersprungen «kleidungsstueck-im-wert»: 1
+- übersprungen «kleidungsstueck-im-wert»: 27
+- übersprungen «kollision-nach-uebersetzung»: 15
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
 > Zwei verschiedene Kleidungsstücke in EINER Option, oder ein Kleidungsstück, das nicht zum Titel passt. Beispiel Jeansjacke: «Blue Coat» / «Blue Pants» — die zweite «Farbe» ist eine Hose. Entscheid am Bild und Preis: Option umbenennen (z. B. «Artikel»: Jacke/Hose) oder Variante entfernen.
 
 - `15449163432321` [Farbe] **Raw-Edge Jeansjacke im Old-Money-Stil** · 1 Sitzungen/30 T — hose, jacke: Blue Coat | Blue Pants
+- `15447951835521` [Farbe] **Weihnachts-Hoodie für die ganze Familie** — hose: Dark Red Winter Fleece Lining-Crawling Suit 66 | Dark Red Winter Fleece Lining-Crawling Suit 73 | Dark Red Winter Fleece Lining-Crawling Suit 80 | Dark Red Winter Fleece Lining-Climbing Suit 90 | Dark Red Winter Fleece Lining-80cm | Dark Red Winter Fleece Lining-90cm | Dark Red Winter Fleece Lining-100cm | Dark Red Winter Fleece Lining-110cm
+- `15447957733761` [Farbe] **Familien-T-Shirt im Partnerlook · Kurzarm mit Brusttasche** — hose, jacke: coat | coat-100 | coat-110 | coat-120 | coat-130 | coat-140 | coat-150 | coat-Female S
+- `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
+- `15447964516737` [Farbe] **Hoodie & Jogginghose Set im Partnerlook** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers | Grey Suit | Set1
+- `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil, rock · Titel nennt Set: Men's top | Men's Shorts | Women's Shirt | Female Style Skirt | Green Cheongsam Suit
+- `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Yellow Letters | Three Rows Lettered Rabbit
+- `15448509383041` [Farbe] **Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie** — hose, pullover: Black-Hoodie | Black-Pants | Milky Apricot-Hoodie | Milky Apricot-Pants | Slate Blue-Hoodie | Slate Blue-Pants | Olive Green-Hoodie | Olive Green-Pants
+- `15448574099841` [Farbe] **Eleganter Off-Shoulder Jumpsuit** — oberteil · Titel nennt Set: OliveGreen | Blau | a white Tshirt
+- `15448670273921` [Farbe] **Damen Wollmantel für Winter Business** — oberteil: Marineblau | White Long Sleeve Shirt
+- `15448718180737` [Farbe] **Gestreifter Business-Anzug für Herren** — jacke, weste · Titel nennt Set: Caramel Jacket | Sugar Coffee Vest | Set
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -36,6 +46,10 @@
 - `15447606198657` [Farbe] jacquard-polo-shirt-mit-reverskragen-602400: Marineblaublau → Marineblau
 - `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
 - `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
+- `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: Black Lake Blue → Schwarz-Seeblau; Rose Red Black → Rosarot-Schwarz; White Color → Weiss; Light Blue Silver → Hellblau-Silber
+- `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
+- `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black White Striped Checkered → Schwarz-Weiss gestreift kariert; Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert
+- `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -94,5 +108,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`skin` 62, `light` 53, `feet` 52, `core` 52, `shell` 31, `generation` 31, `insert` 26, `case` 24, `batteries` 24, `bag` 21, `surface` 21, `color` 20, `of` 20, `high` 19, `hat` 18, `220grams` 18, `stone` 16, `no` 16, `face` 16, `electric` 16, `gallium` 16, `nitride` 16, `belt` 15, `suit` 15, `handle` 15, `spring` 14, `carbon` 13, `80grams` 12, `45se6` 12, `noodles` 12, `to9mm` 11, `three` 11, `storage` 11, `autumn` 10, `one` 9, `foot` 9, `platinum` 9, `monolever` 9, `watch` 9, `cup` 9, `lens` 9, `ports` 9, `background` 8, `footstep` 8, `stepping` 8, `plush` 8, `chain` 8, `line` 8, `two` 8, `tea` 7, `full` 7, `baby1` 7, `baby2` 7, `translucent` 7, `moissanite` 7, `strap` 7, `regular` 7, `milk` 6, `laser` 6, `rows` 6
+`degrees` 159, `light` 126, `color` 103, `skin` 68, `feet` 62, `mother` 61, `shell` 53, `core` 53, `hat` 47, `to` 45, `rope` 44, `case` 38, `lens` 38, `father` 38, `high` 37, `for` 37, `generation` 34, `powder` 33, `no` 30, `surface` 30, `years` 30, `old` 30, `adjustable` 29, `mom` 28, `bag` 26, `insert` 26, `crotch` 26, `dog` 25, `belt` 24, `tea` 24, `batteries` 24, `dad` 24, `of` 23, `stone` 22, `face` 22, `one` 22, `electric` 22, `housing` 22, `suit` 21, `nail` 21, `bear` 21, `yadan` 21, `handle` 20, `cocoa` 20, `comfortable` 20, `number` 19, `deer` 19, `220grams` 18, `carbon` 18, `noodles` 18, `clothing` 18, `background` 17, `ice` 17, `pumpkin` 17, `foot` 17, `waist` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `spring` 16, `three` 16
 

@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Produktkategorie (Taxonomie) — Stand 2026-09-23T17:52Z
 =======
 # Produktkategorie (Taxonomie) — Stand 2026-09-23T17:54Z
+>>>>>>> origin/claude/luxestyle-status-tztnn1
+=======
+# Produktkategorie (Taxonomie) — Stand 2026-09-23T18:07Z
 >>>>>>> origin/claude/luxestyle-status-tztnn1
 
 Aktive gescannt: 650 · ohne Kategorie: 650 · heute gesetzt: 0 (SCHARF, CAP 45000) · danach offen: 650 · Fehler: 0

@@ -13,7 +13,11 @@
  *     Caption Hook + Nutzen + Preis + CTA, Hashtags Kategorie + Konsens-Pool (SECOND-BRAIN).
  *   · Quittung NUR nach erfolgreichem Push (die Adresse muss erreichbar sein, bevor der Poster sie sieht).
  * ENV: BATCH=3 · SCAN=240 · DRY=1 (nur zeigen) · SHOPIFY_ADMIN_TOKEN oder /tmp/cj_shop_token.txt ·
- *      CJ_TOKEN oder /tmp/cj_token.json
+ *      CJ_TOKEN oder /tmp/cj_token.json · STIMME_ANTEIL=0.5 (Anteil Reels mit Sprecherstimme, 0 = aus, A/B)
+ *   · Stimme (23.09.2026, Betreiber «Stimme auf hoechstem Niveau»; bisher Hausregel «ohne Voiceover»): je pid
+ *     stabil per Hash entschieden, Sprechtext Hook + Name + (kurzer Nutzen) + Preis, automation/reel/voiceover.py
+ *     (Schweizer edge-Stimme, piper als Notnagel), make_reel.sh duckt die Musik darunter. Merkmal im Verlauf
+ *     social/_musik_verlauf.txt, Spalten 6/7 = «stimme:ja|nein» + Stimme/Grund. Messung: automation/music/STIMME.md.
  */
 import fs from 'node:fs';
 import { execFileSync, execSync } from 'node:child_process';
@@ -61,8 +65,12 @@ function musikWahl(th, pid) {
   const start = st[Math.floor(num(pid) / 7) % st.length] || 0;
   return { datei: wahl, start };
 }
-function musikMerken(id, m, th) { try { fs.appendFileSync(VERLAUF, `${new Date().toISOString()}\t${m.datei}\t${m.start}\t${th}\t${id}\n`); } catch {} }
+// Verlauf-Zeile: Zeit · Musik · Einstieg · Thema · Reel-ID · stimme:ja|nein · Stimme (bei ja) bzw. Grund (anteil|fehler)
+function musikMerken(id, m, th, st = { ja: false, grund: 'anteil' }) {
+  try { fs.appendFileSync(VERLAUF, `${new Date().toISOString()}\t${m.datei}\t${m.start}\t${th}\t${id}\tstimme:${st.ja ? 'ja' : 'nein'}\t${st.ja ? st.stimme : st.grund || ''}\n`); } catch {}
+}
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+const STIMME_ANTEIL = Math.max(0, Math.min(1, parseFloat(process.env.STIMME_ANTEIL ?? '0.5') || 0));
 // pid → stabile Zahl (auch fuer UUID-pids wie F5BA858E-…; GEMESSEN 22.09.: Number(...) gab NaN → Hook «undefined», Musik «undefined»)
 const num = p => { let h = 0; for (const c of String(p)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
 
@@ -187,6 +195,34 @@ function caption(hook, k, benefit) {
   return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\nCHF ${k.price.toFixed(2)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
 }
 
+// ---------------------------------------------------------------- Stimme (A/B, 23.09.2026)
+// Entscheid je pid stabil (eigener Hash-Salz, damit er nicht mit der Musikwahl num(pid) % n gleichlaeuft):
+// ein Neu-Rendern bekommt dieselbe Seite des A/B wie der Erstbau.
+const stimmeGewollt = pid => STIMME_ANTEIL > 0 && (num('stimme:' + pid) % 1000) / 1000 < STIMME_ANTEIL;
+function stimmeBauen(pid, th, hook, k, benefit) {
+  if (!stimmeGewollt(pid)) return { ja: false, grund: 'anteil' };
+  const wav = `/tmp/reelbuild/vo_${pid}.wav`;
+  const kurz = benefit && benefit.length <= 90 ? benefit : '';
+  const args = ['automation/reel/voiceover.py', '--out', wav, '--hook', hook, '--name', kurzTitel(k.title), '--nutzen', kurz,
+    '--preis', k.price.toFixed(2), '--thema', th];
+  let out = '';
+  try { out = execFileSync('python3', args, { encoding: 'utf8', timeout: 240000, stdio: ['ignore', 'pipe', 'pipe'] }); }
+  catch (e) { out = String(e.stdout || ''); }
+  let j = {}; try { j = JSON.parse(out.trim().split('\n').pop() || '{}'); } catch {}
+  if (j.ok && fs.existsSync(wav)) { console.log(`   Stimme: ${j.stimme} ${j.dauer}s «${j.text}»`); return { ja: true, datei: wav, stimme: j.stimme, text: j.text }; }
+  console.log(`   Stimme gewollt, aber nicht moeglich (${String(j.fehler || 'kein Ergebnis').slice(0, 100)}) → Reel ohne Stimme`);
+  fs.rmSync(wav, { force: true });
+  return { ja: false, grund: 'fehler' };
+}
+function stimmeDry(pid, th, hook, k, benefit) {
+  if (!stimmeGewollt(pid)) return 'nein (Anteil)';
+  try {
+    const j = JSON.parse(execFileSync('python3', ['automation/reel/voiceover.py', '--dry', '--hook', hook, '--name', kurzTitel(k.title),
+      '--nutzen', benefit && benefit.length <= 90 ? benefit : '', '--preis', k.price.toFixed(2), '--thema', th], { encoding: 'utf8' }).trim());
+    return `ja (${j.stimme}) «${j.varianten[0]}»`;
+  } catch (e) { return 'ja, aber voiceover.py --dry scheitert: ' + String(e.message || e).slice(0, 80); }
+}
+
 // ---------------------------------------------------------------- Neu rendern (23.09.2026)
 // NEU_RENDERN=1: Reels, die noch «ready» in der Queue stehen, mit der aktuellen Textebene neu bauen (Anlass:
 // Betreiber-Screenshot — Titel/Preis lagen unter TikToks Caption). Gleiche Datei, gleiche Adresse, keine neue
@@ -213,6 +249,7 @@ if (process.env.NEU_RENDERN === '1') {
     for (const n of r.data.products.nodes) {
       const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(n.variants.nodes[0]?.sku || ''); if (!m || !teil.includes(m[1])) continue;
       const pid = m[1], k = { pid, title: n.title.trim(), price: parseFloat(n.variants.nodes[0]?.price || '0') };
+      let st = { ja: false, grund: 'anteil' };
       if (n.status !== 'ACTIVE') { console.log(`   ${pid}: Produkt ${n.status} — nicht neu gerendert`); continue; }
       let vurl = ''; try { vurl = await cjVideo(pid); } catch (e) { console.log('  ✗ ' + e.message); break; }
       if (!vurl) { console.log(`   ${pid}: CJ hat kein Video mehr`); continue; }
@@ -223,14 +260,16 @@ if (process.env.NEU_RENDERN === '1') {
         if (!fs.existsSync(src) || fs.statSync(src).size < 200000) { console.log(`   ${pid}: Video zu klein`); continue; }
         let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
         const mw = musikWahl(thema(k.title), pid), musik = mw.datei;
-        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start) } });
-        musikMerken(`cjreel-${pid}`, mw, thema(k.title));
+        st = stimmeBauen(pid, th, hook, k, '');
+        execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
+        // OHNE_PUSH = Sichtpruefung: nichts veroeffentlicht → auch kein Verlaufseintrag (sonst zaehlt die Lernschleife Test-Renders)
+        if (process.env.OHNE_PUSH !== '1') musikMerken(`cjreel-${pid}`, mw, thema(k.title), st);
         if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log(`   ${pid}: Render fehlgeschlagen`); continue; }
         if (process.env.OHNE_PUSH === '1') { console.log(`   ✅ ${pid} gerendert → ${out} (kein Push)`); neu++; continue; }
         fs.copyFileSync(out, `${MEDIEN}/reel_${pid}.mp4`); dateien.push(`${MEDIEN}/reel_${pid}.mp4`); neu++;
         console.log(`   ✅ ${pid} neu gerendert: ${z1} / ${z2}`);
       } catch (e) { console.log(`   ${pid}: Fehler ${String(e.message || e).slice(0, 100)}`); }
-      finally { fs.rmSync(src, { force: true }); if (process.env.OHNE_PUSH !== '1') fs.rmSync(out, { force: true }); }
+      finally { fs.rmSync(src, { force: true }); fs.rmSync(`/tmp/reelbuild/vo_${pid}.wav`, { force: true }); if (process.env.OHNE_PUSH !== '1') fs.rmSync(out, { force: true }); }
     }
   }
   if (dateien.length) { if (!gitPush(dateien, `Reels neu gerendert (sichere Zone): ${dateien.length}`)) console.log('   Push fehlgeschlagen'); }
@@ -323,8 +362,9 @@ for (const k of reihe) {
   const cap = caption(hook, k, benefit);
   const tags = hashtags(k.title, k.pid);
   console.log(`→ ${k.pid} [${th}] ${k.title.slice(0, 60)} · CHF ${k.price}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${vurl.slice(0, 70)}`);
-  if (DRY) { made++; continue; }
+  if (DRY) { console.log(`   Stimme: ${stimmeDry(k.pid, th, hook, k, benefit)}`); made++; continue; }
   const src = `/tmp/reelbuild/src_${k.pid}.mp4`, out = `/tmp/reelbuild/reel_${k.pid}.mp4`;
+  let st = { ja: false, grund: 'anteil' };
   try {
     execFileSync('curl', ['-s', '-L', '--max-time', '180', '-H', 'Referer: https://developers.cjdropshipping.com/', '-o', src, vurl], { stdio: 'ignore' });
     if (!fs.existsSync(src) || fs.statSync(src).size < 200000) { console.log('   Video zu klein/leer'); fs.rmSync(src, { force: true }); continue; }
@@ -332,7 +372,8 @@ for (const k of reihe) {
     if (dur && dur < 3) { console.log('   Video kuerzer als 3 s'); continue; }
     const mw = musikWahl(th, k.pid), musik = mw.datei;
     console.log(`   Musik: ${musik} ab ${mw.start}s [${th}]`);
-    execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start) } });
+    st = stimmeBauen(k.pid, th, hook, k, benefit);
+    execFileSync('bash', ['automation/reel/make_reel.sh', src, out, z1, z2, `CHF ${k.price.toFixed(2)}`, hook, 'automation/music/' + musik], { stdio: 'ignore', env: { ...process.env, START: String(Math.min(2, dur / 4 || 0)), MUSIK_START: String(mw.start), ...(st.ja ? { STIMME: st.datei } : {}) } });
     if (!fs.existsSync(out) || fs.statSync(out).size < 100000) { console.log('   Render fehlgeschlagen'); continue; }
     const datei = `reel_${k.pid}.mp4`; fs.copyFileSync(out, `${MEDIEN}/${datei}`);
     const url = RAW + datei;
@@ -342,11 +383,11 @@ for (const k of reihe) {
     try { code = execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', url], { encoding: 'utf8' }); } catch {}
     if (!/^20[06]$/.test(code)) { console.log(`   Adresse antwortet ${code} — Reel bleibt im Repo, Zeile folgt beim naechsten Lauf`); continue; }
     appendReel(`cjreel-${k.pid}`, url, cap, tags, 'instagram,facebook');
-    fs.appendFileSync(LEDGER, k.pid + '\n'); fs.writeFileSync('/tmp/_reel_last_music', musik); musikMerken(`cjreel-${k.pid}`, mw, th);
+    fs.appendFileSync(LEDGER, k.pid + '\n'); fs.writeFileSync('/tmp/_reel_last_music', musik); musikMerken(`cjreel-${k.pid}`, mw, th, st);
     gitPush([CSV, LEDGER, KEINVIDEO, VERLAUF], `Reel-Queue: ${k.pid} ready`);
     made++; console.log(`   ✅ Reel ${made}/${BATCH} → queue (${url.slice(-40)})`);
   } catch (e) { console.log('   Fehler:', String(e.message || e).slice(0, 120)); }
-  finally { fs.rmSync(src, { force: true }); fs.rmSync(out, { force: true }); }
+  finally { fs.rmSync(src, { force: true }); fs.rmSync(out, { force: true }); fs.rmSync(`/tmp/reelbuild/vo_${k.pid}.wav`, { force: true }); }
 }
 if (!DRY && fs.existsSync(KEINVIDEO)) gitPush([KEINVIDEO], 'Reel-Motor: kein-Video-Ledger');
 console.log(`FERTIG. neue Reels: ${made} | nachgetragen: ${nachgetragen} | CJ gefragt: ${gefragt} | Kandidaten: ${kand.length}`);
