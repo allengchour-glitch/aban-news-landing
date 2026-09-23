@@ -11651,3 +11651,15 @@ kabellose-autowaschpistole-627700	2026-09-22	um-ohne-wirkung
 kabellose-baby-uberwachungskamera-634800	2026-09-22	um-ohne-wirkung
 kabellose-bluetooth-fernbedienung-bd6fb6	2026-09-22	teilweise
 kabellose-bluetooth-kopfhoerer-622200	2026-09-22	teilweise
+kabellose-bluetooth-kopfhorer-mit-akkuanzeige-605100	2026-09-22	du
+kabellose-bluetooth-kopfhorer-mit-noise-cancel-709376	2026-09-22	du
+kabellose-bluetooth-sport-kopfhorer-mit-ohrhak-605800	2026-09-22	du
+kabellose-bluetooth-tastatur-mit-pbt-tasten-092032	2026-09-22	um-ohne-wirkung
+kabellose-desinfektionspistole-942080	2026-09-22	du
+kabellose-elektrische-gartenschere-mit-akku-630000	2026-09-22	teilweise
+kabellose-elektrische-spulburste-515904	2026-09-22	du
+kabellose-gamecontroller-ladestation-600000	2026-09-22	teilweise
+kabellose-gaming-maus-lautlos-497135	2026-09-22	teilweise
+kabellose-hasenohren-kopfhorer-mit-lichteffekt-566912	2026-09-22	teilweise
+kabellose-hd-kamera-d9a54c	2026-09-22	um-ohne-wirkung
+kabellose-hd-kamera-mit-fernbedienung-638800	2026-09-22	um-ohne-wirkung
