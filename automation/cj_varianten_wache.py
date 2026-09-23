@@ -128,6 +128,7 @@ def cj_varianten(sku):
     if re.fullmatch(r'[0-9]{10,}', kern):
         d = cj(f"/api2.0/v1/product/variant/query?pid={kern}")
         if d is None or str(d.get("code")) == "netz": return set(), "keine CJ-Antwort"
+        if str(d.get("code")) == "16900500": return set(), "PUNKTE-LEER: " + str(d.get("message"))[:70]
         if str(d.get("code")) == "200" and isinstance(d.get("data"), list):
             return {v.get("variantSku") for v in d["data"] if v.get("variantSku")}, ""
         return set(), f"pid-Abfrage Code {d.get('code')}"
@@ -146,6 +147,7 @@ def cj_varianten(sku):
         d = cj(f"/api2.0/v1/product/query?{art}={wert}")
         if d is None or str(d.get("code")) == "netz": return set(), "keine CJ-Antwort"
         code = str(d.get("code"))
+        if code == "16900500": return set(), "PUNKTE-LEER: " + str(d.get("message"))[:70]
         if code != "1602001": break
     if code == "1602002": return set(), "PRODUKT-WEG (1602002) — cj_verfuegbarkeit zustaendig"
     if code != "200": return set(), f"CJ-Code {code}: {str(d.get('message'))[:50]}"
@@ -227,6 +229,13 @@ def main():
         if len(vs) < 2:
             fl.write(f"{pid}\t{jetzt:.0f}\tkeine-cj-mehrvarianten\n"); fl.flush(); continue
         live, grund = cj_varianten(vs[0]["sku"])
+        # 23.09. 22:55 UTC (gemessen: 2'095 Fehlversuche in 21 min bei «Used today: 123'710, Remaining: 0»):
+        # ein leerer CJ-Punkte-Eimer ist ein Zustand des KONTOS, nicht des Produkts. Weiterzufragen kostet
+        # nur den gemeinsamen Takt (den auch der Bestell-Runner braucht) und schreibt «unklar» in Serie.
+        # Deshalb: Lauf beenden, nichts ins Ledger, Exit 3 — der Aufseher startet ihn am naechsten Tag neu.
+        if grund.startswith("PUNKTE-LEER"):
+            print(f"PAUSE: CJ-Punkte-Eimer leer ({grund[13:]}) — Lauf beendet nach {n-1} Produkten, nichts geschrieben", flush=True)
+            fl.flush(); sys.exit(3)
         if grund.startswith("PRODUKT-WEG"):
             # Gemessen 21.09.: 1602002 nennt die pid des einst existierenden Produkts, Garbage-SKUs
             # geben 1602001 — die Absage ist also eine Aussage ueber DIESES Produkt. Ein Produkt,

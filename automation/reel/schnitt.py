@@ -1,48 +1,69 @@
 #!/usr/bin/env python3
-"""schnitt.py — Schnitt-Motor fuer LuxeStyle-Reels (23.09.2026, Workflow «videoschnitt-lernen»).
+"""schnitt.py — Schnitt-Motor fuer LuxeStyle-Reels (23.09.2026, Workflow «videoschnitt-lernen», Nachbesserung nach drei
+Pruefberichten — Bildjury, Technik, Code — am selben Tag).
 
 Warum: make_reel.sh spielt jede CJ-Quelle stumpf ab Sekunde 0 in einem 580-px-Band ab (START wird nie gelesen),
 schneidet nie selbst und nie auf den Beat, laesst Lieferantentext, Schwarzbilder und Standbild-Dias durch und
 wiederholt kurze Quellen per -stream_loop sichtbar. Gemessen (Lernberichte 23.09., dropship/VIDEOSCHNITT-LERNEN.md):
 TikTok-Sehdauer Median 1,37 s ueber alle Laengen -> entschieden wird in den ersten 1,5 s; erste Einstellung im
-Bestand Median 3,96 s; 13/56 Reels starten fast als Standbild; Produkt fuellt 9-27 % der Flaeche; Schnitte
+Bestand Median 3,96 s; 13/56 Reels starten fast als Standbild; Videofenster 9-27 % der Flaeche; Schnitte
 17 % auf dem Beat (Zufall 24 %).
 
 Stufen (jede einzeln aufrufbar, jede Entscheidung mit Grund im Entscheidungslog):
-  analyse(quelle)            -> Einstellungen mit Bewertung (Schaerfe, Bewegung, Helligkeit, Fremdtext/Wasserzeichen,
-                                 eingefroren/schwarz/Leerlauf), Seitenverhaeltnis, Ton. Cache: <quelle>.schnitt.json
-  plan(analyse, musik, ziel) -> Schnittliste auf dem Beat-Raster: Hook (staerkste Einstellung, nicht die erste) zuerst,
-                                 Laengen nach den gelernten Regeln, kein Fremdtext, keine Wiederholung, Loop-Ende.
-  render(plan, out, text)    -> MP4 1080x1920, 30 fps, H.264 yuv420p + AAC 48 kHz Stereo, Ton zweistufig -14 LUFS /
-                                 TP -1.5; Smart-Crop-Vollbild wenn die Quelle es hergibt, sonst Unschaerfe-Band;
-                                 Text nur als PNG (Bausteine aus overlay.py) in der sicheren Zone; keine Stimme.
+  analyse(quelle)            -> Einstellungen mit Bewertung (Schaerfe, Bewegung, Helligkeit, Fremdtext/Fremdpreis/Logo,
+                                 eingefroren/schwarz/Leerlauf), Kamerafahrten (schwache Grenzen), Dauer = dekodierbar.
+                                 Cache: <quelle>.schnitt.json (Fingerabdruck inkl. OCR-Ausstattung)
+  plan(analyse, musik, ziel) -> Schnittliste auf dem Beat-Raster (Phase auf dem Kick): Hook (staerkste Stelle ohne
+                                 Uebergang, nie im Quell-Intro), Intro-Zone fuer ALLE Stuecke gesperrt, je Einstellung
+                                 hoechstens 2 Auftritte, eine Kamerafahrt nur vorwaerts, ganze Takte, Loop-Ende,
+                                 Band senkrecht nach verdeckter Energie, kurzes Reel mit «Link in Bio» im Infofeld.
+  render(plan, out, text)    -> MP4 1080x1920, 25 fps (25/50-fps-Quellen) sonst 30, H.264 yuv420p + AAC 48 kHz Stereo,
+                                 Ton zweistufig -14 LUFS / TP-Ziel -2,5, True Peak NACH dem Mux gemessen und per
+                                 Limiter nachgeregelt; Zoom nur im Fenster; Text nur als PNG (overlay.py-Bausteine) in
+                                 der sicheren Zone; keine Stimme. Rueckgabe: Pruefung mit ok/verstoesse (Tor).
   kontaktbogen(video)        -> JPG: erste Sekunde in 6 Bildern + 1 Bild/s (Sichtpruefung per Read).
 
 CLI:
   schnitt.py --analyse QUELLE
   schnitt.py --plan QUELLE --musik STUECK [--ziel 12] [--einstieg SEK]
   schnitt.py --render QUELLE --musik STUECK --out DATEI [--einstieg SEK] [--titel Z1 --titel2 Z2 --preis "CHF 19.90"
-             --hook "Produkt: Nutzen"] [--zone organisch|meta] [--log DATEI.json] [--dry] [--json]
+             --hook "Produkt: Nutzen"] [--zone organisch|meta] [--sperren a-b,..] [--hook-ab SEK] [--log DATEI.json]
+             [--arbeitsordner ORDNER] [--dry] [--json]
   schnitt.py --kontaktbogen VIDEO [--bogen-out BILD.jpg]
-  Exit-Codes: 0 ok · 3 Quelle ungeeignet (Grund auf stdout, eine Zeile «UNGEEIGNET: …») · 1 Fehler (stderr).
+  schnitt.py --tessdata-holen ORDNER        (chi_sim.traineddata fuer SCHNITT_TESSDATA, einmalig, nie ins Repo)
+  Exit-Codes: 0 ok (letzte stdout-Zeile JSON, pruefung.ok = true)
+              3 Quelle ungeeignet (Fremdtext, zu wenig Material, eine kurze Kamerafahrt, nicht dekodierbar) —
+                eine Zeile «UNGEEIGNET: …» auf stdout
+              4 Reel gebaut, aber das Pruef-Tor am Ergebnis scheiterte (Bildzahl, Schnittversatz, erster Schnitt
+                unsichtbar, LUFS, True Peak, Loop-Naht, Zone) — Datei geloescht, «PRUEFUNG: …» auf stdout, Log bleibt
+              1 Fehler (stderr), u. a. Musikfehler (nicht in automation/music, keine CREDITS-Zeile, < 6 s ab Einstieg)
 
 SCHNITTSTELLE fuer den Reel-Motor (cj_video_reel_engine.mjs — hier NICHT geaendert; so soll er es spaeter aufrufen):
   Statt make_reel.sh:
     const r = spawnSync('python3', ['automation/reel/schnitt.py', '--render', src, '--musik', musik,
         '--einstieg', String(mw.start), '--out', out, '--titel', z1, '--titel2', z2,
-        '--preis', `CHF ${k.price.toFixed(2)}`, '--hook', hook, '--json'], { encoding: 'utf8', timeout: 300000 });
-    r.status === 0 -> letzte stdout-Zeile ist JSON {ok, out, dauer, frames, modus, log, pruefung};
-                      Entscheidungslog liegt in <out>.schnitt.json (mit dem Reel archivieren, NICHT ins Repo).
-    r.status === 3 -> Quelle ungeeignet (Fremdtext/Wasserzeichen/zu wenig sauberes Material): naechsten CJ-Clip des
-                      Produkts versuchen (queryVideosByProductId liefert im Schnitt 2,4 Clips), sonst Produkt ins
-                      Ledger «schnitt-ungeeignet» — NIE auf make_reel.sh zurueckfallen (das wuerde den Fremdtext posten).
-    sonst          -> Fehler, Reel verwerfen, naechster Lauf.
-  Preis kommt live aus Shopify (k.price), Hook aus hookFuer() (<= 24 Zeichen, Produktwort + Nutzen). Musik aus
-  musikWahl() (nur eigene Stuecke); schnitt.py rastet den Einstieg auf den naechsten Beat ein.
-  Lange Quellen analysiert der Motor am besten vorab: `--analyse` ist idempotent (Cache) und kostet ~10-40 s.
+        '--preis', `CHF ${k.price.toFixed(2)}`, '--hook', hook, '--arbeitsordner', '/tmp/reelbuild/schnitt', '--json'],
+        { encoding: 'utf8', timeout: 300000,
+          env: { ...process.env, SCHNITT_TESSDATA: '/tmp/schnitt_tessdata' } });   // vorher einmal --tessdata-holen
+    r.status === 0 -> letzte stdout-Zeile ist JSON {ok, out, dauer, frames, fps, modus, log, pruefung};
+                      Entscheidungslog im Arbeitsordner (<out-name>.schnitt.json) — nach dem Posten loeschen oder
+                      ausserhalb des Repos archivieren (das Repo ist oeffentlich; nur das Reel selbst gehoert nach
+                      social/reels/, wie der Motor es heute ablegt).
+    r.status === 3 -> Quelle ungeeignet: naechsten CJ-Clip des Produkts versuchen (queryVideosByProductId liefert im
+                      Schnitt 2,4 Clips), sonst Produkt ins Ledger «schnitt-ungeeignet» — NIE auf make_reel.sh
+                      zurueckfallen (das wuerde den Fremdtext posten).
+    r.status === 4 -> Reel verwerfen, Clip ins Ledger «schnitt-pruefung» (deterministisch: nicht endlos wiederholen).
+    sonst          -> Fehler (Musik/Umgebung), Reel verwerfen, naechster Lauf.
+  Preis kommt live aus Shopify (k.price). Hook: Bild 0 = LUXESTYLE + Hook <= 40 Zeichen ist Pflicht (sonst Exit 1),
+  Ziel <= 24 Zeichen (Produktwort + Nutzen). Die HOOKS des heutigen Motors sind generisch und bis 36 Zeichen lang —
+  die Umstellung braucht eine eigene Hook-Funktion. Musik aus musikWahl() (nur eigene Stuecke mit CREDITS-Zeile);
+  schnitt.py rastet den Einstieg auf den naechsten Kick-Schlag ein.
+  Laufzeit ohne Cache bis ~90 s bei langen Text-Quellen (Technik-Pruefung x1) -> timeout >= 180 s; `--analyse` vorab
+  ist idempotent (Cache) und kostet ~10-40 s.
 
-Umgebung: SCHNITT_TESSDATA=<ordner mit chi_sim.traineddata> (sonst kein CJK-OCR, nur Hinweis im Log),
-          SCHNITT_THREADS (Standard 2). Nur vorhandene Bibliotheken: numpy, scipy, PIL, librosa, pytesseract, PyAV.
+Umgebung: SCHNITT_TESSDATA=<ordner mit chi_sim.traineddata> (sonst kein CJK-OCR: Hinweis im Log, pruefung.cjk_ocr=false),
+          SCHNITT_THREADS (Standard 2, je ffmpeg-Eingang und Encoder), SCHNITT_MUSIK_FREI=1 nur fuer Selbsttests.
+          Nur vorhandene Bibliotheken: numpy, scipy, PIL, librosa, pytesseract, PyAV.
 """
 import argparse, copy, json, math, os, re, shlex, shutil, subprocess, sys, tempfile, time
 
@@ -60,7 +81,7 @@ import overlay as ov  # noqa: E402  (nur Bausteine importieren: font, spaced, wr
 FF = shutil.which('ffmpeg') or 'ffmpeg'
 THREADS = str(os.environ.get('SCHNITT_THREADS', '2'))
 W, H, FPS = 1080, 1920, 30          # FPS = Rueckfall; der Plan waehlt 25 fuer 25/50-fps-Quellen (siehe plan: 'fps')
-VERSION = 8
+VERSION = 9
 TESS_URL = 'https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/chi_sim.traineddata'   # 2'469'156 Byte
 # Pruef-Tor am fertigen Reel (Exit 4, Datei geloescht): alles GEMESSEN am Ergebnis, nicht am Plan
 TOR = dict(lufs=-14.0, lufs_tol=1.0, tp_max=-1.5, versatz_max=1, sicht_min=2.5)
@@ -349,21 +370,27 @@ NACHBAR_FENSTER = 8     # Bilder je Seite (war 3)
 def _schnitt_kandidaten(st_, ss_, dur):
     """Harte Schnitte aus dem scene-Wert JEDES Bildes -> ([(t, score, stark)], verdacht).
     stark = absolut >= 0,2 (Labor: 26/28 Schnitte, 0 Fehlalarme); schwach = relativ: >= 0,08, >= 6x Median der +-12
-    Nachbarbilder UND >= 4x das Maximum der +-8 Nachbarbilder.
+    Nachbarbilder, >= 4x das Maximum der +-3 UND >= 1,5x das Maximum der +-8 Nachbarbilder.
     GEMESSEN p3 (23.09.): Kamerawechsel zwischen aehnlichen Blickwinkeln bei 9,16 s hatte scene 0,167 (Nachbarn 0,02).
     GEMESSEN Technik-Pruefung 23.09.: periodisches Ruckeln (Spitze alle 4 Bilder: p1 20,36/20,52/20,68/20,84 s je
     0,09-0,13; p4 um 4,72 s) ueberlistete den +-3-Nachbartest -> Scheinschnitte (p1 Bild 271 scdet 3,3, p4 Bild 29
-    = Ruckler). Mit +-8 liegt die naechste Spitze im Fenster. Schwache Grenzen tragen die Marke 'stark=False': der
+    = Ruckler). Im +-8-Fenster liegt die naechste Spitze. Schwache Grenzen tragen die Marke 'stark=False': der
     Plan behandelt Einstellungen hinter einer schwachen Grenze als dieselbe Kamerafahrt (Sprungregel 0,4 s)."""
     ss_ = np.asarray(ss_, float); st_ = np.asarray(st_, float)
     if len(ss_) == 0:
         return [], []
     medn = nd.median_filter(ss_, size=25, mode='nearest')
-    nf = NACHBAR_FENSTER
-    nachb = np.array([max(np.concatenate([ss_[max(0, k - nf):k], ss_[k + 1:k + nf + 1]])) if len(ss_) > 1 else 0
-                      for k in range(len(ss_))])
+
+    def nachbarn(k, n):
+        v = np.concatenate([ss_[max(0, k - n):k], ss_[k + 1:k + n + 1]])
+        return float(v.max()) if len(v) else 0.0
+    nah = np.array([nachbarn(k, 3) for k in range(len(ss_))])
+    weit = np.array([nachbarn(k, NACHBAR_FENSTER) for k in range(len(ss_))])
+    # nah (+-3): >= 4x (Doppelbild-Quellen, Doppelschritt); weit (+-8): >= 1,5x (periodisches Ruckeln alle 4 Bilder).
+    # GEMESSEN 23.09.: p1 20,68 s 0,128 bei weit 0,107 (1,2x, Schein) und p4 4,72 s ~1,0x (Schein) fallen raus;
+    # p3 27,96 s 0,194 bei nah 0,038 / weit 0,107 (1,8x) ist ein echter Kamerawechsel (Sichtpruefung) und bleibt.
     kand_idx = [k for k in range(len(ss_)) if ss_[k] >= 0.2 or (ss_[k] >= 0.08 and ss_[k] >= 6 * max(medn[k], 0.002)
-                                                              and ss_[k] >= 4 * nachb[k])]
+                                                              and ss_[k] >= 4 * nah[k] and ss_[k] >= 1.5 * weit[k])]
     # schwache Spruenge (0,12-0,2) ohne Schnitt-Status: der Hook beginnt nie darauf (Loop-Naht)
     ki = set(kand_idx)
     verdacht = [float(st_[k]) for k in range(len(ss_)) if 0.12 <= ss_[k] and k not in ki]
@@ -1333,8 +1360,9 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         L('loop', 'Ueberblendung 0,4 s auf das erste Bild', f'vor dem Hook nur {hvor:.2f} s Material; Labor: Naht MAD 57 -> 5')
 
     # ---- Mitte: Einstellungen in Quellreihenfolge (Ablauf der Demo), gute zuerst, nie dieselbe Stelle zweimal.
-    #      Nutzungsdeckel: jede Einstellung hoechstens EIN Mittelstueck, die Hook-Einstellung keins, solange andere
-    #      Einstellungen freies Material haben (Bildjury 23.09.: p3 zeigte «Tank aufsetzen» dreimal aus E6).
+    #      Nutzungsdeckel: jede Einstellung hoechstens EIN Mittelstueck, die Hook-Einstellung keins (sie laeuft schon als
+    #      Hook + Loop-Ende); Ausnahme nur, wenn das Reel sonst unter 8 s bliebe (Bildjury 23.09.: p3 zeigte «Tank
+    #      aufsetzen» dreimal aus E6).
     k_tail = loop['beats'] if loop else 0      # ohne nahtloses Ende fuellt die Mitte alles; letztes Stueck blendet ueber
     rest = nb - k_first - k_tail
     if rest < 0:
@@ -1350,10 +1378,19 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
     pos_r = 0
     letzte = he['id']
     mehrfach = []
+    # Wenige Einstellungen fuer viele Schlaege: laengere Mittelstuecke (<= 2,5 s) statt Wiederholung
+    verfuegbar = [e for e in sauber if e['id'] != he['id'] and max((b - a for a, b in e['nutzbar']), default=0) >= k_min * P]
+    k_mitte = k_base
+    if verfuegbar and not eine_fahrt and rest > 0:
+        bedarf = int(math.ceil(rest / len(verfuegbar)))
+        if bedarf > k_base:
+            k_mitte = min(bedarf, max(k_base, int(2.5 / P + 1e-9)))
+            L('dauer', f'Mittelstuecke bis {k_mitte} statt {k_base} Schlaege', f'nur {len(verfuegbar)} Einstellungen fuer '
+              f'{rest} Schlaege — laengere Stuecke (<= 2,5 s) statt eine Einstellung zu wiederholen')
     while rest > 0:
         if rest < k_min:
             break                                     # Rest < Mindeststueck: geht ans Ende (unten), kein 0,5-s-Fetzen
-        k = min(k_base, rest)
+        k = min(k_mitte, rest)
         if 0 < rest - k < k_min:
             k = rest
         gewaehlt = None
@@ -1385,7 +1422,13 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
                     t, e = min(vorw or alle, key=lambda x: x[0])
                     gewaehlt = (e, t, kk, 1.0, e['standbild'], 1)
                     break
-        for phase in ((1, 2) if not eine_fahrt else ()):
+        # Phase 3 (alte Regel: jede freie Stelle, nie zweimal hintereinander dieselbe Fahrt) nur, solange das Reel sonst
+        # unter 8 s bliebe — lieber eine Einstellung wiederholen als ein 4-s-Reel oder Exit 3.
+        # Eine «zweite Nutzung mit Abstand» (Phase 2) gibt es NICHT mehr: GEMESSEN 23.09. p3 E6 — die Bildjury sah bei
+        # Quelle 9,8 s und 19,7 s zweimal «Tank aufsetzen», der Abstand war 10 s und der Bildabstand (64-px-Vorschau,
+        # MAD) 29,0 bei Median 23,9 aller Paare >= 4 s: weder Zeit- noch Pixelabstand erkennen die Wiederholung.
+        kurz_noch = (sum(x['beats'] for x in stuecke) + k_tail) * P < 8.0
+        for phase in (((1, 3) if kurz_noch else (1,)) if not eine_fahrt else ()):
             for versuch in range(len(reihe) * 3):
                 e = reihe[(pos_r + versuch) % len(reihe)]
                 if phase == 1 and (nutzung.get(e['id'], 0) >= 1 or e['id'] == he['id']):
@@ -1454,8 +1497,8 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         m = mfenster(t, t + kk * P * tempo)
         gr_ = ('Standbild-Dia <= 1,0 s' if statisch else f'Bewegung {m:.1f}') + \
             (', Tempo 1,5x (Leerlauf gestrafft)' if tempo != 1.0 else '')
-        if phase == 2:
-            gr_ += ' (Einstellung erneut: kein anderes freies Material)'
+        if phase == 3:
+            gr_ += ' (Einstellung erneut: Reel sonst < 8 s)'
             mehrfach.append(e['id'])
         stuecke.append(dict(einstellung=e['id'], q_start=_r(t), q_dauer=_r(kk * P * tempo), tempo=tempo, beats=kk,
                             rolle='demo', grund=gr_))
@@ -1486,10 +1529,51 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         stuecke[-1]['rolle'] = 'loop_ende'
         stuecke[-1]['grund'] += '; Naht per 0,4-s-Ueberblendung auf das erste Bild'
     # Ganze Takte: Summe der Schlaege auf ein Vielfaches von 4 (Code-Pruefung 23.09.: p4 hatte 13 Schlaege; beim
-    # Wiederholen springt die Musik sonst neben den Takt). Mittelstuecke von hinten um je 1 Schlag kuerzen (>= k_min).
-    uebrig = sum(s['beats'] for s in stuecke) % 4
-    if uebrig and sum(s['beats'] for s in stuecke) > 8:
+    # Wiederholen springt die Musik sonst neben den Takt). Erst verlaengern (fehlen 1-2 Schlaege), sonst kuerzen
+    # (>= k_min), sonst ein Mittelstueck weglassen.
+    def _verlaengerbar(j, plus):
+        s = stuecke[j]
+        e = next((x for x in sauber if x['id'] == s['einstellung']), None)
+        if e is None or s['rolle'] != 'demo':
+            return False
+        neu_l = (s['beats'] + plus) * P * s['tempo']
+        if e['standbild'] or neu_l > 2.5 + 1e-6:
+            return False
+        a0, b0 = s['q_start'], s['q_start'] + neu_l
+        if not any(x <= a0 + 1e-6 and b0 <= y + 1e-6 for x, y in e['nutzbar']):
+            return False
+        for x, y in benutzt.get(e['id'], []):
+            if abs(x - s['q_start']) <= 1e-3:
+                continue
+            if not (b0 <= x - 0.08 + 1e-6 or a0 >= y + 0.08 - 1e-6):
+                return False
+        for nb_ in (stuecke[j + 1] if j + 1 < len(stuecke) else None,):
+            if nb_ is not None and kette[nb_['einstellung']] == kette[s['einstellung']]:
+                if not (nb_['q_start'] >= b0 + 0.4 - 1e-6 or nb_['q_start'] + nb_['q_dauer'] <= a0 - 0.4 + 1e-6):
+                    return False
+        return True
+    summe = sum(s['beats'] for s in stuecke)
+    uebrig = summe % 4
+    if uebrig and summe > 8:
         weg = uebrig
+        plus = 4 - uebrig
+        if plus <= 2:
+            for j in range(len(stuecke) - 1, 0, -1):
+                if plus == 0:
+                    break
+                while plus and _verlaengerbar(j, 1):
+                    s = stuecke[j]; s['beats'] += 1; plus -= 1
+                    s['q_dauer'] = _r(s['beats'] * P * s['tempo'])
+                    for iv in benutzt.get(s['einstellung'], []):
+                        if abs(iv[0] - s['q_start']) <= 1e-3:
+                            iv[1] = _r(s['q_start'] + s['q_dauer'])
+            if plus == 0:
+                weg = 0
+                L('dauer', f'+{4 - uebrig} Schlag fuer ganze Takte', 'Mittelstueck(e) verlaengert, Quelle dahinter frei')
+            else:
+                # Teilverlaengerung zuruecknehmen ist nicht noetig: dann eben kuerzen, was jetzt uebrig ist
+                weg = sum(s['beats'] for s in stuecke) % 4
+        uebrig2 = weg
         for s in reversed(stuecke):
             if weg == 0:
                 break
@@ -1498,11 +1582,25 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
             while weg and s['beats'] - 1 >= k_min:
                 s['beats'] -= 1; weg -= 1
             s['q_dauer'] = _r(s['beats'] * P * s['tempo'])
-        if weg == 0:
-            L('dauer', f'-{uebrig} Schlag fuer ganze Takte', 'Mittelstuecke von hinten gekuerzt (nahtloses Musik-Loop)')
-        else:
-            L('dauer', f'Takt-Rest {uebrig} bleibt', 'kein Mittelstueck laenger als das Mindeststueck — Musik springt beim '
-              'Wiederholen neben den Takt')
+        if weg:
+            # kein Stueck laesst sich kuerzen: ein Mittelstueck mit genau `weg` Schlaegen weglassen, wenn die Nachbarn
+            # danach nicht zur selben Fahrt gehoeren (sonst entstuende ein unsichtbarer Schnitt)
+            for j in range(len(stuecke) - 1, 0, -1):
+                s = stuecke[j]
+                if s['rolle'] != 'demo' or s['beats'] != weg or j + 1 >= len(stuecke):
+                    continue
+                a_, b_ = stuecke[j - 1], stuecke[j + 1]
+                if kette[a_['einstellung']] == kette[b_['einstellung']]:
+                    continue
+                del stuecke[j]; weg = 0
+                L('dauer', f'Mittelstueck E{s["einstellung"]} ({s["beats"]} Schlaege) weggelassen', 'ganze Takte: kein '
+                  'Stueck liess sich kuerzen (alle am Mindestmass)')
+                break
+        if uebrig2 and weg == 0:
+            L('dauer', f'-{uebrig2} Schlag fuer ganze Takte', 'Mittelstuecke gekuerzt/weggelassen (nahtloses Musik-Loop)')
+        elif weg:
+            L('dauer', f'Takt-Rest {weg} bleibt', 'kein Mittelstueck laesst sich verlaengern, kuerzen oder weglassen — Musik '
+              'springt beim Wiederholen neben den Takt')
     # Stuecke aus derselben Einstellung, die in der Quelle direkt aneinander liegen -> unsichtbarer Schnitt: zusammenlegen
     zus = []
     for s in stuecke:
@@ -1516,12 +1614,16 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
     nb = sum(s['beats'] for s in stuecke)
     D = nb * P
 
-    # ---- Frames auf dem Raster (Schnitt = runder Frame des Beats: Abweichung <= 1/2 Bild, im Fenster -100/+33 ms)
+    # ---- Frames auf dem Raster: Schnitt = letztes Bild AUF oder VOR dem Beat (abrunden, nicht runden). Das Fenster ist
+    #      schief (-100/+33 ms: lieber zu frueh als zu spaet). GEMESSEN 23.09. am Ausgabeton p3 (25 fps, gerundet):
+    #      Schnitt minus Kick 0..+45 ms, 4/6 im Fenster — der Raster-Punkt liegt ~20 ms hinter dem Kick-Onset und die
+    #      Rundung legte bis zu 20 ms drauf; abgerundet: Schnitt minus Raster -40..0 ms.
     pos = 0; zoom_zuletzt = -99.0
     for k, s in enumerate(stuecke):
         s['nr'] = k
         s['beat_start'] = pos; pos += s['beats']
-        s['start_frame'] = int(round(s['beat_start'] * P * fps)); s['ende_frame'] = int(round(pos * P * fps))
+        s['start_frame'] = int(math.floor(s['beat_start'] * P * fps + 1e-6))
+        s['ende_frame'] = int(math.floor(pos * P * fps + 1e-6))
         s['frames'] = s['ende_frame'] - s['start_frame']
         s['t_start'] = _r(s['start_frame'] / fps); s['t_ende'] = _r(s['ende_frame'] / fps)
         f = fenster[s['einstellung']]
@@ -1544,7 +1646,8 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         s['zoom'] = z; s['bewegung'] = _r(m, 2)
         if zg:
             L('zoom', f"Stueck {k}: {z}", zg)
-    N = int(round(D * fps))
+    N = stuecke[-1]['ende_frame']
+    D = N / fps
     grenzen = [s['start_frame'] for s in stuecke[1:]]
     if D < 5.0:
         raise Ungeeignet(f'nur {D:.1f} s Reel moeglich ohne Wiederholung (Standbild-Dias <= 1 s, Spruenge >= 0,4 s) — '
@@ -1768,29 +1871,61 @@ def _zoom_expr(z, n):
     return None
 
 
+def _ton_normiert(R, D, tmp):
+    """Musik ab eingerastetem Einstieg, 48 kHz Stereo, kurze Kanten (kein Fade auf Stille), zweistufig -14 LUFS.
+    Ziel-TP -2,5 statt -1,5: die AAC-Kodierung hebt den True Peak (GEMESSEN 23.09., hype2: +0,5-0,6 dB; Technik-Pruefung
+    23.09., house2 ab 0,21 s: +1,9 dB) — der Rest wird NACH dem Mux gemessen und nachgeregelt (_tp_nachregeln)."""
+    roh = os.path.join(tmp, 'musik.wav')
+    _run([FF, '-y', '-v', 'error', *_thr(), '-ss', f"{R['einstieg']:.4f}", '-i', R['pfad'], '-t', f'{D:.4f}', '-vn',
+          '-af', f'aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=0.02,afade=t=out:st={max(0, D - 0.15):.3f}:d=0.15,apad',
+          '-t', f'{D:.4f}', '-ar', '48000', '-ac', '2', roh])
+    e = subprocess.run([FF, '-hide_banner', '-nostats', '-i', roh, '-af', 'loudnorm=I=-14:TP=-2.5:LRA=11:print_format=json',
+                        '-f', 'null', '-'], capture_output=True, text=True).stderr
+    m = json.loads(e[e.rindex('{'):e.rindex('}') + 1])
+    ln = (f"loudnorm=I=-14:TP=-2.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+          f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
+    mix = os.path.join(tmp, 'musik_n.wav')
+    _run([FF, '-y', '-v', 'error', *_thr(), '-i', roh, '-af', f'{ln},aresample=48000', '-ar', '48000', '-ac', '2', mix])
+    return mix
+
+
+def _tp_nachregeln(out, mix, D, tmp, versuche=3):
+    """True Peak am FERTIGEN MP4 messen; liegt er ueber dem Tor (-1,5 dBTP), nur den Ton neu bauen: Limiter bei 4x
+    Ueberabtastung (192 kHz, echte Zwischenwerte) mit gesenkter Grenze, neu AAC-kodieren, Video per copy.
+    Technik-Pruefung 23.09.: x1 mit house2 -> -0,63 dBTP im MP4 (Roh-WAV +0,74, normierte WAV -2,46) und trotzdem Exit 0."""
+    I_, tp = lautheit(out)
+    verlauf = [dict(lufs=I_, true_peak=tp, grenze_db=None)]
+    grenze = -2.5
+    for n in range(versuche):
+        if tp is not None and tp <= TOR['tp_max'] - 0.1:
+            break
+        grenze = grenze - ((tp if tp is not None else 0.0) - (TOR['tp_max'] - 0.5))
+        lin = max(0.0625, 10 ** (grenze / 20))
+        mix2 = os.path.join(tmp, f'musik_tp{n}.wav')
+        _run([FF, '-y', '-v', 'error', *_thr(), '-i', mix, '-af',
+              f'aresample=192000,alimiter=limit={lin:.5f}:attack=1:release=60:level=false,aresample=48000',
+              '-ar', '48000', '-ac', '2', mix2])
+        tmp_out = os.path.join(tmp, f'tp{n}.mp4')
+        _run([FF, '-y', '-v', 'error', *_thr(), '-i', out, *_thr(), '-i', mix2, '-map', '0:v', '-map', '1:a', '-c:v', 'copy',
+              *_thr(), '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2', '-t', f'{D:.4f}', '-movflags', '+faststart',
+              tmp_out])
+        shutil.move(tmp_out, out)
+        I_, tp = lautheit(out)
+        verlauf.append(dict(lufs=I_, true_peak=tp, grenze_db=_r(grenze, 2)))
+    return verlauf
+
+
 def render(P_, out, text=None, arbeitsordner=None, crf=23, preset='medium'):
     """Rendert den Plan. text = dict(titel1, titel2, preis, hook) oder None (nur Bild + Musik).
-    Rueckgabe: Pruefung (gemessen am Ergebnis)."""
+    Rueckgabe: Pruefung (gemessen am Ergebnis, mit ok/verstoesse — das Tor wertet main() aus)."""
     t00 = time.time()
     tmp = tempfile.mkdtemp(prefix='schnitt_', dir=arbeitsordner or os.path.dirname(os.path.abspath(out)))
     try:
-        quelle = P_['quelle']; st = P_['stuecke']; N = P_['frames']; D = N / FPS
+        quelle = P_['quelle']; st = P_['stuecke']; N = P_['frames']
+        fps = int(P_.get('fps') or FPS); D = N / fps
         modus = P_['modus']
-        # ---- Ton: Musik ab eingerastetem Einstieg, 48 kHz Stereo, kurze Kanten (kein Fade auf Stille), zweistufig -14 LUFS
         R = P_['musik']
-        roh = os.path.join(tmp, 'musik.wav')
-        _run([FF, '-y', '-v', 'error', '-ss', f"{R['einstieg']:.4f}", '-i', R['pfad'], '-t', f'{D:.4f}', '-vn',
-              '-af', f'aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=0.02,afade=t=out:st={max(0, D - 0.15):.3f}:d=0.15,apad',
-              '-t', f'{D:.4f}', '-ar', '48000', '-ac', '2', roh])
-        # Ziel-TP -2.5 statt -1.5: die AAC-Kodierung hebt den True Peak um ~0,5-0,6 dB (GEMESSEN 23.09., hype2:
-        # Ziel -1.5 -> -1.33 dBTP im MP4, Ziel -2.0 -> -1.31, Ziel -2.5 -> -1.93). Integrierte Lautheit bleibt -14.
-        e = subprocess.run([FF, '-hide_banner', '-nostats', '-i', roh, '-af', 'loudnorm=I=-14:TP=-2.5:LRA=11:print_format=json',
-                            '-f', 'null', '-'], capture_output=True, text=True).stderr
-        m = json.loads(e[e.rindex('{'):e.rindex('}') + 1])
-        ln = (f"loudnorm=I=-14:TP=-2.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
-              f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
-        mix = os.path.join(tmp, 'musik_n.wav')
-        _run([FF, '-y', '-v', 'error', '-i', roh, '-af', f'{ln},aresample=48000', '-ar', '48000', '-ac', '2', mix])
+        mix = _ton_normiert(R, D, tmp)
         # ---- Text-Ebenen
         ebenen = None
         if text:
@@ -1798,64 +1933,80 @@ def render(P_, out, text=None, arbeitsordner=None, crf=23, preset='medium'):
                                  text.get('hook', ''), P_.get('zone', 'organisch'))
             if not ebenen['zone_ok']:
                 raise RuntimeError('Text ausserhalb der sicheren Zone: ' + '; '.join(ebenen['zone_fehler']))
-        # ---- Videograph: je Stueck eigener Eingang mit -ss (framegenau), Geometrie, doppelter Trim, fps=30
-        args = [FF, '-y', '-v', 'error', '-threads', THREADS, '-filter_complex_threads', THREADS]
+        # ---- Videograph: je Stueck eigener Eingang mit -ss (framegenau), Geometrie, doppelter Trim, fps
+        #      -threads je Eingang und vor der Ausgabe (Code-Pruefung 23.09.: vorher nur Eingang 0, Encoder auf «auto»)
+        args = [FF, '-y', '-v', 'error', '-filter_complex_threads', THREADS]
         for s in st:
-            args += ['-ss', f"{s['q_start']:.4f}", '-t', f"{s['q_dauer'] + 0.6:.4f}", '-i', quelle]
-        k_mix = len(st); args += ['-i', mix]
+            args += [*_thr(), '-ss', f"{s['q_start']:.4f}", '-t', f"{s['q_dauer'] + 0.6:.4f}", '-i', quelle]
+        k_mix = len(st); args += [*_thr(), '-i', mix]
         k_txt = {}
+        namen = ('kopf', 'hook', 'info', 'infocta', 'cta')
         if ebenen:
-            for j, name in enumerate(('kopf', 'hook', 'info', 'cta')):
+            for j, name in enumerate(namen):
                 k_txt[name] = len(st) + 1 + j; args += ['-i', ebenen['pfade'][name]]
+        band = P_.get('band') or {}
+        mitte = (band['y'] + band['h'] / 2) if band else 820
         fc = []
         for k, s in enumerate(st):
             n = s['frames']; x, y, ww, hh = s['fenster']
             pts = 'setpts=PTS-STARTPTS' if s['tempo'] == 1.0 else f"setpts=(PTS-STARTPTS)/{s['tempo']}"
             # tpad: letzte Bilder klonen, falls das Stueck am Quellende liegt — sonst fehlt 1 Bild und jeder spaetere
             # Schnitt rutscht (Labor-Falle «overlay verliert je Stueck ein Bild», hier am Quellende)
-            vor = (f"[{k}:v]{pts},fps=30,tpad=stop_mode=clone:stop=8,trim=start_frame=0:end_frame={n + 3},"
+            vor = (f"[{k}:v]{pts},fps={fps},tpad=stop_mode=clone:stop=8,trim=start_frame=0:end_frame={n + 3},"
                    f"setpts=PTS-STARTPTS,crop={ww}:{hh}:{x}:{y}")
             ze = _zoom_expr(s['zoom'], n)
-            zoom = (f",scale=2160:3840:flags=bicubic,zoompan=z='{ze}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
-                    f":s=1080x1920:fps=30") if ze else ''
             if modus == 'fill':
-                geo = vor + (zoom if ze else ',scale=1080:1920:flags=lanczos')
-                fc.append(f"{geo},setsar=1,fps=30,trim=start_frame=0:end_frame={n},setpts=PTS-STARTPTS[s{k}]")
+                zoom = (f",scale=2160:3840:flags=bicubic,zoompan=z='{ze}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
+                        f":s=1080x1920:fps={fps}") if ze else ',scale=1080:1920:flags=lanczos'
+                fc.append(f"{vor}{zoom},setsar=1,fps={fps},trim=start_frame=0:end_frame={n},setpts=PTS-STARTPTS[s{k}]")
             else:
-                # Band: Fenster in voller Breite, mittig auf die sichtbare Zone (y 200-1440, Mitte 820); Grund = dasselbe
-                # Fenster weichgezeichnet (so wiederholt der Grund keinen Text, den das Fenster gemieden hat)
+                # Band: Fenster in voller Breite, senkrecht wie im Plan (band.y: wenig Produkt unter Text/Oberflaeche);
+                # Grund = dasselbe Fenster weichgezeichnet (so wiederholt der Grund keinen Text, den das Fenster mied).
+                # Zoom NUR auf dem Fenster, die Bandkante steht (Bildjury 23.09.: Drift auf dem ganzen Komposit liess
+                # die Bandunterkante 1359 -> 1391 px kriechen und am Schnitt zurueckspringen)
                 fw = 1080; fh = int(round(1080 * hh / ww / 2)) * 2
                 if fh > 1920:
                     fh = 1920; fw = int(round(1920 * ww / hh / 2)) * 2
-                fy = int(min(max(0, round(820 - fh / 2)), 1920 - fh))
+                fy = int(min(max(0, round(mitte - fh / 2)), 1920 - fh))
+                fz = (f"scale={2 * fw}:{2 * fh}:flags=bicubic,zoompan=z='{ze}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
+                      f":s={fw}x{fh}:fps={fps}") if ze else f"scale={fw}:{fh}:flags=lanczos"
                 fc.append(f"{vor},split[b{k}][f{k}];[b{k}]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,"
-                          f"boxblur=30:3,eq=brightness=-0.08[bb{k}];[f{k}]scale={fw}:{fh}:flags=lanczos[ff{k}];"
-                          f"[bb{k}][ff{k}]overlay=(W-w)/2:{fy}{zoom},setsar=1,fps=30,"
+                          f"boxblur=30:3,eq=brightness=-0.08[bb{k}];[f{k}]{fz},setpts=PTS-STARTPTS[ff{k}];"
+                          f"[bb{k}][ff{k}]overlay=(W-w)/2:{fy},setsar=1,fps={fps},"
                           f"trim=start_frame=0:end_frame={n},setpts=PTS-STARTPTS[s{k}]")
-        fc.append(''.join(f'[s{k}]' for k in range(len(st))) + f'concat=n={len(st)}:v=1:a=0,fps=30[v0]')
+        fc.append(''.join(f'[s{k}]' for k in range(len(st))) + f'concat=n={len(st)}:v=1:a=0,fps={fps}[v0]')
         last = 'v0'
-        if P_['loop'].get('art') == 'ueberblendung' and N > 30:
-            fc.append(f"[v0]split[va][vb];[vb]trim=end_frame=1,loop=loop=11:size=1:start=0,setpts=N/30/TB,fps=30[kopfbild];"
-                      f"[va][kopfbild]xfade=transition=fade:duration=0.4:offset={(N - 12) / FPS:.4f},fps=30[vl]")
+        nb_ = int(round(0.4 * fps))
+        if P_['loop'].get('art') == 'ueberblendung' and N > fps:
+            fc.append(f"[v0]split[va][vb];[vb]trim=end_frame=1,loop=loop={nb_ - 1}:size=1:start=0,setpts=N/{fps}/TB,fps={fps}[kopfbild];"
+                      f"[va][kopfbild]xfade=transition=fade:duration=0.4:offset={(N - nb_) / fps:.4f},fps={fps}[vl]")
             last = 'vl'
         if ebenen:
             T_ = P_['text']
-            zeiten = dict(kopf=(0, D + 1), hook=tuple(T_['hook']), info=tuple(T_['info']), cta=tuple(T_['cta']))
-            for j, name in enumerate(('kopf', 'hook', 'info', 'cta')):
+            info_name = 'infocta' if T_.get('info_variante') == 'cta' else 'info'
+            zeiten = {'kopf': (0, D + 1), 'hook': tuple(T_['hook']), info_name: tuple(T_['info']), 'cta': tuple(T_['cta'])}
+            for j, name in enumerate(namen):
+                if name not in zeiten:
+                    continue
                 a, b = zeiten[name]
                 if (name == 'hook' and not text.get('hook')) or b - a < 0.2:
                     continue
-                en = f":enable='between(t\\,{a - 0.5 / FPS:.4f}\\,{b - 0.5 / FPS:.4f})'"
+                en = f":enable='between(t\\,{a - 0.5 / fps:.4f}\\,{b - 0.5 / fps:.4f})'"
                 fc.append(f"[{last}][{k_txt[name]}:v]overlay=0:0{en}[t{j}]"); last = f't{j}'
         fc.append(f'[{last}]format=yuv420p[v]')
         args += ['-filter_complex', ';'.join(fc), '-map', '[v]', '-map', f'{k_mix}:a', '-frames:v', str(N), '-t', f'{D:.4f}',
-                 '-c:v', 'libx264', '-preset', preset, '-crf', str(crf), '-pix_fmt', 'yuv420p', '-r', '30',
+                 *_thr(), '-c:v', 'libx264', '-preset', preset, '-crf', str(crf), '-pix_fmt', 'yuv420p', '-r', str(fps),
                  '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2', '-movflags', '+faststart', out]
         t0 = time.time(); _run(args); t_render = time.time() - t0
+        tp_verlauf = _tp_nachregeln(out, mix, D, tmp)
         pr = pruefen(out, P_)
+        pr['ton_nachregelung'] = tp_verlauf
         pr['zeit_s'] = dict(render=_r(t_render, 1), gesamt=_r(time.time() - t00, 1))
         if ebenen:
-            pr['text'] = dict(zone=ebenen['zone'], zone_ok=ebenen['zone_ok'], zeichen=ebenen['zeichen'], textboxen=ebenen['textboxen'])
+            pr['text'] = dict(zone=ebenen['zone'], zone_ok=ebenen['zone_ok'], zeichen=ebenen['zeichen'],
+                              textboxen=ebenen['textboxen'], info_variante=P_['text'].get('info_variante', 'normal'))
+            if not ebenen['zone_ok']:
+                pr['verstoesse'].append('Text ausserhalb der sicheren Zone'); pr['ok'] = False
         return pr
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
@@ -1872,51 +2023,88 @@ def lautheit(p):
 
 
 def schnitt_versatz(p, grenzen, y0=500, y1=1150):
-    """Misst im Ergebnis, wo der Bildsprung je Soll-Grenze liegt (Frames; 0 = exakt). Region zwischen Hook und Infofeld."""
+    """Misst im Ergebnis, wo der Bildsprung je Soll-Grenze liegt (Frames; 0 = exakt) und wie STARK er ist.
+    staerke = Bildwechsel am Schnitt / Median der Bildwechsel +-15 Bilder (Schnitte ausgenommen). GEMESSEN 23.09.:
+    sichtbare Schnitte der 5 Proben 3,1-290, der unsichtbare Scheinschnitt p1 Bild 271 1,9 (scdet 3,3) -> Schwelle 2,5.
+    Technik-Pruefung 23.09.: argmax im +-3-Fenster liefert IMMER einen Versatz, auch fuer einen unsichtbaren Schnitt."""
     i = info(p)
-    raw = _run([FF, '-v', 'error', '-threads', THREADS, '-i', p, '-an', '-vf',
+    raw = _run([FF, '-v', 'error', *_thr(), '-i', p, '-an', '-vf',
                 f'crop=1080:{y1 - y0}:0:{y0},scale=96:{int(96 * (y1 - y0) / 1080)}:flags=area,format=gray',
                 '-f', 'rawvideo', '-'], text=False).stdout
     hh = int(96 * (y1 - y0) / 1080)
     g = np.frombuffer(raw, np.uint8)[: (len(raw) // (96 * hh)) * 96 * hh].reshape(-1, hh, 96).astype(np.float32)
-    d = np.zeros(len(g)); d[1:] = np.abs(g[1:] - g[:-1]).mean(axis=(1, 2))
-    out = []
+    d = np.zeros(len(g))
+    if len(g) > 1:
+        d[1:] = np.abs(g[1:] - g[:-1]).mean(axis=(1, 2))
+    maske = np.ones(len(d), bool)
+    if len(maske):
+        maske[0] = False
+    for b in grenzen:
+        maske[max(0, b - 1):b + 2] = False
+    innen = d[maske] if maske.any() else d[1:]
+    out, staerke = [], []
     for b in grenzen:
         lo, hi = max(1, b - 3), min(len(d), b + 4)
         if lo >= hi:
-            out.append(None); continue
+            out.append(None); staerke.append(None); continue
         out.append(int(np.argmax(d[lo:hi])) + lo - b)
+        pk = float(d[max(1, b - 1):min(len(d), b + 2)].max())
+        idx = [j for j in range(max(1, b - 15), min(len(d), b + 16)) if maske[j]]
+        loc = float(np.median(d[idx])) if idx else (float(np.median(innen)) if len(innen) else 0.0)
+        staerke.append(_r(pk / max(loc, 0.3), 1))
     naht = float(np.abs(g[-1] - g[0]).mean()) if len(g) > 1 else None
     # Referenz fuer die Naht: Bildwechsel UM die Naht (letzte 10 Bilder des Endes, erste 10 des Hooks, Schnittbilder
     # +-1 ausgenommen), 90. Perzentil. Global taugt nicht: blinkende LEDs machen auch benachbarte Quellbilder
     # verschieden (GEMESSEN p4: Naht 16,2 bei Quell-Nachbarn 15,9 = in Ordnung), waehrend Tempo-Stuecke und Handkamera
     # das globale p95 so heben, dass ein echter Zoom-Sprung durchginge (p3r: Naht 23,5 < global p95 24,8).
-    maske = np.ones(len(d), bool); maske[0] = False
-    for b in grenzen:
-        maske[max(0, b - 1):b + 2] = False
-    innen = d[maske] if maske.any() else d[1:]
     idx = [j for j in list(range(1, min(11, len(d)))) + list(range(max(1, len(d) - 10), len(d))) if maske[j]]
     lokal = d[idx] if idx else innen
-    return dict(frames=len(g), versatz=out, naht_mad=_r(naht, 2) if naht is not None else None,
+    return dict(frames=len(g), versatz=out, staerke=staerke, naht_mad=_r(naht, 2) if naht is not None else None,
                 bildwechsel_median=_r(float(np.median(innen)), 2) if len(innen) else None,
                 naht_referenz=_r(float(np.percentile(lokal, 90)), 2) if len(lokal) else None, dauer=_r(i['dauer'], 3))
 
 
 def pruefen(out, P_):
+    """Messung am fertigen Reel + Tor. ok=False, wenn eine Pflichtpruefung scheitert (main(): Datei weg, Exit 4).
+    Technik-/Code-Pruefung 23.09.: vorher mass pruefen() nur und main() meldete immer ok — ein abgeschnittenes 7,8-s-Reel
+    ohne CTA (frames 234/345, Versatz None) und ein Reel mit -0,63 dBTP gingen mit Exit 0 durch."""
     i = info(out)
     e = subprocess.run([FF, '-hide_banner', '-i', out], capture_output=True, text=True).stderr
     pix = re.search(r'Video: (\w+).*?, (\w+)\(', e)
     I_, tp = lautheit(out)
     sv = schnitt_versatz(out, P_['schnitt_frames'])
     ok_v = [v for v in sv['versatz'] if v is not None]
-    return dict(w=i['w'], h=i['h'], fps=_r(i['fps'], 3), dauer=_r(i['dauer'], 3), frames=sv['frames'], frames_soll=P_['frames'],
-                codec=pix[1] if pix else None, pix_fmt=pix[2] if pix else None, audio_hz=i['ar'], audio_kanaele=i['kanaele'],
-                lufs=I_, true_peak=tp, schnitt_versatz_frames=sv['versatz'],
-                schnitte_im_toleranzband=sum(1 for v in ok_v if abs(v) <= 1), schnitte=len(sv['versatz']),
-                loop_naht_mad=sv['naht_mad'], bildwechsel_median_mad=sv['bildwechsel_median'],
-                naht_referenz_mad=sv['naht_referenz'],
-                loop_naht_ok=(sv['naht_mad'] is not None and sv['naht_referenz'] is not None and
-                              sv['naht_mad'] <= max(1.3 * sv['naht_referenz'], 4.0)))
+    fps_soll = int(P_.get('fps') or FPS)
+    pr = dict(w=i['w'], h=i['h'], fps=_r(i['fps'], 3), fps_soll=fps_soll, dauer=_r(i['dauer'], 3), frames=sv['frames'],
+              frames_soll=P_['frames'], codec=pix[1] if pix else None, pix_fmt=pix[2] if pix else None,
+              audio_hz=i['ar'], audio_kanaele=i['kanaele'], lufs=I_, true_peak=tp,
+              schnitt_versatz_frames=sv['versatz'], schnitt_staerke=sv['staerke'],
+              unsichtbare_schnitte=[k for k, s_ in enumerate(sv['staerke']) if s_ is not None and s_ < TOR['sicht_min']],
+              schnitte_im_toleranzband=sum(1 for v in ok_v if abs(v) <= TOR['versatz_max']), schnitte=len(sv['versatz']),
+              loop_naht_mad=sv['naht_mad'], bildwechsel_median_mad=sv['bildwechsel_median'],
+              naht_referenz_mad=sv['naht_referenz'],
+              loop_naht_ok=(sv['naht_mad'] is not None and sv['naht_referenz'] is not None and
+                            sv['naht_mad'] <= max(1.3 * sv['naht_referenz'], 4.0)))
+    ver = []
+    if (pr['w'], pr['h']) != (W, H) or abs(pr['fps'] - fps_soll) > 0.05:
+        ver.append(f"Format {pr['w']}x{pr['h']} {pr['fps']} fps (Soll {W}x{H} {fps_soll})")
+    if pr['codec'] != 'h264' or pr['pix_fmt'] != 'yuv420p' or pr['audio_hz'] != 48000 or pr['audio_kanaele'] != 2:
+        ver.append(f"Codec {pr['codec']}/{pr['pix_fmt']}, Ton {pr['audio_hz']} Hz x {pr['audio_kanaele']}")
+    if pr['frames'] != pr['frames_soll']:
+        ver.append(f"Bildzahl {pr['frames']} statt {pr['frames_soll']}")
+    if any(v is None or abs(v) > TOR['versatz_max'] for v in sv['versatz']):
+        ver.append(f"Schnittversatz {sv['versatz']} (Soll -1..1)")
+    if I_ is None or abs(I_ - TOR['lufs']) > TOR['lufs_tol']:
+        ver.append(f'Lautheit {I_} LUFS (Soll -14 +-1)')
+    if tp is None or tp > TOR['tp_max']:
+        ver.append(f'True Peak {tp} dBTP (Soll <= {TOR["tp_max"]})')
+    if not pr['loop_naht_ok']:
+        ver.append(f"Loop-Naht {sv['naht_mad']} > 1,3 x Referenz {sv['naht_referenz']}")
+    if sv['staerke'] and sv['staerke'][0] is not None and sv['staerke'][0] < TOR['sicht_min']:
+        ver.append(f"erster Schnitt unsichtbar (Staerke {sv['staerke'][0]} < {TOR['sicht_min']}) — Hook-Regel <= 1,3 s verletzt")
+    pr['verstoesse'] = ver
+    pr['ok'] = not ver
+    return pr
 
 
 # ================================================================================================ KONTAKTBOGEN
@@ -1961,11 +2149,33 @@ def _drucke(d):
     print(json.dumps(d, ensure_ascii=False, indent=1, default=lambda o: o.tolist() if hasattr(o, 'tolist') else str(o)))
 
 
+def tessdata_holen(ordner):
+    """chi_sim.traineddata (tessdata_fast, 2'469'156 Byte) nach ORDNER laden — einmalig, fuer SCHNITT_TESSDATA.
+    github.com/…/raw liefert ueber den Proxy 378 Byte Fehler-JSON (Labor-Falle) -> raw.githubusercontent.com + Groessen-
+    pruefung. Nie ins Repo (2,4 MB Blob in einem oeffentlichen Repo)."""
+    os.makedirs(ordner, exist_ok=True)
+    ziel = os.path.join(ordner, 'chi_sim.traineddata')
+    if os.path.isfile(ziel) and os.path.getsize(ziel) > 1_000_000:
+        return ziel
+    tmp = ziel + '.teil'
+    r = subprocess.run(['curl', '-sS', '-L', '--fail', '-o', tmp, TESS_URL], capture_output=True, text=True)
+    if r.returncode or not os.path.isfile(tmp) or os.path.getsize(tmp) < 1_000_000:
+        groesse = os.path.getsize(tmp) if os.path.isfile(tmp) else 0
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        raise RuntimeError(f'chi_sim nicht geladen ({groesse} Byte): {r.stderr.strip()[:200]}')
+    os.replace(tmp, ziel)
+    return ziel
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description='Schnitt-Motor fuer LuxeStyle-Reels (Analyse -> Plan -> Render)')
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument('--analyse', metavar='QUELLE'); g.add_argument('--plan', metavar='QUELLE')
     g.add_argument('--render', metavar='QUELLE'); g.add_argument('--kontaktbogen', metavar='VIDEO')
+    g.add_argument('--tessdata-holen', metavar='ORDNER', help='chi_sim.traineddata nach ORDNER laden (fuer SCHNITT_TESSDATA)')
     ap.add_argument('--musik'); ap.add_argument('--out'); ap.add_argument('--ziel', type=float, default=12.0)
     ap.add_argument('--einstieg', type=float); ap.add_argument('--zone', default='organisch', choices=list(ZONEN))
     ap.add_argument('--titel', default=''); ap.add_argument('--titel2', default=''); ap.add_argument('--preis', default='')
@@ -1974,14 +2184,21 @@ def main(argv=None):
     ap.add_argument('--kein-cache', action='store_true'); ap.add_argument('--crf', type=int, default=23)
     ap.add_argument('--hook-ab', type=float, help='Hook-Fenster ab dieser Quellsekunde (Sichtpruefung)')
     ap.add_argument('--sperren', default='', help='Quellsekunden nach Sichtpruefung sperren, z. B. "6.7-9.0,20.1-21.3"')
+    ap.add_argument('--arbeitsordner', help='Ordner fuer Analyse-Cache, Beat-Cache, Render-Temp und Log '
+                                            '(Standard: neben Quelle bzw. Ausgabe); nach dem Posten loeschen')
     a = ap.parse_args(argv)
     try:
+        if a.tessdata_holen:
+            print(tessdata_holen(a.tessdata_holen)); return 0
         if a.kontaktbogen:
             print(kontaktbogen(a.kontaktbogen, a.bogen_out)); return 0
         quelle = a.analyse or a.plan or a.render
         if not os.path.isfile(quelle):
             raise FileNotFoundError(quelle)
-        A = analyse(quelle, cache=not a.kein_cache)
+        ao = a.arbeitsordner
+        if ao:
+            os.makedirs(ao, exist_ok=True)
+        A = analyse(quelle, cache=not a.kein_cache, cache_pfad=_cache_pfad(quelle, ao) if ao else None)
         if a.analyse:
             kurz = {k: v for k, v in A.items() if k != 'profil'}
             _drucke(kurz)
@@ -1991,11 +2208,20 @@ def main(argv=None):
         if a.preis and not re.fullmatch(r'CHF \d+\.\d\d', a.preis.strip()):
             raise ValueError('--preis im Format «CHF 19.90» (live aus Shopify, nie erfinden)')
         hook = a.hook.strip()
+        # Bild 0 = Marke + Hook <= 40 Zeichen ist Pflicht (Code-Pruefung 23.09.: die Motor-Hooks sind bis 36 Zeichen
+        # lang, Bild 0 haette 45 Zeichen); > 24 Zeichen nur Hinweis (Lesezeit steigt, steht im Entscheidungslog)
+        if len('LUXESTYLE') + len(hook) > 40:
+            raise ValueError(f'Hook {len(hook)} Zeichen: Bild 0 haette {len("LUXESTYLE") + len(hook)} > 40 Zeichen — '
+                             'Hook kuerzen (<= 24 Zeichen: Produktwort + Nutzen)')
         if len(hook) > 24:
             print(f'Hinweis: Hook {len(hook)} Zeichen > 24 (Regel: <= 24 Zeichen / 5 Woerter)', file=sys.stderr)
         sp = [tuple(float(v) for v in x.split('-')) for x in a.sperren.split(',') if x.strip()]
         P_ = plan(A, a.musik, ziel_s=a.ziel, einstieg=a.einstieg, zone=a.zone, hook_text=hook or None, sperren=sp,
-                  hook_ab=a.hook_ab)
+                  hook_ab=a.hook_ab, cache_ordner=ao)
+        if not A['ocr'].get('chi_sim'):
+            P_['entscheidungen'].append(dict(schritt='fremdtext', entscheidung='CJK-OCR aus', grund=(
+                'kein chi_sim (SCHNITT_TESSDATA / --tessdata-holen): chinesischer Text wird nur ueber die Kanten-Heuristik '
+                'erkannt — Sichtpruefung am Kontaktbogen umso wichtiger')))
         if a.plan or a.dry:
             if a.log:
                 json.dump(dict(analyse={k: v for k, v in A.items() if k != 'profil'}, plan=P_), open(a.log, 'w'), ensure_ascii=False, indent=1)
@@ -2003,11 +2229,22 @@ def main(argv=None):
         if not a.out:
             raise ValueError('--out fehlt')
         text = dict(titel1=a.titel, titel2=a.titel2, preis=a.preis, hook=hook) if (a.titel or a.preis or hook) else None
-        pr = render(P_, a.out, text=text, crf=a.crf)
-        logp = a.log or a.out + '.schnitt.json'
+        pr = render(P_, a.out, text=text, crf=a.crf, arbeitsordner=ao)
+        pr['cjk_ocr'] = bool(A['ocr'].get('chi_sim'))
+        logp = a.log or (os.path.join(ao, os.path.basename(a.out) + '.schnitt.json') if ao else a.out + '.schnitt.json')
         json.dump(dict(analyse={k: v for k, v in A.items() if k != 'profil'}, plan=P_, pruefung=pr), open(logp, 'w'),
                   ensure_ascii=False, indent=1)
-        erg = dict(ok=True, out=a.out, dauer=P_['dauer'], frames=P_['frames'], modus=P_['modus'], log=logp, pruefung=pr)
+        if not pr['ok']:
+            # Tor: ein Reel, das die eigene Messung nicht besteht, wird nie ausgegeben (Datei weg, Log bleibt)
+            try:
+                os.remove(a.out)
+            except OSError:
+                pass
+            print('PRUEFUNG: ' + ' | '.join(pr['verstoesse']))
+            print(json.dumps(dict(ok=False, out=None, log=logp, verstoesse=pr['verstoesse']), ensure_ascii=False))
+            return 4
+        erg = dict(ok=True, out=a.out, dauer=P_['dauer'], frames=P_['frames'], fps=P_['fps'], modus=P_['modus'], log=logp,
+                   pruefung=pr)
         print(json.dumps(erg, ensure_ascii=False) if a.json else json.dumps(erg, ensure_ascii=False, indent=1))
         return 0
     except Ungeeignet as e:
