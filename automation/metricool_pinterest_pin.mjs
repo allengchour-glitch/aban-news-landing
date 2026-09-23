@@ -32,6 +32,7 @@
  */
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import { execFileSync } from 'node:child_process';   // ocrJetzt() — ohne diesen Import lief der OCR-Aufruf still in den catch (23.09. gemessen)
 import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 
 const NUR_LISTE = parseInt(process.env.NUR_LISTE || '0', 10);
