@@ -90,7 +90,7 @@ Zielkollektionen: `halloween`, `kostueme-ch-lager`, `ft-damenkostuem`, `ft-herre
 
 | Keyword (QUELLE Google-Suggest 23.09.) | Absicht | Suggest-Rang (Modifikator) | Landeseite (Handle, aktive Produkte GEMESSEN) | Konkurrenzlage (QUELLE search.ch) |
 |---|---|---|---|---|
-| halloween deko kaufen | transaktional | 1 (kaufen) | `halloween` (207) / `halloween-2026` (207) | Lücke: Nischen-Shops (decorado.ch, partytime-shop.ch) + Rauschen |
+| halloween deko kaufen | transaktional | 1 (kaufen) | `halloween` (207) — `halloween-2026` (gleiche Regel) seit 23.09. 23:35 abgemeldet + 301 | Lücke: Nischen-Shops (decorado.ch, partytime-shop.ch) + Rauschen |
 | halloween deko schweiz | transaktional | 1 (schweiz) | `halloween` (207) | Lücke: Nischen-Shops (decorado.ch, partytime-shop.ch) + Rauschen |
 | halloween deko günstig | transaktional | 1 (günstig) | `halloween` (207) | Lücke: Nischen-Shops (decorado.ch, partytime-shop.ch) + Rauschen |
 | halloween deko ideen | kommerziell | 2 (az:i) | `halloween` (207) (Ratgeber-Thema) | Lücke: Nischen-Shops (decorado.ch, partytime-shop.ch) + Rauschen |

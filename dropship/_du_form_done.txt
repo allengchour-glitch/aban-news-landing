@@ -24850,3 +24850,13 @@ wandmontierte-katzen-kletterplattform-aus-mass-6ac4ea	2026-09-23	teilweise
 wandmontierte-katzenplattform-aus-massivholz-629000	2026-09-23	du
 wandmontierte-kuchenablage-mit-12-schalen-aus-611200	2026-09-23	um-ohne-wirkung
 wandmontierter-3-fach-seifenspender-618300	2026-09-23	du
+wandmontierter-badheizlufter-845568	2026-09-23	du
+wandmontierter-dokumentenhalter-aus-kunststoff-612400	2026-09-23	du
+wandmontierter-getreidespender-easy-press-9a15aa	2026-09-23	du
+wandmontierter-handtuchhalter-aus-holz-605200	2026-09-23	du
+wandmontierter-handtuchhalter-aus-teakholz-106754	2026-09-23	du
+wandmontierter-katzenbaum-aus-massivholz-618700	2026-09-23	nicht-aktiv
+wandmontierter-wc-papierhalter-aus-aluminium-619900	2026-09-23	du
+wandmontiertes-abtropfgestell-aus-edelstahl-851456	2026-09-23	du
+wandmontiertes-aufbewahrungsregal-633400	2026-09-23	du
+wandmontiertes-badezimmerregal-617500	2026-09-23	du
