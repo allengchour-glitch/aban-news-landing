@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:57 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 19:02 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **19'825**
-- Optionen mit englischen Werten (Kandidaten): 2'956
-- Optionen übersetzt: **1'577** · Werte übersetzt: **10'230**
+- Produkte gesehen: **21'618**
+- Optionen mit englischen Werten (Kandidaten): 3'145
+- Optionen übersetzt: **1'685** · Werte übersetzt: **10'960**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 10'389
+- Werte mit unbekanntem Wort (unverändert): 11'223
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 44
-- übersprungen «kollision-nach-uebersetzung»: 31
+- übersprungen «kleidungsstueck-im-wert»: 48
+- übersprungen «kollision-nach-uebersetzung»: 32
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -74,6 +74,7 @@
 - `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 - `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
+- `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: Black-US9 → Schwarz-US9; Black → Schwarz; White-US9 → Weiss-US9; White → Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -132,5 +133,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`light` 400, `inner` 325, `color` 284, `degrees` 159, `shell` 151, `core` 131, `surface` 109, `diamond` 107, `powder` 104, `skin` 98, `to` 92, `rain` 88, `three` 87, `high` 81, `bag` 79, `case` 78, `belt` 77, `rope` 70, `no` 69, `petal` 68, `chain` 67, `feet` 62, `dark` 62, `mother` 61, `dual` 60, `size` 59, `half` 58, `of` 57, `net` 57, `electric` 54, `code` 54, `tea` 51, `face` 51, `person` 51, `lens` 50, `line` 49, `four` 49, `bear` 49, `space` 48, `ice` 47, `hat` 47, `little` 47, `for` 46, `about` 46, `clock` 45, `buckle` 44, `cherry` 43, `night` 43, `cloud` 43, `acupuncture` 43, `one` 42, `star` 42, `suit` 42, `mirror` 42, `perforated` 42, `spring` 41, `button` 41, `plush` 40, `carbon` 40, `cat` 40
+`light` 422, `inner` 326, `color` 290, `shell` 159, `degrees` 159, `core` 137, `surface` 119, `diamond` 108, `powder` 107, `skin` 98, `three` 95, `to` 92, `rain` 88, `case` 87, `high` 86, `bag` 85, `french` 84, `belt` 79, `four` 76, `no` 72, `rope` 70, `petal` 68, `chain` 67, `base` 66, `dark` 63, `feet` 62, `size` 62, `mother` 61, `of` 60, `dual` 60, `tea` 58, `half` 58, `net` 57, `buckle` 56, `code` 55, `electric` 54, `plush` 54, `face` 52, `strap` 52, `person` 51, `opp` 51, `lens` 50, `line` 49, `little` 49, `bear` 49, `ice` 48, `space` 48, `hat` 47, `cloud` 46, `sheet` 46, `for` 46, `about` 46, `warped` 46, `milk` 45, `clock` 45, `spring` 44, `tip` 44, `bed` 44, `cherry` 43, `night` 43
 
