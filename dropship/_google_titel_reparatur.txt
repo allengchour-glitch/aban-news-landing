@@ -1,0 +1,9 @@
+# zeit	aktion	produkt	handle	regel	feld	alt	neu	status — google_titel_reparatur.py
+2026-09-23T18:46:13Z	SCHREIB	gid://shopify/Product/15454915592577	menstruationscup-fur-frauen-625600	HYGIENE+POLICY	typ	Aufbewahrung & Organizer	Wellness & Gesundheit	ok
+2026-09-23T18:46:13Z	SCHREIB	gid://shopify/Product/15454915592577	menstruationscup-fur-frauen-625600	HYGIENE+POLICY	kategorie	gid://shopify/TaxonomyCategory/hg-10-16	gid://shopify/TaxonomyCategory/hb-3-8-5	ok
+2026-09-23T18:46:13Z	SCHREIB	gid://shopify/Product/15454915592577	menstruationscup-fur-frauen-625600	HYGIENE+POLICY	tags_dazu		google-policy-flag,google-policy-titel,intimpflege	ok
+2026-09-23T18:46:13Z	SCHREIB	gid://shopify/Product/15454915592577	menstruationscup-fur-frauen-625600	HYGIENE+POLICY	tags_weg	aufbewahrung,haushalt,organizer,wohnen		ok
+2026-09-23T18:47:14Z	SCHREIB	gid://shopify/Product/15512293572993	biden-herrenuhr-ultraflach-mit-kalender-611776	EINZEL	titel	BIDEN Herrenuhr ultraflach mit Kalender	Ultraflache Herrenuhr mit Kalender	ok
+2026-09-23T18:47:14Z	SCHREIB	gid://shopify/Product/15512293572993	biden-herrenuhr-ultraflach-mit-kalender-611776	EINZEL	seo_titel	BIDEN Herrenuhr ultraflach mit Kalender | LuxeStyle CH	Ultraflache Herrenuhr mit Kalender | LuxeStyle CH	ok
+2026-09-23T18:47:14Z	SCHREIB	gid://shopify/Product/15512293572993	biden-herrenuhr-ultraflach-mit-kalender-611776	EINZEL	seo_beschreibung	BIDEN Herrenuhr ultraflach mit Kalender – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.	Ultraflache Herrenuhr mit Kalender – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.	ok
+2026-09-23T18:47:14Z	UEBERSPRUNGEN	gid://shopify/Product/15512293572993	biden-herrenuhr-ultraflach-mit-kalender-611776	EINZEL	beschreibung			text-sperre-belegt
