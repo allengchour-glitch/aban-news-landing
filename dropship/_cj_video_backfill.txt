@@ -396,3 +396,5 @@ gid://shopify/Product/15450851967361	kein-video-beim-lieferanten
 gid://shopify/Product/15450836566401	ok	LED Wasserwellen Projektionsleuchte
 gid://shopify/Product/15524945691009	kein-video-beim-lieferanten
 gid://shopify/Product/15524945592705	kein-video-beim-lieferanten
+gid://shopify/Product/15524943921537	kein-video-beim-lieferanten
+gid://shopify/Product/15524939661697	kein-video-beim-lieferanten

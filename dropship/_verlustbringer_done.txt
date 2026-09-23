@@ -10,3 +10,5 @@ gid://shopify/Product/15448938840449
 gid://shopify/Product/15504187163009
 gid://shopify/Product/15448939823489
 gid://shopify/Product/15449174901121
+gid://shopify/Product/15450303136129	2026-09-23T00:14Z	hand-draft	14.90	25.07	Kinder-Autositz Portabel 3-12 J.
+gid://shopify/Product/15496330150273	2026-09-23T00:14Z	hand-draft	16.90	49.32	Atemschutzmasken-Set mit Filtern
