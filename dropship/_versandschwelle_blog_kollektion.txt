@@ -93,3 +93,9 @@ gid://shopify/Collection/691265438081	kollektion	black-friday
 gid://shopify/Collection/691318849921	kollektion	haustier-hunde
 gid://shopify/Collection/691318882689	kollektion	haustier-katzen
 gid://shopify/Collection/691391136129	kollektion	werkzeug-maschinen
+gid://shopify/Collection/687522283905	kollektion	fur-ihn
+gid://shopify/Collection/687524381057	kollektion	damen-mode
+gid://shopify/Collection/687980052865	kollektion	neu-eingetroffen
+gid://shopify/Collection/688564306305	kollektion	erste-august
+gid://shopify/Collection/688564437377	kollektion	sub-baby-kids
+gid://shopify/Collection/688564470145	kollektion	sub-haustier
