@@ -64,27 +64,16 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Sauberes Publish-Verzeichnis bauen (_site)
-        run: |
-          mkdir -p _site
-          # Die echte Website kopieren; schwere/nicht-öffentliche Verzeichnisse raus
-          # (v. a. video-prototypes wegen >25 MiB-Dateien = Pages-Limit).
-          rsync -a ./ _site/ \
-            --exclude '.git' --exclude '.github' --exclude '_site' \
-            --exclude 'node_modules' \
-            --exclude 'video-prototypes' --exclude 'reels' --exclude 'social' \
-            --exclude 'dropship' --exclude 'ki-schriftsteller' \
-            --exclude 'luxestyle-3d' --exclude 'luxestyle-shop' \
-            --exclude 'mediakit' --exclude 'tools' --exclude 'automation' \
-            --exclude 'linkedin' --exclude 'reports' --exclude 'ki-tools-radar'
-          # functions/ MUSS enthalten sein (Pages Functions = /api/*). Kontrolle:
-          test -d _site/functions && echo "functions/ ok" || (echo "::error::functions/ fehlt"; exit 1)
-          test -f _site/_headers && echo "_headers ok"
-          test -f _site/_redirects && echo "_redirects ok"
-          echo "Dateien im Deploy: $(find _site -type f | wc -l)"
-          echo "Dateien > 24 MiB (müssen 0 sein):"
-          find _site -type f -size +24M -printf '%s  %p\n' | sort -rn | head || true
-
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # ⚠️ Frueher kopierte dieser Schritt das Repo per rsync selbst. Das wich vom Server-Build ab:
+      # ohne inject-engine (Navigation + JSON-LD fehlten), ohne Kit-ZIP-Bau, und server/ + game/
+      # wurden mit veroeffentlicht. Jetzt DERSELBE Build wie auf dem Server (build-pages.sh).
+      - name: Seite bauen wie der Server (build-pages.sh -> _site)
+        env:
+          DOWNLOAD_SALT: ${{ secrets.DOWNLOAD_SALT }}
+        run: bash build-pages.sh
       - name: Pages-Projekt anlegen (idempotent)
         run: npx --yes wrangler@3 pages project create "${{ env.PROJECT }}" --production-branch=main || true
 
