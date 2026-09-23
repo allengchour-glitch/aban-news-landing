@@ -1327,3 +1327,4 @@ gid://shopify/Product/15502558658945	2026-09-23T12:08Z	kein-verlust-live	15.90	1
 gid://shopify/Product/15500403212673	2026-09-23T12:08Z	draft	14.90	20.66	Keramik-Spatel- und Löffelbehälter
 gid://shopify/Product/15448925962625	2026-09-23T12:08Z	draft	15.90	21.65	Chenille Kissenhülle oder Kissen mit Füllung
 gid://shopify/Product/15448929403265	2026-09-23T12:08Z	draft	15.90	21.63	Mini Haarglättungsbürste kabellos
+gid://shopify/Product/15449427018113	2026-09-23T21:47Z	draft	14.90	34.59	Armgrip-Trainingsgerät flexibel einstellbar
