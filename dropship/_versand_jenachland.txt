@@ -6568,3 +6568,8 @@ gid://shopify/Product/15427281813889	ersetzt
 gid://shopify/Product/15427281846657	ersetzt
 gid://shopify/Product/15427281879425	ersetzt
 gid://shopify/Product/15427281912193	ersetzt
+gid://shopify/Product/15427281944961	ersetzt
+gid://shopify/Product/15427281977729	ersetzt
+gid://shopify/Product/15427282010497	ersetzt
+gid://shopify/Product/15427282108801	ersetzt
+gid://shopify/Product/15427282141569	ersetzt
