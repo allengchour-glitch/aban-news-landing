@@ -103,6 +103,12 @@ while true; do
     fi
   fi
 
+  # 23.09.: Nachmessen — «posted-tiktok» heisst nur GEPLANT; der Planer sagt, ob es veroeffentlicht wurde.
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig /tmp/_autopilot_letztes_tiktok_pruefen 7200; then
+    PRUEFEN=1 $NODE automation/metricool_tiktok_post.mjs || echo "$(date -u +%H:%M) TikTok-Pruefung: Fehler gemeldet (siehe reels_seed.csv tiktok-fehler)"
+    touch /tmp/_autopilot_letztes_tiktok_pruefen
+  fi
+
   # TikTok ueber Metricool (22.09.2026): nur wenn ein Token da ist (Env oder /tmp/metricool.env);
   # ein eigenes, nie gepostetes Reel je Tag; Guards im Poster (Lock, Ledger, ACTIVE).
   if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_TIKTOK" "$TIKTOK_ABSTAND"; then

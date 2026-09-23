@@ -351,6 +351,26 @@ dem Planer 200 mit leerer Liste — nicht unterscheidbar, massgeblich ist die Pr
 **Lehren:** (a) «kommt nicht an» ist eine Aussage über den Zeitpunkt der Messung — nach jedem Neustart neu messen.
 (b) Eine ID aus einer Notiz ist keine gemessene ID; die API nennt ihre Marke selbst.
 
+**Nachtrag 23 (23.09. 05:05 UTC) — Der erste TikTok-Post ist live — und «posted-tiktok» hiess bis heute nur «geplant».**
+GEMESSEN: `GET /api/v2/scheduler/posts` (Marke 6227837) zeigt Post 380476730 mit `providers[0].status = PUBLISHED`,
+`publicUrl = https://www.tiktok.com/@luxestyle.ch/video/7688585316826877216` (Projektor P62, geplant 06:37 CH, erschienen).
+Damit ist der Weg TikTok-via-Metricool zum ersten Mal Ende-zu-Ende belegt: Token aus der Umgebung, Marke per API
+gemessen, Normalisierung, Planung mit `tiktokData.autoPublish`, Veröffentlichung.
+Der Befund daneben: der Poster schrieb `posted-tiktok` **nach der Planung**, nicht nach der Veröffentlichung. Wäre
+TikTok den Post verweigert (fehlende Direct-Post-Rechte, falsche Marke, abgelehntes Video), hätte das Ledger «gepostet»
+gesagt und die Ampel «TikTok-Queue 23 Tage alt» — die Ampel mass noch den PC-Poster-Weg (`dropship/tiktok_queue.json`),
+den seit dem 22.09. niemand mehr geht. Dieselbe Klasse wie der halbe Bild-Post (Nachtrag 20): ein Automat, der seinen
+Erfolg nicht nachmisst, meldet Vollzug.
+GETAN: (1) `metricool_tiktok_post.mjs` hat einen Modus `PRUEFEN=1`: liest den Planer (−4 T … +2 T) für jede Zeile
+`metricool:<id>` ohne TikTok-Adresse — PUBLISHED → `metricool:<id> tiktok:<url>`; ERROR/FAIL/REJECT → Status
+`tiktok-fehler` mit Grund; offen → Meldung mit Alter (⚠️ über 2 h). Erster Lauf: 1 veröffentlicht, 0 Fehler.
+(2) `social_autopilot.sh` ruft die Prüfung alle 2 h vor dem TikTok-Block. (3) Ampel `tiktok_queue_alt()` misst jetzt
+das Ledger: Fehler → geplante ohne Bestätigung >2 h → letzter bestätigter Post >2 T; sonst still. Die PC-Queue-Zeile
+ist weg. Autopilot neu gestartet (Skript geändert, während es lief — Rezept: eigener pkill, dann Keepalive).
+**Lehre:** «gepostet» ist erst, was die Plattform bestätigt hat. Ein Poster hat drei Zeitpunkte — geplant, gesendet,
+erschienen — und nur der dritte zählt für die Kadenz «täglich mehrmals überall». Jeder Kanal-Poster braucht die
+Nachmessung im selben Werkzeug, nicht in einer Erinnerung, die ein Mensch liest.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16001,3 +16021,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
 - 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
 - 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
+- 2026-09-19 · 🔁 **Zwei Pfade, ein Wächter — der Doppelstart war meiner.** Nach der Cursor-Reparatur den Nachhol-Lauf von Hand gestartet, **vorher geprüft ob einer läuft** (leer) — und die Prüfung war trotzdem wertlos: der Aufseher startete denselben Wächter **eine… → Journal
+- 2026-09-19 · 🕳️ **Ein Cursor, der «neueste zuerst» sortiert, sperrt genau die Neuzugänge aus.** `cj_verfuegbarkeit.py` (Ghost-Sale-Wächter) meldete seit dem 16.09. → Journal
+- 2026-09-19 · 🔎 **Der Klammer-Trick schützt den grep — nicht die Zeile, die ihn trägt.** Der 08:08-Keepalive endete mit `Aufseher=0`; zwei Prüfungen in EINER Zeile widersprachen sich: `awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/'` → **nichts**, `grep -c "[f]ixer_keepalive"` → **1**. → Journal
+- 2026-09-19 · 📭 **Ein Schweigen kann heissen, dass die Frage nie angekommen ist.** Die CJ-Nachmessung brachte vier saubere Neins (Guthaben `amount 0.0`, `disputeId` null, Dispute-Liste 0, keine Mail neuer als CJs Zusage vom 18.09. → Journal
+- 2026-09-19 · 🇱🇮 **«mach bot besser und seite»: der Puls beweist Leben, nicht Ankunft — und der Shop verspricht ein Land, das nicht bestellen kann.** `_puls.json` war frisch, **zwei Quittungen standen seit 17.09. → Journal

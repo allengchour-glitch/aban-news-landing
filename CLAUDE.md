@@ -501,6 +501,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-23 · 📲 **Erster TikTok-Post via Metricool LIVE (7688585316826877216, Projektor P62) — aber «posted-tiktok» hiess nur «geplant»; Ampel mass die tote PC-Queue.** Jetzt `PRUEFEN=1 metricool_tiktok_post.mjs` (Planer lesen → `tiktok:<url>` oder `tiktok-fehler`), Autopilot prüft alle 2 h, Ampel misst das Ledger. **Gepostet ist erst, was die Plattform bestätigt** → Journal Nachtrag 23
 - 2026-09-23 · 🎵 **Metricool-Token kam mit dem fünften Container-Neustart an (04:18 UTC) — «Umgebungsvariablen erreichen die Session nicht» gilt nur bis zum nächsten Neustart, danach `env | grep -c NAME` messen.** Marke per API gemessen (6227837, TikTok luxestyle.ch; 6394001 war Altnotiz); erster TikTok-Post 380476730 auf 06:37 CH geplant. Groq-Schlüssel steht als Variablen-NAME (leer) → Betreiber → Journal
 - 2026-09-23 · 🚪 **Reel-Poster-Tor las die CJ-pid als Shopify-ID: aktiver Projektor «existiert nicht mehr» (Zeile produkt-nicht-aktiv), UUID-pids ohne Prüfung durchgelassen.** Form-Erkennung: 12–15-stellig = Shopify-ID, sonst SKU-Suche; in beiden Reel-Postern. Futterspender-Reel live (DdnatlxD0nV) → Journal
 - 2026-09-23 · 📸 **Bild-Post 02:08: Facebook ja, Instagram nein (vorübergehender Meta-Abruffehler 9004), Zeile trotzdem «posted» — der wichtigste Kanal verlor den Post still.** IG nachgeholt (DdnNSHEDMja, nach Live-Abgleich); Poster postet jetzt IG zuerst mit Wiederholung, FB nur nach IG-Erfolg, «ig-fehler:N» in post_url → Journal
@@ -548,12 +549,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-09-21 · 🪣 **Acht Wächter, ein Eimer — die Drossel war hausgemacht, und mein erster Fix war falsch.** `menue_links.log`: **15 PAUSE-Zeilen bei 16 Läufen** — der Wächter, der am 15.09. → Journal
 - 2026-09-21 · 🩹 **Der Wächter fragte nach der Werbung, nicht nach der Ware — und die Lücke, die ich reparieren wollte, gibt es nicht.** Zwei Ergebnisse, beide durch Messen statt Vermuten. → Journal
 - 2026-09-20 · 🎯 **Vierzig von vierzig Treffern — und kein einziger war ein Fund.** Die Startseite lieferte dem Hetzner-Agenten am 20.09. → Journal
-- 2026-09-19 · 🔁 **Zwei Pfade, ein Wächter — der Doppelstart war meiner.** Nach der Cursor-Reparatur den Nachhol-Lauf von Hand gestartet, **vorher geprüft ob einer läuft** (leer) — und die Prüfung war trotzdem wertlos: der Aufseher startete denselben Wächter **eine… → Journal
-- 2026-09-19 · 🕳️ **Ein Cursor, der «neueste zuerst» sortiert, sperrt genau die Neuzugänge aus.** `cj_verfuegbarkeit.py` (Ghost-Sale-Wächter) meldete seit dem 16.09. → Journal
-- 2026-09-19 · 🔎 **Der Klammer-Trick schützt den grep — nicht die Zeile, die ihn trägt.** Der 08:08-Keepalive endete mit `Aufseher=0`; zwei Prüfungen in EINER Zeile widersprachen sich: `awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/'` → **nichts**, `grep -c "[f]ixer_keepalive"` → **1**. → Journal
-- 2026-09-19 · 📭 **Ein Schweigen kann heissen, dass die Frage nie angekommen ist.** Die CJ-Nachmessung brachte vier saubere Neins (Guthaben `amount 0.0`, `disputeId` null, Dispute-Liste 0, keine Mail neuer als CJs Zusage vom 18.09. → Journal
-- 2026-09-19 · 🇱🇮 **«mach bot besser und seite»: der Puls beweist Leben, nicht Ankunft — und der Shop verspricht ein Land, das nicht bestellen kann.** `_puls.json` war frisch, **zwei Quittungen standen seit 17.09. → Journal
 
-… Einzeilen vom 14.–18.09.2026 (79) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
+… Einzeilen vom 14.–19.09.2026 (84) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
 Dateiende — CLAUDE.md muss unter ~70 KB bleiben); alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md`
 (Inhaltsverzeichnis oben). Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`.

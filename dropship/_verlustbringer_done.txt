@@ -151,3 +151,96 @@ gid://shopify/Product/15503113322881	2026-09-23T04:14Z	schon-DRAFT	91.90	146.88	
 gid://shopify/Product/15450834403713	2026-09-23T04:14Z	schon-DRAFT	14.90	120.38	Luxuriöses Katzensofa für Sphinx- und kleine Katzen
 gid://shopify/Product/15449468010881	2026-09-23T04:14Z	draft	15.90	70.23	Mini-Wasserfilter für den Notfall
 gid://shopify/Product/15452685402497	2026-09-23T04:15Z	draft	32.90	87.10	Individuell verpacktes Outdoor-Bänkchenkissen, wasserdicht
+gid://shopify/Product/15504090562945	2026-09-23T04:57Z	schon-DRAFT	24.90	79.06	Festlicher Sofaüberwurf im New Chinese Style
+gid://shopify/Product/15496379335041	2026-09-23T04:57Z	schon-DRAFT	33.90	87.14	Apfel-Vase im Cartoon-Stil
+gid://shopify/Product/15452289991041	2026-09-23T04:57Z	schon-DRAFT	26.90	79.86	Sofa-Überwurf "Abstrakte Kunst" (Baumwoll-Mix)
+gid://shopify/Product/15449115689345	2026-09-23T04:57Z	schon-DRAFT	68.90	121.23	Gepäck im Biker-Stil, personalisierbar
+gid://shopify/Product/15451640627585	2026-09-23T04:57Z	schon-DRAFT	14.90	67.06	Vielseitiger Plüsch-Sofabezug in Unifarben
+gid://shopify/Product/15504089481601	2026-09-23T04:57Z	schon-DRAFT	16.90	68.40	Chenille-Sofabezug im chinesischen Stil
+gid://shopify/Product/15452599091585	2026-09-23T04:57Z	schon-DRAFT	31.90	83.26	3-in-1 Magnet-Ladestation
+gid://shopify/Product/15451640562049	2026-09-23T04:57Z	schon-DRAFT	34.90	86.04	Gusseisen-Backform, rechteckig, emailliert
+gid://shopify/Product/15454091411841	2026-09-23T04:57Z	schon-DRAFT	27.90	78.98	Doppelte Memory-Foam-Beinpolsterung, Anti-Rutsch, Halbkreis
+gid://shopify/Product/15501847101825	2026-09-23T04:57Z	schon-DRAFT	17.90	68.95	Saisoniersatz
+gid://shopify/Product/15502599815553	2026-09-23T04:57Z	schon-DRAFT	22.90	73.84	Stapelbares Aufbewahrungsmöbel für Kinderzimmer
+gid://shopify/Product/15503241576833	2026-09-23T04:57Z	schon-DRAFT	14.90	65.71	5D Carbon Fiber Stossstangenschutz-Sticker
+gid://shopify/Product/15502595031425	2026-09-23T04:57Z	schon-DRAFT	15.90	66.62	Handgemachte Keramik-Suppenschale (4er-Set)
+gid://shopify/Product/15454093607297	2026-09-23T04:57Z	schon-DRAFT	18.90	69.59	Sonnenrollo, lichtundurchlässig
+gid://shopify/Product/15449121456513	2026-09-23T04:57Z	schon-DRAFT	91.90	142.39	Milky-Tea-Vorhänge für gehobenes Schlafzimmerambiente
+gid://shopify/Product/15500457378177	2026-09-23T04:57Z	schon-DRAFT	29.90	80.23	Geometrische Sofa-Hülle
+gid://shopify/Product/15502391804289	2026-09-23T04:57Z	schon-DRAFT	21.90	71.87	Faltbarer Teleskop-Ventilator mit Powerbank
+gid://shopify/Product/15499303387521	2026-09-23T04:57Z	schon-DRAFT	15.90	65.75	Runder Hochflor-Teppich aus Kunstfell
+gid://shopify/Product/15497430860161	2026-09-23T04:57Z	schon-DRAFT	18.90	68.74	Kollagen Anti-Falten Straffungscreme
+gid://shopify/Product/15500928778625	2026-09-23T04:57Z	schon-DRAFT	19.90	69.15	Ovale, rutschfeste Yogamatte für Indoor-Fitness
+gid://shopify/Product/15453795221889	2026-09-23T04:57Z	schon-DRAFT	59.90	109.13	Wasserfestes Hundebett
+gid://shopify/Product/15497486532993	2026-09-23T04:57Z	schon-DRAFT	14.90	64.09	Silikonform für Zement-Geländer
+gid://shopify/Product/15452606103937	2026-09-23T04:57Z	schon-DRAFT	15.90	65.03	3D Weihnachtslampe
+gid://shopify/Product/15500925731201	2026-09-23T04:57Z	schon-DRAFT	35.90	84.93	UV-Entkeimungsplatte
+gid://shopify/Product/15500154831233	2026-09-23T04:57Z	draft	15.90	64.63	Ionenkopf
+gid://shopify/Product/15453781229953	2026-09-23T04:57Z	draft	51.90	100.45	Graphen-Heizdecke mit konstanter Temperatur
+gid://shopify/Product/15496229290369	2026-09-23T04:57Z	draft	27.90	76.44	Wandregal mit Haken, braun
+gid://shopify/Product/15448921997697	2026-09-23T04:57Z	draft	14.90	63.39	Cremefarbener Plüsch-Sofabezug für Herbst/Winter
+gid://shopify/Product/15499865457025	2026-09-23T04:57Z	draft	25.90	74.34	Sofakissen-Überzug
+gid://shopify/Product/15453999169921	2026-09-23T04:58Z	draft	15.90	64.34	Holz-Aufbewahrungsbox für Uhren
+gid://shopify/Product/15452290318721	2026-09-23T04:58Z	draft	34.90	83.31	Amerikanische Luxus-Fleece-Decke mit Kaninchenfell-Optik
+gid://shopify/Product/15501938917761	2026-09-23T04:58Z	draft	27.90	76.22	Unfetterter Freiraum für deinen Hund
+gid://shopify/Product/15503166603649	2026-09-23T04:58Z	draft	31.90	80.21	Niedliche Cartoon-Figur aus Harz für Kinder
+gid://shopify/Product/15448937267585	2026-09-23T04:58Z	draft	31.90	79.96	Kompakter U-förmiger Kratzbaum mit Sisal
+gid://shopify/Product/15496511160705	2026-09-23T04:58Z	draft	16.90	64.89	5D Diamond Painting: Pfau auf blauer Veranda
+gid://shopify/Product/15504088301953	2026-09-23T04:58Z	draft	20.90	68.87	Chenille Sofaüberwurf mit Streifenmuster
+gid://shopify/Product/15497424765313	2026-09-23T04:58Z	draft	23.90	71.35	Teigroller aus Edelstahl mit fester Halterung
+gid://shopify/Product/15500253888897	2026-09-23T04:58Z	draft	22.90	70.25	Schönheit im Detail
+gid://shopify/Product/15501916635521	2026-09-23T04:58Z	draft	31.90	79.09	Holz-Mandala-Rätsel
+gid://shopify/Product/15504138633601	2026-09-23T04:58Z	draft	20.90	68.03	Sofa-Überwurf aus Chenille mit Streifenmuster
+gid://shopify/Product/15454109368705	2026-09-23T04:58Z	draft	22.90	70.03	Badezimmer-Aufbewahrungsset
+gid://shopify/Product/15448926781825	2026-09-23T04:58Z	draft	14.90	61.71	U-förmiges Samt-Schwangerschaftskissen
+gid://shopify/Product/15453825139073	2026-09-23T04:58Z	draft	14.90	61.70	Heim-WLAN-Nachtvision-Kamera
+gid://shopify/Product/15503112864129	2026-09-23T04:58Z	draft	15.90	62.63	Kühlbox für Haushalt, Auto und Outdoor
+gid://shopify/Product/15500909674881	2026-09-23T04:58Z	draft	42.90	89.62	Vorratsdosen-Set mit Deckel und Schnappverschluss
+gid://shopify/Product/15503147139457	2026-09-23T04:58Z	draft	16.90	63.54	Klangschale aus Kupfer
+gid://shopify/Product/15448937496961	2026-09-23T04:58Z	draft	25.90	72.38	Kokosnussbaum Katzenbett mit Klettergerüst
+gid://shopify/Product/15448926716289	2026-09-23T04:58Z	draft	14.90	61.26	Schwangerschaftskissen mit Taillenstütze
+gid://shopify/Product/15449491833217	2026-09-23T04:58Z	draft	23.90	70.15	Portabler Holzkohle-Grill
+gid://shopify/Product/15453788111233	2026-09-23T04:58Z	draft	31.90	78.15	Plüschtier fürs Einschlafen
+gid://shopify/Product/15450848297345	2026-09-23T04:59Z	draft	14.90	60.59	Kuscheliges Haustierbett für Herbst und Winter
+gid://shopify/Product/15453793255809	2026-09-23T04:59Z	draft	48.90	94.54	Klimmzugstange für Zuhause
+gid://shopify/Product/15454118838657	2026-09-23T04:59Z	draft	15.90	61.08	Sofa-Abdeckung mit Blumenmuster
+gid://shopify/Product/15500928549249	2026-09-23T04:59Z	draft	18.90	64.07	Futterstation aus Massivholz mit Keramiknapf
+gid://shopify/Product/15504088531329	2026-09-23T04:59Z	draft	21.90	67.05	Einteiliger Anti-Rutsch Sofaüberwurf aus Chenille
+gid://shopify/Product/15500911706497	2026-09-23T04:59Z	draft	21.90	66.69	Keramik Zahnputzbecher & Halter
+gid://shopify/Product/15450850754945	2026-09-23T04:59Z	draft	41.90	86.43	Fitness-Hantel für Body Shaping
+gid://shopify/Product/15499784716673	2026-09-23T04:59Z	draft	28.90	73.33	Chenille-Sofakappe
+gid://shopify/Product/15449123225985	2026-09-23T04:59Z	draft	32.90	77.20	Bambusfaser Matratzen-Topper, kühlend & verdickt
+gid://shopify/Product/15496336048513	2026-09-23T04:59Z	draft	15.90	60.17	2-in-1 Drohne & Panzer mit HD-Kamera
+gid://shopify/Product/15450251886977	2026-09-23T04:59Z	draft	19.90	64.13	Auto-Innenraum Dekoration
+gid://shopify/Product/15502191985025	2026-09-23T04:59Z	draft	39.90	84.06	Smarter Vorhangroboter für römische Stangen
+gid://shopify/Product/15454001267073	2026-09-23T04:59Z	draft	14.90	58.68	Wasserdichter Velvet-Sofaüberwurf
+gid://shopify/Product/15503908176257	2026-09-23T04:59Z	draft	19.90	63.24	Uhrenbox Lychee-Muster (3, 6 oder 12 Fächer)
+gid://shopify/Product/15449496748417	2026-09-23T04:59Z	draft	15.90	59.18	Silikon-Schüssel für Hunde und Katzen
+gid://shopify/Product/15451640365441	2026-09-23T04:59Z	draft	15.90	58.98	Keramik Schmortopf für Slow Cooking
+gid://shopify/Product/15453999366529	2026-09-23T04:59Z	draft	27.90	70.91	Wand-Hakenleiste aus Holz
+gid://shopify/Product/15499594137985	2026-09-23T04:59Z	draft	18.90	61.79	Bequemes Korallenfleece-Kissen
+gid://shopify/Product/15451640332673	2026-09-23T04:59Z	draft	18.90	61.57	Keramikbecher im 4er-Set
+gid://shopify/Product/15453730406785	2026-09-23T04:59Z	draft	17.90	60.56	Dicke Sofabedeckung
+gid://shopify/Product/15504090300801	2026-09-23T04:59Z	draft	17.90	60.31	Retro Sofaüberwurf mit Pflanzenmuster
+gid://shopify/Product/15502070317441	2026-09-23T04:59Z	draft	17.90	59.95	Rotationsmopp für mühelose Bodenreinigung
+gid://shopify/Product/15499217764737	2026-09-23T05:00Z	draft	14.90	56.91	Elastischer Sofabezug für Einzel- bis Viersitzer
+gid://shopify/Product/15454118674817	2026-09-23T05:00Z	draft	15.90	57.88	Sofa-Schutzbezug
+gid://shopify/Product/15504011067777	2026-09-23T05:00Z	draft	28.90	63.61	Kubanische Zirkonia-Kette aus Titanstahl
+gid://shopify/Product/15448920785281	2026-09-23T05:00Z	draft	15.90	57.62	Sofa Kissenhülle mit Blumenmuster
+gid://shopify/Product/15446275064193	2026-09-23T05:00Z	draft	15.90	60.32	Ausziehbares Schuhregal aus Karbonstahl
+gid://shopify/Product/15453760618881	2026-09-23T05:00Z	draft	20.90	62.29	Nordic Wind Sofadecke
+gid://shopify/Product/15454003790209	2026-09-23T05:00Z	draft	45.90	87.26	Keramik-Backtray schwarz
+gid://shopify/Product/15500900958593	2026-09-23T05:00Z	draft	16.90	58.11	Familienfotos auf Leinwand
+gid://shopify/Product/15448923242881	2026-09-23T05:00Z	draft	15.90	57.10	Sofa-Kissenbezug im schottischen Stil
+gid://shopify/Product/15451640430977	2026-09-23T05:00Z	draft	17.90	59.09	Keramik Gewürzbehälter mit Bambusständer, 4 Stk.
+gid://shopify/Product/15446276243841	2026-09-23T05:00Z	draft	41.90	83.00	Elektrischer Edelstahl-Zerkleinerer 6L
+gid://shopify/Product/15451641184641	2026-09-23T05:00Z	draft	15.90	56.69	Kuscheliger Fleece-Überwurf mit Rosen-Design
+gid://shopify/Product/15453998449025	2026-09-23T05:00Z	draft	33.90	74.69	Wasserfeste Badezimmer-Matte
+gid://shopify/Product/15448926978433	2026-09-23T05:00Z	draft	18.90	59.63	Wolkenförmiges Memory Foam Kissen
+gid://shopify/Product/15448965939585	2026-09-23T05:00Z	draft	15.90	67.50	Bratpfanne mit Maifanit-Textur
+gid://shopify/Product/15454000185729	2026-09-23T05:00Z	draft	15.90	56.47	Faltbare Aufbewahrungsbox mit Zipper & Fenster, grosser Inha
+gid://shopify/Product/15453794500993	2026-09-23T05:00Z	draft	38.90	79.22	Tier Sofa mit abnehmbarer und waschbarer Hülle
+gid://shopify/Product/15454108746113	2026-09-23T05:00Z	draft	52.90	93.21	Atmungsaktive Decke aus Baumwolle, Kaschmir-Optik
+gid://shopify/Product/15449175490945	2026-09-23T05:00Z	draft	28.90	76.20	Gesteppter Matratzenbezug aus Bambusfaser
+gid://shopify/Product/15496302297473	2026-09-23T05:00Z	draft	16.90	57.13	Baumwoll-Sofakissen für alle Jahreszeiten
+gid://shopify/Product/15448937890177	2026-09-23T05:00Z	draft	14.90	54.93	Katzenbaum mit Kratzstamm Kaktus

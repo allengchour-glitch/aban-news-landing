@@ -97,23 +97,40 @@ def video_deckel():
 
 
 def tiktok_queue_alt():
-    """Der PC-Poster liest die Queue vom CDN. Steht sie still, postet er alten Stand.
-
-    ⚠️ NICHT am HTTP-Kopf messen: Shopifys CDN setzt `last-modified` auf den Zeitpunkt, zu dem
-    der EDGE die Datei geholt hat — gemessen stand dort «jetzt» fuer eine Datei vom 31.08.
-    Ein Zeitstempel des Zustellers ist kein Alter des Inhalts. Das Alter steht IM Inhalt
-    (Feld `stand`), das schreibt tiktok_cowork_auftrag.py bei jedem Lauf.
+    """23.09.2026: TikTok laeuft seit dem 22.09. ueber Metricool (Ledger automation/reels_seed.csv,
+    Status posted-tiktok, post_url `metricool:<id> tiktok:<url>` nach der Nachmessung). Die alte
+    Messung am PC-Poster (dropship/tiktok_queue.json, Feld `stand`) meldete «23 Tage alt» fuer einen
+    Weg, den niemand mehr geht — ein Wächter fuer einen toten Weg ist Laerm. Jetzt drei Fragen an den
+    Ledger: Fehler? · geplant, aber seit >2 h nicht bestaetigt? · kein bestaetigter Post seit >2 Tagen?
     """
+    import csv
     try:
-        roh = subprocess.run(
-            ["curl", "-s", "--max-time", "20", QUEUE_CDN + "?v=ampel"],
-            capture_output=True, text=True, timeout=30).stdout
-        stand = (json.loads(roh) or {}).get("stand")
-        tag = datetime.date.fromisoformat(stand)
+        rows = list(csv.DictReader(open(os.path.join(ROOT, "automation", "reels_seed.csv"), encoding="utf-8")))
     except Exception:
-        return None                      # kein Befund aus einer kaputten Abfrage
-    tage = (datetime.date.today() - tag).days
-    return f"TikTok-Queue {tage} Tage alt" if tage >= 3 else None
+        return None
+    fehler = [r for r in rows if (r.get("status") or "") == "tiktok-fehler"]
+    if fehler:
+        return f"TikTok: {len(fehler)} Post-Fehler in reels_seed.csv ({fehler[0].get('post_url','')[:60]})"
+    jetzt = datetime.datetime.now(datetime.timezone.utc)
+    letzte = None
+    ungeprueft = 0
+    for r in rows:
+        if (r.get("status") or "") != "posted-tiktok":
+            continue
+        try:
+            t = datetime.datetime.fromisoformat((r.get("posted_at") or "").replace("Z", "+00:00"))
+        except Exception:
+            continue
+        if "tiktok:" in (r.get("post_url") or ""):
+            letzte = t if letzte is None or t > letzte else letzte
+        elif (jetzt - t).total_seconds() > 2 * 3600:
+            ungeprueft += 1
+    if ungeprueft:
+        return f"TikTok: {ungeprueft} geplante Posts seit >2 h ohne Bestaetigung (PRUEFEN=1 metricool_tiktok_post.mjs)"
+    if letzte is None:
+        return "TikTok: noch kein bestaetigter Metricool-Post"
+    tage = (jetzt - letzte).total_seconds() / 86400
+    return f"TikTok: letzter bestaetigter Post vor {tage:.1f} T" if tage >= 2 else None
 
 
 def ki_textstufe():

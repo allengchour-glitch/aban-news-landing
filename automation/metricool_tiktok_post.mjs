@@ -65,6 +65,38 @@ const idx = Object.fromEntries(rows[0].map((h, i) => [h.trim(), i]));
 const writeLedger = () => fs.writeFileSync(CSV, rows.map(r => r.map(esc).join(',')).join('\n') + '\n');
 const get = (r, k) => (r[idx[k]] || '').trim();
 
+// 23.09.2026 PRUEFEN=1: Nachmessen statt glauben. «posted-tiktok» hiess bisher nur «bei Metricool GEPLANT»
+// (der erste Post 380476730 wurde erst per Hand im Planer nachgelesen). Dieser Modus liest den Planer fuer
+// alle Zeilen mit post_url `metricool:<id>` ohne TikTok-Adresse: PUBLISHED → `metricool:<id> tiktok:<url>`;
+// ERROR/FAILED → status `tiktok-fehler` + Grund in post_url (Ampel meldet es; kein stiller Fehlschlag).
+// Zeilen, die aelter als 2 h geplant und noch nicht veroeffentlicht sind, werden als «offen» gemeldet.
+if (process.env.PRUEFEN === '1') {
+  if (!TOKEN) { console.log('PRUEFEN: kein Token → No-op.'); process.exit(0); }
+  const offen = rows.slice(1).filter(r => get(r, 'status') === 'posted-tiktok' && /^metricool:\d+$/.test(get(r, 'post_url')));
+  if (!offen.length) { console.log('PRUEFEN: keine ungeprueften TikTok-Posts.'); process.exit(0); }
+  const tag = d => d.toISOString().slice(0, 10);
+  const von = new Date(Date.now() - 4 * 86400000), bis = new Date(Date.now() + 2 * 86400000);
+  const r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}&start=${tag(von)}T00:00:00&end=${tag(bis)}T23:59:59&timezone=${encodeURIComponent(TZ)}`, { headers: { 'X-Mc-Auth': TOKEN } });
+  if (!r.ok) { console.error(`PRUEFEN: Planer antwortet ${r.status}`); process.exit(1); }
+  const j = await r.json();
+  const posts = Array.isArray(j) ? j : (j.data || j.posts || []);
+  const byId = new Map(posts.map(p => [String(p.id), p]));
+  let ok = 0, fehler = 0, wartet = 0;
+  for (const row of offen) {
+    const mid = get(row, 'post_url').split(':')[1];
+    const p = byId.get(mid);
+    if (!p) { console.log(`   ${get(row, 'id')}: Metricool-Post ${mid} nicht im Planer-Fenster → offen`); wartet++; continue; }
+    const prov = (p.providers || []).find(x => x.network === 'tiktok') || {};
+    const st = String(prov.status || p.status || '').toUpperCase();
+    if (st === 'PUBLISHED' && prov.publicUrl) { row[idx.post_url] = `metricool:${mid} tiktok:${prov.publicUrl}`; ok++; console.log(`   ✅ ${get(row, 'id')} veroeffentlicht: ${prov.publicUrl}`); }
+    else if (/ERROR|FAIL|REJECT|CANCEL/.test(st)) { row[idx.status] = 'tiktok-fehler'; row[idx.post_url] = `metricool-fehler:${mid} ${st} ${String(prov.detailedStatus || prov.error || '').slice(0, 120)}`; fehler++; console.log(`   ⚠️ ${get(row, 'id')} FEHLER: ${st} ${prov.detailedStatus || ''}`); }
+    else { const alter = (Date.now() - Date.parse(get(row, 'posted_at') || 0)) / 3600000; wartet++; console.log(`   ${get(row, 'id')}: ${st || 'ohne Status'} (${alter.toFixed(1)} h seit Planung)${alter > 2 ? ' ⚠️ ueberfaellig' : ''}`); }
+  }
+  if (ok || fehler) writeLedger();
+  console.log(`PRUEFEN: ${ok} veroeffentlicht, ${fehler} Fehler, ${wartet} offen`);
+  process.exit(fehler ? 2 : 0);
+}
+
 // Kandidat: ready, Video noch nirgends gepostet, NICHT stumm (TikTok ohne Ton wirkt tot — Plan 26.08.:
 // stumme Marken-Videos bekommen den Trend-Sound in der TikTok-App, nicht ueber Metricool). Produkt-Reels
 // (cjreel-*, mit Musik aus der ffmpeg-Pipeline) zuerst, Marken-Videos danach.
