@@ -6722,3 +6722,68 @@ Sechs bleiben — **bei allen vier Eingriffen exakt sechs**. Zwei Lehren:
 Teil sehen je zwei gleich aus, der Unterschied steckt im Rest (Lichter-/Schatten-Anteil
 des Schluessels). Und vorher pruefen, ob sechs Aussetzer auf einem ECHTEN Geraet
 ueberhaupt spuerbar sind; von hier aus laesst sich das nicht beantworten.
+
+## 2026-09-23 · 🧱 Runde 89: Bauen wie in den grossen Aufbauspielen
+
+User: „traumhaus verbessern, vor allem aufbau, kopiere von andere spielen nur das beste".
+Uebernommen sind **Bedienmuster**, keine Inhalte. Vorher (gemessen im Bild): Waende nur
+Kante fuer Kante per Tipp, Vorschau ein gruener Kasten, kein Rueckgaengig, das Gitter
+(weiss, 22 %) auf dem Rasen unsichtbar — man sah nicht, wo man bauen darf.
+
+| Vorbild | Was jetzt im Baumodus geht | Grep-Anker |
+|---|---|---|
+| Die Sims | **Wand/Fenster ziehen** (ganze Linie, Kosten am Zeiger), **Wände streichen per Ziehen** | `function zugPlan`, `function bauLinie`, `#bauMass` |
+| Die Sims | **Zimmer ziehen**: Rechteck → Wände rundum + Boden + Tür zur Kamera | `ZIMMER_DEF`, `p.tuer` |
+| Die Sims | **Rückgängig / Wiederholen** (Knöpfe, Strg+Z / Strg+Y) | `function bauGeld`, `function bauAnwenden` |
+| Die Sims | **Pipette** (Knopf oder Alt+Klick): Möbel/Wand/Farbe/Boden aufnehmen | `function pipetteAt` |
+| Die Sims | **Wände halb hoch** im Baumodus (Knopf schaltet um, bleibt gespeichert) | `WAND_HALB`, `wandSkalaZiel` |
+| Minecraft | Reiter **„Zuletzt"** mit den letzten 8 Teilen (localStorage `th_zuletzt`) | `ZULETZT`, `zuletztMerken` |
+| Sims/Animal Crossing | **Grundstücksrahmen** in Bernstein + dunkles Gitter; Kamera fährt beim Wechsel zum Grundstück | `gridHelper.add`, `updBauKamera` |
+| Planet Coaster | **Echte Vorschau**: das Möbel halb durchsichtig, rot getönt wenn belegt | `function vorschauModell`, `function furnMass` |
+| Townscaper | Wände und Böden **wachsen** weich aus dem Boden | `bauPloppStart`, `updBauPlopps` |
+| Karten-Apps | Handy: **zwei Finger drehen** die Kamera (vorher nur Zoom) | `pinchW` |
+
+Prüfwerkzeug: **`spiele-dev/tools/th-bauen.mjs`** (in `th-alle`, Kernreihe) — fährt jede
+Geste mit echten Mausereignissen und rechnet Stand UND Kasse nach, mit Gegenprobe
+(ein Einzeltipp muss genau eine Wand setzen, sonst Abbruch statt „0 = 0 bestanden").
+
+**Fünf Regeln für jeden, der hier weiterbaut:**
+
+1. **Jede Bau-Änderung läuft durch `bauGeld(fn)`.** Rückgängig liest den Stand (Wände,
+   Böden, Möbel, Geld) davor und danach — die Differenz ist der Eintrag. Wer eine neue
+   Bauhandlung einbaut und sie nicht einwickelt, baut ein Loch: die Handlung ist dann
+   nicht rückgängig, und ein späteres Rückgängig prüft gegen einen Stand, den es nicht
+   kennt. Bestehende Knöpfe (`edRot`, `edUp`, `edSell`, `villaBtn`) werden am Ende des
+   Blocks EINGEWICKELT, ihr Inhalt blieb unberührt.
+2. **`bauGeld` muss synchron bleiben.** Nur so enthält die Differenz ausschliesslich, was
+   DIESE Hand gebaut hat — kein Lohn, keine Partner-Nachricht kann dazwischenkommen.
+   Ein Druck-Ziehen-Loslassen wird über `bauZugBeginn`/`bauZugEnde` zu EINEM Eintrag
+   gebündelt, jede einzelne Änderung darin läuft trotzdem synchron durch `bauGeld`.
+3. **Geld wird nicht nachgerechnet, sondern gemessen.** Rückgängig bucht exakt die
+   Geld-Differenz zurück. Keine zweite Preistabelle (Regel 9 oben). Der Stapel leert sich
+   beim Verlassen des Baumodus — sonst: Sofa kaufen, eine Woche benutzen, voll erstattet.
+   Auto und Hund stehen nicht in `furn` → hinterlassen keine Differenz → nicht rückgängig.
+4. **Koop: ganz oder gar nicht.** `bauAnwenden` prüft ALLES, bevor es etwas anfasst;
+   hat der Partner inzwischen daran gebaut, wird der Eintrag verworfen, nicht halb
+   ausgeführt. Angewendet wird über `doPlaceWall`/`doPlaceFloor`/`doPlaceFurn`/`doPaint`
+   → dieselben Nachrichten wie beim normalen Bauen, keine neuen Typen.
+   Entfernen einer Wand = `doPlaceWall(x,y,d,null)` (NICHT `doDelete`: das reisst beide
+   Kanten der Zelle ab und zahlt die Hälfte aus).
+5. **Wer ein Wandnetz baut, fragt `wandSkalaZiel()`.** Die Halb-Ansicht skaliert die
+   Wandgruppen in y. Wandgruppen aus dem Spielstand sind nach 9 s eingefroren
+   (`_einfrieren`) — nach jeder Skalierung `updateMatrix()`, sonst ändert sich nur die Zahl.
+
+**Handy-Layout:** sechs Werkzeuge statt zwei. Als Spalte ragten sie bei 844x390 in die
+Kopfzeile (th-hud: `halbBtn 73 % unter stufeBox`), als Reihe bei 667x375 und 568x320 unter
+„Leben" (`rotBtn → Tipp landet auf modeBtn`). Jetzt zwei Reihen zu drei oben rechts
+(144 x 94 px), und die Kategorien stehen in EINER wischbaren Zeile — umgebrochen wuchs die
+Palette bei 568x320 bis y 135 hinauf.
+
+**Beobachtet, NICHT behoben (Kandidat für eine nächste Runde, erst messen):**
+Möbel mit gerader Grösse (2x1, 2x2 — 18 Einträge, u. a. Sofa, Bett, Esstisch, Teich)
+belegen die Zellen `gx … gx+1` (`furnCells`), das Modell steht aber auf der Mitte der
+ANKERzelle `cx(gx)`. Belegung und Bild liegen damit eine halbe Zelle auseinander. Nicht
+angefasst, weil Sitz- und Liegepunkte (`arrive`: `s.x=cx(f.gx)`), die Villa-Vorlage und
+jeder gespeicherte Stand an genau dieser Lage hängen. Wer es angeht: zuerst messen, wie
+weit die Modelle tatsächlich über ihre Belegung hinausragen (Hüllbox je Katalog-Eintrag
+gegen `furnCells`), dann Modell UND Sitzpunkt gemeinsam verschieben.

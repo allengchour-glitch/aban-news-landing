@@ -105,9 +105,17 @@ canvas{display:block}
      (th-spielerblick, Bilder 3/5/6). Waehrend des Spiels quer ausgeblendet — sie steht
      auf dem Startbild und auf jeder anderen Seite. th-hud prueft jetzt ALLE Paare. */
   body.spielt #aban-recht{display:none !important}
-  /* Bau-Werkzeuge (Drehen/Abreissen): die Spalte endete oben bei 42 und lag damit 10 px
-     in der Kopfzeile — 23 % des Dreh-Knopfs unter dem Stufen-Feld (th-hud, 844x390). */
-  #tools{bottom:calc(232px + env(safe-area-inset-bottom)) !important}
+  /* Bau-Werkzeuge: seit Runde 89 SECHS statt zwei (Drehen, Abreissen, Pipette, Waende
+     halb, Rueckgaengig, Wiederholen). Als Spalte waeren das 328 px — auf 390 px Hoehe
+     ragte sie oben aus dem Bild. Darum auf dem Handy zwei Reihen zu drei oben rechts
+     (144 x 94 px), unter der Kopfzeile und ueber der Palette.
+     Frueher: die Spalte endete oben bei 42 und lag 10 px in der Kopfzeile (th-hud). */
+  #tools{top:calc(58px + env(safe-area-inset-top)) !important;bottom:auto !important;flex-direction:row !important;flex-wrap:wrap;width:144px;gap:6px !important;justify-content:flex-end}
+  #tools .tbtn{width:44px;height:44px}
+  /* Kategorien in EINER Zeile, seitlich wischbar: umgebrochen (neun Reiter) wuchs die
+     Palette auf 568x320 bis y 135 hinauf und lag unter den Werkzeugen. */
+  #palCats{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none}
+  #palCats .pcat{flex:0 0 auto}
   /* Die acht Aktions-Knoepfe (Ansprechen, Laden, Werkstatt, Markthalle, Kirche, Bahn,
      Fahrgeschaeft, Coup) sassen bei bottom 190 — auf 390 px Hoehe ist das die Bildmitte,
      also genau auf der eigenen Figur (th-stadtrundgang, Marktplatz und Park: Knopf auf
@@ -229,6 +237,8 @@ canvas{display:block}
 .pitem.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.25)}
 .pitem .pe{font-size:1.4rem}.pitem .pn{font-size:.66rem;font-weight:700;color:#5a4a30}.pitem .pp{font-size:.66rem;color:#b8860b;font-weight:800}
 #tools{position:fixed;right:calc(10px + env(safe-area-inset-right));bottom:calc(252px + env(safe-area-inset-bottom));display:none;flex-direction:column;gap:8px;z-index:13}
+#bauMass{position:fixed;z-index:17;display:none;pointer-events:none;background:var(--tinte);color:var(--creme);border-radius:8px;padding:5px 10px;font-weight:800;font-size:.85rem;white-space:nowrap;box-shadow:0 4px 14px rgba(36,28,18,.3)}
+.tbtn:disabled{cursor:default}
 .tbtn{width:48px;height:48px;border-radius:14px;border:0;background:rgba(255,253,248,.95);font-size:1.25rem;cursor:pointer;box-shadow:0 6px 18px rgba(40,30,10,.24)}
 .tbtn.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.3)}
 #modeBtn.building{top:calc(58px + env(safe-area-inset-top));bottom:auto;left:50%;transform:translateX(-50%)}
@@ -280,6 +290,10 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/></symbol>
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6-6 6-11a6 6 0 0 0-12 0c0 5 6 11 6 11z"/><circle cx="12" cy="10" r="2"/></symbol>
 <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/></symbol>
+<symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></symbol>
+<symbol id="i-redo" viewBox="0 0 24 24"><path d="M15 14l5-5-5-5M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></symbol>
+<symbol id="i-pipette" viewBox="0 0 24 24"><path d="M14 6l4 4M16.5 3.5a2.1 2.1 0 0 1 3 3l-2.3 2.3-3-3zM15.5 8.5L6 18l-2.5 2.5L6 18l-.5-1.5L15 7"/></symbol>
+<symbol id="i-wandhalb" viewBox="0 0 24 24"><path d="M3 20h18M5 20v-7h14v7M5 16.5h14M9.5 13v3.5M14.5 13v3.5M12 16.5V20"/><path d="M5 9h3M10.5 9h3M16 9h3"/></symbol>
 <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 4v5h-5M20 12a8 8 0 0 1-14 5l-2-2M4 20v-5h5"/></symbol>
 <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.2v9.6M14.6 9.3c-.7-.9-5-1.1-5 .9 0 1.9 5 1.1 5 3.1 0 2-4.3 1.7-5 .8"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 6.8V12l3.4 2"/></symbol>
@@ -361,7 +375,12 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <div id="tools">
   <button class="tbtn" id="rotBtn" title="Drehen (R)" aria-label="Drehen (R)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg></button>
   <button class="tbtn" id="delBtn" title="Abreissen" aria-label="Abreissen"><svg class="ik" aria-hidden="true"><use href="#i-trash"/></svg></button>
+  <button type="button" class="tbtn" id="pipBtn" title="Pipette: vorhandenes Teil aufnehmen (Alt+Klick)" aria-label="Pipette"><svg class="ik" aria-hidden="true"><use href="#i-pipette"/></svg></button>
+  <button type="button" class="tbtn" id="halbBtn" title="Wände halb hoch / voll" aria-label="Wände halb hoch"><svg class="ik" aria-hidden="true"><use href="#i-wandhalb"/></svg></button>
+  <button type="button" class="tbtn" id="undoBtn" title="Rückgängig (Strg+Z)" aria-label="Rückgängig"><svg class="ik" aria-hidden="true"><use href="#i-undo"/></svg></button>
+  <button type="button" class="tbtn" id="redoBtn" title="Wiederholen (Strg+Y)" aria-label="Wiederholen"><svg class="ik" aria-hidden="true"><use href="#i-redo"/></svg></button>
 </div>
+<div id="bauMass"></div>
 <div id="palette">
   <div id="palCats"></div>
   <div id="palItems"></div>
@@ -12007,20 +12026,25 @@ function buildWallMesh(type,co){
     var kn=new THREE.Mesh(new THREE.SphereGeometry(0.05,8,6),stdMat(0xd8c060,0.3));kn.position.set(0.35,1.05,0.14);g.add(kn);}
   return g;}
 function applyWall(x,y,d,type,co){var k=x+","+y+","+d;
+  var _warDa=!!(walls[k]&&walls[k].type===type);   /* Neu streichen baut das Netz neu — das soll nicht wachsen */
   if(walls[k]){scene.remove(wallMeshes[k]);delete walls[k];delete wallMeshes[k];}
   if(!type)return;
   var g=buildWallMesh(type,co);
   if(d===0){g.position.set(cx(x),0,cz(y)-CS/2);}else{g.position.set(cx(x)+CS/2,0,cz(y));g.rotation.y=Math.PI/2;}
-  scene.add(g);walls[k]={type:type,co:co||0};wallMeshes[k]=g;}
+  g.scale.y=wandSkalaZiel();                          /* 🧱 Baumodus: Waende halb hoch (Runde 89) */
+  scene.add(g);walls[k]={type:type,co:co||0};wallMeshes[k]=g;
+  if(!_warDa)bauPloppStart(g,"w");}
 function doPaint(x,y,d,co,silent){var k=x+","+y+","+d;var w=walls[k];if(!w)return false;
   applyWall(x,y,d,w.type,co);if(!silent)netSend({t:"paint",x:x,y:y,d:d,c:co});return true;}
 function applyFloor(x,y,idx){var k=fkey(x,y);
+  var _warDa=floors[k]===idx;                          /* Textur-Nachladen legt denselben Boden neu — nicht wachsen */
   if(floorMeshes[k]){scene.remove(floorMeshes[k]);delete floorMeshes[k];delete floors[k];}
   if(idx===null||idx===undefined)return;
   var fl=FLOORS[idx];
   var m=new THREE.Mesh(new THREE.PlaneGeometry(CS,CS),fl.texture?new THREE.MeshStandardMaterial({map:fl.texture,roughness:0.75,envMapIntensity:0.3}):stdMat(fl.col,0.9));
   m.rotation.x=-Math.PI/2;m.position.set(cx(x),0.01,cz(y));m.receiveShadow=true;scene.add(m);
-  floors[k]=idx;floorMeshes[k]=m;}
+  floors[k]=idx;floorMeshes[k]=m;
+  if(!_warDa)bauPloppStart(m,"f");}
 var haustier=null;
 function applyFurn(id,gx,gy,rot,fid){
   var def=defOf(id);if(!def)return;
@@ -12131,16 +12155,7 @@ function applyFurn(id,gx,gy,rot,fid){
      haengte der Callback trotzdem ein unantippbares Geister-Modell (+ ggf. PointLight) in die Szene. */
   loadTH(id,function(tpl){if(!tpl||furn.indexOf(rec)<0)return;
     var m=tpl.clone(true);m.position.set(cx(gx),0.012,cz(gy));m.rotation.y=rot*Math.PI/2;
-    if(def.norm){ // PolyHaven-Modelle: auf Zellgroesse skalieren + auf den Boden setzen
-      var bb9=new THREE.Box3().setFromObject(m),sz9=new THREE.Vector3();bb9.getSize(sz9);
-      var tw9=(def.size?def.size[0]:1)*CS*0.92,td9=(def.size?def.size[1]:1)*CS*0.92;
-      var k9=Math.min(tw9/(sz9.x||1),td9/(sz9.z||1),(def.zielH||2.6)/(sz9.y||1));
-      if(!isFinite(k9)||k9<=0)k9=1;
-      m.scale.setScalar(k9);
-      var bb10=new THREE.Box3().setFromObject(m);
-      m.position.y=-bb10.min.y+0.012;}
-    if(def.korr){m.scale.multiplyScalar(def.korr);
-      var bbk=new THREE.Box3().setFromObject(m);m.position.y=-bbk.min.y+0.012;}
+    furnMass(m,def);
     // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Grösse passt (1 Einheit = 1m, Zelle 2m)
     scene.add(m);rec.mesh=m;plopFx(m,cx(gx),cz(gy));
     if(rec.lv>1){var cv7=document.createElement("canvas");cv7.width=128;cv7.height=64;var c7=cv7.getContext("2d");
@@ -12149,6 +12164,21 @@ function applyFurn(id,gx,gy,rot,fid){
       sp7.scale.set(1.1,0.55,1);sp7.position.y=1.6;m.add(sp7);}
     if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,def.light===2?13:7,2);pl.position.set(cx(gx),def.light===2?4.2:1.7,cz(gy));scene.add(pl);rec.plight=pl;} /* 💡 Kandelaber leuchtet hoch+weit, weicher Rand (decay 2) */
   });}
+/* Groesse und Bodenhoehe eines Moebelmodells. Steht hier EINMAL, weil die Bau-Vorschau
+   (refreshGhost) dasselbe Modell in derselben Groesse zeigen muss — zwei Kopien dieser
+   Rechnung waeren beim naechsten Umbau auseinandergelaufen (RUNBOOK-TRAUMHAUS Regel 9).
+   ⚠️ Erwartet die Drehung SCHON gesetzt: die Huellbox wird gedreht gemessen. */
+function furnMass(m,def){
+  if(def.norm){ // PolyHaven-Modelle: auf Zellgroesse skalieren + auf den Boden setzen
+    var bb9=new THREE.Box3().setFromObject(m),sz9=new THREE.Vector3();bb9.getSize(sz9);
+    var tw9=(def.size?def.size[0]:1)*CS*0.92,td9=(def.size?def.size[1]:1)*CS*0.92;
+    var k9=Math.min(tw9/(sz9.x||1),td9/(sz9.z||1),(def.zielH||2.6)/(sz9.y||1));
+    if(!isFinite(k9)||k9<=0)k9=1;
+    m.scale.setScalar(k9);
+    var bb10=new THREE.Box3().setFromObject(m);
+    m.position.y=-bb10.min.y+0.012;}
+  if(def.korr){m.scale.multiplyScalar(def.korr);
+    var bbk=new THREE.Box3().setFromObject(m);m.position.y=-bbk.min.y+0.012;}}
 function removeFurnAt(gx,gy,ohneGeld){
   for(var i=furn.length-1;i>=0;i--){var f=furn[i];
     var cells=furnCells(f);
@@ -15089,7 +15119,7 @@ document.getElementById("minimap").addEventListener("click",bigMapOpen);
 document.getElementById("bigmapClose").onclick=function(){document.getElementById("bigmapWrap").style.display="none";};
 document.getElementById("bigmapWrap").addEventListener("click",function(e){
   if(e.target===this)this.style.display="none";});
-var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
+var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,pinchW=0,downT=0,downX=0,downY=0;
 /* 🎨 Zieh-Malen (User: „einfaches bauen, mehr Felder"): Boden-Auswahl + Finger/Maus ziehen = Fläche legen.
    Ein Set pro Zug verhindert Doppel-Abbuchung beim Zurückkreuzen; Geld-Hinweis nur 1× pro Zug. */
 var _paintSet=null,_paintHinted=false;
@@ -15100,7 +15130,8 @@ function paintFloorAt(px,py){
   var def=defOf(curItem);
   if(geld<def.cost){if(!_paintHinted){_paintHinted=true;hint("Zu wenig Geld.");}return true;}
   if(_paintSet)_paintSet.add(key);
-  doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;geldSend();updHUD();beep(660,.04,"triangle",.03);
+  bauGeld(function(){doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;geldSend();updHUD();});
+  beep(620+Math.random()*80,.04,"triangle",.03);
   return true;}
 /* 🩹 Schwarm-4: Nach einem kurzen Tipp reicht der Browser Kompatibilitaets-mousedown/mouseup nach
    (touchstart ist passiv, touchend ruft kein preventDefault) — Boeden buchten doppelt ab und
@@ -15108,17 +15139,21 @@ function paintFloorAt(px,py){
 renderer.domElement.addEventListener("mousedown",function(e){
   if(performance.now()-(window._lastTouch||0)<600)return;
   dragging=true;dragBtn=e.button;lx=e.clientX;ly=e.clientY;downT=performance.now();downX=e.clientX;downY=e.clientY;
-  _paintSet=new Set();_paintHinted=false;if(e.button===0)paintFloorAt(e.clientX,e.clientY);});
+  window._altKlick=!!e.altKey;bauZugBeginn();
+  _paintSet=new Set();_paintHinted=false;if(e.button===0){paintFloorAt(e.clientX,e.clientY);if(!e.shiftKey&&!e.altKey)zugStart(e.clientX,e.clientY);}});
 addEventListener("mousemove",function(e){
   if(dragging){var dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
-    if(dragBtn===0&&paintFloorAt(e.clientX,e.clientY)){/* 🎨 Boden-Malen frisst den Drag (Kamera-Drehen: rechte Taste/Shift) */}
+    if(dragBtn===0&&_zug&&zugBewegt(e.clientX,e.clientY)){/* 🧱 Wand/Zimmer ziehen frisst den Drag */}
+    else if(dragBtn===0&&paintFloorAt(e.clientX,e.clientY)){/* 🎨 Boden-Malen frisst den Drag (Kamera-Drehen: rechte Taste/Shift) */}
     else if(dragBtn===2||e.shiftKey){camTx-=(Math.cos(camA)*dx-Math.sin(camA)*dy)*0.03;camTz-=(-Math.sin(camA)*dx-Math.cos(camA)*dy)*0.03;}
     else{camAT=null;window._camHandT=performance.now();camA-=dx*0.005;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.004));}
     updCam();}
   if(buildMode)ghostFollow(e.clientX,e.clientY);});
 addEventListener("mouseup",function(e){dragging=false;
   if(performance.now()-(window._lastTouch||0)<600)return; /* 🩹 Schwarm-4: nachgereichtes Kompatibilitaets-mouseup */
-  if(performance.now()-downT<260&&Math.hypot(e.clientX-downX,e.clientY-downY)<8)tapAt(e.clientX,e.clientY);});
+  var _gezogen=zugEnde();
+  if(!_gezogen&&performance.now()-downT<260&&Math.hypot(e.clientX-downX,e.clientY-downY)<8){var _tx=e.clientX,_ty=e.clientY;bauGeld(function(){tapAt(_tx,_ty);});}
+  bauZugEnde();});
 renderer.domElement.addEventListener("contextmenu",function(e){e.preventDefault();});
 addEventListener("wheel",function(e){
   var alt=camRT;camRT=Math.max(7,Math.min(135,camRT*Math.pow(1.0018,e.deltaY)));
@@ -15146,24 +15181,38 @@ renderer.domElement.addEventListener("touchstart",function(e){
   window._lastTouch=performance.now();
   var tt=e.targetTouches;
   if(tt.length===1){dragging=true;lx=tt[0].clientX;ly=tt[0].clientY;downT=performance.now();downX=lx;downY=ly;
-    _paintSet=new Set();_paintHinted=false;paintFloorAt(lx,ly);
+    window._altKlick=false;bauZugBeginn();
+    _paintSet=new Set();_paintHinted=false;paintFloorAt(lx,ly);zugStart(lx,ly);
     if(buildMode)ghostFollow(lx,ly);} /* 🩹 Schwarm-4: Vorschau folgte nur der Maus — auf dem Handy klebte der Geist im Ursprung */
-  else if(tt.length===2){pinchD=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);}
+  else if(tt.length===2){pinchD=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
+    pinchW=Math.atan2(tt[1].clientY-tt[0].clientY,tt[1].clientX-tt[0].clientX);
+    if(_zug)zugAbbrechen();}   /* zweiter Finger: der Zug war keiner, sondern der Anfang einer Kamerageste */
 },{passive:true});
 renderer.domElement.addEventListener("touchmove",function(e){
   window._lastTouch=performance.now();
   var tt=e.targetTouches;
   if(tt.length===1&&dragging){var dx=tt[0].clientX-lx,dy=tt[0].clientY-ly;lx=tt[0].clientX;ly=tt[0].clientY;
     if(buildMode)ghostFollow(lx,ly); /* 🩹 Schwarm-4: Vorschau zieht mit dem Finger mit */
-    if(paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
+    if(_zug&&zugBewegt(lx,ly)){/* 🧱 Wand/Zimmer ziehen */}
+    else if(paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
     else{camAT=null;window._camHandT=performance.now();camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}}
   else if(tt.length===2){var nd=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
-    camRT=Math.max(7,Math.min(135,camRT-(nd-pinchD)*0.06));pinchD=nd;}
+    camRT=Math.max(7,Math.min(135,camRT-(nd-pinchD)*0.06));pinchD=nd;
+    /* 🔄 Zwei Finger DREHEN die Kamera (wie in jeder Karten-App). Bisher konnten zwei
+       Finger nur zoomen — und mit Boden- oder Wandwerkzeug in der Hand frisst der eine
+       Finger die Geste, drehen ging dann gar nicht mehr. */
+    var nw=Math.atan2(tt[1].clientY-tt[0].clientY,tt[1].clientX-tt[0].clientX),dw=nw-pinchW;
+    if(dw>Math.PI)dw-=2*Math.PI;if(dw<-Math.PI)dw+=2*Math.PI;
+    if(Math.abs(dw)<0.5){camAT=null;camA-=dw;}pinchW=nw;updCam();}
   e.preventDefault();},{passive:false});
 renderer.domElement.addEventListener("touchend",function(e){dragging=false;
   window._lastTouch=performance.now(); /* 🩹 Schwarm-4: blockt die nachgereichten Maus-Events */
-  if(e.changedTouches[0]&&performance.now()-downT<300){var t=e.changedTouches[0];
-    if(Math.hypot(t.clientX-downX,t.clientY-downY)<12)tapAt(t.clientX,t.clientY);}});
+  if(e.targetTouches&&e.targetTouches.length)return;   /* ein Finger liegt noch: Geste laeuft weiter */
+  var _gezogen=zugEnde();
+  if(!_gezogen&&e.changedTouches[0]&&performance.now()-downT<300){var t=e.changedTouches[0];
+    if(Math.hypot(t.clientX-downX,t.clientY-downY)<12)bauGeld(function(){tapAt(t.clientX,t.clientY);});}
+  bauZugEnde();});
+renderer.domElement.addEventListener("touchcancel",function(){dragging=false;zugAbbrechen();bauZugEnde();});
 
 // ===================== Bau-Interaktion =====================
 var ray=new THREE.Raycaster(),mouse=new THREE.Vector2(),groundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);
@@ -15175,30 +15224,64 @@ function pickCell(px,py){
   return {gx:gx,gy:gy,pt:pt};}
 var ghost=null,ghostOk=false;
 function refreshGhost(){
-  if(ghost){scene.remove(ghost);ghost=null;}
+  if(ghost){scene.remove(ghost);vorschauWeg(ghost);ghost=null;}
   if(!buildMode||!curItem||delMode)return;
   var def=defOf(curItem);
-  if(curItem.indexOf("boden")===0){
+  if(curItem.indexOf("boden")===0||curItem==="zimmer"){
     ghost=new THREE.Mesh(new THREE.PlaneGeometry(CS,CS),new THREE.MeshBasicMaterial({color:0x6aff9e,transparent:true,opacity:0.4}));
     ghost.rotation.x=-Math.PI/2;}
   else if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"||def.paint){
     ghost=new THREE.Mesh(new THREE.BoxGeometry(CS,2.6,0.16),new THREE.MeshBasicMaterial({color:0x6aff9e,transparent:true,opacity:0.4}));
-    ghost.position.y=1.3;var gg=new THREE.Group();gg.add(ghost);ghost=gg;}
+    ghost.position.y=1.3;var gg=new THREE.Group();gg.add(ghost);ghost=gg;ghost.scale.y=wandSkalaZiel();}
   else{var s=def.size||[1,1];
     ghost=new THREE.Mesh(new THREE.BoxGeometry(s[0]*CS*0.9,1,s[1]*CS*0.9),new THREE.MeshBasicMaterial({color:0x6aff9e,transparent:true,opacity:0.35}));
-    ghost.position.y=0.5;var gg2=new THREE.Group();gg2.add(ghost);ghost=gg2;}
+    ghost.position.y=0.5;var gg2=new THREE.Group();gg2.add(ghost);ghost=gg2;
+    vorschauModell(gg2,def);}
   scene.add(ghost);}
+/* 🪑 ECHTE VORSCHAU (Planet Coaster, Sims): statt eines gruenen Kastens steht das Moebel
+   selbst halb durchsichtig am Zeiger — man sieht vor dem Kauf, wie gross es ist und wohin
+   es zeigt. Der Kasten bleibt, bis das Modell da ist, und wird dann zur flachen
+   Grundflaeche, die gruen/rot anzeigt, ob der Platz frei ist.
+   Prozedurale Stuecke (Beet, Teich, Growbox, Stereo) und Auto/Hund haben keine Datei —
+   dort bleibt der Kasten. Materialien werden GEKLONT: die Vorlage teilt sie mit jedem
+   gesetzten Moebel, eine Deckkraft daran wuerde alle echten Sofas mit durchsichtig machen. */
+function vorschauModell(gg,def){
+  if(def.car||def.pet||def.grow||def.teich||def.stereo||def.beet)return;
+  var id=def.id,rot=curRot;
+  loadTH(id,function(tpl){
+    if(!tpl||ghost!==gg||curItem!==id)return;       /* inzwischen etwas anderes gewaehlt */
+    var m=tpl.clone(true);m.rotation.y=rot*Math.PI/2;furnMass(m,def);
+    m.traverse(function(n){if(!n.isMesh||!n.material)return;
+      var klon=function(mt){var c=mt.clone();c.transparent=true;c.opacity=0.6;c.depthWrite=false;
+        c.userData.em0=c.emissive?c.emissive.getHex():0;return c;};
+      n.material=Array.isArray(n.material)?n.material.map(klon):klon(n.material);
+      n.castShadow=false;n.userData.vorschau=1;});
+    var box=gg.children[0];
+    if(box){box.scale.y=0.04;box.position.y=0.03;}  /* Kasten → Grundflaeche */
+    m.userData.modellTraeger=1;gg.add(m);gg.userData.modell=m;});}
+function vorschauWeg(g){
+  if(!g)return;
+  g.traverse(function(n){if(n.userData&&n.userData.vorschau&&n.material){
+    (Array.isArray(n.material)?n.material:[n.material]).forEach(function(mt){mt.dispose();});}});}
 function ghostFollow(px,py){
+  window._gpx=px;window._gpy=py;
   if(!ghost)return;var c=pickCell(px,py);if(!c)return;
   var inL=inBau(c.gx,c.gy);
   var gdef=defOf(curItem);
   if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"||(gdef&&gdef.paint)){
     var e=nearestEdge(c);ghost.position.set(e.wx,0,e.wz);ghost.rotation.y=e.d===1?Math.PI/2:0;
     ghostOk=gdef&&gdef.paint?!!walls[e.x+","+e.y+","+e.d]:inL;}
-  else{ghost.position.set(cx(c.gx),ghost.position.y*0+(curItem.indexOf("boden")===0?0.03:0),cz(c.gy));
-    if(curRot%2===1)ghost.rotation.y=Math.PI/2;else ghost.rotation.y=0;
-    ghostOk=inL&&(curItem.indexOf("boden")===0||cellFree(c.gx,c.gy));}
-  ghost.traverse(function(n){if(n.material)n.material.color.setHex(ghostOk?0x6aff9e:0xff5d5d);});}
+  else{ghost.position.set(cx(c.gx),ghost.position.y*0+(curItem.indexOf("boden")===0||curItem==="zimmer"?0.03:0),cz(c.gy));
+    var _box=ghost.children[0];
+    if(ghost.isGroup){ghost.rotation.y=0;if(_box)_box.rotation.y=curRot%2===1?Math.PI/2:0;}   /* Moebel: das Modell ist schon gedreht gebaut */
+    else if(curRot%2===1)ghost.rotation.y=Math.PI/2;else ghost.rotation.y=0;
+    /* Moebel: dieselbe Pruefung wie beim Setzen (footprintFree, ALLE Zellen + Baufenster).
+       Vorher nur die Ankerzelle — ein Sofa leuchtete gruen und meldete dann „Hier steht schon etwas". */
+    ghostOk=inL&&(curItem.indexOf("boden")===0||curItem==="zimmer"||(gdef&&gdef.size?footprintFree(gdef,c.gx,c.gy,curRot):cellFree(c.gx,c.gy)));}
+  ghost.traverse(function(n){if(!n.material)return;
+    if(n.userData&&n.userData.vorschau){(Array.isArray(n.material)?n.material:[n.material]).forEach(function(mt){
+      if(mt.emissive)mt.emissive.setHex(ghostOk?(mt.userData.em0||0):0x7a1010);});return;}
+    n.material.color.setHex(ghostOk?0x6aff9e:0xff5d5d);});}
 function nearestEdge(c){
   var fx=c.pt.x-(cx(c.gx)-CS/2),fz=c.pt.z-(cz(c.gy)-CS/2);
   // näher an Nord/Süd-Kante oder Ost/West?
@@ -15236,6 +15319,8 @@ function tapAt(px,py){
         return;}}}
     return;}
   var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return;
+  if(pipMode||window._altKlick){pipMode=false;window._altKlick=false;document.getElementById("pipBtn").classList.remove("on");pipetteAt(c);return;}
+  if(curItem==="zimmer"){hint("Zimmer: gedrückt halten und ein Rechteck aufziehen — Wände, Boden und Tür kommen von selbst.");return;}
   if(delMode){editHide();if(doDelete(c.gx,c.gy))hint("Abgerissen. Die Hälfte gibt es zurück.");return;}
   if(editSel&&editMove){editVerschiebe(c.gx,c.gy);return;}
   if(!curItem){var fEd=furnAt(c.gx,c.gy);
@@ -15253,7 +15338,10 @@ function tapAt(px,py){
     doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;}
   else if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"){
     if(!inBau(c.gx,c.gy)){hint("Nur im Baufenster bauen.");return;} /* 🩹 Schwarm-4: man konnte quer durch Stadtstrassen mauern */
-    var e=nearestEdge(c);doPlaceWall(e.x,e.y,e.d,curItem);geld-=def.cost;}
+    var e=nearestEdge(c);
+    /* Dieselbe Wand noch einmal auf dieselbe Kante: kostete bisher ein zweites Mal. */
+    if(walls[e.x+","+e.y+","+e.d]&&walls[e.x+","+e.y+","+e.d].type===curItem){hint("Hier steht schon "+(curItem==="tuer"?"eine Tür":(curItem==="fenster"?"ein Fenster":"eine Wand"))+".");return;}
+    doPlaceWall(e.x,e.y,e.d,curItem);geld-=def.cost;}
   else if(def.paint){
     var e2=nearestEdge(c),ok9=doPaint(e2.x,e2.y,e2.d,def.paint);
     if(!ok9){var kand=[[c.gx,c.gy,0],[c.gx,c.gy+1,0],[c.gx-1,c.gy,1],[c.gx,c.gy,1]];
@@ -15577,12 +15665,16 @@ function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.o
   clearTimeout(hintT);hintT=setTimeout(function(){h.style.opacity=0;h.classList.remove("an");},dauer);}
 
 // ===================== UI =====================
+var ZIMMER_DEF={id:"zimmer",n:"Zimmer ziehen",e:"🏠",cost:0,zimmer:1};
 function renderPalette(){
   var cats=document.getElementById("palCats");cats.innerHTML="";
-  CATS.forEach(function(ct){var b=document.createElement("button");b.className="pcat"+(ct[0]===curCat?" on":"");
+  if(curCat==="zuletzt"&&!ZULETZT.length)curCat="bau";
+  (ZULETZT.length?[["zuletzt","🕘 Zuletzt"]]:[]).concat(CATS).forEach(function(ct){var b=document.createElement("button");b.className="pcat"+(ct[0]===curCat?" on":"");
     b.textContent=ct[1];b.onclick=function(){curCat=ct[0];renderPalette();};cats.appendChild(b);});
   var it=document.getElementById("palItems");it.innerHTML="";
-  var liste=curCat==="alle"?Object.keys(KATALOG).reduce(function(a,k){return a.concat(KATALOG[k]);},[]):KATALOG[curCat];
+  var liste=curCat==="zuletzt"?ZULETZT.map(function(id){return id==="zimmer"?ZIMMER_DEF:defOf(id);}).filter(Boolean):
+    (curCat==="alle"?Object.keys(KATALOG).reduce(function(a,k){return a.concat(KATALOG[k]);},[]):KATALOG[curCat]);
+  if(curCat==="bau"||curCat==="alle")liste=[ZIMMER_DEF].concat(liste);
   liste.forEach(function(d){var b=document.createElement("button");b.className="pitem"+(d.id===curItem?" on":"");
     var gesperrt=d.stufe&&d.stufe>wohnstufe&&MODUS!=="sandbox"; /* 🩹 Schwarm-6: Sandbox schaltet auch die Palette frei */
     if(gesperrt){
@@ -15590,13 +15682,14 @@ function renderPalette(){
       b.innerHTML="<div class='pe'>🔒</div><div class='pn'>"+d.n+"</div><div class='pp'>ab "+WOHNSTUFEN[d.stufe][0]+"</div>";
       b.onclick=function(){hint(d.n+" gibt es ab Wohnstufe "+WOHNSTUFEN[d.stufe][0]+" — bestehe die Bauabnahme.");beep(220,.1,"square",.04);};
     }else{
-      b.innerHTML="<div class='pe'>"+d.e+"</div><div class='pn'>"+d.n+"</div><div class='pp'>"+d.cost+" $</div>";
-      b.onclick=function(){curItem=d.id;delMode=false;editHide();document.getElementById("delBtn").classList.remove("on");renderPalette();refreshGhost();};
+      b.innerHTML="<div class='pe'>"+d.e+"</div><div class='pn'>"+d.n+"</div><div class='pp'>"+(d.zimmer?"ziehen":d.cost+" $")+"</div>";
+      b.onclick=function(){pipMode=false;document.getElementById("pipBtn").classList.remove("on");waehleTeil(d.id);};
     }
     it.appendChild(b);});}
 var curCat="bau";
-document.getElementById("rotBtn").onclick=function(){curRot=(curRot+1)%4;hint("Gedreht ("+["Nord","Ost","Süd","West"][curRot]+")");};
-addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="r"&&buildMode){curRot=(curRot+1)%4;}});
+function vorschauNeu(){refreshGhost();if(window._gpx!==undefined)ghostFollow(window._gpx,window._gpy);}
+document.getElementById("rotBtn").onclick=function(){curRot=(curRot+1)%4;vorschauNeu();hint("Gedreht ("+["Nord","Ost","Süd","West"][curRot]+")");};
+addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="r"&&buildMode&&!(e.target&&/^(INPUT|TEXTAREA)$/.test(e.target.tagName))){curRot=(curRot+1)%4;vorschauNeu();}});
 addEventListener("keydown",function(e){
   if(e.key==="Tab"){e.preventDefault();
     camAT=(camAT===null?camA:camAT)+(e.shiftKey?-1:1)*Math.PI/2;}
@@ -15670,6 +15763,402 @@ document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
   document.getElementById("palette").style.display=buildMode?"block":"none";
   document.getElementById("tools").style.display=buildMode?"flex":"none";
   gridHelper.visible=buildMode;refreshGhost();};
+/* ═══════ 🧱 BAU-WERKZEUGE — das Beste aus den grossen Aufbauspielen (Runde 89) ═══════
+   User 2026-09-23: „traumhaus verbessern, vor allem aufbau, kopiere von andere spielen
+   nur das beste". Uebernommen sind BEDIENMUSTER, keine Inhalte:
+   * Die Sims: Wand ZIEHEN statt Kante fuer Kante · Zimmer-Werkzeug (Rechteck aufziehen
+     = Waende rundum, Boden, Tuer) · Rueckgaengig/Wiederholen · Pipette · Waende halb
+     hoch zum Einrichten.
+   * Minecraft: die zuletzt benutzten Teile als eigene Reihe.
+   * Sims/Animal Crossing: die Grundstuecksgrenze ist im Baumodus immer zu sehen, die
+     Kamera faehrt beim Wechsel zum eigenen Grundstueck.
+   * Planet Coaster: die Vorschau zeigt das echte Modell statt eines gruenen Kastens.
+   * Townscaper: gebaute Teile wachsen weich aus dem Boden statt hart zu erscheinen.
+   Alles laeuft ueber doPlaceWall/doPlaceFloor/doPlaceFurn/doPaint/removeFurnAt — die
+   Aenderungen reisen damit im Koop wie bisher, es gibt keine neuen Nachrichtentypen. */
+
+/* ── Kanten und Rechtecke im Raster ─────────────────────────────────────────────
+   walls["x,y,0"] ist die NORDkante der Zelle (x,y) (z = (y-GH/2)*CS),
+   walls["x,y,1"] ihre OSTkante (x = (x-GW/2+1)*CS). Eine Kante darf gebaut werden,
+   wenn sie im Baufenster oder auf seinem Rand liegt — genau das, was der einzelne
+   Tipp ueber nearestEdge schon immer erlaubt hat. */
+function kanteImBau(x,y,d){
+  if(d===0)return x>=BAUX0&&x<BAUX0+BAUW&&y>=BAUY0&&y<=BAUY0+BAUH;
+  return x>=BAUX0-1&&x<BAUX0+BAUW&&y>=BAUY0&&y<BAUY0+BAUH;}
+function zelleVon(p){return {gx:Math.floor(p.x/CS+GW/2),gy:Math.floor(p.z/CS+GH/2)};}
+var ZUG_MAX=60;   /* laengste Wand in einem Zug: 60 Kanten = 120 m, mehr hat das Grundstueck nicht */
+function bauLinie(p0,p1){
+  var dx=p1.x-p0.x,dz=p1.z-p0.z,out=[],a,b,s,i;
+  if(Math.abs(dx)>=Math.abs(dz)){                 /* waagrecht: Nordkanten auf der naechsten Gitterlinie */
+    var j=Math.round(p0.z/CS+GH/2);
+    a=zelleVon(p0).gx;b=zelleVon(p1).gx;s=a<=b?1:-1;
+    for(i=a;out.length<ZUG_MAX;i+=s){out.push({x:i,y:j,d:0});if(i===b)break;}}
+  else{var gi=Math.round(p0.x/CS+GW/2);           /* senkrecht: Ostkanten der Zelle links der Linie */
+    a=zelleVon(p0).gy;b=zelleVon(p1).gy;s=a<=b?1:-1;
+    for(i=a;out.length<ZUG_MAX;i+=s){out.push({x:gi-1,y:i,d:1});if(i===b)break;}}
+  return out;}
+function bauRechteck(p0,p1){
+  var c0=zelleVon(p0),c1=zelleVon(p1);
+  return {x0:Math.min(c0.gx,c1.gx),x1:Math.max(c0.gx,c1.gx),y0:Math.min(c0.gy,c1.gy),y1:Math.max(c0.gy,c1.gy)};}
+function farbeDef(co){var l=KATALOG.bau;for(var i=0;i<l.length;i++)if(l[i].paint===co)return l[i];return null;}
+
+/* ── Der Plan eines Zugs: was wuerde gebaut, was kostet es ─────────────────────── */
+var _zimmerBoden=0;   /* Boden fuers Zimmer-Werkzeug: der zuletzt gewaehlte, sonst Parkett */
+function zugPlan(z){
+  var p={ops:[],kosten:0,ok:true,grund:"",rot:[],art:z.art};
+  if(z.art==="linie"||z.art==="streichen"){
+    var def=defOf(curItem),kanten=bauLinie(z.p0,z.p1);
+    kanten.forEach(function(e){var k=e.x+","+e.y+","+e.d,w=walls[k];
+      if(!kanteImBau(e.x,e.y,e.d)){p.rot.push(e);return;}
+      if(z.art==="streichen"){
+        if(w&&(w.co||0)!==def.paint){p.ops.push({t:"paint",x:e.x,y:e.y,d:e.d,c:def.paint,kosten:def.cost});p.kosten+=def.cost;}
+        return;}
+      /* Eine Wand zieht ueber Bestehendes hinweg, ohne es zu ersetzen (Tueren bleiben
+         Tueren). Ein Fensterzug macht aus schlichten Wandstuecken Fenster. */
+      if(curItem==="wand"&&w)return;
+      if(curItem==="fenster"&&w&&w.type!=="wand")return;
+      p.ops.push({t:"wall",x:e.x,y:e.y,d:e.d,ty:curItem,kosten:def.cost});p.kosten+=def.cost;});
+    p.kanten=kanten;
+    if(!p.ops.length){p.ok=false;
+      p.grund=p.rot.length===kanten.length?"Nur im Baufenster bauen.":
+        (z.art==="streichen"?"Hier ist keine Wand zum Streichen.":"Hier steht schon alles.");}
+    return p;}
+  /* Zimmer: Waende rundum, Boden innen, eine Tuer zur Kamera hin. */
+  var r=bauRechteck(z.p0,z.p1);p.r=r;
+  var bw=r.x1-r.x0+1,bh=r.y1-r.y0+1;p.bw=bw;p.bh=bh;
+  if(bw>18||bh>18){p.ok=false;p.grund="So gross wird kein Zimmer — höchstens 18 × 18 Felder.";return p;}
+  var kanten2=[],x,y;
+  for(x=r.x0;x<=r.x1;x++){kanten2.push({x:x,y:r.y0,d:0,seite:"n"});kanten2.push({x:x,y:r.y1+1,d:0,seite:"s"});}
+  for(y=r.y0;y<=r.y1;y++){kanten2.push({x:r.x0-1,y:y,d:1,seite:"w"});kanten2.push({x:r.x1,y:y,d:1,seite:"o"});}
+  var draussen=false;
+  for(x=r.x0;x<=r.x1&&!draussen;x++)for(y=r.y0;y<=r.y1;y++)if(!inBau(x,y)){draussen=true;break;}
+  if(draussen){p.ok=false;p.grund="Das Zimmer ragt aus dem Baufenster.";p.kanten=kanten2;return p;}
+  /* Tuer: in die Mitte der Seite, die zur Kamera zeigt — dort sieht man sie, und
+     niemand sperrt sich aus Versehen ein (Waende blockieren die Wegsuche, Tueren nicht). */
+  var sx=Math.sin(camA),sz=Math.cos(camA),seite;
+  if(Math.abs(sz)>=Math.abs(sx))seite=sz>0?"s":"n";else seite=sx>0?"o":"w";
+  var hatTuer=kanten2.some(function(e){var w=walls[e.x+","+e.y+","+e.d];return w&&w.type==="tuer";});
+  var seitenK=kanten2.filter(function(e){return e.seite===seite;}),tuerK=seitenK[(seitenK.length-1)>>1];
+  var dW=defOf("wand"),dT=defOf("tuer"),dB=defOf("boden"+_zimmerBoden)||defOf("boden0");
+  kanten2.forEach(function(e){var w=walls[e.x+","+e.y+","+e.d];if(w)return;
+    var ty=(!hatTuer&&e===tuerK)?"tuer":"wand",dd=ty==="tuer"?dT:dW;
+    p.ops.push({t:"wall",x:e.x,y:e.y,d:e.d,ty:ty,kosten:dd.cost});p.kosten+=dd.cost;});
+  for(x=r.x0;x<=r.x1;x++)for(y=r.y0;y<=r.y1;y++){
+    if(floors[fkey(x,y)]!==undefined)continue;
+    p.ops.push({t:"floor",x:x,y:y,i:+dB.id.slice(5),kosten:dB.cost});p.kosten+=dB.cost;}
+  p.kanten=kanten2;p.tuer=(!hatTuer&&tuerK)?tuerK:null;
+  if(!p.ops.length){p.ok=false;p.grund="Das Zimmer steht schon.";}
+  else if(geld<p.kosten){p.ok=false;p.grund="Das Zimmer kostet "+p.kosten+" $ — so viel ist nicht da.";}
+  return p;}
+
+/* ── Vorschau eines Zugs: Wandstuecke, Bodenflaeche, Kosten am Zeiger ──────────── */
+var _zugGeist=null,_zugGeistKey="",_zugMatOk=null,_zugMatRot=null,_zugMatBoden=null;
+function zugGeistWeg(){
+  if(_zugGeist){scene.remove(_zugGeist);_zugGeist.traverse(function(n){if(n.geometry)n.geometry.dispose();});_zugGeist=null;}
+  _zugGeistKey="";var m=document.getElementById("bauMass");if(m)m.style.display="none";
+  if(ghost)ghost.visible=true;}
+function zugGeistZeigen(z,px,py){
+  var p=zugPlan(z);
+  if(!_zugMatOk){
+    _zugMatOk=new THREE.MeshBasicMaterial({color:0x6aff9e,transparent:true,opacity:0.45,depthWrite:false});
+    _zugMatRot=new THREE.MeshBasicMaterial({color:0xff5d5d,transparent:true,opacity:0.45,depthWrite:false});
+    _zugMatBoden=new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.28,depthWrite:false});}
+  var key=JSON.stringify([p.kanten&&p.kanten.map(function(e){return e.x+","+e.y+","+e.d;}),p.r,p.ok]);
+  if(key!==_zugGeistKey){
+    if(_zugGeist){scene.remove(_zugGeist);_zugGeist.traverse(function(n){if(n.geometry)n.geometry.dispose();});}
+    _zugGeist=new THREE.Group();_zugGeistKey=key;
+    var hs=wandSkalaZiel(),rotSet={};
+    (p.rot||[]).forEach(function(e){rotSet[e.x+","+e.y+","+e.d]=1;});
+    (p.kanten||[]).forEach(function(e){
+      var k=e.x+","+e.y+","+e.d,schon=walls[k];
+      var gut=p.ok&&!rotSet[k];
+      if(schon&&z.art!=="streichen"&&!(curItem==="fenster"&&schon.type==="wand"))return;  /* Bestand nicht doppelt zeigen */
+      if(z.art==="streichen"&&!schon)return;
+      var tuer=p.tuer&&p.tuer.x===e.x&&p.tuer.y===e.y&&p.tuer.d===e.d;
+      var m=new THREE.Mesh(new THREE.BoxGeometry(tuer?CS*0.55:CS*0.96,2.6*hs,0.2),gut?_zugMatOk:_zugMatRot);
+      if(e.d===0)m.position.set(cx(e.x),1.3*hs,(e.y-GH/2)*CS);
+      else{m.position.set((e.x-GW/2+1)*CS,1.3*hs,cz(e.y));m.rotation.y=Math.PI/2;}
+      _zugGeist.add(m);});
+    if(p.r){var fl=new THREE.Mesh(new THREE.PlaneGeometry((p.r.x1-p.r.x0+1)*CS,(p.r.y1-p.r.y0+1)*CS),p.ok?_zugMatBoden:_zugMatRot);
+      fl.rotation.x=-Math.PI/2;fl.position.set((cx(p.r.x0)+cx(p.r.x1))/2,0.04,(cz(p.r.y0)+cz(p.r.y1))/2);_zugGeist.add(fl);}
+    scene.add(_zugGeist);}
+  if(ghost)ghost.visible=false;
+  var el=document.getElementById("bauMass");if(!el)return;
+  var txt;
+  if(z.art==="zimmer")txt=p.bw&&p.bh?(p.bw*CS)+" × "+(p.bh*CS)+" m · "+(p.ok?p.kosten+" $":p.grund):p.grund;
+  else{var n=p.ops.length,lang=(p.kanten?p.kanten.length:0)*CS;
+    txt=lang+" m · "+(p.ok?(n+(z.art==="streichen"?" gestrichen":(curItem==="fenster"?(n===1?" Fenster":" Fenster"):(n===1?" Wand":" Wände")))+" · "+p.kosten+" $"):p.grund);
+    if(p.ok&&geld<p.kosten)txt+=" · reicht für "+Math.floor(geld/(p.ops[0]?p.ops[0].kosten:1));}
+  el.textContent=txt;el.style.display="block";
+  var tx=Math.min(innerWidth-190,px+18),ty=Math.max(60,py-(window._lastTouch&&performance.now()-window._lastTouch<600?84:44));
+  el.style.left=tx+"px";el.style.top=ty+"px";}
+
+/* ── Der Zug selbst: Druecken, Ziehen, Loslassen ────────────────────────────────
+   Ein kurzer Tipp bleibt, was er war (einzelne Kante ueber tapAt). Erst wer den Finger
+   oder die Maus mehr als 10 px zieht, zieht eine Linie oder ein Zimmer auf. */
+var _zug=null;
+function zugArt(){
+  if(!buildMode||delMode||!curItem)return null;
+  if(curItem==="zimmer")return "zimmer";
+  if(curItem==="wand"||curItem==="fenster")return "linie";
+  var d=defOf(curItem);return d&&d.paint?"streichen":null;}
+function zugStart(px,py){
+  var art=zugArt();if(!art)return false;
+  var c=pickCell(px,py);if(!c)return false;
+  _zug={art:art,p0:c.pt.clone(),p1:c.pt.clone(),aktiv:false,sx:px,sy:py};return true;}
+function zugBewegt(px,py){
+  if(!_zug)return false;
+  if(!_zug.aktiv&&Math.hypot(px-_zug.sx,py-_zug.sy)<10)return true;   /* Zittern frisst den Zug, dreht aber nicht die Kamera */
+  _zug.aktiv=true;
+  var c=pickCell(px,py);if(c){_zug.p1=c.pt.clone();zugGeistZeigen(_zug,px,py);}
+  return true;}
+function zugAbbrechen(){_zug=null;zugGeistWeg();}
+function zugEnde(){
+  if(!_zug)return false;var z=_zug;_zug=null;zugGeistWeg();
+  if(!z.aktiv)return false;
+  bauGeld(function(){zugAusfuehren(z);});
+  return true;}
+function zugAusfuehren(z){
+  var p=zugPlan(z);
+  if(!p.ok){hint(p.grund);beep(220,.1,"square",.04);return;}
+  var n=0,bezahlt=0;
+  for(var i=0;i<p.ops.length;i++){var o=p.ops[i];
+    if(geld<o.kosten)break;
+    if(o.t==="wall")doPlaceWall(o.x,o.y,o.d,o.ty);
+    else if(o.t==="paint")doPaint(o.x,o.y,o.d,o.c);
+    else if(o.t==="floor")doPlaceFloor(o.x,o.y,o.i);
+    geld-=o.kosten;bezahlt+=o.kosten;n++;}
+  geldSend();updHUD();
+  if(!n){hint("Zu wenig Geld.");return;}
+  /* Kleiner Akkord statt eines Pieps: je mehr gebaut, desto hoeher der Schluss. */
+  beep(523,.07,"triangle",.04);setTimeout(function(){beep(659,.07,"triangle",.04);},70);
+  if(n>4)setTimeout(function(){beep(784,.1,"triangle",.045);},140);
+  if(z.art==="zimmer")hint("Zimmer "+(p.bw*CS)+" × "+(p.bh*CS)+" m steht"+(p.tuer?" — mit Tür":"")+". −"+bezahlt+" $");
+  else if(n<p.ops.length)hint("Das Geld reichte für "+n+" von "+p.ops.length+". −"+bezahlt+" $");
+  else hint((z.art==="streichen"?n+" Wandstück"+(n>1?"e":"")+" gestrichen":n+(curItem==="fenster"?" Fenster":(n>1?" Wände":" Wand"))+" gebaut")+". −"+bezahlt+" $");}
+
+/* ── Rueckgaengig / Wiederholen ──────────────────────────────────────────────────
+   WIE: jede Bauhandlung laeuft SYNCHRON in bauGeld(); davor und danach wird der Stand
+   (Waende, Boeden, Moebel, Geld) gelesen, die Differenz ist der Eintrag. Weil der Aufruf
+   synchron ist, kann in diesem Moment weder ein Lohn noch eine Nachricht des Partners
+   dazwischenkommen — die Differenz enthaelt nur, was DIESE Hand gebaut hat.
+   Ein Druck-Ziehen-Loslassen (Boden malen, Wand ziehen) wird zu EINEM Eintrag gebuendelt.
+   GELD: Rueckgaengig bucht genau die Differenz zurueck (Kauf voll erstattet, Abriss-Erloes
+   wieder abgezogen). Kein Weg, Geld zu erzeugen: Wiederholen kostet dasselbe erneut, und
+   beim Verlassen des Baumodus wird der Stapel geleert — wie in den Sims. Wer ein Sofa
+   einen Tag lang benutzt, bekommt es danach nicht mehr voll erstattet.
+   KOOP: angewendet wird nur, wenn ALLES noch so ist wie nach der Handlung; hat der Partner
+   inzwischen daran gebaut, wird der Eintrag verworfen statt halb ausgefuehrt. */
+var BAU_UNDO=[],BAU_REDO=[],_bauZugAcc=null,_bauZugOffen=false;
+function bauStand(){
+  var w={},f={},r={},k,gb=window._gratisBau||{};
+  for(k in walls)w[k]={t:walls[k].type,c:walls[k].co||0,g:gb["w"+k]?1:0};
+  for(k in floors)f[k]={i:floors[k],g:gb["f"+k]?1:0};
+  for(var i=0;i<furn.length;i++){var m=furn[i];
+    r[m.fid]={id:m.id,gx:m.gx,gy:m.gy,rot:m.rot,lv:m.lv||1,gratis:m.gratis||0,bezahlt:m.bezahlt||0,wachs:m.wachs};}
+  return {w:w,f:f,r:r,geld:geld};}
+function _gleichW(a,b){return (!a&&!b)||(a&&b&&a.t===b.t&&a.c===b.c);}
+function _gleichF(a,b){return (!a&&!b)||(a&&b&&a.i===b.i);}
+function bauGeld(fn){
+  var vor=buildMode?bauStand():null,erg;
+  try{erg=fn();}
+  finally{if(vor)bauAufnehmen(vor,bauStand());}
+  return erg;}
+function bauAufnehmen(vor,nach){
+  var acc=_bauZugAcc||{w:{},f:{},r:{},kosten:0},k;
+  var alle={};for(k in vor.w)alle[k]=1;for(k in nach.w)alle[k]=1;
+  for(k in alle){var a=vor.w[k]||null,b=nach.w[k]||null;if(_gleichW(a,b))continue;
+    if(acc.w[k])acc.w[k].nach=b;else acc.w[k]={vor:a,nach:b};}
+  alle={};for(k in vor.f)alle[k]=1;for(k in nach.f)alle[k]=1;
+  for(k in alle){var fa=vor.f[k]||null,fb=nach.f[k]||null;if(_gleichF(fa,fb))continue;
+    if(acc.f[k])acc.f[k].nach=fb;else acc.f[k]={vor:fa,nach:fb};}
+  for(k in vor.r)if(!nach.r[k]){if(acc.r[k])acc.r[k].nach=null;else acc.r[k]={vor:vor.r[k],nach:null};}
+  for(k in nach.r)if(!vor.r[k])acc.r[k]={vor:null,nach:nach.r[k]};
+  acc.kosten+=vor.geld-nach.geld;
+  if(_bauZugOffen)_bauZugAcc=acc;else bauEintragAbschliessen(acc);}
+function bauZugBeginn(){if(!buildMode)return;_bauZugOffen=true;_bauZugAcc=null;}
+function bauZugEnde(){
+  if(!_bauZugOffen)return;_bauZugOffen=false;
+  var acc=_bauZugAcc;_bauZugAcc=null;if(acc)bauEintragAbschliessen(acc);}
+function bauEintragAbschliessen(acc){
+  var e={w:[],f:[],r:[],kosten:acc.kosten},k;
+  for(k in acc.w)if(!_gleichW(acc.w[k].vor,acc.w[k].nach))e.w.push({k:k,vor:acc.w[k].vor,nach:acc.w[k].nach});
+  for(k in acc.f)if(!_gleichF(acc.f[k].vor,acc.f[k].nach))e.f.push({k:k,vor:acc.f[k].vor,nach:acc.f[k].nach});
+  for(k in acc.r)if(acc.r[k].vor||acc.r[k].nach)e.r.push({fid:k,vor:acc.r[k].vor,nach:acc.r[k].nach});
+  /* Auto und Hund stehen nicht in `furn` — ihr Kauf hinterlaesst keine Differenz im
+     Stand und wird darum nicht rueckgaengig gemacht (sonst gaebe es Geld ohne Rueckbau). */
+  if(!e.w.length&&!e.f.length&&!e.r.length)return;
+  BAU_UNDO.push(e);if(BAU_UNDO.length>40)BAU_UNDO.shift();
+  BAU_REDO.length=0;undoKnoepfe();}
+function furnVonFid(fid){for(var i=0;i<furn.length;i++)if(furn[i].fid===fid)return furn[i];return null;}
+/* Einen Eintrag in eine Richtung anwenden: zurueck = auf `vor`, vorwaerts = auf `nach`. */
+function bauAnwenden(e,zurueck){
+  var ziel=zurueck?"vor":"nach",jetzt=zurueck?"nach":"vor",i,k,p;
+  var geldNoetig=zurueck?-e.kosten:e.kosten;
+  if(geldNoetig>0&&geld<geldNoetig)return "Dafür fehlen "+(geldNoetig-geld)+" $.";
+  /* 1. Pruefen, ob noch alles so ist wie nach (bzw. vor) der Handlung */
+  for(i=0;i<e.w.length;i++){var cw=walls[e.w[i].k];
+    if(!_gleichW(cw?{t:cw.type,c:cw.co||0}:null,e.w[i][jetzt]))return "geaendert";}
+  for(i=0;i<e.f.length;i++){var cf=floors[e.f[i].k];
+    if(!_gleichF(cf===undefined?null:{i:cf},e.f[i][jetzt]))return "geaendert";}
+  var weg=[],hin=[];
+  for(i=0;i<e.r.length;i++){var it=e.r[i];
+    if(it[jetzt]){var rec=furnVonFid(it.fid);if(!rec)return "geaendert";weg.push(rec);}
+    if(it[ziel])hin.push(it);}
+  for(i=0;i<hin.length;i++){var st=hin[i][ziel],d9=defOf(st.id);if(!d9)return "geaendert";
+    var zellen=furnCells({gx:st.gx,gy:st.gy,rot:st.rot,def:d9});
+    for(var j=0;j<furn.length;j++){if(weg.indexOf(furn[j])>=0)continue;
+      var oc=furnCells(furn[j]);
+      for(var a=0;a<zellen.length;a++)for(var b=0;b<oc.length;b++)
+        if(zellen[a][0]===oc[b][0]&&zellen[a][1]===oc[b][1])return "geaendert";}}
+  /* 2. Anwenden — Moebel zuerst weg, dann Kanten und Boeden, dann Moebel hin */
+  var gast=MPs&&!mpHost;
+  weg.forEach(function(rec){var gx=rec.gx,gy=rec.gy;removeFurnAt(gx,gy,true);netSend({t:"del",x:gx,y:gy});
+    if(zurueck&&!gast)stats.moebelGekauft=Math.max(0,(stats.moebelGekauft||0)-1);});
+  window._gratisBau=window._gratisBau||{};
+  e.w.forEach(function(x){var q=x.k.split(","),gx=+q[0],gy=+q[1],d=+q[2],s=x[ziel],cur=walls[x.k];
+    if(!s)doPlaceWall(gx,gy,d,null);
+    else if(cur&&cur.type===s.t)doPaint(gx,gy,d,s.c);
+    else{doPlaceWall(gx,gy,d,s.t);if(s.c)doPaint(gx,gy,d,s.c);}
+    if(s&&s.g)window._gratisBau["w"+x.k]=1;else delete window._gratisBau["w"+x.k];});
+  e.f.forEach(function(x){var q=x.k.split(","),s=x[ziel];
+    doPlaceFloor(+q[0],+q[1],s?s.i:null);
+    if(s&&s.g)window._gratisBau["f"+x.k]=1;else delete window._gratisBau["f"+x.k];});
+  hin.forEach(function(it){var st=it[ziel];
+    doPlaceFurn(st.id,st.gx,st.gy,st.rot,false,undefined,st.lv);
+    var neu=furn[furn.length-1];
+    if(neu&&neu.id===st.id){_restoreLvWachs(neu,st.lv,st.wachs,st.gratis,st.bezahlt);it.fid=neu.fid;}
+    if(!zurueck&&!gast)stats.moebelGekauft=(stats.moebelGekauft||0)+1;});
+  geld+=zurueck?e.kosten:-e.kosten;geldSend();updHUD();
+  return "";}
+function bauRueckgaengig(){
+  if(!buildMode)return;
+  var e=BAU_UNDO.pop();if(!e){hint("Nichts zum Rückgängigmachen.");return;}
+  var r=bauAnwenden(e,true);
+  if(r==="geaendert"){hint("Das hat sich inzwischen geändert — Rückgängig geht hier nicht mehr.");beep(220,.1,"square",.04);}
+  else if(r){BAU_UNDO.push(e);hint(r);beep(220,.1,"square",.04);}
+  else{BAU_REDO.push(e);editHide();hint(e.kosten>0?"Rückgängig. +"+e.kosten+" $ zurück.":(e.kosten<0?"Rückgängig. −"+(-e.kosten)+" $":"Rückgängig."));
+    beep(520,.06,"triangle",.04);setTimeout(function(){beep(392,.08,"triangle",.04);},60);}
+  undoKnoepfe();}
+function bauWiederholen(){
+  if(!buildMode)return;
+  var e=BAU_REDO.pop();if(!e){hint("Nichts zum Wiederholen.");return;}
+  var r=bauAnwenden(e,false);
+  if(r==="geaendert"){hint("Das hat sich inzwischen geändert — Wiederholen geht hier nicht mehr.");beep(220,.1,"square",.04);}
+  else if(r){BAU_REDO.push(e);hint(r);beep(220,.1,"square",.04);}
+  else{BAU_UNDO.push(e);hint("Wiederholt.");beep(392,.06,"triangle",.04);setTimeout(function(){beep(520,.08,"triangle",.04);},60);}
+  undoKnoepfe();}
+function undoKnoepfe(){
+  var u=document.getElementById("undoBtn"),r=document.getElementById("redoBtn");
+  if(u){u.disabled=!BAU_UNDO.length;u.style.opacity=BAU_UNDO.length?"1":"0.45";}
+  if(r){r.disabled=!BAU_REDO.length;r.style.opacity=BAU_REDO.length?"1":"0.45";}}
+document.getElementById("undoBtn").onclick=bauRueckgaengig;
+document.getElementById("redoBtn").onclick=bauWiederholen;
+addEventListener("keydown",function(e){
+  if(!buildMode||!(e.ctrlKey||e.metaKey)||!e.key)return;
+  if(e.target&&/^(INPUT|TEXTAREA)$/.test(e.target.tagName))return;
+  var k=e.key.toLowerCase();
+  if(k==="z"&&!e.shiftKey){e.preventDefault();bauRueckgaengig();}
+  else if(k==="y"||(k==="z"&&e.shiftKey)){e.preventDefault();bauWiederholen();}});
+/* Die bestehenden Bauknoepfe laufen jetzt durch bauGeld — ohne ihren Inhalt anzufassen. */
+["edRot","edUp","edSell","villaBtn"].forEach(function(id){var el=document.getElementById(id);if(!el||!el.onclick)return;
+  var alt=el.onclick;el.onclick=function(ev){var self=this;return bauGeld(function(){return alt.call(self,ev);});};});
+
+/* ── Waende halb hoch (Sims: „Waende runter") ───────────────────────────────────
+   Beim Einrichten stehen die eigenen Waende im Weg: aus der Spielkamera sieht man ins
+   Zimmer nur von oben ueber die Mauerkrone. Im Baumodus stehen sie deshalb auf 36 %,
+   ein Knopf schaltet zurueck. Nur die GEZEICHNETE Hoehe aendert sich — Wegsuche und
+   Kollision lesen `walls`, nicht die Netze. ⚠️ Die Wandgruppen koennen von
+   _einfrieren() stammen (matrixAutoUpdate=false), darum nach jeder Aenderung
+   updateMatrix() — sonst aendert sich nur die Zahl, nicht das Bild. */
+var WAND_HALB=0.36,wandHalb=true;
+try{wandHalb=localStorage.getItem("th_wandHalb")!=="0";}catch(e){}
+function wandSkalaZiel(){return buildMode&&wandHalb?WAND_HALB:1;}
+function wandAnsichtSetzen(){var s=wandSkalaZiel();
+  for(var k in wallMeshes){var g=wallMeshes[k];if(!g)continue;g.scale.y=s;g.updateMatrix();}
+  var b=document.getElementById("halbBtn");if(b)b.classList.toggle("on",wandHalb);}
+document.getElementById("halbBtn").onclick=function(){wandHalb=!wandHalb;
+  try{localStorage.setItem("th_wandHalb",wandHalb?"1":"0");}catch(e){}
+  wandAnsichtSetzen();refreshGhost();hint(wandHalb?"Wände halb hoch — so siehst du beim Einrichten hinein.":"Wände in voller Höhe.");};
+
+/* ── Wachsen statt Aufpoppen (Townscaper) ──────────────────────────────────────── */
+var _bauPlopps=[];
+function bauPloppStart(o,art){if(!window._running||!o)return;_bauPlopps.push({o:o,t:0,art:art});}
+function updBauPlopps(dt){
+  for(var i=_bauPlopps.length-1;i>=0;i--){var p=_bauPlopps[i];
+    if(!p.o.parent){_bauPlopps.splice(i,1);continue;}
+    p.t+=dt;var u=Math.min(1,p.t/0.26);
+    var k=1+2.4*Math.pow(u-1,3)+1.4*Math.pow(u-1,2);   /* 0 → ~1,1 → 1 */
+    if(p.art==="w")p.o.scale.y=Math.max(0.02,k)*wandSkalaZiel();
+    else p.o.scale.set(Math.max(0.05,k),Math.max(0.05,k),1);
+    if(u>=1){if(p.art==="w")p.o.scale.y=wandSkalaZiel();else p.o.scale.set(1,1,1);_bauPlopps.splice(i,1);}
+    p.o.updateMatrix();}}
+
+/* ── Pipette (Sims) und zuletzt benutzte Teile (Minecraft) ────────────────────── */
+var pipMode=false,ZULETZT=[];
+try{ZULETZT=JSON.parse(localStorage.getItem("th_zuletzt")||"[]").filter(function(id){return id==="zimmer"||!!defOf(id);}).slice(0,8);}catch(e){ZULETZT=[];}
+function zuletztMerken(id){
+  ZULETZT=[id].concat(ZULETZT.filter(function(x){return x!==id;})).slice(0,8);
+  try{localStorage.setItem("th_zuletzt",JSON.stringify(ZULETZT));}catch(e){}
+  if(id.indexOf("boden")===0)_zimmerBoden=+id.slice(5);}
+function katVon(id){if(id==="zimmer")return "bau";for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return k;}return null;}
+function waehleTeil(id,rot){
+  var d=defOf(id);
+  if(d&&d.stufe&&d.stufe>wohnstufe&&MODUS!=="sandbox"){hint(d.n+" gibt es ab Wohnstufe "+WOHNSTUFEN[d.stufe][0]+".");return false;}
+  curItem=id;if(rot!==undefined&&rot!==null)curRot=rot;delMode=false;editHide();
+  document.getElementById("delBtn").classList.remove("on");
+  if(curCat!=="alle"&&curCat!=="zuletzt")curCat=katVon(id)||curCat;
+  zuletztMerken(id);renderPalette();refreshGhost();
+  /* Einmal je Sitzung sagen, dass man jetzt ZIEHEN kann — sonst tippt man weiter Kante fuer Kante. */
+  var _zieh=id==="wand"||id==="fenster"||id==="zimmer"||(d&&d.paint)||(id.indexOf("boden")===0);
+  if(_zieh&&!window._ziehTipp){window._ziehTipp=1;
+    hint(id==="zimmer"?"Zimmer: gedrückt halten und ein Rechteck aufziehen.":
+      "Tipp: gedrückt halten und ziehen baut eine ganze Reihe. Kamera drehen: "+(window._lastTouch?"zwei Finger":"rechte Maustaste")+".");}
+  var on=document.querySelector("#palItems .pitem.on");if(on&&on.scrollIntoView)try{on.scrollIntoView({inline:"center",block:"nearest"});}catch(e){}
+  return true;}
+function pipetteAt(c){
+  var f=furnAt(c.gx,c.gy);
+  if(f){if(waehleTeil(f.id,f.rot))hint("Pipette: "+f.def.n+" — tippe, um noch eins zu setzen.");return true;}
+  var e=nearestEdge(c),w=walls[e.x+","+e.y+","+e.d];
+  var abst=e.d===0?Math.abs(c.pt.z-e.wz):Math.abs(c.pt.x-e.wx);
+  if(w&&abst<0.55){
+    /* Gestrichene Wand: die Farbe ist das, was man wiederhaben will. */
+    var fd=w.co?farbeDef(w.co):null,id=fd?fd.id:w.type;
+    if(waehleTeil(id))hint("Pipette: "+defOf(id).n+".");return true;}
+  var fl=floors[fkey(c.gx,c.gy)];
+  if(fl!==undefined&&defOf("boden"+fl)){if(waehleTeil("boden"+fl))hint("Pipette: "+defOf("boden"+fl).n+".");return true;}
+  hint("Hier ist nichts zum Aufnehmen.");return false;}
+document.getElementById("pipBtn").onclick=function(){pipMode=!pipMode;
+  this.classList.toggle("on",pipMode);
+  if(pipMode){delMode=false;document.getElementById("delBtn").classList.remove("on");hint("Pipette: tippe auf ein Möbel, eine Wand oder einen Boden.");}};
+
+/* ── Grundstuecksgrenze + Gitter, das man auch sieht ─────────────────────────────
+   Das Gitter war weiss mit 22 % Deckkraft — auf hellem Rasen im Bild nicht zu finden
+   (Aufnahme vorher: kein einziger Strich erkennbar). Jetzt dunkle Linien und ein
+   Rahmen in Bernstein um genau das Baufenster. */
+gridHelper.material.color.setHex(0x23301a);gridHelper.material.opacity=0.26;
+(function(){
+  var W2=BAUW*CS/2,H2=BAUH*CS/2,b=0.32,m=new THREE.MeshBasicMaterial({color:0xe0a030,transparent:true,opacity:0.9,depthWrite:false});
+  [[0,-H2,2*W2+b,b],[0,H2,2*W2+b,b],[-W2,0,b,2*H2+b],[W2,0,b,2*H2+b]].forEach(function(s){
+    var r=new THREE.Mesh(new THREE.PlaneGeometry(s[2],s[3]),m);r.rotation.x=-Math.PI/2;r.position.set(s[0],0.015,s[1]);
+    r.renderOrder=2;gridHelper.add(r);});})();
+
+/* ── Der Wechsel in den Baumodus ─────────────────────────────────────────────── */
+(function(){var mb=document.getElementById("modeBtn"),alt=mb.onclick;
+  mb.onclick=function(ev){
+    if(buildMode){zugAbbrechen();bauZugEnde();}
+    alt.call(this,ev);
+    if(buildMode){
+      /* Sims: die Kamera faehrt zum eigenen Grundstueck. Nur wenn sie weit weg ist —
+         wer schon ueber dem Haus steht, soll nicht herumgerissen werden. */
+      if(Math.hypot(camTx,camTz)>30||followSim){followSim=null;window._bauKamZiel={x:0,z:0};camRT=Math.max(34,Math.min(camRT,62));}
+      renderPalette();}
+    else{BAU_UNDO.length=0;BAU_REDO.length=0;pipMode=false;document.getElementById("pipBtn").classList.remove("on");}
+    undoKnoepfe();wandAnsichtSetzen();};})();
+function updBauKamera(dt){var z=window._bauKamZiel;if(!z)return;
+  camTx+=(z.x-camTx)*Math.min(1,dt*3.2);camTz+=(z.z-camTz)*Math.min(1,dt*3.2);updCam();
+  if(Math.hypot(z.x-camTx,z.z-camTz)<0.4||!buildMode)window._bauKamZiel=null;}
+
 /* 🖋️ Eine Ikone als Text-Baustein. Die Kopfzeile trug bis hierher Betriebssystem-
    Emoji (💰 🕗 💼 💘), die auf iOS, Android und im Emulator drei verschiedene Bilder
    sind und farbig gegen die eine Palette stehen. Dieselben Strich-Symbole wie auf
@@ -16317,7 +16806,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updClub(dt);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
+    updHearts(dt);updPlopps(dt);updBauPlopps(dt);updBauKamera(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updClub(dt);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect

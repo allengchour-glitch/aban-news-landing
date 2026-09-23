@@ -223,6 +223,11 @@ const PRUEFUNGEN = [
   { name: 'Steuerung (Handy und PC)', datei: 'th-steuerung.mjs', kern: false,
     wert: (s) => (s.match(/— (\d+) ok/) || [, '?'])[1] + ' ok',
     gut: (s) => /🎉 STEUERUNG BESTANDEN/.test(s) },
+  /* Runde 89: die Bau-Werkzeuge bewegen Geld (Rueckgaengig erstattet, Abriss zahlt aus) —
+     ein Fehler dort erzeugt Geld oder vernichtet es, ohne dass man es im Bild sieht. */
+  { name: 'Bauen (Ziehen, Zimmer, Rueckgaengig, Kasse)', datei: 'th-bauen.mjs', kern: true,
+    wert: (s) => (s.match(/(\d+)\/(\d+) bestanden/) || [, '?', '?']).slice(1).join('/'),
+    gut: (s) => { const m = s.match(/(\d+)\/(\d+) bestanden/); return !!m && m[1] === m[2] } },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },
