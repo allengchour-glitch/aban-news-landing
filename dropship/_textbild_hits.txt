@@ -15986,3 +15986,5 @@ gid://shopify/Product/15510800007553	40->0	Business-Freizeit Rucksack Nylon
 gid://shopify/Product/15517644620161	19->2	Vibrato Net Celebrity Damenuhr-Set
 gid://shopify/Product/15519823135105	24->1	M2 Smartwatch mit Farbdisplay
 gid://shopify/Product/15519836733825	21->1	Hundeleine mit faltbarem Napf – 3er-Set
+gid://shopify/Product/15519837716865	30->1	Kontrast Lederarmband
+gid://shopify/Product/15520408961409	49->0	Haaransatz Puder
