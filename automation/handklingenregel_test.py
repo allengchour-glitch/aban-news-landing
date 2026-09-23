@@ -24,6 +24,15 @@ SPERREN = [
     "Klingen-Set mit Metallgriff",
     "Wild Wolf Sever Messer, scharf und leicht zu schleifen",
     "Stahlmesser für Fleisch",
+    # 23.09.2026 (Social-Messung): englische CJ-Titel und «Messer MIT Hülle» fielen durch
+    "Alloy Outdoor A Folding Knife Blade Removable",
+    "Damast Boning Knife aus AUS10-Stahl",
+    "Hackmesser aus Edelstahl mit Schutzhülle",
+    "Geschmiedetes Küchenmesser mit Lederscheide",
+    "Kitchen Cleaver with Sheath",
+    "Messerblock mit 6 Messern",
+    "Knife Block Set with 5 Knives",
+    "Klappmesser inkl. Etui",
 ]
 DURCHLASSEN = [
     "Magnetischer Messerhalter aus Bambus",        # Zubehoer, keine Klinge im Paket
@@ -47,6 +56,17 @@ DURCHLASSEN = [
     "Farbenprächtige Schwertfisch-Diamantmalerei", # Fisch
     "Kissen mit Schwertblatt-Nagelblumen-Muster",  # Bogenhanf
     "Roland Plotter-Klingen (15er-Set)",           # Bastelgeraet-Zubehoer
+    # 23.09.2026: Gegenrichtung der englischen Woerter und der Mit-Huelle-Regel
+    "Knife Sharpener 3-Stage",
+    "Leather Knife Sheath",
+    "Magnetic Knife Holder Strip",
+    "Sticker Swiss Army Knife",
+    "Tasse mit Taschenmesser-Motiv",
+    "Messerschärfer mit Schutzhülle",
+    "Gemüsehobel mit 5 Klingen und Schutzhülle",
+    "Spiralschneider mit 3 Klingen",
+    "Handyhülle mit Messer-Motiv",
+    "Dagger Earrings aus Silber",
 ]
 
 def main():

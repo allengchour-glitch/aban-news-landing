@@ -507,6 +507,50 @@ def metricool_kanaele():
         return f"METRICOOL: unklar ({type(e).__name__})"
 
 
+def social_meta_live():
+    """23.09.2026 (Social-Messung, Massnahme 7): die IG-Kadenz aus der PLATTFORM, nicht aus den Queues —
+    eine Queue-Zeile «posted» kann ein IG-Fehler sein (02:08-Fall), ein Autostash kann eine Quittung
+    verschlucken (Kristall 14:39). Dazu die Tage bis zum Ende des Meta-Datenzugangs (debug_token,
+    05.10.2026 gemessen) und neue Autostashes (= zwei Schreiber kollidierten im Arbeitsbaum)."""
+    teile = []
+    try:
+        tok = open("/tmp/meta_page_token").read().strip()
+        ig = open("/tmp/meta_ig_id").read().strip()
+        def graph(pfad):
+            with urllib.request.urlopen(f"https://graph.facebook.com/v21.0/{pfad}&access_token={tok}", timeout=25) as r:
+                return json.loads(r.read())
+        media = graph(f"{ig}/media?fields=timestamp,media_type,media_product_type&limit=30").get("data") or []
+        jetzt = datetime.datetime.now(datetime.timezone.utc)
+        zeiten = [(datetime.datetime.strptime(m["timestamp"], "%Y-%m-%dT%H:%M:%S%z"), m) for m in media]
+        tag = [m for t, m in zeiten if (jetzt - t).total_seconds() < 86400]
+        reels = sum(1 for m in tag if m.get("media_product_type") == "REELS")
+        karussell = sum(1 for m in tag if m.get("media_type") == "CAROUSEL_ALBUM")
+        seit = min(((jetzt - t).total_seconds() / 3600 for t, _ in zeiten), default=999)
+        txt = f"IG 24 h: {len(tag)} (Reels {reels} · Karussell {karussell}) · letzter vor {seit:.0f} h"
+        if not tag and not os.path.exists(os.path.join(REPO, "dropship", "_SOCIAL_STOPP")):
+            txt = "⚠️ " + txt
+        teile.append(txt)
+        d = graph(f"debug_token?input_token={tok}").get("data") or {}
+        ende = d.get("data_access_expires_at") or 0
+        if ende:
+            tage = (ende - jetzt.timestamp()) / 86400
+            if tage < 14:
+                teile.append(f"{'⛔' if tage < 3 else '⚠️'} META-DATENZUGANG endet in {tage:.0f} Tagen "
+                             f"({datetime.datetime.utcfromtimestamp(ende):%d.%m. %H:%M} UTC) — Betreiber erneuert im Graph-Explorer")
+    except Exception as e:
+        teile.append(f"IG: unklar ({type(e).__name__})")
+    try:
+        grenze = datetime.datetime.now().timestamp() - 86400
+        zeilen = subprocess.run(["git", "-C", REPO, "stash", "list", "--format=%ct %gs"],
+                                capture_output=True, text=True, timeout=20).stdout.split("\n")
+        neu = sum(1 for z in zeilen if z.strip() and "autostash" in z and int(z.split()[0]) > grenze)
+        if neu:
+            teile.append(f"⚠️ {neu} neue Autostashes in 24 h (Quittungen pruefen: git stash show)")
+    except Exception:
+        pass
+    return " · ".join(teile)
+
+
 def grow_zaehler():
     """GROW (23.09.2026, Betreiber: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»): zaehlt bezahlte,
     nicht erstattete Bestellungen FREMDER Kunden seit dem Start in dropship/_grow_bedingung.txt. Eigenbestellungen des
@@ -660,7 +704,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

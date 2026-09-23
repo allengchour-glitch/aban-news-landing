@@ -4,6 +4,20 @@
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
+## 🆕 23.09. 18:55 UTC — Instagram-Bio-Link auf «Gerade auf Instagram» (1 Min) · ⏰ Meta-Zugang bis 05.10.
+
+**K — Bio-Link:** Jede Caption sagt «Link im Profil», der Link führte aber auf die Startseite — dort steht das gezeigte
+Produkt nicht (4 Website-Klicks in 28 Tagen). Neu gibt es die Kollektion **«📸 Gerade auf Instagram»**, die sich nach
+jedem Post selbst füllt (Tagger `automation/ig_gepostet_tags.py`, 30 Tage). Instagram → Profil bearbeiten → Links →
+Website ersetzen durch:
+`https://luxestyle.ch/collections/gerade-auf-instagram?utm_source=instagram&utm_medium=social&utm_campaign=bio`
+(Live geprüft 23.09. 18:50 UTC: Seite zeigt Damenuhr, Futterspender, EMS-Massagegerät, Solar-Lautsprecher, Gua-Sha-Set,
+Aroma-Diffuser.) Der Profil-Link ist per API nicht setzbar.
+
+**L — Meta-Datenzugang erneuern, spätestens 04.10.:** `debug_token` sagt: der Zugang des Seiten-Tokens endet am
+**05.10.2026 18:50 UTC**. Danach posten Instagram/Facebook nichts mehr (TikTok/YouTube/Pinterest über Metricool laufen
+weiter). Graph-Explorer → App «1680844973132194» → Seiten-Token neu erzeugen → im Chat geben. Die Ampel zählt die Tage.
+
 ## ✅ ERLEDIGT 23.09. ~16:55 UTC (Betreiber) — Judge.me: doppeltes Produkt-Schema ohne Preis abgeschaltet · an der API bestätigt `disable_json_ld: true`; Merchant «Missing product price» in ~3–7 Tagen nachmessen
 Merchant Center meldet «Missing product price» für 1'220 Produkte. In Shopify hat **jede** aktive Variante einen
 Preis (426'000 geprüft). Die Produktseiten bewerteter Artikel tragen aber zwei Produkt-Datensätze für Google:

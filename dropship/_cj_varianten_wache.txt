@@ -4248,3 +4248,38 @@ gid://shopify/Product/15448877662593	1790184847	unklar	CJ-Code 16900500: Insuffi
 gid://shopify/Product/15448877760897	1790184847	unklar	CJ-Code 16900500: Insufficient API points. Used today: 109930, Remai
 gid://shopify/Product/15448877859201	1790184847	unklar	CJ-Code 16900500: Insufficient API points. Used today: 109930, Remai
 gid://shopify/Product/15448877924737	1790184847	unklar	CJ-Code 16900500: Insufficient API points. Used today: 109930, Remai
+gid://shopify/Product/15448832868737	1790154505	ok	12 Shop / 12 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448832999809	1790154505	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448833196417	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448833917313	1790154505	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834048385	1790154505	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834146689	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834507137	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834539905	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834605441	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834670977	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834703745	1790154505	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834802049	1790154505	ok	27 Shop / 27 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448837587329	1790154505	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448837849473	1790154505	nicht-aktiv	DRAFT
+gid://shopify/Product/15448838111617	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448838242689	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448838635905	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448838930817	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448839324033	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448839356801	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448839520641	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448839553409	1790154505	nicht-aktiv	DRAFT
+gid://shopify/Product/15448840831361	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448843977089	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448844468609	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448844730753	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448844927361	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448845025665	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448846008705	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448846467457	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448846598529	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448846762369	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448846860673	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448846958977	1790154505	unklar	CJ-Code 16900500: Insufficient API points. Used today: 87580, Remain
+gid://shopify/Product/15448847221121	1790154505	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY

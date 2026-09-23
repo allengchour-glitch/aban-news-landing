@@ -44,6 +44,8 @@ HANDKLINGE_STAMM = re.compile(_R['handklinge_stamm'], re.I)
 HANDKLINGE_KEIN_PAKET = re.compile(_R['handklinge_kein_paket'], re.I)
 HANDKLINGE_GERAET = re.compile(_R['handklinge_geraet'], re.I)
 HANDKLINGE_SPIELZEUG = re.compile(_R['handklinge_spielzeug'], re.I)
+HANDKLINGE_MIT_ZUBEHOER = re.compile(_R['handklinge_mit_zubehoer'], re.I)
+_KLINGEN_NOMEN = ('messer', 'messern', 'knife', 'knives')
 
 
 def ist_klinge(titel):
@@ -87,12 +89,21 @@ def ist_handklinge(titel):
     t = titel or ''
     if KONTEXT_AUSNAHME.search(t):
         return False
-    if HANDKLINGE_KEIN_PAKET.search(t) or HANDKLINGE_GERAET.search(t):
-        return False
     if HANDKLINGE_SPIELZEUG.search(t):
         return False
     if MESSGERAET.search(t):
         return False
     if WAFFENWORT_VORNE.search(t) and VORNE_AUSNAHME.search(t):
+        return False
+    # 23.09.2026: Paket MIT Klinge — «Hackmesser mit Schutzhülle», «Messerblock mit 6 Messern».
+    # Steht VOR der Zubehör-Ausnahme, weil «schutzhülle»/«scheide» dort als reines Zubehör gelten.
+    m = HANDKLINGE_MIT_ZUBEHOER.search(t)
+    if m and not HANDKLINGE_GERAET.search(t):
+        vor = t[:m.start()]
+        if m.group(1).lower() in _KLINGEN_NOMEN:
+            return True
+        if HANDKLINGE_STAMM.search(vor) and not HANDKLINGE_KEIN_PAKET.search(vor):
+            return True
+    if HANDKLINGE_KEIN_PAKET.search(t) or HANDKLINGE_GERAET.search(t):
         return False
     return bool(HANDKLINGE_STAMM.search(t))
