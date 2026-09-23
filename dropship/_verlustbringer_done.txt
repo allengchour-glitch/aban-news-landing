@@ -255,3 +255,9 @@ gid://shopify/Product/15452676456833	2026-09-23T05:01Z	draft	15.90	55.13	Kimchi-
 gid://shopify/Product/15453774283137	2026-09-23T05:01Z	draft	27.90	67.06	Keramik-Futternapf für Hunde, grosse Kapazität
 gid://shopify/Product/15499867259265	2026-09-23T05:01Z	draft	19.90	58.97	Chenille-Sofakapuze
 gid://shopify/Product/15452708536705	2026-09-23T05:01Z	draft	50.90	89.68	2-in-1 Haarstyling-Bürste
+gid://shopify/Product/15502971142529	2026-09-23T05:01Z	draft	49.90	88.59	Winkelschleifer-Halterung für präzises Schneiden
+gid://shopify/Product/15503146058113	2026-09-23T05:01Z	draft	38.90	77.54	Mehrschichtiger Schubladen-Organizer
+gid://shopify/Product/15500072452481	2026-09-23T05:01Z	draft	17.90	56.48	Stahlkaffee-Filter
+gid://shopify/Product/15454108385665	2026-09-23T05:01Z	draft	21.90	60.32	Feuchtefilterschacht Fischglas
+gid://shopify/Product/15503947235713	2026-09-23T05:01Z	draft	24.90	63.31	Magnetisches Kühlschrankregal für die Seitenwand
+gid://shopify/Product/15453810164097	2026-09-23T05:01Z	draft	72.90	111.18	Leichtes Einzelpersonenzelt für Outdoor
