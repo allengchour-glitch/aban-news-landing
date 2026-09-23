@@ -15945,3 +15945,5 @@ gid://shopify/Product/15523863462273	34->0	Mushroom Silikon-Trichter
 gid://shopify/Product/15523963339137	31->0	Fressnapf aus Keramik für Haustiere
 gid://shopify/Product/15525265932673	19->0	Wasserdichte Business‑Armbanduhr aus Stahl
 gid://shopify/Product/15525499601281	23->0	Futterspielzeug für Hunde
+gid://shopify/Product/15412899676545	18->0	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
