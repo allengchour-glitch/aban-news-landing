@@ -6883,7 +6883,7 @@ den **Vorgarten** geschoben hatte, und der Werkstatt-Kunde halb **in einer über
 Polizei-Einsatzort: **53 von 120** Proben im Grünen, Zuhause 20/24 (Formel: 34 m in zufälligem
 Winkel). Verkehr: 0,7 % — der Verkehr war nie das Problem.
 
-**Nachher (gemessen, `th-autoboden`):** stehend im Grünen **0**, in Objekt 0, Verkehr 0,8 %,
+**Nachher (gemessen, `th-autoboden`):** stehend im Grünen **0**, in Objekt 0, Verkehr 0,2 % (Rest: Müllwagen 2/40 am Zubringer 60°),
 Polizei-Einsatzort **0 von 120** (nach der Verschärfung auf Zellen mit Strassen-Nachbarn; davor 5, ganz zu Beginn 53),
 `JS-Fehler 0`. `th-alle --schnell` **11 von 11**, `th-strassen` 144 Stellen (Parkstreifen-Wagen
 zählt nicht mehr, Bushalte-Kante weg), html-validate 0 Fehler / 56 Warnungen, th-hud 0 Befunde.
@@ -6943,7 +6943,9 @@ halten nicht mehr bei „Rot" mitten auf dem Ring.
 11. **Der Feld-Platzierer kannte die Viertelstrassen nicht.** `frei()` prüfte die Viertel an
     ihrer Wunschposition mit 8 m Rand; die Bauernhofstrasse liegt am Viertelrand, 5 m
     ausserhalb. Ein Feld (y 0,02) lag über dem Westende, das Postauto fuhr 9/40 „auf Grün".
-    Jetzt meidet `frei()` die tatsächlichen Bänder aus `_viertelBaender()` (mit Gehweg).
+    Jetzt meidet `frei()` die tatsächlichen Bänder aus `_viertelBaender()` (mit Gehweg) — und
+    der Generator läuft per `setTimeout 0` **nach** den synchron gesetzten Vierteln, sonst kennt
+    er die Farmstrasse noch nicht (danach lag ein zweites Feld über dem Ostteil). Messung 7/40 → 0.
 12. **Selbst spielen ist ein Werkzeug**: `spiele-dev/tools/th-spielfahrt.mjs` fährt Wegpunkte mit dem
     echten Fahrmodell (`fahrStart`/`fahr` wie th-fahrgefuehl, Lenkvorzeichen und
     Fahrtrichtung werden gemessen, nicht angenommen) und fotografiert alle 45 m aus der
