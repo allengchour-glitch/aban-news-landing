@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:47:36Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-23T23:50:15Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **1064** in 307 Produkten
-- Treffer (≥ 4 Wörter): **39** in 38 Produkten
+- Medien geprüft: **1154** in 332 Produkten
+- Treffer (≥ 4 Wörter): **43** in 41 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -29,6 +29,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Grillabdeckung aus Oxford-Gewebe `15448959910273` | [69862680527233](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/09436e7d-1a60-47bf-8225-e236c3f372d9.jpg) | 10 | Suitable for most machines with width Please ensure | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [69926292881793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c946bda-8782-4759-9d82-90a6b13f1808.jpg) | 10 | Intelligent perception obstacle avoidance Four way detection and | offen |
 | Aerial Photography Drone 8K HD `15453744431489` | [69926294815105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fd59f6e3-77ce-4e6d-876f-c97bfb20df80.jpg) | 9 | Long battery life Bidirectional electric optical flow obstacle | offen |
+| 8K-Luftbild-Drohne `15453744300417` | [69926294487425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c22c3423-4f47-4372-8567-aef18a6d44c5_trans.jpg) | 9 | player the aerial photography industry Easy fly and | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | offen |
@@ -45,10 +46,13 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | 3-Kamera-Drohne für Luftaufnahmen `15453744005505` | [69926294094209](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8f9245a2-a265-40e5-a818-99f5891e05da.jpg) | 5 | apture the moment lagship came | offen |
 | Drohne mit Dual-Kamera und GPS `15453743513985` | [69926292947329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20a66ec0-05d5-44d3-8321-f01130d051ff.jpg) | 5 | With screen remote control Gow | offen |
 | Kamera-Drohne mit Hindernis-Erkennung `15453744071041` | [69926294126977](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/61651cf6-67b3-4f62-830e-cf9f25cc6c1c.jpg) | 5 | apture the moment lagship came | offen |
+| TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [69926633734529](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans.jpg) | 5 | Foldable yoga mat available complete | offen |
+| TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [70519184818561](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans_6c0240cc-d11e-466b-8558-4cce46170c2b.jpg) | 5 | Foldable yoga mat available complete | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
 | Gänse-Jagd-Spielzeug für Katzen `15453790536065` | [69926763266433](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6f49f688-f0ae-4e7b-b31a-43f8d80c3eac_trans.jpg) | 4 | wings sound accompanying lon | offen |
 | Tragbarer FPV-Farbregler `15453742924161` | [69926291833217](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa9ea343-d559-42cd-87eb-aac84abce14a.jpg) | 4 | SLATE GREY CHERRY RED | offen |
+| Katzen-Spielball mit Spasseffekt `15453763240321` | [69926634258817](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4d77259-7e07-41e9-ac68-d1ecda4e62bb.jpg) | 4 | Master entertainment All day | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
