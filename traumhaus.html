@@ -824,6 +824,15 @@ function putzTex(rx,ry){
 // ===================== Grundstück =====================
 var GW=72,GH=46,CS=2; // Open-World XXL-BREIT 2026-07-25 (alt 60x46/50x38 → Migration in loadSnapshot)
 var RX=GW*CS/2+6,RL=2*RX+48; // Querstrassen-Abstand (x) + Strassenlänge — skalieren mit der Map
+/* 🛣️ QUERSCHNITT DER HAUPTSTRASSEN (Runde 92, User: „striche auf strassen sind komisch").
+   Abstaende von der Mitte (z = ±58), 16 m Fahrbahn. Vorher standen die Zahlen an fuenf
+   Stellen und passten nicht zueinander: Spuren bei 2 und 5, Leitlinie bei 4, Parklinie
+   bei 5,3, Randlinie bei 7,5. Die aeussere Spur war damit 1,3 m breit — die Wagen fuhren
+   AUF der Parklinie, halb in den Parkfeldern, und die Randlinie lief quer durch die Felder.
+   Jetzt eine Tabelle, aus der Verkehr, Pfeile, Haltelinien und Markierung lesen:
+     Sperrlinie ±0,3 | Spur 1,8 | Leitlinie 3,1 | Spur 4,4 | Randlinie 5,75 | Parkstreifen bis 7,9 (Bordstein 8,05)
+   Zwei Spuren a 2,7 m, ein Parkstreifen von 2,15 m — ein Pkw ist 1,9 m breit. */
+var HS_INNEN=1.8,HS_AUSSEN=4.4,HS_LEIT=3.1,HS_PARK=5.75,HS_BORD=7.9;
 /* 🏗️ BAUFENSTER (User: „das bauland kann 1/4 von mitte sein, du kannst der rest
    fuellen mit sachen wo n stadt passen"). Das Gitter bleibt 72 x 46 Zellen — daran
    haengen Saves, Wegfindung, Sim-Logik und die Strassenlage (RX). Neu GEBAUT wird
@@ -2880,11 +2889,10 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     [RX,-RX].forEach(function(xc){ [SZ9+12,-(SZ9+12)].forEach(function(zc){
       var k=new THREE.Mesh(new THREE.PlaneGeometry(10,16),kMat);
       k.rotation.x=-Math.PI/2;k.position.set(xc,0.002,zc);k.receiveShadow=true;scene.add(k);
-      /* Haltelinien: quer zur jeweiligen Zufahrt, knapp vor der Kreuzung */
-      [[xc-5.6,zc,0.3,7.2],[xc+5.6,zc,0.3,7.2],      /* Ost/West-Zufahrt (Hauptstrasse) */
-       [xc,zc-8.6,7.2,0.3],[xc,zc+8.6,7.2,0.3]].forEach(function(h){
-        var l=new THREE.Mesh(new THREE.PlaneGeometry(h[2],h[3]),wMat);
-        l.rotation.x=-Math.PI/2;l.position.set(h[0],0.008,h[1]);scene.add(l);});
+      /* ⚠️ Hier lagen vier weitere Haltelinien an der Kreuzungskante (±5,6 / ±8,6) —
+         jede Zufahrt hatte damit ZWEI: eine vor dem Zebra (±19,5) und eine hinter ihm,
+         und die Wagen hielten bei Rot auf keiner von beiden, sondern auf dem Streifen
+         dazwischen. Es bleibt die vor dem Zebra; dort halten die Wagen jetzt auch. */
     });});
   })();
   // Bordsteine an den Fahrbahnkanten + weicher Erdstreifen zwischen Gehweg und Rasen
@@ -2924,34 +2932,42 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
     (window._markMats=window._markMats||[]).push(mM);
     [SZp,-SZp].forEach(function(zc){
-      /* Buchten hugen den Bordstein: Fahrbahn ±8, Bucht 2.4 tief bei ±6.6 -> 5.4..7.8 */
-      [zc>0?zc-6.6:zc+6.6,zc>0?zc+6.6:zc-6.6].forEach(function(zs,seite){
-        /* Buchten-Belag etwas heller als die Fahrbahn, damit man sie erkennt */
-        /* Nur Markierung, KEIN eigener Belag: ein andersfarbiges Rechteck sah aus wie eine
-           Textur, die ueber die Strasse gelegt wurde (User). Parkstreifen sind in echt auch
-           nur aufgemalt. */
+      /* Parkfelder zwischen Randlinie (HS_PARK) und Bordstein (HS_BORD). Die eigene
+         Laengslinie bei ±5,3 entfaellt — die Randlinie ist jetzt diese Kante. */
+      var PT=HS_BORD-HS_PARK, PM=(HS_BORD+HS_PARK)/2;
+      [zc>0?zc-PM:zc+PM,zc>0?zc+PM:zc-PM].forEach(function(zs,seite){
         /* ⚠️ WAR [[-58,26],[-18,26],[22,26],[62,26]] — gleichmaessig verteilt, aber
            nicht MITTIG: die Mitte von -58 und 62 liegt bei +2. Das oestliche Segment
            reichte darum bis x = 75 und lag 2,05 m in der Querstrasse Ost (Kante 72,95),
            waehrend es im Westen 1,95 m zu frueh aufhoerte. Jetzt symmetrisch und auf
            beiden Seiten 0,15 m vor der Kreuzung zu Ende. */
-        [[-60,25.6],[-20,25.6],[20,25.6],[60,25.6]].forEach(function(seg){
-          var laengs=new THREE.Mesh(new THREE.PlaneGeometry(seg[1],0.18),mM);
-          laengs.rotation.x=-Math.PI/2;laengs.position.set(seg[0],0.004,zs+(zs>0?-1.3:1.3));scene.add(laengs);
+        var SEG=[[-60,25.6],[-20,25.6],[20,25.6],[60,25.6]];
+        /* 🚌 Die Bushaltestelle der Suedstrasse (Wartehaeuschen bei x -8, Nordseite) bekommt
+           ihre Bucht im Parkstreifen: x -19…3 bleibt dort frei von Parkfeldern. */
+        if(zc>0&&zs<zc)SEG=[[-60,25.6],[-26.1,13.4],[20,25.6],[60,25.6]];
+        SEG.forEach(function(seg){
           /* Die Striche teilen das Segment auf, statt in festen 5,2-m-Schritten
              darueber hinauszulaufen — sonst haengt der letzte wieder in der Kreuzung. */
-          var nSt=Math.round(seg[1]/5.2), dSt=seg[1]/nSt;
+          var nSt=Math.max(1,Math.round(seg[1]/5.2)), dSt=seg[1]/nSt;
           for(var b=0;b<=nSt;b++){                    // Stellplatz-Striche
-            var st=new THREE.Mesh(new THREE.PlaneGeometry(0.18,2.4),mM);
+            var st=new THREE.Mesh(new THREE.PlaneGeometry(0.15,PT),mM);
             st.rotation.x=-Math.PI/2;st.position.set(seg[0]-seg[1]/2+b*dSt,0.004,zs);scene.add(st);}});});});
-    /* Bushaltebucht an der Suedstrasse: Fahrbahn-Ausbuchtung + Wartehaeuschen-Plattform */
-    var bx=30,bz=SZp-6.4;
-    var kante=new THREE.Mesh(new THREE.BoxGeometry(22,0.16,1.6),betMat(0xd0cdc4,0.9));
-    kante.position.set(bx,0.08,bz+3.1);kante.receiveShadow=true;scene.add(kante);   // erhoehte Bordkante
-    var bs=new THREE.Mesh(new THREE.PlaneGeometry(0.2,4.8),mM);
-    bs.rotation.x=-Math.PI/2;bs.position.set(bx-11,0.004,bz);scene.add(bs);
-    var bs2=new THREE.Mesh(new THREE.PlaneGeometry(0.2,4.8),mM);
-    bs2.rotation.x=-Math.PI/2;bs2.position.set(bx+11,0.004,bz);scene.add(bs2);
+    /* 🚌 Bushaltebucht an der Suedstrasse — am Wartehaeuschen (x -8, Nordseite), nicht
+       38 m daneben. ⚠️ Hier lag eine 22 m lange ERHOEHTE BETONKANTE bei z = 58 - 3,3: das
+       ist mitten in der Fahrspur (die Bucht zeigte auf die falsche Seite, +3,1 statt
+       Richtung Bordstein). Der Bus fuhr ausserdem auf der anderen Strassenseite und hielt
+       bei x -8 auf der Fahrbahn, die Bucht bei x 30 blieb leer. Jetzt: gelbe Buchtlinien
+       und "BUS" im Parkstreifen, der Bus faehrt westwaerts und biegt hinein. */
+    var bx=-8,bz=SZp-(HS_PARK+HS_BORD)/2,gM=new THREE.MeshStandardMaterial({color:0xe8c030,roughness:0.8});
+    gM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(gM);
+    [bx-11,bx+11].forEach(function(ex){
+      var bs=new THREE.Mesh(new THREE.PlaneGeometry(0.15,HS_BORD-HS_PARK),gM);
+      bs.rotation.x=-Math.PI/2;bs.position.set(ex,0.004,bz);scene.add(bs);});
+    var cvB=document.createElement("canvas");cvB.width=128;cvB.height=48;var cB=cvB.getContext("2d");
+    cB.fillStyle="#e8c030";cB.font="bold 34px sans-serif";cB.textAlign="center";cB.fillText("BUS",64,37);
+    var tB=new THREE.Mesh(new THREE.PlaneGeometry(3.2,1.2),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cvB),transparent:true}));
+    tB.rotation.x=-Math.PI/2;tB.rotation.z=Math.PI/2;   /* lesbar fuer den westwaerts fahrenden Bus */tB.position.set(bx+7,0.006,bz);scene.add(tB);
+    window._busBucht={x:bx,z:bz};
   })();
   /* 🚶 Gehwege an Ringstrasse + Zubringern (User: „dort fehlt trottoir"). Bisher hatten nur
      die inneren Haupt- und Querstrassen Trottoirs, der ganze aeussere Ring lag nackt im Gras.
@@ -3015,11 +3031,12 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     zebra(K[0]-16,K[1],true);zebra(K[0]+16,K[1],true);
     zebra(K[0],K[1]-16,false);zebra(K[0],K[1]+16,false);}); // 7 -> 16: die vier Uebergaenge trafen sich fast in der Kreuzungsmitte
   // Haltelinien vor den Ampeln (je Fahrspur, hinter dem Zebra)
-  function halte(x,z,quer){var hl=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.5:4.6,quer?4.6:0.5),zMat);
+  function halte(x,z,quer,lang){var L9=lang||4.6,hl=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.5:L9,quer?L9:0.5),zMat);
     hl.rotation.x=-Math.PI/2;hl.position.set(x,0.009,z);scene.add(hl);}
   [[RX,SZ9+12],[RX,-(SZ9+12)],[-RX,SZ9+12],[-RX,-(SZ9+12)]].forEach(function(K){
-    var so=K[1]>0?2.5:-2.5;
-    halte(K[0]-19.5,K[1]+so,true);halte(K[0]+19.5,K[1]-so,true); // mit Luecke hinter dem Zebra
+    /* Hauptstrasse: die Linie deckt BEIDE Spuren (0,4 … HS_PARK), vorher nur eine. */
+    var so=(K[1]>0?1:-1)*(0.4+HS_PARK)/2;
+    halte(K[0]-19.5,K[1]+so,true,HS_PARK-0.4);halte(K[0]+19.5,K[1]-so,true,HS_PARK-0.4); // vor dem Zebra
     halte(K[0]-2.5,K[1]-19.5,false);halte(K[0]+2.5,K[1]+19.5,false);}); // beide Quer-Anfahrten
 })();
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
@@ -3188,12 +3205,12 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     for(var rs=0;rs<Math.round(RLEN/12);rs++){var rx8=-RLEN/2+6+rs*12;
       if(Math.abs(Math.abs(rx8)-RGX)<8)continue;
       [RGZ_N,RGZ_S].forEach(function(rz8){
-        var st8=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),rmat);
+        var st8=new THREE.Mesh(new THREE.PlaneGeometry(3,0.15),rmat);
         st8.rotation.x=-Math.PI/2;st8.position.set(rx8,0.005,rz8);scene.add(st8);});}
     for(var rt=0;rt<Math.round((RGZ_S-RGZ_N)/12);rt++){var rz9=RGZ_N+6+rt*12;
       if(Math.abs(rz9-RGZ_N)<8||Math.abs(rz9-RGZ_S)<8)continue;
       [-RGX,RGX].forEach(function(rx9){
-        var st9=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),rmat);
+        var st9=new THREE.Mesh(new THREE.PlaneGeometry(0.15,3),rmat);
         st9.rotation.x=-Math.PI/2;st9.position.set(rx9,0.005,rz9);scene.add(st9);});}
   })();
   /* ═══════════ 🛣️ RANDLINIEN + LEITPLANKEN (User: „strassen wie echt") ═══════════
@@ -3218,7 +3235,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       if(bis>g+0.6)laengs?randl(bis-g,0.15,(g+bis)/2,fest):randl(0.15,bis-g,fest,(g+bis)/2);}
     var SZr=GH*CS/2+12;                                   /* Hauptstrassen-Mitte z=±58 */
     /* Hauptstrassen (16 m breit -> Rand ±7.5), Luecken an den Kreuzungen x=±RX */
-    [-SZr,SZr].forEach(function(zc){[-7.5,7.5].forEach(function(o){
+    [-SZr,SZr].forEach(function(zc){[-HS_PARK,HS_PARK].forEach(function(o){
       linie(-RL/2,RL/2,[[-RX,7],[RX,7]],true,zc+o);});});
     /* Querstrassen (10 m -> Rand ±4.6), Luecken an den Hauptkreuzungen */
     [-RX,RX].forEach(function(xc){[-4.6,4.6].forEach(function(o){
@@ -3299,7 +3316,9 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     /* ── Doppelte Sperrlinie auf den Hauptstrassen ── */
     var lM=stdMat(0xd8d8cc,0.75);lM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(lM);
     [-SZd,SZd].forEach(function(zc){[-0.3,0.3].forEach(function(o){
-      [[-RL/2,-RX-9],[-RX+9,RX-9],[RX+9,RL/2]].forEach(function(seg){
+      /* Ende 20 m vor der Kreuzungsmitte = an der Haltelinie (19,5), VOR dem Zebra (13,6…18,4).
+         Mit 9 m lief die Doppellinie mitten durch den Zebrastreifen (Bild nach-kreuz, Runde 92). */
+      [[-RL/2,-RX-20],[-RX+20,RX-20],[RX+20,RL/2]].forEach(function(seg){
         if(seg[1]-seg[0]<2)return;
         var l=new THREE.Mesh(new THREE.PlaneGeometry(seg[1]-seg[0],0.16),lM);
         l.rotation.x=-Math.PI/2;l.position.set((seg[0]+seg[1])/2,0.0056,zc+o);scene.add(l);});});});
@@ -3335,7 +3354,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
          aussen geradeaus + rechts. Zufahrt aus Westen faehrt nach +x usw. */
       [[1,-1],[-1,1]].forEach(function(R){
         var vor=R[0],  /* Fahrtrichtung in x */ seite=R[1];
-        [2,5].forEach(function(off,li){
+        [HS_INNEN,HS_AUSSEN].forEach(function(off,li){
           var px=K[0]-vor*22-vor*li*7;          /* 22 m und 29 m vor der Kreuzung */
           var pz=K[1]+vor*off;                   /* rechts der Mitte in Fahrtrichtung */
           var rot=vor>0?-Math.PI/2:Math.PI/2;    /* Spitze zeigt zur Kreuzung */
@@ -3362,9 +3381,9 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
        fuer weisse Striche — genau die Sorte Ballast, die das Handy bremst.
        Raster 3 m Strich / 6 m Luecke wie bei einer echten Leitlinie. */
     var strichP=[];
-    [-SZd,SZd].forEach(function(zc){[-4,4].forEach(function(off){
+    [-SZd,SZd].forEach(function(zc){[-HS_LEIT,HS_LEIT].forEach(function(off){
       for(var d9=-RL/2+4;d9<RL/2-4;d9+=9){
-        if(Math.abs(Math.abs(d9)-RX)<11)continue;      /* Kreuzungsbereich frei lassen */
+        if(Math.abs(Math.abs(d9)-RX)<20.5)continue;    /* Kreuzung, Zebra und Haltelinie frei lassen */
         strichP.push([d9+1.5,zc+off]);}});});
     var strichI=new THREE.InstancedMesh(new THREE.PlaneGeometry(3,0.15),lM,strichP.length);
     strichP.forEach(function(p,i){
@@ -3401,8 +3420,8 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
      Leitlinie. Die Sperrlinie bleibt, der Strich entfaellt. */
   var _NZ=Math.round((2*SZ+38)/7);for(var ms3=0;ms3<_NZ;ms3++){[-RX,RX].forEach(function(sx){
     var _dz=-(SZ+13)+ms3*7;
-    if(Math.abs(Math.abs(_dz)-(SZ+12))<9.2)return; // nicht in Kreuzung/Zebra (Zebras bei ±6.1)
-    var st3=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),_qMat);
+    if(Math.abs(Math.abs(_dz)-(SZ+12))<20.5)return; // nicht in Kreuzung, Zebra (13,6…18,4) und Haltelinie (19,5)
+    var st3=new THREE.Mesh(new THREE.PlaneGeometry(0.15,3),_qMat);   /* 0,3 -> 0,15: gleich breit wie Leit- und Randlinien */
     st3.rotation.x=-Math.PI/2;st3.position.set(sx,0.005,_dz);scene.add(st3);});}
   // Nachbarhaus prozedural: Sockel, Waende, Satteldach, Tuer, Fenster, Kamin
   /* Vorher acht Pastelle (Rosa, Hellblau, Mint, Flieder) im Zyklus — „Setzkasten", kein Ort.
@@ -4401,17 +4420,17 @@ setTimeout(function baueVerkehr(){
   var SZ=GH*CS/2;
   /* 🚗 Mehr Verkehr (User): Die Hauptstrassen sind jetzt 16 m breit und tragen je Richtung
      zwei Spuren; dazu faehrt Verkehr auf der Ringstrasse. Vorher 6 Routen, jetzt 14.
-     Spurlagen: Mitte 58, Fahrbahn ±8, Parkstreifen ab ±6.4 -> Spuren bei ±2 und ±5. */
+     Spurlagen aus der Querschnitt-Tabelle (HS_INNEN / HS_AUSSEN, oben bei RX). */
   var ROUTEN=[
-    {axis:"x",z:SZ+14,dir:1,speed:5.2},{axis:"x",z:SZ+17,dir:1,speed:6.4},
-    {axis:"x",z:SZ+10,dir:-1,speed:4.6},{axis:"x",z:SZ+7,dir:-1,speed:5.8},
+    {axis:"x",z:SZ+12+HS_INNEN,dir:1,speed:5.2},{axis:"x",z:SZ+12+HS_AUSSEN,dir:1,speed:6.4},
+    {axis:"x",z:SZ+12-HS_INNEN,dir:-1,speed:4.6},{axis:"x",z:SZ+12-HS_AUSSEN,dir:-1,speed:5.8},
     /* ⚠️ GEMESSEN: Die Nordstrasse fuhr spiegelverkehrt. Rechtsverkehr heisst:
        wer nach OSTEN faehrt, gehoert suedlich der Mittellinie (groesseres z) —
        auf der Suedstrasse stimmte das (60/63 bei Mitte 58), auf der Nordstrasse
        fuhren die Ostfahrer bei -60/-63, also NOERDLICH der Mitte -58. Zwei
        Fahrzeugreihen kamen sich dort entgegen wie in England. */
-    {axis:"x",z:-SZ-14,dir:-1,speed:5.5},{axis:"x",z:-SZ-17,dir:-1,speed:6.6},
-    {axis:"x",z:-SZ-10,dir:1,speed:4.8},{axis:"x",z:-SZ-7,dir:1,speed:6.0},
+    {axis:"x",z:-SZ-12-HS_INNEN,dir:-1,speed:5.5},{axis:"x",z:-SZ-12-HS_AUSSEN,dir:-1,speed:6.6},
+    {axis:"x",z:-SZ-12+HS_INNEN,dir:1,speed:4.8},{axis:"x",z:-SZ-12+HS_AUSSEN,dir:1,speed:6.0},
     {axis:"z",x:-(RX+2.5),dir:1,speed:4.5},{axis:"z",x:-(RX-2.5),dir:-1,speed:5.1},
     {axis:"z",x:RX+2.5,dir:-1,speed:5},{axis:"z",x:RX-2.5,dir:1,speed:4.4},
     {axis:"z",x:-109.5,dir:1,speed:7.0},{axis:"z",x:114.5,dir:-1,speed:7.2},
@@ -4546,7 +4565,8 @@ setTimeout(function baueVerkehr(){
   var schild=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.44,0.06),new THREE.MeshStandardMaterial({color:0x141417,emissive:0xffa040,emissiveIntensity:0.9}));
   schild.position.set(2.3,2.6,1.24);bg.add(schild);
   scene.add(bg);
-  busRec={mesh:bg,pos:-70,speed:4,wartet:0,z:SZ+14.5,raeder:busRaeder,lichter:busLichter};
+  /* Westwaerts auf der AUSSENSPUR der Nordhaelfte — dort liegt das Wartehaeuschen (x -8). */
+  busRec={mesh:bg,pos:70,speed:4,wartet:0,z:SZ+12-HS_AUSSEN,spur:SZ+12-HS_AUSSEN,raeder:busRaeder,lichter:busLichter};
   /* 🚌 Der fahrende Bus war ein prozeduraler Kasten, waehrend `th40_bus.glb` (176 Netze,
      Front +x wie der Kasten) ungenutzt im Repo lag. Sobald das Modell da ist, wird der
      Kasten samt seinen Raedern und Lichtern ausgeblendet und das Modell in dieselbe Gruppe
@@ -5105,8 +5125,13 @@ function updVerkehr(dt){
     /* 🚦 Verkehrsregeln: an Rot/Gelb vor der Haltelinie stehen bleiben UND Abstand zum
        Vordermann halten. Vorher wurde die Position hart auf die Haltelinie geklemmt —
        Autos sprangen dadurch und fuhren ineinander. */
-    if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&v.route.axis!=="viertel"&&ampRed(v.route.axis)){
-      var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?9.5:11;
+    /* ⚠️ Nur an den vier Ampelkreuzungen. Die z-Routen der Ringschenkel (x ±109,5/114,5)
+       hielten bisher bei Rot mitten auf dem Ring — dort gibt es keine Ampel. */
+    if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&v.route.axis!=="viertel"&&ampRed(v.route.axis)
+       &&(v.route.axis==="x"||Math.abs(Math.abs(v.route.x)-RX)<6)){
+      /* Halt VOR der Haltelinie (±19,5, vor dem Zebra): Wagenmitte 21,9 = Linie + halbe
+         Wagenlaenge + Luft. Vorher 9,5 / 11 — die Wagen standen HINTER dem Zebra. */
+      var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=21.9;
       for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-rd*off;
         if(rd>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
         else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
@@ -5188,15 +5213,25 @@ function updVerkehr(dt){
         v.heck[li].position.set(px-fx*2.0+qx*0.55*sd,0.7,pz-fz*2.0+qz*0.55*sd);v.heck[li].material.opacity=opH;}}});
   if(busRec){
     if(busRec.wartet>0){busRec.wartet-=dt;}
-    else{var prev9=busRec.pos;busRec.pos+=busRec.speed*dt;
+    else{var prev9=busRec.pos;busRec.pos-=busRec.speed*dt;       /* westwaerts */
       var rand9=GW*CS/2+80;
-      if(busRec.pos>rand9)busRec.pos=-rand9; // Rueckkehr weit ausserhalb der Sicht
-      if(prev9<-8&&busRec.pos>=-8)busRec.wartet=4;
+      if(busRec.pos<-rand9)busRec.pos=rand9; // Rueckkehr weit ausserhalb der Sicht
+      if(prev9>-8&&busRec.pos<=-8)busRec.wartet=4;
       if(busRec.raeder){var rs=busRec.speed*dt/0.5;busRec.raeder.forEach(function(rd){rd.rotation.y+=rs;});}
       if(busRec.raederZ){var wB=busRec.speed*dt/(busRec.radMass||1);
         busRec.raederZ.forEach(function(g){if(!g._bewegt&&window._auftauen)window._auftauen(g);g.rotation.z+=wB/(g.userData.rad||0.5);});}}
-    busRec.mesh.position.set(busRec.pos,0,busRec.z);
-    busRec.mesh.rotation.y=0; // Koerper laengs zur Fahrtrichtung (+x)
+    /* 🚌 In die Bucht einbiegen: 24 m vor der Haltestelle weich von der Spur in den
+       Parkstreifen, 10 m danach wieder hinaus. Die Nase folgt der Querbewegung —
+       Front +x, Fahrt nach -x: Winkel = atan2(dz/dx, -1). */
+    var BB=window._busBucht,zB=busRec.spur,nB=0;
+    if(BB){var e9=busRec.pos-BB.x,t9=0,d9=0;
+      if(e9>=0&&e9<24){t9=e9<8?1:1-(e9-8)/16;d9=e9<8?0:-1/16;}          /* Einfahrt (oestlich) */
+      else if(e9<0&&e9>-14){t9=e9>-4?1:1-(-e9-4)/10;d9=e9>-4?0:1/10;}   /* Ausfahrt (westlich) */
+      var s9=t9*t9*(3-2*t9),ds9=6*t9*(1-t9)*d9;
+      zB=busRec.spur+(BB.z-busRec.spur)*s9;nB=(BB.z-busRec.spur)*ds9;}
+    busRec.z=zB;
+    busRec.mesh.position.set(busRec.pos,0,zB);
+    busRec.mesh.rotation.y=Math.atan2(nB,-1); // Koerper laengs zur Fahrtrichtung (-x)
     if(busRec.lichter){var kb=nn?1.5:0.18,hb=nn?1.2:0.22;busRec.lichter.forEach(function(l){l.m.emissiveIntensity=l.typ==="k"?kb:hb;});}}}
 var _ampelT=0;
 function ampRed(axis){ // true = diese Achse hat Gelb/Rot -> Verkehr haelt (x=Gruppe0, z=Gruppe1)
@@ -5845,12 +5880,25 @@ setTimeout(function baueGebaeude(){
           var st=new THREE.Mesh(new THREE.PlaneGeometry(waag?len:SW,waag?SW:len),
                                 waag?strMatH.clone():strMatV.clone());
           st.rotation.x=-Math.PI/2;st.position.set(mx,-0.004,mz);st.receiveShadow=true;scene.add(st);
+          /* ⚠️ Kreuzt das Stueck die Landstrasse (r 200)? Dann enden die Gehwege 5,7 m vor
+             der Fahrbahnmitte statt quer ueber den Asphalt zu laufen, und der Ring bekommt
+             an der Stelle eine Luecke in seinen Mittelstrichen (Bild (200|0), Runde 92). */
+          var kr=null,a0=waag?Math.min(x1,x2):Math.min(z1,z2),a1=waag?Math.max(x1,x2):Math.max(z1,z2);
+          for(var q=a0;q<=a1&&kr===null;q+=0.5){var qx=waag?q:mx,qz=waag?mz:q;if(Math.abs(Math.hypot(qx,qz)-200)<0.3)kr=q;}
+          if(kr!==null){var kx=waag?kr:mx,kz=waag?mz:kr;
+            if(window._ringStrichLuecke)window._ringStrichLuecke(kx,kz);else (window._ringLueckeWunsch=window._ringLueckeWunsch||[]).push([kx,kz]);}
+          var teile=kr===null?[[a0,a1]]:[[a0,kr-5.7],[kr+5.7,a1]];
           [-TO,TO].forEach(function(o){                       // Trottoir beidseits
-            var t=new THREE.Mesh(new THREE.BoxGeometry(waag?len:TW,0.06,waag?TW:len),twM);
-            t.position.set(mx+(waag?0:o),0.03,mz+(waag?o:0));t.receiveShadow=true;scene.add(t);});
+            teile.forEach(function(t9){if(t9[1]-t9[0]<1)return;var tl=t9[1]-t9[0],tm=(t9[0]+t9[1])/2;
+              var t=new THREE.Mesh(new THREE.BoxGeometry(waag?tl:TW,0.06,waag?TW:tl),twM);
+              t.position.set(waag?tm:mx+o,0.03,waag?mz+o:tm);t.receiveShadow=true;scene.add(t);});});
           for(var m2=0;m2<Math.floor(len/9);m2++){            // Mittelstreifen
             var off=-len/2+5+m2*9;
-            var str=new THREE.Mesh(new THREE.PlaneGeometry(waag?3:0.28,waag?0.28:3),mM);
+            /* ⚠️ Nicht durch fremde Kreuzungen: der Anschluss von Gewerbe Ost kreuzt die
+               Landstrasse (r 200), die Striche liefen mitten ueber die Kreuzung. */
+            var sx9=mx+(waag?off:0),sz9=mz+(waag?0:off),rr9=Math.hypot(sx9,sz9);
+            if(Math.abs(rr9-200)<7.5)continue;
+            var str=new THREE.Mesh(new THREE.PlaneGeometry(waag?3:0.15,waag?0.15:3),mM);
             str.rotation.x=-Math.PI/2;
             str.position.set(mx+(waag?off:0),0.005,mz+(waag?0:off));scene.add(str);}}
         /* ⚠️ DIE REIHENFOLGE DER BEIDEN SCHENKEL ENTSCHEIDET, OB DER WEG DURCH DIE
@@ -6336,6 +6384,18 @@ setTimeout(function baueGebaeude(){
          47,5 m von der Mitte, die Bahn beginnt bei 53 m), und die 17,4 m tiefe
          Fluggastbruecke steckte prompt 0,25 m im Hangar (`th-3d.mjs`, 25 Meshpaare).
          Aussen ist Platz. */
+      /* 🛫 VORFELD (Runde 92, User: „auto gehoeren nicht auf rasen"). th-autoboden: Tank- und
+         Gepaeckwagen standen mit allen vier Ecken im Gras, Flugzeug und Fluggastbruecke ebenso —
+         der Flughafen hatte Bahn und Bauten, aber keine Standflaeche. Beton zwischen Bahnkante
+         (z BAHN+8, die Bahnbefeuerung reicht bis +8) und dem Gehweg der Anbindung (z BAHN+47);
+         Standlinie unter dem Rumpf, Haltebalken, weisse Vorfeldkante zur Bahn. */
+      var VF=new THREE.Mesh(new THREE.PlaneGeometry(64,36),betMat(0x9d9da2,0.95));
+      VF.rotation.x=-Math.PI/2;VF.position.set(FX-9,-0.006,BAHN+27);VF.receiveShadow=true;scene.add(VF);
+      var vfM=new THREE.MeshStandardMaterial({color:0xe2c23a,roughness:0.8});vfM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfM);
+      var vfW=new THREE.MeshStandardMaterial({color:0xe8e8e0,roughness:0.8});vfW.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfW);
+      [[FX-20,BAHN+27,0.3,34,vfM],[FX-20,BAHN+22,3.2,0.3,vfM],[FX-9,BAHN+9.6,64,0.2,vfW],[FX+8,BAHN+27,0.2,34,vfW]].forEach(function(L){
+        var l=new THREE.Mesh(new THREE.PlaneGeometry(L[2],L[3]),L[4]);
+        l.rotation.x=-Math.PI/2;l.position.set(L[0],0.004,L[1]);scene.add(l);});
       bau("th25_flugzeug.glb",       8,  FX-20,0,BAHN+22, 0,   false,null,true);
       /* 🛬 DURCH DAS FLUGZEUG KONNTE MAN HINDURCHLAUFEN (th-mauern: 23,6 x 26,2 m
          Modell, kein Kollider). GEMESSEN an den Bauteilen: der RUMPF liegt auf
@@ -6414,7 +6474,7 @@ setTimeout(function baueGebaeude(){
        Sie liegt in EINEM Mesh (Fahrbahn) plus einem zweiten (Mittelstreifen);
        als 48 Einzelstuecke waeren es 96 Zeichenaufrufe. */
     (function landstrasse(){
-      var R=200, HB=4.2, N=64;
+      var R=200, HB=4.2, N=64, ZUB=[30,60,120,240,300,330];   /* Zubringer-Winkel (unten) */
       /* ⚠️ DIE LANDSTRASSE LAG UEBER DEM WOLKENSCHATTEN. GEMESSEN (Strahl von oben auf
          jede Strasse der Karte): der Wolkenschatten ist eine Flaeche auf y = 0,008, und
          sein eigener Kommentar sagt, wo er hingehoert — "ueber den Strassenmarkierungen
@@ -6457,7 +6517,7 @@ setTimeout(function baueGebaeude(){
         if(ny>=0)ii.push(vb0,vb0+1,vb0+2, vb0,vb0+2,vb0+3);
         else      ii.push(vb0,vb0+2,vb0+1, vb0,vb0+3,vb0+2);
       }
-      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0, _damm=[], uvs=[], KM=6;   /* KM: Meter je Kachel */
+      var pos=[],idx=[],vb=0, dashA=[], dpos=[],didx=[], _damm=[], uvs=[], KM=6;   /* KM: Meter je Kachel; dpos/didx: Zubringer-Streifen + Haltelinien */
       /* ⚠️ DIE NAHT MUSS AUFGEHEN. Ein Ring schliesst sich bei 2*pi wieder an seinen
          Anfang an. Steht dort keine GANZE Kachelzahl, springt die Textur an genau
          einer Stelle mitten im Bild — ein verschmierter Streifen quer ueber die
@@ -6487,12 +6547,7 @@ setTimeout(function baueGebaeude(){
              der Weltlage (atan2) haette an der Naht einen verschmierten Streifen. */
           uvs.push(P[0]/6.283*KR, (P[1]+1)*HB/KM);});
         idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;   // Wicklung: Vorderseite nach OBEN
-        if(i%2===0){                                    // Mittelstreifen, gestrichelt
-          var am=(a0+a1)/2, ad=(a1-a0)*0.32;
-          [[am-ad,-0.18],[am-ad,0.18],[am+ad,0.18],[am+ad,-0.18]].forEach(function(P){
-            dpos.push(Math.cos(P[0])*(R+P[1]),HM,Math.sin(P[0])*(R+P[1]));});
-          didx.push(dvb,dvb+2,dvb+1, dvb,dvb+3,dvb+2); dvb+=4;
-        }
+        dashA.push((a0+a1)/2);                         // Mittelstreifen: je Segment ein 6-m-Strich (unten als Instanzen)
       }
       function mesh(pp,ii,mat,uu){
         var g=new THREE.BufferGeometry();
@@ -6506,7 +6561,6 @@ setTimeout(function baueGebaeude(){
          Sechs radiale Verbinder fuehren vom Stadtring (r 118) hinaus auf die
          Landstrasse. Die Winkel meiden Meer (142…218 Grad) und die vorhandenen
          Stichstrassen bei 0, 90 und 180 Grad. */
-      var ZUB=[30,60,120,240,300,330];
       var ZR0=118, ZR1=R+HB;
       /* 🛣️ TROMPETE AN DER EINMUENDUNG. Der Zubringer stiess bisher als Band
          konstanter Breite stumpf auf die Landstrasse — ein Abzweig, den man auf
@@ -6535,20 +6589,46 @@ setTimeout(function baueGebaeude(){
                             pkt(rb, hb(rb),HD), pkt(rb,-hb(rb),HD), uvs,
                    [ra/KM,0], [ra/KM,2*hb(ra)/KM], [rb/KM,2*hb(rb)/KM], [rb/KM,0]);
         }
-        for(var t9=0.08;t9<0.95;t9+=0.10){       // Mittelstreifen
-          var rm=r0+(r1-r0)*t9, rl=(r1-r0)*0.035;
-          quadOben(dpos,didx, pkt(rm-rl,-0.18,HM),pkt(rm-rl,0.18,HM),
-                              pkt(rm+rl,0.18,HM), pkt(rm+rl,-0.18,HM));
-        }
         /* Haltelinie quer ueber die Zufahrt, dort wo das Vorfahrtsschild steht.
            Ohne sie regelt das Schild etwas, wovon die Fahrbahn nichts weiss. */
         var rh=191.4, bh=hb(rh);
+        for(var t9=0.08;t9<0.95;t9+=0.10){       // Mittelstreifen
+          var rm=r0+(r1-r0)*t9, rl=(r1-r0)*0.035;
+          /* ⚠️ Der letzte Streifen (190,9…196,9) lief ueber die Haltelinie (191,4) und
+             1,1 m in den Ring hinein. Vor der Haltelinie ist Schluss. */
+          if(rm+rl>rh-0.6)continue;
+          quadOben(dpos,didx, pkt(rm-rl,-0.15,HM),pkt(rm-rl,0.15,HM),
+                              pkt(rm+rl,0.15,HM), pkt(rm+rl,-0.15,HM));
+        }
         quadOben(dpos,didx, pkt(rh-0.22,-bh+0.3,HM+0.0005), pkt(rh-0.22,bh-0.3,HM+0.0005),
                             pkt(rh+0.22, bh-0.3,HM+0.0005), pkt(rh+0.22,-bh+0.3,HM+0.0005));
       });
       window._zubringer=ZUB;
       mesh(pos,idx,betMat(0x4a4a53,0.92),uvs);
-      mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));
+      /* 🛣️ MITTELSTRICHE MIT LUECKEN (Runde 92, User: „striche auf strassen sind komisch").
+         Vorher liefen die Striche ohne Unterbrechung durch jede Einmuendung — an den sechs
+         Zubringern und dort, wo eine Viertel-Anbindung die Landstrasse kreuzt (im Bild bei
+         (200|0) gesehen). Ein InstancedMesh statt einer verschmolzenen Geometrie, damit
+         eine Anbindung, die SPAETER gebaut wird, ihren Strich noch loeschen kann:
+         `_ringStrichLuecke(x,z)` setzt die Instanzen im Umkreis von 7,5 m auf Groesse 0. */
+      /* 6 m Strich, 13,6 m Luecke — wie ausserorts ueblich (vorher 12,6 m Strich / 7 m Luecke).
+         Die Luecke an Einmuendungen prueft die AUSDEHNUNG: halbe Fahrbahn 4,5 + halber Strich 3
+         + Luft — mit der Strichmitte allein ragten die Nachbarstriche in die Kreuzung (Bild). */
+      var dashL=6, dashG=new THREE.PlaneGeometry(dashL,0.15);
+      var dashI=new THREE.InstancedMesh(dashG,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}),dashA.length);
+      var dashO=new THREE.Object3D();
+      dashA.forEach(function(am,i){dashO.position.set(Math.cos(am)*R,HM,Math.sin(am)*R);
+        dashO.rotation.set(-Math.PI/2,0,-(am+Math.PI/2));dashO.scale.set(1,1,1);dashO.updateMatrix();dashI.setMatrixAt(i,dashO.matrix);});
+      dashI.receiveShadow=true;dashI.frustumCulled=false;dashI.userData.nieAusblenden=1;scene.add(dashI);
+      window._ringStrichLuecke=function(x,z){var a=Math.atan2(z,x),weg=0;
+        dashA.forEach(function(am,i){var d=Math.abs(((am-a)%(2*Math.PI)+3*Math.PI)%(2*Math.PI)-Math.PI);
+          if(d*R>4.5+dashL/2+1.5)return;dashO.position.set(Math.cos(am)*R,HM,Math.sin(am)*R);dashO.rotation.set(-Math.PI/2,0,-(am+Math.PI/2));
+          dashO.scale.set(0.0001,0.0001,0.0001);dashO.updateMatrix();dashI.setMatrixAt(i,dashO.matrix);weg++;});
+        dashI.instanceMatrix.needsUpdate=true;return weg;};
+      ZUB.forEach(function(g){var a=g*Math.PI/180;window._ringStrichLuecke(Math.cos(a)*R,Math.sin(a)*R);});
+      (window._ringLueckeWunsch||[]).forEach(function(q){window._ringStrichLuecke(q[0],q[1]);});
+      window._ringLueckeWunsch=[];
+      if(didx.length)mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));   /* Zubringer-Streifen + Haltelinien */
       /* 🌊 DAMMFLANKE UND BRUESTUNG. Ein Asphaltband, das auf dem Wasser liegt,
          sieht aus wie ein Fehler. Zwei Teile machen daraus einen Damm: eine
          Steinboeschung, die von der Fahrbahnkante schraeg ins Wasser laeuft (sie
@@ -7318,10 +7398,14 @@ setTimeout(function baueGebaeude(){
           st.rotation.x=-Math.PI/2;st.position.set(QX-1.1,0.004,QZ-QD/2+q*(QD/10));scene.add(st);}
         var kb=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,QD),betMat(0xd0cdc4,0.9));
         kb.position.set(QX+QW/2+0.25,0.09,QZ);kb.receiveShadow=true;scene.add(kb);
-        addSolid(QX-2.6,QZ,3.6,QD*0.92);          /* Stellreihe solide, Fahrgasse frei */
+        addSolid(QX-1.1,QZ,6.8,QD*0.92);          /* Stellreihe (so breit wie die Striche) solide, Fahrgasse frei */
       })();
-      [["th_auto_kombi.glb",-18],["th7_taxi.glb",-10],["th_auto_van.glb",14]].forEach(function(a){
-        bau(a[0],1.6,WX-6.5,0,a[1],Math.PI/2,false,null);});
+      /* ⚠️ GEMESSEN (th-autoboden, Runde 92): die Wagen standen bei z -18 und 14 — die Flaeche
+         reicht von -17 bis 13 — also je einen Meter im Gras, und QUER zu den Stellplatzstrichen
+         (Striche alle 3 m in x, Wagen 5,1 m lang in z). Jetzt laengs in den Stellplaetzen
+         (-17…-14, -11…-8, 10…13), Nase zur Platzseite, ganz auf dem Belag. */
+      [["th_auto_kombi.glb",-15.5],["th7_taxi.glb",-9.5],["th_auto_van.glb",11.5]].forEach(function(a){
+        bau(a[0],1.6,WX-5.3,0,a[1],0,false,function(w){w.userData.fest=1;},true);});
       bau("th4_laterne_modern.glb",5.2,WX,0,20,0,false,null);
       bau("th4_laterne_modern.glb",5.2,WX,0,-20,0,false,null);
     })();
@@ -8865,17 +8949,27 @@ setTimeout(function baueGebaeude(){
       bau("th36_trinkbrunnen.glb",1.6,16,0,98,0,false,null,true);
       bau("th35_bank_zier.glb",1.0,19.5,0,98,-Math.PI/2,false,null,true);
       bau("th36_vogeltraenke.glb",1.1,15,0,100.3,0,false,null,true);
-      /* Taxibucht mit Markierung am Parkstreifen */
-      var tb=new THREE.Mesh(new THREE.PlaneGeometry(6,3),strMatH.clone());
-      tb.rotation.x=-Math.PI/2;tb.position.set(11,-0.0005,91.4);tb.receiveShadow=true;scene.add(tb);
+      /* 🚕 TAXISTAND (Runde 92). Die "Taxibucht" lag auf (11|91,4) — das ist Platz 0 der
+         Suedreihe des Bahnhofs-Parkplatzes, der BEHINDERTENSTELLPLATZ (blaue Flaeche, th-autoboden
+         meldete "wasser #436ebd" unter dem Taxi). Jetzt Plaetze 9 und 10 derselben Reihe (die
+         einzigen freien, GEMESSEN: belegt sind 1,2,3,7,8), gelb markiert, Schriftzug in der Gasse. */
+      var tM=new THREE.MeshStandardMaterial({color:0xe2c23a,roughness:0.8});tM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(tM);
+      var tl=new THREE.Mesh(new THREE.PlaneGeometry(5.8,0.2),tM);
+      tl.rotation.x=-Math.PI/2;tl.position.set(37.6,0.0045,94.1);scene.add(tl);
       var cv=document.createElement("canvas");cv.width=128;cv.height=48;var c=cv.getContext("2d");
-      c.fillStyle="#d8d8cc";c.font="bold 34px sans-serif";c.fillText("TAXI",14,36);
+      c.fillStyle="#e2c23a";c.font="bold 34px sans-serif";c.textAlign="center";c.fillText("TAXI",64,37);
       var tm=new THREE.Mesh(new THREE.PlaneGeometry(2.6,1),
         new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true}));
-      tm.rotation.x=-Math.PI/2;tm.position.set(11,0.006,90.2);scene.add(tm);
+      tm.rotation.x=-Math.PI/2;tm.position.set(37.6,0.006,95.2);   /* ohne z-Drehung: lesbar aus der Gasse (Bild nach-bahnhof stand kopf) */scene.add(tm);
     })();
-    bau("th7_taxi.glb",1.7,11,0,91.4,Math.PI/2,false,null,true);
-    bau("th7_lieferwagen.glb",2.5,12,0,55,Math.PI/2,false);
+    bau("th7_taxi.glb",1.7,36.2,0,91.6,Math.PI/2,false,function(w){w.userData.fest=1;},true);   /* Taxistand, Platz 9 (s. o.) */
+    /* ⚠️ (12|55) war FAHRBAHN der Suedstrasse; `wegVonStrasse` schob den Wagen daraufhin bis
+       (10|44,5) — in den Vorgarten. Jetzt im Parkstreifen (Platz 7,2…12,3 des Segments 20),
+       laengs, Nase nach Westen wie die Spur daneben; ohneSchutz, damit ihn nichts wegschiebt. */
+    /* ⚠️ ohneSchutz schaltet nur wegVonStrasse ab. Der ENTWIRRER (userData.fest respektiert er)
+       schob den Wagen trotzdem nach (20,3|42,5) in den Vorgarten — gemessen mit th-autoboden.
+       Dazu weg vom Ahorn bei (15|45): Platz 22,6…27,7 statt 12,3…17,4. */
+    bau("th7_lieferwagen.glb",2.5,25.1,0,GH*CS/2+12-(HS_PARK+HS_BORD)/2,Math.PI,false,function(w){w.userData.fest=1;},true);
     /* ⚠️ (90|-78) steckte mit 5,2 m in der Lagerhalle (Kasten z -91,4…-78,5)
        UND im Vordach der Tankstelle aus Charge 43. Die Tasche zwischen beiden
        ist 0,5 m breit, der LKW 2,6 — hier gibt es keinen Stand mehr, seit die
@@ -8898,7 +8992,11 @@ setTimeout(function baueGebaeude(){
     bau("th6_fichte.glb",5.5,-70,0,60,0.5,false);bau("th6_fichte.glb",5.2,-60,0,66,1.4,false);
     bau("th5_poller.glb",1.05,0,0,84,0,false);                     /* war z 90: stand in th8_werkstatt_offen, 6 Mesh-Paare */
     bau("th6_billboard.glb",6.0,46,0,-84,Math.PI,false);
-    bau("th7_lieferwagen.glb",2.5,4,0,80,0,false);                 /* Werkstatt-Kunde (mit der Werkstatt umgezogen) */
+    /* ⚠️ (4|80) war Rasen, und der Wagen steckte mit der vorderen Haelfte in der ueberdachten
+       Bude davor (th-umfeld: Kollider x 3…8 / z 75…80,6, Pfosten (4,3|78,8) im Wagenkasten).
+       Oestlich der Werkstatt liegen nur 3 m Rasen bis zum Gehweg — kein Platz fuer einen Hof.
+       Jetzt Platz 5 der Suedreihe des Bahnhofs-Parkplatzes (frei, gemessen wie beim Taxi). */
+    bau("th7_lieferwagen.glb",2.5,25,0,91.6,Math.PI/2,false,function(w){w.userData.fest=1;},true);
     bau("th6_papierkorb.glb",0.9,2,0,90,0,false);
     /* ⚠️ -35 statt -33: die Westkante des Wirtshauses liegt auf x -32,9, die
        Laterne stand also 10 cm davor. Der Entzerrer schob sie daraufhin 1,5 m
@@ -9696,6 +9794,11 @@ setTimeout(function baueGebaeude(){
        statt 13,81: der alte Bau war samt Turm rund 10,3 hoch. */
     fest("th43_feuerwache.glb",11.5,56,100,Math.PI);
     addSolid(56,100,15.6,12.8);
+    /* 🚒 VORPLATZ (Runde 92). Seit die Wagen nach Westen gerueckt sind (Mastfuss bei x 60), steht
+       das westliche mit seiner Westhaelfte NEBEN der Halle im Gras (th-autoboden: Ecken gruen,
+       asphalt, gruen, asphalt). Beton von x 41 bis 64 zwischen Hallenfront und Ring-Band. */
+    var vpF=new THREE.Mesh(new THREE.PlaneGeometry(23,5.4),betMat(0x8f8f94,0.95));
+    vpF.rotation.x=-Math.PI/2;vpF.position.set(52.5,-0.006,107.7);vpF.receiveShadow=true;scene.add(vpF);
     for(var t=0;t<2;t++){
       var tx=56+(t?3.9:-3.9)*0.83;             // Torachse — dafuer die Ausfahrtsbahn
       /* ⚠️ ZWEITE KORREKTUR, gemessen. "Das Heck parkt in der offenen Halle"
@@ -13508,14 +13611,50 @@ function _polizeiKaesten(gg,rec,schnell){
   var bl=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));bl.position.set(0.3,1.95,0);gg.add(bl);
   var br=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));br.position.set(-0.3,1.95,0);gg.add(br);
   rec.bl=bl;rec.br=br;rec.glowL.position.set(0.3,2.1,0);rec.glowR.position.set(-0.3,2.1,0);}
+/* 🚓 STREIFENWAGEN GEHOEREN AUF DIE STRASSE (Runde 92, User: „auto gehoeren nicht
+   auf rasen"). Vorher erschien jeder Wagen in einem ZUFAELLIGEN Winkel 34 m vom
+   Spieler — in der Wiese, im Vorgarten, im Haus — und fuhr dann schnurgerade quer
+   ueber alles. GEMESSEN mit th-autoboden (Einsatzort, 24 Winkel je Standort).
+   Jetzt: Einsatzort auf einer Strassenzelle (dieselbe Karte wie das GPS, gpsStrasse),
+   und unterwegs folgt der Wagen der Strasse, solange sie ihn naeher bringt.
+   Erst auf den letzten 18 m faehrt er direkt auf den Spieler zu — so stellt die
+   Polizei auch in GTA: sie verlaesst die Strasse fuer den Zugriff, nicht fuer die Anfahrt. */
+function polizeiStart(){
+  var sp=spielerPos(),K=[];
+  for(var i=0;i<24;i++){var a=i/24*6.283;
+    for(var r=28;r<=46;r+=6){var x=sp.x+Math.cos(a)*r,z=sp.z+Math.sin(a)*r;
+      if(gpsStrasse(x,z)&&!gpsGesperrt(x,z))K.push([x,z]);}}
+  if(K.length)return K[Math.floor(Math.random()*K.length)];
+  /* Kein Asphalt im Kreis: die naechste Strassenzelle ab 20 m nach aussen suchen */
+  for(var r2=20;r2<=120;r2+=4){var n2=Math.round(r2*1.2);
+    for(var j=0;j<n2;j++){var b=j/n2*6.283,x2=sp.x+Math.cos(b)*r2,z2=sp.z+Math.sin(b)*r2;
+      if(gpsStrasse(x2,z2)&&!gpsGesperrt(x2,z2))return [x2,z2];}}
+  var ang=Math.random()*6.283;return [sp.x+Math.cos(ang)*34,sp.z+Math.sin(ang)*34];}
+/* Ausweichwinkel bis 60 Grad (cos > 0,5): weiter abgewinkelt brachte der Wagen den Spieler nicht
+   mehr naeher und fuhr am Ende der Strasse ewig hin und her. Ist kein Winkel frei, verlaesst er
+   die Strasse und faehrt direkt — die Anfahrt bleibt auf Asphalt, der Zugriff nicht. */
+var POL_DIREKT=18,POL_BLICK=7,POL_ABW=[0.35,-0.35,0.7,-0.7,1.05,-1.05];
+function polizeiKurs(pj,m,ziel,dist){
+  if(dist<POL_DIREKT)return ziel;
+  var px=m.position.x,pz=m.position.z;
+  if(!gpsStrasse(px,pz))return ziel;            /* abseits (Notfall-Start): auf direktem Weg ins Netz */
+  function frei(k){var x=px+Math.sin(k)*POL_BLICK,z=pz+Math.cos(k)*POL_BLICK;return gpsStrasse(x,z)&&!gpsGesperrt(x,z);}
+  /* Wer schon auf einer Strasse faehrt, die ihn naeher bringt, bleibt auf ihr —
+     ohne dieses Festhalten pendelt der Kurs an jeder Einmuendung hin und her. */
+  if(pj.kurs!==undefined&&Math.cos(pj.kurs-ziel)>0.2&&frei(pj.kurs))return pj.kurs;
+  if(frei(ziel))return (pj.kurs=ziel);
+  for(var i=0;i<POL_ABW.length;i++){var k=ziel+POL_ABW[i];if(frei(k))return (pj.kurs=k);}
+  pj.kurs=undefined;return ziel;}
 function mkPolizeiAuto(schnell){
   var gg=new THREE.Group();gg._bewegt=true;
-  var sp=spielerPos(),ang=Math.random()*6.283;
-  gg.position.set(sp.x+Math.cos(ang)*34,0.01,sp.z+Math.sin(ang)*34);scene.add(gg);
+  var sp=spielerPos(),st=polizeiStart();
+  gg.position.set(st[0],0.01,st[1]);scene.add(gg);
   if(!_blauTex)_blauTex=_glowTex("#bcd4ff","rgba(60,120,255,0)");
   var mkGlow=function(){var g=new THREE.Sprite(new THREE.SpriteMaterial({map:_blauTex,transparent:true,depthWrite:false,opacity:0,blending:THREE.AdditiveBlending}));
     g.scale.set(2.4,2.4,1);gg.add(g);return g;};
-  var rec={mesh:gg,bl:{material:{}},br:{material:{}},glowL:mkGlow(),glowR:mkGlow(),rot:0,t:0,speed:schnell?18:14,phase:Math.random()*400};
+  var rec={mesh:gg,bl:{material:{}},br:{material:{}},glowL:mkGlow(),glowR:mkGlow(),
+           rot:Math.atan2(sp.x-st[0],sp.z-st[1]),t:0,speed:schnell?18:14,phase:Math.random()*400};   /* Nase zum Spieler */
+  gg.rotation.y=rec.rot;
   ladeWagen("th50_streife.glb",function(tpl){
     if(!gg.parent)return;                                   /* schon wieder abgezogen */
     if(!tpl){_polizeiKaesten(gg,rec,schnell);return;}
@@ -13559,7 +13698,7 @@ function updPolizei(dt,now){
     var f=(Math.floor((now+pj.phase)*0.006)%2)===0;         /* je Wagen eigener Takt — fuenf Wagen blitzen nicht im Gleichschritt */
     pj.bl.material.emissiveIntensity=f?1.8:0.2;pj.br.material.emissiveIntensity=f?0.2:1.8;
     if(pj.glowL){pj.glowL.material.opacity=f?0.85:0;pj.glowR.material.opacity=f?0:0.85;}
-    if(dist>1){var ziel=Math.atan2(dx,dz);var d=((ziel-pj.rot+Math.PI*3)%(Math.PI*2))-Math.PI;pj.rot+=d*Math.min(1,dt*3);
+    if(dist>1){var ziel=polizeiKurs(pj,m,Math.atan2(dx,dz),dist);var d=((ziel-pj.rot+Math.PI*3)%(Math.PI*2))-Math.PI;pj.rot+=d*Math.min(1,dt*3);
       var sp2=Math.min(dist,pj.speed)*dt;m.position.x+=Math.sin(pj.rot)*sp2;m.position.z+=Math.cos(pj.rot)*sp2;m.rotation.set(0,pj.rot,0);}
     // Gefasst wenn EIN Auto nah genug + Spieler nicht mit Vollgas
     if(dist<3.2){pj.t+=dt;if(pj.t>1.2){

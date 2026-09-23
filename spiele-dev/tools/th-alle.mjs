@@ -232,6 +232,13 @@ const PRUEFUNGEN = [
   { name: 'GTA (Polizei, Radio, Einblendungen)', datei: 'th-gta.mjs', kern: false,
     wert: (s) => (s.match(/(\d+)\/(\d+) bestanden/) || [, '?', '?']).slice(1).join('/'),
     gut: (s) => { const m = s.match(/(\d+)\/(\d+) bestanden/); return !!m && m[1] === m[2] } },
+  /* Runde 92: kein Auto im Gruenen — stehend 0, Verkehr unter 2 % der Proben, Polizei-Einsatzort
+     unter 15 % (die Einsatzort-Suche faellt bei Standorten ohne Strasse im Umkreis auf die
+     naechste Strassenzelle zurueck; ganz 0 ist erst mit einem dichteren Strassennetz erreichbar). */
+  { name: 'Autoboden (kein Auto im Gruenen)', datei: 'th-autoboden.mjs', kern: false,
+    wert: (s) => { const m = s.match(/stehend im Gruenen (\d+) .*Verkehr gruen ([\d.]+) % .*Polizei-Einsatz gruen (\d+)\/(\d+)/); return m ? `${m[1]} / ${m[2]} % / ${m[3]}:${m[4]}` : '?' },
+    gut: (s) => { const m = s.match(/stehend im Gruenen (\d+) .*Verkehr gruen ([\d.]+) % .*Polizei-Einsatz gruen (\d+)\/(\d+)/)
+      return !!m && !/GEGENPROBE FEHLGESCHLAGEN/.test(s) && +m[1] === 0 && +m[2] < 2 && +m[3] / +m[4] < 0.15 } },
   { name: 'Koop (kommen alle an)', datei: 'th-koop.mjs', kern: false,
     wert: (s) => (s.match(/alle (\d+) geprueften kommen an/) || [, '?'])[1] + ' Wege',
     gut: (s) => /kommen an/.test(s) },

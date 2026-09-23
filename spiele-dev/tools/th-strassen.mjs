@@ -127,6 +127,10 @@ const sonde = `function(MINH){
        darauf; dieselbe Regel wie bei Baumkronen und Kranauslegern. */
     if(bb.min.y>2)return;
     var q=o,d=null;while(q&&q!==scene){if(q.userData&&q.userData.datei)d=q.userData.datei;q=q.parent;}
+    /* Runde 92: der PARKSTREIFEN der Hauptstrassen (5,75 bis 8,05 m von der Mitte, Tabelle
+       HS_PARK/HS_BORD im Spiel) ist fuer Fahrzeuge der richtige Ort — ein dort geparkter
+       Lieferwagen ist kein Objekt AUF der Fahrbahn. Alles andere (Laterne, Zaun) bleibt Befund. */
+    if(/^Hauptstrasse/.test(band)&&Math.abs(Math.abs(w.z)-58)>=5.75&&/^(th7_|th37_|th40_|th50_|th_auto_)/.test(d||""))return;
     var k=Math.round(w.x/3)+"|"+Math.round(w.z/3)+"|"+band;
     if(!karte[k]||karte[k].hoch<hy)
       karte[k]={x:+w.x.toFixed(1),z:+w.z.toFixed(1),band:band,hoch:+hy.toFixed(2),
