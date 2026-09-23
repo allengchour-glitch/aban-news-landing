@@ -97,3 +97,13 @@ gid://shopify/Product/15495090897281	2026-09-23T03:12Z	schon-DRAFT	17.90	89.73	A
 gid://shopify/Product/15453791912321	2026-09-23T03:12Z	schon-DRAFT	15.90	87.27	Teddysweater für Hunde
 gid://shopify/Product/15500899352961	2026-09-23T03:12Z	schon-DRAFT	16.90	88.19	Kuscheliges Katzenbett «Shell Nest»
 gid://shopify/Product/15452675899777	2026-09-23T03:12Z	schon-DRAFT	57.90	128.99	Keramik Obstschaale
+gid://shopify/Product/15448962105729	2026-09-23T04:08Z	schon-DRAFT	17.90	87.40	Drehbarer Garderobenständer aus Holz
+gid://shopify/Product/15448941986177	2026-09-23T04:09Z	schon-DRAFT	19.90	88.92	Haustier-Sofabett mit Wärmefunktion
+gid://shopify/Product/15453897556353	2026-09-23T04:09Z	schon-DRAFT	15.90	84.90	Schuhregal für den Eingang
+gid://shopify/Product/15499866308993	2026-09-23T04:09Z	schon-DRAFT	40.90	109.82	Schafsfell-Teppich
+gid://shopify/Product/15501060276609	2026-09-23T04:09Z	schon-DRAFT	20.90	89.37	Schmuckständer Samt Baum-Design
+gid://shopify/Product/15448923406721	2026-09-23T04:09Z	schon-DRAFT	18.90	86.97	Chenille Sofakissenbezug im Landhausstil
+gid://shopify/Product/15452678029697	2026-09-23T04:09Z	schon-DRAFT	15.90	83.92	Dusche Ablage Set
+gid://shopify/Product/15500999131521	2026-09-23T04:10Z	schon-DRAFT	46.90	114.77	Retro Outdoor Rucksack aus gewachstem Canvas
+gid://shopify/Product/15502135361921	2026-09-23T04:10Z	schon-DRAFT	16.90	84.65	Automatischer Vorhangroboter für Roman- und Rundstangen
+gid://shopify/Product/15499079188865	2026-09-23T04:10Z	schon-DRAFT	17.90	85.41	Sofaüberwurf Baumwolle – Geometrische Abstraktion

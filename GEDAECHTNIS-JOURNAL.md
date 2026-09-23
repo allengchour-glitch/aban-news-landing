@@ -323,6 +323,18 @@ Status `ig-fehler`. Reihenfolge = Betreiber-Prioriät (TikTok, Instagram, dann F
 verschwindet der wichtigste Kanal still. (b) Direkt nach einem Container-Neustart sind Netzfehler wahrscheinlicher; ein
 einziger Versuch ist dort keine Messung. (c) Nachholen NUR nach Live-Abgleich, nie aus dem Ledger heraus.
 
+**Nachtrag 21 (23.09. 04:25 UTC) — Das Produkt-Tor des Reel-Posters las die CJ-Nummer als Shopify-ID: ein aktives Produkt galt als «existiert nicht mehr».**
+Um 03:48/04:08 UTC verwarf `meta_reel_post` das Projektor-Reel (`cjreel-1443876506416844800`) mit «Produkt existiert nicht
+mehr» und setzte die Zeile auf `produkt-nicht-aktiv` — GEMESSEN: das Produkt ist ACTIVE mit onlineStoreUrl (SKU-Suche
+`sku:CJ-1443876506416844800` → 15525513822593). Ursache: v2-Reels heissen `cjreel-<CJ-pid>` (18–19-stellig oder UUID), das Tor
+fragte jede Zahl als `gid://shopify/Product/<n>` ab → null; bei UUID-pids (`F5BA858E-…`) griff das Tor gar nicht («keine
+Produkt-ID»), der Post lief ohne ACTIVE-Prüfung durch (heute gut gegangen: Futterspender live, IG DdnatlxD0nV + FB
+1064048703271346). Fix in `meta_reel_post.mjs` und `metricool_tiktok_post.mjs`: 12–15-stellig = Shopify-ID direkt, sonst
+SKU-Suche `sku:CJ-<pid>`; Zeile zurück auf `ready`. **Lehre:** ein Bezeichner-Schema, das die Motor-Generation wechselt
+(v1 Shopify-ID, v2 CJ-pid), braucht am Tor eine Form-Erkennung — sonst sperrt das Tor genau die neue Ware aus und lässt die
+unlesbare durch. Nebenbefund: Shopify-Eimer stand um 04:10 bei 77/2'000 (alle Tages-Wächter starten nach dem Neustart
+gleichzeitig) — die Etikette hielt, kein Wächter starb.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

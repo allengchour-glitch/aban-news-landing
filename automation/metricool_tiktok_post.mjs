@@ -76,7 +76,9 @@ if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nir
 
 // Produkt noch kaufbar? (gleiche Regel wie meta_reel_post.mjs)
 async function produktAktiv(postId) {
-  const m = /^cjreel-(\d{6,})$/.exec(postId || '');
+  // 23.09.2026: v2-Reels tragen die CJ-pid (18–19-stellig oder UUID), v1 die Shopify-ID (13–14-stellig) — siehe meta_reel_post.
+  const m = /^cjreel-([0-9A-Za-z-]{6,})$/.exec(postId || '');
+  const istShopifyId = /^\d{12,15}$/.test(m ? m[1] : '');
   if (!m) return { ok: true, grund: 'keine Produkt-ID im Reel-Namen' };
   const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
   const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
@@ -85,8 +87,11 @@ async function produktAktiv(postId) {
     try {
       const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method: 'POST',
         headers: { 'X-Shopify-Access-Token': tok, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }` }) });
-      const d = await r.json(); const p = d && d.data && d.data.product;
+        body: JSON.stringify({ query: istShopifyId
+          ? `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }`
+          : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ status onlineStoreUrl } } }` }) });
+      const d = await r.json();
+      const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
       if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}` };
     } catch {}
