@@ -1,9 +1,10 @@
 {
-  "stand": "2026-09-22T21:39:50.101Z",
+  "stand": "2026-09-23T04:08:27.415Z",
   "posts": 40,
   "median_score": 18,
   "hooks": {
-    "Verwandle dein Zuhause in eine pure Wohlfühloase mit unserem": 0,
+    "Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für nat": 0,
+    "Verwandle dein Zuhause in eine pure Wohlfühloase mit unserem": 0.22,
     "Augenbrauen in einer Minute: Schablone anlegen, Stempel drüc": 0,
     "Von allem etwas – 8 Lieblinge aus 8 Welten \udf0d Wisch dich durc": 1.17,
     "Dein Sound für jedes Abenteuer – solarbetrieben, wasserdicht": 1.11,
@@ -41,18 +42,17 @@
     "Echter Uhrmacher-Luxus ⚙️ Automatik-Skelettuhr mit offenem W": 0.39,
     "Zeitlos am Handgelenk ⌚ Herrenuhr Edelstahl mit Saphirglas, ": 1.17,
     "Welä Ohrring nimmsch — 1 oder 2? \udc47 Schrib's i d Kommentär! \udccc": 2.01,
-    "Stopp — das musst du sehen ✋ Crossbody Lido": 0.44,
-    "Weles nimmsch – 1, 2 oder 3?  Herren-Sneaker Marco": 1.33
+    "Stopp — das musst du sehen ✋ Crossbody Lido": 0.44
   },
   "themen": {
-    "home": 0.8,
+    "beauty": 1.04,
+    "home": 0.82,
     "allgemein": 1.3,
     "schmuck": 1.05,
     "gadget": 1,
     "fitness": 0.75,
     "kinder": 0.61,
-    "beauty": 2.09,
     "haustier": 2.13,
-    "mode": 0.89
+    "mode": 0.44
   }
 }
