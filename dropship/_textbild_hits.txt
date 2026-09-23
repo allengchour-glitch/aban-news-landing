@@ -15971,3 +15971,9 @@ gid://shopify/Product/15453789585793	93->0	Lange Hundeleine für Wasseraktivitä
 gid://shopify/Product/15453789913473	67->0	Leine für grosse Hunde
 gid://shopify/Product/15453791158657	185->0	Kinderleder-Schuhe, weiter Kopf
 gid://shopify/Product/15453791224193	9->0	Dickes, übergrosses Badetuch aus Baumwolle
+gid://shopify/Product/15453792862593	70->0	Yoga-Roller mit Camouflage-Muster
+gid://shopify/Product/15453793452417	154->1	Früchte-Rührgabel
+gid://shopify/Product/15453793976705	49->0	Lesekissen mit Armlehne und Getränkehalter
+gid://shopify/Product/15453794042241	19->0	Edelstahl-Lunchbox mit Fächern
+gid://shopify/Product/15453794107777	34->1	Kauenset für Hunde
+gid://shopify/Product/15453794238849	71->3	Grosse Ramen-Schüssel
