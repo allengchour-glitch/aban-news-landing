@@ -173,6 +173,29 @@ async function igLiveHas(caption){
   console.error('⚠️ IG-Live-Abgleich nicht erreichbar → nur lokale Wachen.'); return false;
 }
 
+// ok:true kaufbar · ok:false nicht kaufbar (DRAFT/ARCHIVED/ohne Onlineshop/geloescht) · ok:null nicht pruefbar
+async function produktAktiv(zeilenId){
+  const m = /(\d{12,})\s*$/.exec(String(zeilenId||'').trim());
+  if(!m) return { ok:true, grund:'keine Produkt-ID in der Zeile' };
+  const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
+  const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt','utf8') : '')).trim();
+  if(!tok) return { ok:null, grund:'kein Shop-Token' };
+  for(let a=0;a<3;a++){
+    try{
+      const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method:'POST', headers:{ 'X-Shopify-Access-Token':tok, 'Content-Type':'application/json' },
+        body: JSON.stringify({ query:`{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }` }) });
+      const d = await r.json();
+      if(d && d.data){
+        const p = d.data.product;
+        if(p === null) return { ok:false, grund:'Produkt existiert nicht mehr' };
+        return { ok: p.status==='ACTIVE' && !!p.onlineStoreUrl, grund:`status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl?'ja':'nein'}` };
+      }
+    }catch{}
+    await new Promise(x=>setTimeout(x, 2000*(a+1)));
+  }
+  return { ok:null, grund:'Shopify nicht erreichbar' };
+}
+
 for(const next of ready.slice(0, MAX)){
   const imageUrl = next[idx.image_url].trim();
   const caption = next[idx.caption] || '';
@@ -202,6 +225,18 @@ for(const next of ready.slice(0, MAX)){
     next[idx.status] = 'skipped-nonjpg'; anyFail = true; continue;
   }
   // Optionale Kanal-Auswahl pro Zeile über die Spalte 'platforms' (leer = alle konfigurierten).
+  // 23.09.2026 ACHTE SCHICHT — ist die WARE noch kaufbar? Gemessen: 3 von 73 «ready»-Zeilen (August-Queue)
+  // bewarben Produkte, die Waechter seit dem Bau der Queue gedraftet hatten (kein onlineStoreUrl → Link = 404).
+  // Reel- und Karussell-Poster fragen Shopify vor jedem Post; dieser Poster fragte nie. Zeilen-ID traegt die
+  // Shopify-Produkt-ID am Ende (…-15408457941377); ohne ID (Markenposts) gilt: erlaubt.
+  if(!DRY){
+    const pa = await produktAktiv(next[idx.id]);
+    if(pa.ok === false){
+      console.log(`   ⛔ Produkt nicht kaufbar (${pa.grund}) → produkt-nicht-aktiv: ${next[idx.id]}`);
+      next[idx.status] = 'produkt-nicht-aktiv'; fs.writeFileSync(CSV, serialize(rows)); continue;
+    }
+    if(pa.ok === null){ console.log(`   ⚠️ Produkt nicht pruefbar (${pa.grund}) → Zeile bleibt ready, naechster Lauf`); continue; }
+  }
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);

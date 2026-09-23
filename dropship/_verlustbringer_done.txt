@@ -641,3 +641,48 @@ gid://shopify/Product/15501661208961	2026-09-23T08:09Z	schon-DRAFT	30.90	48.98	B
 gid://shopify/Product/15448941134209	2026-09-23T08:09Z	schon-DRAFT	18.90	38.37	Boho Hängematte für Katzen
 gid://shopify/Product/15453794140545	2026-09-23T08:09Z	schon-DRAFT	39.90	57.92	Holz Obstkorb, naturbelassen
 gid://shopify/Product/15506296275329	2026-09-23T08:09Z	schon-DRAFT	20.90	38.88	Schaumstoff-Faszienrolle mit Massagestab
+gid://shopify/Product/15454069522817	2026-09-23T08:27Z	schon-DRAFT	24.90	42.88	Leichte, atmungsaktive Sicherheitschuhe
+gid://shopify/Product/15499701289345	2026-09-23T08:27Z	schon-DRAFT	16.90	34.87	Lithium-Akkubatterie
+gid://shopify/Product/15450848395649	2026-09-23T08:27Z	schon-DRAFT	33.90	51.84	Zitrus-Entsafter für frische Säfte
+gid://shopify/Product/15500743410049	2026-09-23T08:27Z	schon-DRAFT	16.90	34.80	Sofakissen Winter
+gid://shopify/Product/15501902774657	2026-09-23T08:27Z	schon-DRAFT	15.90	33.77	Blumenbau-Blockset
+gid://shopify/Product/15454110318977	2026-09-23T08:27Z	schon-DRAFT	20.90	38.75	Hintergrundbeleuchtete Tastatur
+gid://shopify/Product/15499806572929	2026-09-23T08:27Z	schon-DRAFT	32.90	50.69	Chinesisches Sofabanner
+gid://shopify/Product/15500699042177	2026-09-23T08:27Z	schon-DRAFT	24.90	42.66	Grüner Kissenbezug
+gid://shopify/Product/15496330838401	2026-09-23T08:27Z	schon-DRAFT	18.90	36.65	Sicherheitsschuhe High-Top mit Stahlkappe
+gid://shopify/Product/15452685468033	2026-09-23T08:27Z	schon-DRAFT	18.90	36.63	Winter-Plüscho-Sofakissen Nordisch
+gid://shopify/Product/15454117003649	2026-09-23T08:27Z	schon-DRAFT	15.90	33.62	Holzspiegel im europäischen Stil
+gid://shopify/Product/15449429639553	2026-09-23T08:27Z	schon-DRAFT	14.90	32.61	Hundesitzschutz mit Sichtfenstern
+gid://shopify/Product/15496373404033	2026-09-23T08:27Z	schon-DRAFT	18.90	36.59	Doppelstöckiges Ausziehregal für Küche & Bad
+gid://shopify/Product/15454199480705	2026-09-23T08:27Z	schon-DRAFT	15.90	33.57	Weihnachts-Sofabezüge mit Troddeln
+gid://shopify/Product/15496580137345	2026-09-23T08:27Z	schon-DRAFT	15.90	33.56	Plüsch-Sofakissen mit Antirutsch-Funktion
+gid://shopify/Product/15448949195137	2026-09-23T08:27Z	schon-DRAFT	27.90	45.55	Smarter Futterautomat mit Timer
+gid://shopify/Product/15447637557633	2026-09-23T08:27Z	schon-DRAFT	17.90	35.54	Kratzbaum-Katzenbett mit Schublade
+gid://shopify/Product/15454093934977	2026-09-23T08:27Z	schon-DRAFT	15.90	33.48	Holzkochutensilien-Set 7-teilig
+gid://shopify/Product/15448921145729	2026-09-23T08:27Z	schon-DRAFT	19.90	37.46	Sitzkissen für Gartenbank und Lounger
+gid://shopify/Product/15448848499073	2026-09-23T08:27Z	schon-DRAFT	17.90	36.16	Interaktive Murmel-Schiessmaschine für Kinder
+gid://shopify/Product/15453895885185	2026-09-23T08:27Z	schon-DRAFT	15.90	33.38	Wasserdichter Reisetasche Wüste-Camo
+gid://shopify/Product/15503133671809	2026-09-23T08:27Z	schon-DRAFT	16.90	34.35	Roddy Ricch Fussmatte
+gid://shopify/Product/15449466667393	2026-09-23T08:27Z	schon-DRAFT	17.90	35.31	Handgelenk-Stärker mit einstellbarem Widerstand
+gid://shopify/Product/15454039081345	2026-09-23T08:27Z	schon-DRAFT	14.90	32.31	Weisse Chiffon-Blumen Spitzenstoff
+gid://shopify/Product/15499243487617	2026-09-23T08:27Z	schon-DRAFT	17.90	35.28	Universal Sofa Kissenbezug
+gid://shopify/Product/15504177856897	2026-09-23T08:27Z	schon-DRAFT	15.90	33.22	Uhrenbox aus Holz
+gid://shopify/Product/15454199284097	2026-09-23T08:27Z	schon-DRAFT	19.90	37.21	Elektronische Körperwaage mit Körperfett- und Feuchtigkeitsm
+gid://shopify/Product/15448939331969	2026-09-23T08:27Z	schon-DRAFT	16.90	34.12	Faltbares Katzenbett für den Schreibtisch
+gid://shopify/Product/15497424535937	2026-09-23T08:28Z	schon-DRAFT	21.90	39.09	Kang Schneidebrett, doppelseitig, Edelstahl
+gid://shopify/Product/15448963842433	2026-09-23T08:28Z	schon-DRAFT	14.90	35.09	3-Schicht-Stahl Bratpfanne Unbeschichtet
+gid://shopify/Product/15450849444225	2026-09-23T08:28Z	schon-DRAFT	30.90	49.46	Mini-Kaffeemaschine für Zuhause und Büro
+gid://shopify/Product/15500200706433	2026-09-23T08:28Z	schon-DRAFT	15.90	32.95	Chenille-Kissenbezug
+gid://shopify/Product/15448851382657	2026-09-23T08:28Z	schon-DRAFT	18.90	37.95	Münzeinwurf-Tor für Spielautomaten
+gid://shopify/Product/15452684353921	2026-09-23T08:28Z	schon-DRAFT	15.90	32.95	Lenden-Gesässkissen, Memory-Schaum, Auto-Universell
+gid://shopify/Product/15506261901697	2026-09-23T08:28Z	schon-DRAFT	27.90	44.93	Kissenbezug mit Landschaftsmuster
+gid://shopify/Product/15500917703041	2026-09-23T08:28Z	schon-DRAFT	26.90	43.90	Drehbarer Tortenständer für Backkreationen
+gid://shopify/Product/15452684976513	2026-09-23T08:28Z	schon-DRAFT	26.90	43.90	Instagram-ähnliche Couchabdeckung Gelb-Rosa-Grün, katzenklau
+gid://shopify/Product/15453779132801	2026-09-23T08:28Z	schon-DRAFT	17.90	34.86	Schwangerschaftskissen für Seitenschläfer
+gid://shopify/Product/15504117760385	2026-09-23T08:28Z	schon-DRAFT	25.90	42.79	Business Lederschuhe mit Höhenerhöhung
+gid://shopify/Product/15449465291137	2026-09-23T08:28Z	schon-DRAFT	15.90	32.79	Holz Schneidbrett Akazie
+gid://shopify/Product/15500982288769	2026-09-23T08:28Z	schon-DRAFT	15.90	32.76	Kaninchenmuster-Kanvas
+gid://shopify/Product/15448840995201	2026-09-23T08:28Z	schon-DRAFT	15.90	32.76	Bambus-Schneidebrett mit Schublade
+gid://shopify/Product/15453767762305	2026-09-23T08:28Z	schon-DRAFT	14.90	31.76	Ölmalerei zum Selbermachen
+gid://shopify/Product/15501921223041	2026-09-23T08:28Z	schon-DRAFT	15.90	32.74	Katzen-Trinkgefäss
+gid://shopify/Product/15504103997825	2026-09-23T08:28Z	schon-DRAFT	17.90	34.74	Keramik Futternapf-Set für Hunde und Katzen

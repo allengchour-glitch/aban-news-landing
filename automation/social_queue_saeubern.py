@@ -9,8 +9,11 @@ Serpent-Armreif. Geprüft wird je ready-Zeile:
                      Schlüssel aus post_guard.produktKey (« »-Name > Produkt-ID > Slug).
   saison-skip        Der Text bewirbt einen vergangenen Anlass (Sommer, Muttertag, 1. August).
                      Im September ist «Sommer-Liebling» keine Werbung, sondern ein Datum.
-  produkt-weg-skip   Das beworbene Produkt ist nicht mehr ACTIVE — genau die Falle, wegen der
-                     ein Reel einmal gedraftete Klimaanlagen bewarb.
+  produkt-weg-skip   Das beworbene Produkt ist nicht mehr ACTIVE (oder nicht im Onlineshop) — genau die
+                     Falle, wegen der ein Reel einmal gedraftete Klimaanlagen bewarb.
+
+⚠️ 23.09.2026: Dieses Skript hatte seit dem 03.09. KEINEN Starter (kein Log je geschrieben) — gemessen: 3 von 73
+«ready»-Bildposts bewarben gedraftete Ware. Jetzt taeglich im Aufseher (fixer_keepalive.sh, Tagesliste).
 
 NICHTS WIRD GELÖSCHT. Es ändert sich nur die Status-Spalte; jede Zeile bleibt lesbar und
 lässt sich von Hand zurücksetzen. DRY=1 zeigt nur.
@@ -67,10 +70,12 @@ def status_von(ids):
     out = {}
     ids = [i for i in ids if i]
     for i in range(0, len(ids), 50):
-        d = gql("query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status}}}",
+        d = gql("query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status onlineStoreUrl}}}",
                 {"ids": ["gid://shopify/Product/" + x for x in ids[i:i+50]]})
+        # 23.09.2026: ACTIVE ohne onlineStoreUrl (nicht im Onlineshop publiziert) ist fuer die Kundin dieselbe 404 —
+        # der Reel-/Karussell-Poster fragen beides, hier zaehlte nur der Status.
         for n in ((d.get("data") or {}).get("nodes") or []):
-            if n: out[n["id"].split("/")[-1]] = n["status"]
+            if n: out[n["id"].split("/")[-1]] = n["status"] if n.get("onlineStoreUrl") else "OHNE-ONLINESHOP"
     return out
 
 gepostet = set()

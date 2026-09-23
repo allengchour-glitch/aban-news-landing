@@ -418,6 +418,22 @@ im Objektspeicher: Vergleich `git diff $S^ $S` zeigte drei Ledger, Zeilenverglei
 ist kein «nichts drin». (2) Nach jedem gescheiterten Rebase: `--quit`, dann `git stash list` auf «autostash» prüfen
 und per Zeilen-Union zurückspielen, nie per `pop` in ein Ledger, das inzwischen weitergewachsen ist.
 
+**Nachtrag 27 (23.09. 08:45 UTC) — Verbesserungsrunde 5: der Bild-Poster fragte nie, ob die Ware noch kaufbar ist — 3 von 73 wartenden Bildposts hätten auf eine 404 gezeigt.**
+GEMESSEN: `social/posts_image.csv` hat 73 «ready»-Zeilen, alle aus dem August (Kimi-Captions); die Zeilen-ID trägt
+die Shopify-Produkt-ID am Ende. Live-Abfrage `nodes(ids:…){status onlineStoreUrl}`: 70 ACTIVE, **3 DRAFT ohne
+onlineStoreUrl** (3D-Wimpern, Klemmbaustein-Polizeiauto, Deko-Vase) — von Wächtern seit dem Bau der Queue gedraftet.
+Reel- und Karussell-Poster prüfen ACTIVE+onlineStoreUrl vor jedem Post; `social-autopost-meta.mjs` hatte kein solches
+Tor. Und `social_queue_saeubern.py` (03.09., kennt «produkt-weg-skip») hatte **keinen Starter** — kein Log je
+geschrieben, lief einmal von Hand. Die Wächter-Tracebacks in /tmp/*.log (Throttled) sind alt; die letzten Läufe sind
+sauber (Logs sind kumulativ — nur die letzten Zeilen zählen). IG-Bildpost 02:08 «Medien-Download fehlgeschlagen»:
+Bild-URL antwortet 200 image/jpeg 800×800 → vorübergehend, der Wiederholungsversuch von heute früh deckt es.
+GETAN: (1) Achte Schicht im Bild-Poster: `produktAktiv()` (ACTIVE + onlineStoreUrl, Shopify nicht erreichbar =
+Zeile bleibt ready und wird nicht gepostet); (2) die 3 Zeilen → `produkt-nicht-aktiv`; (3) `social_queue_saeubern.py`
+zählt jetzt auch «ACTIVE ohne Onlineshop» als weg und steht in der Tagesliste des Aufsehers (DRY: 104 ready, 0 weitere
+Befunde). Kanarienvogel: die drei DRAFTs vor dem Patch gemessen, nach dem Patch 70 ACTIVE übrig.
+**Lehre:** Jeder Poster braucht dieselbe Frage vor dem Post — «ist die Ware kaufbar?» — im selben Werkzeug; eine
+Queue aus dem August ist eine Momentaufnahme, keine Wahrheit. Und wieder: ein Reiniger ohne Starter ist ein Bericht.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16076,3 +16092,5 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-20 · 🎯 **Vierzig von vierzig Treffern — und kein einziger war ein Fund.** Die Startseite lieferte dem Hetzner-Agenten am 20.09. → Journal
 - 2026-09-21 · 🩹 **Der Wächter fragte nach der Werbung, nicht nach der Ware — und die Lücke, die ich reparieren wollte, gibt es nicht.** Zwei Ergebnisse, beide durch Messen statt Vermuten. → Journal
 - 2026-09-21 · 🪣 **Acht Wächter, ein Eimer — die Drossel war hausgemacht, und mein erster Fix war falsch.** `menue_links.log`: **15 PAUSE-Zeilen bei 16 Läufen** — der Wächter, der am 15.09. → Journal
+- 2026-09-21 · 🫀 **Ein Herzschlag, der sich als Arbeit ausgab — und die Post brachte ein endgültiges Nein.** «email sachen machen»: Posteingang in drei Tagen **ein** Vorgang, der Befund lag daneben. → Journal
+- 2026-09-21 · ⏳ **Der Kommentar sagte `restoreRate`, der Code schlief 12 s — und mein Patch hatte denselben Fehler.** «alles fixen»: ~15 Wächter enden mit «Shopify antwortet nicht». → Journal

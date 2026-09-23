@@ -501,6 +501,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-23 · 🖼️ **Verbesserungsrunde 5: Bild-Poster fragte nie, ob die Ware kaufbar ist — 3 von 73 August-Zeilen bewarben DRAFTs (Link = 404); `social_queue_saeubern.py` hatte seit 03.09. keinen Starter.** Jetzt `produktAktiv()` im Bild-Poster (ACTIVE+onlineStoreUrl), Reiniger täglich im Aufseher, prüft auch «ohne Onlineshop». Alte Throttle-Tracebacks in /tmp-Logs sind Vergangenheit (nur letzte Zeilen zählen) → Journal Nachtrag 27
 - 2026-09-23 · 🎠 **«insta karusell brauchen»: erstes IG-Karussell live (DdnlCi-jkth + FB-Album) — der Slide-Bauer hatte 31 Sets für den toten PC-Poster gelagert, IG verlangt 4:5.** `tiktok_karussell.py FORMAT=ig` (1080×1350, eigene Bildfenster), `ig_karussell_post.mjs` (Wachen wie die Reel-Poster, pusht fehlende Slides selbst), Autopilot 24 h, Aufseher baut täglich 2 + montags Top. **Ein Bauer ohne Poster ist ein Lager** → Journal Nachtrag 25
 - 2026-09-23 · 📐 **Betreiber-Screenshot: Titel/Preis der Reels lagen unter TikToks Caption, Marke unter der Suchleiste — die Textebene kannte die Plattform-Oberfläche nicht.** `overlay.py` sichere Zone (200–1440, Fusstexte links der Knopfleiste), Video bei y=600, UI-Schablone als Prüfbild, `NEU_RENDERN=1` baut die 23 wartenden Reels neu. «CHF 50» war richtig (Warenwert; 45 = intern nach Rabatt) → Journal Nachtrag 24
 - 2026-09-23 · 📲 **Erster TikTok-Post via Metricool LIVE (7688585316826877216, Projektor P62) — aber «posted-tiktok» hiess nur «geplant»; Ampel mass die tote PC-Queue.** Jetzt `PRUEFEN=1 metricool_tiktok_post.mjs` (Planer lesen → `tiktok:<url>` oder `tiktok-fehler`), Autopilot prüft alle 2 h, Ampel misst das Ledger. **Gepostet ist erst, was die Plattform bestätigt** → Journal Nachtrag 23
@@ -546,9 +547,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-09-21 · 🚧 **Geduld reicht nicht, wenn alle gleichzeitig warten — die Schranke.** Nach den Geduld-Patches starb `lagerstand_hygiene` erneut, jetzt mit Grund: «12x gedrosselt (Eimer dauerhaft leer)». → Journal
 - 2026-09-21 · 📚 **«9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde.** `cj_verfuegbarkeit` schrieb 104× dieselbe Zeile; gemessen blätterte er seit der Cursor-Löschung (19.09.) bei JEDEM Lauf den ganzen Katalog (~810 Seiten, **50–80k Punkte** aus einem 2'000er-Eimer),… → Journal
 - 2026-09-21 · 🔁 **Fünf sinnlose Läufe pro Stunde, für immer — und ein Wrapper, der Befunde erfindet.** (1) `versandschwelle_rabatt.log` meldete seit 10.09. → Journal
-- 2026-09-21 · ⏳ **Der Kommentar sagte `restoreRate`, der Code schlief 12 s — und mein Patch hatte denselben Fehler.** «alles fixen»: ~15 Wächter enden mit «Shopify antwortet nicht». → Journal
-- 2026-09-21 · 🫀 **Ein Herzschlag, der sich als Arbeit ausgab — und die Post brachte ein endgültiges Nein.** «email sachen machen»: Posteingang in drei Tagen **ein** Vorgang, der Befund lag daneben. → Journal
 
-… Einzeilen vom 14.–21.09.2026 (87, zwei vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
+… Einzeilen vom 14.–21.09.2026 (89, vier vom 21.09.) am 23.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
 Dateiende — CLAUDE.md muss unter ~70 KB bleiben); alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md`
 (Inhaltsverzeichnis oben). Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`.
