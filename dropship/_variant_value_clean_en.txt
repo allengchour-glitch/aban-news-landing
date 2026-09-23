@@ -18017,3 +18017,6 @@ gid://shopify/Product/15448649564545	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292311425	Leuchtendrot-Einheitsgrösse	Leuchtendes Rot-Einheitsgrösse	2026-09-23T20:35Z/reparatur-konsistenz
 gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292344193	Leuchtendrot-Übergrösse	Leuchtendes Rot-Übergrösse	2026-09-23T20:35Z/reparatur-korrigiert
 gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292376961	Leuchtendrot-Klein	Leuchtendes Rot-Klein	2026-09-23T20:35Z/reparatur-korrigiert
+gid://shopify/Product/15448651071873	Farbe	gid://shopify/ProductOptionValue/12024525291905	3 Farben	3color	2026-09-23T20:35Z/reparatur-original:3color
+gid://shopify/Product/15448652677505	Farbe	gid://shopify/ProductOptionValue/12024592466305	Vintageblau	Vintage-Blau	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448652677505	Farbe	gid://shopify/ProductOptionValue/12024592499073	Washed Blau	Washed Blue	2026-09-23T20:35Z/reparatur-original:Washed
