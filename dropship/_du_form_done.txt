@@ -18182,3 +18182,9 @@ photon-gesichtsmaske-624700	2026-09-23	um-ohne-wirkung
 photon-lichttherapie-maske-615200	2026-09-23	teilweise
 photon-rejuvenation-gerat-802028	2026-09-23	du
 photon-rejuvenation-lichttherapie-gerat-613400	2026-09-23	nicht-aktiv
+photonen-hautverjungungsgerat-mit-mikrostrom-604400	2026-09-23	du
+photonische-silica-gel-gesichtsmaske-615800	2026-09-23	teilweise
+physiotherapie-kissen-fur-die-halswirbelsaule-818449	2026-09-23	du
+piano-paint-uhr-verpackungsbox-aus-holz-e9dd02	2026-09-23	um-ohne-wirkung
+piano-performance-schuhe-fur-madchen-552640	2026-09-23	um-ohne-wirkung
+pickleball-rucksack-fur-damen-und-herren-629900	2026-09-23	du
