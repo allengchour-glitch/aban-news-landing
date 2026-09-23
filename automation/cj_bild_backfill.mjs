@@ -208,6 +208,10 @@ function ledgerLesen() {
     if (!l.trim()) continue;
     const [id, kl] = l.split('\t');
     if (!m.has(id)) m.set(id, []);
+    // «zurueck» hebt alle früheren Zeilen des Produkts auf (Ledger ist append-only, nie ersetzen).
+    // Gemessen 23.09. 23:05: ein v1-Lauf (Aufseher 22:23) hatte bei blinder OCR «Hexe Dekorative
+    // Malerei» als «nichts-brauchbar» abgehakt — CJ bietet ein zweites Bild (20e65443…), das fehlt.
+    if (kl === 'zurueck') { m.set(id, []); continue; }
     m.get(id).push(kl || '');
   }
   return m;
