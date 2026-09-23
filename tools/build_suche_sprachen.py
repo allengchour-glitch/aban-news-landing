@@ -38,6 +38,7 @@ SPRACHEN = {
         "treffer": "results for",
         "in": "in",
         "besten": "top",
+        "verstanden": "understood as",
         "nichts": "Nothing found for",
         "alle": "All",
         "syn": '{"artificial":["ai"],"intelligence":["ai"],"ki":["ai"]}',
@@ -64,6 +65,7 @@ SPRACHEN = {
         "treffer": "résultats pour",
         "in": "dans",
         "besten": "les meilleurs",
+        "verstanden": "compris comme",
         "nichts": "Aucun résultat pour",
         "alle": "Tout",
         "syn": '{"intelligence":["ia"],"artificielle":["ia"],"ki":["ia"],"ai":["ia"]}',
@@ -90,6 +92,7 @@ SPRACHEN = {
         "treffer": "risultati per",
         "in": "in",
         "besten": "i migliori",
+        "verstanden": "inteso come",
         "nichts": "Nessun risultato per",
         "alle": "Tutto",
         "syn": '{"intelligenza":["ia"],"artificiale":["ia"],"ki":["ia"],"ai":["ia"]}',
@@ -165,10 +168,19 @@ def baue(code, cfg, vorlage):
                 f'var SYN={cfg["syn"]};', "Synonyme")
     h = ersetze(h, 'cnt.textContent="Lade Index …"', f'cnt.textContent="{cfg["laden"]}"', "Ladehinweis")
     h = ersetze(h, '\'">Alle <span class="n">\'', f'\'">{cfg["alle"]} <span class="n">\'', "Chip Alle")
+    # ⚠️ Seit 2026-09-04 (Vertipper-Korrektur) hatte die deutsche Zeile eine dritte Zeile
+    # „verstanden als" — dieses Muster kannte sie nicht, der Build brach ab, und
+    # build-pages.sh verschluckte den Fehler („übersprungen"). en/fr/it blieben drei Wochen
+    # ohne Vertipper-Korrektur. Gefunden 2026-09-23.
+    z0, z1 = cfg["zitat"]
     h = ersetze(h, 'cnt.textContent=ges?(ges+" Treffer für „"+q+"“"+(filter?" in "+KAT[filter]:"")\n'
-                   '      +(ges>hits.length?" · die besten "+hits.length:"")):"";',
-                f'cnt.textContent=ges?(ges+" {cfg["treffer"]} {cfg["zitat"][0]}"+q+"{cfg["zitat"][1]}"+(filter?" {cfg["in"]} "+KAT[filter]:"")\n'
-                f'      +(ges>hits.length?" · {cfg["besten"]} "+hits.length:"")):"";', "Trefferzeile")
+                   '      +(ges>hits.length?" · die besten "+hits.length:"")\n'
+                   '      +(korr.length?" · verstanden als „"+korr.map(function(c){return c[1]}).join(" ")+"“":"")):"";',
+                f'cnt.textContent=ges?(ges+" {cfg["treffer"]} {z0}"+q+"{z1}"+(filter?" {cfg["in"]} "+KAT[filter]:"")\n'
+                f'      +(ges>hits.length?" · {cfg["besten"]} "+hits.length:"")\n'
+                f'      +(korr.length?" · {cfg["verstanden"]} {z0}"+korr.map(function(c){{return c[1]}}).join(" ")+"{z1}":"")):"";', "Trefferzeile")
+    # Deutsch-Regeln (Füllwörter, Alltagswörter, Komposita, Verbstamm) gelten nur für Deutsch.
+    h = ersetze(h, "var DE=true;", "var DE=false;", "Deutsch-Regeln aus")
     h = ersetze(h, '\'<div class="empty">Nichts gefunden für „\'+esc(q)+\'“.<br>Vielleicht im '
                    '<a href="/suche.html?q=\'+encodeURIComponent(q)+\'">Marktplatz</a> suchen?</div>\'',
                 f'\'<div class="empty">{cfg["nichts"]} {cfg["zitat"][0]}\'+esc(q)+\'{cfg["zitat"][1]}.</div>\'', "Leermeldung")

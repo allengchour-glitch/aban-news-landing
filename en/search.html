@@ -124,20 +124,117 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
      für „künstliche Intelligenz" gegen „KI" und „artificial intelligence" gegen „AI".
      Wer den ausgeschriebenen Begriff tippt, landete in einer Sackgasse. */
   var SYN={"artificial":["ai"],"intelligence":["ai"],"ki":["ai"]};
+  /* 🇨🇭 DEUTSCH-REGELN (tools/such_fragen.json misst sie; die Sprachseiten setzen DE=false).
+     GEMESSEN 2026-09-23 an 116 Alltags-Anfragen: nur 79 % fanden die richtige Seite unter
+     den ersten 3. Die Ausfaelle hatten vier Ursachen:
+       FUELLWOERTER  „was bleibt vom lohn" — „was" steckt in „WASchmaschine"; Fragen, wie
+                     Menschen sie tippen, landeten bei Waschmaschinen statt beim Lohnrechner.
+       ALLTAGSWORT   „natel", „zügeln", „coiffeur", „notebook" — die Seite sagt Handy,
+                     Umzug, Friseur, Laptop.
+       KOMPOSITUM    „prozentrechnung", „notenschnitt" — 0 Treffer, obwohl beide Teile
+                     vorkommen.
+       VERBFORM      „kündigen" fand die Kündigungs-Vorlage nicht.  */
+  var DE=false;
+  var ALLTAG={"natel":["handy","smartphone"],"zügeln":["umzug"],"umziehen":["umzug"],
+    "coiffeur":["friseur"],"coiffeuse":["friseur"],"restaurant":["gastronomie"],"beiz":["gastronomie"],
+    "notebook":["laptop"],"tv":["fernseher"],"benzin":["sprit"],"diesel":["sprit"],
+    "übergewicht":["bmi"],"abnehmen":["kalorien","bmi"],"kw":["kalenderwoche"],"alkohol":["promille"],
+    "kostet":["kosten"],"datenschutz":["dsgvo"],"zahlt":["zahlung","mahnung"],"teilzeit":["pensum"],
+    "gratis":["kostenlos"],"erstellen":["generator","schreiben"],"schrittzähler":["fitnesstracker"],"foto":["bild"],"fotos":["bilder"],"arztpraxis":["arztpraxen","ärzte"],"praxis":["praxen"],"kostenlos":["gratis"],"gehalt":["lohn"],"salär":["lohn"],"lohn":["gehalt"],
+    "velo":["fahrrad"],"fahrrad":["velo"],"handy":["smartphone"],"smartphone":["handy"]};
+  var STOP={};("was wie viel viele wieviel welche welcher welches welchen wann wo wer warum wozu "+
+    "ist sind bin bist habe haben hat hast ich du er sie wir ihr man mein meine meinen mir mich dich dir "+
+    "noch schon vom von der die das den dem des ein eine einen einem einer im in am an auf für mit und "+
+    "oder zu zum zur kann kannst können darf dürfen soll sollte muss bei als auch nicht kein keine es "+
+    "sich so dann jetzt gibt geht gehen bleibt brauche brauchen will möchte heisst heißt bedeutet machen mache tun").split(" ")
+    .forEach(function(w){STOP[w]=1});
+  /* Schluessel in beiden Umlaut-Schreibweisen ablegen: „zügeln", „zuegeln", „zugeln" treffen alle. */
+  function beideSchluessel(o){var n={};for(var k in o){n[fold(k)]=o[k];n[plain(k)]=o[k]}return n}
+  ALLTAG=beideSchluessel(ALLTAG);STOP=beideSchluessel(STOP);
+  /* Verbform: „kündigen" -> „kuendig" trifft auch „Kündigung", „senken" -> „senk" auch „Senkung". */
+  function stamm(f){return f.length>=6&&/en$/.test(f)?f.slice(0,-2):null}
+  /* Alle Schreibweisen, unter denen ein Wort zaehlt: selbst, Alltagswort, Stamm — je gefaltet. */
+  function gruppe(x){var f=fold(x),v=[f].concat(ALLTAG[f]||[]),st=stamm(f),aus=[];if(st)v.push(st);
+    v.forEach(function(y){aus.push(fold(y));if(plain(y)!==fold(y))aus.push(plain(y))});return aus}
   /* Einmal beim Laden vorrechnen statt bei jedem Tastendruck ueber 1396 Eintraege. */
+  /* 🔤 WORTSCHATZ fuer Vertipper. GEMESSEN: „rechnug", „hypotek", „lohnrecner", „dsgov"
+     lieferten alle NICHTS — ein unbekannter Begriff wurde bisher verworfen (richtig
+     gegen Buchstabendreher in Mehrwort-Suchen), aber bei einem einzigen Suchwort bleibt
+     dann nichts uebrig. Und „arbeitsvertag vorlage" fiel auf „vorlage" allein zurueck:
+     40 generische Treffer statt der Arbeitsvertrag-Seite.
+     Darum: aus Titeln, Beschreibungen und Slugs alle Woerter ab 4 Zeichen mit Haeufigkeit
+     merken (1397 Seiten → ~7200 Woerter). Ein Begriff, der nirgends vorkommt, wird gegen
+     diesen Schatz mit Editierdistanz verglichen — NUR dann; ein Begriff mit Treffern wird
+     nie umgedeutet, damit richtige Suchen unveraendert bleiben. */
+  var VOC={};
   function vorbereiten(idx){idx.forEach(function(it){
-    it._t=beide(it.t);it._d=beide(it.d);it._s=beide(slug(it.u))});return idx}
+    it._t=beide(it.t);it._d=beide(it.d);it._s=beide(slug(it.u));
+    (fold(it.t+" "+it.d+" "+slug(it.u)).match(/[a-z0-9]{4,}/g)||[]).forEach(function(w){VOC[w]=(VOC[w]||0)+1})});
+    return idx}
+  /* Damerau-Levenshtein mit Abbruch: Distanz > max wird nicht ausgerechnet. */
+  function dist(a,b,max){
+    if(Math.abs(a.length-b.length)>max)return max+1;
+    var prev=[],cur=[],pp=null,i,j;
+    for(j=0;j<=b.length;j++)prev[j]=j;
+    for(i=1;i<=a.length;i++){cur=[i];var zeile=i;
+      for(j=1;j<=b.length;j++){
+        var c=a.charAt(i-1)===b.charAt(j-1)?0:1;
+        var v=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+c);
+        if(i>1&&j>1&&a.charAt(i-1)===b.charAt(j-2)&&a.charAt(i-2)===b.charAt(j-1))v=Math.min(v,pp[j-2]+1);
+        cur[j]=v;if(v<zeile)zeile=v}
+      if(zeile>max)return max+1;
+      pp=prev;prev=cur}
+    return prev[b.length]}
+  /* Naechstes bekanntes Wort: kurze Begriffe duerfen 1 Fehler haben, laengere 2.
+     Bei gleicher Distanz gewinnt das haeufigere Wort, damit „rechnug" zu „rechnung"
+     wird und nicht zu „rechnen". */
+  function korrigiere(w){
+    if(w.length<4)return null;
+    var max=w.length<=6?1:2, best=null, bd=max+1, bh=0;
+    for(var k in VOC){if(Math.abs(k.length-w.length)>max)continue;
+      var d=dist(w,k,max);
+      if(d<bd||(d===bd&&VOC[k]>bh)){bd=d;best=k;bh=VOC[k]}}
+    return bd<=max?best:null}
+  /* KOMPOSITUM: „prozentrechnung" -> „prozent" + „rechnung", „kündigungsschreiben" ->
+     „kuendigung" + „schreiben" (Fugen-s). Nur fuer Woerter mit hoechstens 2 Treffern, und
+     nur wenn BEIDE Teile im Index vorkommen. Bei mehreren Moeglichkeiten gewinnt die
+     ausgewogenste Teilung — „noten|schnitt" statt „note|nschnitt". */
+  function vorkommt(x){return IDX.some(function(it){return it._t.indexOf(x)>=0||it._d.indexOf(x)>=0||it._s.indexOf(x)>=0})}
+  function zerlege(w){
+    var best=null,bw=0;
+    for(var i=4;i<=w.length-4;i++){
+      var b=w.slice(i),as=[w.slice(0,i)];
+      if(/s$/.test(as[0])&&i>4)as.push(as[0].slice(0,-1));
+      for(var j=0;j<as.length;j++){var a=as[j];
+        if(a.length<4)continue;
+        var wert=Math.min(a.length,b.length);
+        if(wert>bw&&vorkommt(a)&&vorkommt(b)){best=[a,b];bw=wert}}}
+    return best}
   function drin(h,w){for(var i=0;i<w.length;i++)if(h.indexOf(w[i])>=0)return true;return false}
   /* Wie viele der Begriffe kommen in diesem Eintrag ueberhaupt vor? */
   function passt(it,terms){var n=0;
     terms.forEach(function(w){if(drin(it._t,w)||drin(it._d,w)||drin(it._s,w))n++});
     return n}
-  function score(it,terms){var s=0;
-    terms.forEach(function(w){
-      if(drin(it._t,w))s+=5;
-      if(drin(it._d,w))s+=1;
-      if(drin(it._s,w))s+=2;
-      if(it._t.indexOf(w[0])===0)s+=3});
+  /* WORTENDE. Im Deutschen traegt das Ende eines zusammengesetzten Wortes die Bedeutung:
+     „NettoLOHN" ist ein Lohn, „LOHNt sich" nicht. GEMESSEN: „was bleibt vom lohn" hatte
+     „Lohnt sich ein KI-Abo?" auf Platz 1. Ein Treffer, nach dem kein Buchstabe mehr folgt,
+     zaehlt darum mehr als einer mitten im Wort. */
+  function wortende(h,w){for(var i=0;i<w.length;i++){var x=w[i],p=h.indexOf(x);
+      while(p>=0){var n=h.charAt(p+x.length);if(!n||!/[a-z0-9]/.test(n))return true;p=h.indexOf(x,p+1)}}
+    return false}
+  /* SELTENHEIT ZAEHLT. GEMESSEN: „darf ich noch fahren alkohol" — „fahr" steht auf Dutzenden
+     Velo-Seiten, „alkohol" auf einer Handvoll; ohne Gewicht gewann die Masse, der Promille-
+     Rechner fehlte. Jeder Begriff zaehlt jetzt mit log(1 + Seiten / Seiten-mit-Begriff):
+     das seltene, genaue Wort entscheidet, das allgemeine nur mit. */
+  function score(it,terms,gew){var s=0;
+    terms.forEach(function(w,i){var g=gew?gew[i]:1,t=0;
+      if(drin(it._t,w))t+=5;
+      if(drin(it._d,w))t+=1;
+      if(drin(it._s,w))t+=2;
+      if(it._t.indexOf(w[0])===0)t+=3;
+      if(wortende(it._t,w))t+=3;
+      if(wortende(it._s,w))t+=1;
+      s+=t*g});
     return s}
   function chipsBauen(alle,q,terms){
     var box=$("#chips");if(!box)return;
@@ -152,11 +249,15 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
   }
   function render(q){
     q=q.trim();
-    var terms=q.toLowerCase().split(/\s+/).filter(Boolean).map(function(w){
+    var woerter=q.toLowerCase().replace(/[?!,;:"„“]+/g," ").split(/\s+/).filter(Boolean);
+    /* Fuellwoerter weg — aber nie alles: „was ist das" bleibt eine Suche. */
+    if(DE){var kern=woerter.filter(function(w){return !STOP[fold(w)]});if(kern.length)woerter=kern}
+    var terms=woerter.map(function(w){
       var v=[w].concat(SYN[w]||SYN[fold(w)]||[]), aus=[];
+      if(DE){v=v.concat(ALLTAG[fold(w)]||[]);var st=stamm(fold(w));if(st)v.push(st)}
       v.forEach(function(x){aus.push(fold(x));if(plain(x)!==fold(x))aus.push(plain(x))});
       return aus});
-    var roh=q.toLowerCase().split(/\s+/).filter(Boolean);   /* fuers Hervorheben */
+    var roh=woerter.slice();   /* fuers Hervorheben */
     if(!q){list.innerHTML="";cnt.hidden=true;var cb=$("#chips");if(cb){cb.hidden=true;cb.innerHTML=""}return}
     if(!ready){cnt.hidden=false;cnt.textContent="Loading index …";return}
     /* ⚠️ MEHRERE WOERTER WURDEN MIT ODER VERKNUEPFT. Gemessen: "velo" 7 Treffer,
@@ -168,10 +269,29 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
        meistens ein Vertipper. Zaehlte er mit, machte ein einziger Buchstabendreher
        jede Suche leer ("mwst rechnr" haette 0 statt der MWST-Seiten gebracht).
        Solche Begriffe fallen raus, der Rest wird UND-verknuepft. */
-    var nutzbar=terms.filter(function(w){
-      return IDX.some(function(it){return drin(it._t,w)||drin(it._d,w)||drin(it._s,w)})});
+    var korr=[];  /* [tipp, verstanden] fuers Anzeigen */
+    var nutzbar=[];
+    terms.forEach(function(w,i){
+      var df=IDX.filter(function(it){return drin(it._t,w)||drin(it._d,w)||drin(it._s,w)}).length;
+      /* Zusammengesetztes Wort ohne (oder mit fast keinem) Treffer: beide Teile zaehlen als
+         eigene Begriffe, jeder mit seinen Alltagswoertern („benzin|verbrauch" findet so auch
+         „SPRITverbrauch"). ⚠️ GEMESSEN: „kündigungsschreiben" stand woertlich auf EINER
+         fremden Seite — ohne die Grenze „hoechstens 2 Treffer" kam man nie zur Vorlage.
+         Das ganze Wort bleibt in jeder Gruppe, damit die woertliche Seite nicht verschwindet. */
+      if(DE&&df<=2){var teile=zerlege(fold(roh[i]||w[0]));
+        if(teile){teile.forEach(function(p){nutzbar.push(gruppe(p).concat(df?w:[]))});
+          korr.push([roh[i]||w[0],teile.join(" ")]);return}}
+      if(df){nutzbar.push(w);return}
+      /* nicht verwerfen, sondern erst nach einem nahen Wort suchen */
+      var k=korrigiere(fold(roh[i]||w[0]));
+      if(k){var v=[fold(k)];if(plain(k)!==fold(k))v.push(plain(k));nutzbar.push(v);korr.push([roh[i]||w[0],k]);}
+    });
     if(!nutzbar.length)nutzbar=terms;
-    var bewertet=IDX.map(function(it){return {it:it,s:score(it,terms),n:passt(it,nutzbar)}})
+    /* Hervorhebung soll auch das verstandene Wort treffen */
+    korr.forEach(function(c){c[1].split(" ").forEach(function(x){if(roh.indexOf(x)<0)roh.push(x)})});
+    var gew=nutzbar.map(function(w){var d=IDX.filter(function(it){return drin(it._t,w)||drin(it._d,w)||drin(it._s,w)}).length;
+      return Math.log(1+IDX.length/(d||1))});
+    var bewertet=IDX.map(function(it){return {it:it,s:score(it,nutzbar,gew),n:passt(it,nutzbar)}})
       .filter(function(x){return x.s>0}).sort(function(a,b){return b.s-a.s});
     var alle=bewertet.filter(function(x){return x.n===nutzbar.length});
     /* ⚠️ SACKGASSE VERMEIDEN. Striktes UND allein liess zwei ganz vernuenftige Suchen
@@ -181,6 +301,11 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
        schlechter als heute wird es dadurch nie, denn genau diese Faelle liefern heute
        schon die ODER-Liste; besser wird es ueberall dort, wo UND etwas findet. */
     if(!alle.length)alle=bewertet;
+    /* Dasselbe bei 1-2 Treffern: „kündigungsschreiben" fand woertlich nur eine fremde
+       Branchenseite — die Kuendigungs-Vorlage stand erst in der ODER-Liste. Unter drei
+       strengen Treffern wird mit den besten Teil-Treffern aufgefuellt; die strengen
+       bleiben vorne. */
+    else if(alle.length<3)alle=alle.concat(bewertet.filter(function(x){return alle.indexOf(x)<0}));
     /* Ein Filter, der auf 0 Treffer zeigt, ist eine Sackgasse: dann automatisch zurueck auf „Alle". */
     if(filter&&!alle.some(function(x){return x.it.k===filter}))filter="";
     chipsBauen(alle,q,terms);
@@ -190,7 +315,8 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
        „40+ Treffer" neben einem Chip, der 279 meldet. */
     var ges=filter?alle.filter(function(x){return x.it.k===filter}).length:alle.length;
     cnt.textContent=ges?(ges+" results for “"+q+"”"+(filter?" in "+KAT[filter]:"")
-      +(ges>hits.length?" · top "+hits.length:"")):"";
+      +(ges>hits.length?" · top "+hits.length:"")
+      +(korr.length?" · understood as “"+korr.map(function(c){return c[1]}).join(" ")+"”":"")):"";
     if(!hits.length){list.innerHTML='<div class="empty">Nothing found for “'+esc(q)+'”.</div>';return}
     list.innerHTML=hits.map(function(x){var it=x.it;
       return '<a class="res" href="'+esc(it.u)+'"><div class="u">abannews.com'+esc(it.u)+'</div><div class="t">'+hi(it.t,roh)+(it.k&&KAT[it.k]?'<span class="badge">'+KAT[it.k]+'</span>':'')+'</div>'+(it.d?'<div class="d">'+hi(it.d,roh)+'</div>':'')+'</a>'}).join("")
