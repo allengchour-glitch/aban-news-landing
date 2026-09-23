@@ -18,6 +18,9 @@ downloads/vorlagen-pack.pdf
 downloads/vorlagen-set-en.pdf
 downloads/vorlagen-set.pdf
 node_modules/
+# Lokale Werkzeug-Verknuepfungen (z. B. node_modules_pw -> /opt/…/playwright). Am 04.09. versehentlich
+# eingecheckt: auf dem GitHub-Runner zeigt sie ins Leere, und wrangler brach JEDEN Deploy damit ab.
+node_modules*
 reports/*
 # ⚠️ Negations MÜSSEN nach "reports/*" stehen — git wertet .gitignore zeilenweise in
 # Reihenfolge aus, eine "!"-Ausnahme VOR der Sperre, die sie aufheben soll, wirkt nicht.

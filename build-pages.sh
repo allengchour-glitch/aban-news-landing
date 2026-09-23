@@ -104,6 +104,8 @@ tar -cf - \
   . | tar -xf - -C _site
 
 # Pflicht-Checks: functions/ MUSS dabei sein (sonst sind /api/* tot).
+# Verknuepfungen ins Leere raus (node_modules_pw brach seit 04.09. jeden wrangler-Deploy ab).
+find _site -xtype l -print -delete | sed 's/^/Verknuepfung ins Leere entfernt: /'
 test -d _site/functions && echo "functions/ ok" || { echo "::error::functions/ fehlt"; exit 1; }
 test -f _site/_redirects && echo "_redirects ok"
 test -f _site/_headers   && echo "_headers ok"

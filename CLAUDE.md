@@ -62,6 +62,28 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-23 (🔓 LIVE-DEPLOY: echte Ursache gefunden — ein eingecheckter Symlink):**
+- **abannews.com stand seit Ende August still.** Die Memory-Annahme „nur der Hetzner-Server (PAT fehlt)"
+  war nur die halbe Wahrheit: der **GitHub-Weg** `.github/workflows/cf-deploy-mainsite.yml` (Direct Upload,
+  Secrets CLOUDFLARE_API_TOKEN/ACCOUNT_ID **sind gesetzt und funktionieren**) läuft bei jedem Push auf `main`
+  — und ist **seit 11.09. bei JEDEM Lauf gescheitert** (Runs #103–#116), zuletzt erfolgreich 12.06.
+- **Ursache (Log gelesen):** `ENOENT … _site/node_modules_pw`. `node_modules_pw` ist ein **Symlink auf ein
+  lokales Playwright** (`/opt/node22/lib/node_modules/playwright`), am 04.09. im Sammel-Commit `fecc365`
+  mit eingecheckt. Auf dem Runner zeigt er ins Leere, wrangler bricht ab.
+- **Fix:** Symlink aus git, `.gitignore` `node_modules*`, und `build-pages.sh` löscht Verknüpfungen ins
+  Leere vor dem Upload. Der GitHub-Weg baut jetzt **mit `build-pages.sh` wie der Server** (vorher eigene
+  rsync-Kopie: ohne inject-engine = Navigation + JSON-LD fehlten, ohne Kit-ZIP-Bau, `server/` + `game/`
+  wurden mitveröffentlicht).
+- **🔑 LEHRE:** Bei „Deploy steht" ZUERST `actions_list list_workflow_runs resource_id=cf-deploy-mainsite.yml`
+  und das Log des letzten Laufs lesen — nicht den Server vermuten. Nach lokalen Playwright-Tests nie
+  `git add -A` ohne `git status` (so kam der Symlink rein).
+- **Tages-Update läuft:** `.github/workflows/tages-update.yml` (1×/Tag 04:15 UTC) → `data/ki-news.json` +
+  Märkte; erster Bot-Commit „chore(ki-news)" am 23.09. auf `main`. Doku: `docs/TAGES-UPDATE.md`.
+- **LuxeStyle-Befund (nur gelesen, Katalog gehört der Produkt-Session):** 8 von 16 Bestellungen seit Juni
+  voll erstattet (~CHF 1045), 6 davon BigBuy „beim Lieferanten ausverkauft / nicht in CH lieferbar"
+  (`tracksInventory:false`). BigBuy ist inzwischen 0 aktiv. **#1004 (LED-Laterne, CHF 31.90) seit 25.06.
+  bezahlt, nie versandt** — braucht Entscheid (versenden oder erstatten).
+
 **📌 2026-09-11 (Produktraster dichter — „Bilder kleiner, mehr Produkte sehen"):**
 - **Gemessen (Messgerät `tools/produktdichte.mjs`, Gegenprobe eingebaut):** Angebots-/Produktraster war
   Desktop 1440 **4 Spalten / Bild 205 px / 24 Produkte = 1905 px**; **Mobil 390 nur 1 Spalte / Bild 356 px /
