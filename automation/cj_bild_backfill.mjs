@@ -30,10 +30,12 @@
  *     einer je gefragt worden wäre. Jetzt WARTET der Lauf auf den Eimer (füllt ~2,75 P/s,
  *     product/query = 10 P; Journal 23.08.) und fragt dasselbe Produkt erneut. Erst nach
  *     10 Minuten ununterbrochener Leere endet er mit «PAUSE» — nie mit FERTIG.
- *  2. Code 1602001 «Product not found» ist die echte Tote-Ware-Klasse (2 von 25, beide Male).
- *     Sie geht ZUERST mit Datum in die Nebenliste dropship/_cj_bild_unklar.txt; erst ein
- *     zweiter Treffer an einem ANDEREN Tag schreibt «cj-kennt-nicht» ins Hauptledger. Ein
- *     Tagesausfall bei CJ soll kein Produkt für immer abhaken.
+ *  2. Code 1602001 «Product not found» sah wie die Tote-Ware-Klasse aus (2 von 25, beide Male) —
+ *     war aber der FALSCHE ENDPUNKT: beide waren Varianten-SKUs (…01AZ), die `productSku=`
+ *     nicht kennt; `variantSku=` antwortet 200 mit 5 Bildern (gemessen 22:57, siehe SKU_FORMEN).
+ *     Trotzdem gilt für ein echtes 1602001/1602002: ZUERST mit Datum in die Nebenliste
+ *     dropship/_cj_bild_unklar.txt; erst ein zweiter Treffer an einem ANDEREN Tag schreibt
+ *     «cj-kennt-nicht» ins Hauptledger. Ein Tagesausfall bei CJ soll kein Produkt für immer abhaken.
  *  3. Das Ledger verlor 50 «+N»-Zeilen: ein Rebase eines anderen Schreibers tauschte um
  *     18:33:43 den Inode der Datei, der offene WriteStream schrieb 14 Minuten ins Leere.
  *     Jetzt appendFileSync JE ZEILE (öffnet den PFAD, nicht den Inode) und ein ISO-Datum als
@@ -238,9 +240,16 @@ const SKU_FORMEN = [
   // falsch beurteilt: `variant/queryByVid` gab 20/20 «Variant not found», und 4'564 aktive Produkte
   // tragen diese Form — ein «not found» vom falschen Endpunkt beweist nichts (Lehre 09.08., steht
   // in cj_verfuegbarkeit.cj_kennt(): Form c = pid). Erst den Bestand lesen, dann messen.
+  // ⚠️ 23.09.2026 22:57, GEMESSEN: `CJ-CJMY293180001AZ` ist eine VARIANTEN-SKU (Suffix \d{2}[A-Za-z]{2}).
+  // `productSku=CJMY293180001AZ` → 1602001 «Product not found»; `variantSku=CJMY293180001AZ` → 200,
+  // pid 2606121004231638500, 5 Bilder. v1 und Lauf C fragten den falschen Endpunkt — die «2 von 25
+  // echte tote Ware» der Messung waren beide AZ-Form, und das Ledger trägt 0 «+N» für diese Form.
+  // Dieselbe Regel steht seit 21.09. in cj_verfuegbarkeit.cj_kennt(). Ein «not found» vom falschen
+  // Endpunkt beweist nichts (Lehre 09.08.). Der Variantenname hinter dem Bindestrich ist Deko.
   [/^cj-(\d{6,})/i, m => `/product/query?pid=${m[1]}`],
-  [/^cj-(CJ[A-Z0-9]{6,})/i, m => `/product/query?productSku=${m[1]}`],
   [/^cj-([0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12})/i, m => `/product/query?pid=${m[1]}`],
+  [/^cj-([A-Z]{2,8}\d{5,}[A-Z]{0,3})/i, m => /\d{2}[A-Za-z]{2}$/.test(m[1])
+      ? `/product/query?variantSku=${m[1]}` : `/product/query?productSku=${m[1]}`],
 ];
 const cjFrage = sku => { for (const [re, f] of SKU_FORMEN) { const m = sku.match(re); if (m) return f(m); } return null; };
 
