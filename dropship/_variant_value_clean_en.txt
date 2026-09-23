@@ -19330,3 +19330,11 @@ gid://shopify/Product/15516062679425	Farbe	gid://shopify/ProductOptionValue/1247
 gid://shopify/Product/15516234023297	Farbe	gid://shopify/ProductOptionValue/12476191375745	Leder Pink	Leather Pink	2026-09-23T20:49Z/reparatur-original:satzbau:material-vor-farbe
 gid://shopify/Product/15516304441729	Farbe	gid://shopify/ProductOptionValue/12476508373377	Leuchtendgrün	Leuchtendes Grün	2026-09-23T20:49Z/reparatur-korrigiert
 gid://shopify/Product/15517369106817	Farbe	gid://shopify/ProductOptionValue/12481043726721	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:49Z/reparatur-konsistenz
+gid://shopify/Product/15517551919489	Farbe	gid://shopify/ProductOptionValue/12482002256257	Gross Weiss	Big White	2026-09-23T20:49Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15520245940609	Farbe	gid://shopify/ProductOptionValue/12497551589761	M082 Klassischschwarz	M082 Klassisches Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15520302334337	Farbe	gid://shopify/ProductOptionValue/12497781981569	Schwarz und geblümt	Black And Floral	2026-09-23T20:49Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15520377012609	Farbe	gid://shopify/ProductOptionValue/12498309874049	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15520377274753	Farbe	gid://shopify/ProductOptionValue/12498312593793	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:49Z/reparatur-korrigiert
+gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374295937	Weiss Baumwolle Futter	White Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374328705	Schwarz Baumwolle Futter	Black Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15520381403521	Farbe	gid://shopify/ProductOptionValue/12498374361473	Pink Baumwolle Futter	Pink Cotton Lining	2026-09-23T20:49Z/reparatur-original:satzbau:nomen-nomen

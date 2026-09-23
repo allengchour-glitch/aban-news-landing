@@ -3405,3 +3405,9 @@ gid://shopify/Product/15516062679425	Farbe	12
 gid://shopify/Product/15516234023297	Farbe	1
 gid://shopify/Product/15516304441729	Farbe	1
 gid://shopify/Product/15517369106817	Farbe	1
+gid://shopify/Product/15517551919489	Farbe	1
+gid://shopify/Product/15520245940609	Farbe	1
+gid://shopify/Product/15520302334337	Farbe	1
+gid://shopify/Product/15520377012609	Farbe	1
+gid://shopify/Product/15520377274753	Farbe	1
+gid://shopify/Product/15520381403521	Farbe	3
