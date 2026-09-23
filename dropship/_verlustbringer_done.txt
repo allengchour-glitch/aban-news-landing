@@ -442,3 +442,8 @@ gid://shopify/Product/15450115441025	2026-09-23T05:42Z	draft	15.90	40.58	Botanis
 gid://shopify/Product/15450303299969	2026-09-23T05:42Z	draft	18.90	43.57	Multifunktionaler Massage-Teppich für Auto
 gid://shopify/Product/15448925929857	2026-09-23T05:42Z	draft	30.90	55.54	Sofaüberzug Vintage – Katzenfreundlich & Elastisch
 gid://shopify/Product/15496384905601	2026-09-23T05:42Z	draft	48.90	73.36	Retro Blumenmuster Sofaüberwurf
+gid://shopify/Product/15452599910785	2026-09-23T06:10Z	schon-DRAFT	15.90	40.35	Kinder Nachtlicht Hasenform
+gid://shopify/Product/15454162026881	2026-09-23T06:10Z	schon-DRAFT	15.90	40.33	Elegante Wohlfühlkissenhülle
+gid://shopify/Product/15505597596033	2026-09-23T06:10Z	schon-DRAFT	15.90	40.32	Dove Wasserfester Kissenbezug für alle Jahreszeiten
+gid://shopify/Product/15450851901825	2026-09-23T06:10Z	schon-DRAFT	17.90	42.26	Feuchtigkeitsspendendes Hautpflege-Set
+gid://shopify/Product/15501005586817	2026-09-23T06:10Z	schon-DRAFT	34.90	59.25	Automatischer Sensor-Abfalleimer 11L
