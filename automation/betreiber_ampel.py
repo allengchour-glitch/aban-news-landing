@@ -464,7 +464,17 @@ def kategorie_offen():
     unbek = s.get("unbekannte_typen") or {}
     u = f" · unbekannte Typen {sum(unbek.values())} ({', '.join(list(unbek)[:3])})" if unbek else ""
     n = s.get("ohne_kategorie_nachher", s.get("ohne_kategorie_vorher"))
-    return None if (n == 0 and not unbek) else f"KATEGORIE: {n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, heute gesetzt {s.get('gesetzt')}){u}"
+    # 23.09.: der Stand wird erst am ENDE eines Laufs geschrieben; ein stundenlanger Nachlauf, den der
+    # Container-Neustart toetet, hinterlaesst keinen — die Ampel meldete «heute gesetzt 0» bei 2'925 Ledger-Zeilen.
+    # Das Ledger (je Zeile eine rueckgelesene Zuweisung) ist die Wahrheit ueber das Geschriebene.
+    heute = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+    try:
+        led = [l for l in open(os.path.join(REPO, "dropship", "_kategorie_gesetzt.txt"), encoding="utf-8") if l.strip()]
+        ledger_heute = sum(1 for l in led if l.rstrip("\n").split("\t")[-1].startswith(heute))
+        n = max(0, int(s.get("ohne_kategorie_vorher", n) or 0) - sum(1 for l in led if l.rstrip("\n").split("\t")[-1] >= s.get("stand", "")[:10]))
+    except Exception:
+        ledger_heute = s.get("gesetzt")
+    return None if (n == 0 and not unbek) else f"KATEGORIE: ~{n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, Ledger heute {ledger_heute}){u}"
 
 
 def drafts_ohne_quittung():
