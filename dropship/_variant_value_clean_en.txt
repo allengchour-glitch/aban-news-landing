@@ -1381,3 +1381,701 @@ gid://shopify/Product/15447936041345	Farbe	gid://shopify/ProductOptionValue/1229
 gid://shopify/Product/15447936041345	Farbe	gid://shopify/ProductOptionValue/12295651459457	White-1Pair	Weiss-1 Paar	2026-09-23T17:57Z
 gid://shopify/Product/15447936041345	Farbe	gid://shopify/ProductOptionValue/12295651492225	White-3Pair	Weiss-3 Paar	2026-09-23T17:57Z
 gid://shopify/Product/15447936041345	Farbe	gid://shopify/ProductOptionValue/12295651524993	White-6Pair	Weiss-6 Paar	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120611713	No 1 Color	Farbton 1	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120644481	No 2 Color	Farbton 2	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120677249	No 3 Color	Farbton 3	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120710017	No 4 Color	Farbton 4	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120742785	No 5 Color	Farbton 5	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120775553	No 6 Color	Farbton 6	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120808321	No 7 Color	Farbton 7	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120841089	No 8 Color	Farbton 8	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120873857	No 9 Color	Farbton 9	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120906625	No 10 Color	Farbton 10	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120939393	No 11 Color	Farbton 11	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451120972161	No 12 Color	Farbton 12	2026-09-23T17:57Z
+gid://shopify/Product/15447940825473	Farbe	gid://shopify/ProductOptionValue/12451121004929	No 13 Color	Farbton 13	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880315777	1 Style-170X70CM	Muster 1-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880348545	2 Style-170X70CM	Muster 2-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880381313	3 Style-170X70CM	Muster 3-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880414081	4 Style-170X70CM	Muster 4-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880446849	5 Style-170X70CM	Muster 5-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880479617	6 Style-170X70CM	Muster 6-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880512385	7 Style-170X70CM	Muster 7-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880545153	8 Style-170X70CM	Muster 8-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880577921	9 Style-170X70CM	Muster 9-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880610689	10 Style-170X70CM	Muster 10-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880643457	11 Style-170X70CM	Muster 11-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880676225	12 Style-170X70CM	Muster 12-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880708993	13 Style-170X70CM	Muster 13-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880741761	14 Style-170X70CM	Muster 14-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880774529	15 Style-170X70CM	Muster 15-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880807297	16 Style-170X70CM	Muster 16-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880840065	17 Style-170X70CM	Muster 17-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880872833	18 Style-170X70CM	Muster 18-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880905601	19 Style-170X70CM	Muster 19-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880938369	20 Style-170X70CM	Muster 20-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018880971137	21 Style-170X70CM	Muster 21-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881003905	22 Style-170X70CM	Muster 22-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881036673	23 Style-170X70CM	Muster 23-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881069441	24 Style-170X70CM	Muster 24-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881102209	25 Style-170X70CM	Muster 25-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881134977	26 Style-170X70CM	Muster 26-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881167745	27 Style-170X70CM	Muster 27-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881200513	28 Style-170X70CM	Muster 28-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881233281	29 Style-170X70CM	Muster 29-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941054849	Farbe	gid://shopify/ProductOptionValue/12018881266049	30 Style-170X70CM	Muster 30-170x70 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447941251457	Farbe	gid://shopify/ProductOptionValue/12451121168769	Coral Pink	Korallenpink	2026-09-23T17:57Z
+gid://shopify/Product/15447941251457	Farbe	gid://shopify/ProductOptionValue/12451121201537	Green Velvet	Grün Samt	2026-09-23T17:57Z
+gid://shopify/Product/15447941251457	Farbe	gid://shopify/ProductOptionValue/12451121267073	Pink And White Stripes	Pink-Weiss gestreift	2026-09-23T17:57Z
+gid://shopify/Product/15447941251457	Farbe	gid://shopify/ProductOptionValue/12451121398145	Yellow Stripes	Gelb gestreift	2026-09-23T17:57Z
+gid://shopify/Product/15447941251457	Farbe	gid://shopify/ProductOptionValue/12451121430913	Gray Stripes	Grau gestreift	2026-09-23T17:57Z
+gid://shopify/Product/15447941251457	Farbe	gid://shopify/ProductOptionValue/12451121463681	Blue And White Stripes	Blau-Weiss gestreift	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045420929	1 Black	1 Schwarz	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045453697	2 Navy Blue	2 Marineblau	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045519233	4 Skin Color	4 Hautfarben	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045552001	5 Cream Color	5 Creme	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045584769	6 White	6 Weiss	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045617537	7 Leather Pink	7 Leder Pink	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045650305	8 Light Pink	8 Rosa	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045683073	9 Light Gray	9 Hellgrau	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045715841	10 Sky Blue	10 Himmelblau	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045748609	11 Grass Green	11 Grasgrün	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045781377	12 Brown	12 Braun	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045814145	13 Dark Green	13 Dunkelgrün	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045846913	14 Wine Red	14 Weinrot	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045879681	15 Light Purple	15 Helllila	2026-09-23T17:57Z
+gid://shopify/Product/15447942136193	Farbe	gid://shopify/ProductOptionValue/12376045945217	Medium Gray	Mittelgrau	2026-09-23T17:57Z
+gid://shopify/Product/15447943840129	Farbe	gid://shopify/ProductOptionValue/12018893128065	Picture Color-Adult Style	Wie abgebildet-Erwachsene Stil	2026-09-23T17:57Z
+gid://shopify/Product/15447943840129	Farbe	gid://shopify/ProductOptionValue/12018893160833	Picture Color-Children's Style	Wie abgebildet-Kinder Stil	2026-09-23T17:57Z
+gid://shopify/Product/15447947837825	Farbe	gid://shopify/ProductOptionValue/12018901680513	Black-Plus Size	Schwarz-Übergrösse	2026-09-23T17:57Z
+gid://shopify/Product/15447947837825	Farbe	gid://shopify/ProductOptionValue/12018901746049	Navy Blue-Plus Size	Marineblau-Übergrösse	2026-09-23T17:57Z
+gid://shopify/Product/15447947837825	Farbe	gid://shopify/ProductOptionValue/12018901811585	Beige-Plus Size	Beige-Übergrösse	2026-09-23T17:57Z
+gid://shopify/Product/15447947837825	Farbe	gid://shopify/ProductOptionValue/12018901877121	Khaki-Plus Size	Khaki-Übergrösse	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913444225	Yellow-90cm	Gelb-90 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913476993	Yellow-100cm	Gelb-100 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913509761	Yellow-110cm	Gelb-110 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913542529	Yellow-120cm	Gelb-120 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913575297	Yellow-130cm	Gelb-130 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913608065	Yellow-140cm	Gelb-140 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913640833	Yellow-150cm	Gelb-150 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913673601	Yellow-Adult S	Gelb-Erwachsene S	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913706369	Yellow-Adult M	Gelb-Erwachsene M	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913739137	Yellow-Adult L	Gelb-Erwachsene L	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913771905	Orange-90cm	Orange-90 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913804673	Orange-100cm	Orange-100 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913837441	Orange-110cm	Orange-110 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913870209	Orange-120cm	Orange-120 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913902977	Orange-130cm	Orange-130 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913935745	Orange-140cm	Orange-140 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018913968513	Orange-150cm	Orange-150 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914001281	Orange-Adult S	Orange-Erwachsene S	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914034049	Orange-Adult M	Orange-Erwachsene M	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914066817	Orange-Adult L	Orange-Erwachsene L	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914099585	Red-90cm	Rot-90 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914132353	Red-100cm	Rot-100 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914165121	Red-110cm	Rot-110 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914197889	Red-120cm	Rot-120 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914230657	Red-130cm	Rot-130 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914263425	Red-140cm	Rot-140 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914296193	Red-150cm	Rot-150 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914328961	Red-Adult S	Rot-Erwachsene S	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914361729	Red-Adult M	Rot-Erwachsene M	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914394497	Red-Adult L	Rot-Erwachsene L	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914427265	Black-90cm	Schwarz-90 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914460033	Black-100cm	Schwarz-100 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914492801	Black-110cm	Schwarz-110 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914525569	Black-120cm	Schwarz-120 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914558337	Black-130cm	Schwarz-130 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914591105	Black-140cm	Schwarz-140 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914623873	Black-150cm	Schwarz-150 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914656641	Black-Adult S	Schwarz-Erwachsene S	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914689409	Black-Adult M	Schwarz-Erwachsene M	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914722177	Black-Adult L	Schwarz-Erwachsene L	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914754945	Purple-90cm	Lila-90 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914787713	Purple-100cm	Lila-100 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914820481	Purple-110cm	Lila-110 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914853249	Purple-120cm	Lila-120 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914886017	Purple-130cm	Lila-130 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914918785	Purple-140cm	Lila-140 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914951553	Purple-150cm	Lila-150 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018914984321	Purple-Adult S	Lila-Erwachsene S	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915017089	Purple-Adult M	Lila-Erwachsene M	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915049857	Purple-Adult L	Lila-Erwachsene L	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915082625	Klein Blue-90cm	Klein-Blau-90 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915115393	Klein Blue-100cm	Klein-Blau-100 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915148161	Klein Blue-110cm	Klein-Blau-110 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915180929	Klein Blue-120cm	Klein-Blau-120 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915213697	Klein Blue-130cm	Klein-Blau-130 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915246465	Klein Blue-140cm	Klein-Blau-140 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915279233	Klein Blue-150cm	Klein-Blau-150 cm	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915312001	Klein Blue-Adult S	Klein-Blau-Erwachsene S	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915344769	Klein Blue-Adult M	Klein-Blau-Erwachsene M	2026-09-23T17:57Z
+gid://shopify/Product/15447951999361	Farbe	gid://shopify/ProductOptionValue/12018915377537	Klein Blue-Adult L	Klein-Blau-Erwachsene L	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917671297	Adult S-Gray	Erwachsene S-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917704065	Adult S-Apricot	Erwachsene S-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917736833	Adult M-Gray	Erwachsene M-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917769601	Adult M-Apricot	Erwachsene M-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917802369	Adult L-Gray	Erwachsene L-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917835137	Adult L-Apricot	Erwachsene L-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917867905	Adult XL-Gray	Erwachsene XL-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917900673	Adult XL-Apricot	Erwachsene XL-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917933441	Adult 2XL-Gray	Erwachsene 2XL-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917966209	Adult 2XL-Apricot	Erwachsene 2XL-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018917998977	Adult 3XL-Gray	Erwachsene 3XL-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918031745	Adult 3XL-Apricot	Erwachsene 3XL-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918130049	Short length S-Apricot	Kurz Länge S-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918162817	Short length S-Gray	Kurz Länge S-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918195585	Short length M-Apricot	Kurz Länge M-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918228353	Short length M-Gray	Kurz Länge M-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918261121	Short length L-Apricot	Kurz Länge L-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918293889	Short length L-Gray	Kurz Länge L-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918326657	Children 80-Apricot	Kinder 80-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918359425	Children 80-Gray	Kinder 80-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918392193	Children 90-Apricot	Kinder 90-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918424961	Children 90-Gray	Kinder 90-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918457729	Children 100-Apricot	Kinder 100-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918490497	Children 100-Gray	Kinder 100-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918523265	Children 110-Apricot	Kinder 110-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918556033	Children 110-Gray	Kinder 110-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918588801	Children 120-Apricot	Kinder 120-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918621569	Children 120-Gray	Kinder 120-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918654337	Children 130-Apricot	Kinder 130-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918687105	Children 130-Gray	Kinder 130-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918719873	Children 140-Apricot	Kinder 140-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918752641	Children 140-Gray	Kinder 140-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918785409	Children 150-Apricot	Kinder 150-Aprikose	2026-09-23T17:57Z
+gid://shopify/Product/15447952556417	Farbe	gid://shopify/ProductOptionValue/12018918818177	Children 150-Gray	Kinder 150-Grau	2026-09-23T17:57Z
+gid://shopify/Product/15447953342849	Grösse	gid://shopify/ProductOptionValue/12376080089473	Girl 2Y	Mädchen 2Y	2026-09-23T17:57Z
+gid://shopify/Product/15447953932673	Farbe	gid://shopify/ProductOptionValue/12018924421505	White-G2Y	Weiss-G2Y	2026-09-23T17:57Z
+gid://shopify/Product/15447953932673	Farbe	gid://shopify/ProductOptionValue/12018924552577	White-ML	Weiss-ML	2026-09-23T17:57Z
+gid://shopify/Product/15447953932673	Farbe	gid://shopify/ProductOptionValue/12018924585345	White-MM	Weiss-MM	2026-09-23T17:57Z
+gid://shopify/Product/15447953932673	Farbe	gid://shopify/ProductOptionValue/12018924683649	Grey-G2Y	Grau-G2Y	2026-09-23T17:57Z
+gid://shopify/Product/15447953932673	Farbe	gid://shopify/ProductOptionValue/12018924814721	Grey-ML	Grau-ML	2026-09-23T17:57Z
+gid://shopify/Product/15447953932673	Farbe	gid://shopify/ProductOptionValue/12018924847489	Grey-MM	Grau-MM	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018938937729	Pink-Boy XS	Pink-Jungen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018938970497	Pink-Boy S	Pink-Jungen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939003265	Pink-Boy M	Pink-Jungen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939036033	Pink-Boy L	Pink-Jungen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939068801	Pink-Boy XL	Pink-Jungen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939101569	Pink-Girls XS	Pink-Mädchen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939134337	Pink-Girl S	Pink-Mädchen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939167105	Pink-Girl M	Pink-Mädchen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939199873	Pink-Girl L	Pink-Mädchen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939232641	Pink-Girls XL	Pink-Mädchen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939691393	Black-Boy XS	Schwarz-Jungen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939724161	Black-Boy S	Schwarz-Jungen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939756929	Black-Boy M	Schwarz-Jungen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939789697	Black-Boy L	Schwarz-Jungen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939822465	Black-Boy XL	Schwarz-Jungen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939855233	Black-Girls XS	Schwarz-Mädchen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939888001	Black-Girl S	Schwarz-Mädchen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939920769	Black-Girl M	Schwarz-Mädchen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939953537	Black-Girl L	Schwarz-Mädchen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018939986305	Black-Girls XL	Schwarz-Mädchen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940019073	Black-3M	Schwarz-3M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940051841	Black-6M	Schwarz-6M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940084609	Black-9M	Schwarz-9M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940117377	Black-12M	Schwarz-12M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940445057	Green-Boy XS	Grün-Jungen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940477825	Green-Boy S	Grün-Jungen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940510593	Green-Boy M	Grün-Jungen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940543361	Green-Boy L	Grün-Jungen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940576129	Green-Boy XL	Grün-Jungen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940608897	Green-Girls XS	Grün-Mädchen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940641665	Green-Girl S	Grün-Mädchen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940674433	Green-Girl M	Grün-Mädchen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940707201	Green-Girl L	Grün-Mädchen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940739969	Green-Girls XL	Grün-Mädchen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940772737	Green-3M	Grün-3M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940805505	Green-6M	Grün-6M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940838273	Green-9M	Grün-9M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018940871041	Green-12M	Grün-12M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941198721	Dark pink-Boy XS	Dunkelrosa-Jungen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941231489	Dark pink-Boy S	Dunkelrosa-Jungen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941264257	Dark pink-Boy M	Dunkelrosa-Jungen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941297025	Dark pink-Boy L	Dunkelrosa-Jungen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941329793	Dark pink-Boy XL	Dunkelrosa-Jungen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941362561	Dark pink-Girls XS	Dunkelrosa-Mädchen XS	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941395329	Dark pink-Girl S	Dunkelrosa-Mädchen S	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941428097	Dark pink-Girl M	Dunkelrosa-Mädchen M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941460865	Dark pink-Girl L	Dunkelrosa-Mädchen L	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941493633	Dark pink-Girls XL	Dunkelrosa-Mädchen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941526401	Dark pink-3M	Dunkelrosa-3M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941559169	Dark pink-6M	Dunkelrosa-6M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941591937	Dark pink-9M	Dunkelrosa-9M	2026-09-23T17:57Z
+gid://shopify/Product/15447957504385	Farbe	gid://shopify/ProductOptionValue/12018941624705	Dark pink-12M	Dunkelrosa-12M	2026-09-23T17:57Z
+gid://shopify/Product/15447958192513	Ausführung	gid://shopify/ProductOptionValue/12376111219073	Men's	Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447958192513	Ausführung	gid://shopify/ProductOptionValue/12376111251841	Women's	Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447958716801	Farbe	gid://shopify/ProductOptionValue/12018947162497	Gray-Children 2	Grau-Kinder 2	2026-09-23T17:57Z
+gid://shopify/Product/15447958716801	Farbe	gid://shopify/ProductOptionValue/12018947326337	Gray-Children 10 To 11	Grau-Kinder 10/11	2026-09-23T17:57Z
+gid://shopify/Product/15447958716801	Farbe	gid://shopify/ProductOptionValue/12018947359105	Gray-Children 11 To 12	Grau-Kinder 11/12	2026-09-23T17:57Z
+gid://shopify/Product/15447958716801	Farbe	gid://shopify/ProductOptionValue/12018947391873	Gray-Children 13 To 14	Grau-Kinder 13/14	2026-09-23T17:57Z
+gid://shopify/Product/15447959568769	Farbe	gid://shopify/ProductOptionValue/12018951684481	Picture Color-Girl 2Y	Wie abgebildet-Mädchen 2Y	2026-09-23T17:57Z
+gid://shopify/Product/15447959568769	Farbe	gid://shopify/ProductOptionValue/12018951848321	Picture Color-Boy 2Y	Wie abgebildet-Jungen 2Y	2026-09-23T17:57Z
+gid://shopify/Product/15447959568769	Farbe	gid://shopify/ProductOptionValue/12018952012161	Picture Color-Women S	Wie abgebildet-Damen S	2026-09-23T17:57Z
+gid://shopify/Product/15447959568769	Farbe	gid://shopify/ProductOptionValue/12018952110465	Picture Color-Women's XL	Wie abgebildet-Damen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447959568769	Farbe	gid://shopify/ProductOptionValue/12018952143233	Picture Color-Men's M	Wie abgebildet-Herren M	2026-09-23T17:57Z
+gid://shopify/Product/15447959568769	Farbe	gid://shopify/ProductOptionValue/12018952208769	Picture Color-Men's XL	Wie abgebildet-Herren XL	2026-09-23T17:57Z
+gid://shopify/Product/15447959568769	Farbe	gid://shopify/ProductOptionValue/12018952241537	Picture Color-Men's XXL	Wie abgebildet-Herren XXL	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952372609	Red-S Male	Rot-S Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952405377	Red-M Male	Rot-M Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952438145	Red-L Male	Rot-L Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952470913	Red-XL Male	Rot-XL Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952503681	Red-XXL Men	Rot-XXL Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952536449	Red-S Female	Rot-S Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952569217	Red-M Female	Rot-M Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952601985	Red-L Female	Rot-L Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952634753	Red-XL Female	Rot-XL Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952667521	Red-XXL Female	Rot-XXL Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952864129	Black Red-S Male	Schwarz-Rot-S Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952896897	Black Red-M Male	Schwarz-Rot-M Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952929665	Black Red-L Male	Schwarz-Rot-L Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952962433	Black Red-XL Male	Schwarz-Rot-XL Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018952995201	Black Red-XXL Men	Schwarz-Rot-XXL Herren	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018953027969	Black Red-S Female	Schwarz-Rot-S Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018953060737	Black Red-M Female	Schwarz-Rot-M Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018953093505	Black Red-L Female	Schwarz-Rot-L Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018953126273	Black Red-XL Female	Schwarz-Rot-XL Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447959699841	Farbe	gid://shopify/ProductOptionValue/12018953159041	Black Red-XXL Female	Schwarz-Rot-XXL Damen	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376182915457	Baby Girl 90	Baby Mädchen 90	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376182980993	Baby Girl 100	Baby Mädchen 100	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183046529	Baby Girl 110	Baby Mädchen 110	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183112065	Baby Girl 120	Baby Mädchen 120	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183177601	Baby Girl 130	Baby Mädchen 130	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183275905	Baby Girl 150	Baby Mädchen 150	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376182882689	Baby Boy 90	Baby Jungen 90	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376182948225	Baby Boy 100	Baby Jungen 100	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183013761	Baby Boy 110	Baby Jungen 110	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183079297	Baby Boy 120	Baby Jungen 120	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183144833	Baby Boy 130	Baby Jungen 130	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183210369	Baby Boy 140	Baby Jungen 140	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183243137	Baby Boy 150	Baby Jungen 150	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183374209	Female S	Damen S	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183341441	Female M	Damen M	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183308673	Female L	Damen L	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183406977	Female XL	Damen XL	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183472513	Male M	Herren M	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183439745	Male L	Herren L	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183505281	Male XL	Herren XL	2026-09-23T17:57Z
+gid://shopify/Product/15447960682881	Grösse	gid://shopify/ProductOptionValue/12376183538049	Men's XXL	Herren XXL	2026-09-23T17:57Z
+gid://shopify/Product/15447960846721	Farbe	gid://shopify/ProductOptionValue/12018960466305	Pitaya Color-Womens Adult Style	Drachenfrucht-Pink-Damen Erwachsene Stil	2026-09-23T17:57Z
+gid://shopify/Product/15447960846721	Farbe	gid://shopify/ProductOptionValue/12018960499073	Sky Blue-Mens Adult Style	Himmelblau-Herren Erwachsene Stil	2026-09-23T17:57Z
+gid://shopify/Product/15447960846721	Farbe	gid://shopify/ProductOptionValue/12018960531841	Smoky Gray-Mens Adult Style	Rauchgrau-Herren Erwachsene Stil	2026-09-23T17:57Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018976817537	Adult	Erwachsene	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018976850305	Children	Kinder	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018976883073	Children-Size 3	Kinder-Gr. 3	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018976915841	Children-Size 4	Kinder-Gr. 4	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018976948609	Children-Size 5	Kinder-Gr. 5	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018976981377	Children-Size 7	Kinder-Gr. 7	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018977014145	Children-Size 8	Kinder-Gr. 8	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018977046913	Children-Size 10	Kinder-Gr. 10	2026-09-23T17:58Z
+gid://shopify/Product/15447965172097	Farbe	gid://shopify/ProductOptionValue/12018977079681	Children-Size 12	Kinder-Gr. 12	2026-09-23T17:58Z
+gid://shopify/Product/15447965860225	Farbe	gid://shopify/ProductOptionValue/12018979045761	Child	Kinder	2026-09-23T17:58Z
+gid://shopify/Product/15447967072641	Farbe	gid://shopify/ProductOptionValue/12018986746241	Picture Color-Baby 6	Wie abgebildet-Baby 6	2026-09-23T17:58Z
+gid://shopify/Product/15447967072641	Farbe	gid://shopify/ProductOptionValue/12018986779009	Picture Color-Baby 9	Wie abgebildet-Baby 9	2026-09-23T17:58Z
+gid://shopify/Product/15447967072641	Farbe	gid://shopify/ProductOptionValue/12018986811777	Picture Color-Baby 12	Wie abgebildet-Baby 12	2026-09-23T17:58Z
+gid://shopify/Product/15447967072641	Farbe	gid://shopify/ProductOptionValue/12018986844545	Picture Color-Baby 18	Wie abgebildet-Baby 18	2026-09-23T17:58Z
+gid://shopify/Product/15447967072641	Farbe	gid://shopify/ProductOptionValue/12018987139457	Picture Color-Children 14	Wie abgebildet-Kinder 14	2026-09-23T17:58Z
+gid://shopify/Product/15447967170945	Farbe	gid://shopify/ProductOptionValue/12018987598209	Children	Kinder	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018992841089	Mixed Color-Baby 12	Farben gemischt-Baby 12	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018992873857	Mixed Color-Baby 18	Farben gemischt-Baby 18	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018992906625	Mixed Color-Baby 6	Farben gemischt-Baby 6	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018992939393	Mixed Color-Baby 9	Farben gemischt-Baby 9	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018992972161	Mixed Color-Children 14	Farben gemischt-Kinder 14	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993267073	Mixed Color-Child 10	Farben gemischt-Kinder 10	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993299841	Mixed Color-Child 12	Farben gemischt-Kinder 12	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993332609	Mixed Color-Child 2	Farben gemischt-Kinder 2	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993365377	Mixed Color-Child 3	Farben gemischt-Kinder 3	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993398145	Mixed Color-Child 4	Farben gemischt-Kinder 4	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993430913	Mixed Color-Child 5	Farben gemischt-Kinder 5	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993463681	Mixed Color-Child 6	Farben gemischt-Kinder 6	2026-09-23T17:58Z
+gid://shopify/Product/15447967793537	Farbe	gid://shopify/ProductOptionValue/12018993496449	Mixed Color-Child 8	Farben gemischt-Kinder 8	2026-09-23T17:58Z
+gid://shopify/Product/15447967924609	Ausführung	gid://shopify/ProductOptionValue/12376419074433	Chocolate	Schokobraun	2026-09-23T17:58Z
+gid://shopify/Product/15447967924609	Grösse	gid://shopify/ProductOptionValue/12376402166145	Girl 2Y	Mädchen 2Y	2026-09-23T17:58Z
+gid://shopify/Product/15447967924609	Grösse	gid://shopify/ProductOptionValue/12376402133377	Boy 2Y	Jungen 2Y	2026-09-23T17:58Z
+gid://shopify/Product/15447969235329	Farbe	gid://shopify/ProductOptionValue/12019005391233	Pink Adult	Pink Erwachsene	2026-09-23T17:58Z
+gid://shopify/Product/15447969235329	Farbe	gid://shopify/ProductOptionValue/12019005424001	Pink Kids	Pink Kinder	2026-09-23T17:58Z
+gid://shopify/Product/15447969235329	Farbe	gid://shopify/ProductOptionValue/12019005456769	Pink Kids-100	Pink Kinder-100	2026-09-23T17:58Z
+gid://shopify/Product/15447969235329	Farbe	gid://shopify/ProductOptionValue/12019005489537	Pink Kids-110	Pink Kinder-110	2026-09-23T17:58Z
+gid://shopify/Product/15447969235329	Farbe	gid://shopify/ProductOptionValue/12019005522305	Pink Kids-120	Pink Kinder-120	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006341505	Blue-Baby 6	Blau-Baby 6	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006374273	Blue-Baby 9	Blau-Baby 9	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006407041	Blue-Baby 12	Blau-Baby 12	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006439809	Blue-Baby 18	Blau-Baby 18	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006472577	Blue-Children 2	Blau-Kinder 2	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006505345	Blue-Children 3	Blau-Kinder 3	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006538113	Blue-Children 4	Blau-Kinder 4	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006570881	Blue-Children 5	Blau-Kinder 5	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006603649	Blue-Children 6	Blau-Kinder 6	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006636417	Blue-Children 8	Blau-Kinder 8	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006669185	Blue-Children 10	Blau-Kinder 10	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006701953	Blue-Children 12	Blau-Kinder 12	2026-09-23T17:58Z
+gid://shopify/Product/15447969399169	Farbe	gid://shopify/ProductOptionValue/12019006734721	Blue-Children 14	Blau-Kinder 14	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433623425	Boy 90	Jungen 90	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433656193	Boy 100	Jungen 100	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433721729	Boy 110	Jungen 110	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433787265	Boy 120	Jungen 120	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433852801	Boy 130	Jungen 130	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433918337	Boy 140	Jungen 140	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433983873	Boy 150	Jungen 150	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376434082177	Men's M	Herren M	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376434114945	Men's XL	Herren XL	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433688961	Girl 100	Mädchen 100	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433754497	Girl 110	Mädchen 110	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433820033	Girl 120	Mädchen 120	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433885569	Girl 130	Mädchen 130	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376433951105	Girl 140	Mädchen 140	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376434016641	Girl 150	Mädchen 150	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376434147713	Women S	Damen S	2026-09-23T17:58Z
+gid://shopify/Product/15447969595777	Grösse	gid://shopify/ProductOptionValue/12376434246017	Women's XL	Damen XL	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010306433	Picture Color-BOY2Y	Wie abgebildet-BOY2Y	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010470273	Picture Color-Women S	Wie abgebildet-Damen S	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010503041	Picture Color-Women M	Wie abgebildet-Damen M	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010535809	Picture Color-Women L	Wie abgebildet-Damen L	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010568577	Picture Color-Women XL	Wie abgebildet-Damen XL	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010601345	Picture Color-Men M	Wie abgebildet-Herren M	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010634113	Picture Color-Men L	Wie abgebildet-Herren L	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010666881	Picture Color-Men XL	Wie abgebildet-Herren XL	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010699649	Picture Color-Men XXL	Wie abgebildet-Herren XXL	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019010994561	Picture Color-GIRL 2Y	Wie abgebildet-Mädchen 2Y	2026-09-23T17:58Z
+gid://shopify/Product/15447969956225	Farbe	gid://shopify/ProductOptionValue/12019011158401	Picture Color-Set	Wie abgebildet-Set	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019014533505	Picture Color A-Children 2T	Wie abgebildet A-Kinder 2T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019014566273	Picture Color A-Children's 4T	Wie abgebildet A-Kinder 4T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019014599041	Picture Color A-Children 6T	Wie abgebildet A-Kinder 6T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019014697345	Picture Color A-Children 12T	Wie abgebildet A-Kinder 12T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019014861185	Picture Color B-Children 2T	Wie abgebildet B-Kinder 2T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019014893953	Picture Color B-Children's 4T	Wie abgebildet B-Kinder 4T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019014926721	Picture Color B-Children 6T	Wie abgebildet B-Kinder 6T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015025025	Picture Color B-Children 12T	Wie abgebildet B-Kinder 12T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015188865	Picture Color C-Children 2T	Wie abgebildet C-Kinder 2T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015221633	Picture Color C-Children's 4T	Wie abgebildet C-Kinder 4T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015254401	Picture Color C-Children 6T	Wie abgebildet C-Kinder 6T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015352705	Picture Color C-Children 12T	Wie abgebildet C-Kinder 12T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015516545	Picture Color D-Children 2T	Wie abgebildet D-Kinder 2T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015549313	Picture Color D-Children's 4T	Wie abgebildet D-Kinder 4T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015582081	Picture Color D-Children 6T	Wie abgebildet D-Kinder 6T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015680385	Picture Color D-Children 12T	Wie abgebildet D-Kinder 12T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015844225	Picture Color E-Children 2T	Wie abgebildet E-Kinder 2T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015876993	Picture Color E-Children's 4T	Wie abgebildet E-Kinder 4T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019015909761	Picture Color E-Children 6T	Wie abgebildet E-Kinder 6T	2026-09-23T17:58Z
+gid://shopify/Product/15447970349441	Farbe	gid://shopify/ProductOptionValue/12019016008065	Picture Color E-Children 12T	Wie abgebildet E-Kinder 12T	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016335745	White-120cm	Weiss-120 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016368513	White-130cm	Weiss-130 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016401281	White-140cm	Weiss-140 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016434049	White-150cm	Weiss-150 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016499585	Beige yellow-120cm	Beige-Gelb-120 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016532353	Beige yellow-130cm	Beige-Gelb-130 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016565121	Beige yellow-140cm	Beige-Gelb-140 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016794497	Pink-120cm	Pink-120 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016827265	Pink-130cm	Pink-130 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016860033	Pink-140cm	Pink-140 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016925569	Pink Beige Yellow-120cm	Pink-Beige-Gelb-120 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016958337	Pink Beige Yellow-130cm	Pink-Beige-Gelb-130 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019016991105	Pink Beige Yellow-140cm	Pink-Beige-Gelb-140 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019017023873	Pink Beige Yellow-150cm	Pink-Beige-Gelb-150 cm	2026-09-23T17:58Z
+gid://shopify/Product/15447970546049	Farbe	gid://shopify/ProductOptionValue/12019017056641	Pink Beige Yellow	Pink-Beige-Gelb	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018334593	Light Green-Boy 100	Hellgrün-Jungen 100	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018367361	Light Green-Boy 110	Hellgrün-Jungen 110	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018400129	Light Green-Boy 120	Hellgrün-Jungen 120	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018432897	Light Green-Boy 130	Hellgrün-Jungen 130	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018465665	Light Green-Boy 140	Hellgrün-Jungen 140	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018498433	Light Green-Boy 150	Hellgrün-Jungen 150	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018531201	Light Green-Boy 160	Hellgrün-Jungen 160	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018695041	Light Green-Girl 100	Hellgrün-Mädchen 100	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018727809	Light Green-Girl 110	Hellgrün-Mädchen 110	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018760577	Light Green-Girl 120	Hellgrün-Mädchen 120	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018793345	Light Green-Girl 130	Hellgrün-Mädchen 130	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018826113	Light Green-Girl 140	Hellgrün-Mädchen 140	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018858881	Light Green-Girl 150	Hellgrün-Mädchen 150	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019018891649	Light Green-Girl 160	Hellgrün-Mädchen 160	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019121025	Purple-Boy 100	Lila-Jungen 100	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019153793	Purple-Boy 110	Lila-Jungen 110	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019186561	Purple-Boy 120	Lila-Jungen 120	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019219329	Purple-Boy 130	Lila-Jungen 130	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019252097	Purple-Boy 140	Lila-Jungen 140	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019284865	Purple-Boy 150	Lila-Jungen 150	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019317633	Purple-Boy 160	Lila-Jungen 160	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019481473	Purple-Girl 100	Lila-Mädchen 100	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019514241	Purple-Girl 110	Lila-Mädchen 110	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019547009	Purple-Girl 120	Lila-Mädchen 120	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019579777	Purple-Girl 130	Lila-Mädchen 130	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019612545	Purple-Girl 140	Lila-Mädchen 140	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019645313	Purple-Girl 150	Lila-Mädchen 150	2026-09-23T17:58Z
+gid://shopify/Product/15447971070337	Farbe	gid://shopify/ProductOptionValue/12019019678081	Purple-Girl 160	Lila-Mädchen 160	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023413633	Black-Male S	Schwarz-Herren S	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023446401	Black-Male M	Schwarz-Herren M	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023479169	Black-Male L	Schwarz-Herren L	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023511937	Black-Male XL	Schwarz-Herren XL	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023544705	Black-Male 2XL	Schwarz-Herren 2XL	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023577473	Black-Male 3XL	Schwarz-Herren 3XL	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023610241	Black-Female S	Schwarz-Damen S	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023643009	Black-Female M	Schwarz-Damen M	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023675777	Black-Female L	Schwarz-Damen L	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023708545	Black-Female XL	Schwarz-Damen XL	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023741313	Black-Female 2XL	Schwarz-Damen 2XL	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023774081	Black-Female 3XL	Schwarz-Damen 3XL	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023806849	Black-Child 2	Schwarz-Kinder 2	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023839617	Black-Child 3	Schwarz-Kinder 3	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023872385	Black-Child 4	Schwarz-Kinder 4	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023905153	Black-Child 5	Schwarz-Kinder 5	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023937921	Black-Child 8	Schwarz-Kinder 8	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019023970689	Black-Child 10	Schwarz-Kinder 10	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019024003457	Black-Child 12	Schwarz-Kinder 12	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019024036225	Black-Child 14	Schwarz-Kinder 14	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019024068993	Black-Baby 3	Schwarz-Baby 3	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019024101761	Black-Baby 6	Schwarz-Baby 6	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019024134529	Black-Baby 12	Schwarz-Baby 12	2026-09-23T17:58Z
+gid://shopify/Product/15447971660161	Farbe	gid://shopify/ProductOptionValue/12019024167297	Black-Baby 18	Schwarz-Baby 18	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027280257	Red-Children 2	Rot-Kinder 2	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027313025	Red-Children 3 4	Rot-Kinder 3 4	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027345793	Red-Children 4 5	Rot-Kinder 4 5	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027378561	Red-Children 6 7	Rot-Kinder 6 7	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027411329	Red-Children 8 9	Rot-Kinder 8 9	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027444097	Red-Children 10 11	Rot-Kinder 10 11	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027476865	Red-Children 11 12	Rot-Kinder 11 12	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027509633	Red-Children 13 14	Rot-Kinder 13 14	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027542401	Red-Baby 0 6	Rot-Baby 0 6	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027575169	Red-Baby 6 12	Rot-Baby 6 12	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027607937	Red-Baby 12 18	Rot-Baby 12 18	2026-09-23T17:58Z
+gid://shopify/Product/15447972118913	Farbe	gid://shopify/ProductOptionValue/12019027640705	Red-Baby 18 24	Rot-Baby 18 24	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019047858561	Black-Baby 6	Schwarz-Baby 6	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019047891329	Black-Baby 9	Schwarz-Baby 9	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019047924097	Black-Baby 12	Schwarz-Baby 12	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019047956865	Black-Baby 18	Schwarz-Baby 18	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019047989633	Black-Kid 2	Schwarz-Kinder 2	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019048022401	Black-Kid 3	Schwarz-Kinder 3	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019048055169	Black-Kid 4	Schwarz-Kinder 4	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019048153473	Black-Kid 8	Schwarz-Kinder 8	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019048186241	Black-Child 10	Schwarz-Kinder 10	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019048219009	Black-Child 12	Schwarz-Kinder 12	2026-09-23T17:58Z
+gid://shopify/Product/15447974379905	Farbe	gid://shopify/ProductOptionValue/12019048251777	Black-Child 14	Schwarz-Kinder 14	2026-09-23T17:58Z
+gid://shopify/Product/15447974543745	Farbe	gid://shopify/ProductOptionValue/12019048808833	Black And White-Children 4T	Schwarz-Weiss-Kinder 4T	2026-09-23T17:58Z
+gid://shopify/Product/15447974543745	Farbe	gid://shopify/ProductOptionValue/12019048841601	Black And White-Children 5T	Schwarz-Weiss-Kinder 5T	2026-09-23T17:58Z
+gid://shopify/Product/15447974543745	Farbe	gid://shopify/ProductOptionValue/12019049005441	Black And White-Baby 3M	Schwarz-Weiss-Baby 3M	2026-09-23T17:58Z
+gid://shopify/Product/15447974543745	Farbe	gid://shopify/ProductOptionValue/12019049038209	Black And White-Baby 6m	Schwarz-Weiss-Baby 6 m	2026-09-23T17:58Z
+gid://shopify/Product/15447974543745	Farbe	gid://shopify/ProductOptionValue/12019049070977	Black And White-Baby 9m	Schwarz-Weiss-Baby 9 m	2026-09-23T17:58Z
+gid://shopify/Product/15447974543745	Farbe	gid://shopify/ProductOptionValue/12019049103745	Black And White-Baby 12m	Schwarz-Weiss-Baby 12 m	2026-09-23T17:58Z
+gid://shopify/Product/15447974543745	Farbe	gid://shopify/ProductOptionValue/12019049136513	Black And White-Baby 18m	Schwarz-Weiss-Baby 18 m	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049333121	5562-Male M	5562-Herren M	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049365889	5562-Male L	5562-Herren L	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049398657	5562-Male XL	5562-Herren XL	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049431425	5562-Male 2XL	5562-Herren 2XL	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049464193	5562-Male 3XL	5562-Herren 3XL	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049496961	5562-Female S	5562-Damen S	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049529729	5562-Female M	5562-Damen M	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049562497	5562-Female L	5562-Damen L	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049595265	5562-Female XL	5562-Damen XL	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049628033	5562-Female 2XL	5562-Damen 2XL	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049660801	5562-Child 2	5562-Kinder 2	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049693569	5562-Child 3	5562-Kinder 3	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049726337	5562-Child 4	5562-Kinder 4	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049759105	5562-Child 5	5562-Kinder 5	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049791873	5562-Child 6	5562-Kinder 6	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049824641	5562-Child 8	5562-Kinder 8	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019049857409	5562-Child 10	5562-Kinder 10	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019050021249	5562-Male S	5562-Herren S	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019050054017	5562-Child 12	5562-Kinder 12	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019050086785	5562-Child 14	5562-Kinder 14	2026-09-23T17:58Z
+gid://shopify/Product/15447974740353	Farbe	gid://shopify/ProductOptionValue/12019050119553	5562-Female 3XL	5562-Damen 3XL	2026-09-23T17:58Z
+gid://shopify/Product/15447975133569	Farbe	gid://shopify/ProductOptionValue/12019051364737	IX7 Black	IX7 Schwarz	2026-09-23T17:58Z
+gid://shopify/Product/15447975133569	Farbe	gid://shopify/ProductOptionValue/12019051397505	IX7 Gray	IX7 Grau	2026-09-23T17:58Z
+gid://shopify/Product/15447975133569	Farbe	gid://shopify/ProductOptionValue/12019051430273	IX7 Green	IX7 Grün	2026-09-23T17:58Z
+gid://shopify/Product/15447976182145	Ausführung	gid://shopify/ProductOptionValue/12376752521601	Men's	Herren	2026-09-23T17:58Z
+gid://shopify/Product/15447976182145	Ausführung	gid://shopify/ProductOptionValue/12376752554369	Women's	Damen	2026-09-23T17:58Z
+gid://shopify/Product/15447976509825	Farbe	gid://shopify/ProductOptionValue/12019057459585	Men's Black	Herren Schwarz	2026-09-23T17:58Z
+gid://shopify/Product/15447976509825	Farbe	gid://shopify/ProductOptionValue/12019057557889	Men's Gray Color	Herren Grau	2026-09-23T17:58Z
+gid://shopify/Product/15447976509825	Farbe	gid://shopify/ProductOptionValue/12019057656193	Men's Khaki	Herren Khaki	2026-09-23T17:58Z
+gid://shopify/Product/15447976509825	Farbe	gid://shopify/ProductOptionValue/12019057754497	Women's Black	Damen Schwarz	2026-09-23T17:58Z
+gid://shopify/Product/15447976509825	Farbe	gid://shopify/ProductOptionValue/12019057787265	Women's Gray	Damen Grau	2026-09-23T17:58Z
+gid://shopify/Product/15447976509825	Farbe	gid://shopify/ProductOptionValue/12019057820033	Women's Khaki	Damen Khaki	2026-09-23T17:58Z
+gid://shopify/Product/15447976739201	Farbe	gid://shopify/ProductOptionValue/12019058508161	Matte Pink-XXXXL	Mattpink-XXXXL	2026-09-23T17:58Z
+gid://shopify/Product/15447976739201	Farbe	gid://shopify/ProductOptionValue/12019058639233	Sea Rock Gray-XXXXL	Felsgrau-XXXXL	2026-09-23T17:58Z
+gid://shopify/Product/15447978508673	Farbe	gid://shopify/ProductOptionValue/12019062702465	4-Black	4-Schwarz	2026-09-23T17:58Z
+gid://shopify/Product/15447978508673	Farbe	gid://shopify/ProductOptionValue/12019062735233	4-White	4-Weiss	2026-09-23T17:58Z
+gid://shopify/Product/15447978508673	Farbe	gid://shopify/ProductOptionValue/12019062800769	6-Black	6-Schwarz	2026-09-23T17:58Z
+gid://shopify/Product/15447978508673	Farbe	gid://shopify/ProductOptionValue/12019062833537	6-White	6-Weiss	2026-09-23T17:58Z
+gid://shopify/Product/15447978508673	Farbe	gid://shopify/ProductOptionValue/12019062899073	8-Black	8-Schwarz	2026-09-23T17:58Z
+gid://shopify/Product/15447978508673	Farbe	gid://shopify/ProductOptionValue/12019062931841	8-White	8-Weiss	2026-09-23T17:58Z
+gid://shopify/Product/15447979491713	Farbe	gid://shopify/ProductOptionValue/12019065258369	Chestnut color	Kastanienbraun	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065520513	Black-34or75	Schwarz-34/75	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065553281	Black-36or80	Schwarz-36/80	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065586049	Black-38or85	Schwarz-38/85	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065618817	Black-40or90	Schwarz-40/90	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065651585	Black And White Stripes-34or75	Schwarz-Weiss gestreift-34/75	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065684353	Black And White Stripes-36or80	Schwarz-Weiss gestreift-36/80	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065717121	Black And White Stripes-38or85	Schwarz-Weiss gestreift-38/85	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065749889	Black And White Stripes-40or90	Schwarz-Weiss gestreift-40/90	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065782657	White-34or75	Weiss-34/75	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065815425	White-36or80	Weiss-36/80	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065848193	White-38or85	Weiss-38/85	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065880961	White-40or90	Weiss-40/90	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065913729	White Black Stripe-34or75	Weiss-Schwarz gestreift-34/75	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065946497	White Black Stripe-36or80	Weiss-Schwarz gestreift-36/80	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019065979265	White Black Stripe-38or85	Weiss-Schwarz gestreift-38/85	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066012033	White Black Stripe-40or90	Weiss-Schwarz gestreift-40/90	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066044801	Apricot White Stripes-34or75	Aprikose-Weiss gestreift-34/75	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066077569	Apricot White Stripes-36or80	Aprikose-Weiss gestreift-36/80	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066110337	Apricot White Stripes-38or85	Aprikose-Weiss gestreift-38/85	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066143105	Apricot White Stripes-40or90	Aprikose-Weiss gestreift-40/90	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066175873	Apricot Black Stripes-34or75	Aprikose-Schwarz gestreift-34/75	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066208641	Apricot Black Stripes-36or80	Aprikose-Schwarz gestreift-36/80	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066241409	Apricot Black Stripes-38or85	Aprikose-Schwarz gestreift-38/85	2026-09-23T17:58Z
+gid://shopify/Product/15447979622785	Farbe	gid://shopify/ProductOptionValue/12019066274177	Apricot Black Stripes-40or90	Aprikose-Schwarz gestreift-40/90	2026-09-23T17:58Z
+gid://shopify/Product/15447982440833	Farbe	gid://shopify/ProductOptionValue/12019073024385	Stripes	Gestreift	2026-09-23T17:58Z
+gid://shopify/Product/15447984636289	Ausführung	gid://shopify/ProductOptionValue/12376756027777	Lace	Spitze	2026-09-23T17:59Z
+gid://shopify/Product/15447985717633	Farbe	gid://shopify/ProductOptionValue/12019084788097	Army Green Polka Dot	Armeegrün gepunktet	2026-09-23T17:59Z
+gid://shopify/Product/15447985717633	Farbe	gid://shopify/ProductOptionValue/12019084853633	Stripes	Gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15447993876865	Farbe	gid://shopify/ProductOptionValue/12019104252289	Leopard Print	Leopardenmuster	2026-09-23T17:59Z
+gid://shopify/Product/15447993876865	Farbe	gid://shopify/ProductOptionValue/12019104285057	White Stripes	Weiss gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15447993876865	Farbe	gid://shopify/ProductOptionValue/12019104350593	Red Polka Dot	Rot gepunktet	2026-09-23T17:59Z
+gid://shopify/Product/15448003608961	Farbe	gid://shopify/ProductOptionValue/12019131449729	Linen	Leinen	2026-09-23T17:59Z
+gid://shopify/Product/15448006689153	Farbe	gid://shopify/ProductOptionValue/12019141640577	Silk Carbon Gray	Seide Karbongrau	2026-09-23T17:59Z
+gid://shopify/Product/15448013406593	Farbe	gid://shopify/ProductOptionValue/12019162153345	Black And White Stripes	Schwarz-Weiss gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15448014029185	Farbe	gid://shopify/ProductOptionValue/12019163005313	Short Sleeve	Kurzarm	2026-09-23T17:59Z
+gid://shopify/Product/15448014291329	Farbe	gid://shopify/ProductOptionValue/12019163857281	Flowers	Geblümt	2026-09-23T17:59Z
+gid://shopify/Product/15448015176065	Farbe	gid://shopify/ProductOptionValue/12019166052737	Green Plaid	Grün kariert	2026-09-23T17:59Z
+gid://shopify/Product/15448015176065	Farbe	gid://shopify/ProductOptionValue/12019166085505	Pure Black Short Sleeve	Komplett Schwarz Kurzarm	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167494529	4-White	4-Weiss	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167527297	4-Mint Green	4-Mintgrün	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167592833	4-Black	4-Schwarz	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167625601	4-Light blue	4-Hellblau	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167658369	6-White	6-Weiss	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167691137	6-Mint Green	6-Mintgrün	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167756673	6-Black	6-Schwarz	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167789441	6-Light blue	6-Hellblau	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167822209	8-White	8-Weiss	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167854977	8-Mint Green	8-Mintgrün	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167920513	8-Black	8-Schwarz	2026-09-23T17:59Z
+gid://shopify/Product/15448015864193	Farbe	gid://shopify/ProductOptionValue/12019167953281	8-Light blue	8-Hellblau	2026-09-23T17:59Z
+gid://shopify/Product/15448018354561	Farbe	gid://shopify/ProductOptionValue/12019174965633	Long Sleeve	Langarm	2026-09-23T17:59Z
+gid://shopify/Product/15448018354561	Farbe	gid://shopify/ProductOptionValue/12019174998401	Short Sleeve	Kurzarm	2026-09-23T17:59Z
+gid://shopify/Product/15448026579329	Farbe	gid://shopify/ProductOptionValue/12019202163073	Leather Pink	Leder Pink	2026-09-23T17:59Z
+gid://shopify/Product/15448026743169	Farbe	gid://shopify/ProductOptionValue/12019202687361	Leather Pink	Leder Pink	2026-09-23T17:59Z
+gid://shopify/Product/15448027169153	Farbe	gid://shopify/ProductOptionValue/12019203932545	Leather Pink	Leder Pink	2026-09-23T17:59Z
+gid://shopify/Product/15448030970241	Farbe	gid://shopify/ProductOptionValue/12019215499649	Pink Flower	Pink geblümt	2026-09-23T17:59Z
+gid://shopify/Product/15448030970241	Farbe	gid://shopify/ProductOptionValue/12019215532417	Purple Pattern	Lila Muster	2026-09-23T17:59Z
+gid://shopify/Product/15448039915905	Farbe	gid://shopify/ProductOptionValue/12019238076801	1 Black	1 Schwarz	2026-09-23T17:59Z
+gid://shopify/Product/15448039915905	Farbe	gid://shopify/ProductOptionValue/12019238109569	2 White	2 Weiss	2026-09-23T17:59Z
+gid://shopify/Product/15448040210817	Farbe	gid://shopify/ProductOptionValue/12019238863233	Light Blue-73X63X28cm	Hellblau-73x63x28 cm	2026-09-23T17:59Z
+gid://shopify/Product/15448040210817	Farbe	gid://shopify/ProductOptionValue/12019238896001	Pink-73X63X28cm	Pink-73x63x28 cm	2026-09-23T17:59Z
+gid://shopify/Product/15448040210817	Farbe	gid://shopify/ProductOptionValue/12019238928769	Deep Coffee-73X63X28cm	Dunkelkaffeebraun-73x63x28 cm	2026-09-23T17:59Z
+gid://shopify/Product/15448040210817	Farbe	gid://shopify/ProductOptionValue/12019238961537	Dark Blue-73X63X28cm	Dunkelblau-73x63x28 cm	2026-09-23T17:59Z
+gid://shopify/Product/15448040210817	Farbe	gid://shopify/ProductOptionValue/12019238994305	Yellow-73X63X28cm	Gelb-73x63x28 cm	2026-09-23T17:59Z
+gid://shopify/Product/15448040210817	Farbe	gid://shopify/ProductOptionValue/12019239027073	Red And Green-73X63X28cm	Rot-Grün-73x63x28 cm	2026-09-23T17:59Z
+gid://shopify/Product/15448043028865	Farbe	gid://shopify/ProductOptionValue/12019245154689	Round Dots	Rund gepunktet	2026-09-23T17:59Z
+gid://shopify/Product/15448088314241	Farbe	gid://shopify/ProductOptionValue/12019902513537	Green Apple Green	Grün-Apfelgrün	2026-09-23T17:59Z
+gid://shopify/Product/15448088347009	Farbe	gid://shopify/ProductOptionValue/12019903168897	Grey Lake Blue	Grau-Seeblau	2026-09-23T17:59Z
+gid://shopify/Product/15448092279169	Farbe	gid://shopify/ProductOptionValue/12020008944001	White Plaid	Weiss kariert	2026-09-23T17:59Z
+gid://shopify/Product/15448092606849	Farbe	gid://shopify/ProductOptionValue/12020014383489	White Green Stripes	Weiss-Grün gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15448092606849	Farbe	gid://shopify/ProductOptionValue/12020014416257	White And Blue Stripes	Weiss-Blau gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15448092606849	Farbe	gid://shopify/ProductOptionValue/12020014449025	White And Black Stripes	Weiss-Schwarz gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15448092606849	Farbe	gid://shopify/ProductOptionValue/12020014481793	White Khaki Stripe	Weiss-Khaki gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15448092606849	Farbe	gid://shopify/ProductOptionValue/12020014514561	Khaki Black Stripes	Khaki-Schwarz gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15448092606849	Farbe	gid://shopify/ProductOptionValue/12020014547329	Khaki White Stripes	Khaki-Weiss gestreift	2026-09-23T17:59Z
+gid://shopify/Product/15448093163905	Farbe	gid://shopify/ProductOptionValue/12020028244353	Picture 1	Wie abgebildet 1	2026-09-23T17:59Z
+gid://shopify/Product/15448093163905	Farbe	gid://shopify/ProductOptionValue/12020028277121	Picture 2	Wie abgebildet 2	2026-09-23T17:59Z
+gid://shopify/Product/15448103289217	Farbe	gid://shopify/ProductOptionValue/12020381647233	R6563 Blue And White	R6563 Blau-Weiss	2026-09-23T17:59Z
+gid://shopify/Product/15448104239489	Farbe	gid://shopify/ProductOptionValue/12020403732865	Gold Sand Camel	Gold-Sandcamel	2026-09-23T17:59Z
+gid://shopify/Product/15448104239489	Farbe	gid://shopify/ProductOptionValue/12020403798401	Light Bright Red	Hellleuchtendrot	2026-09-23T17:59Z
+gid://shopify/Product/15448104239489	Farbe	gid://shopify/ProductOptionValue/12020403896705	Emerald	Smaragdgrün	2026-09-23T17:59Z
+gid://shopify/Product/15448104305025	Farbe	gid://shopify/ProductOptionValue/12020404781441	Black 1	Schwarz 1	2026-09-23T17:59Z
+gid://shopify/Product/15448104305025	Farbe	gid://shopify/ProductOptionValue/12020404814209	Black 4	Schwarz 4	2026-09-23T17:59Z
+gid://shopify/Product/15448104305025	Farbe	gid://shopify/ProductOptionValue/12020404846977	Black 3	Schwarz 3	2026-09-23T17:59Z
+gid://shopify/Product/15448104370561	Farbe	gid://shopify/ProductOptionValue/12020407632257	Brown-1XL	Braun-1XL	2026-09-23T17:59Z
+gid://shopify/Product/15448104370561	Farbe	gid://shopify/ProductOptionValue/12020407697793	Royal Blue-1XL	Königsblau-1XL	2026-09-23T17:59Z
+gid://shopify/Product/15448104370561	Farbe	gid://shopify/ProductOptionValue/12020407763329	Red-1XL	Rot-1XL	2026-09-23T17:59Z
+gid://shopify/Product/15448105910657	Farbe	gid://shopify/ProductOptionValue/12020439581057	Light Rose Red	Hellrosarot	2026-09-23T18:00Z
+gid://shopify/Product/15448105976193	Farbe	gid://shopify/ProductOptionValue/12020440301953	Pink Thin Style	Pink dünne Ausführung	2026-09-23T18:00Z
+gid://shopify/Product/15448105976193	Farbe	gid://shopify/ProductOptionValue/12020440334721	Pink With Velvet Lining	Pink mit Samtfutter	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477395329	1 Black	1 Schwarz	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477428097	2 White	2 Weiss	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477460865	3 Dark Gray	3 Dunkelgrau	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477526401	5 Navy Blue	5 Marineblau	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477559169	6 Yellow Color	6 Gelb	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477657473	9 Blue	9 Blau	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477690241	10 Red	10 Rot	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477723009	11 Purple	11 Lila	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477755777	12 Light Gray	12 Hellgrau	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477788545	13 Wine Red	13 Weinrot	2026-09-23T18:00Z
+gid://shopify/Product/15448107811201	Farbe	gid://shopify/ProductOptionValue/12020477821313	14 Dark Green	14 Dunkelgrün	2026-09-23T18:00Z
+gid://shopify/Product/15448109842817	Farbe	gid://shopify/ProductOptionValue/12020507574657	Black-XXXXL	Schwarz-XXXXL	2026-09-23T18:00Z
+gid://shopify/Product/15448109842817	Farbe	gid://shopify/ProductOptionValue/12020507640193	Brown-XXXXL	Braun-XXXXL	2026-09-23T18:00Z
+gid://shopify/Product/15448112234881	Farbe	gid://shopify/ProductOptionValue/12020551614849	Purplish Red Pattern	Purpurrot Muster	2026-09-23T18:00Z
+gid://shopify/Product/15448112333185	Farbe	gid://shopify/ProductOptionValue/12020554826113	Classic leopard print	Klassisch Leopardenmuster	2026-09-23T18:00Z
+gid://shopify/Product/15448113447297	Farbe	gid://shopify/ProductOptionValue/12020573077889	Pink And Yellow Leopard Print	Pink-Gelb Leopardenmuster	2026-09-23T18:00Z
+gid://shopify/Product/15448113447297	Farbe	gid://shopify/ProductOptionValue/12020573143425	Black Brown Leopard Print	Schwarz-Braun Leopardenmuster	2026-09-23T18:00Z
+gid://shopify/Product/15448114037121	Farbe	gid://shopify/ProductOptionValue/12376810127745	Marineblaublau	Marineblau	2026-09-23T18:00Z
+gid://shopify/Product/15448114200961	Farbe	gid://shopify/ProductOptionValue/12376818450817	Olive	Oliv	2026-09-23T18:00Z
+gid://shopify/Product/15448114332033	Farbe	gid://shopify/ProductOptionValue/12376823333249	Marineblaublau	Marineblau	2026-09-23T18:00Z
+gid://shopify/Product/15448114463105	Farbe	gid://shopify/ProductOptionValue/12376821793153	Marineblaublau	Marineblau	2026-09-23T18:00Z
+gid://shopify/Product/15448115085697	Farbe	gid://shopify/ProductOptionValue/12376834998657	Marineblaublau	Marineblau	2026-09-23T18:00Z
+gid://shopify/Product/15448115249537	Farbe	gid://shopify/ProductOptionValue/12376838308225	Marineblaublau	Marineblau	2026-09-23T18:00Z
+gid://shopify/Product/15448115413377	Farbe	gid://shopify/ProductOptionValue/12020634517889	White Single Layer	Weiss einlagig	2026-09-23T18:00Z
+gid://shopify/Product/15448115642753	Farbe	gid://shopify/ProductOptionValue/12020638155137	Black Floral	Schwarz geblümt	2026-09-23T18:00Z
+gid://shopify/Product/15448115773825	Farbe	gid://shopify/ProductOptionValue/12020640121217	Blue Gradient	Blau Farbverlauf	2026-09-23T18:00Z
+gid://shopify/Product/15448116003201	Farbe	gid://shopify/ProductOptionValue/12376848302465	Marineblaublau	Marineblau	2026-09-23T18:00Z
+gid://shopify/Product/15448116134273	Farbe	gid://shopify/ProductOptionValue/12020650672513	Sea Blue Flower	Meerblau geblümt	2026-09-23T18:01Z
+gid://shopify/Product/15448116134273	Farbe	gid://shopify/ProductOptionValue/12020650705281	Orange Flower	Orange geblümt	2026-09-23T18:01Z
+gid://shopify/Product/15448494604673	Farbe	gid://shopify/ProductOptionValue/12022164521345	Khaki-57.5cm	Khaki-57.5 cm	2026-09-23T18:01Z
+gid://shopify/Product/15448494604673	Farbe	gid://shopify/ProductOptionValue/12022164554113	Brown-57.5cm	Braun-57.5 cm	2026-09-23T18:01Z
+gid://shopify/Product/15448494604673	Farbe	gid://shopify/ProductOptionValue/12022164586881	Beige-57.5cm	Beige-57.5 cm	2026-09-23T18:01Z
+gid://shopify/Product/15448495063425	Grösse	gid://shopify/ProductOptionValue/12376847122817	Kids 2Y	Kinder 2Y	2026-09-23T18:01Z
+gid://shopify/Product/15448496144769	Farbe	gid://shopify/ProductOptionValue/12022171566465	Short Sleeve	Kurzarm	2026-09-23T18:01Z
+gid://shopify/Product/15448496144769	Farbe	gid://shopify/ProductOptionValue/12022171599233	Long Sleeve	Langarm	2026-09-23T18:01Z
+gid://shopify/Product/15448496308609	Farbe	gid://shopify/ProductOptionValue/12022172877185	Light mint green	Hellmintgrün	2026-09-23T18:01Z
+gid://shopify/Product/15448508727681	Farbe	gid://shopify/ProductOptionValue/12022282715521	Pink With Velvet Lining	Pink mit Samtfutter	2026-09-23T18:01Z
+gid://shopify/Product/15448509153665	Farbe	gid://shopify/ProductOptionValue/12022285795713	Q1A Black	Q1A Schwarz	2026-09-23T18:01Z
+gid://shopify/Product/15448509153665	Farbe	gid://shopify/ProductOptionValue/12022285861249	Q17A Yellow	Q17A Gelb	2026-09-23T18:01Z
+gid://shopify/Product/15448509153665	Farbe	gid://shopify/ProductOptionValue/12022285894017	Q18A Bright Red	Q18A Leuchtendrot	2026-09-23T18:01Z
+gid://shopify/Product/15448509514113	Farbe	gid://shopify/ProductOptionValue/12022291235201	W011 Dark green off white	W011 Dunkelgrün-Cremeweiss	2026-09-23T18:01Z
+gid://shopify/Product/15448509514113	Farbe	gid://shopify/ProductOptionValue/12022291300737	W011 bordeaux beige	W011 bordeaux Beige	2026-09-23T18:01Z
+gid://shopify/Product/15448509579649	Farbe	gid://shopify/ProductOptionValue/12022291595649	2255 Green With White	2255 Grün mit Weiss	2026-09-23T18:01Z
+gid://shopify/Product/15448509579649	Farbe	gid://shopify/ProductOptionValue/12022291628417	2255 Black With Red	2255 Schwarz mit Rot	2026-09-23T18:01Z
+gid://shopify/Product/15448509579649	Farbe	gid://shopify/ProductOptionValue/12022291661185	2255 Pink With White	2255 Pink mit Weiss	2026-09-23T18:01Z
+gid://shopify/Product/15448509579649	Farbe	gid://shopify/ProductOptionValue/12022291693953	2255 Orange With Blue	2255 Orange mit Blau	2026-09-23T18:01Z
+gid://shopify/Product/15448509579649	Farbe	gid://shopify/ProductOptionValue/12022291726721	2255 Sapphire Blue With White	2255 Saphirblau mit Weiss	2026-09-23T18:01Z
+gid://shopify/Product/15448509579649	Farbe	gid://shopify/ProductOptionValue/12022291759489	2255 Red With Black	2255 Rot mit Schwarz	2026-09-23T18:01Z
+gid://shopify/Product/15448509579649	Farbe	gid://shopify/ProductOptionValue/12022291792257	2255 Navy Blue With Orange	2255 Marineblau mit Orange	2026-09-23T18:01Z
+gid://shopify/Product/15448526750081	Farbe	gid://shopify/ProductOptionValue/12022423880065	Floral 1	Geblümt 1	2026-09-23T18:01Z
+gid://shopify/Product/15448526750081	Farbe	gid://shopify/ProductOptionValue/12022423912833	Flower Color 2	Geblümt Farbton 2	2026-09-23T18:01Z
+gid://shopify/Product/15448526750081	Farbe	gid://shopify/ProductOptionValue/12022423945601	Floral 3	Geblümt 3	2026-09-23T18:01Z
+gid://shopify/Product/15448527176065	Farbe	gid://shopify/ProductOptionValue/12022427451777	Purplish Blue Pink Floral	Violettblau-Pink geblümt	2026-09-23T18:01Z
+gid://shopify/Product/15448527176065	Farbe	gid://shopify/ProductOptionValue/12022427484545	Navy Blue With White Flowers	Marineblau mit Weiss geblümt	2026-09-23T18:01Z
+gid://shopify/Product/15448533008769	Farbe	gid://shopify/ProductOptionValue/12022473195905	Black 1 Blue	Schwarz 1 Blau	2026-09-23T18:01Z
+gid://shopify/Product/15448533008769	Farbe	gid://shopify/ProductOptionValue/12022473228673	Black 2 Fluorescent Yellow	Schwarz 2 Neongelb	2026-09-23T18:01Z
+gid://shopify/Product/15448533008769	Farbe	gid://shopify/ProductOptionValue/12022473261441	Black 3	Schwarz 3	2026-09-23T18:01Z
+gid://shopify/Product/15448536121729	Farbe	gid://shopify/ProductOptionValue/12376872255873	Marineblaublau	Marineblau	2026-09-23T18:01Z
+gid://shopify/Product/15448547852673	Farbe	gid://shopify/ProductOptionValue/12376905482625	Marineblaublau	Marineblau	2026-09-23T18:01Z
+gid://shopify/Product/15448550146433	Farbe	gid://shopify/ProductOptionValue/12022515040641	Classic Black-G	Klassischschwarz-G	2026-09-23T18:01Z
+gid://shopify/Product/15448552178049	Farbe	gid://shopify/ProductOptionValue/12450221523329	White MT048244	Weiss MT048244	2026-09-23T18:01Z
+gid://shopify/Product/15448552178049	Farbe	gid://shopify/ProductOptionValue/12450221588865	Yellow MT371332	Gelb MT371332	2026-09-23T18:01Z
+gid://shopify/Product/15448552178049	Farbe	gid://shopify/ProductOptionValue/12450221621633	Brown MT389399	Braun MT389399	2026-09-23T18:01Z
+gid://shopify/Product/15448573510017	Farbe	gid://shopify/ProductOptionValue/12022655025537	Model	Modell	2026-09-23T18:01Z
+gid://shopify/Product/15448573968769	Farbe	gid://shopify/ProductOptionValue/12376900043137	Marineblaublau	Marineblau	2026-09-23T18:01Z
+gid://shopify/Product/15448574427521	Farbe	gid://shopify/ProductOptionValue/12022667149697	Leopard Print	Leopardenmuster	2026-09-23T18:01Z
+gid://shopify/Product/15448574984577	Farbe	gid://shopify/ProductOptionValue/12376904860033	Marineblaublau	Marineblau	2026-09-23T18:01Z
+gid://shopify/Product/15448575148417	Farbe	gid://shopify/ProductOptionValue/12376907350401	Marineblaublau	Marineblau	2026-09-23T18:01Z
+gid://shopify/Product/15448581964161	Farbe	gid://shopify/ProductOptionValue/12376915706241	Marineblaublau	Marineblau	2026-09-23T18:02Z
+gid://shopify/Product/15448582029697	Farbe	gid://shopify/ProductOptionValue/12376917279105	Olive	Oliv	2026-09-23T18:02Z
+gid://shopify/Product/15448583700865	Farbe	gid://shopify/ProductOptionValue/12451285926273	Black	Schwarz	2026-09-23T18:02Z
+gid://shopify/Product/15448583700865	Farbe	gid://shopify/ProductOptionValue/12451285959041	Apricot	Aprikose	2026-09-23T18:02Z
+gid://shopify/Product/15448585208193	Farbe	gid://shopify/ProductOptionValue/12022777872769	Beige Dots	Beige gepunktet	2026-09-23T18:02Z
+gid://shopify/Product/15448585208193	Farbe	gid://shopify/ProductOptionValue/12022777905537	Brown Dots	Braun gepunktet	2026-09-23T18:02Z
+gid://shopify/Product/15448585208193	Farbe	gid://shopify/ProductOptionValue/12022777938305	Black Dots	Schwarz gepunktet	2026-09-23T18:02Z
+gid://shopify/Product/15448588321153	Farbe	gid://shopify/ProductOptionValue/12022804382081	Olive	Oliv	2026-09-23T18:02Z
+gid://shopify/Product/15448588616065	Farbe	gid://shopify/ProductOptionValue/12022806053249	Pattern A	Muster A	2026-09-23T18:02Z
+gid://shopify/Product/15448588616065	Farbe	gid://shopify/ProductOptionValue/12022806086017	Flower Type B	Geblümt Typ B	2026-09-23T18:02Z
+gid://shopify/Product/15448588616065	Farbe	gid://shopify/ProductOptionValue/12022806151553	Purple Flower	Lila geblümt	2026-09-23T18:02Z
+gid://shopify/Product/15448589468033	Farbe	gid://shopify/ProductOptionValue/12022818177409	Big White	Gross Weiss	2026-09-23T18:02Z
+gid://shopify/Product/15448590254465	Farbe	gid://shopify/ProductOptionValue/12022832365953	Lace Gray	Spitze Grau	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833414529	White 100cm Long	Weiss 100 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833447297	Black 100cm Long	Schwarz 100 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833480065	Gray 100cm Long	Grau 100 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833512833	Pink 100cm Long	Pink 100 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833545601	White 110cm Long	Weiss 110 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833578369	Black 110cm Long	Schwarz 110 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833611137	Gray 110cm Long	Grau 110 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833643905	Pink 110cm Long	Pink 110 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833676673	Black 120cm Long	Schwarz 120 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833709441	Gray 120cm Long	Grau 120 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833742209	Pink 120cm Long	Pink 120 cm lang	2026-09-23T18:02Z
