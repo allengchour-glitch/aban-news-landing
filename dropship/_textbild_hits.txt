@@ -15938,3 +15938,4 @@ gid://shopify/Product/15433464316289	61->0	Wandhalterung für Gamecontroller & H
 gid://shopify/Product/15433464381825	15->0	Hall Magnetic Rocker für PS4/PS5/Switch/Xbox Gamepads
 gid://shopify/Product/15433464545665	11->0	Anime Celebrities Figur (18 cm)
 gid://shopify/Product/15448957976961	8->0	Intelligentes Bremslicht für Velos
+gid://shopify/Product/15497150857601	16->0	Gaming Trigger-Griff für Smartphones
