@@ -11,7 +11,8 @@
 # DIESES SKRIPT (idempotent, löscht nur Wiederherstellbares):
 #   1. Platz: Journal auf 100 MB, apt-Cache, git-Temp-Objekte, Browser-CACHES (Anmeldungen bleiben).
 #   2. Ungepushte Auftragsergebnisse nach /root/luxe-auftraege-rettung-* sichern.
-#   3. Klon neu: --depth=1, nur dieser Zweig, sparse (server, auftraege, automation/browser).
+#   3. Klon neu: --depth=1, nur dieser Zweig, --filter=blob:none (Dateien nur bei Bedarf) + sparse (server,
+#      auftraege, automation/browser). Gemessen 23.09.: 141 MB statt 2,6 GB (depth 1 allein) statt 7,8 GB (voll).
 #      node_modules (Playwright) wird mitgenommen, nicht neu installiert.
 #   4. Starter /usr/local/bin/luxe-auftrag: flacher Abruf (--depth=1), Nachziehen per Patch statt Rebase
 #      (ein Rebase auf flacher Historie würde die Wurzel als Riesen-Patch nachspielen), danach Altobjekte weg.
@@ -52,7 +53,7 @@ log "3) Klon schlank neu (depth 1, sparse)"
 install -d -m 700 /opt/luxe-agent
 [ -d "$APP_DIR/node_modules" ] && { rm -rf /opt/luxe-agent/node_modules.keep; mv "$APP_DIR/node_modules" /opt/luxe-agent/node_modules.keep; }
 rm -rf "$APP_DIR"
-git clone --quiet --depth=1 --single-branch --branch "$BRANCH" --no-checkout "$URL" "$APP_DIR" || { echo "⛔ Klonen fehlgeschlagen"; df -h /; exit 1; }
+git clone --quiet --depth=1 --single-branch --branch "$BRANCH" --filter=blob:none --sparse --no-checkout "$URL" "$APP_DIR" || { echo "⛔ Klonen fehlgeschlagen"; df -h /; exit 1; }
 git -C "$APP_DIR" sparse-checkout set --cone server auftraege automation/browser
 git -C "$APP_DIR" checkout --quiet "$BRANCH"
 chmod 700 "$APP_DIR"
