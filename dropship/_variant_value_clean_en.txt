@@ -18005,3 +18005,9 @@ gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100572033	Leinen Blau	Linen Blue	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
 gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100604801	Leinen Grün	Linen Green	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
 gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100670337	Leinen Schwarz	Linen Black	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448642912641	Farbe	gid://shopify/ProductOptionValue/12023106797953	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448643010945	Farbe	gid://shopify/ProductOptionValue/12023109386625	Bambus Grün	Bamboo Green	2026-09-23T20:35Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448645632385	Farbe	gid://shopify/ProductOptionValue/12023264969089	Kariert Muster	Checkered pattern	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714382209	Bunt Rosarot	Colorful Rose Red	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714775425	Schwarz-Leuchtendrot	Schwarz-Leuchtendes Rot	2026-09-23T20:35Z/reparatur-korrigiert
+gid://shopify/Product/15448649040257	Farbe	gid://shopify/ProductOptionValue/12024153080193	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz

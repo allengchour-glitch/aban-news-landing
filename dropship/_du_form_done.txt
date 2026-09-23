@@ -22783,3 +22783,15 @@ taktische-brusttasche-aus-oxford-stoff-357504	2026-09-23	um-ohne-wirkung
 taktische-brusttasche-fur-herren-609900	2026-09-23	nicht-aktiv
 taktische-brusttasche-fur-trail-running-607700	2026-09-23	du
 taktische-camouflage-crossbody-handtasche-930944	2026-09-23	um-ohne-wirkung
+taktische-camouflage-outdoor-aufbewahrungstasc-636900	2026-09-23	du
+taktische-crossbody-bag-615900	2026-09-23	teilweise
+taktische-falt-gurteltasche-fur-outdoor-sport-632700	2026-09-23	teilweise
+taktische-feldtasche-fur-outdoor-enthusiasten-628700	2026-09-23	um-ohne-wirkung
+taktische-halbgesichtsmaske-scorpion-632200	2026-09-23	um-ohne-wirkung
+taktische-handy-tasche-639200	2026-09-23	teilweise
+taktische-herren-tragetasche-fur-outdoor-635200	2026-09-23	teilweise
+taktische-hip-hop-brusttasche-im-hong-kong-sty-925440	2026-09-23	um-ohne-wirkung
+taktische-hufttasche-fur-outdoor-aktivitaten-623100	2026-09-23	um-ohne-wirkung
+taktische-hufttasche-mit-erste-hilfe-kit-603800	2026-09-23	um-ohne-wirkung
+taktische-hundeleine-fur-grosse-hunde-926080	2026-09-23	teilweise
+taktische-hundeleine-mit-frosch-karabiner-611500	2026-09-23	teilweise
