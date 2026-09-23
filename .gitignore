@@ -110,3 +110,7 @@ buero/*
 _fehlprotokolle/
 # Stundenkerzen (je ~0.6 MB, holt daytrading.py selbst, wenn sie fehlen)
 tools/trading/daten/h_*.json
+
+# Bezahlte Kit-ZIPs baut der Deploy (build-pages.sh -> build_kit_zips.py). Nie ins Repo:
+# es ist oeffentlich, der gehashte Name schuetzt dort nichts.
+downloads/kits/
