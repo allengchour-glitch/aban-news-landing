@@ -557,6 +557,56 @@
     </div>
   </section>
 
+  <!-- KI-NEWS HEUTE — data/ki-news.json, taeglich von automation/ki_news_heute.py (tages-update.yml).
+       Titel stehen im Original da und verlinken auf die Quelle; nichts wird umgeschrieben.
+       Aelter als 36 Stunden -> die Seite sagt das, statt „heute" zu behaupten. -->
+  <section class="sec" style="padding-top:0" id="kiNews" hidden>
+    <div class="wrap">
+      <span class="eyebrow" id="kiNewsEyebrow">Heute · KI-News</span>
+      <h2>KI-News aus <span id="kiNewsN">mehreren</span> Quellen</h2>
+      <p class="sub" id="kiNewsSub">Automatisch gesammelt, Titel im Original, nicht umgeschrieben. Ein Klick führt zur Quelle.</p>
+      <ol class="kin" id="kiNewsListe"></ol>
+      <p class="kin-fuss">Die Einordnung, was davon für dein Geschäft zählt, steht im <a href="https://abannews.beehiiv.com/subscribe">Newsletter</a>.</p>
+    </div>
+  </section>
+  <style>
+  #kiNews .kin{list-style:none;margin:1.2rem 0 0;padding:0;display:grid;gap:10px}
+  #kiNews .kin li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  #kiNews .kin a.t{color:var(--ink);font-weight:700;text-decoration:none;line-height:1.35}
+  #kiNews .kin a.t:hover{color:var(--amber-dk);text-decoration:underline}
+  #kiNews .kin .m{font-size:.78rem;color:var(--muted);margin-bottom:3px}
+  #kiNews .kin .m b{color:var(--amber-dk);font-weight:800}
+  #kiNews .kin .s{font-size:.88rem;color:var(--muted);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  #kiNews .kin .en{font-size:.68rem;font-weight:800;border:1px solid var(--line);border-radius:8px;padding:0 5px;margin-left:5px}
+  #kiNews .kin-fuss{font-size:.86rem;color:var(--muted);margin-top:.9rem}
+  #kiNews .alt{color:#92400e;font-weight:700}
+  @media(min-width:860px){#kiNews .kin{grid-template-columns:1fr 1fr}}
+  </style>
+  <script>
+  (function(){
+    var sec=document.getElementById('kiNews');if(!sec)return;
+    function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    function vor(ms){var h=Math.round(ms/36e5);if(h<1)return 'vor weniger als 1 Std.';if(h<24)return 'vor '+h+' Std.';var t=Math.round(h/24);return 'vor '+t+(t===1?' Tag':' Tagen')}
+    function datum(d){return d.toLocaleDateString('de-CH',{day:'2-digit',month:'2-digit',year:'numeric'})+', '+d.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})}
+    fetch('/data/ki-news.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+      var items=(d&&d.items)||[];if(!items.length)return;
+      var stand=new Date(d.stand),jetzt=Date.now(),alt=!(jetzt-stand<36*36e5);
+      document.getElementById('kiNewsN').textContent=(d.quellen||[]).length||'mehreren';
+      document.getElementById('kiNewsEyebrow').textContent=alt?'Stand '+stand.toLocaleDateString('de-CH')+' · KI-News':'Heute · KI-News';
+      var sub=document.getElementById('kiNewsSub');
+      sub.innerHTML='Automatisch gesammelt, Titel im Original, nicht umgeschrieben. Ein Klick führt zur Quelle. Stand: '+esc(datum(stand))+'.'
+        +(alt?' <span class="alt">Die tägliche Aktualisierung ist seither ausgefallen — die Meldungen sind nicht mehr neu.</span>':'');
+      document.getElementById('kiNewsListe').innerHTML=items.map(function(it){
+        var z=new Date(it.d);
+        return '<li><div class="m"><b>'+esc(it.q)+'</b> · '+esc(vor(jetzt-z))+(it.sprache==='en'?'<span class="en" title="Artikel auf Englisch">EN</span>':'')+'</div>'
+          +'<a class="t" href="'+esc(it.u)+'" target="_blank" rel="noopener">'+esc(it.t)+'</a>'
+          +(it.s?'<div class="s">'+esc(it.s)+'</div>':'')+'</li>';
+      }).join('');
+      sec.hidden=false;
+    }).catch(function(){});
+  })();
+  </script>
+
   <!-- MÄRKTE-VORSCHAU -->
   <section class="sec" style="padding-top:0" id="marketsPreview" hidden>
     <div class="wrap center">
@@ -604,6 +654,10 @@
       .then(function(d){
       fx=d.fx||{usd:1};
       render(d); // sofort in USD zeigen …
+      /* ⚠️ GEMESSEN 2026-09-23: Kurse vom 12.06. standen im September unter „Live · Märkte".
+         „Live" nur, wenn die Daten hoechstens 2 Tage alt sind — sonst das echte Datum. */
+      var lu=d.last_updated?new Date(d.last_updated+'T12:00:00Z'):null,eb=document.querySelector('#marketsPreview .eyebrow');
+      if(eb&&lu&&!isNaN(lu)&&Date.now()-lu>2*864e5)eb.textContent='Stand '+lu.toLocaleDateString('de-CH')+' · Märkte';
       // … dann Land erkennen und ggf. auf CHF/EUR umstellen
       fetch('/cdn-cgi/trace',{cache:'no-store'}).then(function(r){return r.text();}).then(function(t){
         var m=/(?:^|\n)loc=([A-Z]{2})/.exec(t); var cc=m?m[1]:'';
