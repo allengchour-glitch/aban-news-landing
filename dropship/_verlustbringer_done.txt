@@ -28,3 +28,23 @@ gid://shopify/Product/15500972458369	2026-09-23T01:09Z	draft	44.90	217.27	Hexago
 gid://shopify/Product/15500402983297	2026-09-23T01:09Z	draft	16.90	188.80	Schmuck-Organizer Pfauenblau Samt
 gid://shopify/Product/15500542476673	2026-09-23T01:09Z	draft	17.90	186.09	Hundeball-Werfer
 gid://shopify/Product/15502250836353	2026-09-23T01:09Z	draft	16.90	179.64	Intelligentes Schlafhilfe-Gerät mit Pulsfunktion
+gid://shopify/Product/15496519582081	2026-09-23T01:09Z	draft	33.90	196.22	Elektrischer Messer- und Werkzeugschärfer
+gid://shopify/Product/15453795352961	2026-09-23T01:09Z	draft	96.90	256.48	Rechteckiges Hundebett mit doppelter Matratze
+gid://shopify/Product/15448937824641	2026-09-23T01:09Z	draft	43.90	200.61	Sisal-Kratzbaum mit Liegefläche für Katzen
+gid://shopify/Product/15497455141249	2026-09-23T01:09Z	draft	24.90	178.60	Keramik-Antihaftpfanne mit Glasdeckel
+gid://shopify/Product/15451640791425	2026-09-23T01:09Z	draft	35.90	181.27	Kühlende Gewichtsdecke mit Glasperlen
+gid://shopify/Product/15496372027777	2026-09-23T01:09Z	draft	80.90	220.87	Keramik Geschirrset mit Goldrand
+gid://shopify/Product/15497378398593	2026-09-23T01:09Z	draft	14.90	154.70	Kabelbinder aus Edelstahl (304) für Marine-Anwendungen
+gid://shopify/Product/15448938578305	2026-09-23T01:10Z	draft	18.90	164.37	Katzenbaum mit integriertem Bett
+gid://shopify/Product/15449123881345	2026-09-23T01:10Z	draft	86.90	221.51	Gesichtsdampfer mit Vertikal-Sprüharm
+gid://shopify/Product/15497464512897	2026-09-23T01:10Z	draft	28.90	155.88	Vintage Schmuckschatulle im chinesischen Stil
+gid://shopify/Product/15501921157505	2026-09-23T01:10Z	draft	39.90	165.26	Bauklotz-Spielset
+gid://shopify/Product/15448951259521	2026-09-23T01:10Z	draft	24.90	147.93	Automatischer Futterspender für Katzen
+gid://shopify/Product/15501001720193	2026-09-23T01:10Z	draft	17.90	140.34	Flammenfeste Keramikpfanne mit Deckel
+gid://shopify/Product/15503259238785	2026-09-23T01:10Z	draft	31.90	153.29	Dreirohr-Lufthorn für LKW, 12/24V
+gid://shopify/Product/15454235263361	2026-09-23T01:10Z	draft	25.90	146.45	Herren-Armbanduhr
+gid://shopify/Product/15454057267585	2026-09-23T01:10Z	draft	14.90	129.99	Nordic-Eingangsmatte
+gid://shopify/Product/15506301223297	2026-09-23T01:10Z	draft	47.90	162.84	Vibrations-Knie- und Beinmassagegerät
+gid://shopify/Product/15500105449857	2026-09-23T01:10Z	draft	58.90	171.55	Kettlebell für Frauen
+gid://shopify/Product/15453774119297	2026-09-23T01:10Z	draft	23.90	134.55	Keramik Futternapf für Hunde
+gid://shopify/Product/15500939002241	2026-09-23T01:10Z	draft	73.90	179.95	Schönheitsbeutel
