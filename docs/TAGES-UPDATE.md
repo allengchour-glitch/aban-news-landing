@@ -17,6 +17,14 @@ Block „KI-News aus N Quellen".
 - Ist der Stand älter als 36 Stunden, sagt der Block „Stand …" statt „Heute" und meldet,
   dass die Aktualisierung ausgefallen ist.
 
+## Übungsdepot (Spielgeld)
+
+`tools/trading/papier_depot.py` → `data/papierdepot.json`, Anzeige auf `trading-lernen.html`.
+Der Lern-Bot entscheidet jeden Morgen pro Markt (investiert oder Cash) und wird mit dem nächsten
+Schlusskurs abgerechnet. Nichts wird rückwirkend eingetragen. Vorher läuft `--pruefen`: im Rückblick
+muss er rund 50 % treffen, eine Variante mit Blick in die Zukunft 100 %, sonst schreibt der Lauf nichts.
+Kein echtes Geld, keine Broker-Anbindung.
+
 ## Märkte
 
 Der Lauf ruft `markets-build.yml` auf (Kurse, Finanz-News, optional KI-Sentiment mit

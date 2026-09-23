@@ -110,6 +110,31 @@ footer a{color:var(--muted)}
   <p><b>Was der Bot wirklich kann:</b> Er halbiert fast die schlimmsten Einbrüche — beim S&amp;P 500 −34 % statt −57 %, beim SMI −29 % statt −55 %. Dafür verdient er weniger. Das ist kein Geldautomat, sondern eine Sicherung: Wer nachts wegen Kursstürzen nicht schläft, zahlt dafür mit Rendite.</p>
 </div>
 
+<h2 id="uebungsdepot">Der Bot handelt jetzt selbst — mit Spielgeld</h2>
+<p>Ein Rückblick lässt sich schönrechnen, eine laufende Buchführung nicht. Darum trifft der Bot seit dem Start jeden Morgen pro Markt eine Entscheidung: investiert oder Cash. Abgerechnet wird erst mit dem nächsten Schlusskurs. Nichts wird rückwirkend eingetragen, jeder Markt startet mit CHF 10'000 Spielgeld, daneben ein Depot, das einfach hält.</p>
+<div id="depot" class="kasten"><p class="klein">Lädt das Übungsdepot …</p></div>
+<p class="klein">Jeden Morgen prüft der Bot zuerst seine eigene Buchführung: Im Rückblick muss er rund 50 % treffen, eine Variante, die den nächsten Kurs schon kennt, muss auf 100 % kommen. Stimmt das nicht, schreibt er an diesem Tag nichts. Code: <code>tools/trading/papier_depot.py</code>.</p>
+<script>
+(function(){
+  var box=document.getElementById('depot');if(!box)return;
+  function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function chf(n){return 'CHF '+Math.round(n).toLocaleString('de-CH')}
+  function pz(n){return n==null?'—':(n*100).toFixed(1)+' %'}
+  function dat(t){var d=new Date(t);return isNaN(d)?t:d.toLocaleDateString('de-CH')}
+  fetch('/data/papierdepot.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+    var m=d.maerkte||{},k=Object.keys(m);if(!k.length)throw 0;
+    var zeilen=k.map(function(s){var x=m[s],e=x.entscheid||{},st=x.statistik||{};
+      return '<tr><td>'+esc(x.name)+'</td><td>'+(e.position?'investiert':'Cash')+'</td><td>'+pz(st.treffer)+'</td><td>'+chf(x.konto)+'</td><td>'+chf(x.halten||0)+'</td><td>'+(st.tage||0)+'</td><td>'+esc(e.regel||'')+'</td></tr>'}).join('');
+    var g=d.gesamt||{},tage=g.tage||0,alt=Date.now()-new Date(d.stand)>4*864e5;
+    box.innerHTML='<p><b>Gestartet am '+esc(dat(d.start))+'</b> · letzte Buchung '+esc(dat(d.stand))+'</p>'
+      +'<div class="tab"><table><thead><tr><th>Markt</th><th>heute</th><th>richtig</th><th>Bot-Depot</th><th>einfach halten</th><th>Tage</th><th>gewählte Regel</th></tr></thead><tbody>'+zeilen
+      +'<tr><td><b>Gesamt</b></td><td></td><td><b>'+pz(g.treffer)+'</b></td><td><b>'+chf(g.depot_chf||0)+'</b></td><td><b>'+chf(g.halten_chf||0)+'</b></td><td><b>'+tage+'</b></td><td></td></tr></tbody></table></div>'
+      +'<p class="klein">'+(tage<250?'Noch zu früh für ein Urteil: nach '+tage+' abgerechneten Markttagen ist jede Trefferquote vor allem Zufall. Aussagekräftig wird es nach vielen Monaten.':'Nach '+tage+' abgerechneten Markttagen: Vergleiche Bot-Depot und „einfach halten".')
+      +(alt?' <b>Die tägliche Buchung ist seit mehreren Tagen ausgefallen.</b>':'')+' Spielgeld, keine Anlageberatung.</p>';
+  }).catch(function(){box.innerHTML='<p class="klein">Das Übungsdepot ist gerade nicht erreichbar.</p>'});
+})();
+</script>
+
 <h2>Lernpfad: von null bis zur eigenen, ehrlich getesteten Strategie</h2>
 <div class="stufe"><b class="n">1</b><div><b>Grundlagen: Was ist eine Aktie, ein Index, ein Fonds?</b><br>
 <a href="https://www.investor.gov/introduction-investing" target="_blank" rel="noopener">Investor.gov — Introduction to Investing</a> (US-Börsenaufsicht, englisch, gratis) und
