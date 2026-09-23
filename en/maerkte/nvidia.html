@@ -14,7 +14,6 @@
   <meta property="og:title" content="NVIDIA (NVDA) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="NVIDIA (NVDA): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,10 +325,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>NVIDIA <span class="hl">NVDA</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="nvidia" data-type="stock">204.87 USD</span>
-        <span class="chg up">+2.22 %</span>
+        <span class="px" id="livePrice" data-id="nvidia" data-type="stock">225.51 USD</span>
+        <span class="chg down">-1.47 %</span>
         <span class="tag-type">Stock</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bearish">Bearish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Stock is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -322,11 +338,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">235.74</text><text x="586" y="204" font-size="12" fill="#64748b">200.42</text><path d="M10.0,200 L10.0,90.5 L37.1,63.3 L64.3,10.0 L91.4,66.1 L118.6,82.2 L145.7,91.4 L172.9,76.0 L200.0,97.3 L227.1,119.8 L254.3,122.3 L281.4,134.5 L308.6,125.6 L335.7,142.3 L362.9,71.2 L390.0,79.5 L417.1,122.9 L444.3,101.9 L471.4,174.8 L498.6,155.8 L525.7,158.2 L552.9,200.0 L580.0,176.1 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,90.5 37.1,63.3 64.3,10.0 91.4,66.1 118.6,82.2 145.7,91.4 172.9,76.0 200.0,97.3 227.1,119.8 254.3,122.3 281.4,134.5 308.6,125.6 335.7,142.3 362.9,71.2 390.0,79.5 417.1,122.9 444.3,101.9 471.4,174.8 498.6,155.8 525.7,158.2 552.9,200.0 580.0,176.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="176.1" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="176.1" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">230.36</text><text x="586" y="204" font-size="12" fill="#64748b">208.48</text><path d="M10.0,200 L10.0,200.0 L37.1,160.3 L64.3,189.8 L91.4,30.7 L118.6,121.2 L145.7,93.2 L172.9,122.2 L200.0,61.7 L227.1,26.6 L254.3,10.0 L281.4,50.2 L308.6,68.1 L335.7,114.2 L362.9,114.8 L390.0,178.5 L417.1,168.0 L444.3,152.9 L471.4,105.7 L498.6,80.3 L525.7,35.9 L552.9,22.9 L580.0,52.1 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,200.0 37.1,160.3 64.3,189.8 91.4,30.7 118.6,121.2 145.7,93.2 172.9,122.2 200.0,61.7 227.1,26.6 254.3,10.0 281.4,50.2 308.6,68.1 335.7,114.2 362.9,114.8 390.0,178.5 417.1,168.0 444.3,152.9 471.4,105.7 498.6,80.3 525.7,35.9 552.9,22.9 580.0,52.1" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="52.1" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="52.1" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+2.22 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.31 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-7.21 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">235.74 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">200.42 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">154.04 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">236.54 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">140.85 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.47 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+5.43 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+8.17 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">230.36 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">208.48 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">85.80 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">236.54 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">164.27 USD</span></div></div>
     </div>
   </section>
 
@@ -335,11 +351,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">NVIDIA · NVDA</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Gemischte Signale, Konkurrenzdruck.</p>
-        <p class="crat">Trotz positiver Prognosen und günstiger Bewertung gibt es Berichte über einen vierten Wochenrückgang und Konkurrenz.</p>
+        <div class="chead"><span class="cname">NVIDIA · NVDA</span><span class="badge bearish">Bearish</span></div>
+        <p class="csignal">Aktienrückgang, Bewertungsbedenken, Konkurrenz.</p>
+        <p class="crat">Nvidias Aktie fällt aufgrund von Bewertungsbedenken und Konkurrenz durch Google AI-Chips.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Nvidia wird als &#x27;Value Play&#x27; gesehen und es gibt hohe Kursziele von Analysten.</li><li>Risiko: Der Aktienkurs befindet sich im vierten Wochenrückgang, und Cramer sieht Intel als wichtiger an.</li><li>Einordnung: Die Nachrichtenlage ist widersprüchlich, mit positiven Langfristprognosen und kurzfristigem Abwärtsdruck.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Ein Top-Chip-Analyst sieht großes Potenzial für Nvidia, was langfristig positiv sein könnte.</li><li>Risiko: Die Bewertung der Aktie blinkt ein Warnsignal, und es gibt Konkurrenz durch Google AI-Chips.</li><li>Einordnung: Trotz langfristiger positiver Einschätzungen überwiegen kurzfristig die Bedenken bezüglich Bewertung und Wettbewerb.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on NVDA</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOZ0sxQXFITktEdFBTMFdPbjlrSnBQQm80UGJzRC0zTEJneHUyUXllNkd2aTZPWWx0ZU8wSk1EelFjOWE0ZDRkX3habFdmNk5welRzXzF0Tjd0dGtiUXB2emhLc0ZSUW02d0tiNVJUTEd5RkJyQndjVnpGc0xwNk44SA?oc=5" target="_blank" rel="noopener">Nvidia Stock Trades Cheaper Than the S&amp;P 500, and Looks Even More Like a Value Play</a><div class="meta"><span>Barron&#x27;s</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQSU10eHl4NUZKRy1GbmJWQVRxQ2FNaEtGazQyZnd4dzQ1T1JfY3FsUDJ1V0dCeFd5VnlOX3IxQk96cThEZklfZUJFRFY4ZWd1MWFJTmUzTTI5REg2ZlhqOW5rakFIVjVLRmZlWFRfTDdoNUl2d094S0t2ZmMyclRqR04wWThMODg5LW0tWUlYUlpfZXM?oc=5" target="_blank" rel="noopener">Prediction: Nvidia Set to Hit $250 on This Date</a><div class="meta"><span>24/7 Wall St.</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxOYndCTnZFVHU4TDRBaDh6NkU1UlI4aS1NLUVhYXpZR2F5UmJRSnQ4d1pTNjNHY3paUWRUNDJ5cnVvaTlaTlUxYmlBa0JGM2JpaDMtbXpoN2d0QlIwOVU2QkFNWDhSeXZoOFBLMGxvUnM1eXJjSmgzYlhieWFBMXI4MTlmM2FRaEphTm1MUjhrTUVwaldLdkhyTHREZ01jREFNQ1ZCbHF2ZmlqbmNWU1ZuNlItUUJteVFCa1dUZ0hQbGFRRmtWQmhoaHpDOWFLczdlaDZ6Y09xaXBHeTlKelZtaTFLZTFCZzNBLWFIT3VOZk5sWkc2UXNyYnNR?oc=5" target="_blank" rel="noopener">Cramer Calls Intel the &quot;Number One Name&quot; and &quot;More Important Than NVIDIA.&quot; The Stock Soars Today After a Massive Double Upgrade.</a><div class="meta"><span>24/7 Wall St.</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQSVFPVVhTRGtfVFJmTHluNWEyYVdWN2FJdjYyUU9jN1cyRHVKM3lNeFF2cHZCLUcza0RfZnFNWk0zZGV5ZzlyVzZxd1lmdVFaU0MxSnRLSzMzSzR6WVNlWThnMTNfdXJtOEY3Q2drNk1hU2xFVWQyNWk2WF9IUXZhT01iX0Q4ZWlYMUhDM1dWWXJIVDZSUi1nSA?oc=5" target="_blank" rel="noopener">NVDA Stock Heads For Fourth Week In Red: Report Says Nvidia Has Begun Vera Chip Pitches To Chinese Customers</a><div class="meta"><span>Yahoo Finance</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPVE82bkNlZlpQY1V0cGdwVVVuRVZ4UTVQUGs2ODdOeUx5R1VkNHB3N0lDS3hOWUpaM3pVMm4tQVk4Z2RfSzhtR2ZYR1pBZ3UzMl9HcW1CUmRva0IzeWV5eDhIOTFRUEhLRDBGNlFSLTBTZ2dPVXpCWXhRMldxYS1vcElIemx0ZV9xcXROUXRpc3E4UUpyVFdLQg?oc=5" target="_blank" rel="noopener">Got $1,500? 3 No-Brainer Artificial Intelligence (AI) Semiconductor Stocks to Buy Before They Soar Once Again</a><div class="meta"><span>The Motley Fool</span><span>· 11 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOMmZza3lFQmV4Y3NTNVlkOThiYTlkUWFGY1lPUWF1SEpPRkRNXy1GRnpNYWlDa1JqdEJRejYyVF9mSlQ2eldpbGR0dFRRM1dWVS1oY1RmMGNqRy1aVExud1duUXhTZHdZTW9SU2J6aVBrMTVUVmNubDlQc3F6TjNHem4zWTM1dlp6dWFtbzd6d3ZOOE43NDNXYkpGMzMwR1NqQ2VfT3FPVGMtbEJHdzFMNQ?oc=5" target="_blank" rel="noopener">Nvidia’s Stock Is Flashing a Warning Sign as Valuation Falls</a><div class="meta"><span>Bloomberg</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxONFNKSXh1cWdKdlk1LVQ2WjZ5UUZrN0Npak92YkZRd2xfTlhZdTc3UkFNTXM1S05SMVJzdDBidmlqLTlCXy10TDZ3OUg2ckE4ZHhDT1BlVXYtWXBkaFlmNndrY2FRaWNlX0VKLWwxZE5Za0VEN19vQkROUVV5eGxzX3pB?oc=5" target="_blank" rel="noopener">Nvidia Stock Falls. It Has a Google AI Chip Conundrum.</a><div class="meta"><span>Barron&#x27;s</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOTzZGT0dVWFA0NlFKSzlEN1p5eU56N3hTSlZ2OXI0LTdYUGhiUnNMSnZsZlQ4aXppMHdJU0JtOXFqYkl3ZnRtWUExMDExZHBxMFdEVWdyRUwtWDVJeWdGVGxWVjRqVFluZnZ3b1dPVlBrLVVDOXBsYjVXbWR1ZmVMOWQ4bFRwNzlmNjVLS2tpX0plMlJrelJ3?oc=5" target="_blank" rel="noopener">How the Trump-Xi Meeting Could Move Nvidia, Boeing and Your 401(k)</a><div class="meta"><span>Yahoo Finance</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQbkRTODEyMWV2N1ZEVVFFVXJva2hkQ1h0NTJaSXJKTTZqZXJXV29QalFHNmtReWpQU3V4N01ramJoSFQ4QkRNZXlIMUkwYWJpV2RwV01KQXYxOXFwUFRPVzBKUThDYUttMTQ1bnBxWnpQN3NWWkszTmVBSTZaclM1Tm5raEp6SENQMVRVWE1qU2hwbzlkTTAxekhyWV9EWW1sT1hfR1U4ZmFYY1BacDU1YTlsdDE5YTZLeXNVYkJZWllULXZTaFE?oc=5" target="_blank" rel="noopener">A top chip stock analyst sees big things for Nvidia, Broadcom. How his case aligns with ours</a><div class="meta"><span>CNBC</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQejJkX1BranFGZEozZmNZODhQX1VyV0FEVDhqcGRlMkEwdmVpLXZoMFRjemhJUVdfSGtFWHdFWldETi1WMnRKWWZkX0ZrcDJTNlFtMVppVWJ6Q3NqVkdCXzBjanRxZ1RoaHJuLW8yYjViZXpGb01IblVTNk9ydVJwTGg4OHI5ZXB3LXZteGlvaGdQVVpIYkkxR2lHalh6Z3Y5SmhLVlVR?oc=5" target="_blank" rel="noopener">Dear Nvidia Stock Fans, Mark Your Calendars for September 24</a><div class="meta"><span>Barchart.com</span><span>· 23 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

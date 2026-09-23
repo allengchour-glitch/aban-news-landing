@@ -14,7 +14,6 @@
   <meta property="og:title" content="AMD (AMD) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="AMD (AMD): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,8 +325,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>AMD <span class="hl">AMD</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="amd" data-type="stock">488.45 USD</span>
-        <span class="chg up">+7.97 %</span>
+        <span class="px" id="livePrice" data-id="amd" data-type="stock">614.61 USD</span>
+        <span class="chg down">-1.47 %</span>
         <span class="tag-type">Stock</span>
         <span class="badge bullish">Bullish</span>
       </div>
@@ -322,11 +338,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">542.52</text><text x="586" y="204" font-size="12" fill="#64748b">414.05</text><path d="M10.0,200 L10.0,149.4 L37.1,153.5 L64.3,147.3 L91.4,185.1 L118.6,189.7 L145.7,200.0 L172.9,150.4 L200.0,147.4 L227.1,120.9 L254.3,67.1 L281.4,79.5 L308.6,46.1 L335.7,49.1 L362.9,57.9 L390.0,41.0 L417.1,10.0 L444.3,38.6 L471.4,122.6 L498.6,87.2 L525.7,109.1 L552.9,143.3 L580.0,90.0 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,149.4 37.1,153.5 64.3,147.3 91.4,185.1 118.6,189.7 145.7,200.0 172.9,150.4 200.0,147.4 227.1,120.9 254.3,67.1 281.4,79.5 308.6,46.1 335.7,49.1 362.9,57.9 390.0,41.0 417.1,10.0 444.3,38.6 471.4,122.6 498.6,87.2 525.7,109.1 552.9,143.3 580.0,90.0" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="90.0" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="90.0" r="3.4" fill="#0f9d6b"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">623.77</text><text x="586" y="204" font-size="12" fill="#64748b">456.16</text><path d="M10.0,200 L10.0,199.3 L37.1,173.9 L64.3,171.9 L91.4,176.8 L118.6,189.3 L145.7,183.5 L172.9,196.1 L200.0,199.0 L227.1,200.0 L254.3,175.7 L281.4,143.8 L308.6,126.4 L335.7,146.2 L362.9,132.0 L390.0,157.8 L417.1,145.5 L444.3,136.1 L471.4,99.2 L498.6,82.5 L525.7,19.4 L552.9,10.0 L580.0,20.4 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,199.3 37.1,173.9 64.3,171.9 91.4,176.8 118.6,189.3 145.7,183.5 172.9,196.1 200.0,199.0 227.1,200.0 254.3,175.7 281.4,143.8 308.6,126.4 335.7,146.2 362.9,132.0 390.0,157.8 417.1,145.5 444.3,136.1 471.4,99.2 498.6,82.5 525.7,19.4 552.9,10.0 580.0,20.4" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="20.4" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="20.4" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+7.97 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-6.64 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+8.96 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">542.52 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">414.05 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">29.11 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">546.44 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">115.06 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.47 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+19.92 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+34.56 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">623.77 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">456.16 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">16.16 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">624.69 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">154.78 USD</span></div></div>
     </div>
   </section>
 
@@ -336,10 +352,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">AMD · AMD</span><span class="badge bullish">Bullish</span></div>
-        <p class="csignal">Starker Anstieg, Analysten-Upgrade.</p>
-        <p class="crat">Der Aktienkurs stieg stark nach einer Analysten-Hochstufung und positiven Nachrichten.</p>
+        <p class="csignal">Aktienanstieg, AI-Signal, Marktwert-Meilenstein.</p>
+        <p class="crat">AMD-Aktien steigen schnell und erreichen einen Marktwert von 1 Billion US-Dollar, angetrieben durch AI-Signale und die Entwicklung von Metas Muse AI-Agenten.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: AMD-Aktien steigen um 8% nach einer Analysten-Hochstufung und positiven Nachrichten.</li><li>Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten, aber allgemeine Marktvolatilität bleibt bestehen.</li><li>Einordnung: Die Nachrichtenlage ist sehr positiv, mit einem starken Kursanstieg und positiven Analystenbewertungen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: AMD-Aktien steigen schnell, angetrieben durch starke AI-Signale und die Entwicklung von Metas Muse AI-Agenten.</li><li>Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten erwähnt.</li><li>Einordnung: Die Nachrichtenlage ist sehr positiv, mit starkem Wachstum und positiven Entwicklungen im AI-Bereich.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on AMD</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNdHRjN2ZqTldGUmMtaHI2R2FwcUJWSTNJNVVhS1ZPNnAzdC1JYmtuQWR5SFNfRG0xZXY2RmYyYXNEb19NZHpSVVVZVmR3Z3JidGlKaUZwc0RjNzhDbG9oTDRjcWI0S0lhbGVpbnFrdmJTOXViTlNndDMxalhWZS1BVVJaQmNxWm9nUnotSTFwQWV2WTlaT2tiTzJPdw?oc=5" target="_blank" rel="noopener">Why AMD Stock Crushed it on Thursday</a><div class="meta"><span>Yahoo Finance</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQR1ZUN2I2TzkzTTNWcGR5c0g3ZGE3UjlzUlZNQTZxQ1l5cGxBUnJ1eFF5UEpfZThMMFBseXk0RDhSVVF1M3dZclhsYkJnSjlDdnNDeGMydmVlTUdIbU9RUnZOZ0JVSlQwMVFiUF9vSFJFTF9tVkxEUmhXT0FQV3N0VzloM2RKMXY1RndVRFA0YjBycTlRRVE?oc=5" target="_blank" rel="noopener">Why Oracle earnings are significant for Intel, AMD stock</a><div class="meta"><span>Invezz</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPRW4xV3RtUl9IbFJoWTBiNmFIajI5QUlVZnI3b2RZSGxTVUtkMmR3cG81VUFBLVYxN3ZBaHBadm5MYnB1cTE5dVlWbS1JR1dDWl82NWVyTkVIbmd3U1FoQ1JOQkJabGRKdXBSQ3RzUWNsS0hsamNjRHg4MHNnMkF2UzdZTTI5WWdGY3ZEYUpBODdDMWR2Y0ZUMFlUR0NsVURCUTNUS2FzZS1jU3p2eWRGOXNnYnptbDktX3c?oc=5" target="_blank" rel="noopener">AMD and Qualcomm Shares Are Soaring, What You Need To Know</a><div class="meta"><span>TradingView</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQOW53MWpJYm9FUlREYW81bjRhT2VIZGxpWVM4Z012a2VvXzlXY2h2Y0ZNM1czZUhnZDZueXRHRTg2YkNWYWNLVWFfMXNoRnZsdHR5SU5aTXRJUnFIZnFvdF9WaXk3eGpJenVyRlYtb0ZUZGExb0RDVGtyTlpLMzdKMEQ4NjhxUHVyMWVzcDhGNGxZN2dQRTRaVV9tNVQ1Y04xelBMel85NGdDX2hfajZFNGVFdlFTYW1HaV9Gdmh1V05YVklQV19vQQ?oc=5" target="_blank" rel="noopener">Advanced Micro Devices (NASDAQ:AMD) Stock Price Up 8% Following Analyst Upgrade</a><div class="meta"><span>MarketBeat</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNU2NWZWFjX1gybFp0U1FBaGplRFRMQWJBa2h3Qlo2RDItUlpIU3h0ME1UYVBDRXBKbk9uUE03QUFyUlhRa21DRjQ3X0c5TldrTVg1VHNramVwTWEzeVU4M1dnZDFfcUlvdTdzU0d0dkhTTHgtcnlYUjdVV2JSbmRvZHh6OTQ5a3FGTUlkUWhuSVRSMU96ZkxSSUdIdjh3X0E?oc=5" target="_blank" rel="noopener">Super Micro, AMD, Intel, Oracle, and More Stocks That Explain Today&#x27;s Market -- Barrons.com</a><div class="meta"><span>富途牛牛</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPR3NzUzdTcDdRTVBoSkgzTURqYXZsUklITlpsOVdZVm5sLWViOE9ycEtCS2w1TU03Ql82aWhtLXVWc0trY0RNUTNTUVJLNXFOanFsZ1RJWVFlUjBoRGlYMGoxcXdMZ2p1LVZpWktGRUlnN0ZESF9CYTBiTkR4d2NySGhWMmFsaVN3SDNkb1FiNE1yUQ?oc=5" target="_blank" rel="noopener">AMD Stock Just Sent a Huge AI Signal</a><div class="meta"><span>Yahoo Finance</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE5SSTIydHlWS0FFdS1GRHczbHByd0d5aXU0OEF5X1lkTUdVTjlldTlVdEYwZHNxR0Z3M0RvWnU2TXBKV2R3NDViTFoxZDlVV3RfQ0NaZVQ4VXhFdmdpVXh6eER2YjlhOTRrRVktQ3h5Ykd2THBmcmZiTVI0YTNWdw?oc=5" target="_blank" rel="noopener">Meta’s Muse AI Agent Triggers Intel, Chip Stock Rally. AMD Hits $1T Market Cap.</a><div class="meta"><span>Barron&#x27;s</span><span>· 21 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPaDdUdVFHZ0xMTnpWY3hkelN5QnJsMi1XYVdHRWQ1ZGtMeXhWR1lHSHFrMUNnalJpQ0RrNEhhYTNJX2FqVDVPOFF3WjBTV3VyS3kwUkFzR0kwSGs5M2tVTFNlN1N5U1NsYU5RREd5cHRkSXpDUGZVUDdzbXZhQkJWejFpNDQ3UGI5OFV4V0pSRzgtUGds?oc=5" target="_blank" rel="noopener">Why AMD Stock Is Rising Fast Today</a><div class="meta"><span>Yahoo Finance</span><span>· 21 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxOdWRvNmdLWFJLU3F5TDJlaTBGWXhNLWp3ZHBLX2Nqb2RHUlUtSUMzempFcTRrZHF2b1dpYUtJTVg4MVRmUHkzY0E3VHRwX243dFRBenRkM282cEM1cFhVOWFBTGxUcUlVS3djTXpxWXN0MTFKSkctem5XMEZHRzVHenJNX0VOWUhPRDBOMWg2WnNhUzh2bkFleWluT1B3TTFQOUZGaFk1YlVzU0pLQ0V2dDhDWWxxb1U?oc=5" target="_blank" rel="noopener">Advanced Micro Devices Stock: 6 Straight Green Days, Up 26%</a><div class="meta"><span>Trefis</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxOX0NucVFUbVpOVnh2SVh6ZW53eFFDQUpuUjF2WU1JWTFxcWk4Ymp3VWFVcUJ6LUxEMTkta3k3QmdzeVU5bHNTQ3VsZUlxTDR6TUt5bWZpbkJVTHlzMVFsNjNOSkxpc2FENUZuNDFRVVYyVDBfRTVUNjJ1S3FRbExrYmo4TU5NY0VqRjRRTXZrRWwzWlQ3aFpxMmFLS0pnVHJLOXQwcEt2MGkzaklydTJFQUYxT005Xy1uOTRhdnJOWVkyX3ZGU1Jodjh0UFhkU0tSUmgtR1YyTnBqcHo4c21r0gHkAUFVX3lxTE1Ud01aeUZvWUFKcnllZmNKcHpLcktKVXBVSTE3blB6RTBBWE9mRDdRaGdCWUN4bnhZNzhHWm85TFRCYlJTVjA2Z1lfMnhHNE5Lbk9fdEp0aXh3ZS1KMmhPbUJhd0VwZjczcFJHRkhJVzBlbHlQQ3FzNDNybzJFZnVyaWo2TFN0YmtBOTR5QTNlWDBIaVRSTmVic2lueDFpZkU1SVBTaXlQVkhPMW0yQWg5LW9tYWwxREZpaWNzYlZKUlUxVklpb2VreEN3YnhPMHhWMGMyd0ZkUHloWW9Zdjc0NEd6cg?oc=5" target="_blank" rel="noopener">AMD (AMD) Stock Looks Fairly Valued Despite $1 Trillion Milestone</a><div class="meta"><span>simplywall.st</span><span>· 23 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

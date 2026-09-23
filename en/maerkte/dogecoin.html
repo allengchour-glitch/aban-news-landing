@@ -14,7 +14,6 @@
   <meta property="og:title" content="Dogecoin (DOGE) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="Dogecoin (DOGE): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,8 +325,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Dogecoin <span class="hl">DOGE</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0868 USD</span>
-        <span class="chg up">+2.07 %</span>
+        <span class="px" id="livePrice" data-id="dogecoin" data-type="crypto">0.0922 USD</span>
+        <span class="chg down">-7.90 %</span>
         <span class="tag-type">Crypto</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -323,10 +339,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><p class="muted">No chart available.</p></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+2.07 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+2.56 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-22.74 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">765.87 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">13.41 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.7316 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-7.90 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+15.65 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+3.63 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">1.90 Mrd</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">14.39 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.7316 USD</span></div></div>
     </div>
   </section>
 
@@ -336,10 +352,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Dogecoin · DOGE</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Whale-Käufe, flacher Kurs.</p>
-        <p class="crat">Whales kaufen DOGE, aber der Kurs ist im Allgemeinen flach, während andere Kryptos schwanken.</p>
+        <p class="csignal">Preisanstieg, Markterholung, dünne Nachrichtenlage.</p>
+        <p class="crat">Dogecoin zeigt eine Erholung und einen Preisanstieg, aber die Nachrichtenlage ist dünn und es gibt keine klaren fundamentalen Treiber.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Dogecoin-Whales kaufen 240 Millionen DOGE in einer Woche, was auf ein mögliches Bottom hindeutet.</li><li>Risiko: Der Kurs ist flach, während andere Kryptowährungen schwanken, was auf mangelnde Dynamik hindeutet.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit Anzeichen von Akkumulation, aber ohne klare Aufwärtstrends.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Dogecoin führt eine Markterholung an und verzeichnet einen Preisanstieg.</li><li>Risiko: Die Nachrichtenlage ist dünn, und es gibt keine klaren fundamentalen Treiber für den Anstieg.</li><li>Einordnung: Die Nachrichtenlage ist neutral, da der Preisanstieg nicht durch spezifische fundamentale Nachrichten untermauert wird.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on DOGE</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNZ2VaUS1UejIyT0xPZ2lnZ0R3RVRUeDJrbFM0RWYtNW5NNjRyS1pVcjl2VVRQSTRoR3dyWndYcUhVYjhrNGFkTm5uY1JaS2hDUWZKejRZUXYzR3FvM3ZLNU1TZ3lwX2FnTUJldGoyUS1vTWdYNTVueFV6MnlKRHlIY01UYmNUeGJPVHBxdFlETQ?oc=5" target="_blank" rel="noopener">Is Dogecoin the Smartest Crypto Buy Under $1?</a><div class="meta"><span>The Motley Fool</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOeEU1UmU2QVJkZGdxYk55N0tYa2pOTkdfN2syLUdjTm5KZnV5TkVuMUV3MHZ2djMxc25aekhNQmVWWEJOS1NXc2RkRDFaWnVIeVVQYTRDZno3ampVaEhydHFtTFk2cldsWmJGYk9vWEdaeHBrVkVuMWJ6N3B3Qm9HNFF0d2hycGZnTUhQc1N4MkFkckttT2RLYjBSWWhQUVl3dDlvZTZmZUpxRVRTems4QzJR?oc=5" target="_blank" rel="noopener">Live updates: Bitcoin traders eye rally to $75,000, Japan set to hike rate to 31-year high</a><div class="meta"><span>CoinDesk</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNRFFYM205amdWNlZPRlI2WVhLQW10ZW01Wk9XbVVnbkVzZ21pdU1kUGZ2MUVETWM3N1lsYU95Uk0xa0JxR21jZ1ctZXVnVXJzd2t6NkJIV19Wa2g2T1h2ZHQ4Wmhfa2Rtc2U3N0VWSk9pb2FKOEVBbkM4YWllREFOWGpDdk9FT3RxemdiZTF3SlVtWXotNlNTUXVHUXhtU05CckE?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP Slide, Dogecoin Flat As US Launches &#x27;Proportional&#x27; Strikes Against Iran: Analyst Sees BTC&#x27;s Strong Rebound To $74,000 Soon</a><div class="meta"><span>Yahoo Finance</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZm0xT2ROWnZpMmR5S3ZDRlNmeXlDV2RpMXc5RFYyTktLUWV2N2ZWWlAwbHpBaEcxcE1ydUdMYkVjNUlsZ0swQnZkZ0ZEbjBFS29aNFYzejFreVJGVnlYUlBGS0N0WHBSQ1dHbmNzUkQ1T3BLTzJla0N0Uk5CTlRXMmN1cmVkVzlEamhfQWJhN25BbE5SYWNBME90VERWYVYxVnFVSlphcHM2YWhFQWpIZlhQMUZJcjM1MWRn?oc=5" target="_blank" rel="noopener">Here’s The Dogecoin Perfect Bottom And The Top Target; Analyst</a><div class="meta"><span>TradingView</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPakdrXzBBYm5ZOEdBY1BKWGcwcHp1cm80Q3ZlcWxHZC1FNHBRMXFpdXNFZU1wUWhscnkybFhtVGxEcG9pU2pfc0Fyd1Vfc3FqMDVYV2pUX0UxSS11NkVFWU9oNFpCaGJwR083S3FBbTRfWGMxT0NRNUN5Vm5zcmc1Zjd0bVRBdnV4eks3U2dMYVI2V2Vq0gGaAUFVX3lxTFBNOTNsWDF3SGloS0pMdWhEZWc5WjBiRWFtdU1tV2tVem9QeUVVTmVPYmVDcTB5STRiaE91ekhBMXl5M0MzQUpZb1QyTjlDUHZtX3dFWTNtNmxmMnJmU2NjampwS0NPTnpNa2Z0VENkSS0zUThYMG9BVUxyWFJMSjk5ZnVBcUs0bVhlcHdCaHlrdFh2MF9tc2dyZWc?oc=5" target="_blank" rel="noopener">Dogecoin whales buy 240mln DOGE in a week – Has bottom finally formed?</a><div class="meta"><span>AMBCrypto</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNOUVjdm9FVlFDSmNwR1JNSXVVZkM3cnhRczFXREV2YTdnSWhXbzhyY2czSHFnYTg4WEtKWnJ2WEJrREhfTjBrUDdZWmpORzIzXzVjT1VSek9SMkQwSnVWVG0wRGVBQ2NzY25CS2ROU2ZQeC1vVlFUNmlTNTB4d2NMZDcwU24wUFR6QzgxZ0tMUW1QV3ZnZ0lwZV8wekxxR1RkWUkwYUZtOUdPSk9MLUd1eEtKQU1DWHM2?oc=5" target="_blank" rel="noopener">Dogecoin leads market rebound with 15% pump, bitcoin steady above $85,000</a><div class="meta"><span>CoinDesk</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxQT0F4eGdJeVB4RFNHczVkWnFQdnN4MU1ndl9Ta212Wm9Fcnd1R2VDYTcwYWl0Si1DTTk5QUtzRS04YXdybXlEQVdvNmtvamdJd1dUSTFCUUtsbUVsMmExWGo3blh4WWZmQzJ5bTlzSmxXb054Rkk2RzZFZS1VeEJwM2htc2JBY01qcUN4aXExZk0tMFdXeUVBdFpvb0pDZXVDTFRtY1djU0tvMllMMlBLN3JJV0xGRVpZQzE3S3NMRUJ3cm95NGNqbHNkVFVxWThqenF2YXk1bXp0T1U4NGE3clZyeU9jQl9wS1I0ZDFMM0xxVEgxSzJUM216SUU4U3lEVjJHZHBQVm8?oc=5" target="_blank" rel="noopener">Bitcoin, Ethereum, XRP, Dogecoin Gain as Trump Touts &#x27;Good Meeting&#x27; With Iran: Analyst Says BTC &#x27;Sitting&#x27; Above Strong Support</a><div class="meta"><span>TradingView</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOZkJwZU1tREd0c2hQclBNT2xES1U3WGxJYzZtc0d0OEF6VkJVLVdzcVhIWHF6Q2JtNjRrN0Z3dzZ0b2hPTkFSSlJKWFI2bkVuWDlpZmxyLUNLMW1kQm53ZUZXZjdIeDJ6THRNY2k2emlhY0VteW5HY0FnTGttYnpDUlh3eXFFQ2FzWWhYYm5mOXBZdWtmUkFBeGpyZXRibXNBaDNhcHA3NXJsX0tzWjRtOUJwYzAxTEFTVEZWZzBkalY3YnkwWmNoRkJfd0dGRU5BQVE?oc=5" target="_blank" rel="noopener">Not Dogecoin or Shiba Inu: Is This Meme Coin&#x27;s 27% Rally Just Getting Started?</a><div class="meta"><span>Benzinga</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOblVaRlROb2FtcWVvNzFsbDdJTGVST0R4SFFsMDA0bmxZSzJ0S1p4Wmx1TExpNEx1VU53aEFNeGRkNlIyMG5hWXdlbEJ5dmhUemxUZkowUDNXYmJLMnJZVW5FUGNjRDJJZUl6VWprdzBPQWowWUtEaU5sVk1jRjBpMDE4eFd5QTJ5dkFvRmk0V2pWNXIycGtrU3lBNHd2TDRPV0E?oc=5" target="_blank" rel="noopener">Dogecoin Jumps to Highest Price in Months: Here&#x27;s What&#x27;s Going On</a><div class="meta"><span>Yahoo Finance</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOZzQ4dWhtcnZVYld6YkhBczhQV2xyeHFyYWFyVWpnVExzOWNXM25qaVJHdV83RExfREU3QW9HMTQtTGpDbjJzVTFZTHJPaE5zbDBZNmtKUlRCY2V0eDJIUWk2aGlETmEwRWFLOERWOE1Id2UwSVRwQXNZTnNhYWVYVFh3YUYyRkZvVmZaU0VGbmc5aU1MNkYtb3U2THpjbWRDamxBWFQzS3JKYUJw0gGyAUFVX3lxTE1ta2xRR1dJTklzY1YyNmViNXAycHp5VmVyUkE4cXJna19qMHpLdTAyeDVJbzZsVjNsbEY2eXVIVHdWdFhPRmNEcFJvXzVIaGNoRUZvcjhNZkVqaU1TX3dUeDFFR3lYeHkzM1VqQV84VWwtUUU3czh5dTVURVB5cDA2WElKbTFFbEFNaGRTVGxiZlZ2SmtSSU5jc1FpNGtpelE1b3N1MmFxcUdGekRwdjFfcEE?oc=5" target="_blank" rel="noopener">Altcoin Breakout Watch: Dogecoin, Cardano, XRP Among Tokens Confirming Trend Shifts</a><div class="meta"><span>Coinpedia</span><span>· 21 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

@@ -14,7 +14,6 @@
   <meta property="og:title" content="Apple (AAPL) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="Apple (AAPL): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,10 +325,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Apple <span class="hl">AAPL</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="apple" data-type="stock">295.63 USD</span>
-        <span class="chg up">+1.39 %</span>
+        <span class="px" id="livePrice" data-id="apple" data-type="stock">337.02 USD</span>
+        <span class="chg down">-0.80 %</span>
         <span class="tag-type">Stock</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Stock is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -322,11 +338,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">315.20</text><text x="586" y="204" font-size="12" fill="#64748b">290.55</text><path d="M10.0,200 L10.0,167.2 L37.1,135.9 L64.3,141.0 L91.4,125.4 L118.6,143.8 L145.7,135.1 L172.9,109.8 L200.0,88.7 L227.1,59.2 L254.3,63.0 L281.4,43.5 L308.6,30.7 L335.7,34.2 L362.9,78.5 L390.0,10.0 L417.1,48.1 L444.3,40.6 L471.4,70.6 L498.6,115.3 L525.7,200.0 L552.9,192.1 L580.0,160.8 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,167.2 37.1,135.9 64.3,141.0 91.4,125.4 118.6,143.8 145.7,135.1 172.9,109.8 200.0,88.7 227.1,59.2 254.3,63.0 281.4,43.5 308.6,30.7 335.7,34.2 362.9,78.5 390.0,10.0 417.1,48.1 444.3,40.6 471.4,70.6 498.6,115.3 525.7,200.0 552.9,192.1 580.0,160.8" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="160.8" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="160.8" r="3.4" fill="#0f9d6b"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">339.75</text><text x="586" y="204" font-size="12" fill="#64748b">309.90</text><path d="M10.0,200 L10.0,197.2 L37.1,200.0 L64.3,177.4 L91.4,170.2 L118.6,137.6 L145.7,155.8 L172.9,103.1 L200.0,104.1 L227.1,83.5 L254.3,135.9 L281.4,159.8 L308.6,165.4 L335.7,93.9 L362.9,57.6 L390.0,52.5 L417.1,63.5 L444.3,56.7 L471.4,27.5 L498.6,33.0 L525.7,14.9 L552.9,10.0 L580.0,27.4 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,197.2 37.1,200.0 64.3,177.4 91.4,170.2 118.6,137.6 145.7,155.8 172.9,103.1 200.0,104.1 227.1,83.5 254.3,135.9 281.4,159.8 308.6,165.4 335.7,93.9 362.9,57.6 390.0,52.5 417.1,63.5 444.3,56.7 471.4,27.5 498.6,33.0 525.7,14.9 552.9,10.0 580.0,27.4" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="27.4" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="27.4" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.39 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-5.01 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+0.28 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">315.20 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">290.55 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">42.46 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">317.40 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">195.07 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.80 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+1.39 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+8.60 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">339.75 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">309.90 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">31.02 Mio</span></div><div class="kpi"><span class="kl">52w high</span><span class="kv">345.34 USD</span></div><div class="kpi"><span class="kl">52w low</span><span class="kv">243.42 USD</span></div></div>
     </div>
   </section>
 
@@ -335,11 +351,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Apple · AAPL</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Kursrückgang nach WWDC, Analysten optimistisch.</p>
-        <p class="crat">Nach der WWDC-Präsentation gab es einen Kursrückgang, obwohl Analysten ihre Ziele erhöhten.</p>
+        <div class="chead"><span class="cname">Apple · AAPL</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Rekord-Marktkapitalisierung, nahe Rekordhochs.</p>
+        <p class="crat">Apple erreicht eine Marktkapitalisierung von 5 Billionen US-Dollar und handelt nahe Rekordhochs, was auf anhaltendes Wachstum hindeutet.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Analysten erhöhen nach der WWDC ihre Kursziele, was auf langfristiges Vertrauen hindeutet.</li><li>Risiko: Der Aktienkurs fiel nach der Siri AI-Enthüllung, und Optionsaktivitäten deuten auf Vorsicht hin.</li><li>Einordnung: Kurzfristige Enttäuschung über die AI-Präsentation steht positiven Analystenprognosen gegenüber.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Apple erreicht eine Marktkapitalisierung von 5 Billionen US-Dollar und handelt nahe Rekordhochs.</li><li>Risiko: Die Frage, ob die Aktie weiter steigen kann, bleibt offen, trotz der aktuellen Stärke.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend positiv, mit starken Fundamentaldaten und Marktleistung.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on AAPL</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQY1JfWVM1eWllX2lZWjN3TzBwWWpLZHFZd1ROdjljZzNKWWh6ZHd2N2hmWjVENkZDWG1WUFVHNm1odTZmYllFcFo0UFpYSGdFeDFtOC1LUlhpVTByRXMwSkpabllvRUZ3dU9NdUFwVXZSVzU2Z29nV0x1SWFlZUFhVFJESGw5RC1kclVF?oc=5" target="_blank" rel="noopener">Sideways Action In Apple Can Still Be Profitable With An Iron Condor</a><div class="meta"><span>Investor&#x27;s Business Daily</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE1mVkZFeFNmb19QUDBiblhSbFZhMzN4V1U1REV2ZV92c3dkQ19VX1lXaXJkTmtGN3h5N0gxNXdwSEpqemhnM2ZmRURlbVZtOUVwQ0JydTVfak51MWhzLTVJYVZYd3I5RjI2ZGdFYjVEXzgzbHPSAXhBVV95cUxNVmctVWQzdjBCNGZqUGFKM0tWMHVWT1dMTmNzZDFfY1o0cWdnWGhsMjZiNVFLb21OMFhOSWc2Wi1Ra2JRYnVzMXNGRDFHVjZ3SDV0OVhsNHpDdXFFUUtaVGpTOE9wdGUyS1ZxcHlqemhyNzhUTU8xX3M?oc=5" target="_blank" rel="noopener">Apple shares slide after big Siri AI reveal</a><div class="meta"><span>CNBC</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOUHZqNE9Kc1hYaC0yeDhSdGVkZkNMNF9NTXlvaERGR05QVUlUeWxNWXgzODhlbnREUnBpY2h1dnJNT1lTN1pfa2Q3dHZPOXhyMFdMdm1ZSU5xTVN3QlczMFNEaHFxd3drZ0tZQXpmRENjaFJ6aldpTlFUaXRPMmxhaHBQT2VEa01raFYw?oc=5" target="_blank" rel="noopener">Morgan Stanley revamps Apple stock target after key event</a><div class="meta"><span>Yahoo Finance Australia</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9HLTBvVGJtVkdsQUtvWGstMk9ld1Z4cE81dlNLa0d2U3UyY19hQUY0cmpwR3RrMFFGVTg1SC1UVjFhRVVfckQ4bkVRUmkteVBTVTBYOVphbGFabHdIQUJWNTBuLUR5MUFZY3VWQ1FXSnN2NFp4MVhGM3NB?oc=5" target="_blank" rel="noopener">AAPL Stock Slides Following WWDC, But Analysts Broadly Raise Targets</a><div class="meta"><span>MacRumors</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPSGdNYnJVSW94VEFoMktOUmUtOWhuVGxkTEJiR2NJbHlvNmpBb0UxMzMteWZ2WVVvaWdYdmtyZTFfX2dGLU4xTkF6ZjF1MTZBc253NUNrVXhHUThYZjZnNHJDUFE0dXRLRTV1T2xPMVlEVDVqYW9SVkdoRk5sS0NCbmNUc3c4WUJ2QlFrNGRHTXBWU1pBa29VbUpQX0c3M0hzb0I2MmtnTEI2ZWRv?oc=5" target="_blank" rel="noopener">Option Activity Suggests Caution On Apple&#x27;s Intermediate-Term Outlook (Technical Analysis)</a><div class="meta"><span>Seeking Alpha</span><span>· 11 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxNYlNnNTVWWDduU0o0eEpDUVBxUDFac2FjMUVWVFVPd1lDQmVMZFo5SDNYZG45UHJiN0lkZW94MmFHeHd5ZlZmaFVJYXB1ZDVhOVExN0FVdTN6MGRTZGtDQmp4Wjg5eGs1LVB2UDB3SS11aUgybVZZLUtUeXNYNHRzNE5mWUs3cm1vMV9XZDhZSlFZdTZWNTNRR3cwTVplUnZDZ0w5YlFqWTRmd1FrTG5lbUR4TDVoNTZPVURhSDNtNTBxNy1VajdiRkw5MHdMeXdHYUViYXdPMG1pQQ?oc=5" target="_blank" rel="noopener">Jensen Huang Defends Nvidia as ‘The World’s First and Only Growth Value Stock’ as Apple Stock Reaches $5T Market Cap</a><div class="meta"><span>TipRanks</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxPZGp0YWl6UkpLU3NkMjBJNEVjRGM1OU5HZUxSaHdzVnhiTEhTMWhrR0ExdFEwOGRmSTF6NW1Pbk9OQy1aN2c2bi1uRDNBUndoeUIyVmx5UXhEcl9BTkJRTkp0dUtldXVqRENQVlpfeTBWQWNxNVhMUnF2VE41UWx0V0ViaWptNkFPQ2lBZXpKdFdPRDFwcjlCcGVxTW9Sd0ktQW5Ha1hiVU9JT095WGdEYWJaSktYUDZkVllhdzNUZ3F3c1l5aHdEb3dfT2xRblFJNndlVXNucTlSMkVrdG95amI1RQ?oc=5" target="_blank" rel="noopener">Why Apple&#x27;s stock chart is probably putting a smile on the face of new CEO John Ternus</a><div class="meta"><span>Yahoo Finance</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaFdBRzhyb2pKMmJNOE9OdE9BcHotSWZHYjN5ZWg4cUFWNnhnTTE5ZGJScUlGd2pweDNJMTMweEJTUmcyZkRkc09xdU5FcjlyNVh5bldwVE1RRHZyR1Ywclg5SUFJREppOXgwWEdQcmd3VXhPa2luZm5XWEh5dnZ0VlJsT3hVa1k0aWNxM080Q1d4YWY1WnhKWmZmTG45ZmgxenFLb0gxNXE?oc=5" target="_blank" rel="noopener">Apple Stock Is Trading Near Record Highs. Can It Climb Further?</a><div class="meta"><span>Morningstar</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNUkZEOVVza0UwNThRQkZITGl4LUV3ZVhMNlBtMng5Q0dEYVhvQm9UN0FJT1VHZF96VWlmNF9lc0RaNGRBM3dDVjlqejJONkdINUNpeWJYeU1ndXVEd0RXZE9TRUw2UjZjNzVIUG1xZjhDYlZEY3Zob3RpR3N5V2UzaVpocHpaMkllUVp6bDlhcG93SUx6dkUyb2V3OFBTNXFN?oc=5" target="_blank" rel="noopener">What Is Going on with Apple Stock on Wednesday?</a><div class="meta"><span>Benzinga</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxQV2ZPOTBDUUYyMFREMlZpd2V1cUQ4N0dBSjJkTmxwSVBoTXFtZmNjdUJPYXJVeDBmQ0U2QV9FMElfNm9PaTlaTUZWeWxTUk1zVUFmSG9tOFlPSkNuby1zb0MzUXh2Qll5WWc1eVNyOWtZQUNxMkxtSlRBOGZQVm1MU3VIZFBVbVpDTnpOT0M0dG5ZY1ZXMmZsZ1haSHBGLXVheEx3U3Bmc0RPTjEwQVQxZmMtbVN2cEh4TU1pYlUzWHpQUldoNGxVcHc1dmtPR1lKaHJoSnk1MVg?oc=5" target="_blank" rel="noopener">Stocks to Watch Recap: Meta, Schwab, Shopify, Apple</a><div class="meta"><span>WSJ</span><span>· 22 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

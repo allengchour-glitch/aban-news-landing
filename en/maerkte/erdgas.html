@@ -14,7 +14,6 @@
   <meta property="og:title" content="Erdgas (Erdgas) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="Erdgas (Erdgas): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,10 +325,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Erdgas <span class="hl">Erdgas</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="erdgas" data-type="commodity">3.05 USD</span>
-        <span class="chg down">-1.10 %</span>
+        <span class="px" id="livePrice" data-id="erdgas" data-type="commodity">3.17 USD</span>
+        <span class="chg up">+6.91 %</span>
         <span class="tag-type">Commodity</span>
-        <span class="badge bearish">Bearish</span>
+        <span class="badge bullish">Bullish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Commodity is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -322,11 +338,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">3.34</text><text x="586" y="204" font-size="12" fill="#64748b">2.84</text><path d="M10.0,200 L10.0,200.0 L35.9,191.9 L61.8,180.3 L87.7,154.9 L113.6,130.2 L139.5,95.6 L165.5,138.0 L191.4,132.6 L217.3,175.3 L243.2,180.3 L269.1,124.1 L295.0,29.7 L320.9,27.7 L346.8,70.5 L372.7,75.1 L398.6,57.0 L424.5,10.0 L450.5,51.2 L476.4,82.8 L502.3,85.5 L528.2,68.2 L554.1,106.0 L580.0,119.1 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,200.0 35.9,191.9 61.8,180.3 87.7,154.9 113.6,130.2 139.5,95.6 165.5,138.0 191.4,132.6 217.3,175.3 243.2,180.3 269.1,124.1 295.0,29.7 320.9,27.7 346.8,70.5 372.7,75.1 398.6,57.0 424.5,10.0 450.5,51.2 476.4,82.8 502.3,85.5 528.2,68.2 554.1,106.0 580.0,119.1" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="119.1" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="119.1" r="3.4" fill="#0f9d6b"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">3.17</text><text x="586" y="204" font-size="12" fill="#64748b">2.77</text><path d="M10.0,200 L10.0,194.3 L37.1,200.0 L64.3,165.8 L91.4,134.9 L118.6,144.0 L145.7,121.6 L172.9,136.4 L200.0,111.7 L227.1,132.1 L254.3,102.6 L281.4,130.7 L308.6,175.3 L335.7,169.6 L362.9,171.0 L390.0,140.2 L417.1,129.2 L444.3,142.5 L471.4,137.8 L498.6,132.6 L525.7,168.7 L552.9,107.4 L580.0,10.0 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,194.3 37.1,200.0 64.3,165.8 91.4,134.9 118.6,144.0 145.7,121.6 172.9,136.4 200.0,111.7 227.1,132.1 254.3,102.6 281.4,130.7 308.6,175.3 335.7,169.6 362.9,171.0 390.0,140.2 417.1,129.2 444.3,142.5 471.4,137.8 498.6,132.6 525.7,168.7 552.9,107.4 580.0,10.0" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="10.0" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="10.0" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.10 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-5.45 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+7.39 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">3.34 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">2.84 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">15’034</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+6.91 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+9.65 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+13.95 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">3.17 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">2.77 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">224’250</span></div></div>
     </div>
   </section>
 
@@ -335,11 +351,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Erdgas · Erdgas</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Futures fallen, Preisanstieg-Warnung.</p>
-        <p class="crat">Die Futures für US-Erdgas fallen, und Öl-Manager warnen vor steigenden Gaspreisen.</p>
+        <div class="chead"><span class="cname">Erdgas · Erdgas</span><span class="badge bullish">Bullish</span></div>
+        <p class="csignal">Preisanstieg, Rekordhochs, Winter-Prognosen.</p>
+        <p class="crat">Die Erdgaspreise steigen in Kalifornien auf Rekordhochs, und es gibt Bedenken, dass die europäischen Gaspreise im Winter weiter steigen könnten.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Keine direkten positiven Treiber in den News, eher Warnungen vor steigenden Preisen.</li><li>Risiko: Die Futures für US-Erdgas fallen, und Öl-Manager warnen vor steigenden Gaspreisen.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit fallenden Futures und Warnungen vor Preisanstiegen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Die Erdgaspreise steigen in Kalifornien auf Rekordhochs, und es gibt Bedenken vor weiteren Anstiegen in Europa.</li><li>Risiko: Die USA haben mehr Erdgas, als sie verbrauchen können, was langfristig den Preis drücken könnte.</li><li>Einordnung: Die Nachrichtenlage ist kurzfristig bullish aufgrund steigender Preise, aber langfristig mit Unsicherheiten behaftet.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on Erdgas</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPSkRtM2VQME1aSE1Yak5ueGNpODROczNIeHpaRks2cDdZRnRXZ093QXNVVVFSSWxld0NiT0I1RXRZbDh4QnBTY1B0NmxIS1ZPNTFCdlJQR0pSMGFWampCalJ6Y1dLbGc1VWU3a1FnSS1KTXZPTk0xbDJ5RmJ2eUtpQnY1eWROZVNQd0t4NVQzUDJOQVF2XzQxcmlLV2dvaG0tOXVSeUVSbER6b19faGtRcFBoX00?oc=5" target="_blank" rel="noopener">Oil executives warn White House that gas prices will get worse</a><div class="meta"><span>The Washington Post</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi8AFBVV95cUxQVGU3OHkzMDlGS1g0VzBOZWF4Tm5rbmlWd3JQbFJFLXlycU9fR3hNR3lKUTNCY0M4WkhMVks3WWk3UkZTLWRlQnUtczRvX1N1QWtGNlhiZWpFODdzbGZ4cVp1V281Zk5KZ25RMjVQTm15TnhBeUVvbV9yVl9FSmE0Z3BwQlFPaUVaLW94Yk5yQ1JYWnNKRWJMY1R5cndBbjNPSUctdVFENlppdWpMMjVmeWNMX3hicUpad0xaTkVzb2JVa2RvRDhtaTNGTXpaQ1g3cllERURHZ1NNT1ZxOGJhNlFndUNVa0s3Y1Y2Qk1FcWk?oc=5" target="_blank" rel="noopener">Wyoming Insight: Oil, natural gas prices increased for second month</a><div class="meta"><span>WyomingNews.com</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOdEFrWGMyV3lqU2czUk1rQmt6dHYyeGJlcUV3UE9FRi03bjZPZEdIT2pBaHowRkR0WG5SOHZrWjU3cmp3dnJxZkx0MG9wb1dTR1pia2UybFUxNXFPeHlRWmRFSk9jclJpRGRob3ItRHhFNnc3dG1vVmNsTWx6ZDVCcHBrNy0xV3ZDMHpzOU5YX19wc0hIMWRDak9zZGlYUnk1ejI0eGdWd25sVkZyeEs5eFQ2SlQ4RlFmZDJ2M0Qwa3Nua3ZvMEtHUNIBzgFBVV95cUxNX3FZa09zUVBLSndyWk5PYzdhZVFXNm1BTnpFamQwU1IzcnFIV3Qwc002ZTBPT1RCYWU0em5ydExHb1dVblRMclViY0U0dGpuOWdKbVJ4aVM3bGU0TWgzX3poRGZ0WkV0eGd2dFNjaGgzWlU5am1VeHBuRGx0Z2FXbzlQMHQ2cjJsczZGNDI0UmlHZVI2dXZ4dThQWEg1TTBUOEdKY0EtRG1sSmNyaWU0MUg3b2NxZTFhdnZVaGdpOUs3ekFyQkJpdVJqZmVTQQ?oc=5" target="_blank" rel="noopener">Inflation rises to a 3-year high on spiking gas prices, highlighting affordability challenges</a><div class="meta"><span>PBS</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxPMWgwSVltbkxJVmRPeHZtbUNLb0wwcEFVUnpnc0MzdEsxSTVTd3NnVGI3TGQ5Y2t2RHVad05VZmF2UmlIZFhFSS00Q05xTEpJSW9nbnJXMndOLVU1bmFLUkJCeGtnSE9uODE0NnFWUmU2YS1rM2FfbjgzNDRObmZpYk9DMWoyUTlUMkZBMU04THAxTFFLdEJockxn?oc=5" target="_blank" rel="noopener">Data: Track county, state and national gas prices</a><div class="meta"><span>NBC News</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPNGdMTUtkRnJUQ2djbDExbVVzRXFUcnpEM0xlWVBpbE9maWJvYmdEalpOWjN5U3FnVXlGMlR0OFpxVnNhTFQxMU9rai03NW5aSkRMSzEwdXI4djBhRjg3TFlxaXJJMXZmLTJ6NkRwQWI1MVlFTkxSVk42QVo5ODcwa3ZrbFROVDVPZjRpMXJkLTBYMWQ5RHJWYUROVE1QSFR2c0NvVG53SU1DeklFMUgyTjFROHo?oc=5" target="_blank" rel="noopener">Dow rallies, GBP/USD recovers while US natural gas futures prices slip</a><div class="meta"><span>ig.com</span><span>· 12 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQOXJVUHlzbEV5eVhfTko5NXBZTnRrWmJsUTFHWEVlUnNid1ZCR0NxMlM5VDJWaUZpY2pMS2N1a2YwYWtyMWRvMnkzYTZENFVjNEY4U1gxckdCTUo4STF4NG56dVhFeWNBRnVNdUphRDFzbUc2cGtTS1BlTWxSVkZKWEEzWDQ2c245anlfMmR3M3RiMmxJaVp3d0pfMVXSAaQBQVVfeXFMUG5QZWxKOGF1UzhPVmN5MUZkZGtaNVkxSXFPZ2s5bkIybHVOX0ZkbkkxTzIxbHh5M3NHZ0NaWmFqZmM1Ym5lSlM1dFpocEhIdmFQdlVyTk96blBwNEphUUtVSzFYZmZ3a1M3alltbzBUN1haLV9Wd2F2aEgzWkVJRTJ4VnpSYWNkUWVFTDZIMXdvZVhBM0xKUW5wWHdSNWRpWEVyUXE?oc=5" target="_blank" rel="noopener">California gas and diesel prices surge to record highs, hammering farmers and drivers</a><div class="meta"><span>nbcbayarea.com</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOaW9YckZKR1BkZFJLdDZ1bERpSzllSjlmUkV1anV5WXZXRlhaeFJER0NkWmJ2Tm9BeG9SSjUwVjhhV2sxQW4yNFVjQmh1bGZwQk5xSTZUR2M4THBEM0dhQjExSW9IU3BKR3lRb2EtMS0xWklobTF2RzN1SGhBYmJkWUJJc1lqN0Vzcy1iOTdZdnA5T3N6OHk5V2JnLUktYU0?oc=5" target="_blank" rel="noopener">US Has More Natural Gas Than It Can Use as War Chokes Global Supply</a><div class="meta"><span>EnergyNow.com</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPS3VicUZmU1pRZ243b3VLQ21tdGxrbGNxbjZDWWhYUm1SWHJKVnpORVhFQzI1NlV6VVQ3bkdMYTBRNkN6NzF2SFdiZHJFeEZTbDU4TjNNRnZWTHM5cFZxQ2JhNm1kYXZoVnE4UXZRZEZ3Sld5N0tsR2FGMFpZLVQyeXZwMVRjODBzUEZVVndQTkhZQ2c1a3NyT3N6MA?oc=5" target="_blank" rel="noopener">Will European Gas Prices Keep Rising This Winter?</a><div class="meta"><span>goldmansachs.com</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNSzJtVVBjVWRKbllWMU9WakR4eFBoTkItakdoN3BWNzJERzNHeGxEczF5cjBQWXBOWkY1eEFsSkVQLXBLZUsxa1l3Z1Q2QzdUaWZXZ0xGU0J2dFlXOEJPYlU5R3ZYWmhfWGg5T0FXNlFBQjVXVXZnTjFkc244MXNsNm94NVBzYzZTY0g2NWVqZG95X0s2emtVeW0xRlk2elNOVGZJMnY0RElOVVA2SWl4dUlyX1BmcVFpbmFQd1lNV0VQZU4wQWRiXzFYYjPSAdIBQVVfeXFMUENQeFUzc1JVM0Zfa1JNVmxLUGRxdXRqamZ6SUdDaFdhOVk4TWNuSHg1MVE4V2ppdEJvSVpMWnpDQjJ5STFKVTFzMmJ5UkpibjRiVG5BendSWTVUbk04NHV4cldFZ1J1dVpMaUpwM0dIQ3dSMEZYN2N3NlRCQjA3bGQyNzM4dWtZeWtidFM3aDNCRTZqeVZnTnJlRk1oVEpIZGdCUTRsYm4yOER1b19uZ05WTE1oLWFBcE15czF1aTBBbWFrM2Z5TTlyZkdQVldvdFhn?oc=5" target="_blank" rel="noopener">Rising gas prices frustrate voters. Trump says it&#x27;s an &#x27;inexpensive price to pay&#x27; for the Iran war</a><div class="meta"><span>PBS</span><span>· 21 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPYlZORjIxVTNxX0RoX2h1WS1idFNvSGFRN09nZ0dmRGtfbm9wR0thb01MbnNpUkZWU0lNSFdNU28tQWp3UndBMFNBQ0tQQm9KaGwzYjVkSmVselNOb3EwQ1U2MU1yUFhSTC1HM0FadE5NV2UwWi1Ya1BjYkFZUnFyZmRlYU43bTN1Z1JPT1pjcGtMZWY2b1I0SEp3eVE4aHpZMmNHRFFsZTVmRlVDeU5OWnpNWU80ZDNhWVZmaF9PVQ?oc=5" target="_blank" rel="noopener">Europe&#x27;s gas price surge may feed into inflation more quickly, ECB finds</a><div class="meta"><span>Reuters</span><span>· 21 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

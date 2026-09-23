@@ -14,7 +14,6 @@
   <meta property="og:title" content="Polkadot (DOT) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="Polkadot (DOT): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,10 +325,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Polkadot <span class="hl">DOT</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="polkadot" data-type="crypto">0.9639 USD</span>
-        <span class="chg up">+1.73 %</span>
+        <span class="px" id="livePrice" data-id="polkadot" data-type="crypto">1.10 USD</span>
+        <span class="chg down">-7.63 %</span>
         <span class="tag-type">Crypto</span>
-        <span class="badge neutral">Neutral</span>
+        <span class="badge bearish">Bearish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Crypto is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -323,10 +339,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><p class="muted">No chart available.</p></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.73 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-1.63 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-30.91 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">96.61 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">1.63 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">54.98 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-7.63 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+11.85 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+21.40 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">—</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">—</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">243.97 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">1.88 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">54.98 USD</span></div></div>
     </div>
   </section>
 
@@ -335,11 +351,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Polkadot · DOT</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Kursrückgang, ETF-Start.</p>
-        <p class="crat">Trotz eines Rückgangs gibt es langfristige Preisprognosen und neue ETFs.</p>
+        <div class="chead"><span class="cname">Polkadot · DOT</span><span class="badge bearish">Bearish</span></div>
+        <p class="csignal">Preisrückgang, Altcoin-Pullback, Prognosen für neue Höchststände.</p>
+        <p class="crat">Polkadot fällt inmitten eines breiten Altcoin-Rückgangs, obwohl es Prognosen für neue Höchststände gibt.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: 21shares startet einen Polkadot ETF in den USA, was die Zugänglichkeit erhöht.</li><li>Risiko: Polkadot fällt um 3,09% inmitten einer breiten Krypto-Liquidation.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit kurzfristigem Rückgang, aber positiven Entwicklungen im Bereich der Finanzprodukte.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Es gibt Prognosen, dass Polkadot neue Höchststände erreichen könnte.</li><li>Risiko: Polkadot fällt inmitten eines breiten Altcoin-Rückgangs.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit kurzfristigem Preisdruck und langfristigen positiven Prognosen.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on DOT</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQczVrc2V3QjRoUDVUVENyVGNUYzRHa3BKQXBCckRKeXc4SEJReVZ3Y2dKZ2N3bG1NdER0Wk4xMXV0YW5rc29BSTd6R2FHNUhMMmdWVWpWc1ZjaWQ2ZlZvVDZ4RlNJdFFiVERkQ2t5ZGlMWTdzZHVhVC1lRFlsZzJJRFRlaHhkak9L?oc=5" target="_blank" rel="noopener">Is It Too Late to Buy Polkadot?</a><div class="meta"><span>Yahoo Finance</span><span>· 30 May 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMic0FVX3lxTFBsMl9JWGVUSlluYTA4UDdxemN4WVB5WE14ajVSdVM0eGw0TnNQd0tIMENmTGYtQmFPbXdIYTJVendQMXUxVm96Sm5tcFd3SEV3WV9Ca3JPTHJTelVWeGFtdGt1M3BZUHhyek54YTJ2a0JDOVHSAXhBVV95cUxOZ1hmN2lrMkNvRFAxVmVURTM4S0M3RFNncWl6ZUIzbzU1U2J2MkxrZFdUNVprUEhZUVRkSkhfZ0Jfc1R6c1dGN2hSZFpNaTJTMVlrUmFUZzJBREE4WGV0bkc3dHFSdjlMTzVDeVdJcEZOczl1ejJWRzI?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Price Prediction 2026, 2027 – 2030: Can DOT Price Reach $60?</a><div class="meta"><span>Coinpedia</span><span>· 04 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFB3ZDkta2hMUFJGeHhZTzkzN3Fkam10QUpxNDJpbnp0bkdBZ0J4eVlPVzlXQUZIVHhPWmtrclJPRDZXMkpGbER5dHQ1MEJIMjBnZF9wYTR6U3l0Ujh4VG1wZF84dVpFd1R5anNlaUhsRmc?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Falls 3.09% Amid Broad Crypto Liquidation</a><div class="meta"><span>CoinMarketCap</span><span>· 06 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTFBYcnpBakw3WFNGZEpKTzRsWjRjb3o0OXlGTlNMaEFYa0x3ZGRlRHRINXdBdm1QT0JESHVIUDNyaVpEQ1V4X0RqODlUcjZnbGF3NE1aSw?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Review 2026: JAM, Hard Cap &amp; The Honest Verdict</a><div class="meta"><span>Coin Bureau</span><span>· 13 May 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPZ1Y1WkJBWnJCMER4RkQ2dGYwWGdHcGFxUmw0cnBaTy14SkNtcWxjVFZ2eTZiQU9tZ2VwVEMyWVV3VlNmNWNVb2RoRzBoQk5mMkdIMUI0QmUtaUYydU1od1l3ZWtZNE5wRC1ueHRXdTBoNHJZUWpybUdJUXo3ZWwzUnJVTlZTM2YtWktCVUVyNnJ5UQ?oc=5" target="_blank" rel="noopener">21shares Launches Polkadot ETF (TDOT) in the United States</a><div class="meta"><span>ETFGI</span><span>· 06 Mar 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxPLXNYSjdlTS1OelZNdTFVMG1ad1hnS1cxOExtY0xndjRISHlWWURzLWYzRTZBQWs5OWEzV1hnNGpXZE9WRDQtN1poUnVTWXpUV2RqcW16V1B0cFVJa2EyZW5KaU12bmlqcE1mNF8xdGRYWTRHUTdhdWZPMnVxTkZkbWtXM2xRUTJqd1VfTmMtMUZfS0pfS2VqNHhIaDhqZmljM2c?oc=5" target="_blank" rel="noopener">Polkadot Price Prediction 2026: Will DOT Reach New Highs?</a><div class="meta"><span>Bitcoin Foundation</span><span>· 01 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE5COVc2U0JTbElYQ2dyRi1uUzY2aTZWZFlkR1p6NHhOd3J0Y3lwcWlHdUI1clZhQ0tIY0xPOGQtcS1KU3ZIUWxWODl6bVUzYVUxOFJsclVTZERnZ2pPcEVFX28taGpEV3ZSN01yQ3pNTmI?oc=5" target="_blank" rel="noopener">Polkadot (DOT) Drops 3.7% Amid Broad Altcoin Pullback</a><div class="meta"><span>CoinMarketCap</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMihwJBVV95cUxOM3FvU1JMUmFCYjhERFB3ejhPN1RicjRTZUswZlVzWXRPR05vczE1Q0w0MkhPSERYeERVTVh5TXl0d2ozMENXVFN2NzdkRU51NUkxUzZwdy1YdjNIWVg0MXdadU40dm8tZzdtd3J3WDE5VFJISDJLWnpNaTgxUUxaSmhFYkR4Zl9mVUdYZ3VWR0tSOE5mR3MzOC1MUU45bU13SVhtd1FvVkUtLUpxSWkxd1BQRWh5NGhiQl85YlEwQVVpcjBodm1heWhvTTZKQ0s1ck9wRWdOSWd5dnhyYWtoLTkzYkRVb3ZrbzFZdWxoUGh4SExVQnhmUV9UVU9zVDVFTVdSZ1RwZw?oc=5" target="_blank" rel="noopener">BlockDAG Sets a $0.03 Buyback Price With a 7-Day Deadline as Polkadot Gains 42% and Avalanche Surges 50%</a><div class="meta"><span>StreetInsider</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQczVrc2V3QjRoUDVUVENyVGNUYzRHa3BKQXBCckRKeXc4SEJReVZ3Y2dKZ2N3bG1NdER0Wk4xMXV0YW5rc29BSTd6R2FHNUhMMmdWVWpWc1ZjaWQ2ZlZvVDZ4RlNJdFFiVERkQ2t5ZGlMWTdzZHVhVC1lRFlsZzJJRFRlaHhkak9L?oc=5" target="_blank" rel="noopener">Is It Too Late to Buy Polkadot?</a><div class="meta"><span>Yahoo Finance</span><span>· 30 May 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxNQkpkam9sOXFVQnBLRW9RVmdpQjZWYTVrM0N2S05WczRRbHNucmZUTjM1OU4zVl9pVHBZLXR6RUJfOC1QTnA0SDNCSDI2UlFxNHVIYmZVUFBsa0VpMWh1UGZIU0FJSTBQZUZQOEh1ZXdmYlpHZ04zRWVpekVlTVQwLTJ1NDVhZURrMFZqZFpINEx2RC1QV3lhMi1PQ3NJb0p2QkxUTFB2SjY1bDE0TGg0?oc=5" target="_blank" rel="noopener">Polkadot Tokenomics Explained: Max Supply, Inflation Rate, and DOT vs. Solana</a><div class="meta"><span>MEXC</span><span>· 21 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>
