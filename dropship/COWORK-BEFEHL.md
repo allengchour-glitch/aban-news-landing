@@ -713,8 +713,7 @@ I have sent five emails to customers@bigbuy.eu since 7 September. The only repli
 the automated message asking me to open a ticket. This is that ticket.
 
 Please:
-1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, Valiant Bank AG,
-   Bern, account holder Allen Chour). The bank details are already stored on the request
+1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, bank and account holder on record). The bank details are already stored on the request
    of 8 September, 20:12 UTC.
 2. Confirm in writing what happened to the requests of 15 July and 16 August — returned
    to the wallet, still pending, or paid to another account.
