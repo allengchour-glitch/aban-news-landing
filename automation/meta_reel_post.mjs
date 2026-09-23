@@ -11,7 +11,19 @@
  *      FB_PAGE_ID (Default 1049840534888592) · [DRY=1] · [MIN_GAP_H=48]
  */
 import fs from 'node:fs';
-import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet } from './post_guard.mjs';
+import { markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
+// 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
+import { execFileSync as _exf } from 'node:child_process';
+const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
+function ersterErreichbare(liste, urlVon, statusSetzen) {
+  for (const r of liste) {
+    const e = erreichbar(urlVon(r)); if (e === true) return r;
+    if (/^4\d\d$/.test(String(e))) { statusSetzen(r, 'archived-deadurl'); console.log(`   Adresse tot (${e}) → archived-deadurl: ${urlVon(r).slice(-50)}`); }
+    else console.log(`   Adresse antwortet ${e} → uebersprungen: ${urlVon(r).slice(-50)}`);
+  }
+  return null;
+}
+
 const CSV = 'automation/reels_seed.csv';
 const V = 'v21.0';
 const DRY = process.env.DRY === '1';
@@ -96,11 +108,16 @@ for (const r of rows.slice(1)) {
   if (st.startsWith('posted') || st === 'posting') { const k = vkey(r[idx.video_url]); if (k) postedVideos.add(k); }
 }
 // Nächste fällige Zeile: ready + instagram + fällig + Video noch NIE gepostet
-const cand = rows.slice(1).find(r => (r[idx.status] || '').trim() === 'ready'
+const _passt = r => (r[idx.status] || '').trim() === 'ready'
   && /instagram/i.test(r[idx.platforms] || '')
   && (r[idx.scheduled_date] || '9999') <= today
   && !postedVideos.has(vkey(r[idx.video_url]))
-  && !postSeen(r[idx.video_url]));                    // gemeinsamer Ledger (script-übergreifend)
+  && !postSeen(r[idx.video_url])
+  && !familieKuerzlich(r[idx.caption]);   // 23.09. Neunte Schicht: Warengruppe nicht zweimal in 72 h (alle Kanaele)
+// 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
+const _alle = rows.slice(1).filter(_passt);
+const _reihe = [..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))];
+const cand = ersterErreichbare(_reihe, r => r[idx.video_url] || '', (r, st) => { r[idx.status] = st; writeLedger(); });
 if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
 // Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger + gemeinsamer Ledger)
 if (postedVideos.has(vkey(cand[idx.video_url])) || postSeen(cand[idx.video_url])) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
@@ -135,8 +152,16 @@ if (await igLiveHas(cand[idx.caption])) process.exit(0);
 //    (kein Token, Netz), wird NICHT gepostet: ein Reel fuer ein gedraftetes Produkt ist ein toter Link in
 //    der Bio, und «nicht pruefbar» ist kein «aktiv».
 async function produktAktiv(postId) {
-  const m = /^cjreel-(\d{6,})$/.exec(postId || '');
+  // 23.09.2026: v2-Reels heissen cjreel-<CJ-pid> (numerisch 18–19-stellig ODER UUID wie F5BA858E-…), v1-Reels
+  // cjreel-<Shopify-Produkt-ID> (13–14-stellig). Die alte Fassung fragte JEDE Zahl als Shopify-ID ab →
+  // «Produkt existiert nicht mehr» fuer den aktiven Projektor (Zeile faelschlich produkt-nicht-aktiv) und
+  // «keine Produkt-ID» fuer UUID-pids (Tor uebersprungen). Jetzt: Shopify-ID direkt, CJ-pid per SKU-Suche.
+  const m = /^cjreel-([0-9A-Za-z-]{6,})$/.exec(postId || '');
   if (!m) return { ok: true, grund: 'keine Produkt-ID im Reel-Namen' };
+  const istShopifyId = /^\d{12,15}$/.test(m[1]);
+  const query = istShopifyId
+    ? `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }`
+    : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ status onlineStoreUrl } } }`;
   const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
   const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
   if (!tok) return { ok: false, grund: 'kein Shop-Token' };
@@ -144,8 +169,9 @@ async function produktAktiv(postId) {
     try {
       const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method: 'POST',
         headers: { 'X-Shopify-Access-Token': tok, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }` }) });
-      const d = await r.json(); const p = d && d.data && d.data.product;
+        body: JSON.stringify({ query }) });
+      const d = await r.json();
+      const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
       if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}` };
     } catch (e) { /* retry */ }
@@ -194,6 +220,7 @@ if (pub.id) {
   cand[idx.posted_at] = new Date().toISOString();
   cand[idx.post_url] = pub.id;
   postMark(url);                    // gemeinsamer Ledger: kein anderer Poster wiederholt dieses Video
+  familieMerken(cand[idx.caption], 'reel');
   writeLedger();
   const perma = await api(`${pub.id}`, { fields: 'permalink' }, 'GET');
   igPermalink = perma.permalink || pub.id;

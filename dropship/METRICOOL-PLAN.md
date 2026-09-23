@@ -1,5 +1,11 @@
 # 📅 Metricool-Upload-Plan — LuxeStyle (30-Tage-Trial nutzen!)
 
+> **Stand 22.09.2026:** Betreiber hat `METRICOOL_USER_TOKEN` in den Umgebungs-Einstellungen hinterlegt.
+> Neuer Weg: `automation/metricool_tiktok_post.mjs` postet **täglich EIN Produkt-Reel nur auf TikTok**
+> (aus `reels_seed.csv`, eigenes Video je Kanal, gemeinsamer Ledger + Lock, Produkt muss ACTIVE sein),
+> gestartet vom `social_autopilot.sh`. Die Liste unten (`social/metricool_queue.csv`, 26.08.) bleibt auf
+> `hold` — 6 ihrer 20 Videos sind inzwischen auf IG/FB gelaufen und dürfen nicht nochmals raus.
+
 > Ziel: den heute gebauten Content über Metricool **öffentlich & automatisch** posten —
 > ohne GitHub-Actions-Sperre und **ohne die TikTok-App-Audit-Wand** (Metricool ist offizieller
 > TikTok-Partner und darf direkt öffentlich auf TikTok posten).

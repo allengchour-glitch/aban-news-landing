@@ -177,9 +177,12 @@ def main():
     heute = time.strftime("%Y-%m-%d")
     n_du = n_teil = n_warn = n_skip = n_fehler = 0
     verdacht = []
+    # 23.09.2026 (Audit): Die Sperre wurde für den GANZEN Lauf gehalten (Stunden). Floskel-Reiniger,
+    # du_form_reparatur und versandaussagen_wahrheit kamen nie dran und meldeten doch «gestartet».
+    # Jetzt je Produkt sperren und nach dem Schreiben freigeben; die 0.25 s Pause lässt Wartende ran.
     with open("/tmp/lock_produkttext.lock", "w") as lk:
-        fcntl.flock(lk, fcntl.LOCK_EX)
         for h in hs[:CAP]:
+            fcntl.flock(lk, fcntl.LOCK_EX)
             try:
                 d = gql('query($h:String!){productByHandle(handle:$h){id status descriptionHtml}}', {"h": h})
                 p = (d.get("data") or {}).get("productByHandle")
@@ -213,7 +216,10 @@ def main():
             except Exception as e:  # noqa: BLE001
                 n_fehler += 1; print(f"  FEHLER {h}: {type(e).__name__}: {str(e)[:100]}")
                 if n_fehler >= 15:
+                    fcntl.flock(lk, fcntl.LOCK_UN)
                     print("ABBRUCH: 15 Fehler — Shopify/Netz prüfen"); break
+            finally:
+                fcntl.flock(lk, fcntl.LOCK_UN)
             time.sleep(0.25)
     if verdacht:
         neu_ = not os.path.exists(VERDACHT)

@@ -48,6 +48,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 # automation/tiktok_biolink.py. Faellt die Abfrage aus, greift die
 # vorsichtige Fassung ohne die Zusage.
 from tiktok_biolink import cta_zeile, cta_slide
+from eimer_etikette import nachlauf
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HIER)
@@ -60,12 +61,30 @@ ANZAHL = int(os.environ.get("ANZAHL", "1"))
 SLIDES = int(os.environ.get("SLIDES", "6"))
 DRY = os.environ.get("DRY") == "1"
 
-AUS = os.path.join(ROOT, "social", "tiktok")
-QUEUE = os.path.join(ROOT, "social", "tiktok_karussell.csv")
-LEDGER = os.path.join(ROOT, "dropship", "_tiktok_karussell.txt")
+# 23.09.2026 (Betreiber «insta karusell brauchen»): FORMAT=ig baut dieselben Slides in 4:5 (1080x1350) —
+# Instagram nimmt in Karussells nur 4:5 bis 1.91:1, ein 9:16-Slide wuerde abgelehnt oder beschnitten.
+# Eigener Ordner, eigene Queue, eigenes Ledger; der Poster ist automation/ig_karussell_post.mjs.
+FORMAT = os.environ.get("FORMAT", "tiktok")
+if FORMAT == "ig":
+    AUS = os.path.join(ROOT, "social", "instagram")
+    QUEUE = os.path.join(ROOT, "social", "ig_karussell.csv")
+    LEDGER = os.path.join(ROOT, "dropship", "_ig_karussell.txt")
+    B, H = 1080, 1350                  # Instagram-Karussell 4:5
+else:
+    AUS = os.path.join(ROOT, "social", "tiktok")
+    QUEUE = os.path.join(ROOT, "social", "tiktok_karussell.csv")
+    LEDGER = os.path.join(ROOT, "dropship", "_tiktok_karussell.txt")
+    B, H = 1080, 1920                  # TikTok-Fotos werden 9:16 vollflaechig gezeigt
 REELS = os.path.join(HIER, "reels_seed.csv")
+# Bildfenster je Format (Anteil der Hoehe) — 4:5 hat 30 % weniger Hoehe, das 9:16-Fenster (20–80 %)
+# schob den Titel ins Produktbild (Probe 23.09.: Titel ueber dem EMS-Geraet). Werte am Kontaktbogen gemessen.
+if FORMAT == "ig":
+    HOOK_OBEN, HOOK_HOEHE, HOOK_UNTEN = 0.10, 0.40, 200     # Slide 1: Bild 135–675, Text ab ~830
+    PROD_OBEN, PROD_HOEHE, PROD_UNTEN = 0.12, 0.46, 330     # Slides 2..n: Bild 162–783, Text ab ~800
+else:
+    HOOK_OBEN, HOOK_HOEHE, HOOK_UNTEN = 0.125, 0.46, 250
+    PROD_OBEN, PROD_HOEHE, PROD_UNTEN = 0.20, 0.60, 400
 
-B, H = 1080, 1920                      # TikTok-Fotos werden 9:16 vollflaechig gezeigt
 INK = (24, 24, 26)
 GOLD = (193, 154, 91)
 WEISS = (255, 255, 255)
@@ -93,7 +112,13 @@ def gql(q, v=None):
     p = "/tmp/_ttk.json"
     with open(p, "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
-    for versuch in range(8):
+    # ⚠️ 23.09.2026 (Verbesserungsrunde 6): Hier zaehlte jede Drosselung als Fehlversuch mit festen 6 s —
+    # 8 × 6 s = 48 s. Um 02:11 starten die Tages-Waechter gleichzeitig, der Eimer war laenger leer, und der
+    # Bauer starb im Top-Modus (die Abfrage selbst kostet 99 Punkte). Derselbe Baustein speist tiktok_meisterwerk
+    # und seit heute die Instagram-Karussells. Jetzt wie google_kanal_saeubern (21.09.): Drosseln zaehlen nicht,
+    # gewartet wird so lange, wie throttleStatus sagt; nach jeder Antwort die Eimer-Etikette.
+    versuche, drossel, grund = 0, 0, "kein Versuch"
+    while versuche < 8:
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2026-01/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
@@ -102,13 +127,19 @@ def gql(q, v=None):
         try:
             d = json.loads(r.stdout)
         except Exception:
-            time.sleep(5); continue
-        # Eine Drosselung ist kein Abbruchgrund — sie sagt nur, wie lange zu warten ist.
+            versuche += 1; grund = "kein JSON"; time.sleep(5); continue
         fehler = json.dumps(d.get("errors") or "")
-        if "Throttled" in fehler or "THROTTLED" in fehler:
-            time.sleep(6); continue
+        if ("Throttled" in fehler or "THROTTLED" in fehler) and drossel < 40:
+            drossel += 1
+            k = (d.get("extensions") or {}).get("cost") or {}; t = k.get("throttleStatus") or {}
+            fehlt = float(k.get("requestedQueryCost") or 100) - float(t.get("currentlyAvailable") or 0)
+            rate = float(t.get("restoreRate") or 0)
+            time.sleep(min(30.0, fehlt / rate + 1.0) if (fehlt > 0 and rate > 0) else 12.0)
+            continue
         if d.get("data") is not None:
+            nachlauf(d)
             return d
+        versuche += 1; grund = fehler[:200]
         time.sleep(5)
     # ⚠️ 17.09.2026: Hier stand `return {}` — dieselbe stille Null wie in 15
     # Geschwister-Wächtern, nur ohne verschluckten except-Zweig. Der Aufrufer
@@ -118,7 +149,7 @@ def gql(q, v=None):
     raise RuntimeError(
         "Shopify hat auf keinen Versuch mit Daten geantwortet. FRÜHER gab diese"
         " Funktion hier ein leeres Ergebnis zurück und der Aufrufer meldete «0» —"
-        " das ist keine Messung, sondern ein Ausfall.")
+        " das ist keine Messung, sondern ein Ausfall. Letzter Grund: " + grund)
 
 
 def hole(handle):
@@ -295,13 +326,13 @@ def slide_hook(bildpfad, kicker, gross, titel, nummer, gesamt, wisch=True):
     Grund steht in der eigenen Auswertung: eine Caption mit Preis-Anker schlug die generische
     Fassung um das Zwanzigfache. Der Titel darunter erklaert, was es ist.
     """
-    img = scrim(grund(bildpfad, oben=0.125, hoehe=0.46))
+    img = scrim(grund(bildpfad, oben=HOOK_OBEN, hoehe=HOOK_HOEHE))
     d = ImageDraw.Draw(img)
     marke(d, nummer, gesamt)
 
     schrift_t = f(SANS, 40)
     zeilen = umbrechen(d, titel, schrift_t, B - 130)[:2]
-    unterkante = H - 250
+    unterkante = H - HOOK_UNTEN
     y = unterkante - len(zeilen) * 52
     for z in zeilen:
         d.text((66, y + 3), z, font=schrift_t, fill=(0, 0, 0))
@@ -323,12 +354,12 @@ def slide_hook(bildpfad, kicker, gross, titel, nummer, gesamt, wisch=True):
 
 
 def slide_produkt(bildpfad, titel, preis, nummer, gesamt, zeile=None):
-    img = scrim(grund(bildpfad))
+    img = scrim(grund(bildpfad, oben=PROD_OBEN, hoehe=PROD_HOEHE))
     d = ImageDraw.Draw(img)
     marke(d, nummer, gesamt)
     schrift = f(SERIF, 60)
     zeilen = umbrechen(d, titel, schrift, B - 130)[:3]
-    y = H - 400 - len(zeilen) * 74
+    y = H - PROD_UNTEN - len(zeilen) * 74
     for z in zeilen:
         d.text((66, y + 3), z, font=schrift, fill=(0, 0, 0))
         d.text((64, y), z, font=schrift, fill=WEISS)

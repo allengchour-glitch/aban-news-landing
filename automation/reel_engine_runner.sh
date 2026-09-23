@@ -20,7 +20,9 @@ exec 9>/tmp/reel_engine_runner.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Reel-Motor läuft bereits — dieser Start endet."; exit 0; }
 
 source /tmp/secrets_env.sh 2>/dev/null
-if [ -z "${SHOPIFY_CLIENT_ID:-}" ] || [ -z "${SHOPIFY_CLIENT_SECRET:-}" ]; then
+# 22.09.2026 (v2-Motor): Token-Datei /tmp/cj_shop_token.txt genuegt; CJ-Token aus /tmp/cj_token.json.
+[ -s /tmp/cj_token.json ] || { echo "$(date -u +%H:%M) ⚠️ /tmp/cj_token.json fehlt — Reel-Motor startet nicht."; exit 0; }
+if [ ! -s /tmp/cj_shop_token.txt ] && { [ -z "${SHOPIFY_CLIENT_ID:-}" ] || [ -z "${SHOPIFY_CLIENT_SECRET:-}" ]; }; then
   # Ohne Zugangsdaten würde der Motor bei jedem Durchlauf still scheitern. Lieber einmal
   # deutlich sagen, was fehlt, als alle 30 Minuten ein leeres Log zu erzeugen.
   echo "$(date -u +%H:%M) ⚠️ SHOPIFY_CLIENT_ID/_SECRET fehlen — Reel-Motor startet nicht."
@@ -28,6 +30,11 @@ if [ -z "${SHOPIFY_CLIENT_ID:-}" ] || [ -z "${SHOPIFY_CLIENT_SECRET:-}" ]; then
 fi
 
 while true; do
+  # Kadenz 22.09.: 2 Reels alle 6 h (= 8/Tag; Verbrauch IG 3/Tag + TikTok 2/Tag). Ablage bis zum Grow-Plan im Repo (~1,5 MB je Reel).
+  # Video-Index zuerst (22.09.): 150 CJ-Listen-Aufrufe je Lauf fuellen dropship/_cj_video_index.json,
+  # der Motor nimmt daraus fast sichere Treffer. BATCH 3 (Betreiber 22.09.: TikTok + Instagram im Fokus,
+  # jede Plattform bekommt ein EIGENES Reel → Bedarf ~5–6 je Tag).
+  INDEX_CALLS=${INDEX_CALLS:-150} flock -n /tmp/cj_video_index.lock /opt/node22/bin/node automation/cj_video_index.mjs 9>&- || true
   BATCH=${BATCH:-3} /opt/node22/bin/node automation/cj_video_reel_engine.mjs
-  sleep "${TAKT:-1800}" 9>&-
+  sleep "${TAKT:-21600}" 9>&-
 done

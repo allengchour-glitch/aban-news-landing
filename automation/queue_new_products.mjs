@@ -71,7 +71,7 @@ function existingHandles(csvText) {
 function hashtags(pt = '') {
   pt = pt.toLowerCase();
   const reach = '#schweiz #ootdschweiz #schweizmode';
-  if (/(kleid|dress|rock|skirt)/.test(pt)) return reach + ' #sommerkleid #luxestyle';
+  if (/(kleid|dress|rock|skirt)/.test(pt)) return reach + ' #kleid #luxestyle';
   if (/(tasche|bag|handtasche|crossbody)/.test(pt)) return reach + ' #handtasche #luxestyle';
   if (/(ohrring|halskette|armband|ring|schmuck|earring|necklace|bracelet)/.test(pt)) return reach + ' #schmuck #luxestyle';
   if (/(hut|cap|hat|mütze|beret)/.test(pt)) return reach + ' #accessoires #luxestyle';
@@ -82,18 +82,19 @@ function hashtags(pt = '') {
 }
 // Gewinner-Formel (TikTok-Analyse 2026-06-11): Hook → Produkt + PREIS → FRAGE-CTA (Kommentare!)
 // → WELCOME10 → Link → Reach-/Nischen-Tags. Variantenreich (rotiert deterministisch per Handle).
-function caption(title, handle, pt, price) {
-  const chf = price ? `CHF ${Number(price).toFixed(2).replace(/\.00$/,'.–')}` : '';
-  const link = `luxestyle.ch/products/${handle}`;
-  const t = String(title).replace(/\s+[–—]\s+.*$/,'').replace(/\s+-\s+.*$/,'').trim();   // Kurztitel: nur bei " – "/" - " mit Leerzeichen trennen (nicht bei Wort-Bindestrichen)
-  const V = [
-    `Neu bei LuxeStyle ✨ ${t}${chf?` – nur ${chf}`:''} 🇨🇭 Welche Farbe wäre deins? Kommentier 👇 –10% mit Code WELCOME10 · 🔗 Link in Bio`,
-    `${t}${chf?` für ${chf}`:''} 👀 Spar dir den Designer-Preis. 1, 2 oder 3 – welches nimmst du? 👇 –10% WELCOME10 · 🔗 Link in Bio`,
-    `Dein nächster Liebling? ${t}${chf?` ab ${chf}`:''} 🤍 Den Link willst du? Schreib LINK 👇 –10% WELCOME10 · 🔗 Link in Bio`,
-    `${t} 🌸${chf?` Nur ${chf}.`:''} Würdest du’s tragen? Ja/Nein 👇 Schweizer Shop · –10% Code WELCOME10 · 🔗 Link in Bio`,
-  ];
-  const idx = [...handle].reduce((a,c)=>a+c.charCodeAt(0),0) % V.length;
-  return `${V[idx]}\n${hashtags(pt)}`;
+// 23.09.2026: ehrliche Caption statt Rabatt-Push. Die vier alten Varianten («Spar dir den Designer-Preis»,
+// «Schreib LINK 👇», «–10% WELCOME10», «Neu bei LuxeStyle ✨») sind genau die Klasse hinter dem Kundenfeedback
+// vom 05.09. («zu fest KI, wie Scam»); WELCOME10 ist zudem ein offener Betreiber-Entscheid. Gleiche Bausteine
+// wie tiktok_karussell.py (Laden-Zeile aus Belp, Lieferzeit nur wenn belegt, Kommentar-Frage, Link in Bio).
+function ladenZeile(tags) {
+  const t = new Set((tags || []).map(x => String(x).toLowerCase()));
+  const liefer = t.has('ch-lager') ? 'Versand ab Schweizer Lager in 1–2 Werktagen' : 'Lieferung 10–20 Werktage, dafür ehrlich angeschrieben';
+  return `Kleiner Schweizer Shop aus Belp, kein Konzern. ${liefer} · 30 Tage Rückgabe · TWINT oder Rechnung.\nFragen? Schreib sie in die Kommentare 👇`;
+}
+function caption(title, handle, pt, price, tags) {
+  const chf = price ? `CHF ${Number(price).toFixed(2).replace(/\.00$/, '.–')}` : '';
+  const t = String(title).replace(/\s+[–—]\s+.*$/, '').replace(/\s+-\s+.*$/, '').replace(/\s*[·|].*$/, '').trim();
+  return `${t}${chf ? ` · ${chf}` : ''}\n${ladenZeile(tags)}\nJetzt im Shop 🇨🇭 luxestyle.ch – Link in Bio\n\n${hashtags(pt)}`;
 }
 
 (async () => {
@@ -105,7 +106,7 @@ function caption(title, handle, pt, price) {
 
   // zuletzt angelegte ACTIVE cj-real Produkte
   const d = await shopify(`query{ products(first:50, query:"status:active AND tag:cj-real", sortKey:CREATED_AT, reverse:true){
-      nodes{ title handle productType featuredImage{ url } priceRangeV2{ minVariantPrice{ amount } } } } }`);
+      nodes{ title handle productType tags featuredImage{ url } priceRangeV2{ minVariantPrice{ amount } } } } }`);
   const prods = balanceByCategory(d.products?.nodes || [], p => `${p.title} ${p.productType||''} ${p.handle||''}`);
 
   const rows = [];
@@ -117,8 +118,8 @@ function caption(title, handle, pt, price) {
     if (!handle || have.has(handle)) continue;       // schon in Queue
     if (!isJpg(img)) continue;                        // Meta-JPG-Pflicht
     const price = p.priceRangeV2?.minVariantPrice?.amount || '';
-    const cap = caption(p.title, handle, p.productType || '', price);
-    rows.push([handle, today, img, q(cap), q('instagram,facebook,threads'), 'ready', '', ''].join(','));
+    const cap = caption(p.title, handle, p.productType || '', price, p.tags || []);
+    rows.push([handle, today, img, q(cap), q('instagram,facebook'), 'ready', '', ''].join(','));
     have.add(handle);
   }
 

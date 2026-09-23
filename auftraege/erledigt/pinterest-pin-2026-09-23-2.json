@@ -1,0 +1,19 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-09-23-2",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus dropship/_pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 2 von 6 heute.",
+  "stand": "ok",
+  "begonnen": "2026-09-23T17:18:22.350Z",
+  "dauer_s": 0,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 0, quittiert 6, offen 0",
+      "nichts offen"
+    ],
+    "bilder": []
+  }
+}

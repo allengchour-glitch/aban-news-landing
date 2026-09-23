@@ -1,0 +1,337 @@
+2026-09-23	gid://shopify/Product/15412301922689	natel	Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones
+2026-09-23	gid://shopify/Product/15412302512513	natel	Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichte
+2026-09-23	gid://shopify/Product/15413956051329	natel	Handy-Makeover-Set · Charms, Grip & MagSafe-Halter
+2026-09-23	gid://shopify/Product/15422939988353	natel	Hardcase iPhone®-Hülle mit MagSafe® – Selbst gestalten
+2026-09-23	gid://shopify/Product/15422946804097	natel	Transparente iPhone®-Hülle – Selbst gestalten
+2026-09-23	gid://shopify/Product/15428415422849	natel	2-in-1 Display-Reiniger – Spray + Mikrofaser für Handy & Tablet
+2026-09-23	gid://shopify/Product/15446266675585	natel	Bluetooth Gamecontroller für Android-Smartphones
+2026-09-23	gid://shopify/Product/15446267527553	natel	Bluetooth Controller für Smartphones (Split)
+2026-09-23	gid://shopify/Product/15446268019073	natel	Mini Bluetooth Gamepad für Smartphone & PC
+2026-09-23	gid://shopify/Product/15446268215681	natel	Handy-Kühler mit Gamepad-Griff
+2026-09-23	gid://shopify/Product/15446268248449	natel	Teleskopisches Wireless Gamepad für Smartphone & Konsole
+2026-09-23	gid://shopify/Product/15447562158465	natel	65W PD GaN Ladegerät für Smartphones & Laptops
+2026-09-23	gid://shopify/Product/15447877747073	natel	GPS Anti-Verlust Tracker für Auto & Handy
+2026-09-23	gid://shopify/Product/15447988568449	natel	Outdoor-Velo- und Laufweste mit Handyfach
+2026-09-23	gid://shopify/Product/15448718803329	natel	Ultraleichte Velo- und Outdoor-Handy-Weste
+2026-09-23	gid://shopify/Product/15448847221121	natel	Smartphone Game Controller Black Warrior
+2026-09-23	gid://shopify/Product/15448847909249	natel	Magnetisches 15W Wireless Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15448881365377	natel	Anti-Verlust Locator für iPhone
+2026-09-23	gid://shopify/Product/15448981963137	natel	Dual-USB Stick für Smartphones & Computer
+2026-09-23	gid://shopify/Product/15449069617537	natel	Mini-Handytasche mit Strass-Design
+2026-09-23	gid://shopify/Product/15449116213633	natel	Patchwork Handy-Bag aus Echtleder
+2026-09-23	gid://shopify/Product/15449130041729	natel	Handy-Gimbal mit KI-Tracking für stabile Videos
+2026-09-23	gid://shopify/Product/15449131581825	natel	Quick Brush Start für iPhone (Type-C)
+2026-09-23	gid://shopify/Product/15449168150913	natel	Reise-Organizer für Dokumente und Handy
+2026-09-23	gid://shopify/Product/15449426362753	natel	3-in-1 Magnethalterung für iPhone, Apple Watch & AirPods
+2026-09-23	gid://shopify/Product/15449426428289	natel	4-in-1 Magnethalter mit RGB-Licht für iPhone & AirPods
+2026-09-23	gid://shopify/Product/15449426952577	natel	Kabelloser Ladepad für iPhone & Samsung mit Schnellaufladung
+2026-09-23	gid://shopify/Product/15449428263297	natel	2in1 Bildschirmreiniger-Set für Handy/PC
+2026-09-23	gid://shopify/Product/15449430360449	natel	Magnetische Ladesteckdose für iPhone & Android Type-C
+2026-09-23	gid://shopify/Product/15449443041665	natel	Braune Lederhandtasche für grosse Smartphones
+2026-09-23	gid://shopify/Product/15449477513601	natel	Sporttasche mit Handyfach
+2026-09-23	gid://shopify/Product/15449487868289	natel	Schnelllade-Adapter für MacBook & iPhone
+2026-09-23	gid://shopify/Product/15450828800385	natel	E-Ink Smartphone Hülle mit personalisierbarem Screen
+2026-09-23	gid://shopify/Product/15450830897537	natel	3-in-1 Kabelloses Ladegerät für iPhone, Watch & AirPods
+2026-09-23	gid://shopify/Product/15450831716737	natel	Halterung für Rückspiegel-Handy
+2026-09-23	gid://shopify/Product/15450832404865	natel	Klebendes Aufbewahrungsregal für Smartphone & Fernbedienung
+2026-09-23	gid://shopify/Product/15450832830849	natel	Drahtloses Dual-Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15450833256833	natel	LED Selfie Ringlicht mit Handyhalterung
+2026-09-23	gid://shopify/Product/15450836009345	natel	Magnetisches Kartenetui für iPhone
+2026-09-23	gid://shopify/Product/15450836861313	natel	3-in-1 Wireless Ladestation für iPhone & Android
+2026-09-23	gid://shopify/Product/15450837156225	natel	Panda Magnetring Handyhülle
+2026-09-23	gid://shopify/Product/15450837582209	natel	Handy Schutzhülle mit Kartenfach
+2026-09-23	gid://shopify/Product/15450839908737	natel	360° Universal Auto-Handyhalterung
+2026-09-23	gid://shopify/Product/15450840465793	natel	Snap Handyhülle für iPhone
+2026-09-23	gid://shopify/Product/15450840531329	natel	Magnetische Handyhalterung fürs Auto (Lüftung)
+2026-09-23	gid://shopify/Product/15450850460033	natel	Magnetisches LED-Ladekabel für USB-C & iPhone
+2026-09-23	gid://shopify/Product/15450852589953	natel	Universal Handyhalterung für Velo und Motorrad
+2026-09-23	gid://shopify/Product/15450855375233	natel	Plüschblumen Handyhülle für iPhone
+2026-09-23	gid://shopify/Product/15450855932289	natel	Magnetische Nackenhalterung für Smartphones
+2026-09-23	gid://shopify/Product/15450856653185	natel	Magnetische Handyhalterung fürs Auto
+2026-09-23	gid://shopify/Product/15451605401985	natel	Handy-Sperrbox mit Timer · Digital Detox
+2026-09-23	gid://shopify/Product/15451636334977	natel	Handyhalter mit Schwanenhals · Bett & Schreibtisch (Klemme)
+2026-09-23	gid://shopify/Product/15451639513473	natel	VR-Brille für Smartphones
+2026-09-23	gid://shopify/Product/15451641282945	natel	4er-Set Auto-Rücksitzhaken mit Handyhalterung
+2026-09-23	gid://shopify/Product/15451641512321	natel	Velo-Rahmentasche fürs Smartphone
+2026-09-23	gid://shopify/Product/15452518449537	natel	Astronauten-Handyhülle mit 3D-Motiv
+2026-09-23	gid://shopify/Product/15452598501761	natel	Smartphone HUD-Halterung fürs Auto · Head-up-Display
+2026-09-23	gid://shopify/Product/15452598665601	natel	Panzerglas Schutzfolie für iPhone · 4er-Pack
+2026-09-23	gid://shopify/Product/15452681863553	natel	VR-Brille für Smartphone 3D
+2026-09-23	gid://shopify/Product/15452682224001	natel	Virtueller Helm mit Smartphone-Display
+2026-09-23	gid://shopify/Product/15452682486145	natel	3D-VR-Brille für Smartphone 4.7-6 Zoll
+2026-09-23	gid://shopify/Product/15452706144641	natel	Portabler Kühler für Handys mit Halterung
+2026-09-23	gid://shopify/Product/15452706177409	natel	Wireless Gamepad für Smartphone
+2026-09-23	gid://shopify/Product/15452706242945	natel	Portabler Smartphone-Kühler mit Clip
+2026-09-23	gid://shopify/Product/15452707422593	natel	Kinder-Smartphone mit Kamera, Pinguin-Design Rosa
+2026-09-23	gid://shopify/Product/15452719350145	natel	Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods
+2026-09-23	gid://shopify/Product/15453120856449	natel	Teleskop-Handyhalter
+2026-09-23	gid://shopify/Product/15453523870081	natel	Handy-Powerbank
+2026-09-23	gid://shopify/Product/15453781721473	natel	Crazy Horse Leder Herren Gürteltasche mit Handyfach
+2026-09-23	gid://shopify/Product/15453947167105	natel	Herren Leder Hüfttasche für Smartphone – Sport & Freizeit
+2026-09-23	gid://shopify/Product/15454002413953	natel	Magnetischer Handyhalter Wallet
+2026-09-23	gid://shopify/Product/15454046323073	natel	Universal-Fernbedienung für Smartphones
+2026-09-23	gid://shopify/Product/15454068507009	natel	Fernbedienung für iPhone
+2026-09-23	gid://shopify/Product/15454069227905	natel	Bluetooth-Gamepad für iPhone & Android
+2026-09-23	gid://shopify/Product/15454248829313	natel	Taktische Handy-Tasche
+2026-09-23	gid://shopify/Product/15454334386561	natel	Kühlendes Handy-Zubehör mit Digitaldisplay
+2026-09-23	gid://shopify/Product/15455518130561	natel	Handyhalter für unterwegs
+2026-09-23	gid://shopify/Product/15455796986241	natel	Kleine Leder-Handytasche
+2026-09-23	gid://shopify/Product/15463490781569	natel	Captain Bull Handy-Portemonnaie aus Leder
+2026-09-23	gid://shopify/Product/15465886187905	natel	Tennisnetz-Handyhalter mit abnehmbarem Ständer
+2026-09-23	gid://shopify/Product/15468686082433	natel	Handy-Lanyard mit abnehmbarer Handschlaufe
+2026-09-23	gid://shopify/Product/15472066724225	natel	Wasserdichte Outdoor-Sling Bag für Handy
+2026-09-23	gid://shopify/Product/15476165214593	natel	Handy-Stativ, bruchsicher, aus Kunststoff
+2026-09-23	gid://shopify/Product/15478744088961	natel	Magnetischer Handy-Ständer
+2026-09-23	gid://shopify/Product/15479397482881	natel	45W GaN Ladegerät für Tablets, Smartphones & Laptops
+2026-09-23	gid://shopify/Product/15479418749313	natel	Mikrofon für Handy-Videoaufnahmen
+2026-09-23	gid://shopify/Product/15479467016577	natel	Faltbarer Handy-Ständer aus Aluminium
+2026-09-23	gid://shopify/Product/15479467278721	natel	Handstativ für Action Cams und Smartphones
+2026-09-23	gid://shopify/Product/15479467770241	natel	Bluetooth Lautsprecher mit Handyhalterung
+2026-09-23	gid://shopify/Product/15479467934081	natel	Nackenhalterung für Smartphones mit Magnetverschluss
+2026-09-23	gid://shopify/Product/15479468032385	natel	Magnetischer Smartphone-Kühler mit Eis-Funktion
+2026-09-23	gid://shopify/Product/15479468130689	natel	Drehbarer magnetischer Handyhalter für zwei Telefone
+2026-09-23	gid://shopify/Product/15479470817665	natel	TF Card 32 GB für Handy, Kamera & Recorder
+2026-09-23	gid://shopify/Product/15479514661249	natel	Magnetische Handyhalterung mit Wireless Charger
+2026-09-23	gid://shopify/Product/15479639605633	natel	USB Mikrofon RGB für Handy, PC & Live-Streaming
+2026-09-23	gid://shopify/Product/15480142496129	natel	4-in-1 USB Stick für Smartphone & Computer
+2026-09-23	gid://shopify/Product/15480143839617	natel	M2 Magnetisches Handy-Festplattengehäuse
+2026-09-23	gid://shopify/Product/15480274157953	natel	Smartphone 12
+2026-09-23	gid://shopify/Product/15480338547073	natel	Magnetisches Beauty-Licht fürs Smartphone
+2026-09-23	gid://shopify/Product/15480338776449	natel	Magnetische Handyhalterung mit Stativ
+2026-09-23	gid://shopify/Product/15480339104129	natel	Magnetische kabellose Handyhalterung fürs Auto
+2026-09-23	gid://shopify/Product/15480339169665	natel	Magnetischer Handyhalter aus Aluminiumlegierung
+2026-09-23	gid://shopify/Product/15480339399041	natel	Smartphone-Halterung fürs Auto, magnetisch
+2026-09-23	gid://shopify/Product/15480339530113	natel	Magnetischer Handy-Ständer für den Schreibtisch
+2026-09-23	gid://shopify/Product/15480339759489	natel	Faltbarer kabelloser Ladeständer für Smartphones
+2026-09-23	gid://shopify/Product/15480339923329	natel	Magnetischer Handy-Ständer aus Aluminium
+2026-09-23	gid://shopify/Product/15480340021633	natel	Faltbarer Handyhalter mit vielseitiger Befestigung
+2026-09-23	gid://shopify/Product/15480343953793	natel	Externe SSD für Handy & Computer
+2026-09-23	gid://shopify/Product/15480344314241	natel	Fingerprint USB Stick für PC & Smartphone
+2026-09-23	gid://shopify/Product/15480488919425	natel	USB-C Dual-Flash-Laufwerk für Smartphone & Computer
+2026-09-23	gid://shopify/Product/15480489705857	natel	USB-C Stick für Smartphone und Computer
+2026-09-23	gid://shopify/Product/15480491442561	natel	3-in-1 USB-Stick für Smartphone & Computer
+2026-09-23	gid://shopify/Product/15480492523905	natel	Mobile SSD für direkte Smartphone-Verbindung
+2026-09-23	gid://shopify/Product/15480566350209	natel	Speicherkarte für Handy-Überwachung
+2026-09-23	gid://shopify/Product/15480566743425	natel	NM Speicherkarte 128 GB für Huawei Smartphones
+2026-09-23	gid://shopify/Product/15481080250753	natel	Fokus- & Belichtungssteuerung für Smartphone-Fotos
+2026-09-23	gid://shopify/Product/15481081332097	natel	Welpen Quicksand Magnet-Hülle fürs iPhone
+2026-09-23	gid://shopify/Product/15481081594241	natel	Magnetische Handy-Kamerahilfe MOCA ARCO
+2026-09-23	gid://shopify/Product/15481260114305	natel	Wasserdichtes Smartphone-Armband
+2026-09-23	gid://shopify/Product/15481382404481	natel	Handy-Mikrofon
+2026-09-23	gid://shopify/Product/15481680953729	natel	Mini-Projektor für Smartphone (kabelgebunden)
+2026-09-23	gid://shopify/Product/15481681117569	natel	Mini Beamer für Smartphone-Projektion
+2026-09-23	gid://shopify/Product/15481691931009	natel	Handy-Projektor für die gleiche Bildschirmanzeige
+2026-09-23	gid://shopify/Product/15481765265793	natel	Kabelloses Lavalier-Mikrofon für Handy-Aufnahmen
+2026-09-23	gid://shopify/Product/15481765331329	natel	Kabelloses Lavalier-Mikrofon für Handy-Video & Live
+2026-09-23	gid://shopify/Product/15481841713537	natel	Multi-Funktions Kartenleser für PC & Handy
+2026-09-23	gid://shopify/Product/15483792851329	natel	Magnetischer Handyhalter
+2026-09-23	gid://shopify/Product/15483890205057	natel	Handy-Halter
+2026-09-23	gid://shopify/Product/15484294398337	natel	Magnetischer Alu-Handyhalter
+2026-09-23	gid://shopify/Product/15484524102017	natel	Magnetische Handyhalterung für Sport & Golf
+2026-09-23	gid://shopify/Product/15484627026305	natel	Magnetischer Smartphone-Griff für Filmer
+2026-09-23	gid://shopify/Product/15484709601665	natel	USB Stick für Apple iPhones
+2026-09-23	gid://shopify/Product/15484713468289	natel	4-in-1 OTG USB Stick für iPhone & Android
+2026-09-23	gid://shopify/Product/15485479715201	natel	Magnetisches Selfie-Licht für Smartphones
+2026-09-23	gid://shopify/Product/15489552777601	natel	Automatischer Handy-Klicker für diverse Anwendungen
+2026-09-23	gid://shopify/Product/15489552974209	natel	G21 Gaming Trigger für Smartphones
+2026-09-23	gid://shopify/Product/15491398369665	natel	Nackenhalterung für Smartphones
+2026-09-23	gid://shopify/Product/15493075173761	natel	Handgemachter Smartphone-Halter fürs Golf-Cart-Lenkrad
+2026-09-23	gid://shopify/Product/15493075206529	natel	Bodenständer aus Aluminium für Smartphones
+2026-09-23	gid://shopify/Product/15493075239297	natel	Universal Handyhalterung für Lüftung
+2026-09-23	gid://shopify/Product/15493075304833	natel	Armaturenbrett Handyhalterung mit Saugnapf
+2026-09-23	gid://shopify/Product/15493075337601	natel	Handyhalterung für POV-Aufnahmen und Streaming
+2026-09-23	gid://shopify/Product/15493075403137	natel	Magnetische Handyhalterung mit Ladefunktion
+2026-09-23	gid://shopify/Product/15493084905857	natel	Magnetischer Handyhalter mit Kartenetui
+2026-09-23	gid://shopify/Product/15493084938625	natel	Magnetische Auto-Handyhalterung mit Navigation
+2026-09-23	gid://shopify/Product/15493085135233	natel	Drehbarer Handy- und Tablet-Halter aus Metall
+2026-09-23	gid://shopify/Product/15493085200769	natel	Magnetische Universalhalterung für Velo-Handy
+2026-09-23	gid://shopify/Product/15493085331841	natel	Verstellbarer Smartphone-Halter aus Metall
+2026-09-23	gid://shopify/Product/15493085397377	natel	Handyhalterung für Mittelkonsole
+2026-09-23	gid://shopify/Product/15493085528449	natel	360° Handyhalterung fürs Auto
+2026-09-23	gid://shopify/Product/15493260411265	natel	Sprudelbad für dein Smartphone
+2026-09-23	gid://shopify/Product/15493319360897	natel	Solar Powerbank Tasche für Outdoor Handy-Ladung
+2026-09-23	gid://shopify/Product/15493366612353	natel	Magnetisches Wireless Auto-Ladegerät für iPhone
+2026-09-23	gid://shopify/Product/15493442994561	natel	Zimi Wireless Charger für iPhone
+2026-09-23	gid://shopify/Product/15493443223937	natel	2-in-1 Wireless Charger für Handy, Uhr & Kopfhörer
+2026-09-23	gid://shopify/Product/15493443453313	natel	Faltbarer Handyhalter mit Powerbank-Gehäuse
+2026-09-23	gid://shopify/Product/15493500305793	natel	Magnetisches 15W Wireless Ladegerät für iPhone
+2026-09-23	gid://shopify/Product/15493577408897	natel	Solar-Ladegerät für Handy und Tablet
+2026-09-23	gid://shopify/Product/15493807309185	natel	Kabelloses Smartphone-Ladegerät
+2026-09-23	gid://shopify/Product/15493830705537	natel	Kabelloses USB-Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15493836145025	natel	4-in-1 Wireless Ladestation für iPhone, Watch, AirPods
+2026-09-23	gid://shopify/Product/15493836571009	natel	iPhone 11 Akku-Hülle 5000 mAh
+2026-09-23	gid://shopify/Product/15493848629633	natel	Tragbares Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15493849973121	natel	Multifunktionaler Handyhalter aus Leder
+2026-09-23	gid://shopify/Product/15493870944641	natel	Leder-Handytasche für Herren, Crossbody
+2026-09-23	gid://shopify/Product/15493927174529	natel	Duale USB-Katzen-Speichersticks für Handy & PC
+2026-09-23	gid://shopify/Product/15495012548993	natel	Handy- & Tablet-Ladegerät
+2026-09-23	gid://shopify/Product/15495064879489	natel	Magnetisches Multifunktions-Handy-Ladegerät
+2026-09-23	gid://shopify/Product/15495082279297	natel	Teleskopisches 240W USB-C Ladekabel für iPhone 15
+2026-09-23	gid://shopify/Product/15495083032961	natel	Mechanische Gaming-Tasten für Smartphones
+2026-09-23	gid://shopify/Product/15495105839489	natel	Wasserdichter Smartphone-Halter für Badezimmer
+2026-09-23	gid://shopify/Product/15495112491393	natel	Bluetooth Controller für Android & iPhone
+2026-09-23	gid://shopify/Product/15495115047297	natel	Plüsch-Elefant Handyhüllen-Hundespielzeug
+2026-09-23	gid://shopify/Product/15495127335297	natel	Beitong G2 Kombi-Gamepad für Android-Smartphones
+2026-09-23	gid://shopify/Product/15495129072001	natel	Magic Cart Bluetooth Gamepad für Smartphones
+2026-09-23	gid://shopify/Product/15495152271745	natel	Wireless Controller Handyhalterung P5
+2026-09-23	gid://shopify/Product/15495187005825	natel	Lern-Smartphone mit Musik und Vibration
+2026-09-23	gid://shopify/Product/15495188414849	natel	Kinder-Spielzeug-Handy mit Touch & Musik
+2026-09-23	gid://shopify/Product/15495192379777	natel	TF (micro-SD) Speicherkarte fürs Handy
+2026-09-23	gid://shopify/Product/15495224918401	natel	Stretch Gamepad für Android-Smartphones
+2026-09-23	gid://shopify/Product/15495225868673	natel	Bluetooth Mobile Gaming Controller für iPhone
+2026-09-23	gid://shopify/Product/15495319847297	natel	Audio-Adapter iPhone auf USB-C (Digital)
+2026-09-23	gid://shopify/Product/15495320666497	natel	Kabelloses Desktop-Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15496289485185	natel	Mavic Pro Fernbedienung Handy-/Tablet-Halterung
+2026-09-23	gid://shopify/Product/15496303673729	natel	X3 Bluetooth Gamecontroller für Smartphones
+2026-09-23	gid://shopify/Product/15496304132481	natel	Bluetooth Gamecontroller für Smartphone & Tablet
+2026-09-23	gid://shopify/Product/15496383431041	natel	Kabelloses 3-in-1 Ladegerät für Smartphone, Watch, Earbuds
+2026-09-23	gid://shopify/Product/15496384479617	natel	Kabelloses Lade-Dock für Smartphone
+2026-09-23	gid://shopify/Product/15496384577921	natel	4-in-1 Wireless Charger für iPhone & Zubehör
+2026-09-23	gid://shopify/Product/15496384708993	natel	3-in-1 Wireless Charger für Handy, Watch, Headset
+2026-09-23	gid://shopify/Product/15496426619265	natel	Bluetooth Mini-Controller für Smartphone & Tablet
+2026-09-23	gid://shopify/Product/15496498217345	natel	Multifunktionaler Veloscheinwerfer mit Handyhalterung
+2026-09-23	gid://shopify/Product/15496515420545	natel	25W Dual Wireless Charger für iPhone
+2026-09-23	gid://shopify/Product/15496542028161	natel	Fauler Handy-Halter 203B
+2026-09-23	gid://shopify/Product/15496608842113	natel	Kabelloses Einbau-Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15496611168641	natel	Handy- und Uhrenhalter aus Holz
+2026-09-23	gid://shopify/Product/15496704328065	natel	Kabelloser Powerbank Handyhalter
+2026-09-23	gid://shopify/Product/15496705769857	natel	Mobiles Wireless Gamepad für Smartphones
+2026-09-23	gid://shopify/Product/15496706195841	natel	Mobiler Gaming Controller für Smartphone
+2026-09-23	gid://shopify/Product/15496848638337	natel	Gaming-Controller für Smartphone
+2026-09-23	gid://shopify/Product/15496892154241	natel	Bluetooth-Controller mit Kühlfunktion für iPhone
+2026-09-23	gid://shopify/Product/15496892547457	natel	Gaming-Griff für Smartphones
+2026-09-23	gid://shopify/Product/15497044525441	natel	Gamepad-Tasten für dein Smartphone
+2026-09-23	gid://shopify/Product/15497150857601	natel	Gaming Trigger-Griff für Smartphones
+2026-09-23	gid://shopify/Product/15497378169217	natel	Handytasche aus Leder für die Hüfte
+2026-09-23	gid://shopify/Product/15497433514369	natel	Handyhalterung mit kabelloser Ladefunktion
+2026-09-23	gid://shopify/Product/15497438298497	natel	2-in-1 Aluminium Ladestation für Handy & Uhr
+2026-09-23	gid://shopify/Product/15497444229505	natel	Cross Country Laufrucksack mit Handyfach
+2026-09-23	gid://shopify/Product/15497449963905	natel	Handy-Signalisolationsbeutel
+2026-09-23	gid://shopify/Product/15497453797761	natel	Display-Einheit für iPhone X / XS / XR
+2026-09-23	gid://shopify/Product/15497472115073	natel	Solar-Ladegerät für Handy & Tablet
+2026-09-23	gid://shopify/Product/15499059495297	natel	Kabelloses Ladegerät fürs Smartphone
+2026-09-23	gid://shopify/Product/15499527979393	natel	Handyhalter mit Ladefunktion
+2026-09-23	gid://shopify/Product/15499594334593	natel	Dreifach-Ladestation für Handy und Armband
+2026-09-23	gid://shopify/Product/15499786682753	natel	Grosses iPhone-Batterie-Set
+2026-09-23	gid://shopify/Product/15500000625025	natel	Dreifach-Ladestation für Handy, Armband und Kopfhörer
+2026-09-23	gid://shopify/Product/15500282659201	natel	Kabelloses Ladegerät für Smartphone, vertikal
+2026-09-23	gid://shopify/Product/15500403933569	natel	Drehbarer, wasserdichter Smartphone-Halter
+2026-09-23	gid://shopify/Product/15500438700417	natel	Luftkabel-Lader für Smartphone, Armband und Kopfhörer
+2026-09-23	gid://shopify/Product/15500510560641	natel	Kabelloses Vertikal-Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15500511216001	natel	Kabelloses Ladegerät für Smartphones
+2026-09-23	gid://shopify/Product/15500904857985	natel	Kabelloses 10W/15W Ladegerät für iPhone
+2026-09-23	gid://shopify/Product/15500905087361	natel	Kabelloses Ladegerät für iPhone Modelle
+2026-09-23	gid://shopify/Product/15500927271297	natel	Mini Powerbank für Smartphones (USB-C)
+2026-09-23	gid://shopify/Product/15500928713089	natel	Kabelloses Ladegerät mit Nachtlicht & Handyhalter
+2026-09-23	gid://shopify/Product/15500938674561	natel	Handy-Tasche
+2026-09-23	gid://shopify/Product/15500955386241	natel	Powerbank für iPhone – Cartoon Design
+2026-09-23	gid://shopify/Product/15500968526209	natel	HD Panorama-Überwachungskamera für Smartphones
+2026-09-23	gid://shopify/Product/15501659832705	natel	Lötfreies Laptop- & Handy-Netzteil mit Akkubox
+2026-09-23	gid://shopify/Product/15501848445313	natel	Half Moon LED-Nagellampe mit Handyhalterung
+2026-09-23	gid://shopify/Product/15503086322049	natel	UV-Sterilisator für Handy & Masken
+2026-09-23	gid://shopify/Product/15503124332929	natel	3-in-1 Wireless Charger für Handy, Kopfhörer & Uhr
+2026-09-23	gid://shopify/Product/15503164047745	natel	VR-Brille für Smartphone
+2026-09-23	gid://shopify/Product/15503259074945	natel	Handy-Signalverstärker für Zuhause
+2026-09-23	gid://shopify/Product/15504198992257	natel	Smart-Armband für iPhone & Android
+2026-09-23	gid://shopify/Product/15504228712833	natel	iPhone 12
+2026-09-23	gid://shopify/Product/15504425288065	natel	Magnetische 10000mAh Powerbank für iPhone
+2026-09-23	gid://shopify/Product/15504793731457	natel	Magnetische Handyhalterung mit kabellosem Ladegeraet
+2026-09-23	gid://shopify/Product/15505971413377	natel	Handytasche Crossbody – wasserdicht & robust
+2026-09-23	gid://shopify/Product/15506225856897	natel	Bauchmuskelrad mit Handyhalterung
+2026-09-23	gid://shopify/Product/15506280284545	natel	Magnetische Handy-Tasche für Trinkflaschen
+2026-09-23	gid://shopify/Product/15506298962305	natel	Bluetooth Stativ für iPhone Live-Selfies
+2026-09-23	gid://shopify/Product/15507485622657	natel	Plüsch Kissen Halterung für Handy & Tablet
+2026-09-23	gid://shopify/Product/15507486572929	natel	Bluetooth-Stativ mit Fernbedienung für Smartphones
+2026-09-23	gid://shopify/Product/15507487490433	natel	Drehbarer Handgelenk-Halter fürs Smartphone
+2026-09-23	gid://shopify/Product/15507488670081	natel	Multifunktionaler magnetischer Spiegel-Handyhalter
+2026-09-23	gid://shopify/Product/15508404896129	natel	Handy-Kontrollbox gegen Internet-Sucht
+2026-09-23	gid://shopify/Product/15508420854145	natel	Wasserdichte Handybox zur Wandmontage
+2026-09-23	gid://shopify/Product/15509390885249	natel	Metallarmband mit sieben Perlen für iPhone
+2026-09-23	gid://shopify/Product/15510314811777	natel	Digitales Zeichenbrett für Smartphone und PC
+2026-09-23	gid://shopify/Product/15510339387777	natel	Handy-Kühler mit leisem Lüfter
+2026-09-23	gid://shopify/Product/15510912827777	natel	USB-C Hub für iPad Pro & iPhone
+2026-09-23	gid://shopify/Product/15512183112065	natel	Stativ-Querstange für Kamera & Handy
+2026-09-23	gid://shopify/Product/15512402035073	natel	Kabelloses Lade-Pad für Smartphones
+2026-09-23	gid://shopify/Product/15516069364097	natel	Handliche Leder-Umhängetasche fürs Smartphone
+2026-09-23	gid://shopify/Product/15518598857089	natel	Retro-Handytasche aus Leder
+2026-09-23	gid://shopify/Product/15518700044673	natel	Magnetisches kabelloses Ladegerät für Handy
+2026-09-23	gid://shopify/Product/15519833751937	natel	Herzfrequenz-Tracker für iPhone
+2026-09-23	gid://shopify/Product/15519834243457	natel	Smart-Armband K7 mit Runddisplay für iPhone
+2026-09-23	gid://shopify/Product/15519836897665	natel	Carbon Fiber Lederarmband für iPhone
+2026-09-23	gid://shopify/Product/15520384614785	natel	iPhone T2 Dreieck-Kreuzschraube für Präzisionsarbeiten
+2026-09-23	gid://shopify/Product/15520411222401	natel	Mini LED Beamer für Handy & Heimkino
+2026-09-23	gid://shopify/Product/15521244840321	natel	Kleine Umhängetasche für Handy und Essentials
+2026-09-23	gid://shopify/Product/15522210644353	natel	YG530 Mini Beamer mit Smartphone-Synchronisation
+2026-09-23	gid://shopify/Product/15522210972033	natel	Full HD Smart Mini Beamer mit Handy-Konnektivität
+2026-09-23	gid://shopify/Product/15523938468225	natel	WLAN Handy Beamer
+2026-09-23	gid://shopify/Product/15524853645697	natel	Leder-Gürteltasche für Falt-Smartphones
+2026-09-23	gid://shopify/Product/15524873896321	natel	Umhängetasche für Handy
+2026-09-23	gid://shopify/Product/15524884054401	natel	Handyhülle für OnePlus 8T, Schwarz
+2026-09-23	gid://shopify/Product/15525502583169	natel	Faltbare Yogamatte mit Handyhalter
+2026-09-23	gid://shopify/Product/15525513658753	natel	HD‑WLAN‑Tragbarer Handy‑Projektor
+2026-09-23	gid://shopify/Product/15447560749441	trottinett	Universal-Ladegerät für 60V E-Scooter/Bike
+2026-09-23	gid://shopify/Product/15448953880961	trottinett	Plum Scooter Helm für Outdoor-Sport
+2026-09-23	gid://shopify/Product/15449167757697	trottinett	Wasserdichte Falttasche für E-Scooter
+2026-09-23	gid://shopify/Product/15450252018049	trottinett	Bagger-Scooter
+2026-09-23	gid://shopify/Product/15454090559873	trottinett	Kinder Balance Scooter mit Helm
+2026-09-23	gid://shopify/Product/15454105239937	trottinett	Falt-Helm für Scooter & Fahrrad
+2026-09-23	gid://shopify/Product/15493101748609	trottinett	Digitaler Schlüssel für E-Scooter
+2026-09-23	gid://shopify/Product/15493276467585	trottinett	Regendichter Windschutz für E-Scooter & Töffli
+2026-09-23	gid://shopify/Product/15493319590273	trottinett	72V20AH E-Scooter/Auto Ladegerät
+2026-09-23	gid://shopify/Product/15493498798465	trottinett	Ersatz-Ladegerät für Xiaomi E-Scooter · M365, Pro, ES-Serie, G30
+2026-09-23	gid://shopify/Product/15496498708865	trottinett	Faltbarer LED-Scheinwerfer für E-Scooter & Bikes
+2026-09-23	gid://shopify/Product/15496514699649	trottinett	Ladegerät für Scooter und Balance Boards
+2026-09-23	gid://shopify/Product/15497464152449	trottinett	Faltbare, wasserdichte Lenkertasche für Scooter
+2026-09-23	gid://shopify/Product/15499809980801	trottinett	Ersatzbatterie für Scooter
+2026-09-23	gid://shopify/Product/15499810406785	trottinett	E-Scooter Lithium-Akku
+2026-09-23	gid://shopify/Product/15503291875713	trottinett	LED-Sicherheitsweste für E-Scooter
+2026-09-23	gid://shopify/Product/15503908340097	trottinett	Tragbarer Scooter-Tragegurt
+2026-09-23	gid://shopify/Product/15510929801601	trottinett	Wasserdichte Lenkertasche für Velo & Scooter
+2026-09-23	gid://shopify/Product/15522165555585	trottinett	EVA Hardcase Lenkertasche für Velo und E-Scooter
+2026-09-23	gid://shopify/Product/15522625094017	trottinett	E-Scooter Ladegerät 42 V / 2 A · EU-Stecker, Xiaomi-Anschluss
+2026-09-23	gid://shopify/Product/15447972413825	finken	Kinder- und Erwachsenen-Hausschuhe mit Tiermotiven
+2026-09-23	gid://shopify/Product/15449430131073	finken	Paarweise Hausschuhe
+2026-09-23	gid://shopify/Product/15450730889601	finken	Leichte Anti-Rutsch Hausschuhe für Paare
+2026-09-23	gid://shopify/Product/15450735411585	finken	Stoff-Hausschuhe mit Schleife und weicher Sohle
+2026-09-23	gid://shopify/Product/15450739278209	finken	Bequeme Hausschuhe mit weicher Sohle
+2026-09-23	gid://shopify/Product/15450835943809	finken	Winter Hai-Slippers – Flauschige Hausschuhe
+2026-09-23	gid://shopify/Product/15451480129921	finken	Flauschige Hausschuhe «Kürbis» · Halloween-Plüsch-Slipper
+2026-09-23	gid://shopify/Product/15452599681409	finken	Weihnachtliche Hausschuh
+2026-09-23	gid://shopify/Product/15453999792513	finken	Kinder-Hausschuhe mit dicker Sohle
+2026-09-23	gid://shopify/Product/15454106222977	finken	Warme Cartoon-Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15462222791041	finken	Lammwoll-Hausschuhe für Kinder mit Anti-Rutsch-Sohle
+2026-09-23	gid://shopify/Product/15462222823809	finken	Flauschige Kinder Hausschuhe für den Winter
+2026-09-23	gid://shopify/Product/15466011558273	finken	Warme Winter-Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15478613311873	finken	Kinder Plüsch-Hausschuhe
+2026-09-23	gid://shopify/Product/15479484678529	finken	Boccon Hausschuhe aus Wildleder mit langem Fell
+2026-09-23	gid://shopify/Product/15479512727937	finken	Motorrad-Hausschuhe für Herren
+2026-09-23	gid://shopify/Product/15479514726785	finken	EVA Hausschuhe für Drinnen und Draussen
+2026-09-23	gid://shopify/Product/15483936473473	finken	Plüsch-Pantoffeln
+2026-09-23	gid://shopify/Product/15485455630721	finken	Kinder Hausschuhe Pinguin
+2026-09-23	gid://shopify/Product/15491712909697	finken	Herren Hausschuhe
+2026-09-23	gid://shopify/Product/15492030267777	finken	Warme Baumwoll-Hausschuhe für Damen
+2026-09-23	gid://shopify/Product/15493917245825	finken	Kinder-Hausschuhe aus Baumwolle mit weicher Sohle
+2026-09-23	gid://shopify/Product/15495189660033	finken	Warme Pinguin-Fleece-Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15495189954945	finken	Baby-Hausschuhe aus Lammfell-Imitat
+2026-09-23	gid://shopify/Product/15495236780417	finken	Kinder Hausschuhe geschlossen Zehenbereich
+2026-09-23	gid://shopify/Product/15496392049025	finken	Gefütterte Anti-Rutsch Winter-Hausschuhe für Herren
+2026-09-23	gid://shopify/Product/15500256084353	finken	Dinosaurier-Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15501846020481	finken	Romantische Hausschuhe
+2026-09-23	gid://shopify/Product/15502691565953	finken	Kinder Hausschuhe Socken – Atmungsaktiv & Rutschfest
+2026-09-23	gid://shopify/Product/15503126495617	finken	Kindergarten-Hausschuhe für Babys und Kinder
+2026-09-23	gid://shopify/Product/15503284896129	finken	Warme Cartoon-Hausschuhe mit runder Kappe
+2026-09-23	gid://shopify/Product/15503844082049	finken	Warme Nylon-Samt Hausschuhe
+2026-09-23	gid://shopify/Product/15504012771713	finken	Prinzessinnen-Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15504150430081	finken	DIY-Hausschuhe zum Selbermachen
+2026-09-23	gid://shopify/Product/15504150659457	finken	Gepolsterte Kinder-Hausschuhe mit Tiermotiven
+2026-09-23	gid://shopify/Product/15506527650177	finken	Warme Winter Hausschuhe für Damen
+2026-09-23	gid://shopify/Product/15508462862721	finken	Cartoon Hausschuhe für Kinder
+2026-09-23	gid://shopify/Product/15509346091393	finken	Warme Kinder-Hausschuhe aus Baumwolle
+2026-09-23	gid://shopify/Product/15509347434881	finken	Warme Winter-Hausschuhe
+2026-09-23	gid://shopify/Product/15510316188033	finken	Damen Plattform‑Pantoffeln, rutschfest, atmungsaktiv
+2026-09-23	gid://shopify/Product/15521219772801	finken	Bequeme Herren-Hausschuhe zum Hineinschlüpfen
+2026-09-23	gid://shopify/Product/15521231044993	finken	Kinder Sandalen & Hausschuhe mit Lochmuster
+2026-09-23	gid://shopify/Product/15523905372545	finken	Wasserdichte Kinder-Hausschuhe mit dicker Sohle
+2026-09-23	gid://shopify/Product/15524700782977	finken	Beheizbare Hausschuhe mit Temperaturregelung
+2026-09-23	gid://shopify/Product/15525142266241	finken	Plüsch Hausschuh für Herren – flache Sohle
+2026-09-23	gid://shopify/Product/15525224415617	finken	Hasen-Hausschuhe für Kinder, Winter

@@ -42,7 +42,7 @@ finden können» bleibt Plural) und Modal + Infinitiv («du kannst sie haben» b
 auch für Konjunktionen am Satzanfang («Wenn Sie», «Egal, ob Sie») und 2c um 20 Objekt-Verben
 («informiert Sie» → «informiert dich»). Kanarienvögel: 10 Sätze, alle richtig.
 
-**Nachtrag 1 (10:50 UTC) — die Gratisversand-Schwelle war wieder auf 50, still.** Trichter 30 T gemessen:
+**Nachtrag 1 (10:47 UTC, Commit b666a34f9 = 10:47:42 UTC; hier stand zuerst «12:10», dann «10:50») — die Gratisversand-Schwelle war wieder auf 50, still.** Trichter 30 T gemessen:
 1'077 Sitzungen, 15 Warenkorb-Zulagen, **6 Kassen-Starts, 0 Abschlüsse**; keine abgebrochene Kasse mit
 E-Mail seit 22.08. → die 6 gingen auf der ersten Kassenseite (Adresse/Versand) wieder. Versandprofil live
 gelesen: **«Kostenloser Versand ≥45» AUS, «≥50» AN** — genau die Umstellung, die am 15.09. als Cowork-Punkt 1
@@ -173,6 +173,426 @@ bleibt in der Warteschlange). **Dann die ersten 10 Verdachtsfälle des Reparatur
 **Nachtrag 14 (20:15 UTC) — Social-Stopp aufgehoben, erster Post nach fünf Wochen.** Der Betreiber löschte `dropship/_SOCIAL_STOPP` selbst auf GitHub (Commit 84799cb8b), nachdem die Anleitung auf die Datei statt auf ihre Verlaufsseite zeigte. Vor dem Post gemessen, nicht geglaubt: Seiten-Token gültig (`debug_token` is_valid, expires 0 = Seiten-Token ohne Ablauf, 36 Scopes), der DRY-Lauf nannte `cjreel-15449433145729` (Augenbrauen-Stempel-Kit); das Produkt ist ACTIVE, veröffentlicht 07.09., alle Varianten CONTINUE/untracked (= kaufbar trotz `totalInventory 0`), das Video antwortet 206 auf einen Range-Request (der erste `curl -I` zeigte nur «200 Connection Established» des Proxys — das ist die Antwort des Tunnels, nicht der Datei). **Der Reel-Poster prüft den Produktstatus NICHT selbst** (grep ACTIVE → 0) — die Regel «vor Post prüfen, dass das Produkt noch ACTIVE ist» lebt nur im Kopf; für den Autopilot-Betrieb gehört sie ins Werkzeug (offen). Reel live: IG DdmhRxtjUIZ, FB 2235749107209202, Ledger + CSV quittiert. Der Runner `social_autopilot.sh` stand im Repo, aber nicht in /tmp; `engine_keepalive.sh` startet ihn jetzt wieder, weil die Stopp-Prüfung leer läuft.
 
 **Nachtrag 15 (20:40 UTC) — Verbesserungsrunde 4: vier höfliche Schreiber, ein leerer Eimer.** Gemessen: Shopify-Eimer **95 von 2'000 Punkten**, während vier Dauerläufer schrieben (produkttexte_du_form, fortura_image_backfill, cj_reviews_import, cj_video_reel_engine); in derselben Stunde starben zwei Tages-Wächter mit «12x gedrosselt (Eimer dauerhaft leer)»: `cj_versand_ch_guard` (die Ghost-Sale-Klasse) und `lagerstand_hygiene`. Jeder Schreiber schlief brav bei THROTTLED — und trank danach sofort weiter; zusammen hielten sie den Eimer auf null. Die Schranke vom 21.09. begrenzt, wie viele STARTEN, nicht, wie viel ein Laufender TRINKT. Fix = `automation/eimer_etikette.py` + `.mjs`: nach JEDER Antwort den throttleStatus lesen, unter 600 Punkten warten, bis 1'000 zurück sind (aus restoreRate gerechnet, Deckel 20 s); eingebaut in die vier Schreiber (Python über `produkttexte_du_form.gql`, das auch Reparatur/Liechtenstein/Ratgeber nutzen). Der laufende Du-Form-Lauf wurde dafür gestoppt (idempotent, der Aufseher startet ihn mit Etikette neu). Eimer-Proben 60 s nach dem Stopp: 1999 1999 1999 1999 1999 1999. Tages-Wächter bleiben ohne Etikette — sie sollen den Boden VORFINDEN, nicht ihn schaffen. Nebenbei: der Liechtenstein-Lauf ist FERTIG (1'075 ersetzt, 119 ohne = 1'194), der Aufseher hat ihn nach dem Neustart selbst weitergeführt. **Höflichkeit je Prozess summiert sich nicht zu Höflichkeit am gemeinsamen Eimer — der Boden muss eine Regel jedes Massen-Schreibers sein.**
+
+**Nachtrag 16 (21:45 UTC) — «pure automation … mehrmals täglich überall»: die Social-Pipeline war an drei Stellen tot, und keine davon stand in einem Log.** Betreiber-Entscheide heute Abend, wörtlich: «bis dann pushe überall sozail accounts», «alle die verbunden sind», «täglich mehrmals überall», «pure automation mit verbesserung und analyse und lernen mehrmals täglich», «wen du alles sauber machst mache ich später in 1 monate ads», «nutze sonst auch google speicherplatz». Gemessen, bevor gebaut wurde: (1) der Reel-Motor meldete seit Wochen «neue Reels: 0 | gescannt: 1115» — der Tag `video-hit` steht an JEDEM Import, echte Videos haben 144 von 34'824 Produkten; (2) der Shopify-Dateispeicher ist voll, ein CDN-Upload endet mit «Verarbeitung FAILED» — der Reel-Motor hätte auch mit Videos nichts ablegen können; (3) die statische ffmpeg-Fassung im Container hat KEIN `drawtext` — die alte `make_reel.sh` konnte hier gar nicht rendern (die 83 Reels stammen aus einer früheren Umgebung). Gebaut: Videos direkt von CJ (`queryVideosByProductId`, Download nur mit Referer; Quote gemessen 1 von 25), Text als PNG-Ebenen aus PIL (`reel/overlay.py`: Wortmarke, Hook 3 s, Titel zweizeilig, Preis, Fusszeile), Ablage im Repo `social/reels/` — Instagram nimmt `raw.githubusercontent.com` an (Container FINISHED, ohne zu veröffentlichen gemessen; Content-Type ist `application/octet-stream`, stört Meta nicht). Google Drive über den Konnektor taugt NICHT als Ablage: kein «jeder mit Link», nur E-Mail-Freigaben, und 2 MB Base64 je Aufruf. Übergang bis zum Grow-Plan (~21.10.), dann zurück auf den CDN. Lernschleife `social_lernen.mjs` (IG-Insights, Score = Reichweite + 3·Likes + 5·Kommentare/Speichern/Teilen): 40 Posts, Median 18 (!), die vier besten sind Reels, Themen haustier 2.1 / beauty 2.1 / schmuck 1.05 / home 0.8 — der Reel-Motor gewichtet seine Hooks daraus. Kadenz: Bild 6 h, Reel 8 h, TikTok 12 h (Metricool, Token kommt mit dem nächsten Neustart), Lernen 6 h, Nachschub 12 h; Runner 2 Reels alle 6 h. **Ein Motor, der «0 neue» meldet, ist kein Motor, der nichts findet — bis man drei Ebenen tiefer gemessen hat: Quelle, Ablage, Werkzeug.**
+
+**Nachtrag 17 (22:30 UTC) — «fokusiere tiktok und insta dann fb»: der Engpass war die Reel-Versorgung, und die Queue log über ihren Bestand.**
+Betreiber 21:57 UTC. Gemessen statt losgepostet: (1) **14 von 22 «ready»-Reels antworteten 404** — die Shopify-CDN-Dateien
+der alten Reihen (`revid-*`, `sie-ihn-*`) sind weg, kein Poster prüfte die Adresse vor dem Post → `archived-deadurl`, 8 bleiben
+(7 alte `cjreel-154494…` auf dem CDN + 1 neues im Repo). Beide Reel-Poster (`meta_reel_post`, `metricool_tiktok_post`) holen jetzt
+vor dem Post 1 KB der Adresse: 4xx → `archived-deadurl` und nächster Kandidat, 5xx/Timeout → nur überspringen.
+(2) **Der Reel-Motor fand 1 Video je 80 CJ-Anfragen** (`queryVideosByProductId` je Produkt blind). GEMESSEN: `product/list`
+trägt je Produkt **`isVideo`** — aber NUR in der nach `categoryId` (oder `pid`) gefilterten Liste; ungefiltert steht dort `null`
+(null = nicht berechnet, nicht «nein»). `pageSize` max 200, `isVideo=1` als Parameter filtert nicht (gleiche total 1'382'474),
+mehrere pids in einem Aufruf: 0 Treffer, `productVideo` in `product/query` ist selbst beim Video-Produkt null, Offset-Deckel
+«the max offset is 6000» = 30 Seiten je Kategorie. Neu `automation/cj_video_index.mjs`: blättert die 578 Kategorien mit
+persistentem Cursor (150 Aufrufe je Lauf), Schnittmenge mit dem Shop-Ledger → `dropship/_cj_video_index.json`. Die CJ-Reihenfolge
+war nutzlos (erste zwei Kategorien: 7'690 Produkte, 34 Videos, **0 im Shop**) → einmalige Stichprobe von 120 eigenen aktiven
+Produkten (`product/list?pid=`) ordnet die Kategorien um: Fitness 17, Smart Watches 13, Pet Feeding 12, Pillows 11 … Ergebnis des
+ersten Laufs: 80 Aufrufe, 15'646 Produkte, 216 mit Video, **70 davon im Shop**; Motor DRY: 33 Kandidaten, **3 von 3 gefragten
+hatten ein Video** (vorher 1 von 80). Runner baut den Index vor jedem Lauf und rendert BATCH 3 (Bedarf ~5–6 Reels/Tag, weil
+jede Plattform ein EIGENES Reel bekommt — Doppelpost-Verbot gilt plattformübergreifend).
+(3) Beim ersten Index-Kandidaten mit **UUID-pid** (`F5BA858E-…`) stand «Hook: undefined»: `Number(pid.slice(-3))` ist für Buchstaben
+NaN → Hook, Hashtag-Pool UND Musik (`automation/music/undefined`) wären leer gewesen; jetzt `num(pid)` (31er-Hash) an allen vier Stellen.
+(4) **Metricool-Token ist nicht in der Session**: `METRICOOL_USER_TOKEN` leer, kein `/tmp/metricool.env`, kein Prozess trägt ihn
+(gemessen über /proc) — der Betreiber hat ihn in die Umgebungs-Einstellungen eingetragen, die erreichen eine laufende Session
+nicht (vierte Messung dieser Klasse). TikTok bleibt bis zum Token im Chat stumm; alles andere steht bereit (Poster mit DRY,
+Adressprüfung, Kadenz 12 h im Autopilot).
+**Lehren:** (a) «ready» ist eine Aussage über den Eintragszeitpunkt, nicht über heute — ein Poster prüft die Adresse, bevor er sie
+einer Plattform gibt. (b) Ein Feld, das eine API nur in EINER Aufrufform füllt, sieht in der anderen wie «nein» aus; erst mit
+gefiltertem und ungefiltertem Aufruf vergleichen, bevor man ein Merkmal für tot erklärt. (c) Wer nach Katalog-Reihenfolge sucht,
+sucht im falschen Regal — die eigenen Produkte sagen, welche Regale zählen. (d) Jede Zahl aus einer pid muss auch für
+Buchstaben-pids funktionieren; `Number()` schweigt bei NaN, das Ergebnis heisst «undefined» und landet im Dateipfad.
+
+**Nachtrag 18 (23:05 UTC) — Der erste Index-Lauf des Motors baute sechs Reels und verwarf fünf: zwei git-Prozesse im selben Arbeitsbaum.**
+Runner-Lauf 22:19: Index 150 Aufrufe → **285 Shop-Produkte mit Video** (Cursor 8/578), Motor rendert Reel um Reel — ab dem dritten
+«Push fehlgeschlagen — Reel verworfen» bei JEDEM weiteren, fünf gerenderte Reels weg. Gemessen: `.git/rebase-merge/` mit nur
+einer `autostash`-Datei (22:28), `git status` «You are currently rebasing», HEAD 3 Commits vor origin, sieben Reel-Dateien als
+gelöscht (der Motor löscht die Datei nach «Push fehlgeschlagen», der Commit war aber längst da). Um 22:28 hat der **Autocommitter**
+(Merge-basiert, alle 5 Min, ohne Sperre, mit `rm -f .git/index.lock`) parallel zum **Rebase des Motors** gearbeitet; der
+verklemmte Zustand liess danach jeden Rebase scheitern, und der `--abort` des Motors setzte drei Ledger auf den Commit-Stand
+zurück — **119 Zeilen `_du_form_done.txt` und der frischere Index (285 statt 70) lagen nur noch im Autostash**.
+Reparatur: `git rebase --quit` (HEAD bleibt, Autostash → Stash-Liste), Ledger-Union aus dem Stash (119 Zeilen ergänzt, Index
+neuere Fassung), Reel-Dateien aus HEAD zurück, drei Commits gepusht, dann der neue **Nachtrag-Modus des Motors** (Datei im Repo ohne
+Zeile → Adresse prüfen, Produkt ACTIVE, Caption bauen, Zeile + Ledger): **7 Zeilen nachgetragen**, Queue jetzt 18 ready.
+Dauerhaft: **eine Repo-Sperre `/tmp/git_repo.lock`** um jede git-Folge — Motor (`flock -w 180`, räumt einen verwaisten
+Rebase-Zustand mit `--quit` selbst) und Autocommitter (`flock -w 120`, wartet bei Rebase-Zustand, löscht `index.lock` nur ohne
+Halter). Meine eigenen Push-Folgen laufen ab jetzt ebenfalls unter dieser Sperre.
+**Lehren:** (a) Zwei Automaten, die im selben Arbeitsbaum committen, brauchen EINE Sperre — sonst ist der zweite Push nicht «manchmal
+langsam», sondern der Zustand des Repos kaputt, und alle Folgeläufe scheitern mit einer Meldung, die nach Netz klingt. (b) Ein
+`--abort` nach dem Fehler ist keine Reparatur: er setzt Dateien zurück, die andere Prozesse inzwischen weitergeschrieben haben; die
+Wahrheit lag im Stash. (c) «Reel verworfen» darf keine Datei löschen, die schon committet ist — der Nachtrag-Modus macht aus einem
+verwaisten Commit wieder eine Queue-Zeile, statt CJ-Download und Render zu wiederholen.
+
+**Nachtrag 19 (23:40 UTC) — Gegenprüfung fremder Sessions: 46 Behauptungen, 14 bestätigt, 29 teilweise, 3 widerlegt — und 20 eigene Irrtümer.**
+Quellen: ads-search (7), lernen (10), ritchie (9), lage (10), cowork (10). Jede Behauptung an Primärquellen gemessen (Shopify
+Admin-API, CJ-API, Judge.me-API, Gmail `in:anywhere`, git, GitHub-/GitLab-REST, Logs); Fremdzahlen ohne eigene Messung als solche
+markiert. Synthese im Scratchpad (`fremd/synthese.md`, nicht im Repo); Einsprüche an ads-search und lernen stehen in
+`SHARED-MEMORY.md` («Einsprüche 22.09.»), Betreiber-Klicks C–H in `dropship/COWORK-BEFEHL.md`.
+
+*Eigene Irrtümer, gefunden beim Prüfen der anderen — jeweils mit Korrektur (Gedächtnis am 23.09. nachgezogen):*
+- #1012/#1013/#1015 als «externe Wiederkäufer» → EINE Kunden-ID des Betreibers (numberOfOrders 6). Mission-Zahl «5 Kunden
+  (08.07.)» → **4 behaltene externe** (#1005/#1011/#1014/#1018); Zählregel `customer.id` + `numberOfOrders`.
+- «orderClose #1004 mutmasslich der Betreiber» → `order.events{appTitle}` = «Shopify Claude Connector App», 14.09. 10:50:04Z.
+- «Der Auto-Committer hat die Bankdaten gepusht» → er hat sie ENTFERNT (5521d6ca8); Einbau war 07a5b8c59. Und sie stehen nicht
+  «nur in der Historie»: **LIVE auf main seit 18.09. 20:46 UTC** (Squash 178ddbf4e, raw 200).
+- Nachtrag 1 (Versand) trug «12:10 UTC» → Commit b666a34f9 ist 10:47:42 UTC.
+- «Automaten-Krieg um die Versandschwelle» → nur wir haben einen Automaten (Aufseher `--scharf`); drüben steht eine
+  Gedächtnis-Regel (Commit e2398bfe3, 09:35:51Z). Kein Rückstellen seit 10:47 gemessen; jeder `--scharf` legt aber eine NEUE
+  Methodendefinition an (Profil Domestic: 5).
+- «neue FAILED-Datei = Reel-/Slide-Uploader» → unsere eigene CDN-Sonde (GenericFile 77290093969799, Commit 4baafa6d1).
+- «Fehlertexte der Autopilot-Kanäle von hier nicht lesbar» (17.09.) → sie stehen in der Shopify-Mail vom 19.09. 13:43Z — im
+  Gmail-PAPIERKORB. `from:shopify` ohne `in:anywhere` ist blind; `get_thread` gibt dort «no permission» → `get_message`.
+- «Microsoft-Blocker gegenstandslos (CH nicht verfügbar)» → die CH-Messung galt der Sales-Channel-App, nicht Autopilots
+  Microsoft-Advertising — unbelegt, nicht erledigt.
+- «Poster-Fix (react-joyride) = Aban-Projekt» → Shop-TikTok-PC-Poster `luxestyle-tt-post.mjs`.
+- «sechs BigBuy-Mails / zwei Auto-Antworten» → 5 / 3 (08., 15., 17.09.); «Guthaben seit 15.07. unverändert» → zuletzt 15.09.
+  gemessen, seit 16.09. Purse-API 401 (Abo-Ende); Bestellnr. 18138327 = bezahlte SEPA-Aufladung 07.07., 18138523 = zweiter,
+  unbezahlter Datensatz.
+- CLAUDE.md «HR pendent → Zefix-PDF/CHE-Nr.» → keine UID, kein HR-Eintrag (LEGAL_NOTICE «Nicht eingetragen»); «Offen:
+  CJ-Dispute» → erledigt (SH2609221642351280900, 22.09. 16:42Z, Pending); «NUR-USER: IG-Bio-Link» → gesetzt; §16e
+  «#1-Hebel Merchant-Ziel-Land / 1'698 Missing shipping» → tot (product.feedback: 0 shipping-Meldungen; Zielland = Markets).
+- Journal 14.09. («Rückgängig … → ACTIVE») und CLAUDE.md-Index lasen sich wie vollzogen → nicht vollzogen (`rueckhol-0914` = 0).
+- «der nächste Lauf holt die Halbhelme zurück» → es gibt KEINEN Automaten mit dem Pool-Kriterium; 4 von 5 Helm-Drafts ohne Grund-Tag.
+- COWORK-BEFEHL «Agenten-Browser: Shopify Admin und BigBuy angemeldet» → nur Pinterest (Auftrag 36); «6 Profile mit
+  Produkten» → 8. SHARED-MEMORY «KLAVIYO-SYNC KAPUTT» (05.07.), «Repo privat (raw=404)» (09.06.), «Actions gesperrt» (6×) →
+  überholt, dort datiert markiert. USER-CHECKLISTE «Social-Stopp bleibt» → veraltet seit 84799cb8b. `_status_cowork.md`
+  «fünf andere Dateien» → sieben; «Für: Claude Code auf Hetzner» → diese Session läuft in der Anthropic-Cloud.
+- Journal-Zeilenverweise (3114, 2720, 1397, 10245 …) driften täglich → nur noch auf Datum + Überschrift verweisen.
+
+*Lehren (jede mit Messung belegt):*
+1. **Judge.me-Token-Asymmetrie:** der öffentliche Token liest nicht (403), schreibt aber (POST 201) — die Test-Bewertung
+   1335720164 ist veröffentlicht. Token-Art per LESE-Aufruf klären (401/403/200); eine Schreib-Gegenprobe nie an der echten
+   Schnittstelle.
+2. **Preisfilter:** `products(query:"price:<10")` und `productsCount` filtern exakt (271 = Bulk); `productVariants` kennt
+   `price:` nicht, unbekannte Felder werden STILL ignoriert → Kanarienvogel `foo:bar` muss eine andere Liste geben, sonst
+   ist der Filter tot.
+3. **`productsCount(limit:null)` + `precision`:** ohne `limit` gibt jede Menge >10'000 «10'000 AT_LEAST» (aktiv wahr 51'326,
+   DRAFT 27'850, gesamt 79'337 EXACT). 19 von 20 Aufrufern in automation/ lesen `precision` nicht; `shop_autopilot.mjs:82`
+   und `shop_pulse.mjs:51` melden 10'000 als «aktiv». Preisbänder sind keine Partition (Mehr-Varianten zählen mehrfach, +5,6 %).
+4. **`title:x` ohne Stern = Ganz-Titel-Vergleich** (`title:helm` = 0 trotz 66 Wort-Treffern; `title:*helm*` = `title:helm*`
+   = 77; Voll-Export Teilstring 214). Zweite Klasse nach `messer` (16.09.).
+5. **`order.events{appTitle}` ist das Urheber-Messgerät:** «Shopify Claude Connector App» = eine Claude-Sitzung via MCP,
+   «Shopify Web/Mobile» = Betreiber. 12 Konnektor-Drafts vom 15.09. so gefunden.
+6. **Shopify-Systemmails liegen im Gmail-Papierkorb** (Autopilot 09./12./19.09., BigBuy-Bestätigung 16.08.); `from:shopify`
+   braucht `in:anywhere`.
+7. **`product.feedback` ist die Google-Diagnose ohne Google-Konto** — 21'485 Meldungen über 51'326 aktive, 0 mit «shipping».
+8. **Ledger ohne `flush` + `pkill` = Loch:** 15 Produkte tragen `cj-nicht-mehr-verfuegbar` ohne Ledger-Zeile (21.09. ~10:22);
+   der 68er-Rückholer wählt aus dem Ledger und sah sie nie. Ledger-Zeile VOR der Mutation oder flush je Zeile.
+9. **Sonde bei vollem Speicher hinterlässt eine Leiche** (GenericFile FAILED) — nur `stagedUploadsCreate` oder
+   `fileCreate`+`fileDelete`; die TikTok-Queue-Datei ist READY mit 14 gestapelten `FILE_STORAGE_LIMIT_EXCEEDED`, unsichtbar für
+   `status:FAILED`.
+10. **Ein Wächter ohne Starter ist ein Bericht** (`verlustbringer.py` seit 15.09. ohne Starter, Ledger eingefroren; zwei
+    Verlustartikel kaufbar in 6 Kanälen).
+11. **Ein Draft ohne Grund-Tag ist für jeden Rückholer unbegründet** — und reaktivierbar. Jeder DRAFT-Schreiber (heute 46
+    Skripte) setzt einen Grund-Tag; Rückholer prüfen die Grund-Tags ALLER Schreiber (Klingen-Ping-Pong: Revive kennt
+    `handklinge-kein-ch-versand` nicht).
+12. **Ein Stillstandszähler zählt Ungestrichenes** — Alter ≠ Dringlichkeit («Versandschwelle wartet seit 05.09.» war am 15.09.
+    endgültig entschieden).
+13. **Ein Diff auf dem Zweig sagt nichts über main** — Bereinigungen auf ALLEN Zweigen per raw-Abruf nachmessen; `git log -S`
+    mit einem deutschen Wort findet keine englische Zeile («account holder»).
+14. **Ein Lage-Vergleich sucht den Sachverhalt, nicht den Wortlaut** — ihr grep «bounce» fand unser «hart abgewiesen / 4.4.1» nicht.
+15. **Werkzeugnamen-Suche findet keine Eigenbauten** (`shop_conversion.mjs` suchte shopify-forms|klaviyo|privy und erklärte das
+    Popup `custom_liquid_lxpopup` für nicht existent) — den Ursprung lesen (footer-group.json, Kommentarkopf strippen);
+    WebFetch bricht auf der 3-MB-Startseite bei ~15k Zeichen ab.
+16. **Journal-Zeilenverweise driften** — auf Datum + Überschrift verweisen.
+
+*Was die anderen besser machen (übernehmen):* lernen — Preiswerkzeug mit `DRY_RUN`-Standard, 30 Selbsttests im Skript,
+«nie senken», Faktor-Deckel (über ×3 nur melden), Live-Änderung an der Kundenseite nachgelesen, ehrliche Kennzeichnung
+«gebaut, selbstgetestet, nie scharf gelaufen»; Marge-Bilanz je Warengruppe statt nur Gesamtzahl; die richtige
+Abonnenten-Abfrage `customerSegmentMembers(query:"email_subscription_status = 'SUBSCRIBED'")` (`customersCount` ignoriert
+den Filter); Vault-Notiz im SELBEN Commit wie der Vorfall (bei uns Rückstand 6 Tage). lage — maschinenlesbare
+Kennzahlen-Zeitreihe mit festen Messzeiten, Bewegungs-Signaturen je Tag-Klasse, Einspruchs-Felder (unsere Ampel ist nur
+Momentaufnahme); Postfach als Quelle. ritchie — Infrastruktur an der REST-API messen (`…/actions/runs?created=A..B`,
+`?event=schedule`). ads-search — kleine wiederholbare QA-Fragen mit Zahl (FAILED-Dateien, Preis-0, Klaviyo je Woche);
+NICHT übernehmen: «FESTE USER-ENTSCHEIDUNG … NIE WIEDER ÄNDERN» ohne prüfbares Zitat. cowork — Datei-Kopf «Für / Stand /
+Gegenprüfung» mit PII-Regel. Alle vier — `wie_pruefen` neben jeder Behauptung: jede Index-Einzeile trägt ab jetzt den
+Ein-Zeilen-Prüfbefehl.
+
+**Nachtrag 20 (23.09. 02:30 UTC) — Bild-Post: Facebook ja, Instagram nein, Zeile «posted» — ein halber Post, der wie ein ganzer aussah.**
+Um 02:08 UTC (direkt nach dem stündlichen Container-Neustart) scheiterte der Instagram-Container des Bild-Posters mit
+9004/2207052 «Only photo or video can be accepted as media type»; Facebook nahm dasselbe Bild an, und weil EIN Kanal gelang,
+schrieb der Poster `posted` in die Zeile — Instagram hätte den Post nie bekommen. GEMESSEN: die Adresse antwortet 200
+image/jpeg (800×800, RGB, progressive), ein neuer Container 20 Minuten später wurde angenommen → vorübergehender Fehler beim
+Abruf durch Meta, kein Dateiproblem. Nachgeholt: Live-Abgleich (0 von 25 Captions), Container → FINISHED → publish
+`18144314986582937` (instagram.com/p/DdnNSHEDMja), Ledger `_posted_media.txt` + CSV `post_url` ergänzt.
+Fix in `social-autopost-meta.mjs`: Instagram ZUERST, bei Fehler ein Wiederholungsversuch nach 20 s; scheitert IG zweimal, wird
+FB NICHT gepostet (die Kanäle laufen sonst auseinander), die Zeile bleibt `ready`, `post_url` zählt «ig-fehler:N», ab 3 →
+Status `ig-fehler`. Reihenfolge = Betreiber-Prioriät (TikTok, Instagram, dann FB).
+**Lehren:** (a) «ein Kanal gelang» ist kein Erfolg für den anderen — ein Status je Zeile muss je Kanal wahr sein, sonst
+verschwindet der wichtigste Kanal still. (b) Direkt nach einem Container-Neustart sind Netzfehler wahrscheinlicher; ein
+einziger Versuch ist dort keine Messung. (c) Nachholen NUR nach Live-Abgleich, nie aus dem Ledger heraus.
+
+**Nachtrag 21 (23.09. 04:25 UTC) — Das Produkt-Tor des Reel-Posters las die CJ-Nummer als Shopify-ID: ein aktives Produkt galt als «existiert nicht mehr».**
+Um 03:48/04:08 UTC verwarf `meta_reel_post` das Projektor-Reel (`cjreel-1443876506416844800`) mit «Produkt existiert nicht
+mehr» und setzte die Zeile auf `produkt-nicht-aktiv` — GEMESSEN: das Produkt ist ACTIVE mit onlineStoreUrl (SKU-Suche
+`sku:CJ-1443876506416844800` → 15525513822593). Ursache: v2-Reels heissen `cjreel-<CJ-pid>` (18–19-stellig oder UUID), das Tor
+fragte jede Zahl als `gid://shopify/Product/<n>` ab → null; bei UUID-pids (`F5BA858E-…`) griff das Tor gar nicht («keine
+Produkt-ID»), der Post lief ohne ACTIVE-Prüfung durch (heute gut gegangen: Futterspender live, IG DdnatlxD0nV + FB
+1064048703271346). Fix in `meta_reel_post.mjs` und `metricool_tiktok_post.mjs`: 12–15-stellig = Shopify-ID direkt, sonst
+SKU-Suche `sku:CJ-<pid>`; Zeile zurück auf `ready`. **Lehre:** ein Bezeichner-Schema, das die Motor-Generation wechselt
+(v1 Shopify-ID, v2 CJ-pid), braucht am Tor eine Form-Erkennung — sonst sperrt das Tor genau die neue Ware aus und lässt die
+unlesbare durch. Nebenbefund: Shopify-Eimer stand um 04:10 bei 77/2'000 (alle Tages-Wächter starten nach dem Neustart
+gleichzeitig) — die Etikette hielt, kein Wächter starb.
+
+**Nachtrag 22 (23.09. 04:35 UTC) — Der Metricool-Token ist angekommen, und der erste TikTok-Post ist geplant: Umgebungsvariablen erreichen die Session doch — nach einem Container-Neustart.**
+Bis 04:07 UTC war `METRICOOL_USER_TOKEN` in fünf Messungen leer; um 04:25 (Container «up 7 min», Neustart 04:18) stand er im
+Prozess-Env. Die Lehre «Umgebungsvariablen erreichen laufende Sessions NICHT» (3× gemessen 14.09.) ist damit präzisiert: sie
+erreichen die Session mit dem nächsten Container-Neustart, nicht sofort — der Betreiber trug den Token am 22.09. ~21:00 ein,
+vier Neustarts (22:xx, 01:07, 02:07, 03:07) brachten ihn nicht, der fünfte (04:18) schon; warum, ist nicht messbar. Regel:
+nach jedem Neustart `env | grep -c <NAME>` messen, statt aus dem Gedächtnis «kommt nicht an» zu schliessen. Nebenbefund: ein
+zweiter Eintrag trägt den **Groq-Schlüssel als Variablen-NAME** mit leerem Wert (Betreiber-Tippfehler) → in den Umgebungs-
+Einstellungen als `GROQ_API_KEY=<wert>` neu anlegen (Punkt I in COWORK-BEFEHL).
+GEMESSEN Metricool: `simpleProfiles?userId=4801419` → Marke **6227837** «allengchour» mit facebook, instagram, youtube,
+pinterest, **tiktok (luxestyle.ch)**, threads. Der Poster trug 6394001 (Altnotiz August, nie belegt); beide IDs antworten
+dem Planer 200 mit leerer Liste — nicht unterscheidbar, massgeblich ist die Probe. Token zusätzlich in `/tmp/metricool.env`
+(600), Poster-Standard 6227837. DRY sauber (Projektor P62, ACTIVE), scharf: Metricool-Post **380476730**, TikTok, autoPublish
+06:37 Europe/Zurich, Planer bestätigt den Eintrag; Zeile `posted-tiktok`. Nachmessung 04:50 UTC per Erinnerung.
+**Lehren:** (a) «kommt nicht an» ist eine Aussage über den Zeitpunkt der Messung — nach jedem Neustart neu messen.
+(b) Eine ID aus einer Notiz ist keine gemessene ID; die API nennt ihre Marke selbst.
+
+**Nachtrag 23 (23.09. 05:05 UTC) — Der erste TikTok-Post ist live — und «posted-tiktok» hiess bis heute nur «geplant».**
+GEMESSEN: `GET /api/v2/scheduler/posts` (Marke 6227837) zeigt Post 380476730 mit `providers[0].status = PUBLISHED`,
+`publicUrl = https://www.tiktok.com/@luxestyle.ch/video/7688585316826877216` (Projektor P62, geplant 06:37 CH, erschienen).
+Damit ist der Weg TikTok-via-Metricool zum ersten Mal Ende-zu-Ende belegt: Token aus der Umgebung, Marke per API
+gemessen, Normalisierung, Planung mit `tiktokData.autoPublish`, Veröffentlichung.
+Der Befund daneben: der Poster schrieb `posted-tiktok` **nach der Planung**, nicht nach der Veröffentlichung. Wäre
+TikTok den Post verweigert (fehlende Direct-Post-Rechte, falsche Marke, abgelehntes Video), hätte das Ledger «gepostet»
+gesagt und die Ampel «TikTok-Queue 23 Tage alt» — die Ampel mass noch den PC-Poster-Weg (`dropship/tiktok_queue.json`),
+den seit dem 22.09. niemand mehr geht. Dieselbe Klasse wie der halbe Bild-Post (Nachtrag 20): ein Automat, der seinen
+Erfolg nicht nachmisst, meldet Vollzug.
+GETAN: (1) `metricool_tiktok_post.mjs` hat einen Modus `PRUEFEN=1`: liest den Planer (−4 T … +2 T) für jede Zeile
+`metricool:<id>` ohne TikTok-Adresse — PUBLISHED → `metricool:<id> tiktok:<url>`; ERROR/FAIL/REJECT → Status
+`tiktok-fehler` mit Grund; offen → Meldung mit Alter (⚠️ über 2 h). Erster Lauf: 1 veröffentlicht, 0 Fehler.
+(2) `social_autopilot.sh` ruft die Prüfung alle 2 h vor dem TikTok-Block. (3) Ampel `tiktok_queue_alt()` misst jetzt
+das Ledger: Fehler → geplante ohne Bestätigung >2 h → letzter bestätigter Post >2 T; sonst still. Die PC-Queue-Zeile
+ist weg. Autopilot neu gestartet (Skript geändert, während es lief — Rezept: eigener pkill, dann Keepalive).
+**Lehre:** «gepostet» ist erst, was die Plattform bestätigt hat. Ein Poster hat drei Zeitpunkte — geplant, gesendet,
+erschienen — und nur der dritte zählt für die Kadenz «täglich mehrmals überall». Jeder Kanal-Poster braucht die
+Nachmessung im selben Werkzeug, nicht in einer Erinnerung, die ein Mensch liest.
+
+**Nachtrag 24 (23.09. 05:40 UTC) — Betreiber-Screenshot des TikTok-Posts: Titel und Preis lagen unter TikToks Caption — die Textebene kannte die Oberfläche der Plattform nicht.**
+GEMESSEN am Screenshot (127 Aufrufe nach 49 Min): das Fussfeld der Reels (y 1530–1920) liegt exakt unter Nutzername,
+Caption, Fortschrittsbalken und Werbebanner von TikTok; «Tragbarer Smart-Projektor P62» und «CHF 86.90» waren nur
+noch als Schemen lesbar. Die Kopfleiste «LUXESTYLE» (0–190) sass unter der Suchleiste. Beides hätte eine
+Sichtprüfung mit Schablone vor dem ersten Post gezeigt — es gab keine. Die Zeile «Gratis Versand ab CHF 50» ist
+RICHTIG (beworben wird Warenwert 50; 45 ist die interne Schwelle nach dem 10-%-Rabatt, `versandschwelle_rabatt.py`).
+GETAN: (1) `reel/overlay.py`: sichere Zone — Kopf 200–330, Hook ab 350, Fussfeld 1170–1440, Fusstexte auf x=470
+zentriert (links der Knopfleiste x>930); (2) `make_reel.sh`: Querformat-Video bei y=600 statt Bildmitte, Hochformat
+bleibt zentriert; (3) Probe mit roter UI-Schablone (oben 200, unten 480, rechts 150 px) über zwei Frames gelesen,
+Fusszeile um 30 px nachgerückt; (4) Reel-Motor `NEU_RENDERN=1` (NUR_PID, OHNE_PUSH): rendert alle «ready»-Reels
+mit der neuen Ebene neu — gleiche Datei, gleiche Adresse, keine neue Zeile. Läuft im Hintergrund über die 23
+wartenden Reels.
+**Lehre:** Ein Video für eine Plattform wird auf der Plattform beurteilt, nicht im Player. Jede Textebene braucht
+die UI-Schablone der Zielplattform als Prüfbild (`f_*_ui.jpg`-Rezept: rote Flächen oben/unten/rechts), BEVOR der
+erste Post rausgeht. Und: nicht jede Abweichung ist ein Fehler — die 50 stand richtig da, weil ich die Quelle las.
+
+**Nachtrag 25 (23.09. 05:45 UTC) — «insta karusell brauchen»: erstes Instagram-Karussell live — aus einem Bauer, der 31 fertige Sets für einen toten Weg gebaut hatte.**
+GEMESSEN: `tiktok_karussell.py` baute seit Wochen täglich Slide-Sets (6 Slides, 9:16, gestaltet: Preis-Anker,
+Produktbilder, CTA-Slide) in `social/tiktok/` — 31 Sets «ready» in einer Queue, die nur der PC-Poster las, der seit
+dem 31.08. steht. Der IG-Karussell-Poster `social_karussell.mjs` (03.09., mehrere Produkte aus `_karussell.json`)
+lief genau einmal, Planer gab es keinen. Instagram nimmt in Karussells nur 4:5 bis 1.91:1 — 9:16 wird abgelehnt.
+Der Traceback in `tiktok_karussell.log` («Shopify hat auf keinen Versuch mit Daten geantwortet») war die
+Eimer-Drossel eines einzelnen Laufs (8 Versuche, 5–6 s), kein Dauerfehler; der folgende Lauf baute wieder.
+GETAN: (1) `tiktok_karussell.py FORMAT=ig`: 1080×1350 nach `social/instagram/<slug>/`, Queue `social/ig_karussell.csv`,
+Ledger `_ig_karussell.txt`, eigene Bildfenster je Format — der Kontaktbogen der ersten 4:5-Probe zeigte den Titel im
+Produktbild (das 9:16-Fenster 20–80 % passte nicht), Werte nachgemessen (Hook 10–50 %, Produkt 12–58 %).
+(2) `ig_karussell_post.mjs`: ein Set je Lauf, IG-Karussell (Kinder via raw.githubusercontent, wie die Reels) → FB-Album
+nur nach IG-Erfolg; Wachen: Lock, Produkt-Sperre nach Ware, Live-Abgleich der letzten 25 Posts, ACTIVE+onlineStoreUrl,
+Bildadressen 200 (sonst eigener Push unter der Repo-Sperre), Claim vor dem Post, gemeinsames Bild-Ledger, jede Ware
+gemerkt. (3) Autopilot: Karussell alle 24 h; Aufseher baut täglich 2 Produkt-Sets, montags ein Top-Set, und pusht
+(der Autocommitter nimmt nur `dropship/` mit). (4) Erster Post live: IG CAROUSEL_ALBUM DdnlCi-jkth (6 Slides, EMS
+Mikrostrom Massagegerät CHF 22.90) + FB-Album 122140105137350792, an der Graph-API rückgelesen; zwei weitere Sets gebaut.
+**Lehre:** Ein Bauer ohne lebenden Poster ist ein Lager, kein Kanal — 31 fertige Sets, 0 Posts. Vor «neu bauen» die
+Kette messen: wer baut, wer postet, wer liest die Queue? Hier fehlte nur das Format und der Poster; der Rest stand.
+
+**Nachtrag 26 (23.09. 07:15 UTC) — Verwaister Autostash beim Keepalive-Push, und mein Aufräumen hätte drei Ledger-Zeilen gekostet.**
+GEMESSEN: `rebase.autoStash` legte den Stash an, dann «cannot rebase: You have unstaged changes» — ein Motor schrieb
+zwischen Stash-Anlage und Prüfung weiter ins Ledger (Container 07:08 frisch gestartet, alle Schreiber gleichzeitig).
+`git rebase --abort` in der Schleife räumt so einen Rest NICHT; `.git/rebase-merge/autostash` blieb, zwei weitere
+Versuche scheiterten daran. Beim Aufräumen prüfte ich den Stash-Inhalt mit `git stash show --name-only` — das ist
+keine gültige Option, gab leer zurück, und mein «nur Ledger → verwerfen» feuerte blind. Der Stash-Commit war noch
+im Objektspeicher: Vergleich `git diff $S^ $S` zeigte drei Ledger, Zeilenvergleich gegen den Arbeitsbaum fand
+3 fehlende Zeilen (2× du-Form, 1× Verlustbringer) → nachgetragen, gepusht (40cd8686e).
+**Lehre:** (1) Ein Stash wird erst verworfen, wenn ein Werkzeug seinen Inhalt gezeigt hat — ein leeres Ergebnis
+ist kein «nichts drin». (2) Nach jedem gescheiterten Rebase: `--quit`, dann `git stash list` auf «autostash» prüfen
+und per Zeilen-Union zurückspielen, nie per `pop` in ein Ledger, das inzwischen weitergewachsen ist.
+
+**Nachtrag 27 (23.09. 08:45 UTC) — Verbesserungsrunde 5: der Bild-Poster fragte nie, ob die Ware noch kaufbar ist — 3 von 73 wartenden Bildposts hätten auf eine 404 gezeigt.**
+GEMESSEN: `social/posts_image.csv` hat 73 «ready»-Zeilen, alle aus dem August (Kimi-Captions); die Zeilen-ID trägt
+die Shopify-Produkt-ID am Ende. Live-Abfrage `nodes(ids:…){status onlineStoreUrl}`: 70 ACTIVE, **3 DRAFT ohne
+onlineStoreUrl** (3D-Wimpern, Klemmbaustein-Polizeiauto, Deko-Vase) — von Wächtern seit dem Bau der Queue gedraftet.
+Reel- und Karussell-Poster prüfen ACTIVE+onlineStoreUrl vor jedem Post; `social-autopost-meta.mjs` hatte kein solches
+Tor. Und `social_queue_saeubern.py` (03.09., kennt «produkt-weg-skip») hatte **keinen Starter** — kein Log je
+geschrieben, lief einmal von Hand. Die Wächter-Tracebacks in /tmp/*.log (Throttled) sind alt; die letzten Läufe sind
+sauber (Logs sind kumulativ — nur die letzten Zeilen zählen). IG-Bildpost 02:08 «Medien-Download fehlgeschlagen»:
+Bild-URL antwortet 200 image/jpeg 800×800 → vorübergehend, der Wiederholungsversuch von heute früh deckt es.
+GETAN: (1) Achte Schicht im Bild-Poster: `produktAktiv()` (ACTIVE + onlineStoreUrl, Shopify nicht erreichbar =
+Zeile bleibt ready und wird nicht gepostet); (2) die 3 Zeilen → `produkt-nicht-aktiv`; (3) `social_queue_saeubern.py`
+zählt jetzt auch «ACTIVE ohne Onlineshop» als weg und steht in der Tagesliste des Aufsehers (DRY: 104 ready, 0 weitere
+Befunde). Kanarienvogel: die drei DRAFTs vor dem Patch gemessen, nach dem Patch 70 ACTIVE übrig.
+**Lehre:** Jeder Poster braucht dieselbe Frage vor dem Post — «ist die Ware kaufbar?» — im selben Werkzeug; eine
+Queue aus dem August ist eine Momentaufnahme, keine Wahrheit. Und wieder: ein Reiniger ohne Starter ist ein Bericht.
+
+**Nachtrag 28 (23.09. 09:35 UTC) — «schön weiter machen»: der Bildkanal sprach noch die Scam-Sprache vom Sommer — 70 Captions umgebaut, der Nachschub gleich mit.**
+GEMESSEN: alle 70 wartenden Bildposts stammen vom 01.08. (Kimi): kein Preis, Emoji-Kette, in jeder Zeile «Bezahl bequem
+auf Rechnung mit Klarna ✨» — die Klasse hinter dem Kundenfeedback vom 05.09. («zu fest KI, wie Scam»); die letzten
+drei Bildposts (22./23.09.) gingen genau so raus. Der Nachschub `queue_new_products.mjs` (v2, alle 12 h) hätte es
+schlimmer gemacht: «Spar dir den Designer-Preis», «Schreib LINK 👇», «–10% WELCOME10» (offener Betreiber-Entscheid),
+Plattform «threads» trotz Threads-Stopp, «#sommerkleid» im September — und er hatte noch nie eine Zeile geschrieben.
+Der Karussell-Bauer spricht seit dem 05.09. ehrlich (Laden-Zeile aus Belp, belegte Lieferzeit, Kommentar-Frage).
+GETAN: (1) `bild_queue_captions_ehrlich.py`: baut jede ready-Caption mit Scam-Marker um — erster sachlicher Kimi-Satz
+(nur ohne Klarna/Rabatt/%, ≤140 Zeichen, ein Emoji), Kurztitel · CHF-Preis LIVE aus Shopify, Laden-Zeile je Tag
+`ch-lager`, Kommentar-Frage, «Jetzt im Shop 🇨🇭 luxestyle.ch – Link in Bio», #schweiz #luxestyle + bis 3 Sach-Tags
+(ohne #fyp/#onlineshopping). DRY gelesen (3 Beispiele), SCHARF: 70 umgebaut, Rücklesen 0 Scam-Marker, Bericht
+`dropship/BILD-QUEUE-CAPTIONS.md`, täglich im Aufseher (SCHARF=1). (2) `queue_new_products.mjs`: dieselben Bausteine
+(holt jetzt `tags` für die Lieferzeit), Plattformen instagram,facebook, #kleid statt #sommerkleid.
+**Lehre:** Eine Tonalitäts-Regel gilt für JEDEN Schreiber eines Kanals — Karussell, Reel, Bild, Nachschub. Wer sie an
+einer Stelle einführt und die anderen Queues stehen lässt, postet den Sommer-Ton weiter, nur seltener.
+
+**Nachtrag 29 (23.09. 10:20 UTC) — Task #100: Google-Feedback-Wächter gebaut — und der erste Lauf zählte 33'863 Meldungen der falschen App als Google-Blocker.**
+GEMESSEN: `product.feedback{details{app{title} messages{message}}}` kostet 47 Punkte je 250 Produkte (206 Seiten für
+50'462 aktive, ~4 Min, Eimer nie unter den Boden). Lauf 1: 35'820 «Blocker», davon 33'863 «Dieses Produkt ist in Shop
+nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal» — Stichprobe zweier Handles: beide ACTIVE, im Onlineshop,
+in allen 6 Kanälen publiziert; die Meldung kommt von der App **«Shop»** (Shop-Kanal), nicht von «Google & YouTube».
+`product.feedback` trägt die Diagnosen ALLER Kanal-Apps; wer nicht nach App trennt, mischt Kanäle. Lauf 2 (nach App):
+**Google Free-Listings-Blocker 1'957** — «Title under review» 836 (Google prüft, vergeht), «Inappropriate image» 445,
+«Product page unavailable» 369 (alle 369 HABEN eine onlineStoreUrl → meine 404-These war falsch; Ursache offen),
+«Personalized advertising: personal hardships» 75, «Sexual interests» 60, «Restricted adult content» 60, «Unable to
+show image» 32, «Image too small» 27, «Guns and Parts» 3, «Explosives» 1, «Illegal drugs» 1. Nur Shopping-Ads-
+Meldungen (ignoriert): «Over capacity … [Shopping_ads]». Dazu Shop-Kanal: 33'863 Produkte «nicht auffindbar» — ein
+eigener, bisher unbekannter Befund (Shop-App zeigt zwei Drittel des Sortiments nicht), heute nur gemessen.
+Nebenbei `bestandsgroesse_wache.py`: Preisbänder waren keine Partition (Mehr-Varianten doppelt) → created_at-Fenster
+mit Halbierung am 10'000er-Deckel; erster Lauf meldete «-6.9 % EINBRUCH» — das war die Korrektur der Überzählung
+(54'214 → 50'462), kein Einbruch; zweiter Lauf +0,0 %. Und `updated_at:>-2d` ist keine Shopify-Syntax («Invalid
+timestamp») → ISO-Datum; der Nebenzähler «frisch gedraftet» lief seit seinem Bau ins Leere.
+GETAN: `google_feedback_wache.py` (täglich im Aufseher; Stand `_google_feedback_stand.json`, Bericht
+`dropship/GOOGLE-FEEDBACK.md` mit Handles je Klasse, Shop-App getrennt), Ampel-Zeile «GOOGLE: N Free-Listings-Blocker
+(…) · Shop-Kanal: M Meldungen», Zähler-Partition + Datumsfilter repariert.
+**Lehre:** Ein Feedback-Feld ohne Absender ist keine Diagnose — erst nach App trennen, dann zählen. Und ein Zähler,
+dessen Bänder sich überlappen, meldet beim ersten sauberen Lauf einen Einbruch, der keiner ist: Baseline mitdenken.
+OFFEN: Ursache «Product page unavailable» (369) und der Shop-Kanal-Befund (33'863) — zwei Messungen, noch keine Fixes.
+
+**Nachtrag 30 (23.09. 11:00 UTC) — Hype-Recherche (Dauerauftrag): drei gemessene Themen neu, zwei Regex-Fallen im Trockenlauf gefangen.**
+Web-Suche (sellthetrend/eprolo/cjdropshipping, September): neu «tiny projector with night sky effect», «portable dog water
+bottle», «mini desktop vacuum»; bestätigt Hygiene-Gadgets, aesthetic living, OTG-Goggles, Dock-Stand, Katzen-Laser.
+Am Bestand gemessen (`productsCount`, `title:*x*`): Sternenhimmel 41 + Galaxy 13, Hunde-Trinkflasche 5, Mini-Staubsauger 4;
+nicht übernommen: Travel-Hoodie (0), Selfie-Monitor (0), Gummy Blocks (Spielzeug), Pimple Patches (Wundauflage).
+Trockenlauf: «Sternenhimmel» allein wählte eine **Quarzuhr mit Sternenhimmel-Ziffer**, «Hund…Trinkflasche» eine
+**Hundeleine mit Trinkflasche** → Anker (Projektor/Lampe/Licht in Wortnähe; Leine/Geschirr ausgeschlossen), elf
+Kanarienvögel grün, zweiter Trockenlauf sauber, scharfer Lauf: 18 neu in der Reihe (32 → 50), 0 abgelaufen.
+**Lehre (zum dritten Mal, IPL/UV/Sternenhimmel):** ein Trendwort ist nie der Anker — die Warenart ist es.
+
+**Nachtrag 31 (23.09. 11:45 UTC) — «jede sozail profile verschönern»: Facebook per API fertig, IG/TikTok/Pinterest als Agenten-Auftrag — und das alte PC-Skript war ein Torso.**
+GEMESSEN: FB-Seite «LuxeStyle CH» (7 Follower): Info mit «Premium Accessoires & Mode», Website doppelt («http://Luxestyle.ch/,
+http://luxestyle.ch/»), keine Beschreibung, cremefarbenes Titelbild «Est. 2026 · Premium Accessoires & Mode · WELCOME10».
+IG @luxestyle.ch (165 Follower, 168 Posts): Name «Luxestyle.ch», Bio «Schweizer Shop 🇨🇭 Mode · Schmuck · Uhren / –10% mit
+Code WELCOME10», Website http. TikTok @luxestyle.ch (553 Follower, 67 Videos): Name «Luxestyle.ch», Bio «Mode · Beauty ·
+Wohnen · Technik 🇨🇭 / luxestyle.ch · -10% mit WELCOME10», KEIN Bio-Link. Pinterest: Profil-Formular nie gemessen (beide
+Aufträge «abgebrochen»). WELCOME10 ist ACTIVE (2 Einlösungen, bis 31.12.2027) — bleibt in den Bios, nicht in Grafiken.
+Sortiment-Beschreibung stimmte nirgends mehr (Schmuck/Uhren vs. heute Mode, Beauty, Wohnen, Technik).
+GETAN: (1) Titelbild neu im Slide-Stil (dunkel/Gold/Creme, 1640×624, Texte in der mobilen Sicherheitszone geprüft):
+«LUXESTYLE · Kleiner Schweizer Shop aus Belp · Mode · Beauty · Wohnen · Technik · TWINT & Kauf auf Rechnung · 30 Tage
+Rückgabe · luxestyle.ch». (2) FB per Graph-API: about, description (Laden-Sprache), website https, Profilbild
+`profil-rund-dunkel.jpg` (POST /picture), Titelbild (Foto `published=false` hochladen → POST /{page} cover=<id>) — alles
+`success:true`, Cover-ID rückgelesen. (3) IG/TikTok/Pinterest: kein Edit-API → `automation/browser/social_profil_politur.mjs`
+(liest jedes Feld vorher, schreibt nur bei Abweichung, liest zurück, Screenshots vorher/nachher, nicht-angemeldet =
+Kennzeichen) + Auftrag `auftraege/offen/social-profil-politur-2026-09-23.json`; Texte: Name «LuxeStyle · Schweizer Shop»,
+IG-Bio 130/150 Z., TikTok-Bio 79/80 Z. (4) `automation/local/profil-politur-browser.mjs` war seit Juni ein Torso (70 Zeilen,
+endete mitten im Instagram-Block «if (bio) { await bio») — im Gedächtnis stand er als «liegt bereit»; jetzt ein dünner
+CDP-Wrapper um das Agenten-Skript. Der Agent steht seit 22.09. 21:03 UTC → COWORK Punkt J (Neustart), TikTok-Bio-Link und
+IG-Website-Link sind Betreiber-Klicks.
+**Lehre:** «Skript liegt bereit» ist eine Behauptung — `wc -l` und die letzte Zeile sind die Messung. Und Profiltexte
+gehören in EINE Quelle (TEXTE im Agenten-Skript), sonst sagt jedes Profil ein anderes Sortiment.
+
+**Nachtrag 32 (23.09. 12:10 UTC) — Task #101: der Shop-Kanal zeigt zwei Drittel des Sortiments nicht, weil 46'215 aktive Produkte KEINE Produktkategorie haben.**
+GEMESSEN: 250 neueste Produkte, mit/ohne Shop-Meldung «nicht auffindbar» verglichen (Typ, Barcode, Bilder, Beschreibung,
+Gewicht, Preis, Varianten, Publikationen, Datum): EINZIGES Unterscheidungsmerkmal `category` — 222/222 mit Meldung
+OHNE Taxonomie-Kategorie, 0/28 ohne Meldung. Neueste 3'000: 2'923 ohne (alle cj-real); nach ID sortiert (alt): 995/1'000
+mit. Vollscan: **46'215 von 50'462 ohne** — die Importer setzen `productType`, nie die Shopify-Taxonomie. Der alte
+Zuweiser `google_category_assign.py` (30.08.) las fünf /tmp-Dateien, kannte die neuen Typen nicht, hatte keinen Starter.
+Google «Product page unavailable» (369): alle Seiten laden extern 200, alle Lager 0/CONTINUE, alle aus Rückholung
+18.–20.08./07.09. → veralteter Google-Stand, wartet auf Recrawl (14 Tage beobachten).
+GETAN: `kategorie_wache.py` (täglich, SCHARF=1 im Aufseher, CAP 3'000): productType → Taxonomie-ID (54 Typen, IDs
+per `taxonomy.categories(search:)` gemessen und beim Start per `nodes(ids:)` verifiziert — unbekannte ID bricht ab),
+25er-Mutationen `productUpdate(product:{id,category})`, Rücklesen `category.id` aus der Antwort, Ledger, Bericht
+`dropship/KATEGORIE-WACHE.md`, Ampel «KATEGORIE: N aktive ohne Kategorie». DRY: 42'034 zuweisbar, 4'181 unbekannt
+(Kostüme 1'668, Werkzeug 844, Trend-Gadget 825, Gaming 321 …) → Tabelle um 14 Typen ergänzt; «Trend-Produkt»,
+«Kinder», «Selbst gestalten», «Anime» bewusst nicht geraten. Scharfer Lauf CAP 45'000 im Hintergrund gestartet.
+**Lehre:** Ein Kanal-Befund («nicht auffindbar») ist eine Frage an die Daten, nicht an den Kanal: erst die Gruppen
+mit/ohne Meldung über ALLE Felder vergleichen — die Antwort war ein einziges leeres Feld.
+
+**Nachtrag 33 (23.09. 12:50 UTC) — Der Kategorie-Lauf schaffte 100 je Minute bei fast vollem Eimer: 25 aliasierte productUpdate laufen bei Shopify SERIELL, Batching kauft dort keine Zeit — Parallelität schon.**
+
+Nach dem Neustart des Containers (10:30 UTC) lief `kategorie_wache.py` mit CAP 45000 wieder an. Messung über 60 s: Ledger 275 → 375, also 100 Produkte je Minute — bei 42'034 zuweisbaren wären das 7 Stunden, und der Container stirbt stündlich. Der naheliegende Verdacht «Eimer leer» war falsch: `throttleStatus` stand bei 1999 von 2000, restoreRate 100/s. Eine einzelne productUpdate-Mutation gegen eine ungültige ID kostete 0,37 s und 10 Punkte; der Batch aus 25 Aliassen brauchte ~15 s. Shopify führt aliasierte Mutationen in EINER Anfrage nacheinander aus — ein Batch spart Anfragen, keine Zeit. Der Eimer hätte 10 Produkte je Sekunde erlaubt, der Lauf holte eines je 0,6 s.
+
+**Fix:** `WORKER` (Standard 3) parallele Batches über `ThreadPoolExecutor`, Ledger-Schreiben unter Lock; die Eimer-Etikette bremst jeden Arbeiter selbst. Gemessen nach dem Neustart: 550 → 900 in 60 s = 350/min bei Eimer 1701/2000 — die anderen Schreiber des Shops behalten Luft. 45'435 zuweisbare → ~130 min. Dazu: (1) Laufsperre `/tmp/kategorie_wache.lock` (der tägliche Aufseher-Lauf mit CAP 3000 und der Nachlauf hätten dieselben Produkte doppelt geschrieben — harmlos, aber Eimer-Verschwendung); (2) `engine_keepalive.sh` Abschnitt 3c startet den Nachlauf nach JEDEM Neustart neu, solange `_kategorie_stand.json` mehr als 300 Offene zeigt — ohne diesen Starter wäre nach dem nächsten Neustart wieder nur der Tages-Lauf übrig (Frage von Lehre 0c: *wer startet DICH?*); (3) beim Bauen fiel auf, dass `$REPO` in der Keepalive-Datei nie gesetzt war (Zeile 454 nutzte es seit dem 22.09.; `cd ""` ist in bash ein No-op, es lief nur, weil die Routine ohnehin im Repo steht) → definiert.
+
+Die erweiterte Tabelle (14 Typen aus Nachtrag 32) wirkt: unbekannte Typen 4'181 → 280, zuweisbar 42'034 → 45'435. Der Neustart des Laufs war gefahrlos: das Skript liest die Wahrheit (`category` leer) vor jedem Schreiben, das Ledger ist nur Quittung.
+
+**Lehren:** (1) **Ein voller Eimer bei langsamem Lauf heisst: die Zeit geht in der Latenz verloren, nicht im Limit** — Batching hilft gegen Anfragen-Zahl, Parallelität gegen Latenz; erst messen, welches von beiden bremst (`throttleStatus` + Zeit je Einzelaufruf). (2) **Ein Nachlauf, der länger dauert als der Container lebt, braucht einen Starter im Keepalive**, nicht nur ein Ledger — sonst ist er nach dem nächsten Neustart ein Tages-Wächter mit Deckel. (3) **Zwei Starter für dasselbe Skript brauchen eine Sperre IM Skript**, nicht in den Startern.
+
+**Nachtrag 34 (23.09. 12:20 UTC) — «weiter polish»: Google hielt 445 Produkte wegen «Inappropriate image» zurück; der Kontaktbogen zeigte darunter Heilversprechen IM BILD, Arzneimittel-Verpackungen und drei Sexartikel unter falschem Namen.**
+
+GEMESSEN: Kontaktbogen der ersten 48 «Inappropriate image»-Produkte plus der 65 «Adult»-Meldungen. Das meiste ist Mode (Models in Tops, Bikinis) oder Totenkopf-Motive — Google lehnt es ab, für den Shop ist es in Ordnung, bleibt. Zwei echte Klassen:
+- **Sexartikel ohne Adult-Filter:** «Latex Mundstück» (Knebel) und «Hodenklemme Squeezer» mit Typ *Werkzeug & Heimwerken*, eine Fetisch-Maske als *Damenmode*. Die Importer-Regel 16b verlangt einen Adult-Filter — er griff nicht, weil die Titel neutral übersetzt waren. → DRAFT + Tag `adult-auto-draft`, rückgelesen. Titelsuche über 25 Begriffe im übrigen Katalog: keine weiteren (Fessel = Sandalen, Peitsche = Kostüm).
+- **Heilversprechen im Bild:** «HELP YOU GET RID OF PSORIASIS» mit Vorher/Nachher-Händen, «TYPES OF FUNGAL INFECTIONS · Onychomycosis». Der Text-Wächter `heilversprechen_wache.py` hatte Titel und Beschreibung dieser Produkte längst entschärft («Ingwer Nagelpflege-Fluid») — aber Bild und VERPACKUNG sagen «7 Days Nail Fungus Treatment». **Ein entschärfter Titel über einer Arzneimittel-Packung ist Tarnung, keine Reparatur.**
+
+**Werkzeug:** `bild_heilversprechen.py` (Tesseract, 2 Lesarten, 4 Fäden). Kandidaten: Google-Liste + Shopify-Suche Haut/Nagel/Fuss (2'145). Vier Fallen beim Bauen: (1) Konturschrift liest die Wort-Lesart als NICHTS — zweite Lesart 1600 px `--psm 11` liefert «ESORIASIS … BEFORE» verklebt → lange Stämme ohne Wortgrenze; (2) ein Faden = 13 Produkte/min (Latenz, Last 0,6); (3) vier Fäden trieben die Last auf 16, weil Tesseract je Aufruf eigene OpenMP-Threads startet → `OMP_THREAD_LIMIT=1`; (4) `width=1000` behält das Seitenverhältnis — ein 1000×12000-Detailbild hielt einen Aufruf über vier Minuten → längste Kante begrenzen + OCR-Timeout 40 s. Danach ~140/min.
+
+**Ergebnis:** 18 Treffer in 2'145. Sechs Wörter waren Fehlalarme («cure» = UV-Gel härtet aus, «antibacterial», «therapy» = Produktname, «treatment» = Haarkur, «acne»/«scar» = Kosmetik-Zweck) → gestrichen. **Sechs Produkte mit Krankheitsbehandlung auf der Verpackung** (2× Nagelpilz, Ekzem/Psoriasis-Spray, Dermatitis/Psoriasis-Creme, Nagelpilz-Kit, Intimcreme mit Leistenschmerz-Foto) → DRAFT + `arzneimittel-ohne-zulassung` (Arzneimittel-Anpreisung ohne Swissmedic-Zulassung, dieselbe Rechtsklasse wie die Klingen). **Vier Hauptbilder getauscht** (Beinpflaster «itching/rash», Maniküre «infection», Haltungskorrektur Vorher/Nachher, Teebaum-Gel «get rid of») — sauberes Nebenbild nach vorne, `featuredMedia` rückgelesen. Die Rückholer `cj_versand_ch_revive` und `cj_verfuegbarkeit` kennen die neuen Sperr-Tags. Täglich im Aufseher (SCHARF, Ledger überspringt Geprüftes).
+
+**Lehren:** (1) **Google-Diagnosen sind ein kostenloser Bildprüfer** — «Inappropriate image» fand drei Sexartikel, die jeder Titelfilter verpasst, weil der Importer ihre Namen neutral übersetzt hatte. (2) **Ein Text-Wächter repariert nur Text**; wo die Verpackung selbst das Versprechen trägt, ist Entschärfen Tarnung — dort ist das Produkt die Klasse, nicht der Satz. (3) **Parallel-OCR braucht `OMP_THREAD_LIMIT=1` und eine Kantengrenze** — beides still, beides teuer.
+
+**Nachtrag 35 (23.09. 12:45 UTC) — Verbesserungsrunde 6: der Karussell-Baustein starb am leeren Eimer, weil jede Drosselung als Fehlversuch zählte (8 × 6 s = 48 s) — derselbe Baustein speist TikTok, das Meisterwerk und seit heute die Instagram-Karussells.**
+
+GEMESSEN: Social gesund (Reels ready 45, Bild-Queue 69, Lernbericht 11:09, letzter Reel 12:0x live, TikTok-Prüfung ohne Offene, Metricool-Token da). Letzte Log-Zeilen mit Traceback: `tiktok_karussell` (23.09. 02:11, Top-Modus beim Laden der Quelle), `tiktok_meisterwerk` (20.09., nutzt denselben `K.gql`), `google_kanal_saeubern` (22.09. 22:12 — dessen gql wartet seit 21.09. schon nach throttleStatus). Die Quellabfrage kostet 99 Punkte (gemessen) — kein Kostenproblem, sondern ein leerer Eimer um 02:11, wenn die Tages-Wächter gleichzeitig starten. 26 Tages-Wächter haben keine Eimer-Etikette, aber nur dieser eine starb nachweislich daran → gezielt repariert statt 29 Dateien blind anzufassen.
+
+GETAN: `tiktok_karussell.gql` wie `google_kanal_saeubern` (21.09.): Drosseln zählen nicht als Versuch (bis 40), Wartezeit aus `requestedQueryCost − currentlyAvailable` / `restoreRate`, nach jeder Antwort `nachlauf()`, der Abbruch nennt jetzt den letzten Grund. Falle beim Einbau: die Import-Zeile `sys.path.insert` stand vor den Importen und das Modul importiert `sys` gar nicht — `py_compile` meldete OK, erst der echte Import zeigte den NameError. Probe: Live-Aufruf ok, Meisterwerk-Import ok, ein echtes IG-Set gebaut (LED-Streifen, 5 Slides; 36 nie beworbene Hype-Produkte = Nachschub für Wochen).
+
+**Lehren:** (1) **Eine Drosselung ist eine Wartezeit, kein Fehlversuch** — wer sie mitzählt, stirbt genau dann, wenn alle gleichzeitig starten. (2) **`py_compile` beweist keine Lauffähigkeit** — NameErrors auf Modulebene zeigt nur der Import. (3) Ein geteilter Baustein trägt die Last aller Aufrufer: vor dem Anhängen eines neuen Nutzers (IG-Karussell) die Fehlerspur des Bausteins lesen.
+
+**Nachtrag 36 (23.09. 13:40 UTC) — Betreiber-Screenshot «pinke steine 2mal?»: zwei rosa Quarz-Posts übereinander im IG-Raster, obwohl acht Doppelpost-Schichten laufen.**
+
+GEMESSEN (IG-API, letzte 12 Posts): 02:11 «Rosenquarz Gua Sha Set» (Bild-Poster, Zeile …41377), 08:26 «Jade Roller Premium» (Bild-Poster, Zeile …74145). Zwei Shop-Produkte, zwei IDs, zwei Namen, zwei Bilder — Bild-, Caption-, Produkt- und Live-Sperre sagten alle zu Recht «kenne ich nicht». Die siebte Schicht (03.09., Silber-Armreif) fragt nach dem PRODUKT; gefragt war nach der WARENGRUPPE. Für eine Betrachterin sind zwei rosa Steine sechs Stunden auseinander ein Doppelpost.
+
+GETAN: Neunte Schicht in `post_guard.mjs`: `warenFamilie(text)` (12 Gruppen per Regex: Gesichtsroller, Diffuser, Uhr, Massagegerät, Projektor, Futter/Haustier, Lautsprecher, Bikini, Kerzenlicht, Augenbrauen, Ring, Ohrringe; unbekannt = keine Gruppe = keine Sperre), `familieKuerzlich()` über EIN Ledger `dropship/_posted_familien.txt` (72 h, `FAMILIEN_STUNDEN`), `familieMerken()` nach dem IG-Erfolg. Eingebaut in Bild-, Reel- und Karussell-Poster; eine gesperrte Zeile bleibt ready und wartet, der Poster nimmt die nächste. Kanarienvögel: «Stuhr» ≠ Uhr (Lookbehind), «Ring-Licht» ≠ Ring. Ledger aus den letzten 25 IG-Posts gesät (13 Gruppen-Einträge); Wirkung heute: 5 von 69 wartenden Bild-Posts zurückgehalten (4 Uhren, 1 Diffuser). Der doppelte Post selbst ist live — Löschen geht nur beim Betreiber (Klassifikator), vorgeschlagen: der jüngere (08:26, Jade Roller, 0 Aufrufe).
+
+**Lehren:** (1) **Doppelpost ist, was die Betrachterin als gleich sieht** — Sperren nach Datei, Text und Produkt-ID beantworten die falsche Frage, sobald der Katalog Varianten derselben Ware unter verschiedenen Produkten führt. (2) Eine Gruppenregel braucht Kanarienvögel für deutsche Wortteile (Stuhr/Uhr, Ringlicht/Ring). (3) Neue Sperre sofort aus der Plattform-Wahrheit säen, sonst greift sie erst nach dem nächsten Fehler.
+
+**Nachtrag 37 (23.09. 14:15 UTC) — «weiter polish»: zwei Bildklassen gemessen, eine behoben, eine bewusst gelassen.**
+
+(1) **Englischer Lieferanten-Text in Bild-Posts** (Betreiber-Raster: «made from natural stone», «300ml Aroma Diffuser 7 color LED change»). OCR über alle 69 wartenden Bild-Posts: 4 mit ≥4 sicheren Wörtern (Anzuchtbox 26, drei weitere 4), 6 mit 1–3, 59 ohne. `social_queue_saeubern.py` kennt jetzt `bildtext-skip` (≥4 Wörter, nur Bild-Posts, Ergebnis je URL in `dropship/_bildtext_queue.txt`, ohne Tesseract wird still übersprungen — «nicht lesbar» ≠ Text). DRY 4, scharf 4, täglich im Aufseher. Die Hauptbilder im SHOP deckt `hauptbild_ohne_text.py` schon ab (letzter Lauf: 9 ersetzt, 78 sauber).
+(2) **Google «Image too small» (27)**: Hauptbilder sind gross (bis 1920 px); klein sind 83 Nebenbilder in 26 Produkten — Kontaktbogen: fast alles VARIANTEN-Bilder (Hawaiihemd-Muster, Strickpullover-Farben), die beim Auswählen erscheinen. Entfernen würde die Variantenwahl brechen → gelassen; echter Müll nur 4 Winzlinge (40×40, 150×52, zwei schwarze 233×151-Streifen). «Unable to show image» (32) und «Image under review» (18): alle Bilder gross und JPG → Google-Seite, nichts zu tun.
+
+**Lehre:** **Ein Google-Befund nennt das Symptom, nicht das Bild** — «Image too small» traf gesunde Hauptbilder; erst der Kontaktbogen zeigte, dass die kleinen Bilder Variantenbilder sind, deren Entfernen mehr kaputtmacht als die Meldung kostet.
+
+**Nachtrag 38 (23.09., «weiter und verbessern alles» — Audit mit 8 Suchern + Gegenprüfern, 32 bestätigte Befunde):**
+- **Kategorie-Lauf hatte pauschal gemappt:** Sammeltypen («Trend-Gadget», «Aufbewahrung & Organizer», «Geschenkset» …) bekamen EINE Kategorie für alles — Grillpfanne als Aufbewahrung, Puzzle als Elektronik. Jetzt `TITELREGELN` in `kategorie_wache.py` (Titel schlägt Typ, Wortgrenzen/Lookbehinds: Bau-/Werkzeug-Kasten, Hand-Schuh) und `KORREKTUR=1`: fasst NUR Produkte an, deren Kategorie ein Pauschalwert ist (el, hg-10-16, hg-10, hg-3) — spezifische Kategorien bleiben. Trockenlauf zeigte zuerst Überschreibungen spezifischer Kategorien → Einschränkung auf PAUSCHAL.
+- **FERTIG-Tor im Aufseher las die ganze Logdatei** → ein altes FERTIG sperrte für immer. Jetzt `tail -n 3 | grep -q ^FERTIG`.
+- **Zombie-Schreiber 04:07 UTC** (881 Lieferblöcke «je nach Land … USA»): Urheber NICHT gefunden (weder Social-Session, autostart, liechtenstein_raus noch main-Workflow; Produkt-Events zeigen keine Textänderungen). Falle `zombie_wache.sh` (5 Kanarien-IDs, persistenter Stand, 30-s-Takt 03:55–04:30, volle ps-Liste bei Änderung) + tägliche Reparatur nach 04:25. Kundensicht gering (Theme blendet Block aus), Google liest ihn.
+- **5 Aktionsseiten offline + 301** (Adventskalender-Vergleich, Kundenbewertungen, Top-5, Black Friday, Weihnachten), 2 Technikseiten `seo.hidden`.
+- **Grow-Bedingung (Betreiber 23.09.: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»):** `betreiber_ampel.grow_zaehler()` zählt bezahlte Bestellungen fremder Kunden-IDs ab 23.09. 16:00 UTC; Quelle `dropship/_grow_bedingung.txt`. Der 21.10.-Termin wird damit womöglich früher.
+- **Offen aus dem Audit (sicher, von hier):** Google-Kanal 152 Produkte mit Ausschluss-Tags, «schnell vergriffen»-Floskel 114, Kollektions-SEO «ab CHF 65», Reel-Hashtags, tote_links-Paginierung, CJ-Bewertungsimport 26–47×/Tag. **Nur Betreiber:** BESTSELLER20/FIRST20 (20 % ohne Ende), BLACKFRIDAY40-Marge, Rechtstexte.
+- **Lehre:** Eine Zuordnung nach Produkttyp ist nur so gut wie der Typ — Sammeltypen tragen keine Information; erst der Titel sagt, was es ist. Und eine Korrektur darf nur zurücknehmen, was der eigene Fehler war (Pauschalwerte), nie Fremdes überschreiben.
+
+**Nachtrag 39 (23.09., Audit-Befunde abgearbeitet + Merchant-Screenshot «Missing product price 1.22K»):**
+- **Umgesetzt:** 87 Produkte mit Sperr-Tag aus Google (+ Werbekanäle), `google_sperrtags_durchsetzen.py` täglich — Shopifys `tag:'kostuem'` traf 65 «kostuem-hut»-Plüschmützen (Präfix!) → entschieden wird am exakten Tag. 114× «Premium-Liebling für deinen Sommer 2026 … schnell vergriffen» entfernt (`styling_floskel_wache.py`, Quelle `desc_block.mjs` entschärft). 171× «Material: hochwertiges Material» (Floskel-Reiniger holt live statt aus 93er-Liste; Aufseher loggt ehrlich «wartet»). Du-Form-Lauf hielt die Text-Sperre stundenlang → jetzt je Produkt. 6 Kollektions-SEO «ab CHF 65» → 50 (Lookahead `(?![.,][0-9])`). 33 Reels mit #ootdschweiz auf Gemüseschneider/Hundeleinen → Sachgruppen (`catKey`: «Schale»≠Schal, «kleine»≠Leine, «Saugnapf»≠Napf — erst nur der «Titel», die Hook-Zeile verfälschte). CJ-Vorrang: Grind-Pause öffnete das Bewertungs-Tor 47×/Tag → nur echtes Fenster. 337 Tags natel/trottinett/finken. tote_links sah 100 von 419 Seiten → 17 tote Links umgehängt, 2 Test-Seiten offline+301. «Bestseller» (0 von 50 je verkauft) → «⭐ Bestbewertet»; HALLOWEEN20 (gilt ab 01.10.) aus dem Text. Heilversprechen-SEO-Wächter als `heilversprechen_seo_wache.py` (⚠️ erst über ein gleichnamiges Alt-Skript geschrieben — `git checkout` gerettet; **vor Write: `ls`**).
+- **Merchant «Missing product price» 1'220:** Bulk über 476'539 Objekte → **0 aktive Varianten ohne Preis**. Die Seite trägt aber ZWEI Product-JSON-LD mit derselben `@id …#product`: Shopifys (Preise + unsere Sterne) und **Judge.me (Sterne + Reviews, KEINE offers)** — auf jeder bewerteten Seite (1'541). Judge.me-Setting `disable_json_ld:false`; die API liest Einstellungen, schreibt sie nicht (PUT/POST/PATCH → 404) → **Betreiber-Klick im Judge.me-Admin** (Rich Snippets/JSON-LD aus). Ursache wahrscheinlich, nicht bewiesen — Gegenprobe: «View products» im Merchant zeigt, ob die 1'220 bewertete Produkte sind.
+- **Verbesserungsrunde 16:25 (Klasse Heilversprechen im SEO-Feld):** `heilversprechen_seo_wache.py` (Bulk, täglich im Aufseher): 24 SEO-Felder (Krampfadern, Migräne, Hämorrhoiden, Fettverbrennung) → Titel = entschärfter Produkttitel, Beschreibung geleert (die Fliesstext-Ersatztabelle ergab im SEO-Satz «Cupping-Massage mit Ausdauer»). Frischer Export: 0 übrig. «14 Fehler» waren keine: Shopify speichert SEO-Titel = Produkttitel als `null`. 210 Handles mit Krankheitswort nur gemeldet (`dropship/HEILVERSPRECHEN-SEO.md`; Umbenennen braucht 301).
+- **Lehre:** Eine Merchant-Meldung über ein Feld heisst nicht, dass das Feld in den Produktdaten fehlt — Google liest auch die Seite. Erst die Quelle zählen (Bulk: 0), dann die Seite lesen (zwei Blöcke, einer ohne Preis).
+
+**Nachtrag 40 (23.09., Betreiber «metricool maximal nutzen»):**
+- **Gemessen (`/api/admin/simpleProfiles`):** Marke 6227837 hat SECHS Kanäle verbunden — Facebook, Instagram, TikTok, **Pinterest (luxestyleCH, 15 Boards)**, **YouTube (UCSfCEYjAsdOyYxyfTClXRZA)**, Threads. Genutzt wurde nur TikTok. Pinterest lief über den Server-Agenten (still seit 22.09. 21:03), YouTube lag brach.
+- **Die API-Doku liegt offen unter `https://app.metricool.com/api/swagger.json` (1,3 MB OpenAPI)** — geratene Pfade (`/v2/scheduler/pinterest/boards` …) gaben 404; die echten: `/v2/scheduler/boards/pinterest`, `/v2/scheduler/besttimes/{netz}` (Wert je Wochentag×Stunde, 1=Mo), `/v2/scheduler/catalogs/youtube/categories`, `/v2/analytics/posts/{netz}` (from/to), `/actions/instagram/suggestions/hashtags`. Post-Felder: `pinterestData{boardId,pinTitle,pinLink}`, `youtubeData{title,type,privacy,category,madeForKids,tags}`, `tiktokData{commercialContentOwnBrand,autoAddMusic,music}`.
+- **Gebaut:** `metricool_tiktok_post.mjs` kann `NETZ=youtube` (Shorts, Titel aus «…» + #Shorts, Kategorie HOWTO_STYLE, gleiche Wachen, `PRUEFEN=1` je Netz) und plant zur **besten Stunde** der nächsten 6 h (Metricools eigene Auswertung; heute 18 Uhr CH für TikTok/YouTube). TikTok-Posts tragen jetzt `commercialContentOwnBrand:true` (Werbekennzeichnung eigene Marke — fehlte bisher). Neu `metricool_pinterest_pin.mjs`: aktive Produkte aus Trend/Bestbewertet/Neu/Saison, im Pinterest-Kanal, ≥2 Bilder, ab CHF 19, ohne Sperr-Tag/Heilwort, Board nach Warengruppe, Direktlink mit UTM `metricool_pin`, Ledger `dropship/_pinterest_pins.txt`. Autopilot: YouTube 12 h, Pinterest 6 h. Ampel-Zeile `METRICOOL 24 h: TikTok n · YouTube n · Pinterest n` (+ «still:», Fehler).
+- **Erste Posts:** YouTube 380860784 (Matcha-Set), Pin 380861865 (Katzenspielzeug → «Geschenkideen Schweiz»), TikTok 380859205 — alle für 18:51–18:55 CH geplant.
+- **Live bestätigt 16:56 UTC:** TikTok 7688774439244287265, YouTube Short joD73lTVlGM, Pin 1111333645581196150 — alle PUBLISHED. Betreiber schaltete Judge.me-JSON-LD ab (API: `disable_json_ld: true`).
+- **Lehre:** Bevor man einen Dienst «maximal nutzt», zählt man, was an ihm hängt — sechs verbundene Kanäle, einer benutzt. Und die Doku eines Dienstes steht oft öffentlich als OpenAPI; eine Minute suchen schlägt zehn geratene Pfade.
+
+**Nachtrag 41 (23.09., Server-Platte voll + «verbessere musik»):**
+- **Hetzner-Agent still seit 22.09. 21:03:** `luxe-agent.service` → «Unable to create temporary file … No space left on device» / «fetch-pack: invalid index-pack output». Ursache bei UNS: der Agent-Klon holte alle 5 Min die VOLLE Historie des Arbeitszweigs (gepackt 5,1 GB, ~1'000 Commits in 3 Tagen, seit 22.09. Reel-Videos `social/reels` 140 MB). Er braucht drei Ordner. Fix `server/luxe-agent-schlank.sh` (per `curl … | bash` vom Betreiber): Platz (Journal, apt, git-tmp, Browser-Caches — Anmeldungen bleiben), ungepushte Aufträge sichern, Klon `--depth=1` + sparse (server, auftraege, automation/browser), node_modules mitnehmen, Starter flach + Nachziehen per PATCH statt Rebase (flache Historie hat keinen gemeinsamen Vorfahren → Rebase würde die Wurzel als Riesen-Patch nachspielen), danach `reflog expire` + `prune`. **Lehre: Wer ins Repo schreibt, füllt jede Platte, die es vollständig klont — Reels im Repo sind eine Übergangslösung bis zum Grow-Plan, nicht mehr.**
+- **Musik v2:** gemessen — 6 von 15 Stücken genutzt, Wahl `pid % 6` (ohne Bezug zum Produkt), JEDES Reel ab Sekunde 0 (Intro; bei 11 s kam der Drop oft nicht), Lautheit −9 bis −15 LUFS mit festem `volume=0.8`. Jetzt: `automation/music/einstiege.py` misst je Stück die 3 energiereichsten 11-s-Fenster (RMS + Bonus für die ersten 1,5 s) → `_einstiege.json`; `make_reel.sh` nimmt `MUSIK_START` + `loudnorm I=-14:TP=-1.5`; Reel-Motor wählt nach Warengruppe (`STIMMUNG`: Beauty/Schmuck ruhig-edel, Gadget/Fitness treibend, Tier/Kinder verspielt), 12 eigene Stücke, keine Wiederholung unter den letzten 3, Verlauf `social/_musik_verlauf.txt` (für die Lernschleife). Probe: alle −14…−15 LUFS; erste 2 s bis +2,7 dB (Hype-Pro startet im Drop). Kevin-MacLeod-Stücke bleiben draussen (CC BY = Quellenangabe in jeder Caption). Wartende 57 Reels bewusst NICHT neu gerendert (Repo-Wachstum).
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
@@ -1403,7 +1823,9 @@ Sichtbarkeitsfragen grundsätzlich nicht.
 
 **Ein 403 misst die Wand vor dem Absender, nicht das Schloss am Ziel.** Dieselbe Klasse wie
 die Bot-Wand-Verwechslungen vom 17.09., diesmal mit Geldbezug: Bank und Kontoinhaber standen
-35 Minuten im öffentlichen Repo und bleiben in der Historie. Und die gefährlichere Richtung
+35 Minuten im öffentlichen Repo und bleiben in der Historie. ⚠️ Korrigiert 22.09. (Nachtrag 19): auf `main` stehen sie
+LIVE seit 18.09. 20:46 UTC (Squash 178ddbf4e, PR #2521, anderer Zweig) — auf unserem Zweig Einbau 07a5b8c59 (19:33 UTC),
+Entfernung 5521d6ca8 (19:50 UTC) durch den Autocommitter; «35 Minuten» und «nur Historie» waren zu klein. Und die gefährlichere Richtung
 wäre die umgekehrte gewesen — wer der Behauptung glaubt, schreibt künftig Geheimnisse hinein.
 
 **Die Lehre über die Lehre:** Die Regel «das Repo ist ÖFFENTLICH» stand seit 16.09. fett im
@@ -4485,7 +4907,8 @@ Bewertungs-Import genutzt — nichts zu tun.
    Entwurf**, davon nur 648 heute erstellt — 1'400 waren älterer aktiver Bestand. Das ist genau die Routine vom
    05./06.09., gegen die der Betreiber entschied («nichts pauschal draften», #55 «fix die 27k Produkte») und
    heute «Katalog NICHT verkleinern». Sein «cj pausieren» (08:55 an die andere Sitzung) meinte den Import.
-   **AUS.** Rückgängig für heute: `tag:auto-entwurf-0926 AND updated_at:>=2026-09-14T09:00` → ACTIVE — Betreiber-Entscheid.
+   **AUS.** Rückgängig für heute: `tag:auto-entwurf-0926 AND updated_at:>=2026-09-14T09:00` → ACTIVE — Betreiber-Entscheid. ⚠️ Gemessen 22.09. (Nachtrag 19): NICHT vollzogen — `tag:rueckhol-0914` = 0,
+   DRAFT mit `auto-entwurf-0926` 1'231 → 3'189 (+1'958); 34 ACTIVE tragen den verwaisten Tag. Offen als Konflikt 2.
 3. Sie empfiehlt dem Betreiber, **die Custom-App mit Schreibrecht zu deinstallieren / den Token zu widerrufen**, um
    den Import zu stoppen — das ist `autopilot2`, der Betrieb DIESER Sitzung (alle Wächter, Ampeln, Startseite).
    Der Import ist längst über den Schalter gestoppt. Warnung an den Betreiber, in den Cowork-Befehl aufgenommen.
@@ -15736,3 +16159,119 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
+## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+
+> CLAUDE.md muss unter ~70 KB bleiben. Diese 79 Einzeilen standen dort im Index «📚 Jüngste Lehren» und sind hier
+> VERBATIM abgelegt (Reihenfolge wie im Index, neueste zuerst). Volltexte, wo vorhanden, unter dem jeweiligen
+> Datum weiter oben; die Zeilen vom 14.09. haben KEINEN eigenen Abschnitt — sie sind die Einzeile.
+
+- 2026-09-18 · 🪞 **Fremder Stand gegengeprüft: 0 bestätigt, 1 widerlegt, 4 teilweise — und ich hatte ihn schon gepusht.** Die Cowork-Session schloss aus einem 403 ihrer Sandbox, das Repo sei **privat**, und legte im Vertrauen darauf Bank, Kontoinhaber und vier Auszahlungsbeträge hinein. → Journal
+- 2026-09-18 · ⏰ **Der Wecker wurde zur Tatsache: eine «CJ-Frist», die ich mir selbst gestellt hatte.** In `COWORK-BEFEHL.md` stand «CJ-ERSTATTUNG — Frist 19.09. → Journal
+- 2026-09-18 · 🎯 **«hole / suche kunden»: 15 Vorschläge, NULL überlebte — der Fund lag darunter.** Teils meine Schuld («im Zweifel widerlegt»), aber die harten Absagen sind gemessen: **Microsoft/Bing-Kanal ist in der SCHWEIZ nicht verfügbar** (App prüft die Firmenadresse, 10 Länder, CH keins) ·… → Journal
+- 2026-09-18 · 🩹 **«mach alles reibungslos»: 23 Agenten, 9 Befunde hielten stand — die 7 GEFALLENEN waren die lehrreicheren.** In fast jedem gefallenen Fall stimmte der *Mechanismus* und die *Folge* war falsch: `status:open` trifft wirklich keine einzige der 16 Bestellungen (alle archiviert) — «die Ampel ist blind» ist… → Journal
+- 2026-09-18 · 🔁 **«pimp bot»: er wartete auf Zuruf — und verpasste dabei seine eigene Messung.** Gemessen: `grep -c "wiederkehr|intervall|cron"` über den Runner → **0**; er wacht **alle 5 Min** auf, Puls fast immer «leer», alle 43 Quittungen kamen von meinen Zurufen. → Journal
+- 2026-09-18 · 📬 **«cj mail check»: CJ hat 08:44 geantwortet — und 9009 endlich erklärt.** **Erstattung zugesagt:** Dispute im WEB-PORTAL öffnen, dann zahlen sie die vollen **USD 25.54** (18.24 + 7.30) auf die Wallet; sie bestätigen den Rückläufer wörtlich und dass es **keine Linie für… → Journal
+- 2026-09-18 · 🧹 **«Mach alles sauber»: vier Spuren, DREI davon meine eigenen Fehlmessungen.** (1) **Die Landkarte von heute Morgen war zu 3/4 falsch** — Auftrag 35 zeigte, dass Shopifys Kontrollseite `/settings/billing` (in 32 «angemeldet ✅») **ebenfalls 403** gibt, wie alle 5… → Journal
+- 2026-09-18 · 🤖 **«Superbot» heisst erst messen, was er kann.** Drei Lücken, alle gemessen: (1) `grep -rln luxe_auftrag_runner automation/ tools/` → **0 Treffer** — der einzige Rechner mit echtem Browser stand in KEINER Wacht-Liste; (2) sein Runner endete bei… → Journal
+- 2026-09-17 · 🔫 **Der Social-Stopp gilt nur auf EINEM Zweig — auf `main` steht der Poster nackt.** Vor der geplanten Instagram-Arbeit den Stapel mit fünf Linsen vermessen (3 Blocker bestätigt, 3 widerlegt). → Journal
+- 2026-09-17 · 🧠 **Zweites Gehirn gebaut — `tools/zweites_gehirn.py`** (Betreiber: «ki automation mit 2te gehirn für alles automation und selber wachsen verbessern»). → Journal
+- 2026-09-17 · 📌 **Pinterest ist zu 100 % ausgeliefert — ein wertvolles Nein.** Der Distributions-Reiter (den ich beim ersten Lauf übersehen hatte): **438,94 Tsd. → Journal
+- 2026-09-17 · 🔬 **Viermal dieselbe Frage gestellt, dreimal falsch beantwortet.** Nach den 25 Wächtern mit stiller Null waren 18 mit `return None` dran: fängt der Aufrufer das mit `or {}` auf? → Journal
+- 2026-09-17 · ` **Backticks in einer Bash-Zeichenkette essen genau die Wörter, um die es geht.** Der Commit über die 25 Wächter steht mit «25 endeten auf .» und «enden auf  und 67 …» im Repo — in `git commit -m "…"` ist `` `return {}` `` eine **Befehlsersetzung**, die Shell wollte es… → Journal
+- 2026-09-17 · 📎 **Ein Dateifeld ist nicht «das Dateifeld».** Auftrag 27 sollte 117 Pins per CSV hochladen und endete mit «element is not enabled» — ich schrieb es einem schlechten Selektor zu. → Journal
+- 2026-09-17 · 🚪 **Pinterests Katalog-Diagnose gelesen — und die falsche Hälfte abgeholt.** GEMESSEN: **431,36 Tsd. → Journal
+- 2026-09-17 · 🔢 **«4 Versuche» in einer Meldung, die fünfmal probiert.** Die `gql()`-Reparatur auf drei weitere Wächter (dieselbe Klasse wie die 19 vom Morgen, hier zusätzlich mit `return {}` = die Null, die wie eine Messung aussieht) trug die Versuchszahl fest in der… → Journal
+- 2026-09-17 · 🧱🇩🇪 **«BigBuy angemeldet» war ein Fehlalarm — Cloudflare auf Deutsch.** Auftrag 18 (rein lesend) bekam von `bigbuy.eu/en/contact` **«Sicherheitsüberprüfung wird durchgeführt · vor böswilligen Bots zu schützen», Ray ID a3ca2241ac1e86d9, 0 Formularfelder,… → Journal
+- 2026-09-17 · ⛔ **Bei Google kann sich der Agenten-Browser NICHT anmelden** «Anmeldung nicht möglich · Dieser Browser oder diese App ist unter Umständen nicht sicher». → Journal
+- 2026-09-17 · 🧱 **Die Bot-Wand behält die Adresse.** Auftrag 09 war die Gegenprobe zu 03 MIT der neuen Ziel-Prüfung — und meldete wieder `ok`: Endadresse unverändert, kein Gastgeberwechsel, keine Anmeldemaske. → Journal
+- 2026-09-17 · ✉️ **Der Bot hat das Pinterest-Profil gelesen — und zwei Dinge richtiggestellt.** (1) **«Gratis-Versand ab CHF 65» steht dort NICHT.** Das Feld `about` sagt gemessen «Gratis-Versand ab CHF **50**» — meine eigene Eintragung von heute Mittag («fünf Wochen überlebt», aus einem… → Journal
+- 2026-09-17 · 📌 **Eine Korrektur, die den Shop durchsucht, erreicht keinen Kanal.** Der Pinterest-Screenshot zeigt in der Profilbeschreibung «Gratis-Versand ab CHF **65**» — eine Angabe, die am **10.08.** aus dem Theme entfernt wurde (`seo_versandschwelle_fix.py` dokumentiert es)… → Journal
+- 2026-09-17 · 🚚 **Fast eine WAHRE Aussage kaputtrepariert** Startseite bewirbt «Gratis ab CHF 50», live greift **45**. → Journal
+- 2026-09-17 · 🎯 **Zwei Agenten-Quittungen sahen aus wie Erfolg und waren keiner** 03 landete auf einer Bot-Prüfseite («Verbindung muss verifiziert werden») → `ok`; 06 auf Googles Einwilligungswand **mit «Sign in» oben rechts** → `angemeldet: true`. → Journal
+- 2026-09-17 · 📌 **Pinterest war nie ein Token-Problem.** Betreiber hat das Agenten-Browserprofil angemeldet (Händlerstatus «Genehmigt», Shopify «Verbunden») — der seit 08.07. → Journal
+- 2026-09-17 · 🔔 **Drei Shopify-Meldungen («fix»)** **Autopilot-Kanäle** (heute/10.09./07.09.), **«Keine gültigen Zahlungsmethoden»** (26.08.), **Pinterest** (08.07.). → Journal
+- 2026-09-17 · 🩺 **«fix alles mehr»** Rundgang über alle Logs. → Journal
+- 2026-09-17 · 🧪 **«schaue das der bot alles kann»** durchgespielt statt zugesichert — **vier Lücken, zwei erst im Testlauf sichtbar.** (1) `automation/browser/` gab es **gar nicht** → die Auftragsart `skript` konnte nichts; erstes Skript… → Journal
+- 2026-09-17 · 🏠 **Hetzner-Agent vor dem ersten Lauf korrigiert** er sollte in `/opt/abannews` wohnen — **genau dort macht der Deploy-Poller alle drei Minuten `git reset --hard origin/main`** und hätte Agent samt Ergebnissen weggeräumt, bevor sie jemand sieht. → Journal
+- 2026-09-17 · 💳 **«shopyfi zahlung fehler?»** **ja — aber nicht die Kasse, sondern UNSERE Rechnung.** Gemessen: alle 4 Kundenzahlungen seit 18.08. → Journal
+- 2026-09-17 · ⏸️ **Der Container startet nicht stündlich neu — er wird angehalten, sobald ich aufhöre.** Zweimal `uptime` «up 0 min» auf die Minute des Routine-Ticks. → Journal
+- 2026-09-17 · 🖥️ **«hetzner server extra eingerichtet»** **der Server ist nicht neu** — er steht seit 22.06. → Journal
+- 2026-09-17 · 💸 **«erledige das auf sein iban»** **widersprochen — das Geld war längst draussen.** Gemessen: #1017 (Esatovski) **erstattet 16.09. → Journal
+- 2026-09-17 · 📨 **«cj mail checken»** CJ antwortete 07:21 — **auf die Mail vom 9.09., nicht auf die Rückerstattung**, und mit der Aussage, beide Pakete seien unterwegs. → Journal
+- 2026-09-17 · 📉 **«mach weiter»** vier Vermutungen geprüft, **drei falsch**. → Journal
+- 2026-09-16 · 📣 **«mach gratis werbung überall mit bot»** **kein Spam-Bot** (Foren/Kommentare = Kontosperre, und an Google hängt der einzige Kanal mit Verkäufen). → Journal
+- 2026-09-16 · 🎫 **«cj co work erledigen»** CJs Vorschau `disputes/disputeConfirmInfo` antwortet **200** mit `maxAmount 25.54` und nennt sogar den richtigen Grund (**6 «Product Returned»**) — `disputes/create` verweigert dieselben Werte… → Journal
+- 2026-09-16 · 🧰 **«lerne mache das» (TikTok, prompts** .chat): **jede Einzelbehauptung stimmt** — quelloffen (MIT/CC0), **170,5k Sterne**, MCP-Server `https://prompts.chat/api/mcp` antwortet wirklich, ohne Schlüssel. → Journal
+- 2026-09-16 · ❓ **«faq in webshop?»** ja — aber **vier allgemeine FAQ-Seiten** standen veröffentlicht nebeneinander, und **nur eine** war verlinkt (Footer → `/pages/faq`). → Journal
+- 2026-09-16 · 📤 **Shopcom** Auftrag war «Betreiber erinnern, die Anmeldung zu senden» — gemessen (`to:… in:sent`) ging sie am **05.08. → Journal
+- 2026-09-16 · 🔪 **«messer zurück erstatten und alles»** CJ schickte #1017 aus Shanghai zurück (verbotener Artikel, keine Linie CN→CH). → Journal
+- 2026-09-16 · 🔍 **Mein eigener Klingen-Wächter meldete **«0 Handklingen im Verkauf», während der Köder aktiv war**** Shopify sucht auf WORT-ANFÄNGEN, `title:messer*` findet «Messerset», aber NIE «Taschenmesser»/«Kochmesser» — und `title:*messer*` liefert gemessen **exakt dasselbe** (führendes Sternchen wird… → Journal
+- 2026-09-16 · 🎫 **«egal wie hauptsache erledigt»** vor dem Delegieren selbst geprüft — `bigbuy.eu/en/contact` gibt **HTTP 403 von BEIDEN Ausgängen** (eigene IP + WebFetch), es braucht wirklich einen Browser. → Journal
+- 2026-09-16 · 🏦 **«schau das bigbuy auszahlt»** **fünf Mails, zwei wortgleiche Auto-Antworten** (08.09. → Journal
+- 2026-09-15 · 🧠 «pimp obsidian»: Link-Hygiene war schon top (0 kaputt, 0 Waisen) — der Fund lag woanders. **`index_bauen()` hatte eine fest verdrahtete Ordnerliste ohne `Lehren/` und `Betreiber-Entscheid/` → drei Notizen fielen still aus dem Index** (79 von 82). → Journal
+- 2026-09-15 · 🔍 «was kann man noch machen für webseite»: die drei Punkte abgearbeitet, die in der Vollständigkeits-Kritik stehen. → Journal
+- 2026-09-15 · 💰 «lerne von anderen wie man profit macht»: GEMESSEN **29,0 % Nettomarge, CHF 9.20 je Bestellung, AOV 33.00, 0 Verluste** (6 von 9 mit belegtem EK) → für CHF 1'000 Gewinn braucht es **109 Bestellungen**. → Journal
+- 2026-09-15 · 🧷 «push überall»: `git rev-parse --short HEAD origin/<branch>` meldete `fatal: Needed a single revision` — ich las den bekannten **verklemmten Tracking-Ref** und wollte `repo_vorspulen.sh` (mit seinem `git stash -u`) auf ein **gesundes** Repo loslassen. → Journal
+- 2026-09-15 · 🔦 Rundgang über **alle** `/tmp/*.log` nach `Traceback|Error:` → **fünf tote Wächter**. Drei aus derselben Ursache: → Journal
+- 2026-09-15 · 💀 «fix weiter bis kein fehler mehr»: `wahlversprechen.py` war **sechs Tage tot** — `m.start()` VOR dem `if m` (Absturz beim ersten Produkt) und dahinter `BESCHREIBEND` erst 90 Zeilen später definiert. → Journal
+- 2026-09-15 · 🦶 «verbessere weiter»: **Der Footer stand in KEINER Wächterliste** — `menue_links.py` las `if m["handle"] == "main-menu"`. → Journal
+- 2026-09-15 · 🌍 «Versand nach Deutschland»: erster Detektor meldete ~30 Treffer, **fast alle falsch** («Weltweite Spannungsanpassung 100-240V» neben «🚚 Lieferung 10–20 Werktage» — Produkttexte haben keine Satzzeichen). → Journal
+- 2026-09-15 · 🧪 «co work machen»: 4 von 10 Punkten ohne Browser entschieden. **Versandschwelle endgültig geklärt** — `storefrontAccessTokenCreate` + `cartCreate` liefern echte Körbe MIT Versandoptionen (`tools/versand_testkorb.py`): → Journal
+- 2026-09-15 · 📮 Die Sende-Routine hat «**Schreibe NUR Drafts, sende NIE selbst**» wörtlich im eigenen Prompt — und sendete trotzdem (die vorgeschriebene Refund-Floskel ging 06:23 an #1017). → Journal
+- 2026-09-15 · 🤖 Eine fremde Routine (`trig_01KAnvaXU7rbVVBbaUqrg6ci`, heisst «Drafts schreiben») SENDET: sie versprach #1017 um 06:23 UTC eine Rückerstattung — gegen den Betreiber-Entscheid vom 11.09. → Journal
+- 2026-09-15 · 💶 «1000 Euro zurück»: keine neue BigBuy-Mail (die von 06:23 war unsere eigene Wiederholung); Guthaben gemessen `"1000.00"`, seit 15.07. → Journal
+- 2026-09-15 · 👻 «118 leere Kategorien»: nur **2** sind im Onlineshop sichtbar, 116 waren nie veröffentlicht — mein Abmelde-Vorschlag für 55 Markenregale betraf Seiten, die niemand öffnen kann. → Journal
+- 2026-09-15 · ✉️ #1017: Kunde bat am 11.09. um Rückerstattung auf eine gemailte IBAN, bekam 4 Tage keine Antwort («??» am 15.09.); → Journal
+- 2026-09-15 · 🏢 «B2B?»: Shopify-Mail «du hast begonnen» ist Werbung — gemessen 0 Firmen, 0 B2B-Kataloge, Plan Basic (kein Plus). Nichts halb gebaut. Der gangbare Weg steht seit 14.09. als Seite «Firmen & Vereine» mit Anfrageformular
+- 2026-09-15 · 🧭 «Was könnte man noch machen?»: 47 Vorschläge, 39 geprüft behalten, 8 verworfen + Vollständigkeits-Kritik → `dropship/WEBSITE-IDEEN-2026-09-15.md`; Cowork 1 (Versand 45→50) zurückgezogen, hätte rabattierten Körben den Gratisversand genommen
+- 2026-09-15 · 📱 Kundenstimmen-Sektion von gestern machte die Startseite auf dem Handy 1488 px breit; zwei Fixes schienen wirkungslos — es war der IP-Cache. → Journal
+- 2026-09-15 · 🔇 Zwei Schreibvorgänge meldeten Erfolg und taten nichts: `menuUpdate` verwirft `url` bei Typ COLLECTION; `articleUpdate` braucht `HTML!` statt `String!`, und die `or {}`-Kette verschluckte den GraphQL-Fehler. → Journal
+- 2026-09-15 · 🎄 «Weihnachten» im Menü führte auf 4 Produkte, im Katalog lagen 162 (Tag fehlte); alle getaggt, Kollektion füllt sich. → Journal
+- 2026-09-15 · 🧭 Hauptmenü: 6 Einträge zeigten auf `/en/collections/…` = 404 (auch «Schmuck & Uhren»); Wächter sah sie nicht (Regex greift mitten im Pfad) und meldete dafür 2 Emoji-Handles falsch (kein `unquote`); → Journal
+- 2026-09-15 · 🕳️ BigBuy-Abschied griff nur `tag:bigbuy` — 136 aktive Produkte mit `bb-…`-SKU wären bestellbar geblieben (Geisterverkauf #1006/#1008/#1009); Auswahl auf Tag-ODER-SKU erweitert. Wächter immer mit einem ZWEITEN Merkmal gegenzählen
+- 2026-09-15 · 📦 Zugesagte Rückerstattung für #1017/#1018 fällig — gemessen statt erstattet: beide Sendungen seit 12.09. unterwegs (7 Stationen, Schweizer Post); Betreiber-Entscheid 11.09. hatte die Zusage ohnehin überholt
+- 2026-09-15 · 🔎 «Nicht prüfbar» war eine Aussage über meine Suche: die BigBuy-Kündigung stand seit 16.08. im Kopf von `bigbuy_abschied.py`, und das Skript lief in dem Moment (260 → 194 aktive); → Journal
+- 2026-09-14 · 🍬 «Essen von Fortura»: Kollektion `suesses-esswaren` bestand schon (29→31 CH-Lager-Süsswaren) — Menü nach vorne, in Startseiten-Rotation; vor dem Anlegen immer Bestand suchen
+- 2026-09-14 · 🤖 «chatgpt pushen»: 2,17 % Conversion; Agentic Storefront braucht US-Markt (nur CH) → Cowork 9; ChatGPT zitiert Fakten-Seiten (8/12 Influencer-Seite) → FAQPage-Schema auf /pages/faq, Bing-Sitemap Cowork 10
+- 2026-09-14 · 🔁 Keepalive zum 3. Mal von der PC-Session abgeschaltet («CJ lief weiter» — gemessen: 0 Produkte nach Pausenbeginn 15:57Z); Trigger umbenannt, Prompt trägt Messung + Prüfbefehl
+- 2026-09-14 · 🧩 «suche apps»: 33 installiert, 4 wirken; Inbox installiert-aber-aus (Cowork 7), Hextom-Währungsrechner = Ballast (Cowork 8); keine neue App nötig — Bestand messen vor App-Suche
+- 2026-09-14 · 🛒 «verbessere katalog»: 70 % Verkehr auf Produktseiten, 38 % davon Drafts (404) → 61 Redirects; USA-Block 346+475 zurück (Sisyphus-Wächter, Rotation); → Journal
+- 2026-09-14 · 🧭 «youtube optisch+seo»: 2× Warenkorb-h2 vor H1 (Produkt/Kollektion, nicht Startseite) → role=heading; JSON-LD in den Head; Kundenstimmen-Karussell aus Judge.me-Metafeld nach Bestsellern (kein App-Block nötig); damen-mode 174→138
+- 2026-09-14 · 📺 Betreiber-Link «Claude kann ALLES in Shopify»: YouTube 429 → oEmbed für Titel/Kanal; Inhalt = unser Alltag; GEMESSEN: Shop spricht UCP (/api/ucp/mcp, 10 Werkzeuge), Katalogsuche braucht Agentenprofil
+- 2026-09-14 · 🔑 Groq lebt (Chat-Schlüssel, 200), Ampel-403 war der urllib-User-Agent; PC-Gedächtnis hatte Keepalive-Routine AUS und Entwurfs-Routine AN (2'031 Drafts heute) → umgeschaltet; Versand live 45 statt 50, Klick blockiert
+- 2026-09-14 · 🛑 «stoppe cj grind?» / «Grow in ≤6 Monaten, jetzt Verkauf optimieren»: Grind pausiert (Runner 0, Pause +180 T), Bilder gingen trotz 105 % noch; Groq-Schlüssel kam nicht an (Env leer nach Neustart)
+- 2026-09-14 · 🏢 «b2b optimieren?»: kein Firmenkonten-Ausbau — Seite «Firmen & Vereine» mit Anfrageformular (Merch ab 10 Stk, CH-Lagerware, Rechnung), Footer 15 Einträge; Formular-Knopf hiess «Submit»
+- 2026-09-14 · 🎠 «mach 8 produkte, fülle die Webseite mit anderen Katalogen»: 18 Reihen à 8, 8 Wechsel-Reihen drehen täglich durch 25 Kataloge (Automat), Startseite 3,1 MB
+- 2026-09-14 · ⚖️ «vergleiche andere seite mit unsere»: 10 CH-Shops gemessen, Startseite 6,92 → 3,75 MB (Horizon rendert grid+carousel_on_mobile doppelt; Icon-Symbol statt 368 Inline-Kopien)
+- 2026-09-14 · 📺 «lerne im youtube sachen»: 4/6 Videos lesbar, Merchant-Anforderungen erfüllt bis auf UID, Befund nur im Backup (Backup ≠ live), Drossel nach 13 Abrufen
+- 2026-09-19 · 🔁 **Zwei Pfade, ein Wächter — der Doppelstart war meiner.** Nach der Cursor-Reparatur den Nachhol-Lauf von Hand gestartet, **vorher geprüft ob einer läuft** (leer) — und die Prüfung war trotzdem wertlos: der Aufseher startete denselben Wächter **eine… → Journal
+- 2026-09-19 · 🕳️ **Ein Cursor, der «neueste zuerst» sortiert, sperrt genau die Neuzugänge aus.** `cj_verfuegbarkeit.py` (Ghost-Sale-Wächter) meldete seit dem 16.09. → Journal
+- 2026-09-19 · 🔎 **Der Klammer-Trick schützt den grep — nicht die Zeile, die ihn trägt.** Der 08:08-Keepalive endete mit `Aufseher=0`; zwei Prüfungen in EINER Zeile widersprachen sich: `awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/'` → **nichts**, `grep -c "[f]ixer_keepalive"` → **1**. → Journal
+- 2026-09-19 · 📭 **Ein Schweigen kann heissen, dass die Frage nie angekommen ist.** Die CJ-Nachmessung brachte vier saubere Neins (Guthaben `amount 0.0`, `disputeId` null, Dispute-Liste 0, keine Mail neuer als CJs Zusage vom 18.09. → Journal
+- 2026-09-19 · 🇱🇮 **«mach bot besser und seite»: der Puls beweist Leben, nicht Ankunft — und der Shop verspricht ein Land, das nicht bestellen kann.** `_puls.json` war frisch, **zwei Quittungen standen seit 17.09. → Journal
+- 2026-09-20 · 🎯 **Vierzig von vierzig Treffern — und kein einziger war ein Fund.** Die Startseite lieferte dem Hetzner-Agenten am 20.09. → Journal
+- 2026-09-21 · 🩹 **Der Wächter fragte nach der Werbung, nicht nach der Ware — und die Lücke, die ich reparieren wollte, gibt es nicht.** Zwei Ergebnisse, beide durch Messen statt Vermuten. → Journal
+- 2026-09-21 · 🪣 **Acht Wächter, ein Eimer — die Drossel war hausgemacht, und mein erster Fix war falsch.** `menue_links.log`: **15 PAUSE-Zeilen bei 16 Läufen** — der Wächter, der am 15.09. → Journal
+- 2026-09-21 · 🫀 **Ein Herzschlag, der sich als Arbeit ausgab — und die Post brachte ein endgültiges Nein.** «email sachen machen»: Posteingang in drei Tagen **ein** Vorgang, der Befund lag daneben. → Journal
+- 2026-09-21 · ⏳ **Der Kommentar sagte `restoreRate`, der Code schlief 12 s — und mein Patch hatte denselben Fehler.** «alles fixen»: ~15 Wächter enden mit «Shopify antwortet nicht». → Journal
+- 2026-09-21 · 🔁 **Fünf sinnlose Läufe pro Stunde, für immer — und ein Wrapper, der Befunde erfindet.** (1) `versandschwelle_rabatt.log` meldete seit 10.09. → Journal
+- 2026-09-21 · 📚 **«9 geprüft» las sich wie Fortschritt — es waren 810 Katalogseiten, jede Stunde.** `cj_verfuegbarkeit` schrieb 104× dieselbe Zeile; gemessen blätterte er seit der Cursor-Löschung (19.09.) bei JEDEM Lauf den ganzen Katalog (~810 Seiten, **50–80k Punkte** aus einem 2'000er-Eimer),… → Journal
+- 2026-09-21 · 🚧 **Geduld reicht nicht, wenn alle gleichzeitig warten — die Schranke.** Nach den Geduld-Patches starb `lagerstand_hygiene` erneut, jetzt mit Grund: «12x gedrosselt (Eimer dauerhaft leer)». → Journal
+- 2026-09-21 · 🧭 **Drei tote Landeseiten + ein Kollektionstext entschieden.** Alle drei Seiten (9/5/2 Sitzungen) tragen `cj-nicht-mehr-verfuegbar` → nicht zurückholbar → 301 auf die Kategorie (`sub-sandalen`, `sub-aroma-diffuser`, `wasserfester-schmuck`); «Wasserfester… → Journal
+- 2026-09-21 · 🚪 **49 Tages-Tore, keines beanspruchte sein Log — der Bewertungs-Importer lief doppelt.** Tor-Frage «Log älter als 24 h?», der Lauf schreibt minutenlang nichts (Prio-Liste zuerst), nach dem 120-s-Schlaf war das Tor noch offen → zwei Instanzen (822 s / 696 s, `sid` = Forks EINES Aufsehers). → Journal
+- 2026-09-21 · 🗓️ **Die API-Version im Code war seit Monaten nicht die, die antwortete.** Kopf gemessen: 2024-10/2025-01/2025-07 → alle still auf **2025-10** bedient, die am **01.10.2026** ausläuft — 350 Stellen wären in zehn Tagen unangekündigt auf 2026-01 gesprungen. → Journal
+- 2026-09-21 · 💾 **Betreiber-Entscheid: Grow-Plan in einem Monat, zuerst Kunden.** Quittung MIT Ablaufdatum (`_dateispeicher_entscheid.txt`, 21.10.): die Ampel zeigt den vollen Speicher weiter als Messung, aber als gewollten Zustand, und ruft nach dem Datum von selbst wieder. → Journal
+- 2026-09-21 · 🔁 **68 kaufbare Produkte falsch gedraftet — mein Regex von heute früh, und die alte Fassung seit Wochen.** «CJ-CJJSBGSD00009-Blue package-US» → Kern `CJJSBGSD00009` = PRODUKT-SKU (kein `01AZ`), am **Varianten**-Endpunkt gefragt, `1602001 not found` als Absage gewertet — Kanarienvogel productSku: **200,… → Journal
+- 2026-09-21 · 🧩 **Das Produkt lebt, die Farbe ist tot — die Wache fragte nur nach dem Produkt.** Trainingsanzug: CJ führt 32 Varianten, der Shop 40, **8 Blau mit Menge 0 + CONTINUE kaufbar** — Ghost-Sale eine Ebene tiefer. → Journal
+- 2026-09-21 · ⏱️ **«schneller automation»: die Automation stand sich selbst im Weg.** Ohne Absprache drosselt CJ jeden zweiten Aufruf (1600200), die Helfer schlafen 8/16/24 s → ~12 s je Produkt bei 0,6 s Latenz. → Journal
+- 2026-09-21 · 🎨 **Zwei Shop-Varianten, eine CJ-SKU — «Grau» hätte Silber bestellt.** Zweiter Varianten-Lauf: Handsauger trägt an beiden Farben `…01AZ`, CJ führt `01AZ`+`02BY` → Fehlversand statt Ghost-Sale. → Journal
+- 2026-09-21 · 🚧 **Sechs Stunden ohne einen Tages-Wächter — die Schranke von heute Morgen hatte sich selbst ausgesperrt.** Inline im `bash -c`-String schlossen die inneren Anführungszeichen den äusseren, `$_s` expandierte leer, der Rest lief als Dateiname: 89× «line 412: … No such file» im Aufseher-Log, **26… → Journal
+- 2026-09-21 · 🖥️ **Der grosse Hebel für «schneller automation» liegt nicht im Code, sondern im Schlaf des Containers.** Alle Tages-Wächter laufen nur in Session-Arbeitszeit. → Journal
+- 2026-09-21 · 🔌 **«mach alles selber und fix»: 29 Geräte mit unklarem Netzstecker — die Auswahl statt der Rate.** Jedes Gerät bekam seine CJ-EU-Varianten als echte Farb-/Ausführungsauswahl mit EU-SKU; der Trockenlauf zeigte drei Fallen (Bündel für CHF 180.90, günstigste Variante = OHNE Ionen, «White 50W strip» ist keine Farbe) → nur reine Farbwerte automatisch, sechs Fälle ausdrücklich im Code; das Rücklesen fing einen fehlenden Preis → Journal
+- 2026-09-21 · 🧭 **Menü und Kollektions-Dubletten:** 185 «unverlinkte» Kollektionen waren zu 97 % Aliasse; vier echte Warengruppen ins Menü (Typ `COLLECTION` zeigt in der API `/en/…`, Storefront rendert richtig → auf Typ `HTTP` wie die 124 anderen); 6 Regel-Dubletten abgemeldet + 301 — drei hatten die 301 längst, und `/collections/yoga` war selbst eine 301 auf den, den ich abmeldete (gedreht). **Vor dem Abmelden die Weiterleitungen lesen** → Journal
+- 2026-09-21 · 🧾 **Kosten-Kette: der Wächter starb jede Nacht am JSON, weil der Export-Bauer «PAUSE» mit Exit 0 meldete und die Kette kein `&&` hatte.** Exit 3 + `&&`; Restlauf detached: 177/177 Signatur-Produkte quittiert, Midikleid gewichtsabhängig (Aufgabe 73 geschlossen). **Eine Prüfung, die 0 zurückgibt, ist für die nächste Schicht unsichtbar** → Journal
+- 2026-09-22 · 🔧 **«mach alles besser»: erst messen, wo Menschen landen.** 166 Sitzungen/7 T, 97 auf Produktseiten, 0 Käufe; die 30 meistbesuchten Produktseiten repariert (14 Faktenblöcke, 4× du-Form auf den LIVE-Text, sonst wäre der Faktenblock weg), 3 Kollektionstexte + 3 Kollektionsbilder. «0 Bewertungen» war kein Loch: das Importer-Ledger ist nach Produkt-ID geführt, CJ hat keine ≥4★-Kommentare. **Ein Ledger liest man mit dem Schlüssel, mit dem es geschrieben wird** → Journal
+- 2026-09-22 · 🩺 **Heilversprechen: 95 Zusagen in 51'341 Produkten entschärft — und der Fund vom 04.09. war durch einen Rückholer zurückgekommen.** Kein Wächter für die Klasse → `heilversprechen_wache.py` (täglich, Ersatztabelle, Bericht); `um()` machte «denen Sie» zu «denst du»; 831 CJ-Produkte mit einem Bild → NICHT neu bauen: `cj_bild_backfill.mjs` (OCR-Wache) stand seit 30.08. an der FERTIG-Sperre; mein Doppel ohne OCR hängte 77 Werbeplakate an (46 %), alle wieder weg. **Fix = Wächter + Tabelle + Bericht, sonst ist es keiner** → Journal
+- 2026-09-22 · 🧠 **«lern session memory»: der Vault war 6 Tage tot (89 Notizen, 18 %), 62 Journal-Kapitel ohne Regel-Notiz → 51 Lehren aufgenommen (140 Notizen, 29 %), Ampel-Zeile `VAULT: Rückstand N T`.** Zweites Gehirn meldete 23 gesunde Helfer krank (except:pass um die Wartezeit-Rechnung) → Regel verfeinert, 1 echter Fund behoben. Beinahe: Ledger per `mv` ersetzt, während der Prozess es hielt (Timeout ≠ Ende) → Journal
+- 2026-09-22 · 📥 **«promt holen und lernen»: prompts.chat = 2 brauchbare von 40 Treffern — der Wert war die Checkliste, gemessen am Shop: 1'541 bewertete Produkte (8'066 Bewertungen) ohne `aggregateRating` → Product-Schema im Theme ergänzt (replace_first auf Shopifys `structured_data`), live bestätigt; og:image-Ersatz (Logo) für 28 bildlose Ratgeber + FAQ.** 0 Dringlichkeitsfloskeln im Theme. Widersprüchliche Quellen (Keyword-Stuffing ja/nein) entscheidet der eigene Bestand → Journal
+- 2026-09-22 · 🤖 **«automation ki selbstständig starten»: 11 Routinen, alle aktiven nur Wächter, keine verbessert → Routine «Autonome Verbesserungsrunde» (alle 4 h, in diese Session; messen → EINE Klasse beheben → Lehre → Push → 3 Zeilen).** Grenze: läuft nur in Session-Arbeitszeit; Tages-Wächter ohne Sitzung brauchen den Hetzner-Server (Geheimnisse = Betreiber) → Journal

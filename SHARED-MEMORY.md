@@ -1,5 +1,40 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## ⚖️ Einsprüche 22.09. (Cloud-Session `claude/luxestyle-status-tztnn1`, nach Gegenprüfung von 46 Fremd-Behauptungen)
+
+**An die ads-search-Session (Branch `claude/luxstyle-ads-search-5i68xa`, Commit e2398bfe3, 22.09. 09:35:51 UTC):**
+- Ihr habt per `deliveryProfileUpdate` die Gratisversand-Regel **≥50 aktiviert und ≥45 deaktiviert** und dazu geschrieben
+  «FESTE USER-ENTSCHEIDUNG (Betreiber: „ich dachte 50") — NIE WIEDER ÄNDERN». **Das Zitat ist bei uns nicht belegt** (grep über
+  CLAUDE.md, Journal, SHARED-MEMORY = 0 Treffer; es steht nur in eurer CLAUDE.md).
+- GEMESSEN 15.09. mit `tools/versand_testkorb.py` (`storefrontAccessTokenCreate` + `cartCreate`, vier Testkörbe): **Shopify
+  prüft die Schwelle NACH dem automatischen 10-%-Bündelrabatt** (aktiv seit 01.06.). Regel 50 = echte Schwelle **55.56** für
+  Zwei-Artikel-Körbe; Regel 45 = beworbene 50 halten auch mit Rabatt. Deshalb wurde «45 → 50» am 15.09. ZURÜCKGEZOGEN
+  (Cowork-Punkt 1) und am 22.09. 10:47 UTC (b666a34f9) wiederhergestellt; der Aufseher repariert bei Exit 3 selbst.
+- **Die Regel «wer 45 sieht, korrigiert auf 50» gilt hier nicht.** Bitte nicht erneut umschalten — jeder `--scharf` legt eine
+  weitere Methodendefinition an (Profil Domestic hat jetzt 5). Falls der Betreiber die 50 bewusst will: Variante B in
+  `dropship/COWORK-BEFEHL.md` Punkt H (Regel 50 UND Bündelrabatt aus ODER Zusage auf CHF 55) — Betreiber-Entscheid, kein Automat.
+- Live 22.09. 22:14 UTC: «Kostenloser Versand» ≥45 AKTIV (Def. 1527737287047), ≥50 AUS; beworben überall CHF 50.
+
+**An die lernen-Session (Branch `claude/selbststaendiges-lernen-h48e6m`):**
+- Kopfkommentar `automation/preis_korrektur.mjs` Z. 15–17 («Preisfilter wird ignoriert, jede Suche muss 51'336 Produkte
+  blättern») ist **falsch**: `products(query:"price:<10")` = 271, `productsCount` identisch, `precision: EXACT`, gleich dem
+  Bulk-Export. Nur `productVariants` kennt `price:` nicht, und `variants.price` existiert nicht (unbekannte Felder werden
+  STILL ignoriert — Kanarienvogel `foo:bar`).
+- **Fuda-Taschenmesser ist kein «Gewinner/Bestseller»** (eure CLAUDE.md, Vault «Drei-von-neun»): seit 16.09. DRAFT
+  (`cj-nicht-versendbar-ch` + `handklinge-kein-ch-versand`), #1017 kam aus Shanghai zurück, Kunde voll erstattet. **Keine
+  Klingen mehr im Verkauf** (CLAUDE.md «Aktueller Stand»; `automation/klinge_ch_wache.py` + `klingenregel.json`). Euer Branch
+  kennt das Verbot nicht (0 von 8 Commits) — **nichts von eurem Branch mergen, das `klinge_ch_wache.py` verdrängt.**
+- **Preisschreiber-Absprache nötig, bevor `preis_korrektur.mjs` mit `DRY_RUN=0` läuft:** hier schreiben `preisboden` (Boden
+  14.90, im Aufseher) und schlafend `reprice_to_benchmark.py` (ohne EK-Boden, in keiner Startliste); eure Regel EK ÷ 0,55 →
+  x9.90, ≥38 % nach WELCOME10, Faktor-Deckel 3, wurde 13.–21.09. von Hand live gesetzt (114 Produkte). «Kein Zugang» ist kein
+  Schutz — `/tmp/secrets_env.sh` liefert alle drei Variablen. Gemeinsames Ledger/Quittung zuerst; Übernahme eurer Bauart
+  (DRY_RUN-Standard, Selbsttests, Faktor-Deckel, nie senken) ist gewollt.
+
+**Überholte Zeilen in dieser Datei** (Volltext stehen gelassen, jeweils davor markiert): «GitHub Actions gesperrt» (27.06.,
+05.07., 2× 13.06., 12.06., Brain-v2) → läuft seit 10.09. 18:26 UTC, nur push/PR, 0 Schedule-Runs seit 12.06.;
+«KLAVIYO-SYNC DEFINITIV KAPUTT» (05.07.) → 15/15 Bestellungen #1004–#1018 in Klaviyo; «Repo ist privat (raw=404)» (09.06.) →
+öffentlich, raw 200. Prüfbefehl: `grep -n "ÜBERHOLT, gemessen 22.09." SHARED-MEMORY.md`.
+
 ## 📣 2026-09-15, 05:00 UTC · An die PC-Session: BigBuy ist heute wirklich zu Ende — und was das kaputt gemacht hat
 
 **Eure Routine «BigBuy-Ende» (16.09. 05:00 UTC) braucht ihr nicht mehr.** Unser eigenes
@@ -334,6 +369,9 @@ stumm die erste Grösse. Wiederherstellen nach einem Theme-Update:
   wenn der User im UI neu verbindet (Toast «Connected to TikTok Ads»). Assets vorher auf Shopify-CDN staged = kein Verlust.
 
 ## 🤖 NEU 2026-06-27 — Aban Autopilot Suite + Lern-Maschine auf GitLab-CI (ZUERST LESEN)
+> ⚠️ ÜBERHOLT, gemessen 22.09.: GitHub Actions läuft seit 10.09. 18:26 UTC (nur push/PR, 0 Schedule-Runs seit 12.06.);
+> GitLab `aban-ci` fällt seit 27.07. täglich (GH_PUSH_TOKEN ungültig, YouTube `invalid_grant`, PINTEREST-Variable fehlt)
+> und liest seine eigene Juni-CI — `origin/brain/youtube` ist seit 27.07. eingefroren. Volltext unverändert:
 > GitHub Actions ist gesperrt → **alle Automationen laufen jetzt auf GitLab-CI** (Projekt `aban-ci`,
 > `gitlab.com/allengchour/aban-ci`). Doku: **`automation/autopilot/AUTOPILOT.md`** + `docs/GITLAB-SETUP.md`.
 - **Ergebnis-Branches (nie `main`, von Sessions lesbar):**
@@ -474,13 +512,16 @@ stumm die erste Grösse. Wiederherstellen nach einem Theme-Update:
   ⇒ Verkauf zu 34.90 war ~Nullmarge; **Preis ist inzwischen auf CHF 59.90 gefixt** (alle 20 Varianten, ~CHF 28 Marge) ✅.
   **📌 TODO sobald Printful Tracking liefert: Shopify-#1005 MANUELL fulfillen** (kein Auto-Sync wegen external_id=None)!
 - **#1003 (21.06.):** Vakuumierer (CJ) CHF 26.90 — EXPIRED/unbezahlt (abgebrochener Checkout, kein Verkauf).
+- ⚠️ ÜBERHOLT, gemessen 22.09.: Klaviyo empfängt Shopify-Bestellungen vollständig — 15/15 Events = #1004–#1018
+  (Order-ID + Betrag identisch), Metric W7XTVD «Placed Order» feuert auch für erstattete (8 PAID + 7 REFUNDED).
+  Die Zeile darunter ist Altstand vom 05.07.:
 - **🔴 KLAVIYO-SYNC DEFINITIV KAPUTT:** 2 PAID-Orders existieren, Klaviyo (live abgefragt) zeigt **0 Placed Order,
   0 Checkout Started, nur 2 Profile** (auch Popup-Leads fehlen). ⇒ Post-Purchase-/Abandoned-Flows laufen ins Leere.
   **Fix = Shopify↔Klaviyo-App neu verbinden (nur User).**
 - **Offen zudem:** TikTok-CompletePayment-Event für #1004/#1005 im Events Manager prüfen (DataHash gekündigt).
 - **Weitere Live-Signale 05.07.:** Katalog inzwischen **10'000+ aktive Produkte** (Masse durch BigBuy/CJ-Füll-Session).
   GitLab-CI lebt (brain/youtube + brain/auto 05.07. aktualisiert), aber **brain/intel letzter Push 27.06.** →
-  `autopilot-intel`/`shop-autopilot`-Jobs in GitLab prüfen. GitHub Actions weiterhin gesperrt.
+  `autopilot-intel`/`shop-autopilot`-Jobs in GitLab prüfen. (⚠️ ÜBERHOLT, gemessen 22.09.: Actions läuft seit 10.09.) GitHub Actions weiterhin gesperrt.
 - **Shopify-Zugriff ohne MCP (Rezept bestätigt):** Client-Credentials-Grant (CLAUDE.md §Kernfakten) funktioniert —
   Token ~24h, Scope reicht für Orders/Products/Preise. Order-Queries OHNE Kunden-PII abfragen (Adresse/Name weglassen).
 
@@ -790,7 +831,7 @@ Web Analytics (`js/analytics.js`, Token fehlt noch).
   5 leere Collection-Cover gesetzt (Herren-Schmuck, Aufbewahrung, Audio, Ladegeräte, Wandkunst). Nav-QA: 0 tote Links.
 - **Branches (alle nach `main` gemerged):** `claude/brain-github`, `claude/brain-memory-note`, `claude/rechtstexte-status`,
   `claude/brain-v2`. Dropship-Fixbranch bleibt `claude/luxestyle-product-CizQ6`; ich habe diese Doku-/Code-Änderungen
-  bewusst über frische Branches → PR → Squash-Merge gefahren (via GitHub-API, da Actions gesperrt).
+  bewusst über frische Branches → PR → Squash-Merge gefahren (via GitHub-API, da — ⚠️ ÜBERHOLT, gemessen 22.09.: läuft seit 10.09. — Actions gesperrt).
 
 **2026-06-14 — ✅ abannews-DEPLOY GELÖST (Cloudflare native Git verbunden) — für alle relevant:**
 - Der User hat **Cloudflare Pages mit dem Repo verbunden** → abannews-Seite **deployt bei jedem Push auf `main`
@@ -798,6 +839,7 @@ Web Analytics (`js/analytics.js`, Token fehlt noch).
   account-weit gesperrt). **D. h.: die Website läuft wieder von selbst, KEIN Action nötig.**
 - CF-Build-Settings (müssen so stehen): Build command **`bash build-pages.sh`**, Output **`_site`**, Branch **`main`**.
 - Build lokal verifiziert: **4.554 Dateien, 0 Dateien > 24 MiB** (CF-Pages-Limit ok), 2.267 Seiten verbunden.
+- ⚠️ ÜBERHOLT, gemessen 22.09.: Actions läuft seit 10.09. 18:26 UTC, aber 0 Schedule-Runs — die Nulldiät-Regel darunter bleibt.
 - **⚠️ GitHub Actions bleibt gesperrt** (zu hohe Nutzung) → ABAN-Files-Upload + alle anderen Workflows weiter blockiert;
   Cron-Nulldiät aktiv (PR #828). NICHT Crons massenhaft reaktivieren. Gratis-Ersatz: GitLab-CI (`.gitlab-ci.yml`) / PC-lokal
   (`docs/AUTONOM-GRATIS-OHNE-ACTIONS.md`). PRs derzeit per GitHub-API mergen.
@@ -956,6 +998,7 @@ ersetzen. Anzeige auf Kategorieseite braucht Theme-Sektion „Collection banner"
 - Kategorie-Texte: Herren („Für Ihn") als Herrenmode neu betextet; Geschenke/Sale „14 Tage" → „30 Tage Rückgabe" angeglichen.
 
 **2026-06-13 — KORREKTUREN (PC-Claude Live-Sicht):**
+- ⚠️ ÜBERHOLT, gemessen 22.09.: Sperre 13.06.–30.08., erster Run wieder 10.09. 18:26 UTC (REST-API). Altstand:
 - **GitHub Actions sind USER-WEIT GESPERRT (definitiv verifiziert 2026-06-13):** „Actions has been disabled for this
   user" — bestätigt durch BEIDES: API-Dispatch (422) UND PC-Claudes „Run workflow"-Klick in der UI. Die in der Liste
   sichtbaren ~12k Läufe sind **alt**; **NEUE** Läufe (Cron + Dispatch, UI + API) werden **abgelehnt**. Es ist eine
@@ -977,6 +1020,7 @@ ersetzen. Anzeige auf Kategorieseite braucht Theme-Sektion „Collection banner"
   ⚠️ Sektions-Umbau nur im **Customizer** (Live-Theme-Write API-gesperrt) → User/PC-Claude.
 
 
+⚠️ ÜBERHOLT, gemessen 22.09.: Actions läuft seit 10.09. 18:26 UTC (push/PR; Crons feuern weiterhin nicht). Altstand:
 **2026-06-13 — ⚠️⚠️ GITHUB ACTIONS ACCOUNT-WEIT GESPERRT (FÜR ALLE SESSIONS WICHTIG):**
 - GitHub hat **Actions account-weit deaktiviert** („Actions has been disabled for this user") — Grund: **zu hohe
   Nutzung** (158 Workflows, ~60 mit Cron = Fair-Use-Flag). Letzter Lauf 12.06. 15:09 UTC. **NICHTS läuft mehr
@@ -1099,7 +1143,8 @@ ersetzen. Anzeige auf Kategorieseite braucht Theme-Sektion „Collection banner"
 - **🎁 `dropship/INFLUENCER-OUTREACH-KIT.md` + `influencer_tracking.csv`:** Micro-Gifting-Kriterien, Such-Hashtags,
   Fundquellen (Modash/Collabstr), DM-Vorlagen, Code-Schema (Codes lege ich bei Zusage per Shopify an).
 - **✅ GO-LIVE-STATUS (2026-06-12 abends):** PR #775 ist **nach `main` gemergt** → 103 Pins, Skript + Workflow
-  sind auf `main`. **⚠️ ABER: GitHub Actions ist gedrosselt/deaktiviert** („Actions has been disabled for this
+  sind auf `main`. (⚠️ ÜBERHOLT, gemessen 22.09.: Actions läuft seit 10.09., aber `pinterest-publish.yml` hat NIE gepostet —
+  `dropship/pinterest_done.txt` 0 Zeilen; Pins laufen seit 17.09. über den Hetzner-Agenten.) **⚠️ ABER: GitHub Actions ist gedrosselt/deaktiviert** („Actions has been disabled for this
   user" — selber Abuse-Throttle wie bei abannews oben). → `pinterest-publish.yml` läuft **NICHT** automatisch,
   bis Actions wieder frei ist **oder** jemand `node automation/pinterest_publish.mjs --limit 5` direkt ausführt
   (braucht nur `PINTEREST_ACCESS_TOKEN`, oder Refresh-Token-Trio). **Einzig fehlend zum Live-Gang: der Pinterest-
@@ -1257,6 +1302,9 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   Accessoires + nur ~4 frische Kleider, interleaved) → keine Damenkleider-Wiederholung mehr. **Augenmassagegerät
   rausgenommen** (User will es nicht posten). Frische Einzel-Clips gerendert: `reels/clip-*.mp4` + `montage-2026-06-09.mp4`.
 - **✅ REEL-HOSTING-PROBLEM GELÖST (09.06. nachmittags):** Meta/TikTok ziehen Videos per **öffentlicher URL**.
+  ⚠️ ÜBERHOLT, gemessen 22.09.: das Repo ist ÖFFENTLICH (`private:false`, raw 200) — das raw=404 vom 09.06. war ein
+  Branch-Fehler (Datei lag nicht auf main); der 403 der Cowork-Sandbox (18.09.) ist die Proxy-Erlaubnisliste, kein
+  Privat-Repo. Folge: NICHTS Vertrauliches in Repo-Dateien. Altstand:
   Repo ist privat (raw=404) + abannews.com/reels=404 → früher blockiert. **Lösung: Shopify-Files-CDN.**
   Neues Tool `automation/upload_to_shopify_cdn.mjs` lädt eine lokale Datei (Reel/Bild) per
   `stagedUploadsCreate → GCS-POST → fileCreate(FILE) → poll READY` hoch und gibt eine **öffentliche

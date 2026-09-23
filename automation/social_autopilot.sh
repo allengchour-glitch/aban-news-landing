@@ -24,7 +24,20 @@ set -u
 cd "$(dirname "$0")/.." || exit 1
 NODE=/opt/node22/bin/node
 BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
-REEL_ABSTAND=${REEL_ABSTAND:-172800}     # 48 h zwischen zwei Reels (Kadenz-Wache)
+REEL_ABSTAND=${REEL_ABSTAND:-28800}      # 8 h zwischen zwei Reels (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
+KARUSSELL_ABSTAND=${KARUSSELL_ABSTAND:-86400}   # 23.09.: 1 Instagram-Karussell je Tag (Betreiber «insta karusell brauchen»), FB-Album dazu
+TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-43200}   # 12 h zwischen zwei TikTok-Posts (Metricool, eigenes Reel je Post)
+# 23.09.2026 «metricool maximal nutzen»: YouTube Shorts und Pinterest ueber denselben Metricool-Zugang.
+YOUTUBE_ABSTAND=${YOUTUBE_ABSTAND:-43200} # 12 h zwischen zwei YouTube Shorts (eigenes Reel je Post, Bestzeit-Planung)
+PINTEREST_ABSTAND=${PINTEREST_ABSTAND:-21600}  # 6 h zwischen zwei Produkt-Pins (Direktlink aufs Produkt, UTM)
+MARKE_YOUTUBE=/tmp/_autopilot_letztes_youtube
+MARKE_PINTEREST=/tmp/_autopilot_letzter_pin
+LERN_ABSTAND=${LERN_ABSTAND:-21600}       # alle 6 h: Instagram-Zahlen lesen, Gewichte fuer Hooks/Themen schreiben
+NACHSCHUB_ABSTAND=${NACHSCHUB_ABSTAND:-43200}  # alle 12 h: Bild-Queue mit neuen Produkten auffuellen, wenn < 12 ready
+MARKE_LERN=/tmp/_autopilot_letztes_lernen
+MARKE_NACHSCHUB=/tmp/_autopilot_letzter_nachschub
+MARKE_TIKTOK=/tmp/_autopilot_letztes_tiktok
+MARKE_KARUSSELL=/tmp/_autopilot_letztes_karussell
 MARKE_BILD=/tmp/_autopilot_letztes_bild
 MARKE_REEL=/tmp/_autopilot_letztes_reel
 
@@ -66,6 +79,18 @@ while true; do
   export FB_PAGE_ACCESS_TOKEN="$TOKEN"
   export SKIP_THREADS=1                  # Threads bleibt aus, bis dort Publikum da ist.
 
+  # LERNEN (22.09.): Zahlen der letzten Posts lesen → social/_lernen.json (Hook-/Themen-Gewichte) + Bericht
+  if faellig "$MARKE_LERN" "$LERN_ABSTAND"; then
+    $NODE automation/social_lernen.mjs && touch "$MARKE_LERN" || echo "$(date -u +%H:%M) Lernen fehlgeschlagen"
+  fi
+  # NACHSCHUB (22.09.): Bild-Queue aus neuen Produkten (nie gepostet), damit «mehrmals taeglich» Stoff hat
+  if faellig "$MARKE_NACHSCHUB" "$NACHSCHUB_ABSTAND"; then
+    READY=$(awk -F',' 'NR>1 && $0 ~ /,ready,/' social/posts_image.csv | wc -l)
+    if [ "$READY" -lt 12 ]; then
+      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" QUEUE_MAX=6 $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) Nachschub fehlgeschlagen"
+    fi
+    touch "$MARKE_NACHSCHUB"
+  fi
   if faellig "$MARKE_BILD" "$BILD_ABSTAND"; then
     echo "$(date -u +%H:%M) Bildpost fällig"
     if MAX_PER_RUN=1 $NODE automation/social-autopost-meta.mjs; then
@@ -77,12 +102,54 @@ while true; do
 
   if faellig "$MARKE_REEL" "$REEL_ABSTAND"; then
     echo "$(date -u +%H:%M) Reel fällig"
-    if $NODE automation/meta_reel_post.mjs; then
+    # MIN_GAP_H: der Poster hat intern 48 h Abstand (Juli, «weniger aber besser»); seit 22.09. gilt die Kadenz hier (REEL_ABSTAND)
+    if MIN_GAP_H=6 $NODE automation/meta_reel_post.mjs; then
       touch "$MARKE_REEL"
     else
       echo "$(date -u +%H:%M) Reel-Post fehlgeschlagen"
     fi
   fi
 
+  # Instagram-Karussell (23.09.2026): ein Slide-Set (4:5) aus social/ig_karussell.csv als IG-Karussell + FB-Album.
+  if faellig "$MARKE_KARUSSELL" "$KARUSSELL_ABSTAND"; then
+    echo "$(date -u +%H:%M) Karussell faellig (Instagram)"
+    if $NODE automation/ig_karussell_post.mjs; then
+      touch "$MARKE_KARUSSELL"
+    else
+      echo "$(date -u +%H:%M) Karussell-Post fehlgeschlagen (Marke bleibt alt)"
+    fi
+  fi
+
+  # 23.09.: Nachmessen — «posted-tiktok» heisst nur GEPLANT; der Planer sagt, ob es veroeffentlicht wurde.
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig /tmp/_autopilot_letztes_tiktok_pruefen 7200; then
+    PRUEFEN=1 $NODE automation/metricool_tiktok_post.mjs || echo "$(date -u +%H:%M) TikTok-Pruefung: Fehler gemeldet (siehe reels_seed.csv tiktok-fehler)"
+    touch /tmp/_autopilot_letztes_tiktok_pruefen
+  fi
+
+  # TikTok ueber Metricool (22.09.2026): nur wenn ein Token da ist (Env oder /tmp/metricool.env);
+  # ein eigenes, nie gepostetes Reel je Tag; Guards im Poster (Lock, Ledger, ACTIVE).
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_TIKTOK" "$TIKTOK_ABSTAND"; then
+    echo "$(date -u +%H:%M) TikTok-Post faellig (Metricool)"
+    if $NODE automation/metricool_tiktok_post.mjs; then
+      touch "$MARKE_TIKTOK"
+    else
+      echo "$(date -u +%H:%M) TikTok-Post fehlgeschlagen (Marke bleibt alt)"
+    fi
+  fi
+  # YouTube Shorts ueber Metricool (23.09.): gleicher Poster, NETZ=youtube; Nachmessen wie bei TikTok.
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; }; then
+    if faellig /tmp/_autopilot_letztes_youtube_pruefen 7200; then
+      NETZ=youtube PRUEFEN=1 $NODE automation/metricool_tiktok_post.mjs || echo "$(date -u +%H:%M) YouTube-Pruefung: Fehler gemeldet (reels_seed.csv youtube-fehler)"
+      touch /tmp/_autopilot_letztes_youtube_pruefen
+    fi
+    if faellig "$MARKE_YOUTUBE" "$YOUTUBE_ABSTAND"; then
+      echo "$(date -u +%H:%M) YouTube-Short faellig (Metricool)"
+      if NETZ=youtube $NODE automation/metricool_tiktok_post.mjs; then touch "$MARKE_YOUTUBE"; else echo "$(date -u +%H:%M) YouTube-Post fehlgeschlagen (Marke bleibt alt)"; fi
+    fi
+    if faellig "$MARKE_PINTEREST" "$PINTEREST_ABSTAND"; then
+      echo "$(date -u +%H:%M) Pinterest-Pin faellig (Metricool)"
+      if $NODE automation/metricool_pinterest_pin.mjs; then touch "$MARKE_PINTEREST"; else echo "$(date -u +%H:%M) Pin fehlgeschlagen (Marke bleibt alt)"; fi
+    fi
+  fi
   sleep 900 9>&-
 done

@@ -27,7 +27,7 @@ DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_kollektion_versandschwelle.txt"
 
 SCHWELLE = re.compile(r'((?:Gratis[- ]?[Vv]ersand|[Vv]ersandkostenfrei|gratis)\s*(?:ab|über)\s*'
-                      r'CHF\s*)(65|49)(?![0-9.,])')
+                      r'CHF\s*)(65|49)(?![0-9])(?![.,][0-9])')
 
 
 def gql(q, v=None):

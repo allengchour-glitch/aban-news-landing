@@ -48,7 +48,9 @@ const f = n => n.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFrac
 // Katalog-Kennzahlen
 const today = new Date().toISOString().slice(0, 10);
 const newToday = (await gql(`{productsCount(query:"created_at:>=${today} status:active"){count}}`)).data?.productsCount?.count ?? '–';
-const active = (await gql('{productsCount(query:"status:active"){count}}')).data?.productsCount?.count ?? '–';
+// limit:null + precision (22.09.): ohne limit deckelt productsCount bei 10'000 (AT_LEAST); wahr 51'326.
+const _pc = (await gql('{productsCount(limit:null, query:"status:active"){count precision}}')).data?.productsCount;
+const active = _pc ? (_pc.precision === 'EXACT' ? _pc.count : `≥${_pc.count}`) : '–';
 
 // Top-Trend aus der Wissensbasis (falls da)
 let topTrend = '';

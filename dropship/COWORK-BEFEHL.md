@@ -4,6 +4,91 @@
 > eine Quittung — trägst du die Quittung ein, verschwindet der Punkt von selbst aus der
 > stündlichen Ampel. Alles andere hat die Cloud-Session bereits gemessen oder erledigt.
 
+## ✅ ERLEDIGT 23.09. ~16:55 UTC (Betreiber) — Judge.me: doppeltes Produkt-Schema ohne Preis abgeschaltet · an der API bestätigt `disable_json_ld: true`; Merchant «Missing product price» in ~3–7 Tagen nachmessen
+Merchant Center meldet «Missing product price» für 1'220 Produkte. In Shopify hat **jede** aktive Variante einen
+Preis (426'000 geprüft). Die Produktseiten bewerteter Artikel tragen aber zwei Produkt-Datensätze für Google:
+Shopifys (mit Preis und Sternen) und einen von **Judge.me ohne Preis**. Die Einstellung heisst bei Judge.me
+`disable_json_ld` (steht auf «aus»); über die API lässt sie sich nur lesen, nicht ändern.
+**Klickweg:** Shopify-Admin → Apps → Judge.me → Settings → (Search «rich snippet» / «JSON-LD» / «SEO») →
+«Google rich snippets / JSON-LD» für Produktseiten **ausschalten**. Die Sterne bei Google bleiben, weil unser
+Theme sie selbst in Shopifys Datensatz schreibt.
+**Gegenprobe:** Merchant → «Missing product price» → «View products»: sind es bewertete Artikel? Ein Screenshot
+der ersten Zeilen genügt. «Sexual interests» (292) und «Over capacity CSS» betreffen nur **bezahlte** Shopping-Ads
+(die aus sind) — keine Aktion nötig.
+
+## 🆕 23.09. 11:40 UTC — Social-Profile («jede sozail profile verschönern»)
+
+**J — Hetzner-Agent neu starten, dann läuft die Profil-Politur von selbst (2 Min):** Der Auftrag
+`auftraege/offen/social-profil-politur-2026-09-23.json` (Skript `automation/browser/social_profil_politur.mjs`)
+setzt Instagram (Name «LuxeStyle · Schweizer Shop», Bio in Laden-Sprache, Profilbild), TikTok (Name, Bio, Profilbild)
+und Pinterest (Name, Info, Website) — nur, wenn der Agent läuft (still seit 22.09. 21:03 UTC, Punkt B:
+`systemctl restart luxe-agent.service`). Ergebnis + Screenshots kommen nach `auftraege/erledigt/` und `auftraege/ergebnis/`.
+Alternative ohne Server: auf dem PC `node automation/local/profil-politur-browser.mjs` (Brave mit Port 9222, eingeloggt).
+✅ Facebook ist schon fertig (per API, 23.09. 11:35 UTC): Info, Beschreibung, Website https://luxestyle.ch, Profilbild
+(dunkle Wortmarke), neues Titelbild (`social/brand/cover-fb-2026-09.jpg`).
+**Nur du kannst:** TikTok-Bio-Link (Business-Konto → «Website» eintragen: luxestyle.ch) und bei Instagram unter
+«Links bearbeiten» die Website auf https://luxestyle.ch (steht auf http).
+
+## 🆕 22.09. 23:20 UTC — zwei kurze Dinge für TikTok und den Server-Bot
+
+**A · ✅ ERLEDIGT 23.09. 04:25 UTC — der Token kam mit dem Container-Neustart an; erster TikTok-Post geplant (Metricool 380476730, 06:37 CH).** ~~Metricool-Token im Chat (TikTok, 1 Minute).~~ Du hast `METRICOOL_USER_TOKEN` in die Umgebungs-Einstellungen
+eingetragen — gemessen 22:00 und 22:58 UTC: er erreicht die laufende Session nicht (Env leer, keine lokale Datei).
+Bitte den Token **einmal hier im Chat einfügen**; ich lege ihn nur unter `/tmp/metricool.env` (600) ab, prüfe die
+TikTok-Verbindung und setze den ersten Post ab. Bis dahin postet nur Instagram + Facebook.
+
+**I · Groq-Schlüssel in den Umgebungs-Einstellungen falsch eingetragen (1 Minute):** der Schlüssel steht als Variablen-NAME mit leerem Wert. Bitte den Eintrag löschen und neu anlegen als Name `GROQ_API_KEY`, Wert = der Schlüssel. Wirkt nach dem nächsten Container-Neustart.
+
+**B · Hetzner-Agent still seit 22.09. 21:03 UTC (2 Minuten auf dem Server).** Sein Puls kam 19:09, 20:07, 21:03 —
+danach nichts mehr (zwei Stundenläufe fehlen), kein Browser-Auftrag wird erledigt (Pinterest-Pins ab morgen betroffen).
+Von hier nicht prüfbar (kein SSH). Als root:
+`systemctl status luxe-agent.timer luxe-agent.service --no-pager` · `journalctl -u luxe-agent -n 50 --no-pager` ·
+hängt ein Lauf: `systemctl restart luxe-agent.service`. Der Auftrag `server-inventar-2026-09-22b` liegt in
+`auftraege/offen/` und berichtet beim nächsten Lauf von selbst.
+
+**C · Bankangaben stehen LIVE auf `main` (22.09., gemessen per raw-Abruf HTTP 200).** `dropship/_status_cowork.md`
+Z. 36 trägt seit 18.09. 20:46 UTC (Squash 178ddbf4e, PR #2521) Bankinstitut + Kontoinhaber; auf unserem Zweig
+`claude/luxestyle-status-tztnn1` ist die Zeile seit 19:50 UTC entfernt. **Entfernen auf main = PR #1608 mergen ODER die Zeile
+auf GitHub direkt in `main` löschen** (1 Klick, kein Force-Push). Messung danach:
+`curl -s raw.githubusercontent.com/…/main/dropship/_status_cowork.md | grep -ciE 'account holder|iban|bank'` → 0.
+**Historie bereinigen (Commit 07a5b8c59 auf unserem Zweig + Squash auf main) ist DEIN Entscheid:** ein Force-Push beträfe
+zwei Zweige, auf die der Hetzner-Agent pusht bzw. die der Deploy-Poller alle 3 Min hart zurücksetzt. Ohne dein Ja bleibt es
+beim Live-Entfernen.
+
+**D · Meta-Datenzugang endet 05.10.2026 18:50 UTC (22.09. gemessen: `data_access_expires_at`).** Der Seiten-Token selbst
+läuft nicht ab, aber der Datenzugang schon — vorher in Meta Business (Graph-Explorer / App 1680844973132194) erneuern und mir
+den neuen Token im Chat geben, sonst stehen IG- und FB-Poster ab dem 05.10. still. Erinnerung ist als Routine gesetzt.
+
+**E · Shopify Admin → Einstellungen → E-Mail-Marketing → Absender-E-Mail verifizieren (22.09.).** Shopify-Mail vom 19.09.
+13:43 UTC (lag im Gmail-Papierkorb): ohne verifizierten Absender **stoppt Shopify ALLE E-Mail-Automationen — auch die
+Warenkorb-Abbrecher-Mail** (Mission-Punkt; 5 Abbrecher gemessen, 0 Marketing-Aktivitäten). Optional dort Domain-
+Authentifizierung (DNS ohne Shopify-SPF/DKIM). In derselben Mail: **Meta-Katalog neu teilen mit Branche «Handel»**;
+Microsoft-Advertising-Anfrage nur, wenn du den Kanal willst.
+
+**F · Shopify Admin → Apps → Google & YouTube → Einstellungen → Produktfeed (22.09.):** bitte ablesen und mir melden:
+welche **Länder synchronisiert** sind und ob der **Versand automatisch importiert** wird oder manuell im Merchant Center
+steht. Hintergrund: Zielland = Shopify Markets (nur CH), Versand = diese Kanal-Einstellung; die «1'698 Missing shipping» sind
+im Produkt-Feedback nicht mehr vorhanden (0 Meldungen mit «shipping» über 51'326 aktive Produkte).
+
+**G · BigBuy-Ticket (Punkt 2 unten), Frage schärfen (22.09.):** «Bestellnr. **18138327** (bezahlte SEPA-Aufladung 07.07.,
+deine Mail 17:56) — geschlossen/ausgezahlt? Ist **18138523** (gleicher Tag, unbezahlt) ein Doppel-Datensatz?» — **NICHT
+stornieren.** Vorher den Thread **1a00a46178541bba** (BigBuy-Bestätigung 16.08.) aus dem Gmail-Papierkorb holen, bevor
+Gmail ihn endgültig löscht. Stand: 5 Mails gesendet, 3 wortgleiche Auto-Antworten (08./15./17.09.), Purse-API seit 16.09. 401.
+
+**H · Vier Betreiber-Entscheide aus der Gegenprüfung (22.09.):**
+1. **Gratisversand-Regel 45 vs 50.** Beworben ist überall CHF 50, strittig nur die Technik: Shopify prüft NACH dem
+   10-%-Bündelrabatt (seit 01.06.). **Variante A** = Regel ≥45 behalten (heutiger Stand seit 10:47 UTC; Zusage 50 hält auch
+   mit Rabatt). **Variante B** = Regel ≥50 UND Bündelrabatt abschalten ODER Zusage auf CHF 55 anheben. Eine fremde Session
+   hatte am 22.09. 09:35 UTC die 50 gesetzt («ich dachte 50» — nur dort belegt). Falls du die 50 bewusst willst: sagen.
+2. **23 Rabattcodes mit 20–25 % OHNE Mindestbestellwert** (TIKTOK20, FREUNDE20, INFLUENCER25, FLASH25 …) gegen die
+   38-%-Zielmarge der Preisrunde: behalten, Mindestwert setzen oder abschalten? Dazu Automatik «Gratis-Versand ab CHF 49»
+   auf 45/50 angleichen (nur Konsistenz).
+3. **WELCOME10 steht im Klartext im Ankündigungsband** — Anreiz nur gegen E-Mail-Adresse? (3 Abonnenten von 1'499, Liste
+   1 Profil, Code 2× eingelöst.)
+4. **4 Helm-Drafts ohne Grund-Tag** (2 Halbhelme 15.09., Schutzhelm Polycarbonat + Kinderhelm Rollsport 06.09.): CE/EN-1078-
+   Auskunft bei CJ in der Konsole erfragen — erst danach Rückhol oder Dauer-Sperre. Deko-Katana bleibt gedraftet.
+
+---
+
 ## ⛔ WEGGEFALLEN: Shopify-Rechnung CHF 44.68
 
 Stand bis heute in dieser Liste als «dringendster Punkt, Wiederholung 19.09.». **Gemessen
@@ -138,9 +223,9 @@ nicht (die früher hier genannte «Frist 19.09. 07:30 UTC» war mein eigener Wec
 
 **Link:** https://www.bigbuy.eu/en/contact — Abteilung **Administration** → Betreff **«Enquiry about Topping up/Withdrawing from your Moneybox»** (das Guthaben ist die Moneybox, die vier Anträge waren Withdrawals; «Refund Enquiry» meint Kundenerstattungen einzelner Bestellungen, «Billing» die Abo-Rechnung). IBAN-Feld leer lassen — die richtige Nummer liegt beim Antrag vom 08.09. 20:12 UTC.
 
-Gemessen: Guthaben **EUR 1'000.00**, seit 15.07. unverändert, nie ausgezahlt. Das Abo ist am
-15.09. ausgelaufen. Fünf Mails gingen raus, zurück kamen **zwei wortgleiche Auto-Antworten**
-(08.09. und 15.09., im Volltext verglichen) — der Mailkanal ist dreifach belegt tot, und
+Gemessen: Guthaben **EUR 1'000.00**, zuletzt 15.09. gemessen (seit 16.09. Purse-API 401 = Abo-Ende), nie
+ausgezahlt. Das Abo ist am 15.09. ausgelaufen. Fünf Mails gingen raus, zurück kamen **drei wortgleiche
+Auto-Antworten** (08., 15. und 17.09., im Volltext verglichen; korrigiert 22.09.) — der Mailkanal ist dreifach belegt tot, und
 BigBuy nennt in diesen Antworten selbst das Ticket als richtigen Weg.
 
 **Warum nicht automatisch:** Cloudflare sperrt automatisierte Browser aus — gemessen 17.09.,
@@ -172,7 +257,7 @@ gesetzt, es sei nichts zu tun. Gegengeprüft, soweit von hier möglich:
   unbestätigte Zahl**, und sie stammt laut dem Dokument selbst aus der Zeit «vor
   Verbindungsabbruch». Bitte im Konto ablesen und die heutige Zahl melden.
 - **«4 Versandrichtlinien» stimmt auf unserer Seite nicht:** gemessen **54 Versandprofile**
-  (6 mit Produkten, 48 leere Gelato-Profile mit je 16 aktiven Weltraten).
+  (**8** mit Produkten — korrigiert 22.09., vorher «6» —, 48 leere Gelato-Profile mit je 16 aktiven Weltraten).
 - **«Nur Schweiz in allen Profilen» stimmt auf unserer Seite ebenfalls nicht:** das
   Standard-Profil, an dem der ganze Katalog hängt, führt eine **aktive** Zone «International —
   Rest of World, CHF 15.00 pauschal»; `shop { shipsToCountries }` meldet **237 Länder**.
@@ -543,11 +628,15 @@ die Zeile aus der stündlichen Ampel.
 
 # 0b. 📌 PINTEREST — drei Dinge, gemessen am 17.09. im Agenten-Browser
 
+> ⚠️ **Korrigiert 22.09. (Auftrag 36):** der Agenten-Browser ist inzwischen **NUR bei Pinterest** angemeldet (Betreiber
+> 17.09.; 22.09. elf Läufe, 6 Pins) — Shopify Admin (403), BigBuy (Cloudflare), CJ (404) und Google sind es NICHT. Der
+> Satz «Shopify Admin und BigBuy sind dort angemeldet» unten war ein Fehlalarm (Bot-Wand auf Deutsch, Journal 17.09.).
+
 Der Screenshot aus dem Business Hub zeigte «Händlerstatus genehmigt · Shopify verbunden» —
 das war **dein** Brave. Der **Agenten-Browser** auf dem Hetzner ist bei Pinterest **nicht**
 angemeldet: sein Screenshot der Profilseite zeigt «Anmelden / Registrieren» oben rechts
-(`auftraege/ergebnis/07-pinterest-upload-1-profil.png`). Shopify Admin und BigBuy sind dort
-angemeldet, Pinterest und Google Merchant nicht.
+(`auftraege/ergebnis/07-pinterest-upload-1-profil.png`). ~~Shopify Admin und BigBuy sind dort
+angemeldet, Pinterest und Google Merchant nicht.~~ (widerlegt 22.09., siehe Kasten oben)
 
 **1. Im Agenten-Browser bei Pinterest anmelden** (gleicher Weg wie bei Shopify:
 `bash /opt/luxe-agent/repo/server/luxe-profil-anmelden.sh`, Tunnel, `chrome://inspect`).
@@ -581,7 +670,7 @@ Shopify-Anbindung von sich aus Pins erzeugt. Der Kanal ist nicht tot.)
 > «Sicherheitsüberprüfung wird durchgeführt · um sich vor böswilligen Bots zu schützen»,
 > Ray ID a3ca2241ac1e86d9, **0 Formularfelder**. Dazu: REST-API tot (`purse.json` = 401,
 > gegengeprüft — der absichtlich FALSCHE Schlüssel gibt identische Antworten), Mail tot
-> (6 Mails, 3 wortgleiche Auto-Antworten: 08.09., 15.09., 17.09. 12:50).
+> (5 Mails — korrigiert 22.09., vorher «6» —, 3 wortgleiche Auto-Antworten: 08.09., 15.09., 17.09. 12:50).
 >
 > **Bitte nicht versuchen, die Bot-Erkennung zu umgehen** (Kennung fälschen, Automatisierungs-
 > Merkmale verstecken). Das ist der Weg, auf dem Konten gesperrt werden — und an diesem Konto
@@ -651,8 +740,7 @@ I have sent five emails to customers@bigbuy.eu since 7 September. The only repli
 the automated message asking me to open a ticket. This is that ticket.
 
 Please:
-1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, Valiant Bank AG,
-   Bern, account holder Allen Chour). The bank details are already stored on the request
+1. Pay out EUR 1,000.00 to the corrected IBAN on record (21 characters, bank and account holder on record). The bank details are already stored on the request
    of 8 September, 20:12 UTC.
 2. Confirm in writing what happened to the requests of 15 July and 16 August — returned
    to the wallet, still pending, or paid to another account.

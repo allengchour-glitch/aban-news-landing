@@ -1,0 +1,4 @@
+start	2026-09-23T16:00:00Z
+ziel	3
+eigene_kunden_id	gid://shopify/Customer/24750075019649
+zitat	Betreiber 23.09.2026: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb dann hast du kein problem»

@@ -1,0 +1,9 @@
+adventskalender-vergleich-2026	unpubliziert	301→/collections/weihnachten-2026	2026-09-23T15:57Z
+kundenbewertungen	unpubliziert	301→/collections/bestseller	2026-09-23T15:57Z
+top-5-bestseller	unpubliziert	301→/collections/bestseller	2026-09-23T15:57Z
+black-friday-2026	unpubliziert	301→/collections/neu-eingetroffen	2026-09-23T15:57Z
+weihnachten-2026	unpubliziert	301→/collections/weihnachten-2026	2026-09-23T15:57Z
+tiktok-callback	seo.hidden=1		2026-09-23T15:57Z
+merkliste	seo.hidden=1		2026-09-23T15:57Z
+2026-09-23	massage-gun-test-2026	offline+301→/collections/sub-massage	tote Produktempfehlung, dünne «Test»-Seite (Audit 23.09.)
+2026-09-23	bademantel-test-vergleich	offline+301→/collections/premium-geschenke	tote Produktempfehlung, dünne «Test»-Seite (Audit 23.09.)

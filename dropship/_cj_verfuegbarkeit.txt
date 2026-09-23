@@ -49580,3 +49580,25 @@ gid://shopify/Product/15448803475841	bei-cj-weg	CJ-CJKH29623430001	via-varianten
 gid://shopify/Product/15448803737985	bei-cj-weg	CJ-CJKH29623500001	via-varianten-wache-2026-09-22
 gid://shopify/Product/15448816910721	bei-cj-weg	CJ-CJYD202037601AZ	via-varianten-wache-2026-09-22
 gid://shopify/Product/15448866128257	bei-cj-weg	CJ-CJKC28134300001	via-varianten-wache-2026-09-22
+gid://shopify/Product/15448927961473	bei-cj-weg	CJ-CJYD289624801AZ	via-varianten-wache-2026-09-22
+gid://shopify/Product/15448944968065	bei-cj-weg	CJ-CJYD287449802BY	via-varianten-wache-2026-09-22
+gid://shopify/Product/15449122668929	bei-cj-weg	CJ-CJCL261241601AZ	via-varianten-wache-2026-09-23
+gid://shopify/Product/15449123029377	bei-cj-weg	CJ-CJCL261221701AZ	via-varianten-wache-2026-09-23
+gid://shopify/Product/15449162580353	bei-cj-weg	CJ-CJXZ285860801AZ	via-varianten-wache-2026-09-23
+gid://shopify/Product/15449424986497	bei-cj-weg	CJ-CJPF1532465-Purple	via-varianten-wache-2026-09-23
+gid://shopify/Product/15507663389057	bei-cj-weg	CJ-1438434380858134528	nachgeprueft-2026-09-23 drafts15 (Draft 21.09. ohne Quittung; pid 1438434380858134528 → product 1602002 + variant 1602002)
+gid://shopify/Product/15448588517761	bei-cj-weg	CJ-CJLY296430702BY	nachgeprueft-2026-09-23 drafts15 (Draft 21.09. ohne Quittung; productSku=CJLY2964307 → 1602002; variantSku=CJLY296430702BY → 1602003)
+gid://shopify/Product/15448610341249	bei-cj-weg	CJ-CJYD295341201AZ	nachgeprueft-2026-09-23 drafts15 (Draft 21.09. ohne Quittung; productSku=CJYD2953412 → 1602002; variantSku=CJYD295341201AZ → 1602003)
+gid://shopify/Product/15448669749633	bei-cj-weg	CJ-CJQB273159301AZ	nachgeprueft-2026-09-23 drafts15 (Draft 21.09. ohne Quittung; productSku=CJQB2731593 → 1602002; variantSku=CJQB273159301AZ → 1602003)
+gid://shopify/Product/15448756617601	bei-cj-weg	CJ-CJQZ292129201AZ	nachgeprueft-2026-09-23 drafts15 (Draft 21.09. ohne Quittung; productSku=CJQZ2921292 → 1602002; variantSku=CJQZ292129201AZ → 1602003)
+gid://shopify/Product/15448876581249	bei-cj-weg	CJ-CJZN147378301AZ	nachgeprueft-2026-09-23 drafts15 (Draft 21.09. ohne Quittung; productSku=CJZN1473783 → 1602002; variantSku=CJZN147378301AZ → 1602003)
+gid://shopify/Product/15448892080513	ok	CJ-CJJSBGSD00009-Blue package-US	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJJSBGSD00009 → 200, 40 Varianten, pid E73DE1F7-CAF8-4DB6-8F77-3F5362FBE9AB, variant?pid → 200, Shop-Variantennamen 5/5 bei CJ)
+gid://shopify/Product/15449424953729	ok	CJ-CJJJJTJT09042-Cotton swab-10pc	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJJJJTJT09042 → 200, 10 Varianten, pid 5F9B011D-3393-4B82-A414-491ADE80C872, variant?pid → 200, Shop-Variantennamen 5/5 bei CJ)
+gid://shopify/Product/15449425215873	ok	CJ-CJNSFJST00440-Sky blue-S	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJNSFJST00440 → 200, 52 Varianten, pid BF1CB4F9-B017-4753-A7E0-56467FAF1C26, variant?pid → 200, Shop-Variantennamen 5/5 bei CJ)
+gid://shopify/Product/15449425412481	ok	CJ-CJXFLPJY00674-Black 2PCS	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJXFLPJY00674 → 200, 4 Varianten, pid 0E94A308-8CE9-4FAF-8B82-39FFF20AA837, variant?pid → 200, Shop-Variantennamen 4/4 bei CJ)
+gid://shopify/Product/15449425478017	ok	CJ-CJJJCFHS03322-Coffee USB charging	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJJJCFHS03322 → 200, 6 Varianten, pid 2C3255E9-8C20-4E73-B083-D08FCB72C4E0, variant?pid → 200, Shop-Variantennamen 5/5 bei CJ)
+gid://shopify/Product/15449425871233	ok	CJ-CJJSBJYX00031-T20 BLACK	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJJSBJYX00031 → 200, 3 Varianten, pid DC1B4B6D-D6E7-48F3-8F01-96D7ABB37190, variant?pid → 200, Shop-Variantennamen 3/3 bei CJ)
+gid://shopify/Product/15449426690433	ok	CJ-CJJJJTYS01691-Black Double cups	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJJJJTYS01691 → 200, 14 Varianten, pid 0B13BD5E-1BD7-4959-8B40-614CE2E84A44, variant?pid → 200, Shop-Variantennamen 5/5 bei CJ)
+gid://shopify/Product/15449427018113	ok	CJ-CJYDQTJM00163-Black set	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJYDQTJM00163 → 200, 2 Varianten, pid 965198AB-DFA3-4EC7-A614-3A6540D3DAFC, variant?pid → 200, Shop-Variantennamen 2/2 bei CJ)
+gid://shopify/Product/15449427280257	ok	CJ-CJJZSNSN00770-Ash 2pcs	zurueckgeholt-2026-09-23 drafts15-Nachpruefung mit Klingen-Tor (productSku=CJJZSNSN00770 → 200, 12 Varianten, pid 842B5DB4-E59C-42FC-BEAB-01893C169776, variant?pid → 200, Shop-Variantennamen 5/5 bei CJ)
+gid://shopify/Product/15449432752513	bei-cj-weg	CJ-CJYD199511501AZ	via-varianten-wache-2026-09-23

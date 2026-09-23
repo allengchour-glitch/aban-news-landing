@@ -1,0 +1,80 @@
+{
+  "id": "storefront-2026-09-23",
+  "typ": "skript",
+  "skript": "storefront_wahrheit.mjs",
+  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
+  "stand": "ok",
+  "begonnen": "2026-09-23T17:19:10.947Z",
+  "dauer_s": 64.1,
+  "ergebnis": {
+    "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/?frisch=storefront-2026-09-23-5",
+        "erreichbar": true,
+        "geladen": "5/5",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "4/4",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 6731,
+        "zeichen_spanne": [
+          6710,
+          6731
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-09-23-startseite.png"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen?frisch=storefront-2026-09-23-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3772,
+        "zeichen_spanne": [
+          3772,
+          3772
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-09-23-kollektion.png"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq?frisch=storefront-2026-09-23-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3040,
+        "zeichen_spanne": [
+          3040,
+          3040
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-09-23-faq.png"
+      }
+    ]
+  }
+}

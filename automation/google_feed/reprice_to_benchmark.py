@@ -93,10 +93,16 @@ for row in rows:
         elif kl in ('your price','price'): yours=money(v)
     if not bench: continue
     gid=f'gid://shopify/Product/{pid}'
-    d=gql('{p:product(id:"%s"){variants(first:1){edges{node{id price inventoryItem{sku}}}}}}'%gid).get('data',{}).get('p')
+    d=gql('{p:product(id:"%s"){variants(first:1){edges{node{id price inventoryItem{sku unitCost{amount}}}}}}}'%gid).get('data',{}).get('p')
     if not d or not d['variants']['edges']: continue
     var=d['variants']['edges'][0]['node']
     cur=float(var['price']); sku=(var['inventoryItem'] or {}).get('sku','') or ''
+    # EK-Boden (22.09.2026, Gegenpruefung): dieser Reiniger kannte den Einkaufspreis nicht — ein Start haette die
+    # Preisrunde der lernen-Session (EK / 0,55, >38 % Rohmarge) zurueckgedreht. unitCost ist die Wahrheit, wenn
+    # gesetzt: Boden = unitCost / 0.55; ohne unitCost bleibt nur der absolute Boden 14.90 (unten).
+    try: _uc=float(((var.get('inventoryItem') or {}).get('unitCost') or {}).get('amount') or 0)
+    except (TypeError, ValueError): _uc=0.0
+    ek_boden = round(_uc/0.55, 2) if _uc > 0 else 0.0
     if bench>=cur: skip+=1; continue   # nicht überteuert
     # Kosten-Boden
     fl=bb_floor(sku)
@@ -111,7 +117,7 @@ for row in rows:
     # Projektgedächtnis schon einmal bei der Versandschwelle steht.
     # China-Fracht kostet CHF 3–6; unter CHF 14.90 ist jeder CJ-Verkauf ein Verlustgeschäft.
     BODEN = 14.90
-    floor = max(cur*0.60, BODEN) if fl=='NOTBB' else max(fl, BODEN)
+    floor = max(cur*0.60, BODEN, ek_boden) if fl=='NOTBB' else max(fl, BODEN, ek_boden)
     target=price90(max(bench, floor))
     if target>=cur-0.01: skip+=1; continue
     if DRY:

@@ -1,0 +1,43 @@
+{
+  "id": "server-inventar-2026-09-22b",
+  "typ": "skript",
+  "skript": "server_inventar.mjs",
+  "warum": "Betreiber 22.09.: «wenn du externe browser öffnest kann ich einloggen» — vor dem Bau eines sichtbaren Anmelde-Fensters (Xvfb/VNC/noVNC/Tunnel) messen, was der Server hat und wer der Agent dort ist. Rein lesend, keine Geheimniswerte. Zweiter Anlauf 23:15 UTC: Skript liegt jetzt im Repo. Zusatzfrage: warum kam seit 21:03 UTC kein Bot-Puls mehr (Timer, Pull, Platte)?",
+  "stand": "ok",
+  "begonnen": "2026-09-23T17:18:31.118Z",
+  "dauer_s": 0.2,
+  "ergebnis": {
+    "wer": "uid=0(root) gid=0(root) groups=0(root)",
+    "host": "ubuntu-4gb-nbg1-1",
+    "os": "Ubuntu 26.04 LTS",
+    "uptime": "up 13 weeks, 2 days, 1 hour, 40 minutes",
+    "platte": "4.0G frei von 38G",
+    "programme": {
+      "Xvfb": "/usr/bin/Xvfb",
+      "x11vnc": "fehlt",
+      "websockify": "fehlt",
+      "novnc_proxy": "fehlt",
+      "cloudflared": "/usr/local/bin/cloudflared",
+      "systemd-run": "/usr/bin/systemd-run",
+      "apt-get": "/usr/bin/apt-get",
+      "ssh": "/usr/bin/ssh",
+      "curl": "/usr/bin/curl",
+      "openssl": "/usr/bin/openssl"
+    },
+    "pakete": "xvfb install ok installed\ndpkg nicht lesbar",
+    "dateien": {
+      "/usr/share/novnc": "fehlt",
+      "/etc/luxe/secrets.env": "datei 386 B",
+      "/opt/luxe-agent/repo": "ordner",
+      "/var/lib/luxe-agent/chrome-profil": "ordner",
+      "/usr/local/bin/luxe-auftrag": "datei 1508 B",
+      "/tmp/secrets_env.sh": "datei 295 B"
+    },
+    "geheimnis_namen": "# /etc/luxe/secrets.env — root, chmod 600. Werte eintragen, Datei nach secrets.env umbenennen. SHOPIFY_SHOP SHOPIFY_CLIENT_ID SHOPIFY_CLIENT_SECRET CJ_EMAIL CJ_API_KEY JUDGEME_PRIVATE_TOKEN",
+    "ports_offen": "0.0.0.0:22 127.0.0.53%lo:53 127.0.0.54:53 100.66.29.36:34929 [::]:22 [fd7a:115c:a1e0::bd3a:1d25]:33039",
+    "firewall": "Status: active\n\nTo                         Action      From",
+    "chromium": "",
+    "node": "v22.23.0",
+    "dienste": ""
+  }
+}

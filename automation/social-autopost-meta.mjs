@@ -22,7 +22,7 @@
 import fs from 'node:fs';
 import { markierungFehlt,
          lock as postLock, seen as postSeen, mark as postMark,
-         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet } from './post_guard.mjs';
+         produktGepostet, produktMerken, produktKey, fbSeitenIdentitaet, familieKuerzlich, familieMerken } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -173,6 +173,29 @@ async function igLiveHas(caption){
   console.error('⚠️ IG-Live-Abgleich nicht erreichbar → nur lokale Wachen.'); return false;
 }
 
+// ok:true kaufbar · ok:false nicht kaufbar (DRAFT/ARCHIVED/ohne Onlineshop/geloescht) · ok:null nicht pruefbar
+async function produktAktiv(zeilenId){
+  const m = /(\d{12,})\s*$/.exec(String(zeilenId||'').trim());
+  if(!m) return { ok:true, grund:'keine Produkt-ID in der Zeile' };
+  const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
+  const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt','utf8') : '')).trim();
+  if(!tok) return { ok:null, grund:'kein Shop-Token' };
+  for(let a=0;a<3;a++){
+    try{
+      const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method:'POST', headers:{ 'X-Shopify-Access-Token':tok, 'Content-Type':'application/json' },
+        body: JSON.stringify({ query:`{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }` }) });
+      const d = await r.json();
+      if(d && d.data){
+        const p = d.data.product;
+        if(p === null) return { ok:false, grund:'Produkt existiert nicht mehr' };
+        return { ok: p.status==='ACTIVE' && !!p.onlineStoreUrl, grund:`status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl?'ja':'nein'}` };
+      }
+    }catch{}
+    await new Promise(x=>setTimeout(x, 2000*(a+1)));
+  }
+  return { ok:null, grund:'Shopify nicht erreichbar' };
+}
+
 for(const next of ready.slice(0, MAX)){
   const imageUrl = next[idx.image_url].trim();
   const caption = next[idx.caption] || '';
@@ -193,6 +216,10 @@ for(const next of ready.slice(0, MAX)){
     console.log(`   ⛔ Produkt schon gepostet (Produkt-Sperre) → skip: ${produktKey(caption, next[idx.id])}`);
     next[idx.status] = 'posted-dup-produkt'; fs.writeFileSync(CSV, serialize(rows)); continue;
   }
+  // ⛔ NEUNTE SCHICHT (23.09.2026, «pinke steine 2mal?»): dieselbe Warengruppe innerhalb FAMILIEN_STUNDEN auf
+  // irgendeinem Kanal → Zeile bleibt ready und wartet, die naechste Zeile kommt dran.
+  const fk = DRY ? null : familieKuerzlich(caption);
+  if(fk){ console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${next[idx.id]}`); continue; }
   if(!DRY && await igLiveHas(caption)){      // ⛔ auf IG bereits live (Wahrheit schlägt Ledger)
     console.log(`   ⛔ Auf IG bereits live (Live-Abgleich) → skip: ${sig}`);
     next[idx.status] = 'posted-dup-live'; postMark(imageUrl); fs.writeFileSync(CSV, serialize(rows)); continue;
@@ -202,6 +229,18 @@ for(const next of ready.slice(0, MAX)){
     next[idx.status] = 'skipped-nonjpg'; anyFail = true; continue;
   }
   // Optionale Kanal-Auswahl pro Zeile über die Spalte 'platforms' (leer = alle konfigurierten).
+  // 23.09.2026 ACHTE SCHICHT — ist die WARE noch kaufbar? Gemessen: 3 von 73 «ready»-Zeilen (August-Queue)
+  // bewarben Produkte, die Waechter seit dem Bau der Queue gedraftet hatten (kein onlineStoreUrl → Link = 404).
+  // Reel- und Karussell-Poster fragen Shopify vor jedem Post; dieser Poster fragte nie. Zeilen-ID traegt die
+  // Shopify-Produkt-ID am Ende (…-15408457941377); ohne ID (Markenposts) gilt: erlaubt.
+  if(!DRY){
+    const pa = await produktAktiv(next[idx.id]);
+    if(pa.ok === false){
+      console.log(`   ⛔ Produkt nicht kaufbar (${pa.grund}) → produkt-nicht-aktiv: ${next[idx.id]}`);
+      next[idx.status] = 'produkt-nicht-aktiv'; fs.writeFileSync(CSV, serialize(rows)); continue;
+    }
+    if(pa.ok === null){ console.log(`   ⚠️ Produkt nicht pruefbar (${pa.grund}) → Zeile bleibt ready, naechster Lauf`); continue; }
+  }
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
@@ -209,15 +248,35 @@ for(const next of ready.slice(0, MAX)){
   console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
   if(DRY){ console.log(`   DRY_RUN: würde senden.`); postedCount++; continue; }
 
+  // 23.09.2026: Instagram ZUERST und mit einem Wiederholungsversuch — am 23.09. 02:08 scheiterte der IG-Container
+  // voruebergehend (9004/2207052 «Only photo or video…», dasselbe Bild 20 Min spaeter angenommen), FB wurde gepostet,
+  // die Zeile stand als «posted», Instagram bekam den Post nie. Betreiber-Reihenfolge: TikTok, Instagram, dann FB.
+  // Faellt IG zweimal, wird FB NICHT gepostet (kein Auseinanderlaufen der Kanaele); die Zeile bleibt «ready» und
+  // zaehlt die Fehlversuche in post_url («ig-fehler:N»); ab 3 Fehlversuchen → Status «ig-fehler» (Mensch entscheidet).
+  let igRes = wantIG ? await postIG(imageUrl, caption) : null;
+  if (wantIG && igRes === false) {
+    console.error('   IG-Fehler → ein Wiederholungsversuch in 20 s');
+    await new Promise(x => setTimeout(x, 20000));
+    igRes = await postIG(imageUrl, caption);
+  }
+  if (wantIG && igRes === false) {
+    const n = (parseInt((/^ig-fehler:(\d+)/.exec(next[idx.post_url] || '') || [])[1] || '0', 10)) + 1;
+    next[idx.post_url] = `ig-fehler:${n}`;
+    if (n >= 3) next[idx.status] = 'ig-fehler';
+    fs.writeFileSync(CSV, serialize(rows));
+    anyFail = true;
+    console.error(`   ❌ Instagram zweimal gescheitert (Versuch ${n}) — FB NICHT gepostet, Zeile bleibt ${next[idx.status]}.`);
+    continue;
+  }
   const results = await Promise.all([
-    wantIG?postIG(imageUrl,caption):Promise.resolve(null),
+    Promise.resolve(igRes),
     wantFB?postFB(imageUrl,caption):Promise.resolve(null),
     wantTH?postThreads(imageUrl,caption):Promise.resolve(null),
   ]);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
     if(results[0] && results[0]!==false){ postMark(imageUrl);   // IG ok → sofort in gemeinsamen Ledger
-      produktMerken(caption, next[idx.id]); }                  // …und die WARE merken (7. Schicht)
+      produktMerken(caption, next[idx.id]); familieMerken(caption, 'bild'); }   // …WARE (7.) und Warengruppe (9.) merken
     if(sig) postedCaps.add(sig);                               // Inhalts-Sperre für Folge-Zeilen im selben Lauf
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();

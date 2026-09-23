@@ -25,6 +25,22 @@ WAS ES PRUEFT, in dieser Reihenfolge:
 
   DRY=1   nur zeigen        CAP=N   hoechstens N Produkte je Lauf (Standard 60)
 Ledger: dropship/_cj_versand_ch_revive.txt
+
+⚠️⚠️ KLINGEN-TOR (22.09.2026, Ping-Pong gemessen). Dieses Skript hat am 16.09. fuenf
+frisch gedraftete Klingen zurueckgeholt (inkl. das Fuda-Taschenmesser aus der
+ZURUECKGESANDTEN Bestellung #1017) und am 21.09. 22:10Z den Samurai-Katana — die
+Klingen-Wache draftete am 22.09. 21:14Z erneut. Drei Fehler in dieser Datei:
+  1. RISIKO kannte den Sperr-Tag `handklinge-kein-ch-versand` nicht.
+  2. `ist_handklinge` kam hier nicht vor — nur `ist_klinge` (Werbefrage), und die
+     diente allein dem Raeumen der Werbekanaele NACH der Reaktivierung.
+  3. «freightCalculate = ok» galt als Beweis. Fuer #1017 gab es eine Versandoption,
+     das Paket ging raus und kam aus Shanghai zurueck: verbotener Artikel, keine
+     Linie CN→CH. Eine Frachtauskunft widerlegt die Kategorie nicht.
+Jetzt: `klingen_tor(titel, tags)` aus klinge_ch_wache.py (Sperr-Tag ODER Hausregel)
+steht VOR jeder Status-ACTIVE-Mutation — Klingen werden nie reaktiviert, der Grund
+wird geloggt, es wird kein CJ-Punkt dafuer ausgegeben. Bewusst NICHT im RISIKO-Set:
+`cj-nicht-versendbar-ch` — das ist der Abfrage-Tag dieses Skripts; im Set waere die
+Kandidatenliste immer leer und der Rueckholer nur noch Dekoration.
 """
 import json, os, re, ssl, sys, time, urllib.request
 import os as _os_takt, sys as _sys_takt
@@ -44,9 +60,14 @@ CTX = ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt")
 
 RISIKO = {"medizinprodukt-pruefen", "waffengesetz-verboten", "duplikat-auto-draft",
           "keine-lieferanten-ref", "ausverkauft-lieferant", "cj-abgekuendigt",
-          "marge-verlust-draft", "nicht-lieferbar-ch", "verdeckte-ueberwachung",
+          "marge-verlust-draft", "verlust-auto-draft", "schutz-norm-unklar", "nicht-lieferbar-ch", "verdeckte-ueberwachung",
           "abhoergeraet-pruefen", "waffe-pruefen", "tierschutz-geraet",
-          "bb-versand-unrentabel", "lager-unbekannt-draft"}
+          "bb-versand-unrentabel", "lager-unbekannt-draft",
+          # 22.09.: Urteil der Klingen-Wache — ein Rueckholer hebt es nicht auf.
+          "handklinge-kein-ch-versand",
+          # 23.09.: Fetisch-/Sexartikel unter falschem Typ (Knebel als «Werkzeug») und Arzneimittel-Anpreisung
+          # ohne Swissmedic-Zulassung (Nagelpilz-/Psoriasis-«Treatment») — Urteil, kein Lieferproblem.
+          "adult-auto-draft", "arzneimittel-ohne-zulassung", "heilversprechen-draft"}
 
 ONLINE = "gid://shopify/Publication/301970915713"
 SHOP = "gid://shopify/Publication/301971014017"
@@ -67,6 +88,9 @@ WERBEKANAELE = ["gid://shopify/Publication/302032716161",   # TikTok
 # Messgeraete-Ausnahme steckt in der Regel, nicht im Muster.)
 sys.path.insert(0, os.path.join(REPO, "automation"))
 from klingenregel import ist_klinge as _ist_klinge          # noqa: E402
+# Das Tor vor der Reaktivierung (22.09.): Sperr-Tag ODER ist_handklinge → nie ACTIVE.
+# Es wohnt in der Klingen-Wache, damit beide Seiten des Ping-Pongs DIESELBE Frage stellen.
+from klinge_ch_wache import klingen_tor                     # noqa: E402
 
 KLINGE_TAG = ("messer", "outdoor-messer", "messer-outdoor")
 
@@ -157,6 +181,8 @@ def main():
             measurement{weight{value unit}} } }} } } }""" % TAG
 
     kand, c = [], None
+    n_tor = 0                                  # Klingen, die das Tor VOR der CJ-Frage abweist
+    tor_beispiele = []
     while True:
         d = sgql(Q, {"c": c})
         if d is None:
@@ -168,12 +194,25 @@ def main():
                 continue
             if RISIKO & set(p["tags"] or []):
                 continue
+            # KLINGEN-TOR (22.09.): eine Klinge bekommt keine Frachtanfrage — die Antwort
+            # waere ohnehin kein Beweis (#1017), und jeder CJ-Punkt dafuer ist verschenkt.
+            gesperrt, grund = klingen_tor(p["title"], p["tags"])
+            if gesperrt:
+                n_tor += 1
+                if len(tor_beispiele) < 8:
+                    tor_beispiele.append(f"{p['handle'][:52]} — {grund}")
+                continue
             if p["handle"] not in vids:
                 continue                       # ohne vid keine Frachtanfrage
             kand.append(p)
         if not pg["pageInfo"]["hasNextPage"]:
             break
         c = pg["pageInfo"]["endCursor"]
+    if n_tor:
+        print(f"KLINGEN-TOR: {n_tor} Drafts sind Klingen und werden NIE reaktiviert "
+              f"(Sperr-Tag oder Hausregel), z. B.:")
+        for z in tor_beispiele:
+            print("   ⛔", z)
 
     # ⚠️ ZUERST DIE SEITEN MIT BESUCHERN. Die Kandidaten kommen sonst in Katalogreihenfolge,
     # und der taegliche CAP reicht nie bis zu den wenigen, auf denen wirklich jemand landet.
@@ -245,6 +284,13 @@ def main():
             if led: led.write(f"{pid}\tlieferbar-aber-verlust\t{p['handle']}\t{gewinn:.2f}\n"); led.flush()
             continue
 
+        # KLINGEN-TOR, zweites Mal, UNMITTELBAR vor der Status-Mutation: die Frachtauskunft
+        # oben beweist nichts (#1017: Option ja, Paket zurueck). Wer diese Datei umbaut und
+        # das Sammel-Tor verliert, stolpert hier trotzdem.
+        gesperrt, grund = klingen_tor(p["title"], p["tags"])
+        if gesperrt:
+            print(f"⛔ {p['title'][:44]:46} Klinge — NICHT reaktiviert ({grund})")
+            continue
         print(f"✓  {p['title'][:44]:46} {billig.get('logisticName')} {fr_chf:.2f} CHF · Gewinn {gewinn:+.2f}")
         n_ok += 1
         if DRY:
@@ -294,7 +340,7 @@ def main():
         time.sleep(0.3)
 
     print(f"\n{'[DRY] ' if DRY else ''}wiederbelebt {n_ok} · keine Linie {n_keine} · "
-          f"lieferbar-aber-Verlust {n_verlust} · unklar {n_unklar}")
+          f"lieferbar-aber-Verlust {n_verlust} · unklar {n_unklar} · Klingen-Tor {n_tor} (nie reaktiviert)")
     return 0
 
 

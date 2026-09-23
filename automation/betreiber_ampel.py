@@ -97,23 +97,40 @@ def video_deckel():
 
 
 def tiktok_queue_alt():
-    """Der PC-Poster liest die Queue vom CDN. Steht sie still, postet er alten Stand.
-
-    ⚠️ NICHT am HTTP-Kopf messen: Shopifys CDN setzt `last-modified` auf den Zeitpunkt, zu dem
-    der EDGE die Datei geholt hat — gemessen stand dort «jetzt» fuer eine Datei vom 31.08.
-    Ein Zeitstempel des Zustellers ist kein Alter des Inhalts. Das Alter steht IM Inhalt
-    (Feld `stand`), das schreibt tiktok_cowork_auftrag.py bei jedem Lauf.
+    """23.09.2026: TikTok laeuft seit dem 22.09. ueber Metricool (Ledger automation/reels_seed.csv,
+    Status posted-tiktok, post_url `metricool:<id> tiktok:<url>` nach der Nachmessung). Die alte
+    Messung am PC-Poster (dropship/tiktok_queue.json, Feld `stand`) meldete «23 Tage alt» fuer einen
+    Weg, den niemand mehr geht — ein Wächter fuer einen toten Weg ist Laerm. Jetzt drei Fragen an den
+    Ledger: Fehler? · geplant, aber seit >2 h nicht bestaetigt? · kein bestaetigter Post seit >2 Tagen?
     """
+    import csv
     try:
-        roh = subprocess.run(
-            ["curl", "-s", "--max-time", "20", QUEUE_CDN + "?v=ampel"],
-            capture_output=True, text=True, timeout=30).stdout
-        stand = (json.loads(roh) or {}).get("stand")
-        tag = datetime.date.fromisoformat(stand)
+        rows = list(csv.DictReader(open(os.path.join(ROOT, "automation", "reels_seed.csv"), encoding="utf-8")))
     except Exception:
-        return None                      # kein Befund aus einer kaputten Abfrage
-    tage = (datetime.date.today() - tag).days
-    return f"TikTok-Queue {tage} Tage alt" if tage >= 3 else None
+        return None
+    fehler = [r for r in rows if (r.get("status") or "") == "tiktok-fehler"]
+    if fehler:
+        return f"TikTok: {len(fehler)} Post-Fehler in reels_seed.csv ({fehler[0].get('post_url','')[:60]})"
+    jetzt = datetime.datetime.now(datetime.timezone.utc)
+    letzte = None
+    ungeprueft = 0
+    for r in rows:
+        if (r.get("status") or "") != "posted-tiktok":
+            continue
+        try:
+            t = datetime.datetime.fromisoformat((r.get("posted_at") or "").replace("Z", "+00:00"))
+        except Exception:
+            continue
+        if "tiktok:" in (r.get("post_url") or ""):
+            letzte = t if letzte is None or t > letzte else letzte
+        elif (jetzt - t).total_seconds() > 2 * 3600:
+            ungeprueft += 1
+    if ungeprueft:
+        return f"TikTok: {ungeprueft} geplante Posts seit >2 h ohne Bestaetigung (PRUEFEN=1 metricool_tiktok_post.mjs)"
+    if letzte is None:
+        return "TikTok: noch kein bestaetigter Metricool-Post"
+    tage = (jetzt - letzte).total_seconds() / 86400
+    return f"TikTok: letzter bestaetigter Post vor {tage:.1f} T" if tage >= 2 else None
 
 
 def ki_textstufe():
@@ -375,6 +392,178 @@ def liechtenstein_gesperrt():
             "automation/liechtenstein_raus.py laeuft taeglich; wer die Phrase schreibt, steht im Journal 22.09.")
 
 
+def klingen_pingpong():
+    """Klingen-Ping-Pong (22.09.): eine Klinge mit Sperr-Tag darf NIE aktiv sein.
+    Misst den Zustand, nicht die Absicht — 0 EXACT ist die einzige gute Antwort."""
+    try:
+        teile = []
+        for t in ("handklinge-kein-ch-versand", "cj-nicht-versendbar-ch"):
+            c = gql('{productsCount(query:"status:active tag:%s"){count precision}}' % t)["data"]["productsCount"]
+            if c["count"]:
+                teile.append(f"{c['count']} aktiv mit {t} ({c['precision']})")
+        if teile:
+            return "KLINGEN: " + ", ".join(teile) + " → python3 automation/test_klingen_tor.py --live; FIX=1 klinge_ch_wache"
+        return None
+    except Exception as e:
+        return f"KLINGEN: unklar ({type(e).__name__})"
+
+
+def verlust_kaufbar():
+    """VERLUST: N kaufbar — Stand des letzten Laufs von automation/verlustbringer.py (dropship/_verlust_stand.json).
+
+    Gegenpruefung 22.09.2026: zwei Verlustartikel (Kinder-Autositz 14.90 bei EK 25.07, Atemschutzmasken 16.90 bei
+    EK 49.32) standen in 6 Kanaelen kaufbar; der Waechter vom 15.09. hatte keinen Starter, kein Log, das Ledger
+    stand still. Diese Zeile liest den STAND (Datei), nicht den Shop — ein alter Stand ist selbst der Befund
+    («Waechter laeuft nicht»). Kein Stand = «unklar», nie «0». Die Zahl ist Export-Stand (/tmp/kost28.jsonl der
+    taeglichen Kosten-Kette), keine Live-Messung; «heben» (416) wartet auf die Preisschreiber-Absprache."""
+    p = os.path.join(REPO, "dropship", "_verlust_stand.json")
+    try:
+        s = json.load(open(p, encoding="utf-8"))
+        tage = (datetime.date.today() - datetime.date.fromisoformat(s["stand"])).days
+    except Exception:
+        return "VERLUST: unklar (kein Stand — automation/verlustbringer.py nie gelaufen?)"
+    if s.get("wartet_auf_export"):
+        return (f"VERLUST: wartet auf Export (juengster {s.get('export')} ist {s.get('export_alter_h')} h alt; "
+                "automation/kosten_export_bauen.py baut /tmp/kost28.jsonl)")
+    n = int(s.get("kaufbar") or 0)
+    if tage >= 3:
+        return f"VERLUST: Stand {tage} T alt ({n} kaufbar am {s['stand']}) — Waechter laeuft nicht"
+    if n == 0:
+        return None
+    return (f"VERLUST: {n} kaufbar ({s.get('rest_raus', 0)} raus-Rest, {s.get('heben', 0)} nur Preis-Meldung, "
+            f"Stand {s['stand']})")
+
+
+def google_feedback():
+    """GOOGLE: N Free-Listings-Blocker — Stand von automation/google_feedback_wache.py (Task #100, 23.09.2026).
+    Google-Diagnosen stehen als product.feedback der App «Google & YouTube» an jedem Produkt; Meldungen mit
+    [Shopping_ads] betreffen nur bezahlte Anzeigen und zaehlen nicht. Liest den STAND (Datei); kein Stand = «unklar»,
+    alter Stand = Befund (Waechter laeuft nicht)."""
+    p = os.path.join(REPO, "dropship", "_google_feedback_stand.json")
+    try:
+        s = json.load(open(p, encoding="utf-8"))
+        alter_h = (datetime.datetime.utcnow() - datetime.datetime.strptime(s["stand"], "%Y-%m-%dT%H:%MZ")).total_seconds() / 3600
+    except Exception:
+        return "GOOGLE: unklar (kein Stand — automation/google_feedback_wache.py nie gelaufen?)"
+    top = " · ".join(f"{k} {v}" for k, v in list(s.get("klassen", {}).items())[:3])
+    alt = f" · ⚠️ Stand {alter_h/24:.1f} T alt" if alter_h > 48 else ""
+    voll = "" if s.get("vollstaendig", True) else " · ⚠️ Scan unvollstaendig"
+    shop = sum(v for k, v in (s.get("andere_apps") or {}).items() if k.startswith("[Shop]"))
+    shopz = f" · Shop-Kanal: {shop} Meldungen" if shop else ""
+    return f"GOOGLE: {s.get('blocker')} Free-Listings-Blocker ({top}){alt}{voll}{shopz}"
+
+
+def kategorie_offen():
+    """KATEGORIE: N aktive ohne Taxonomie-Kategorie — Stand von automation/kategorie_wache.py (23.09.2026, Task #101).
+    Der Shop-Kanal zeigt nur Produkte MIT Kategorie (33'863 «nicht auffindbar» gemessen). Liest den STAND (Datei)."""
+    p = os.path.join(REPO, "dropship", "_kategorie_stand.json")
+    try:
+        s = json.load(open(p, encoding="utf-8"))
+    except Exception:
+        return "KATEGORIE: unklar (kein Stand — automation/kategorie_wache.py nie gelaufen?)"
+    unbek = s.get("unbekannte_typen") or {}
+    u = f" · unbekannte Typen {sum(unbek.values())} ({', '.join(list(unbek)[:3])})" if unbek else ""
+    n = s.get("ohne_kategorie_nachher", s.get("ohne_kategorie_vorher"))
+    # 23.09.: der Stand wird erst am ENDE eines Laufs geschrieben; ein stundenlanger Nachlauf, den der
+    # Container-Neustart toetet, hinterlaesst keinen — die Ampel meldete «heute gesetzt 0» bei 2'925 Ledger-Zeilen.
+    # Das Ledger (je Zeile eine rueckgelesene Zuweisung) ist die Wahrheit ueber das Geschriebene.
+    heute = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+    try:
+        led = [l for l in open(os.path.join(REPO, "dropship", "_kategorie_gesetzt.txt"), encoding="utf-8") if l.strip()]
+        ledger_heute = sum(1 for l in led if l.rstrip("\n").split("\t")[-1].startswith(heute))
+        n = max(0, int(s.get("ohne_kategorie_vorher", n) or 0) - sum(1 for l in led if l.rstrip("\n").split("\t")[-1] >= s.get("stand", "")[:10]))
+    except Exception:
+        ledger_heute = s.get("gesetzt")
+    return None if (n == 0 and not unbek) else f"KATEGORIE: ~{n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, Ledger heute {ledger_heute}){u}"
+
+
+def metricool_kanaele():
+    """23.09.2026 «metricool maximal nutzen»: je Metricool-Kanal, wie viel in 24 h geplant wurde, und Fehler.
+    Ein Kanal mit 0 in 24 h ist ein Befund (Autopilot: TikTok/YouTube 12 h, Pinterest 6 h)."""
+    try:
+        import csv, datetime as dt
+        grenze = dt.datetime.utcnow() - dt.timedelta(hours=24)
+        def jung(t):
+            try: return dt.datetime.fromisoformat(t.replace("Z", "")[:19]) >= grenze
+            except Exception: return False
+        n = {"tiktok": 0, "youtube": 0}; fehler = []
+        rows = list(csv.DictReader(open(os.path.join(REPO, "automation/reels_seed.csv"), newline="")))
+        for r in rows:
+            st = (r.get("status") or "").strip()
+            for k in n:
+                if st == f"posted-{k}" and jung(r.get("posted_at") or ""): n[k] += 1
+                if st == f"{k}-fehler": fehler.append(k)
+        pins = 0
+        lp = os.path.join(REPO, "dropship/_pinterest_pins.txt")
+        if os.path.exists(lp):
+            pins = sum(1 for z in open(lp) if z.strip() and jung(z.split("\t")[0]))
+        teile = [f"TikTok {n['tiktok']}", f"YouTube {n['youtube']}", f"Pinterest {pins}"]
+        warn = [k for k, v in (("TikTok", n["tiktok"]), ("YouTube", n["youtube"]), ("Pinterest", pins)) if v == 0]
+        txt = "METRICOOL 24 h: " + " · ".join(teile)
+        if fehler: txt += f" · ⚠️ {len(fehler)} Fehler ({', '.join(sorted(set(fehler)))})"
+        if warn: txt += f" · still: {', '.join(warn)}"
+        return txt
+    except Exception as e:
+        return f"METRICOOL: unklar ({type(e).__name__})"
+
+
+def grow_zaehler():
+    """GROW (23.09.2026, Betreiber: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»): zaehlt bezahlte,
+    nicht erstattete Bestellungen FREMDER Kunden seit dem Start in dropship/_grow_bedingung.txt. Eigenbestellungen des
+    Betreibers (eine feste Kunden-ID) zaehlen nicht. Meldet immer den Stand; ab Ziel als Ruf an den Betreiber."""
+    try:
+        cfg = dict(l.rstrip("\n").split("\t", 1) for l in open(os.path.join(REPO, "dropship", "_grow_bedingung.txt"), encoding="utf-8") if "\t" in l)
+        start, ziel, eigen = cfg["start"], int(cfg.get("ziel", "3")), cfg.get("eigene_kunden_id", "")
+        d = gql('query($q:String!){ orders(first:50, query:$q){ nodes{ name displayFinancialStatus customer{ id } } } }',
+                {"q": f"created_at:>='{start}'"})
+        n = [o["name"] for o in (((d.get("data") or {}).get("orders") or {}).get("nodes") or [])
+             if o.get("displayFinancialStatus") in ("PAID", "PARTIALLY_PAID") and ((o.get("customer") or {}).get("id") or "") != eigen]
+    except Exception:
+        return "GROW: Zähler unklar (Abfrage fehlgeschlagen)"
+    if len(n) >= ziel:
+        return f"⭐ GROW FÄLLIG: {len(n)} Verkäufe seit 23.09. ({', '.join(n)}) — Betreiber-Zusage: jetzt Shopify Grow (300 GB)"
+    return f"GROW: {len(n)}/{ziel} Verkäufe seit 23.09. ({', '.join(n) or 'noch keiner'})"
+
+
+def drafts_ohne_quittung():
+    """DRAFT-OHNE-QUITTUNG: Produkte mit Tag `cj-nicht-mehr-verfuegbar`, die in
+    dropship/_cj_verfuegbarkeit.txt KEINE Zeile haben.
+
+    ANLASS 22./23.09.2026 (Auftrag drafts15): 15 Produkte trugen den Tag ohne Ledger-Zeile —
+    der 68er-Rueckholer vom 21.09. waehlte aus dem Ledger und sah sie nie; 9 davon lebten
+    bei CJ (productSku → 200) und standen zwei Tage unnoetig im Entwurf. Ein Tag ohne
+    Quittung ist ein Draft, den kein Rueckholer je prueft. Gemessen: 341 mit Tag, nach der
+    Nachpruefung 0 ohne Zeile (Bericht dropship/DRAFTS-OHNE-QUITTUNG-2026-09-22.md).
+    Frische Drafts (< 15 min) zaehlen nicht: der Waechter schreibt die Zeile erst NACH den
+    zwei Mutationen. Kosten: 2 Seiten a 250 IDs (~500 Punkte) je Lauf. Fehler = still.
+    """
+    pfad = os.path.join(REPO, "dropship", "_cj_verfuegbarkeit.txt")
+    try:
+        quittiert = {l.split("\t")[0] for l in open(pfad, encoding="utf-8")}
+    except OSError:
+        return None
+    grenze = (datetime.datetime.utcnow() - datetime.timedelta(minutes=15)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    ohne, cur = [], None
+    try:
+        while True:
+            d = gql('query($c:String){ products(first:250, after:$c, query:"tag:cj-nicht-mehr-verfuegbar"){ '
+                    'pageInfo{hasNextPage endCursor} nodes{ id updatedAt } } }', {"c": cur})
+            pg = ((d.get("data") or {}).get("products") or {})
+            for n in pg.get("nodes") or []:
+                if n["id"] not in quittiert and (n.get("updatedAt") or "") < grenze:
+                    ohne.append(n["id"].rsplit("/", 1)[-1])
+            if not (pg.get("pageInfo") or {}).get("hasNextPage"):
+                break
+            cur = pg["pageInfo"]["endCursor"]
+    except Exception:
+        return None
+    if not ohne:
+        return None
+    return (f"DRAFT-OHNE-QUITTUNG: {len(ohne)} Produkte tragen cj-nicht-mehr-verfuegbar ohne Ledger-Zeile "
+            f"(z. B. {', '.join(ohne[:3])}) — kein Rueckholer sieht sie; Nachpruefung wie in "
+            "dropship/DRAFTS-OHNE-QUITTUNG-2026-09-22.md (drei CJ-Formen + Klingen-Tor), dann Ledger-Zeile")
+
+
 def server_waechter():
     """Laufen die Waechter schon auf dem Hetzner-Server? Zustand statt Quittung: ein Commit des
     Autors «luxe-waechter», juenger als 2 h, belegt es (der Server-Aufseher committet seine Ledger
@@ -390,6 +579,38 @@ def server_waechter():
             "(5 Min, server/luxe-waechter-setup.sh, COWORK Punkt 7)")
 
 
+def judgeme_verdacht():
+    """Unechte Bewertungen bei Judge.me (Hausregel: NIE Fake-Reviews, UWG). Liest den Bericht des
+    taeglichen Lese-Waechters `automation/judgeme_fake_wache.py` (dropship/JUDGEME-WACHE.md — im Repo,
+    ueberlebt /tmp-Wipes), nicht das Log. Meldet: harte Befunde > 0, «unklar»/«unvollstaendig», oder
+    Bericht aelter als 2 Tage. Anlass 22.09.2026: Bewertung 1335720164 («Test»/«Probelauf», 5★,
+    Shop-Ebene) stand 8 Tage veroeffentlicht und zaehlte in der Startseiten-Zahl mit. Die Zahl
+    «Namen unmaskiert» ist nur Bericht, kein Ruf (CJ-Nutzernamen, API kann sie nicht aendern)."""
+    p = os.path.join(REPO, "dropship", "JUDGEME-WACHE.md")
+    try:
+        text = open(p, encoding="utf-8").read()
+    except OSError:
+        return "⭐ Judge.me-Wache hat noch keinen Bericht (automation/judgeme_fake_wache.py nie gelaufen?)"
+    m = re.search(r"\*\*(JUDGEME: [^*\n]+)\*\*", text)
+    stand = re.search(r"^Stand: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC", text, re.M)
+    if not m or not stand:
+        return "⭐ Judge.me-Wache: Bericht ohne Ampel-Zeile (dropship/JUDGEME-WACHE.md)"
+    zeile = m.group(1)
+    try:
+        tage = (datetime.datetime.now(datetime.timezone.utc)
+                - datetime.datetime.strptime(stand.group(1), "%Y-%m-%d %H:%M").replace(tzinfo=datetime.timezone.utc)).days
+    except Exception:
+        tage = 99
+    if tage >= 2:
+        return f"⭐ Judge.me-Wache seit {tage} T ohne Lauf (zuletzt {stand.group(1)}Z) — Aufseher-Block pruefen"
+    if "unklar" in zeile or "unvollstaendig" in zeile:
+        return f"⭐ {zeile} — Judge.me-Zugang (/tmp/judgeme.env) oder API-Deckel pruefen"
+    n = re.match(r"JUDGEME: (\d+) verdaechtig", zeile)
+    if n and int(n.group(1)) > 0:
+        return f"⭐ {zeile} — dropship/JUDGEME-WACHE.md lesen: ausblenden (PUT curated=spam) oder in _judgeme_freigabe.txt freigeben"
+    return None
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -403,10 +624,43 @@ def offene_punkte():
     return len(re.findall(r"(?m)^##\s+(?:🆕|\d+[a-z]?\.)", schnitt))
 
 
+def iban_grep():
+    """Das Repo ist OEFFENTLICH (gemessen 18.09.). Am 18.09. standen Bankinstitut + Kontoinhaber 17 Minuten auf
+    diesem Zweig und seit 20:46 UTC LIVE auf main (Gegenpruefung 22.09.). Diese Zeile sucht taeglich nach
+    IBAN-NUMMERN (CH/LI/DE-Muster) und Bank-/Kontoinhaber-Feldern in den Textdateien, die Sessions schreiben.
+    Das Wort «IBAN» allein ist kein Fund (Journal beschreibt Vorgaenge) — nur Nummern und ausgefuellte Felder."""
+    # Volle IBAN-Laengen (CH/LI 21, DE 22, AT 20 Zeichen) mit Wortgrenze — ein kurzes Muster traf Hex-Hashes
+    # («de2776694760» in _bildhash.txt, gemessen 22.09.). Feldnamen zaehlen nur mit ausgefuelltem Wert.
+    muster = re.compile(r"\b(?:CH|LI)\d{2}(?:\s?\d{4}){4}\s?\d\b|\bDE\d{2}(?:\s?\d{4}){4}\s?\d{2}\b|\bAT\d{2}(?:\s?\d{4}){4}\b|(?:Kontoinhaber|Account holder|Bankinstitut|Bank name)\s*[:=]\s*[A-Za-zÄÖÜäöü]{2,}", re.I)
+    treffer = []
+    for wurzel in ("dropship", "brain", "auftraege", "social", "."):
+        basis = os.path.join(REPO, wurzel)
+        for dp, dn, fn in os.walk(basis):
+            if "/.git" in dp or "node_modules" in dp:
+                continue
+            if wurzel == "." and dp != basis:
+                continue          # im Wurzelordner nur die Dateien direkt dort (CLAUDE.md, SHARED-MEMORY.md, Journal)
+            for f in fn:
+                if not f.endswith((".md", ".txt", ".json", ".csv")):
+                    continue
+                pf = os.path.join(dp, f)
+                try:
+                    if os.path.getsize(pf) > 20_000_000:
+                        continue
+                    text = open(pf, encoding="utf-8", errors="ignore").read()
+                except OSError:
+                    continue
+                if muster.search(text):
+                    treffer.append(os.path.relpath(pf, REPO))
+    if not treffer:
+        return ""
+    return f"🏦 BANKANGABE im Repo ({len(treffer)}): " + ", ".join(sorted(treffer)[:5]) + " — sofort entfernen (Repo ist oeffentlich)"
+
+
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

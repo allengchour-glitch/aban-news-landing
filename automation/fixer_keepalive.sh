@@ -251,7 +251,7 @@ while true; do
     echo "$(date -u +%H:%M) Motoren nachgezogen (durch den Aufseher)"
   fi
 
-  for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit cj_varianten_wache coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix unpublizierte_finden lagerstand_hygiene; do
+  for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit cj_varianten_wache coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix versandschwelle_blog_kollektion google_sperrtags_durchsetzen helvetismen_tags unpublizierte_finden lagerstand_hygiene; do
     [ -f /tmp/$p.py ] || continue
     pgrep -f "$p.py" >/dev/null && continue
     # ABKÜHLZEIT: Reiniger, die durchlaufen und fertig werden, dürfen nicht alle 2 Minuten
@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -343,7 +343,18 @@ while true; do
     # `handle_messversprechen` — waehrend der Grind taeglich hunderte Produkte anlegte.
     # FERTIG heisst «zu DIESEM Zeitpunkt nichts zu tun», nicht «fuer immer erledigt».
     # Es gilt deshalb nur noch 20 Stunden; danach ist der Waechter wieder faellig.
-    if grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null; then
+    # ⚠️ 23.09.2026 (Verbesserungs-Audit): Hier stand `grep -q "^FERTIG"` über das GANZE kumulative Log. Ein Lauf,
+    # der abbrach (ohne Schlusszeile), blieb dann bis zu 20 h gesperrt, weil irgendein FERTIG von vorgestern im Log
+    # stand — gemessen: versand_jenachland 894 von 994 offen, ohne_lieferantenref_guard ab Produkt 20'000 ungeprüft.
+    # Massgeblich ist nur, womit der LETZTE Lauf endete.
+    # ZOMBIE-NACHLAUF: Der Lieferblock «je nach Land … USA» kommt täglich um ~04:07 UTC zurück (Schreiber unbenannt,
+    # Journal Nachtrag 38). versand_jenachland läuft deshalb zusätzlich einmal täglich nach 04:25 UTC, egal ob FERTIG.
+    ZN=0
+    if [ "$L" = versand_jenachland ]; then
+      HM=$(date -u +%H%M); ZS=$(cat /tmp/_start_versand_jenachland 2>/dev/null || echo 0)
+      [ "$HM" -ge 425 ] 2>/dev/null && [ "$HM" -lt 700 ] 2>/dev/null && [ "$ZS" -lt "$(date -u -d 'today 04:25' +%s)" ] && ZN=1
+    fi
+    if [ "$ZN" = 0 ] && tail -n 3 "/tmp/$L.log" 2>/dev/null | grep -q "^FERTIG"; then
       F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
       [ "$F_ALTER" -lt 72000 ] && continue
     fi
@@ -377,6 +388,15 @@ while true; do
     # Phrase), Produkte in Tagesscheiben; steht VOR produkttexte_du_form, damit es nach einem Neustart den
     # Text-Lock zuerst bekommt — der Du-Form-Lauf haelt ihn sonst die ganze Stunde.
     if [ "$L" = liechtenstein_raus ]; then EXP="CAP=1500"; fi
+    # verlustbringer (23.09.2026, Gegenpruefung 22.09.): draftet Ware, bei der JEDE Variante auch mit CHF 7
+    # Versanderloes verliert (Kinder-Autositz 14.90/EK 25.07 und Maskenset 16.90/EK 49.32 standen in 6 Kanaelen).
+    # Standard des Skripts ist Trockenlauf — scharf NUR ueber SCHARF=1. Liest /tmp/kost28.jsonl der Kosten-Kette
+    # (weiter unten, taeglich); ohne die Datei gar nicht starten, aelter als 3 Tage meldet das Skript selbst PAUSE.
+    # «heben» (Preis) wird nur gemeldet (Preisschreiber-Absprache offen). Live lesen vor, ruecklesen nach jeder
+    # Mutation; Tags verlust-auto-draft + marge-verlust-draft (letzteren kennen die Rueckholer). Kein FERTIG,
+    # solange «raus» offen ist → die Schleife setzt beim naechsten Tick fort (CAP 300 je Lauf, ~1'315 offen).
+    if [ "$L" = bild_queue_captions_ehrlich ] || [ "$L" = kategorie_wache ] || [ "$L" = bild_heilversprechen ]; then EXP="SCHARF=1"; fi
+    if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
     # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
     # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf
     # uebersprungen, im ganzen Container gab es nicht einmal ein Log. Er liest jetzt die
@@ -447,7 +467,7 @@ while true; do
     # nur die Einmal-Importe (schulstart, frosch_maske) bleiben nach FERTIG aus.
     case "$N" in
       schulstart_import|frosch_maske_import) grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue ;;
-      *) if grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
+      *) if tail -n 3 "/tmp/$N.log" 2>/dev/null | grep -q "^FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
     esac
     pause_kuehlt "$N" && continue
     dreht_sich_im_kreis "$N" && continue
@@ -769,6 +789,11 @@ while true; do
       ( cd "$REPO" && setsid bash -c '
           MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
           MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
+          # 23.09.2026 Instagram-Karussells (4:5): taeglich 2 Produkt-Sets, montags dazu ein Top-Set; danach
+          # Push, weil der Autocommitter nur dropship/ mitnimmt und Instagram die Bilder von raw.githubusercontent holt.
+          FORMAT=ig MODUS=produkt ANZAHL=2 python3 automation/tiktok_karussell.py
+          [ "$(date -u +%u)" = 1 ] && FORMAT=ig MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
+          flock -w 180 /tmp/git_repo.lock bash -c "git add social/instagram social/ig_karussell.csv dropship/_ig_karussell.txt 2>/dev/null; git diff --cached --quiet || git commit -q -m \"IG-Karussell-Slides [skip ci]\"; git fetch -q origin claude/luxestyle-status-tztnn1 && git -c rebase.autoStash=true rebase -q FETCH_HEAD && timeout 90 git push -q origin claude/luxestyle-status-tztnn1" || echo "IG-Slides: Push fehlgeschlagen"
           python3 automation/tiktok_video.py
           python3 automation/tiktok_cowork_auftrag.py' >> "$TTK" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tiktok-karussell gebaut + Cowork-Auftrag fortgeschrieben"
@@ -966,6 +991,44 @@ while true; do
       fi
     fi
   fi
+  # 🔪 KLINGEN-TOR-KANARIENVOGEL (22.09.2026): taeglich rein lesend, ~2 s — faellt er, laeuft das Ping-Pong wieder.
+KLT=/tmp/test_klingen_tor.log
+  if [ -f "$REPO/automation/test_klingen_tor.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KLT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && python3 automation/test_klingen_tor.py --live >> "$KLT" 2>&1 || echo "$(date -u +%F' '%H:%M) KLINGEN-TOR FEHLER (Exit $?)" >> "$KLT" )
+    fi
+    if [ -s "$KLT" ] && tail -n 30 "$KLT" | grep -q "FEHLER\|Ping-Pong laeuft wieder"; then
+      echo "⚠️ KLINGEN-TOR: Kanarienvogel gefallen — tail -30 $KLT"
+    fi
+  fi
+
+  # ⭐ UNECHTE BEWERTUNGEN BEI JUDGE.ME — taeglicher LESE-Waechter (22.09.2026). Anlass: Bewertung
+  # 1335720164 («Test»/«Probelauf», 5★, Shop-Ebene) stand seit 14.09. veroeffentlicht und zaehlte in
+  # der Startseiten-Zahl mit; angelegt von einer fremden Session mit dem OEFFENTLICHEN Token.
+  # Hausregel: NIE Fake-Reviews (UWG). Die Wache schreibt NICHTS — Befund → dropship/JUDGEME-WACHE.md,
+  # Ampel-Zeile «JUDGEME: N verdaechtig …»; ausblenden (PUT curated=spam) entscheidet ein Mensch.
+  # Judge.me-API, nicht Shopify → keine shopify_schranke; Zugang liest das Skript aus /tmp/judgeme.env.
+  # Gemessen: ~108 Seiten je rating, ~2 Min; page klemmt bei 100 → das Skript paginiert je rating.
+  JMW=/tmp/judgeme_fake_wache.log
+  if [ -f "$REPO/automation/judgeme_fake_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$JMW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$JMW"   # Anspruch VOR dem Start — Tor-Frage ist das Log-Alter, der Lauf schreibt erst nach ~2 Min (Lehre 21.09.)
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_judgeme_wache.lock; flock -n 9 || exit 0; exec >> \"$JMW\" 2>&1; \
+           exec python3 automation/judgeme_fake_wache.py" 9>&- & )
+      # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.). «unklar» MUSS sichtbar werden.
+      if [ -s "$JMW" ] && tail -n 5 "$JMW" | grep -q "Traceback\|JUDGEME: unklar"; then
+        echo "$(date -u +%H:%M) ⚠️ Judge.me-Wache: letzter Lauf unklar ($JMW)"
+      elif [ -s "$JMW" ]; then
+        echo "$(date -u +%H:%M) $(grep '^JUDGEME:' "$JMW" | tail -n 1)"
+      else
+        echo "$(date -u +%H:%M) Judge.me-Wache gestartet (erster Lauf)"
+      fi
+    fi
+  fi
+
   # 🛒 VERKAUFEN WIR AUF UNSEREN MEISTBESUCHTEN SEITEN WARE, DIE NIE ANKOMMT? (18.09.2026)
   # Anlass: Die meistbesuchte SUCHSEITE des ganzen Shops (Rizinusoel-Wickel-Set, 18 Sitzungen
   # in 30 Tagen, 2 Warenkoerbe) stand ACTIVE und kaufbar — tracked:false, inventoryPolicy
@@ -1464,12 +1527,23 @@ JSON
   # die Floskel trotzdem live. Eine Quittung sagt, was einmal geschrieben wurde, nicht was gilt.
   PDF="$REPO/dropship/_klassen/floskel-hochwertiges-material.txt"
   PDW=/tmp/pd_wahrheit.log
-  if [ -f "$REPO/automation/produktdetails_wahrheit.py" ] && [ -s "$PDF" ]; then
+  # ⚠️ 23.09.2026 (Audit): Hier stand «flock -n 9 || exit 0» — bei belegter Text-Sperre endete der
+  # Start still, und das Log zählte trotzdem 1'091× «gestartet» (letzter echter Lauf 22.09. 02:09).
+  # Jetzt: Sperre VORHER prüfen und ehrlich «wartet» loggen; Kandidaten LIVE (QUELLE=live) statt der
+  # veralteten Arbeitsliste (93 Zeilen, live 228); höchstens alle 4 h ein Lauf.
+  PDST=/tmp/_pd_wahrheit_start
+  if [ -f "$REPO/automation/produktdetails_wahrheit.py" ] \
+     && [ $(( $(date +%s) - $(stat -c %Y "$PDST" 2>/dev/null || echo 0) )) -gt 14400 ]; then
     if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/produktdetails_wahrheit.py"{n++} END{exit(n?0:1)}'; then
-      ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; MODUS=floskel CAP=200 LISTE=dropship/_klassen/floskel-hochwertiges-material.txt exec python3 automation/produktdetails_wahrheit.py" \
-          >> "$PDW" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) produktdetails_wahrheit (Floskel) gestartet"
+      if flock -n /tmp/lock_produkttext.lock true; then
+        touch "$PDST"
+        ( cd "$REPO" && setsid bash -c \
+            "exec 8>&-; exec 9>/tmp/lock_produkttext.lock; flock -w 60 9 || exit 0; MODUS=floskel CAP=300 QUELLE=live exec python3 automation/produktdetails_wahrheit.py" \
+            >> "$PDW" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) produktdetails_wahrheit (Floskel, live) gestartet"
+      else
+        echo "$(date -u +%H:%M) produktdetails_wahrheit wartet: Text-Lock belegt"
+      fi
     fi
   fi
   # PRODUKTDETAILS NACHMESSEN (08.09.2026): MELDET NUR — und laeuft bewusst VOR der

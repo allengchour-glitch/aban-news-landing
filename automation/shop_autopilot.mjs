@@ -79,8 +79,10 @@ async function main(){
 
   // Health-Basiszahlen
   if(TASK==='all'||TASK==='health'){
-    const d = await gql(token, `{ active: productsCount(query:"status:active"){count} orders: ordersCount(query:"created_at:>${new Date(Date.now()-30*864e5).toISOString().slice(0,10)}"){count} }`);
-    report.activeProducts = d.active.count;
+    // limit:null + precision (22.09.): ohne limit deckelt productsCount bei 10'000 und meldet AT_LEAST — die Zahl stand
+    // monatelang als «aktiv» im Bericht und im Berater-Prompt (wahr: 51'326).
+    const d = await gql(token, `{ active: productsCount(limit:null, query:"status:active"){count precision} orders: ordersCount(query:"created_at:>${new Date(Date.now()-30*864e5).toISOString().slice(0,10)}"){count} }`);
+    report.activeProducts = d.active.precision === 'EXACT' ? d.active.count : `≥${d.active.count}`;
     report.orders30d = d.orders.count;
   }
 

@@ -96,6 +96,11 @@ es ist die erste, die aus eigenen Zahlen kommt.
 rund 44 % Rohmarge und beide in der Preisklasse CHF 30–45. Das deckt sich damit, dass das
 zweimal bestellte Taschenmesser seit heute Mittag vorn in der Verkaufs-Collection steht.
 
+> ⚠️ **Vermerk 22.09.2026:** Das Fuda-Taschenmesser ist **kein Gewinner mehr** — seit 16.09. DRAFT
+> (`cj-nicht-versendbar-ch` + `handklinge-kein-ch-versand`): CJ schickte #1017 aus Shanghai zurück (verbotener
+> Artikel, keine Linie CN→CH), Kunde voll erstattet (CHF 40.90). Die 44,8 % oben waren eine Rohmarge auf einer
+> Bestellung, die am Ende Verlust war. Keine Klingen mehr im Verkauf (`automation/klinge_ch_wache.py`).
+
 ---
 
 ## ✅ Geändert (live, jederzeit zurückdrehbar)
