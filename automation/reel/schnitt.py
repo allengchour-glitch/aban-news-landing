@@ -903,11 +903,14 @@ def beat_raster(musik, einstieg, dauer_max, cache_ordner=None):
 
 # ================================================================================================ 2 PLAN
 ZONEN = {
-    # organisch: Betreiber-Screenshot 23.09. (TikTok/IG-Oberflaeche), Knopfleiste x>930 bei y 950-1500
-    'organisch': dict(oben=200, unten=1440, links=0, rechts=1080, fuss_rechts=940, cx=ov.CX_FUSS),
+    # organisch: Betreiber-Screenshot 23.09. (TikTok/IG-Oberflaeche), Knopfleiste x > 930 bei y 950-1500 (overlay.py)
+    'organisch': dict(oben=200, unten=1440, links=0, rechts=1080, fuss_rechts=930, cx=ov.CX_FUSS),
     # Meta-Anzeigen: 14 % oben, 35 % unten, 6 % seitlich frei (Meta Ads Guide Reels)
     'meta': dict(oben=269, unten=1248, links=65, rechts=1015, fuss_rechts=1015, cx=540),
 }
+KOPF_H = 130               # Kopfleiste oben .. oben+130 (wie overlay.KOPF_Y 200-330)
+HOOK_OFS = 150             # Hook-Kasten ab oben+150, Hoehe 56 + 72 je Zeile
+INFO_H = 270               # Infofeld/CTA unten-270 .. unten (wie overlay.FUSS_Y 1170-1440)
 
 
 GEWICHT_KANTE = 0.35      # Rest = Bewegung (Hand/Produkt in Aktion); siehe Probe p1 in VIDEOSCHNITT-LERNEN.md
@@ -947,11 +950,17 @@ def _fenster(qw, qh, ar, ex, ey, boxen=(), skalen=(1.0,), rand=8, zentrum=ZENTRU
 
 
 def _ocr_fenster_sauber(quelle, e, fenster, i, zeiten=None):
-    """Beweis «nachweislich sauber»: OCR (eng + ggf. chi_sim) auf dem zugeschnittenen Fenster je 0,5 s."""
+    """Beweis «nachweislich sauber»: OCR (eng + ggf. chi_sim, Fremdpreise) + Kanten-Heuristik auf dem zugeschnittenen
+    Fenster, Proben gleichmaessig ueber die GANZE Einstellung (Abstand <= 1 s, 3-10 Proben).
+    Code-/Technik-Pruefung 23.09.: vorher nur die ersten 8 s (je 0,5 s, hoechstens 16) und «sauber» auch dann, wenn keine
+    einzige Probe gelesen wurde; x1 (53,7 s, 12 Text-Einstellungen) brauchte damit 89 s."""
     x, y, w, h = fenster
     tess = tessdata_cjk()
-    zs = zeiten or list(np.arange(e['start'] + 0.1, e['ende'] - 0.05, 0.5)) or [(e['start'] + e['ende']) / 2]
-    for t in zs[:16]:
+    dauer = max(0.0, e['ende'] - e['start'] - 0.15)
+    n = min(10, max(3, int(math.ceil(dauer / 1.0))))
+    zs = zeiten or (list(np.linspace(e['start'] + 0.1, e['ende'] - 0.05, n)) if dauer > 0 else [(e['start'] + e['ende']) / 2])
+    geprueft = 0
+    for t in zs:
         g = bild_bei(quelle, t, kurz=min(i['w'], i['h']), i=i)
         if g is None:
             continue
@@ -959,21 +968,37 @@ def _ocr_fenster_sauber(quelle, e, fenster, i, zeiten=None):
         c = g[int(y * sx):int((y + h) * sx), int(x * sx):int((x + w) * sx)]
         if c.size == 0:
             continue
-        fb = fremdtext_woerter(ocr(c, 'eng'), ocr(c, 'chi_sim', tess) if tess else [])
+        we = ocr(c, 'eng')
+        if we is None:
+            return False, f't={t:.1f}s: OCR-Fehler (kein Nachweis moeglich)'
+        fb = fremdtext_woerter(we, ocr(c, 'chi_sim', tess) if tess else [])
         # strenger als bei der Suche: schon 1 Wort >= 4 Buchstaben (conf >= 75) zaehlt; dazu die Kanten-Heuristik
         # (fuer Szenentext in fremder Schrift, den OCR nicht liest)
-        if fb['lat'] or fb['handles'] or fb['marken'] or fb['cjk']:
-            return False, f"t={t:.1f}s: {', '.join((fb['lat'] + fb['handles'] + fb['marken'] + fb['cjk'])[:4])}"
+        treffer = fb['lat'] + fb['handles'] + fb['marken'] + fb['cjk'] + fb['preise']
+        if treffer:
+            return False, f"t={t:.1f}s: {', '.join(treffer[:4])}"
         k540 = 540 / min(c.shape)
         cc = np.asarray(Image.fromarray(c).resize((max(2, int(c.shape[1] * k540)), max(2, int(c.shape[0] * k540)))))
         if hat_text(cc):
             return False, f't={t:.1f}s: Textzeilen im Fenster (Heuristik)'
-    return True, f'{min(len(zs), 16)} Proben ohne Fremdtext'
+        geprueft += 1
+    if geprueft < min(3, len(zs)):
+        return False, f'nur {geprueft} von {len(zs)} Proben lesbar — kein Nachweis'
+    return True, f'{geprueft} Proben ueber {dauer:.1f} s ohne Fremdtext'
+
+
+def _hook_zeilen(hook):
+    """Zeilenzahl des Hook-Kastens (wie text_ebenen: Bold 58, Breite 880, hoechstens 2 Zeilen)."""
+    if not hook:
+        return 0
+    d = ImageDraw.Draw(Image.new('RGBA', (8, 8)))
+    return len(ov.wrap(d, hook, ov.font(ov.F_BOLD, 58), 880, 2))
 
 
 def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None, cache_ordner=None, sperren=(),
          hook_ab=None):
-    """Schnittliste + Entscheidungslog. A = analyse(...). Wirft Ungeeignet, wenn kein sauberes Reel moeglich ist.
+    """Schnittliste + Entscheidungslog. A = analyse(...). Wirft Ungeeignet, wenn kein sauberes Reel moeglich ist,
+    MusikFehler bei unbrauchbarer Musik.
     sperren = [(a, b), …] Quellsekunden, die nach Sichtpruefung nicht verwendet werden duerfen (z. B. chinesische
     Verpackung im Hintergrund — OCR liest Szenentext nicht, GEMESSEN p2)."""
     log = []
@@ -982,22 +1007,51 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         log.append(dict(schritt=schritt, entscheidung=entscheidung, grund=grund, **({'werte': werte} if werte else {})))
 
     quelle = A['quelle']; qw, qh = A['w'], A['h']
-    mp = musik_pfad(musik); mname = os.path.basename(mp)
+    hinweise = []
+    mp = musik_pfad(musik, log=hinweise); mname = os.path.basename(mp)
+    for h_ in hinweise:
+        L('musik', 'Lizenzhinweis', h_)
     ein_liste = einstiege(mname)
-    E = float(einstieg) if einstieg is not None else (ein_liste[0] if ein_liste else 0.0)
-    L('musik', f'{mname} ab {E:.2f} s', 'Einstieg aus _einstiege.json (gemessenes Energie-Fenster)' if einstieg is None
-      else 'Einstieg vom Aufrufer (musikWahl im Reel-Motor)', einstiege_json=ein_liste)
+    if einstieg is not None:
+        E = float(einstieg); e_grund = 'Einstieg vom Aufrufer (musikWahl im Reel-Motor)'
+    elif ein_liste:
+        E = ein_liste[0]; e_grund = 'Einstieg aus _einstiege.json (gemessenes Energie-Fenster)'
+    else:
+        E = 0.0; e_grund = 'KEIN Eintrag in _einstiege.json -> 0,0 s (Intro des Stuecks!) — automation/music/einstiege.py laufen lassen'
+    L('musik', f'{mname} ab {E:.2f} s', e_grund, einstiege_json=ein_liste)
     mdauer = info(mp, video=False)['dauer']
     if mdauer - E < 6.0 and ein_liste:
         E2 = max(ein_liste, key=lambda x: mdauer - x) if max(mdauer - x for x in ein_liste) > mdauer - E else E
         if E2 != E:
             L('musik', f'Einstieg {E:.2f} -> {E2:.2f} s', f'ab {E:.2f} s bleiben nur {mdauer - E:.1f} s Musik')
             E = E2
+    if mdauer - E < 6.0:
+        # Musikfehler nie der Quelle anlasten (Technik-Pruefung 23.09.: 5-s-Musik gab Exit 3 «nur 3,9 s Reel moeglich»
+        # und haette ein gutes Produkt ins Ledger «schnitt-ungeeignet» geschrieben)
+        raise MusikFehler(f'Musik ab Einstieg zu kurz: {mname} ab {E:.2f} s hat nur {max(0.0, mdauer - E):.1f} s (< 6 s)')
+    hint, _ = bpm_hinweis(mname)
     R = beat_raster(mp, E, min(ziel_s + 1.0, mdauer - E), cache_ordner=cache_ordner or os.path.dirname(quelle))
     P = R['periode']
+    gu = R.get('guete') or {}
+    raster_q = max(gu.get('auf_raster') or 0, gu.get('auf_halbraster') or 0)
+    if not hint and raster_q < 0.6:
+        # ohne Tempo aus CREDITS/Rueckfall nur librosa; ohne belastbares Raster sind «Schnitte auf dem Beat» Zufall
+        # (Technik-Pruefung 23.09.: hype2 unter neuem Namen -> 164 statt 146 BPM, 4/9 Schnitte im Kick-Fenster)
+        raise MusikFehler(f'{mname}: kein Tempo in CREDITS.txt und Raster-Guete {raster_q:.0%} < 60 % — Tempo eintragen, '
+                          'einstiege.py laufen lassen')
     L('beat', f"{R['bpm']:.1f} BPM, Einstieg auf Beat {R['einstieg']:.3f} s ({R['verschiebung_ms']:+.0f} ms)",
-      f"Periode aus {R['bpm_quelle']} (librosa sagt {R['bpm_librosa']}), fein justiert und Phase per Kamm-Filter; "
-      'Inventur: Einstiege liegen 30-315 ms neben dem Beat', guete=R['guete'], kamm=R['kamm_score'])
+      f"Periode aus {R['bpm_quelle']} (librosa sagt {R['bpm_librosa']}), fein justiert; Phase per Kamm-Filter, "
+      f"Kick-Pruefung (Tiefton < 150 Hz an Raster/Halbraster){' -> auf den Kick umgelegt' if R.get('phase_auf_kick') else ''}; "
+      'Inventur: Einstiege liegen 30-315 ms neben dem Beat', guete=gu, kamm=R['kamm_score'], kick=R.get('kick_phase'))
+    if raster_q < 0.6:
+        L('beat', 'Raster unsicher', f'nur {raster_q:.0%} der librosa-Beats auf Raster/Halbraster (kein klarer Schlag, '
+          'z. B. orchestra) — Schnitte folgen dem CREDITS-Tempo')
+
+    # ---- Bildrate: 25 fps fuer 25/50-fps-Quellen (alle 7 Proben-Quellen 25 fps). Bildjury 23.09.: 25 -> 30 fps
+    #      verdoppelt jedes 5. Bild (p2: Quelle 0 % Doppelbilder, Reel 17 %). Raster-Rundung dann <= 20 ms (Fenster -100/+33).
+    fps_q = float(A.get('fps') or 25.0)
+    fps = 25 if (abs(fps_q - 25) < 0.6 or abs(fps_q - 50) < 1.2) else FPS
+    L('fps', f'{fps} fps', f'Quelle {fps_q:.2f} fps' + (' -> keine eingefuegten Doppelbilder' if fps == 25 else ''))
 
     # ---- Dauer: organisch 9-12 s (Handwerk: Laenge ist nicht der Hebel), auf ganze Takte, nie laenger als die Musik
     frei_musik = mdauer - R['einstieg'] - 0.05
@@ -1014,25 +1068,54 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
 
     # ---- nutzbares Material (Kopie: der Analyse-Cache bleibt unveraendert)
     einst = copy.deepcopy(A['einstellungen'])
-    if sperren:
-        for e in einst:
-            vorher = e['nutzbar_s']
-            e['nutzbar'] = [iv2 for iv in A['einstellungen'][e['id']]['nutzbar']
-                            for iv2 in _abziehen(iv, [tuple(x) for x in sperren]) if iv2[1] - iv2[0] >= 0.3]
+
+    def _sperre(liste, loecher):
+        for e in liste:
+            e['nutzbar'] = [iv2 for iv in e['nutzbar'] for iv2 in _abziehen(iv, [tuple(x) for x in loecher])
+                            if iv2[1] - iv2[0] >= 0.3]
             e['nutzbar_s'] = _r(sum(b - a for a, b in e['nutzbar']), 2)
-            if e['nutzbar_s'] < vorher:
-                L('sichtpruefung', f"Einstellung {e['id']}: {vorher:.2f} -> {e['nutzbar_s']:.2f} s nutzbar",
+    if sperren:
+        vorher = {e['id']: e['nutzbar_s'] for e in einst}
+        _sperre(einst, sperren)
+        for e in einst:
+            if e['nutzbar_s'] < vorher[e['id']]:
+                L('sichtpruefung', f"Einstellung {e['id']}: {vorher[e['id']]:.2f} -> {e['nutzbar_s']:.2f} s nutzbar",
                   f'gesperrt nach Sichtpruefung: {sperren}')
+    # Intro-Zone min(4 s, 12 %) fuer ALLE Stuecke sperren, wenn der Rest fuer das Reel reicht. Bildjury 23.09.: die Zone
+    # schuetzte nur den Hook — p3 zeigte das Auspacken als 2. Stueck (Karton bei 1,0-3,4 s). Belege fuer schwache
+    # Quellanfaenge: p3 Karton 0-4 s; Kritik: Titelkarte 0-4,9 s, Milchschaeumer-Karton 0-3,4 s, Hotpot-Standbild 0-3,1 s.
+    intro = min(4.0, 0.12 * A['dauer'])
+
+    def _u(liste):
+        return sum(e['nutzbar_s'] for e in liste if not e['schwarz'] and not e['fremdtext'])
+    U_vor = _u(einst)
+    probe = copy.deepcopy(einst); _sperre(probe, [(0.0, intro)])
+    U_ohne = _u(probe)
+    intro_gesperrt = U_ohne < U_vor - 1e-6 and U_ohne >= max(6.0, min(0.95 * U_vor, nb * P))
+    if intro_gesperrt:
+        einst = probe
+        L('intro', f'Quellsekunden 0-{intro:.1f} fuer alle Stuecke gesperrt', f'Intro der Quelle (Karton/Titelkarte/Schwarz); '
+          f'ohne sie bleiben {U_ohne:.1f} von {U_vor:.1f} s sauberes Material')
+    elif U_ohne < U_vor - 1e-6:
+        L('intro', f'Intro-Zone 0-{intro:.1f} s nur fuer den Hook abgewertet', f'ohne sie blieben nur {U_ohne:.1f} s '
+          f'(< {max(6.0, min(0.95 * U_vor, nb * P)):.1f} s) — Sichtpruefung auf Karton/Titelkarte')
     sauber, verworfen = [], []
     for e in einst:
         if e['schwarz']:
             verworfen.append((e['id'], 'Schwarzbild')); continue
         if e['nutzbar_s'] < 0.3:
-            verworfen.append((e['id'], 'kein nutzbarer Rest (Uebergang/Standbild/Wisch)')); continue
+            verworfen.append((e['id'], 'kein nutzbarer Rest (Uebergang/Standbild/Wisch/Intro)')); continue
         if e['fremdtext']:
             verworfen.append((e['id'], 'Fremdtext: ' + e['fremdtext_grund'])); continue
         sauber.append(e)
     fremd = [e for e in einst if e['fremdtext'] and not e['schwarz'] and e['nutzbar_s'] >= 0.3]
+    # Kamerafahrten: Einstellungen hinter einer nur RELATIV erkannten Grenze (scene < 0,2, 'hart_schwach') gelten als
+    # dieselbe Fahrt (Technik-Pruefung 23.09.: Scheinschnitte durch Ruckeln -> unsichtbare Schnitte p1 Bild 271)
+    kette, kid = {}, 0
+    for e in sorted(einst, key=lambda x: x['start']):
+        if e['grenze_start'] != 'hart_schwach':
+            kid += 1
+        kette[e['id']] = kid
 
     # ---- Modus: Vollbild (Smart-Crop) wenn die Quelle es hergibt, sonst Band
     fmt = A['format']
@@ -1056,22 +1139,26 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
     # Bewegung, ohne Mitte-Vorliebe) faellt aus dem Fenster (Median ueber die sauberen Einstellungen) und die
     # Vergroesserung bleibt <= 2,7x. GEMESSEN 23.09. (Diagnosebogen): 9:16 aus 3:4 (p1) liess 19 % draussen und schnitt
     # den Hund an; 9:16 aus 1:1 (p2) schnitt den runden Abtropfkorb in jeder Einstellung an. Rueckfall = Band: das
-    # Fenster in voller Breite ueber Unschaerfe-Grund, zentriert auf die sichtbare Zone (y 200-1440).
+    # Fenster in voller Breite ueber Unschaerfe-Grund, senkrecht so gesetzt, dass Text/Oberflaeche wenig verdecken.
     def draussen(e, ar):
         bx0, by0, bw, bh, _, _ = rahmen(e)
         k = np.asarray(e['kanten_x'], float); b = np.asarray(e['bewegung_x'], float)
-        E = GEWICHT_KANTE * k / (k.sum() or 1) + (1 - GEWICHT_KANTE) * b / (b.sum() or 1)
-        n = len(E); E = E[int(bx0 / qw * n):max(int(bx0 / qw * n) + 1, int((bx0 + bw) / qw * n))]
-        ww = min(bw, bh * ar); nx = max(1, int(round(ww / bw * len(E))))
-        c = np.concatenate([[0], np.cumsum(E)])
+        E_ = GEWICHT_KANTE * k / (k.sum() or 1) + (1 - GEWICHT_KANTE) * b / (b.sum() or 1)
+        n = len(E_); E_ = E_[int(bx0 / qw * n):max(int(bx0 / qw * n) + 1, int((bx0 + bw) / qw * n))]
+        ww = min(bw, bh * ar); nx = max(1, int(round(ww / bw * len(E_))))
+        c = np.concatenate([[0], np.cumsum(E_)])
         return 1 - float((c[nx:] - c[:-nx]).max() / (c[-1] or 1))
     # Schwellen: 15 % fuer Vollbild/4:5; 25 % fuer den 1:1-Ausschnitt aus Querformat (die Alternative zeigt das Produkt
-    # auf 31 % der Flaeche; was draussen bleibt, sind bei CJ-Demos meist Haende/Beine am Rand — Sichtpruefung p3)
+    # auf 31 % der Flaeche; was draussen bleibt, sind bei CJ-Demos meist Haende/Beine am Rand — Sichtpruefung p3).
+    # Setzung, kalibriert an n = 4 Quellen (BEHAUPTUNG bis zur Auswertung von 20-30 Entscheidungslogs).
     kandidaten_ar = [('fill', 9 / 16, 0.15), ('band 4:5', 0.8, 0.15), ('band 1:1', 1.0, 0.25)]
     modus, AR, grund = 'band', None, ''
     hw_q = qh / qw
     if hw_q >= 1.7:
-        modus, AR, grund = 'fill', 9 / 16, f'Hochkant ~9:16 ({qw}x{qh}): Vollbild, Zuschnitt <= 5 %'
+        a_q = qw / qh
+        verlust = (1 - (9 / 16) / a_q) if a_q > 9 / 16 else (1 - a_q / (9 / 16))
+        modus, AR, grund = 'fill', 9 / 16, (f"Hochkant ~9:16 ({qw}x{qh}): Vollbild, Zuschnitt {verlust:.0%} "
+                                           f"{'der Breite' if a_q > 9 / 16 else 'der Hoehe'}")
     else:
         pruef = []
         for name, ar, schwelle_aus in kandidaten_ar:
@@ -1128,15 +1215,25 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         raise Ungeeignet(f'kein sauberes Material ({grund})')
     if U < 6.0:
         raise Ungeeignet(f'nur {U:.1f} s sauberes Material (< 6 s, Regel Handwerk: dann das ganze Video verwerfen)')
-    # Quelle kuerzer als Ziel: Reel kuerzen statt Schleife (keine Stelle zweimal)
+    ketten_sauber = sorted({kette[e['id']] for e in sauber})
+    eine_fahrt = len(ketten_sauber) == 1
+    if eine_fahrt and U < 8.0:
+        # Bildjury 23.09. (p4, 6,96 s, eine Kamerafahrt): umgestellte Teile einer Fahrt wirken wie Ruckeln, 25/40 Punkte
+        raise Ungeeignet(f'eine einzige Kamerafahrt mit nur {U:.1f} s sauberem Material (< 8 s): Teile einer Fahrt '
+                         'umzustellen wirkt wie Ruckeln — naechsten Clip nehmen')
+    if eine_fahrt:
+        L('material', 'eine Kamerafahrt', f'{len(sauber)} Teil(e) ohne harten Schnitt dazwischen -> nur vorwaerts springen '
+          '(Zeitraffer-Sprung), einmal zurueck an den Anfang, Ende nahtlos in den Hook')
+    # Quelle kuerzer als Ziel: Reel kuerzen statt Schleife (keine Stelle zweimal), auf ganze Takte
     nb_mat = int((U * 0.95) / P)
     if nb_mat < nb:
         alt = nb
-        nb = max(nb_mat - nb_mat % 2, int(math.ceil(6.0 / P)))
+        nb = max(nb_mat - nb_mat % 4, 4 * int(math.ceil(6.0 / P / 4)))
         L('dauer', f'gekuerzt {alt} -> {nb} Schlaege = {nb * P:.2f} s', f'nur {U:.1f} s sauberes Material; keine Stelle zweimal '
-          '(kein -stream_loop, Kritik: 3/61 Reels mit sichtbarem Neustart)')
+          '(kein -stream_loop, Kritik: 3/61 Reels mit sichtbarem Neustart); ganze Takte')
     mot = np.asarray(A['profil'].get('bewegung_roh') or A['profil']['bewegung']); dtp = A['profil']['dt']
     hell = np.asarray(A['profil']['hell'])
+    sh4 = np.asarray(A['profil'].get('schaerfe4') or [], float)
 
     def mfenster(a, b):
         # getrimmtes Mittel (obere 10 % weg): ein einzelner Bildsprung (verpasster Schnitt, Blitz) ist keine Bewegung
@@ -1147,10 +1244,14 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
             return 0.0
         return float(v[:max(1, int(np.ceil(len(v) * 0.9)))].mean())
 
-    benutzt = {}          # eid -> [[a,b]]
+    benutzt = {}          # eid -> [[a,b]] — gerundet wie die Stuecke (Code-Pruefung 23.09.: ungerundet t vs. _r(t)
+    #                        liess die Rest-Verlaengerung am 1e-6-Vergleich scheitern)
+
+    def belege(eid, a, b):
+        benutzt.setdefault(eid, []).append([_r(a), _r(b)])
 
     def frei(eid, a, b, puffer=0.08):
-        return all(b <= x - puffer or a >= y + puffer for x, y in benutzt.get(eid, []))
+        return all(b <= x - puffer + 1e-6 or a >= y + puffer - 1e-6 for x, y in benutzt.get(eid, []))
 
     def kandidaten(e, laenge, schritt=1 / 15):
         for a0, b0 in e['nutzbar']:
@@ -1161,16 +1262,14 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
 
     reich = U >= 1.8 * nb * P
 
-    # ---- Hook: staerkstes Fenster (nicht Quellsekunde 0). Einstieg-Regel: Bewegung 0-1 s >= 4.0 bevorzugt, < 2.0 = Standbild.
+    # ---- Hook: staerkstes Fenster. Einstieg-Regel: Bewegung 0-1 s >= 4.0 bevorzugt, < 2.0 = Standbild.
     L0 = k_first * P
-    Lt_wunsch = k_base * P
     verd = np.asarray(A.get('sprung_verdacht', []), float)
-    # Intro-Zone: CJ-Demos beginnen oft mit Auspacken, Titelkarte, Schwarz oder Standbild. GEMESSEN: p3 Karton 0-4 s
-    # (mit getrimmter Bewegung waere der Hook sonst genau dort gelandet), Kritik: Luftbefeuchter-Titelkarte 0-4,9 s,
-    # Milchschaeumer-Karton 0-3,4 s, Hotpot-Standbild 0-3,1 s; Inventur: Projektor beginnt schwarz.
-    intro = min(4.0, 0.12 * A['dauer'])
     best = None
     for e in sauber:
+        s15 = mot[int(e['start'] / dtp):max(int(e['start'] / dtp) + 1, int(e['ende'] / dtp))]
+        med_e = float(np.median(s15)) if len(s15) else 0.0
+        spaet = any(b0 - max(a0, e['start'] + 0.25) >= L0 - 1e-6 for a0, b0 in e['nutzbar'])
         for t in kandidaten(e, L0):
             auf_sprung = bool(len(verd) and np.min(np.abs(verd - t)) <= 0.1)   # moeglicher Kamerawechsel am Start
             if hook_ab is not None and not (hook_ab - 1e-6 <= t <= hook_ab + 1.0):
@@ -1182,12 +1281,25 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
                 sc -= 4
             elif m1 >= 4.0:
                 sc += 1
+            # Bild 0 darf kein Uebergang sein. Bildjury 23.09. (p2): Hook-Bild 0 zeigte Glastisch + fallende Nudeln,
+            # das Produkt erst ab 0,33 s — «staerkste Bewegung» (14,2) war eine Wischbewegung direkt nach dem Schnitt.
+            if m1 > 12.0:
+                sc -= 0.5 * (m1 - 12.0)               # hektisch (Wisch/Schwenk): das Produkt ist verwischt
+            m_start = float(np.mean(mot[int(t / dtp):int(t / dtp) + 3])) if len(mot) else 0.0
+            if m_start > max(8.0, 2.5 * med_e):
+                sc -= 2.0                             # Bewegungsspitze in den ersten 0,2 s
+            if len(sh4):
+                s_start = float(np.interp(t + 0.1, np.arange(len(sh4)) / 4.0, sh4))
+                if s_start < 0.5:
+                    sc -= 2.5                         # unscharfes erstes Bild
+            if spaet and t < e['start'] + 0.25:
+                sc -= 1.0                             # die ersten 0,25 s nach einem Schnitt sind oft Eintritt/Uebergang
             vor = t - next((a0 for a0, b0 in e['nutzbar'] if a0 <= t <= b0), t)
             sc += 1.5 if vor >= k_min * P else 0.0        # Material davor -> nahtloses Loop-Ende (spart eine Einstellung)
             if auf_sprung:
                 sc -= 6.0; vor = 0.0                      # nie auf einem moeglichen Kamerawechsel beginnen / nahtlos enden
             if t < intro:
-                sc -= 2.5                                 # Intro-Zone der Quelle (Karton, Titelkarte, Schwarz, Standbild)
+                sc -= 2.5                                 # Intro-Zone der Quelle (falls nicht ganz gesperrt)
             if best is None or sc > best[0]:
                 best = (sc, e, t, m1, vor)
     if best is None:
@@ -1198,12 +1310,12 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
     _, he, ht, hm1, hvor = best
     q0 = mfenster(0, 1.0)
     L('hook', f"Einstellung {he['id']} ab {ht:.2f} s ({L0:.2f} s)", f"staerkstes Fenster: Bewegung 0-1 s {hm1:.1f} "
-      f"(Regel >= 4.0), Schaerfe {he['schaerfe_rel']:.2f}; Quellsekunde 0 haette Bewegung {q0:.1f}; Intro-Zone "
-      f"0-{intro:.1f} s abgewertet",
+      f"(Regel >= 4.0{'' if hm1 >= 4.0 else ' — NICHT erfuellt' + (', per --hook-ab erzwungen' if hook_ab is not None else '')}), "
+      f"Schaerfe {he['schaerfe_rel']:.2f}; Quellsekunde 0 haette Bewegung {q0:.1f}; Uebergaenge am Start abgewertet",
       rang_bewertung=sorted([e['bewertung'] for e in sauber], reverse=True)[:5])
     stuecke = [dict(einstellung=he['id'], q_start=_r(ht), q_dauer=_r(L0), tempo=1.0, beats=k_first, rolle='hook',
                     grund=f'staerkste Stelle (Bewegung {hm1:.1f})')]
-    benutzt.setdefault(he['id'], []).append([ht, ht + L0])
+    belege(he['id'], ht, ht + L0)
 
     # ---- Loop-Ende: das Stueck direkt VOR dem Hook-Fenster (gleiche Einstellung, gleiche Bewegungsrichtung) -> nahtlos
     loop = None
@@ -1214,13 +1326,15 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
             break
         kt -= 1
     if loop:
-        benutzt[he['id']].append([ht - loop['q_dauer'], ht])
+        belege(he['id'], ht - loop['q_dauer'], ht)
         L('loop', f"natuerlich: letztes Stueck = Einstellung {he['id']} {loop['q_start']:.2f}-{ht:.2f} s",
           'endet genau dort, wo der Hook beginnt -> beim Wiederholen laeuft das Bild ohne Sprung weiter (kein Standbild-Abspann)')
     else:
         L('loop', 'Ueberblendung 0,4 s auf das erste Bild', f'vor dem Hook nur {hvor:.2f} s Material; Labor: Naht MAD 57 -> 5')
 
-    # ---- Mitte: Einstellungen in Quellreihenfolge (Ablauf der Demo), gute zuerst, nie dieselbe Stelle zweimal
+    # ---- Mitte: Einstellungen in Quellreihenfolge (Ablauf der Demo), gute zuerst, nie dieselbe Stelle zweimal.
+    #      Nutzungsdeckel: jede Einstellung hoechstens EIN Mittelstueck, die Hook-Einstellung keins, solange andere
+    #      Einstellungen freies Material haben (Bildjury 23.09.: p3 zeigte «Tank aufsetzen» dreimal aus E6).
     k_tail = loop['beats'] if loop else 0      # ohne nahtloses Ende fuellt die Mitte alles; letztes Stueck blendet ueber
     rest = nb - k_first - k_tail
     if rest < 0:
@@ -1229,9 +1343,13 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
     gute = [e for e in sorted(sauber, key=lambda e: e['start']) if e['bewertung'] >= med_b - 0.5]
     schwache = [e for e in sorted(sauber, key=lambda e: e['start']) if e not in gute]
     reihe = [e for e in gute if e['id'] != he['id']] + ([he] if he in gute else []) + schwache
+    if eine_fahrt:
+        reihe = sorted(sauber, key=lambda e: e['start'])
+    nutzung = {}
     tempo_n = 0
-    zyklus = 0; pos_r = 0
+    pos_r = 0
     letzte = he['id']
+    mehrfach = []
     while rest > 0:
         if rest < k_min:
             break                                     # Rest < Mindeststueck: geht ans Ende (unten), kein 0,5-s-Fetzen
@@ -1239,55 +1357,87 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         if 0 < rest - k < k_min:
             k = rest
         gewaehlt = None
-        for versuch in range(len(reihe) * 3):
-            e = reihe[(pos_r + versuch) % len(reihe)]
-            if e['id'] == letzte and len(reihe) > 1 and versuch < len(reihe):
-                continue                              # nie zweimal hintereinander dieselbe Einstellung, wenn es anders geht
-            # knapp: laengstes Stueck (<= 2,5 s), das in die Einstellung passt — sonst verfallen Reste, die wegen der
-            # 0,4-s-Sprungregel nicht mehr nutzbar sind (GEMESSEN Selbsttest: 7,6 s Material -> 5,4 s Reel)
+        vor = stuecke[-1]
+        vor_ende = vor['q_start'] + vor['q_dauer']
+        if eine_fahrt:
+            # eine Fahrt: ueber ALLE Teile hinweg der naechste freie Punkt >= 0,4 s VOR-waerts; erst wenn nichts mehr
+            # vorne liegt, einmal zurueck an den fruehesten Punkt (Zeitraffer-Spruenge statt Ruckeln, Bildjury p4)
             reihe_k = [k] + list(range(k - 1, k_min - 1, -1)) if reich else \
                 list(range(min(max(k, int(2.5 / P + 1e-9)), rest), k_min - 1, -1))
             for kk in reihe_k:
                 laenge = kk * P
-                statisch = e['standbild']
-                if statisch and kk > k_static:
-                    continue                          # Lieferanten-Dias nie laenger als 1,0 s
-                tempo = 1.0
-                if reich and not statisch and tempo_n < 2 and 2.0 <= e['bewegung'] < 3.0 and e['nutzbar_s'] >= 1.6 * laenge:
-                    tempo = 1.5                       # Leerlauf straffen (Rhythmusmittel, nicht Originalitaet)
-                src_l = laenge * tempo
-                vor = stuecke[-1]
                 letztes_mittel = (rest - kk == 0) and loop is not None
-
-                def sichtbar(t, L_):
-                    # Stuecke derselben Einstellung muessen in der Quelle >= 0,4 s springen, sonst ist der Schnitt
-                    # unsichtbar (GEMESSEN p4: 0,07-s-Sprung, im Ergebnis nicht messbar). Gilt auch zum Loop-Ende.
-                    if e['id'] == vor['einstellung'] and not (t >= vor['q_start'] + vor['q_dauer'] + 0.4 or
-                                                               t + L_ <= vor['q_start'] - 0.4):
-                        return False
-                    if letztes_mittel and e['id'] == he['id'] and not (t + L_ <= loop['q_start'] - 0.4 or
-                                                                        t >= loop['q_start'] + loop['q_dauer'] + 0.4):
-                        return False
-                    return True
-                kands = [t for t in kandidaten(e, src_l) if frei(e['id'], t, t + src_l) and sichtbar(t, src_l)]
-                if not kands and tempo != 1.0:
-                    tempo = 1.0; src_l = laenge
-                    kands = [t for t in kandidaten(e, src_l) if frei(e['id'], t, t + src_l) and sichtbar(t, src_l)]
-                if not kands:
+                alle = []
+                for e in reihe:
+                    if e['standbild'] and kk > k_static:
+                        continue
+                    for t in kandidaten(e, laenge):
+                        if not frei(e['id'], t, t + laenge):
+                            continue
+                        if not (t >= vor_ende + 0.4 - 1e-6 or t + laenge <= vor['q_start'] - 0.4 + 1e-6):
+                            continue
+                        if letztes_mittel and not (t + laenge <= loop['q_start'] - 0.4 + 1e-6 or
+                                                   t >= loop['q_start'] + loop['q_dauer'] + 0.4 - 1e-6):
+                            continue
+                        alle.append((t, e))
+                if alle:
+                    vorw = [x for x in alle if x[0] >= vor_ende + 0.4 - 1e-6]
+                    t, e = min(vorw or alle, key=lambda x: x[0])
+                    gewaehlt = (e, t, kk, 1.0, e['standbild'], 1)
+                    break
+        for phase in ((1, 2) if not eine_fahrt else ()):
+            for versuch in range(len(reihe) * 3):
+                e = reihe[(pos_r + versuch) % len(reihe)]
+                if phase == 1 and (nutzung.get(e['id'], 0) >= 1 or e['id'] == he['id']):
                     continue
-                if reich:
-                    t = max(kands, key=lambda t: mfenster(t, t + src_l))
-                elif e['id'] == vor['einstellung']:
-                    # knapp + gleiche Einstellung: vom vorderen oder hinteren Ende nehmen — je nachdem, was weiter
-                    # springt (Stuecke werden umgestellt statt in Quellreihenfolge -> jeder Schnitt ist sichtbar)
-                    mitte = vor['q_start'] + vor['q_dauer'] / 2
-                    t = max((kands[0], kands[-1]), key=lambda t: abs(t + src_l / 2 - mitte))
-                else:
-                    t = kands[0]                      # knapp: dicht an dicht verbrauchen
-                gewaehlt = (e, t, kk, tempo, statisch)
-                break
+                if kette[e['id']] == kette[letzte] and len(reihe) > 1 and versuch < len(reihe):
+                    continue                          # nie zweimal hintereinander dieselbe Fahrt, wenn es anders geht
+                # knapp: laengstes Stueck (<= 2,5 s), das in die Einstellung passt — sonst verfallen Reste, die wegen der
+                # 0,4-s-Sprungregel nicht mehr nutzbar sind (GEMESSEN Selbsttest: 7,6 s Material -> 5,4 s Reel)
+                reihe_k = [k] + list(range(k - 1, k_min - 1, -1)) if reich else \
+                    list(range(min(max(k, int(2.5 / P + 1e-9)), rest), k_min - 1, -1))
+                for kk in reihe_k:
+                    laenge = kk * P
+                    statisch = e['standbild']
+                    if statisch and kk > k_static:
+                        continue                      # Lieferanten-Dias nie laenger als 1,0 s
+                    tempo = 1.0
+                    if reich and not statisch and tempo_n < 2 and 2.0 <= e['bewegung'] < 3.0 and e['nutzbar_s'] >= 1.6 * laenge:
+                        tempo = 1.5                   # Leerlauf straffen (Rhythmusmittel, nicht Originalitaet)
+                    src_l = laenge * tempo
+                    letztes_mittel = (rest - kk == 0) and loop is not None
+                    gleiche_fahrt = kette[e['id']] == kette[vor['einstellung']]
+
+                    def sichtbar(t, L_):
+                        # Stuecke derselben Fahrt muessen in der Quelle >= 0,4 s springen, sonst ist der Schnitt
+                        # unsichtbar (GEMESSEN p4: 0,07-s-Sprung, im Ergebnis nicht messbar). Gilt auch zum Loop-Ende.
+                        if gleiche_fahrt and not (t >= vor['q_start'] + vor['q_dauer'] + 0.4 or t + L_ <= vor['q_start'] - 0.4):
+                            return False
+                        if letztes_mittel and kette[e['id']] == kette[he['id']] and not (
+                                t + L_ <= loop['q_start'] - 0.4 or t >= loop['q_start'] + loop['q_dauer'] + 0.4):
+                            return False
+                        return True
+                    kands = [t for t in kandidaten(e, src_l) if frei(e['id'], t, t + src_l) and sichtbar(t, src_l)]
+                    if not kands and tempo != 1.0:
+                        tempo = 1.0; src_l = laenge
+                        kands = [t for t in kandidaten(e, src_l) if frei(e['id'], t, t + src_l) and sichtbar(t, src_l)]
+                    if not kands:
+                        continue
+                    if gleiche_fahrt:
+                        # vorwaerts springen statt zurueck (Bildjury 23.09., p4: rueckwaerts umgestellte Teile einer
+                        # Fahrt wirken wie Ruckeln); sonst an den Anfang (einmal zurueck, Ende laeuft nahtlos in den Hook)
+                        vorw = [t for t in kands if t >= vor['q_start'] + vor['q_dauer'] + 0.4 - 1e-6]
+                        t = vorw[0] if vorw else kands[0]
+                    elif reich:
+                        t = max(kands, key=lambda t: mfenster(t, t + src_l))
+                    else:
+                        t = kands[0]                  # knapp: dicht an dicht verbrauchen
+                    gewaehlt = (e, t, kk, tempo, statisch, phase)
+                    break
+                if gewaehlt:
+                    pos_r = (pos_r + versuch + 1) % len(reihe)
+                    break
             if gewaehlt:
-                pos_r = (pos_r + versuch + 1) % len(reihe)
                 break
         if not gewaehlt:
             alt = nb
@@ -1296,14 +1446,19 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
               'Wiederholung — Reel wird kuerzer statt eine Stelle zu wiederholen (kein -stream_loop)')
             rest = 0
             break
-        e, t, kk, tempo, statisch = gewaehlt
-        benutzt.setdefault(e['id'], []).append([t, t + kk * P * tempo])
+        e, t, kk, tempo, statisch, phase = gewaehlt
+        belege(e['id'], t, t + kk * P * tempo)
+        nutzung[e['id']] = nutzung.get(e['id'], 0) + 1
         if tempo != 1.0:
             tempo_n += 1
         m = mfenster(t, t + kk * P * tempo)
+        gr_ = ('Standbild-Dia <= 1,0 s' if statisch else f'Bewegung {m:.1f}') + \
+            (', Tempo 1,5x (Leerlauf gestrafft)' if tempo != 1.0 else '')
+        if phase == 2:
+            gr_ += ' (Einstellung erneut: kein anderes freies Material)'
+            mehrfach.append(e['id'])
         stuecke.append(dict(einstellung=e['id'], q_start=_r(t), q_dauer=_r(kk * P * tempo), tempo=tempo, beats=kk,
-                            rolle='demo', grund=('Standbild-Dia <= 1,0 s' if statisch else f'Bewegung {m:.1f}') +
-                            (', Tempo 1,5x (Leerlauf gestrafft)' if tempo != 1.0 else '')))
+                            rolle='demo', grund=gr_))
         letzte = e['id']
         rest -= kk
     if 0 < rest < k_min:
@@ -1312,14 +1467,15 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         e_ = next((x for x in sauber if s_ and x['id'] == s_['einstellung']), None)
         neu_l = (s_['beats'] + rest) * P * s_['tempo'] if s_ else 0
         # frei() gegen die ANDEREN Stuecke der Einstellung pruefen (das eigene Intervall grenzt ja direkt an)
-        andere = [iv for iv in benutzt.get(s_['einstellung'], []) if abs(iv[0] - s_['q_start']) > 1e-6] if s_ else []
-        if s_ and e_ and s_['beats'] + rest <= int(2.5 / P + 1e-9) and any(a0 <= s_['q_start'] and s_['q_start'] + neu_l <= b0
+        andere = [iv for iv in benutzt.get(s_['einstellung'], []) if abs(iv[0] - s_['q_start']) > 1e-3] if s_ else []
+        if s_ and e_ and s_['beats'] + rest <= int(2.5 / P + 1e-9) and any(a0 <= s_['q_start'] + 1e-6 and s_['q_start'] + neu_l <= b0 + 1e-6
                                                                            for a0, b0 in e_['nutzbar']) and \
-                all(s_['q_start'] + neu_l <= x - 0.08 or s_['q_start'] + s_['q_dauer'] >= y + 0.08 for x, y in andere):
+                all(s_['q_start'] + neu_l <= x - 0.08 + 1e-6 or s_['q_start'] >= y + 0.08 - 1e-6 for x, y in andere):
             for iv in benutzt[e_['id']]:
-                if abs(iv[0] - s_['q_start']) <= 1e-6:
-                    iv[1] = s_['q_start'] + neu_l
+                if abs(iv[0] - s_['q_start']) <= 1e-3:
+                    iv[1] = _r(s_['q_start'] + neu_l)
             s_['beats'] += rest; s_['q_dauer'] = _r(neu_l); s_['grund'] += f' (+{rest} Schlag, Rest)'
+            L('dauer', f'Rest {rest} Schlag an Stueck {len(stuecke) - 1} angehaengt', 'Quelle dahinter frei')
         else:
             nb -= rest
         rest = 0
@@ -1329,6 +1485,24 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
     elif len(stuecke) > 1:
         stuecke[-1]['rolle'] = 'loop_ende'
         stuecke[-1]['grund'] += '; Naht per 0,4-s-Ueberblendung auf das erste Bild'
+    # Ganze Takte: Summe der Schlaege auf ein Vielfaches von 4 (Code-Pruefung 23.09.: p4 hatte 13 Schlaege; beim
+    # Wiederholen springt die Musik sonst neben den Takt). Mittelstuecke von hinten um je 1 Schlag kuerzen (>= k_min).
+    uebrig = sum(s['beats'] for s in stuecke) % 4
+    if uebrig and sum(s['beats'] for s in stuecke) > 8:
+        weg = uebrig
+        for s in reversed(stuecke):
+            if weg == 0:
+                break
+            if s['rolle'] != 'demo':
+                continue
+            while weg and s['beats'] - 1 >= k_min:
+                s['beats'] -= 1; weg -= 1
+            s['q_dauer'] = _r(s['beats'] * P * s['tempo'])
+        if weg == 0:
+            L('dauer', f'-{uebrig} Schlag fuer ganze Takte', 'Mittelstuecke von hinten gekuerzt (nahtloses Musik-Loop)')
+        else:
+            L('dauer', f'Takt-Rest {uebrig} bleibt', 'kein Mittelstueck laenger als das Mindeststueck — Musik springt beim '
+              'Wiederholen neben den Takt')
     # Stuecke aus derselben Einstellung, die in der Quelle direkt aneinander liegen -> unsichtbarer Schnitt: zusammenlegen
     zus = []
     for s in stuecke:
@@ -1342,14 +1516,14 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
     nb = sum(s['beats'] for s in stuecke)
     D = nb * P
 
-    # ---- Frames auf dem Raster (Schnitt = runder Frame des Beats: Abweichung <= 1/2 Bild = 16,7 ms, im Fenster -100/+33 ms)
+    # ---- Frames auf dem Raster (Schnitt = runder Frame des Beats: Abweichung <= 1/2 Bild, im Fenster -100/+33 ms)
     pos = 0; zoom_zuletzt = -99.0
     for k, s in enumerate(stuecke):
         s['nr'] = k
         s['beat_start'] = pos; pos += s['beats']
-        s['start_frame'] = int(round(s['beat_start'] * P * FPS)); s['ende_frame'] = int(round(pos * P * FPS))
+        s['start_frame'] = int(round(s['beat_start'] * P * fps)); s['ende_frame'] = int(round(pos * P * fps))
         s['frames'] = s['ende_frame'] - s['start_frame']
-        s['t_start'] = _r(s['start_frame'] / FPS); s['t_ende'] = _r(s['ende_frame'] / FPS)
+        s['t_start'] = _r(s['start_frame'] / fps); s['t_ende'] = _r(s['ende_frame'] / fps)
         f = fenster[s['einstellung']]
         s['fenster'] = f['fenster']; s['energieanteil'] = f['anteil']
         e = next(x for x in einst if x['id'] == s['einstellung'])
@@ -1358,8 +1532,8 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         z = 'keiner'; zg = ''
         if m < 2.0 or e['standbild']:
             z, zg = 'drift', f'ruhig (Bewegung {m:.1f} < 2) -> langsamer Zoom 100->108 %'
-        elif k > 0 and stuecke[k - 1]['einstellung'] == s['einstellung'] and s['t_start'] - zoom_zuletzt >= 3.0 - 1e-6:
-            z, zg = 'bump', 'Sprungschnitt in derselben Einstellung -> Punch-in 106 % am Beat macht den Wechsel sichtbar'
+        elif k > 0 and kette[stuecke[k - 1]['einstellung']] == kette[s['einstellung']] and s['t_start'] - zoom_zuletzt >= 3.0 - 1e-6:
+            z, zg = 'bump', 'Sprungschnitt in derselben Fahrt -> Punch-in 106 % am Beat macht den Wechsel sichtbar'
         if k == 0 and m < 4.0 and z == 'keiner':
             z, zg = 'drift', f'Hook mit wenig Bewegung ({m:.1f} < 4) -> langsamer Zoom als Bewegung'
         if s['rolle'] == 'loop_ende' and loop and z != 'keiner':
@@ -1370,7 +1544,7 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
         s['zoom'] = z; s['bewegung'] = _r(m, 2)
         if zg:
             L('zoom', f"Stueck {k}: {z}", zg)
-    N = int(round(D * FPS))
+    N = int(round(D * fps))
     grenzen = [s['start_frame'] for s in stuecke[1:]]
     if D < 5.0:
         raise Ungeeignet(f'nur {D:.1f} s Reel moeglich ohne Wiederholung (Standbild-Dias <= 1 s, Spruenge >= 0,4 s) — '
@@ -1378,45 +1552,111 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
 
     # ---- Text-Takt (Staffelung): Bild 0 nur Marke + Hook; Titel/Preis ab ~2 s auf einem Schnitt; letzte ~2 s Preis + CTA
     hook_len = len(hook_text) if hook_text else 24
+    if hook_text and len(hook_text) > 24:
+        L('text', f'Hook {len(hook_text)} Zeichen > 24', 'Regel <= 24 Zeichen / 5 Woerter (Produktwort + Nutzen); '
+          'laengere Hooks verlaengern die Lesezeit auf Bild 0')
     t_hook_min = max(0.83, hook_len / 15 + 0.3)                      # Netflix 17 Z/s, konservativ 15 Z/s
-    t_F = next((g / FPS for g in grenzen if g / FPS >= t_hook_min - 1e-6), min(D, t_hook_min))
+    t_F = next((g / fps for g in grenzen if g / fps >= t_hook_min - 1e-6), min(D, t_hook_min))
+    info_variante = 'normal'
     if D - t_F >= 5.0:
         t_C_min = max(t_F + 3.0, D - 3.0)
-        t_C = next((g / FPS for g in grenzen if t_C_min - 1e-6 <= g / FPS <= D - 1.4), None)
+        t_C = next((g / fps for g in grenzen if t_C_min - 1e-6 <= g / fps <= D - 1.4), None)
         if t_C is None:
             t_C = max(t_F + 3.0, D - 2.0)
     else:
-        t_C = D                        # kurzes Reel: kein eigener CTA-Block (jede Einblendung braucht ihre Lesezeit)
-    text = dict(hook=[0.0, _r(t_F)], info=[_r(t_F), _r(t_C)], cta=[_r(t_C), _r(D)])
-    L('text', f'Hook 0-{t_F:.2f} s, Titel+Preis {t_F:.2f}-{t_C:.2f} s, Preis+CTA {t_C:.2f}-{D:.2f} s',
+        # kurzes Reel: kein eigener CTA-Block, aber das Infofeld traegt «Link in Bio» statt der Fusszeile
+        # (Bildjury 23.09., p4: cta [5,806, 5,806] = 0 s — ein Reel ohne CTA)
+        t_C = D; info_variante = 'cta'
+    text = dict(hook=[0.0, _r(t_F)], info=[_r(t_F), _r(t_C)], cta=[_r(t_C), _r(D)], info_variante=info_variante)
+    L('text', f'Hook 0-{t_F:.2f} s, Titel+Preis {t_F:.2f}-{t_C:.2f} s' + (f', Preis+CTA {t_C:.2f}-{D:.2f} s' if t_C < D else
+                                                                           ' mit «Link in Bio» im Infofeld'),
       f'Bild 0 hoechstens Marke + Hook (<= 40 Zeichen); Hook-Lesezeit {t_hook_min:.2f} s (15 Z/s + 0,3 s), '
       'Wechsel auf einem Schnitt; hoechstens 2 Textbloecke gleichzeitig')
 
+    # ---- Band senkrecht setzen: moeglichst wenig Produkt-Energie unter Text und Plattform-Oberflaeche.
+    #      Bildjury 23.09.: Band fest auf y 820 zentriert -> Infofeld (1170-1440) lag ~6,5 s ueber 18-20 % der Bandhoehe,
+    #      Marken-/Hook-Balken ueber dem Gesicht (p1). Gewicht je Ausgabezeile = Deckkraft x Anteil der Reel-Zeit.
+    Z = ZONEN[zone]
+    wy = np.zeros(H)
+    wy[:Z['oben']] = 1.0; wy[Z['unten']:] = 1.0
+    wy[Z['oben']:Z['oben'] + KOPF_H] = 0.45
+    hz = _hook_zeilen(hook_text) if hook_text else 1
+    ha = Z['oben'] + HOOK_OFS; hb = ha + 56 + 72 * max(1, hz)
+    wy[ha:hb] = np.maximum(wy[ha:hb], 0.65 * (t_F / D if hook_text else 0.0))
+    wy[Z['unten'] - INFO_H:Z['unten']] = np.maximum(wy[Z['unten'] - INFO_H:Z['unten']], 0.66 * (D - t_F) / D)
+
+    def _profil_y(s):
+        """(Ausgabe-y-Mittelpunkte relativ zur Bandoberkante in Bandhoehen-Anteil, Energie) je Quell-Bin im Fenster."""
+        e = next(x for x in einst if x['id'] == s['einstellung'])
+        ey = energie(e, 'y'); n = len(ey)
+        x_, y_, w_, h_ = s['fenster']
+        c = (np.arange(n) + 0.5) / n * qh
+        m = (c >= y_) & (c <= y_ + h_)
+        return (c[m] - y_) / max(1, h_), ey[m] * s['frames']
+    profile = [_profil_y(s) for s in stuecke]
+    fw0, fh0 = 1080, 1920
+    if modus == 'band':
+        ww0, hh0 = stuecke[0]['fenster'][2], stuecke[0]['fenster'][3]
+        fh0 = int(round(1080 * hh0 / ww0 / 2)) * 2
+        if fh0 > 1920:
+            fh0 = 1920; fw0 = int(round(1920 * ww0 / hh0 / 2)) * 2
+
+    def kosten(fy):
+        num = den = 0.0
+        for rel, en in profile:
+            yy = np.clip((fy + rel * fh0).astype(int), 0, H - 1)
+            num += float((en * wy[yy]).sum()); den += float(en.sum())
+        return num / (den or 1.0)
+
+    mitte_zone = (Z['oben'] + Z['unten']) / 2
+    fy_mitte = int(min(max(0, round(mitte_zone - fh0 / 2)), H - fh0))
+    if modus == 'band' and fh0 < H:
+        wahl = [(kosten(fy), abs(fy - fy_mitte), fy) for fy in range(0, H - fh0 + 1, 10)]
+        k_best, _, band_y = min(wahl)
+        k_mitte = kosten(fy_mitte)
+        L('band', f'Band {fw0}x{fh0} bei y {band_y}-{band_y + fh0}', f'verdeckte Produkt-Energie {k_best:.0%} (mittig auf '
+          f'die Zone, y {fy_mitte}: {k_mitte:.0%}); Gewicht = Deckkraft x Zeitanteil von Kopfleiste, Hook, Infofeld, '
+          'Plattform-Oberflaeche')
+    else:
+        band_y = 0 if fh0 >= H else fy_mitte
+        k_best = kosten(band_y); k_mitte = k_best
+    frei_anteil = 1.0 - k_best
+
     # ---- Regelpruefung (am Plan gemessen)
-    erster = grenzen[0] / FPS if grenzen else D
+    erster = grenzen[0] / fps if grenzen else D
     in10 = {s['einstellung'] for s in stuecke if s['t_start'] < 10.0}
-    wechsel10 = sum(1 for g in grenzen if g / FPS < 10.0)
-    laengen = [s['frames'] / FPS for s in stuecke]
+    wechsel10 = sum(1 for g in grenzen if g / fps < 10.0)
+    laengen = [s['frames'] / fps for s in stuecke]
     ueberl = 0.0
     for eid, ivs in benutzt.items():
         ivs = sorted(ivs)
         for a_, b_ in zip(ivs, ivs[1:]):
             ueberl += max(0.0, a_[1] - b_[0] - 1e-3)
     zeichen0 = len('LUXESTYLE') + (len(hook_text) if hook_text else 0)
+    auftritte = {}
+    for s in stuecke:
+        if s['rolle'] != 'loop_ende' or not loop:
+            auftritte[s['einstellung']] = auftritte.get(s['einstellung'], 0) + 1
     regeln = dict(erster_wechsel_s=_r(erster, 2), erster_wechsel_ok=erster <= 1.3 + 1e-6,
                   einstellungen_verschieden_10s=len(in10), wechsel_10s=wechsel10,
-                  stueck_median_s=_r(float(np.median(laengen)), 2), stueck_max_s=_r(max(laengen), 2),
-                  ueberlappung_s=_r(ueberl, 3),
+                  stueck_median_s=_r(float(np.median(laengen)), 2), stueck_min_s=_r(min(laengen), 2),
+                  stueck_max_s=_r(max(laengen), 2), ueberlappung_s=_r(ueberl, 3),
                   fremdtext_stuecke=sum(1 for s in stuecke if s['einstellung'] not in zugeschnitten and
                                         next(x for x in einst if x['id'] == s['einstellung'])['fremdtext']),
                   zugeschnittene_stuecke=sum(1 for s in stuecke if s['einstellung'] in zugeschnitten),
                   zeichen_bild0=zeichen0, zeichen_bild0_ok=zeichen0 <= 40,
-                  hook_nicht_quellstart=stuecke[0]['q_start'] > 0.05 or hm1 >= 4.0, punch_ins=sum(1 for s in stuecke if s['zoom'] == 'bump'),
-                  tempo_stuecke=sum(1 for s in stuecke if s['tempo'] != 1.0))
-    L('regeln', 'Pruefung am Plan', 'Soll: erster Wechsel <= 1,3 s; >= 4 Einstellungen in 10 s; Stuecke 0,8-2,5 s (Median 1,2-1,6); '
-      'keine Ueberlappung; Bild 0 <= 40 Zeichen', **regeln)
+                  hook_nicht_quellstart=stuecke[0]['q_start'] > 0.05, hook_bewegung_ok=hm1 >= 4.0,
+                  hook_erzwungen=hook_ab is not None, intro_gesperrt=bool(intro_gesperrt),
+                  punch_ins=sum(1 for s in stuecke if s['zoom'] == 'bump'),
+                  tempo_stuecke=sum(1 for s in stuecke if s['tempo'] != 1.0), takt_ok=nb % 4 == 0,
+                  eine_fahrt=eine_fahrt, einstellung_max_auftritte=max(auftritte.values()) if auftritte else 0,
+                  einstellungen_wiederholt=sorted(set(mehrfach)), energie_unverdeckt=_r(frei_anteil, 3),
+                  energie_unverdeckt_mittig=_r(1.0 - k_mitte, 3), videoflaeche=_r(fw0 * fh0 / (W * H), 3))
+    L('regeln', 'Pruefung am Plan', 'Soll: erster Wechsel <= 1,3 s; >= 4 Einstellungen in 10 s; Stuecke 0,6-2,5 s (Median '
+      '1,2-1,6); keine Ueberlappung; Bild 0 <= 40 Zeichen; ganze Takte; je Einstellung 1 Auftritt (Hook+Loop = 1)', **regeln)
     return dict(version=VERSION, quelle=quelle, analyse_fingerabdruck=A['fingerabdruck'], quelle_format=fmt,
-                quelle_masse=[qw, qh], modus=modus, zone=zone, fps=FPS, dauer=_r(D, 4), frames=N, beats=nb,
+                quelle_masse=[qw, qh], modus=modus, zone=zone, fps=fps, dauer=_r(D, 4), frames=N, beats=nb,
+                band=dict(y=int(band_y), w=int(fw0), h=int(fh0)), kette={str(k_): v for k_, v in kette.items()},
                 musik=R, stuecke=stuecke, schnitt_frames=grenzen, loop=loop or dict(art='ueberblendung', dauer=0.4),
                 text=text, regeln=regeln, entscheidungen=log)
 
@@ -1424,7 +1664,8 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
 # ================================================================================================ TEXTEBENEN
 def text_ebenen(ordner, titel1='', titel2='', preis='', hook='', zone='organisch'):
     """PNG-Ebenen aus den overlay.py-Bausteinen (font/spaced/wrap/text_cx, Farben, KOPF_Y/HOOK_Y/FUSS_Y/CX_FUSS).
-    kopf (ab Bild 0), hook (0 -> t_F), info (Titel+Preis+Fusszeile, t_F -> t_C), cta (Preis + «Link in Bio», t_C -> Ende).
+    kopf (ab Bild 0), hook (0 -> t_F), info (Titel+Preis+Fusszeile, t_F -> t_C), infocta (wie info, aber «Link in Bio»
+    statt Fusszeile — fuer kurze Reels ohne eigenen CTA-Block), cta (Preis + «Link in Bio», t_C -> Ende).
     Rueckgabe: dict(pfade, textboxen, zone_ok)."""
     Z = ZONEN[zone]; os.makedirs(ordner, exist_ok=True)
     kasten = {}
@@ -1462,27 +1703,35 @@ def text_ebenen(ordner, titel1='', titel2='', preis='', hook='', zone='organisch
         for z in zeilen:
             text_mitte('hook', d2, W / 2, yy, z, fH, ov.GOLD); yy += 72
     # Info: Titel (2 Zeilen), Preis, Fusszeile — links der Knopfleiste zentriert (CX_FUSS)
-    inf = neu(); d3 = ImageDraw.Draw(inf)
-    fy = unten - 270
-    d3.rectangle((0, fy, W, unten), fill=(20, 20, 20, 168))
-    d3.rectangle((cx - 100, fy + 16, cx + 100, fy + 20), fill=ov.GOLD)
+    fy = unten - INFO_H
     fT = ov.font(ov.F_BOLD, 46)
     maxw = 2 * min(cx - Z['links'] - 40, Z['fuss_rechts'] - cx - 20)
-    zeilen = [z for z in (titel1, titel2) if z]
-    if len(zeilen) == 1:
-        zeilen = ov.wrap(d3, zeilen[0], fT, maxw, 2)
-    zeilen = [z if d3.textlength(z, font=fT) <= maxw else ov.wrap(d3, z, fT, maxw, 1)[0] for z in zeilen][:2]
-    y = fy + 28
-    for z in zeilen:
-        text_mitte('info', d3, cx, y, z, fT, ov.WHITE); y += 54
-    if preis:
-        text_mitte('info', d3, cx, y + 2, preis, ov.font(ov.F_BOLD, 68), ov.GOLD)
-    y += 84
     fuss = 'luxestyle.ch · Klarna & TWINT · Gratis Versand ab CHF 50'     # Wortlaut wie overlay.main (keine neue Zusage)
-    gr = 30
-    while gr > 24 and d3.textlength(fuss, font=ov.font(ov.F_REG, gr)) > maxw:
-        gr -= 1
-    text_mitte('info', d3, cx, min(y, unten - gr - 12), fuss, ov.font(ov.F_REG, gr), (235, 235, 235, 255), schatten=False)
+
+    def info_ebene(name, fusstext, fett):
+        im = neu(); d3 = ImageDraw.Draw(im)
+        d3.rectangle((0, fy, W, unten), fill=(20, 20, 20, 168))
+        d3.rectangle((cx - 100, fy + 16, cx + 100, fy + 20), fill=ov.GOLD)
+        zl = [z for z in (titel1, titel2) if z]
+        if len(zl) == 1:
+            zl = ov.wrap(d3, zl[0], fT, maxw, 2)
+        zl = [z if d3.textlength(z, font=fT) <= maxw else ov.wrap(d3, z, fT, maxw, 1)[0] for z in zl][:2]
+        y = fy + 28
+        for z in zl:
+            text_mitte(name, d3, cx, y, z, fT, ov.WHITE); y += 54
+        if preis:
+            text_mitte(name, d3, cx, y + 2, preis, ov.font(ov.F_BOLD, 68), ov.GOLD)
+        y += 84
+        gr = 34 if fett else 30
+        fnt = ov.F_BOLD if fett else ov.F_REG
+        while gr > 24 and d3.textlength(fusstext, font=ov.font(fnt, gr)) > maxw:
+            gr -= 1
+        text_mitte(name, d3, cx, min(y, unten - gr - 12), fusstext, ov.font(fnt, gr),
+                   (255, 255, 255, 255) if fett else (235, 235, 235, 255), schatten=bool(fett))
+        return im, zl
+    inf, zeilen = info_ebene('info', fuss, False)
+    # kurzes Reel (< 5 s nach dem Hook): Infofeld traegt «Link in Bio» statt der Fusszeile (Bildjury 23.09.: p4 ohne CTA)
+    infc, _ = info_ebene('infocta', 'Link in Bio · luxestyle.ch', True)
     # CTA (letzte ~2 s): Preis + «Link in Bio»
     ct = neu(); d4 = ImageDraw.Draw(ct)
     d4.rectangle((0, fy, W, unten), fill=(20, 20, 20, 168))
@@ -1492,7 +1741,7 @@ def text_ebenen(ordner, titel1='', titel2='', preis='', hook='', zone='organisch
         text_mitte('cta', d4, cx, y, preis, ov.font(ov.F_BOLD, 76), ov.GOLD); y += 100
     text_mitte('cta', d4, cx, y, 'Link in Bio · luxestyle.ch', ov.font(ov.F_BOLD, 44), ov.WHITE)
     pfade = {}
-    for name, im in (('kopf', k), ('hook', hk), ('info', inf), ('cta', ct)):
+    for name, im in (('kopf', k), ('hook', hk), ('info', inf), ('infocta', infc), ('cta', ct)):
         pfade[name] = os.path.join(ordner, f'ebene_{name}.png'); im.save(pfade[name])
     # Zonenpruefung: alle Textkaesten in y oben..unten; im Knopfleisten-Band (y >= 950) rechts <= fuss_rechts
     fehler = []
