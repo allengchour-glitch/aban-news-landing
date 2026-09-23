@@ -2079,3 +2079,336 @@ gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833676673	Black 120cm Long	Schwarz 120 cm lang	2026-09-23T18:02Z
 gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833709441	Gray 120cm Long	Grau 120 cm lang	2026-09-23T18:02Z
 gid://shopify/Product/15448590320001	Farbe	gid://shopify/ProductOptionValue/12022833742209	Pink 120cm Long	Pink 120 cm lang	2026-09-23T18:02Z
+gid://shopify/Product/15448590713217	Farbe	gid://shopify/ProductOptionValue/12022838002049	Golden Camel	Gold-Camel	2026-09-23T18:02Z
+gid://shopify/Product/15448590713217	Farbe	gid://shopify/ProductOptionValue/12022838034817	Leather Pink	Leder Pink	2026-09-23T18:02Z
+gid://shopify/Product/15448590713217	Farbe	gid://shopify/ProductOptionValue/12022838264193	Emerald	Smaragdgrün	2026-09-23T18:02Z
+gid://shopify/Product/15448590745985	Farbe	gid://shopify/ProductOptionValue/12022845407617	Khaki Stripes	Khaki gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448590745985	Farbe	gid://shopify/ProductOptionValue/12022845440385	Navy blue Stripes	Marineblau gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448590745985	Farbe	gid://shopify/ProductOptionValue/12022845473153	Grey Stripes	Grau gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448592417153	Farbe	gid://shopify/ProductOptionValue/12022855303553	Caramel	Karamell	2026-09-23T18:02Z
+gid://shopify/Product/15448592843137	Farbe	gid://shopify/ProductOptionValue/12022857499009	Golden Camel	Gold-Camel	2026-09-23T18:02Z
+gid://shopify/Product/15448592908673	Farbe	gid://shopify/ProductOptionValue/12022858350977	2040 Silver Gray	2040 Silber-Grau	2026-09-23T18:02Z
+gid://shopify/Product/15448592908673	Farbe	gid://shopify/ProductOptionValue/12022858416513	2001 Bright Red	2001 Leuchtendrot	2026-09-23T18:02Z
+gid://shopify/Product/15448592908673	Farbe	gid://shopify/ProductOptionValue/12022858613121	2266 Flower Pink	2266 Pink geblümt	2026-09-23T18:02Z
+gid://shopify/Product/15448594284929	Farbe	gid://shopify/ProductOptionValue/12022872670593	Dark Blue Orange	Dunkelblau-Orange	2026-09-23T18:02Z
+gid://shopify/Product/15448595628417	Farbe	gid://shopify/ProductOptionValue/12022888104321	Dark Fruit Green	Dunkelfruchtgrün	2026-09-23T18:02Z
+gid://shopify/Product/15448595923329	Farbe	gid://shopify/ProductOptionValue/12022890430849	Red And White Stripes	Rot-Weiss gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448595923329	Farbe	gid://shopify/ProductOptionValue/12022890496385	Black And White Stripes	Schwarz-Weiss gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448596906369	Farbe	gid://shopify/ProductOptionValue/12022895673729	Chocolate	Schokobraun	2026-09-23T18:02Z
+gid://shopify/Product/15448597037441	Farbe	gid://shopify/ProductOptionValue/12022896198017	Olive	Oliv	2026-09-23T18:02Z
+gid://shopify/Product/15448597299585	Farbe	gid://shopify/ProductOptionValue/12022897770881	Ivory White Khaki	Elfenbein-Weiss-Khaki	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022908289409	Dark Brown-XS-Set	Dunkelbraun-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022908322177	Dark Brown-S-Set	Dunkelbraun-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022908354945	Dark Brown-M-Set	Dunkelbraun-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022908387713	Dark Brown-L-Set	Dunkelbraun-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022908420481	Dark Brown-XL-Set	Dunkelbraun-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022908944769	Ink Blue-XS-Set	Tintenblau-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022908977537	Ink Blue-S-Set	Tintenblau-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909010305	Ink Blue-M-Set	Tintenblau-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909043073	Ink Blue-L-Set	Tintenblau-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909075841	Ink Blue-XL-Set	Tintenblau-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909108609	Bright Purplish Red-XS-Set	Leuchtendpurpurrot-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909141377	Bright Purplish Red-S-Set	Leuchtendpurpurrot-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909174145	Bright Purplish Red-M-Set	Leuchtendpurpurrot-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909206913	Bright Purplish Red-L-Set	Leuchtendpurpurrot-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909239681	Bright Purplish Red-XL-Set	Leuchtendpurpurrot-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909272449	Glacier Blue-XS-Set	Gletscherblau-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909305217	Glacier Blue-S-Set	Gletscherblau-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909337985	Glacier Blue-M-Set	Gletscherblau-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909370753	Glacier Blue-L-Set	Gletscherblau-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909403521	Glacier Blue-XL-Set	Gletscherblau-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909436289	Ice Blue-XS-Set	Eisblau-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909469057	Ice Blue-S-Set	Eisblau-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909501825	Ice Blue-M-Set	Eisblau-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909534593	Ice Blue-L-Set	Eisblau-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909567361	Ice Blue-XL-Set	Eisblau-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909927809	Light Green-XS-Set	Hellgrün-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909960577	Light Green-S-Set	Hellgrün-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909993345	Light Green-M-Set	Hellgrün-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910026113	Light Green-L-Set	Hellgrün-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910058881	Light Green-XL-Set	Hellgrün-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910255489	Deep Sea Blue-XS-Set	Dunkelmeerblau-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910288257	Deep Sea Blue-S-Set	Dunkelmeerblau-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910321025	Deep Sea Blue-M-Set	Dunkelmeerblau-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910353793	Deep Sea Blue-L-Set	Dunkelmeerblau-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910386561	Deep Sea Blue-XL-Set	Dunkelmeerblau-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910419329	Coral Pink-XS-Set	Korallenpink-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910452097	Coral Pink-S-Set	Korallenpink-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910484865	Coral Pink-M-Set	Korallenpink-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910517633	Coral Pink-L-Set	Korallenpink-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910550401	Coral Pink-XL-Set	Korallenpink-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910747009	White-XS-Set	Weiss-XS-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910779777	White-S-Set	Weiss-S-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910812545	White-M-Set	Weiss-M-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910845313	White-L-Set	Weiss-L-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022910878081	White-XL-Set	Weiss-XL-Set	2026-09-23T18:02Z
+gid://shopify/Product/15448598839681	Farbe	gid://shopify/ProductOptionValue/12022913008001	Black And White Stripes	Schwarz-Weiss gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448598839681	Farbe	gid://shopify/ProductOptionValue/12022913040769	Brown Stripes	Braun gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448598839681	Farbe	gid://shopify/ProductOptionValue/12022913073537	Beige Stripes	Beige gestreift	2026-09-23T18:02Z
+gid://shopify/Product/15448600084865	Farbe	gid://shopify/ProductOptionValue/12022926410113	Deep Coffee Purple	Dunkelkaffeebraun-Lila	2026-09-23T18:03Z
+gid://shopify/Product/15448600478081	Farbe	gid://shopify/ProductOptionValue/12022928540033	Black And White Plaid	Schwarz-Weiss kariert	2026-09-23T18:03Z
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929228161	122930color	122930 Farben	2026-09-23T18:03Z
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929260929	122931color	122931 Farben	2026-09-23T18:03Z
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929293697	122932color	122932 Farben	2026-09-23T18:03Z
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929326465	122933color	122933 Farben	2026-09-23T18:03Z
+gid://shopify/Product/15448600805761	Farbe	gid://shopify/ProductOptionValue/12022930342273	1 Gray	1 Grau	2026-09-23T18:03Z
+gid://shopify/Product/15448600805761	Farbe	gid://shopify/ProductOptionValue/12022930375041	2 Light Pink	2 Rosa	2026-09-23T18:03Z
+gid://shopify/Product/15448600805761	Farbe	gid://shopify/ProductOptionValue/12022930407809	3 Black	3 Schwarz	2026-09-23T18:03Z
+gid://shopify/Product/15448600805761	Farbe	gid://shopify/ProductOptionValue/12022930440577	4 Red	4 Rot	2026-09-23T18:03Z
+gid://shopify/Product/15448601231745	Farbe	gid://shopify/ProductOptionValue/12022934831489	White 3119N	Weiss 3119N	2026-09-23T18:03Z
+gid://shopify/Product/15448602411393	Farbe	gid://shopify/ProductOptionValue/12022939943297	Flat Black	Flach Schwarz	2026-09-23T18:03Z
+gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/12022941319553	Washed Lavender	Washed Lavendel	2026-09-23T18:03Z
+gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/12022941352321	Lavender Deep Purple	Lavendel-Dunkellila	2026-09-23T18:03Z
+gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/12022941516161	Chestnut	Kastanienbraun	2026-09-23T18:03Z
+gid://shopify/Product/15448602968449	Farbe	gid://shopify/ProductOptionValue/12022945448321	Chocolate	Schokobraun	2026-09-23T18:03Z
+gid://shopify/Product/15448603820417	Farbe	gid://shopify/ProductOptionValue/12022963929473	Orange Printed	Orange bedruckt	2026-09-23T18:03Z
+gid://shopify/Product/15448603918721	Farbe	gid://shopify/ProductOptionValue/12022964683137	Chestnut Color	Kastanienbraun	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970483073	Style 1 F135	Muster 1 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970548609	Style 2 F135	Muster 2 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970614145	Style 3 F135	Muster 3 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970679681	Style 4 F135	Muster 4 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970745217	Style 5 F135	Muster 5 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970810753	Style 6 F135	Muster 6 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970876289	Style 7 F135	Muster 7 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022970941825	Style 8 F135	Muster 8 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022971007361	Style 9 F135	Muster 9 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022971072897	Style 10 F135	Muster 10 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604574081	Farbe	gid://shopify/ProductOptionValue/12022971138433	Style 11 F135	Muster 11 F135	2026-09-23T18:03Z
+gid://shopify/Product/15448604705153	Farbe	gid://shopify/ProductOptionValue/12022972023169	Lace	Spitze	2026-09-23T18:03Z
+gid://shopify/Product/15448604868993	Farbe	gid://shopify/ProductOptionValue/12022974022017	White 1	Weiss 1	2026-09-23T18:03Z
+gid://shopify/Product/15448606343553	Farbe	gid://shopify/ProductOptionValue/12022983459201	Chestnut	Kastanienbraun	2026-09-23T18:03Z
+gid://shopify/Product/15448607916417	Farbe	gid://shopify/ProductOptionValue/12022991487361	8627 Style	8627 Stil	2026-09-23T18:03Z
+gid://shopify/Product/15448607916417	Farbe	gid://shopify/ProductOptionValue/12022991520129	8628 Style	8628 Stil	2026-09-23T18:03Z
+gid://shopify/Product/15448608801153	Farbe	gid://shopify/ProductOptionValue/12023005610369	Bronze Green	Bronze-Grün	2026-09-23T18:03Z
+gid://shopify/Product/15448608801153	Farbe	gid://shopify/ProductOptionValue/12023005643137	Bronze Black	Bronze-Schwarz	2026-09-23T18:03Z
+gid://shopify/Product/15448609685889	Farbe	gid://shopify/ProductOptionValue/12451286483329	White	Weiss	2026-09-23T18:03Z
+gid://shopify/Product/15448609685889	Farbe	gid://shopify/ProductOptionValue/12451286516097	Black	Schwarz	2026-09-23T18:03Z
+gid://shopify/Product/15448610210177	Farbe	gid://shopify/ProductOptionValue/12023018160513	Milky Apricot Pink	Milchaprikose-Pink	2026-09-23T18:03Z
+gid://shopify/Product/15448610210177	Farbe	gid://shopify/ProductOptionValue/12023018226049	Brick Orange Red	Ziegelorange-Rot	2026-09-23T18:03Z
+gid://shopify/Product/15448610537857	Farbe	gid://shopify/ProductOptionValue/12376945361281	Marineblaublau	Marineblau	2026-09-23T18:03Z
+gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023020683649	Chocolate	Schokobraun	2026-09-23T18:03Z
+gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023021011329	Printed Green	Grün bedruckt	2026-09-23T18:03Z
+gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023021076865	Printed White	Weiss bedruckt	2026-09-23T18:03Z
+gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023021109633	Leopard Print Beige	Leopardenmuster Beige	2026-09-23T18:03Z
+gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023021142401	Leopard Print Brown	Leopardenmuster Braun	2026-09-23T18:03Z
+gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023021175169	Leopard Print White	Leopardenmuster Weiss	2026-09-23T18:03Z
+gid://shopify/Product/15448610636161	Farbe	gid://shopify/ProductOptionValue/12023021601153	Purple Plaid	Lila kariert	2026-09-23T18:03Z
+gid://shopify/Product/15448610636161	Farbe	gid://shopify/ProductOptionValue/12023021633921	Dark Blue With Plaid	Dunkelblau mit kariert	2026-09-23T18:03Z
+gid://shopify/Product/15448611389825	Farbe	gid://shopify/ProductOptionValue/12023023862145	Long	Lang	2026-09-23T18:03Z
+gid://shopify/Product/15448611389825	Farbe	gid://shopify/ProductOptionValue/12023023894913	Short	Kurz	2026-09-23T18:03Z
+gid://shopify/Product/15448623186305	Ausführung	gid://shopify/ProductOptionValue/12376942248321	Long style	Lange Ausführung	2026-09-23T18:03Z
+gid://shopify/Product/15448623579521	Farbe	gid://shopify/ProductOptionValue/12023063576961	Olive	Oliv	2026-09-23T18:03Z
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100539265	Linen Pink	Leinen Pink	2026-09-23T18:03Z
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100572033	Linen Blue	Leinen Blau	2026-09-23T18:03Z
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100604801	Linen Green	Leinen Grün	2026-09-23T18:03Z
+gid://shopify/Product/15448640848257	Farbe	gid://shopify/ProductOptionValue/12023100670337	Linen Black	Leinen Schwarz	2026-09-23T18:03Z
+gid://shopify/Product/15448642519425	Farbe	gid://shopify/ProductOptionValue/12023104405889	Chestnut	Kastanienbraun	2026-09-23T18:03Z
+gid://shopify/Product/15448642912641	Farbe	gid://shopify/ProductOptionValue/12023106896257	Light Army Green	Hellarmeegrün	2026-09-23T18:04Z
+gid://shopify/Product/15448642912641	Farbe	gid://shopify/ProductOptionValue/12023107223937	Cherry Blossom Powder	Kirschblütenrosa	2026-09-23T18:04Z
+gid://shopify/Product/15448642945409	Farbe	gid://shopify/ProductOptionValue/12376956109185	Marineblaublau	Marineblau	2026-09-23T18:04Z
+gid://shopify/Product/15448643010945	Farbe	gid://shopify/ProductOptionValue/12023109386625	Bamboo Green	Bambus Grün	2026-09-23T18:04Z
+gid://shopify/Product/15448643076481	Farbe	gid://shopify/ProductOptionValue/12023110107521	Flesh Color	Hautfarben	2026-09-23T18:04Z
+gid://shopify/Product/15448643469697	Farbe	gid://shopify/ProductOptionValue/12376960532865	Cherry Blossom Powder	Kirschblütenrosa	2026-09-23T18:04Z
+gid://shopify/Product/15448644157825	Farbe	gid://shopify/ProductOptionValue/12376959222145	Coffee Leopard Print	Kaffeebraun Leopardenmuster	2026-09-23T18:04Z
+gid://shopify/Product/15448644157825	Farbe	gid://shopify/ProductOptionValue/12376959254913	White Gray Leopard Print	Weiss-Grau Leopardenmuster	2026-09-23T18:04Z
+gid://shopify/Product/15448644518273	Farbe	gid://shopify/ProductOptionValue/12023149527425	Flower	Geblümt	2026-09-23T18:04Z
+gid://shopify/Product/15448645370241	Farbe	gid://shopify/ProductOptionValue/12023216537985	Gray Lake Blue	Grau-Seeblau	2026-09-23T18:04Z
+gid://shopify/Product/15448645632385	Farbe	gid://shopify/ProductOptionValue/12023264969089	Checkered pattern	Kariert Muster	2026-09-23T18:04Z
+gid://shopify/Product/15448645960065	Farbe	gid://shopify/ProductOptionValue/12023349772673	Picture Color-100	Wie abgebildet-100	2026-09-23T18:04Z
+gid://shopify/Product/15448645960065	Farbe	gid://shopify/ProductOptionValue/12023349805441	Picture Color-110	Wie abgebildet-110	2026-09-23T18:04Z
+gid://shopify/Product/15448645960065	Farbe	gid://shopify/ProductOptionValue/12023349838209	Picture Color-120	Wie abgebildet-120	2026-09-23T18:04Z
+gid://shopify/Product/15448645960065	Farbe	gid://shopify/ProductOptionValue/12023349870977	Picture Color-130	Wie abgebildet-130	2026-09-23T18:04Z
+gid://shopify/Product/15448645960065	Farbe	gid://shopify/ProductOptionValue/12023349903745	Picture Color-140	Wie abgebildet-140	2026-09-23T18:04Z
+gid://shopify/Product/15448645960065	Farbe	gid://shopify/ProductOptionValue/12023349936513	Picture Color-150	Wie abgebildet-150	2026-09-23T18:04Z
+gid://shopify/Product/15448646320513	Farbe	gid://shopify/ProductOptionValue/12023468392833	Light Blue-US 10 M	Hellblau-US 10 M	2026-09-23T18:04Z
+gid://shopify/Product/15448646320513	Farbe	gid://shopify/ProductOptionValue/12023468425601	Light Blue-US 12 L	Hellblau-US 12 L	2026-09-23T18:04Z
+gid://shopify/Product/15448646320513	Farbe	gid://shopify/ProductOptionValue/12023468458369	Light Blue-US 8 S	Hellblau-US 8 S	2026-09-23T18:04Z
+gid://shopify/Product/15448646582657	Farbe	gid://shopify/ProductOptionValue/12023517151617	Black 1	Schwarz 1	2026-09-23T18:04Z
+gid://shopify/Product/15448646582657	Farbe	gid://shopify/ProductOptionValue/12023517184385	Black 2	Schwarz 2	2026-09-23T18:04Z
+gid://shopify/Product/15448646582657	Farbe	gid://shopify/ProductOptionValue/12023517217153	Black 3	Schwarz 3	2026-09-23T18:04Z
+gid://shopify/Product/15448646844801	Farbe	gid://shopify/ProductOptionValue/12023587012993	Lace	Spitze	2026-09-23T18:04Z
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714349441	Girl Pink	Mädchen Pink	2026-09-23T18:04Z
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714382209	Colorful Rose Red	Bunt Rosarot	2026-09-23T18:04Z
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714414977	Light Blue White	Hellblau-Weiss	2026-09-23T18:04Z
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714480513	Light Gray Black	Hellgrau-Schwarz	2026-09-23T18:04Z
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714775425	Black Bright Red	Schwarz-Leuchtendrot	2026-09-23T18:04Z
+gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714808193	Black Wine Red	Schwarz-Weinrot	2026-09-23T18:04Z
+gid://shopify/Product/15448647631233	Farbe	gid://shopify/ProductOptionValue/12451286942081	Black	Schwarz	2026-09-23T18:04Z
+gid://shopify/Product/15448647696769	Farbe	gid://shopify/ProductOptionValue/12023826383233	Gray Lake Blue	Grau-Seeblau	2026-09-23T18:04Z
+gid://shopify/Product/15448649040257	Farbe	gid://shopify/ProductOptionValue/12024152621441	Light Rose Red	Hellrosarot	2026-09-23T18:04Z
+gid://shopify/Product/15448649564545	Farbe	gid://shopify/ProductOptionValue/12024233787777	Matte Thin Velvet	Matt dünn Samt	2026-09-23T18:04Z
+gid://shopify/Product/15448649564545	Farbe	gid://shopify/ProductOptionValue/12024233820545	Gloss Velvet	Glänzend Samt	2026-09-23T18:04Z
+gid://shopify/Product/15448649564545	Farbe	gid://shopify/ProductOptionValue/12024233886081	Matte Velvet	Matt Samt	2026-09-23T18:04Z
+gid://shopify/Product/15448649728385	Farbe	gid://shopify/ProductOptionValue/12024249942401	Linen	Leinen	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292245889	Black-Plus Size	Schwarz-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292278657	Black-Small Size	Schwarz-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292344193	Bright Red-Plus Size	Leuchtendrot-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292376961	Bright Red-Small Size	Leuchtendrot-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292442497	Gray-Plus Size	Grau-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292475265	Gray-Small Size	Grau-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292508033	Marineblaublau-Einheitsgrösse	Marineblau-Einheitsgrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292540801	Navy Blue-Plus Size	Marineblau-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292573569	Navy Blue-Small Size	Marineblau-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292639105	Purple-Plus Size	Lila-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292671873	Purple-Small Size	Lila-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292704641	Skin Color-Average Size	Hautfarben-Einheitsgrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292737409	Skin Color-Plus Size	Hautfarben-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292770177	Skin Color-Small Size	Hautfarben-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292835713	Wine Red-Plus Size	Weinrot-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292868481	Wine Red-Small Size	Weinrot-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292901249	7PCS-Average Size	7 Stück-Einheitsgrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292934017	7PCS-Plus Size	7 Stück-Übergrösse	2026-09-23T18:04Z
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292966785	7PCS-Small Size	7 Stück-Klein	2026-09-23T18:04Z
+gid://shopify/Product/15448650940801	Farbe	gid://shopify/ProductOptionValue/12024483742081	Black White Polka Dot	Schwarz-Weiss gepunktet	2026-09-23T18:04Z
+gid://shopify/Product/15448650940801	Farbe	gid://shopify/ProductOptionValue/12024483774849	White Black Polka Dot	Weiss-Schwarz gepunktet	2026-09-23T18:04Z
+gid://shopify/Product/15448651071873	Farbe	gid://shopify/ProductOptionValue/12024525291905	3color	3 Farben	2026-09-23T18:04Z
+gid://shopify/Product/15448651268481	Farbe	gid://shopify/ProductOptionValue/12024577556865	Yellow Plaid	Gelb kariert	2026-09-23T18:04Z
+gid://shopify/Product/15448651268481	Farbe	gid://shopify/ProductOptionValue/12024577589633	Pink Plaid	Pink kariert	2026-09-23T18:04Z
+gid://shopify/Product/15448651268481	Farbe	gid://shopify/ProductOptionValue/12024577622401	Leopard print	Leopardenmuster	2026-09-23T18:04Z
+gid://shopify/Product/15448651366785	Farbe	gid://shopify/ProductOptionValue/12024579391873	Pink Plaid	Pink kariert	2026-09-23T18:04Z
+gid://shopify/Product/15448651366785	Farbe	gid://shopify/ProductOptionValue/12024579490177	Blue Polka Dots	Blau gepunktet	2026-09-23T18:04Z
+gid://shopify/Product/15448651530625	Farbe	gid://shopify/ProductOptionValue/12024580735361	Black-0XLL	Schwarz-0XLL	2026-09-23T18:04Z
+gid://shopify/Product/15448651792769	Farbe	gid://shopify/ProductOptionValue/12376972493185	Marineblaublau	Marineblau	2026-09-23T18:04Z
+gid://shopify/Product/15448652677505	Farbe	gid://shopify/ProductOptionValue/12024592499073	Washed Blue	Washed Blau	2026-09-23T18:04Z
+gid://shopify/Product/15448653398401	Farbe	gid://shopify/ProductOptionValue/12024595906945	Greyish Purple	Graulila	2026-09-23T18:05Z
+gid://shopify/Product/15448653398401	Farbe	gid://shopify/ProductOptionValue/12024596038017	Army Green Gray	Armeegrün-Grau	2026-09-23T18:05Z
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607375745	Black Small Man	Schwarz klein Herren	2026-09-23T18:05Z
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607408513	Beige Small Man	Beige klein Herren	2026-09-23T18:05Z
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607441281	Gray Small Man	Grau klein Herren	2026-09-23T18:05Z
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607474049	Brown Small Man	Braun klein Herren	2026-09-23T18:05Z
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607572353	Standard Gray	Standard Grau	2026-09-23T18:05Z
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607637889	Black And Long	Schwarz und lang	2026-09-23T18:05Z
+gid://shopify/Product/15448655757697	Farbe	gid://shopify/ProductOptionValue/12024612585857	Flower	Geblümt	2026-09-23T18:05Z
+gid://shopify/Product/15448655757697	Farbe	gid://shopify/ProductOptionValue/12024612684161	Green Flowers	Grün geblümt	2026-09-23T18:05Z
+gid://shopify/Product/15448655921537	Farbe	gid://shopify/ProductOptionValue/12024613699969	Light Blue Stripes	Hellblau gestreift	2026-09-23T18:05Z
+gid://shopify/Product/15448656609665	Farbe	gid://shopify/ProductOptionValue/12024617238913	646 Black	646 Schwarz	2026-09-23T18:05Z
+gid://shopify/Product/15448656609665	Farbe	gid://shopify/ProductOptionValue/12024617271681	646 Apricot	646 Aprikose	2026-09-23T18:05Z
+gid://shopify/Product/15448656642433	Farbe	gid://shopify/ProductOptionValue/12024617697665	Gray Lake Blue	Grau-Seeblau	2026-09-23T18:05Z
+gid://shopify/Product/15448659034497	Farbe	gid://shopify/ProductOptionValue/12024630018433	Apricot-Plus Size 3XL	Aprikose-Plus Gr. 3XL	2026-09-23T18:05Z
+gid://shopify/Product/15448659165569	Farbe	gid://shopify/ProductOptionValue/12024630739329	933 Yellow	933 Gelb	2026-09-23T18:05Z
+gid://shopify/Product/15448659165569	Farbe	gid://shopify/ProductOptionValue/12024630772097	933 Purple	933 Lila	2026-09-23T18:05Z
+gid://shopify/Product/15448659165569	Farbe	gid://shopify/ProductOptionValue/12024630804865	933 Navy Blue	933 Marineblau	2026-09-23T18:05Z
+gid://shopify/Product/15448659165569	Farbe	gid://shopify/ProductOptionValue/12024630870401	933 Green	933 Grün	2026-09-23T18:05Z
+gid://shopify/Product/15448659165569	Farbe	gid://shopify/ProductOptionValue/12024630935937	933 White	933 Weiss	2026-09-23T18:05Z
+gid://shopify/Product/15448659198337	Farbe	gid://shopify/ProductOptionValue/12024631263617	Emerald	Smaragdgrün	2026-09-23T18:05Z
+gid://shopify/Product/15448659329409	Farbe	gid://shopify/ProductOptionValue/12024631951745	Rose red A	Rosarot A	2026-09-23T18:05Z
+gid://shopify/Product/15448659853697	Farbe	gid://shopify/ProductOptionValue/12024635752833	Leopard Print	Leopardenmuster	2026-09-23T18:05Z
+gid://shopify/Product/15448659853697	Farbe	gid://shopify/ProductOptionValue/12024635785601	Pink Floral	Pink geblümt	2026-09-23T18:05Z
+gid://shopify/Product/15448660181377	Farbe	gid://shopify/ProductOptionValue/12024638505345	Light Gray Blue	Hellgrau-Blau	2026-09-23T18:05Z
+gid://shopify/Product/15448662999425	Farbe	gid://shopify/ProductOptionValue/12450244493697	Brown D10420	Braun D10420	2026-09-23T18:05Z
+gid://shopify/Product/15448662999425	Farbe	gid://shopify/ProductOptionValue/12450244526465	Purple D10420	Lila D10420	2026-09-23T18:05Z
+gid://shopify/Product/15448662999425	Farbe	gid://shopify/ProductOptionValue/12450244559233	Rose D10420	Rosé D10420	2026-09-23T18:05Z
+gid://shopify/Product/15448662999425	Farbe	gid://shopify/ProductOptionValue/12450244592001	Blue D10420	Blau D10420	2026-09-23T18:05Z
+gid://shopify/Product/15448662999425	Farbe	gid://shopify/ProductOptionValue/12450244657537	Apricot D10420	Aprikose D10420	2026-09-23T18:05Z
+gid://shopify/Product/15448665424257	Farbe	gid://shopify/ProductOptionValue/12024665932161	Emerald	Smaragdgrün	2026-09-23T18:05Z
+gid://shopify/Product/15448666407297	Farbe	gid://shopify/ProductOptionValue/12024670421377	Plaid	Kariert	2026-09-23T18:05Z
+gid://shopify/Product/15448667750785	Farbe	gid://shopify/ProductOptionValue/12024675828097	Black Silver Gray	Schwarz-Silber-Grau	2026-09-23T18:05Z
+gid://shopify/Product/15448667783553	Farbe	gid://shopify/ProductOptionValue/12024676090241	As shown	Wie abgebildet	2026-09-23T18:05Z
+gid://shopify/Product/15448669290881	Farbe	gid://shopify/ProductOptionValue/12024684577153	Yellow And Blue Colors	Gelb-Blau Farben	2026-09-23T18:05Z
+gid://shopify/Product/15448670667137	Farbe	gid://shopify/ProductOptionValue/12024691687809	Rainbow Color-Average Size	Regenbogen-Einheitsgrösse	2026-09-23T18:05Z
+gid://shopify/Product/15448670765441	Farbe	gid://shopify/ProductOptionValue/12024692113793	Green 1	Grün 1	2026-09-23T18:05Z
+gid://shopify/Product/15448670962049	Farbe	gid://shopify/ProductOptionValue/12024693522817	Deep Forest Green	Dunkelwaldgrün	2026-09-23T18:05Z
+gid://shopify/Product/15448671224193	Farbe	gid://shopify/ProductOptionValue/12024695062913	Deep Rose Red	Dunkelrosarot	2026-09-23T18:05Z
+gid://shopify/Product/15448671289729	Farbe	gid://shopify/ProductOptionValue/12024695456129	Blue Stripe	Blau gestreift	2026-09-23T18:05Z
+gid://shopify/Product/15448671584641	Farbe	gid://shopify/ProductOptionValue/12024697389441	Blue Camouflage	Blau Camouflage	2026-09-23T18:05Z
+gid://shopify/Product/15448671584641	Farbe	gid://shopify/ProductOptionValue/12024697487745	Plaid	Kariert	2026-09-23T18:05Z
+gid://shopify/Product/15448671715713	Farbe	gid://shopify/ProductOptionValue/12024697749889	Red Golden Flower	Rot-Gold geblümt	2026-09-23T18:05Z
+gid://shopify/Product/15448672174465	Farbe	gid://shopify/ProductOptionValue/12024700141953	Cherry Blossom Powder	Kirschblütenrosa	2026-09-23T18:05Z
+gid://shopify/Product/15448672993665	Farbe	gid://shopify/ProductOptionValue/12024712102273	Style Purple	Stil Lila	2026-09-23T18:06Z
+gid://shopify/Product/15448673747329	Farbe	gid://shopify/ProductOptionValue/12024715968897	Black And White Flowers	Schwarz-Weiss geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448673747329	Farbe	gid://shopify/ProductOptionValue/12024716034433	Cherry Blossom Powder	Kirschblütenrosa	2026-09-23T18:06Z
+gid://shopify/Product/15448673976705	Farbe	gid://shopify/ProductOptionValue/12024717377921	Green Dark Green	Grün-Dunkelgrün	2026-09-23T18:06Z
+gid://shopify/Product/15448674042241	Farbe	gid://shopify/ProductOptionValue/12024717934977	Small Plaid	Klein kariert	2026-09-23T18:06Z
+gid://shopify/Product/15448674042241	Farbe	gid://shopify/ProductOptionValue/12024717967745	Large Plaid	Gross kariert	2026-09-23T18:06Z
+gid://shopify/Product/15448674337153	Farbe	gid://shopify/ProductOptionValue/12024720490881	507 Long Sleeve 8	507 Langarm 8	2026-09-23T18:06Z
+gid://shopify/Product/15448674664833	Farbe	gid://shopify/ProductOptionValue/12024721473921	Blue Big Flower	Blau gross geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448674861441	Farbe	gid://shopify/ProductOptionValue/12024722260353	Red Plaid Thickened	Rot kariert verstärkt	2026-09-23T18:06Z
+gid://shopify/Product/15448674861441	Farbe	gid://shopify/ProductOptionValue/12024722293121	Green Plaid Thickened	Grün kariert verstärkt	2026-09-23T18:06Z
+gid://shopify/Product/15448675516801	Farbe	gid://shopify/ProductOptionValue/12024725242241	Khaki Stand Collar	Khaki Stehkragen	2026-09-23T18:06Z
+gid://shopify/Product/15448675516801	Farbe	gid://shopify/ProductOptionValue/12024725340545	Lake Blue Stand Collar	Seeblau Stehkragen	2026-09-23T18:06Z
+gid://shopify/Product/15448675516801	Farbe	gid://shopify/ProductOptionValue/12024725438849	Navy Blue Stand Collar	Marineblau Stehkragen	2026-09-23T18:06Z
+gid://shopify/Product/15448675516801	Farbe	gid://shopify/ProductOptionValue/12024725635457	Pink Stand Collar	Pink Stehkragen	2026-09-23T18:06Z
+gid://shopify/Product/15448675516801	Farbe	gid://shopify/ProductOptionValue/12024725733761	Purple Stand Collar	Lila Stehkragen	2026-09-23T18:06Z
+gid://shopify/Product/15448675516801	Farbe	gid://shopify/ProductOptionValue/12024725832065	Rose Red Stand Collar	Rosarot Stehkragen	2026-09-23T18:06Z
+gid://shopify/Product/15448675516801	Farbe	gid://shopify/ProductOptionValue/12024725930369	White Stand Collar	Weiss Stehkragen	2026-09-23T18:06Z
+gid://shopify/Product/15448676434305	Farbe	gid://shopify/ProductOptionValue/12024730419585	Greyish Purple	Graulila	2026-09-23T18:06Z
+gid://shopify/Product/15448677515649	Farbe	gid://shopify/ProductOptionValue/12024736448897	Black-2XS	Schwarz-2XS	2026-09-23T18:06Z
+gid://shopify/Product/15448677515649	Farbe	gid://shopify/ProductOptionValue/12024736514433	Champagne-2XS	Champagner-2XS	2026-09-23T18:06Z
+gid://shopify/Product/15448677515649	Farbe	gid://shopify/ProductOptionValue/12024736645505	Bean Green-2XS	Bohnengrün-2XS	2026-09-23T18:06Z
+gid://shopify/Product/15448703467905	Farbe	gid://shopify/ProductOptionValue/12024911757697	White and black stripes	Weiss-Schwarz gestreift	2026-09-23T18:06Z
+gid://shopify/Product/15448703467905	Farbe	gid://shopify/ProductOptionValue/12024911790465	Black and white stripes	Schwarz-Weiss gestreift	2026-09-23T18:06Z
+gid://shopify/Product/15448703467905	Farbe	gid://shopify/ProductOptionValue/12024911823233	Cream Caramel	Creme-Karamell	2026-09-23T18:06Z
+gid://shopify/Product/15448703467905	Farbe	gid://shopify/ProductOptionValue/12024911888769	Navy Blue White	Marineblau-Weiss	2026-09-23T18:06Z
+gid://shopify/Product/15448704549249	Farbe	gid://shopify/ProductOptionValue/12024919622017	Light Purple And Black	Helllila und Schwarz	2026-09-23T18:06Z
+gid://shopify/Product/15448704549249	Farbe	gid://shopify/ProductOptionValue/12024919687553	Wine Red And Black	Weinrot-Schwarz	2026-09-23T18:06Z
+gid://shopify/Product/15448704549249	Farbe	gid://shopify/ProductOptionValue/12024919720321	Leather Red And Black	Leder Rot-Schwarz	2026-09-23T18:06Z
+gid://shopify/Product/15448704549249	Farbe	gid://shopify/ProductOptionValue/12024919753089	Light Khaki Deep Coffee	Hellkhaki-Dunkelkaffeebraun	2026-09-23T18:06Z
+gid://shopify/Product/15448704680321	Farbe	gid://shopify/ProductOptionValue/12024921358721	Sky blue A	Himmelblau A	2026-09-23T18:06Z
+gid://shopify/Product/15448705827201	Farbe	gid://shopify/ProductOptionValue/12024926110081	Emerald	Smaragdgrün	2026-09-23T18:06Z
+gid://shopify/Product/15448705827201	Farbe	gid://shopify/ProductOptionValue/12024926142849	Golden Camel	Gold-Camel	2026-09-23T18:06Z
+gid://shopify/Product/15448706679169	Farbe	gid://shopify/ProductOptionValue/12024930697601	Blue With Pattern	Blau mit Muster	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956649857	Purple Flower	Lila geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956715393	Yellow Flower	Gelb geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956748161	Khaki Flower	Khaki geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956780929	Orange Flower	Orange geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956813697	Apricot Flower	Aprikose geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956846465	Big Red Flower	Gross Rot geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956944769	Big Green Flower	Gross Grün geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024956977537	Wine Red Flower	Weinrot geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710545793	Farbe	gid://shopify/ProductOptionValue/12024957010305	Black Flower	Schwarz geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448710873473	Farbe	gid://shopify/ProductOptionValue/12024959500673	Sky Blue Printing	Himmelblau bedruckt	2026-09-23T18:06Z
+gid://shopify/Product/15448712282497	Farbe	gid://shopify/ProductOptionValue/12024967496065	28309 Brown	28309 Braun	2026-09-23T18:06Z
+gid://shopify/Product/15448712642945	Farbe	gid://shopify/ProductOptionValue/12024971035009	363613 Blue And White Plaid	363613 Blau-Weiss kariert	2026-09-23T18:06Z
+gid://shopify/Product/15448712642945	Farbe	gid://shopify/ProductOptionValue/12024971067777	36366 Orange Stripe	36366 Orange gestreift	2026-09-23T18:06Z
+gid://shopify/Product/15448712642945	Farbe	gid://shopify/ProductOptionValue/12024971100545	36362 Blue And White Stripes	36362 Blau-Weiss gestreift	2026-09-23T18:06Z
+gid://shopify/Product/15448712642945	Farbe	gid://shopify/ProductOptionValue/12024971133313	36361 Green And White Stripes	36361 Grün-Weiss gestreift	2026-09-23T18:06Z
+gid://shopify/Product/15448712642945	Farbe	gid://shopify/ProductOptionValue/12024971166081	36351 White	36351 Weiss	2026-09-23T18:06Z
+gid://shopify/Product/15448712774017	Farbe	gid://shopify/ProductOptionValue/12024972444033	8919 Army Green	8919 Armeegrün	2026-09-23T18:06Z
+gid://shopify/Product/15448712774017	Farbe	gid://shopify/ProductOptionValue/12024972476801	8919 Navy Blue	8919 Marineblau	2026-09-23T18:06Z
+gid://shopify/Product/15448712774017	Farbe	gid://shopify/ProductOptionValue/12024972509569	8919 Dark Gray	8919 Dunkelgrau	2026-09-23T18:06Z
+gid://shopify/Product/15448712774017	Farbe	gid://shopify/ProductOptionValue/12024972575105	8919 Black	8919 Schwarz	2026-09-23T18:06Z
+gid://shopify/Product/15448713232769	Farbe	gid://shopify/ProductOptionValue/12024975688065	Olive	Oliv	2026-09-23T18:06Z
+gid://shopify/Product/15448718967169	Farbe	gid://shopify/ProductOptionValue/12025019269505	Thin Style	Dünne Ausführung	2026-09-23T18:06Z
+gid://shopify/Product/15448720343425	Farbe	gid://shopify/ProductOptionValue/12025033294209	Flower Blue	Blau geblümt	2026-09-23T18:06Z
+gid://shopify/Product/15448720441729	Farbe	gid://shopify/ProductOptionValue/12025033851265	Mixed Camel	Gemischt Camel	2026-09-23T18:06Z
+gid://shopify/Product/15448751899009	Farbe	gid://shopify/ProductOptionValue/12025496535425	Olive	Oliv	2026-09-23T18:06Z
+gid://shopify/Product/15448755995009	Farbe	gid://shopify/ProductOptionValue/12025578455425	333 Vintage Blue	333 Vintageblau	2026-09-23T18:06Z
+gid://shopify/Product/15448755995009	Farbe	gid://shopify/ProductOptionValue/12025578488193	333 Light Blue	333 Hellblau	2026-09-23T18:06Z
+gid://shopify/Product/15448755995009	Farbe	gid://shopify/ProductOptionValue/12025578520961	333 Black And Gray	333 Schwarz-Grau	2026-09-23T18:06Z
+gid://shopify/Product/15448755995009	Farbe	gid://shopify/ProductOptionValue/12025578553729	333 Black	333 Schwarz	2026-09-23T18:06Z
+gid://shopify/Product/15448757600641	Farbe	gid://shopify/ProductOptionValue/12025594282369	Floral Print	Blumenmuster	2026-09-23T18:07Z
+gid://shopify/Product/15448757895553	Farbe	gid://shopify/ProductOptionValue/12025597198721	Deep Purple Lavender	Dunkellila-Lavendel	2026-09-23T18:07Z
+gid://shopify/Product/15448757895553	Farbe	gid://shopify/ProductOptionValue/12025597362561	Chestnut	Kastanienbraun	2026-09-23T18:07Z
+gid://shopify/Product/15448757895553	Farbe	gid://shopify/ProductOptionValue/12025597460865	Dark Olive Green	Dunkelolivgrün	2026-09-23T18:07Z
+gid://shopify/Product/15448765628801	Farbe	gid://shopify/ProductOptionValue/12025665356161	White-006 Fleece Lined	Weiss-006 gefüttert	2026-09-23T18:07Z
+gid://shopify/Product/15448765628801	Farbe	gid://shopify/ProductOptionValue/12025665388929	White-068 Fleece Lined	Weiss-068 gefüttert	2026-09-23T18:07Z
+gid://shopify/Product/15448765628801	Farbe	gid://shopify/ProductOptionValue/12025665421697	White-069 Fleece Lined	Weiss-069 gefüttert	2026-09-23T18:07Z
+gid://shopify/Product/15448765628801	Farbe	gid://shopify/ProductOptionValue/12025665585537	Black-006 Fleece Lined	Schwarz-006 gefüttert	2026-09-23T18:07Z
+gid://shopify/Product/15448765628801	Farbe	gid://shopify/ProductOptionValue/12025665618305	Black-068 Fleece Lined	Schwarz-068 gefüttert	2026-09-23T18:07Z
+gid://shopify/Product/15448765628801	Farbe	gid://shopify/ProductOptionValue/12025665651073	Black-069 Fleece Lined	Schwarz-069 gefüttert	2026-09-23T18:07Z
+gid://shopify/Product/15448766579073	Farbe	gid://shopify/ProductOptionValue/12025677447553	C02 Red	C02 Rot	2026-09-23T18:07Z
+gid://shopify/Product/15448766742913	Farbe	gid://shopify/ProductOptionValue/12025679970689	Black 2Style	Schwarz Muster 2	2026-09-23T18:07Z
+gid://shopify/Product/15448790401409	Farbe	gid://shopify/ProductOptionValue/12376975507841	Midnight Blue	Mitternachtsblau	2026-09-23T18:07Z
+gid://shopify/Product/15448802754945	Farbe	gid://shopify/ProductOptionValue/12309982609793	P Style	Muster P	2026-09-23T18:07Z
+gid://shopify/Product/15448802754945	Farbe	gid://shopify/ProductOptionValue/12309982642561	Q Style	Muster Q	2026-09-23T18:07Z
+gid://shopify/Product/15448802754945	Farbe	gid://shopify/ProductOptionValue/12309982675329	R Style	Muster R	2026-09-23T18:07Z
+gid://shopify/Product/15448802754945	Farbe	gid://shopify/ProductOptionValue/12309982708097	S Style	Muster S	2026-09-23T18:07Z
+gid://shopify/Product/15448802754945	Farbe	gid://shopify/ProductOptionValue/12309982740865	T Style	Muster T	2026-09-23T18:07Z
+gid://shopify/Product/15448803082625	Farbe	gid://shopify/ProductOptionValue/12295670366593	No 02 Color	Farbton 02	2026-09-23T18:07Z
+gid://shopify/Product/15448803082625	Farbe	gid://shopify/ProductOptionValue/12295670399361	No 03 Color	Farbton 03	2026-09-23T18:07Z
+gid://shopify/Product/15448803082625	Farbe	gid://shopify/ProductOptionValue/12295670432129	No 05 Color	Farbton 05	2026-09-23T18:07Z
+gid://shopify/Product/15448803180929	Farbe	gid://shopify/ProductOptionValue/12309983035777	8g-01 Black	8 g-01 Schwarz	2026-09-23T18:07Z
+gid://shopify/Product/15448803180929	Farbe	gid://shopify/ProductOptionValue/12309983068545	8g-02 Dark Brown	8 g-02 Dunkelbraun	2026-09-23T18:07Z
+gid://shopify/Product/15448803180929	Farbe	gid://shopify/ProductOptionValue/12309983101313	8g-03 Light Gray	8 g-03 Hellgrau	2026-09-23T18:07Z
+gid://shopify/Product/15448803180929	Farbe	gid://shopify/ProductOptionValue/12309983134081	8g-04 Light Brown	8 g-04 Hellbraun	2026-09-23T18:07Z
+gid://shopify/Product/15448803180929	Farbe	gid://shopify/ProductOptionValue/12309983166849	8g-Black 2pcs	8 g-Schwarz · 2 Stück	2026-09-23T18:07Z
+gid://shopify/Product/15448804295041	Farbe	gid://shopify/ProductOptionValue/12295691829633	03 Amber	03 Bernstein	2026-09-23T18:07Z
+gid://shopify/Product/15448807539073	Farbe	gid://shopify/ProductOptionValue/12309993062785	100 Gray Pink	100 Grau-Pink	2026-09-23T18:07Z
+gid://shopify/Product/15448807539073	Farbe	gid://shopify/ProductOptionValue/12309993095553	111 Leather Pink	111 Leder Pink	2026-09-23T18:07Z
+gid://shopify/Product/15448812388737	Farbe	gid://shopify/ProductOptionValue/12295702413697	1PC	1 Stück	2026-09-23T18:07Z
+gid://shopify/Product/15448812388737	Farbe	gid://shopify/ProductOptionValue/12295702446465	2PCS	2 Stück	2026-09-23T18:07Z
+gid://shopify/Product/15448816320897	Farbe	gid://shopify/ProductOptionValue/12295703495041	Black-Type A	Schwarz-Typ A	2026-09-23T18:07Z
+gid://shopify/Product/15448816320897	Farbe	gid://shopify/ProductOptionValue/12295703560577	Black-Type C	Schwarz-USB-C	2026-09-23T18:07Z
+gid://shopify/Product/15448816320897	Farbe	gid://shopify/ProductOptionValue/12295703593345	Black-Type D	Schwarz-Typ D	2026-09-23T18:07Z
+gid://shopify/Product/15448817828225	Farbe & Grösse	gid://shopify/ProductOptionValue/12295704740225	Black S	Schwarz S	2026-09-23T18:07Z
+gid://shopify/Product/15448817828225	Farbe & Grösse	gid://shopify/ProductOptionValue/12295704936833	Black M	Schwarz M	2026-09-23T18:07Z
