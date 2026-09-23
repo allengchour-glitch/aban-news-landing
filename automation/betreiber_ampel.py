@@ -320,6 +320,16 @@ def fortura_zugang():
             "(Kundennr. 544341, webtransfer.fortura.ch)")
 
 
+def azure_stimme():
+    """23.09.2026: Die Sprecherstimme der Reels laeuft NUR ueber Azure (Werbelizenz). Der Schluessel liegt in
+    /tmp/azure_speech.env und stirbt wie der Fortura-Zugang mit einem Wipe — dann entstehen die Reels still
+    ohne Stimme. Dauerloesung: AZURE_SPEECH_KEY + AZURE_SPEECH_REGION als Umgebungsvariablen."""
+    if AUF_SERVER or os.environ.get("AZURE_SPEECH_KEY") or os.path.exists("/tmp/azure_speech.env"):
+        return ""
+    return ("🔑 AZURE-STIMME WEG (/tmp/azure_speech.env fehlt) — Reels entstehen ohne Stimme. Schluessel neu in die "
+            "Sitzung geben; Dauerloesung: AZURE_SPEECH_KEY + AZURE_SPEECH_REGION=switzerlandnorth als Umgebungsvariablen")
+
+
 def bot_puls():
     """Lebt der Hetzner-Browser-Agent? Er ist der EINZIGE mit einem echten Browser.
 
@@ -712,7 +722,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), azure_stimme(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
