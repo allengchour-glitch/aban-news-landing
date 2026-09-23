@@ -32,7 +32,9 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 pause_kuehlt() {
   local log="/tmp/$1.log"
   [ -f "$log" ] || return 1
-  tail -1 "$log" 2>/dev/null | grep -q "^PAUSE" || return 1
+  # 23.09. 23:10 (Pruefer): v2-Skripte schreiben JEDE Zeile mit UTC-Zeitpraefix («23:05:22 PAUSE: …») — ohne die
+  # optionale Zeitgruppe sah der Aufseher keine PAUSE/FERTIG mehr und startete den Bild-Nachfueller bei jedem Tick neu.
+  tail -1 "$log" 2>/dev/null | grep -qE "^([0-9:]{8} )?PAUSE" || return 1
   local alter=$(( $(date +%s) - $(stat -c %Y "$log" 2>/dev/null || echo 0) ))
   [ "$alter" -lt 3600 ]
 }
@@ -334,7 +336,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer social_queue_saeubern bild_queue_captions_ehrlich google_feedback_wache kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -354,7 +356,7 @@ while true; do
       HM=$(date -u +%H%M); ZS=$(cat /tmp/_start_versand_jenachland 2>/dev/null || echo 0)
       [ "$HM" -ge 425 ] 2>/dev/null && [ "$HM" -lt 700 ] 2>/dev/null && [ "$ZS" -lt "$(date -u -d 'today 04:25' +%s)" ] && ZN=1
     fi
-    if [ "$ZN" = 0 ] && tail -n 3 "/tmp/$L.log" 2>/dev/null | grep -q "^FERTIG"; then
+    if [ "$ZN" = 0 ] && tail -n 3 "/tmp/$L.log" 2>/dev/null | grep -qE "^([0-9:]{8} )?FERTIG"; then
       F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
       [ "$F_ALTER" -lt 72000 ] && continue
     fi
@@ -482,7 +484,7 @@ while true; do
     # nur die Einmal-Importe (schulstart, frosch_maske) bleiben nach FERTIG aus.
     case "$N" in
       schulstart_import|frosch_maske_import) grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue ;;
-      *) if tail -n 3 "/tmp/$N.log" 2>/dev/null | grep -q "^FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
+      *) if tail -n 3 "/tmp/$N.log" 2>/dev/null | grep -qE "^([0-9:]{8} )?FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
     esac
     pause_kuehlt "$N" && continue
     dreht_sich_im_kreis "$N" && continue

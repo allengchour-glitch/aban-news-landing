@@ -6,7 +6,8 @@ Arbeitsordner: $SCHNITT_TEST_DIR (sonst ein Temp-Ordner, danach geloescht). Exit
 
 Geprueft wird (Soll aus den Lernberichten und der Pruefung 23.09.):
   1  Analyse: Einstellungsgrenzen der Testquelle +-2 Bilder, Schwarz/Standbild erkannt, eingeblendeter Text als
-     Fremdtext — und zwar weil die OCR die Woerter WIRKLICH gelesen hat (nicht nur ueber die Kanten-Heuristik).
+     Fremdtext — und zwar weil die OCR die Woerter WIRKLICH gelesen hat (nicht nur ueber die Kanten-Heuristik);
+     ohne tesseract bricht die Analyse ab statt still «sauber» zu melden.
   2  Plan: kein Stueck aus Schwarz/Standbild/Fremdtext; Ueberlappung aus den Stuecken NACHGERECHNET; Hook sauber;
      ganze Takte; erster Wechsel <= 1,3 s; Bild 0 <= 40 Zeichen; --sperren und --hook-ab wirken.
   3  Render: Format, Bildzahl = Plan, Schnitte +-1 Bild und sichtbar, -14 +-1 LUFS, TP <= -1,5, JEDES Bild aus der
@@ -164,6 +165,16 @@ def main():
         sauber_ok = [not e_bei(t)['fremdtext'] for t in (1.0, 2.8, 9.0, 11.0)]
         ok('saubere Einstellungen ohne Fremdtext-Alarm', all(sauber_ok), str(sauber_ok))
         ok('Cache neben der Arbeitsdatei', os.path.exists(q + '.schnitt.json') and S.analyse(q).get('aus_cache'))
+        import pytesseract
+        alt_cmd = pytesseract.pytesseract.tesseract_cmd
+        pytesseract.pytesseract.tesseract_cmd = '/gibt/es/nicht/tesseract'
+        try:
+            S.analyse(q, cache=False)
+            ok('OCR-Ausfall (kein tesseract) -> Fehler statt «sauber»', False, 'Analyse lief durch')
+        except RuntimeError as e:
+            ok('OCR-Ausfall (kein tesseract) -> Fehler statt «sauber»', 'OCR' in str(e), str(e)[:80])
+        finally:
+            pytesseract.pytesseract.tesseract_cmd = alt_cmd
 
         # ------------------------------------------------------------------ 2 Plan
         print('2 Plan')

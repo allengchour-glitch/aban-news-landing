@@ -15971,3 +15971,20 @@ gid://shopify/Product/15453789585793	93->0	Lange Hundeleine für Wasseraktivitä
 gid://shopify/Product/15453789913473	67->0	Leine für grosse Hunde
 gid://shopify/Product/15453791158657	185->0	Kinderleder-Schuhe, weiter Kopf
 gid://shopify/Product/15453791224193	9->0	Dickes, übergrosses Badetuch aus Baumwolle
+gid://shopify/Product/15453792862593	70->0	Yoga-Roller mit Camouflage-Muster
+gid://shopify/Product/15453793452417	154->1	Früchte-Rührgabel
+gid://shopify/Product/15453793976705	49->0	Lesekissen mit Armlehne und Getränkehalter
+gid://shopify/Product/15453794042241	19->0	Edelstahl-Lunchbox mit Fächern
+gid://shopify/Product/15453794107777	34->1	Kauenset für Hunde
+gid://shopify/Product/15453794238849	71->3	Grosse Ramen-Schüssel
+gid://shopify/Product/15502049902977	17->0	Make-up Bürsten Set
+gid://shopify/Product/15503090286977	30->0	Personalisiertes DIY Haustierhalsband
+gid://shopify/Product/15503113912705	101->0	Augenbrauen-Schablonen-Set mit Halteband
+gid://shopify/Product/15503147630977	26->0	GPS-Halsband für Haustiere mit Sender
+gid://shopify/Product/15509383709057	14->0	Schneidebrett-Set aus Bambus & PP
+gid://shopify/Product/15510800007553	40->0	Business-Freizeit Rucksack Nylon
+gid://shopify/Product/15517644620161	19->2	Vibrato Net Celebrity Damenuhr-Set
+gid://shopify/Product/15519823135105	24->1	M2 Smartwatch mit Farbdisplay
+gid://shopify/Product/15519836733825	21->1	Hundeleine mit faltbarem Napf – 3er-Set
+gid://shopify/Product/15519837716865	30->1	Kontrast Lederarmband
+gid://shopify/Product/15520408961409	49->0	Haaransatz Puder
