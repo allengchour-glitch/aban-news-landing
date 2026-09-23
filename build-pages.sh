@@ -86,7 +86,7 @@ tar -cf - \
   --exclude='./_site' \
   --exclude='./node_modules' \
   --exclude='./game' \
-  --exclude='./video-prototypes' \
+  --exclude='./video-prototypes' --exclude='./spiele-dev' \
   --exclude='./reels' \
   --exclude='./social' \
   --exclude='./dropship' \
@@ -100,6 +100,15 @@ tar -cf - \
   --exclude='./linkedin' \
   --exclude='./reports' \
   --exclude='./ki-tools-radar' \
+  --exclude='./brain' \
+  --exclude='./.claude' \
+  --exclude='./CLAUDE.md' \
+  --exclude='./SHARED-MEMORY.md' \
+  --exclude='./LERNEN-*.md' \
+  --exclude='./*-HANDOFF.md' \
+  --exclude='./*-MEMORY.md' \
+  --exclude='./*-CHECKLISTE.md' \
+  --exclude='./docs/SESSION-HANDOFF.md' \
   --exclude='./data/issue-*.html' \
   . | tar -xf - -C _site
 
