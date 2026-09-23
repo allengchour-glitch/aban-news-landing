@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-09-23T19:24Z
+# Produktkategorie (Taxonomie) — Stand 2026-09-23T19:34Z
 
 Aktive gescannt: 648 · ohne Kategorie: 648 · heute gesetzt: 0 (SCHARF, CAP 45000) · danach offen: 648 · Fehler: 0
 
