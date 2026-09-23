@@ -518,6 +518,16 @@ while true; do
         >> /tmp/social_qualitaet.log 2>&1 9>&- & )
     echo "$(date -u +%H:%M) start social_qualitaet_wache (täglich, nur lesen)"
   fi
+  # ✎ FB-CAPTION-KORREKTUR (23.09.2026, Betreiber «bearbeite selber wens nicht stimmt wie zb versandkosten»): feste
+  # Ersetzungstabelle (Blitzversand/«in 1–2 Tagen»/CHF 65/Lockpreis), 45 s Takt, Abbruch beim ersten Meta-Sperrhinweis.
+  # Erstlauf 23.09.: 7 von 25, dann Spam-Sperre nach 120 Löschungen — der tägliche Lauf macht dort weiter.
+  if [ ! -f /tmp/fb_caption_$(date -u +%F) ] && [ -f "$REPO/automation/fb_caption_korrektur.mjs" ] && [ -s /tmp/meta_page_token ]; then
+    touch "/tmp/fb_caption_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_fb_caption.lock; flock -n 9 || exit 0; SCHARF=1 timeout 3000 /opt/node22/bin/node automation/fb_caption_korrektur.mjs | grep -E '✅|✗|⛔|FERTIG'" \
+        >> /tmp/fb_caption_korrektur.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start fb_caption_korrektur (täglich)"
+  fi
   # 🎬 LIEFERANTENVIDEOS NACHHOLEN — bewusst in kleinen Schlucken. Von 34'824 aktiven
   # Produkten zeigen nur 144 ein Video, und CJ hat für die allermeisten auch keines: von 15
   # geprüften Kandidaten kam bei allen 15 `productVideo: null` zurück. Ein Lauf über den
