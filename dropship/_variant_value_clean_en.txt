@@ -2412,3 +2412,80 @@ gid://shopify/Product/15448816320897	Farbe	gid://shopify/ProductOptionValue/1229
 gid://shopify/Product/15448816320897	Farbe	gid://shopify/ProductOptionValue/12295703593345	Black-Type D	Schwarz-Typ D	2026-09-23T18:07Z
 gid://shopify/Product/15448817828225	Farbe & Grösse	gid://shopify/ProductOptionValue/12295704740225	Black S	Schwarz S	2026-09-23T18:07Z
 gid://shopify/Product/15448817828225	Farbe & Grösse	gid://shopify/ProductOptionValue/12295704936833	Black M	Schwarz M	2026-09-23T18:07Z
+gid://shopify/Product/15448829264257	Farbe	gid://shopify/ProductOptionValue/12296222769537	White Rechargeable	Weiss wiederaufladbar	2026-09-23T18:07Z
+gid://shopify/Product/15448829264257	Farbe	gid://shopify/ProductOptionValue/12296222802305	Black Rechargeable	Schwarz wiederaufladbar	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296222933377	Gradient gold-US	Farbverlauf Gold-US	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296222966145	Gradient gold-EU	Farbverlauf Gold-EU	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296222998913	Gradient gold-UK	Farbverlauf Gold-UK	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296223031681	Gradient gold-AU	Farbverlauf Gold-AU	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296223064449	Gradient blue-US	Farbverlauf Blau-US	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296223097217	Gradient blue-EU	Farbverlauf Blau-EU	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296223129985	Gradient blue-UK	Farbverlauf Blau-UK	2026-09-23T18:07Z
+gid://shopify/Product/15448830509441	Farbe	gid://shopify/ProductOptionValue/12296223162753	Gradient blue-AU	Farbverlauf Blau-AU	2026-09-23T18:07Z
+gid://shopify/Product/15448831656321	Farbe	gid://shopify/ProductOptionValue/12296223916417	White c	Weiss c	2026-09-23T18:07Z
+gid://shopify/Product/15448832377217	Farbe	gid://shopify/ProductOptionValue/12296230601089	Champagne Style	Champagner Stil	2026-09-23T18:07Z
+gid://shopify/Product/15448832377217	Farbe	gid://shopify/ProductOptionValue/12296230666625	Golden	Gold	2026-09-23T18:07Z
+gid://shopify/Product/15448832704897	Farbe	gid://shopify/ProductOptionValue/12296231616897	Golden Pink	Gold-Pink	2026-09-23T18:07Z
+gid://shopify/Product/15448832704897	Farbe	gid://shopify/ProductOptionValue/12296231649665	Colorful Green	Bunt Grün	2026-09-23T18:07Z
+gid://shopify/Product/15448834802049	Farbe	gid://shopify/ProductOptionValue/12296233222529	Flower Wine	Weinrot geblümt	2026-09-23T18:07Z
+gid://shopify/Product/15448834802049	Farbe	gid://shopify/ProductOptionValue/12296233681281	Golden Brown Amber	Gold-Braun-Bernstein	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029140353	Black 10IN	Schwarz 10 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029173121	Red 10IN	Rot 10 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029205889	Black 12IN	Schwarz 12 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029238657	Red 12IN	Rot 12 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029271425	Black 14IN	Schwarz 14 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029304193	Red 14IN	Rot 14 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029336961	Black 8IN	Schwarz 8 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448837587329	Farbe	gid://shopify/ProductOptionValue/12310029369729	Red 8IN	Rot 8 Zoll	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322056577	100g-Round	100 g-Rund	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322089345	100g-Heart Shape	100 g-Herzform	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322122113	10x10cm-Round	10x10 cm-Rund	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322154881	10x10cm-Heart Shape	10x10 cm-Herzform	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322187649	250g-Round	250 g-Rund	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322220417	250g-Heart Shape	250 g-Herzform	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322253185	8x8cm-Round	8x8 cm-Rund	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322285953	8x8cm-Heart Shape	8x8 cm-Herzform	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322318721	9x9cm-Round	9x9 cm-Rund	2026-09-23T18:07Z
+gid://shopify/Product/15448839520641	Farbe	gid://shopify/ProductOptionValue/12296322351489	9x9cm-Heart Shape	9x9 cm-Herzform	2026-09-23T18:07Z
+gid://shopify/Product/15448844927361	Farbe	gid://shopify/ProductOptionValue/12296438284673	Large Size 25x13x25.5cm-Brown	Gross 25x13x25.5 cm-Braun	2026-09-23T18:07Z
+gid://shopify/Product/15448844927361	Farbe	gid://shopify/ProductOptionValue/12296438317441	Small Size 15x10x19cm-Brown	Klein 15x10x19 cm-Braun	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444674433	64G English-Gray	64G Englisch-Grau	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444707201	64G English-Pink	64G Englisch-Pink	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444739969	64G English-Green	64G Englisch-Grün	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444772737	64G English-Silver	64G Englisch-Silber	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444805505	128G English-Gray	128G Englisch-Grau	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444838273	128G English-Pink	128G Englisch-Pink	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444871041	128G English-Green	128G Englisch-Grün	2026-09-23T18:07Z
+gid://shopify/Product/15448847253889	Farbe	gid://shopify/ProductOptionValue/12296444903809	128G English-Silver	128G Englisch-Silber	2026-09-23T18:07Z
+gid://shopify/Product/15448847581569	Farbe	gid://shopify/ProductOptionValue/12310046966145	Black-RG40XXH	Schwarz-RG40XXH	2026-09-23T18:07Z
+gid://shopify/Product/15448847581569	Farbe	gid://shopify/ProductOptionValue/12310046998913	Gray-RG40XXH	Grau-RG40XXH	2026-09-23T18:07Z
+gid://shopify/Product/15448847581569	Farbe	gid://shopify/ProductOptionValue/12310047031681	Blue-RG40XXH	Blau-RG40XXH	2026-09-23T18:07Z
+gid://shopify/Product/15448848007553	Farbe	gid://shopify/ProductOptionValue/12296445788545	M1564G Large Package	M1564G gross Verpackung	2026-09-23T18:07Z
+gid://shopify/Product/15448848007553	Farbe	gid://shopify/ProductOptionValue/12296445821313	M1564G Small Package	M1564G klein Verpackung	2026-09-23T18:07Z
+gid://shopify/Product/15448848007553	Farbe	gid://shopify/ProductOptionValue/12296445854081	M15128G Large Package	M15128G gross Verpackung	2026-09-23T18:07Z
+gid://shopify/Product/15448848007553	Farbe	gid://shopify/ProductOptionValue/12296445886849	M15128G Small Package	M15128G klein Verpackung	2026-09-23T18:07Z
+gid://shopify/Product/15448848597377	Speicher & Zubehör	gid://shopify/ProductOptionValue/12310047916417	128GB	128 GB	2026-09-23T18:07Z
+gid://shopify/Product/15448848597377	Speicher & Zubehör	gid://shopify/ProductOptionValue/12310047981953	256GB	256 GB	2026-09-23T18:07Z
+gid://shopify/Product/15448848597377	Speicher & Zubehör	gid://shopify/ProductOptionValue/12310048047489	64GB	64 GB	2026-09-23T18:07Z
+gid://shopify/Product/15448848630145	Farbe	gid://shopify/ProductOptionValue/12310048113025	617 Black	617 Schwarz	2026-09-23T18:07Z
+gid://shopify/Product/15448848630145	Farbe	gid://shopify/ProductOptionValue/12310048145793	617 White	617 Weiss	2026-09-23T18:07Z
+gid://shopify/Product/15448848630145	Farbe	gid://shopify/ProductOptionValue/12310048178561	799 Black	799 Schwarz	2026-09-23T18:07Z
+gid://shopify/Product/15448848630145	Farbe	gid://shopify/ProductOptionValue/12310048211329	799 Red	799 Rot	2026-09-23T18:07Z
+gid://shopify/Product/15448848630145	Farbe	gid://shopify/ProductOptionValue/12310048244097	799 Pink Green	799 Pink-Grün	2026-09-23T18:07Z
+gid://shopify/Product/15448848630145	Farbe	gid://shopify/ProductOptionValue/12310048276865	799 Yellow And Blue	799 Gelb-Blau	2026-09-23T18:07Z
+gid://shopify/Product/15448848695681	Farbe	gid://shopify/ProductOptionValue/12296447656321	English	Englisch	2026-09-23T18:07Z
+gid://shopify/Product/15448848826753	Farbe	gid://shopify/ProductOptionValue/12296565588353	White-X6	Weiss-X6	2026-09-23T18:08Z
+gid://shopify/Product/15448848826753	Farbe	gid://shopify/ProductOptionValue/12296565621121	Blue-X6	Blau-X6	2026-09-23T18:08Z
+gid://shopify/Product/15448848826753	Farbe	gid://shopify/ProductOptionValue/12296565653889	Black-X6	Schwarz-X6	2026-09-23T18:08Z
+gid://shopify/Product/15448848957825	Farbe	gid://shopify/ProductOptionValue/12296566047105	Metal Gold	Metall Gold	2026-09-23T18:08Z
+gid://shopify/Product/15448851874177	Farbe	gid://shopify/ProductOptionValue/12296569061761	Blue-Wireless	Blau-Kabellos	2026-09-23T18:08Z
+gid://shopify/Product/15448851874177	Farbe	gid://shopify/ProductOptionValue/12296569127297	White-Wireless	Weiss-Kabellos	2026-09-23T18:08Z
+gid://shopify/Product/15448851874177	Farbe	gid://shopify/ProductOptionValue/12296569192833	Red-Wireless	Rot-Kabellos	2026-09-23T18:08Z
+gid://shopify/Product/15448851874177	Farbe	gid://shopify/ProductOptionValue/12296569258369	Pink-Wireless	Pink-Kabellos	2026-09-23T18:08Z
+gid://shopify/Product/15448851874177	Farbe	gid://shopify/ProductOptionValue/12296569323905	Green-Wireless	Grün-Kabellos	2026-09-23T18:08Z
+gid://shopify/Product/15448851874177	Farbe	gid://shopify/ProductOptionValue/12296569389441	Black-Wireless	Schwarz-Kabellos	2026-09-23T18:08Z
+gid://shopify/Product/15448851874177	Farbe	gid://shopify/ProductOptionValue/12296569454977	Wood-Wireless	Holz-Kabellos	2026-09-23T18:08Z
+gid://shopify/Product/15448873402753	Farbe	gid://shopify/ProductOptionValue/12296571486593	Upgraded Version	Upgrade-Version	2026-09-23T18:08Z
+gid://shopify/Product/15448873402753	Farbe	gid://shopify/ProductOptionValue/12296571519361	Classic	Klassisch	2026-09-23T18:08Z
+gid://shopify/Product/15448873468289	Farbe	gid://shopify/ProductOptionValue/12310057025921	Rechargeable White	Wiederaufladbar Weiss	2026-09-23T18:08Z
+gid://shopify/Product/15448873468289	Farbe	gid://shopify/ProductOptionValue/12310057058689	Rechargeable Black	Wiederaufladbar Schwarz	2026-09-23T18:08Z

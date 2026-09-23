@@ -14,7 +14,9 @@
  *
  * ENV: METRICOOL_USER_TOKEN (oder /tmp/metricool.env mit METRICOOL_USER_TOKEN=…) ·
  *      METRICOOL_USER_ID (4801419) · METRICOOL_BLOG_ID (6227837, gemessen 23.09.) · MC_TZ (Europe/Zurich) ·
- *      VORLAUF_MIN (Default 10: Veroeffentlichung in N Minuten) · DRY=1
+ *      VORLAUF_MIN (Default 10: Veroeffentlichung in N Minuten) · DRY=1 (zeigt den Body, plant und schreibt nichts)
+ *      Direktlink (23.09., standardmaessig AUS, siehe dropship/DIREKTLINK.md): DIREKTLINK_TEXT=1 · DIREKTLINK_STICKER=1 ·
+ *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
@@ -132,7 +134,8 @@ if (process.env.PRUEFEN === '1') {
 const passt = r => get(r, 'status') === 'ready' && get(r, 'video_url') && !postSeen(get(r, 'video_url')) && !/stumm/i.test(get(r, 'video_url'));
 const _alle = rows.slice(1).filter(passt);
 const _reihe = [..._alle.filter(r => /raw\.githubusercontent/.test(get(r, 'video_url'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && /^cjreel-/.test(get(r, 'id'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && !/^cjreel-/.test(get(r, 'id')))];
-const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { r[idx.status] = st; writeLedger(); });
+// DRY schreibt nichts (23.09.: vorher setzte schon der DRY-Lauf tote Adressen auf archived-deadurl).
+const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { if (DRY) return; r[idx.status] = st; writeLedger(); });
 if (!cand) { console.log('Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde.'); process.exit(0); }
 
 // Produkt noch kaufbar? (gleiche Regel wie meta_reel_post.mjs)
@@ -154,7 +157,7 @@ async function produktAktiv(postId) {
       const d = await r.json();
       const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
-      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}` };
+      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '' };
     } catch {}
     await new Promise(r => setTimeout(r, 2000 * (a + 1)));
   }
@@ -166,7 +169,30 @@ if (!pa.ok) {
   if (!DRY && /nicht mehr|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pa.grund)) { cand[idx.status] = 'produkt-nicht-aktiv'; writeLedger(); }
   process.exit(0);
 }
-const id = get(cand, 'id'), url = get(cand, 'video_url'), caption = get(cand, 'caption'), tags = get(cand, 'hashtags');
+const id = get(cand, 'id'), url = get(cand, 'video_url'), tags = get(cand, 'hashtags');
+// ── 23.09.2026 Paket «direktlink» — VORBEREITET, standardmaessig AUS. Ohne die Schalter bleibt der Body byte-gleich.
+//  DIREKTLINK_TEXT=1: die Caption-Zeile «🔗 luxestyle.ch/products/… (Link in Bio)» ist auf TikTok FALSCH (Profil ohne
+//    bioLink, gemessen 23.09.; Kanarienvogel: nike/gymshark tragen bioLink im selben HTML) und auf YouTube ebenso →
+//    TikTok: Adresse ohne «(Link in Bio)»; YouTube: volle https-Adresse (in Shorts-Beschreibungen nicht klickbar, lesbar).
+//  DIREKTLINK_STICKER=1: tiktokData.articleLink {url,title≤35} — laut Metricool-OpenAPI (ScheduledPostTikTokArticleLink)
+//    «an external URL shown as a link sticker on the video», also fuer Videos vorgesehen. Ob TikTok ihn fuer
+//    @luxestyle.ch (Privatkonto: commerceUser false, 553 Follower, gemessen 23.09.) anzeigt, ist UNBELEGT →
+//    erst EIN begleiteter Post, danach PRUEFEN=1 (Status/detailedStatus) und Sichtprobe in der App.
+//  DIREKTLINK=1 schaltet beide ein. MC_SMARTLINK_ID=<id> haengt zusaetzlich smartLinkData {targetUrl, ids} an — nur
+//    sinnvoll, wenn die SmartLink-Seite aus linkinbio_sync.mjs existiert (gemessen 23.09.: 0 SmartLinks); Metricool
+//    verknuepft SmartLinks im Planer mit Instagram-Posts, die Wirkung fuer TikTok/YouTube ist unbelegt.
+const DL_TEXT = process.env.DIREKTLINK === '1' || process.env.DIREKTLINK_TEXT === '1';
+const DL_STICKER = process.env.DIREKTLINK === '1' || process.env.DIREKTLINK_STICKER === '1';
+const SMARTLINK_ID = (process.env.MC_SMARTLINK_ID || '').trim();
+const produktUrl = (pa.url || '').replace(/^http:\/\//, 'https://');
+const linkUtm = produktUrl ? `${produktUrl}?utm_source=${NETZ}&utm_medium=social&utm_campaign=${NETZ === 'youtube' ? 'short' : 'reel'}&utm_content=${encodeURIComponent(id)}` : '';
+function captionMitDirektlink(c) {
+  if (!produktUrl) return c;
+  const zeile = NETZ === 'youtube' ? `🔗 ${produktUrl}` : `🔗 ${produktUrl.replace(/^https:\/\//, '')}`;
+  const alt = /^.*luxestyle\.ch\/products\/[\w%-]+.*$/m;
+  return alt.test(c) ? c.replace(alt, zeile) : `${c}\n${zeile}`;
+}
+const caption = DL_TEXT ? captionMitDirektlink(get(cand, 'caption')) : get(cand, 'caption');
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 8).join(' ')}`.slice(0, 2100);
 // Veroeffentlichungszeit in TZ, Format YYYY-MM-DDTHH:mm:ss
 const wann = await besteZeit();
@@ -177,7 +203,22 @@ console.log(`${NETZ} via Metricool: ${id}\n  Produkt: ${pa.grund}\n  Video: ${ur
 const ytTitel = (() => { const m = /«([^»]{4,})»/.exec(caption); const t = (m ? m[1] : caption.split('\n').find(z => z.trim().length > 8) || caption).replace(/[👀✨🔥]/gu, '').trim(); return (t.slice(0, 88) + ' #Shorts').trim(); })();
 const ytTags = (tags || '').split(/[,\s]+/).filter(Boolean).map(t => t.replace(/^#/, '')).slice(0, 12);
 if (NETZ === 'youtube') console.log(`  YouTube-Titel: ${ytTitel}`);
-if (DRY) { console.log(`[DRY] wuerde jetzt normalisieren + auf ${NETZ} planen.`); process.exit(0); }
+function bauBody(media) {
+  const body = { publicationDate: { dateTime, timezone: TZ }, text, providers: [{ network: NETZ }], media: [media],
+                 autoPublish: true, draft: false, shortener: false };
+  // TikTok verlangt die Kennzeichnung von Werbung fuer die eigene Marke (Content-Disclosure «Your brand»).
+  if (NETZ === 'tiktok') body.tiktokData = { autoPublish: true, commercialContentOwnBrand: true, commercialContentThirdParty: false };
+  if (NETZ === 'tiktok' && DL_STICKER && linkUtm) body.tiktokData.articleLink = { url: linkUtm, title: 'Zum Produkt' };
+  if (NETZ === 'youtube') body.youtubeData = { title: ytTitel, type: 'short', privacy: 'public', category: 'HOWTO_STYLE',
+                                               madeForKids: false, notifySubscribers: true, isAiGeneratedContent: false, tags: ytTags };
+  if (SMARTLINK_ID && linkUtm) body.smartLinkData = { targetUrl: linkUtm, ids: [Number(SMARTLINK_ID)] };
+  return body;
+}
+if (DRY) {
+  console.log(`  Direktlink: Text ${DL_TEXT ? 'AN' : 'aus'} · Sticker ${DL_STICKER ? 'AN' : 'aus'} · SmartLink ${SMARTLINK_ID || 'aus'} · Produkt-URL ${linkUtm || '(keine: Reel ohne Produkt-ID)'}`);
+  console.log(`[DRY] Body (media wird im echten Lauf ueber Metricool normalisiert, hier Platzhalter; NICHTS geplant):\n${JSON.stringify(bauBody(`(normalisiert aus ${url})`), null, 1)}`);
+  process.exit(0);
+}
 
 const release = postLock(20);
 cand[idx.status] = 'posting'; cand[idx.posted_at] = new Date().toISOString(); writeLedger();   // Claim VOR dem Post
@@ -187,12 +228,7 @@ try {
   if (!n.ok) throw new Error(`normalize ${n.status}: ${nt.slice(0, 200)}`);
   let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data === 'string' ? j.data : '') || (typeof j === 'string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g, ''); }
   if (!norm) throw new Error('normalize: keine URL in der Antwort: ' + nt.slice(0, 120));
-  const body = { publicationDate: { dateTime, timezone: TZ }, text, providers: [{ network: NETZ }], media: [norm],
-                 autoPublish: true, draft: false, shortener: false };
-  // TikTok verlangt die Kennzeichnung von Werbung fuer die eigene Marke (Content-Disclosure «Your brand»).
-  if (NETZ === 'tiktok') body.tiktokData = { autoPublish: true, commercialContentOwnBrand: true, commercialContentThirdParty: false };
-  if (NETZ === 'youtube') body.youtubeData = { title: ytTitel, type: 'short', privacy: 'public', category: 'HOWTO_STYLE',
-                                               madeForKids: false, notifySubscribers: true, isAiGeneratedContent: false, tags: ytTags };
+  const body = bauBody(norm);
   const r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}`, { method: 'POST',
     headers: { 'X-Mc-Auth': TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const rt = await r.text();

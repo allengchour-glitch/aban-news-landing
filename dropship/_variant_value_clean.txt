@@ -661,3 +661,23 @@ gid://shopify/Product/15448807539073	Farbe	2
 gid://shopify/Product/15448812388737	Farbe	2
 gid://shopify/Product/15448816320897	Farbe	3
 gid://shopify/Product/15448817828225	Farbe & Grösse	2
+gid://shopify/Product/15448829264257	Farbe	2
+gid://shopify/Product/15448830509441	Farbe	8
+gid://shopify/Product/15448831656321	Farbe	1
+gid://shopify/Product/15448832377217	Farbe	2
+gid://shopify/Product/15448832704897	Farbe	2
+gid://shopify/Product/15448834802049	Farbe	2
+gid://shopify/Product/15448837587329	Farbe	8
+gid://shopify/Product/15448839520641	Farbe	10
+gid://shopify/Product/15448844927361	Farbe	2
+gid://shopify/Product/15448847253889	Farbe	8
+gid://shopify/Product/15448847581569	Farbe	3
+gid://shopify/Product/15448848007553	Farbe	4
+gid://shopify/Product/15448848597377	Speicher & Zubehör	3
+gid://shopify/Product/15448848630145	Farbe	6
+gid://shopify/Product/15448848695681	Farbe	1
+gid://shopify/Product/15448848826753	Farbe	3
+gid://shopify/Product/15448848957825	Farbe	1
+gid://shopify/Product/15448851874177	Farbe	7
+gid://shopify/Product/15448873402753	Farbe	2
+gid://shopify/Product/15448873468289	Farbe	2

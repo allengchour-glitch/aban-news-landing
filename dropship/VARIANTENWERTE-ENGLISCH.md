@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:06 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:07 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **4'244**
-- Optionen mit englischen Werten (Kandidaten): 779
-- Optionen übersetzt: **358** · Werte übersetzt: **1'686**
+- Produkte gesehen: **4'833**
+- Optionen mit englischen Werten (Kandidaten): 874
+- Optionen übersetzt: **396** · Werte übersetzt: **1'804**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'719
+- Werte mit unbekanntem Wort (unverändert): 2'931
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 26
+- übersprungen «kleidungsstueck-im-wert»: 27
 - übersprungen «kollision-nach-uebersetzung»: 14
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -29,6 +29,7 @@
 - `15448509383041` [Farbe] **Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie** — hose, pullover: Black-Hoodie | Black-Pants | Milky Apricot-Hoodie | Milky Apricot-Pants | Slate Blue-Hoodie | Slate Blue-Pants | Olive Green-Hoodie | Olive Green-Pants
 - `15448574099841` [Farbe] **Eleganter Off-Shoulder Jumpsuit** — oberteil · Titel nennt Set: OliveGreen | Blau | a white Tshirt
 - `15448670273921` [Farbe] **Damen Wollmantel für Winter Business** — oberteil: Marineblau | White Long Sleeve Shirt
+- `15448718180737` [Farbe] **Gestreifter Business-Anzug für Herren** — jacke, weste · Titel nennt Set: Caramel Jacket | Sugar Coffee Vest | Set
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -106,5 +107,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 156, `light` 118, `color` 86, `skin` 68, `feet` 62, `mother` 61, `core` 52, `hat` 47, `rope` 44, `to` 44, `lens` 38, `father` 38, `high` 35, `for` 35, `generation` 34, `shell` 32, `no` 30, `years` 30, `old` 30, `powder` 29, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 23, `stone` 22, `electric` 22, `tea` 21, `surface` 21, `bear` 21, `yadan` 21, `comfortable` 20, `suit` 19, `number` 19, `deer` 19, `cocoa` 19, `220grams` 18, `clothing` 18, `background` 17, `pumpkin` 17, `foot` 17, `carbon` 17, `belt` 16, `spring` 16, `face` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `pad` 16, `parent` 16, `full` 15, `milk` 15, `handle` 15, `waist` 15, `blocking` 15
+`degrees` 159, `light` 126, `color` 91, `skin` 68, `feet` 62, `mother` 61, `core` 53, `hat` 47, `to` 45, `rope` 44, `lens` 38, `father` 38, `high` 35, `for` 35, `generation` 34, `shell` 32, `powder` 32, `no` 30, `years` 30, `old` 30, `adjustable` 29, `mom` 28, `insert` 26, `crotch` 26, `case` 24, `tea` 24, `batteries` 24, `dog` 24, `dad` 24, `bag` 23, `of` 23, `stone` 22, `electric` 22, `suit` 21, `surface` 21, `bear` 21, `yadan` 21, `cocoa` 20, `comfortable` 20, `number` 19, `deer` 19, `220grams` 18, `clothing` 18, `background` 17, `face` 17, `pumpkin` 17, `foot` 17, `carbon` 17, `handle` 17, `belt` 16, `spring` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `pad` 16, `parent` 16, `full` 15, `ice` 15, `milk` 15, `waist` 15
 
