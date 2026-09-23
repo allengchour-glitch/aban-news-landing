@@ -130,7 +130,8 @@ while true; do
   # ein eigenes, nie gepostetes Reel je Tag; Guards im Poster (Lock, Ledger, ACTIVE).
   if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && faellig "$MARKE_TIKTOK" "$TIKTOK_ABSTAND"; then
     echo "$(date -u +%H:%M) TikTok-Post faellig (Metricool)"
-    if $NODE automation/metricool_tiktok_post.mjs; then
+    # 23.09.: DIREKTLINK_TEXT=1 — TikTok-Profil hat keinen Bio-Link (erst ab 1'000 Followern), «(Link in Bio)» war falsch.
+    if DIREKTLINK_TEXT=1 $NODE automation/metricool_tiktok_post.mjs; then
       touch "$MARKE_TIKTOK"
     else
       echo "$(date -u +%H:%M) TikTok-Post fehlgeschlagen (Marke bleibt alt)"
@@ -144,7 +145,7 @@ while true; do
     fi
     if faellig "$MARKE_YOUTUBE" "$YOUTUBE_ABSTAND"; then
       echo "$(date -u +%H:%M) YouTube-Short faellig (Metricool)"
-      if NETZ=youtube $NODE automation/metricool_tiktok_post.mjs; then touch "$MARKE_YOUTUBE"; else echo "$(date -u +%H:%M) YouTube-Post fehlgeschlagen (Marke bleibt alt)"; fi
+      if NETZ=youtube DIREKTLINK_TEXT=1 $NODE automation/metricool_tiktok_post.mjs; then touch "$MARKE_YOUTUBE"; else echo "$(date -u +%H:%M) YouTube-Post fehlgeschlagen (Marke bleibt alt)"; fi
     fi
     if faellig "$MARKE_PINTEREST" "$PINTEREST_ABSTAND"; then
       echo "$(date -u +%H:%M) Pinterest-Pin faellig (Metricool)"

@@ -324,7 +324,7 @@ def rueckholen(pfad):
         risiko = {"verlust-auto-draft", "marge-verlust-draft", "schutz-norm-unklar", "stecker-unpassend-ch",
                   "cj-keine-ch-versandoption", "cj-nicht-versendbar-ch", "handklinge-kein-ch-versand",
                   "heilversprechen-draft", "nicht-lieferbar-ch", "ausverkauft-lieferant",
-                  "adult-auto-draft", "arzneimittel-ohne-zulassung", "medizinprodukt-pruefen"} & set(p.get("tags") or [])
+                  "adult-auto-draft", "arzneimittel-ohne-zulassung", "fremdmarke-bild", "bild-passt-nicht", "medizinprodukt-pruefen"} & set(p.get("tags") or [])
         if risiko:
             n_tor += 1
             print(f"  ⛔ RISIKO-TAG: {p['title'][:50]} — {', '.join(sorted(risiko))} (bleibt {p['status']})", flush=True)

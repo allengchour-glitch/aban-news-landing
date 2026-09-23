@@ -36,29 +36,10 @@ export BRANCH=claude/luxestyle-status-tztnn1
 # Ein Durchlauf ist `bash autocommit.sh --einmal` — die Schleife liest das Skript also bei JEDEM Durchlauf neu
 # (auch der Server-Waechter bekommt Reparaturen ohne Neustart).
 if [ "${1:-}" = "--einmal" ]; then
-  aufloesen() {
-    local f b o t
-    for f in $(git diff --name-only --diff-filter=U); do
-      case "$f" in
-        dropship/*cursor*|dropship/*.json|dropship/*.md|dropship/*.csv|dropship/*/*.json)
-          git checkout --ours -- "$f" 2>/dev/null || git checkout --theirs -- "$f" ;;
-        dropship/*.txt|dropship/*.tsv|dropship/*.jsonl|dropship/*/*.txt)
-          b=$(mktemp); o=$(mktemp); t=$(mktemp)
-          git show ":1:$f" > "$b" 2>/dev/null || : > "$b"
-          git show ":2:$f" > "$o" 2>/dev/null || : > "$o"
-          git show ":3:$f" > "$t" 2>/dev/null || : > "$t"
-          git merge-file --union "$o" "$b" "$t"; cp "$o" "$f"; rm -f "$b" "$o" "$t" ;;
-        *)
-          echo "$(date -u +%H:%M) Konflikt ausserhalb der Ledger ($f) — Merge abgebrochen"; git merge --abort; return 1 ;;
-      esac
-      git add -- "$f"
-    done
-    git commit -q --no-edit 2>/dev/null
-  }
-  marker() { git grep -l -E "^(<<<<<<< |>>>>>>> )" HEAD -- dropship/ 2>/dev/null | head -5; }
+  . "$(dirname "$(readlink -f "$0")")/lib/git_aufloesen.sh"   # aufloesen() + marker(), gemeinsam mit git_sichern.sh
   if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then echo "$(date -u +%H:%M) Rebase-Zustand vorhanden — Committer wartet"; exit 0; fi
   [ -f .git/index.lock ] && [ -z "$(fuser .git/index.lock 2>/dev/null)" ] && rm -f .git/index.lock
-  if [ -f .git/MERGE_HEAD ]; then aufloesen || exit 0; fi
+  if [ -f .git/MERGE_HEAD ] || [ -n "$(git ls-files -u)" ]; then aufloesen || exit 0; fi
   git add -A dropship/ 2>/dev/null
   if ! git diff --cached --quiet 2>/dev/null; then
     git commit -q -m "CJ-Ledger auto [skip ci]" 2>/dev/null

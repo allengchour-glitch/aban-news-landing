@@ -185,14 +185,12 @@ function appendReel(id, url, cap, tags, platforms) {
   fs.writeFileSync(CSV, csv);
 }
 function gitPush(dateien, msg) {
-  // Repo-Sperre /tmp/git_repo.lock (22.09.): Motor und Autocommitter arbeiten im selben Arbeitsbaum; ein paralleler
-  // Merge/Rebase hinterliess .git/rebase-merge/autostash, danach scheiterte jeder Push des Motors und fuenf fertige
-  // Reels wurden verworfen. Ein verwaister Rebase-Zustand wird vor dem Versuch aufgeraeumt (--quit laesst HEAD stehen).
-  const cmd = `if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then git rebase --quit 2>/dev/null || true; fi; ` +
-    `git add ${dateien.map(f => `'${f}'`).join(' ')} && git commit -q -m '${msg} [skip ci]' ; git fetch -q origin ${BRANCH} && git -c rebase.autoStash=true rebase -q FETCH_HEAD && timeout 60 git push -q origin ${BRANCH}`;
+  // 23.09.2026: ueber automation/git_sichern.sh (Merge statt Rebase, KEIN rebase.autoStash). Der Autostash stashte die
+  // Quittungen laufender Poster und liess beim Zurueckspielen «unmerged» Dateien zurueck (19:25, drei dropship-Dateien).
+  // Der Helfer nimmt /tmp/git_repo.lock selbst, loest Konflikte je Dateiart und pusht nie Konflikt-Marker.
   for (let a = 0; a < 3; a++) {
-    try { execFileSync('flock', ['-w', '180', '/tmp/git_repo.lock', 'bash', '-c', cmd], { stdio: 'pipe' }); return true; }
-    catch (e) { execSync('git rebase --abort 2>/dev/null; true', { stdio: 'pipe' }); }
+    try { execFileSync('bash', ['automation/git_sichern.sh', `${msg} [skip ci]`, ...dateien], { stdio: 'pipe' }); return true; }
+    catch (e) { /* naechster Versuch */ }
   }
   return false;
 }

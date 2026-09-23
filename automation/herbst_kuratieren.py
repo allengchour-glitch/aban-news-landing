@@ -204,6 +204,13 @@ AUSGESCHLOSSEN = {
     "gid://shopify/Product/15454180868481": "englischer Bildtext-Balken",  # Tee-Set mit Tasse und Teetablett
     # Runde 4 (4 Nachrücker, 1 aussortiert + Chiffon-Cardigan per Regel)
     "gid://shopify/Product/15455518294401": "englische/chinesische Bildtexte",  # Tee-Tassenset mit 4 Tassen
+    # Runde 5 (Pruefer-Kontaktbogen 23.09. 19:25 — 6 von 65 widersprachen Titel oder eigenen Ausschlussgruenden)
+    "gid://shopify/Product/15490893414785": "Sport-Trinkflasche mit Fremdlogo «FJbottle»",  # Reisebecher für Sie
+    "gid://shopify/Product/15508451131777": "Stoff-Nahaufnahme, Ware nicht erkennbar",  # Plüsch-Sofakissen
+    "gid://shopify/Product/15454333239681": "bunter Halbschuh, kein Boot",  # Outdoor-Climbing-Boots
+    "gid://shopify/Product/15524892475777": "Bild zeigt glänzende Bluse, keinen Pullover",  # Damen Pullover mit V-Ausschnitt
+    "gid://shopify/Product/15449164874113": "Fischgrat-Sakko ohne Print",  # Freizeit-Jacke für Herren mit Print
+    "gid://shopify/Product/15504226222465": "weisses Sommerhemd",  # Stehkragen Hemdjacke
 }
 
 # Die ersten acht Karten = die Startseitenreihe. Nach dem Kontaktbogen von Hand gewählt (23.09.2026):

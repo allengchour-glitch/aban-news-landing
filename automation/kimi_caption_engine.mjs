@@ -46,7 +46,7 @@ while(made<MAX){
     done.add(n.id); fs.appendFileSync(LEDGER,n.id+'\n');
     let cap=null;
     for(let att=0; att<3; att++){
-      const c=await kimi(SYS, `Produkt: "${n.title}". Vorteil: Blitzversand aus der Schweiz, Kauf auf Rechnung. Schreibe NUR die Caption, beginne direkt mit dem Text.`, {max_tokens:280,timeout:30000});
+      const c=await kimi(SYS, `Produkt: "${n.title}". Vorteile: Kauf auf Rechnung mit Klarna oder TWINT, 30 Tage Rückgabe (KEINE Lieferzeit und kein «Blitzversand» nennen — CJ-Ware braucht 10–20 Werktage). Schreibe NUR die Caption, beginne direkt mit dem Text.`, {max_tokens:280,timeout:30000});
       if(c===null){ nulls++; break; }
       nulls=0;
       const metaLeak=/\b(the user|der user|we need|i need|caption for|social media caption|sentences with|hochdeutsch|want(s)? (a|me)|let'?s craft|begin directly|advantages?\b)\b/i.test(c);
