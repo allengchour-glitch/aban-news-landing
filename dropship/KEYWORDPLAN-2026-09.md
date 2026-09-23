@@ -21,8 +21,10 @@ hier NICHT messbar (Semrush ohne API-Einheiten, Google Ads Keyword-Planner ohne 
 
 - Google ist mit 551 Sitzungen der einzige Kanal neben direct, der Checkouts liefert (4). TikTok-Ads sind AUS (alle 4 Kampagnen deaktiviert, GEMESSEN 22.09.).
 - **Google-Landeseiten 90 T (GEMESSEN, Top 100 = 450 Sitzungen):** 92 Produktseiten (275), Startseite (78), 2 Ratgeber (78: Faszienrolle 76, Geschenke Männer 2), 4 Kollektionen (18).
-  Die zwei stärksten Produkt-Landeseiten sind heute DRAFT = 404: Dry Bag 20L (82 Sitzungen), Rizinusöl-Wickel-Set (55 Sitzungen, 2 Warenkorb, in 30 T noch 18).
-  Ebenso DRAFT: 2 mobile Klimaanlagen, Intex-Boot (1 Checkout im Sommer).
+  Die zwei stärksten Produkt-Landeseiten sind heute DRAFT — aber NICHT 404 (GEMESSEN 23.09. 23:50 `urlRedirects`): Dry Bag 20L (82 Sitzungen)
+  leitet per 301 auf den 10-l-Dry-Bag mit Blumenprint, das Rizinusöl-Wickel-Set (55 Sitzungen, 2 Warenkorb, in 30 T noch 18) auf das Tunmate-Rizinusöl;
+  alle neun gedrafteten Google-Landeseiten tragen einen Redirect auf ein aktives Produkt (Gegenprüfung des Hauptagenten). Ebenso DRAFT: 2 mobile
+  Klimaanlagen, Intex-Boot (1 Checkout im Sommer).
 - **Google 30 T:** nur 101 Sitzungen auf 53 Landeseiten (Startseite 20, Rizinus 18+10, Rest 1–2) — der Sommerverkehr (Kühlung, Pool, Dry Bag) ist weg.
 - **Kollektionen als Google-Landeseite sind praktisch unsichtbar** (90 T: 4 Kollektionen, 18 Sitzungen; 30 T: 0). Die 90-T-Spitzen viral-hits 528 /
   wasserfester-schmuck 496 stammten aus den abgeschalteten TikTok-Ads (30 T: 1 / 0).
@@ -463,7 +465,8 @@ das Ziel der ersten 14 Tage ist Lernen (Klickpreis, Suchbegriffe, Landeseiten-Ab
 5. Entscheid Sortiment: Vakuumierer, Adventskalender, Weihnachtsdeko, LED-Lichterketten, Haaröl importieren (nur mit CH-Versandoption, ohne
    CN-Netzstecker-Falle) — oder diese Keywords bewusst liegen lassen.
 6. Entscheid: Kollektion `moissanit-schmuck` von MANUAL (5 aktiv) auf Regel `TITLE CONTAINS Moissanit` (95 aktiv) umstellen — ändert die Seite sichtbar.
-7. Dry Bag 20L und Rizinusöl-Wickel-Set (Google-Landeseiten Nr. 1 und 4, heute DRAFT) — Lieferant klären oder 301 auf die Kollektion setzen.
+7. Dry Bag 20L und Rizinusöl-Wickel-Set (Google-Landeseiten Nr. 1 und 4, heute DRAFT mit 301 auf ein Ersatzprodukt) — nur wenn der Lieferant
+   die Originale wieder liefern kann, lohnt eine Rückholung; sonst bleibt der Redirect (kein Klick nötig).
 
 **Autonom (läuft oder ist eingebaut):**
 - 12 SEO-Titel/-Beschreibungen sind live (C1), rückgelesen, im Ledger. Der Wächter für Kollektionstexte prüft sie weiter (Sie/Eszett/Marken/CH-Versprechen).
