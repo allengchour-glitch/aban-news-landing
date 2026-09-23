@@ -18020,3 +18020,9 @@ gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448651071873	Farbe	gid://shopify/ProductOptionValue/12024525291905	3 Farben	3color	2026-09-23T20:35Z/reparatur-original:3color
 gid://shopify/Product/15448652677505	Farbe	gid://shopify/ProductOptionValue/12024592466305	Vintageblau	Vintage-Blau	2026-09-23T20:35Z/reparatur-konsistenz
 gid://shopify/Product/15448652677505	Farbe	gid://shopify/ProductOptionValue/12024592499073	Washed Blau	Washed Blue	2026-09-23T20:35Z/reparatur-original:Washed
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607375745	Schwarz klein Herren	Black Small Man	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607408513	Beige klein Herren	Beige Small Man	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607441281	Grau klein Herren	Gray Small Man	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607474049	Braun klein Herren	Brown Small Man	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448654971265	Farbe	gid://shopify/ProductOptionValue/12024607637889	Schwarz und lang	Black And Long	2026-09-23T20:35Z/reparatur-original:satzbau:funktionswort
+gid://shopify/Product/15448659034497	Farbe	gid://shopify/ProductOptionValue/12024630018433	Aprikose-Plus Gr. 3XL	Aprikose-Übergrösse 3XL	2026-09-23T20:35Z/reparatur-korrigiert
