@@ -323,7 +323,14 @@ while (gescannt < SCAN && idxKand < BATCH * 3) {
 }
 // Hype/neu zuerst, dann bunt nach Kategorie
 const prio = x => (x.tags.includes('hype-jetzt') ? 0 : x.tags.includes('neuheit') || x.tags.includes('neu') ? 1 : 2);
-const reihe = [...balanceByCategory(kand.filter(x => x.idx).sort((a, b) => prio(a) - prio(b)), x => x.title), ...balanceByCategory(kand.filter(x => !x.idx).sort((a, b) => prio(a) - prio(b)), x => x.title)];
+// 23.09.2026: Die Lernschleife rechnet Themen-Gewichte (social/_lernen.json → themen, z. B. beauty 1.33 · mode 0.91),
+// aber niemand las sie. Jetzt ordnen sie INNERHALB einer Prio-Stufe (nur belastbare Werte); balanceByCategory
+// mischt danach weiter bunt — das Gewicht entscheidet, wer in seiner Gruppe vorne steht, nicht, ob sie drankommt.
+const _themen = lernen().themen || {};
+const tw = x => { const e = _themen[thema(x.title)]; return e && e.belastbar && typeof e.gewicht === 'number' ? e.gewicht : 1; };
+const ordnen = l => l.sort((a, b) => prio(a) - prio(b) || tw(b) - tw(a));
+const reihe = [...balanceByCategory(ordnen(kand.filter(x => x.idx)), x => x.title), ...balanceByCategory(ordnen(kand.filter(x => !x.idx)), x => x.title)];
+if (Object.keys(_themen).length) console.log(`Themen-Gewichte (Lernschleife): ${Object.entries(_themen).filter(([, e]) => e.belastbar).map(([k, e]) => `${k} ${e.gewicht}`).join(' · ')}`);
 console.log(`Kandidaten: ${kand.length} von ${gescannt} gescannt (Schwelle: ACTIVE, ≥CHF 14.90, ≥2 Bilder, nie gepostet)${DRY ? ' · DRY' : ''}`);
 
 // ---------------------------------------------------------------- Bauen

@@ -1,22 +1,22 @@
-# Social-Qualität — Stand 2026-09-23 18:19 UTC
+# Social-Qualität — Stand 2026-09-23 20:19 UTC
 
 Erzeugt von `automation/social_qualitaet_wache.mjs` — **nur lesend**: kein Post, keine Caption, kein Profil und keine Planung wurde geändert. Jede Aktion unten ist ein **Vorschlag**.
 
 ## Gelesen
 
 - Instagram: 100 Beiträge (letzte 100, mit Aufrufen/Reichweite aus Insights)
-- Facebook: 179 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
+- Facebook: 59 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
 - Metricool-Planer: 4 Einträge (−30/+7 Tage) · Pinterest-Analyse: 8 Pins
-- Geprüft: 291 Beiträge, 312 Medien (ffprobe/ebur128/Tesseract)
+- Geprüft: 171 Beiträge, 192 Medien (ffprobe/ebur128/Tesseract)
 - Shopify live: Gratisversand CH ab CHF 45 Warenkorb nach Rabatt (öffentliche Aussage «ab CHF 50» ist damit gedeckt) · Standard CHF 7 · Kanarienvogel Suche: ok (sku: und title: liefern 0 für Unsinn)
 
 ## Zusammenfassung
 
-**105 Fehler · 193 Warnungen · 94 Hinweise** — Fehler/Warnungen in 206 von 291 Beiträgen.
+**45 Fehler · 75 Warnungen · 94 Hinweise** — Fehler/Warnungen in 86 von 171 Beiträgen.
 
 Vorgeschlagene Aktionen (nichts davon ausgeführt):
 
-- Facebook: 21 × Caption korrigieren · 125 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
+- Facebook: 21 × Caption korrigieren · 5 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
 - Instagram: 15 × Caption in der App korrigieren (API kann es nicht [Q2]) · 44 × löschen/neu posten (nur App/PC oder Facebook-User-Token [Q2])
 - TikTok/YouTube/Pinterest: 1 × in der jeweiligen App (Metricool löscht nur Geplantes [Q3])
 - Schutzregel: 0 Beiträge über 500 Aufrufe → nie löschen, nur Caption
@@ -24,18 +24,18 @@ Vorgeschlagene Aktionen (nichts davon ausgeführt):
 | Klasse | Instagram | Facebook | TikTok | YouTube | Pinterest | Summe |
 |---|---:|---:|---:|---:|---:|---:|
 | DIREKTLINK | · | · | · | · | 2 | 2 |
-| DOPPEL | 12 | 106 | · | · | · | 118 |
+| DOPPEL | 12 | · | · | · | · | 12 |
 | ENGLISCH | 6 | · | · | · | · | 6 |
 | FLOSKEL | 2 | 2 | · | · | 1 | 5 |
-| FORMAT | 41 | 43 | · | · | 1 | 85 |
+| FORMAT | 41 | 32 | · | · | 1 | 74 |
 | PREIS | 9 | 1 | · | · | · | 10 |
-| PRODUKT | 27 | 48 | · | · | · | 75 |
-| TON | 5 | 11 | · | · | · | 16 |
-| VERSAND | 31 | 44 | · | · | · | 75 |
+| PRODUKT | 27 | · | · | · | · | 27 |
+| TON | 5 | · | · | · | · | 5 |
+| VERSAND | 31 | 42 | · | · | · | 73 |
 
-Produkt zugeordnet: 183 von 291 Beiträgen (Titel 6, Link 158, Ledger 19).
+Produkt zugeordnet: 90 von 171 Beiträgen (Ledger 20, Link 65, Titel 5).
 
-Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 0 Beiträge mit nicht messbaren Medien.
+Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 0 Beiträge mit nicht messbaren Medien.
 
 ## Befunde (Fehler zuerst, dann nach Aufrufen; Hinweise stehen gesammelt weiter unten)
 
@@ -125,7 +125,7 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### FEHLER · Instagram reel · 2026-07-27 09:02 UTC · 41 Aufrufe
-- Post: https://www.instagram.com/reel/DbSmG3ijUtK/ · Zwilling: https://www.facebook.com/reel/1084306333929816/
+- Post: https://www.instagram.com/reel/DbSmG3ijUtK/
 - Text: «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär! 📌 Speicher der's · –10% mit WELCOME10 → luxestyle.ch»
 - **FEHLER TON:** Video ohne Tonspur  
   → Vorschlag: stumm: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
@@ -242,7 +242,7 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
   → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
 ### FEHLER · Instagram bild · 2026-07-29 23:28 UTC · 31 Aufrufe
-- Post: https://www.instagram.com/p/DbZS2rNDCPk/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122126218461350792
+- Post: https://www.instagram.com/p/DbZS2rNDCPk/
 - Text: «Für di oder zum Verschänke? 🎁 Sonnenbrille «Riviera» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
 - Produkt: Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail (DRAFT, nicht im Onlineshop, SKU cj-sun-riviera) — Zuordnung: Link im Text
 - **FEHLER PRODUKT:** Beworbenes Produkt «Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
@@ -354,53 +354,6 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «sst zu jedem Look ✨ Blitzversand aus der Schweiz & K»  
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### FEHLER · Facebook reel · 2026-09-10 17:02 UTC · 6 Aufrufe
-- Post: https://www.facebook.com/reel/1786402599368476/
-- Text: «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär! 📌 Speicher der's · –10% mit WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-27 09:02 UTC gepostet: https://www.facebook.com/reel/1084306333929816/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-09-10 09:02 UTC · 4 Aufrufe
-- Post: https://www.facebook.com/reel/1094341643151471/
-- Text: «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib's! ↗️ Teil's mit dyre beschte Fründin → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-09-04 17:01 UTC · 3 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122135304201350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Chiffon-Stola «Soirée» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Chiffon-Stola «Soirée» · Eleganter Abend-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-soiree) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Chiffon-Stola «Soirée» · Eleganter Abend-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125709073350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-09-04 09:02 UTC · 3 Aufrufe
-- Post: https://www.facebook.com/reel/2275418009886973/
-- Text: «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib's! ↗️ Teil's mit dyre beschte Fründin · –10% WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-28 09:01 UTC gepostet: https://www.facebook.com/reel/1063625846223814/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-08-22 09:01 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/reel/1590017462903363/
-- Text: «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär! 📌 Speicher der's · –10% mit WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-27 09:02 UTC gepostet: https://www.facebook.com/reel/1084306333929816/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
 ### FEHLER · Facebook reel · 2026-08-01 11:13 UTC · 1 Aufrufe
 - Post: https://www.facebook.com/reel/1585736366595262/ · Zwilling: https://www.instagram.com/reel/DbftCVqDqVO/
 - Text: ««Luftreiniger mit Feuchtigkeitsspender» ✨ Jetzt bei LuxeStyle — CHF 12.90. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭 🔗 l…»
@@ -412,426 +365,11 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
   → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
-### FEHLER · Facebook reel · 2026-09-02 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1302572056273309/
-- Text: «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär! 📌 Speicher der's · –10% mit WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-27 09:02 UTC gepostet: https://www.facebook.com/reel/1084306333929816/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-09-01 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122134622457350792
-- Text: «Genau das hat mir gefehlt 🙌 Mini-Tasche «Perla» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/mini…»
-- Produkt: Mini-Handtasche «Perla» · Perlen-Rivet Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-perla) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Mini-Handtasche «Perla» · Perlen-Rivet Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125250781350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-31 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122134302327350792
-- Text: «Kleiner Preis, grosse Wirkung ✨ Seidenschal «Lyon» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/produc…»
-- Produkt: Seidenschal «Lyon» · Eleganter Halstuch-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-lyon) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Seidenschal «Lyon» · Eleganter Halstuch-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 05:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125103283350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-30 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122134115157350792
-- Text: «Dis nöie Lieblingsteil? 👀 Armkette «Papillon» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/arm…»
-- Produkt: Armkette «Papillon» · Schmetterling, Roségold & Perlmutt (DRAFT, nicht im Onlineshop, SKU cj-papillon-armkette) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Armkette «Papillon» · Schmetterling, Roségold & Perlmutt» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-25 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125037373350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-08-30 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1086822247179606/
-- Text: «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selbst-gestalten — alles us eim Schwiizer Shop. 💾 Spicher's · gratis Versand ab CHF…»
-- **FEHLER VERSAND:** Gratis-Schwelle CHF 65 statt 50: «hop. 💾 Spicher's · gratis Versand ab CHF 65 · –10% WELCOME10 →» (live: gratis ab CHF 45 nach Rabatt → öffentliche Aussage 50)  
-  → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-06 17:02 UTC gepostet: https://www.facebook.com/reel/1563305552100842/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-29 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133871707350792
-- Text: «Stopp — das musst du sehen ✋ Crossbody «Lido» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/crossbody-tasche-l…»
-- Produkt: Crossbody-Tasche «Lido» · Gewebte Colorblock Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-lido) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Crossbody-Tasche «Lido» · Gewebte Colorblock Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-05 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122128008513350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-28 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133644667350792
-- Text: «Das mues i ha 🤍 Filzhut «Montana» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/filzhut-montana-br…»
-- Produkt: Filzhut «Montana» · Breitkrempiger Wollfilz-Fedora (DRAFT, nicht im Onlineshop, SKU cj-hut-montana) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Filzhut «Montana» · Breitkrempiger Wollfilz-Fedora» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-04 17:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127700671350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-28 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133640503350792
-- Text: «Genau das hesch gsuecht, gäu? 🙌 Ring-Set «Eternità» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Ring-Set «Eternità» · stapelbares Tropfen-Ring-Set, Silber (DRAFT, nicht im Onlineshop, SKU cj-eternita-ringset) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Ring-Set «Eternità» · stapelbares Tropfen-Ring-Set, Silber» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-04 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127642939350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-27 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133392817350792
-- Text: «Viu Style für wenig Gäud ✨ 3D Gesichtsroller 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/3d-li…»
-- Produkt: 3D Lifting Gesichtsroller · Gold (DRAFT, nicht im Onlineshop, SKU cj-3droller) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «3D Lifting Gesichtsroller · Gold» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127195387350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-27 11:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133332157350792
-- Text: «Viu Style für wenig Gäud ✨ 3D Gesichtsroller 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/3d-li…»
-- Produkt: 3D Lifting Gesichtsroller · Gold (DRAFT, nicht im Onlineshop, SKU cj-3droller) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «3D Lifting Gesichtsroller · Gold» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127195387350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-27 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133243111350792
-- Text: «Wusste nicht, dass ich das brauche 👀 Stroh-Shopper «Capri» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stroh-Shopper «Capri» · Geflochtene Schultertasche (DRAFT, nicht im Onlineshop, SKU cj-bag-capri) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Stroh-Shopper «Capri» · Geflochtene Schultertasche» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 09:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127111579350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-25 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132723247350792
-- Text: «Für di oder zum Verschänke? 🎁 Sonnenbrille «Riviera» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail (DRAFT, nicht im Onlineshop, SKU cj-sun-riviera) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126218461350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-23 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132387589350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Chiffon-Stola «Soirée» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Chiffon-Stola «Soirée» · Eleganter Abend-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-soiree) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Chiffon-Stola «Soirée» · Eleganter Abend-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125709073350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-08-23 17:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/2160672967858306/
-- Text: «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib's! ↗️ Teil's mit dyre beschte Fründin · –10% WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-28 09:01 UTC gepostet: https://www.facebook.com/reel/1063625846223814/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-21 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131788363350792
-- Text: «Genau das hat mir gefehlt 🙌 Mini-Tasche «Perla» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/mini…»
-- Produkt: Mini-Handtasche «Perla» · Perlen-Rivet Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-perla) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Mini-Handtasche «Perla» · Perlen-Rivet Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125250781350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-20 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131545957350792
-- Text: «Kleiner Preis, grosse Wirkung ✨ Seidenschal «Lyon» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/produc…»
-- Produkt: Seidenschal «Lyon» · Eleganter Halstuch-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-lyon) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Seidenschal «Lyon» · Eleganter Halstuch-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 05:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125103283350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-20 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131541607350792
-- Text: «Dis nöie Lieblingsteil? 👀 Armkette «Papillon» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/arm…»
-- Produkt: Armkette «Papillon» · Schmetterling, Roségold & Perlmutt (DRAFT, nicht im Onlineshop, SKU cj-papillon-armkette) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Armkette «Papillon» · Schmetterling, Roségold & Perlmutt» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-25 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125037373350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-20 11:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131449297350792
-- Text: «Dis nöie Lieblingsteil? 👀 Armkette «Papillon» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/arm…»
-- Produkt: Armkette «Papillon» · Schmetterling, Roségold & Perlmutt (DRAFT, nicht im Onlineshop, SKU cj-papillon-armkette) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Armkette «Papillon» · Schmetterling, Roségold & Perlmutt» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-25 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125037373350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-08-20 09:02 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1027994496716238/
-- Text: «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selbst-gestalten — alles us eim Schwiizer Shop. 💾 Spicher's · gratis Versand ab CHF…»
-- **FEHLER VERSAND:** Gratis-Schwelle CHF 65 statt 50: «hop. 💾 Spicher's · gratis Versand ab CHF 65 · –10% WELCOME10 →» (live: gratis ab CHF 45 nach Rabatt → öffentliche Aussage 50)  
-  → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-06 17:02 UTC gepostet: https://www.facebook.com/reel/1563305552100842/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-19 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131323669350792
-- Text: «Stopp — das musst du sehen ✋ Crossbody «Lido» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/crossbody-tasche-l…»
-- Produkt: Crossbody-Tasche «Lido» · Gewebte Colorblock Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-lido) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Crossbody-Tasche «Lido» · Gewebte Colorblock Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-05 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122128008513350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-19 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131258395350792
-- Text: «Stopp — das musst du sehen ✋ Crossbody «Lido» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/crossbody-tasche-l…»
-- Produkt: Crossbody-Tasche «Lido» · Gewebte Colorblock Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-lido) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Crossbody-Tasche «Lido» · Gewebte Colorblock Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-05 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122128008513350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-18 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130960579350792
-- Text: «Das mues i ha 🤍 Filzhut «Montana» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/filzhut-montana-br…»
-- Produkt: Filzhut «Montana» · Breitkrempiger Wollfilz-Fedora (DRAFT, nicht im Onlineshop, SKU cj-hut-montana) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Filzhut «Montana» · Breitkrempiger Wollfilz-Fedora» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-04 17:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127700671350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-18 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130854385350792
-- Text: «Genau das hesch gsuecht, gäu? 🙌 Ring-Set «Eternità» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Ring-Set «Eternità» · stapelbares Tropfen-Ring-Set, Silber (DRAFT, nicht im Onlineshop, SKU cj-eternita-ringset) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Ring-Set «Eternità» · stapelbares Tropfen-Ring-Set, Silber» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-04 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127642939350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-16 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130548103350792
-- Text: «Viu Style für wenig Gäud ✨ 3D Gesichtsroller 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/3d-li…»
-- Produkt: 3D Lifting Gesichtsroller · Gold (DRAFT, nicht im Onlineshop, SKU cj-3droller) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «3D Lifting Gesichtsroller · Gold» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127195387350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-16 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130401853350792
-- Text: «Wusste nicht, dass ich das brauche 👀 Stroh-Shopper «Capri» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stroh-Shopper «Capri» · Geflochtene Schultertasche (DRAFT, nicht im Onlineshop, SKU cj-bag-capri) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Stroh-Shopper «Capri» · Geflochtene Schultertasche» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 09:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127111579350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-16 06:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130367683350792
-- Text: «Wusste nicht, dass ich das brauche 👀 Stroh-Shopper «Capri» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stroh-Shopper «Capri» · Geflochtene Schultertasche (DRAFT, nicht im Onlineshop, SKU cj-bag-capri) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Stroh-Shopper «Capri» · Geflochtene Schultertasche» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 09:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127111579350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-13 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129708487350792
-- Text: «Für di oder zum Verschänke? 🎁 Sonnenbrille «Riviera» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail (DRAFT, nicht im Onlineshop, SKU cj-sun-riviera) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126218461350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-12 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129638161350792
-- Text: «Für di oder zum Verschänke? 🎁 Sonnenbrille «Riviera» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail (DRAFT, nicht im Onlineshop, SKU cj-sun-riviera) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126218461350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-12 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129584749350792
-- Text: «Für di oder zum Verschänke? 🎁 Sonnenbrille «Riviera» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail (DRAFT, nicht im Onlineshop, SKU cj-sun-riviera) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126218461350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-11 00:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129199303350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Chiffon-Stola «Soirée» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Chiffon-Stola «Soirée» · Eleganter Abend-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-soiree) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Chiffon-Stola «Soirée» · Eleganter Abend-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125709073350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-08-10 17:02 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/4090526617911151/
-- Text: «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib's! ↗️ Teil's mit dyre beschte Fründin · –10% WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-28 09:01 UTC gepostet: https://www.facebook.com/reel/1063625846223814/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-08-09 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/2605931063191773/
-- Text: «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär! 📌 Speicher der's · –10% mit WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-27 09:02 UTC gepostet: https://www.facebook.com/reel/1084306333929816/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-08 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128739151350792
-- Text: «Genau das hat mir gefehlt 🙌 Mini-Tasche «Perla» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/mini…»
-- Produkt: Mini-Handtasche «Perla» · Perlen-Rivet Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-perla) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Mini-Handtasche «Perla» · Perlen-Rivet Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125250781350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-07 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128447677350792
-- Text: «Kleiner Preis, grosse Wirkung ✨ Seidenschal «Lyon» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/produc…»
-- Produkt: Seidenschal «Lyon» · Eleganter Halstuch-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-lyon) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Seidenschal «Lyon» · Eleganter Halstuch-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 05:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125103283350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-07 11:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128391277350792
-- Text: «Kleiner Preis, grosse Wirkung ✨ Seidenschal «Lyon» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/produc…»
-- Produkt: Seidenschal «Lyon» · Eleganter Halstuch-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-lyon) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Seidenschal «Lyon» · Eleganter Halstuch-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 05:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125103283350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-07 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128361337350792
-- Text: «Dis nöie Lieblingsteil? 👀 Armkette «Papillon» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/arm…»
-- Produkt: Armkette «Papillon» · Schmetterling, Roségold & Perlmutt (DRAFT, nicht im Onlineshop, SKU cj-papillon-armkette) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Armkette «Papillon» · Schmetterling, Roségold & Perlmutt» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-25 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125037373350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-07 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128335021350792
-- Text: «Dis nöie Lieblingsteil? 👀 Armkette «Papillon» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/arm…»
-- Produkt: Armkette «Papillon» · Schmetterling, Roségold & Perlmutt (DRAFT, nicht im Onlineshop, SKU cj-papillon-armkette) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Armkette «Papillon» · Schmetterling, Roségold & Perlmutt» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-25 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125037373350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-06 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128270545350792
-- Text: «Dis nöie Lieblingsteil? 👀 Armkette «Papillon» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/arm…»
-- Produkt: Armkette «Papillon» · Schmetterling, Roségold & Perlmutt (DRAFT, nicht im Onlineshop, SKU cj-papillon-armkette) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Armkette «Papillon» · Schmetterling, Roségold & Perlmutt» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-25 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125037373350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
 ### FEHLER · Facebook reel · 2026-08-06 17:02 UTC · 0 Aufrufe
 - Post: https://www.facebook.com/reel/1563305552100842/
 - Text: «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selbst-gestalten — alles us eim Schwiizer Shop. 💾 Spicher's · gratis Versand ab CHF…»
 - **FEHLER VERSAND:** Gratis-Schwelle CHF 65 statt 50: «hop. 💾 Spicher's · gratis Versand ab CHF 65 · –10% WELCOME10 →» (live: gratis ab CHF 45 nach Rabatt → öffentliche Aussage 50)  
   → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-
-### FEHLER · Facebook bild · 2026-08-06 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128075893350792
-- Text: «Stopp — das musst du sehen ✋ Crossbody «Lido» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/crossbody-tasche-l…»
-- Produkt: Crossbody-Tasche «Lido» · Gewebte Colorblock Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-lido) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Crossbody-Tasche «Lido» · Gewebte Colorblock Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-05 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122128008513350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-05 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128008513350792
-- Text: «Stopp — das musst du sehen ✋ Crossbody «Lido» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/crossbody-tasche-l…»
-- Produkt: Crossbody-Tasche «Lido» · Gewebte Colorblock Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-lido) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Crossbody-Tasche «Lido» · Gewebte Colorblock Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-04 17:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127700671350792
-- Text: «Das mues i ha 🤍 Filzhut «Montana» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/filzhut-montana-br…»
-- Produkt: Filzhut «Montana» · Breitkrempiger Wollfilz-Fedora (DRAFT, nicht im Onlineshop, SKU cj-hut-montana) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Filzhut «Montana» · Breitkrempiger Wollfilz-Fedora» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-04 11:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127642939350792
-- Text: «Genau das hesch gsuecht, gäu? 🙌 Ring-Set «Eternità» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Ring-Set «Eternità» · stapelbares Tropfen-Ring-Set, Silber (DRAFT, nicht im Onlineshop, SKU cj-eternita-ringset) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Ring-Set «Eternità» · stapelbares Tropfen-Ring-Set, Silber» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-03 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127386487350792
-- Text: «Viu Style für wenig Gäud ✨ 3D Gesichtsroller 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/3d-li…»
-- Produkt: 3D Lifting Gesichtsroller · Gold (DRAFT, nicht im Onlineshop, SKU cj-3droller) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «3D Lifting Gesichtsroller · Gold» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127195387350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-03 06:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127351789350792
-- Text: «Viu Style für wenig Gäud ✨ 3D Gesichtsroller 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/3d-li…»
-- Produkt: 3D Lifting Gesichtsroller · Gold (DRAFT, nicht im Onlineshop, SKU cj-3droller) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «3D Lifting Gesichtsroller · Gold» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127195387350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-02 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127292071350792
-- Text: «Viu Style für wenig Gäud ✨ 3D Gesichtsroller 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/3d-li…»
-- Produkt: 3D Lifting Gesichtsroller · Gold (DRAFT, nicht im Onlineshop, SKU cj-3droller) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «3D Lifting Gesichtsroller · Gold» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-02 18:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127195387350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-02 18:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127195387350792
-- Text: «Viu Style für wenig Gäud ✨ 3D Gesichtsroller 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/3d-li…»
-- Produkt: 3D Lifting Gesichtsroller · Gold (DRAFT, nicht im Onlineshop, SKU cj-3droller) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «3D Lifting Gesichtsroller · Gold» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-08-02 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127111579350792
-- Text: «Wusste nicht, dass ich das brauche 👀 Stroh-Shopper «Capri» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stroh-Shopper «Capri» · Geflochtene Schultertasche (DRAFT, nicht im Onlineshop, SKU cj-bag-capri) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Stroh-Shopper «Capri» · Geflochtene Schultertasche» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
 ### FEHLER · Facebook reel · 2026-07-30 10:12 UTC · 0 Aufrufe
 - Post: https://www.facebook.com/reel/2179163992934147/
@@ -841,29 +379,6 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
   → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 - **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
   → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-07-30 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122126301807350792
-- Text: «Für di oder zum Verschänke? 🎁 Sonnenbrille «Riviera» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail (DRAFT, nicht im Onlineshop, SKU cj-sun-riviera) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126218461350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-07-29 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122126218461350792 · Zwilling: https://www.instagram.com/p/DbZS2rNDCPk/
-- Text: «Für di oder zum Verschänke? 🎁 Sonnenbrille «Riviera» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail (DRAFT, nicht im Onlineshop, SKU cj-sun-riviera) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-07-28 11:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122125709073350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Chiffon-Stola «Soirée» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/pro…»
-- Produkt: Chiffon-Stola «Soirée» · Eleganter Abend-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-soiree) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Chiffon-Stola «Soirée» · Eleganter Abend-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
 ### FEHLER · Facebook reel · 2026-07-28 09:51 UTC · 0 Aufrufe
 - Post: https://www.facebook.com/reel/1466744632141442/ · Zwilling: https://www.instagram.com/reel/DbVQd7GinD2/
@@ -883,44 +398,7 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
   → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
-### FEHLER · Facebook reel · 2026-07-28 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1063625846223814/
-- Text: «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib's! ↗️ Teil's mit dyre beschte Fründin · –10% WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-07-27 09:02 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1084306333929816/ · Zwilling: https://www.instagram.com/reel/DbSmG3ijUtK/
-- Text: «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär! 📌 Speicher der's · –10% mit WELCOME10 → luxestyle.ch»
-- **FEHLER TON:** Video ohne Tonspur  
-  → Vorschlag: stumm: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG FORMAT:** Video 604×1076 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-07-26 18:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122125250781350792
-- Text: «Genau das hat mir gefehlt 🙌 Mini-Tasche «Perla» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/mini…»
-- Produkt: Mini-Handtasche «Perla» · Perlen-Rivet Bag (DRAFT, nicht im Onlineshop, SKU cj-bag-perla) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Mini-Handtasche «Perla» · Perlen-Rivet Bag» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-07-26 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122125103283350792
-- Text: «Kleiner Preis, grosse Wirkung ✨ Seidenschal «Lyon» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch/produc…»
-- Produkt: Seidenschal «Lyon» · Eleganter Halstuch-Schal (DRAFT, nicht im Onlineshop, SKU cj-schal-lyon) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Seidenschal «Lyon» · Eleganter Halstuch-Schal» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook bild · 2026-07-25 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122125037373350792
-- Text: «Dis nöie Lieblingsteil? 👀 Armkette «Papillon» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/products/arm…»
-- Produkt: Armkette «Papillon» · Schmetterling, Roségold & Perlmutt (DRAFT, nicht im Onlineshop, SKU cj-papillon-armkette) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Armkette «Papillon» · Schmetterling, Roségold & Perlmutt» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-<details><summary>103 Beiträge nur mit Warnungen (aufklappen)</summary>
+<details><summary>43 Beiträge nur mit Warnungen (aufklappen)</summary>
 
 ### WARNUNG · Instagram reel · 2026-06-12 11:25 UTC · 61 Aufrufe
 - Post: https://www.instagram.com/reel/DZe-yKMt4Cq/
@@ -994,7 +472,7 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Instagram bild · 2026-08-14 17:00 UTC · 35 Aufrufe
-- Post: https://www.instagram.com/p/DcBzNlkkTvn/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122130055017350792
+- Post: https://www.instagram.com/p/DcBzNlkkTvn/
 - Text: «Lueg mau das aa 😍 Statement-Ohrringe «Onyx» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/statemen…»
 - Produkt: Statement-Ohrringe «Onyx» · Geometrisch, Schwarz (ACTIVE, https://luxestyle.ch/products/statement-ohrringe-onyx-geometrisch-schwarz, SKU CJLX292477201AZ) — Zuordnung: Link im Text
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-06-14 17:31 UTC gepostet: https://www.instagram.com/p/DZkySdhCGCa/  
@@ -1036,7 +514,7 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Instagram reel · 2026-08-18 18:42 UTC · 24 Aufrufe
-- Post: https://www.instagram.com/reel/DcMSDwjFGHj/ · Zwilling: https://www.facebook.com/reel/4472561329627705/
+- Post: https://www.instagram.com/reel/DcMSDwjFGHj/
 - Text: ««Kerzenlicht-Aromadiffuser» ✨ Jetzt bei LuxeStyle — CHF 14.90. Schweizer Online-Shop · Kauf auf Rechnung mit Klarna & TWINT · −10% mit Code…»
 - Produkt: Kerzenlicht-Aromadiffuser (ACTIVE, https://luxestyle.ch/products/kerzenlicht-aromadiffuser-412288, SKU CJ-CJJT154827201AZ) — Zuordnung: Link im Text
 - **WARNUNG TON:** übersteuert: True Peak +0.7 dBTP  
@@ -1050,6 +528,14 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-06-11 12:07 UTC gepostet: https://www.instagram.com/p/DZcexeCFkyf/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
+### WARNUNG · Instagram bild · 2026-09-22 19:48 UTC · 19 Aufrufe
+- Post: https://www.instagram.com/p/DdmhalZFAvs/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122139992853350792
+- Text: «Verwandle dein Zuhause in eine pure Wohlfühloase mit unserem Premium Bambus Aroma Diffuser ✨ Mit Kauf auf Rechnung mit Klarna war Relaxen n…»
+- Produkt: Premium Bambus Aroma Diffuser 300ml (ACTIVE, https://luxestyle.ch/products/premium-bambus-aroma-diffuser-300ml, SKU LX-11-PREMIUM-BAMBUS-AROMA-D) — Zuordnung: Ledger kimi-verwandle-dein-zuhause-in-eine-p-15
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG ENGLISCH:** Englischer Lieferantentext im Bild: color, change  
+  → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
 ### WARNUNG · Instagram bild · 2026-09-23 02:11 UTC · 18 Aufrufe
 - Post: https://www.instagram.com/p/DdnNSHEDMja/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122140069977350792
 - Text: «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für natürliche Glow-Momente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Klarna. 💕 🔗 …»
@@ -1058,26 +544,12 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### WARNUNG · Instagram bild · 2026-09-22 19:48 UTC · 16 Aufrufe
-- Post: https://www.instagram.com/p/DdmhalZFAvs/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122139992853350792
-- Text: «Verwandle dein Zuhause in eine pure Wohlfühloase mit unserem Premium Bambus Aroma Diffuser ✨ Mit Kauf auf Rechnung mit Klarna war Relaxen n…»
-- Produkt: Premium Bambus Aroma Diffuser 300ml (ACTIVE, https://luxestyle.ch/products/premium-bambus-aroma-diffuser-300ml, SKU LX-11-PREMIUM-BAMBUS-AROMA-D) — Zuordnung: Ledger kimi-verwandle-dein-zuhause-in-eine-p-15
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG ENGLISCH:** Englischer Lieferantentext im Bild: color, change  
-  → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
-
 ### WARNUNG · Pinterest pin · 2026-09-04 04:47 UTC · 12 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645579582500/
 - Text: «Dein Sound für jedes Abenteuer – solarbetrieben, wasserdicht und mit stimmungsvollem RGB-Licht. 🎶☀️ CHF 54.90 · Bezahl bequem auf Rechnung…»
 - (+ 1 Hinweis, siehe Hinweis-Liste)
 - **WARNUNG FLOSKEL:** Scam-Marker: «t. 🎶☀️ CHF 54.90 · Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Facebook reel · 2026-08-17 17:01 UTC · 12 Aufrufe
-- Post: https://www.facebook.com/reel/1085171917379965/
-- Text: «Das isch LuxeStyle 🇨🇭 Premium-Mode, Schmuck u Beauty us de Schwiz — fair im Priis, gäu? 💾 Spicher dr's · –10% mit WELCOME10 → luxestyle.…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-04 09:02 UTC gepostet: https://www.facebook.com/reel/1044133014890179/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
 ### WARNUNG · Instagram bild · 2026-07-28 09:20 UTC · 9 Aufrufe
 - Post: https://www.instagram.com/p/DbVM_eOkkED/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122125676835350792
@@ -1088,13 +560,7 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG ENGLISCH:** Englischer Lieferantentext im Bild: with, the, light  
   → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
-### WARNUNG · Facebook reel · 2026-08-28 09:02 UTC · 6 Aufrufe
-- Post: https://www.facebook.com/reel/2085493242070250/
-- Text: «Das isch LuxeStyle 🇨🇭 Premium-Mode, Schmuck u Beauty us de Schwiz — fair im Priis, gäu? 💾 Spicher dr's · –10% mit WELCOME10 → luxestyle.…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-04 09:02 UTC gepostet: https://www.facebook.com/reel/1044133014890179/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Instagram bild · 2026-09-23 08:26 UTC · 5 Aufrufe
+### WARNUNG · Instagram bild · 2026-09-23 08:26 UTC · 6 Aufrufe
 - Post: https://www.instagram.com/p/Ddn4MnOlCmw/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122140138311350792
 - Text: «Verwöhne deine Haut mit dem Jade Roller Premium – für einen strahlenden, frischen Teint ✨ Doppelseitig für Gesicht und Augenpartie 💚 🔗 lu…»
 - Produkt: Jade Roller Premium Doppelseitig (ACTIVE, https://luxestyle.ch/products/jade-roller-premium-doppelseitig, SKU LX-22-JADE-ROLLER-PREMIUM-DO) — Zuordnung: Ledger kimi-verw-hne-deine-haut-mit-dem-jade-15
@@ -1104,19 +570,13 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG ENGLISCH:** Englischer Lieferantentext im Bild: made, from, natural, stone, our, are  
   → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
-### WARNUNG · Facebook reel · 2026-08-31 17:01 UTC · 4 Aufrufe
-- Post: https://www.facebook.com/reel/1770610330950511/
-- Text: «Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF 34.90. 💾 Spicher dr's · welä Look? 👇 –10% WELCOME10 → luxestyle.ch»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-26 09:01 UTC gepostet: https://www.facebook.com/reel/1028258120108254/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-09-23 08:26 UTC · 3 Aufrufe
+### WARNUNG · Facebook bild · 2026-09-23 08:26 UTC · 4 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122140138311350792 · Zwilling: https://www.instagram.com/p/Ddn4MnOlCmw/
 - Text: «Verwöhne deine Haut mit dem Jade Roller Premium – für einen strahlenden, frischen Teint ✨ Doppelseitig für Gesicht und Augenpartie 💚 🔗 lu…»
 - **WARNUNG FORMAT:** Bild 480×480 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat)  
   → Vorschlag: unscharf: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
-### WARNUNG · Facebook bild · 2026-09-23 02:08 UTC · 3 Aufrufe
+### WARNUNG · Facebook bild · 2026-09-23 02:08 UTC · 4 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122140069977350792 · Zwilling: https://www.instagram.com/p/DdnNSHEDMja/
 - Text: «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für natürliche Glow-Momente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Klarna. 💕 🔗 …»
 - Produkt: Rosenquarz Gua Sha Set (ACTIVE, https://luxestyle.ch/products/rosenquarz-gua-sha-set, SKU LX-21-ROSENQUARZ-GUA-SHA-SET) — Zuordnung: Ledger kimi-verw-hne-deine-haut-mit-dem-rose-15
@@ -1124,387 +584,12 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### WARNUNG · Facebook bild · 2026-09-05 17:01 UTC · 3 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122135584425350792
-- Text: «Genau das hat mir gefehlt 🙌 Moissanite-Herzkette «Coeur» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/mo…»
-- Produkt: Moissanite-Herzkette «Coeur» · S925 Silber, Infinity (ACTIVE, https://luxestyle.ch/products/moissanite-herzkette-coeur-s925-silber-infinity, SKU CJJE292462001AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125787559350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-09-05 09:01 UTC · 3 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122135456277350792
-- Text: «Hesch das scho gseh? 🇨🇭 Blazer «Roma» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/blazer-roma-tailliert-mi…»
-- Produkt: Blazer «Roma» · Tailliert mit Bindegürtel & Revers (ACTIVE, https://luxestyle.ch/products/blazer-roma-tailliert-mit-bindegurtel-revers, SKU CJYD292434601AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:00 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125782633350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-18 18:43 UTC · 3 Aufrufe
-- Post: https://www.facebook.com/reel/4472561329627705/ · Zwilling: https://www.instagram.com/reel/DcMSDwjFGHj/
-- Text: ««Kerzenlicht-Aromadiffuser» ✨ Jetzt bei LuxeStyle — CHF 14.90. Schweizer Online-Shop · Kauf auf Rechnung mit Klarna & TWINT · −10% mit Code…»
-- Produkt: Kerzenlicht-Aromadiffuser (ACTIVE, https://luxestyle.ch/products/kerzenlicht-aromadiffuser-412288, SKU CJ-CJJT154827201AZ) — Zuordnung: Link im Text
-- **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-- **WARNUNG TON:** übersteuert: True Peak +3.9 dBTP  
-  → Vorschlag: Ton verzerrt: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-26 09:01 UTC · 2 Aufrufe
-- Post: https://www.facebook.com/reel/1376044194731045/
-- Text: «Statement-Shirt mit DYM Design 💀🌸 — du designsch, mir druckens. 💾 Speicher's 👇 –10% mit WELCOME10 → luxestyle.ch»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-31 17:02 UTC gepostet: https://www.facebook.com/reel/1077464014964104/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-15 09:01 UTC · 2 Aufrufe
-- Post: https://www.facebook.com/reel/1275885577849309/
-- Text: «Statement-Shirt mit DYM Design 💀🌸 — du designsch, mir druckens. 💾 Speicher's 👇 –10% mit WELCOME10 → luxestyle.ch»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-31 17:02 UTC gepostet: https://www.facebook.com/reel/1077464014964104/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
 ### WARNUNG · Facebook bild · 2026-09-03 21:20 UTC · 1 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122135101689350792 · Zwilling: https://www.instagram.com/p/Dc1w4wMjkjZ/
 - Text: «Dein Sound für jedes Abenteuer – solarbetrieben, wasserdicht und mit stimmungsvollem RGB-Licht. 🎶☀️ CHF 54.90 · Bezahl bequem auf Rechnung…»
 - (+ 1 Hinweis, siehe Hinweis-Liste)
 - **WARNUNG FLOSKEL:** Scam-Marker: «t. 🎶☀️ CHF 54.90 · Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-
-### WARNUNG · Facebook bild · 2026-09-03 17:01 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122135045811350792
-- Text: «Für di oder zum Verschänke? 🎁 Silber-Armreif «Serpent» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/silb…»
-- Produkt: Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik (ACTIVE, https://luxestyle.ch/products/silber-armreif-serpent-s925-schlangenschuppen-optik, SKU CJSL292454101AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125578669350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-09-03 17:00 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122135045547350792
-- Text: «Für di oder zum Verschänke? 🎁 Silber-Armreif «Serpent» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/silb…»
-- Produkt: Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik (ACTIVE, https://luxestyle.ch/products/silber-armreif-serpent-s925-schlangenschuppen-optik, SKU CJSL292454101AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125578669350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-09-03 09:00 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122134956885350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Zirkonia-Kette «Stella» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/zirkonia…»
-- Produkt: Zirkonia-Kette «Stella» · Kleeblatt-Anhänger, Silber-Optik (ACTIVE, https://luxestyle.ch/products/zirkonia-kette-stella-kleeblatt-anhanger-silber-optik, SKU CJLX292557401AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125517757350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-16 17:02 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/reel/1046764274811134/
-- Text: «Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz — fair im Priis, gäu? Chleider, Schmuck u Beauty. 💾 Spicher dr's · –10% mit WE…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-02 17:02 UTC gepostet: https://www.facebook.com/reel/1058200293322585/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-09-01 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122134537707350792
-- Text: «Hesch das scho gseh? 🇨🇭 Stiletto-Sandalette «Gala» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stiletto-Sandalette «Gala» · Violett, Knöchelriemen (ACTIVE, https://luxestyle.ch/products/stiletto-sandalette-gala-violett-knochelriemen, SKU CJNS291823709IR) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125180089350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-29 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133912087350792
-- Text: «Schnäu si, bevors weg isch 🏃‍♀️ Herren-Strickhemd «Amalfi» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Kragen (ACTIVE, https://luxestyle.ch/products/herren-strickhemd-amalfi-ajour-knit-camp-kragen, SKU CJYD292304401AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-06 09:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122128108755350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-29 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1436047084673293/
-- Text: «Mach dis eigets Teil 🎨 T-Shirt, Hoodie, Täsche oder Tasse mit DYM Design — mir druckens. 💾 Spicher dr's 👇 was chiem druf? –10% WELCOME10…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-05 09:02 UTC gepostet: https://www.facebook.com/reel/2325684204502310/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-27 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133451425350792
-- Text: «Das gibt es so kaum in der Schweiz 🇨🇭 Leinen-Set «Lino» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch…»
-- Produkt: Leinen-Set «Lino» · Weste + Weite Hose (ACTIVE, https://luxestyle.ch/products/leinen-set-lino-weste-weite-hose, SKU CJLS292534701AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-03 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127410517350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-27 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133403347350792
-- Text: «Das gibt es so kaum in der Schweiz 🇨🇭 Leinen-Set «Lino» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch…»
-- Produkt: Leinen-Set «Lino» · Weste + Weite Hose (ACTIVE, https://luxestyle.ch/products/leinen-set-lino-weste-weite-hose, SKU CJLS292534701AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-03 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127410517350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-27 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1060260669692784/
-- Text: «Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz — fair im Priis, gäu? Chleider, Schmuck u Beauty. 💾 Spicher dr's · –10% mit WE…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-02 17:02 UTC gepostet: https://www.facebook.com/reel/1058200293322585/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-26 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133199353350792
-- Text: «Äuä ds schönschte Teil grad itz 👀 Plateau-Sneaker «Cloud» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/plate…»
-- Produkt: Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt (ACTIVE, https://luxestyle.ch/products/plateau-sneaker-cloud-spitzen-mesh-geschnurt, SKU CJNS292489901AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-01 18:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126948979350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-26 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122133146703350792
-- Text: «Äuä ds schönschte Teil grad itz 👀 Plateau-Sneaker «Cloud» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/plate…»
-- Produkt: Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt (ACTIVE, https://luxestyle.ch/products/plateau-sneaker-cloud-spitzen-mesh-geschnurt, SKU CJNS292489901AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-01 18:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126948979350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-26 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132946189350792
-- Text: «Lueg mau das aa 😍 Statement-Ohrringe «Onyx» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/statemen…»
-- Produkt: Statement-Ohrringe «Onyx» · Geometrisch, Schwarz (ACTIVE, https://luxestyle.ch/products/statement-ohrringe-onyx-geometrisch-schwarz, SKU CJLX292477201AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-31 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126640459350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-25 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132904543350792
-- Text: «Lueg mau das aa 😍 Statement-Ohrringe «Onyx» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/statemen…»
-- Produkt: Statement-Ohrringe «Onyx» · Geometrisch, Schwarz (ACTIVE, https://luxestyle.ch/products/statement-ohrringe-onyx-geometrisch-schwarz, SKU CJLX292477201AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-31 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126640459350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-25 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132854875350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Herren-Set «Costa» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/h…»
-- Produkt: Herren-Set «Costa» · Kapuzen-Shirt + Jogger (ACTIVE, https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger, SKU CJTW292464301AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-31 00:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126510301350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-25 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/2486295051796590/
-- Text: «Dis eigete Täschli 🐱 — Motiv ufladä, fertig isch dis Unikat. 💾 Speicher der's · 👇 welä Motiv? –10% mit WELCOME10 → luxestyle.ch»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-30 17:01 UTC gepostet: https://www.facebook.com/reel/1041448861959257/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-24 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132676207350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Herren-Sneaker «Marco» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/prod…»
-- Produkt: Herren-Sneaker «Marco» · Leder-Optik, Retro-Trainer (ACTIVE, https://luxestyle.ch/products/herren-sneaker-marco-leder-optik-retro-trainer, SKU CJNS292151801AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125986075350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-24 18:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132612367350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Herren-Sneaker «Marco» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/prod…»
-- Produkt: Herren-Sneaker «Marco» · Leder-Optik, Retro-Trainer (ACTIVE, https://luxestyle.ch/products/herren-sneaker-marco-leder-optik-retro-trainer, SKU CJNS292151801AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125986075350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-24 17:02 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/839586722575789/
-- Text: «Dini Tasse, din Spruch ☕ — sälber gestaltet, perfekts Geschänk. ↗️ Schick's dyner Lieblingsperson · 📌 speicher's · –10% mit WELCOME10 → lu…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-29 09:01 UTC gepostet: https://www.facebook.com/reel/1560906292437695/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-24 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132516055350792
-- Text: «Genau das hat mir gefehlt 🙌 Moissanite-Herzkette «Coeur» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/mo…»
-- Produkt: Moissanite-Herzkette «Coeur» · S925 Silber, Infinity (ACTIVE, https://luxestyle.ch/products/moissanite-herzkette-coeur-s925-silber-infinity, SKU CJJE292462001AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125787559350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-24 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132490945350792
-- Text: «Hesch das scho gseh? 🇨🇭 Blazer «Roma» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/blazer-roma-tailliert-mi…»
-- Produkt: Blazer «Roma» · Tailliert mit Bindegürtel & Revers (ACTIVE, https://luxestyle.ch/products/blazer-roma-tailliert-mit-bindegurtel-revers, SKU CJYD292434601AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:00 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125782633350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-23 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132448243350792
-- Text: «Hesch das scho gseh? 🇨🇭 Blazer «Roma» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/blazer-roma-tailliert-mi…»
-- Produkt: Blazer «Roma» · Tailliert mit Bindegürtel & Revers (ACTIVE, https://luxestyle.ch/products/blazer-roma-tailliert-mit-bindegurtel-revers, SKU CJYD292434601AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:00 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125782633350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-23 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132202081350792
-- Text: «Für di oder zum Verschänke? 🎁 Silber-Armreif «Serpent» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/silb…»
-- Produkt: Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik (ACTIVE, https://luxestyle.ch/products/silber-armreif-serpent-s925-schlangenschuppen-optik, SKU CJSL292454101AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125578669350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-23 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132158623350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Zirkonia-Kette «Stella» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/zirkonia…»
-- Produkt: Zirkonia-Kette «Stella» · Kleeblatt-Anhänger, Silber-Optik (ACTIVE, https://luxestyle.ch/products/zirkonia-kette-stella-kleeblatt-anhanger-silber-optik, SKU CJLX292557401AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125517757350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-22 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122132101221350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Zirkonia-Kette «Stella» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/zirkonia…»
-- Produkt: Zirkonia-Kette «Stella» · Kleeblatt-Anhänger, Silber-Optik (ACTIVE, https://luxestyle.ch/products/zirkonia-kette-stella-kleeblatt-anhanger-silber-optik, SKU CJLX292557401AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125517757350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-21 11:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131720893350792
-- Text: «Hesch das scho gseh? 🇨🇭 Stiletto-Sandalette «Gala» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stiletto-Sandalette «Gala» · Violett, Knöchelriemen (ACTIVE, https://luxestyle.ch/products/stiletto-sandalette-gala-violett-knochelriemen, SKU CJNS291823709IR) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125180089350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-21 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1066170682839663/
-- Text: «Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF 34.90. 💾 Spicher dr's · welä Look? 👇 –10% WELCOME10 → luxestyle.ch»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-26 09:01 UTC gepostet: https://www.facebook.com/reel/1028258120108254/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-20 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122131374543350792
-- Text: «Schnäu si, bevors weg isch 🏃‍♀️ Herren-Strickhemd «Amalfi» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Kragen (ACTIVE, https://luxestyle.ch/products/herren-strickhemd-amalfi-ajour-knit-camp-kragen, SKU CJYD292304401AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-06 09:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122128108755350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-19 09:02 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1606753367517285/
-- Text: «Mach dis eigets Teil 🎨 T-Shirt, Hoodie, Täsche oder Tasse mit DYM Design — mir druckens. 💾 Spicher dr's 👇 was chiem druf? –10% WELCOME10…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-08-05 09:02 UTC gepostet: https://www.facebook.com/reel/2325684204502310/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-17 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130623553350792
-- Text: «Das gibt es so kaum in der Schweiz 🇨🇭 Leinen-Set «Lino» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch…»
-- Produkt: Leinen-Set «Lino» · Weste + Weite Hose (ACTIVE, https://luxestyle.ch/products/leinen-set-lino-weste-weite-hose, SKU CJLS292534701AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-03 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127410517350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-15 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130316311350792
-- Text: «Äuä ds schönschte Teil grad itz 👀 Plateau-Sneaker «Cloud» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/plate…»
-- Produkt: Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt (ACTIVE, https://luxestyle.ch/products/plateau-sneaker-cloud-spitzen-mesh-geschnurt, SKU CJNS292489901AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-01 18:01 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126948979350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-14 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122130055017350792 · Zwilling: https://www.instagram.com/p/DcBzNlkkTvn/
-- Text: «Lueg mau das aa 😍 Statement-Ohrringe «Onyx» 👇 Wele nimmsch? Schrib’s i d Kommentär · –10% mit WELCOME10 👉 luxestyle.ch/products/statemen…»
-- Produkt: Statement-Ohrringe «Onyx» · Geometrisch, Schwarz (ACTIVE, https://luxestyle.ch/products/statement-ohrringe-onyx-geometrisch-schwarz, SKU CJLX292477201AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-31 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126640459350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-14 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129972667350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Herren-Set «Costa» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/h…»
-- Produkt: Herren-Set «Costa» · Kapuzen-Shirt + Jogger (ACTIVE, https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger, SKU CJTW292464301AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-31 00:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126510301350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-13 17:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/2245319876009665/
-- Text: «Dis eigete Täschli 🐱 — Motiv ufladä, fertig isch dis Unikat. 💾 Speicher der's · 👇 welä Motiv? –10% mit WELCOME10 → luxestyle.ch»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-30 17:01 UTC gepostet: https://www.facebook.com/reel/1041448861959257/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-12 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129581179350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Herren-Sneaker «Marco» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/prod…»
-- Produkt: Herren-Sneaker «Marco» · Leder-Optik, Retro-Trainer (ACTIVE, https://luxestyle.ch/products/herren-sneaker-marco-leder-optik-retro-trainer, SKU CJNS292151801AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125986075350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-12 12:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129526381350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Herren-Sneaker «Marco» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/prod…»
-- Produkt: Herren-Sneaker «Marco» · Leder-Optik, Retro-Trainer (ACTIVE, https://luxestyle.ch/products/herren-sneaker-marco-leder-optik-retro-trainer, SKU CJNS292151801AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125986075350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-12 09:02 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/2789174414810443/
-- Text: «Dini Tasse, din Spruch ☕ — sälber gestaltet, perfekts Geschänk. ↗️ Schick's dyner Lieblingsperson · 📌 speicher's · –10% mit WELCOME10 → lu…»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-29 09:01 UTC gepostet: https://www.facebook.com/reel/1560906292437695/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-11 09:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129270529350792
-- Text: «Genau das hat mir gefehlt 🙌 Moissanite-Herzkette «Coeur» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/mo…»
-- Produkt: Moissanite-Herzkette «Coeur» · S925 Silber, Infinity (ACTIVE, https://luxestyle.ch/products/moissanite-herzkette-coeur-s925-silber-infinity, SKU CJJE292462001AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125787559350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-11 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129238999350792 · Zwilling: https://www.instagram.com/p/Db41mIWldvA/
-- Text: «Hesch das scho gseh? 🇨🇭 Blazer «Roma» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/blazer-roma-tailliert-mi…»
-- Produkt: Blazer «Roma» · Tailliert mit Bindegürtel & Revers (ACTIVE, https://luxestyle.ch/products/blazer-roma-tailliert-mit-bindegurtel-revers, SKU CJYD292434601AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:00 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125782633350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-10 10:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129045577350792
-- Text: «Für di oder zum Verschänke? 🎁 Silber-Armreif «Serpent» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/silb…»
-- Produkt: Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik (ACTIVE, https://luxestyle.ch/products/silber-armreif-serpent-s925-schlangenschuppen-optik, SKU CJSL292454101AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125578669350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-10 05:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122129014755350792
-- Text: «Für di oder zum Verschänke? 🎁 Silber-Armreif «Serpent» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/silb…»
-- Produkt: Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik (ACTIVE, https://luxestyle.ch/products/silber-armreif-serpent-s925-schlangenschuppen-optik, SKU CJSL292454101AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125578669350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-09 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128965129350792
-- Text: «Für di oder zum Verschänke? 🎁 Silber-Armreif «Serpent» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/silb…»
-- Produkt: Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik (ACTIVE, https://luxestyle.ch/products/silber-armreif-serpent-s925-schlangenschuppen-optik, SKU CJSL292454101AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 23:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125578669350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-09 17:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128918731350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Zirkonia-Kette «Stella» 💾 Spicher dr das für spöter · –10% mit WELCOME10 👉 luxestyle.ch/products/zirkonia…»
-- Produkt: Zirkonia-Kette «Stella» · Kleeblatt-Anhänger, Silber-Optik (ACTIVE, https://luxestyle.ch/products/zirkonia-kette-stella-kleeblatt-anhanger-silber-optik, SKU CJLX292557401AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-27 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125517757350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-08 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128685067350792
-- Text: «Hesch das scho gseh? 🇨🇭 Stiletto-Sandalette «Gala» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stiletto-Sandalette «Gala» · Violett, Knöchelriemen (ACTIVE, https://luxestyle.ch/products/stiletto-sandalette-gala-violett-knochelriemen, SKU CJNS291823709IR) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125180089350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-08 11:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122128621713350792
-- Text: «Hesch das scho gseh? 🇨🇭 Stiletto-Sandalette «Gala» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stiletto-Sandalette «Gala» · Violett, Knöchelriemen (ACTIVE, https://luxestyle.ch/products/stiletto-sandalette-gala-violett-knochelriemen, SKU CJNS291823709IR) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125180089350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook reel · 2026-08-08 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/2126960624863622/
-- Text: «Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF 34.90. 💾 Spicher dr's · welä Look? 👇 –10% WELCOME10 → luxestyle.ch»
-- **WARNUNG DOPPEL:** dieselbe Caption schon am 2026-07-26 09:01 UTC gepostet: https://www.facebook.com/reel/1028258120108254/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-08-03 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122127468447350792
-- Text: «Das gibt es so kaum in der Schweiz 🇨🇭 Leinen-Set «Lino» 💾 Merk’s dir · folg für meh Schwiizer Finds · –10% mit WELCOME10 👉 luxestyle.ch…»
-- Produkt: Leinen-Set «Lino» · Weste + Weite Hose (ACTIVE, https://luxestyle.ch/products/leinen-set-lino-weste-weite-hose, SKU CJLS292534701AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-08-03 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122127410517350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-07-31 09:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122126607159350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Herren-Set «Costa» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/h…»
-- Produkt: Herren-Set «Costa» · Kapuzen-Shirt + Jogger (ACTIVE, https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger, SKU CJTW292464301AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-31 00:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126510301350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-07-31 06:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122126562069350792
-- Text: «Weles isch dis Lieblingsteil? 🤍 Herren-Set «Costa» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/h…»
-- Produkt: Herren-Set «Costa» · Kapuzen-Shirt + Jogger (ACTIVE, https://luxestyle.ch/products/herren-set-costa-kapuzen-shirt-jogger, SKU CJTW292464301AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-31 00:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122126510301350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-07-29 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122126103849350792
-- Text: «Weles nimmsch – 1, 2 oder 3? 👀 Herren-Sneaker «Marco» 👇 Würdest du? Schreib’s in die Kommentare · –10% mit WELCOME10 👉 luxestyle.ch/prod…»
-- Produkt: Herren-Sneaker «Marco» · Leder-Optik, Retro-Trainer (ACTIVE, https://luxestyle.ch/products/herren-sneaker-marco-leder-optik-retro-trainer, SKU CJNS292151801AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-29 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125986075350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
 ### WARNUNG · Facebook bild · 2026-07-29 00:12 UTC · 0 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122125859139350792 · Zwilling: https://www.instagram.com/p/DbWzLsdDpmX/
@@ -1519,13 +604,6 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - (+ 2 Hinweise, siehe Hinweis-Liste)
 - **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «es in einem Set. 🧔 Blitzversand aus der Schweiz und»  
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-
-### WARNUNG · Facebook bild · 2026-07-28 23:28 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122125853511350792
-- Text: «Genau das hat mir gefehlt 🙌 Moissanite-Herzkette «Coeur» 👇 Markier öpper, wo das bruucht · –10% mit WELCOME10 👉 luxestyle.ch/products/mo…»
-- Produkt: Moissanite-Herzkette «Coeur» · S925 Silber, Infinity (ACTIVE, https://luxestyle.ch/products/moissanite-herzkette-coeur-s925-silber-infinity, SKU CJJE292462001AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-28 17:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125787559350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
 ### WARNUNG · Facebook bild · 2026-07-28 23:07 UTC · 0 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122125850463350792 · Zwilling: https://www.instagram.com/p/DbWrtD9jSC2/
@@ -1643,18 +721,11 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 - **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «e zum Vergnügen ✨💡 Blitzversand aus der Schweiz, be»  
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### WARNUNG · Facebook bild · 2026-07-26 17:00 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122125246587350792
-- Text: «Hesch das scho gseh? 🇨🇭 Stiletto-Sandalette «Gala» ↗️ Teil das mit dyre beschte Fründin 💛 · –10% mit WELCOME10 👉 luxestyle.ch/products/…»
-- Produkt: Stiletto-Sandalette «Gala» · Violett, Knöchelriemen (ACTIVE, https://luxestyle.ch/products/stiletto-sandalette-gala-violett-knochelriemen, SKU CJNS291823709IR) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-07-26 11:28 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122125180089350792  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
 </details>
 
 ## Hinweise (gesammelt)
 
-94 Hinweise in 65 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 194 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #viral #fyp) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
+94 Hinweise in 65 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 75 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #viral #fyp) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
 
 <details><summary>Liste</summary>
 
@@ -1697,28 +768,28 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 | Instagram | 2026-07-28 | 25 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «ibilität – mit Blitzversand aus der Schweiz direkt zu dir nach» | https://www.instagram.com/p/DbVgLAXHyd9/ |
 | Instagram | 2026-07-28 | 25 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DbVgLAXHyd9/ |
 | Instagram | 2026-06-17 | 23 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DZsq027lBQs/ |
+| Instagram | 2026-09-22 | 19 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DdmhalZFAvs/ |
 | Instagram | 2026-07-28 | 19 | FORMAT | Bild 950×950 — Breite unter 1080 | https://www.instagram.com/p/DbWjcLymW6l/ |
 | Instagram | 2026-09-23 | 18 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DdnNSHEDMja/ |
-| Instagram | 2026-09-22 | 16 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DdmhalZFAvs/ |
 | Instagram | 2026-07-28 | 16 | DOPPEL | gleiche Warengruppe «uhr» 0 h nach https://www.instagram.com/p/DbVJV_SDkIz/ (Raster wirkt doppelt) | https://www.instagram.com/p/DbVJ4Z4lu5Q/ |
 | Instagram | 2026-07-28 | 15 | DOPPEL | gleiche Warengruppe «uhr» 0 h nach https://www.instagram.com/p/DbVJV_SDkIz/ (Raster wirkt doppelt) | https://www.instagram.com/p/DbVJ3F3Fseo/ |
+| Instagram | 2026-09-23 | 12 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Ddoi3MMlLPX/ |
 | Instagram | 2026-07-28 | 12 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DbWCiqijoyV/ |
 | Pinterest | 2026-09-04 | 12 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dc1w4wMjkjZ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645579582500/ |
 | Instagram | 2026-07-28 | 11 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DbVQ15-kqMv/ |
 | Instagram | 2026-07-28 | 9 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «Vergnügen ✨💡 Blitzversand aus der Schweiz, bequem auf Rechnun» | https://www.instagram.com/p/DbVM_eOkkED/ |
-| Instagram | 2026-09-23 | 8 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Ddoi3MMlLPX/ |
 | Pinterest | 2026-09-04 | 7 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dc1zAj-GoFP/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645579582505/ |
-| Instagram | 2026-09-23 | 5 | DOPPEL | gleiche Warengruppe «gesichtsroller» 6 h nach https://www.instagram.com/p/DdnNSHEDMja/ (Raster wirkt doppelt) | https://www.instagram.com/p/Ddn4MnOlCmw/ |
-| Facebook | 2026-09-23 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140069977350792 |
-| Facebook | 2026-09-22 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122139992853350792 |
+| Instagram | 2026-09-23 | 6 | DOPPEL | gleiche Warengruppe «gesichtsroller» 6 h nach https://www.instagram.com/p/DdnNSHEDMja/ (Raster wirkt doppelt) | https://www.instagram.com/p/Ddn4MnOlCmw/ |
+| Facebook | 2026-09-23 | 4 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140069977350792 |
+| Facebook | 2026-09-22 | 4 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122139992853350792 |
 | Facebook | 2026-09-03 | 3 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 1/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 3/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 4/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 5/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 3 | FORMAT | Bild 1024×1024 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 6/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 3 | FORMAT | Bild 888×888 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 7/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Facebook | 2026-09-23 | 1 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140221003350792 |
 | Facebook | 2026-09-03 | 1 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122135101689350792 |
-| Facebook | 2026-09-23 | 0 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140221003350792 |
 | Facebook | 2026-07-29 | 0 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «one-Fach! ☀️👜 Blitzversand aus der Schweiz und Kauf auf Rechnu» | https://www.facebook.com/122102579637350792/posts/122125859139350792 |
 | Facebook | 2026-07-29 | 0 | FORMAT | Bild 750×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122125859139350792 |
 | Facebook | 2026-07-29 | 0 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «einem Set. 🧔 Blitzversand aus der Schweiz und bequem Kauf auf» | https://www.facebook.com/122102579637350792/posts/122125858557350792 |
@@ -1759,44 +830,19 @@ Dazu: 70 Facebook-Beiträge ohne Direktlink (Liste unten) · 26 Beiträge mit Pr
 
 ## Facebook ohne Direktlink
 
-Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschenkt dort den Klick. 70 Beiträge ohne `luxestyle.ch/products/…`. Vorschlag: künftige FB-Beiträge mit Produktlink (Poster), bestehende nur bei Beiträgen mit Reichweite nachtragen — Weg: FB-API POST /{post-id} message=… [Q1]
+Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschenkt dort den Klick. 43 Beiträge ohne `luxestyle.ch/products/…`. Vorschlag: künftige FB-Beiträge mit Produktlink (Poster), bestehende nur bei Beiträgen mit Reichweite nachtragen — Weg: FB-API POST /{post-id} message=… [Q1]
 
 <details><summary>Liste</summary>
 
-- 2026-08-17 17:01 UTC · 12 Aufrufe · https://www.facebook.com/reel/1085171917379965/ · «Das isch LuxeStyle 🇨🇭 Premium-Mode, Schmuck u Beauty us d…»
-- 2026-09-10 17:02 UTC · 6 Aufrufe · https://www.facebook.com/reel/1786402599368476/ · «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär!…»
-- 2026-08-28 09:02 UTC · 6 Aufrufe · https://www.facebook.com/reel/2085493242070250/ · «Das isch LuxeStyle 🇨🇭 Premium-Mode, Schmuck u Beauty us d…»
-- 2026-09-10 09:02 UTC · 4 Aufrufe · https://www.facebook.com/reel/1094341643151471/ · «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib…»
-- 2026-08-31 17:01 UTC · 4 Aufrufe · https://www.facebook.com/reel/1770610330950511/ · «Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF…»
-- 2026-09-23 08:26 UTC · 3 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140138311350792 · «Verwöhne deine Haut mit dem Jade Roller Premium – für einen…»
-- 2026-09-23 05:39 UTC · 3 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140105137350792 · «EMS Mikrostrom Massagegerät · CHF 22.90 Kleiner Schweizer S…»
-- 2026-09-23 02:08 UTC · 3 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140069977350792 · «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für na…»
-- 2026-09-22 19:48 UTC · 3 Aufrufe · https://www.facebook.com/122102579637350792/posts/122139992853350792 · «Verwandle dein Zuhause in eine pure Wohlfühloase mit unsere…»
-- 2026-09-04 09:02 UTC · 3 Aufrufe · https://www.facebook.com/reel/2275418009886973/ · «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib…»
+- 2026-09-23 08:26 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140138311350792 · «Verwöhne deine Haut mit dem Jade Roller Premium – für einen…»
+- 2026-09-23 05:39 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140105137350792 · «EMS Mikrostrom Massagegerät · CHF 22.90 Kleiner Schweizer S…»
+- 2026-09-23 02:08 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140069977350792 · «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für na…»
+- 2026-09-22 19:48 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122139992853350792 · «Verwandle dein Zuhause in eine pure Wohlfühloase mit unsere…»
 - 2026-09-03 21:39 UTC · 3 Aufrufe · https://www.facebook.com/122102579637350792/posts/122135105943350792 · «Von allem etwas – 8 Lieblinge aus 8 Welten 🌍 Wisch dich du…»
-- 2026-08-26 09:01 UTC · 2 Aufrufe · https://www.facebook.com/reel/1376044194731045/ · «Statement-Shirt mit DYM Design 💀🌸 — du designsch, mir dru…»
-- 2026-08-15 09:01 UTC · 2 Aufrufe · https://www.facebook.com/reel/1275885577849309/ · «Statement-Shirt mit DYM Design 💀🌸 — du designsch, mir dru…»
+- 2026-09-23 14:39 UTC · 1 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140221003350792 · «Kristall-Set 3-teilig · CHF 29.90 Kleiner Schweizer Shop au…»
 - 2026-09-03 21:20 UTC · 1 Aufrufe · https://www.facebook.com/122102579637350792/posts/122135101689350792 · «Dein Sound für jedes Abenteuer – solarbetrieben, wasserdich…»
-- 2026-08-22 09:01 UTC · 1 Aufrufe · https://www.facebook.com/reel/1590017462903363/ · «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär!…»
-- 2026-08-16 17:02 UTC · 1 Aufrufe · https://www.facebook.com/reel/1046764274811134/ · «Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz…»
 - 2026-08-05 09:02 UTC · 1 Aufrufe · https://www.facebook.com/reel/2325684204502310/ · «Mach dis eigets Teil 🎨 T-Shirt, Hoodie, Täsche oder Tasse …»
 - 2026-08-02 17:02 UTC · 1 Aufrufe · https://www.facebook.com/reel/1058200293322585/ · «Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz…»
-- 2026-09-23 14:39 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140221003350792 · «Kristall-Set 3-teilig · CHF 29.90 Kleiner Schweizer Shop au…»
-- 2026-09-02 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/1302572056273309/ · «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär!…»
-- 2026-08-30 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/1086822247179606/ · «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selb…»
-- 2026-08-29 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/1436047084673293/ · «Mach dis eigets Teil 🎨 T-Shirt, Hoodie, Täsche oder Tasse …»
-- 2026-08-27 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/1060260669692784/ · «Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz…»
-- 2026-08-25 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/2486295051796590/ · «Dis eigete Täschli 🐱 — Motiv ufladä, fertig isch dis Unika…»
-- 2026-08-24 17:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/839586722575789/ · «Dini Tasse, din Spruch ☕ — sälber gestaltet, perfekts Gesch…»
-- 2026-08-23 17:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/2160672967858306/ · «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib…»
-- 2026-08-21 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/1066170682839663/ · «Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF…»
-- 2026-08-20 09:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/1027994496716238/ · «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selb…»
-- 2026-08-19 09:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/1606753367517285/ · «Mach dis eigets Teil 🎨 T-Shirt, Hoodie, Täsche oder Tasse …»
-- 2026-08-13 17:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/2245319876009665/ · «Dis eigete Täschli 🐱 — Motiv ufladä, fertig isch dis Unika…»
-- 2026-08-12 09:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/2789174414810443/ · «Dini Tasse, din Spruch ☕ — sälber gestaltet, perfekts Gesch…»
-- 2026-08-10 17:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/4090526617911151/ · «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib…»
-- 2026-08-09 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/2605931063191773/ · «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär!…»
-- 2026-08-08 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/2126960624863622/ · «Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF…»
 - 2026-08-06 17:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/1563305552100842/ · «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selb…»
 - 2026-08-04 09:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/1044133014890179/ · «Das isch LuxeStyle 🇨🇭 Premium-Mode, Schmuck u Beauty us d…»
 - 2026-07-31 17:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/1077464014964104/ · «Statement-Shirt mit DYM Design 💀🌸 — du designsch, mir dru…»
@@ -1826,19 +872,17 @@ Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschen
 - 2026-07-28 09:17 UTC · 0 Aufrufe · https://www.facebook.com/reel/1562821878956452/ · ««Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend» …»
 - 2026-07-28 09:12 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125673679350792 · «Statement am Handgelenk 🔗 Cuban-Link-Armband, Edelstahl & …»
 - 2026-07-28 09:11 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125673631350792 · «Für ihn: maritimer Style 🤎 Leder-Armband «Anker» mit Edels…»
-- 2026-07-28 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/1063625846223814/ · «Wasserfescht & edel: 1 oder 2? 👇 Welä passt zu dir? Schrib…»
 - 2026-07-28 08:52 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125662153350792 · «Zarte Eleganz fürs Handgelenk ✨ Damenuhr «Petite» mit Perlm…»
 - 2026-07-28 08:52 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125662063350792 · «Sportlich-elegant 🌊 Edelstahl-Sportuhr «Pacific» mit GMT-B…»
 - 2026-07-28 08:52 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125661925350792 · «Echter Uhrmacher-Luxus ⚙️ Automatik-Skelettuhr mit offenem …»
 - 2026-07-28 08:48 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125661085350792 · «Zeitlos am Handgelenk ⌚ Herrenuhr Edelstahl mit Saphirglas,…»
-- 2026-07-27 09:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/1084306333929816/ · «Welä Ohrring nimmsch — 1 oder 2? 👇 Schrib's i d Kommentär!…»
 - 2026-07-26 09:01 UTC · 0 Aufrufe · https://www.facebook.com/reel/1028258120108254/ · «Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF…»
 
 </details>
 
 ## Nicht prüfbar
 
-- Preis ohne sichere Produktzuordnung (26): https://www.instagram.com/p/Dc1zAj-GoFP/ · https://www.instagram.com/p/DbVMG4okgei/ · https://www.instagram.com/p/DbVMFlsknPT/ · https://www.instagram.com/p/DbVJ5lEFlXc/ · https://www.instagram.com/p/DbVJ4Z4lu5Q/ · https://www.instagram.com/p/DbVJ3F3Fseo/ · https://www.instagram.com/p/DbVJV_SDkIz/ · https://www.instagram.com/reel/DaxHrZODx43/ · https://www.instagram.com/p/DZj7svdktrN/ · https://www.instagram.com/p/DZicunuk5Dr/ · https://www.instagram.com/p/DZicnMck2Vc/ · https://www.instagram.com/p/DZiclNMEw26/ · https://www.instagram.com/p/DZiceA3k9fi/ · https://www.instagram.com/p/DZicbunk2o5/ · https://www.facebook.com/122102579637350792/posts/122135105943350792 · https://www.facebook.com/122102579637350792/posts/122135101689350792 · https://www.facebook.com/reel/1770610330950511/ · https://www.facebook.com/reel/1066170682839663/ · https://www.facebook.com/reel/2126960624863622/ · https://www.facebook.com/122102579637350792/posts/122125673679350792 · https://www.facebook.com/122102579637350792/posts/122125673631350792 · https://www.facebook.com/122102579637350792/posts/122125662153350792 · https://www.facebook.com/122102579637350792/posts/122125662063350792 · https://www.facebook.com/122102579637350792/posts/122125661925350792 · https://www.facebook.com/122102579637350792/posts/122125661085350792 …
+- Preis ohne sichere Produktzuordnung (23): https://www.instagram.com/p/Dc1zAj-GoFP/ · https://www.instagram.com/p/DbVMG4okgei/ · https://www.instagram.com/p/DbVMFlsknPT/ · https://www.instagram.com/p/DbVJ5lEFlXc/ · https://www.instagram.com/p/DbVJ4Z4lu5Q/ · https://www.instagram.com/p/DbVJ3F3Fseo/ · https://www.instagram.com/p/DbVJV_SDkIz/ · https://www.instagram.com/reel/DaxHrZODx43/ · https://www.instagram.com/p/DZj7svdktrN/ · https://www.instagram.com/p/DZicunuk5Dr/ · https://www.instagram.com/p/DZicnMck2Vc/ · https://www.instagram.com/p/DZiclNMEw26/ · https://www.instagram.com/p/DZiceA3k9fi/ · https://www.instagram.com/p/DZicbunk2o5/ · https://www.facebook.com/122102579637350792/posts/122135105943350792 · https://www.facebook.com/122102579637350792/posts/122135101689350792 · https://www.facebook.com/122102579637350792/posts/122125673679350792 · https://www.facebook.com/122102579637350792/posts/122125673631350792 · https://www.facebook.com/122102579637350792/posts/122125662153350792 · https://www.facebook.com/122102579637350792/posts/122125662063350792 · https://www.facebook.com/122102579637350792/posts/122125661925350792 · https://www.facebook.com/122102579637350792/posts/122125661085350792 · https://www.facebook.com/reel/1028258120108254/
 - Medien nicht messbar (0): —
 - TikTok/YouTube: Format und Ton werden an der hochgeladenen Datei gemessen (Repo `social/reels/` bzw. Metricool-Medium), nicht an der Plattform-Fassung.
 
