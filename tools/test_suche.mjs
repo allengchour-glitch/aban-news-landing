@@ -160,6 +160,27 @@ await page.waitForTimeout(600)
 const av = await page.evaluate(() => (document.querySelector('a.res .t') || {}).textContent || '')
 check('„arbeitsvertag vorlage" fuehrt zum Arbeitsvertrag', /arbeitsvertrag/i.test(av), '1. Treffer: ' + av.slice(0, 50))
 
+/* 🌍 VERTIPPER AUCH AUF DEN SPRACHSEITEN. build_suche_sprachen.py brach seit 2026-09-04 ab
+   (Muster „Trefferzeile" veraltet), build-pages.sh schluckte den Fehler — en/fr/it blieben
+   drei Wochen ohne Korrektur. Dieser Test merkt es beim naechsten Mal sofort. */
+for (const [datei, tipp, wort] of [['/en/search.html', 'reviws', 'understood as'], ['/fr/recherche.html', 'annoces', 'compris comme']]) {
+  await page.goto(`http://127.0.0.1:${PORT}${datei}?q=${encodeURIComponent(tipp)}`, { waitUntil: 'networkidle' })
+  await page.waitForTimeout(600)
+  const c = await page.evaluate(() => (document.querySelector('#cnt') || {}).textContent || '')
+  check(`${datei}: Vertipper „${tipp}" wird korrigiert`, c.indexOf(wort) >= 0, c.slice(0, 80))
+}
+
+/* 🇨🇭 FRAGEN WIE MENSCHEN SIE TIPPEN — im echten Browser (die volle Liste misst
+   tools/such_qualitaet.mjs ohne Browser). „was" traf vorher „WASchmaschine". */
+/* ⚠️ Erste Fassung pruefte /lohn/ im Titel — und bestand mit „LOHNt sich ein KI-Abo?".
+   Darum jetzt die Adresse, nicht ein Wortfetzen. */
+for (const [q, soll] of [['was bleibt vom lohn', /nettolohn|lohnrechner/], ['zügeln', /\/umzug-schweiz/], ['prozentrechnung', /\/prozent-rechner/]]) {
+  await page.goto(`http://127.0.0.1:${PORT}/suchmaschine.html?q=${encodeURIComponent(q)}`, { waitUntil: 'networkidle' })
+  await page.waitForTimeout(600)
+  const t = await page.evaluate(() => (document.querySelector('a.res') || { getAttribute: () => '' }).getAttribute('href') || '')
+  check(`„${q}" → passender 1. Treffer`, soll.test(t), t)
+}
+
 check('0 JS-Fehler', fehler.length === 0, fehler.join(' | '))
 console.log(`\n${fehl === 0 ? '🎉 SUCHE BESTANDEN' : '💥 SUCHE FEHLGESCHLAGEN'} — ${ok} ok, ${fehl} Fehler`)
 await browser.close()
