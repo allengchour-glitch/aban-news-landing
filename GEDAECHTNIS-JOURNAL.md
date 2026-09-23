@@ -618,6 +618,40 @@ GETAN: Neunte Schicht in `post_guard.mjs`: `warenFamilie(text)` (12 Gruppen per 
 
 **Nachtrag 47 (23.09. 21:00, Social-Reparaturen + zwei Sperren von aussen):** (a) **Meta-Spam-Sperre:** Nach 120 Löschungen setzte `fb_caption_korrektur.mjs` (feste Ersetzungstabelle, jede Änderung zurückgelesen, alter/neuer Text im Ledger `dropship/_fb_caption_korrigiert.tsv`) 7 von 25 Korrekturen ab: «Blitzversand aus der Schweiz», «in 1–2 Tagen bei dir», «gratis ab CHF 65», Lockpreis Luftreiniger 12.90 → 15.90. Dann antwortete Meta mit «Um die Community vor Spam zu schützen …», und das Werkzeug schoss noch 18 Aufrufe nach. Jetzt bricht es beim ersten Sperrhinweis ab, schreibt im 45-s-Takt und läuft täglich im Aufseher (idempotent). **Massenaktionen auf einer Seite brauchen ein Tagesbudget, auch wenn jede einzelne erlaubt ist, und jeder Schreiber muss eine Sperre als Stoppsignal lesen, nicht als Einzelfehler.** (b) **Server-Platte 100 %:** Der Betreiber liess auf 3,2 GB freier Platte `git gc` über vier Voll-Klone laufen. Das Neuverpacken schreibt zuerst die neue Packdatei, der Waechter-Klon (5 GB Pack) füllte die Platte, und `tmp_pack_*` blieb liegen. Vorher lagen in /opt/abannews schon 3,0 GiB solcher Reste («size-garbage»), von Abrufen, die gestern bei voller Platte abbrachen. `server/platte-schlank.sh`: Timer stoppen, warten bis kein git läuft, Reste löschen, fremde Zweige aus Deploy- und Waechter-Klon entfernen (der Erst-Klon holte alle claude/*-Zweige), gc mit 1 Thread; Agent schlank; den verwaisten 7-GB-Klon /opt/luxe/repo nur ohne Verweis und nur mit `ALT_LOESCHEN=1` löschen. raw.githubusercontent hinkt nach einem Push Minuten hinterher → Commit-SHA-URL geben. **Ein `gc` braucht freien Platz in Grösse des Packs, auf fast voller Platte macht er alles schlimmer. Zuerst Reste und Verwaistes löschen, dann verpacken.** (c) Social: PNG vom Shopify-CDN über `format=jpg` statt übersprungen; ein ungültiger Meta-Token stoppt nur noch IG/FB (TikTok/YouTube/Pinterest laufen weiter); der Reel-Poster quittiert Live-Doppel (die Zeile blockierte sonst die Queue) und meldet mit Exit 3 «übersprungen», ohne die 8-h-Kadenzmarke zu setzen; der Reel-Motor liest die Themen-Gewichte der Lernschleife; `social_qualitaet_wache` läuft täglich; Hoodie-Promo A steht in der Reel-Queue (Manifest-Prüfung vor dem Post); die letzten drei Autostash-Pushes laufen über `git_sichern.sh`.
 
+**Nachtrag 48 (23.09.2026, 22:20 UTC — W-Grössen, Push-Schutz, Server-Wartung nach 19 Befunden):**
+(1) **«US 14W» ist eine US-Damengrösse, kein Watt.** Der Vollscan-Prüfer fand 142 Werte in 8 Produkten als «Hellblau-US 14 W»;
+die Einheitenregel in `_token_de` kannte nur Watt. Jetzt zwei Stufen: mit «US» davor markiert `_vorbereiten` («usgr14w»),
+ohne «US» entscheidet `option_kontext` (Reihe gerader Zahlen 12–34 mit grossem W, kein Wattwort wie charger/plug/led) —
+Ladegeräte «18W/20W/30W» bleiben Watt. Selbsttest 61/61. Reparatur: 143 Werte scharf geschrieben und je Option zurückgelesen,
+3 Smartwatch-Werte scheiterten an «Option value already exists» (Nahdubletten «Braun Aprikose Gelb»/«Braun-Aprikose-Gelb»
+im selben Produkt — bleiben). **Die 9 «Server-Rückfall»-Werte des Prüfers (24pcs Standard Wooden, 2pcs charger, Remote
+Control Battery …) habe ich NICHT zurückgesetzt:** live steht lesbares Deutsch ohne englisches Wort, der Tageslauf fasst
+es nicht mehr an (Tor `englisch()`), und Englisch wäre für eine Schweizer Kundin der Rückschritt. Zwei Fehler im ersten
+Reparaturplan: `oid: None` → alle 10 Optionen «option-weg» (Ledger trägt keine Options-ID, erst per Produktabfrage
+auflösen); und `wert_de()` gibt None auch dann, wenn das Ergebnis dem Original GLEICHT — 14 richtige «Pink-US 14W» flogen
+als «zurueck-original» aus dem Plan. **None heisst «nicht ändern», nicht «verworfen».**
+(2) **GitHubs Push-Schutz fing einen echten Schlüssel in einer Testdatei ab** («push declined due to repository rule
+violations»): die 84-Zeichen-Gegenprobe für die Längenregel in `server/wartung.test.mjs` war aus dem Chat kopiert und sah
+aus wie ein Azure-Cognitive-Services-Schlüssel. Der Klassifikator verbot den Vergleich mit `/tmp/azure_speech.env` —
+richtig so, der Vergleich war unnötig: **eine Zeichenkette, die wie ein Schlüssel aussieht, wird behandelt wie einer.**
+Ersetzt durch `'Xy9kL2mN8'.repeat(9)`, die drei lokalen Commits per `reset --soft origin/…` neu geschrieben (kein
+Force-Push nötig, der Remote hatte sie nie), `git grep "JQQJ99" HEAD` als Signaturprobe vor dem Push. Lehre: **Testdaten
+werden synthetisch gebaut, nie aus dem Chat kopiert; der Push-Schutz ist die letzte Schicht, nicht die erste.**
+(3) **Server-Wartung (`server/wartung.mjs`, `platte-schlank.sh`) nach 19 bestätigten Prüfer-Befunden:** `crontab_luxe`
+gibt nur noch Zeitfelder und Pfade aus (Allowlist — keine Denylist erkennt `-u user:pass` oder `ftp://u:p@`),
+Schwärzen zeilenweise mit 4-KB-Kappe (die Namensregel war quadratisch: 48-KB-Journalzeile ≈ 1 s), JSON-Schlüssel in
+Anführungszeichen, jedes URL-Schema, Token-Präfixe (glpat-, xox., shpat_, EAA, gsk_, AKIA), Längenregel nur bei Entropie
+und ohne «/» (sie hatte Pfade geschwärzt — genau das, was `platte` melden soll). `journalctl -g` gab unter systemd 255 die
+NEUESTE Zeile zuerst aus und `slice(-4000)` warf sie weg; ohne Treffer Exit 1 = «fehler» im gesunden Zustand → Filter im
+Skript. `platte_schlank` ohne `reset-failed` (scheiterte bei JEDEM Lauf, `--collect` entlädt ohnehin) und ohne `weiter`:
+eine verändernde Aktion mit gescheitertem Pflichtschritt wirft jetzt MIT Teilergebnis (vorher «ok» über dem Status des
+ERSTEN Laufs). Im Skript: `flock /run/luxe-platte.lock` (Handlauf ⟷ Einheit), `trap … EXIT` startet die vorher aktiven
+Timer wieder (das Skript konnte zwischen Stopp und Start sterben), `is-active` sieht oneshot-Läufe nur als «activating»
+(Klon wird übersprungen statt «gc trotzdem»), `reflog expire` nur ohne Stashes (es LÖSCHTE sie — nachgestellt), Platzprüfung
+vor gc, tmp_pack-Reste nach gescheitertem gc. 13 Gegenproben grün; Aufträge platte/crontab_luxe/dienste_server gestellt.
+(4) Kuscheltiere-Promo mit Azure-Stimme (de-CH-JanNeural, Musik per Sidechain −7:1) gerendert, −13.8 LUFS, Stimme ab
+0.70 s per Kreuzkorrelation belegt — wartet auf das Betreiber-Urteil, bevor sie in die Queue geht.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16305,3 +16339,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-22 · 📌 **«push mehr» Besucher: erster eigener Pinterest-Pin über den Hetzner-Agenten (Editor gemessen, ein Pin je Lauf, Pinnwand vorher/nachher gelesen) — 5 Läufe bis zum ersten Pin: Ordner `auftraege/offen/`, leere Pinnwand = 183 Zeichen ≠ unlesbar, Themenfeld statt Board-Suche, `:visible`-Locator.** TikTok-Ads: alle 4 Kampagnen AUS (0 seit 01.09.); Meta-Poster bereit, aber `_SOCIAL_STOPP` → Journal
 - 2026-09-22 · ✍️ **Ratgeber-Du-Form: Reste gemessen statt geraten (2'312 → 635, davon 475 Satzanfang = kein Befund) → sechs neue Regeln in `um()`, Reihenfolge 2c→2f→2e→2d→2g; 95 Artikel/Seiten geduzt.** Zwei geschriebene Artikel trugen Doppel-Konjugationen («liebst wirst») → repariert; **jede Regeländerung braucht Kanarienvögel UND einen Defekt-Scan über das Geschriebene** → Journal
 - 2026-09-22 · 📚 **52 Kollektionstexte siezten noch — der Diff-Trockenlauf zeigte drei weitere Regressionen (Objekt-Sie nach -t-Verb → «rüstet du», «für Sie» → «für du», Adjektiv nach «und» als Verb); Regeln ergänzt, 52 geschrieben.** Reparaturlauf Produkte: 8 von 10 Verdacht waren Fehlalarme der Warnnetze → Netze verfeinert, Verdacht neu geprüft → Journal
+- 2026-09-22 · 📝 **Ratgeber-Reparatur: drei Diff-Runden bis «neu gegenüber Vorlauf» leer war — elf Regressionsklassen (Objekt-«Sie» der Cremes, «für Sie und Ihn» auf Geschenkseiten, Nomen/Adjektive/Adverbien als Verben, «zu haben», Relativsatz, Konditional-Inversion, `</a>` als Satzgrenze), 26 Texte geschrieben, Nachscan 107/107 sauber.** Zwei stille Werkzeugfallen: `\\s` im Heredoc, Lookbehind variabler Breite → Journal

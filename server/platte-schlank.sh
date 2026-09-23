@@ -19,6 +19,9 @@
 #   6. Timer wieder an, Platte vorher/nachher.
 set -uo pipefail
 [ "$(id -u)" -eq 0 ] || { echo "Bitte als root ausführen."; exit 1; }
+# Pruefer 23.09. (19 Befunde): EINE Sperre fuer Handlauf, Einheit luxe-platte und doppelten Auftrag — wer zuerst
+# fertig war, startete sonst die Timer, waehrend der andere noch gc --prune=now fuhr.
+exec 9>/run/luxe-platte.lock; flock -n 9 || { echo "läuft schon (anderer Lauf) — Abbruch"; exit 0; }
 log() { printf '\033[1;36m▶ %s\033[0m\n' "$*"; }
 RAW=https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1
 ARBEITSZWEIG=claude/luxestyle-status-tztnn1
@@ -30,13 +33,31 @@ VERWEIS="$(grep -rlsF '/opt/luxe/repo' /etc/systemd/system /usr/local/bin /etc/c
 if [ -n "$VERWEIS" ]; then echo "   /opt/luxe/repo WIRD benutzt von:"; echo "$VERWEIS" | sed 's/^/     /'; else echo "   /opt/luxe/repo: kein Verweis in systemd/cron/usr-local-bin/jarvis gefunden"; fi
 
 log "2) Timer anhalten, laufende Durchläufe ausklingen lassen (max. 10 min)"
-TIMER="abannews-deploy.timer luxe-waechter.timer luxe-agent.timer"
+# AUS_AGENT=1 (23.09.): vom Hetzner-Agenten gestartet (Wartungsaktion platte_schlank, eigene Einheit luxe-platte).
+# Dann den Agenten weder anhalten noch auf ihn warten noch neu klonen — er hat uns gestartet.
+if [ "${AUS_AGENT:-0}" = 1 ]; then TIMER="abannews-deploy.timer luxe-waechter.timer"; DIENSTE="abannews-deploy luxe-waechter"
+else TIMER="abannews-deploy.timer luxe-waechter.timer luxe-agent.timer"; DIENSTE="abannews-deploy luxe-waechter luxe-agent"; fi
+# Nur die Timer wieder starten, die vorher AN waren (ein vom Betreiber abgeschalteter bleibt aus) —
+# und zwar auch, wenn das Skript zwischen Stopp und Start stirbt (trap; Deploy/Waechter blieben sonst aus).
+AKTIVE_TIMER=""; for t in $TIMER; do systemctl is-active --quiet "$t" && AKTIVE_TIMER="$AKTIVE_TIMER $t"; done
 systemctl stop $TIMER 2>/dev/null || true
+trap '[ -n "$AKTIVE_TIMER" ] && systemctl start $AKTIVE_TIMER 2>/dev/null' EXIT
+# Type=oneshot ist WAEHREND des Laufs «activating», nicht «active» — `is-active --quiet` sah den Lauf nie.
+UEBERSPRINGEN=""
 for i in $(seq 1 60); do
-  AKTIV=""; for s in abannews-deploy luxe-waechter luxe-agent; do systemctl is-active --quiet "$s.service" && AKTIV="$AKTIV $s"; done
+  AKTIV=""; for s in $DIENSTE; do
+    case "$(systemctl is-active "$s.service" 2>/dev/null)" in active|activating|deactivating|reloading) AKTIV="$AKTIV $s";; esac
+  done
   [ -z "$AKTIV" ] && break; [ "$i" = 1 ] && echo "   warte auf:$AKTIV"; sleep 10
 done
-[ -n "${AKTIV:-}" ] && echo "   ⚠️ läuft noch nach 10 min:$AKTIV — gc läuft trotzdem (git sperrt selbst)"
+if [ -n "${AKTIV:-}" ]; then
+  echo "   ⚠️ läuft noch nach 10 min:$AKTIV — gc für die betroffenen Klone wird ÜBERSPRUNGEN"
+  for s in $AKTIV; do case "$s" in
+    abannews-deploy) UEBERSPRINGEN="$UEBERSPRINGEN /opt/abannews";;
+    luxe-waechter)   UEBERSPRINGEN="$UEBERSPRINGEN /opt/luxe-waechter/repo";;
+    luxe-agent)      UEBERSPRINGEN="$UEBERSPRINGEN /opt/luxe-agent/repo";;
+  esac; done
+fi
 
 log "2b) Halbfertige Packdateien löschen (tmp_pack_*/tmp_idx_* — Reste abgebrochener fetch/gc bei voller Platte)"
 # Gemessen 23.09.: /opt/abannews 3.00 GiB «size-garbage», dazu die abgebrochenen gc-Läufe des Betreibers (Platte 100 %).
@@ -56,13 +77,23 @@ df -h / | tail -1
 schlank() {   # $1 = Klon, $2 = einziger Zweig, der bleiben soll
   local D="$1" Z="$2"
   [ -d "$D/.git" ] || { echo "   $D: kein Klon — übersprungen"; return; }
+  case " $UEBERSPRINGEN " in *" $D "*) echo "   $D: Dienst läuft noch — übersprungen"; return;; esac
   local vorher; vorher=$(du -sh "$D/.git" | cut -f1)
   git -C "$D" config remote.origin.fetch "+refs/heads/$Z:refs/remotes/origin/$Z"
   git -C "$D" for-each-ref --format='%(refname)' refs/remotes/origin | grep -vFx "refs/remotes/origin/$Z" | grep -v '/HEAD$' \
     | while read -r r; do git -C "$D" update-ref -d "$r"; done
-  local st; st=$(git -C "$D" stash list | wc -l); [ "$st" -gt 0 ] && echo "   $D: $st Stash(es) bleiben erhalten (halten ihre Objekte)"
-  git -C "$D" reflog expire --expire=now --all
-  git -C "$D" -c pack.threads=1 -c pack.windowMemory=256m gc --prune=now --quiet || echo "   ⚠️ gc in $D gescheitert (Platz?) — Klon ist unverändert benutzbar"
+  # ⚠️ `reflog expire --all` + `gc --prune=now` LOESCHT Stashes (Pruefer 23.09., nachgestellt: der Stash-Eintrag
+  # ist ein Reflog). Nur ohne Stashes leeren; `update-ref -d` oben nimmt die Reflogs der Zweige ohnehin mit.
+  local st; st=$(git -C "$D" stash list | wc -l)
+  if [ "$st" -gt 0 ]; then echo "   $D: $st Stash(es) — Reflog bleibt (sonst wären sie weg)"
+  else git -C "$D" reflog expire --expire=now --all; fi
+  # gc braucht Platz fuer die Neuverpackung (≈ Packgroesse); bei voller Platte hinterliesse es nur tmp_pack.
+  local frei pack; frei=$(df -k --output=avail "$D" | tail -1); pack=$(du -sk "$D/.git/objects/pack" 2>/dev/null | cut -f1)
+  if [ "${frei:-0}" -le "${pack:-0}" ]; then echo "   $D: zu wenig Platz für gc ($frei KB frei, Pack $pack KB) — übersprungen"; return; fi
+  if ! git -C "$D" -c pack.threads=1 -c pack.windowMemory=256m gc --prune=now --quiet; then
+    echo "   ⚠️ gc in $D gescheitert (Platz?) — Klon ist unverändert benutzbar; Reste weg"
+    find "$D/.git/objects/pack" -maxdepth 1 -name 'tmp_pack_*' -delete 2>/dev/null
+  fi
   echo "   $D/.git: $vorher → $(du -sh "$D/.git" | cut -f1)"
 }
 
@@ -79,11 +110,12 @@ schlank /opt/abannews main
 schlank /opt/luxe-waechter/repo "$ARBEITSZWEIG"
 
 log "4) Agent-Klon schlank (depth 1 + sparse)"
-if curl -fsSL "$RAW/server/luxe-agent-schlank.sh" -o /tmp/luxe-agent-schlank.sh; then bash /tmp/luxe-agent-schlank.sh | tail -4
+if [ "${AUS_AGENT:-0}" = 1 ]; then echo "   übersprungen (vom Agenten gestartet — er läuft in diesem Klon)"
+elif curl -fsSL "$RAW/server/luxe-agent-schlank.sh" -o /tmp/luxe-agent-schlank.sh; then bash /tmp/luxe-agent-schlank.sh | tail -4
 else echo "   ⚠️ luxe-agent-schlank.sh nicht ladbar — übersprungen"; fi
 
-log "5) Timer wieder an"
-systemctl start $TIMER 2>/dev/null || true
+log "5) Timer wieder an (nur die vorher aktiven)"
+[ -n "$AKTIVE_TIMER" ] && systemctl start $AKTIVE_TIMER 2>/dev/null || true
 systemctl list-timers --all --no-pager 2>/dev/null | grep -E 'abannews|luxe' | awk '{print "   " $0}' | cut -c1-140
 
 log "6) Platte nachher"

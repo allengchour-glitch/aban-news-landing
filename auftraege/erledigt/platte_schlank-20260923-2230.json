@@ -1,0 +1,24 @@
+{
+  "id": "platte_schlank-20260923-2230",
+  "typ": "wartung",
+  "aktion": "platte_schlank",
+  "warum": "Betreiber 23.09. «für volle automation»: Platte 70 % (11 GB frei), Waechter-Klon 5.8 GB mit 2 Packs, abannews 2.35 GB — fremde Zweige raus + gc als eigene Einheit luxe-platte (Skript nach 19 Pruefer-Befunden: Sperre, trap, Stash-Schutz, Platzpruefung). /opt/luxe/repo bleibt (crontab verweist darauf: run-api-jobs.sh 04:00, vps-poll alle 10 min).",
+  "stand": "ok",
+  "begonnen": "2026-09-23T22:07:50.976Z",
+  "dauer_s": 0,
+  "ergebnis": {
+    "aktion": "platte_schlank",
+    "was": "Server-Platte aufraeumen (Reste, fremde Zweige, gc) als eigene Einheit luxe-platte im Hintergrund",
+    "aendert": true,
+    "ausgaben": [
+      {
+        "befehl": "systemd-run --unit=luxe-platte --collect --setenv=AUS_AGENT=1 /bin/bash /opt/luxe-agent/repo/server/platte-schlank.sh",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "systemctl status luxe-platte.service --no-pager -n 5",
+        "ausgabe": "● luxe-platte.service - [systemd-run] /bin/bash /opt/luxe-agent/repo/server/platte-schlank.sh\n     Loaded: loaded (/run/systemd/transient/luxe-platte.service; transient)\n  Transient: yes\n     Active: active (running) since Wed 2026-09-23 22:07:50 UTC; 15ms ago\n Invocation: ***\n   Main PID: 2178940 (bash)\n      Tasks: 2 (limit: 3647)\n     Memory: 860K (peak: 1.7M)\n        CPU: 8ms\n     CGroup: /system.slice/luxe-platte.service\n             ├─2178940 /bin/bash /opt/luxe-agent/repo/server/platte-schlank.sh\n             └─2178942 id -u\n\nSep 23 22:07:50 ubuntu-4gb-nbg1-1 systemd[1]: Started luxe-platte.service - [systemd-run] /bin/bash /opt/luxe-agent/repo/server/platte-schlank.sh.\n"
+      }
+    ]
+  }
+}
