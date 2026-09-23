@@ -17979,3 +17979,7 @@ gid://shopify/Product/15448509514113	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448526750081	Farbe	gid://shopify/ProductOptionValue/12022423912833	Geblümt Farbton 2	Flower Color 2	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15448550146433	Farbe	gid://shopify/ProductOptionValue/12022515007873	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:34Z/reparatur-konsistenz
 gid://shopify/Product/15448550146433	Farbe	gid://shopify/ProductOptionValue/12022515040641	Klassischschwarz-G	Klassisches Schwarz-G	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448588616065	Farbe	gid://shopify/ProductOptionValue/12022806086017	Geblümt Typ B	Flower Type B	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448589468033	Farbe	gid://shopify/ProductOptionValue/12022818177409	Gross Weiss	Big White	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448590254465	Farbe	gid://shopify/ProductOptionValue/12022832365953	Spitze Grau	Lace Gray	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448590713217	Farbe	gid://shopify/ProductOptionValue/12022838034817	Leder Pink	Leather Pink	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
