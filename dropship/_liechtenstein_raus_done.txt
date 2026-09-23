@@ -1202,3 +1202,5 @@ gid://shopify/Product/15445834498433	produkt	ohne
 gid://shopify/Product/15445834531201	produkt	ohne
 gid://shopify/Product/15445834727809	produkt	ohne
 gid://shopify/Product/15446014886273	produkt	ohne
+gid://shopify/Product/15446060859777	produkt	ohne
+gid://shopify/Product/15446061220225	produkt	ohne
