@@ -95,8 +95,9 @@ das Skript laufen lassen. Aufbau:
   03.09. aktualisiert worden. **Die massgebliche Angabe ist `QUELLE` in `hype_kuratieren.py`,
   nicht diese Zeile**; wer nur hier nachsieht, hält eine frische Recherche für fünf Wochen alt).
   Themen aktuell: Beauty-Gerät, Mini-Beamer, Ordnung/aesthetic, Shapewear, 3-in-1-Ladestation,
-  Blush-Balm, Lifting-Tape, Paar-Hoodies, Kerzenwärmer, Haustier-Spielzeug, **Hygiene-Gadget
-  (neu 18.09.)**. Reihe: 43 Produkte.
+  Blush-Balm, Lifting-Tape, Paar-Hoodies, Kerzenwärmer, Haustier-Spielzeug, Hygiene-Gadget (18.09.),
+  **Sternenhimmel-Projektor, Hunde-Trinkflasche, Mini-Staubsauger (neu 23.09., am Bestand gemessen; Kanarienvögel:
+  «Quarzuhr mit Sternenhimmel-Ziffer», «Hundeleine mit Trinkflasche» bleiben draussen)**. Reihe: ~50 Produkte.
   **ABGELEHNT trotz Trendlisten:** Wellness-/Magnet-Armband = Heilversprechen (dieselbe Klasse
   wie die 1'667 aus den Werbekanälen ausgeschlossenen); Supplements/Olivenöl = Lebensmittel;
   Snail-Essence/Seren = topische Kosmetik (Betreiber-Entscheid 30.08.).

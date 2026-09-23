@@ -185,3 +185,21 @@
 2026-09-18	Karaoke-Mikrofon	gid://shopify/Product/15480630870401	Duales Stereo Karaoke-System
 2026-09-18	Futterautomat	gid://shopify/Product/15525499470209	Futterspender für Hunde
 2026-09-18	Haustier-Spielzeug smart	gid://shopify/Product/15491768058241	Interaktives Katzenspielzeug mit rotierender Scheibe
+2026-09-23	Beauty-Gerät	gid://shopify/Product/15510323528065	Silikon-Gesichtsreinigungsbürste
+2026-09-23	Mini-Beamer	gid://shopify/Product/15481692258689	HD Mini-Projektor für Zuhause
+2026-09-23	Hygiene-Gadget	gid://shopify/Product/15500372771201	Spot UV-Sterilisator – tragbar
+2026-09-23	Ordnung & Aesthetic	gid://shopify/Product/15455765922177	Geflochtener Aufbewahrungskorb
+2026-09-23	Shapewear	gid://shopify/Product/15448109089153	High Compression Shapewear mit Frontreissverschluss
+2026-09-23	Ladestation 3-in-1	gid://shopify/Product/15495082377601	Magnetische 3-in-1 Wireless Powerbank
+2026-09-23	Haarglätter & Styler	gid://shopify/Product/15520388252033	2-in-1 Glätteisen & Lockenstab mit Display
+2026-09-23	Kerzenwärmer & Duft	gid://shopify/Product/15458646950273	Walnuss-Holz Kerzenwärmer für Zuhause, hält Tee warm und gemütlich
+2026-09-23	Smoothie-Mixer	gid://shopify/Product/15450850328961	Tragbarer Mixer für frische Drinks
+2026-09-23	LED-Strip	gid://shopify/Product/15508419346817	Wasserdichter RGB LED-Streifen, 12V
+2026-09-23	Wärme & Kuschel	gid://shopify/Product/15516219638145	USB-Heizkissen mit Graphen-Technologie
+2026-09-23	Karaoke-Mikrofon	gid://shopify/Product/15481380536705	Kabelloses Ansteckmikrofon mit Ladebox
+2026-09-23	Ringlicht	gid://shopify/Product/15506273862017	Bodenstativ mit LED-Ringlicht für Livestreams
+2026-09-23	Futterautomat	gid://shopify/Product/15504188473729	Futterautomat mit Kamera für Hunde und Katzen
+2026-09-23	Hoodie-Decke	gid://shopify/Product/15450839777665	XXL Hoodie-Decke mit Taschen für Sie & Ihn
+2026-09-23	Haustier-Spielzeug smart	gid://shopify/Product/15500350128513	Smart Hundespielzeug
+2026-09-23	Sternenhimmel-Projektor	gid://shopify/Product/15449432621441	Sternenprojektor für Kinderzimmer
+2026-09-23	Mini-Staubsauger	gid://shopify/Product/15496383660417	Kabelloser Mini-Staubsauger mit Gebläse

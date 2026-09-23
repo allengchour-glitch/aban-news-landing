@@ -473,6 +473,16 @@ GETAN: `google_feedback_wache.py` (täglich im Aufseher; Stand `_google_feedback
 dessen Bänder sich überlappen, meldet beim ersten sauberen Lauf einen Einbruch, der keiner ist: Baseline mitdenken.
 OFFEN: Ursache «Product page unavailable» (369) und der Shop-Kanal-Befund (33'863) — zwei Messungen, noch keine Fixes.
 
+**Nachtrag 30 (23.09. 11:00 UTC) — Hype-Recherche (Dauerauftrag): drei gemessene Themen neu, zwei Regex-Fallen im Trockenlauf gefangen.**
+Web-Suche (sellthetrend/eprolo/cjdropshipping, September): neu «tiny projector with night sky effect», «portable dog water
+bottle», «mini desktop vacuum»; bestätigt Hygiene-Gadgets, aesthetic living, OTG-Goggles, Dock-Stand, Katzen-Laser.
+Am Bestand gemessen (`productsCount`, `title:*x*`): Sternenhimmel 41 + Galaxy 13, Hunde-Trinkflasche 5, Mini-Staubsauger 4;
+nicht übernommen: Travel-Hoodie (0), Selfie-Monitor (0), Gummy Blocks (Spielzeug), Pimple Patches (Wundauflage).
+Trockenlauf: «Sternenhimmel» allein wählte eine **Quarzuhr mit Sternenhimmel-Ziffer**, «Hund…Trinkflasche» eine
+**Hundeleine mit Trinkflasche** → Anker (Projektor/Lampe/Licht in Wortnähe; Leine/Geschirr ausgeschlossen), elf
+Kanarienvögel grün, zweiter Trockenlauf sauber, scharfer Lauf: 18 neu in der Reihe (32 → 50), 0 abgelaufen.
+**Lehre (zum dritten Mal, IPL/UV/Sternenhimmel):** ein Trendwort ist nie der Anker — die Warenart ist es.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
