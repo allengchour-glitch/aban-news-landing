@@ -31,6 +31,13 @@ ZWEI MODI (der Betreiber wollte «karussell oder mehrere miteinander»):
 
 ENV: MODUS (produkt|top, Default produkt) · QUELLE (Kollektions-Handle, Default hype-jetzt)
      ANZAHL (Karussells je Lauf, Default 1) · SLIDES (Default 6) · DRY=1 (nur melden)
+     NUR_HANDLES=a,b,c  (23.09.2026, Halloween-Auftritt) — Produkt-VORGABE in dieser Reihenfolge statt
+        «erster freier Kandidat der Kollektion». Alle Wachen (ACTIVE, Sperr-Tags, Claim/Topisch, Preis,
+        Bildzahl, schon beworben) gelten weiter; ein Handle, der daran scheitert, wird gemeldet, nicht erzwungen.
+     MAX_PREIS (nur top): Kandidaten ueber diesem Preis bleiben draussen (z. B. «unter CHF 25»).
+     KICKER (produkt, Default «Neu im Shop») · TOP_KICKER (top, Default «Gerade im Trend») ·
+     TOP_WORT (top, Default «Trend-Teile» → «4 Trend-Teile unter CHF 20») · CAPTION_VORSPANN (vor Zeile 1 der Caption)
+     ⚠️ «Neu im Shop» auf Ware vom Juli waere eine Behauptung — fuer Saisonware den KICKER setzen (z. B. «Halloween-Deko»).
 """
 
 import csv
@@ -60,6 +67,16 @@ QUELLE = os.environ.get("QUELLE", "hype-jetzt")
 ANZAHL = int(os.environ.get("ANZAHL", "1"))
 SLIDES = int(os.environ.get("SLIDES", "6"))
 DRY = os.environ.get("DRY") == "1"
+NUR_HANDLES = [h.strip() for h in os.environ.get("NUR_HANDLES", "").split(",") if h.strip()]
+MAX_PREIS = float(os.environ.get("MAX_PREIS") or 0) or None
+KICKER = os.environ.get("KICKER", "Neu im Shop")
+TOP_KICKER = os.environ.get("TOP_KICKER", "Gerade im Trend")
+TOP_WORT = os.environ.get("TOP_WORT", "Trend-Teile")
+CAPTION_VORSPANN = os.environ.get("CAPTION_VORSPANN", "")
+# NEU_BAUEN=1 (23.09.2026): ein Set, das schon «ready» in der Queue steht, mit den aktuellen Regeln neu rendern —
+# gleicher Slug, gleicher Ordner, Queue-Zeile wird ersetzt statt angehaengt, Ledger unveraendert. Nur mit NUR_HANDLES.
+# Fuer top-Sets muss SLUGZEIT denselben Slug ergeben wie beim Erstbau.
+NEU_BAUEN = os.environ.get("NEU_BAUEN") == "1"
 
 # 23.09.2026 (Betreiber «insta karusell brauchen»): FORMAT=ig baut dieselben Slides in 4:5 (1080x1350) —
 # Instagram nimmt in Karussells nur 4:5 bis 1.91:1, ein 9:16-Slide wuerde abgelehnt oder beschnitten.
@@ -76,6 +93,37 @@ else:
     LEDGER = os.path.join(ROOT, "dropship", "_tiktok_karussell.txt")
     B, H = 1080, 1920                  # TikTok-Fotos werden 9:16 vollflaechig gezeigt
 REELS = os.path.join(HIER, "reels_seed.csv")
+
+
+def _ig_website():
+    """Instagram-Profilfeld `website` (Graph-API, Token /tmp/meta_page_token). Leer = nicht messbar."""
+    try:
+        ig = open("/tmp/meta_ig_id").read().strip()
+        tok = open("/tmp/meta_page_token").read().strip()
+        r = subprocess.run(["curl", "-s", "--max-time", "20",
+                            f"https://graph.facebook.com/v21.0/{ig}?fields=website&access_token={tok}"],
+                           capture_output=True, text=True)
+        return (json.loads(r.stdout).get("website") or "").strip()
+    except Exception:
+        return ""
+
+
+# 23.09.2026: cta_zeile()/cta_slide() aus tiktok_biolink pruefen das TIKTOK-Profil (kein Bio-Link). Fuer FORMAT=ig
+# zaehlt das INSTAGRAM-Profil — dort ist `website` gesetzt (gemessen 22.09. und heute: luxestyle.ch). Also wird
+# «Link in Bio» je Format am richtigen Profil gemessen, nicht behauptet.
+_IG_LINK = bool(_ig_website()) if FORMAT == "ig" else None
+
+
+def cta_text(vorspann="Jetzt im Shop 🇨🇭 "):
+    if _IG_LINK is None:
+        return cta_zeile(vorspann)
+    return f"{vorspann}luxestyle.ch" + (" — Link in Bio" if _IG_LINK else "")
+
+
+def cta_abschluss():
+    if _IG_LINK is None:
+        return cta_slide()
+    return "Link in Bio" if _IG_LINK else ""
 # Bildfenster je Format (Anteil der Hoehe) — 4:5 hat 30 % weniger Hoehe, das 9:16-Fenster (20–80 %)
 # schob den Titel ins Produktbild (Probe 23.09.: Titel ueber dem EMS-Geraet). Werte am Kontaktbogen gemessen.
 if FORMAT == "ig":
@@ -159,7 +207,7 @@ def hole(handle):
           pageInfo{hasNextPage endCursor}
           nodes{ id title handle status tags
             priceRangeV2{minVariantPrice{amount}}
-            media(first:8){nodes{... on MediaImage{image{url width height}}}}
+            media(first:12){nodes{... on MediaImage{image{url width height}}}}
           }}}}"""
     aus, cur = [], None
     while True:
@@ -376,16 +424,25 @@ def slide_cta(titelzeile):
     d = ImageDraw.Draw(img)
     for i in range(3):
         d.rectangle([54 + i, 54 + i, B - 54 - i, H - 54 - i], outline=GOLD)
-    d.text((B / 2, 470), "L U X E S T Y L E", font=f(SANSB, 46), fill=WEISS, anchor="mm")
-    d.line([(B / 2 - 150, 540), (B / 2 + 150, 540)], fill=GOLD, width=3)
-    schrift = f(SERIF, 74)
-    zeilen = umbrechen(d, titelzeile, schrift, B - 220)
-    y = 760
+    # 23.09.2026 (Halloween-Top-Set, Kontaktbogen): die festen Pixelwerte stammen aus 9:16 (1920). Im 4:5-Format (1350)
+    # rutschte bei einem DREIzeiligen Titel «Kleiner Schweizer Shop aus Belp» an die Unterkante und «30 Tage Rückgabe»
+    # aus dem Bild. Jetzt Hoehen anteilig, und die Schrift schrumpft, bis der ganze Block (Titel + 330 px Fuss) in H passt.
+    d.text((B / 2, int(H * 0.245)), "L U X E S T Y L E", font=f(SANSB, 46), fill=WEISS, anchor="mm")
+    d.line([(B / 2 - 150, int(H * 0.281)), (B / 2 + 150, int(H * 0.281))], fill=GOLD, width=3)
+    y0 = int(H * 0.396)
+    groesse = 74
+    while True:
+        schrift = f(SERIF, groesse)
+        zeilen = umbrechen(d, titelzeile, schrift, B - 220)
+        if y0 + len(zeilen) * (groesse + 18) + 330 + 60 <= H or groesse <= 48:
+            break
+        groesse -= 6
+    y = y0
     for z in zeilen:
         d.text((B / 2, y), z, font=schrift, fill=CREME, anchor="mm")
-        y += 92
+        y += groesse + 18
     d.text((B / 2, y + 90), "luxestyle.ch", font=f(SANSB, 62), fill=GOLD, anchor="mm")
-    _cta = cta_slide()
+    _cta = cta_abschluss()
     if _cta:
         d.text((B / 2, y + 176), _cta, font=f(SANS, 40), fill=WEISS, anchor="mm")
     # 05.09.2026: Kundenfeedback «zu fest KI gemacht, wie Scam». Die Rabattcode-Pille war
@@ -423,7 +480,9 @@ def hashtags(tags):
              "haustier": "#petsoftiktok", "katze": "#katze", "hund": "#hund",
              "mode": "#outfit", "damen": "#fashion", "kueche": "#kitchenhacks",
              "gadget": "#gadgets", "tech": "#tech", "wohnen": "#interior",
-             "aufbewahrung": "#ordnung", "organizer": "#ordnung"}
+             "aufbewahrung": "#ordnung", "organizer": "#ordnung",
+             # 23.09.2026 Saison: Halloween-Ware traegt die Tags halloween/kuerbis/dekoration (gemessen am Bestand)
+             "halloween": "#halloween", "kuerbis": "#halloweendeko", "dekoration": "#deko", "herbst": "#herbst"}
     extra = []
     for t in tags:
         h = karte.get(t.lower())
@@ -435,6 +494,9 @@ def hashtags(tags):
 def schreibe(slug, bilder_liste, caption, produkte):
     ordner = os.path.join(AUS, slug)
     os.makedirs(ordner, exist_ok=True)
+    for alt in os.listdir(ordner):            # NEU_BAUEN: alte Slides raus, sonst bleibt ein 06.jpg neben 5 neuen liegen
+        if re.fullmatch(r"\d\d\.jpg", alt):
+            os.remove(os.path.join(ordner, alt))
     pfade = []
     for i, im in enumerate(bilder_liste, 1):
         p = os.path.join(ordner, f"{i:02d}.jpg")
@@ -442,6 +504,23 @@ def schreibe(slug, bilder_liste, caption, produkte):
         pfade.append(os.path.relpath(p, ROOT))
     with open(os.path.join(ordner, "caption.txt"), "w") as fh:
         fh.write(caption + "\n")
+    if NEU_BAUEN:
+        # Bestehende ready-Zeile desselben Slugs ERSETZEN (Slides/Caption), keine zweite Zeile (der Poster nimmt die
+        # erste ready-Zeile; eine zweite waere ein Doppelpost), keine neuen Ledger-Zeilen (Handle steht schon drin).
+        with open(QUEUE, newline="") as fh:
+            zeilen = list(csv.reader(fh))
+        kopf, rest = zeilen[0], zeilen[1:]
+        i_slug, i_st = kopf.index("slug"), kopf.index("status")
+        treffer = [r for r in rest if r[i_slug] == slug and r[i_st] == "ready"]
+        if len(treffer) != 1:
+            raise RuntimeError(f"NEU_BAUEN {slug}: {len(treffer)} ready-Zeilen in der Queue (erwartet 1) — nichts geschrieben")
+        r = treffer[0]
+        r[kopf.index("slides")] = str(len(pfade))
+        r[kopf.index("caption")] = caption.replace("\n", " ⏎ ")
+        with open(QUEUE, "w", newline="") as fh:
+            w = csv.writer(fh, lineterminator="\n")
+            w.writerow(kopf); w.writerows(rest)
+        return ordner, pfade
     neu = not os.path.exists(QUEUE)
     with open(QUEUE, "a", newline="") as fh:
         w = csv.writer(fh, lineterminator="\n")
@@ -455,26 +534,48 @@ def schreibe(slug, bilder_liste, caption, produkte):
     return ordner, pfade
 
 
+def _ahash(pfad):
+    """8x8-Mittelwert-Hash (64 Bit). Zwei Slides mit Hamming-Abstand <= 6 zeigen dasselbe Motiv."""
+    try:
+        g = Image.open(pfad).convert("L").resize((8, 8), Image.LANCZOS)
+        px = list(g.tobytes()); m = sum(px) / 64
+        return sum((1 << i) for i, v in enumerate(px) if v >= m)
+    except Exception:
+        return None
+
+
 def bau_produkt(p, benutzt):
-    urls = bilder(p)[:SLIDES - 1]
-    tmp = []
+    # 23.09.2026 (Kontaktbogen Süssigkeitenschale): Slide 2 und 3 waren dasselbe CJ-Motiv unter zwei Dateinamen —
+    # die Dateiname-Wache sieht das nicht. Deshalb mehr Bilder holen als gebraucht und nahezu gleiche (aHash <= 6)
+    # auslassen; so tragen «mehrere Bilder» auch mehrere Ansichten.
+    urls = bilder(p)[:SLIDES + 3]
+    tmp, hashes = [], []
     for i, u in enumerate(urls):
+        if len(tmp) >= SLIDES - 1:
+            break
         z = f"/tmp/_ttk_{i}.img"
-        if lade(u, z):
-            tmp.append(z)
+        if not lade(u, z):
+            continue
+        h = _ahash(z)
+        if h is not None and any(bin(h ^ x).count("1") <= 6 for x in hashes):
+            print(f"      (Bild {i + 1} gleicht einem frueheren Slide — ausgelassen)")
+            continue
+        if h is not None:
+            hashes.append(h)
+        tmp.append(z)
     if len(tmp) < 3:
         return None
     preis = chf(p["priceRangeV2"]["minVariantPrice"]["amount"])
     titel = p["title"]
     gesamt = len(tmp) + 1
-    slides = [slide_hook(tmp[0], "Neu im Shop", preis, titel, 1, gesamt)]
+    slides = [slide_hook(tmp[0], KICKER, preis, titel, 1, gesamt)]
     for i, z in enumerate(tmp[1:], 2):
         slides.append(slide_produkt(z, titel, preis, i, gesamt))
     slides.append(slide_cta(titel))
     slug = re.sub(r"[^a-z0-9]+", "-", p["handle"].lower()).strip("-")  # NIE kuerzen: Slug==Handle ist die Vertragsbasis der Live-Pruefung
-    cap = (f"{titel} · {preis}\n"
+    cap = (f"{CAPTION_VORSPANN}{titel} · {preis}\n"
            f"{laden_zeile(p.get('tags') or [])}\n"
-           f"{cta_zeile()}\n\n{hashtags(p.get('tags') or [])}")
+           f"{cta_text()}\n\n{hashtags(p.get('tags') or [])}")
     return slug, slides, cap, [p["handle"]]
 
 
@@ -492,9 +593,9 @@ def bau_top(kandidaten):
     hoechst = max(float(p["priceRangeV2"]["minVariantPrice"]["amount"]) for p, _ in tmp)
     grenze = int((int(hoechst) // 10 + 1) * 10)   # naechste Zehnerstufe, bleibt wahr
     gesamt = len(tmp) + 2
-    hook = f"{len(tmp)} Trend-Teile unter CHF {grenze}"
-    slides = [slide_hook(tmp[0][1], "Gerade im Trend", str(len(tmp)),
-                         f"Trend-Teile unter CHF {grenze}", 1, gesamt)]
+    hook = f"{len(tmp)} {TOP_WORT} unter CHF {grenze}"
+    slides = [slide_hook(tmp[0][1], TOP_KICKER, str(len(tmp)),
+                         f"{TOP_WORT} unter CHF {grenze}", 1, gesamt)]
     for i, (p, z) in enumerate(tmp, 2):
         slides.append(slide_produkt(
             z, p["title"], chf(p["priceRangeV2"]["minVariantPrice"]["amount"]),
@@ -505,8 +606,8 @@ def bau_top(kandidaten):
     liste = "\n".join(f"{i}. {p['title']} · {chf(p['priceRangeV2']['minVariantPrice']['amount'])}"
                       for i, (p, _) in enumerate(tmp, 1))
     alle_tags = [t for p, _ in tmp for t in (p.get("tags") or [])]
-    cap = (f"{hook} 🇨🇭\n\n{liste}\n\n"
-           f"{laden_zeile()}\n{cta_zeile('Alles auf ')}\n\n"
+    cap = (f"{CAPTION_VORSPANN}{hook} 🇨🇭\n\n{liste}\n\n"
+           f"{laden_zeile()}\n{cta_text('Alles auf ')}\n\n"
            f"{hashtags(alle_tags)}")
     return slug, slides, cap, [p["handle"] for p, _ in tmp]
 
@@ -520,6 +621,21 @@ def main():
     mind = 3 if MODUS == "produkt" else 1
     frei = [p for p in prod if geeignet(p, mind) and p["handle"] not in benutzt]
     print(f"{len(prod)} in «{QUELLE}» | geeignet und noch nie beworben: {len(frei)}")
+    if MAX_PREIS:
+        frei = [p for p in frei if float(p["priceRangeV2"]["minVariantPrice"]["amount"]) <= MAX_PREIS]
+        print(f"   MAX_PREIS {MAX_PREIS:.2f}: {len(frei)} bleiben")
+    if NUR_HANDLES:
+        # Vorgabe in Reihenfolge; was die Wachen nicht passiert, wird genannt (nicht erzwungen).
+        if NEU_BAUEN:   # beim Neurendern ist «schon beworben» kein Ausschluss — genau diese Handles sind gemeint
+            frei = [p for p in prod if geeignet(p, mind) and (not MAX_PREIS or float(p["priceRangeV2"]["minVariantPrice"]["amount"]) <= MAX_PREIS)]
+        nach = {p["handle"]: p for p in frei}
+        fehlt = [h for h in NUR_HANDLES if h not in nach]
+        for h in fehlt:
+            grund = ("nicht in der Kollektion" if not any(p["handle"] == h for p in prod)
+                     else "schon beworben" if h in benutzt else "Wache (Status/Tag/Claim/Preis/Bilder)")
+            print(f"   ⛔ NUR_HANDLES {h}: {grund}")
+        frei = [nach[h] for h in NUR_HANDLES if h in nach]
+        print(f"   NUR_HANDLES: {len(frei)} von {len(NUR_HANDLES)} vorgegebenen Handles nutzbar")
     if not frei:
         print("FERTIG: 0 Karussells gebaut (nichts Neues verfügbar)")
         return
