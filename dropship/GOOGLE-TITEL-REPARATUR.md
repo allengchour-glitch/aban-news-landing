@@ -16,28 +16,37 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-09-23T19:01:11Z — DRY
+## Letzter Lauf 2026-09-23T22:26:18Z — SCHARF
 
-Gescannt 50010 aktive von 50010 (EXACT); Wächter-Stand 9 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 50003 aktive von 50003 (EXACT); Wächter-Stand 12 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| used-look-jeans-mit-leicht-ausgestelltem-bein-621700 | USED-TEXT | Beschreibung | DRY |
-| erhohende-board-schuhe-im-used-look-605300 | USED-TEXT | Beschreibung | DRY |
-| ombre-t-shirt-mit-used-look-602800 | USED-TEXT | Beschreibung | DRY |
-| herren-hoodie-im-used-look-633500 | USED-TEXT | Beschreibung | DRY |
-| patchwork-wide-leg-jeans-im-used-look-612400 | USED-TEXT | Beschreibung | DRY |
-| rebellious-washed-distressed-short-sleeve-top-633300 | USED-TEXT | Beschreibung | DRY |
-| herren-jeans-im-used-look-636600 | USED-TEXT | Beschreibung | DRY |
-| used-look-patchwork-jeans-fur-herren-625300 | USED-TEXT | Beschreibung | DRY |
-| retro-straight-jeans-mit-used-look-628400 | USED-TEXT | Beschreibung | DRY |
-| slim-fit-used-look-jeans-fur-herren-616600 | USED-TEXT | Beschreibung | DRY |
-| heavyweight-kapuzenjacke-im-used-look-631300 | USED-TEXT | Beschreibung | DRY |
-| used-look-jeans-fur-herren-600800 | USED-TEXT | Beschreibung | DRY |
-| herren-langarmhemd-im-used-look-620200 | USED-TEXT | Beschreibung | DRY |
-| retro-ohrringe-im-used-look-mit-kettendetail-626900 | USED-TEXT | Beschreibung | DRY |
-| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Beschreibung | DRY |
-| twill-umhangetasche-im-used-look-676544 | USED-TEXT | Beschreibung | DRY |
+| used-look-jeans-mit-leicht-ausgestelltem-bein-621700 | USED-TEXT | Beschreibung; 5 Bild-Alt-Texte | ok; text-sperre-belegt |
+| herren-jeansjacke-im-used-look-609500 | USED-TEXT | Beschreibung; 7 Bild-Alt-Texte | ok; text-sperre-belegt |
+| erhohende-board-schuhe-im-used-look-605300 | USED-TEXT | Beschreibung; 6 Bild-Alt-Texte | ok; text-sperre-belegt |
+| strandtuch-kleid-new-style-f6bb03 | EINZEL | 10 Bild-Alt-Texte | ok |
+| ombre-t-shirt-mit-used-look-602800 | USED-TEXT | Beschreibung; 2 Bild-Alt-Texte | ok; text-sperre-belegt |
+| schockresistenter-schutz-625600 | EINZEL | 5 Bild-Alt-Texte | ok |
+| herren-hoodie-im-used-look-633500 | USED-TEXT | Beschreibung; 8 Bild-Alt-Texte | ok; text-sperre-belegt |
+| patchwork-wide-leg-jeans-im-used-look-612400 | USED-TEXT | Beschreibung; 5 Bild-Alt-Texte | ok; text-sperre-belegt |
+| loose-fit-wide-leg-hose-im-used-look-614900 | USED-TEXT | 5 Bild-Alt-Texte | ok |
+| rebellious-washed-distressed-short-sleeve-top-633300 | USED-TEXT | Beschreibung | text-sperre-belegt |
+| herren-jeans-im-used-look-636600 | USED-TEXT | Beschreibung; 6 Bild-Alt-Texte | ok; text-sperre-belegt |
+| used-look-patchwork-jeans-fur-herren-625300 | USED-TEXT | Beschreibung; 5 Bild-Alt-Texte | ok; text-sperre-belegt |
+| st-michael-distressed-zip-up-hoodie-616100 | USED-TEXT | Beschreibung | text-sperre-belegt |
+| retro-straight-jeans-mit-used-look-628400 | USED-TEXT | Beschreibung; 7 Bild-Alt-Texte | ok; text-sperre-belegt |
+| slim-fit-used-look-jeans-fur-herren-616600 | USED-TEXT | Beschreibung; 6 Bild-Alt-Texte | ok; text-sperre-belegt |
+| heavyweight-kapuzenjacke-im-used-look-631300 | USED-TEXT | Beschreibung; 4 Bild-Alt-Texte | ok; text-sperre-belegt |
+| used-look-jeans-fur-herren-600800 | USED-TEXT | Beschreibung; 5 Bild-Alt-Texte | ok; text-sperre-belegt |
+| laser-silber-rippband-75mm-50-yards-026496 | EINZEL | Beschreibung | text-sperre-belegt |
+| herren-langarmhemd-im-used-look-620200 | USED-TEXT | Beschreibung; 23 Bild-Alt-Texte | ok; text-sperre-belegt |
+| baustein-luxuslimousine-auf-raedern-334528 | EINZEL | SEO; 5 Bild-Alt-Texte; ⚠️ POLICY ['Vehicles']: Titel am 23.09. repariert — wartet auf Google-Neuprüfung | ok |
+| retro-ohrringe-im-used-look-mit-kettendetail-626900 | USED-TEXT | Beschreibung; 5 Bild-Alt-Texte | ok; text-sperre-belegt |
+| 1-zoll-zapfpistole-fur-diesel-und-benzin-257024 | EINZEL | Beschreibung; 4 Bild-Alt-Texte | ok; text-sperre-belegt |
+| biden-herrenuhr-ultraflach-mit-kalender-611776 | EINZEL | Beschreibung; 5 Bild-Alt-Texte | ok; text-sperre-belegt |
+| biden-herren-quarzuhr-hohl-leger-052544 | EINZEL | 5 Bild-Alt-Texte | ok |
+| twill-umhangetasche-im-used-look-676544 | USED-TEXT | Beschreibung; 5 Bild-Alt-Texte | ok; text-sperre-belegt |
 
 ## Beständig gemeldet, kein Titelbefund (beobachten, nicht umschreiben)
 
@@ -45,7 +54,7 @@ Gescannt 50010 aktive von 50010 (EXACT); Wächter-Stand 9 h alt; Kanarienvögel 
 
 ## Ledger gesamt
 
-44 Produkte mit rückgelesenen Änderungen; 16 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+44 Produkte mit rückgelesenen Änderungen; 20 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -77,6 +86,7 @@ Geschriebene Titel (rückgelesen):
 - 2026-09-23 EINZEL: «1-Zoll-Zapfpistole für Diesel und Benzin» → «1-Zoll-Zapfventil für Diesel und Benzin»
 - 2026-09-23 EINZEL: «Biden Herren-Quarzuhr, hohl, leger» → «Legere Herren-Quarzuhr mit Kalender»
 - 2026-09-23 USED: «Twill Umhängetasche im Used-Look» → «Twill Umhängetasche im Vintage-Look»
+- 2026-09-23 EINZEL: «Ripsband in Silber mit Glanzeffekt, 75 mm, 50 Yards» → «Ripsband in Gold mit Hologramm-Glanz, 75 mm, 50 Yards»
 
 Typ-/Tag-Korrekturen (rückgelesen):
 
@@ -104,6 +114,7 @@ Typ-/Tag-Korrekturen (rückgelesen):
 Noch offene Beschreibungen:
 
 - used-look-jeans-mit-leicht-ausgestelltem-bein-621700: USED
+- herren-jeansjacke-im-used-look-609500: USED
 - erhohende-board-schuhe-im-used-look-605300: USED
 - ombre-t-shirt-mit-used-look-602800: USED
 - herren-hoodie-im-used-look-633500: USED
@@ -111,11 +122,14 @@ Noch offene Beschreibungen:
 - rebellious-washed-distressed-short-sleeve-top-633300: USED
 - herren-jeans-im-used-look-636600: USED
 - used-look-patchwork-jeans-fur-herren-625300: USED
+- st-michael-distressed-zip-up-hoodie-616100: USED
 - retro-straight-jeans-mit-used-look-628400: USED
 - slim-fit-used-look-jeans-fur-herren-616600: USED
 - heavyweight-kapuzenjacke-im-used-look-631300: USED
 - used-look-jeans-fur-herren-600800: USED
+- laser-silber-rippband-75mm-50-yards-026496: EINZEL
 - herren-langarmhemd-im-used-look-620200: USED
 - retro-ohrringe-im-used-look-mit-kettendetail-626900: USED
+- 1-zoll-zapfpistole-fur-diesel-und-benzin-257024: EINZEL
 - biden-herrenuhr-ultraflach-mit-kalender-611776: EINZEL
 - twill-umhangetasche-im-used-look-676544: USED
