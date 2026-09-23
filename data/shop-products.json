@@ -153,5 +153,12 @@
     "desc": "40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen & Absagen. Kopieren, Platzhalter ersetzen, abschicken.",
     "price": "CHF 19",
     "buy": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o"
+  },
+  {
+    "slug": "strategie-pruefstand",
+    "title": "Strategie-Prüfstand: Trading-Ideen ehrlich testen",
+    "desc": "Python-Kit: deine Regel gegen 9 bekannte Stile und 200 Zufallsstrategien, Skill in Prozent, Zukunfts-Schutz, Auswahl-Falle, Daytrading-Test. Mit Anleitung zu den sieben Fallen. Keine Anlageberatung.",
+    "price": "CHF 29",
+    "buy": ""
   }
 ]
