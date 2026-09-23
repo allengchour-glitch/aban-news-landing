@@ -18011,3 +18011,9 @@ gid://shopify/Product/15448645632385	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714382209	Bunt Rosarot	Colorful Rose Red	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15448647369089	Farbe	gid://shopify/ProductOptionValue/12023714775425	Schwarz-Leuchtendrot	Schwarz-Leuchtendes Rot	2026-09-23T20:35Z/reparatur-korrigiert
 gid://shopify/Product/15448649040257	Farbe	gid://shopify/ProductOptionValue/12024153080193	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448649564545	Farbe	gid://shopify/ProductOptionValue/12024233787777	Matt dünn Samt	Matte Thin Velvet	2026-09-23T20:35Z/reparatur-original:satzbau:adjektivfolge
+gid://shopify/Product/15448649564545	Farbe	gid://shopify/ProductOptionValue/12024233820545	Glänzend Samt	Gloss Velvet	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448649564545	Farbe	gid://shopify/ProductOptionValue/12024233886081	Matt Samt	Matte Velvet	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292311425	Leuchtendrot-Einheitsgrösse	Leuchtendes Rot-Einheitsgrösse	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292344193	Leuchtendrot-Übergrösse	Leuchtendes Rot-Übergrösse	2026-09-23T20:35Z/reparatur-korrigiert
+gid://shopify/Product/15448650088833	Farbe	gid://shopify/ProductOptionValue/12024292376961	Leuchtendrot-Klein	Leuchtendes Rot-Klein	2026-09-23T20:35Z/reparatur-korrigiert

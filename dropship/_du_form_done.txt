@@ -22795,3 +22795,7 @@ taktische-hufttasche-fur-outdoor-aktivitaten-623100	2026-09-23	um-ohne-wirkung
 taktische-hufttasche-mit-erste-hilfe-kit-603800	2026-09-23	um-ohne-wirkung
 taktische-hundeleine-fur-grosse-hunde-926080	2026-09-23	teilweise
 taktische-hundeleine-mit-frosch-karabiner-611500	2026-09-23	teilweise
+taktische-hundeweste-128064	2026-09-23	um-ohne-wirkung
+taktische-hundeweste-fur-grosse-hunde-563fdf	2026-09-23	um-ohne-wirkung
+taktische-kampf-weste-leicht-gepolstert-140480	2026-09-23	um-ohne-wirkung
+taktische-kletterweste-dd59f5	2026-09-23	du
