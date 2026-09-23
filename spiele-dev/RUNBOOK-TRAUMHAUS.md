@@ -6835,3 +6835,29 @@ Prüfwerkzeug: **`spiele-dev/tools/th-gta.mjs`** (15 Prüfungen, in `th-alle` vo
 6. **Namensnennung CC BY:** Die drei Kevin-MacLeod-Stücke zeigt das Radio mit Titel, Künstler
    und Lizenz, sobald sie laufen (wie GTA Lied und Künstler einblendet). premium/hype sind
    Eigenproduktionen (automation/music/produce).
+
+## Runde 91 · 🚕 Taxi-Nebenjob (User: „mach traumhaus spiel weiter")
+
+Der GTA-Klassiker unter den Nebenjobs, gebaut auf das Taxi aus Charge 50. Ein Taxi im Verkehr
+antippen → der Fahrer übergibt die Schicht (**20 $ Miete, kein Diebstahl, keine Fahndung**).
+Dann: Fahrgast abholen (winkt am Straßenrand, gelber Ring), ans Ziel bringen, Fahrpreis nach
+Strecke + Trinkgeld nach Restzeit (zu spät: 60 %, kein Trinkgeld), nächster Fahrgast.
+**Deckel 5 Fahrten/Tag** (dieselbe Überlegung wie 4 Lieferungen/Tag: ein endlos wiederholbarer
+Job entwertet Arbeit, Ernte und Aufträge). Aussteigen beendet die Schicht.
+
+Wiederverwendet statt neu gebaut (Grep-Anker): Ziele aus `LIEFERZIELE`, Navigation über
+`gpsSetz`, Figur aus `mkBewohner`, Geld über `verdiene` (Wohnstufen-Bonus inklusive),
+Einblendung über `gtaBanner(…,"info")`. Neu: `TAXI`, `taxiSchicht`, `taxiHalt`, `updTaxi`,
+Erfolg „Taxifahrer" (am Ende von `ACH` angehängt), Auftrag im `MISS_POOL` (am Ende).
+
+Prüfwerkzeug: `th-gta.mjs` jetzt **21 Prüfungen** (Haltepunkte aller 13 Ziele, Schicht, Abholen,
+Absetzen, Aussteigen beendet die Schicht) + Bilder `gta-4-taxi-halt-*.png`.
+
+**Regeln, die hier Zeit gekostet haben:**
+1. **Eine POI-Mitte ist kein Haltepunkt.** Die Koordinaten in `LIEFERZIELE` liegen im See
+   (Seepark), mitten auf dem Markt oder auf der Fahrbahn. `taxiHalt` sucht darum den nächsten
+   Punkt, an dem `gpsStrasse` gilt und `gpsGesperrt` nicht, und geht dann in 16 Richtungen zum
+   Straßenrand: der Gast steht 3,6 m hinter der Kante (Parkbuchten sind breit), sonst 1,6 m.
+2. **Die Fahrkamera folgt dem Auto.** Wer den wartenden Gast fotografieren will, steht zu Fuß
+   daneben; ein Auto näher als 8 m löst schon das Einsteigen aus.
+3. **Nie ein zufälliges Element per `sort(Math.random)`** — per Index ziehen (Runbook-Regel).

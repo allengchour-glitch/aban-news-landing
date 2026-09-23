@@ -39,6 +39,23 @@ mitSonden('traumhaus.html', {
   /* Die Gegend-Pruefung laeuft einmal je SPIELsekunde — im Software-Renderer sind das
      10 bis 20 echte Sekunden. Statt zu warten, wird sie hier direkt ausgeloest. */
   ortTakt: `function(){_gegendT=0;gtaOrtTakt(0.1);return document.getElementById("gtaOrt").textContent;}`,
+  /* Runde 91: Taxi-Schicht. Das Auto wird fuer die Pruefung neben Fahrgast und Ziel
+     GESETZT statt gefahren — gemessen wird die Logik, nicht die Fahrkunst. */
+  taxiSchicht: `function(){var v=null;verkehr.forEach(function(x){if(!v&&/th50_taxi/.test(x.datei||""))v=x;});
+    if(!v)return {da:false};geld=5000;geldLast=5000;wanted=0;var g0=geld;taxiSchicht(v);
+    return {da:true,fahren:!!fahren,an:TAXI.an,miete:g0-geld,wanted:wanted};}`,
+  taxiStand: `function(){return {an:TAXI.an,phase:TAXI.phase,gast:!!TAXI.gast,gps:GPS.aktiv,ab:TAXI.ab&&TAXI.ab.n,ziel:TAXI.ziel&&TAXI.ziel.n,
+    fahrten:stats.taxiFahrten||0,geld:geld,hud:document.getElementById("taxiHud").textContent};}`,
+  taxiZumGast: `function(){var G=TAXI.gast.m.position;driveCar.mesh.position.set(G.x-3,driveCar.mesh.position.y,G.z);window._carKmh=0;updTaxi(0.1);return TAXI.phase;}`,
+  taxiZumZiel: `function(){var g0=geld;driveCar.mesh.position.set(TAXI.ziel.x+2,driveCar.mesh.position.y,TAXI.ziel.z);window._carKmh=0;updTaxi(0.1);return {phase:TAXI.phase,plus:geld-g0};}`,
+  /* Halteplaetze aller Orte: Strassenpunkt fuers Taxi, Gehsteig fuer den Fahrgast. */
+  taxiHalte: `function(){return LIEFERZIELE.map(function(z){var h=taxiHalt(z);
+    if(!h)return {n:z[0],fehlt:true};
+    return {n:z[0],zurStrasse:Math.round(Math.hypot(h.x-z[1],h.z-z[2])),gastAufStrasse:gpsStrasse(h.gx,h.gz),
+      gastGesperrt:gpsGesperrt(h.gx,h.gz),randAbstand:Math.round(Math.hypot(h.gx-h.x,h.gz-h.z)*10)/10};});}`,
+  /* Fuers Bild: Fahrgast zu Fuss zeigen — im Taxi folgt die Kamera dem Wagen. */
+  gastZeigen: `function(n){var z=LIEFERZIELE.filter(function(q){return q[0]===n;})[0],h=taxiHalt(z),G=taxiGast(h.gx,h.gz);
+    G.m.userData.ra.rotation.z=2.6;G.m.rotation.y=Math.atan2(h.x-h.gx,h.z-h.gz);return {x:h.gx,z:h.gz};}`,
   ortHalten: `function(){gtaOrt(wagenName(window.autoRec));clearTimeout(window._goT);return document.getElementById("gtaOrt").textContent;}`,
 }, DATEI)
 
@@ -105,6 +122,29 @@ if (BILDER) { await th('bannerHalten'); await bild('3-verhaftet'); await th('ban
 await th('aussteigen'); await page.waitForTimeout(400)
 rd = await th('radio')
 pruefe('Aussteigen stellt das Radio ab', rd.pausiert === true || rd.pausiert === null, JSON.stringify(rd))
+
+/* ── Taxi-Schicht (Runde 91) ── */
+const halte = await th('taxiHalte')
+const schlechteHalte = halte.filter((h) => h.fehlt || h.gastAufStrasse || h.gastGesperrt || h.zurStrasse > 80 || h.randAbstand > 12)
+pruefe('Jeder Ort hat einen Halteplatz, Fahrgast steht am Rand (nicht Fahrbahn/Wasser/Haus)', schlechteHalte.length === 0,
+  schlechteHalte.length ? JSON.stringify(schlechteHalte) : halte.map((h) => h.n + ' ' + h.zurStrasse + '/' + h.randAbstand + 'm').join(', '))
+if (BILDER) for (const n of ['Seepark', 'Markt']) {
+  const g = await th('gastZeigen', n); await page.evaluate(([x, z]) => window.__CAM(x, z, 10, 0.5), [g.x, g.z])
+  await page.waitForTimeout(3000); await bild('4-taxi-halt-' + n.toLowerCase())
+}
+const ts = await th('taxiSchicht')
+pruefe('Taxi antippen uebernimmt die Schicht (20 $, keine Fahndung)', ts.da && ts.fahren && ts.an && ts.miete === 20 && ts.wanted === 0, JSON.stringify(ts))
+const tA = await warteAuf(async () => { const s = await th('taxiStand'); return s.phase === 'abholen' ? s : null }, 15)
+pruefe('Zentrale schickt einen Fahrgast (Figur, GPS, Anzeige)', tA && tA.gast && tA.gps && /wartet/.test(tA.hud), JSON.stringify(tA))
+const ph = await th('taxiZumGast')
+const tF = await th('taxiStand')
+pruefe('Fahrgast steigt ein, Ziel ist gesetzt', ph === 'fahren' && tF.ziel && tF.ziel !== tF.ab && tF.gps && !tF.gast, JSON.stringify(tF))
+const za = await th('taxiZumZiel')
+const tZ = await th('taxiStand')
+pruefe('Am Ziel: Fahrpreis bezahlt, Fahrt gezaehlt', za.phase === 'warten' && za.plus > 0 && tZ.fahrten === 1, JSON.stringify(za))
+await th('aussteigen'); await page.waitForTimeout(400)
+const tE = await th('taxiStand')
+pruefe('Aussteigen beendet die Schicht', !tE.an && !tE.gps && !tE.gast, JSON.stringify(tE))
 pruefe('Keine JS-Fehler', jsFehler.length === 0, jsFehler.slice(0, 3).join(' | '))
 
 await browser.close()

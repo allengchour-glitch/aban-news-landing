@@ -246,7 +246,8 @@ canvas{display:block}
 #gtaBanner.gut .gb-titel{color:var(--bern)}
 #gtaBanner.schlecht .gb-titel{color:#e0473c}
 #gtaBanner.stunt .gb-titel{color:#fff}
-#gtaBanner.stunt .gb-band{background:rgba(18,14,10,.4);padding:8px 12px 10px}
+#gtaBanner.stunt .gb-band,#gtaBanner.info .gb-band{background:rgba(18,14,10,.4);padding:8px 12px 10px}
+#gtaBanner.info .gb-titel{color:#f2c230;font-size:clamp(1.5rem,5vw,3rem)}
 @keyframes gbRein{from{opacity:0;transform:scale(1.25)}to{opacity:1;transform:none}}
 #gtaOrt{position:fixed;right:calc(72px + env(safe-area-inset-right));bottom:calc(128px + env(safe-area-inset-bottom));z-index:15;text-align:right;pointer-events:none;opacity:0;transition:opacity .6s}
 #gtaOrt.an{opacity:1}
@@ -416,6 +417,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <div id="hint"></div>
 <div id="gtaBanner"><div class="gb-band"><div class="gb-titel"></div><div class="gb-unter"></div></div></div>
 <div id="gtaOrt"></div>
+<div id="taxiHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(178px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(36,28,10,.9);color:#fff;border:2px solid #f2c230;border-radius:14px;padding:6px 14px;font-weight:800;white-space:nowrap;pointer-events:none"></div>
 <div id="gtaRadio"></div>
 <div id="wanted" style="position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:15;display:none;background:rgba(20,15,20,.82);border:2px solid #ff5a3a;border-radius:14px;padding:6px 14px;font-size:1.3rem;letter-spacing:3px;box-shadow:0 4px 16px rgba(255,90,40,.5)"></div>
 <div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:14px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
@@ -11649,7 +11651,8 @@ var ACH=[
     Eintraege steht sie in der Erfolgsliste UND in "Am naechsten dran". */
  ["hetzer","🏁","Auf Zeit","Eine 90-Sekunden-Hetze gespielt",function(){return (stats.hetzen||0)>=1;}],
  ["hetzeprofi","⏱️","Rekordjäger","5 Hetzen gespielt",function(){return (stats.hetzen||0)>=5;}],
- ["hetzekoenig","💸","Goldene Neunzig","1000 $ in einer einzigen Hetze",function(){return (stats.hetzeBest||0)>=1000;}]
+ ["hetzekoenig","💸","Goldene Neunzig","1000 $ in einer einzigen Hetze",function(){return (stats.hetzeBest||0)>=1000;}],
+ ["taxifahrer","🚕","Taxifahrer","5 Fahrgäste ans Ziel gebracht",function(){return (stats.taxiFahrten||0)>=5;}]
 ];
 /* 🎯 DER LETZTE METER. Vierzig Erfolge lagen im Menue — und alle sahen gleich weit
    weg aus, weil keiner einen Zwischenstand trug. "5 Ernten" liest sich bei 0 exakt wie
@@ -11692,7 +11695,8 @@ var ACHFORT={
  schleckmaul:[function(){return stats.eis||0;},3,"Eis"],
  torjaeger:[function(){return stats.tore||0;},3,"Tor"],
  hetzeprofi:[function(){return stats.hetzen||0;},5,"Hetze"],
- hetzekoenig:[function(){return stats.hetzeBest||0;},1000,null]
+ hetzekoenig:[function(){return stats.hetzeBest||0;},1000,null],
+ taxifahrer:[function(){return stats.taxiFahrten||0;},5,"Fahrgast"]
 };
 /* Dieselbe Lehre wie bei checkAch: eine werfende Bedingung darf nicht den ganzen
    Rest mitreissen. Hier kostet ein Fehler genau einen Balken. */
@@ -11807,7 +11811,8 @@ var MISS_POOL=[
     Einkaufs-Knopf behauptete sogar "zaehlt als Erfolg", und den gab es nicht. Statt
     eines weiteren Erfolgs (davon kamen gerade zwei dazu) bekommt der Laden eine
     Tagesmission: der Knopf hat damit einen Grund, und der Zaehler einen Leser. */
- ["🛍️","Kaufe {n}× im Laden ein",2,function(){return stats.einkaeufe||0;}]
+ ["🛍️","Kaufe {n}× im Laden ein",2,function(){return stats.einkaeufe||0;}],
+ ["🚕","Bringe {n} Fahrgäste mit dem Taxi ans Ziel",2,function(){return stats.taxiFahrten||0;}]
 ];
 function missNeu(){
   if(MPs&&!mpHost)return;
@@ -13273,8 +13278,8 @@ function aussteigen(){
   if(a===window.autoRec){a.state="parkt";
     a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);
     a.homeX=cx(a.gx);a.homeZ=cz(a.gy);}
-  else if(driveGeklaut&&a.route){ // geklautes Auto zurück in den Verkehr
-    a.pos=a.route.axis==="x"?a.mesh.position.x:a.mesh.position.z;}
+  else if((driveGeklaut||a._schicht)&&a.route){ // geklautes (oder gemietetes 🚕) Auto zurück in den Verkehr
+    a.pos=a.route.axis==="x"?a.mesh.position.x:a.mesh.position.z;a._schicht=false;}
   // Pay'n'Spray: Auto auf dem eigenen Grundstück abstellen = umlackiert → Fahndung fällt
   var aufGrund=Math.abs(a.mesh.position.x)<GW*CS/2&&Math.abs(a.mesh.position.z)<GH*CS/2;
   var lackiert=false;
@@ -15378,7 +15383,9 @@ function tapAt(px,py){
         tanzStart();return;}
       if(window.autoRec&&window.autoRec.state==="parkt"&&Math.hypot(window.autoRec.mesh.position.x-c0.pt.x,window.autoRec.mesh.position.z-c0.pt.z)<3){einsteigen();return;}}
     if(c0&&!fahren){for(var vi9=0;vi9<verkehr.length;vi9++){var v9=verkehr[vi9];
-      if(v9.mesh&&Math.hypot(v9.mesh.position.x-c0.pt.x,v9.mesh.position.z-c0.pt.z)<3.5){einsteigen(v9,true);return;}}}
+      if(v9.mesh&&Math.hypot(v9.mesh.position.x-c0.pt.x,v9.mesh.position.z-c0.pt.z)<3.5){
+        if(istTaxi(v9)){taxiSchicht(v9);return;}          /* 🚕 Taxi: Schicht uebernehmen, nicht klauen */
+        einsteigen(v9,true);return;}}}
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
@@ -16304,10 +16311,11 @@ function gtaBanner(titel,unter,art){
   if(art==="schlecht"){cv.style.filter="grayscale(1) contrast(1.08) brightness(.92)";zeitlupe(0.3,1.8);
     [392,330,262].forEach(function(f,i){setTimeout(function(){beep(f,.28,"sawtooth",.045);},i*230);});}
   else if(art==="stunt"){zeitlupe(0.45,0.9);beep(880,.12,"triangle",.05);}
+  else if(art==="info"){[659,880].forEach(function(f,i){setTimeout(function(){beep(f,.12,"triangle",.045);},i*90);});}
   else{zeitlupe(0.6,0.8);
     [523,659,784,1046].forEach(function(f,i){setTimeout(function(){beep(f,.18,"triangle",.05);},i*110);});}
   clearTimeout(window._gbT);
-  window._gbT=setTimeout(function(){el.className="";cv.style.filter="";},art==="stunt"?1800:3200);}
+  window._gbT=setTimeout(function(){el.className="";cv.style.filter="";},(art==="stunt"||art==="info")?1900:3200);}
 
 /* ── Gegend und Wagen unten rechts ────────────────────────────────────────────── */
 var WAGEN_NAMEN={th37_limousine:"Limousine",th37_kombi:"Kombi",th37_sportwagen:"Sportwagen",
@@ -16397,7 +16405,7 @@ addEventListener("keydown",function(e){
 /* ── Einsteigen / Aussteigen ─────────────────────────────────────────────────── */
 function gtaEinstieg(a){gtaOrt(wagenName(a));_radioTitel=-1;
   if(radioAn)radioSpielen();else{var sp=document.getElementById("spRadio");if(sp)sp.textContent="Radio aus";}}
-function gtaAusstieg(){radioAus();window._stuntZL=0;}
+function gtaAusstieg(){radioAus();window._stuntZL=0;if(TAXI&&TAXI.an)taxiEnde("Taxischicht beendet.");}
 
 /* ── Fahndungssterne: fuenf Plaetze, volle und leere Sterne ───────────────────── */
 function sterneHtml(n){var s="";for(var i=0;i<5;i++)s+="<svg class='st"+(i<n?" voll":"")+"' viewBox='0 0 24 24' aria-hidden='true'><path d='M12 2.8l2.7 5.9 6.4.7-4.8 4.3 1.4 6.3L12 16.9 6.3 20l1.4-6.3L2.9 9.4l6.4-.7z'/></svg>";return s;}
@@ -16416,6 +16424,155 @@ function sireneTakt(minDist,an){
 /* Waechter: ruft niemand mehr sireneTakt (Menue, Pause, Spielende), verstummt sie —
    sonst hielte der Oszillator den letzten Ton, bis die Seite zugeht. */
 setInterval(function(){if(_sirene&&performance.now()-(_sirene.zuletzt||0)>1500)sireneTakt(0,false);},1000);
+/* ═══════ 🚕 TAXI-NEBENJOB (Runde 91) ═══════════════════════════════════════════════
+   Der Klassiker unter den GTA-Nebenjobs, gebaut auf das Taxi aus Charge 50: ein
+   Taxi im Verkehr antippen → der Fahrer uebergibt die Schicht (20 $ Miete, KEIN
+   Diebstahl, keine Fahndung). Dann: Fahrgast abholen (er winkt am Strassenrand),
+   ans Ziel bringen, Fahrpreis + Trinkgeld kassieren, naechster Fahrgast.
+   Wiederverwendet statt neu gebaut: Ziele aus LIEFERZIELE (alle mit dem Auto
+   erreichbar), Navigation ueber gpsSetz (lila Linie auf der Minikarte), die Figur
+   aus mkBewohner, Geld ueber verdiene (Wohnstufen-Bonus inklusive).
+   Deckel: 5 Fahrten am Tag — dieselbe Ueberlegung wie bei den Lieferungen (4/Tag):
+   ein endlos wiederholbarer Job entwertet Arbeit, Ernte und Auftraege. */
+var TAXI={an:false,phase:"",gast:null,ab:null,ziel:null,t:0,weg:0,heute:0,tag:-1,spaet:false};
+var TAXI_MAX=5,TAXI_MIETE=20;
+var TAXI_SAETZE=[
+  "„Zum {z}, bitte. Und nicht so wie der Letzte — der fuhr über den Randstein.“",
+  "„{z}. Ich bin spät dran, aber bitte trotzdem heil.“",
+  "„Einmal {z}. Kennen Sie den Weg? Ich nämlich nicht.“",
+  "„{z}, und das Radio darf ruhig lauter.“",
+  "„Nach {z}. Meine Schwester wartet, und die wartet nicht gern.“",
+  "„{z}, bitte. Ich zahle bar und gebe Trinkgeld, wenn's schnell geht.“"];
+function istTaxi(rec){return !!(rec&&/th50_taxi/.test(rec.datei||""));}
+function taxiHud(txt){var el=document.getElementById("taxiHud");if(!el)return;
+  if(txt===null){el.style.display="none";return;}el.textContent=txt;el.style.display="block";}
+function taxiSchicht(v){
+  if(MPs&&!mpHost){hint("Nur der Gastgeber fährt.");return;}
+  if(fahren)return;
+  if(geld<TAXI_MIETE){hint("Die Taxischicht kostet "+TAXI_MIETE+" $ Miete.");return;}
+  geld-=TAXI_MIETE;geldSend();updHUD();
+  v._schicht=true;einsteigen(v,false);
+  if(!fahren){v._schicht=false;return;}
+  TAXI.an=true;TAXI.phase="";
+  var lb=document.getElementById("lieferBtn");if(lb)lb.style.display="none";   /* Lieferung und Taxi schliessen sich aus */
+  hint("Taxischicht übernommen (−"+TAXI_MIETE+" $ Miete). Die Zentrale sucht einen Fahrgast …");
+  setTimeout(taxiNaechster,1600);}
+function taxiGast(gx,gz){
+  var m=mkBewohner({skin:0xf0c9a0,hair:0x2a1e14,top:0xf2c230,bottom:0x2a3346,dress:false,longHair:false});
+  m.scale.setScalar(1.15);
+  var gy=window.gelaendeH?window.gelaendeH(gx,gz):0;
+  m.position.set(gx,gy,gz);m._bewegt=true;scene.add(m);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(0.9,1.3,28),new THREE.MeshBasicMaterial({color:0xf2c230,transparent:true,opacity:0.8,depthWrite:false,side:THREE.DoubleSide}));
+  ring.rotation.x=-Math.PI/2;ring.position.set(gx,gy+0.14,gz);ring._bewegt=true;scene.add(ring);   /* ueber der Bordsteinkante */
+  return {m:m,ring:ring,t:0};}
+function taxiGastWeg(){if(!TAXI.gast)return;scene.remove(TAXI.gast.m);scene.remove(TAXI.gast.ring);TAXI.gast=null;}
+/* 🛑 HALTEPLATZ. Die Koordinaten in LIEFERZIELE sind die MITTEN der Orte — „Seepark"
+   liegt mitten im See (im Bild gesehen: Fahrgast und Taxi im Wasser). Gesucht wird
+   darum der naechste Punkt auf einer Strasse (gpsStrasse, dieselbe Karte, nach der das
+   GPS routet): dorthin faehrt das Taxi. Der Fahrgast steht vom Strassenpunkt aus in
+   Richtung Ort gleich hinter dem Fahrbahnrand — auf dem Gehsteig, nicht auf der Spur. */
+var _taxiHalt={};
+function taxiHalt(z){
+  if(_taxiHalt[z[0]])return _taxiHalt[z[0]];
+  var px=z[1],pz=z[2],best=null;
+  for(var r=0;r<=80&&!best;r+=2){var n=Math.max(1,Math.round(r*1.6));
+    for(var i=0;i<n&&!best;i++){var a=i/n*6.2832,x=px+Math.cos(a)*r,y=pz+Math.sin(a)*r;
+      if(gpsStrasse(x,y)&&!gpsGesperrt(x,y))best={x:x,z:y};}}
+  if(!best)return null;
+  /* Naechster Fahrbahnrand: in 16 Richtungen bis zum Rand gehen, der kuerzeste gueltige
+     gewinnt (Gehsteig nicht gesperrt, nicht selbst Strasse); die Seite zum Ort hin wird
+     leicht bevorzugt. ⚠️ GEMESSEN (th-gta): nur „Richtung Ort" ging bei sechs Orten
+     schief — deren Mitte liegt SELBST auf einer Strasse, der Fahrgast lief 16 m die
+     Fahrbahn entlang und stand noch darauf; beim Seepark fuehrte „zum Ort" in den See. */
+  var rx=px-best.x,rz=pz-best.z,rl=Math.hypot(rx,rz)||1,rand=null;
+  for(var j=0;j<16;j++){var w=j/16*6.2832,dx=Math.cos(w),dz=Math.sin(w),d=0;
+    while(d<20&&gpsStrasse(best.x+dx*d,best.z+dz*d))d+=0.5;
+    if(d>=20)continue;
+    /* 3,6 m hinter dem Rand statt 1,6: an den Hauptstrassen liegen dort erst die
+       Parkbuchten (im Bild: Fahrgast mitten im Parkfeld). Faellt der Gehsteig-Punkt in
+       etwas Gesperrtes, bleibt es beim Rand. */
+    var gx=best.x+dx*(d+3.6),gz=best.z+dz*(d+3.6);
+    if(gpsGesperrt(gx,gz)||gpsStrasse(gx,gz)){gx=best.x+dx*(d+1.6);gz=best.z+dz*(d+1.6);}
+    if(gpsGesperrt(gx,gz)||gpsStrasse(gx,gz))continue;
+    var wert=d-0.8*((dx*rx+dz*rz)/rl);
+    if(!rand||wert<rand.w)rand={w:wert,gx:gx,gz:gz};}
+  if(!rand)return null;
+  var h={n:z[0],x:best.x,z:best.z,gx:rand.gx,gz:rand.gz,ox:px,oz:pz};
+  _taxiHalt[z[0]]=h;return h;}
+function taxiZielWahl(vonX,vonZ,min,max,ausser){
+  /* EIN zufaelliges Element per Index ziehen — nicht per sort(Math.random) (Runbook). */
+  var k=LIEFERZIELE.filter(function(z){var d=Math.hypot(z[1]-vonX,z[2]-vonZ);return d>min&&d<max&&z[0]!==ausser&&taxiHalt(z);});
+  if(!k.length)k=LIEFERZIELE.filter(function(z){return z[0]!==ausser&&taxiHalt(z);});
+  return taxiHalt(k[Math.floor(Math.random()*k.length)]);}
+function taxiNaechster(){
+  if(!TAXI.an||!fahren)return;
+  if(TAXI.tag!==tag){TAXI.tag=tag;TAXI.heute=0;}
+  if(TAXI.heute>=TAXI_MAX){TAXI.phase="";taxiHud(null);
+    hint("Für heute ist Schluss ("+TAXI_MAX+"/"+TAXI_MAX+" Fahrten). Die Zentrale meldet sich morgen wieder.");return;}
+  var p=spielerPos();
+  TAXI.ab=taxiZielWahl(p.x,p.z,40,220,null);
+  TAXI.gast=taxiGast(TAXI.ab.gx,TAXI.ab.gz);TAXI.phase="abholen";TAXI.spaet=false;
+  gpsSetz(TAXI.ab.x,TAXI.ab.z);
+  taxiHud("Fahrgast wartet: "+TAXI.ab.n);
+  hint("Ein Fahrgast wartet bei "+TAXI.ab.n+". Folge der Linie und halte neben ihm.");
+  beep(700,.08,"triangle",.04);setTimeout(function(){beep(880,.08,"triangle",.04);},90);}
+function taxiEnde(txt){
+  if(!TAXI.an)return;TAXI.an=false;TAXI.phase="";taxiGastWeg();
+  if(GPS.aktiv&&(TAXI.ab||TAXI.ziel))gpsWeg();
+  TAXI.ab=null;TAXI.ziel=null;taxiHud(null);
+  if(txt)hint(txt);}
+/* Am Ziel steigt der Fahrgast aus und geht die paar Meter zum Ort — dann ist er weg. */
+var _taxiAus=[];
+function taxiAussteiger(h){
+  var m=mkBewohner({skin:0xf0c9a0,hair:0x2a1e14,top:0xf2c230,bottom:0x2a3346,dress:false,longHair:false});
+  m.scale.setScalar(1.15);m._bewegt=true;
+  m.position.set(h.gx,window.gelaendeH?window.gelaendeH(h.gx,h.gz):0,h.gz);scene.add(m);
+  var dx=h.ox-h.gx,dz=h.oz-h.gz,dl=Math.hypot(dx,dz)||1;
+  _taxiAus.push({m:m,vx:dx/dl*1.4,vz:dz/dl*1.4,t:0});}
+function updTaxiAus(dt){
+  for(var i=_taxiAus.length-1;i>=0;i--){var a=_taxiAus[i];a.t+=dt;
+    a.m.position.x+=a.vx*dt;a.m.position.z+=a.vz*dt;a.m.rotation.y=Math.atan2(a.vx,a.vz);
+    var ud=a.m.userData;if(ud&&ud.ll){var sw=Math.sin(a.t*9)*0.5;ud.ll.rotation.x=sw;ud.rl.rotation.x=-sw;
+      if(ud.la){ud.la.rotation.x=-sw*0.7;ud.ra.rotation.x=sw*0.7;}}
+    if(a.t>4.5){scene.remove(a.m);_taxiAus.splice(i,1);}}}
+function updTaxi(dt){
+  updTaxiAus(dt);
+  if(!TAXI.an)return;
+  if(!fahren||!driveCar){taxiEnde("Schicht beendet.");return;}
+  var m=driveCar.mesh,kmh=window._carKmh||0;
+  if(TAXI.phase==="abholen"&&TAXI.gast){
+    var G=TAXI.gast;G.t+=dt;
+    /* winkt dem Taxi zu und dreht sich zu ihm */
+    var ud=G.m.userData;G.m.rotation.y=Math.atan2(m.position.x-G.m.position.x,m.position.z-G.m.position.z);
+    if(ud&&ud.ra)ud.ra.rotation.z=2.6+0.35*Math.sin(G.t*9);
+    G.ring.scale.setScalar(1+0.15*Math.sin(G.t*4));
+    var d=Math.hypot(m.position.x-G.m.position.x,m.position.z-G.m.position.z);
+    if(d<8&&kmh<14){
+      taxiGastWeg();
+      TAXI.ziel=taxiZielWahl(TAXI.ab.x,TAXI.ab.z,80,330,TAXI.ab.n);
+      TAXI.weg=Math.hypot(TAXI.ziel.x-TAXI.ab.x,TAXI.ziel.z-TAXI.ab.z);
+      TAXI.t=Math.max(45,Math.round(25+TAXI.weg/6.5));TAXI.phase="fahren";
+      gpsSetz(TAXI.ziel.x,TAXI.ziel.z);
+      hint(TAXI_SAETZE[Math.floor(Math.random()*TAXI_SAETZE.length)].replace("{z}",TAXI.ziel.n));
+      beep(523,.06,"triangle",.04);setTimeout(function(){beep(659,.08,"triangle",.04);},80);}
+    return;}
+  if(TAXI.phase==="fahren"){
+    TAXI.t-=dt;
+    taxiHud("→ "+TAXI.ziel.n+" · "+Math.max(0,Math.ceil(TAXI.t))+" s");
+    if(TAXI.t<=0&&!TAXI.spaet){TAXI.spaet=true;hint("Zu spät. Der Fahrgast zahlt nur noch einen Teil, Trinkgeld gibt es keins.");beep(220,.15,"sawtooth",.04);}
+    var d2=Math.hypot(m.position.x-TAXI.ziel.x,m.position.z-TAXI.ziel.z);
+    if(d2<10&&kmh<14){
+      taxiAussteiger(TAXI.ziel);
+      /* Fahrpreis nach Strecke (wie der Lieferlohn), Trinkgeld nach Restzeit */
+      var fp=Math.round((25+TAXI.weg*0.55)*stufenBonus()),tg=0;
+      if(TAXI.spaet)fp=Math.round(fp*0.6);else tg=Math.round(Math.max(0,TAXI.t)*1.4);
+      verdiene(fp+tg);stats.taxiFahrten=(stats.taxiFahrten||0)+1;TAXI.heute++;
+      gtaBanner("Fahrgast abgesetzt","Fahrpreis "+fp+" $"+(tg?" · Trinkgeld "+tg+" $":""),"info");
+      hearts(m.position.x,m.position.z);
+      if(GPS.aktiv)gpsWeg();
+      TAXI.phase="warten";TAXI.ziel=null;taxiHud("Die Zentrale sucht den nächsten Fahrgast …");
+      setTimeout(taxiNaechster,2600);}}}
+
 
 
 // ===================== Start / Netz-Lobby =====================
@@ -17016,7 +17173,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updBauPlopps(dt);updBauKamera(dt);gtaOrtTakt(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updClub(dt);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
+    updHearts(dt);updPlopps(dt);updBauPlopps(dt);updBauKamera(dt);gtaOrtTakt(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updTaxi(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updClub(dt);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
