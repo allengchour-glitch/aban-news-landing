@@ -258,7 +258,7 @@ if (ZIEL === 'metricool') {
   const html = seitenHtml(kacheln);
   fs.writeFileSync(HTML_OUT, `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vorschau luxestyle.ch/pages/${SEITE_HANDLE}</title></head><body style="margin:0;font-family:system-ui,sans-serif;background:#fff">${html}</body></html>`);
   const kan2 = await gql('query($q:String!){ pages(first:1, query:$q){ nodes{ id } } }', { q: 'handle:zzqx-gibt-es-nicht-4711' });
-  const d = await gql('query($q:String!){ pages(first:2, query:$q){ nodes{ id handle title isPublished updatedAt } } }', { q: `handle:${SEITE_HANDLE}` });
+  const d = await gql('query($q:String!){ pages(first:2, query:$q){ nodes{ id handle title isPublished updatedAt body } } }', { q: `handle:${SEITE_HANDLE}` });
   const filtert = (kan2?.pages?.nodes || []).length === 0;
   const seite = filtert ? (d?.pages?.nodes || []).find(x => x.handle === SEITE_HANDLE) || null : null;
   console.log(`\nShopify-Seite luxestyle.ch/pages/${SEITE_HANDLE}: ${!filtert ? 'UNKLAR (Handle-Suche filtert nicht)' : seite ? `vorhanden (${seite.id}, «${seite.title}»)` : 'existiert nicht'} · Vorschau: ${HTML_OUT} (${html.length} Zeichen)`);
@@ -320,6 +320,8 @@ function seitenHtml(liste) {
 }
 async function shopifySchreiben(seite, html) {
   if (kacheln.length < 5) { console.error(`Abbruch: nur ${kacheln.length} Kacheln.`); process.exit(1); }
+  const hrefs = b => [...String(b || '').matchAll(/href="([^"]+)"/g)].map(m => m[1].replace(/&amp;/g, '&'));
+  if (seite && JSON.stringify(hrefs(seite.body)) === JSON.stringify(hrefs(html))) { console.log('Shopify-Seite: Links unverändert → nichts zu tun.'); return; }
   const felder = 'page{ id handle body } userErrors{ field message }';
   const d = seite
     ? await gql(`mutation($id:ID!,$p:PageUpdateInput!){ pageUpdate(id:$id, page:$p){ ${felder} } }`, { id: seite.id, p: { body: html } })

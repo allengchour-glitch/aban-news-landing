@@ -73,7 +73,8 @@ BRANCHE = re.compile(
     r"\brohr|schlauch|verbindung|klinke|stecker|\bxlr\b|adapter|felge|\brad\b|räder|laufrad|fahrrad|\bbike|"
     r"reifen|\brollen?\b|lenkrolle|laufrolle|lautsprecher|subwoofer|woofer|treiber|propeller|\bschaft|spannzange|"
     r"\bbits?\b|stecknuss|ratsche|vierkant|\bbspt?\b|\bnpt\b|mainboard|objektiv|modellflug|drohne|zoll-bereich|"
-    r"anzeige|smartwatch|e-reader|kindle|kompatibel|-geräte?n?\b|zoll-geräte?n?\b|kettensäge|sägekette|\bschwert",
+    r"anzeige|smartwatch|e-reader|kindle|kompatibel|-geräte?n?\b|zoll-geräte?n?\b|kettensäge|sägekette|\bschwert|"
+    r"\bvelos?\b|bereifung|\brad(?:konfig|grösse|durchmesser)",
     re.I)
 MASSWORT = re.compile(
     # «Grösse» fehlt hier absichtlich: «Grösse von 16 Zoll» ist oft eine Grössenklasse (Laptopfach, Trommel,
@@ -324,6 +325,20 @@ def kandidaten_live():
     return ids
 
 
+def geerbte_sperre_freigeben():
+    """Vom Aufseher geerbte Lauf-Sperre (TXTLOCK, fd 8) sofort lösen. Einmal je Prozess, VOR dem eigenen Öffnen.
+    23.09. gemessen: liechtenstein_raus hielt die Text-Sperre (TXTLOCK) und wartete in der Shopify-Schranke auf
+    Platz 1; produkttexte_du_form hielt Platz 1 und wartete auf die Text-Sperre — 80 Min Stillstand aller
+    Text-Schreiber. Wer die Sperre nur erbt, soll sie nicht über Suche/Warten hinweg festhalten."""
+    for fd in os.listdir("/proc/self/fd"):
+        try:
+            if os.readlink(f"/proc/self/fd/{fd}") == TEXTSPERRE:
+                fcntl.flock(int(fd), fcntl.LOCK_UN); os.close(int(fd))
+                print(f"  geerbte Lauf-Sperre (fd {fd}) freigegeben — gesperrt wird je Produkt", flush=True)
+        except OSError:
+            pass
+
+
 class TextSperre:
     """Je Produkt sperren (lesen → schreiben → rücklesen), nie für den ganzen Lauf.
     Hat ein Aufrufer die Sperre für den ganzen Lauf VERERBT (Aufseher-TXTLOCK auf fd 8), wird sie hier
@@ -331,24 +346,23 @@ class TextSperre:
 
     def __init__(self, warte=300):
         self.warte = warte
-        for fd in os.listdir("/proc/self/fd"):
-            try:
-                if os.readlink(f"/proc/self/fd/{fd}") == TEXTSPERRE:
-                    fcntl.flock(int(fd), fcntl.LOCK_UN); os.close(int(fd))
-                    print(f"  geerbte Lauf-Sperre (fd {fd}) freigegeben — gesperrt wird je Produkt", flush=True)
-            except OSError:
-                pass
+        geerbte_sperre_freigeben()
         self.f = open(TEXTSPERRE, "a")
 
     def __enter__(self):
-        frist = time.time() + self.warte
-        while True:
-            try:
-                fcntl.flock(self.f, fcntl.LOCK_EX | fcntl.LOCK_NB); return self
-            except BlockingIOError:
-                if time.time() > frist:
-                    raise TimeoutError("Text-Sperre seit 5 Min belegt")
-                time.sleep(0.5)
+        # BLOCKIEREND mit Frist (alarm): ein Nicht-blockierendes Pollen verliert gegen du_form, das nach 0.25 s
+        # wieder sperrt; ein wartender flock wird beim Freigeben geweckt.
+        import signal
+
+        def _frist(*a):
+            raise TimeoutError(f"Text-Sperre seit {self.warte} s belegt")
+        alt = signal.signal(signal.SIGALRM, _frist)
+        signal.alarm(self.warte)
+        try:
+            fcntl.flock(self.f, fcntl.LOCK_EX)
+        finally:
+            signal.alarm(0); signal.signal(signal.SIGALRM, alt)
+        return self
 
     def __exit__(self, *a):
         fcntl.flock(self.f, fcntl.LOCK_UN)
@@ -368,6 +382,7 @@ def main():
     if "--selbsttest" in sys.argv:
         return selbsttest()
     print(f"zoll_zu_cm {time.strftime('%Y-%m-%d %H:%M')} · {'SCHARF' if SCHARF else 'TROCKEN'} · CAP {CAP}", flush=True)
+    geerbte_sperre_freigeben()
     kand = kandidaten_live()
     if kand is None:
         return 0
@@ -463,6 +478,7 @@ FAELLE = [
     ("<p>Die Anzeige hat eine Grösse von 4.2 Zoll</p>", None),
     ("<p>Klänge der 7-Zoll Steel Tongue Drum</p>", "7-Zoll (ca. 18 cm) Steel"),
     ("<p>Passend für Modelle (45, 52, 58, 20-22 Zoll)</p>", None),
+    ("<p>passend für Velos mit 26, 27.5 oder 29 Zoll Bereifung</p>", None),
     ("<p>Masse: 10,5 und 12 Zoll</p>", "ca. 27 und 30 cm"),
     ("<p>passend für Halsumfang 8 bis 26 Zoll</p>", "Halsumfang ca. 20 bis 66 cm"),
 ]

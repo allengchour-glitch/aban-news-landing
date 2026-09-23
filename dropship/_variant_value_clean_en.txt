@@ -7572,3 +7572,22 @@ gid://shopify/Product/15453894672769	Farbe	gid://shopify/ProductOptionValue/1207
 gid://shopify/Product/15453894836609	Farbe	gid://shopify/ProductOptionValue/12073048605057	Men Black	Herren Schwarz	2026-09-23T18:37Z
 gid://shopify/Product/15453894836609	Farbe	gid://shopify/ProductOptionValue/12073048637825	Men Yellow	Herren Gelb	2026-09-23T18:37Z
 gid://shopify/Product/15453896802689	Farbe	gid://shopify/ProductOptionValue/12451132932481	Flowers Purple	Lila geblümt	2026-09-23T18:37Z
+gid://shopify/Product/15453896868225	Farbe	gid://shopify/ProductOptionValue/12314984415617	Camouflage Black	Camouflage Schwarz	2026-09-23T18:38Z
+gid://shopify/Product/15453897032065	Farbe	gid://shopify/ProductOptionValue/12314985595265	Black-20 Inches	Schwarz-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897032065	Farbe	gid://shopify/ProductOptionValue/12314985628033	Dark Gray-20 Inches	Dunkelgrau-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897032065	Farbe	gid://shopify/ProductOptionValue/12314985660801	Ice Blue-20 Inches	Eisblau-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897032065	Farbe	gid://shopify/ProductOptionValue/12314985693569	Dark Purple-20 Inches	Dunkellila-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897032065	Farbe	gid://shopify/ProductOptionValue/12314985726337	Rose Gold-20 Inches	Roségold-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987004289	Wine Red-20 Inches	Weinrot-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987037057	Wine Red-24 Inches	Weinrot-24 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987069825	Purple-20 Inches	Lila-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987102593	Purple-24 Inches	Lila-24 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987135361	Blue-20 Inches	Blau-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987168129	Blue-24 Inches	Blau-24 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987200897	Black-20 Inches	Schwarz-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987233665	Black-24 Inches	Schwarz-24 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987266433	Dark Brown-20 Inches	Dunkelbraun-20 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453897130369	Farbe	gid://shopify/ProductOptionValue/12314987299201	Dark Brown-24 Inches	Dunkelbraun-24 Zoll	2026-09-23T18:38Z
+gid://shopify/Product/15453920887169	Farbe	gid://shopify/ProductOptionValue/12073869148545	Black Wide Stripe	Schwarz breit gestreift	2026-09-23T18:39Z
+gid://shopify/Product/15453920887169	Farbe	gid://shopify/ProductOptionValue/12073869181313	Blue Wide Stripe	Blau breit gestreift	2026-09-23T18:39Z
+gid://shopify/Product/15453921214849	Farbe	gid://shopify/ProductOptionValue/12073876881793	Emerald	Smaragdgrün	2026-09-23T18:39Z
