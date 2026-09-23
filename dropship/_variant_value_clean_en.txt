@@ -19404,3 +19404,13 @@ gid://shopify/Product/15443497025921	Farbe	gid://shopify/ProductOptionValue/1229
 gid://shopify/Product/15443497025921	Farbe	gid://shopify/ProductOptionValue/12294638207361	Apricot Hell Blau	Aprikose Hell Blau	2026-09-23T21:07Z
 gid://shopify/Product/15443497025921	Farbe	gid://shopify/ProductOptionValue/12294638403969	Apricot Light Blue	Aprikose-Hellblau	2026-09-23T21:07Z
 gid://shopify/Product/15443497025921	Farbe	gid://shopify/ProductOptionValue/12294638666113	Braun Apricot	Braun Aprikose	2026-09-23T21:07Z
+gid://shopify/Product/15445799240065	Farbe	gid://shopify/ProductOptionValue/12308489929089	24pcs Standard Wooden	24 Stück Standard Holz	2026-09-23T21:17Z
+gid://shopify/Product/15446066954625	Farbe	gid://shopify/ProductOptionValue/12309729870209	Rote Rose-Einheitsgrösse	Rote Rosé-Einheitsgrösse	2026-09-23T21:17Z
+gid://shopify/Product/15446267396481	Farbe	gid://shopify/ProductOptionValue/12309736522113	X2 Blue 64g rechargeable model-USB	X2 Blau 64g wiederaufladbar Modell-USB	2026-09-23T21:17Z
+gid://shopify/Product/15446275555713	Farbe	gid://shopify/ProductOptionValue/12309772304769	Black-White box set	Schwarz-Weiss Box Set	2026-09-23T21:17Z
+gid://shopify/Product/15446275555713	Farbe	gid://shopify/ProductOptionValue/12309772337537	Bronze-White box set	Bronze-Weiss Box Set	2026-09-23T21:17Z
+gid://shopify/Product/15446275555713	Farbe	gid://shopify/ProductOptionValue/12309772435841	Pink-White box set	Pink-Weiss Box Set	2026-09-23T21:17Z
+gid://shopify/Product/15447567040897	Farbe	gid://shopify/ProductOptionValue/12309798224257	2pcs charger	2 Stück Ladegerät	2026-09-23T21:17Z
+gid://shopify/Product/15447567040897	Farbe	gid://shopify/ProductOptionValue/12309798257025	4pcs charger	4 Stück Ladegerät	2026-09-23T21:17Z
+gid://shopify/Product/15447568744833	Farbe	gid://shopify/ProductOptionValue/12309800550785	Gray Remote Control Battery	Grau Fernbedienung Batterie	2026-09-23T21:17Z
+gid://shopify/Product/15447568744833	Farbe	gid://shopify/ProductOptionValue/12309800583553	Black Remote Control Battery	Schwarz Fernbedienung Batterie	2026-09-23T21:17Z
