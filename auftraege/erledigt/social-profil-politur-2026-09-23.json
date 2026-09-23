@@ -1,0 +1,9 @@
+{
+  "id": "social-profil-politur-2026-09-23",
+  "typ": "skript",
+  "skript": "social_profil_politur.mjs",
+  "dry": false,
+  "warum": "Betreiber 23.09.2026: «jede sozail profile verschönern». Facebook ist per Graph-API schon poliert (Info, Beschreibung, Website https, Profilbild profil-rund-dunkel, neues Titelbild cover-fb-2026-09). Instagram, TikTok und Pinterest haben keine Profil-Edit-API: Name «LuxeStyle · Schweizer Shop», Bio in Laden-Sprache (IG 130 Zeichen, TikTok 79), Pinterest-Info + Website, Profilbild überall gleich. Jedes Feld wird vorher gelesen, nur bei Abweichung geschrieben, zurückgelesen; Screenshots vorher/nachher. TikTok-Bio-Link bleibt Betreiber-Klick (Business-Feld).",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
