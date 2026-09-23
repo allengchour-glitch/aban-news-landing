@@ -15,7 +15,8 @@ jeder Antwort, Rücklesen aus der Mutationsantwort (category.id == Ziel), Ledger
 (Standard 3000); täglich im Aufseher, bis 0 offen. DRY (Standard) misst nur; SCHARF=1 schreibt.
 Stand: dropship/_kategorie_stand.json (Ampel «KATEGORIE: N aktive ohne Kategorie»), Bericht dropship/KATEGORIE-WACHE.md.
 """
-import datetime, json, os, sys, time, subprocess, collections
+import datetime, json, os, sys, time, subprocess, collections, threading, fcntl
+from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eimer_etikette import nachlauf, bilanz
 
@@ -27,6 +28,12 @@ SHOP = "au3j0y-hq.myshopify.com"
 TOK = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or (open("/tmp/cj_shop_token.txt").read() if os.path.exists("/tmp/cj_shop_token.txt") else "")).strip()
 SCHARF = os.environ.get("SCHARF") == "1"
 CAP = int(os.environ.get("CAP", "3000"))
+# 23.09. GEMESSEN: 25 aliasierte productUpdate je Anfrage laufen bei Shopify SERIELL (~0,5 s je Produkt, 15 s je
+# Batch) — der Eimer (100 Punkte/s, 10 je productUpdate) war dabei zu 90 % leer. Ein Lauf schaffte 100/min, die
+# 42'000 offenen haetten 7 h gebraucht — bei stuendlichen Container-Neustarts nie. WORKER parallele Batches
+# (Standard 3 = ~75 Punkte/s, laesst dem Rest des Shops Luft; die Eimer-Etikette bremst jeden Worker selbst).
+WORKER = max(1, int(os.environ.get("WORKER", "3")))
+SPERRE = "/tmp/kategorie_wache.lock"   # zwei Laeufe (Aufseher taeglich + Nachlauf) schrieben sonst dieselben Produkte doppelt
 TC = "gid://shopify/TaxonomyCategory/"
 
 # productType → Taxonomie-ID. Oberklassen reichen dem Shop-Kanal; feiner ist besser, aber nie geraten.
@@ -113,6 +120,11 @@ def ids_pruefen():
 def main():
     if not TOK:
         print("kein Shop-Token → No-op"); return
+    sperrdatei = open(SPERRE, "w")
+    try:
+        fcntl.flock(sperrdatei, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        print("kategorie_wache laeuft bereits (Sperre /tmp/kategorie_wache.lock) → No-op"); return
     namen = ids_pruefen()
     print(f"Taxonomie-IDs verifiziert: {len(namen)}")
     ledger = set()
@@ -141,26 +153,36 @@ def main():
     gesetzt, fehler, beispiele = 0, [], []
     if SCHARF:
         arbeit = offen[:CAP]
-        for i in range(0, len(arbeit), 25):
-            chunk = arbeit[i:i + 25]
+        sperre = threading.Lock()
+
+        def schreibe(chunk):
             teile = []
             for j, (pid, handle, typ, ziel) in enumerate(chunk):
                 teile.append(f'm{j}: productUpdate(product:{{id:"{pid}", category:"{TC}{ziel}"}}){{ product{{ id category{{id}} }} userErrors{{ field message }} }}')
             d = gql("mutation { " + " ".join(teile) + " }")
-            with open(LEDGER, "a", encoding="utf-8") as lf:
-                for j, (pid, handle, typ, ziel) in enumerate(chunk):
-                    r = (d.get("data") or {}).get(f"m{j}") or {}
-                    ue = r.get("userErrors") or []
-                    ist = ((r.get("product") or {}).get("category") or {}).get("id", "")
-                    if ue or ist != TC + ziel:
-                        fehler.append((handle, ue[0]["message"] if ue else f"rueckgelesen {ist!r}"))
-                        continue
-                    gesetzt += 1
-                    lf.write(f"{handle}\t{ziel}\t{typ}\t{datetime.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n")
-                    if len(beispiele) < 5:
-                        beispiele.append((handle, typ, namen[ziel]))
-                lf.flush()
+            ok, fe, bs = [], [], []
+            for j, (pid, handle, typ, ziel) in enumerate(chunk):
+                r = (d.get("data") or {}).get(f"m{j}") or {}
+                ue = r.get("userErrors") or []
+                ist = ((r.get("product") or {}).get("category") or {}).get("id", "")
+                if ue or ist != TC + ziel:
+                    fe.append((handle, ue[0]["message"] if ue else f"rueckgelesen {ist!r}"))
+                    continue
+                ok.append(f"{handle}\t{ziel}\t{typ}\t{datetime.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n")
+                bs.append((handle, typ, namen[ziel]))
+            with sperre:
+                with open(LEDGER, "a", encoding="utf-8") as lf:
+                    lf.write("".join(ok)); lf.flush()
             time.sleep(0.3)
+            return len(ok), fe, bs
+
+        chunks = [arbeit[i:i + 25] for i in range(0, len(arbeit), 25)]
+        with ThreadPoolExecutor(max_workers=WORKER) as pool:
+            for n_ok, fe, bs in pool.map(schreibe, chunks):
+                gesetzt += n_ok; fehler.extend(fe)
+                for b in bs:
+                    if len(beispiele) < 5:
+                        beispiele.append(b)
     rest = ohne - gesetzt
     stand = {"stand": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "gescannt": gescannt, "ohne_kategorie_vorher": ohne,
              "gesetzt": gesetzt, "ohne_kategorie_nachher": rest, "fehler": len(fehler), "unbekannte_typen": dict(unbekannt.most_common()),

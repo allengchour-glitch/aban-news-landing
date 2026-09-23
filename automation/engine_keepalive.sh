@@ -19,6 +19,7 @@
 
 cd /home/user/aban-news-landing || exit 1
 REPO_AUTO=/home/user/aban-news-landing/automation
+REPO=$(dirname "$REPO_AUTO")   # 23.09.: Zeile 454 nutzte $REPO, ohne dass es je gesetzt war (cd "" = No-op, lief nur zufaellig im Repo)
 
 # --- ffmpeg/ffprobe bereitstellen (28.08.2026) ------------------------------------------
 # ZWOELF Werkzeuge dieses Repos rufen `ffmpeg` NACKT auf (reel/make_reel.sh, product_slideshow,
@@ -395,6 +396,20 @@ for P in "$REPO_AUTO"/*.py; do
   Z="/tmp/$(basename "$P")"
   cmp -s "$P" "$Z" 2>/dev/null || cp "$P" "$Z" 2>/dev/null
 done
+
+# ── 3c. Kategorie-Nachlauf (23.09.2026, Task #101): 46'215 aktive Produkte ohne Taxonomie-Kategorie —
+# der Shop-Kanal zeigt sie nicht («nicht auffindbar» 33'863). Der taegliche Aufseher-Lauf (CAP 3000) braeuchte
+# zwei Wochen; ein Nachlauf mit CAP 45000 stirbt beim stuendlichen Container-Neustart. Also startet ihn JEDER
+# Keepalive neu, solange der letzte Stand noch Offene zeigt (>300) — das Skript selbst sperrt Doppellaeufe
+# (/tmp/kategorie_wache.lock) und liest die Wahrheit (category leer) vor jedem Schreiben.
+K_REPO=$(dirname "$REPO_AUTO")
+if [ -f "$K_REPO/dropship/_kategorie_stand.json" ] && [ -f "$REPO_AUTO/kategorie_wache.py" ]; then
+  K_OFFEN=$(python3 -c 'import json;d=json.load(open("'"$K_REPO"'/dropship/_kategorie_stand.json"));print(int(d.get("ohne_kategorie_nachher",0)))' 2>/dev/null || echo 0)
+  if [ "${K_OFFEN:-0}" -gt 300 ] && ! ps -eo args | grep -q '^python3 automation/kategorie_wache\.py'; then
+    echo "KATEGORIE-NACHLAUF: $K_OFFEN offen → Start (3 Arbeiter, CAP 45000)"
+    ( cd "$K_REPO" && starte kategorie_wache env SCHARF=1 CAP=45000 WORKER=3 python3 automation/kategorie_wache.py )
+  fi
+fi
 
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
 
