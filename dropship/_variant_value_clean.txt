@@ -3054,3 +3054,5 @@ gid://shopify/Product/15448598413697	Ausführung	5
 gid://shopify/Product/15448600543617	Farbe	4
 gid://shopify/Product/15448602411393	Farbe	1
 gid://shopify/Product/15448602509697	Farbe	2
+gid://shopify/Product/15448606343553	Farbe	2
+gid://shopify/Product/15448610603393	Farbe	1

@@ -17997,3 +17997,6 @@ gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448602411393	Farbe	gid://shopify/ProductOptionValue/12022939943297	Flach Schwarz	Flat Black	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/12022941319553	Washed Lavendel	Washed Lavender	2026-09-23T20:35Z/reparatur-original:Washed
 gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/12022941680001	Vintagegrün	Vintage-Grün	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448606343553	Farbe	gid://shopify/ProductOptionValue/12022983328129	Leuchtendpink	Leuchtendes Pink	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448606343553	Farbe	gid://shopify/ProductOptionValue/12022983393665	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
+gid://shopify/Product/15448610603393	Farbe	gid://shopify/ProductOptionValue/12023020978561	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:35Z/reparatur-konsistenz
