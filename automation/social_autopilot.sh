@@ -25,12 +25,14 @@ cd "$(dirname "$0")/.." || exit 1
 NODE=/opt/node22/bin/node
 BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
 REEL_ABSTAND=${REEL_ABSTAND:-28800}      # 8 h zwischen zwei Reels (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
+KARUSSELL_ABSTAND=${KARUSSELL_ABSTAND:-86400}   # 23.09.: 1 Instagram-Karussell je Tag (Betreiber «insta karusell brauchen»), FB-Album dazu
 TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-43200}   # 12 h zwischen zwei TikTok-Posts (Metricool, eigenes Reel je Post)
 LERN_ABSTAND=${LERN_ABSTAND:-21600}       # alle 6 h: Instagram-Zahlen lesen, Gewichte fuer Hooks/Themen schreiben
 NACHSCHUB_ABSTAND=${NACHSCHUB_ABSTAND:-43200}  # alle 12 h: Bild-Queue mit neuen Produkten auffuellen, wenn < 12 ready
 MARKE_LERN=/tmp/_autopilot_letztes_lernen
 MARKE_NACHSCHUB=/tmp/_autopilot_letzter_nachschub
 MARKE_TIKTOK=/tmp/_autopilot_letztes_tiktok
+MARKE_KARUSSELL=/tmp/_autopilot_letztes_karussell
 MARKE_BILD=/tmp/_autopilot_letztes_bild
 MARKE_REEL=/tmp/_autopilot_letztes_reel
 
@@ -100,6 +102,16 @@ while true; do
       touch "$MARKE_REEL"
     else
       echo "$(date -u +%H:%M) Reel-Post fehlgeschlagen"
+    fi
+  fi
+
+  # Instagram-Karussell (23.09.2026): ein Slide-Set (4:5) aus social/ig_karussell.csv als IG-Karussell + FB-Album.
+  if faellig "$MARKE_KARUSSELL" "$KARUSSELL_ABSTAND"; then
+    echo "$(date -u +%H:%M) Karussell faellig (Instagram)"
+    if $NODE automation/ig_karussell_post.mjs; then
+      touch "$MARKE_KARUSSELL"
+    else
+      echo "$(date -u +%H:%M) Karussell-Post fehlgeschlagen (Marke bleibt alt)"
     fi
   fi
 

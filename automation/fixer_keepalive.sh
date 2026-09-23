@@ -777,6 +777,11 @@ while true; do
       ( cd "$REPO" && setsid bash -c '
           MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
           MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
+          # 23.09.2026 Instagram-Karussells (4:5): taeglich 2 Produkt-Sets, montags dazu ein Top-Set; danach
+          # Push, weil der Autocommitter nur dropship/ mitnimmt und Instagram die Bilder von raw.githubusercontent holt.
+          FORMAT=ig MODUS=produkt ANZAHL=2 python3 automation/tiktok_karussell.py
+          [ "$(date -u +%u)" = 1 ] && FORMAT=ig MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
+          flock -w 180 /tmp/git_repo.lock bash -c "git add social/instagram social/ig_karussell.csv dropship/_ig_karussell.txt 2>/dev/null; git diff --cached --quiet || git commit -q -m \"IG-Karussell-Slides [skip ci]\"; git fetch -q origin claude/luxestyle-status-tztnn1 && git -c rebase.autoStash=true rebase -q FETCH_HEAD && timeout 90 git push -q origin claude/luxestyle-status-tztnn1" || echo "IG-Slides: Push fehlgeschlagen"
           python3 automation/tiktok_video.py
           python3 automation/tiktok_cowork_auftrag.py' >> "$TTK" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tiktok-karussell gebaut + Cowork-Auftrag fortgeschrieben"
