@@ -8066,9 +8066,13 @@ setTimeout(function baueGebaeude(){
          WORLD_SOLIDS kennt kein Entfernen, ein saisonaler Kollider geht also nicht. */
       var pH=aufTerrasse(-6.5,-4);  bau("th26_berghuette.glb",4.4,pH[0],BERGY,pH[1],winkel+0.5,false,
         function(w){stationSolid(w,pH[0],pH[1]);},true);
-      var pK=aufTerrasse(7,-4);     bau("th26_gipfelkreuz.glb",4.2,pK[0],BERGY,pK[1],0,false,null,true);
-      var pF=aufTerrasse(7.5,4.5);  bau("th26_felsformation.glb",2.8,pF[0],BERGY,pF[1],1.1,false,null,true);
-      var pF2=aufTerrasse(-7,5);    bau("th26_felsformation.glb",2.2,pF2[0],BERGY,pF2[1],2.4,false,null,true);
+      /* ⚠️ GIPFELKREUZ UND FELSEN STANDEN IM STATIONSHAUS (Runde 93, th-echt: 72 / 88 / 75
+         Mesh-Paare). Das Haus ist 17 m breit (lx ±8,5) und 27,5 m lang (lz ±13,75) — die
+         Terrasse 24 x 34 (±12 / ±17). Frei ist also nur der Streifen lx 8,5…12 beidseits.
+         Kreuz (5,2 m Fuss) und Felsen (3,6 m) stehen jetzt dort, an der Terrassenkante. */
+      var pK=aufTerrasse(10.4,-6);   bau("th26_gipfelkreuz.glb",4.2,pK[0],BERGY,pK[1],winkel+Math.PI/2,false,null,true);
+      var pF=aufTerrasse(10.4,8);    bau("th26_felsformation.glb",2.8,pF[0],BERGY,pF[1],1.1,false,null,true);
+      var pF2=aufTerrasse(-10.4,9);  bau("th26_felsformation.glb",2.2,pF2[0],BERGY,pF2[1],2.4,false,null,true);
       window._seilbahn={tal:TAL,berg:BERG,taly:TALY,bergy:BERGY,seilh:SEILH,
                         qx:qx,qz:qz,spur:SPUR,winkel:winkel,gond:gond,laenge:laenge};
       /* GEMESSENE Grundflaeche statt geschaetzter: das Modell ist 20.6 x 11.5 x 33.3 und
@@ -8975,7 +8979,9 @@ setTimeout(function baueGebaeude(){
       [NW+5,NW+9,NW+13,NW+17].forEach(function(hz){
         bau("th6_hecke_modul.glb",1.1,DOM_X-14,0,hz,Math.PI/2,false,null,true);});
     })();
-    bau("th6_muellcontainer.glb",1.4,-54,0,48,0.4,false);
+    /* ⚠️ (-54|48) war INNERHALB eines Doppelhauses der Wohnzeile (th-echt: 16 Mesh-Paare,
+       Runde 93). Jetzt am Ostrand des Quartiersplatzes neben der Hecke (th-umfeld: frei). */
+    bau("th6_muellcontainer.glb",1.4,-50.5,0,16,0.4,false,null,true);
     bau("th6_stromkasten.glb",1.3,-38,0,54,0,false);
     /* ── th7: Downtown-Plus (modularer Turm, Parkhaus, Lagerhalle, Fahrzeuge, Denkmal) ── */
     /* 🔭 AUSSICHTSTURM (User: "ein paar grosse gebaeude … mit guter sicht").
