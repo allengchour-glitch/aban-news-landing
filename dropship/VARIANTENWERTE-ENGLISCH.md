@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-23 20:46 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-23 21:07 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **649**
-- Optionen mit englischen Werten (Kandidaten): 40
-- Optionen übersetzt: **0** · Werte übersetzt: **0**
+- Produkte gesehen: **1'220**
+- Optionen mit englischen Werten (Kandidaten): 51
+- Optionen übersetzt: **1** · Werte übersetzt: **8**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 249
+- Werte mit unbekanntem Wort (unverändert): 323
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 1
 - übersprungen «kleidungsstueck-im-wert»: 1
@@ -78,5 +78,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`skin` 61, `feet` 52, `light` 20, `220grams` 18, `spring` 13, `80grams` 12, `autumn` 10, `foot` 9, `shell` 8, `footstep` 8, `stepping` 8, `plush` 8, `baby1` 7, `baby2` 7, `translucent` 7, `case` 6, `alternative` 5, `gel` 5, `2black` 5, `2blue` 5, `2red` 5, `belt` 4, `blossom` 4, `color` 3, `alluvial` 3, `spot` 3, `full` 3, `cherry` 3, `ck` 3, `ash` 3, `walnut` 3, `unpredictable` 3, `stars` 3, `road` 3, `mountain` 3, `imitating` 2, `stone` 2, `antique` 2, `arms` 2, `plum` 2, `background` 2, `ice` 2, `3black` 2, `3blue` 2, `3red` 2, `skull` 2, `ghost` 2, `pumpkin` 2, `powder` 2, `2pcsblack` 2, `replenishment` 2, `ribbon` 1, `tea` 1, `–` 1, `ocean` 1, `spotted` 1, `pull` 1, `out` 1, `sixbelly` 1, `modelfull` 1
+`skin` 61, `feet` 52, `generation` 31, `light` 20, `220grams` 18, `stone` 14, `spring` 13, `80grams` 12, `high` 12, `carbon` 12, `45se6` 12, `belt` 11, `suit` 11, `to9mm` 11, `shell` 10, `autumn` 10, `foot` 9, `platinum` 9, `case` 8, `footstep` 8, `stepping` 8, `plush` 8, `chain` 8, `baby1` 7, `baby2` 7, `translucent` 7, `moissanite` 7, `no` 6, `alternative` 5, `gel` 5, `2black` 5, `2blue` 5, `2red` 5, `blossom` 4, `code` 4, `boxes` 4, `color` 3, `alluvial` 3, `spot` 3, `full` 3, `cherry` 3, `ck` 3, `ash` 3, `walnut` 3, `unpredictable` 3, `stars` 3, `road` 3, `mountain` 3, `imitating` 2, `antique` 2, `arms` 2, `plum` 2, `background` 2, `ice` 2, `3black` 2, `3blue` 2, `3red` 2, `skull` 2, `ghost` 2, `pumpkin` 2
 
