@@ -140,6 +140,10 @@ def main():
     entries, proK = [], {}
     entries, proK = sammeln("", UNTERORDNER)
     schreiben(OUT, entries, proK, "deutsch")
+    # Nur die Kaufberater, fuer die Angebote-Suche (js/angebote-plus.js): dort braucht es beim
+    # Suchen den passenden Ratgeber, nicht den ganzen 400-KB-Index auf dem Handy.
+    kauf = [{"u": e["u"], "t": e["t"], "k": "kauf"} for e in entries if e.get("k") == "kauf"]
+    schreiben(os.path.join(ROOT, "data", "kaufberater-index.json"), kauf, {"kauf": len(kauf)}, "Kaufberater")
     for sprache, unter in SPRACHEN.items():
         e2, k2 = sammeln(sprache, unter)
         schreiben(os.path.join(ROOT, "data", f"site-index-{sprache}.json"), e2, k2, sprache)

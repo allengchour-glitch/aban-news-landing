@@ -14,7 +14,6 @@
   <meta property="og:title" content="Nikkei 225 (Nikkei 225) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="Nikkei 225 (Nikkei 225): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,8 +325,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Nikkei 225 <span class="hl">Nikkei 225</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="nikkei" data-type="index">66’020 Pkt</span>
-        <span class="chg up">+2.81 %</span>
+        <span class="px" id="livePrice" data-id="nikkei" data-type="index">65’019 Pkt</span>
+        <span class="chg up">+1.38 %</span>
         <span class="tag-type">Index</span>
         <span class="badge bullish">Bullish</span>
       </div>
@@ -322,11 +338,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">68’402</text><text x="586" y="204" font-size="12" fill="#64748b">59’804</text><path d="M10.0,200 L10.0,135.1 L34.8,123.4 L59.6,137.0 L84.3,164.5 L109.1,177.6 L133.9,183.5 L158.7,200.0 L183.5,158.5 L208.3,121.9 L233.0,81.7 L257.8,85.3 L282.6,85.2 L307.4,92.0 L332.2,55.8 L357.0,42.4 L381.7,46.9 L406.5,10.0 L431.3,30.6 L456.1,50.1 L480.9,106.7 L505.7,76.0 L530.4,103.3 L555.2,102.5 L580.0,62.6 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,135.1 34.8,123.4 59.6,137.0 84.3,164.5 109.1,177.6 133.9,183.5 158.7,200.0 183.5,158.5 208.3,121.9 233.0,81.7 257.8,85.3 282.6,85.2 307.4,92.0 332.2,55.8 357.0,42.4 381.7,46.9 406.5,10.0 431.3,30.6 456.1,50.1 480.9,106.7 505.7,76.0 530.4,103.3 555.2,102.5 580.0,62.6" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="62.6" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="62.6" r="3.4" fill="#0f9d6b"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">67’461</text><text x="586" y="204" font-size="12" fill="#64748b">63’484</text><path d="M10.0,200 L10.0,10.0 L34.8,112.0 L59.6,69.4 L84.3,79.0 L109.1,102.3 L133.9,86.7 L158.7,67.3 L183.5,73.5 L208.3,60.4 L233.0,64.9 L257.8,69.5 L282.6,159.8 L307.4,165.1 L332.2,126.6 L357.0,60.7 L381.7,114.7 L406.5,120.7 L431.3,114.6 L456.1,174.8 L480.9,199.6 L505.7,200.0 L530.4,179.0 L555.2,168.8 L580.0,126.7 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,10.0 34.8,112.0 59.6,69.4 84.3,79.0 109.1,102.3 133.9,86.7 158.7,67.3 183.5,73.5 208.3,60.4 233.0,64.9 257.8,69.5 282.6,159.8 307.4,165.1 332.2,126.6 357.0,60.7 381.7,114.7 406.5,120.7 431.3,114.6 456.1,174.8 480.9,199.6 505.7,200.0 530.4,179.0 555.2,168.8 580.0,126.7" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="126.7" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="126.7" r="3.4" fill="#dc2626"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+2.81 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-0.85 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+5.22 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">68’402 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">59’804 Pkt</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+1.38 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+1.57 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-3.62 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">67’461 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">63’484 Pkt</span></div></div>
     </div>
   </section>
 
@@ -336,10 +352,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Nikkei 225 · Nikkei 225</span><span class="badge bullish">Bullish</span></div>
-        <p class="csignal">Starker Anstieg, Kriegsende-Hoffnung.</p>
-        <p class="crat">Der Nikkei 225 steigt stark aufgrund von Hoffnungen auf ein Ende des Iran-Krieges.</p>
+        <p class="csignal">Nikkei schließt höher, KI-Rallye trägt.</p>
+        <p class="crat">Der Nikkei 225 schließt 1,51% höher und wird durch die KI-Rallye über 70.000 getragen, trotz Korrekturängsten.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Der Nikkei 225 schließt 2,90% höher, angetrieben von Hoffnungen auf ein Ende des Iran-Krieges.</li><li>Risiko: Keine direkten Risiken in den News, aber geopolitische Ereignisse können volatil sein.</li><li>Einordnung: Die Nachrichtenlage ist sehr positiv, mit einem starken Kursanstieg aufgrund geopolitischer Entspannung.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Der Nikkei 225 schließt höher und wird durch die KI-Rallye getragen, was auf eine positive Marktstimmung hindeutet.</li><li>Risiko: Es gibt Korrekturängste, die das Aufwärtspotenzial begrenzen könnten.</li><li>Einordnung: Trotz der Korrekturängste überwiegt die positive Dynamik durch die KI-Rallye, was zu einer bullischen Stimmung führt.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on Nikkei 225</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQZDYwSk8weEtLcl83TEVBRk1Vdk8tN0lFN1VEMXVqLTNzWTdCa1U0N1dYQ0xrSWRET1R5Y3FXektWU2Y3NWJRaDBQb1U1a1RmbDZjeUxHdVVBNmFtUzV3TzQ0eFdIUGQ3RVl0MHB6TG1HZ2VIcXVxeHBzcWNQVGVvcC0yMXRRYmdZWjVRdnpJdTE0Ukot?oc=5" target="_blank" rel="noopener">The Nikkei 225 Index Closes 2.90% Higher</a><div class="meta"><span>TradingView</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxPZ0tYUjlRVVNnZlEteVJGSTl5RUlnUkZkYmc2UGRKYVBTUXVMc2pOSzktT054R2c2LVU3STJGdnlaYkV0eW9PS1A0azJSSlJLM0JzQi12VXZ1R0N0RUtub3pLeWtCc0IwOTQzS3lkNkRTd1hrdXF1WG1lTmZNdlZ4Z0pIQlFVRWFCcmszNXpRSzZzSFZ1TWxF?oc=5" target="_blank" rel="noopener">Top 3 reasons Japan’s Nikkei 225 Index is falling today</a><div class="meta"><span>CryptoRank</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE1ScjRzbEhFTVhEOHh1U3lEU1VfcUxKOElMWEF2NDJCamVreHpkU1Jram5PYjk2SGJzZGw3R2RyeVZrbjlpY09hYzFNMk1lR1N6bHZ2NkppTGFpcXFkU0FoTEt3?oc=5" target="_blank" rel="noopener">Nikkei 225 trims gains amid caution over Iran peace deal</a><div class="meta"><span>nhk.or.jp</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5vd2xId1lHZ2FYRXdTUk5YNHNrMExoc1Nyd0pvQjhMa1ZuU2tvSTI3dGFPQk41TG5MMXlBNkc1OXpaMnk2VjZsNDlkdnRfcy1OMHRBczQ4UUEwUQ?oc=5" target="_blank" rel="noopener">Tokyo stocks surge, Nikkei up over 4%, on hopes for end to Iran war</a><div class="meta"><span>Japan Wire by Kyodo News</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOMUI4aURJLUctaW5zUlhUaERLWXlwRWdJenUzNllSM1BfWDlsSFNyWTdDXzBQbjRoMlhDSU9EcmJ5eG9PLV9UVkdnM0hWU0JhVGZ3MFVCNW1zNFlVYmxEd1preW55LUpmT1VFZ1dKbEtFOVlaNVN2RVlSbGQ0RU5HRDlYdm5IMFdYV0NwZ2pUR3JsUUJoaWhMWHF6M19Hajg4TXcxWl9BRm9QX2FvTXBRbg?oc=5" target="_blank" rel="noopener">Tokyo market opens sharply higher: Nikkei soars further; Kioxia surges to briefly surpass Toyota with a market cap of ¥44 trillion, becoming Japan&#x27;s most valuable company; Mitsubishi Heavy Industries rebounds on news of small reactors; SoftBank Group rises</a><div class="meta"><span>Moomoo</span><span>· 12 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNM2ExdWxoMThENjZqcDE5WXNnaFVMMm91QmRyUVB3RnpvakUxZWRTek9hNE1GMjVaVjFNS28tX2tIRTRQOHJUSEFneG85Q3c3bXBXRWkzWWYybGdLdWttRHpub3VQYzQ0SzlFYmdRS2RmWjRfbDd2Z0xjMEJPVGRXblVlMUlraTFmdmdQQzA1eFVqazRSSEJVRFVONlNjMkRPQ000MzF4YTQ5ZmUxaDZvYVFERUlDU19aOEg2S0wwano?oc=5" target="_blank" rel="noopener">Nikkei 225 Stays Shut for Silver Week, Leaving the Index at 65,018.95 After the BOJ Rally</a><div class="meta"><span>BBN Times</span><span>· 22 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxQYnZnSHVuWVFLUWo2OWFEQkVmVDdqUXVtMHhTVTE3aGNCVGxRcDdPejBaTVZMM1I2TW1sSGpTc1JnMzFZM3Vnb2NZeFpWOGM1Q1JoalVpMV9PeEtBS2h4WlFUOTRVcXlqaTczLUZ4TlpIWjY2SFIwd1dvbVZyaXRIQ1RjdlRPSWwxRVYxelpHXy1kS1dMSGRZUDBJMmpQSWFucXZYQ2pXN0Y4OHBKejFXcw?oc=5" target="_blank" rel="noopener">Nikkei 225 Faces Critical Test as Correlated Stocks Eye Support</a><div class="meta"><span>stonex.com</span><span>· 21 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE9jRXh1d2NBTXJJR2tjYXdKaUNUalNLN2RjY2UyWkdVRmc1VFl3ekpLTFBJaFhzVjdXampWZ1pOY1RUY3RjZ25tRlRfaTd4LXhnbk1KZENlSWFwTVdkV1E?oc=5" target="_blank" rel="noopener">AI rally carries Nikkei 225 past 70,000 amid correction fears</a><div class="meta"><span>朝日新聞</span><span>· 19 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQSngzYU9BVG55dklCZVJURjZ2ZVVmbXNJVFEzcVVrb0JuRTJ1bkprV0RHZktHOFBjX2R3VThrNjVidEtmcW9PbU9feHQydlktZ1lPUExCVVVYcWRoaFR1MzZTSFRocDZNV3JBY0VfNk9wY0N6eEtoV055TEFraDIyV1VIbFJMdGVIUEJMNmVCSElwNVpT?oc=5" target="_blank" rel="noopener">The Nikkei 225 Index Closes 1.51% Higher</a><div class="meta"><span>TradingView</span><span>· 18 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPQVJOVjJmdGtRa09tdEluczJvQmhYakJoWTBvRDE4Z1NPVHBST3l1bHpzT0hQckxPV3NfRDlNcHZkRHRod0RhZ0FzWkx0SWRFOVFfYjRJVUw1d1YyN0lQNVZGVVhRRXVLd2F4bDZFaWIyVU1SVzhRcWdLUlFydWlCMnhzN01YNWFKNTExd1FLbmd2Tl9jNWlwaXdIQXp0azlDUDZBVFZ4aERUMXRTZ1VSUDlHVQ?oc=5" target="_blank" rel="noopener">Capcom, Kokusai Electric and JX Metals to Join Nikkei 225 Index</a><div class="meta"><span>bloomberg.com</span><span>· 04 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

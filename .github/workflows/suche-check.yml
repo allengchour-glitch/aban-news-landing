@@ -1,0 +1,71 @@
+name: Suche-Waechter
+
+# Laeuft NUR, wenn sich etwas an der Seitensuche aendert — kein Cron (Actions-Sperre 2026-06
+# wegen zu vieler Laeufe, s. CLAUDE.md). Prueft drei Dinge, die vorher niemand merkte:
+#  1. build_suche_sprachen.py laeuft durch. Es brach am 2026-09-04 ab; build-pages.sh
+#     behandelt es als optional ("übersprungen") — en/fr/it blieben drei Wochen veraltet.
+#  2. Die eingecheckten en/fr/it-Suchseiten entsprechen dem, was der Generator erzeugt.
+#  3. Such-Qualitaet: echte Alltags-Anfragen finden die richtige Seite unter den ersten 3
+#     (tools/such_fragen.json + Kontroll-Set), gegen einen frisch gebauten Index — genau
+#     das, was der Deploy ausliefert.
+on:
+  push:
+    paths:
+      - 'suchmaschine.html'
+      - 'en/search.html'
+      - 'fr/recherche.html'
+      - 'it/ricerca.html'
+      - 'tools/build_search_index.py'
+      - 'tools/build_suche_sprachen.py'
+      - 'tools/such_*'
+      - 'js/angebote-plus.js'
+      - 'tools/angebote_*'
+      - 'tools/fixtures/angebote_*'
+      - '.github/workflows/suche-check.yml'
+  pull_request:
+    paths:
+      - 'suchmaschine.html'
+      - 'en/search.html'
+      - 'fr/recherche.html'
+      - 'it/ricerca.html'
+      - 'tools/build_search_index.py'
+      - 'tools/build_suche_sprachen.py'
+      - 'tools/such_*'
+      - 'js/angebote-plus.js'
+      - 'tools/angebote_*'
+      - 'tools/fixtures/angebote_*'
+      - '.github/workflows/suche-check.yml'
+  workflow_dispatch:
+
+jobs:
+  suche:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Sprach-Suchseiten erzeugen (bricht ab, wenn die Vorlage nicht mehr passt)
+        run: python3 tools/build_suche_sprachen.py
+
+      - name: Eingecheckte Sprach-Suchseiten sind aktuell
+        run: |
+          git diff --exit-code -- en/search.html fr/recherche.html it/ricerca.html \
+            || { echo "::error::en/fr/it-Suchseiten veraltet — python3 tools/build_suche_sprachen.py laufen lassen und committen"; exit 1; }
+
+      - name: Index frisch bauen (wie der Deploy)
+        run: python3 tools/build_search_index.py
+
+      - name: Such-Qualitaet (Haupt-Set)
+        run: node tools/such_qualitaet.mjs
+
+      - name: Such-Qualitaet (Kontroll-Set)
+        run: node tools/such_qualitaet.mjs --datei tools/such_fragen_kontrolle.json
+
+      - name: Angebote-Suche (Zubehoer nach hinten, typischer Preis nur wenn verlaesslich)
+        run: node tools/angebote_qualitaet.mjs

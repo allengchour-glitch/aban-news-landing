@@ -113,6 +113,13 @@ tar -cf - \
   . | tar -xf - -C _site
 
 # Pflicht-Checks: functions/ MUSS dabei sein (sonst sind /api/* tot).
+# ⚠️ Interne Notizen NICHT veroeffentlichen. GEMESSEN 2026-09-23: abannews.com lieferte CLAUDE.md,
+# SHARED-MEMORY.md, PROJEKT.md … (183 .md-Dateien) oeffentlich aus — Strategie, Shop-Interna,
+# Projektplaene. Keine Schluessel darin (nur Praefixe wie „sk_live_"), aber nichts davon gehoert ins Netz.
+# Ausnahme downloads/: dort liegen Produkt-Dateien (z. B. ki-prompt-pack-selbststaendige.md).
+find _site -name '*.md' -not -path '_site/downloads/*' -print -delete | wc -l | sed 's/^/Interne .md-Dateien aus dem Deploy entfernt: /'
+# Verknuepfungen ins Leere raus (node_modules_pw brach seit 04.09. jeden wrangler-Deploy ab).
+find _site -xtype l -print -delete | sed 's/^/Verknuepfung ins Leere entfernt: /'
 test -d _site/functions && echo "functions/ ok" || { echo "::error::functions/ fehlt"; exit 1; }
 test -f _site/_redirects && echo "_redirects ok"
 test -f _site/_headers   && echo "_headers ok"

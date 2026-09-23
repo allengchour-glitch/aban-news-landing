@@ -333,14 +333,14 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Strassenmusik machen</button>
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4)">Krummes Ding drehen …</button>
-<button id="chatToggle" title="Chat"><svg class="ik" aria-hidden="true"><use href="#i-chat"/></svg></button>
-<button id="emoteToggle" title="Emotes"><svg class="ik" aria-hidden="true"><use href="#i-smile"/></svg></button>
-<button id="pingBtn" title="Treffpunkt setzen"><svg class="ik" aria-hidden="true"><use href="#i-pin"/></svg></button>
-<button id="hideBtn" title="Verstecken spielen"><svg class="ik" aria-hidden="true"><use href="#i-eyeoff"/></svg></button>
+<button id="chatToggle" title="Chat" aria-label="Chat"><svg class="ik" aria-hidden="true"><use href="#i-chat"/></svg></button>
+<button id="emoteToggle" title="Emotes" aria-label="Emotes"><svg class="ik" aria-hidden="true"><use href="#i-smile"/></svg></button>
+<button id="pingBtn" title="Treffpunkt setzen" aria-label="Treffpunkt setzen"><svg class="ik" aria-hidden="true"><use href="#i-pin"/></svg></button>
+<button id="hideBtn" title="Verstecken spielen" aria-label="Verstecken spielen"><svg class="ik" aria-hidden="true"><use href="#i-eyeoff"/></svg></button>
 <div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:14px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
-<button id="tragBtn" title="Sperrgut zu zweit tragen" style="display:none"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
+<button id="tragBtn" title="Sperrgut zu zweit tragen" aria-label="Sperrgut zu zweit tragen" style="display:none"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
 <div id="tragHud" style="position:fixed;top:calc(140px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(20,35,55,.88);color:#fff;border:2px solid #6ab8ff;border-radius:14px;padding:6px 16px;font-weight:800;font-size:1.02rem"></div>
-<button id="micBtn" title="Voice-Chat"><svg class="ik" aria-hidden="true"><use href="#i-mic"/></svg></button>
+<button id="micBtn" title="Voice-Chat" aria-label="Voice-Chat"><svg class="ik" aria-hidden="true"><use href="#i-mic"/></svg></button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:#ff6a2a;box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-rocket"/></svg></button>
 <button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(308px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28);cursor:pointer"><svg class="ik" aria-hidden="true"><use href="#i-box"/></svg></button>
 <div id="lieferHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(178px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(20,60,25,.88);color:#fff;border:2px solid #4ad06a;border-radius:14px;padding:6px 14px;font-weight:800">📦 <span id="lieferZeit">60</span>s → <span id="lieferZiel">Markt</span></div>
@@ -359,8 +359,8 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 </div>
 <div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" type="text" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
 <div id="tools">
-  <button class="tbtn" id="rotBtn" title="Drehen (R)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg></button>
-  <button class="tbtn" id="delBtn" title="Abreissen"><svg class="ik" aria-hidden="true"><use href="#i-trash"/></svg></button>
+  <button class="tbtn" id="rotBtn" title="Drehen (R)" aria-label="Drehen (R)"><svg class="ik" aria-hidden="true"><use href="#i-rotate"/></svg></button>
+  <button class="tbtn" id="delBtn" title="Abreissen" aria-label="Abreissen"><svg class="ik" aria-hidden="true"><use href="#i-trash"/></svg></button>
 </div>
 <div id="palette">
   <div id="palCats"></div>
@@ -473,9 +473,24 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> leben ihr eigenes Leben — sie kochen, angeln, tanzen und erkunden die Stadt. Alle 4 Tage kommt die <b>Bauabnahme</b>: besteh sie und steig von der Hütte bis zum Palast auf. Tag- und Nachtwechsel inklusive.</p>
   <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reisst ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
-  <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
-    <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
-  </label>
+  <!-- 💞 ROMANTIK-MODUS IST JETZT IMMER AN (User: „immer 18+ ohne die Haken").
+       Das Haekchen ist weg; wer das Spiel startet, spielt die vollstaendige Fassung.
+       ⚠️ DREI STELLEN, NICHT EINE — wer nur dieses Feld entfernt, hat es nur halb:
+       die Startbelegung von `romantik`, das Auslesen beim Start und das Laden eines
+       alten Spielstands (der `rom:false` mitbringt und den Modus wieder abschaltete). -->
+  <div style="display:flex;gap:8px;align-items:center;justify-content:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;padding:10px 14px;margin:8px auto;max-width:430px;font-size:.9rem">
+    💞 <span><b>Ab 18</b>: Max &amp; Mia flirten, küssen und turteln — frech, aber diskret (Ausblende wie im Original).</span>
+  </div>
+  <!-- 🌍 LADEANZEIGE. Vorher gab es KEINE: die Seite stand da, 157 MB kamen
+       unsichtbar herein, und der Startknopf reagierte minutenlang nicht. Jetzt sieht
+       man, was passiert. Der Balken geht nie rueckwaerts — `gefordert` waechst
+       waehrend des Ladens weiter, sonst spraenge der Prozentwert zurueck. -->
+  <div id="ladeAnzeige" style="max-width:430px;width:100%;margin:10px auto 0">
+    <div id="ladeBalken" style="height:10px;border-radius:999px;background:rgba(255,255,255,.55);overflow:hidden;border:1px solid #b8cee0">
+      <div id="ladeFuell" style="height:100%;width:0%;background:var(--bern);transition:width .4s ease"></div>
+    </div>
+    <div id="ladeText" style="font-size:.85rem;color:#4a6a88;margin-top:6px">🌍 Welt wird geladen …</div>
+  </div>
   <button class="btn" id="soloBtn">Solo bauen ▶</button>
   <div style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.5);border-radius:14px;max-width:430px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop — zusammen bauen (2 Spieler)</div>
@@ -2392,16 +2407,30 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
                    "aoMap","bumpMap","lightMap","envMap","specularMap","displacementMap","gradientMap"];
   var _warmMat={},_warmTex={},_warmSchlange=[],_warmTaktLaeuft=false;
   function _warmSammeln(){
-    var neueMats=0,neueTex=[];
+    var neueMats=0,neueTex=[],neueObj=[];
     scene.traverse(function(o){
       var ms=o.material;if(!ms)return;
       if(!Array.isArray(ms))ms=[ms];
       for(var i=0;i<ms.length;i++){var m=ms[i];if(!m)continue;
-        if(!_warmMat[m.uuid]){_warmMat[m.uuid]=1;neueMats++;}
+        /* Je neuem Material UND Objekt-ZUSTAND ein Beispiel merken. Das Programm haengt
+           nicht am Material allein: dasselbe Material an einem instanzierten Objekt,
+           an einem Schattenwerfer oder an einer Geometrie mit zweiter UV-Ebene ist ein
+           ZWEITES Programm.
+           ⚠️ ERST WURDE NUR JE MATERIAL GESAMMELT — und genau daran blieben sechs
+           Nachzuegler haengen, bei drei verschiedenen Eingriffen exakt dieselben sechs.
+           compile() laeuft ueber ALLE Objekte und findet die weiteren Varianten, der
+           Sammler fand sie nicht. Dass es echte Nachzuegler sind und kein Messboden,
+           ist gegengeprueft: ein zweites compile() legt 0 mehr an. */
+        if(o.isMesh){
+          var g9=o.geometry,_z9=m.uuid+"|"+(o.isInstancedMesh?"i":"-")+(o.castShadow?"s":"-")+
+            (o.receiveShadow?"e":"-")+(o.isSkinnedMesh?"k":"-")+
+            (g9&&g9.attributes?((g9.attributes.uv2?"2":"-")+(g9.attributes.color?"c":"-")):"--");
+          if(!_warmMat[_z9]){_warmMat[_z9]=1;neueMats++;neueObj.push(o);}}
+        else if(!_warmMat[m.uuid]){_warmMat[m.uuid]=1;neueMats++;}
         for(var k=0;k<_WARM_SLOTS.length;k++){
           var t=m[_WARM_SLOTS[k]];
           if(t&&t.isTexture&&!_warmTex[t.uuid]){_warmTex[t.uuid]=1;neueTex.push(t);}}}});
-    return {mats:neueMats,tex:neueTex};}
+    return {mats:neueMats,tex:neueTex,obj:neueObj};}
   function _warmTakt(){
     if(_warmTaktLaeuft||!_warmSchlange.length)return;
     _warmTaktLaeuft=true;
@@ -2412,6 +2441,58 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         try{renderer.initTexture(_warmSchlange.shift());}catch(e){}}
       if(_warmSchlange.length)requestAnimationFrame(schritt);
       else _warmTaktLaeuft=false;});}
+  /* 🩹 WAS NACH DEM START HEREINKOMMT, WURDE NIE UEBERSETZT — und genau das ruckelt.
+     GEMESSEN (th-ruckler, 2026-09-12): nach dem Laden haelt der Renderer 67 Programme
+     bereit; ein `compile()` nach 66 s liefert 86. Neunzehn Materialien sind also nach
+     dem Spielbeginn hereingetroepfelt, ohne je vorbereitet zu werden. Der Grund steht
+     zwei Absaetze weiter unten: sobald gespielt wird, ueberspringt `_aufwaermen` das
+     Uebersetzen ganz — zu Recht, denn `compile()` blockiert eine halbe Sekunde.
+
+     Die Loesung ist nicht, den Freeze doch zu nehmen, sondern ihn zu vermeiden: je Bild
+     EIN neues Objekt, gezeichnet in ein winziges Ziel (8x8) mit einer Kamera dicht
+     davor. Es ist dieselbe Szene, derselbe Renderer, dieselben Lichter und
+     Schatteneinstellungen — also entsteht genau die Programm-Variante, die spaeter
+     auch beim Spielen gebraucht wird. Weil die Kamera eng steht, faellt fast alles
+     andere aus dem Sichtkegel; die Kosten bleiben bei Bruchteilen einer Millisekunde
+     statt einer halben Sekunde. */
+  var _warmZiel=null,_warmKam=null,_warmObjSchlange=[],_warmObjLaeuft=false;
+  function _warmObjTakt(){
+    if(_warmObjLaeuft||!_warmObjSchlange.length)return;
+    _warmObjLaeuft=true;
+    requestAnimationFrame(function schritt(){
+      var o=_warmObjSchlange.shift();
+      try{
+        /* ⚠️ UNSICHTBARES MUSS FUERS AUFWAERMEN KURZ SICHTBAR SEIN. Der erste Anlauf
+           uebersprang alles mit visible===false — und genau das ist der haeufige Fall:
+           die Sichtbarkeitsstufe (lodTakt, gruppenSicht) blendet aus, was gerade weit
+           weg ist. three.js zeichnet Unsichtbares nicht, also entsteht sein Programm
+           nie, und es ruckelt genau dann, wenn der Spieler hinlaeuft.
+           GEMESSEN: mit dem Ueberspringen blieben 6 Materialien unvorbereitet, und
+           weder ein laengerer Fahrplan noch der Lader-Hook aenderten daran etwas.
+           Darum wird die Kette hier fuer EINEN Zug ins 8x8-Ziel sichtbar geschaltet und
+           sofort wieder zurueckgesetzt — auf dem Bildschirm ist davon nichts zu sehen,
+           weil in ein eigenes Ziel gezeichnet wird. */
+        if(o&&o.parent){
+          var _kette=[],_k=o;
+          while(_k&&_k!==scene){if(!_k.visible){_kette.push(_k);_k.visible=true;}_k=_k.parent;}
+          if(!_warmZiel){_warmZiel=new THREE.WebGLRenderTarget(8,8);
+            _warmKam=new THREE.PerspectiveCamera(35,1,0.1,900);}
+          var bb=new THREE.Box3().setFromObject(o);
+          if(isFinite(bb.min.x)){
+            var mp=new THREE.Vector3();bb.getCenter(mp);
+            var sp=bb.getBoundingSphere(new THREE.Sphere());
+            var d=Math.max(2.5,sp.radius*2.4);
+            _warmKam.position.set(mp.x,mp.y+d*0.35,mp.z+d);
+            _warmKam.lookAt(mp);_warmKam.updateMatrixWorld(true);
+            var alt=renderer.getRenderTarget();
+            renderer.setRenderTarget(_warmZiel);
+            renderer.render(scene,_warmKam);
+            renderer.setRenderTarget(alt);
+            window._warmObjekte=(window._warmObjekte||0)+1;}
+          for(var _i=0;_i<_kette.length;_i++)_kette[_i].visible=false;}
+      }catch(e){}
+      if(_warmObjSchlange.length)requestAnimationFrame(schritt);
+      else _warmObjLaeuft=false;});}
   /* ⚠️ compile() ALLEIN REICHT NICHT. Es merkt sich je MATERIAL, dass es fertig ist —
      three.js baut sein Programm aber je Material UND Objekt-Zustand (instanziert,
      Schattenempfaenger, zweite UV-Ebene …). Dasselbe Material an einem anderen Objekt
@@ -2450,14 +2531,32 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(neu.mats>0&&!imSpiel){
       try{renderer.compile(scene,camera);}catch(e){}
       _warmZeichnen();}
-    if(imSpiel){_warmSchlange=_warmSchlange.concat(neu.tex);_warmTakt();}
+    if(imSpiel){_warmSchlange=_warmSchlange.concat(neu.tex);_warmTakt();
+      _warmObjSchlange=_warmObjSchlange.concat(neu.obj);_warmObjTakt();}
     else for(var i=0;i<neu.tex.length;i++){try{renderer.initTexture(neu.tex[i]);}catch(e){}}
     window._warmTexturen=(window._warmTexturen||0)+neu.tex.length;
     window._warmMaterialien=(window._warmMaterialien||0)+neu.mats;
     window._warmProgramme=renderer.info.programs?renderer.info.programs.length:0;}
   window._aufwaermen=_aufwaermen;
+  /* ⏱️ ENTPRELLT AM EREIGNIS STATT AN DER UHR. Der feste Fahrplan traf nur, was
+     zufaellig zu seinen Zeiten schon da war — nach dem letzten Durchgang kam nichts
+     mehr dazu. GEMESSEN blieben so 6 Materialien unvorbereitet, nachdem die
+     objektweise Aufwaermung die ersten 19 auf 6 gedrueckt hatte.
+     Jetzt meldet sich der Modell-Lader selbst, wenn etwas Neues fertig ist. Entprellt,
+     weil Modelle in Schueben ankommen: ein Schwung loest EINEN Durchgang aus, nicht
+     zwanzig. Der feste Fahrplan bleibt als Netz fuer prozedurale Materialien, die
+     ohne Lader entstehen. */
+  var _warmBald=null;
+  window._aufwaermenBald=function(){
+    clearTimeout(_warmBald);
+    _warmBald=setTimeout(function(){_warmBald=null;try{_aufwaermen();}catch(e){}},1200);};
   /* Mehrere Laeufe, weil die Modelle ueber Minuten hereintroepfeln. */
-  [16000,26000,40000,60000].forEach(function(ms){setTimeout(_aufwaermen,ms);});
+  /* ⚠️ Der Fahrplan endete bei 60 s — die Modelle kommen aber laenger herein. Seit das
+     Aufwaermen im Spiel nicht mehr blockiert (je Bild ein Objekt in ein 8x8-Ziel), ist
+     ein spaeter Durchgang billig. Darum bis 150 s.
+     ⚠️ WER DIESE LISTE AENDERT: th-ruckler liest sie aus der Quelle und richtet seine
+     Wartezeit danach. Es gibt keine zweite Stelle, die nachgezogen werden muss. */
+  [16000,26000,40000,60000,90000,150000].forEach(function(ms){setTimeout(_aufwaermen,ms);});
   function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_aufwaermen();}
   /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
      VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position
@@ -10558,6 +10657,61 @@ function tor(seite){
 }
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
+/* 🚦 LADESCHLANGE — WARUM, GEMESSEN.
+   Am NETZ gezaehlt (nicht im Spiel, das erste Messgeraet log): das Spiel fordert
+   340 Modelle mit 157 MB an, davon 220 allein im Fenster 10–20 s. GLTFLoader parst
+   jede Datei im HAUPTFADEN — 220 Parsevorgaenge hintereinander ergeben EINEN Block,
+   in dem der Browser keine Eingabe verarbeitet. Gemessen: ein Tipp auf „Solo bauen"
+   kam erst nach 34 Sekunden an. Der Knopf war nicht kaputt, er war begraben.
+
+   Zwei Regeln loesen das, und beide werden gebraucht:
+     1. hoechstens VIER gleichzeitig — begrenzt, wie viel auf einmal hereinkommt;
+     2. nach jedem fertigen Modell ein `setTimeout(…,0)`. Das beendet die laufende
+        Aufgabe; ZWISCHEN zwei Aufgaben verarbeitet der Browser Klicks und Tipps.
+        Ohne Punkt 2 hilft Punkt 1 nichts: auf einem schnellen Server laufen auch vier
+        Parsevorgaenge lueckenlos hintereinander weg.
+
+   ⚠️ VORRANG FUER DIE FIGUREN. `attachRealChar` laedt th_mann/th_frau. Stehen sie
+   hinten in einer Schlange von 340 Gebaeuden, laeuft der Spieler minutenlang ohne
+   Koerper herum. Sie duerfen darum vor. */
+(function(){ if(!GL)return;
+  var echt=GL.load.bind(GL), schlange=[], aktiv=0;
+  /* ⚠️ DIE GRENZE IST NICHT KONSTANT, UND DAS IST DER GANZE WITZ. GEMESSEN an drei
+     Punkten (Klick auf „Solo bauen" | Welt fertig geladen):
+         ohne Schlange   9,7 s | 68,8 s
+         höchstens 10    8,6 s | 81,6 s   ← auf BEIDEN Achsen schlechter, wertlos
+         höchstens 4     0,0 s | 108,8 s
+     Eng macht den Knopf sofort bedienbar und das Laden langsamer; weit umgekehrt.
+     Es gibt keine Zahl, die beides kann — also hängt sie davon ab, was gerade zählt:
+     solange der Startbildschirm steht, will jemand tippen (eng); sobald gespielt
+     wird, soll die Welt schnell fertig werden (weit). */
+  function grenze(){ var st=document.getElementById("start");
+    return (st && !st.classList.contains("hide")) ? 4 : 1e9; }
+  window._ladeStand={gefordert:0,fertig:0};
+  function vorrang(url){return /th_(mann|frau|kind|baby)/.test(url);}
+  function weiter(){ var m=grenze(); while(aktiv<m&&schlange.length){ aktiv++; schlange.shift()(); } }
+  /* ⚠️ NACH DEM START NICHT MEHR NACHGEBEN — TEUER GELERNT. Jedes setTimeout(...,0)
+     gibt dem Browser Gelegenheit, ein Bild der 3D-Szene zu zeichnen. Solange der
+     Startbildschirm steht, ist genau das gewollt: dort will jemand tippen. Danach
+     kostet es nur noch, und zwar mehr als gedacht — die ganze Kette NACH dem Laden
+     (freiRaeumen, entwirren, _spaetEinfrieren) haengt am LETZTEN Modell und rutscht
+     mit. Zwei Torpruefungen haben das gezeigt: th-club fand den Club nach 30 s nicht
+     (er kam bei 46 s statt 25,8 s), und die echten Durchdringungen stiegen bei
+     DERSELBEN Spieldatei von 9 auf 19 — entwirren() war schlicht noch nicht gelaufen.
+     Darum: eng und höflich, solange der Startbildschirm steht; ungebremst danach. */
+  function fertig(){ aktiv--; window._ladeStand.fertig++;
+    var st=document.getElementById("start");
+    if(st && !st.classList.contains("hide")) setTimeout(weiter,0); else weiter();
+  }
+  GL.load=function(url,ok,fort,fehl){
+    window._ladeStand.gefordert++;
+    var auftrag=function(){ echt(url,
+      function(g){ try{ if(ok)ok(g); } finally { fertig(); } }, fort,
+      function(e){ try{ if(fehl)fehl(e); } finally { fertig(); } }); };
+    if(vorrang(url))schlange.unshift(auftrag); else schlange.push(auftrag);
+    setTimeout(weiter,0);
+  };
+})();
 /* 🧠 EIN GLB WIRD EINMAL GEPARST — vorher bei JEDEM Aufruf neu.
    GLTFLoader hat keinen Cache. `GL.load("/models/th33_parklaterne.glb", …)` liest
    die Datei zwar aus dem Browser-Cache, PARST sie aber jedes Mal komplett neu und
@@ -11027,6 +11181,8 @@ window._glbVorlage=function(datei,cb){
     _matVereinheitlichen(g.scene);
     e.szene=g.scene; var w=e.warte; e.warte=[];
     for(var i=0;i<w.length;i++)w[i](e.szene);
+    /* Neues Modell ist da und steht gleich in der Welt — aufwaermen anmelden. */
+    if(window._aufwaermenBald)window._aufwaermenBald();
   },undefined,function(){
     var w=e.warte; delete C[datei];
     for(var i=0;i<w.length;i++)w[i](null);});
@@ -11808,7 +11964,7 @@ function skillXp(k,n){
 var floors={},walls={},furn=[]; // floors["x,y"]=idx · walls["x,y,0|1"]={type} (0=Nordkante,1=Ostkante)
 var floorMeshes={},wallMeshes={};
 var buildMode=false,curItem=null,curRot=0,delMode=false,running=false;
-var romantik=false;
+var romantik=true;   /* immer an — siehe Kommentar am Startbildschirm */
 function fkey(x,y){return x+","+y;}
 function inLot(x,y){return x>=0&&x<GW&&y>=0&&y<GH;}
 function inBau(x,y){return x>=BAUX0&&x<BAUX0+BAUW&&y>=BAUY0&&y<BAUY0+BAUH;}
@@ -12220,7 +12376,10 @@ function loadSnapshot(sn){
   immo=(sn.im||[]).slice();
   setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;missSerie=sn.sms|0;if(sn.lfT!==undefined){window._liefTag=sn.lfT;window._liefHeute=sn.lfH;}sprintFertig=!!sn.spf;
+  /* ⚠️ NICHT MEHR AUS DEM SPIELSTAND UEBERNEHMEN. Alte Staende tragen rom:false und
+     haetten den Modus nach jedem Laden wieder abgeschaltet — der sichtbare Haken waere
+     weg gewesen, die Wirkung auch. */
+  romantik=true;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;missSerie=sn.sms|0;if(sn.lfT!==undefined){window._liefTag=sn.lfT;window._liefHeute=sn.lfH;}sprintFertig=!!sn.spf;
   /* Basislinie und Tageslimits zurueckholen, sonst faengt der Endlos-Auftrag von vorne an
      und alle Limits sind wieder frei (Schwarm-Befunde). */
   if(sn.pqb){window._pqBasis={idx:sn.qi,b:sn.pqb};window._pq=null;}
@@ -15606,7 +15765,8 @@ function startGame(){
       setTimeout(function(){if(running)hint(txt8);},4500);}
   }catch(e){}}setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("Auftrag vom Stadtpräsidenten: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
-  romantik=document.getElementById("romChk").checked||romantik;
+  /* Das Haekchen gibt es nicht mehr; der Modus ist immer an. */
+  romantik=true;
   renderPalette();updHUD();MUS.play().catch(function(){});
   // Anfänger-Intro einmalig zeigen (für Einsteiger)
   try{if((!MPs||mpHost)&&!localStorage.getItem("th_intro_seen")){var _ic=document.getElementById("introCard");
@@ -16697,5 +16857,30 @@ window.__th={
 </script>
 <div id="aban-recht" style="position:fixed;left:50%;transform:translateX(-50%);bottom:4px;z-index:99999;font:11px/1.5 system-ui,sans-serif;opacity:.45;pointer-events:auto;background:rgba(0,0,0,.35);color:#fff;padding:2px 7px;border-radius:8px"><a href="/suchmaschine.html">Suche</a>
 <a href="/impressum.html" style="color:inherit;text-decoration:none">Impressum</a> · <a href="/datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a></div>
+<script>
+/* Fuettert die Ladeanzeige aus der Schlange. Laeuft nur, solange der Startbildschirm
+   zu sehen ist — danach hat die Zahl keinen Adressaten mehr. */
+(function(){
+  var fuell=document.getElementById("ladeFuell"),
+      text=document.getElementById("ladeText"),
+      anz=document.getElementById("ladeAnzeige"), hoch=0;
+  if(!fuell||!text)return;
+  var t=setInterval(function(){
+    var st=window._ladeStand;
+    if(!st||!st.gefordert)return;
+    var p=Math.min(100,Math.round(st.fertig/st.gefordert*100));
+    if(p>hoch)hoch=p;
+    fuell.style.width=hoch+"%";
+    if(st.fertig>=st.gefordert&&hoch>=100){
+      text.textContent="\u2705 Welt steht bereit \u2014 "+st.fertig+" Modelle";
+      clearInterval(t);
+      setTimeout(function(){ if(anz)anz.style.opacity="0"; },1500);
+      if(anz)anz.style.transition="opacity 1s ease";
+    } else {
+      text.textContent="\ud83c\udf0d Welt wird geladen \u2026 "+st.fertig+" von "+st.gefordert+" Modellen";
+    }
+  },250);
+})();
+</script>
 </body>
 </html>
