@@ -1,0 +1,10 @@
+{
+  "id": "tiktok-statistik",
+  "alle_tage": 1,
+  "warum": "ENTWURF fuer auftraege/wiederkehrend/ (23.09.2026, Paket tiktok-agent) — erst NACH einem sauberen Erstlauf (tiktok-statistik-erstlauf) aktivieren. Taeglich die oeffentlichen Zahlen der 10 neuesten TikTok-Videos (Aufrufe/Likes/Kommentare/Shares/Saves, Ton, Upload-Aufloesung, Caption-Befunde) als Zeitreihe fuer die Lernschleife, dazu jeden Tag der Anmeldestand des Agenten-Profils bei TikTok. Rein lesend, kein Klick, eine Ergebnisdatei (~21 KB) je Tag. Gleiches Ergebnis ist auch aus der Cloud per --curl moeglich; der Agent bringt das zweite Netz und den Anmeldeblick.",
+  "vorlage": {
+    "typ": "skript",
+    "skript": "tiktok_statistik_lesen.mjs",
+    "anzahl": 10
+  }
+}
