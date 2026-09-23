@@ -18247,3 +18247,16 @@ gid://shopify/Product/15450259521921	Farbe	gid://shopify/ProductOptionValue/1231
 gid://shopify/Product/15450259521921	Farbe	gid://shopify/ProductOptionValue/12313665700225	Rund Schwarz-Rot	Round Black And Red	2026-09-23T20:37Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15450259521921	Farbe	gid://shopify/ProductOptionValue/12313665732993	Rund Schwarz-Orange	Round Black And Orange	2026-09-23T20:37Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15450259587457	Farbe	gid://shopify/ProductOptionValue/12313666322817	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:38Z/reparatur-konsistenz
+gid://shopify/Product/15450542932353	Farbe	gid://shopify/ProductOptionValue/12043455791489	Schwarz Baumwolle Futter	Black Cotton Lining	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450542932353	Farbe	gid://shopify/ProductOptionValue/12043455824257	Braun Baumwolle Futter	Brown Cotton Lining	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450554270081	Farbe	gid://shopify/ProductOptionValue/12043492917633	Weiss Höhe erhöht 6 cm	White Height Increased By 6CM	2026-09-23T20:38Z/reparatur-original:satzbau:mass-ohne-zahl
+gid://shopify/Product/15450554270081	Farbe	gid://shopify/ProductOptionValue/12043492983169	Weiss Höhe erhöht 8 cm	White Height Increased By 8CM	2026-09-23T20:38Z/reparatur-original:satzbau:mass-ohne-zahl
+gid://shopify/Product/15450615382401	Farbe	gid://shopify/ProductOptionValue/12043903107457	Schwarz Pu	Schwarz PU	2026-09-23T20:38Z/reparatur-korrigiert
+gid://shopify/Product/15450644742529	Farbe	gid://shopify/ProductOptionValue/12044375818625	Gold 14CM	Gold 14 cm	2026-09-23T20:38Z/reparatur-konsistenz
+gid://shopify/Product/15450658537857	Farbe	gid://shopify/ProductOptionValue/12044539691393	Weiss matt-Eckig Kopf	White Matte-Square Head	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450699170177	Farbe	gid://shopify/ProductOptionValue/12045072990593	Leder Camel	Leather Camel	2026-09-23T20:38Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450699170177	Farbe	gid://shopify/ProductOptionValue/12045073023361	Echtleder Schwarz	Genuine Leather Black	2026-09-23T20:38Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15450709262721	Farbe	gid://shopify/ProductOptionValue/12045215957377	Mattschwarz plus	Matte Black plus	2026-09-23T20:38Z/reparatur-original:satzbau:modellzusatz
+gid://shopify/Product/15450709262721	Farbe	gid://shopify/ProductOptionValue/12045216055681	Schwarz glänzend plus	Glossy Black plus	2026-09-23T20:38Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15450728137089	Farbe	gid://shopify/ProductOptionValue/12045422395777	Weiss-Verpackung Stil	White-Package style	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
+gid://shopify/Product/15450728137089	Farbe	gid://shopify/ProductOptionValue/12045422461313	Blau-Verpackung Stil	Blue-Package style	2026-09-23T20:38Z/reparatur-original:satzbau:nomen-nomen
