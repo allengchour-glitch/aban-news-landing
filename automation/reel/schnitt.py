@@ -44,7 +44,7 @@ SCHNITTSTELLE fuer den Reel-Motor (cj_video_reel_engine.mjs — hier NICHT geaen
 Umgebung: SCHNITT_TESSDATA=<ordner mit chi_sim.traineddata> (sonst kein CJK-OCR, nur Hinweis im Log),
           SCHNITT_THREADS (Standard 2). Nur vorhandene Bibliotheken: numpy, scipy, PIL, librosa, pytesseract, PyAV.
 """
-import argparse, copy, hashlib, json, math, os, re, shutil, subprocess, sys, tempfile, time
+import argparse, copy, json, math, os, re, shlex, shutil, subprocess, sys, tempfile, time
 
 os.environ.setdefault('OMP_THREAD_LIMIT', '1')   # tesseract: sonst frisst er alle Kerne (Werkzeug-Lehre 23.09.)
 import numpy as np
@@ -59,8 +59,11 @@ import overlay as ov  # noqa: E402  (nur Bausteine importieren: font, spaced, wr
 
 FF = shutil.which('ffmpeg') or 'ffmpeg'
 THREADS = str(os.environ.get('SCHNITT_THREADS', '2'))
-W, H, FPS = 1080, 1920, 30
-VERSION = 7
+W, H, FPS = 1080, 1920, 30          # FPS = Rueckfall; der Plan waehlt 25 fuer 25/50-fps-Quellen (siehe plan: 'fps')
+VERSION = 8
+TESS_URL = 'https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/chi_sim.traineddata'   # 2'469'156 Byte
+# Pruef-Tor am fertigen Reel (Exit 4, Datei geloescht): alles GEMESSEN am Ergebnis, nicht am Plan
+TOR = dict(lufs=-14.0, lufs_tol=1.0, tp_max=-1.5, versatz_max=1, sicht_min=2.5)
 CC_BY = {'voltaic.mp3', 'electrodoodle.mp3', 'digital-lemonade.mp3'}   # CREDITS.txt: Quellenangabe in jeder Caption
 # BPM-Rueckfall, falls CREDITS.txt kein Tempo nennt (GEMESSEN Inventur 23.09.; liquid-dnb-electronic = DnB-Variante)
 BPM_RUECKFALL = {'luxe-cinematic-house.wav': 122, 'luxe-liquid-dnb-electronic.wav': 174}
@@ -71,6 +74,15 @@ CJK_EINFACH = set('一二三十丨卜乙八入口日中大人了小上下丁厂'
 
 class Ungeeignet(Exception):
     """Quelle taugt nicht fuer ein sauberes Reel (Exit 3)."""
+
+
+class MusikFehler(ValueError):
+    """Musik ungeeignet (Lizenz, Tempo, Laenge) — nie der Quelle anlasten (Exit 1, nicht 3)."""
+
+
+def _thr():
+    """-threads gilt in ffmpeg je Eingang/Ausgang (AVCodecContext-Option) — vor JEDES -i und vor die Ausgabe setzen."""
+    return ['-threads', THREADS]
 
 
 # ------------------------------------------------------------------------------------------------ Hilfen
@@ -125,7 +137,7 @@ def bilder(p, fps=None, lang=None, kurz=None, grau=False, start=None, dauer=None
     s = (lang / max(i['w'], i['h'])) if lang else (kurz / min(i['w'], i['h'])) if kurz else 1.0
     ow = max(2, int(round(i['w'] * s / 2)) * 2); oh = max(2, int(round(i['h'] * s / 2)) * 2)
     vf = ([f'fps={fps}'] if fps else []) + [f'scale={ow}:{oh}:flags=area']
-    cmd = [FF, '-v', 'error', '-threads', THREADS]
+    cmd = [FF, '-v', 'error', '-filter_threads', THREADS, *_thr()]
     if start:
         cmd += ['-ss', f'{start:.3f}']
     cmd += ['-i', p]
@@ -176,14 +188,24 @@ def tessdata_cjk():
     return None
 
 
+OCR_STAT = {}          # lang -> [aufrufe, fehler]; OCR_FEHLER: die ersten Fehlermeldungen (Pruefbericht Code 23.09.)
+OCR_FEHLER = []
+
+
 def ocr(gray, lang='eng', tessdir=None):
-    """Woerter mit conf und Box (Bildpixel). --psm 11 = verstreuter Text (Einblendungen)."""
+    """Woerter mit conf und Box (Bildpixel). --psm 11 = verstreuter Text (Einblendungen).
+    Rueckgabe None bei OCR-Fehler (nie still [] — ein stummer Ausfall machte den Fremdtext-Filter blind, Code-Pruefung
+    23.09.). tessdir wird geschuetzt uebergeben: pytesseract zerlegt config per shlex (Pfad mit Leerzeichen)."""
     import pytesseract
-    cfg = '--psm 11' + (f' --tessdata-dir {tessdir}' if tessdir else '')
+    cfg = '--psm 11' + (f' --tessdata-dir {shlex.quote(tessdir)}' if tessdir else '')
+    st = OCR_STAT.setdefault(lang, [0, 0]); st[0] += 1
     try:
         d = pytesseract.image_to_data(Image.fromarray(gray), lang=lang, config=cfg, output_type=pytesseract.Output.DICT)
-    except Exception:
-        return []
+    except Exception as e:
+        st[1] += 1
+        if len(OCR_FEHLER) < 5:
+            OCR_FEHLER.append(f'{lang}: {type(e).__name__}: {str(e)[:160]}')
+        return None
     out = []
     for t, c, x, y, w, h in zip(d['text'], d['conf'], d['left'], d['top'], d['width'], d['height']):
         t = (t or '').strip()
@@ -196,24 +218,48 @@ def ocr(gray, lang='eng', tessdir=None):
     return out
 
 
+# Fremdpreise (Betreiber-Vorgabe «keine Fremdpreise im Bild»): Waehrungszeichen vor/nach einer Zahl, Waehrungscode,
+# «50% OFF». Schon EIN Treffer macht die Einstellung zu Fremdtext (Pruefbericht Code 23.09.: «$12.99» ging durch).
+PREIS = re.compile(r'([$€£¥￥₩]\s?\d)|(\d\s?[$€£¥￥₩元円])|(\d+(?:[.,]\d{1,2})?\s?(USD|EUR|RMB|CNY|JPY|KRW)\b)', re.I)
+PROZENT_OFF = re.compile(r'\d+\s?%\s*(off|rabatt|sale)\b', re.I)
+
+
+def _cjk_zeichen(t):
+    """Han (ohne die einfachsten Striche), Kana (U+3040-30FF), Hangul (U+AC00-D7A3)."""
+    return [ch for ch in t if (('一' <= ch <= '鿿' and ch not in CJK_EINFACH) or '぀' <= ch <= 'ヿ'
+                               or '가' <= ch <= '힣')]
+
+
 def fremdtext_woerter(woerter_eng, woerter_cjk):
-    """Bewertet OCR-Treffer eines Bildes. Rueckgabe: dict mit lateinischen Woertern, Handles, Marken, CJK-Paaren, Boxen."""
-    lat, handles, marken, cjk, boxen = [], [], [], [], []
+    """Bewertet OCR-Treffer eines Bildes. Rueckgabe: dict mit lateinischen Woertern, Handles, Marken, CJK-Paaren,
+    Fremdpreisen, Boxen. None-Listen (OCR-Fehler) zaehlen als leer — der Fehler wird separat gezaehlt (OCR_STAT)."""
+    lat, handles, marken, cjk, preise, boxen = [], [], [], [], [], []
+    woerter_eng = woerter_eng or []; woerter_cjk = woerter_cjk or []
     for t, c, x, y, w, h in woerter_eng:
         if '@' in t and c >= 50 and re.search(r'@[\w.]{3,}', t):
             handles.append(t); boxen.append((x, y, w, h))
         if c >= 60 and re.search(r'(www\.|\.com\b|\.cn\b)', t, re.I):
             handles.append(t); boxen.append((x, y, w, h))
+        if c >= 50 and PREIS.search(t):
+            preise.append(t); boxen.append((x, y, w, h))
         m = re.sub(r'[^A-Za-zÄÖÜäöüß]', '', t)
         if c >= 60 and MARKEN.search(t):
             marken.append(t); boxen.append((x, y, w, h))
         elif c >= 75 and len(m) >= 4 and re.search(r'[aeiouyAEIOUY]', m):
             lat.append(m.lower()); boxen.append((x, y, w, h))
+    # «50% OFF» steht oft als zwei OCR-Woerter -> auf der Zeile (Nachbarwort) pruefen
+    sich = [(t, c, x, y, w, h) for t, c, x, y, w, h in woerter_eng if c >= 50]
+    for k, (t, c, x, y, w, h) in enumerate(sich):
+        nachbar = sich[k + 1][0] if k + 1 < len(sich) else ''
+        if '%' in t and PROZENT_OFF.search(f'{t} {nachbar}'):
+            preise.append(f'{t} {nachbar}'.strip()); boxen.append((x, y, w, h))
     for t, c, x, y, w, h in woerter_cjk:
-        z = [ch for ch in t if '一' <= ch <= '鿿' and ch not in CJK_EINFACH]
+        z = _cjk_zeichen(t)
         if c >= 80 and len(z) >= 2:
             cjk.append(''.join(z)); boxen.append((x, y, w, h))
-    return dict(lat=lat, handles=handles, marken=marken, cjk=cjk, boxen=boxen)
+        if c >= 50 and PREIS.search(t):
+            preise.append(t); boxen.append((x, y, w, h))
+    return dict(lat=lat, handles=handles, marken=marken, cjk=cjk, preise=preise, boxen=boxen)
 
 
 def statische_ebene(G, pers=0.85, std_max=12, min_px=150):
@@ -286,19 +332,55 @@ def _laeufe(maske, dt, t0=0.0, min_s=0.0):
 
 
 # ================================================================================================ 1 ANALYSE
-def _cache_pfad(quelle):
-    return quelle + '.schnitt.json'
+def _cache_pfad(quelle, ordner=None):
+    return os.path.join(ordner, os.path.basename(quelle) + '.schnitt.json') if ordner else quelle + '.schnitt.json'
 
 
-def _fingerabdruck(quelle):
+def _fingerabdruck(quelle, ocr_an=True):
+    """Quelle + Version + OCR-Ausstattung: eine Analyse ohne CJK-OCR darf nicht aus dem Cache kommen, wenn jetzt
+    chi_sim da ist (Code-Pruefung 23.09.: --analyse ohne, --render mit SCHNITT_TESSDATA las still den alten Cache)."""
     st = os.stat(quelle)
-    return f'{st.st_size}-{int(st.st_mtime)}-v{VERSION}'
+    return f"{st.st_size}-{int(st.st_mtime)}-v{VERSION}-ocr{int(bool(ocr_an))}-cjk{int(bool(ocr_an and tessdata_cjk()))}"
+
+
+NACHBAR_FENSTER = 8     # Bilder je Seite (war 3)
+
+
+def _schnitt_kandidaten(st_, ss_, dur):
+    """Harte Schnitte aus dem scene-Wert JEDES Bildes -> ([(t, score, stark)], verdacht).
+    stark = absolut >= 0,2 (Labor: 26/28 Schnitte, 0 Fehlalarme); schwach = relativ: >= 0,08, >= 6x Median der +-12
+    Nachbarbilder UND >= 4x das Maximum der +-8 Nachbarbilder.
+    GEMESSEN p3 (23.09.): Kamerawechsel zwischen aehnlichen Blickwinkeln bei 9,16 s hatte scene 0,167 (Nachbarn 0,02).
+    GEMESSEN Technik-Pruefung 23.09.: periodisches Ruckeln (Spitze alle 4 Bilder: p1 20,36/20,52/20,68/20,84 s je
+    0,09-0,13; p4 um 4,72 s) ueberlistete den +-3-Nachbartest -> Scheinschnitte (p1 Bild 271 scdet 3,3, p4 Bild 29
+    = Ruckler). Mit +-8 liegt die naechste Spitze im Fenster. Schwache Grenzen tragen die Marke 'stark=False': der
+    Plan behandelt Einstellungen hinter einer schwachen Grenze als dieselbe Kamerafahrt (Sprungregel 0,4 s)."""
+    ss_ = np.asarray(ss_, float); st_ = np.asarray(st_, float)
+    if len(ss_) == 0:
+        return [], []
+    medn = nd.median_filter(ss_, size=25, mode='nearest')
+    nf = NACHBAR_FENSTER
+    nachb = np.array([max(np.concatenate([ss_[max(0, k - nf):k], ss_[k + 1:k + nf + 1]])) if len(ss_) > 1 else 0
+                      for k in range(len(ss_))])
+    kand_idx = [k for k in range(len(ss_)) if ss_[k] >= 0.2 or (ss_[k] >= 0.08 and ss_[k] >= 6 * max(medn[k], 0.002)
+                                                              and ss_[k] >= 4 * nachb[k])]
+    # schwache Spruenge (0,12-0,2) ohne Schnitt-Status: der Hook beginnt nie darauf (Loop-Naht)
+    ki = set(kand_idx)
+    verdacht = [float(st_[k]) for k in range(len(ss_)) if 0.12 <= ss_[k] and k not in ki]
+    roh = []
+    for k in kand_idx:                                    # Treffer < 0,1 s: nur den staerksten behalten
+        if roh and st_[k] - roh[-1][0] <= 0.1:
+            if ss_[k] > roh[-1][1]:
+                roh[-1] = (float(st_[k]), float(ss_[k]), bool(ss_[k] >= 0.2))
+            continue
+        roh.append((float(st_[k]), float(ss_[k]), bool(ss_[k] >= 0.2)))
+    return [x for x in roh if 0.1 < x[0] < dur - 0.1], verdacht
 
 
 def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
     """Einstellungen + Bewertung. Ergebnis wird als JSON neben der Quelle gecacht (<quelle>.schnitt.json)."""
     cp = cache_pfad or _cache_pfad(quelle)
-    fa = _fingerabdruck(quelle)
+    fa = _fingerabdruck(quelle, ocr_an)
     if cache and os.path.exists(cp):
         try:
             d = json.load(open(cp))
@@ -308,19 +390,20 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
         except Exception:
             pass
     T = {}; t00 = time.time()
-    i = info(quelle)
+    try:
+        i = info(quelle)
+    except RuntimeError as e:
+        # kaputter Download (0 Byte, Zufall, moov fehlt, nur Ton): naechsten Clip nehmen statt «Fehler, naechster Lauf»
+        # (Technik-Pruefung 23.09.: Exit 1 liess den Motor denselben Clip endlos wieder versuchen)
+        raise Ungeeignet(f'Quelle nicht dekodierbar ({e}) — Download pruefen')
     if i['dauer'] < 1.0 or i['w'] < 16:
         raise Ungeeignet(f"Quelle zu kurz oder leer ({i['dauer']:.2f} s, {i['w']}x{i['h']})")
     dur = i['dauer']; hw_ = i['h'] / i['w']
     fmt = 'hochkant' if hw_ >= 1.2 else ('quadrat' if hw_ >= 0.85 else 'quer')
 
-    # (a) harte Schnitte aus dem scene-Wert JEDES Bildes: absolut >= 0.2 (Labor: 26/28 Schnitte, 0 Fehlalarme) ODER
-    #     relativ: >= 0.08 und >= 6x Median der +-12 Nachbarbilder. GEMESSEN p3 (23.09.): Kamerawechsel zwischen
-    #     aehnlichen Blickwinkeln bei 9,16 s hatte scene 0,167 (Nachbarn 0,02) -> mit 0.2 verpasst; der Hook landete genau
-    #     auf dem Sprung (der Sprung zaehlte als «Bewegung») und das Loop-Ende lag auf der anderen Seite des Schnitts.
-    #     Ein zusaetzlicher Schnitt schadet kaum (Einstellung wird kuerzer), ein verpasster schon.
+    # (a) harte Schnitte aus dem scene-Wert jedes Bildes (Regeln in _schnitt_kandidaten)
     t0 = time.time()
-    out = _run([FF, '-hide_banner', '-nostats', '-threads', THREADS, '-i', quelle, '-vf',
+    out = _run([FF, '-hide_banner', '-nostats', '-filter_threads', THREADS, *_thr(), '-i', quelle, '-vf',
                 "select='gte(scene,0)',metadata=print:file=-", '-an', '-f', 'null', '-']).stdout
     st_, ss_ = [], []
     cur = None
@@ -332,25 +415,9 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
         if m and cur is not None:
             st_.append(cur); ss_.append(float(m[1]))
     ss_ = np.asarray(ss_); st_ = np.asarray(st_)
-    medn = nd.median_filter(ss_, size=25, mode='nearest') if len(ss_) else ss_
-    # Nachbar-Test: CJ-Quellen haben oft jedes 2. Bild doppelt (scene 0,000), dann ist das naechste Bild ein
-    # «Doppelschritt» — gegen den Median ein Ausreisser, gegen die Nachbarn nicht. GEMESSEN 23.09.: nur Median-Test
-    # -> p1 74 statt 21 Einstellungen, p4 (eine Kamerafahrt) 7 Schnitte; mit Nachbar-Test p1 +1, p4 +1 (Ruckler), p3 +2.
-    nachb = np.array([max(np.concatenate([ss_[max(0, k - 3):k], ss_[k + 1:k + 4]]) if len(ss_) > 1 else 0) for k in range(len(ss_))])
-    kand_idx = [k for k in range(len(ss_)) if ss_[k] >= 0.2 or (ss_[k] >= 0.08 and ss_[k] >= 6 * max(medn[k], 0.002)
-                                                              and ss_[k] >= 4 * nachb[k])]
-    # schwache Spruenge (0,12-0,2): moeglicher Wechsel zwischen aehnlichen Blickwinkeln (GEMESSEN p3 9,16 s: 0,167, im
-    # 15-fps-Bewegungsprofil nicht vom Handgewackel zu trennen). Kein Schnitt, aber der Hook beginnt nie darauf
-    # (sonst liegt das nahtlose Loop-Ende auf der anderen Seite eines Kamerawechsels).
-    verdacht = [float(st_[k]) for k in range(len(ss_)) if 0.12 <= ss_[k] and k not in set(kand_idx)]
-    roh = []
-    for k in kand_idx:                                    # Treffer < 0,1 s: nur den staerksten behalten
-        if roh and st_[k] - roh[-1][0] <= 0.1:
-            if ss_[k] > roh[-1][1]:
-                roh[-1] = (float(st_[k]), float(ss_[k]))
-            continue
-        roh.append((float(st_[k]), float(ss_[k])))
-    hart = [t for t, _ in roh if 0.1 < t < dur - 0.1]
+    roh, verdacht = _schnitt_kandidaten(st_, ss_, dur)
+    hart = [t for t, _, _ in roh]
+    schwach_t = [t for t, _, stark in roh if not stark]
     T['schnitte'] = _r(time.time() - t0, 2)
 
     # (b) 15 fps / 160 px: Bewegung (MAD, Skala wie Handwerk-Messung: Bestandsmedian 4,27), Helligkeit, Schwarz, Histogramm
@@ -358,6 +425,18 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
     A = bilder(quelle, fps=15, lang=160, i=i); dt = 1 / 15
     g = A.astype(np.float32).mean(axis=3)
     n15 = len(g)
+    if n15 < 15:
+        raise Ungeeignet(f'Quelle nicht dekodierbar (nur {n15} Bilder) — Download pruefen')
+    # Dauer = was sich DEKODIEREN laesst, nicht die Kopfzeile. GEMESSEN Technik-Pruefung 23.09.: abgebrochener
+    # Faststart-Download (Kopf 26,04 s, dekodierbar 13,6 s) -> Plan nahm Stuecke ab 13,7 s, Reel 7,8 statt 11,5 s,
+    # ohne CTA und Loop-Ende — und Exit 0.
+    abgeschnitten = None
+    if n15 * dt < dur - 0.3:
+        abgeschnitten = dict(kopf_s=_r(dur, 2), dekodiert_s=_r(n15 * dt, 2))
+        dur = n15 * dt
+        hart = [t for t in hart if t < dur - 0.1]
+        schwach_t = [t for t in schwach_t if t < dur - 0.1]
+        verdacht = [t for t in verdacht if t < dur]
     mot = np.zeros(n15)
     if n15 > 1:
         mot[1:] = np.abs(g[1:] - g[:-1]).mean(axis=(1, 2)); mot[0] = mot[1]
@@ -406,8 +485,13 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
 
     # (d) Schwarz- und Standbild-Strecken
     schwarz_iv = _laeufe(schwarz, dt, min_s=0.2)
-    einfr_iv = _laeufe(mot < 0.35, dt, min_s=0.8)                 # freezedetect-Aequivalent (Kritik: |Δ|<0,35 > 0,8 s)
-    leer_iv = _laeufe(mot_s < 2.0, dt, min_s=0.8)                 # Leerlauf-Regel Handwerk (< 2/255 laenger als 0,8 s)
+    # mot[k] = |Bild k - Bild k-1|: ein Lauf mot<thr ab k heisst, Bild k-1 steht schon still -> Lauf ein Abtastbild
+    # frueher beginnen lassen (Code-Pruefung 23.09.: sonst blieben die ersten 1/15 s jedes Standbilds «nutzbar»)
+    def _vorziehen(m):
+        m = np.asarray(m, bool)
+        return m | np.r_[m[1:], False]
+    einfr_iv = _laeufe(_vorziehen(mot < 0.35), dt, min_s=0.8)     # freezedetect-Aequivalent (Kritik: |Δ|<0,35 > 0,8 s)
+    leer_iv = _laeufe(_vorziehen(mot_s < 2.0), dt, min_s=0.8)     # Leerlauf-Regel Handwerk (< 2/255 laenger als 0,8 s)
 
     # (e) 4 fps / 320 px: Schaerfe (Laplace-Varianz relativ zum Video-Median), Crop-Energie, Balken
     t0 = time.time()
@@ -429,6 +513,7 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
         if len(G2) else np.zeros(0, bool)
     tess = tessdata_cjk() if ocr_an else None
     ocr_bilder = {}
+    st0 = {k: list(v) for k, v in OCR_STAT.items()}
     if ocr_an and len(G2):
         idx = list(range(0, len(G2), 2))
         if len(idx) > 60:                                          # Deckel: sehr lange Quellen gleichmaessig ausduennen
@@ -439,11 +524,27 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
             ocr_bilder[k] = fremdtext_woerter(we, wc)
     T['text_ocr'] = _r(time.time() - t0, 2)
 
+    def _ocr_delta(lang):
+        a, f = OCR_STAT.get(lang, [0, 0]); a0, f0 = st0.get(lang, [0, 0])
+        return a - a0, f - f0
+    eng_n, eng_f = _ocr_delta('eng'); cjk_n, cjk_f = _ocr_delta('chi_sim')
+    if ocr_an and eng_n and eng_f == eng_n:
+        # stummer OCR-Ausfall = blinder Fremdtext-Filter -> nie weiterrechnen (Code-Pruefung 23.09.)
+        raise RuntimeError('OCR (eng) faellt bei jedem Aufruf aus: ' + '; '.join(OCR_FEHLER[:2]))
+
     # (g) statische Ebene (Wasserzeichen/Eck-Logo): nur kleine Boxen am Rand oder mit OCR-Buchstaben zaehlen
     #     (grosse ruhige Kanten sind bei Stativ-Clips das Produkt selbst)
-    logos = []
+    # Ruhige Quelle (Stativ, eine Einstellung): dort steht fast alles still, jede Szenenkante wird «statisch».
+    # GEMESSEN Technik-Pruefung 23.09.: 12 s aus p3-E6 -> Exit 3 «Logo» fuer Tischkante, Sandalenriemen, Fuss. Anteil
+    # ruhiger Pixel (std <= 12 ueber alle 2-fps-Bilder): Mehr-Einstellungs-Quellen p1-p3, x1-x3 0,000-0,022;
+    # Stativ/Einzelfahrt p4 0,452, eine_einstellung 0,499, kurz6_5 0,302 -> Schwelle 0,15. In ruhigen Quellen zaehlt
+    # eine statische Box nur mit OCR-Buchstaben, Schrift-Kanten (textboxen in >= 50 % der Bilder) oder in einer Ecke.
+    logos, logos_verworfen = [], []
+    ruhig_anteil = None
     if len(G2) >= 6:
         Gs = G2[:, ::2, ::2]
+        ruhig_anteil = float((Gs.astype(np.float32).std(axis=0) <= 12).mean())
+        ruhig = ruhig_anteil > 0.15
         for (x, y, w, h) in statische_ebene(Gs):
             X, Y, Wb, Hb = [int(v * sx2 * 2) for v in (x, y, w, h)]
             flaeche = Wb * Hb / (i['w'] * i['h'])
@@ -453,8 +554,18 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
             duenn = min(Wb, Hb) < 20 or (max(Wb, Hb) / max(1, min(Wb, Hb)) > 8 and am_rand)
             if duenn:
                 continue        # Randlinie/Rahmen der Quelle (GEMESSEN p4: 10x558-px-Streifen an x=0), kein Logo
-            if flaeche < 0.12 and (am_rand or mit_ocr):
-                logos.append(dict(box=[X, Y, Wb, Hb], flaeche=_r(flaeche, 4), am_rand=bool(am_rand), ocr=bool(mit_ocr)))
+            if not (flaeche < 0.12 and (am_rand or mit_ocr)):
+                continue
+            if ruhig and not mit_ocr:
+                schrift = np.mean([any(_box_schnitt((X, Y, Wb, Hb), tuple(int(v * sx2) for v in b_)) for b_ in B)
+                                   for B in heur]) if heur else 0.0
+                ecke = ((X + Wb <= 0.25 * i['w'] or X >= 0.75 * i['w']) and
+                        (Y + Hb <= 0.15 * i['h'] or Y >= 0.85 * i['h']) and flaeche < 0.03)
+                if schrift < 0.5 and not ecke:
+                    logos_verworfen.append(dict(box=[X, Y, Wb, Hb], grund=f'ruhige Quelle ({ruhig_anteil:.0%} ruhige Pixel): '
+                                                f'statische Szenenkante ohne Schrift ({schrift:.0%}) und nicht in einer Ecke'))
+                    continue
+            logos.append(dict(box=[X, Y, Wb, Hb], flaeche=_r(flaeche, 4), am_rand=bool(am_rand), ocr=bool(mit_ocr)))
 
     # (h) Ton (Quellton wird nie verwendet — nur zur Doku)
     ton = dict(vorhanden=bool(i['ton']), mittel_db=None)
@@ -465,7 +576,8 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
         ton['mittel_db'] = float(m[1]) if m else None
 
     # (i) Einstellungen
-    intern = [(t, 'hart') for t in hart] + [(t, 'weich') for t in weich]
+    schwach_set = {_r(t) for t in schwach_t}
+    intern = [(t, 'hart_schwach' if _r(t) in schwach_set else 'hart') for t in hart] + [(t, 'weich') for t in weich]
     for a, b in schwarz_iv:
         intern += [(a, 'schwarz'), (b, 'schwarz')]
     zus = [(0.0, 'anfang')]
@@ -478,8 +590,8 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
     # am Ende tastet fps=30 das letzte Bild 1/30 s VOR dem Stueckende ab -> 0,02 s genuegen. GEMESSEN p2: mit
     # 0,08/0,08 blieben von ~1-s-Einstellungen 0,84-0,92 s und kein 2-Schlag-Stueck (0,98 s) passte. Der Selbsttest
     # prueft jedes Ausgabebild gegen seine Soll-Einstellung (kein Aufblitzen der Nachbar-Einstellung).
-    rand_a = {'anfang': 0.01, 'hart': 0.01, 'weich': 0.32, 'schwarz': 0.08}
-    rand_e = {'ende': 0.04, 'hart': 0.02, 'weich': 0.32, 'schwarz': 0.08}
+    rand_a = {'anfang': 0.01, 'hart': 0.01, 'hart_schwach': 0.01, 'weich': 0.32, 'schwarz': 0.08}
+    rand_e = {'ende': 0.04, 'hart': 0.02, 'hart_schwach': 0.02, 'weich': 0.32, 'schwarz': 0.08}
     unscharf_iv = []
     for k in np.nonzero(unscharf4)[0]:
         unscharf_iv.append([max(0.0, k / 4 - 0.2), k / 4 + 0.2])
@@ -503,18 +615,22 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
         e['unscharf_anteil'] = _r(unscharf4[s4].mean() if len(unscharf4[s4]) else 0, 2)
         e['text_anteil'] = _r(text2[s2].mean() if len(text2[s2]) else 0, 2)
         # OCR je Einstellung
-        lat, han, mar, cjk, bx, proben = set(), set(), set(), set(), [], 0
+        lat, han, mar, cjk, pre, bx, proben = set(), set(), set(), set(), set(), [], 0
         for kk, fb in ocr_bilder.items():
             if a - 0.01 <= kk / 2 < b:
                 proben += 1
                 lat |= set(fb['lat']); han |= set(fb['handles']); mar |= set(fb['marken']); cjk |= set(fb['cjk'])
+                pre |= set(fb['preise'])
                 bx += [tuple(int(v * sx2) for v in b_) for b_ in fb['boxen']]
         if ocr_an and proben == 0 and len(G2):                     # sehr kurze Einstellung: Mitte nachlesen
             kk = min(len(G2) - 1, int((a + b)))                      # 2 fps -> Index = t*2
             fb = fremdtext_woerter(ocr(G2[kk], 'eng'), ocr(G2[kk], 'chi_sim', tess) if tess else [])
             proben = 1; lat |= set(fb['lat']); han |= set(fb['handles']); mar |= set(fb['marken']); cjk |= set(fb['cjk'])
+            pre |= set(fb['preise'])
             bx += [tuple(int(v * sx2) for v in b_) for b_ in fb['boxen']]
         gruende = []
+        if pre:
+            gruende.append(f"Fremdpreis ({', '.join(sorted(pre)[:3])})")
         if len(lat) >= 3:
             gruende.append(f"{len(lat)} lateinische Woerter ({', '.join(sorted(lat)[:6])})")
         if han:
@@ -530,13 +646,14 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
         # chinesische Spuelmittel-Etiketten in Einstellung 7/8 -> Heuristik 0.67/0.25, chi_sim (conf>=85, auch 2x) 0 Treffer;
         # saubere Quellen p1/p3: Heuristik 0.0-0.14.
         e_text = float(text2[s2].mean()) if len(text2[s2]) else 0.0
-        if e_text >= 0.2 and len(lat) < 3 and not (han or mar or cjk):
+        if e_text >= 0.2 and len(lat) < 3 and not (han or mar or cjk or pre):
             gruende.append(f"Textzeilen in {e_text:.0%} der Bilder ohne lesbares Latein (Verdacht chinesische/fremde "
                            "Schrift — OCR liest Szenentext nicht)")
             for kk in range(s2.start, min(s2.stop, len(heur))):
                 if text2[kk]:
                     bx += [tuple(int(v * sx2) for v in b_) for b_ in heur[kk]]
-        e['ocr'] = dict(proben=proben, woerter=sorted(lat)[:20], handles=sorted(han), marken=sorted(mar), cjk=sorted(cjk))
+        e['ocr'] = dict(proben=proben, woerter=sorted(lat)[:20], handles=sorted(han), marken=sorted(mar), cjk=sorted(cjk),
+                        preise=sorted(pre))
         e['fremdtext'] = bool(gruende)
         e['fremdtext_grund'] = '; '.join(gruende)
         e['text_boxen'] = [list(b_) for b_ in _boxen_vereinen(bx)]
@@ -588,10 +705,14 @@ def analyse(quelle, cache=True, cache_pfad=None, ocr_an=True):
     d = dict(version=VERSION, fingerabdruck=fa, quelle=os.path.abspath(quelle), dauer=_r(dur), w=i['w'], h=i['h'],
              fps=_r(i['fps'], 3), format=fmt, verhaeltnis=_r(i['w'] / i['h'], 4), ton=ton,
              schnitte_hart=[_r(x) for x in hart], uebergaenge_weich=weich, sprung_verdacht=[_r(x) for x in verdacht], schwarz=schwarz_iv, eingefroren=einfr_iv,
-             leerlauf=leer_iv, logos=logos, einstellungen=einst,
-             ocr=dict(eng=True, chi_sim=bool(tess), proben=len(ocr_bilder), tessdata=tess),
+             leerlauf=leer_iv, logos=logos, logos_verworfen=logos_verworfen,
+             ruhige_pixel=_r(ruhig_anteil, 3) if ruhig_anteil is not None else None, einstellungen=einst,
+             abgeschnitten=abgeschnitten,
+             ocr=dict(an=bool(ocr_an), eng=bool(ocr_an and eng_n > eng_f), chi_sim=bool(tess and cjk_n > cjk_f),
+                      proben=len(ocr_bilder), tessdata=tess, aufrufe_eng=eng_n, fehler_eng=eng_f,
+                      aufrufe_cjk=cjk_n, fehler_cjk=cjk_f, fehler=OCR_FEHLER[:3]),
              profil=dict(dt=_r(dt, 6), bewegung=[_r(x, 2) for x in mot_s], bewegung_roh=[_r(x, 2) for x in mot],
-                         hell=[_r(x, 1) for x in hell]),
+                         hell=[_r(x, 1) for x in hell], schaerfe4=[_r(x, 2) for x in rel]),
              nutzbar_sauber_s=_r(sum(e['nutzbar_s'] for e in einst if not e['fremdtext']), 2), zeit_s=T)
     if cache:
         try:
@@ -610,12 +731,37 @@ def _bins(v, n):
 
 
 # ================================================================================================ MUSIK / BEAT
-def musik_pfad(musik):
+def _credits_original():
+    """Dateinamen aus den ORIGINAL-Abschnitten von CREDITS.txt (alles nach der ersten «— ORIGINAL»-Zeile)."""
+    try:
+        txt = open(os.path.join(MUSIK_DIR, 'CREDITS.txt'), encoding='utf8').read()
+    except OSError:
+        return set()
+    k = txt.find('— ORIGINAL')
+    return set(re.findall(r'^\s*-\s+([\w.-]+\.(?:wav|mp3|m4a|flac))\b', txt[k:] if k >= 0 else '', re.M))
+
+
+def musik_pfad(musik, log=None):
+    """Nur eigene Stuecke aus automation/music/ (Betreiber-Vorgabe). Code-Pruefung 23.09.: vorher nahm musik_pfad jeden
+    existierenden Pfad an. Ausnahme nur fuer Selbsttests: SCHNITT_MUSIK_FREI=1 (Klickspuren)."""
     p = musik if os.path.isfile(musik) else os.path.join(MUSIK_DIR, os.path.basename(musik))
     if not os.path.isfile(p):
-        raise FileNotFoundError(f'Musik nicht gefunden: {musik}')
-    if os.path.basename(p) in CC_BY:
-        raise ValueError(f'{os.path.basename(p)} ist CC BY (Quellenangabe in jeder Caption) — nur eigene Stuecke erlaubt')
+        raise MusikFehler(f'Musik nicht gefunden: {musik}')
+    name = os.path.basename(p)
+    if name in CC_BY:
+        raise MusikFehler(f'{name} ist CC BY (Quellenangabe in jeder Caption) — nur eigene Stuecke erlaubt')
+    if os.environ.get('SCHNITT_MUSIK_FREI') == '1':
+        return p
+    if os.path.dirname(os.path.realpath(p)) != os.path.realpath(MUSIK_DIR):
+        raise MusikFehler(f'{p} liegt nicht in automation/music/ — nur eigene, in CREDITS.txt freigegebene Stuecke')
+    if name not in _credits_original():
+        if name in BPM_RUECKFALL:
+            if log is not None:
+                log.append(f'{name}: Lizenzzeile fehlt in CREDITS.txt (Material-Inventur 23.09.) — zugelassen ueber '
+                           'BPM_RUECKFALL, Zeile nachtragen')
+        else:
+            raise MusikFehler(f'{name} steht in keinem ORIGINAL-Abschnitt von CREDITS.txt — erst Lizenz und Tempo '
+                              'eintragen, dann einstiege.py laufen lassen')
     return p
 
 
@@ -637,17 +783,48 @@ def bpm_hinweis(name):
 
 
 def einstiege(name):
-    try:
-        E = json.load(open(os.path.join(MUSIK_DIR, '_einstiege.json')))
-        return [float(x) for x in E.get(name, {}).get('einstiege', [])]
-    except Exception:
+    """Einstiege aus _einstiege.json. Fehlende Datei/Eintrag -> []; kaputtes JSON -> Fehler (nicht still 0,0 s)."""
+    pf = os.path.join(MUSIK_DIR, '_einstiege.json')
+    if not os.path.isfile(pf):
         return []
+    try:
+        E = json.load(open(pf))
+    except ValueError as e:
+        raise MusikFehler(f'_einstiege.json nicht lesbar: {e}')
+    return [float(x) for x in E.get(name, {}).get('einstiege', [])]
 
 
 def _audio_mono(p, start, dauer, sr=22050):
-    raw = _run([FF, '-v', 'error', '-ss', f'{max(0, start):.3f}', '-i', p, '-t', f'{dauer:.3f}', '-vn', '-ac', '1',
+    raw = _run([FF, '-v', 'error', *_thr(), '-ss', f'{max(0, start):.3f}', '-i', p, '-t', f'{dauer:.3f}', '-vn', '-ac', '1',
                 '-ar', str(sr), '-f', 'f32le', '-'], text=False).stdout
     return np.frombuffer(raw, np.float32).copy(), sr
+
+
+def _tiefton_huelle(y, sr, hop, fg=150.0):
+    """Onset-Huelle des Tieftons (< fg Hz): positive Differenz des log-RMS je hop. Fuer die Kick-Phase."""
+    from scipy import signal
+    sos = signal.butter(4, fg, btype='low', fs=sr, output='sos')
+    yl = signal.sosfilt(sos, np.asarray(y, np.float64))
+    n = len(yl) // hop
+    if n < 4:
+        return np.zeros(0), np.zeros(0)
+    rms = np.sqrt((yl[:n * hop].reshape(n, hop) ** 2).mean(axis=1))
+    lg = np.log(rms + 1e-5)
+    env = np.maximum(0.0, np.diff(lg, prepend=lg[0]))
+    return env, np.arange(n) * hop / sr
+
+
+def _phasen_score(env, t, phi, P, tol=0.025):
+    """Mittlere Spitze der Huelle an den Rasterpunkten phi + k*P (+-tol)."""
+    if len(env) == 0:
+        return 0.0
+    ks = np.arange(0, int((t[-1] - phi) / P) + 1)
+    werte = []
+    for k in ks:
+        m = (t >= phi + k * P - tol) & (t <= phi + k * P + tol)
+        if m.any():
+            werte.append(float(env[m].max()))
+    return float(np.mean(werte)) if werte else 0.0
 
 
 def beat_raster(musik, einstieg, dauer_max, cache_ordner=None):
@@ -655,7 +832,7 @@ def beat_raster(musik, einstieg, dauer_max, cache_ordner=None):
     Phase per Kamm-Filter auf der Onset-Huellkurve. Rueckgabe: dict(einstieg (auf Beat), periode, bpm, guete …).
     Im Reel liegt Beat j dann bei j*periode (Phase 0)."""
     p = musik_pfad(musik); name = os.path.basename(p)
-    key = f"{name}|{os.path.getsize(p)}|{einstieg:.3f}|{dauer_max:.2f}"
+    key = f"v{VERSION}|{name}|{os.path.getsize(p)}|{einstieg:.3f}|{dauer_max:.2f}"
     cf = os.path.join(cache_ordner or tempfile.gettempdir(), '.schnitt_beats.json')
     try:
         C = json.load(open(cf))
@@ -686,16 +863,21 @@ def beat_raster(musik, einstieg, dauer_max, cache_ordner=None):
         if sc[j] > best[0]:
             best = (float(sc[j]), float(P), float(phis[j]))
     sc, P, phi = best
-    # Phase an librosa angleichen: die Regel «Schnitt auf den Beat» ist an librosa-Beats gemessen (Fenster -100/+33 ms).
-    # GEMESSEN 23.09.: bei luxe-house2 lag der Kamm-Filter eine halbe Periode neben librosa (nur 31 % der librosa-Beats
-    # auf dem Raster, 97 % auf dem Halbraster) — er hatte die offenen Hi-Hats statt der Zaehlzeit gegriffen.
-    bt0 = np.asarray(beats, dtype=float)
+    # Phase = Kick (Zaehlzeit), nicht librosa. Der Kamm-Filter greift bei lauten Offbeat-Hi-Hats die halbe Periode
+    # daneben; die fruehere Angleichung an librosa machte es bei luxe-house2 schlimmer (librosa lag selbst auf dem
+    # Offbeat). GEMESSEN Technik-Pruefung 23.09. am AUSGABE-Ton: house2 0/14 Schnitte im Fenster -100/+33 ms zum Kick,
+    # Schnitt minus Kick +177..+227 ms bei 475 ms Periode; eigene Messung aller 12 Stuecke: house2-Kicks 0 % auf dem
+    # Raster / 100 % auf dem Halbraster, alle anderen mit klarem Kick auf dem Raster (house1/hype1-3 100 %).
+    # Entscheid: Tiefton-Onsets (< 150 Hz) an Raster vs. Halbraster; nur bei klarem Unterschied (>= 1,3x) umlegen.
     phase_korr = False
-    if len(bt0) >= 8:
-        r = ((bt0 - phi) / P) % 1.0
-        auf = np.mean((r < 0.15) | (r > 0.85)); halb = np.mean(np.abs(r - 0.5) < 0.15)
-        if halb > auf + 0.3:
+    kick = None
+    envk, tk = _tiefton_huelle(y, sr, hop)
+    if len(envk):
+        k0 = _phasen_score(envk, tk, phi, P); k1 = _phasen_score(envk, tk, (phi + P / 2) % P, P)
+        kick = dict(raster=_r(k0, 4), halbraster=_r(k1, 4))
+        if k1 >= 1.3 * k0 and k1 > 0.02:
             phi = (phi + P / 2) % P; phase_korr = True
+            kick['umgelegt'] = True
     # Einstieg auf den naechsten Beat einrasten (Inventur: Einstiege liegen 30-315 ms neben dem Beat)
     kk = round((einstieg - s0 - phi) / P)
     E2 = s0 + phi + kk * P
@@ -710,7 +892,7 @@ def beat_raster(musik, einstieg, dauer_max, cache_ordner=None):
         guete = dict(beats_librosa=len(bt), auf_raster=_r((d1 <= 0.05).mean(), 3), auf_halbraster=_r((d2 <= 0.05).mean(), 3))
     r = dict(musik=name, pfad=p, einstieg_json=_r(einstieg), einstieg=_r(E2, 4), verschiebung_ms=_r((E2 - einstieg) * 1000, 1),
              periode=_r(P, 5), bpm=_r(60 / P, 2), bpm_hinweis=hint, bpm_quelle=hq or 'librosa', bpm_librosa=_r(t_lib, 1),
-             kamm_score=_r(sc, 3), guete=guete, phase_an_librosa=phase_korr, musik_dauer=_r(mi['dauer'], 2))
+             kamm_score=_r(sc, 3), guete=guete, phase_auf_kick=phase_korr, kick_phase=kick, musik_dauer=_r(mi['dauer'], 2))
     C[key] = r
     try:
         json.dump(C, open(cf, 'w'), ensure_ascii=False)
