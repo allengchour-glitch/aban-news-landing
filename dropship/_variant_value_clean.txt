@@ -3042,3 +3042,5 @@ gid://shopify/Product/15448104239489	Farbe	1
 gid://shopify/Product/15448112333185	Farbe	1
 gid://shopify/Product/15448509153665	Farbe	1
 gid://shopify/Product/15448509514113	Farbe	1
+gid://shopify/Product/15448526750081	Farbe	1
+gid://shopify/Product/15448550146433	Farbe	2

@@ -17976,3 +17976,6 @@ gid://shopify/Product/15448104239489	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448112333185	Farbe	gid://shopify/ProductOptionValue/12020554826113	Klassisch Leopardenmuster	Classic leopard print	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15448509153665	Farbe	gid://shopify/ProductOptionValue/12022285894017	Q18A Leuchtendrot	Q18A Leuchtendes Rot	2026-09-23T20:34Z/reparatur-korrigiert
 gid://shopify/Product/15448509514113	Farbe	gid://shopify/ProductOptionValue/12022291300737	W011 bordeaux Beige	W011 Bordeaux-Beige	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448526750081	Farbe	gid://shopify/ProductOptionValue/12022423912833	Geblümt Farbton 2	Flower Color 2	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448550146433	Farbe	gid://shopify/ProductOptionValue/12022515007873	Klassischschwarz	Klassisches Schwarz	2026-09-23T20:34Z/reparatur-konsistenz
+gid://shopify/Product/15448550146433	Farbe	gid://shopify/ProductOptionValue/12022515040641	Klassischschwarz-G	Klassisches Schwarz-G	2026-09-23T20:34Z/reparatur-korrigiert
