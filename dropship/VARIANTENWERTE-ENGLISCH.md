@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:14 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 17:49 UTC, Stand 2026-09-23 18:21 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **6'608**
-- Optionen mit englischen Werten (Kandidaten): 1'156
-- Optionen übersetzt: **574** · Werte übersetzt: **2'576**
+- Produkte gesehen: **8'409**
+- Optionen mit englischen Werten (Kandidaten): 1'441
+- Optionen übersetzt: **751** · Werte übersetzt: **4'102**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'554
+- Werte mit unbekanntem Wort (unverändert): 4'550
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 31
-- übersprungen «kollision-nach-uebersetzung»: 16
+- übersprungen «kleidungsstueck-im-wert»: 33
+- übersprungen «kollision-nach-uebersetzung»: 17
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -34,6 +34,8 @@
 - `15449066766721` [Farbe] **Vintage Patchwork Distressed Jeansjacke für Herren** — hose, jacke: Single Jacket | Single Pants
 - `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Long sleeves | Vest | Off shoulder
 - `15449114837377` [Ausführung] **Herren Hoodie und Trainerhosen Set** — hose, pullover · Titel nennt Set: Dark gray-L-Hoodie | Dark gray-M-Hoodie | Dark gray-S-Hoodie | Dark gray-S-Pants | Dark gray-XL-Hoodie | Royal blue-L-Hoodie | Royal blue-L-Pants | Royal blue-M-Hoodie
+- `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
+- `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -55,6 +57,7 @@
 - `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black White Striped Checkered → Schwarz-Weiss gestreift kariert; Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert
 - `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
 - `15449065718145` [Farbe] corduroy-weste-im-preppy-stil-fur-herren-635500: Deep Coffee → Dunkelkaffeebraun; Green Coffee → Grün-Kaffeebraun
+- `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -113,5 +116,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 159, `light` 158, `color` 107, `skin` 69, `feet` 62, `mother` 61, `shell` 53, `core` 53, `to` 52, `hat` 47, `rope` 44, `for` 42, `case` 38, `lens` 38, `father` 38, `high` 37, `years` 35, `old` 35, `generation` 34, `powder` 34, `no` 30, `surface` 30, `adjustable` 29, `mom` 28, `bag` 26, `insert` 26, `crotch` 26, `belt` 25, `carbon` 25, `dog` 25, `cocoa` 25, `tea` 24, `batteries` 24, `dad` 24, `perforated` 24, `of` 23, `stone` 22, `face` 22, `one` 22, `electric` 22, `housing` 22, `suit` 21, `nail` 21, `bear` 21, `yadan` 21, `handle` 20, `comfortable` 20, `number` 19, `deer` 19, `milk` 18, `220grams` 18, `three` 18, `noodles` 18, `clothing` 18, `full` 17, `background` 17, `ice` 17, `pumpkin` 17, `foot` 17, `waist` 17
+`light` 196, `degrees` 159, `color` 126, `shell` 77, `skin` 71, `feet` 62, `rope` 61, `mother` 61, `core` 53, `to` 52, `hat` 47, `high` 44, `case` 43, `for` 43, `dark` 41, `powder` 40, `acupuncture` 40, `lens` 38, `father` 38, `opp` 38, `generation` 37, `years` 37, `magnetic` 36, `surface` 36, `old` 35, `bag` 34, `no` 33, `size` 33, `bear` 30, `eyelets` 30, `adjustable` 29, `carbon` 28, `mom` 28, `tea` 27, `mushroom` 27, `suit` 27, `belt` 26, `insert` 26, `crotch` 26, `flame` 25, `dog` 25, `cocoa` 25, `stone` 24, `nail` 24, `regular` 24, `batteries` 24, `dad` 24, `perforated` 24, `face` 23, `milk` 23, `one` 23, `of` 23, `ring` 23, `electric` 22, `three` 22, `housing` 22, `bead` 21, `deer` 21, `yadan` 21, `handle` 20
 
