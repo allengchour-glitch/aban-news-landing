@@ -444,7 +444,7 @@ def schreibe(slug, bilder_liste, caption, produkte):
         fh.write(caption + "\n")
     neu = not os.path.exists(QUEUE)
     with open(QUEUE, "a", newline="") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         if neu:
             w.writerow(["slug", "modus", "slides", "ordner", "produkte", "caption", "status"])
         w.writerow([slug, MODUS, len(pfade), os.path.relpath(ordner, ROOT),

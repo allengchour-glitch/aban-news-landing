@@ -94,7 +94,7 @@ def main():
             r["caption"] = neu
     if not DRY and geaendert:
         with open(CSV, "w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=feld)
+            w = csv.DictWriter(f, fieldnames=feld, lineterminator="\n")
             w.writeheader()
             w.writerows(rows)
     print(f"{'(DRY) ' if DRY else ''}FERTIG: {geaendert} Captions berichtigt, "

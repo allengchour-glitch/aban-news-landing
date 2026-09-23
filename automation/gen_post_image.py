@@ -439,7 +439,7 @@ def main():
         f.write(str((start + BATCH) % len(products)))
     exists = os.path.exists(QUEUE) and os.path.getsize(QUEUE) > 0
     with open(QUEUE, "a", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         if not exists:
             w.writerow(QUEUE_COLS)
         for r in new_rows:
