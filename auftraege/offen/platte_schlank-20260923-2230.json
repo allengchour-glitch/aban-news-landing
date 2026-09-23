@@ -1,6 +1,0 @@
-{
-  "id": "platte_schlank-20260923-2230",
-  "typ": "wartung",
-  "aktion": "platte_schlank",
-  "warum": "Betreiber 23.09. «für volle automation»: Platte 70 % (11 GB frei), Waechter-Klon 5.8 GB mit 2 Packs, abannews 2.35 GB — fremde Zweige raus + gc als eigene Einheit luxe-platte (Skript nach 19 Pruefer-Befunden: Sperre, trap, Stash-Schutz, Platzpruefung). /opt/luxe/repo bleibt (crontab verweist darauf: run-api-jobs.sh 04:00, vps-poll alle 10 min)."
-}
