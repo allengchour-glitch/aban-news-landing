@@ -17209,3 +17209,44 @@ gid://shopify/Product/15522298331521	Farbe	gid://shopify/ProductOptionValue/1251
 gid://shopify/Product/15522298331521	Farbe	gid://shopify/ProductOptionValue/12513898496385	46-Light Brown	46-Hellbraun	2026-09-23T19:44Z
 gid://shopify/Product/15522298331521	Farbe	gid://shopify/ProductOptionValue/12513898529153	46-Khaki With Velvet Lining	46-Khaki mit Samtfutter	2026-09-23T19:44Z
 gid://shopify/Product/15522298331521	Farbe	gid://shopify/ProductOptionValue/12513898561921	46-Light Brown With Velvet	46-Hellbraun gefüttert	2026-09-23T19:44Z
+gid://shopify/Product/15522450702721	Farbe	gid://shopify/ProductOptionValue/12515236708737	Camouflage Yellow	Camouflage Gelb	2026-09-23T19:45Z
+gid://shopify/Product/15522455519617	Farbe	gid://shopify/ProductOptionValue/12515242770817	Golden	Gold	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246211457	White-13.5 cm	Weiss-13.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246244225	Pink-14.5cm	Pink-14.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246309761	Black-15.5cm	Schwarz-15.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246342529	Black-13.5 cm	Schwarz-13.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246375297	White-15.5cm	Weiss-15.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246408065	Black-14.5cm	Schwarz-14.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246440833	Black-16.7cm	Schwarz-16.7 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246473601	Pink-15.5cm	Pink-15.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246506369	Pink-16.7cm	Pink-16.7 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246539137	White-17.4 cm	Weiss-17.4 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246571905	Black-17.4 cm	Schwarz-17.4 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246637441	White-16.7cm	Weiss-16.7 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522457387393	Farbe	gid://shopify/ProductOptionValue/12515246670209	White-14.5cm	Weiss-14.5 cm	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249357185	15-Black	15-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249389953	23-Wine Red	23-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249422721	17-Wine Red	17-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249488257	18-Wine Red	18-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249521025	25-Wine Red	25-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249586561	22-Wine Red	22-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249619329	18-Black	18-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249652097	16-Black	16-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249717633	24-Wine Red	24-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249783169	16-Wine Red	16-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249914241	15-Wine Red	15-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515249947009	22-Black	22-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515250045313	17-Black	17-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515250078081	25-Black	25-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515250110849	24-Black	24-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515250143617	19-Black	19-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515250176385	19-Wine Red	19-Weinrot	2026-09-23T19:45Z
+gid://shopify/Product/15522458403201	Farbe	gid://shopify/ProductOptionValue/12515250209153	23-Black	23-Schwarz	2026-09-23T19:45Z
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437604225	2 Colors	2 Farben	2026-09-23T19:45Z
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437636993	3 Colors	3 Farben	2026-09-23T19:45Z
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437669761	4 Colors	4 Farben	2026-09-23T19:45Z
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437702529	5 Colors	5 Farben	2026-09-23T19:45Z
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437735297	6 Colors	6 Farben	2026-09-23T19:45Z
+gid://shopify/Product/15522644787585	Farbe	gid://shopify/ProductOptionValue/12517437768065	7 Colors	7 Farben	2026-09-23T19:45Z
+gid://shopify/Product/15522668806529	Farbe	gid://shopify/ProductOptionValue/12517594071425	Gray Stripes	Grau gestreift	2026-09-23T19:45Z
+gid://shopify/Product/15522668806529	Farbe	gid://shopify/ProductOptionValue/12517594104193	Beige Stripes	Beige gestreift	2026-09-23T19:45Z
