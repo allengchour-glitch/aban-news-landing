@@ -27,11 +27,28 @@ angeboten, das Paket angenommen, verschickt — und es dann als verbotenen Artik
 zurueckgeholt. Eine Frachtauskunft «ok» widerlegt die Kategorie also nicht; darum
 sperrt Quelle 2 unabhaengig von Quelle 1.
 
+⚠️⚠️ PING-PONG (gemessen 22.09.2026). Die Wache draftete am 16.09. 207 Klingen. Der
+Rueckholer `cj_versand_ch_revive.py` holte noch am selben Tag fuenf davon zurueck
+(inkl. das Fuda-Taschenmesser aus #1017) und am 21.09. 22:10Z den Samurai-Katana —
+sein Risiko-Set kannte den Sperr-Tag nicht, und «freightCalculate ok» galt ihm als
+Beweis. Drei Ursachen auf dieser Seite, alle hier behoben:
+  (a) Die Wache las nur `status:active`. Eine gedraftete Klinge ohne Sperr-Tag bekam
+      ihn nie, und jeder Rueckholer «ohne Risiko-Tag» durfte sie reaktivieren.
+      Jetzt: Voll-Export ueber ACTIVE **und** DRAFT; Drafts bekommen nur die Tags.
+  (b) Die Wache schrieb Tags per `productUpdate(input:{tags})` — das ERSETZT alle
+      Tags. 104 Produkte trugen danach nur noch die zwei Sperr-Tags: kein `cj-real`,
+      keine Kategorie, kein `bild-ok`. Jetzt: nur `tagsAdd`, nie `productUpdate(tags)`.
+  (c) Niemand sah, WER reaktiviert. Jetzt steht der Verursacher (`product.events`,
+      juengstes «draft to active») im Bericht und in der Quittung.
+Die Gegenseite (das Tor im Rueckholer) importiert `klingen_tor()` von HIER — eine
+Regelquelle, zwei Fragen: Sperr-Tag ODER Hausregel → nie reaktivieren.
+
 Lauf:  python3 automation/klinge_ch_wache.py        # nur messen und melden
-       FIX=1 python3 automation/klinge_ch_wache.py  # gefundene Ware draften
+       FIX=1 python3 automation/klinge_ch_wache.py  # gefundene Ware draften/taggen
 """
 import json
 import os
+import re
 import sys
 import time
 import urllib.request
@@ -44,7 +61,8 @@ LEDGER = os.path.join(REPO, "dropship", "_cj_versand_ch_pruef.txt")
 QUITTUNG = os.path.join(REPO, "dropship", "_klinge_verboten_ch_0916.txt")
 SHOP = "au3j0y-hq.myshopify.com"
 FIX = os.environ.get("FIX") == "1"
-TAGS = ["cj-nicht-versendbar-ch", "handklinge-kein-ch-versand"]
+SPERR_TAG = "handklinge-kein-ch-versand"
+TAGS = ["cj-nicht-versendbar-ch", SPERR_TAG]
 
 # ⚠️⚠️ KEINE TITEL-SUCHE (teuer belegt am 16.09.2026, Gegenprobe mit Koeder).
 # Die erste Fassung fragte `title:messer*` ab und meldete «0 Handklingen im Verkauf»,
@@ -55,9 +73,32 @@ TAGS = ["cj-nicht-versendbar-ch", "handklinge-kein-ch-versand"]
 # Deutsche Zusammensetzungen tragen das Grundwort HINTEN, also ist eine Token-Suche
 # fuer diese Frage grundsaetzlich blind. Einzige vollstaendige Quelle ist der
 # Voll-Export; dieselbe Lehre wie bei der Titel-Wache der Importer (16c, 10.07.).
-BULK = """{ products(query: "status:active") { edges { node {
-            id title handle status
+# 22.09.: ACTIVE **und** DRAFT (Ping-Pong-Lehre (a) oben) und `tags` mitlesen.
+BULK = """{ products(query: "status:active OR status:draft") { edges { node {
+            id title handle status tags
             variants(first: 1) { edges { node { sku } } } } } } }"""
+
+
+def klingen_tor(titel, tags):
+    """Das EINE Tor vor jeder Reaktivierung: (gesperrt, grund).
+
+    Zwei unabhaengige Fragen, jede fuer sich ausreichend:
+      1. Traegt das Produkt den Sperr-Tag `handklinge-kein-ch-versand`? Dann hat eine
+         Wache oder ein Mensch geurteilt — ein Rueckholer hebt das nicht auf. (Der
+         Katana vom 21.09. hiess «Japanischer Samurai mit Katana-Schwert, 30 cm»; der
+         Tag haette gereicht, das Risiko-Set des Rueckholers kannte ihn nicht.)
+      2. Sagt die Hausregel `ist_handklinge(titel)` Klinge? Dann liegt eine Klinge im
+         Paket, egal was `freightCalculate` heute antwortet (#1017: Option ja, Paket
+         zurueck).
+    Wer reaktiviert, ruft das VOR der Status-Mutation auf und loggt den Grund. Die
+    Lieferantenfrage («kommt es aus China?») bleibt beim Aufrufer — s. `aus_china`.
+    """
+    for t in tags or []:
+        if t == SPERR_TAG:
+            return True, f"Sperr-Tag {SPERR_TAG}"
+    if ist_handklinge(titel or ""):
+        return True, "Handklinge nach Hausregel (klingenregel.ist_handklinge)"
+    return False, ""
 
 
 def _tok():
@@ -103,7 +144,7 @@ def aus_china(produkt):
 
 
 def voll_export():
-    """Alle aktiven Produkte als Liste — ueber bulkOperationRunQuery, nicht ueber Suche."""
+    """Alle aktiven UND gedrafteten Produkte — ueber bulkOperationRunQuery, nicht ueber Suche."""
     d = gql("""mutation($q:String!){bulkOperationRunQuery(query:$q){
                  bulkOperation{id status} userErrors{field message}}}""", {"q": BULK})
     ue = d["data"]["bulkOperationRunQuery"]["userErrors"]
@@ -121,14 +162,22 @@ def voll_export():
     if not url:
         raise RuntimeError("Bulk lief in die Zeitgrenze")
     roh = urllib.request.urlopen(url, timeout=300).read().decode("utf-8")
+    return export_lesen(roh.splitlines())
+
+
+def export_lesen(zeilen):
+    """JSONL des Bulk-Exports → Produktliste mit variants.nodes[0].sku (auch fuer Tests)."""
     produkte, skus = {}, {}
-    for z in roh.splitlines():
+    for z in zeilen:
         if not z.strip():
             continue
         o = json.loads(z)
         if o.get("__parentId"):              # Variantenzeile
             skus.setdefault(o["__parentId"], o.get("sku") or "")
         elif o.get("id", "").startswith("gid://shopify/Product/"):
+            if isinstance(o.get("tags"), str):
+                o["tags"] = [t.strip() for t in o["tags"].split(",") if t.strip()]
+            o.setdefault("tags", [])
             produkte[o["id"]] = o
     for pid, sku in skus.items():
         if pid in produkte:
@@ -136,11 +185,21 @@ def voll_export():
     return list(produkte.values())
 
 
-def aktive_klingen():
-    """Aktive CJ-Produkte, deren Titel eine Handklinge bezeichnet."""
-    alle = voll_export()
-    print(f"  (Voll-Export: {len(alle)} aktive Produkte gelesen)")
-    return [p for p in alle if ist_handklinge(p.get("title") or "") and aus_china(p)]
+def klingen_sortieren(alle):
+    """(aktive Klingen, gedraftete Klingen OHNE Sperr-Tag) — beides CJ-Ware nach Hausregel.
+
+    Drafts mit Sperr-Tag sind erledigt (das Tor haelt sie). Drafts OHNE Sperr-Tag sind
+    die stille Klasse (a): heute unsichtbar, morgen von einem Rueckholer reaktiviert.
+    """
+    aktiv, draft_ohne_tag = [], []
+    for p in alle:
+        if not (ist_handklinge(p.get("title") or "") and aus_china(p)):
+            continue
+        if p.get("status") == "ACTIVE":
+            aktiv.append(p)
+        elif p.get("status") == "DRAFT" and SPERR_TAG not in (p.get("tags") or []):
+            draft_ohne_tag.append(p)
+    return aktiv, draft_ohne_tag
 
 
 def aktive_ohne_ch_option():
@@ -156,7 +215,7 @@ def aktive_ohne_ch_option():
     for i in range(0, len(hs), 40):
         teil = hs[i:i + 40]
         q = "{" + " ".join(
-            f'p{j}: productByHandle(handle:"{h}"){{id title handle status}}'
+            f'p{j}: productByHandle(handle:"{h}"){{id title handle status tags}}'
             for j, h in enumerate(teil)) + "}"
         for v in (gql(q).get("data") or {}).values():
             if v and v["status"] == "ACTIVE":
@@ -164,20 +223,72 @@ def aktive_ohne_ch_option():
     return aktiv
 
 
+_AKTIVIERT = re.compile(r"status from draft to active", re.I)
+
+
+def verursacher(pid):
+    """Wer hat das Produkt zuletzt auf ACTIVE gestellt? Aus `product.events`.
+
+    Alle unsere Automaten laufen ueber EINE Custom-App («autopilot2»), der appTitle
+    allein unterscheidet sie also nicht — der Zeitstempel tut es: er passt auf das Log
+    des Rueckholers (21.09. 22:10:41Z = `cj_versand_ch_revive`, gemessen am Katana).
+    """
+    try:
+        d = gql("""query($id:ID!){ product(id:$id){ events(first:20, sortKey:CREATED_AT, reverse:true){
+                     nodes{ appTitle createdAt message } } } }""", {"id": pid})
+        for e in ((d["data"].get("product") or {}).get("events") or {}).get("nodes") or []:
+            if _AKTIVIERT.search(e.get("message") or ""):
+                return f"{e.get('appTitle') or 'unbekannt'} {e.get('createdAt')}"
+    except Exception as e:                  # Verursacher ist Zusatzinfo, kein Tor
+        return f"unklar ({type(e).__name__})"
+    return "unbekannt (kein draft→active-Ereignis in den letzten 20)"
+
+
+def _ruecklesen(pid):
+    d = gql("query($id:ID!){product(id:$id){status tags}}", {"id": pid})
+    p = (d.get("data") or {}).get("product") or {}
+    return p.get("status"), set(p.get("tags") or [])
+
+
+def taggen(produkte, grund, status_erwartet):
+    """Sperr-Tags per tagsAdd (NIE productUpdate(tags) — Lehre (b)), dann RUECKLESEN."""
+    ok = 0
+    zeilen = []
+    for p in produkte:
+        r = (gql("mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}",
+                 {"id": p["id"], "t": TAGS}).get("data") or {}).get("tagsAdd") or {}
+        st, tags = _ruecklesen(p["id"])
+        if st == status_erwartet and set(TAGS) <= tags:
+            ok += 1
+            zeilen.append(f"{p['handle']}\t{st}\t{grund}")
+        else:
+            print(f"  ⚠️ nicht getaggt: {p['handle']} status={st} fehlt={set(TAGS)-tags} {r.get('userErrors')}")
+    if zeilen:
+        with open(QUITTUNG, "a", encoding="utf-8") as f:
+            f.write("\n".join(zeilen) + "\n")
+    return ok
+
+
 def draften(produkte, grund):
-    m = """mutation($id:ID!,$t:[String!]!){productUpdate(input:{id:$id,status:DRAFT,tags:$t}){
+    """ACTIVE → DRAFT (nur der Status!) + tagsAdd, Zustand ruecklesen, Verursacher notieren."""
+    m = """mutation($id:ID!){productUpdate(input:{id:$id,status:DRAFT}){
              product{handle status} userErrors{message}}}"""
     ok = 0
     zeilen = []
     for p in produkte:
-        r = (gql(m, {"id": p["id"], "t": TAGS}).get("data") or {}).get("productUpdate") or {}
+        wer = verursacher(p["id"])
+        r = (gql(m, {"id": p["id"]}).get("data") or {}).get("productUpdate") or {}
+        gql("mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}",
+            {"id": p["id"], "t": TAGS})
         # Zustand lesen, nicht die Absicht: eine Mutation ohne userErrors hat schon
         # mehrfach nichts geschrieben (Lehre 15.09.).
-        if (r.get("product") or {}).get("status") == "DRAFT":
+        st, tags = _ruecklesen(p["id"])
+        if st == "DRAFT" and set(TAGS) <= tags:
             ok += 1
-            zeilen.append(f"{p['handle']}\tDRAFT\t{grund}")
+            zeilen.append(f"{p['handle']}\tDRAFT\t{grund} · reaktiviert von {wer}")
+            print(f"  ⛔ gedraftet: {p['handle'][:55]} — reaktiviert von {wer}")
         else:
-            print(f"  ⚠️ nicht gedraftet: {p['handle']} {r.get('userErrors')}")
+            print(f"  ⚠️ nicht gedraftet: {p['handle']} status={st} {r.get('userErrors')}")
     if zeilen:
         with open(QUITTUNG, "a", encoding="utf-8") as f:
             f.write("\n".join(zeilen) + "\n")
@@ -186,7 +297,9 @@ def draften(produkte, grund):
 
 def main():
     try:
-        nach_regel = aktive_klingen()
+        alle = voll_export()
+        print(f"  (Voll-Export: {len(alle)} Produkte ACTIVE+DRAFT gelesen)")
+        nach_regel, draft_ohne_tag = klingen_sortieren(alle)
         nach_ledger = aktive_ohne_ch_option()
     except Exception as e:
         # Eine Wache, die ihren Fehler verschweigt, meldet Ruhe (Lehre 15.09.:
@@ -196,24 +309,40 @@ def main():
 
     ids = {p["id"] for p in nach_regel}
     zusammen = nach_regel + [p for p in nach_ledger if p["id"] not in ids]
-    if not zusammen:
-        print("KLINGEN-WACHE: 0 Handklingen im Verkauf, 0 unvollstreckte Versand-Urteile")
+    if not zusammen and not draft_ohne_tag:
+        print("KLINGEN-WACHE: 0 Handklingen im Verkauf, 0 unvollstreckte Versand-Urteile, "
+              "0 Drafts ohne Sperr-Tag")
         return 0
 
-    print(f"KLINGEN-WACHE: {len(zusammen)} kaufbar, die nicht in die CH gehen "
-          f"({len(nach_regel)} nach Hausregel, {len(nach_ledger)} mit Lieferanten-Urteil)")
-    for p in zusammen[:15]:
-        print("   ", p["handle"][:60], "|", (p["title"] or "")[:50])
-    if len(zusammen) > 15:
-        print(f"    … und {len(zusammen)-15} weitere")
+    if zusammen:
+        print(f"KLINGEN-WACHE: {len(zusammen)} kaufbar, die nicht in die CH gehen "
+              f"({len(nach_regel)} nach Hausregel, {len(nach_ledger)} mit Lieferanten-Urteil)")
+        for p in zusammen[:15]:
+            print("   ", p["handle"][:60], "|", (p["title"] or "")[:50],
+                  "| reaktiviert von", verursacher(p["id"]))
+        if len(zusammen) > 15:
+            print(f"    … und {len(zusammen)-15} weitere")
+    if draft_ohne_tag:
+        print(f"KLINGEN-WACHE: {len(draft_ohne_tag)} gedraftete Klingen OHNE Sperr-Tag "
+              f"(fuer jeden Rueckholer «ohne Risiko-Tag» reaktivierbar)")
+        for p in draft_ohne_tag[:10]:
+            print("   ", p["handle"][:60], "|", (p["title"] or "")[:50])
 
     if FIX:
         n1 = draften(nach_regel, "Handklinge — kein CH-Versand (Hausregel, Klasse #1017)")
         n2 = draften([p for p in nach_ledger if p["id"] not in ids],
                      "Lieferant meldet keine CH-Versandoption")
-        print(f"KLINGEN-WACHE: {n1+n2} gedraftet")
+        n3 = taggen(draft_ohne_tag, "Draft ohne Sperr-Tag — Tor gesetzt (Ping-Pong 22.09.)", "DRAFT")
+        print(f"KLINGEN-WACHE: {n1+n2} gedraftet, {n3} Drafts mit Sperr-Tag versehen")
+        # Nach dem Vollstrecken den Zustand messen, nicht die Absicht.
+        try:
+            for t in TAGS:
+                c = gql('{productsCount(query:"status:active tag:%s"){count precision}}' % t)["data"]["productsCount"]
+                print(f"  MESSUNG status:active tag:{t} = {c['count']} ({c['precision']})")
+        except Exception as e:
+            print(f"  MESSUNG unklar: {e}")
     else:
-        print("KLINGEN-WACHE: nur gemessen — mit FIX=1 draften")
+        print("KLINGEN-WACHE: nur gemessen — mit FIX=1 draften/taggen")
     return 1
 
 

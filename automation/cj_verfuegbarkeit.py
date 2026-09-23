@@ -277,7 +277,80 @@ def cj_kennt(sku):
     return None
 
 
+def rueckholen(pfad):
+    """Falsch gedraftete Produkte zurueck auf ACTIVE — MIT Klingen-Tor.
+
+    ANLASS 22.09.2026: Der 68er-Rueckholer vom 21.09. (Commit 131a6ca65, «Produkt-SKU-Klasse»)
+    war ein Einmal-Lauf ohne Skript im Repo: er setzte ACTIVE fuer alles, was bei CJ wieder
+    «200» antwortete — ohne zu fragen, ob im Paket eine Klinge liegt. Das ist die Klasse des
+    Ping-Pongs (Klingen-Wache draftet, ein Rueckholer «ohne Risiko-Tag» holt zurueck). Damit
+    der naechste Rueckholer nicht wieder von Hand gebaut wird, steht der Pfad jetzt HIER:
+
+        RUECKHOL=/pfad/ids.txt python3 automation/cj_verfuegbarkeit.py      (DRY=1 zeigt nur)
+
+    `ids.txt` traegt je Zeile eine Produkt-GID (gid://shopify/Product/…) oder Zahl. Fuer jede:
+      1. Titel + Tags + Status lesen (frisch, nicht aus einem Export).
+      2. `klingen_tor(titel, tags)` — Sperr-Tag ODER Hausregel → NICHT zurueck, Grund loggen.
+      3. Sonst productUpdate(status:ACTIVE) + tagsRemove(cj-nicht-mehr-verfuegbar), dann
+         RUECKLESEN (status), Ledgerzeile `ok … zurueckgeholt-<datum>` wie am 21.09.
+    Die CJ-Frage («gibt es das Produkt noch?») stellt dieser Pfad NICHT — die hat der Aufrufer
+    zu beantworten, bevor er die Liste schreibt (so war es am 21.09. auch).
+    """
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from klinge_ch_wache import klingen_tor       # das EINE Tor, gleiche Frage wie im Revive
+    ids = []
+    for z in open(pfad, encoding="utf-8"):
+        z = z.strip().split("\t")[0]
+        if not z or z.startswith("#"):
+            continue
+        ids.append(z if z.startswith("gid://") else f"gid://shopify/Product/{z}")
+    print(f"RUECKHOL: {len(ids)} Kandidaten aus {pfad} | DRY={DRY}", flush=True)
+    f = open(LEDGER, "a")
+    tag = time.strftime("%Y-%m-%d")
+    n_ok = n_tor = n_fehl = 0
+    for gid in ids:
+        d = gql('query($id:ID!){product(id:$id){id title status tags variants(first:1){nodes{sku}}}}',
+                {"id": gid})
+        p = (d.get("data") or {}).get("product")
+        if not p:
+            n_fehl += 1; print(f"  ❔ nicht gefunden: {gid}", flush=True); continue
+        gesperrt, grund = klingen_tor(p.get("title"), p.get("tags"))
+        if gesperrt:
+            n_tor += 1
+            print(f"  ⛔ KLINGEN-TOR: {p['title'][:50]} — {grund} (bleibt {p['status']})", flush=True)
+            continue
+        # RISIKO-Tags (23.09.2026, Gegenpruefung): ein Draft mit Grund-Tag ist fuer JEDEN Rueckholer gesperrt —
+        # Verlustartikel, Schutzausruestung ohne Norm, Stecker, CH-Versand. Nur der Schreiber des Grundes hebt ihn.
+        risiko = {"verlust-auto-draft", "marge-verlust-draft", "schutz-norm-unklar", "stecker-unpassend-ch",
+                  "cj-keine-ch-versandoption", "cj-nicht-versendbar-ch", "handklinge-kein-ch-versand",
+                  "heilversprechen-draft", "nicht-lieferbar-ch", "ausverkauft-lieferant"} & set(p.get("tags") or [])
+        if risiko:
+            n_tor += 1
+            print(f"  ⛔ RISIKO-TAG: {p['title'][:50]} — {', '.join(sorted(risiko))} (bleibt {p['status']})", flush=True)
+            continue
+        if p["status"] == "ACTIVE":
+            print(f"  · schon ACTIVE: {p['title'][:50]}", flush=True); continue
+        print(f"  ♻️ zurueck: {p['title'][:50]}", flush=True)
+        if DRY:
+            continue
+        gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
+            {"i": {"id": gid, "status": "ACTIVE"}})
+        gql('mutation($id:ID!,$t:[String!]!){tagsRemove(id:$id,tags:$t){userErrors{message}}}',
+            {"id": gid, "t": ["cj-nicht-mehr-verfuegbar"]})
+        st = ((gql('query($id:ID!){product(id:$id){status}}', {"id": gid}).get("data") or {})
+              .get("product") or {}).get("status")
+        if st == "ACTIVE":
+            n_ok += 1
+            v = (p.get("variants") or {}).get("nodes") or [{}]
+            f.write(f"{gid}\tok\t{v[0].get('sku') or ''}\tzurueckgeholt-{tag} (RUECKHOL-Pfad mit Klingen-Tor)\n"); f.flush()
+        else:
+            n_fehl += 1; print(f"  ⚠️ nicht ACTIVE nach Mutation: {gid} status={st}", flush=True)
+    print(f"RUECKHOL FERTIG: {n_ok} zurueck, {n_tor} vom Klingen-Tor gehalten, {n_fehl} unklar", flush=True)
+
+
 def main():
+    if os.environ.get("RUECKHOL"):
+        return rueckholen(os.environ["RUECKHOL"])
     _nur_einmal()                      # zwei Laeufe fuellen sonst dasselbe Ledger doppelt
     # ⚠️ 19.09.2026: DER CURSOR IST ERSATZLOS RAUS — er hat den Waechter blind gemacht.
     #

@@ -334,7 +334,7 @@ while true; do
       echo "$(date -u +%H:%M) optionen_export gestartet/fortgesetzt"
     fi
   fi
-  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form; do
+  for L in preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache liechtenstein_raus produkttexte_du_form verlustbringer; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -377,6 +377,14 @@ while true; do
     # Phrase), Produkte in Tagesscheiben; steht VOR produkttexte_du_form, damit es nach einem Neustart den
     # Text-Lock zuerst bekommt — der Du-Form-Lauf haelt ihn sonst die ganze Stunde.
     if [ "$L" = liechtenstein_raus ]; then EXP="CAP=1500"; fi
+    # verlustbringer (23.09.2026, Gegenpruefung 22.09.): draftet Ware, bei der JEDE Variante auch mit CHF 7
+    # Versanderloes verliert (Kinder-Autositz 14.90/EK 25.07 und Maskenset 16.90/EK 49.32 standen in 6 Kanaelen).
+    # Standard des Skripts ist Trockenlauf — scharf NUR ueber SCHARF=1. Liest /tmp/kost28.jsonl der Kosten-Kette
+    # (weiter unten, taeglich); ohne die Datei gar nicht starten, aelter als 3 Tage meldet das Skript selbst PAUSE.
+    # «heben» (Preis) wird nur gemeldet (Preisschreiber-Absprache offen). Live lesen vor, ruecklesen nach jeder
+    # Mutation; Tags verlust-auto-draft + marge-verlust-draft (letzteren kennen die Rueckholer). Kein FERTIG,
+    # solange «raus» offen ist → die Schleife setzt beim naechsten Tick fort (CAP 300 je Lauf, ~1'315 offen).
+    if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
     # ⚠️ 08.09.2026: Hier stand «ohne /tmp/versand_quelle.jsonl gar nicht erst starten».
     # Diese Datei stellt kein Werkzeug mehr her — der Waechter wurde deshalb bei JEDEM Lauf
     # uebersprungen, im ganzen Container gab es nicht einmal ein Log. Er liest jetzt die
@@ -966,6 +974,44 @@ while true; do
       fi
     fi
   fi
+  # 🔪 KLINGEN-TOR-KANARIENVOGEL (22.09.2026): taeglich rein lesend, ~2 s — faellt er, laeuft das Ping-Pong wieder.
+KLT=/tmp/test_klingen_tor.log
+  if [ -f "$REPO/automation/test_klingen_tor.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KLT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && python3 automation/test_klingen_tor.py --live >> "$KLT" 2>&1 || echo "$(date -u +%F' '%H:%M) KLINGEN-TOR FEHLER (Exit $?)" >> "$KLT" )
+    fi
+    if [ -s "$KLT" ] && tail -n 30 "$KLT" | grep -q "FEHLER\|Ping-Pong laeuft wieder"; then
+      echo "⚠️ KLINGEN-TOR: Kanarienvogel gefallen — tail -30 $KLT"
+    fi
+  fi
+
+  # ⭐ UNECHTE BEWERTUNGEN BEI JUDGE.ME — taeglicher LESE-Waechter (22.09.2026). Anlass: Bewertung
+  # 1335720164 («Test»/«Probelauf», 5★, Shop-Ebene) stand seit 14.09. veroeffentlicht und zaehlte in
+  # der Startseiten-Zahl mit; angelegt von einer fremden Session mit dem OEFFENTLICHEN Token.
+  # Hausregel: NIE Fake-Reviews (UWG). Die Wache schreibt NICHTS — Befund → dropship/JUDGEME-WACHE.md,
+  # Ampel-Zeile «JUDGEME: N verdaechtig …»; ausblenden (PUT curated=spam) entscheidet ein Mensch.
+  # Judge.me-API, nicht Shopify → keine shopify_schranke; Zugang liest das Skript aus /tmp/judgeme.env.
+  # Gemessen: ~108 Seiten je rating, ~2 Min; page klemmt bei 100 → das Skript paginiert je rating.
+  JMW=/tmp/judgeme_fake_wache.log
+  if [ -f "$REPO/automation/judgeme_fake_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$JMW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      touch "$JMW"   # Anspruch VOR dem Start — Tor-Frage ist das Log-Alter, der Lauf schreibt erst nach ~2 Min (Lehre 21.09.)
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_judgeme_wache.lock; flock -n 9 || exit 0; exec >> \"$JMW\" 2>&1; \
+           exec python3 automation/judgeme_fake_wache.py" 9>&- & )
+      # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.). «unklar» MUSS sichtbar werden.
+      if [ -s "$JMW" ] && tail -n 5 "$JMW" | grep -q "Traceback\|JUDGEME: unklar"; then
+        echo "$(date -u +%H:%M) ⚠️ Judge.me-Wache: letzter Lauf unklar ($JMW)"
+      elif [ -s "$JMW" ]; then
+        echo "$(date -u +%H:%M) $(grep '^JUDGEME:' "$JMW" | tail -n 1)"
+      else
+        echo "$(date -u +%H:%M) Judge.me-Wache gestartet (erster Lauf)"
+      fi
+    fi
+  fi
+
   # 🛒 VERKAUFEN WIR AUF UNSEREN MEISTBESUCHTEN SEITEN WARE, DIE NIE ANKOMMT? (18.09.2026)
   # Anlass: Die meistbesuchte SUCHSEITE des ganzen Shops (Rizinusoel-Wickel-Set, 18 Sitzungen
   # in 30 Tagen, 2 Warenkoerbe) stand ACTIVE und kaufbar — tracked:false, inventoryPolicy

@@ -375,6 +375,87 @@ def liechtenstein_gesperrt():
             "automation/liechtenstein_raus.py laeuft taeglich; wer die Phrase schreibt, steht im Journal 22.09.")
 
 
+def klingen_pingpong():
+    """Klingen-Ping-Pong (22.09.): eine Klinge mit Sperr-Tag darf NIE aktiv sein.
+    Misst den Zustand, nicht die Absicht — 0 EXACT ist die einzige gute Antwort."""
+    try:
+        teile = []
+        for t in ("handklinge-kein-ch-versand", "cj-nicht-versendbar-ch"):
+            c = gql('{productsCount(query:"status:active tag:%s"){count precision}}' % t)["data"]["productsCount"]
+            if c["count"]:
+                teile.append(f"{c['count']} aktiv mit {t} ({c['precision']})")
+        if teile:
+            return "KLINGEN: " + ", ".join(teile) + " → python3 automation/test_klingen_tor.py --live; FIX=1 klinge_ch_wache"
+        return None
+    except Exception as e:
+        return f"KLINGEN: unklar ({type(e).__name__})"
+
+
+def verlust_kaufbar():
+    """VERLUST: N kaufbar — Stand des letzten Laufs von automation/verlustbringer.py (dropship/_verlust_stand.json).
+
+    Gegenpruefung 22.09.2026: zwei Verlustartikel (Kinder-Autositz 14.90 bei EK 25.07, Atemschutzmasken 16.90 bei
+    EK 49.32) standen in 6 Kanaelen kaufbar; der Waechter vom 15.09. hatte keinen Starter, kein Log, das Ledger
+    stand still. Diese Zeile liest den STAND (Datei), nicht den Shop — ein alter Stand ist selbst der Befund
+    («Waechter laeuft nicht»). Kein Stand = «unklar», nie «0». Die Zahl ist Export-Stand (/tmp/kost28.jsonl der
+    taeglichen Kosten-Kette), keine Live-Messung; «heben» (416) wartet auf die Preisschreiber-Absprache."""
+    p = os.path.join(REPO, "dropship", "_verlust_stand.json")
+    try:
+        s = json.load(open(p, encoding="utf-8"))
+        tage = (datetime.date.today() - datetime.date.fromisoformat(s["stand"])).days
+    except Exception:
+        return "VERLUST: unklar (kein Stand — automation/verlustbringer.py nie gelaufen?)"
+    if s.get("wartet_auf_export"):
+        return (f"VERLUST: wartet auf Export (juengster {s.get('export')} ist {s.get('export_alter_h')} h alt; "
+                "automation/kosten_export_bauen.py baut /tmp/kost28.jsonl)")
+    n = int(s.get("kaufbar") or 0)
+    if tage >= 3:
+        return f"VERLUST: Stand {tage} T alt ({n} kaufbar am {s['stand']}) — Waechter laeuft nicht"
+    if n == 0:
+        return None
+    return (f"VERLUST: {n} kaufbar ({s.get('rest_raus', 0)} raus-Rest, {s.get('heben', 0)} nur Preis-Meldung, "
+            f"Stand {s['stand']})")
+
+
+def drafts_ohne_quittung():
+    """DRAFT-OHNE-QUITTUNG: Produkte mit Tag `cj-nicht-mehr-verfuegbar`, die in
+    dropship/_cj_verfuegbarkeit.txt KEINE Zeile haben.
+
+    ANLASS 22./23.09.2026 (Auftrag drafts15): 15 Produkte trugen den Tag ohne Ledger-Zeile —
+    der 68er-Rueckholer vom 21.09. waehlte aus dem Ledger und sah sie nie; 9 davon lebten
+    bei CJ (productSku → 200) und standen zwei Tage unnoetig im Entwurf. Ein Tag ohne
+    Quittung ist ein Draft, den kein Rueckholer je prueft. Gemessen: 341 mit Tag, nach der
+    Nachpruefung 0 ohne Zeile (Bericht dropship/DRAFTS-OHNE-QUITTUNG-2026-09-22.md).
+    Frische Drafts (< 15 min) zaehlen nicht: der Waechter schreibt die Zeile erst NACH den
+    zwei Mutationen. Kosten: 2 Seiten a 250 IDs (~500 Punkte) je Lauf. Fehler = still.
+    """
+    pfad = os.path.join(REPO, "dropship", "_cj_verfuegbarkeit.txt")
+    try:
+        quittiert = {l.split("\t")[0] for l in open(pfad, encoding="utf-8")}
+    except OSError:
+        return None
+    grenze = (datetime.datetime.utcnow() - datetime.timedelta(minutes=15)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    ohne, cur = [], None
+    try:
+        while True:
+            d = gql('query($c:String){ products(first:250, after:$c, query:"tag:cj-nicht-mehr-verfuegbar"){ '
+                    'pageInfo{hasNextPage endCursor} nodes{ id updatedAt } } }', {"c": cur})
+            pg = ((d.get("data") or {}).get("products") or {})
+            for n in pg.get("nodes") or []:
+                if n["id"] not in quittiert and (n.get("updatedAt") or "") < grenze:
+                    ohne.append(n["id"].rsplit("/", 1)[-1])
+            if not (pg.get("pageInfo") or {}).get("hasNextPage"):
+                break
+            cur = pg["pageInfo"]["endCursor"]
+    except Exception:
+        return None
+    if not ohne:
+        return None
+    return (f"DRAFT-OHNE-QUITTUNG: {len(ohne)} Produkte tragen cj-nicht-mehr-verfuegbar ohne Ledger-Zeile "
+            f"(z. B. {', '.join(ohne[:3])}) — kein Rueckholer sieht sie; Nachpruefung wie in "
+            "dropship/DRAFTS-OHNE-QUITTUNG-2026-09-22.md (drei CJ-Formen + Klingen-Tor), dann Ledger-Zeile")
+
+
 def server_waechter():
     """Laufen die Waechter schon auf dem Hetzner-Server? Zustand statt Quittung: ein Commit des
     Autors «luxe-waechter», juenger als 2 h, belegt es (der Server-Aufseher committet seine Ledger
@@ -388,6 +469,38 @@ def server_waechter():
         return None                      # Server pusht → Zeile verschwindet von selbst
     return ("🖥️ Waechter laufen nur in Session-Arbeitszeit — Setup auf dem Hetzner-Server "
             "(5 Min, server/luxe-waechter-setup.sh, COWORK Punkt 7)")
+
+
+def judgeme_verdacht():
+    """Unechte Bewertungen bei Judge.me (Hausregel: NIE Fake-Reviews, UWG). Liest den Bericht des
+    taeglichen Lese-Waechters `automation/judgeme_fake_wache.py` (dropship/JUDGEME-WACHE.md — im Repo,
+    ueberlebt /tmp-Wipes), nicht das Log. Meldet: harte Befunde > 0, «unklar»/«unvollstaendig», oder
+    Bericht aelter als 2 Tage. Anlass 22.09.2026: Bewertung 1335720164 («Test»/«Probelauf», 5★,
+    Shop-Ebene) stand 8 Tage veroeffentlicht und zaehlte in der Startseiten-Zahl mit. Die Zahl
+    «Namen unmaskiert» ist nur Bericht, kein Ruf (CJ-Nutzernamen, API kann sie nicht aendern)."""
+    p = os.path.join(REPO, "dropship", "JUDGEME-WACHE.md")
+    try:
+        text = open(p, encoding="utf-8").read()
+    except OSError:
+        return "⭐ Judge.me-Wache hat noch keinen Bericht (automation/judgeme_fake_wache.py nie gelaufen?)"
+    m = re.search(r"\*\*(JUDGEME: [^*\n]+)\*\*", text)
+    stand = re.search(r"^Stand: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC", text, re.M)
+    if not m or not stand:
+        return "⭐ Judge.me-Wache: Bericht ohne Ampel-Zeile (dropship/JUDGEME-WACHE.md)"
+    zeile = m.group(1)
+    try:
+        tage = (datetime.datetime.now(datetime.timezone.utc)
+                - datetime.datetime.strptime(stand.group(1), "%Y-%m-%d %H:%M").replace(tzinfo=datetime.timezone.utc)).days
+    except Exception:
+        tage = 99
+    if tage >= 2:
+        return f"⭐ Judge.me-Wache seit {tage} T ohne Lauf (zuletzt {stand.group(1)}Z) — Aufseher-Block pruefen"
+    if "unklar" in zeile or "unvollstaendig" in zeile:
+        return f"⭐ {zeile} — Judge.me-Zugang (/tmp/judgeme.env) oder API-Deckel pruefen"
+    n = re.match(r"JUDGEME: (\d+) verdaechtig", zeile)
+    if n and int(n.group(1)) > 0:
+        return f"⭐ {zeile} — dropship/JUDGEME-WACHE.md lesen: ausblenden (PUT curated=spam) oder in _judgeme_freigabe.txt freigeben"
+    return None
 
 
 def offene_punkte():
@@ -439,7 +552,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return
