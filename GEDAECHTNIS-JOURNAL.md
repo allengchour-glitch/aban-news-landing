@@ -560,6 +560,13 @@ GETAN: Neunte Schicht in `post_guard.mjs`: `warenFamilie(text)` (12 Gruppen per 
 
 **Lehren:** (1) **Doppelpost ist, was die Betrachterin als gleich sieht** — Sperren nach Datei, Text und Produkt-ID beantworten die falsche Frage, sobald der Katalog Varianten derselben Ware unter verschiedenen Produkten führt. (2) Eine Gruppenregel braucht Kanarienvögel für deutsche Wortteile (Stuhr/Uhr, Ringlicht/Ring). (3) Neue Sperre sofort aus der Plattform-Wahrheit säen, sonst greift sie erst nach dem nächsten Fehler.
 
+**Nachtrag 37 (23.09. 14:15 UTC) — «weiter polish»: zwei Bildklassen gemessen, eine behoben, eine bewusst gelassen.**
+
+(1) **Englischer Lieferanten-Text in Bild-Posts** (Betreiber-Raster: «made from natural stone», «300ml Aroma Diffuser 7 color LED change»). OCR über alle 69 wartenden Bild-Posts: 4 mit ≥4 sicheren Wörtern (Anzuchtbox 26, drei weitere 4), 6 mit 1–3, 59 ohne. `social_queue_saeubern.py` kennt jetzt `bildtext-skip` (≥4 Wörter, nur Bild-Posts, Ergebnis je URL in `dropship/_bildtext_queue.txt`, ohne Tesseract wird still übersprungen — «nicht lesbar» ≠ Text). DRY 4, scharf 4, täglich im Aufseher. Die Hauptbilder im SHOP deckt `hauptbild_ohne_text.py` schon ab (letzter Lauf: 9 ersetzt, 78 sauber).
+(2) **Google «Image too small» (27)**: Hauptbilder sind gross (bis 1920 px); klein sind 83 Nebenbilder in 26 Produkten — Kontaktbogen: fast alles VARIANTEN-Bilder (Hawaiihemd-Muster, Strickpullover-Farben), die beim Auswählen erscheinen. Entfernen würde die Variantenwahl brechen → gelassen; echter Müll nur 4 Winzlinge (40×40, 150×52, zwei schwarze 233×151-Streifen). «Unable to show image» (32) und «Image under review» (18): alle Bilder gross und JPG → Google-Seite, nichts zu tun.
+
+**Lehre:** **Ein Google-Befund nennt das Symptom, nicht das Bild** — «Image too small» traf gesunde Hauptbilder; erst der Kontaktbogen zeigte, dass die kleinen Bilder Variantenbilder sind, deren Entfernen mehr kaputtmacht als die Meldung kostet.
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

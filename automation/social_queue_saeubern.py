@@ -11,6 +11,9 @@ Serpent-Armreif. Geprüft wird je ready-Zeile:
                      Im September ist «Sommer-Liebling» keine Werbung, sondern ein Datum.
   produkt-weg-skip   Das beworbene Produkt ist nicht mehr ACTIVE (oder nicht im Onlineshop) — genau die
                      Falle, wegen der ein Reel einmal gedraftete Klimaanlagen bewarb.
+  bildtext-skip      (23.09.2026, Betreiber-Screenshot IG-Raster: «made from natural stone», «300ml Aroma Diffuser
+                     7 color LED change») Das BILD trägt englischen Lieferanten-Werbetext — Tesseract liest ≥4
+                     sichere Wörter. Nur Bild-Posts; Ergebnis je URL in dropship/_bildtext_queue.txt gemerkt.
 
 ⚠️ 23.09.2026: Dieses Skript hatte seit dem 03.09. KEINEN Starter (kein Log je geschrieben) — gemessen: 3 von 73
 «ready»-Bildposts bewarben gedraftete Ware. Jetzt taeglich im Aufseher (fixer_keepalive.sh, Tagesliste).
@@ -82,6 +85,35 @@ gepostet = set()
 if os.path.exists("dropship/_posted_produkte.txt"):
     gepostet = {l.strip() for l in open("dropship/_posted_produkte.txt", encoding="utf-8") if l.strip()}
 
+# Bildtext (OS-Voraussetzung Tesseract; fehlt sie, wird die Pruefung still uebersprungen — «nicht lesbar» ≠ Text)
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    os.environ.setdefault("OMP_THREAD_LIMIT", "1")
+    from bild_heilversprechen import lies as _lies
+except Exception:
+    _lies = None
+BT_CACHE = "dropship/_bildtext_queue.txt"
+_bt = {}
+if os.path.exists(BT_CACHE):
+    for l in open(BT_CACHE, encoding="utf-8"):
+        u, _, w = l.rstrip("\n").partition("\t")
+        if u: _bt[u] = int(w or 0)
+
+def bildtext_woerter(url):
+    """Anzahl sicher gelesener Wörter im Bild; None = nicht pruefbar."""
+    if not _lies or not re.search(r"\.(jpe?g|png|webp)(\?|$)", url, re.I):
+        return None
+    if url in _bt:
+        return _bt[url]
+    w = _lies(url)
+    if w is None:
+        return None
+    _bt[url] = len(w)
+    if not DRY:
+        with open(BT_CACHE, "a", encoding="utf-8") as f:
+            f.write(f"{url}\t{len(w)}\n")
+    return len(w)
+
 gesamt = Counter()
 for datei in DATEIEN:
     if not os.path.exists(datei): continue
@@ -103,6 +135,7 @@ for datei in DATEIEN:
         elif k and k in gesehen:                          neu = "dup-produkt-skip"
         elif VORBEI.search(cap):                          neu = "saison-skip"
         elif pid and live.get(pid) and live[pid] != "ACTIVE": neu = "produkt-weg-skip"
+        elif r.get("image_url") and (bildtext_woerter(r["image_url"]) or 0) >= 4: neu = "bildtext-skip"
         if neu:
             n[neu] += 1
             if not DRY: r["status"] = neu
