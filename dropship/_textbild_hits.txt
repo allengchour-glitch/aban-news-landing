@@ -15983,3 +15983,6 @@ gid://shopify/Product/15503113912705	101->0	Augenbrauen-Schablonen-Set mit Halte
 gid://shopify/Product/15503147630977	26->0	GPS-Halsband für Haustiere mit Sender
 gid://shopify/Product/15509383709057	14->0	Schneidebrett-Set aus Bambus & PP
 gid://shopify/Product/15510800007553	40->0	Business-Freizeit Rucksack Nylon
+gid://shopify/Product/15517644620161	19->2	Vibrato Net Celebrity Damenuhr-Set
+gid://shopify/Product/15519823135105	24->1	M2 Smartwatch mit Farbdisplay
+gid://shopify/Product/15519836733825	21->1	Hundeleine mit faltbarem Napf – 3er-Set
