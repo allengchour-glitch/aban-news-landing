@@ -17782,3 +17782,13 @@ outdoor-sport-smartwatch-mit-bluetooth-anruffu-839680	2026-09-23	um-ohne-wirkung
 outdoor-sport-smartwatch-mit-bluetooth-telefon-625900	2026-09-23	um-ohne-wirkung
 outdoor-sport-smartwatch-mit-touch-display-251776	2026-09-23	du
 outdoor-sportrucksack-trend-799424	2026-09-23	du
+outdoor-sports-umhangetasche-621300	2026-09-23	um-ohne-wirkung
+outdoor-sporttasche-leicht-wasserdicht-20-35-l-656832	2026-09-23	um-ohne-wirkung
+outdoor-sportuhr-626000	2026-09-23	um-ohne-wirkung
+outdoor-sportuhr-mit-gps-und-bluetooth-telefon-620200	2026-09-23	teilweise
+outdoor-sportuhr-mit-schritt-und-kalorienzahle-602000	2026-09-23	teilweise
+outdoor-stiefel-fur-herren-624700	2026-09-23	nicht-aktiv
+outdoor-stream-tracking-rucksack-mit-ipx7-wass-613400	2026-09-23	du
+outdoor-stream-trekking-schuhe-412736	2026-09-23	du
+outdoor-tactical-bauchtasche-mit-holster-630200	2026-09-23	du
+outdoor-tactics-rucksack-900672	2026-09-23	du
