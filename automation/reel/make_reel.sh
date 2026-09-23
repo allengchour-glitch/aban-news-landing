@@ -58,7 +58,10 @@ if [ -n "${STIMME:-}" ] || [ "${LAUTHEIT_2PASS:-0}" = "1" ]; then
 import sys, json; e = sys.stdin.read(); m = json.loads(e[e.rindex('{'):e.rindex('}') + 1])
 print(f\"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true\")")
   ffmpeg -y -hide_banner -loglevel error -i "$TMP/mix.wav" -af "$LN,aresample=48000" -ar 48000 -ac 2 "$TMP/mixn.wav"
-  ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -i "$SRC" -i "$TMP/mixn.wav" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "$VIDEO_GRAPH" \
+  # START (23.09.2026, Videoschnitt-Workflow, GEMESSEN): der Motor uebergab START=min(2, Dauer/4) seit Wochen, diese Datei
+  # las die Variable nie — jedes Reel begann bei Quellsekunde 0 (Logo-Intro, Standbild-Dia). Jetzt Eingangs-Seek; die
+  # eigentliche Loesung (Hook = staerkste Stelle, nie Sekunde 0) ist automation/reel/schnitt.py.
+  ffmpeg -y -hide_banner -loglevel error -stream_loop 6 -ss "${START:-0}" -i "$SRC" -i "$TMP/mixn.wav" -i "$TMP/static.png" -i "$TMP/hook.png" -t "$DUR" -filter_complex "$VIDEO_GRAPH" \
     -map "[v]" -map 1:a -c:v libx264 -preset medium -crf 24 -pix_fmt yuv420p -c:a aac -b:a 160k -ar 48000 -shortest "$OUT"
   exit 0
 fi
