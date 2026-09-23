@@ -17983,3 +17983,17 @@ gid://shopify/Product/15448588616065	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15448589468033	Farbe	gid://shopify/ProductOptionValue/12022818177409	Gross Weiss	Big White	2026-09-23T20:34Z/reparatur-original:satzbau:adjektiv-vor-nomen
 gid://shopify/Product/15448590254465	Farbe	gid://shopify/ProductOptionValue/12022832365953	Spitze Grau	Lace Gray	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
 gid://shopify/Product/15448590713217	Farbe	gid://shopify/ProductOptionValue/12022838034817	Leder Pink	Leather Pink	2026-09-23T20:34Z/reparatur-original:satzbau:material-vor-farbe
+gid://shopify/Product/15448592417153	Farbe	gid://shopify/ProductOptionValue/12022855238017	Leuchtendrot	Leuchtendes Rot	2026-09-23T20:34Z/reparatur-konsistenz
+gid://shopify/Product/15448592908673	Farbe	gid://shopify/ProductOptionValue/12022858416513	2001 Leuchtendrot	2001 Leuchtendes Rot	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909108609	Leuchtendpurpurrot-XS-Set	Leuchtendes Purpurrot-XS-Set	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909141377	Leuchtendpurpurrot-S-Set	Leuchtendes Purpurrot-S-Set	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909174145	Leuchtendpurpurrot-M-Set	Leuchtendes Purpurrot-M-Set	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909206913	Leuchtendpurpurrot-L-Set	Leuchtendes Purpurrot-L-Set	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448598413697	Ausführung	gid://shopify/ProductOptionValue/12022909239681	Leuchtendpurpurrot-XL-Set	Leuchtendes Purpurrot-XL-Set	2026-09-23T20:34Z/reparatur-korrigiert
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929228161	122930 Farben	122930color	2026-09-23T20:34Z/reparatur-original:122930color
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929260929	122931 Farben	122931color	2026-09-23T20:34Z/reparatur-original:122931color
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929293697	122932 Farben	122932color	2026-09-23T20:34Z/reparatur-original:122932color
+gid://shopify/Product/15448600543617	Farbe	gid://shopify/ProductOptionValue/12022929326465	122933 Farben	122933color	2026-09-23T20:34Z/reparatur-original:122933color
+gid://shopify/Product/15448602411393	Farbe	gid://shopify/ProductOptionValue/12022939943297	Flach Schwarz	Flat Black	2026-09-23T20:35Z/reparatur-original:satzbau:adjektiv-vor-nomen
+gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/12022941319553	Washed Lavendel	Washed Lavender	2026-09-23T20:35Z/reparatur-original:Washed
+gid://shopify/Product/15448602509697	Farbe	gid://shopify/ProductOptionValue/12022941680001	Vintagegrün	Vintage-Grün	2026-09-23T20:35Z/reparatur-konsistenz
