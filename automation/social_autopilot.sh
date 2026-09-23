@@ -27,6 +27,11 @@ BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
 REEL_ABSTAND=${REEL_ABSTAND:-28800}      # 8 h zwischen zwei Reels (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
 KARUSSELL_ABSTAND=${KARUSSELL_ABSTAND:-86400}   # 23.09.: 1 Instagram-Karussell je Tag (Betreiber «insta karusell brauchen»), FB-Album dazu
 TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-43200}   # 12 h zwischen zwei TikTok-Posts (Metricool, eigenes Reel je Post)
+# 23.09.2026 «metricool maximal nutzen»: YouTube Shorts und Pinterest ueber denselben Metricool-Zugang.
+YOUTUBE_ABSTAND=${YOUTUBE_ABSTAND:-43200} # 12 h zwischen zwei YouTube Shorts (eigenes Reel je Post, Bestzeit-Planung)
+PINTEREST_ABSTAND=${PINTEREST_ABSTAND:-21600}  # 6 h zwischen zwei Produkt-Pins (Direktlink aufs Produkt, UTM)
+MARKE_YOUTUBE=/tmp/_autopilot_letztes_youtube
+MARKE_PINTEREST=/tmp/_autopilot_letzter_pin
 LERN_ABSTAND=${LERN_ABSTAND:-21600}       # alle 6 h: Instagram-Zahlen lesen, Gewichte fuer Hooks/Themen schreiben
 NACHSCHUB_ABSTAND=${NACHSCHUB_ABSTAND:-43200}  # alle 12 h: Bild-Queue mit neuen Produkten auffuellen, wenn < 12 ready
 MARKE_LERN=/tmp/_autopilot_letztes_lernen
@@ -129,6 +134,21 @@ while true; do
       touch "$MARKE_TIKTOK"
     else
       echo "$(date -u +%H:%M) TikTok-Post fehlgeschlagen (Marke bleibt alt)"
+    fi
+  fi
+  # YouTube Shorts ueber Metricool (23.09.): gleicher Poster, NETZ=youtube; Nachmessen wie bei TikTok.
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; }; then
+    if faellig /tmp/_autopilot_letztes_youtube_pruefen 7200; then
+      NETZ=youtube PRUEFEN=1 $NODE automation/metricool_tiktok_post.mjs || echo "$(date -u +%H:%M) YouTube-Pruefung: Fehler gemeldet (reels_seed.csv youtube-fehler)"
+      touch /tmp/_autopilot_letztes_youtube_pruefen
+    fi
+    if faellig "$MARKE_YOUTUBE" "$YOUTUBE_ABSTAND"; then
+      echo "$(date -u +%H:%M) YouTube-Short faellig (Metricool)"
+      if NETZ=youtube $NODE automation/metricool_tiktok_post.mjs; then touch "$MARKE_YOUTUBE"; else echo "$(date -u +%H:%M) YouTube-Post fehlgeschlagen (Marke bleibt alt)"; fi
+    fi
+    if faellig "$MARKE_PINTEREST" "$PINTEREST_ABSTAND"; then
+      echo "$(date -u +%H:%M) Pinterest-Pin faellig (Metricool)"
+      if $NODE automation/metricool_pinterest_pin.mjs; then touch "$MARKE_PINTEREST"; else echo "$(date -u +%H:%M) Pin fehlgeschlagen (Marke bleibt alt)"; fi
     fi
   fi
   sleep 900 9>&-

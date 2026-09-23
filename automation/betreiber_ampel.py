@@ -477,6 +477,36 @@ def kategorie_offen():
     return None if (n == 0 and not unbek) else f"KATEGORIE: ~{n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, Ledger heute {ledger_heute}){u}"
 
 
+def metricool_kanaele():
+    """23.09.2026 «metricool maximal nutzen»: je Metricool-Kanal, wie viel in 24 h geplant wurde, und Fehler.
+    Ein Kanal mit 0 in 24 h ist ein Befund (Autopilot: TikTok/YouTube 12 h, Pinterest 6 h)."""
+    try:
+        import csv, datetime as dt
+        grenze = dt.datetime.utcnow() - dt.timedelta(hours=24)
+        def jung(t):
+            try: return dt.datetime.fromisoformat(t.replace("Z", "")[:19]) >= grenze
+            except Exception: return False
+        n = {"tiktok": 0, "youtube": 0}; fehler = []
+        rows = list(csv.DictReader(open(os.path.join(REPO, "automation/reels_seed.csv"), newline="")))
+        for r in rows:
+            st = (r.get("status") or "").strip()
+            for k in n:
+                if st == f"posted-{k}" and jung(r.get("posted_at") or ""): n[k] += 1
+                if st == f"{k}-fehler": fehler.append(k)
+        pins = 0
+        lp = os.path.join(REPO, "dropship/_pinterest_pins.txt")
+        if os.path.exists(lp):
+            pins = sum(1 for z in open(lp) if z.strip() and jung(z.split("\t")[0]))
+        teile = [f"TikTok {n['tiktok']}", f"YouTube {n['youtube']}", f"Pinterest {pins}"]
+        warn = [k for k, v in (("TikTok", n["tiktok"]), ("YouTube", n["youtube"]), ("Pinterest", pins)) if v == 0]
+        txt = "METRICOOL 24 h: " + " · ".join(teile)
+        if fehler: txt += f" · ⚠️ {len(fehler)} Fehler ({', '.join(sorted(set(fehler)))})"
+        if warn: txt += f" · still: {', '.join(warn)}"
+        return txt
+    except Exception as e:
+        return f"METRICOOL: unklar ({type(e).__name__})"
+
+
 def grow_zaehler():
     """GROW (23.09.2026, Betreiber: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»): zaehlt bezahlte,
     nicht erstattete Bestellungen FREMDER Kunden seit dem Start in dropship/_grow_bedingung.txt. Eigenbestellungen des
@@ -630,7 +660,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), grow_zaehler(), metricool_kanaele(), drafts_ohne_quittung(), fortura_zugang(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

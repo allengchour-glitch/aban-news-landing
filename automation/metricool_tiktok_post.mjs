@@ -44,6 +44,35 @@ const BLOG = process.env.METRICOOL_BLOG_ID || '6227837';   // 23.09.: simpleProf
 const TZ = process.env.MC_TZ || 'Europe/Zurich';
 const VORLAUF = parseInt(process.env.VORLAUF_MIN || '10', 10);
 const BASE = 'https://app.metricool.com/api';
+// 23.09.2026 «metricool maximal nutzen»: derselbe Poster bedient jetzt auch YouTube Shorts (NETZ=youtube).
+// Metricool hat sechs Kanaele verbunden (FB, IG, TikTok, Pinterest, YouTube, Threads); YouTube lag brach.
+// Threads bleibt aus (Hausregel 07.07.). Alle Wachen (Lock, Ledger, Produkt aktiv, Adresse) gelten je Netz.
+const NETZ = (process.env.NETZ || 'tiktok').toLowerCase();
+if (!['tiktok', 'youtube'].includes(NETZ)) { console.error(`NETZ=${NETZ} nicht unterstuetzt (tiktok|youtube)`); process.exit(1); }
+const POSTED = `posted-${NETZ}`, FEHLER = `${NETZ}-fehler`;
+// Beste Stunde aus Metricools eigener Auswertung (/v2/scheduler/besttimes/{netz}) statt «jetzt + 10 Min»:
+// innerhalb der naechsten FENSTER_H Stunden die Stunde mit dem hoechsten Wert. Scheitert die Abfrage → jetzt + VORLAUF.
+const FENSTER_H = parseInt(process.env.FENSTER_H || '6', 10);
+async function besteZeit() {
+  const jetzt = Date.now() + VORLAUF * 60000;
+  try {
+    const tag = d => d.toISOString().slice(0, 19);
+    const r = await fetch(`${BASE}/v2/scheduler/besttimes/${NETZ}?userId=${USER}&blogId=${BLOG}&start=${tag(new Date(Date.now() - 28 * 86400000))}&end=${tag(new Date())}&timezone=${encodeURIComponent(TZ)}`, { headers: { 'X-Mc-Auth': TOKEN } });
+    const j = await r.json();
+    const wert = {};   // "wochentag-stunde" → Wert (Metricool: dayOfWeek 1=Mo … 7=So)
+    for (const d of j.data || []) for (const h of d.bestTimesByHour || []) wert[`${d.dayOfWeek}-${h.hourOfDay}`] = h.value;
+    let best = null;
+    for (let k = 0; k <= FENSTER_H; k++) {
+      const t = new Date(jetzt + k * 3600000);
+      const f = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: TZ, weekday: 'short', hour: '2-digit', hour12: false }).formatToParts(t).map(p => [p.type, p.value]));
+      const wd = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7 }[f.weekday], hh = parseInt(f.hour, 10) % 24;
+      const v = wert[`${wd}-${hh}`] ?? -1;
+      if (!best || v > best.v) best = { t: k === 0 ? t : new Date(Math.floor(t.getTime() / 3600000) * 3600000 + 5 * 60000), v, wd, hh };
+    }
+    if (best && best.v > 0) { console.log(`   Bestzeit ${NETZ}: Tag ${best.wd} ${best.hh}:05 (Wert ${best.v}, Fenster ${FENSTER_H} h)`); return best.t < new Date(jetzt) ? new Date(jetzt) : best.t; }
+  } catch (e) { console.log('   Bestzeit nicht lesbar → sofort:', String(e.message || e).slice(0, 80)); }
+  return new Date(jetzt);
+}
 if (!TOKEN && !DRY) { console.log('Kein METRICOOL_USER_TOKEN (Env oder /tmp/metricool.env) → No-op.'); process.exit(0); }
 
 function parseCsv(text) {
@@ -72,8 +101,8 @@ const get = (r, k) => (r[idx[k]] || '').trim();
 // Zeilen, die aelter als 2 h geplant und noch nicht veroeffentlicht sind, werden als «offen» gemeldet.
 if (process.env.PRUEFEN === '1') {
   if (!TOKEN) { console.log('PRUEFEN: kein Token → No-op.'); process.exit(0); }
-  const offen = rows.slice(1).filter(r => get(r, 'status') === 'posted-tiktok' && /^metricool:\d+$/.test(get(r, 'post_url')));
-  if (!offen.length) { console.log('PRUEFEN: keine ungeprueften TikTok-Posts.'); process.exit(0); }
+  const offen = rows.slice(1).filter(r => get(r, 'status') === POSTED && /^metricool:\d+$/.test(get(r, 'post_url')));
+  if (!offen.length) { console.log(`PRUEFEN: keine ungeprueften ${NETZ}-Posts.`); process.exit(0); }
   const tag = d => d.toISOString().slice(0, 10);
   const von = new Date(Date.now() - 4 * 86400000), bis = new Date(Date.now() + 2 * 86400000);
   const r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}&start=${tag(von)}T00:00:00&end=${tag(bis)}T23:59:59&timezone=${encodeURIComponent(TZ)}`, { headers: { 'X-Mc-Auth': TOKEN } });
@@ -86,10 +115,10 @@ if (process.env.PRUEFEN === '1') {
     const mid = get(row, 'post_url').split(':')[1];
     const p = byId.get(mid);
     if (!p) { console.log(`   ${get(row, 'id')}: Metricool-Post ${mid} nicht im Planer-Fenster → offen`); wartet++; continue; }
-    const prov = (p.providers || []).find(x => x.network === 'tiktok') || {};
+    const prov = (p.providers || []).find(x => x.network === NETZ) || {};
     const st = String(prov.status || p.status || '').toUpperCase();
-    if (st === 'PUBLISHED' && prov.publicUrl) { row[idx.post_url] = `metricool:${mid} tiktok:${prov.publicUrl}`; ok++; console.log(`   ✅ ${get(row, 'id')} veroeffentlicht: ${prov.publicUrl}`); }
-    else if (/ERROR|FAIL|REJECT|CANCEL/.test(st)) { row[idx.status] = 'tiktok-fehler'; row[idx.post_url] = `metricool-fehler:${mid} ${st} ${String(prov.detailedStatus || prov.error || '').slice(0, 120)}`; fehler++; console.log(`   ⚠️ ${get(row, 'id')} FEHLER: ${st} ${prov.detailedStatus || ''}`); }
+    if (st === 'PUBLISHED' && prov.publicUrl) { row[idx.post_url] = `metricool:${mid} ${NETZ}:${prov.publicUrl}`; ok++; console.log(`   ✅ ${get(row, 'id')} veroeffentlicht: ${prov.publicUrl}`); }
+    else if (/ERROR|FAIL|REJECT|CANCEL/.test(st)) { row[idx.status] = FEHLER; row[idx.post_url] = `metricool-fehler:${mid} ${st} ${String(prov.detailedStatus || prov.error || '').slice(0, 120)}`; fehler++; console.log(`   ⚠️ ${get(row, 'id')} FEHLER: ${st} ${prov.detailedStatus || ''}`); }
     else { const alter = (Date.now() - Date.parse(get(row, 'posted_at') || 0)) / 3600000; wartet++; console.log(`   ${get(row, 'id')}: ${st || 'ohne Status'} (${alter.toFixed(1)} h seit Planung)${alter > 2 ? ' ⚠️ ueberfaellig' : ''}`); }
   }
   if (ok || fehler) writeLedger();
@@ -140,11 +169,15 @@ if (!pa.ok) {
 const id = get(cand, 'id'), url = get(cand, 'video_url'), caption = get(cand, 'caption'), tags = get(cand, 'hashtags');
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 8).join(' ')}`.slice(0, 2100);
 // Veroeffentlichungszeit in TZ, Format YYYY-MM-DDTHH:mm:ss
-const wann = new Date(Date.now() + VORLAUF * 60000);
+const wann = await besteZeit();
 const teile = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: TZ, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(wann).filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
 const dateTime = `${teile.year}-${teile.month}-${teile.day}T${teile.hour === '24' ? '00' : teile.hour}:${teile.minute}:${teile.second}`;
-console.log(`TikTok via Metricool: ${id}\n  Produkt: ${pa.grund}\n  Video: ${url.slice(0, 90)}\n  Zeit: ${dateTime} ${TZ}\n  Text: ${text.slice(0, 100)}…`);
-if (DRY) { console.log('[DRY] wuerde jetzt normalisieren + auf TikTok planen.'); process.exit(0); }
+console.log(`${NETZ} via Metricool: ${id}\n  Produkt: ${pa.grund}\n  Video: ${url.slice(0, 90)}\n  Zeit: ${dateTime} ${TZ}\n  Text: ${text.slice(0, 100)}…`);
+// YouTube-Titel: der Produktname aus «…» der Caption, sonst die erste Zeile; max. 100 Zeichen inkl. #Shorts.
+const ytTitel = (() => { const m = /«([^»]{4,})»/.exec(caption); const t = (m ? m[1] : caption.split('\n').find(z => z.trim().length > 8) || caption).replace(/[👀✨🔥]/gu, '').trim(); return (t.slice(0, 88) + ' #Shorts').trim(); })();
+const ytTags = (tags || '').split(/[,\s]+/).filter(Boolean).map(t => t.replace(/^#/, '')).slice(0, 12);
+if (NETZ === 'youtube') console.log(`  YouTube-Titel: ${ytTitel}`);
+if (DRY) { console.log(`[DRY] wuerde jetzt normalisieren + auf ${NETZ} planen.`); process.exit(0); }
 
 const release = postLock(20);
 cand[idx.status] = 'posting'; cand[idx.posted_at] = new Date().toISOString(); writeLedger();   // Claim VOR dem Post
@@ -154,16 +187,20 @@ try {
   if (!n.ok) throw new Error(`normalize ${n.status}: ${nt.slice(0, 200)}`);
   let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data === 'string' ? j.data : '') || (typeof j === 'string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g, ''); }
   if (!norm) throw new Error('normalize: keine URL in der Antwort: ' + nt.slice(0, 120));
-  const body = { publicationDate: { dateTime, timezone: TZ }, text, providers: [{ network: 'tiktok' }], media: [norm],
-                 autoPublish: true, draft: false, shortener: false, tiktokData: { autoPublish: true } };
+  const body = { publicationDate: { dateTime, timezone: TZ }, text, providers: [{ network: NETZ }], media: [norm],
+                 autoPublish: true, draft: false, shortener: false };
+  // TikTok verlangt die Kennzeichnung von Werbung fuer die eigene Marke (Content-Disclosure «Your brand»).
+  if (NETZ === 'tiktok') body.tiktokData = { autoPublish: true, commercialContentOwnBrand: true, commercialContentThirdParty: false };
+  if (NETZ === 'youtube') body.youtubeData = { title: ytTitel, type: 'short', privacy: 'public', category: 'HOWTO_STYLE',
+                                               madeForKids: false, notifySubscribers: true, isAiGeneratedContent: false, tags: ytTags };
   const r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}`, { method: 'POST',
     headers: { 'X-Mc-Auth': TOKEN, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const rt = await r.text();
   if (!r.ok) throw new Error(`schedule ${r.status}: ${rt.slice(0, 300)}`);
   let pid = ''; try { const j = JSON.parse(rt); pid = String(j.data?.id || j.id || ''); } catch {}
   postMark(url);                                                   // Ledger SOFORT (plattformuebergreifend)
-  cand[idx.status] = 'posted-tiktok'; cand[idx.posted_at] = new Date().toISOString(); cand[idx.post_url] = pid ? `metricool:${pid}` : 'metricool'; writeLedger();
-  console.log(`✅ auf TikTok geplant (${dateTime} ${TZ}), Metricool-Post ${pid || '?'} · Ledger aktualisiert → ${id} posted-tiktok`);
+  cand[idx.status] = POSTED; cand[idx.posted_at] = new Date().toISOString(); cand[idx.post_url] = pid ? `metricool:${pid}` : 'metricool'; writeLedger();
+  console.log(`✅ auf ${NETZ} geplant (${dateTime} ${TZ}), Metricool-Post ${pid || '?'} · Ledger aktualisiert → ${id} ${POSTED}`);
 } catch (e) {
   cand[idx.status] = 'ready'; cand[idx.posted_at] = ''; writeLedger();   // Claim zurueck: nichts ist raus
   console.error('✗ Metricool-Post fehlgeschlagen:', String(e.message || e));
