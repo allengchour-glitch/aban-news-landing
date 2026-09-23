@@ -1,0 +1,328 @@
+gid://shopify/Product/15412918190465	Farbe	gid://shopify/ProductOptionValue/11803786019201	Polka Dot	Gepunktet	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436627329	Silver-1 Birthstone	Silber-1 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436660097	Silver-2 Birthstone	Silber-2 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436692865	Silver-3 Birthstone	Silber-3 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436725633	Silver-4 Birthstone	Silber-4 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436758401	Silver-5 Birthstone	Silber-5 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436791169	Silver-6 Birthstone	Silber-6 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436823937	Gold-1 Birthstone	Gold-1 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436856705	Gold-2 Birthstone	Gold-2 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436889473	Gold-3 Birthstone	Gold-3 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436922241	Gold-4 Birthstone	Gold-4 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436955009	Gold-5 Birthstone	Gold-5 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849436987777	Gold-6 Birthstone	Gold-6 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849437020545	Rose Gold-1 Birthstone	Roségold-1 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849437053313	Rose Gold-2 Birthstone	Roségold-2 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849437086081	Rose Gold-3 Birthstone	Roségold-3 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849437118849	Rose Gold-4 Birthstone	Roségold-4 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849437151617	Rose Gold-5 Birthstone	Roségold-5 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15421167108481	Farbe	gid://shopify/ProductOptionValue/11849437184385	Rose Gold-6 Birthstone	Roségold-6 Geburtsstein	2026-09-23T17:45Z
+gid://shopify/Product/15412945355137	Farbe	gid://shopify/ProductOptionValue/11804061335937	Black Rose Gold	Schwarz-Roségold	2026-09-23T17:45Z
+gid://shopify/Product/15412945355137	Farbe	gid://shopify/ProductOptionValue/11804061434241	Brown Rose Gold	Braun-Roségold	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452062593	Brown-Arch Shape Stamp 2PCS	Braun-Stempel Bogenform · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452095361	Brown-Curved Shape Stamp 2CPS	Braun-Stempel geschwungen · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452128129	Brown-Straight Shape Stamp 2PCS	Braun-Stempel gerade · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452160897	Grey-Arch Shape Stamp 2PCS	Grau-Stempel Bogenform · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452193665	Grey-Curved Shape Stamp 2PCS	Grau-Stempel geschwungen · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452226433	Grey-Straight Shape Stamp 2PCS	Grau-Stempel gerade · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452259201	Light brown-Arch Shape Stamp 2PCS	Hellbraun-Stempel Bogenform · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452291969	Light brown-Curved Shape Stamp 2PCS	Hellbraun-Stempel geschwungen · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452324737	Light brown-Straight Shape Stamp2PCS	Hellbraun-Stempel gerade · 2 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452357505	Brown-Arch Shape Stamp 3PCS	Braun-Stempel Bogenform · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452390273	Grey-Arch Shape Stamp 3PCS	Grau-Stempel Bogenform · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452423041	Light brown-Arch Shape Stamp 3PCS	Hellbraun-Stempel Bogenform · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452455809	Brown-Curved Shape Stamp 3PCS	Braun-Stempel geschwungen · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452488577	Grey-Curved Shape Stamp 3PCS	Grau-Stempel geschwungen · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452521345	Light brown-Curved Shape Stamp 3PCS	Hellbraun-Stempel geschwungen · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452554113	Brown-Straight Shape Stamp 3PCS	Braun-Stempel gerade · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452586881	Grey-Straight Shape Stamp 3PCS	Grau-Stempel gerade · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452619649	Light brown-Straight Shape Stamp3PCS	Hellbraun-Stempel gerade · 3 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452652417	Grey-Curved Shape Stamp 4PCS	Grau-Stempel geschwungen · 4 Stück	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452685185	Brown-3style Set	Braun-Set mit 3 Varianten	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452717953	Grey-3style Set	Grau-Set mit 3 Varianten	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452750721	Light brown-3style Set	Hellbraun-Set mit 3 Varianten	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452783489	Light brown-Curved Shape Stamp	Hellbraun-Stempel geschwungen	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452816257	Light brown-Arch Shape Stamp	Hellbraun-Stempel Bogenform	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452849025	Brown-Straight Shape Stamp	Braun-Stempel gerade	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452881793	Grey-Straight Shape Stamp	Grau-Stempel gerade	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452914561	Light brown-Straight Shape Stamp	Hellbraun-Stempel gerade	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452947329	Brown-Arch Shape Stamp	Braun-Stempel Bogenform	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034452980097	Grey-Arch Shape Stamp	Grau-Stempel Bogenform	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034453012865	Grey-Curved Shape Stamp	Grau-Stempel geschwungen	2026-09-23T17:45Z
+gid://shopify/Product/15449433145729	Farbe	gid://shopify/ProductOptionValue/12034453045633	Brown-Curved Shape Stamp	Braun-Stempel geschwungen	2026-09-23T17:45Z
+gid://shopify/Product/15414147383681	Grösse	gid://shopify/ProductOptionValue/11813337694593	Medium	Mittel	2026-09-23T17:45Z
+gid://shopify/Product/15414147383681	Grösse	gid://shopify/ProductOptionValue/11813337727361	Large	Gross	2026-09-23T17:45Z
+gid://shopify/Product/15446275588481	Farbe	gid://shopify/ProductOptionValue/12309772468609	Type A Bronze	Typ A Bronze	2026-09-23T17:45Z
+gid://shopify/Product/15446275588481	Farbe	gid://shopify/ProductOptionValue/12309772599681	Style A Elegant Black	Muster A Elegantes Schwarz	2026-09-23T17:45Z
+gid://shopify/Product/15446275588481	Farbe	gid://shopify/ProductOptionValue/12309772665217	Style B Elegant Black	Muster B Elegantes Schwarz	2026-09-23T17:45Z
+gid://shopify/Product/15446275588481	Farbe	gid://shopify/ProductOptionValue/12309772894593	Pure Black C	Komplett Schwarz C	2026-09-23T17:45Z
+gid://shopify/Product/15416343986561	Farbe	gid://shopify/ProductOptionValue/11825248895361	Floral	Geblümt	2026-09-23T17:45Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394456449	1color	1 Farbe	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394489217	2Color	2 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394521985	3Color	3 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394554753	4Color	4 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394587521	5Color	5 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394653057	1color3pcs	1 Farbe · 3 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394685825	1color5pcs	1 Farbe · 5 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394718593	2Color3pcs	2 Farben · 3 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394751361	2Color5pcs	2 Farben · 5 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394784129	4Color3pcs	4 Farben · 3 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394816897	4Color5pcs	4 Farben · 5 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394849665	5Color3pcs	5 Farben · 3 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394882433	5Color5pcs	5 Farben · 5 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394915201	6Colors3pcs	6 Farben · 3 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034394947969	6Colors5pcs	6 Farben · 5 Stück	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395013505	Set1	Set 1	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395046273	Set2	Set 2	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395079041	Set3	Set 3	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395111809	Set4	Set 4	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395144577	Set5	Set 5	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395177345	Set6	Set 6	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395210113	Set7	Set 7	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395242881	Set8	Set 8	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395275649	Set9	Set 9	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395308417	1 3 6color	1 3 6 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395341185	1 4 5color	1 4 5 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395373953	1 4 6color	1 4 6 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395406721	1 5 6color	1 5 6 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395439489	1 3 5color	1 3 5 Farben	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395472257	Set10	Set 10	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395505025	Set11	Set 11	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395537793	Set12	Set 12	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395570561	Set13	Set 13	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395603329	Set15	Set 15	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395636097	Set14	Set 14	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395668865	Set16	Set 16	2026-09-23T17:46Z
+gid://shopify/Product/15449428033921	Farbe	gid://shopify/ProductOptionValue/12034395701633	Set17	Set 17	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448228737	2pcs Black-USB	2 Stück Schwarz-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448261505	2pcs Blue-USB	2 Stück Blau-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448294273	2pcs Green-USB	2 Stück Grün-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448327041	2pcs Silver-USB	2 Stück Silber-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448359809	3pcs Black-USB	3 Stück Schwarz-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448392577	3pcs Blue-USB	3 Stück Blau-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448425345	3pcs Green-USB	3 Stück Grün-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448458113	3pcs Silver-USB	3 Stück Silber-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448556417	5pcs Black-USB	5 Stück Schwarz-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448589185	10pcs Black-USB	10 Stück Schwarz-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449432588673	Farbe	gid://shopify/ProductOptionValue/12034448621953	20pcs Black-USB	20 Stück Schwarz-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449582174593	Farbe	gid://shopify/ProductOptionValue/12036530143617	926 Black	926 Schwarz	2026-09-23T17:46Z
+gid://shopify/Product/15449582174593	Farbe	gid://shopify/ProductOptionValue/12036530176385	926 Haze Blue	926 Dunstblau	2026-09-23T17:46Z
+gid://shopify/Product/15449841009025	Farbe	gid://shopify/ProductOptionValue/12039232815489	Deep Rose	Dunkelrosé	2026-09-23T17:46Z
+gid://shopify/Product/15450857931137	Farbe	gid://shopify/ProductOptionValue/12046784430465	White-USB-Box	Weiss-USB-Box	2026-09-23T17:46Z
+gid://shopify/Product/15450857931137	Farbe	gid://shopify/ProductOptionValue/12046784463233	Pink set1-USB-Box	Pink Set 1-USB-Box	2026-09-23T17:46Z
+gid://shopify/Product/15450857931137	Farbe	gid://shopify/ProductOptionValue/12046784496001	White set1-USB-Box	Weiss Set 1-USB-Box	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12450886254977	Amber	Bernstein	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12450886680961	Orange yellow	Orange-Gelb	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309874901377	Purple-30X50cm	Lila-30x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309874934145	Purple-45X45cm	Lila-45x45 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309874966913	Purple-50X50cm	Lila-50x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309874999681	Purple-60X60cm	Lila-60x60 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875163521	Rose Red-30X50cm	Rosarot-30x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875196289	Rose Red-45X45cm	Rosarot-45x45 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875229057	Rose Red-50X50cm	Rosarot-50x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875261825	Rose Red-60X60cm	Rosarot-60x60 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875294593	Taro purple-30X50cm	Taro-Violett-30x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875327361	Taro purple-45X45cm	Taro-Violett-45x45 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875360129	Taro purple-50X50cm	Taro-Violett-50x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875392897	Taro purple-60X60cm	Taro-Violett-60x60 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875425665	White-30X50cm	Weiss-30x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875458433	White-45X45cm	Weiss-45x45 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875491201	White-50X50cm	Weiss-50x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875523969	White-60X60cm	Weiss-60x60 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875556737	Wine Red-30X50cm	Weinrot-30x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875589505	Wine Red-45X45cm	Weinrot-45x45 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875622273	Wine Red-50X50cm	Weinrot-50x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875655041	Wine Red-60X60cm	Weinrot-60x60 cm	2026-09-23T17:46Z
+gid://shopify/Product/15447625007489	Farbe	gid://shopify/ProductOptionValue/12309875687809	Champagne pink-50X50cm	Champagner-Pink-50x50 cm	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418427777	921 Sand Color · Gr. 36	921 Sandfarben · Gr. 36	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418460545	921 Sand Color · Gr. 37	921 Sandfarben · Gr. 37	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418493313	921 Sand Color · Gr. 38	921 Sandfarben · Gr. 38	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418526081	921 Sand Color · Gr. 39	921 Sandfarben · Gr. 39	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418558849	921 Sand Color · Gr. 40	921 Sandfarben · Gr. 40	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418591617	921 Sand Color · Gr. 41	921 Sandfarben · Gr. 41	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418624385	921 Sand Color · Gr. 42	921 Sandfarben · Gr. 42	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418657153	921 Sand Color · Gr. 43	921 Sandfarben · Gr. 43	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418689921	921 Sand Color · Gr. 44	921 Sandfarben · Gr. 44	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418722689	921 Sand Color · Gr. 45	921 Sandfarben · Gr. 45	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059418755457	921 Sand Color · Gr. 46	921 Sandfarben · Gr. 46	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419148673	918 gray · Gr. 36	918 Grau · Gr. 36	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419181441	918 gray · Gr. 37	918 Grau · Gr. 37	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419214209	918 gray · Gr. 38	918 Grau · Gr. 38	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419246977	918 gray · Gr. 39	918 Grau · Gr. 39	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419279745	918 gray · Gr. 40	918 Grau · Gr. 40	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419312513	918 gray · Gr. 41	918 Grau · Gr. 41	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419345281	918 gray · Gr. 42	918 Grau · Gr. 42	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419378049	918 gray · Gr. 43	918 Grau · Gr. 43	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419410817	918 gray · Gr. 44	918 Grau · Gr. 44	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419443585	918 gray · Gr. 45	918 Grau · Gr. 45	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419476353	918 gray · Gr. 46	918 Grau · Gr. 46	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419509121	918 Sand Color · Gr. 36	918 Sandfarben · Gr. 36	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419541889	918 Sand Color · Gr. 37	918 Sandfarben · Gr. 37	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419574657	918 Sand Color · Gr. 38	918 Sandfarben · Gr. 38	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419607425	918 Sand Color · Gr. 39	918 Sandfarben · Gr. 39	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419640193	918 Sand Color · Gr. 40	918 Sandfarben · Gr. 40	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419672961	918 Sand Color · Gr. 41	918 Sandfarben · Gr. 41	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419705729	918 Sand Color · Gr. 42	918 Sandfarben · Gr. 42	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419738497	918 Sand Color · Gr. 43	918 Sandfarben · Gr. 43	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419771265	918 Sand Color · Gr. 44	918 Sandfarben · Gr. 44	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419804033	918 Sand Color · Gr. 45	918 Sandfarben · Gr. 45	2026-09-23T17:46Z
+gid://shopify/Product/15452709749121	Farbe	gid://shopify/ProductOptionValue/12059419836801	918 Sand Color · Gr. 46	918 Sandfarben · Gr. 46	2026-09-23T17:46Z
+gid://shopify/Product/15520382058881	Farbe	gid://shopify/ProductOptionValue/12498378621313	White increase 6cm	Weiss erhöht 6 cm	2026-09-23T17:46Z
+gid://shopify/Product/15520382058881	Farbe	gid://shopify/ProductOptionValue/12498378654081	White increase 8cm	Weiss erhöht 8 cm	2026-09-23T17:46Z
+gid://shopify/Product/15520382058881	Farbe	gid://shopify/ProductOptionValue/12498378686849	Black increase 6cm	Schwarz erhöht 6 cm	2026-09-23T17:46Z
+gid://shopify/Product/15520382058881	Farbe	gid://shopify/ProductOptionValue/12498378719617	Black increase 8cm	Schwarz erhöht 8 cm	2026-09-23T17:46Z
+gid://shopify/Product/15524878287233	Farbe	gid://shopify/ProductOptionValue/12539828896129	White Increased By 8CM	Weiss erhöht 8 cm	2026-09-23T17:46Z
+gid://shopify/Product/15450740621697	Farbe	gid://shopify/ProductOptionValue/12045538394497	2513 Black	2513 Schwarz	2026-09-23T17:46Z
+gid://shopify/Product/15450740621697	Farbe	gid://shopify/ProductOptionValue/12045538460033	2513 Brown	2513 Braun	2026-09-23T17:46Z
+gid://shopify/Product/15452709552513	Farbe	gid://shopify/ProductOptionValue/12059415216513	2507 Black	2507 Schwarz	2026-09-23T17:46Z
+gid://shopify/Product/15452709552513	Farbe	gid://shopify/ProductOptionValue/12059415249281	2507 Blue	2507 Blau	2026-09-23T17:46Z
+gid://shopify/Product/15452709552513	Farbe	gid://shopify/ProductOptionValue/12059415314817	2507 Gray	2507 Grau	2026-09-23T17:46Z
+gid://shopify/Product/15470380417409	Farbe	gid://shopify/ProductOptionValue/12182695608705	Black Dark Green	Schwarz-Dunkelgrün	2026-09-23T17:46Z
+gid://shopify/Product/15500960301441	Farbe	gid://shopify/ProductOptionValue/12389950783873	Chestnut Brown	Kastanienbraun	2026-09-23T17:46Z
+gid://shopify/Product/15448076976513	Farbe	gid://shopify/ProductOptionValue/12019401818497	Chestnut	Kastanienbraun	2026-09-23T17:46Z
+gid://shopify/Product/15448880939393	Farbe	gid://shopify/ProductOptionValue/12310072033665	Enhanced Version	Upgrade-Version	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034133524865	Green-2XS	Grün-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034133590401	Light Green-2XS	Hellgrün-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034133655937	Dark Gray-2XS	Dunkelgrau-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034133787009	Light Gray-2XS	Hellgrau-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034133852545	Blue-2XS	Blau-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034133918081	Red-2XS	Rot-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034133983617	White-2XS	Weiss-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034134049153	Yellow-2XS	Gelb-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449399034241	Farbe	gid://shopify/ProductOptionValue/12034134114689	Dark Green-2XS	Dunkelgrün-2XS	2026-09-23T17:46Z
+gid://shopify/Product/15449427444097	Farbe	gid://shopify/ProductOptionValue/12450908242305	White-USB	Weiss-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449427444097	Farbe	gid://shopify/ProductOptionValue/12450908275073	Rechargeable-USB	Wiederaufladbar-USB	2026-09-23T17:46Z
+gid://shopify/Product/15449428164993	Farbe	gid://shopify/ProductOptionValue/12034396160385	Set1	Set 1	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691238273	Pink set1-USB	Pink Set 1-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691271041	Pink set2-USB	Pink Set 2-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691369345	Blue set1-USB	Blau Set 1-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691402113	Purple set1-USB	Lila Set 1-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691434881	Pink Set3-USB	Pink Set 3-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691467649	Purple Set3-USB	Lila Set 3-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691500417	Pink Set4-USB	Pink Set 4-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691533185	Shaver Head 1-No plug	Scherkopf 1-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691565953	Shaver Head 2-No plug	Scherkopf 2-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691598721	Set1-No plug	Set 1-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691697025	Pink Set5-USB	Pink Set 5-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691729793	Set2-USB	Set 2-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691795329	Pink 2pcs-USB	Pink · 2 Stück-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691828097	Purple Shaver Head 1-No plug	Lila Scherkopf 1-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691860865	Purple Shaver Head 2-No plug	Lila Scherkopf 2-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691893633	Blue Shaver Head 1-No plug	Blau Scherkopf 1-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691926401	Blue Shaver Head 2-No plug	Blau Scherkopf 2-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691959169	Set3-No plug	Set 3-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046691991937	Set4-No plug	Set 4-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046692024705	Set5-USB	Set 5-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046692057473	Pink Set6-USB	Pink Set 6-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046692090241	Black 2PC-USB	Schwarz · 2 Stück-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046692123009	Black 3PC-USB	Schwarz · 3 Stück-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046692155777	Pink 3pcs-USB	Pink · 3 Stück-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046692188545	Pink blade-No plug	Pink Klinge-Ohne Stecker	2026-09-23T17:46Z
+gid://shopify/Product/15450848657793	Farbe	gid://shopify/ProductOptionValue/12046692221313	Brush And Guard Comb-USB	Bürste und Aufsteckkamm-USB	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791475585	Black-Size35	Schwarz-Gr. 35	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791508353	Grey-Size35	Grau-Gr. 35	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791541121	Brown-Size35	Braun-Gr. 35	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791573889	Black-Size36	Schwarz-Gr. 36	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791606657	Grey-Size36	Grau-Gr. 36	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791639425	Brown-Size36	Braun-Gr. 36	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791672193	Black-Size37	Schwarz-Gr. 37	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791704961	Grey-Size37	Grau-Gr. 37	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791737729	Brown-Size37	Braun-Gr. 37	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791770497	Black-Size38	Schwarz-Gr. 38	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791803265	Grey-Size38	Grau-Gr. 38	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791836033	Brown-Size38	Braun-Gr. 38	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791868801	Black-Size39	Schwarz-Gr. 39	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791901569	Grey-Size39	Grau-Gr. 39	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791934337	Brown-Size39	Braun-Gr. 39	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791967105	Black-Size40	Schwarz-Gr. 40	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046791999873	Grey-Size40	Grau-Gr. 40	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792032641	Brown-Size40	Braun-Gr. 40	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792065409	Black-Size41	Schwarz-Gr. 41	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792098177	Grey-Size41	Grau-Gr. 41	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792130945	Brown-Size41	Braun-Gr. 41	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792163713	Black-Size42	Schwarz-Gr. 42	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792196481	Grey-Size42	Grau-Gr. 42	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792229249	Brown-Size42	Braun-Gr. 42	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792262017	Black-Size43	Schwarz-Gr. 43	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792294785	Grey-Size43	Grau-Gr. 43	2026-09-23T17:46Z
+gid://shopify/Product/15450858815873	Farbe	gid://shopify/ProductOptionValue/12046792327553	Brown-Size43	Braun-Gr. 43	2026-09-23T17:46Z
+gid://shopify/Product/15412960592257	Farbe & Grösse	gid://shopify/ProductOptionValue/11804331901313	Gray-S 51x66cm	Grau-S 51x66 cm	2026-09-23T17:47Z
+gid://shopify/Product/15412960592257	Farbe & Grösse	gid://shopify/ProductOptionValue/11804331966849	White-S 51x66cm	Weiss-S 51x66 cm	2026-09-23T17:47Z
+gid://shopify/Product/15412960592257	Farbe & Grösse	gid://shopify/ProductOptionValue/11804332032385	Navy Blue-S 51x66cm	Marineblau-S 51x66 cm	2026-09-23T17:47Z
+gid://shopify/Product/15412960592257	Farbe & Grösse	gid://shopify/ProductOptionValue/11804332065153	Navy Blue-Q 51x76cm	Marineblau-Q 51x76 cm	2026-09-23T17:47Z
+gid://shopify/Product/15412960592257	Farbe & Grösse	gid://shopify/ProductOptionValue/11804332196225	Green-Q 51x76cm	Grün-Q 51x76 cm	2026-09-23T17:47Z
+gid://shopify/Product/15412960592257	Farbe & Grösse	gid://shopify/ProductOptionValue/11804332261761	Black-Q 51x76cm	Schwarz-Q 51x76 cm	2026-09-23T17:47Z
+gid://shopify/Product/15412960592257	Farbe & Grösse	gid://shopify/ProductOptionValue/11804332294529	Wine Red-S 51x66cm	Weinrot-S 51x66 cm	2026-09-23T17:47Z
+gid://shopify/Product/15447913890177	Farbe	gid://shopify/ProductOptionValue/12309958885761	Gradient Orange	Farbverlauf Orange	2026-09-23T17:47Z
+gid://shopify/Product/15447913890177	Farbe	gid://shopify/ProductOptionValue/12309958918529	Gradient Blue	Farbverlauf Blau	2026-09-23T17:47Z
+gid://shopify/Product/15447913890177	Farbe	gid://shopify/ProductOptionValue/12309958951297	Gradient Silver	Farbverlauf Silber	2026-09-23T17:47Z
+gid://shopify/Product/15447913890177	Farbe	gid://shopify/ProductOptionValue/12309958984065	Gradient Purple Color	Farbverlauf Lila	2026-09-23T17:47Z
+gid://shopify/Product/15447913890177	Farbe	gid://shopify/ProductOptionValue/12309959016833	Gradient Green	Farbverlauf Grün	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034378989953	Black-Android interface-20cm	Schwarz-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379022721	Black-Android interface-22.5cm	Schwarz-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379055489	Black-Apple interface-20cm	Schwarz-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379088257	Black-Apple interface-22.5cm	Schwarz-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379121025	Black-TYPEC interface-20cm	Schwarz-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379153793	Black-TYPEC interface-22.5cm	Schwarz-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379186561	White-Android interface-20cm	Weiss-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379219329	White-Android interface-22.5cm	Weiss-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379252097	White-Apple interface-20cm	Weiss-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379284865	White-Apple interface-22.5cm	Weiss-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379317633	White-TYPEC interface-20cm	Weiss-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379350401	White-TYPEC interface-22.5cm	Weiss-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379383169	Brown-Android interface-20cm	Braun-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379415937	Brown-Android interface-22.5cm	Braun-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379448705	Brown-Apple interface-20cm	Braun-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379481473	Brown-Apple interface-22.5cm	Braun-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379514241	Brown-TYPEC interface-20cm	Braun-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379547009	Brown-TYPEC interface-22.5cm	Braun-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379579777	Black 2pcs-Android interface-20cm	Schwarz · 2 Stück-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379612545	Black 2pcs-Android interface-22.5cm	Schwarz · 2 Stück-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379645313	Black 2pcs-Apple interface-20cm	Schwarz · 2 Stück-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379678081	Black 2pcs-Apple interface-22.5cm	Schwarz · 2 Stück-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379710849	Black 2pcs-TYPEC interface-20cm	Schwarz · 2 Stück-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379743617	Black 2pcs-TYPEC interface-22.5cm	Schwarz · 2 Stück-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379776385	Brown 2pcs-Android interface-20cm	Braun · 2 Stück-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379809153	Brown 2pcs-Android interface-22.5cm	Braun · 2 Stück-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379841921	Brown 2pcs-Apple interface-20cm	Braun · 2 Stück-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379874689	Brown 2pcs-Apple interface-22.5cm	Braun · 2 Stück-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379907457	Brown 2pcs-TYPEC interface-20cm	Braun · 2 Stück-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379940225	Brown 2pcs-TYPEC interface-22.5cm	Braun · 2 Stück-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034379972993	White 2pcs-Android interface-20cm	Weiss · 2 Stück-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380005761	White 2pcs-Android interface-22.5cm	Weiss · 2 Stück-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380038529	White 2pcs-Apple interface-20cm	Weiss · 2 Stück-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380071297	White 2pcs-Apple interface-22.5cm	Weiss · 2 Stück-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380104065	White 2pcs-TYPEC interface-20cm	Weiss · 2 Stück-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380136833	White 2pcs-TYPEC interface-22.5cm	Weiss · 2 Stück-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380169601	Black 3pcs-Android interface-20cm	Schwarz · 3 Stück-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380202369	Black 3pcs-Android interface-22.5cm	Schwarz · 3 Stück-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380235137	Black 3pcs-Apple interface-20cm	Schwarz · 3 Stück-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380267905	Black 3pcs-Apple interface-22.5cm	Schwarz · 3 Stück-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380300673	Black 3pcs-TYPEC interface-20cm	Schwarz · 3 Stück-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380333441	Black 3pcs-TYPEC interface-22.5cm	Schwarz · 3 Stück-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380366209	Brown 3pcs-Android interface-20cm	Braun · 3 Stück-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380398977	Brown 3pcs-Android interface-22.5cm	Braun · 3 Stück-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380431745	Brown 3pcs-Apple interface-20cm	Braun · 3 Stück-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380464513	Brown 3pcs-Apple interface-22.5cm	Braun · 3 Stück-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380497281	Brown 3pcs-TYPEC interface-20cm	Braun · 3 Stück-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380530049	Brown 3pcs-TYPEC interface-22.5cm	Braun · 3 Stück-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380562817	White 3pcs-Android interface-20cm	Weiss · 3 Stück-Android Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380595585	White 3pcs-Android interface-22.5cm	Weiss · 3 Stück-Android Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380628353	White 3pcs-Apple interface-20cm	Weiss · 3 Stück-Apple Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380661121	White 3pcs-Apple interface-22.5cm	Weiss · 3 Stück-Apple Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380693889	White 3pcs-TYPEC interface-20cm	Weiss · 3 Stück-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380726657	White 3pcs-TYPEC interface-22.5cm	Weiss · 3 Stück-USB-C Anschluss-22.5 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449426723201	Farbe	gid://shopify/ProductOptionValue/12034380759425	A Black-TYPEC interface-20cm	A Schwarz-USB-C Anschluss-20 cm	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750218625	Round Collar In Black	Rundhals in Schwarz	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750251393	Round Neck White	Rundhals Weiss	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750284161	Round Neck Apricot	Rundhals Aprikose	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750382465	Round Neck Dark Gray	Rundhals Dunkelgrau	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750415233	Round Neck Light Khaki	Rundhals Hellkhaki	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750448001	Round Neck Navy Blue	Rundhals Marineblau	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750480769	Round Neck Pink	Rundhals Pink	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750513537	Round Neck Wine Red	Rundhals Weinrot	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750546305	Round Neck Dark Green	Rundhals Dunkelgrün	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750579073	Round Neck Brown	Rundhals Braun	2026-09-23T17:47Z
+gid://shopify/Product/15449474204033	Farbe	gid://shopify/ProductOptionValue/12034750611841	Round Neck Bright Red	Rundhals Leuchtendrot	2026-09-23T17:47Z
+gid://shopify/Product/15450740195713	Farbe	gid://shopify/ProductOptionValue/12045530169729	92011 Black	92011 Schwarz	2026-09-23T17:47Z
+gid://shopify/Product/15450740195713	Farbe	gid://shopify/ProductOptionValue/12045530202497	92011 Brown	92011 Braun	2026-09-23T17:47Z
