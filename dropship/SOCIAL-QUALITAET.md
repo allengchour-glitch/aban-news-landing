@@ -1,46 +1,46 @@
-# Social-Qualität — Stand 2026-09-23 20:19 UTC
+# Social-Qualität — Stand 2026-09-24 00:00 UTC
 
 Erzeugt von `automation/social_qualitaet_wache.mjs` — **nur lesend**: kein Post, keine Caption, kein Profil und keine Planung wurde geändert. Jede Aktion unten ist ein **Vorschlag**.
 
 ## Gelesen
 
 - Instagram: 100 Beiträge (letzte 100, mit Aufrufen/Reichweite aus Insights)
-- Facebook: 59 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
-- Metricool-Planer: 4 Einträge (−30/+7 Tage) · Pinterest-Analyse: 8 Pins
-- Geprüft: 171 Beiträge, 192 Medien (ffprobe/ebur128/Tesseract)
+- Facebook: 60 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
+- Metricool-Planer: 5 Einträge (−30/+7 Tage) · Pinterest-Analyse: 12 Pins
+- Geprüft: 177 Beiträge, 194 Medien (ffprobe/ebur128/Tesseract)
 - Shopify live: Gratisversand CH ab CHF 45 Warenkorb nach Rabatt (öffentliche Aussage «ab CHF 50» ist damit gedeckt) · Standard CHF 7 · Kanarienvogel Suche: ok (sku: und title: liefern 0 für Unsinn)
 
 ## Zusammenfassung
 
-**45 Fehler · 75 Warnungen · 94 Hinweise** — Fehler/Warnungen in 86 von 171 Beiträgen.
+**39 Fehler · 74 Warnungen · 99 Hinweise** — Fehler/Warnungen in 84 von 177 Beiträgen.
 
 Vorgeschlagene Aktionen (nichts davon ausgeführt):
 
-- Facebook: 21 × Caption korrigieren · 5 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
+- Facebook: 20 × Caption korrigieren · 2 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
 - Instagram: 15 × Caption in der App korrigieren (API kann es nicht [Q2]) · 44 × löschen/neu posten (nur App/PC oder Facebook-User-Token [Q2])
-- TikTok/YouTube/Pinterest: 1 × in der jeweiligen App (Metricool löscht nur Geplantes [Q3])
+- TikTok/YouTube/Pinterest: 3 × in der jeweiligen App (Metricool löscht nur Geplantes [Q3])
 - Schutzregel: 0 Beiträge über 500 Aufrufe → nie löschen, nur Caption
 
 | Klasse | Instagram | Facebook | TikTok | YouTube | Pinterest | Summe |
 |---|---:|---:|---:|---:|---:|---:|
-| DIREKTLINK | · | · | · | · | 2 | 2 |
-| DOPPEL | 12 | · | · | · | · | 12 |
+| DIREKTLINK | · | · | · | · | 6 | 6 |
+| DOPPEL | 12 | · | · | · | 1 | 13 |
 | ENGLISCH | 6 | · | · | · | · | 6 |
-| FLOSKEL | 2 | 2 | · | · | 1 | 5 |
-| FORMAT | 41 | 32 | · | · | 1 | 74 |
-| PREIS | 9 | 1 | · | · | · | 10 |
+| FLOSKEL | 2 | 2 | · | · | 2 | 6 |
+| FORMAT | 41 | 29 | · | · | 1 | 71 |
+| PREIS | 9 | · | · | · | · | 9 |
 | PRODUKT | 27 | · | · | · | · | 27 |
 | TON | 5 | · | · | · | · | 5 |
-| VERSAND | 31 | 42 | · | · | · | 73 |
+| VERSAND | 31 | 37 | · | · | 1 | 69 |
 
-Produkt zugeordnet: 90 von 171 Beiträgen (Ledger 20, Link 65, Titel 5).
+Produkt zugeordnet: 94 von 177 Beiträgen (Ledger 21, Link 68, Titel 5).
 
-Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 0 Beiträge mit nicht messbaren Medien.
+Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 5 Beiträge mit nicht messbaren Medien.
 
 ## Befunde (Fehler zuerst, dann nach Aufrufen; Hinweise stehen gesammelt weiter unten)
 
 ### FEHLER · Instagram reel · 2026-08-01 11:12 UTC · 83 Aufrufe
-- Post: https://www.instagram.com/reel/DbftCVqDqVO/ · Zwilling: https://www.facebook.com/reel/1585736366595262/
+- Post: https://www.instagram.com/reel/DbftCVqDqVO/
 - Text: ««Luftreiniger mit Feuchtigkeitsspender» ✨ Jetzt bei LuxeStyle — CHF 12.90. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭 🔗 l…»
 - Produkt: Luftreiniger mit Feuchtigkeitsspender (ACTIVE, https://luxestyle.ch/products/luftreiniger-mit-feuchtigkeitsspender-889dfb, SKU CJ-CJXFZNZN00558-Black) — Zuordnung: Link im Text
 - **FEHLER VERSAND:** Versand «aus der Schweiz» zugesagt, Produkt ist CJ-Ware (SKU CJ-CJXFZNZN00558-Black, 10–20 Werktage): «e — CHF 12.90. Blitzversand aus der Schweiz · −10% mit Code WEL»  
@@ -89,7 +89,7 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### FEHLER · Instagram reel · 2026-07-28 09:50 UTC · 43 Aufrufe
-- Post: https://www.instagram.com/reel/DbVQd7GinD2/ · Zwilling: https://www.facebook.com/reel/1466744632141442/
+- Post: https://www.instagram.com/reel/DbVQd7GinD2/
 - Text: ««Wimpernlift-Kit» ✨ Jetzt bei LuxeStyle — CHF 24.90. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭»
 - Produkt: Wimpernlift-Kit (ACTIVE, https://luxestyle.ch/products/wimpernlift-kit-161984, SKU CJ-CJCZ1533149-Same as Photo) — Zuordnung: Ledger cjreel-15449432981889
 - **FEHLER VERSAND:** Versand «aus der Schweiz» zugesagt, Produkt ist CJ-Ware (SKU CJ-CJCZ1533149-Same as P, 10–20 Werktage): «e — CHF 24.90. Blitzversand aus der Schweiz · −10% mit Code WEL»  
@@ -108,7 +108,7 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### FEHLER · Instagram reel · 2026-07-28 09:17 UTC · 42 Aufrufe
-- Post: https://www.instagram.com/reel/DbVMo7IDmbK/ · Zwilling: https://www.facebook.com/reel/1562821878956452/
+- Post: https://www.instagram.com/reel/DbVMo7IDmbK/
 - Text: ««Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend» ✨ Jetzt bei LuxeStyle — CHF 21.90. Blitzversand aus der Schweiz · −10% mit Code …»
 - Produkt: Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend (ACTIVE, https://luxestyle.ch/products/kurbis-strichburste-fur-hunde-katzen-selbstrei-066368, SKU CJ-CJMY1547493-Pumpkin) — Zuordnung: Ledger cjreel-15449432916353
 - **FEHLER VERSAND:** Versand «aus der Schweiz» zugesagt, Produkt ist CJ-Ware (SKU CJ-CJMY1547493-Pumpkin, 10–20 Werktage): «e — CHF 21.90. Blitzversand aus der Schweiz · −10% mit Code WEL»  
@@ -354,51 +354,7 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 - **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «sst zu jedem Look ✨ Blitzversand aus der Schweiz & K»  
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### FEHLER · Facebook reel · 2026-08-01 11:13 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/reel/1585736366595262/ · Zwilling: https://www.instagram.com/reel/DbftCVqDqVO/
-- Text: ««Luftreiniger mit Feuchtigkeitsspender» ✨ Jetzt bei LuxeStyle — CHF 12.90. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭 🔗 l…»
-- Produkt: Luftreiniger mit Feuchtigkeitsspender (ACTIVE, https://luxestyle.ch/products/luftreiniger-mit-feuchtigkeitsspender-889dfb, SKU CJ-CJXFZNZN00558-Black) — Zuordnung: Link im Text
-- **FEHLER VERSAND:** Versand «aus der Schweiz» zugesagt, Produkt ist CJ-Ware (SKU CJ-CJXFZNZN00558-Black, 10–20 Werktage): «e — CHF 12.90. Blitzversand aus der Schweiz · −10% mit Code WEL»  
-  → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-- **FEHLER PREIS:** Lockpreis: Caption CHF 12.90, Shop CHF 15.90 («Luftreiniger mit Feuchtigkeitsspender», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-- **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-08-06 17:02 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1563305552100842/
-- Text: «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selbst-gestalten — alles us eim Schwiizer Shop. 💾 Spicher's · gratis Versand ab CHF…»
-- **FEHLER VERSAND:** Gratis-Schwelle CHF 65 statt 50: «hop. 💾 Spicher's · gratis Versand ab CHF 65 · –10% WELCOME10 →» (live: gratis ab CHF 45 nach Rabatt → öffentliche Aussage 50)  
-  → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-
-### FEHLER · Facebook reel · 2026-07-30 10:12 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/2179163992934147/
-- Text: ««HD-Lace Haarperücke aus echtem Haar» ✨ Jetzt bei LuxeStyle — CHF 140.90. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭 🔗 lu…»
-- Produkt: HD-Lace Haarperücke aus echtem Haar (ACTIVE, https://luxestyle.ch/products/hd-lace-haarperucke-aus-echtem-haar-252352, SKU CJ-CJZR166097115OL) — Zuordnung: Link im Text
-- **FEHLER VERSAND:** Versand «aus der Schweiz» zugesagt, Produkt ist CJ-Ware (SKU CJ-CJZR166097115OL, 10–20 Werktage): «— CHF 140.90. Blitzversand aus der Schweiz · −10% mit Code WEL»  
-  → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-- **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-07-28 09:51 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1466744632141442/ · Zwilling: https://www.instagram.com/reel/DbVQd7GinD2/
-- Text: ««Wimpernlift-Kit» ✨ Jetzt bei LuxeStyle — CHF 24.90. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭»
-- Produkt: Wimpernlift-Kit (ACTIVE, https://luxestyle.ch/products/wimpernlift-kit-161984, SKU CJ-CJCZ1533149-Same as Photo) — Zuordnung: «Name» im Text
-- **FEHLER VERSAND:** Versand «aus der Schweiz» zugesagt, Produkt ist CJ-Ware (SKU CJ-CJCZ1533149-Same as P, 10–20 Werktage): «e — CHF 24.90. Blitzversand aus der Schweiz · −10% mit Code WEL»  
-  → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-- **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### FEHLER · Facebook reel · 2026-07-28 09:17 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/reel/1562821878956452/ · Zwilling: https://www.instagram.com/reel/DbVMo7IDmbK/
-- Text: ««Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend» ✨ Jetzt bei LuxeStyle — CHF 21.90. Blitzversand aus der Schweiz · −10% mit Code …»
-- Produkt: Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend (ACTIVE, https://luxestyle.ch/products/kurbis-strichburste-fur-hunde-katzen-selbstrei-066368, SKU CJ-CJMY1547493-Pumpkin) — Zuordnung: «Name» im Text
-- **FEHLER VERSAND:** Versand «aus der Schweiz» zugesagt, Produkt ist CJ-Ware (SKU CJ-CJMY1547493-Pumpkin, 10–20 Werktage): «e — CHF 21.90. Blitzversand aus der Schweiz · −10% mit Code WEL»  
-  → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-- **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
-  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-<details><summary>43 Beiträge nur mit Warnungen (aufklappen)</summary>
+<details><summary>46 Beiträge nur mit Warnungen (aufklappen)</summary>
 
 ### WARNUNG · Instagram reel · 2026-06-12 11:25 UTC · 61 Aufrufe
 - Post: https://www.instagram.com/reel/DZe-yKMt4Cq/
@@ -544,7 +500,7 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 - **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### WARNUNG · Pinterest pin · 2026-09-04 04:47 UTC · 12 Aufrufe
+### WARNUNG · Pinterest pin · 2026-09-04 04:47 UTC · 13 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645579582500/
 - Text: «Dein Sound für jedes Abenteuer – solarbetrieben, wasserdicht und mit stimmungsvollem RGB-Licht. 🎶☀️ CHF 54.90 · Bezahl bequem auf Rechnung…»
 - (+ 1 Hinweis, siehe Hinweis-Liste)
@@ -560,6 +516,12 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 - **WARNUNG ENGLISCH:** Englischer Lieferantentext im Bild: with, the, light  
   → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
+### WARNUNG · Facebook bild · 2026-09-23 08:26 UTC · 7 Aufrufe
+- Post: https://www.facebook.com/122102579637350792/posts/122140138311350792 · Zwilling: https://www.instagram.com/p/Ddn4MnOlCmw/
+- Text: «Verwöhne deine Haut mit dem Jade Roller Premium – für einen strahlenden, frischen Teint ✨ Doppelseitig für Gesicht und Augenpartie 💚 🔗 lu…»
+- **WARNUNG FORMAT:** Bild 480×480 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat)  
+  → Vorschlag: unscharf: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
+
 ### WARNUNG · Instagram bild · 2026-09-23 08:26 UTC · 6 Aufrufe
 - Post: https://www.instagram.com/p/Ddn4MnOlCmw/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122140138311350792
 - Text: «Verwöhne deine Haut mit dem Jade Roller Premium – für einen strahlenden, frischen Teint ✨ Doppelseitig für Gesicht und Augenpartie 💚 🔗 lu…»
@@ -570,13 +532,7 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 - **WARNUNG ENGLISCH:** Englischer Lieferantentext im Bild: made, from, natural, stone, our, are  
   → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
-### WARNUNG · Facebook bild · 2026-09-23 08:26 UTC · 4 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122140138311350792 · Zwilling: https://www.instagram.com/p/Ddn4MnOlCmw/
-- Text: «Verwöhne deine Haut mit dem Jade Roller Premium – für einen strahlenden, frischen Teint ✨ Doppelseitig für Gesicht und Augenpartie 💚 🔗 lu…»
-- **WARNUNG FORMAT:** Bild 480×480 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat)  
-  → Vorschlag: unscharf: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Facebook bild · 2026-09-23 02:08 UTC · 4 Aufrufe
+### WARNUNG · Facebook bild · 2026-09-23 02:08 UTC · 6 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122140069977350792 · Zwilling: https://www.instagram.com/p/DdnNSHEDMja/
 - Text: «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für natürliche Glow-Momente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Klarna. 💕 🔗 …»
 - Produkt: Rosenquarz Gua Sha Set (ACTIVE, https://luxestyle.ch/products/rosenquarz-gua-sha-set, SKU LX-21-ROSENQUARZ-GUA-SHA-SET) — Zuordnung: Ledger kimi-verw-hne-deine-haut-mit-dem-rose-15
@@ -584,12 +540,34 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 - **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### WARNUNG · Facebook bild · 2026-09-03 21:20 UTC · 1 Aufrufe
+### WARNUNG · Facebook bild · 2026-09-03 21:20 UTC · 3 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122135101689350792 · Zwilling: https://www.instagram.com/p/Dc1w4wMjkjZ/
 - Text: «Dein Sound für jedes Abenteuer – solarbetrieben, wasserdicht und mit stimmungsvollem RGB-Licht. 🎶☀️ CHF 54.90 · Bezahl bequem auf Rechnung…»
 - (+ 1 Hinweis, siehe Hinweis-Liste)
 - **WARNUNG FLOSKEL:** Scam-Marker: «t. 🎶☀️ CHF 54.90 · Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Pinterest pin · 2026-09-23 04:53 UTC · 0 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581152467/
+- Text: «Endlich Ruhe beim Gassi? 👀 «Futterspender für Hunde» — Dieser Futterspender ist ein interaktives Spielzeug für deinen Hund, das die Futter…»
+- Produkt: Futterspender für Hunde (ACTIVE, https://luxestyle.ch/products/futterspender-fur-hunde-bc09f6, SKU CJ-F5BA858E-89C8-4A3C-8DDD-4) — Zuordnung: Link im Text
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-22 13:02 UTC gepostet: https://www.pinterest.com/pin/1111333645581093478/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-09-23 04:46 UTC · 0 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581152144/
+- Text: «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für natürliche Glow-Momente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Klarna. 💕 🔗 …»
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
+  → Vorschlag: Caption korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Facebook reel · 2026-07-30 10:12 UTC · 0 Aufrufe
+- Post: https://www.facebook.com/reel/2179163992934147/
+- Text: ««HD-Lace Haarperücke aus echtem Haar» ✨ Jetzt bei LuxeStyle — CHF 140.90. Lieferung in die ganze Schweiz · −10% mit Code WELCOME10 🇨🇭 🔗 …»
+- Produkt: HD-Lace Haarperücke aus echtem Haar (ACTIVE, https://luxestyle.ch/products/hd-lace-haarperucke-aus-echtem-haar-252352, SKU CJ-CJZR166097115OL) — Zuordnung: Link im Text
+- **WARNUNG FORMAT:** Video 360×640 unter 720×1280  
+  → Vorschlag: zu kleine Auflösung: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
 ### WARNUNG · Facebook bild · 2026-07-29 00:12 UTC · 0 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122125859139350792 · Zwilling: https://www.instagram.com/p/DbWzLsdDpmX/
@@ -725,7 +703,7 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 
 ## Hinweise (gesammelt)
 
-94 Hinweise in 65 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 75 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #viral #fyp) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
+99 Hinweise in 70 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 75 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #viral #fyp) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
 
 <details><summary>Liste</summary>
 
@@ -771,25 +749,25 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 | Instagram | 2026-09-22 | 19 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DdmhalZFAvs/ |
 | Instagram | 2026-07-28 | 19 | FORMAT | Bild 950×950 — Breite unter 1080 | https://www.instagram.com/p/DbWjcLymW6l/ |
 | Instagram | 2026-09-23 | 18 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DdnNSHEDMja/ |
+| Instagram | 2026-09-23 | 17 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Ddoi3MMlLPX/ |
 | Instagram | 2026-07-28 | 16 | DOPPEL | gleiche Warengruppe «uhr» 0 h nach https://www.instagram.com/p/DbVJV_SDkIz/ (Raster wirkt doppelt) | https://www.instagram.com/p/DbVJ4Z4lu5Q/ |
 | Instagram | 2026-07-28 | 15 | DOPPEL | gleiche Warengruppe «uhr» 0 h nach https://www.instagram.com/p/DbVJV_SDkIz/ (Raster wirkt doppelt) | https://www.instagram.com/p/DbVJ3F3Fseo/ |
-| Instagram | 2026-09-23 | 12 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Ddoi3MMlLPX/ |
+| Pinterest | 2026-09-04 | 13 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dc1w4wMjkjZ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645579582500/ |
 | Instagram | 2026-07-28 | 12 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DbWCiqijoyV/ |
-| Pinterest | 2026-09-04 | 12 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dc1w4wMjkjZ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645579582500/ |
 | Instagram | 2026-07-28 | 11 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DbVQ15-kqMv/ |
 | Instagram | 2026-07-28 | 9 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «Vergnügen ✨💡 Blitzversand aus der Schweiz, bequem auf Rechnun» | https://www.instagram.com/p/DbVM_eOkkED/ |
 | Pinterest | 2026-09-04 | 7 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dc1zAj-GoFP/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645579582505/ |
 | Instagram | 2026-09-23 | 6 | DOPPEL | gleiche Warengruppe «gesichtsroller» 6 h nach https://www.instagram.com/p/DdnNSHEDMja/ (Raster wirkt doppelt) | https://www.instagram.com/p/Ddn4MnOlCmw/ |
-| Facebook | 2026-09-23 | 4 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140069977350792 |
-| Facebook | 2026-09-22 | 4 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122139992853350792 |
-| Facebook | 2026-09-03 | 3 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 1/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
-| Facebook | 2026-09-03 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 3/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
-| Facebook | 2026-09-03 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 4/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
-| Facebook | 2026-09-03 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 5/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
-| Facebook | 2026-09-03 | 3 | FORMAT | Bild 1024×1024 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 6/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
-| Facebook | 2026-09-03 | 3 | FORMAT | Bild 888×888 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 7/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
-| Facebook | 2026-09-23 | 1 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140221003350792 |
-| Facebook | 2026-09-03 | 1 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122135101689350792 |
+| Facebook | 2026-09-23 | 6 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140069977350792 |
+| Facebook | 2026-09-22 | 6 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122139992853350792 |
+| Facebook | 2026-09-23 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140221003350792 |
+| Facebook | 2026-09-03 | 5 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 1/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Facebook | 2026-09-03 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 3/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Facebook | 2026-09-03 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 4/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Facebook | 2026-09-03 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 5/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Facebook | 2026-09-03 | 5 | FORMAT | Bild 1024×1024 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 6/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Facebook | 2026-09-03 | 5 | FORMAT | Bild 888×888 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 7/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Facebook | 2026-09-03 | 3 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122135101689350792 |
 | Facebook | 2026-07-29 | 0 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «one-Fach! ☀️👜 Blitzversand aus der Schweiz und Kauf auf Rechnu» | https://www.facebook.com/122102579637350792/posts/122125859139350792 |
 | Facebook | 2026-07-29 | 0 | FORMAT | Bild 750×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122125859139350792 |
 | Facebook | 2026-07-29 | 0 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «einem Set. 🧔 Blitzversand aus der Schweiz und bequem Kauf auf» | https://www.facebook.com/122102579637350792/posts/122125858557350792 |
@@ -825,6 +803,11 @@ Dazu: 43 Facebook-Beiträge ohne Direktlink (Liste unten) · 23 Beiträge mit Pr
 | Facebook | 2026-07-28 | 0 | FORMAT | Bild 1024×1024 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122125687119350792 |
 | Facebook | 2026-07-28 | 0 | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «Vergnügen ✨💡 Blitzversand aus der Schweiz, bequem auf Rechnun» | https://www.facebook.com/122102579637350792/posts/122125676835350792 |
 | Pinterest | 2026-09-23 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | https://www.pinterest.es/pin/1111333645581196150 |
+| Pinterest | 2026-09-24 | n/a | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «wertige Qualität ab Schweizer Lager. Details Marke: Wid» | https://www.pinterest.es/pin/1111333645581220663 |
+| Pinterest | 2026-09-23 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DdmhRxtjUIZ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581153922/ |
+| Pinterest | 2026-09-23 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DdnatlxD0nV/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581152467/ |
+| Pinterest | 2026-09-23 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DdmhalZFAvs/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581152143/ |
+| Pinterest | 2026-09-23 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DdnNSHEDMja/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581152144/ |
 
 </details>
 
@@ -834,13 +817,13 @@ Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschen
 
 <details><summary>Liste</summary>
 
-- 2026-09-23 08:26 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140138311350792 · «Verwöhne deine Haut mit dem Jade Roller Premium – für einen…»
-- 2026-09-23 05:39 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140105137350792 · «EMS Mikrostrom Massagegerät · CHF 22.90 Kleiner Schweizer S…»
-- 2026-09-23 02:08 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140069977350792 · «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für na…»
-- 2026-09-22 19:48 UTC · 4 Aufrufe · https://www.facebook.com/122102579637350792/posts/122139992853350792 · «Verwandle dein Zuhause in eine pure Wohlfühloase mit unsere…»
-- 2026-09-03 21:39 UTC · 3 Aufrufe · https://www.facebook.com/122102579637350792/posts/122135105943350792 · «Von allem etwas – 8 Lieblinge aus 8 Welten 🌍 Wisch dich du…»
-- 2026-09-23 14:39 UTC · 1 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140221003350792 · «Kristall-Set 3-teilig · CHF 29.90 Kleiner Schweizer Shop au…»
-- 2026-09-03 21:20 UTC · 1 Aufrufe · https://www.facebook.com/122102579637350792/posts/122135101689350792 · «Dein Sound für jedes Abenteuer – solarbetrieben, wasserdich…»
+- 2026-09-23 08:26 UTC · 7 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140138311350792 · «Verwöhne deine Haut mit dem Jade Roller Premium – für einen…»
+- 2026-09-23 05:39 UTC · 6 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140105137350792 · «EMS Mikrostrom Massagegerät · CHF 22.90 Kleiner Schweizer S…»
+- 2026-09-23 02:08 UTC · 6 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140069977350792 · «Verwöhne deine Haut mit dem Rosenquarz Gua Sha Set – für na…»
+- 2026-09-22 19:48 UTC · 6 Aufrufe · https://www.facebook.com/122102579637350792/posts/122139992853350792 · «Verwandle dein Zuhause in eine pure Wohlfühloase mit unsere…»
+- 2026-09-23 14:39 UTC · 5 Aufrufe · https://www.facebook.com/122102579637350792/posts/122140221003350792 · «Kristall-Set 3-teilig · CHF 29.90 Kleiner Schweizer Shop au…»
+- 2026-09-03 21:39 UTC · 5 Aufrufe · https://www.facebook.com/122102579637350792/posts/122135105943350792 · «Von allem etwas – 8 Lieblinge aus 8 Welten 🌍 Wisch dich du…»
+- 2026-09-03 21:20 UTC · 3 Aufrufe · https://www.facebook.com/122102579637350792/posts/122135101689350792 · «Dein Sound für jedes Abenteuer – solarbetrieben, wasserdich…»
 - 2026-08-05 09:02 UTC · 1 Aufrufe · https://www.facebook.com/reel/2325684204502310/ · «Mach dis eigets Teil 🎨 T-Shirt, Hoodie, Täsche oder Tasse …»
 - 2026-08-02 17:02 UTC · 1 Aufrufe · https://www.facebook.com/reel/1058200293322585/ · «Hoi zäme! 🇨🇭 Bi LuxeStyle git's Premium-Mode us de Schwiz…»
 - 2026-08-06 17:02 UTC · 0 Aufrufe · https://www.facebook.com/reel/1563305552100842/ · «LuxeStyle in 30 Sekunde 🇨🇭 Mode · Schmuck · Beauty · Selb…»
@@ -865,7 +848,7 @@ Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschen
 - 2026-07-28 11:19 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125690011350792 · «Verwöhne deine Haut mit dem Jade Roller & Gua Sha Set für e…»
 - 2026-07-28 11:09 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125704783350792 · «Zeitlos elegant am Handgelenk – Saphirglas, Edelstahl und 5…»
 - 2026-07-28 10:53 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125687731350792 · «Essenszeit ohne Chaos – diese weichen Silikon-Lätzchen fang…»
-- 2026-07-28 09:51 UTC · 0 Aufrufe · https://www.facebook.com/reel/1466744632141442/ · ««Wimpernlift-Kit» ✨ Jetzt bei LuxeStyle — CHF 24.90. Blitzv…»
+- 2026-07-28 09:51 UTC · 0 Aufrufe · https://www.facebook.com/reel/1466744632141442/ · ««Wimpernlift-Kit» ✨ Jetzt bei LuxeStyle — CHF 24.90. Liefer…»
 - 2026-07-28 09:49 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125687197350792 · «Vintage-Look trifft modernen Schutz 😎 Polarisierte Gläser …»
 - 2026-07-28 09:49 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125687119350792 · «Stilvoll schlank, maximal sicher – unser Echtleder-Wallet m…»
 - 2026-07-28 09:19 UTC · 0 Aufrufe · https://www.facebook.com/122102579637350792/posts/122125676835350792 · «Sanftes Licht für müde Augen – diese dimmbare LED-Lampe mit…»
@@ -883,7 +866,7 @@ Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschen
 ## Nicht prüfbar
 
 - Preis ohne sichere Produktzuordnung (23): https://www.instagram.com/p/Dc1zAj-GoFP/ · https://www.instagram.com/p/DbVMG4okgei/ · https://www.instagram.com/p/DbVMFlsknPT/ · https://www.instagram.com/p/DbVJ5lEFlXc/ · https://www.instagram.com/p/DbVJ4Z4lu5Q/ · https://www.instagram.com/p/DbVJ3F3Fseo/ · https://www.instagram.com/p/DbVJV_SDkIz/ · https://www.instagram.com/reel/DaxHrZODx43/ · https://www.instagram.com/p/DZj7svdktrN/ · https://www.instagram.com/p/DZicunuk5Dr/ · https://www.instagram.com/p/DZicnMck2Vc/ · https://www.instagram.com/p/DZiclNMEw26/ · https://www.instagram.com/p/DZiceA3k9fi/ · https://www.instagram.com/p/DZicbunk2o5/ · https://www.facebook.com/122102579637350792/posts/122135105943350792 · https://www.facebook.com/122102579637350792/posts/122135101689350792 · https://www.facebook.com/122102579637350792/posts/122125673679350792 · https://www.facebook.com/122102579637350792/posts/122125673631350792 · https://www.facebook.com/122102579637350792/posts/122125662153350792 · https://www.facebook.com/122102579637350792/posts/122125662063350792 · https://www.facebook.com/122102579637350792/posts/122125661925350792 · https://www.facebook.com/122102579637350792/posts/122125661085350792 · https://www.facebook.com/reel/1028258120108254/
-- Medien nicht messbar (0): —
+- Medien nicht messbar (5): https://www.instagram.com/p/DdpMLlyHJYD/ (Download gescheitert) · https://www.facebook.com/reel/1585736366595262/ (Download gescheitert) · https://www.facebook.com/reel/1466744632141442/ (Download gescheitert) · https://www.facebook.com/reel/1562821878956452/ (Download gescheitert) · https://www.pinterest.es/pin/1111333645581220663 (Download gescheitert)
 - TikTok/YouTube: Format und Ton werden an der hochgeladenen Datei gemessen (Repo `social/reels/` bzw. Metricool-Medium), nicht an der Plattform-Fassung.
 
 ## Was per API ginge — Quellen (abgerufen 23.09.2026)
