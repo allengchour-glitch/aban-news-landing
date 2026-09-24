@@ -14,7 +14,6 @@
   <meta property="og:title" content="Tron (TRX) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="Tron (TRX): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,8 +325,8 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Tron <span class="hl">TRX</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="tron" data-type="crypto">0.3122 USD</span>
-        <span class="chg down">-3.14 %</span>
+        <span class="px" id="livePrice" data-id="tron" data-type="crypto">0.3405 USD</span>
+        <span class="chg down">-0.34 %</span>
         <span class="tag-type">Crypto</span>
         <span class="badge neutral">Neutral</span>
       </div>
@@ -323,10 +339,10 @@
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
       <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">0.3755</text><text x="586" y="204" font-size="12" fill="#64748b">0.3199</text><path d="M10.0,200 L10.0,93.7 L34.8,100.9 L59.6,98.5 L84.3,84.8 L109.1,79.4 L133.9,79.0 L158.7,78.7 L183.5,66.7 L208.3,45.9 L233.0,56.1 L257.8,54.4 L282.6,23.0 L307.4,10.0 L332.2,35.6 L357.0,118.0 L381.7,105.3 L406.5,94.4 L431.3,120.0 L456.1,155.6 L480.9,158.3 L505.7,200.0 L530.4,177.4 L555.2,177.4 L580.0,191.1 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,93.7 34.8,100.9 59.6,98.5 84.3,84.8 109.1,79.4 133.9,79.0 158.7,78.7 183.5,66.7 208.3,45.9 233.0,56.1 257.8,54.4 282.6,23.0 307.4,10.0 332.2,35.6 357.0,118.0 381.7,105.3 406.5,94.4 431.3,120.0 456.1,155.6 480.9,158.3 505.7,200.0 530.4,177.4 555.2,177.4 580.0,191.1" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="191.1" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="191.1" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-3.14 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.12 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-8.12 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">0.3755 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">0.3199 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">794.48 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">29.61 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.4313 USD</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.34 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.12 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-8.12 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">0.3755 USD</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">0.3199 USD</span></div><div class="kpi"><span class="kl">Volume</span><span class="kv">466.59 Mio</span></div><div class="kpi"><span class="kl">Market cap</span><span class="kv">32.33 Mrd USD</span></div><div class="kpi"><span class="kl">All-time high</span><span class="kv">0.4313 USD</span></div></div>
     </div>
   </section>
 
@@ -336,10 +352,10 @@
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Tron · TRX</span><span class="badge neutral">Neutral</span></div>
-        <p class="csignal">Markt-Trotz, unter Allzeithoch.</p>
-        <p class="crat">TRON trotzt dem Krypto-Marktrückgang, aber der Kurs ist immer noch 25% unter dem Allzeithoch.</p>
+        <p class="csignal">TRONs USDT dominiert, Web 4.0-Unterstützung.</p>
+        <p class="crat">TRONs USDT dominiert, der Gründer unterstützt Web 4.0 und Privy erweitert die Unterstützung, aber der Preis ist stabil.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: TRON trotzt dem Krypto-Marktrückgang, und CoinZoom unterstützt USDT auf TRON.</li><li>Risiko: Der Kurs ist immer noch 25% unter dem Allzeithoch, was auf mangelnde Dynamik hindeutet.</li><li>Einordnung: Die Nachrichtenlage ist gemischt, mit einer relativen Stärke im Vergleich zum Gesamtmarkt, aber ohne klare Aufwärtstrends.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: USDT dominiert auf TRON, der Gründer unterstützt Web 4.0 und Privy erweitert die Unterstützung, was auf Wachstum hindeutet.</li><li>Risiko: Keine spezifischen Risiken aus den Nachrichten ersichtlich.</li><li>Einordnung: Die Nachrichten sind überwiegend positiv und deuten auf eine stabile Entwicklung hin, ohne extreme Ausschläge.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on TRX</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQcHUzWUxZTklxNEhOb0tXVm81cjJ4RUpVVkdzWnhtdlZLN294NzVLdGUzNWR4dGR1akZDLVhzb3pEUXE3VmNQd09JeHlab2ZVVjhFdUFPZk5qU3o4SFFxVEJyUmlBS29leUstRnFpVGIzdzUwakdvSmtOZmtMLWpMdUwwVnZHOXk0Y09lLXZOY3MyZVJTN3ZyUldxajJNYmlWZml2ZjlxOXR4Q0QtQU1RTzZ0QnFYRFBNay1HS0hzNU1vd25GN25CN1FSTQ?oc=5" target="_blank" rel="noopener">TRON Defies Crypto Market Slump As Bitcoin, Ethereum Lead $221M Liquidation Wave</a><div class="meta"><span>Stocktwits</span><span>· 08 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxOZi1vbE4wSFkxa3hjaE5OZWtMRFFFZjNXenUxOUd1NEV5ZS1XZ0ExSVgtX1RZR0hzeXVMc2ttMXN2MGwyQmpaTndBakNiR25UTjgwVU55OWtTVHNwTWR5WW1FZFo5b2xPR25xSkNvWkp4LWY2MDZsdEhCdkZUUTduWGd6MUtURWw1eUtxZzVHaDliWDZreWo1YzBWeGpBX3NvMGI1WV9LUUNTRThHUDFhZlh4cUZqZFZUTWYzR0YtOTJ4TFZSYk9pcTB2LWU3N0NqRVBvNmdJWmVyR0x0Um93cURCU3pPNFFwU3JZ?oc=5" target="_blank" rel="noopener">CoinZoom Becomes First U.S.-Regulated Exchange to Support USDT on Ethereum, Tron, and BNB Smart Chain</a><div class="meta"><span>Investing.com</span><span>· 09 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOWE92QkUxaXZMS2ZVS1VGYnhlVjRrTWVaUGFCN2N6ek1hZ2ZvazRvTWM3bEJYVUd0ZUNSVmxOd3VGc1diaXU2aUM3VGFoem5qZmNnRXpXd2x1eW5ocUhrNDhJTVg5T0VJVUpoTTU5eXJEODV0SW1XVVp4WmJyYW4wYXllc3dZVGJHaWxpLVI1c1ZzWEpYWWNkN0Fva3BvNFJLQ05mZVZQbE93WTFxaktfczI4dEszOU1IT3loNXlfVjRIRmw4eUw4RnYwanNreHRhQkludTN5X0RGTVVVWWc?oc=5" target="_blank" rel="noopener">Gambling is One of Crypto&#x27;s Fastest-growing Sectors, Reaching USD 14 Billion in Q1 Despite Market Correction</a><div class="meta"><span>TRM Labs</span><span>· 10 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxOdVB0bzdqRFk3dlJZMU55YjM1OHJUSTAwQUM1X3o2RXhHY2Jlb0tDZGRnR1dEYkVnejRxX2JnNHZERXRBV1hPNDN6Z0JBQkVwbGhZWlpDZmVOLWVwd25GMmpQRk9VNWprM2x1aDhLM0Y3WHViWlljZUNjV09EVjFLZzhiSGVZOFRYcl95TjY4M0U3cmROSWxQQTl5b0N2UVNnbXFqZ3p3Zm1PSzBrWktHa3NCUDZOQTJBbDNPOU5DNFIxcVJrWWtGdmhTakgwRTlYWmxLQWhjTkd4LUtKd2hta1lCTlU5VXVRRm1zM0IyVXJWeVVxVHVNRlNCanRJOWc?oc=5" target="_blank" rel="noopener">Top Crypto Coins Breakdown: BlockDAG, Tron, Chainlink &amp; Ethereum Bridge Real Utility &amp; Market Demand</a><div class="meta"><span>StreetInsider</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE0tRG83azF2YmtXMk1CQzkwSW93QTNqcGhXTUxoX2lmeUxKWVlab1hNcEdUT285MkpEd2dqb1ZLemJRMHRWdE1JRzRudEFUdDc4UGFwLXF4eEFyOG5aSm9LUEVzb0RTRW0td0Y3TS05eWtLLTdk?oc=5" target="_blank" rel="noopener">Tron’s TRX is Just Down 25% From All-Time High as Bitcoin Bleeds</a><div class="meta"><span>BeInCrypto</span><span>· 10 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPU25YbzZWaVdNS29sWFZJdFprMXJZdmtMSEdwOC1ndE9pZFBLQWcyci1HZTh3TEpUdnloeE1yT1NlZEFMY3FkWjhaOE96aWVrem5pUm9LcXhraXdENVlscmxOVkVGU29DU1lHTVFoYVJvRWU2Wk12cXRidVNuTmVLdTlXejlyNFlEVVotZDBtLUJvNHpSdEdtbFRYMA?oc=5" target="_blank" rel="noopener">USDT Dominates, Sun Gives Prize, TRX Lands in Moscow: TRON News Roundup</a><div class="meta"><span>Yahoo Finance</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxPYU45WG0wbEFiWmRUM1g1WmpZeTBWRm1RY1drNkdNOEJxWUlhTGVGdE90SWRVR3U0dWdMTlpOQUc2STNYd2c1NzZYRmdHS3plZUdyMmN1em55ak9iZVNmMGVyVk53a3Y0LVRSYndvUXNMZWwySEktdE1HQ0xCU1UtTE96SGdZZTZYaUt6WTNRNEJab21wQWpnTXUzYVNJN2FYYUdMSXhTUGgwS2IwaWpCd09zSUhoeHZfdHQ3TVlHQzhOTG12ZzdKZzZDd3VWMWJKV1JF?oc=5" target="_blank" rel="noopener">Crypto Long &amp; Short: Inside the chain settling $150 billion of stablecoins a week</a><div class="meta"><span>CoinDesk</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNRVFiSkpPZlFZU2hfSHRqekR1eVMwbXlZWFBSaGkzcVFLTHhmN2NFT19iRDhDSkl1TGhScHFMaTZaT0REZWRXQWVKV0x5VVZ2N1ZnNzM4dHJHVl9sNEZYZVJDR1JnVElWdTZaOEtNNGxlS1VMZDg5b1RzYTZuY0ZQM1o1ZHo2d0t6UlNtNC1UNFNTd0RZV1JnNm54NEIwN3plSDYwVnpJN3E0UGFSMDZGU3lveTNaWTlLRGtLdkV6VVMxUQ?oc=5" target="_blank" rel="noopener">TRON Founder Justin Sun Supports Web 4.0 Trend As AI Agents Launch Their Own Crypto Tokens</a><div class="meta"><span>Stocktwits</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQcUZkUlRiMmdBdWRNZ25kZnppMTZ6bHRnd3BpTWJ5eWZtVFlXYVpXdHZfTnFPNW4tSHg2VUpaV29ycEdydUJzZHhNQWE3T3BwNlAzajRjSlVPc0FQVlowRjZ5OXN1WjJsRzZ0RnVOSFgtdFJ2UjlBSE41R2lPRkxISlRxM0lUZ3J5Q0hIakNPX2FIczI3dGFlLUVNN3ZnSUppWnZ6a29EZ0tQMjEwTmlGT0VQSEFGOUU0SlF0NFVUOFZYWkFtSzBRMUU0MXl5RnN4aGgxUW5iZGdtbS1LSnc?oc=5" target="_blank" rel="noopener">Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers</a><div class="meta"><span>The Block</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOZzBrd2I0elFiblc2Z3Rnc1FTMG9pQ1JxRGlOWF91RTgyY2JDMG1ZbnhHUXJHVENBWldPdkEwRGlEY05IUWdXdGM1NkNJWk5hLU16UTRaT2FkT0FTV25uVU5XTlg2RWtEV2lwckZiOExBSG5UTXBRZExtTDI3LXpCWEszNDVGdDY3MWFkSDZ2UHJsQQ?oc=5" target="_blank" rel="noopener">Investors Can Now Invest in the Surging Tron Cryptocurrency Via an ETF. Here&#x27;s What Crypto Investors Need to Know.</a><div class="meta"><span>The Motley Fool</span><span>· 20 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

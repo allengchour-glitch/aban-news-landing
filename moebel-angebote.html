@@ -64,6 +64,7 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .rhead select{border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:.85rem;background:#fff;font-family:inherit;color:var(--ink)}
 .filterbtn{display:none}
 .badge{display:inline-block;background:#fff7ed;border:1px solid #f3dca0;color:#92660a;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 9px;margin-bottom:10px}
+.badge[hidden]{display:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
 .item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,border-color .15s}
 .item:hover{box-shadow:0 18px 40px rgba(40,30,15,.16);transform:translateY(-3px);border-color:#e3d4b6}
@@ -72,6 +73,13 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .item .b{padding:11px 12px;display:flex;flex-direction:column;flex:1}
 .item .t{font-size:.86rem;font-weight:600;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .item .p{color:var(--amber-dk);font-weight:800;font-size:1.05rem}
+.item .chf{color:var(--ink2);font-weight:700;font-size:.86rem;margin-left:4px}
+.item .her{font-size:.74rem;color:var(--muted);margin-top:2px}.item .her.ch{color:#15803d;font-weight:700}
+#plus{display:grid;gap:10px;margin:0 0 14px}
+#plus .kb,#plus .sp,#plus .als{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:.9rem;color:var(--ink2)}
+#plus .kb{border-left:4px solid var(--amber-dk)}#plus .kb a{font-weight:800}
+#plus .sp b{color:var(--ink)}#plus .klein{font-size:.78rem;color:var(--muted);margin-top:3px}
+.zubtrenner{grid-column:1/-1;font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
 .item .m{font-size:.72rem;color:var(--muted);margin:2px 0 9px}
 .item a.go2{margin-top:auto;display:block;text-align:center;background:var(--amber-dk);color:#fff;border-radius:8px;padding:8px;font-weight:700;font-size:.82rem}
 .item a.go2:hover{background:#a04708}
@@ -144,6 +152,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     </div>
     <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
     <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
+    <div id="plus" hidden></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
   </section>
@@ -156,6 +165,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <footer>aban news · Angebote-Suche · Preise &amp; Verfügbarkeit ohne Gewähr · Klicks führen zum jeweiligen Anbieter · © 2026 ·
   <a href="/fahrrad-angebote.html">Fahrrad</a> · <a href="/handy-angebote.html">Handy</a> · <a href="/moebel-angebote.html">Möbel</a> · <a href="/gaming-angebote.html">Gaming</a> · <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
+<script src="/js/angebote-plus.js"></script>
 <script>
 (function(){
   var CATS=[["Alle Kategorien",""],["Elektronik","Elektronik"],["Handy","Handy"],["Computer","Computer"],
@@ -164,6 +174,15 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),badge=$("#badge"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
   var raw=[];
+  /* js/angebote-plus.js: Schweizer Begriffe, Zubehoer nach hinten, CHF, Kaufberater. Fehlt es
+     (Netzfehler), laeuft die Seite wie vorher — eBay-Reihenfolge, EUR. */
+  var PLUS=window.ABAN_ANGEBOTE||null, suchWort="", alsWort="", KURS=null, KURSTAG="", KB=null;
+  if(PLUS){
+    fetch("https://api.frankfurter.dev/v1/latest?from=EUR&to=CHF").then(function(r){return r.json()})
+      .then(function(d){if(d&&d.rates&&d.rates.CHF){KURS=d.rates.CHF;KURSTAG=d.date||"";if(raw.length)render()}}).catch(function(){});
+    fetch("/data/kaufberater-index.json").then(function(r){return r.json()})
+      .then(function(d){KB=d;if(raw.length)render()}).catch(function(){});
+  }
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function priceNum(p){var s=String(p||"").replace(/[^\d.,'’]/g,"").replace(/['’]/g,"").replace(/,/g,"");var f=parseFloat(s);return isNaN(f)?NaN:f}
 
@@ -197,14 +216,31 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     c.innerHTML=parts.map(function(p,i){return '<button type="button" data-i="'+i+'" style="'+CHIP+'">'+esc(p.l)+' <span aria-hidden="true" style="color:#6b7280;font-weight:800">×</span></button>'}).join("")+'<button type="button" data-all="1" style="'+CHIP+';color:#b45309;border-color:#b45309">Alle löschen</button>';
     window.__chip=parts.map(function(p){return p.clr});
   }
+  var EUR=true;
+  function chfText(p){return PLUS&&KURS&&EUR?PLUS.chf(PLUS.preis(p),KURS):""}
+  function renderPlus(items){
+    var box=$("#plus");if(!box)return;var teile=[];
+    if(alsWort)teile.push('<div class="als">Gesucht als <b>„'+esc(suchWort)+'“</b> — eBay Deutschland kennt „'+esc(alsWort)+'“ nicht.'+($("#portals")?' Schweizer Portale unten suchen mit deinem Wort.':'')+'</div>');
+    var kb=PLUS&&KB?PLUS.kaufberater(alsWort||suchWort,KB):null;
+    if(kb)teile.push('<div class="kb">📘 Vor dem Kauf: <a href="'+esc(kb.u)+'">'+esc(kb.t.replace(/\s*[|·].*$/,""))+'</a><div class="klein">Worauf achten, typische Fehler, faire Preise — unser Ratgeber, unabhängig von den Angeboten hier.</div></div>');
+    var sp=PLUS&&$("#sort").value==="rel"?PLUS.spanne(items):null;
+    if(sp){var z=function(n){var c=KURS&&EUR?PLUS.chf(n,KURS):"";return c?c.replace("≈ ",""):n.toFixed(0)+" "+(EUR?"EUR":"")};
+      teile.push('<div class="sp">Typischer Preis für das Produkt selbst: <b>'+esc(z(sp.tief))+' bis '+esc(z(sp.hoch))+'</b>, Mitte '+esc(z(sp.mitte))+
+        '<div class="klein">Aus '+sp.n+' Angeboten ohne Zubehör. Alles deutlich darunter ist oft Zubehör, defekt oder zu schön, um wahr zu sein.'+
+        (KURS&&EUR?' Umgerechnet zum EZB-Kurs vom '+esc(KURSTAG)+' (1 EUR = '+KURS.toFixed(3)+' CHF).':'')+'</div></div>');}
+    box.hidden=!teile.length;box.innerHTML=teile.join("");
+  }
   function render(){
-    var items=applyFilters(raw);renderChips();
+    var items=applyFilters(raw);renderChips();renderPlus(items);
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Keine Treffer — anderes Stichwort oder weniger Filter probieren.";cntEl.textContent="0 Angebote";return}
     statusEl.hidden=true;
+    var trenner=$("#sort").value==="rel",gesetzt=false;
     grid.innerHTML=items.map(function(it){
       var img=it.img?('<div class="ph" style="background-image:url(\''+esc(it.img)+'\')"></div>'):'<div class="ph">🛍️</div>';
       var href=(it.url&&it.url!=="#")?esc(it.url):"#";
-      return '<div class="item">'+img+'<div class="b"><div class="t">'+esc(it.title)+'</div><div class="p">'+esc(it.price||"")+'</div><div class="m">'+esc([it.cond,it.loc].filter(Boolean).join(" · "))+'</div><a class="go2" href="'+href+'" rel="sponsored nofollow noopener" target="_blank">Beim Anbieter ansehen →</a></div></div>';
+      var vor="";if(trenner&&it._zubehoer&&!gesetzt){gesetzt=true;vor='<div class="zubtrenner">Zubehör, Ersatzteile &amp; Ähnliches</div>'}
+      var c=chfText(it.price),h=PLUS?PLUS.herkunft(it.loc):null;
+      return vor+'<div class="item">'+img+'<div class="b"><div class="t">'+esc(it.title)+'</div><div class="p">'+esc(it.price||"")+(c?'<span class="chf">'+esc(c)+'</span>':'')+'</div><div class="m">'+esc(it.cond||"")+'</div>'+(h?'<div class="her'+(h.ch?' ch':'')+'">'+esc(h.text)+'</div>':'<div class="m">'+esc(it.loc||"")+'</div>')+'<a class="go2" href="'+href+'" rel="sponsored nofollow noopener" target="_blank">Beim Anbieter ansehen →</a></div></div>';
     }).join("");
     cntEl.textContent=items.length+" Angebote";
   }
@@ -221,8 +257,12 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var cat=document.querySelector('input[name="cat"]:checked');
     var term=q||(cat&&cat.value)||"";try{saveRecent(term)}catch(e){}
     cntEl.textContent="Suche „"+(term||"Angebote")+"“ …";skeleton();
-    fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
-      badge.hidden=!d.demo;if(d.currency){var cl=document.querySelector(".curlbl");if(cl)cl.textContent=d.currency}raw=d.items||[];render();
+    var bg=PLUS?PLUS.begriff(term):{q:term,geaendert:false};
+    suchWort=bg.q;alsWort=bg.geaendert?term:"";
+    fetch(ebayUrl(bg.q)).then(function(r){return r.json()}).then(function(d){
+      badge.hidden=!d.demo;if(d.currency){var cl=document.querySelector(".curlbl");if(cl)cl.textContent=d.currency}
+      EUR=!d.currency||d.currency==="EUR";
+      raw=PLUS&&!d.demo?PLUS.ordne(d.items||[],bg.q):(d.items||[]);render();
     }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden. Bitte später nochmal.";cntEl.textContent=""});
   }
   var pTimer;function searchSoon(){clearTimeout(pTimer);pTimer=setTimeout(search,450)}

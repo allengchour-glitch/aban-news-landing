@@ -14,7 +14,6 @@
   <meta property="og:title" content="Nasdaq Composite (Nasdaq) — price, 30-day chart &amp; AI sentiment | aban news">
   <meta property="og:description" content="Nasdaq Composite (Nasdaq): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -32,8 +31,8 @@
       color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
     img,svg{max-width:100%;display:block}a{color:inherit}
     .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
-    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
-    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:8px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 14px 0;font-weight:700;text-decoration:none}
     .skip:focus{left:0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -47,7 +46,7 @@
     .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
 
     /* header */
-    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:30;background:rgb(255,250,242);border-bottom:1px solid var(--line)}
     header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
     .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -82,24 +91,24 @@
     .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
     .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
-    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:14px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
 
     /* sections */
     .sec{padding:clamp(2rem,5vw,3.4rem) 0}
     .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
-    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:8px;background:var(--amber)}
     .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
     .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -165,7 +177,7 @@
     .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
 
     /* CTA band */
-    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:14px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
     .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
     .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
     .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -209,10 +221,13 @@
     .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
     .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
-    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -255,7 +271,7 @@
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
       .mtable tbody,.mtable tr,.mtable td{display:block}
       .mtable tr.catrow{margin:1.2rem 0 .6rem}
-      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr.catrow td{border:0;border-radius:14px}
       .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
       .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
       .mtable tr.morerow{margin:0 0 .9rem}
@@ -309,10 +325,10 @@
       <a class="backlink" href="/en/maerkte.html">← All markets</a>
       <h1>Nasdaq Composite <span class="hl">Nasdaq</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="nasdaq" data-type="index">25’810 Pkt</span>
-        <span class="chg up">+2.54 %</span>
+        <span class="px" id="livePrice" data-id="nasdaq" data-type="index">26’936 Pkt</span>
+        <span class="chg down">-0.69 %</span>
         <span class="tag-type">Index</span>
-        <span class="badge bullish">Bullish</span>
+        <span class="badge bearish">Bearish</span>
       </div>
       <p class="disclaimer">⚠️ Not investment advice. Index is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.</p>
     </div>
@@ -322,11 +338,11 @@
     <div class="wrap">
       <span class="eyebrow">30-day history</span>
       <h2>Price history</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">27’094</text><text x="586" y="204" font-size="12" fill="#64748b">25’170</text><path d="M10.0,200 L10.0,109.3 L37.1,78.3 L64.3,55.3 L91.4,95.8 L118.6,109.0 L145.7,130.8 L172.9,91.3 L200.0,89.1 L227.1,84.0 L254.3,53.2 L281.4,51.4 L308.6,27.4 L335.7,22.0 L362.9,10.7 L390.0,10.0 L417.1,33.7 L444.3,36.0 L471.4,146.7 L498.6,124.9 L525.7,149.7 L552.9,200.0 L580.0,136.8 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,109.3 37.1,78.3 64.3,55.3 91.4,95.8 118.6,109.0 145.7,130.8 172.9,91.3 200.0,89.1 227.1,84.0 254.3,53.2 281.4,51.4 308.6,27.4 335.7,22.0 362.9,10.7 390.0,10.0 417.1,33.7 444.3,36.0 471.4,146.7 498.6,124.9 525.7,149.7 552.9,200.0 580.0,136.8" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="136.8" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="136.8" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">As of: 2026-06-12 · crypto updates live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">27’122</text><text x="586" y="204" font-size="12" fill="#64748b">25’978</text><path d="M10.0,200 L10.0,199.7 L38.5,171.3 L67.0,174.8 L95.5,106.5 L124.0,129.6 L152.5,134.8 L181.0,179.8 L209.5,160.2 L238.0,99.4 L266.5,112.2 L295.0,126.4 L323.5,154.3 L352.0,182.8 L380.5,141.1 L409.0,165.4 L437.5,199.5 L466.0,200.0 L494.5,126.9 L523.0,109.6 L551.5,10.0 L580.0,40.9 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,199.7 38.5,171.3 67.0,174.8 95.5,106.5 124.0,129.6 152.5,134.8 181.0,179.8 209.5,160.2 238.0,99.4 266.5,112.2 295.0,126.4 323.5,154.3 352.0,182.8 380.5,141.1 409.0,165.4 437.5,199.5 466.0,200.0 494.5,126.9 523.0,109.6 551.5,10.0 580.0,40.9" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="40.9" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="40.9" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">As of: 2026-09-23 · crypto updates live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Key figures</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">At a glance</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg up">+2.54 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg down">-3.81 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg down">-1.07 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">27’094 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">25’170 Pkt</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-0.69 %</span></span></div><div class="kpi"><span class="kl">7 days</span><span class="kv"><span class="chg up">+3.67 %</span></span></div><div class="kpi"><span class="kl">30 days</span><span class="kv"><span class="chg up">+3.68 %</span></span></div><div class="kpi"><span class="kl">30d high</span><span class="kv">27’122 Pkt</span></div><div class="kpi"><span class="kl">30d low</span><span class="kv">25’978 Pkt</span></div></div>
     </div>
   </section>
 
@@ -335,11 +351,11 @@
       <span class="eyebrow">Experimental · AI assessment</span>
       <h2>AI sentiment</h2>
       <div class="card" style="max-width:680px">
-        <div class="chead"><span class="cname">Nasdaq Composite · Nasdaq</span><span class="badge bullish">Bullish</span></div>
-        <p class="csignal">Positive Bewegung, SpaceX-Aufnahme.</p>
-        <p class="crat">Der Nasdaq Composite zeigt positive Bewegungen, und SpaceX könnte bald in den Index aufgenommen werden.</p>
+        <div class="chead"><span class="cname">Nasdaq Composite · Nasdaq</span><span class="badge bearish">Bearish</span></div>
+        <p class="csignal">Nasdaq beendet Rekordserie, fällt, Renditen steigen.</p>
+        <p class="crat">Der Nasdaq Composite beendet seine Rekordserie und fällt, während die Treasury-Renditen steigen.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Der Nasdaq Composite zeigt positive Bewegungen, und SpaceX könnte bald in den Nasdaq-100 aufgenommen werden.</li><li>Risiko: Keine direkten Risiken in den News, aber die Abhängigkeit von SpaceX-IPO-Erwartungen könnte volatil sein.</li><li>Einordnung: Die Nachrichtenlage ist positiv, mit Aufwärtstrends und potenziellen Neuzugängen im Index.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">In-depth analysis</h3><ul class="analysis"><li>Treiber: Keine spezifischen positiven Treiber aus den Nachrichten ersichtlich.</li><li>Risiko: Der Nasdaq beendet seine Rekordserie und fällt, während die Treasury-Renditen auf das höchste Niveau seit 2007 steigen.</li><li>Einordnung: Trotz vorheriger Höchststände ist die aktuelle Stimmung aufgrund fallender Kurse und steigender Renditen negativ.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News on Nasdaq</span>
       <h2>Latest headlines</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMioAJBVV95cUxQU2xVRXIzX1lsSzRaZTlfVFBuLXZSMVYzSFk4c2tBMmZST1k1Vkh2b0FhU2o5VEo0d0Z5cnN6MXRxN3MtTm04Wm0ySUFqU0ZOaWx0ZDI3REFBYmxHRkRaVVRsQ0U3SGgtNF9sZ09VNXNYZFE2R0diTmxOVjN4ZXZXVExiMkJrOTk2eDAxMzlWdFZCMk1ZdEZCS1NiZDFQRDR3VHF1SERZN0FFWU5xRS1IbE1teG9aMVZUVFp2bmRyV0dVWlNXbFN1Z0dnbGg3cDRua1pyUmh1bHlxU3hZbmJzZGVST2JVRzlMZDQyelJiMk13OVk1ZU5fMC1VQ3gtWjBLMXJFZlFoS3hxSWNaUkY3Q3A2bDM3MEVoQUFsM2Fna3Y?oc=5" target="_blank" rel="noopener">Nasdaq Composite Index (.IXIC)</a><div class="meta"><span>Moomoo</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNT25VQ1d3S0NjTk9wNVp4NjhfSDM4ZHhfU0loaG16SnhId3ZrSU0tc25hRTFtdnVRbDZ6YTZFQ1pvVmVmSDEwMXZmQldIeXIzWU15ZzJhdVVHa1ljbjhLQnY5Nkl0WVFXT25pU2I1cGV5M1pHTUtES2xCT1BRZ1BpRnRRUmtBUkNiSDIxLTdZcTlQZw?oc=5" target="_blank" rel="noopener">Rocket Lab’s Nasdaq-100 entry puts space firm among Nasdaq’s 100 largest</a><div class="meta"><span>Stock Titan</span><span>· 12 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPOWhCblQ4WENHYjhIRUFyT3N4Q24zZFd4RTEyRmF5VktOWE1yRlI0R2VFMklqTXdrR0o5WEl4dExWYmpOaEotcW9WSU1oY3ZGaVZ1MkE5QzhnZmNCTkZwMUxXZWtVeXpnd0VLTHlWVF9iV1AwNmNNaDBjSGxLRWUwSUpEUmZxNnVYUGxzUnhFM0RENVdDcnp3R21uZFk1UF9TelNhQm41Z3RPZ3V6VkhLZjV5WjVWZw?oc=5" target="_blank" rel="noopener">Stock Market Today: Dow Soars 900 Points As Trump Axes Attack Plans; Caterpillar, Space Names Rally</a><div class="meta"><span>Investor&#x27;s Business Daily</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi4AFBVV95cUxOREhoanFWSkFDT2xXZlhFSmJqMlRxaFAtaHkyZUp2OTZoaFZ2dUpfRmstR0c4YVFqWnE5N1d5MzNhN2F5RjlpQmNNc3U1VWp5RkNJejJZUzdjQTV0RElaSEhCTjhnd2kwdEFmZS1SeEFLaW1PakxPbnRiSldmMGdORDFKalNyWEhDSHFHZFJYTXVZSzR3ZVlEZlQ5M0FXaEpPcEJFX2VUdjVQVXNMWkVDSDVLcFV2eURJcDg4eVBRRGRpQkpqVHhUTmstMTh5bDMyeExVdE5Cem1VUlczdURMbA?oc=5" target="_blank" rel="noopener">How major US stock indexes fared Thursday 6/11/2026</a><div class="meta"><span>KVUE</span><span>· 11 Jun 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi4AJBVV95cUxPUHJBUENGbUxiaVpITVZnaTdlWV93SHBuZl9Nek0zbE1HTGhfTldhSy1TVXd1bmpMYk95b0dsbHpXVldZUEZDbzA0bkxhdXJhaEUyb0l0WUdaN3p1RWZ6d1pDdjFFWlhsT1NSUGIwNTZQcFFoYktUMXFBbkNpMFliQ3VUM1p6SFRiZzN4RzM5Wi13eWtibjAyWk5CdjVnTEJyWngzZXhNMDdzREViLXhYMGwtdDF2M0I0QURFajdwZXQ5NHdYNzFndnNaeVBRcXNBRllWNWYtUTFGTzY2SVhCY1lTR01tMEZJSE5UNmczQVhrZmNfVXFWUkxNVzR4cjNNTEdCOW1FTUotNWNtMHFfOW5ObndiS2M4X2YwYk5wVGpKQUxFa2Z5alJTd0s2SE5ScFZiOVdkVHlhc2VyUXdWOUY2SlZ4NXZERVNVcDJxWUNYRWktVHpnaDR5QzlyVzNH?oc=5" target="_blank" rel="noopener">$Nasdaq Composite Index (.IXIC.US)$</a><div class="meta"><span>Moomoo</span><span>· 11 Jun 2026</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE55SE52Znc2bUEzcnF5ZWFEanBnTWVFZHhMY0xuc2JVbGpLV0JoMVkzRUZfTFRabWpDUEJOSlBYV0tPZEo1ZHNQUW8xSGJtOG9BSGFucFV3?oc=5" target="_blank" rel="noopener">NASDAQ Composite (^IXIC) Charts, Data &amp; News - Yahoo Finance</a><div class="meta"><span>Yahoo! Finance Canada</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNOGxFekZlaXlzWmVmc0xVbTFWZExULWJmRVQtTkwwQmZWRjBxVU8wakpyMWFESUdvQnEtd2NXSnJ2LVZieTRwTEU0QmRvbGkzZmd3MTczM1lVMjlIRmxJMG9YbXg4czFXNFh2Yk5HWGVUVE9VWnBDTWJob2VzcWlMY2gwYkYwWnF0dS1GRTVaRkY2S2dBNjIyUTB3c9IBoAFBVV95cUxPekEteFZGUWFkdmJ4SUJDSU9NSVpJODc5YkRadGtIWWdxdVhlbl9TQnZCS2JxX0NvRzh3ZDFEQzE2Z2pUQ2ZTVDdaTEI0SUQ5cDM0bVdVcTRaWGhpcnZpemVuQ1RQdjd2LWFyejhEQU1DOUJwTjZ3bWNZbXdXOXZEdTVBaDNMVzJ4bXZ3dHFNZE5CcWVlQ1lZaHZhdFppdGZT?oc=5" target="_blank" rel="noopener">How major US stock indexes fared Wednesday 9/23/2026</a><div class="meta"><span>abcnews.com</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNWklPaEhrbGw0OG1Wb2NTTWhMUlJydm40VnJlYl9ObXBmTE5Hc3hLaTZrRml1dWIxbjNOS2VTVVdnZmFrck5MdGpPS29YR1ZpMkY5VjFxZE5FekhOdUZGMFNwRENkQ01tY1RhMVhXMXVZWVpaRll5YU85N3JSTTlra3FFdjN1YnFTbUhDSGtYcWxUVmhRYkJ3?oc=5" target="_blank" rel="noopener">The Economy Is Booming, So the Market Indexes Fell. Go Figure.</a><div class="meta"><span>The Motley Fool</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPeldQYzhIOGlDTGF0bWRPSDgwZWVycVp3WXViREVUWkl2dXExX1htZW91d3VhRi13UDBvZGp5a3lHQzlzbnNqMHZ5MnlzV3I3Ukt0aG1wNGJoMEpwQ0ktclNCRUFKRlRCdGhhUjJtVDVzYXFRc0dfcDV5NWk5WGh3dDhlbXhja0FRUUxKV1dRc0xOVktjZVc1cA?oc=5" target="_blank" rel="noopener">Nasdaq ETF (ONEQ) Hits New 52-Week High</a><div class="meta"><span>TradingView</span><span>· 23 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPeHpTeHdzUzRDT2hXc052OG13c3p1LXR2QWx2MlJFNF9ZcHNYQTVmNnI5eGZUVXgwd20yUW1CMlBieURxX3RDUkdQOVIyRHQwLWVReHVVZWRGY0kyaGhVdUJ1NnlqNkxBTHlHQjkyeGpnTFlwMlVmekIzNWJGVjAzZzg4XzVjc0JhUHlvR1BuTUx5ZTVfX1NuaU5VTmRrVmN5Snd5RWxvSnlXbnBq0gGyAUFVX3lxTE44TFdKYmIzVjZkam5ELVZnSkJPSEZ0YjVRUDdIUVZfckxDdFl0QVRHWWRpamN6UE04NnpFLXExdlRtZ0s2N0d6a3YzUktXczM0eFd2Q0ctNTJqUkU2LWRIaE15M1lIcUowUENmM3hDd09PdHpHSzdEeXdNWFg0Z1NQWTlSdjNSMUFhZEtDckFScDlFSV9GY0F1UE1xOG42cUpSZGl2Q1Z6YUtuTjBZQlRSV0E?oc=5" target="_blank" rel="noopener">Wall Street’s Nasdaq hits all-time high as AI frenzy gathers pace</a><div class="meta"><span>Al Jazeera</span><span>· 23 Sep 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/en/maerkte.html">← Back to markets overview</a> · <a href="/ki-und-krypto-daten.html">AI &amp; crypto in numbers →</a></p>
     </div>
   </section>

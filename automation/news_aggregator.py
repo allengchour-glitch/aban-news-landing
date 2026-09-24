@@ -51,7 +51,18 @@ HERE = Path(__file__).resolve().parent
 def fetch(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": "aban-news-bot/1.0"})
     with urllib.request.urlopen(req, timeout=15) as r:
-        return r.read().decode("utf-8", "ignore")
+        roh = r.read()
+        kopf = r.headers.get_content_charset()
+    # ⚠️ GEMESSEN 2026-09-23: Golem liefert ISO-8859-1. Fest „utf-8, ignore" verschluckte jeden
+    # Umlaut still („Probleme lsen", „Fr KI-Wearables"). Zeichensatz aus dem HTTP-Kopf oder der
+    # XML-Deklaration nehmen, erst dann UTF-8.
+    m = re.match(rb'\s*<\?xml[^>]*encoding=["\']([A-Za-z0-9_.-]+)', roh)
+    for cs in filter(None, [kopf, m.group(1).decode() if m else None, "utf-8"]):
+        try:
+            return roh.decode(cs)
+        except (LookupError, UnicodeDecodeError):
+            continue
+    return roh.decode("utf-8", "replace")
 
 
 def _tag(block: str, *names: str) -> str:
@@ -61,7 +72,10 @@ def _tag(block: str, *names: str) -> str:
             t = m.group(1)
             t = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", t, flags=re.S)
             t = re.sub(r"<[^>]+>", "", t)
-            return html.unescape(t).strip()
+            # Manche Feeds (Google AI) liefern Tags zusätzlich escaped (&lt;img src=…&gt;): nach dem
+            # Entschlüsseln nochmals entfernen — sonst stand „<img src=" im Anriss auf der Startseite.
+            t = re.sub(r"<[^>]*>?", "", html.unescape(t))
+            return re.sub(r"\s+", " ", t).strip()
     return ""
 
 

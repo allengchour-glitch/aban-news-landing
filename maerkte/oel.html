@@ -14,7 +14,6 @@
   <meta property="og:title" content="Rohöl WTI (Öl (WTI)) — Kurs, 30-Tage-Chart &amp; KI-Sentiment | aban news">
   <meta property="og:description" content="Rohöl WTI (Öl (WTI)): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -67,6 +66,16 @@
       header .wrap{flex-wrap:wrap;row-gap:.45rem}
       .hnav{justify-content:flex-end}
     }
+    /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
+       und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:
@@ -93,13 +102,13 @@
     .updated{font-size:.82rem;color:var(--muted);margin:0}
     .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
     .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
-    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.85rem;color:var(--muted);padding:.6rem .85rem;transition:.15s;min-height:36px}
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
     /* Kategorie-Filter-Tabs */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
-    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.9rem;padding:.6rem .95rem;border-radius:999px;transition:.15s;min-height:38px}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
     .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
     .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
@@ -114,7 +123,7 @@
     .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
     .mtable tbody tr:last-child td{border-bottom:0}
     .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
-    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-link{text-decoration:none;color:inherit;display:block;padding:.35rem 0;min-height:36px}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
     .asset-name{font-weight:800}
     .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
     .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
@@ -124,7 +133,10 @@
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
     /* Marktstimmung + Top-Mover */
-    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    /* ⚠️ minmax(0,…) statt 1fr: "1fr" heisst minmax(AUTO,1fr), und auto schrumpft
+       nicht unter die Mindestbreite des Inhalts. Deshalb lief die Seite bei 320px um
+       20px waagerecht ueber — die Karte war 162px breit und endete bei 340. */
+    .mood{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
     .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
@@ -197,7 +209,7 @@
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
     /* Watchlist-Stern */
-    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.5rem .55rem;margin:-.3rem -.2rem;border-radius:8px;color:var(--line);transition:color .12s,transform .12s;min-height:36px}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
@@ -211,7 +223,10 @@
     .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
     .field input,.field select{border:1.5px solid var(--line);border-radius:14px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
     .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    /* Dieselbe Falle wie bei .mood: ein <input> bringt eine Mindestbreite mit, zwei
+       davon passten bei 1000px nicht nebeneinander — gemessen +169px Ueberlauf,
+       obwohl der Umbruch auf eine Spalte erst bei 860px greift. */
+    .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.7rem}
     .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:14px;font-weight:800;font-size:1.05rem}
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
@@ -247,6 +262,7 @@
       .tools,.abo{grid-template-columns:1fr}
       .netgrid{grid-template-columns:1fr}
       .frow{grid-template-columns:1fr}
+      .mood{grid-template-columns:1fr}   /* stapeln wie .cards/.tools/.netgrid daneben */
     }
     @media(max-width:560px){
       /* Kurstabelle wird auf dem Handy zu gestapelten Karten (kein Querscrollen) */
@@ -276,13 +292,13 @@
     .muted{color:var(--muted)}
     .backlink{display:inline-block;margin:.4rem 0 0;color:var(--amber-dk);font-weight:700;text-decoration:none}
     .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem;margin-top:1.4rem}
-    .kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
+    .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.2rem}
     .kpi .kl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
     .kpi .kv{font-weight:800;font-variant-numeric:tabular-nums}
     .analysis{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem;max-width:680px}
-    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:14px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
+    .analysis li{background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:.7rem .9rem;font-size:.95rem;color:var(--ink)}
     .relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:1.4rem}
-    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
+    .relcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink)}
     .relcard:hover{border-color:var(--amber);color:var(--amber-dk)}
     .relcard .rn{font-weight:800}.relcard .rs{color:var(--muted);font-size:.85rem}
   </style>
@@ -309,8 +325,8 @@
       <a class="backlink" href="/maerkte.html">← Alle Märkte</a>
       <h1>Rohöl WTI <span class="hl">Öl (WTI)</span></h1>
       <div class="detail-hero">
-        <span class="px" id="livePrice" data-id="oel" data-type="commodity">84.12 USD</span>
-        <span class="chg down">-4.09 %</span>
+        <span class="px" id="livePrice" data-id="oel" data-type="commodity">92.71 USD</span>
+        <span class="chg down">-1.99 %</span>
         <span class="tag-type">Rohstoff</span>
         <span class="badge bearish">Bearish</span>
       </div>
@@ -322,11 +338,11 @@
     <div class="wrap">
       <span class="eyebrow">30-Tage-Verlauf</span>
       <h2>Kursverlauf</h2>
-      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">108.66</text><text x="586" y="204" font-size="12" fill="#64748b">84.12</text><path d="M10.0,200 L10.0,60.2 L35.9,69.2 L61.8,68.0 L87.7,35.1 L113.6,10.0 L139.5,16.9 L165.5,90.5 L191.4,105.3 L217.3,103.4 L243.2,124.4 L269.1,164.7 L295.0,163.0 L320.9,174.9 L346.8,137.8 L372.7,125.4 L398.6,107.9 L424.5,130.9 L450.5,150.3 L476.4,144.4 L502.3,168.4 L528.2,154.2 L554.1,172.2 L580.0,200.0 L580.0,200 Z" fill="rgba(220,38,38,.10)" stroke="none"/><polyline points="10.0,60.2 35.9,69.2 61.8,68.0 87.7,35.1 113.6,10.0 139.5,16.9 165.5,90.5 191.4,105.3 217.3,103.4 243.2,124.4 269.1,164.7 295.0,163.0 320.9,174.9 346.8,137.8 372.7,125.4 398.6,107.9 424.5,130.9 450.5,150.3 476.4,144.4 502.3,168.4 528.2,154.2 554.1,172.2 580.0,200.0" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="200.0" r="6" fill="#dc2626" opacity="0.18"/><circle cx="580.0" cy="200.0" r="3.4" fill="#dc2626"/></svg></div>
-      <p class="updated" style="margin-top:.7rem">Stand: 2026-06-12 · Krypto aktualisiert live.</p>
+      <div class="chartbox"><svg viewBox="0 0 640 210" width="100%" role="img" aria-label="30-day price history" style="display:block"><line x1="10" y1="10" x2="580" y2="10" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><line x1="10" y1="200" x2="580" y2="200" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/><text x="586" y="14" font-size="12" fill="#64748b">105.83</text><text x="586" y="204" font-size="12" fill="#64748b">82.23</text><path d="M10.0,200 L10.0,177.6 L37.1,199.0 L64.3,200.0 L91.4,189.5 L118.6,190.6 L145.7,171.6 L172.9,135.7 L200.0,129.3 L227.1,127.0 L254.3,125.5 L281.4,113.1 L308.6,88.7 L335.7,37.0 L362.9,56.5 L390.0,45.7 L417.1,10.0 L444.3,37.4 L471.4,41.6 L498.6,54.5 L525.7,90.9 L552.9,100.5 L580.0,115.6 L580.0,200 Z" fill="rgba(15,157,107,.12)" stroke="none"/><polyline points="10.0,177.6 37.1,199.0 64.3,200.0 91.4,189.5 118.6,190.6 145.7,171.6 172.9,135.7 200.0,129.3 227.1,127.0 254.3,125.5 281.4,113.1 308.6,88.7 335.7,37.0 362.9,56.5 390.0,45.7 417.1,10.0 444.3,37.4 471.4,41.6 498.6,54.5 525.7,90.9 552.9,100.5 580.0,115.6" fill="none" stroke="#0f9d6b" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="580.0" cy="115.6" r="6" fill="#0f9d6b" opacity="0.18"/><circle cx="580.0" cy="115.6" r="3.4" fill="#0f9d6b"/></svg></div>
+      <p class="updated" style="margin-top:.7rem">Stand: 2026-09-23 · Krypto aktualisiert live.</p>
       <span class="eyebrow" style="margin-top:1.6rem;display:inline-flex">Kennzahlen</span>
       <h2 style="font-size:clamp(1.2rem,2.6vw,1.6rem)">Im Überblick</h2>
-      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-4.09 %</span></span></div><div class="kpi"><span class="kl">7 Tage</span><span class="kv"><span class="chg down">-7.09 %</span></span></div><div class="kpi"><span class="kl">30 Tage</span><span class="kv"><span class="chg down">-17.67 %</span></span></div><div class="kpi"><span class="kl">30T-Hoch</span><span class="kv">108.66 USD</span></div><div class="kpi"><span class="kl">30T-Tief</span><span class="kv">84.12 USD</span></div><div class="kpi"><span class="kl">Volumen</span><span class="kv">52’539</span></div></div>
+      <div class="kpis"><div class="kpi"><span class="kl">24 h</span><span class="kv"><span class="chg down">-1.99 %</span></span></div><div class="kpi"><span class="kl">7 Tage</span><span class="kv"><span class="chg down">-9.49 %</span></span></div><div class="kpi"><span class="kl">30 Tage</span><span class="kv"><span class="chg up">+9.06 %</span></span></div><div class="kpi"><span class="kl">30T-Hoch</span><span class="kv">105.83 USD</span></div><div class="kpi"><span class="kl">30T-Tief</span><span class="kv">82.23 USD</span></div><div class="kpi"><span class="kl">Volumen</span><span class="kv">350’772</span></div></div>
     </div>
   </section>
 
@@ -336,10 +352,10 @@
       <h2>KI-Sentiment</h2>
       <div class="card" style="max-width:680px">
         <div class="chead"><span class="cname">Rohöl WTI · Öl (WTI)</span><span class="badge bearish">Bearish</span></div>
-        <p class="csignal">Preisrückgang, negative Prognosen.</p>
-        <p class="crat">US-Raffinerien kaufen venezolanisches Rohöl zu stark reduzierten Preisen, und BofA warnt vor einem Rückgang unter 50 USD.</p>
+        <p class="csignal">Rohölbestände steigen, Preise fallen, EIA erhöht Prognose.</p>
+        <p class="crat">Die US-Rohölbestände steigen stark an, während die Preise fallen, und die EIA ihre Ölpreisprognose erhöht.</p>
       </div>
-      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">Ausführliche Analyse</h3><ul class="analysis"><li>Treiber: US-Bestände an Rohöl und Produkten steigen, was auf ein Überangebot hindeutet.</li><li>Risiko: BofA warnt vor einem möglichen Rückgang des Rohölpreises unter 50 USD.</li><li>Einordnung: Die Nachrichtenlage ist überwiegend negativ, mit Anzeichen von Überangebot und negativen Preisprognosen.</li></ul>
+      <h3 style="margin:1.6rem 0 0;font-size:1.05rem">Ausführliche Analyse</h3><ul class="analysis"><li>Treiber: Die EIA erhöht ihre Ölpreisprognose, was auf eine erwartete Preissteigerung hindeutet.</li><li>Risiko: Die US-Rohölbestände steigen stark an, und die Preise fallen, was auf ein Überangebot hindeutet.</li><li>Einordnung: Trotz einer erhöhten Prognose belasten steigende Bestände und fallende Preise die aktuelle Stimmung.</li></ul>
     </div>
   </section>
 
@@ -347,7 +363,7 @@
     <div class="wrap">
       <span class="eyebrow">News zu Öl (WTI)</span>
       <h2>Aktuelle Schlagzeilen</h2>
-      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUkZueEVqblVxaGRqelREd1VCU3BtZWc0SG5QYjY4WXEyMnFhUjByUVJ6dDhZN3Y5dkxlQk1jZkhKYnA5NWFnUUYtODJqYWk0UFQxNGdvLXpsUnhLem1OSW9UcUlkOW1QSjVMZFh6OFNhdl85ci1EV3JKOEVXWjBNOWVMTTFQUXJ4ejI2bU5uNjVuZW9paUpBR0h0aE5mQXlLWC0zQVFXTUJOd9IBrwFBVV95cUxNQ0Y4eFdjT0JOdTJJUzdmVUhxcDZlbmlEV1NXMlZKWmZ2SmZBamVRVU5lTVRwelo0cURJRkdVenFzZ245cWw1b0Vsd3FpeEY3UlFrTmpyT1pabkRhODBPQkdWVzRib1lXZEJ4NnhNSEFBbUV6MHdGdDdLXzQwa1RnRnhnMmt0N1hzdGZLdnR6QmstTEIyTHItMnRSaTFuOUU3dXo2eExwc29GeGh6bzUw?oc=5" target="_blank" rel="noopener">US Sees Big Gains in Crude Oil, Product Inventories</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 21 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxPZy01cXVzbkxXTXJIbEttcHh0NndMNjIxMVlic0Q3TDBZQjBsZXVDOWdKRGRJYllpTkdPUXdHT2RWVTdyakNxQWhocUpOMzNJZldQcTA1N2RBUEZycHF0UDVZXzZNRTZrZE8xNF9vNUV0eVVLaFpRUWpUYlpnWkhvaVFXdTBpaEJlLWZmdE9GbDU4dWVzR3RSSWtkRnZIOF9Ca3JKbm5wbEI4ZmZlaGw5WdIBtgFBVV95cUxORWFVcU90TDV6Vm1TdTZhOWdPbTc3QWdzNVBYbzBZeVJJODVNY05VallrcEQ2QVZWNVVQcU5yWVN3bk12bUY0aElRZFl6dVlCTVQwcGxlaTE0RGVtb0xqd2NsdE02Q2RTWUR1alJyaVRONTJWTUVGYVZuZUVKTlhuQWVSY1ZOX1VUeXhYM2F1X0p3d2tKX0tibUlaR3VPTHRmN3NOMExSYWd6YlNNdUNmUDZLSjNOZw?oc=5" target="_blank" rel="noopener">U.S. Refiners Snap Up Venezuelan Crude at Steep Discounts</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 22 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBRQ0JiejB1OWUzR2NzRFdWdEptejhPUkZhOGdmN2tGblpzdU5XTDN5VXczTmRTZUpOV0tHOTFBZW9rQld4MHNKazdnUmxQMjRtUW5wM1RELWlsa1VRQTN2ZExZQQ?oc=5" target="_blank" rel="noopener">A look back at our forecast for global crude oil prices in 2024</a><div class="meta"><span>U.S. Energy Information Administration (EIA) (.gov)</span><span>· 17 Jan 2025</span></div></li><li><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxOMFlxVGRvVDhHRzJvZ3hxYV91dEhPQWc1UXVtZlpSdENNdENpY19kdWVNbUQxcFlRM09tUHpWRVptOWdwVnUzeFZ3TUFjVVd6REQtekJ0bms3X3hack1MUmtmSm9GT28zaVNsVVN0Q0d1Mi1OajFVZVdpSW9neFVOVFN2aU5OZFdiLUxHMTdUT2swVExDNEdIUXZ6REQ3Tlc4TEphaTMzUE9abGhpMFRvbVFiaTlyU3VpX3NmTnFVMEUySHpKSEJRNXczNUNUTFJZZ0xfeXBIaUJOSjc4MFE?oc=5" target="_blank" rel="noopener">FACTBOX: Venezuela&#x27;s oil industry is operating after US seizes Maduro</a><div class="meta"><span>S&amp;P Global</span><span>· 03 Jan 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxNeEpDYkE3bl9VYUpVZ204Rm1WdGZmU205RU93cHBUZ0s1NDhEMlllcGF5M3NGTU5RaG1iVEsxTU9qSkFVT2lRVWcxY0t1RmhabzNKc2VGZXJnMGt0U3pmSS0tN2VhWlo5akhaMjd0dmx1TUpMZkVsMXFrVW9QcXFURUFlcHFnZFB3dHp30gGQAUFVX3lxTE9VLTFCb0RvQmQtdl9XZG4xSG40Mnd2dHJzeGhDWU8zNFd5U3VzUFd3dHBHWFhMLTNWNFl3VjRWUzViRDlFaks4dHhZSGN0WXVUNGZJNTNZb0s4QlJ4dGlDQ09KcjFObnI5Y0JxVTVaSUw2UGlKMkxnNXV1ZjZ2ZVZ1a0Zsd1ZncUtkbUhHZlRuQg?oc=5" target="_blank" rel="noopener">Crude Oil Could Fall Below $50, BofA Warns</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 15 Oct 2025</span></div></li></ul>
+      <ul class="news"><li><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE55MmI1QXRVV2dSQm11MnRGdlluWmhDUmkxajVxakUtX3Y0djBFLWhnQmFwQ1cySWNpdmwyOURnUDNfbDRvNS0wV1daZDJQVS1SbzkwRlc0NlhHZnRBclF3dFpR?oc=5" target="_blank" rel="noopener">Current price of oil as of September 8, 2026</a><div class="meta"><span>Fortune</span><span>· 08 Sep 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxPQkRyY2NDejAtTlBDN1NHdmpqZkdRUnBRY2JuWjBFZXl3OTFfZTY3d094alotdDFzRVNmNHAtOTh6c1h2TzJMY21PdXUxLTF5U2RBM3lZQUd5aHVhWGlYc0JvVmlPbUZFeFh5M2R6U3JZTE9aQXN3RmpYZnhhSldTaWMwSlBNMGZaRUJuaWVXejJZQmJ2M2RLdFd6V0Zsc3BOSU5KSE1OcTNJUFZKc2xDZUZMZzg1UQ?oc=5" target="_blank" rel="noopener">U.S. crude inventories surge 📈 EIA raises oil price forecast</a><div class="meta"><span>XTB.com</span><span>· 12 Aug 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQMlZzYWRld1RjTUZ3LWZGRTBiTWlLX0xwRVh1ODh2WGJ0ZzN1cnhxQ3RaeU5DbUlrNFUwRmtpX2YxRVBDQm1sWmRYQ29lWGt0enlpWE9jeTZvZHNPUklhel9CWFVrcDlrMEdqUGRUcGRGeWZOTkY4Wi1XU0RsWVRob2xVMGVKUmRxMXYzUEpWVy1pX21UMllOakFZU2dUU3NEcWhkOUw1M0FjYjJiNnhKbkdQeUYzRGPSAbwBQVVfeXFMUEd3bkg4RF9SOHNSZ29tdllZa1pWRUQ3TzhRdThMNi0yMW81Tm9LX2pycVE0WnUyT0VkOEtaSnBfZFZmTFl2QTh0Q2ticjZaZUMwUkNXaXpRd3VPOFd6czVzeHA3UkFaRGRjMzE4NDZpc1FHT1g2WTJYcktCTVlWZW1oRi1yYThSZTlSNDA5Ml93d25ldUhRSUJJM21aQ1VPY3ZDbW1JVVQ1R3Itdk9qOTZOT2M5YVpFaGUydXg?oc=5" target="_blank" rel="noopener">Brent Breaks $96 as U.S. Strikes Iran for 12th Consecutive Night</a><div class="meta"><span>Crude Oil Prices Today | OilPrice.com</span><span>· 22 Jul 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMifkFVX3lxTE03SEUxUTJoQUtBY2RfT0VrcmJOdU9MZlRBb1lfNzNNTVhKeV91WGhpR0Y4UldoZVZ2dmprZElqQ1QwVWZIUDJkWjdqeWpDbVZlVlNSUGVpclhHa01xVXlGby1JUnByaUxQSVo1bkNZRXdyYXhTX3V1Ym1yVmZWdw?oc=5" target="_blank" rel="noopener">Crude oil futures settled at $89.31</a><div class="meta"><span>investingLive</span><span>· 24 Jul 2026</span></div></li><li><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNanY4SFpyQ2tLSEdkYndXb2VtZVFfTHY0ZGx4amV5V0h6MURhTGVGbHRTY3R6TzNBUjh0M3RfQmJQQzRXSHFtX0lQb0lqei00ZjRmQlRlSGs0RlM1QmNXQktLWHhISnI3aHVfdW5mcnFfNlFOc2RPcG9nbXNweHhaNzRtY1A3YUVNekQxTEJQRzFTeHpUcnpic0ZBWTFaengzLTJadA?oc=5" target="_blank" rel="noopener">US Diesel Crack Surpasses $100 a Barrel for the First Time</a><div class="meta"><span>Investing.com</span><span>· 18 Aug 2026</span></div></li></ul>
       <p class="crosslink" style="margin-top:1.4rem"><a href="/maerkte.html">← Zur Märkte-Übersicht</a> · <a href="/ki-und-krypto-daten.html">KI &amp; Krypto in Zahlen →</a></p>
     </div>
   </section>
@@ -373,8 +389,7 @@
   <div class="wrap">
     <div class="footbar">
       <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
-      <span class="footbar-links"><a href="/maerkte.html">Märkte</a><a href="/suchmaschine.html">Suche</a>
-      <a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
+      <span class="footbar-links"><a href="/maerkte.html">Märkte</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
     </div>
   </div>
 </footer>

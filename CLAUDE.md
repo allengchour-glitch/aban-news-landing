@@ -62,6 +62,43 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-09-24 (🛒 neues Produkt „Strategie-Prüfstand" CHF 29 + Shop-Lecks):**
+- **Produkt:** `content/packs/de/strategie-pruefstand/` (Python-Kit, Katalog `data/kit-catalog.json`,
+  standalone). Verkaufskasten auf `trading-lernen.html` holt den Kauf-Link aus `data/shop-products.json`.
+- **🟡 KAUF-LINK FEHLT NOCH — nur User:** GitHub-Secret `STRIPE_API_KEY` ist KEIN Secret Key
+  (Stripe 403 `secret_key_required`, vermutlich `pk_…`). Richtiger Key: `sk_live_…` oder eingeschränkt
+  `rk_live_…` mit Schreibrecht auf Products, Prices, Payment Links. Danach `stripe-shop.yml` starten →
+  Link wird angelegt, committet, deployt (kein `[skip ci]` mehr). Cloudflare hat den richtigen Key
+  (`/api/kit-download` antwortet „Zahlung nicht gefunden" statt 503).
+- **🔒 Kit-ZIPs nie ins Repo:** `downloads/kits/` ist gitignored; der Deploy baut sie
+  (`build_kit_zips.py`, Salt mit `.strip()`). Der Stripe-Workflow hatte mit ungestripptem Salt 45 ZIPs
+  unter falschen Namen committet (404, aber Inhalt öffentlich). Gegenprobe: 34/34 alte Namen live 200.
+- **💰 eBay:** 16 Kaufberater-Seiten liefen ohne/mit fremder campid → über `/go/ebay`; Quality Check wird
+  rot bei direkten eBay-Links. Money-Guard (`automation/money_seo_guard.py`) läuft nur über GitLab = steht;
+  seine „Founding €69"-Kästen bewusst NICHT übernommen (Verlauf + „kein Hype").
+
+**📌 2026-09-23 (🔓 LIVE-DEPLOY: echte Ursache gefunden — ein eingecheckter Symlink):**
+- **abannews.com stand seit Ende August still.** Die Memory-Annahme „nur der Hetzner-Server (PAT fehlt)"
+  war nur die halbe Wahrheit: der **GitHub-Weg** `.github/workflows/cf-deploy-mainsite.yml` (Direct Upload,
+  Secrets CLOUDFLARE_API_TOKEN/ACCOUNT_ID **sind gesetzt und funktionieren**) läuft bei jedem Push auf `main`
+  — und ist **seit 11.09. bei JEDEM Lauf gescheitert** (Runs #103–#116), zuletzt erfolgreich 12.06.
+- **Ursache (Log gelesen):** `ENOENT … _site/node_modules_pw`. `node_modules_pw` ist ein **Symlink auf ein
+  lokales Playwright** (`/opt/node22/lib/node_modules/playwright`), am 04.09. im Sammel-Commit `fecc365`
+  mit eingecheckt. Auf dem Runner zeigt er ins Leere, wrangler bricht ab.
+- **Fix:** Symlink aus git, `.gitignore` `node_modules*`, und `build-pages.sh` löscht Verknüpfungen ins
+  Leere vor dem Upload. Der GitHub-Weg baut jetzt **mit `build-pages.sh` wie der Server** (vorher eigene
+  rsync-Kopie: ohne inject-engine = Navigation + JSON-LD fehlten, ohne Kit-ZIP-Bau, `server/` + `game/`
+  wurden mitveröffentlicht).
+- **🔑 LEHRE:** Bei „Deploy steht" ZUERST `actions_list list_workflow_runs resource_id=cf-deploy-mainsite.yml`
+  und das Log des letzten Laufs lesen — nicht den Server vermuten. Nach lokalen Playwright-Tests nie
+  `git add -A` ohne `git status` (so kam der Symlink rein).
+- **Tages-Update läuft:** `.github/workflows/tages-update.yml` (1×/Tag 04:15 UTC) → `data/ki-news.json` +
+  Märkte; erster Bot-Commit „chore(ki-news)" am 23.09. auf `main`. Doku: `docs/TAGES-UPDATE.md`.
+- **LuxeStyle-Befund (nur gelesen, Katalog gehört der Produkt-Session):** 8 von 16 Bestellungen seit Juni
+  voll erstattet (~CHF 1045), 6 davon BigBuy „beim Lieferanten ausverkauft / nicht in CH lieferbar"
+  (`tracksInventory:false`). BigBuy ist inzwischen 0 aktiv. **#1004 (LED-Laterne, CHF 31.90) seit 25.06.
+  bezahlt, nie versandt** — braucht Entscheid (versenden oder erstatten).
+
 **📌 2026-09-14 (Sechs-Punkte-Auftrag «COWORK-BEFEHL» in der Cloud-Session — gemessen statt geklickt):**
 - Cloud-Session hat **keinen eingeloggten Browser** (nur Shopify-MCP + GitHub-API). Die Datei
   `dropship/COWORK-BEFEHL-2026-09-14.md` liegt auf **keinem** Remote-Branch (nur lokal beim User).

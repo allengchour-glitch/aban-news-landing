@@ -155,5 +155,13 @@
     "price_cents": 1900,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "strategie-pruefstand",
+    "title": "Strategie-Prüfstand: Trading-Ideen ehrlich testen",
+    "desc": "Python-Kit: deine Regel gegen 9 bekannte Stile und 200 Zufallsstrategien, Skill in Prozent, Zukunfts-Schutz, Auswahl-Falle, Daytrading-Test. Mit Anleitung zu den sieben Fallen. Keine Anlageberatung.",
+    "price_cents": 2900,
+    "currency": "chf",
+    "standalone": true
   }
 ]

@@ -6678,3 +6678,47 @@ Umstellung: `camA` ±0,36, `camRT` ±0,00, und die echte Zwei-Finger-Geste zoomt
 unterschiedlich an (einmal gar kein Zoom, einmal der rechnerisch exakte Wert). Nicht
 das Spiel war unzuverlaessig, sondern die Zustellung. Rad-Ereignisse werden darum
 selbst gebaut und per `dispatchEvent` geschickt.
+
+## Ruckeln: was erledigt ist und wo der Rest liegt
+
+Stand 2026-09-12, gemessen mit `th-ruckler.mjs`.
+
+**Die Ursache war nicht fehlendes Aufwaermen, sondern ausgesetztes.** `_aufwaermen()`
+uebersprang das Shader-Uebersetzen vollstaendig, sobald gespielt wird — zu Recht, denn
+`compile()` blockiert eine halbe Sekunde. Nur kommen die Modelle ueber Minuten herein:
+alles, was nach dem Start eintrifft, blieb damit unvorbereitet. **Gemessen 19
+Materialien.**
+
+Behoben, ohne den Freeze in Kauf zu nehmen:
+1. **Objektweise, je Bild eines**, gezeichnet in ein 8x8-Ziel mit enger Kamera. Gleiche
+   Szene, gleiche Lichter, gleiche Schatteneinstellungen → gleiche Programm-Variante,
+   aber Bruchteile einer Millisekunde statt einer halben Sekunde.
+2. **Ausgeblendetes wird kurz sichtbar geschaltet.** three.js zeichnet Unsichtbares
+   nicht — und ausgerechnet das ruckelt spaeter beim Hinlaufen.
+3. **Ausloeser ist der Modell-Lader** (`_glbVorlage`, entprellt 1,2 s), nicht mehr eine
+   feste Uhr. Der Fahrplan bleibt als Netz fuer prozedurale Materialien.
+4. **Schluessel je Material UND Objekt-Zustand** (instanziert, Schattenwerfer/-empfaenger,
+   Skelett, zweite UV-Ebene, Eckfarben) — dasselbe Material an anderem Objekt ist ein
+   zweites Programm.
+
+**Ergebnis:** vor dem Spielen ~137 statt 67 Programme bereit, ~200 Objekte im
+Hintergrund aufgewaermt (vorher null, sobald gespielt wurde).
+
+### Der Rest: sechs Programme, und was daran zu lernen war
+
+Sechs bleiben — **bei allen vier Eingriffen exakt sechs**. Zwei Lehren:
+
+1. **Eine Zahl, die sich bei wirksamen Aenderungen nicht bewegt, ist verdaechtig.**
+   Darum die Gegenprobe: ein ZWEITES `compile()` direkt nach dem ersten. Es legt **0**
+   an — das Verfahren ist also erschoepft, die sechs sind echt und kein Messboden.
+   Ohne diese Gegenprobe haette ich entweder ewig weitergesucht oder die Kennzahl
+   faelschlich fuer kaputt erklaert.
+2. **Erst hinsehen, dann reparieren.** Ich habe VIER Hypothesen abgearbeitet, ohne die
+   sechs je anzusehen. Das Werkzeug nennt sie jetzt per `cacheKey`: vier `physical`
+   (Standard-Material) und zwei `basic`. Das haette nach dem zweiten erfolglosen
+   Versuch kommen muessen.
+
+**Wer hier weitermacht:** die vollen cacheKeys paarweise vergleichen — im sichtbaren
+Teil sehen je zwei gleich aus, der Unterschied steckt im Rest (Lichter-/Schatten-Anteil
+des Schluessels). Und vorher pruefen, ob sechs Aussetzer auf einem ECHTEN Geraet
+ueberhaupt spuerbar sind; von hier aus laesst sich das nicht beantworten.

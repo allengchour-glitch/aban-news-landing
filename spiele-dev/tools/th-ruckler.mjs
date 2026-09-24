@@ -16,6 +16,22 @@
  * der Fahrt dazukommen. Jedes davon ist ein potenzieller Ruckler beim Spieler.
  */
 import { mitSonden, spielOeffnen, aufraeumen } from './th-lib.mjs'
+import { readFileSync } from 'node:fs'
+
+/* ⚠️ DIE WARTEZEIT MUSS DEN AUFWAERM-FAHRPLAN UEBERLEBEN. Sie stand fest auf 55 s —
+   der letzte Aufwaerm-Durchgang des Spiels laeuft aber bei 60 s. Die Kamerafahrt
+   startete damit, BEVOR das Vorladen fertig war, und meldete 75 nachgeladene
+   Texturen. Der Quelltext sagt an dieser Stelle ausdruecklich, Texturen seien
+   vollstaendig vorgeladen (174 Nachzuegler → 2) — einer von beiden musste irren,
+   und es war das Messgeraet.
+   Die Zeit wird darum AUS DER QUELLE gelesen statt abgeschrieben: aendert jemand
+   den Fahrplan, folgt das Werkzeug. Dieselbe Regel wie in th-reichweite, das seine
+   Takte ebenfalls aus dem Spiel liest. */
+const _q = readFileSync('traumhaus.html', 'utf8')
+const _plan = _q.match(/\[([\d,\s]+)\]\.forEach\(function\(ms\)\{setTimeout\(_aufwaermen,ms\)/)
+if (!_plan) { console.error('Aufwaerm-Fahrplan nicht in der Quelle gefunden — Werkzeug veraltet'); process.exit(2) }
+const LETZTES_AUFWAERMEN = Math.max(..._plan[1].split(',').map(Number))
+const WARTEN = LETZTES_AUFWAERMEN + 6000
 
 const TMP = 'spiele-dev/tools/_ruckler_probe.html'
 mitSonden('traumhaus.html', {
@@ -28,6 +44,12 @@ mitSonden('traumhaus.html', {
       camera.updateMatrixWorld(true);
       var t0=performance.now();renderer.render(scene,camera);
       return +(performance.now()-t0).toFixed(1);}
+    if(was==="schluessel"){
+      /* Jedes Programm traegt seinen cacheKey. Der Vergleich vor/nach compile() sagt
+         nicht nur WIE VIELE fehlen, sondern WELCHE — ohne das bleibt nur Raten. */
+      var L=renderer.info.programs||[],out=[];
+      for(var i=0;i<L.length;i++)out.push(String(L[i].cacheKey||""));
+      return out;}
     if(was==="waerme"){ /* three.js kann alles vorab uebersetzen */
       var t0=performance.now();renderer.compile(scene,camera);
       return +(performance.now()-t0).toFixed(0);}
@@ -47,7 +69,8 @@ const ORTE = [
   ['Achterbahn',   [-190, 10, 160, -190, 3, 207]],
 ]
 
-const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000 })
+console.log(`Warte ${(WARTEN / 1000).toFixed(0)} s — letztes Aufwaermen des Spiels bei ${(LETZTES_AUFWAERMEN / 1000).toFixed(0)} s.`)
+const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: WARTEN })
 const R = (...a) => page.evaluate((args) => window.__th.ruck(...args), a)
 
 const start = await R('stand')
@@ -71,10 +94,59 @@ if (neu > 0) {
   console.log(`   Jedes davon ist auf dem Handy ein Aussetzer beim ersten Hinsehen:`)
   spitzen.forEach(([n, d]) => console.log(`     ${n}: ${d}`))
 }
+const vorWarm = await R('stand')
+const schlVor = await R('schluessel')
 const warm = await R('waerme')
 const nachWarm = await R('stand')
+const rest = nachWarm.programme - vorWarm.programme
+/* 🔑 DIE WICHTIGSTE ZAHL DES WERKZEUGS. Wie viele Programme legt ein abschliessendes
+   compile() NOCH an? Das sind genau die Materialien, die nach dem Spielbeginn
+   hereingekommen sind und nie vorbereitet wurden — jedes ein Ruckler, sobald der
+   Spieler es zum ersten Mal sieht. Die Kamerafahrt oben findet davon nur die, die
+   zufaellig in einem ihrer acht Blicke liegen; diese Zahl findet alle.
+   ⚠️ Die Fahrt allein taeuscht darum Sicherheit vor: 4 Nachzuegler im Bild, aber 19
+   unvorbereitete Materialien in der Welt (gemessen 2026-09-12, vor der Korrektur). */
 console.log(`\nrenderer.compile(scene,camera) braucht ${warm} ms und haelt danach ` +
   `${nachWarm.programme} Programme bereit (vorher ${start.programme} beim Laden).`)
+console.log(`\n🔑 NACH dem Spielbeginn hereingekommen und NICHT vorbereitet: ${rest} Materialien.`)
+console.log(rest === 0
+  ? '   Nichts offen — jedes Material war vor seinem ersten Auftritt uebersetzt.'
+  : '   Jedes davon ruckelt beim ersten Hinsehen. Ziel ist 0.')
+const objekte = await page.evaluate(() => window._warmObjekte || 0)
+console.log(`   Im Hintergrund objektweise aufgewaermt: ${objekte}`)
+
+/* WELCHE fehlen? Ohne Namen bleibt nur Raten — vier Eingriffe hintereinander liessen
+   die Zahl unveraendert bei 6, weil ich die sechs nie angesehen hatte. */
+const schlNach = await R('schluessel')
+const vorSet = new Set(schlVor)
+const neuKeys = schlNach.filter((k) => !vorSet.has(k))
+if (neuKeys.length) {
+  console.log(`\n   Die ${neuKeys.length} fehlenden Programme (cacheKey, gekuerzt):`)
+  for (const k of neuKeys) {
+    const t = k.replace(/\s+/g, ' ')
+    /* 400 statt 150: bei 150 sahen zwei Paare identisch aus, obwohl sie sich
+       unterscheiden — der Unterschied steckt im Rest. Ein gekuerzter Schluessel, der
+       zwei verschiedene Programme gleich aussehen laesst, ist schlimmer als keiner. */
+    console.log('     ' + t.slice(0, 400))
+  }
+}
+
+/* ⚠️ GEGENPROBE GEGEN DIE EIGENE KENNZAHL. Der Rest blieb bei drei voellig
+   verschiedenen Eingriffen exakt gleich (6), waehrend die Zahl aufgewaermter Objekte
+   von 86 auf 200 stieg. Eine Zahl, die sich bei wirksamen Aenderungen nicht bewegt,
+   misst womoeglich keinen Fehler, sondern einen Boden.
+   Der Verdacht: compile() legt Varianten an, die das echte Zeichnen nie braucht. Dann
+   waere der Rest kein Ruckeln, sondern Buchhaltung. Ein ZWEITES compile() direkt
+   danach entscheidet: legt es wieder welche an, erzeugt compile() Varianten aus sich
+   heraus — dann taugt die Zahl nicht als Ziel. */
+const warm2 = await R('waerme')
+const nachWarm2 = await R('stand')
+const rest2 = nachWarm2.programme - nachWarm.programme
+console.log(`\n   GEGENPROBE: ein ZWEITES compile() legt nochmals ${rest2} an (${warm2} ms).`)
+console.log(rest2 === 0
+  ? '   → 0: compile() ist erschoepft. Die Zahl oben zaehlt echte Nachzuegler.'
+  : `   → nicht 0: compile() erzeugt Varianten aus sich heraus. Die Zahl oben ist` +
+    ' dann keine Ruckler-Zahl, sondern ein Boden des Messverfahrens.')
 console.log(`\nJS-Fehler: ${jsFehler.length}`)
 await browser.close()
 aufraeumen(TMP)
