@@ -6799,10 +6799,15 @@ setTimeout(function baueGebaeude(){
               {file:"th26_bergsee.glb",       h:5.7,w:24,  d:20.8,tuer:false},
               {file:"th40_wohnmobil.glb",     h:3.2,w:6.8, d:2.8, tuer:false, stellplatz:true},
               {file:"th26_haengebruecke.glb", h:4.3,w:6.6, d:24.3,tuer:false},
-              {file:"cc0_tent.glb",           h:2.2,w:2.5, d:2.5, tuer:false}]});
+              {file:"sv_tent_canvas.glb",     h:2.2,w:2.5, d:2.5, tuer:false}]});   /* Plane, nicht Gestell (s. u.) */
     if(_cp){(function(){var cx=_cp.x,cz=_cp.z;   /* Zelte, Feuer, Holz zwischen den Wohnmobilen (Suedseite) */
       function fest9(f,h,x,z,ry){bau(f,h,x,0,z,ry,false,function(w){w.userData.fest=1;},true);}
-      fest9("sv_tent.glb",2.2,cx-30,cz+30,0.6); fest9("cc0_tent.glb",2.2,cx-24,cz+33,2.4); fest9("sv_tent.glb",2.2,cx+40,cz+31,1.2);
+      /* ⛺ PLANE STATT GESTELL (Runde 95, Bild k21-zelt-nah): `sv_tent.glb` und `cc0_tent.glb` sind im
+         Bausatz nur das A-Gestell (Stangen + Firststange), die Plane ist das eigene Modell
+         `sv_tent_canvas.glb` mit derselben Box (0,56 x 0,49 x 0,57, GLB-Accessor). Im Spiel standen
+         darum drei orange Holzrahmen auf der Wiese. Nur die Plane setzen — sie deckt das Gestell ab,
+         und zwei Modelle an derselben Stelle zaehlte th-echt als Durchdringung. */
+      fest9("sv_tent_canvas.glb",2.2,cx-30,cz+30,0.6); fest9("sv_tent_canvas.glb",2.2,cx-24,cz+33,2.4); fest9("sv_tent_canvas.glb",2.2,cx+40,cz+31,1.2);
       fest9("sv_campfire.glb",0.5,cx-27,cz+27,0); fest9("sv_woodpile.glb",0.6,cx-33,cz+26,0.3);
       fest9("th47_gartenlaube.glb",2.6,cx+62,cz+28,0); fest9("nw_wegweiser.glb",2.2,cx-70,cz+9,0.2);
     })();}
@@ -10150,7 +10155,7 @@ setTimeout(function baueGebaeude(){
     fest("pr_cannon.glb",1.2,IX-5,IZ+15,Math.PI);fest("pr_cannon.glb",1.2,IX+0.5,IZ+15,Math.PI);   /* nicht bei IX+3: dort steht die Palme (th-pruef: Kanone 100 % in Palme) */
     fest("pr_chest.glb",0.8,IX+7,IZ-10,0.5);fest("pr_barrel.glb",1.1,IX+9,IZ-8,0);fest("pr_barrel.glb",1.1,IX+10.2,IZ-9.4,0.7);
     fest("pr_crate.glb",0.8,IX+11.5,IZ-7.5,0.3);fest("pr_flag.glb",3,IX-2,IZ-10,0);
-    fest("cc0_tent.glb",2.2,IX-6,IZ+1,0.8);fest("sv_campfire.glb",0.5,IX-2,IZ+4,0);fest("sv_woodpile.glb",0.6,IX-9,IZ+4,0.5);
+    fest("sv_tent_canvas.glb",2.2,IX-6,IZ+1,0.8);   /* Plane, nicht Gestell (Camping-Kommentar) */fest("sv_campfire.glb",0.5,IX-2,IZ+4,0);fest("sv_woodpile.glb",0.6,IX-9,IZ+4,0.5);
     for(var k=0;k<5;k++)fest("wc_dock.glb",1.3,IX+23+k*2.4,IZ+2,0);            /* Steg nach Osten zum Schiff */
     bau("wc_pirate_ship.glb",12,IX+40,-0.9,IZ+2,Math.PI/2,false,function(w){
       w.userData.fest=true;w.userData.nieAusblenden=true;w._bewegt=true;

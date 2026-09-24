@@ -7207,3 +7207,29 @@ Lieferziele für die vier Viertel.
 9. **„Autos gehören nicht auf Rasen" gilt auch auf dem Camping.** th-autoboden fand die zwei Wohnmobile im
    Grünen (Viertelboden „rasen"). `bauten[].stellplatz:true` legt eine Kiesfläche (Bau + 1,2 m rundum) auf die
    Platte — ein Generator-Merkmal, keine Handkoordinate (die Wohnmobile stehen, wo der Laufcursor sie hinsetzt).
+10. **Ein Modell kann nur das Gestell sein.** `sv_tent`/`cc0_tent` sind im Bausatz das A-Gestell, die Plane ist
+    `sv_tent_canvas` (gleiche Box). Im Spiel standen drei orange Holzrahmen als „Zelte" — erst das Nahbild
+    (k21-zelt-nah) zeigte es, die Sonde probe-zelt fand die Objekte im Headless-Lauf nicht einmal (noch nicht
+    geladen: drei Browser parallel). Jetzt nur die Plane; Gestell + Plane an derselben Stelle zählte th-echt sonst
+    als Durchdringung.
+11. **Anschluss gerade weiter ≠ Einmündung.** Beginnt der Anschluss am ENDE einer Nachbarstrasse (Camping hinter
+    dem Freizeitpark, Technikpark hinter dem Flughafen), liess der 7-m-Vorlauf für eine kreuzende Fahrbahn auf
+    beiden Seiten eine Kerbe ohne Gehweg und Bordstein (k19-camping-zufahrt). `cfg.anschlussGerade` → Vorlauf 0.
+
+**Endzahlen Runde 95 (Endstand, jedes Werkzeug allein gelaufen):**
+| Werkzeug | vorher (Runde 93/94) | nachher |
+|---|---|---|
+| th-viertel | — | Neustadt, Technikpark, Burgdorf, Bergsee-Camping alle am Wunschort |
+| th-pruef: Modelle · Korridor · steckt | 914 · 0 · 2 | **1001 · 0 · 2** (dieselben zwei Ahorne im Stadthaus) |
+| th-strassen (Stellen auf dem Belag) | 112 | 118 nach dem Bau → **94** |
+| th-kante: Übergänge · nicht abgesenkt | 24 · 0 | **30 · 0** (Schnitte 1060, ohne Bordstein 4, Lücke 6, ohne Gehweg 12) |
+| th-autoboden: im Grünen · Verkehr · Polizei | 0 · 0,2 % · 0/120 | 3 nach dem Bau (2 Wohnmobile, Gepäckwagen) → **0 · 0,2 % · 0/120** |
+| th-netz / th-fenster | 47/0 · 8/0 | **47/0 · 8/0** |
+| th-boden (Fels · schwebt · Wasser) | 0 · 0 · 0 | **0 · 0 · 0** (805 Bauwerke) |
+| th-echt (echte Durchdringungen) | 6–7 | **6** (Bäume untereinander, Materialstapel/Rohbau) |
+| probe-technik: Fremdes auf dem Flugfeld | 3 (Baum auf Vorfeld, 2 Büsche) | **0** |
+
+Bilder: `spiele-dev/screenshots/r95-*.png` (Neustadt, Technikpark von oben, Burgdorf, Camping, Pirateninsel,
+Blumen, Weltkarte Ost, Zebra am Neustadt-Stich, Vorfeld 50 m). ⚠️ th-strassen schwankt um ±3 zwischen Läufen
+(Streu ist Zufall); th-pruef nur allein laufen lassen (1001 Modelle = sauber, 804 = zu früh gemessen).
+
