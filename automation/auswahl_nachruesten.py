@@ -55,6 +55,52 @@ def rund90(x):
     return round(int(x) + 0.90, 2) if x - int(x) <= 0.90 else round(int(x) + 1.90, 2)
 
 
+# 24.09.2026 (Betreiber «fix und verbessere writer»): 68 von 169 Trockenlauf-Fällen scheiterten an Mischwerten wie
+# «Square M», «Short Ellipse XS», «gold frosted surface M» — Form + Länge + Farbe + Oberfläche + Grösse in EINEM Wert.
+# Übersetzt wird nur mit diesem festen Wortschatz; ein einziges unbekanntes Token (Designnamen wie «Lost Paradise»,
+# unklare Kürzel wie «T» oder «Ladder») → MANUELL. Raten ist hier die #1018-Klasse in Grün.
+FORM = {"short": "Kurz", "long": "Lang", "square": "Eckig", "almond": "Mandel", "oval": "Oval", "ellipse": "Oval",
+        "prolate": "Länglich", "round": "Rund", "coffin": "Ballerina", "ballerina": "Ballerina", "stiletto": "Stiletto"}
+OBERFL = {"frosted": "matt", "matte": "matt", "matt": "matt", "glossy": "glänzend", "shiny": "glänzend", "transparent": "transparent"}
+FUELL_W = {"surface", "size", "and", "&"}
+GROESSENWORT = {"small", "medium", "large"}          # redundant neben XS/S/M/L — fällt dann weg
+
+
+def ausfuehrung(wert):
+    """«Short Ellipse XS» → «Kurz Oval · XS»; None, sobald ein Token nicht im Wortschatz steht."""
+    toks = [t for t in re.split(r"[\s_\-]+", (wert or "").strip()) if t]
+    tl = [t.lower() for t in toks]
+    groesse = [t.upper() for t in toks if re.fullmatch(r"(?:X{0,3}S|M|X{0,3}L)", t.upper())]
+    if len(groesse) > 1:
+        return None
+    teile, i = [], 0
+    while i < len(tl):
+        t = tl[i]
+        if re.fullmatch(r"(?:X{0,3}S|M|X{0,3}L)", t.upper()):
+            i += 1; continue
+        if t == "extra" and i + 1 < len(tl) and tl[i + 1] == "long":
+            teile.append("Extralang"); i += 2; continue
+        if t == "extra" and i + 1 < len(tl) and tl[i + 1] in GROESSENWORT and groesse:
+            i += 2; continue
+        if t in GROESSENWORT and groesse:
+            i += 1; continue
+        if t in FUELL_W:
+            i += 1; continue
+        if re.fullmatch(r"\d{1,3}mm", t):
+            teile.append(t); i += 1; continue
+        if t in FORM:
+            teile.append(FORM[t]); i += 1; continue
+        if t in OBERFL:
+            teile.append(OBERFL[t]); i += 1; continue
+        f = farbe_deutsch(toks[i])
+        if f:
+            teile.append(f); i += 1; continue
+        return None
+    if not teile and not groesse:
+        return None
+    return " ".join(teile) + (f" · {groesse[0]}" if groesse else "") if teile else groesse[0]
+
+
 def werte(keys):
     """Gemeinsame Vorder-/Hintertokens weg, Rest übersetzen. → (optname, [wert…]) oder (None, grund)."""
     toks = [re.split(r"[\s_]+|(?<=[a-z])-(?=[A-Z])|-(?=[A-Z]{1,5}\d)", (k or "").strip()) for k in keys]
@@ -76,12 +122,17 @@ def werte(keys):
         return "Grösse", [r.upper() for r in rest]
     if all(CODE.match(r) for r in rest):
         return "Design", [r.upper().replace(" ", "") for r in rest]
+    au = [ausfuehrung(r) for r in rest]
+    if all(au) and len(set(au)) == len(au):
+        if all(re.fullmatch(r"(?:X{0,3}S|M|X{0,3}L)", x) for x in au):
+            return "Grösse", au                  # «Extra Small XS … Large L» sind nur Grössen
+        return "Ausführung", au
     return None, f"keine reinen Farb-/Codewerte: {rest[:5]}"
 
 
 def plane(zeile):
     p = gql('query($h:String!){productByIdentifier(identifier:{handle:$h}){id handle title status variantsCount{count} '
-            'variants(first:2){nodes{id sku price inventoryPolicy}} media(first:100){nodes{id ... on MediaImage{image{url}}}}}}',
+            'variants(first:2){nodes{id sku price compareAtPrice inventoryPolicy inventoryItem{tracked unitCost{amount} measurement{weight{value unit}}}}} media(first:100){nodes{id ... on MediaImage{image{url}}}}}}',
             {"h": zeile["handle"]})["productByIdentifier"]
     if not p or p["status"] != "ACTIVE":
         return None, "nicht mehr aktiv"
@@ -107,14 +158,7 @@ def plane(zeile):
     m = MENGE.search(p["title"])
     if m and int(m.group(1)) >= 0.8 * len(vs):
         return None, f"Titel verspricht «{m.group(0)}», CJ führt {len(vs)} Einzelvarianten → Titel prüfen (Mensch)"
-    medien = {stamm(n["image"]["url"]): n["id"] for n in p["media"]["nodes"] if n.get("image")}
-    fehlt = [v.get("variantKey") for v in vs if not v.get("variantImage") or stamm(v["variantImage"]) not in medien]
-    if fehlt:
-        return None, f"{len(fehlt)} von {len(vs)} Variantenbildern nicht am Produkt (Speicher voll): {fehlt[:3]}"
-    cmin = min(preis(v) for v in vs)
-    if cmin <= 0 or max(preis(v) for v in vs) > 2 * cmin:
-        return None, f"Preisspreizung > 2× ({cmin}–{max(preis(v) for v in vs)})"
-    # Netzstecker-Varianten (EU/US/UK/AU): in der Schweiz nur EU — keine Auswahl, sondern die EINE richtige SKU
+    # Netzstecker-Varianten (vor Bild- und Preisprüfung: ein Stecker braucht kein eigenes Bild) (EU/US/UK/AU): in der Schweiz nur EU — keine Auswahl, sondern die EINE richtige SKU
     # (Regel wie cj_stecker_eu_setzen.py, 21.09.). Genau eine EU-Variante, sonst MANUELL.
     keys = [(v.get("variantKey") or "").strip().upper() for v in vs]
     if all(k in {"EU", "US", "UK", "AU", "JP", "KR", "CN", "BR", "IN"} for k in keys):
@@ -123,16 +167,42 @@ def plane(zeile):
             return None, f"Stecker-Varianten ohne eindeutige EU-Fassung: {keys}"
         return {"p": p, "var": var, "optname": None, "plan": [{"wert": "EU", "sku": eu[0]["variantSku"],
                 "media": None, "preis": var["price"]}]}, None
+    medien = {stamm(n["image"]["url"]): n["id"] for n in p["media"]["nodes"] if n.get("image")}
+    fehlt = [v.get("variantKey") for v in vs if not v.get("variantImage") or stamm(v["variantImage"]) not in medien]
+    if fehlt:
+        return None, f"{len(fehlt)} von {len(vs)} Variantenbildern nicht am Produkt (Speicher voll): {fehlt[:3]}"
+    cmin = min(preis(v) for v in vs)
+    if cmin <= 0 or max(preis(v) for v in vs) > 2 * cmin:
+        return None, f"Preisspreizung > 2× ({cmin}–{max(preis(v) for v in vs)})"
     optname, ws = werte([v.get("variantKey") for v in vs])
     if not optname:
         return None, ws
     heute = float(var["price"])
-    plan = [{"wert": w, "sku": v["variantSku"], "media": medien[stamm(v["variantImage"])],
-             "preis": f"{(heute if preis(v) <= cmin * 1.15 else max(heute, rund90(heute * preis(v) / cmin))):.2f}"}
-            for w, v in zip(ws, vs)]
+    # 24.09.2026: Die neuen Varianten erbten Gewicht und Versandflags, aber NICHT den Einkaufspreis (unitCost) —
+    # am Kanarienvogel trug nur NJ001 CHF 7.33, die 13 anderen nichts. Ohne EK sieht verlustbringer.py die Marge nicht.
+    # EK und Streichpreis skalieren darum mit demselben Faktor wie der Verkaufspreis (Basis = günstigste CJ-Variante).
+    ek = float(((var.get("inventoryItem") or {}).get("unitCost") or {}).get("amount") or 0) or None
+    streich = float(var["compareAtPrice"]) if var.get("compareAtPrice") else None
+    plan = []
+    for w, v in zip(ws, vs):
+        faktor = 1.0 if preis(v) <= cmin * 1.15 else preis(v) / cmin
+        vk = heute if faktor == 1.0 else max(heute, rund90(heute * faktor))
+        plan.append({"wert": w, "sku": v["variantSku"], "media": medien[stamm(v["variantImage"])], "preis": f"{vk:.2f}",
+                     "ek": f"{ek * preis(v) / cmin:.2f}" if ek else None,
+                     "streich": f"{rund90(streich * faktor) if faktor != 1.0 else streich:.2f}" if streich and streich > heute else None})
     if len({x["sku"] for x in plan}) != len(plan):
         return None, "CJ-SKUs nicht eindeutig"
     return {"p": p, "var": var, "optname": optname, "plan": plan}, None
+
+
+def halb(p, grund):
+    """Option ist angelegt, aber der Rest nicht belegt: markieren statt schweigen. Der Bestell-Automat stoppt bei solchen
+    Varianten ohnehin («manuell prüfen»), aber ein Mensch muss es sehen — Tag + Bericht, kein Ledger-Eintrag."""
+    try:
+        gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": p["id"], "t": ["auswahl-halb-pruefen"]})
+    except Exception:
+        pass
+    return grund + " — Tag auswahl-halb-pruefen gesetzt"
 
 
 def schreibe(pl):
@@ -156,19 +226,35 @@ def schreibe(pl):
     byval = {so["value"]: nv["id"] for nv in r["product"]["variants"]["nodes"] for so in nv["selectedOptions"] if so["name"] == optname}
     if set(byval) != {x["wert"] for x in plan}:
         return f"Varianten passen nicht zum Plan: {sorted(byval)[:5]}"
-    upd = [{"id": byval[x["wert"]], "price": x["preis"], "mediaId": x["media"], "inventoryPolicy": "CONTINUE",
-            "inventoryItem": {"sku": x["sku"], "tracked": False}} for x in plan]
+    ii = pl["var"].get("inventoryItem") or {}
+    upd = []
+    for x in plan:
+        item = {"sku": x["sku"], "tracked": bool(ii.get("tracked"))}
+        if x["ek"]:
+            item["cost"] = x["ek"]
+        u = {"id": byval[x["wert"]], "price": x["preis"], "mediaId": x["media"],
+             "inventoryPolicy": pl["var"].get("inventoryPolicy") or "CONTINUE", "inventoryItem": item}
+        if x["streich"]:
+            u["compareAtPrice"] = x["streich"]
+        upd.append(u)
     r2 = gql('mutation($pid:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$pid,variants:$v){userErrors{message}}}',
              {"pid": p["id"], "v": upd})["productVariantsBulkUpdate"]
     if r2["userErrors"]:
-        return f"Varianten-Update: {r2['userErrors']}"
-    live = gql('query($id:ID!){product(id:$id){variants(first:100){nodes{sku price media(first:1){nodes{id}}}}}}',
-               {"id": p["id"]})["product"]["variants"]["nodes"]
-    soll = {x["sku"]: (x["preis"], x["media"]) for x in plan}
-    ist = {v["sku"]: (v["price"], (v["media"]["nodes"] or [{}])[0].get("id")) for v in live}
+        return halb(p, f"Varianten-Update: {r2['userErrors']}")
+    live = gql('query($id:ID!){product(id:$id){variants(first:100){nodes{sku price compareAtPrice media(first:1){nodes{id}} '
+               'inventoryItem{unitCost{amount} measurement{weight{value}}}}}}}', {"id": p["id"]})["product"]["variants"]["nodes"]
+    def geld(a):
+        return f"{float(a):.2f}" if a not in (None, "") else None
+    soll = {x["sku"]: (x["preis"], x["media"], x["ek"], x["streich"]) for x in plan}
+    ist = {v["sku"]: (geld(v["price"]), (v["media"]["nodes"] or [{}])[0].get("id"),
+                      geld(((v["inventoryItem"] or {}).get("unitCost") or {}).get("amount")) if soll.get(v["sku"], (0, 0, None))[2] else None,
+                      geld(v["compareAtPrice"]) if soll.get(v["sku"], (0, 0, 0, None))[3] else None) for v in live}
     if ist != soll:
         abw = [k for k in soll if ist.get(k) != soll[k]][:3]
-        return f"Rücklesen weicht ab bei {abw} — NICHT quittiert"
+        return halb(p, f"Rücklesen weicht ab bei {abw} (soll {[soll[k] for k in abw]}, ist {[ist.get(k) for k in abw]})")
+    gewicht0 = [v["sku"] for v in live if not (((v["inventoryItem"] or {}).get("measurement") or {}).get("weight") or {}).get("value")]
+    if gewicht0 and ((ii.get("measurement") or {}).get("weight") or {}).get("value"):
+        return halb(p, f"{len(gewicht0)} Varianten ohne Gewicht (Original hat eins) — Versandtarif wäre falsch")
     gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": p["id"], "t": ["auswahl-nachgeruestet"]})
     with open(LEDGER, "a") as fh:
         fh.write(f"{p['id'].split('/')[-1]}\t{optname}:{len(plan)}\t{HEUTE}\t{p['handle']}\n")
@@ -180,11 +266,14 @@ def main():
     rows = [json.loads(z) for z in open(MESSUNG)] if os.path.exists(MESSUNG) else []
     kand = [r for r in rows if r.get("cj", 0) > 1 and r["handle"] not in erledigt and (not NUR or r["handle"] == NUR)]
     print(f"{len(kand)} Kandidaten aus {MESSUNG}{' [SCHARF]' if SCHARF else ' [DRY]'}", flush=True)
-    ok, manuell, fehler = [], [], []
+    ok, manuell, fehler, pause = [], [], [], ""
     for r in kand:
         if len(ok) >= CAP:
             break
-        pl, grund = plane(r)
+        try:
+            pl, grund = plane(r)
+        except SystemExit as e:                  # CJ-Tagesbudget leer: Bericht trotzdem schreiben, dann aufhören
+            pause = str(e); print(pause, flush=True); break
         if not pl:
             manuell.append((r, grund)); print(f"  ❔ {r['titel'][:55]} — {grund}", flush=True); continue
         zeile = f"{r['titel'][:50]} — {pl['optname'] or 'EU-SKU'}: " + " · ".join(f"{x['wert']} {x['preis']}" for x in pl["plan"][:6]) + \
@@ -197,10 +286,15 @@ def main():
         else:
             ok.append(r); print(f"  ✅ {zeile}", flush=True)
     L = [f"# Auswahl nachrüsten — {'scharf' if SCHARF else 'Trockenlauf'} {time.strftime('%Y-%m-%d %H:%M', time.gmtime())} UTC", "",
-         f"{'umgebaut' if SCHARF else 'automatisch möglich'}: {len(ok)} · MANUELL: {len(manuell)} · Fehler: {len(fehler)}", "",
+         f"{'umgebaut' if SCHARF else 'automatisch möglich'}: {len(ok)} · MANUELL: {len(manuell)} · Fehler: {len(fehler)}"
+         + (f" · ⚠️ abgebrochen: {pause}" if pause else ""), "",
          "## MANUELL (Grund)", ""] + [f"- {r['titel']} (`{r['handle']}`): {g}" for r, g in manuell] + \
         (["", "## Fehler", ""] + [f"- {r['titel']} (`{r['handle']}`): {g}" for r, g in fehler] if fehler else [])
     open(BERICHT, "w").write("\n".join(L) + "\n")
+    if pause:
+        print(f"PAUSE {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: {pause} — bisher {len(ok)} {'umgebaut' if SCHARF else 'möglich'}, "
+              f"{len(manuell)} manuell, {len(fehler)} Fehler → {BERICHT}")
+        sys.exit(2)
     print(f"FERTIG {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: {len(ok)} {'umgebaut' if SCHARF else 'möglich'}, "
           f"{len(manuell)} manuell, {len(fehler)} Fehler → {BERICHT}")
 

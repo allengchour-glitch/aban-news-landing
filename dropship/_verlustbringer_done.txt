@@ -1329,3 +1329,4 @@ gid://shopify/Product/15448925962625	2026-09-23T12:08Z	draft	15.90	21.65	Chenill
 gid://shopify/Product/15448929403265	2026-09-23T12:08Z	draft	15.90	21.63	Mini Haarglättungsbürste kabellos
 gid://shopify/Product/15449427018113	2026-09-23T21:47Z	draft	14.90	34.59	Armgrip-Trainingsgerät flexibel einstellbar
 gid://shopify/Product/15450740654465	2026-09-24T05:15Z	draft	18.90	28.90	Herren Business-Schuh aus Leder
+gid://shopify/Product/15454193877377	2026-09-24T10:11Z	draft	14.90	41.49	3-in-1 Heissluftkamm
