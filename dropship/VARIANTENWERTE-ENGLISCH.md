@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 05:19 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 05:51 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **33'603**
-- Optionen mit englischen Werten (Kandidaten): 2'550
+- Produkte gesehen: **34'201**
+- Optionen mit englischen Werten (Kandidaten): 2'563
 - Optionen übersetzt: **30** · Werte übersetzt: **69**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'080
+- Werte mit unbekanntem Wort (unverändert): 14'104
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 59
+- übersprungen «kleidungsstueck-im-wert»: 60
 - übersprungen «kollision-nach-uebersetzung»: 36
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -45,6 +45,7 @@
 - `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
 - `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
 - `15500261392769` [Ausführung] **Schlichter Baumwoll-Top** — weste: Vest | Short
+- `15500925993345` [Farbe] **Tiermotiv-Knitted-Jacke** — hose, overall, pullover: Red-100cm-Cardigan | Red-100cm-Romper | Red-110cm-Cardigan | Red-110cm-Romper | Red-66cm-Cardigan | Red-66cm-Romper | Red-73cm-Cardigan | Red-73cm-Romper
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -138,5 +139,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 540, `inner` 528, `light` 440, `color` 325, `shell` 162, `degrees` 159, `core` 137, `size` 136, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 120, `powder` 115, `no` 110, `diamond` 108, `⟨satzbau:nomen-nomen⟩` 108, `high` 101, `skin` 100, `three` 97, `to` 96, `belt` 92, `bag` 91, `shoes` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 80, `code` 79, `yards` 79, `rope` 75, `spring` 71, `dual` 71, `base` 70, `dark` 69, `petal` 68, `chain` 67, `autumn` 66, `dinosaur` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `tea` 60, `of` 60, `buckle` 60, `cherry` 59, `little` 59, `one` 56, `plush` 56, `bottom` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49
+`⟨satzbau:adjektiv-vor-nomen⟩` 540, `inner` 528, `light` 440, `color` 327, `shell` 162, `degrees` 159, `size` 140, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 120, `powder` 116, `no` 110, `diamond` 108, `⟨satzbau:nomen-nomen⟩` 108, `to` 102, `high` 101, `skin` 100, `three` 97, `belt` 92, `bag` 91, `shoes` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 80, `code` 79, `yards` 79, `rope` 75, `spring` 71, `dual` 71, `base` 70, `dark` 69, `petal` 68, `chain` 67, `autumn` 66, `dinosaur` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `tea` 60, `of` 60, `buckle` 60, `cherry` 59, `little` 59, `one` 56, `plush` 56, `bottom` 56, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49
 
