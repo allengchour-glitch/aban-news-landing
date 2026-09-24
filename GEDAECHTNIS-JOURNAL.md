@@ -845,6 +845,21 @@ WAHL-Regex kennt nur «erhältlich in zwei/…»), Hundebett Sofa mit Option «F
 erbt deren Auswahl-Versprechen — Karten-Fakten aus den Varianten lesen, nicht aus dem Text; und wer einen Aufseher-Lauf «wegkillt», bekommt ihn
 zurück — einreihen statt töten.**
 
+**Nachtrag 58 (24.09.2026, 04:40 UTC — Aufgabe #112: zwei Produktseiten-Klassen aus der Ratgeber-Prüfung, gemessen und behoben):**
+(1) **«Verfügbare Grössen: S, M, L» bei EINER Variante.** Die WAHL-Regex (`wahlversprechen.py`, `klassen_kontrolle.py`) kannte nur
+«erhältlich in zwei/verschiedenen …»; die Doppelpunkt-Form fehlte. Am Vollexport `/tmp/katalog_full.jsonl` (03.09., 52'313 Produkte)
+gemessen: **812 aktive Produkte** mit einer Variante tragen «Verfügbare Grössen:» oder «Grössen: a, b, c» — nur Plural MIT Liste
+(Komma, «/», «und», «oder»); «Grösse: M» im Faktenblock ist eine Angabe und trifft nicht (der erste Entwurf zählte sie mit: 497 «Treffer»
+wie «Grösse: 3»). Live-Lauf über die Liste unter der Text-Sperre: 812 geprüft, 683 gemeldet (129 haben inzwischen Varianten oder sind
+repariert), **452 bereinigt** (Satzregel: nur wenn das Versprechen den Satz trägt), 231 tragen eine zweite Aussage und bleiben für den
+Tageslauf des Aufsehers (liest die Klassen-Arbeitsliste, die der Vollscan jetzt mit der neuen Regex füllt). Kratzbaum-Nest rückgelesen: weg.
+(2) **Drei Dimensionen im Farbwert.** `mass_im_farbwert.MASSE` kannte «80X120cm», nicht «Grey-60x50x H37cm» (drittes Mass, optionales H,
+Leerzeichen) → «nicht alle Werte tragen denselben Anhang». Am Options-Export (21.09., 3'059 Produkte mit einer Farbe-Option): **21 Produkte**.
+DRY zeigte eine zweite Falle: «80X120X45cm» und «80x120x45cm» wurden zwei Grössen → Vereinheitlichung auf «×». Scharf: 19 getrennt
+(Hundebett Sofa: Farbe Grey × 4 Grössen, rückgelesen), 10 davon «einheitlich» → Mass in den Titel.
+**Lehre: Ein Zähler über eine neue Regex braucht zuerst den Blick auf die Treffer — die erste Fassung hätte 497 Faktenblock-Zeilen als
+Wahlversprechen bereinigt; und Schreibweisen (X/x/×) sind vor jedem Vergleich zu vereinheitlichen, sonst zählt die Maschine Dubletten als Auswahl.**
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die
@@ -16543,3 +16558,4 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 - 2026-09-22 · 🎬 **Social v2 («täglich mehrmals überall», Ads in 1 Monat): Reel-Motor war dreifach tot — Tag `video-hit` ohne Video, Dateispeicher voll (CDN FAILED), ffmpeg ohne drawtext.** Jetzt CJ-Videos direkt, PIL-Textebenen, Ablage `social/reels/` im Repo (IG nimmt raw.githubusercontent), Lernschleife aus IG-Insights, Kadenz Bild 6 h / Reel 8 h / TikTok 12 h → Journal
 - 2026-09-22 · 🎯 **«fokusiere tiktok und insta dann fb»: Engpass Reel-Versorgung — 14 von 22 «ready»-Reels waren 404 (Poster prüfen jetzt die Adresse), der Motor fand 1 Video je 80 CJ-Anfragen → `cj_video_index.mjs` (CJ `isVideo` nur in Kategorie-Listen, 200 je Aufruf, Regale nach eigener Stichprobe geordnet): 70 Shop-Treffer aus 80 Aufrufen, DRY 3 von 3.** UUID-pids gaben `Number()`-NaN → Hook/Musik «undefined». Metricool-Token erreicht die Session nicht → Betreiber im Chat → Journal
 - 2026-09-22 · 🔒 **Reel-Motor (Rebase) und Autocommitter (Merge) im selben Arbeitsbaum: verklemmter `rebase-merge/autostash`, danach scheiterte JEDER Push, 5 gerenderte Reels verworfen, 119 Ledger-Zeilen nur noch im Stash.** Jetzt EINE Repo-Sperre `/tmp/git_repo.lock` um jede git-Folge (auch eigene Pushes), Motor räumt verwaisten Rebase mit `--quit`, Nachtrag-Modus macht aus Reel-Dateien ohne Zeile wieder Queue-Zeilen (7 nachgetragen). Index nach 150 Aufrufen: 285 Shop-Produkte mit Video → Journal
+- 2026-09-22 · 🪞 **Gegenprüfung fremder Sessions (ads-search, lernen, ritchie, lage, cowork): 46 Behauptungen — 14 bestätigt, 29 teilweise, 3 widerlegt; dazu 20 EIGENE Irrtümer korrigiert (4 statt 5 Kunden, CJ-Dispute erledigt, Merchant-Hebel tot, keine UID, IG-Bio gesetzt, Actions seit 10.09., Bankangaben LIVE auf main).** Drei Lehren: (1) `productsCount(limit:null)` + `precision` lesen — ohne `limit` ist jede Menge >10'000 ein Deckel (AT_LEAST), `title:x` ohne Stern ist ein Ganz-Titel-Vergleich, unbekannte Suchfelder werden STILL ignoriert (Kanarienvogel `foo:bar`); (2) Shopify-Systemmails liegen im Gmail-Papierkorb (`from:shopify` braucht `in:anywhere`) und Google-Diagnosen stehen in `product.feedback` — «nicht lesbar» war eine Aussage über die Suche; (3) ein Diff auf dem Zweig sagt nichts über main (raw-Abruf auf JEDEM Zweig), ein Draft ohne Grund-Tag ist für jeden Rückholer unbegründet, ein Wächter ohne Starter ist ein Bericht. Prüfbefehl: `grep -n "Nachtrag 19" GEDAECHTNIS-JOURNAL.md` → Journal 2026-09-22 Nachtrag 19

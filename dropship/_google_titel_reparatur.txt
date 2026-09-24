@@ -335,3 +335,16 @@
 2026-09-23T22:36:01Z	UEBERSPRUNGEN	gid://shopify/Product/15510929506689	1-zoll-zapfpistole-fur-diesel-und-benzin-257024	EINZEL	beschreibung			text-sperre-belegt
 2026-09-23T22:36:12Z	UEBERSPRUNGEN	gid://shopify/Product/15512293572993	biden-herrenuhr-ultraflach-mit-kalender-611776	EINZEL	beschreibung			text-sperre-belegt
 2026-09-23T22:36:22Z	UEBERSPRUNGEN	gid://shopify/Product/15520406274433	twill-umhangetasche-im-used-look-676544	USED-TEXT	beschreibung			text-sperre-belegt
+2026-09-24T04:24:48Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
+2026-09-24T04:24:50Z	SCHREIB	gid://shopify/Product/15448619942273	used-look-jeans-mit-leicht-ausgestelltem-bein-621700	USED-TEXT	beschreibung	Used-Look	Vintage-Look	ok
+2026-09-24T04:24:52Z	SCHREIB	gid://shopify/Product/15449163202945	herren-jeansjacke-im-used-look-609500	USED-TEXT	beschreibung	Used-Optik	Vintage-Optik	ok
+2026-09-24T04:24:54Z	SCHREIB	gid://shopify/Product/15450555056513	erhohende-board-schuhe-im-used-look-605300	USED-TEXT	beschreibung	Used-Look | Used-Look	Vintage-Look | Vintage-Look	ok
+2026-09-24T04:24:56Z	SCHREIB	gid://shopify/Product/15460655726977	ombre-t-shirt-mit-used-look-602800	USED-TEXT	beschreibung	Used-Look. | Used-Look	Vintage-Look. | Vintage-Look	ok
+2026-09-24T04:24:57Z	SCHREIB	gid://shopify/Product/15472337420673	herren-hoodie-im-used-look-633500	USED-TEXT	beschreibung	Used-Look.	Vintage-Look.	ok
+2026-09-24T04:24:59Z	SCHREIB	gid://shopify/Product/15473389011329	patchwork-wide-leg-jeans-im-used-look-612400	USED-TEXT	beschreibung	Used-Look-Elemente | Used-Look	Vintage-Look-Elemente | Vintage-Look	ok
+2026-09-24T04:25:01Z	SCHREIB	gid://shopify/Product/15492129653121	rebellious-washed-distressed-short-sleeve-top-633300	USED-TEXT	beschreibung	Used-Look. | Used-Look	Vintage-Look. | Vintage-Look	ok
+2026-09-24T04:25:03Z	SCHREIB	gid://shopify/Product/15492264034689	herren-jeans-im-used-look-636600	USED-TEXT	beschreibung	Used-Look	Vintage-Look	ok
+2026-09-24T04:25:05Z	SCHREIB	gid://shopify/Product/15492326785409	used-look-patchwork-jeans-fur-herren-625300	USED-TEXT	beschreibung	Used-Look | Used-Look	Vintage-Look | Vintage-Look	ok
+2026-09-24T04:25:07Z	SCHREIB	gid://shopify/Product/15493706580353	st-michael-distressed-zip-up-hoodie-616100	USED-TEXT	beschreibung	Used-Effekten,	Vintage-Effekten,	ok
+2026-09-24T04:25:09Z	SCHREIB	gid://shopify/Product/15493778145665	retro-straight-jeans-mit-used-look-628400	USED-TEXT	beschreibung	Used-Look	Vintage-Look	ok
+2026-09-24T04:25:11Z	SCHREIB	gid://shopify/Product/15493865931137	slim-fit-used-look-jeans-fur-herren-616600	USED-TEXT	beschreibung	Used-Look | Used-Look	Vintage-Look | Vintage-Look	ok
