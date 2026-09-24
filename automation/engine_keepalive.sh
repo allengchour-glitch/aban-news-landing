@@ -430,6 +430,14 @@ fi
 
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
 
+# 🪣 CJ-TAKT-BERICHT (24.09.2026): Server und Container teilen EIN CJ-Konto, sehen aber nur ihre eigenen Aufrufe.
+# Jede Maschine legt stündlich dropship/_cj_takt_<host>.json ab (Aufrufe je Skript, letzte 60 min); hier werden
+# alle Berichte gezeigt — so ist sichtbar, wer den Eimer leert, bevor ein Nachtrag Tage hinterherhinkt.
+( cd "$K_REPO" && python3 automation/cj_takt_bericht.py 2>/dev/null )
+for f in "$K_REPO"/dropship/_cj_takt_*.json; do
+  [ -f "$f" ] && python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print('CJ-TAKT', d['host'], d['stunde'][5:16], '·', d['summe'], 'Aufrufe/h ·', ', '.join(f'{k} {v}' for k,v in list(d['skripte'].items())[:4]))" "$f" 2>/dev/null
+done
+
 # 📦 VERSAND-AMPEL (09.09.2026): Meldet Sendungen, die eine NUMMER haben, aber nie losgefahren
 # sind. #1017/#1018 bekamen am 07.09. binnen Minuten eine Tracking-Nummer, beide Kunden wurden
 # benachrichtigt — und zwei Tage spaeter zeigte CJ je EINE leere Station (eine zugestellte
