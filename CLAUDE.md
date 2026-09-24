@@ -69,6 +69,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - **WELCOME10 = ACTIVE bis 2027-12-31** (10 %, Code funktioniert). Alte „bis 31.08.2026"-Notiz veraltet, längst verlängert.
   - **Bild-QA sauber:** 0 FAILED-Dateien. **Preis-QA sauber:** 0 aktive Produkte mit Preis 0.
   - Echte externe Käufer bisher: **4** (Raia, Schnabel, Herger, Schutz) — Rest sind User-Tests. Engpass bleibt **Traffic**.
+- **📲 METRICOOL AUTO-POSTING vorbereitet (User-Wunsch „volle auto"):** Queue `social/metricool_plan.csv`
+  (12 fertige Posts, 25.09.–06.10., IG+FB+Pinterest, Preis-Anker-Captions + Hashtags + echte Bilder + „ab CHF 50")
+  + Anleitung `social/METRICOOL-SETUP.md`. **BLOCKER = nur User:** (1) Metricool **Pro-Abo** (Zahlung),
+  (2) Social-Profile in Metricool verbinden, (3) Metricool-**Connector in claude.ai** verbinden. Claude kann weder
+  bezahlen noch OAuten. **Sobald der Metricool-MCP da ist:** `social/metricool_plan.csv` zeilenweise via
+  `createScheduledPost` einplanen = volle Automatik. TikTok braucht Video (Reels), nicht diese Foto-Posts.
 - **Katalog:** 10'000 aktiv. Viele Neu-Importe ohne `seo.title` → systematischer Fix = **Shop-Brain deployen**
   (`cd workers/shop-brain && npx wrangler deploy`, nur User/PC); manuell nur Einzelfälle sinnvoll.
 
