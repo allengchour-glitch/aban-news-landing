@@ -11,7 +11,24 @@ async function sperren() {
     await sleep(20);
   }
 }
+// 24.09.2026 VORRANG (siehe cj_takt.py): solange cj_kosten_backfill arbeitet (frischt /tmp/cj_vorrang je Aufruf auf),
+// warten alle ausser Bestell-/Zahlungs-/Versandwaechtern; Datei > 120 s = Leiche; hoechstens VORRANG_MAX_S warten.
+const VORRANG_DATEI = '/tmp/cj_vorrang', VORRANG_SKRIPTE = ['cj_kosten_backfill'];
+const IMMER_FREI = ['cj_fulfill', 'cj_order', 'cj_zahlung', 'versand_stillstand', 'bestell', 'cj_takt'];
+const VORRANG_MAX_S = parseFloat(process.env.VORRANG_MAX_S || '5400');
+async function vorrangWarten() {
+  const name = (process.argv[1] || '?').split('/').pop();
+  if (VORRANG_SKRIPTE.some(v => name.startsWith(v))) { try { fs.writeFileSync(VORRANG_DATEI, name); } catch {} return; }
+  if (IMMER_FREI.some(v => name.startsWith(v))) return;
+  const ende = Date.now() + VORRANG_MAX_S * 1000;
+  while (Date.now() < ende) {
+    let alter; try { alter = Date.now() - fs.statSync(VORRANG_DATEI).mtimeMs; } catch { return; }
+    if (alter > 120000) return;
+    await sleep(10000);
+  }
+}
 export async function takt(abstand = ABSTAND) {
+  await vorrangWarten();
   await sperren();
   let start;
   try {

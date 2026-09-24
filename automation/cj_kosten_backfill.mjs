@@ -155,6 +155,7 @@ async function main() {
   // (dieselbe Lehre wie beim Textbild-Reiniger).
   const ZEIGER = 'dropship/_cj_kosten_cursor.txt';
   let cursor = fs.existsSync(ZEIGER) ? (fs.readFileSync(ZEIGER, 'utf8').trim() || null) : null;
+  const startZeiger = cursor;
   let geprueft = 0, gesetzt = 0, ohne = 0, shopifyStumm = false;
   while (gesetzt + ohne < LIMIT) {
     // ⚠️ DIE SEITENABFRAGE WAR ZU TEUER (27.08.2026). Sie holte je Produkt bis zu 100
@@ -319,7 +320,12 @@ async function main() {
       // Runde durch: Zeiger loeschen, damit der naechste Lauf die taeglich neu
       // hinzugekommenen Produkte wieder von vorne mitnimmt.
       if (fs.existsSync(ZEIGER)) fs.unlinkSync(ZEIGER);
-      console.log(`FERTIG: ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz.`);
+      // ⚠️ 24.09.2026: Hier stand IMMER «FERTIG» — auch wenn der Lauf mitten in der Liste (am Zeiger) begonnen hatte
+      // und nur das Listenende erreichte. Der Aufseher liest FERTIG als «20 h Pause»: der Nachtrag lief nach 10:33 nicht
+      // mehr, während 13'018 aktive CJ-Produkte ohne EK dastanden (Preis-Verlustschutz blind). FERTIG heisst jetzt:
+      // eine VOLLE Runde ab Listenanfang, in der nichts mehr zu tun war.
+      if (!startZeiger && gesetzt === 0) console.log(`FERTIG: volle Runde ohne Arbeit, ${ohne} ohne CJ-Referenz.`);
+      else console.log(`Stand: Listenende erreicht (${startZeiger ? 'ab Zeiger' : 'volle Runde'}), ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz — nächste Runde von vorn.`);
       return;
     }
     cursor = pr.pageInfo.endCursor;
