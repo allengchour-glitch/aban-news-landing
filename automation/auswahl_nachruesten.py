@@ -35,6 +35,11 @@ SCHARF = os.environ.get("SCHARF") == "1"
 NUR = os.environ.get("NUR_HANDLE")
 CAP = int(os.environ.get("CAP", "40"))
 HEUTE = time.strftime("%Y-%m-%d")
+CACHE_DATEI = "/tmp/auswahl_cj_cache.json"
+try:
+    CACHE = json.load(open(CACHE_DATEI))
+except Exception:
+    CACHE = {}
 CODE = re.compile(r"^[A-Za-z]{0,5}[ -]?\d{1,4}[A-Za-z]?$")
 MENGE = re.compile(r"\b(\d{1,3})\s*(?:-\s*)?(?:Farben|Designs?|Motive|Stück|Stk|teilig|tlg|er[- ]?Set)\b", re.I)
 
@@ -83,9 +88,17 @@ def plane(zeile):
     if p["variantsCount"]["count"] != 1:
         return None, "hat inzwischen mehrere Varianten"
     var = p["variants"]["nodes"][0]
-    d = cj(cj_url(var["sku"]))
-    if d is None:
-        raise SystemExit("PAUSE: CJ antwortet nicht")
+    # CJ-Antworten zwischenspeichern (3 Tage): Trockenlauf und scharfer Lauf fragen sonst jede pid zweimal — am 24.09.
+    # frass das zusammen mit Messung und Bewertungs-Nachholer das CJ-Tagesbudget (16900500) nach 169 von 329.
+    ck = var["sku"]
+    if ck in CACHE and time.time() - CACHE[ck]["t"] < 3 * 86400:
+        d = CACHE[ck]["d"]
+    else:
+        d = cj(cj_url(var["sku"]))
+        if d is None:
+            raise SystemExit("PAUSE: CJ antwortet nicht")
+        CACHE[ck] = {"t": time.time(), "d": d}
+        json.dump(CACHE, open(CACHE_DATEI, "w"))
     vs = (d.get("data") or {}).get("variants") or [] if isinstance(d.get("data"), dict) else []
     if len(vs) < 2:
         return None, f"CJ führt {len(vs)} Variante(n)"
