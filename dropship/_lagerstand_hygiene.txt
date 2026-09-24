@@ -152,3 +152,6 @@ gid://shopify/Product/15470072988033	draft-ausverkauft	Orbz Happy Birthday, 
 gid://shopify/Product/15470073184641	draft-ausverkauft	Dekostoff Organza dunkelblau
 gid://shopify/Product/15470073414017	draft-ausverkauft	Geschenkband Multi-Kanalspule · 21 Stück
 gid://shopify/Product/15470073905537	draft-ausverkauft	Ballon Girlande 4 m · 70 Stück
+gid://shopify/Product/15470076789121	draft-ausverkauft	Plüsch Giraffe
+gid://shopify/Product/15470077706625	draft-ausverkauft	Badeset WINTER MAGIC
+gid://shopify/Product/15470078263681	draft-ausverkauft	Magic Wasser Ballone
