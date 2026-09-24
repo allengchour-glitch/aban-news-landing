@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:13:08Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:20:08Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **1897** in 532 Produkten
-- Treffer (≥ 4 Wörter): **77** in 73 Produkten
+- Medien geprüft: **2114** in 581 Produkten
+- Treffer (≥ 4 Wörter): **88** in 83 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -20,18 +20,24 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
 | Magnetische Sportbrille für Helm `15453768810881` | [69926688948609](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94d8c59c-9774-43ab-b99c-f851e81e0a74.jpg) | 22 | SAFE TRAVEL Thousands safety safe the critical moment | offen |
 | Pinguin-Tuch zum Abwischen `15453791093121` | [69926763987329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2591efa5-f7fd-4ddc-a6e2-fb67637ca6b7_trans.jpg) | 21 | Not easy shed hair Caring for the quality | offen |
+| Faltbarer Joystick mit Display-Fernbedienung `15433464250753` | [69712351560065](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/406f332f-0d28-4363-b23b-80bd80122925_fine.jpg) | 21 | Remote control with screen and foldable joystick disassembly | offen |
 | Holziges Raumfeuchtigkeitsgerät `15453772153217` | [69926698451329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/92451689-d71f-4c27-be0d-757de9de3bc5_trans.jpg) | 20 | Enjoy sweet sleep Light tone humidification company does | offen |
 | Magnetische falsche Wimpern mit Seifenhalter `15453769138561` | [69926689341825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/139c7f2f-5dd6-4bde-8996-51550972abd7_fine.jpg) | 19 | Added magnetic groove Adsorbed eyelashes Upward curved clip | offen |
+| Sommer-Schlafsack für Baby & Kleinkind `15453792534913` | [69926765855105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba293841-75d1-444d-9134-e6bf7cc99b53_trans.jpg) | 19 | Soft bamboo cotton Breathable and comfortable Infant sleeping | offen |
+| Bein-Druck Dumbbell Stange für Beinheben & Muske `15453792469377` | [69926765822337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd047f6d-62fe-46ee-b92d-fa16894d4d1f_trans.jpg) | 18 | Jianxiang Cast iron material NBR Foam Detachable Factory | offen |
+| Grosse Schreibtischunterlage für Maus und Tastat `15433463103873` | [69712349921665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb422eff-d04a-4d90-bb2a-f6dcad20c47f_trans.jpg) | 18 | Precision edge and ALL EFFORTS ARE JUST FOR | offen |
 | Kamera-Drohne mit Hindernis-Vermeidung `15453744562561` | [69926295339393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20c126ef-1fd7-47ba-87da-dfe5ce978467.jpg) | 17 | Upgrade brushless motor for more Brushless power stable | offen |
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
 | Plüschspielzeug mit Flattergeräusch `15453792174465` | [69926765461889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4b69f4b4-890b-47aa-89a2-7f70b5e1dd60_trans.jpg) | 15 | Cats are born hunters Highly simulated appearance suitable | offen |
 | Multifunktionale wasserdichte Steckdose für Wohn `15493873860993` | [70479330279809](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6dd5f853-90c4-4899-9887-bc425efbe683_trans.jpg) | 15 | Flexible fits sealing ring Protection level reaches Wind | offen |
 | Velvet-Matte Lippenstift-Linierer `15453767074177` | [69926686130561](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c08c8d05-8ba3-41b6-a369-2e2983da3f17.jpg) | 15 | BARVENA Comfortable weightless formula that flake feather Glides | offen |
+| RGB-Kopfhörerständer mit E-Sports-Rhythmusbeleuc `15433464217985` | [69712351527297](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b9775a1-fe5c-4ca0-974f-79ccfb2d8ecd_trans.jpg) | 15 | USB powered Directly connect USB interface Power supply | offen |
 | Kamera-Drohne mit Hinderniserkennung `15453744628097` | [69926295536001](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc914a48-36f7-4072-b53a-203bf305c567.jpg) | 14 | Powerful brushless power Equipped with four and brushless | offen |
 | Drohnenfernsteuerung mit 3 Kameras, langer Akku `15453743743361` | [69926293471617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a23f731e-f5bd-4c47-b047-72f2cbe17a1c.jpg) | 14 | Max Drone flagship light and shadow triple camera | offen |
 | Natürlicher Gummispielzeug Lebensmittel-Verteile `15453763502465` | [69926634488193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c34aa6a5-2ee1-492c-8bd0-64631702cb5a_trans.jpg) | 14 | Super Strong Interactive Throwing Puzzle Food Dispensing jistant | offen |
 | Grosses Trinkschüssel für Haustiere `15453764911489` | [69926640091521](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e8706c5-2053-4556-b96a-09d5a383114a_trans.jpg) | 14 | Use exquisite The cat bowl Start Daily Food | offen |
 | Öle für Duftdiffuser `15453771661697` | [69926697304449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68ea0afb-6a45-4d84-8ebc-123850f919a2.jpg) | 13 | LAVENDER ESSENTIAL ESSENTIAL OIL THERAPEUTIC GRADE Essential oils | offen |
+| In-Ear Gaming Headset mit Geräuschunterdrückung `15433463398785` | [69712350380417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6bddeded-3685-4902-9816-b786891ec9e2_trans.jpg) | 13 | Gaming Bluetooth delay Dual Mode Cool Fantasy Breathing | offen |
 | Intelligentes Bremslicht für Velos `15448957976961` | [69862641762689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2fb4a32-5161-4001-9089-69587e78a7ab_trans.jpg) | 12 | waterproof Good waterproof level for daily need worry | offen |
 | Bauchstützgürtel für Schwangere `15453760717185` | [69926628524417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9f9382e0-2080-4051-b7a5-441a700d8875_fine.jpg) | 12 | Ergonomic curve design Ring design fits better Soft | offen |
 | Smart-Armbanduhr mit Herzfrequenz- und Blutsauer `15453778411905` | [69926716244353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a7c63c5-36db-464a-a086-26ad34f0f8c8_trans.jpg) | 11 | GPS Outdoor sports smart watch Smart Watch Fearless | offen |
@@ -41,12 +47,14 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [69926292881793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c946bda-8782-4759-9d82-90a6b13f1808.jpg) | 10 | Intelligent perception obstacle avoidance Four way detection and | offen |
 | Intelligenter Futtermanger `15453764714881` | [69926639731073](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30ca7178-06d7-4015-809a-de4d4490f015_fine.jpg) | 10 | Fully Automatic Feeding Remote Mobile Control Full Machine | offen |
 | Kratzbrett für Katzen · schont Möbel und Krallen `15453763731841` | [69926634914177](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05847a99-5b79-432c-af45-69f17ee95c61_trans.jpg) | 10 | ZiHaiWan INCREASE AND DEEPEN Durablejute sway left and | offen |
+| Mrwish Klebstofffreie Wimpern New Lazy Trilogy `15500157813121` | [70541742047617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f98d12d0-b9a7-4517-9133-529303db99a0_trans.jpg) | 10 | Japanese magazi vitality makeup Animal Mouse Series Smart | offen |
 | Aerial Photography Drone 8K HD `15453744431489` | [69926294815105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fd59f6e3-77ce-4e6d-876f-c97bfb20df80.jpg) | 9 | Long battery life Bidirectional electric optical flow obstacle | offen |
 | 8K-Luftbild-Drohne `15453744300417` | [69926294487425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c22c3423-4f47-4372-8567-aef18a6d44c5_trans.jpg) | 9 | player the aerial photography industry Easy fly and | offen |
 | Interaktiver Ball mit 3 Modi & USB-Ladekugel für `15453763699073` | [69926634881409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/82ba7971-236d-432c-88d8-73283cb00286.jpg) | 9 | AUTOMATIC PET JUMPING BALL Thickened and Extended battery | offen |
 | Grossvolumige Katzenklo-Box mit Hochwänden `15453764354433` | [69926638911873](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2c53760d-54a6-405f-936c-e0433e0bee8a_trans.jpg) | 9 | Stainless steel cat litter box Heightened baffle deepened | offen |
 | Riser-Feeder für alle ausser der ersten Generati `15453765206401` | [69926640910721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65973e16-3272-4f06-9003-f5e32af55817_trans.jpg) | 9 | Eat without looking down Take good care your | offen |
 | Kinder Make-up Set `15453767139713` | [69926686294401](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b0776a0-752e-4c5a-9a91-b4a22423d4c7_fine.jpg) | 9 | Professional Makeup Box Exquisite Makeup Set Fulfills Princess | offen |
+| Mechanische Tastatur mit 104 Tasten, USB-C, Blue `15433463562625` | [69712350609793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/25ec0b48-2713-49f3-a7c0-6b9e3a8e6627_trans.jpg) | 9 | Mechanical Blue Switch Key Line Separation RGB Mechanical | offen |
 | Yoga Stretch-Strap Set `15453792240001` | [69926765527425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0eed1b67-3414-4379-8d18-33d83591584e.jpg) | 8 | Yoga stretch belt Meet various training force regulation | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
@@ -59,6 +67,8 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Yoga-Matte mit Grip `15453762814337` | [69926633636225](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0c240a4f-ef81-4ab1-be02-d6ba37dcee29_trans.jpg) | 7 | Standard Rubber Yoga Mat and and Breathable | offen |
 | UAV Positionierung 8K Luftaufnahmen `15453743219073` | [69926292390273](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1817e56e-d812-4ba1-bce5-1bd9901185a9.jpg) | 7 | With screen Remote control Brushless obstacle avoidance | offen |
 | Anti-Rutsch Leckschale für Haustiere `15453774938497` | [69926702711169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/781de4b8-8eb6-4f61-a530-f5980ecc32b7.jpg) | 7 | WORKS GREAT WITH BABY FOOD Pumpkin Puree | offen |
+| NS21 RGB-Gamepad mit Leuchteffekten `15433464447361` | [77265202119047](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a0d2fd3-4711-4501-9c60-74424edacb94_trans.jpg) | 7 | Switch Android HID Available all major platforms | offen |
+| Dunkelgraues Kissen mit Geometrischem Jacquard `15497525657985` | [77265204478343](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402130306220324700.jpg) | 7 | HINYEATEX FRONT SIDE PILLOW BACK SIDE PILLOW | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
@@ -88,5 +98,6 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Aromadiffuser mit Bluetooth-Lautsprecher `15453772054913` | [70519926423937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f9ba349-5338-4d29-b0f4-431da4976b6c.jpg) | 4 | LAVENDER TEA TREE PEPPERMINT | offen |
 | Keramik-Futternapf für Hunde, grosse Kapazität `15453774283137` | [70618524909953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2490125b-fbbf-45af-8793-098578110a85_trans.jpg) | 4 | Free Single bowl rack | offen |
 | Geschlossene Katzen-Toilette `15453787554177` | [69926757761409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ce2b38c-d07e-471f-bf87-c523816c64f8_trans.jpg) | 4 | Flowerpot cat litter box | offen |
+| NS21 RGB-Gamepad mit Leuchteffekten `15433464447361` | [77265202086279](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/49cf115c-637e-4f7b-ae60-7e2e11eed288_trans.jpg) | 4 | Bracket Charging cable Gamepad | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
