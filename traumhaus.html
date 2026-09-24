@@ -2396,6 +2396,18 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       streu(_n(40),GW*CS/2+30,GW*CS/2+140,pilze,0);
     })();
     streu(_n(24),GW*CS/2+14,GW*CS/2+120,heuballen,1);
+    /* 🌳 AUSSENRING (Runde 95): die Streuung endete bei r ≈ 190 — um Neustadt, Burgdorf, Technikpark und
+       Camping (r 380…450) stand nichts als Wiese. Zweiter Ring 200…440 m; freiPlatz kennt die Viertel,
+       Strassen und Felder, aber nicht das Meer und die Berge — darum der Filter davor. */
+    function draussen(fn){return function(x,z){
+      if(window.imWasser&&window.imWasser(x,z))return;
+      if(window._bergHoehe&&window._bergHoehe(x,z)>0.4)return;
+      if(Math.hypot(x,z)>445)return;
+      fn(x,z);};}
+    streu(_n(110),200,440,draussen(function(x,z){baum2(x,z,0.8+Math.random()*1.0);}),1);
+    streu(_n(70),200,440,draussen(busch),0);
+    streu(_n(40),200,440,draussen(findling),0);
+    streu(_n(60),200,440,draussen(blumenfeld),0);
     /* ⚠️ DIESE SCHLEIFE HAT NIE EIN BUESCHEL GESETZT — nachgerechnet, nicht vermutet.
        Sie streute auf einen Ring mit `sr9 = 19 + Math.random()*4`, also Radius 19…23 um die
        Seemitte (0|146). Der Torwaechter war `freiPlatz(sx9,sz9,0)`, und dort steht:
