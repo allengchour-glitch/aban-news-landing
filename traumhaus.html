@@ -6295,6 +6295,10 @@ setTimeout(function baueGebaeude(){
       var lo=-laenge/2+l*(laenge/nL);
       [-TO-1.6,TO+1.6].forEach(function(o2){
         var lx=VX+(laengs?lo:o2),lz=VZ+(laengs?o2:lo);
+        /* Runde 95: keine Laterne in der Einmuendung (eigener Anschluss oder Nachbar) — th-strassen fand
+           die Gewerbe-Laterne im Neustadt-Stich und die Zoo-Laterne in der Burgdorf-Strasse */
+        var lw9=laengs?lx:lz,sgL=o2>0?1:-1;
+        if(J9.some(function(j,ji){return Math.abs(lw9-j)<TRIM+1.8&&J9S[ji]===sgL;}))return;
         if(window._lampPos)window._lampPos.push([lx,lz]);
         var kg=new THREE.Group();
         var ma=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.15,5.6,7),stdMat(0x2c343c,0.55));ma.position.y=2.8;kg.add(ma);
@@ -6306,6 +6310,10 @@ setTimeout(function baueGebaeude(){
       [-VW/2+4,VW/2-4].forEach(function(o3){
         var tx=laengs?VX+to:VX+o3,tz=laengs?VZ+o3:VZ+to;
         if(laengs){tx=VX+to;tz=VZ+o3;}else{tx=VX+o3;tz=VZ+to;}
+        /* Runde 95: kein Randbaum, wo ein Weg das Viertel quert (freiQuer/Nachbar-Einmuendung) —
+           der Gewerbe-Randbaum stand im Neustadt-Stich (th-strassen: Krone bei (294|-136)) */
+        var tw9=laengs?tx:tz;
+        if((cfg.freiQuer||[]).concat(J9).some(function(q){return Math.abs(tw9-q)<9;}))return;
         if(window._baum2)window._baum2(tx,tz,0.8+((t2*3)%3)*0.14);});}
     /* 6) Kartenmarke und Lieferziel an die TATSAECHLICHE Lage haengen. Beide standen
        fest im Quelltext. Beim Bauernhof zeigten sie jahrelang auf einen Acker, weil
@@ -6707,16 +6715,18 @@ setTimeout(function baueGebaeude(){
               {file:"nf_robot_small.glb",    h:3.5,w:1.9, d:2.2,tuer:false}]});
     if(_tp){(function(){var tx=_tp.x,tz=_tp.z;
       function fest9(f,h,x,y,z,ry){bau(f,h,x,y,z,ry,false,function(w){w.userData.fest=1;},true);}
-      fest9("nf_satellite.glb",6,tx+30-19.45,0,tz-24-14.25,0);      /* Ursprung liegt bei +19,45/+14,25 */
-      fest9("nf_satellite.glb",6,tx+30-19.45,0,tz+24-14.25,0.9);
-      fest9("nf_generator.glb",3,tx+36-14.6,0,tz-12-10.75,Math.PI/2);  /* Ursprung bei +14,6/+10,75 */
+      /* ⚠️ Der Versatz gilt NUR ungedreht — mit rotY 0,9 wanderte die zweite Schuessel auf die Strasse
+         (th-strassen: nf_satellite bei (439|-256)). Darum alle drei mit rotY 0. */
+      fest9("nf_satellite.glb",6,tx+30-19.45,0,tz-24-14.25,0);      /* Ursprung liegt bei +19,45/+14,25 → Box-Mitte (tx+30|tz-24) */
+      fest9("nf_satellite.glb",6,tx+30-19.45,0,tz+24-14.25,0);      /* Box-Mitte (tx+30|tz+24) */
+      fest9("nf_generator.glb",3,tx+36-14.6,0,tz-12-10.75,0);        /* Ursprung bei +14,6/+10,75 → Box-Mitte (tx+36|tz-12) */
       bau("nf_drone.glb",4,tx+20,5,tz+30,0,false,function(w){w.userData.fest=1;w.userData.nieAusblenden=true;w._bewegt=true;},true);
     })();}
     /* 🏰 BURGDORF — Burg, Fachwerk, Schmiede, Saegewerk, Stall, Scheune, Windmuehle, Turm auf Kies.
        Anschluss: vom Westende der Zoo-Strasse (-285|-250, tatsaechliche Lage) 140 m nach Norden; der
        Zoo traegt dafuer nachbarn. Frei gemessen: x -460…-140, z -460…-330 (Berg -378|-244 endet bei -319). */
     viertel({name:"Burgdorf",x:-300,z:-390,w:150,d:90,achse:"x",boden:"kies",
-      anschluss:[-285,-250],abstand:6,luecke:7,rand:12,
+      anschluss:[-285,-250],freiQuer:[-285],abstand:6,luecke:7,rand:12,   /* freiQuer: der Turm stand sonst in der T-Einmuendung */
       bauten:[{file:"building_castle.glb",   h:22, w:21.6,d:23.5},
               {file:"bd_barn.glb",           h:7,  w:9,   d:9.6},
               {file:"bd_house_c.glb",        h:6,  w:10.8,d:11.9},
