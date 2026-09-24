@@ -1057,3 +1057,7 @@ gid://shopify/Product/15497449210241	ok	Squat Fuss-Pad für Kniebeugen
 gid://shopify/Product/15499780424065	ok	Gummisportmatte
 gid://shopify/Product/15500909347201	ok	Waben Antihaft-Wokpfanne 28 cm
 gid://shopify/Product/15500972163457	ok	Flying Bird Clip Chest Biceps Bend Lift Fitness Taper Rope Grip
+gid://shopify/Product/15449168871809	nicht-versendbar	Aluminium-Koffer mit Rahmen (20-Zoll)
+gid://shopify/Product/15497425092993	ok	4-in-1 Bauchtrainer mit Rebound-Funktion
+gid://shopify/Product/15502590017921	ok	Smarter Vorhangmotor mit Fernbedienung
+gid://shopify/Product/15448941855105	nicht-versendbar	Hundebett mit Blachen-Sonnendach
