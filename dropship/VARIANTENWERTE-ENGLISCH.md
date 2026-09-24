@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 01:23 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 02:04 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **15'043**
-- Optionen mit englischen Werten (Kandidaten): 1'700
+- Produkte gesehen: **15'640**
+- Optionen mit englischen Werten (Kandidaten): 1'755
 - Optionen übersetzt: **18** · Werte übersetzt: **30**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 8'902
+- Werte mit unbekanntem Wort (unverändert): 9'369
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 38
+- übersprungen «kleidungsstueck-im-wert»: 40
 - übersprungen «kollision-nach-uebersetzung»: 29
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -37,6 +37,7 @@
 - `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
 - `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 - `15453570728321` [Farbe] **Japanischer Segler-Anzug** — kleid, rock · Titel nennt Set: Short Sleeves Bow Tie | Long Sleeves Bow Tie | Short Sleeves Skirt Bow Tie | Long Sleeve With Dress Bow Tie | Skirt
+- `15459786752385` [Farbe] **Haltbare Einheitsjacke mit mehreren Taschen** — hose, oberteil: Black Suspender Pants | Dark Gray Suspender Pants | Dark Gray Split Suit | Dark Gray Trousers | Dark Gray Single Blouse
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -123,5 +124,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 345, `light` 247, `color` 210, `inner` 178, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 103, `shell` 99, `skin` 98, `core` 92, `three` 83, `powder` 79, `to` 74, `high` 73, `surface` 72, `case` 66, `rope` 66, `feet` 62, `bag` 62, `mother` 61, `belt` 59, `no` 59, `dark` 58, `size` 56, `electric` 54, `code` 54, `of` 51, `lens` 50, `line` 48, `hat` 47, `dual` 46, `bear` 46, `for` 45, `clock` 45, `buckle` 44, `acupuncture` 43, `net` 43, `four` 42, `perforated` 42, `button` 41, `face` 40, `years` 40, `tea` 39, `carbon` 39, `cat` 39, `opp` 39, `camera` 39, `father` 38, `generation` 37, `ice` 37, `suit` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `star` 36, `magnetic` 36, `little` 36, `person` 36, `base` 35, `⟨satzbau:nomen-vor-farbe⟩` 35
+`⟨satzbau:adjektiv-vor-nomen⟩` 346, `light` 322, `inner` 226, `color` 224, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 104, `shell` 103, `skin` 98, `core` 92, `three` 85, `powder` 82, `to` 74, `high` 73, `surface` 73, `rope` 69, `case` 67, `feet` 62, `bag` 62, `mother` 61, `belt` 60, `no` 59, `dark` 58, `size` 56, `electric` 54, `code` 54, `of` 53, `chain` 50, `lens` 50, `line` 48, `hat` 47, `bear` 47, `dual` 46, `for` 45, `clock` 45, `buckle` 44, `acupuncture` 43, `net` 43, `four` 42, `perforated` 42, `face` 41, `little` 41, `button` 41, `years` 40, `tea` 39, `star` 39, `carbon` 39, `cat` 39, `opp` 39, `camera` 39, `spring` 38, `ice` 38, `father` 38, `generation` 37, `autumn` 37, `suit` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `magnetic` 36
 
