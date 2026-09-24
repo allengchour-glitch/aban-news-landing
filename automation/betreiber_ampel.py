@@ -497,6 +497,20 @@ def kategorie_offen():
     return None if (n == 0 and not unbek) else f"KATEGORIE: ~{n} aktive ohne Kategorie (Stand {s.get('stand','?')[:16]}, Ledger heute {ledger_heute}){u}"
 
 
+def fortura_bestand_alter():
+    """FORTURA-BESTAND (24.09.2026): Der Abgleich Feed → Shop stand vom 21.08. bis 24.09. still (hing am pausierten
+    Import-Runner). Meldet nur, wenn der letzte Abgleich (letzte Zeile dropship/_fortura_bestand_log.tsv) > 30 h alt ist."""
+    try:
+        pfad = os.path.join(REPO, "dropship", "_fortura_bestand_log.tsv")
+        with open(pfad, "rb") as f:
+            f.seek(max(0, os.path.getsize(pfad) - 4000)); z = f.read().decode("utf-8", "ignore").strip().splitlines()[-1]
+        t = datetime.datetime.strptime(z.split("\t")[0][:19], "%Y-%m-%dT%H:%M:%S")
+        h = (datetime.datetime.utcnow() - t).total_seconds() / 3600
+        return f"⚠️ FORTURA-BESTAND {h/24:.0f} T alt (letzter Abgleich {t:%d.%m. %H:%M}) — Ware ab CH-Lager mit eingefrorenem Bestand" if h > 30 else ""
+    except Exception as e:
+        return f"FORTURA-BESTAND: unklar ({type(e).__name__})"
+
+
 def kollektion_doppel_offen():
     """KOLL-DOPPEL: n offene Gruppen mit gleicher Regel und zwei Web-Adressen — Stand von automation/kollektion_doppel.py
     (23.09.2026, täglich scharf im Aufseher). Liest die Kopfzeile «OFFEN: n» des Berichts; 0 → keine Zeile."""
@@ -747,7 +761,7 @@ def iban_grep():
 def main():
     if not os.path.exists(TOKPFAD):
         return
-    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), kollektion_doppel_offen(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), azure_stimme(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
+    teile = [t for t in (bot_puls(), shopify_rechnung(), bigbuy_ticket(), cj_dispute_1017(), liechtenstein_gesperrt(), klingen_pingpong(), verlust_kaufbar(), google_feedback(), kategorie_offen(), kollektion_doppel_offen(), fortura_bestand_alter(), grow_zaehler(), metricool_kanaele(), social_meta_live(), drafts_ohne_quittung(), fortura_zugang(), azure_stimme(), datei_speicher_voll(), video_deckel(), tiktok_queue_alt(), ki_textstufe(), server_waechter(), judgeme_verdacht(), iban_grep()) if t]
     rest = offene_punkte()
     if not teile and not rest:
         return

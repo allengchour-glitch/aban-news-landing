@@ -1455,6 +1455,16 @@ KLT=/tmp/test_klingen_tor.log
   # Der Hetzner-Agent sitzt woanders im Netz. Diese Zeile legt ihm den Auftrag hin; er
   # holt ihn im 5-Minuten-Takt ab, voellig unabhaengig davon, ob ich wach bin.
   # ⚠️ Idempotent ueber einen Zeitstempel — nicht stuendlich 24 Auftraege erzeugen.
+  # 📦 FORTURA-BESTAND (24.09.2026): Der Abgleich Feed → Shop hing am Import-Runner und stand seit 21.08. still
+  # (34 Tage eingefroren, 248 Varianten verkauften Ware, die Fortura nicht mehr hatte). Eigener Tagesstart, unabhaengig
+  # von Import-Pause und Grind-Schalter.
+  FB=/tmp/fortura_bestand.stamp
+  if [ -f /tmp/fortura_env.sh ] && [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fortura_bestand_taeglich\.sh$/ {f=1} END{exit(f?0:1)}'; then
+    touch "$FB"
+    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> /tmp/fortura_bestand.log 2>&1 & )
+    echo "$(date -u +%H:%M) Fortura-Bestand: Tageslauf gestartet"
+  fi
   SF=/tmp/storefront_auftrag.stamp
   if [ $(( $(date +%s) - $(stat -c %Y "$SF" 2>/dev/null || echo 0) )) -gt 72000 ]; then
     mkdir -p "$REPO/auftraege/offen"
