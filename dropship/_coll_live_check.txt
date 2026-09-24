@@ -518,3 +518,9 @@ schmuck-uhren	ok	28	Schmuck & Uhren
 accessoires	ok	29	Accessoires: Schals, Mützen, Gürtel & Socken
 gerade-auf-instagram	ok	14	📸 Gerade auf Instagram
 herbst-favoriten	ok	29	🍂 Herbst-Favoriten
+midikleider	ok	29	Midikleider
+kratzbaeume	ok	29	Kratzbäume
+hundebetten	ok	29	Hundebetten
+vorhaenge	ok	29	Vorhänge
+wanddeko	ok	29	Wanddeko
+haengematten	ok	17	Hängematten
