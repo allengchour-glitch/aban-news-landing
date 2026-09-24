@@ -34,7 +34,7 @@ erfunden, sondern die bereits vorhandenen, spezifischsten Werte des Shops selbst
   ch      CH-Lager (Fortura, Tags ch-lager/fortura/schweiz-versand)   1-3 Werktage
   eu      EU-Lager (Tag eu-lager)                                     5-10 Werktage
   pod     Druck auf Bestellung (printful/prodigi/fertig-*/pod-*)      7-14 Werktage
-  direkt  Direktversand ab Herstellerlager (Rest, CJ)                10-18 Werktage
+  direkt  Direktversand ab Lieferantenlager (Rest, CJ)                10-18 Werktage
 
 Gegenprobe der Einstufung: die 1'004 Produkte mit vorhandenem data-tier stimmen zu
 1'004/1'004 mit dieser Tag-Einstufung ueberein (488 pod=eu-druck, 449+66 direkt=china/
@@ -107,7 +107,7 @@ WEGNAME = {
     "ch": "ab Schweizer Lager",
     "eu": "ab EU-Lager",
     "pod": "Druck auf Bestellung",
-    "direkt": "Direktversand ab Herstellerlager",
+    "direkt": "Direktversand ab Lieferantenlager",
 }
 POD_TAGS = {"printful_personalized_product", "prodigi_personalized_product", "selbst-gestalten"}
 CH_TAGS = {"ch-lager", "fortura", "schweiz-versand"}
@@ -564,7 +564,7 @@ SEITEN = {
         'andere Länder ist nicht möglich. Ein grosser Teil der Ware wird direkt ab dem Lager '
         'des Herstellers versendet. Die Lieferzeit hängt vom Bezugsweg ab: ab Schweizer Lager '
         '1–2 Werktage, ab EU-Lager 2–7 Werktage, bei Druck auf Bestellung 7–14 Werktage, im '
-        'Direktversand ab Herstellerlager 10–20 Werktage. Massgeblich ist die Angabe auf der '
+        'Direktversand ab Lieferantenlager 10–20 Werktage. Massgeblich ist die Angabe auf der '
         'jeweiligen Produktseite. Zoll- oder Einfuhrabgaben fallen für Lieferungen in die '
         'Schweiz nicht zusätzlich an.</p>')],
     698055360897: [(  # agb-luxestyle — rechtlich bindend
@@ -573,19 +573,19 @@ SEITEN = {
         '<p>Lieferzeit ab Zahlungseingang, innerhalb der Schweiz: ab '
         'Schweizer Lager <strong>1–2 Werktage</strong>, ab EU-Lager <strong>2–7 Werktage</strong>, '
         'bei Druck auf Bestellung <strong>7–14 Werktage</strong>, im Direktversand ab '
-        'Herstellerlager <strong>10–20 Werktage</strong>. Massgeblich ist die Angabe auf der '
+        'Lieferantenlager <strong>10–20 Werktage</strong>. Massgeblich ist die Angabe auf der '
         'Produktseite. Ein Versand in andere Länder ist nicht möglich.</p>')],
     697899516289: [  # faq — widersprach sich auf EINER Seite selbst
         ('🇨🇭 Blitzversand-Artikel kommen in 1–3 Werktagen aus dem Schweizer Lager, '
          'EU-Lager-Artikel in 3–7 Tagen, international versendete Artikel in 7–14 Tagen.',
          '🇨🇭 Blitzversand-Artikel kommen in 1–2 Werktagen aus dem Schweizer Lager, Ware ab '
          'EU-Lager in 2–7 Werktagen, Druck-auf-Bestellung-Artikel in 7–14 Werktagen und Ware '
-         'im Direktversand ab Herstellerlager in 10–20 Werktagen. Geliefert wird ausschliesslich '
+         'im Direktversand ab Lieferantenlager in 10–20 Werktagen. Geliefert wird ausschliesslich '
          'in die Schweiz.'),
         ('Lieferzeit je nach Produkt in der Regel ca. 10–20 Werktage '
          '(personalisierte/Print-on-Demand- und Übersee-Artikel ca. 7–14 Werktage).',
          'Lieferzeit je nach Bezugsweg: ab Schweizer Lager 1–2 Werktage, ab EU-Lager 2–7 '
-         'Werktage, bei Druck auf Bestellung 7–14 Werktage, im Direktversand ab Herstellerlager '
+         'Werktage, bei Druck auf Bestellung 7–14 Werktage, im Direktversand ab Lieferantenlager '
          '10–20 Werktage.')],
     698006208897: [(  # schweizer-vs-deutsche-marken — bewarb Lieferung nach Deutschland
         '<li>🇩🇪 Versand auch nach DE (8-14 Tage)</li>',
@@ -626,7 +626,7 @@ SEITEN = {
     698060996993: [('Versand 7-14 Tage.', 'Versand 10–20 Werktage.')],
     698029965697: [('<p>7-12 Werktage — ehrlich gesagt. Keine Lügen. Versand direkt ab Werk '
                     'damit dein Preis stimmt.</p>',
-                    '<p>10–20 Werktage im Direktversand ab Herstellerlager, ab Schweizer Lager '
+                    '<p>10–20 Werktage im Direktversand ab Lieferantenlager, ab Schweizer Lager '
                     '1–2 Werktage — ehrlich gesagt. Keine Lügen. Die Angabe für den einzelnen '
                     'Artikel steht auf der Produktseite.</p>'),
                    ('7-12 Werktage CH', '10–20 Werktage CH')],
@@ -645,7 +645,7 @@ SEITEN = {
                    ('<p>Keine Sorge. Diese Premium-Bundles kommen rechtzeitig — und sehen aus '
                     'wie 4-Wochen-Planung.</p>',
                     '<p>Damit das Geschenk sicher rechtzeitig da ist, bestell am besten bis '
-                    'Ende November: der Direktversand ab Herstellerlager braucht 10–20 '
+                    'Ende November: der Direktversand ab Lieferantenlager braucht 10–20 '
                     'Werktage. Diese Premium-Bundles sehen aus wie 4-Wochen-Planung.</p>')],
 }
 

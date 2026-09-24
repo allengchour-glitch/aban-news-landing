@@ -162,7 +162,10 @@ for (const rec of recs.slice(0, LIMIT)) {
   if (EXCLUDE.test(catBlob)) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
   // Titel = kuratierter ArtikelTitelDE (Fallback Bez1DE) + Grösse (Kostüme haben viele ArtNr je Grösse → nicht dedupen)
   let baseTitle = pick(rec, COLMAP.titleDE).replace(/[,;]\s*$/,'').trim();
-  const gr = pick(rec, COLMAP.groesse);
+  // 24.09.2026: volle Doppelgrösse aus Bez2DE bevorzugen (GrösseDE ist abgeschnitten, s. fortura_doppelgroesse.py)
+  const _m = String(rec['Bez2DE'] || '').match(/Gr(?:ö|oe)sse\s+([0-9A-Z]{1,5}\s*\/\s*[0-9A-Z]{1,5})/);
+  const _g = pick(rec, COLMAP.groesse);
+  const gr = _m && (!_g || _m[1].replace(/\s/g, '').split('/').includes(String(_g).trim())) ? _m[1].replace(/\s/g, '') : _g;
   let title = baseTitle.replace(/\s{2,}/g,' ').trim();
   // Sauber kürzen: an Wortgrenze ≤66 abschneiden, baumelnde Konjunktionen/Kommas strippen (kein Mid-Word-Cut)
   if (title.length > 66) { title = title.slice(0,66); const sp = title.lastIndexOf(' '); if (sp > 30) title = title.slice(0, sp); }
@@ -202,7 +205,7 @@ for (const rec of recs.slice(0, LIMIT)) {
   const specs = [
     ['Marke', pick(rec, COLMAP.marke)],
     ['Farbe', pick(rec, COLMAP.farbe)],
-    ['Grösse', pick(rec, COLMAP.groesse)],
+    ['Grösse', gr],
     ['Masse', pick(rec, COLMAP.dimension)],
     ['Anlass', pick(rec, COLMAP.anlass)],
     ['Lieferumfang', pick(rec, COLMAP.lieferumfangDE)],
