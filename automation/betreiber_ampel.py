@@ -579,9 +579,16 @@ def social_meta_live():
         grenze = datetime.datetime.now().timestamp() - 86400
         zeilen = subprocess.run(["git", "-C", REPO, "stash", "list", "--format=%ct %gs"],
                                 capture_output=True, text=True, timeout=20).stdout.split("\n")
-        neu = sum(1 for z in zeilen if z.strip() and "autostash" in z and int(z.split()[0]) > grenze)
-        if neu:
-            teile.append(f"⚠️ {neu} neue Autostashes in 24 h (Quittungen pruefen: git stash show)")
+        neu = sum(1 for z in zeilen if z.strip() and int(z.split()[0]) > grenze)
+        # 24.09.2026: Nicht mehr Stashes zaehlen, sondern messen, was drin FEHLT. Gezaehlt wurden nur «autostash»-
+        # Stashes; die Quittung des Smartwatch-Posts (02:13) lag in einem «WIP»-Stash von repo_vorspulen.sh.
+        r = subprocess.run(["python3", os.path.join(REPO, "automation", "quittung_rueckspiel.py")],
+                           capture_output=True, text=True, timeout=60, env={**os.environ, "SCHARF": ""})
+        fehlt = sum(1 for z in r.stdout.splitlines() if z.startswith(("  ✓", "  +")))
+        if fehlt:
+            teile.append(f"⚠️ {fehlt} Post-Quittung(en) nur im Stash → SCHARF=1 python3 automation/quittung_rueckspiel.py")
+        elif neu:
+            teile.append(f"Stashes 24 h: {neu} (Quittungen alle im Repo)")
     except Exception:
         pass
     return " · ".join(teile)

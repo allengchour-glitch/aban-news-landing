@@ -37,11 +37,16 @@ for f in os.listdir(snap):
         mehr += len(neu); print(f, "+", len(neu))
 print("union:", mehr)
 EOF
+# 24.09.2026: Die Union oben deckt nur dropship/*.txt. Post-Quittungen in den Queue-CSVs (Bildpost «Smartwatch Pro»
+# 02:13, IG 18138612319620139) blieben im Stash — Link-in-Bio und FB-Linkkommentar fanden das Produkt nicht mehr.
+if [ "$HAT_STASH" = 1 ]; then
+  STASH='stash@{0}' SCHARF=1 timeout 700 python3 automation/quittung_rueckspiel.py 2>&1 | sed "s/^/  [quittung] /"
+fi
 if [ "$HAT_STASH" = 1 ]; then
   echo "STASH BEHALTEN (nicht verworfen) — unversionierte Arbeit lag im Baum:"
   git stash show --name-only stash@{0} 2>/dev/null | sed "s/^/  /"
   echo "  zurueckholen: git checkout stash@{0} -- <datei>   ·  Liste: git stash list"
 fi
 rm -rf "$S"
-git add -A dropship/ && git commit -q -m "Ledger-Union nach Snapshot-Restore [skip ci]" 2>/dev/null
+git add -A dropship/ social/posts_image.csv social/ig_karussell.csv social/tiktok_karussell.csv automation/reels_seed.csv && git commit -q -m "Ledger-Union + Quittungs-Rückspiel nach Snapshot-Restore [skip ci]" 2>/dev/null
 timeout 45 git push origin "$B" 2>&1 | tail -1
