@@ -174,7 +174,7 @@ def quittiere(p, heben, sperren, draft=False):
 
 
 def main():
-    lk = open("/tmp/lock_preis_verlustschutz_intern.lock", "w")  # eigene Datei: der Aufseher hält lock_preis_verlustschutz.lock (fd 9)
+    lk = open(os.environ.get("SPERRE", "/tmp/lock_preis_verlustschutz_intern.lock"), "w")  # eigene Datei: der Aufseher hält lock_preis_verlustschutz.lock (fd 9)
     try:
         fcntl.flock(lk, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except OSError:

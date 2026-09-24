@@ -1,30 +1,35 @@
-# Preis-Verlustschutz — scharf 2026-09-24 10:48 UTC
+# Preis-Verlustschutz — Trockenlauf 2026-09-24 12:38 UTC
 
 Regel: Preis ≥ Mindestpreis bei **25% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **20** · Varianten gehoben: **31** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.17× · Varianten ohne EK (nicht geprüft): 128446
-- geschrieben: 20 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **2209** · Varianten gehoben: **3513** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.17× · Varianten ohne EK (nicht geprüft): 4
+- geschrieben: 0 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Solar Camping-Laterne im Vintage-Look – wiederau | 34.90 | 25.99 | **36.90** | 1.06× |
-| Auto-Schnellladegerät PD – ausziehbares Kabel, f | 19.90 | 14.64 | **20.90** | 1.05× |
-| Reed-Diffuser «Aroma» – Duftstäbchen ohne Flamme | 16.90 | 16.16 | **23.90** | 1.41× |
-| Spülbecken-Organizer – Schwamm- & Seifenhalter m | 24.90 | 19.92 | **28.90** | 1.16× |
-| Picknick-Matte XXL · faltbar, wasserdicht, isoli | 24.90 | 22.55 | **31.90** | 1.28× |
-| Akku-Handsauger für Auto & Heim – Mühelose Saube | 29.90 | 24.01 | **34.90** | 1.17× |
-| Reise-Tasche Wasserdicht XL – mit Schultergurt & | 19.90 | 15.47 | **22.90** | 1.15× |
-| 2-in-1 Display-Reiniger – Spray + Mikrofaser für | 16.90 | 15.08 | **21.90** | 1.30× |
-| Retro Flammen-Tischlampe LED · aufladbar | 18.90 | 16.16 | **23.90** | 1.26× |
-| Isolier-Trinkflasche Edelstahl · mit Trage-Hülle | 18.90 | 14.61 | **20.90** | 1.11× |
-| Edelstahl Coffee-to-go Becher · auslaufsicher | 15.90 | 11.96 | **17.90** | 1.13× |
-| Canvas-Shopper Tote · gross & nachhaltig | 15.90 | 12.54 | **18.90** | 1.19× |
-| Aroma-Diffuser «Persimmon» · Kaki-Frucht-Design  | 24.90 | 24.82 | **35.90** | 1.44× |
-| RGB-Wandlampe «Halo» · kabellos, Fernbedienung,  | 26.90 | 23.09 | **32.90** | 1.22× |
-| Weekender-Reisetasche «Voyage» · faltbar, mit Ex | 32.90 | 26.48 | **37.90** | 1.15× |
-| Solar-Gartenleuchte «Lumio» · Aluminium, automat | 29.90 | 33.80 | **47.90** | 1.60× |
-| Holz-Lesezähler «Leseheld» · Montessori-Tier-Tra | 14.90 | 10.76 | **15.90** | 1.07× |
-| Grosse Schreibtischunterlage für Maus und Tastat | 15.90 | 11.20 | **16.90** | 1.06× |
-| Mechanische Tastatur mit 104 Tasten, USB-C, Blue | 17.90 | 22.96 | **32.90** | 1.84× |
-| Gaming Tastatur & Maus Set RGB LED USB für PC &  | 34.90 | 27.23 | **38.90** | 1.11× |
+| Kostüm Charleston Kleid silber | 48.00 | 37.62 | **52.90** | 1.10× |
+| Trainingsjacke Retro Mann · Gr. XL | 30.50 | 26.48 | **37.90** | 1.24× |
+| Kurzes Schneewittchenkostüm | 38.00 | 31.78 | **44.90** | 1.18× |
+| Kostüm Piratin Grösse 152 · Gr. 152cm | 48.00 | 44.86 | **63.90** | 1.33× |
+| Ghost Kostüm mit Maske | 68.00 | 52.43 | **73.90** | 1.09× |
+| Kostüm Hexe Magie schwarz | 58.00 | 44.86 | **63.90** | 1.10× |
+| Kostüm Strichmännchen Dame | 48.90 | 45.51 | **63.90** | 1.31× |
+| Kostüm Squid Game | 52.00 | 41.62 | **58.90** | 1.13× |
+| Kinderkostüm Cauldron Cutie Hexe | 45.50 | 42.70 | **60.90** | 1.34× |
+| Kinderkostüm Peppa Fairy Dress | 51.50 | 49.19 | **69.90** | 1.36× |
+| Kinderkostüm Batman | 34.50 | 30.81 | **43.90** | 1.27× |
+| Kostüm Tigerlady | 45.00 | 37.29 | **52.90** | 1.18× |
+| Kinderkostüm Phantom of Darkness | 33.50 | 29.73 | **41.90** | 1.25× |
+| Kinderkostüm Joker Comic | 34.50 | 30.81 | **43.90** | 1.27× |
+| Kostüm PJ Masks Catboy | 48.00 | 43.02 | **60.90** | 1.27× |
+| Kostüm Rubble Paw Patrol | 42.90 | 39.24 | **55.90** | 1.30× |
+| Kostüm Sassy Mad Hatter | 57.50 | 55.67 | **78.90** | 1.37× |
+| Kostüm Pokemon Pikachu Anzug | 58.00 | 54.70 | **76.90** | 1.33× |
+| Babykostüm Ninja Turtles | 44.90 | 41.83 | **58.90** | 1.31× |
+| Kinderkostüm Starlight Witch Hexe | 35.90 | 31.78 | **44.90** | 1.25× |
+| Kostüm Ninja Turtles Grösse M | 64.90 | 62.81 | **88.90** | 1.37× |
+| Kostüm Batman Classic | 52.50 | 50.27 | **70.90** | 1.35× |
+| Kinderkostüm Cheeky Bat | 35.90 | 31.78 | **44.90** | 1.25× |
+| Kostüm Catwoman | 48.00 | 45.40 | **63.90** | 1.33× |
+| Kostüm Batman Dark Knight | 52.50 | 50.27 | **70.90** | 1.35× |

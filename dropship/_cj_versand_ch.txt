@@ -1051,3 +1051,9 @@ gid://shopify/Product/15532141838721	ok	Edelstahl-Bratpfanne mit Antihaftbeschic
 gid://shopify/Product/15449004736897	ok	Steel Tongue Drum 12 Zoll · 13 Noten
 gid://shopify/Product/15449004802433	ok	12-Zoll 13-Ton Stahlzungentrommel, Shell-Stil
 gid://shopify/Product/15449005490561	ok	12-Zoll 13-Ton Lotus Heart Steel Tongue Drum
+gid://shopify/Product/15501001326977	ok	Dampfkochtopf aus Edelstahl
+gid://shopify/Product/15496497725825	ok	Nordisches Baumwoll-Bettwäsche-Set
+gid://shopify/Product/15497449210241	ok	Squat Fuss-Pad für Kniebeugen
+gid://shopify/Product/15499780424065	ok	Gummisportmatte
+gid://shopify/Product/15500909347201	ok	Waben Antihaft-Wokpfanne 28 cm
+gid://shopify/Product/15500972163457	ok	Flying Bird Clip Chest Biceps Bend Lift Fitness Taper Rope Grip
