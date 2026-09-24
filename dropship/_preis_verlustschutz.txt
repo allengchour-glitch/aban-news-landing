@@ -121451,3 +121451,6 @@
 56164344955265	heben	22.90	27.90	19.40	2026-09-24	geometrisches-silikon-stapelspielzeug-fur-kind-260864
 56164344988033	heben	21.90	25.90	18.10	2026-09-24	kniebandage-mit-stahlplatten-stutze-928000
 56164345020801	heben	43.90	52.90	37.45	2026-09-24	wandmontiertes-kuchenregal-ordnung-leicht-gema-257017
+56164345053569	heben	22.90	27.90	19.63	2026-09-24	grosser-freizeit-rucksack-fur-alltag-und-reise-625100
+56164345086337	heben	19.90	24.90	16.89	2026-09-24	leuchtende-weltraum-bausteine-fur-astronauten-868544
+56164345119105	heben	29.90	36.90	25.53	2026-09-24	elektrischer-meridian-massageball-050496
