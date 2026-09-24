@@ -5,7 +5,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 
 - **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 5 insgesamt, 100%)
   - 15412433256833 · 2026-05-31 · CHF 44.90 · CJYD291255301AZ · Handliches Massagegerät – Vibrations-Massage mit mehreren St
-  - 15497431482753 · 2026-08-14 · CHF 31.90 · CJ-2605280133421637100 · Körperformungsgerät zur Fettverbrennung
+  - 15497431482753 · 2026-08-14 · CHF 31.90 · CJ-2605280133421637100 · Körperformungsgerät mit Bauchmassage & Licht
 - **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 5 insgesamt, 100%)
   - 15413739684225 · 2026-06-01 · CHF 32.90 · CJLY291739901AZ · Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
   - 15517571252609 · 2026-08-27 · CHF 24.90 · CJ-CJLY291739901AZ · Elegantes schwarzes Strick-Maxikleid mit Fischschwanz
@@ -21,18 +21,21 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 14 insgesamt, 100%)
   - 15428421452161 · 2026-06-12 · CHF 18.90 · CJ-CJSL293135501AZ · Tennis-Armband Bunt · Zirkonia funkelnd
   - 15495190544769 · 2026-08-12 · CHF 17.90 · CJ-2606120755051601100 · Vintage Eulen-Fusskettchen aus Legierung
+- **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 4 insgesamt, 100%)
+  - 15428427972993 · 2026-06-12 · CHF 15.90 · CJ-CJLX293083901AZ · Ring «You Light Up My Life» · Leucht-Stein
+  - 15496579940737 · 2026-08-13 · CHF 15.90 · CJ-2606120251271633600 · Feuerfliegenring
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 6 insgesamt, 100%)
   - 15430491275649 · 2026-06-14 · CHF 44.90 · CJLY293294401AZ · Damen Chiffon-Kleid «Capri» · Resort, fliessend
   - 15509360411009 · 2026-08-22 · CHF 29.90 · CJ-CJLY293294401AZ · Luftiges Chiffon-Kleid mit Leoparden-Print
-- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 7 insgesamt, 100%)
-  - 15430491373953 · 2026-06-14 · CHF 54.90 · CJLY293259701AZ · Damen A-Linien-Kleid «Fiorella» · Neckholder, bestickt
-  - 15509363687809 · 2026-08-22 · CHF 39.90 · CJ-CJLY293259701AZ · A-Linien Kleid mit Neckholder und Stickerei
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 15 insgesamt, 100%)
   - 15430491439489 · 2026-06-14 · CHF 32.90 · CJLY293250501AZ · Damen Sommerkleid «Bloom» · Träger, Print
   - 15509363949953 · 2026-08-22 · CHF 21.90 · CJ-CJLY293250501AZ · Bodycon Trägerkleid mit Blumenmuster
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
   - 15430491668865 · 2026-06-14 · CHF 34.90 · CJLY293241101AZ · Damen Kleid «Aria» · Cut-out, einfarbig
   - 15509372240257 · 2026-08-22 · CHF 23.90 · CJ-CJLY293241101AZ · Etuikleid mit hohem Bund und Cut-Outs
+- **DUBLETTE** · 8 gemeinsame Bilder (8 bzw. 8 insgesamt, 100%)
+  - 15433463628161 · 2026-06-17 · CHF 34.90 · CJ-CJCP2825975 · Gaming Tastatur & Maus Set RGB LED USB für PC & Konsole
+  - 15433463824769 · 2026-06-17 · CHF 33.90 · CJ-CJJT2803785 · Gaming-Tastatur und -Maus Set RGB LED USB
 - **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
   - 15449469485441 · 2026-07-06 · CHF 48.90 · CJ-1388690499426193408 · Game Joystick mit Rocker
   - 15496385331585 · 2026-08-13 · CHF 45.90 · CJ-1388685376935301120 · 7-in-1 Arcade Stick für diverse Konsolen
@@ -45,9 +48,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (2 bzw. 2 insgesamt, 100%)
   - 15470022099329 · 2026-07-23 · CHF 24.50 · fortura-33034 · Fahne Schweiz
   - 15470036091265 · 2026-07-23 · CHF 20.00 · fortura-21137 · Flagge Schweiz 90x90 cm
-- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
-  - 15474491195777 · 2026-07-27 · CHF 20.90 · CJ-CJNS291962101AZ · Umhängetasche aus Vollnarbenleder
-  - 15485009658241 · 2026-08-03 · CHF 22.90 · CJ-2606030652411614900 · Leder-Crossbody-Bag
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
   - 15479484416385 · 2026-07-31 · CHF 15.90 · CJ-2505110311451627300 · Handbemalte 3D-Maniküre zum Aufkleben
   - 15500410814849 · 2026-08-15 · CHF 17.90 · CJ-2503060637151601000 · Rose-Design-Nagel
@@ -93,6 +93,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
   - 15506163204481 · 2026-08-20 · CHF 14.90 · CJ-2603040448091638300 · Personalisiertes Armband mit zwei Initialen
   - 15506163433857 · 2026-08-20 · CHF 14.90 · CJ-2603040439561638600 · Buchstaben-Armband personalisierbar
+- **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
+  - 15506327568769 · 2026-08-20 · CHF 18.90 · CJ-1544264231187656704 · Halsband mit Schleife und Metallschnalle
+  - 15506412405121 · 2026-08-20 · CHF 16.90 · CJ-1527236351069007872 · Halsband mit Schleife und Leine
 - **DUBLETTE** · 5 gemeinsame Bilder (11 bzw. 5 insgesamt, 100%)
   - 15509354709377 · 2026-08-22 · CHF 28.90 · CJ-A25B205B-12AB-429F-AED5-B9D4CE0AFDF0 · Automatisches Roll-Hundeleine für kleine und mittlere Hunde
   - 15520402047361 · 2026-08-30 · CHF 35.90 · CJ-1366986464797265920 · Hunde-Rollleine mit Nachtlicht
@@ -114,7 +117,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 9 insgesamt, 100%)
   - 15523084370305 · 2026-09-02 · CHF 30.90 · CJ-1628377607941140480 · Taktische Kampf-Weste (leicht, gepolstert)
   - 15523084632449 · 2026-09-02 · CHF 29.90 · CJ-1628377497274429440 · Taktische Weste «Light Combat»
-- **DUBLETTE** · 13 gemeinsame Bilder (15 bzw. 14 insgesamt, 93%)
+- **DUBLETTE** · 12 gemeinsame Bilder (15 bzw. 13 insgesamt, 92%)
   - 15416026235265 · 2026-06-03 · CHF 34.90 · CJLY291898301AZ · Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbeton
   - 15516664529281 · 2026-08-26 · CHF 23.90 · CJ-CJLY291898301AZ · Sommerliches Blumenkleid im französischen Stil
 - **DUBLETTE** · 9 gemeinsame Bilder (10 bzw. 14 insgesamt, 90%)
@@ -147,6 +150,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 7 insgesamt, 83%)
   - 15523906126209 · 2026-09-03 · CHF 21.90 · CJ-2512300703291626000 · Armband mit Namen und Strass
   - 15524966728065 · 2026-09-04 · CHF 21.90 · CJ-2512210539101614500 · DIY Diamantenkette Mehrnamensarmband
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 7 insgesamt, 80%)
+  - 15430491373953 · 2026-06-14 · CHF 54.90 · CJLY293259701AZ · Damen A-Linien-Kleid «Fiorella» · Neckholder, bestickt
+  - 15509363687809 · 2026-08-22 · CHF 39.90 · CJ-CJLY293259701AZ · A-Linien Kleid mit Neckholder und Stickerei
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15500982878593 · 2026-08-16 · CHF 14.90 · CJ-AAFBDBCD-2813-4DE9-A0C8-505C7D73B4CC · Laufendes Pferd Diamond Painting
   - 15502045577601 · 2026-08-17 · CHF 15.90 · CJ-910C255E-CA0E-40B3-B49A-A48329DEE7AE · Malen nach Zahlen: Kater
@@ -228,9 +234,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15497431843201 · 2026-08-14 · CHF 16.90 · CJ-1400264996931375104 · Baby Eule – Malen nach Zahlen
   - 15497432105345 · 2026-08-14 · CHF 16.90 · CJ-1400261343176691712 · DIY Malen nach Zahlen "Herbstliches Weisswedelhirsch"
-- **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
-  - 15497452093825 · 2026-08-14 · CHF 16.90 · CJ-1398895873806700544 · Digitales Acrylbild auf Leinwand
-  - 15497470083457 · 2026-08-14 · CHF 16.90 · CJ-1398157016375103488 · Ölbild Landschaft
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15500899582337 · 2026-08-16 · CHF 17.90 · CJ-1420328904811483136 · Sichtbares Hundehalsband
   - 15500936053121 · 2026-08-16 · CHF 15.90 · CJ-1395675522746421248 · Leuchthalsband für Hunde, wiederaufladbar
@@ -495,9 +498,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
   - 15495119995265 · 2026-08-12 · CHF 15.90 · CJ-1433997816035938304 · DIY 5D Diamond Painting Schlafzimmer Deko
   - 15495120257409 · 2026-08-12 · CHF 15.90 · CJ-1433997139230461952 · DIY Diamond Painting Set «Schlafzimmer-Deko»
-- **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (9 bzw. 6 insgesamt, 67%)
-  - 15495237828993 · 2026-08-12 · CHF 15.90 · CJ-1424186536462782464 · Diamond Painting Wandbild – Volldekoration
-  - 15501877838209 · 2026-08-17 · CHF 23.90 · CJ-6FC1BEB5-74D8-40F1-8E6D-617A9012D1B8 · Schmuckstein-Malerei für zu Hause
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15496405123457 · 2026-08-13 · CHF 16.90 · CJ-1415135727716536320 · DIY Digital Painting: Moderne Landschaft
   - 15500926157185 · 2026-08-16 · CHF 17.90 · CJ-93C478CD-2465-487E-8E97-C20AEA932C2C · Katzen Ölgemälde nach Zahlen
@@ -537,9 +537,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
   - 15494984434049 · 2026-08-11 · CHF 16.90 · CJ-1397414771954946048 · Tribal Dance - Malen nach Zahlen
   - 15508421640577 · 2026-08-21 · CHF 19.90 · CJ-8F85AB24-47E0-427F-A4C6-EB3808E4DE22 · Malen nach Zahlen – Abstrakte Frauen
-- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (7 bzw. 5 insgesamt, 60%)
-  - 15496380875137 · 2026-08-13 · CHF 18.90 · CJ-731EC05A-709A-4941-AD1E-3FE74AD7C77D · Malen nach Zahlen Set – Alaska Berglandschaft
-  - 15499992465793 · 2026-08-15 · CHF 14.90 · CJ-20333BEA-3184-44E8-A94D-2EB837C2742A · Vogelbilder DIY Gemälde
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
   - 15496403779969 · 2026-08-13 · CHF 16.90 · CJ-1415138073955667968 · New York City Nacht Digital Painting
   - 15496405123457 · 2026-08-13 · CHF 16.90 · CJ-1415135727716536320 · DIY Digital Painting: Moderne Landschaft
@@ -568,7 +565,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15496251048321 · 2026-08-12 · CHF 25.90 · CJ-BC236048-F847-41B9-941E-C6813DBDE127 · Bild mit Blumenlandschaft
   - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 7 insgesamt, 50%)
-  - 15454107566465 · 2026-07-12 · CHF 14.90 · CJ-70ECF0C8-6741-47C7-84F0-BFC38E96BA85 · Einfacher Feldfahrer-Helm
+  - 15454107566465 · 2026-07-12 · CHF 39.90 · CJ-70ECF0C8-6741-47C7-84F0-BFC38E96BA85 · Einfacher Feldfahrer-Helm
   - 15495026049409 · 2026-08-11 · CHF 19.90 · CJ-183522B1-5D64-486D-A04D-96B251BCB7DB · Leichter taktischer Helm
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 12 insgesamt, 50%)
   - 15495112688001 · 2026-08-12 · CHF 36.90 · CJ-2501190620211628100 · Man Pair Kalender Quarz-Uhr mit Diamanten
