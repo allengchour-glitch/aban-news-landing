@@ -69,6 +69,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - **WELCOME10 = ACTIVE bis 2027-12-31** (10 %, Code funktioniert). Alte „bis 31.08.2026"-Notiz veraltet, längst verlängert.
   - **Bild-QA sauber:** 0 FAILED-Dateien. **Preis-QA sauber:** 0 aktive Produkte mit Preis 0.
   - Echte externe Käufer bisher: **4** (Raia, Schnabel, Herger, Schutz) — Rest sind User-Tests. Engpass bleibt **Traffic**.
+- **📲 METRICOOL LIVE (2026-09-24):** Connector verbunden, Marke **`blogId 6227837`** (TZ Europe/Zurich; IG `luxestyle.ch`,
+  FB `1049840534888592`, Threads, Pinterest `luxestyleCH`, TikTok, YouTube). **12 Posts eingeplant** (25.09.–06.10.,
+  18:00, **IG+FB+Threads**, IDs 381174227…381175035). **KOLLISIONSREGEL:** Session `luxestyle-status-tztnn1` postet
+  bereits via Metricool **Pinterest-Pins + TikTok-Reels + YouTube-Shorts** → diese Session macht NUR **IG/FB/Threads**.
+  Vor jedem Einplanen `getScheduledPosts` prüfen (keine Doppelten). Nachfüllen: nächste Charge ab 07.10.
+  Lehre: alte Bild-URLs aus `good_products.csv` können veraltet sein → bei „Failed to normalize media" aktuelle
+  `featuredMedia` aus Shopify holen.
 - **📲 METRICOOL AUTO-POSTING vorbereitet (User-Wunsch „volle auto"):** Queue `social/metricool_plan.csv`
   (12 fertige Posts, 25.09.–06.10., IG+FB+Pinterest, Preis-Anker-Captions + Hashtags + echte Bilder + „ab CHF 50")
   + Anleitung `social/METRICOOL-SETUP.md`. **BLOCKER = nur User:** (1) Metricool **Pro-Abo** (Zahlung),
