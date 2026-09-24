@@ -48,6 +48,25 @@ pause_kuehlt() {
 # Turn-Reaping erwischt. Wer fünfmal hintereinander so schnell endet, dreht sich im Kreis und
 # wird für eine Stunde ausgesetzt; ein Lauf, der echte Arbeit leistet, setzt den Zähler
 # zurück. Das schützt die langen Katalog-Läufe, die den schnellen Neustart wirklich brauchen.
+# 24.09.2026: ABSTURZ NACHHOLEN. 49 Tagesläufe hängen am Tor «Log älter als 24 h». Ein Lauf, der mit Traceback
+# endet, hat sein Log trotzdem frisch geschrieben — er war damit einen ganzen Tag gesperrt. Gemessen heute: ein
+# Shopify-Aussetzer um 02:17 legte sechs Läufe bis morgen still (Neuheiten-Rotation der Startseite, Google-Kanal-
+# Säuberung, Querbeet, leere Kollektionen, Versandprofil, Versandschwelle). Wahr, wenn das Log mit einem Fehler
+# endet, der letzte Versuch ≥ 60 min her ist und heute höchstens 3 Nachholversuche liefen.
+absturz_nachholen() {
+  local log="$1" a z n
+  [ -f "$log" ] || return 1
+  a=$(( $(date +%s) - $(stat -c %Y "$log") ))
+  [ "$a" -ge 3600 ] || return 1
+  tail -n 3 "$log" | grep -qE "Traceback|Error|Exception" || return 1
+  z="/tmp/_nachgeholt_$(basename "$log" .log)_$(date -u +%Y%m%d)"
+  n=$(cat "$z" 2>/dev/null); case "$n" in (''|*[!0-9]*) n=0 ;; esac
+  [ "$n" -lt 3 ] || return 1
+  echo $(( n + 1 )) > "$z"
+  echo "$(date -u +%H:%M) Absturz nachholen: $(basename "$log") (Versuch $(( n + 1 ))/3)"
+  return 0
+}
+
 dreht_sich_im_kreis() {
   local n="$1" start="/tmp/_start_$1" zaehler="/tmp/_schnellende_$1" gemeckert="/tmp/_kreis_gemeldet_$1"
   if [ -f "$start" ]; then
@@ -585,7 +604,7 @@ while true; do
   HY=/tmp/hype_kuratieren.log
   if [ -f "$REPO/automation/hype_kuratieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HY" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$HY"; then
       touch "$HY"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # NUR_RAEUMEN: unbeaufsichtigt nur Abgelaufenes abräumen — Neuaufnahme braucht den
       # Kontaktbogen-Blick einer betreuten Runde (15.08.: 5 untaugliche Bilder auf Position 1).
@@ -603,7 +622,7 @@ while true; do
   QB=/tmp/querbeet.log
   if [ -f "$REPO/automation/querbeet_kuratieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$QB" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$QB"; then
       touch "$QB"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_querbeet_kuratieren.lock; flock -n 9 || exit 0; exec python3 automation/querbeet_kuratieren.py" >> "$QB" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) querbeet_kuratieren gestartet"
@@ -615,7 +634,7 @@ while true; do
   BR=/tmp/bestseller_rotation.log
   if [ -f "$REPO/automation/bestseller_rotation.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BR" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BR"; then
       touch "$BR"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bestseller_rotation.lock; flock -n 9 || exit 0; exec python3 automation/bestseller_rotation.py" >> "$BR" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bestseller_rotation gestartet"
@@ -630,7 +649,7 @@ while true; do
   BA=/tmp/bestseller_auffuellen.log
   if [ -f "$REPO/automation/bestseller_auffuellen.py" ] && [ -f /tmp/judgeme.env ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BA" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BA"; then
       touch "$BA"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bestseller_auffuellen.lock; flock -n 9 || exit 0; WRITE=1 exec python3 automation/bestseller_auffuellen.py" >> "$BA" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bestseller_auffuellen gestartet"
@@ -642,7 +661,7 @@ while true; do
   NR=/tmp/neuheiten_rotation.log
   if [ -f "$REPO/automation/neuheiten_rotation.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$NR" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$NR"; then
       touch "$NR"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_neuheiten_rotation.lock; flock -n 9 || exit 0; exec python3 automation/neuheiten_rotation.py" >> "$NR" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) neuheiten_rotation gestartet"
@@ -654,7 +673,7 @@ while true; do
   IW=/tmp/ig_dup_wache.log
   if [ -f "$REPO/automation/ig_dup_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$IW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$IW"; then
       touch "$IW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ig_dup_wache.lock; flock -n 9 || exit 0; exec python3 automation/ig_dup_wache.py" >> "$IW" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ig_dup_wache gestartet"
@@ -665,7 +684,7 @@ while true; do
   HR=/tmp/reviews_hype.log
   if [ -f "$REPO/automation/reviews_hype_lauf.sh" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HR" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$HR"; then
       touch "$HR"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash automation/reviews_hype_lauf.sh >> "$HR" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) hype-reviews Lauf gestartet"
@@ -707,7 +726,7 @@ while true; do
   RV2=/tmp/cj_reviews_import.log
   if [ -f "$REPO/automation/cj_reviews_import.mjs" ] && [ -f /tmp/judgeme.env ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$RV2" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$RV2"; then
       touch "$RV2"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # 05.09.2026: ERST die sichtbare Ware. Der alte Lauf nahm eine Zufallsscheibe aus 53'000
       # Produkten (Trefferchance auf ein sichtbares ~0,3 %); von 187 Produkten in den Startseiten-
@@ -740,7 +759,7 @@ while true; do
   ROW=/tmp/ratgeber_ohne_ware.log
   if [ -f "$REPO/automation/ratgeber_ohne_ware.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$ROW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$ROW"; then
       touch "$ROW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ratgeber_ohne_ware.lock; flock -n 9 || exit 0; exec python3 automation/ratgeber_ohne_ware.py" >> "$ROW" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
@@ -752,7 +771,7 @@ while true; do
   PP=/tmp/pinterest_pins_planen.log
   if [ -f "$REPO/automation/pinterest_pins_planen.sh" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$PP" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$PP"; then
       touch "$PP"
       ( cd "$REPO" && bash automation/pinterest_pins_planen.sh >> "$PP" 2>&1 )
       echo "$(date -u +%H:%M) pinterest_pins_planen: $(tail -1 "$PP")"
@@ -769,7 +788,7 @@ while true; do
   TRK=/tmp/tote_rankings.log
   if [ -f "$REPO/automation/tote_rankings.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TRK" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TRK"; then
       touch "$TRK"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_rankings.lock; flock -n 9 || exit 0; exec python3 automation/tote_rankings.py" >> "$TRK" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-rankings geprüft"
@@ -782,7 +801,7 @@ while true; do
   SVW=/tmp/startseiten_video.log
   if [ -f "$REPO/automation/startseiten_video_wahrheit.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$SVW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$SVW"; then
       touch "$SVW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_startseiten_video.lock; flock -n 9 || exit 0; exec python3 automation/startseiten_video_wahrheit.py" >> "$SVW" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) startseiten-video geprüft"
@@ -803,7 +822,7 @@ while true; do
   SNP=/tmp/snippet_rankende.log
   if [ -f "$REPO/automation/snippet_rankende_seiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$SNP" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$SNP"; then
       touch "$SNP"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # Erst die rankenden Seiten (schnell, meist ein No-op), dann eine Tagesrate aus dem
       # Katalog. Der Shop steht auf KEINER Seite 1 — die Suchverkaeufe kommen aus dem langen
@@ -826,7 +845,7 @@ while true; do
   KOS=/tmp/kosten_boden15.log
   if [ -f "$REPO/automation/kosten_boden15_korrigieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KOS" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KOS"; then
       touch "$KOS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c '
           python3 automation/kosten_export_bauen.py &&
@@ -839,7 +858,7 @@ while true; do
   TTK=/tmp/tiktok_karussell.log
   if [ -f "$REPO/automation/tiktok_karussell.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TTK" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TTK"; then
       touch "$TTK"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c '
           MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
@@ -859,7 +878,7 @@ while true; do
   TPK=/tmp/tiktok_post_kontrolle.log
   if [ -f "$REPO/automation/tiktok_post_kontrolle.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TPK" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TPK"; then
       touch "$TPK"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c '
           python3 automation/tiktok_post_kontrolle.py' >> "$TPK" 2>&1 9>&- & )
@@ -881,7 +900,7 @@ while true; do
   TLS=/tmp/tote_landeseiten.log
   if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TLS"; then
       touch "$TLS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_landeseiten.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/tote_landeseiten.py" >> "$TLS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-landeseiten geprüft"
@@ -896,7 +915,7 @@ while true; do
   GS=/tmp/google_size_metafeld.log
   if [ -f "$REPO/automation/google_size_metafeld.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GS"; then
       touch "$GS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_size_metafeld.lock; flock -n 9 || exit 0; FIX=1 CAP=1200 exec python3 automation/google_size_metafeld.py" >> "$GS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) google-size Nachtrag gestartet"
@@ -911,7 +930,7 @@ while true; do
   RV=/tmp/ratgeber_rueckverweis.log
   if [ -f "$REPO/automation/ratgeber_rueckverweis.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$RV" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$RV"; then
       touch "$RV"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ratgeber_rueckverweis.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/ratgeber_rueckverweis.py" >> "$RV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ratgeber-rueckverweis gestartet"
@@ -926,7 +945,7 @@ while true; do
   TR=/tmp/tote_rabattcodes.log
   if [ -f "$REPO/automation/tote_rabattcodes.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TR" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TR"; then
       touch "$TR"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_rabattcodes.lock; flock -n 9 || exit 0; exec python3 automation/tote_rabattcodes.py" >> "$TR" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-rabattcodes geprüft"
@@ -940,7 +959,7 @@ while true; do
   VV=/tmp/veraltete_verweise.log
   if [ -f "$REPO/automation/veraltete_verweise.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$VV" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$VV"; then
       touch "$VV"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_veraltete_verweise.lock; flock -n 9 || exit 0; exec python3 automation/veraltete_verweise.py" >> "$VV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) veraltete-verweise geprüft"
@@ -960,7 +979,7 @@ while true; do
   BQ=/tmp/bild_quadrat.log
   if [ -f "$REPO/automation/bild_quadrat_auffuellen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BQ" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BQ"; then
       touch "$BQ"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && CAP=60 setsid bash -c "exec 9>/tmp/lock_bild_quadrat_auffuellen.lock; flock -n 9 || exit 0; exec python3 automation/bild_quadrat_auffuellen.py" >> "$BQ" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bild-quadrat gestartet"
@@ -978,7 +997,7 @@ while true; do
   WV=/tmp/wahlversprechen.log
   if [ -f "$REPO/automation/wahlversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WV" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$WV"; then
       touch "$WV"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # ⚠️ MIT FIX=1, aber bewusst eng: Der Lauf fasst NUR reine Absaetze und eindeutige
       # Listenpunkte an, nie einen Absatz mit Auszeichnung, und schreibt jede Streichung ins
@@ -1028,7 +1047,7 @@ while true; do
   KLW=/tmp/klinge_ch_wache.log
   if [ -f "$REPO/automation/klinge_ch_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KLW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KLW"; then
       touch "$KLW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # Umleitung hinter dem Schloss und mit `>>` — siehe wahlversprechen oben.
       ( cd "$REPO" && setsid bash -c \
@@ -1050,7 +1069,7 @@ while true; do
 KLT=/tmp/test_klingen_tor.log
   if [ -f "$REPO/automation/test_klingen_tor.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KLT" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KLT"; then
       ( cd "$REPO" && python3 automation/test_klingen_tor.py --live >> "$KLT" 2>&1 || echo "$(date -u +%F' '%H:%M) KLINGEN-TOR FEHLER (Exit $?)" >> "$KLT" )
     fi
     if [ -s "$KLT" ] && tail -n 30 "$KLT" | grep -q "FEHLER\|Ping-Pong laeuft wieder"; then
@@ -1068,7 +1087,7 @@ KLT=/tmp/test_klingen_tor.log
   JMW=/tmp/judgeme_fake_wache.log
   if [ -f "$REPO/automation/judgeme_fake_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$JMW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$JMW"; then
       touch "$JMW"   # Anspruch VOR dem Start — Tor-Frage ist das Log-Alter, der Lauf schreibt erst nach ~2 Min (Lehre 21.09.)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_judgeme_wache.lock; flock -n 9 || exit 0; exec >> \"$JMW\" 2>&1; \
@@ -1103,7 +1122,7 @@ KLT=/tmp/test_klingen_tor.log
   BSL=/tmp/besuchte_seiten_lieferbar.log
   if [ -f "$REPO/automation/besuchte_seiten_lieferbar.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BSL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BSL"; then
       touch "$BSL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_besuchte_lieferbar.lock; flock -n 9 || exit 0; exec >> \"$BSL\" 2>&1; \
@@ -1133,7 +1152,7 @@ KLT=/tmp/test_klingen_tor.log
   GKL=/tmp/google_kanal_luecke.log
   if [ -f "$REPO/automation/google_kanal_luecke.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$GKL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GKL"; then
       touch "$GKL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_google_kanal.lock; flock -n 9 || exit 0; exec >> \"$GKL\" 2>&1; \
@@ -1173,7 +1192,7 @@ KLT=/tmp/test_klingen_tor.log
   WM=/tmp/wearable_mess.log
   if [ -f "$REPO/automation/wearable_messversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WM" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$WM"; then
       touch "$WM"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # Umleitung hinter dem Schloss — siehe wahlversprechen oben.
       ( cd "$REPO" && setsid bash -c \
@@ -1227,7 +1246,7 @@ KLT=/tmp/test_klingen_tor.log
   HKR=/tmp/homepage_katalog_rotation.log
   if [ -f "$REPO/automation/homepage_katalog_rotation.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HKR" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$HKR"; then
       touch "$HKR"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && flock -n /tmp/lock_homepage_katalog_rotation.lock \
           python3 automation/homepage_katalog_rotation.py >> "$HKR" 2>&1 9>&- & )
@@ -1262,7 +1281,7 @@ KLT=/tmp/test_klingen_tor.log
   AN=/tmp/artikelnummer.log
   if [ -f "$REPO/automation/artikelnummer_entfernen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$AN" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$AN"; then
       touch "$AN"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # ⚠️ Umleitung hinter dem Schloss — und sie war hier `>`, hat das Log eines blockierten
       # Laufs also nicht nur angefasst, sondern GELEERT (der Bericht des letzten echten Laufs war weg).
@@ -1331,7 +1350,7 @@ KLT=/tmp/test_klingen_tor.log
   BD=/tmp/bilddubletten.log
   if [ -f "$REPO/automation/bilddubletten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BD"; then
       touch "$BD"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && HASHCAP=4000 setsid bash -c "exec 9>/tmp/lock_bilddubletten.lock; flock -n 9 || exit 0; exec python3 automation/bilddubletten.py" >> "$BD" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bild-dubletten geprüft"
@@ -1340,7 +1359,7 @@ KLT=/tmp/test_klingen_tor.log
   TL=/tmp/tote_links.log
   if [ -f "$REPO/automation/tote_links.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TL"; then
       touch "$TL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # ZUERST die umbenannten Handles nachziehen, DANN pruefen. Sonst meldet der Waechter
       # jeden Handle-Wechsel (Messversprechen-Fix, Handle-Kuerzung) taeglich als «GELÖSCHT»,
@@ -1359,7 +1378,7 @@ KLT=/tmp/test_klingen_tor.log
   GS=/tmp/google_kanal_saeubern.log
   if [ -f "$REPO/automation/google_kanal_saeubern.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GS"; then
       touch "$GS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && SEIT=7 setsid bash -c "exec 9>/tmp/lock_google_kanal_saeubern.lock; flock -n 9 || exit 0; exec python3 automation/google_kanal_saeubern.py" >> "$GS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) google-kanal-saeuberer (live, 7 Tage) gestartet"
@@ -1399,7 +1418,7 @@ KLT=/tmp/test_klingen_tor.log
   BG=/tmp/bestandsgroesse.log
   if [ -f "$REPO/automation/bestandsgroesse_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BG" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BG"; then
       touch "$BG"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bestandsgroesse.lock; flock -n 9 || exit 0; exec python3 automation/bestandsgroesse_wache.py" >> "$BG" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bestandsgroesse geprüft"
@@ -1408,7 +1427,7 @@ KLT=/tmp/test_klingen_tor.log
   KL=/tmp/kollektion_leer.log
   if [ -f "$REPO/automation/kollektion_leer.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KL"; then
       touch "$KL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektion_leer.lock; flock -n 9 || exit 0; exec python3 automation/kollektion_leer.py" >> "$KL" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) leere-kollektionen geprüft"
@@ -1424,7 +1443,7 @@ KLT=/tmp/test_klingen_tor.log
   KTW=/tmp/kollektionstexte_wahrheit.log
   if [ -f "$REPO/automation/kollektionstexte_wahrheit.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KTW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KTW"; then
       touch "$KTW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektionstexte_wahrheit.lock; flock -n 9 || exit 0; exec python3 automation/kollektionstexte_wahrheit.py" >> "$KTW" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) kollektionstexte-wahrheit geprüft"
@@ -1439,7 +1458,7 @@ KLT=/tmp/test_klingen_tor.log
   FO=/tmp/farbcode_optionswerte.log
   if [ -f "$REPO/automation/farbcode_optionswerte.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$FO" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$FO"; then
       touch "$FO"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid env QUELLE=live SEIT=$(date -u -d '3 days ago' +%F) \
           python3 automation/farbcode_optionswerte.py >> "$FO" 2>&1 9>&- & )
@@ -1454,7 +1473,7 @@ KLT=/tmp/test_klingen_tor.log
   AK=/tmp/ads_kuration_live.log
   if [ -f "$REPO/automation/google_ads_kuration.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$AK" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$AK"; then
       touch "$AK"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid env QUELLE=live SEIT=$(date -u -d '2 days ago' +%F) \
           python3 automation/google_ads_kuration.py >> "$AK" 2>&1 9>&- & )
@@ -1747,7 +1766,7 @@ JSON
   MS=/tmp/merchant_sperre_durchsetzen.log
   if [ -f "$REPO/automation/merchant_sperre_durchsetzen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$MS" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$MS"; then
       touch "$MS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_merchant_sperre_durchsetzen.lock; flock -n 9 || exit 0; exec python3 automation/merchant_sperre_durchsetzen.py" >> "$MS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) merchant_sperre_durchsetzen gestartet"
@@ -1764,7 +1783,7 @@ JSON
   BB=/tmp/bb_unrentabel_guard.log
   if [ -f "$REPO/automation/bb_unrentabel_guard.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BB" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$BB"; then
       touch "$BB"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_bb_unrentabel_guard.lock; flock -n 9 || exit 0; exec python3 automation/bb_unrentabel_guard.py" >> "$BB" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bb_unrentabel_guard gestartet"
@@ -1779,7 +1798,7 @@ JSON
   MZ=/tmp/medizin_zweck_guard.log
   if [ -f "$REPO/automation/medizin_zweck_guard.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$MZ" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$MZ"; then
       touch "$MZ"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) setsid python3 \
           automation/medizin_zweck_guard.py >> "$MZ" 2>&1 9>&- & )
@@ -1795,7 +1814,7 @@ JSON
   TS=/tmp/tierschutz_guard.log
   if [ -f "$REPO/automation/tierschutz_guard.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TS" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TS"; then
       touch "$TS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) setsid python3 \
           automation/tierschutz_guard.py >> "$TS" 2>&1 9>&- & )
@@ -1817,7 +1836,7 @@ JSON
   UW=/tmp/ueberwachung_waffen_guard.log
   if [ -f "$REPO/automation/ueberwachung_waffen_guard.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$UW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$UW"; then
       touch "$UW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) EXPORT=/nonexistent setsid python3 \
           automation/ueberwachung_waffen_guard.py >> "$UW" 2>&1 9>&- & )
@@ -1840,7 +1859,7 @@ JSON
   AT=/tmp/alt_texte_nachziehen.log
   if [ -f "$REPO/automation/alt_texte_nachziehen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$AT" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$AT"; then
       touch "$AT"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_alt_fenster.lock; flock -n 9 || exit 0; exec python3 automation/alt_texte_nachziehen.py" \
@@ -1858,7 +1877,7 @@ JSON
   PD=/tmp/pod_designzwang.log
   if [ -f "$REPO/automation/pod_designzwang.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$PD" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$PD"; then
       touch "$PD"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_pod_designzwang.lock; flock -n 9 || exit 0; exec python3 automation/pod_designzwang.py" >> "$PD" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) pod_designzwang gestartet"
@@ -1874,7 +1893,7 @@ JSON
   VP=/tmp/versandprofil_poster.log
   if [ -f "$REPO/automation/versandprofil_poster.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$VP" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$VP"; then
       touch "$VP"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_versandprofil_poster.lock; flock -n 9 || exit 0; exec python3 automation/versandprofil_poster.py" --scharf >> "$VP" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) versandprofil_poster gestartet"
@@ -1890,7 +1909,7 @@ JSON
   VR=/tmp/versandschwelle_rabatt.log
   if [ -f "$REPO/automation/versandschwelle_rabatt.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$VR" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$VR"; then
       touch "$VR"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # ⚠️ 21.09.2026: Hier stand `|| echo "⚠️ Versandschwelle passt nicht …"` — bei JEDEM Exit≠0.
       # Ein Absturz (Drossel, Token, Netz) und der echte Fachbefund lieferten beide Code 1, und
