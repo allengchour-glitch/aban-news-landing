@@ -3088,3 +3088,4 @@ gid://shopify/Product/15449158746497	bild-urls-tot
 gid://shopify/Product/15449158779265	bild-urls-tot
 gid://shopify/Product/15449158812033	bild-urls-tot
 gid://shopify/Product/15449158844801	bild-urls-tot
+gid://shopify/Product/15449158877569	bild-urls-tot
