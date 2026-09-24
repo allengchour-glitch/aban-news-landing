@@ -1,6 +1,6 @@
 export const meta = {
   name: 'ratgeber-keywordplan-c2',
-  description: 'Zwei Ratgeber aus dem Keywordplan C2 schreiben (Halloween-Deko, Katzenspielzeug), adversarial pruefen, Befunde beheben',
+  description: 'Zwei Ratgeber aus dem Keywordplan C2 schreiben (Themen per args), adversarial pruefen, Befunde beheben',
   phases: [{ title: 'Schreiben' }, { title: 'Pruefen' }, { title: 'Beheben' }],
 }
 const REGELN = `HAUSREGELN (verbindlich): du-Form (nie Sie/Ihnen/Ihr), kein Eszett (ss), Markt = nur Schweiz (nie Liechtenstein/Deutschland),
@@ -11,6 +11,7 @@ keine Fremdmarken, keine erfundenen Tests/Testsieger/Bewertungen/Kundenstimmen (
 Python-Helfer automation/kollektionstexte_nachbessern.py → gql(query, vars) (Token /tmp/cj_shop_token.txt, Admin GraphQL 2026-01).
 Article hat in 2026-01 KEIN Feld seo/onlineStoreUrl: SEO über Metafelder global.title_tag / global.description_tag (single_line_text_field);
 Produktkarten-Fakten (Masse, Grössen, Varianten) aus options/variants lesen, NICHT aus dem Beschreibungstext (Lehre 24.09.).
+Jede Aussage einer Produktkarte muss in einem Produktfeld stehen (Titel, options/variants, Beschreibung) — keine Haltbarkeits-, Outdoor-, «rechtzeitig»- oder Eignungszusagen, die dort fehlen (Halloween-Ratgeber 24.09.). Kein Produkt mit tracked ∧ DENY ∧ Bestand ≤ 3 als Karte; CJ-/Dropship-Ware heisst «aus dem Lieferantenlager in Übersee», nie «direkt vom Hersteller».
 Nichts committen, nichts pushen (der Hauptagent sichert). Keine anderen Artikel ändern.`
 const ARTIKEL_SCHEMA = { type: 'object', properties: {
   handle: { type: 'string' }, artikel_id: { type: 'string' }, url: { type: 'string' }, titel: { type: 'string' },

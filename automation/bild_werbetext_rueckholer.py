@@ -68,6 +68,12 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(HIER)
 QUELLE = os.path.join(ROOT, "dropship", "_cj_bild_backfill.txt")
+# 24.09.2026 — zweite Quelle (Aufgabe #104): `textbild_fix.py` hat im August bei 14'314 Produkten ein textlastiges
+# HAUPTbild per productReorderMedia nach hinten geschoben, nicht gelöscht (`dropship/_textbild_hits.txt`, Spalte
+# «vorher->nachher» = Zeilen-Score seines Dunkel-Lauf-Masses, kein OCR). Das Werbebild steht dort also weiter in der
+# Galerie. QUELLE_ART=textbild liest diese Liste; nicht-aktive Produkte werden VOR jeder Bildprüfung übersprungen.
+QUELLE_ART = os.environ.get("QUELLE_ART", "nachfueller")
+QUELLE_TEXTBILD = os.path.join(ROOT, "dropship", "_textbild_hits.txt")
 GEPRUEFT = os.path.join(ROOT, "dropship", "_bild_werbetext_geprueft.txt")
 ENTFERNT = os.path.join(ROOT, "dropship", "_bild_werbetext_entfernt.txt")
 BERICHT = os.path.join(ROOT, "dropship", "BILD-WERBETEXT.md")
@@ -144,8 +150,16 @@ def ocr(raw):
 
 
 def kandidaten():
-    """«+N»-Produkte aus dem Nachfüller-Ledger, in Ledger-Reihenfolge, ohne Doppelte."""
+    """«+N»-Produkte aus dem Nachfüller-Ledger, in Ledger-Reihenfolge, ohne Doppelte.
+    QUELLE_ART=textbild: Produkte aus `_textbild_hits.txt` (August-Umsortierung), NEUESTE zuerst — die jüngsten Treffer
+    stehen am Dateiende und sind am ehesten noch aktiv."""
     gesehen, raus = set(), []
+    if QUELLE_ART == "textbild":
+        for zeile in reversed(open(QUELLE_TEXTBILD, encoding="utf-8").read().splitlines()):
+            t = zeile.split("\t")
+            if t and t[0].startswith("gid://shopify/Product/") and t[0] not in gesehen:
+                gesehen.add(t[0]); raus.append(t[0])
+        return raus
     for zeile in open(QUELLE, encoding="utf-8"):
         t = zeile.rstrip("\n").split("\t")
         if len(t) < 2 or not t[1].startswith("+") or t[0] in gesehen:
@@ -205,7 +219,8 @@ def bericht(titel_von):
         json.dump(cache, f, ensure_ascii=False, indent=0, sort_keys=True)
     heute = jetzt()
     L = [f"# Bild-Werbetext in Nicht-Hauptbildern — Stand {heute}", "",
-         f"Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` ({len(kandidaten())} Produkte). "
+         f"Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-"
+         f"Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: {QUELLE_ART}, {len(kandidaten())} Produkte. "
          f"Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, "
          f"Schwelle ≥ {WORTGRENZE} sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).", "",
          f"- Medien geprüft: **{len(zeilen)}** in {len(produkte)} Produkten",
@@ -277,6 +292,9 @@ def main():
         p = medien(pid)
         if not p:
             print(f"   {pid}: kein Produkt (gelöscht?)", flush=True); continue
+        if QUELLE_ART == "textbild" and p.get("status") != "ACTIVE" and not NUR_PRODUKT:
+            z["inaktiv"] = z.get("inaktiv", 0) + 1
+            continue                                       # Entwurf/Archiv: keine OCR-Zeit darauf verwenden
         z["produkte"] += 1
         titel_von[pid] = p.get("title") or ""
         feat = ((p.get("featuredMedia") or {}).get("id"))
