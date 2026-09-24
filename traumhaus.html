@@ -3287,10 +3287,16 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     [-1,1].forEach(function(sg){
       var qf=hb+0.26+0.45;                                   /* Feld: hinter dem 26-cm-Stein, auf der 3-cm-Platte */
       _zebSetz(Z.f,x+(quer?0:sg*qf),0.032,z+(quer?sg*qf:0),ry);
-      var qs=hb+0.26+0.5,ls=sg*3.2;                          /* Schild: diagonal, je Ende auf der Seite des ankommenden Verkehrs */
+      /* 🚗 RECHTSVERKEHR (Lane-Tabelle `verkehr`: Strasse laengs x → +z-Spur faehrt nach +x; Strasse laengs z →
+         -x-Spur faehrt nach +z, s. Herleitung d x up). Das Schild steht am Ende sg auf der Spur, die dort
+         ankommt, VOR dem Streifen und zeigt der Spur entgegen. Strasse laengs x (quer): Spur bei +z faehrt +x,
+         kommt also von -x → Schild bei -sg*3,2, Normale -sg*x. Strasse laengs z: Spur bei +x faehrt -z, kommt
+         von +z → Schild bei +sg*3,2, Normale +sg*z. Der erste Anlauf hatte quer spiegelverkehrt (Bild
+         k26-schild-nah2: Fahrer sah die Rueckseite). */
+      var qs=hb+0.26+0.5,ls=(quer?-sg:sg)*3.2;
       var sx=x+(quer?ls:sg*qs),sz=z+(quer?sg*qs:ls);
       _zebSetz(Z.p,sx,0,sz,0);
-      _zebSetz(Z.t,sx,0,sz,quer?sg*Math.PI/2:(sg>0?0:Math.PI));   /* Tafelnormal zeigt von der Achse weg — zum Verkehr */
+      _zebSetz(Z.t,sx,0,sz,quer?-sg*Math.PI/2:(sg>0?0:Math.PI));   /* Tafelnormal (+z-Flaeche der Box) zur ankommenden Spur */
     });
     (window._uebergaenge=window._uebergaenge||[]).push([x,z,quer,4.8,breite/2+0.05]);};
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
