@@ -19577,3 +19577,5 @@ gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/1213
 gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632415105	Gelb-US20W	Gelb-US 20W	2026-09-24T02:04Z
 gid://shopify/Product/15463489536385	Farbe	gid://shopify/ProductOptionValue/12131632808321	Smaragdgrün-US20W	Smaragdgrün-US 20W	2026-09-24T02:04Z
 gid://shopify/Product/15467096670593	Farbe	gid://shopify/ProductOptionValue/12159900778881	Leuchtendlila	Leuchtendes Lila	2026-09-24T02:54Z
+gid://shopify/Product/15471271215489	Farbe	gid://shopify/ProductOptionValue/12186608894337	Leuchtendrot	Leuchtendes Rot	2026-09-24T03:15Z
+gid://shopify/Product/15473061134721	Farbe	gid://shopify/ProductOptionValue/12195164619137	Klassischschwarz	Klassisches Schwarz	2026-09-24T03:15Z
