@@ -259,6 +259,10 @@ def bilder(p):
 # etwas anderes als BEWERBEN (dieselbe Trennung wie bei Wirkversprechen, 28.08.).
 # Geraete (Roller, Buersten, Lockenstab) bleiben bewerbbar — die Regel trifft nur, was auf
 # die Haut aufgetragen wird.
+# 24.09.2026: Lizenzfiguren (Batman, Wednesday, Mickey …) bewerben wir nicht selbst — die Fortura-Ware ist echt und darf
+# verkauft werden, aber ein eigener Post mit einer geschützten Figur ist Marken-/Urheberrecht des Rechteinhabers. Am Titel,
+# nicht am Tag: 23 solche Artikel tragen weder «kostuem» noch einen Lizenz-Tag (Plüsch, Ballone, Perücken).
+LIZENZ_FIGUR = re.compile(r"\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu)\b", re.I)
 TOPISCH = re.compile(r'Creme|Serum|Hautpflege|Lotion|Gesichtsmaske|Augenmaske|Ampulle|'
                      r'Peeling|Balsam|Salbe|[ÖO]l\b.*(?:Gesicht|Haut)|Essence', re.I)
 
@@ -271,6 +275,8 @@ def geeignet(p, mindest_bilder):
     if CLAIM.search(p.get("title") or ""):
         return False
     if TOPISCH.search(p.get("title") or ""):
+        return False
+    if LIZENZ_FIGUR.search(p.get("title") or ""):
         return False
     try:
         if float(p["priceRangeV2"]["minVariantPrice"]["amount"]) < MIN_PREIS:
