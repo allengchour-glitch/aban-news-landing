@@ -101,6 +101,15 @@ def plane(zeile):
     cmin = min(preis(v) for v in vs)
     if cmin <= 0 or max(preis(v) for v in vs) > 2 * cmin:
         return None, f"Preisspreizung > 2× ({cmin}–{max(preis(v) for v in vs)})"
+    # Netzstecker-Varianten (EU/US/UK/AU): in der Schweiz nur EU — keine Auswahl, sondern die EINE richtige SKU
+    # (Regel wie cj_stecker_eu_setzen.py, 21.09.). Genau eine EU-Variante, sonst MANUELL.
+    keys = [(v.get("variantKey") or "").strip().upper() for v in vs]
+    if all(k in {"EU", "US", "UK", "AU", "JP", "KR", "CN", "BR", "IN"} for k in keys):
+        eu = [v for v, k in zip(vs, keys) if k == "EU"]
+        if len(eu) != 1:
+            return None, f"Stecker-Varianten ohne eindeutige EU-Fassung: {keys}"
+        return {"p": p, "var": var, "optname": None, "plan": [{"wert": "EU", "sku": eu[0]["variantSku"],
+                "media": None, "preis": var["price"]}]}, None
     optname, ws = werte([v.get("variantKey") for v in vs])
     if not optname:
         return None, ws
@@ -115,6 +124,17 @@ def plane(zeile):
 
 def schreibe(pl):
     p, plan, optname = pl["p"], pl["plan"], pl["optname"]
+    if optname is None:                       # nur SKU auf die EU-Variante setzen
+        x = plan[0]
+        r = gql('mutation($pid:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$pid,variants:$v){'
+                'productVariants{sku} userErrors{message}}}',
+                {"pid": p["id"], "v": [{"id": pl["var"]["id"], "inventoryItem": {"sku": x["sku"]}}]})["productVariantsBulkUpdate"]
+        if r["userErrors"] or not r["productVariants"] or r["productVariants"][0]["sku"] != x["sku"]:
+            return f"EU-SKU nicht gesetzt: {r['userErrors']}"
+        gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": p["id"], "t": ["stecker-eu-sku"]})
+        with open(LEDGER, "a") as fh:
+            fh.write(f"{p['id'].split('/')[-1]}\tstecker-eu\t{HEUTE}\t{p['handle']}\n")
+        return None
     r = gql('mutation($id:ID!,$o:[OptionCreateInput!]!){productOptionsCreate(productId:$id,options:$o,variantStrategy:CREATE){'
             'userErrors{message code} product{variants(first:100){nodes{id selectedOptions{name value}}}}}}',
             {"id": p["id"], "o": [{"name": optname, "values": [{"name": x["wert"]} for x in plan]}]})["productOptionsCreate"]
@@ -154,7 +174,7 @@ def main():
         pl, grund = plane(r)
         if not pl:
             manuell.append((r, grund)); print(f"  ❔ {r['titel'][:55]} — {grund}", flush=True); continue
-        zeile = f"{r['titel'][:50]} — {pl['optname']}: " + " · ".join(f"{x['wert']} {x['preis']}" for x in pl["plan"][:6]) + \
+        zeile = f"{r['titel'][:50]} — {pl['optname'] or 'EU-SKU'}: " + " · ".join(f"{x['wert']} {x['preis']}" for x in pl["plan"][:6]) + \
                 (f" … (+{len(pl['plan']) - 6})" if len(pl["plan"]) > 6 else "")
         if not SCHARF:
             ok.append(r); print(f"  ▶ {zeile}", flush=True); continue
