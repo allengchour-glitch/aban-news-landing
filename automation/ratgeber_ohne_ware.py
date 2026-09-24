@@ -23,6 +23,8 @@ WAS GEPRUEFT WIRD — nachpruefbar statt geraten:
      («<a href="/collections/x">Faszienrolle Premium 3er-Set</a> für CHF 44.90»).
      Existiert dazu kein aktives Produkt → Falschversprechen.
   B) SACKGASSE: Der Ratgeber verlinkt ueberhaupt kein aktives Produkt.
+  C) AUSVERKAUFT (seit 24.09.2026): verlinktes Produkt ist ACTIVE, aber alle Varianten verfolgt,
+     DENY und Menge 0 — die Produktseite sagt «Ausverkauft», der Ratgeber wirbt weiter.
 
 ⚠️ ER MELDET NUR. Frueher stand hier ein FIX, der das meistverkaufte Produkt einer verlinkten
    Kollektion angehaengt hat — der Trockenlauf schlug unter einem DUFTKERZEN-Ratgeber einen
@@ -163,14 +165,32 @@ def gibt_es(begriff, cache):
     return treffer
 
 
-def produkt_aktiv(handle, cache):
+def produkt_stand(handle, cache):
+    """(aktiv, ausverkauft, titel) — ausverkauft = ACTIVE, aber jede Variante verfolgt, DENY und Menge ≤ 0.
+
+    24.09.2026 (Prüfer, Halloween-Ratgeber): «Skelett, lebensgross» hat Bestand 1 bei DENY. Nach EINEM
+    Verkauf bleibt es ACTIVE — der Ratgeber bewirbt dann ein Produkt, das niemand kaufen kann, und die
+    reine Status-Prüfung sieht nichts. CJ-Ware (tracked=false, CONTINUE) zählt hier bewusst NICHT als
+    ausverkauft: sie hat keinen Bestandsschutz, ihre Verfügbarkeit steht beim Lieferanten."""
     if handle in cache:
         return cache[handle]
-    d = gql('query($q:String!){products(first:1, query:$q){nodes{status}}}', {"q": f"handle:{handle}"})
+    d = gql('query($q:String!){products(first:1, query:$q){nodes{title status '
+            'variants(first:50){nodes{inventoryPolicy inventoryQuantity inventoryItem{tracked}}}}}}',
+            {"q": f"handle:{handle}"})
     n = ((d.get("data") or {}).get("products") or {}).get("nodes") or []
-    cache[handle] = bool(n) and n[0]["status"] == "ACTIVE"
+    aktiv = bool(n) and n[0]["status"] == "ACTIVE"
+    aus = False
+    if aktiv:
+        vs = (n[0].get("variants") or {}).get("nodes") or []
+        aus = bool(vs) and all(v["inventoryItem"]["tracked"] and v["inventoryPolicy"] == "DENY"
+                               and (v.get("inventoryQuantity") or 0) <= 0 for v in vs)
+    cache[handle] = (aktiv, aus, n[0]["title"] if n else "")
     time.sleep(0.2)
     return cache[handle]
+
+
+def produkt_aktiv(handle, cache):
+    return produkt_stand(handle, cache)[0]
 
 
 def main():
@@ -184,7 +204,7 @@ def main():
     print(f"{len(arts)} veröffentlichte Ratgeber")
 
     cache_n, cache_h = {}, {}
-    versprechen, sackgassen = [], []
+    versprechen, sackgassen, ausverkauft = [], [], []
 
     for a in arts:
         body = a.get("body") or ""
@@ -217,7 +237,14 @@ def main():
         if not any(produkt_aktiv(h, cache_h) for h in handles):
             sackgassen.append((a, len(handles)))
 
-    if versprechen or sackgassen:
+        # C) Verlinktes Produkt ist ACTIVE, aber ausverkauft (verfolgt, DENY, Menge 0) — die Seite
+        #    zeigt «Ausverkauft», der Ratgeber wirbt weiter. Gemeldet, nicht repariert (siehe oben).
+        for h in dict.fromkeys(handles):
+            aktiv, aus, titel = produkt_stand(h, cache_h)
+            if aktiv and aus:
+                ausverkauft.append((a, h, titel))
+
+    if versprechen or sackgassen or ausverkauft:
         with open(BERICHT, "w") as f:
             f.write("# Ratgeber ohne Ware\n\n")
             f.write("Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. "
@@ -237,14 +264,24 @@ def main():
                 f.write("| Ratgeber | Produktlinks (alle tot/keine) |\n|---|---:|\n")
                 for a, n in sackgassen:
                     f.write(f'| [{a["title"][:60]}](/blogs/ratgeber/{a["handle"]}) | {n} |\n')
+                f.write("\n")
+            if ausverkauft:
+                f.write("## Verlinktes Produkt ist ausverkauft (aktiv, aber Bestand 0 bei DENY)\n\n")
+                f.write("Die Produktseite sagt «Ausverkauft», der Ratgeber wirbt weiter. "
+                        "Ware nachlegen, Karte tauschen oder den Link auf die Kollektion umbiegen.\n\n")
+                f.write("| Ratgeber | Produkt |\n|---|---|\n")
+                for a, h, titel in ausverkauft:
+                    f.write(f'| [{a["title"][:45]}](/blogs/ratgeber/{a["handle"]}) | [{titel[:45]}](/products/{h}) |\n')
         print(f"   Bericht → {os.path.relpath(BERICHT, REPO)}")
         for a, name, preis, k in versprechen[:10]:
             print(f'   ⚠️ «{name[:40]}» {preis} — kein Produkt zu «{k}» ({a["handle"][:35]})')
     elif os.path.exists(BERICHT):
         os.remove(BERICHT)
 
+    for a, h, titel in ausverkauft[:10]:
+        print(f'   ⚠️ ausverkauft: «{titel[:40]}» in {a["handle"][:40]}')
     print(f"FERTIG: {len(arts)} geprüft, {len(versprechen)} Falschversprechen, "
-          f"{len(sackgassen)} ohne kaufbaren Produktlink")
+          f"{len(sackgassen)} ohne kaufbaren Produktlink, {len(ausverkauft)} ausverkaufte Produktlinks")
 
 
 if __name__ == "__main__":

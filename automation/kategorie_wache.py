@@ -105,6 +105,10 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"kostüm|verkleidung", "aa-3-3"),
     (r"(?<!hand)(schuh|sandale|stiefel|sneaker|slipper|pantoffel)", "aa-8"),
     (r"\b(kleid|shirt|t-shirt|hose|pullover|hoodie|jacke|bluse|rock|bikini|badeanzug|socken|leggings|jumpsuit|strickjacke|mantel|weste|pyjama)\b|kleid\b|hemd\b", "aa-1"),
+    # 24.09. (Prüfer Halloween-Ratgeber): «Skelett-Gerippe für Halloween-Deko» stand als Spass-Elektronik auf Electronics,
+    # der «Geist-Anhänger mit Halloween-Beleuchtung» wäre über «anhänger» Schmuck geworden. Saisondeko VOR Schmuck/Lampe,
+    # NACH Aufbewahrung/Kostüm/Kleidung (Kürbis-Korb bleibt Ordnung, Halloween-Kleid bleibt Kleid).
+    (r"halloween|kürbis(?!kern)|totenkopf|skelett|fledermaus|spinnennetz|\bgeist(er)?\b|grusel|\bhexen?\b|vampir|zombie", "ae-3-2"),
     (r"halskette|ohrring|ohrstecker|(?<!uhr)armband(?!uhr)|\bring\b|schmuck|anhänger\b|brosche", "aa-6"),
     (r"rucksack", "lb-1"),
     (r"(hand|umhänge|reise|sport|kosmetik|kultur)tasche", "lb"),
