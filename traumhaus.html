@@ -3269,6 +3269,11 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     var rM=new THREE.MeshStandardMaterial({color:0x9aa0a6,roughness:0.6,metalness:0.3});
     var vM=new THREE.MeshStandardMaterial({map:_schildTex(),roughness:0.5});vM.envMapIntensity=0.2;
     var tI=new THREE.InstancedMesh(tG,[rM,rM,rM,rM,vM,rM],80);tI.count=0;tI.castShadow=true;tI.frustumCulled=false;scene.add(tI);
+    /* ⚠️ GEMESSEN (Bilder k25-gewerbe/-burgdorf-nach: gar kein Streifen; k25-schild-nah: kein Feld, kein
+       Schild): die Entfernungs-Ausblendung entscheidet pro OBJEKT nach dessen Lage — eine InstancedMesh
+       liegt im Ursprung, ihre Instanzen ueberall. Ohne `nieAusblenden` verschwinden alle 30 Uebergaenge
+       auf einmal, sobald der Spieler weit vom Ursprung steht (Regel aus bauViele, Zaeune, Landebahn). */
+    [sI,fI,pI,tI].forEach(function(I){I.userData.nieAusblenden=1;});
     return _zebI={s:sI,f:fI,p:pI,t:tI};}
   function _zebSetz(I,x,y,z,ry){if(I.count>=I.instanceMatrix.count)return;
     _zdm.position.set(x,y,z);_zdm.rotation.set(0,ry,0);_zdm.scale.set(1,1,1);_zdm.updateMatrix();
