@@ -859,6 +859,12 @@ DRY zeigte eine zweite Falle: «80X120X45cm» und «80x120x45cm» wurden zwei Gr
 (Hundebett Sofa: Farbe Grey × 4 Grössen, rückgelesen), 10 davon «einheitlich» → Mass in den Titel.
 **Lehre: Ein Zähler über eine neue Regex braucht zuerst den Blick auf die Treffer — die erste Fassung hätte 497 Faktenblock-Zeilen als
 Wahlversprechen bereinigt; und Schreibweisen (X/x/×) sind vor jedem Vergleich zu vereinheitlichen, sonst zählt die Maschine Dubletten als Auswahl.**
+(3) Verbesserungsrunde 04:25 — Social gemessen (IG 6 Posts/24 h, TikTok 2, YouTube 2, Pinterest 4, Queues 60/62/7): einziger Befund war ein
+Fehlalarm: `metricool_tiktok_post.mjs PRUEFEN=1` meldete zwei Bestzeit-Posts (10:05 CH) um 06:00 als «2.1 h überfällig», weil es ab der
+PLANUNG statt ab dem geplanten SENDETERMIN mass. Jetzt `publicationDate` aus dem Planer: «Termin in 5.6 h». Menü: sechs Keyword-Kollektionen
+verlinkt (152→158 Einträge, 0 verlorene IDs); Workflow-Skripte liegen jetzt in `automation/workflows/` (die Session-Kopie unter /root überlebte
+den Neustart nicht). **Ein Wächter, der gegen die falsche Uhr misst, erzieht zum Überlesen seiner Warnung.**
+
 
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
