@@ -6950,3 +6950,133 @@ halten nicht mehr bei „Rot" mitten auf dem Ring.
     echten Fahrmodell (`fahrStart`/`fahr` wie th-fahrgefuehl, Lenkvorzeichen und
     Fahrtrichtung werden gemessen, nicht angenommen) und fotografiert alle 45 m aus der
     Folgekamera im Handy-Format; dazu Stationen zu Fuss. Die Bilder werden angeschaut.
+
+
+## Runde 93 · 🔍 Fehler selbst gesucht (User: „suche selber fehler und verbessere" · „parkplätze müssen auch schönen ausweg haben und auch schön parkieren")
+
+Drei Suchläufe: **jede Strasse der Welt abfahren** (`th-spielfahrt`-Weltfahrt über alle Bänder aus
+`_viertelBaender()` + feste Bänder + Zubringer + Landstrasse, 60+ Bilder), **jeden Parkplatz von oben**,
+und die **volle Prüfreihe** `th-alle` (51 Werkzeuge). Dazu eine Code-Review des ganzen Diffs.
+
+**Gefunden und behoben:**
+- **Seepark-Stich lief in den See.** „26 m ab z 120" = bis z 146 = Seemitte; das eigene Auto stand im
+  Wasser (`park-seepark.png`, `welt-031`). Jetzt Vorplatz bis zur Promenade (122,5…126,4). Dazu sperrt
+  **Wasser** jetzt Auto und Spielfigur (`imWasser`: echte Uferkurve `seeR`, Meer, Fluss; Brücken/Damm
+  frei) — nichts hielt vorher am Ufer an. Uferstein 7 lag auf dem Vorplatz (Promenadenseite frei).
+- **Quartiersplatz ohne Zufahrt** (5 m Rasen zur Querstrasse): Vorfahrfläche + zwei Gehwegübergänge.
+- **Drei „Parktaschen" lagen quer über Gehweg und Erdstreifen**, Wagen senkrecht ohne Zufahrt, ein
+  Findling auf der Nordtasche (`park-pad-*.png`). Entfallen; die sechs Wagen parken längs im
+  **Parkstreifen der Hauptstrasse**, der leer stand.
+- **Bahnhofs-Parkplatz: Kasten-Autos → echte Modelle** (th37/th50), Nase in den Stall. `ladeWagen`
+  braucht den Modell-Lader, der beim Parkplatzbau noch nicht existiert → warten (Poll), nicht raten.
+- **Viertelstrasse Gewerbe: „Wagen am Bordstein" bei ±3,2 standen in der Fahrspur** (Spuren ±2,6,
+  9 m breit) — Verkehr und eigenes Auto steckten dahinter fest (`welt-036`, „steckt fest bei (247|-155)").
+  Am Bordstein ist kein Platz (Kante 4,5, Gehweg 4,7…6,9) → **Parkbuchten** über dem Gehweg bei ±5,9;
+  die Bucht hängt am Wagen und rückt mit dem Kollider-Ausweicher mit.
+- **Einmündungen:** Gehwege der Viertelstrasse und des Anschlusses liefen als EIN Balken quer über die
+  Fahrbahn des jeweils anderen, Striche durch die Kreuzung (`welt-047`, `welt-049`). `TRIM`-Lücken
+  (halbe Fahrbahn + Gehweg + Luft) an jeder Einmündung; der zweite L-Schenkel endet an der
+  Strassenkante statt in der Mitte (sonst Gehweg deckungsgleich über Gehweg = Z-Kampf).
+- **th-echt 14 statt 9:** Gipfelkreuz (72 Paare) und zwei Felsen (88/75) standen **im Stationshaus**
+  der Bergstation — das Haus ist 17 × 27,5 m, frei ist nur der Terrassenstreifen lx 8,5…12; Müllcontainer
+  (−54|48) in einem Doppelhaus (16). Bleiben: Gondel in der Station (gewollt), Laden/bd_inn 1,08 m,
+  Materialstapel am Rohbau 0,4 m, Birke/Karussell 0,15 m.
+- **Code-Review (5 Spiel-Befunde):** `gtaBanner` löschte den Grundfilter (Spiel flau nach der ersten
+  Einblendung) → Basis merken/wiederherstellen; Taxi-Timer konnten zwei Gäste setzen → `TAXI.timer`
+  + `taxiGastWeg()` vor jedem neuen; `bauZugBeginn` verwarf einen Zug ohne Ende → abschliessen;
+  Fahrgast-Figur zweimal gebaut → `taxiFigur()`; `drive_liste.py` las UTF-8 als Latin-1.
+  Die Review-Befunde zu `suchmaschine.html` stammen aus #2527 (main), nicht aus diesem PR.
+
+**Strasse ↔ Trottoir** (User: „schöne verbindung strasse und trottoir auch schöne übergänge"):
+Neues Messgerät **`th-kante.mjs`** — Querschnitte alle 9 m auf jedem Band (feste + `_viertelBaender()`
++ `window._anschluesse`), je Seite sieben Strahlen von der Fahrbahnkante bis 1,8 m in den Gehweg:
+Bordstein-Oberkante ≥ 9 cm? Boden (grün/erde) zwischen Asphalt und Platte = **Lücke**? Gehweg da?
+Dazu jeder Übergang aus `window._uebergaenge`: Bordstein an beiden Enden ≤ 5 cm (**abgesenkt**)?
+Gegenprobe eingebaut: der gemessene 12-cm-Stein der Südstrasse muss erkannt werden.
+Befund vorher: nur Haupt-/Querstrassen hatten einen Bordstein, und der lief **durch jeden
+Zebrastreifen** (Übergang an eine 12-cm-Mauer); Ring, Viertelstrassen, Anschlüsse: Platte direkt am
+Asphalt oder 0,2 m Boden dazwischen, kein Stein; T-Einmündungen ohne jeden Übergang.
+Jetzt EIN Helfer `bordsteinKante(a,kante,seite,von,bis,luecken)` (Lücken `"frei"` an Einmündungen,
+`"ab"` = 3-cm-Rampe am Zebra); `window._zebraAllg(x,z,quer,breite)` für jede Fahrbahnbreite; an jeder
+T-Einmündung zwei Übergänge (über den Anschluss hinter der Gehweglinie, über die Viertelstrasse
+daneben). Anschluss-Enden in **Metern** getrimmt (äussere Strasse 7, Ecke 4,5, Viertelstrasse 4,7 =
+bis an deren Gehwegkante), Viertel-Trim 6,9 = Aussenkante des Anschluss-Gehwegs — die Platten
+stossen jetzt zusammen statt sich zu überlappen oder eine Wiesenlücke zu lassen.
+
+**Neues Mass:** `th-autoboden` prüft **Parkplätze** (`window._parkplaetze`): Zufahrt auf Belag bis zur
+nächsten Strassenzelle (24 Richtungen), jeder Wagen ganz im Rechteck und in Stallrichtung.
+
+**Regeln, die hier Zeit gekostet haben:**
+1. **Ein Kommentar ist kein Mass.** „endet am Seeufer" stand seit Monaten über einem Asphalt, der bis in
+   die Seemitte reichte. Erst das Abfahren hat es gezeigt. Wer „bis zum Ufer" schreibt, rechnet mit
+   `seeR`, nicht mit einer Zahl.
+2. **Die volle Prüfreihe läuft auf dem Dateistand ihres jeweiligen Werkzeugstarts.** Jedes Werkzeug
+   kopiert `traumhaus.html` beim Start — wer während der 60 Minuten patcht, bekommt gemischte Stände.
+   Endzahlen immer aus einem Lauf nach dem letzten Patch.
+3. **Ein Parkplatz ohne Zufahrt sieht von oben richtig aus.** Striche, Bordstein, Wagen — alles da.
+   Dass 5 m Rasen zwischen Strasse und Platz liegen, sieht nur, wer die Zufahrt sucht. Darum die
+   Zufahrtsprüfung im Werkzeug statt im Auge.
+
+**Nachlese (zweiter Durchgang mit den Messgeräten):**
+- **Zwei Hochhäuser standen auf den Zubringern** (th-strassen): (−64|−116) mitten auf dem Zubringer 240°
+  (Mitte x −67), und der in Teil 3 versetzte Turm (72|−112) — `wegVonStrasse` schob ihn wegen der
+  Querstrassen-Zone (x 78 ± 10,5) auf 67,5, also auf den Zubringer 300° (Weltfahrt: „steckt fest bei
+  (62|−111)"). `wegVonStrasse` kennt die Zubringer nicht. Jetzt (−92|−116) und (92|−113), ausserhalb
+  beider Zonen.
+- **Wassergrenze lag 100 m zu weit westlich.** `x < −233` war die MITTE der Meerplatte (200 × 340 um
+  (−232|0)), nicht das Ufer; die Figur stand auf dem Ortsfoto „Meer" auf dem Wasser. Wasser = x < −135
+  innerhalb der Platte (|z| < 168,5); frei bleiben Wendeplatz (−132|−30), Steg (z 70) und Fähranleger
+  (z 100) bis x −148.
+- **Zubringer-Mündung:** der Belag ab Ringmitte lag mit y 0,004 ÜBER dem Ring-Belag (−0,003 … −0,008) —
+  ein helleres Parallelogramm quer über der Ring-Spur (Bild `k2-ring-zubringer`). Das Stück
+  Ringmitte … Aussenkante + 0,3 m liegt jetzt auf −0,010 (über den Plätzen −0,012, unter jeder Strasse).
+- **Bergstation: Hütte, Kreuz, Felsen wurden zur Laufzeit weggeschoben.** `freiRaeumen` schiebt alles
+  ohne `userData.fest` aus dem WELT-Kasten fremder Bauwerke; der Welt-Kasten des um 58° gedrehten
+  17 × 27-m-Hauses ist aber 32 × 29 m und deckt die ganze Terrasse. Die Hütte landete 14 m neben
+  ihrem Platz auf dem Hang, das Kreuz 4 m über der Terrassenkante. Gemessen mit einer Sonde
+  (`probe-berg.mjs`: Soll aus `aufTerrasse` gegen Ist aus `position`), nicht geraten.
+- **Ring-Lücken sassen falsch.** Nach Teil 4 meldete th-kante Löcher im INNEREN Ring-Gehweg bei (±58|−96)
+  und (108|70) und 8 cm Gras bei (117|61): die Lücke war auf beiden Seiten und an der Ringmitte
+  zentriert (x = 112·tan30 = 64,7). Der Zubringer-Belag beginnt aber in der Ringmitte — den inneren
+  Gehweg kreuzt er nie — und schneidet die ÄUSSERE Gehweglinie bei 117,6·tan30 = 67,9 (Süd 71,4,
+  Nord 61,0). Halbe Breite 5,2 (Fahrbahn 4,2 unter 30° = 4,85 + Luft).
+- **Anschluss-Belag über dem Ring:** −0,004 lag über den Ring-Platten (−0,0042 … −0,0086); an der
+  geteilten Mündung (Bauernhof-Anschluss + Zubringer 300°) ein helles Parallelogramm in der Ring-Spur
+  (`k6-muendung-300-nah`). Jetzt −0,0098: unter jeder Strasse, über den Viertelplatten (−0,012).
+- **Bauernhof-Anschluss lief in den Grossen Berg.** Weltfahrt-Bild `welt-083`: Auto im Gelände.
+  Gemessen (`probe-berghoehe.mjs`, `window._bergHoehe` entlang der Bänder): 0,15 m bei z −215, 3,6 m
+  bei −229, 10,3 m bei −245 — der Berg (Mitte (60|−420), r 200, Fuss bis 1,3 r = 260) reicht bis
+  z −160. **Schneise in `gelaendeH`**: innerhalb 22 m um die beiden L-Schenkel Höhe 0, bis 48 m
+  weich. 22 m und nicht 6, weil das Bergnetz dort ~20 m grob ist (48 Winkel auf r ≈ 175): eine
+  engere Schneise läge zwischen zwei Rasterpunkten, und der Belag bliebe unter der interpolierten
+  Fläche. Die Funktion ist zugleich die Begehbarkeit — Auto und Netz sehen dieselbe Schneise.
+- **Berghütte:** erster Versuch bergwärts (lz 25) — dort liegt das Gelände GEMESSEN auf 68,7 m,
+  die Hütte stand auf einem 40-m-Felsturm 26 m über der Station. Jetzt seitlich (lx ±22, entlang
+  der Höhenlinie); der Code misst beide Seiten und nimmt die, die der Terrassenhöhe am nächsten
+  kommt. Regel: **erst messen, wo die Höhenlinie läuft, dann bauen.**
+- **Messgeräte nachgezogen:** th-kante zählt Übergänge (abgesenkt = Zweck) und Einmündungen (Asphalt
+  bis 1,8 m hinter der Kante) nicht mehr als „ohne Bordstein"; Landstrassen (Strand, Achterbahn) ohne
+  Gehweg gewollt → gelistet, nicht gezählt; Ring-Süd innen (Bahndamm) ausgelassen. th-strassen: das
+  Zubringer-Band beginnt bei `zubR0`, nicht bei r 123 (sonst zählt es Ring-Objekte). th-echt: Tiefe
+  zusätzlich im LOKALEN Rahmen jedes Meshes — der Welt-Kasten des um 58° gedrehten Stationshauses ist
+  32 × 29 m statt 17 × 24 und meldete Kreuz und Felsen „3,3 m im Haus", obwohl sie neben der Wand
+  standen; Positionen beider Objekte in der Tabelle. th-pruef: Fahrzeuge ganz im Parkstreifen (≥ 5,3 m
+  von der Mitte) sind kein Korridor-Befund (dieselbe Regel wie th-strassen).
+- **Bewusst gelassen:** Wendeplatz am Strand ragt 6 m über den Sand aufs Wasser (Pier-Optik, das
+  Auto darf drauf); Kies-Vorgärten am Villenviertel (Quer-Ost (83|−21) „erde") und die Marktplatz-
+  Kante (41|66) sind Gestaltung, keine Lücken; Fluggastbrücke × Flugzeug 2,4 m ist ein Zeitpunkt
+  der Andock-Animation.
+
+**Endzahlen (letzter Lauf nach dem letzten Patch, Regel 2):**
+| Messgerät | vorher | nachher |
+|---|---|---|
+| th-kante: Querschnitte ohne Bordstein · Lücke Asphalt/Platte · ohne Gehweg | 753 · 542 · 92 | **2 · 5 · 9** (+ 51 auf Landstrassen, gewollt) |
+| th-kante: Übergänge nicht abgesenkt | 16 von 16 | **0 von 24** |
+| th-autoboden: stehend grün · Objekt · Verkehr · Polizei · Parkplätze ohne Zufahrt / schief / ragt | 5 · – · – · 53/120 · – | **0 · 0 · 0,2 % · 0/120 · 0 / 0 / 0** |
+| th-strassen: Stellen auf dem Belag | 144 | **112** (Rest: Baustelle am Zubringer 30°, Bäume/Masten am Rand, wie in Runde 92) |
+| th-echt: echte Durchdringungen | 14 | **7** (Bäume untereinander, Laden/Inn 1,08, Gondel in der Station) |
+| th-pruef: im Strassenkorridor · steckt in einem Bau | 37 · 20 (main: 36 · 19) | **0 · 2** (zwei Ahorne im Stadthaus, seit main) |
+| Weltfahrt (`alle-strassen.mjs k4`): Zubringer 240°/300°, Strandzufahrt, Achterbahn | 2 × steckt fest | **0** |
+
+Bilder: `spiele-dev/screenshots/r93-*.png` (Vorher: Figur auf dem Meer, Auto im Berg, Hütte auf dem
+Felsturm · Nachher: abgesenkte Zebras, T-Einmündungen, Ring-Mündung Ost, Zubringer 300° ohne Türme).
