@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 04:49 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-09-23 20:46 UTC, Stand 2026-09-24 04:59 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **30'605**
-- Optionen mit englischen Werten (Kandidaten): 2'439
-- Optionen übersetzt: **29** · Werte übersetzt: **66**
+- Produkte gesehen: **31'805**
+- Optionen mit englischen Werten (Kandidaten): 2'492
+- Optionen übersetzt: **30** · Werte übersetzt: **69**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'535
+- Werte mit unbekanntem Wort (unverändert): 13'754
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 56
+- übersprungen «kleidungsstueck-im-wert»: 57
 - übersprungen «kollision-nach-uebersetzung»: 35
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -43,6 +43,7 @@
 - `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
 - `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
 - `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
+- `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -135,5 +136,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 531, `inner` 475, `light` 437, `color` 311, `shell` 162, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 118, `size` 114, `powder` 111, `no` 110, `diamond` 108, `high` 101, `skin` 99, `three` 97, `to` 96, `bag` 91, `belt` 90, `rain` 88, `case` 87, `french` 84, `opp` 81, `four` 78, `spring` 71, `dual` 71, `rope` 70, `dark` 69, `base` 69, `petal` 68, `chain` 67, `autumn` 66, `half` 64, `net` 63, `feet` 62, `mother` 61, `tea` 60, `of` 60, `⟨satzbau:nomen-nomen⟩` 60, `code` 59, `buckle` 58, `yards` 57, `plush` 56, `one` 55, `electric` 55, `night` 54, `little` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47
+`⟨satzbau:adjektiv-vor-nomen⟩` 540, `inner` 489, `light` 439, `color` 314, `shell` 162, `degrees` 159, `core` 137, `size` 129, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 119, `powder` 112, `no` 110, `diamond` 108, `high` 101, `skin` 100, `three` 97, `to` 96, `belt` 92, `bag` 91, `rain` 88, `case` 87, `french` 84, `opp` 81, `code` 79, `four` 78, `yards` 77, `spring` 71, `dual` 71, `base` 70, `rope` 70, `dark` 69, `petal` 68, `chain` 67, `autumn` 66, `half` 64, `⟨satzbau:nomen-nomen⟩` 63, `net` 63, `feet` 62, `mother` 61, `tea` 60, `of` 60, `buckle` 60, `plush` 56, `little` 56, `one` 55, `electric` 55, `night` 54, `strap` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `suit` 48, `space` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47
 
