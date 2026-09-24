@@ -154,17 +154,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Arbeitsschuhe mit Stahlkappe 18.90 bei EK 30.85 (−81,4). **Damit sind es sechs Faktor-über-3-Fälle
   für den User** (dazu Atemschutz-Set 16.90/49.32, Kinder-Autositz 14.90/25.07, EisSilk-Polster
   14.90/33.23, Lendenwirbel-Kissen 17.90/38.51).
-- **⚠️ EIN PRODUKT BEWUSST ZURÜCKGEHALTEN:** `retro-arbeitsschuhe` (15450036765057) hat mehr als
-  50 Varianten und lief damit in die Abfragegrenze — sein `kosten_max` ist **zu niedrig gemessen**,
-  also wäre jeder daraus gerechnete Preis zu tief. **Eine Zahl, die an einer Abfragegrenze entsteht,
-  ist kein Messwert.** Offen für die nächste Runde.
+- **✅ NACHGEHOLT (24.09.): `retro-arbeitsschuhe` ist gesetzt — 55 Varianten**, `userErrors` leer,
+  an der echten Seite nachgemessen (**59.90 und 64.90 da, 33.90 und 34.90 weg**, Gegenprobe mit
+  erfundenem Wert schlägt nicht an). Es war zurückgehalten, weil es über 50 Varianten hat und damit
+  in die Abfragegrenze lief. **Die Nachmessung über alle 55 korrigiert meine eigene Vorsichts-
+  annahme: `kosten_max` war mit 35.63 RICHTIG gemessen**, nicht zu niedrig — die 50er-Grenze hatte
+  den Höchstwert zufällig schon erfasst. Zurückhalten war trotzdem richtig: **wissen konnte ich es
+  nicht, und eine Zahl, die an einer Abfragegrenze entsteht, ist so lange kein Messwert, bis man
+  ohne die Grenze nachgesehen hat.** Beide Preisstufen standen im Verlust (33.90 bei EK 33.21 =
+  −8,8 PROZENT · 34.90 bei EK 35.63 = −13,4), Faktor 1,8 — also gesetzt, nicht gemeldet.
 - **🔑 Die Mutation wurde wieder AUS DATEN ERZEUGT, nicht von Hand geschrieben**, und der Generator
   belegt vorher die **Lückenlosigkeit** der Variantennummern (`erste + (n-1)*32768 === letzte`,
   25 Produkte bestätigt) — so kann der Fehler vom 19.09. („zwölf geplant, zehn gesendet") nicht
   wiederkehren.
-- **📊 BILANZ ALLER SECHS BLÖCKE: 161 Schutzprodukte gemessen → 92 Produkte / 772 Varianten live
+- **📊 BILANZ ALLER SECHS BLÖCKE: 161 Schutzprodukte gemessen → 93 Produkte / 827 Varianten live
   korrigiert**, jedes einzelne an der Kundenseite nachgemessen (22/22 · 10/10 · 19/19 · 14/14 ·
-  10/10 · 27/27).
+  10/10 · 27/27 · 1/1).
 
 **📌 2026-09-20, zweite Runde (⭐ DER FÜHRENDE STERN WIRD WEGGEWORFEN — es sind 123 Helme, nicht 32):**
 - **Auftrag:** Dauerauftrag („weiter"). Voller Bericht: **`dropship/LERNEN-STERNCHEN-FALLE-2026-09-20.md`**.
