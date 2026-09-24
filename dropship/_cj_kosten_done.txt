@@ -28483,3 +28483,7 @@ gid://shopify/Product/15454334419329	CHF 21.18	12 Varianten	Rundspitze Sneaker m
 gid://shopify/Product/15454334452097	CHF 15.07	6 Varianten	Mehrschichtiges Kleid mit Print und Schleife
 gid://shopify/Product/15454334484865	CHF 23.03	33 Varianten	Männer Schuhe aus Veloursleder
 gid://shopify/Product/15454334517633	CHF 14.29	6 Varianten	Prinzessinnen-Hauskleid
+gid://shopify/Product/15454334615937	CHF 34.45	23 Varianten	Wasserdichte Golfschuhe für Herren
+gid://shopify/Product/15454334648705	CHF 14.30	8 Varianten	Gerade geschnittene Jeans
+gid://shopify/Product/15454334714241	CHF 137.79	4 Varianten	Retro-Leder Reisetasche
+gid://shopify/Product/15454335009153	CHF 13.64	52 Varianten	Kinder Sportsschuhe

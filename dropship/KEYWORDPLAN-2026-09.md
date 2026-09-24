@@ -369,6 +369,8 @@ Herrenhemden (2×), Sneaker (3×), Nägel (2×), Geschenke (20+).
 | 11 (Reserve) | Powerbank im Handgepäck: Regeln für Flüge ab der Schweiz | powerbank handgepäck (7) | `elektronik-laden` |
 | 12 (Reserve) | Hängematte aufhängen: Abstand, Höhe und Befestigung | hängematte aufhängen (10) | Lücke → siehe C3 |
 
+**Stand 24.09. 20:00 UTC:** Nr. 1–6 und Nr. 10 live (Nr. 10 `/blogs/ratgeber/kuscheltiere-waschen-plueschtiere-ratgeber`, 1'226 W, 5 Karten mit Altersangabe, Kollektionslink auf die Tag-Ansicht `/collections/ft-pluesch/ch-lager` — ungefiltert zeigt ft-pluesch oben Sofabezüge und Katzenangeln). Offen: Nr. 7 (Hoodie, POD — Editor heilig), 8, 9, 11, 12.
+
 Schreibregeln: keine Heilversprechen, keine Fremdmarken, Preise nur live aus dem Shop (Phantom-Preis-Falle, Task #30), Produktlinks nur auf ACTIVE +
 onlineStoreUrl (Phantom-Produkt-Falle, Task #7), du-Form, kein Eszett, Markt nur Schweiz.
 
