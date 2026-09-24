@@ -990,3 +990,5 @@ h:kabelloses-usb-ladegerat-fur-smartphones-6d099c
 h:sofauberzug-pure-color-fur-alle-jahreszeiten-945472
 15493835391361
 h:magnetische-mini-wireless-ladestation-6ccb56
+15493835489665
+h:powerbank-mit-digitalanzeige-10000-mah-a8e0c2
