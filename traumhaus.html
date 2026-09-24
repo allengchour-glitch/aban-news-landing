@@ -3087,7 +3087,12 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
       /* Bordstein an der Fahrbahnkante (Ring-Halbbreite 4,5): die Kante liegt 1,1 m vom
          Gehwegmittelpunkt Richtung Strassenmitte; die naehere Ringmitte entscheidet die Seite. */
       var mitten=laengs?[RGZ_N,RGZ_S]:[-RGX,RGX],c9=Math.abs(mitten[0]-fest)<Math.abs(mitten[1]-fest)?mitten[0]:mitten[1];
-      var sg=fest>c9?1:-1;bordsteinKante(laengs?"z":"x",c9+sg*4.5,sg,a0,a1,[]);}
+      var sg=fest>c9?1:-1;
+      /* ⚠️ KEIN BORDSTEIN AM INNEREN SUED-GEHWEG (Runde 93, th-gleis): dort liegt das Gleis — Schienen
+         auf z 110,7 und 113,3, die Ringkante auf 113,5. Ein 26-cm-Stein bei 113,24…113,5 laege auf der
+         Suedschiene (3 Bauteile ueber dem Gleiskoerper). Der Schotter ist dort die Kante. */
+      if(laengs&&sg<0&&c9===RGZ_S)return;
+      bordsteinKante(laengs?"z":"x",c9+sg*4.5,sg,a0,a1,[]);}
     /* Luecken als Zahl (halbe Breite HB) oder [Mitte, halbe Breite] */
     function mitLuecken(von,bis,luecken,laengs,fest,y){
       var g=von,L=luecken.map(function(c){return Array.isArray(c)?c:[c,HB];}).sort(function(p,q){return p[0]-q[0];});

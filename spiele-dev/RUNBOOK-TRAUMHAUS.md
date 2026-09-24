@@ -7062,6 +7062,10 @@ nächsten Strassenzelle (24 Richtungen), jeder Wagen ganz im Rechteck und in Sta
   32 × 29 m statt 17 × 24 und meldete Kreuz und Felsen „3,3 m im Haus", obwohl sie neben der Wand
   standen; Positionen beider Objekte in der Tabelle. th-pruef: Fahrzeuge ganz im Parkstreifen (≥ 5,3 m
   von der Mitte) sind kein Korridor-Befund (dieselbe Regel wie th-strassen).
+- **Bordstein lag auf der Schiene** (th-gleis in der vollen Reihe: 3 Bauteile über dem Gleiskörper). Der neue
+  Stein am inneren Süd-Gehweg des Rings (z 113,24…113,5) traf die Südschiene (113,22…113,38) — dort liegt das
+  Gleis direkt an der Ringkante, der Schotter IST die Kante. `stueck()` lässt den Stein auf dieser Seite weg.
+  Gegenprobe th-gleis allein: 0.
 - **Bewusst gelassen:** Wendeplatz am Strand ragt 6 m über den Sand aufs Wasser (Pier-Optik, das
   Auto darf drauf); Kies-Vorgärten am Villenviertel (Quer-Ost (83|−21) „erde") und die Marktplatz-
   Kante (41|66) sind Gestaltung, keine Lücken; Fluggastbrücke × Flugzeug 2,4 m ist ein Zeitpunkt
