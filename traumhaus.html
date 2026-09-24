@@ -878,6 +878,7 @@ var WORLD_POIS=[
      Die Koordinaten hier sind nur der Startwert: `marke()` in `viertel()` schreibt die
      ECHTE Lage hinein, sobald das Viertel steht (Namensgleichheit genuegt). */
   [160,220,"🎰","Chilbiplatz"],[-200,-250,"🦓","Zoo"],[300,-260,"✈️","Flughafen"],
+  [370,-140,"🏙️","Neustadt"],[405,-260,"🛰️","Technikpark"],[-300,-390,"🏰","Burgdorf"],[330,360,"🏕️","Bergsee-Camping"],   /* Runde 95; marke() zieht die echte Lage nach */
   /* ⚠️ „Ein Viertel, das man nicht findet, ist so gut wie nicht gebaut" — der Satz
      zwei Zeilen weiter oben gilt fuer den Spielclub genauso. Er steht 130 m ausserhalb
      bei (126|102); ohne Marke auf der Karte laeuft niemand zufaellig dorthin. Feste
@@ -1188,8 +1189,8 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
       g.addColorStop(1,"rgba(30,44,66,0)");
       c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,6.283);c.fill();}
     var t=new THREE.CanvasTexture(cv);
-    t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(4.5,4.5);  /* ~170 m je Kachel: bei 345 m sah man im Bildausschnitt gar keine Struktur */
-    var m=new THREE.Mesh(new THREE.PlaneGeometry(760,760),
+    t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6.5,6.5);  /* ~170 m je Kachel: bei 345 m sah man im Bildausschnitt gar keine Struktur */
+    var m=new THREE.Mesh(new THREE.PlaneGeometry(1100,1100),   /* Runde 95: mit der Fernebene gewachsen */
       new THREE.MeshBasicMaterial({map:t,transparent:true,opacity:0.55,depthWrite:false}));
     /* ⚠️ y 0,008 und nicht 0,02: gebaute Boeden liegen auf 0,01 — sonst zoege
        der Wolkenschatten durchs Wohnzimmer. Ueber den Strassenmarkierungen
@@ -1221,8 +1222,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 // ---- Open-World-Landschaft rundherum ----
 (function landschaft(){
   // Ferne Grasebene (Horizont) unter allem
-  var fernTex=grasTex.clone();fernTex.needsUpdate=true;fernTex.repeat.set(80,80);
-  var fern=new THREE.Mesh(new THREE.PlaneGeometry(900,900),new THREE.MeshStandardMaterial({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
+  var fernTex=grasTex.clone();fernTex.needsUpdate=true;fernTex.repeat.set(107,107);   /* gleiche Kachel wie bei 900/80 */
+  var fern=new THREE.Mesh(new THREE.PlaneGeometry(1200,1200),   /* Runde 95: 900 → 1200, sonst endet die Welt 45 m hinter dem Technikpark */new THREE.MeshStandardMaterial({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
   fern.rotation.x=-Math.PI/2;fern.position.y=-0.08;fern.receiveShadow=true;scene.add(fern);
   /* ⛰️ BERGKETTE — User: „erstelle sonst bergen fuer noch groessere map".
      Weit draussen (r 210..290), damit zwischen Ringstrasse und Gebirge Platz fuer neue
@@ -2370,6 +2371,30 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     streu(_n(150),GW*CS/2+8,GW*CS/2+70,blumenfeld,0);
     streu(_n(95),GW*CS/2+6,GW*CS/2+130,busch,0);
     streu(_n(45),GW*CS/2+10,GW*CS/2+135,findling,0);
+    /* 🌼 BLUMENWIESEN UND PILZE (Runde 95, „viele Sachen"): je EINE InstancedMesh fuer alle Bluetenkoepfe,
+       Stiele und Pilze der Welt — 80 Flecken x 8…13 Blueten waeren sonst 800 Zeichenaufrufe. */
+    (function blumenUndPilze(){
+      var MAXB=1100,MAXP=160,M4=new THREE.Matrix4(),P4=new THREE.Vector3(),Q4=new THREE.Quaternion(),S4=new THREE.Vector3(1,1,1);
+      var bl=new THREE.InstancedMesh(new THREE.SphereGeometry(0.15,7,6),new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.8}),MAXB);
+      var st=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.02,0.028,0.44,4),stdMat(0x4c8a3a,0.9),MAXB);
+      var hut=new THREE.InstancedMesh(new THREE.SphereGeometry(0.22,8,6,0,6.283,0,1.6),new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.7}),MAXP);
+      var fuss=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.06,0.08,0.3,6),stdMat(0xe8e2d2,0.9),MAXP);
+      [bl,st,hut,fuss].forEach(function(m){m.count=0;m.frustumCulled=false;m.castShadow=false;m.receiveShadow=true;scene.add(m);});
+      var FARB=[0xffd23a,0xff6b6b,0xc77dff,0xfff4d6,0xff9f43,0x7ec8ff],HUT=[0xc8362a,0xd99a3a,0xf0e6d0],C9=new THREE.Color();
+      function blumen(x,z){var n=8+((Math.random()*6)|0),f=FARB[(Math.random()*FARB.length)|0];
+        for(var i=0;i<n&&bl.count<MAXB;i++){var ox=(Math.random()-0.5)*3.2,oz=(Math.random()-0.5)*3.2,h=0.32+Math.random()*0.16;
+          S4.set(1,h/0.44,1);M4.compose(P4.set(x+ox,h/2,z+oz),Q4,S4);st.setMatrixAt(st.count++,M4);
+          S4.set(1,0.7,1);M4.compose(P4.set(x+ox,h+0.05,z+oz),Q4,S4);bl.setMatrixAt(bl.count,M4);
+          bl.setColorAt(bl.count,C9.setHex(Math.random()<0.75?f:FARB[(Math.random()*FARB.length)|0]));bl.count++;}
+        st.instanceMatrix.needsUpdate=true;bl.instanceMatrix.needsUpdate=true;if(bl.instanceColor)bl.instanceColor.needsUpdate=true;}
+      function pilze(x,z){var n=2+((Math.random()*3)|0);
+        for(var i=0;i<n&&hut.count<MAXP;i++){var ox=(Math.random()-0.5)*1.6,oz=(Math.random()-0.5)*1.6,k=0.7+Math.random()*0.8;
+          S4.set(k,k,k);M4.compose(P4.set(x+ox,0.15*k,z+oz),Q4,S4);fuss.setMatrixAt(fuss.count++,M4);
+          M4.compose(P4.set(x+ox,0.28*k,z+oz),Q4,S4);hut.setMatrixAt(hut.count,M4);hut.setColorAt(hut.count,C9.setHex(HUT[(Math.random()*HUT.length)|0]));hut.count++;}
+        fuss.instanceMatrix.needsUpdate=true;hut.instanceMatrix.needsUpdate=true;if(hut.instanceColor)hut.instanceColor.needsUpdate=true;}
+      streu(_n(80),GW*CS/2+4,GW*CS/2+140,blumen,0);
+      streu(_n(40),GW*CS/2+30,GW*CS/2+140,pilze,0);
+    })();
     streu(_n(24),GW*CS/2+14,GW*CS/2+120,heuballen,1);
     /* ⚠️ DIESE SCHLEIFE HAT NIE EIN BUESCHEL GESETZT — nachgerechnet, nicht vermutet.
        Sie streute auf einen Ring mit `sr9 = 19 + Math.random()*4`, also Radius 19…23 um die
@@ -6029,18 +6054,23 @@ setTimeout(function baueGebaeude(){
        (Bilder welt-047/049: helle Baender ueber dem Asphalt). Die Einmuendung liegt dort, wo
        der Anschluss senkrecht auf die Strassenlinie trifft: bei ax (L-Weg) bzw. VX (gerader
        Weg). TRIM = halbe Fahrbahn + Gehweg + Luft. Striche ebenso. */
-    var TRIM=SW/2+TW+0.2,J9=[];   /* 6,9 = Aussenkante des Anschluss-Gehwegs (TO+TW/2): dort stossen die Platten zusammen */
-    if(cfg.anschluss){var ja=cfg.anschluss,jq=laengs?ja[0]:ja[1],jm=laengs?VX:VZ,jo=laengs?ja[1]:ja[0],jn=laengs?VZ:VX;
-      if(Math.abs(jq-jm)<=2&&Math.abs(jo-jn)>2)J9.push(jm);                 /* gerade in die Strassenmitte */
-      else if(Math.abs(jq-jm)>2&&Math.abs(jo-jn)>2&&Math.abs(jq-jm)<=laenge/2+1)J9.push(jq);}   /* L-Weg trifft die Strasse bei ax/az */
+    var TRIM=SW/2+TW+0.2,J9=[],J9S=[];   /* 6,9 = Aussenkante des Anschluss-Gehwegs (TO+TW/2): dort stossen die Platten zusammen */
+    if(cfg.anschluss){var ja=cfg.anschluss,jq=laengs?ja[0]:ja[1],jm=laengs?VX:VZ,jo=laengs?ja[1]:ja[0],jn=laengs?VZ:VX,jsA=(jo-jn)>0?1:-1;
+      if(Math.abs(jq-jm)<=2&&Math.abs(jo-jn)>2){J9.push(jm);J9S.push(jsA);}                 /* gerade in die Strassenmitte */
+      else if(Math.abs(jq-jm)>2&&Math.abs(jo-jn)>2&&Math.abs(jq-jm)<=laenge/2+1){J9.push(jq);J9S.push(jsA);}}   /* L-Weg trifft die Strasse bei ax/az */
+    /* 🛣️ NACHBARN (Runde 95): ein spaeter gebautes Viertel, dessen Anschluss in DIESE Strasse muendet,
+       braucht hier dieselbe Luecke (Gehweg, Bordstein, Striche) und dieselben zwei Uebergaenge wie der
+       eigene Anschluss — sonst laeuft der Gehweg als Balken ueber seine Fahrbahn (Runde 93).
+       cfg.nachbarn = [[Koordinate laengs der Strasse, Seite +1/-1], ...]. */
+    (cfg.nachbarn||[]).forEach(function(nb){J9.push(nb[0]);J9S.push(nb[1]);});
     function stuecke(von,bis){var L9=[[von,bis]];J9.forEach(function(j){var N9=[];L9.forEach(function(t){
       if(t[1]<=j-TRIM||t[0]>=j+TRIM){N9.push(t);return;}
       if(t[0]<j-TRIM)N9.push([t[0],j-TRIM]);if(t[1]>j+TRIM)N9.push([j+TRIM,t[1]]);});L9=N9;});return L9;}
     var _mitte=laengs?VX:VZ,_quer=laengs?VZ:VX,_zebV=[];
     /* 🚸 Uebergaenge ZUERST — ihre Lage bestimmt die Luecken in Platte und Bordstein: einer ueber den
        Anschluss direkt hinter der Gehweglinie, einer ueber die Viertelstrasse neben der Einmuendung. */
-    J9.forEach(function(j){
-      var ja9=cfg.anschluss,jo9=laengs?ja9[1]:ja9[0],sA=(jo9-_quer)>0?1:-1;          /* Seite, von der der Anschluss kommt */
+    J9.forEach(function(j,ji){
+      var sA=J9S[ji];                                                               /* Seite, von der der Anschluss kommt */
       window._zebraAllg(laengs?j:_quer+sA*7.4,laengs?_quer+sA*7.4:j,!laengs,SW);     /* ueber den Anschluss (laeuft quer zur Strasse) */
       var zj=(j+TRIM+2.9<=_mitte+laenge/2-2)?j+TRIM+2.9:j-TRIM-2.9;                   /* ueber die Viertelstrasse, neben der Einmuendung */
       window._zebraAllg(laengs?zj:_quer,laengs?_quer:zj,laengs,SW);
@@ -6054,9 +6084,9 @@ setTimeout(function baueGebaeude(){
     /* 🧱 Bordstein beidseits, offen an der Einmuendung (Fahrbahn des Anschlusses + sein Bordstein),
        abgesenkt (Stein + Platte) am Zebrastreifen. */
     [-1,1].forEach(function(sg){
-      var lk=J9.map(function(j){return [j-SW/2-0.26,j+SW/2+0.26,"frei"];}).concat(_zebV);
+      var lk=J9.map(function(j,ji){return [j-SW/2-0.26,j+SW/2+0.26,"frei",J9S[ji]];}).concat(_zebV);
       /* auf der Anschluss-Seite ist die Einmuendung offen; auf der Gegenseite bleibt der Stein */
-      var lk2=lk.filter(function(g){if(g[2]!=="frei")return true;var ja8=cfg.anschluss,jo8=laengs?ja8[1]:ja8[0];return ((jo8-_quer)>0?1:-1)===sg;});
+      var lk2=lk.filter(function(g){if(g[2]!=="frei")return true;return g[3]===sg;});
       bordsteinKante(laengs?"z":"x",_quer+sg*SW/2,sg,_mitte-laenge/2,_mitte+laenge/2,lk2,{b:2.4,m:twM});});
     /* Mittelstreifen */
     var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
@@ -6176,9 +6206,15 @@ setTimeout(function baueGebaeude(){
         if(pos-vor/2<lq+hb9&&pos+vor/2>lq-hb9){cur[k]=lq+hb9;pos=cur[k]+vor/2;}});
       cur[k]=pos+vor/2+(cfg.luecke===undefined?14:cfg.luecke);
       if(pos+vor/2>laenge-(cfg.rand||14)){console.warn("Viertel "+cfg.name+": "+b.file+" passt nicht mehr");return;}
+      /* ⚠️ SETBACK IST EIN MITTELPUNKT-ABSTAND (Runde 95, th-strassen/th-umfeld): Post und Polizeiwache
+         im Gewerbeviertel (Strasse laengs z) standen mit ihrer Mitte 18,9 m neben der Strassenmitte —
+         ihre Tiefe ZUR Strasse ist aber die 32-m-Seite (w, weil um 90 Grad gedreht): die Fassade
+         reichte bis 1,3 m IN die Fahrbahn, die Parkgarage 3 m. Jeder Bau bekommt darum mindestens
+         Gehweg-Aussenkante + 2,5 m + seine halbe Tiefe; wer ohnehin weiter weg steht, bleibt. */
+      var halb9=(laengs?bd:bw)/2, sb9=Math.max(setback, TO+TW/2+2.5+halb9);
       var bx,bz;
-      if(laengs){bx=VX-laenge/2+pos;bz=VZ+seite*setback;}
-      else{bz=VZ-laenge/2+pos;bx=VX+seite*setback;}
+      if(laengs){bx=VX-laenge/2+pos;bz=VZ+seite*sb9;}
+      else{bz=VZ-laenge/2+pos;bx=VX+seite*sb9;}
       /* Schauseite (Tuer) zeigt in three.js nach -z -> zur Strasse drehen */
       var rot=laengs?(seite>0?Math.PI:0):(seite>0?-Math.PI/2:Math.PI/2);
       /* 🐛 Die im cfg angegebenen Masse sind Schaetzwerte — die geladenen Modelle sind oft
@@ -6289,6 +6325,7 @@ setTimeout(function baueGebaeude(){
        verschiebt aber auch den Bauernhof, dessen Aecker, Zaeune, Traktor und Heuballen
        auf festen Koordinaten liegen. Das ist eine eigene Runde wert. */
     var _go = viertel({name:"Gewerbe Rietli",x:172,z:0,w:96,d:180,achse:"z",boden:"platz",
+      freiQuer:[-140],nachbarn:[[-140,1]],   /* Runde 95: Einmuendung der Neustadt (Osten) bei z -140 */
       anschluss:[112,0],abstand:13,luecke:10,rand:14,
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
          richtig, die aelteren th20/th22/th23 standen noch mit Phantasiewerten da:
@@ -6552,6 +6589,7 @@ setTimeout(function baueGebaeude(){
        Darum liegt die Strassenhoehe jetzt bei z = -230: 34 m Abstand zur Muehle (z -196),
        mehr als die halbe Belagsbreite von 4,5 je Seite braucht. */
     viertel({name:"Zoo",x:-200,z:-230,w:170,d:100,achse:"x",boden:"kies",
+      nachbarn:[[-285,-1]],   /* Runde 95: Strasse zum Burgdorf beginnt am Westende, nach Norden */
       anschluss:[-100,-246],abstand:12,luecke:12,rand:14,
       bauten:[{file:"th24_zoo_eingang.glb", h:7,  w:26.0,d:16.6},
               {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
@@ -6620,6 +6658,85 @@ setTimeout(function baueGebaeude(){
               {file:"th25_hangar.glb",   h:14,w:37.4,d:27.7},
               {file:"th25_tower.glb",    h:22,w: 7.5,d: 7.5},
               {file:"th25_radarturm.glb",h:18,w: 8.7,d: 4.9}]});
+    /* ═══════════════════════════════════════════════════════════════════════════════════
+       🌍 RUNDE 95 — GROESSER, VIELE SACHEN (User: „grösser und viele sachen").
+       GEMESSEN (Sonde probe-dichte, 40-m-Zellen): die Welt war ausserhalb des Rings x -140…220 /
+       z -300…380 leer — Osten (x 260…450, z -200…-60), Suedosten (x 240…450, z 300…430),
+       Nordwesten (x -460…-140, z -460…-330) ohne ein einziges Objekt, dazu 546 unbenutzte
+       Modelle im Repo. Vier neue Viertel ueber denselben Generator, alle Masse aus der
+       geladenen Box (Sonde probe-masse, NICHT aus den Rohdaten — bd_* und th23_* tragen
+       Knoten-Transformationen, die Rohbox liegt bis Faktor 3 daneben). ═══════════════════ */
+    /* 🏙️ NEUSTADT — Rathaus, Bibliothek, Kino, Einkaufszentrum, Museum, Hotel, Altbau, Hochhaus.
+       Anschluss: Stich von der Gewerbe-Strasse (x 250,5) bei z -140 nach Osten; das Gewerbe-Viertel
+       traegt dafuer freiQuer + nachbarn. x 260…400: die Kuppe (456|-67, r 54) beginnt bei 402. */
+    /* ⚠️ GEMESSEN (th-viertel): bei x 330 / w 140 wich das Viertel 50 m nach Osten aus — das Gewerbe-Viertel
+       ist 96 m BREIT (x 202…298), seine Strasse liegt nur in der Mitte. Bei 380 lag das Ostende dann im
+       Fuss der Kuppe (456|-67). Jetzt x 370 / w 100 (320…420): 22 m hinter dem Gewerbe, vor der Kuppe
+       (bei z -95 beginnt ihr Fuss erst bei x 410); sechs Bauten statt acht. */
+    viertel({name:"Neustadt",x:370,z:-140,w:100,d:90,achse:"x",boden:"platz",
+      anschluss:[250.5,-140],abstand:8,luecke:6,rand:8,
+      bauten:[{file:"th10_rathaus.glb",        h:12,w:20.3,d:17.9},
+              {file:"th10_bibliothek.glb",     h:10,w:22.4,d:17.9},
+              {file:"th10_kino.glb",           h:8, w:25.4,d:22.6},
+              {file:"th10_einkaufszentrum.glb",h:9, w:27.4,d:21.6},
+              {file:"th9_museum.glb",          h:10,w:17.2,d:17.1},
+              {file:"th9_hotel.glb",           h:24,w:16.3,d:14.4}]});
+    /* 🛰️ TECHNIKPARK — Raststaette (Tankstelle, Restaurant) und Forschungsgelaende oestlich des
+       Flughafens, gerade Verlaengerung der Flughafen-Strasse (Ostende 355|-260). Satellitenschuessel
+       und Generator haben einen Ursprung ausserhalb der Box (Sonde: x 16…23) — darum von Hand mit
+       Versatz, nicht ueber den Generator. */
+    var _tp=viertel({name:"Technikpark",x:405,z:-260,w:80,d:70,achse:"x",boden:"platz",
+      anschluss:[355,-260],abstand:6,luecke:6,rand:8,
+      bauten:[{file:"th20_tankstelle.glb",   h:6,  w:23.2,d:20.5},
+              {file:"th10_restaurant.glb",   h:5,  w:20.8,d:18.5},
+              {file:"nf_robot_large.glb",    h:7,  w:8.6, d:2.5,tuer:false},
+              {file:"th9_wasserturm.glb",    h:13, w:6,   d:6,  tuer:false},
+              {file:"nf_container_tall.glb", h:4.5,w:3,   d:3,  tuer:false},
+              {file:"nf_robot_small.glb",    h:3.5,w:1.9, d:2.2,tuer:false}]});
+    if(_tp){(function(){var tx=_tp.x,tz=_tp.z;
+      function fest9(f,h,x,y,z,ry){bau(f,h,x,y,z,ry,false,function(w){w.userData.fest=1;},true);}
+      fest9("nf_satellite.glb",6,tx+30-19.45,0,tz-24-14.25,0);      /* Ursprung liegt bei +19,45/+14,25 */
+      fest9("nf_satellite.glb",6,tx+30-19.45,0,tz+24-14.25,0.9);
+      fest9("nf_generator.glb",3,tx+36-14.6,0,tz-12-10.75,Math.PI/2);  /* Ursprung bei +14,6/+10,75 */
+      bau("nf_drone.glb",4,tx+20,5,tz+30,0,false,function(w){w.userData.fest=1;w.userData.nieAusblenden=true;w._bewegt=true;},true);
+    })();}
+    /* 🏰 BURGDORF — Burg, Fachwerk, Schmiede, Saegewerk, Stall, Scheune, Windmuehle, Turm auf Kies.
+       Anschluss: vom Westende der Zoo-Strasse (-285|-250, tatsaechliche Lage) 140 m nach Norden; der
+       Zoo traegt dafuer nachbarn. Frei gemessen: x -460…-140, z -460…-330 (Berg -378|-244 endet bei -319). */
+    viertel({name:"Burgdorf",x:-300,z:-390,w:150,d:90,achse:"x",boden:"kies",
+      anschluss:[-285,-250],abstand:6,luecke:7,rand:12,
+      bauten:[{file:"building_castle.glb",   h:22, w:21.6,d:23.5},
+              {file:"bd_barn.glb",           h:7,  w:9,   d:9.6},
+              {file:"bd_house_c.glb",        h:6,  w:10.8,d:11.9},
+              {file:"bd_smithy.glb",         h:6,  w:7.8, d:6.6},
+              {file:"bd_sawmill.glb",        h:6,  w:9.2, d:6.9},
+              {file:"bd_tower_house.glb",    h:9,  w:8.2, d:7},
+              {file:"bd_stable.glb",         h:5,  w:9.4, d:6.7},
+              {file:"bd_windmill.glb",       h:12, w:8.3, d:5.2},
+              {file:"bd_town_house.glb",     h:8,  w:6.4, d:4.7},
+              {file:"building_werkstatt.glb",h:6.5,w:7.2, d:8},
+              {file:"building_fachwerk.glb", h:7,  w:8.1, d:8.3},
+              {file:"building_turm.glb",     h:9,  w:4.5, d:4.6}]});
+    /* 🏕️ BERGSEE-CAMPING — Wasserfall, Hoehle, Bergsee und Haengebruecke am Fuss des Ostbergs
+       (396|201), gegenueber Grillplatz, Wohnmobile und Zelte. Gerade Verlaengerung der
+       Freizeitpark-Strasse (Ostende 225|360, tatsaechliche Lage). */
+    var _cp=viertel({name:"Bergsee-Camping",x:330,z:360,w:150,d:90,achse:"x",boden:"rasen",
+      anschluss:[225,360],abstand:5,luecke:6,rand:10,
+      bauten:[{file:"th26_wasserfall.glb",    h:18, w:35,  d:30.9,tuer:false},
+              {file:"th16_grillplatz.glb",    h:2.1,w:11.4,d:11.5,tuer:false},
+              {file:"th26_hoehleneingang.glb",h:14, w:27.3,d:31.6,tuer:false},
+              {file:"th40_wohnmobil.glb",     h:3.2,w:6.8, d:2.8, tuer:false},
+              {file:"th26_bergsee.glb",       h:5.7,w:24,  d:20.8,tuer:false},
+              {file:"th40_wohnmobil.glb",     h:3.2,w:6.8, d:2.8, tuer:false},
+              {file:"th26_haengebruecke.glb", h:4.3,w:6.6, d:24.3,tuer:false},
+              {file:"cc0_tent.glb",           h:2.2,w:2.5, d:2.5, tuer:false}]});
+    if(_cp){(function(){var cx=_cp.x,cz=_cp.z;   /* Zelte, Feuer, Holz zwischen den Wohnmobilen (Suedseite) */
+      function fest9(f,h,x,z,ry){bau(f,h,x,0,z,ry,false,function(w){w.userData.fest=1;},true);}
+      fest9("sv_tent.glb",2.2,cx-30,cz+30,0.6); fest9("cc0_tent.glb",2.2,cx-24,cz+33,2.4); fest9("sv_tent.glb",2.2,cx+40,cz+31,1.2);
+      fest9("sv_campfire.glb",0.5,cx-27,cz+27,0); fest9("sv_woodpile.glb",0.6,cx-33,cz+26,0.3);
+      fest9("th47_gartenlaube.glb",2.6,cx+62,cz+28,0); fest9("nw_wegweiser.glb",2.2,cx-70,cz+9,0.2);
+    })();}
+
     if(_fh)setTimeout(function flughafenFeld(){
       var FX=_fh.x, FZ=_fh.z;                 /* ECHTE Mitte, nicht der Wunsch (#2353) */
       /* Landebahn: acht Module a 17,6 m = 141 m, parallel zur Viertelstrasse, so weit
@@ -9927,6 +10044,36 @@ setTimeout(function baueGebaeude(){
       w.userData.fest=true; w.userData.nieAusblenden=true; w._bewegt=true;
       if(window._boote)window._boote.push({w:w,y0:-0.9,x0:-153,per:1.7,ph:4.2,
                                            kurs:null,pos:92,dir:1});},true);
+  })();
+  /* 🏴‍☠️ PIRATENINSEL (Runde 95). Das Meer war 200 x 340 m leeres Blau mit zwei Booten. Eine
+     Sandinsel 120 m vor dem Hafen, Leuchtturm, Palmen, Kanonen, Schatzkiste, Zelt, ein Steg zum
+     Piratenschiff und ein Wrack. Lage gegen die Kurse der anderen Schiffe geprueft: Segelboot
+     kreuzt auf x -151, Frachter liegt bei x -157…-149 — die Insel reicht bis -228. Schiff und
+     Wrack sind `_bewegt` wie alle Boote (kein Bodenmass, kein Einfrieren); das Schiff wiegt sich
+     ueber `_boote`. Nicht begehbar (imWasser sperrt das Ufer) — sie ist Kulisse von Strand,
+     Bruecke und Hafen aus. */
+  (function pirateninsel(){
+    var IX=-250,IZ=90;
+    /* Sand als Koernung (kiesMat), nicht als sand.jpg: die Kachel hat sichtbare Naehte, auf der runden Insel
+       lag ein Gitter (Bild k17-pirateninsel). */
+    var sandM=kiesMat(0xdcc890,0.95);sandM.map=sandM.map.clone();sandM.map.needsUpdate=true;sandM.map.repeat.set(9,9);
+    var insel=new THREE.Mesh(new THREE.CircleGeometry(22,28),sandM);
+    insel.rotation.x=-Math.PI/2;insel.position.set(IX,-0.018,IZ);insel.receiveShadow=true;scene.add(insel);
+    var huegel=new THREE.Mesh(new THREE.CircleGeometry(9,20),stdMat(0x8fb56a,0.95));   /* Grasfleck in der Mitte */
+    huegel.rotation.x=-Math.PI/2;huegel.position.set(IX-3,-0.012,IZ-2);huegel.receiveShadow=true;scene.add(huegel);
+    function fest(datei,h,x,z,ry){bau(datei,h,x,0,z,ry,false,function(w){w.userData.fest=true;},true);}
+    fest("wc_lighthouse.glb",9,IX+2,IZ-5,0);
+    [[IX-12,IZ+9,0.4],[IX+10,IZ+12,1.9],[IX-8,IZ-13,3.1],[IX+15,IZ-3,4.6],[IX-16,IZ-2,2.3],[IX+4,IZ+16,0.9]].forEach(function(q){fest("pr_palm.glb",6,q[0],q[1],q[2]);});
+    fest("pr_cannon.glb",1.2,IX-5,IZ+15,Math.PI);fest("pr_cannon.glb",1.2,IX+3,IZ+16,Math.PI);
+    fest("pr_chest.glb",0.8,IX+7,IZ-10,0.5);fest("pr_barrel.glb",1.1,IX+9,IZ-8,0);fest("pr_barrel.glb",1.1,IX+10.2,IZ-9.4,0.7);
+    fest("pr_crate.glb",0.8,IX+11.5,IZ-7.5,0.3);fest("pr_flag.glb",3,IX-2,IZ-10,0);
+    fest("cc0_tent.glb",2.2,IX-6,IZ+1,0.8);fest("sv_campfire.glb",0.5,IX-2,IZ+4,0);fest("sv_woodpile.glb",0.6,IX-9,IZ+4,0.5);
+    for(var k=0;k<5;k++)fest("wc_dock.glb",1.3,IX+23+k*2.4,IZ+2,0);            /* Steg nach Osten zum Schiff */
+    bau("wc_pirate_ship.glb",12,IX+40,-0.9,IZ+2,Math.PI/2,false,function(w){
+      w.userData.fest=true;w.userData.nieAusblenden=true;w._bewegt=true;
+      if(window._boote)window._boote.push({w:w,y0:-0.9,x0:IX+40,per:1.5,ph:0.7,kurs:null,pos:IZ+2,dir:1});},true);
+    bau("wc_shipwreck.glb",9,IX-32,-1.8,IZ+30,2.4,false,function(w){
+      w.userData.fest=true;w.userData.nieAusblenden=true;w._bewegt=true;w.rotation.z=0.2;},true);
   })();
   /* 🏗️ ZWEITE BAUSTELLE, im Osten. Elf th21-Modelle lagen unbenutzt im Repo.
      ⚠️ KORREKTUR ZUR ERSTEN FASSUNG DIESES KOMMENTARS. Dort stand, es gebe „nichts
@@ -13878,7 +14025,8 @@ var liefer=null;
    sich also selbst. Die Koordinaten sind Startwerte; `marke()` zieht sie auf die echte
    Lage nach, sobald das Viertel steht. */
 var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnmatt",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Rietli",172,0],
-  ["Chilbiplatz",160,220],["Zoo",-200,-250],["Flughafen",300,-260],["Spielclub",126,102]];
+  ["Chilbiplatz",160,220],["Zoo",-200,-250],["Flughafen",300,-260],["Spielclub",126,102],
+  ["Neustadt",370,-140],["Technikpark",405,-260],["Burgdorf",-300,-390],["Bergsee-Camping",330,360]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
   /* 💰 Die Lieferung war die einzige UNGEDECKELTE Geldquelle: ~120-260 $ pro Minute,
@@ -15384,8 +15532,8 @@ function updMinimap(dt){
 function drawBigMap(){
   var cv=document.getElementById("bigmap");if(!cv)return;
   var c=cv.getContext("2d"),W=cv.width,H=cv.height;
-  var X0=-300,X1=250,Z0=-240,Z1=345;   /* bis Bauernhof (z −241) und Freizeitpark (z 330) —
-                                          mit 280 endete die Karte mitten im Sportpark */
+  var X0=-400,X1=460,Z0=-450,Z1=420;   /* Runde 95: bis Burgdorf (-300|-390), Technikpark (405|-260),
+                                          Bergsee-Camping (330|360) und Pirateninsel (-250|90) */
   var sc=Math.min(W/(X1-X0),H/(Z1-Z0)),ox=(W-(X1-X0)*sc)/2,oy=(H-(Z1-Z0)*sc)/2;
   _bigTrafo={sc:sc,ox:ox,oy:oy,X0:X0,Z0:Z0}; /* 🧭 fuers Ruecktransformieren des Karten-Tipps */
   function S(wx,wz){return [ox+(wx-X0)*sc,oy+(wz-Z0)*sc];}
