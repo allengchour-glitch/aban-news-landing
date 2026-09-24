@@ -62,20 +62,38 @@ VORRANG_MAX_S = float(os.environ.get("VORRANG_MAX_S", "5400"))
 # 24.09.2026 GLOBALER VORRANG: Server (luxe-waechter) und Cloud-Container teilen EIN CJ-Konto, aber jede Maschine hat
 # ihre eigene Taktuhr und /tmp/cj_vorrang — der Server-Video-Indexer leerte den Eimer weiter, während hier der
 # Kosten-Nachtrag wartete. dropship/_cj_vorrang_global (im Repo, beide Seiten lesen es nach jedem Merge) trägt ein
-# ISO-Enddatum; bis dahin wartet jeder NICHT-Vorrang-, NICHT-Bestell-Aufruf 30 s (GLOBAL_BREMSE_S) → sein Anteil
-# sinkt ~15-fach, niemand blockiert ganz. Der Kosten-Nachtrag löscht die Datei, sobald eine volle Runde nichts fand.
+# ISO-Enddatum; bis dahin teilen sich alle NICHT-Vorrang-, NICHT-Bestell-Aufrufe je Maschine einen Abstand von
+# GLOBAL_ABSTAND_S (siehe unten), niemand blockiert ganz. Der Kosten-Nachtrag löscht die Datei, sobald eine volle Runde nichts fand.
 GLOBAL_DATEI = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dropship", "_cj_vorrang_global")
-GLOBAL_BREMSE_S = float(os.environ.get("GLOBAL_BREMSE_S", "30"))
+GLOBAL_ABSTAND_S = float(os.environ.get("GLOBAL_ABSTAND_S", "180"))
+GLOBAL_UHR = "/tmp/cj_bremse_letzter"
+# 24.09.2026 18:40 GEMESSEN: usedToday 107'890 (16:51) → 112'620 (18:40) = ~43 Punkte/min Nachfluss, nicht 165. Beide
+# Maschinen zusammen machten ~300 Aufrufe/h (Takt-Berichte dropship/_cj_takt_*.json) — alles sichtbar, nur zu viel.
+# 30 s Schlaf je Aufruf liess den Server-Reel-Motor trotzdem 54 Aufrufe/h machen (Obergrenze 120/h). Jetzt ein
+# gemeinsamer ABSTAND je Maschine: höchstens ein nicht dringender Aufruf alle GLOBAL_ABSTAND_S (180 s → 20/h je Maschine).
 
 
 def _global_bremse():
     try:
         bis = open(GLOBAL_DATEI).read().split()[0]
         import datetime
-        if datetime.datetime.fromisoformat(bis.replace("Z", "+00:00")).timestamp() > time.time():
-            time.sleep(GLOBAL_BREMSE_S)
+        if datetime.datetime.fromisoformat(bis.replace("Z", "+00:00")).timestamp() <= time.time():
+            return
     except Exception:
-        pass
+        return
+    while True:
+        try:
+            alter = time.time() - os.stat(GLOBAL_UHR).st_mtime
+        except FileNotFoundError:
+            alter = GLOBAL_ABSTAND_S
+        if alter >= GLOBAL_ABSTAND_S:
+            try:
+                with open(GLOBAL_UHR, "w") as f:
+                    f.write(_skript())
+            except Exception:
+                pass
+            return
+        time.sleep(min(GLOBAL_ABSTAND_S - alter, 30) + 0.1)
 
 
 def _skript():

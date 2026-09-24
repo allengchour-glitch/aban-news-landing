@@ -20,11 +20,19 @@ async function vorrangWarten() {
   const name = (process.argv[1] || '?').split('/').pop();
   if (VORRANG_SKRIPTE.some(v => name.startsWith(v))) { try { fs.writeFileSync(VORRANG_DATEI, name); } catch {} return; }
   if (IMMER_FREI.some(v => name.startsWith(v))) return;
-  // Globaler Vorrang (siehe cj_takt.py): Repo-Datei dropship/_cj_vorrang_global mit ISO-Enddatum → 30 s Bremse je Aufruf.
+  // Globaler Vorrang (siehe cj_takt.py): Repo-Datei dropship/_cj_vorrang_global mit ISO-Enddatum → gemeinsamer Abstand je
+  // Maschine (/tmp/cj_bremse_letzter, GLOBAL_ABSTAND_S = 180 s) für alle nicht dringenden Aufrufe.
   try {
     const gdat = new URL('../dropship/_cj_vorrang_global', import.meta.url);
     const bis = Date.parse(fs.readFileSync(gdat, 'utf8').trim().split(/\s+/)[0]);
-    if (bis > Date.now()) await sleep(parseFloat(process.env.GLOBAL_BREMSE_S || '30') * 1000);
+    if (bis > Date.now()) {
+      const ABSTAND = parseFloat(process.env.GLOBAL_ABSTAND_S || '180') * 1000, UHR = '/tmp/cj_bremse_letzter';
+      for (;;) {
+        let alter; try { alter = Date.now() - fs.statSync(UHR).mtimeMs; } catch { alter = ABSTAND; }
+        if (alter >= ABSTAND) { try { fs.writeFileSync(UHR, name); } catch {} break; }
+        await sleep(Math.min(ABSTAND - alter, 30000) + 100);
+      }
+    }
   } catch {}
   const ende = Date.now() + VORRANG_MAX_S * 1000;
   while (Date.now() < ende) {
