@@ -19,6 +19,12 @@ export async function takt(abstand = ABSTAND) {
     start = Math.max(Date.now() / 1000, letzter + abstand);
     fs.writeFileSync(STEMPEL, start.toFixed(3));
   } finally { try { fs.rmdirSync(LOCKDIR); } catch {} }
+  // 24.09.2026: Protokoll je Aufruf (Epoche, Skript) — wer verbraucht das CJ-Tagesbudget? Nie den Aufruf stören.
+  try {
+    const d = new Date(start * 1000).toISOString().slice(0, 10);
+    const name = (process.argv[1] || '?').split('/').pop();
+    fs.appendFileSync(`/tmp/cj_takt_${d}.log`, `${Math.floor(start)}\t${name}\n`);
+  } catch {}
   const warte = start * 1000 - Date.now();
   if (warte > 0) await sleep(warte);
 }

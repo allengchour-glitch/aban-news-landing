@@ -58,9 +58,23 @@ def takt(abstand=None):
             f.write(f"{start:.3f}")
     finally:
         _frei_sperre()
+    _protokoll(start)
     warte = start - time.time()
     if warte > 0:
         time.sleep(warte)
+
+
+def _protokoll(start):
+    """24.09.2026: WER verbraucht das CJ-Tagesbudget? Je Aufruf eine Zeile (Epoche, Skript) in
+    /tmp/cj_takt_<Datum>.log — sonst ist «der Kosten-Nachtrag bekommt nur 500 Produkte/Tag» nicht zu
+    klären (30 Verbraucher, ein Budget). Fehler hier dürfen den Aufruf nie stören."""
+    try:
+        import sys
+        name = os.path.basename(sys.argv[0] or "?") or "?"
+        with open(time.strftime("/tmp/cj_takt_%Y-%m-%d.log", time.gmtime(start)), "a") as f:
+            f.write(f"{int(start)}\t{name}\n")
+    except Exception:
+        pass
 
 
 def frei():
