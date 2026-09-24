@@ -40,8 +40,18 @@ AUFRUF:
                                                                         Etiketten (SLATE GREY CHERRY RED, Rose Gold Eye Shadow) → zweite
                                                                         Sichtung, nicht blind. Nie das letzte Zweitbild (Sperre im Lauf).
   NUR_BERICHT=1 python3 …                                               Bericht + Kontaktbogen aus dem Ledger neu bauen
-Umgebung: TAKT (Sekunden je OCR, Standard 1.0), CAP (Produkte je Lauf, Standard 0 = alle), WORTGRENZE (4).
+Umgebung: TAKT (Sekunden je OCR, Standard 1.0), CAP (Produkte je Lauf, Standard 0 = alle), WORTGRENZE (4),
+SCHARF_AB (Wörter, ab denen SCHARF=1 ohne NUR_MEDIA löscht; Standard 7 — s. u.).
 Sperre /tmp/bild_werbetext_rueckholer.lock — ein zweiter Lauf beendet sich sofort.
+
+GEEICHT AM VOLLEN DRY-LAUF (24.09. 00:31 UTC, 704 Produkte, 2'487 Medien, 95 Treffer, 0 unlesbar, 20× Eimer-Wartezeit):
+Verteilung 0 W: 2'237 · 1–3 W: 156 · 4–6 W: 31 · ≥7 W: 64. Sichtprüfung zweier Kontaktbögen: die 24 Treffer ab 14 Wörtern
+sind 24/24 Werbe-/Feature-Overlays; in der Zone 4–6 Wörter waren 8 von 31 FEHLALARME — Verpackungsaufdruck (Lidschatten),
+Flaschenetiketten (3× ätherische Öle «LAVENDER TEA TREE PEPPERMINT»), Massangabe («56 mandala templates Size 90×90»),
+Variantenangabe («red silver / One size fits all»), Farbnamen unter einem Markenposter, Text IM Bildinhalt (Bildschirm-Szene).
+Diese Klassen sind für die Kundin nützlich oder unvermeidbar (Google verbietet WERBE-Overlays, keine Etiketten).
+→ Die Meldeschwelle bleibt 4 (der Nachfüller lehnt beim ANHÄNGEN weiter ab 4 ab, das ist billig); das LÖSCHEN im
+Bestand geschieht ohne NUR_MEDIA erst ab SCHARF_AB=7. Die Zone 4–6 ist Sichtprüfung je Medium (NUR_MEDIA=<id,…>).
 """
 import datetime, fcntl, io, json, os, subprocess, sys, time
 # Tesseract startet je Aufruf eigene OpenMP-Threads — bei parallelen Wächtern trieb das die Last auf 16 (23.09.).
@@ -67,6 +77,7 @@ SCHARF = os.environ.get("SCHARF") == "1"
 NUR_BERICHT = os.environ.get("NUR_BERICHT") == "1"
 TAKT = float(os.environ.get("TAKT", "1.0"))
 CAP = int(os.environ.get("CAP", "0"))
+SCHARF_AB = int(os.environ.get("SCHARF_AB", "7"))   # Löschschwelle ohne NUR_MEDIA (Eichung im Kopf)
 PID = "gid://shopify/Product/"
 MID = "gid://shopify/MediaImage/"
 
@@ -280,6 +291,16 @@ def main():
                 print(f"   ↩️ letztes Zweitbild behalten: Pos{behalten[1]} ({behalten[2]} W) — Produkt hätte sonst nur das Hauptbild",
                       flush=True)
         if raus and SCHARF:
+            # Ohne ausdrückliche Medienliste nur die eindeutige Zone löschen (Eichung: 4–6 Wörter = 8 von 31 Fehlalarme).
+            if not NUR_MEDIA:
+                zurueck = [r for r in raus if r[2] < SCHARF_AB]
+                for _, pos, w, t, _ in zurueck:
+                    print(f"   · Pos{pos} {w}W «{t[:40]}» bleibt (unter SCHARF_AB={SCHARF_AB}, Sichtprüfung nötig)", flush=True)
+                raus = [r for r in raus if r[2] >= SCHARF_AB]
+                if not raus:
+                    if n % 25 == 0 or n == len(liste):
+                        bericht(titel_von)
+                    continue
             mids = [r[0] for r in raus]
             ok, fehler = loeschen(pid, mids)
             if fehler:
