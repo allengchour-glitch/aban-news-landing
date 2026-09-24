@@ -26,7 +26,8 @@ REGELN
   SCHARF=1 CAP=20 python3 automation/preis_verlustschutz.py
 Log-Konvention Aufseher: «FERTIG …» nur, wenn alle Kandidaten abgearbeitet sind; sonst Schluss ohne FERTIG.
 """
-import collections, fcntl, json, math, os, sys, time
+import collections, fcntl, json, math, os, sys, threading, time
+from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
@@ -39,6 +40,10 @@ SCHARF = os.environ.get("SCHARF") == "1"
 RABATT = float(os.environ.get("RABATT", "0.25"))
 MAX_FAKTOR = float(os.environ.get("MAX_FAKTOR", "2.0"))
 CAP = int(os.environ.get("CAP", "100000"))
+# 3 Arbeiter wie kategorie_wache (24.09.: einer schaffte ~15 Produkte/min → 22'609 Produkte = 25 h, länger als
+# jeder Container lebt). Shopify führt Mutationen eines Aufrufers seriell aus; parallel zählt der Eimer, nicht die Zeit.
+WORKER = int(os.environ.get("WORKER", "3"))
+SCHLOSS = threading.Lock()
 EXPORT = os.environ.get("EXPORT", "/tmp/kost28.jsonl")
 MAXALTER = 3 * 86400
 LEDGER = "dropship/_preis_verlustschutz.txt"
@@ -137,7 +142,7 @@ def schreibe(p, heben, sperren):
             return f"Draft nicht bestätigt: {e['userErrors']}"
         gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
             {"id": p["id"], "t": ["verlust-auto-draft", "marge-verlust-draft", "verlust-rabatt25"]})
-    with open(LEDGER, "a") as fh:
+    with SCHLOSS, open(LEDGER, "a") as fh:
         for v, preis, ek, neu, streich in heben:
             fh.write(f"{v['id'].split('/')[-1]}\theben\t{preis:.2f}\t{neu:.2f}\t{ek:.2f}\t{HEUTE}\t{p['handle']}\n")
         for v, preis, ek, neu in sperren:
@@ -163,36 +168,47 @@ def main():
     quittiert = set()
     if os.path.exists(LEDGER):
         quittiert = {z.split("\t", 1)[0] for z in open(LEDGER, encoding="utf-8") if z.strip()}
-    for i, pid in enumerate(prod):
-        if st["produkte"] >= CAP:
-            break
-        if quittiert and all(v.rsplit("/", 1)[-1] in quittiert for v in prod[pid]):
-            st["quittiert"] += 1; continue
+    stopp = threading.Event()
+
+    def bearbeite(i, pid):
+        with SCHLOSS:
+            if stopp.is_set() or st["produkte"] >= CAP:
+                return
+            if quittiert and all(v.rsplit("/", 1)[-1] in quittiert for v in prod[pid]):
+                st["quittiert"] += 1; return
         try:
             p, heben, sperren, grund = plane(pid)
         except Exception as e:
-            st["lesefehler"] += 1; fehler.append((pid, f"lesen: {str(e)[:100]}")); continue
+            with SCHLOSS:
+                st["lesefehler"] += 1; fehler.append((pid, f"lesen: {str(e)[:100]}"))
+            return
         if grund or not (heben or sperren):
-            st["schon_ok_oder_inaktiv"] += 1; continue
-        st["produkte"] += 1; st["heben"] += len(heben); st["sperren"] += len(sperren)
-        faktoren += [neu / preis for _, preis, _, neu, _ in heben if preis > 0]
-        if len(beispiele) < 25 and heben:
-            v, preis, ek, neu, _ = heben[0]
-            beispiele.append(f"| {p['title'][:48]} | {preis:.2f} | {ek:.2f} | **{neu:.2f}** | {neu / preis:.2f}× |")
+            with SCHLOSS:
+                st["schon_ok_oder_inaktiv"] += 1
+            return
+        with SCHLOSS:
+            st["produkte"] += 1; st["heben"] += len(heben); st["sperren"] += len(sperren)
+            faktoren.extend(neu / preis for _, preis, _, neu, _ in heben if preis > 0)
+            if len(beispiele) < 25 and heben:
+                v, preis, ek, neu, _ = heben[0]
+                beispiele.append(f"| {p['title'][:48]} | {preis:.2f} | {ek:.2f} | **{neu:.2f}** | {neu / preis:.2f}× |")
         if SCHARF:
             try:
                 f = schreibe(p, heben, sperren)
             except Exception as e:
                 f = f"Ausnahme: {str(e)[:120]}"
-            if f:
-                st["fehler"] += 1; fehler.append((pid, f)); print(f"  ⛔ {p['title'][:50]} — {f}", flush=True)
-                if st["fehler"] >= 3:
-                    print("Abbruch nach 3 Schreibfehlern", flush=True); break
-            else:
-                st["geschrieben"] += 1
+            with SCHLOSS:
+                if f:
+                    st["fehler"] += 1; fehler.append((pid, f)); print(f"  ⛔ {p['title'][:50]} — {f}", flush=True)
+                    if st["fehler"] >= 3 and not stopp.is_set():
+                        stopp.set(); print("Abbruch nach 3 Schreibfehlern", flush=True)
+                else:
+                    st["geschrieben"] += 1
         if (i + 1) % 250 == 0:
             print(f"  {i + 1}/{len(prod)} · {dict(st)}", flush=True)
-            time.sleep(0.2)
+
+    with ThreadPoolExecutor(max_workers=WORKER) as pool:
+        list(pool.map(lambda a: bearbeite(*a), enumerate(prod)))
     fk = sorted(faktoren)
     med = fk[len(fk) // 2] if fk else 0
     L = [f"# Preis-Verlustschutz — {'scharf' if SCHARF else 'Trockenlauf'} {time.strftime('%Y-%m-%d %H:%M', time.gmtime())} UTC", "",
