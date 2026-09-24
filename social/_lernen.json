@@ -1,16 +1,16 @@
 {
-  "stand": "2026-09-24T15:09:02.373Z",
+  "stand": "2026-09-24T22:08:58.534Z",
   "methode": "Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+5)/(Median+5), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + 3)) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ 3. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter 24 h zählen nicht.",
   "fenster_tage": 90,
   "k_glaettung": 3,
   "min_n": 3,
   "beobachtungen": {
-    "instagram": 59,
-    "tiktok": 21,
-    "pinterest": 69,
-    "zu_jung": 8
+    "instagram": 60,
+    "tiktok": 19,
+    "pinterest": 70,
+    "zu_jung": 7
   },
-  "inhalte": 95,
+  "inhalte": 94,
   "posts": 149,
   "musik_verlauf": {
     "zeilen": 6,
@@ -30,7 +30,7 @@
       "n": 1,
       "gewicht": 1.16,
       "vorsprung": 0.149,
-      "median_rel": 1.81,
+      "median_rel": 1.82,
       "belastbar": false
     },
     "Endlich Ruhe beim Gassi?": {
@@ -78,8 +78,8 @@
     "Dinosaurier-Hundespielzeug für grosse Hunde Jetzt bei LuxeSt": {
       "n": 1,
       "gewicht": 1,
-      "vorsprung": 0.003,
-      "median_rel": 1.01,
+      "vorsprung": 0.004,
+      "median_rel": 1.02,
       "belastbar": false
     },
     "Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend Jet": {
@@ -101,6 +101,13 @@
       "gewicht": 0.96,
       "vorsprung": -0.038,
       "median_rel": 0.86,
+      "belastbar": false
+    },
+    "Licht an, Stimmung an": {
+      "n": 1,
+      "gewicht": 0.95,
+      "vorsprung": -0.051,
+      "median_rel": 0.81,
       "belastbar": false
     },
     "LuxeStyle in 43 Sekunden Mode, Schmuck, Sonnenbrillen & mehr": {
@@ -129,43 +136,43 @@
     "gadget": {
       "n": 5,
       "gewicht": 1.19,
-      "vorsprung": 0.171,
+      "vorsprung": 0.172,
       "median_rel": 1.13,
       "belastbar": true
     },
     "schmuck": {
       "n": 16,
-      "gewicht": 1.13,
-      "vorsprung": 0.126,
+      "gewicht": 1.14,
+      "vorsprung": 0.128,
       "median_rel": 1.1,
       "belastbar": true
     },
     "allgemein": {
-      "n": 30,
-      "gewicht": 1.11,
-      "vorsprung": 0.103,
-      "median_rel": 1.06,
-      "belastbar": true
-    },
-    "home": {
-      "n": 13,
-      "gewicht": 1.06,
-      "vorsprung": 0.06,
-      "median_rel": 0.98,
+      "n": 29,
+      "gewicht": 1.08,
+      "vorsprung": 0.079,
+      "median_rel": 1.05,
       "belastbar": true
     },
     "haustier": {
       "n": 5,
       "gewicht": 1.05,
-      "vorsprung": 0.049,
+      "vorsprung": 0.05,
       "median_rel": 1,
+      "belastbar": true
+    },
+    "home": {
+      "n": 14,
+      "gewicht": 1.05,
+      "vorsprung": 0.046,
+      "median_rel": 0.92,
       "belastbar": true
     },
     "beauty": {
       "n": 10,
       "gewicht": 1.04,
-      "vorsprung": 0.041,
-      "median_rel": 0.89,
+      "vorsprung": 0.035,
+      "median_rel": 0.86,
       "belastbar": true
     },
     "fitness": {
@@ -183,10 +190,10 @@
       "belastbar": false
     },
     "mode": {
-      "n": 11,
-      "gewicht": 0.91,
-      "vorsprung": -0.098,
-      "median_rel": 1,
+      "n": 10,
+      "gewicht": 0.9,
+      "vorsprung": -0.107,
+      "median_rel": 0.96,
       "belastbar": true
     }
   },
@@ -214,8 +221,8 @@
     },
     "instagram 06–09": {
       "n": 5,
-      "gewicht": 1.18,
-      "vorsprung": 0.164,
+      "gewicht": 1.17,
+      "vorsprung": 0.161,
       "median_rel": 1.05,
       "belastbar": true
     },
@@ -223,14 +230,14 @@
       "n": 1,
       "gewicht": 1.16,
       "vorsprung": 0.149,
-      "median_rel": 1.81,
+      "median_rel": 1.82,
       "belastbar": false
     },
     "tiktok 09–12": {
       "n": 8,
-      "gewicht": 1.14,
-      "vorsprung": 0.13,
-      "median_rel": 1.02,
+      "gewicht": 1.15,
+      "vorsprung": 0.137,
+      "median_rel": 1.03,
       "belastbar": true
     },
     "instagram 12–15": {
@@ -250,12 +257,12 @@
     "tiktok 15–18": {
       "n": 1,
       "gewicht": 1,
-      "vorsprung": 0.003,
-      "median_rel": 1.01,
+      "vorsprung": 0.004,
+      "median_rel": 1.02,
       "belastbar": false
     },
     "pinterest 18–21": {
-      "n": 1,
+      "n": 2,
       "gewicht": 1,
       "vorsprung": 0,
       "median_rel": 1,
@@ -277,44 +284,44 @@
     },
     "instagram 15–18": {
       "n": 5,
-      "gewicht": 0.96,
-      "vorsprung": -0.042,
+      "gewicht": 0.95,
+      "vorsprung": -0.048,
       "median_rel": 0.95,
       "belastbar": true
     },
     "instagram 21–24": {
-      "n": 8,
-      "gewicht": 0.9,
-      "vorsprung": -0.103,
-      "median_rel": 1.12,
+      "n": 9,
+      "gewicht": 0.92,
+      "vorsprung": -0.081,
+      "median_rel": 1.1,
       "belastbar": true
     },
     "instagram 03–06": {
       "n": 1,
-      "gewicht": 0.89,
-      "vorsprung": -0.115,
-      "median_rel": 0.63,
+      "gewicht": 0.88,
+      "vorsprung": -0.128,
+      "median_rel": 0.6,
       "belastbar": false
     },
     "instagram 09–12": {
       "n": 17,
-      "gewicht": 0.87,
-      "vorsprung": -0.144,
+      "gewicht": 0.86,
+      "vorsprung": -0.147,
       "median_rel": 0.95,
       "belastbar": true
     },
     "tiktok 18–21": {
-      "n": 11,
-      "gewicht": 0.77,
-      "vorsprung": -0.258,
-      "median_rel": 0.98,
+      "n": 9,
+      "gewicht": 0.67,
+      "vorsprung": -0.395,
+      "median_rel": 0.79,
       "belastbar": true
     }
   },
   "formate": {
     "instagram bild": {
-      "n": 44,
-      "median_score": 15.5
+      "n": 45,
+      "median_score": 16
     },
     "instagram reel": {
       "n": 13,
@@ -325,16 +332,16 @@
       "median_score": 13
     },
     "tiktok reel": {
-      "n": 21,
-      "median_score": 304
+      "n": 19,
+      "median_score": 303
+    },
+    "pinterest pin": {
+      "n": 51,
+      "median_score": 3
     },
     "pinterest pin-video": {
       "n": 19,
       "median_score": 8
-    },
-    "pinterest pin": {
-      "n": 50,
-      "median_score": 3
     }
   },
   "musik": {},
