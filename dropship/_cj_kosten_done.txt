@@ -28679,3 +28679,7 @@ gid://shopify/Product/15454501437825	CHF 20.71	1 Varianten	Reflektierendes Band
 gid://shopify/Product/15454501699969	CHF 10.58	5 Varianten	Dünnes Mesh-T-Shirt für Herren
 gid://shopify/Product/15454501798273	CHF 11.62	1 Varianten	Atmungsaktives Hundehalsband
 gid://shopify/Product/15454501994881	CHF 15.69	1 Varianten	Reflektierendes Brustgeschirr für grosse Hunde
+gid://shopify/Product/15454502322561	CHF 14.46	28 Varianten	Business-Casual-Top mit Reissverschluss
+gid://shopify/Product/15454502617473	CHF 23.47	48 Varianten	Leichtes Poloshirt für Herren
+gid://shopify/Product/15454502814081	CHF 8.95	1 Varianten	Hunde-Halsband mit Zugleinen
+gid://shopify/Product/15454502879617	CHF 15.12	63 Varianten	Leichte Golf-Bekleidung für Herren
