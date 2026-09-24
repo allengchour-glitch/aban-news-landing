@@ -34,7 +34,7 @@ pause_kuehlt() {
   [ -f "$log" ] || return 1
   # 23.09. 23:10 (Pruefer): v2-Skripte schreiben JEDE Zeile mit UTC-Zeitpraefix («23:05:22 PAUSE: …») — ohne die
   # optionale Zeitgruppe sah der Aufseher keine PAUSE/FERTIG mehr und startete den Bild-Nachfueller bei jedem Tick neu.
-  tail -1 "$log" 2>/dev/null | grep -qE "^([0-9:]{8} )?PAUSE" || return 1
+  tail -1 "$log" 2>/dev/null | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?PAUSE" || return 1
   local alter=$(( $(date +%s) - $(stat -c %Y "$log" 2>/dev/null || echo 0) ))
   [ "$alter" -lt 3600 ]
 }
@@ -356,7 +356,7 @@ while true; do
       HM=$(date -u +%H%M); ZS=$(cat /tmp/_start_versand_jenachland 2>/dev/null || echo 0)
       [ "$HM" -ge 425 ] 2>/dev/null && [ "$HM" -lt 700 ] 2>/dev/null && [ "$ZS" -lt "$(date -u -d 'today 04:25' +%s)" ] && ZN=1
     fi
-    if [ "$ZN" = 0 ] && tail -n 3 "/tmp/$L.log" 2>/dev/null | grep -qE "^([0-9:]{8} )?FERTIG"; then
+    if [ "$ZN" = 0 ] && tail -n 3 "/tmp/$L.log" 2>/dev/null | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG"; then
       F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
       [ "$F_ALTER" -lt 72000 ] && continue
     fi
@@ -488,7 +488,7 @@ while true; do
     # nur die Einmal-Importe (schulstart, frosch_maske) bleiben nach FERTIG aus.
     case "$N" in
       schulstart_import|frosch_maske_import) grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue ;;
-      *) if tail -n 3 "/tmp/$N.log" 2>/dev/null | grep -qE "^([0-9:]{8} )?FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
+      *) if tail -n 3 "/tmp/$N.log" 2>/dev/null | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG" && [ $(( $(date +%s) - $(stat -c %Y "/tmp/$N.log" 2>/dev/null || echo 0) )) -lt 72000 ]; then continue; fi ;;
     esac
     pause_kuehlt "$N" && continue
     dreht_sich_im_kreis "$N" && continue
