@@ -815,6 +815,16 @@ Yoga-Hängemattenstoff standen neben Garten-Hängematten). Sichtprobe je Kollekt
 bei 526 Kollektionen. Offen: Menü-Platz und interne Links aus den C2-Ratgebern.
 
 
+**Nachtrag 56 (24.09.2026, 00:15 UTC — Ampel «5 neue Autostashes»: 139 Ledger-Zeilen zurückgeholt, git_sync.sh entschärft):**
+Die fünf Autostashes stammen vom 23.09. 02:15–19:25 (vor der Merge-Umstellung aus Nachtrag 45), seither keiner. Union nur auf
+append-only Ledger: 6 Zeilen `_posted_media.txt` (Social-Quittungen!) und 1 `_du_form_done.txt` nachgetragen. **Falle dabei:**
+`dropship/_klassen/*.txt` sind Momentaufnahmen eines Scans (Arbeitslisten des Aufsehers, Z. 977), keine Ledger — 80 + 52 alte Zeilen
+wären als «offen» wiederauferstanden; per `git checkout` zurückgenommen. Die Stashes selbst bleiben (Drop ist gesperrt).
+`automation/git_sync.sh` (12.07.) lag als geladene Waffe im `autostart.sh`-Loop und in `selbstkontrolle.sh`: `git add -A`,
+`pull --rebase --autostash`, im Push-Fallback `reset --hard origin` (wirft lokale Commits weg) — jetzt eine Hülle um
+`git_sichern.sh` (Merge, nur dropship/). **Lehre: Union ist ein Ledger-Werkzeug — vor dem Zurückholen fragen, ob die Datei
+angehängt oder neu geschrieben wird; und jeder Git-Pfad, der noch `add -A` oder `reset --hard` kennt, gehört stillgelegt, nicht nur ungenutzt.**
+
 **Lehren:** (1) Vor einem Massenlauf über 26'000 Texte eine Probe von 120 mit Warnmustern — nicht 20.
 (2) Ein Wächter-Tor «steht FERTIG im Log?» ohne Rücksetzer ist ein Einmal-Tor. (3) Der Sie-Detektor
 misst Wörter, nicht Anrede: «Sie ist wasserdicht» ist kein Befund — Nachmessungen brauchen die

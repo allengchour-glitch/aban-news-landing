@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:07:03Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:10:16Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **1706** in 482 Produkten
-- Treffer (≥ 4 Wörter): **72** in 68 Produkten
+- Medien geprüft: **1806** in 507 Produkten
+- Treffer (≥ 4 Wörter): **76** in 72 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -36,6 +36,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Bauchstützgürtel für Schwangere `15453760717185` | [69926628524417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9f9382e0-2080-4051-b7a5-441a700d8875_fine.jpg) | 12 | Ergonomic curve design Ring design fits better Soft | offen |
 | Smart-Armbanduhr mit Herzfrequenz- und Blutsauer `15453778411905` | [69926716244353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a7c63c5-36db-464a-a086-26ad34f0f8c8_trans.jpg) | 11 | GPS Outdoor sports smart watch Smart Watch Fearless | offen |
 | Smarte Helmleuchte fürs Radfahren `15453769466241` | [69926689702273](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fdfc0dfa-7ab7-41f0-b10e-03b749c90bea.jpg) | 11 | Breathable DESIGN and ventilated and comfortable summer The | offen |
+| Wärmeweste mit Leinsamenfüllung `15453777691009` | [69926714081665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3fef8624-ed85-4cbd-9977-ea72f57a8e7c.jpg) | 11 | Comfortable Warm Compress Friendly Fit COMFORTABLE AND WARM | offen |
 | Grillabdeckung aus Oxford-Gewebe `15448959910273` | [69862680527233](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/09436e7d-1a60-47bf-8225-e236c3f372d9.jpg) | 10 | Suitable for most machines with width Please ensure | offen |
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [69926292881793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c946bda-8782-4759-9d82-90a6b13f1808.jpg) | 10 | Intelligent perception obstacle avoidance Four way detection and | offen |
 | Intelligenter Futtermanger `15453764714881` | [69926639731073](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30ca7178-06d7-4015-809a-de4d4490f015_fine.jpg) | 10 | Fully Automatic Feeding Remote Mobile Control Full Machine | offen |
@@ -50,12 +51,14 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Hindernisvermeidende Drohne für Luftaufnahmen `15453743481217` | [70519160209793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/803083b0-9b90-4b41-888d-fbf6bf4edf40.jpg) | 8 | Position Aid Optical flow Obstacle hovering Avoidance ULTRA | offen |
 | Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
 | Apricot-Peach Rouge `15453767172481` | [69926686359937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60cb8b04-2a3f-4c3b-9e70-eb3272169993_water_trans.jpg) | 8 | Floating Dot Dot Blush Mud Fidoo Floating Pond | offen |
+| Entspannte Sporthose für Herren `15453771858305` | [69926697861505](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93eceeb9-6b24-4106-a88f-eb8ae0ceadbf_trans.jpg) | 8 | WATER REPELLENT VENTILATE Breathability WEAR RESISTANT fear Resistance | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | offen |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | offen |
 | Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | offen |
 | Faltbares UAV-Mesh-Drohne für Luftaufnahmen `15453744202113` | [69926294389121](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f3680452-7b35-4ba0-ad37-f85402e2671e_trans.jpg) | 7 | flow positioning hover Novice seconds get started | offen |
 | Yoga-Matte mit Grip `15453762814337` | [69926633636225](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0c240a4f-ef81-4ab1-be02-d6ba37dcee29_trans.jpg) | 7 | Standard Rubber Yoga Mat and and Breathable | offen |
 | UAV Positionierung 8K Luftaufnahmen `15453743219073` | [69926292390273](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1817e56e-d812-4ba1-bce5-1bd9901185a9.jpg) | 7 | With screen Remote control Brushless obstacle avoidance | offen |
+| Anti-Rutsch Leckschale für Haustiere `15453774938497` | [69926702711169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/781de4b8-8eb6-4f61-a530-f5980ecc32b7.jpg) | 7 | WORKS GREAT WITH BABY FOOD Pumpkin Puree | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
@@ -83,5 +86,6 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Mandala-Vorlage für Wandmalerei `15453767631233` | [70519572005249](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cdebef6b-cc7b-46c2-8422-6a6641b9f35c_trans.jpg) | 4 | mandala templates Size ALN | offen |
 | Aromadiffuser mit Bluetooth-Lautsprecher `15453772054913` | [70519926358401](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6b661dca-68bb-46ab-9c96-283608958bcb.jpg) | 4 | LAVENDER TEA TREE PEPPERMINT | offen |
 | Aromadiffuser mit Bluetooth-Lautsprecher `15453772054913` | [70519926423937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f9ba349-5338-4d29-b0f4-431da4976b6c.jpg) | 4 | LAVENDER TEA TREE PEPPERMINT | offen |
+| Keramik-Futternapf für Hunde, grosse Kapazität `15453774283137` | [70618524909953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2490125b-fbbf-45af-8793-098578110a85_trans.jpg) | 4 | Free Single bowl rack | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
