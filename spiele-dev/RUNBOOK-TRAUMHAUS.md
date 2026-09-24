@@ -7233,3 +7233,58 @@ Bilder: `spiele-dev/screenshots/r95-*.png` (Neustadt, Technikpark von oben, Burg
 Blumen, Weltkarte Ost, Zebra am Neustadt-Stich, Vorfeld 50 m). ⚠️ th-strassen schwankt um ±3 zwischen Läufen
 (Streu ist Zufall); th-pruef nur allein laufen lassen (1001 Modelle = sauber, 804 = zu früh gemessen).
 
+
+
+## Runde 96 · 🚸 Übergänge schöner (User: „übergänge schöner")
+
+**Vorher gemessen:** alle 30 registrierten Übergänge aus `window._uebergaenge` (Sonde `probe-uebergaenge`:
+8 auf den Hauptstrassen 16 m, 8 auf den Querstrassen 10 m, 14 auf Viertelstrassen/Anschlüssen 9 m), sechs davon
+aus der Spielkamera nah fotografiert (`k24-*-vor`): weisse Balken 0,62 m im 1,15-m-Takt auf dem Asphalt, an den
+Enden hört der Gehweg auf, sonst nichts — kein Schild, keine Platte, nichts, was einen Übergang als Ort markiert.
+
+**Gebaut (eine Stelle, `_zebraAllg`, wirkt auf alle 30):**
+- **Gelbe Streifen wie in der Schweiz** (SN 640 241): 0,5 m breit, 0,5 m Lücke, Takt 1,0 m; 15 auf der Haupt-,
+  9 auf der Quer-, 8 auf der Viertelstrasse. Farbe 0xe8b73a, nachts 0x9a7d2a.
+- **Aufmerksamkeitsfeld** an jedem Ende: helle Rippenplatte 4,8 × 0,9 m auf der abgesenkten 3-cm-Platte (Rippen
+  in Gehrichtung, Oberkante 3,3 cm).
+- **Schild „Standort eines Fussgängerstreifens"** (SSV 4.11, blaues Quadrat, weisses Dreieck, schwarzer
+  Fussgänger als Canvas-Textur) auf 2,3-m-Pfahl an jedem Ende, 3,2 m neben der Streifenachse, Tafel zum
+  ankommenden Verkehr gedreht.
+- Alles als **vier InstancedMeshes** (Streifen 420, Felder/Pfähle/Tafeln je 80): vorher ~260 einzelne Planes.
+
+**Lehren:**
+1. **`_markMats` ist eine Grau-Zwangsjacke.** Der Tag/Nacht-Wechsel setzt jedes Material darin auf ein festes
+   Grau — das Vorfeld-Gelb (Runde 92) war deshalb nach dem ersten Abend grau, und gelbe Streifen wären es auch
+   geworden. Gelbe Markierungen hängen jetzt in `_gelbMats` mit eigenem Nachtton.
+2. **Erst das Messgerät lesen, dann bauen.** th-kante tastet den Bordstein im Band ±2 m um die Streifenachse ab
+   und verlangt ≤ 5 cm; th-strassen prüft jede Instanz gegen die Fahrbahnbänder. Schild darum 3,2 m neben der
+   Achse und hinter der Gehwegkante, Feld als 2-mm-Platte — beide Werkzeuge blieben so auf ihren Werten.
+3. **Instanzen brauchen `frustumCulled = false` UND `nieAusblenden`.** Die Hüllkugel der Geometrie liegt im Ursprung,
+   und die Entfernungs-Ausblendung (`lodAufbau`) entscheidet pro Objekt nach dessen Lage: die Streifen (Hüllkugel
+   2,4 m) verschwanden ab 130 m vom Ursprung, die Schilder (0,43 m) schon ab 34 m — Gewerbe und Burgdorf hatten im
+   ersten Nachher-Bild gar keinen Streifen, das Nahbild kein Schild. Sonde `probe-zebsicht` (Spieler an drei Orten,
+   `visible`/`count` der vier Meshes) belegt die Korrektur: 304 Streifen, 60 Felder/Pfähle/Tafeln, überall sichtbar.
+4. **Ein Schild hat eine Fahrtrichtung.** Rechtsverkehr (Lane-Tabelle `ROUTEN`): Strasse längs x → +z-Spur fährt
+   +x; Strasse längs z → −x-Spur fährt +z (Herleitung: rechts = Fahrtrichtung × oben). Das Schild steht auf der
+   ankommenden Spur VOR dem Streifen und schaut ihr entgegen. Der erste Anlauf hatte die x-Strassen spiegelverkehrt
+   (Bild k26-schild-nah2: der Fahrer sah die Rückseite). Sonde `probe-schild` prüft jedes der 60 Schilder gegen die
+   Regel. Erster Lauf: 56 von 60 — die vier „falschen" waren zwei Dinge auf einmal: (a) die Sonde ordnete das
+   Schild dem NÄCHSTEN Übergang zu, an T-Einmündungen liegen zwei Übergänge 12 m auseinander und das Schild
+   dazwischen (Zuordnung jetzt über die Geometrie: 3,2 m längs, hb+0,76 quer); (b) ein echter Fehler: der
+   Übergang über die einmündende Strasse liegt 7,4 m von der Mitte der durchgehenden, zwischen deren Fahrbahnkante
+   (4,5) und dem Streifenrand (5,0) bleibt ein halber Meter — das Schild „vor dem Streifen" stand 0,3 m IN der
+   durchgehenden Fahrbahn (Gewerbe, Sportpark ×2, Zoo). th-strassen hatte das nicht gesehen, weil es vor der
+   Spiegel-Korrektur lief (Lehre: nach JEDER Änderung neu messen, auch wenn „nur" gedreht wurde). SSV 4.11 steht
+   AM Streifen, nicht davor → liegt der Platz auf einer Fahrbahn (`_aufViertelWeg`), kommt das Schild auf die
+   andere Seite des Streifens, weiter der Spur zugewandt.
+
+**Endzahlen Runde 96 (Endstand, Werkzeuge einzeln):**
+| Werkzeug | Runde 95 | Runde 96 |
+|---|---|---|
+| th-kante: Übergänge · nicht abgesenkt | 30 · 0 | **30 · 0** (Schnitte 1056, ohne Bordstein 0, Lücke 4, ohne Gehweg 8) |
+| th-strassen (Stellen auf dem Belag) | 94 | **94** nach der Eck-Korrektur (der 94er-Lauf davor mass den Stand VOR der Spiegelung — dort standen die vier Eck-Schilder noch aussen; Streifen/Felder sind flach, Pfähle hinter der Gehwegkante) |
+| th-pruef: Modelle · Korridor · steckt | 1001 · 0 · 2 | **1001 · 0 · 2** · Zeichenaufrufe 187 → 196 (vier InstancedMeshes) |
+| probe-zebsicht: Streifen · Felder · Schilder sichtbar | — | **304 · 60 · 60**, an allen drei Messorten |
+| probe-schild: Schilder vor dem Streifen und dem Verkehr zugewandt | — | **60 von 60** (erster Lauf 56: vier Eck-Schilder an T-Einmündungen 0,3 m in der durchgehenden Fahrbahn → andere Streifenseite) |
+Bilder: `spiele-dev/screenshots/r96-*.png` (Vorher/Nachher Hauptstrasse, Querstrasse, Gewerbe, Neustadt-Stich,
+Freizeitpark, Burgdorf; Schild nah).
