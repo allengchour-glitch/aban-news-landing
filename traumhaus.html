@@ -3220,16 +3220,73 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
   })();
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
-  /* Allgemeiner Streifen fuer jede Fahrbahnbreite (Runde 93): n Streifen a 1,15 m ueber die Breite.
-     Registriert sich in window._uebergaenge, damit th-kante die Absenkung an beiden Enden prueft. */
+  /* 🚸 FUSSGAENGERSTREIFEN (Runde 96, User: „übergänge schöner"). Vorher: weisse Balken 0,62 m im
+     1,15-m-Takt, sonst nichts — der Gehweg hoerte am Streifen einfach auf (Bilder k24-*-vor).
+     Jetzt wie in der Schweiz: GELBE Streifen 0,5 m breit mit 0,5 m Luecke (SN 640 241), an jedem
+     Ende auf der abgesenkten Platte ein Aufmerksamkeitsfeld (helle Rippenplatte 4,8 x 0,9) und
+     daneben das blaue Schild „Standort eines Fussgaengerstreifens" (SSV 4.11: weisses Dreieck,
+     schwarzer Fussgaenger) auf 2,3-m-Pfahl, Tafel zum ankommenden Verkehr gedreht.
+     ⚠️ ZWEI MESS-REGELN dabei: (1) th-kante tastet den Bordstein an beiden Enden im Band ±2 m um
+     die Streifenachse ab und verlangt <= 5 cm — Schild darum 3,2 m neben der Achse (0,8 m hinter
+     dem letzten Streifen), Feld als 2-mm-Platte auf der 3-cm-Platte (Oberkante 3,3 cm).
+     (2) `_markMats` faerbt bei jedem Tag/Nacht-Wechsel ALLE Markierungen auf ein festes Grau —
+     gelbe Materialien duerfen dort nicht hinein (das Vorfeld-Gelb wurde so seit Runde 92 nach dem
+     ersten Abend grau), sie haengen in `_gelbMats` mit eigenem Nachtton.
+     ⚠️ ALLES ALS INSTANCEDMESH: 30 Uebergaenge x bis 15 Streifen waren ~260 Einzel-Planes; jetzt
+     vier Zeichenaufrufe (Streifen, Felder, Pfaehle, Tafeln), Kapazitaet 420 / 80, ohne
+     frustumCulled (die Instanzen liegen ueber die ganze Welt, die Huellkugel waere falsch). */
+  var ZEB_GELB=0xe8b73a,ZEB_NACHT=0x9a7d2a;
+  var zGelb=new THREE.MeshStandardMaterial({color:ZEB_GELB,roughness:0.85});zGelb.envMapIntensity=0.12;
+  (window._gelbMats=window._gelbMats||[]).push(zGelb);
+  function _tastTex(){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+    c.fillStyle="#e4e0d4";c.fillRect(0,0,128,128);
+    c.strokeStyle="rgba(120,116,106,.55)";c.lineWidth=3;
+    for(var i=8;i<128;i+=16){c.beginPath();c.moveTo(i,0);c.lineTo(i,128);c.stroke();}   /* Rippen in Gehrichtung */
+    var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(4,1);return t;}
+  function _schildTex(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+    c.fillStyle="#1d5fb4";c.fillRect(0,0,256,256);
+    c.strokeStyle="#ffffff";c.lineWidth=8;c.strokeRect(6,6,244,244);
+    c.fillStyle="#ffffff";c.beginPath();c.moveTo(128,34);c.lineTo(236,218);c.lineTo(20,218);c.closePath();c.fill();
+    /* Fussgaenger (schwarz): Kopf, Rumpf, Schrittbeine, ein Arm */
+    c.fillStyle="#111111";c.beginPath();c.arc(128,96,13,0,6.283);c.fill();
+    c.beginPath();c.moveTo(114,112);c.lineTo(142,112);c.lineTo(148,158);c.lineTo(110,158);c.closePath();c.fill();
+    c.lineWidth=11;c.lineCap="round";c.strokeStyle="#111111";
+    c.beginPath();c.moveTo(118,156);c.lineTo(100,204);c.stroke();          /* hinteres Bein */
+    c.beginPath();c.moveTo(140,156);c.lineTo(164,186);c.lineTo(158,206);c.stroke();   /* vorderes Bein */
+    c.beginPath();c.moveTo(140,118);c.lineTo(166,146);c.stroke();          /* Arm */
+    var t=new THREE.CanvasTexture(cv);t.anisotropy=4;return t;}
+  var _zebI=null,_zdm=new THREE.Object3D();
+  function _zebInst(){if(_zebI)return _zebI;
+    var sG=new THREE.PlaneGeometry(4.8,0.5);sG.rotateX(-Math.PI/2);
+    var sI=new THREE.InstancedMesh(sG,zGelb,420);sI.count=0;sI.receiveShadow=true;sI.frustumCulled=false;scene.add(sI);
+    var fG=new THREE.PlaneGeometry(4.8,0.9);fG.rotateX(-Math.PI/2);
+    var fM=new THREE.MeshStandardMaterial({map:_tastTex(),roughness:0.9});fM.envMapIntensity=0.15;
+    var fI=new THREE.InstancedMesh(fG,fM,80);fI.count=0;fI.receiveShadow=true;fI.frustumCulled=false;scene.add(fI);
+    var pG=new THREE.CylinderGeometry(0.035,0.035,2.3,8);pG.translate(0,1.15,0);
+    var pM=new THREE.MeshStandardMaterial({color:0x8a8f96,roughness:0.55,metalness:0.35});
+    var pI=new THREE.InstancedMesh(pG,pM,80);pI.count=0;pI.castShadow=true;pI.frustumCulled=false;scene.add(pI);
+    var tG=new THREE.BoxGeometry(0.6,0.6,0.03);tG.translate(0,2.0,0);
+    var rM=new THREE.MeshStandardMaterial({color:0x9aa0a6,roughness:0.6,metalness:0.3});
+    var vM=new THREE.MeshStandardMaterial({map:_schildTex(),roughness:0.5});vM.envMapIntensity=0.2;
+    var tI=new THREE.InstancedMesh(tG,[rM,rM,rM,rM,vM,rM],80);tI.count=0;tI.castShadow=true;tI.frustumCulled=false;scene.add(tI);
+    return _zebI={s:sI,f:fI,p:pI,t:tI};}
+  function _zebSetz(I,x,y,z,ry){if(I.count>=I.instanceMatrix.count)return;
+    _zdm.position.set(x,y,z);_zdm.rotation.set(0,ry,0);_zdm.scale.set(1,1,1);_zdm.updateMatrix();
+    I.setMatrixAt(I.count++,_zdm.matrix);I.instanceMatrix.needsUpdate=true;}
   window._zebraAllg=function(x,z,quer,breite){
-    var n=Math.max(4,Math.round(breite/1.15)-1);
-    for(var st9=0;st9<n;st9++){
-      var w9=quer?4.8:0.62,d9=quer?0.62:4.8;
-      var p=new THREE.Mesh(new THREE.PlaneGeometry(w9,d9),zMat);
-      p.rotation.x=-Math.PI/2;var off9=(st9-(n-1)/2)*1.15;
-      p.position.set(x+(quer?0:off9),0.008,z+(quer?off9:0));
-      p.receiveShadow=true;scene.add(p);}
+    var Z=_zebInst(),ry=quer?0:Math.PI/2;                    /* Geometrie liegt laengs x; bei Strasse laengs z gedreht */
+    var n=Math.max(4,Math.round(breite)-1);                  /* Takt 1,0 m: 0,5 Streifen + 0,5 Luecke */
+    for(var st9=0;st9<n;st9++){var off9=(st9-(n-1)/2)*1.0;
+      _zebSetz(Z.s,x+(quer?0:off9),0.008,z+(quer?off9:0),ry);}
+    var hb=breite/2+0.05;
+    [-1,1].forEach(function(sg){
+      var qf=hb+0.26+0.45;                                   /* Feld: hinter dem 26-cm-Stein, auf der 3-cm-Platte */
+      _zebSetz(Z.f,x+(quer?0:sg*qf),0.032,z+(quer?sg*qf:0),ry);
+      var qs=hb+0.26+0.5,ls=sg*3.2;                          /* Schild: diagonal, je Ende auf der Seite des ankommenden Verkehrs */
+      var sx=x+(quer?ls:sg*qs),sz=z+(quer?sg*qs:ls);
+      _zebSetz(Z.p,sx,0,sz,0);
+      _zebSetz(Z.t,sx,0,sz,quer?sg*Math.PI/2:(sg>0?0:Math.PI));   /* Tafelnormal zeigt von der Achse weg — zum Verkehr */
+    });
     (window._uebergaenge=window._uebergaenge||[]).push([x,z,quer,4.8,breite/2+0.05]);};
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
     window._zebraAllg(x,z,quer,quer?16:10);return;
@@ -6839,7 +6896,7 @@ setTimeout(function baueGebaeude(){
       var VF=new THREE.Mesh(new THREE.PlaneGeometry(50,36),betMat(0x9d9da2,0.95));
       VF.rotation.x=-Math.PI/2;VF.position.set(FX-8,-0.006,BAHN+27);VF.receiveShadow=true;scene.add(VF);
       window._flugfeld={x0:FX-70.4,x1:FX+70.4,z0:BAHN-8,z1:BAHN+46};
-      var vfM=new THREE.MeshStandardMaterial({color:0xe2c23a,roughness:0.8});vfM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfM);
+      var vfM=new THREE.MeshStandardMaterial({color:0xe8b73a,roughness:0.8});vfM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(vfM);   /* gelb bleibt gelb: nicht in _markMats (Runde 96) */
       var vfW=new THREE.MeshStandardMaterial({color:0xe8e8e0,roughness:0.8});vfW.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfW);
       [[FX-20,BAHN+27,0.3,34,vfM],[FX-20,BAHN+22,3.2,0.3,vfM],[FX-8,BAHN+9.6,50,0.2,vfW],[FX+8,BAHN+27,0.2,34,vfW]].forEach(function(L){
         var l=new THREE.Mesh(new THREE.PlaneGeometry(L[2],L[3]),L[4]);
@@ -17913,6 +17970,7 @@ function loop(now){
          Dieselbe Falle wie bei den Punktlichtern (#2368). */
       (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.26:0;gm.visible=nacht9;}); // Laternen-Lichtpools
       (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x8f949b:0xcfcfc6);}); // Markierungen dimmen mit (aber lesbar)
+      (window._gelbMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x9a7d2a:0xe8b73a);}); // gelbe Markierungen (Fussgaengerstreifen, Vorfeld) eigener Nachtton
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
