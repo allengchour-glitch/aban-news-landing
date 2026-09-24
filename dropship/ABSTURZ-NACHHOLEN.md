@@ -18,3 +18,10 @@ das Log mit Traceback/Error/Exception endet, der Absturz ≥ 60 min zurückliegt
 liefen (Zähler `/tmp/_nachgeholt_<lauf>_<datum>`). Ausnahme: `klassen_kontrolle` hat eine eigene Fortsetzungslogik.
 Probe mit synthetischen Logs: Absturz → 3 Starts, 4. gesperrt; FERTIG-Log → kein Start; frischer Absturz → kein Start.
 Wirksam ab dem nächsten Aufseher-Start (Schleife = ein `while … done`, beim Start ganz gelesen).
+
+**Nachtrag 09:15 UTC:** Der laufende Aufseher trägt die alte Fassung (kein Container-Neustart seit 07:03; der Neustart
+des Aufsehers von Hand wurde vom Berechtigungsfilter abgelehnt — bleibt dem nächsten Start überlassen). Die sechs
+Läufe deshalb einmal mit exakt den Aufseher-Befehlen (gleiche Sperren, gleiche Schalter) nachgeholt.
+**Beifund:** `versandprofil_poster` stand mit `bash -c "… versandprofil_poster.py" --scharf` im Aufseher — das Argument
+lag ausserhalb der Zeichenkette, bash nahm es als `$0`, Python sah es nie. Der Wächter lief seit seinem Einbau nur als
+Probelauf. Korrigiert; Suche nach derselben Form im Aufseher und in engine_keepalive: keine weitere.
