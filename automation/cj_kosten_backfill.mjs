@@ -156,7 +156,7 @@ async function main() {
   const ZEIGER = 'dropship/_cj_kosten_cursor.txt';
   let cursor = fs.existsSync(ZEIGER) ? (fs.readFileSync(ZEIGER, 'utf8').trim() || null) : null;
   const startZeiger = cursor;
-  let geprueft = 0, gesetzt = 0, ohne = 0, shopifyStumm = false;
+  let geprueft = 0, gesetzt = 0, ohne = 0, shopifyStumm = false, leerInFolge = 0;
   while (gesetzt + ohne < LIMIT) {
     // ⚠️ DIE SEITENABFRAGE WAR ZU TEUER (27.08.2026). Sie holte je Produkt bis zu 100
     // Varianten und kostete damit 149 Punkte ANGEFRAGT (tatsaechlich verbraucht: 23).
@@ -249,9 +249,18 @@ async function main() {
       }
       if (!j.result) {
         // ⚠️ Nur DAS ist das echte Tagesende: Code 16900500 mit «Insufficient API points».
+        // ⚠️ 24.09.2026 GEMESSEN: 16900500 um 16:45, sechs Minuten spaeter Code 200 mit remaining 25 und usedToday
+        // 107'890 — der Code meldet (auch) den LEEREN EIMER, nicht nur das Tagesende. Sofortiges PAUSE hiess 1 h
+        // Aufseher-Kuehlung, waehrend Reel-Motor und Bewertungs-Nachholer den Eimer weiter leerten. Jetzt: warten
+        // und weiterfragen; erst nach 10 leeren Versuchen in Folge (~10 min) ist es ein Tagesende. Das Produkt wird
+        // NICHT quittiert — die naechste Runde fragt es wieder.
         if (/16900500|Insufficient API points/i.test(JSON.stringify(j))) {
-          console.log('PAUSE (CJ-Tagesbudget erschoepft — morgen weiter)'); return;
+          leerInFolge++;
+          if (leerInFolge >= 10) { console.log('PAUSE (CJ-Tagesbudget erschoepft — 10 leere Eimer in Folge, morgen weiter)'); return; }
+          console.log(`  CJ-Eimer leer (16900500, ${leerInFolge}/10) — 60 s warten`);
+          await sleep(60000); continue;
         }
+        leerInFolge = 0;
         // ⚠️ NICHT quittieren, wenn CJ nur gedrosselt hat — sonst ist das Produkt fuer
         // immer abgehakt, ohne je gefragt worden zu sein.
         if (j.gedrosselt) { ohne++; await sleep(2000); continue; }
