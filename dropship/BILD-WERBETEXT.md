@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:27:59Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:31:11Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2385** in 655 Produkten
-- Treffer (≥ 4 Wörter): **94** in 89 Produkten
+- Medien geprüft: **2488** in 683 Produkten
+- Treffer (≥ 4 Wörter): **95** in 90 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -51,6 +51,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Intelligenter Futtermanger `15453764714881` | [69926639731073](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30ca7178-06d7-4015-809a-de4d4490f015_fine.jpg) | 10 | Fully Automatic Feeding Remote Mobile Control Full Machine | offen |
 | Kratzbrett für Katzen · schont Möbel und Krallen `15453763731841` | [69926634914177](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05847a99-5b79-432c-af45-69f17ee95c61_trans.jpg) | 10 | ZiHaiWan INCREASE AND DEEPEN Durablejute sway left and | offen |
 | Mrwish Klebstofffreie Wimpern New Lazy Trilogy `15500157813121` | [70541742047617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f98d12d0-b9a7-4517-9133-529303db99a0_trans.jpg) | 10 | Japanese magazi vitality makeup Animal Mouse Series Smart | offen |
+| Fahrradtasche für Mountainbikes `15453778018689` | [69926715261313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/558ea824-0c7d-4549-a8df-4fe21f514035_fine.jpg) | 10 | Split front cover Waterproof fabric Hem buckle Taped | offen |
 | Aerial Photography Drone 8K HD `15453744431489` | [69926294815105](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fd59f6e3-77ce-4e6d-876f-c97bfb20df80.jpg) | 9 | Long battery life Bidirectional electric optical flow obstacle | offen |
 | 8K-Luftbild-Drohne `15453744300417` | [69926294487425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c22c3423-4f47-4372-8567-aef18a6d44c5_trans.jpg) | 9 | player the aerial photography industry Easy fly and | offen |
 | Interaktiver Ball mit 3 Modi & USB-Ladekugel für `15453763699073` | [69926634881409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/82ba7971-236d-432c-88d8-73283cb00286.jpg) | 9 | AUTOMATIC PET JUMPING BALL Thickened and Extended battery | offen |
@@ -79,7 +80,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
 | Integrierte Fahrradhelm-Brille `15453769695617` | [69926689997185](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a09141-2e5f-46ec-a9ff-9fae95b110ae.jpg) | 6 | red silver One size fits all | offen |
 | Nixie-Röhrenuhr mit Wecker aus Walnussholz `15501005291905` | [70551630807425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/640bcf9f-7da6-4b62-8469-9399beef9d90.jpg) | 6 | GERALDINI MUUTO ESIGN THE SOLACE SOAKING | offen |
-| 15453774086529 `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
+| Stiller Aroma Diffusor für Zuhause & Büro `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
 | Falsche Wimpern Set `15453769007489` | [69926689177985](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3f7755b5-2d13-4db7-88df-98cbecd051d6.jpg) | 5 | MOH CRUELTY FREE VEGAN BOND | offen |
