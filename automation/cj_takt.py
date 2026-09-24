@@ -59,6 +59,25 @@ IMMER_FREI = ("cj_fulfill", "cj_order", "cj_zahlung", "versand_stillstand", "bes
 VORRANG_MAX_S = float(os.environ.get("VORRANG_MAX_S", "5400"))
 
 
+# 24.09.2026 GLOBALER VORRANG: Server (luxe-waechter) und Cloud-Container teilen EIN CJ-Konto, aber jede Maschine hat
+# ihre eigene Taktuhr und /tmp/cj_vorrang — der Server-Video-Indexer leerte den Eimer weiter, während hier der
+# Kosten-Nachtrag wartete. dropship/_cj_vorrang_global (im Repo, beide Seiten lesen es nach jedem Merge) trägt ein
+# ISO-Enddatum; bis dahin wartet jeder NICHT-Vorrang-, NICHT-Bestell-Aufruf 30 s (GLOBAL_BREMSE_S) → sein Anteil
+# sinkt ~15-fach, niemand blockiert ganz. Der Kosten-Nachtrag löscht die Datei, sobald eine volle Runde nichts fand.
+GLOBAL_DATEI = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dropship", "_cj_vorrang_global")
+GLOBAL_BREMSE_S = float(os.environ.get("GLOBAL_BREMSE_S", "30"))
+
+
+def _global_bremse():
+    try:
+        bis = open(GLOBAL_DATEI).read().split()[0]
+        import datetime
+        if datetime.datetime.fromisoformat(bis.replace("Z", "+00:00")).timestamp() > time.time():
+            time.sleep(GLOBAL_BREMSE_S)
+    except Exception:
+        pass
+
+
 def _skript():
     import sys
     return os.path.basename(sys.argv[0] or "?") or "?"
@@ -75,6 +94,7 @@ def _vorrang_warten():
         return
     if any(name.startswith(v) for v in IMMER_FREI):
         return
+    _global_bremse()
     ende = time.time() + VORRANG_MAX_S
     while time.time() < ende:
         try:

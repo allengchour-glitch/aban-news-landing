@@ -28236,3 +28236,14 @@ gid://shopify/Product/15448114561409	CHF 16.66	36 Varianten	Eleganter V-Ausschni
 gid://shopify/Product/15448114594177	CHF 15.59	35 Varianten	Leinen-Jumpsuit mit weitem Bein und V-Ausschnitt
 gid://shopify/Product/15448114626945	CHF 15.33	30 Varianten	Ärmelloser Jumpsuit mit V-Ausschnitt
 gid://shopify/Product/15448114659713	CHF 18.38	36 Varianten	Eleganter Langarm-Jumpsuit mit weitem Bein
+gid://shopify/Product/15448114725249	CHF 13.00	9 Varianten	Ärmelloser Jumpsuit mit engem Oberteil und weitem 
+gid://shopify/Product/15448114758017	CHF 10.03	9 Varianten	Tanktop & Shorts Set mit Schriftzug-Print
+gid://shopify/Product/15448114889089	CHF 15.10	15 Varianten	Gestreifter ärmelloser Jumpsuit mit Bindegürtel
+gid://shopify/Product/15448114954625	CHF 16.40	20 Varianten	Ärmelloser Jumpsuit aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448114987393	CHF 12.81	35 Varianten	Einteiliger Casual-Overall mit Prinzessinnenärmeln
+gid://shopify/Product/15448115085697	CHF 17.17	28 Varianten	Bohemian Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448115118465	CHF 14.80	42 Varianten	Ärmelloser Jumpsuit mit weitem Bein – Schwarz
+gid://shopify/Product/15448115151233	CHF 17.57	5 Varianten	Eleganter ärmelloser Jumpsuit mit weitem Bein – S-
+gid://shopify/Product/15448115216769	CHF 9.28	42 Varianten	Fischtail Body-Con Strand-Playsuit mit U-Ausschnit
+gid://shopify/Product/15448115249537	CHF 11.47	40 Varianten	Sportlicher Jumpsuit mit V-Ausschnitt und Knopflei
+gid://shopify/Product/15448115282305	CHF 15.41	36 Varianten	Ärmelloser Jumpsuit mit weitem Bein – S-Ivory Whit
