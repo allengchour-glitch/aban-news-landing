@@ -19586,3 +19586,19 @@ gid://shopify/Product/15479640686977	Farbe	gid://shopify/ProductOptionValue/1223
 gid://shopify/Product/15479640686977	Farbe	gid://shopify/ProductOptionValue/12235166843265	Leuchtendgrün	Leuchtendes Grün	2026-09-24T03:25Z
 gid://shopify/Product/15480459854209	Farbe	gid://shopify/ProductOptionValue/12238547681665	Marineblau Blau	Marineblau-Blau	2026-09-24T03:25Z
 gid://shopify/Product/15480631067009	Farbe	gid://shopify/ProductOptionValue/12239591702913	Leuchtendrot	Leuchtendes Rot	2026-09-24T03:25Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442461057	Peach Pink-US20w	Pfirsichrosa-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442493825	Peach Pink-US22w	Pfirsichrosa-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442755969	Sky Blue-US20w	Himmelblau-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271442788737	Sky Blue-US22w	Himmelblau-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443050881	Black-US20w	Schwarz-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443083649	Black-US22w	Schwarz-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443345793	Pink-US20w	Pink-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443378561	Pink-US22w	Pink-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443640705	Red-US20w	Rot-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443673473	Red-US22w	Rot-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443935617	Dark Violet-US20w	Dunkelviolett-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271443968385	Dark Violet-US22w	Dunkelviolett-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444230529	Green-US20w	Grün-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444263297	Green-US22w	Grün-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444525441	Purple-US20w	Lila-US 20W	2026-09-24T03:36Z
+gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444558209	Purple-US22w	Lila-US 22W	2026-09-24T03:36Z
