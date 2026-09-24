@@ -170,7 +170,8 @@ def kandidaten():
 
 def medien(pid):
     d = G.gql('query($id:ID!){product(id:$id){id title status featuredMedia{id} '
-              'media(first:20){nodes{id mediaContentType ... on MediaImage{image{url}}}}}}', {"id": pid})
+              'media(first:20){nodes{id mediaContentType ... on MediaImage{image{url}}}} '
+              'variants(first:100){nodes{media(first:5){nodes{id}}}}}}', {"id": pid})
     return (d.get("data") or {}).get("product")
 
 
@@ -298,11 +299,17 @@ def main():
         z["produkte"] += 1
         titel_von[pid] = p.get("title") or ""
         feat = ((p.get("featuredMedia") or {}).get("id"))
+        # 24.09.2026: Variantenbilder sind NIE Löschkandidaten — sie zeigen der Kundin die gewählte Farbe/Form.
+        # Anlass: Trinkflasche «Hydro» — einer von vier Treffern war das Bild einer Farbvariante.
+        variantenbilder = {m["id"] for v in ((p.get("variants") or {}).get("nodes") or [])
+                           for m in ((v.get("media") or {}).get("nodes") or [])}
         nodes = p["media"]["nodes"]
         raus = []
         for pos, m in enumerate(nodes, 1):
             if pos == 1 or m["id"] == feat:
                 continue                                   # Hauptbild: nie
+            if m["id"] in variantenbilder:
+                continue                                   # Variantenbild: nie (24.09.)
             if m.get("mediaContentType") != "IMAGE" or not (m.get("image") or {}).get("url"):
                 continue                                   # Video/3D/fehlgeschlagen: nie
             if NUR_MEDIA and m["id"] not in NUR_MEDIA:
@@ -343,6 +350,11 @@ def main():
                       flush=True)
         if raus and SCHARF:
             # Ohne ausdrückliche Medienliste nur die eindeutige Zone löschen (Eichung: 4–6 Wörter = 8 von 31 Fehlalarme).
+            if not NUR_MEDIA and QUELLE_ART == "textbild":
+                # 24.09.2026 Sichtprüfung der ersten 60: bei dieser Quelle waren 15 von 22 Treffern ab 7 Wörtern FEHLALARME
+                # (13 Nagelfolien-Designs mit Tupfer-Aufdruck, 2 Verpackungsfotos). Hier löscht nur eine Einzelfreigabe.
+                print("   ⏸️ textbild-Quelle: ohne NUR_MEDIA wird nichts gelöscht (nur gemeldet)", flush=True)
+                raus = []
             if not NUR_MEDIA:
                 zurueck = [r for r in raus if r[2] < SCHARF_AB]
                 for _, pos, w, t, _ in zurueck:
