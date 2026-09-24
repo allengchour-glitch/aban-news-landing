@@ -108,3 +108,6 @@ gid://shopify/Product/15396404855169	draft-ausverkauft	Resistance Bands Set 5-te
 gid://shopify/Product/15397218320769	draft-ausverkauft	Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
 gid://shopify/Product/15397247385985	draft-ausverkauft	Jade Roller & Gua Sha Premium Set · echter Jade, Doppelkopf-Roller
 gid://shopify/Product/15397247484289	draft-ausverkauft	Sternenhimmel Projektor · Baby Nachtlicht mit Musik
+gid://shopify/Product/15469941555585	draft-ausverkauft	Kostüm Indianerin · braun (Widmann)
+gid://shopify/Product/15469943816577	draft-ausverkauft	Schwarze Leggings
+gid://shopify/Product/15469945389441	draft-ausverkauft	Kostüm Voodoo Priesterin
