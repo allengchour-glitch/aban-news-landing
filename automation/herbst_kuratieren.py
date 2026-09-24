@@ -57,7 +57,15 @@ SAISON_ENDE = datetime.date(2026, 11, 30)   # danach übernimmt Weihnachten (Rei
 TAG = "herbst-2026"
 HANDLE = "herbst-favoriten"
 TITEL = "🍂 Herbst-Favoriten"
-ZIEL_MIN, ZIEL_MAX = 40, 80
+ZIEL_MIN, ZIEL_MAX = 40, int(os.environ.get("ZIEL_MAX", "150"))
+# 24.09.2026 Betreiber «pushe mehr herbstsachen»: 59 von 80 waren die Summe der Themenquoten (65) — die Reihe konnte
+# gar nicht wachsen. Quoten jetzt ×QUOTE_FAKTOR (Standard 2), Obergrenze 150; die ersten acht Karten bleiben der
+# Themen-Reissverschluss, also ändert sich die Startseitenreihe nicht in der Mischung, nur die Kollektion wird tiefer.
+QUOTE_FAKTOR = float(os.environ.get("QUOTE_FAKTOR", "2"))
+# GESICHTET=<json-Liste von IDs>: Neuaufnahme NUR aus einer per Kontaktbogen freigegebenen Liste. Ohne diese Sperre
+# rückt nach jedem Ausschluss ein ungesehener Kandidat nach, und der scharfe Lauf schreibt ihn (24.09.: 3 Runden,
+# 67 → 16 → 7 Nachrücker, immer schwächer in den dünnen Themen Wärme/Tee).
+GESICHTET = set(json.load(open(os.environ["GESICHTET"]))) if os.environ.get("GESICHTET") else None
 MIN_PREIS = 19.0
 MIN_KANTE = 600
 GOOGLE = "gid://shopify/Publication/302872297857"
@@ -113,6 +121,7 @@ THEMEN = [
     ("deko", "Herbst-Deko", 4, re.compile(
         r"(?:Herbst|K[üu]rbis|Ahorn|Tannenzapfen|" + W + r"Eichel)", re.I)),
 ]
+THEMEN = [(k, n, int(round(q * QUOTE_FAKTOR)), r) for k, n, q, r in THEMEN]
 THEMA_NAME = {k: n for k, n, _, _ in THEMEN}
 # Herbst-Deko braucht zusätzlich einen Deko-Anker — «Herbst» allein steht in halben Modetiteln.
 DEKO_ANKER = re.compile(r"Deko|Kranz|Girlande|Kissen|Tischl[äa]ufer|Figur|Kunstpflanze|Kunstblume|Zweig|"
@@ -143,10 +152,10 @@ GLOBAL_RAUS = re.compile(
     r"selbst gestalten|bedrucken|personalisier|Puppe|Pl[üu]schtier|"
     r"Marvel|Disney|Harry Potter|Pok[eé]mon|Naruto|Nike|Adidas|Supreme|Gucci|Louis Vuitton|Chanel|Dior|"
     r"Hello Kitty|Star Wars|Stitch|Barbie|Minecraft|Fortnite|NFL|NBA|One Piece|Dragon Ball|Demon Slayer|"
-    r"Spider-?Man|Batman|Genshin|Sanrio|Kuromi|Squid Game|Stranger Things", re.I)
+    r"Spider-?Man|Batman|Genshin|Sanrio|Kuromi|Squid Game|Stranger Things|Harrods|Burberry|Starbucks", re.I)
 # Netzgeräte aus Fernost: Stecker ungewiss (Klasse #76) — nur mit USB/Akku oder geprüftem EU-Stecker.
 NETZGERAET = re.compile(r"Fu(?:ss|ß)w[äa]rmer|Wasserkocher|Kaffeemaschine|Heizdecke|Heizkissen|Kerzenw[äa]rmer|elektrisch|"
-                        r"Aroma[- ]?Diffus|Duftdiffus|Luftbefeuchter|Milchaufsch[äa]umer|beheizbar|Heiz", re.I)
+                        r"Aroma[- ]?Diffus|Duftdiffus|Luftbefeuchter|Milchaufsch[äa]umer|beheizbar|Heiz|Ladeger[äa]t|Induktion", re.I)
 AKKU = re.compile(r"USB|Akku|wiederaufladbar|Batterie|kabellos", re.I)
 
 # Werbe-Sperren (tiktok_karussell.SPERR_TAGS) + Hausregeln der Startseite (hype_kuratieren)
@@ -169,6 +178,31 @@ SCHMERZ = re.compile(r"schmerz|Menstruation|Regel(?:schmerz|beschwerde)|Periode|
 
 # Nach Kontaktbogen (Vision-QA, Projektregel 5) aussortiert: ID → Grund. Bleiben dauerhaft draussen.
 AUSGESCHLOSSEN = {
+    # 24.09.2026, Kontaktbogen Runde 4 (16 Nachrücker, 7 aussortiert)
+    "gid://shopify/Product/15490726723969": "Cartoon-/Kinderoptik",  # USB-Handwärmer "Warm Treasure"
+    "gid://shopify/Product/15510924231041": "Weihnachtsmann-Druck (Weihnachten, nicht Herbst)",  # Kuscheldecke mit Digitaldruck
+    "gid://shopify/Product/15468340642177": "englisches Badge «colour»",  # Herren Strickpullover Rundhals Leinen-Mix
+    "gid://shopify/Product/15447942300033": "Bildnummer im Bild",  # Strick-Cape-Schal für Damen
+    "gid://shopify/Product/15449463914881": "englische Werbetexte",  # Keramik-Isolierbecher gross
+    "gid://shopify/Product/15454180770177": "englische Beschriftung im Bild",  # Tassen für heissen Tee
+    "gid://shopify/Product/15495120519553": "Bild zeigt Etagère statt Tassenset, Wasserzeichen",  # Keramik-Tassenset mit Untertasse und Löffel
+    # 24.09.2026, Kontaktbogen Runde 3 («pushe mehr herbstsachen», 67 angesehen, 16 aussortiert)
+    "gid://shopify/Product/15501846020481": "offene Sandale statt Hausschuh",  # Romantische Hausschuhe
+    "gid://shopify/Product/15447926079873": "englisches Badge «Pink / Three-level adjustable»",  # USB Halbfinger-Handschuhe
+    "gid://shopify/Product/15479512727937": "Pool-Szene, Spassschuh",  # Motorrad-Hausschuhe
+    "gid://shopify/Product/15478168846721": "Bild zeigt Alpaka-Kopf, keine Decke",  # Alpaka-Print Flanell-Decke
+    "gid://shopify/Product/15522297807233": "politischer Aufdruck «Blue Lives Matter»",  # Doppelseitige Flanelldecke
+    "gid://shopify/Product/15448702615937": "dunkles Bild, Ware nicht erkennbar",  # Street-Style Hoodie
+    "gid://shopify/Product/15449057100161": "kurzarm",  # Waffle-Weave V-Neck Hoodie
+    "gid://shopify/Product/15507787776385": "Sommer-Szene (Shorts), Hemd statt Strick",  # Gestreifte Strickjacke
+    "gid://shopify/Product/15449149800833": "Hunde-Cartoon-Druck",  # Damen Pullover Blumenprint
+    "gid://shopify/Product/15448794923393": "Werbecollage «HME JEANS»",  # Gut sitzende Jeansjacke
+    "gid://shopify/Product/15447886561665": "Bikini-/Strand-Szene",  # Cape-Schal mit Perlen
+    "gid://shopify/Product/15450214826369": "Verpackung mit Fremdmarke «Pure Simply»",  # Zitrus-Kräuter Kerze
+    "gid://shopify/Product/15495149027713": "Tassenboden, Ware nicht erkennbar",  # Jian Zhan Teetasse
+    "gid://shopify/Product/15506274222465": "Beipackzettel/Packungsbild",  # Kompakte Getreide- & Kaffeemühle
+    "gid://shopify/Product/15496184103297": "englischer Werbetext im Bild",  # Kupfer Teekessel
+    "gid://shopify/Product/15524853842305": "englische Werbetexte + Fremdmarke",  # Kompakte Mini-Thermoskanne
     # 23.09.2026, Kontaktbogen Runde 1 (65 Bilder angesehen, 19 aussortiert)
     "gid://shopify/Product/15502591525249": "Kinder-Optik, englischer Bildtext",  # Mini-Handwärmer & Powerbank
     "gid://shopify/Product/15481817497985": "Slipper/Mule statt Hausschuh",  # Lederpantoffeln · Herren
@@ -395,6 +429,8 @@ def kandidaten():
             continue
         k = thema_von(p["title"], p.get("productType"))
         if not k or not netz_ok(p["title"], tags) or p["id"] in AUSGESCHLOSSEN:
+            continue
+        if GESICHTET is not None and p["id"] not in GESICHTET:
             continue
         mc = (p.get("mediaCount") or {}).get("count", 0)
         punkte = (2 if "ch-lager" in tags else 0) + (1 if "eu-lager" in tags else 0) + min(mc, 8) / 2 \

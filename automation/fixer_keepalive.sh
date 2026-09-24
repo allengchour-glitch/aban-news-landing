@@ -868,11 +868,22 @@ while true; do
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TTK"; then
       touch "$TTK"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c '
-          MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
+          # 24.09.2026 «pushe mehr herbstsachen»: bis 30.11. an geraden Tagen das TikTok-Produkt-Set aus den Herbst-Favoriten
+          if [ "$(date -u +%Y%m%d)" -le 20261130 ] && [ $(( $(date -u +%j | sed "s/^0*//") % 2 )) = 0 ]; then
+            MODUS=produkt ANZAHL=1 QUELLE=herbst-favoriten KICKER="Herbst-Favorit" python3 automation/tiktok_karussell.py
+          else
+            MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
+          fi
           MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
           # 23.09.2026 Instagram-Karussells (4:5): taeglich 2 Produkt-Sets, montags dazu ein Top-Set; danach
           # Push, weil der Autocommitter nur dropship/ mitnimmt und Instagram die Bilder von raw.githubusercontent holt.
-          FORMAT=ig MODUS=produkt ANZAHL=2 python3 automation/tiktok_karussell.py
+          # 24.09.2026: bis 30.11. eines der zwei IG-Sets aus den Herbst-Favoriten (Saisonware: KICKER statt «Neu im Shop»)
+          if [ "$(date -u +%Y%m%d)" -le 20261130 ]; then
+            FORMAT=ig MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
+            FORMAT=ig MODUS=produkt ANZAHL=1 QUELLE=herbst-favoriten KICKER="Herbst-Favorit" python3 automation/tiktok_karussell.py
+          else
+            FORMAT=ig MODUS=produkt ANZAHL=2 python3 automation/tiktok_karussell.py
+          fi
           [ "$(date -u +%u)" = 1 ] && FORMAT=ig MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
           bash automation/git_sichern.sh "IG-Karussell-Slides [skip ci]" social/instagram social/ig_karussell.csv >/dev/null || echo "IG-Slides: Push fehlgeschlagen"
           python3 automation/tiktok_video.py

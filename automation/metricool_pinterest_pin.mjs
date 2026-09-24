@@ -63,7 +63,11 @@ if (!SHOPTOK) { console.log('Kein Shop-Token → No-op.'); process.exit(0); }
 const VORRANG = 'dropship/_pinterest_vorrang.txt';
 const STANDARD_QUELLEN = ['hype-jetzt', 'bestseller', 'neu-eingetroffen', 'weihnachten-2026', 'halloween', 'geschenke-unter-50-franken'];
 const heute = new Date().toISOString().slice(0, 10);
-const vorrang = fs.existsSync(VORRANG) ? fs.readFileSync(VORRANG, 'utf8').split('\n').map(z => z.split('\t')).filter(([h, bis]) => h && (!bis || bis.trim() >= heute)).map(([h]) => h.trim()) : [];
+const vorrangRoh = fs.existsSync(VORRANG) ? fs.readFileSync(VORRANG, 'utf8').split('\n').map(z => z.split('\t')).filter(([h, bis]) => h && (!bis || bis.trim() >= heute)).map(([h]) => h.trim()) : [];
+// 24.09.2026 («pushe mehr herbstsachen»): mit ZWEI Saison-Quellen belegte die erste (Halloween) jeden Pin, die zweite
+// kam nie dran. Die Vorrang-Quellen wechseln sich jetzt ab — Takt = Anzahl Zeilen im Pin-Ledger (jeder Pin schiebt weiter).
+const pinZahl = fs.existsSync('dropship/_pinterest_pins.txt') ? fs.readFileSync('dropship/_pinterest_pins.txt', 'utf8').split('\n').filter(Boolean).length : 0;
+const vorrang = vorrangRoh.length > 1 ? vorrangRoh.map((_, i) => vorrangRoh[(i + pinZahl) % vorrangRoh.length]) : vorrangRoh;
 const QUELLEN = process.env.NUR_QUELLE ? [process.env.NUR_QUELLE] : [...vorrang, ...STANDARD_QUELLEN.filter(q => !vorrang.includes(q))];
 // Ein Produkt, das schon als IG-/TikTok-Karussell laeuft, wird nicht zusaetzlich gepinnt (Regel 10: nie dasselbe Produkt
 // zweimal, auch nicht plattformuebergreifend). Beide Ledger tragen «handle<TAB>slug<TAB>modus».

@@ -47,12 +47,32 @@ def gql(q, v=None):
     return d
 
 
+def format_ok(pfad, stichprobe=50):
+    """True, wenn die Datei Produktzeilen im Vertrag dieses Skripts trägt (status + mediaCount)."""
+    try:
+        with open(pfad) as fh:
+            for i, z in enumerate(fh):
+                if i >= stichprobe:
+                    break
+                o = json.loads(z)
+                if "/Product/" in o.get("id", "") and "__parentId" not in o:
+                    return "status" in o and "mediaCount" in o
+    except (OSError, ValueError):
+        return False
+    return False
+
+
 def main():
     if os.path.exists(ZIEL):
         alter = time.time() - os.path.getmtime(ZIEL)
-        if alter < MAXALTER:
+        if alter < MAXALTER and format_ok(ZIEL):
             print(f"FERTIG: {ZIEL} ist {int(alter/3600)} h alt — kein neuer Export nötig")
             return
+        if alter < MAXALTER:
+            # 24.09.2026: /tmp/export.jsonl war eine Kopie des Kosten-Exports (Varianten mit unitCost, ohne status/
+            # tags/mediaCount) — jung genug, also «kein neuer Export nötig»; Hype, Herbst und Querbeet fanden danach
+            # still 0 Kandidaten. Das Alter sagt nichts über den Vertrag: das Format wird geprüft.
+            print(f"   {ZIEL} ist jung, aber im falschen Format (kein status/mediaCount) → neu bauen")
     cur = gql('{currentBulkOperation{id status}}')
     c = (cur.get("data") or {}).get("currentBulkOperation") or {}
     if c.get("status") in ("RUNNING", "CREATED"):
