@@ -502,6 +502,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-09-24 · 🪣 **CJ-Eimer: kein versteckter Verbraucher — Nachfluss nur ~43 Punkte/min (usedToday 107'890→112'620 in 109 min), nicht 165; Takt-Bericht je Maschine `dropship/_cj_takt_<host>.json` (Container 188/h, Server 111/h); globale Bremse jetzt gemeinsamer Abstand 180 s je Maschine statt 30 s je Aufruf.** Gezählt erklärt gemessen → Konstante falsch, nicht Täter → Journal Nachtrag 73
 - 2026-09-24 · 🎻 **«fairy tail theme anime musik»: eigenes Stück `luxe-celtic-epic.wav` (Whistle/Fiedel/Dudelsack über Rock+Orchester, Melodie neu komponiert), Gemini-Hörschleife 7→8/10; render.sh hatte LUFS-Default +13.5 (ffmpeg-Abbruch), jetzt −14 + Lead-Spur mit Präsenz-EQ + Stillen-Kappung; Reel-Motor Gadget/Fitness/Haustier/Kinder.** KI-Hörer für Mix, nicht für Urheberrecht → Journal Nachtrag 72
 - 2026-09-24 · 🚦 **CJ-Budget seit 16:00: Reel-Motor 196, Bewertungen 158, Kosten-Nachtrag 0 — er hatte am Listenende ab Zeiger «FERTIG» geschrieben (Aufseher: 20 h Pause). FERTIG jetzt nur nach voller Runde ohne Arbeit; `cj_takt` hat Vorrang-Schranke (/tmp/cj_vorrang, Bestellwächter frei).** FERTIG ist ein Vertrag → Journal Nachtrag 71
 - 2026-09-24 · ⏱️ **Preis-Nachlauf bekam nur 10–15 min/h (Ende der Aufseher-Liste + stündlicher Neustart) → Keepalive 3d startet ihn sofort; Ledger-Skip nur für heutige Quittungen; CJ-Takt protokolliert je Aufruf das Skript (13'018 CJ-Produkte ohne EK, ~500/Tag).** Fortschritt je Stunde messen, nicht «läuft» → Journal Nachtrag 70
@@ -537,8 +538,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-09-23 · 🏷️ **Kategorie-Lauf mappte Sammeltypen pauschal (Grillpfanne = Aufbewahrung) → Titelregeln + `KORREKTUR=1` (nur Pauschalwerte zurücknehmen); FERTIG-Tor las ganzes Log; Zombie 04:07 ungeklärt → Falle; Grow-Zähler «3 Verkäufe → Grow 300 GB».** Typ ≠ Ware → Journal Nachtrag 38
 - 2026-09-23 · 🔤 **Bild-Posts mit englischem Lieferanten-Text (Betreiber-Raster): 4 von 69 wartenden ≥4 Wörter → `social_queue_saeubern.py` `bildtext-skip` (OCR, Cache je URL, täglich). Google «Image too small» = Variantenbilder, nicht Hauptbilder → bewusst gelassen.** Ein Google-Befund nennt das Symptom, nicht das Bild → Journal Nachtrag 37
 - 2026-09-23 · 💗 **«pinke steine 2mal?»: Gua-Sha-Set 02:11 + Jade Roller 08:26 — zwei Produkte, acht Sperren sagten «neu». Neunte Schicht `warenFamilie()`/`familieKuerzlich()` in `post_guard.mjs` (12 Gruppen, 72 h, ein Ledger für Bild/Reel/Karussell), aus IG gesät.** Doppelpost ist, was die Betrachterin als gleich sieht → Journal Nachtrag 36
-- 2026-09-23 · 🎠 **Verbesserungsrunde 6: Karussell-Baustein (TikTok, Meisterwerk, seit heute IG) starb 02:11 am leeren Eimer — jede Drosselung zählte als Fehlversuch (8 × 6 s).** Jetzt Wartezeit aus throttleStatus + Etikette; `py_compile` OK, aber erst der Import zeigte den NameError → Journal Nachtrag 35
 
-… Einzeilen vom 14.–22.09.2026 (128, zwanzig vom 21.09., dreiundzwanzig vom 22.09.) am 23.09. und dreizehn vom 23.09. am 24.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
+… Einzeilen vom 14.–22.09.2026 (128, zwanzig vom 21.09., dreiundzwanzig vom 22.09.) am 23.09. und vierzehn vom 23.09. am 24.09. VERBATIM ins Journal verschoben (Abschnitt «📚 Index-Archiv» am
 Dateiende — CLAUDE.md muss unter ~70 KB bleiben); alle älteren Abschnitte (rund 380): `GEDAECHTNIS-JOURNAL.md`
 (Inhaltsverzeichnis oben). Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`.
