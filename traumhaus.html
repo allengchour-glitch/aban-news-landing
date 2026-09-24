@@ -3002,25 +3002,65 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
      seite  +1/-1 = Richtung zum Gehweg (der Stein steht AUSSEN an der Fahrbahnkante)
      luecken [[von,bis,"frei"|"ab"]]: frei = kein Stein (Einmuendung), ab = abgesenkt (3 cm, Zebra) */
 var _bordM=null;
+/* 🧱 KEIL (Runde 98, User: „das geht noch besser und schöne übergang"): ein Quader, dessen Oberkante
+   laengs von h0 auf h1 faellt oder steigt — der UEBERGANGSSTEIN, mit dem ein Bordstein von 12 auf 3 cm
+   hinuntergeht, und die RAMPE einer abgesenkten Gehwegplatte. a:"z" laeuft in x, a:"x" in z; t0<t1
+   laengs (h0 liegt bei t0), q quer (Mitte), br Breite quer. Unterkante immer y 0. */
+function _keilGeo(len,h0,h1,br){var g=new THREE.BoxGeometry(len,1,br),p=g.attributes.position;
+  for(var i=0;i<p.count;i++){if(p.getY(i)>0)p.setY(i,p.getX(i)<0?h0:h1);else p.setY(i,0);}
+  p.needsUpdate=true;g.computeVertexNormals();return g;}
+function _keil(a,t0,t1,q,h0,h1,br,mat){if(t1-t0<0.04)return null;
+  var k=new THREE.Mesh(_keilGeo(t1-t0,h0,h1,br),mat),m=(t0+t1)/2;
+  if(a==="z")k.position.set(m,0,q);else{k.rotation.y=-Math.PI/2;k.position.set(q,0,m);}   /* -90 Grad: lokal +x -> Welt +z */
+  k.receiveShadow=true;k.userData.r98=1;scene.add(k);return k;}
 function bordsteinKante(a,kante,seite,von,bis,luecken,platte){
-  /* platte {b,m}: an jedem "ab"-Stein liegt dahinter eine 3-cm-Gehwegplatte (Breite b, Material m).
-     th-kante nach dem ersten Umbau: 16 Uebergaenge "nicht abgesenkt" — der Stein war 3 cm, aber die
-     6-cm-Platte lief daneben weiter. Die Bauer der Platten lassen dort jetzt eine Luecke (trX/trZ,
-     stueckeZ, teile), und hier entsteht das abgesenkte Stueck — EIN Ort fuer die Absenkung. */
+  /* platte {b,m,h}: an jedem "ab"-Stein liegt dahinter eine 3-cm-Gehwegplatte (Breite b, Material m; h = Hoehe
+     des Gehwegs daneben, Standard 6 cm). th-kante nach dem ersten Umbau: 16 Uebergaenge "nicht abgesenkt" —
+     der Stein war 3 cm, aber die 6-cm-Platte lief daneben weiter. Die Bauer der Platten lassen dort jetzt eine
+     Luecke (trX/trZ, stueckeZ, teile), und hier entsteht das abgesenkte Stueck — EIN Ort fuer die Absenkung.
+     🧱 UEBERGAENGE STATT STUFEN (Runde 98, probe-stufen: 152 senkrechte Spruenge im Stein, 137 in der Platte,
+     Bilder k40-*): der Stein fiel an jeder Absenkung senkrecht von 12 auf 3 cm, an jeder Einmuendung stand
+     eine 12-cm-Stirnflaeche an der Fahrbahn, und die abgesenkte Platte lag 3 cm tiefer als der Gehweg
+     daneben. Jetzt wie gebaut wird:
+       * vor jeder Absenkung ein UEBERGANGSSTEIN, 0,9 m lang, 12 → 3 cm — AUSSERHALB der Luecke, damit der
+         Stein ueber die ganze Streifenbreite abgesenkt bleibt (th-kante misst ±2 m);
+       * an jeder Einmuendung laeuft der Stein auf 0,6 m (oder luecke[3].rampe) auf 3 cm aus — dort liegt
+         in dieser Welt immer ein Uebergang, die 3-cm-Kante bleibt als Anschlag fuer den Blindenstock;
+       * die abgesenkte Platte steigt an beiden Enden auf 0,3 m zur Gehweghoehe an (innerhalb der Luecke,
+         die Plattenbauer liegen fest; das Aufmerksamkeitsfeld endet bei ±2,4, die Rampe beginnt bei ±2,4).
+     luecke[3] darf eine Zahl sein (Viertel: Seite der Einmuendung) — nur ein Objekt {rampe} zaehlt hier. */
   if(!_bordM)_bordM=betMat(0xbfbcb2,0.85);
-  var L=[[von,bis]],G=(luecken||[]).slice();
+  var HV=0.12,HA=0.03,TR=0.9,TF=0.6,TP=0.3,HS=(platte&&platte.h)||0.06;
+  var G=(luecken||[]).map(function(g){return [Math.max(g[0],von),Math.min(g[1],bis),g[2],g[3]];}).filter(function(g){return g[1]>g[0];});
+  /* fuer probe-stufen (Runde 98): jede Luecke mit Lage, damit die Sonde dort Hoehenprofile nimmt */
+  G.forEach(function(g){(window._bordLuecken=window._bordLuecken||[]).push([a,kante,seite,g[0],g[1],g[2],(platte&&platte.b)||2.3,von,bis]);});
+  var L=[[von,bis]];
   G.forEach(function(g){var N=[];L.forEach(function(t){
     if(t[1]<=g[0]||t[0]>=g[1]){N.push(t);return;}
     if(t[0]<g[0])N.push([t[0],g[0]]);if(t[1]>g[1])N.push([g[1],t[1]]);});L=N;});
-  function box(t0,t1,h){if(t1-t0<0.3)return;var len=t1-t0,m=(t0+t1)/2,q=kante+seite*0.13;
+  var q=kante+seite*0.13;
+  function box(t0,t1,h){if(t1-t0<0.3)return;var len=t1-t0,m=(t0+t1)/2;
     var b=new THREE.Mesh(new THREE.BoxGeometry(a==="z"?len:0.26,h,a==="z"?0.26:len),_bordM);
     b.position.set(a==="z"?m:q,h/2,a==="z"?q:m);b.receiveShadow=true;scene.add(b);}
-  L.forEach(function(t){box(t[0],t[1],0.12);});
-  G.forEach(function(g){if(g[2]!=="ab")return;var g0=Math.max(g[0],von),g1=Math.min(g[1],bis);if(g1<=g0)return;
-    box(g0,g1,0.03);
-    var pb=(platte&&platte.b)||2.3,len=g1-g0,m=(g0+g1)/2,q=kante+seite*(0.26+pb/2);
-    var pl=new THREE.Mesh(new THREE.BoxGeometry(a==="z"?len:pb,0.03,a==="z"?pb:len),(platte&&platte.m)||_bordM);
-    pl.position.set(a==="z"?m:q,0.015,a==="z"?q:m);pl.receiveShadow=true;scene.add(pl);});}
+  /* Laenge des Uebergangssteins an einer Steingrenze x, die an eine Luecke stoesst (d -1: Luecke endet bei x) */
+  function uebergang(x,d){var l=0;G.forEach(function(g){if(Math.abs((d<0?g[1]:g[0])-x)>1e-6)return;
+    var w=g[2]==="ab"?TR:((g[3]&&typeof g[3]==="object"&&g[3].rampe)||TF);if(w>l)l=w;});return l;}
+  var mitStein={};                                          /* Lueckengrenzen, an denen voller Stein anschliesst */
+  L.forEach(function(t){var len=t[1]-t[0];
+    var wl=t[0]>von+1e-6?uebergang(t[0],-1):0,wr=t[1]<bis-1e-6?uebergang(t[1],1):0;
+    if(wl+wr>len-0.3){var f=Math.max(0,len-0.3)/((wl+wr)||1);wl*=f;wr*=f;}   /* kurzes Stueck zwischen zwei Luecken */
+    if(wl>0.15){_keil(a,t[0],t[0]+wl,q,HA,HV,0.26,_bordM);mitStein[t[0].toFixed(4)]=1;}else wl=0;
+    if(wr>0.15){_keil(a,t[1]-wr,t[1],q,HV,HA,0.26,_bordM);mitStein[t[1].toFixed(4)]=1;}else wr=0;
+    box(t[0]+wl,t[1]-wr,HV);});
+  G.forEach(function(g){if(g[2]!=="ab")return;var g0=g[0],g1=g[1];
+    box(g0,g1,HA);
+    var pb=(platte&&platte.b)||2.3,qp=kante+seite*(0.26+pb/2),pm=(platte&&platte.m)||_bordM;
+    var rl=mitStein[g0.toFixed(4)]?Math.min(TP,(g1-g0)/3):0,rr=mitStein[g1.toFixed(4)]?Math.min(TP,(g1-g0)/3):0;
+    if(rl)_keil(a,g0,g0+rl,qp,HS,HA,pb,pm);
+    if(rr)_keil(a,g1-rr,g1,qp,HA,HS,pb,pm);
+    var f0=g0+rl,f1=g1-rr;if(f1-f0>0.05){var len=f1-f0,m=(f0+f1)/2;
+      var pl=new THREE.Mesh(new THREE.BoxGeometry(a==="z"?len:pb,HA,a==="z"?pb:len),pm);
+      pl.position.set(a==="z"?m:qp,HA/2,a==="z"?qp:m);pl.receiveShadow=true;scene.add(pl);}});}
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,16),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 /* ⚠️ HIER LAGEN 16 STRICHE EINER LEITLINIE AUF z = 58 — mitten zwischen den beiden
@@ -3048,6 +3088,14 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
   function tr(w,d,x,z,h){var t=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),w>d?tMat:tMatV);
     t.position.set(x,h/2,z);t.receiveShadow=true;scene.add(t);}
   var RB=RX+5,LR=RL/2-RB; // Querstrassen-Kante + Randstueck-Laenge (keine Ueberschneidung mit Fahrbahnen)
+  /* 🔄 ECKRADIUS der vier Hauptkreuzungen (Runde 98, probe-stufen: 0 von 16 Ecken gerundet, Bild k40-haupt-ecke):
+     Haupt- und Querstrasse stiessen in einer scharfen 90-Grad-Ecke zusammen, nur der Gehweg war aussen mit einer
+     Viertelkreis-Platte gerundet. Jetzt folgt der Stein einem Bogen mit 3 m Radius; Gehweg, Bordstein und
+     Erdstreifen enden am Bogenanfang (Haupt: Quer-/Zubringerkante + 3 m, Quer/Zubringer: Hauptkante + 3 m),
+     die Ecke baut eckBogen() weiter unten. Zubringer (9 m) und Querstrasse (10 m) haben verschiedene Kanten
+     (±4,5 / ±4,92) — darum je Seite der Hauptstrasse eigene Enden. */
+  var ECK_R=3;
+  function eckW(stadtseite){return stadtseite?4.92:4.5;}      /* Bordsteinkante quer zur Hauptstrasse */
   /* Gehwegplatten mit 5,4-m-Luecke an jedem Zebrastreifen (Runde 93): dort setzt bordsteinKante
      eine abgesenkte 3-cm-Platte, sonst stuende der Uebergang vor einer 6-cm-Stufe. */
   function _spalte(von,bis,gaps){var L=[[von,bis]];gaps.forEach(function(g9){var g=Array.isArray(g9)?g9[0]:g9,h=Array.isArray(g9)?g9[1]:2.7,N=[];L.forEach(function(t){
@@ -3056,9 +3104,10 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
   function trZ(br,len,cx,cz,h,gaps){_spalte(cz-len/2,cz+len/2,gaps).forEach(function(t){if(t[1]-t[0]>0.3)tr(br,t[1]-t[0],cx,(t[0]+t[1])/2,h);});}
   [SZ9+12,-(SZ9+12)].forEach(function(zc){ // Nord+Sued: innen + aussen, an den Querstrassen ausgespart
     [zc>0?zc-9.1:zc+9.1,zc>0?zc+9.1:zc-9.1].forEach(function(z9){
-      trX(2*(RX-5),2.2,0,z9,0.06,[-RX+16,RX-16]);       // Mittelteil zwischen den Querstrassen
-      trX(LR,2.2,-(RB+LR/2),z9,0.06,[-RX-16]);          // West-Rand
-      trX(LR,2.2,(RB+LR/2),z9,0.06,[RX+16]);});});      // Ost-Rand
+      var w9=eckW(Math.abs(z9)<Math.abs(zc)),xm=RX-w9-ECK_R,xr=RX+w9+ECK_R;   /* Runde 98: Enden am Bogenanfang */
+      trX(2*xm,2.2,0,z9,0.06,[-RX+16,RX-16]);           // Mittelteil zwischen den Querstrassen
+      trX(RL/2-xr,2.2,-(xr+RL/2)/2,z9,0.06,[-RX-16]);   // West-Rand
+      trX(RL/2-xr,2.2,(xr+RL/2)/2,z9,0.06,[RX+16]);});});      // Ost-Rand
   var _QW_EINF=[-13,9];   /* Quartiersplatz-Einfahrten (westParkplatz: QZ-QD/2+4 / QZ+QD/2-4, QZ -2, QD 30) */
   [RX,-RX].forEach(function(xc){ // Querstrassen: enden EXAKT an der Fahrbahnkante der
     // Hauptstrasse. Vorher 2*SZ9+14 = 106 -> Ende bei +-53, die Hauptstrasse (16 breit,
@@ -3072,10 +3121,13 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        durch (Trottoirueberfahrt): Luecke in der 5-cm-Platte, dort baut bordsteinKante den abgesenkten
        Stein samt 3-cm-Platte ("ab" unten), die Einfahrt beginnt dahinter. */
     var zb9=[-(SZ9+12)+16,(SZ9+12)-16],west9=zb9.slice(),ost9=zb9.slice();
-    if(xc<0){west9.push([-30,6.4]);_QW_EINF.forEach(function(ez){ost9.push([ez,3.0]);});}
-    trZ(2.2,2*(SZ9+12)-16,xc-6.1,0,0.05,west9);
-    trZ(2.2,2*(SZ9+12)-16,xc+6.1,0,0.05,ost9);
-    if(xc<0){[-1,1].forEach(function(s9){tr(2.2,1.2,xc-6.1,-30+s9*5.8,0.03);});
+    if(xc<0){west9.push([-30,6.2]);   /* Runde 98: 6,4 → 6,2 — Rampe endet an der Asphaltkante (Strandzufahrt z -35…-25), vorher 20 cm Wiese dazwischen */_QW_EINF.forEach(function(ez){ost9.push([ez,3.0]);});}
+    var zq9=(SZ9+12)-7.92-ECK_R;                          /* Runde 98: Ende am Bogenanfang der Kreuzungsecke */
+    trZ(2.2,2*zq9,xc-6.1,0,0.05,west9);
+    trZ(2.2,2*zq9,xc+6.1,0,0.05,ost9);
+    /* Runde 98: die 1,2-m-Stuecke vor der Muendung waren flache 3-cm-Platten (2 cm Stufe zum Gehweg) — jetzt
+       Rampen von 5 auf 3 cm, zur Muendung hin fallend; der Bordstein laeuft auf derselben Laenge aus. */
+    if(xc<0){_keil("x",-36.2,-35.0,xc-6.1,0.05,0.03,2.2,tMatV);_keil("x",-25.0,-23.8,xc-6.1,0.03,0.05,2.2,tMatV);
       (window._zebWunsch=window._zebWunsch||[]).push([xc-6.1,-30,true,10.0,{lang:2.2}]);
       _QW_EINF.forEach(function(ez){(window._ueberfahrten=window._ueberfahrten||[]).push([xc+3.5,xc+7.5,ez-3,ez+3]);});}});
   /* 🛣️ Kreuzungsflaechen: eine eigene Platte knapp UEBER den beiden Fahrbahnen deckt
@@ -3116,10 +3168,12 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
   [SZ9+12,-(SZ9+12)].forEach(function(zc){
     [-1,1].forEach(function(sg){var kante=zc+sg*7.92;                  // Bordstein beidseitig, Kante bei ±7,92 (Stein 7,92…8,18)
       var pH={b:2.3,m:tMat};
-      bordsteinKante("z",kante,sg,-(RX-5),RX-5,_zebX,pH);
-      bordsteinKante("z",kante,sg,-RL/2,-RB,_zebX,pH);bordsteinKante("z",kante,sg,RB,RL/2,_zebX,pH);});
+      var w9=eckW(sg===-Math.sign(zc)),xm=RX-w9-ECK_R,xr=RX+w9+ECK_R;   /* Runde 98: Stein endet am Bogenanfang */
+      bordsteinKante("z",kante,sg,-xm,xm,_zebX,pH);
+      bordsteinKante("z",kante,sg,-RL/2,-xr,_zebX,pH);bordsteinKante("z",kante,sg,xr,RL/2,_zebX,pH);});
     [zc>0?zc-10.6:zc+10.6,zc>0?zc+10.6:zc-10.6].forEach(function(ze){ // Erdstreifen AUSSEN neben dem Gehweg (8.0..10.2)
-      erd(2*(RX-5),0.7,0,ze);erd(LR,0.7,-(RB+LR/2),ze);erd(LR,0.7,(RB+LR/2),ze);});});
+      var w9=eckW(Math.abs(ze)<Math.abs(zc)),xm=RX-w9-ECK_R,xr=RX+w9+ECK_R;
+      erd(2*xm,0.7,0,ze);erd(RL/2-xr,0.7,-(xr+RL/2)/2,ze);erd(RL/2-xr,0.7,(xr+RL/2)/2,ze);});});
   /* ⚠️ DIESELBE LAENGE WIE DER GEHWEG — und dieselbe Falle. Weiter oben wurde der
      Querstrassen-GEHWEG von `2*SZ9+14` (=106, Ende bei ±53) auf `2*(SZ9+12)-16`
      (=100, Ende bei ±50) gekuerzt, weil die Hauptstrasse mit Halbbreite 8,05 um
@@ -3131,16 +3185,53 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
      Dafuer gibt es jetzt th-belag.mjs, das die AUSDEHNUNG prueft. */
   [RX,-RX].forEach(function(xc){
     [-1,1].forEach(function(sg){var lq9=[[-(SZ9+12)+16-2.7,-(SZ9+12)+16+2.7,"ab"],[(SZ9+12)-16-2.7,(SZ9+12)-16+2.7,"ab"]];   /* Zebras bei z = ±(58-16) */
-      if(xc<0&&sg<0)lq9.push([-35.2,-24.8,"frei"]);                                  /* Runde 97: Muendung der Strandzufahrt */
+      if(xc<0&&sg<0)lq9.push([-35.0,-25.0,"frei",{rampe:1.2}]);                     /* Runde 97: Muendung der Strandzufahrt (98: Stein laeuft 1,2 m aus, wie die Rampe) */
       if(xc<0&&sg>0)_QW_EINF.forEach(function(ez){lq9.push([ez-3,ez+3,"ab"]);});      /* Runde 97: Trottoirueberfahrten Quartiersplatz */
-      bordsteinKante("x",xc+sg*4.92,sg,-(SZ9+12)+8,(SZ9+12)-8,lq9,{b:2.3,m:tMatV});});
+      var zq9=(SZ9+12)-7.92-ECK_R;                        /* Runde 98: Stein endet am Bogenanfang */
+      bordsteinKante("x",xc+sg*4.92,sg,-zq9,zq9,lq9,{b:2.3,m:tMatV,h:0.05});});   /* h: Quer-Gehweg ist 5 cm hoch */
     /* Erdstreifen aussen neben dem Gehweg (bis 7.4) — Runde 97: nicht quer ueber die Strandzufahrt und
        nicht ueber die Vorfahrflaeche des Quartiersplatzes (beide lagen als brauner Streifen darauf). */
     [xc-7.8,xc+7.8].forEach(function(xe){
       var frei9=(xc<0&&xe<xc)?[[-35.2,-24.8]]:(xc<0&&xe>xc)?[[-17,13]]:[];
-      var L9=[[-(SZ9+12)+8,(SZ9+12)-8]];frei9.forEach(function(f){var N=[];L9.forEach(function(t){
+      var L9=[[-((SZ9+12)-7.92-ECK_R),(SZ9+12)-7.92-ECK_R]];frei9.forEach(function(f){var N=[];L9.forEach(function(t){
         if(t[1]<=f[0]||t[0]>=f[1]){N.push(t);return;}if(t[0]<f[0])N.push([t[0],f[0]]);if(t[1]>f[1])N.push([f[1],t[1]]);});L9=N;});
       L9.forEach(function(t){if(t[1]-t[0]>0.5)erd(0.7,t[1]-t[0],xe,(t[0]+t[1])/2);});});});
+  /* 🔄 ECKBOGEN (Runde 98): je Ecke der vier Hauptkreuzungen (16) drei Teile um den Bogenmittelpunkt C,
+     der ECK_R hinter der Fahrbahnecke P im Gehweg-Quadranten liegt:
+       * Asphalt zwischen P und dem Bogen (die Fahrbahn wird an der Ecke ausgerundet), 1 mm ueber der Fahrbahn,
+         mit derselben Koernung (Kachel 6 m wie die Strassen);
+       * Bogenstein 26 cm breit, 12 cm hoch, auf dem Radius — schliesst an beide gekuerzten Steine an;
+       * Gehweg-Bogen von Radius 0,72 bis unter den Stein: 0,72 ist genau der Abstand von C zur Innenkante der
+         Gehwegstreifen (Haupt 8,0…10,2, Quer 5,0…7,2), die Innenkante laeuft darum als Bogen weiter statt als
+         Stufe; Hoehe 5,5 cm zwischen Haupt- (6) und Quer-/Zubringergehweg (5).
+     Formen liegen in (x, -z) und werden um -90 Grad um x gekippt — dieselbe Konvention wie die Strassen. */
+  (function eckBogen(){
+    var aT=_roadTex();aT.wrapS=aT.wrapT=THREE.RepeatWrapping;aT.repeat.set(1/6,1/6);
+    var aM=stdMat(0x4a4a53,0.92,true);aM.map=aT;
+    var gM=stdMat(0xd4d1c8,0.9,true);if(tMat.map){var gt=tMat.map.clone();gt.needsUpdate=true;gt.wrapS=gt.wrapT=THREE.RepeatWrapping;gt.repeat.set(1/4,1/4);gM.map=gt;}
+    var R=ECK_R,BI=0.72,N=16;
+    function bogen(cx,cz,r,w0,w1,n){var P=[];for(var k=0;k<=n;k++){var w=w0+(w1-w0)*k/n;P.push([cx+r*Math.cos(w),cz+r*Math.sin(w)]);}return P;}
+    /* ⚠️ URSPRUNG AM ECKPUNKT (Runde 98, Bild k41-haupt-ecke: an allen 16 Ecken nur Wiese). Mit Weltkoordinaten in der
+       Form lag der Ursprung jedes Netzes bei (0|0) — `lodAufbau` liest den Standort aus der Matrix, hielt die Ecken fuer
+       88 m entfernt und blendete sie aus (dieselbe Falle wie die Streifen in Runde 96). Die Sonde sah sie trotzdem:
+       Strahlen fragen nicht nach `visible`. Jetzt liegt jedes Stueck an seinem Eckpunkt, die Form relativ dazu. */
+    var OX=0,OZ=0;
+    function form(pkte){var sh=new THREE.Shape();pkte.forEach(function(p,i){if(i)sh.lineTo(p[0]-OX,-(p[1]-OZ));else sh.moveTo(p[0]-OX,-(p[1]-OZ));});return sh;}
+    function flach(sh,mat,y,tiefe){var g=tiefe?new THREE.ExtrudeGeometry(sh,{depth:tiefe,bevelEnabled:false,curveSegments:N}):new THREE.ShapeGeometry(sh);
+      var m=new THREE.Mesh(g,mat);m.rotation.x=-Math.PI/2;m.position.set(OX,y,OZ);m.receiveShadow=true;m.userData.r98=1;scene.add(m);return m;}
+    window._eckBoegen=[];
+    [RX,-RX].forEach(function(xc){[SZ9+12,-(SZ9+12)].forEach(function(zc){[-1,1].forEach(function(ex){[-1,1].forEach(function(ez){
+      var stadt=(ez===-Math.sign(zc)),px=xc+ex*eckW(stadt),pz=zc+ez*7.92,cx=px+ex*R,cz=pz+ez*R;OX=cx;OZ=cz;
+      var wH=Math.atan2(-ez,0),wQ=Math.atan2(0,-ex),d=wQ-wH;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;var w1=wH+d;
+      /* Asphalt: P → Tangentenpunkt an der Hauptkante → Bogen → Tangentenpunkt an der Querkante → P */
+      flach(form([[px,pz]].concat(bogen(cx,cz,R,wH,w1,N))),aM,-0.001);
+      /* Bogenstein und Gehweg-Bogen als Kreisringstuecke */
+      var aussen=bogen(cx,cz,R,wH,w1,N),innen=bogen(cx,cz,R-0.26,w1,wH,N);
+      flach(form(aussen.concat(innen)),_bordM,0,0.12);
+      var gA=bogen(cx,cz,R-0.1,wH,w1,N),gI=bogen(cx,cz,BI,w1,wH,N);
+      flach(form(gA.concat(gI)),gM,0,0.055);
+      window._eckBoegen.push([+px.toFixed(2),+pz.toFixed(2),+cx.toFixed(2),+cz.toFixed(2),R]);});});});});
+  })();
   /* 🅿️ Parkstreifen entlang beider Hauptstrassen + Bushaltebucht (User: „genuegend
      Parkplaetze, dass Auto und Bushaltestelle parkieren koennen"). Liegen auf den 3 m,
      die die Verbreiterung je Seite gebracht hat — der Fahrstreifen bleibt frei. */
@@ -3216,24 +3307,34 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        (User-Markierung auf der Draufsicht). Die inneren Haupt- und Querstrassen
        machen es weiter oben schon richtig, der Ring war der Nachzuegler. */
     var HB=4.8;                                          // halbe Fahrbahn Zubringer/Zufahrt
-    function stueck(a0,a1,laengs,fest,y,mitte,luecken){  // ein Gehwegstueck, wenn lang genug
-      if(a1-a0<0.6)return;
-      if(laengs)tr(a1-a0,2.0,(a0+a1)/2,fest,y); else tr(2.0,a1-a0,fest,(a0+a1)/2,y);
+    /* Runde 98: ohneBord — mitLuecken baut den Stein fuer die ganze Gehweglinie in EINEM Band (mit
+       Muendungsluecken, dort laeuft er aus); vorher hatte jedes Stueck seinen eigenen Stein, auch die
+       Rampen an den Muendungen (12-cm-Stein neben einer 3-cm-Platte). Und die Platte laesst "ab"-Luecken
+       frei — am Zubringer lag die abgesenkte 3-cm-Platte UNTER der 5-cm-Platte und war unsichtbar. */
+    function bordSeite(laengs,fest,mitte){
       /* Bordstein an der Fahrbahnkante (Ring-Halbbreite 4,5): die Kante liegt 1,1 m vom
          Gehwegmittelpunkt Richtung Strassenmitte; die naehere Ringmitte entscheidet die Seite. */
       var mitten=laengs?[RGZ_N,RGZ_S]:[-RGX,RGX],c9=Math.abs(mitten[0]-fest)<Math.abs(mitten[1]-fest)?mitten[0]:mitten[1];
+      if(mitte!==undefined)c9=mitte;return [c9,fest>c9?1:-1];}
+    function stueck(a0,a1,laengs,fest,y,mitte,luecken,ohneBord){  // ein Gehwegstueck, wenn lang genug
+      if(a1-a0<0.6)return;
+      var P9=[[a0,a1]];(luecken||[]).forEach(function(g){if(g[2]!=="ab")return;var N=[];P9.forEach(function(t){
+        if(t[1]<=g[0]||t[0]>=g[1]){N.push(t);return;}if(t[0]<g[0])N.push([t[0],g[0]]);if(t[1]>g[1])N.push([g[1],t[1]]);});P9=N;});
+      P9.forEach(function(t){if(t[1]-t[0]<0.3)return;
+        if(laengs)tr(t[1]-t[0],2.0,(t[0]+t[1])/2,fest,y); else tr(2.0,t[1]-t[0],fest,(t[0]+t[1])/2,y);});
+      if(ohneBord)return;
+      var bs=bordSeite(laengs,fest,mitte),c9=bs[0];
       /* ⚠️ ZUBRINGER NORD/SUED (Runde 97, th-strahl bei (73,1|-80) und (107,4|-80)): fuer die Gehwege der
          Zubringer bei x = ±78 ± 5,6 war die „naehere Ringmitte" ±112 — ihre Bordsteine lagen darum als
          zweiter und dritter Stein auf der Ost-/Westkante des Rings (x ±107,5), am Zubringer selbst lag
          zwischen Asphalt (Kante ±4,5) und Platte ein 10-cm-Streifen Wiese ohne Stein. Die Aufrufer geben
          die Zubringermitte jetzt mit. */
-      if(mitte!==undefined)c9=mitte;
-      var sg=fest>c9?1:-1;
+      var sg=bs[1];
       /* ⚠️ KEIN BORDSTEIN AM INNEREN SUED-GEHWEG (Runde 93, th-gleis): dort liegt das Gleis — Schienen
          auf z 110,7 und 113,3, die Ringkante auf 113,5. Ein 26-cm-Stein bei 113,24…113,5 laege auf der
          Suedschiene (3 Bauteile ueber dem Gleiskoerper). Der Schotter ist dort die Kante. */
       if(laengs&&sg<0&&c9===RGZ_S)return;
-      bordsteinKante(laengs?"z":"x",c9+sg*4.5,sg,a0,a1,luecken||[]);}
+      bordsteinKante(laengs?"z":"x",c9+sg*4.5,sg,a0,a1,luecken||[],{b:2.0,m:laengs?tMat:tMatV,h:y});}
     /* Luecken als Zahl (halbe Breite HB) oder [Mitte, halbe Breite] */
     /* 🚸 RUNDE 97: eine Luecke mit drittem Eintrag {breite, schraeg} ist eine MUENDUNG mit Uebergang —
        der Gehweg endet nicht mehr mit einer 5-cm-Kante an der Fahrbahn, sondern mit 1,2 m Rampe (3 cm),
@@ -3241,13 +3342,28 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        schraeg einmuendenden Zubringern parallel zu deren Fahrbahn geschert). Die Streifen entstehen
        erst, wenn `_zebraAllg` steht (weiter unten) — darum als Wunsch. */
     function mitLuecken(von,bis,luecken,laengs,fest,y){
-      var g=von,L=luecken.map(function(c){return Array.isArray(c)?c:[c,HB];}).sort(function(p,q){return p[0]-q[0];});
+      var g=von,L=luecken.map(function(c){return Array.isArray(c)?c:[c,HB];}).sort(function(p,q){return p[0]-q[0];}),frei=[];
+      var bs=bordSeite(laengs,fest),qc=bs[0]+bs[1]*(4.5+0.13);   /* Mitte der Steinlinie */
       L.forEach(function(c){var rp=c[2]?1.2:0;
-        stueck(g,Math.min(bis,c[0]-c[1]-rp),laengs,fest,y);
-        if(rp){stueck(c[0]-c[1]-rp,c[0]-c[1],laengs,fest,0.03);stueck(c[0]+c[1],c[0]+c[1]+rp,laengs,fest,0.03);
+        stueck(g,Math.min(bis,c[0]-c[1]-rp),laengs,fest,y,undefined,undefined,true);
+        /* Runde 98: Rampe von Gehweghoehe auf 3 cm zur Muendung hin (vorher flache 3-cm-Platte, 2 cm Stufe) */
+        if(rp){_keil(laengs?"z":"x",c[0]-c[1]-rp,c[0]-c[1],fest,y,0.03,2.0,laengs?tMat:tMatV);
+          _keil(laengs?"z":"x",c[0]+c[1],c[0]+c[1]+rp,fest,0.03,y,2.0,laengs?tMat:tMatV);
           (window._zebWunsch=window._zebWunsch||[]).push([laengs?c[0]:fest,laengs?fest:c[0],!laengs,c[2].breite,{lang:2.2,schraeg:c[2].schraeg}]);}
+        /* ⚠️ DIE LUECKE IM STEIN IST NICHT DIE LUECKE IM GEHWEG (Runde 98, probe-stufen: bis 0,9 m Loch zwischen
+           Steinende und Asphalt an den Zubringer-Muendungen). Der Gehweg liegt 1,1 m weiter draussen als der
+           Stein; ein unter 60 Grad einmuendender Zubringer kreuzt die Steinlinie 0,6 m weiter innen. Mit c[2].rand
+           (halbe Asphaltbreite quer zur Einmuendung) liegt die Luecke dort, wo der Asphalt die STEINLINIE schneidet. */
+        var gm=c[0],gr=c[1];
+        if(c[2]&&c[2].rand){gr=c[2].rand;
+          if(c[2].schraeg!==undefined){var sf=Math.sin(c[2].schraeg),cf=Math.cos(c[2].schraeg);   /* Speiche durch den Ursprung */
+            if(laengs){gm=qc*cf/sf;gr=c[2].rand/Math.abs(sf);}else{gm=qc*sf/cf;gr=c[2].rand/Math.abs(cf);}}}
+        frei.push([gm-gr,gm+gr,"frei",{rampe:rp||0.6}]);
         g=Math.max(g,c[0]+c[1]+rp);});
-      stueck(g,bis,laengs,fest,y);}
+      stueck(g,bis,laengs,fest,y,undefined,undefined,true);
+      /* EIN Stein fuer die ganze Linie: an jeder Muendung laeuft er auf der Rampenlaenge auf 3 cm aus */
+      if(laengs&&bs[1]<0&&bs[0]===RGZ_S)return;   /* Gleis, s. stueck() */
+      bordsteinKante(laengs?"z":"x",bs[0]+bs[1]*4.5,bs[1],von,bis,frei,{b:2.0,m:laengs?tMat:tMatV,h:y});}
     /* 🛣️ DIE SECHS RADIALEN ZUBRINGER (Runde 93, Bild kante-ring-zubringer): sie schneiden den Ring bei
        x = ±112·tan30 = ±64,7 (Ost), x = ±118/tan60 = ±68,1 (Sued) und x = ±100/tan60 = ±57,7 (Nord) —
        und die Ring-Gehwege liefen dort als 5-cm-Platte quer ueber ihre Fahrbahn. Schraeg gekreuzt ist
@@ -3266,10 +3382,11 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        Strandzufahrt 10,0 (ihr Asphalt ist 10 m breit — die alte Luecke HB 4,8 liess die Platten 0,2 m
        darauf liegen, jetzt 5,2). Winkel der Speiche = Fahrtrichtung der Zubringer-Fahrbahn. */
     var G9=Math.PI/180;
-    ZMO=[[117.6*T30,HZ,{breite:9.6,schraeg:30*G9}],[-117.6*T30,HZ,{breite:9.6,schraeg:330*G9}]];
-    ZMS=[[123.6/T60,HZ,{breite:9.6,schraeg:60*G9}],[-123.6/T60,HZ,{breite:9.6,schraeg:120*G9}]];
-    ZMN=[[105.6/T60,HZ,{breite:9.6,schraeg:300*G9}],[-105.6/T60,HZ,{breite:9.6,schraeg:240*G9}]];
-    var QZN=[[-RX,5.3,{breite:9.0}],[RX,5.3,{breite:9.0}]],STR=[[-30,5.2,{breite:10.0}]];
+    /* rand (Runde 98): halbe Asphaltbreite quer zur Einmuendung — Zubringer 4,2, Zubringer N 4,5, Strandzufahrt 5,0 */
+    ZMO=[[117.6*T30,HZ,{breite:9.6,schraeg:30*G9,rand:4.2}],[-117.6*T30,HZ,{breite:9.6,schraeg:330*G9,rand:4.2}]];
+    ZMS=[[123.6/T60,HZ,{breite:9.6,schraeg:60*G9,rand:4.2}],[-123.6/T60,HZ,{breite:9.6,schraeg:120*G9,rand:4.2}]];
+    ZMN=[[105.6/T60,HZ,{breite:9.6,schraeg:300*G9,rand:4.2}],[-105.6/T60,HZ,{breite:9.6,schraeg:240*G9,rand:4.2}]];
+    var QZN=[[-RX,5.3,{breite:9.0,rand:4.5}],[RX,5.3,{breite:9.0,rand:4.5}]],STR=[[-30,5.2,{breite:10.0,rand:5.0}]];
     mitLuecken(-AUS,AUS,ZMN,true,-105.6,0.052);                                   // Ring Nord aussen
     mitLuecken(-INN,INN,QZN,true,-94.4,0.052);                                    // Ring Nord innen: Muendungen der Zubringer N
     mitLuecken(-INN,INN,QZ.concat([[11,3.4],[25,3.4]]),true,112.4,0.052);         // Ring Sued innen (Bahnhof-Zufahrt)
@@ -3279,7 +3396,15 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        brauchen dort ebenfalls eine Luecke, sonst endet auch sie an einer Kante. */
     mitLuecken(zA0,zA1,STR,false,-117.6,0.054);                     // Ring West aussen (Strandzufahrt)
     mitLuecken(zI0,zI1,STR,false,-106.4,0.054);                     // Ring West innen
-    mitLuecken(zI0,zI1,[],false,106.4,0.054);  mitLuecken(zA0,zA1,ZMO,false,117.6,0.054);  // Ring Ost: Luecke nur aussen (Bordsteine kommen aus stueck)
+    /* 🚧 OST-AUSFALLSTRASSE (Runde 98, probe-stufen „Loch" (119|±4,5), Strahl laengs z 0): der Gewerbe-Anschluss
+       beginnt bei (112|0) in der Ringmitte — aber der aeussere Ring-Gehweg (5,4 cm) und sein 12-cm-Stein liefen
+       quer ueber die Einfahrt (x 116,6…118,6). Wer den Ring nach Osten verliess, fuhr gegen eine Kante; th-kante
+       sah keine Einmuendung, weil dort keine Luecke war. Jetzt eine Muendung wie an den Zubringern. */
+    mitLuecken(zI0,zI1,[],false,106.4,0.054);  mitLuecken(zA0,zA1,ZMO.concat([[0,7.16,{breite:9.0,rand:4.5}]]),false,117.6,0.054);  // Ring Ost: Luecke nur aussen (Bordsteine kommen aus stueck)
+    /* Ost-Ausfallstrasse (Runde 98): Gehwegluecke 7,16 statt 4,76 = bis an die Aussenkante der abgesenkten Platte des
+       Anschlusses (4,5 + 0,26 Stein + 2,4). Mit 4,76 stieg der Ring-Gehweg mitten auf der Landung wieder auf 5,4 cm, und
+       zwischen ihm und der Rampe des Anschlusses lag eine 0,8 m breite 3-cm-Mulde (probe-stufen, Profil bei x 119,7).
+       Jetzt ist die ganze Landung EINE Flaeche auf 3 cm; der Ring-Gehweg steigt erst dahinter an. */
     [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
       [xc-5.6,xc+5.6].forEach(function(xe){
         /* Fruehere Laenge |RGZ_N+SZ9+23|-6 endete bei z = -97 und damit 1,1 m
@@ -3287,8 +3412,9 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
            Aussenkante des Ring-Gehwegs. */
         /* Runde 97: Bordstein an der Zubringerkante (Mitte xc), am Ringende auf 1,4 m abgesenkt — dort
            endet der neue Streifen ueber die Zubringer-Muendung (Ring Nord innen). */
-        stueck(RGZ_N+5.6, -(SZ9+23)+3, false, xe, 0.05, xc, [[RGZ_N+5.6,RGZ_N+7.0,"ab"]]);
-        stueck(SZ9+23-3, RGZ_S-5.6,    false, xe, 0.05, xc);});});
+        /* Runde 98: Zubringer-Gehweg beginnt am Bogenanfang der Kreuzungsecke (Hauptkante 7,92 + 3 m) statt an der Hauptkante */
+        stueck(RGZ_N+5.6, -(SZ9+12+7.92+ECK_R), false, xe, 0.05, xc, [[RGZ_N+5.6,RGZ_N+7.0,"ab"]]);
+        stueck(SZ9+12+7.92+ECK_R, RGZ_S-5.6,    false, xe, 0.05, xc);});});
   })();
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
@@ -3809,23 +3935,9 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
        HELLER als die texturierte Fahrbahn — im Screenshot lasen sich die Flicken
        wie graue Render-Fehler statt wie Ausbesserungen. Wer sie will, muss die
        Strassentextur mitgeben, nicht nur eine Farbe. */
-    /* ── Eck-Trottoirs (User-Screenshot „strasse hier schoener machen"): die
-       Gehwegbaender enden stumpf vor den Zebras, die Rasenecke lief spitz bis an
-       den Asphalt. Viertelkreis-Platten runden die vier Ecken jeder Hauptkreuzung —
-       vier InstancedMeshes (eine je Quadrant-Ausrichtung) = 4 Zeichenaufrufe.
-       y=0.065 liegt knapp UEBER den Gehwegbaendern (0.05..0.06) — kein Z-Streit. */
-    var eckM=new THREE.MeshStandardMaterial({color:0xd4d1c8,roughness:0.9});eckM.envMapIntensity=0.15;
-    /* CircleGeometry-Sektor: nach rotation.x=-PI/2 wird lokal +y zu Welt -z, darum
-       thetaStart je Ziel-Quadrant (E0=x-Seite, E1=z-Seite) aus sin/cos-Vorzeichen. */
-    var _eckStart={"1,-1":0,"-1,-1":Math.PI/2,"-1,1":Math.PI,"1,1":-Math.PI/2};
-    [[1,-1],[-1,-1],[-1,1],[1,1]].forEach(function(E){
-      var g=new THREE.CircleGeometry(4.6,10,_eckStart[E[0]+","+E[1]],Math.PI/2);
-      var inst=new THREE.InstancedMesh(g,eckM,4);
-      [[RX,SZd],[RX,-SZd],[-RX,SZd],[-RX,-SZd]].forEach(function(K,ki){
-        dm.position.set(K[0]+E[0]*5,0.065,K[1]+E[1]*8);   /* Fahrbahnkanten: Quer ±5, Haupt ±8 */
-        dm.rotation.set(-Math.PI/2,0,0);dm.updateMatrix();inst.setMatrixAt(ki,dm.matrix);});
-      dm.rotation.set(0,0,0);
-      inst.receiveShadow=true;scene.add(inst);});
+    /* ── Eck-Trottoirs: hier lagen bis Runde 97 Viertelkreis-Platten (r 4,6, y 0,065) UEBER der Gehwegecke jeder
+       Hauptkreuzung — die Fahrbahnecke darunter blieb scharf. Runde 98 rundet die Ecke selbst (eckBogen() in
+       baueTrottoirs: Asphalt, Bogenstein, Gehweg-Bogen); eine Platte hier laege auf dem neuen Asphalt. */
   })();
   var _qMat=stdMat(0xd8d8cc,0.75);_qMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_qMat);
   /* ⚠️ Hier lag eine gestrichelte Mittellinie auf z=-58 — genau unter der
@@ -6332,6 +6444,13 @@ setTimeout(function baueGebaeude(){
       var lk=J9.map(function(j,ji){return [j-SW/2-0.26,j+SW/2+0.26,"frei",J9S[ji]];}).concat(_zebV);
       /* auf der Anschluss-Seite ist die Einmuendung offen; auf der Gegenseite bleibt der Stein */
       var lk2=lk.filter(function(g){if(g[2]!=="frei")return true;return g[3]===sg;});
+      /* 🔄 ABGESENKTE ECKE (Runde 98, probe-stufen / Bild k40-viertel-t): zwischen der Einmuendung (bis j+4,76)
+         und dem Streifen daneben (ab j+7,1) blieben 2,3 m voller Stein ohne Gehweg dahinter (das Plattenstueck
+         dort ist 0,2 m kurz und entfaellt) — die Plattenrampe stieg auf 6 cm neben Wiese. Auf der Seite der
+         Einmuendung ist die ganze Ecke abgesenkt: Stein und Platte bleiben von der Einmuendung bis hinter den
+         Streifen auf 3 cm. */
+      J9.forEach(function(j,ji){if(J9S[ji]!==sg)return;var zj=(j+TRIM+2.9<=_mitte+laenge/2-2)?j+TRIM+2.9:j-TRIM-2.9;
+        if(zj>j)lk2.push([j+SW/2+0.26,zj-2.7,"ab"]);else lk2.push([zj+2.7,j-SW/2-0.26,"ab"]);});
       bordsteinKante(laengs?"z":"x",_quer+sg*SW/2,sg,_mitte-laenge/2,_mitte+laenge/2,lk2,{b:2.4,m:twM});});
     /* Mittelstreifen */
     var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
@@ -6358,7 +6477,25 @@ setTimeout(function baueGebaeude(){
            beiden Seiten fuer 7 m, eine Kerbe im Strassenrand ohne Grund. `cfg.anschlussGerade` laesst
            Gehweg, Bordstein und Striche direkt an der Nachbarstrasse beginnen. */
         var vorlauf=cfg.anschlussGerade?0:7;
-        function segment(x1,z1,x2,z2,trimA,trimB,istT,istTA){
+        /* 🔄 AUSSENKURVE DES L-WEGS (Runde 98, probe-stufen „Loch" an den Knicken: Zoo, Gewerbe, Burgdorf, Bauernhof).
+           Beide Schenkel endeten am Knick mit ihren vollen Trimmungen (4,5 / 6,9 m) — auf der Aussenseite fehlte
+           darum ein Quadrat Asphalt (4,5 x 4,5 m Wiese in der Kurve, der Verkehr fuhr drueber), dazu Stein und
+           Gehweg ueber Eck. Jetzt wie an den Ringecken: aussen laufen Stein und Gehweg beider Schenkel bis zum
+           Knick, dazwischen ein Viertelkreis Asphalt (r 4,5), ein Bogenstein (4,5…4,76) und ein Gehweg-Bogen
+           (4,7…6,9). ecke = {ende:"A"|"B", sg: Aussenseite quer zum Schenkel}. */
+        function eckeL(kx,kz,d1x,d1z,d2x,d2z){
+          if(!window._lAsphM){var aT=_roadTex();aT.wrapS=aT.wrapT=THREE.RepeatWrapping;aT.repeat.set(1/6,1/6);window._lAsphM=stdMat(0x4a4a53,0.92,true);window._lAsphM.map=aT;}
+          var wU=Math.atan2(d1z,d1x),wV=Math.atan2(-d2z,-d2x),d=wU-wV;if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;
+          function bg(r,w0,w1){var P=[];for(var k=0;k<=12;k++){var w=w0+(w1-w0)*k/12;P.push([kx+r*Math.cos(w),kz+r*Math.sin(w)]);}return P;}
+          /* Ursprung am Knick (sonst blendet lodAufbau die Stuecke aus, s. eckBogen) */
+          function sh(P){var S=new THREE.Shape();P.forEach(function(p,i){if(i)S.lineTo(p[0]-kx,-(p[1]-kz));else S.moveTo(p[0]-kx,-(p[1]-kz));});return S;}
+          function teil(P,mat,y,tiefe){var g=tiefe?new THREE.ExtrudeGeometry(sh(P),{depth:tiefe,bevelEnabled:false}):new THREE.ShapeGeometry(sh(P));
+            var m=new THREE.Mesh(g,mat);m.rotation.x=-Math.PI/2;m.position.set(kx,y,kz);m.receiveShadow=true;m.userData.r98=1;scene.add(m);}
+          teil([[kx,kz]].concat(bg(SW/2,wV,wV+d)),window._lAsphM,-0.0098);
+          teil(bg(SW/2,wV,wV+d).concat(bg(SW/2+0.26,wV+d,wV)),_bordM||betMat(0xbfbcb2,0.85),0,0.12);
+          teil(bg(SW/2+0.2,wV,wV+d).concat(bg(SW/2+TW+0.2,wV+d,wV)),twM,0,0.06);
+          (window._lEcken=window._lEcken||[]).push([+kx.toFixed(1),+kz.toFixed(1)]);}
+        function segment(x1,z1,x2,z2,trimA,trimB,istT,istTA,ecke,bordA){
           /* trimA/trimB (Runde 93): Meter, um die Gehweg und Bordstein an diesem Ende zurueckbleiben,
              weil dort eine andere Fahrbahn liegt (aeussere Strasse 7, Ecke des L-Wegs 4,5,
              Viertelstrasse 4,7 = bis an deren Gehwegkante). istT: das B-Ende muendet senkrecht in die
@@ -6391,20 +6528,46 @@ setTimeout(function baueGebaeude(){
              Behandlung wie das T-Ende — Uebergaenge (257,4|-140) und (-285|-257,4) liefen sonst gegen
              den vollen 12-cm-Stein, weil trimA nur 7 m Luecke liess und nichts absenkte. */
           var tTa=(!vorw&&istT)||(vorw&&istTA), tTb=(vorw&&istT)||(!vorw&&istTA);   /* liegt ein T-Ende bei a0 oder a1? */
+          var eckA1=ecke?((ecke.ende==="B")===vorw):null;   /* Knick bei a1 (true) oder a0 (false) */
+          /* bordA (Runde 98): der STEIN am A-Ende darf naeher an die andere Strasse als Gehweg und Platten — die 7 m
+             Vorlauf sind fuer den Gehweg gedacht; wo die andere Fahrbahn schon nach 4,76 m (Ring) bzw. 5,2 m
+             (Achterbahn-Stich) endet, lag dazwischen ein Streifen Wiese neben dem Steinende. */
+          var bAo=(bordA&&typeof bordA==="object")?bordA:{frei:bordA},bA=bAo.frei===undefined?trimA:bAo.frei,bTA=vorw?bA:trimB,bTB=vorw?trimB:bA;
           /* am T-Ende reicht die Luecke bis hinter den Zebrastreifen (10 m); die 3-cm-Platte
              darunter setzt bordsteinKante mit dem "ab"-Stein */
           if(tA)teile=teile.map(function(t){return [Math.max(t[0],a0+(tTa?10:tA)),t[1]];});
           if(tB)teile=teile.map(function(t){return [t[0],Math.min(t[1],a1-(tTb?10:tB))];});
+          /* bordA.ab: der Gehweg beginnt erst hinter der abgesenkten Platte (probe-stufen: sonst lag die 6-cm-Platte ab
+             7 m UEBER der 3-cm-Platte bis 7,7 m — eine 3-cm-Stufe mitten in der Absenkung, Ost-Ausfallstrasse). */
+          function abA(L9){if(!bAo.ab)return L9;
+            return vorw?L9.map(function(t){return [Math.max(t[0],a0+bAo.ab),t[1]];}):L9.map(function(t){return [t[0],Math.min(t[1],a1-bAo.ab)];});}
+          teile=abA(teile);
           /* Bordstein beidseits: frei an der Landstrassen-Kreuzung und an den getrimmten Enden,
              abgesenkt ueber die Breite des Zebrastreifens am T-Ende (4,5…10 m ab Strassenmitte) */
-          var lkB=[];if(kr!==null)lkB.push([kr-5.7,kr+5.7,"frei"]);
-          if(tA)lkB.push([a0,a0+(tTa?4.5:tA),"frei"]);if(tB)lkB.push([a1-(tTb?4.5:tB),a1,"frei"]);
+          var lkB=[];
+          if(tA)lkB.push([a0,a0+(tTa?4.5:bTA),"frei"]);if(tB)lkB.push([a1-(tTb?4.5:bTB),a1,"frei"]);
           if(tTa)lkB.push([a0+4.5,a0+10,"ab"]);if(tTb)lkB.push([a1-10,a1-4.5,"ab"]);
-          [-1,1].forEach(function(sg){bordsteinKante(waag?"z":"x",(waag?mz:mx)+sg*SW/2,sg,a0,a1,lkB,{b:2.4,m:twM});});
-          function trimm(L9){if(tA)L9=L9.map(function(t){return [Math.max(t[0],a0+(tTa?10:tA)),t[1]];});
-            if(tB)L9=L9.map(function(t){return [t[0],Math.min(t[1],a1-(tTb?10:tB))];});return L9;}
+          /* bordA.ab (Runde 98): quert am A-Ende ein Gehweg der anderen Strasse (Fussgaengerstreifen auf dessen Linie),
+             ist der Stein bis hinter dessen Landung abgesenkt — sonst endete der Streifen an einer 12-cm-Kante
+             (th-kante: Uebergang (117,6|0) „nicht abgesenkt", Ost-Ausfallstrasse). */
+          if(bAo.ab){if(vorw)lkB.push([a0+bA,a0+bAo.ab,"ab"]);else lkB.push([a1-bAo.ab,a1-bA,"ab"]);}
+          /* ⚠️ LANDSTRASSE JE STEINLINIE (Runde 98, probe-stufen: Stein endete 1,45 m vor dem Asphalt der
+             Landstrasse, dazwischen Wiese). Die Luecke war kr ± 5,7 um den Schnittpunkt der MITTELLINIE; jede
+             Steinlinie schneidet r = 200 an ihrer eigenen Stelle (beim Bauernhof unter 16 Grad um Meter
+             verschieden). Wie die Gehwege: eigener Schnittpunkt, halbe Breite 4,2/cos, 0,15 m Luft, der Stein
+             laeuft auf 1,2 m aus — so lang wie die Gehwegrampe daneben. */
+          [-1,1].forEach(function(sg){var lk9=lkB.slice(),ql=(waag?mz:mx)+sg*(SW/2+0.13);
+            if(ecke&&sg===ecke.sg)lk9=lk9.filter(function(g){return !(g[2]==="frei"&&(eckA1?Math.abs(g[1]-a1)<1e-6:Math.abs(g[0]-a0)<1e-6));});   /* aussen am Knick: Stein bis ans Ende */
+            if(kr!==null){var best=kr,bd=1e9;
+              for(var q8=kr-9;q8<=kr+9;q8+=0.05){var qx8=waag?q8:ql,qz8=waag?ql:q8,dd=Math.abs(Math.hypot(qx8,qz8)-200);if(dd<bd){bd=dd;best=q8;}}
+              var bx8=waag?best:ql,bz8=waag?ql:best,cosB=Math.abs((waag?bx8:bz8)/Math.hypot(bx8,bz8)),hw8=4.2/Math.max(0.5,cosB);
+              lk9.push([best-hw8-0.15,best+hw8+0.15,"frei",{rampe:1.2}]);}
+            bordsteinKante(waag?"z":"x",(waag?mz:mx)+sg*SW/2,sg,a0,a1,lk9,{b:2.4,m:twM});});
+          function trimm(L9,ohneA,ohneB){if(tA&&!ohneA)L9=L9.map(function(t){return [Math.max(t[0],a0+(tTa?10:tA)),t[1]];});
+            if(tB&&!ohneB)L9=L9.map(function(t){return [t[0],Math.min(t[1],a1-(tTb?10:tB))];});return (vorw?ohneA:ohneB)?L9:abA(L9);}
           [-TO,TO].forEach(function(o){                       // Trottoir beidseits
-            var tS=teile,rampen=[];
+            var aus=ecke&&Math.sign(o)===ecke.sg,oA=aus&&!eckA1,oB=aus&&eckA1;   /* aussen am Knick: Gehweg bis ans Ende */
+            var tS=aus?trimm(kr===null?[[a0,a1]]:[[a0,kr-5.7],[kr+5.7,a1]],oA,oB):teile,rampen=[];
             /* 🚸 UEBER DIE LANDSTRASSE (Runde 97, th-kante: (201|0), (0|198), (56|-193) ohne Uebergang): die
                Gehwege endeten 5,7 m vor der Ringmitte mit einer Kante im Gras. Jetzt sucht JEDE Gehweglinie
                ihren eigenen Schnittpunkt mit r = 200 — beim Bauernhof kreuzt die Landstrasse 16 Grad schraeg,
@@ -6415,15 +6578,14 @@ setTimeout(function baueGebaeude(){
               for(var q9=kr-9;q9<=kr+9;q9+=0.05){var qx9=waag?q9:mx+o,qz9=waag?mz+o:q9,dd=Math.abs(Math.hypot(qx9,qz9)-200);if(dd<bd){bd=dd;best=q9;}}
               var cx9=waag?best:mx+o,cz9=waag?mz+o:best,rr9=Math.hypot(cx9,cz9),cosA=Math.abs((waag?cx9:cz9)/rr9),hw=4.2/Math.max(0.5,cosA);
               var e0=best-hw-0.15,e1=best+hw+0.15;
-              tS=trimm([[a0,e0-1.2],[e1+1.2,a1]]);rampen=[[e0-1.2,e0],[e1,e1+1.2]];
+              tS=trimm([[a0,e0-1.2],[e1+1.2,a1]],oA,oB);rampen=[[e0-1.2,e0],[e1,e1+1.2]];
               window._zebraAllg(cx9,cz9,!waag,2*hw,{lang:TW,schraeg:Math.atan2(cz9,cx9)+Math.PI/2});
               if(window._ringStrichLuecke)window._ringStrichLuecke(cx9,cz9);else (window._ringLueckeWunsch=window._ringLueckeWunsch||[]).push([cx9,cz9]);}
             tS.forEach(function(t9){if(t9[1]-t9[0]<1)return;var tl=t9[1]-t9[0],tm=(t9[0]+t9[1])/2;
               var t=new THREE.Mesh(new THREE.BoxGeometry(waag?tl:TW,0.06,waag?TW:tl),twM);
               t.position.set(waag?tm:mx+o,0.03,waag?mz+o:tm);t.receiveShadow=true;scene.add(t);});
-            rampen.forEach(function(t9){var tl=t9[1]-t9[0],tm=(t9[0]+t9[1])/2;
-              var t=new THREE.Mesh(new THREE.BoxGeometry(waag?tl:TW,0.03,waag?TW:tl),twM);
-              t.position.set(waag?tm:mx+o,0.015,waag?mz+o:tm);t.receiveShadow=true;scene.add(t);});});
+            /* Runde 98: echte Rampen (6 → 3 cm zur Landstrasse hin) statt flacher 3-cm-Stuecke */
+            rampen.forEach(function(t9,ri){_keil(waag?"z":"x",t9[0],t9[1],waag?mz+o:mx+o,ri===0?0.06:0.03,ri===0?0.03:0.06,TW,twM);});});
           for(var m2=0;m2<Math.floor(len/9);m2++){            // Mittelstreifen
             var off=-len/2+5+m2*9;
             /* ⚠️ Nicht durch fremde Kreuzungen: der Anschluss von Gewerbe Ost kreuzt die
@@ -6449,14 +6611,16 @@ setTimeout(function baueGebaeude(){
            Knick schon innerhalb der Strasse, entfaellt er. */
         if(Math.abs(VX-ax)>2&&Math.abs(VZ-az)>2){
           if(laengs){var ex9=VX-Math.sign(VX-ax)*(laenge/2-0.5),ecke9=Math.abs(ex9-ax)>2&&Math.sign(ex9-ax)===Math.sign(VX-ax);
-            segment(ax,az,ax,VZ,vorlauf,ecke9?4.5:4.7,!ecke9,!!cfg.anschlussT);                           /* Strasse laeuft in x */
-            if(ecke9)segment(ax,VZ,ex9,VZ,6.9,0,false);}
+            segment(ax,az,ax,VZ,vorlauf,ecke9?4.5:4.7,!ecke9,!!cfg.anschlussT,ecke9?{ende:"B",sg:-Math.sign(ex9-ax)}:null,cfg.vorlaufBord);   /* Strasse laeuft in x */
+            if(ecke9){segment(ax,VZ,ex9,VZ,6.9,0,false,false,{ende:"A",sg:Math.sign(VZ-az)});
+              eckeL(ax,VZ,0,Math.sign(VZ-az),Math.sign(ex9-ax),0);}}
           else      {var ez9=VZ-Math.sign(VZ-az)*(laenge/2-0.5),ecke8=Math.abs(ez9-az)>2&&Math.sign(ez9-az)===Math.sign(VZ-az);
-            segment(ax,az,VX,az,vorlauf,ecke8?4.5:4.7,!ecke8,!!cfg.anschlussT);                           /* Strasse laeuft in z */
-            if(ecke8)segment(VX,az,VX,ez9,6.9,0,false);}}
-        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,vorlauf,0,false,!!cfg.anschlussT);}   /* gerade, auf der Strassenlinie */
-        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,vorlauf,0,false,!!cfg.anschlussT);}
-        else segment(ax,az,VX,VZ,vorlauf,4.7,true,!!cfg.anschlussT);   /* gerade, senkrecht in die Strasse */
+            segment(ax,az,VX,az,vorlauf,ecke8?4.5:4.7,!ecke8,!!cfg.anschlussT,ecke8?{ende:"B",sg:-Math.sign(ez9-az)}:null,cfg.vorlaufBord);   /* Strasse laeuft in z */
+            if(ecke8){segment(VX,az,VX,ez9,6.9,0,false,false,{ende:"A",sg:Math.sign(VX-ax)});
+              eckeL(VX,az,Math.sign(VX-ax),0,0,Math.sign(ez9-az));}}}
+        else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,vorlauf,0,false,!!cfg.anschlussT,null,cfg.vorlaufBord);}   /* gerade, auf der Strassenlinie */
+        else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,vorlauf,0,false,!!cfg.anschlussT,null,cfg.vorlaufBord);}
+        else segment(ax,az,VX,VZ,vorlauf,4.7,true,!!cfg.anschlussT,null,cfg.vorlaufBord);   /* gerade, senkrecht in die Strasse */
       })();}
     /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
        damit stimmt der Abstand zum Nachbarn auch bei unterschiedlich breiten Gebaeuden. */
@@ -6620,7 +6784,7 @@ setTimeout(function baueGebaeude(){
          -160 nur fuer die Randbaeume: der Ost-Randbaum (294|-160) stand auf dem Flughafen-Vorfeld, das seit
          Runde 92 die Nordost-Ecke dieser Platte (x 267…298, z -168…-153) ueberdeckt. Die Bauzeile aendert
          sich dadurch nicht (der -140-Korridor schiebt den ersten Bau ohnehin auf denselben Platz). */
-      anschluss:[112,0],abstand:13,luecke:10,rand:14,
+      anschluss:[112,0],abstand:13,luecke:10,rand:14,vorlaufBord:{frei:4.76,ab:7.7},   /* Runde 98: Stein beginnt am Ring-Aussenstein (4,5 + 0,26), abgesenkt unter dem Streifen auf der Ring-Gehweglinie (bis 7,7 = 2 m hinter seiner Mitte 117,6) */
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
          richtig, die aelteren th20/th22/th23 standen noch mit Phantasiewerten da:
          Parkgarage 20x15 statt real 54.7x37, Bank 16x12 statt 33.9x26.6, Post
@@ -6748,7 +6912,7 @@ setTimeout(function baueGebaeude(){
       /* 🐛 anschluss war [0,146] — die SEEMITTE. Der Verbinder endete als Asphalt-
          zunge samt Mittelstreifen und Laterne mitten im Wasser (User: „wasser?").
          Jetzt endet er am Suedufer (Wasserradius ~20 + Sandring). */
-      anschluss:[0,172],abstand:15,luecke:18,rand:18,
+      anschluss:[0,172],abstand:15,luecke:18,rand:18,vorlaufBord:5.2,   /* Runde 98: Stein beginnt am Rand des Achterbahn-Stichs (173 + 4,2) */
       bauten:[{file:"th19_schwimmbad.glb",h:9,w:22,d:16},
               {file:"th19_tennishalle.glb",h:10,w:22,d:16},
               {file:"th19_fitnessstudio.glb",h:8,w:18,d:14},

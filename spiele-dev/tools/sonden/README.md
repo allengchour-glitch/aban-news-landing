@@ -63,3 +63,23 @@ Vor dem Start `ps -eo cmd | grep th-` fragen.
 - `probe-wer.mjs '[[x,z,r],…]'` — alle Meshes an Punkten, mit Eltern-Kette; mit `ZEB=<i>` dazu Übergang i und
   seine Schilder. Hat gezeigt: die „Cubes" auf dem Stadtring West waren der Zug am Bahnübergang (th-strassen
   schliesst `_zug` jetzt aus).
+
+**Runde 98 (Übergänge noch schöner):**
+- `probe-stufen.mjs [quelle.html]` — Höhenprofile (5 cm Raster, um 1,25 cm versetzt) ±1,6 m um jede Lücke, die
+  `bordsteinKante` baut (`window._bordLuecken`): **Stufen im Stein** (Sprung > 4 cm, einer der Nachbarn ≥ 7 cm hoch),
+  **Stufen in der Platte** (Sprung > 2 cm an Absenkungen), **Löcher** neben Steinenden (Boden unter −3 cm),
+  **Ecken** der vier Hauptkreuzungen (ab welcher Entfernung auf der Diagonale steht Stein), **L-Knicke** mit
+  Aussenkurve und **Ursprung** aller Runde-98-Teile (`userData.r98`: liegt der Netz-Ursprung an der Form?).
+  Vorher-Stand: dem alten `traumhaus.html` die Zeile gegeben, die `_bordLuecken` schreibt, und als Quelle übergeben.
+  Fünf Messfallen, alle erst an einem Profil gesehen (`KANTE=<Kante> PROFIL=1` druckt es):
+  (1) ein durchsichtiger Schattenfleck auf 0,14 m war der höchste Treffer → Durchsichtiges zählt nicht;
+  (2) Proben genau auf der Naht Keil|Stein trafen keins von beiden → Raster versetzt;
+  (3) 3-cm-Anschlag gegen die Fahrbahn auf −0,003 sind 3,3–3,6 cm → Schwelle 4 cm und „einer ≥ 7 cm hoch";
+  (4) an Absenkungen neben Einmündungen läuft die Plattenlinie auf die Fahrbahn → dort keine Plattenmessung;
+  (5) der 18-cm-Sockel einer Parklaterne auf der Platte → Modelle (`userData.datei`) sind kein Boden.
+  Gegenproben: 12-cm-Klotz auf der ersten Absenkung (+2 Stufen), Teil mit Form bei (50|50) und Ursprung (0|0). `PROFIL=1` druckt auch
+  Plattenprofile (so fiel die 3-cm-Mulde zwischen Ring-Gehweg und Anschluss-Rampe an der Ost-Ausfallstrasse auf).
+- `probe-aufrufe.mjs [quelle.html]` — Zeichenaufrufe der Teile einer Runde an fünf festen Kamerapunkten: eigener
+  `render()`, einmal mit, einmal ohne alle Meshes mit `userData[FLAG]` (Env `FLAG`, Standard `r98`). th-pruef ist dafür
+  kein Mass: es liest `renderer.info` nach dem LETZTEN Durchgang und meldete für denselben Stand 198, 228 und 294.
+  Runde 98: 331 Teile, +32 Aufrufe an einer Hauptkreuzung (+3 %), +18 nah, +8 Ost-Ausfall, 0 aus der Höhe.

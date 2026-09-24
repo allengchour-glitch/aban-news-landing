@@ -118,6 +118,13 @@ mitSonden('traumhaus.html', {
         var UEB=window._uebergaenge||[];
         function imUebergang(px,pz){for(var i=0;i<UEB.length;i++){var u=UEB[i],br=(u[3]||4.8)/2+0.4,hb=(u[4]||8.05)+0.6;
           if(u[2]?(Math.abs(px-u[0])<br&&Math.abs(pz-u[1])<hb):(Math.abs(pz-u[1])<br&&Math.abs(px-u[0])<hb))return true;}return false;}
+        /* 🧱 UEBERGANGSSTEINE (Runde 98): neben jeder Luecke des Bordstein-Helfers laeuft der Stein auf 0,9 m
+           (Absenkung) bzw. 0,6–1,2 m (Einmuendung) von 12 auf 3 cm — ein Querschnitt dort ist ein Keilstein, kein
+           fehlender Bordstein (erster Lauf: 11 solche „ohne Bordstein", alle 3,0–3,5 m neben einem Streifen).
+           Die Lagen meldet bordsteinKante in window._bordLuecken. */
+        var BL=window._bordLuecken||[];
+        function imKeil(px,pz){for(var i=0;i<BL.length;i++){var e=BL[i],t=e[0]==="z"?px:pz,q=e[0]==="z"?pz:px;
+          if(Math.abs(q-e[1])>0.35)continue;if((t>e[3]-1.3&&t<=e[3])||(t>=e[4]&&t<e[4]+1.3))return true;}return false;}
         r.uebergang=0;
         for(var l=b.von;l<=b.bis;l+=9){
           [-1,1].forEach(function(seite){
@@ -126,6 +133,7 @@ mitSonden('traumhaus.html', {
             if(S[0].k!=="asphalt"&&S[0].k!=="hell")return;          /* hier ist keine Fahrbahn (Luecke im Band, Kreuzung) */
             var kx=b.a==="z"?l:b.c+seite*b.h,kz=b.a==="z"?b.c+seite*b.h:l;
             if(imUebergang(kx,kz)){r.uebergang++;return;}
+            if(imKeil(kx,kz)&&(S[1].y===null||S[1].y<0.11)){r.keil=(r.keil||0)+1;return;}
             /* Trottoirueberfahrt (Runde 97): der Gehweg laeuft ueber eine Einfahrt durch, der Randstein ist dort
                auf 3 cm abgesenkt — gewollt, kein „ohne Bordstein". Die Einfahrten melden sich in window._ueberfahrten. */
             if((window._ueberfahrten||[]).some(function(u){return kx>u[0]&&kx<u[1]&&kz>u[2]&&kz<u[3];})){r.ueberfahrt=(r.ueberfahrt||0)+1;return;}
@@ -178,7 +186,7 @@ for (const r of R) {
   const mB = r.bordH.length ? (r.bordH.reduce((a, b) => a + b, 0) / r.bordH.length).toFixed(2) : '-'
   const mG = r.gehH.length ? (r.gehH.reduce((a, b) => a + b, 0) / r.gehH.length).toFixed(2) : '-'
   const ok = r.land || (!r.ohneBord.length && !r.luecke.length && !r.ohneGehweg.length)
-  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m${r.uebergang ? ` · ${r.uebergang} im Uebergang` : ''}${r.einmuendung ? ` · ${r.einmuendung} in Einmuendung` : ''}${r.ueberfahrt ? ` · ${r.ueberfahrt} Ueberfahrt` : ''}${r.land ? ' · Landstrasse ohne Gehweg (gewollt, nicht gezaehlt)' : ''}${r.bahndamm ? ` · ${r.bahndamm} Schnitte Bahndamm-Seite ausgelassen` : ''}`)
+  console.log(`  ${ok ? '✅' : '⚠️ '} ${r.n.padEnd(30)} ${String(r.schnitte).padStart(3)} Schnitte · ohne Bordstein ${r.ohneBord.length} · Luecke ${r.luecke.length} · ohne Gehweg ${r.ohneGehweg.length} · Bord ø ${mB} m · Gehweg ø ${mG} m${r.uebergang ? ` · ${r.uebergang} im Uebergang` : ''}${r.einmuendung ? ` · ${r.einmuendung} in Einmuendung` : ''}${r.ueberfahrt ? ` · ${r.ueberfahrt} Ueberfahrt` : ''}${r.keil ? ` · ${r.keil} auf Uebergangsstein` : ''}${r.land ? ' · Landstrasse ohne Gehweg (gewollt, nicht gezaehlt)' : ''}${r.bahndamm ? ` · ${r.bahndamm} Schnitte Bahndamm-Seite ausgelassen` : ''}`)
   if (ALLE) { if (r.ohneBord.length) console.log('       ohne Bordstein: ' + r.ohneBord.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' '))
     if (r.luecke.length) console.log('       Luecke: ' + r.luecke.slice(0, 12).map((p) => `(${p[0]}|${p[1]}) +${p[2]} ${p[3]}`).join(' '))
     if (r.ohneGehweg.length) console.log('       ohne Gehweg: ' + r.ohneGehweg.slice(0, 12).map((p) => `(${p[0]}|${p[1]})`).join(' ')) }

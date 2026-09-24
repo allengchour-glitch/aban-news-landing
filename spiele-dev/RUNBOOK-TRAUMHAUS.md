@@ -7373,3 +7373,92 @@ Geschärfter Ausgangsstand: **Schnitte 1085 · ohne Bordstein 28 · Lücke 22 ·
 | th-autoboden | 0 · 0 · 0 · 0,2 % · 0/120 · 0 | **0 · 0 · 0 · 0,2 % · 0/120 · 0** (Parkplätze ohne Zufahrt 0, schief 0) |
 Bilder: `spiele-dev/screenshots/r97-*.png` (vorher/nachher: Querstrasse West, Ring Süd, Ring Nord, Landstrasse am
 Gewerbe, T-Einmündung Freizeitpark, Bauernhof von oben, Kathedralen-Tor; nachher: Hauptstrasse x ±62 mit Parkfeldern).
+
+
+## Runde 98 · 🧱 Übergänge noch schöner (User: „das geht noch besser und schöne übergang")
+
+**Erst aus der Nähe angesehen** (Spielkamera auf Augenhöhe, acht Stellen, Arbeitsbilder k40-*, die Vorher-Bilder davon als `r98-*-vor.png` eingecheckt): die Übergänge selbst waren
+seit Runde 96/97 in Ordnung, grob wirkte, was um sie herum liegt — (1) an jeder Absenkung fiel der Bordstein
+**senkrecht** von 12 auf 3 cm, die abgesenkte Platte lag mit einer 3-cm-Stufe neben dem Gehweg; (2) an jeder
+Einmündung endete der Stein mit einer **12-cm-Stirnfläche** an der Fahrbahn; (3) an den vier Hauptkreuzungen stiessen
+die Fahrbahnen in einer **scharfen 90-Grad-Ecke** zusammen (nur der Gehweg war aussen mit einer Viertelkreis-Platte
+gerundet). Dann gemessen — neue Sonde `probe-stufen` (Höhenprofile um jede Bordsteinlücke, Gegenproben eingebaut):
+**144 Stufen im Stein** (96 an Absenkungen, 48 an Einmündungen), **89 in der Platte**, 20 Löcher neben
+Steinenden, **0 von 16** Kreuzungsecken gerundet, 0 von 3 L-Knicken mit Aussenkurve.
+
+**Gebaut:**
+- **Übergangssteine** (`_keil`: Quader mit schräger Oberkante): vor jeder Absenkung läuft der Stein auf 0,9 m von 12 auf
+  3 cm hinunter — AUSSERHALB der Lücke, damit er über die ganze Streifenbreite abgesenkt bleibt (th-kante misst ±2 m);
+  an jeder Einmündung läuft er auf 0,6 m (Ring-Mündungen, Strandzufahrt, Landstrasse: 1,2 m wie die Gehwegrampe) auf
+  3 cm aus — dort liegt in dieser Welt immer ein Übergang, die 3-cm-Kante bleibt als Anschlag für den Blindenstock.
+- **Plattenrampen**: die abgesenkte Platte steigt an beiden Enden auf 0,3 m zur Gehweghöhe an (Quer 5 cm, sonst 6).
+  Die flachen „Rampen" an Ring-Mündungen, Strandzufahrt und Landstrasse (3-cm-Kästen) sind echte Rampen geworden.
+- **Stadtring**: EIN Stein je Gehweglinie mit Mündungslücken (vorher je Gehwegstück einer, auch ein 12-cm-Stein neben
+  der 3-cm-Rampe); die Lücke im STEIN liegt dort, wo der Asphalt die Steinlinie schneidet (`rand`, bei schrägen
+  Zubringern 0,6 m neben der Lücke im Gehweg — dazwischen war bis 0,9 m Loch); am Zubringer lag die abgesenkte Platte
+  unter der 5-cm-Platte und war unsichtbar.
+- **Eckradius 3 m** an allen 16 Ecken der Hauptkreuzungen (`eckBogen`): Asphalt zwischen Ecke und Bogen, Bogenstein,
+  Gehweg-Bogen ab Radius 0,72 (= Abstand zur Innenkante der Gehwegstreifen, die Innenkante läuft als Bogen weiter);
+  Gehweg, Stein und Erdstreifen enden am Bogenanfang. Die alten Viertelkreis-Platten sind weg.
+- **Viertel-Einmündungen**: die 2,3 m vollen Steins zwischen Einmündung und Streifen (ohne Gehweg dahinter) sind
+  abgesenkt — die ganze Ecke liegt auf 3 cm.
+- **Landstrasse**: die Lücke im Stein je Steinlinie aus dem eigenen Schnittpunkt mit r 200 (vorher aus der Mittellinie:
+  Stein endete 1,45 m vor dem Asphalt).
+- **Ost-Ausfallstrasse** (Gewerbe-Anschluss bei (112|0)): der äussere Ring-Gehweg samt 12-cm-Stein lief QUER über die
+  Einfahrt — ein Fehler seit dem Bau des Viertels, th-kante sah ihn nicht, weil es dort keine Lücke gab. Jetzt eine
+  Mündung wie an den Zubringern (Lücke, Rampen, Fussgängerstreifen). Der Anschluss-Stein ist bis hinter die Landung
+  des Streifens abgesenkt (`bordA.ab` 7,7 m), und der Gehweg beginnt erst dort — mit 7 m lag er 0,7 m über der
+  abgesenkten Platte (3-cm-Stufe in der Absenkung, probe-stufen 4). Und der Ring-Gehweg öffnet sich dort bis 7,16 m
+  (Aussenkante der abgesenkten Platte) statt 4,76 m — sonst stieg er mitten auf der Landung wieder auf 5,4 cm, und
+  zwischen ihm und der Anschluss-Rampe lag eine 0,8 m breite 3-cm-Mulde. Jetzt ist die Landung EINE Fläche.
+- **L-Knicke der Anschlüsse** (`eckeL`, 3 Stück): aussen fehlte ein Quadrat Asphalt (4,5 × 4,5 m Wiese in der Kurve).
+  Jetzt Viertelkreis Asphalt, Bogenstein und Gehweg-Bogen; aussen laufen Stein und Gehweg beider Schenkel bis zum Knick.
+- `bordA`/`cfg.vorlaufBord`: der Stein am Anfang eines Anschlusses darf näher an die andere Strasse als der Gehweg.
+
+**Lehren:**
+1. **Ein Teil mit Weltkoordinaten in der Form ist aus der Ferne unsichtbar.** `lodAufbau` liest den Standort aus der
+   Matrix des Netzes — mit Ursprung (0|0) galten die 16 Kreuzungsecken als 88 m entfernt und verschwanden (Bild
+   r98-ecke-unsichtbar: nur Wiese). Die Sonde hatte sie trotzdem gemessen, denn Strahlen fragen nicht nach `visible`.
+   Dieselbe Falle wie die Streifen in Runde 96, jetzt mit Messung: `probe-stufen` prüft den Ursprung aller neuen Teile.
+2. **Das Profil lesen, bevor man einer Zahl glaubt.** Fünf der ersten Befunde waren Messfehler (Schattenfleck,
+   Naht, 3-mm-Fahrbahnhöhe, Plattenlinie auf der Fahrbahn, Laternensockel) — jeder hätte zu einem falschen Umbau
+   geführt. `KANTE=… PROFIL=1` druckt das Profil einer Stelle.
+3. **Die Lücke im Stein ist nicht die Lücke im Gehweg.** Beide lagen bisher am selben Ort; bei schrägen Einmündungen
+   und an der Landstrasse schneiden Stein und Gehweg den Asphalt an verschiedenen Stellen.
+4. **Was nicht als Lücke eingetragen ist, sieht kein Werkzeug.** Die Ost-Ausfallstrasse war seit ihrem Bau durch einen
+   Bordstein gesperrt; th-kante prüft Lücken, th-strassen Gegenstände — ein durchlaufender Stein ist für beide richtig.
+   Gefunden hat es erst ein Strahl längs der Fahrbahnachse.
+5. **Eine flach gebaute Instanz ist für th-strassen ein Turm.** Die alten Eckplatten waren `CircleGeometry(4.6)` in der
+   xy-Ebene, gedreht erst über die Instanzmatrix; das Werkzeug nimmt die Höhe aus der UNGEDREHTEN Geometrie-Box und
+   meldete sie als 4,6 m hohe Gegenstände auf der Hauptstrasse (8 der 74 Stellen). Mit ihnen verschwanden die Befunde
+   — keine Verbesserung der Welt, sondern ein Messfehler weniger.
+6. **Zeitabhängige Messungen nie neben einer zweiten Sonde.** th-echt meldete 13 statt 6 echte Durchdringungen, weil
+   nebenher probe-wer lief (Gondel in der Station, Fluggastbrücke im Flugzeug, vier weitere Paare). Allein: 6 von 16,
+   wie in Runde 97. Dieselbe Regel wie für th-pruef.
+7. **th-pruefs Zeichenaufrufe sind kein Vergleichsmass** (198, 228, 294 für denselben Stand: es liest `renderer.info`
+   nach dem letzten Durchgang). Die Last einer Runde misst `probe-aufrufe`: fester Kamerapunkt, eigener render(), mit
+   und ohne die markierten Teile.
+
+**Endzahlen Runde 98:**
+| Messung | Runde 97 | Runde 98 |
+|---|---|---|
+| probe-stufen: Stufen im Stein / in der Platte | 144 / 89 | **0 / 0** |
+| probe-stufen: Löcher neben Steinenden | 20 | 9 |
+| probe-stufen: Kreuzungsecken gerundet · L-Knicke mit Aussenkurve | 0 von 16 · 0 von 3 | **16 von 16 · 3 von 3** |
+| probe-stufen: Teile mit Ursprung neben der Form | — | 0 von 331 (Gegenprobe schlägt an) |
+| th-kante: ohne Bordstein · Lücke · ohne Gehweg | 0 · 0 · 0 | 0 · 0 · 0 (Übergangssteine als solche erkannt) |
+| th-kante: Übergänge · nicht abgesenkt · Einmündungen ohne Übergang | 47 · 0 · 0/14 | **48** (Ost-Ausfall) · 0 · 0/14 |
+| probe-schild | 94 von 94 | 96 von 96 |
+| probe-strichzeb · probe-bergstrasse | 0 · 0 | 0 · 0 |
+| th-strassen | 74 | 68 (−8 alte Eckplatten = Messfehler, Lehre 5; ±3 zufällig Gestreutes) |
+| th-pruef | 1001 / 0 / 2, bestanden | 1001 / 0 / 2, bestanden |
+| th-echt (allein) | 16 Paare / 6 echt | 16 / 6 |
+| th-autoboden | 0 · 0 · 0 · 0,2 % · 0/120 | 0 · Erde 1 · 0 · 0,1 % · 0/120 (Müllwagen am Sportplatz, s. Offen) |
+| probe-aufrufe (Kreuzung · nah · Ost-Ausfall · hoch · Ring) | — | +32 · +18 · +8 · 0 · 0 (≤ 3 %) |
+Bilder: `spiele-dev/screenshots/r98-*.png` (vorher/nachher: Bordstein an der Absenkung, Kreuzungsecke, Querstrasse,
+Viertel-Einmündung; nachher: Ecke von oben, Ost-Ausfallstrasse, zwei L-Knicke; dazu die unsichtbare Ecke).
+**Offen (klein):** 9 schmale Streifen Wiese neben Steinenden an Einmündungen, wo die andere Fläche tiefer liegt
+(Bauernhof an der Landstrasse unter 16°, Zoo-/Gewerbe-/Burgdorf-Enden, Sportpark-Anschluss am Achterbahn-Stich).
+Der Müllwagen auf dem Zubringer 60° streift den Sportplatz (th-autoboden seit Runde 95 1–3 Proben im Grünen, diesmal
+„Erde" = Laufbahn); th-strassen führt dort Flutlichtmast und Ballfangzaun im Band — ein Umbau des Sportplatzes wäre
+eine eigene Runde.
