@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:04:18Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:07:03Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **1611** in 457 Produkten
-- Treffer (≥ 4 Wörter): **70** in 66 Produkten
+- Medien geprüft: **1706** in 482 Produkten
+- Treffer (≥ 4 Wörter): **72** in 68 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -20,6 +20,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
 | Magnetische Sportbrille für Helm `15453768810881` | [69926688948609](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94d8c59c-9774-43ab-b99c-f851e81e0a74.jpg) | 22 | SAFE TRAVEL Thousands safety safe the critical moment | offen |
 | Pinguin-Tuch zum Abwischen `15453791093121` | [69926763987329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2591efa5-f7fd-4ddc-a6e2-fb67637ca6b7_trans.jpg) | 21 | Not easy shed hair Caring for the quality | offen |
+| Holziges Raumfeuchtigkeitsgerät `15453772153217` | [69926698451329](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/92451689-d71f-4c27-be0d-757de9de3bc5_trans.jpg) | 20 | Enjoy sweet sleep Light tone humidification company does | offen |
 | Magnetische falsche Wimpern mit Seifenhalter `15453769138561` | [69926689341825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/139c7f2f-5dd6-4bde-8996-51550972abd7_fine.jpg) | 19 | Added magnetic groove Adsorbed eyelashes Upward curved clip | offen |
 | Kamera-Drohne mit Hindernis-Vermeidung `15453744562561` | [69926295339393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20c126ef-1fd7-47ba-87da-dfe5ce978467.jpg) | 17 | Upgrade brushless motor for more Brushless power stable | offen |
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
@@ -71,6 +72,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | TPE-Falt-Yogamatte, verstärkt und rutschfest `15453762978177` | [70519184818561](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b170d-092d-47b3-8099-2b6a5ccd8826_trans_6c0240cc-d11e-466b-8558-4cce46170c2b.jpg) | 5 | Foldable yoga mat available complete | offen |
 | Intelligentes Katzen Spielgerät `15453763568001` | [69926634553729](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1baa639f-bcce-4c7d-b212-3af84f3cc456_trans.jpg) | 5 | Stimulate hunting instinct random teasing | offen |
 | Bissfeste Elektro-Jump-Ball für Katzen & Hunde `15453763600769` | [69926634586497](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8f18ab6f-9391-4eea-95bb-31d929e1fa27_trans.jpg) | 5 | Agile without rules Directional scrolling | offen |
+| Katzen-Spielzeug mit Futter-Feeder `15453772480897` | [70519928619393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/706a908f-a6f9-4761-bb6e-19107db87d57_trans.jpg) | 5 | PET TOY Open the Cover | offen |
 | Intelligente Drohne mit Dual-Kamera `15453743579521` | [69926293143937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5cc44047-9a24-4841-86e2-5b3cbe033c66_trans.jpg) | 4 | Pro Max camera drone | offen |
 | Sparkling Augen-Schatten `15453767827841` | [69926687244673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46acf1d0-7f47-4253-9504-5389146d893f.jpg) | 4 | Rose Gold Eye Shadow | offen |
 | Männer Arbeitsschuhe, robust & isoliert `15453775266177` | [69926703202689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1b7186a8-0b50-4337-b8a7-1890840a6613_trans.jpg) | 4 | Suede leather breathable protection | offen |
