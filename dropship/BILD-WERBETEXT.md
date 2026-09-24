@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:20:08Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:22:43Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2114** in 581 Produkten
-- Treffer (≥ 4 Wörter): **88** in 83 Produkten
+- Medien geprüft: **2202** in 605 Produkten
+- Treffer (≥ 4 Wörter): **92** in 87 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -28,10 +28,12 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Grosse Schreibtischunterlage für Maus und Tastat `15433463103873` | [69712349921665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb422eff-d04a-4d90-bb2a-f6dcad20c47f_trans.jpg) | 18 | Precision edge and ALL EFFORTS ARE JUST FOR | offen |
 | Kamera-Drohne mit Hindernis-Vermeidung `15453744562561` | [69926295339393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20c126ef-1fd7-47ba-87da-dfe5ce978467.jpg) | 17 | Upgrade brushless motor for more Brushless power stable | offen |
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
+| Netzteil mit Trafo für Game Konsole `15500438602113` | [70542981464449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dc58d45a-b0d9-4b36-816f-75de1f08f70b.jpg) | 16 | Multi safery features has multiple protection for Overcharge | offen |
 | Plüschspielzeug mit Flattergeräusch `15453792174465` | [69926765461889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4b69f4b4-890b-47aa-89a2-7f70b5e1dd60_trans.jpg) | 15 | Cats are born hunters Highly simulated appearance suitable | offen |
 | Multifunktionale wasserdichte Steckdose für Wohn `15493873860993` | [70479330279809](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6dd5f853-90c4-4899-9887-bc425efbe683_trans.jpg) | 15 | Flexible fits sealing ring Protection level reaches Wind | offen |
 | Velvet-Matte Lippenstift-Linierer `15453767074177` | [69926686130561](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c08c8d05-8ba3-41b6-a369-2e2983da3f17.jpg) | 15 | BARVENA Comfortable weightless formula that flake feather Glides | offen |
 | RGB-Kopfhörerständer mit E-Sports-Rhythmusbeleuc `15433464217985` | [69712351527297](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b9775a1-fe5c-4ca0-974f-79ccfb2d8ecd_trans.jpg) | 15 | USB powered Directly connect USB interface Power supply | offen |
+| Nagelfräser-Bit aus Wolframstahl `15502471266689` | [70562975351169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/398099cc-fa5b-442d-8379-7dae455303e5_fine.jpg) | 15 | Conical ball head Titanium nitride coating Cross teeth | offen |
 | Kamera-Drohne mit Hinderniserkennung `15453744628097` | [69926295536001](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc914a48-36f7-4072-b53a-203bf305c567.jpg) | 14 | Powerful brushless power Equipped with four and brushless | offen |
 | Drohnenfernsteuerung mit 3 Kameras, langer Akku `15453743743361` | [69926293471617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a23f731e-f5bd-4c47-b047-72f2cbe17a1c.jpg) | 14 | Max Drone flagship light and shadow triple camera | offen |
 | Natürlicher Gummispielzeug Lebensmittel-Verteile `15453763502465` | [69926634488193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c34aa6a5-2ee1-492c-8bd0-64631702cb5a_trans.jpg) | 14 | Super Strong Interactive Throwing Puzzle Food Dispensing jistant | offen |
@@ -60,6 +62,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Elegantes Sommerkleid aus Baumwolle `15453768483201` | [69926688260481](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a178311c-f643-4dd1-a3cc-9ff55d1b9b63_trans.jpg) | 8 | Where deep bamboo woods and insects chirp Wind | offen |
 | Apricot-Peach Rouge `15453767172481` | [69926686359937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60cb8b04-2a3f-4c3b-9e70-eb3272169993_water_trans.jpg) | 8 | Floating Dot Dot Blush Mud Fidoo Floating Pond | offen |
 | Entspannte Sporthose für Herren `15453771858305` | [69926697861505](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93eceeb9-6b24-4106-a88f-eb8ae0ceadbf_trans.jpg) | 8 | WATER REPELLENT VENTILATE Breathability WEAR RESISTANT fear Resistance | offen |
+| Elektrisches Lichttherapiegerät zur Hautverjüngu `15501006209409` | [70551637721473](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24dd1c96-9e2a-41ff-962f-d2eae9739428_trans.jpg) | 8 | Beauty and hairdressing set Source Factory Fully qualified | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | offen |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | offen |
 | Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | offen |
@@ -73,6 +76,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
 | Integrierte Fahrradhelm-Brille `15453769695617` | [69926689997185](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a09141-2e5f-46ec-a9ff-9fae95b110ae.jpg) | 6 | red silver One size fits all | offen |
+| Nixie-Röhrenuhr mit Wecker aus Walnussholz `15501005291905` | [70551630807425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/640bcf9f-7da6-4b62-8469-9399beef9d90.jpg) | 6 | GERALDINI MUUTO ESIGN THE SOLACE SOAKING | offen |
 | 15453774086529 `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
