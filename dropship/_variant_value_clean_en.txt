@@ -19568,3 +19568,4 @@ gid://shopify/Product/15449164546433	Farbe	gid://shopify/ProductOptionValue/1202
 gid://shopify/Product/15449577849217	Farbe	gid://shopify/ProductOptionValue/12036508123521	Leuchtendrot	Leuchtendes Rot	2026-09-24T00:11Z
 gid://shopify/Product/15450742587777	Farbe	gid://shopify/ProductOptionValue/12045569556865	Weiss Blau	Weiss-Blau	2026-09-24T00:32Z
 gid://shopify/Product/15450849935745	Farbe	gid://shopify/ProductOptionValue/12046704738689	Leuchtendpink	Leuchtendes Pink	2026-09-24T00:32Z
+gid://shopify/Product/15455268241793	Farbe	gid://shopify/ProductOptionValue/12088444486017	Marineblau Blau	Marineblau-Blau	2026-09-24T01:12Z
