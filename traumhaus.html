@@ -3295,6 +3295,13 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
          k26-schild-nah2: Fahrer sah die Rueckseite). */
       var qs=hb+0.26+0.5,ls=(quer?-sg:sg)*3.2;
       var sx=x+(quer?ls:sg*qs),sz=z+(quer?sg*qs:ls);
+      /* ⚠️ T-EINMUENDUNG (Sonde probe-schild, 4 von 60): der Uebergang ueber die einmuendende Strasse liegt
+         7,4 m von der Mitte der durchgehenden — zwischen deren Fahrbahnkante (4,5) und dem Streifenrand
+         (7,4-2,4 = 5,0) bleibt ein halber Meter, das Schild „vor dem Streifen" stand 0,3 m IN der
+         durchgehenden Fahrbahn (254,2|-134,7 im Gewerbe, 5,3|241,8 im Sportpark, Burgdorf/Zoo ebenso).
+         SSV 4.11 steht am Streifen, nicht davor — liegt der Platz auf einer Fahrbahn, kommt das Schild
+         auf die andere Seite des Streifens, weiter der ankommenden Spur zugewandt. */
+      if(window._aufViertelWeg&&window._aufViertelWeg(sx,sz,0.35)){ls=-ls;sx=x+(quer?ls:sg*qs);sz=z+(quer?sg*qs:ls);}
       _zebSetz(Z.p,sx,0,sz,0);
       _zebSetz(Z.t,sx,0,sz,quer?-sg*Math.PI/2:(sg>0?0:Math.PI));   /* Tafelnormal (+z-Flaeche der Box) zur ankommenden Spur */
     });

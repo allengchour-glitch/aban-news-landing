@@ -37,3 +37,11 @@ Filter entfällt der Rundgang zu Fuss, ausser der Regex passt auf `Orte`.
 andere lädt → „799 Modelle, 36 im Korridor" als Artefakt), und **th-pruef allein laufen lassen**: mit zwei
 Sonden daneben lud es nur 804 statt 1009 Modelle, und `entwirren` lief, bevor alles stand („steckt 8").
 Vor dem Start `ps -eo cmd | grep th-` fragen.
+
+**Runde 96 (Übergänge):**
+- `probe-uebergaenge.mjs` — alle registrierten Übergänge (`window._uebergaenge`) mit Lage, Richtung, Breite.
+- `probe-zebsicht.mjs` — Spieler an drei Orten, `visible`/`count` der vier Übergangs-InstancedMeshes: Beleg, dass
+  `nieAusblenden` nötig war (Streifen verschwanden ab 130 m vom Ursprung, Schilder ab 34 m).
+- `probe-schild.mjs` — jedes Schild dem Übergang über die GEOMETRIE zuordnen (3,2 m längs, hb+0,76 quer — der
+  „nächste" Übergang war an T-Einmündungen der falsche), dann: Tafel dem ankommenden Verkehr zugewandt
+  (Rechtsverkehr aus `ROUTEN`) und auf keiner Fahrbahn (`_aufViertelWeg` + Haupt-/Querstrassen-Bänder).
