@@ -7066,10 +7066,21 @@ nächsten Strassenzelle (24 Richtungen), jeder Wagen ganz im Rechteck und in Sta
   Stein am inneren Süd-Gehweg des Rings (z 113,24…113,5) traf die Südschiene (113,22…113,38) — dort liegt das
   Gleis direkt an der Ringkante, der Schotter IST die Kante. `stueck()` lässt den Stein auf dieser Seite weg.
   Gegenprobe th-gleis allein: 0.
-- **Bewusst gelassen:** Wendeplatz am Strand ragt 6 m über den Sand aufs Wasser (Pier-Optik, das
-  Auto darf drauf); Kies-Vorgärten am Villenviertel (Quer-Ost (83|−21) „erde") und die Marktplatz-
+- **Aus der vollen Prüfreihe (51 Werkzeuge, in drei Läufen — ein 90-min-Deckel und eine Session-Pause
+  haben zwei Anläufe abgebrochen):** th-missmap: die Taxi-Mission (Runde 91) hatte weder Ort noch belegten
+  Grund; ein Taxistand-Marker wäre falsch (nur Taxis im Verkehr lassen sich antippen) → der Weg steht im
+  Missionstext, das Werkzeug führt 13 wie Strassenmusik als bewusst ortlos. th-gta: „Grau verschwindet
+  wieder" erwartete einen LEEREN Filter — seit dem Review-Fix stellt `gtaBanner` den Grundfilter wieder
+  her; die Prüfung verlangt jetzt nur, dass das Grau weg ist (21/21).
+- **Nachgezogen:** Wendeplatz am Strand ragte 6 m aufs Wasser → r 7 um −128, genau zwischen Sandkante und
+  Ring-Gehweg (`r93-strand-wendeplatz-nachher.png`); Kartenmarke „Meer" lag in der Meerplatten-Mitte 100 m
+  draussen → am Strand; Altstadt-Laden steckte 1,08 m im Gasthaus (seit main) — th-umfeld zeigte ihn
+  eingekeilt zwischen Gasthaus, Werkstatt, Markthalle und Platz („ohnePlatz" des Entwirrers) → 3,5 statt
+  3,9 m hoch, Grundriss 10 % kleiner, th-echt sauber (`r93-altstadt-laden-nachher.png`).
+- **Bewusst gelassen:** Kies-Vorgärten am Villenviertel (Quer-Ost (83|−21) „erde") und die Marktplatz-
   Kante (41|66) sind Gestaltung, keine Lücken; Fluggastbrücke × Flugzeug 2,4 m ist ein Zeitpunkt
-  der Andock-Animation.
+  der Andock-Animation; zwei kleine Giebelhütten am Sportplatz (36|134)/(40|134) × ein Kleinteil (38|136)
+  überlappen je nach Entwirrer-Reihenfolge mal 1 m, mal gar nicht (seit main).
 
 **Endzahlen (letzter Lauf nach dem letzten Patch, Regel 2):**
 | Messgerät | vorher | nachher |
