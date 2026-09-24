@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:22:43Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T00:25:23Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2202** in 605 Produkten
-- Treffer (≥ 4 Wörter): **92** in 87 Produkten
+- Medien geprüft: **2293** in 630 Produkten
+- Treffer (≥ 4 Wörter): **94** in 89 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **1**
 
@@ -40,6 +40,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Grosses Trinkschüssel für Haustiere `15453764911489` | [69926640091521](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e8706c5-2053-4556-b96a-09d5a383114a_trans.jpg) | 14 | Use exquisite The cat bowl Start Daily Food | offen |
 | Öle für Duftdiffuser `15453771661697` | [69926697304449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68ea0afb-6a45-4d84-8ebc-123850f919a2.jpg) | 13 | LAVENDER ESSENTIAL ESSENTIAL OIL THERAPEUTIC GRADE Essential oils | offen |
 | In-Ear Gaming Headset mit Geräuschunterdrückung `15433463398785` | [69712350380417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6bddeded-3685-4902-9816-b786891ec9e2_trans.jpg) | 13 | Gaming Bluetooth delay Dual Mode Cool Fantasy Breathing | offen |
+| Luftstromladegerät `15500984058241` | [70551408705921](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3049674334524.jpg) | 13 | Pad Wireless Charging Board Adjustable Clamp Angle Adjust | offen |
 | Intelligentes Bremslicht für Velos `15448957976961` | [69862641762689](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2fb4a32-5161-4001-9089-69587e78a7ab_trans.jpg) | 12 | waterproof Good waterproof level for daily need worry | offen |
 | Bauchstützgürtel für Schwangere `15453760717185` | [69926628524417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9f9382e0-2080-4051-b7a5-441a700d8875_fine.jpg) | 12 | Ergonomic curve design Ring design fits better Soft | offen |
 | Smart-Armbanduhr mit Herzfrequenz- und Blutsauer `15453778411905` | [69926716244353](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a7c63c5-36db-464a-a086-26ad34f0f8c8_trans.jpg) | 11 | GPS Outdoor sports smart watch Smart Watch Fearless | offen |
@@ -63,6 +64,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Apricot-Peach Rouge `15453767172481` | [69926686359937](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60cb8b04-2a3f-4c3b-9e70-eb3272169993_water_trans.jpg) | 8 | Floating Dot Dot Blush Mud Fidoo Floating Pond | offen |
 | Entspannte Sporthose für Herren `15453771858305` | [69926697861505](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93eceeb9-6b24-4106-a88f-eb8ae0ceadbf_trans.jpg) | 8 | WATER REPELLENT VENTILATE Breathability WEAR RESISTANT fear Resistance | offen |
 | Elektrisches Lichttherapiegerät zur Hautverjüngu `15501006209409` | [70551637721473](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24dd1c96-9e2a-41ff-962f-d2eae9739428_trans.jpg) | 8 | Beauty and hairdressing set Source Factory Fully qualified | offen |
+| Katzen Diamond Painting Set `15500982747521` | [70551398777217](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f98c7cb0-6d42-431a-ad1d-1b4b12421f6f.jpg) | 8 | The Larger The Size The Better The Effect | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | offen |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | offen |
 | Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | offen |
