@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T05:19:17Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-09-24T05:20:45Z
 
-Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
+Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: textbild, 14314 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **2488** in 683 Produkten
-- Treffer (≥ 4 Wörter): **95** in 90 Produkten
+- Medien geprüft: **2544** in 697 Produkten
+- Treffer (≥ 4 Wörter): **102** in 97 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **46**
 
@@ -15,6 +15,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Heizbare Winterhaube für Fahrrad & Ski `15453769859457` | [69926690554241](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1722437663757307904.jpg) | 35 | hea Resist the cold Cheeks feel hot two | offen |
 | Velo-Scheinwerfer mit Welleninduktion `15448957223297` | [69862628753793](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6ec0a3dc-5ff7-4919-9833-ca59f27106b0_trans.jpg) | 34 | Smart gesture sensing Wave sensor lighting switch When | ENTFERNT |
 | Fahrradhelm für sicheres Radfahren `15453769073025` | [69926689276289](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7069a30b-403b-43cf-9d90-e5b3dbb7eea6_trans.jpg) | 31 | adjust the wrapping floating adjustment system design The | ENTFERNT |
+| Gaming-Konsole Silikonhülle `15453787914625` | [69926758252929](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11ddebed-2105-475c-9551-19d8341fcd8d.jpg) | 27 | Comfortable Hand Feeling Environmentally friendly silicone feel very | offen |
 | Multifunktionaler Freihand-Reinigungshelfer `15477130985857` | [70317322109313](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7dc5f0e-a74d-4c52-9acd-04c9cb1a7001_trans.jpg) | 25 | tension adjustment button upgraded panel with scraper upgrad | ENTFERNT |
 | Magnetische Camellien-Wimpern `15453769761153` | [69926690062721](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/686ded11-da93-44d1-89b2-a78890225659_trans.jpg) | 24 | The arc upgraded and the magnetic strip widened | offen |
 | 12-in-1 Fitness-Tool `15453769597313` | [69926689833345](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8a845c7d-c22a-4e42-8948-cc7028021594.jpg) | 23 | High elastic edges are windproof and not tight | offen |
@@ -27,6 +28,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Bein-Druck Dumbbell Stange für Beinheben & Muske `15453792469377` | [69926765822337](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bd047f6d-62fe-46ee-b92d-fa16894d4d1f_trans.jpg) | 18 | Jianxiang Cast iron material NBR Foam Detachable Factory | ENTFERNT |
 | Grosse Schreibtischunterlage für Maus und Tastat `15433463103873` | [69712349921665](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb422eff-d04a-4d90-bb2a-f6dcad20c47f_trans.jpg) | 18 | Precision edge and ALL EFFORTS ARE JUST FOR | ENTFERNT |
 | Kamera-Drohne mit Hindernis-Vermeidung `15453744562561` | [69926295339393](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20c126ef-1fd7-47ba-87da-dfe5ce978467.jpg) | 17 | Upgrade brushless motor for more Brushless power stable | offen |
+| Lesekissen mit Armlehne und Getränkehalter `15453793976705` | [69926768411009](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3576b19c-7aef-4e9a-8f0c-1ec78a026d2b.jpg) | 17 | Shoulder Pressure Elhow Pressuree Leg Pressure After Use | offen |
 | Mini UAV-Flugzeug `15453743907201` | [69926293995905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cbd0b1a-7a56-4fc8-b874-60c3d63e3060_fine.jpg) | 16 | Lighting fear night flights Multiple LED lights are | offen |
 | Netzteil mit Trafo für Game Konsole `15500438602113` | [70542981464449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dc58d45a-b0d9-4b36-816f-75de1f08f70b.jpg) | 16 | Multi safery features has multiple protection for Overcharge | ENTFERNT |
 | Plüschspielzeug mit Flattergeräusch `15453792174465` | [69926765461889](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4b69f4b4-890b-47aa-89a2-7f70b5e1dd60_trans.jpg) | 15 | Cats are born hunters Highly simulated appearance suitable | ENTFERNT |
@@ -38,6 +40,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Drohnenfernsteuerung mit 3 Kameras, langer Akku `15453743743361` | [69926293471617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a23f731e-f5bd-4c47-b047-72f2cbe17a1c.jpg) | 14 | Max Drone flagship light and shadow triple camera | ENTFERNT |
 | Natürlicher Gummispielzeug Lebensmittel-Verteile `15453763502465` | [69926634488193](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c34aa6a5-2ee1-492c-8bd0-64631702cb5a_trans.jpg) | 14 | Super Strong Interactive Throwing Puzzle Food Dispensing jistant | ENTFERNT |
 | Grosses Trinkschüssel für Haustiere `15453764911489` | [69926640091521](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e8706c5-2053-4556-b96a-09d5a383114a_trans.jpg) | 14 | Use exquisite The cat bowl Start Daily Food | ENTFERNT |
+| Kratzball Katzenbett `15453786702209` | [69926756123009](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02496609-f1fa-42a2-9066-4a77e2ad840f_trans.jpg) | 14 | Rotating climbing frame cat nest ROTATING BALL SOLID | offen |
 | Öle für Duftdiffuser `15453771661697` | [69926697304449](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68ea0afb-6a45-4d84-8ebc-123850f919a2.jpg) | 13 | LAVENDER ESSENTIAL ESSENTIAL OIL THERAPEUTIC GRADE Essential oils | ENTFERNT |
 | In-Ear Gaming Headset mit Geräuschunterdrückung `15433463398785` | [69712350380417](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6bddeded-3685-4902-9816-b786891ec9e2_trans.jpg) | 13 | Gaming Bluetooth delay Dual Mode Cool Fantasy Breathing | ENTFERNT |
 | Luftstromladegerät `15500984058241` | [70551408705921](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3049674334524.jpg) | 13 | Pad Wireless Charging Board Adjustable Clamp Angle Adjust | ENTFERNT |
@@ -66,6 +69,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Entspannte Sporthose für Herren `15453771858305` | [69926697861505](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93eceeb9-6b24-4106-a88f-eb8ae0ceadbf_trans.jpg) | 8 | WATER REPELLENT VENTILATE Breathability WEAR RESISTANT fear Resistance | ENTFERNT |
 | Elektrisches Lichttherapiegerät zur Hautverjüngu `15501006209409` | [70551637721473](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24dd1c96-9e2a-41ff-962f-d2eae9739428_trans.jpg) | 8 | Beauty and hairdressing set Source Factory Fully qualified | ENTFERNT |
 | Katzen Diamond Painting Set `15500982747521` | [70551398777217](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f98c7cb0-6d42-431a-ad1d-1b4b12421f6f.jpg) | 8 | The Larger The Size The Better The Effect | ENTFERNT |
+| Leine für grosse Hunde `15453789913473` | [69926760939905](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bad9a91c-e656-473e-8577-8c6cf28b0447_trans.jpg) | 8 | Effectively absorbs the impact force when the dog | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | ENTFERNT |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | ENTFERNT |
 | Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | ENTFERNT |
@@ -75,11 +79,13 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Anti-Rutsch Leckschale für Haustiere `15453774938497` | [69926702711169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/781de4b8-8eb6-4f61-a530-f5980ecc32b7.jpg) | 7 | WORKS GREAT WITH BABY FOOD Pumpkin Puree | ENTFERNT |
 | NS21 RGB-Gamepad mit Leuchteffekten `15433464447361` | [77265202119047](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a0d2fd3-4711-4501-9c60-74424edacb94_trans.jpg) | 7 | Switch Android HID Available all major platforms | ENTFERNT |
 | Dunkelgraues Kissen mit Geometrischem Jacquard `15497525657985` | [77265204478343](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2402130306220324700.jpg) | 7 | HINYEATEX FRONT SIDE PILLOW BACK SIDE PILLOW | ENTFERNT |
+| Edelstahl-Lunchbox mit Fächern `15453794042241` | [69926768476545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68bbba85-f279-47d1-96c7-6a8cc21b83e0_trans.jpg) | 7 | Portable Insulation Bag More Comfortable Carry Outdoors | offen |
 | Brotdose mit Deckel `15453785325953` | [69926750126465](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fa32582-076e-4b80-843b-21fad0e3f076_trans.jpg) | 6 | toast box and models toast box | offen |
 | Faltbarer Quadrocopter mit Touch-Steuerung `15453743317377` | [69926292586881](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/452b1a45-07be-42ee-a86d-1f502df24b52_trans.jpg) | 6 | perception and obstacle avoidance forward Pathfinder | offen |
 | Yoga-Matte für Studios und Workouts `15453762650497` | [69926633439617](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27505a5f-50fb-4818-b7f1-00d8510342f3_trans.jpg) | 6 | pain tion exe cise longer restricted | offen |
 | Integrierte Fahrradhelm-Brille `15453769695617` | [69926689997185](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a09141-2e5f-46ec-a9ff-9fae95b110ae.jpg) | 6 | red silver One size fits all | offen |
 | Nixie-Röhrenuhr mit Wecker aus Walnussholz `15501005291905` | [70551630807425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/640bcf9f-7da6-4b62-8469-9399beef9d90.jpg) | 6 | GERALDINI MUUTO ESIGN THE SOLACE SOAKING | offen |
+| Kauenset für Hunde `15453794107777` | [69926768574849](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ff594967-2e75-4732-b025-8e79c783bf96_fine.jpg) | 6 | Teeth firm and ith meaty aroma | offen |
 | Stiller Aroma Diffusor für Zuhause & Büro `15453774086529` | [69926701629825](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d4977fb-27ff-4537-928a-345fe4d01923.jpg) | 5 | FOR YOU PROVIDE COMFORT FRAGRANCE | ENTFERNT |
 | Arm-Trainer für Zuhause `15453762584961` | [69926633308545](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/31de1ba0-7de4-4960-8285-f97d43eb8315_trans.jpg) | 5 | Strengthen your body Build muscles | offen |
 | Intelligenter Wasserspender für Katzen `15453765009793` | [69926640255361](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7886b754-4fb5-4cd4-867d-0c466afc290a_trans.jpg) | 5 | set satisfies all Container Extrajlarge | offen |
@@ -106,6 +112,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` (704 Produkte). Gep
 | Keramik-Futternapf für Hunde, grosse Kapazität `15453774283137` | [70618524909953](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2490125b-fbbf-45af-8793-098578110a85_trans.jpg) | 4 | Free Single bowl rack | offen |
 | Geschlossene Katzen-Toilette `15453787554177` | [69926757761409](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ce2b38c-d07e-471f-bf87-c523816c64f8_trans.jpg) | 4 | Flowerpot cat litter box | offen |
 | NS21 RGB-Gamepad mit Leuchteffekten `15433464447361` | [77265202086279](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/49cf115c-637e-4f7b-ae60-7e2e11eed288_trans.jpg) | 4 | Bracket Charging cable Gamepad | offen |
+| 6er Set Ätherische Öle `15450851934593` | [69887443272065](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2238128500626.jpg) | 4 | KBAY Pure essential oils | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 
