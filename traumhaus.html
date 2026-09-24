@@ -2827,7 +2827,10 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
    Sandküste, Eisenbahnbrücke auf Pfeilern quer übers Wasser, fahrender Zug, Strassen-Zufahrt. */
 (function(){
   var meerG=new THREE.PlaneGeometry(200,340,20,20);
-  var meer=new THREE.Mesh(meerG,new THREE.MeshStandardMaterial({color:0x2e6f9e,roughness:0.18,metalness:0.1,envMapIntensity:0.5}));
+  /* roughness 0,18 → 0,34 (Runde 94, Bilder k14-meer-*): die Sonne stand als ein 300-px-Weissklecks auf dem
+     Wasser, hart wie ein Scheinwerfer — der Glanzpunkt einer fast spiegelnden Flaeche unter ACES. Rauer
+     verteilt ihn zu einem weichen Glitzerband, das Blau bleibt. */
+  var meer=new THREE.Mesh(meerG,new THREE.MeshStandardMaterial({color:0x2e6f9e,roughness:0.34,metalness:0.1,envMapIntensity:0.45}));
   meer.rotation.x=-Math.PI/2;meer.position.set(-232,-0.04,0);scene.add(meer);
   /* ⚠️ amp 0,2 (Runde 94, Bild k11-meer-insel): der Teich-Animator daempft nur Rand-Vertices (|x|,|y| > 11 m);
      die MITTE der 200 x 340-m-Platte kraeuselte mit voller Amplitude ±0,16 um -0,04 und tauchte bis -0,20 —
