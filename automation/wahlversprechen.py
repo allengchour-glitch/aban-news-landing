@@ -36,6 +36,11 @@ WAHL = re.compile(
     # 31.08.: auch Zahlwoerter («In zwei Farben erhältlich: Weiss und Grau») — der
     # Kopfhaut-Roller mit EINER Variante trug genau diese Form, und sie entging dem Muster.
     r'in (?:verschiedenen|mehreren|unterschiedlichen|zwei|drei|vier|f[üu]nf) (?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)'
+    # 24.09.: Die Prüfer der Ratgeber fanden «Verfügbare Grössen: S (Ø 33 cm), M (…), L (…)» am Kratzbaum-Nest mit EINER
+    # Variante — kein Muster oben kennt die Doppelpunkt-Form. Am Vollexport vom 03.09. gemessen: 812 aktive Produkte
+    # mit einer Variante tragen «Verfügbare Grössen:» oder «Grössen: a, b, c». Nur der PLURAL mit Liste (Komma, «/»,
+    # «und», «oder») zählt — «Grösse: M» im Faktenblock ist eine Angabe, keine Wahl.
+    r'|verf[üu]gbare?\s+gr[öo]ssen?\s*:|\bgr[öo]ssen\s*:\s*[^.\n]{0,60}(?:,|/| und | oder )'
     r'|(?:verschiedene|mehrere) (?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Modelle|Varianten) (?:erh[äa]ltlich|verf[üu]gbar|zur Auswahl)'
     r'|w[äa]hlen Sie (?:zwischen|aus)'
     r'|zur Auswahl stehen'

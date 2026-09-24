@@ -235,7 +235,8 @@ KLASSEN = [
      'Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).',
      'automation/wahlversprechen.py  (meldet; FIX=1 nur fuer eindeutige Faelle)',
      lambda t, h, tg, vc: vc == 1 and bool(re.search(
-         r'erhältlich in (?:den )?(?:versch|verschiedenen|mehreren|\d|zwei|drei|vier|fünf)', h, re.I))),
+         r'erhältlich in (?:den )?(?:versch|verschiedenen|mehreren|\d|zwei|drei|vier|fünf)'
+         r'|verf[üu]gbare?\s+gr[öo]ssen?\s*:|\bgr[öo]ssen\s*:\s*[^.\n]{0,60}(?:,|/| und | oder )', h, re.I))),
 ]
 
 
