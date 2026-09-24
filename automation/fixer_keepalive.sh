@@ -1458,6 +1458,15 @@ KLT=/tmp/test_klingen_tor.log
   # 📦 FORTURA-BESTAND (24.09.2026): Der Abgleich Feed → Shop hing am Import-Runner und stand seit 21.08. still
   # (34 Tage eingefroren, 248 Varianten verkauften Ware, die Fortura nicht mehr hatte). Eigener Tagesstart, unabhaengig
   # von Import-Pause und Grind-Schalter.
+  # ⭐ BEWERTUNGEN NACHHOLEN (24.09.2026, Betreiber «bewertungen push»): 1–3★-Kommentare fuer 2'072 Produkte, die nur
+  # 4–5★ zeigen. Ein Lauf dauert Stunden, der Container startet stuendlich neu → fortsetzen, bis das Log FERTIG sagt.
+  BN=/tmp/bewertungen_nachholen.log
+  if [ -f /tmp/judgeme.env ] && ! tail -n 3 "$BN" 2>/dev/null | grep -q "^FERTIG" \
+     && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /bewertungen_nachholen\.sh$/ {f=1} END{exit(f?0:1)}' \
+     && ! { tail -n 1 "$BN" 2>/dev/null | grep -q "^PAUSE" && [ $(( $(date +%s) - $(stat -c %Y "$BN") )) -lt 3600 ]; }; then
+    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/bewertungen_nachholen.sh" >> "$BN" 2>&1 & )
+    echo "$(date -u +%H:%M) Bewertungen nachholen: fortgesetzt"
+  fi
   FB=/tmp/fortura_bestand.stamp
   if [ -f /tmp/fortura_env.sh ] && [ $(( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) )) -gt 72000 ] \
      && ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fortura_bestand_taeglich\.sh$/ {f=1} END{exit(f?0:1)}'; then
