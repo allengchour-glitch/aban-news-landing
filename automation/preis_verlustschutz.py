@@ -83,7 +83,7 @@ def kandidaten():
 
 
 Q = '''query($id:ID!){product(id:$id){id title status handle tags variants(first:100){nodes{id title price compareAtPrice
- inventoryPolicy inventoryItem{id tracked unitCost{amount}}}}}}'''
+ inventoryPolicy inventoryQuantity inventoryItem{id tracked unitCost{amount}}}}}}'''
 M = '''mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){
  productVariants{id price compareAtPrice inventoryPolicy inventoryItem{tracked}} userErrors{field message}}}'''
 
@@ -92,7 +92,7 @@ def plane(pid):
     p = gql(Q, {"id": pid})["product"]
     if not p or p["status"] != "ACTIVE":
         return p, [], [], "nicht aktiv"
-    heben, sperren = [], []
+    heben, sperren, ueber = [], [], []
     for v in p["variants"]["nodes"]:
         uc = ((v["inventoryItem"] or {}).get("unitCost") or {}).get("amount")
         if uc is None:
@@ -104,9 +104,23 @@ def plane(pid):
         if preis > 0 and neu / preis > MAX_FAKTOR:
             if v["inventoryPolicy"] != "DENY" or not v["inventoryItem"]["tracked"]:
                 sperren.append((v, preis, ek, neu))
+            elif (v.get("inventoryQuantity") or 0) > 0:
+                # ⚠️ 24.09.2026: DENY+tracked MIT Bestand (Fortura, CH-Lager) ist KEINE Sperre — die Variante bleibt kaufbar.
+                # Die Fortura-Bündel (Faktor 3–5) wären so still weiterverkauft worden.
+                ueber.append((v, preis, ek, neu))
             continue
         streich = v.get("compareAtPrice")
         heben.append((v, preis, ek, neu, None if (streich and float(streich) <= neu) else streich))
+    if ueber:
+        rest = {v["id"] for v, *_ in heben}
+        unverkaeuflich = {v["id"] for v, *_ in sperren} | {v["id"] for v, *_ in ueber} | {
+            v["id"] for v in p["variants"]["nodes"]
+            if v["inventoryPolicy"] == "DENY" and v["inventoryItem"]["tracked"] and (v.get("inventoryQuantity") or 0) <= 0}
+        if not rest and len(unverkaeuflich) == len(p["variants"]["nodes"]):
+            p["_draft"] = True          # nichts anderes am Produkt verkäuflich → ganzes Produkt DRAFT
+        else:                            # sonst lieber absurd hoch als Verlust: Preis auf den Boden
+            for v, preis, ek, neu in ueber:
+                heben.append((v, preis, ek, neu, None))
     return p, heben, sperren, None
 
 
@@ -119,10 +133,12 @@ def schreibe(p, heben, sperren):
         upd.append(u)
     for v, preis, ek, neu in sperren:
         upd.append({"id": v["id"], "inventoryPolicy": "DENY", "inventoryItem": {"tracked": True}})
-    r = gql(M, {"p": p["id"], "v": upd})["productVariantsBulkUpdate"]
-    if r["userErrors"]:
-        return f"userErrors {r['userErrors'][:2]}"
-    ist = {x["id"]: x for x in r["productVariants"] or []}
+    ist = {}
+    if upd:
+        r = gql(M, {"p": p["id"], "v": upd})["productVariantsBulkUpdate"]
+        if r["userErrors"]:
+            return f"userErrors {r['userErrors'][:2]}"
+        ist = {x["id"]: x for x in r["productVariants"] or []}
     for v, preis, ek, neu, streich in heben:
         x = ist.get(v["id"]) or {}
         if f"{float(x.get('price') or 0):.2f}" != f"{neu:.2f}":
@@ -134,8 +150,9 @@ def schreibe(p, heben, sperren):
         if x.get("inventoryPolicy") != "DENY" or not (x.get("inventoryItem") or {}).get("tracked"):
             return f"Rücklesen: {v['id']} nicht gesperrt"
     alle = p["variants"]["nodes"]
-    gesperrt = {v["id"] for v, *_ in sperren} | {v["id"] for v in alle if v["inventoryPolicy"] == "DENY" and v["inventoryItem"]["tracked"]}
-    draft = bool(sperren) and len(gesperrt) == len(alle)
+    gesperrt = {v["id"] for v, *_ in sperren} | {v["id"] for v in alle if v["inventoryPolicy"] == "DENY"
+                                                 and v["inventoryItem"]["tracked"] and (v.get("inventoryQuantity") or 0) <= 0}
+    draft = bool(p.get("_draft")) or (bool(sperren) and len(gesperrt) == len(alle))
     if draft:
         e = gql('mutation($id:ID!){productUpdate(input:{id:$id,status:DRAFT}){product{status} userErrors{message}}}', {"id": p["id"]})["productUpdate"]
         if e["userErrors"] or e["product"]["status"] != "DRAFT":
@@ -186,7 +203,7 @@ def main():
             with SCHLOSS:
                 st["lesefehler"] += 1; fehler.append((pid, f"lesen: {str(e)[:100]}"))
             return
-        if grund or not (heben or sperren):
+        if grund or not (heben or sperren or p.get("_draft")):
             with SCHLOSS:
                 st["schon_ok_oder_inaktiv"] += 1
             return
@@ -206,7 +223,7 @@ def main():
                 try:
                     time.sleep(5)
                     p2, h2, s2, g2 = plane(pid)
-                    if g2 or not (h2 or s2):
+                    if g2 or not (h2 or s2 or p2.get("_draft")):
                         f = quittiere(p, heben, sperren)
                     else:
                         f = schreibe(p2, h2, s2)

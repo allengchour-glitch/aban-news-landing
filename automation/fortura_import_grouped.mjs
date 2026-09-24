@@ -56,7 +56,10 @@ const SIZEORD=['xs','s','s/m','m','m/l','l','l/xl','xl','xxl','xxxl','3xl','4xl'
 const sizeRank=g=>{const i=SIZEORD.indexOf(String(g).toLowerCase());return i<0?99:i;};
 function parseCSV(text){const rows=[];let row=[],f='',q=false;for(let i=0;i<text.length;i++){const c=text[i];if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}else{if(c==='"')q=true;else if(c==='|'){row.push(f);f='';}else if(c==='\n'){row.push(f);rows.push(row);row=[];f='';}else if(c!=='\r')f+=c;}}if(f.length||row.length){row.push(f);rows.push(row);}return rows.filter(r=>r.length>1);}
 function cleanTitle(t){let x=t.replace(/[,;]\s*$/,'').replace(/\s{2,}/g,' ').trim();if(x.length>66){x=x.slice(0,66);const sp=x.lastIndexOf(' ');if(sp>30)x=x.slice(0,sp);}for(let k=0;k<3;k++)x=x.replace(/[\s,]+(und|mit|inkl\.?|&|für|aus|im|in|zum|zur|von)\.?$/i,'').replace(/[\s,&-]+$/,'').trim();return x.slice(0,70).trim();}
-function priceOf(rec){const ek=num(pick(rec,COL.ekNetto)),vk=num(pick(rec,COL.vkEmpf));const floor=ek+SHIP_CH+MIN_MARGIN;let p=vk>0?Math.max(vk,floor):Math.max(ek*MARKUP,floor);return Math.round(p*20)/20;}
+// 24.09.2026: EK beim Anlegen (VP1 × VE + DPD, × 1.081 — Shop nicht MWST-pflichtig), siehe fortura_ek_nachtragen.py
+function costOf(rec){const ek=num(pick(rec,COL.ekNetto)),ve=Math.max(1,Math.round(num(pick(rec,COL.ve))||1));return ek>0?{cost:((ek*ve+SHIP_CH)*1.081).toFixed(2)}:{};}
+// ⚠️ 24.09.2026: VP1/VP2 sind Stückpreise, verkauft wird die ganze VE → beides × VE (vorher Bündel weit unter Einkauf).
+function priceOf(rec){const ve=Math.max(1,Math.round(num(pick(rec,COL.ve))||1)),ek=num(pick(rec,COL.ekNetto))*ve,vk=num(pick(rec,COL.vkEmpf))*ve;const floor=ek+SHIP_CH+MIN_MARGIN;let p=vk>0?Math.max(vk,floor):Math.max(ek*MARKUP,floor);return Math.round(p*20)/20;}
 async function scc(){for(let a=0;a<5;a++){try{const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});const t=JSON.parse(await r.text()).access_token;if(t)return t;}catch{}await sleep(2000*(a+1));}throw new Error('scc');}
 let TOK;
 async function sgql(q,v){for(let a=0;a<4;a++){const r=await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(JSON.stringify(j.errors||'').includes('Throttled')){await sleep(3000);continue;}TOK=await scc();await sleep(1000);}return{};}
@@ -106,11 +109,11 @@ for(const [key,grp] of groups){
     const sorted=[...inStock].filter(r=>grVon(r)).sort((a,b)=>sizeRank(grVon(a))-sizeRank(grVon(b)));
     const seen=new Set(); const uniq=sorted.filter(r=>{const g=grVon(r);if(seen.has(g))return false;seen.add(g);return true;});
     optName='Grösse'; optValues=uniq.map(r=>grVon(r));
-    variants=uniq.map(r=>({optionValues:[{optionName:'Grösse',name:grVon(r)}],price:priceOf(r).toFixed(2),barcode:(/^\d{8,14}$/.test(pick(r,COL.ean))?pick(r,COL.ean):undefined),inventoryItem:{sku:('fortura-'+pick(r,COL.art)).slice(0,70),tracked:true},inventoryPolicy:'DENY',inventoryQuantities:[{locationId:LOC,name:'available',quantity:Math.round(num(pick(r,COL.stock)))}]}));
+    variants=uniq.map(r=>({optionValues:[{optionName:'Grösse',name:grVon(r)}],price:priceOf(r).toFixed(2),barcode:(/^\d{8,14}$/.test(pick(r,COL.ean))?pick(r,COL.ean):undefined),inventoryItem:{sku:('fortura-'+pick(r,COL.art)).slice(0,70),tracked:true,...costOf(r)},inventoryPolicy:'DENY',inventoryQuantities:[{locationId:LOC,name:'available',quantity:Math.round(num(pick(r,COL.stock)))}]}));
   } else {
     const r=inStock[0];
     optName='Titel'; optValues=['Standard'];
-    variants=[{optionValues:[{optionName:'Titel',name:'Standard'}],price:priceOf(r).toFixed(2),barcode:(/^\d{8,14}$/.test(pick(r,COL.ean))?pick(r,COL.ean):undefined),inventoryItem:{sku:('fortura-'+pick(r,COL.art)).slice(0,70),tracked:true},inventoryPolicy:'DENY',inventoryQuantities:[{locationId:LOC,name:'available',quantity:Math.round(num(pick(r,COL.stock)))}]}];
+    variants=[{optionValues:[{optionName:'Titel',name:'Standard'}],price:priceOf(r).toFixed(2),barcode:(/^\d{8,14}$/.test(pick(r,COL.ean))?pick(r,COL.ean):undefined),inventoryItem:{sku:('fortura-'+pick(r,COL.art)).slice(0,70),tracked:true,...costOf(r)},inventoryPolicy:'DENY',inventoryQuantities:[{locationId:LOC,name:'available',quantity:Math.round(num(pick(r,COL.stock)))}]}];
   }
   if(DRY){console.log(`[DRY] ${title} — ${variants.length} Variante(n) [${optName}: ${optValues.join('/')}] ab CHF ${variants[0].price}`);created++;continue;}
   if(img&&imgSeen.has(img)){/* Bild schon genutzt, trotzdem anlegen (Set kann Bild teilen) */}
