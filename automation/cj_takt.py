@@ -48,8 +48,46 @@ def _lesen():
         return 0.0
 
 
+# 24.09.2026 VORRANG: Seit 16:00 (Budget-Reset) machten der Reel-Motor 196 und der Bewertungs-Nachholer 158 CJ-Aufrufe,
+# der Kosten-Nachtrag 0 — und 13'018 aktive CJ-Produkte haben keinen EK (Preis-Verlustschutz blind). Solange ein
+# VORRANG-Skript arbeitet (es frischt /tmp/cj_vorrang bei jedem Aufruf auf), warten alle anderen — ausser den
+# Bestell-/Zahlungs-/Versandwaechtern (Kundinnen zuerst). Eine Vorrang-Datei aelter als 120 s zaehlt nicht (Leiche);
+# niemand wartet laenger als VORRANG_MAX_S (Standard 90 min).
+VORRANG_DATEI = "/tmp/cj_vorrang"
+VORRANG_SKRIPTE = ("cj_kosten_backfill",)
+IMMER_FREI = ("cj_fulfill", "cj_order", "cj_zahlung", "versand_stillstand", "bestell", "cj_takt")
+VORRANG_MAX_S = float(os.environ.get("VORRANG_MAX_S", "5400"))
+
+
+def _skript():
+    import sys
+    return os.path.basename(sys.argv[0] or "?") or "?"
+
+
+def _vorrang_warten():
+    name = _skript()
+    if any(name.startswith(v) for v in VORRANG_SKRIPTE):
+        try:
+            with open(VORRANG_DATEI, "w") as f:
+                f.write(name)
+        except Exception:
+            pass
+        return
+    if any(name.startswith(v) for v in IMMER_FREI):
+        return
+    ende = time.time() + VORRANG_MAX_S
+    while time.time() < ende:
+        try:
+            if time.time() - os.stat(VORRANG_DATEI).st_mtime > 120:
+                return
+        except FileNotFoundError:
+            return
+        time.sleep(10)
+
+
 def takt(abstand=None):
     """Reserviert den naechsten freien Startpunkt und blockiert bis dahin (Start-zu-Start ABSTAND)."""
+    _vorrang_warten()
     abstand = ABSTAND if abstand is None else abstand
     _sperren()
     try:
