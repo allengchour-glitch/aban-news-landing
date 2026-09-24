@@ -19602,3 +19602,5 @@ gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/1227
 gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444263297	Green-US22w	Grün-US 22W	2026-09-24T03:36Z
 gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444525441	Purple-US20w	Lila-US 20W	2026-09-24T03:36Z
 gid://shopify/Product/15485407068545	Farbe	gid://shopify/ProductOptionValue/12271444558209	Purple-US22w	Lila-US 22W	2026-09-24T03:36Z
+gid://shopify/Product/15490614559105	Farbe	gid://shopify/ProductOptionValue/12303006597505	Retrorot	Retro-Rot	2026-09-24T03:46Z
+gid://shopify/Product/15492326687105	Farbe	gid://shopify/ProductOptionValue/12319176196481	Retroblau	Retro-Blau	2026-09-24T03:46Z
