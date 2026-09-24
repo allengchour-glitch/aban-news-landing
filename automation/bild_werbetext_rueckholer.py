@@ -35,6 +35,10 @@ AUFRUF:
   NUR_PRODUKT=<id> python3 …                                            nur dieses Produkt (auch ohne Ledger-Eintrag)
   SCHARF=1 NUR_MEDIA=<media_id> [NUR_PRODUKT=<id>] python3 …            genau dieses Medium löschen (Rücklesen Pflicht)
   SCHARF=1 python3 …                                                    alle Treffer löschen (erst nach Sichtprüfung!)
+  SCHARF=1 WORTGRENZE=7 python3 …                                        erster scharfer Lauf 24.09.: Sichtprüfung des Kontaktbogens
+                                                                        (24/24 echte Infografiken ab 14 W); 4–6 W waren Farb-/Shade-
+                                                                        Etiketten (SLATE GREY CHERRY RED, Rose Gold Eye Shadow) → zweite
+                                                                        Sichtung, nicht blind. Nie das letzte Zweitbild (Sperre im Lauf).
   NUR_BERICHT=1 python3 …                                               Bericht + Kontaktbogen aus dem Ledger neu bauen
 Umgebung: TAKT (Sekunden je OCR, Standard 1.0), CAP (Produkte je Lauf, Standard 0 = alle), WORTGRENZE (4).
 Sperre /tmp/bild_werbetext_rueckholer.lock — ein zweiter Lauf beendet sich sofort.
@@ -266,6 +270,15 @@ def main():
         if raus:
             print(f"   [{n}/{len(liste)}] {titel_von[pid][:44]:<46} {len(raus)} Treffer: "
                   + "; ".join(f"Pos{pos} {w}W «{t[:40]}»" for _, pos, w, t, _ in raus), flush=True)
+            # 24.09.: Diese Produkte kamen aus dem Bild-Nachfüller («mehrere Bilder statt nur 1», Betreiber 23.09.) — ein Lauf,
+            # der alle Zweitbilder löscht, macht die Arbeit rückgängig und nimmt der Karte das Karussell. Es bleibt IMMER
+            # mindestens ein Zweitbild stehen: das mit den wenigsten Wörtern wird behalten und im Log als solches genannt.
+            bilder = [m for m in nodes if m.get("mediaContentType") == "IMAGE" and (m.get("image") or {}).get("url")]
+            if len(bilder) - len(raus) < 2:
+                raus.sort(key=lambda r: r[2])
+                behalten = raus.pop(0)
+                print(f"   ↩️ letztes Zweitbild behalten: Pos{behalten[1]} ({behalten[2]} W) — Produkt hätte sonst nur das Hauptbild",
+                      flush=True)
         if raus and SCHARF:
             mids = [r[0] for r in raus]
             ok, fehler = loeschen(pid, mids)
