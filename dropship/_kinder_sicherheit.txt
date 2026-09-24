@@ -1169,3 +1169,245 @@ gid://shopify/Product/15521415561601	w	Kleinteile	Geländegängiger Pickup Truck
 gid://shopify/Product/15521415889281	w	Kleinteile	Fujiwara Tofu Shop Bausteine Modell
 gid://shopify/Product/15521416184193	w	Kleinteile	Rotes & Weisses Coupe GT Rennwagen Modell
 gid://shopify/Product/15521416642945	w	Kleinteile	Bausteine-Set für Ventilator-Modelle (1000 Teile)
+gid://shopify/Product/15521461764481	w	Kleinteile	Mini Sportwagen Bausteine mit Vitrine
+gid://shopify/Product/15521491091841	w	Kleinteile	Buntes Puzzle-Modell Dessert-Haus
+gid://shopify/Product/15521491747201	w	Kleinteile	Blumen-Baustein-Strassenansicht
+gid://shopify/Product/15521492337025	w	Kleinteile	Kleiner Baustein-Bausatz für Kinder
+gid://shopify/Product/15521534312833	w	Kleinteile	Musik-Spieldose aus Klemmbausteinen
+gid://shopify/Product/15521534509441	w	Kleinteile	Mini Bausteine Set für Kinder
+gid://shopify/Product/15521534771585	w	Kleinteile	Militär Puzzle Bausteine (800+ Teile)
+gid://shopify/Product/15521534935425	w	Kleinteile	Sportwagen Bausteine – Kleine Partikel
+gid://shopify/Product/15521535066497	w	Kleinteile	Piratenschiff «Black Pearl» Bausteine
+gid://shopify/Product/15521535164801	w	Kleinteile	Hongkong City Bausteine für Kinder
+gid://shopify/Product/15521590739329	w	Kleinteile	Bausatz für 8-Raster-Fahrzeug
+gid://shopify/Product/15521591984513	w	Kleinteile	Sportwagen Kleinpartikel Puzzle
+gid://shopify/Product/15521593459073	w	Kleinteile	Militär Panzer Bausteine WWII
+gid://shopify/Product/15521594278273	w	Kleinteile	Baustellen-Bulldozer Konstruktions-Bausatz
+gid://shopify/Product/15521594802561	w	Kleinteile	Lebkuchenhaus MOC Bausteine
+gid://shopify/Product/15521594933633	w	Kleinteile	Holz-Eisenbahn mit 88 Teilen und Elektrozug · 88 Stück
+gid://shopify/Product/15521595163009	w	Kleinteile	Street View Bausteine für Kinder
+gid://shopify/Product/15521596014977	w	Kleinteile	Schwieriges Puzzle-Spielzeug für Jungen
+gid://shopify/Product/15521596211585	w	Kleinteile	GT3-Rennwagen / Sport-Kombi Klemmbausteine
+gid://shopify/Product/15521596473729	w	Kleinteile	Digitaler Skorpion Bausatz aus Metall
+gid://shopify/Product/15521596637569	w	Kleinteile	Elektro-Limousine Spielzeugauto-Modellbausatz
+gid://shopify/Product/15521661780353	w	Kleinteile	Kirschblüten-Bonsai mit Figuren
+gid://shopify/Product/15521662042497	w	Kleinteile	Hochzeits-Herrenhaus Bausteine
+gid://shopify/Product/15521662206337	w	Kleinteile	Mini Louvre Mosaik Bausteine
+gid://shopify/Product/15521662697857	w	Kleinteile	Schwanensee Schloss Bausteine
+gid://shopify/Product/15521662828929	w	Kleinteile	Blumenladen, Früchteladen oder Liebesvilla Bausteine
+gid://shopify/Product/15521662894465	w	Kleinteile	Sweetheart Dreamers Bausteine
+gid://shopify/Product/15521662992769	w	Kleinteile	Chinesischer Baustein-Bausatz
+gid://shopify/Product/15521663091073	w	Kleinteile	Kleine Baustein-Modelle für Kinder
+gid://shopify/Product/15521663254913	w	Kleinteile	Mini Bausteine Frühlingsfest Hütte
+gid://shopify/Product/15521663320449	w	Kleinteile	Puzzle Bausteine: Kleinteile Technikfahrzeug
+gid://shopify/Product/15521663385985	w	Kleinteile	Sugar Prince Bär Plüschtier
+gid://shopify/Product/15522213888385	w	Kleinteile	Vintage Zug Café Bausteine – Street View Modell
+gid://shopify/Product/15522214084993	w	Kleinteile	Blumen-Bausteine zum Selberbauen
+gid://shopify/Product/15522214347137	w	Kleinteile	Miniatur Diamant-Partikel Häuschen Puzzle
+gid://shopify/Product/15522214674817	w	Kleinteile	3D Puzzle Sagrada Familia Kathedrale mit LED
+gid://shopify/Product/15522214936961	w	Kleinteile	DIY Waldbaumhaus aus Klemmbausteinen
+gid://shopify/Product/15522215068033	w	Kleinteile	Miniatur Baustein Puzzle: Kreative Fleisch-Ornamente
+gid://shopify/Product/15522215231873	w	Kleinteile	Bausteine Zug Kaffeehaus Deko-Spielzeug
+gid://shopify/Product/15522215395713	w	Kleinteile	Street View Zug Café Kiosk Klemmbausteine
+gid://shopify/Product/15522215526785	w	Kleinteile	Märchenschloss Mikro-Bausteine
+gid://shopify/Product/15522215592321	w	Kleinteile	Mikro-Bausteine: Hochzeitspavillon
+gid://shopify/Product/15522215657857	w	Kleinteile	3D-Puzzle Kleinpartikel-Baustein-Spielzeug
+gid://shopify/Product/15522215854465	w	Kleinteile	Schwerer Panzer KV-44 Modellbausteine
+gid://shopify/Product/15523136045441	w	Kleinteile	Historisches Wahrzeichen als Mikro-Bausteinmodell
+gid://shopify/Product/15523136438657	w	Kleinteile	US Special Forces Bausteine "Operation Red Sea"
+gid://shopify/Product/15523137192321	w	Kleinteile	Kran Raupenfahrzeug 3D-Metallbausatz RC
+gid://shopify/Product/15523137552769	w	Kleinteile	Baustein Stiftehalter mit Cartoon-Figur
+gid://shopify/Product/15523138109825	w	Kleinteile	Programmierbarer Roboter Bausatz für Kinder
+gid://shopify/Product/15523138371969	w	Kleinteile	Militär-Modellbausatz: Beweglicher Soldat
+gid://shopify/Product/15523138699649	w	Kleinteile	Mini-Bausteine: Stadtansicht-Set
+gid://shopify/Product/15523138961793	w	Kleinteile	Sonnensystem Bausatz für kreative Köpfe
+gid://shopify/Product/15523139289473	w	Kleinteile	Programmierbarer Bausteine-Roboter mit Fernsteuerung
+gid://shopify/Product/15523176612225	w	Kleinteile	Programmierbare Bausteine – Kursroboter
+gid://shopify/Product/15523176644993	w	Kleinteile	Programmierbares Baustein-Set mit Fernsteuerung
+gid://shopify/Product/15523176710529	w	Kleinteile	Holzboot-Bausatz "Reibungslose Fahrt"
+gid://shopify/Product/15523176808833	w	Kleinteile	Bausteine-Set: Baufahrzeuge für Kinder
+gid://shopify/Product/15523176939905	w	Kleinteile	Dinosaurier T-Rex Bausteine Puzzle
+gid://shopify/Product/15523177005441	w	Kleinteile	Globus Bausteine-Modell
+gid://shopify/Product/15523177103745	w	Kleinteile	Vier magische Tiere Bausteine
+gid://shopify/Product/15523236807041	w	Kleinteile	Klassische 80er-Limousine Klemmbausteine
+gid://shopify/Product/15523236970881	w	Kleinteile	Roboter Bausatz für Kinder
+gid://shopify/Product/15523237167489	w	Kleinteile	Riesiger T-Rex Bausteine für Kinder
+gid://shopify/Product/15523237396865	w	Kleinteile	Mode-Puzzle Bausteine für Kinder
+gid://shopify/Product/15523237527937	w	Kleinteile	Dinosaurier-Roboter Bausatz
+gid://shopify/Product/15523237691777	w	Kleinteile	Rennwagen Bausteine für Jungen
+gid://shopify/Product/15523237953921	w	Kleinteile	Gebäude-Bausteine: Japanischer Dumpling-Shop
+gid://shopify/Product/15523238150529	w	Kleinteile	Micro Drill Traumschloss Bausteine
+gid://shopify/Product/15523238936961	w	Kleinteile	Lebkuchenhaus-Spieluhr zum Selberbauen
+gid://shopify/Product/15523239133569	w	Kleinteile	Florist Kaffeehaus Bausteine
+gid://shopify/Product/15523940860289	w	Kleinteile	Mikro-Bohrer-Bausatz zum Zusammenbauen
+gid://shopify/Product/15523941056897	w	Kleinteile	Kreative Bausteine mit Mikro-Diamant-Partikeln
+gid://shopify/Product/15523941319041	w	Kleinteile	Bausteine-Set «Segelboot»
+gid://shopify/Product/15523941515649	w	Kleinteile	Rotes Kirchenmodell zum Bauen
+gid://shopify/Product/15523941777793	w	Kleinteile	Zusammenbaubares Spielzeugschloss für Kinder
+gid://shopify/Product/15523942007169	w	Kleinteile	Kaufhaus Baustein Spielzeug
+gid://shopify/Product/15523942171009	w	Kleinteile	Kuba Hotel Mikro Bausteine Spielzeug
+gid://shopify/Product/15523952001409	w	Kleinteile	Ford GT 2017 Baukasten aus Plastik
+gid://shopify/Product/15523952132481	w	Kleinteile	Bausteinmodell Audi RS7
+gid://shopify/Product/15523952329089	w	Kleinteile	Miniatur-Bausteine Schwanensee
+gid://shopify/Product/15523952492929	w	Kleinteile	Smolny Kathedrale Mini-Bausteine mit Beleuchtung
+gid://shopify/Product/15523952624001	w	Kleinteile	Romantisches Türkisches Schloss Bausteine
+gid://shopify/Product/15523952722305	w	Kleinteile	Morgenbaumhaus Bausteine
+gid://shopify/Product/15523952918913	w	Kleinteile	Modell Big Ben Bausteine Miniatur
+gid://shopify/Product/15523952984449	w	Kleinteile	Hongkonger Imbiss-Strassenbild Puzzle-Bausteine
+gid://shopify/Product/15523953148289	w	Kleinteile	Modellbausatz «Kaffeehaus»
+gid://shopify/Product/15523953312129	w	Kleinteile	Mini Telefon Baustein Spielzeug
+gid://shopify/Product/15523956883841	w	Kleinteile	Burg-Bausteine zum Entspannen
+gid://shopify/Product/15523962945921	w	Kleinteile	Bausteine für Weihnachtsgeschenke
+gid://shopify/Product/15524074389889	w	Kleinteile	Bausatz GR Supra Rennwagen
+gid://shopify/Product/15524076749185	w	Kleinteile	Bausatz für Lastwagen-Modell
+gid://shopify/Product/15524078223745	w	Kleinteile	Bausteine Breitbau-Sportwagen Modell
+gid://shopify/Product/15524078420353	w	Kleinteile	Bausteine Ford Mustang Shelby GT500 Roadster
+gid://shopify/Product/15524078649729	w	Kleinteile	Zusammensteckbares Puzzle-Spielzeug
+gid://shopify/Product/15524078846337	w	Kleinteile	Mechanisches 3D-Puzzle Schaufel-Rüstung
+gid://shopify/Product/15524079075713	w	Kleinteile	Rennauto Bausteine AE86moc
+gid://shopify/Product/15524079305089	w	Magnete	Magnetisches Lernspielzeug für Kinder
+gid://shopify/Product/15524080025985	w	Kleinteile	3D Holzpuzzle Lasercut-Bausatz
+gid://shopify/Product/15524080320897	w	Kleinteile	Holz 3D Puzzle für Kinder
+gid://shopify/Product/15524892868993	w	Kleinteile	Simuliertes 3D-Holzpuzzle
+gid://shopify/Product/15524892967297	w	Kleinteile	3D Holzpuzzle Laser DIY Gross
+gid://shopify/Product/15524893131137	w	Kleinteile	Holz 3D Puzzle Windmühle
+gid://shopify/Product/15524893294977	w	Kleinteile	Blumenstrauss-Bausatz aus Klemmbausteinen
+gid://shopify/Product/15524893524353	w	Kleinteile	3D Puzzle Bausteine für Kinder
+gid://shopify/Product/15524893688193	w	Kleinteile	Holz 3D Puzzle
+gid://shopify/Product/15524893852033	w	Kleinteile	Topfpflanzen Baukasten Blumenstrauss
+gid://shopify/Product/15524894900609	w	Kleinteile	Weltraum Modellbausatz zum Selberbauen
+gid://shopify/Product/15524895162753	w	Kleinteile	Pilzhaus-Strassenansicht Baustein-Puzzle
+gid://shopify/Product/15524895326593	w	Kleinteile	Pilz-Mädchen Puzzle Bausteine
+gid://shopify/Product/15524895555969	w	Kleinteile	Mechanische Schildkröte Holz-Puzzle
+gid://shopify/Product/15524895752577	w	Kleinteile	Mechanische Punk-Uhr aus Holz zum Selberbauen
+gid://shopify/Product/15525462573441	w	Kleinteile	Bauklotzspielzeug: Blühende Pflanze aus Kunststoff
+gid://shopify/Product/15525462606209	w	Kleinteile	Pellet-Bausteine Lernset aus ABS‑Kunststoff
+gid://shopify/Product/15525462671745	w	Kleinteile	Herbsthaus Ranch Mini Baustein Modell
+gid://shopify/Product/15525462704513	w	Kleinteile	Faltbares Strassen-Baustein-Set
+gid://shopify/Product/15525462802817	w	Kleinteile	Blumen-Blumentopf-Bausteine
+gid://shopify/Product/15525462835585	w	Kleinteile	Windmühlen-Spieluhr aus Klemmbausteinen
+gid://shopify/Product/15525462901121	w	Kleinteile	Blumenstrauss-Bausteine im Blumentopf
+gid://shopify/Product/15525462966657	w	Kleinteile	Grosses Modellbau-Set mit Klemmbausteinen
+gid://shopify/Product/15525463130497	w	Kleinteile	Windmühlen-Spieluhr zum Selberbauen
+gid://shopify/Product/15525463196033	w	Kleinteile	Gebäude-Bausteine «Chinesische Strasse»
+gid://shopify/Product/15525463261569	w	Kleinteile	Blumen Topf Bausteine
+gid://shopify/Product/15525463327105	w	Kleinteile	3D Holzpuzzle Berühmte Universität
+gid://shopify/Product/15525463392641	w	Kleinteile	3D Holzpuzzle Modell Antikes Gebäude
+gid://shopify/Product/15525463425409	w	Kleinteile	3D-Holzpuzzle Architektur-Modellbausatz
+gid://shopify/Product/15525463490945	w	Kleinteile	Bausteine aus Kunststoff
+gid://shopify/Product/15525463622017	w	Kleinteile	Bausteine Subaru Auto
+gid://shopify/Product/15525463654785	w	Kleinteile	Bausteine aus Kunststoff, 521 Teile
+gid://shopify/Product/15525463753089	w	Kleinteile	Kleine Bausteine für Trägerfiguren
+gid://shopify/Product/15525463884161	w	Kleinteile	Edelstein-Bauklötze aus Holz und Acryl
+gid://shopify/Product/15525464048001	w	Kleinteile	Belodi Partikel Kinder Bauklötze
+gid://shopify/Product/15447976018305	a	toddler
+gid://shopify/Product/15469967442305	a	toddler
+gid://shopify/Product/15496334803329	a	toddler
+gid://shopify/Product/15496393916801	a	toddler
+gid://shopify/Product/15496513585537	a	toddler
+gid://shopify/Product/15496516403585	a	toddler
+gid://shopify/Product/15497428828545	a	toddler
+gid://shopify/Product/15497429123457	a	toddler
+gid://shopify/Product/15497440592257	a	toddler
+gid://shopify/Product/15497454748033	a	toddler
+gid://shopify/Product/15498598547841	a	toddler
+gid://shopify/Product/15498600087937	a	toddler
+gid://shopify/Product/15498600481153	a	toddler
+gid://shopify/Product/15498600841601	a	toddler
+gid://shopify/Product/15498601136513	a	toddler
+gid://shopify/Product/15499865096577	a	toddler
+gid://shopify/Product/15499868340609	a	toddler
+gid://shopify/Product/15500257821057	a	toddler
+gid://shopify/Product/15500901745025	a	toddler
+gid://shopify/Product/15500905152897	a	toddler
+gid://shopify/Product/15500905513345	a	toddler
+gid://shopify/Product/15500939395457	a	toddler
+gid://shopify/Product/15500939559297	a	toddler
+gid://shopify/Product/15501878133121	a	toddler
+gid://shopify/Product/15501878493569	a	toddler
+gid://shopify/Product/15501882392961	a	toddler
+gid://shopify/Product/15501898973569	a	toddler
+gid://shopify/Product/15501899628929	a	toddler
+gid://shopify/Product/15501899858305	a	toddler
+gid://shopify/Product/15502302544257	a	toddler
+gid://shopify/Product/15502612726145	a	toddler
+gid://shopify/Product/15502613348737	a	toddler
+gid://shopify/Product/15502661878145	a	toddler
+gid://shopify/Product/15502687764865	a	toddler
+gid://shopify/Product/15502692188545	a	toddler
+gid://shopify/Product/15502742618497	a	kids
+gid://shopify/Product/15502875361665	a	toddler
+gid://shopify/Product/15503126495617	a	toddler
+gid://shopify/Product/15503126757761	a	toddler
+gid://shopify/Product/15503126921601	a	toddler
+gid://shopify/Product/15503127052673	a	toddler
+gid://shopify/Product/15503127314817	a	toddler
+gid://shopify/Product/15503127675265	a	toddler
+gid://shopify/Product/15503284994433	a	toddler
+gid://shopify/Product/15503285715329	a	toddler
+gid://shopify/Product/15503285780865	a	toddler
+gid://shopify/Product/15504010740097	a	toddler
+gid://shopify/Product/15504013590913	a	toddler
+gid://shopify/Product/15504073949569	a	toddler
+gid://shopify/Product/15504074408321	a	toddler
+gid://shopify/Product/15504074604929	a	toddler
+gid://shopify/Product/15504074768769	a	toddler
+gid://shopify/Product/15504081224065	a	toddler
+gid://shopify/Product/15504083222913	a	toddler
+gid://shopify/Product/15504139387265	a	toddler
+gid://shopify/Product/15504141386113	a	toddler
+gid://shopify/Product/15505675616641	a	toddler
+gid://shopify/Product/15506262360449	a	toddler
+gid://shopify/Product/15506262950273	a	toddler
+gid://shopify/Product/15506272092545	a	toddler
+gid://shopify/Product/15506274255233	a	toddler
+gid://shopify/Product/15506274484609	a	toddler
+gid://shopify/Product/15506532204929	a	toddler
+gid://shopify/Product/15506533384577	a	toddler
+gid://shopify/Product/15508414562689	a	toddler
+gid://shopify/Product/15508414857601	a	toddler
+gid://shopify/Product/15509379940737	a	toddler
+gid://shopify/Product/15509380366721	a	toddler
+gid://shopify/Product/15509380465025	a	toddler
+gid://shopify/Product/15509396783489	a	toddler
+gid://shopify/Product/15509400945025	a	toddler
+gid://shopify/Product/15510305046913	a	toddler
+gid://shopify/Product/15510305210753	a	toddler
+gid://shopify/Product/15510305374593	a	toddler
+gid://shopify/Product/15510309241217	a	toddler
+gid://shopify/Product/15510321496449	a	toddler
+gid://shopify/Product/15510321594753	a	toddler
+gid://shopify/Product/15510321791361	a	toddler
+gid://shopify/Product/15510322119041	a	toddler
+gid://shopify/Product/15510322217345	a	toddler
+gid://shopify/Product/15510340895105	a	toddler
+gid://shopify/Product/15510920135041	a	toddler
+gid://shopify/Product/15510920298881	a	toddler
+gid://shopify/Product/15518558060929	a	kids
+gid://shopify/Product/15519830081921	a	toddler
+gid://shopify/Product/15521222263169	a	toddler
+gid://shopify/Product/15522119287169	a	toddler
+gid://shopify/Product/15522119418241	a	toddler
+gid://shopify/Product/15522128363905	a	toddler
+gid://shopify/Product/15522458403201	a	toddler
+gid://shopify/Product/15523083649409	a	toddler
+gid://shopify/Product/15523116384641	a	toddler
+gid://shopify/Product/15523116679553	a	toddler
+gid://shopify/Product/15523129295233	a	toddler
+gid://shopify/Product/15523129524609	a	toddler
+gid://shopify/Product/15523236479361	a	toddler
+gid://shopify/Product/15523236610433	a	toddler
+gid://shopify/Product/15523903537537	a	toddler
+gid://shopify/Product/15524002955649	a	toddler
+gid://shopify/Product/15524003807617	a	toddler
+gid://shopify/Product/15524779360641	a	toddler
+gid://shopify/Product/15524881334657	a	toddler
+gid://shopify/Product/15524883005825	a	toddler
+gid://shopify/Product/15524883235201	a	toddler
+gid://shopify/Product/15524883562881	a	toddler
+gid://shopify/Product/15524884447617	a	toddler
+gid://shopify/Product/15525485707649	a	toddler
+gid://shopify/Product/15525485773185	a	toddler
+gid://shopify/Product/15525486788993	a	toddler
+gid://shopify/Product/15525487640961	a	toddler
+gid://shopify/Product/15525488296321	a	toddler
