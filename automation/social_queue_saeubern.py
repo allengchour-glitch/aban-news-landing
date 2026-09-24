@@ -11,6 +11,7 @@ Serpent-Armreif. Geprüft wird je ready-Zeile:
                      Im September ist «Sommer-Liebling» keine Werbung, sondern ein Datum.
   produkt-weg-skip   Das beworbene Produkt ist nicht mehr ACTIVE (oder nicht im Onlineshop) — genau die
                      Falle, wegen der ein Reel einmal gedraftete Klimaanlagen bewarb.
+  preis-veraltet-skip (24.09.2026) Ein CHF-Preis der Caption liegt ausserhalb des Live-Preisbands (nach dem Preisschutz).
   bildtext-skip      (23.09.2026, Betreiber-Screenshot IG-Raster: «made from natural stone», «300ml Aroma Diffuser
                      7 color LED change») Das BILD trägt englischen Lieferanten-Werbetext — Tesseract liest ≥4
                      sichere Wörter. Nur Bild-Posts; Ergebnis je URL in dropship/_bildtext_queue.txt gemerkt.
@@ -67,18 +68,46 @@ def gql(q, v=None):
         " Funktion hier ein leeres Ergebnis zurück und der Aufrufer meldete «0» —"
         " das ist keine Messung, sondern ein Ausfall.")
 
+PREIS = {}   # pid → (min, max) live
+
+
+def preis_veraltet(cap, pid):
+    """24.09.2026: Reels und Bild-Posts tragen den Preis in Caption UND Bild/Video. Der Preisschutz hob an einem Tag
+    23'121 Varianten — ein wartender Post warb danach mit dem alten, tieferen Preis. Jeder CHF-Preis der Caption muss im
+    Live-Preisband liegen. Ohne Live-Preis (Abfrage fehlgeschlagen) kein Urteil."""
+    band = PREIS.get(pid)
+    if not band:
+        return False
+    # «Gratis-Versand ab CHF 50» ist eine Schwelle, kein Produktpreis (erster Lauf: 5 Fehlalarme); Produktpreise tragen immer
+    # Rappen («14.90») — «ab CHF 14.90» bleibt ein Preis, der geprüft wird.
+    rein = re.sub(r"(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?",
+                  " ", cap or "", flags=re.I)
+    for m in re.finditer(r"CHF\s?(\d+[.,]\d{2})\b", rein):
+        x = float(m.group(1).replace(",", "."))
+        if not (band[0] - 0.005 <= x <= band[1] + 0.005):
+            return True
+    return False
+
+
 def status_von(ids):
     """Live-Status je Produkt-ID. Bei Ausfall LEERES dict — dann wird NICHT gedraftet
     (ein Nullergebnis aus einer kaputten Abfrage ist kein Befund)."""
     out = {}
     ids = [i for i in ids if i]
     for i in range(0, len(ids), 50):
-        d = gql("query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status onlineStoreUrl}}}",
+        d = gql("query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status onlineStoreUrl "
+                "priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}}}}}",
                 {"ids": ["gid://shopify/Product/" + x for x in ids[i:i+50]]})
         # 23.09.2026: ACTIVE ohne onlineStoreUrl (nicht im Onlineshop publiziert) ist fuer die Kundin dieselbe 404 —
         # der Reel-/Karussell-Poster fragen beides, hier zaehlte nur der Status.
         for n in ((d.get("data") or {}).get("nodes") or []):
-            if n: out[n["id"].split("/")[-1]] = n["status"] if n.get("onlineStoreUrl") else "OHNE-ONLINESHOP"
+            if n:
+                out[n["id"].split("/")[-1]] = n["status"] if n.get("onlineStoreUrl") else "OHNE-ONLINESHOP"
+                pr = n.get("priceRangeV2") or {}
+                try:
+                    PREIS[n["id"].split("/")[-1]] = (float(pr["minVariantPrice"]["amount"]), float(pr["maxVariantPrice"]["amount"]))
+                except (KeyError, TypeError, ValueError):
+                    pass
     return out
 
 gepostet = set()
@@ -135,6 +164,7 @@ for datei in DATEIEN:
         elif k and k in gesehen:                          neu = "dup-produkt-skip"
         elif VORBEI.search(cap):                          neu = "saison-skip"
         elif pid and live.get(pid) and live[pid] != "ACTIVE": neu = "produkt-weg-skip"
+        elif pid and preis_veraltet(cap, pid):          neu = "preis-veraltet-skip"
         elif r.get("image_url") and (bildtext_woerter(r["image_url"]) or 0) >= 4: neu = "bildtext-skip"
         if neu:
             n[neu] += 1

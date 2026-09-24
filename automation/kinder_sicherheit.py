@@ -73,10 +73,20 @@ MAGNET = re.compile(r'Magnet\w*\s*-?\s*(?:Baustein|Bauklotz|Bausteine|W[üu]rfel
                     r'\bmagnetische[rs]?\s+(?:Baustein|Bauklotz|Bausteine|Spielzeug|Bl[öo]cke)',
                     re.I)
 # Ein Kuscheltier heisst so — oder «Plüsch» steht direkt vor einem Tier.
+# 24.09.2026: «Plüsch Faultier» (Tier fehlte) und «Plüsch Berner Sennenhund» (Wort dazwischen) fielen durch — beide
+# ohne Warnhinweis, während der Panda derselben Fortura-Gruppe ihn trug. Bis zu zwei Wörter zwischen «Plüsch» und Tier.
+TIERE = (r'hund|b[äa]r|teddy|hase|katze|ente|koala|wolf|elefant|einhorn|affe|l[öo]we|tiger|alligator|krokodil|dino\w*|'
+         r'pinguin|fuchs|schaf|robbe|sennenhund|maus|frosch|giraffe|panda|delfin|eule|faultier|alpaka|lama|igel|reh|'
+         r'hirsch|kuh|pferd|pony|schwein|otter|waschb[äa]r|hai|krake|oktopus|schildkr[öo]te|drache|l[äa]mmchen|lamm|'
+         r'k[äa]fer|biene|marienk[äa]fer|schimpanse|gorilla|zebra|nilpferd|nashorn|kamel|seehund|wal|papagei|huhn|'
+         r'hamster|meerschweinchen|eichh[öo]rnchen|dackel|mops|husky|kaninchen|schnecke|raupe|fledermaus|flamingo')
 PLUESCH = re.compile(r'Pl[üu]schtier|Kuscheltier|Stofftier|'
-                     r'Pl[üu]sch[- ]?(?:hund|b[äa]r|teddy|hase|katze|ente|koala|wolf|elefant|'
-                     r'einhorn|affe|l[öo]we|tiger|alligator|dino|pinguin|fuchs|schaf|robbe|'
-                     r'sennenhund|maus|frosch|giraffe|panda|delfin|eule)', re.I)
+                     r'Pl[üu]sch(?:[- ]\w+){0,2}?[- ]?(?:' + TIERE + r')\b', re.I)
+# 24.09.2026: «Kostüm Plüsch Faultier», «Halbmaske Plüsch Gorilla» — Plüsch-Verkleidung ist kein Kuscheltier.
+VERKLEIDUNG = re.compile(r'Kost[üu]m|Maske|Overall|Onesie|Pyjama|Schlafanzug|Jumpsuit|Kigurumi|Verkleidung|Handpuppe|'
+                         r'Mütze|Hut\b|Stirnband|Schl[üu]sselanh[äa]nger|Anh[äa]nger|Tasche|Rucksack|Kissen|Decke|Hausschuh', re.I)
+KLEINKIND = re.compile(r"Grossteil|Gro(?:ss|ß)e? ?Baustein|f[üu]r Kleinkind|ab 1[,.]?5? Jahr|ab (?:12|18) Monat|Baby", re.I)
+SCHUH = re.compile(r"Schuh|Sandale|Pumps|Stiefel|Sneaker|Ballerina|Finkli", re.I)
 # Steht schon ein Hinweis drin, wird nichts angefügt.
 HINWEIS_DA = re.compile(r'nicht f[üu]r Kinder unter|Erstickungsgefahr|Achtung!|'
                         r'unter 36 Monaten|verschluckbare', re.I)
@@ -133,10 +143,36 @@ def ist_kind(p):
                 or KIND_TITEL.search(t))
 
 
+LIVE_Q = ("status:active AND (product_type:'Spielzeug & Spiele' OR product_type:Kinder OR product_type:Kinderschuhe "
+          "OR tag:spielzeug OR tag:kinder OR tag:baby-kids OR tag:baby OR tag:pluesch OR tag:kinderkostuem "
+          "OR tag:kinderschuhe OR title:*Plüsch* OR title:*Kuscheltier*)")
+
+
+def quelle():
+    """24.09.2026: QUELLE=live (Standard) liest die Kandidaten direkt aus Shopify statt aus /tmp/export.jsonl — der
+    Export trug heute das Kosten-Format (kein status/descriptionHtml), und ein Export ist nie aktueller als sein
+    Bauzeitpunkt. EXPORT bleibt als QUELLE=export für Probeläufe."""
+    if os.environ.get("QUELLE", "live") == "export":
+        for zeile in open(EXPORT):
+            yield json.loads(zeile)
+        return
+    cur = None
+    while True:
+        d = gql('query($c:String,$q:String){products(first:100,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
+                'nodes{id title status tags productType descriptionHtml '
+                'mf:metafields(namespace:"mm-google-shopping",first:10){nodes{key value}}}}}', {"c": cur, "q": LIVE_Q})
+        pr = d["data"]["products"]
+        for n in pr["nodes"]:
+            yield n
+        if not pr["pageInfo"]["hasNextPage"]:
+            return
+        cur = pr["pageInfo"]["endCursor"]
+        time.sleep(0.5)
+
+
 def main():
-    warnen, alter = [], []
-    for zeile in open(EXPORT):
-        p = json.loads(zeile)
+    warnen, alter, kleinkind = [], [], []
+    for p in quelle():
         if p["status"] != "ACTIVE" or not ist_kind(p):
             continue
         t, html = p["title"], (p.get("descriptionHtml") or "")
@@ -145,8 +181,13 @@ def main():
         if not HINWEIS_DA.search(html):
             if MAGNET.search(t) or MAGNET.search(html[:1200]):
                 warnen.append((p["id"], t, html, WARNUNG_MAGNET, "Magnete"))
-            elif KLEINTEILE.search(t + html[:1200]) or PLUESCH.search(t):
-                warnen.append((p["id"], t, html, WARNUNG_KLEIN, "Kleinteile"))
+            elif SCHUH.search(t):
+                pass            # 24.09.: «Mädchen Sandalen mit Perlen» — Schuhe sind kein Spielzeug (Perlen = Zierde)
+            elif KLEINTEILE.search(t + html[:1200]) or (PLUESCH.search(t) and not VERKLEIDUNG.search(t)):
+                if KLEINKIND.search(t):
+                    kleinkind.append(t)   # 24.09.: «Grossteile Bauklötze» — der Hinweis würde dem Produkt widersprechen
+                else:
+                    warnen.append((p["id"], t, html, WARNUNG_KLEIN, "Kleinteile"))
 
         # ⚠️ age_group NUR anfassen, wo die Ware zweifelsfrei für Kinder ist. Der Tag
         # `spielzeug` allein reicht nicht: er klebt auch auf einem Garten-Wassersprinkler und
@@ -169,14 +210,19 @@ def main():
         if ag != neu_ag and ag not in ("toddler", "infant", "newborn"):
             alter.append((p["id"], t, ag, neu_ag))
 
-    print(f"Warnhinweis fehlt: {len(warnen)}  |  age_group falsch/fehlend: {len(alter)}",
-          flush=True)
+    print(f"Warnhinweis fehlt: {len(warnen)}  |  age_group falsch/fehlend: {len(alter)}  |  "
+          f"Kleinkind-Spielzeug mit Kleinteil-Wort (nur gemeldet): {len(kleinkind)}", flush=True)
+    for t in kleinkind[:10]:
+        print(f"   [Kleinkind?] {t[:58]}", flush=True)
     for _, t, _, _, art in warnen[:14 if DRY else 5]:
         print(f"   [{art:<10}] {t[:58]}", flush=True)
     print("   age_group:", flush=True)
     for _, t, ag, neu in alter[:6 if DRY else 3]:
         print(f"     {str(ag):<8} → {neu:<8} {t[:48]}", flush=True)
     if DRY:
+        with open("/tmp/kinder_sicherheit_liste.txt", "w") as fh:
+            for gid, t, _, _, art in warnen:
+                fh.write(f"{art}\t{gid}\t{t}\n")
         return
 
     done = set()
@@ -184,11 +230,27 @@ def main():
         done = {l.split("\t")[0] for l in open(LEDGER)}
     f = open(LEDGER, "a")
     n1 = 0
-    for gid, t, html, warnung, art in warnen:
+    # 24.09.2026: Text-Sperre (nie blockierend warten) + frisch lesen vor dem Schreiben. Vorher wurde das HTML aus dem
+    # Export zurückgeschrieben — jede Textänderung seit dem Export wäre überschrieben worden.
+    import fcntl
+    sperre = open("/tmp/lock_produkttext.lock", "w")
+    try:
+        fcntl.flock(sperre, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        print("PAUSE: Text-Sperre belegt — nächster Lauf", flush=True)
+        return
+    for gid, t, _alt_html, warnung, art in warnen:
         if gid + "\tw" in done:
             continue
-        r = gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
+        frisch = (gql('query($id:ID!){product(id:$id){descriptionHtml status}}', {"id": gid})["data"]["product"] or {})
+        html = frisch.get("descriptionHtml") or ""
+        if frisch.get("status") != "ACTIVE" or HINWEIS_DA.search(html):
+            continue
+        r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{descriptionHtml} userErrors{message}}}',
                 {"i": {"id": gid, "descriptionHtml": html + warnung}})
+        if "ls-warnhinweis" not in (((r.get("data") or {}).get("productUpdate") or {}).get("product") or {}).get("descriptionHtml", ""):
+            print(f"  ⛔ Rücklesen ohne Hinweis: {t[:50]}", flush=True)
+            continue
         if ((r.get("data") or {}).get("productUpdate") or {}).get("userErrors"):
             continue
         n1 += 1

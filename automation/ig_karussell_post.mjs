@@ -116,10 +116,11 @@ async function gql(q, v) {
 }
 async function produktLive(handle) {
   if (!STOK) return { ok: false, grund: 'kein Shop-Token' };
-  const d = await gql(`query($h:String!){ productByHandle(handle:$h){ status onlineStoreUrl title } }`, { h: handle });
+  const d = await gql(`query($h:String!){ productByHandle(handle:$h){ status onlineStoreUrl title priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`, { h: handle });
   if (!d) return { ok: false, grund: 'Shopify nicht erreichbar' };
   const p = d.productByHandle; if (!p) return { ok: false, grund: 'Produkt existiert nicht mehr' };
-  return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, title: p.title, url: p.onlineStoreUrl || '' };
+  const min = parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max = parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN');
+  return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, title: p.title, url: p.onlineStoreUrl || '', min, max };
 }
 const http = u => { try { return execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', u], { encoding: 'utf8' }).trim(); } catch { return 'curl'; } };
 function pushen(pfade, msg) {
@@ -158,6 +159,21 @@ for (const r of bereit) {
     shopUrl = pl.url || '';
     if (!pl.ok) { console.log(`   ⛔ ${slug}: ${pl.grund}`); if (!DRY && /existiert nicht|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pl.grund)) { setzen(r, 'status', 'produkt-nicht-aktiv'); writeLedger(); } continue; }
   }
+  // 24.09.2026: Preis in Slides/Caption ist eingebrannt. Der Preisschutz hob heute 23'121 Varianten — 4 wartende Sets warben
+  // danach mit dem ALTEN (tieferen) Preis (Organizer 28.90 statt 55.90). Jeder CHF-Preis der Caption muss im Live-Preisband
+  // liegen (Produkt-Set); bei Top-Sets darf kein Produkt teurer sein als der höchste genannte Preis.
+  { const rein = caption.replace(/(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?/gi, ' ');
+    const preise = [...rein.matchAll(/CHF\s?(\d+[.,]\d{2})\b/g)].map(m => parseFloat(m[1]));
+    let veraltet = '';
+    if (preise.length && get(r, 'modus') === 'produkt') {
+      const pl = await produktLive(slug);
+      const aus = preise.filter(x => !(x >= pl.min - 0.005 && x <= pl.max + 0.005));
+      if (aus.length && Number.isFinite(pl.min)) veraltet = `Caption ${aus.join('/')} ≠ live ${pl.min.toFixed(2)}–${pl.max.toFixed(2)}`;
+    } else if (preise.length) {
+      const hoechst = Math.max(...preise);
+      for (const h of handles) { const pl = await produktLive(h); if (Number.isFinite(pl.min) && pl.min > hoechst + 0.005) { veraltet = `${h} live ab ${pl.min.toFixed(2)} > Caption-Höchstpreis ${hoechst.toFixed(2)}`; break; } }
+    }
+    if (veraltet) { console.log(`   ⛔ ${slug}: Preis veraltet (${veraltet}) → preis-veraltet`); if (!DRY) { setzen(r, 'status', 'preis-veraltet'); writeLedger(); } continue; } }
   // Bilder erreichbar? sonst pushen und erneut pruefen
   bilder = Array.from({ length: n }, (_, i) => `${RAW}${ordner}/${String(i + 1).padStart(2, '0')}.jpg`);
   let codes = bilder.map(http);

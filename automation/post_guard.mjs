@@ -216,3 +216,12 @@ export function familieMerken(text, kanal = '') {
   const f = warenFamilie(text); if (!f) return;
   fs.appendFileSync(F_LEDGER, `${new Date().toISOString()}\t${f}\t${kanal}\n`);
 }
+
+// 24.09.2026: Preis in Caption/Bild/Video ist eingebrannt. Nach dem Preisschutz (23'121 Varianten gehoben) warben wartende
+// Posts mit dem alten, tieferen Preis. Liefert '' (ok) oder den Grund. Schwellen («Gratis-Versand ab CHF 50») zählen nicht.
+export function preisVeraltet(caption = '', min = NaN, max = NaN) {
+  if (!Number.isFinite(min) || !Number.isFinite(max)) return '';
+  const rein = String(caption).replace(/(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?/gi, ' ');
+  const aus = [...rein.matchAll(/CHF\s?(\d+[.,]\d{2})\b/g)].map(m => parseFloat(m[1].replace(',', '.'))).filter(x => !(x >= min - 0.005 && x <= max + 0.005));
+  return aus.length ? `Caption ${aus.join('/')} ≠ live ${min.toFixed(2)}–${max.toFixed(2)}` : '';
+}
