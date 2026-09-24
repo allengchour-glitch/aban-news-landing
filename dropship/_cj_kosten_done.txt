@@ -28463,3 +28463,6 @@ gid://shopify/Product/15454333206913	CHF 7.40	1 Varianten	Dual-Disk-Transfer-Kar
 gid://shopify/Product/15454333239681	CHF 32.02	27 Varianten	Herren Plus-Size Outdoor-Climbing-Boots
 gid://shopify/Product/15454333305217	CHF 13.69	64 Varianten	3D-Druck Kleid mit Stickereimuster
 gid://shopify/Product/15454333337985	CHF 6.90	1 Varianten	Wasserfilter-Element für Katzenwasserbrunnen
+gid://shopify/Product/15454333469057	CHF 9.38	4 Varianten	Elegantes Pullover-Kleid
+gid://shopify/Product/15454333501825	CHF 7.05	3 Varianten	Motorhalter für RC-Autos
+gid://shopify/Product/15454333567361	CHF 16.05	25 Varianten	Langes Off-Shoulder-Kleid
