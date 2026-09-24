@@ -186,7 +186,9 @@ def main():
     muster_je = {g: muster(g) for g in GRUNDWOERTER}
     for zeile in open(EXPORT):
         p = json.loads(zeile)
-        if p["status"] != "ACTIVE":
+        # 24.09.2026: Bulk-Exporte tragen auch Kindzeilen (Varianten/Medien mit __parentId, ohne status/title) —
+        # der Lauf starb daran mit KeyError: 'status' und begann in jeder Aufseher-Runde von vorn.
+        if p.get("__parentId") or p.get("status") != "ACTIVE" or not p.get("title"):
             continue
         t = p["title"]
         tl = t.lower()
