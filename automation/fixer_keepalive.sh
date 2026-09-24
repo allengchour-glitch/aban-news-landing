@@ -1895,7 +1895,9 @@ JSON
     ALTER=$(( $(date +%s) - $(stat -c %Y "$VP" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$VP"; then
       touch "$VP"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_versandprofil_poster.lock; flock -n 9 || exit 0; exec python3 automation/versandprofil_poster.py" --scharf >> "$VP" 2>&1 9>&- & )
+      # 24.09.2026: «--scharf» stand AUSSERHALB der bash-c-Zeichenkette — bash nahm es als $0, Python bekam es nie.
+      # Der Wächter lief so seit seinem Einbau nur als Probelauf («Probelauf. Mit --scharf schreiben.»).
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_versandprofil_poster.lock; flock -n 9 || exit 0; exec python3 automation/versandprofil_poster.py --scharf" >> "$VP" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) versandprofil_poster gestartet"
     fi
   fi
