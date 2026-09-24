@@ -28461,3 +28461,4 @@ gid://shopify/Product/15454333043073	CHF 15.38	5 Varianten	Cocktailkleid mit Pat
 gid://shopify/Product/15454333174145	CHF 15.35	15 Varianten	Rotes Plaid-Kleid ohne Träger
 gid://shopify/Product/15454333206913	CHF 7.40	1 Varianten	Dual-Disk-Transfer-Karte
 gid://shopify/Product/15454333239681	CHF 32.02	27 Varianten	Herren Plus-Size Outdoor-Climbing-Boots
+gid://shopify/Product/15454333305217	CHF 13.69	64 Varianten	3D-Druck Kleid mit Stickereimuster
