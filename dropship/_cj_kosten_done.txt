@@ -28701,3 +28701,4 @@ gid://shopify/Product/15454507434369	CHF 16.90	1 Varianten	Funktions-Rucksack f�
 gid://shopify/Product/15454507958657	CHF 22.52	1 Varianten	Retro-Denim-Umhängetasche
 gid://shopify/Product/15454508089729	CHF 8.13	1 Varianten	Warmes Sweater für haarlose Katzen
 gid://shopify/Product/15454508188033	CHF 17.64	1 Varianten	LED-Weste für Hunde
+gid://shopify/Product/15454508679553	CHF 11.89	1 Varianten	Wasserdichter Poncho für Hunde
