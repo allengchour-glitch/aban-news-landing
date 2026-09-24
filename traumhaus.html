@@ -6967,6 +6967,11 @@ setTimeout(function baueGebaeude(){
          Bergwelt-Ladung offen stand. */
       (function zubringerAusbau(){
         var r0=118, r1=R+HB;
+        /* ⚠️ BANKETT UND PFOSTEN ENDEN VOR DER LANDSTRASSE (Runde 94, th-strassen: 4…6 Leitpfosten im
+           Landstrassen-Band): r1 = R+HB ist die AUSSENKANTE des Rings — Kies und Pfosten liefen bis dorthin
+           quer durch die Ring-Fahrbahn (der Kies liegt unter dem Ring-Belag, die Pfosten standen darauf).
+           Jetzt bis 1 m vor die Innenkante; dort beginnt das Bankett des Rings. */
+        var r1b=R-HB-1.0;
         function achse(gr){var aa=gr*Math.PI/180;
           return {aa:aa,ca:Math.cos(aa),sa:Math.sin(aa),qx:-Math.sin(aa),qz:Math.cos(aa)};}
         function P(A,rr,q){return [A.ca*rr+A.qx*q, A.sa*rr+A.qz*q];}
@@ -6985,7 +6990,7 @@ setTimeout(function baueGebaeude(){
                Speiche die Kante 2,4 m spaeter — ein gemeinsamer Start laege dort als Kies in der Ring-Spur */
             var hb0=hbz(zubRing(gr).rx),r0b=Math.max(zubKante(gr,sd*hb0),zubKante(gr,sd*(hb0+1.5)))+0.3;
             for(var s8=0;s8<16;s8++){
-              var ra=r0b+(r1-r0b)*s8/16, rb=r0b+(r1-r0b)*(s8+1)/16;
+              var ra=r0b+(r1b-r0b)*s8/16, rb=r0b+(r1b-r0b)*(s8+1)/16;
               quadOben(zp,zi, pk(ra,sd*hbz(ra)), pk(ra,sd*(hbz(ra)+1.5)),
                               pk(rb,sd*(hbz(rb)+1.5)), pk(rb,sd*hbz(rb)), zuv,
                        [ra/KM,0], [ra/KM,1.5/KM], [rb/KM,1.5/KM], [rb/KM,0]);}
@@ -7007,7 +7012,7 @@ setTimeout(function baueGebaeude(){
           var A=achse(gr),hb0=hbz(zubRing(gr).rx);
           for(var k=1;k<=pro;k++){
             [-1,1].forEach(function(sd){
-              var r0p=zubKante(gr,sd*(hb0+1.1))+0.3, rr=r0p+k*(r1-r0p)/(pro+1);   /* je Seite hinter der Ringkante */
+              var r0p=zubKante(gr,sd*(hb0+1.1))+0.3, rr=r0p+k*(r1b-r0p)/(pro+1);   /* je Seite hinter der Ringkante, vor der Landstrasse */
               var p=P(A,rr,sd*(hbz(rr)+1.1));   // folgt der Trompete wie das Bankett
               P4.set(p[0],0.5,p[1]);
               im.setMatrixAt(n4++,M4.compose(P4,Q4,S4));});
