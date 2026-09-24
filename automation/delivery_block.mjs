@@ -14,7 +14,7 @@
  *   • CH-Lager (ch-lager/fortura/schweiz-versand)      → 1–2 Werktage
  *   • EU-Lager (eu-lager)                              → 2–7 Werktage
  *   • Druck auf Bestellung (printful/prodigi/pod-…)    → 7–14 Werktage
- *   • Direktversand ab Herstellerlager (Default)       → 10–20 Werktage
+ *   • Direktversand ab Lieferantenlager (Default)       → 10–20 Werktage
  * Idempotent (Marker class="ls-liefer" → kein Doppeln; Update ersetzt alten Block). No-op ohne Creds. DRY_RUN=1.
  * Das Metafeld custom.lieferzeit nutzt Phase 2 (Theme-Snippet) für die landesabhängige, einsprachige Anzeige.
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · [LIMIT=5000] · [DRY_RUN=1]
@@ -37,7 +37,7 @@ function tier(tags){ const t=tags.map(x=>String(x).toLowerCase());
   if(t.includes('pod-uebersee')) return {key:'pod-uebersee', ch:'20–30', weg:'Druck ausserhalb Europas'};
   if(t.includes('printful_personalized_product')||t.includes('prodigi_personalized_product')||t.includes('selbst-gestalten')||t.some(x=>x.startsWith('pod-')||x.startsWith('fertig-'))) return {key:'pod', ch:'7–14', weg:'Druck auf Bestellung'};
   if(t.includes('eu-lager')) return {key:'eu-lager', ch:'2–7', weg:'ab EU-Lager'};
-  return {key:'direkt', ch:'10–20', weg:'Direktversand ab Herstellerlager'};
+  return {key:'direkt', ch:'10–20', weg:'Direktversand ab Lieferantenlager'};
 }
 function blockHtml(z){
   return `<p class="ls-liefer" data-tier="${z.key}" style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;">📦 <strong>Lieferzeit</strong> Schweiz: <strong>${z.ch} Werktage</strong> <span style="opacity:.7;">· ${z.weg} · Versand nur in die Schweiz und nach Liechtenstein</span></p>`;

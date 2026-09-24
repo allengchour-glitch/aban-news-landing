@@ -51,8 +51,8 @@ STIL = ('background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;'
 STUFE = {
     'eu-druck': ('7–14 Werktage',  'Druck auf Bestellung · Versand nur in die Schweiz'),
     'pod':      ('7–14 Werktage',  'Druck auf Bestellung · Versand nur in die Schweiz'),
-    'china':    ('10–20 Werktage', 'Direktversand ab Herstellerlager · Versand nur in die Schweiz'),
-    'direkt':   ('10–20 Werktage', 'Direktversand ab Herstellerlager · Versand nur in die Schweiz'),
+    'china':    ('10–20 Werktage', 'Direktversand ab Lieferantenlager · Versand nur in die Schweiz'),
+    'direkt':   ('10–20 Werktage', 'Direktversand ab Lieferantenlager · Versand nur in die Schweiz'),
     # «standard» sind ~67 handkuratierte Altprodukte ohne Herkunftstag. Die Stufe ist nicht
     # belegbar, der alte Text sagte 8–16 Tage — also eine lange Laufzeit. Gewählt wird die
     # LÄNGSTE Zusage: wer früher liefert als versprochen, enttäuscht niemanden.
