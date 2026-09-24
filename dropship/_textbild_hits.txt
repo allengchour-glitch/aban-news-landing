@@ -15988,3 +15988,4 @@ gid://shopify/Product/15519823135105	24->1	M2 Smartwatch mit Farbdisplay
 gid://shopify/Product/15519836733825	21->1	Hundeleine mit faltbarem Napf – 3er-Set
 gid://shopify/Product/15519837716865	30->1	Kontrast Lederarmband
 gid://shopify/Product/15520408961409	49->0	Haaransatz Puder
+gid://shopify/Product/15450851934593	30->0	6er Set Ätherische Öle
