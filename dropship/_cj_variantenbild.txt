@@ -3117,3 +3117,5 @@ gid://shopify/Product/15449163923841	bild-urls-tot
 gid://shopify/Product/15449163956609	bild-urls-tot
 gid://shopify/Product/15449163989377	bild-urls-tot
 gid://shopify/Product/15449164054913	bild-urls-tot
+gid://shopify/Product/15449164087681	bild-urls-tot
+gid://shopify/Product/15449164120449	bild-urls-tot
