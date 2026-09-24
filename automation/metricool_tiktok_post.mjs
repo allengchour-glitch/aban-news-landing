@@ -19,7 +19,7 @@
  *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -160,12 +160,12 @@ async function produktAktiv(postId) {
       const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method: 'POST',
         headers: { 'X-Shopify-Access-Token': tok, 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: istShopifyId
-          ? `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl } }`
-          : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ status onlineStoreUrl } } }` }) });
+          ? `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`
+          : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }` }) });
       const d = await r.json();
       const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
-      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '' };
+      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '', min: parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max: parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN') };
     } catch {}
     await new Promise(r => setTimeout(r, 2000 * (a + 1)));
   }
@@ -177,6 +177,8 @@ if (!pa.ok) {
   if (!DRY && /nicht mehr|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pa.grund)) { cand[idx.status] = 'produkt-nicht-aktiv'; writeLedger(); }
   process.exit(0);
 }
+{ const pv = preisVeraltet(get(cand, 'caption'), pa.min, pa.max);   // 24.09.2026: eingebrannter Preis ≠ Live-Preis
+  if (pv) { console.error(`⛔ Kein Post — Preis veraltet (${pv}): ${get(cand, 'id')}`); if (!DRY) { cand[idx.status] = 'preis-veraltet-skip'; writeLedger(); } process.exit(0); } }
 const id = get(cand, 'id'), url = get(cand, 'video_url'), tags = get(cand, 'hashtags');
 // ── 23.09.2026 Paket «direktlink» — VORBEREITET, standardmaessig AUS. Ohne die Schalter bleibt der Body byte-gleich.
 //  DIREKTLINK_TEXT=1: die Caption-Zeile «🔗 luxestyle.ch/products/… (Link in Bio)» ist auf TikTok FALSCH (Profil ohne
