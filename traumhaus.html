@@ -718,6 +718,7 @@ function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.hei
   c.fillStyle="#9a9a9a";c.fillRect(0,0,128,128);
   if(kind==="beton"){for(var i=0;i<2600;i++){var v=(Math.random()*44)|0;c.fillStyle="rgba("+(120+v)+","+(120+v)+","+(118+v)+",0.35)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}
     c.strokeStyle="rgba(90,90,90,.35)";c.lineWidth=1.5;for(var l=32;l<128;l+=32){c.beginPath();c.moveTo(0,l);c.lineTo(128,l);c.stroke();}}
+  if(kind==="kies"){for(var k9=0;k9<2600;k9++){var v9=(Math.random()*44)|0;c.fillStyle="rgba("+(120+v9)+","+(120+v9)+","+(118+v9)+",0.35)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}}   /* wie Beton, aber OHNE Plattenfugen */
   if(kind==="blatt"){c.fillStyle="#8a9a7a";c.fillRect(0,0,128,128);
     for(var b=0;b<3200;b++){var g2=(Math.random()*70)|0;c.fillStyle="rgba("+(40+(g2>>1))+","+(85+g2)+","+(35+(g2>>1))+",0.5)";
       c.beginPath();c.arc(Math.random()*128,Math.random()*128,1.4+Math.random()*1.6,0,6.283);c.fill();}}
@@ -727,6 +728,17 @@ function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.hei
 var _texBeton=null,_texBlatt=null,_texErde=null;
 function betMat(c,rough){if(!_texBeton)_texBeton=_strukTex("beton");
   var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.85,map:_texBeton});m.envMapIntensity=0.3;return m;}
+/* 🛣️ ASPHALT UND KIES (Runde 94, User: „weiter schoener machen"). betMat traegt die Beton-Struktur MIT
+   Fugenlinien alle 32 px — Landstrasse, Zubringer, Strandzufahrt, Quartiersplatz, Achterbahn-Stich und
+   Bergweg sahen damit aus wie Betonplatten, heller und anders als die Stadtstrassen (Bild
+   k11-zubringer-30); das Kiesbankett hatte Plattenfugen. asphMat = dieselbe Koernung wie Haupt-, Quer-
+   und Viertelstrassen (_roadTex, 6 m je Kachel), kiesMat = Koernung ohne Fugen. Beide geben je Aufruf
+   ein eigenes Material, teilen aber die Textur — wer `repeat` braucht, nimmt kacheln() (klont die map). */
+var _texAsphalt=null,_texKies=null;
+function asphMat(c,rough){if(!_texAsphalt){_texAsphalt=_roadTex();_texAsphalt.wrapS=_texAsphalt.wrapT=THREE.RepeatWrapping;}
+  var m=new THREE.MeshStandardMaterial({color:c||0x4a4a53,roughness:rough!==undefined?rough:0.92,map:_texAsphalt});m.envMapIntensity=0.3;return m;}
+function kiesMat(c,rough){if(!_texKies)_texKies=_strukTex("kies");
+  var m=new THREE.MeshStandardMaterial({color:c||0x9a9384,roughness:rough!==undefined?rough:0.98,map:_texKies});m.envMapIntensity=0.3;return m;}
 /* 📏 KACHELGROESSE IN METERN — und die Falle, die dabei zweimal zugeschlagen hat.
    `betMat()` gibt JEDEM Aufrufer dieselbe Texturinstanz (`_texBeton`). Wer `repeat`
    daran dreht, dreht es an Bordsteinen, Bruecken, Pfeilern und Vorplaetzen mit; und
@@ -1629,7 +1641,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var mm=new THREE.Mesh(gg,mat); mm.receiveShadow=true; mm.frustumCulled=false;
       mm.userData.nieAusblenden=1; scene.add(mm); return mm;
     }
-    band(G.rad*0.98, G.rad*0.05, 3.0, 7.0, 0.22, betMat(0x4a4a53,0.92), 300);   // Fahrweg
+    band(G.rad*0.98, G.rad*0.05, 3.0, 7.0, 0.22, asphMat(0x4a4a53,0.92), 300);   // Fahrweg (Asphalt, Runde 94)
     band(G.rad*0.96, G.rad*0.04, 1.35, 2.2, 0.26, betMat(0xb9ae95,0.98), 220);  // Wanderweg
 
     /* Gipfelplateau mit Kreuz und Aussichtsbank */
@@ -2817,14 +2829,18 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   var meerG=new THREE.PlaneGeometry(200,340,20,20);
   var meer=new THREE.Mesh(meerG,new THREE.MeshStandardMaterial({color:0x2e6f9e,roughness:0.18,metalness:0.1,envMapIntensity:0.5}));
   meer.rotation.x=-Math.PI/2;meer.position.set(-232,-0.04,0);scene.add(meer);
-  window._wasser.push({mesh:meer,geo:meerG,base:meerG.attributes.position.array.slice()}); /* kräuselt mit dem Teich-Animator */
+  /* ⚠️ amp 0,2 (Runde 94, Bild k11-meer-insel): der Teich-Animator daempft nur Rand-Vertices (|x|,|y| > 11 m);
+     die MITTE der 200 x 340-m-Platte kraeuselte mit voller Amplitude ±0,16 um -0,04 und tauchte bis -0,20 —
+     UNTER die Fernebene (-0,08). Dort schaute 100 m vor dem Strand eine gruene Sechseck-"Insel" aus dem
+     Wasser, mal da, mal weg. Mit 0,2 bleibt der tiefste Punkt bei -0,072. */
+  window._wasser.push({mesh:meer,geo:meerG,base:meerG.attributes.position.array.slice(),amp:0.2}); /* kräuselt mit dem Teich-Animator */
   var sand=new THREE.Mesh(new THREE.PlaneGeometry(14,340),stdMat(0xd8c48e,0.95));
   sand.rotation.x=-Math.PI/2;sand.position.set(-128,-0.02,0);sand.receiveShadow=true;scene.add(sand);
   if(typeof ladeTex==="function")ladeTex("textures/th/sand.jpg",7,140,function(t){sand.material.map=t;sand.material.needsUpdate=true;}); /* 🏖️ ~2u/Kachel statt 7-8u — sonst wirken die Sandwellen riesig */ /* 🏖️ KI-Textur (Pollinations, gratis) */
   /* Zufahrts-Strasse: von der West-Strasse (x=-RX) zur Küste bei z=-30 */
   /* Farbton auf Fahrbahn-Grau: mit 0x6b6b72 las sich die Zufahrt aus der Luft
      wie ein Betonplatz, nicht wie eine Strasse. */
-  var zuf=new THREE.Mesh(new THREE.PlaneGeometry(56,10),betMat(0x4a4a53,0.92));
+  var zuf=new THREE.Mesh(new THREE.PlaneGeometry(56,10),kacheln(asphMat(0x4a4a53,0.92),56,10,6));   /* Asphalt statt Betonplatten (Runde 94) */
   /* 🐛 `rotation.z=PI/2` hat diese Zufahrt um 90 Grad gedreht: statt von der
      West-Strasse zum Strand zu fuehren, lag sie als 56 m langer grauer Riegel
      LAENGS auf der West-Ringstrasse (x -111 … -101, z -58 … -2) und deckte deren
@@ -5017,7 +5033,7 @@ function updWasser(dt,now){if((++_wasserFrame&1))return; // jeden 2. Frame reich
   window._wasser.forEach(function(w){var pa=w.geo.attributes.position.array,b=w.base;
     for(var i=0;i<pa.length;i+=3){
       // Rand-Vertices kaum bewegen (sonst zackige Silhouette), Mitte sanft kraeuseln
-      var edge=Math.max(Math.abs(b[i]),Math.abs(b[i+1])),damp=edge>11?0.15:1;
+      var edge=Math.max(Math.abs(b[i]),Math.abs(b[i+1])),damp=(edge>11?0.15:1)*(w.amp||1);   /* w.amp: Meer 0,2 (Runde 94) */
       pa[i+2]=b[i+2]+(Math.sin(now*0.002+b[i]*0.3)*0.09+Math.cos(now*0.0015+b[i+1]*0.3)*0.07)*damp;}
     w.geo.attributes.position.needsUpdate=true;});}
 window._updZug=updZug; /* Testzugang */
@@ -6750,9 +6766,12 @@ setTimeout(function baueGebaeude(){
          einer Stelle mitten im Bild — ein verschmierter Streifen quer ueber die
          Fahrbahn. 2*pi*200/6 waere 209,4; gerundet auf 209 geht die Naht auf, und die
          Kachel misst statt 6,00 m eben 6,01 m. */
-      var KR=Math.round(6.283*R/KM);
+      /* ⚠️ 6,283 IST NICHT 2 PI (Runde 94, Bild k12-landstrasse): der letzte Bogen endete bei 6,283 rad, der
+         erste begann bei 0 — dazwischen 0,000185 rad x 200 m = ein 3,7-cm-Spalt quer ueber die Fahrbahn,
+         genau an der Kreuzung (200|0), als dunkle Linie sichtbar. Ueberall im Block jetzt TAU. */
+      var TAU=Math.PI*2, KR=Math.round(TAU*R/KM);
       for(var i=0;i<N;i++){
-        var a0=i/N*6.283, a1=(i+1)/N*6.283;
+        var a0=i/N*TAU, a1=(i+1)/N*TAU;
         /* 🌊 DAMM STATT LUECKE. Bisher stand hier `continue`: im Westen liegt bei
            r 200 offenes Wasser, und die Fahrbahn wurde dort einfach weggelassen.
            Die grosse Karte zeichnete die Luecke sogar korrekt ein — nur die
@@ -6772,7 +6791,7 @@ setTimeout(function baueGebaeude(){
           /* laengs die Bogenlaenge, quer die Fahrbahnbreite — beides in Kacheln.
              Der Winkel kommt aus der Schleife und laeuft durch; eine Rechnung aus
              der Weltlage (atan2) haette an der Naht einen verschmierten Streifen. */
-          uvs.push(P[0]/6.283*KR, (P[1]+1)*HB/KM);});
+          uvs.push(P[0]/TAU*KR, (P[1]+1)*HB/KM);});
         idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;   // Wicklung: Vorderseite nach OBEN
         dashA.push((a0+a1)/2);                         // Mittelstreifen: je Segment ein 6-m-Strich (unten als Instanzen)
       }
@@ -6841,7 +6860,7 @@ setTimeout(function baueGebaeude(){
                             pkt(rh+0.22, bh-0.3,HM+0.0005), pkt(rh+0.22,-bh+0.3,HM+0.0005));
       });
       window._zubringer=ZUB;
-      mesh(pos,idx,betMat(0x4a4a53,0.92),uvs);
+      mesh(pos,idx,asphMat(0x4a4a53,0.92),uvs);   /* Asphaltkoernung wie die Stadtstrassen (Runde 94); uv in 6-m-Kacheln */
       /* 🛣️ MITTELSTRICHE MIT LUECKEN (Runde 92, User: „striche auf strassen sind komisch").
          Vorher liefen die Striche ohne Unterbrechung durch jede Einmuendung — an den sechs
          Zubringern und dort, wo eine Viertel-Anbindung die Landstrasse kreuzt (im Bild bei
@@ -6882,7 +6901,7 @@ setTimeout(function baueGebaeude(){
             function pk(cc,br,hh){return [Math.cos(cc)*(R+sd*br),hh,Math.sin(cc)*(R+sd*br)];}
             quadOben(fp,fi, pk(c0,HB,HD-0.001), pk(c0,HB+3.4,-0.95),
                             pk(c1,HB+3.4,-0.95), pk(c1,HB,HD-0.001), fuv,
-                     [c0/6.283*KR,0], [c0/6.283*KR,3.5/KM], [c1/6.283*KR,3.5/KM], [c1/6.283*KR,0]);});
+                     [c0/TAU*KR,0], [c0/TAU*KR,3.5/KM], [c1/TAU*KR,3.5/KM], [c1/TAU*KR,0]);});
         });
         mesh(fp,fi,betMat(0x7d7566,0.98),fuv);
         /* Die Bruestung als InstancedMesh geschlossener Kaesten: eine offene
@@ -6911,13 +6930,13 @@ setTimeout(function baueGebaeude(){
          im Gras; ohne Leitpfosten fehlt der Massstab entlang der Fahrbahn. */
       var bp=[],bi=[],bv=0,buv=[];
       for(var i2=0;i2<N;i2++){
-        var b0=i2/N*6.283, b1=(i2+1)/N*6.283;
+        var b0=i2/N*TAU, b1=(i2+1)/N*TAU;
         var bmx=Math.cos((b0+b1)/2)*R, bmz=Math.sin((b0+b1)/2)*R;
         if(bmx<-118&&Math.abs(bmz)<184)continue;
         [-1,1].forEach(function(sd){
           [[b0,HB],[b0,HB+1.5],[b1,HB+1.5],[b1,HB]].forEach(function(P){
             bp.push(Math.cos(P[0])*(R+sd*P[1]),HB2,Math.sin(P[0])*(R+sd*P[1]));
-            buv.push(P[0]/6.283*KR,(P[1]-HB)/KM);});
+            buv.push(P[0]/TAU*KR,(P[1]-HB)/KM);});
           if(sd<0)bi.push(bv,bv+2,bv+1, bv,bv+3,bv+2);
           else     bi.push(bv,bv+1,bv+2, bv,bv+2,bv+3);
           bv+=4;});
@@ -6929,7 +6948,7 @@ setTimeout(function baueGebaeude(){
       var Mlp=new THREE.Matrix4(),Qlp=new THREE.Quaternion(),Plp=new THREE.Vector3(),Slp=new THREE.Vector3(1,1,1);
       var nlp=0;
       for(var k2=0;k2<NLP;k2++){
-        var ka=k2/NLP*6.283;
+        var ka=k2/NLP*TAU;
         var kx=Math.cos(ka)*R, kz=Math.sin(ka)*R;
         if(kx<-118&&Math.abs(kz)<184)continue;
         [-1,1].forEach(function(sd){
@@ -6970,7 +6989,7 @@ setTimeout(function baueGebaeude(){
                        [ra/KM,0], [ra/KM,1.5/KM], [rb/KM,1.5/KM], [rb/KM,0]);}
           });
         });
-        mesh(zp,zi,betMat(0x9a9384,0.98),zuv);
+        mesh(zp,zi,kiesMat(0x9a9384,0.98),zuv);   /* Kies ohne Plattenfugen (Runde 94) */
         /* Leitpfosten entlang der Zubringer, als EINE InstancedMesh.
            ⚠️ InstancedMesh prueft die Sichtbarkeit gegen die Bounding-Sphere
            EINER Geometrie am Objektursprung. Bei ueber die halbe Karte
@@ -7645,7 +7664,7 @@ setTimeout(function baueGebaeude(){
          zur Zufahrt, Bordstein zur Platzseite. */
       (function westParkplatz(){
         var QX=WX-4, QZ=-2, QW=9, QD=30;
-        var be=new THREE.Mesh(new THREE.PlaneGeometry(QW,QD),betMat(0x55534f,0.95));
+        var be=new THREE.Mesh(new THREE.PlaneGeometry(QW,QD),kacheln(asphMat(0x55534f,0.95),QW,QD,6));   /* Asphalt (Runde 94) */
         be.rotation.x=-Math.PI/2;be.position.set(QX,-0.003,QZ);be.receiveShadow=true;scene.add(be);
         var sM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.85});
         sM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(sM);
@@ -7658,10 +7677,10 @@ setTimeout(function baueGebaeude(){
            Fahrbahnkante der Querstrasse (x -73) und dem Platz (x -64,5) lagen 5 m Rasen — kein
            Weg hinein. Jetzt eine Vorfahrfläche vom Gehweg bis zu den Stellplaetzen und zwei
            Gehweguebergaenge (Asphalt ueber der Gehwegplatte, y 0,07) als Ein- und Ausfahrt. */
-        var VX0=-70.8,VX1=QX-QW/2,vf=new THREE.Mesh(new THREE.PlaneGeometry(VX1-VX0,QD),betMat(0x55534f,0.95));
+        var VX0=-70.8,VX1=QX-QW/2,vf=new THREE.Mesh(new THREE.PlaneGeometry(VX1-VX0,QD),kacheln(asphMat(0x55534f,0.95),VX1-VX0,QD,6));
         vf.rotation.x=-Math.PI/2;vf.position.set((VX0+VX1)/2,-0.002,QZ);vf.receiveShadow=true;scene.add(vf);
         [QZ-QD/2+4,QZ+QD/2-4].forEach(function(ez){
-          var ue=new THREE.Mesh(new THREE.PlaneGeometry(3.0,6),betMat(0x55534f,0.95));
+          var ue=new THREE.Mesh(new THREE.PlaneGeometry(3.0,6),kacheln(asphMat(0x55534f,0.95),3,6,6));
           ue.rotation.x=-Math.PI/2;ue.position.set(-71.9,0.07,ez);ue.receiveShadow=true;scene.add(ue);});
         (window._parkplaetze=window._parkplaetze||[]).push({n:"Quartiersplatz",x:(VX0+QX+QW/2)/2,z:QZ,w:QX+QW/2-VX0,d:QD,achse:"x"});
         addSolid(QX-1.1,QZ,6.8,QD*0.92);          /* Stellreihe (so breit wie die Striche) solide, Fahrgasse frei */
@@ -7828,6 +7847,13 @@ setTimeout(function baueGebaeude(){
            die Decke des Raums und zugleich das Flachdach (Oberkante 3,00). */
         [-6,-2,2,6].forEach(function(dx){[-4,0,4].forEach(function(dz){
           modul("th34_decke.glb",CX+dx,2.75,CZ+dz,0);});});
+        /* 🏢 FLACHDACH (Runde 94, Bild k11-spielclub): von oben war die Decke ein braunes Holzparkett mit
+           zwoelf weissen Fugen — th34_decke ist eine DECKE, kein Dach. Darueber jetzt eine Kiesschicht
+           (dunkelgrau, ohne Fugen) in einem hellen Attika-Rahmen, 0,3 m ueber der Deckenoberkante 3,00;
+           die Module bleiben, von innen ist es weiter die Holzdecke. */
+        var attM=new THREE.MeshStandardMaterial({color:0xd4d1c8,roughness:0.85,envMapIntensity:0.2});
+        var att=new THREE.Mesh(new THREE.BoxGeometry(16.6,0.3,12.6),attM);att.position.set(CX,3.15,CZ);att.receiveShadow=true;scene.add(att);
+        var kd=new THREE.Mesh(new THREE.BoxGeometry(16.0,0.32,12.0),kiesMat(0x6b6864,1.0));kd.position.set(CX,3.16,CZ);kd.receiveShadow=true;scene.add(kd);
         /* ⚠️ UND EIN FUSSBODEN. Der erste Blick von innen (th-blick mit r 5) zeigte
            einen Clubraum mit RASEN — Discokugel, Pokertisch und Tanzflaeche standen
            auf der Wiese, und am Ostrand schnitt sogar das gelbe Feld durch den Raum.
@@ -8025,7 +8051,7 @@ setTimeout(function baueGebaeude(){
        Gebaeude oder Felder im Band — nur Waldsaum-Baeume, die jetzt ausgespart werden.
        Stil wie die Landstrasse: 8,4 m Asphalt, Bankett beidseits, gestrichelte Mitte. */
     (function achterbahnStich(){
-      var A=betMat(0x4a4a53,0.92), B=betMat(0x9a9384,0.98);
+      var A=asphMat(0x4a4a53,0.92), B=kiesMat(0x9a9384,0.98);   /* Asphalt + Kies ohne Fugen (Runde 94) */
       var D=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});
       /* ⚠️ EIN MATERIAL FUER PLATTEN VERSCHIEDENER GROESSE GEHT NICHT. A und B werden
          von allen Platten geteilt; ein `repeat` daran passt dann zur einen und nicht
@@ -8250,12 +8276,16 @@ setTimeout(function baueGebaeude(){
          der Terrasse; die Station steht an einer Steilwand, die Hoehenlinie laeuft nicht laengs lx.
          Darum zwoelf Richtungen im Abstand 24 m abtasten (ohne den Talsektor, dort haengen Seil
          und Stuetzen) und die nehmen, deren Hoehe der Terrasse am naechsten kommt. */
-      var pH=null,hMax=0,hMin=1e9;
-      for(var kH=0;kH<12;kH++){var phH=kH*Math.PI/6,lxH=24*Math.cos(phH),lzH=24*Math.sin(phH);
+      /* ⚠️ DRITTE MESSUNG (Bild k11-bergstation): "Hoehe am naechsten an der Terrasse" fand einen Punkt mit
+         31,8 m oben und 2,2 m unten — die Huette stand auf einem 33-m-Felsturm. Gesucht ist der FLACHSTE
+         Grund im Umkreis (24 und 30 m, 24 Richtungen, ohne Talsektor): kleinste Spanne, Naehe zur
+         Terrassenhoehe nur als Zusatz. Der Sockel wird dann so hoch wie der Hang unter der Huette, nicht hoeher. */
+      var pH=null,hMax=0,hMin=1e9,bestH=1e9;
+      [24,30].forEach(function(rH){for(var kH=0;kH<12;kH++){var phH=kH*Math.PI/6,lxH=rH*Math.cos(phH),lzH=rH*Math.sin(phH);
         if(lzH<-10)continue;
-        var qH=aufTerrasse(lxH,lzH),hH=hoehenUm(qH);
-        if(!pH||Math.abs(hH.max+0.6-BERGY)<Math.abs(hMax+0.6-BERGY)){pH=qH;hMax=hH.max;hMin=hH.min;}}
-      var HY=Math.round((hMax+0.6)*10)/10,hsH=Math.max(6,HY-hMin+3);
+        var qH=aufTerrasse(lxH,lzH),hH=hoehenUm(qH),sc=(hH.max-hH.min)+0.25*Math.abs(hH.max+0.6-BERGY);
+        if(sc<bestH){bestH=sc;pH=qH;hMax=hH.max;hMin=hH.min;}}});
+      var HY=Math.round((hMax+0.6)*10)/10,hsH=Math.max(4,HY-hMin+2);
       window._huette={x:pH[0],z:pH[1],HY:HY,hMax:hMax,hMin:hMin,hsH:hsH};   /* fuer Sonden */
       var hSock=new THREE.Mesh(new THREE.CylinderGeometry(8.5,12,hsH,7),felsSockelM);
       hSock.position.set(pH[0],HY-hsH/2,pH[1]);hSock.rotation.y=winkel;hSock.userData.traegt=1;
