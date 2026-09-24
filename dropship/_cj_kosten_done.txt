@@ -28375,3 +28375,5 @@ gid://shopify/Product/15454248731009	CHF 42.48	1 Varianten	Taktisches Werkzeug-S
 gid://shopify/Product/15454248796545	CHF 17.51	5 Varianten	Stretch-Jeans, cropped, mittlere Weite
 gid://shopify/Product/15454248829313	CHF 13.12	1 Varianten	Taktische Handy-Tasche
 gid://shopify/Product/15454248862081	CHF 10.01	1 Varianten	Kätzchen-Schüttelspielzeug
+gid://shopify/Product/15454248894849	CHF 31.07	1 Varianten	Dünne Hunde-Weste Regenjacke
+gid://shopify/Product/15454248927617	CHF 15.74	12 Varianten	Velvet-Rauchrohr-Leggings
