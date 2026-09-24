@@ -28226,3 +28226,5 @@ gid://shopify/Product/15507730563457	CHF 26.94	44 Varianten	Leinen Monk-Schuhe A
 gid://shopify/Product/15507730596225	CHF 18.67	16 Varianten	Outdoor Mesh Schuhe für Herren
 gid://shopify/Product/15507730661761	CHF 24.08	16 Varianten	Outdoor Freizeit-Schuhe für Herren
 gid://shopify/Product/15507730694529	CHF 24.67	12 Varianten	Herren Freizeit-Sneaker im Hong Kong Stil
+gid://shopify/Product/15448114135425	CHF 20.40	4 Varianten	Eleganter Jumpsuit mit Woll-Applikationen
+gid://shopify/Product/15448114168193	CHF 18.16	36 Varianten	Gemusterter Langarm-Jumpsuit mit V-Ausschnitt
