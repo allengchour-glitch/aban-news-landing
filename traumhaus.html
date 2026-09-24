@@ -8218,10 +8218,19 @@ setTimeout(function baueGebaeude(){
          Jetzt jenseits des Bergendes der Terrasse (lz 17) auf einer eigenen Platte in der dort
          gemessenen Gelaendehoehe, mit Felssockel wie die Station; `fest`, damit sie nichts mehr
          verschiebt. */
-      var pH=aufTerrasse(0,25),hMax=0,hMin=1e9;
-      for(var hu=-7;hu<=7.01;hu+=3.5)for(var hv=-7;hv<=7.01;hv+=3.5){
-        var hh=bergH(pH[0]+hu*Math.cos(winkel)+hv*Math.sin(winkel),pH[1]-hu*Math.sin(winkel)+hv*Math.cos(winkel));
-        if(hh>hMax)hMax=hh;if(hh<hMin)hMin=hh;}
+      /* ⚠️ NICHT bergwaerts (lz 25): dort liegt das Gelaende GEMESSEN auf 68,7 m — 25 m ueber der
+         Terrasse (43,3), die Huette stand auf einem 40-m-Felsturm (Sonde probe-berg3). SEITLICH
+         der Station (lx ±22) laeuft die Hoehenlinie: beide Seiten messen, die nehmen, deren
+         Hoehe der Terrasse am naechsten kommt. Die Seile laufen bei lx ±1,3 laengs lz — 22 m
+         daneben ist Luft. */
+      function hoehenUm(p){var mx=0,mn=1e9;
+        for(var hu=-7;hu<=7.01;hu+=3.5)for(var hv=-7;hv<=7.01;hv+=3.5){
+          var hh=bergH(p[0]+hu*Math.cos(winkel)+hv*Math.sin(winkel),p[1]-hu*Math.sin(winkel)+hv*Math.cos(winkel));
+          if(hh>mx)mx=hh;if(hh<mn)mn=hh;}
+        return {max:mx,min:mn};}
+      var pH=null,hMax=0,hMin=1e9;
+      [[22,-2],[-22,-2]].forEach(function(lp){var q=aufTerrasse(lp[0],lp[1]),h=hoehenUm(q);
+        if(!pH||Math.abs(h.max+0.6-BERGY)<Math.abs(hMax+0.6-BERGY)){pH=q;hMax=h.max;hMin=h.min;}});
       var HY=Math.round((hMax+0.6)*10)/10,hsH=Math.max(6,HY-hMin+3);
       window._huette={x:pH[0],z:pH[1],HY:HY,hMax:hMax,hMin:hMin,hsH:hsH};   /* fuer Sonden */
       var hSock=new THREE.Mesh(new THREE.CylinderGeometry(8.5,12,hsH,7),felsSockelM);
