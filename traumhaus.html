@@ -1847,12 +1847,21 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Kollider im Umland waeren lauter Stolperfallen fuer die wandernden Bewohner.
      Erst mit echtem Ausweichen in moveSim() darf das wieder rein. */
   /* 🌳 Freiflaechen-Test — eine Quelle fuer ALLE Streu-Objekte (User: „umgebung ist alles leer") */
+  /* ⏳ NACH DEN VIERTELN (Runde 97): Viertelstrassen und Anschluesse entstehen erst ~260 ms nach dem Start.
+     Wer vorher prueft, ob etwas auf einer Fahrbahn liegt, kennt sie nicht — so stand ein Schild auf der
+     Bauernhof-Anschlussstrasse (probe-schild) und vorher Baeume auf dem Vorfeld (Runde 95). fn laeuft,
+     sobald das letzte Viertel (Bauernhof) in VIERTEL steht — spaetestens nach 15 s, damit ein Viertel,
+     das keinen Platz findet, nicht alles Nachfolgende aufhaelt. */
+  window._nachVierteln=function(fn){var n9=0;(function warte(){
+    var V=(window._viertelSolver&&window._viertelSolver.VIERTEL)||[];
+    if(!V.some(function(g){return g.name==="Bauernhof";})&&n9++<60){setTimeout(warte,250);return;}
+    fn();})();};
   function freiPlatz(x,z,pad){
     pad=pad||0;
     if(x<-116)return false;                                                    // Meer + Strand (Baeume standen im Wasser)
     if(x>118&&x<166&&z>3&&z<37)return false;                                   // 🩹 Schwarm-7: Wochenmarkt (142|20)
     if(x>26&&x<80&&z>136&&z<176)return false;                                  // 🩩 Schwarm-7: Sportplatz (53|155)
-    if(x>122&&x<170&&z>-54&&z<4)return false;                                  // Kirchhof am Ost-Tor (146|-22): Zaun + Freiraum ringsum
+    if(x>122&&x<170&&z>-60&&z<4)return false;                                  // Kirchhof am Ost-Tor (146|-28, Runde 97 6 m noerdlicher): Zaun + Freiraum ringsum
     /* Klinikareal (0|-128), Charge 49. Hier als Rechteck und nicht ueber
        `window.KLINIK`: freiPlatz wird von der Allee schon gerufen, bevor der
        Klinik-Abschnitt weiter unten den Globalwert ueberhaupt setzt. */
@@ -2430,13 +2439,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       for(var i=0;i<V.length;i++){var g=V[i];
         if(g.cfg&&g.cfg.boden==="platz"&&Math.abs(x-g.x)<g.w/2+3&&Math.abs(z-g.z)<g.d/2+3)return;}
       fn(x,z);};}
-    setTimeout(function aussenring(){
-      if(!viertelListe().some(function(g){return g.name==="Bauernhof";})){setTimeout(aussenring,250);return;}
+    window._nachVierteln(function aussenring(){
       streu(_n(110),200,440,draussen(function(x,z){baum2(x,z,0.8+Math.random()*1.0);}),1);
       streu(_n(70),200,440,draussen(busch),0);
       streu(_n(40),200,440,draussen(findling),0);
       streu(_n(60),200,440,draussen(blumenfeld),0);
-    },600);
+    });
     /* ⚠️ DIESE SCHLEIFE HAT NIE EIN BUESCHEL GESETZT — nachgerechnet, nicht vermutet.
        Sie streute auf einen Ring mit `sr9 = 19 + Math.random()*4`, also Radius 19…23 um die
        Seemitte (0|146). Der Torwaechter war `freiPlatz(sx9,sz9,0)`, und dort steht:
@@ -3389,8 +3397,10 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
       (window._uebSchilder=window._uebSchilder||[]).push([+P[0].toFixed(2),+P[1].toFixed(2),+ry.toFixed(3),uIdx,dx,dz,um]);
     });
     window._uebergaenge.push([x,z,quer,lang,hb]);};
-  /* Wuensche aus Ring und Querstrasse (entstanden, bevor es _zebraAllg gab) */
-  (window._zebWunsch||[]).forEach(function(w){window._zebraAllg(w[0],w[1],w[2],w[3],w[4]);});window._zebWunsch=[];
+  /* Wuensche aus Ring und Querstrasse (entstanden, bevor es _zebraAllg gab). ⚠️ ERST NACH DEN VIERTELN
+     (probe-schild, Runde 97): die Muendung des Zubringers 300 Grad am Stadtring teilt sich der Bauernhof-
+     Anschluss (x 60) — beim Start kannte _aufStrasse ihn noch nicht, das Schild blieb auf seinem Asphalt. */
+  window._nachVierteln(function(){(window._zebWunsch||[]).forEach(function(w){window._zebraAllg(w[0],w[1],w[2],w[3],w[4]);});window._zebWunsch=[];});
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
     window._zebraAllg(x,z,quer,quer?16:10);return;
     /* ⚠️ GEMESSEN (User-Screenshot „strasse hier schoener machen"): die Funktion war
@@ -9342,7 +9352,12 @@ setTimeout(function baueGebaeude(){
        und Wasser) ergab 128 Plaetze; der naechstgelegene liegt an der
        Ost-Ausfallstrasse, 42 m noerdlich des Wochenmarkts — Markt und Dom bilden
        dort ein Ensemble mit freier Sicht ueber die Felder. */
-    var DOM_X=146, DOM_Z=-22, DOM_SW=DOM_Z+11.2, DOM_NW=DOM_Z-9.3, DOM_WX=8.7;
+    /* ⛪ RUNDE 97 (Bild k30-gewerbe-anschl-kirchhof, th-strassen, th-kante (147|-5)): -22 -> -28. Das Portal
+       (DOM_Z+11,2) stand nur 3,9 m hinter dem Gehweg der Ost-Ausfallstrasse (z 0, Gehweg -4,7…-6,9); Treppe
+       und Figuren fuellten das aus, darum lagen Kirchhof-Zaun und Torpfeiler (Portal+9 = -1,8) 2,7 m IN der
+       Fahrbahn, Obelisk und Laternen (Portal+6,6 = -4,2) auf der Bordsteinlinie. 6 m noerdlicher: Zaun bei
+       -7,8 hinter dem Gehweg, Obelisk und Laternen bei -10,2 auf dem Vorplatz. Alles haengt an DOM_*. */
+    var DOM_X=146, DOM_Z=-28, DOM_SW=DOM_Z+11.2, DOM_NW=DOM_Z-9.3, DOM_WX=8.7;
     window._DOM=[DOM_X,DOM_Z];   /* die Trau-Zone haengt daran (weiter unten) */
     /* 🧱 Kathedrale: gemessene Box, Portal nach Sueden. Stand frueher 114 Zeilen
        weiter oben, wo DOM_X noch undefined war (siehe Kommentar dort). */
